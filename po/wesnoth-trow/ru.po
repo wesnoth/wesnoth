@@ -1,3 +1,4 @@
+# translation of ru.po to Russian
 # #-#-#-#-#  wesnoth-trow.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Russian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
@@ -8,21 +9,23 @@
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Azamat Hackimov (Izek) - azazello1984@mail.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
+# Azamat H. Hackimov <azazello1984@mail.ru>, 2005.
 #
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
+"Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-27 20:53+0100\n"
-"PO-Revision-Date: 2005-02-26 17:02+0300\n"
-"Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-03-05 19:52+0500\n"
+"Last-Translator: Azamat H. Hackimov <azazello1984@mail.ru>\n"
+"Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: data/campaigns/The_Rise_of_Wesnoth.cfg:5
 msgid "The Rise of Wesnoth"
@@ -54,10 +57,13 @@ msgid ""
 "Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
 "with Lich-Lord Jevyan awaits..."
 msgstr ""
+"Проведите Принца Халдрика сквозь разрушение Зелёного Острова и путешествие "
+"через Океан, чтобы основать королевство Веснот. Но Вас ещё ждёт столкновение "
+"с Лич-Лордом Джевьян..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:4
 msgid "Lizard Beach"
-msgstr "Берег ящерицы"
+msgstr "Берег Ящериц"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:26
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:21
@@ -71,12 +77,12 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте всех врагов\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть Леди Джессики или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:46
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:42
@@ -125,15 +131,16 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:138
 msgid "Monsters! We're being invaded by monsters."
-msgstr "Чудовище! Нас захватили чудовища."
+msgstr "Чудовища! Нас захватили чудовища."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:143
 msgid "We must hold the beach until we can call our Naga friends."
 msgstr ""
+"Мы должны удержать берег, пока мы не позовём на помощь наших друзей Наг."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:148
 msgid "Us monsters? Hmph. . . prepare to meet our blades."
-msgstr "Мы чудовища? Хм. . . готовься к встрече с нашими клинками."
+msgstr "Мы чудовища? Хм... готовься к встрече с нашими клинками."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:153
 msgid "(Sigh) I bet he doesn't even see the irony in that."
@@ -152,11 +159,11 @@ msgstr "Капля"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:203
 msgid "Ick! When you kill them they divide."
-msgstr ""
+msgstr "Ик! Когда ты убиваешь их - делятся пополам."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:256
 msgid "We must protect the Saurians we need the metal!"
-msgstr ""
+msgstr "Мы должны защитить Ящеров, нам нужен металл!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:279
 msgid "We've cleared the beach. Let's return to the elves."
@@ -164,7 +171,7 @@ msgstr "Мы очистили пляж. Возвращаемся к эльфам
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:4
 msgid "A Final Spring"
-msgstr "Финальный прыжок"
+msgstr "Финальный Прыжок"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:27
 msgid ""
@@ -178,13 +185,13 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте Орков\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть Короля Аддрорана IX или\n"
 "#Смерть Леди Джессики или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:54
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:48
@@ -205,7 +212,7 @@ msgstr "Тан-Гуло"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:239
 msgid "Ruby of Fire"
-msgstr "Огненный рубин"
+msgstr "Огненный Рубин"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:241
 msgid ""
@@ -218,16 +225,20 @@ msgid ""
 "Several months pass. Jessica has translated Lich-Lord Caror's Book. Prince "
 "Haldric is busy trying to understand the secrets of the Ruby of Fire."
 msgstr ""
+"Прошло несколько месяцев. Джессика перевела Книгу Лич-Лорда Карора. Принц "
+"Халдрик пытался постичь тайну Огненного Рубина."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:271
 msgid "I think I've figured something out. Look."
-msgstr ""
+msgstr "Кажется, у меня что-то получается. Смотри."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:283
 msgid ""
 "Ouch! Hot, hot, hot! Gee, somebody should really attach this thing to a "
 "scepter or something! I think I'll save it for closer ranged combat for now."
 msgstr ""
+"Ай! Горячо, горячо! Да, кто-то должно быть, прилаживал его к скипетру или "
+"чему-нибудь подобному! Думаю, я оставлю его для атаки на дистанции."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:287
 msgid "Watch it! Well, at least you're improving."
@@ -241,7 +252,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:295
 msgid "Orcs Sighted! They've seized the frontier! To arms! To arms!"
-msgstr ""
+msgstr "Орки! Они захватили границу! К оружию! К оружию!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:300
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:678
@@ -261,7 +272,7 @@ msgstr "Хорошо. Я сделаю это лучшим образом."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:326
 msgid "I come seeking the Crown Prince!"
-msgstr "Я пришёл увидеть крон принца!"
+msgstr "Я пришёл увидеть наследника престола!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:331
 msgid "Who is this fish man?"
@@ -274,14 +285,18 @@ msgid ""
 "exchange for steel trident points and fishhooks. It's difficult to be a "
 "blacksmith when you live underwater."
 msgstr ""
+"Он - большая часть доводов в пользу того, чтобы ты отправился на Восток. "
+"Лорд Тайфон обеспечит нас жемчугом и будет сопровождать нас в путешествии в "
+"обмен на наконечники стальных трезубцев и рыболовные крючки. Это трудно "
+"сделать в кузнице, если ты живёшь под водой."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:340
 msgid "Indeed it is. But where is the Prince?"
-msgstr "Действительно. Но где же Принц?"
+msgstr "Действительно. Но где же Наследник?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:344
 msgid "The Crown Prince is dead. But we have need of your services again- -"
-msgstr "Крон принц мёртв. Но нам снова нужны твои услуги- -"
+msgstr "Наследник престола мёртв. Но нам снова нужны твои услуги- -"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:349
 msgid "Under the same terms?"
@@ -300,10 +315,12 @@ msgid ""
 "Good. We need the steel for our own war in the deep. I formally place the "
 "might of the Merfolk at your disposal!"
 msgstr ""
+"Хорошо. Нам нужна сталь для нашей собственной войны в глубинах. Я официально "
+"передаю мощь Мерфолка в Ваше распоряжение!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:371
 msgid "Make haste. We must secure the frontier or it's all over!"
-msgstr ""
+msgstr "Поторопись. Мы должны обезопасить границу или всему конец!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:399
 msgid ""
@@ -311,11 +328,14 @@ msgid ""
 "lucky I may raise you from death for my own amusement. Oh, and what's this? "
 "I sense, I sense the Ruby of Fire."
 msgstr ""
+"Король Аддоран, твои дни сочтены. Приготовься обратиться в прах. Если тебе "
+"повезёт, я воскрешу тебя из мёртвых, дабы ты развлекал меня. Ох, но что это? "
+"Я чувствую, чувствую Огненный Рубин."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:403
 msgid ""
 "You monster! You've betrayed our people- - to ally yourself with these Orcs?!"
-msgstr ""
+msgstr "Ты чудовище! Ты предал своих людей - ради союза с этими Орками?!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:410
 msgid ""
@@ -330,16 +350,17 @@ msgstr "НЕТ!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:419
 msgid "Fath-er! Join. . . us. . ."
-msgstr "Фат-ер! Присоединяйся. . . к нам. . ."
+msgstr "От-ец! Присоединяйся... к нам..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:423
 msgid "His older brother was more attractive. . ."
-msgstr "Его старший брат более привлекательный. . ."
+msgstr "Его старший брат более привлекательный..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:464
 msgid ""
 "Their reserves are arriving and we haven't secured the frontier! We're dead!"
 msgstr ""
+"Прибыли их резервы и мы не сможем обезопасить наши границы! Мы покойники!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:481
 msgid "Southbay"
@@ -347,23 +368,23 @@ msgstr "Южный залив"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:500
 msgid "To Clearwater Port"
-msgstr "К Порту чистой воды"
+msgstr "К Порту Чистой Воды"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:519
 msgid "To the Midlands & Oldwood"
-msgstr "К Центральным графствам и Старому лесу"
+msgstr "К Средиземью и Старому лесу"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:538
 msgid "To the Northrun"
-msgstr ""
+msgstr "На Нортран"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:557
 msgid "To the Midlands"
-msgstr "К Центральным графствам"
+msgstr "К Средиземью"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:576
 msgid "New Southbay"
-msgstr "Новый Южный залив"
+msgstr "Новый Южный Залив"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:595
 msgid "They sealed it, there is no escape for you!"
@@ -371,7 +392,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:609
 msgid "I am finished."
-msgstr "Я закончил."
+msgstr "Мне конец."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:613
 msgid "We needed him to hold Southbay. We're done for!"
@@ -379,11 +400,13 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:625
 msgid "We've defeated the Orcs. Let's rig the Ships and get out of here."
-msgstr ""
+msgstr "Мы победили Орков. Снаряжаем корабль и уходим отсюда."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:630
 msgid "My sons- - As we agreed. I will hold Southbay until my last breath."
 msgstr ""
+"Мои сыновья... Мы поможем. Я буду удерживать Южный Залив до последнего "
+"вздоха."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:634
 msgid ""
@@ -407,13 +430,15 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:646
 msgid "Great, more boats, and now an Ocean!"
-msgstr ""
+msgstr "Великолепно, больше кораблей, а теперь в Океан!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:651
 msgid ""
 "After you make it to this new land, send some of the ships back, for there "
 "may still be survivors in Southbay."
 msgstr ""
+"После того, как достигнешь новых земель, отправь несколько кораблей назад, "
+"они заберут выживших с Южного Залива."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:664
 msgid "My Son!"
@@ -421,7 +446,7 @@ msgstr "Мой сын!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:4
 msgid "A Harrowing Escape"
-msgstr "Горестный побег"
+msgstr "Горестный Побег"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:24
 msgid ""
@@ -433,11 +458,11 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте обоих противников\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:56
 msgid "Tan-Schmog"
@@ -456,7 +481,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:135
 msgid "Father, I wish you were here. . ."
-msgstr "Отец, я надеюсь ты здесь. . ."
+msgstr "Отец, хотел бы я, чтобы ты был здесь..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:140
 msgid ""
@@ -470,7 +495,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:159
 msgid "Who goes there?"
-msgstr "Кто пойдёт туда?"
+msgstr "Кто здесь ходит?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:166
 msgid "Burin, Burin the Lost. Who be yee?"
@@ -481,6 +506,8 @@ msgid ""
 "I'm Prince Haldric, we have little time to talk. We must make haste through "
 "the pass. . . What are you?"
 msgstr ""
+"Я Принц Халдрик, у нас есть немного времени поговорить. Мы должны поспешить "
+"к проходу... Кто ты?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:176
 msgid ""
@@ -488,10 +515,13 @@ msgid ""
 "underground, almost a century ago. I've never found my way home. But it "
 "seems nice enough here."
 msgstr ""
+"Я - Гном! Жалкий мальчишка! Я потерялся около век назад, исследуя глубины "
+"подземелий. Я никогда не найду дорогу домой. Но, кажется, мне и здесь "
+"неплохо."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:181
 msgid "Nice? The Orcs have come and we must flee!"
-msgstr "Хорошо? Орки наступают и мы должны убегать!"
+msgstr "Неплохо? Орки наступают и мы должны убегать!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:186
 msgid ""
@@ -507,6 +537,8 @@ msgstr "Ты сражался с Орками раньше?"
 msgid ""
 "Fool Boy! Where did you grow up? Enough of this, let's go get some Orcs!"
 msgstr ""
+"Глупый мальчишка! Ты где вырос? Довольно об этом, вперёд найдём кого-нибудь "
+"из Орков!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:205
 msgid ""
@@ -519,6 +551,8 @@ msgid ""
 "SE - The River Road.\n"
 "SW - The Midlands."
 msgstr ""
+"ЮВ - Речная Дорога.\n"
+"СЗ - Средиземье."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:242
 msgid "GO HOME! AIN'T NUTTIN TO SEE HEER!"
@@ -534,11 +568,12 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:254
 msgid "I think I'll take the River Road. . ."
-msgstr ""
+msgstr "Думаю, я выберу Речную Дорогу..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:258
 msgid "Good. The Midlands are probably an Orc infested ruin by now."
 msgstr ""
+"Правильно. Средиземье, вероятнее всего, превращено теперь Орками в руины."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:263
 msgid ""
@@ -547,11 +582,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:273
 msgid "We'll go through the Midlands. . ."
-msgstr ""
+msgstr "Мы пойдем через Средиземье..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:277
 msgid "I suspect that the Midlands might be in ruins by now."
-msgstr ""
+msgstr "Я подозреваю, что Средиземье теперь превращено в руины."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:282
 msgid ""
@@ -593,7 +628,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:4
 msgid "A New Land"
-msgstr "Новая земля"
+msgstr "Новая Земля"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:53
 msgid "Glimir"
@@ -618,6 +653,8 @@ msgid ""
 "Go home you vile dwarves! By treaty you are pledged to only the hills and "
 "mountains to the North of the Great River. This is not your land."
 msgstr ""
+"Возвращщайтесь домой, гнусные гномы! По договору за вами закреплены холмы и "
+"горы к Северу от Великой реки. Это не ваши земли."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:122
 msgid ""
@@ -627,10 +664,15 @@ msgid ""
 "the Great River, and force us onto only the hills and mountains of the "
 "North? There are hills and mountains as good as any here in the South!"
 msgstr ""
+"Наши земли перенаселены, а наши шахты ведут к подземному миру. Мы победили в "
+"войне против тех, кто живёт во тьме. По какому праву вы заявляете на все "
+"леса мира и на ВСЕ Южные земли от Великой реки, а нас заставляете жить "
+"только лишь на холмах и горах Севера? Здешние горы и холмы лучше, чтем где "
+"бы то ни было на всём Юге!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:126
 msgid "By the right of treaty, ancient but still true- "
-msgstr ""
+msgstr "По праву договора, древнего но всё ещё действующего - "
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:130
 msgid ""
@@ -641,21 +683,23 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:134
 msgid "Wait, I see a ship. Many ships. We're being invaded!"
-msgstr "Подождите, я вижу корабль. Много кораблей. Они захвачены!"
+msgstr "Подождите, я вижу корабль. Много кораблей. На нас напали!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:138
 msgid ""
 "Umm, we're being invaded? Okay, we'll sort out our differences later. Let's "
 "get them first."
 msgstr ""
+"Умм, мы атакованы? Хорошо, отложим наши отношения на потом. Сначала сокрушим "
+"их."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:199
 msgid "We come in Peace. May our peoples-"
-msgstr "Мы пришли с миром. Возможно, наши народы-"
+msgstr "Мы пришли с миром. Могут ли мои люди-"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:203
 msgid "Get them!"
-msgstr "Возьми его!"
+msgstr "Взять его!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:207
 msgid ""
@@ -678,7 +722,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:233
 msgid "What? What's going on here? Dwarves? Humans? Ships? Glimir tell me."
-msgstr ""
+msgstr "Что? Что здесь происходит? Гномы? Люди? Корабли? Глимир, отвечай."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:237
 msgid ""
@@ -703,7 +747,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:250
 msgid "I am Prince Haldric. We come in Peace. May our peoples-"
-msgstr "Я Принц Халдрик. Мы пришли с миром. Возможно, наши народы-"
+msgstr "Я Принц Халдрик. Мы пришли с миром. Могут ли мои люди--"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:254
 msgid "Haldric."
@@ -714,6 +758,8 @@ msgid ""
 "As for you dwarf, return to the Brown Hills. Then tell your people to "
 "prepare to return to the North."
 msgstr ""
+"Что до тебя, гном, возвращайся назад в Коричневые Холмы. Затем скажи своим "
+"товарищам готовиться вернуться на Север."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:263
 msgid ""
@@ -726,6 +772,8 @@ msgid ""
 "Haldric is it? You are their leader? You and your advisers are to come with "
 "me. It will be safe for your passengers to disembark here."
 msgstr ""
+"Халдрик, так? Ты их лидер? Ты и твои советники - идите за мной. Ваши "
+"пассажиры останутся здесь в безопасности."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:291
 msgid ""
@@ -776,7 +824,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:4
 msgid "A Spy in the Woods"
-msgstr "Шпион в лесах"
+msgstr "Шпион в Лесах"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:37
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:58
@@ -799,12 +847,16 @@ msgid ""
 "reported that Orcs have made landfall. Orcs here, for the first time in "
 "centuries."
 msgstr ""
+"Итак, судьба пришла вслед за ним сюда из его старого дома. Мои Вестники "
+"доложили, что Орки уже высадились. Орки здесь, впервые за многие столетия."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:98
 msgid ""
 "And he bears an artifact of some power. The Orcs would not be able to sense "
 "that. There is some greater power at work here."
 msgstr ""
+"И он принёс некий могущественный артефакт. Орки не способны почувствовать "
+"его. Здесь поработала какая-то великая сила."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:103
 msgid ""
@@ -813,10 +865,15 @@ msgid ""
 "out, then we should 'deal' with the survivors, and make compromise with the "
 "Dwarves."
 msgstr ""
+"Возможно, мы поступаем неверно. Если люди выбьют Орков, мы честно выполним "
+"свои обязательства по договору. Если же последует ещё больше неприятностей с "
+"ними, мы позволим им перебить друг друга, а затем мы заключим 'сделку' с "
+"выжившими, и найдём компромисс с Гномами."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:108
 msgid "But we spoke a Pact with this Haldric and these men of the West North-"
 msgstr ""
+"Но мы говорили о Договоре с этим Халдриком и его людьми из Вест Норта -"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:113
 msgid ""
@@ -825,6 +882,11 @@ msgid ""
 "more trouble follows them here we should let them fight it out, then we "
 "should 'deal' with the survivors, and make compromise with the Dwarves.'"
 msgstr ""
+"Мы - лесные люди, и ты знаешь, что все слова, сказанные этому не-человеку, "
+"имеют второстепенную важность по сравнению с нашими интересами. Как сказал "
+"Лорд Арияд, 'Если вместе с ним сюда придут непрятности, то мы не будем "
+"вмешиваться в битву, а после заключим 'сделку' с выжившими, и пойдём на "
+"компромисс с Гномами.'"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:123
 msgid "(Sigh) Agreed."
@@ -832,11 +894,11 @@ msgstr "(Вздыхая) Согласен."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:133
 msgid "(Whispering) Some friends. I must tell Haldric."
-msgstr "(Шепчущий) Немного друзей. Я должен сказать Халдрику."
+msgstr "(Шёпотом) Немного друзей. Я должен сообщить Халдрику."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:4
 msgid "A Summer of Storms"
-msgstr "Лето штормов"
+msgstr "Лето Штормов"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:26
 msgid ""
@@ -849,12 +911,12 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте лидера Весфолк\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть Короля Элдарика IV или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:63
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:55
@@ -875,13 +937,15 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:97
 msgid "Father, I am of age, may I lead our forces in battle?"
-msgstr ""
+msgstr "Отец, я уже взрослый, могу ли я возглавить наши силы в битве?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:101
 msgid ""
 "You're showing initiative son! I'm proud of you! You may lead our forces to "
 "battle, but I'll stay near to keep an eye on you."
 msgstr ""
+"Ты проявляешь инициативу, сынок! Я горжусь тобой! Ты можешь возглавить "
+"войска, но я останусь рядом и буду следить за тобой."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:105
 msgid "Onward to victory!"
@@ -896,25 +960,28 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:117
 msgid ""
 "Don't forget about some of the more isolated villages, we'll need the gold!"
-msgstr ""
+msgstr "Не забудь о некоторых отдалённых деревнях, на нужно золото!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:125
 msgid "Make haste Son! We must win before the summer crop is in ruin."
 msgstr ""
+"Поторопись, сын! Мы должны победить до того, как летний урожай погибнет."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:136
 msgid "I evoke surrender! Don't kill me. . ."
-msgstr "Я сдаюсь! Не убивайте меня. . ."
+msgstr "Я сдаюсь! Не убивайте меня..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:140
 msgid "Why have you come to trouble our lands?"
-msgstr ""
+msgstr "Почему ты пришла с войной на наши земли?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:144
 msgid ""
 "Trouble your lands! Bah! Your fool Prince of Southbay has attacked our "
 "lands. The Lich-Lords had no choice. . . They opened a gate. . . and. . ."
 msgstr ""
+"С войной на ваши земли? Вах! Ваш глупый Принц Южного Залива напал на наши "
+"земли. Лич-Лорд не оставил выбора... он открыл врата... и..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:148
 msgid "And what?"
@@ -926,6 +993,9 @@ msgid ""
 "built a great stone gate to the heart of the homeland of the Orcs in the "
 "distant West! Now even us Wesfolk must flee or be slaves."
 msgstr ""
+"Они дали слово навестить всех на этом острове адским террором. Они воздвигли "
+"огромные каменные врата, ведущие в сердце дома Орков на дальнем Западе! "
+"Теперь каждий из нас, Весфолков, должен бежать или станет рабом."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:156
 msgid "Orcs are just creatures of tall tales!"
@@ -943,6 +1013,8 @@ msgid ""
 "We must prepare the defenses! Haldric, stay at the keep, I must go and "
 "fortify our frontier."
 msgstr ""
+"Мы должны подготовиться к обороне! Халдрик, оставайся в укрытии, я должен "
+"укрепить наши границы."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:168
 msgid "My forces are defeated, under your customs of surrender I will go now."
@@ -954,10 +1026,13 @@ msgid ""
 "that you may evoke surrender but once. If we meet again, I won't be so "
 "merciful."
 msgstr ""
+"Ты можешь идти. Видимо, ты больше не представляешь угрозы для нас, иначе ты "
+"снова попадешь к нам в руки. Если мы встеримся снова, я не буду столь "
+"милосердным."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:185
 msgid "We have run out of time. . . The crops shall spoil, we'll starve!"
-msgstr ""
+msgstr "У нас не осталось времени... Урожай испортился, мы умрём с голоду!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:196
 msgid "Die Wesfolk Scum!"
@@ -965,12 +1040,12 @@ msgstr "Умри, Весфолкский мерзавец!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:207
 msgid "Feel my wrath you fiend!"
-msgstr "Почувствуй мой гнев, друг!"
+msgstr "Почувствуй мой гнев, злодей!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:4
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:455
 msgid "Clearwater Port"
-msgstr "Порт чистой воды"
+msgstr "Порт Чистой Воды"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:31
 msgid ""
@@ -987,7 +1062,7 @@ msgid ""
 "#Miss the Last Ship"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Трусливый: Бегите на Первом Корабле или\n"
 "@Нормальный: Бегите на Втором Корабле или\n"
 "@Героический: Бегите на Третьем Корабле или\n"
@@ -1023,13 +1098,15 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:255
 msgid "Ha! Clearwater Port still stands!"
-msgstr "Ха! Порт чистой воды всё ещё сопротивляется!"
+msgstr "Ха! Порт Чистой Воды всё ещё сопротивляется!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:260
 msgid ""
 "Lieutenant, who is in command here? And where are the ships? We risk being "
 "trapped in this city for the winter if the port freezes over."
 msgstr ""
+"Лейтенант, кто здесь главный? И где корабли? Мы рискуем застрять в этом "
+"городе на зиму, если порт окончательно замёрзнет."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:266
 msgid ""
@@ -1038,6 +1115,10 @@ msgid ""
 "days. Our forces engaged the Orcs as they exited the Swamp of Esten, we even "
 "pushed them back into the swamp!"
 msgstr ""
+"Я, мой Лорд, я командую городским гарнизоном. Все наши рыболовецкие суда "
+"эвакуировали людей в Южный Залив, как было приказано. Корабли должны "
+"вернуться через несколько дней. Наши силы вступили в бой с Орками, вышедшими "
+"из Естенского Болота, мы всё время выбиваем их назад в болота!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:272
 msgid ""
@@ -1082,10 +1163,12 @@ msgid ""
 "I thank you, my lord. But we are to bring these Wesfolk too? It would be..."
 "highly irregular. Are you sure, my lord?"
 msgstr ""
+"Спасибо Вам, мой Лорд. Но почему Вы привели ещё и Весфолков? Они весьма... "
+"недисциплинированы. Вы уверены, мой Лорд?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:305
 msgid "Yes. Be sure that it is understood that these are our friends."
-msgstr ""
+msgstr "Да. Будь уверен, что они - наши друзья."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:311
 msgid "Yes Sir!"
@@ -1094,7 +1177,7 @@ msgstr "Да Сэр!"
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:316
 msgid "Yes Sir, indeed! You need us to help hold out until the ships arrive."
 msgstr ""
-"Да сэр, так точно! Вы должны нам помочь продержаться, пока не приплывут "
+"Да сэр, так точно! Вы нужны нам, чтобы продержаться, пока не приплывут "
 "корабли."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:321
@@ -1119,12 +1202,16 @@ msgid ""
 "<Muttering> 'Bring these Wesfolk too?' Bah! 'It would be...highly "
 "irregular.' I'll show you irregular..."
 msgstr ""
+"<Бормоча> 'Почему Вы привели ещё и Весфолков?' Вах! 'Они весьма... "
+"недисциплинированы' Я покажу тебе недисциплинироанных..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:358
 msgid ""
 "Push 'em into the sea! They're in our winter homes! Oh, and Tan-Vragar, I "
 "hope they like your little surprise!"
 msgstr ""
+"Выбейте их в море! Они в наших зимних жилищах! Ох, и Тан-Врагар, надеюсь им "
+"понравиться твой маленький сюрприз?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:395
 msgid "On ode to ye, on 'yer way, I hope you have a brighter day!"
@@ -1132,33 +1219,33 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:415
 msgid "Deadman's Ford"
-msgstr ""
+msgstr "Брод Мертвеца"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:435
 msgid "The River Road - To the Swamp of Esten."
-msgstr ""
+msgstr "Речная Дорога - К Болотам Естена."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:628
 msgid ""
 "My lord, the first ship has arrived! Prince Haldric, if you and your men "
 "must leave for Southbay just go to the pier to board the ship."
 msgstr ""
-"Мой лорд, первый корабль прибыл! Принц Халдрик, если Вы и Ваши люди хотите "
-"покинуть Южный залив, идите к пирсу и переходите на борт корабля."
+"Мой Лорд, первый корабль прибыл! Принц Халдрик, если Вы и Ваши люди хотите "
+"покинуть Южный Залив, идите к пирсу и переходите на борт корабля."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:647
 msgid ""
 "My lord, the first ship is departing. But the second ship should arrive "
 "shortly."
 msgstr ""
-"Мой лорд, первый корабль отплывает. Второй корабль приплывёт очень скоро."
+"Мой Лорд, первый корабль отплывает. Второй корабль приплывёт очень скоро."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:679
 msgid ""
 "My lord, the second ship has arrived! Prince Haldric, if you and your men "
 "want to leave for Southbay just go to the pier to board the ship."
 msgstr ""
-"Мой лорд, второй корабль прибыл! Принц Халдрик, если Вы и Ваши люди хотите "
+"Мой Лорд, второй корабль прибыл! Принц Халдрик, если Вы и Ваши люди хотите "
 "покинуть Южный залив, идите к пирсу и переходите на борт корабля."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:699
@@ -1166,8 +1253,8 @@ msgid ""
 "My lord, the second ship is departing. But the last ship will be here before "
 "long. With your help we can hold on just a while longer"
 msgstr ""
-"Мой лорд, второй корабль отплывает. Последний корабль приплывёт не скоро. С "
-"Вашем помощью мы можем подождать ещё немного"
+"Мой Лорд, второй корабль отплывает. Последний корабль приплывёт не скоро. С "
+"Вашей помощью мы можем подождать ещё немного"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:731
 msgid ""
@@ -1175,9 +1262,9 @@ msgid ""
 "to safety. Prince Haldric, you and your men must go now! Go to the pier to "
 "board the ship for Southbay."
 msgstr ""
-"Мой лорд, первый корабль прибыл! Это последний шанс для спасения Ваших "
-"людей. Принц Халдрик, если Вы и Ваши люди хотите покинуть Южный залив, идите "
-"к пирсу и переходите на борт корабля."
+"Мой Лорд, последний корабль прибыл! Это последний шанс для спасения Ваших "
+"людей. Принц Халдрик, Вы и Ваши люди должны идти немедленно! Идите к пирсу и "
+"переходите на борт корабля ради Южного Залива."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:751
 msgid "My lord, the last ship is departing. We're Trapped!"
@@ -1200,7 +1287,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:951
 msgid "Let me have peace in Death! My love, I'll be there soo-"
-msgstr ""
+msgstr "Дайте мне умереть с миром! Моя любовь, я был так..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:956
 msgid "We needed him to get out of here. We're Trapped!"
@@ -1235,6 +1322,8 @@ msgid ""
 "Yeah, Lich Point! Where we first used our mages in battle, and turned the "
 "tide of war against your people."
 msgstr ""
+"О да, Мыс Лича! Там мы впервые использовали наших магов в битве и переломили "
+"ход войны против ваших людей."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:999
 msgid ""
@@ -1247,12 +1336,15 @@ msgstr ""
 msgid ""
 "If we make landfall outside of Southbay, we'll be trapped. Of that I am sure!"
 msgstr ""
+"Если мы высадимся вне Южного Залива, мы попадём в ловушку. Я в этом уверен!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:1010
 msgid ""
 "My family was from Southbay, my father was a soldier there. The city's sewer "
 "entrance is near that fossil of a Lich."
 msgstr ""
+"Моя семья родом из Южного Залива, мой отец служил молдатом здесь. "
+"Канализация города выходит неподалёку от останков Лича."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:1015
 msgid ""
@@ -1272,6 +1364,8 @@ msgid ""
 "The peasant farmers seem to like you. Who knows, maybe they'll be of some "
 "help."
 msgstr ""
+"Фермеры, кажется, уважают тебя. Кто знает, может быть они как-нибудь помогут "
+"тебе."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:1032
 msgid ""
@@ -1281,7 +1375,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:4
 msgid "Cursed Isle"
-msgstr "Проклятый остров"
+msgstr "Проклятый Остров"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:27
 msgid ""
@@ -1293,6 +1387,13 @@ msgid ""
 "#Death of Lady Jessica or\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Победа:\n"
+"@Поражение Нежити\n"
+"Поражение:\n"
+"#Смерть Принца Халдрика или\n"
+"#Смерть Принцессы Джессики или\n"
+"#закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:64
 msgid "Isorfilad"
@@ -1304,11 +1405,11 @@ msgstr "Тинолдор"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:159
 msgid "She's. . . She's beautiful."
-msgstr "Она. . . Она красивая."
+msgstr "Она... Она красивая."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:165
 msgid "Midnight Queen"
-msgstr "Полуночная королева"
+msgstr "Полуночная Королева"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:198
 msgid "You will be made to serve. . . Come admire me. Feel my love."
@@ -1316,11 +1417,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:202
 msgid "She is so. . ."
-msgstr "Она такая. . ."
+msgstr "Она такая..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:206
 msgid "Haldric think with your brain!"
-msgstr "Халдрик думает твоими мозгами!"
+msgstr "Халдрик, думай своей головой!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:210
 msgid "Get her before she can cause too much trouble!"
@@ -1335,6 +1436,8 @@ msgid ""
 "After a short trip by sea Haldric arrives on the Elves' cursed isle. A fog "
 "hangs in the air."
 msgstr ""
+"После короткой морской поездки Халдрик прибыл на Эльфийский проклятый "
+"остров. В воздухе витал туман."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:335
 msgid ""
@@ -1380,11 +1483,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:418
 msgid "Without their Queen the undead are simply fading away!"
-msgstr ""
+msgstr "Без своей Королевы нежить просто исчезает!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:437
 msgid "Back, back to the grave with you!"
-msgstr ""
+msgstr "Назад, возвращайся в свою могилу!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:451
 msgid "We still have to defeat that Vampire Queen!"
@@ -1414,7 +1517,7 @@ msgstr "Умм, Вы уже убили дракона, Халдрик."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:189
 msgid "Let's get those Saurians and Nagas on that beach!"
-msgstr ""
+msgstr "Разобьём Ящеров и Наг на берегу!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:194
 msgid "Those cold blooded monsters will feel my wrath!"
@@ -1426,7 +1529,7 @@ msgstr "Умм, Вы уже очистили берег."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:220
 msgid "Let's clear out that Troll Hole!"
-msgstr "Давай очистим эту Нору Троллей"
+msgstr "Очистим эту Нору Троллей!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:225
 msgid "So what exactly is a Troll?"
@@ -1434,11 +1537,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:241
 msgid "Haldric, the Trolls, scales and fangs, you don't remember?"
-msgstr ""
+msgstr "Халдрик, Тролли, чешуя да клыки, ты не забыл?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:251
 msgid "Let's put those Souls to rest on the Cursed Isle!"
-msgstr ""
+msgstr "Заставим эти Души упокоиться на Проклятом Острове!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:256
 msgid "Undead. Bah! We're pros at fighting them."
@@ -1703,7 +1806,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:187
 msgid "I will take it with me to my Grave."
-msgstr "Я возьму его с собой в мою могилу"
+msgstr "Я возьму его с собой в мою могилу."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:192
 msgid ""
@@ -1801,10 +1904,12 @@ msgstr "Отлично."
 msgid ""
 "I suppose I am King Haldric now. Hmm. . . but what to call this new kingdom?"
 msgstr ""
+"Полагаю, что теперь я - Король Халдрик. Хмм... но как назвать новое "
+"королевство?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:289
 msgid "May I make a suggestion?"
-msgstr "Могу я внести преложение?"
+msgstr "Могу я внести предложение?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:293
 msgid "Sure."
@@ -1817,16 +1922,22 @@ msgid ""
 "would be 'Wes Noth'. So I suggest that the new kingdom be called 'Wesnoth', "
 "in honour of our old home."
 msgstr ""
+"Слово Весфолк из вашего старого наречия. Оно означает 'Человек из Запада'. "
+"Эльфы зовут нас людьми из Вест Норта. Согласно старому наречию это будет "
+"'Вес Нот'. Я предлагаю назвать новое королевство 'Веснот', в честь нашего "
+"старого дома."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:301
 msgid ""
 "Hmm- 'Wesnoth' I like it. Yes, 'Wesnoth' would be fine. So I am the first "
 "King of Wesnoth!"
 msgstr ""
+"Хмм... 'Веснот' - мне нравится. Да, 'Веснот' подойдёт. А я буду тогда первым "
+"королём Веснота!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:305
 msgid "So, what is to become of me?"
-msgstr ""
+msgstr "А что будет со мной?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:309
 msgid ""
@@ -1855,7 +1966,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:4
 msgid "Fallen Lich Point"
-msgstr "Место павшего лича"
+msgstr "Мыс Павшего Лича"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:28
 msgid ""
@@ -1870,14 +1981,14 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте Лича и возьмите его Книгу и\n"
-"@Войдите в сточную трубу Южного залива\n"
+"@Войдите в канализацию Южного залива\n"
 "@Убейте всех лидеров противника  для получения бонуса\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть Леди Джессики или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:80
 msgid "Ut'Tan-Grilg"
@@ -1906,16 +2017,20 @@ msgid ""
 "Prince Haldric has arrived at Fallen Lich Point, to retrieve the Lich's "
 "Book, and flee into the Sewers of Southbay."
 msgstr ""
+"Принц Халдрик прибыл к Мысу Павшего Лича, чтобы заполучить его книгу и "
+"скрыться в канализации Южного Залива."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:272
 msgid ""
 "Okay. Let's unstone that Lich and get his book, then get into the sewers. "
 "Umm, what language would that book be in?"
 msgstr ""
+"Хорошо. Освободим от камня этого Лича и заберём его книгу, затем уйдём в "
+"канализацию. Умм, на каком языке может быть написана эта книга?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:276
 msgid "Some pep talk. The book will probably be in the Old Wesfolk tongue."
-msgstr ""
+msgstr "Не унывай. Книга, скорее всего, написана языке Старого Весфолка."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:280
 msgid "Ohh."
@@ -1923,11 +2038,11 @@ msgstr "Оххх."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:284
 msgid "Just get the book, I think I should be able to translate it."
-msgstr ""
+msgstr "Просто достань книгу, я думаю, что смогу её перевести."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:288
 msgid "Then into Southbay's sewer."
-msgstr ""
+msgstr "А потом в канализацию Южного залива."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:292
 msgid "Right."
@@ -1943,7 +2058,7 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:328
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:266
 msgid "Hmm... after some thought. . ."
-msgstr "Гм... я должен немного подумать. . ."
+msgstr "Гм... я должен немного подумать..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:331
 msgid "I think I'll say that magic phrase."
@@ -1961,7 +2076,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:350
 msgid "Free, I'm free, and I feel the Ruby of Fire! It will be mine."
-msgstr ""
+msgstr "Свободен, я свободен и я чувствую Огненный Рубин! Он должен быть моим."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:355
 msgid "No you won't you soldier of darkness!"
@@ -1989,7 +2104,7 @@ msgstr "Лич-Лорд уже свободен."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:415
 msgid "NW - Southbay."
-msgstr ""
+msgstr "СЗ - Южный Залив."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:419
 msgid "More Like NW - Every Orc on the Isle. Hmph!"
@@ -1997,7 +2112,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:452
 msgid "We have the book, let's get out of here!"
-msgstr ""
+msgstr "Книга у нас, уходим отсюда!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:457
 msgid "Sounds good to me."
@@ -2005,15 +2120,15 @@ msgstr "Приятно слышать."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:487
 msgid "I seem to be forgetting something. Ohh, the book!"
-msgstr ""
+msgstr "Кажется, я что-то забыл. Охх, книга!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:496
 msgid "Prince Haldric must be the first into the sewers of Southbay."
-msgstr ""
+msgstr "Принц Халдрик должен первым зайти в канализацию Южного залива."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:522
 msgid "Rarlg - argh, a raul-rarlg!"
-msgstr ""
+msgstr "Рарлг - аргх, а раул-рарлг!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:526
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:530
@@ -2023,7 +2138,7 @@ msgstr "О боже!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:538
 msgid "And he brought a friend."
-msgstr "И он привёл друга."
+msgstr "И он привёл друзей."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:556
 msgid "So close. So close."
@@ -2039,11 +2154,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:632
 msgid "Sewer - Danger Keep Out!"
-msgstr ""
+msgstr "Канализация - Опасно, не входить!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:4
 msgid "Peoples in Decline"
-msgstr "Народ в упадке"
+msgstr "Люди в Унынии"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:29
 msgid ""
@@ -2056,6 +2171,14 @@ msgid ""
 "#Death of Lord Typhon or\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Победа:\n"
+"@Убейте всех противников\n"
+"Поражение:\n"
+"#Смерть Принца Халдрика или\n"
+"#Смерть Леди Джессики или\n"
+"#Смерть Лорда Тайфона или\n"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:69
 msgid "Kegrid"
@@ -2077,7 +2200,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:201
 msgid "Land! Land! Bless the Lords of Light!"
-msgstr ""
+msgstr "Земля! Земля! Слава Лордам Света!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:205
 msgid ""
@@ -2087,28 +2210,30 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:209
 msgid "We come in peace. We only seek to re-provision our ships."
-msgstr ""
+msgstr "Мы пришли с миром. Нам нужна только провизия для наших кораблей."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:213
 msgid "<Whispering> I don't think diplomacy is going to work."
-msgstr ""
+msgstr "<Шёпотом> Не думаю, что дипломатия здесь подействует."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:217
 msgid ""
 "Ssso humansss, you've come to trouble usss again. Prepare to die! For the "
 "glory of the Lords of Morogor!"
 msgstr ""
+"Ааа, людишшшки, вы ссснова принесссли проблемы для нассс. Приготовьтесссь "
+"умереть! Во ссславу Лордов Морогора!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:221
 msgid "<Whispering> Do I need to say, 'I told you so'?"
-msgstr ""
+msgstr "<Шёпотом> И что я должен сказать, 'Я с Вами согласен'?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:240
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:203
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:231
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:259
 msgid "Look out, a Serpent has emerged from the deep."
-msgstr ""
+msgstr "Берегись, Змея появилась из глубины."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:257
 msgid ""
@@ -2144,7 +2269,7 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:364
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:455
 msgid "Neep! Neep!"
-msgstr ""
+msgstr "Ниип! Ниип!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:304
 msgid ""
@@ -2153,7 +2278,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:4
 msgid "Return of the Fleet"
-msgstr "Возврат флота"
+msgstr "Возвращение Флота"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:27
 msgid ""
@@ -2167,13 +2292,13 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте всех противников\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть Леди Джессики или\n"
 "#Смерть лейтенанта Айтура или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:59
 msgid "General Heravan"
@@ -2218,11 +2343,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:232
 msgid "For the glory of the men of The Green Isle!"
-msgstr ""
+msgstr "Во славу людей Зелёного Острова!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:236
 msgid "No, for the Glory of all of the people of the West North! Charge!"
-msgstr ""
+msgstr "Нет, во славу всех людей Вест Норта! Защищайся!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:240
 msgid "Bah! Human- we will stomp you under our heels!"
@@ -2230,7 +2355,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:244
 msgid ". . .And raise your dead to serve forever!"
-msgstr ""
+msgstr "...И подниму ваши тела служить мне вечно!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:272
 msgid ""
@@ -2308,7 +2433,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:455
 msgid "I don't know what that is, but it doesn't sound friendly."
-msgstr ""
+msgstr "Я не знаю, что это значит, но это не звучит дружественно."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:481
 msgid ""
@@ -2328,7 +2453,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:549
 msgid "I- I die?"
-msgstr "Я умру?"
+msgstr "Я умираю?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:4
 msgid "Return to Oldwood"
@@ -2392,7 +2517,7 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:149
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:307
 msgid "Lady Outlaw"
-msgstr "Леди Изгой"
+msgstr "Леди Изгнанная"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:163
 msgid "You thought that I ran away, didn't you?"
@@ -2639,11 +2764,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:337
 msgid "For all of the good people of Clearwater Port!"
-msgstr ""
+msgstr "За всех добрых людей Порта Чистой Воды!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:342
 msgid "For the honour of SouthBay!"
-msgstr ""
+msgstr "За честь Южного Залива!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:347
 msgid ""
@@ -2654,7 +2779,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:351
 msgid "Charge!"
-msgstr ""
+msgstr "Защищайся!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:355
 msgid ""
@@ -2668,11 +2793,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:368
 msgid "<Whispering> Lieutenant, you remember the plan right?"
-msgstr "<Шепчущий> Лейтенант, Вы помните план, не так ли?"
+msgstr "<Шёпотом> Лейтенант, Вы помните план, не так ли?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:373
 msgid "<Whispering> Yes Sir. I am ready."
-msgstr "<Шепчущий> Да, сэр. Я готов."
+msgstr "<Шёпотом> Да, сэр. Я готов."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:384
 msgid "He's raising our dead! Be careful!"
@@ -2873,7 +2998,7 @@ msgstr "Убейте этих дураков."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1167
 msgid "We did it! We won!"
-msgstr "Мы сделали это! Мы выиграли!"
+msgstr "Мы сделали это! Мы победили!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1171
 msgid ""
@@ -2889,7 +3014,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:4
 msgid "Rough Landing"
-msgstr "Неприятная высадка"
+msgstr "Неприятная Высадка"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:27
 msgid ""
@@ -2967,7 +3092,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:5
 msgid "Sewer of Southbay"
-msgstr "Сточная труба южного залива"
+msgstr "Канализация Южного залива"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:23
 msgid ""
@@ -2981,13 +3106,13 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Найдите выход из сточной трубы\n"
 "@Убейте всех лидеров противника  для получения бонуса\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть Леди Джессики или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:54
 msgid "Daellyn the Red"
@@ -3034,7 +3159,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:172
 msgid "We must have it. Get them!"
-msgstr "Мы должны иметь его. Бери его!"
+msgstr "Он должен быть у нас. Взять его!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:180
 msgid "Nooo! The wizards are flooding the sewer we're doomed!"
@@ -3172,7 +3297,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:162
 msgid "Hmm. . . Very well. I so swear. Speak."
-msgstr "Гмм. . . Хорошо, я клянусь. Говори."
+msgstr "Гмм... Хорошо, я клянусь. Говори."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:166
 msgid ""
@@ -3369,7 +3494,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Temple_of_the_Deep.cfg:357
 msgid "He's raising our dead!"
-msgstr ""
+msgstr "Он воскрешает наших мёртвых!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:4
 msgid "The Dragon"
@@ -3387,13 +3512,13 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте Дракона или\n"
 "@Героический: Убейте Дракона и всех противников\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть Леди Джессики или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:59
 msgid "Irix"
@@ -3420,11 +3545,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:232
 msgid "Flies, fies, everywhere! Ack!"
-msgstr "Мухи, мухи, везде! Аааах!"
+msgstr "Мухи, фу, везде! Аааах!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:237
 msgid "'Prince Haldric the Dragonbane' sounds rather nice."
-msgstr ""
+msgstr "'Принц Халдрик Убийца Дракона' - звучит неплохо."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:242
 msgid "We'll see. . ."
@@ -3442,7 +3567,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:314
 msgid "Watch for the big Mudcrawlers they divide when you kill them."
-msgstr ""
+msgstr "Помни, большие грязевые чудища делятся когда ты их убиваешь."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:360
 msgid "It is unwise to trifle with dragons boy!"
@@ -3450,7 +3575,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:364
 msgid "We shall see."
-msgstr "Ды должны видеть."
+msgstr "Мы должны видеть."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:387
 msgid "Who dares disturb Shek'kahan the terrible?"
@@ -3487,7 +3612,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:518
 msgid "More Saurians are arriving. They've surrounded us! We're doomed."
-msgstr ""
+msgstr "Ящеры всё наступают. Они окружили нас! Мы пропали."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:4
 msgid "The Fall"
@@ -3505,13 +3630,13 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте Лидера Весфолк\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть Короля Элдарика IV или\n"
 "#Орки убьют Лидера Весфолк или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:75
 msgid "Tan-Rarbag"
@@ -3570,7 +3695,7 @@ msgstr "Быстрее! Только смерть ждёт нас в этой д
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:246
 msgid "Umm, I evoke surrender. . ."
-msgstr "Умм, я сдаюсь. . ."
+msgstr "Умм, я сдаюсь..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:251
 msgid "Nay! Off with your hea- - -"
@@ -3584,11 +3709,12 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:261
 msgid "Haldric, what say you on this matter?"
-msgstr ""
+msgstr "Халдрик, что ты скажешь по этому поводу?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:269
 msgid "I think that your skills may be useful. You may join us."
 msgstr ""
+"Думаю, что твои навыки могут быть полезны. Ты можешь присоединиться к нам."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:274
 msgid "Let there be peace between us, our survival depends on it."
@@ -3600,7 +3726,7 @@ msgstr "Как я должен называть тебя?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:303
 msgid "The Lady Outlaw will do."
-msgstr "Леди Изгой сделает."
+msgstr "Зовите меня леди Изгнанная."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:320
 msgid "Your word can't be trusted. Prepare to meet your Gods!"
@@ -3608,7 +3734,7 @@ msgstr "Твоим словам нельзя верить. Готовься к �
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:324
 msgid "Arrogant fools! (Reaches into pocket) POOF!"
-msgstr ""
+msgstr "Надменные глупцы! (Ищет в карманах) ПУХ!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:329
 msgid "Argh, she's gone. Next time, more sword, less chat."
@@ -3619,6 +3745,8 @@ msgid ""
 "She's clever! Maybe I made the wrong choice. Well, at least she left some of "
 "her gold behind. . ."
 msgstr ""
+"А она умна! Может быть, я сделал неправильный выбор. Что ж, по крайней мере "
+"она оставила немного золота..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:357
 msgid ""
@@ -3652,7 +3780,7 @@ msgstr "Мы не может смотреть назад! Мы должны ид
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:4
 msgid "The Midlands"
-msgstr "Центральные графства"
+msgstr "Средиземье"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:27
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:27
@@ -3665,11 +3793,11 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте всех противников\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:65
 msgid "Tan-Vrodis"
@@ -3698,7 +3826,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:180
 msgid "Alright! Charge!"
-msgstr ""
+msgstr "Хорошо! Защищайся!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:185
 msgid "Feel my wrath you Orcish scum!"
@@ -3706,7 +3834,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:190
 msgid "HUMANS. . . I see humans!"
-msgstr "ЛЮДИ. . . Я вижу людей!"
+msgstr "ЛЮДИ... Я вижу людей!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:195
 msgid ""
@@ -3715,19 +3843,19 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:200
 msgid "Shut yer mouth! Let's just get 'em."
-msgstr ""
+msgstr "Заткнись! Просто схватим его."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:218
 msgid "SE - The Oldwood. Enter at Your Own Risk!"
-msgstr ""
+msgstr "ЮВ - Старый лес. Вы входите в опасные земли!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:237
 msgid "SW - Southbay."
-msgstr ""
+msgstr "ЮЗ - Южный залив."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:260
 msgid "What? More humans here? Get them!"
-msgstr ""
+msgstr "Что? Здесь ещё люди? Взять их!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:287
 msgid "How'd they get behind us? I hate to miss such tasty meat."
@@ -3735,11 +3863,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:309
 msgid "Better him than me! Reserves!"
-msgstr ""
+msgstr "Лучше он, чем я! подкрепление!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:330
 msgid "Holgar was a fool! Reserves!"
-msgstr ""
+msgstr "Холгар был дураком! Подкрепление!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:352
 msgid ""
@@ -3762,7 +3890,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:368
 msgid "Tell me, how fares Southbay?"
-msgstr ""
+msgstr "Скажи, далеко ли до Южного залива?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:374
 msgid ""
@@ -3786,18 +3914,19 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:391
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:492
 msgid "Sir, if you don't mind, I'll go with you."
-msgstr ""
+msgstr "Сир, если Вы не против, я пойду с Вами."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:396
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:497
 msgid "On we go. . ."
-msgstr "Мы уже идём. . ."
+msgstr "Мы уже идём..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:409
 msgid ""
 "We have run out of time. . . We'll be trapped in the midlands when winter "
 "comes!"
 msgstr ""
+"Наше время истекло... Мы окажемся запертыми в средиземье, когда придёт зима!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:4
 msgid "The Oldwood"
@@ -3814,12 +3943,12 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
-"@Defeat Both Enemies\n"
+"Победа:\n"
+"@Поражение обоих противников\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть Элилмалдура-Ритрандила или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:79
 msgid "Tan-Gralg"
@@ -3859,7 +3988,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:232
 msgid "That tree, it speaks! No- No- We are tree-friends, really!"
-msgstr ""
+msgstr "Это дерево, оно разговаривает! Нет... нет... Мы друзья деревьев!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:237
 msgid ""
@@ -3876,7 +4005,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:246
 msgid "We will help. (Quietly) Be careful with the trees."
-msgstr ""
+msgstr "Мы поможем. (Тихо) Поосторожнее с этими деревьями."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:250
 msgid "What! What are you looking at me for?"
@@ -3890,11 +4019,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:274
 msgid "Stupid stinking trees, we'll show you!"
-msgstr ""
+msgstr "Глупые ничтожные деревья, я покажу вам!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:282
 msgid "Chop 'em down. It's cool in these woods, I think we need a fire!"
-msgstr ""
+msgstr "Срубите их. В этом лесу прохладно, нам нужен огонь!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:293
 msgid ""
@@ -3904,7 +4033,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:297
 msgid "Stupid tree-folk."
-msgstr ""
+msgstr "Глупые деревяшки."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:309
 msgid "We've defeated the Orcs"
@@ -3958,6 +4087,8 @@ msgid ""
 "The Lich was carrying a powerful artifact. We know, we can feel it. This "
 "artifact may aid you in your quest."
 msgstr ""
+"Лич носит с собой могущественный артефакт. Мы знаем это, мы чувствуем его. "
+"Этот артефакт поможет тебе в твоём путешествии."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:350
 msgid ""
@@ -4010,6 +4141,8 @@ msgstr ""
 msgid ""
 "We have run out of time. . . We'll be trapped in these woods until we die!"
 msgstr ""
+"У нас не осталось времени... Мы попали в ловушку в этих деревьях, и мы скоро "
+"умрём!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:4
 msgid "The Plan"
@@ -4087,7 +4220,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:182
 msgid "Haldric, this is ridiculous! I- -"
-msgstr ""
+msgstr "Халдрик, это несерьёзно! Я..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:215
 msgid ""
@@ -4205,7 +4338,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:196
 msgid "Wait, I think I hear Something. . . To Arms!"
-msgstr "Подождите, мне кажется я что-то слышу. . . К оружию!"
+msgstr "Подождите, мне кажется я что-то слышу... К оружию!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:241
 msgid "Careful, you don't know what's lurking in there!"
@@ -4231,7 +4364,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:279
 msgid "Hey, there's somebody hidden in the temple. Ack! Hold there!"
-msgstr ""
+msgstr "Эй, кто-то спрятался в храме. Эй! Ни с места!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:328
 msgid "You find treasure worth 50 pieces of gold in the temple"
@@ -4242,14 +4375,16 @@ msgid ""
 "SW - The Oldwood Forest.\n"
 "Enter at Your Own Risk!"
 msgstr ""
+"ЮЗ - Старый лес.\n"
+"Вы входите на опасные земли!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:408
 msgid "May I live forever in Un-death!"
-msgstr ""
+msgstr "Я могу жить вечно в качестве нежити!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:419
 msgid "Ohh! To be risen again!"
-msgstr ""
+msgstr "Охх! Быть поднятым снова!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:430
 msgid "A prayer for life immortal!"
@@ -4266,6 +4401,8 @@ msgid ""
 "I'm Haldric, my father was King Eldaric IV in the lands North-West of here. "
 "Soldier have you deserted your post?"
 msgstr ""
+"Я Халдрик, мой отец - Король земель на северо-западе отсюда Элдарик IV. Твои "
+"солдаты дезертировали с твоего поста?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:464
 msgid ""
@@ -4276,7 +4413,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:469
 msgid "Tell me, does Clearwater Port still stand? Is the port free?"
-msgstr ""
+msgstr "Скажи мне, Порт Чистой Воды ещё держится? Порт свободен?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:475
 msgid ""
@@ -4303,6 +4440,8 @@ msgid ""
 "We have run out of time. . . We'll be trapped in this swamp when winter "
 "arrives!"
 msgstr ""
+"У нас не осталось времени... Мы окажемся в ловушке на этих болотах, когда "
+"придёт зима!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:4
 msgid "The Vanguard"
@@ -4319,12 +4458,12 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Условие победы:\n"
+"Победа:\n"
 "@Убейте всех противников\n"
 "Поражение:\n"
 "#Смерть Принца Халдрика или\n"
 "#Смерть лейтенанта Айтура или\n"
-"#Конец количества разрешённых ходов"
+"#Закончились ходы"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:58
 msgid "Tan-Erirt"
@@ -4361,7 +4500,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:223
 msgid "Well, that sounds reasonable."
-msgstr ""
+msgstr "Что ж, это звучит резонно."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:227
 msgid ""
@@ -4382,6 +4521,8 @@ msgid ""
 "I have a plan. Jessica, remember that Troll Hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
+"У меня есть план. Джессика, помнишь Дыру Троллей? Вот, держи Огненный Рубин, "
+"спрячь его там."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:239
 msgid "Haldric! What! Why?"
@@ -4426,7 +4567,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:314
 msgid "I've found the Orcs' chest! It's filled with gold."
-msgstr ""
+msgstr "Я нашёл сундук Орков! Он набит золотом."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:346
 msgid "You will be felled by my hand you useless fleashbags!"
@@ -4493,13 +4634,15 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:281
 msgid "So, does anybody know anything about trolls?"
-msgstr ""
+msgstr "Ну, кто-нибудь знает что-нибудь о троллях?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:286
 msgid ""
 "I indeed do. They are green, and mean, and will try to crush you like a bug. "
 "They heal very quickly."
 msgstr ""
+"Я знаю. Они зелёные, плохие и попытаются раздавить Вас как жука. Их здоровье "
+"восстанавливается очень быстро."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:291
 msgid ""
@@ -4539,7 +4682,7 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/trow-deaths.cfg:50
 msgid ""
 "Bah! I'm not dying today! (POOF! The Lady Outlaw vanishes in a puff of smoke)"
-msgstr ""
+msgstr "Я не хочу умирать сейчас! (ПУХ! Изгнанная Леди исчезает в клубах дыма)"
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-deaths.cfg:65
 msgid "Fool of a boy. I never should have followed him."
@@ -4567,6 +4710,8 @@ msgid ""
 "In the days before Haldric the First saved our people, and founded the "
 "kingdom of Wesnoth, we came from an Isle far to the West. . ."
 msgstr ""
+"Во времена, когда Халдрик Первый ещё не спас наш народ и ещё не основал "
+"королевство Веснот, мы жили на Острове далеко на Западе..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:8
 msgid ""
@@ -4576,6 +4721,11 @@ msgid ""
 "into the West. The Wesfolk were not numerous, but they used dark magic, and "
 "legions of the walking dead. . ."
 msgstr ""
+"Мы процветали и нас было много. Мы жили в богатом королевстве, со своими "
+"Королями. А потом пришли ОНИ, Весфолки. Они были злыми, грубыми и грязными "
+"оборванцами. Их выгнали из своих домов во время какой-то войны ещё дальше на "
+"Запад. Весфолки были немногочисленны, но они использовали тёмную магию, и "
+"шли легионы мертвых..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:16
 msgid ""
@@ -4584,6 +4734,10 @@ msgid ""
 "confronting their vile legions, we grew strong, indeed it was from this war "
 "we gleaned our first shards of knowledge about magic."
 msgstr ""
+"После времён великих битв был достигнут мир. Мы главенствовали на большой "
+"части Острова, вытеснив Весфолков на край обитаемых земель. В борьбе с их "
+"подлыми легионами мы стали сильнее, тем более, что из этой войны мы извлекли "
+"наши первые познания о магии."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:24
 msgid ""
@@ -4609,6 +4763,11 @@ msgid ""
 "and by aggressively sailing to the East and North, to compensate for "
 "Southern pull of the ocean."
 msgstr ""
+"Некоторое время спустя наши знания в навигации увеличились. И вот однажды "
+"Наследник Престола Южного Залива вернулся домой из долгого путешествия с "
+"невероятным рассказом. Он сказал, что на Востоке есть земли, которых могут "
+"достичь лишь крепкие сердцем и упорно плывущие на Восток и Север, "
+"преодолевая Южное течение океана."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:52
 msgid ""
@@ -4639,19 +4798,19 @@ msgstr "Вы получили {AMOUNT} единиц золота."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-nlmsg.cfg:11
 msgid "I still think I should be called 'Dragonbane'."
-msgstr ""
+msgstr "Я думаю, что смогу называться 'Убийцей Дракона'."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-nlmsg.cfg:15
 msgid "Not in my lifetime."
-msgstr ""
+msgstr "Не при моей жизни."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-nlmsg.cfg:31
 msgid "It could be worse. We could be back in that Troll Hole!"
-msgstr ""
+msgstr "Это может быть хуже. Мы можем вернуться назад в Троллью Нору!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-nlmsg.cfg:36
 msgid "Hey, disparage the Trolls, NOT the Holes!"
-msgstr ""
+msgstr "Эй, ты недооцениваешь Троллей, НЕ Норы!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-nlmsg.cfg:52
 msgid ""
