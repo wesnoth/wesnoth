@@ -98,15 +98,38 @@ void update_rect(size_t x, size_t y, size_t w, size_t h)
 	update_rect(rect);
 }
 
-void update_rect(const SDL_Rect& rect)
+void update_rect(const SDL_Rect& rect_value)
 {
 	if(update_all)
 		return;
 
+	SDL_Rect rect = rect_value;
+
 	SDL_Surface* const fb = SDL_GetVideoSurface();
 	if(fb != NULL) {
-		if(rect.x + rect.w > fb->w || rect.y + rect.h > fb->h)
-			return;
+		if(rect.x < 0) {
+			if(rect.x*-1 > int(rect.w))
+				return;
+
+			rect.w += rect.x;
+			rect.x = 0;
+		}
+
+		if(rect.y < 0) {
+			if(rect.y*-1 > int(rect.h))
+				return;
+
+			rect.h += rect.y;
+			rect.y = 0;
+		}
+
+		if(rect.x + rect.w > fb->w) {
+			rect.w = fb->w - rect.x;
+		}
+
+		if(rect.y + rect.h > fb->h) {
+			rect.h = fb->h - rect.y;
+		}
 	}
 
 	for(std::vector<SDL_Rect>::iterator i = update_rects.begin();
