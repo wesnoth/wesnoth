@@ -334,6 +334,11 @@ bool show_ai_moves()
 	return prefs["show_ai_moves"] != "no";
 }
 
+void set_show_side_colours(bool value)
+{
+	prefs["show_side_colours"] = value ? "yes" : "no";
+}
+
 bool show_side_colours()
 {
 	return prefs["show_side_colours"] == "yes";
@@ -472,9 +477,16 @@ void show_preferences_dialog(display& disp)
 	turn_bell_button.set_x(slider_left+fullscreen_button.width()+100);
 	turn_bell_button.set_y(sound_pos + 80 + 50);
 
+	gui::button side_colours_button(disp,string_table["show_side_colours"],
+	                                gui::button::TYPE_CHECK);
+	side_colours_button.set_check(show_side_colours());
+	side_colours_button.set_x(slider_left + fullscreen_button.width() + 100);
+	side_colours_button.set_y(sound_pos + 80 + 100);
+
+
 	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
-	hotkeys_button.set_x (slider_left + fullscreen_button.width () + 100);
-	hotkeys_button.set_y (sound_pos + 80 + 100);
+	hotkeys_button.set_x(slider_left + fullscreen_button.width() + 100);
+	hotkeys_button.set_y(sound_pos + 80 + 150);
 
 	bool redraw_all = true;
 
@@ -527,7 +539,8 @@ void show_preferences_dialog(display& disp)
 			resolution_button.draw();
 			turn_dialog_button.draw();
 			turn_bell_button.draw();
-			hotkeys_button.draw ();
+			side_colours_button.draw();
+			hotkeys_button.draw();
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,music_label,
 	                        music_rect.x,music_rect.y);
@@ -571,6 +584,10 @@ void show_preferences_dialog(display& disp)
 
 		if(turn_dialog_button.process(mousex,mousey,left_button)) {
 			set_turn_dialog(turn_dialog_button.checked());
+		}
+
+		if(side_colours_button.process(mousex,mousey,left_button)) {
+			set_show_side_colours(side_colours_button.checked());
 		}
 
 		if (hotkeys_button.process (mousex, mousey, left_button))
