@@ -217,7 +217,7 @@ void pump()
 
 			case SDL_APPMOUSEFOCUS: {
 				SDL_ActiveEvent& ae = reinterpret_cast<SDL_ActiveEvent&>(event);
-				if(ae.state == SDL_APPMOUSEFOCUS) {
+				if(ae.state == SDL_APPMOUSEFOCUS || ae.state == SDL_APPINPUTFOCUS) {
 					cursor::set_focus(ae.gain == 1);
 				}
 				break;
@@ -244,12 +244,17 @@ void pump()
 			}
 		
 			case SDL_MOUSEMOTION: {
+				//always make sure a cursor is displayed if the
+				//mouse moves or if the user clicks
+				cursor::set_focus(true);
 				raise_help_string_event(event.motion.x,event.motion.y);
 				break;
 			}
 
 			case SDL_MOUSEBUTTONDOWN: {
-				
+				//always make sure a cursor is displayed if the
+				//mouse moves or if the user clicks
+				cursor::set_focus(true);
 				if(event.button.button == SDL_BUTTON_LEFT) {
 					static const int DoubleClickTime = 500;
 
