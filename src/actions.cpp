@@ -1007,13 +1007,16 @@ void calculate_healing(display& disp, const gamemap& map,
 
 	for(i = units.begin(); i != units.end(); ++i) {
 		if(i->second.side() == side) {
-			if(i->second.is_resting()) {
-				const std::map<gamemap::location,int>::iterator u =
-					healed_units.find(i->first);
-				if(u != healed_units.end()) {
-					healed_units[i->first] += game_config::rest_heal_amount;
-				} else {
-					healed_units.insert(std::pair<gamemap::location,int>(i->first,game_config::rest_heal_amount));
+			if(i->second.hitpoints() < i->second.max_hitpoints() || 
+					i->second.has_flag("poisoned")){
+				if(i->second.is_resting()) {
+					const std::map<gamemap::location,int>::iterator u =
+						healed_units.find(i->first);
+					if(u != healed_units.end()) {
+						healed_units[i->first] += game_config::rest_heal_amount;
+					} else {
+						healed_units.insert(std::pair<gamemap::location,int>(i->first,game_config::rest_heal_amount));
+					}
 				}
 			}
 			i->second.set_resting(true);
