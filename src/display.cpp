@@ -1255,9 +1255,9 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	blit_surface(xpos,ypos,surf,&top);
 	blit_surface(xpos,ypos+top.h,surf,&bot);
 
-	const size_t unfilled = size_t(height*(1.0 - filled));
+	const size_t unfilled = height*(1.0 - filled);
 
-	if(unfilled < height) {
+	if(unfilled < height && alpha >= 0.3) {
 		SDL_Rect filled_area = {xpos+bar_loc.x,ypos+bar_loc.y+unfilled,bar_loc.w,height-unfilled};
 		const Uint16 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		SDL_FillRect(video().getSurface(),&filled_area,colour);

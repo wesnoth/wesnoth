@@ -142,8 +142,8 @@ public:
 	bool uses_shroud() const { return shroud_.enabled(); }
 	bool uses_fog() const { return fog_.enabled(); }
 	bool fog_or_shroud() const { return uses_shroud() || uses_fog(); }
-	bool clear_shroud(size_t x, size_t y) { shroud_.clear(x,y); }
-	bool clear_fog(size_t x, size_t y)  { fog_.clear(x,y); }
+	bool clear_shroud(size_t x, size_t y) { return shroud_.clear(x,y); }
+	bool clear_fog(size_t x, size_t y)  { return fog_.clear(x,y); }
 	void refog() { fog_.reset(); }
 	
 	bool knows_about_team(size_t index) const;

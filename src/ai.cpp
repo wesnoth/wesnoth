@@ -835,7 +835,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 		}
 	}
 
-	return moves_made > 0;
+	return moves_made > 0 && village_moves.size() == max_village_moves;
 }
 
 bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
