@@ -865,15 +865,15 @@ int show_dialog(display& disp, surface image,
 			}
 		}
 
+		disp.video().flip();
+		SDL_Delay(10);
+
 		if(action != NULL) {
 			const int act = action->do_action();
 			if(act != dialog_action::CONTINUE_DIALOG) {
 				return act;
 			}
 		}
-
-		disp.video().flip();
-		SDL_Delay(10);
 	}
 
 	return -1;

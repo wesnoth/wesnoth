@@ -67,6 +67,7 @@ wesnoth_SOURCES = about.cpp \
 		  multiplayer_connect.cpp \
 		  multiplayer_lobby.cpp \
 		  network.cpp \
+		  network_worker.cpp \
 		  pathfind.cpp \
 		  pathutils.cpp \
 		  playlevel.cpp \
@@ -83,6 +84,7 @@ wesnoth_SOURCES = about.cpp \
 		  team.cpp \
 		  terrain.cpp \
 		  theme.cpp \
+		  thread.cpp \
 		  titlescreen.cpp \
 		  tooltips.cpp \
 		  unit.cpp \
@@ -139,6 +141,7 @@ wesnoth_SOURCES = about.cpp \
 		  multiplayer_connect.hpp \
 		  multiplayer_lobby.hpp \
 		  network.hpp \
+		  network_worker.hpp \
 		  pathfind.hpp \
 		  pathutils.hpp \
 		  playlevel.hpp \
@@ -156,6 +159,7 @@ wesnoth_SOURCES = about.cpp \
 		  team.hpp \
 		  terrain.hpp \
 		  theme.hpp \
+		  thread.hpp \
 		  titlescreen.hpp \
 		  tooltips.hpp \
 		  unit.hpp \

@@ -16,6 +16,8 @@ wesnothd_SOURCES = game.cpp \
 		   ../gettext.cpp \
 		   ../log.cpp \
 		   ../network.cpp \
+		   ../network_worker.cpp \
+		   ../thread.cpp \
 		   game.hpp \
 		   ../game_events.hpp \
 		   input_stream.hpp \
@@ -26,7 +28,9 @@ wesnothd_SOURCES = game.cpp \
 		   ../game_config.hpp \
 		   ../gettext.hpp \
 		   ../log.hpp \
-		   ../network.hpp
+		   ../network.hpp \
+		   ../network_worker.hpp \
+		   ../thread.hpp
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(LOCALEDIR)\"
 AM_LDFLAGS = @SDL_LIBS@ @SDL_NET_LIBS@

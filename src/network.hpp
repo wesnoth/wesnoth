@@ -14,11 +14,14 @@ namespace network {
 //a network manager must be created before networking can be used.
 //it must be destroyed only after all networking activity stops.
 struct manager {
-	manager();
+	explicit manager(size_t nthreads=1);
 	~manager();
 
 private:
 	bool free_;
+	
+	manager(const manager&);
+	void operator=(const manager&);
 };
 
 //a server manager causes listening on a given port to occur
@@ -133,8 +136,6 @@ struct error
 
 	void disconnect();
 };
-
-bool sends_queued();
 
 }
 

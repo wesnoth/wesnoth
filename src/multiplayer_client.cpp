@@ -245,7 +245,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 	if(host.empty()) {
 		host = preferences::network_host();
-		const int res = gui::show_dialog(disp,NULL,"","",
+		const int res = gui::show_dialog(disp,NULL,_("Connect to Host"),"",
 		                                 gui::OK_CANCEL,NULL,NULL,
 		                                 _("Choose host to connect to") + std::string(": "),&host);
 		if(res != 0 || host.empty()) {

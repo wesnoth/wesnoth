@@ -187,12 +187,21 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	std::cerr << "initializing teams..." << unit_cfg.size() << "\n";;
 	std::cerr << (SDL_GetTicks() - ticks) << "\n";
 
+	std::set<std::string> seen_save_ids;
+
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
 		std::string save_id = (**ui)["save_id"];
 
 		if(save_id.empty()) {
 			save_id=(**ui)["description"];
 		}
+
+		//make sure the 'save_id' is unique
+		while(seen_save_ids.count(save_id)) {
+			save_id += "_";
+		}
+
+		seen_save_ids.insert(save_id);
 
 		player_info *player = NULL;
 
@@ -201,8 +210,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		   (**ui)["persistent"] == "1") {
 			player = state_of_game.get_player(save_id);
 
-			if(!player && !save_id.empty()) {
-				player=&state_of_game.players[save_id];
+			if(player == NULL && !save_id.empty()) {
+				player = &state_of_game.players[save_id];
 			}
 		}
 
@@ -219,7 +228,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		std::cerr << "found gold: '" << gold << "'\n";
 
 		int ngold = lexical_cast_default<int>(gold);
-		if(player && player->gold >= ngold) {
+		if(player != NULL && player->gold >= ngold) {
 			ngold = player->gold;
 		}
 
@@ -227,13 +236,21 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 		teams.push_back(team(**ui,ngold));
 
+		std::cerr << "team " << teams.size() << " can recruit: ";
+		const std::set<std::string>& recruits = teams.back().recruits();
+		for(std::set<std::string>::const_iterator r = recruits.begin(); r != recruits.end(); ++r) {
+			std::cerr << "'" << *r << "', ";
+		}
+
+		std::cerr << "\n";
+
 		//if this side tag describes the leader of the side
 		if((**ui)["no_leader"] != "yes" && (**ui)["controller"] != "null") {
 			unit new_unit(gameinfo, **ui);
 
 			//search the recall list for leader units, and if there is
 			//one, use it in place of the config-described unit
-			if(player) {
+			if(player != NULL) {
 				for(std::vector<unit>::iterator it = player->available_units.begin(); it != player->available_units.end(); ++it) {
 					if(it->can_recruit()) {
 						new_unit = *it;
@@ -269,12 +286,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 		//if the game state specifies units that can be recruited for the player
 		//then add them
-		if(player && player->can_recruit.empty() == false) {
+		if(player != NULL && player->can_recruit.empty() == false) {
 			std::copy(player->can_recruit.begin(),player->can_recruit.end(),
 					std::inserter(teams.back().recruits(),teams.back().recruits().end()));
 		}
 		
-		if(player) {
+		if(player != NULL) {
 			player->can_recruit = teams.back().recruits();
 		}
 		

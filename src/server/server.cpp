@@ -95,7 +95,7 @@ private:
 	std::vector<std::string> bans_;
 };
 
-server::server(int port, input_stream& input) : net_manager_(), server_(port), not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input)
+server::server(int port, input_stream& input) : net_manager_(5), server_(port), not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input)
 {
 	login_response_.add_child("mustlogin");
 	login_response_["version"] = game_config::version;
