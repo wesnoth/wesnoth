@@ -45,6 +45,7 @@ CVS HEAD:
   * rewrite of mp lobby code
   * changed Broken_Bridge to use new ruined castles
   * changed King_of_the_Hill to use a Dwarvish Castle
+  * messages are now displayed in the user's colour when prefixed with /me
  * fixed bug that made the ai recruit badly
  * added debug command to give gold to current side
  * when using zipios, ignore {~...} clauses, and handle {@...} as if there
@@ -56,6 +57,10 @@ CVS HEAD:
  * added a --disable-game configure option to avoid compiling and installing the game
  * share the object files between all the programs to halve the time of a full compilation
  * the "End turn" button is now disabled when it is irrelevant.
+ * Added the ability for sides to have different objectives.
+ * Added support for [objectives] event actions, to set objectives. This,
+ along with prestart events, is now the preferred way of setting objectives,
+ although the old way is still supported.
 
 Version 0.8.11:
  * new translation:
