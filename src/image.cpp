@@ -2,6 +2,7 @@
 #include "image.hpp"
 #include "display.hpp"
 #include "sdl_utils.hpp"
+#include "team.hpp"
 #include "util.hpp"
 
 #include "SDL_image.h"
@@ -21,15 +22,22 @@ SDL_PixelFormat* pixel_format = NULL;
 
 double zoom = 70.0;
 
-void clear_surfaces(image_map& surfaces)
+//we have to go through all this trickery on clear_surfaces because
+//some compilers don't support 'typename type::iterator'
+template<typename Map,typename FwIt>
+void clear_surfaces_internal(Map& surfaces, FwIt beg, FwIt end)
 {
-	image_map::iterator beg = surfaces.begin();
-	const image_map::iterator end = surfaces.end();
 	for(; beg != end; ++beg) {
 		SDL_FreeSurface(beg->second);
 	}
 
 	surfaces.clear();
+}
+
+template<typename Map>
+void clear_surfaces(Map& surfaces)
+{
+	clear_surfaces_internal(surfaces,surfaces.begin(),surfaces.end());
 }
 
 enum TINT { GREY_IMAGE, BRIGHTEN_IMAGE };
@@ -252,17 +260,77 @@ SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 	return surf;
 }
 
-SDL_Surface* getMinimap(CVideo& video, int w, int h, gamemap& map_)
+SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm)
 {
-	SDL_Surface* const surface = video.getSurface();
+	SDL_Surface* minimap = NULL;
+	if(minimap == NULL) {
+		const int scale = 4;
+
+		minimap = SDL_CreateRGBSurface(SDL_SWSURFACE,
+		                               map.x()*scale,map.y()*scale,
+		                               pixel_format->BitsPerPixel,
+		                               pixel_format->Rmask,
+		                               pixel_format->Gmask,
+		                               pixel_format->Bmask,
+		                               pixel_format->Amask);
+		if(minimap == NULL)
+			return NULL;
+
+		typedef std::map<gamemap::TERRAIN,SDL_Surface*> cache_map;
+		cache_map cache;
+
+		SDL_Rect minirect = {0,0,scale,scale};
+		for(int y = 0; y != map.y(); ++y) {
+			for(int x = 0; x != map.x(); ++x) {
+				const bool shrouded = tm != NULL && tm->shrouded(x,y);
+				if(map.on_board(gamemap::location(x,y)) && !shrouded) {
+					const gamemap::TERRAIN terrain = map[x][y];
+					cache_map::iterator i = cache.find(terrain);
+
+					if(i == cache.end()) {
+						SDL_Surface* const tile =
+						   get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png");
+
+						if(tile == NULL) {
+							std::cerr << "Could not get image for terrrain '"
+							          << terrain << "'\n";
+							continue;
+						}
+
+						SDL_Surface* const minitile = scale_surface(tile,scale,scale);
+						i = cache.insert(cache_map::value_type(terrain,minitile)).first;
+					}
+
+					assert(i != cache.end());
+					
+					SDL_Rect maprect = {x*scale,y*scale,0,0};
+					SDL_BlitSurface(i->second, &minirect, minimap, &maprect);
+				}
+			}
+		}
+
+		clear_surfaces(cache);
+	}
+
+	if(minimap->w != w || minimap->h != h) {
+		SDL_Surface* const surf = minimap;
+		minimap = scale_surface(surf,w,h);
+		SDL_FreeSurface(surf);
+	}
+
+	return minimap;
+
+/*
+	if(pixel_format == NULL)
+		return NULL;
 
 	SDL_Surface *minimap_ = SDL_CreateRGBSurface(SDL_SWSURFACE,
 	                                map_.x(),map_.y(),
-	                                surface->format->BitsPerPixel,
-	                                surface->format->Rmask,
-	                                surface->format->Gmask,
-	                                surface->format->Bmask,
-	                                surface->format->Amask);
+	                                pixel_format->BitsPerPixel,
+	                                pixel_format->Rmask,
+	                                pixel_format->Gmask,
+	                                pixel_format->Bmask,
+	                                pixel_format->Amask);
 	if(minimap_ == NULL)
 		return NULL;
 
@@ -274,7 +342,7 @@ SDL_Surface* getMinimap(CVideo& video, int w, int h, gamemap& map_)
 		for(int x = 0; x != map_.x(); ++x) {
 
 			*data = map_.get_terrain_info(map_[x][y]).get_rgb().
-			                                 format(surface->format);
+			                                 format(pixel_format);
 			++data;
 		}
 		data += xpad;
@@ -287,7 +355,7 @@ SDL_Surface* getMinimap(CVideo& video, int w, int h, gamemap& map_)
 	}
 
 	return minimap_;
-}
+*/}
 
 
 }

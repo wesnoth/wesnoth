@@ -1505,63 +1505,8 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 
 SDL_Surface* display::getMinimap(int w, int h)
 {
-	if(minimap_ == NULL) {
-		const int scale = 4;
-		SDL_Surface* const surface = screen_.getSurface();
-
-		minimap_ = SDL_CreateRGBSurface(SDL_SWSURFACE,
-		                                map_.x()*scale,map_.y()*scale,
-		                                surface->format->BitsPerPixel,
-		                                surface->format->Rmask,
-		                                surface->format->Gmask,
-		                                surface->format->Bmask,
-		                                surface->format->Amask);
-		if(minimap_ == NULL)
-			return NULL;
-
-		typedef std::map<gamemap::TERRAIN,SDL_Surface*> cache_map;
-		cache_map cache;
-
-		SDL_Rect minirect = {0,0,scale,scale};
-		for(int y = 0; y != map_.y(); ++y) {
-			for(int x = 0; x != map_.x(); ++x) {
-				const bool shrouded = team_valid() &&
-				                      teams_[currentTeam_].shrouded(x,y);
-				if(map_.on_board(gamemap::location(x,y)) && !shrouded) {
-					const gamemap::TERRAIN terrain = map_[x][y];
-					cache_map::iterator i = cache.find(terrain);
-
-					if(i == cache.end()) {
-						SDL_Surface* const tile = getTerrain(terrain,
-						                                image::UNSCALED,x,y);
-						if(tile == NULL) {
-							std::cerr << "Could not get image for terrrain '"
-							          << terrain << "'\n";
-							continue;
-						}
-
-						SDL_Surface* const minitile = scale_surface(tile,scale,
-						                                                 scale);
-						i = cache.insert(
-						      cache_map::value_type(terrain,minitile)).first;
-					}
-
-					assert(i != cache.end());
-					
-					SDL_Rect maprect = {x*scale,y*scale,0,0};
-					SDL_BlitSurface(i->second, &minirect, minimap_, &maprect);
-				}
-			}
-		}
-
-		clear_surfaces(cache);
-	}
-
-	if(minimap_->w != w || minimap_->h != h) {
-		SDL_Surface* const surf = minimap_;
-		minimap_ = scale_surface(surf,w,h);
-		SDL_FreeSurface(surf);
-	}
+	if(minimap_ == NULL)
+		minimap_ = image::getMinimap(w,h,map_,team_valid() ? &teams_[currentTeam_] : NULL);
 
 	return minimap_;
 }

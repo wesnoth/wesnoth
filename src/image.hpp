@@ -1,11 +1,12 @@
 #ifndef IMAGE_HPP_INCLUDED
 #define IMAGE_HPP_INCLUDED
 
-#include "video.hpp"
 #include "map.hpp"
 
 #include "SDL.h"
 #include <string>
+
+class team;
 
 //this module manages the cache of images. With an image name, you can get
 //the surface corresponding to that image, and don't need to free the image.
@@ -52,7 +53,7 @@ namespace image {
 	//have the dimensions specified here.
 	SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y);
 
-	SDL_Surface* getMinimap(CVideo& video, int w, int h, gamemap& map_);
+	SDL_Surface* getMinimap(int w, int h, const gamemap& map_, const team* tm=NULL);
 }
 
 #endif

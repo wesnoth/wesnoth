@@ -316,6 +316,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	                "Turns: 50",rect.x,rect.y);
 	rect.y = (disp.y()-height)/2+100;
 	rect.h = name_entry.width();
+
 	gui::slider turns_slider(disp,rect,0.38);
 
 	//Village Gold
@@ -330,9 +331,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	rect.h = name_entry.width();
 	gui::slider villagegold_slider(disp,rect,0.1);
 
-	//FOG fo war
+	//FOG of war
 	gui::button fog_game(disp,"Fog Of War",gui::button::TYPE_CHECK);
-	fog_game.set_check(true);
+	fog_game.set_check(false);
 	fog_game.set_xy(rect.x+6,rect.y+30);
 	fog_game.draw();
 
@@ -347,7 +348,6 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	gui::button launch_game(disp,string_table["ok_button"]);
 	launch_game.set_xy((disp.x()/2)-launch_game.width()*2-19,(disp.y()-height)/2+height-29);
 	cancel_game.set_xy((disp.x()/2)+cancel_game.width()+19,(disp.y()-height)/2+height-29);
-
 
 	update_whole_screen();
 
@@ -367,6 +367,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 		if(launch_game.process(mousex,mousey,left_button)) {
 			if(name_entry.text().empty() == false) {
+
 				// Send Initial information
 				config response;
 				config create_game;
@@ -382,6 +383,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				if(res == -1)
 					break;
 
+				//if we're loading a saved game
 				config loaded_level;
 				if(size_t(res) == options.size()-1) {
 					const std::vector<std::string>& games = get_saves_list();
@@ -432,8 +434,13 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					level_ptr->children["replay"].clear();
 					level_ptr->add_child("replay") = state.replay_data;
 
-				} else {
+				} else { //creating a new game
 					level_ptr = levels[res];
+
+					//set the number of turns here
+					std::stringstream turns;
+					turns << new_turns;
+					(*level_ptr)["turns"] = turns.str();
 				}
 
 				assert(level_ptr != NULL);
@@ -449,23 +456,34 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					std::cerr << "no multiplayer sides found\n";
 					return -1;
 				}
-	
+
 				for(std::vector<config*>::iterator sd = sides.begin();
 				    sd != sides.end(); ++sd) {
-					if((*sd)->values["name"].empty())
-						(*sd)->values["name"] = possible_sides.front()->values["name"];
-					if((*sd)->values["type"].empty())
-						(*sd)->values["type"] = possible_sides.front()->values["type"];
-					if((*sd)->values["recruit"].empty())
-						(*sd)->values["recruit"]=possible_sides.front()->values["recruit"];
-					if((*sd)->values["music"].empty())
-						(*sd)->values["music"]=possible_sides.front()->values["music"];
-					if((*sd)->values["recruitment_pattern"].empty())
-						(*sd)->values["recruitment_pattern"] =
+
+					if((**sd)["fog"].empty())
+						(**sd)["fog"] = fog_game.checked() ? "yes" : "no";
+
+					if((**sd)["shroud"].empty())
+						(**sd)["shroud"] = shroud_game.checked() ? "yes" : "no";
+
+					if((**sd)["name"].empty())
+						(**sd)["name"] = possible_sides.front()->values["name"];
+
+					if((**sd)["type"].empty())
+						(**sd)["type"] = possible_sides.front()->values["type"];
+
+					if((**sd)["recruit"].empty())
+						(**sd)["recruit"]=possible_sides.front()->values["recruit"];
+
+					if((**sd)["music"].empty())
+						(**sd)["music"] = possible_sides.front()->values["music"];
+
+					if((**sd)["recruitment_pattern"].empty())
+						(**sd)["recruitment_pattern"] =
 					        possible_sides.front()->values["recruitment_pattern"];
 
-					if((*sd)->values["description"].empty())
-						(*sd)->values["description"] = preferences::login();
+					if((**sd)["description"].empty())
+						(**sd)["description"] = preferences::login();
 				}
 	
 				res = 0;
@@ -596,26 +614,20 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 			}
 		}
 
-		if(fog_game.process(mousex,mousey,left_button)) 
-		{
-		}
-
-		if(shroud_game.process(mousex,mousey,left_button)) 
-		{
-		}
-
+		fog_game.process(mousex,mousey,left_button);
+		shroud_game.process(mousex,mousey,left_button);
 		name_entry.process();
 
 		//Game turns are 20 to 99
 		//FIXME: Should never be a - number, but it is sometimes
-		int check_turns=20+(int)(79*turns_slider.process(mousex,mousey,left_button));		
+		int check_turns=20+int(79*turns_slider.process(mousex,mousey,left_button));		
 		if(abs(check_turns) == check_turns)
 			new_turns=check_turns;
 		if(new_turns != cur_turns) {
 			cur_turns = new_turns;
-			rect.x = (disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19;
+			rect.x = (disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19;
 			rect.y = (disp.y()-height)/2+83;
-			rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
+			rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19)-10;
 			rect.h = 12;
 			SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
 			sprintf(buf,"Turns: %d", cur_turns);
@@ -626,14 +638,14 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 		//Villages can produce between 1 and 10 gold a turn
 		//FIXME: Should never be a - number, but it is sometimes
-		int check_villagegold=1+(int)(9*villagegold_slider.process(mousex,mousey,left_button));		
+		int check_villagegold=1+int(9*villagegold_slider.process(mousex,mousey,left_button));
 		if(abs(check_villagegold) == check_villagegold)
 			new_villagegold=check_villagegold;
 		if(new_villagegold != cur_villagegold) {
 			cur_villagegold = new_villagegold;
-			rect.x = (disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19;
+			rect.x = (disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19;
 			rect.y = (disp.y()-height)/2+130;
-			rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
+			rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19)-10;
 			rect.h = 12;
 			SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
 			sprintf(buf,"Village Gold: %d", cur_villagegold);
@@ -649,15 +661,17 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				gamemap map(cfg,read_file("data/maps/" + level_ptr->values["map"]));
 
-				SDL_Surface *mini = image::getMinimap(disp.video(),
-							175,175, map);
-				rect.x = ((disp.x()-width)/2+10)+20;
-				rect.y = (disp.y()-height)/2+80;
-				rect.w = 175;
-				rect.h = 175;
-				SDL_BlitSurface(mini, NULL, disp.video().getSurface(), &rect);
-				SDL_FreeSurface(mini);
-				update_rect(rect);
+				SDL_Surface* const mini = image::getMinimap(175,175,map);
+
+				if(mini != NULL) {
+					rect.x = ((disp.x()-width)/2+10)+20;
+					rect.y = (disp.y()-height)/2+80;
+					rect.w = 175;
+					rect.h = 175;
+					SDL_BlitSurface(mini, NULL, disp.video().getSurface(), &rect);
+					SDL_FreeSurface(mini);
+					update_rect(rect);
+				}
 			}else{
 				//TODO: Load some other non-minimap
 				//      image, ie a floppy disk
