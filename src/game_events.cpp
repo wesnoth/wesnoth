@@ -1407,7 +1407,8 @@ void get_variable_internal(const std::string& key, config& cfg,
 			const std::string index_str(index_start+1,index_end);
 			index = size_t(atoi(index_str.c_str()));
 			if(index > MaxLoop) {
-				LOG_NG << "get_variable_internal: index greater than 1024, truncated\n";
+				LOG_NG << "get_variable_internal: index greater than " << MaxLoop
+				       << ", truncated\n";
 				index = MaxLoop;
 			}
 
