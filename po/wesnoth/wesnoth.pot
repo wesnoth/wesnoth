@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 16:38+0100\n"
+"POT-Creation-Date: 2005-02-27 20:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6435,7 +6435,7 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:840 src/multiplayer_connect.cpp:875
+#: src/game.cpp:840 src/multiplayer_connect.cpp:877
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6632,7 +6632,7 @@ msgid "Play a game against AI opponents"
 msgstr ""
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-msgid "Login"
+msgid "Login: "
 msgstr ""
 
 #: src/game.cpp:1362
@@ -6640,7 +6640,7 @@ msgid "Language"
 msgstr ""
 
 #: src/game.cpp:1363
-msgid "Choose your preferred language"
+msgid "Choose your preferred language:"
 msgstr ""
 
 #: src/game.cpp:1402
@@ -6784,31 +6784,31 @@ msgid "Map Generator"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:82
-msgid "Players"
+msgid "Players:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:83
-msgid "Width"
+msgid "Width:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:84
-msgid "Height"
+msgid "Height:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:85
-msgid "Iterations"
+msgid "Iterations:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:86
-msgid "Bump Size"
+msgid "Bump Size:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1668
-msgid "Villages"
+#: src/mapgen_dialog.cpp:87
+msgid "Villages:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:88
-msgid "Landform"
+msgid "Landform:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:194
@@ -6836,7 +6836,7 @@ msgid "Connect to Host"
 msgstr ""
 
 #: src/multiplayer.cpp:87
-msgid "Choose host to connect to"
+msgid "Choose host to connect to: "
 msgstr ""
 
 #: src/multiplayer.cpp:112
@@ -6867,142 +6867,142 @@ msgstr ""
 msgid "No non-random sides in the current era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:426
-msgid "Unable to find a leader type for faction "
+#: src/multiplayer_connect.cpp:428
+msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:440 src/multiplayer_connect.cpp:449
+#: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:451
 msgid "Team"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:447
+#: src/multiplayer_connect.cpp:449
 msgid "Player/Type"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:448
+#: src/multiplayer_connect.cpp:450
 msgid "Faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:450
+#: src/multiplayer_connect.cpp:452
 msgid "Colour"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:451 src/playturn.cpp:1667 src/playturn.cpp:1674
+#: src/multiplayer_connect.cpp:453 src/playturn.cpp:1667 src/playturn.cpp:1674
 msgid "Gold"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:453
+#: src/multiplayer_connect.cpp:455
 msgid "Computer vs Computer"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:454
+#: src/multiplayer_connect.cpp:456
 msgid "I'm Ready"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:455 src/multiplayer_create.cpp:46
+#: src/multiplayer_connect.cpp:457 src/multiplayer_create.cpp:46
 #: src/multiplayer_wait.cpp:144
 msgid "Cancel"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:470
+#: src/multiplayer_connect.cpp:472
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:757
+#: src/multiplayer_connect.cpp:759
 msgid "Game Lobby"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:777
+#: src/multiplayer_connect.cpp:779
 msgid "Network Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:778
+#: src/multiplayer_connect.cpp:780
 msgid "Local Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:779
+#: src/multiplayer_connect.cpp:781
 msgid "Computer Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:780
+#: src/multiplayer_connect.cpp:782
 msgid "Empty"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:784 src/multiplayer_wait.cpp:199
-msgid "Era not available"
-msgstr ""
-
-#: src/multiplayer_connect.cpp:819
-msgid "Red"
+#: src/multiplayer_connect.cpp:786
+msgid "Era not available: "
 msgstr ""
 
 #: src/multiplayer_connect.cpp:821
-msgid "Blue"
+msgid "Red"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:823
-msgid "Green"
+msgid "Blue"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:825
-msgid "Yellow"
+msgid "Green"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:827
-msgid "Purple"
+msgid "Yellow"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:829
-msgid "Orange"
+msgid "Purple"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:831
-msgid "Grey"
+msgid "Orange"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:833
-msgid "White"
+msgid "Grey"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:835
+msgid "White"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:837
 msgid "Brown"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:867
+#: src/multiplayer_connect.cpp:869
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:917
-msgid "Cannot find era "
+#: src/multiplayer_connect.cpp:921
+msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:939
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:975
 msgid "Waiting for players to join..."
 msgstr ""
 
 #: src/multiplayer_create.cpp:39
-msgid "Name of game"
+msgid "Name of game:"
 msgstr ""
 
 #: src/multiplayer_create.cpp:41
-msgid "Era"
+msgid "Era:"
 msgstr ""
 
 #: src/multiplayer_create.cpp:42
-msgid "Map to play"
+msgid "Map to play:"
 msgstr ""
 
 #: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
 msgstr ""
 
-#: src/multiplayer_create.cpp:45 src/reports.cpp:372
+#: src/multiplayer_create.cpp:45
 msgid "Observers"
 msgstr ""
 
@@ -7134,6 +7134,10 @@ msgstr ""
 msgid "No multiplayer sides available in this game"
 msgstr ""
 
+#: src/multiplayer_wait.cpp:199
+msgid "Era not available"
+msgstr ""
+
 #: src/multiplayer_wait.cpp:207
 msgid "No multiplayer sides found"
 msgstr ""
@@ -7242,7 +7246,7 @@ msgid "Attack Enemy"
 msgstr ""
 
 #: src/playturn.cpp:651
-msgid "Choose weapon"
+msgid "Choose weapon:"
 msgstr ""
 
 #: src/playturn.cpp:1250
@@ -7288,6 +7292,10 @@ msgstr ""
 msgid "Leader"
 msgstr ""
 
+#: src/playturn.cpp:1668
+msgid "Villages"
+msgstr ""
+
 #: src/playturn.cpp:1670
 msgid "Upkeep"
 msgstr ""
@@ -7305,7 +7313,7 @@ msgid "Recruit"
 msgstr ""
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-msgid "Select unit"
+msgid "Select unit:"
 msgstr ""
 
 #: src/playturn.cpp:1817
@@ -7359,7 +7367,7 @@ msgid "Recall"
 msgstr ""
 
 #: src/playturn.cpp:2011
-msgid "Message"
+msgid "Message:"
 msgstr ""
 
 #: src/playturn.cpp:2011
@@ -7439,7 +7447,7 @@ msgid "Place Label"
 msgstr ""
 
 #: src/playturn.cpp:2461
-msgid "Label"
+msgid "Label:"
 msgstr ""
 
 #: src/playturn.cpp:2593
@@ -7534,6 +7542,10 @@ msgstr ""
 
 #: src/reports.cpp:312
 msgid "Allied village"
+msgstr ""
+
+#: src/reports.cpp:372
+msgid "Observers:"
 msgstr ""
 
 #: src/titlescreen.cpp:182

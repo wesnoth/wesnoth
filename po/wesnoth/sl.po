@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 16:38+0100\n"
+"POT-Creation-Date: 2005-02-27 20:52+0100\n"
 "PO-Revision-Date: 2004-10-17 20:24+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <en@li.org>\n"
@@ -6461,7 +6461,7 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:840 src/multiplayer_connect.cpp:875
+#: src/game.cpp:840 src/multiplayer_connect.cpp:877
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6660,7 +6660,8 @@ msgid "Play a game against AI opponents"
 msgstr "Igra proti UI"
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-msgid "Login"
+#, fuzzy
+msgid "Login: "
 msgstr "Prijava"
 
 #: src/game.cpp:1362
@@ -6668,7 +6669,8 @@ msgid "Language"
 msgstr "Jezik"
 
 #: src/game.cpp:1363
-msgid "Choose your preferred language"
+#, fuzzy
+msgid "Choose your preferred language:"
 msgstr "Izberite vam priljubljen jezik"
 
 #: src/game.cpp:1402
@@ -6817,31 +6819,36 @@ msgid "Map Generator"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:82
-msgid "Players"
+#, fuzzy
+msgid "Players:"
 msgstr "Igralci"
 
 #: src/mapgen_dialog.cpp:83
-msgid "Width"
+#, fuzzy
+msgid "Width:"
 msgstr "Širina"
 
 #: src/mapgen_dialog.cpp:84
-msgid "Height"
+#, fuzzy
+msgid "Height:"
 msgstr "Višina"
 
 #: src/mapgen_dialog.cpp:85
-msgid "Iterations"
+#, fuzzy
+msgid "Iterations:"
 msgstr "Ponovitve"
 
 #: src/mapgen_dialog.cpp:86
-msgid "Bump Size"
+msgid "Bump Size:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1668
-msgid "Villages"
-msgstr ""
+#: src/mapgen_dialog.cpp:87
+#, fuzzy
+msgid "Villages:"
+msgstr "Vas"
 
 #: src/mapgen_dialog.cpp:88
-msgid "Landform"
+msgid "Landform:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:194
@@ -6869,8 +6876,9 @@ msgid "Connect to Host"
 msgstr ""
 
 #: src/multiplayer.cpp:87
-msgid "Choose host to connect to"
-msgstr ""
+#, fuzzy
+msgid "Choose host to connect to: "
+msgstr "Ni se možno povezati z gostiteljem."
 
 #: src/multiplayer.cpp:112
 msgid "Connecting to remote host..."
@@ -6901,145 +6909,145 @@ msgstr ""
 msgid "No non-random sides in the current era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:426
-msgid "Unable to find a leader type for faction "
+#: src/multiplayer_connect.cpp:428
+msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:440 src/multiplayer_connect.cpp:449
+#: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:451
 msgid "Team"
 msgstr "Skupina"
 
-#: src/multiplayer_connect.cpp:447
+#: src/multiplayer_connect.cpp:449
 msgid "Player/Type"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:448
+#: src/multiplayer_connect.cpp:450
 msgid "Faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:450
+#: src/multiplayer_connect.cpp:452
 #, fuzzy
 msgid "Colour"
 msgstr "Barva"
 
-#: src/multiplayer_connect.cpp:451 src/playturn.cpp:1667 src/playturn.cpp:1674
+#: src/multiplayer_connect.cpp:453 src/playturn.cpp:1667 src/playturn.cpp:1674
 msgid "Gold"
 msgstr "Zlato"
 
-#: src/multiplayer_connect.cpp:453
+#: src/multiplayer_connect.cpp:455
 #, fuzzy
 msgid "Computer vs Computer"
 msgstr "Računalniški igralec"
 
-#: src/multiplayer_connect.cpp:454
+#: src/multiplayer_connect.cpp:456
 msgid "I'm Ready"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:455 src/multiplayer_create.cpp:46
+#: src/multiplayer_connect.cpp:457 src/multiplayer_create.cpp:46
 #: src/multiplayer_wait.cpp:144
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/multiplayer_connect.cpp:470
+#: src/multiplayer_connect.cpp:472
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:757
+#: src/multiplayer_connect.cpp:759
 msgid "Game Lobby"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:777
+#: src/multiplayer_connect.cpp:779
 msgid "Network Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:778
+#: src/multiplayer_connect.cpp:780
 msgid "Local Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:779
+#: src/multiplayer_connect.cpp:781
 msgid "Computer Player"
 msgstr "Računalniški igralec"
 
-#: src/multiplayer_connect.cpp:780
+#: src/multiplayer_connect.cpp:782
 msgid "Empty"
 msgstr "Prazno"
 
-#: src/multiplayer_connect.cpp:784 src/multiplayer_wait.cpp:199
-msgid "Era not available"
+#: src/multiplayer_connect.cpp:786
+msgid "Era not available: "
 msgstr ""
 
-#: src/multiplayer_connect.cpp:819
+#: src/multiplayer_connect.cpp:821
 msgid "Red"
 msgstr "Rdeča"
 
-#: src/multiplayer_connect.cpp:821
+#: src/multiplayer_connect.cpp:823
 msgid "Blue"
 msgstr "Modra"
 
-#: src/multiplayer_connect.cpp:823
+#: src/multiplayer_connect.cpp:825
 msgid "Green"
 msgstr "Zelena"
 
-#: src/multiplayer_connect.cpp:825
+#: src/multiplayer_connect.cpp:827
 msgid "Yellow"
 msgstr "Rumena"
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:829
 msgid "Purple"
 msgstr "Vijolična"
 
-#: src/multiplayer_connect.cpp:829
+#: src/multiplayer_connect.cpp:831
 msgid "Orange"
 msgstr "Oranžna"
 
-#: src/multiplayer_connect.cpp:831
+#: src/multiplayer_connect.cpp:833
 msgid "Grey"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:833
+#: src/multiplayer_connect.cpp:835
 msgid "White"
 msgstr "Bela"
 
-#: src/multiplayer_connect.cpp:835
+#: src/multiplayer_connect.cpp:837
 msgid "Brown"
 msgstr "Rjava"
 
-#: src/multiplayer_connect.cpp:867
+#: src/multiplayer_connect.cpp:869
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:917
-msgid "Cannot find era "
+#: src/multiplayer_connect.cpp:921
+msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:939
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:975
 msgid "Waiting for players to join..."
 msgstr ""
 
 #: src/multiplayer_create.cpp:39
 #, fuzzy
-msgid "Name of game"
+msgid "Name of game:"
 msgstr "Ime igre"
 
 #: src/multiplayer_create.cpp:41
-msgid "Era"
+msgid "Era:"
 msgstr ""
 
 #: src/multiplayer_create.cpp:42
-msgid "Map to play"
+msgid "Map to play:"
 msgstr ""
 
 #: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
 msgstr ""
 
-#: src/multiplayer_create.cpp:45 src/reports.cpp:372
+#: src/multiplayer_create.cpp:45
 msgid "Observers"
 msgstr ""
 
@@ -7176,6 +7184,10 @@ msgstr ""
 msgid "No multiplayer sides available in this game"
 msgstr ""
 
+#: src/multiplayer_wait.cpp:199
+msgid "Era not available"
+msgstr ""
+
 #: src/multiplayer_wait.cpp:207
 msgid "No multiplayer sides found"
 msgstr ""
@@ -7291,7 +7303,8 @@ msgid "Attack Enemy"
 msgstr "Napadi"
 
 #: src/playturn.cpp:651
-msgid "Choose weapon"
+#, fuzzy
+msgid "Choose weapon:"
 msgstr "Izberite orožje"
 
 #: src/playturn.cpp:1250
@@ -7337,6 +7350,10 @@ msgstr "Igra je bila shranjena"
 msgid "Leader"
 msgstr "Vodja"
 
+#: src/playturn.cpp:1668
+msgid "Villages"
+msgstr ""
+
 #: src/playturn.cpp:1670
 msgid "Upkeep"
 msgstr "Plače"
@@ -7354,7 +7371,8 @@ msgid "Recruit"
 msgstr "Novači"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-msgid "Select unit"
+#, fuzzy
+msgid "Select unit:"
 msgstr "Izberite enoto"
 
 #: src/playturn.cpp:1817
@@ -7415,7 +7433,8 @@ msgid "Recall"
 msgstr "Prikliči"
 
 #: src/playturn.cpp:2011
-msgid "Message"
+#, fuzzy
+msgid "Message:"
 msgstr "Sporočilo"
 
 #: src/playturn.cpp:2011
@@ -7495,7 +7514,8 @@ msgid "Place Label"
 msgstr "Postavi oznako"
 
 #: src/playturn.cpp:2461
-msgid "Label"
+#, fuzzy
+msgid "Label:"
 msgstr "Oznaka"
 
 #: src/playturn.cpp:2593
@@ -7607,6 +7627,11 @@ msgstr "Sovražna vas"
 msgid "Allied village"
 msgstr "Zavezniška vas"
 
+#: src/reports.cpp:372
+#, fuzzy
+msgid "Observers:"
+msgstr "Strežnik: "
+
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Vodič"
@@ -7694,6 +7719,9 @@ msgstr "zakonit"
 #: src/unit_types.cpp:902
 msgid "neutral"
 msgstr "nevtralen"
+
+#~ msgid "Players"
+#~ msgstr "Igralci"
 
 #, fuzzy
 #~ msgid "Team "

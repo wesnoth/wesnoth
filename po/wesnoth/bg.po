@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 16:38+0100\n"
+"POT-Creation-Date: 2005-02-27 20:52+0100\n"
 "PO-Revision-Date: 2004-12-20 19:16+0200\n"
 "Last-Translator: Anton (Atilla) Tsigularov <theatilla@gmail.com>\n"
 "Language-Team: none\n"
@@ -6759,7 +6759,7 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:840 src/multiplayer_connect.cpp:875
+#: src/game.cpp:840 src/multiplayer_connect.cpp:877
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6956,7 +6956,7 @@ msgid "Play a game against AI opponents"
 msgstr ""
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-msgid "Login"
+msgid "Login: "
 msgstr ""
 
 #: src/game.cpp:1362
@@ -6964,8 +6964,9 @@ msgid "Language"
 msgstr ""
 
 #: src/game.cpp:1363
-msgid "Choose your preferred language"
-msgstr ""
+#, fuzzy
+msgid "Choose your preferred language:"
+msgstr "Изберете странта си:"
 
 #: src/game.cpp:1402
 msgid "Error loading game configuration files: '"
@@ -7111,31 +7112,35 @@ msgid "Map Generator"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:82
-msgid "Players"
-msgstr ""
+#, fuzzy
+msgid "Players:"
+msgstr "Играч/Тип"
 
 #: src/mapgen_dialog.cpp:83
-msgid "Width"
+msgid "Width:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:84
-msgid "Height"
+msgid "Height:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:85
-msgid "Iterations"
-msgstr ""
+#, fuzzy
+msgid "Iterations:"
+msgstr "Терени"
 
 #: src/mapgen_dialog.cpp:86
-msgid "Bump Size"
+msgid "Bump Size:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1668
-msgid "Villages"
+#: src/mapgen_dialog.cpp:87
+#, fuzzy
+msgid "Villages:"
 msgstr "Села"
 
 #: src/mapgen_dialog.cpp:88
-msgid "Landform"
+#, fuzzy
+msgid "Landform:"
 msgstr "Формация на земната маса"
 
 #: src/mapgen_dialog.cpp:194
@@ -7163,7 +7168,8 @@ msgid "Connect to Host"
 msgstr "Свързване към сървър"
 
 #: src/multiplayer.cpp:87
-msgid "Choose host to connect to"
+#, fuzzy
+msgid "Choose host to connect to: "
 msgstr "Изберете сървър към които да се вържете"
 
 #: src/multiplayer.cpp:112
@@ -7196,118 +7202,118 @@ msgstr ""
 msgid "No non-random sides in the current era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:426
-msgid "Unable to find a leader type for faction "
+#: src/multiplayer_connect.cpp:428
+msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:440 src/multiplayer_connect.cpp:449
+#: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:451
 msgid "Team"
 msgstr "Отбор"
 
-#: src/multiplayer_connect.cpp:447
+#: src/multiplayer_connect.cpp:449
 msgid "Player/Type"
 msgstr "Играч/Тип"
 
-#: src/multiplayer_connect.cpp:448
+#: src/multiplayer_connect.cpp:450
 msgid "Faction"
 msgstr "Фракция"
 
-#: src/multiplayer_connect.cpp:450
+#: src/multiplayer_connect.cpp:452
 #, fuzzy
 msgid "Colour"
 msgstr "Цвят"
 
-#: src/multiplayer_connect.cpp:451 src/playturn.cpp:1667 src/playturn.cpp:1674
+#: src/multiplayer_connect.cpp:453 src/playturn.cpp:1667 src/playturn.cpp:1674
 msgid "Gold"
 msgstr "Злато"
 
-#: src/multiplayer_connect.cpp:453
+#: src/multiplayer_connect.cpp:455
 #, fuzzy
 msgid "Computer vs Computer"
 msgstr "Компютър срещу компютър"
 
-#: src/multiplayer_connect.cpp:454
+#: src/multiplayer_connect.cpp:456
 msgid "I'm Ready"
 msgstr "Аз съм готов"
 
-#: src/multiplayer_connect.cpp:455 src/multiplayer_create.cpp:46
+#: src/multiplayer_connect.cpp:457 src/multiplayer_create.cpp:46
 #: src/multiplayer_wait.cpp:144
 msgid "Cancel"
 msgstr "Отказ"
 
-#: src/multiplayer_connect.cpp:470
+#: src/multiplayer_connect.cpp:472
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:757
+#: src/multiplayer_connect.cpp:759
 msgid "Game Lobby"
 msgstr "Лоби на играта"
 
-#: src/multiplayer_connect.cpp:777
+#: src/multiplayer_connect.cpp:779
 msgid "Network Player"
 msgstr "Играч в мрежата"
 
-#: src/multiplayer_connect.cpp:778
+#: src/multiplayer_connect.cpp:780
 msgid "Local Player"
 msgstr "Локален Играч"
 
-#: src/multiplayer_connect.cpp:779
+#: src/multiplayer_connect.cpp:781
 msgid "Computer Player"
 msgstr "Компютър"
 
-#: src/multiplayer_connect.cpp:780
+#: src/multiplayer_connect.cpp:782
 msgid "Empty"
 msgstr "Празно"
 
-#: src/multiplayer_connect.cpp:784 src/multiplayer_wait.cpp:199
-msgid "Era not available"
+#: src/multiplayer_connect.cpp:786
+msgid "Era not available: "
 msgstr ""
 
-#: src/multiplayer_connect.cpp:819
+#: src/multiplayer_connect.cpp:821
 msgid "Red"
 msgstr "Червен"
 
-#: src/multiplayer_connect.cpp:821
+#: src/multiplayer_connect.cpp:823
 msgid "Blue"
 msgstr "Син"
 
-#: src/multiplayer_connect.cpp:823
+#: src/multiplayer_connect.cpp:825
 msgid "Green"
 msgstr "Зелен"
 
-#: src/multiplayer_connect.cpp:825
+#: src/multiplayer_connect.cpp:827
 msgid "Yellow"
 msgstr "Жълт"
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:829
 msgid "Purple"
 msgstr "Лилав"
 
-#: src/multiplayer_connect.cpp:829
+#: src/multiplayer_connect.cpp:831
 msgid "Orange"
 msgstr "Оранжев"
 
-#: src/multiplayer_connect.cpp:831
+#: src/multiplayer_connect.cpp:833
 msgid "Grey"
 msgstr "Сив"
 
-#: src/multiplayer_connect.cpp:833
+#: src/multiplayer_connect.cpp:835
 msgid "White"
 msgstr "Бял"
 
-#: src/multiplayer_connect.cpp:835
+#: src/multiplayer_connect.cpp:837
 msgid "Brown"
 msgstr "Кафяв"
 
-#: src/multiplayer_connect.cpp:867
+#: src/multiplayer_connect.cpp:869
 msgid "This is not a multiplayer save"
 msgstr "Това не е игра за мултиплейър"
 
-#: src/multiplayer_connect.cpp:917
-msgid "Cannot find era "
+#: src/multiplayer_connect.cpp:921
+msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:939
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -7315,31 +7321,31 @@ msgstr ""
 "Условия за победа\n"
 "@Убиийте лидерите на врага/враговете"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:975
 #, fuzzy
 msgid "Waiting for players to join..."
 msgstr "Изчакване за играчи да се присъеденят. "
 
 #: src/multiplayer_create.cpp:39
 #, fuzzy
-msgid "Name of game"
+msgid "Name of game:"
 msgstr "Име на играта"
 
 #: src/multiplayer_create.cpp:41
 #, fuzzy
-msgid "Era"
+msgid "Era:"
 msgstr "Ера"
 
 #: src/multiplayer_create.cpp:42
 #, fuzzy
-msgid "Map to play"
+msgid "Map to play:"
 msgstr "Карта за игра"
 
 #: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
 msgstr ""
 
-#: src/multiplayer_create.cpp:45 src/reports.cpp:372
+#: src/multiplayer_create.cpp:45
 msgid "Observers"
 msgstr "Наблюдаващи"
 
@@ -7481,6 +7487,10 @@ msgstr "Приемам данните за играта..."
 msgid "No multiplayer sides available in this game"
 msgstr "Няма свободни страни в играта"
 
+#: src/multiplayer_wait.cpp:199
+msgid "Era not available"
+msgstr ""
+
 #: src/multiplayer_wait.cpp:207
 msgid "No multiplayer sides found"
 msgstr ""
@@ -7596,7 +7606,8 @@ msgid "Attack Enemy"
 msgstr "Атакувай противника"
 
 #: src/playturn.cpp:651
-msgid "Choose weapon"
+#, fuzzy
+msgid "Choose weapon:"
 msgstr "Избор на оръжие"
 
 #: src/playturn.cpp:1250
@@ -7649,6 +7660,10 @@ msgstr "Играта бе запазена"
 msgid "Leader"
 msgstr "Лидер"
 
+#: src/playturn.cpp:1668
+msgid "Villages"
+msgstr "Села"
+
 #: src/playturn.cpp:1670
 msgid "Upkeep"
 msgstr "Надници"
@@ -7666,7 +7681,8 @@ msgid "Recruit"
 msgstr "Набор"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-msgid "Select unit"
+#, fuzzy
+msgid "Select unit:"
 msgstr "Избор на еденица"
 
 #: src/playturn.cpp:1817
@@ -7726,7 +7742,8 @@ msgid "Recall"
 msgstr "Привикване"
 
 #: src/playturn.cpp:2011
-msgid "Message"
+#, fuzzy
+msgid "Message:"
 msgstr "Съобщение"
 
 #: src/playturn.cpp:2011
@@ -7808,7 +7825,7 @@ msgstr "Знак"
 
 #: src/playturn.cpp:2461
 #, fuzzy
-msgid "Label"
+msgid "Label:"
 msgstr "Знак"
 
 #: src/playturn.cpp:2593
@@ -7921,6 +7938,11 @@ msgstr "Противниково селище"
 #: src/reports.cpp:312
 msgid "Allied village"
 msgstr "Селище на съюзник"
+
+#: src/reports.cpp:372
+#, fuzzy
+msgid "Observers:"
+msgstr "Наблюдаващи"
 
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"

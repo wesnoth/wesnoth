@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 16:38+0100\n"
+"POT-Creation-Date: 2005-02-27 20:52+0100\n"
 "PO-Revision-Date: 2005-02-27 15:46+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: none\n"
@@ -6596,7 +6596,7 @@ msgstr "Tundmatu stsenaarium : '"
 msgid "The Battle for Wesnoth"
 msgstr "Wesnothi Lahing"
 
-#: src/game.cpp:840 src/multiplayer_connect.cpp:875
+#: src/game.cpp:840 src/multiplayer_connect.cpp:877
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6796,7 +6796,8 @@ msgid "Play a game against AI opponents"
 msgstr "Mängi AI vastastega"
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-msgid "Login"
+#, fuzzy
+msgid "Login: "
 msgstr "Login"
 
 #: src/game.cpp:1362
@@ -6804,7 +6805,8 @@ msgid "Language"
 msgstr "Keel"
 
 #: src/game.cpp:1363
-msgid "Choose your preferred language"
+#, fuzzy
+msgid "Choose your preferred language:"
 msgstr "Vali oma eelistatud keel"
 
 #: src/game.cpp:1402
@@ -6956,31 +6958,38 @@ msgid "Map Generator"
 msgstr "Kaardigeneraator"
 
 #: src/mapgen_dialog.cpp:82
-msgid "Players"
+#, fuzzy
+msgid "Players:"
 msgstr "Mängijad"
 
 #: src/mapgen_dialog.cpp:83
-msgid "Width"
+#, fuzzy
+msgid "Width:"
 msgstr "Laius"
 
 #: src/mapgen_dialog.cpp:84
-msgid "Height"
+#, fuzzy
+msgid "Height:"
 msgstr "Kõrgus"
 
 #: src/mapgen_dialog.cpp:85
-msgid "Iterations"
+#, fuzzy
+msgid "Iterations:"
 msgstr "Kordusi"
 
 #: src/mapgen_dialog.cpp:86
-msgid "Bump Size"
+#, fuzzy
+msgid "Bump Size:"
 msgstr "Muhu suurus"
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1668
-msgid "Villages"
+#: src/mapgen_dialog.cpp:87
+#, fuzzy
+msgid "Villages:"
 msgstr "Külad"
 
 #: src/mapgen_dialog.cpp:88
-msgid "Landform"
+#, fuzzy
+msgid "Landform:"
 msgstr "Maastiku kuju"
 
 #: src/mapgen_dialog.cpp:194
@@ -7008,7 +7017,8 @@ msgid "Connect to Host"
 msgstr "Ühenda serveriga"
 
 #: src/multiplayer.cpp:87
-msgid "Choose host to connect to"
+#, fuzzy
+msgid "Choose host to connect to: "
 msgstr "Vali millise serveriga ühendus luua"
 
 #: src/multiplayer.cpp:112
@@ -7039,116 +7049,118 @@ msgstr "(Tühi koht)"
 msgid "No non-random sides in the current era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:426
-msgid "Unable to find a leader type for faction "
+#: src/multiplayer_connect.cpp:428
+msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:440 src/multiplayer_connect.cpp:449
+#: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:451
 msgid "Team"
 msgstr "Meeskond"
 
-#: src/multiplayer_connect.cpp:447
+#: src/multiplayer_connect.cpp:449
 msgid "Player/Type"
 msgstr "Mängija/Tüüp"
 
-#: src/multiplayer_connect.cpp:448
+#: src/multiplayer_connect.cpp:450
 msgid "Faction"
 msgstr "Fraktsioon"
 
-#: src/multiplayer_connect.cpp:450
+#: src/multiplayer_connect.cpp:452
 msgid "Colour"
 msgstr "Värv"
 
-#: src/multiplayer_connect.cpp:451 src/playturn.cpp:1667 src/playturn.cpp:1674
+#: src/multiplayer_connect.cpp:453 src/playturn.cpp:1667 src/playturn.cpp:1674
 msgid "Gold"
 msgstr "Kuld"
 
-#: src/multiplayer_connect.cpp:453
+#: src/multiplayer_connect.cpp:455
 msgid "Computer vs Computer"
 msgstr "Arvuti vs Arvuti"
 
-#: src/multiplayer_connect.cpp:454
+#: src/multiplayer_connect.cpp:456
 msgid "I'm Ready"
 msgstr "Olen valmis"
 
-#: src/multiplayer_connect.cpp:455 src/multiplayer_create.cpp:46
+#: src/multiplayer_connect.cpp:457 src/multiplayer_create.cpp:46
 #: src/multiplayer_wait.cpp:144
 msgid "Cancel"
 msgstr "Tühista"
 
-#: src/multiplayer_connect.cpp:470
+#: src/multiplayer_connect.cpp:472
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:757
+#: src/multiplayer_connect.cpp:759
 msgid "Game Lobby"
 msgstr "Mängu ooteruum"
 
-#: src/multiplayer_connect.cpp:777
+#: src/multiplayer_connect.cpp:779
 msgid "Network Player"
 msgstr "Võrgumängija"
 
-#: src/multiplayer_connect.cpp:778
+#: src/multiplayer_connect.cpp:780
 msgid "Local Player"
 msgstr "Kohalik mängija"
 
-#: src/multiplayer_connect.cpp:779
+#: src/multiplayer_connect.cpp:781
 msgid "Computer Player"
 msgstr "Arvuti mängija"
 
-#: src/multiplayer_connect.cpp:780
+#: src/multiplayer_connect.cpp:782
 msgid "Empty"
 msgstr "Tühi"
 
-#: src/multiplayer_connect.cpp:784 src/multiplayer_wait.cpp:199
-msgid "Era not available"
+#: src/multiplayer_connect.cpp:786
+#, fuzzy
+msgid "Era not available: "
 msgstr "Ajastu pole saadaval."
 
-#: src/multiplayer_connect.cpp:819
+#: src/multiplayer_connect.cpp:821
 msgid "Red"
 msgstr "Punane"
 
-#: src/multiplayer_connect.cpp:821
+#: src/multiplayer_connect.cpp:823
 msgid "Blue"
 msgstr "Sinine"
 
-#: src/multiplayer_connect.cpp:823
+#: src/multiplayer_connect.cpp:825
 msgid "Green"
 msgstr "Roheline"
 
-#: src/multiplayer_connect.cpp:825
+#: src/multiplayer_connect.cpp:827
 msgid "Yellow"
 msgstr "Kollane"
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:829
 msgid "Purple"
 msgstr "Purpur"
 
-#: src/multiplayer_connect.cpp:829
+#: src/multiplayer_connect.cpp:831
 msgid "Orange"
 msgstr "Oranž"
 
-#: src/multiplayer_connect.cpp:831
+#: src/multiplayer_connect.cpp:833
 msgid "Grey"
 msgstr "Hall"
 
-#: src/multiplayer_connect.cpp:833
+#: src/multiplayer_connect.cpp:835
 msgid "White"
 msgstr "Valge"
 
-#: src/multiplayer_connect.cpp:835
+#: src/multiplayer_connect.cpp:837
 msgid "Brown"
 msgstr "Pruun"
 
-#: src/multiplayer_connect.cpp:867
+#: src/multiplayer_connect.cpp:869
 msgid "This is not a multiplayer save"
 msgstr "See ei ole mitmemängija mängu salvestus"
 
-#: src/multiplayer_connect.cpp:917
-msgid "Cannot find era "
+#: src/multiplayer_connect.cpp:921
+#, fuzzy
+msgid "Cannot find era $era"
 msgstr "Ei leia ajastut"
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:939
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -7156,27 +7168,30 @@ msgstr ""
 "Võit\n"
 "@Alista vaenlaste juhid"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:975
 msgid "Waiting for players to join..."
 msgstr "Ootan mängijate liitumist..."
 
 #: src/multiplayer_create.cpp:39
-msgid "Name of game"
+#, fuzzy
+msgid "Name of game:"
 msgstr "Mängu nimi"
 
 #: src/multiplayer_create.cpp:41
-msgid "Era"
+#, fuzzy
+msgid "Era:"
 msgstr "Ajastu"
 
 #: src/multiplayer_create.cpp:42
-msgid "Map to play"
+#, fuzzy
+msgid "Map to play:"
 msgstr "Mängu kaart:"
 
 #: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
 msgstr "Sõjaudu"
 
-#: src/multiplayer_create.cpp:45 src/reports.cpp:372
+#: src/multiplayer_create.cpp:45
 msgid "Observers"
 msgstr "Jälgijad"
 
@@ -7314,6 +7329,10 @@ msgstr "Hangin mängu andmeid..."
 msgid "No multiplayer sides available in this game"
 msgstr "Selles mängus ei ole mitme mängija pooli."
 
+#: src/multiplayer_wait.cpp:199
+msgid "Era not available"
+msgstr "Ajastu pole saadaval."
+
 #: src/multiplayer_wait.cpp:207
 msgid "No multiplayer sides found"
 msgstr "Mitme mängija pooli ei leitud"
@@ -7430,7 +7449,8 @@ msgid "Attack Enemy"
 msgstr "Ründa vaenlast"
 
 #: src/playturn.cpp:651
-msgid "Choose weapon"
+#, fuzzy
+msgid "Choose weapon:"
 msgstr "Vali relv"
 
 #: src/playturn.cpp:1250
@@ -7482,6 +7502,10 @@ msgstr "Mäng on salvestatud"
 msgid "Leader"
 msgstr "Juht"
 
+#: src/playturn.cpp:1668
+msgid "Villages"
+msgstr "Külad"
+
 #: src/playturn.cpp:1670
 msgid "Upkeep"
 msgstr "Elatis"
@@ -7499,7 +7523,8 @@ msgid "Recruit"
 msgstr "Värba"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-msgid "Select unit"
+#, fuzzy
+msgid "Select unit:"
 msgstr "Vali üksus"
 
 #: src/playturn.cpp:1817
@@ -7560,7 +7585,8 @@ msgid "Recall"
 msgstr "Kutsu tagasi"
 
 #: src/playturn.cpp:2011
-msgid "Message"
+#, fuzzy
+msgid "Message:"
 msgstr "Teated"
 
 #: src/playturn.cpp:2011
@@ -7640,7 +7666,8 @@ msgid "Place Label"
 msgstr "Paiguta silt"
 
 #: src/playturn.cpp:2461
-msgid "Label"
+#, fuzzy
+msgid "Label:"
 msgstr "Silt"
 
 #: src/playturn.cpp:2593
@@ -7751,6 +7778,11 @@ msgstr "Vaenlase külad"
 msgid "Allied village"
 msgstr "Liitlaste külad"
 
+#: src/reports.cpp:372
+#, fuzzy
+msgid "Observers:"
+msgstr "Jälgijad"
+
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Õpetus"
@@ -7836,6 +7868,9 @@ msgstr "kuulekas"
 #: src/unit_types.cpp:902
 msgid "neutral"
 msgstr "neutraalne"
+
+#~ msgid "Players"
+#~ msgstr "Mängijad"
 
 #~ msgid "Team "
 #~ msgstr "Meeskond"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 16:38+0100\n"
+"POT-Creation-Date: 2005-02-27 20:52+0100\n"
 "PO-Revision-Date: 2005-02-26 17:05+0100\n"
 "Last-Translator: Konstantinos Karasavvas <ceekk@macs.hw.ac.uk>\n"
 "Language-Team: Greek <ceekk@macs.hw.ac.uk>\n"
@@ -6481,7 +6481,7 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr "Η Μάχη για το Wesnoth"
 
-#: src/game.cpp:840 src/multiplayer_connect.cpp:875
+#: src/game.cpp:840 src/multiplayer_connect.cpp:877
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6684,7 +6684,7 @@ msgid "Play a game against AI opponents"
 msgstr ""
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-msgid "Login"
+msgid "Login: "
 msgstr ""
 
 #: src/game.cpp:1362
@@ -6692,7 +6692,8 @@ msgid "Language"
 msgstr "Γλώσσα"
 
 #: src/game.cpp:1363
-msgid "Choose your preferred language"
+#, fuzzy
+msgid "Choose your preferred language:"
 msgstr "Επιλέξτε τη γλώσσα που προτιμάτε"
 
 #: src/game.cpp:1402
@@ -6841,32 +6842,38 @@ msgid "Map Generator"
 msgstr "Δημιουργία Χάρτη"
 
 #: src/mapgen_dialog.cpp:82
-msgid "Players"
+#, fuzzy
+msgid "Players:"
 msgstr "Παίκτες"
 
 #: src/mapgen_dialog.cpp:83
-msgid "Width"
+#, fuzzy
+msgid "Width:"
 msgstr "Πλάτος"
 
 #: src/mapgen_dialog.cpp:84
-msgid "Height"
+#, fuzzy
+msgid "Height:"
 msgstr "Ύψος"
 
 #: src/mapgen_dialog.cpp:85
-msgid "Iterations"
-msgstr ""
+#, fuzzy
+msgid "Iterations:"
+msgstr "Εισαγωγή"
 
 #: src/mapgen_dialog.cpp:86
-msgid "Bump Size"
+msgid "Bump Size:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1668
-msgid "Villages"
+#: src/mapgen_dialog.cpp:87
+#, fuzzy
+msgid "Villages:"
 msgstr "Χωριά"
 
 #: src/mapgen_dialog.cpp:88
-msgid "Landform"
-msgstr ""
+#, fuzzy
+msgid "Landform:"
+msgstr "Ακύρωση Αναίρεσης"
 
 #: src/mapgen_dialog.cpp:194
 msgid "Roads Between Castles"
@@ -6894,8 +6901,9 @@ msgid "Connect to Host"
 msgstr "Συνδεθείτε με έναν Εξυπηρέτη"
 
 #: src/multiplayer.cpp:87
-msgid "Choose host to connect to"
-msgstr ""
+#, fuzzy
+msgid "Choose host to connect to: "
+msgstr "Η σύνδεση με τον απομακρυσμένο Η/Υ απέτυχε"
 
 #: src/multiplayer.cpp:112
 msgid "Connecting to remote host..."
@@ -6926,145 +6934,145 @@ msgstr ""
 msgid "No non-random sides in the current era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:426
-msgid "Unable to find a leader type for faction "
+#: src/multiplayer_connect.cpp:428
+msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:440 src/multiplayer_connect.cpp:449
+#: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:451
 msgid "Team"
 msgstr "Ομάδα"
 
-#: src/multiplayer_connect.cpp:447
+#: src/multiplayer_connect.cpp:449
 msgid "Player/Type"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:448
+#: src/multiplayer_connect.cpp:450
 msgid "Faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:450
+#: src/multiplayer_connect.cpp:452
 #, fuzzy
 msgid "Colour"
 msgstr "Χρώμα"
 
-#: src/multiplayer_connect.cpp:451 src/playturn.cpp:1667 src/playturn.cpp:1674
+#: src/multiplayer_connect.cpp:453 src/playturn.cpp:1667 src/playturn.cpp:1674
 msgid "Gold"
 msgstr "Χρυσά"
 
-#: src/multiplayer_connect.cpp:453
+#: src/multiplayer_connect.cpp:455
 msgid "Computer vs Computer"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:454
+#: src/multiplayer_connect.cpp:456
 msgid "I'm Ready"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:455 src/multiplayer_create.cpp:46
+#: src/multiplayer_connect.cpp:457 src/multiplayer_create.cpp:46
 #: src/multiplayer_wait.cpp:144
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: src/multiplayer_connect.cpp:470
+#: src/multiplayer_connect.cpp:472
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:757
+#: src/multiplayer_connect.cpp:759
 msgid "Game Lobby"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:777
+#: src/multiplayer_connect.cpp:779
 msgid "Network Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:778
+#: src/multiplayer_connect.cpp:780
 msgid "Local Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:779
+#: src/multiplayer_connect.cpp:781
 msgid "Computer Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:780
+#: src/multiplayer_connect.cpp:782
 msgid "Empty"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:784 src/multiplayer_wait.cpp:199
-msgid "Era not available"
-msgstr ""
-
-#: src/multiplayer_connect.cpp:819
-msgid "Red"
+#: src/multiplayer_connect.cpp:786
+msgid "Era not available: "
 msgstr ""
 
 #: src/multiplayer_connect.cpp:821
-msgid "Blue"
+msgid "Red"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:823
-msgid "Green"
+msgid "Blue"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:825
-msgid "Yellow"
+msgid "Green"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:827
-msgid "Purple"
+msgid "Yellow"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:829
-msgid "Orange"
+msgid "Purple"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:831
-msgid "Grey"
+msgid "Orange"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:833
-msgid "White"
+msgid "Grey"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:835
+msgid "White"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:837
 msgid "Brown"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:867
+#: src/multiplayer_connect.cpp:869
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:917
-msgid "Cannot find era "
+#: src/multiplayer_connect.cpp:921
+msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:939
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:975
 #, fuzzy
 msgid "Waiting for players to join..."
 msgstr "Περιμένοντας να ξεκινήσει το παχνίδι..."
 
 #: src/multiplayer_create.cpp:39
 #, fuzzy
-msgid "Name of game"
+msgid "Name of game:"
 msgstr "Όνομα παιχνιδιού"
 
 #: src/multiplayer_create.cpp:41
-msgid "Era"
+msgid "Era:"
 msgstr ""
 
 #: src/multiplayer_create.cpp:42
-msgid "Map to play"
+msgid "Map to play:"
 msgstr ""
 
 #: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
 msgstr "Ομίχλη του Πολέμου"
 
-#: src/multiplayer_create.cpp:45 src/reports.cpp:372
+#: src/multiplayer_create.cpp:45
 msgid "Observers"
 msgstr "Παρατηρητές"
 
@@ -7201,6 +7209,10 @@ msgstr ""
 msgid "No multiplayer sides available in this game"
 msgstr ""
 
+#: src/multiplayer_wait.cpp:199
+msgid "Era not available"
+msgstr ""
+
 #: src/multiplayer_wait.cpp:207
 msgid "No multiplayer sides found"
 msgstr ""
@@ -7315,7 +7327,8 @@ msgid "Attack Enemy"
 msgstr ""
 
 #: src/playturn.cpp:651
-msgid "Choose weapon"
+#, fuzzy
+msgid "Choose weapon:"
 msgstr "Επιλέξτε όπλο"
 
 #: src/playturn.cpp:1250
@@ -7361,6 +7374,10 @@ msgstr "Το παιχνίδι αποθηκεύτηκε"
 msgid "Leader"
 msgstr "Ηγέτης"
 
+#: src/playturn.cpp:1668
+msgid "Villages"
+msgstr "Χωριά"
+
 #: src/playturn.cpp:1670
 msgid "Upkeep"
 msgstr "Συντήρηση"
@@ -7378,7 +7395,8 @@ msgid "Recruit"
 msgstr "Στρατολόγηση"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-msgid "Select unit"
+#, fuzzy
+msgid "Select unit:"
 msgstr "Επιλέξτε"
 
 #: src/playturn.cpp:1817
@@ -7433,7 +7451,8 @@ msgid "Recall"
 msgstr "Ανάκληση"
 
 #: src/playturn.cpp:2011
-msgid "Message"
+#, fuzzy
+msgid "Message:"
 msgstr "Μήνυμα"
 
 #: src/playturn.cpp:2011
@@ -7513,7 +7532,7 @@ msgid "Place Label"
 msgstr ""
 
 #: src/playturn.cpp:2461
-msgid "Label"
+msgid "Label:"
 msgstr ""
 
 #: src/playturn.cpp:2593
@@ -7613,6 +7632,11 @@ msgstr ""
 msgid "Allied village"
 msgstr ""
 
+#: src/reports.cpp:372
+#, fuzzy
+msgid "Observers:"
+msgstr "Παρατηρητές"
+
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Εκμάθηση"
@@ -7698,6 +7722,9 @@ msgstr ""
 #: src/unit_types.cpp:902
 msgid "neutral"
 msgstr ""
+
+#~ msgid "Players"
+#~ msgstr "Παίκτες"
 
 #, fuzzy
 #~ msgid "Team "
