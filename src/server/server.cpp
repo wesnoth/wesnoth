@@ -5,6 +5,7 @@
 #include "SDL.h"
 
 #include "game.hpp"
+#include "player.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -13,20 +14,30 @@
 #include <sstream>
 #include <vector>
 
+config construct_error(const std::string& msg)
+{
+	config cfg;
+	config* const err = new config();
+	(*err)["message"] = msg;
+	cfg.children["error"].push_back(err);
+	return cfg;
+}
+
 int main()
 {
 	const network::manager net_manager;
 	const network::server_manager server;
 
 	config login_response;
-	login.children["mustlogin"].push_back(new config());
+	login_response.children["mustlogin"].push_back(new config());
 	login_response["version"] = game_config::version;
 
 	config initial_response;
 	initial_response.children["gamelist"].push_back(new config());
 	config& gamelist = *initial_response.children["gamelist"].back();
 
-	std::map<network::connection,player> players;
+	typedef std::map<network::connection,player> player_map;
+	player_map players;
 
 	game not_logged_in;
 	game lobby_players;
@@ -42,11 +53,58 @@ int main()
 
 			config data;
 			while((sock = network::receive_data(data)) != NULL) {
+
+				//if someone who is not yet logged in is sending
+				//login details
 				if(not_logged_in.is_member(sock)) {
-					network::send_data(initial_response,sock);
+					const config* const login = data.child("login");
+
+					//client must send a login first.
+					if(login == NULL) {
+						network::send_data(construct_error(
+						                   "You must login first"),sock);
+						continue;
+					}
+
+					//check the username is valid (all alnum)
+					const std::string& username = (*login)["username"];
+					if(std::count_if(username.begin(),username.end(),isalnum)
+					   != username.size() || username.empty()) {
+						network::send_data(construct_error(
+						                   "This username is not valid"),sock);
+						continue;
+					}
+
+					//check the username isn't already taken
+					player_map::const_iterator p;
+					for(p = players.begin(); p != players.end(); ++p) {
+						if(p->second.name() == username) {
+							break;
+						}
+					}
+
+					if(p != players.end()) {
+						network::send_data(construct_error(
+						                   "This username is already taken"));
+						continue;
+					}
+					
+					config* const player_cfg = new config();
+					const player new_player(username,*player_cfg);
+					players.insert(std::pair<network::connection,player>(
+					                            sock,new_player));
+					initial_response.children["user"].push_back(player_cfg);
+
+					//remove player from the not-logged-in list and place
+					//the player in the lobby
 					not_logged_in.remove_player(sock);
 					lobby_players.add_player(sock);
-					
+
+					//currently update user list to all players who are in lobby
+					//(later may optimize to only send new login information
+					//to all but the new player)
+					lobby_players.send_data(initial_response);
+
 				} else if(lobby_players.is_member(sock)) {
 					const config* const create_game = data.child("create_game");
 					if(create_game != NULL) {
@@ -88,6 +146,17 @@ int main()
 						network::send_data(it->level(),sock);
 					}
 
+					//see if it's a message, in which case we add the name
+					//of the sender, and forward it to all players in the lobby
+					config* const message = data.child("message");
+					if(message != NULL) {
+						std::cerr << "received message: " << data.write() << "\n";
+						const player_map::const_iterator p = players.find(sock);
+						assert(p != players.end());
+						(*message)["sender"] = p->second.name();
+						lobby_players.send_data(data);
+					}
+
 				} else {
 					std::vector<game>::iterator g;
 					for(g = games.begin(); g != games.end(); ++g) {
@@ -111,6 +180,8 @@ int main()
 							//open games
 							gamelist.children["game"].push_back(
 							                           new config(g->level()));
+							g->set_description(
+							          gamelist.children["game"].back());
 
 							//send all players in the lobby the list of games
 							lobby_players.send_data(initial_response);
@@ -123,9 +194,29 @@ int main()
 						std::cerr << "registered game: " << data.write() << "\n";
 					}
 
+					const string_map::const_iterator side =
+					                           data.values.find("side");
+					if(side != data.values.end()) {
+						const bool res = g->take_side(sock,side->second);
+						config response;
+						if(res) {
+							response["side_secured"] = side->second;
+						} else {
+							response["failed"] = "yes";
+						}
+
+						network::send_data(response,sock);
+						continue;
+					}
+
+					if(data.child("start_game")) {
+						g->start_game();
+					}
+
 					//forward data to all players who are in the game,
 					//except for the original data sender
 					g->send_data(data,sock);
+					g->record_data(data);
 				}
 			}
 			
@@ -135,21 +226,51 @@ int main()
 				break;
 			} else {
 				std::cerr << "socket closed: " << e.message << "\n";
+
+				const std::map<network::connection,player>::iterator pl_it =
+				               players.find(e.socket);
+				if(pl_it != players.end()) {
+					std::vector<config*>& users =
+					                   initial_response.children["user"];
+					users.erase(std::find(users.begin(),users.end(),
+					                      pl_it->second.config_address()));
+					players.erase(pl_it);
+				}
 				
+				not_logged_in.remove_player(e.socket);
 				lobby_players.remove_player(e.socket);
 				for(std::vector<game>::iterator i = games.begin();
 				    i != games.end(); ++i) {
-					if(i->is_member(e.socket)) {
+					if(i->is_needed(e.socket)) {
+
+						//delete the game's configuration
+						config* const gamelist =
+						            initial_response.child("gamelist");
+						assert(gamelist != NULL);
+						std::vector<config*>& vg = gamelist->children["game"];
+						std::vector<config*>::iterator g =
+						    std::find(vg.begin(),vg.end(),i->description());
+						if(g != vg.end()) {
+							delete *g;
+							vg.erase(g);
+						}
+						
 						i->disconnect();
 						games.erase(i);
 						e.socket = 0;
 						break;
+					} else {
+						i->remove_player(e.socket);
 					}
 				}
 
 				if(e.socket) {
 					e.disconnect();
 				}
+
+				//send all players the information that a player has logged
+				//out of the system
+				lobby_players.send_data(initial_response);
 			}
 
 			continue;

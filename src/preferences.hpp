@@ -57,6 +57,9 @@ namespace preferences {
 	const std::string& network_host();
 	void set_network_host(const std::string& host);
 
+	const std::string& login();
+	void set_login(const std::string& username);
+
 	double scroll_speed();
 	double get_scroll_speed();
 	void set_scroll_speed(double scroll);

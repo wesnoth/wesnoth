@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <queue>
 #include <vector>
 
 namespace {
@@ -16,6 +17,8 @@ sockets_list sockets;
 std::map<network::connection,std::string> received_data;
 
 TCPsocket server_socket;
+
+std::queue<network::connection> disconnection_queue;
 
 }
 
@@ -65,6 +68,11 @@ server_manager::~server_manager()
 size_t nconnections()
 {
 	return sockets.size();
+}
+
+bool is_server()
+{
+	return server_socket != 0;
 }
 
 connection connect(const std::string& host, int port)
@@ -143,8 +151,19 @@ void disconnect(connection s)
 	}
 }
 
+void queue_disconnect(network::connection sock)
+{
+	disconnection_queue.push(sock);
+}
+
 connection receive_data(config& cfg, connection connection_num, int timeout)
 {
+	if(disconnection_queue.empty() == false) {
+		const network::connection sock = disconnection_queue.front();
+		disconnection_queue.pop();
+		throw error("",sock);
+	}
+
 	if(sockets.empty()) {
 		return 0;
 	}

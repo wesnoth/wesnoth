@@ -314,6 +314,14 @@ bool replay::empty()
 	return commands().empty();
 }
 
+void replay::add_config(const config& cfg)
+{
+	for(config::const_child_itors i = cfg.child_range("command");
+	    i.first != i.second; ++i.first) {
+		commands().push_back(new config(**i.first));
+	}
+}
+
 bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
                std::map<gamemap::location,unit>& units,
 			   std::vector<team>& teams, int team_num, const gamestatus& state,

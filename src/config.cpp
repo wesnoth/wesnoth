@@ -524,6 +524,13 @@ const config* config::child(const std::string& key) const
 	return const_cast<config*>(this)->child(key);
 }
 
+config& config::add_child(const std::string& key)
+{
+	std::vector<config*>& v = children[key];
+	v.push_back(new config());
+	return *v.back();
+}
+
 std::string& config::operator[](const std::string& key)
 {
 	return values[key];

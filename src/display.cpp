@@ -282,6 +282,9 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 	if(update_locked() || shrouded(x,y))
 		return;
 
+	if(map_.on_board(gamemap::location(x,y)) == false)
+		return;
+
 	const double xpos = static_cast<double>(x)*zoom_*0.75 - xpos_;
 	const double ypos = static_cast<double>(y)*zoom_ - ypos_ +
 					                    ((x % 2) == 1 ? zoom_/2.0 : 0.0);

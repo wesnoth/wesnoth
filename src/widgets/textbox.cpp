@@ -49,6 +49,13 @@ const std::string& textbox::text() const
 	return text_;
 }
 
+void textbox::clear()
+{
+	text_.clear();
+	cursor_ = 0;
+	firstOnScreen_ = 0;
+}
+
 void textbox::draw_cursor(int pos) const
 {
 	const bool show_cursor = (SDL_GetTicks()%1000) > 500;

@@ -2,6 +2,7 @@
 #include "log.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_client.hpp"
+#include "multiplayer_lobby.hpp"
 #include "playlevel.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
@@ -86,6 +87,50 @@ GAME_LIST_RESULT manage_game_list(display& disp, const config* gamelist)
 	return QUIT_GAME;
 }
 
+void check_response(network::connection res, const config& data)
+{
+	if(!res) {
+		throw network::error(string_table["connection_timeout"]);
+	}
+
+	const config* err = data.child("error");
+	if(err != NULL) {
+		throw network::error((*err)["message"]);
+	}
+}
+
+class wait_for_start : public gui::dialog_action
+{
+public:
+	wait_for_start(config& cfg) : got_side(false), sides_(cfg) {}
+
+	int do_action() {
+		config reply;
+		const network::connection res = network::receive_data(reply);
+		if(res) {
+			if(reply.values["failed"] == "yes") {
+				got_side = false;
+				throw network::error("Side chosen is unavailable");
+			} else if(reply.values["side_secured"].empty() == false) {
+				got_side = true;
+			} else if(reply.children["start_game"].empty() == false) {
+				//break out of dialog
+				return START_GAME;
+			} else {
+				sides_ = reply;
+			}
+		}
+
+		return CONTINUE_DIALOG;
+	}
+
+	bool got_side;
+
+	enum { START_GAME = 1 };
+
+private:
+	config& sides_;
+};
 }
 
 void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
@@ -108,37 +153,59 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	sock = network::connect(host);
 	config sides, data;
 
-	network::connection data_res = network::receive_data(data,0,5000);
-	if(!data_res) {
-		throw network::error(string_table["connection_timeout"]);
-	}
+	network::connection data_res = network::receive_data(data,0,10000);
+	check_response(data_res,data);
 
 	preferences::set_network_host(host);
+
+	//if response contained a version number
+	const std::string& version = data["version"];
+	if(version.empty() == false && version != game_config::version) {
+		throw network::error("The server requires version '" + version
+		            + "' while you are using version'" + game_config::version);
+	}
+
+	//if we got a direction to login
+	if(data.child("mustlogin")) {
+		std::string login = preferences::login();
+		const int res = gui::show_dialog(disp,NULL,"",
+		                    "You must login to this server",gui::OK_CANCEL,
+		                    NULL,NULL,"Login: ",&login);
+		if(res != 0 || login.empty()) {
+			return;
+		}
+
+		config response;
+		response.add_child("login")["username"] = login;
+		network::send_data(response);
+
+		data_res = network::receive_data(data,0,10000);
+		check_response(data_res,data);
+	}
 
 	//if we got a gamelist back - otherwise we have
 	//got a description of the game back
 	const config* const gamelist = data.child("gamelist");
 	if(gamelist != NULL) {
-		const GAME_LIST_RESULT res = manage_game_list(disp,gamelist);
+		config game_data = data;
+		const lobby::RESULT res = lobby::enter(disp,game_data);
 		switch(res) {
-			case QUIT_GAME: {
+			case lobby::QUIT: {
 				return;
 			}
-			case CREATE_GAME: {
+			case lobby::CREATE: {
 				std::cerr << "playing multiplayer...\n";
 				play_multiplayer(disp,units_data,cfg,state,false);
 				return;
 			}
-			case JOIN_GAME: {
+			case lobby::JOIN: {
 				break;
 			}
 		}
 
 		for(;;) {
-			data_res = network::receive_data(sides,0,5000);
-			if(!data_res) {
-				throw network::error(string_table["connection_timeout"]);
-			}
+			data_res = network::receive_data(sides,0,10000);
+			check_response(data_res,data);
 
 			//if we have got valid side data
 			if(sides.child("gamelist") == NULL) {
@@ -152,6 +219,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 	std::map<int,int> choice_map;
 	std::vector<std::string> choices;
+	choices.push_back(string_table["observer"]);
 
 	std::vector<config*>& sides_list = sides.children["side"];
 	for(std::vector<config*>::iterator s = sides_list.begin();
@@ -171,9 +239,10 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	}
 
 	const int team_num = choice_map[choice];
+	const bool observer = choice == 0;
 
 	//send our choice of team to the server
-	{
+	if(!observer) {
 		config response;
 		std::stringstream stream;
 		stream << team_num;
@@ -181,26 +250,15 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		network::send_data(response);
 	}
 
-	bool got_side = false;
-
-	for(;;) {
-		config reply;
-		data_res = network::receive_data(reply,0,100);
-		if(data_res) {
-			if(reply.values["failed"] == "yes") {
-				got_side = false;
-				break;
-			} else if(reply.values["side_secured"].size() > 0) {
-				got_side = true;
-			} else if(reply.children["start_game"].empty() == false) {
-				break;
-			} else {
-				sides = reply;
-			}
-		}
+	wait_for_start waiter(sides);
+	const int dialog_res = gui::show_dialog(disp,NULL,"",
+	                        "Waiting for game to start...",
+	                        gui::CANCEL_ONLY,NULL,NULL,"",NULL,&waiter);
+	if(dialog_res != wait_for_start::START_GAME) {
+		return;
 	}
 
-	if(!got_side) {
+	if(!observer && !waiter.got_side) {
 		throw network::error("Choice of team unavailable.");
 	}
 
@@ -216,6 +274,12 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			else
 				values["controller"] = "network";
 		}
+	}
+
+	config* const replay_data = sides.child("replay");
+	if(replay_data != NULL) {
+		std::cerr << "setting replay\n";
+		recorder = replay(*replay_data);
 	}
 
 	std::cerr << "starting game\n";

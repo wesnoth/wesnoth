@@ -249,8 +249,6 @@ void menu::draw()
 
 	for(size_t i = 0; i != items_.size(); ++i)
 		draw_item(i);
-
-	display_->video().flip();
 }
 
 int menu::hit(int x, int y) const

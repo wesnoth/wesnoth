@@ -82,7 +82,9 @@ int connection_acceptor::do_action()
 
 		//if the problem isn't related to any specific connection,
 		//it's a general error and we should just re-throw the error
-		if(!e.socket) {
+		//likewise if we are not a server, we cannot afford any connection
+		//to go down, so also re-throw the error
+		if(!e.socket || !network::is_server()) {
 			throw e;
 		}
 
@@ -109,6 +111,16 @@ int connection_acceptor::do_action()
 	}
 
 	if(sock) {
+		const int side_drop = atoi(cfg.values["side_drop"].c_str())-1;
+		if(side_drop >= 0 && side_drop < int(sides.size())) {
+			positions_map::iterator pos = positions_.find(sides[side_drop]);
+			if(pos != positions_.end()) {
+				pos->second = 0;
+				pos->first->values.erase("taken");
+				network::send_data(players_);
+			}
+		}
+
 		const int side_taken = atoi(cfg.values["side"].c_str())-1;
 		if(side_taken >= 0 && side_taken < int(sides.size())) {
 			positions_map::iterator pos = positions_.find(sides[side_taken]);
@@ -228,13 +240,69 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 			options.push_back((*i)->values["name"]);
 	}
 
+	options.push_back("Load game...");
+
 	int res = gui::show_dialog(disp,NULL,"",
 	                        string_table["choose_scenario"],gui::OK_CANCEL,
 							&options);
 	if(res == -1)
 		return;
 
-	config& level = *levels[res];
+	config* level_ptr = NULL;
+	config loaded_level;
+	if(size_t(res) == options.size()-1) {
+		const std::vector<std::string>& games = get_saves_list();
+		if(games.empty()) {
+			gui::show_dialog(disp,NULL,
+			                 string_table["no_saves_heading"],
+							 string_table["no_saves_message"],
+			                 gui::OK_ONLY);
+			return;
+		}
+
+		const int res = gui::show_dialog(disp,NULL,
+		                                 string_table["load_game_heading"],
+		                                 string_table["load_game_message"],
+		                                 gui::OK_CANCEL, &games);
+		if(res == -1)
+			return;
+
+		load_game(units_data,games[res],state);
+
+		if(state.campaign_type != "multiplayer") {
+			gui::show_dialog(disp,NULL,"",
+			                 "This is not a multiplayer save",gui::OK_ONLY);
+			return;
+		}
+
+		if(state.version != game_config::version) {
+			const int res = gui::show_dialog(disp,NULL,"",
+			                      string_table["version_save_message"],
+			                      gui::YES_NO);
+			if(res == 1)
+				return;
+		}
+
+		loaded_level = state.starting_pos;
+		level_ptr = &loaded_level;
+
+		//make all sides untaken
+		for(config::child_itors i = level_ptr->child_range("side");
+		    i.first != i.second; ++i.first) {
+			(**i.first)["taken"].clear();
+		}
+
+		recorder = replay(state.replay_data);
+
+		level_ptr->add_child("replay") = state.replay_data;
+
+	} else {
+		level_ptr = levels[res];
+	}
+
+	assert(level_ptr != NULL);
+
+	config& level = *level_ptr;
 	state.label = level.values["name"];
 
 	state.scenario = res;

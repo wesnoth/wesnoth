@@ -27,7 +27,7 @@ public:
 	void set_loc(int x, int y);
 
 	int process(int x, int y, bool button,bool up_arrow,bool down_arrow,
-	            bool page_up, bool page_down, int select_item);
+	            bool page_up, bool page_down, int select_item=-1);
 
 private:
 	display* display_;

@@ -575,6 +575,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 			}
 		}
 
+		disp.video().flip();
 		SDL_Delay(20);
 	}
 
@@ -672,6 +673,8 @@ TITLE_RESULT show_title(display& screen)
 
 		if(key[KEY_ESCAPE])
 			return QUIT_GAME;
+
+		screen.video().flip();
 
 		events::pump();
 

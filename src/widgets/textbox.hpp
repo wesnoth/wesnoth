@@ -52,6 +52,7 @@ public:
 	int height() const;
 	int width() const;
 	const std::string& text() const;
+	void clear();
 
 	void draw() const;
 	void process();

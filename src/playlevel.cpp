@@ -241,7 +241,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					replay_obj.start_replay();
 					do_replay(gui,map,gameinfo,units,teams,
 					          player_number,status,state_of_game,&replay_obj);
-					
+
+					recorder.add_config(*cfg.children["turn"].front());
 				}
 
 				for(unit_map::iterator uit = units.begin();

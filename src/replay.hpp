@@ -56,6 +56,8 @@ public:
 	void clear();
 	bool empty();
 
+	void add_config(const config& cfg);
+
 	struct error {};
 
 private:

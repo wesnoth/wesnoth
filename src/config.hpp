@@ -68,6 +68,7 @@ struct config
 	
 	config* child(const std::string& key);
 	const config* child(const std::string& key) const;
+	config& add_child(const std::string& key);
 	std::string& operator[](const std::string& key);
 	const std::string& operator[](const std::string& key) const;
 

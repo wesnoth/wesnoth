@@ -28,10 +28,12 @@ private:
 typedef TCPsocket connection;
 
 size_t nconnections();
+bool is_server();
 
 connection connect(const std::string& host, int port=15000);
 connection accept_connection();
 void disconnect(connection connection_num=0);
+void queue_disconnect(connection connection_num);
 
 connection receive_data(config& cfg, connection connection_num=0, int tout=0);
 

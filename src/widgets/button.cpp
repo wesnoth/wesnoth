@@ -152,8 +152,6 @@ void button::draw()
 	display_->blit_surface(x_,y_,image);
 	font::draw_text(display_,clipArea,font_size,
 					font::BUTTON_COLOUR,label_,textx,texty);
-
-	display_->video().flip();
 }
 
 bool button::hit(int x, int y) const

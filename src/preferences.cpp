@@ -231,6 +231,24 @@ void set_network_host(const std::string& host)
 	prefs["host"] = host;
 }
 
+const std::string& login()
+{
+	std::string& res = prefs["login"];
+	if(res.empty()) {
+		char* const login = getenv("USER");
+		if(login != NULL) {
+			res = login;
+		}
+	}
+
+	return res;
+}
+
+void set_login(const std::string& username)
+{
+	prefs["login"] = username;
+}
+
 namespace {
 	double scroll = 0.2;
 }
