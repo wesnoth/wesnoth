@@ -429,6 +429,7 @@ void replay::undo()
 
 	if(cmd.first != cmd.second) {
 		cfg_.remove_child("command",cmd.second - cmd.first - 1);
+		current_ = random_ = NULL;
 	}
 }
 
@@ -624,7 +625,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 				const int val = lexical_cast_default<int>((*child)["value"]);
 
-				const bool res = dialogs::animate_unit_advancement(gameinfo,units,advancing_units.front(),disp,val);
+				dialogs::animate_unit_advancement(gameinfo,units,advancing_units.front(),disp,val);
 
 				advancing_units.pop_front();
 
