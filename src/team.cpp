@@ -69,7 +69,7 @@ team::team_info::team_info(const config& cfg)
 
 	const std::string& caution_val = cfg["caution"];
 	if(caution_val.empty())
-		caution = 0.0;
+		caution = 0.25;
 	else
 		caution = atof(caution_val.c_str());
 

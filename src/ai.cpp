@@ -147,26 +147,28 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 		if(rt != p.routes.end()) {
 			std::vector<location> steps = rt->second.steps;
 
-			//check if there are any invisible units that we uncover
-			for(std::vector<location>::iterator i = steps.begin(); i != steps.end(); ++i) {
-				location adj[6];
-				get_adjacent_tiles(*i,adj);
-				size_t n;
-				for(n = 0; n != 6; ++n) {
+			if(steps.empty() == false) {
+				//check if there are any invisible units that we uncover
+				for(std::vector<location>::iterator i = steps.begin()+1; i != steps.end(); ++i) {
+					location adj[6];
+					get_adjacent_tiles(*i,adj);
+					size_t n;
+					for(n = 0; n != 6; ++n) {
 
-					//see if there is an enemy unit next to this tile. Note that we don't
-					//actually have to check if it's invisible, since it being invisible is
-					//the only possibility
-					const unit_map::const_iterator invisible_unit = info_.units.find(adj[n]);
-					if(invisible_unit != info_.units.end() && current_team().is_enemy(invisible_unit->second.side())) {
-						to = *i;
-						steps.erase(i,steps.end());
+						//see if there is an enemy unit next to this tile. Note that we don't
+						//actually have to check if it's invisible, since it being invisible is
+						//the only possibility
+						const unit_map::const_iterator invisible_unit = info_.units.find(adj[n]);
+						if(invisible_unit != info_.units.end() && current_team().is_enemy(invisible_unit->second.side())) {
+							to = *i;
+							steps.erase(i,steps.end());
+							break;
+						}
+					}
+
+					if(n != 6) {
 						break;
 					}
-				}
-
-				if(n != 6) {
-					break;
 				}
 			}
 
@@ -364,6 +366,8 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 
 		const location arrived_at = move_unit(from,to,possible_moves);
 		if(arrived_at != to) {
+			std::cerr << "unit moving to attack has ended up unexpectedly at " << (arrived_at.x+1) << "," << (arrived_at.y+1) << " when moving to "
+			          << (to.x+1) << "," << (to.y+1) << " moved from " << (from.x+1) << "," << (from.y+1) << "\n";
 			return true;
 		}
 
@@ -480,9 +484,11 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 				   units_.find(dst) == units_.end()) {
 					const double vuln = power_projection(it.first->first,
 					                    enemy_srcdst,enemy_dstsrc);
-					if(vuln < best_vulnerability) {
+					std::cerr << "found village with vulnerability: " << vuln << "\n";
+					if(vuln < best_vulnerability || best_loc == it.second) {
 						best_vulnerability = vuln;
 						best_loc = it.first;
+						std::cerr << "chose village " << (dst.x+1) << "," << (dst.y+1) << "\n";
 					}
 				}
 				
