@@ -385,6 +385,9 @@ void save_preview_pane::draw()
 		}
 
 		str << "\n" << _("Difficulty") << ": " << string_table[summary["difficulty"]];
+		if(!summary["version"].empty()) {
+			str << "\n" << _("Version") << ": " << summary["version"];
+		}
 	}
 
 	font::draw_text(&disp(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,str.str(),area.x,ypos,NULL,true);
