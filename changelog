@@ -1,3 +1,46 @@
+CVS HEAD:
+ * improved and added new graphics: unit animations, healing animations
+ * traits remove form treefolk (Woses)
+ * treefolk piercing, impact and cold resistance increased
+ * Wose renamed to Elder Wose, Sapling Wose renamed to Wose
+ * Wose hitpoints and melee damage increased
+ * new units
+   * Drake Beak
+   * Drake Worker
+   * Dwarvish Ulfserker
+ * new scenario for 'The Dark Hordes' campaign:
+   * Confrontation
+ * scenario balancing for 'The Dark Hordes' campaign:
+   * Brother Against Brother
+   * Crelanus Book
+   * Inside the Tower
+   * Mages and Elves
+   * The Skull of Agarash
+ * multiplayer improvements
+   * added Drakes to Wesbowl
+ * translation updates:
+   * catalan
+   * spanish
+ * editor improvements:
+   * added some command line flags, such as --datadir
+ * enabled alternate castle/keep tiles: encampment
+ * added gate unit (stripped from The Eastern Invasion/Captured scenario)
+ * fixed segfault when filtering units at invalid locations
+ * fixed SDL version checking bug in Mac OS X
+ * fixed color selection in multiplayer not working
+ * fixed bug where underlying widgets could 'show through' the load dialog
+ * fixed load dialog eating lots of processing power
+ * fixed assertion failure/infinite loop in AI logic
+ * fixed bug in WML
+ * fixed segfault
+ * relocated 'Heir to the Throne' maps in they own subdir, and gave them an explicit names
+ * relocated 'Son of the Black Eye' maps in they own subdir, and gave them an explicit names
+ * relocated 'The Dark Hordes' maps in they own subdir, and gave them an explicit names
+ * relocated multiplayer maps in they own subdir, and gave them an explicit names
+ * relocated tutorial maps in they own subdir, and gave them an explicit names
+ * added basic statistics output to wesnothd
+ * removed unused maps
+
 Version 0.7.9:
  * new campaign: The Eastern Invasion (Loyalists, 15 scenarios)
  * compiling requires SDL version >= 1.2.7
