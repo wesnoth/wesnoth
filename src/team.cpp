@@ -53,6 +53,8 @@ team::team_info::team_info(const config& cfg)
 	if(team_name.empty())
 		team_name = cfg["side"];
 
+	description = cfg["description"];
+
 	const std::string& village_income = cfg["village_gold"];
 	if(village_income.empty())
 		income_per_village = game_config::tower_income;
@@ -136,6 +138,7 @@ void team::team_info::write(config& cfg) const
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
+	cfg["description"] = description;
 
 	char buf[50];
 	sprintf(buf,"%d",income_per_village);

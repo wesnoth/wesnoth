@@ -33,6 +33,8 @@ button::button(display& disp, const std::string& label, button::TYPE type,
                           x_(0), y_(0), button_(true),
                           state_(UNINIT), type_(type)
 {
+	set_label(label);
+
 	if(button_image_name.empty() && type == TYPE_PRESS) {
 		button_image_name = "button";
 	} else if(button_image_name.empty() && type == TYPE_CHECK) {
@@ -173,12 +175,26 @@ bool button::hit(int x, int y) const
 	return false;
 }
 
+namespace {
+	bool not_image(const std::string& str) { return str != "" && str[0] != '&'; }
+}
+
 void button::set_x(int val) { x_ = val; }
 void button::set_y(int val) { y_ = val; }
 void button::set_xy(int valx, int valy) { x_ = valx; y_ = valy; }
-void button::set_label(std::string val)
+void button::set_label(const std::string& val)
 {
 	label_ = val;
+
+	//if we have a list of items, use the first one that isn't an image
+	if(std::find(label_.begin(),label_.end(),',') != label_.end()) {
+		const std::vector<std::string>& items = config::split(label_);
+		const std::vector<std::string>::const_iterator i = std::find_if(items.begin(),items.end(),not_image);
+		if(i != items.end()) {
+			label_ = *i;
+		}
+	}
+
 	textRect_ = display_->screen_area();
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,label_,0,0);

@@ -47,6 +47,8 @@ public:
 		std::vector<int> enemies;
 		std::string team_name;
 
+		std::string description;
+
 		enum CONTROLLER { HUMAN, AI, NETWORK };
 		CONTROLLER controller;
 
