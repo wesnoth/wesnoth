@@ -369,15 +369,14 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 	int res = -1;
 
 	if(movement_costs != NULL) {
-		const std::vector<std::string> names = map.underlying_terrain_name(terrain);
-		if(names.size() != 1) {
-			lg::err(lg::config) << "terrain '" << terrain << "' has " << names.size() << " underlying names - 0 expected\n";
+		if(underlying.size() != 1) {
+			lg::err(lg::config) << "terrain '" << terrain << "' has " << underlying.size() << " underlying names - 0 expected\n";
 			return impassable;
 		}
 
-		const std::string& name = names.front();
+		const std::string& id = map.get_terrain_info(underlying[0]).id();
 
-		const std::string& val = (*movement_costs)[name];
+		const std::string& val = (*movement_costs)[id];
 
 		if(val != "") {
 			res = atoi(val.c_str());
@@ -429,14 +428,13 @@ int unit_movement_type::defense_modifier(const gamemap& map,gamemap::TERRAIN ter
 	const config* const defense = cfg_.child("defense");
 
 	if(defense != NULL) {
-		const std::vector<std::string> names = map.underlying_terrain_name(terrain);
-		if(names.size() != 1) {
-			lg::err(lg::config) << "terrain '" << terrain << "' has " << names.size() << " underlying names - 0 expected\n";
+		if(underlying.size() != 1) {
+			lg::err(lg::config) << "terrain '" << terrain << "' has " << underlying.size() << " underlying names - 0 expected\n";
 			return 100;
 		}
 
-		const std::string& name = names.front();
-		const std::string& val = (*defense)[name];
+		const std::string& id = map.get_terrain_info(underlying[0]).id();
+		const std::string& val = (*defense)[id];
 
 		if(val != "") {
 			res = atoi(val.c_str());

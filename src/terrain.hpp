@@ -24,10 +24,9 @@ public:
 	terrain_type();
 	terrain_type(const config& cfg);
 
-	//const std::string& image(int x, int y) const;
-	const std::string& default_image() const;
-	const std::string& adjacent_image() const;
+	const std::string& symbol_image() const;
 	const std::string& name() const;
+	const std::string& id() const;
 
 	//the character representing this terrain
 	char letter() const;
@@ -43,18 +42,14 @@ public:
 	int unit_height_adjust() const;
 	double unit_submerge() const;
 
-	//whether the terrain's overlay precedence is equal (rather than higher
-	//than) the preceeding terrain
-	bool equal_precedence() const;
-
 	bool gives_healing() const;
 	bool is_village() const;
 	bool is_castle() const;
 	bool is_keep() const;
 
 private:
-	std::vector<std::string> images_;
-	std::string adjacent_image_;
+	std::string symbol_image_;
+	std::string id_;
 	std::string name_;
 
 	//the 'letter' is the letter that represents this
@@ -69,7 +64,6 @@ private:
 
 	double submerge_;
 
-	bool equal_precedence_;
 	bool is_light_;
 
 	bool heals_, village_, castle_, keep_;

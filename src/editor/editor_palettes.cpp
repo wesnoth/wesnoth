@@ -36,7 +36,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	: gui::widget(gui), size_specs_(sizes), gui_(gui), tstart_(0), map_(map),
 	  top_button_(gui, "", gui::button::TYPE_PRESS, "uparrow-button"),
 	  bot_button_(gui, "", gui::button::TYPE_PRESS, "downarrow-button") {
-	terrains_ = map_.get_terrain_precedence();
+	terrains_ = map_.get_terrain_list();
 	terrains_.erase(std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain),
 					terrains_.end());
 	if(terrains_.empty()) {
@@ -150,16 +150,16 @@ void terrain_palette::select_bg_terrain(gamemap::TERRAIN terrain) {
 
 std::string terrain_palette::get_terrain_string(const gamemap::TERRAIN t) {
 	std::stringstream str;
-	const std::string& name = map_.terrain_name(t);
-	const std::vector<std::string>& underlying_names =
-		map_.underlying_terrain_name(t);
+	const std::string& name = map_.get_terrain_info(t).prout();
+	const std::string& underlying = map_.underlying_terrain(t);
 	str << translate_string(name);
-	if(underlying_names.size() != 1 || underlying_names.front() != name) {
+	if(underlying.size() != 1 || underlying[0] != t) {
 		str << " (";
-		for(std::vector<std::string>::const_iterator i = underlying_names.begin();
-			i != underlying_names.end(); ++i) {
-			str << translate_string(*i);
-			if(i+1 != underlying_names.end()) {
+		for(std::string::const_iterator i = underlying.begin();
+			i != underlying.end(); ++i) {
+
+			str << map_.get_terrain_info(*i).prout();
+			if(i+1 != underlying.end()) {
 				str << ",";
 			}
 		}
@@ -254,7 +254,7 @@ void terrain_palette::draw(bool force) {
 	for(unsigned int counter = starting; counter < ending; counter++){
 		const gamemap::TERRAIN terrain = terrains_[counter];
 		const std::string filename = "terrain/" +
-			map_.get_terrain_info(terrain).default_image() + ".png";
+			map_.get_terrain_info(terrain).symbol_image() + ".png";
 		surface image(image::get_image(filename, image::UNSCALED));
 		if(image == NULL) {
 			std::cerr << "image for terrain " << counter << ": '" << filename << "' not found\n";

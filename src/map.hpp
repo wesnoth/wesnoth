@@ -39,8 +39,6 @@ public:
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain
 	//is simply an alias, the underlying terrain name is the name of the
 	//terrain that it's aliased to
-	const std::string& terrain_name(TERRAIN terrain) const;
-	std::vector<std::string> underlying_terrain_name(TERRAIN terrain) const;
 	const std::string& underlying_terrain(TERRAIN terrain) const;
 
 	//exception thrown if the map file is not in the correct format.
@@ -146,11 +144,8 @@ public:
 	//shortcut to get_terrain_info(get_terrain(loc))
 	const terrain_type& get_terrain_info(const location &loc) const;
 	
-	//gets the list of which terrain types should display on top of
-	//other terrain types. Has no effect on gameplay, only display.
-	const std::vector<TERRAIN>& get_terrain_precedence() const;
-
-	bool is_built(const location& loc) const;
+	//gets the list of terrains
+	const std::vector<TERRAIN>& get_terrain_list() const;
 
 	//clobbers over the terrain at location 'loc', with the given terrain
 	void set_terrain(const location& loc, TERRAIN ter);
@@ -165,7 +160,7 @@ public:
 private:
 	int num_starting_positions() const;
 
-	std::vector<TERRAIN> terrainPrecedence_;
+	std::vector<TERRAIN> terrainList_;
 	std::map<TERRAIN,terrain_type> letterToTerrain_;
 	std::map<std::string,terrain_type> terrain_;
 

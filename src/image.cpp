@@ -662,7 +662,7 @@ surface getMinimap(int w, int h, const gamemap& map,
 				cache_map::iterator i = cache.find(terrain);
 
 				if(i == cache.end()) {
-					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png",image::UNSCALED));
+					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).symbol_image() + ".png",image::UNSCALED));
 
 					if(tile == NULL) {
 						std::cerr << "Could not get image for terrrain '"

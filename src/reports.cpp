@@ -301,8 +301,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			break;
 
 		const gamemap::TERRAIN terrain = map.get_terrain(mouseover);
-		const std::string& name = string_table[map.terrain_name(terrain)];
-		const std::vector<std::string>& underlying_names = map.underlying_terrain_name(terrain);
+		const std::string& underlying = map.underlying_terrain(terrain);
 
 		if(map.is_village(mouseover)) {
 			const int owner = village_owner(mouseover,teams)+1;
@@ -317,16 +316,16 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			}
 
 			str << " ";
-		}else{
-			str << name;
+		} else {
+			str << map.get_terrain_info(terrain).name();
 		}
 
-		if(underlying_names.size() != 1 || string_table[underlying_names.front()] != name) {
+		if(underlying.size() != 1 || underlying[0] != terrain) {
 			str << " (";
 			
-			for(std::vector<std::string>::const_iterator i = underlying_names.begin(); i != underlying_names.end(); ++i) {
-				str << string_table[*i];
-				if(i+1 != underlying_names.end()) {
+			for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+				str << map.get_terrain_info(*i).name();
+				if(i+1 != underlying.end()) {
 					str << ",";
 				}
 			}

@@ -24,38 +24,6 @@
 
 gamemap::location gamemap::location::null_location;
 
-const std::string& gamemap::terrain_name(gamemap::TERRAIN terrain) const
-{
-	static const std::string default_val;
-	const std::map<TERRAIN,terrain_type>::const_iterator i =
-	                                      letterToTerrain_.find(terrain);
-	if(i == letterToTerrain_.end())
-		return default_val;
-	else
-		return i->second.name();
-}
-
-std::vector<std::string> gamemap::underlying_terrain_name(gamemap::TERRAIN terrain) const
-{
-	const std::map<TERRAIN,terrain_type>::const_iterator i =
-	                                       letterToTerrain_.find(terrain);
-	if(i == letterToTerrain_.end()) {
-		return std::vector<std::string>();
-	} else {
-		if(i->second.is_alias()) {
-			std::vector<std::string> res;
-
-			const std::string& type = i->second.type();
-			for(std::string::const_iterator j = type.begin(); j != type.end(); ++j) {
-				res.push_back(terrain_name(*j));
-			}
-			return res;
-		} else {
-			return std::vector<std::string>(1,i->second.name());
-		}
-	}
-}
-
 const std::string& gamemap::underlying_terrain(TERRAIN terrain) const
 {
 	const std::map<TERRAIN,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
@@ -193,7 +161,7 @@ gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 {
 	std::cerr << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
-	create_terrain_maps(terrains,terrainPrecedence_,letterToTerrain_,terrain_);
+	create_terrain_maps(terrains,terrainList_,letterToTerrain_,terrain_);
 
 	read(data);
 }
@@ -376,14 +344,9 @@ const terrain_type& gamemap::get_terrain_info(const gamemap::location &loc) cons
 	return get_terrain_info(get_terrain(loc));
 }
 
-const std::vector<gamemap::TERRAIN>& gamemap::get_terrain_precedence() const
+const std::vector<gamemap::TERRAIN>& gamemap::get_terrain_list() const
 {
-	return terrainPrecedence_;
-}
-
-bool gamemap::is_built(const location &loc) const
-{
-	return is_castle(loc);
+	return terrainList_;
 }
 
 void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)

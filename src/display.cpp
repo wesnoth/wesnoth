@@ -1059,23 +1059,6 @@ void display::draw_minimap(int x, int y, int w, int h)
 	update_rect(minimap_location);
 }
 
-gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
-{
-	const int height = 37;
-	if(y < paly || x < palx)
-		return 0;
-
-	const std::vector<gamemap::TERRAIN>& terrains=map_.get_terrain_precedence();
-	if(static_cast<size_t>(y) > paly+terrains.size()*height)
-		return 0;
-
-	const size_t index = (y - paly)/height;
-	if(index >= terrains.size())
-		return 0;
-
-	return terrains[index];
-}
-
 void display::draw_halo_on_tile(int x, int y)
 {
 	const gamemap::location loc(x,y);
@@ -1664,7 +1647,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 				//	stream << "void";
 				//else
 				//	stream << "fog";
-				stream << "terrain/" << map_.get_terrain_info(*terrain).default_image();
+				stream << "terrain/" << map_.get_terrain_info(*terrain).symbol_image();
 
 				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
 					stream << get_direction(i);

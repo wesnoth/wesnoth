@@ -50,7 +50,7 @@ namespace {
 	config dummy_cfg;
 	std::vector<std::string> empty_string_vector;
 	const int max_section_level = 15;
-  const int menu_font_size = font::SIZE_NORMAL;
+	const int menu_font_size = font::SIZE_NORMAL;
 	const int title_size = font::SIZE_LARGE;
 	const int title2_size = font::SIZE_15;
 	const int box_width = 2;
@@ -771,7 +771,8 @@ std::vector<topic> generate_unit_topics() {
 					const terrain_type& info = map->get_terrain_info(terrain);
 					if (!info.is_alias()) {
 						std::vector<std::pair<std::string, unsigned> > row;
-						const std::string &name = string_table[info.name()];
+						//const std::string &name = string_table[info.name()];
+						const std::string& name = info.name();
 						const int moves = movement_type.movement_cost(*map,terrain);
 						std::stringstream str;
 						str << "<ref>text='" << escape(name) << "' dst='"
@@ -821,7 +822,7 @@ std::vector<topic> generate_terrains_topics() {
 	std::vector<topic> res;
 	std::vector<gamemap::TERRAIN> show_info_about;
 	if (game_config::debug) {
-		show_info_about = map->get_terrain_precedence();
+		show_info_about = map->get_terrain_list();
 	}
 	else {
 		for (std::set<std::string>::const_iterator terrain_it =
@@ -840,16 +841,17 @@ std::vector<topic> generate_terrains_topics() {
 	for (std::vector<gamemap::TERRAIN>::const_iterator terrain_it = show_info_about.begin();
 		 terrain_it != show_info_about.end(); terrain_it++) {
 		const terrain_type& info = map->get_terrain_info(*terrain_it);
-		const std::string &name = string_table[info.name()];
+		//const std::string &name = string_table[info.name()];
+		const std::string &name = info.name();
 		std::stringstream ss;
-		ss << "<img>src='terrain/" << info.default_image() << ".png'</img>\n\n";
+		ss << "<img>src='terrain/" << info.symbol_image() << ".png'</img>\n\n";
 		if (info.is_alias()) {
 			const std::string aliased_terrains = info.type();
 			std::stringstream alias_ss;
 			for (std::string::const_iterator it = aliased_terrains.begin();
 				 it != aliased_terrains.end(); it++) {
 				const gamemap::TERRAIN t = *it;
-				const std::string &alias_name = string_table[map->get_terrain_info(t).name()];
+				const std::string &alias_name = map->get_terrain_info(t).name();
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
 						 << escape(std::string("terrain_") + t) << "'</ref>";
 				if (it + 2 == aliased_terrains.end()) {

@@ -17,19 +17,17 @@
 #include <cstdlib>
 #include <iostream>
 
-terrain_type::terrain_type() : images_(1,"void"), letter_(' '), type_(" "),
-                               height_adjust_(0), submerge_(0.0), equal_precedence_(false),
-							   heals_(false), village_(false), castle_(false), keep_(false)
+terrain_type::terrain_type() : symbol_image_("void"), letter_(' '), type_(" "),
+                               height_adjust_(0), submerge_(0.0), 
+                               heals_(false), village_(false), castle_(false), keep_(false)
 {}
 
 terrain_type::terrain_type(const config& cfg)
 {
-	images_ = config::split(cfg["image"]);
-	adjacent_image_ = cfg["adjacent_image"];
-	if(adjacent_image_ == "" && images_.empty() == false)
-		adjacent_image_ = images_.front();
+	symbol_image_ = cfg["symbol_image"];
 
 	name_ = cfg["name"];
+	id_ = cfg["id"];
 	const std::string& letter = cfg["char"];
 	
 	if(letter == "") {
@@ -51,7 +49,6 @@ terrain_type::terrain_type(const config& cfg)
 	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
 	submerge_ = atof(cfg["submerge"].c_str());
 
-	equal_precedence_ = cfg["no_overlay"] == "true";
 	is_light_ = cfg["light"] == "true";
 
 	heals_ = cfg["heals"] == "true";
@@ -59,29 +56,20 @@ terrain_type::terrain_type(const config& cfg)
 	castle_ = cfg["recruit_onto"] == "true";
 	keep_ = cfg["recruit_from"] == "true";
 }
-#if 0
-const std::string& terrain_type::image(int x, int y) const
-{
-	assert(!images_.empty());
-	//return images_[(((x<<8)^3413402)+y^34984 + x*y)%images_.size()];
-	return default_image();
-}
-#endif
-const std::string& terrain_type::default_image() const
-{
-	//static const std::string ret = "void";
-	assert(!images_.empty());
-	return images_.front();
-}
 
-const std::string& terrain_type::adjacent_image() const
+const std::string& terrain_type::symbol_image() const
 {
-	return adjacent_image_;
+	return symbol_image_;
 }
 
 const std::string& terrain_type::name() const
 {
 	return name_;
+}
+
+const std::string& terrain_type::id() const
+{
+	return id_;
 }
 
 char terrain_type::letter() const
@@ -119,11 +107,6 @@ double terrain_type::unit_submerge() const
 	return submerge_;
 }
 
-bool terrain_type::equal_precedence() const
-{
-	return equal_precedence_;
-}
-
 bool terrain_type::gives_healing() const
 {
 	return heals_;
@@ -145,17 +128,17 @@ bool terrain_type::is_keep() const
 }
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
-                         std::vector<char>& terrain_precedence,
+                         std::vector<char>& terrain_list,
                          std::map<char,terrain_type>& letter_to_terrain,
                          std::map<std::string,terrain_type>& str_to_terrain)
 {
 	for(std::vector<config*>::const_iterator i = cfgs.begin();
 	    i != cfgs.end(); ++i) {
 		terrain_type terrain(**i);
-		terrain_precedence.push_back(terrain.letter());
+		terrain_list.push_back(terrain.letter());
 		letter_to_terrain.insert(std::pair<char,terrain_type>(
 		                              terrain.letter(),terrain));
 		str_to_terrain.insert(std::pair<std::string,terrain_type>(
-		                              terrain.name(),terrain));
+		                              terrain.id(),terrain));
 	}
 }
