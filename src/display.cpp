@@ -1433,7 +1433,7 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 {
 	std::string image = "terrain/" + (direction.empty() ?
 	                           map_.get_terrain_info(terrain).image(x,y) :
-	                           map_.get_terrain_info(terrain).default_image());
+	                           map_.get_terrain_info(terrain).adjacent_image());
 
 	if(terrain == gamemap::CASTLE &&
 	   map_.is_starting_position(gamemap::location(x,y))) {

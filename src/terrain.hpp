@@ -26,6 +26,7 @@ public:
 
 	const std::string& image(int x, int y) const;
 	const std::string& default_image() const;
+	const std::string& adjacent_image() const;
 	const std::string& name() const;
 	char letter() const;
 	char type() const;
@@ -39,6 +40,7 @@ public:
 	bool equal_precedence() const;
 private:
 	std::vector<std::string> images_;
+	std::string adjacent_image_;
 	std::string name_;
 
 	//the 'letter' is the letter that represents this

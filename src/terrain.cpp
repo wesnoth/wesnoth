@@ -24,6 +24,10 @@ terrain_type::terrain_type() : images_(1,"void"), type_(' '), letter_(' '),
 terrain_type::terrain_type(const config& cfg)
 {
 	images_ = config::split(cfg["image"]);
+	adjacent_image_ = cfg["adjacent_image"];
+	if(adjacent_image_ == "" && images_.empty() == false)
+		adjacent_image_ = images_.front();
+
 	name_ = cfg["name"];
 	const std::string& letter = cfg["char"];
 	assert(!letter.empty());
@@ -51,6 +55,11 @@ const std::string& terrain_type::default_image() const
 {
 	assert(!images_.empty());
 	return images_.front();
+}
+
+const std::string& terrain_type::adjacent_image() const
+{
+	return adjacent_image_;
 }
 
 const std::string& terrain_type::name() const
