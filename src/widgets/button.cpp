@@ -28,7 +28,7 @@ const int checkbox_horizontal_padding = 6;
 const int vertical_padding = 6;
 
 button::button(display& disp, const std::string& label, button::TYPE type,
-               std::string button_image_name) :
+               std::string button_image_name, SPACE_CONSUMPTION spacing) :
                           widget(disp), label_(label), display_(&disp),
 						  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
                           button_(true), state_(NORMAL), type_(type), enabled_(true), pressed_(false)
@@ -75,7 +75,11 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 	set_height(maximum(textRect_.h+vertical_padding,button_image->h));
 
 	if(type == TYPE_PRESS) {
-		set_width(maximum(textRect_.w+horizontal_padding,button_image->w));
+		if(spacing == MINIMUM_SPACE) {
+			set_width(textRect_.w + horizontal_padding);
+		} else {
+			set_width(maximum(textRect_.w+horizontal_padding,button_image->w));
+		}
 
 		image_.assign(scale_surface(button_image,location().w,location().h));
 		pressedImage_.assign(scale_surface(pressed_image,location().w,location().h));

@@ -459,15 +459,26 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 	}
 
+	size_t above_preview_pane_height = 0, above_left_preview_pane_width = 0, above_right_preview_pane_width = 0;
 	size_t preview_pane_height = 0, left_preview_pane_width = 0, right_preview_pane_width = 0;
 	if(preview_panes != NULL) {
 		for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
 			const SDL_Rect& rect = (**i).location();
-			preview_pane_height = maximum<size_t>(rect.h,preview_pane_height);
-			if((**i).left_side()) {
-				left_preview_pane_width += rect.w;
+
+			if((**i).show_above() == false) {
+				preview_pane_height = maximum<size_t>(rect.h,preview_pane_height);
+				if((**i).left_side()) {
+					left_preview_pane_width += rect.w;
+				} else {
+					right_preview_pane_width += rect.w;
+				}
 			} else {
-				right_preview_pane_width += rect.w;
+				above_preview_pane_height = maximum<size_t>(rect.h,above_preview_pane_height);
+				if((**i).left_side()) {
+					above_left_preview_pane_width += rect.w;
+				} else {
+					above_right_preview_pane_width += rect.w;
+				}
 			}
 		}
 	}
@@ -502,15 +513,20 @@ int show_dialog(display& disp, SDL_Surface* image,
 	                         padding_height + menu_.height() +
 							 text_widget_height + check_button_height;
 
-	const int border_padding = 10;
-	int frame_width = total_width + border_padding*2;
-	int xframe = maximum<int>(0,xloc >= 0 ? xloc : scr->w/2 - (frame_width + left_preview_pane_width + right_preview_pane_width)/2);
 
-	const int frame_height = maximum<int>(int(preview_pane_height),total_height + border_padding*2);
+	const int border_padding = 10;
+	int frame_width = maximum<int>(total_width + border_padding*2,above_left_preview_pane_width + above_right_preview_pane_width);
+	int frame_height = maximum<int>(int(preview_pane_height),total_height + border_padding*2);
+	int xframe = maximum<int>(0,xloc >= 0 ? xloc : scr->w/2 - (frame_width + left_preview_pane_width + right_preview_pane_width)/2);
+	int yframe = maximum<int>(0,yloc >= 0 ? yloc : scr->h/2 - (frame_height + above_preview_pane_height)/2);
+
+	std::cerr << "above_preview_pane_height: " << above_preview_pane_height << "\n";
+	std::cerr << "yframe: " << scr->h/2 << " - " << (frame_height + above_preview_pane_height)/2 << " = " << yframe << "\n";
+	std::cerr << "frame_height: " << frame_height << "\n";
 
 	if(xloc <= -1 || yloc <= -1) {
 		xloc = xframe + left_preview_pane_width;
-		yloc = scr->h/2 - frame_height/2;
+		yloc = yframe + above_preview_pane_height;
 	}
 
 	if(xloc + frame_width > scr->w) {
@@ -522,6 +538,9 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	if(yloc + frame_height > scr->h) {
 		yloc = scr->h - frame_height;
+		if(yloc < yframe) {
+			yframe = yloc;
+		}
 	}	
 
 	std::vector<button*> buttons_ptr;
@@ -530,29 +549,42 @@ int show_dialog(display& disp, SDL_Surface* image,
 	}
 
 	frame_width += left_preview_pane_width + right_preview_pane_width;
+	frame_height += above_preview_pane_height;
 
 	surface_restorer restorer;
 
 	const std::string& title = image == NULL ? caption : "";
-	draw_dialog(xframe,yloc,frame_width,frame_height,disp,title,dialog_style,&buttons_ptr,&restorer);
+	draw_dialog(xframe,yframe,frame_width,frame_height,disp,title,dialog_style,&buttons_ptr,&restorer);
 
 	//calculate the positions of the preview panes to the sides of the dialog
 	if(preview_panes != NULL) {
-
-		frame_width += left_preview_pane_width + right_preview_pane_width;
 		
 		int left_preview_pane = xframe;
 		int right_preview_pane = xframe + total_width + left_preview_pane_width;
+		int above_left_preview_pane = xframe + frame_width/2;
+		int above_right_preview_pane = above_left_preview_pane;
 
 		for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
 			SDL_Rect area = (**i).location();
-			area.y = yloc;
-			if((**i).left_side()) {
-				area.x = left_preview_pane;
-				left_preview_pane += area.w;
+
+			if((**i).show_above() == false) {
+				area.y = yloc;
+				if((**i).left_side()) {
+					area.x = left_preview_pane;
+					left_preview_pane += area.w;
+				} else {
+					area.x = right_preview_pane;
+					right_preview_pane += area.w;
+				}
 			} else {
-				area.x = right_preview_pane;
-				right_preview_pane += area.w;
+				area.y = yframe;
+				if((**i).left_side()) {
+					area.x = above_left_preview_pane - area.w;
+					above_left_preview_pane -= area.w;
+				} else {
+					area.x = above_right_preview_pane;
+					above_right_preview_pane += area.w;
+				}
 			}
 
 			(**i).set_location(area);

@@ -584,22 +584,30 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 
 namespace {
 	static const SDL_Rect unit_preview_size = {-150,-370,150,370};
+	static const SDL_Rect weaponless_unit_preview_size = {-210,-120,210,120};
 	static const int unit_preview_border = 10;
 }
 
-unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const unit& u, bool on_left_side)
-                                        : gui::preview_pane(disp), details_button_(disp,string_table["action_describeunit"]),
-										  map_(map), units_(&unit_store_), index_(0), left_(on_left_side)
+unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
+                                        : gui::preview_pane(disp), details_button_(disp,translate_string("profile"),gui::button::TYPE_PRESS,"lite",gui::button::MINIMUM_SPACE),
+										  map_(map), units_(&unit_store_), index_(0), left_(on_left_side),
+										  weapons_(type == SHOW_ALL)
 {
-	set_location(unit_preview_size);
+	set_location(weapons_ ? unit_preview_size : weaponless_unit_preview_size);
 	unit_store_.push_back(u);
 }
 
-unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, bool on_left_side)
-                                        : gui::preview_pane(disp), details_button_(disp,string_table["action_describeunit"]),
-										  map_(map), units_(&units), index_(0), left_(on_left_side)
+unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, TYPE type, bool on_left_side)
+                                        : gui::preview_pane(disp), details_button_(disp,translate_string("profile"),gui::button::TYPE_PRESS,"lite",gui::button::MINIMUM_SPACE),
+										  map_(map), units_(&units), index_(0), left_(on_left_side),
+										  weapons_(type == SHOW_ALL)
 {
 	set_location(unit_preview_size);
+}
+
+bool unit_preview_pane::show_above() const
+{
+	return !weapons_;
 }
 
 bool unit_preview_pane::left_side() const
@@ -635,6 +643,8 @@ void unit_preview_pane::draw()
 
 	set_dirty(false);
 
+	const bool right_align = left_side();
+
 	SDL_Surface* const screen = disp().video().getSurface();
 
 	const SDL_Rect area = { location().x+unit_preview_border, location().y+unit_preview_border,
@@ -647,14 +657,34 @@ void unit_preview_pane::draw()
 		unit_image.assign(image::reverse_image(unit_image));
 	}
 
+	SDL_Rect image_rect = {area.x,area.y,0,0};
+
 	if(unit_image != NULL) {
-		SDL_Rect image_rect = {area.x,area.y,unit_image->w,unit_image->h};
-		SDL_BlitSurface(unit_image,NULL,screen,&image_rect);
+		SDL_Rect rect = {right_align ? area.x : area.x + area.w - unit_image->w,area.y,unit_image->w,unit_image->h};
+		SDL_BlitSurface(unit_image,NULL,screen,&rect);
+		image_rect = rect;
+	}
+
+	SDL_Rect description_rect = {image_rect.x,image_rect.y+image_rect.h,0,0};
+
+	if(u.description().empty() == false) {
+		std::stringstream desc;
+		desc << font::BOLD_TEXT << u.description();
+		const std::string description = desc.str();
+		description_rect = font::text_area(description,12);
+		description_rect = font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,desc.str(),right_align ? image_rect.x : image_rect.x + image_rect.w - description_rect.w,image_rect.y+image_rect.h);
+	}
+
+	//place the 'unit profile' button
+	if(map_ != NULL) {
+		const SDL_Rect button_loc = {right_align ? area.x : area.x + area.w - details_button_.location().w,
+		                             image_rect.y + image_rect.h + description_rect.h,
+		                             details_button_.location().w,details_button_.location().h};
+		details_button_.set_location(button_loc);
 	}
 
 	std::stringstream details;
-	details << font::BOLD_TEXT << u.description() << "\n"
-	        << font::BOLD_TEXT << u.type().language_name()
+	details << font::BOLD_TEXT << u.type().language_name()
 			<< "\n" << font::SMALL_TEXT << "(" << string_table["level"] << " "
 			<< u.type().level() << ")\n"
 			<< translate_string(unit_type::alignment_description(u.type().alignment()))
@@ -692,35 +722,49 @@ void unit_preview_pane::draw()
 			<< u.total_movement()
 			<< "\n";
 
-	const std::vector<attack_type>& attacks = u.attacks();
-	for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
-	    at_it != attacks.end(); ++at_it) {
+	if(weapons_) {
+		const std::vector<attack_type>& attacks = u.attacks();
+		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
+		    at_it != attacks.end(); ++at_it) {
 
-		const std::string& lang_weapon = string_table["weapon_name_" + at_it->name()];
-		const std::string& lang_type = string_table["weapon_type_" + at_it->type()];
-		const std::string& lang_special = string_table["weapon_special_" + at_it->special()];
-		details << "\n"
-				<< (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
-				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n"
-				<< (lang_special.empty() ? at_it->special():lang_special)<<"\n"
-				<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
-		        << (at_it->range() == attack_type::SHORT_RANGE ?
-		            string_table["short_range"] :
-					string_table["long_range"]);
+			const std::string& lang_weapon = string_table["weapon_name_" + at_it->name()];
+			const std::string& lang_type = string_table["weapon_type_" + at_it->type()];
+			const std::string& lang_special = string_table["weapon_special_" + at_it->special()];
+			details << "\n"
+					<< (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
+					<< (lang_type.empty() ? at_it->type():lang_type) << ")\n"
+					<< (lang_special.empty() ? at_it->special():lang_special)<<"\n"
+					<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
+			        << (at_it->range() == attack_type::SHORT_RANGE ?
+			            string_table["short_range"] :
+						string_table["long_range"]);
 	
-		if(at_it->hexes() > 1) {
-			details << " (" << at_it->hexes() << ")";
+			if(at_it->hexes() > 1) {
+				details << " (" << at_it->hexes() << ")";
+			}
 		}
-					
-		details << "\n\n";
+	}
+	
+	const std::string text = details.str();
+	const SDL_Rect& text_area = font::text_area(text,12);
+	
+	const std::vector<std::string> lines = config::split(text,'\n');
+
+	SDL_Rect cur_area = area;
+
+	if(weapons_) {
+		cur_area.y += image_rect.h + description_rect.h + details_button_.location().h;
 	}
 
-	const SDL_Rect& text_area = font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,details.str(),
-	                            area.x,area.y + (unit_image != NULL ? unit_image->h : 0) + unit_preview_border);
-	if(map_ != NULL) {
-		const SDL_Rect button_loc = {area.x + unit_preview_border,area.y + area.h - details_button_.location().h - unit_preview_border,
-		                             details_button_.location().w,details_button_.location().h};
-		details_button_.set_location(button_loc);
+	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
+		int xpos = cur_area.x;
+		if(right_align && !weapons_) {
+			const SDL_Rect& line_area = font::text_area(*line,12);
+			xpos = cur_area.x + cur_area.w - line_area.w;
+		}
+
+		cur_area = font::draw_text(&disp(),location(),12,font::NORMAL_COLOUR,*line,xpos,cur_area.y);
+		cur_area.y += cur_area.h;
 	}
 }
 

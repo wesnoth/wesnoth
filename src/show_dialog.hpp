@@ -119,6 +119,7 @@ public:
 	preview_pane(display& disp) : widget(disp) {}
 	virtual ~preview_pane() {}
 
+	virtual bool show_above() const { return false; }
 	virtual bool left_side() const = 0;
 	virtual void set_selection(int index) = 0;
 };

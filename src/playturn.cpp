@@ -602,42 +602,33 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				best_weapon_rating = weapon_rating;
 			}
 			
-			const std::string& lang_attack_name =
-			            string_table["weapon_name_"+stats.back().attack_name];
-			const std::string& lang_attack_type =
-			            string_table["weapon_type_"+stats.back().attack_type];
-			const std::string& lang_range =
-			            string_table[stats.back().range == "Melee" ?
-			                            "short_range" : "long_range"];
+			const battle_stats& st = stats.back();
 
-			const std::string& lang_defend_name =
-			            string_table["weapon_name_"+stats.back().defend_name];
-			const std::string& lang_defend_type =
-			            string_table["weapon_type_"+stats.back().defend_type];
+			const std::string& attack_name = translate_string_default("weapon_name_"+st.attack_name,st.attack_name);
+			const std::string& attack_type = translate_string_default("weapon_type_"+st.attack_type,st.attack_type);
+			const std::string& attack_special = translate_string_default("weapon_special_"+st.attack_special,st.attack_special);
+			const std::string& defend_name = translate_string_default("weapon_name_"+st.defend_name,st.defend_name);
+			const std::string& defend_type = translate_string_default("weapon_type_"+st.defend_type,st.defend_type);
+			const std::string& defend_special = translate_string_default("weapon_special_"+st.defend_special,st.defend_special);
 
-			const std::string& attack_name = lang_attack_name.empty() ?
-			                    stats.back().attack_name : lang_attack_name;
-			const std::string& attack_type = lang_attack_type.empty() ?
-			                    stats.back().attack_type : lang_attack_type;
-			const std::string& defend_name = lang_defend_name.empty() ?
-			                    stats.back().defend_name : lang_defend_name;
-			const std::string& defend_type = lang_defend_type.empty() ?
-			                    stats.back().defend_type : lang_defend_type;
+			const std::string& range = translate_string_default(st.range == "Melee" ? "short_range" : "long_range",st.range);
 
-			const std::string& range = lang_range.empty() ?
-			                    stats.back().range : lang_range;
+			//if there is an attack special or defend special, we output a single space for the other unit, to make sure
+			//that the attacks line up nicely.
+			std::string special_pad = (attack_special.empty() == false || defend_special.empty() == false) ? " " : "";
 
 			std::stringstream att;
-			att << "&" << stats.back().attack_icon << "," << attack_name
-			    << " " << stats.back().damage_defender_takes << "-"
-				<< stats.back().nattacks << " " << range << " "
-				<< stats.back().chance_to_hit_defender << "%";
+			att << "&" << stats.back().attack_icon << "," << font::BOLD_TEXT << attack_name
+			    << "\n" << stats.back().damage_defender_takes << "-"
+				<< stats.back().nattacks << " " << range << " ("
+				<< stats.back().chance_to_hit_defender << "%)\n"
+				<< attack_special << special_pad;
 
 			att << "," << string_table["versus"] << ",";
-			att << defend_name << " " << stats.back().damage_attacker_takes << "-"
-				<< stats.back().ndefends << " "
+			att << font::BOLD_TEXT << defend_name << "\n" << stats.back().damage_attacker_takes << "-"
+				<< stats.back().ndefends << " " << range << " ("
 				<< stats.back().chance_to_hit_attacker
-			    << "%,&" << stats.back().defend_icon;
+			    << "%)\n" << defend_special << special_pad << ",&" << stats.back().defend_icon;
 
 			items.push_back(att.str());
 		}
@@ -660,8 +651,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 		{
 			const events::event_context dialog_events_context;
-			dialogs::unit_preview_pane attacker_preview(gui_,&map_,u->second,true);
-			dialogs::unit_preview_pane defender_preview(gui_,&map_,enemy->second,false);
+			dialogs::unit_preview_pane attacker_preview(gui_,&map_,u->second,dialogs::unit_preview_pane::SHOW_BASIC,true);
+			dialogs::unit_preview_pane defender_preview(gui_,&map_,enemy->second,dialogs::unit_preview_pane::SHOW_BASIC,false);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&attacker_preview);
 			preview_panes.push_back(&defender_preview);

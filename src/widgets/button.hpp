@@ -34,8 +34,10 @@ public:
 
 	enum TYPE { TYPE_PRESS, TYPE_CHECK };
 
+	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
+
 	button(display& disp, const std::string& label, TYPE type=TYPE_PRESS,
-	       std::string button_image="");
+	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE);
 
 	virtual ~button() {}
 
