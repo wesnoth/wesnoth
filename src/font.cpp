@@ -21,8 +21,10 @@
 #include "tooltips.hpp"
 #include "util.hpp"
 
+#include <algorithm>
 #include <cstdio>
 #include <iostream>
+#include <list>
 #include <map>
 #include <sstream>
 #include <stack>
@@ -177,52 +179,151 @@ namespace {
 
 static const size_t max_text_line_width = 4096;
 
-SDL_Rect text_size(TTF_Font* font, const std::string& str, const SDL_Color& colour, int style)
+class text_surface
 {
-	const font_style_setter style_setter(font,style);
-	SDL_Rect res = {0,0,0,0};
-	int w = 0, h = 0;
+public:
+	text_surface(TTF_Font *font, std::string const &str, SDL_Color color, int style);
+	text_surface(TTF_Font *font, SDL_Color color, int style);
+	void set_text(std::string const &str);
+	bool operator==(text_surface const &t) const { return hash_ == t.hash_ && equal(t); }
+	bool operator!=(text_surface const &t) const { return hash_ != t.hash_ || !equal(t); }
+	size_t width() const;
+	size_t height() const;
+	surface const &get_surface() const;
+private:
+	int hash_;
+	TTF_Font *font_; // no font should ever be closed
+	std::string str_;
+	SDL_Color color_;
+	int style_;
+	mutable int w_, h_;
+	mutable surface surf_;
+	void hash();
+	void measure() const;
+	bool equal(text_surface const &t) const;
+};
 
-	TTF_SizeUTF8(font,str.c_str(),&w,&h);
-
-	res.w = size_t(w);
-	res.h = size_t(h);
-
-	return res;
+text_surface::text_surface(TTF_Font *font, std::string const &str, SDL_Color color, int style)
+  : font_(font), str_(str), color_(color), style_(style), w_(-1), h_(-1)
+{
+	hash();
 }
 
-surface render_text_internal(TTF_Font* font,const std::string& str,
-						 const SDL_Color& colour, int style)
+text_surface::text_surface(TTF_Font *font, SDL_Color color, int style)
+  : hash_(0), font_(font), color_(color), style_(style), w_(-1), h_(-1)
+{}
+
+void text_surface::set_text(std::string const &str)
 {
-	const font_style_setter style_setter(font,style);
+	str_ = str;
+	hash();
+}
+
+void text_surface::hash()
+{
+	int h = 0;
+	for(std::string::const_iterator it = str_.begin(), it_end = str_.end(); it != it_end; ++it)
+		h = ((h << 9) | (h >> (sizeof(int) * 8 - 9))) ^ (*it);
+	hash_ = h;
+}
+
+bool text_surface::equal(text_surface const &t) const
+{
+	return font_ == t.font_
+		&& color_.r == t.color_.r && color_.g == t.color_.g && color_.b == t.color_.b
+		&& style_ == t.style_
+		&& str_ == t.str_;
+}
+
+void text_surface::measure() const
+{
+	font_style_setter const style_setter(font_, style_);
+	TTF_SizeUTF8(font_, str_.c_str(), &w_, &h_);
+}
+
+size_t text_surface::width() const
+{
+	if (w_ == -1)
+		measure();
+	return w_;
+}
+
+size_t text_surface::height() const
+{
+	if (h_ == -1)
+		measure();
+	return h_;
+}
+
+surface const &text_surface::get_surface() const
+{
+	if (!surf_.null())
+		return surf_;
 
 	// Impose a maximal number of characters for a text line. Do now draw
 	// any text longer that that, to prevent a SDL buffer overflow
-	
-	const SDL_Rect r = text_size(font, str, colour, style);
-
-	if(r.w > max_text_line_width)
-		return NULL;
+	if (width() > max_text_line_width)
+		return surf_;
 
 	// Validate the UTF-8 string: workaround a SDL_TTF bug that makes it
 	// crash when used with an invalid UTF-8 string
-	std::string fixed_str = wstring_to_string(string_to_wstring(str));
+	std::string fixed_str = wstring_to_string(string_to_wstring(str_));
 
-	return TTF_RenderUTF8_Blended(font,fixed_str.c_str(),colour);
+	font_style_setter const style_setter(font_, style_);
+	surf_ = surface(TTF_RenderUTF8_Blended(font_, fixed_str.c_str(), color_));
+	return surf_;
+}
 
+class text_cache
+{
+public:
+	static text_surface &find(text_surface const &t);
+private:
+	typedef std::list< text_surface > text_list;
+	static text_list cache_;
+};
+
+text_cache::text_list text_cache::cache_;
+
+text_surface &text_cache::find(text_surface const &t)
+{
+	static size_t lookup_ = 0, hit_ = 0;
+	text_list::iterator it_bgn = cache_.begin(), it_end = cache_.end();
+	text_list::iterator it = std::find(it_bgn, it_end, t);
+	if (it != it_end) {
+		cache_.splice(it_bgn, cache_, it);
+		++hit_;
+	} else {
+		if (cache_.size() >= 50)
+			cache_.pop_back();
+		cache_.push_front(t);
+	}
+	if (++lookup_ % 1000 == 0) {
+		std::cerr << "Text cache: " << lookup_ << " lookups, "
+		  "hit percentage: " << (hit_ / 10) << "%" << std::endl;
+		hit_ = 0;
+	}
+	return cache_.front();
 }
 
 surface render_text(TTF_Font* font,const std::string& text, const SDL_Color& colour, int style)
 {
+	if (font == NULL)
+		return surface();
+
 	// XXX Changed by erl, to not strip when rendering text. Works everywhere?
 	const std::vector<std::string> lines = config::split(text,'\n', config::REMOVE_EMPTY);
 	std::vector<surface> surfaces;
+	surfaces.reserve(lines.size());
 	size_t width = 0, height = 0;
-	for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
-		if(*ln != "" && font != NULL) {
-			surface res(render_text_internal(font,*ln,colour,style));
+	text_surface txt_surf(font, colour, style);
 
-			if(res != NULL) {
+	for(std::vector< std::string >::const_iterator ln = lines.begin(), ln_end = lines.end(); ln != ln_end; ++ln) {
+		if (!ln->empty()) {
+			txt_surf.set_text(*ln);
+			surface const &res = text_cache::find(txt_surf).get_surface();
+
+			if (!res.null()) {
 				surfaces.push_back(res);
 				width = maximum<size_t>(res->w,width);
 				height += res->h;
@@ -230,22 +331,22 @@ surface render_text(TTF_Font* font,const std::string& text, const SDL_Color& col
 		}
 	}
 
-	if(surfaces.empty()) {
-		return NULL;
-	} else if(surfaces.size() == 1) {
+	if (surfaces.empty()) {
+		return surface();
+	} else if (surfaces.size() == 1) {
 		return surfaces.front();
 	} else {
 
 		surface res(create_compatible_surface(surfaces.front(),width,height));
-		if(res == NULL) {
-			return NULL;
-		}
+		if (res.null())
+			return res;
 
 		size_t ypos = 0;
-		for(std::vector<surface>::const_iterator i = surfaces.begin(); i != surfaces.end(); ++i) {
-			SDL_SetAlpha(*i,0,0);
-			SDL_Rect dstrect = {0,ypos,(*i)->w,(*i)->h};
-			SDL_BlitSurface(*i,NULL,res,&dstrect);
+		for(std::vector< surface >::const_iterator i = surfaces.begin(),
+		    i_end = surfaces.end(); i != i_end; ++i) {
+			SDL_SetAlpha(*i, 0, 0); // direct blit without alpha blending
+			SDL_Rect dstrect = {0, ypos};
+			SDL_BlitSurface(*i, NULL, res, &dstrect);
 			ypos += (*i)->h;
 		}
 
@@ -316,11 +417,7 @@ surface get_rendered_text(const std::string& str, int size, const SDL_Color& col
 		return NULL;
 	}
 
-	surface res = render_text(font,str,colour,style);
-	if(res == NULL) {
-		return NULL;
-	}
-	return res;
+	return render_text(font, str, colour, style);
 }
 
 
@@ -338,8 +435,10 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 
 	const std::string etext = make_text_ellipsis(text, size, area.w);
 
-	if(gui_surface == NULL) {
-		return text_size(font,etext,colour,style);
+	if (gui_surface.null()) {
+		text_surface const &u = text_cache::find(text_surface(font, text, colour, style));
+		SDL_Rect res = {0, 0, u.width(), u.height()};
+		return res;
 	}
 
 	surface surface(render_text(font,etext,colour,style));
@@ -684,45 +783,8 @@ int floating_label::xpos(size_t width) const
 
 surface floating_label::create_surface()
 {
-	if(surf_ == NULL) {
-
-		const std::vector<std::string> lines = config::split(text_,'\n');
-		std::vector<surface> surfaces;
-		for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
-			SDL_Color colour = colour_;
-			const int size = font_size_;
-			const int style = 0;
-			const std::string& str = *ln;
-
-			TTF_Font* const font = get_font(size);
-
-			if(str != "" && font != NULL) {
-				surfaces.push_back(surface(font::render_text(font,str,colour,style)));
-			}
-		}
-
-		if(surfaces.empty()) {
-			return NULL;
-		} else if(surfaces.size() == 1) {
-			surf_.assign(surfaces.front());
-		} else {
-			size_t width = 0, height = 0;
-			std::vector<surface>::const_iterator i;
-			for(i = surfaces.begin(); i != surfaces.end(); ++i) {
-				width = maximum<size_t>((*i)->w,width);
-				height += (*i)->h;
-			}
-
-			surf_.assign(create_compatible_surface(surfaces.front(),width,height));
-
-			size_t ypos = 0;
-			for(i = surfaces.begin(); i != surfaces.end(); ++i) {
-				SDL_SetAlpha(*i,0,0);
-				SDL_Rect dstrect = {0,ypos,(*i)->w,(*i)->h};
-				SDL_BlitSurface(*i,NULL,surf_,&dstrect);
-				ypos += (*i)->h;
-			}
-		}
+	if (surf_.null()) {
+		surf_ = font::render_text(get_font(font_size_), text_, colour_, 0);
 
 		if(surf_ == NULL) {
 			return NULL;
