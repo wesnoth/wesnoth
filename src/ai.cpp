@@ -102,7 +102,7 @@ const team& ai_interface::current_team() const
 }
 
 
-void ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
+gamemap::location ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
 	assert(info_.units.find(to) == info_.units.end() || from == to);
 
@@ -115,7 +115,7 @@ void ai_interface::move_unit(location from, location to, std::map<location,paths
 		std::cout << "Could not find unit at " << from.x << ", "
 		          << from.y << "\n";
 		assert(false);
-		return;
+		return location();
 	}
 
 	recorder.add_movement(from,to);
@@ -146,6 +146,30 @@ void ai_interface::move_unit(location from, location to, std::map<location,paths
 
 		if(rt != p.routes.end()) {
 			std::vector<location> steps = rt->second.steps;
+
+			//check if there are any invisible units that we uncover
+			for(std::vector<location>::iterator i = steps.begin(); i != steps.end(); ++i) {
+				location adj[6];
+				get_adjacent_tiles(*i,adj);
+				size_t n;
+				for(n = 0; n != 6; ++n) {
+
+					//see if there is an enemy unit next to this tile. Note that we don't
+					//actually have to check if it's invisible, since it being invisible is
+					//the only possibility
+					const unit_map::const_iterator invisible_unit = info_.units.find(adj[n]);
+					if(invisible_unit != info_.units.end() && current_team().is_enemy(invisible_unit->second.side())) {
+						to = *i;
+						steps.erase(i,steps.end());
+						break;
+					}
+				}
+
+				if(n != 6) {
+					break;
+				}
+			}
+
 			steps.push_back(to); //add the destination to the steps
 			info_.disp.move_unit(steps,current_unit);
 		}
@@ -164,6 +188,8 @@ void ai_interface::move_unit(location from, location to, std::map<location,paths
 	if((info_.teams.front().uses_fog() || info_.teams.front().uses_shroud()) && !info_.teams.front().fogged(to.x,to.y)) {
 		game_events::fire("sighted",to);
 	}
+
+	return to;
 }
 
 void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement)
@@ -332,7 +358,10 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		const bool defender_human = (tgt != units_.end()) ?
 		             teams_[tgt->second.side()-1].is_human() : false;
 
-		move_unit(from,to,possible_moves);
+		const location arrived_at = move_unit(from,to,possible_moves);
+		if(arrived_at != to) {
+			return true;
+		}
 
 		attack_enemy(to,target_loc,weapon);
 
@@ -474,9 +503,14 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 
 bool ai::should_retreat(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc) const
 {
+	const double caution = current_team().caution();
+	if(caution <= 0.0) {
+		return false;
+	}
+
 	const double our_power = power_projection(loc,srcdst,dstsrc);
 	const double their_power = power_projection(loc,enemy_srcdst,enemy_dstsrc);
-	return their_power > 2.0*our_power + our_power*current_team().aggression();
+	return caution*their_power > 2.0*our_power + our_power*current_team().aggression();
 }
 
 bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
@@ -609,10 +643,10 @@ void ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 			}
 		}
 
-		move_unit(move.first,move.second,possible_moves);
+		const location arrived_at = move_unit(move.first,move.second,possible_moves);
 
 		//if we're going to attack someone
-		if(weapon != -1) {
+		if(weapon != -1 && arrived_at == move.second) {
 
 			const location& attacker = move.second;
 				
@@ -638,7 +672,7 @@ void ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		//don't allow any other units to move onto the tile our unit
 		//just moved onto
 		typedef std::multimap<location,location>::iterator Itor;
-		std::pair<Itor,Itor> del = dstsrc.equal_range(move.second);
+		std::pair<Itor,Itor> del = dstsrc.equal_range(arrived_at);
 		dstsrc.erase(del.first,del.second);
 	}
 }

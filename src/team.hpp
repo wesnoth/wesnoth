@@ -43,7 +43,7 @@ public:
 		int income_per_village;
 		std::set<std::string> can_recruit;
 		std::vector<std::string> recruitment_pattern;
-		double aggression;
+		double aggression, caution;
 		std::vector<int> enemies;
 		std::string team_name;
 
@@ -85,6 +85,7 @@ public:
 
 	bool is_enemy(int side) const;
 	double aggression() const;
+	double caution() const;
 
 	bool is_human() const;
 	bool is_network() const;

@@ -67,6 +67,12 @@ team::team_info::team_info(const config& cfg)
 	else
 		aggression = atof(aggression_val.c_str());
 
+	const std::string& caution_val = cfg["caution"];
+	if(caution_val.empty())
+		caution = 0.0;
+	else
+		caution = atof(caution_val.c_str());
+
 	const std::string& enemies_list = cfg["enemy"];
 	if(!enemies_list.empty()) {
 		std::vector<std::string> venemies = config::split(enemies_list);
@@ -359,6 +365,11 @@ bool team::is_enemy(int n) const
 double team::aggression() const
 {
 	return info_.aggression;
+}
+
+double team::caution() const
+{
+	return info_.caution;
 }
 
 bool team::is_human() const

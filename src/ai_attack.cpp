@@ -410,7 +410,9 @@ double ai::attack_analysis::rating(double aggression) const
 					                     (target_value/resources_used) -
 	   (1.0-aggression)*avg_damage_taken*(resources_used/target_value))/10.0;
 
-	value += support - vulnerability*terrain_quality;
+	if(!leader_threat && vulnerability*terrain_quality > 0.0) {
+		value *= support/(vulnerability*terrain_quality);
+	}
 
 	value /= ((resources_used/2) + (resources_used/2)*terrain_quality);
 
