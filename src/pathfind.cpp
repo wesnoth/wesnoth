@@ -340,8 +340,6 @@ double shortest_path_calculator::cost(const gamemap::location& loc, double so_fa
 	//supposing we had 2 movement left, and wanted to move onto a hex which
 	//takes 3 movement, it's going to cost us 5 movement in total, since we
 	//sacrifice this turn's movement. Take that into account here.
-	assert(so_far == double(int(so_far)));
-
 	const int current_cost(static_cast<int>(so_far));
 
 	const int starting_movement = unit_.movement_left();
