@@ -802,13 +802,14 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	std::cerr << "done generating rivers...\n";
 	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
+	const size_t default_dimensions = 40*40*9;
 
 	//convert grassland terrain to other types of flat terrain.
 	//we generate a 'temperature map' which uses the height generation algorithm to
 	//generate the temperature levels all over the map. Then we can use a combination
 	//of height and terrain to divide terrain up into more interesting types than the default
 	const height_map temperature_map = generate_height_map(width,height,
-	                                                       atoi(cfg["temperature_iterations"].c_str()),
+	                                                       (atoi(cfg["temperature_iterations"].c_str())*width*height)/default_dimensions,
 														   atoi(cfg["temperature_size"].c_str()),0,0);
 
 	std::cerr << "generated temperature map...\n";
@@ -975,7 +976,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				//convert to bridge means that we want to convert depending
 				//upon the direction the road is going.
 				//typically it will be in a format like,
-				//convert_to_bridge=|,/,\
+				//convert_to_bridge=|,/,\ 
 				// '|' will be used if the road is going north-south
 				// '/' will be used if the road is going south west-north east
 				// '\' will be used if the road is going south east-north west

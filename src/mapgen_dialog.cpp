@@ -30,6 +30,9 @@ default_map_generator::default_map_generator(const config* cfg)
 		if(height > 0)
 			height_ = height;
 
+		default_width_ = width_;
+		default_height_ = height_;
+
 		const int iterations = ::atoi((*cfg)["iterations"].c_str());
 		if(iterations > 0)
 			iterations_ = iterations;
@@ -125,8 +128,8 @@ void default_map_generator::user_config(display& disp)
 	players_slider.set_value(nplayers_);
 
 	const int min_width = 20;
-	const int max_width = 200;
-	const int max_height = 200;
+	const int max_width = 100;
+	const int max_height = 100;
 	const int extra_size_per_player = 2;
 	
 	slider_rect.y = width_rect.y;
@@ -270,14 +273,15 @@ std::string default_map_generator::create_map(const std::vector<std::string>& ar
 
 std::string default_map_generator::generate_map(const std::vector<std::string>& args, std::map<gamemap::location,std::string>* labels)
 {
-	size_t iterations = iterations_;
+	const size_t hill_size = (hill_size_*width_*height_)/(default_width_*default_height_);
+	size_t iterations = (iterations_*width_*height_)/(default_width_*default_height_);
 	size_t island_size = 0;
 	size_t island_off_center = 0;
 	size_t max_lakes = max_lakes_;
 
 	if(island_size_ >= max_coastal) {
 
-		//islands look good with much fewer iterations than normal, and fewer lakes
+		//islands look good with much fewer iterations than normal, and fewer lake
 		iterations /= 10;
 		max_lakes /= 9;
 
