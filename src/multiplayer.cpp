@@ -385,26 +385,16 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				if(res == -1)
 					break;
 
+				bool show_replay = false;
+
 				//if we're loading a saved game
 				config loaded_level;
 				if(size_t(res) == options.size()-1) {
-					const std::vector<std::string>& games = get_saves_list();
-					if(games.empty()) {
-						gui::show_dialog(disp,NULL,
-						                 string_table["no_saves_heading"],
-								 string_table["no_saves_message"],
-						                 gui::OK_ONLY);
-						break;
-					}
-
-					const int res = gui::show_dialog(disp,NULL,
-			                                 string_table["load_game_heading"],
-			                                 string_table["load_game_message"],
-			                                 gui::OK_CANCEL, &games);
-					if(res == -1)
+					const std::string game = dialogs::load_game_dialog(disp,&show_replay);
+					if(game == "")
 						break;
 
-					load_game(units_data,games[res],state);
+					load_game(units_data,game,state);
 
 					if(state.campaign_type != "multiplayer") {
 						gui::show_dialog(disp,NULL,"",
@@ -724,13 +714,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	
 						recorder.set_save_info(state);
 
+						//see if we should show the replay of the game so far
 						if(!recorder.empty()) {
-							const int res = gui::show_dialog(disp,NULL,
-					               "", string_table["replay_game_message"],
-								   gui::YES_NO);
-							//if yes, then show the replay, otherwise
-							//skip showing the replay
-							if(res == 0) {
+							if(show_replay) {
 								recorder.set_skip(0);
 							} else {
 								std::cerr << "skipping...\n";

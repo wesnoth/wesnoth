@@ -206,7 +206,7 @@ void turn_info::handle_event(const SDL_Event& event)
 					if(u != units_.end() && (u->second.side() == team_num_ || gui_.fogged(u->first.x,u->first.y))) {
 						u = units_.end();
 					}
-				} else if(u->second.side() != team_num_) {
+				} else if(u->second.side() != team_num_ || gui_.fogged(u->first.x,u->first.y)) {
 					u = units_.end();
 				}
 
@@ -285,7 +285,7 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 		const unit_map::iterator un = units_.find(new_hex);
 
 		if(un != units_.end() && un->second.side() != team_num_ &&
-		   current_paths_.routes.empty()) {
+		   current_paths_.routes.empty() && !gui_.fogged(un->first.x,un->first.y)) {
 			unit_movement_resetter move_reset(un->second);
 
 			const bool ignore_zocs = un->second.type().is_skirmisher();
@@ -545,7 +545,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		gui_.set_route(NULL);
 
 		const unit_map::iterator it = units_.find(hex);
-		if(it != units_.end() && it->second.side() == team_num_) {
+		if(it != units_.end() && it->second.side() == team_num_ && !gui_.fogged(it->first.x,it->first.y)) {
 			const bool ignore_zocs = it->second.type().is_skirmisher();
 			const bool teleport = it->second.type().teleports();
 			current_paths_ = paths(map_,gameinfo_,units_,hex,teams_,
@@ -682,7 +682,7 @@ void turn_info::cycle_units()
 		}
 	}
 
-	if(it != units_.end()) {
+	if(it != units_.end() && !gui_.fogged(it->first.x,it->first.y)) {
 		const bool ignore_zocs = it->second.type().is_skirmisher();
 		const bool teleport = it->second.type().teleports();
 		current_paths_ = paths(map_,gameinfo_,units_,

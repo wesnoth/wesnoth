@@ -153,17 +153,36 @@ void write_game(const game_state& game, config& cfg)
 	cfg.children["start"].push_back(new config(game.starting_pos));
 }
 
-std::vector<std::string> get_saves_list()
+//a structure for comparing to save_info objects based on their modified time.
+//if the times are equal, will order based on the name
+struct save_info_less_time {
+	bool operator()(const save_info& a, const save_info& b) const {
+		return a.time_modified > b.time_modified ||
+		       a.time_modified == b.time_modified && a.name > b.name;
+	}
+};
+
+std::vector<save_info> get_saves_list()
 {
-	std::vector<std::string> res;
-	get_files_in_dir(get_saves_dir(),&res);
-	for(std::vector<std::string>::iterator i = res.begin(); i != res.end(); ++i)
+	const std::string& saves_dir = get_saves_dir();
+
+	std::vector<std::string> saves;
+	get_files_in_dir(saves_dir,&saves);
+
+	std::vector<save_info> res;
+	for(std::vector<std::string>::iterator i = saves.begin(); i != saves.end(); ++i) {
+		const time_t modified = file_last_access(saves_dir + "/" + *i);
+
 		std::replace(i->begin(),i->end(),'_',' ');
+		res.push_back(save_info(*i,modified));
+	}
+
+	std::sort(res.begin(),res.end(),save_info_less_time());
+
 	return res;
 }
 
-
-bool save_game_exists(const std::string & name)
+bool save_game_exists(const std::string& name)
 {
 	std::string fname = name;
 	std::replace(fname.begin(),fname.end(),' ','_');

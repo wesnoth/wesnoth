@@ -100,8 +100,15 @@ struct game_state
 	config starting_pos;
 };
 
+struct save_info {
+	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
+	std::string name;
+	time_t time_modified;
+};
+
 //function to get a list of available saves.
-std::vector<std::string> get_saves_list();
+std::vector<save_info> get_saves_list();
+
 // function returns true iff there is already savegame with that name
 bool save_game_exists(const std::string & name);
 

@@ -15,9 +15,12 @@
 #include "language.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
+#include "util.hpp"
 
 #include <map>
+#include <sstream>
 #include <string>
+#include <time.h>
 #include <vector>
 
 namespace dialogs
@@ -116,7 +119,7 @@ int get_save_name(display & disp,const std::string& caption, const std::string& 
 
 std::string load_game_dialog(display& disp, bool* show_replay)
 {
-	const std::vector<std::string>& games = get_saves_list();
+	const std::vector<save_info>& games = get_saves_list();
 
 	if(games.empty()) {
 		gui::show_dialog(disp,NULL,
@@ -124,6 +127,16 @@ std::string load_game_dialog(display& disp, bool* show_replay)
 						 string_table["no_saves_message"],
 		                 gui::OK_ONLY);
 		return "";
+	}
+
+	std::vector<std::string> items;
+	for(std::vector<save_info>::const_iterator i = games.begin(); i != games.end(); ++i) {
+		std::string name = i->name;
+		name.resize(minimum<size_t>(name.size(),40));
+
+		std::stringstream str;
+		str << name << "," << ::ctime(&(i->time_modified));
+		items.push_back(str.str());
 	}
 
 	//create an option for whether the replay should be shown or not
@@ -135,7 +148,7 @@ std::string load_game_dialog(display& disp, bool* show_replay)
 	const int res = gui::show_dialog(disp,NULL,
 					 string_table["load_game_heading"],
 					 string_table["load_game_message"],
-			         gui::OK_CANCEL,&games,NULL,"",NULL,NULL,&options);
+			         gui::OK_CANCEL,&items,NULL,"",NULL,NULL,&options);
 
 	if(res == -1)
 		return "";
@@ -143,7 +156,7 @@ std::string load_game_dialog(display& disp, bool* show_replay)
 	if(show_replay != NULL)
 		*show_replay = options.front().checked;
 
-	return games[res];
+	return games[res].name;
 }
 
 } //end namespace dialogs
