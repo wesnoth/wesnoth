@@ -15,12 +15,11 @@
 
 #include "display.hpp"
 #include "config.hpp"
+#include "multiplayer_connect.hpp"
 #include "unit_types.hpp"
 
 namespace mp {
 	
-enum controller { CNTR_NETWORK = 0, CNTR_LOCAL, CNTR_COMPUTER, CNTR_EMPTY, CNTR_LAST };
-
 /**
  * This is the main entry points of multiplayer mode.
  */

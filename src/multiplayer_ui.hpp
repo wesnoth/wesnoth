@@ -13,7 +13,6 @@
 #ifndef MULTIPLAYER_UI_HPP_INCLUDED
 #define MULTIPLAYER_UI_HPP_INCLUDED
 
-#include "multiplayer.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"

@@ -24,6 +24,8 @@
 
 namespace mp {
 
+enum controller { CNTR_NETWORK = 0, CNTR_LOCAL, CNTR_COMPUTER, CNTR_EMPTY, CNTR_LAST };
+
 class connect : public mp::ui
 {
 public:
