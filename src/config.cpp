@@ -1576,13 +1576,14 @@ config config::get_diff(const config& c) const
 			} else {
 				//we have to work out what the most appropriate operation --
 				//delete, insert, or change is the best to get b[bi] looking like a[ai]
+				std::stringstream buf;
+
 				//if b has more elements than a, then we assume this element is an
 				//element that needs deleting
 				if(b.size() - bi > a.size() - ai) {
 					config& new_delete = res.add_child("delete_child");
-					char buf[50];
-					sprintf(buf,"%lu",bi-ndeletes);
-					new_delete.values["index"] = buf;
+					buf << bi - ndeletes;
+					new_delete.values["index"] = buf.str();
 					new_delete.add_child(*itor);
 
 					++ndeletes;
@@ -1593,9 +1594,8 @@ config config::get_diff(const config& c) const
 				//element that needs inserting
 				else if(b.size() - bi < a.size() - ai) {
 					config& new_insert = res.add_child("insert_child");
-					char buf[50];
-					sprintf(buf,"%lu",ai);
-					new_insert.values["index"] = buf;
+					buf << ai;
+					new_insert.values["index"] = buf.str();
 					new_insert.add_child(*itor,*a[ai]);
 
 					++ai;
@@ -1605,9 +1605,8 @@ config config::get_diff(const config& c) const
 				//changing this element to match
 				else {
 					config& new_change = res.add_child("change_child");
-					char buf[50];
-					sprintf(buf,"%lu",bi);
-					new_change.values["index"] = buf;
+					buf << bi;
+					new_change.values["index"] = buf.str();
 					new_change.add_child(*itor,a[ai]->get_diff(*b[bi]));
 
 					++ai;

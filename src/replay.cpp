@@ -105,9 +105,9 @@ namespace {
 	config create_verification(const unit_map& units)
 	{
 		config res;
-		char buf[50];
-		sprintf(buf,"%lu",units.size());
-		res["num_units"] = buf;
+		std::stringstream buf;
+		buf << units.size();
+		res["num_units"] = buf.str();
 
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			config u;

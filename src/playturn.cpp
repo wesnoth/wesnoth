@@ -1607,9 +1607,9 @@ void turn_info::write_game_snapshot(config& start) const
 
 	start["snapshot"] = "yes";
 
-	char buf[50];
-	sprintf(buf,"%lu",gui_.playing_team());
-	start["playing_team"] = buf;
+	std::stringstream buf;
+	buf << gui_.playing_team();
+	start["playing_team"] = buf.str();
 
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		const int side_num = t - teams_.begin() + 1;
@@ -1617,8 +1617,9 @@ void turn_info::write_game_snapshot(config& start) const
 		config& side = start.add_child("side");
 		t->write(side);
 		side["no_leader"] = "yes";
-		sprintf(buf,"%d",side_num);
-		side["side"] = buf;
+		buf.str(std::string());
+		buf << side_num;
+		side["side"] = buf.str();
 
 		for(std::map<gamemap::location,unit>::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if(i->second.side() == side_num) {

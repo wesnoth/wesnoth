@@ -102,12 +102,12 @@ gamestatus::gamestatus(config& time_cfg, int num_turns) :
 
 void gamestatus::write(config& cfg) const
 {
-	char buf[50];
-	sprintf(buf,"%lu",turn_);
-	cfg["turn_at"] = buf;
-
-	sprintf(buf,"%d",numTurns_);
-	cfg["turns"] = buf;
+	std::stringstream buf;
+	buf << turn_;
+	cfg["turn_at"] = buf.str();
+	buf.str(std::string());
+	buf << numTurns_;
+	cfg["turns"] = buf.str();
 
 	std::vector<time_of_day>::const_iterator t;
 	for(t = times_.begin(); t != times_.end(); ++t) {
