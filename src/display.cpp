@@ -846,6 +846,15 @@ gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
 	return terrains[index];
 }
 
+namespace {
+	SDL_Surface* get_side_image(display& disp, int side)
+	{
+		std::stringstream str;
+		str << "side" << side << ".png";
+		return disp.getImage(str.str());
+	}
+}
+
 void display::draw_tile(int x, int y, SDL_Surface* unit_image,
                         double highlight_ratio, Pixel blend_with)
 
@@ -1185,6 +1194,11 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 		draw_unit(xpos-xsrc,ypos-ysrc,unit_image,face_left,false,
 		          highlight_ratio,blend_with);
+	}
+
+	SDL_Surface* const flag = get_side_image(*this,it->second.side());
+	if(flag != NULL) {
+		draw_unit(xpos-xsrc,ypos-ysrc,flag,true,false);
 	}
 
 	const bool energy_uses_alpha = highlight_ratio < 1.0 && blend_with == 0;
