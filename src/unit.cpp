@@ -272,7 +272,7 @@ void unit::set_resting(bool resting)
 	resting_ = resting;	
 }
 
-bool get_resting() const
+bool is_resting() const
 {
 	return resting_;
 }

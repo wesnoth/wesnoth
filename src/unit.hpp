@@ -63,7 +63,7 @@ public:
 	void new_level();
 
 	void set_resting(bool resting);
-	bool get_resting() const;
+	bool is_resting() const;
 
 	bool gets_hit(int damage);
 	void heal();
