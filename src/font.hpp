@@ -62,12 +62,15 @@ extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, BLAC
 //
 //a bounding rectangle of the text is returned. If gui is NULL, then the
 //text will not be drawn, and a bounding rectangle only will be returned.
+
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
                    int x, int y, SDL_Surface* bg=NULL,
                    bool use_tooltips=false, MARKUP use_markup=USE_MARKUP);
 
-
+// Returns a SDL surface containing only the text rendered in a given colour.
+SDL_Surface* get_rendered_text(const std::string& str, int size,      
+			       const SDL_Color& colour);
   
 bool is_format_char(char c);
 

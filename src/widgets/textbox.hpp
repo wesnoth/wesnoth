@@ -41,14 +41,28 @@ protected:
 
 private:
 	std::string text_;
-	mutable unsigned int firstOnScreen_;
-	unsigned int cursor_;
+	
+	// mutable unsigned int firstOnScreen_;
+	int cursor_;
+	int selstart_;
+	int selend_;
+	bool grabmouse_;
+
+	int text_pos_;
+	int cursor_pos_;
+	std::vector<int> char_pos_;
+
 	bool show_cursor_;
+	shared_sdl_surface text_image_;
+	SDL_Rect text_size_;
 
 	void handle_event(const SDL_Event& event);
 
 	void draw();
 	void draw_cursor(int pos, display &disp) const;
+	void update_text_cache(bool reset = false);
+	bool is_selection();
+	void erase_selection();
 };
 
 }

@@ -183,6 +183,22 @@ SDL_Surface* render_text(TTF_Font* font,const std::string& str,
 	}
 }
 
+/*
+int text_size(TTF_Font* font,const std::string& str, int &w, int &h)
+{
+	switch(charset())
+	{
+	case CHARSET_UTF8:
+		return TTF_SizeUTF8(font, str.c_str(), &w, &h);
+	case CHARSET_LATIN1:
+		return TTF_SizeText(font, str.c_str(), &w, &h);
+	default:
+		std::cerr << "Unrecognized charset\n";
+		return -1;
+	}
+}
+*/
+
 //function which will parse the markup tags at the front of a string
 std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
 										 int* font_size, SDL_Color* colour)
@@ -234,10 +250,52 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 
 }
 
-SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
-                        const SDL_Color& colour, const std::string& text,
-                        int x, int y, SDL_Surface* bg, bool use_tooltips)
+/*
+SDL_Rect get_text_size(const std::string &str, int size)
 {
+	TTF_Font* const font = get_font(size);
+
+	SDL_Rect tsize;
+	int w, h;
+	int res = text_size(font, str, w, h);
+	if(res == -1) {
+		std::cerr << "Could not get ttf size: '" << str << "'\n";
+		SDL_Rect res;
+		res.x = 0; res.y = 0; res.w = 0; res.h = 0;
+		return res;
+	}
+	tsize.x = 0;
+	tsize.y = 0;
+	tsize.w = w;
+	tsize.h = h;
+
+	return tsize;
+}
+*/
+
+SDL_Surface* get_rendered_text(const std::string& str, int size,
+			       const SDL_Color& colour)
+{
+	TTF_Font* const font = get_font(size);
+	if(font == NULL) {
+		std::cerr << "Could not get font\n";
+		return NULL;
+	}
+
+	SDL_Surface *res = render_text(font,str,colour);
+	if(res == NULL) {
+		std::cerr << "Could not render ttf: '" << str << "'\n";
+		return NULL;
+	}
+	return res;
+}
+
+
+SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size,
+		   const SDL_Color& colour, const std::string& text,
+		   int x, int y, SDL_Surface* bg, bool use_tooltips)
+{
+	
 	TTF_Font* const font = get_font(size);
 	if(font == NULL) {
 		std::cerr << "Could not get font\n";
@@ -277,7 +335,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 				std::fill(txt.end()-3,txt.end(),'.');
 			}
 
-			return draw_text_line(gui,area,size,colour,txt,x,y,bg,false);
+			return draw_text_line(gui_surface,area,size,colour,txt,x,y,bg,false);
 		}
 
 		dest.w = area.x + area.w - dest.x;
@@ -287,11 +345,11 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		dest.h = area.y + area.h - dest.y;
 	}
 
-	if(gui != NULL) {
+	if(gui_surface != NULL) {
 		SDL_Rect src = dest;
 		src.x = 0;
 		src.y = 0;
-		sdl_safe_blit(surface,&src,gui->video().getSurface(),&dest);
+		sdl_safe_blit(surface,&src,gui_surface,&dest);
 	}
 
 	if(use_tooltips) {
@@ -299,6 +357,21 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 	}
 
 	return dest;
+}
+
+SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
+                        const SDL_Color& colour, const std::string& text,
+                        int x, int y, SDL_Surface* bg, bool use_tooltips)
+{
+	SDL_Surface * surface;
+	
+	if(gui == NULL) {
+		surface = NULL;
+	} else {
+		surface = gui->video().getSurface();
+	}
+	
+	return draw_text_line(surface, area, size, colour, text, x, y, bg, use_tooltips);
 }
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
