@@ -90,7 +90,6 @@ void internal_preprocess_file(const std::string& fname,
                               int depth, std::vector<char>& res,
                               std::vector<line_source>* lines_src, int& line)
 {
-	log_scope("internal preprocess");
 	//if it's a directory, we process all files in the directory
 	//that end in .cfg
 	if(is_directory(fname)) {
