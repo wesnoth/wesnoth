@@ -721,6 +721,26 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	}
 
+	//displaying a message on-screen
+	else if(cmd == "print") {
+		const std::string& text = cfg["text"];
+		const std::string& id = cfg["id"];
+		const int size = lexical_cast_default<int>(cfg["size"],12);
+		const int lifetime = lexical_cast_default<int>(cfg["duration"],20);
+		const int red = lexical_cast_default<int>(cfg["red"],0);
+		const int green = lexical_cast_default<int>(cfg["red"],0);
+		const int blue = lexical_cast_default<int>(cfg["red"],0);
+
+		SDL_Color colour = {red,green,blue,255};
+
+		const std::string& msg = translate_string_default(id,text);
+		if(msg != "") {
+			const SDL_Rect rect = screen->map_area();
+			font::add_floating_label(msg,size,colour,rect.w/2,rect.h/2,
+			                         0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
+		}
+	}
+
 	//displaying a message dialog
 	else if(cmd == "message") {
 		std::map<gamemap::location,unit>::iterator speaker = units->end();

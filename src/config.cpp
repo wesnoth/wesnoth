@@ -145,6 +145,47 @@ void write_file(const std::string& fname, const std::string& data)
 
 namespace {
 
+//this function takes a macro and parses it into the macro followed by its
+//arguments. Arguments are seperated by spaces, but an argument appearing inside
+//braces is treated as a single argument.
+std::vector<std::string> parse_macro_arguments(const std::string& macro)
+{
+	const std::vector<std::string> args = config::split(macro,' ');
+	std::vector<std::string> res;
+	if(args.empty()) {
+		res.push_back("");
+		return res;
+	}
+
+	res.push_back(args.front());
+
+	bool in_braces = false;
+	for(std::vector<std::string>::const_iterator i = args.begin()+1; i != args.end(); ++i) {
+		size_t begin = 0, end = i->size();
+		if((*i)[0] == '{') {
+			++begin;
+		}
+
+		if((*i)[i->size()-1] == '}') {
+			in_braces = false;
+			--end;
+		}
+
+		if(!in_braces) {
+			res.push_back("");
+		}
+
+		res.back() += " " + i->substr(begin,end-begin);
+		config::strip(res.back());
+
+		if(begin == 1) {
+			in_braces = true;
+		}
+	}
+
+	return res;
+}
+
 void internal_preprocess_file(const std::string& fname,
                               preproc_map& defines_map,
                               int depth, std::vector<char>& res,
@@ -165,8 +206,18 @@ void internal_preprocess_data(const std::string& data,
 		}
 
 		if(c == '{') {
+			int bracket_depth = 1;
 			std::stringstream newfile;
-			for(++i; i != data.end() && *i != '}'; ++i) {
+			for(++i; i != data.end(); ++i) {
+				if(*i == '{') {
+					bracket_depth++;
+				} else if(*i == '}') {
+					bracket_depth--;
+					if(bracket_depth == 0) {
+						break;
+					}
+				}
+
 				newfile << *i;
 			}
 
@@ -174,7 +225,7 @@ void internal_preprocess_data(const std::string& data,
 				break;
 
 			const std::string newfilename = newfile.str();
-			std::vector<std::string> items = config::split(newfilename,' ');
+			std::vector<std::string> items = parse_macro_arguments(newfilename);
 			const std::string symbol = items.front();
 
 			//if this is a known pre-processing symbol, then we insert
