@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-16 14:31+0200\n"
-"PO-Revision-Date: 2004-09-16 15:54-0000\n"
+"PO-Revision-Date: 2004-09-17 15:15-0000\n"
 "Last-Translator: Pieter Vermeylen <pitoe@iname.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -4915,6 +4915,13 @@ msgid ""
 "the life of an Outlaw. She dreams of founding her own Queendom with the "
 "plunder she finds on the road."
 msgstr ""
+"De Brigant-Prinses, van adel bij geboorte, heeft de kunst van het zwaard "
+"geleerd bij de grootste generalen en haar tactisch inzicht bij de sluwste "
+"strategen. Het resultaat is een groot krijger en een groot leider. "
+"Jammergenoeg is ze het product van een falende aristocratie en ze heeft "
+"ervoor gekozen om het leven van een brigant te leiden. Ze droomt ervan haar "
+"eigen koningenrijk te stichten met de schatten die ze langs de weg vind. Ze "
+"zal er nog in slagen ook."
 
 #: data/units/Outlaw_Queen.cfg:3
 msgid "Outlaw Queen"
@@ -4933,6 +4940,13 @@ msgid ""
 "Queendom with the plunder she finds on the road, and she is ever so close to "
 "that goal."
 msgstr ""
+"De Brigant-Koningin, van adel bij geboorte, heeft de kunst van het zwaard "
+"geleerd bij de grootste generalen en haar tactisch inzicht bij de sluwste "
+"strategen. Het resultaat is een groot krijger en een groot leider. "
+"Jammergenoeg is ze het product van een falende aristocratie en ze heeft "
+"ervoor gekozen om het leven van een brigant te leiden. Ze droomt ervan haar "
+"eigen koningenrijk te stichten met de schatten die ze langs de weg vind. Ze "
+"zal er nog in slagen ook."
 
 #: data/units/Paladin.cfg:3
 msgid "Paladin"
@@ -7011,9 +7025,8 @@ msgstr ""
 "(Je moet veteranen uit vorige scenarios hebben)"
 
 #: src/playturn.cpp:1776
-#, fuzzy
 msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "goudstukken om een eenheid op te roepen"
+msgstr "Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
 
 #: src/playturn.cpp:1799
 msgid "Dismiss Unit"
@@ -7179,19 +7192,16 @@ msgid "Chaotic units"
 msgstr "Chaotische eenheden"
 
 #: src/reports.cpp:312
-#, fuzzy
 msgid "Owned village"
-msgstr "Dorpen"
+msgstr "Ingenomen Dorpen"
 
 #: src/reports.cpp:314
-#, fuzzy
 msgid "Enemy village"
-msgstr "Dorpen"
+msgstr "Vijandig Dorp"
 
 #: src/reports.cpp:316
-#, fuzzy
 msgid "Allied village"
-msgstr "Dorpen"
+msgstr "Geallieerd Dorp"
 
 #: src/show_dialog.cpp:930
 msgid "KB"
@@ -7299,15 +7309,3 @@ msgstr "Verwijder Bestand"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Verwijderen van het bestand is mislukt."
-
-#~ msgid "You must have at least"
-#~ msgstr "Je moet tenminste"
-
-#~ msgid "Owned"
-#~ msgstr "Owned"
-
-#~ msgid "Enemy"
-#~ msgstr "Vijand"
-
-#~ msgid "Allied"
-#~ msgstr "Geallieerd"
