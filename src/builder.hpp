@@ -76,8 +76,11 @@ private:
 	{
 		tilemap(int x, int y) : x_(x), y_(y), map_((x+2)*(y+2)) {}
 
-		tile &operator[](const gamemap::location &loc) { return map_[(loc.x+1) + (loc.y+1)*(x_+2)]; }
-		const tile &operator[] (const gamemap::location &loc) const { return map_[(loc.x+1) + (loc.y+1)*(x_+2)]; }
+		tile &operator[](const gamemap::location &loc);
+		const tile &operator[] (const gamemap::location &loc) const;
+		
+		bool on_map(const gamemap::location &loc) const;
+		
 		void reset();
 		
 		std::vector<tile> map_;

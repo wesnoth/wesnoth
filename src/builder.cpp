@@ -29,6 +29,28 @@ void terrain_builder::tilemap::reset()
 		it->clear();
 }
 
+bool terrain_builder::tilemap::on_map(const gamemap::location &loc) const
+{
+	if(loc.x < -1 || loc.y < -1 || loc.x > x_ || loc.y > y_)
+		return false;
+	
+	return true;
+}
+
+terrain_builder::tile& terrain_builder::tilemap::operator[](const gamemap::location &loc)
+{
+	assert(on_map(loc));
+		
+	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
+}
+
+const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap::location &loc) const
+{
+	assert(on_map(loc));
+	
+	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
+}
+
 terrain_builder::terrain_builder(const config& cfg, const gamemap& gmap) :
 	map_(gmap), tile_map_(gmap.x(), gmap.y())
 {
@@ -327,15 +349,38 @@ void terrain_builder::parse_config(const config &cfg)
 			building_rules_.push_back(pbr);
 		}
 	}
+
+	std::cerr << "Built terrain rules: \n";
+	
+	building_ruleset::const_iterator rule;
+	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
+		std::cerr << ">> New rule: image_background = " << rule->image_background << " , image_foreground = "<< rule->image_foreground << "\n";
+		for(building_rule::constraint_set::const_iterator constraint = rule->constraints.begin();
+		    constraint != rule->constraints.end(); ++constraint) {
+
+			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc.x << ", " << constraint->second.loc.y << "), terrain types = " << constraint->second.terrain_types << "\n";
+
+			std::vector<std::string>::const_iterator flag;
+			
+			for(flag  = constraint->second.set_flag.begin(); flag != constraint->second.set_flag.end(); ++flag) {
+				std::cerr << ">>>>>> Set_flag: " << *flag << "\n";
+			}
+
+			for(flag = constraint->second.no_flag.begin(); flag != constraint->second.no_flag.end(); ++flag) {
+				std::cerr << ">>>>>> No_flag: " << *flag << "\n";
+			}	
+		}
+
+	}
+
 }
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, const gamemap::location &loc, int rule_index)
 {
-	if(!loc.valid())
-		return false;
 	if(rule.location_constraints.valid() && rule.location_constraints != loc)
 		return false;
 	
+	// FIXME: should probability checks be done before, or after rule checks?
 	if(rule.probability != -1) {
 		int random = ((loc.x^827634) * 7613863 + (loc.y^87623) * 87987 + (rule_index^198729) * 89237) % 100;
 		
@@ -348,7 +393,8 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, c
 		
 		// translated location
 		const gamemap::location tloc = loc + cons->second.loc;
-		if(!map_.on_board(tloc))
+	
+		if(!tile_map_.on_map(tloc))
 			return false;
 		
 		const tile& btile = tile_map_[tloc];
@@ -380,10 +426,8 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 	    constraint != rule.constraints.end(); ++constraint) {
 
 		const gamemap::location tloc = loc + constraint->second.loc;
-		if(!map_.on_board(tloc)) {
-			std::cerr << "Error: out-of map tile!\n";
+		if(!tile_map_.on_map(tloc))
 			return;
-		}
 
 		tile& btile = tile_map_[tloc];
 
@@ -408,29 +452,6 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 
 void terrain_builder::build_terrains()
 {
-	std::cerr << "Built terrain rules: \n";
-	
-	building_ruleset::const_iterator rule;
-	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
-		std::cerr << ">> New rule: image_background = " << rule->image_background << " , image_foreground = "<< rule->image_foreground << "\n";
-		for(building_rule::constraint_set::const_iterator constraint = rule->constraints.begin();
-		    constraint != rule->constraints.end(); ++constraint) {
-
-			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc.x << ", " << constraint->second.loc.y << "), terrain types = " << constraint->second.terrain_types << "\n";
-
-			std::vector<std::string>::const_iterator flag;
-			
-			for(flag  = constraint->second.set_flag.begin(); flag != constraint->second.set_flag.end(); ++flag) {
-				std::cerr << ">>>>>> Set_flag: " << *flag << "\n";
-			}
-
-			for(flag = constraint->second.no_flag.begin(); flag != constraint->second.no_flag.end(); ++flag) {
-				std::cerr << ">>>>>> No_flag: " << *flag << "\n";
-			}	
-		}
-
-	}
-
 	log_scope("terrain_builder::build_terrains");
 
 	//builds the terrain_by_type_ cache
@@ -444,6 +465,7 @@ void terrain_builder::build_terrains()
 	}
 
 	int rule_index = 0;
+	building_ruleset::const_iterator rule;
 	
 	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
 
@@ -471,8 +493,8 @@ void terrain_builder::build_terrains()
 				}
 			}
 		} else {
-			for(int x = -1; x <= map_.x(); ++x) {
-				for(int y = -1; y <= map_.y(); ++y) {
+			for(int x = -5; x <= map_.x() + 4; ++x) {
+				for(int y = 51; y <= map_.y() + 4; ++y) {
 					const gamemap::location loc(x,y);
 					if(rule_matches(*rule, loc, rule_index))
 						apply_rule(*rule, loc);
