@@ -12,11 +12,15 @@
 #ifndef EDITOR_H_INCLUDED
 #define EDITOR_H_INCLUDED
 
+#include "editor_palettes.hpp"
+#include "editor_layout.hpp"
+
 #include "../display.hpp"
 #include "../events.hpp"
 #include "../hotkeys.hpp"
 
 #include <map>
+#include <queue>
 
 namespace map_editor {
 
@@ -30,112 +34,9 @@ struct map_undo_action {
 	gamemap::TERRAIN new_terrain;
 	gamemap::location location;
 };
+
 typedef std::deque<map_undo_action> map_undo_list;
 
-/// Size specifications for the map editor.
-struct size_specs {
-	size_t nterrains;
-	size_t terrain_size;
-	size_t terrain_padding;
-	size_t terrain_space;
-	size_t palette_x;
-	size_t button_x;
-	size_t brush_x;
-	size_t brush_y;
-	size_t top_button_y;
-	size_t palette_y;
-	size_t bot_button_y;
-};
-
-/// How to abort the map editor.
-/// DONT_ABORT is set during normal operation.
-/// When ABORT_NORMALLY is set, the editor asks for confirmation and
-/// if save is desired before it exits. 
-/// When ABORT_HARD is set, the editor exists without asking any
-/// questions or saving.
-enum ABORT_MODE {DONT_ABORT, ABORT_NORMALLY, ABORT_HARD};
-
-/// A palette where the terrain to be drawn can be selected.
-class terrain_palette {
-public:
-	terrain_palette(display &gui, const size_specs &sizes,
-					const gamemap &map);
-
-	/// Scroll the terrain palette up one step if possible.
-	void scroll_up();
-
-	/// Scroll the terrain palette down one step if possible.
-	void scroll_down();
-
-	/// Return the currently selected terrain.
-	gamemap::TERRAIN selected_terrain() const;
-	
-	/// Select a terrain.
-	void select_terrain(gamemap::TERRAIN);
-
-	/// To be called when a mouse click occurs. Check if the coordinates
-	/// is a terrain that may be chosen, select the terrain if that is
-	/// the case.
-	void left_mouse_click(const int mousex, const int mousey);
-
-	// Draw the palette. If force is true everything will be redrawn
-	// even though it is not invalidated.
-	void draw(bool force=false);
-
-	/// Return the number of terrains in the palette.
-	size_t num_terrains() const;
-
-
-private:
-	/// Return the number of the tile that is at coordinates (x, y) in the
-	/// panel.
-	int tile_selected(const int x, const int y) const;
-					  
-	const size_specs &size_specs_;
-	scoped_sdl_surface surf_;
-	display &gui_;
-	unsigned int tstart_;
-	std::vector<gamemap::TERRAIN> terrains_;
-	gamemap::TERRAIN selected_terrain_;
-	const gamemap &map_;
-	// Set invalid_ to true if an operation that requires that the
-	// palette is redrawn takes place.
-	bool invalid_;
-};
-
-/// A bar where the brush is drawin
-class brush_bar
-{
-public:
-	brush_bar(display &gui, const size_specs &sizes);
-
-	/// Return the size of currently selected brush.
- 	unsigned int selected_brush_size();
-
-	/// To be called when a mouse click occurs. Check if the coordinates
-	/// is a terrain that may be chosen, select the terrain if that is
-	/// the case.
- 	void left_mouse_click(const int mousex, const int mousey);
-
-	// Draw the palette. If force is true everything will be redrawn
-	// even though it is not invalidated.
-	void draw(bool force=false);
-
-private:
-	/// Return the index of the brush that is at coordinates (x, y) in the
-	/// panel.
-	int selected_index(const int x, const int y) const;
-					  
-	const size_specs &size_specs_;
-	scoped_sdl_surface surf_;
-	display &gui_;
-	unsigned int selected_;
-	const int total_brush_;
-	const size_t size_;
-	// Set invalid_ to true if an operation that requires that the
-	// bar is redrawn takes place.
-	bool invalid_;
-};
 
 /// A map editor. Receives SDL events and can execute hotkey commands.
 class map_editor : public events::handler,
@@ -149,6 +50,14 @@ public:
 	
 	/// Set the filename that map should be saved as. 
 	void set_file_to_save_as(const std::string);
+
+	/// How to abort the map editor.
+	/// DONT_ABORT is set during normal operation.
+	/// When ABORT_NORMALLY is set, the editor asks for confirmation and
+	/// if save is desired before it exits. 
+	/// When ABORT_HARD is set, the editor exists without asking any
+	/// questions or saving.
+	enum ABORT_MODE {DONT_ABORT, ABORT_NORMALLY, ABORT_HARD};
 	
 	/// Set the abort flag, which indicates if the editor should exit in
 	/// some way after the current iteration of the main loop.
@@ -159,22 +68,23 @@ public:
 	/// that shows confirmation that the map was saved is shown if
 	/// display_confirmation is true. Return false if the save failed.
 	bool save_map(const std::string filename="",
-		  const bool display_confirmation=true);
-	
-	/// Adjust the internal size specifications to fit the display.
-	void adjust_sizes(const display &disp);
+				  const bool display_confirmation=true);
 	
 	virtual void handle_event(const SDL_Event &event);
 	
 	/// Handle a keyboard event. mousex and mousey is the current
 	/// position of the mouse.
 	void handle_keyboard_event(const SDL_KeyboardEvent &event,
-				   const int mousex, const int mousey);
+							   const int mousex, const int mousey);
 	
 	/// Handle a mouse button event. mousex and mousey is the current
 	/// position of the mouse.
 	void handle_mouse_button_event(const SDL_MouseButtonEvent &event,
-				   const int mousex, const int mousey);
+								   const int mousex, const int mousey);
+
+	/// Return true if the map has changed since the last time it was
+	/// saved.
+	bool changed_since_save() const;
 	
 	
 	
@@ -195,7 +105,7 @@ public:
 	
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	
-	// exception thrown when new map is to be loaded.
+	// Exception thrown when new map is to be loaded.
 	struct new_map_exception {
 		new_map_exception(const std::string &new_map) : new_map_(new_map) {}
 		const std::string new_map_;
@@ -255,14 +165,6 @@ private:
 	/// the operations only happen once per hex for efficiency purposes.
 	void invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes);
 
-
-	/// Shows dialog to create new map.
-	std::string new_map_dialog(display& disp);
-
-	/// Return true iff the map is not modified or user agreed to
-	/// dispose the modification.
-	bool confirm_modification_disposal(display& disp, const std::string message);
-
 	/// Re-set the labels for the starting positions of the
 	/// players. Should be called when the terrain has changed, which
 	/// may have changed the starting positions.
@@ -294,35 +196,7 @@ private:
 	std::vector<gamemap::location> starting_positions_;
 };
 
-
-
-
-/// Display a dialog with map filenames and return the chosen
-/// one. Create a temporary display to use.
-std::string get_filename_from_dialog(CVideo &video, config &cfg);
-void drawbar(display& disp);
-bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected,
-			gamemap map, size_specs specs);
-
-
-bool is_invalid_terrain(char c);
-
-
-typedef std::vector<std::pair<gamemap::location, gamemap::TERRAIN> > terrain_log;
-
-std::vector<gamemap::location> get_tiles(const gamemap &map,
-										 const gamemap::location& a,
-										 const unsigned int radius);
-
-/// Flood fill the map with the terrain fill_with starting from the
-/// location start_loc. If log is non-null it will contain the positions
-/// of the changed tiles and the terrains they had before the filling
-/// started.
-void flood_fill(gamemap &map, const gamemap::location &start_loc,
-				const gamemap::TERRAIN fill_with, terrain_log *log = NULL);
-				
-
-
 }
 
 #endif // EDITOR_H_INCLUDED
+

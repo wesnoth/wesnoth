@@ -1,0 +1,51 @@
+/*
+  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY.
+
+  See the COPYING file for more details.
+*/
+
+#include "../display.hpp"
+#include "../config.hpp"
+#include "../map.hpp"
+
+#ifndef EDITOR_DIALOGS_H_INCLUDED
+#define EDITOR_DIALOGS_H_INCLUDED
+
+namespace map_editor {
+
+/// Notify the user that the map is changed and ask if the user wants to
+/// proceed. Return true if yes is answered.
+bool confirm_modification_disposal(display &disp);
+
+/// Show a dialog to create new map. If confirmation_needed is true, the
+/// user will be asked if she wants to continue even though the changes
+/// to the current map is lost. fill_terrain will be used to fill the
+/// map if a new one is created. Return the string representation of the
+/// new map, or the empty string if the operation failed or was
+/// cancelled.
+std::string new_map_dialog(display &disp, gamemap::TERRAIN fill_terrain,
+						   bool confirmation_needed, const config &gconfig);
+
+
+/// Show a dialog where the user may chose a map to load. If
+/// confirmation_needed is true, the user will be asked if she wants to
+/// continue even though the changes to the current map is lost. Return
+/// the string representation of the map that is loaded, or the empty
+/// string if none was.
+std::string load_map_dialog(display &disp, bool confirmation_needed);
+
+
+
+
+
+
+}
+
+
+#endif // DIALOGS_H_INCLUDED

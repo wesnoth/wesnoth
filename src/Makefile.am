@@ -148,6 +148,11 @@ wesnoth_SOURCES = about.cpp \
 #############################################################################
 
 wesnoth_editor_SOURCES = editor/editor.cpp \
+			 editor/editor_layout.cpp \
+			 editor/map_manip.cpp \
+			 editor/editor_palettes.cpp \
+			 editor/editor_main.cpp \
+             editor/editor_dialogs.cpp \
 			 actions.cpp \
 			 ai.cpp \
 			 ai_attack.cpp \
@@ -202,6 +207,10 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/slider.cpp \
 			 widgets/widget.cpp \
 			 editor/editor.hpp \
+			 editor/editor_layout.hpp \
+			 editor/map_manip.hpp \
+			 editor/editor_palettes.hpp \
+             editor/editor_dialogs.hpp \
 			 actions.hpp \
 			 ai.hpp \
 			 ai_attack.hpp \

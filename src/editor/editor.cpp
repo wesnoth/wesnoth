@@ -13,8 +13,6 @@
 #include "SDL.h"
 #include "SDL_keysym.h"
 
-#include "../actions.hpp"
-#include "../ai.hpp"
 #include "../config.hpp"
 #include "../cursor.hpp"
 #include "../dialogs.hpp"
@@ -22,17 +20,13 @@
 #include "../font.hpp"
 #include "../game_config.hpp"
 #include "../gamestatus.hpp"
-#include "../image.hpp"
 #include "../key.hpp"
-#include "../language.hpp"
-#include "../mapgen.hpp"
 #include "../widgets/menu.hpp"
-#include "../pathfind.hpp"
+#include "../language.hpp"
 #include "../playlevel.hpp"
 #include "../preferences.hpp"
 #include "../sdl_utils.hpp"
 #include "../tooltips.hpp"
-#include "../widgets/slider.hpp"
 #include "../team.hpp"
 #include "../unit_types.hpp"
 #include "../unit.hpp"
@@ -40,6 +34,9 @@
 #include "../video.hpp"
 
 #include "editor.hpp"
+#include "map_manip.hpp"
+#include "editor_dialogs.hpp"
+#include "editor_palettes.hpp"
 
 #include <cctype>
 #include <iostream>
@@ -50,7 +47,6 @@ namespace {
 	const unsigned int undo_limit = 1000;
 	// Milliseconds to sleep in every iteration of the main loop.
 	const unsigned int sdl_delay = 20;
-	const size_t default_terrain_size = 35;
 
 	void terrain_changed(gamemap &map, const gamemap::location &hex) {
 		// If we painted something else than a keep on a starting position,
@@ -77,7 +73,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 
 
 	// Set size specs.
-	adjust_sizes(gui_);
+	adjust_sizes(gui_, size_specs_, palette_.num_terrains());
 
 	tup_.set_xy(gui.mapx() + size_specs_.button_x, size_specs_.top_button_y);
 	tdown_.set_xy(gui.mapx() + size_specs_.button_x, size_specs_.bot_button_y);
@@ -141,195 +137,20 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 	}
 }
 
-std::string map_editor::new_map_dialog(display& disp)
-{
-	const events::resize_lock prevent_resizing;
-	const events::event_context dialog_events_context;
-
-	int map_width(40), map_height(40);
-	const int width = 600;
-	const int height = 400;
-	const int xpos = disp.x()/2 - width/2;
-	const int ypos = disp.y()/2 - height/2;
-	const int horz_margin = 5;
-	const int vertical_margin = 20;
-
-	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
-	surface_restorer restorer(&disp.video(),dialog_rect);
-
-	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
-
-	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
-					      "Create New Map",0,0);
-
-	const std::string& width_label = string_table["map_width"] + ":";
-	const std::string& height_label = string_table["map_height"] + ":";
-
-	SDL_Rect width_rect = font::draw_text(NULL,disp.screen_area(),14,font::NORMAL_COLOUR,width_label,0,0);
-	SDL_Rect height_rect = font::draw_text(NULL,disp.screen_area(),14,font::NORMAL_COLOUR,height_label,0,0);
-
-	const int text_right = xpos + horz_margin +
-	        maximum<int>(width_rect.w,height_rect.w);
-
-	width_rect.x = text_right - width_rect.w;
-	height_rect.x = text_right - height_rect.w;
-	
-	width_rect.y = ypos + title_rect.h + vertical_margin*2;
-	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
-
-	gui::button new_map_button(disp,"Generate New Map With Selected Terrain");
-	gui::button random_map_button(disp,"Generate Random Map");
-	gui::button random_map_setting_button(disp,"Random Generator Setting");
-	gui::button cancel_button(disp,"Cancel");
-
-	new_map_button.set_x(xpos + horz_margin);
-	new_map_button.set_y(height_rect.y + height_rect.h + vertical_margin);
-	random_map_button.set_x(xpos + horz_margin);
-	random_map_button.set_y(ypos + height - random_map_button.height()-14*2-vertical_margin);
-	random_map_setting_button.set_x(random_map_button.get_x() + random_map_button.width() + horz_margin);
-	random_map_setting_button.set_y(ypos + height - random_map_setting_button.height()-14*2-vertical_margin);
-	cancel_button.set_x(xpos + width - cancel_button.width() - horz_margin);
-	cancel_button.set_y(ypos + height - cancel_button.height()-14);
-
-	const int right_space = 100;
-
-	const int slider_left = text_right + 10;
-	const int slider_right = xpos + width - horz_margin - right_space;
-	SDL_Rect slider_rect = { slider_left,width_rect.y,slider_right-slider_left,width_rect.h};
-
-	const int min_width = 20;
-	const int max_width = 200;
-	const int max_height = 200;
-	
-	slider_rect.y = width_rect.y;
-	gui::slider width_slider(disp,slider_rect);
-	width_slider.set_min(min_width);
-	width_slider.set_max(max_width);
-	width_slider.set_value(map_width);
-
-	slider_rect.y = height_rect.y;
-	gui::slider height_slider(disp,slider_rect);
-	height_slider.set_min(min_width);
-	height_slider.set_max(max_height);
-	height_slider.set_value(map_height);
-
- 	const config* const cfg = game_config_.find_child("multiplayer","id","ranmap")->child("generator");
- 	util::scoped_ptr<map_generator> generator(NULL);
- 	generator.assign(create_map_generator("", cfg));
-
-	for(bool draw = true;; draw = false) {
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-
-		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
-		if(cancel_button.process(mousex,mousey,left_button)) {
-			return "";
-		}
-
-		if(new_map_button.process(mousex,mousey,left_button)) {
-			if (confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
-				int i;
-				std::stringstream str;
-				std::stringstream map_str;
-				for (i = 0; i < width_slider.value(); i++) {
-					str << palette_.selected_terrain();
-				}
-				str << "\n";
-				for (i = 0; i < height_slider.value(); i++) {
-					map_str << str.str();
-				}
-				return map_str.str();
-			}
-		}
-		if(random_map_setting_button.process(mousex,mousey,left_button)) {
-			if (generator.get()->allow_user_config()) {
-				generator.get()->user_config(gui_);
-			}
-		}
-
-		if(random_map_button.process(mousex,mousey,left_button)) {
-			if (confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
-				
-				const std::string map = generator.get()->create_map(std::vector<std::string>());
-				if (map == "") {
-					gui::show_dialog(gui_, NULL, "",
-									 "Creation failed.", gui::OK_ONLY);
-				}
-				return map;
-			}
-		}
-		map_width = width_slider.value();
-		map_height = height_slider.value();
-
-		gui::draw_dialog_frame(xpos,ypos,width,height,disp);
-
-		width_slider.process();
-		height_slider.process();
-
-		width_slider.set_min(min_width);
-		height_slider.set_min(min_width);
-
-		events::raise_process_event();
-		events::raise_draw_event();
-
-		title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-                       "Create New Map",xpos+(width-title_rect.w)/2,ypos+10);
-
-		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
-						width_label,width_rect.x,width_rect.y);
-		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
-						height_label,height_rect.x,height_rect.y);
-
-		std::stringstream width_str;
-		width_str << map_width;
-		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
-		                slider_right+horz_margin,width_rect.y);
-
-		std::stringstream height_str;
-		height_str << map_height;
-		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
-		                slider_right+horz_margin,height_rect.y);
-		
-		new_map_button.draw();
-		random_map_button.draw();
-		random_map_setting_button.draw();
-		cancel_button.draw();
-
-		update_rect(xpos,ypos,width,height);
-
-		disp.update_display();
-		SDL_Delay(10);
-		events::pump();
-	}
-}
-
-void map_editor::edit_save_map() {
-	save_map("", true);
-}
-
-void map_editor::edit_quit() {
-	set_abort();
-}
-
-void map_editor::edit_new_map() {
-	const std::string map = new_map_dialog(gui_);
- 	if (map != "") {
-		throw new_map_exception(map);
-	}
-}
 
 void map_editor::edit_save_as() {
 	std::string input_name = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
 	int res = 0;
 	int overwrite = 0;
 	do {
-		res = gui::show_dialog(gui_, NULL, "", "Save As ", gui::OK_CANCEL, NULL,NULL,"",&input_name);
+		res = gui::show_dialog(gui_, NULL, "", "Save As ", gui::OK_CANCEL,
+							   NULL, NULL, "", &input_name);
 					   
 		if (res == 0) {
 			if (file_exists(input_name)) {
-				overwrite = gui::show_dialog(gui_,NULL,"",
-							     "Map already exists.  Do you want to overwrite it?",gui::YES_NO);
+				overwrite = gui::show_dialog(gui_, NULL, "Overwrite?",
+											 "Map already exists. Do you want to overwrite it?",
+											 gui::YES_NO);
 			}
 			else
 				overwrite = 0;
@@ -344,7 +165,8 @@ void map_editor::edit_save_as() {
 
 void map_editor::edit_set_start_pos() {
 	std::string player = "1";
-	const int res = gui::show_dialog(gui_, NULL, "", "Which player should start here?",
+	const int res = gui::show_dialog(gui_, NULL, "Which Player?",
+									 "Which player should start here?",
 									 gui::OK_CANCEL, NULL, NULL, "", &player);
 	if (player != "" && res == 0) {
 		int int_player;
@@ -377,6 +199,29 @@ void map_editor::edit_flood_fill() {
 	invalidate_all_and_adjacent(to_invalidate);
 }
 
+void map_editor::edit_save_map() {
+	save_map("", true);
+}
+
+void map_editor::edit_quit() {
+	set_abort();
+}
+
+void map_editor::edit_new_map() {
+	const std::string map = new_map_dialog(gui_, palette_.selected_terrain(),
+										   changed_since_save(), game_config_);
+ 	if (map != "") {
+		throw new_map_exception(map);
+	}
+}
+
+void map_editor::edit_load_map() {
+	const std::string map = load_map_dialog(gui_, changed_since_save());
+	if (map != "") {
+		throw new_map_exception(map);
+	}
+}
+
 bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	switch (command) {
 	case hotkey::HOTKEY_UNDO:
@@ -397,30 +242,6 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	default:
 		return false;
 	}
-}
-
-void map_editor::adjust_sizes(const display &disp) {
-	const size_t button_height = 24;
-	const size_t button_palette_padding = 8;
-	size_specs_.terrain_size = default_terrain_size;
-	size_specs_.terrain_padding = 2;
-	size_specs_.terrain_space = size_specs_.terrain_size + size_specs_.terrain_padding;
-	size_specs_.palette_x = 40;
-	size_specs_.button_x = size_specs_.palette_x + size_specs_.terrain_space - 12;
-	size_specs_.brush_x = 25;
-	size_specs_.brush_y = 190;
-	size_specs_.top_button_y = size_specs_.brush_y + 40;
-	size_specs_.palette_y = size_specs_.top_button_y + button_height +
-		button_palette_padding;
-	const size_t max_bot_button_y = disp.y() - 60 - button_height;
-	size_t space_for_terrains = max_bot_button_y - button_palette_padding -
-		size_specs_.palette_y;
-	space_for_terrains = space_for_terrains / size_specs_.terrain_space % 2 == 0 ? 
-		space_for_terrains : space_for_terrains - size_specs_.terrain_space;
-	size_specs_.nterrains = minimum((space_for_terrains / size_specs_.terrain_space) * 2,
-									palette_.num_terrains());
-	size_specs_.bot_button_y = size_specs_.palette_y +
-		(size_specs_.nterrains / 2) * size_specs_.terrain_space + button_palette_padding;
 }
 
 void map_editor::toggle_grid() {
@@ -453,6 +274,10 @@ void map_editor::redo() {
 			undo_stack_.pop_front();
 		invalidate_adjacent(action.location);
 	}
+}
+
+bool map_editor::changed_since_save() const {
+	return num_operations_since_save_ != 0;
 }
 
 void map_editor::set_starting_position(const int player, const gamemap::location loc) {
@@ -586,33 +411,20 @@ void map_editor::middle_button_down(const int mousex, const int mousey) {
 
 
 bool map_editor::confirm_exit_and_save() {
-	int exit_res = gui::show_dialog(gui_, NULL, "",
-									"Do you want to exit the map editor?", gui::YES_NO);
-	if (exit_res != 0) {
+	if (gui::show_dialog(gui_, NULL, "",
+						 "Do you want to exit the map editor?", gui::YES_NO) != 0) {
 		return false;
 	}
-	if (num_operations_since_save_ != 0) {
-		const int save_res = gui::show_dialog(gui_, NULL, "",
-											  "Do you want to save before exiting?",
-											  gui::YES_NO);
-		if(save_res == 0) {
-			if (!save_map("", false)) {
-				return false;
-			}
+	if (changed_since_save() &&
+		gui::show_dialog(gui_, NULL, "",
+						 "Do you want to save the map before exiting?", gui::YES_NO) == 0) {
+		if (!save_map("", false)) {
+			return false;
 		}
 	}
 	return true;
 }
 
-bool map_editor::confirm_modification_disposal(display& disp, const std::string message) {
-	bool ret = true;
-	if (num_operations_since_save_ != 0) {
-		const int res = gui::show_dialog(gui_, NULL, "", message,
-						 gui::OK_CANCEL);
-		ret = res == 0;
-	}
-	return ret;
-}
 
 bool map_editor::save_map(const std::string fn, const bool display_confirmation) {
 	std::string filename = fn;
@@ -780,455 +592,7 @@ void map_editor::main_loop() {
 	}
 }
 
-void map_editor::edit_load_map() {
-	const std::string system_path = game_config::path + "/data/maps/";
-	
-	std::vector<std::string> files;
-	get_files_in_dir(system_path,&files);
-	files.push_back("Enter Path...");
-	files.push_back("Local Map...");
-  
-	std::string filename;
-	const int res = gui::show_dialog(gui_, NULL, "",
-					 "Choose map to edit:", gui::OK_CANCEL, &files);
-	if(res == int(files.size()-1)) {
-		std::vector<std::string> user_files;
-		const std::string user_path = get_user_data_dir() + "/editor/maps/";
-		get_files_in_dir(user_path,&user_files);
-		const int res = gui::show_dialog(gui_, NULL, "",
-						 "Choose map to edit:", gui::OK_CANCEL, &user_files);
-		if (res < 0 || user_files.empty()) {
-			return;
-		}
-		filename = user_path + user_files[res];
-	}
-	else if (res == int(files.size() - 2)) {
-		filename = get_user_data_dir() + "/editor/maps/";
-		const int res = gui::show_dialog(gui_, NULL, "",
-										 "Enter map to edit:", gui::OK_CANCEL,
-										 NULL, NULL, "", &filename);
-		if (res != 0) {
-			return;
-		}
-	}
-	else if(res < 0 || files.empty()) {
-		return;
-	}
-	else {
-		filename = system_path + files[res];
-	}
-	std::string map;
-	bool load_successful = true;
-	std::string msg;
-	if (!file_exists(filename) || is_directory(filename)) {
-		load_successful = false;
-		msg = filename + " does not exist or can't be read as a file.";
-	}
-	else {
-		try {
-			map = read_file(filename);
-		}
-		catch (io_exception e) {
-			load_successful = false;
-			msg = e.what();
-		}
-	}
-	if (!load_successful) {
-		gui::show_dialog(gui_, NULL, "", std::string("Load failed: ") + msg, gui::OK_ONLY);
-	}
-	else {
-		if (! confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
-			return;
-		}
-		throw new_map_exception(map);
-	}
-}
-
-
-
-terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
-								 const gamemap &map)
-	: size_specs_(sizes), gui_(gui), tstart_(0), map_(map), invalid_(true) {
-
-	terrains_ = map_.get_terrain_precedence();
-	terrains_.erase(std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain),
-					terrains_.end());
-	if(terrains_.empty()) {
-		std::cerr << "No terrain found.\n";
-	}
-	else {
-		selected_terrain_ = terrains_[0];
-	}
-}
-
-void terrain_palette::scroll_down() {
-	if(tstart_ + size_specs_.nterrains + 2 <= num_terrains()) {
-		tstart_ += 2;
-		invalid_ = true;
-	}
-	else if (tstart_ + size_specs_.nterrains + 1 <= num_terrains()) {
-		tstart_ += 1;
-		invalid_ = true;
-	}
-}
-
-void terrain_palette::scroll_up() {
-	unsigned int decrement = 2;
-	if (tstart_ + size_specs_.nterrains == num_terrains()
-		&& terrains_.size() % 2 != 0) {
-		decrement = 1;
-	}
-	if(tstart_ >= decrement) {
-		invalid_ = true;
-		tstart_ -= decrement;
-	}
-}
-
-gamemap::TERRAIN terrain_palette::selected_terrain() const {
-	return selected_terrain_;
-}
-
-void terrain_palette::select_terrain(gamemap::TERRAIN terrain) {
-	if (selected_terrain_ != terrain) {
-		invalid_ = true;
-		selected_terrain_ = terrain;
-	}
-}
-
-void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
-	int tselect = tile_selected(mousex, mousey);
-	if(tselect >= 0) {
-		select_terrain(terrains_[tstart_+tselect]);
-	}
-}
-
-size_t terrain_palette::num_terrains() const {
-	return terrains_.size();
-}
-
-void terrain_palette::draw(bool force) {
-	if (!invalid_ && !force) {
-		return;
-	}
-	size_t x = gui_.mapx() + size_specs_.palette_x;
-	size_t y = size_specs_.palette_y;
-
-	unsigned int starting = tstart_;
-	unsigned int ending = starting + size_specs_.nterrains;
-
-	SDL_Rect invalid_rect;
-	invalid_rect.x = x;
-	invalid_rect.y = y;
-	invalid_rect.w = 0;
-	invalid_rect.w = size_specs_.terrain_space * 2;
-	invalid_rect.h = (size_specs_.nterrains / 2) * size_specs_.terrain_space;
-	// Everything will be redrawn even though only one little part may
-	// have changed, but that happens so seldom so we'll settle with
-	// this.
-	SDL_Surface* const screen = gui_.video().getSurface();
-	SDL_BlitSurface(surf_, NULL, screen, &invalid_rect);
-	surf_.assign(get_surface_portion(screen, invalid_rect));
-	if(ending > num_terrains()){
-		ending = num_terrains();
-	}
-	for(unsigned int counter = starting; counter < ending; counter++){
-		const gamemap::TERRAIN terrain = terrains_[counter];
-		const std::string filename = "terrain/" +
-			map_.get_terrain_info(terrain).default_image() + ".png";
-		scoped_sdl_surface image(image::get_image(filename, image::UNSCALED));
-		if(image->w != size_specs_.terrain_size || image->h != size_specs_.terrain_size) {
-			image.assign(scale_surface(image, size_specs_.terrain_size,
-									   size_specs_.terrain_size));
-		}
-		if(image == NULL) {
-			std::cerr << "image for terrain '" << counter << "' not found\n";
-			return;
-		}
-		const int counter_from_zero = counter - starting;
-		SDL_Rect dstrect;
-		dstrect.x = x + (counter_from_zero % 2 != 0 ? size_specs_.terrain_space : 0);
-		dstrect.y = y;
-		dstrect.w = image->w;
-		dstrect.h = image->h;
-
-		SDL_BlitSurface(image, NULL, screen, &dstrect);
-		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h,
-							terrain == selected_terrain() ? 0xF000:0 , screen);
-	
-		if (counter_from_zero % 2 != 0)
-			y += size_specs_.terrain_space;
-	}
-	update_rect(invalid_rect);
-	invalid_ = false;
-}
-
-int terrain_palette::tile_selected(const int x, const int y) const {
-	for(unsigned int i = 0; i != size_specs_.nterrains; i++) {
-		const int px = gui_.mapx() + size_specs_.palette_x +
-			(i % 2 != 0 ? size_specs_.terrain_space : 0);
-		const int py = size_specs_.palette_y + (i / 2) * size_specs_.terrain_space;
-		const int pw = size_specs_.terrain_space;
-		const int ph = size_specs_.terrain_space;
-
-		if(x > px && x < px + pw && y > py && y < py + ph) {
-			return i;
-		}
-	}
-	return -1;
-}
-
-
-brush_bar::brush_bar(display &gui, const size_specs &sizes)
-	: size_specs_(sizes), gui_(gui), selected_(0), total_brush_(3),
-	  size_(30), invalid_(true) {}
-
-unsigned int brush_bar::selected_brush_size() {
-	return selected_ + 1;
-}
-		
-void brush_bar::left_mouse_click(const int mousex, const int mousey) {
-	int index = selected_index(mousex, mousey);
-	if(index >= 0) {
-		if (index != selected_) {
-			invalid_ = true;
-			selected_ = index;
-		}
-	}
-}
-
-void brush_bar::draw(bool force) {
-	if (!invalid_ && !force) {
-		return;
-	}
-	size_t x = gui_.mapx() + size_specs_.brush_x;
-	size_t y = size_specs_.brush_y;
-
-	SDL_Rect invalid_rect;
-	invalid_rect.x = x;
-	invalid_rect.y = y;
-	invalid_rect.w = size_ * total_brush_;
-	invalid_rect.h = size_;
-	// Everything will be redrawn even though only one little part may
-	// have changed, but that happens so seldom so we'll settle with
-	// this.
-	SDL_Surface* const screen = gui_.video().getSurface();
-	SDL_BlitSurface(surf_, NULL, screen, &invalid_rect);
-	surf_.assign(get_surface_portion(screen, invalid_rect));
-
-	for (int i = 1; i <= total_brush_; i++) {
-		std::stringstream filename;
-		filename << "editor/brush-" << i << ".png";
-		scoped_sdl_surface image(image::get_image(filename.str(), image::UNSCALED));
-		if (image == NULL) {
-			std::cerr << "Image " << filename.str() << " not found." << std::endl;
-			continue;
-		}
-		if (image->w != size_ || image->h != size_) {
-			image.assign(scale_surface(image, size_, size_));
-		}
-		SDL_Rect dstrect;
-		dstrect.x = x;
-		dstrect.y = size_specs_.brush_y;
-		dstrect.w = image->w;
-		dstrect.h = image->h;
-		SDL_BlitSurface(image, NULL, screen, &dstrect);
-		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h,
-				    (i == selected_brush_size()) ? 0xF000:0 , screen);
-		x += image->w;
-	}
-	update_rect(invalid_rect);
-	invalid_ = false;
-}
-
-void drawbar(display& disp) {
-	SDL_Surface* const screen = disp.video().getSurface();
-	SDL_Rect dst = {disp.mapx(), 0, disp.x() - disp.mapx(), disp.y()};
-	SDL_FillRect(screen,&dst,0);
-	update_rect(dst);
-}
-
-
-int brush_bar::selected_index(const int x, const int y) const {
-	const int bar_x = gui_.mapx() + size_specs_.brush_x;
-	const int bar_y = size_specs_.brush_y;
-
-	if ((x < bar_x || x > bar_x + size_ * total_brush_)
-	    || (y < bar_y || y > bar_y + size_)) {
-		return -1;
-	}
-
-	for(unsigned int i = 0; i < total_brush_; i++) {
-		const int px = bar_x + size_ * i;
-
-		if(x >= px && x <= px + size_ && y >= bar_y && y <= bar_y + size_) {
-			return i;
-		}
-	}
-	return -1;
-}
-
-
-
-std::vector<gamemap::location> get_tiles(const gamemap &map,
-										 const gamemap::location& a,
-										 const unsigned int radius) {
-	const unsigned int distance = radius - 1;
-	std::vector<gamemap::location> res;
-	res.push_back(a);
-	for (int d = 1; d <= distance; d++) {
-		gamemap::location loc = a;
-		int i;
-		// get starting point
-		for (i = 1; i <= d; i++) {
-			loc = loc.get_direction(gamemap::location::NORTH);
-		}
-		// get all the tile clockwise with distance d
-		const gamemap::location::DIRECTION direction[6] =
-			{gamemap::location::SOUTH_EAST, gamemap::location::SOUTH, gamemap::location::SOUTH_WEST,
-			 gamemap::location::NORTH_WEST, gamemap::location::NORTH, gamemap::location::NORTH_EAST};
-		for (i = 0; i < 6; i++) {
-			for (int j = 1; j <= d; j++) {
-				loc = loc.get_direction(direction[i]);
-				if (map.on_board(loc)) {
-					res.push_back(loc);
-				}
-			}
-		}
-	}
-	return res;
-}
-
-bool is_invalid_terrain(char c) {
-	return c == ' ' || c == '~';
-}
-
-
-void flood_fill(gamemap &map, const gamemap::location &start_loc,
-				const gamemap::TERRAIN fill_with, terrain_log *log) {
-	gamemap::TERRAIN terrain_to_fill = map.get_terrain(start_loc);
-	if (fill_with == terrain_to_fill) {
-		return;
-	}
-	std::vector<gamemap::location> to_fill;
-	// First push the starting location onto a stack. Then, in every
-	// iteration, pop one element from the stack, fill this tile and add
-	// all adjacent tiles that have the terrain that should be
-	// filled. Continue until the stack is empty.
-	to_fill.push_back(start_loc);
-	while (!to_fill.empty()) {
-		gamemap::location loc = to_fill.back();
-		to_fill.pop_back();
-		if (log != NULL) {
-			log->push_back(std::make_pair(loc, terrain_to_fill));
-		}
-		map.set_terrain(loc, fill_with);
-		// Find all adjacent tiles with the terrain that should be
-		// filled and add these to the to_fill vector.
-		std::vector<gamemap::location> adj = get_tiles(map, loc, 2);
-		for (std::vector<gamemap::location>::iterator it2 = adj.begin();
-			 it2 != adj.end(); it2++) {
-			if (map.get_terrain(*it2) == terrain_to_fill && map.on_board(*it2)) {
-				to_fill.push_back(*it2);
-			}
-		}
-		// Remove duplicates.
-		std::sort(to_fill.begin(), to_fill.end());
-		std::vector<gamemap::location>::iterator end_of_unique =
-			std::unique(to_fill.begin(), to_fill.end());
-		to_fill.erase(end_of_unique, to_fill.end());
-	}
-}
-
-
 
 }
 
-int main(int argc, char** argv)
-{
-	game_config::editor = true;
 
-	if(argc > 2) {
-		std::cout << "usage: " << argv[0] << " [map-name]" << std::endl;
-		return 0;
-	}
-
-	CVideo video;
-
-	const font::manager font_manager;
-	const preferences::manager prefs_manager;
-	const image::manager image_manager;
-	std::pair<int, int> desired_resolution = preferences::resolution();
-	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
-	video.setMode(desired_resolution.first, desired_resolution.second,
-				  16, video_flags);
-
-	preproc_map defines_map;
-	defines_map["MEDIUM"] = preproc_define();
-	defines_map["NORMAL"] = preproc_define();
-	config cfg(preprocess_file("data/game.cfg", &defines_map));
-
-	set_language("English");
-
-	std::string filename;
-	std::string mapdata;
-
-	if(argc == 2) {
-		filename = argv[1];
-		try {
-			mapdata = read_file(filename);
-		}
-		catch (io_exception) {
-			std::cerr << "Could not read the map file, sorry." << std::endl;
-			return 1;
-		}
-	}
-	else {
-		filename = "";
-	}
-	if(mapdata.empty()) {
-		for(int i = 0; i != 20; ++i) {
-			mapdata = mapdata + "gggggggggggggggggggg\n";
-		}
-	}
-	bool done = false;
-	gamestatus status(cfg, 0);
-	std::vector<team> teams;
-	// Add a dummy team so the reports will be handled properly.
-	teams.push_back(team(cfg));
-	config* theme_cfg = cfg.find_child("theme", "name", "editor");
-	config dummy_theme("");
-	if (!theme_cfg) {
-		std::cerr << "Editor theme could not be loaded." << std::endl;
-		theme_cfg = &dummy_theme;
-	}
-	std::map<gamemap::location,unit> units;
-	while (! done) {
-		try {
-			gamemap map(cfg, mapdata);
-
-			std::cerr << "Using theme cfg: " << std::endl << theme_cfg->write() << std::endl;
-			display gui(units, video, map, status, teams,
-				    *theme_cfg, cfg);
-			gui.set_grid(preferences::grid());
-	
-			//Draw the nice background bar
-			map_editor::drawbar(gui);
-
-			events::event_context ec;
-			map_editor::map_editor editor(gui, map, *theme_cfg, cfg);
-			editor.set_file_to_save_as(filename);
-			editor.main_loop();
-			done = true;
-		}
-		catch (map_editor::map_editor::new_map_exception &e) {
-			std::cerr << "new map " << e.new_map_ << std::endl;
-			mapdata = e.new_map_;
-			filename = "";
-		}
-		catch (gamemap::incorrect_format_exception) {
-			std::cerr << "The map is not in a correct format, sorry." << std::endl;
-			return 1;
-		}
-	}
-	return 0;
-}
