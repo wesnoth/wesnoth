@@ -385,6 +385,7 @@ int play_game(int argc, char** argv)
 
 			std::string scenario = "multiplayer_test";
 			std::map<int,std::string> side_types, side_controllers, side_algorithms;
+			std::map<int,string_map> side_parameters;
 
 			int sides_counted = 0;
 
@@ -395,7 +396,10 @@ int play_game(int argc, char** argv)
 				}
 
 				std::vector<std::string> name_value = config::split(val,'=');
-				if(name_value.size() == 2) {
+				if(name_value.size() > 2) {
+					std::cerr << "invalid argument '" << val << "'\n";
+					return 0;
+				} else if(name_value.size() == 2) {
 					const std::string name = name_value.front();
 					const std::string value = name_value.back();
 
@@ -417,6 +421,14 @@ int play_game(int argc, char** argv)
 						side_algorithms[side] = value;
 					} else if(last_digit && name_head == "--side") {
 						side_types[side] = value;
+					} else if(last_digit && name_head == "--parm") {
+						const std::vector<std::string> name_value = config::split(value,':');
+						if(name_value.size() != 2) {
+							std::cerr << "argument to '" << name << "' must be in the format name:value\n";
+							return 0;
+						}
+
+						side_parameters[side][name_value.front()] = name_value.back();						
 					} else {
 						std::cerr << "unrecognized option: '" << name << "'\n";
 						return 0;
@@ -478,6 +490,11 @@ int play_game(int argc, char** argv)
 
 				if(algorithm != side_algorithms.end()) {
 					(*itors.first)->values["ai_algorithm"] = algorithm->second;
+				}
+
+				//now add in any arbitrary parameters given to the side
+				for(string_map::const_iterator j = side_parameters[side_num].begin(); j != side_parameters[side_num].end(); ++j) {
+					(*itors.first)->values[j->first] = j->second;
 				}
 			}
 
