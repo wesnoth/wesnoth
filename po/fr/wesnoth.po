@@ -1559,7 +1559,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:3
 msgid "Traits and Specialties"
-msgstr ""
+msgstr "Caractéristiques et Spécialités"
 
 #: data/scenarios/tutorial/tutorial2.cfg:60
 msgid ""
@@ -1636,14 +1636,14 @@ msgid ""
 "recruited units, except that instead of a new unit appearing, a unit from a "
 "previous scenario will appear."
 msgstr ""
-
-#: data/scenarios/tutorial/tutorial2.cfg:90
-msgid "What happens when I recall a unit?"
-msgstr "Que se passe-t-il quand je rappelle une unité ?"
+"Tout d'abord, vous devez payer 20 pièces d'or pour chaque unité que vous "
+"rappelez, quel que soit son type. En dehors de cela, les unités rappelées "
+"sont similaires aux les unités enrôlées, sauf qu'au lieu d'une nouvelle "
+"unité, c'est une unité d'un scénario précédent qui apparaît."
 
 #: data/scenarios/tutorial/tutorial2.cfg:91
 msgid "How should I decide which units to recall?"
-msgstr ""
+msgstr "Comment choisir quelles unités à rappeler ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:91
 msgid ""
@@ -1652,6 +1652,11 @@ msgid ""
 "and are thus likely to advance. You should recall units that will be useful "
 "for the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
+"Vous devriez généralement rappeler les unités qui ont déjà atteint le "
+"niveau suivant. Cependant, vous pourriez vouloir rappeler les unités avec "
+"une fort expérience et qui seront donc susceptibles de progresser. Vous "
+"devriez rappeler des unités qui seront utiles pour le scénario en cours; "
+"par exemple dans un scénario forestier, rappelez des elfes."
 
 #: data/scenarios/tutorial/tutorial2.cfg:100
 msgid ""
@@ -1671,6 +1676,12 @@ msgid ""
 "the Status Table, and the function of a specific trait can be found by "
 "putting your cursor over that trait."
 msgstr ""
+"Le rôle des caractéristiques est d'ajouter de la variété en différenciant "
+"des unités de même type. C'est possible par attribution aléatoire des "
+"caractéristiques à chaque unité lors de son enrôlement. Les caractéristiques "
+"d'une unité sont affichées dans le panneau de statut, et le rôle de d'une "
+"caractéristique spécifique peut être trouvé en plaçant votre curseur sur la "
+"caractéristique elle-même."
 
 #: data/scenarios/tutorial/tutorial2.cfg:104
 msgid "What do traits do?"
@@ -1684,10 +1695,17 @@ msgid ""
 "'negative' traits. Most units have an equal chance to get any two different "
 "traits when they are recruited."
 msgstr ""
+"Il y a cinq caractéristiques différentes, qui présentent des effets allant "
+"de l'augmentation du nombre de points de vie à la diminution du nombre de "
+"points d'expérience nécessaire pour progresser. Cependant toutes les "
+"caractéristiques sont conçues pour améliorer la puissance d'une unité; il "
+"n'y a pas de caractéristiques 'négatives'. La plupart des unités ont la "
+"même probabilité de recevoir deux caractéristiques distinctes lors de leur "
+"recrutement."
 
 #: data/scenarios/tutorial/tutorial2.cfg:105
 msgid "What kind of traits can my units get?"
-msgstr ""
+msgstr "Quel type de caractéristique mon unité peut-elle avoir ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:115
 msgid ""
@@ -1700,7 +1718,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:119
 msgid "How much gold do my units cost?"
-msgstr ""
+msgstr "Combien d'or coûte mon unité ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:119
 msgid ""
@@ -1713,10 +1731,18 @@ msgid ""
 "displayed on the status bar at the top after a picture of gold and then a "
 "red arrow."
 msgstr ""
+"Vous devez payer de l'or pour chaque unité que vous recrutez ou rappelez. "
+"Le coût pour enrôler une unité est affiché sous son nom. Le coût pour "
+"rappeler une unité est toujours de 20 pièces d'or. Une unité coûte aussi de "
+"l'or pour chaque tour sous votre contrôle. Ce coût, dénommé 'entretien', "
+"est égal au niveau de l'unité. Cependant, les unités que vous n'avez ni "
+"recrutées ni rappelées, comme votre chef, ne vous coûtent aucun or. Le "
+"coût total de l'entretien est affiché dans la barre de statut en haut "
+"juste après une image d'or et une flèche rouge."
 
 #: data/scenarios/tutorial/tutorial2.cfg:120
 msgid "How do I get gold?"
-msgstr ""
+msgstr "Comment est-ce que je gagne de l'or ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:120
 msgid ""
@@ -1727,6 +1753,13 @@ msgid ""
 "usually need more gold than that, you should flag villages, which give you 1 "
 "gold per turn."
 msgstr ""
+"Vous commencez chaque scénario avec un pourcentage de l'or du scénario "
+"précédent. Si cela représente moins de 100 pièces d'or, alors vous commencez "
+"avec cette somme à la place. La quantité d'or à votre disposition est "
+"affichée sur la barre de statut après l'image d'or. Après le début du "
+"scénario, vous recevez 2 pièces d'or par tour. Comme vous aurez souvent "
+"besoin de plus d'or que cela, vous devriez capturer des villages, ce qui "
+"vous rapportera pour chacun 1 pièce d'or en plus par tour."
 
 #: data/scenarios/tutorial/tutorial2.cfg:129
 msgid ""
@@ -1745,14 +1778,21 @@ msgid ""
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
+"Il existe 3 alignements : loyal, neutre et chaotique. Il y a aussi 3 périodes "
+"dans la journée : le jour, le crépuscule et la nuit. Durant la journée, les "
+"unités d'alignement loyal, comme les humains, font 25% de dégâts en plus, "
+"alors que les unités chaotiques, tels les morts-vivants, font 25% en moins. "
+"De nuit, c'est l'inverse. Au crépuscule, toutes les unités font leurs "
+"dégâts normaux. Les unités neutres, tels les elfes, ne sont pas affectés par "
+"le jour et la nuit."
 
 #: data/scenarios/tutorial/tutorial2.cfg:133
 msgid "What are the different alignments and times of day?"
-msgstr ""
+msgstr "Quels sont les différents alignements et les périodes de la journée ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:134
 msgid "How do I know what time of day it is?"
-msgstr ""
+msgstr "Comment savoir quelle est la période de la journée actuelle ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:134
 msgid ""
@@ -1763,6 +1803,13 @@ msgid ""
 "a different sequence, such as underground where it is perpetually night. You "
 "can find out the current time of day by looking at the Status Table."
 msgstr ""
+"Les périodes de la journée se déroulent en ordre : aube -> identique au "
+"crépuscule, matin -> jour, après-midi -> jour, crépuscule, premier quart -> "
+"nuit, second quart -> nuit, puis on reprend au début. C'est représenté par le "
+"soleil et la lune qui se lève à l'est et se couche à l'ouest. Cependant, "
+"certains scénarios ont un ordre différent, tels les souterrains où il fait "
+"perpétuellement nuit. Vous pouvez trouver la période actuelle en regardant "
+"la table de statut."
 
 #: data/scenarios/tutorial/tutorial2.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
@@ -1781,14 +1828,22 @@ msgid ""
 "For example; elves have 70% defense on grass, and are therefore hit 30% of "
 "the time."
 msgstr ""
+"Deux terrains ont des propriétés qui ont déjà été présentées; le village et "
+"le château. Cependant les propriétés de la plupart des terrains sont plus "
+"subtiles et consistent en des avantages ou désavantages pour des unités "
+"différentes. La première propriété d'un terrain est le nombre de points de "
+"mouvement pour chaque unité qui y pénètre. La seconde est la défense que le "
+"terrain procure à l'unité qui y est présente. C'est un pourcentage qui "
+"détermine la probabilité pour l'unité d'être touché. Par exemple les elfes "
+"ont 70% de défense en forêt et ne sont ainsi touchés que 30% du temps."
 
 #: data/scenarios/tutorial/tutorial2.cfg:147
 msgid "What are the different properties that terrains have?"
-msgstr ""
+msgstr "Quelles sont les différentes propriétés des terrains ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:148
 msgid "How do I find out the properties of a specific terrain?"
-msgstr ""
+msgstr "Comment trouver les propriétés d'un terrain particulier ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:148
 msgid ""
