@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-16 14:31+0200\n"
-"PO-Revision-Date: 2004-09-15 23:52+0200\n"
+"PO-Revision-Date: 2004-09-17 23:42+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -957,7 +957,7 @@ msgstr "&undead-lich.png,Mörkrets allians"
 msgid ""
 "You can come if you wish, but the leader is only interesting in speaking to "
 "Baldras."
-msgstr ""
+msgstr "Om du vill  så kan du komma, men ledaren vill bara tala med Baldras."
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -2223,29 +2223,24 @@ msgid "xp"
 msgstr "ep"
 
 #: data/themes/default.cfg:142 data/themes/default.cfg:478
-#, fuzzy
 msgid "gold"
-msgstr "frost"
+msgstr "guld"
 
 #: data/themes/default.cfg:150 data/themes/default.cfg:486
-#, fuzzy
 msgid "villages"
-msgstr "Byar"
+msgstr "byar"
 
 #: data/themes/default.cfg:158 data/themes/default.cfg:494
-#, fuzzy
 msgid "units"
-msgstr "Trupper"
+msgstr "trupper"
 
 #: data/themes/default.cfg:166 data/themes/default.cfg:502
-#, fuzzy
 msgid "upkeep"
-msgstr "Underhåll"
+msgstr "underhåll"
 
 #: data/themes/default.cfg:174 data/themes/default.cfg:510
-#, fuzzy
 msgid "income"
-msgstr "Inkomst"
+msgstr "inkomst"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
@@ -6610,29 +6605,28 @@ msgstr "Filen du försöker öppna är felaktig"
 
 #: src/game.cpp:984
 msgid " ,Get More Campaigns..."
-msgstr ""
+msgstr " ,Hämta fler kampanjer..."
 
 #: src/game.cpp:990
 msgid "Choose the campaign you want to play:"
-msgstr "Välj kampanj"
+msgstr "Välj kampanj att spela: "
 
 #: src/game.cpp:1000
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Fortsätt draget"
+msgstr "Anslut till server"
 
 #: src/game.cpp:1001
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
+"Du kommer nu att anslutas till en kampanjserver där du kan hämta kampanjer."
 
 #: src/game.cpp:1002
 msgid "Server: "
-msgstr ""
+msgstr "Server: "
 
 #: src/game.cpp:1014
-#, fuzzy
 msgid "Could not connect to host."
-msgstr "Kunde inte ansluta till servern"
+msgstr "Kunde inte ansluta till servern."
 
 #: src/game.cpp:1014 src/game.cpp:1029 src/game.cpp:1035 src/game.cpp:1046
 #: src/game.cpp:1065 src/game.cpp:1075 src/game.cpp:1078 src/game.cpp:1081
@@ -6642,55 +6636,54 @@ msgstr "Fel"
 
 #: src/game.cpp:1022
 msgid "Awaiting response from server"
-msgstr ""
+msgstr "Väntar på svar från servern"
 
 #: src/game.cpp:1035
 msgid "Error communicating with the server."
-msgstr ""
+msgstr "Kunde ej kommunicera med servern."
 
 #: src/game.cpp:1046
-#, fuzzy
 msgid "There are no campaigns available for download from this server."
-msgstr "Det finns inga kampanjer att spela"
+msgstr "Det finns inga kampanjer att hämta på den här servern."
 
 #: src/game.cpp:1050
-#, fuzzy
 msgid "Choose the campaign to download."
-msgstr "Välj spel att öppna"
+msgstr "Välj kampanj att hämta hem."
 
 #: src/game.cpp:1050
-#, fuzzy
 msgid "Get Campaign"
-msgstr "Kampanj"
+msgstr "Hämta kampanj"
 
 #: src/game.cpp:1059
 msgid "Downloading campaign..."
-msgstr ""
+msgstr "Hämtar kampanj..."
 
 #: src/game.cpp:1071
-#, fuzzy
 msgid "Campaign Installed"
-msgstr "Kampanj"
+msgstr "Kampanjen har installerats"
 
 #: src/game.cpp:1071
 msgid ""
 "The campaign has been installed. You will have to restart Wesnoth before you "
 "can play it."
 msgstr ""
+"Kampanjen har installerats. Du måste starta om Wesnoth innan du kan spela "
+"den."
 
 #: src/game.cpp:1075
 msgid "Network communication error."
-msgstr ""
+msgstr "Nätverksfel"
 
 #: src/game.cpp:1078
-#, fuzzy
 msgid "Remote host disconnected."
-msgstr "Välj server att ansluta dig till"
+msgstr "Anslutningen avbruten."
 
 #: src/game.cpp:1081
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
+"Problem uppstod i skapandet av de filer som behövs för att installera denna "
+"kampanj."
 
 #: src/game.cpp:1102
 msgid "Select difficulty level:"
@@ -7598,9 +7591,9 @@ msgstr ""
 "(Du måste ha överlevande veteraner från ett tidigare scenario)"
 
 #: src/playturn.cpp:1776
-#, fuzzy
 msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "guld för att kunna återkalla en trupp"
+msgstr ""
+"Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
 
 #: src/playturn.cpp:1799
 msgid "Dismiss Unit"
@@ -7770,19 +7763,16 @@ msgid "Chaotic units"
 msgstr "Kaotiska trupper"
 
 #: src/reports.cpp:312
-#, fuzzy
 msgid "Owned village"
-msgstr "By"
+msgstr "Kontrollerad by"
 
 #: src/reports.cpp:314
-#, fuzzy
 msgid "Enemy village"
-msgstr "By"
+msgstr "Fientlig by"
 
 #: src/reports.cpp:316
-#, fuzzy
 msgid "Allied village"
-msgstr "Plundrarvätte"
+msgstr "Allierad by"
 
 #: src/show_dialog.cpp:930
 msgid "KB"
@@ -7891,15 +7881,3 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
-
-#~ msgid "You must have at least"
-#~ msgstr "Du måste ha minst"
-
-#~ msgid "Owned"
-#~ msgstr "Kontrollerad"
-
-#~ msgid "Enemy"
-#~ msgstr "Fiendes"
-
-#~ msgid "Allied"
-#~ msgstr "Allierads"
