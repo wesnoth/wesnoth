@@ -102,6 +102,14 @@ SDL_Surface* get_tinted(const std::string& filename, TINT tint)
 	return surface;
 }
 
+void flush_cache()
+{
+	clear_surfaces(images_);
+	clear_surfaces(scaledImages_);
+	clear_surfaces(greyedImages_);
+	clear_surfaces(brightenedImages_);
+}
+
 }
 
 namespace image {
@@ -110,15 +118,13 @@ manager::manager() {}
 
 manager::~manager()
 {
-	clear_surfaces(images_);
-	clear_surfaces(scaledImages_);
-	clear_surfaces(greyedImages_);
-	clear_surfaces(brightenedImages_);
+	flush_cache();
 }
 
 void set_pixel_format(SDL_PixelFormat* format)
 {
 	pixel_format = format;
+	flush_cache();
 }
 
 void set_colour_adjustment(int r, int g, int b)
