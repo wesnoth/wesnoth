@@ -163,6 +163,7 @@ std::vector<std::string> get_text() {
 		"-   Guillaume Melquiond (silene)",
 		"-   DaringTremayne",
 		"-   Philippe Plantier (Ayin)",
+		"-   Tout",
 		"-   Zas",
 		"+ ",
 
