@@ -195,7 +195,7 @@ bool turn_info::turn_over() const { return end_turn_; }
 
 int turn_info::send_data(int first_command)
 {
-	if(network::nconnections() > 0 && (undo_stack_.empty() || end_turn_) &&
+	if(!browse_ && network::nconnections() > 0 && (undo_stack_.empty() || end_turn_) &&
 	   first_command < recorder.ncommands()) {
 		config cfg;
 		const config& obj = cfg.add_child("turn",recorder.get_data_range(first_command,recorder.ncommands()));

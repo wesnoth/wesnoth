@@ -777,7 +777,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				advancing_units.push_back(tgt->first);
 			}
 		} else if((child = cfg->child("speak")) != NULL) {
-//			dialogs::unit_speak(*child,disp,units);
 			disp.add_chat_message((*child)["description"],(*child)["message"]);
 		} else if((child = cfg->child("label")) != NULL) {
 			const gamemap::location loc(*child);
