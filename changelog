@@ -6,7 +6,8 @@ CVS HEAD:
    * return can be used to navigate through help topics and sections in help browser
    * a box is drawn around images in help browser
  * speed scaling for different types of terrains
- * new and improved graphics: lighthouse, signpost, mountains, grassland, attack icons and frames, maps, castle, units, shroud
+ * new and improved graphics: lighthouse, signpost, mountains, grassland, attack icons and frames, maps, castle, units, shroud, fog of war, flags
+ * new musics: main menu
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
    * Peasant Revolt
@@ -100,6 +101,7 @@ CVS HEAD:
  * fixed [not] tag not working properly
  * fixed bug where clicking a menu item could generate multiple events
  * fixed duplicate battleworld.cfg
+ * fixed bug in WML with using value instead of equals in [if] (#9398)
  * small fixes to unit display in help browser
  * pngcrushed images
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
