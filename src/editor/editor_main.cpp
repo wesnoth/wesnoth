@@ -239,8 +239,9 @@ int main(int argc, char** argv)
 			gamemap map(cfg, mapdata);
 
 			std::cerr << "Using theme cfg: " << std::endl << theme_cfg->write() << std::endl;
+			const config dummy_cfg("");
 			display gui(units, video, map, status, teams,
-				    *theme_cfg, cfg);
+				    *theme_cfg, cfg, dummy_cfg);
 	
 			map_editor::map_editor editor(gui, map, *theme_cfg, cfg);
 			editor.set_file_to_save_as(filename);

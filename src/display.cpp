@@ -53,8 +53,8 @@ namespace {
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
-		const gamestatus& status, const std::vector<team>& t, const config& theme_cfg,
-		const config& config, const config& level) :
+		const gamestatus& status, const std::vector<team>& t,
+		const config& theme_cfg, const config& config, const config& level) :
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
 	minimap_(NULL), redrawMinimap_(false),
