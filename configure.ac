@@ -264,9 +264,9 @@ AC_ARG_ENABLE([debug],
 	      [CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"])
 
 AC_ARG_ENABLE([static],
-              [  --enable-static       Enable static building of wesnoth (doesn't work yet)],
-	      [CXXFLAGS="$CXXFLAGS -static"]
-	      [LIBS="$LIBS -static"])
+              [  --enable-static       Enable static building of wesnoth],
+	      [static=$enableval],
+	      [static=no])
 
 DATADIR=$PACKAGE
 AC_ARG_ENABLE([datadir-name],
@@ -284,11 +284,6 @@ AC_ARG_ENABLE([datadir-name],
 
 AC_SUBST([DATADIR])
 		
-# Default behaviour
-server=no 
-editor=no
-tools=no
-
 AC_ARG_ENABLE([server],
 	      [  --enable-server       Enable compilation of server],
 	      [server=$enableval],
@@ -314,6 +309,7 @@ AC_ARG_ENABLE([gnome],
 	      [gnome=$enableval],
 	      [gnome=no])
 
+AM_CONDITIONAL([STATIC], [test x$static = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])

@@ -249,4 +249,11 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
 AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ \
-	@SDL_TTF_LIBS@ 
+	@SDL_TTF_LIBS@
+
+if STATIC
+LIBS += -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \
+-lSDL_mixer -lSDL_net -lSDL_ttf -lSDL -lpthread -ldl -laudio -lXt -lX11 -lXext \
+-lSDL_image -lSDL_mixer -lSDL_net -lSDL_ttf -lstdc++ -lm -lSM -lICE -ljpeg \
+-lpng -lz -lvorbisfile -lvorbis -logg -lsmpeg -lfreetype
+endif
