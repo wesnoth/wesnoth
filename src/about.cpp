@@ -119,12 +119,7 @@ void show_about(display& disp)
  	text.push_back("-   Cyril Bouthors (CyrilB)");
  	text.push_back("-   Marcus Phillips (Sithrandel)");
  	text.push_back("+ ");
- 
- 	text.push_back("+Web Developers");
- 	text.push_back("-   Jaramir");
- 	text.push_back("-   Jordà Polo (ettin)");
- 	text.push_back("+ ");
- 
+  
   	text.push_back("+Past Contributors");
  	text.push_back("-   Jan Zvánovec (jaz)");
  	text.push_back("-   Developer");
