@@ -2,8 +2,7 @@
 bin_PROGRAMS = make_translation merge_translations 
 
 if LIBPNG
-# XXX exploder and cutter do not compile
-# bin_PROGRAMS += exploder cutter
+bin_PROGRAMS += exploder cutter
 endif
 
 #############################################################################
@@ -54,34 +53,32 @@ merge_translations_SOURCES = merge_translations.cpp \
 
 if LIBPNG
 
-# XXX dummy_video.cpp is missing
+exploder_SOURCES = exploder.cpp \
+		   exploder_utils.cpp \
+		   exploder_cutter.cpp \
+		   exploder_composer.cpp \
+		   ../server/variable.cpp \
+		   dummy_video.cpp \
+		   ../config.cpp \
+		   ../filesystem.cpp \
+		   ../game_config.cpp \
+		   ../sdl_utils.cpp \
+		   ../log.cpp
 
-# exploder_SOURCES = exploder.cpp \
-#		   exploder_utils.cpp \
-#		   exploder_cutter.cpp \
-#		   exploder_composer.cpp \
-#		   ../server/variable.cpp \
-#		   dummy_video.cpp \
-#		   ../config.cpp \
-#		   ../filesystem.cpp \
-#		   ../game_config.cpp \
-#		   ../sdl_utils.cpp \
-#		   ../log.cpp
-#
-# cutter_SOURCES = cutter.cpp \
-#		   exploder_utils.cpp \
-#		   exploder_cutter.cpp \
-#		   ../server/variable.cpp \
-#		   dummy_video.cpp \
-#		   ../config.cpp \
-#		   ../filesystem.cpp \
-#		   ../game_config.cpp \
-#		   ../sdl_utils.cpp \
-#		   ../log.cpp
-#
-#
-#exploder_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@
-#cutter_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@
+ cutter_SOURCES = cutter.cpp \
+		   exploder_utils.cpp \
+		   exploder_cutter.cpp \
+		   ../server/variable.cpp \
+		   dummy_video.cpp \
+		   ../config.cpp \
+		   ../filesystem.cpp \
+		   ../game_config.cpp \
+		   ../sdl_utils.cpp \
+		   ../log.cpp
+
+
+exploder_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@
+cutter_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@
 
 endif
 
