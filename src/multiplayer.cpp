@@ -348,7 +348,7 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 		if((*sd)->values["recruit"].empty())
 			(*sd)->values["recruit"]=possible_sides.front()->values["recruit"];
 		if((*sd)->values["music"].empty())
-			(*sd)->values["music"]=possible_sides.front()->values["recruit"];
+			(*sd)->values["music"]=possible_sides.front()->values["music"];
 		if((*sd)->values["recruitment_pattern"].empty())
 			(*sd)->values["recruitment_pattern"] =
 			        possible_sides.front()->values["recruitment_pattern"];

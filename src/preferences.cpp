@@ -221,7 +221,7 @@ const std::string& network_host()
 {
 	std::string& res = prefs["host"];
 	if(res.empty())
-		res = "server.wesnoth.org";
+		res = "kanetti1848.kanetti.com"; //"server.wesnoth.org";
 
 	return res;
 }
