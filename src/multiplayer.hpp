@@ -19,13 +19,17 @@
 #include "unit_types.hpp"
 #include "video.hpp"
 
+//an object which guarantees that when it is destroyed, a 'leave game'
+//message will be sent to any hosts still connected.
 struct network_game_manager {
+	network_game_manager() {}
 	~network_game_manager();
 };
 
-void play_multiplayer_client(display& disp, game_data& units_data,
-                             config& cfg, game_state& state);
-
+//function to host a multiplayer game. If server is true, then the
+//game will accept connections from foreign hosts. Otherwise it'll
+//just use existing network connections for players, or the game
+//is an entirely local game
 void play_multiplayer(display& disp, game_data& units_data,
                       config cfg, game_state& state, bool server=true);
 

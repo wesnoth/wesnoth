@@ -25,38 +25,65 @@
 #include <list>
 #include <vector>
 
+//this module contains various pathfinding functions and utilities.
+
+//function which, given a location, will place all adjacent locations in
+//res. res must point to an array of 6 location objects.
 void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res);
+
+//function which tells if two locations are adjacent.
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
 
+//function which gives the number of hexes between two tiles (i.e. the minimum
+//number of hexes that have to be traversed to get from one hex to the other)
 size_t distance_between(const gamemap::location& a, const gamemap::location& b);
 
+//function which will find a location on the board that is as near to loc as
+//possible, but which is unoccupied by any units. If terrain is not 0, then
+//the location found must be of the given terrain type, and must have a path
+//of that terrain type to loc.
+//
+//if no valid location can be found, it will return a null location.
 gamemap::location find_vacant_tile(const gamemap& map,
                                    const std::map<gamemap::location,unit>& un,
                                    const gamemap::location& loc,
                                    gamemap::TERRAIN terrain=0);
 
+//function which determines if a given location is an enemy zone of control
 bool enemy_zoc(const gamemap& map,const std::map<gamemap::location,unit>& units,
                const gamemap::location& loc,const team& current_team,int side);
 
+//object which contains all the possible locations a unit can move to, with
+//associated best routes to those locations.
 struct paths
 {
 	paths() {}
+
+	//construct a list of paths for the unit at loc.
+	//ignore_zocs: determines whether unit has to stop upon entering an ezoc
+	//allow_teleport: indicates whether unit teleports between villages
+	//additional_turns: if 0, paths for how far the unit can move this turn
+	//will be calculated. If 1, paths for how far the unit can move by the
+	//end of next turn will be calculated, and so forth.
 	paths(const gamemap& map, const game_data& gamedata,
 	      const std::map<gamemap::location,unit>& units,
 	      const gamemap::location& loc, std::vector<team>& teams,
 		  bool ignore_zocs, bool allow_teleport, int additional_turns=0);
 
+	//structure which holds a single route between one location and another.
 	struct route
 	{
 		route() : move_left(0) {}
 		std::vector<gamemap::location> steps;
-		int move_left;
+		int move_left; //movement unit will have left at end of the route.
 	};
 
 	typedef std::map<gamemap::location,route> routes_map;
 	routes_map routes;
 };
 
+//function which, given a unit and a route the unit can move on, will
+//return the number of turns it will take the unit to traverse the route.
 int route_turns_to_complete(const unit& u, const gamemap& map,
                             const paths::route& rt);
 

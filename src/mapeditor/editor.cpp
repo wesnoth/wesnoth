@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 
 	std::cerr << "starting for(;;)\n";
 	for(;;) {
-		if(key[KEY_ESCAPE])
+		if(key[SDLK_ESCAPE])
 			break;
 
 		int mousex, mousey;
@@ -91,25 +91,25 @@ int main(int argc, char** argv)
 		const bool new_left_button = mouse_flags & SDL_BUTTON_LMASK;
 		const bool new_right_button = mouse_flags & SDL_BUTTON_RMASK;
 
-		if(key[KEY_UP] || mousey == 0)
+		if(key[SDLK_UP] || mousey == 0)
 			gui.scroll(0.0,-scroll_speed);
 
-		if(key[KEY_DOWN] || mousey == gui.y()-1)
+		if(key[SDLK_DOWN] || mousey == gui.y()-1)
 			gui.scroll(0.0,scroll_speed);
 
-		if(key[KEY_LEFT] || mousex == 0)
+		if(key[SDLK_LEFT] || mousex == 0)
 			gui.scroll(-scroll_speed,0.0);
 
-		if(key[KEY_RIGHT] || mousex == gui.x()-1)
+		if(key[SDLK_RIGHT] || mousex == gui.x()-1)
 			gui.scroll(scroll_speed,0.0);
 
-		if(key[KEY_Z])
+		if(key[SDLK_Z])
 			gui.zoom(zoom_amount);
 
-		if(key[KEY_X])
+		if(key[SDLK_X])
 			gui.zoom(-zoom_amount);
 
-		if(key[KEY_D])
+		if(key[SDLK_D])
 			gui.default_zoom();
 
 		gui.highlight_hex(gui.hex_clicked_on(mousex,mousey));

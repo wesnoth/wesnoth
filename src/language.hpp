@@ -19,13 +19,29 @@
 #include <string>
 #include <vector>
 
+//this module controls internationalization.
+
+//table of strings which are displayed to the user. Maps ids -> text.
+//this table should be consulted whenever something is to be
+//displayed on screen.
 extern std::map<std::string,std::string> string_table;
 
+//function which, given the main configuration object, will return
+//a list of the translations of the game available.
 std::vector<std::string> get_languages(config& cfg);
+
+//function which, given the main configuration object, and a locale,
+//will set string_table to be populated with data from that locale.
+//locale may be either the full name of the language, like 'English',
+//or the 2-letter version, like 'en'.
 bool set_language(const std::string& locale, config& cfg);
 
+//function which attempts to query and return the locale on the system
 std::string get_locale();
 
+//two character sets are supported: LATIN1 and UTF-8. This is
+//set in the translation by using encoding=(LATIN1|UTF-8)
+//the character set used affects the font rendering function called
 enum CHARSET { CHARSET_LATIN1, CHARSET_UTF8 };
 CHARSET charset();
 

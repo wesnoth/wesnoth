@@ -15,6 +15,7 @@
 
 #include <string>
 
+//basic game configuration information is here.
 namespace game_config
 {
 	extern const int unit_cost;

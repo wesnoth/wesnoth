@@ -114,11 +114,11 @@ void show_intro(display& screen, config& data)
 
 			events::pump();
 
-			if(key[KEY_ESCAPE] ||
+			if(key[SDLK_ESCAPE] ||
 			   skip_button.process(mousex,mousey,left_button))
 				return;
 
-			if(key[KEY_SPACE] || key[KEY_ENTER] ||
+			if(key[SDLK_SPACE] || key[SDLK_RETURN] ||
 			   next_button.process(mousex,mousey,left_button)) {
 				if(!last)
 					break;
@@ -217,7 +217,7 @@ void show_map_scene(display& screen, config& data)
 		update_rect(dstrect);
 
 		for(int i = 0; i != 50; ++i) {
-			if(key[KEY_ESCAPE]) {
+			if(key[SDLK_ESCAPE]) {
 				break;
 			}
 
@@ -227,19 +227,19 @@ void show_map_scene(display& screen, config& data)
 
 			int a, b;
 			const int mouse_flags = SDL_GetMouseState(&a,&b);
-			if(key[KEY_ENTER] || key[KEY_SPACE] || mouse_flags) {
+			if(key[SDLK_RETURN] || key[SDLK_SPACE] || mouse_flags) {
 				break;
 			}
 		}
 
-		if(key[KEY_ESCAPE]) {
+		if(key[SDLK_ESCAPE]) {
 			break;
 		}
 
 		screen.video().flip();
 	}
 
-	if(!key[KEY_ESCAPE]) {
+	if(!key[SDLK_ESCAPE]) {
 		SDL_Delay(500);
 	}
 
@@ -258,8 +258,8 @@ void show_map_scene(display& screen, config& data)
 		int a, b;
 		const int mouse_flags = SDL_GetMouseState(&a,&b);
 
-		const bool new_state = mouse_flags || key[KEY_ESCAPE] ||
-		           key[KEY_ENTER] || key[KEY_SPACE];
+		const bool new_state = mouse_flags || key[SDLK_ESCAPE] ||
+		           key[SDLK_RETURN] || key[SDLK_SPACE];
 
 		if(new_state && !last_state)
 			break;

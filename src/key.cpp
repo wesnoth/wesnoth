@@ -27,7 +27,7 @@ int main( void )
 	for(;;) {
 		if( key[KEY_RETURN] != 0 )
 			printf( "key(ENTER) pressed\n" );
-		if( key[KEY_ESCAPE] != 0 )
+		if( key[SDLK_ESCAPE] != 0 )
 			return 1;
 	}
 }
@@ -42,7 +42,7 @@ CKey::CKey() : is_enabled(true)
 
 int CKey::operator[]( int code )
 {
-	return (code == KEY_ESCAPE || is_enabled) && int(key_list[code]);
+	return (code == SDLK_ESCAPE || is_enabled) && int(key_list[code]);
 }
 
 void CKey::SetEnabled( bool enable )

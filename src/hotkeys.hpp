@@ -18,7 +18,26 @@
 #include "events.hpp"
 #include "key.hpp"
 
+//the hotkey system allows hotkey definitions to be loaded from
+//configuration objects, and then detect if a keyboard event
+//refers to a hotkey command being executed.
 namespace hotkey {
+
+//function to load a hotkey configuration object. hotkey configuration objects
+//are a list of nodes that look like:
+//[hotkey]
+//command='cmd'
+//key='k'
+//ctrl=(yes|no)
+//alt=(yes|no)
+//shift=(yes|no)
+//[/hotkey]
+//where 'cmd' is a command name, and 'k' is a key. see hotkeys.cpp for the
+//valid command names.
+void add_hotkeys(config& cfg);
+
+//abstract base class for objects that implement the ability
+//to execute hotkey commands.
 class command_executor
 {
 public:
@@ -38,6 +57,13 @@ public:
 	virtual void recruit() = 0;
 };
 
+//function to be called every time a key event is intercepted. Will
+//call the relevant function in executor if the keyboard event is
+//not NULL. Also handles some events in the function itself, and so
+//is still meaningful to call with executor=NULL
+void key_event(display& disp, const SDL_KeyboardEvent& event,
+               command_executor* executor);
+
 //object which will ensure that basic keyboard events like escape
 //are handled properly for the duration of its lifetime
 struct basic_handler : public events::handler {
@@ -48,11 +74,6 @@ struct basic_handler : public events::handler {
 private:
 	display& disp_;
 };
-
-void add_hotkeys(config& cfg);
-
-void key_event(display& disp, const SDL_KeyboardEvent& event,
-               command_executor* executor);
 
 }
 

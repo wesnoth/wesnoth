@@ -5,6 +5,9 @@
 
 namespace events
 {
+
+//an object which prevents resizing of the screen occuring during
+//its lifetime.
 struct resize_lock {
 	resize_lock();
 	~resize_lock();
@@ -13,7 +16,8 @@ struct resize_lock {
 //any classes that derive from this class will automatically
 //receive sdl events through the handle function for their lifetime
 //note that handlers should *always* be allocated as automatic variables
-//(never on the free store or in static memory)
+//(never on the free store or in static memory), as the event mechanism
+//relies on handlers being created and destroyed in LIFO ordering.
 class handler
 {
 public:
@@ -26,6 +30,7 @@ private:
 	const int unicode_;
 };
 
+//causes events to be dispatched to all handler objects.
 void pump();
 }
 

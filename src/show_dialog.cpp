@@ -468,11 +468,11 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 		const bool new_right_button = mouse_flags&SDL_BUTTON_RMASK;
 		const bool new_left_button = mouse_flags&SDL_BUTTON_LMASK;
-		const bool new_key_down = key[KEY_SPACE] || key[KEY_ENTER] ||
-		                          key[KEY_ESCAPE];
+		const bool new_key_down = key[SDLK_SPACE] || key[SDLK_RETURN] ||
+		                          key[SDLK_ESCAPE];
 
-		const bool new_up_arrow = key[KEY_UP];
-		const bool new_down_arrow = key[KEY_DOWN];
+		const bool new_up_arrow = key[SDLK_UP];
+		const bool new_down_arrow = key[SDLK_DOWN];
 
 		const bool new_page_up = key[SDLK_PAGEUP];
 		const bool new_page_down = key[SDLK_PAGEDOWN];
@@ -484,7 +484,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 
 
-		if(!key_down && key[KEY_ENTER] &&
+		if(!key_down && key[SDLK_RETURN] &&
 		   (type == YES_NO || type == OK_CANCEL)) {
 
 			if(text_widget_text != NULL && use_textbox)
@@ -497,11 +497,11 @@ int show_dialog(display& disp, SDL_Surface* image,
 			}
 		}
 
-		if(!key_down && key[KEY_ESCAPE] && type == MESSAGE) {
+		if(!key_down && key[SDLK_ESCAPE] && type == MESSAGE) {
 			return -1;
 		}
 
-		if(!key_down && key[KEY_ESCAPE] &&
+		if(!key_down && key[SDLK_ESCAPE] &&
 		   (type == YES_NO || type == OK_CANCEL)) {
 
 			if(menu_.height() == 0) {
@@ -663,7 +663,7 @@ TITLE_RESULT show_title(display& screen)
 
 	CKey key;
 
-	bool last_escape = key[KEY_ESCAPE];
+	bool last_escape = key[SDLK_ESCAPE];
 
 	update_whole_screen();
 
@@ -693,10 +693,10 @@ TITLE_RESULT show_title(display& screen)
 		if(quit_button.process(mousex,mousey,left_button))
 			return QUIT_GAME;
 
-		if(!last_escape && key[KEY_ESCAPE])
+		if(!last_escape && key[SDLK_ESCAPE])
 			return QUIT_GAME;
 
-		last_escape = key[KEY_ESCAPE];
+		last_escape = key[SDLK_ESCAPE];
 
 		screen.video().flip();
 

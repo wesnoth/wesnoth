@@ -145,8 +145,8 @@ RESULT enter(display& disp, config& game_data)
 				break;
 			}
 
-			const bool enter = key[KEY_ENTER] && !old_enter;
-			old_enter = key[KEY_ENTER];
+			const bool enter = key[SDLK_RETURN] && !old_enter;
+			old_enter = key[SDLK_RETURN];
 			if((enter) &&
 			   message_entry.text().empty() == false) {
 				config msg;
@@ -156,7 +156,7 @@ RESULT enter(display& disp, config& game_data)
 				message_entry.clear();
 			}
 
-			if(key[KEY_ESCAPE] || quit_game.process(mousex,mousey,left_button)){
+			if(key[SDLK_ESCAPE] || quit_game.process(mousex,mousey,left_button)){
 				return QUIT;
 			}
 

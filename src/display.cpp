@@ -2306,7 +2306,7 @@ bool display::update_locked() const
 bool display::turbo() const
 {
 	bool res = turbo_;
-	if(keys_[KEY_LSHIFT] || keys_[KEY_RSHIFT])
+	if(keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT])
 		res = !res;
 
 	return res;

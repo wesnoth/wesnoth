@@ -19,16 +19,26 @@
 #include <string>
 #include <vector>
 
+//an object which defines the current time of day
 struct time_of_day
 {
 	explicit time_of_day(config& cfg);
 
+	//the % bonus lawful units receive. chaotic units will
+	//receive -lawful_bonus.
 	int lawful_bonus;
+
+	//the image to be displayed in the game status.
 	std::string image;
 	std::string name;
+
+	//the colour modifications that should
+	//be made to the game board to reflect the time of day.
 	int red, green, blue;
 };
 
+//class which contains the global status of the game -- namely
+//the current turn, the number of turns, and the time of day.
 class gamestatus
 {
 public:
@@ -38,8 +48,11 @@ public:
 	size_t turn() const;
 	size_t number_of_turns() const;
 
+	//function to move to the next turn. Returns true iff time
+	//has expired.
 	bool next_turn();
 
+	//an exception object used when loading a game fails.
 	struct load_game_failed {
 		load_game_failed() {}
 		load_game_failed(const std::string& msg) : message(msg) {}
@@ -47,6 +60,8 @@ public:
 		std::string message;
 	};
 
+	//an exception object used for any general game error.
+	//e.g. data files are corrupt.
 	struct game_error {
 		game_error(const std::string& msg) : message(msg) {}
 		std::string message;
@@ -59,24 +74,35 @@ private:
 	size_t numTurns_;
 };
 
+//object which holds all the data needed to start a scenario.
+//i.e. this is the object serialized to disk when saving/loading a game.
+//is also the object which needs to be created to start a nwe game
 struct game_state
 {
 	game_state() : gold(-1), difficulty("NORMAL") {}
-	std::string label;
-	std::string version;
-	std::string campaign_type;
-	std::string scenario;
-	int gold;
-	std::vector<unit> available_units;
-	std::map<std::string,std::string> variables;
-	std::string difficulty;
+	std::string label; //name of the game (e.g. name of save file)
+	std::string version; //version game was created with.
+	std::string campaign_type; //type of the game - campaign, multiplayer etc
+	std::string scenario; //the scenario being played
+	int gold; //amount of gold the player has saved
+	std::vector<unit> available_units; //units the player has to recall
+	std::map<std::string,std::string> variables; //variables that have been set
+	std::string difficulty; //the difficulty level the game is being played on.
 
+	//if the game is saved mid-level, we have a series of replay steps to
+	//take the game up to the position it was saved at.
 	config replay_data;
+
+	//information about the starting conditions of the scenario. Used in
+	//multiplayer games, when the starting position isn't just literally
+	//read from a file, since there is game setup information.
 	config starting_pos;
 };
 
+//function to get a list of available saves.
 std::vector<std::string> get_saves_list();
 
+//functions to load/save games.
 void load_game(game_data& data, const std::string& name, game_state& state);
 void save_game(const game_state& state);
 
