@@ -32,8 +32,6 @@ tokenizer::tokenizer(std::istream& in) :
 
 const token& tokenizer::next_token()
 {
-	tokenstart_lineno_ = lineno_;
-	tokenstart_colno_ = colno_;
 	token_.value = "";
 	token_.leading_spaces = "";
 
@@ -62,6 +60,9 @@ const token& tokenizer::next_token()
 			textdomain_init(textdomain_, path);
 		}
 	} 
+
+	tokenstart_lineno_ = lineno_;
+	tokenstart_colno_ = colno_;
 
 	switch(current_) {
 	case EOF:
@@ -148,12 +149,12 @@ bool tokenizer::is_alnum(int c)
 
 const size_t tokenizer::get_line()
 {
-	return tokenstart_lineno_;
+	return tokenstart_lineno_ + 1;
 }
 
 const size_t tokenizer::get_column()
 {
-	return tokenstart_colno_;
+	return tokenstart_colno_ + 1;
 }
 
 std::string& tokenizer::textdomain()

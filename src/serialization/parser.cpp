@@ -218,8 +218,8 @@ void parser::parse_variable()
 				// appropriate, although a proper one should
 				// wait after string freeze.
 				error(_("Unexpected characters after variable name (expected , or =)"));
-				variables.push_back("");
 			}
+			variables.push_back("");
 			break;
 		default:
 			error(_("Unexpected characters after variable name (expected , or =)"));
