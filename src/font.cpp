@@ -44,11 +44,11 @@ TTF_Font* get_font(int size)
 	std::cerr << "opening font file...\n";
 
 #ifdef WESNOTH_PATH
-	font = open_font(std::string(WESNOTH_PATH) + "/images/misc/Vera.ttf",size);
+	font = open_font(std::string(WESNOTH_PATH) + "/fonts/Vera.ttf",size);
 #endif
 
 	if(font == NULL) {
-		font = open_font("images/misc/Vera.ttf",size);
+		font = open_font("fonts/Vera.ttf",size);
 	}
 
 	if(font == NULL) {
