@@ -131,7 +131,8 @@ public:
 	/// saved.
 	bool changed_since_save() const;
 	
-	
+	/// Recalculate layout and redraw everything.
+	void redraw_everything();
 	
 	// Methods inherited from command_executor. Used to perform
 	// operations on menu/hotkey commands.
@@ -153,6 +154,7 @@ public:
 	virtual void edit_copy();
 	virtual void edit_paste();
 	virtual void edit_revert();
+	virtual void edit_resize();
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	

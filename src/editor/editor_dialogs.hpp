@@ -44,6 +44,12 @@ std::string load_map_dialog(display &disp);
 /// editor.
 void preferences_dialog(display &disp, config &prefs);
 
+/// Show a dialog asking for the new size of the map. Return the chosen
+/// width and height. Checks are made to see that the desired values
+/// will result in a feasible map.
+std::pair<unsigned, unsigned>
+resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h);
+
 
 
 

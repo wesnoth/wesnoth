@@ -28,6 +28,14 @@
 
 #include "editor_dialogs.hpp"
 
+
+namespace {
+	const int map_min_height = 20;
+	const int map_min_width = 20;
+	const int map_max_height = 200;
+	const int map_max_width = 200;
+}
+
 namespace map_editor {
 
 bool confirm_modification_disposal(display& disp) {
@@ -96,20 +104,16 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	const int slider_right = xpos + width - horz_margin - right_space;
 	SDL_Rect slider_rect = { slider_left,width_rect.y,slider_right-slider_left,width_rect.h};
 
-	const int min_width = 20;
-	const int max_width = 200;
-	const int max_height = 200;
-	
 	slider_rect.y = width_rect.y;
 	gui::slider width_slider(disp,slider_rect);
-	width_slider.set_min(min_width);
-	width_slider.set_max(max_width);
+	width_slider.set_min(map_min_width);
+	width_slider.set_max(map_max_width);
 	width_slider.set_value(map_width);
 
 	slider_rect.y = height_rect.y;
 	gui::slider height_slider(disp,slider_rect);
-	height_slider.set_min(min_width);
-	height_slider.set_max(max_height);
+	height_slider.set_min(map_min_height);
+	height_slider.set_max(map_max_height);
 	height_slider.set_value(map_height);
 
  	const config* const cfg =
@@ -118,16 +122,11 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
  	generator.assign(create_map_generator("", cfg));
 
 	for(bool draw = true;; draw = false) {
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-
-		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
-		if(cancel_button.process(mousex,mousey,left_button)) {
+		if(cancel_button.pressed()) {
 			return "";
 		}
 
-		if(new_map_button.process(mousex,mousey,left_button)) {
+		if(new_map_button.pressed()) {
 			draw = true;
 			if ((confirmation_needed &&
 				 confirm_modification_disposal(disp))
@@ -145,14 +144,14 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 				return map_str.str();
 			}
 		}
-		if(random_map_setting_button.process(mousex,mousey,left_button)) {
+		if(random_map_setting_button.pressed()) {
 			draw = true;
 			if (generator.get()->allow_user_config()) {
 				generator.get()->user_config(disp);
 			}
 		}
 
-		if(random_map_button.process(mousex,mousey,left_button)) {
+		if(random_map_button.pressed()) {
 			draw = true;
 			if ((confirmation_needed
 				 && confirm_modification_disposal(disp))
@@ -199,8 +198,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 		random_map_setting_button.set_dirty();
 		cancel_button.set_dirty();
 
-		width_slider.set_min(min_width);
-		height_slider.set_min(min_width);
+		width_slider.set_min(map_min_width);
+		height_slider.set_min(map_min_height);
 
 		events::raise_process_event();
 		events::raise_draw_event();
@@ -209,7 +208,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 			update_rect(xpos,ypos,width,height);
 		}
 		disp.update_display();
-		SDL_Delay(10);
+		SDL_Delay(20);
 		events::pump();
 	}
 }
@@ -324,16 +323,11 @@ void preferences_dialog(display &disp, config &prefs) {
 	bool redraw_all = true;
 
 	for(;;) {
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-
-		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
-		if(close_button.process(mousex,mousey,left_button)) {
+		if(close_button.pressed()) {
 			break;
 		}
 
-		if(fullscreen_button.process(mousex,mousey,left_button)) {
+		if(fullscreen_button.pressed()) {
 			//the underlying frame buffer is changing, so cancel
 			//the surface restorer restoring the frame buffer state
 			restorer.cancel();
@@ -359,11 +353,11 @@ void preferences_dialog(display &disp, config &prefs) {
 			redraw_all = false;
 		}
 
-		if(grid_button.process(mousex,mousey,left_button)) {
+		if(grid_button.pressed()) {
 			preferences::set_grid(grid_button.checked());
 		}
 
-		if(resolution_button.process(mousex,mousey,left_button)) {
+		if(resolution_button.pressed()) {
 			const bool mode_changed = preferences::show_video_mode_dialog(disp);
 			if(mode_changed) {
 				//the underlying frame buffer is changing, so cancel
@@ -373,7 +367,7 @@ void preferences_dialog(display &disp, config &prefs) {
 			break;
 		}
 
-		if(hotkeys_button.process(mousex,mousey,left_button)) {
+		if(hotkeys_button.pressed()) {
 			preferences::show_hotkeys_dialog(disp, &prefs);
 			break;
 		}
@@ -390,6 +384,123 @@ void preferences_dialog(display &disp, config &prefs) {
 	}
 }
 
+std::pair<unsigned, unsigned>
+resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
+	const events::resize_lock prevent_resizing;
+	const events::event_context dialog_events_context;
+
+	int map_width(curr_w), map_height(curr_h);
+	const int width = 600;
+	const int height = 200;
+	const int xpos = disp.x()/2 - width/2;
+	const int ypos = disp.y()/2 - height/2;
+	const int horz_margin = 5;
+	const int vertical_margin = 20;
+	const int button_padding = 20;
+
+	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
+	surface_restorer restorer(&disp.video(),dialog_rect);
+
+	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+
+	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
+					      "Resize Map",0,0);
+
+	const std::string& width_label = string_table["map_width"] + ":";
+	const std::string& height_label = string_table["map_height"] + ":";
+
+	SDL_Rect width_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
+										  width_label, 0, 0);
+	SDL_Rect height_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
+										   height_label, 0, 0);
+
+	const int text_right = xpos + horz_margin +
+	        maximum<int>(width_rect.w,height_rect.w);
+
+	width_rect.x = text_right - width_rect.w;
+	height_rect.x = text_right - height_rect.w;
+	
+	width_rect.y = ypos + title_rect.h + vertical_margin*2;
+	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
+
+	gui::button cancel_button(disp,"Cancel");
+	gui::button ok_button(disp,"Ok");
+
+	cancel_button.set_location(xpos + width - cancel_button.width() - horz_margin,
+	                           ypos + height - cancel_button.height()-14);
+						  
+	ok_button.set_location(xpos + width - cancel_button.width() - horz_margin
+						   - ok_button.width() - button_padding,
+						   ypos + height - ok_button.height()-14);
+
+	const int right_space = 100;
+	const int slider_left = text_right + 10;
+	const int slider_right = xpos + width - horz_margin - right_space;
+	SDL_Rect slider_rect = { slider_left,width_rect.y,slider_right-slider_left,width_rect.h};
+
+	slider_rect.y = width_rect.y;
+	gui::slider width_slider(disp,slider_rect);
+	width_slider.set_min(map_min_width);
+	width_slider.set_max(map_max_width);
+	width_slider.set_value(map_width);
+
+	slider_rect.y = height_rect.y;
+	gui::slider height_slider(disp,slider_rect);
+	height_slider.set_min(map_min_height);
+	height_slider.set_max(map_max_height);
+	height_slider.set_value(map_height);
+	for(bool draw = true;; draw = false) {
+		if(cancel_button.pressed()) {
+			return std::make_pair((unsigned)0, (unsigned)0);
+		}
+		if (width_slider.value() != map_width
+			|| height_slider.value() != map_height) {
+			draw = true;
+		}
+		if (draw) {
+			map_width = width_slider.value();
+			map_height = height_slider.value();
+			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+										 "Resize Map",xpos+(width-title_rect.w)/2,ypos+10);
+
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
+							width_label,width_rect.x,width_rect.y);
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
+							height_label,height_rect.x,height_rect.y);
+			
+			std::stringstream width_str;
+			width_str << map_width;
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
+							slider_right+horz_margin,width_rect.y);
+			
+			std::stringstream height_str;
+			height_str << map_height;
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
+							slider_right+horz_margin,height_rect.y);
+			
+		}
+		if (ok_button.pressed()) {
+			return std::make_pair((unsigned)map_width, (unsigned)map_height);
+		}
+		cancel_button.set_dirty();
+		ok_button.set_dirty();
+
+		width_slider.set_min(map_min_width);
+		height_slider.set_min(map_min_height);
+
+		events::raise_process_event();
+		events::raise_draw_event();
+
+		if (draw) {
+			update_rect(xpos,ypos,width,height);
+		}
+		disp.update_display();
+		SDL_Delay(20);
+		events::pump();
+	}
+
+}
 
 
 

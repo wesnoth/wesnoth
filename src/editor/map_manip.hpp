@@ -20,6 +20,7 @@
 
 namespace map_editor {
 
+/// Return the tiles that are within radius from the location.
 std::vector<gamemap::location> get_tiles(const gamemap &map,
 										 const gamemap::location& a,
 										 const unsigned int radius);
@@ -33,9 +34,19 @@ typedef std::vector<std::pair<gamemap::location, gamemap::TERRAIN> > terrain_log
 void flood_fill(gamemap &map, const gamemap::location &start_loc,
 				const gamemap::TERRAIN fill_with, terrain_log *log = NULL);
 
-/// The the area that would be flood filled if a flood fill was requested.
+/// Return the area that would be flood filled if a flood fill was
+/// requested.
 std::set<gamemap::location>
 get_component(const gamemap &map, const gamemap::location &start_loc);
+
+/// Return the string representation of the map after it has been
+/// resized to new_w X new_h. If the new dimensions are smaller than the
+/// current ones, the map will be cropped from the bottom and from the
+/// right. If the map becomes larger than the current dimensions, the
+/// new map area appeard at the bottom and/or the right and is filled
+/// with the terrain fill_with.
+std::string resize_map(const gamemap &map, const unsigned new_w,
+					   const unsigned new_h, const gamemap::TERRAIN fill_with);
 				
 
 }

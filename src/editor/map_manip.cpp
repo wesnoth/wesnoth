@@ -11,6 +11,7 @@
 */
 
 #include "../map.hpp"
+#include "../config.hpp"
 
 #include "map_manip.hpp"
 
@@ -97,8 +98,32 @@ get_component(const gamemap &map, const gamemap::location &start_loc) {
 	return filled;
 }
 
-
-
+std::string resize_map(const gamemap &map, const unsigned new_w,
+					   const unsigned new_h, const gamemap::TERRAIN fill_with) {
+	std::string str_map = map.write();
+	std::vector<std::string> lines = config::split(str_map, '\n');
+	bool map_changed = false;
+	const unsigned old_w = (unsigned)map.x();
+	const unsigned old_h = (unsigned)map.y();
+	if (old_h != new_h) {
+		const std::string one_row(old_w, fill_with);
+		lines.resize(new_h, one_row);
+		map_changed = true;
+	}
+	if (new_w != old_w) {
+		for (std::vector<std::string>::iterator it = lines.begin();
+			 it != lines.end(); it++) {
+			(*it).resize(new_w, fill_with);
+		}
+		map_changed = true;
+	}
+	if (map_changed) {
+		return config::join(lines, '\n');
+	}
+	else {
+		return "";
+	}
+}
 
 
 }

@@ -139,7 +139,17 @@ void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
 			set_abort();
 		}
 		else {
+			const bool old_fullscreen = preferences::fullscreen();
+			const std::pair<int, int> old_resolution = preferences::resolution();
 			hotkey::key_event(gui_, event, this);
+			// A key event may change the video mode. The redraw
+			// functionality inside the preferences module does not
+			// redraw our palettes so we need to check if the mode has
+			// changed and if so redraw everything.
+			if (preferences::fullscreen() != old_fullscreen
+				|| old_resolution != preferences::resolution()) {
+				redraw_everything();
+			}
 		}
 	}
 }
@@ -341,13 +351,25 @@ void map_editor::edit_revert() {
 	}
 }
 
+void map_editor::edit_resize() {
+	const std::pair<unsigned, unsigned> new_size =
+		resize_dialog(gui_, map_.x(), map_.y());
+	if (new_size.first != 0) {
+		const std::string resized_map =
+			resize_map(map_, new_size.first, new_size.second, palette_.selected_terrain());
+		if (resized_map != "") {
+			throw new_map_exception(resized_map, filename_);
+		}
+	}
+}
+
 std::string map_editor::load_map(const std::string filename) {
 	bool load_successful = true;
-	std::string msg;
+	std::string msg = "'";
 	std::string new_map;
 	if (!file_exists(filename) || is_directory(filename)) {
 		load_successful = false;
-		msg = filename + " does not exist or can't be read as a file.";
+		msg += filename + "' does not exist or can't be read as a file.";
 	}
 	else {
 		try {
@@ -414,6 +436,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_CUT:
 	case hotkey::HOTKEY_EDIT_PASTE:
 	case hotkey::HOTKEY_EDIT_REVERT:
+	case hotkey::HOTKEY_EDIT_RESIZE:
 		return true;
 	default:
 		return false;
@@ -490,8 +513,10 @@ void map_editor::redo() {
 
 void map_editor::preferences() {
 	preferences_dialog(gui_, prefs_);
-	// Sizes and stuff may have changed, we need to redraw and
-	// recalculate everything if that is the case.
+	redraw_everything();
+}
+
+void map_editor::redraw_everything() {
 	adjust_sizes(gui_, size_specs_);
 	palette_.adjust_size();
 	brush_.adjust_size();
