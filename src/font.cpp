@@ -811,14 +811,16 @@ void undraw_floating_labels(SDL_Surface* screen)
 
 	//undraw labels in reverse order, so that a LIFO process occurs, and the screen is restored
 	//into the exact state it started in.
-	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ) {
+	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
 		i->second.undraw(screen);
-		if(i->second.expired()) {
-			//we want to erase element i, which is (i+1).base()
-			++i;
-			labels.erase(i.base());
+	}
+
+	//remove expired labels
+	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
+		if(j->second.expired()) {
+			labels.erase(j++);
 		} else {
-			++i;
+			j++;
 		}
 	}
 }
