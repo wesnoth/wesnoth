@@ -484,11 +484,14 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 			//this unit still has movement left, and is a candidate to retreat. We see the amount
 			//of power of each side on the situation, and decide whether it should retreat.
 			if(should_retreat(i->first,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
-				//time to retreat. Look for the place where the power balance is most in our favor
+				//time to retreat. Look for the place where the power balance is most in our favor.
+				//If we can't find anywhere where we like the power balance, just try to
+				//get to the best defensive hex
 				typedef move_map::const_iterator Itor;
 				std::pair<Itor,Itor> itors = srcdst.equal_range(i->first);
-				gamemap::location best_pos;
-				double best_rating = -10000.0;
+				gamemap::location best_pos, best_defensive;
+				double best_rating = 0.0;
+				int best_defensive_rating = 100;
 				while(itors.first != itors.second) {
 
 					//we rate the power balance of a hex based on our power projection compared
@@ -499,12 +502,24 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 					const double our_power = power_projection(hex,srcdst,dstsrc);
 					const double their_power = power_projection(hex,enemy_srcdst,enemy_dstsrc) * double(defense)/100.0;
 					const double rating = our_power - their_power;
-					if(!best_pos.valid() || rating > best_rating) {
+					if(rating > best_rating) {
 						best_pos = hex;
 						best_rating = rating;
 					}
 
+					//give a bonus for getting to a village.
+					const int modified_defense = defense - (map_.underlying_terrain(map_.get_terrain(hex)) == gamemap::TOWER ? 10 : 0);
+
+					if(modified_defense < best_defensive_rating) {
+						best_defensive_rating = modified_defense;
+						best_defensive = hex;
+					}
+
 					++itors.first;
+				}
+
+				if(!best_pos.valid()) {
+					best_pos = best_defensive;
 				}
 
 				if(best_pos.valid()) {
