@@ -1,25 +1,43 @@
 CVS HEAD:
+ * changed vision range based on potential move
+ * new and improved graphics:
+   * snow forest tiles
+   * unit images
  * new scenarios for 'Heir to the Throne' campaign:
    * Battle for Wesnoth (final scenario)
  * scenario balancing for 'Heir to the Throne' campaign:
    * Crossroads
    * Test of the Clans
+ * new units
+   * Dark Queen
+ * language fixes and polishing (english)
  * updated translations:
+   * finnish
    * french
    * spanish
    * swedish
- * new units
-   * Dark Queen
  * made hosting games work elegantly when wesnothd is running on the same machine
  * fixed typo causing 'Troll Whelp' being recruitable in 'The Dark Hordes: A New Chance' scenario
  * fixed alignment and abilities not being shown in panel
  * fixed hitpoints and experience being not translatable in default theme
  * fixed escape not working in game lobby
  * fixed the tools in src/tools not building
+ * fixed 'no start position for side 1' in 'The Eastern Invasion: Drowned Plains'
+ * fixed unselected units being too dark
+ * fixed missing tag in 'The Eastern Invasion: The Duel'
+ * fixed saving with illegal characters in the filename
+ * fixed cycling units with 'n' showing invisible enemy units while it is their turn
+ * fixed units not disappearing properly when they die
+ * fixed recall working incorrectly
+ * fix to the help system parse errors occuring, made the error message more descriptive to help with further debugging
+ * re-implemented enhanced sound quality fix
  * added error dialog when a campaign has corrupt WML
  * added better error messages for machines that cannot bind to local ports 
- * optimized village placement
+ * village placement optimizations
+ * help system optimizations
+ * compile speed optimizations
  * squashed many compile warnings
+ * code cleanups
 
 Version 0.8.3:
  * information about encountered terrain added in the help system
