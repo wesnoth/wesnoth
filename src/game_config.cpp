@@ -11,7 +11,7 @@
    See the COPYING file for more details.
 */
 #include "game_config.hpp"
-#include <config.h>
+#include "config.h"
 
 #include <cstdlib>
 

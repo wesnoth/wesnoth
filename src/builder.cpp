@@ -52,12 +52,15 @@ void terrain_builder::tile::rebuild_cache(const std::string &tod) const
 	images_background.clear();
 	images_foreground.clear();
 
+	// std::cerr << "rebuilding cache\n";
 	std::multimap<int, const rule_image*>::const_iterator itor;
 
 	util::array<std::string, 2> search_variants;
 	search_variants[0] = tod;
 
 	for(itor = images.begin(); itor != images.end(); ++itor) {
+		// std::cerr << "layer is " << itor->first << "\n";
+		// std::cerr << "image is " << itor->second->variants.find("")->second.image.get_current_frame().get_filename() << "\n";
 
 		for(util::array<std::string, 2>::const_iterator var_name = search_variants.begin();
 				var_name != search_variants.end(); ++var_name) {
@@ -204,21 +207,6 @@ bool terrain_builder::rule_valid(const building_rule &rule)
 	constraint_set::const_iterator constraint;
 	rule_image_variantlist::const_iterator variant;
 
-#if 0
-	for(image = rule.images.begin(); 
-			image != rule.images.end(); ++image) {
-
-		for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
-
-			std::string s = variant->second.image_string;
-			s = s.substr(0, s.find_first_of(",:"));
-
-			if(!image::exists("terrain/" + s + ".png"))
-				return false;
-		}
-	}
-#endif
-
 	for(constraint = rule.constraints.begin();
 			constraint != rule.constraints.end(); ++constraint) {
 		for(image = constraint->second.images.begin(); 
@@ -246,22 +234,6 @@ bool terrain_builder::start_animation(building_rule &rule)
 
 	for(constraint = rule.constraints.begin();
 			constraint != rule.constraints.end(); ++constraint) {
-
-#if 0
-		for(image = rule.images.begin(); 
-				image != rule.images.end(); ++image) {
-
-			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
-
-				animated<image::locator> th(variant->second.image_string,
-						locator_string_initializer());
-
-				variant->second.image = th;
-				variant->second.image.start_animation(0, animated<image::locator>::INFINITE_CYCLES);
-				variant->second.image.update_current_frame();
-			}
-		}
-#endif
 
 		for(image = constraint->second.images.begin(); 
 				image != constraint->second.images.end();
@@ -379,9 +351,6 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 		std::cerr << "Error: invalid rotations\n";
 		return ret;
 	}
-#if 0
-	ret.images = rule.images;
-#endif
 	ret.location_constraints = rule.location_constraints;
 	ret.probability = rule.probability;
 	ret.precedence = rule.precedence;
@@ -429,14 +398,6 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 {
 	const config::child_list& cimages = cfg.get_children("image");
 
-#if 0
-	for(config::child_list::const_iterator itor = cimages.begin(); itor != cimages.end(); ++itor) {
-		const int z_index = atoi((**itor)["z_index"].c_str());
-		const std::string &name = (**itor)["name"];
-			
-		images.insert(std::pair<int, std::string>(z_index, name));
-	}	
-#endif
 
 	for(config::child_list::const_iterator img = cimages.begin(); img != cimages.end(); ++img) {
 
@@ -794,23 +755,6 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 			return;
 
 		tile& btile = tile_map_[tloc];
-
-#if 0
-		for(img = rule.images.begin(); img != rule.images.end(); ++img) {
-#if 0
-			th.start_animation(0,animated<image::locator>::INFINITE_CYCLES);
-			th.update_current_frame();
-
-			//image::locator th(img->second, constraint->second.loc);
-			if(img->first < 0) {
-				btile.images_background.push_back(th);
-			} else {
-				btile.images_foreground.push_back(th);
-			}
-#endif
-			btile.images.push_back(std::pair<int, rule_image*>(img->layer, *img));
-		}
-#endif
 
 		//std::multimap<int, std::string>::const_iterator img;
 

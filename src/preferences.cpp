@@ -25,7 +25,7 @@
 #include "widgets/button.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/menu.hpp"
-#include <config.h>
+#include "config.h"
 
 #include <cstdlib>
 #include <iostream>

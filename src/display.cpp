@@ -1644,7 +1644,7 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 				res.push_back(surface);
 			}
 		}
-	}
+	} 
 
 	if(terrain_type == ADJACENT_FOREGROUND) {
 		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(gamemap::location(x,y));
