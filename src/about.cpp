@@ -119,6 +119,9 @@ void show_about(display& disp)
  	text.push_back("+Packagers");
  	text.push_back("-   Cyril Bouthors (CyrilB)");
  	text.push_back("-   Marcus Phillips (Sithrandel)");
+ 	text.push_back("-   Darryl Dixon");
+ 	text.push_back("-   ahwayakchih");
+ 	text.push_back("-   Mark Michelsen (skovbaer)");
  	text.push_back("+ ");
 
  	text.push_back("+Miscellaneous");
@@ -128,7 +131,7 @@ void show_about(display& disp)
  	text.push_back("+ ");
   
  	text.push_back("+Internationalization Manager");
- 	text.push_back("-   Mark Joakim Bekker Michelsen (skovbaer)");
+ 	text.push_back("-   Mark Michelsen (skovbaer)");
  	text.push_back("+ ");
  
  	text.push_back("+Brazilian Translation");
@@ -141,7 +144,7 @@ void show_about(display& disp)
  	text.push_back("+ ");
  
  	text.push_back("+Danish Translation");
- 	text.push_back("-   Mark Joakim Bekker Michelsen (skovbaer)");
+ 	text.push_back("-   Mark Michelsen (skovbaer)");
  	text.push_back("+ ");
  
  	text.push_back("+Dutch Translation");
@@ -171,6 +174,9 @@ void show_about(display& disp)
  	text.push_back("+ ");
  
  	text.push_back("+Italian Translation");
+ 	text.push_back("-   RokStar");
+ 	text.push_back("-   crys0000");
+ 	text.push_back("-   isazi");
  	text.push_back("-   Federico Tomassetti");
  	text.push_back("+ ");
  
@@ -180,12 +186,14 @@ void show_about(display& disp)
  	text.push_back("+ ");
  
  	text.push_back("+Polish Translation");
+ 	text.push_back("-   Artur R. Czechowski");
  	text.push_back("-   methinks");
  	text.push_back("-   BOrsuk");
  	text.push_back("+ ");
  
  	text.push_back("+Portuguese Translation");
  	text.push_back("-   Celso Goya");
+ 	text.push_back("-   Renato Cunha");
  	text.push_back("+ ");
  
  	text.push_back("+Slovak Translation");
