@@ -1791,6 +1791,14 @@ void display::move_unit(const std::vector<gamemap::location>& path, unit& u)
 	}
 }
 
+void display::float_label(const gamemap::location& loc, const std::string& text,
+						  int red, int green, int blue)
+{
+	const SDL_Color colour = {red,green,blue,255};
+	font::add_floating_label(text,20,colour,get_location_x(loc)+zoom_*0.5,get_location_y(loc),
+	                         0,-3,40,screen_area());
+}
+
 bool display::unit_attack_ranged(const gamemap::location& a,
                                  const gamemap::location& b, int damage,
                                  const attack_type& attack)
@@ -1876,6 +1884,12 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 		if(!hide) {
 			const scoped_sdl_surface image((unit_image == NULL) ? NULL : image::get_image(*unit_image));
 			draw_tile(a.x,a.y,image);
+		}
+
+		if(damage > 0 && i == missile_impact) {
+			char buf[50];
+			sprintf(buf,"%d",damage);
+			float_label(b,buf,255,0,0);
 		}
 
 		Uint32 defensive_colour = 0;
@@ -2092,9 +2106,7 @@ bool display::unit_attack(const gamemap::location& a,
 		if(damage > 0 && i == 0) {
 			char buf[50];
 			sprintf(buf,"%d",damage);
-			const SDL_Color colour = {255,0,0,255};
-			font::add_floating_label(buf,20,colour,get_location_x(b)+zoom_*0.5,get_location_y(b),
-			                         0,-3,40,screen_area());
+			float_label(b,buf,255,0,0);
 		}
 
 		if(damage > 0 && i >= 0) {

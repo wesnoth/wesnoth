@@ -343,6 +343,8 @@ battle_stats evaluate_battle_stats(
 		res.damage_attacker_takes = maximum<int>(1,base_damage + difference);
 
 		if(include_strings) {
+			percent *= is_negative;
+
 			std::stringstream str;
 			str << translate_string("total_damage") << "," << res.damage_attacker_takes
 				<< ",^" << (percent >= 0 ? "+" : "") << percent << "% (" << (difference >= 0 ? "+" : "") << difference << ")";
@@ -460,6 +462,8 @@ battle_stats evaluate_battle_stats(
 
 	res.damage_defender_takes = maximum<int>(1,base_damage + difference);
 	if(include_strings) {
+		percent *= is_negative;
+
 		std::stringstream str;
 		str << translate_string("total_damage") << "," << res.damage_defender_takes
 			<< ",^" << (percent >= 0 ? "+" : "") << percent << "% (" << (difference >= 0 ? "+" : "") << difference << ")";

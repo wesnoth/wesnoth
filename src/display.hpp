@@ -164,6 +164,10 @@ public:
 	void draw_tile(int x, int y, SDL_Surface* unit_image=NULL,
 	               double alpha=1.0, Uint32 blend_to=0);
 
+	//function to float a label above a tile
+	void float_label(const gamemap::location& loc, const std::string& text,
+	                 int red, int green, int blue);
+
 private:
 	void draw_unit_on_tile(int x, int y, SDL_Surface* unit_image=NULL,
 	                       double alpha=1.0, Uint32 blend_to=0);
