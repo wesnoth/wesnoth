@@ -159,7 +159,7 @@ namespace {
 			for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
 				const config* parent;
 				find_ref ((**i)["id"], *outcfg,
-					  true /* remove found child*/);
+					  true /* remove found child */);
 			}
 		}
 		{
@@ -169,6 +169,19 @@ namespace {
 				for(string_map::iterator j = (**i).values.begin();
 				    j != (**i).values.end(); ++j) {
 					target.values[j->first] = j->second;
+				}
+			}
+		}
+		{
+			// cannot add [status] sub-elements, but who cares
+			const config* c = cfg.child("add");
+			if (c != NULL) {
+				const config::child_map m = c->all_children();
+				for(config::child_map::const_iterator j = m.begin(); j != m.end(); ++j) {
+					for(config::child_list::const_iterator i = j->second.begin();
+					    i != j->second.end(); ++i) {
+						outcfg->add_child(j->first, **i);
+					}
 				}
 			}
 		}
