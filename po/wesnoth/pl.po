@@ -1,19 +1,19 @@
 # Polish translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
-#
+# Automatically generated, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
+"Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-01-21 00:15+0100\n"
-"PO-Revision-Date: 2005-01-11 20:10+0100\n"
+"PO-Revision-Date: 2005-01-22 17:15+0100\n"
 "Last-Translator: Paweł Stradomski <pstradomski@poczta.gazeta.pl>\n"
-"Language-Team: none\n"
+"Language-Team:  <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
@@ -69,9 +69,12 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Pewne jednostki posiadają zdolności, które albo odziałują bezposrednio na "
+"inne jednostki, albo mają wpływ na to, jak jednostka odziałuje z innymi "
+"jednostkami. Zdolności te będą objaśniane w poniższym temacie w miarę ich "
+"pojawiania się w grze.."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -82,7 +85,7 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
-"<img>src=misc/logo.png align=middle box=no</img>\n"
+"\n"
 "\n"
 "Bitwa o Wesnoth to turowa gra strategiczna osadzona w świecie fantasy, która "
 "nieco różni się od podobnych gier tego typu. Podczas gdy inne nadmiernie "
@@ -96,6 +99,7 @@ msgid "Fundamentals of Gameplay"
 msgstr "Podstawy gry"
 
 #: data/help.cfg:68
+#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. For more "
@@ -105,8 +109,15 @@ msgid ""
 "mind that this is just an outline - for special exceptions and situations, "
 "please follow the links included."
 msgstr ""
+"Ta strona zarysowuje wszystko to, co powinieneś umieć, aby grać w Bitwę o "
+"Wesnoth. Pokazuje, jak grać oraz podstawowe mechanizmy w grze. W celu "
+"głebszego poznania gry, możesz sięgnąć do <ref>dst=basic_strategy "
+"text='Podstawowych strategii'</ref> oraz <ref>dst=multiplayer_strategy "
+"text='Strategii w trybie dla wielu graczy'</ref>. Pamietaj, że to jest tylko "
+"zarys - w razie sytuacji wyjątkowych skorzystaj z załączonych odnośników."
 
 #: data/help.cfg:70
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -117,13 +128,27 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"Swoją przygodę z grą najlepiej zacząć od klikniecia na przycisk "
+"<italic>text=Ćwiczenia</italic> w menu głównym gry. Zostaniesz wtedy "
+"przeniesiony do interaktywnego samouczka, gdzie poznasz podstawy gry. "
+"Nastepnie zalecamy zagrac w kampanię Dziedzic Tronu - w tym celu kliknij na "
+"przycisk <italic>text=Kampania</italic> a nastepnie <italic>text='Dziedzic "
+"Tronu'</italic>. Ponieważ Bitwa o Wesnoth moze być dość trudna, powinieneś "
+"zacząć od <italic>text=Łatwy</italic>."
 
 #: data/help.cfg:73
+#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
+"Pamiętaj, że w czasie gry możesz korzystać z pomocy wyskakującej po "
+"najechaniu na wiekszosc rzeczy znajdujących się w menu po prawej stronie "
+"ekranu. Pomoc ta jest szczególnie użyteczna, gdy spotkasz się z "
+"umiejętnościami jednostki po raz pierwszy."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -140,8 +165,18 @@ msgid ""
 "cost. Click on a unit to see its statistics to the left, then press the "
 "recruit button to recruit it."
 msgstr ""
+"Na początku kazdej misji oraz w czasie ich trwania, bedziesz musiał "
+"rekrutować nowe jednostki do swojej armii. Aby móc rekrutować jednostki, "
+"twój przywódca (Konrad w Dziedzicu Tronu) musi być w twierdzy w zamku. Wtedy "
+"możesz rekrutować jednostki poprzez wybranie Rekrutuj z menu Działania, albo "
+"poprzez klikniecie prawym przyciskiem myszy na teren zamku i wybranie "
+"<italic>text=Rekrutuj</italic>. To spowoduje pojawienie się menu rekrutacji, "
+"gdzie będzie lista dostępnych jednostek wraz z kosztem ich rekrutacji. "
+"Kliknij na jednostkę, aby zobaczyc jej statystykę, a następnie kliknij na "
+"przycisk Rekrutuj, aby powołac daną jednostkę do swojej armii."
 
 #: data/help.cfg:81
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -150,14 +185,26 @@ msgid ""
 "keep. You may only recruit as many units as you have free hexes in your "
 "castle, and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Jeśli kliknołeś na puste miejsce zamku i wybrałeś Rekrutuj, nowa jednostka "
+"pojawi się w tym miejscu. W przeciwnym wypadku, pojawi się ona w pierwszym "
+"wolnym miejscu najbliżej twierdzy. Możesz rekrutowac tylko tyle jednostek, "
+"ile masz wolnych miejsc w zamku. Nie możesz także wydać wiecej złota, niz "
+"posiadasz na rekrutacje."
 
 #: data/help.cfg:83
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
 "modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Zrekrutowane jednostki posiadają dwie losowe <ref>dst=traits text=Cechy</"
+"ref>, ktore zmieniają ich statystykę."
 
 #: data/help.cfg:85
 msgid ""
@@ -168,6 +215,12 @@ msgid ""
 "standard 20 gold and presents you with a list of all surviving units from "
 "previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"W późniejszych scenariuszach będziesz mógł Przywołać jednostki, które "
+"przeżyły w poprzednich bitwach. Przywoływanie działa dokładnie tak samo jak "
+"Rekrutacja. Pamietaj jednak, że przywoływanie kosztuje zawsze 20 sztuk złota "
+"i pokazuje listę wszystkich ocalałych jednostek z poprzednich scenariuszy."
 
 #: data/help.cfg:87
 msgid ""
@@ -177,6 +230,12 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"Pamiętaj też, ze za jednostki płacisz nie tylko przy ich rekrutacji czy "
+"przywolywaniu, lecz także w czasie ich życia opłacasz ich utrzymanie. Wiecej "
+"na ten temat przeczytasz w <ref>dst=income_and_upkeep text=Dochód i "
+"Utrzymanie</ref>."
 
 #: data/help.cfg:92 src/help.cpp:1194 src/help.cpp:1195
 msgid "Movement"
@@ -191,6 +250,15 @@ msgid ""
 "required to reach it, and clicking will cause the unit to move towards it by "
 "the fastest route over this and subsequent turns."
 msgstr ""
+"Przemieszczanie jednostek w Bitwie o Wesnoth jest bardzo proste. Kliknij na "
+"jednostkę, którą chcesz przemiescić, a nastepnie na pole, na które chcesz ją "
+"przenieść. Kiedy zaznaczysz jednostkę, zostaną podświetlone wszystkie "
+"możliwe pola, na które dana jednostka może sie przemieścić w danej turze. "
+"Przesuwając kursor nad pola niedostępne dla jednostki w tej turze, pokaże "
+"się liczba tur potrzebnych, aby osiągnać to pole, a klikniecie na to pole "
+"spowoduje przemieszczenie się jednostki mozliwie najkrótsza drogą w kierunku "
+"wyznaczonego miejsca, aż do momentu wyczerpania sie ruchów jednostki w tej "
+"turze."
 
 #: data/help.cfg:95
 msgid ""
@@ -852,9 +920,8 @@ msgid "Loyalists"
 msgstr ""
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
-#, fuzzy
 msgid "Rebels"
-msgstr "Przywołań"
+msgstr "Buntownicy"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
@@ -866,9 +933,8 @@ msgid "Undead"
 msgstr "Nieumarli"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "&dwarf-lord.png,Sojusz Knalgański"
+msgstr "Sojusz Knalgański"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
 #, fuzzy
@@ -892,14 +958,13 @@ msgid "Orcs"
 msgstr "Orki"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Krasnoludzki zamek"
+msgstr "Krasnoludy"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 #, fuzzy
 msgid "Saurian"
-msgstr "Sauryjczyk"
+msgstr "Sauryjczycy"
 
 #: data/multiplayer.cfg:211
 msgid "Age of Heroes"
@@ -912,12 +977,12 @@ msgstr "Wielka wojna"
 #: data/multiplayer.cfg:311
 #, fuzzy
 msgid "Alliance of Light"
-msgstr "Mag Światła"
+msgstr "Sojusz Światła"
 
 #: data/multiplayer.cfg:324
 #, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,Sojusz Ciemności"
+msgstr "Sojusz Ciemności"
 
 #: data/scenario-test.cfg:38
 msgid ""
@@ -1444,9 +1509,8 @@ msgid "Attack Merle"
 msgstr "Zaatakuj Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:146
-#, fuzzy
 msgid "You have successfully attacked Merle."
-msgstr "Udało Ci się zaatakował Merle"
+msgstr "Udało Ci się zaatakować Merle."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
 #, fuzzy
@@ -2160,7 +2224,7 @@ msgstr ""
 #: data/terrain.cfg:218 data/terrain.cfg:229
 #, fuzzy
 msgid "Desert Village"
-msgstr "Wioska"
+msgstr "Pustynna wioska"
 
 #: data/terrain.cfg:240
 msgid "Tropical Forest Village"
@@ -2177,7 +2241,7 @@ msgstr "Śnieg"
 #: data/terrain.cfg:270
 #, fuzzy
 msgid "Snow Village"
-msgstr "Wioska"
+msgstr "Wioska w śniegu"
 
 #: data/terrain.cfg:281
 msgid "Hills"
@@ -2186,7 +2250,7 @@ msgstr "Wzgórza"
 #: data/terrain.cfg:288 data/terrain.cfg:297
 #, fuzzy
 msgid "Desert Hills"
-msgstr "Skasuj plik"
+msgstr "Pustynne wzgórza"
 
 #: data/terrain.cfg:305
 msgid "Mountains"
@@ -2195,7 +2259,7 @@ msgstr "Góry"
 #: data/terrain.cfg:312
 #, fuzzy
 msgid "Desert Mountains"
-msgstr "Góry"
+msgstr "Pustynne góry"
 
 #: data/terrain.cfg:320
 msgid "Forest"
@@ -2204,7 +2268,7 @@ msgstr "Las"
 #: data/terrain.cfg:328
 #, fuzzy
 msgid "Snow Forest"
-msgstr "Las"
+msgstr "Las w śniegu"
 
 #: data/terrain.cfg:336
 msgid "Tropical Forest"
@@ -5025,7 +5089,7 @@ msgstr "proca"
 #: data/units/Footpad.cfg:69
 #, fuzzy
 msgid "female^Footpad"
-msgstr "Piechur"
+msgstr "Bandytka"
 
 #: data/units/Galleon.cfg:4
 #, fuzzy
@@ -5590,8 +5654,9 @@ msgid "missile"
 msgstr "pocisk"
 
 #: data/units/Mage.cfg:70
+#, fuzzy
 msgid "female^Mage"
-msgstr ""
+msgstr "Mag"
 
 #: data/units/Mage_of_Light.cfg:3
 #, fuzzy
@@ -5715,9 +5780,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Siren"
-msgstr "ogień"
+msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:23
 #, fuzzy
@@ -5738,16 +5802,19 @@ msgid "trident"
 msgstr "trójząb"
 
 #: data/units/Merman_Entangler.cfg:3
+#, fuzzy
 msgid "Merman Entangler"
-msgstr ""
+msgstr "Ryboludzki oplątywacz"
 
 #: data/units/Merman_Fighter.cfg:3
+#, fuzzy
 msgid "Merman Fighter"
-msgstr ""
+msgstr "Ryboludzki wojownik"
 
 #: data/units/Merman_Hoplite.cfg:3
+#, fuzzy
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "Ryboludzki hoplita"
 
 #: data/units/Merman_Hoplite.cfg:32
 msgid ""
@@ -5758,24 +5825,29 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Hunter.cfg:3
+#, fuzzy
 msgid "Merman Hunter"
-msgstr ""
+msgstr "Ryboludzki łowca"
 
 #: data/units/Merman_Javelineer.cfg:3
+#, fuzzy
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Ryboludzki oszczepnik"
 
 #: data/units/Merman_Netcaster.cfg:3
+#, fuzzy
 msgid "Merman Netcaster"
-msgstr ""
+msgstr "Ryboludzki sieciarz"
 
 #: data/units/Merman_Spearman.cfg:3
+#, fuzzy
 msgid "Merman Spearman"
-msgstr ""
+msgstr "Ryboludzki włócznik"
 
 #: data/units/Merman_Triton.cfg:3
+#, fuzzy
 msgid "Merman Triton"
-msgstr ""
+msgstr "Tryton"
 
 #: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:22
 #, fuzzy
@@ -5788,8 +5860,9 @@ msgstr ""
 "tyle nieostrożnego by zapuścić się w ich odmęty."
 
 #: data/units/Merman_Warrior.cfg:3
+#, fuzzy
 msgid "Merman Warrior"
-msgstr ""
+msgstr "Ryboludzki żołnierz"
 
 #: data/units/Merman_Warrior.cfg:19
 msgid ""
@@ -5831,7 +5904,7 @@ msgstr "Szlachetny wojownik"
 #: data/units/Mounted_Warrior.cfg:3
 #, fuzzy
 msgid "Mounted Warrior"
-msgstr "Kapitan jazdy"
+msgstr "Sauryjski wojownik"
 
 #: data/units/Mounted_Warrior.cfg:17
 msgid ""
@@ -5856,8 +5929,9 @@ msgstr ""
 "przeciwników strumieniem wody."
 
 #: data/units/Naga-Fighter.cfg:3
+#, fuzzy
 msgid "Naga Fighter"
-msgstr ""
+msgstr "Wężoludzki wojownik"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:48
 msgid ""
@@ -5869,8 +5943,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:34
+#, fuzzy
 msgid "Nagini Fighter"
-msgstr ""
+msgstr "Wężoludzka wojowniczka"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
@@ -6295,7 +6370,7 @@ msgstr "Wyrzutkowie lepiej walczą w nocy."
 #: data/units/Outlaw.cfg:75
 #, fuzzy
 msgid "female^Outlaw"
-msgstr "Bandyta"
+msgstr "Bandytka"
 
 #: data/units/Outlaw.cfg:89
 #, fuzzy
@@ -6511,7 +6586,7 @@ msgstr ""
 #: data/units/Rogue.cfg:63
 #, fuzzy
 msgid "female^Rogue"
-msgstr "Czerwony Mag"
+msgstr "Zbójniczka"
 
 #: data/units/Royal_Guard.cfg:3
 #, fuzzy
@@ -6538,9 +6613,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:4
-#, fuzzy
 msgid "Saurian Ambusher"
-msgstr "Sauryjski wojownik"
+msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:17
 msgid ""
@@ -6552,9 +6626,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Flanker.cfg:4
-#, fuzzy
 msgid "Saurian Flanker"
-msgstr "Sauryjski wojownik"
+msgstr ""
 
 #: data/units/Saurian_Flanker.cfg:18
 msgid ""
@@ -6566,9 +6639,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:4
-#, fuzzy
 msgid "Saurian Icecaster"
-msgstr "Sauryjski wojownik"
+msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:17
 msgid ""
@@ -6580,14 +6652,12 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
-#, fuzzy
 msgid "frost blast"
-msgstr "pierwszy cios"
+msgstr "lodowe uderzenie"
 
 #: data/units/Saurian_Skirmisher.cfg:4
-#, fuzzy
 msgid "Saurian Skirmisher"
-msgstr "Sauryjski wojownik"
+msgstr ""
 
 #: data/units/Saurian_Skirmisher.cfg:17
 msgid ""
@@ -6598,9 +6668,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:4
-#, fuzzy
 msgid "Saurian Soothsayer"
-msgstr "Sauryjski wojownik"
+msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:18
 msgid ""
@@ -6610,9 +6679,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Tribalist.cfg:4
-#, fuzzy
 msgid "Saurian Tribalist"
-msgstr "Sauryjski wojownik"
+msgstr ""
 
 #: data/units/Saurian_Tribalist.cfg:18
 msgid ""
@@ -6623,9 +6691,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Warrior.cfg:5
-#, fuzzy
 msgid "Saurian Warrior"
-msgstr "Sauryjski wojownik"
+msgstr ""
 
 #: data/units/Saurian_Warrior.cfg:19
 msgid ""
@@ -6810,9 +6877,8 @@ msgid "Sleeping Gryphon"
 msgstr "Śpiący Gryf"
 
 #: data/units/Sleeping_Gryphon.cfg:15
-#, fuzzy
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr "Ćśśśś... Stary gryf mocno śpi... Jak się zbudzi to nas zje!"
+msgstr "Ćśśśś... Stary gryf mocno śpi... Jak się zbudzi będzie zły!"
 
 #: data/units/Soul_Shooter.cfg:3
 #, fuzzy
@@ -6930,7 +6996,7 @@ msgstr ""
 #: data/units/Thief.cfg:40
 #, fuzzy
 msgid "female^Thief"
-msgstr "Biały Mag"
+msgstr "Złodziejka"
 
 #: data/units/Thug.cfg:3
 #, fuzzy
@@ -7311,18 +7377,16 @@ msgid "+Miscellaneous"
 msgstr "+Inne"
 
 #: src/about.cpp:139
-#, fuzzy
 msgid "+Internationalization Managers"
-msgstr "+Zarządca internacjonalizacji"
+msgstr "+Zarządcy internacjonalizacji"
 
 #: src/about.cpp:146
 msgid "+Basque Translation"
 msgstr "+Tłumaczenie baskijskie"
 
 #: src/about.cpp:151
-#, fuzzy
 msgid "+Bulgarian Translation"
-msgstr "+Tłumaczenie węgierskie"
+msgstr "+Tłumaczenie bułgarskie"
 
 #: src/about.cpp:155
 msgid "+Catalan Translation"
@@ -7365,9 +7429,8 @@ msgid "+Italian Translation"
 msgstr "+Tłumaczenie włoskie"
 
 #: src/about.cpp:232
-#, fuzzy
 msgid "+Latin Translation"
-msgstr "+Tłumaczenie katalońskie"
+msgstr "+Tłumaczenie łacińskie"
 
 #: src/about.cpp:236
 msgid "+Norwegian Translation"
@@ -7668,19 +7731,16 @@ msgid "The game could not be saved"
 msgstr "Gra nie może zostać zachowana"
 
 #: src/game.cpp:167 src/game.cpp:894 src/game.cpp:1284
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "Gra nie może zostać zachowana"
+msgstr "Gra nie może zostać wczytana:"
 
 #: src/game.cpp:170 src/game.cpp:896 src/game.cpp:1286
-#, fuzzy
 msgid "Error while playing the game: "
-msgstr "Błąd odczytu pliku podczas wczytywania gry"
+msgstr "Błąd w czasie gry:"
 
 #: src/game.cpp:173 src/game.cpp:1298
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "Gra nie może zostać zachowana"
+msgstr "Mapa gry nie może zostać wczytana:"
 
 #: src/game.cpp:194
 msgid "Do you want to save your game?"
@@ -7703,18 +7763,16 @@ msgstr ""
 "wczytać?"
 
 #: src/game.cpp:834 src/game.cpp:837
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Plik nie może zostać wczytany - jest zepsuty"
+msgstr "Plik nie może zostać wczytany - jest zepsuty: '"
 
 #: src/game.cpp:840
 msgid "File I/O Error while reading the game"
 msgstr "Błąd odczytu pliku podczas wczytywania gry"
 
 #: src/game.cpp:945
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr " ,Pobierz więcej kampanii..."
+msgstr "Pobierz więcej kampanii..."
 
 #: src/game.cpp:946
 msgid "Download more campaigns from a server on Internet."
@@ -7757,18 +7815,16 @@ msgid "Name"
 msgstr "Imię"
 
 #: src/game.cpp:1048
-#, fuzzy
 msgid "Author"
-msgstr "ciernie"
+msgstr "Autor"
 
 #: src/game.cpp:1049
 msgid "Downloads"
 msgstr ""
 
 #: src/game.cpp:1050
-#, fuzzy
 msgid "Size"
-msgstr "ogień"
+msgstr "Rozmiar"
 
 #: src/game.cpp:1069
 msgid "B"
@@ -7904,9 +7960,8 @@ msgid "Error loading game configuration files: '"
 msgstr ""
 
 #: src/game.cpp:1364
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "Gra się skończyła."
+msgstr "' (Gra zostanie zakończona.)"
 
 #: src/help.cpp:1022
 msgid "Advances to"
@@ -8060,7 +8115,7 @@ msgstr "Wioski"
 
 #: src/mapgen_dialog.cpp:88
 msgid "Landform"
-msgstr "Ląd"
+msgstr "Rodzaj lądu"
 
 #: src/mapgen_dialog.cpp:194
 msgid "Roads Between Castles"
@@ -8083,9 +8138,8 @@ msgid "Island"
 msgstr "Wyspa"
 
 #: src/multiplayer.cpp:89
-#, fuzzy
 msgid "Load Game..."
-msgstr "Wczytaj grę"
+msgstr "Wczytaj grę..."
 
 #: src/multiplayer.cpp:99
 msgid "The maximum turns the game will go for"
@@ -8119,7 +8173,7 @@ msgstr "Obserwatorzy"
 
 #: src/multiplayer.cpp:124
 msgid "Allow users who are not playing to watch the game"
-msgstr "Pozwala ludziom, którzy nie grają obserwować grę"
+msgstr "Pozwala ludziom, którzy nie grają, obserwować grę"
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
 #: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:497
@@ -8160,9 +8214,8 @@ msgid "Create Game"
 msgstr "Stwórz grę"
 
 #: src/multiplayer.cpp:181
-#, fuzzy
 msgid "Name of game:"
-msgstr "Nazwa gry"
+msgstr "Nazwa gry:"
 
 #: src/multiplayer.cpp:184
 msgid "$login's game"
@@ -8171,12 +8224,11 @@ msgstr "Gra $login"
 #: src/multiplayer.cpp:195
 #, fuzzy
 msgid "Map to play:"
-msgstr "Mapa do gry"
+msgstr "Mapa do gry:"
 
 #: src/multiplayer.cpp:291
-#, fuzzy
 msgid "Era:"
-msgstr "Era"
+msgstr "Era:"
 
 #: src/multiplayer.cpp:349
 msgid "You must enter a name."
@@ -8185,27 +8237,23 @@ msgstr ""
 #: src/multiplayer.cpp:363
 #, fuzzy
 msgid "Turns: "
-msgstr "Tury"
+msgstr "Tury:"
 
 #: src/multiplayer.cpp:367
-#, fuzzy
 msgid "unlimited"
-msgstr "Nieograniczone"
+msgstr "nieograniczone"
 
 #: src/multiplayer.cpp:380
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Złoto z wiosek"
+msgstr "Złoto z wiosek:"
 
 #: src/multiplayer.cpp:393
-#, fuzzy
 msgid "Experience Requirements: "
-msgstr "Wymagane doświadczenie"
+msgstr "Wymagane doświadczenie:"
 
 #: src/multiplayer.cpp:452 src/multiplayer.cpp:514
-#, fuzzy
 msgid "Players: "
-msgstr "Gracze"
+msgstr "Gracze:"
 
 #: src/multiplayer.cpp:532
 msgid ""
@@ -8888,82 +8936,4 @@ msgstr "Skasuj plik"
 
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
-msgstr "Kasowanie pliku się nie powiodło."
-
-#, fuzzy
-#~ msgid ""
-#~ "Plague:\n"
-#~ "If this unit kills a living target and that unit was not stationed in a "
-#~ "village, the dead target's corpse will rise up and fight for you."
-#~ msgstr ""
-#~ "Zaraza:\n"
-#~ "Jeśli ta jednostka zabije żywego wroga, który nie znajdował się w wiosce, "
-#~ "jego zwłoki powstaną, aby walczyć dla ciebie."
-
-#, fuzzy
-#~ msgid "skirmisher,heals"
-#~ msgstr "harcownik"
-
-#, fuzzy
-#~ msgid "skirmisher,cures"
-#~ msgstr "harcownik"
-
-#~ msgid "&random-enemy.png,Random"
-#~ msgstr "&random-enemy.png,Losowa"
-
-#~ msgid "&human-lieutenant.png,Loyalists"
-#~ msgstr "&human-lieutenant.png,Lojaliści"
-
-#~ msgid "&elvish-captain.png,Rebels"
-#~ msgstr "&elvish-captain,Buntownicy"
-
-#~ msgid "&orcish-warrior.png,Northerners"
-#~ msgstr "&orcish-warrior.png,Mieszkańcy północy"
-
-#~ msgid "&undead-necromancer.png,Undead"
-#~ msgstr "&undead-necromancer.png,Nieumarli"
-
-#~ msgid "&dwarf-warrior.png,Knalgan Alliance"
-#~ msgstr "&dwarf-warrior.png,Sojusz Knalgański"
-
-#~ msgid "&drake-flare.png,Drakes"
-#~ msgstr "&drake-flare.png,Smoki"
-
-#~ msgid "&human-lieutenant.png,Humans"
-#~ msgstr "&human-lieutenant.png,Ludzie"
-
-#~ msgid "&elvish-captain.png,Elves"
-#~ msgstr "&elvish-captain.png,Elfy"
-
-#~ msgid "&orcish-warrior.png,Orcs"
-#~ msgstr "&orcish-warrior.png,Orki"
-
-#~ msgid "&dwarf-warrior.png,Dwarves"
-#~ msgstr "&dwarf-warrior.png,Krasnoludy"
-
-#~ msgid "&saurian-soothsayer.png,Saurian"
-#~ msgstr "&saurian-soothsayer.png,Saurianie"
-
-#~ msgid "&human-general.png,Loyalists"
-#~ msgstr "&human-general.png,Lojaliści"
-
-#~ msgid "&elvish-marshal.png,Rebels"
-#~ msgstr "&elvish-marshal.png,Buntownicy"
-
-#~ msgid "&orcish-warlord.png,Northerners"
-#~ msgstr "&orcish-warlord.png,Istoty z północy"
-
-#~ msgid "&undead-lich.png,Undead"
-#~ msgstr "&undead-lich.png,Nieumarli"
-
-#~ msgid "&white-mage.png,Alliance of Light"
-#~ msgstr "&white-mage.png,Sojusz Światła"
-
-#~ msgid ",Name,Version,Author,Downloads,Size"
-#~ msgstr ",Nazwa,Wersja,Autor,Ilość pobrań,Rozmiar"
-
-#~ msgid "Melee"
-#~ msgstr "Wręcz"
-
-#~ msgid "hexes"
-#~ msgstr "heksy"
+msgstr "Kasowanie pliku nie powiodło się."
