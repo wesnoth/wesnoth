@@ -591,7 +591,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string& recruit_num = (*child)["value"];
 			const int val = atoi(recruit_num.c_str());
 
-			const gamemap::location loc(*child);
+			gamemap::location loc(*child);
 
 			const std::set<std::string>& recruits = current_team.recruits();
 
@@ -629,7 +629,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string recall_num = (*child)["value"];
 			const int val = atoi(recall_num.c_str());
 
-			const gamemap::location loc(*child);
+			gamemap::location loc(*child);
 
 			if(val >= 0 && val < int(state_of_game.available_units.size())) {
 				statistics::recall_unit(state_of_game.available_units[val]);

@@ -318,6 +318,16 @@ void recall_unit(const unit& u)
 	s.recall_cost += u.type().cost();
 }
 
+void un_recall_unit(const unit& u)
+{
+	if(stats_disabled > 0)
+		return;
+
+	stats& s = get_stats(u.side());
+	s.recalls[u.type().name()]--;
+	s.recall_cost -= u.type().cost();
+}
+
 void advance_unit(const unit& u)
 {
 	if(stats_disabled > 0)

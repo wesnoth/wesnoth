@@ -40,7 +40,7 @@
 //If the unit cannot be recruited, then a human-readable message
 //describing why not will be returned. On success, the return string is empty
 std::string recruit_unit(const gamemap& map, int team, unit_map& units,
-						 unit& u, gamemap::location preferred_location,
+						 unit& u, gamemap::location& recruit_location,
                          display *disp=NULL, bool need_castle=true, bool full_movement=false);
 
 //a structure which defines all the statistics for a potential
@@ -162,10 +162,14 @@ int combat_modifier(const gamestatus& status,
 //structure which records information to be able to undo a movement
 struct undo_action {
 	undo_action(const std::vector<gamemap::location>& rt,int sm,int orig=-1)
-	       : route(rt), starting_moves(sm), original_village_owner(orig) {}
+	       : route(rt), starting_moves(sm), original_village_owner(orig), recall_pos(-1) {}
+	undo_action(const gamemap::location& loc, int pos) : recall_loc(loc), recall_pos(pos) {}
 	std::vector<gamemap::location> route;
 	int starting_moves;
 	int original_village_owner;
+	gamemap::location recall_loc;
+	int recall_pos;
+	bool is_recall() const { return recall_pos >= 0; }
 };
 
 typedef std::deque<undo_action> undo_list;

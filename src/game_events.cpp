@@ -660,7 +660,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		std::vector<unit>& avail = state_of_game->available_units;
 		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			if(u->matches_filter(cfg)) {
-				recruit_unit(*game_map,1,*units,*u,gamemap::location(),screen,false,true);
+				gamemap::location loc;
+				recruit_unit(*game_map,1,*units,*u,loc,screen,false,true);
 				avail.erase(u);
 				break;
 			}

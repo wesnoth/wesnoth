@@ -1075,33 +1075,46 @@ void turn_info::undo()
 
 	const command_disabler disable_commands(&gui_);
 
-	const int starting_moves = undo_stack_.back().starting_moves;
-	std::vector<gamemap::location> route = undo_stack_.back().route;
-	std::reverse(route.begin(),route.end());
-	const unit_map::iterator u = units_.find(route.front());
-	if(u == units_.end()) {
-		assert(false);
-		return;
+	undo_action& action = undo_stack_.back();
+	if (action.is_recall()) {
+		// Undo a recall action
+		team& current_team = teams_[team_num_-1];
+		const unit& un = units_.find(action.recall_loc)->second;
+		statistics::un_recall_unit(un);
+		current_team.spend_gold(-game_config::recall_cost);
+		std::vector<unit>& recall_list = state_of_game_.available_units;
+		recall_list.insert(recall_list.begin()+action.recall_pos,un);
+		units_.erase(action.recall_loc);
+		gui_.draw_tile(action.recall_loc.x,action.recall_loc.y);
+	} else {
+		// Undo a move action
+		const int starting_moves = action.starting_moves;
+		std::vector<gamemap::location> route = action.route;
+		std::reverse(route.begin(),route.end());
+		const unit_map::iterator u = units_.find(route.front());
+		if(u == units_.end()) {
+			assert(false);
+			return;
+		}
+	
+		if(map_.underlying_terrain(map_[route.front().x][route.front().y]) == gamemap::TOWER) {
+			get_tower(route.front(),teams_,action.original_village_owner,units_);
+		}
+	
+		action.starting_moves = u->second.movement_left();
+	
+		unit un = u->second;
+		un.set_goto(gamemap::location());
+		units_.erase(u);
+		gui_.move_unit(route,un);
+		un.set_movement(starting_moves);
+		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
+		gui_.draw_tile(route.back().x,route.back().y);
 	}
-
-	if(map_.underlying_terrain(map_[route.front().x][route.front().y]) == gamemap::TOWER) {
-		get_tower(route.front(),teams_,
-		          undo_stack_.back().original_village_owner,units_);
-	}
-
-	undo_stack_.back().starting_moves = u->second.movement_left();
-
-	unit un = u->second;
-	un.set_goto(gamemap::location());
-	units_.erase(u);
-	gui_.move_unit(route,un);
-	un.set_movement(starting_moves);
-	units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 	gui_.invalidate_unit();
 	gui_.invalidate_game_status();
-	gui_.draw_tile(route.back().x,route.back().y);
 
-	redo_stack_.push_back(undo_stack_.back());
+	redo_stack_.push_back(action);
 	undo_stack_.pop_back();
 
 	gui_.set_paths(NULL);
@@ -1135,34 +1148,50 @@ void turn_info::redo()
 	current_route_.steps.clear();
 	gui_.set_route(NULL);
 
-	const int starting_moves = redo_stack_.back().starting_moves;
-	std::vector<gamemap::location> route = redo_stack_.back().route;
-	const unit_map::iterator u = units_.find(route.front());
-	if(u == units_.end()) {
-		assert(false);
-		return;
+	undo_action& action = redo_stack_.back();
+	if (action.is_recall()) {
+		// Redo recall
+		std::vector<unit>& recall_list = state_of_game_.available_units;
+		unit& un = recall_list[action.recall_pos];
+		recruit_unit(map_,team_num_,units_,un,action.recall_loc,&gui_);
+		statistics::recall_unit(un);
+		team& current_team = teams_[team_num_-1];
+		current_team.spend_gold(game_config::recall_cost);
+		recall_list.erase(recall_list.begin()+action.recall_pos);
+		recorder.add_recall(action.recall_pos,action.recall_loc);
+
+		gui_.draw_tile(action.recall_loc.x,action.recall_loc.y);
+	} else {
+		// Redo movement action
+		const int starting_moves = action.starting_moves;
+		std::vector<gamemap::location> route = action.route;
+		const unit_map::iterator u = units_.find(route.front());
+		if(u == units_.end()) {
+			assert(false);
+			return;
+		}
+	
+		action.starting_moves = u->second.movement_left();
+	
+		unit un = u->second;
+		un.set_goto(gamemap::location());
+		units_.erase(u);
+		gui_.move_unit(route,un);
+		un.set_movement(starting_moves);
+		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
+	
+		if(map_.underlying_terrain(map_[route.back().x][route.back().y]) == gamemap::TOWER) {
+			get_tower(route.back(),teams_,un.side()-1,units_);
+		}
+	
+		gui_.draw_tile(route.back().x,route.back().y);
+	
+		recorder.add_movement(route.front(),route.back());
 	}
-
-	redo_stack_.back().starting_moves = u->second.movement_left();
-
-	unit un = u->second;
-	un.set_goto(gamemap::location());
-	units_.erase(u);
-	gui_.move_unit(route,un);
-	un.set_movement(starting_moves);
-	units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 	gui_.invalidate_unit();
 	gui_.invalidate_game_status();
 
-	if(map_.underlying_terrain(map_[route.back().x][route.back().y]) == gamemap::TOWER) {
-		get_tower(route.back(),teams_,un.side()-1,units_);
-	}
-
-	gui_.draw_tile(route.back().x,route.back().y);
-
-	recorder.add_movement(route.front(),route.back());
-
-	undo_stack_.push_back(redo_stack_.back());
+	undo_stack_.push_back(action);
 	redo_stack_.pop_back();
 }
 
@@ -1505,8 +1534,8 @@ void turn_info::do_recruit(const std::string& name)
 		//create a unit with traits
 		recorder.add_recruit(recruit_num,last_hex_);
 		unit new_unit(&(u_type->second),team_num_,true);
-		const std::string& msg =
-		   recruit_unit(map_,team_num_,units_,new_unit,last_hex_,&gui_);
+		gamemap::location loc = last_hex_;
+		const std::string& msg = recruit_unit(map_,team_num_,units_,new_unit,loc,&gui_);
 		if(msg.empty()) {
 			current_team.spend_gold(u_type->second.cost());
 			statistics::recruit_unit(new_unit);
@@ -1591,18 +1620,17 @@ void turn_info::recall()
 		return;
 
 	team& current_team = teams_[team_num_-1];
+	std::vector<unit>& recall_list = state_of_game_.available_units;
 
 	//sort the available units into order by value
 	//so that the most valuable units are shown first
-	std::sort(state_of_game_.available_units.begin(),
-	          state_of_game_.available_units.end(),
-			  compare_unit_values());
+	std::sort(recall_list.begin(),recall_list.end(),compare_unit_values());
 
 	gui_.draw(); //clear the old menu
 
 	if((*level_)["disallow_recall"] == "yes") {
 		gui::show_dialog(gui_,NULL,"",string_table["recall_disallowed"]);
-	} else if(state_of_game_.available_units.empty()) {
+	} else if(recall_list.empty()) {
 		gui::show_dialog(gui_,NULL,"",string_table["no_recall"]);
 	} else if(current_team.gold() < game_config::recall_cost) {
 		std::stringstream msg;
@@ -1612,9 +1640,7 @@ void turn_info::recall()
 		gui::show_dialog(gui_,NULL,"",msg.str());
 	} else {
 		std::vector<std::string> options;
-		for(std::vector<unit>::const_iterator unit =
-		  state_of_game_.available_units.begin();
-		  unit != state_of_game_.available_units.end(); ++unit) {
+		for(std::vector<unit>::const_iterator unit = recall_list.begin(); unit != recall_list.end(); ++unit) {
 			std::stringstream option;
 			const std::string& description = unit->description().empty() ? "-" : unit->description();
 			option << "&" << unit->type().image() << "," << unit->type().language_name() << "," << description << ","
@@ -1630,7 +1656,7 @@ void turn_info::recall()
 			options.push_back(option.str());
 		}
 
-		delete_recall_unit recall_deleter(gui_,state_of_game_.available_units);
+		delete_recall_unit recall_deleter(gui_,recall_list);
 		gui::dialog_button delete_button(&recall_deleter,string_table["delete_unit"]);
 		std::vector<gui::dialog_button> buttons;
 		buttons.push_back(delete_button);
@@ -1638,26 +1664,23 @@ void turn_info::recall()
 		const int res = gui::show_dialog(gui_,NULL,"",
 		                                 string_table["select_unit"] + ":\n",
 		                                 gui::OK_CANCEL,&options,
-		                                 &state_of_game_.available_units,"",NULL,
+		                                 &recall_list,"",NULL,
 										 NULL,NULL,-1,-1,NULL,&buttons);
 		if(res >= 0) {
-			const std::string err = recruit_unit(map_,team_num_,
-			                       units_,state_of_game_.available_units[res],
-			                       last_hex_,&gui_);
+			unit& un = recall_list[res];
+			gamemap::location loc = last_hex_;
+			const std::string err = recruit_unit(map_,team_num_,units_,un,loc,&gui_);
 			if(!err.empty()) {
 				gui::show_dialog(gui_,NULL,"",err,gui::OK_ONLY);
 			} else {
-				statistics::recall_unit(state_of_game_.available_units[res]);
-
+				statistics::recall_unit(un);
 				current_team.spend_gold(game_config::recall_cost);
-				state_of_game_.available_units.erase(
-				   state_of_game_.available_units.begin()+res);
+				recorder.add_recall(res,loc);
 
-				recorder.add_recall(res,last_hex_);
-
-				undo_stack_.clear();
+				undo_stack_.push_back(undo_action(loc,res));
 				redo_stack_.clear();
-
+				
+				recall_list.erase(recall_list.begin()+res);
 				gui_.invalidate_game_status();
 			}
 		}
