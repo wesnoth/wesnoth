@@ -174,6 +174,7 @@ std::vector<std::string> get_text() {
 		"-   Andre Schmidt",
 		"-   Boris Stumm",
 		"-   Jan Heiner",
+		"-   Kai Ensenbach",
 		"+ ",
 
 		_("+Hungarian Translation"),
