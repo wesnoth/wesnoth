@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-11-14 23:33+0100\n"
+"POT-Creation-Date: 2004-11-14 23:50+0100\n"
 "PO-Revision-Date: 2004-11-09 21:42+0100\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -837,7 +837,7 @@ msgstr "Cette eau bénit les armes de corps-à-corps."
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Je ne suis pas à même d'utiliser cet objet ! Qu'un autre le prenne."
 
-#: data/items.cfg:451
+#: data/items.cfg:451 data/scenarios/tutorial/Traits_and_Specialties.cfg:192
 msgid "Potion of Strength"
 msgstr "Potion de force"
 
@@ -2330,11 +2330,6 @@ msgid "This potion increases the damage of all the drinker's attacks by four."
 msgstr ""
 "Cette potion augmente les dégâts infligés par toutes les attaques du buveur "
 "de quatre points."
-
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:192
-#, fuzzy
-msgid "Strength Potion"
-msgstr "Potion de glace"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
 msgid ""
@@ -8947,6 +8942,10 @@ msgstr "Supprimer le fichier"
 #: src/widgets/file_chooser.cpp:157
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
+
+#, fuzzy
+#~ msgid "Strength Potion"
+#~ msgstr "Potion de glace"
 
 #~ msgid ""
 #~ "Only the most experienced and heroic Dragoons can achieve to ride the "
