@@ -64,15 +64,17 @@ void receive_gamelist(display& disp, config& data)
 class wait_for_start : public lobby::dialog
 {
 public:
-	wait_for_start(display& disp, config& cfg, int team_num, const std::string& team_name)
-		: got_side(false), team(team_num), name(team_name), status(START_GAME), disp_(disp),
-		  sides_(cfg), cancel_button_(NULL), menu_(NULL)
+	wait_for_start(display& disp, config& cfg, const game_data& data, int team_num,
+			const std::string& team_name, const std::string& team_leader)
+		: got_side(false), team(team_num), name(team_name), leader(team_leader),
+		  status(START_GAME), disp_(disp),
+		  sides_(cfg), cancel_button_(NULL), menu_(NULL), units_data_(data)
 	{
 		SDL_Rect empty_rect = {0,0,0,0};
 		area_ = empty_rect;
 	}
 
-	void generate_menu()
+	void generate_menu(bool first)
 	{
 		if(area_.h == 0) {
 			return;
@@ -86,13 +88,37 @@ public:
 
 			std::string description = sd["description"];
 			std::string side_name = sd["name"];
-			if(s - sides.begin() == size_t(team-1)) {
+			std::string leader_type = sd["type"];
+
+			if(first && (s - sides.begin() == size_t(team-1))) {
 				description = preferences::login();
 				side_name = name;
+				leader_type = leader;
+			}
+
+			std::string leader_name;
+			std::string leader_image;
+			const game_data::unit_type_map& utypes = units_data_.unit_types;
+			if (utypes.find(leader_type) != utypes.end()) {
+				leader_name = utypes.find(leader_type)->second.language_name();
+				leader_image = utypes.find(leader_type)->second.image();
+			}
+			if (!leader_image.empty()) {
+				// Dumps the "image" part of the faction name, if any,
+				// to replace it by a picture of the actual leader
+				if(side_name[0] == font::IMAGE) {
+					int p = side_name.find_first_of(",");
+					if(p != std::string::npos && p < side_name.size()) {
+						side_name = "&" + leader_image + "," + side_name.substr(p+1);
+					}
+				}
 			}
 
 			std::stringstream str;
-			str << description << "," << side_name << "," << sd["gold"] << " " << _("Gold") << "," << sd["team_name"];
+			str << description << "," << side_name << ",";
+			if(!leader_name.empty())
+				str << "(" << leader_name << ")";
+			str << "," << sd["gold"] << " " << _("Gold") << "," << sd["team_name"];
 			details.push_back(str.str());
 		}
 
@@ -108,7 +134,7 @@ public:
 	void set_area(const SDL_Rect& area) {
 
 		area_ = area;
-		generate_menu();
+		generate_menu(true);
 
 		const std::string text = _("Waiting for game to start...");
 		SDL_Rect rect = font::draw_text(NULL,disp_.screen_area(),14,font::NORMAL_COLOUR,text,0,0);
@@ -146,7 +172,7 @@ public:
 			for(config::child_list::const_iterator a = assigns.begin(); a != assigns.end(); ++a) {
 				if(lexical_cast_default<int>((**a)["from"]) == team) {
 					team = lexical_cast_default<int>((**a)["to"]);
-					generate_menu();
+					generate_menu(false);
 				}
 			}
 
@@ -167,7 +193,7 @@ public:
 			} else if(reply.child("scenario_diff")) {
 				std::cerr << "received diff for scenario....applying...\n";
 				sides_.apply_diff(*reply.child("scenario_diff"));
-				generate_menu();
+				generate_menu(false);
 			} else if(reply.child("side")) {
 				sides_ = reply;
 				std::cerr << "got some sides. Current number of sides = " << sides_.get_children("side").size() << "," << reply.get_children("side").size() << "\n";
@@ -179,14 +205,17 @@ public:
 		return lobby::CONTINUE;
 	}
 
-	bool got_side;
-	int team;
-	std::string name;
 	enum { START_GAME, GAME_CANCELLED, SIDE_UNAVAILABLE } status;
 
+	bool got_side;
+	int team;
+
 private:
+	std::string name;
+	std::string leader;
 	display& disp_;
 	config& sides_;
+	const game_data& units_data_;
 
 	util::scoped_ptr<gui::button> cancel_button_;
 	util::scoped_ptr<gui::menu> menu_;
@@ -373,6 +402,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 		int team_num = 0;
 		std::string team_name;
+		std::string team_leader;
 		
 		if(!observer) {
 			//search for an appropriate vacant slot. If a description is set
@@ -453,9 +483,9 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			const config& chosen_side = *possible_sides[choice];
 			team_name = response["name"] = chosen_side["name"];
 			if(leader.empty()) {
-				response["type"] = chosen_side["type"];
+				team_leader = response["type"] = chosen_side["type"];
 			} else {
-				response["type"] = leader;
+				team_leader = response["type"] = leader;
 			}
 			response["recruit"] = chosen_side["recruit"];
 			response["music"] = chosen_side["music"];
@@ -463,7 +493,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			network::send_data(response);
 		}
     
-		wait_for_start waiter(disp,sides,team_num,team_name);
+		wait_for_start waiter(disp,sides,units_data,team_num,team_name,team_leader);
 		std::vector<std::string> messages;
 		config game_data;
 		lobby::RESULT dialog_res = lobby::CONTINUE;
