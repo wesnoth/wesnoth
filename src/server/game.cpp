@@ -318,7 +318,7 @@ void game::send_data(const config& data, network::connection exclude)
 {
 	for(std::vector<network::connection>::const_iterator
 	    i = players_.begin(); i != players_.end(); ++i) {
-		if(*i != exclude && (allow_observers_ || sides_.count(*i) == 1)) {
+		if(*i != exclude && (allow_observers_ || is_needed(*i) || sides_.count(*i) == 1)) {
 			network::queue_data(data,*i);
 		}
 	}
