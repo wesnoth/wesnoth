@@ -393,6 +393,23 @@ void menu::draw()
 {
 	drawn_ = true;
 
+	// update enabled/disabled status for up/down buttons
+	if(items_.size() > max_items_onscreen()) {
+		if(first_item_on_screen_ == 0) {
+			uparrow_.enable(false);
+			uparrow_.hide();
+		} else {
+			uparrow_.enable(true);
+		}
+
+		if(first_item_on_screen_ >= items_.size() - max_items_onscreen()) {
+			downarrow_.enable(false);
+			downarrow_.hide();
+		} else {
+			downarrow_.enable(true);
+		}
+	}
+
 	for(size_t i = 0; i != items_.size(); ++i)
 		draw_item(i);
 
