@@ -107,6 +107,8 @@ public:
 	//invalidates entire screen, including all tiles and sidebar.
 	void redraw_everything();
 
+	void flip();
+
 	//draws invalidated items. If update is true, will also copy the
 	//display to the frame buffer. If force is true, will not skip frames,
 	//even if running behind.

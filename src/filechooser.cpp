@@ -49,7 +49,7 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 	fc.set_dirty(true);
 	
 	events::raise_draw_event();
-	screen.flip();
+	disp.flip();
 	disp.invalidate_all();
 
 	CKey key;
@@ -73,7 +73,7 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 				return button_it - buttons_ptr.begin();
 			}
 		}
-		screen.flip();
+		disp.flip();
 		SDL_Delay(10);
 	}
 }

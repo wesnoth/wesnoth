@@ -17,10 +17,7 @@
 #include <iostream>
 #include <vector>
 
-#include "cursor.hpp"
-#include "events.hpp"
 #include "font.hpp"
-#include "halo.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "video.hpp"
@@ -334,10 +331,6 @@ void CVideo::flip()
 	if(fake_screen)
 		return;
 
-	halo::render();
-	font::draw_floating_labels(frameBuffer);
-	events::raise_volatile_draw_event();
-	cursor::draw(frameBuffer);
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
 	} else if(update_rects.empty() == false) {
@@ -345,11 +338,6 @@ void CVideo::flip()
 	}
 
 	clear_updates();
-
-	cursor::undraw(frameBuffer);
-	events::raise_volatile_undraw_event();
-	font::undraw_floating_labels(frameBuffer);
-	halo::unrender();
 }
 
 void CVideo::lock_updates(bool value)

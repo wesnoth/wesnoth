@@ -34,6 +34,7 @@
 #include <iostream>
 #include <list>
 #include <map>
+#include <set>
 #include <sstream>
 #include <stack>
 #include <string>
@@ -540,7 +541,7 @@ surface render_text(const std::string& text, int fontsize, const SDL_Color& colo
 
 //function which will parse the markup tags at the front of a string
 std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
-										 int* font_size, SDL_Color* colour, int* style)
+					 int* font_size, SDL_Color* colour, int* style)
 {
 	if(font_size == NULL || colour == NULL) {
 		return i1;

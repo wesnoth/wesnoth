@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "display.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
@@ -35,10 +36,10 @@ namespace {
 	const int min_room_at_bottom = 150;
 }
 
-bool show_intro_part(CVideo &video, const config& part,
+bool show_intro_part(display &disp, const config& part,
 		const std::string& scenario);
 
-void show_intro(CVideo &video, const config& data, const config& level)
+void show_intro(display &disp, const config& data, const config& level)
 {
 	std::cerr << "showing intro sequence...\n";
 
@@ -55,7 +56,7 @@ void show_intro(CVideo &video, const config& data, const config& level)
 		std::pair<const std::string*, const config*> item = *i;
 
 		if(*item.first == "part") {
-			showing = show_intro_part(video, (*item.second), scenario);
+			showing = show_intro_part(disp, (*item.second), scenario);
 		} else if(*item.first == "if") {
 			const std::string type = game_events::conditional_passed(
 				NULL, *item.second) ? "then":"else";
@@ -65,18 +66,19 @@ void show_intro(CVideo &video, const config& data, const config& level)
 				return;
 			}
 			const config& selection = *thens;
-			show_intro(video, selection, level);
+			show_intro(disp, selection, level);
 		}
 	}
 
 	std::cerr << "intro sequence finished...\n";
 }
 
-bool show_intro_part(CVideo &video, const config& part,
+bool show_intro_part(display &disp, const config& part,
 		const std::string& scenario)
 {
 	std::cerr << "showing intro part\n";
 
+	CVideo &video = disp.video();
 	const std::string& music_file = part["music"];
 
 	//play music if available
@@ -144,7 +146,7 @@ bool show_intro_part(CVideo &video, const config& part,
 	}
 
 	update_whole_screen();
-	video.flip();
+	disp.flip();
 
 	if(!background.null()) {
 		//draw images
@@ -202,7 +204,7 @@ bool show_intro_part(CVideo &video, const config& part,
 						continue;
 					}
 
-					video.flip();
+					disp.flip();
 				}
 			}
 
@@ -290,7 +292,7 @@ bool show_intro_part(CVideo &video, const config& part,
 		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();
-		video.flip();
+		disp.flip();
 
 		if(!skip || itor == utils::utf8_iterator::end(story))
 			SDL_Delay(20);
@@ -302,13 +304,14 @@ bool show_intro_part(CVideo &video, const config& part,
 	return true;
 }
 
-void the_end(CVideo& video)
+void the_end(display &disp)
 {
 	SDL_Rect area = screen_area();
+	CVideo &video = disp.video();
 	SDL_FillRect(video.getSurface(),&area,0);
 
 	update_whole_screen();
-	video.flip();
+	disp.flip();
 
 	const std::string text = _("The End");
 	const size_t font_size = font::SIZE_XLARGE;
@@ -321,7 +324,7 @@ void the_end(CVideo& video)
 		const SDL_Color col = {n,n,n,n};
 		font::draw_text(&video,area,font_size,col,text,area.x,area.y);
 		update_rect(area);
-		video.flip();
+		disp.flip();
 
 		SDL_FillRect(video.getSurface(),&area,0);
 

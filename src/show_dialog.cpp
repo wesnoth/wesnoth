@@ -659,7 +659,7 @@ int show_dialog(display& disp, surface image,
 		}
 	}
 
-	screen.flip();
+	disp.flip();
 
 	CKey key;
 
@@ -815,7 +815,7 @@ int show_dialog(display& disp, surface image,
 			}
 		}
 
-		screen.flip();
+		disp.flip();
 		SDL_Delay(10);
 
 		if(action != NULL) {

@@ -316,8 +316,9 @@ std::vector<std::string> get_text() {
 	return res;
 }
 
-void show_about(CVideo &video)
+void show_about(display &disp)
 {
+	CVideo &video = disp.video();
 	std::vector<std::string> text = get_text();
 	SDL_Rect rect = {0, 0, video.getx(), video.gety()};
 
@@ -419,7 +420,7 @@ void show_about(CVideo &video)
 
 		// update screen and wait, so the text does not scroll too fast
 		update_rect(map_rect);
-		video.flip();
+		disp.flip();
 		SDL_Delay(20);
 
 	} while(!close.pressed());

@@ -291,7 +291,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		screen.video().flip();
+		screen.flip();
 
 		if(!last_escape && key[SDLK_ESCAPE])
 			return QUIT_GAME;

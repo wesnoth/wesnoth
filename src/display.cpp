@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
+#include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
 #include "font.hpp"
@@ -573,6 +574,26 @@ void display::redraw_everything()
 	draw(true,true);
 }
 
+void display::flip()
+{
+	if(video().faked())
+		return;
+
+	const surface frameBuffer = get_video_surface();
+
+	halo::render();
+	font::draw_floating_labels(frameBuffer);
+	events::raise_volatile_draw_event();
+	cursor::draw(frameBuffer);
+
+	video().flip();
+
+	cursor::undraw(frameBuffer);
+	events::raise_volatile_undraw_event();
+	font::undraw_floating_labels(frameBuffer);
+	halo::unrender();
+}
+
 namespace {
 
 void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
@@ -743,7 +764,7 @@ void display::update_display()
 		fps_handle_ = 0;
 	}
 
-	screen_.flip();
+	flip();
 }
 
 void display::draw_sidebar()

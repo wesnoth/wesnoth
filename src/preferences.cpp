@@ -1210,7 +1210,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				 	mod=event.key.keysym.mod;
 				};			
 				SDL_PollEvent(&event);
-				disp.video().flip();
+				disp.flip();
 				SDL_Delay(10);
 			} while (event.type!=SDL_KEYUP);
 			restorer.restore();

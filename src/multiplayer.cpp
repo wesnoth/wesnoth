@@ -70,7 +70,7 @@ void run_lobby_loop(display& disp, mp::ui& ui)
 
 		ui.process_network();
 
-		disp.video().flip();
+		disp.flip();
 		SDL_Delay(20);
 	}
 }

@@ -2608,7 +2608,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 		}
 		hb.set_dirty(true);
 		events::raise_draw_event();
-		screen.flip();
+		disp.flip();
 		disp.invalidate_all();
 		CKey key;
 		for (;;) {
@@ -2626,7 +2626,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 					return;
 				}
 			}
-			screen.flip();
+			disp.flip();
 			SDL_Delay(10);
 		}
 	}
