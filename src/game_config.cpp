@@ -24,7 +24,7 @@ namespace game_config
 	int curer_heals_per_turn = 18;
 	int recall_cost = 20;
 	int kill_experience = 8;
-	const std::string version = "0.6.99.2";
+	const std::string version = "0.6.99.3-CVS";
 	bool debug = false;
 
 	std::string game_icon, game_title, game_logo, title_music;
