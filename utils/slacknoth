@@ -1,0 +1,35 @@
+#!/bin/sh
+if [ "$3" = "" ]
+then
+echo "slacknoth - Creates a Wesnoth package for Slackware Linux"
+echo "- by Skovbaer (Mark Michelsen)"
+echo ""
+echo "Usage: slacknoth [date in format mm_dd_yy] [architecture e.g. i386 or athlon]"
+echo "                 [wesnoth root e.g. /usr/games/src/wesnoth]"
+echo ""
+exit 0;
+fi
+cd $3
+mkdir -p /wesnothpack/wesnoth-$1
+echo "Configuring..."
+./autogen.sh
+./configure --prefix=/usr --enable-server --enable-tools --enable-kde --enable-gnome
+echo "Compiling and gathering package contents..."
+make DESTDIR=/wesnothpack/wesnoth-$1 CXXFLAGS="-g -O2 -march=$2" install
+mkdir -p /wesnothpack/wesnoth-$1/usr/doc/wesnoth-$1
+cp -Rf changelog COPYING copyright INSTALL MANUAL* README /wesnothpack/wesnoth-$1/usr/doc/wesnoth-$1
+echo "Cleaning up source..."
+make clean
+cd /wesnothpack/wesnoth-$1
+echo "Building package..."
+tar cf wesnoth-$1-$2-1.tar .
+gzip -9 wesnoth-$1-$2-1.tar
+mv -f wesnoth-$1-$2-1.tar.gz wesnoth-$1-$2-1.tgz
+echo "Moving package to $3 ..."
+mv -f wesnoth-$1-$2-1.tgz $3
+cd $3
+echo "Removing temporary directory..."
+rm -Rf /wesnothpack
+echo "And that's it, we're done!"
+echo "If everything went all right, you should have the package"
+echo "$3/wesnoth-$1-$2-1.tgz"
