@@ -581,12 +581,12 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 							(disp.y()-height)/2+55+(30*side_num));
 
 					if(side_num>0) {
-						sides[n]->values["controller"] = "human";
-						sides[n]->values["description"] = preferences::login();
-						combo_type.back().set_selected(1);
-					}else{
 						sides[n]->values["controller"] = "network";
 						sides[n]->values["description"] = "";
+						combo_type.back().set_selected(1);
+					}else{
+						sides[n]->values["controller"] = "human";
+						sides[n]->values["description"] = preferences::login();
 					}
 					sides[n]->values["gold"] = "100";
 
