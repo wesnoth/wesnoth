@@ -173,9 +173,15 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 
 		disp.remove_footstep(path[i]);
 
-		const bool invisible = teams[u.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
-	             u.invisible(map.underlying_terrain(path[i]),tod.lawful_bonus,path[i],units,teams) &&
-		         u.invisible(map.underlying_terrain(path[i+1]),tod.lawful_bonus,path[i+1],units,teams);
+		bool invisible;
+
+		if(u.side() == 0) {
+			invisible = false;
+		} else {
+			invisible = teams[u.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
+				u.invisible(map.underlying_terrain(path[i]),tod.lawful_bonus,path[i],units,teams) &&
+				u.invisible(map.underlying_terrain(path[i+1]),tod.lawful_bonus,path[i+1],units,teams);
+		}
 
 		if(!invisible) {
 			move_unit_between(disp,map,path[i],path[i+1],u);
