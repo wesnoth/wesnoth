@@ -77,7 +77,7 @@ our %suffix = (
 
 # get ids from other wml files
 @wmlfiles = (qw(data/game.cfg data/help.cfg data/items.cfg data/multiplayer.cfg
-		data/schedules.cfg data/tutorial.cfg data/tutorial2.cfg),
+		data/schedules.cfg),
 	     glob ("data/scenarios/*/*.cfg"));
 foreach my $wmlfile (@wmlfiles) {
   open (WML, $wmlfile) or die "cannot open $wmlfile";
