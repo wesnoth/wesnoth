@@ -344,12 +344,21 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
     
 			for(;;) {
 				data_res = gui::network_data_dialog(disp,string_table["getting_game_data"],sides);
+				if(data_res && sides.child("error")) {
+					gui::show_dialog(disp,NULL,"",(*sides.child("error"))["message"]);
+					break;
+				}
+
 				check_response(data_res,sides);
     
 				//if we have got valid side data
 				if(sides.child("gamelist") == NULL) {
 					break;
 				}
+			}
+
+			if(sides.child("error")) {
+				continue;
 			}
 		} else {
 			sides = data;

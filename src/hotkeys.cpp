@@ -94,6 +94,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("speaktoall",HOTKEY_SPEAK_ALL));
 		m.insert(val("help",HOTKEY_HELP));
 		m.insert(val("chatlog",HOTKEY_CHAT_LOG));
+		m.insert(val("command",HOTKEY_USER_CMD));
 	}
 	
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
@@ -499,6 +500,11 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_CHAT_LOG:
 			if(executor) {
 				executor->show_chat_log();
+			}
+			break;
+		case HOTKEY_USER_CMD:
+			if(executor) {
+				executor->user_command();
 			}
 			break;
 		case HOTKEY_EDIT_SET_TERRAIN:

@@ -46,6 +46,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
 					  HOTKEY_EDIT_FILL_SELECTION, HOTKEY_EDIT_CUT, HOTKEY_EDIT_COPY,
 					  HOTKEY_EDIT_PASTE, HOTKEY_EDIT_REVERT, HOTKEY_EDIT_RESIZE,
 					  HOTKEY_EDIT_FLIP, HOTKEY_EDIT_SELECT_ALL, HOTKEY_EDIT_DRAW,
+                      HOTKEY_USER_CMD,
 					  HOTKEY_NULL };
 
 struct hotkey_item {
@@ -123,6 +124,7 @@ public:
 	virtual void search() {}
 	virtual void show_help() {}
 	virtual void show_chat_log() {}
+	virtual void user_command() {}
 
 	// Map editor stuff.
 	virtual void edit_set_terrain() {}

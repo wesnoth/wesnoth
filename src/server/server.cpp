@@ -399,6 +399,11 @@ void server::run()
 							continue;
 						}
 
+						if(it->player_is_banned(sock)) {
+							network::send_data(construct_error("You are banned from this game"),sock);
+							continue;
+						}
+
 						lobby_players_.remove_player(sock);
 
 						//send them the game data
@@ -441,8 +446,49 @@ void server::run()
 						continue;
 					}
 
+					//if the owner is banning someone from the game
+					if(g->is_owner(sock) && data.child("ban")) {
+						const config& ban = *data.child("ban");
+						const std::string& name = ban["username"];
+						player_map::iterator pl;
+						for(pl = players_.begin(); pl != players_.end(); ++pl) {
+							if(pl->second.name() == name) {
+								break;
+							}
+						}
+
+						if(pl->first != sock && pl != players_.end()) {
+							g->ban_player(pl->first);
+							const config& msg = construct_server_message("You have been banned",*g);
+							network::send_data(msg,pl->first);
+							config leave_game;
+							leave_game.add_child("leave_game");
+							network::send_data(leave_game,pl->first);
+
+							g->describe_slots();
+							lobby_players_.add_player(pl->first);
+
+							//mark the player as available in the lobby
+							pl->second.mark_available(true);
+
+							//send the player who was banned the lobby game list
+							network::send_data(initial_response_,pl->first);
+
+							//send all other players in the lobby the update to the lobby
+							lobby_players_.send_data(sync_initial_response(),sock);
+						} else if(pl == players_.end()) {
+							const config& response = construct_server_message(
+							             "Ban failed: user '" + name + "' not found",*g);
+							network::send_data(response,sock);
+						}
+					} else if(data.child("ban")) {
+						const config& response = construct_server_message(
+						             "You cannot ban: not the game creator",*g);
+						network::send_data(response,sock);
+					}
+
 					//if this is data describing changes to a game.
-					if(data.child("scenario_diff")) {
+					else if(g->is_owner(sock) && data.child("scenario_diff")) {
 						g->level().apply_diff(*data.child("scenario_diff"));
 						g->send_data(data,sock);
 
@@ -453,7 +499,7 @@ void server::run()
 					}
 
 					//if this is data describing the level for a game.
-					else if(data.child("side") != NULL) {
+					else if(g->is_owner(sock) && data.child("side") != NULL) {
 
 						const bool is_init = g->level_init();
 

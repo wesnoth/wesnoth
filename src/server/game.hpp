@@ -18,6 +18,7 @@ class game
 public:
 	game(const player_map& info);
 
+	bool is_owner(network::connection player) const;
 	bool is_member(network::connection player) const;
 	bool is_needed(network::connection player) const;
 	bool is_observer(network::connection player) const;
@@ -39,6 +40,9 @@ public:
 	//function to set the description to the number of slots
 	//returns true if the number of slots has changed
 	bool describe_slots();
+
+	bool player_is_banned(network::connection player) const;
+	void ban_player(network::connection player);
 
 	void add_player(network::connection player);
 	void remove_player(network::connection player);
@@ -105,6 +109,17 @@ private:
 	int end_turn_;
 
 	bool allow_observers_;
+
+	struct ban {
+		ban(const std::string& name, const std::string& address)
+		      : username(name), ipaddress(address)
+		{}
+
+		std::string username;
+		std::string ipaddress;
+	};
+
+	std::vector<ban> bans_;
 };
 
 struct game_id_matches

@@ -34,7 +34,7 @@ bool operator<(const line_source& a, const line_source& b)
 
 namespace {
 
-int max_recursion_levels = 100;
+const int max_recursion_levels = 100;
 
 bool isnewline(char c)
 {
@@ -718,7 +718,7 @@ void config::read(const std::string& data,
 					}
 				} else if(c == '\n' && !in_quotes) {
 
-					//see if this is a CVS list=CVS list style assignment (e.g. x,y=5,8)
+					//see if this is a CSV list=CSV list style assignment (e.g. x,y=5,8)
 					std::vector<std::string> vars, values;
 					if(std::count(var.begin(),var.end(),',') > 0) {
 						vars = config::split(var);

@@ -938,6 +938,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SPEAK_ALLY:
 	case hotkey::HOTKEY_SPEAK_ALL:
 	case hotkey::HOTKEY_CHAT_LOG:
+	case hotkey::HOTKEY_USER_CMD:
 		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
@@ -2034,13 +2035,18 @@ void turn_info::show_statistics()
 
 void turn_info::search()
 {
-	std::stringstream msg;
+	std::ostringstream msg;
 	msg << string_table["search_prompt"];
 	if(last_search_hit_.valid()) {
 		msg << " [" << last_search_ << "]";
 	}
 	msg << ':';
 	create_textbox(floating_textbox::TEXTBOX_SEARCH,msg.str());
+}
+
+void turn_info::user_command()
+{
+	create_textbox(floating_textbox::TEXTBOX_COMMAND,string_table["command_prompt"] + ":");
 }
 
 void turn_info::show_help()
@@ -2118,6 +2124,21 @@ void turn_info::do_search(const std::string& new_search)
 		const std::string msg = config::interpolate_variables_into_string(
 			string_table["search_string_not_found"],&symbols);
 		gui::show_dialog(gui_,NULL,"",msg);
+	}
+}
+
+void turn_info::do_command(const std::string& str)
+{
+	const std::string::const_iterator i = std::find(str.begin(),str.end(),' ');
+	const std::string cmd(str.begin(),i);
+	const std::string data(i == str.end() ? str.end() : i+1,str.end());
+
+	if(cmd == "ban") {
+		config cfg;
+		config& ban = cfg.add_child("ban");
+		ban["username"] = data;
+
+		network::send_data(cfg);
 	}
 }
 
@@ -2417,6 +2438,9 @@ void turn_info::enter_textbox()
 		break;
 	case floating_textbox::TEXTBOX_MESSAGE:
 		do_speak(textbox_.box->text(),textbox_.check != NULL ? textbox_.check->checked() : false);
+		break;
+	case floating_textbox::TEXTBOX_COMMAND:
+		do_command(textbox_.box->text());
 		break;
 	default:
 		std::cerr << "unknown textbox mode\n";

@@ -68,7 +68,8 @@ public:
 		util::scoped_ptr<gui::textbox> box;
 		util::scoped_ptr<gui::button> check;
 	
-		enum MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE };
+		enum MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE,
+		            TEXTBOX_COMMAND };
 		MODE mode;
 
 		int label;
@@ -154,10 +155,11 @@ private:
 	virtual void search();
 	virtual void show_help();
 	virtual void show_chat_log();
+	virtual void user_command();
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 
 	void do_search(const std::string& str);
-
+	void do_command(const std::string& str);
 	void do_speak(const std::string& str, bool allies_only);
 	bool has_friends() const;
 	

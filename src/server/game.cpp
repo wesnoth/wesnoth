@@ -8,6 +8,12 @@ int game::id_num = 1;
 game::game(const player_map& info) : player_info_(&info), id_(id_num++), started_(false), description_(NULL), end_turn_(0), allow_observers_(true)
 {}
 
+bool game::is_owner(network::connection player) const
+{
+	assert(!players_.empty());
+	return player == players_.front();
+}
+
 bool game::is_member(network::connection player) const
 {
 	return std::find(players_.begin(),players_.end(),player) != players_.end();
@@ -182,6 +188,38 @@ bool game::describe_slots()
 	} else {
 		return false;
 	}
+}
+
+bool game::player_is_banned(network::connection sock) const
+{
+	if(bans_.empty()) {
+		return false;
+	}
+
+	const player_map::const_iterator itor = player_info_->find(sock);
+	if(itor == player_info_->end()) {
+		return false;
+	}
+
+	const player& info = itor->second;
+	const std::string& ipaddress = network::ip_address(sock);
+	for(std::vector<ban>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
+		if(info.name() == i->username || ipaddress == i->ipaddress) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+void game::ban_player(network::connection sock)
+{
+	const player_map::const_iterator itor = player_info_->find(sock);
+	if(itor != player_info_->end()) {
+		bans_.push_back(ban(itor->second.name(),network::ip_address(sock)));
+	}
+
+	remove_player(sock);
 }
 
 bool game::process_commands(const config& cfg)
