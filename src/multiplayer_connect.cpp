@@ -180,7 +180,10 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 		return -1;
 	}
 
-	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
+	config::child_list possible_sides = era_cfg->get_children("multiplayer_side");
+	config* random = new config();
+	(*random)["name"]="&random-enemy.png,Random";
+	possible_sides.insert(possible_sides.begin(),random);
 
 	if(sides.first == sides.second || possible_sides.empty()) {
 		gui::show_dialog(*disp_, NULL, "", 
@@ -267,7 +270,11 @@ void mp_connect::lists_init()
 		return;
 	}
 
-	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
+	config::child_list possible_sides = era_cfg->get_children("multiplayer_side");
+	config* random = new config();
+	(*random)["name"]="&random-enemy.png,Random";
+	possible_sides.insert(possible_sides.begin(),random);
+
 	for(std::vector<config*>::const_iterator race = possible_sides.begin();
 	    race != possible_sides.end(); ++race) {
 		player_races_.push_back(translate_string((**race)["name"]));
@@ -520,12 +527,18 @@ lobby::RESULT mp_connect::process()
 	}
 
 	const config* const era_cfg = cfg_->find_child("era","id",era_);
+
 	if(era_cfg == NULL) {
 		std::cerr << "ERROR: cannot find era '" << era_ << "'\n";
 		return lobby::QUIT;
 	}
 
-	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
+	config::child_list possible_sides = era_cfg->get_children("multiplayer_side");
+
+
+	config* random = new config();
+	(*random)["name"]="&random-enemy.png,Random";
+	possible_sides.insert(possible_sides.begin(),random);
 
 	const config::child_itors sides = level_->child_range("side");
 
@@ -584,6 +597,7 @@ lobby::RESULT mp_connect::process()
 		if(combos_race_[n].process(mousex, mousey, left_button)) {
 			const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
 			for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
+				std::cerr << "value: " << i->first << " , " << i->second<< std::endl;
 				side[i->first] = i->second;
 			}
 			level_changed = true;
@@ -647,6 +661,22 @@ lobby::RESULT mp_connect::process()
 	launch_.enable(is_full());
 
 	if(launch_.process(mousex,mousey,left_button)) {
+		const config::child_list& real_sides = era_cfg->get_children("multiplayer_side");
+
+		for(config::child_iterator side = sides.first; side != sides.second; ++side) {
+			if((**side)["name"]=="&random-enemy.png,Random") {
+				int choice = rand()%real_sides.size();
+				(**side)["name"] = (*real_sides[choice])["name"];
+
+				(**side)["type"] = (*real_sides[choice])["type"];
+
+				(**side)["recruit"] = (*real_sides[choice])["recruit"];
+
+				(**side)["music"] = (*real_sides[choice])["music"];
+
+				(**side)["recruitment_pattern"] = real_sides[choice]->values["recruitment_pattern"];
+			}
+		}
 		return lobby::CREATE;
 	}
 
