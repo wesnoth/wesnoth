@@ -144,6 +144,8 @@ private:
 	unit_map::const_iterator current_unit() const;
 
 	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m);
+	
+	bool enemies_visible() const;
 
 	game_data& gameinfo_;
 	game_state& state_of_game_;
@@ -170,6 +172,10 @@ private:
 	undo_list redo_stack_;
 	int path_turns_;
 
+	//cached value indicating whether any enemy units are visible.
+	//computed with enemies_visible()
+	bool enemies_visible_;
+	
 	bool end_turn_;
 
 	std::string last_recruit_;

@@ -138,6 +138,7 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
 	 minimap_scrolling_(false),
     enemy_paths_(false), path_turns_(0), end_turn_(false)
 {
+	enemies_visible_ = enemies_visible();
 }
 
 void turn_info::turn_slice()
@@ -895,9 +896,11 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_UNIT_LIST:
 	case hotkey::HOTKEY_STATISTICS:
 	case hotkey::HOTKEY_QUIT_GAME:
+		return true;
+
 	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:
 	case hotkey::HOTKEY_BEST_ENEMY_MOVES:
-		return true;
+		return enemies_visible_;
 
 	case hotkey::HOTKEY_SPEAK:
 		return network::nconnections() > 0;
@@ -2007,15 +2010,29 @@ void turn_info::label_terrain()
 	}
 }
 
+// Returns true if any enemy units are visible.
+bool turn_info::enemies_visible() const
+{
+	// If we aren't using fog/shroud, this is easy :)
+	if(current_team().uses_fog() == false && current_team().uses_shroud() == false)
+		return true;
+	
+	//See if any enemies are visible
+	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u)
+		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y))
+			return true;
+		
+	return false;
+}
+
 // Highlights squares that an enemy could move to on their turn
 void turn_info::show_enemy_moves(bool ignore_units)
 {
-	team& current_team = teams_[team_num_-1];
 	all_paths_ = paths();
 	
 	// Compute enemy movement positions
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-		if(current_team.is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y)) {
+		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y)) {
 			const bool is_skirmisher = u->second.type().is_skirmisher();
 			const bool teleports = u->second.type().teleports();
 			unit_map units;
@@ -2043,8 +2060,10 @@ void turn_info::toggle_shroud_updates() {
 
 bool turn_info::clear_shroud()
 {
-	return current_team().auto_shroud_updates() && 
+	bool cleared = current_team().auto_shroud_updates() && 
 		::clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+	enemies_visible_ = enemies_visible();
+	return cleared;
 }
 
 void turn_info::clear_undo_stack()
