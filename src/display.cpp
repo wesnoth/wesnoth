@@ -121,6 +121,12 @@ int display::x() const { return screen_.getx(); }
 int display::mapx() const { return x() - 140; }
 int display::y() const { return screen_.gety(); }
 
+SDL_Rect display::screen_area() const
+{
+	const SDL_Rect res = {0,0,x(),y()};
+	return res;
+}
+
 void display::select_hex(gamemap::location hex)
 {
 	invalidate(selectedHex_);

@@ -55,6 +55,7 @@ public:
 	int x() const;
 	int mapx() const;
 	int y() const;
+	SDL_Rect screen_area() const;
 
 	void select_hex(gamemap::location hex);
 	void highlight_hex(gamemap::location hex);
