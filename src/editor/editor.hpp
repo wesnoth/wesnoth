@@ -14,6 +14,7 @@
 
 #include "editor_palettes.hpp"
 #include "editor_layout.hpp"
+#include "editor_undo.hpp"
 
 #include "../display.hpp"
 #include "../events.hpp"
@@ -26,57 +27,6 @@
 #include <vector>
 
 namespace map_editor {
-
-/// A saved action that may be undone.
-class map_undo_action
-{
-public:
-	map_undo_action() {
-	}
-
-	map_undo_action(const gamemap::TERRAIN& old_tr,
-			const gamemap::TERRAIN& new_tr,
-			const gamemap::location& lc){
-		add_terrain(old_tr, new_tr, lc);
-	}
-
- 	const std::map<gamemap::location,gamemap::TERRAIN>& undo_terrains() const {
- 		return old_terrain_;
- 	}
-
- 	const std::map<gamemap::location,gamemap::TERRAIN>& redo_terrains() const {
- 		return new_terrain_;
- 	}
-
-	const std::set<gamemap::location> undo_selection() const {
-		return old_selection_;
-	}
-	const std::set<gamemap::location> redo_selection() const {
-		return new_selection_;
-	}
-
-	void add_terrain(const gamemap::TERRAIN& old_tr,
-		 const gamemap::TERRAIN& new_tr,
-		 const gamemap::location& lc) {
-		old_terrain_[lc] = old_tr;
-		new_terrain_[lc] = new_tr;
-	}
-
-	void set_selection(const std::set<gamemap::location> &new_selection,
-					   const std::set<gamemap::location> &old_selection) {
-		new_selection_ = new_selection;
-		old_selection_ = old_selection;
-	}
-
-private:
-	std::map<gamemap::location,gamemap::TERRAIN> old_terrain_;
-	std::map<gamemap::location,gamemap::TERRAIN> new_terrain_;
-	std::set<gamemap::location> new_selection_;
-	std::set<gamemap::location> old_selection_;
-};
-
-typedef std::deque<map_undo_action> map_undo_list;
-
 
 /// A map editor. Receives SDL events and can execute hotkey commands.
 class map_editor : public events::handler,
@@ -226,14 +176,6 @@ private:
 	/// may have changed the starting positions.
 	void recalculate_starting_pos_labels();
 
-	/// Add an undo action to the undo stack. Resize the stack if it
-	/// gets larger than the maximum size. Add an operation to the
-	/// number done since save. If keep_selection is true, it indicates
-	/// that the selection has not changed and the currently selected
-	/// terrain should be kept if this action is redone/undone. Also
-	/// clear the redo stack.
-	void add_undo_action(map_undo_action &action, const bool keep_selection=true);
-
 	/// Update the selection and highlightning of the hexes the mouse
 	/// currently is over.
 	void update_mouse_over_hexes(const gamemap::location mouse_over_hex);
@@ -256,6 +198,13 @@ private:
 	/// highlighted.
 	void highlight_selected_hexes(const bool clear_old=true);
 
+	/// Save an action so that it may be undone. Add an operation to the
+	/// number done since save. If keep_selection is true, it indicates
+	/// that the selection has not changed and the currently selected
+	/// terrain should be kept if this action is redone/undone.
+	void save_undo_action(map_undo_action &action,
+						  const bool keep_selection=true);
+
 	/// An item in the clipboard. Consists of the copied terrain and an
 	/// offset. When pasting stuff, the offset is used to calculate
 	/// where to put the pasted hex when calculating from the one
@@ -273,8 +222,6 @@ private:
 
 	display &gui_;
 	gamemap &map_;
-	map_undo_list undo_stack_;
-	map_undo_list redo_stack_;
 	std::string filename_;
 	ABORT_MODE abort_;
 	// Keep track of the number of operations performed since the last
