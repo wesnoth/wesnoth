@@ -11,7 +11,7 @@
 
 cave_map_generator::cave_map_generator(const config* cfg) : wall_('W'), clear_('u'), village_('D'), castle_('o'),
                                                             cfg_(cfg), width_(50), height_(50), village_density_(0),
-															flipx_(false), flipy_(false)
+							    flipx_(false), flipy_(false)
 {
 	if(cfg_ == NULL) {
 		static const config default_cfg;
