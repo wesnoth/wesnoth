@@ -37,8 +37,8 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
 SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 {
 	SDL_Rect res;
-	res.x = maximum(rect1.x, rect2.x);
-	res.y = maximum(rect1.y, rect2.y);
+	res.x = maximum<int>(rect1.x, rect2.x);
+	res.y = maximum<int>(rect1.y, rect2.y);
 	res.w = maximum<int>(minimum<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x, 0);
 	res.h = maximum<int>(minimum<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y, 0);
 	return res;

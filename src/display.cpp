@@ -47,11 +47,11 @@ namespace {
 	const int DefaultZoom = 72;
 	const int MaxZoom = 200;
 
-	const int MinZoom(const gamemap& map, const SDL_Rect& viewport)
+	int MinZoom(const gamemap& map, const SDL_Rect& viewport)
 	{
 		const int min_zoom1 = viewport.w/((map.x()*3)/4);
 		const int min_zoom2 = viewport.h/map.y();
-		const int min_zoom = maximum<int>(min_zoom1,min_zoom2);
+		return maximum<int>(min_zoom1,min_zoom2);
 	}
 
 	const size_t SideBarGameStatus_x = 16;

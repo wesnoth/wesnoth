@@ -627,7 +627,7 @@ lobby::RESULT mp_connect::process()
 				side["controller"] = "null";
 				side["description"] = "";
 				break;
-			case 5:
+			case 5: {
 				side["controller"] = "human";
 				side["description"] = preferences::login();
 				for(size_t m = 0; m != combos_type_.size(); ++m) {
@@ -641,6 +641,7 @@ lobby::RESULT mp_connect::process()
 					}
 				}
 				break;
+			}
 			case 4:
 				combos_type_[n].set_selected(0);
 			case 0:
