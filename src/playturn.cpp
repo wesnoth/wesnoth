@@ -152,7 +152,7 @@ turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
     key_(key), gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), browse_(mode != PLAY_TURN), allow_network_commands_(mode == BROWSE_NETWORKED),
     left_button_(false), right_button_(false), middle_button_(false),
-	minimap_scrolling_(false), enemy_paths_(false), last_nearest_(gamemap::location::NORTH),
+	minimap_scrolling_(false), enemy_paths_(false), last_nearest_(gamemap::location::NORTH), last_second_nearest_(gamemap::location::NORTH),
     path_turns_(0), end_turn_(false), start_ncmd_(-1), textbox_(textbox), replay_sender_(replay_sender)
 {
 	enemies_visible_ = enemies_visible();
@@ -305,11 +305,11 @@ void turn_info::mouse_motion(int x, int y)
 		if(minimap_scrolling_) return;
 	}
 
-	gamemap::location::DIRECTION nearest_hex;
+	gamemap::location::DIRECTION nearest_hex, second_nearest_hex;
 	const team& current_team = teams_[team_num_-1];
-	const gamemap::location new_hex = gui_.hex_clicked_on(x,y,&nearest_hex);
+	const gamemap::location new_hex = gui_.hex_clicked_on(x,y,&nearest_hex,&second_nearest_hex);
 
-	if(new_hex != last_hex_ || nearest_hex != last_nearest_) {
+	if(new_hex != last_hex_ || nearest_hex != last_nearest_ || second_nearest_hex != last_second_nearest_) {
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
 			gui_.set_route(NULL);
@@ -326,8 +326,7 @@ void turn_info::mouse_motion(int x, int y)
 
 		gamemap::location attack_from;
 		if(selected_unit != units_.end() && mouseover_unit != units_.end()) {
-			const gamemap::location preferred = new_hex.get_direction(nearest_hex);
-			attack_from = current_unit_attacks_from(new_hex,&preferred);
+			attack_from = current_unit_attacks_from(new_hex, nearest_hex, second_nearest_hex);
 		}
 
 		if(selected_unit != units_.end() && (current_paths_.routes.count(new_hex) ||
@@ -349,18 +348,17 @@ void turn_info::mouse_motion(int x, int y)
 			gui_.set_paths(NULL);
 		}
 		
-		if(new_hex == selected_hex_) {
+		const gamemap::location& dest = attack_from.valid() ? attack_from : new_hex;
+		const unit_map::const_iterator dest_un = find_unit(dest);
+		if(dest == selected_hex_ || dest_un != units_.end()) {
 			current_route_.steps.clear();
 			gui_.set_route(NULL);
 		} else if(!current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
-
-			const gamemap::location& dest = attack_from.valid() ? attack_from : new_hex;
-
+			
 			unit_map::const_iterator un = find_unit(selected_hex_);
-			const unit_map::const_iterator dest_un = find_unit(dest);
-
-			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && dest_un == units_.end() && !un->second.stone()) {
+			
+			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !un->second.stone()) {
 				const shortest_path_calculator calc(un->second,current_team,
 				                                    visible_units(),teams_,map_,status_);
 				const bool can_teleport = un->second.type().teleports();
@@ -402,6 +400,7 @@ void turn_info::mouse_motion(int x, int y)
 
 	last_hex_ = new_hex;
 	last_nearest_ = nearest_hex;
+	last_second_nearest_ = second_nearest_hex;
 }
 
 namespace {
@@ -790,8 +789,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		return;
 	}
 
-	gamemap::location::DIRECTION nearest_hex;
-	gamemap::location hex = gui_.hex_clicked_on(event.x,event.y,&nearest_hex);
+	gamemap::location::DIRECTION nearest_hex, second_nearest_hex;
+	gamemap::location hex = gui_.hex_clicked_on(event.x,event.y,&nearest_hex,&second_nearest_hex);
 
 	unit_map::iterator u = find_unit(selected_hex_);
 
@@ -813,8 +812,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 	//see if we're trying to do a move-and-attack
 	if(!browse_ && u != units_.end() && enemy != units_.end() && !current_route_.steps.empty()) {
-		const gamemap::location preferred = hex.get_direction(nearest_hex);
-		const gamemap::location& attack_from = current_unit_attacks_from(hex,&preferred);
+		const gamemap::location& attack_from = current_unit_attacks_from(hex, nearest_hex, second_nearest_hex);
 		if(attack_from.valid()) {
 			if(move_unit_along_current_route(false)) { //move the unit without updating shroud
 				u = find_unit(attack_from);
@@ -920,7 +918,7 @@ void turn_info::show_attack_options(unit_map::const_iterator u)
 	}
 }
 
-gamemap::location turn_info::current_unit_attacks_from(const gamemap::location& loc, const gamemap::location* preferred) const
+gamemap::location turn_info::current_unit_attacks_from(const gamemap::location& loc, const gamemap::location::DIRECTION preferred, const gamemap::location::DIRECTION second_preferred) const
 {
 	const unit_map::const_iterator current = find_unit(selected_hex_);
 	if(current == units_.end() || current->second.side() != team_num_) {
@@ -932,7 +930,7 @@ gamemap::location turn_info::current_unit_attacks_from(const gamemap::location& 
 		return gamemap::location();
 	}
 
-	int best_defense = 100;
+	int best_rating = 100;//smaller is better
 	gamemap::location res;
 	gamemap::location adj[6];
 	get_adjacent_tiles(loc,adj);
@@ -942,7 +940,7 @@ gamemap::location turn_info::current_unit_attacks_from(const gamemap::location& 
 		}
 
 		if(adj[n] == selected_hex_) {
-			return gamemap::location();
+			return selected_hex_;
 		}
 
 		if(find_unit(adj[n]) != units_.end()) {
@@ -950,9 +948,18 @@ gamemap::location turn_info::current_unit_attacks_from(const gamemap::location& 
 		}
 
 		if(current_paths_.routes.count(adj[n])) {
-			const int defense = preferred != NULL && *preferred == adj[n] ? 0 : current->second.defense_modifier(map_,map_.get_terrain(loc));
-			if(defense < best_defense || res.valid() == false) {
-				best_defense = defense;
+			static const size_t NDIRECTIONS = gamemap::location::NDIRECTIONS;
+			int difference = std::abs(int(preferred - n));
+			if(difference > NDIRECTIONS/2) {
+				difference = NDIRECTIONS - difference;
+			}
+			int second_difference = std::abs(int(second_preferred - n));
+			if(second_difference > NDIRECTIONS/2) {
+				second_difference = NDIRECTIONS - second_difference;
+			}
+			const int rating = difference * 2 + (second_difference > difference);
+			if(rating < best_rating || res.valid() == false) {
+				best_rating = rating;
 				res = adj[n];
 			}
 		}

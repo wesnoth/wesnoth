@@ -138,12 +138,12 @@ public:
 	//given x,y co-ordinates of an onscreen pixel, will return the
 	//location of the hex that this pixel corresponds to. Returns an
 	//invalid location is the mouse isn't over any valid location.
-	gamemap::location hex_clicked_on(int x, int y, gamemap::location::DIRECTION* nearest_hex=NULL);
+	gamemap::location hex_clicked_on(int x, int y, gamemap::location::DIRECTION* nearest_hex=NULL, gamemap::location::DIRECTION* second_nearest_hex=NULL);
 	
 	//given x,y co-ordinates of a pixel on the map, will return the
 	//location of the hex that this pixel corresponds to. Returns an
 	//invalid location is the mouse isn't over any valid location.
-	gamemap::location pixel_position_to_hex(int x, int y, gamemap::location::DIRECTION* nearest_hex=NULL);
+	gamemap::location pixel_position_to_hex(int x, int y, gamemap::location::DIRECTION* nearest_hex=NULL, gamemap::location::DIRECTION* second_nearest_hex=NULL);
 	
 	//given x,y co-ordinates of the mouse, will return the location of the
 	//hex in the minimap that the mouse is currently over, or an invalid

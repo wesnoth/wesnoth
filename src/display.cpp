@@ -238,7 +238,7 @@ void display::highlight_hex(gamemap::location hex)
 		invalidate_unit();
 }
 
-gamemap::location display::hex_clicked_on(int xclick, int yclick, gamemap::location::DIRECTION* nearest_hex)
+gamemap::location display::hex_clicked_on(int xclick, int yclick, gamemap::location::DIRECTION* nearest_hex, gamemap::location::DIRECTION* second_nearest_hex)
 {
 	const SDL_Rect& rect = map_area();
 	if(point_in_rect(xclick,yclick,rect) == false) {
@@ -248,10 +248,10 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick, gamemap::locat
 	xclick -= rect.x;
 	yclick -= rect.y;
 
-	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick, nearest_hex);
+	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick, nearest_hex, second_nearest_hex);
 }
 
-gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location::DIRECTION* nearest_hex)
+gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location::DIRECTION* nearest_hex, gamemap::location::DIRECTION* second_nearest_hex)
 {
 	const int s = hex_size();
 	const int tesselation_x_size = s * 3 / 2;
@@ -292,26 +292,55 @@ gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location
 	const gamemap::location res(x_base + x_modifier, y_base + y_modifier);
 	
 	if(nearest_hex != NULL) {
-		const int westx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/3;
-		const int eastx = westx + hex_size()/3;
+		const int centerx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/2;
 		const int centery = (get_location_y(res) - map_area().y + ypos_) + hex_size()/2;
-
-		const bool west = x < westx;
-		const bool east = x > eastx;
-		const bool north = y < centery;
-
-		if(north && west) {
-			*nearest_hex = gamemap::location::NORTH_WEST;
-		} else if(north && east) {
-			*nearest_hex = gamemap::location::NORTH_EAST;
-		} else if(north) {
-			*nearest_hex = gamemap::location::NORTH;
-		} else if(west) {
-			*nearest_hex = gamemap::location::SOUTH_WEST;
-		} else if(east) {
-			*nearest_hex = gamemap::location::SOUTH_EAST;
-		} else {
-			*nearest_hex = gamemap::location::SOUTH;
+		const int x_offset = x - centerx;
+		const int y_offset = y - centery;
+		if(y_offset > 0) {
+			if(x_offset > y_offset/2) {
+				*nearest_hex = gamemap::location::SOUTH_EAST;
+				if(second_nearest_hex != NULL) {
+					if(x_offset/2 > y_offset)    *second_nearest_hex = gamemap::location::NORTH_EAST;
+					else                         *second_nearest_hex = gamemap::location::SOUTH;
+				}
+			}
+			else if(-x_offset > y_offset/2) {
+				*nearest_hex = gamemap::location::SOUTH_WEST;
+				if(second_nearest_hex != NULL) {
+					if(-x_offset/2 > y_offset)   *second_nearest_hex = gamemap::location::NORTH_WEST;
+					else                         *second_nearest_hex = gamemap::location::SOUTH;
+				}
+			}
+			else {
+				*nearest_hex = gamemap::location::SOUTH;
+				if(second_nearest_hex != NULL) {
+					if(x_offset > 0)             *second_nearest_hex = gamemap::location::SOUTH_EAST;
+					else                         *second_nearest_hex = gamemap::location::SOUTH_WEST;
+				}
+			}
+		}
+		else {
+			if(x_offset > -y_offset/2) {
+				*nearest_hex = gamemap::location::NORTH_EAST;
+				if(second_nearest_hex != NULL) {
+					if(x_offset/2 > -y_offset)   *second_nearest_hex = gamemap::location::SOUTH_EAST;
+					else                         *second_nearest_hex = gamemap::location::NORTH;
+				}
+			}
+			else if(-x_offset > -y_offset/2) {
+				*nearest_hex = gamemap::location::NORTH_WEST;
+				if(second_nearest_hex != NULL) {
+					if(-x_offset/2 > -y_offset)  *second_nearest_hex = gamemap::location::SOUTH_WEST;
+					else                         *second_nearest_hex = gamemap::location::NORTH;
+				}
+			}
+			else {
+				*nearest_hex = gamemap::location::NORTH;
+				if(second_nearest_hex != NULL) {
+					if(x_offset > 0)             *second_nearest_hex = gamemap::location::NORTH_EAST;
+					else                         *second_nearest_hex = gamemap::location::NORTH_WEST;
+				}
+			}
 		}
 	}
 
