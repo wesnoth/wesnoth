@@ -1,0 +1,233 @@
+/* $Id$ */
+
+Bitwa o Wesnoth - Podrêcznik
+
+Je¶li jeszcze nie gra³e¶ w Bitwê o Wesnoth przeczytaj najpierw przewodnik
+GettingStarted[1].
+
+
+Sterowanie
+
+ Strza³ki:          Przewijanie ekranu
+ Mysz:
+ Lewy przycisk:     Wybranie jednostki/przesuniêcie jednostki
+ Prawy przycisk:    Menu g³ówne, anulowanie akcji
+ ¦rodkowy przycisk: Wycentruj pod kursorem
+ Escape:            Wyj¶cie z gry, wyj¶cie z menu
+ z:                 Powiêkszenie skali
+ x:                 Zmniejszenie skali
+ c:                 Domy¶lna skala
+ u:                 Cofniêcie ostatniego ruchu (tylko ruchy nielosowe)
+ r:                 Przywrócenie cofniêtego ruchu
+ n:                 Wybranie nastêpnej jednostki, która ma jeszcze ruch
+ 1-7:               Pokazanie zasiêgu jednostki w danej liczbie tur
+ Spacja:            Zakoñczenie ruchu jednostki i wybranie nastêpnej, która
+                    ma jeszcze ruch.
+ l:                 Wybranie dowódcy
+ ctrl-f:            Prze³±czenie trybu ekranu: pe³ny ekran/okienko
+ ctrl-r:            Zwerbowanie jednostki
+ ctrl-shift-r:      Ponowne zwerbowanie takiej samej jednostki
+ ctrl-c:            Przywo³anie jednostki z poprzedniej misji
+ ctrl-a:            Przy¶pieszenie/zwolnienie przebiegu gry
+ d:                 Pokazanie opisu wybranej jednostki
+ ctrl-d:            Tabela odporno¶ci wybranej jednostki na ró¿ne formy ataku
+ ctrl-t:            Tabela modyfikatorów terenowych
+ ctrl-s:            Zapisanie gry.
+
+  
+Ga³ki
+
+Na górze paska obrazuj±cego stan zdrowia jednostki znajduje siê ga³ka. Jest ona:
+
+ * zielona, gdy jest to twoja jednostka i jeszcze nie wykona³a ruchu w bie¿±cej
+   turze
+ * ¿ó³ta, gdy jest to twoja jednostka, wykona³a ruch w bie¿±cej turze, ale wci±¿
+   mo¿e siê poruszaæ
+ * czerwona, gdy jest to twoja jednostka, która wykorzysta³a wszystkie
+   mo¿liwo¶ci ruchu w bie¿±cej turze
+ * niebieska, gdy jednostka nale¿y do twego sprzymierzeñca i nie mo¿esz ni±
+   kierowaæ
+
+Jednostki nieprzyjaciela nie maj± ga³ki na górze paska zdrowia. (W starszych
+wersjach, poni¿ej 0.5.2, jednostki wroga mia³y czarn± ga³kê).
+
+
+Opis
+
+Gra to ci±g bitew lub scenariuszy. W ka¿dym scenariuszu twoje wojska
+potykaj± siê z wojskami przeciwnika. Ka¿da strona zaczyna z jednym
+dowódc± w zamku.
+
+
+Z³oto
+
+Ka¿da strona otrzymuje na pocz±tku okre¶lon± ilo¶æ z³ota i otrzymuje 2 sztuki
+z³ota na ka¿d± turê oraz dodatkowo sztukê z³ota na ka¿d± kontrolowan±
+przez siebie wioskê.
+
+Utrzymanie ka¿dej jednostki kosztuje. Koszt utrzymania jednostki jest zwykle
+równy poziomowi jednostki (patrz cecha 'lojalno¶æ'). Jednostki, które
+nie by³y przywo³ane ani zwerbowane - np. przywódca lub przy³±czaj±cy siê
+ochotnicy - nie obci±¿aj± twej kiesy. Koszta utrzymania s± p³acone tylko
+wtedy, gdy ca³kowite koszta utrzymania danej strony s± wiêksze, ni¿ ilo¶æ
+kontrolowanych przezeñ wiosek. Koszta te s± ró¿nic± pomiêdzy liczb± wiosek
+a kosztami nominalnymi. W ten sposób mo¿na obliczyæ przychód na turê:
+
+ 2 + ilo¶æ wiosek - maksimum(0,koszta utrzymania - ilo¶æ wiosek)
+
+gdzie koszta utrzymania równe s± sumie poziomów wszystkich przywo³anych
+i zwerbowanych jednostek.
+
+
+Werbunek i przywo³ywanie.
+
+Jednostki mog± byæ werbowane za z³oto tak d³ugo, jak dowódca jest w zamku
+i przynajmniej jedno pole w tym zamku jest wolne. Kliknij prawym przyciskiem
+i wybierz [Zwerbuj] w celu zwerbowania nowego ¿o³nierza.
+
+Po zakoñczeniu scenariusza, jednostki, które prze¿y³y, s± dostêpne w nastêpnym
+scenariuszu. Kliknij prawym przyciskiem myszy i wybierz [Przywo³aj], aby
+przywo³aæ jednostkê z poprzednich scenariuszy. Przywo³anie kosztuje 20 sztuk
+z³ota.
+
+Przed zwerbowaniem mo¿esz pod¶wietliæ wolne pole w zamku. W ten sposób
+wybierasz miejsce gdzie pojawi siê werbowana jednostka. Podobnie
+dla przywo³ywania.
+
+Jednostka przywo³ana lub zwerbowana mo¿e wykonaæ ruch dopiero w nastêpnej
+turze.
+
+
+Jednostki
+
+Dane jednostek dostêpne s± w Opisie Jednostki.
+
+
+Cechy
+
+Jednostki posiadaj± cechy, które odzwierciedlaj± ich charakter. Cechy te
+s± przypisywane do jednostek losowo w chwili, gdy s± one werbowane. Ka¿da
+jednostka otrzymuje dwie cechy spo¶ród:
+
+ lojalno¶æ:     koszta utrzymania jednostki nigdy nie przekrocz± 1
+ si³a:          jednostka czyni wiêcej zniszczenia w bezpo¶redniej walce oraz
+                posiada o kilka punktów ¿ycia wiêcej
+ szybko¶æ:      jednostka ma dodatkowy punkt ruchu i o kilka punktów ¿ycia mniej
+ ¿ywotno¶æ:     jednostka ma wiêcej punktów ¿ycia
+ inteligencja:  jednostka potrzebuje mniej punktów do¶wiadczenia, aby awansowaæ
+                na wy¿szy poziom
+
+
+Poruszanie
+
+Po zaznaczeniu jednostki, wszystkie miejsca, które s± dla niej osi±galne
+w bie¿±cej turze, s± pod¶wietlone, podczas gdy miejsca niedostêpne s± szare.
+Nastêpnie mo¿esz wskazaæ pole, na które chcesz przemie¶ciæ jednostkê.
+Wej¶cie do neutralnej lub kontrolowanej przez wroga wioski powoduje jej
+przejêcie. Je¶li wybierzesz cel nieosi±galny w jednej turze, jednostka
+przechodzi w tryb 'id¼ do' i kontynuuje ruch w nastêpnej turze. 
+
+Polecenie ruchu mo¿esz cofn±æ na pocz±tku twojej tury. Aby przemie¶ciæ
+jednostkê w inne miejsce, zaznacz j± i wska¿ nowy cel.
+
+Nie mo¿esz przej¶æ bez zatrzymywania siê przez pola s±siaduj±ce z jednostk±
+nieprzyjaciela (Strefa Kontroli).
+
+
+Walka
+
+Gdy przesuniesz siê w s±siedztwo wroga, mo¿esz go zaatakowaæ. Wybierz jednostkê,
+która s±siaduje z nieprzyjacielem, a nastêpnie wska¿ tê któr± chcesz
+zaatakowaæ. Niektóre rodzaje broni, jak miecze, to broñ bia³a, za¶ inne,
+na przyk³ad ³uki, to broñ miotaj±ca.
+
+Je¶li atakujesz u¿ywaj±c broni bia³ej, atakowany przeciwnik mo¿e walczyæ
+z tob± posiadan± przezeñ broni± bia³±. Natomiast gdy atakujesz broni± miotaj±c±
+przeciwnik równie¿ u¿yje broni miotaj±cej, o ile takow± posiada.
+
+Atak ró¿nymi typami broni powoduje ró¿ne zniszczenia. Podczas ataku mo¿na
+zadaæ pewn± ilo¶æ ciosów. Na przyk³ad Elfi Wojownik odbiera 5 punktów przy
+ka¿dym trafionym ciosie mieczem, którym mo¿e uderzyæ 4 razy. Zapisujemy
+to jako 5-4.
+
+Ka¿da jednostka ma okre¶lone prawdopodobieñstwo bycia trafion± na podstawie
+terenu, na którym stoi. Jednostki w zamkach i wioskach maj± ni¿sze szanse bycia
+trafionymi. Elfy w lesie równie¿ trudno trafiæ.
+
+
+Charakter
+
+Ka¿da jednostka ma przypisany charakter: praworz±dna, neutralna lub chaotyczna.
+Charakter ma wp³yw na zachowanie jednostki o ró¿nych porach dnia. Poni¿sza
+tabela pokazuje pory dnia:
+
+ | tura |  pora dnia |
+ ---------------------
+ |  1   |  ¶wit      |
+ |  2   |  dzieñ     |
+ |  3   |  dzieñ     |
+ |  4   |  zmierzch  |
+ |  5   |  noc       |
+ |  6   |  noc       |
+
+Jednostki praworz±dne w ci±gu dnia powoduj± zniszczenia o 25% wiêksze, za¶
+w nocy o 25% mniejsze. Jednostki chaotyczne za¶ s± o 25% skuteczniejsze
+w ci±gu nocy, za¶ o 25% mniej skuteczne w ci±gu dnia. W grze podwójne pory
+"dzieñ" i "noc" s± okre¶lone jako Przedpo³udnie, Popo³udnie oraz Pierwsza Stra¿,
+Druga Stra¿.
+
+
+Leczenie
+
+Ranne jednostki w wioskach odzyskuj± 8 punktów ¿ycia podczas ka¿dej tury. Ranne
+jednostki s±siaduj±ce z jednostk± posiadaj±c± umiejêtno¶æ leczenia lub
+uzdrawiania równie¿ s± leczone. Jednostka odzyskuje co najwy¿ej 4 punkty ¿ycia
+na turê bêd±c obok jednostki umiej±cej leczyæ oraz 8 punktów ¿ycia obok
+jednostki potrafi±cej uzdrawiaæ. Im wiêcej jednostek wokó³ jednostki
+lecz±cej wymaga leczenia, tym wolniej bêd± one leczone. Ka¿da jednostka mo¿e
+dostaæ co najwy¿ej 8 punktów ¿ycia, zatem Troll w wiosce odzyska 8 punktów,
+a nie 16. Analogicznie, jednostka w wiosce nie otrzyma dodatkowych punktów ¿ycia
+od s±siaduj±cego lekarza/uzdrowiciela.
+
+Leczenie wstrzymuje zniszczenia spowodowane przez zatrucie, natomiast
+uzdrawianie usuwa truciznê. Gdy uzdrawiciel odtruwa jednostkê, ta nie dostaje
+punktów ¿ycia w danej turze.
+
+
+Do¶wiadczenie
+
+Za walkê jednostki nagradzane s± do¶wiadczeniem. Gdy zdobêd± wystarczaj±co
+du¿o do¶wiadczenia, awansuj± na nastêpny poziom, staj±c siê silniejszymi.
+
+
+Gra wieloosobowa
+
+Do gry wieloosobowej mo¿na wykorzystaæ zarówno klienta, jak równie¿ po³±czyæ
+siê z serwerem. Je¶li chcesz poprowadziæ grê przy u¿yciu klienta inni gracze
+powinni mieæ mo¿liwo¶æ pod³±czenia siê do Twojego komputera na port 15000.
+
+
+Serwery publiczne:
+
+ server.wesnoth.org        dla stabilnych wersji gry
+ devsrv.wesnoth.org        dla testowych wersji gry
+ devsrv.wesnoth.org:14999  dla wersji z CVS
+
+
+Konfiguracja gry wieloosobowej
+
+Krok 1: wybierz "Gra wieloosobowa" z g³ównego ekranu, a nastêpnie "Prowad¼ grê"
+lub "Pod³±cz do serwera" i "Utwórz grê".
+
+Krok 2: wybierz mapê i skonfiguruj parametry gry (mg³a, ukryta mapa, ilo¶æ
+z³ota z wioski)
+
+Krok 3: skonfiguruj parametry graczy (dru¿yny/przymierza, ilo¶æ z³ota
+na pocz±tku gry, rasa) i czekaj na pod³±czenie wszystkich graczy sieciowych
+do gry. Przy pod³±czeniu gracza tekst "gracz sieciowy" zostanie zast±piony
+jego imieniem.
+
+Krok 4: wybierz [Gotów]
+
+-----------------------------------------------------------------------------
+[1] http://wesnoth.slack.it/?GettingStarted (przyp. t³um.)
