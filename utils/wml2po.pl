@@ -58,11 +58,11 @@ foreach my $wmlfile (@wmlfiles) {
 our %suffix = (
 	       'difficulty_descriptions' => '_difficulties',
 	       'cannot_use_message' => '_cannot_use_message',
+	       'objectives' => '_objectives',
 	      );
 
 # get ids from other wml files
-#our @wmlfiles = glob ("data/*.cfg data/scenarios/*/*.cfg");
-@wmlfiles = glob ("data/*.cfg");
+@wmlfiles = glob ("data/*.cfg data/scenarios/*/*.cfg");
 foreach my $wmlfile (@wmlfiles) {
   open (WML, $wmlfile) or die "cannot open $wmlfile";
   print STDERR " Processing $wmlfile\n";
@@ -74,7 +74,7 @@ foreach my $wmlfile (@wmlfiles) {
       print STDERR "--> $id\n";
 #     } elsif (m,\[/.*\],) {
 #       $id = undef;
-    } elsif (m/(difficulty\_descriptions|cannot\_use\_message)\s*=\s*(?:_\s*)?\"(.*)\"\s*$/) {
+    } elsif (m/(difficulty\_descriptions|cannot\_use\_message|objectives)\s*=\s*(?:_\s*)?\"(.*)\"\s*$/) {
       # single-line
       die "nested key" if defined $key;
 
@@ -83,12 +83,12 @@ foreach my $wmlfile (@wmlfiles) {
       } else {
 	print STDERR "No id for $1 $2\n";
       }
-    } elsif (m/(difficulty\_descriptions|cannot\_use\_message)\s*=\s*(?:_\s*)?\"(.*)\s*$/) {
+    } elsif (m/(difficulty\_descriptions|cannot\_use\_message|objectives)\s*=\s*(?:_\s*)?\"(.*)\s*$/) {
       # start of multi-line
       die "nested key" if defined $key;
 
       $strtype=1;
-      $key = $1;
+      $key = $id . $suffix{$1};
       $value = $2 . "\n";
     } elsif (m/(?:title|message|name|story)\s*=\s*(?:_\s*)\"(.*)\"\s*$/) {
       # single-line
