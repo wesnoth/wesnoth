@@ -917,8 +917,8 @@ floating_label_context::floating_label_context()
 floating_label_context::~floating_label_context()
 {
 	const std::set<int>& labels = label_contexts.top();
-	for(std::set<int>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-		remove_floating_label(*i);
+	for(std::set<int>::const_iterator i = labels.begin(); i != labels.end(); ) {
+		remove_floating_label(*i++);
 	}
 
 	label_contexts.pop();
