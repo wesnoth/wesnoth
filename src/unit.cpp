@@ -261,6 +261,8 @@ void unit::new_level()
 
 	heal_all();
 	statusFlags_.clear();
+
+	moves_ = total_movement();
 }
 
 int unit::hitpoints() const
