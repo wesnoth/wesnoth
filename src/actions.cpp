@@ -1247,10 +1247,11 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 		for(int i = 0; i != 6; ++i) {
 			//check if we are checking ourselves
-			if(adjacent[i]==ui->first) continue;
-			const std::map<gamemap::location,unit>::const_iterator it =
-				units.find(adjacent[i]);
-			if(it != units.end() && teams[u.side()].is_enemy(it->second.side()) &&
+			if(adjacent[i] == ui->first)
+				continue;
+
+			const std::map<gamemap::location,unit>::const_iterator it = units.find(adjacent[i]);
+			if(it != units.end() && teams[u.side()-1].is_enemy(it->second.side()) &&
 					it->second.invisible(map.underlying_terrain(map[it->first.x][it->first.y]),status.get_time_of_day().lawful_bonus,it->first,units,teams)) {
 				discovered_unit = true;
 				should_clear_stack = true;
