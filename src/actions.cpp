@@ -1756,12 +1756,16 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 	*/
 	for(undo_list::const_iterator un = undos.begin(); un != undos.end(); ++un) {
 		if(un->is_recall()) continue;
-		unit_map um;
+		//we're not really going to mutate the unit, just temporarily
+		//set its moves to maximum, but then switch them back
+		const unit_movement_resetter move_resetter(const_cast<unit&>(un->affected_unit));
+		
 		std::vector<gamemap::location>::const_iterator step;
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
-			um.insert(std::pair<gamemap::location,unit>(*step,un->affected_unit));
-			clear_shroud_unit(map,status,gamedata,um,*step,teams,team,NULL,NULL);
-			um.erase(*step);
+			//we have to swap out any unit that is already in the hex, so we can put our
+			//unit there, then we'll swap back at the end.
+			const temporary_unit_placer unit_placer(const_cast<unit_map&>(units),*step,un->affected_unit);
+			clear_shroud_unit(map,status,gamedata,units,*step,teams,team,NULL,NULL);
 		}
 	}
 	if(disp != NULL) {
