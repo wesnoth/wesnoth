@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 #include "config.hpp"
+#include "font.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
@@ -80,6 +81,9 @@ bool internal_set_language(const std::string& locale, config& cfg)
 			}
 
 			hotkey::add_hotkeys(**i,false);
+
+			font::set_font((**i)["font"]);
+
 			return true;
 		}
 	}

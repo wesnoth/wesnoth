@@ -29,6 +29,7 @@
 namespace {
 
 std::map<int,TTF_Font*> font_table;
+std::string font_name = "Vera.ttf";
 
 //SDL_ttf seems to have a problem where TTF_OpenFont will seg fault if
 //the font file doesn't exist, so make sure it exists first.
@@ -72,15 +73,24 @@ TTF_Font* get_font(int size)
 	if(it != font_table.end())
 		return it->second;
 
-	TTF_Font* font = open_font("Vera.ttf",size);
+	TTF_Font* font = open_font(font_name,size);
 
-	if(font == NULL) return NULL;
+	if(font == NULL)
+		return NULL;
 
 	TTF_SetFontStyle(font,TTF_STYLE_NORMAL);
 
 	std::cerr << "Inserting font...\n";
 	font_table.insert(std::pair<int,TTF_Font*>(size,font));
 	return font;
+}
+
+void clear_fonts()
+{
+	for(std::map<int,TTF_Font*>::iterator i = font_table.begin();
+	    i != font_table.end(); ++i) {
+		TTF_CloseFont(i->second);
+	}
 }
 
 }
@@ -99,12 +109,17 @@ manager::manager()
 
 manager::~manager()
 {
-	for(std::map<int,TTF_Font*>::iterator i = font_table.begin();
-	    i != font_table.end(); ++i) {
-		TTF_CloseFont(i->second);
-	}
-
+	clear_fonts();
 	TTF_Quit();
+}
+
+void set_font(const std::string& name)
+{
+	clear_fonts();
+	font_name = name;
+	if(font_name == "") {
+		font_name = "Vera.ttf";
+	}
 }
 
 const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},

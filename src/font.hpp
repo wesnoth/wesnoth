@@ -28,6 +28,9 @@ struct manager {
 	~manager();
 };
 
+//function which sets the name of the font to use
+void set_font(const std::string& name);
+
 //function which, given a 1-based side, will return the colour of
 //that side.
 const SDL_Color& get_side_colour(int side);
