@@ -245,6 +245,8 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 
 			str << "-" << i->first;
 		}
+		std::string localename = get_locale().localename;
+		str << "-lang_" << (localename.empty() ? "default" : localename);
 
 		if(is_valid) {
 			const std::string& cache = get_cache_dir();
