@@ -85,52 +85,124 @@ void show_about(display& disp)
  	text.push_back("+General Purpose Administrator");
  	text.push_back("-   Crossbow/Miyo");
  	text.push_back("+ ");
- 
- 	text.push_back("+Internationalization Manager");
- 	text.push_back("-   Mark Joakim Bekker Michelsen (skovbaer)");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Translators");
- 	text.push_back("-   Arndt Muehlenfeld (Arndt)");
- 	text.push_back("-   Federico Tomassetti");
- 	text.push_back("-   Guillaume Duwelz-Rebert");
- 	text.push_back("-   Mark Joakim Bekker Michelsen (skovbaer)");
- 	text.push_back("-   Zas");
- 	text.push_back("+ ");
- 
+
  	text.push_back("+Artwork and graphics designers");
- 	text.push_back("-   Johanna Manninen (lohari)");
- 	text.push_back("-   Jordà Polo (ettin)");
- 	text.push_back("-   Slainte");
 	text.push_back("-   Andrew James Patterson (Kamahawk)");
-	text.push_back("-   John Muccigrosso (Eponymous Archon)");
-	text.push_back("-   James \"Sangel\" Barton");
 	text.push_back("-   Cedric Duval");
+	text.push_back("-   Gareth Miller (Gafgarion)");
+	text.push_back("-   James Barton (Sangel)");
+	text.push_back("-   Jimmy Olsson (Azlan)");
+ 	text.push_back("-   Johanna Manninen (lohari)");
+	text.push_back("-   John Muccigrosso (Eponymous Archon)");
+ 	text.push_back("-   Jonatan Alamà (tin)");
+ 	text.push_back("-   Slainte");
+ 	text.push_back("-   Svetac");
+ 	text.push_back("-   Turin");
  	text.push_back("+ ");
- 
+
  	text.push_back("+Music");
+ 	text.push_back("-   Aleksi");
  	text.push_back("-   Fredrik Lindroth");
  	text.push_back("-   Joseph Toscano (zhaymusic.com)");
  	text.push_back("-   Pau Congost");
  	text.push_back("+ ");
- 
+
  	text.push_back("+Scenario Designers");
+	text.push_back("-   Benjamin Drieu");
  	text.push_back("-   David White (Sirp)");
+ 	text.push_back("-   Francisco Muñoz (fmunoz)");
  	text.push_back("-   Justin Zaun (jzaun)");
-	text.push)back("-   Benjamin Drieu");
  	text.push_back("+ ");
- 
+
  	text.push_back("+Packagers");
  	text.push_back("-   Cyril Bouthors (CyrilB)");
  	text.push_back("-   Marcus Phillips (Sithrandel)");
  	text.push_back("+ ");
+
+ 	text.push_back("+Miscellaneous");
+ 	text.push_back("-   Jaramir");
+ 	text.push_back("-   Jordà Polo (ettin)");
+ 	text.push_back("-   Tom Chance (telex4)");
+ 	text.push_back("+ ");
   
+ 	text.push_back("+Internationalization Manager");
+ 	text.push_back("-   Mark Joakim Bekker Michelsen (skovbaer)");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Brazilian Translation");
+ 	text.push_back("-   Ambra Viviani Loos");
+ 	text.push_back("-   Michel Loos");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Danish Translation");
+ 	text.push_back("-   Mark Joakim Bekker Michelsen (skovbaer)");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Dutch Translation");
+ 	text.push_back("-   Lala");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Finnish Translation");
+ 	text.push_back("-   paxed");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+French Translation");
+ 	text.push_back("-   Benoit Astruc");
+ 	text.push_back("-   Guillaume Duwelz-Rebert");
+ 	text.push_back("-   DaringTremayne");
+ 	text.push_back("-   Zas");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+German Translation");
+ 	text.push_back("-   Arndt Muehlenfeld");
+ 	text.push_back("-   ja-el");
+ 	text.push_back("-   Jonas");
+ 	text.push_back("-   ammoq");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Hungarian Translation");
+ 	text.push_back("-   Khiraly");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Italian Translation");
+ 	text.push_back("-   Federico Tomassetti");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Norwegian Translation");
+ 	text.push_back("-   Hallvard Norheim Bø (Lysander)");
+ 	text.push_back("-   Erik J. Mesoy (Circon)");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Polish Translation");
+ 	text.push_back("-   methinks");
+ 	text.push_back("-   BOrsuk");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Portuguese Translation");
+ 	text.push_back("-   Celso Goya");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Slovak Translation");
+ 	text.push_back("-   Viliam Bur");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Spanish Translation");
+ 	text.push_back("-   Franciso Muñoz (fmunoz)");
+ 	text.push_back("-   Jordà Polo (ettin)");
+ 	text.push_back("-   Jose Gordillo (kilder)");
+ 	text.push_back("-   Jose Manuel Gomez (joseg)");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Swedish Translation");
+ 	text.push_back("-   Alexander Kjäll (capitol)");
+ 	text.push_back("-   wint3r");
+ 	text.push_back("+ ");
+ 
   	text.push_back("+Past Contributors");
+ 	text.push_back("-   Frédéric Wagner");
  	text.push_back("-   Jan Zvánovec (jaz)");
- 	text.push_back("-   Developer");
-  	text.push_back("- ");
  	text.push_back("-   Jay Hopping");
- 	text.push_back("-   Artwork and graphics designer");
+ 	text.push_back("+ ");
 
 	int startline = 0;
 
