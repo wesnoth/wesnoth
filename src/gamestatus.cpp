@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 #include "filesystem.hpp"
+#include "game_config.hpp"
 #include "gamestatus.hpp"
 
 #include <cstdio>
@@ -55,6 +56,7 @@ game_state read_game(game_data& data, config* cfg)
 {
 	game_state res;
 	res.label = cfg->values["label"];
+	res.version = cfg->values["version"];
 	res.gold = atoi(cfg->values["gold"].c_str());
 	res.scenario = atoi(cfg->values["scenario"].c_str());
 
@@ -93,6 +95,7 @@ game_state read_game(game_data& data, config* cfg)
 void write_game(const game_state& game, config& cfg)
 {
 	cfg.values["label"] = game.label;
+	cfg.values["version"] = game_config::version;
 
 	char buf[50];
 	sprintf(buf,"%d",game.gold);

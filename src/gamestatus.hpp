@@ -54,6 +54,7 @@ struct game_state
 {
 	game_state() : gold(-1), difficulty("NORMAL") {}
 	std::string label;
+	std::string version;
 	std::string campaign_type;
 	int scenario;
 	int gold;

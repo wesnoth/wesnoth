@@ -265,10 +265,18 @@ int play_game(int argc, char** argv)
 
 			try {
 				load_game(units_data,games[res],state);
+				if(state.version != game_config::version) {
+					const int res = gui::show_dialog(disp,NULL,"",
+					                      string_table["version_save_message"],
+					                      gui::YES_NO);
+					if(res == 1)
+						continue;
+				}
+
 				defines_map.clear();
 				defines_map[state.difficulty] = "";
 			} catch(gamestatus::load_game_failed& e) {
-				gui::show_dialog(disp,NULL,string_table["bad_save_heading"],
+				gui::show_dialog(disp,NULL,"",
 				           string_table["bad_save_message"],gui::OK_ONLY);
 				continue;
 			}
