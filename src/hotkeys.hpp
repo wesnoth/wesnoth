@@ -51,7 +51,7 @@ struct hotkey_item {
 
 	HOTKEY_COMMAND action;
 	int keycode;
-	bool alt, ctrl, shift;
+	bool alt, ctrl, shift, command;
 	mutable bool lastres;
 };
 	

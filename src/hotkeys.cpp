@@ -113,12 +113,13 @@ hotkey_item::hotkey_item(const config& cfg) : lastres(false)
 	alt = (cfg["alt"] == "yes");
 	ctrl = (cfg["ctrl"] == "yes");
 	shift = (cfg["shift"] == "yes");
+	command = (cfg["cmd"] == "yes");
 }
 
 bool operator==(const hotkey_item& a, const hotkey_item& b)
 {
 	return a.keycode == b.keycode && a.alt == b.alt &&
-	       a.ctrl == b.ctrl && a.shift == b.shift;
+	       a.ctrl == b.ctrl && a.shift == b.shift && a.command == b.command;
 }
 
 bool operator!=(const hotkey_item& a, const hotkey_item& b)
@@ -140,18 +141,19 @@ struct hotkey_pressed {
 
 private:
 	int keycode_;
-	bool shift_, ctrl_, alt_;
+	bool shift_, ctrl_, alt_, command_;
 };
 
 hotkey_pressed::hotkey_pressed(const SDL_KeyboardEvent& event)
        : keycode_(event.keysym.sym), shift_(event.keysym.mod&KMOD_SHIFT),
-         ctrl_(event.keysym.mod&KMOD_CTRL), alt_(event.keysym.mod&KMOD_ALT)
+         ctrl_(event.keysym.mod&KMOD_CTRL), alt_(event.keysym.mod&KMOD_ALT),
+		 command_(event.keysym.mod&KMOD_LMETA)
 {}
 
 bool hotkey_pressed::operator()(const hotkey::hotkey_item& hk) const
 {
 	return hk.keycode == keycode_ && shift_ == hk.shift &&
-	       ctrl_ == hk.ctrl && alt_ == hk.alt;
+	       ctrl_ == hk.ctrl && alt_ == hk.alt && command_ == hk.command;
 }
 
 namespace {
@@ -216,6 +218,7 @@ void save_hotkeys(config& cfg)
 		(*item)["alt"] = (i->alt) ? "yes" : "no";
 		(*item)["ctrl"] = (i->ctrl) ? "yes" : "no";
 		(*item)["shift"] = (i->shift) ? "yes" : "no";
+		(*item)["cmd"] = (i->command) ? "yes" : "no";
 	}
 }
 

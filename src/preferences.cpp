@@ -842,20 +842,21 @@ void show_hotkeys_dialog (display & disp)
 			for (std::vector < hotkey::hotkey_item >::iterator i =
 	     		hotkeys.begin (); i != hotkeys.end (); i++)
 			{ 
-				if ((i->keycode==key) 
-					&& (i->alt==((mod&KMOD_ALT)!=0))
-					&& (i->ctrl==((mod&KMOD_CTRL)!=0))
-					&& (i->shift==((mod&KMOD_SHIFT)!=0)))
-				used = true;
+				if((i->keycode == key) 
+					&& (i->alt == ((mod&KMOD_ALT) != 0))
+					&& (i->ctrl == ((mod&KMOD_CTRL) != 0))
+					&& (i->shift == ((mod&KMOD_SHIFT) != 0))
+					&& (i->command == ((mod&KMOD_LMETA) != 0))) {
+					used = true;
+				}
 			}
-			if (used)
+			if(used) {
 				gui::show_dialog(disp,NULL,"",string_table["hotkey_already_used"],gui::MESSAGE);
-			else {
-				hotkeys[menu_.selection()].alt = 
-								((mod&KMOD_ALT)!=0);
-				hotkeys[menu_.selection()].ctrl = 
-								((mod&KMOD_CTRL)!=0);
-				hotkeys[menu_.selection()].shift = ((mod&KMOD_SHIFT)!=0);
+			} else {
+				hotkeys[menu_.selection()].alt =  ((mod&KMOD_ALT) != 0);
+				hotkeys[menu_.selection()].ctrl = ((mod&KMOD_CTRL) != 0);
+				hotkeys[menu_.selection()].shift = ((mod&KMOD_SHIFT) != 0);
+				hotkeys[menu_.selection()].command = ((mod&KMOD_LMETA) != 0);
 				hotkeys[menu_.selection()].keycode = key;
 				hotkey::change_hotkey(hotkeys[menu_.selection()]);
 				menu_.change_item(menu_.selection(),2,

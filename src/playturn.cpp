@@ -398,15 +398,43 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 	last_hex_ = new_hex;
 }
 
+namespace {
+
+bool command_active()
+{
+#ifdef __APPLE__
+	return (SDL_GetModState()&KMOD_LMETA) != 0;
+#else
+	return false;
+#endif
+}
+
+bool is_left_click(const SDL_MouseButtonEvent& event)
+{
+	return event.button == SDL_BUTTON_LEFT && !command_active();
+}
+
+bool is_middle_click(const SDL_MouseButtonEvent& event)
+{
+	return event.button == SDL_BUTTON_MIDDLE;
+}
+
+bool is_right_click(const SDL_MouseButtonEvent& event)
+{
+	return event.button == SDL_BUTTON_RIGHT || event.button == SDL_BUTTON_LEFT && command_active();
+}
+
+}
+
 void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 {
-	if(event.button == SDL_BUTTON_LEFT && event.state == SDL_RELEASED) {
+	if(is_left_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
-	} else if(event.button == SDL_BUTTON_MIDDLE && event.state == SDL_RELEASED) {
+	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
-	} else if(event.button == SDL_BUTTON_LEFT && event.state == SDL_PRESSED) {
+	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
 		left_click(event);
-	} else if(event.button == SDL_BUTTON_RIGHT && event.state == SDL_PRESSED) {
+	} else if(is_right_click(event) && event.state == SDL_PRESSED) {
 		if(!current_paths_.routes.empty()) {
 			selected_hex_ = gamemap::location();
 			gui_.select_hex(gamemap::location());
@@ -425,7 +453,7 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 				std::cerr << "no context menu found...\n";
 			}
 		}
-	} else if(event.button == SDL_BUTTON_MIDDLE && event.state == SDL_PRESSED) {
+	} else if(is_middle_click(event) && event.state == SDL_PRESSED) {
 	  // clicked on a hex on the minimap? then initiate minimap scrolling
 	  const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
 	  minimap_scrolling_ = false;

@@ -241,8 +241,10 @@ bool show_intro_part(display& screen, const config& part,
 
 void show_map_scene(display& screen, config& data)
 {
+	std::cerr << "showing map scene...\n";
 	//stop the screen being resized while we're in this function
 	const events::resize_lock stop_resizing;
+	const events::event_context context;
 
 	//clear the screen
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
@@ -251,6 +253,7 @@ void show_map_scene(display& screen, config& data)
 
 	const config* const cfg_item = data.child("bigmap");
 	if(cfg_item == NULL) {
+		std::cerr << "no map scene...\n";
 		return;
 	}
 
@@ -326,6 +329,7 @@ void show_map_scene(display& screen, config& data)
 
 		for(int i = 0; i != 50; ++i) {
 			if(key[SDLK_ESCAPE]) {
+				std::cerr << "escape pressed..\n";
 				break;
 			}
 
@@ -336,6 +340,7 @@ void show_map_scene(display& screen, config& data)
 			int a, b;
 			const int mouse_flags = SDL_GetMouseState(&a,&b);
 			if(key[SDLK_RETURN] || key[SDLK_SPACE] || mouse_flags) {
+				std::cerr << "key pressed..\n";
 				break;
 			}
 
@@ -343,6 +348,7 @@ void show_map_scene(display& screen, config& data)
 		}
 
 		if(key[SDLK_ESCAPE]) {
+			std::cerr << "escape pressed..\n";
 			break;
 		}
 	}
@@ -370,8 +376,10 @@ void show_map_scene(display& screen, config& data)
 		const bool new_state = mouse_flags || key[SDLK_ESCAPE] ||
 		           key[SDLK_RETURN] || key[SDLK_SPACE];
 
-		if(new_state && !last_state)
+		if(new_state && !last_state) {
+			std::cerr << "key pressed..\n";
 			break;
+		}
 
 		last_state = new_state;
 

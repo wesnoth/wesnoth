@@ -787,11 +787,6 @@ std::string config::write() const
 // it is mapped to the first available character. Any attribute found is always followed
 // by a nul-delimited string which is the value for the attribute.
 //
-// once the number of words in the schema exceeds 'compress_extended_word', the schema
-// will begin using two-byte word codes. Any word code which has a character above
-// 'compress_extended_word' is assumed to be part of a two-byte word code, and the second
-// byte will be read as part of that word code
-//
 // the schema objects are designed to be persisted. That is, in a network game, both peers
 // can store their schema objects, and so rather than sending schema data each time, the peers
 // use and build their schemas as the game progresses, adding a new word to the schema anytime
@@ -799,10 +794,8 @@ std::string config::write() const
 namespace {
 	const unsigned int compress_open_element = 0, compress_close_element = 1,
 	                   compress_schema_item = 2, compress_literal_word = 3,
-	                   compress_first_word = 4, compress_extended_word = 250,
-					   compress_end_words = 256;
-	const size_t compress_max_basewords = compress_extended_word - compress_first_word;
-	const size_t compress_max_words = compress_max_basewords + (compress_end_words - compress_extended_word)*compress_end_words;
+	                   compress_first_word = 4, compress_end_words = 256;
+	const size_t compress_max_words = compress_end_words - compress_first_word;
 
 	void compress_output_literal_word(const std::string& word, std::vector<char>& output)
 	{
@@ -814,9 +807,6 @@ namespace {
 	compression_schema::word_char_map::const_iterator add_word_to_schema(const std::string& word, compression_schema& schema)
 	{
 		unsigned int c = compress_first_word + schema.word_to_char.size();
-		if(c >= compress_extended_word) {
-			c = ((compress_extended_word - 1 + c/compress_extended_word) << 8) + (c%compress_extended_word);
-		}
 
 		schema.char_to_word.insert(std::pair<unsigned int,std::string>(c,word));
 		return schema.word_to_char.insert(std::pair<std::string,unsigned int>(word,c)).first;
@@ -849,12 +839,7 @@ namespace {
 		const compression_schema::word_char_map::const_iterator w = get_word_in_schema(word,schema,res);
 		if(w != schema.word_to_char.end()) {
 			//the word is in the schema, all we have to do is output the compression code for it.
-			if(w->second >= compress_extended_word) {
-				res.push_back(w->second >> 8);
-				res.push_back(w->second & 8);
-			} else {
-				res.push_back(w->second);
-			}
+			res.push_back(w->second);
 		} else {
 			//the word is not in the schema. Output it as a literal word
 			res.push_back(char(compress_literal_word));
@@ -936,12 +921,6 @@ std::string::const_iterator config::read_compressed_internal(std::string::const_
 			} else {
 				const unsigned char c = *i1;
 				unsigned int code = c;
-				if(code >= compress_extended_word) {
-					++i1;
-					const unsigned char c = *i1;
-					code <<= 8;
-					code += c;
-				}
 
 				const compression_schema::char_word_map::const_iterator itor = schema.char_to_word.find(code);
 				if(itor == schema.char_to_word.end()) {
