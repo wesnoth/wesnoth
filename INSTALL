@@ -1,17 +1,45 @@
-To compile the game, for the source version, type 'make' from the game's
-root directory.
+PREREQUISITES
 
-To run the game, type ./wesnoth from the game's root directory.
-The current directory must be the game's root directory when running the
-game.
-This is a limitation that will be addressed in later versions.
+# You'll need to have these libraries (with equivalent devel versions) to build Wesnoth: libsdl1.2
+# libsdl-image1.2
+# libsdl-mixer1.2
+# libsdl-ttf2.0
 
-If you want to run the game in a window, use the option -windowed at the
-command line.
-The game may have trouble running on X-windows on a display set to anything
-other than 16 bits per pixel.
+These libraries can be found at http://www.libsdl.org
 
-Please report any problems with installing or running the game to me.
+SOURCECODE
+
+You can get it here: http://wesnoth.whitevine.net/downloads.htm or check WesnothCVS
+
+COMPILING
+
+First untar the package:
+  	
+
+ $ tar xfzv wesnoth-0.x.tar.gz 
+
+	  
+then
+  	
+
+ $ cd wesnoth-0.x
+
+	  
+followed by
+  	
+
+ $ make
+
+	  
+and finally
+  	
+
+ $ ./wesnoth 
+
+	  
+to run the program. Have fun.
+
+Note: Users compiling CVS sources should 'make clean' before 'make' after any tree update.
 
 David White
 davidnwhite@optusnet.com.au
