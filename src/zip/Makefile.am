@@ -14,12 +14,12 @@ wesnoth_zip_SOURCES = zip.cpp \
 		   ../game_events.hpp \
 		   ../config.hpp \
            ../gettext.hpp \
-           ../wesconfig.hpp \
 		   ../filesystem.hpp \
 		   ../game_config.hpp \
 		   ../log.hpp \
 		   ../network.hpp \
-		   ../server/variable.cpp
+		   ../server/variable.cpp \
+           ../wesconfig.h
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(LOCALEDIR)\" -I../intl \
     -I$(top_srcdir)/intl
