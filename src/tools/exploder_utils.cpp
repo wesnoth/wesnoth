@@ -62,13 +62,8 @@ void masked_overwrite_surface(surface dest, surface src, surface mask, int x, in
 	surface_lock mask_lock(mask);
 
 	Uint32* dest_beg = dest_lock.pixels();
-	Uint32* dest_end = dest_beg + dest->w*dest->h;
-
 	Uint32* src_beg = src_lock.pixels();
-	Uint32* src_end = src_beg + src->w*src->h;
-
 	Uint32* mask_beg = mask_lock.pixels();
-	Uint32* mask_end = mask_beg + mask->w*mask->h;
 
 	size_t small_shift_before;
 	size_t small_shift_after;
@@ -77,16 +72,15 @@ void masked_overwrite_surface(surface dest, surface src, surface mask, int x, in
 	size_t src_height = src->h;
 
 	if(x < 0) {
-		src_width += x;
 		small_shift_before = -x;
+		if (src_width < small_shift_before)
+			return;
+		src_width -= small_shift_before;
 		x = 0;
 	} else {
 		small_shift_before = 0;
 	}
 
-	if(src_width < 0)
-		return;
-	
 	if(x + src_width <= dest->w) {
 		small_shift_after = 0;
 	} else {
@@ -94,21 +88,17 @@ void masked_overwrite_surface(surface dest, surface src, surface mask, int x, in
 		src_width = dest->w - x;
 	}
 
-	if(src_width < 0)
-		return;
-
 	if(y >= 0) {
 		dest_beg += dest->w * y + x;
 	} else {
 		src_beg += (-y) * src->w;
 		mask_beg += (-y) * mask->w;
 		dest_beg += x;
+		if (src_height < (size_t)-y)
+			return;
 		src_height += y;
 		y = 0;
 	}
-
-	if(src_height < 0)
-		return;
 
 	if(y + src_height > dest->h) {
 		src_height = dest->h - y;
