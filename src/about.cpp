@@ -169,10 +169,11 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		_("+German Translation"),
-		"-   Arndt Muehlenfeld",
-		"-   ja-el",
-		"-   Jonas",
-		"-   ammoq",
+		"-   Christoph Berg",
+		"-   Stephan Grochtmann",
+		"-   Andre Schmidt",
+		"-   Boris Stumm",
+		"-   Jan Heiner",
 		"+ ",
 
 		_("+Hungarian Translation"),
