@@ -1,71 +1,97 @@
 CVS HEAD:
- * Changed plague to allow plague(unit_type) as well as undead_variation 
- * Added DFool theme	
- * Added theme dialog.  started with ":theme"	
- * Added UNIT, UNDEAD_UNIT, and PLACE_IMAGE macros to utils.cfg
- * terrain improvements
-  * fixed swamp transition (NW, SE) graphics
-  * added new terrains, 'N' ruined castle, 'Q' sunken ruin, 'q' swamp-ruin, and 'k' river ford
-  * added new graphics for keep-keep transitions
- * language and i18n
-  * new translations: Afrikaans, Chinese, Estonian, Japanese
-  * updated translations: Basque, Catalan, Dutch, Finnish, French, German, Greek, Hungarian,
-    Italian, Latin, Norwegian, Portuguese (Brazilian), Russian, Slovak, Slovenian, Spanish
-  * fixed untranslatable strings
-  * language fixes and polishing (English)
+ * user interface improvements:
+    * added alternative theme: DFool
+    * added theme dialog, launched with ":theme"	
  * campaign modifications
-  * tutorial polishing
-  * updated HttT, TDH, TRoW, SotBE, and the Tutorial to use the new [objectives] tag
-  * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to
-    use the new ford terrain (HttT & TRoW).
-  * updated the behaviour of the thieves in 'The Siege of Elensefar' (HttT)
-  * updated HttT and TRoW to use the ruined keeps where appropriate
-  * dialog improvements in EI
-  * new map for Drowned Plains (EI)
-  * changed the Wesfolk Leader's guards to poachers in "The Fall" (TRoW)
- * unit modifications
-  * updated Haldric's portrait in TRoW
-  * added graphics for generic Lich-Lords and the Archmages in 'The Sewer of Southbay' (TRoW)
-  * new images for Haldric and Lady Jessica
-  * added support for animated deaths, and added animations for skeleton and revenant
-  * balancing of water units: swimmer units (merfolk) have defense on water and swamp reduced by 
-    10%. Merman Hunter cost: 13 -> 15. Melee attack: 5-2 -> 4-2. Naga have defense on shallow water 
-    reduced by 10%. Deep sea creatures have defense on water reduced by 10%. Naga Fighter cost: 
-    13 -> 14.
-  * increased cost of Orcish Assassin and Troll Whelp by 1 gold each
-  * improved defense of gryphon units on mountains. 
-  * increased movement speed of steadfast dwarvish units.
-  * improved Dwarvish Thunderer's melee attack to 6-2, and gave him 3 more HP
-  * improved attack of Dwarvish Guardsman to 5-3.
-  * gave Dwarvish Fighter 2 more HP
-  * made berserk only active on offense. 
-  * made 'loyal' a trait which is only given to units explicitly by the scenario designer
-  * added the 'dextrous' trait and applied it to Elves
-  * fixed several image files being referred to by wrong name
-  * removed sound of thrown spear from Drake Clasher spear melee attack
-  * added get_hit_sound:s to Elder Mage (Delfador) and Elvish Lady (Parandra)
-  * added translatable hero names
-  * dropped Soulless cost to 11 and increased its hitpoints to 28
-  * Fixed a giant error in Drake Clasher description
- * WML modifications
-  * made [capture_village] accept a location range
-  * Added support for [objectives] event actions, to set objectives. This,
-  along with prestart events, is now the preferred way of setting objectives,
-  although the old way is still supported.
+    * tutorial polishing
+    * updated HttT, TDH, TRoW, SotBE, and the Tutorial to use the new [objectives] tag
+    * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to
+      use the new ford terrain (HttT & TRoW).
+    * updated the behaviour of the thieves in 'The Siege of Elensefar' (HttT)
+    * updated HttT and TRoW to use the ruined keeps where appropriate
+    * dialog improvements in EI
+    * new map for Drowned Plains (EI)
+    * changed the Wesfolk Leader's guards to poachers in "The Fall" (TRoW)
+ * terrain improvements
+   * fixed swamp transition (NW, SE) graphics
+   * added new terrains, 'N' ruined castle, 'Q' sunken ruin, 'q' swamp-ruin, and 'k' river ford
+   * added new graphics for keep-keep transitions
+   * improved lava terrain 'I'
+ * unit graphics and sound improvements 
+   * updated images for several units: Cave Spider, Haldric, Lady Jessica, Mermaid Priestess, 
+      Mermaid Diviner, Merman Hunter, Merman Javelineer, Merman Spearman
+   * updated Haldric's portrait in TRoW
+   * added graphics for generic Lich-Lords and the Archmages in 'The Sewer of Southbay' (TRoW)
+   * added support for animated deaths, and added animations for skeleton and revenant
+   * fixed several image files being referred to by wrong name
+   * removed sound of thrown spear from Drake Clasher spear melee attack
+   * added get_hit_sound:s to Elder Mage (Delfador) and Elvish Lady (Parandra)
+ * unit balancing:
+   * swimmer units (merfolk) have defense on water and swamp reduced by 10%. 
+   * Merman Hunter cost: 13 -> 15. Melee attack: 5-2 -> 4-2. 
+   * Naga have defense on shallow water reduced by 10%. 
+   * Naga Fighter cost: 13 -> 14.
+   * Deep sea creatures have defense on water reduced by 10%.
+   * increased cost of Orcish Assassin and Troll Whelp by 1 gold each
+   * improved defense of gryphon units on mountains. 
+   * increased movement speed of steadfast dwarvish units.
+   * improved Dwarvish Thunderer's melee attack to 6-2, and gave him 3 more HP
+   * improved attack of Dwarvish Guardsman to 5-3.
+   * gave Dwarvish Fighter 2 more HP
+   * made berserk only active on offense. 
+   * made 'loyal' a trait which is only given to units explicitly by the scenario designer
+   * added the 'dextrous' trait and applied it to Elves
+   * dropped Soulless cost to 11 and increased its hitpoints to 28
+ * language and i18n:
+   * language fixes and polishing (English)
+   * added translatable hero names
+   * Fixed a giant error in Drake Clasher description
+   * when displaying text strings, select the correct font to display glyphs
+     which are not displayable with the current font.
+   * fixed untranslatable strings
+   * new translations: 
+     * Afrikaans
+     * Chinese
+     * Estonian
+     * Japanese
+   * updated translations: 
+     * Basque
+     * Catalan
+     * Dutch
+     * Finnish
+     * French
+     * German
+     * Greek
+     * Hungarian
+     * Italian
+     * Latin,
+     * Norwegian
+     * Portuguese (Brazilian)
+     * Russian
+     * Slovak
+     * Slovenian
+     * Spanish
+* WML modifications
+   * added generate_description to [unit], when set to yes, a user_description of the 
+      unit is automatically generated
+   * changed plague to allow plague(unit_type) as well as undead_variation 
+   * made [capture_village] accept a location range
+   * added support for [objectives] event actions, to set objectives. This,
+      along with prestart events, is now the preferred way of setting objectives,
+      although the old way is still supported.
  * multiplayer improvements
-  * rewrite of mp lobby code
-  * changed Broken_Bridge to use new ruined castles
-  * added new multiplayer maps: Icy Waters, Clash
-  * changed King_of_the_Hill to use a Dwarvish Castle
-  * messages are now displayed in the user's colour when prefixed with /me
-  * split the map and scenario file for 'An Island'
+   * rewrite of mp lobby code
+   * changed Broken_Bridge to use new ruined castles
+   * added new multiplayer maps: Icy Waters, Clash
+   * changed King_of_the_Hill to use a Dwarvish Castle
+   * messages are now displayed in the user's colour when prefixed with /me
+   * split the map and scenario file for 'An Island'
+ * added UNIT, UNDEAD_UNIT, and PLACE_IMAGE macros to utils.cfg
  * fixed bug that made the ai recruit badly
  * added debug command to give gold to current side
  * when using zipios, ignore {~...} clauses, and handle {@...} as if there
-   was no '@', fixing the double appearance of user campaigns in the
-   campaign listing
- * when displaying text strings, select the correct font to display glyphs
-   which are not displayable with the current font.
+    was no '@', fixing the double appearance of user campaigns in the
+    campaign listing
  * slight cleanup of the terrain graphics code
  * added a --disable-game configure option to avoid compiling and installing the game
  * share the object files between all the programs to halve the time of a full compilation
