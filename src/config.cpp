@@ -206,37 +206,57 @@ void internal_preprocess_data(const std::string& data,
 				std::string prefix;
 				std::string nfname;
 
-				//if the filename begins with a '~', then look
-				//in the user's data directory. If the filename begins with
-				//a '@' then we look in the user's data directory,
-				//but default to the standard data directory if it's not found
-				//there.
-				if(newfilename != "" && (newfilename[0] == '~' || newfilename[0] == '@')) {
-					nfname = newfilename;
-					nfname.erase(nfname.begin(),nfname.begin()+1);
-					nfname = get_user_data_dir() + "/data/" + nfname;
+#ifdef USE_ZIPIOS
+				if(newfilename != "" && newfilename[0] == '~') {
+					// I do not know of any valid use of {~xxx} when {xxx} is
+					// not used, and zipios takes care of both
+					LOG_CF << "ignoring reference to '" << newfilename << "'\n";
+				} else
+#endif
+				{
+#ifndef USE_ZIPIOS
+					//if the filename begins with a '~', then look
+					//in the user's data directory. If the filename begins with
+					//a '@' then we look in the user's data directory,
+					//but default to the standard data directory if it's not found
+					//there.
+					if(newfilename != "" && (newfilename[0] == '~' || newfilename[0] == '@')) {
+						nfname = newfilename;
+						nfname.erase(nfname.begin(),nfname.begin()+1);
+						nfname = get_user_data_dir() + "/data/" + nfname;
 
-					LOG_CF << "got relative name '" << newfilename << "' -> '" << nfname << "'\n";
+						LOG_CF << "got relative name '" << newfilename << "' -> '" << nfname << "'\n";
 
-					if(newfilename[0] == '@' && file_exists(nfname) == false && is_directory(nfname) == false) {
-						nfname = "data/" + newfilename.substr(1);
-					}
-				} else if(newfilename.size() >= 2 && newfilename[0] == '.' &&
+						if(newfilename[0] == '@' && file_exists(nfname) == false && is_directory(nfname) == false) {
+							nfname = "data/" + newfilename.substr(1);
+						}
+					} else
+#endif
+					if(newfilename.size() >= 2 && newfilename[0] == '.' &&
 						newfilename[1] == '/' ) {
-					//if the filename begins with a "./", then look
-					//in the same directory as the file currrently
-					//being preprocessed
-					nfname = newfilename;
-					nfname.erase(nfname.begin(),nfname.begin()+2);
-					nfname = directory_name(fname) + nfname;
+						//if the filename begins with a "./", then look
+						//in the same directory as the file currrently
+						//being preprocessed
+						nfname = newfilename;
+						nfname.erase(nfname.begin(),nfname.begin()+2);
+						nfname = directory_name(fname) + nfname;
 					
-				} else {
-					nfname = "data/" + newfilename;
-				}
+					} else {
+#ifdef USE_ZIPIOS
+						if(newfilename != "" && newfilename[0] == '@') {
+							nfname = newfilename;
+							nfname.erase(nfname.begin(),nfname.begin()+1);
+							nfname = "data/" + nfname;
+						} else
+#endif
 
-				internal_preprocess_file(nfname,
-				                       defines_map, depth+1,res,
-				                       lines_src,line);
+							nfname = "data/" + newfilename;
+					}
+
+					internal_preprocess_file(nfname,
+								 defines_map, depth+1,res,
+								 lines_src,line);
+				}
 			} else {
 				const std::string& str = read_file(newfilename);
 				res.insert(res.end(),str.begin(),str.end());
