@@ -33,7 +33,7 @@
 time_of_day::time_of_day(const config& cfg)
                  : lawful_bonus(atoi(cfg["lawful_bonus"].c_str())),
                    image(cfg["image"]), name(cfg["name"]), id(cfg["id"]),
-				   image_mask(cfg["mask"]),
+		   image_mask(cfg["mask"]),
                    red(atoi(cfg["red"].c_str())),
                    green(atoi(cfg["green"].c_str())),
                    blue(atoi(cfg["blue"].c_str()))

@@ -64,6 +64,7 @@
 
 #include <cmath>
 #include <cstdlib>
+#include <ctime>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -1688,6 +1689,10 @@ int play_game(int argc, char** argv)
 int main(int argc, char** argv)
 {
 	try {
+		std::cerr << "Battle for Wesnoth v" << VERSION << "\n";
+		std::time_t t = std::time(NULL);
+		std::cerr << "Started on " << std::ctime(&t) << "\n";
+
 		std::cerr << "started game: " << SDL_GetTicks() << "\n";
 		const int res = play_game(argc,argv);
 		std::cerr << "exiting with code " << res << "\n";
