@@ -416,7 +416,6 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	const std::vector<std::string>& paths = get_binary_paths(type);
 	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
 		const std::string file = *i + filename;
-		std::cerr << "checking existence of file: '" << file << "'\n";
 		if(file_exists(file)) {
 			return file;
 		}
