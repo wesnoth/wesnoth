@@ -204,32 +204,24 @@ surface locator::load_image_file() const
 {
 #ifdef USE_ZIPIOS
 	std::string s = read_file("images/" + val_.filename_);
-	if (s.empty()) {
+	if (s.empty())
 		return surface(NULL);
-	} else {
-		SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
-		const surface res(IMG_Load_RW(ops, 0));
-		if(res == NULL) {
-			ERR_DP << "could not open image '" << val_.filename_ << "'\n";
-		}
-		SDL_FreeRW(ops);
 
-		return res;
-	}
+	SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
+	const surface res(IMG_Load_RW(ops, 0));
+	SDL_FreeRW(ops);
 #else
 	const std::string& location = get_binary_file_location("images", val_.filename_);
-
-	if(location.empty()) {
+	if(location.empty())
 		return surface(NULL);
-	} else {
-		const surface res(IMG_Load(location.c_str()));
-		if(res == NULL) {
-			ERR_DP << "could not open image '" << val_.filename_ << "'\n";
-		}
 
-		return res;
-	}
+	const surface res(IMG_Load(location.c_str()));
 #endif
+	if(res == NULL) {
+		ERR_DP << "could not open image '" << val_.filename_ << "'\n";
+	}
+
+	return res;
 }
 
 surface locator::load_image_sub_file() const
