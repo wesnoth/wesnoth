@@ -804,20 +804,22 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 		cfg = cfg_;
 
 	bool skip_messages = false;
-	for(config::all_children_iterator i = cfg->ordered_begin(); i != cfg->ordered_end(); ++i) {
+	for(config::all_children_iterator i = cfg->ordered_begin();
+		i != cfg->ordered_end(); ++i) {
 		const std::pair<const std::string*,const config*> item = *i;
 
+		// If the user pressed escape, we skip any message that doesn't 
+		// require them to make a choice.
 		if ((skip_messages) && (*item.first == "message")) {
-			std::cerr << "message skipped!\n";
-			continue;
+			if ((item.second)->get_children("option").size() == 0) {
+				continue;
+			}
 		}
 
 		if (!handle_event_command(event_info,*item.first,*item.second))  {
-			std::cerr << "skipping messages!\n";
 			skip_messages = true;
 		}
 		else { 
-			std::cerr << "not skipping messages!\n";
 			skip_messages = false;
 		}
 	}
