@@ -1,21 +1,25 @@
+# translation of it.po to 
+# translation of it.po to
+# translation of it.po to
 # Italian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
-# Alessio D'Ascanio <otaku@fastwebnet.it>, 2004.
-# 
-# 
+# Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
+#
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
+"Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-20 23:22+0100\n"
-"PO-Revision-Date: 2004-12-18 13:32+0100\n"
+"PO-Revision-Date: 2004-12-23 01:16+0100\n"
 "Last-Translator: DarkAmex <americo_iacovizzi@libero.it>\n"
-"Language-Team: Italian\n"
+"Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
@@ -76,7 +80,6 @@ msgstr ""
 "saranno elencate sotto questo soggetto quando le incontrate"
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -87,7 +90,7 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
-"<img>src=misc/logo.png align=middle box=no</img>\n"
+"\n"
 "\n"
 "Battle for Wesnoth è un gioco strategico a turni ambientato in un contesto "
 "fantasy che si differenzia dalla maggior parte dei moderni giochi "
@@ -132,7 +135,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Per incomiciareè meglio premere il tasto del <italic>text=Tutorial</italic> "
+"Per incomiciare è meglio premere il tasto del <italic>text=Tutorial</italic> "
 "sul menù principale. Questo avvierà una introduzione interattiva, che spiega "
 "le basi del gioco. Dopo di ciò, si raccomanda di giocare la campagna  "
 "'L'Erede al Trono' - Premi su <italic>text=Campagna</italic> dopo su "
@@ -146,10 +149,10 @@ msgid ""
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
-"Mentre giochi, ricordati che se passi con il mouse sopra a molti oggetti "
+"Mentre giochi, ricordati che passando con il mouse sopra a molti oggetti "
 "dalla barra del menù a destra apparirà una breve descrizione che descrive "
-"quell'oggetto. Questa caratteristica è molto utile quando incontri una "
-"creatura con nuove caratteristiche per la prima volta."
+"quell'oggetto. Questa caratteristica è molto utile quando incontri per la "
+"prima volta una creatura con nuove caratteristiche."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -271,6 +274,19 @@ msgid ""
 "terrain type by right-clicking on it, selecting Unit Description, and then "
 "look at <italic>text='Terrain Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Ogni unità ha un certo un numero di movimenti che sono utilizzati quando "
+"viene spostata in un nuovo Esagono in base al tipo di <ref>dst=terrain "
+"text=Terreno</ref> di quel determinato esagono. Per esempio, la prateria "
+"generalmente necessita di 1 punto movimento per entrarci. Più precisamente "
+"il numero di punti movimento necessari ad entrare in un esagono dipende dal "
+"tipo di unità - nella foresta le unità elfiche utilizzano solo 1 punto "
+"movimento, la maggior parte delle unità umane o  orchesche utilizzano 2, "
+"mentre i cavallieri ne utilizzano 3. Puoi sapere quanti punti movimento sono "
+"necessari ad un unità per entrare in un determinato tipo di terreno facendo "
+"clic con il destro su di esso, selezionando Descrizione dell'unità e quindi "
+"guardando alla voce <italic>text='Modificatori di terreno'</italic>"
 
 #: data/help.cfg:97
 msgid ""
@@ -283,6 +299,14 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
+"\n"
+"\n"
+"Un'altra cosa da tenere in mente mentre ci si muove sono le "
+"<ref>dst=zones_of_control text='Zone di controllo'</ref>. Ciascuna unità "
+"genera una zona di controllo negli esagoni immediatamente intorno a essa. "
+"Imparare ad usare le zone di controllo a proprio vantaggio è una parte "
+"importante di Wesnoth. dato che solo gli <ref>dst=ability_skirmish "
+"text='Skirmishers'</ref> Possono ignorare le zone di controllo.."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -297,6 +321,13 @@ msgid ""
 "Combat is relatively straightforward; the attacker and defender alternate "
 "attacks until each has used their allotted number of attacks."
 msgstr ""
+"Ci sono due tipi di combattimento in Battle of Wesnoth, a corto ed a lungo "
+"raggio. ma ambedue possono avvenire solo tra unità situate in esagoni "
+"adiacenti. I combattimenti a corto raggio di solito utilizzano armi come "
+"spade, asce e zanne mentre i combattimenti a lungo raggio utilizzano armi "
+"come gli archi, lance e palle di fuoco. Il combattimento è telativamente "
+"diretto; l'attacante ed il difensore si alternano sino a che ciascuno non "
+"finisce il suo numero di attacchi."
 
 #: data/help.cfg:105
 msgid ""
@@ -304,6 +335,9 @@ msgid ""
 "\n"
 "<header>text='Order and number of attacks'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Ordine e numero di attachhi'</header>"
 
 #: data/help.cfg:107
 msgid ""
@@ -315,6 +349,14 @@ msgid ""
 "attack may make 4 swings each dealing 5 damage, while an Orcish Grunt with 9-"
 "2 only gets 2 swings (but at 9 damage)."
 msgstr ""
+"\n"
+"\n"
+"L'attaccante ottiene il primo attacco e dopo tocca al difensore. Questo "
+"continua a turni alterni sino a quando ogni unità non abbia esaurito tutti i "
+"relativi attacchi. Il numero di attacchi che un'unità ottiene varia;  per "
+"esempio, un Combattente Elfico con 5-4 di attacco con la spada può colpire 4 "
+"volte con 5 danni per colpo, mentre un Fante Orchesco con 9-2 colpisce 2 "
+"sole volte (però dando 9 danni per colpo...)."
 
 #: data/help.cfg:109
 msgid ""
@@ -322,6 +364,9 @@ msgid ""
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Probabilità di colpire'</header>"
 
 #: data/help.cfg:111
 msgid ""
@@ -352,6 +397,9 @@ msgid ""
 "\n"
 "<header>text=Damage</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=Danno</header>"
 
 #: data/help.cfg:116
 msgid ""
@@ -374,6 +422,12 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Alcune unità hanno abilità speciali che modificano il danno causato in "
+"battaglia. I più comune di questi è <ref>dst=ability_charge text=Carica</"
+"ref> che raddoppia il danno sia dell'attaccante che del difensore quando "
+"l'unità con l'abilità Carica attacca"
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -387,6 +441,12 @@ msgid ""
 "and Holy attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
+"In Wesnoth, ci sono tre tipi di danno solitamente conness agli attacchi "
+"fisici: Danno da spada, da lancio, e da impatto. a questi si aggungon tre "
+"altri tipi di danno generalmente associati agli attacchi magici: Attacchi di "
+"Fuoco, il Freddo e Sacri. Le diverse unità possono avere delle resistenze "
+"che alterano la quantità di danno che gli viene causato da un certo tipo di "
+"attacco."
 
 #: data/help.cfg:126
 msgid ""
@@ -398,6 +458,14 @@ msgid ""
 "resistance against a damage type, it will suffer 100% more damage when hit "
 "by that type."
 msgstr ""
+"\n"
+"\n"
+"Le capacità di resistere funzionano moolto semplicemente: se un tipo di "
+"unità ha resistenza 40% contro un tipo di danni, Tutte le unità di quel tipo "
+"soffriranno il 40% in meno se colpite da quel tipo di danni. Per un'unità è "
+"possibile avere delle debolezze; se un'unità ha resistenza -100% contro un "
+"tipo di danni, subirà il 100% di danni in più se colpita da quel tipo di "
+"attacco."
 
 #: data/help.cfg:128
 msgid ""
@@ -407,6 +475,11 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Per esempio gli Scheletri sono molto resistenti nei confronti di attacchi da "
+"lama e da dardo, ma sono vulnerabili al danno causato da impatto e dal fuoco "
+"ed estremamente vulnerabili al danno causato dal Sacro."
 
 #: data/help.cfg:133
 msgid "Time of Day"
@@ -425,6 +498,11 @@ msgid ""
 "The usual day/night cycle runs:\n"
 "\n"
 msgstr ""
+"Le partite di Wesnoth generalmente sono caratterizzati dal normale "
+"alternarsi tra notte e giorno. L'ora corrente può essere osservata sotto la "
+"minimappa nell'angolo superiore destro dello schermo \n"
+"\n"
+"Nel solito ciclo giorno/notte si susseguono: \n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -439,7 +517,7 @@ msgstr "Pomeriggio"
 #: data/help.cfg:141 data/schedules.cfg:59 data/schedules.cfg:89
 #: data/schedules.cfg:111
 msgid "Dusk"
-msgstr "Tramonto"
+msgstr "Crepuscolo"
 
 #: data/help.cfg:142 data/schedules.cfg:79
 msgid "First Watch"
@@ -447,13 +525,15 @@ msgstr "Sera"
 
 #: data/help.cfg:143 data/schedules.cfg:101
 msgid "Second Watch"
-msgstr "Notte"
+msgstr "Notte Fonda"
 
 #: data/help.cfg:145
 msgid ""
 "\n"
 "Morning and Afternoon count as day, First and Second Watch count as night."
 msgstr ""
+"\n"
+"Mattina e pomeriggio  count as day, First and Second Watch count as night."
 
 #: data/help.cfg:151
 msgid ""
@@ -471,6 +551,8 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"Ricorda che alcuni scenari sono ambientati sottoterra, dove è perennemente "
+"notte!"
 
 #: data/help.cfg:159
 msgid "Experience and Advancement"
@@ -526,6 +608,8 @@ msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
+"\n"
+"Villagi: Un unità che inizia il turno dentro un villagio recupera 8 HP."
 
 #: data/help.cfg:174
 msgid ""
@@ -533,6 +617,9 @@ msgid ""
 "<ref>dst=ability_regeneration text=Regeneration</ref>: Certain units (such "
 "as trolls) will automatically heal 8HP every turn."
 msgstr ""
+"\n"
+"<ref>dst=ability_regeneration text=Rigenerazione</ref>: Alcune unità (come i "
+"trlls) recuperano automaticamente 8HP ad ogni turno."
 
 #: data/help.cfg:175
 msgid ""
@@ -541,6 +628,10 @@ msgid ""
 "ability will heal all friendly units immediately beside them for 4HP each "
 "turn, or prevent Poison from dealing damage."
 msgstr ""
+"\n"
+"Unità Curanti: unità con l'abilità <ref>dst=ability_heals text=Cura</ref> "
+"che curano tutte le unità amiche immediatamente intorno di 4 HP per turno, o "
+"previengono che il veleno possa arrecare danno."
 
 #: data/help.cfg:177
 msgid ""
@@ -913,7 +1004,7 @@ msgstr "Casuale"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Legali"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
 msgid "Rebels"
@@ -1005,7 +1096,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
-msgstr ""
+msgstr "Il Ponte Spezzato"
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
@@ -1164,7 +1255,7 @@ msgstr "Castelli Assediati"
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
 msgid "Across The River"
-msgstr ""
+msgstr "Attraverso il fiume"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
 msgid ""
@@ -1490,7 +1581,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid "What's experience?"
-msgstr ""
+msgstr "Cos'è l'esperienza?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
@@ -1604,7 +1695,7 @@ msgstr "Hai completato con successo il primo scenario di allenamento."
 #: data/scenarios/tutorial/Basic_Training.cfg:251
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:241
 msgid "Hooray!"
-msgstr ""
+msgstr "Urra!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid "How do I know how to complete a scenario? Will you always tell me?"
@@ -1728,7 +1819,7 @@ msgstr "Hai richiamtao con successo il tuo Combattente Eflico."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 msgid "En guarde!"
-msgstr ""
+msgstr "In Guardia!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
 msgid ""
@@ -1800,7 +1891,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid "How much gold do my units cost?"
-msgstr ""
+msgstr "Quanto oro costano le mie unità?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid ""
@@ -1816,7 +1907,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
 msgid "How do I get gold?"
-msgstr ""
+msgstr "Come posso raccogliere l'oro?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
 msgid ""
@@ -1851,7 +1942,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:123
 msgid "How do I know what time of day it is?"
-msgstr ""
+msgstr "Come posso sapere in che fase del giono mi trovo?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:123
 msgid ""
@@ -1882,11 +1973,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
 msgid "What are the different properties that terrains have?"
-msgstr ""
+msgstr "Quali sono le varie proprietà che ha un territorio?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
 msgid "How do I find out the properties of a specific terrain?"
-msgstr ""
+msgstr "Come posso sapere le caratteristiche di un determinato territorio?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
 msgid ""
@@ -1920,7 +2011,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid "How does resistance affect attack damage?"
-msgstr ""
+msgstr "La resistenza come influsce sul danno di un attacco?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid ""
@@ -1934,7 +2025,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid "What are the different damage types?"
-msgstr ""
+msgstr "Quali sono le differenze tra i tipi di danno?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:160
 msgid ""
@@ -1952,7 +2043,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid "What do specialties do?"
-msgstr ""
+msgstr "Che cosa fanno le abilità speciali?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid ""
@@ -1964,7 +2055,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid "Which units get specialties?"
-msgstr ""
+msgstr "Quali unità prendono hanno le abilità speciali"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid ""
@@ -1977,11 +2068,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid "What kinds of specialties can my units get?"
-msgstr ""
+msgstr "Che tipi di abilità speciali possono avere le mie unità?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid "How do I use specialties?"
-msgstr ""
+msgstr "Come posso utilizzare le specialità?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid ""
@@ -4331,9 +4422,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Archer.cfg:82
-#, fuzzy
 msgid "female^Elvish Archer"
-msgstr "Arciere Elfico"
+msgstr "female^Donna Arciere Elfica"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
@@ -4348,9 +4438,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:76
-#, fuzzy
 msgid "female^Elvish Avenger"
-msgstr "Vendicatore Elfico"
+msgstr "female^Vendicatrice Elfica"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -4385,9 +4474,8 @@ msgstr ""
 "nemici nel combattimento corpo a copro e nel combattimento a distanza."
 
 #: data/units/Elvish_Druid.cfg:3
-#, fuzzy
 msgid "female^Elvish Druid"
-msgstr "Druido Elfico"
+msgstr "female^Donna Druido Elfica"
 
 #: data/units/Elvish_Druid.cfg:20
 #, fuzzy
@@ -4409,9 +4497,8 @@ msgid "thorns"
 msgstr "Spine"
 
 #: data/units/Elvish_Enchantress.cfg:3
-#, fuzzy
 msgid "female^Elvish Enchantress"
-msgstr "Sciamano Elfico"
+msgstr "female^Incantatrice Elfica"
 
 #: data/units/Elvish_Enchantress.cfg:21
 msgid ""
@@ -4435,33 +4522,30 @@ msgid "Elvish Fighter"
 msgstr "Combattente Elfico"
 
 #: data/units/Elvish_Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Fighters make up the bulk of the Elven military in Wesnoth. They are "
 "distinguished from other fighting forces by their skill with both sword and "
 "bow. The Elves are deft of foot, and fight best in the forest."
 msgstr ""
-"I combattenti elfici costituisco la maggior parte delle milizie elfiche di "
-"Wesnoth.\n"
-"Si distinguono dalle altre truppe combattenti per la loro abilità sia con la "
-"spada che con l'arco.\n"
-"Gli elfi sono veloci e combattono meglio nella foresta."
+"I Combattenti Elfici costituisco la maggior parte delle milizie elfiche di "
+"Wesnoth. Si distinguono dalle altre truppe combattenti per la loro abilità "
+"sia con la spada che con l'arco. Gli Elfi sono agili e combattono meglio "
+"nella foresta."
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
 msgstr "Eroe Elfico"
 
 #: data/units/Elvish_Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
 "tweaked their combat skills to the very maximum. Elvish Heroes prefer "
 "fighting at close range with the sword, but are also skilled at the bow."
 msgstr ""
-"L'eroe elfico concentra le sue capacità individuali nel campo di battaglia, "
-"avendo affinato le sue abilità nel combattimento al limite estremo. L'eroe "
-"elfico preferisce il combattimento corpo a corpo ma è anche addestrato "
-"all'utilizzo dell'arco."
+"Gli Eroi Elfici concentrano le proprie capacità individuali sul campo di "
+"battaglia, avendo affinato le proprie abilità nel combattimento al limite "
+"estremo. Gli eroi elfici preferiscono il combattimento corpo a corpo con la "
+"spada ma è anche capace nell'utilizzo dell'arco."
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
@@ -4477,9 +4561,8 @@ msgstr ""
 "combattimento a distanza."
 
 #: data/units/Elvish_Lady.cfg:4
-#, fuzzy
 msgid "female^Elvish Lady"
-msgstr "Signore Elfico"
+msgstr "female^Signora Elfica"
 
 #: data/units/Elvish_Lady.cfg:17
 msgid ""
@@ -4497,13 +4580,13 @@ msgid "Elvish Lord"
 msgstr "Signore Elfico"
 
 #: data/units/Elvish_Lord.cfg:17
-#, fuzzy
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of fire at long range."
 msgstr ""
-"Il Signore Elfico è spaventoso nel combattimento, sia la sua spada nel corpo "
-"a copro che le sue palle di fuoco nel combattimento a distanza."
+"I Signori Elfici sono terribili nei combattimenti, utilizzando la spada a "
+"nel corpo a copro e delle devastastanti palle di fuoco nel combattimento a "
+"distanza."
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
@@ -4530,9 +4613,8 @@ msgid "marksman"
 msgstr "Tiro di precisione"
 
 #: data/units/Elvish_Marksman.cfg:80
-#, fuzzy
 msgid "female^Elvish Marksman"
-msgstr "Tiratore Scelto Elfico"
+msgstr "female^Tiratrice Scelta Elfica"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
@@ -4610,9 +4692,8 @@ msgstr ""
 "potere nei combattimenti."
 
 #: data/units/Elvish_Shaman.cfg:3
-#, fuzzy
 msgid "female^Elvish Shaman"
-msgstr "Sciamano Elfico"
+msgstr "female^Donna Sciamano Elfica"
 
 #: data/units/Elvish_Shaman.cfg:20
 msgid ""
@@ -4638,9 +4719,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:82
-#, fuzzy
 msgid "female^Elvish Sharpshooter"
-msgstr "Magnifico tiratore Elfico"
+msgstr "female^Tiratore Magnifica Elfica"
 
 #: data/units/Elvish_Shyde.cfg:3
 #, fuzzy
@@ -4664,9 +4744,8 @@ msgid "faerie touch"
 msgstr "tocco fatato"
 
 #: data/units/Elvish_Sorceress.cfg:3
-#, fuzzy
 msgid "female^Elvish Sorceress"
-msgstr "Arciere Elfico"
+msgstr "female^Strega Elfica"
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -4764,7 +4843,7 @@ msgstr ""
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
-msgstr ""
+msgstr "Fante"
 
 #: data/units/Footpad.cfg:16
 #, fuzzy
@@ -4861,7 +4940,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Fanghiglia Gigante"
 
 #: data/units/Giant_Mudcrawler.cfg:16
 #, fuzzy
@@ -4909,9 +4988,8 @@ msgid "pincers"
 msgstr "pincers"
 
 #: data/units/Goblin_Impaler.cfg:4
-#, fuzzy
 msgid "Goblin Impaler"
-msgstr "Saccheggiatore Goblin"
+msgstr "Goblin Impalatore"
 
 #: data/units/Goblin_Impaler.cfg:17
 msgid ""
@@ -5080,7 +5158,6 @@ msgstr ""
 "nuovo mondo dei cieli."
 
 #: data/units/Halbardier.cfg:3
-#, fuzzy
 msgid "Halberdier"
 msgstr "Alabardiere"
 
@@ -5317,7 +5394,7 @@ msgstr ""
 
 #: data/units/Mage.cfg:70
 msgid "female^Mage"
-msgstr ""
+msgstr "female^Maga"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
@@ -5360,9 +5437,8 @@ msgid "holy"
 msgstr "sacro"
 
 #: data/units/Mage_of_Light.cfg:66
-#, fuzzy
 msgid "female^Mage of Light"
-msgstr "Mago della Luce"
+msgstr "female^Maga della Luce"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
@@ -5390,9 +5466,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:3
-#, fuzzy
 msgid "female^Mermaid Enchantress"
-msgstr "Sciamano Elfico"
+msgstr "female^Sirena Incantarice"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
 #: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
@@ -5560,9 +5635,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mudcrawler.cfg:3
-#, fuzzy
 msgid "Mudcrawler"
-msgstr "Mudcrawler"
+msgstr "Fanghiglia"
 
 #: data/units/Mudcrawler.cfg:16
 #, fuzzy
@@ -5723,7 +5797,7 @@ msgstr "Signore Nobile"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr ""
+msgstr "Giovane Nobile"
 
 #: data/units/Noble_Youth.cfg:20
 #, fuzzy
@@ -5791,7 +5865,7 @@ msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:36 data/units/Orcish_Slayer.cfg:41
 msgid "darts"
-msgstr ""
+msgstr "dardi"
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
@@ -5816,7 +5890,7 @@ msgstr "spada corta"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "Orco Fante"
 
 #: data/units/Orcish_Grunt.cfg:16
 #, fuzzy
@@ -6048,7 +6122,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
-msgstr ""
+msgstr "Paesano"
 
 #: data/units/Peasant.cfg:17
 msgid ""
@@ -6277,7 +6351,7 @@ msgstr ""
 
 #: data/units/Saurian_Tribalist.cfg:4
 msgid "Saurian Tribalist"
-msgstr ""
+msgstr "Sauro Tribale"
 
 #: data/units/Saurian_Tribalist.cfg:18
 msgid ""
@@ -6289,7 +6363,7 @@ msgstr ""
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
-msgstr ""
+msgstr "Sauro Guerriero"
 
 #: data/units/Saurian_Warrior.cfg:18
 msgid ""
@@ -6529,7 +6603,7 @@ msgstr ""
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "Tentacolo da Profondo"
 
 #: data/units/Tentacle.cfg:17
 msgid ""
@@ -6722,7 +6796,7 @@ msgstr ""
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
-msgstr ""
+msgstr "Re Guerriero"
 
 #: data/units/Warrior_King.cfg:22
 msgid ""
@@ -6853,15 +6927,15 @@ msgstr ""
 
 #: src/about.cpp:46
 msgid "+Core Developers"
-msgstr ""
+msgstr "+Sviluppatori del codice"
 
 #: src/about.cpp:47
 msgid "-   Main Developer"
-msgstr ""
+msgstr "-   Sviluppatore Proncipale"
 
 #: src/about.cpp:50
 msgid "-   Artwork and graphics designer"
-msgstr ""
+msgstr "-   Artisti e Grafici"
 
 #: src/about.cpp:54
 msgid "+Developers"
@@ -6869,7 +6943,7 @@ msgstr "Sviluppatori"
 
 #: src/about.cpp:71
 msgid "+General Purpose Administrators"
-msgstr ""
+msgstr "+Administratori Generali"
 
 #: src/about.cpp:76
 msgid "+Artwork and graphics designers"
@@ -6893,7 +6967,7 @@ msgstr ""
 
 #: src/about.cpp:134
 msgid "+Miscellaneous"
-msgstr ""
+msgstr "+Varie"
 
 #: src/about.cpp:139
 #, fuzzy
@@ -6978,7 +7052,7 @@ msgstr "+Contributori"
 
 #: src/about.cpp:270
 msgid "+Bots"
-msgstr ""
+msgstr "+Automazioni"
 
 #: src/about.cpp:306 src/help.cpp:2566 src/show_dialog.cpp:506
 msgid "Close"
@@ -7249,8 +7323,9 @@ msgid "The game could not be loaded: "
 msgstr "La partita non può essere salvata"
 
 #: src/game.cpp:169 src/game.cpp:890 src/game.cpp:1280
+#, fuzzy
 msgid "Error while playing the game: "
-msgstr ""
+msgstr "Errore di I/O di un file durante la lettura del gioco"
 
 #: src/game.cpp:172 src/game.cpp:1292
 #, fuzzy
@@ -7284,12 +7359,11 @@ msgstr "Il file che hai provato a caricare è corrotto"
 
 #: src/game.cpp:834
 msgid "File I/O Error while reading the game"
-msgstr ""
+msgstr "Errore di I/O di un file durante la lettura del gioco"
 
 #: src/game.cpp:939
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr " ,Scarica campagne aggiuntive..."
+msgstr "Scarica più Campagne..."
 
 #: src/game.cpp:940
 msgid "Download more campaigns from a server on Internet."
@@ -7332,18 +7406,16 @@ msgid "Name"
 msgstr "Nome"
 
 #: src/game.cpp:1042
-#, fuzzy
 msgid "Author"
-msgstr "Spine"
+msgstr "Autore"
 
 #: src/game.cpp:1043
 msgid "Downloads"
-msgstr ""
+msgstr "Downloads"
 
 #: src/game.cpp:1044
-#, fuzzy
 msgid "Size"
-msgstr "Sirena"
+msgstr "Dimensione"
 
 #: src/game.cpp:1063
 msgid "B"
@@ -7355,7 +7427,7 @@ msgstr "KB"
 
 #: src/game.cpp:1069
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: src/game.cpp:1086
 msgid "Publish campaign: "
@@ -7415,7 +7487,7 @@ msgstr "Il server ha risposto con un errore: \""
 
 #: src/game.cpp:1161
 msgid "Terms"
-msgstr ""
+msgstr "Termini"
 
 #: src/game.cpp:1198 src/game.cpp:1223
 msgid "Response"
@@ -7452,7 +7524,7 @@ msgstr "Crea Partita"
 
 #: src/game.cpp:1239
 msgid "Play a multiplayer game sharing the same machine"
-msgstr ""
+msgstr "Gioca una partita in multigiocatore condividendo la stessa macchina"
 
 #: src/game.cpp:1240
 msgid "Human vs AI"
@@ -7460,7 +7532,7 @@ msgstr "Giocatore vs Computer"
 
 #: src/game.cpp:1240
 msgid "Play a game against AI opponents"
-msgstr ""
+msgstr "Gioca una partita contro il Computer"
 
 #: src/game.cpp:1243 src/multiplayer_client.cpp:303
 msgid "Login"
@@ -7781,16 +7853,15 @@ msgstr ""
 
 #: src/multiplayer.cpp:517
 msgid "Warning"
-msgstr ""
+msgstr "Attenzione"
 
 #: src/multiplayer_client.cpp:64
 msgid "Receiving game list..."
 msgstr "Ricevo la lista delle partite..."
 
 #: src/multiplayer_client.cpp:126 src/playturn.cpp:1745
-#, fuzzy
 msgid "unit^Gold"
-msgstr "Oro"
+msgstr "unit^Oro"
 
 #: src/multiplayer_client.cpp:145
 msgid "Waiting for game to start..."
@@ -8437,7 +8508,7 @@ msgstr "Altro"
 
 #: src/titlescreen.cpp:235
 msgid "-- The Tome of Wesnoth"
-msgstr "-- Il Libro di Wesnoth"
+msgstr "-- Il Libro di  Wesnoth"
 
 #: src/unit_types.cpp:317
 msgid "strikes"
