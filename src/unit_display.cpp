@@ -65,11 +65,11 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	LOG_DP << "submerge: " << src_submerge << " -> " << dst_submerge << "\n";
 
 	const gamemap::TERRAIN terrain = map.get_terrain(b);
-	const int nsteps = disp.turbo() ? 3 : 10*u.movement_cost(map,terrain);
+	const int nsteps = disp.turbo() ? 3 : 7*u.movement_cost(map,terrain);
 	const double xstep = double(xdst - xsrc) / nsteps;
 	const double ystep = double(ydst - ysrc) / nsteps;
 
-	const int time_between_frames = disp.turbo() ? 2 : 10;
+	const int time_between_frames = disp.turbo() ? 10 : 20;
 	int ticks = SDL_GetTicks();
 
 	int skips = 0;
