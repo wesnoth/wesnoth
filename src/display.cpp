@@ -375,7 +375,7 @@ void display::bounds_check_position()
 
 void display::redraw_everything()
 {
-	if(update_locked())
+	if(update_locked() || teams_.empty())
 		return;
 
 	tooltips::clear_tooltips();
@@ -387,7 +387,7 @@ void display::redraw_everything()
 
 void display::draw(bool update,bool force)
 {
-	if(!sideBarBgDrawn_) {
+	if(!sideBarBgDrawn_ && !teams_.empty()) {
 		SDL_Surface* const screen = screen_.getSurface();
 		SDL_Surface* image_top = getImage("misc/rightside.png",UNSCALED);
 		SDL_Surface* image = getImage("misc/rightside-bottom.png",UNSCALED);
@@ -485,6 +485,8 @@ void display::update_display()
 
 void display::draw_sidebar()
 {
+	if(teams_.empty())
+		return;
 
 	if(invalidateUnit_) {
 		//we display the unit the mouse is over if it is over a unit
@@ -608,6 +610,9 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
          const unit& u, SDL_Rect& description_rect, int profilex, int profiley,
          SDL_Rect* clip_rect)
 {
+	if(teams_.empty())
+		return;
+
 	SDL_Rect clipRect = clip_rect != NULL ? *clip_rect : screen_area();
 
 	SDL_Surface* const background = getImage("misc/rightside.png",UNSCALED);
@@ -800,7 +805,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
                         double highlight_ratio, Pixel blend_with)
 
 {
-	if(updatesLocked_)
+	if(updatesLocked_ || teams_.empty())
 		return;
 
 	const gamemap::location loc(x,y);

@@ -21,15 +21,15 @@ terrain_type::terrain_type() : images_(1,"void"), type_(' '), letter_(' '),
                                equal_precedence_(false)
 {}
 
-terrain_type::terrain_type(config& cfg)
+terrain_type::terrain_type(const config& cfg)
 {
-	images_ = config::split(cfg.values["image"]);
-	name_ = cfg.values["name"];
-	const std::string& letter = cfg.values["char"];
+	images_ = config::split(cfg["image"]);
+	name_ = cfg["name"];
+	const std::string& letter = cfg["char"];
 	assert(!letter.empty());
 	letter_ = letter[0];
 
-	const std::string& alias = cfg.values["aliasof"];
+	const std::string& alias = cfg["aliasof"];
 	if(alias.empty())
 		type_ = letter_;
 	else
@@ -37,7 +37,7 @@ terrain_type::terrain_type(config& cfg)
 
 	colour_.read(cfg);
 
-	equal_precedence_ = cfg.values["no_overlay"] == "true";
+	equal_precedence_ = cfg["no_overlay"] == "true";
 }
 
 const std::string& terrain_type::image(int x, int y) const
@@ -83,12 +83,13 @@ bool terrain_type::equal_precedence() const
 	return equal_precedence_;
 }
 
-void create_terrain_maps(std::vector<config*>& cfgs,
+void create_terrain_maps(const std::vector<config*>& cfgs,
                          std::vector<char>& terrain_precedence,
                          std::map<char,terrain_type>& letter_to_terrain,
                          std::map<std::string,terrain_type>& str_to_terrain)
 {
-	for(std::vector<config*>::iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
+	for(std::vector<config*>::const_iterator i = cfgs.begin();
+	    i != cfgs.end(); ++i) {
 		terrain_type terrain(**i);
 		terrain_precedence.push_back(terrain.letter());
 		letter_to_terrain.insert(std::pair<char,terrain_type>(

@@ -61,7 +61,7 @@ int show_dialog(display& screen, SDL_Surface* image,
 			 );
 
 enum TITLE_RESULT { TUTORIAL, NEW_CAMPAIGN, MULTIPLAYER, LOAD_GAME, QUIT_GAME,
-                    CHANGE_LANGUAGE };
+                    CHANGE_LANGUAGE, EDIT_PREFERENCES };
 
 TITLE_RESULT show_title(display& screen);
 

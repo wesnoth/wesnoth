@@ -42,7 +42,7 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 }
 
 //constructor for reading a unit
-unit::unit(game_data& data, config& cfg) : state_(STATE_NORMAL),
+unit::unit(game_data& data, const config& cfg) : state_(STATE_NORMAL),
                                            moves_(0), facingLeft_(true),
                                            recruit_(false),
                                            guardian_(false), loyal_(false)
@@ -66,7 +66,7 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
                guardian_(false), loyal_(false)
 {
 	//calculate the unit's traits
-	std::vector<config*> traits = t->possible_traits();
+	const std::vector<config*> traits = t->possible_traits();
 	const size_t num_traits = 2;
 	if(use_traits && traits.size() >= num_traits) {
 		std::set<int> chosen_traits;
@@ -86,7 +86,7 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 		//in the same order.
 		for(std::set<int>::const_iterator itor = chosen_traits.begin();
 		    itor != chosen_traits.end(); ++itor) {
-			traitsDescription_ += traits[*itor]->values["name"];
+			traitsDescription_ += (*traits[*itor])["name"];
 			traitsDescription_ += ",";
 		}
 
@@ -280,14 +280,14 @@ bool unit::invisible(gamemap::TERRAIN terrain) const
 	return false;
 }
 
-bool unit::matches_filter(config& cfg) const
+bool unit::matches_filter(const config& cfg) const
 {
-	const std::string& description = cfg.values["description"];
-	const std::string& type = cfg.values["type"];
-	const std::string& ability = cfg.values["ability"];
-	const std::string& side = cfg.values["side"];
-	const std::string& weapon = cfg.values["has_weapon"];
-	const std::string& role = cfg.values["role"];
+	const std::string& description = cfg["description"];
+	const std::string& type = cfg["type"];
+	const std::string& ability = cfg["ability"];
+	const std::string& side = cfg["side"];
+	const std::string& weapon = cfg["has_weapon"];
+	const std::string& role = cfg["role"];
 
 	if(description.empty() == false && description != this->description()) {
 		return false;
@@ -302,8 +302,8 @@ bool unit::matches_filter(config& cfg) const
 		//and if the subsequence is found within the main sequence. This
 		//is because doing the full CSV split is expensive
 		if(std::find(type.begin(),type.end(),',') != type.end() &&
-		   std::search(type.begin(),type.end(),this_type.begin(),this_type.end()) !=
-		                                                    type.end()) {
+		   std::search(type.begin(),type.end(),this_type.begin(),
+			           this_type.end()) != type.end()) {
 			const std::vector<std::string>& vals = config::split(type);
 
 			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
@@ -355,15 +355,15 @@ bool unit::has_flag(const std::string& flag) const
 	return statusFlags_.count(flag) != 0;
 }
 
-void unit::read(game_data& data, config& cfg)
+void unit::read(game_data& data, const config& cfg)
 {
 	std::map<std::string,unit_type>::iterator i = data.unit_types.find(
-					                                     cfg.values["type"]);
+					                                     cfg["type"]);
 	if(i != data.unit_types.end())
 		type_ = &i->second;
 	else
 		throw gamestatus::load_game_failed("Unit not found: '"
-		                                   + cfg.values["type"] + "'");
+		                                   + cfg["type"] + "'");
 
 	attacks_ = type_->attacks();
 	backupAttacks_ = attacks_;
@@ -374,41 +374,41 @@ void unit::read(game_data& data, config& cfg)
 	maxExperience_ = type_->experience_needed();
 	backupMaxExperience_ = type_->experience_needed();
 
-	const std::string& hitpoints = cfg.values["hitpoints"];
+	const std::string& hitpoints = cfg["hitpoints"];
 	if(hitpoints.size() == 0)
 		hitpoints_ = type().hitpoints();
 	else
 		hitpoints_ = atoi(hitpoints.c_str());
 
-	const std::string& experience = cfg.values["experience"];
+	const std::string& experience = cfg["experience"];
 	if(experience.size() == 0)
 		experience_ = 0;
 	else
 		experience_ = atoi(experience.c_str());
 
 
-	side_ = atoi(cfg.values["side"].c_str());
-	description_ = cfg.values["description"];
-	traitsDescription_ = cfg.values["traits_description"];
+	side_ = atoi(cfg["side"].c_str());
+	description_ = cfg["description"];
+	traitsDescription_ = cfg["traits_description"];
 	const std::map<std::string,std::string>::const_iterator recruit_itor =
 			                                 cfg.values.find("canrecruit");
 	if(recruit_itor != cfg.values.end() && recruit_itor->second == "1") {
 		recruit_ = true;
 	}
 
-	const std::vector<config*>& mods = cfg.children["modifications"];
-	if(!mods.empty()) {
-		modifications_ = *mods.front();
+	const config* const modifications = cfg.child("modifications");
+	if(modifications != NULL) {
+		modifications_ = *modifications;
 		apply_modifications();
 	}
 
-	const std::string& facing = cfg.values["facing"];
+	const std::string& facing = cfg["facing"];
 	if(facing == "reverse")
 		facingLeft_ = false;
 	else
 		facingLeft_ = true;
 
-	const std::string& ai_special = cfg.values["ai_special"];
+	const std::string& ai_special = cfg["ai_special"];
 	if(ai_special == "guardian") {
 		guardian_ = true;
 	}
@@ -416,30 +416,30 @@ void unit::read(game_data& data, config& cfg)
 
 void unit::write(config& cfg) const
 {
-	cfg.values["type"] = type_->name();
+	cfg["type"] = type_->name();
 
 	std::stringstream hp;
 	hp << hitpoints_;
-	cfg.values["hitpoints"] = hp.str();
+	cfg["hitpoints"] = hp.str();
 
 	std::stringstream xp;
 	xp << experience_;
-	cfg.values["experience"] = xp.str();
+	cfg["experience"] = xp.str();
 
 	std::stringstream sd;
 	sd << side_;
-	cfg.values["side"] = sd.str();
+	cfg["side"] = sd.str();
 
-	cfg.values["description"] = description_;
+	cfg["description"] = description_;
 
-	cfg.values["traits_description"] = traitsDescription_;
+	cfg["traits_description"] = traitsDescription_;
 
 	if(can_recruit())
-		cfg.values["canrecruit"] = "1";
+		cfg["canrecruit"] = "1";
 
 	cfg.children["modifications"].push_back(new config(modifications_));
 
-	cfg.values["facing"] = facingLeft_ ? "normal" : "reverse";
+	cfg["facing"] = facingLeft_ ? "normal" : "reverse";
 }
 
 void unit::assign_role(const std::string& role)
@@ -547,34 +547,34 @@ void unit::set_goto(const gamemap::location& new_goto)
 	goto_ = new_goto;
 }
 
-void unit::add_modification(const std::string& type, config& mod, bool no_add)
+void unit::add_modification(const std::string& type,
+                            const config& mod, bool no_add)
 {
-	const std::string& span = mod.values["duration"];
+	const std::string& span = mod["duration"];
 
 	if(no_add == false && (span.empty() || span == "forever"))
 		modifications_.children[type].push_back(new config(mod));
 
-	const std::vector<config*>& effects = mod.children["effect"];
-	for(std::vector<config*>::const_iterator i = effects.begin();
-	    i != effects.end(); ++i) {
+	for(config::const_child_itors i = mod.child_range("effect");
+	    i.first != i.second; ++i.first) {
 
-		const std::string& apply_to = (*i)->values["apply_to"];
+		const std::string& apply_to = (**i.first)["apply_to"];
 
 		if(apply_to == "new_attack") {
-			attacks_.push_back(attack_type(**i));
+			attacks_.push_back(attack_type(**i.first));
 		} else if(apply_to == "attack") {
 			for(std::vector<attack_type>::iterator a = attacks_.begin();
 			    a != attacks_.end(); ++a) {
-				a->apply_modification(**i);
+				a->apply_modification(**i.first);
 			}
 		} else if(apply_to == "hitpoints") {
-			const std::string& increase_hp = (*i)->values["increase"];
-			const std::string& heal_full = (*i)->values["heal_full"];
-			const std::string& increase_total = (*i)->values["increase_total"];
-			const std::string& mult_total = (*i)->values["multiply_total"];
+			const std::string& increase_hp = (**i.first)["increase"];
+			const std::string& heal_full = (**i.first)["heal_full"];
+			const std::string& increase_total = (**i.first)["increase_total"];
+			const std::string& mult_total = (**i.first)["multiply_total"];
 
 			//if the hitpoints are allowed to end up greater than max hitpoints
-			const std::string& violate_max = (*i)->values["violate_maximum"];
+			const std::string& violate_max = (**i.first)["violate_maximum"];
 
 			if(increase_total.empty() == false) {
 				const int increase = atoi(increase_total.c_str());
@@ -604,9 +604,9 @@ void unit::add_modification(const std::string& type, config& mod, bool no_add)
 			if(hitpoints_ < 1)
 				hitpoints_ = 1;
 		} else if(apply_to == "movement") {
-			const std::string& increase = (*i)->values["increase"];
-			const std::string& mult = (*i)->values["multiply"];
-			const std::string& set_to = (*i)->values["set"];
+			const std::string& increase = (**i.second)["increase"];
+			const std::string& mult = (**i.second)["multiply"];
+			const std::string& set_to = (**i.second)["set"];
 
 			if(increase.empty() == false) {
 				maxMovement_ += atoi(increase.c_str());
@@ -625,8 +625,8 @@ void unit::add_modification(const std::string& type, config& mod, bool no_add)
 			if(moves_ > maxMovement_)
 				moves_ = maxMovement_;
 		} else if(apply_to == "max_experience") {
-			const std::string& increase = (*i)->values["increase"];
-			const std::string& multiply = (*i)->values["multiply"];
+			const std::string& increase = (**i.second)["increase"];
+			const std::string& multiply = (**i.second)["multiply"];
 			if(increase.empty() == false) {
 				maxExperience_ += atoi(increase.c_str());
 			}
@@ -649,8 +649,8 @@ void unit::apply_modifications()
 {
 	for(int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
-		std::vector<config*>& mods = modifications_.children[mod];
-		for(std::vector<config*>::iterator j = mods.begin();
+		const std::vector<config*>& mods = modifications_.children[mod];
+		for(std::vector<config*>::const_iterator j = mods.begin();
 		    j != mods.end(); ++j) {
 			add_modification(ModificationTypes[i],**j,true);
 		}

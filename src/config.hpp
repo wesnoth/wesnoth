@@ -52,8 +52,24 @@ struct config
 	          const std::vector<line_source>* lines=0); //throws config::error
 	std::string write() const;
 
+	typedef std::map<std::string,std::vector<config*> > child_map;
+	child_map children;
 	string_map values;
-	std::map<std::string,std::vector<config*> > children;
+
+	typedef std::vector<config*>::iterator child_iterator;
+	typedef std::vector<config*>::const_iterator const_child_iterator;
+
+	typedef std::pair<child_iterator,child_iterator> child_itors;
+	typedef std::pair<const_child_iterator,const_child_iterator>
+	                                                  const_child_itors;
+
+	child_itors child_range(const std::string& key);
+	const_child_itors child_range(const std::string& key) const;
+	
+	config* child(const std::string& key);
+	const config* child(const std::string& key) const;
+	std::string& operator[](const std::string& key);
+	const std::string& operator[](const std::string& key) const;
 
 	static std::vector<std::string> split(const std::string& val);
 	static std::string& strip(std::string& str);

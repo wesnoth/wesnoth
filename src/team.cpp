@@ -17,23 +17,23 @@
 #include <algorithm>
 #include <cstdlib>
 
-team::target::target(config& cfg)
-              : criteria(cfg), value(atof(cfg.values["value"].c_str()))
+team::target::target(const config& cfg)
+              : criteria(cfg), value(atof(cfg["value"].c_str()))
 {
 }
 
-team::team_info::team_info(config& cfg)
+team::team_info::team_info(const config& cfg)
 {
-	gold = cfg.values["gold"];
-	name = cfg.values["name"];
+	gold = cfg["gold"];
+	name = cfg["name"];
 
-	const std::string& aggression_val = cfg.values["aggression"];
+	const std::string& aggression_val = cfg["aggression"];
 	if(aggression_val.empty())
 		aggression = 0.5;
 	else
 		aggression = atof(aggression_val.c_str());
 
-	const std::string& enemies_list = cfg.values["enemy"];
+	const std::string& enemies_list = cfg["enemy"];
 	if(!enemies_list.empty()) {
 		std::vector<std::string> venemies = config::split(enemies_list);
 		for(std::vector<std::string>::const_iterator i = venemies.begin();
@@ -42,41 +42,41 @@ team::team_info::team_info(config& cfg)
 		}
 	}
 
-	if(cfg.values["controller"] == "human")
+	if(cfg["controller"] == "human")
 		controller = HUMAN;
-	else if(cfg.values["controller"] == "network")
+	else if(cfg["controller"] == "network")
 		controller = NETWORK;
 	else
 		controller = AI;
 
-	const std::string& scouts_val = cfg.values["villages_per_scout"];
+	const std::string& scouts_val = cfg["villages_per_scout"];
 	if(scouts_val.empty()) {
 		villages_per_scout = 8;
 	} else {
 		villages_per_scout = atoi(scouts_val.c_str());
 	}
 
-	const std::string& leader_val = cfg.values["leader_value"];
+	const std::string& leader_val = cfg["leader_value"];
 	if(leader_val.empty()) {
 		leader_value = 3.0;
 	} else {
 		leader_value = atof(leader_val.c_str());
 	}
 
-	const std::string& village_val = cfg.values["village_value"];
+	const std::string& village_val = cfg["village_value"];
 	if(village_val.empty()) {
 		village_value = 1.0;
 	} else {
 		village_value = atof(village_val.c_str());
 	}
 
-	std::vector<std::string> recruits = config::split(cfg.values["recruit"]);
+	std::vector<std::string> recruits = config::split(cfg["recruit"]);
 	for(std::vector<std::string>::const_iterator i = recruits.begin();
 	    i != recruits.end(); ++i) {
 		can_recruit.insert(*i);
 	}
 
-	recruitment_pattern = config::split(cfg.values["recruitment_pattern"]);
+	recruitment_pattern = config::split(cfg["recruitment_pattern"]);
 
 	//default recruitment pattern is to buy 2 fighters for every 1 archer
 	if(recruitment_pattern.empty()) {
@@ -86,16 +86,15 @@ team::team_info::team_info(config& cfg)
 	}
 
 	//additional targets
-	std::vector<config*>& tgts = cfg.children["target"];
-	for(std::vector<config*>::iterator tgt = tgts.begin();
-	    tgt != tgts.end(); ++tgt) {
-		targets.push_back(target(**tgt));
+	for(config::const_child_itors tgts = cfg.child_range("target");
+	    tgts.first != tgts.second; ++tgts.first) {
+		targets.push_back(target(**tgts.first));
 	}
 
-	use_shroud = (cfg.values["shroud"] == "yes");
+	use_shroud = (cfg["shroud"] == "yes");
 }
 
-team::team(config& cfg, int gold) : gold_(gold), info_(cfg)
+team::team(const config& cfg, int gold) : gold_(gold), info_(cfg)
 {
 	if(info_.gold.empty() == false)
 		gold_ = ::atoi(info_.gold.c_str());

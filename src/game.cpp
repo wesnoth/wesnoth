@@ -429,6 +429,10 @@ int play_game(int argc, char** argv)
 				preferences::set_locale(langs[res]);
 			}
 			continue;
+		} else if(res == gui::EDIT_PREFERENCES) {
+			const preferences::display_manager disp_manager(&disp);
+			preferences::show_preferences_dialog(disp);
+			continue;
 		}
 
 		//make a new game config item based on the difficulty level

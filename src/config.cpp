@@ -487,6 +487,59 @@ std::string config::write() const
 	return res;
 }
 
+config::child_itors config::child_range(const std::string& key)
+{
+	child_map::iterator i = children.find(key);
+	if(i != children.end()) {
+		return child_itors(i->second.begin(),i->second.end());
+	} else {
+		static std::vector<config*> dummy;
+		return child_itors(dummy.begin(),dummy.end());
+	}
+}
+
+config::const_child_itors config::child_range(const std::string& key) const
+{
+	child_map::const_iterator i = children.find(key);
+	if(i != children.end()) {
+		return const_child_itors(i->second.begin(),i->second.end());
+	} else {
+		static const std::vector<config*> dummy;
+		return const_child_itors(dummy.begin(),dummy.end());
+	}
+}
+
+config* config::child(const std::string& key)
+{
+	const child_map::const_iterator i = children.find(key);
+	if(i != children.end() && i->second.empty() == false) {
+		return i->second.front();
+	} else {
+		return NULL;
+	}
+}
+
+const config* config::child(const std::string& key) const
+{
+	return const_cast<config*>(this)->child(key);
+}
+
+std::string& config::operator[](const std::string& key)
+{
+	return values[key];
+}
+
+const std::string& config::operator[](const std::string& key) const
+{
+	const string_map::const_iterator i = values.find(key);
+	if(i != values.end()) {
+		return i->second;
+	} else {
+		static const std::string empty_string;
+		return empty_string;
+	}
+}
+
 std::vector<std::string> config::split(const std::string& val)
 {
 	std::vector<std::string> res;

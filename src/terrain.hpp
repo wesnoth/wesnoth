@@ -22,7 +22,7 @@ class terrain_type
 {
 public:
 	terrain_type();
-	terrain_type(config& cfg);
+	terrain_type(const config& cfg);
 
 	const std::string& image(int x, int y) const;
 	const std::string& default_image() const;
@@ -52,7 +52,7 @@ private:
 	bool equal_precedence_;
 };
 
-void create_terrain_maps(std::vector<config*>& cfgs,
+void create_terrain_maps(const std::vector<config*>& cfgs,
                          std::vector<char>& terrain_precedence,
                          std::map<char,terrain_type>& letter_to_terrain,
 						 std::map<std::string,terrain_type>& str_to_terrain);

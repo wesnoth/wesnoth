@@ -27,7 +27,7 @@ class attack_type
 public:
 	enum RANGE { SHORT_RANGE, LONG_RANGE };
 
-	attack_type(config& cfg);
+	attack_type(const config& cfg);
 	const std::string& name() const;
 	const std::string& type() const;
 	const std::string& special() const;
@@ -55,8 +55,8 @@ public:
 
 	const std::vector<sfx>& sound_effects() const;
 
-	bool matches_filter(config& cfg) const;
-	void apply_modification(config& cfg);
+	bool matches_filter(const config& cfg) const;
+	void apply_modification(const config& cfg);
 private:
 	std::string name_;
 	std::string type_;
@@ -95,7 +95,7 @@ class unit_movement_type
 public:
 	//this class assumes that the passed in reference will remain valid
 	//for at least as long as the class instance
-	unit_movement_type(config& cfg);
+	unit_movement_type(const config& cfg);
 
 	const std::string& name() const;
 	int movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const;
@@ -105,7 +105,7 @@ public:
 	const std::map<std::string,std::string>& damage_table() const;
 
 private:
-	mutable config& cfg_;
+	const config& cfg_;
 
 	mutable std::map<gamemap::TERRAIN,int> moveCosts_;
 	mutable std::map<gamemap::TERRAIN,double> defenseMods_;
@@ -118,8 +118,8 @@ class unit_type
 public:
 	//this class assumes that the passed in references will remain valid
 	//for at least as long as the class instance
-	unit_type(config& cfg, const movement_type_map& movement_types,
-	          std::vector<config*>& traits);
+	unit_type(const config& cfg, const movement_type_map& movement_types,
+	          const std::vector<config*>& traits);
 
 	//the name of the unit in the current language setting
 	std::string language_name() const;
@@ -170,7 +170,7 @@ public:
 	const std::vector<config*>& possible_traits() const;
 
 private:
-	mutable config& cfg_;
+	const config& cfg_;
 
 	double alpha_;
 
@@ -185,12 +185,12 @@ private:
 
 	const unit_movement_type* movementType_;
 
-	std::vector<config*>& possibleTraits_;
+	const std::vector<config*>& possibleTraits_;
 };
 
 struct game_data
 {
-	game_data(config& cfg);
+	game_data(const config& cfg);
 	movement_type_map movement_types;
 	typedef std::map<std::string,unit_type> unit_type_map;
 	unit_type_map unit_types;

@@ -24,7 +24,7 @@
 class unit
 {
 public:
-	unit(game_data& data, config& cfg);
+	unit(game_data& data, const config& cfg);
 	unit(const unit_type* t, int side, bool use_traits=false);
 
 	//a constructor used when advancing a unit
@@ -58,13 +58,13 @@ public:
 
 	bool invisible(gamemap::TERRAIN terrain) const;
 
-	bool matches_filter(config& cfg) const;
+	bool matches_filter(const config& cfg) const;
 
 	void set_flag(const std::string& flag);
 	void remove_flag(const std::string& flag);
 	bool has_flag(const std::string& flag) const;
 
-	void read(game_data& data, config& cfg);
+	void read(game_data& data, const config& cfg);
 
 	void write(config& cfg) const;
 
@@ -97,7 +97,7 @@ public:
 
 	int upkeep() const;
 
-	void add_modification(const std::string& type, config& modification,
+	void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
 
 private:

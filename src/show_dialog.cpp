@@ -615,6 +615,7 @@ TITLE_RESULT show_title(display& screen)
 	button multi_button(screen,string_table["multiplayer_button"]);
 	button quit_button(screen,string_table["quit_button"]);
 	button language_button(screen,string_table["language_button"]);
+	button preferences_button(screen,string_table["preferences"]);
 
 	const int menu_xbase = screen.x() - (x + tutorial_button.width() + 20);
 	const int menu_xincr = 0;
@@ -628,6 +629,7 @@ TITLE_RESULT show_title(display& screen)
 	load_button.set_xy(BUTTON_XY());
 	multi_button.set_xy(BUTTON_XY());
 	language_button.set_xy(BUTTON_XY());
+	preferences_button.set_xy(BUTTON_XY());
 	quit_button.set_xy(BUTTON_XY());
 
 	tutorial_button.draw();
@@ -636,6 +638,7 @@ TITLE_RESULT show_title(display& screen)
 	multi_button.draw();
 	quit_button.draw();
 	language_button.draw();
+	preferences_button.draw();
 	screen.video().flip();
 
 	CKey key;
@@ -659,6 +662,9 @@ TITLE_RESULT show_title(display& screen)
 
 		if(language_button.process(mousex,mousey,left_button))
 			return CHANGE_LANGUAGE;
+
+		if(preferences_button.process(mousex,mousey,left_button))
+			return EDIT_PREFERENCES;
 
 		if(quit_button.process(mousex,mousey,left_button))
 			return QUIT_GAME;

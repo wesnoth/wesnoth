@@ -60,10 +60,10 @@ struct pixel_data
 		b = ((pixel&fmt->Bmask) >> fmt->Bshift);
 	}
 
-	void read(config& cfg) {
-		const std::string& red = cfg.values["red"];
-		const std::string& green = cfg.values["green"];
-		const std::string& blue = cfg.values["blue"];
+	void read(const config& cfg) {
+		const std::string& red = cfg["red"];
+		const std::string& green = cfg["green"];
+		const std::string& blue = cfg["blue"];
 
 		if(red.empty())
 			r = 0;

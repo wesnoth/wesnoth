@@ -26,14 +26,14 @@ class team
 public:
 
 	struct target {
-		explicit target(config& cfg);
+		explicit target(const config& cfg);
 		config criteria;
 		double value;
 	};
 
 	struct team_info
 	{
-		team_info(config& cfg);
+		team_info(const config& cfg);
 		std::string name;
 		std::string gold;
 		std::set<std::string> can_recruit;
@@ -52,7 +52,7 @@ public:
 		bool use_shroud;
 	};
 
-	team(config& cfg, int gold=100);
+	team(const config& cfg, int gold=100);
 	void get_tower(const gamemap::location&);
 	void lose_tower(const gamemap::location&);
 	const std::set<gamemap::location>& towers() const;

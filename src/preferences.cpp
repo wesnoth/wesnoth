@@ -28,7 +28,7 @@ namespace {
 
 config prefs;
 
-display* disp;
+display* disp = NULL;
 
 }
 
@@ -72,7 +72,7 @@ bool fullscreen()
 
 void set_fullscreen(bool ison)
 {
-	prefs.values["fullscreen"] = (ison ? "true" : "false");
+	prefs["fullscreen"] = (ison ? "true" : "false");
 
 	if(disp != NULL) {
 		const std::pair<int,int>& res = resolution();
@@ -125,9 +125,9 @@ void set_resolution(const std::pair<int,int>& resolution)
 
 			char buf[50];
 			sprintf(buf,"%d",res.first);
-			prefs.values["xresolution"] = buf;
+			prefs["xresolution"] = buf;
 			sprintf(buf,"%d",res.second);
-			prefs.values["yresolution"] = buf;
+			prefs["yresolution"] = buf;
 		} else {
 			gui::show_dialog(*disp,NULL,"",string_table["video_mode_fail"],
 			                 gui::MESSAGE);
@@ -143,7 +143,7 @@ bool turbo()
 
 void set_turbo(bool ison)
 {
-	prefs.values["turbo"] = (ison ? "true" : "false");
+	prefs["turbo"] = (ison ? "true" : "false");
 
 	if(disp != NULL) {
 		disp->set_turbo(ison);
@@ -152,12 +152,12 @@ void set_turbo(bool ison)
 
 const std::string& locale()
 {
-	return prefs.values["locale"];
+	return prefs["locale"];
 }
 
 void set_locale(const std::string& s)
 {
-	prefs.values["locale"] = s;
+	prefs["locale"] = s;
 }
 
 double music_volume()
@@ -174,7 +174,7 @@ void set_music_volume(double vol)
 {
 	std::stringstream stream;
 	stream << vol;
-	prefs.values["music_volume"] = stream.str();
+	prefs["music_volume"] = stream.str();
 
 	sound::set_music_volume(vol);
 }
@@ -193,7 +193,7 @@ void set_sound_volume(double vol)
 {
 	std::stringstream stream;
 	stream << vol;
-	prefs.values["sound_volume"] = stream.str();
+	prefs["sound_volume"] = stream.str();
 
 	sound::set_sound_volume(vol);
 }
@@ -206,7 +206,7 @@ bool grid()
 
 void set_grid(bool ison)
 {
-	prefs.values["grid"] = (ison ? "true" : "false");
+	prefs["grid"] = (ison ? "true" : "false");
 
 	if(disp != NULL) {
 		disp->set_grid(ison);
@@ -241,7 +241,7 @@ void set_scroll_speed(double new_speed)
 {
 	std::stringstream formatter;
 	formatter << new_speed;
-	prefs.values["scroll"] = formatter.str();
+	prefs["scroll"] = formatter.str();
 	scroll = new_speed;
 }
 
