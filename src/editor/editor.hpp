@@ -140,6 +140,8 @@ public:
 	virtual void label_terrain() {}
 	virtual void show_enemy_moves(bool ignore_units) {}
 	virtual void edit_set_terrain() {}
+	virtual void toggle_shroud_updates() {}
+	virtual void update_shroud_now() {}
 	
 	// exception thrown when new map is to be loaded.
 	struct new_map_exception {
