@@ -10,7 +10,7 @@
 
 namespace {
 const size_t menu_font_size = 14;
-const size_t menu_cell_padding = 12;
+const size_t menu_cell_padding = 10;
 }
 
 namespace gui {
