@@ -296,8 +296,6 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 bool is_format_char(char c)
 {
 	switch(c) {
-	case '+':
-	case '-':
 	case '#':
 	case '@':
 		return true;

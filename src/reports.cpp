@@ -176,7 +176,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		str << status.turn() << "/" << status.number_of_turns() << "\n";
 		break;
 	case GOLD:
-		str << current_team.gold();
+		str << (current_team.gold() < 0 ? "#" : "") << current_team.gold();
 		break;
 	case VILLAGES: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
@@ -199,7 +199,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	}
 	case INCOME: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << data.net_income;
+		str << (data.net_income < 0 ? "#" : "") << data.net_income;
 		break;
 	}
 	case TERRAIN: {

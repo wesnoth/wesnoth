@@ -203,8 +203,9 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			for(paths::routes_map::const_iterator rt = new_paths.routes.begin();
 			    rt != new_paths.routes.end(); ++rt) {
 				const std::pair<location,location> item(un_it->first,rt->first);
+				const std::pair<location,location> item_reverse(rt->first,un_it->first);
 				enemy_srcdst.insert(item);
-				enemy_dstsrc.insert(item);
+				enemy_dstsrc.insert(item_reverse);
 			}
 		}
 		
@@ -250,9 +251,32 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 	const unit_map::iterator leader = find_leader(units,team_num);
 
-	//no moves left, recruitment phase
+	//no moves left, recruitment phase and leader movement phase
 	//take stock of our current set of units
-	if(srcdst.empty()) {
+	if(srcdst.empty() || leader != units.end() && srcdst.count(leader->first) == srcdst.size()) {
+		if(leader == units.end()) {
+			recorder.end_turn();
+			return;
+		}
+
+		//find where the leader can move
+		const paths leader_paths(map,gameinfo,units,leader->first,teams,false,false);
+		const gamemap::location& start_pos = map.starting_position(leader->second.side());
+
+		possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
+
+		bool leader_moved = false;
+		//if the leader is not on his starting location, move him there.
+		if(leader->first != start_pos) {
+			leader_moved = true;
+			const paths::routes_map::const_iterator itor = leader_paths.routes.find(start_pos);
+			if(itor != leader_paths.routes.end()) {
+				move_unit(gameinfo,disp,map,units,leader->first,start_pos,
+		                  possible_moves,teams,team_num);
+				
+			}
+		}
+
 		std::cout << "recruitment......\n";
 
 		//currently just spend all the gold we can!
@@ -291,6 +315,52 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		while(recruit(map,leader->first,options[rand()%options.size()].c_str(),
 		              gameinfo,team_num,current_team,min_gold,units,disp)) {
 
+		}
+
+		//see if the leader can capture a village safely
+		if(!leader_moved) {
+			//if the keep is accessible by an enemy unit, we don't want to leave it
+			gamemap::location adj[6];
+			get_adjacent_tiles(leader->first,adj);
+			for(size_t n = 0; n != 6; ++n) {
+				if(enemy_dstsrc.count(adj[n])) {
+					leader_moved = true;
+					break;
+				}
+			}
+		}
+
+		//search through villages finding one to capture
+		if(!leader_moved) {
+			const std::vector<gamemap::location>& villages = map.towers();
+			for(std::vector<gamemap::location>::const_iterator v = villages.begin();
+			    v != villages.end(); ++v) {
+				const paths::routes_map::const_iterator itor = leader_paths.routes.find(*v);
+				if(itor == leader_paths.routes.end()) {
+					continue;
+				}
+
+				const int owner = tower_owner(*v,teams);
+				if(owner == -1 || current_team.is_enemy(owner+1) || leader->second.hitpoints() < leader->second.max_hitpoints()) {
+
+					//check that no enemies can reach the village
+					gamemap::location adj[6];
+					get_adjacent_tiles(*v,adj);
+					size_t n;
+					for(n = 0; n != 6; ++n) {
+						if(enemy_dstsrc.count(adj[n]))
+							break;
+					}
+
+					if(n != 6)
+						continue;
+
+					move_unit(gameinfo,disp,map,units,leader->first,*v,
+			                  possible_moves,teams,team_num);
+
+					break;
+				}
+			}
 		}
 
 		recorder.end_turn();
@@ -401,12 +471,6 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 	//mark the leader as having moved and attacked by now
 	for(std::vector<location>::const_iterator lead = leader_locations.begin();
 	    lead != leader_locations.end(); ++lead) {
-		const std::map<location,unit>::iterator leader = units.find(*lead);
-		if(leader != units.end()) {
-			leader->second.set_movement(0);
-			leader->second.set_attacked();
-		}
-
 		//remove leader from further consideration
 		srcdst.erase(*lead);
 		dstsrc.erase(*lead);

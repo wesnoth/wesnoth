@@ -102,7 +102,7 @@ void replay::next_skip()
 
 bool replay::skipping() const
 {
-	return skip_ != 0;
+	return at_end() == false && skip_ != 0;
 }
 
 void replay::save_game(game_data& data, const std::string& label, const config& start_pos,
@@ -273,6 +273,7 @@ void replay::mark_current()
 
 config* replay::add_command()
 {
+	pos_ = ncommands()+1;
 	return current_ = &cfg_.add_child("command");
 }
 

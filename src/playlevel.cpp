@@ -79,6 +79,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 
 	const bool modify_placing = (*level)["modify_placing"] == "true";
 	std::set<int> taken_places;
+	std::vector<gamemap::location> starting_locs;
 
 	const config::child_list& unit_cfg = level->get_children("side");
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
@@ -135,6 +136,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 			assert(start != -1);
 
 			const gamemap::location& start_pos = map.starting_position(start);
+			starting_locs.push_back(start_pos);
 
 			if(!start_pos.valid() && new_unit.side() == 1) {
 				throw gamestatus::load_game_failed("No starting position for side 1");
@@ -175,6 +177,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 				std::cerr << "inserting unit for side " << new_unit.side() << "\n";
 			}
 		}
+	}
+
+	for(size_t pos = 0; pos != starting_locs.size(); ++pos) {
+		map.set_starting_position(pos+1,starting_locs[pos]);
 	}
 
 	const teams_manager team_manager(teams);
@@ -235,6 +241,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 				const hotkey::basic_handler key_events_handler(gui);
 				clear_shroud(gui,map,gameinfo,units,teams,0);
 
+				std::cerr << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui,recorder.skipping());
 				game_events::fire("start");
 				gui.draw();
@@ -474,6 +481,7 @@ redo_turn:
 			event_stream << "turn " << status.turn();
 
 			{
+				std::cerr << "turn event..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui,recorder.skipping());
 				game_events::fire(event_stream.str());
 			}

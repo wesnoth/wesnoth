@@ -70,7 +70,7 @@ struct move_cost_calculator
 */
 		double res = modifier*move_cost + enemies*2.0;
 
-		//if there is a unit (even a friendly one) on this tile, we increase the cost
+		//if there is a unit (even a friendly one) on this tile, we increase the cost to
 		//try discourage going through units, to thwart the 'single file effect'
 		if(units_.count(loc))
 			res *= 4.0;
