@@ -202,24 +202,22 @@ bool locator::value::operator<(const value& a) const
 
 surface locator::load_image_file() const
 {
+	surface res;
+
 #ifdef USE_ZIPIOS
-	std::string s = read_file("images/" + val_.filename_);
-	if (s.empty())
-		return surface(NULL);
-
-	SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
-	const surface res(IMG_Load_RW(ops, 0));
-	SDL_FreeRW(ops);
-#else
-	const std::string& location = get_binary_file_location("images", val_.filename_);
-	if(location.empty())
-		return surface(NULL);
-
-	const surface res(IMG_Load(location.c_str()));
-#endif
-	if(res == NULL) {
-		ERR_DP << "could not open image '" << val_.filename_ << "'\n";
+	std::string const &s = read_file("images/" + val_.filename_);
+	if (!s.empty()) {
+		SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
+		res = IMG_Load_RW(ops, 0);
+		SDL_FreeRW(ops);
 	}
+#else
+	std::string const &location = get_binary_file_location("images", val_.filename_);
+	if (!location.empty())
+		res = IMG_Load(location.c_str());
+#endif
+	if (res.null())
+		ERR_DP << "could not open image '" << val_.filename_ << "'\n";
 
 	return res;
 }
