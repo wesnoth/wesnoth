@@ -123,6 +123,12 @@ surface get_video_surface()
 	return frameBuffer;
 }
 
+SDL_Rect screen_area()
+{
+	const SDL_Rect res = {0,0,frameBuffer->w,frameBuffer->h};
+	return res;
+}
+
 void update_rect(size_t x, size_t y, size_t w, size_t h)
 {
 	const SDL_Rect rect = {x,y,w,h};
