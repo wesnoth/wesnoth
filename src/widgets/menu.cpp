@@ -568,11 +568,11 @@ void menu::process_help_string(int mousex, int mousey)
 	if(loc == cur_help_) {
 		return;
 	} else if(loc.first == -1) {
-		disp().clear_help_string(help_string_);
+		video().clear_help_string(help_string_);
 		help_string_ = -1;
 	} else {
 		if(help_string_ != -1) {
-			disp().clear_help_string(help_string_);
+			video().clear_help_string(help_string_);
 			help_string_ = -1;
 		}
 
@@ -582,7 +582,7 @@ void menu::process_help_string(int mousex, int mousey)
 				const std::string& help = row[loc.second];
 				if(help.empty() == false) {
 					//std::cerr << "setting help string from menu to '" << help << "'\n";
-					help_string_ = disp().set_help_string(help);
+					help_string_ = video().set_help_string(help);
 				}
 			}
 		}

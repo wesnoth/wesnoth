@@ -202,7 +202,7 @@ void update_whole_screen()
 {
 	update_all = true;
 }
-CVideo::CVideo() : bpp(0), fake_screen(false)
+CVideo::CVideo() : bpp(0), fake_screen(false), help_string_(0)
 {
 	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 
@@ -213,7 +213,7 @@ CVideo::CVideo() : bpp(0), fake_screen(false)
 }
 
 CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
-		 : bpp(0), fake_screen(false)
+		 : bpp(0), fake_screen(false), help_string_(0)
 {
 	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
@@ -384,4 +384,39 @@ void CVideo::setBpp( int bpp )
 int CVideo::getBpp( void )
 {
 	return bpp;
+}
+
+int CVideo::set_help_string(const std::string& str)
+{
+	font::remove_floating_label(help_string_);
+
+	const SDL_Color colour = {0x0,0x00,0x00,0x77};
+
+	int size = font::SIZE_LARGE;
+
+	while(size > 0) {
+		if(font::line_width(str, size) > getx()) {
+			size--;
+		} else {
+			break;
+		}
+	}
+
+	help_string_ = font::add_floating_label(str,size,font::NORMAL_COLOUR,getx()/2,gety(),0.0,0.0,-1,screen_area(),font::CENTER_ALIGN,&colour,5);
+	const SDL_Rect& rect = font::get_floating_label_rect(help_string_);
+	font::move_floating_label(help_string_,0.0,-double(rect.h));
+	return help_string_;
+}
+
+void CVideo::clear_help_string(int handle)
+{
+	if(handle == help_string_) {
+		font::remove_floating_label(handle);
+		help_string_ = 0;
+	}
+}
+
+void CVideo::clear_all_help_strings()
+{
+	clear_help_string(help_string_);
 }

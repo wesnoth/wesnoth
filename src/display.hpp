@@ -352,13 +352,6 @@ public:
 
 	bool in_game() const { return in_game_; }
 
-	//functions to set and clear 'help strings'. A 'help string' is like a tooltip, but it appears
-	//at the bottom of the screen, so as to not be intrusive. Setting a help string sets what
-	//is currently displayed there.
-	int set_help_string(const std::string& str);
-	void clear_help_string(int handle);
-	void clear_all_help_strings();
-
 private:
 	display(const display&);
 	void operator=(const display&);
@@ -502,9 +495,6 @@ private:
 	std::set<gamemap::location> highlighted_locations_;
 
 	int diagnostic_label_;
-
-	//variables for help strings
-	int help_string_;
 
 	//animated flags for each team
 	std::vector<animated<image::locator> > flags_;

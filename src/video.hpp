@@ -78,6 +78,13 @@ class CVideo {
 
 	void make_fake();
 
+	//functions to set and clear 'help strings'. A 'help string' is like a tooltip, but it appears
+	//at the bottom of the screen, so as to not be intrusive. Setting a help string sets what
+	//is currently displayed there.
+	int set_help_string(const std::string& str);
+	void clear_help_string(int handle);
+	void clear_all_help_strings();
+
 private:
 
 	bool mode_changed_;
@@ -86,6 +93,9 @@ private:
 
 	//if there is no display at all, but we 'fake' it for clients
 	bool fake_screen;
+
+	//variables for help strings
+	int help_string_;
 };
 
 #endif

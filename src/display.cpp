@@ -79,7 +79,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), diagnostic_label_(0),
-	help_string_(0), fps_handle_(0)
+	fps_handle_(0)
 {
 	if(non_interactive())
 		updatesLocked_++;
@@ -2154,41 +2154,6 @@ void display::begin_game()
 {
 	in_game_ = true;
 	create_buttons();
-}
-
-int display::set_help_string(const std::string& str)
-{
-	font::remove_floating_label(help_string_);
-
-	const SDL_Color colour = {0x0,0x00,0x00,0x77};
-
-	int size = font::SIZE_LARGE;
-
-	while(size > 0) {
-		if(font::line_width(str, size) > x()) {
-			size--;
-		} else {
-			break;
-		}
-	}
-
-	help_string_ = font::add_floating_label(str,size,font::NORMAL_COLOUR,x()/2,y(),0.0,0.0,-1,screen_area(),font::CENTER_ALIGN,&colour,5);
-	const SDL_Rect& rect = font::get_floating_label_rect(help_string_);
-	font::move_floating_label(help_string_,0.0,-double(rect.h));
-	return help_string_;
-}
-
-void display::clear_help_string(int handle)
-{
-	if(handle == help_string_) {
-		font::remove_floating_label(handle);
-		help_string_ = 0;
-	}
-}
-
-void display::clear_all_help_strings()
-{
-	clear_help_string(help_string_);
 }
 
 void display::create_buttons()
