@@ -2,10 +2,11 @@ CVS HEAD:
  * added 'search' action which goes through labels and unit names, hotkey is '/'
  * added 'continue move' action, hotkey is 't'
  * made game more responsive when AI or another player is playing.
+ * made village placement fairer in random map generation
  * 'end of turn' sanity check
- * UI cleanups
  * added experience gauge, meld with hit points gauge
  * support different resolutions for 'fullscreen' and 'windowed'
+ * UI cleanups
  * added and improved village images, healing images
  * resized ellipses
  * Elvish Outrider made 3rd level unit, increased hitpoins and ranged attack damage
@@ -23,6 +24,7 @@ CVS HEAD:
  * multiplayer improvements
    * added scrolling and wrapping support for chat in lobby
    * shared vision option
+   * Wesbowl
  * editor improvements:
    * added revert from disk functionality
    * selection of terrain is kep through undo and redo operations
@@ -40,9 +42,11 @@ CVS HEAD:
  * fixed bug where 'cancel' button would appear under multiplayer games
  * fixed preferences widgets disappearing when changing video mode
  * fixed tooltips from game setup appearing in-game
+ * fixed hotkey not updating immidiately in the hotkeys dialog when changed
  * made input of search strings and messages use a textbox that overlays the map, which allows these operations to be performed asynchronously
  * added caching of data files to speed game loading
  * removed old castle images
+ * wesnoth_zip
 
 Version 0.7.6:
  * added and improved unit images, leadership and healing images
