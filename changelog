@@ -1,4 +1,4 @@
-CVS HEAD:
+Version 0.6.99.2:
  * nightstalk ability added
  * added turn-to-stone special weapon ability
  * invisible units are now revealed when enemy comes adjacent to them
@@ -42,7 +42,9 @@ CVS HEAD:
  * fixed crashing on missing intro image
  * fix to bug in tiles_adjacent()
  * fixed "Leving" -> "Leaving" in Shadow description
- * attempt to fix problem where after being disconnected from the server, players would be unable to reconnect without quitting the client
+ * fixed problem where after being disconnected from the server, players would be unable to reconnect without quitting the client
+ * fixed game not notifying when save game failed
+ * fixed round indicator does not show completely (#7500)
  * attempt to fix STL-related compile error on Slackware
  * added find_visible_unit, to find a visible_unit by location in a unit_map
  * initial implementation of developer documentation (doxygen)
