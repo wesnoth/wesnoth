@@ -10,9 +10,6 @@ CVS HEAD:
    * attack icons
  * new scenarios for 'Heir to the Throne' campaign:
    * Battle for Wesnoth (final scenario)
- * new scenarios for 'The Rise of Wesnoth' campaign:
-   * Rise of Wesnoth (final scenario)
-   * Epilogue (non-playable epilogue)
  * scenario balancing for 'Heir to the Throne' campaign:
    * Crossroads
    * Test of the Clans
@@ -26,6 +23,9 @@ CVS HEAD:
    * The Duel
    * The Outpost
    * Two Paths
+ * epilogue for 'The Rise of Wesnoth' campaign
+ * new scenarios for 'The Rise of Wesnoth' campaign:
+   * Rise of Wesnoth (final scenario)
  * scenario balancing for 'The Rise of Wesnoth' campaign:
    * A Final Spring
    * A Harrowing Escape
@@ -39,9 +39,11 @@ CVS HEAD:
    * Dwarvish Guardsman: reduced blade, pierce, impact, fire and cold resistances, reduced cost, reduced number of ranged attacks
    * Dwarvish Stalwart: reduced blade, pierce, impact, fire and cold resistances, reduced number of ranged attack, increased ranged damage
    * Ghost: switched movetype to 'spirit', halved hitpoints, reduced movement
+   * Lich: increased cost
+   * Necromancer: increased cost
    * Nightgaunt: switched movetype to 'spirit', halved hitpoints, reduced movement, reduced number of attacks, backstab
    * Orcish Archer: reduced cost
-   * Peasant: reduced cost, increased melee damage
+   * Peasant: increased cost, increased melee damage
    * Spectre: switched movetype to 'spirit', halved hitpoints, reduced movement, backstab
    * Shadow: switched movetype to 'spirit', halved hitpoints, reduced movement, reduced number of attacks, backstab
    * Vampire Bat: increased cost
@@ -57,6 +59,7 @@ CVS HEAD:
    * czech
    * finnish
    * french
+   * german
    * hungarian
    * italian
    * norwegian
@@ -94,6 +97,7 @@ CVS HEAD:
  * fixed past-the-end issue on botched UTF-8 strings
  * fixed scroll_to_unit issues on 'The Rise of Wesnoth' campaign
  * workaround for Reiser4 feature bug (#10264)
+ * workaround for BeOS gettext implementation
  * re-implemented enhanced sound quality fix
  * added error dialog when a campaign has corrupt WML
  * added better error messages for machines that cannot bind to local ports 
