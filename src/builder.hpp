@@ -59,7 +59,7 @@ public:
 
 		imagelist images;
 	};
-	
+
 	struct tile
 	{
 		tile(); 

@@ -27,14 +27,15 @@ namespace gui {
 
 const int font_size = 16;
 
-textbox::textbox(display& d, int width, const std::string& text, bool editable)
+textbox::textbox(display& d, int width, const std::string& text, bool editable, size_t max_size)
            : widget(d), text_(string_to_wstring(text)), text_pos_(0),
-             cursor_(text_.size()), selstart_(-1), selend_(-1), grabmouse_(false),
-	         editable_(editable), show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
-			 scrollbar_(d,this),
-             uparrow_(d,"",gui::button::TYPE_PRESS,"uparrow-button"),
+	     cursor_(text_.size()), selstart_(-1), selend_(-1),
+	     grabmouse_(false), editable_(editable), max_size_(max_size),
+	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
+	     scrollbar_(d,this),
+	     uparrow_(d,"",gui::button::TYPE_PRESS,"uparrow-button"),
              downarrow_(d,"",gui::button::TYPE_PRESS,"downarrow-button"),
-			 scroll_bottom_(false), wrap_(false), line_height_(0), yscroll_(0)
+	     scroll_bottom_(false), wrap_(false), line_height_(0), yscroll_(0)
 {
 	static const SDL_Rect area = d.screen_area();
 	const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
@@ -49,6 +50,7 @@ const std::string textbox::text() const
 	return ret;
 }
 
+// set_text does not respect max_size_
 void textbox::set_text(std::string text)
 {
 	text_ = string_to_wstring(text);
@@ -357,16 +359,11 @@ void textbox::handle_event(const SDL_Event& event)
 {
 	bool changed = false;
 	
-	//if the user presses ctrl+c to copy text onto the clipboard
-	if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_c && (event.key.keysym.mod&KMOD_CTRL) != 0
-	   && size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size() && selstart_ != selend_) {
-		const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
-		const size_t end = maximum<size_t>(size_t(selstart_),size_t(selend_));
-
-		wide_string ws = wide_string(text_.begin() + beg, text_.begin() + end);
-		std::string s = wstring_to_string(ws);
-		copy_to_clipboard(s);
-		return;
+	//Sanity check: verify that selection start and end are within text
+	//boundaries
+	if(is_selection() && !(size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size())) {
+		std::cerr << "Warning: out-of-boundary selection\n";
+		selstart_ = selend_ = -1;
 	}
 
 	int mousex, mousey;
@@ -493,15 +490,35 @@ void textbox::handle_event(const SDL_Event& event)
 			std::cerr << "Char: " << character << ", c = " << c << "\n";
 	
 		if(event.key.keysym.mod & KMOD_CTRL) {
-			if(c == SDLK_v) {
+			switch(c) {
+			case SDLK_v:
+				{
 				changed = true;
 				if(is_selection())
 					erase_selection();
 
 				wide_string s = string_to_wstring(copy_from_clipboard());
+				if(text_.size() < max_size_) {
+					if(s.size() + text_.size() > max_size_) {
+						s.resize(max_size_ - text_.size());
+					}
+					text_.insert(text_.begin()+cursor_, s.begin(), s.end());
+					cursor_ += s.size();
+				}
+				}
 
-				text_.insert(text_.begin()+cursor_, s.begin(), s.end());
-				cursor_ += s.size();
+				break;
+
+			case SDLK_c:
+				{
+				const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
+				const size_t end = maximum<size_t>(size_t(selstart_),size_t(selend_));
+
+				wide_string ws = wide_string(text_.begin() + beg, text_.begin() + end);
+				std::string s = wstring_to_string(ws);
+				copy_to_clipboard(s);
+				} 
+				break;
 			}
 		} else {
 			if(character >= 32 && character != 127) {
@@ -509,8 +526,10 @@ void textbox::handle_event(const SDL_Event& event)
 				if(is_selection()) 
 					erase_selection();
 
-				text_.insert(text_.begin()+cursor_,character);
-				++cursor_;		
+				if(text_.size() + 1 <= max_size_) {
+					text_.insert(text_.begin()+cursor_,character);
+					++cursor_;		
+				}
 			}
 		}
 	}

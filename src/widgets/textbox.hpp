@@ -30,7 +30,7 @@ namespace gui {
 class textbox : public widget, public scrollable
 {
 public:
-	textbox(display& d, int width, const std::string& text="", bool editable=true);
+	textbox(display& d, int width, const std::string& text="", bool editable=true, size_t max_size = 256);
 
 	const std::string text() const;
 	void set_text(std::string text);
@@ -47,6 +47,8 @@ public:
 	void draw();
 
 private:
+	size_t max_size_;
+
 	void scroll(int pos);
 
 	wide_string text_;

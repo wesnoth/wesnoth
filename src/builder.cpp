@@ -273,14 +273,12 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 	add_images_from_config(constraint.images, cfg);
 }
 
-void terrain_builder::parse_mapstring(const std::string &mapstring, struct building_rule &br,
-				      anchormap& anchors)
+void terrain_builder::parse_mapstring(const std::string &mapstring,
+		struct building_rule &br, anchormap& anchors)
 {
 	int lineno = 0;
 	int x = 0;
 
-	// std::cerr << "Loading map \"" << mapstring << "\"\n";
-	
 	const std::vector<std::string> &lines = config::split(mapstring, '\n', 0);
 	std::vector<std::string>::const_iterator line = lines.begin();
 	
@@ -292,17 +290,15 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 	if(line == lines.end())
 		return;
 	
-	//If the strings starts with a space, the first line is an odd line, else it is an even one
+	//If the strings starts with a space, the first line is an odd line,
+	//else it is an even one
 	if((*line)[0] == ' ')
 		lineno = 1;
 
-	//std::cerr << "--- Begin map ---\n";
-	
 	for(; line != lines.end(); ++line) {
-		//cuts each line into chunks of 4 characters, ignoring the 2 first ones if the line is odd
+		//cuts each line into chunks of 4 characters, ignoring the 2
+		//first ones if the line is odd
 
-		//std::cerr << "Line is " << *line << "\n";
-		
 		x = 0;
 		std::string::size_type lpos = 0;
 		if(lineno % 2) {
@@ -314,11 +310,11 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 			std::string types = line->substr(lpos, 4);
 			config::strip(types);
 			
-			//std::cerr << types << "/";
-			
-			//If there are numbers in the types string, consider it is an anchor
+			//If there are numbers in the types string, consider it
+			//is an anchor
 			if(types[0] == '.') {
-				// Dots are simple placeholders, which do not represent actual terrains.
+				// Dots are simple placeholders, which do not
+				// represent actual terrains.
 			} else if(types.find_first_of("0123456789") != std::string::npos) {
 				int anchor = atoi(types.c_str());
 				anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, lineno / 2)));
@@ -329,11 +325,8 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 			lpos += 4;
 			x += 2;
 		}
-		//std::cerr << "\n";
 		lineno++;
 	}
-	//std::cerr << "--- End map ---\n";
-
 }
 
 void terrain_builder::add_rotated_rules(building_ruleset& rules, const building_rule& tpl, const std::string &rotations)
