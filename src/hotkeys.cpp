@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "config.hpp"
 #include "events.hpp"
 #include "hotkeys.hpp"
