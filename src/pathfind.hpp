@@ -14,7 +14,7 @@
 #define PATHFIND_H_INCLUDED
 
 #include "array.hpp"
-#include "gamestatus.hpp"
+class gamestatus;
 #include "log.hpp"
 #include "map.hpp"
 #include "pathutils.hpp"

@@ -16,6 +16,7 @@
 #include "actions.hpp"
 #include "ai.hpp"
 #include "game_config.hpp"
+#include "gamestatus.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"

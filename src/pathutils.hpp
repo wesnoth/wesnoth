@@ -14,7 +14,6 @@ See the COPYING file for more details.
 #ifndef PATHUTILS_H_INCLUDED
 #define PATHUTILS_H_INCLUDED
 
-#include "global.hpp"
 #include "map.hpp"
 
 //function which tells if two locations are adjacent.
