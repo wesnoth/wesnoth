@@ -91,10 +91,10 @@ void show_intro(display& screen, config& data)
 		
 		int xpos = textx, ypos = texty;
 		size_t height = 0;
+		std::string buf;
 		for(;;) {
-			std::string buf;
 			if(j != story.end()) {
-				char c = *j;
+				unsigned char c = *j;
 				if(c == ' ' && cur_length >= max_length) {
 					xpos = textx;
 					ypos += height;
@@ -102,7 +102,7 @@ void show_intro(display& screen, config& data)
 				} else {
 					buf.resize(buf.size()+1);
 					buf[buf.size()-1] = c;
-
+					
 					//if this is definitely a non-UTF8 character, output it now
 					if(c < 128 || j+1 == story.end()) {
 						const SDL_Rect rect = font::draw_text(&screen,
