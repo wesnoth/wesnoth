@@ -488,7 +488,7 @@ void map_editor::main_loop() {
 
 
 std::string get_filename_from_dialog(CVideo &video, config &cfg) {
-  std::string path = WESNOTH_PATH;
+  std::string path = game_config::path;
   path += "/data/maps/";
   
   display::unit_map u_map;
