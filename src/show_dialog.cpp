@@ -477,6 +477,7 @@ int show_dialog(display& disp, surface image,
 	std::vector<button> buttons;
 	switch(type) {
 		case MESSAGE:
+		default:
 			break;
 
 		case OK_ONLY: {
