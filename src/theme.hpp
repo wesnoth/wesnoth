@@ -4,7 +4,6 @@
 #include <map>
 #include <string>
 #include <vector>
-#include <map>
 
 class config;
 
@@ -137,7 +136,7 @@ public:
         static std::vector<std::string> get_known_themes();
 
 private:
-        static std::map<std::string, config> theme::known_themes;
+	static std::map<std::string, config> known_themes;
         std::string cur_theme;
         const config& cfg_;
 	std::vector<panel> panels_;
