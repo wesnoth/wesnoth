@@ -1,3 +1,37 @@
+CVS HEAD:
+ * added undoing recall
+ * improved context menu
+ * added and improved unit images, castle images and attack icons
+ * added berserk attack ability and gave it to Dwarvish Berserker
+ * Dark Adept ranged attack made stronger and cold resistance improved
+ * Footpad made a bit easier to advance, faster movement, melee and ranged attack made stronger
+ * new units:
+   * Iron Mauler
+   * Soulless
+   * Wose Sapling
+   * Wose
+   * Ancient Wose
+ * scenario balancing for 'Heir to the Throne' campaign:
+   * Dwarven Doors
+ * scenario balancing for 'Son of the Black Eye' campaign:
+   * Toward Mountains of Haag
+   * Silent Forest
+ * multiplayer enhancements:
+   * added "private" messaging between allies
+ * language fixes and polishing (english)
+ * added treefolk movetype
+ * added terrain multiple aliases
+ * allow multiple sides (comma separared) to be specified in unit filters
+ * [have_unit] now honors location
+ * fixed on-map labels slowly shifting
+ * fixed on-map labels not printing black on light coloured terrains
+ * fixed ellipses not fading when a unit dies
+ * fixed bug where if the host changed their name, it would show that name to users connecting to the game
+ * fixed bug in lobby where top-left of screen would not be drawn properly
+ * fixed bug with AI not getting villages
+ * minor autotools fixes
+ * slacknoth improvements
+
 Version 0.7.2:
  * show possible enemy moves view (context menu -> show possible enemy moves)
  * added and improved unit images
@@ -66,7 +100,7 @@ Version 0.7.1:
  * Youth (Konrad) changed to level 0 unit
  * reduced Sleeping Gryphon's number of attacks to same with Gryphon
  * improved swimmer (Merman, Naga, etc) movement on swamp, grassland, sand and tundra
- * new units
+ * new units:
    * Battle Princess
    * Cockatrice
    * Giant Scorpion
@@ -74,7 +108,7 @@ Version 0.7.1:
    * Grand Knight
    * Orcish Shaman
    * Yeti
- * new special units
+ * new special units:
    * Orcish Ruler (hero in the Son of the Black Eye campaign)
    * Pirate Galleon
    * Transport Galleon
