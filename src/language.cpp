@@ -21,6 +21,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 
+#include <algorithm>
 #include <cctype>
 #include <cerrno>
 #include <cstdlib>

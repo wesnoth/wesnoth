@@ -11,9 +11,10 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "display.hpp"
 #include "gettext.hpp"
-#include "global.hpp"
 #include "image.hpp"
 #include "show_dialog.hpp"
 #include "map_create.hpp"

@@ -11,8 +11,9 @@
    See the COPYING file for more details.
 */
 
-#include "gettext.hpp"
 #include "global.hpp"
+
+#include "gettext.hpp"
 #include "leader_list.hpp"
 #include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
