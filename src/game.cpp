@@ -1481,9 +1481,11 @@ int play_game(int argc, char** argv)
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::TITLE_CONTINUE;
 
 		int ntip = -1;
+		config tips_of_day;
 		while(res == gui::TITLE_CONTINUE) {
-			res = gui::show_title(game.disp(),&ntip);
+			res = gui::show_title(game.disp(),tips_of_day,&ntip);
 		}
+		tips_of_day.clear();
 
 		std::cerr << "title screen returned result\n";
 		if(res == gui::QUIT_GAME) {

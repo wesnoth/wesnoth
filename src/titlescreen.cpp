@@ -1,3 +1,4 @@
+#include "config.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
@@ -81,49 +82,59 @@ void fade_logo(display& screen, int xpos, int ypos)
 	faded_in = true;
 }
 
-const std::string& get_tip_of_day(int* ntip)
+const std::string& get_tip_of_day(const config& tips,int* ntip)
 {
 	static const std::string empty_string;
+	string_map::const_iterator it;
+
 	if(preferences::show_tip_of_day() == false) {
 		return empty_string;
 	}
 
-	int ntips = 0;
-	/*
-	It is probably the only part of the code where it makes sense for string_table
-	to send back an empty string. So let's avoid this problem while the "UNTBL" hack
-	is in effect. -- silene
-	while(ntips < 1000 && string_table["tip_of_day" + str_cast(ntips+1)] != "") {
-	*/
-	while(ntips < 1000 && string_table["tip_of_day" + str_cast(ntips+1)].substr(0, 5) != "UNTLB") {
-		++ntips;
-	}
-
+	int ntips = tips.values.size();
 	if(ntips == 0) {
 		return empty_string;
 	}
 
 	if(ntip != NULL && *ntip > 0) {
-		if(*ntip > ntips) {
+		if(*ntip >= ntips) {
 			*ntip -= ntips;
 		}
 
-		return string_table["tip_of_day" + str_cast(*ntip)];
+		it = tips.values.begin();
+		for(int i = 0; i < *ntip; i++,it++);
+		return it->second;
 	}
 
-	const int tip = (rand()%ntips) + 1;
+	const int tip = (rand()%ntips);
 	if(ntip != NULL) {
 		*ntip = tip;
 	}
 
-	return string_table["tip_of_day" + str_cast(tip)];
+	it = tips.values.begin();
+	for(int i = 0; i < tip; i++,it++);
+	return it->second;
 }
 
+const config get_tips_of_day()
+{
+	config cfg;
+
+	std::cerr << "Loading tips of day\n";
+	try {
+		cfg.read(preprocess_file("data/tips.cfg"));
+	} catch(config::error& e) {
+		std::cerr << "Could not read tips.cfg\n";
+	}
+
+	return cfg;
 }
+
+} //end anonymous namespace
 
 namespace gui {
 
-TITLE_RESULT show_title(display& screen, int* ntip)
+TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 {
 	cursor::set(cursor::NORMAL);
 
@@ -211,7 +222,10 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 
 	gui::button next_tip_button(screen,_("More"),button::TYPE_PRESS,"lite_small");
 
-	std::string tip_of_day = get_tip_of_day(ntip);
+	if(tips_of_day.empty()) {
+		tips_of_day = get_tips_of_day();
+	}
+	std::string tip_of_day = get_tip_of_day(tips_of_day,ntip);
 	if(tip_of_day.empty() == false) {
 		tip_of_day = font::word_wrap_text(tip_of_day,font::SIZE_NORMAL,
 						  (game_config::title_tip_width*screen.x())/1024);
