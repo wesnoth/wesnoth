@@ -1798,15 +1798,9 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			
 			if(steps.size() < route.size()) {
 				//see if the "Continue Move" action has an associated hotkey
-				const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
-				std::vector<hotkey::hotkey_item>::const_iterator hk;
-				for(hk = hotkeys.begin(); hk != hotkeys.end(); ++hk) {
-					if(hk->action == hotkey::HOTKEY_CONTINUE_MOVE) {
-						break;
-					}
-				}
-				if(hk != hotkeys.end()) {
-					symbols["hotkey"] = hotkey::get_hotkey_name(*hk);
+				const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
+				if(!hk.null()) {
+					symbols["hotkey"] = hk.get_name();
 					msg << '\n' << _("(press $hotkey to continue)");
 				}
 			}

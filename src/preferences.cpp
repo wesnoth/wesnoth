@@ -98,7 +98,7 @@ display_manager::display_manager(display* d)
 {
 	disp = d;
 
-	hotkey::add_hotkeys(prefs,true);
+	hotkey::load_hotkeys(prefs);
 
 	set_grid(grid());
 	set_turbo(turbo());
@@ -1051,13 +1051,15 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 	std::vector<std::string> menu_items;
 
-	std::vector<hotkey::hotkey_item> hotkeys = hotkey::get_hotkeys();
+	std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
 	for(std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i) {
+		if(i->hidden())
+			continue;
 		std::stringstream str,name;
-		name<< hotkey::command_to_description(i->action);
+		name << i->get_description();
 		str << name.str();
 		str << ",  :  ,";
-		str << hotkey::get_hotkey_name(*i); 
+		str << i->get_name();
 		menu_items.push_back (str.str ());
 	}
 
@@ -1125,32 +1127,22 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			} while (event.type!=SDL_KEYUP);
 			restorer.restore();
 			disp.update_display();
-			for (std::vector < hotkey::hotkey_item >::iterator i =
-	     		hotkeys.begin (); i != hotkeys.end (); i++)
-			{ 
-				if((i->keycode == key) 
-					&& (i->alt == ((mod&KMOD_ALT) != 0))
-					&& (i->ctrl == ((mod&KMOD_CTRL) != 0))
-					&& (i->shift == ((mod&KMOD_SHIFT) != 0))
-					&& (i->command == ((mod&KMOD_LMETA) != 0))) {
-					used = true;
-				}
-			}
-			if(used) {
+
+			const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(key, mod & KMOD_SHIFT, 
+					mod & KMOD_CTRL, mod & KMOD_ALT, mod & KMOD_LMETA);
+			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
+
+			if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
 				gui::show_dialog(disp,NULL,"",_("This HotKey is already in use."),gui::MESSAGE);
 			} else {
-				hotkeys[menu_.selection()].alt =  ((mod&KMOD_ALT) != 0);
-				hotkeys[menu_.selection()].ctrl = ((mod&KMOD_CTRL) != 0);
-				hotkeys[menu_.selection()].shift = ((mod&KMOD_SHIFT) != 0);
-				hotkeys[menu_.selection()].command = ((mod&KMOD_LMETA) != 0);
-				hotkeys[menu_.selection()].keycode = key;
-				hotkey::change_hotkey(hotkeys[menu_.selection()]);
-				menu_.change_item(menu_.selection(),2,
-							hotkey::get_hotkey_name(hotkeys[menu_.selection()]));
+				newhk.set_key(key, mod & KMOD_SHIFT, 
+						mod & KMOD_CTRL, mod & KMOD_ALT, mod & KMOD_LMETA);
+
+				menu_.change_item(menu_.selection(), 2, newhk.get_name());
 			};
 			redraw_all = true;
 		}
-		if (save_button.process (mousex, mousey, left_button))
+		if (save_button.process(mousex, mousey, left_button))
 		{
 			if (save_config == NULL) {
 				hotkey::save_hotkeys(prefs);
@@ -1161,7 +1153,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			redraw_all = true;
 		}
 
-		menu_.process (mousex, mousey, left_button, false,
+		menu_.process(mousex, mousey, left_button, false,
 			       false, false, false);
 
 		events::pump();

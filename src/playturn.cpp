@@ -972,7 +972,7 @@ namespace {
 	struct cannot_execute {
 		cannot_execute(const turn_info& info) : info_(info) {}
 		bool operator()(const std::string& str) const {
-			return !info_.can_execute_command(hotkey::string_to_command(str));
+			return !info_.can_execute_command(hotkey::get_hotkey(str).get_id());
 		}
 	private:
 		const turn_info& info_;
@@ -981,7 +981,7 @@ namespace {
 	struct not_in_context_menu {
 		not_in_context_menu(const turn_info& info) : info_(info) {}
 		bool operator()(const std::string& str) const {
-			return !info_.in_context_menu(hotkey::string_to_command(str));
+			return !info_.in_context_menu(hotkey::get_hotkey(str).get_id());
 		}
 	private:
 		const turn_info& info_;
@@ -999,36 +999,24 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 
 	//if just one item is passed in, that means we should execute that item
 	if(items.size() == 1 && items_arg.size() == 1) {
-		hotkey::execute_command(gui_,hotkey::string_to_command(items.front()),this);
+		hotkey::execute_command(gui_,hotkey::get_hotkey(items.front()).get_id(),this);
 		return;
 	}
 
 	bool has_image = false;
 	std::vector<std::string> menu;
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(*i);
+		const hotkey::hotkey_item hk = hotkey::get_hotkey(*i);
+
 		std::stringstream str;
 		//see if this menu item has an associated image
-		std::string img(get_menu_image(cmd));
+		std::string img(get_menu_image(hk.get_id()));
 		if(img.empty() == false) {
 			has_image = true;
 			str << '&' << img << ',';
 		}
 		
-		str << hotkey::command_to_description(hotkey::string_to_command(*i));
-		
-		//see if this menu item has an associated hotkey
-		const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
-		std::vector<hotkey::hotkey_item>::const_iterator hk;
-		for(hk = hotkeys.begin(); hk != hotkeys.end(); ++hk) {
-			if(hk->action == cmd) {
-				break;
-			}
-		}
-
-		if(hk != hotkeys.end()) {
-			str << "," << hotkey::get_hotkey_name(*hk);
-		}
+		str << hk.get_description() << "," << hk.get_name();
 
 		menu.push_back(str.str());
 	}
@@ -1044,7 +1032,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 	if(res < 0 || res >= items.size())
 		return;
 
-	const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(items[res]);
+	const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
 	hotkey::execute_command(gui_,cmd,this);
 }
 

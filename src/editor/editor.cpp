@@ -103,18 +103,13 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 			std::cerr << "Error when reading " << prefs_filename << ": "
 					  << e.message << std::endl;
 		}
-		// Clear the current hotkeys. Alot of hotkeys are already set
-		// through other configuration files (e.g. english.cfg and
-		// preferences) and we need to clear these or they will overlap.
-		hotkey::get_hotkeys().clear();
-		hotkey::add_hotkeys(theme_, true);
-		hotkey::add_hotkeys(prefs_, true);
+		hotkey::load_hotkeys(theme_);
+		hotkey::load_hotkeys(prefs_);
 		left_button_func_changed(DRAW);
 		first_time_created_ = false;
 	}
 	else {
-		hotkey::get_hotkeys().clear();
-		hotkey::add_hotkeys(hotkeys_, true);
+		hotkey::load_hotkeys(hotkeys_);
 		palette_.select_fg_terrain(old_fg_terrain_);
 		palette_.select_bg_terrain(old_bg_terrain_);
 		brush_.select_brush_size(old_brush_size_);
@@ -1042,28 +1037,17 @@ void map_editor::show_menu(const std::vector<std::string>& items_arg, const int 
 	// menu is what to display in the menu.
 	std::vector<std::string> menu;
 	if(items.size() == 1) {
-		execute_command(hotkey::string_to_command(items.front()));
+		execute_command(hotkey::get_hotkey(items.front()).get_id());
 		return;
 	}
 	for(std::vector<std::string>::const_iterator i = items.begin();
 		i != items.end(); ++i) {
+
+		const hotkey::hotkey_item hk = hotkey::get_hotkey(*i);
 		std::stringstream str;
 		// Try to translate it to nicer format.
-		str << hotkey::command_to_description(hotkey::string_to_command(*i));
-		// See if this menu item has an associated hotkey.
-		const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(*i);
-		const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
-		std::vector<hotkey::hotkey_item>::const_iterator hk;
-		for(hk = hotkeys.begin(); hk != hotkeys.end(); ++hk) {
-			if(hk->action == cmd) {
-				break;
-			}
-		}
-		if(hk != hotkeys.end()) {
-			// Hotkey was found for this item, add the hotkey description to
-			// the menu item.
-			str << "," << hotkey::get_hotkey_name(*hk);
-		}
+		str << hk.get_description() << "," << hk.get_name();
+
 		menu.push_back(str.str());
 	}
 	static const std::string style = "menu2";
@@ -1071,7 +1055,7 @@ void map_editor::show_menu(const std::vector<std::string>& items_arg, const int 
 									 NULL, 256, NULL, NULL, xloc, yloc, &style);
 	if(res < 0 || (unsigned)res >= items.size())
 		return;
-	const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(items[res]);
+	const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
 	execute_command(cmd);
 }
 
@@ -1131,7 +1115,7 @@ void map_editor::left_button_func_changed(const LEFT_BUTTON_FUNC func) {
 	if (func != l_button_func_) {
 		l_button_func_ = func;
 		reports::set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
-					    hotkey::command_to_description(hotkey::string_to_command(get_action_name(func))));
+				hotkey::get_hotkey(get_action_name(func)).get_description());
 		gui_.invalidate_game_status();
 		l_button_palette_dirty_ = true;
 	}

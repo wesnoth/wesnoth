@@ -23,66 +23,92 @@
 //refers to a hotkey command being executed.
 namespace hotkey {
 
-enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
-                      HOTKEY_UNDO, HOTKEY_REDO,
-                      HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
-                      HOTKEY_FULLSCREEN, HOTKEY_ACCELERATED,
-                      HOTKEY_UNIT_DESCRIPTION, HOTKEY_RENAME_UNIT, HOTKEY_SAVE_GAME, HOTKEY_LOAD_GAME,
-                      HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
-                      HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE, HOTKEY_MUTE,
-					  HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_CHANGE_UNIT_SIDE, HOTKEY_PREFERENCES,
-					  HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_STATISTICS, HOTKEY_QUIT_GAME,
-                      HOTKEY_LABEL_TERRAIN, HOTKEY_SHOW_ENEMY_MOVES, HOTKEY_BEST_ENEMY_MOVES,
-					  HOTKEY_DELAY_SHROUD, HOTKEY_UPDATE_SHROUD, HOTKEY_CONTINUE_MOVE,
-					  HOTKEY_SEARCH, HOTKEY_SPEAK_ALLY, HOTKEY_SPEAK_ALL, HOTKEY_HELP,
-					  HOTKEY_CHAT_LOG,
+enum HOTKEY_COMMAND {
+	HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
+	HOTKEY_UNDO, HOTKEY_REDO,
+	HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
+	HOTKEY_FULLSCREEN, HOTKEY_ACCELERATED,
+	HOTKEY_UNIT_DESCRIPTION, HOTKEY_RENAME_UNIT, HOTKEY_SAVE_GAME, HOTKEY_LOAD_GAME,
+	HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
+	HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE, HOTKEY_MUTE,
+	HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_CHANGE_UNIT_SIDE, HOTKEY_PREFERENCES,
+	HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_STATISTICS, HOTKEY_QUIT_GAME,
+	HOTKEY_LABEL_TERRAIN, HOTKEY_SHOW_ENEMY_MOVES, HOTKEY_BEST_ENEMY_MOVES,
+	HOTKEY_DELAY_SHROUD, HOTKEY_UPDATE_SHROUD, HOTKEY_CONTINUE_MOVE,
+	HOTKEY_SEARCH, HOTKEY_SPEAK_ALLY, HOTKEY_SPEAK_ALL, HOTKEY_HELP,
+	HOTKEY_CHAT_LOG,
 
-					  //editing specific commands
-					  HOTKEY_EDIT_SET_TERRAIN,
-					  HOTKEY_EDIT_QUIT, HOTKEY_EDIT_SAVE_MAP, 
-					  HOTKEY_EDIT_SAVE_AS, HOTKEY_EDIT_SET_START_POS,
-					  HOTKEY_EDIT_NEW_MAP, HOTKEY_EDIT_LOAD_MAP, HOTKEY_EDIT_FLOOD_FILL,
-					  HOTKEY_EDIT_FILL_SELECTION, HOTKEY_EDIT_CUT, HOTKEY_EDIT_COPY,
-					  HOTKEY_EDIT_PASTE, HOTKEY_EDIT_REVERT, HOTKEY_EDIT_RESIZE,
-					  HOTKEY_EDIT_FLIP, HOTKEY_EDIT_SELECT_ALL, HOTKEY_EDIT_DRAW,
-                      HOTKEY_USER_CMD,
-					  HOTKEY_NULL };
-
-struct hotkey_item {
-	explicit hotkey_item(const config& cfg);
-
-	HOTKEY_COMMAND action;
-	int keycode;
-	bool alt, ctrl, shift, command;
-	mutable bool lastres;
+	//editing specific commands
+	HOTKEY_EDIT_SET_TERRAIN,
+	HOTKEY_EDIT_QUIT, HOTKEY_EDIT_SAVE_MAP, 
+	HOTKEY_EDIT_SAVE_AS, HOTKEY_EDIT_SET_START_POS,
+	HOTKEY_EDIT_NEW_MAP, HOTKEY_EDIT_LOAD_MAP, HOTKEY_EDIT_FLOOD_FILL,
+	HOTKEY_EDIT_FILL_SELECTION, HOTKEY_EDIT_CUT, HOTKEY_EDIT_COPY,
+	HOTKEY_EDIT_PASTE, HOTKEY_EDIT_REVERT, HOTKEY_EDIT_RESIZE,
+	HOTKEY_EDIT_FLIP, HOTKEY_EDIT_SELECT_ALL, HOTKEY_EDIT_DRAW,
+	HOTKEY_USER_CMD,
+	HOTKEY_NULL 
 };
+
+class hotkey_item {
+public:
+	hotkey_item() : id_(HOTKEY_NULL) {};
+
+	hotkey_item(HOTKEY_COMMAND id, const std::string& command, const std::string& description, bool hidden=false);
+
+	HOTKEY_COMMAND get_id() const { return id_; };
+	const std::string& get_command() const { return command_; };
+	const std::string& get_description() const { return description_; };
+
+	void load_from_config(const config& cfg);
+
+	void set_key(int keycode, bool alt, bool ctrl, bool shift, bool cmd);
+
+	int get_keycode() const { return keycode_; };
+	bool get_alt() const { return alt_; };
+	bool get_ctrl() const { return ctrl_; };
+	bool get_shift() const { return shift_; };
+	bool get_cmd() const { return cmd_; };
 	
-//function to load a hotkey configuration object. hotkey configuration objects
-//are a list of nodes that look like:
-//[hotkey]
-//command="cmd"
-//key="k"
-//ctrl=(yes|no)
-//alt=(yes|no)
-//shift=(yes|no)
-//[/hotkey]
-//where "cmd" is a command name, and "k" is a key. see hotkeys.cpp for the
-//valid command names.
-void add_hotkeys(config& cfg, bool overwrite);
+	// Return "name" of hotkey for example :"ctrl+alt+g"
+	std::string get_name() const;
 
-void change_hotkey(hotkey_item& item);
+	bool null() const { return id_ == HOTKEY_NULL; };
+	bool hidden() const { return hidden_; };
+private:
+	HOTKEY_COMMAND id_;
+	std::string command_;
+	std::string description_;
 
+	int keycode_;
+	bool shift_;
+	bool ctrl_;
+	bool alt_;
+	bool cmd_;
+	bool hidden_;
+};
+
+class manager {
+public:
+	manager();
+	~manager();
+};
+
+void load_hotkeys(const config& cfg);
 void save_hotkeys(config& cfg);
 
-// return list of current hotkeys
+hotkey_item& get_hotkey(HOTKEY_COMMAND id);
+hotkey_item& get_hotkey(const std::string& command);
+//the "mods" parameter distinguishes between two modes of operation. If mods
+//are disallowed (mods == false), then any match must be exact. I.e. "shift+a"
+//does not match "a". If they are allowed (mods == true), then shift+a will
+//match "a"
+hotkey_item& get_hotkey(int keycode, bool shift, bool ctrl, bool alt, bool cmd, bool mods = false);
+hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, bool mods = false);
+
+hotkey_item& get_visible_hotkey(int index);
+
 std::vector<hotkey_item>& get_hotkeys();
-
-// Return "name" of hotkey for example :"ctrl+alt+g"
-std::string get_hotkey_name(hotkey_item item);
-
-std::string command_to_string(const HOTKEY_COMMAND &command);
-HOTKEY_COMMAND string_to_command(const std::string& str);
-std::string command_to_description(const HOTKEY_COMMAND &command);
 
 enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF };
 

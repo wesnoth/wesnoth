@@ -356,6 +356,7 @@ private:
 	const preferences::manager prefs_manager_;
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
+	const hotkey::manager hotkey_manager_;
 	binary_paths_manager paths_manager_;
 
 	bool test_mode_, multiplayer_mode_, no_gui_;
@@ -585,7 +586,7 @@ bool game_controller::init_config()
 
 	game_config::load_config(game_config_.child("game_config"));
 
-	hotkey::add_hotkeys(game_config_,false);
+	hotkey::load_hotkeys(game_config_);
 
 	paths_manager_.set_paths(game_config_);
 
@@ -731,14 +732,6 @@ bool game_controller::play_multiplayer_mode()
 
    		const config* side = type == side_types.end() ? era_cfg->child("multiplayer_side") :
    		                                                era_cfg->find_child("multiplayer_side","type",type->second);
-
-#if 0
-   		size_t tries = 0;
-   		while(side != NULL && (*side)["type"] == "random" && ++tries < 100) {
-   			const config::child_list& v = era_cfg->get_children("multiplayer_side");
-   			side = v[rand()%v.size()];
-   		}
-#endif
 
    		if(side == NULL || (*side)["random_faction"] == "yes" || (*side)["type"] == "random") {
    			std::string side_name = (type == side_types.end() ? "default" : type->second);

@@ -27,261 +27,270 @@
 #include <cstdlib>
 #include <map>
 
+namespace {
+	std::vector<hotkey::hotkey_item> hotkeys_;
+	hotkey::hotkey_item null_hotkey_;
+}
+
 namespace hotkey {
 
-static std::map<std::string,HOTKEY_COMMAND> m;
-	
-	
-HOTKEY_COMMAND string_to_command(const std::string& str)
+hotkey_item::hotkey_item(HOTKEY_COMMAND id, const std::string& command, const std::string& description, bool hidden) 
+	: id_(id), command_(command), description_(description), keycode_(0),
+	alt_(false), ctrl_(false), shift_(false), cmd_(false), hidden_(hidden)
 {
-	if(m.empty()) {
-		typedef std::pair<std::string,HOTKEY_COMMAND> val;
-		m.insert(val("cycle",HOTKEY_CYCLE_UNITS));
-		m.insert(val("endunitturn",HOTKEY_END_UNIT_TURN));
-		m.insert(val("leader",HOTKEY_LEADER));
-		m.insert(val("undo",HOTKEY_UNDO));
-		m.insert(val("redo",HOTKEY_REDO));
-		m.insert(val("zoomin",HOTKEY_ZOOM_IN));
-		m.insert(val("zoomout",HOTKEY_ZOOM_OUT));
-		m.insert(val("zoomdefault",HOTKEY_ZOOM_DEFAULT));
-		m.insert(val("fullscreen",HOTKEY_FULLSCREEN));
-		m.insert(val("accelerated",HOTKEY_ACCELERATED));
-		m.insert(val("describeunit",HOTKEY_UNIT_DESCRIPTION));
-		m.insert(val("renameunit",HOTKEY_RENAME_UNIT));
-		m.insert(val("save",HOTKEY_SAVE_GAME));
-		m.insert(val("load",HOTKEY_LOAD_GAME));
-		m.insert(val("recruit",HOTKEY_RECRUIT));
-		m.insert(val("repeatrecruit",HOTKEY_REPEAT_RECRUIT));
-		m.insert(val("recall",HOTKEY_RECALL));
-		m.insert(val("endturn",HOTKEY_ENDTURN));
-		m.insert(val("togglegrid",HOTKEY_TOGGLE_GRID));
-		m.insert(val("statustable",HOTKEY_STATUS_TABLE));
-		m.insert(val("mute",HOTKEY_MUTE));
-		m.insert(val("speak",HOTKEY_SPEAK));
-		m.insert(val("createunit",HOTKEY_CREATE_UNIT));
-		m.insert(val("changeside",HOTKEY_CHANGE_UNIT_SIDE));
-		m.insert(val("preferences",HOTKEY_PREFERENCES));
-		m.insert(val("objectives",HOTKEY_OBJECTIVES));
-		m.insert(val("unitlist",HOTKEY_UNIT_LIST));
-		m.insert(val("statistics",HOTKEY_STATISTICS));
-		m.insert(val("quit",HOTKEY_QUIT_GAME));
-		m.insert(val("labelterrain",HOTKEY_LABEL_TERRAIN));
-		m.insert(val("showenemymoves",HOTKEY_SHOW_ENEMY_MOVES));
-		m.insert(val("bestenemymoves",HOTKEY_BEST_ENEMY_MOVES));
-		m.insert(val("editquit",HOTKEY_EDIT_QUIT));
-		m.insert(val("editnewmap",HOTKEY_EDIT_NEW_MAP));
-		m.insert(val("editloadmap",HOTKEY_EDIT_LOAD_MAP));
-		m.insert(val("editsavemap",HOTKEY_EDIT_SAVE_MAP));
-		m.insert(val("editsaveas",HOTKEY_EDIT_SAVE_AS));
-		m.insert(val("editsetstartpos",HOTKEY_EDIT_SET_START_POS));
-		m.insert(val("editfloodfill",HOTKEY_EDIT_FLOOD_FILL));
-		m.insert(val("editfillselection",HOTKEY_EDIT_FILL_SELECTION));
-		m.insert(val("editcut",HOTKEY_EDIT_CUT));
-		m.insert(val("editcopy",HOTKEY_EDIT_COPY));
-		m.insert(val("editpaste",HOTKEY_EDIT_PASTE));
-		m.insert(val("editrevert",HOTKEY_EDIT_REVERT));
-		m.insert(val("editresize",HOTKEY_EDIT_RESIZE));
-		m.insert(val("editflip",HOTKEY_EDIT_FLIP));
-		m.insert(val("editselectall",HOTKEY_EDIT_SELECT_ALL));
-		m.insert(val("editdraw",HOTKEY_EDIT_DRAW));
-		m.insert(val("delayshroud",HOTKEY_DELAY_SHROUD));
-		m.insert(val("updateshroud",HOTKEY_UPDATE_SHROUD));
-		m.insert(val("continue",HOTKEY_CONTINUE_MOVE));
-		m.insert(val("search",HOTKEY_SEARCH));
-		m.insert(val("speaktoally",HOTKEY_SPEAK_ALLY));
-		m.insert(val("speaktoall",HOTKEY_SPEAK_ALL));
-		m.insert(val("help",HOTKEY_HELP));
-		m.insert(val("chatlog",HOTKEY_CHAT_LOG));
-		m.insert(val("command",HOTKEY_USER_CMD));
-	}
-	
-	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
-	if(i == m.end())
-		return HOTKEY_NULL;
-	else
-		return i->second;
-}
-	
-std::string command_to_string(const HOTKEY_COMMAND &command)
-{
-	for(std::map<std::string,HOTKEY_COMMAND>::iterator i = m.begin(); i != m.end(); ++i) {
-		if(i->second == command) {
-			return i->first;
-		}
-	}
-
-	std::cerr << "\n command_to_string: No matching command found...";
-	return "";
 }
 
-std::string command_to_description(const HOTKEY_COMMAND &command)
+void hotkey_item::load_from_config(const config& cfg)
 {
-	switch (command) {
-	case HOTKEY_CYCLE_UNITS: return _("Next unit");
-	case HOTKEY_END_UNIT_TURN: return _("End Unit Turn");
-	case HOTKEY_LEADER: return _("Leader");
-	case HOTKEY_UNDO: return _("Undo");
-	case HOTKEY_REDO: return _("Redo");
-	case HOTKEY_ZOOM_IN: return _("Zoom In");
-	case HOTKEY_ZOOM_OUT: return _("Zoom Out");
-	case HOTKEY_ZOOM_DEFAULT: return _("Default Zoom");
-	case HOTKEY_FULLSCREEN: return _("Fullscreen");
-	case HOTKEY_ACCELERATED: return _("Accelerated");
-	case HOTKEY_UNIT_DESCRIPTION: return _("Unit Description");
-	case HOTKEY_RENAME_UNIT: return _("Rename Unit");
-	case HOTKEY_SAVE_GAME: return _("Save Game");
-	case HOTKEY_LOAD_GAME: return _("Load Game");
-	case HOTKEY_RECRUIT: return _("Recruit");
-	case HOTKEY_REPEAT_RECRUIT: return _("Repeat Recruit");
-	case HOTKEY_RECALL: return _("Recall");
-	case HOTKEY_ENDTURN: return _("End Turn");
-	case HOTKEY_TOGGLE_GRID: return _("Toggle Grid");
-	case HOTKEY_STATUS_TABLE: return _("Status Table");
-	case HOTKEY_MUTE: return _("Mute");
-	case HOTKEY_SPEAK: return _("Speak");
-	case HOTKEY_CREATE_UNIT: return _("Create Unit (Debug!)");
-	case HOTKEY_CHANGE_UNIT_SIDE: return _("Change Unit Side (Debug!)");
-	case HOTKEY_PREFERENCES: return _("Preferences");
-	case HOTKEY_OBJECTIVES: return _("Scenario Objectives");
-	case HOTKEY_UNIT_LIST: return _("Unit List");
-	case HOTKEY_STATISTICS: return _("Statistics");
-	case HOTKEY_QUIT_GAME: return _("Quit Game");
-	case HOTKEY_LABEL_TERRAIN: return _("Set Label");
-	case HOTKEY_SHOW_ENEMY_MOVES: return _("Show Enemy Moves");
-	case HOTKEY_BEST_ENEMY_MOVES: return _("Best Possible Enemy Moves");
-	case HOTKEY_EDIT_QUIT: return _("Quit Editor");
-	case HOTKEY_EDIT_NEW_MAP: return _("New Map");
-	case HOTKEY_EDIT_LOAD_MAP: return _("Load Map");
-	case HOTKEY_EDIT_SAVE_MAP: return _("Save Map");
-	case HOTKEY_EDIT_SAVE_AS: return _("Save As");
-	case HOTKEY_EDIT_SET_START_POS: return _("Set Player Start Position");
-	case HOTKEY_EDIT_FLOOD_FILL: return _("Flood Fill");
-	case HOTKEY_EDIT_FILL_SELECTION: return _("Fill Selection");
-	case HOTKEY_EDIT_CUT: return _("Cut");
-	case HOTKEY_EDIT_COPY: return _("Copy");
-	case HOTKEY_EDIT_PASTE: return _("Paste");
-	case HOTKEY_EDIT_REVERT: return _("Revert from Disk");
-	case HOTKEY_EDIT_RESIZE: return _("Resize Map");
-	case HOTKEY_EDIT_FLIP: return _("Flip Map");
-	case HOTKEY_EDIT_SELECT_ALL: return _("Select All");
-	case HOTKEY_EDIT_DRAW: return _("Draw Terrain");
-	case HOTKEY_DELAY_SHROUD: return _("Delay Shroud Updates");
-	case HOTKEY_UPDATE_SHROUD: return _("Update Shroud Now");
-	case HOTKEY_CONTINUE_MOVE: return _("Continue Move");
-	case HOTKEY_SEARCH: return _("Find Label or Unit");
-	case HOTKEY_SPEAK_ALLY: return _("Speak to Ally");
-	case HOTKEY_SPEAK_ALL: return _("Speak to All");
-	case HOTKEY_HELP: return _("Help");
-	case HOTKEY_CHAT_LOG: return _("View Chat Log");
-	default:
-	  std::cerr << "\n command_to_description: No matching command found...";
-	  return "";
-	}
-}
-
-
-hotkey_item::hotkey_item(const config& cfg) : lastres(false)
-{
-	action = string_to_command(cfg["command"]);
-
 	const std::string& code = cfg["key"];
 	if(code.empty()) {
-		keycode = 0;
+		keycode_ = 0;
 	} else if(code.size() >= 2 && tolower(code[0]) == 'f') {
 		const int num = lexical_cast_default<int>(std::string(code.begin()+1,code.end()),1);
-		keycode = num + SDLK_F1 - 1;
-		std::cerr << "set key to F" << num << " = " << keycode << "\n";
+		keycode_ = num + SDLK_F1 - 1;
+		std::cerr << "set key to F" << num << " = " << keycode_ << "\n";
 	} else {
-		keycode = code[0];
+		keycode_ = code[0];
 	}
 	
-	alt = (cfg["alt"] == "yes");
-	ctrl = (cfg["ctrl"] == "yes");
-	shift = (cfg["shift"] == "yes");
-	command = (cfg["cmd"] == "yes");
+	alt_ = (cfg["alt"] == "yes");
+	ctrl_ = (cfg["ctrl"] == "yes");
+	shift_ = (cfg["shift"] == "yes");
+	cmd_ = (cfg["cmd"] == "yes");
 }
 
-bool operator==(const hotkey_item& a, const hotkey_item& b)
+std::string hotkey_item::get_name() const 
 {
-	return a.keycode == b.keycode && a.alt == b.alt &&
-	       a.ctrl == b.ctrl && a.shift == b.shift && a.command == b.command;
-}
+	if (keycode_ != 0) {
+		std::stringstream str;			
+		if (alt_)
+			str << "alt+";
+		if (ctrl_)
+			str << "ctrl+";
+		if (shift_)
+			str << "shift+";
+		if (cmd_)
+			str << "command+";
 
-bool operator!=(const hotkey_item& a, const hotkey_item& b)
-{
-	return !(a == b);
-}
-
-}
-
-namespace {
-std::vector<hotkey::hotkey_item> hotkeys;
-
-}
-
-struct hotkey_pressed {
-	//this distinguishes between two modes of operation. If mods are disallowed,
-	//then any match must be exact. I.e. "shift+a" does not match "a". If they are allowed,
-	//then shift+a will match "a"
-	enum ALLOW_MOD_KEYS { DISALLOW_MODS, ALLOW_MODS };
-	hotkey_pressed(const SDL_KeyboardEvent& event, ALLOW_MOD_KEYS allow_mods=DISALLOW_MODS);
-
-	bool operator()(const hotkey::hotkey_item& hk) const;
-
-private:
-	int keycode_;
-	bool shift_, ctrl_, alt_, command_;
-	bool mods_;
-};
-
-hotkey_pressed::hotkey_pressed(const SDL_KeyboardEvent& event, ALLOW_MOD_KEYS mods)
-       : keycode_(event.keysym.sym), shift_(event.keysym.mod&KMOD_SHIFT),
-         ctrl_(event.keysym.mod&KMOD_CTRL), alt_(event.keysym.mod&KMOD_ALT),
-		 command_(event.keysym.mod&KMOD_LMETA), mods_(mods == ALLOW_MODS)
-{}
-
-bool hotkey_pressed::operator()(const hotkey::hotkey_item& hk) const
-{
-	if(mods_) {
-		return hk.keycode == keycode_ && (shift_ == hk.shift || shift_ == true)
-		                              && (ctrl_ == hk.ctrl || ctrl_ == true)
-									  && (alt_ == hk.alt || alt_ == true);
+		str << SDL_GetKeyName(SDLKey(keycode_));
+		return str.str();
 	} else {
-		return hk.keycode == keycode_ && shift_ == hk.shift &&
-		       ctrl_ == hk.ctrl && alt_ == hk.alt && command_ == hk.command;
+		return "";
 	}
 }
 
-namespace {
-
-void add_hotkey(const config& cfg,bool overwrite)
+void hotkey_item::set_key(int keycode, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	const hotkey::hotkey_item new_hotkey(cfg);
-	for(std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin();
-	    i != hotkeys.end(); ++i) {
-		if(i->action == new_hotkey.action) {
-		  if(overwrite)
-			*i = new_hotkey;	
-		  return;
+	keycode_ = keycode;
+	shift_ = shift;
+	ctrl_ = ctrl;
+	alt_ = alt;
+	cmd_ = cmd;
+}
+
+manager::manager() 
+{
+	hotkeys_.push_back(hotkey_item(HOTKEY_CYCLE_UNITS, "cycle", _("Next unit")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_END_UNIT_TURN, "endunitturn", _("End Unit Turn")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_LEADER, "leader", _("Leader")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_UNDO, "undo", _("Undo")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_REDO, "redo", _("Redo")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_ZOOM_IN, "zoomin", _("Zoom In")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_ZOOM_OUT, "zoomout", _("Zoom Out")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_ZOOM_DEFAULT, "zoomdefault", _("Default Zoom")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_FULLSCREEN, "fullscreen", _("Fullscreen")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_ACCELERATED, "accelerated", _("Accelerated")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_UNIT_DESCRIPTION, "describeunit", _("Unit Description")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_RENAME_UNIT, "renameunit", _("Rename Unit")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_SAVE_GAME, "save", _("Save Game")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_LOAD_GAME, "load", _("Load Game")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_RECRUIT, "recruit", _("Recruit")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_REPEAT_RECRUIT, "repeatrecruit", _("Repeat Recruit")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_RECALL, "recall", _("Recall")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_ENDTURN, "endturn", _("End Turn")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_TOGGLE_GRID, "togglegrid", _("Toggle Grid")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_STATUS_TABLE, "statustable", _("Status Table")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_MUTE, "mute", _("Mute")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_SPEAK, "speak", _("Speak")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_CREATE_UNIT, "createunit", _("Create Unit (Debug!)")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_CHANGE_UNIT_SIDE, "changeside", _("Change Unit Side (Debug!)")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_PREFERENCES, "preferences", _("Preferences")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_OBJECTIVES, "objectives", _("Scenario Objectives")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_UNIT_LIST, "unitlist", _("Unit List")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_STATISTICS, "statistics", _("Statistics")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_QUIT_GAME, "quit", _("Quit Game")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_LABEL_TERRAIN, "labelterrain", _("Set Label")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_SHOW_ENEMY_MOVES, "showenemymoves", _("Show Enemy Moves")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_BEST_ENEMY_MOVES, "bestenemymoves", _("Best Possible Enemy Moves")));
+
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SET_TERRAIN, "editsetterrain", _("Set Terrain"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_QUIT, "editquit", _("Quit Editor"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_NEW_MAP, "editnewmap", _("New Map"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_LOAD_MAP, "editloadmap", _("Load Map"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SAVE_MAP, "editsavemap", _("Save Map"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SAVE_AS, "editsaveas", _("Save As"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SET_START_POS, "editsetstartpos", _("Set Player Start Position"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_FLOOD_FILL, "editfloodfill", _("Flood Fill"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_FILL_SELECTION, "editfillselection", _("Fill Selection"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_CUT, "editcut", _("Cut"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_COPY, "editcopy", _("Copy"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_PASTE, "editpaste", _("Paste"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_REVERT, "editrevert", _("Revert from Disk"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_RESIZE, "editresize", _("Resize Map"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_FLIP, "editflip", _("Flip Map"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SELECT_ALL, "editselectall", _("Select All"),true));
+	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_DRAW, "editdraw", _("Draw Terrain"),true));
+
+	hotkeys_.push_back(hotkey_item(HOTKEY_DELAY_SHROUD, "delayshroud", _("Delay Shroud Updates")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_UPDATE_SHROUD, "updateshroud", _("Update Shroud Now")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_CONTINUE_MOVE, "continue", _("Continue Move")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_SEARCH, "search", _("Find Label or Unit")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_SPEAK_ALLY, "speaktoally", _("Speak to Ally")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_SPEAK_ALL, "speaktoall", _("Speak to All")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_HELP, "help", _("Help")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_CHAT_LOG, "chatlog", _("View Chat Log")));
+	hotkeys_.push_back(hotkey_item(HOTKEY_USER_CMD, "command", _("Enter user command")));
+}
+
+manager::~manager()
+{
+
+}
+
+void load_hotkeys(const config& cfg)
+{
+	const config::child_list& children = cfg.get_children("hotkey");
+	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
+		hotkey_item& h = get_hotkey((**i)["command"]);
+
+		if(h.get_id() != HOTKEY_NULL) {
+			h.load_from_config(**i);
 		}
 	}
-	hotkeys.push_back(new_hotkey);
 }
 
-}
-
-namespace hotkey {
-
-void change_hotkey(hotkey_item& item)
+void save_hotkeys(config& cfg)
 {
-	for(std::vector<hotkey::hotkey_item>::iterator i =hotkeys.begin();
-		i!=hotkeys.end();i++)
-	{
-		if(item.action == i->action)
-			*i = item;	
+	cfg.clear_children("hotkey");
+
+	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
+		if (i->hidden() || i->get_keycode() == 0)
+			continue;
+
+		config& item = cfg.add_child("hotkey");
+
+		item["command"] = i->get_command();
+
+		if(i->get_keycode() >= SDLK_F1 && i->get_keycode() <= SDLK_F12) {
+			std::string str = "FF";
+			str[1] = '1' + i->get_keycode() - SDLK_F1;
+			item["key"] = str;
+		} else {
+			item["key"] = i->get_keycode();
+		}
+
+		item["alt"] = i->get_alt() ? "yes" : "no";
+		item["ctrl"] = i->get_ctrl() ? "yes" : "no";
+		item["shift"] = i->get_shift() ? "yes" : "no";
+		item["cmd"] = i->get_cmd() ? "yes" : "no";
 	}
 }
-	
+
+hotkey_item& get_hotkey(HOTKEY_COMMAND id) 
+{
+	std::vector<hotkey_item>::iterator itor;
+
+	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
+		if (itor->get_id() == id)
+			break;
+	}
+
+	if (itor == hotkeys_.end())
+		return null_hotkey_;
+
+	return *itor;
+}
+
+hotkey_item& get_hotkey(const std::string& command) 
+{
+	std::vector<hotkey_item>::iterator itor;
+
+	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
+		if (itor->get_command() == command)
+			break;
+	}
+
+	if (itor == hotkeys_.end())
+		return null_hotkey_;
+
+	return *itor;
+}
+
+hotkey_item& get_hotkey(int keycode, bool shift, bool ctrl, bool alt, bool cmd, bool mods)
+{
+
+	std::vector<hotkey_item>::iterator itor;
+
+	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
+		if(mods) {
+			if(itor->get_keycode() == keycode 
+					&& (shift == itor->get_shift() || shift == true)
+					&& (ctrl == itor->get_ctrl() || ctrl == true)
+					&& (alt == itor->get_alt() || alt == true)
+					&& (cmd == itor->get_cmd() || cmd == true))
+				break;
+		} else {
+			if(itor->get_keycode() == keycode 
+					&& shift == itor->get_shift() 
+					&& ctrl == itor->get_ctrl() 
+					&& alt == itor->get_alt() 
+					&& cmd == itor->get_cmd())
+				break;
+		}
+	}
+
+	if (itor == hotkeys_.end())
+		return null_hotkey_;
+
+	return *itor;
+}
+
+hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, bool mods)
+{
+	return get_hotkey(event.keysym.sym, 
+			event.keysym.mod & KMOD_SHIFT, 
+			event.keysym.mod & KMOD_CTRL, 
+			event.keysym.mod & KMOD_ALT, 
+			event.keysym.mod & KMOD_LMETA, 
+			mods);
+}
+
+hotkey_item& get_visible_hotkey(int index)
+{
+	int counter = 0;
+
+	std::vector<hotkey_item>::iterator itor;
+	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
+		if (itor->hidden())
+			continue;
+
+		if (index == counter)
+			break;
+
+		counter++;
+	}
+
+	if (itor == hotkeys_.end())
+		return null_hotkey_;
+
+	return *itor;
+}
+
+std::vector<hotkey_item>& get_hotkeys()
+{
+	return hotkeys_;
+}
+
 basic_handler::basic_handler(display* disp, command_executor* exec) : disp_(disp), exec_(exec) {}
 
 void basic_handler::handle_event(const SDL_Event& event)
@@ -298,58 +307,6 @@ void basic_handler::handle_event(const SDL_Event& event)
 	}
 }
 
-void add_hotkeys(config& cfg,bool overwrite)
-{
-	const config::child_list& children = cfg.get_children("hotkey");
-	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
-	  add_hotkey(**i,overwrite);
-	}
-}
-
-void save_hotkeys(config& cfg)
-{
-	const config::child_list children = cfg.get_children("hotkey");
-	for(std::vector<hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i) {
-		std::string action_name = command_to_string(i->action);
-
-		config* item = cfg.find_child("hotkey","command",action_name);
-		if(item == NULL)
-			item = &cfg.add_child("hotkey");
-
-		(*item)["command"] = action_name;
-
-		if(i->keycode >= SDLK_F1 && i->keycode <= SDLK_F12) {
-			std::string str = "FF";
-			str[1] = '1' + i->keycode - SDLK_F1;
-			(*item)["key"] = str;
-		} else {
-			(*item)["key"] = i->keycode;
-		}
-
-		(*item)["alt"] = (i->alt) ? "yes" : "no";
-		(*item)["ctrl"] = (i->ctrl) ? "yes" : "no";
-		(*item)["shift"] = (i->shift) ? "yes" : "no";
-		(*item)["cmd"] = (i->command) ? "yes" : "no";
-	}
-}
-
-std::vector<hotkey_item>& get_hotkeys()
-{
-	return hotkeys;
-}
-
-std::string get_hotkey_name(hotkey_item i)
-{
- 	std::stringstream str;			
-	if (i.alt)
- 	str << "alt+";
-	if (i.ctrl)
-	str << "ctrl+";
- 	if (i.shift)
-	str << "shift+";
-	str << SDL_GetKeyName(SDLKey(i.keycode));
-	return str.str();
-}
 
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
@@ -368,18 +325,17 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 
 void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
-	std::vector<hotkey_item>::iterator i = std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(event));
+	const hotkey_item* hk = &get_hotkey(event);
 
-	if(i == hotkeys.end()) {
+	if(hk->null()) {
 		//no matching hotkey was found, but try an in-exact match.
-		i = std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(event,hotkey_pressed::ALLOW_MODS));
+		hk = &get_hotkey(event, true);
 	}
 
-	if(i == hotkeys.end()) {
+	if(hk->null())
 		return;
-	}
 
-	execute_command(disp,i->action,executor);
+	execute_command(disp,hk->get_id(),executor);
 }
 
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor)
