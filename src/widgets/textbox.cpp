@@ -198,7 +198,7 @@ void textbox::handle_event(const SDL_Event& event)
 		int pos = 0;
 		int distance = x;
 
-		for(int i = 1; i <= char_pos_.size(); ++i) {
+		for(int i = 1; i < char_pos_.size(); ++i) {
 			// Check individually each distance (if, one day, we support
 			// RTL languages, char_pos[c] may not be monotonous.)
 			if(abs(x - char_pos_[i]) < distance) {
@@ -206,7 +206,7 @@ void textbox::handle_event(const SDL_Event& event)
 				distance = abs(x - char_pos_[i]);
 			}
 		}
-		
+
 		cursor_ = pos;
 
 		if(grabmouse_)
@@ -276,9 +276,13 @@ void textbox::handle_event(const SDL_Event& event)
 		}
 	}
 
-	const char character = static_cast<char>(key.unicode);
+	// const char character = static_cast<char>(key.unicode);
+	int character = key.unicode;
 
-	if(isgraph(character) || character == ' ') {
+	if(character != 0)
+		std::cerr << "Char: " << character << "\n";
+	
+	if(/*isgraph(character) || character == ' '*/ character >= 32 && character != 127) {
 		changed = true;
 		if(is_selection()) 
 			erase_selection();
