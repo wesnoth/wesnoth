@@ -122,11 +122,13 @@ struct font_style_setter
 		//SDL_ttf to segfault. We work around this here by disallowing combinations
 		//of styles
 		if((style&TTF_STYLE_UNDERLINE) != 0) {
-			style = TTF_STYLE_NORMAL; //TTF_STYLE_UNDERLINE;
+			//style = TTF_STYLE_NORMAL; //TTF_STYLE_UNDERLINE;
+			style = TTF_STYLE_UNDERLINE;
 		} else if((style&TTF_STYLE_BOLD) != 0) {
 			style = TTF_STYLE_BOLD;
 		} else if((style&TTF_STYLE_ITALIC) != 0) {
-			style = TTF_STYLE_NORMAL; //TTF_STYLE_ITALIC;
+			//style = TTF_STYLE_NORMAL; //TTF_STYLE_ITALIC;
+			style = TTF_STYLE_ITALIC;
 		} 
 
 		TTF_SetFontStyle(font_,style);
