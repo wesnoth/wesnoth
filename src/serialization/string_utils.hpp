@@ -18,9 +18,14 @@
 #include <map>
 #include <string>
 #include <vector>
+#include "SDL_types.h"
 
 //the type we use to represent Unicode strings.
 typedef std::vector<wchar_t> wide_string;
+
+//if we append a 0 to that one we can pass it to SDL_ttf
+//as a const Uint16*
+typedef std::vector<Uint16> ucs2_string;
 
 namespace utils {
 
