@@ -491,9 +491,38 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				gui::draw_dialog_frame((disp.x()-width)/2, (disp.y()-height)/2,
 						       width, height, disp);
 
+				//Buttons
+				gui::button launch2_game(disp,"Launch");
+				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
+
 				//Title
+				SDL_Rect labelr;
 				font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
 				                "Game Lobby",-1,(disp.y()-height)/2+5);
+				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
+				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
+						"Player/Type",0,0);
+				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
+				                "Player/Type",((disp.x()-width)/2+30)+(launch2_game.width()/2)-(labelr.w/2),
+						(disp.y()-height)/2+35);
+				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
+				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
+						"Race",0,0);
+				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
+				                "Race",((disp.x()-width)/2+145)+(launch2_game.width()/2)-(labelr.w/2),
+						(disp.y()-height)/2+35);
+				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
+				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
+						"Team",0,0);
+				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
+				                "Team",((disp.x()-width)/2+260)+(launch2_game.width()/2)-(labelr.w/2),
+						(disp.y()-height)/2+35);
+				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
+				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
+						"Color",0,0);
+				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
+				                "Color",((disp.x()-width)/2+375)+(launch2_game.width()/2)-(labelr.w/2),
+						(disp.y()-height)/2+35);
 
 				//Options
 				std::vector<std::string> player_type;
@@ -532,27 +561,23 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				for(sd = sides.begin(); sd != sides.end(); ++sd) {
 					font::draw_text(&disp,disp.screen_area(),24,font::GOOD_COLOUR,
 					                (*sd)->values["side"],(disp.x()-width)/2+10,
-							(disp.y()-height)/2+38+(30*counter));
+							(disp.y()-height)/2+53+(30*counter));
 					combo_type.push_back(gui::combo(disp,player_type));
 					combo_type[counter].set_xy((disp.x()-width)/2+30,
-							(disp.y()-height)/2+40+(30*counter));
+							(disp.y()-height)/2+55+(30*counter));
 					combo_race.push_back(gui::combo(disp,player_race));
-					combo_race[counter].set_xy((disp.x()-width)/2+150,
-							(disp.y()-height)/2+40+(30*counter));
+					combo_race[counter].set_xy((disp.x()-width)/2+145,
+							(disp.y()-height)/2+55+(30*counter));
 					combo_team.push_back(gui::combo(disp,player_team));
-					combo_team[counter].set_xy((disp.x()-width)/2+270,
-							(disp.y()-height)/2+40+(30*counter));
+					combo_team[counter].set_xy((disp.x()-width)/2+260,
+							(disp.y()-height)/2+55+(30*counter));
 					combo_team[counter].set_selected(counter);
 					combo_color.push_back(gui::combo(disp,player_color));
-					combo_color[counter].set_xy((disp.x()-width)/2+390,
-							(disp.y()-height)/2+40+(30*counter));
+					combo_color[counter].set_xy((disp.x()-width)/2+375,
+							(disp.y()-height)/2+55+(30*counter));
 					combo_color[counter].set_selected(counter);
 					counter++;
 				}
-
-				//Buttons
-				gui::button launch2_game(disp,"Launch");
-				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
 
 				update_whole_screen();
 
