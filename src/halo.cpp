@@ -119,14 +119,14 @@ const std::string& effect::current_image()
 void effect::rezoom()
 {
 	const double new_zoom = disp->zoom();
-	x_ = (x_*new_zoom)/zoom_;
-	y_ = (y_*new_zoom)/zoom_;
+	x_ = int((x_*new_zoom)/zoom_);
+	y_ = int((y_*new_zoom)/zoom_);
 
 	zoom_ = new_zoom;
 
 	surf_.assign(image::get_image(current_image_,image::UNSCALED));
 	if(surf_ != NULL && zoom_ != 1.0) {
-		surf_.assign(scale_surface(surf_,surf_->w*zoom_,surf_->h*zoom_));
+		surf_.assign(scale_surface(surf_,int(surf_->w*zoom_),int(surf_->h*zoom_)));
 	}
 }
 
