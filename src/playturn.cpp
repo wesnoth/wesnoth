@@ -301,9 +301,10 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 			//otherwise we're trying to move to a hex
 			else if(selected_hex.valid() && selected_hex != hex &&
+				     units.count(selected_hex) &&
 				     enemy == units.end() && !current_route.steps.empty() &&
 				     current_route.steps.front() == selected_hex) {
-				assert(units.count(selected_hex));
+
 				const size_t moves = move_unit(&gui,map,units,teams,
 				                   current_route.steps,&recorder,&undo_stack);
 				redo_stack.clear();
@@ -848,11 +849,22 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 			gui.set_paths(NULL);
 			current_paths = paths();
+			selected_hex = gamemap::location();
+			current_route.steps.clear();
+			gui.set_route(NULL);
 
 			recorder.undo();
 		}
 
 		if(command == HOTKEY_REDO && !redo_stack.empty()) {
+
+			//clear routes, selected hex, etc
+			gui.set_paths(NULL);
+			current_paths = paths();
+			selected_hex = gamemap::location();
+			current_route.steps.clear();
+			gui.set_route(NULL);
+
 			const int starting_moves = redo_stack.back().starting_moves;
 			std::vector<gamemap::location> route = redo_stack.back().route;
 			const unit_map::iterator u = units.find(route.front());
