@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.6-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-20 23:22+0100\n"
 "PO-Revision-Date: 2004-11-12 02:00+0200\n"
@@ -75,7 +75,6 @@ msgstr ""
 "estarán siempre bajo este apartado."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -86,15 +85,15 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
-"<img>src=misc/logo.png align=middle box=no</img>\n"
+"\n"
 "\n"
 "La Batalla por Wesnoth es un juego de estrategia fantástica por turnos, con "
 "un enfoque poco usual entre los juegos modernos de estrategia. Mientras "
 "otros juegos buscan la complejidad de reglas y sistema de juego, en La "
 "Batalla por Wesnoth se persigue todo lo contrario. Esto no hace simple al "
-"juego, sino al contrario: a partir de unas reglas simples puede hacerse una "
-"gran estrategia, haciendo que el juego sea fácil de aprender pero difícil de "
-"dominar con maestría."
+"juego, sino al contrario: a partir de unas reglas simples pueden crearse "
+"grandes estrategias, haciendo que el juego sea fácil de aprender pero "
+"difícil de dominar con maestría."
 
 #: data/help.cfg:67
 msgid "Fundamentals of Gameplay"
@@ -847,18 +846,16 @@ msgstr "Predeterminado"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/multiplayer_client.cpp:664
-#, fuzzy
 msgid "Random"
-msgstr "Mapa aleatorio"
+msgstr "Aleatorio"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Leales"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
-#, fuzzy
 msgid "Rebels"
-msgstr "Veteranos"
+msgstr "Rebeldes"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 #, fuzzy
@@ -871,14 +868,12 @@ msgid "Undead"
 msgstr "No muertos"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "&dwarf-lord.png,Alianza de Knalgan"
+msgstr "Alianza de Knalgan"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Draco celeste"
+msgstr "Dracos"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -7323,22 +7318,19 @@ msgstr "Nombre:"
 
 #: src/game.cpp:144 src/game.cpp:201 src/playturn.cpp:1526
 msgid "The game could not be saved"
-msgstr "La partida no ha podido ser guardada"
+msgstr "La partida no se ha podido guardar"
 
 #: src/game.cpp:166 src/game.cpp:888 src/game.cpp:1278
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "La partida no ha podido ser guardada"
+msgstr "La partida no se ha podido cargar: "
 
 #: src/game.cpp:169 src/game.cpp:890 src/game.cpp:1280
-#, fuzzy
 msgid "Error while playing the game: "
-msgstr "Error de E/S en el fichero mientras se intentaba su lectura."
+msgstr "Error durante el juego: "
 
 #: src/game.cpp:172 src/game.cpp:1292
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "La partida no ha podido ser guardada"
+msgstr "El mapa del juego no se ha podido cargar: "
 
 #: src/game.cpp:193
 msgid "Do you want to save your game?"
@@ -7346,7 +7338,7 @@ msgstr "¿Quiere guardar el juego?"
 
 #: src/game.cpp:214
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Escenario desconocido: '"
 
 #: src/game.cpp:603
 msgid "The Battle for Wesnoth"
@@ -7361,18 +7353,16 @@ msgstr ""
 "cargarla igualmente?"
 
 #: src/game.cpp:828 src/game.cpp:831
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "El fichero que ha intentado cargar está corrompido."
+msgstr "El fichero que ha intentado cargar está corrupto: '"
 
 #: src/game.cpp:834
 msgid "File I/O Error while reading the game"
 msgstr "Error de E/S en el fichero mientras se intentaba su lectura."
 
 #: src/game.cpp:939
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr ", Obtener más campañas..."
+msgstr "Obtener más campañas..."
 
 #: src/game.cpp:940
 msgid "Download more campaigns from a server on Internet."
@@ -7417,18 +7407,16 @@ msgid "Name"
 msgstr "Nombre"
 
 #: src/game.cpp:1042
-#, fuzzy
 msgid "Author"
-msgstr "espinas"
+msgstr "Autor"
 
 #: src/game.cpp:1043
 msgid "Downloads"
-msgstr ""
+msgstr "Descargas"
 
 #: src/game.cpp:1044
-#, fuzzy
 msgid "Size"
-msgstr "Sirena"
+msgstr "Tamaño"
 
 #: src/game.cpp:1063
 msgid "B"
@@ -7559,12 +7547,11 @@ msgstr "Elija su idioma preferido"
 
 #: src/game.cpp:1356
 msgid "Error loading game configuration files: '"
-msgstr ""
+msgstr "Error cargando ficheros de configuración del juego: '"
 
 #: src/game.cpp:1357
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "El juego se ha acabado."
+msgstr "' (el juego finalizará en este momento)"
 
 #: src/help.cpp:1021
 msgid "Advances to"
@@ -7831,9 +7818,8 @@ msgid "Era"
 msgstr "Era"
 
 #: src/multiplayer.cpp:343
-#, fuzzy
 msgid "You must enter a name."
-msgstr "Debe tener al menos"
+msgstr "Debe tener un nombre."
 
 #: src/multiplayer.cpp:360
 msgid "Unlimited"
@@ -7869,7 +7855,6 @@ msgid "Receiving game list..."
 msgstr "Recibiendo lista de partidas..."
 
 #: src/multiplayer_client.cpp:126 src/playturn.cpp:1745
-#, fuzzy
 msgid "unit^Gold"
 msgstr "Oro"
 
@@ -8046,7 +8031,7 @@ msgstr "Plazas libres"
 
 #: src/multiplayer_lobby.cpp:159
 msgid "<no games open>"
-msgstr ""
+msgstr "<no hay juegos abiertos>"
 
 #: src/multiplayer_lobby.cpp:163
 msgid "Observe Game"

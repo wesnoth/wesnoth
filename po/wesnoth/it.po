@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-20 23:22+0100\n"
-"PO-Revision-Date: 2004-12-23 01:16+0100\n"
+"PO-Revision-Date: 2004-12-27 21:25+0100\n"
 "Last-Translator: DarkAmex <americo_iacovizzi@libero.it>\n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -380,6 +380,17 @@ msgid ""
 "has only a 30% chance of hitting them. Conversely, the elf's chance of "
 "hitting the attacker in return depends on what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"Con due eccezioni, la probabilità di colpire un'unità si basa solitamente "
+"sul valore della sua difesa sul <ref>dst=terrain text=Terreno</ref> sul "
+"quale si trova. Questo si può conoscere facendo clic con il destro su un "
+"unità, selezionando Descrizione dell'unità ed infine guadando i "
+"<italic>text='Modificatori Territoriali'</italic>. Per esempio gli elfi "
+"hanno una percentuale di difesa del 70% nella foresta, ciò vuol dire che "
+"un'unità che li attacca ha solo il 30% di probabilità di colpirli. Nello "
+"stesso modo, la probabilità di colpire degli elfi di colpire l'attaccante in "
+"difesa dipende dal tipo di territorio dove quest'ultimo si trova."
 
 #: data/help.cfg:112
 msgid ""
@@ -390,6 +401,13 @@ msgid ""
 "terrain, and, when used offensively, Marksmen always have at least a 60% "
 "chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"Ci sono due eccezioni aquesta regola: gli <ref>dst=magical_attacks "
+"text='Attacchi Magici'</ref> e i  <ref>dst=ability_marksman text='Tiratori "
+"Scelti'</ref>. Gli Attacchi Magici hanno sempre una probabilità del 70% di "
+"colpire, indipendentemente dal terreno, e , quando vengono utilizzati in "
+"attacco, i Tiratori Scelti hanno almeno una possibilità del 60% di colpire, "
+"indipendentemente dal terreno."
 
 #: data/help.cfg:114
 msgid ""
@@ -545,6 +563,15 @@ msgid ""
 "Chaotic units get +25% damage at night, and -25% in daytime.\n"
 "Neutral units are unaffected by the time of day."
 msgstr ""
+"\n"
+"\n"
+"Il periodo del giorno influsce sul danno di alcune unità come segue:\n"
+"\n"
+"Le unità Leali causano +25% danni in più durante il giorno e -25% durante la "
+"notteLawful units get +25% damage in daytime, and -25% damage at night.\n"
+"Le unità Caotiche causano +25% danni in più durante la notte e -25% durante "
+"il giorno\n"
+"Le unità neutrali non sobiscono alcun influsso."
 
 #: data/help.cfg:154
 msgid ""
@@ -1012,7 +1039,7 @@ msgstr "Ribelli"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
-msgstr ""
+msgstr "Settentrionali"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:127
@@ -1072,6 +1099,7 @@ msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
 msgstr ""
+"Puoi Venire se vuoi, ma il capo è solamente interessato a parlare con Baldras"
 
 #: data/scenarios/multiplayer/An_Island.cfg:7
 msgid "An Island"
@@ -1247,7 +1275,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
-msgstr ""
+msgstr "Mondo da battaglia"
 
 #: data/scenarios/multiplayer/castles.cfg:7
 msgid "Siege Castles"
@@ -1667,6 +1695,10 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
+"Oops! Hai mosso il tuo leader fuori dal mantenimento. Ricorda, Quando il tuo "
+"leader non si trova su un mantenimento non è possibile reclutare. Ricorda "
+"anche che se il tuo leader muore verrai sconfitto. Per continuare il corso "
+"ti porterò indietro sul tuo mantenimento."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:232
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:222
@@ -1700,6 +1732,7 @@ msgstr "Urra!"
 #: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr ""
+"Come faccia a sapere come completare uno scenario? Mi verrà sempre detto?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid ""
@@ -1710,10 +1743,17 @@ msgid ""
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the level is over. Hopefully, it was a victory condition that was met."
 msgstr ""
+"Alcune volte non è chiaro come vincere uno scenario semplicemente seguendo i "
+"dialoghi. In questo caso è sufficente guardare gli obbiettivi dello "
+"scenario , che appaiono dopo il dialogo di apertura. Si può anche trovare "
+"facendo clic su 'Obiettivi' nel menù. Gli obbiettivi dello scenario sono un "
+"elenco delle condizioni di vittoria e di sconfitta e quando una delle due "
+"viene raggiunta, finisce il livello. Ovviamente solo vincedo si può andare "
+"avanti."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:254
 msgid "What happens when I win a scenario?"
-msgstr ""
+msgstr "Cosa succede quando vinco uno scenario?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:254
 msgid ""
@@ -3514,9 +3554,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
-#, fuzzy
 msgid "stab"
-msgstr "Attacco alle spalle"
+msgstr "Pugnalata"
 
 #: data/units/Bone_Shooter.cfg:26 data/units/Bone_Shooter.cfg:39
 #: data/units/Bowman.cfg:38 data/units/Cavalier.cfg:49
@@ -3604,7 +3643,6 @@ msgid "Bowman"
 msgstr "Arciere"
 
 #: data/units/Bowman.cfg:17
-#, fuzzy
 msgid ""
 "Immersed from childhood in the ways of archery, the young Bowmen are the "
 "most common ranged combatants in Wesnothian armies. They do not undergo as "
@@ -3612,7 +3650,10 @@ msgid ""
 "tactic requires more finess than brute strength."
 msgstr ""
 "Immersi dall'infanzia nella disciplina del tiro con l'arco i giovani arcieri "
-"sono le più comuni unità di attacco dalla distanza nelle armate di Wesnoth."
+"sono le più comuni unità di attacco dalla distanza nelle armate di Wesnoth. "
+"Essi non seguono un rigoroso allenamento come i Lancieri o la Cavalleria "
+"Pesante, perchè le loro tattiche di battaglia necessitanpo più arguzia che "
+"forza bruta."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
@@ -3955,7 +3996,7 @@ msgstr ""
 
 #: data/units/Drake_Burner.cfg:4
 msgid "Drake Burner"
-msgstr ""
+msgstr "Drago Bruciatore"
 
 #: data/units/Drake_Burner.cfg:18
 msgid ""
@@ -3976,7 +4017,7 @@ msgstr "alito di fuoco"
 
 #: data/units/Drake_Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr ""
+msgstr "Drago Cozzatore"
 
 #: data/units/Drake_Clasher.cfg:18
 msgid ""
@@ -4018,7 +4059,7 @@ msgstr ""
 
 #: data/units/Drake_Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Drago Cuore di Fiamma"
 
 #: data/units/Drake_Flameheart.cfg:20
 msgid ""
@@ -4031,7 +4072,7 @@ msgstr ""
 
 #: data/units/Drake_Flare.cfg:4
 msgid "Drake Flare"
-msgstr ""
+msgstr "Drago Splendente"
 
 #: data/units/Drake_Flare.cfg:20
 msgid ""
@@ -4056,7 +4097,7 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "Drago Leggero"
 
 #: data/units/Drake_Glider.cfg:19
 msgid ""
@@ -4091,7 +4132,7 @@ msgstr "Drago del Cielo"
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
-msgstr ""
+msgstr "Drago Tagliatore"
 
 #: data/units/Drake_Slasher.cfg:18
 msgid ""
@@ -4265,7 +4306,7 @@ msgstr "Accetta"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "Nano Signore delle Rune"
 
 #: data/units/Dwarvish_Runemaster.cfg:16
 #, fuzzy
@@ -4723,9 +4764,8 @@ msgid "female^Elvish Sharpshooter"
 msgstr "female^Tiratore Magnifica Elfica"
 
 #: data/units/Elvish_Shyde.cfg:3
-#, fuzzy
 msgid "female^Elvish Shyde"
-msgstr "Elvish Shyde"
+msgstr "female^Fata Elfica"
 
 #: data/units/Elvish_Shyde.cfg:20
 #, fuzzy
@@ -4756,9 +4796,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
-#, fuzzy
 msgid "female^Elvish Sylph"
-msgstr "Elvish Shyde"
+msgstr "female^Ninfa Elfica"
 
 #: data/units/Elvish_Sylph.cfg:20
 msgid ""
@@ -4887,7 +4926,7 @@ msgstr "Portone"
 
 #: data/units/Gate.cfg:21
 msgid "bump"
-msgstr ""
+msgstr "urto"
 
 #: data/units/General.cfg:3
 msgid "General"
@@ -5069,7 +5108,7 @@ msgstr "Lancia"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr ""
+msgstr "Gran Marasciallo"
 
 #: data/units/Grand_Marshal.cfg:21
 msgid ""
@@ -5307,7 +5346,7 @@ msgstr ""
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
-msgstr ""
+msgstr "Lich"
 
 #: data/units/Lich.cfg:16
 #, fuzzy
@@ -5325,7 +5364,6 @@ msgstr ""
 "potenti incantesimi."
 
 #: data/units/Lieutenant.cfg:3
-#, fuzzy
 msgid "Lieutenant"
 msgstr "Tenente"
 
@@ -5390,7 +5428,7 @@ msgstr ""
 
 #: data/units/Mage.cfg:36 data/units/Mage.cfg:103
 msgid "missile"
-msgstr ""
+msgstr "missile"
 
 #: data/units/Mage.cfg:70
 msgid "female^Mage"
@@ -5456,7 +5494,7 @@ msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "female^Sirena Divinatrice"
 
 #: data/units/Mermaid_Diviner.cfg:23
 msgid ""
@@ -5489,7 +5527,7 @@ msgstr "spruzzo d'acqua"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "female^Sirena Iniziata"
 
 #: data/units/Mermaid_Initiate.cfg:20
 msgid ""
@@ -5500,7 +5538,7 @@ msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "female^Sirena Sacerdotessa"
 
 #: data/units/Mermaid_Priestess.cfg:21
 msgid ""
@@ -5520,7 +5558,7 @@ msgstr "tocco fatato"
 
 #: data/units/Merman.cfg:3
 msgid "Merman"
-msgstr ""
+msgstr "Uomo Marino"
 
 #: data/units/Merman.cfg:19 data/units/Merman_Fighter.cfg:22
 #: data/units/Merman_Hoplite.cfg:35 data/units/Merman_Triton.cfg:22
@@ -5530,18 +5568,16 @@ msgid "trident"
 msgstr "tridente"
 
 #: data/units/Merman_Entangler.cfg:3
-#, fuzzy
 msgid "Merman Entangler"
-msgstr "Intrappolare"
+msgstr "Intrappolatore Marino"
 
 #: data/units/Merman_Fighter.cfg:3
-#, fuzzy
 msgid "Merman Fighter"
-msgstr "Drago Combattente"
+msgstr "Combattente Marino"
 
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "Oplite Marino"
 
 #: data/units/Merman_Hoplite.cfg:32
 msgid ""
@@ -5553,7 +5589,7 @@ msgstr ""
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
-msgstr ""
+msgstr "Cacciatore Marino"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
@@ -5564,13 +5600,12 @@ msgid "Merman Netcaster"
 msgstr ""
 
 #: data/units/Merman_Spearman.cfg:3
-#, fuzzy
 msgid "Merman Spearman"
-msgstr "Lanciere"
+msgstr "Lanciere Marino"
 
 #: data/units/Merman_Triton.cfg:3
 msgid "Merman Triton"
-msgstr ""
+msgstr "Tritone"
 
 #: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:19
 msgid ""
@@ -5580,9 +5615,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Warrior.cfg:3
-#, fuzzy
 msgid "Merman Warrior"
-msgstr "Drago Combattente"
+msgstr "Guerriero Marino"
 
 #: data/units/Merman_Warrior.cfg:19
 msgid ""
@@ -5593,7 +5627,7 @@ msgstr ""
 #: data/units/Mounted_Captain.cfg:4
 #, fuzzy
 msgid "Mounted Captain"
-msgstr "Montagne"
+msgstr "Capitano Marino"
 
 #: data/units/Mounted_Captain.cfg:18 data/units/Mounted_Fighter.cfg:17
 msgid ""
@@ -5606,7 +5640,7 @@ msgstr ""
 #: data/units/Mounted_Commander.cfg:4
 #, fuzzy
 msgid "Mounted Commander"
-msgstr "Comandante Nobile"
+msgstr "Comandante Marino"
 
 #: data/units/Mounted_Commander.cfg:18
 msgid ""
@@ -5639,13 +5673,12 @@ msgid "Mudcrawler"
 msgstr "Fanghiglia"
 
 #: data/units/Mudcrawler.cfg:16
-#, fuzzy
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "spraying boiling water on their foes."
 msgstr ""
-"Mudcrawlers are magical constructs of soil and water. They attack by "
-"spraying boiling water on their foes."
+"Le Fanghiglie sono dei costrutti magici di solido ed acqua. Attaccano "
+"spruzzando dei getti d'acqua bollente verso i loro avversari."
 
 #: data/units/Naga-Fighter.cfg:3
 #, fuzzy
@@ -6963,7 +6996,7 @@ msgstr "+Mappe per Multiplayer"
 
 #: src/about.cpp:123
 msgid "+Packagers"
-msgstr ""
+msgstr "+Sviluppatori dei pacchetti"
 
 #: src/about.cpp:134
 msgid "+Miscellaneous"
@@ -7115,7 +7148,7 @@ msgstr "vulnerabilità del difensore vs"
 
 #: src/actions.cpp:502
 msgid "Halved"
-msgstr ""
+msgstr "Dimezzato"
 
 #: src/actions.cpp:725 src/actions.cpp:871 src/display.cpp:896
 #: src/reports.cpp:116
@@ -7338,7 +7371,7 @@ msgstr "Vuoi salvare la partita?"
 
 #: src/game.cpp:214
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Scenario sconosciuto: '"
 
 #: src/game.cpp:603
 msgid "The Battle for Wesnoth"
@@ -7491,7 +7524,7 @@ msgstr "Termini"
 
 #: src/game.cpp:1198 src/game.cpp:1223
 msgid "Response"
-msgstr ""
+msgstr "Responso"
 
 #: src/game.cpp:1236
 msgid "Join Official Server"
@@ -7518,9 +7551,8 @@ msgid "Host a game without using a server"
 msgstr "Ospita una partita senza utilizzare un server"
 
 #: src/game.cpp:1239
-#, fuzzy
 msgid "Hotseat Game"
-msgstr "Crea Partita"
+msgstr "Ospita Partita"
 
 #: src/game.cpp:1239
 msgid "Play a multiplayer game sharing the same machine"
@@ -7548,12 +7580,11 @@ msgstr "Scegli la lingua che preferisci"
 
 #: src/game.cpp:1356
 msgid "Error loading game configuration files: '"
-msgstr ""
+msgstr "Errore durante il caricamento del gioco"
 
 #: src/game.cpp:1357
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "La partita è terminata."
+msgstr "' (La partita è terminata.)"
 
 #: src/help.cpp:1021
 msgid "Advances to"
@@ -7620,25 +7651,21 @@ msgid "or"
 msgstr "o"
 
 #: src/help.cpp:1303
-#, fuzzy
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
-"Questo terreno funziona come $terrains per i modificatori del movimento e "
-"difesa"
+"Questo terreno funziona come $terrains ai fini del movimento e della difesa."
 
 #: src/help.cpp:1305
-#, fuzzy
 msgid "The terrain with the best modifier is chosen automatically."
-msgstr "Il terreno con il migliore modificatore è scelto automaticamente"
+msgstr "Il terreno con il migliore modificatore viene scelto automaticamente"
 
 #: src/help.cpp:1309
-#, fuzzy
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
 "Questo terreno funziona come il keep. ad esempio, puoi reclutare unità "
-"quando il comandante è in questo terreno"
+"quando un comandante è in questo terreno"
 
 #: src/help.cpp:1311
 msgid ""
@@ -7827,7 +7854,7 @@ msgstr "Era"
 
 #: src/multiplayer.cpp:343
 msgid "You must enter a name."
-msgstr ""
+msgstr "Devi inserire un nome"
 
 #: src/multiplayer.cpp:360
 msgid "Unlimited"
@@ -7850,6 +7877,8 @@ msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
 msgstr ""
+"Il gioco non riesce ad aprire la porta necessaria per ospitare un gioco "
+"sulla rete. I giocatori sulla rete non potranno connettersi a questo gioco."
 
 #: src/multiplayer.cpp:517
 msgid "Warning"
@@ -8036,7 +8065,7 @@ msgstr "Slot Vuoti"
 
 #: src/multiplayer_lobby.cpp:159
 msgid "<no games open>"
-msgstr ""
+msgstr "<nessun gioco aperto>"
 
 #: src/multiplayer_lobby.cpp:163
 msgid "Observe Game"
