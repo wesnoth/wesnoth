@@ -1,5 +1,6 @@
 #include "log.hpp"
 #include "network.hpp"
+#include "util.hpp"
 
 #include "SDL_net.h"
 
@@ -227,10 +228,12 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				const std::string buffer(buf.buf.begin(),buf.buf.end());
 				received_data.erase(part_received); //invalidates buf. don't use again
 				if(buffer == "") {
+					std::cerr << "buffer from remote host is empty\n";
 					throw error("remote host closed connection",*i);
 				}
 
 				if(buffer[buffer.size()-1] != 0) {
+					std::cerr << "buf not nul-delimited. Network error\n";
 					throw network::error("sanity check on incoming data failed",*i);
 				}
 
@@ -240,7 +243,10 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 		}
 	}
 
-	return 0;
+	const int time_taken = SDL_GetTicks() - starting_ticks;
+	const int time_left = maximum<int>(0,timeout - time_taken);
+
+	return receive_data(cfg,connection_num,time_left);
 }
 
 void send_data(const config& cfg, connection connection_num)
