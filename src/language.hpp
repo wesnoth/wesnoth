@@ -26,8 +26,9 @@ typedef std::vector<wchar_t> wide_string;
 
 struct language_def
 {
-  std::string localename;
-  std::string language;
+	std::string localename;
+  	std::string language;
+	bool operator== (const language_def&);
 };
 extern language_def known_languages[];
 std::string languagedef_name (const language_def& def);
@@ -63,7 +64,7 @@ std::vector<language_def> get_languages();
 bool set_language(const language_def& locale);
 
 //function which returns the name of the language currently used
-const std::string& get_language();
+const language_def& get_language();
 
 //function which attempts to query and return the locale on the system
 const language_def& get_locale();

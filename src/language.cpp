@@ -23,7 +23,7 @@
 #include <iostream>
 
 namespace {
-	std::string current_language;
+	language_def current_language;
 	string_map strings_;
 }
 
@@ -42,6 +42,11 @@ std::string languagedef_name (const language_def& def)
 bool languagedef_lessthan_p (const language_def& def1, const language_def& def2)
 {
   return (def1.language < def2.language);
+}
+
+bool language_def::operator== (const language_def& a)
+{
+  return ((language == a.language) /* && (localename == a.localename) */ );
 }
 
 symbol_table string_table;
@@ -102,7 +107,8 @@ bool internal_set_language(const language_def& locale, config& cfg)
 	for(config::child_list::const_iterator i = lang.begin(); i != lang.end(); ++i) {
 		if((**i)["id"] == locale.localename || (**i)["language"] == locale.language) {
 
-			current_language = (**i)["language"];
+			current_language.language = (**i)["language"];
+			current_language.localename = (**i)["id"];
 
 			setlocale (LC_MESSAGES, locale.localename.c_str());
 
@@ -145,15 +151,15 @@ bool set_language(const language_def& locale)
 			//default to English locale first, then set desired locale
 			internal_set_language(known_languages[1],cfg);
 		} catch(config::error& e) {
-			std::cerr << "error opening translations: '" << e.message << "' Defaulting to English\n";
-			return set_language(known_languages[1]);
+			std::cerr << "error opening translations: '" << e.message << "' Defaulting to system locale\n";
+			return set_language(known_languages[0]);
 		}
 	}
 
 	return internal_set_language(locale,cfg);
 }
 
-const std::string& get_language() { return current_language; }
+const language_def& get_language() { return current_language; }
 
 const language_def& get_locale()
 {
@@ -169,9 +175,9 @@ const language_def& get_locale()
 			  	return known_languages[i];
 		}
 		
-		std::cerr << "setlocale succeeded but locale not found in known array; defaulting to locale 'en'\n";
+		std::cerr << "setlocale succeeded but locale not found in known array; defaulting to system locale\n";
 		// FIXME
-		return known_languages[1];
+		return known_languages[0];
 	}
 
 #if 0
@@ -187,9 +193,9 @@ const language_def& get_locale()
 	}
 #endif
 
-	std::cerr << "locale could not be determined; defaulting to locale 'en'\n";
+	std::cerr << "locale could not be determined; defaulting to system locale\n";
 	// FIXME
-	return known_languages[1];
+	return known_languages[0];
 }
 
 class invalid_utf8_exception : public std::exception {

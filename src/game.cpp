@@ -526,9 +526,9 @@ int play_game(int argc, char** argv)
 	const bool lang_res = set_language(get_locale());
 	if(!lang_res) {
 		std::cerr << "No translation for locale '" << get_locale().language
-		          << "', default to locale 'en'\n";
+		          << "', default to system locale\n";
 
-		const bool lang_res = set_language(known_languages[1]);
+		const bool lang_res = set_language(known_languages[0]);
 		if(!lang_res) {
 			std::cerr << "Language data not found\n";
 		}
@@ -1002,14 +1002,16 @@ int play_game(int argc, char** argv)
 			//std::sort(langs.begin(),langs.end());
 			//std::sort(langdefs.begin(),langdefs.end(),languagedef_lessthan_p);
 
+			// this only works because get_languages() returns a fresh vector at each calls
+			// unless show_gui cleans the "*" flag
+			const std::vector<language_def>::iterator current = std::find(langdefs.begin(),langdefs.end(),get_language());
+			if(current != langdefs.end())
+				(*current).language = "*" + (*current).language;
+
 			// prepare a copy with just the labels for the list to be displayed
 			std::vector<std::string> langs;
 			langs.reserve(langdefs.size());
 			std::transform(langdefs.begin(),langdefs.end(),std::back_inserter(langs),languagedef_name);
-
-			const std::vector<std::string>::iterator current = std::find(langs.begin(),langs.end(),get_language());
-			if(current != langs.end())
-				*current = "*" + *current;
 
 			const int res = gui::show_dialog(disp,NULL,string_table["language_button"],
 			                         string_table["choose_language"] + ":",
