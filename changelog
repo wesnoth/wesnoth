@@ -1,6 +1,6 @@
 CVS HEAD:
  * improved user interface theme
- * new graphics: signpost, sting attack frame
+ * new and improved graphics: signpost, mountains, grassland, attack icons and frames
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
    * Peasant Revolt
@@ -34,6 +34,7 @@ CVS HEAD:
    * Outlaw Princess
    * Outlaw Queen
    * Peasant
+   * Soul Shooter
    * Warrior King
  * return can now be used to navigate through help topics and sections
  * a box is now drawn around images in the help browser (can be disabled through minor tweaks to help config to handle new borders around images wml)
@@ -42,6 +43,7 @@ CVS HEAD:
    * catalan
    * czech
    * german
+   * slovak
    * spanish
    * swedish
  * added [then] and [else] tags under [object] tags
@@ -59,6 +61,8 @@ CVS HEAD:
  * fixed bug where multiplayer games that disallowed observers didn't work properly
  * fixed removing items when legitimate unit picks it up
  * fixed removal of items in scenarios
+ * fixed victory conditions in 'The Siege of Barag Go'
+ * fixed animated cursors segfaulting the game
  * small fixes to unit display in help browser
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
  * moved items to their own hierarchy: images/items/
@@ -79,6 +83,7 @@ CVS HEAD:
  * inlining some stuff for performance reasons
  * optimizing invalide_all redraws
  * adding support for animated terrain images
+ * ran pngcrush on images
 
 Version 0.8:
  * added Drake flying animations
