@@ -1,9 +1,5 @@
 AUTOMAKE_OPTIONS = foreign
-if ICONS
 ISUBDIRS = icons
-else
-ISUBDIRS =
-endif
 SUBDIRS = src $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
 

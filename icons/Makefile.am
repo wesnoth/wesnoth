@@ -1,17 +1,20 @@
-appicondir = $(datadir)/icons
-appicon_DATA = ../images/wesnoth-icon.png
-
-desktopdir = $(datadir)/applications
-dist_desktop_DATA = wesnoth.desktop
-
 if GNOME1
 gnome1desktopdir = @GNOME1_DESKTOP@
-gnome1desktop_DATA = $(dist_desktop_DATA)
+dist_gnome1desktop_DATA = wesnoth.desktop
+gnome1icondir = $(datadir)/icons
+gnome1icon_DATA = ../images/wesnoth-icon.png
+endif
+
+if GNOME2
+gnome2desktopdir = $(datadir)/applications
+dist_gnome2desktop_DATA = 
+gnome2icondir = $(datadir)/icons
+gnome2icon_DATA = ../images/wesnoth-icon.png
 endif
 
 if KDE
 kdedesktopdir = @KDE_DESKTOP@
-kdedesktop_DATA = $(dist_desktop_DATA)
+dist_kdedesktop_DATA = wesnoth.desktop
 kdeicondir = @KDE_ICON@
-kdeicon_DATA = $(appicon_DATA)
+kdeicon_DATA = ../images/wesnoth-icon.png
 endif

@@ -4,10 +4,10 @@
 # Initial configuration                                               #
 #######################################################################
 
-#AC_PREREQ(2.57)
-AC_INIT(wesnoth, 0.12, davidnwhite@optusnet.com.au, Battle for Wesnoth)
+AC_PREREQ(2.57)
+AC_INIT(wesnoth, 0.13, davidnwhite@optusnet.com.au, Battle for Wesnoth)
 
-AC_REVISION($Version: 0.12$)
+AC_REVISION($Version: 0.13$)
 PACKAGE=wesnoth
 MAJOR_VERSION="0"
 MINOR_VERSION="6"
@@ -51,14 +51,13 @@ fi
 AC_PATH_PROGS([GNOME_CONFIG], [gnome-config], [none])
 
 if test "x$GNOME_CONFIG" = "xnone"; then
-	gnome1=no
+	gnome1found=no
 else
 	GNOME1_DESKTOP=`$GNOME_CONFIG --datadir`/gnome/apps/Games
-	gnome1=yes
+	gnome1found=yes
 fi
 
 AC_SUBST([GNOME1_DESKTOP])
-AM_CONDITIONAL(GNOME1, test x$gnome1 = xyes)
 
 
 # KDE_CONFIG
@@ -66,16 +65,15 @@ AM_CONDITIONAL(GNOME1, test x$gnome1 = xyes)
 AC_PATH_PROGS(KDE_CONFIG, kde-config, none)
 
 if test "x$KDE_CONFIG" = "xnone"; then
-	kde=no
+	kdefound=no
 else
 	KDE_DESKTOP=`$KDE_CONFIG --expandvars --install apps`/Games/TacticStrategy
 	KDE_ICON=`$KDE_CONFIG --expandvars --install icon`
-	kde=yes
+	kdefound=yes
 fi
 
 AC_SUBST([KDE_DESKTOP])
 AC_SUBST([KDE_ICON])
-AM_CONDITIONAL(KDE, test x$kde = xyes)
 
 #######################################################################
 # Checks for libraries.                                               #
@@ -251,7 +249,7 @@ AC_ARG_ENABLE(debug,
 
 DATADIR=$PACKAGE
 AC_ARG_ENABLE(datadir-name,
-	      [  --datadir-name[[=dir]]    Change name of data directory. Default with this option: wesnoth-data], 
+	      [  --datadir-name[[=dir]] Change name of data directory. Default with this option: wesnoth-data], 
 	      [case "${enableval}" in
 	       yes)
 			DATADIR="wesnoth-data"
@@ -285,23 +283,22 @@ AC_ARG_ENABLE(tools,
 	      tools=$enableval,
 	      tools=no)
 
-AC_ARG_ENABLE(icons,
-	      [  --disable-icons       Disable installation of icons and menu entries],
-	      icons=$enableval,
-	      icons=yes)
+AC_ARG_ENABLE(kde,
+	      [  --enable-kde          Enable installation of icon and KDE menu entry],
+	      kde=$enableval,
+	      kde=no)
+
+AC_ARG_ENABLE(gnome,
+	      [  --enable-gnome        Enable installation of icon and GNOME menu entry],
+	      gnome=$enableval,
+	      gnome=no)
 
 AM_CONDITIONAL(SERVER, test x$server = xyes)
 AM_CONDITIONAL(EDITOR, test x$editor = xyes)
 AM_CONDITIONAL(TOOLS, test x$tools = xyes)
-AM_CONDITIONAL(ICONS, test x$icons = xyes)
-
-
-
-
-#######################################################################
-# Icon and menu handling                                              #
-#######################################################################
-
+AM_CONDITIONAL(KDE, test x$kde = xyes && test x$kdefound = xyes)
+AM_CONDITIONAL(GNOME1, test x$gnome = xyes && test x$gnome1found = xyes)
+AM_CONDITIONAL(GNOME2, test x$gnome = xyes && test x$gnome1found = xno)
 
 #######################################################################
 # Data file substitution.                                             #
