@@ -487,6 +487,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			} else {
 				team_leader = response["type"] = leader;
 			}
+			response["random_faction"] = chosen_side["random_faction"];
 			response["recruit"] = chosen_side["recruit"];
 			response["music"] = chosen_side["music"];
 
