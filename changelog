@@ -61,8 +61,11 @@ CVS HEAD:
  * made it so variables can be used to set the number of turns in a game
  * changed set_flag rather verbose syntax to set_flag=blah,foo,bar
  * added [then] and [else] tags under [object] tags
- * added [if] [then] [else] functionality to [bigmap]
- * added nested [if]'s to [bigmap]
+ * obsoleted [bigmap] tag, in favor of a unified [story] syntax
+   * display of background image, text, and title
+   * support of [if] [then] [else] functionality (can be nested)
+   * support of images overlay
+ * switched all scenarios to new [story] syntax
  * added exploder and cutter tools
  * fixed the bug with multiplying help sections
  * fixed the problem where the forward and back button was shown brifly when opening the help browser
@@ -96,7 +99,6 @@ CVS HEAD:
  * fixed [not] tag not working properly
  * fixed bug where clicking a menu item could generate multiple events
  * fixed duplicate battleworld.cfg
- * fixed [bigmap] not supporting multiple paths (#9719)
  * small fixes to unit display in help browser
  * pngcrushed images
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
