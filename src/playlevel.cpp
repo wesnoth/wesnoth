@@ -168,6 +168,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			    team_it != teams.end(); ++team_it) {
 				const int player_number = (team_it - teams.begin()) + 1;
 
+				//if a side is dead, don't do their turn
+				if(team_units(units,player_number) == 0)
+					continue;
+
 				if(!first_time) {
 					team_it->new_turn();
 

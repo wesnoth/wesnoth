@@ -2348,3 +2348,8 @@ bool display::team_valid() const
 {
 	return currentTeam_ < teams_.size();
 }
+
+size_t display::viewing_team() const
+{
+	return currentTeam_;
+}

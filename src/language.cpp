@@ -30,11 +30,16 @@ string_map string_table;
 
 const std::string& translate_string(const std::string& str)
 {
+	return translate_string_default(str,str);
+}
+
+const std::string& translate_string_default(const std::string& str, const std::string& default_val)
+{
 	const string_map::const_iterator i = string_table.find(str);
 	if(i != string_table.end())
 		return i->second;
 	else
-		return str;
+		return default_val;
 }
 
 std::vector<std::string> get_languages(config& cfg)

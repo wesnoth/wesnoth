@@ -986,10 +986,10 @@ void turn_info::status_table()
 	//if the player is under shroud or fog, they don't get to see
 	//details about the other sides, only their own side, and a ??? is
 	//shown to demonstrate lack of information about the other sides
-	const bool fog = teams_[team_num_-1].uses_fog() || teams_[team_num_-1].uses_shroud();
+	const bool fog = teams_[gui_.viewing_team()].uses_fog() || teams_[gui_.viewing_team()].uses_shroud();
 
 	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(fog && team_num_-1 != int(n))
+		if(fog && gui_.viewing_team() != n)
 			continue;
 
 		const team_data data = calculate_team_data(teams_[n],n+1,units_);
@@ -998,7 +998,7 @@ void turn_info::status_table()
 
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct colour
-		str << (char)(n+1) << team_name(n+1,units_) << ","
+		str << char(n+1) << team_name(n+1,units_) << ","
 		    << data.villages << ","
 		    << data.units << "," << data.upkeep << ","
 		    << (data.net_income < 0 ? "#":"") << data.net_income;

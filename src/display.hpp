@@ -244,6 +244,8 @@ public:
 
 	bool fogged(int x, int y) const;
 
+	size_t viewing_team() const;
+
 private:
 	display(const display&);
 	void operator=(const display&);

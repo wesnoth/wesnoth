@@ -30,6 +30,10 @@ extern std::map<std::string,std::string> string_table;
 //the string table, and otherwise simply returns the string itself
 const std::string& translate_string(const std::string& str);
 
+//version of translate_string which will look up key in the string table,
+//and otherwise returns default_val
+const std::string& translate_string_default(const std::string& key, const std::string& default_val);
+
 //function which, given the main configuration object, will return
 //a list of the translations of the game available.
 std::vector<std::string> get_languages(config& cfg);
