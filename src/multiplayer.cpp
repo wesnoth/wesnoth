@@ -171,10 +171,6 @@ int connection_acceptor::do_action()
 
 					if(!unclaimed) {
 						std::cerr << "starting game now...\n";
-						config start_game;
-						start_game.children["start_game"].
-						                         push_back(new config());
-						network::send_data(start_game);
 						return CONNECTIONS_FILLED;
 					}
 				} else {
@@ -234,6 +230,10 @@ bool accept_network_connections(display& disp, config& players)
 			return false;
 		}
 	}
+
+	config start_game;
+	start_game.children["start_game"].push_back(new config());
+	network::send_data(start_game);
 
 	return true;
 }
