@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-21 10:20+0100\n"
-"PO-Revision-Date: 2005-03-20 17:52+0100\n"
+"PO-Revision-Date: 2005-03-21 12:17+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: Nils Kneuper <crazy-ivanovic AT gmx DOT net>\n"
 "MIME-Version: 1.0\n"
@@ -109,7 +109,7 @@ msgstr "Konrad II"
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:114
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:106
 msgid "Get Gweddry to Weldyn"
-msgstr ""
+msgstr "Führt Gweddry nach Weldyn"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:118
 #: data/scenarios/Eastern_Invasion/Captured.cfg:290
@@ -130,9 +130,8 @@ msgstr ""
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:60
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:98
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:169
-#, fuzzy
 msgid "Death of Gweddry"
-msgstr "Gweddry"
+msgstr "Gweddry fällt in der Schlacht"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:122
 #: data/scenarios/Eastern_Invasion/Captured.cfg:294
@@ -151,7 +150,7 @@ msgstr "Gweddry"
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:102
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:173
 msgid "Death of Dacyn"
-msgstr ""
+msgstr "Dacyn fällt in der Schlacht"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:126
 #: data/scenarios/Eastern_Invasion/Captured.cfg:298
@@ -166,13 +165,12 @@ msgstr ""
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:68
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:177
 msgid "Death of Owaec"
-msgstr ""
+msgstr "Owaec fällt in der Schlacht"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:130
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:181
-#, fuzzy
 msgid "Death of Konrad II"
-msgstr "Konrad II"
+msgstr "Konrad II fällt in der Schlacht"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:147
 msgid ""
@@ -243,7 +241,7 @@ msgstr "König Dra-Nak"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:286
 msgid "Escape from the Orcish Prisons"
-msgstr ""
+msgstr "Entflieht dem Gefängnis der Orks"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:418
 msgid "Why have you entered my lands?!?"
@@ -468,7 +466,7 @@ msgstr "Grug"
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:83
 msgid "Get Gweddry and Owaec across the river"
-msgstr ""
+msgstr "Führt Gweddry und Owaec über den Fluss"
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:112
 msgid ""
@@ -569,11 +567,11 @@ msgstr "Gruga-Har"
 #: data/scenarios/Eastern_Invasion/Elven_Alliance.cfg:74
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:56
 msgid "Defeat enemy leader"
-msgstr ""
+msgstr "Besiegt den gegnerischen Anführer"
 
 #: data/scenarios/Eastern_Invasion/Elven_Alliance.cfg:86
 msgid "Death of Volas"
-msgstr ""
+msgstr "Volas fällt in der Schlacht"
 
 #: data/scenarios/Eastern_Invasion/Elven_Alliance.cfg:106
 msgid "Greetings, travelers! Welcome to my realm."
@@ -678,7 +676,7 @@ msgstr "Mal-Bakral"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:88
 msgid "Reach the end of the tunnel"
-msgstr ""
+msgstr "Erreicht das Ende des Tunnels"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:110
 msgid "Where are we? I can't see where we are going."
@@ -762,17 +760,19 @@ msgstr "Ran-Lar"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:98
 msgid "Get everyone possible across the river"
-msgstr ""
+msgstr "Geleitet so viele wie möglich über den Fluss"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:102
 msgid ""
 "Destroy the bridge (everyone left on the north side of the river will die, "
 "including those left on your recall list)"
 msgstr ""
+"Zerstört die Brücke (sämtliche Einheiten, die ihr zurücklasst sind des "
+"Todes, auch jene, die ihr einberufen könntet)"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:122
 msgid "Leaving any of the three heroes on the north side of the river"
-msgstr ""
+msgstr "Ihr lasst einen eurer Helden auf der nördlichen Seite des Flusses"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:133
 msgid "Engineer"
@@ -932,7 +932,7 @@ msgstr "Kraagak"
 
 #: data/scenarios/Eastern_Invasion/Lake_Vrug.cfg:80
 msgid "Move Gweddry to the end of the path"
-msgstr ""
+msgstr "Führt Gweddry zum Ende des Pfades"
 
 #: data/scenarios/Eastern_Invasion/Lake_Vrug.cfg:110
 msgid "The trail stops soon. Look at this- mountains block our path."
@@ -1012,15 +1012,9 @@ msgid "Mal-Ravanal"
 msgstr "Mal-Ravanal"
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:103
-#, fuzzy
 msgid "Escape from the capital by killing one of the two necromancers"
 msgstr ""
-"\n"
-"Victory:\n"
-"@Entflieht der Hauptstadt, indem ihr einen der Totenbeschwörer vernichtet\n"
-"Niederlage:\n"
-"#Gweddry fällt in der Schlacht\n"
-"#Dacyn fällt in der Schlacht"
+"Entflieht der Hauptstadt, indem ihr einen der Totenbeschwörer vernichtet"
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:124
 msgid "We have come all the way to Mal-Ravanal's Capital!"
@@ -1115,11 +1109,11 @@ msgstr "Lanar-Skal"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:99
 msgid "Find the outlaw leader in the villages and kill him"
-msgstr ""
+msgstr "Spürt den Anführer der Vogelfreien in den Dörfern auf und tötet ihn"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:103
 msgid "Defeat the undead leader"
-msgstr ""
+msgstr "Besiegt den Anführer der Untoten"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:128
 msgid "Hail, Gweddry!"
@@ -1255,11 +1249,13 @@ msgstr "Abrichten von Ogern"
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:61
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:165
 msgid "Survive until end of turns"
-msgstr ""
+msgstr "Überlebt bis zum Ablauf des Rundenlimits"
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:65
 msgid "To add ogres to your army, keep two on the grass until end of turns"
 msgstr ""
+"Um eurer Armee Oger hinzuzufügen, haltet mindestens zwei von ihnen im Gras "
+"bis das Rundenlimit abläuft"
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:104
 msgid ""
@@ -1339,13 +1335,12 @@ msgstr "Mal-Katklagad"
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:114
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:77
-#, fuzzy
 msgid "Defeat Mal-Ravanal"
-msgstr "Mal-Ravanal"
+msgstr "Besiegt Mal-Ravanal"
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:130
 msgid "Letting any enemy unit on to your keep"
-msgstr ""
+msgstr "Ihr lasst einen Feind in eure Festung eindringen"
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:149
 msgid ""
@@ -1571,14 +1566,8 @@ msgid "Mal-Talar"
 msgstr "Mal-Talar"
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:116
-#, fuzzy
 msgid "Resist until you get further instructions from Dacyn"
-msgstr ""
-"\n"
-"Sieg:\n"
-"@Haltet die Stellung bis weitere Befehle von Dacyn eintreffen.\n"
-"Niederlage:\n"
-"#Gweddry fällt in der Schlacht"
+msgstr "Haltet die Stellung bis weitere Befehle von Dacyn eintreffen."
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:132
 msgid ""
@@ -1847,7 +1836,7 @@ msgstr "Elandin"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:84
 msgid "Defeat all enemy leaders"
-msgstr ""
+msgstr "Besiegt alle gegnerischen Anführer"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:112
 msgid ""
@@ -1960,7 +1949,7 @@ msgstr "Mal-Arnai"
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:73
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:72
 msgid "Defeat either enemy leader"
-msgstr ""
+msgstr "Besiegt einen der gegnerischen Anführer"
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:106
 msgid "Look! The road splits here. Which way shall we go?"
@@ -2237,7 +2226,7 @@ msgstr "Mal-Kallat"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:94
 msgid "Defeat either enemy necromancer"
-msgstr ""
+msgstr "Besiegt einen der gegnerischen Totenbeschwörer"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:117
 msgid "We have escaped from those dark tunnels! But where are we now?"
@@ -2591,306 +2580,3 @@ msgstr ""
 "beganen unvorsichtig zu werden. Doch plötzlich, eines Tages bei "
 "Morgengrauen, wurden Gweddry und seine Männer von einem markerschütternden "
 "Schrei der Nachtwache geweckt..."
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Get Gweddry to Weldyn\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec\n"
-#~ "#Death of Konrad II"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Bringt Gweddry nach Weldyn\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht\n"
-#~ "#Konrad II fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Escape from the Orcish Prisons\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Entkommt aus dem Gefängniss der Orks\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Get Gweddry and Owaec across the river\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Bringt Gweddry und Owaec sicher über den Fluss\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat enemy leader\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Volas"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Besiegt den feindlichen Anführer\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Volas fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Reach the end of the tunnel\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Erreicht das Ende des Tunnels\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Rundenlimit überschritten"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Get everyone possible across the river\n"
-#~ "@Destroy the bridge (everyone left on the wrong side of the river will "
-#~ "die, including everyone left on your recall list)\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry or leaving him on the river's north side\n"
-#~ "#Death of Dacyn or leaving him on the river's north side\n"
-#~ "#Death of Owaec or leaving him on the river's north side"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Führt so viele Einheiten wie nur möglisch über den Fluss\n"
-#~ "@Zerstört die Brücke (sämtliche Einheiten, die ihr zurücklasst sind des "
-#~ "Todes, auch jene, die ihr einberufen könntet)\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht, oder ihr vergesst ihn nördlich des "
-#~ "Flusses\n"
-#~ "#Dacyn fällt in der Schlacht, oder ihr vergesst ihn nördlich des Flusses\n"
-#~ "#Owaec fällt in der Schlacht, oder ihr vergesst ihn nördlich des Flusses"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Reach the end of the path\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Erreicht das Ende des Pfades\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Find the outlaw leader in the villages and kill him\n"
-#~ "@Defeat the undead leader\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Findet den Anführer der Geächteten und tötet ihn\n"
-#~ "@Besiegt den Anführer der Untoten\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Keep at least two ogres on the grass until your troops catch up with "
-#~ "you\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Hindert mindestens 2 Oger an der Flucht, bis ihr sie mit den eigenen "
-#~ "Truppen einfangen könnt\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat Mal-Ravanal\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec\n"
-#~ "#Letting any enemy unit onto your keep"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Besiegt Mal-Ravanal\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht\n"
-#~ "#Ihr lasst einen Feind in eure Festung eindringen"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat Mal-Ravanal\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Besiegt Mal-Ravanal\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat all enemy leaders\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Besiegt alle feindlichen Anfüher\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat either of the enemy leaders\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Besiegt einen der feindlichen Heerführer\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht\n"
-#~ "#Rundenlimit überschritten"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat either the necromancer or the lich\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Besiegt entweder den Totenbeschwörer oder den Lich\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Rundenlimit überschritten"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Kill the enemy Lich\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Vernichtet den feindlichen Lich\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat one of the necromancers\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Besiegt einen der Totenbeschwörer\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Rundenlimit überschritten"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Survive the night\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec\n"
-#~ "#Death of Konrad"
-#~ msgstr ""
-#~ "\n"
-#~ "Sieg:\n"
-#~ "@Überlebt diese Nacht\n"
-#~ "Niederlage:\n"
-#~ "#Gweddry fällt in der Schlacht\n"
-#~ "#Dacyn fällt in der Schlacht\n"
-#~ "#Owaec fällt in der Schlacht\n"
-#~ "#Konrad fällt in der Schlacht"
-
-#~ msgid "Konrad"
-#~ msgstr "Konrad"
