@@ -308,7 +308,7 @@ void attack_context::defend_result(attack_context::ATTACK_RESULT res)
 
 	if(res != MISSES) {
 		attacker_stats().damage_taken += bat_stats.damage_attacker_takes;
-		defender_stats().damage_inflicted += bat_stats.damage_defender_takes;
+		defender_stats().damage_inflicted += bat_stats.damage_attacker_takes;
 	}
 	attacker_stats().expected_damage_taken +=
 		bat_stats.damage_attacker_takes * bat_stats.chance_to_hit_attacker;
