@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-16 14:31+0200\n"
-"PO-Revision-Date: 2004-09-05 14:33+0200\n"
+"PO-Revision-Date: 2004-09-24 13:39+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català\n"
 "MIME-Version: 1.0\n"
@@ -187,7 +187,6 @@ msgid "Movement"
 msgstr "Moviment"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -286,6 +285,21 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
+"Hi ha dos tipus de combat a Batalla per Wesnoth, the curt i de llarg abast. En ambdós casos els combats tenen lloc en hexàgons adjacents. Els de curt abast en general impliquen l'ús d'armes com ara espases, destrals o ullals. En canvi, en els de llarg abast, s'utilitzen arcs, llances o boles de foc. El combat és bastant directe; l'atacant i el defensor alternen els atacs fins que cadascun d'ells els esgota. \n"
+"\n"
+"<header>text='Ordre i nombre dels atacs'</header>\n"
+"\n"
+"L'atacant realitza el primer atac i després ho fa el defensor. Això continua fins que cadascuna de les unitats ha fet tots els seus atacs. El nombre dels atacs de cada unitat pot variar. Per exemple, un Lluitador Elf amb un atac d'espasa de 5-4 podrà realitzar 4 atacs fent 5 punts de mal en cada intent. En canvi un Orc amb 9-2 només tindrà la possibilitat d'atacar 2 vegades, però amb 9 punts de mal.\n"
+"\n"
+"<header>text='Possibilitat de colpejar'</header>\n"
+"\n"
+"La possibilitat de colpejar una unitat està basada únicament en el seu grau de defensa en el terreny en el que es troba. Podeu veure el seu grau fent clic amb el botó dret sobre una unitat i seleccionant la opció 'Descriu unitat'. Per exemple, els elfs tenen un grau de defensa del 70% als boscos, que vol dir que si una unitat els ataca només tindrà un 30% de possibilitats de colpejar. Inversament, les possibilitats dels elfs de colpejar l'enemic dependran del terreny en que es trobi l'atacant. Hi ha dos excepcions a aquesta regla: <ref>dst=magical_attacks text='els atacs màgics'</ref>, i la habilitat de <ref>dst=ability_marksman text='tirador'</ref>. Els atacs màgics sempre tentn un 70% de possibilitats de colpejar, sigui quin sigui el terreny, mentre que que els amb la habilitat de tirador, les possibilitats són del 60%.\n"
+"\n"
+"<header>text=Mal</header>\n"
+"\n"
+"Cada vegada que es colpeja, es causa un mal base depenent de l'atac. Per exemple, un Lluitador Elf amb un atac d'espasa de 5-4 causa un mal base de 5 punts. Això es veu modificat per dos factors: <ref>dst=damage_type_and_resistance text='resistència'</ref> i <ref>dst=time_of_day text='temps del dia'</ref>.\n"
+"\n"
+"Algunes unitats tenen habilitats que poden afectar el mal infligit en combat. La més comuna és la <ref>dst=ability_charge text='càrrega'</ref>, la qual dobla el mal causat per l'atacant i pel defensor quan l'unitat amb aquesta l'habilitat de càrrega ataca."
 
 #: data/help.cfg:116
 msgid "Damage Types and Resistance"
@@ -428,7 +442,7 @@ msgstr ""
 
 #: data/help.cfg:191
 msgid "Wrap Up"
-msgstr ""
+msgstr "Per concloure"
 
 #: data/help.cfg:192
 msgid ""
@@ -437,7 +451,7 @@ msgid ""
 "ref> and <ref>dst=abilities text=Abilities</ref>, but you now know "
 "everything you need to know to play the Heir to the Throne scenario. Have "
 "fun, and good luck!"
-msgstr ""
+msgstr "Això conclou els fonaments bàsics de Wesnoth. Per continuar aprenent més sobre el joc, us pot interessar llegir Estratègia bàsica, o familiaritzar-vos vosaltres mateixos amb els <ref>dst=traits text='trets'</ref> i les <ref>dst=abilities text='habilitats'</ref>, però ara ja sabeu tot el que necessiteu per jugar la campanya Hereu al tron. Divertiu-vos, i bona sort!"
 
 #: data/help.cfg:242
 msgid ""
@@ -883,7 +897,6 @@ msgstr ""
 "unitats des del castell on esteu."
 
 #: data/scenarios/tutorial/tutorial1.cfg:73
-#, fuzzy
 msgid "Recruit a unit"
 msgstr "Recluta unitat"
 
@@ -901,9 +914,8 @@ msgid "What do I do next?"
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:83
-#, fuzzy
 msgid "How do I recruit units?"
-msgstr "Recluta unitat"
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:83
 msgid ""
@@ -959,7 +971,7 @@ msgid ""
 msgstr ""
 "Ja que les unitats no es poden moure durant el torn en el que han estat "
 "reclutades, heu de finalitzar el vostre torn. Per fer-ho, simplement cliqueu "
-"sobre el botó 'Fi torn' que hi ha a l'esquina inferior dreta."
+"sobre el botó 'Fi del torn' que hi ha a l'esquina inferior dreta."
 
 #: data/scenarios/tutorial/tutorial1.cfg:94
 msgid "End your turn"
@@ -971,18 +983,14 @@ msgstr "Has finalitzat correctament el teu torn."
 
 #: data/scenarios/tutorial/tutorial1.cfg:103
 msgid "How do I end my turn?"
-msgstr ""
+msgstr "Com puc finalitzar el meu torn?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:103
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-E'. Alternatively, you can right-"
 "click and select End Turn, or select the End Turn button in the lower-right "
 "hand corner."
-msgstr ""
-"Ja que les unitats no es poden moure durant el torn en el que han estat "
-"reclutades, heu de finalitzar el vostre torn. Per fer-ho, simplement cliqueu "
-"sobre el botó 'Fi torn' que hi ha a l'esquina inferior dreta."
+msgstr "Una manera de fer-ho és simplement clicant sobre el botó 'Fi del torn' que hi ha a l'esquina inferior dreta. També podeu fer servir la drecera de teclat 'Alt-E'."
 
 #: data/scenarios/tutorial/tutorial1.cfg:104
 msgid "What happens when I end my turn?"
@@ -1183,7 +1191,6 @@ msgid "Move your fighter onto a village."
 msgstr "Mou el teu lluitador a una vila."
 
 #: data/scenarios/tutorial/tutorial1.cfg:193
-#, fuzzy
 msgid "Move your fighter onto a village"
 msgstr "Mou el teu lluitador a una vila."
 
@@ -1328,8 +1335,7 @@ msgstr ""
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr ""
-"Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
+msgstr "Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
 
 #: data/scenarios/tutorial/tutorial2.cfg:64
 msgid ""
@@ -1370,7 +1376,7 @@ msgstr ""
 #: data/scenarios/tutorial/tutorial2.cfg:173
 #: data/scenarios/tutorial/tutorial2.cfg:206
 msgid "En guarde!"
-msgstr ""
+msgstr "En guardia!"
 
 #: data/scenarios/tutorial/tutorial2.cfg:90
 msgid ""
@@ -1570,8 +1576,7 @@ msgid "What are the different damage types?"
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:171
-msgid ""
-"Many units have a specialty which changes the rules of play in some way."
+msgid "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:175
@@ -1708,30 +1713,38 @@ msgid ""
 "@Current objective:\n"
 "{OBJECTIVE}"
 msgstr ""
+"@Habilitats covertes:\n"
+"Relutar unitats\n"
+"Moure unitats\n"
+"Atacar unitats enemigues\n"
+"Guanyar experiència\n"
+"Guanyar l'escenari\n"
+"@Objectiu actual:\n"
+"{OBJECTIVE}"
 
 #: data/schedules.cfg:4
 msgid "Dawn"
-msgstr ""
+msgstr "Alba"
 
 #: data/schedules.cfg:11 data/schedules.cfg:22 data/schedules.cfg:28
 msgid "Morning"
-msgstr ""
+msgstr "Matí"
 
 #: data/schedules.cfg:37 data/schedules.cfg:43 data/schedules.cfg:59
 msgid "Afternoon"
-msgstr ""
+msgstr "Migdia"
 
 #: data/schedules.cfg:52 data/schedules.cfg:79 data/schedules.cfg:99
 msgid "Dusk"
-msgstr ""
+msgstr "Vespre"
 
 #: data/schedules.cfg:70
 msgid "First Watch"
-msgstr ""
+msgstr "Nit"
 
 #: data/schedules.cfg:90
 msgid "Second Watch"
-msgstr ""
+msgstr "Matinada"
 
 #: data/schedules.cfg:110 data/schedules.cfg:116
 msgid "Underground"
@@ -1739,67 +1752,63 @@ msgstr ""
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
 msgid "Menu"
-msgstr ""
+msgstr "Menú"
 
 #: data/themes/default.cfg:32 data/themes/default.cfg:368
 msgid "Actions"
-msgstr ""
+msgstr "Accions"
 
 #: data/themes/default.cfg:79 data/themes/default.cfg:415 src/hotkeys.cpp:137
 msgid "End Turn"
-msgstr ""
+msgstr "Fi del torn"
 
 #: data/themes/default.cfg:126 data/themes/default.cfg:462
 msgid "hp"
-msgstr ""
+msgstr "HP"
 
 #: data/themes/default.cfg:133 data/themes/default.cfg:469
 msgid "xp"
-msgstr ""
+msgstr "XP"
 
 #: data/themes/default.cfg:142 data/themes/default.cfg:478
 msgid "gold"
-msgstr ""
+msgstr "Or"
 
 #: data/themes/default.cfg:150 data/themes/default.cfg:486
 msgid "villages"
-msgstr ""
+msgstr "viles"
 
 #: data/themes/default.cfg:158 data/themes/default.cfg:494
 msgid "units"
-msgstr ""
+msgstr "unitats"
 
 #: data/themes/default.cfg:166 data/themes/default.cfg:502
-#, fuzzy
 msgid "upkeep"
-msgstr "Torre"
+msgstr "manteniment"
 
 #: data/themes/default.cfg:174 data/themes/default.cfg:510
 msgid "income"
-msgstr ""
+msgstr "guanys"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
-msgstr ""
+msgstr "statuspanel^nivell"
 
 #: data/themes/default.cfg:317 data/themes/default.cfg:655
 msgid "statuspanel^movement"
-msgstr ""
+msgstr "statuspanel^moviments"
 
 #: data/translations/english.cfg:2
-#, fuzzy
 msgid "Easy"
-msgstr "&elvish-fighter.png,Lluitador (fàcil)"
+msgstr "Fàcil"
 
 #: data/translations/english.cfg:3
-#, fuzzy
 msgid "Medium"
-msgstr "*&elvish-hero.png,Heroi (normal)"
+msgstr "Mitjà"
 
 #: data/translations/english.cfg:4
-#, fuzzy
 msgid "Hard"
-msgstr "&elvish-champion.png,Campió (difícil)"
+msgstr "Difícil"
 
 #: data/translations/english.cfg:9
 msgid ""
@@ -1808,9 +1817,12 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
+"Les unitats legals lluiten millor de dia, i pitjor de nit.\n"
+"\n"
+"Dia: +25% de mal\n"
+"Nit: -25% de mal"
 
 #: data/translations/english.cfg:10
-#, fuzzy
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
@@ -1825,6 +1837,10 @@ msgid ""
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
+"Les unitats caòtiques lluiten millor de nit, i pitjor de dia.\n"
+"\n"
+"Dia: -25% de mal\n"
+"Nit: +25% de mal"
 
 #: data/translations/english.cfg:21
 msgid ""
@@ -1904,66 +1920,55 @@ msgstr ""
 
 #: data/translations/english.cfg:56
 msgid "minimum damage"
-msgstr ""
+msgstr "mal mínim"
 
 #: data/translations/english.cfg:58
-#, fuzzy
 msgid "Game"
 msgstr "Partida"
 
 #: data/translations/english.cfg:60
-#, fuzzy
 msgid "Scenario"
 msgstr "Escenari"
 
 #: data/translations/english.cfg:62
-#, fuzzy
 msgid "Configure Sides:"
-msgstr "Configurar bàndols:"
+msgstr "Configura bàndols:"
 
 #: data/translations/english.cfg:63
-#, fuzzy
 msgid "Choose Team Settings:"
 msgstr "Tria la configuració dels equips:"
 
 #: data/translations/english.cfg:64
-#, fuzzy
 msgid "Could not connect to the remote host"
 msgstr "No ha estat possible connectar al servidor remot."
 
 #: data/translations/english.cfg:65
-#, fuzzy
 msgid "Waiting for players to connect"
 msgstr "Esperant jugadors"
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid "Filled"
 msgstr "Ple"
 
 #: data/translations/english.cfg:67
-#, fuzzy
 msgid "Available"
 msgstr "Disponible"
 
 #: data/translations/english.cfg:68
-#, fuzzy
 msgid "&misc/observer.png,Observer"
-msgstr "Observador"
+msgstr "&misc/observer.png,Observador"
 
 #: data/translations/english.cfg:70
-#, fuzzy
 msgid "Describe Unit"
 msgstr "Descriu unitat"
 
 #: data/translations/english.cfg:72
-#, fuzzy
 msgid "Full Screen or Windowed?"
 msgstr "Pantalla completa o finestra?"
 
 #: data/translations/english.cfg:73
 msgid "Display:"
-msgstr ""
+msgstr "Pantalla:"
 
 #: data/translations/english.cfg:74
 #, fuzzy
@@ -1982,15 +1987,13 @@ msgstr "Normal"
 
 #: data/translations/english.cfg:79
 msgid "Sound Settings..."
-msgstr ""
+msgstr "Paràmetres del so"
 
 #: data/translations/english.cfg:80
-#, fuzzy
 msgid "Options"
 msgstr "Opcions"
 
 #: data/translations/english.cfg:82
-#, fuzzy
 msgid "Choose Scenario"
 msgstr "Tria escenari"
 
@@ -2027,7 +2030,6 @@ msgid "Unit resistance table"
 msgstr ""
 
 #: data/translations/english.cfg:92
-#, fuzzy
 msgid "See Also..."
 msgstr "Veure també..."
 
@@ -2110,23 +2112,20 @@ msgid "first strike"
 msgstr ""
 
 #: data/translations/english.cfg:131
-#, fuzzy
 msgid "Elves"
 msgstr "Elfs"
 
 #: data/translations/english.cfg:132
-#, fuzzy
 msgid "Orcs"
 msgstr "Orcs"
 
 #: data/translations/english.cfg:133
-#, fuzzy
 msgid "Humans"
 msgstr "Humans"
 
 #: data/translations/english.cfg:134
 msgid "Undead"
-msgstr ""
+msgstr "No morts"
 
 #: data/translations/english.cfg:138
 msgid "Deep Water"
@@ -2137,7 +2136,6 @@ msgid "Shallow Water"
 msgstr ""
 
 #: data/translations/english.cfg:140
-#, fuzzy
 msgid "Sand"
 msgstr "Sorra"
 
@@ -2146,69 +2144,58 @@ msgstr "Sorra"
 #: data/translations/english.cfg:146 data/translations/english.cfg:147
 #: src/reports.cpp:310
 msgid "Village"
-msgstr ""
+msgstr "Vila"
 
 #: data/translations/english.cfg:142
-#, fuzzy
 msgid "Swamp"
-msgstr "Aigua"
+msgstr "Pantà"
 
 #: data/translations/english.cfg:148
-#, fuzzy
 msgid "Tundra"
 msgstr "Tundra"
 
 #: data/translations/english.cfg:149
-#, fuzzy
 msgid "Ice"
 msgstr "Gel"
 
 #: data/translations/english.cfg:150
-#, fuzzy
 msgid "Road"
 msgstr "Camí"
 
 #: data/translations/english.cfg:151
 msgid "Dirt"
-msgstr ""
+msgstr "Terra"
 
 #: data/translations/english.cfg:152
-#, fuzzy
 msgid "Grassland"
 msgstr "Herba"
 
 #: data/translations/english.cfg:153
 msgid "Hills"
-msgstr ""
+msgstr "Turons"
 
 #: data/translations/english.cfg:154
-#, fuzzy
 msgid "Mountains"
 msgstr "Muntanyes"
 
 #: data/translations/english.cfg:155
-#, fuzzy
 msgid "Forest"
 msgstr "Bosc"
 
 #: data/translations/english.cfg:156 data/translations/english.cfg:157
 #: data/translations/english.cfg:158
-#, fuzzy
 msgid "Bridge"
 msgstr "Pont"
 
 #: data/translations/english.cfg:159
-#, fuzzy
 msgid "Castle"
 msgstr "Castell"
 
 #: data/translations/english.cfg:160
-#, fuzzy
 msgid "Keep"
 msgstr "Torre"
 
 #: data/translations/english.cfg:161
-#, fuzzy
 msgid "Cave"
 msgstr "Cova"
 
@@ -2218,27 +2205,27 @@ msgstr ""
 
 #: data/translations/english.cfg:163
 msgid "Encampment"
-msgstr ""
+msgstr "Campament"
 
 #: data/translations/english.cfg:166
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "El pont de $name, L'encreuament de $name"
 
 #: data/translations/english.cfg:167
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr ""
+msgstr "El camí de $name, El pas de $name, Ruta de $name"
 
 #: data/translations/english.cfg:168
 msgid "$name River,River $name"
-msgstr ""
+msgstr "Riu $name, El riu $name"
 
 #: data/translations/english.cfg:169
 msgid "$name Forest,$name's Forest"
-msgstr ""
+msgstr "Bosc $name, El bosc de $name"
 
 #: data/translations/english.cfg:170
 msgid "$name Lake"
-msgstr ""
+msgstr "Llac $name"
 
 #: data/translations/english.cfg:171
 msgid "$name|bury,$name|ham,$name|ton"
@@ -2265,8 +2252,7 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
 #: data/translations/english.cfg:177
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
 #: data/translations/english.cfg:179
@@ -2340,8 +2326,7 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:190
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 
 #: data/translations/english.cfg:191
@@ -2390,8 +2375,7 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:198
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 
 #: data/translations/english.cfg:199
@@ -2786,8 +2770,7 @@ msgid "Bandit"
 msgstr ""
 
 #: data/units/Bandit.cfg:16
-msgid ""
-"Armed with heavy mace, Bandits are adept at robbing and killing at night."
+msgid "Armed with heavy mace, Bandits are adept at robbing and killing at night."
 msgstr ""
 
 #: data/units/Bandit.cfg:19 data/units/Drake_Slasher.cfg:75
@@ -4021,8 +4004,7 @@ msgid "Fireball"
 msgstr ""
 
 #: data/units/Fireball.cfg:16
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr ""
 
 #: data/units/Footpad.cfg:3
@@ -5080,10 +5062,8 @@ msgstr "Serp Marina"
 
 #: data/units/Sea_Serpent.cfg:16
 #, fuzzy
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
+msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr "La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -6025,8 +6005,7 @@ msgid "Remote host disconnected."
 msgstr ""
 
 #: src/game.cpp:1081
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
+msgid "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
 #: src/game.cpp:1102
@@ -6831,8 +6810,7 @@ msgid "Choose weapon"
 msgstr ""
 
 #: src/playturn.cpp:1127
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
+msgid "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 
 #: src/playturn.cpp:1136 src/playturn.cpp:1141
@@ -7196,58 +7174,3 @@ msgstr ""
 msgid "Deletion of the file failed."
 msgstr ""
 
-#~ msgid "Enemy"
-#~ msgstr "Enemic"
-
-#~ msgid "Allied"
-#~ msgstr "Aliat"
-
-#~ msgid "Heir to the Throne"
-#~ msgstr "Hereu al Tron"
-
-#~ msgid ""
-#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-#~ "champion.png,Champion,(hardest)"
-#~ msgstr ""
-#~ "&elvish-fighter.png,Lluitador, (fàcil);*&elvish-hero.png,Heroi;&elvish-"
-#~ "champion.png,Campió,(difícil)"
-
-#~ msgid "The Dark Hordes"
-#~ msgstr "Les Hordes Obscures"
-
-#~ msgid ""
-#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
-#~ "&undead-lich.png,Dark Lord,(hardest)"
-#~ msgstr ""
-#~ "&undead-initiate.png,Aprenent,(fàcil);*&undead-necromancer.png,Mestre;"
-#~ "&undead-lich.png,Senyor Fosc,(difícil)"
-
-#~ msgid "Son of the Black Eye (chapter I)"
-#~ msgstr "Fill de Ull Negre (capítol I)"
-
-#~ msgid ""
-#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
-#~ "warlord.png,Warlord,(hardest)"
-#~ msgstr ""
-#~ "&orcish-grunt.png,Cobard,(fàcil);*&orcish-warrior.png,Guerrer;&orcish-"
-#~ "warlord.png,Senyor de la Guerra,(difícil)"
-
-#~ msgid "The Eastern Invasion"
-#~ msgstr "La Invasió de l'Est"
-
-#~ msgid ""
-#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
-#~ "&human-royalguard.png,Royal Guard,(hardest)"
-#~ msgstr ""
-#~ "&human-spearman.png,Llancer,(fàcil);*&human-swordman.png,Espadatxí;&human-"
-#~ "royalguard.png,Guardia Reial,(difícil)"
-
-#~ msgid "The Rise of Wesnoth"
-#~ msgstr "El Despertar de Wesnoth"
-
-#~ msgid ""
-#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
-#~ "&noble-lord.png,Lord,(hardest)"
-#~ msgstr ""
-#~ "&noble-fighter.png,Lluitador,(fàcil);*&noble-commander.png,Comandant;"
-#~ "&noble-lord.png,Senyor,(difícil)"
