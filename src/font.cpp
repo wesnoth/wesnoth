@@ -68,6 +68,7 @@ TTF_Font* open_font(const std::string& fname, int size)
 	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
 	if(font == NULL) {
 		std::cerr << "Could not open font file: " << name << '\n';
+		return NULL;
 	}
 
 	std::cerr << "opened font okay\n";
@@ -608,7 +609,7 @@ namespace font {
   
 	std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width)
 	{
-		std::cerr << "Wrapping word " << unwrapped_text << "\n";
+		//std::cerr << "Wrapping word " << unwrapped_text << "\n";
 		
 		std::string wrapped_text; // the final result
   
