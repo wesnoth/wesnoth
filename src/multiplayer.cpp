@@ -492,11 +492,13 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	
 				// Wait to players, Configure players
 				gui::draw_dialog_frame((disp.x()-width)/2, (disp.y()-height)/2,
-						       width, height, disp);
+						       width+30, height, disp);
 
 				//Buttons
 				gui::button launch2_game(disp,string_table["im_ready"]);
-				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
+				gui::button cancel2_game(disp,string_table["cancel"]);
+				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2-100,(disp.y()-height)/2+height-29);
+				cancel2_game.set_xy((disp.x()/2)-launch2_game.width()/2+100,(disp.y()-height)/2+height-29);
 
 				//Title and labels
 				SDL_Rect labelr;
@@ -608,7 +610,16 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					rect.y = (disp.y()-height)/2+55+(30*side_num);
 					rect.w = launch2_game.width()-5;
 					rect.h = launch2_game.height();
-					slider_gold.push_back(gui::slider(disp,rect,0.188));
+					int intgold;
+					std::stringstream streamgold;
+					streamgold << sides[n]->values["gold"].c_str();
+					streamgold >> intgold;
+					slider_gold.push_back(gui::slider(disp,rect,0.0+(intgold-20)/979));
+					rect.w = 30;
+					rect.x = (disp.x()-width)/2+603;
+					village_bg=get_surface_portion(disp.video().getSurface(), rect);
+					font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+						                sides[n]->values["gold"],rect.x,rect.y);
 					n++;
 				}
 
@@ -670,7 +681,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 						combo_color[n].process(mousex,mousey,left_button);
 
-						int check_playergold = 20+int(480*slider_gold[n].process(mousex,mousey,left_button));
+						int check_playergold = 20+int(979*slider_gold[n].process(mousex,mousey,left_button));
 						if(abs(check_playergold) == check_playergold)
 							new_playergold=check_playergold;
 						if(new_playergold != cur_playergold) {
@@ -678,6 +689,14 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 							std::stringstream playergold;
 							playergold << cur_playergold;
 							sides[n]->values["gold"] = playergold.str();
+							rect.x = (disp.x()-width)/2+603;
+							rect.y = (disp.y()-height)/2+55+(30*n);
+							rect.w = 30;
+							rect.h = launch2_game.height();
+							SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
+							font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+							                sides[n]->values["gold"],rect.x,rect.y);
+							update_rect(rect);
 						}
 					}
 
@@ -711,6 +730,11 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						std::vector<config*> story;
 						play_level(units_data,cfg,&level,disp.video(),state,story);
 						recorder.clear();
+						return -1;
+					}
+
+					if(cancel2_game.process(mousex,mousey,left_button))
+					{
 						return -1;
 					}
 
