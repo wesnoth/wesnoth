@@ -28,7 +28,7 @@ partial_map::const_iterator current_connection = received_data.end();
 
 TCPsocket server_socket;
 
-std::queue<network::connection> disconnection_queue;
+std::deque<network::connection> disconnection_queue;
 std::set<network::connection> bad_sockets;
 
 }
@@ -37,7 +37,9 @@ namespace network {
 
 error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
 {
-	bad_sockets.insert(socket);
+	if(socket) {
+		bad_sockets.insert(socket);
+	}
 }
 
 void error::disconnect()
@@ -106,9 +108,7 @@ connection connect(const std::string& host, int port)
 		throw error(SDLNet_GetError());
 	}
 
-	std::cerr << "opening connection\n";
 	TCPsocket sock = SDLNet_TCP_Open(&ip);
-	std::cerr << "opened connection okay\n";
 	if(!sock) {
 		throw error(SDLNet_GetError());
 	}
@@ -144,8 +144,6 @@ connection accept_connection()
 
 		assert(sock != server_socket);
 		sockets.push_back(sock);
-		std::cerr << "new socket: " << sock << "\n";
-		std::cerr << "server socket: " << server_socket << "\n";
 	}
 
 	return sock;
@@ -154,19 +152,22 @@ connection accept_connection()
 void disconnect(connection s)
 {
 	if(s == 0) {
-		std::cerr << "closing all sockets " << sockets.size() << "\n";
 		while(sockets.empty() == false) {
+			assert(sockets.back() != 0);
 			disconnect(sockets.back());
-		}
+		}		
 
 		return;
 	}
 
-	std::cerr << "closing socket " << (int)s << "\n";
-
 	bad_sockets.erase(s);
 	received_data.erase(s);
 	current_connection = received_data.end();
+
+	std::deque<network::connection>::iterator dqi = std::find(disconnection_queue.begin(),disconnection_queue.end(),s);
+	if(dqi != disconnection_queue.end()) {
+		disconnection_queue.erase(dqi);
+	}
 
 	const sockets_list::iterator i = std::find(sockets.begin(),sockets.end(),s);
 	if(i != sockets.end()) {
@@ -174,7 +175,6 @@ void disconnect(connection s)
 		SDLNet_TCP_DelSocket(socket_set,s);
 		SDLNet_TCP_Close(s);
 	} else {
-		std::cerr << "Could not find socket to close: " << (int)s << "\n";
 		if(sockets.size() == 1) {
 			std::cerr << "valid socket: " << (int)*sockets.begin() << "\n";
 		}
@@ -183,19 +183,18 @@ void disconnect(connection s)
 
 void queue_disconnect(network::connection sock)
 {
-	disconnection_queue.push(sock);
+	disconnection_queue.push_back(sock);
 }
 
 connection receive_data(config& cfg, connection connection_num, int timeout)
 {
 	if(disconnection_queue.empty() == false) {
 		const network::connection sock = disconnection_queue.front();
-		disconnection_queue.pop();
+		disconnection_queue.pop_front();
 		throw error("",sock);
 	}
 
-	if(bad_sockets.count(connection_num) || bad_sockets.count(0))
-{
+	if(bad_sockets.count(connection_num) || bad_sockets.count(0)) {
 		return 0;
 	}
 

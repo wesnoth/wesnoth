@@ -168,7 +168,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 	network::connection sock;
 
-	int pos = host.find_first_of(":");
+	const int pos = host.find_first_of(":");
  
  	if(pos == -1) {
  		sock = network::connect(host);
@@ -177,7 +177,6 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
  	}
  
 	config sides, data;
-
 
 	network::connection data_res = gui::network_data_dialog(disp,string_table["connecting_remote"],data);
 	check_response(data_res,data);
@@ -188,7 +187,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	const std::string& version = data["version"];
 	if(version.empty() == false && version != game_config::version) {
 		throw network::error("The server requires version '" + version
-		      + "' while you are using version'" + game_config::version + "'");
+		      + "' while you are using version '" + game_config::version + "'");
 	}
 
 	bool logged_in = false;

@@ -29,7 +29,6 @@ textbox::textbox(display& disp, int width, const std::string& text)
 {
 	static const SDL_Rect area = disp.screen_area();
 	const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
-	std::cerr << "initializing textbox with height " << height << "\n";
 	const SDL_Rect starting_rect = {0,0,width,height};
 	set_location(starting_rect);
 }
