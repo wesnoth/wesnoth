@@ -721,9 +721,8 @@ redo_turn:
 				info["condition"] = "game over";
 				network::send_data(cfg);
 			} else
-				gui::show_dialog(gui, NULL, "",
-				                 _("Victory") + std::string(" / ") + _("Defeat"),
-				                 gui::OK_ONLY);
+				gui::show_dialog(gui, NULL, _("Game Over"),
+				                 _("The game is over."), gui::OK_ONLY);
 		}
 
 		if(end_level.result == QUIT) {
