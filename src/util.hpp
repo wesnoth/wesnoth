@@ -32,7 +32,10 @@ template<typename T>
 inline const T& maximum(const T& a, const T& b) { return a < b ? b : a; }
 
 template<typename T>
-inline bool is_odd(T num) { return (static_cast<unsigned int>(num > 0 ? num : -num)&1) == 1; }
+inline bool is_odd(T num) {
+  int n = static_cast< int >(num);
+  return static_cast< unsigned int >(n >= 0 ? n : -n) & 1;
+}
 
 template<typename T>
 inline bool is_even(T num) { return !is_odd(num); }
