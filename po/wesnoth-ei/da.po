@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-12-05 00:49+0100\n"
+"POT-Creation-Date: 2004-12-20 23:24+0100\n"
 "PO-Revision-Date: 2004-09-12 21:42+0200\n"
 "Last-Translator: Mathias Bundgaard Svensson <freaken@freaken.dk>\n"
 "Language-Team:  <da@li.org>\n"
@@ -30,11 +30,11 @@ msgid "The Eastern Invasion"
 msgstr "Invasionen fra Øst"
 
 #: data/campaigns/Eastern_Invasion.cfg:10
-msgid "(easiest)"
+msgid "Spearman"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:10
-msgid "Spearman"
+msgid "(easiest)"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:11
@@ -106,7 +106,7 @@ msgstr ""
 "Vent. Først, hvad var det for en profeti det Levende Lig talte om? Jeg tror "
 "du ved hvad han talte om."
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:164
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:165
 msgid "Weldyn has been captured, and Wesnoth is no more..."
 msgstr "Weldyn er blevet overtaget, og Wesnoth findes ikke mere..."
 
@@ -317,19 +317,19 @@ msgid "Argh! Oh well, at least my vast hordes will defeat you!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:824
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:167
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:161
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:234
 msgid "Holy Water"
 msgstr "Vievand"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:827
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:170
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:164
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:237
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr "Dette vand vil gøre alle dine våben hellige i hele dit liv!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:828
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:171
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:165
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:238
 msgid "I am not suited to using this item! Let another take it."
 msgstr "Jeg er ikke passende til at bruge denne ting! Lad en anden tage den."
@@ -540,25 +540,25 @@ msgstr ""
 "#Dacyn dør\n"
 "#Løber tør for ture"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:96
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:95
 msgid "Where are we? I can't see where we are going."
 msgstr "Hvor er vi? Jeg kan ikke se hvor vi går."
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:101
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:99
 msgid ""
 "I do not know. There are trolls in here, which may try to fight us. Now "
 "hurry, we have to move quickly with those Lichs still behind us."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:122
-msgid "This sign says 'Dead End'."
-msgstr "Skiltet siger 'Blindgyde'"
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:119
+msgid "TROL TREZZUR HOLE: KEEP OWT"
+msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:137
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:133
 msgid "Who goes there?"
 msgstr "Hvem går der?"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:142
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:137
 msgid ""
 "We are travelers loyal to the king of Wesnoth. Will you help us escape these "
 "trolls?"
@@ -566,7 +566,7 @@ msgstr ""
 "Vi er rejsende loyale til kongen af Wesnoth. Vil I hjælpe os med at "
 "undslippe disse trolde?"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:147
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:141
 msgid ""
 "Yes, we will help you, for we have no love for the trolls. Anyone attacked "
 "by them deserves some help, I think."
@@ -574,24 +574,24 @@ msgstr ""
 "Ja, vi vil hjælpe jer, for vi er ingen trolde-elskere. Enhver der bliver "
 "angrebet af dem fortjener hjælp, tror jeg."
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:208
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:201
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold!"
 msgstr ""
 "Der er stort held i denne skatkiste! Jeg kan tælle to hundrede guldstykker!"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:282
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:274
 msgid "We have found you, human! Prepare to die!"
 msgstr "Jeg har fundet dig, menneske! Forbered dig på at dø!"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:287
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:278
 msgid ""
 "So Mal-Ravanal does not follow us himself. That at least is good. But still, "
 "we must get out of this tunnel!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:301
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:291
 msgid "We have reached the end of the escape tunnel. I see daylight above us!"
 msgstr "Vi har nået enden af flygttunnelen. Jeg kan se dagslys forude."
 
@@ -2005,23 +2005,15 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/deaths.cfg:9
-msgid "No! I have failed in my mission to save Wesnoth from destruction!"
+msgid "No! I have failed in my mission to save Wesnoth from destruction..."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/deaths.cfg:24
-msgid "Wesnoth is doomed! Without me, Gweddry has no hope!"
+msgid "Wesnoth is doomed... without me, Gweddry has no hope."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/deaths.cfg:39
-msgid "My outpost has fallen..."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/deaths.cfg:44
-msgid "ugh."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/deaths.cfg:59
-msgid "I guess the rebellion has failed."
+#: data/scenarios/Eastern_Invasion/deaths.cfg:38
+msgid "I... must... advise... Gweddry..."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/intro.cfg:5
@@ -2092,6 +2084,9 @@ msgid ""
 "Then, at dawn one day, Gweddry and his men were roused by startled cry of "
 "the night watchmen..."
 msgstr ""
+
+#~ msgid "This sign says 'Dead End'."
+#~ msgstr "Skiltet siger 'Blindgyde'"
 
 #~ msgid ""
 #~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"

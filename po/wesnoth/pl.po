@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-12-12 16:16+0100\n"
+"POT-Creation-Date: 2004-12-20 23:22+0100\n"
 "PO-Revision-Date: 2004-12-18 12:53+0100\n"
 "Last-Translator: Paweł Stradomski <pstradomski@poczta.gazeta.pl>\n"
 "Language-Team: none\n"
@@ -47,7 +47,7 @@ msgstr "Gra"
 msgid "Traits"
 msgstr "Cechy"
 
-#: data/help.cfg:28 src/playturn.cpp:1616
+#: data/help.cfg:28 src/playturn.cpp:1650
 msgid "Units"
 msgstr "Jednostki"
 
@@ -1074,7 +1074,7 @@ msgstr "Tak!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:480
+#: src/show_dialog.cpp:487
 msgid "No"
 msgstr "Nie"
 
@@ -1693,7 +1693,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:479
+#: src/show_dialog.cpp:486
 #, fuzzy
 msgid "Yes"
 msgstr "Tak"
@@ -2211,42 +2211,42 @@ msgstr "Działania"
 msgid "End Turn"
 msgstr "Zakończ turę"
 
-#: data/themes/default.cfg:152 src/dialogs.cpp:660 src/display.cpp:920
-#: src/help.cpp:1059 src/playturn.cpp:2044 src/unit.cpp:1042
+#: data/themes/default.cfg:153 src/dialogs.cpp:660 src/display.cpp:920
+#: src/help.cpp:1059 src/playturn.cpp:2078 src/unit.cpp:1042
 msgid "HP"
 msgstr "PŻ"
 
-#: data/themes/default.cfg:159 src/dialogs.cpp:664 src/dialogs.cpp:672
-#: src/display.cpp:924 src/display.cpp:932 src/playturn.cpp:1884
-#: src/playturn.cpp:2045 src/unit.cpp:1101
+#: data/themes/default.cfg:162 src/dialogs.cpp:664 src/dialogs.cpp:672
+#: src/display.cpp:924 src/display.cpp:932 src/playturn.cpp:1918
+#: src/playturn.cpp:2079 src/unit.cpp:1101
 msgid "XP"
 msgstr "PD"
 
-#: data/themes/default.cfg:168
+#: data/themes/default.cfg:172
 msgid "gold"
 msgstr "złoto"
 
-#: data/themes/default.cfg:177
+#: data/themes/default.cfg:181
 msgid "villages"
 msgstr "Wioski"
 
-#: data/themes/default.cfg:186
+#: data/themes/default.cfg:190
 msgid "units"
 msgstr "Jednostki"
 
-#: data/themes/default.cfg:195
+#: data/themes/default.cfg:199
 msgid "upkeep"
 msgstr "Utrzymanie"
 
-#: data/themes/default.cfg:204
+#: data/themes/default.cfg:208
 msgid "income"
 msgstr "Dochód"
 
-#: data/themes/default.cfg:328
+#: data/themes/default.cfg:344
 msgid "statuspanel^level"
 msgstr "poziom"
 
-#: data/themes/default.cfg:360
+#: data/themes/default.cfg:375
 msgid "statuspanel^movement"
 msgstr "ruch"
 
@@ -2731,17 +2731,17 @@ msgstr ""
 "obrażenia w walce."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
-#: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:14
+#: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
 #: data/units/Drake_Flameheart.cfg:16 data/units/Drake_Flare.cfg:11
 #: data/units/Elvish_Captain.cfg:11 data/units/Elvish_Marshal.cfg:12
-#: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:20
-#: data/units/Grand_Marshal.cfg:16 data/units/Lieutenant.cfg:16
-#: data/units/Lord.cfg:10 data/units/Lord.cfg:73
+#: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:23
+#: data/units/Grand_Marshal.cfg:19 data/units/Lieutenant.cfg:19
+#: data/units/Lord.cfg:10 data/units/Lord.cfg:85
 #: data/units/Noble_Commander.cfg:13 data/units/Noble_Lord.cfg:13
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
-#: data/units/Princess.cfg:56 data/units/Sergeant.cfg:17
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:356 src/actions.cpp:473
+#: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:357 src/actions.cpp:474
 #, fuzzy
 msgid "leadership"
 msgstr "dowodzenie"
@@ -2809,7 +2809,7 @@ msgstr "Ta jednostka otrzymuje połowę obrażeń, jeśli to nie ona zaatakował
 
 #: data/translations/english.cfg:81 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:501
+#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:502
 #, fuzzy
 msgid "steadfast"
 msgstr "niezłomny"
@@ -2825,7 +2825,7 @@ msgstr ""
 "drugiej."
 
 #: data/translations/english.cfg:86 data/units/Silver_Mage.cfg:21
-#: data/units/Silver_Mage.cfg:160
+#: data/units/Silver_Mage.cfg:161
 #, fuzzy
 msgid "teleport"
 msgstr "teleportacja"
@@ -3027,7 +3027,7 @@ msgstr ""
 "uciekaj szybko i daleko, ponieważ poruszają się oni szybciej niż inni "
 "nieumarli."
 
-#: data/units/Ancient_Lich.cfg:22 data/units/Demilich.cfg:18
+#: data/units/Ancient_Lich.cfg:22 data/units/Demilich.cfg:19
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
 #, fuzzy
 msgid "touch"
@@ -3037,7 +3037,7 @@ msgstr "dotyk"
 #: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
 #: data/units/Dark_Queen.cfg:29 data/units/Dark_Queen.cfg:30
 #: data/units/Dark_Spirit.cfg:33 data/units/Deathmaster.cfg:41
-#: data/units/Demilich.cfg:19 data/units/Demilich.cfg:32
+#: data/units/Demilich.cfg:20 data/units/Demilich.cfg:33
 #: data/units/Elvish_Enchantress.cfg:118 data/units/Elvish_Sorceress.cfg:118
 #: data/units/Elvish_Sylph.cfg:84 data/units/Ghost.cfg:20
 #: data/units/Ghost.cfg:32 data/units/Initiate.cfg:20 data/units/Lich.cfg:20
@@ -3050,7 +3050,7 @@ msgid "cold"
 msgstr "chłód"
 
 #: data/units/Ancient_Lich.cfg:27 data/units/Blood_Bat.cfg:24
-#: data/units/Dark_Spirit.cfg:24 data/units/Demilich.cfg:23
+#: data/units/Dark_Spirit.cfg:24 data/units/Demilich.cfg:24
 #: data/units/Lich.cfg:24 data/units/Orcish_Shaman.cfg:30
 #: data/units/Orcish_Shaman.cfg:73 data/units/Orcish_Shaman.cfg:116
 #: data/units/Skeletal_Dragon.cfg:31 data/units/Spectre.cfg:24
@@ -3061,35 +3061,35 @@ msgid "drain"
 msgstr "wysysająca"
 
 #: data/units/Ancient_Lich.cfg:35 data/units/Deathmaster.cfg:40
-#: data/units/Demilich.cfg:31 data/units/Initiate.cfg:19
+#: data/units/Demilich.cfg:32 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 #, fuzzy
 msgid "magic"
 msgstr "magia"
 
 #: data/units/Ancient_Lich.cfg:37 data/units/Arch_Mage.cfg:42
-#: data/units/Arch_Mage.cfg:121 data/units/Battle_Princess.cfg:80
+#: data/units/Arch_Mage.cfg:122 data/units/Battle_Princess.cfg:80
 #: data/units/Commander.cfg:123 data/units/Dark_Adept.cfg:24
 #: data/units/Dark_Queen.cfg:31 data/units/Deathmaster.cfg:42
-#: data/units/Demilich.cfg:33 data/units/Dwarvish_Runemaster.cfg:43
+#: data/units/Demilich.cfg:34 data/units/Dwarvish_Runemaster.cfg:43
 #: data/units/Elder_Mage.cfg:41 data/units/Elvish_Druid.cfg:65
 #: data/units/Elvish_Enchantress.cfg:122 data/units/Elvish_High_Lord.cfg:38
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Shyde.cfg:26
 #: data/units/Elvish_Shyde.cfg:73 data/units/Elvish_Sorceress.cfg:122
 #: data/units/Elvish_Sylph.cfg:26 data/units/Elvish_Sylph.cfg:85
 #: data/units/Fighter.cfg:86 data/units/Fireball.cfg:21
-#: data/units/Great_Mage.cfg:42 data/units/Great_Mage.cfg:118
-#: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Lord.cfg:105
+#: data/units/Great_Mage.cfg:42 data/units/Great_Mage.cfg:119
+#: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Lord.cfg:117
 #: data/units/Mage.cfg:39 data/units/Mage.cfg:106
 #: data/units/Mage_of_Light.cfg:48 data/units/Mage_of_Light.cfg:108
 #: data/units/Mermaid_Diviner.cfg:37 data/units/Mermaid_Enchantress.cfg:35
 #: data/units/Mermaid_Initiate.cfg:35 data/units/Mermaid_Priestess.cfg:35
 #: data/units/Mermaid_Siren.cfg:26 data/units/Mermaid_Siren.cfg:37
 #: data/units/Necromancer.cfg:37 data/units/Princess.cfg:80
-#: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:111
+#: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:112
 #: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
 #: data/units/Saurian_Tribalist.cfg:41 data/units/Sea_Hag.cfg:31
-#: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:183
+#: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:184
 #: data/units/White_Mage.cfg:47 data/units/White_Mage.cfg:106
 #, fuzzy
 msgid "magical"
@@ -3125,7 +3125,7 @@ msgid "crush"
 msgstr "zgniatająca"
 
 #: data/units/Ancient_Wose.cfg:19 data/units/Arch_Mage.cfg:24
-#: data/units/Arch_Mage.cfg:103 data/units/Bandit.cfg:20
+#: data/units/Arch_Mage.cfg:104 data/units/Bandit.cfg:20
 #: data/units/Cave_Spider.cfg:29 data/units/Cuttle_Fish.cfg:20
 #: data/units/Dark_Queen.cfg:23 data/units/Deathmaster.cfg:20
 #: data/units/Drake_Gladiator.cfg:58 data/units/Drake_Glider.cfg:23
@@ -3142,9 +3142,9 @@ msgstr "zgniatająca"
 #: data/units/Elvish_Sylph.cfg:52 data/units/Fire_Dragon.cfg:42
 #: data/units/Footpad.cfg:20 data/units/Footpad.cfg:38
 #: data/units/Galleon.cfg:19 data/units/Gate.cfg:24
-#: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:35
+#: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:36
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:36
-#: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:100
+#: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:101
 #: data/units/Great_Troll.cfg:21 data/units/Heavy_Infantryman.cfg:20
 #: data/units/Horse_Lord.cfg:44 data/units/Iron_Mauler.cfg:20
 #: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:90
@@ -3153,7 +3153,7 @@ msgstr "zgniatająca"
 #: data/units/Mermaid_Initiate.cfg:33 data/units/Mermaid_Priestess.cfg:25
 #: data/units/Mermaid_Siren.cfg:24 data/units/Mermaid_Siren.cfg:35
 #: data/units/Merman_Entangler.cfg:27 data/units/Merman_Netcaster.cfg:27
-#: data/units/Mounted_Captain.cfg:44 data/units/Mounted_Commander.cfg:44
+#: data/units/Mounted_Captain.cfg:45 data/units/Mounted_Commander.cfg:45
 #: data/units/Mounted_Fighter.cfg:44 data/units/Mounted_Warrior.cfg:44
 #: data/units/Mudcrawler.cfg:22 data/units/Necromancer.cfg:20
 #: data/units/Noble_Youth.cfg:25 data/units/Outlaw.cfg:21
@@ -3163,7 +3163,7 @@ msgstr "zgniatająca"
 #: data/units/Saurian_Icecaster.cfg:23 data/units/Saurian_Soothsayer.cfg:23
 #: data/units/Saurian_Tribalist.cfg:23 data/units/Sea_Hag.cfg:29
 #: data/units/Shock_Trooper.cfg:20 data/units/Silver_Mage.cfg:78
-#: data/units/Silver_Mage.cfg:165 data/units/Skeleton_Archer.cfg:24
+#: data/units/Silver_Mage.cfg:166 data/units/Skeleton_Archer.cfg:24
 #: data/units/Soulless.cfg:20 data/units/Tentacle.cfg:22
 #: data/units/Thug.cfg:20 data/units/Troll.cfg:21 data/units/Troll_Hero.cfg:21
 #: data/units/Troll_Rocklobber.cfg:21 data/units/Troll_Rocklobber.cfg:39
@@ -3179,7 +3179,7 @@ msgstr "obuchowa"
 msgid "Arch Mage"
 msgstr "Arcymag"
 
-#: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:99
+#: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:100
 #, fuzzy
 msgid ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
@@ -3187,30 +3187,30 @@ msgid ""
 msgstr ""
 "Największy spośród magów, Arcymag miota potężne kule ognia w swoich wrogów."
 
-#: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:102
+#: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:103
 #: data/units/Deathmaster.cfg:19 data/units/Elder_Mage.cfg:22
 #: data/units/Elvish_Druid.cfg:23 data/units/Elvish_Enchantress.cfg:25
 #: data/units/Elvish_Shaman.cfg:24 data/units/Elvish_Sorceress.cfg:25
-#: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:99
+#: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:100
 #: data/units/Mermaid_Diviner.cfg:26 data/units/Mermaid_Enchantress.cfg:23
 #: data/units/Mermaid_Initiate.cfg:23 data/units/Mermaid_Priestess.cfg:24
 #: data/units/Necromancer.cfg:19 data/units/Saurian_Icecaster.cfg:22
 #: data/units/Saurian_Soothsayer.cfg:22 data/units/Saurian_Tribalist.cfg:22
-#: data/units/Silver_Mage.cfg:77 data/units/Silver_Mage.cfg:164
+#: data/units/Silver_Mage.cfg:77 data/units/Silver_Mage.cfg:165
 #, fuzzy
 msgid "staff"
 msgstr "laska"
 
-#: data/units/Arch_Mage.cfg:39 data/units/Arch_Mage.cfg:118
+#: data/units/Arch_Mage.cfg:39 data/units/Arch_Mage.cfg:119
 #: data/units/Elvish_High_Lord.cfg:36 data/units/Elvish_Lord.cfg:36
-#: data/units/Great_Mage.cfg:39 data/units/Great_Mage.cfg:115
-#: data/units/Red_Mage.cfg:39 data/units/Red_Mage.cfg:108
-#: data/units/Silver_Mage.cfg:93 data/units/Silver_Mage.cfg:180
+#: data/units/Great_Mage.cfg:39 data/units/Great_Mage.cfg:116
+#: data/units/Red_Mage.cfg:39 data/units/Red_Mage.cfg:109
+#: data/units/Silver_Mage.cfg:93 data/units/Silver_Mage.cfg:181
 #, fuzzy
 msgid "fireball"
 msgstr "kula ognista"
 
-#: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:119
+#: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:120
 #: data/units/Battle_Princess.cfg:78 data/units/Commander.cfg:121
 #: data/units/Drake_Burner.cfg:42 data/units/Drake_Fighter.cfg:46
 #: data/units/Drake_Fire.cfg:44 data/units/Drake_Flameheart.cfg:49
@@ -3221,16 +3221,16 @@ msgstr "kula ognista"
 #: data/units/Elvish_Lord.cfg:37 data/units/Fighter.cfg:84
 #: data/units/Fire_Dragon.cfg:60 data/units/Fireball.cfg:18
 #: data/units/Fireball.cfg:19 data/units/Goblin_Pillager.cfg:20
-#: data/units/Great_Mage.cfg:40 data/units/Great_Mage.cfg:116
-#: data/units/Lord.cfg:103 data/units/Mage.cfg:37 data/units/Mage.cfg:104
+#: data/units/Great_Mage.cfg:40 data/units/Great_Mage.cfg:117
+#: data/units/Lord.cfg:115 data/units/Mage.cfg:37 data/units/Mage.cfg:104
 #: data/units/Princess.cfg:78 data/units/Red_Mage.cfg:40
-#: data/units/Red_Mage.cfg:109 data/units/Silver_Mage.cfg:94
-#: data/units/Silver_Mage.cfg:181
+#: data/units/Red_Mage.cfg:110 data/units/Silver_Mage.cfg:94
+#: data/units/Silver_Mage.cfg:182
 #, fuzzy
 msgid "fire"
 msgstr "ogień"
 
-#: data/units/Arch_Mage.cfg:82
+#: data/units/Arch_Mage.cfg:83
 #, fuzzy
 msgid "female^Arch Mage"
 msgstr "Arcymag"
@@ -3257,7 +3257,7 @@ msgstr ""
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Shaman.cfg:18
 #: data/units/Orcish_Shaman.cfg:61 data/units/Orcish_Shaman.cfg:104
 #: data/units/Orcish_Slayer.cfg:19 data/units/Poacher.cfg:24
-#: data/units/Red_Mage.cfg:23 data/units/Red_Mage.cfg:92
+#: data/units/Red_Mage.cfg:23 data/units/Red_Mage.cfg:93
 #: data/units/Rogue.cfg:20 data/units/Thief.cfg:19 data/units/Trapper.cfg:24
 #: data/units/White_Mage.cfg:28 data/units/White_Mage.cfg:87
 #, fuzzy
@@ -3270,7 +3270,7 @@ msgstr "sztylet"
 #: data/units/Cavalier.cfg:28 data/units/Cavalryman.cfg:29
 #: data/units/Cave_Spider.cfg:20 data/units/Commander.cfg:24
 #: data/units/Commander.cfg:99 data/units/Dark_Spirit.cfg:20
-#: data/units/Death_Knight.cfg:20 data/units/Deathblade.cfg:29
+#: data/units/Death_Knight.cfg:22 data/units/Deathblade.cfg:29
 #: data/units/Direwolf_Rider.cfg:19 data/units/Direwolf_Rider.cfg:31
 #: data/units/Dragoon.cfg:28 data/units/Drake_Burner.cfg:22
 #: data/units/Drake_Clasher.cfg:22 data/units/Drake_Fighter.cfg:22
@@ -3295,17 +3295,17 @@ msgstr "sztylet"
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:22
 #: data/units/Elvish_Sharpshooter.cfg:101 data/units/Fencer.cfg:21
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
-#: data/units/Fire_Dragon.cfg:23 data/units/General.cfg:26
+#: data/units/Fire_Dragon.cfg:23 data/units/General.cfg:29
 #: data/units/Ghoul.cfg:20 data/units/Goblin_Knight.cfg:19
-#: data/units/Grand_Knight.cfg:21 data/units/Grand_Marshal.cfg:22
+#: data/units/Grand_Knight.cfg:21 data/units/Grand_Marshal.cfg:25
 #: data/units/Gryphon.cfg:19 data/units/Gryphon_Master.cfg:22
 #: data/units/Gryphon_Rider.cfg:20 data/units/Halbardier.cfg:40
 #: data/units/Horse_Lord.cfg:22 data/units/Knight.cfg:21
-#: data/units/Lieutenant.cfg:22 data/units/Longbowman.cfg:22
-#: data/units/Lord.cfg:23 data/units/Lord.cfg:86 data/units/Mage.cfg:21
+#: data/units/Lieutenant.cfg:25 data/units/Longbowman.cfg:22
+#: data/units/Lord.cfg:23 data/units/Lord.cfg:98 data/units/Mage.cfg:21
 #: data/units/Mage.cfg:88 data/units/Master_Bowman.cfg:21
-#: data/units/Merman_Triton.cfg:35 data/units/Mounted_Captain.cfg:22
-#: data/units/Mounted_Commander.cfg:22 data/units/Mounted_Fighter.cfg:22
+#: data/units/Merman_Triton.cfg:35 data/units/Mounted_Captain.cfg:23
+#: data/units/Mounted_Commander.cfg:23 data/units/Mounted_Fighter.cfg:22
 #: data/units/Mounted_Warrior.cfg:22 data/units/Naga-Fighter.cfg:21
 #: data/units/Naga-Fighter.cfg:52 data/units/Naga-Myrmidon.cfg:25
 #: data/units/Naga-Myrmidon.cfg:60 data/units/Naga-Warrior.cfg:25
@@ -3322,10 +3322,10 @@ msgstr "sztylet"
 #: data/units/Orcish_Warlord.cfg:20 data/units/Orcish_Warrior.cfg:20
 #: data/units/Poacher.cfg:25 data/units/Princess.cfg:24
 #: data/units/Princess.cfg:62 data/units/Red_Mage.cfg:24
-#: data/units/Red_Mage.cfg:93 data/units/Revenant.cfg:24
+#: data/units/Red_Mage.cfg:94 data/units/Revenant.cfg:24
 #: data/units/Rogue.cfg:21 data/units/Rogue.cfg:39
 #: data/units/Royal_Guard.cfg:24 data/units/Sea_Orc.cfg:20
-#: data/units/Sergeant.cfg:22 data/units/Shadow.cfg:21
+#: data/units/Sergeant.cfg:25 data/units/Shadow.cfg:21
 #: data/units/Skeletal_Dragon.cfg:29 data/units/Skeletal_Dragon.cfg:48
 #: data/units/Skeleton.cfg:25 data/units/Sleeping_Gryphon.cfg:19
 #: data/units/Spectre.cfg:20 data/units/Swordsman.cfg:24
@@ -3340,7 +3340,7 @@ msgstr "sieczna"
 
 #: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
 #: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
-#: src/actions.cpp:492
+#: src/actions.cpp:493
 #, fuzzy
 msgid "backstab"
 msgstr "cios w plecy"
@@ -3351,7 +3351,7 @@ msgid "knife"
 msgstr "nóż"
 
 #: data/units/Assassin.cfg:50 data/units/Cave_Spider.cfg:24
-#: data/units/Cuttle_Fish.cfg:37 data/units/Direwolf_Rider.cfg:35
+#: data/units/Cuttle_Fish.cfg:42 data/units/Direwolf_Rider.cfg:35
 #: data/units/Ghoul.cfg:24 data/units/Giant_Scorpion.cfg:22
 #: data/units/Necrophage.cfg:24 data/units/Orcish_Assassin.cfg:41
 #: data/units/Orcish_Slayer.cfg:46
@@ -3424,13 +3424,13 @@ msgstr ""
 #: data/units/Elvish_Ranger.cfg:98 data/units/Elvish_Rider.cfg:31
 #: data/units/Elvish_Scout.cfg:32 data/units/Elvish_Sharpshooter.cfg:21
 #: data/units/Elvish_Sharpshooter.cfg:100 data/units/Fighter.cfg:20
-#: data/units/Fighter.cfg:61 data/units/General.cfg:25
-#: data/units/Grand_Knight.cfg:19 data/units/Grand_Marshal.cfg:21
+#: data/units/Fighter.cfg:61 data/units/General.cfg:28
+#: data/units/Grand_Knight.cfg:19 data/units/Grand_Marshal.cfg:24
 #: data/units/Horse_Lord.cfg:21 data/units/Knight.cfg:20
-#: data/units/Lieutenant.cfg:21 data/units/Longbowman.cfg:21
-#: data/units/Lord.cfg:22 data/units/Lord.cfg:85
-#: data/units/Master_Bowman.cfg:20 data/units/Mounted_Captain.cfg:21
-#: data/units/Mounted_Commander.cfg:21 data/units/Mounted_Fighter.cfg:21
+#: data/units/Lieutenant.cfg:24 data/units/Longbowman.cfg:21
+#: data/units/Lord.cfg:22 data/units/Lord.cfg:97
+#: data/units/Master_Bowman.cfg:20 data/units/Mounted_Captain.cfg:22
+#: data/units/Mounted_Commander.cfg:22 data/units/Mounted_Fighter.cfg:21
 #: data/units/Mounted_Warrior.cfg:21 data/units/Naga-Fighter.cfg:20
 #: data/units/Naga-Fighter.cfg:51 data/units/Naga-Myrmidon.cfg:24
 #: data/units/Naga-Myrmidon.cfg:59 data/units/Naga-Warrior.cfg:24
@@ -3441,7 +3441,7 @@ msgstr ""
 #: data/units/Orcish_Warlord.cfg:19 data/units/Orcish_Warrior.cfg:19
 #: data/units/Paladin.cfg:24 data/units/Princess.cfg:23
 #: data/units/Princess.cfg:61 data/units/Royal_Guard.cfg:23
-#: data/units/Sea_Orc.cfg:19 data/units/Sergeant.cfg:21
+#: data/units/Sea_Orc.cfg:19 data/units/Sergeant.cfg:24
 #: data/units/Swordsman.cfg:23
 #, fuzzy
 msgid "sword"
@@ -3468,7 +3468,7 @@ msgstr ""
 "doświadczonym harcownikiem i ignoruje wraże strefy kontroli."
 
 #: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:120
-#: data/units/Fighter.cfg:83 data/units/Lord.cfg:102
+#: data/units/Fighter.cfg:83 data/units/Lord.cfg:114
 #: data/units/Princess.cfg:77
 #, fuzzy
 msgid "scepter of fire"
@@ -3522,7 +3522,7 @@ msgstr "laska"
 #: data/units/Bone_Shooter.cfg:26 data/units/Bone_Shooter.cfg:39
 #: data/units/Bowman.cfg:38 data/units/Cavalier.cfg:49
 #: data/units/Chocobone.cfg:21 data/units/Commander.cfg:46
-#: data/units/Cuttle_Fish.cfg:27 data/units/Death_Knight.cfg:37
+#: data/units/Cuttle_Fish.cfg:27 data/units/Death_Knight.cfg:39
 #: data/units/Dragoon.cfg:49 data/units/Drake_Clasher.cfg:40
 #: data/units/Drake_Gladiator.cfg:44 data/units/Drake_Slasher.cfg:40
 #: data/units/Duelist.cfg:37 data/units/Dwarvish_Dragonguard.cfg:39
@@ -3541,14 +3541,14 @@ msgstr "laska"
 #: data/units/Elvish_Rider.cfg:53 data/units/Elvish_Scout.cfg:54
 #: data/units/Elvish_Sharpshooter.cfg:39
 #: data/units/Elvish_Sharpshooter.cfg:118 data/units/Elvish_Shyde.cfg:72
-#: data/units/General.cfg:49 data/units/Giant_Scorpion.cfg:20
+#: data/units/General.cfg:52 data/units/Giant_Scorpion.cfg:20
 #: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:40
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
-#: data/units/Grand_Knight.cfg:37 data/units/Grand_Marshal.cfg:45
+#: data/units/Grand_Knight.cfg:37 data/units/Grand_Marshal.cfg:48
 #: data/units/Halbardier.cfg:22 data/units/Horseman.cfg:21
 #: data/units/Javelineer.cfg:20 data/units/Javelineer.cfg:48
 #: data/units/Knight.cfg:37 data/units/Lancer.cfg:21
-#: data/units/Lieutenant.cfg:39 data/units/Longbowman.cfg:39
+#: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:39
 #: data/units/Lord.cfg:40 data/units/Master_Bowman.cfg:33
 #: data/units/Merman.cfg:20 data/units/Merman_Entangler.cfg:19
 #: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
@@ -3571,7 +3571,7 @@ msgstr "laska"
 #: data/units/Saurian_Flanker.cfg:42 data/units/Saurian_Skirmisher.cfg:23
 #: data/units/Saurian_Skirmisher.cfg:41 data/units/Saurian_Warrior.cfg:24
 #: data/units/Saurian_Warrior.cfg:42 data/units/Sea_Hag.cfg:21
-#: data/units/Sea_Serpent.cfg:20 data/units/Sergeant.cfg:39
+#: data/units/Sea_Serpent.cfg:20 data/units/Sergeant.cfg:42
 #: data/units/Skeleton_Archer.cfg:41 data/units/Soul_Shooter.cfg:26
 #: data/units/Soul_Shooter.cfg:39 data/units/Spearman.cfg:20
 #: data/units/Spearman.cfg:34 data/units/Transport_Galleon.cfg:17
@@ -3631,11 +3631,11 @@ msgid ""
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
 
-#: data/units/Cavalier.cfg:48 data/units/Death_Knight.cfg:36
+#: data/units/Cavalier.cfg:48 data/units/Death_Knight.cfg:38
 #: data/units/Dragoon.cfg:48 data/units/Duelist.cfg:36
-#: data/units/General.cfg:48 data/units/Grand_Marshal.cfg:44
-#: data/units/Lieutenant.cfg:38 data/units/Orcish_Crossbowman.cfg:38
-#: data/units/Sergeant.cfg:38 data/units/Wall_Guard.cfg:35
+#: data/units/General.cfg:51 data/units/Grand_Marshal.cfg:47
+#: data/units/Lieutenant.cfg:41 data/units/Orcish_Crossbowman.cfg:38
+#: data/units/Sergeant.cfg:41 data/units/Wall_Guard.cfg:35
 #, fuzzy
 msgid "crossbow"
 msgstr "kusza"
@@ -3727,8 +3727,8 @@ msgstr "włócznia"
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
-#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:366
-#: src/actions.cpp:483
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:367
+#: src/actions.cpp:484
 #, fuzzy
 msgid "charge"
 msgstr "szarża"
@@ -3754,7 +3754,7 @@ msgstr ""
 msgid "gaze"
 msgstr "spojrzenie"
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:738 src/actions.cpp:885
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:739 src/actions.cpp:886
 #: src/reports.cpp:123
 #, fuzzy
 msgid "stone"
@@ -3895,7 +3895,7 @@ msgstr "ryk"
 msgid "Death Knight"
 msgstr "Książę śmierci"
 
-#: data/units/Death_Knight.cfg:16
+#: data/units/Death_Knight.cfg:18
 #, fuzzy
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and a sense "
@@ -3906,7 +3906,7 @@ msgstr ""
 "Czasami najpotężniejsi wojownicy i generałowie, przeklęci z nienawiścią i "
 "trwogą, wracają na tez świat jako Książęta śmierci."
 
-#: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:27
+#: data/units/Death_Knight.cfg:21 data/units/Dwarvish_Lord.cfg:27
 #: data/units/Dwarvish_Steelclad.cfg:27
 #, fuzzy
 msgid "battle axe"
@@ -3946,7 +3946,7 @@ msgstr ""
 msgid "Demilich"
 msgstr "Półlicz"
 
-#: data/units/Demilich.cfg:15
+#: data/units/Demilich.cfg:16
 #, fuzzy
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these "
@@ -4987,7 +4987,7 @@ msgstr "obicie"
 msgid "General"
 msgstr "Generał"
 
-#: data/units/General.cfg:22
+#: data/units/General.cfg:25
 #, fuzzy
 msgid ""
 "As the great leaders of the human armies, Generals are responsible for the "
@@ -5055,7 +5055,7 @@ msgstr ""
 msgid "boiling water"
 msgstr "wrzątek"
 
-#: data/units/Giant_Mudcrawler.cfg:33 data/units/Skeleton_Archer.cfg:23
+#: data/units/Giant_Mudcrawler.cfg:34 data/units/Skeleton_Archer.cfg:23
 #: data/units/Soulless.cfg:19 data/units/Troll_Rocklobber.cfg:20
 #: data/units/Troll_Whelp.cfg:20 data/units/Walking_Corpse.cfg:19
 #: data/units/Yeti.cfg:33
@@ -5180,7 +5180,7 @@ msgstr "lanca"
 msgid "Grand Marshal"
 msgstr ""
 
-#: data/units/Grand_Marshal.cfg:18
+#: data/units/Grand_Marshal.cfg:21
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -5194,7 +5194,7 @@ msgstr ""
 msgid "Great Mage"
 msgstr "Wielki Mag"
 
-#: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:96
+#: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:97
 #, fuzzy
 msgid ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
@@ -5203,7 +5203,7 @@ msgstr ""
 "Wielcy magowie są wspaniałymi i siejącymi strach przeciwnikami, o mocy "
 "większej nawet niż sami Arcymagowie."
 
-#: data/units/Great_Mage.cfg:79
+#: data/units/Great_Mage.cfg:80
 #, fuzzy
 msgid "female^Great Mage"
 msgstr "Wielki Mag"
@@ -5323,8 +5323,8 @@ msgid ""
 "most ordinary enemies, and their morning star crushes those who are left."
 msgstr ""
 
-#: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:43
-#: data/units/Mounted_Commander.cfg:43 data/units/Mounted_Fighter.cfg:43
+#: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:44
+#: data/units/Mounted_Commander.cfg:44 data/units/Mounted_Fighter.cfg:43
 #: data/units/Mounted_Warrior.cfg:43
 #, fuzzy
 msgid "morning star"
@@ -5453,7 +5453,7 @@ msgstr ""
 msgid "Lieutenant"
 msgstr "Porucznik"
 
-#: data/units/Lieutenant.cfg:18
+#: data/units/Lieutenant.cfg:21
 #, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
@@ -5478,12 +5478,12 @@ msgstr ""
 "Długołucznicy noszą z sobą olbrzymie specjalne łuki, których wszystkie "
 "arkana opanowali poprzez lata walk. Ich strzały przebijają nawet pancerze."
 
-#: data/units/Lord.cfg:3 data/units/Lord.cfg:66
+#: data/units/Lord.cfg:3 data/units/Lord.cfg:78
 #, fuzzy
 msgid "Lord"
 msgstr "Władca"
 
-#: data/units/Lord.cfg:19 data/units/Lord.cfg:82 data/units/Noble_Lord.cfg:22
+#: data/units/Lord.cfg:19 data/units/Lord.cfg:94 data/units/Noble_Lord.cfg:22
 #, fuzzy
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
@@ -5725,12 +5725,12 @@ msgid ""
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
 
-#: data/units/Mounted_Captain.cfg:3
+#: data/units/Mounted_Captain.cfg:4
 #, fuzzy
 msgid "Mounted Captain"
 msgstr "Kapitan jazdy"
 
-#: data/units/Mounted_Captain.cfg:17 data/units/Mounted_Fighter.cfg:17
+#: data/units/Mounted_Captain.cfg:18 data/units/Mounted_Fighter.cfg:17
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -5738,12 +5738,12 @@ msgid ""
 "the armies of the Clans."
 msgstr ""
 
-#: data/units/Mounted_Commander.cfg:3
+#: data/units/Mounted_Commander.cfg:4
 #, fuzzy
 msgid "Mounted Commander"
 msgstr "Dowódca jazdy"
 
-#: data/units/Mounted_Commander.cfg:17
+#: data/units/Mounted_Commander.cfg:18
 msgid ""
 "Leaders of the plains, the Mounted Commanders are skilled with the use of "
 "the sword and the morning star. Riding horses, they are able to move around "
@@ -6388,7 +6388,7 @@ msgstr ""
 msgid "Red Mage"
 msgstr "Czerwony Mag"
 
-#: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:89
+#: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:90
 #, fuzzy
 msgid ""
 "Red Mages attack with powerful magic fireballs that are guaranteed a good "
@@ -6399,7 +6399,7 @@ msgstr ""
 "celność. Są to zwinni i zdolni wojownicy zarówno w dzień jak i w nocy. "
 "Czerwoni magowie są przydatni we wszystkich sytuacjach."
 
-#: data/units/Red_Mage.cfg:72
+#: data/units/Red_Mage.cfg:73
 #, fuzzy
 msgid "female^Red Mage"
 msgstr "Czerwony Mag"
@@ -6623,7 +6623,7 @@ msgstr ""
 msgid "Sergeant"
 msgstr "Sierżant"
 
-#: data/units/Sergeant.cfg:18
+#: data/units/Sergeant.cfg:21
 #, fuzzy
 msgid ""
 "The Sergeant is an officer in the ranks of the Royal Army. He is not "
@@ -6671,7 +6671,7 @@ msgstr ""
 msgid "Silver Mage"
 msgstr "Srebrny mag"
 
-#: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:161
+#: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:162
 #, fuzzy
 msgid ""
 "Silver Mages are the most deft of foot and elusive of all mages. They can "
@@ -6683,7 +6683,7 @@ msgstr ""
 "natychmiastowo zmnieniając swoją pozycję. Są również bardzo odporni na ataki "
 "magiczne."
 
-#: data/units/Silver_Mage.cfg:142
+#: data/units/Silver_Mage.cfg:143
 #, fuzzy
 msgid "female^Silver Mage"
 msgstr "Srebrny mag"
@@ -7218,119 +7218,120 @@ msgstr "-   Projektant grafiki"
 msgid "+Developers"
 msgstr "+Twórcy"
 
-#: src/about.cpp:69
+#: src/about.cpp:71
 msgid "+General Purpose Administrators"
 msgstr "+Administratorzy ogólni"
 
-#: src/about.cpp:73
+#: src/about.cpp:76
 msgid "+Artwork and graphics designers"
 msgstr "+Projektanci grafiki"
 
-#: src/about.cpp:97
+#: src/about.cpp:101
 msgid "+Music"
 msgstr "+Muzyka"
 
-#: src/about.cpp:104
+#: src/about.cpp:108
 msgid "+Scenario Designers"
 msgstr "+Twórcy kampanii"
 
-#: src/about.cpp:114
+#: src/about.cpp:118
 msgid "+Multiplayer Maps"
 msgstr "+Mapy do gry wieloosobowej"
 
-#: src/about.cpp:119
+#: src/about.cpp:123
 msgid "+Packagers"
 msgstr "+Pakujący"
 
-#: src/about.cpp:127
+#: src/about.cpp:134
 msgid "+Miscellaneous"
 msgstr "+Inne"
 
-#: src/about.cpp:132
-msgid "+Internationalization Manager"
+#: src/about.cpp:139
+#, fuzzy
+msgid "+Internationalization Managers"
 msgstr "+Zarządca internacjonalizacji"
 
-#: src/about.cpp:136
+#: src/about.cpp:146
 msgid "+Basque Translation"
 msgstr "+Tłumaczenie baskijskie"
 
-#: src/about.cpp:140
+#: src/about.cpp:150
 msgid "+Catalan Translation"
 msgstr "+Tłumaczenie katalońskie"
 
-#: src/about.cpp:146
+#: src/about.cpp:156
 msgid "+Czech Translation"
 msgstr "+Tłumaczenie czeskie"
 
-#: src/about.cpp:155
+#: src/about.cpp:165
 msgid "+Danish Translation"
 msgstr "+Tłumaczenie duńskie"
 
-#: src/about.cpp:160
+#: src/about.cpp:170
 msgid "+Dutch Translation"
 msgstr "+Tłumaczenie holenderskie"
 
-#: src/about.cpp:165
+#: src/about.cpp:175
 msgid "+Finnish Translation"
 msgstr "+Tłumaczenie fińskie"
 
-#: src/about.cpp:169
+#: src/about.cpp:179
 msgid "+French Translation"
 msgstr "+Tłumaczenie francuskie"
 
-#: src/about.cpp:181
+#: src/about.cpp:191
 msgid "+German Translation"
 msgstr "+Tłumaczenie niemieckie"
 
-#: src/about.cpp:191
+#: src/about.cpp:202
 msgid "+Greek Translation"
 msgstr "+Tłumaczenie greckie"
 
-#: src/about.cpp:196
+#: src/about.cpp:207
 msgid "+Hungarian Translation"
 msgstr "+Tłumaczenie węgierskie"
 
-#: src/about.cpp:201
+#: src/about.cpp:212
 msgid "+Italian Translation"
 msgstr "+Tłumaczenie włoskie"
 
-#: src/about.cpp:210
+#: src/about.cpp:221
 msgid "+Norwegian Translation"
 msgstr "+Tłumaczenie norweskie"
 
-#: src/about.cpp:216
+#: src/about.cpp:227
 msgid "+Polish Translation"
 msgstr "+Tłumaczenie polskie"
 
-#: src/about.cpp:222
+#: src/about.cpp:233
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Tłumaczenie portugalskie(brazyliskie)"
 
-#: src/about.cpp:230
+#: src/about.cpp:241
 msgid "+Russian Translation"
 msgstr "+Tłumaczenie rosyjskie"
 
-#: src/about.cpp:236
+#: src/about.cpp:247
 msgid "+Slovak Translation"
 msgstr "+Tłumaczenie słowackie"
 
-#: src/about.cpp:240
+#: src/about.cpp:251
 msgid "+Spanish Translation"
 msgstr "+Tłumaczenie hiszpańskie"
 
-#: src/about.cpp:248
+#: src/about.cpp:259
 msgid "+Swedish Translation"
 msgstr "+Tłumaczenie szwedzkie"
 
-#: src/about.cpp:255
+#: src/about.cpp:266
 msgid "+Contributors"
 msgstr "+Pomagający"
 
-#: src/about.cpp:263
+#: src/about.cpp:270
 msgid "+Bots"
 msgstr "+Boty"
 
-#: src/about.cpp:299 src/help.cpp:2566 src/show_dialog.cpp:499
+#: src/about.cpp:306 src/help.cpp:2566 src/show_dialog.cpp:506
 msgid "Close"
 msgstr "Zamknij"
 
@@ -7362,73 +7363,73 @@ msgstr "wręcz"
 msgid "ranged"
 msgstr "na odległość"
 
-#: src/actions.cpp:325 src/actions.cpp:441
+#: src/actions.cpp:326 src/actions.cpp:442
 msgid "base damage"
 msgstr "obrażenia podstawowe"
 
-#: src/actions.cpp:334
+#: src/actions.cpp:335
 msgid "attacker resistance vs"
 msgstr "odporność atakującego na"
 
-#: src/actions.cpp:334
+#: src/actions.cpp:335
 msgid "attacker vulnerability vs"
 msgstr "czułość atakującego na"
 
-#: src/actions.cpp:366 src/actions.cpp:483 src/actions.cpp:492
+#: src/actions.cpp:367 src/actions.cpp:484 src/actions.cpp:493
 msgid "Doubled"
 msgstr "Podwojone"
 
-#: src/actions.cpp:394 src/actions.cpp:528
+#: src/actions.cpp:395 src/actions.cpp:529
 msgid "total damage"
 msgstr "suma obrażeń"
 
-#: src/actions.cpp:450
+#: src/actions.cpp:451
 msgid "defender resistance vs"
 msgstr "odporność obrońcy na"
 
-#: src/actions.cpp:450
+#: src/actions.cpp:451
 msgid "defender vulnerability vs"
 msgstr "czułość obrońcy na"
 
-#: src/actions.cpp:501
+#: src/actions.cpp:502
 msgid "Halved"
 msgstr "Zmniejszona o połowę"
 
-#: src/actions.cpp:724 src/actions.cpp:870 src/display.cpp:896
+#: src/actions.cpp:725 src/actions.cpp:871 src/display.cpp:896
 #: src/reports.cpp:116
 msgid "poisoned"
 msgstr "zatruty"
 
-#: src/actions.cpp:729 src/actions.cpp:875 src/display.cpp:892
+#: src/actions.cpp:730 src/actions.cpp:876 src/display.cpp:892
 #: src/reports.cpp:111
 msgid "slowed"
 msgstr "spowolniony"
 
-#: src/actions.cpp:1747
+#: src/actions.cpp:1748
 msgid "Ambushed!"
 msgstr "Zasadzka!"
 
-#: src/actions.cpp:1775
+#: src/actions.cpp:1776
 msgid "Friendly unit sighted"
 msgstr "Zauważono przyjazną jednostkę"
 
-#: src/actions.cpp:1777
+#: src/actions.cpp:1778
 msgid "Enemy unit sighted!"
 msgstr "Zauważono jednostkę wroga!"
 
-#: src/actions.cpp:1782
+#: src/actions.cpp:1783
 msgid "$friends Friendly units sighted"
 msgstr "Zauważono $friends przyjaznych(e) jednostek(i)"
 
-#: src/actions.cpp:1784
+#: src/actions.cpp:1785
 msgid "$enemies Enemy units sighted!"
 msgstr "Zauważono $enemies wrogich(ie) jednostek(i)."
 
-#: src/actions.cpp:1788
+#: src/actions.cpp:1789
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Zauważono jednostki! ($friends przyjaznych, $enemies wrogich)"
 
-#: src/actions.cpp:1803
+#: src/actions.cpp:1804
 msgid "(press $hotkey to continue)"
 msgstr "(wciśnij $hotkey aby kontynuować)"
 
@@ -7472,11 +7473,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:362 src/game.cpp:963
+#: src/dialogs.cpp:362 src/game.cpp:949
 msgid "Campaign"
 msgstr "Kampania"
 
-#: src/dialogs.cpp:364 src/game.cpp:1254
+#: src/dialogs.cpp:364 src/game.cpp:1243
 msgid "Multiplayer"
 msgstr "Gra z innymi"
 
@@ -7488,7 +7489,7 @@ msgstr "Ćwiczenia"
 msgid "replay"
 msgstr "powtórka"
 
-#: src/dialogs.cpp:376 src/multiplayer_lobby.cpp:145 src/playturn.cpp:1466
+#: src/dialogs.cpp:376 src/multiplayer_lobby.cpp:145 src/playturn.cpp:1500
 msgid "Turn"
 msgstr "Tura"
 
@@ -7496,11 +7497,11 @@ msgstr "Tura"
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:381 src/game.cpp:993
+#: src/dialogs.cpp:381 src/game.cpp:979
 msgid "Difficulty"
 msgstr "Poziom trudności"
 
-#: src/dialogs.cpp:383 src/game.cpp:1055 src/titlescreen.cpp:165
+#: src/dialogs.cpp:383 src/game.cpp:1041 src/titlescreen.cpp:165
 msgid "Version"
 msgstr "Wersja"
 
@@ -7559,12 +7560,12 @@ msgid "Profile"
 msgstr ""
 
 #: src/dialogs.cpp:639 src/display.cpp:902 src/help.cpp:1014
-#: src/playturn.cpp:1883
+#: src/playturn.cpp:1917
 msgid "level"
 msgstr "poziom"
 
 #: src/dialogs.cpp:677 src/display.cpp:936 src/help.cpp:1060
-#: src/playturn.cpp:2046 src/unit.cpp:1078
+#: src/playturn.cpp:2080 src/unit.cpp:1078
 msgid "Moves"
 msgstr ""
 
@@ -7584,23 +7585,41 @@ msgstr "Bepa-Roman.ttf"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Czy zapisać przebieg tej misji?"
 
-#: src/game.cpp:136 src/game.cpp:198 src/playturn.cpp:1475
+#: src/game.cpp:136 src/game.cpp:194 src/playturn.cpp:1509
 msgid "Name:"
 msgstr "Imię:"
 
-#: src/game.cpp:144 src/game.cpp:205 src/playturn.cpp:1492
+#: src/game.cpp:144 src/game.cpp:201 src/playturn.cpp:1526
 msgid "The game could not be saved"
 msgstr "Gra nie może zostać zachowana"
 
-#: src/game.cpp:197
+#: src/game.cpp:166 src/game.cpp:888 src/game.cpp:1278
+#, fuzzy
+msgid "The game could not be loaded: "
+msgstr "Gra nie może zostać zachowana"
+
+#: src/game.cpp:169 src/game.cpp:890 src/game.cpp:1280
+msgid "Error while playing the game: "
+msgstr ""
+
+#: src/game.cpp:172 src/game.cpp:1292
+#, fuzzy
+msgid "The game map could not be loaded: "
+msgstr "Gra nie może zostać zachowana"
+
+#: src/game.cpp:193
 msgid "Do you want to save your game?"
 msgstr "Czy zapisać grę?"
 
-#: src/game.cpp:608
+#: src/game.cpp:214
+msgid "Unknown scenario: '"
+msgstr ""
+
+#: src/game.cpp:603
 msgid "The Battle for Wesnoth"
 msgstr "Bitwa o Wesnoth"
 
-#: src/game.cpp:825 src/multiplayer_connect.cpp:103
+#: src/game.cpp:820 src/multiplayer_connect.cpp:103
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7608,208 +7627,209 @@ msgstr ""
 "Ta zapisana gra pochodzi z innej wersji Bitwy o Wesnoth. Czy spróbować ją "
 "wczytać?"
 
-#: src/game.cpp:835 src/game.cpp:840 src/playlevel.cpp:560
-#: src/playlevel.cpp:811
-msgid "The file you have tried to load is corrupt"
+#: src/game.cpp:828 src/game.cpp:831
+#, fuzzy
+msgid "The file you have tried to load is corrupt: '"
 msgstr "Plik nie może zostać wczytany - jest zepsuty"
 
-#: src/game.cpp:844
+#: src/game.cpp:834
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:953
+#: src/game.cpp:939
 #, fuzzy
 msgid "Get More Campaigns..."
 msgstr "Pobierz kampanię"
 
-#: src/game.cpp:954
+#: src/game.cpp:940
 msgid "Download more campaigns from a server on Internet."
 msgstr ""
 
-#: src/game.cpp:964
+#: src/game.cpp:950
 msgid "Choose the campaign you want to play:"
 msgstr "Wybierz kampanię, w którą chcesz zagrać:"
 
-#: src/game.cpp:994
+#: src/game.cpp:980
 msgid "Select difficulty level:"
 msgstr "Poziom trudności:"
 
-#: src/game.cpp:1013
+#: src/game.cpp:999
 msgid "Connect to Server"
 msgstr "Połącz z serwerem."
 
-#: src/game.cpp:1014
+#: src/game.cpp:1000
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 
-#: src/game.cpp:1015
+#: src/game.cpp:1001
 msgid "Server: "
 msgstr ""
 
-#: src/game.cpp:1027
+#: src/game.cpp:1013
 msgid "Could not connect to host."
 msgstr "Nie mogę się podłączyć do hosta"
 
-#: src/game.cpp:1027 src/game.cpp:1042 src/game.cpp:1048 src/game.cpp:1108
-#: src/game.cpp:1137 src/game.cpp:1152 src/game.cpp:1154 src/game.cpp:1156
-#: src/game.cpp:1168 src/game.cpp:1171 src/game.cpp:1206 src/game.cpp:1208
-#: src/game.cpp:1230 src/game.cpp:1232 src/playturn.cpp:1478
-#: src/playturn.cpp:1492
-msgid "Error"
-msgstr "Błąd"
-
-#: src/game.cpp:1035
+#: src/game.cpp:1021
 msgid "Awaiting response from server"
 msgstr ""
 
-#: src/game.cpp:1048
+#: src/game.cpp:1034
 msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:1054 src/help.cpp:1083 src/help.cpp:1084 src/playturn.cpp:2043
+#: src/game.cpp:1040 src/help.cpp:1083 src/help.cpp:1084 src/playturn.cpp:2077
 msgid "Name"
 msgstr "Imię"
 
-#: src/game.cpp:1056
+#: src/game.cpp:1042
 #, fuzzy
 msgid "Author"
 msgstr "ciernie"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1043
 msgid "Downloads"
 msgstr ""
 
-#: src/game.cpp:1058
+#: src/game.cpp:1044
 #, fuzzy
 msgid "Size"
 msgstr "ogień"
 
-#: src/game.cpp:1077
+#: src/game.cpp:1063
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:1080 src/show_dialog.cpp:949
+#: src/game.cpp:1066 src/show_dialog.cpp:956
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:1083
+#: src/game.cpp:1069
 msgid "MB"
 msgstr ""
 
-#: src/game.cpp:1100
+#: src/game.cpp:1086
 msgid "Publish campaign: "
 msgstr "Opublikuj kampanię:"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1090
 msgid "Delete campaign: "
 msgstr "Usuń kampanię"
 
-#: src/game.cpp:1108
+#: src/game.cpp:1094
 msgid "There are no campaigns available for download from this server."
 msgstr "Nie ma dostępnych kampanii"
 
-#: src/game.cpp:1112
+#: src/game.cpp:1098
 msgid "Choose the campaign to download."
 msgstr "Wybór kampanii do wczytania"
 
-#: src/game.cpp:1112
+#: src/game.cpp:1098
 msgid "Get Campaign"
 msgstr "Pobierz kampanię"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1117
 msgid "Downloading campaign..."
 msgstr ""
 
-#: src/game.cpp:1150
+#: src/game.cpp:1136
 msgid "Campaign Installed"
 msgstr "Kampania zainstalowana"
 
-#: src/game.cpp:1150
+#: src/game.cpp:1136
 msgid "The campaign has been installed."
 msgstr "Kampania została zainstalowana."
 
-#: src/game.cpp:1152
+#: src/game.cpp:1138
 msgid "Network communication error."
 msgstr ""
 
-#: src/game.cpp:1154
+#: src/game.cpp:1140
 msgid "Remote host disconnected."
 msgstr "Zdalny komputer rozłączył się."
 
-#: src/game.cpp:1156
+#: src/game.cpp:1142
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
-#: src/game.cpp:1168 src/game.cpp:1206 src/game.cpp:1230
+#: src/game.cpp:1154 src/game.cpp:1193 src/game.cpp:1218
 #: src/multiplayer_client.cpp:47 src/multiplayer_client.cpp:319
 msgid "Connection timed out"
 msgstr "Minął czas oczekiwania połączenia"
 
-#: src/game.cpp:1171 src/game.cpp:1208 src/game.cpp:1232
+#: src/game.cpp:1157 src/game.cpp:1195 src/game.cpp:1220
 msgid "The server responded with an error: \""
 msgstr ""
 
-#: src/game.cpp:1174
+#: src/game.cpp:1161
 msgid "Terms"
 msgstr "Warunki"
 
-#: src/game.cpp:1210 src/game.cpp:1234
+#: src/game.cpp:1198 src/game.cpp:1223
 msgid "Response"
 msgstr "Odpowiedź"
 
-#: src/game.cpp:1247
+#: src/game.cpp:1236
 msgid "Join Official Server"
 msgstr "Połącz się z oficjalnym serwerem"
 
-#: src/game.cpp:1247
+#: src/game.cpp:1236
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 "Zaloguj się na oficjalny serwer gier wieloosobowych Wesnoth (angielski)"
 
-#: src/game.cpp:1248 src/multiplayer_lobby.cpp:164
+#: src/game.cpp:1237 src/multiplayer_lobby.cpp:164
 msgid "Join Game"
 msgstr "Dołącz do gry"
 
-#: src/game.cpp:1248
+#: src/game.cpp:1237
 msgid "Join a server or hosted game"
 msgstr "Dołącz do już założonej gry"
 
-#: src/game.cpp:1249
+#: src/game.cpp:1238
 msgid "Host Networked Game"
 msgstr "Poprowadź grę sieciową"
 
-#: src/game.cpp:1249
+#: src/game.cpp:1238
 msgid "Host a game without using a server"
 msgstr "Nie łącz się z serwerami, tylko załóż własną grę wieloosobową"
 
-#: src/game.cpp:1250
+#: src/game.cpp:1239
 msgid "Hotseat Game"
 msgstr "Gra na jednym komputerze"
 
-#: src/game.cpp:1250
+#: src/game.cpp:1239
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
-#: src/game.cpp:1251
+#: src/game.cpp:1240
 msgid "Human vs AI"
 msgstr "Ludzie kontra komputer"
 
-#: src/game.cpp:1251
+#: src/game.cpp:1240
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1254 src/multiplayer_client.cpp:303
+#: src/game.cpp:1243 src/multiplayer_client.cpp:303
 msgid "Login"
 msgstr "Login"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1318
 msgid "Language"
 msgstr "Język"
 
-#: src/game.cpp:1334
+#: src/game.cpp:1319
 msgid "Choose your preferred language"
 msgstr "Wybierz Twój preferowany język"
+
+#: src/game.cpp:1356
+msgid "Error loading game configuration files: '"
+msgstr ""
+
+#: src/game.cpp:1357
+#, fuzzy
+msgid "' (The game will now exit)"
+msgstr "Gra się skończyła."
 
 #: src/help.cpp:1021
 msgid "Advances to"
@@ -7827,7 +7847,7 @@ msgstr "Wymagane PD"
 msgid "attacks"
 msgstr "ataki"
 
-#: src/help.cpp:1087 src/help.cpp:1088 src/playturn.cpp:2042
+#: src/help.cpp:1087 src/help.cpp:1088 src/playturn.cpp:2076
 msgid "Type"
 msgstr "Typ"
 
@@ -7925,7 +7945,7 @@ msgstr "Pomiń"
 msgid "The End"
 msgstr "Koniec"
 
-#: src/language.cpp:34 src/language.cpp:149
+#: src/language.cpp:34 src/language.cpp:150
 msgid "System default language"
 msgstr "Język systemowy"
 
@@ -7937,7 +7957,7 @@ msgstr "Zamknij okno"
 msgid "Map Generator"
 msgstr "Generator map"
 
-#: src/mapgen_dialog.cpp:82 src/multiplayer.cpp:499
+#: src/mapgen_dialog.cpp:82 src/multiplayer.cpp:436 src/multiplayer.cpp:501
 msgid "Players"
 msgstr "Gracze"
 
@@ -7957,7 +7977,7 @@ msgstr "Powtórzenia"
 msgid "Bump Size"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1615
+#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1649
 msgid "Villages"
 msgstr "Wioski"
 
@@ -8020,12 +8040,12 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Pozwala ludziom, którzy nie grają obserwować grę"
 
 #: src/multiplayer.cpp:120 src/multiplayer_client.cpp:151
-#: src/multiplayer_connect.cpp:52 src/show_dialog.cpp:487
-#: src/show_dialog.cpp:493
+#: src/multiplayer_connect.cpp:52 src/show_dialog.cpp:494
+#: src/show_dialog.cpp:500
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/multiplayer.cpp:121 src/show_dialog.cpp:473 src/show_dialog.cpp:486
+#: src/multiplayer.cpp:121 src/show_dialog.cpp:480 src/show_dialog.cpp:493
 msgid "Ok"
 msgstr "Ok"
 
@@ -8053,43 +8073,47 @@ msgstr "Nic nie pokazuj"
 msgid "No multiplayer sides."
 msgstr "Brak ston do gry wieloosobowej."
 
-#: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:165
+#: src/multiplayer.cpp:171 src/multiplayer_lobby.cpp:165
 msgid "Create Game"
 msgstr "Stwórz grę"
 
-#: src/multiplayer.cpp:174
+#: src/multiplayer.cpp:175
 msgid "Name of game"
 msgstr "Nazwa gry"
 
-#: src/multiplayer.cpp:177
+#: src/multiplayer.cpp:178
 msgid "$login's game"
 msgstr "Gra $login"
 
-#: src/multiplayer.cpp:188
+#: src/multiplayer.cpp:189
 msgid "Map to play"
 msgstr "Mapa do gry"
 
-#: src/multiplayer.cpp:283
+#: src/multiplayer.cpp:285
 msgid "Era"
 msgstr "Era"
 
-#: src/multiplayer.cpp:359
+#: src/multiplayer.cpp:343
+msgid "You must enter a name."
+msgstr ""
+
+#: src/multiplayer.cpp:360
 msgid "Unlimited"
 msgstr "Nieograniczone"
 
-#: src/multiplayer.cpp:363
+#: src/multiplayer.cpp:364
 msgid "Turns"
 msgstr "Tury"
 
-#: src/multiplayer.cpp:371
+#: src/multiplayer.cpp:372
 msgid "Village Gold"
 msgstr "Złoto z wiosek"
 
-#: src/multiplayer.cpp:383
+#: src/multiplayer.cpp:384
 msgid "Experience Requirements"
 msgstr "Wymagane doświadczenie"
 
-#: src/multiplayer.cpp:515
+#: src/multiplayer.cpp:517
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
@@ -8097,7 +8121,7 @@ msgstr ""
 "Gra nie mogła uzyskać portu wymaganego do bycia hostem. Gracze sieciowi nie "
 "będą się mogli połączyć."
 
-#: src/multiplayer.cpp:515
+#: src/multiplayer.cpp:517
 msgid "Warning"
 msgstr "Uwaga"
 
@@ -8105,7 +8129,7 @@ msgstr "Uwaga"
 msgid "Receiving game list..."
 msgstr "Odbieranie listy gier..."
 
-#: src/multiplayer_client.cpp:126 src/playturn.cpp:1711
+#: src/multiplayer_client.cpp:126 src/playturn.cpp:1745
 #, fuzzy
 msgid "unit^Gold"
 msgstr "Złoto"
@@ -8261,7 +8285,7 @@ msgid "Color"
 msgstr "Kolor"
 
 #: src/multiplayer_connect.cpp:390 src/multiplayer_connect.cpp:392
-#: src/playlevel.cpp:792 src/playturn.cpp:1614 src/playturn.cpp:1621
+#: src/playlevel.cpp:792 src/playturn.cpp:1648 src/playturn.cpp:1655
 msgid "Gold"
 msgstr "Złoto"
 
@@ -8281,6 +8305,10 @@ msgstr "Wolne miejsce"
 msgid "Vacant Slots"
 msgstr "Wolne miejsca"
 
+#: src/multiplayer_lobby.cpp:159
+msgid "<no games open>"
+msgstr ""
+
 #: src/multiplayer_lobby.cpp:163
 msgid "Observe Game"
 msgstr "Obserwuj grę"
@@ -8288,6 +8316,10 @@ msgstr "Obserwuj grę"
 #: src/multiplayer_lobby.cpp:166
 msgid "Quit"
 msgstr "Wyjdź"
+
+#: src/playlevel.cpp:560 src/playlevel.cpp:811
+msgid "The file you have tried to load is corrupt"
+msgstr "Plik nie może zostać wczytany - jest zepsuty"
 
 #: src/playlevel.cpp:701
 msgid "Game Over"
@@ -8354,53 +8386,57 @@ msgstr ""
 msgid "It is now your turn"
 msgstr "Nadeszła Twoja tura"
 
-#: src/playturn.cpp:504
+#: src/playturn.cpp:538
 msgid "Attacker"
 msgstr "Atakujący"
 
-#: src/playturn.cpp:506
+#: src/playturn.cpp:540
 msgid "Defender"
 msgstr "Broniący się"
 
-#: src/playturn.cpp:526 src/playturn.cpp:599
+#: src/playturn.cpp:560 src/playturn.cpp:633
 msgid "Damage Calculations"
 msgstr "Wyliczenia obrażeń"
 
-#: src/playturn.cpp:578 src/reports.cpp:209
+#: src/playturn.cpp:612 src/reports.cpp:209
 msgid "vs"
 msgstr "kontra"
 
-#: src/playturn.cpp:611
+#: src/playturn.cpp:645
 msgid "Attack Enemy"
 msgstr "Atakowanie nieprzyjaciela"
 
-#: src/playturn.cpp:612
+#: src/playturn.cpp:646
 msgid "Choose weapon"
 msgstr "Wybór broni"
 
-#: src/playturn.cpp:1200
+#: src/playturn.cpp:1234
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr "Jeszcze nie rozpocząłeśaś(aś) tury. Czy chcesz ją już zakończyć?"
 
-#: src/playturn.cpp:1209 src/playturn.cpp:1214
+#: src/playturn.cpp:1243 src/playturn.cpp:1248
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Niektóre jednostki wciąż mogą się poruszyć. Czy na pewno zakończyć już turę?"
 
-#: src/playturn.cpp:1229
+#: src/playturn.cpp:1263
 msgid "Auto-Save"
 msgstr "Autozapis"
 
-#: src/playturn.cpp:1231
+#: src/playturn.cpp:1265
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Nie da się automatycznie zapisać gry. Proszę zapisać grę ręcznie."
 
-#: src/playturn.cpp:1430
+#: src/playturn.cpp:1464
 msgid "Rename Unit"
 msgstr "Przemianuj jednostkę"
 
-#: src/playturn.cpp:1478
+#: src/playturn.cpp:1512 src/playturn.cpp:1526 src/show_dialog.cpp:387
+msgid "Error"
+msgstr "Błąd"
+
+#: src/playturn.cpp:1512
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -8408,69 +8444,69 @@ msgstr ""
 "Zapisane gry nie mogą zawierać dwukropków, slashy ani backslashy(ukośników). "
 "Proszę wybrać inną nazwę."
 
-#: src/playturn.cpp:1489
+#: src/playturn.cpp:1523
 msgid "Saved"
 msgstr "Zapisano"
 
-#: src/playturn.cpp:1489
+#: src/playturn.cpp:1523
 msgid "The game has been saved"
 msgstr "Gra została zapisana"
 
-#: src/playturn.cpp:1613
+#: src/playturn.cpp:1647
 msgid "Leader"
 msgstr "Dowódca"
 
-#: src/playturn.cpp:1617
+#: src/playturn.cpp:1651
 msgid "Upkeep"
 msgstr "Utrzymanie"
 
-#: src/playturn.cpp:1618
+#: src/playturn.cpp:1652
 msgid "Income"
 msgstr "Dochód"
 
-#: src/playturn.cpp:1717
+#: src/playturn.cpp:1751
 msgid "You have no units available to recruit."
 msgstr "Nie ma dostępnych jednostek do rekrutacji."
 
-#: src/playturn.cpp:1729
+#: src/playturn.cpp:1763
 msgid "Recruit"
 msgstr "Rekrutuj"
 
-#: src/playturn.cpp:1730 src/playturn.cpp:1909
+#: src/playturn.cpp:1764 src/playturn.cpp:1943
 msgid "Select unit"
 msgstr "Wybierz jednostkę"
 
-#: src/playturn.cpp:1759
+#: src/playturn.cpp:1793
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Niewystarczające złoto, żeby rekrutować tę jednostkę"
 
-#: src/playturn.cpp:1817
+#: src/playturn.cpp:1851
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
 "Panie, to doświadczona jednostka, po awansach! Czy naprawdę $noun zwolnić?"
 
-#: src/playturn.cpp:1819
+#: src/playturn.cpp:1853
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr "Panie, ta jednostka wkrótce awansuje! Czy naprawdę $noun zwolnić?"
 
-#: src/playturn.cpp:1824
+#: src/playturn.cpp:1858
 msgid "her"
 msgstr "ją"
 
-#: src/playturn.cpp:1824
+#: src/playturn.cpp:1858
 msgid "him"
 msgstr "go"
 
-#: src/playturn.cpp:1865
+#: src/playturn.cpp:1899
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 "Zostałeś oddzielony(a) od swojej armii i nie możesz przywoływać jednostek"
 
-#: src/playturn.cpp:1867
+#: src/playturn.cpp:1901
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8478,100 +8514,100 @@ msgstr ""
 "Nie ma jednostek do przywołania\n"
 "(Musisz mieć jakieś jednostki pozostałe z poprzednich misji)"
 
-#: src/playturn.cpp:1873
+#: src/playturn.cpp:1907
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Musisz mieć $cost sztuk złota, żeby przywołać jednostkę"
 
-#: src/playturn.cpp:1896
+#: src/playturn.cpp:1930
 msgid "Dismiss Unit"
 msgstr "Oddal jednostkę"
 
-#: src/playturn.cpp:1908
+#: src/playturn.cpp:1942
 msgid "Recall"
 msgstr "Przywołaj"
 
-#: src/playturn.cpp:1953
+#: src/playturn.cpp:1987
 msgid "Message"
 msgstr "Wiadomość"
 
-#: src/playturn.cpp:1953
+#: src/playturn.cpp:1987
 msgid "Send to allies only"
 msgstr "Wyślij tylko do sprzymierzeńców"
 
-#: src/playturn.cpp:2047
+#: src/playturn.cpp:2081
 msgid "Location"
 msgstr "Miejsce"
 
-#: src/playturn.cpp:2094
+#: src/playturn.cpp:2128
 msgid "Unit List"
 msgstr "Lista jednostek"
 
-#: src/playturn.cpp:2129 src/playturn.cpp:2191
+#: src/playturn.cpp:2163 src/playturn.cpp:2225
 msgid "Recruits"
 msgstr "Rekrutacji"
 
-#: src/playturn.cpp:2135 src/playturn.cpp:2195
+#: src/playturn.cpp:2169 src/playturn.cpp:2229
 msgid "Recalls"
 msgstr "Przywołań"
 
-#: src/playturn.cpp:2141 src/playturn.cpp:2199
+#: src/playturn.cpp:2175 src/playturn.cpp:2233
 msgid "Advancements"
 msgstr "Awansów"
 
-#: src/playturn.cpp:2147 src/playturn.cpp:2203
+#: src/playturn.cpp:2181 src/playturn.cpp:2237
 msgid "Losses"
 msgstr "Strat"
 
 # (zabitych przeciwników)
-#: src/playturn.cpp:2153 src/playturn.cpp:2207
+#: src/playturn.cpp:2187 src/playturn.cpp:2241
 msgid "Kills"
 msgstr "Zabitych"
 
-#: src/playturn.cpp:2159
+#: src/playturn.cpp:2193
 msgid "Damage Inflicted"
 msgstr "Zadane obrażenia"
 
-#: src/playturn.cpp:2165
+#: src/playturn.cpp:2199
 msgid "Damage Taken"
 msgstr "Otrzymane obrażenia"
 
-#: src/playturn.cpp:2171
+#: src/playturn.cpp:2205
 msgid "Damage Inflicted (EV)"
 msgstr "Zadane obrażenia (EV)"
 
-#: src/playturn.cpp:2178
+#: src/playturn.cpp:2212
 msgid "Damage Taken (EV)"
 msgstr "Otrzymane obrażenia (EV)"
 
-#: src/playturn.cpp:2184
+#: src/playturn.cpp:2218
 msgid "Statistics"
 msgstr "Statystyki"
 
-#: src/playturn.cpp:2221
+#: src/playturn.cpp:2255
 msgid "Search"
 msgstr "Szukaj"
 
-#: src/playturn.cpp:2231
+#: src/playturn.cpp:2265
 msgid "prompt^Command:"
 msgstr "Polecenie:"
 
-#: src/playturn.cpp:2242
+#: src/playturn.cpp:2276
 msgid "Chat Log"
 msgstr "Zapis rozmów"
 
-#: src/playturn.cpp:2307
+#: src/playturn.cpp:2341
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nie znaleziono opisu ani jednostki zawierającej '$search'."
 
-#: src/playturn.cpp:2388
+#: src/playturn.cpp:2422
 msgid "Place Label"
 msgstr "Umieść opis"
 
-#: src/playturn.cpp:2389
+#: src/playturn.cpp:2423
 msgid "Label"
 msgstr "Opis"
 
-#: src/playturn.cpp:2521
+#: src/playturn.cpp:2555
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -8579,23 +8615,23 @@ msgstr ""
 "Gry przestały być skoordynowane i konieczne jest wyjście. Zapisać raport "
 "błędów tej gry?"
 
-#: src/playturn.cpp:2573
+#: src/playturn.cpp:2607
 msgid "Replace with AI"
 msgstr "Zastąp przez AI"
 
-#: src/playturn.cpp:2574
+#: src/playturn.cpp:2608
 msgid "Replace with local player"
 msgstr "Zastąp lokalnym graczem"
 
-#: src/playturn.cpp:2575
+#: src/playturn.cpp:2609
 msgid "Abort game"
 msgstr "Opuść grę"
 
-#: src/playturn.cpp:2578
+#: src/playturn.cpp:2612
 msgid "Replace with "
 msgstr "Zastąp przez"
 
-#: src/playturn.cpp:2582
+#: src/playturn.cpp:2616
 msgid "has left the game. What do you want to do?"
 msgstr "opuścił(a) grę. Co teraz?"
 
@@ -8665,7 +8701,7 @@ msgstr "Wioska przeciwnika"
 msgid "Allied village"
 msgstr "Wioska sojusznika"
 
-#: src/show_dialog.cpp:636
+#: src/show_dialog.cpp:643
 msgid "Help"
 msgstr "Pomoc"
 
