@@ -837,7 +837,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
                         double highlight_ratio, Pixel blend_with)
 
 {
-	if(updatesLocked_ || teams_.empty())
+	if(updatesLocked_)
 		return;
 
 	const gamemap::location loc(x,y);
