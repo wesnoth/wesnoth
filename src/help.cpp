@@ -2587,11 +2587,8 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	gui::draw_dialog(xloc, yloc, width, height, disp.video(), _("The Battle for Wesnoth Help"),
 					 NULL, &buttons_ptr, &restorer);
 
-	if ( (last_num_encountered_units >= 0 && 
-			 preferences::encountered_units().size() != size_t(last_num_encountered_units)) ||
-			(last_num_encountered_terrains >= 0 &&
-			 preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains))) {
-
+	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
+	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains)) {
 		// More units or terrains encountered, update the contents.
 		last_num_encountered_units = preferences::encountered_units().size();
 		last_num_encountered_terrains = preferences::encountered_terrains().size();

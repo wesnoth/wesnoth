@@ -275,7 +275,7 @@ private:
 
 void save_preview_pane::draw_contents()
 {
-	if(index_ < 0 || size_t(index_) >= summaries_->size() || info_->size() != summaries_->size()) {
+	if (size_t(index_) >= summaries_->size() || info_->size() != summaries_->size()) {
 		return;
 	}
 
@@ -757,7 +757,7 @@ void campaign_preview_pane::set_selection(int index)
 
 void campaign_preview_pane::draw_contents()
 {
-	if(index_ < 0 || size_t(index_) >= descriptions_->size()) {
+	if (size_t(index_) >= descriptions_->size()) {
 		return;
 	}
 

@@ -1677,7 +1677,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	if(map.is_village(steps.back())) {
 		orig_village_owner = village_owner(steps.back(),teams);
 
-		if(orig_village_owner >= 0 && size_t(orig_village_owner) != team_num) {
+		if (size_t(orig_village_owner) != team_num) {
 			ui->second.set_movement(0);
 			get_village(steps.back(),teams,team_num,units);
 		}

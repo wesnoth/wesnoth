@@ -1176,7 +1176,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 	static const std::string style = "menu2";
 	const int res = gui::show_dialog(gui_,NULL,"","",
 			gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,NULL,xloc,yloc,&style);
-	if(res < 0 || size_t(res) >= items.size())
+	if (size_t(res) >= items.size())
 		return;
 
 	const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
@@ -2070,7 +2070,7 @@ void turn_info::create_unit()
 		                          gui::OK_CANCEL,&options,&preview_panes);
 	}
 
-	if(choice >= 0 && size_t(choice) < unit_choices.size()) {
+	if (size_t(choice) < unit_choices.size()) {
 		units_.erase(last_hex_);
 		units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit_choices[choice]));
 		gui_.invalidate(last_hex_);
