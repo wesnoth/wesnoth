@@ -1078,7 +1078,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		if(show_healing) {
 			disp.scroll_to_tile(loc.x,loc.y,display::WARP);
 			disp.select_hex(loc);
-			disp.update_display();
+
 
 			//iterate over any units that are healing this unit, and make them
 			//enter their healing frame
@@ -1089,6 +1089,8 @@ void calculate_healing(display& disp, const gamemap& map,
 
 				disp.draw_tile(i->second.x,i->second.y);
 			}
+
+			disp.update_display();
 		}
 
 		const int DelayAmount = 50;
@@ -1112,11 +1114,15 @@ void calculate_healing(display& disp, const gamemap& map,
 
 			h->second = 0;
 		} else if(h->second < 0) {
-			if(show_healing)
+			if(show_healing) {
 				sound::play_sound("groan.wav");
+				disp.float_label(h->first,lexical_cast<std::string>(h->second*-1),255,0,0);
+			}
 		} else if(h->second > 0) {
-			if(show_healing)
+			if(show_healing) {
 				sound::play_sound("heal.wav");
+				disp.float_label(h->first,lexical_cast<std::string>(h->second),0,255,0);
+			}
 		}
 
 		if(h->second > 0 && h->second > u.max_hitpoints()-u.hitpoints()) {
