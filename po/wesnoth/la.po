@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth Latin 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-02-16 12:52+0100\n"
+"PO-Revision-Date: 2005-03-30 15:30+0200\n"
 "Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/fonts.cfg:4
+#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -84,7 +85,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Elementa lusoris"
 
 #: data/help.cfg:68
-#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. Keep in mind "
@@ -93,11 +93,8 @@ msgid ""
 msgstr ""
 "Haec pagina omnia summatim describit quae sapere necesse est ut Proelium pro "
 "Occidiseptentrione lusas. Includit quomodo lusas et scientias machinales "
-"post lusum. Ut plus nuntiorum vincendi lusum invenias, fortasse volabis "
-"<ref>dst=basic_strategy text='Artes imperatorias primas'</ref> consultare ac "
-"<ref>dst=multiplayer_strategy text='Artes imperatorias plurorum lusorum'</"
-"ref>. In animo habeto hoc tantum summatim describit -- ut exceptiones et "
-"condiciones speciales videas, sis sequere ligamina inclusa."
+"post lusum. Nota bene: summarium tantum est -- ut exceptiones et condiciones "
+"speciales videas, sis sequere ligamina inclusa."
 
 #: data/help.cfg:70
 msgid ""
@@ -998,9 +995,8 @@ msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr ""
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:3
-#, fuzzy
 msgid "Icy Waters"
-msgstr "Aqua Sancta"
+msgstr "Aquae Gelidae"
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:5
 msgid ""
@@ -1168,9 +1164,8 @@ msgid "King of the Hill"
 msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
-#, fuzzy
 msgid "Basic Training"
-msgstr "+Reditio vasca"
+msgstr "Exercitatio Prima"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:71
 msgid ""
@@ -1620,9 +1615,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:71
-#, fuzzy
 msgid "Defeat Delfador"
-msgstr "Merlem vincere"
+msgstr "Delfadorem Vincere"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 #: data/scenarios/tutorial/utils.cfg:51
@@ -2129,9 +2123,8 @@ msgid "Canyon"
 msgstr "Fauces"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "ruin"
-msgstr "exhaurire"
+msgstr "ruina"
 
 #: data/terrain.cfg:448
 msgid "sunken ruin"
@@ -2492,14 +2485,12 @@ msgid "loyal"
 msgstr "fidelis"
 
 #: data/traits.cfg:5
-#, fuzzy
 msgid "Zero upkeep"
-msgstr "impensa"
+msgstr "Nullae impensae"
 
 #: data/traits.cfg:15
-#, fuzzy
 msgid "undead"
-msgstr "Inmortui"
+msgstr "inmortuus"
 
 #: data/traits.cfg:16
 msgid "Immune to poison"
@@ -2809,15 +2800,14 @@ msgstr ""
 "scopi adest. (Non movetur cum unitatibus sociis.)"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "When used offensively, this attack presses the engagement until one of the "
 "combatants is slain."
 msgstr ""
 "Saevitia:\n"
-"In offensione aut defensione, haec oppugnatio certamen presset donec unus ex "
-"pugnatoribus interfectus erit."
+"In offensione haec oppugnatio certamen presset donec unus ex pugnatoribus "
+"interfectus erit."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -3951,7 +3941,6 @@ msgid "Drake Clasher"
 msgstr "Concursor Draculorum"
 
 #: data/units/Drake_Clasher.cfg:18
-#, fuzzy
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
@@ -3961,11 +3950,11 @@ msgid ""
 "The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
 "Habentes vestigia alarum et carentes facultate utendi igne interno magno ut "
-"telo, Concursores Draculorum incommodatos esse nonnulli censere possint, sed "
-"hi falliatur. In compensatione facti sunt artifices magni, qui tela cum "
-"aciebus smaragdeis et arma gravia gerunt. Concursores gladium et hastam "
-"inter telis malunt et eis validissime utitur. Concursores maximis "
-"Gladiatores aut Caeditores Draculorum fieri potebunt."
+"telo, hos Draculos incommodatos esse nonnulli censere possint, sed hi "
+"falliatur. In compensatione facti sunt artifices magni, qui tela cum aciebus "
+"smaragdeis et arma gravia gerunt. Concursores gladium et hastam inter telis "
+"malunt et eis validissime utitur. Concursores maximis Gladiatores aut "
+"Caeditores Draculorum fieri potebunt."
 
 #: data/units/Drake_Fighter.cfg:4
 msgid "Drake Fighter"
@@ -4558,7 +4547,6 @@ msgid "Elvish Hero"
 msgstr "Heroes Dryadalis"
 
 #: data/units/Elvish_Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
 "honed their combat skills to a frightening level. Elvish Heroes prefer "
@@ -7096,9 +7084,8 @@ msgid "+English (GB) Translation"
 msgstr "+Reditio anglica (brittanica)"
 
 #: src/about.cpp:192
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Reditio italica"
+msgstr "+Reditio estonica"
 
 #: src/about.cpp:196
 msgid "+Finnish Translation"
@@ -7149,9 +7136,8 @@ msgid "+Slovak Translation"
 msgstr "+Reditio slovaca"
 
 #: src/about.cpp:284
-#, fuzzy
 msgid "+Slovenian Translation"
-msgstr "+Reditio slovaca"
+msgstr "+Reditio slovena"
 
 #: src/about.cpp:288
 msgid "+Spanish Translation"
@@ -7333,14 +7319,12 @@ msgid "Scenario Start"
 msgstr "Initium Missionis"
 
 #: src/dialogs.cpp:385
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Difficultas"
+msgstr "Difficultas: "
 
 #: src/dialogs.cpp:387
-#, fuzzy
 msgid "Version: "
-msgstr "Versio"
+msgstr "Versio: "
 
 #: src/dialogs.cpp:402
 msgid "No Saved Games"
@@ -7403,20 +7387,17 @@ msgid "level"
 msgstr "e gradu"
 
 #: src/dialogs.cpp:666 src/display.cpp:1031 src/help.cpp:1100
-#, fuzzy
 msgid "HP: "
-msgstr "PS"
+msgstr "PS: "
 
 #: src/dialogs.cpp:670 src/dialogs.cpp:678 src/display.cpp:1035
 #: src/display.cpp:1043 src/playturn.cpp:1961
-#, fuzzy
 msgid "XP: "
-msgstr "PE"
+msgstr "PE: "
 
 #: src/dialogs.cpp:683 src/display.cpp:1047 src/help.cpp:1101
-#, fuzzy
 msgid "Moves: "
-msgstr "Puncta motus"
+msgstr "Puncta motus: "
 
 #: src/display.cpp:994
 msgid "healthy"
@@ -7673,18 +7654,16 @@ msgid "Play a game against AI opponents"
 msgstr "Lusum contra adversarios IA ludere"
 
 #: src/game.cpp:1309 src/multiplayer.cpp:142
-#, fuzzy
 msgid "Login: "
-msgstr "Inire"
+msgstr "Inire: "
 
 #: src/game.cpp:1379
 msgid "Language"
 msgstr "Lingua"
 
 #: src/game.cpp:1380
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Linguam antepositam elige"
+msgstr "Linguam antepositam elige: "
 
 #: src/game.cpp:1419
 msgid "Error loading game configuration files: '"
@@ -7695,7 +7674,6 @@ msgid "' (The game will now exit)"
 msgstr "' (Lusus iam exibit)"
 
 #: src/game.cpp:1487
-#, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Proelium pro Occidiseptentrione"
 
@@ -7710,24 +7688,20 @@ msgid "Defeat:"
 msgstr "Clades"
 
 #: src/help.cpp:1062
-#, fuzzy
 msgid "Advances to: "
-msgstr "Promovetur ad"
+msgstr "Promovetur ad: "
 
 #: src/help.cpp:1083
-#, fuzzy
 msgid "Abilities: "
-msgstr "Facultates"
+msgstr "Facultates: "
 
 #: src/help.cpp:1102
-#, fuzzy
 msgid "Alignment: "
-msgstr "Gratia diei et noctis"
+msgstr "Gratia diei et noctis: "
 
 #: src/help.cpp:1106
-#, fuzzy
 msgid "Required XP: "
-msgstr "PE Necessaria"
+msgstr "PE Necessaria: "
 
 #: src/help.cpp:1117 src/reports.cpp:236
 msgid "attacks"
@@ -7849,39 +7823,32 @@ msgid "Map Generator"
 msgstr "Generator Chartarum"
 
 #: src/mapgen_dialog.cpp:86
-#, fuzzy
 msgid "Players:"
-msgstr "Lusores: "
+msgstr "Lusores:"
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Width:"
-msgstr "Amplitudo"
+msgstr "Amplitudo: "
 
 #: src/mapgen_dialog.cpp:88
-#, fuzzy
 msgid "Height:"
-msgstr "Altitudo"
+msgstr "Altitudo: "
 
 #: src/mapgen_dialog.cpp:89
-#, fuzzy
 msgid "Iterations:"
-msgstr "Iterationes"
+msgstr "Iterationes: "
 
 #: src/mapgen_dialog.cpp:90
-#, fuzzy
 msgid "Bump Size:"
-msgstr "Magnitudo tuberculi"
+msgstr "Magnitudo tuberculi: "
 
 #: src/mapgen_dialog.cpp:91
-#, fuzzy
 msgid "Villages:"
-msgstr "Pagi"
+msgstr "Pagi: "
 
 #: src/mapgen_dialog.cpp:92
-#, fuzzy
 msgid "Landform:"
-msgstr "Forma terrae"
+msgstr "Forma terrae: "
 
 #: src/mapgen_dialog.cpp:198
 msgid "Roads Between Castles"
@@ -7908,9 +7875,8 @@ msgid "Connect to Host"
 msgstr "Ad Hospitem Coniungere"
 
 #: src/multiplayer.cpp:92
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Hospitem elige ad quem coniungitur"
+msgstr "Hospitem elige ad quem coniungitur: "
 
 #: src/multiplayer.cpp:117
 msgid "Connecting to remote host..."
@@ -7921,30 +7887,28 @@ msgid "You must log in to this server"
 msgstr "Opus est inire in moderatrum hoc"
 
 #: src/multiplayer_connect.cpp:298
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Rima Vacua"
+msgstr "(Rima Vacua)"
 
 #: src/multiplayer_connect.cpp:304
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Lusor localis sine nomine"
 
 #: src/multiplayer_connect.cpp:310
-#, fuzzy
 msgid "Computer player"
-msgstr "Lusor Computatri"
+msgstr "Lusor computatri"
 
 #: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Rima vacua)"
 
 #: src/multiplayer_connect.cpp:447
 msgid "No non-random sides in the current era"
-msgstr ""
+msgstr "In saeculo hoc non sunt partes infortuitae"
 
 #: src/multiplayer_connect.cpp:463
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Non possum ducem factioni $faction invenire"
 
 #: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:486
 msgid "Team"
@@ -7967,9 +7931,8 @@ msgid "Gold"
 msgstr "Aurum"
 
 #: src/multiplayer_connect.cpp:490
-#, fuzzy
 msgid "Computer vs Computer"
-msgstr " Computatrum contra Computatrum "
+msgstr "Computatrum contra Computatrum"
 
 #: src/multiplayer_connect.cpp:491
 msgid "I'm Ready"
@@ -7977,7 +7940,7 @@ msgstr "Paratus Sum"
 
 #: src/multiplayer_connect.cpp:507
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "Missio invalida est quia non habet partes."
 
 #: src/multiplayer_connect.cpp:797
 msgid "Game Lobby"
@@ -8000,9 +7963,8 @@ msgid "Empty"
 msgstr "Vacuus"
 
 #: src/multiplayer_connect.cpp:824
-#, fuzzy
 msgid "Era not available: "
-msgstr "Nullum propositum ad manum"
+msgstr "Saeculum non ad manum: "
 
 #: src/multiplayer_connect.cpp:890
 msgid "This is not a multiplayer save"
@@ -8010,7 +7972,7 @@ msgstr "Hoc salvatum non est plurum lusorum"
 
 #: src/multiplayer_connect.cpp:943
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Saeculum $era non inventum"
 
 #: src/multiplayer_connect.cpp:961
 msgid ""
@@ -8021,9 +7983,8 @@ msgstr ""
 "@Ducem ducesve hostium vincere"
 
 #: src/multiplayer_connect.cpp:997
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "Exspecto ut lusores ex reti coniugerint"
+msgstr "Exspecto ut lusores coniugerint..."
 
 #: src/multiplayer_create.cpp:45
 msgid "Name of game:"
@@ -8047,7 +8008,7 @@ msgstr "Spectatores"
 
 #: src/multiplayer_create.cpp:53
 msgid "OK"
-msgstr ""
+msgstr "Bene"
 
 #: src/multiplayer_create.cpp:54
 msgid "Regenerate"
@@ -8100,7 +8061,7 @@ msgstr "Sine partibus"
 
 #: src/multiplayer_create.cpp:122
 msgid "No eras found"
-msgstr ""
+msgstr "Nulla saecula inventa"
 
 #: src/multiplayer_create.cpp:131
 msgid "$login's game"
@@ -8108,7 +8069,7 @@ msgstr "Lusus $login|ensis"
 
 #: src/multiplayer_create.cpp:161
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Saeculum invalidum electum"
 
 #: src/multiplayer_create.cpp:192
 msgid "You must enter a name."
@@ -8119,18 +8080,16 @@ msgid "Turns: "
 msgstr "Tractus: "
 
 #: src/multiplayer_create.cpp:203
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "infiniti"
+msgstr "Tractus Infiniti"
 
 #: src/multiplayer_create.cpp:210
 msgid "Village Gold: "
 msgstr "Aurum Pagi: "
 
 #: src/multiplayer_create.cpp:216
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Immutationes Agri"
+msgstr "Immutatio Experientiae: "
 
 #: src/multiplayer_create.cpp:319
 msgid "Players: "
@@ -8198,7 +8157,7 @@ msgstr "Fulvus"
 
 #: src/multiplayer_ui.cpp:68
 msgid "Invalid colour"
-msgstr ""
+msgstr "Color invalidus"
 
 #: src/multiplayer_wait.cpp:114
 msgid "Leader: "
@@ -8217,19 +8176,16 @@ msgid "Getting game data..."
 msgstr "Data lusus recipiuntur..."
 
 #: src/multiplayer_wait.cpp:181
-#, fuzzy
 msgid "No multiplayer sides available in this game"
-msgstr "Partes non adsunt ad manum in hoc lusu."
+msgstr "Partes pro pluribus lusoribus non adsunt in hoc lusu."
 
 #: src/multiplayer_wait.cpp:203
-#, fuzzy
 msgid "Era not available"
-msgstr "Nullum propositum ad manum"
+msgstr "Saeculum non ad manum"
 
 #: src/multiplayer_wait.cpp:211
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "Sine partibus"
+msgstr "Partes pro pluribus lusoribus non inventae"
 
 #: src/multiplayer_wait.cpp:231
 msgid "Choose your side:"
@@ -8237,11 +8193,11 @@ msgstr "Partem elige:"
 
 #: src/multiplayer_wait.cpp:421
 msgid "("
-msgstr ""
+msgstr "("
 
 #: src/multiplayer_wait.cpp:421
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/multiplayer_wait.cpp:422 src/playturn.cpp:1783
 msgid "unit^Gold"
@@ -8253,12 +8209,11 @@ msgstr "Pliga quam restituere conaris corrupta est"
 
 #: src/playlevel.cpp:757
 msgid "Game Over"
-msgstr ""
+msgstr "Lusus Finitus"
 
 #: src/playlevel.cpp:758
-#, fuzzy
 msgid "The game is over."
-msgstr "Lusus servatus est"
+msgstr "Lusus consummatus est."
 
 #: src/playlevel.cpp:771
 msgid "Defeat"
@@ -8269,33 +8224,28 @@ msgid "You have been defeated!"
 msgstr "Victus es!"
 
 #: src/playlevel.cpp:841
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Aurum relinquum"
+msgstr "Aurum relinquum: "
 
 #: src/playlevel.cpp:844
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Bonum quod mature finisti"
+msgstr "Bonum quod mature finisti: "
 
 #: src/playlevel.cpp:846
 msgid "per turn"
 msgstr "pro tractu"
 
 #: src/playlevel.cpp:847
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Tractus quibus mature finisti"
+msgstr "Tractus quibus mature finisti: "
 
 #: src/playlevel.cpp:849
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bonum"
+msgstr "Bonum: "
 
 #: src/playlevel.cpp:851
-#, fuzzy
 msgid "Gold: "
-msgstr "Aurum"
+msgstr "Aurum: "
 
 #: src/playlevel.cpp:856
 #, no-c-format
@@ -8303,9 +8253,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "LXXX pro centum auri retinentur pro scaenario insequenti"
 
 #: src/playlevel.cpp:857
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Aurum Retentum"
+msgstr "Aurum Retentum: "
 
 #: src/playlevel.cpp:862
 msgid "Victory"
@@ -8350,9 +8299,8 @@ msgid "Attack Enemy"
 msgstr "Hostem Oppugnare"
 
 #: src/playturn.cpp:662
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Telum eligere"
+msgstr "Telum eligere: "
 
 #: src/playturn.cpp:1269
 msgid ""
@@ -8421,9 +8369,8 @@ msgid "Recruit"
 msgstr "Conscribere"
 
 #: src/playturn.cpp:1802 src/playturn.cpp:1986
-#, fuzzy
 msgid "Select unit:"
-msgstr "Unitatem elegere"
+msgstr "Unitatem elegere: "
 
 #: src/playturn.cpp:1836
 msgid "You don't have enough gold to recruit that unit"
@@ -8470,9 +8417,8 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Opus est saltem $cost nummos auri ut unitatem revoces."
 
 #: src/playturn.cpp:1960
-#, fuzzy
 msgid "level: "
-msgstr "e gradu"
+msgstr "e gradu: "
 
 #: src/playturn.cpp:1973
 msgid "Dismiss Unit"
@@ -8483,9 +8429,8 @@ msgid "Recall"
 msgstr "Revocare"
 
 #: src/playturn.cpp:2030
-#, fuzzy
 msgid "Message:"
-msgstr "Nuntius"
+msgstr "Nuntius: "
 
 #: src/playturn.cpp:2030
 msgid "Send to allies only"
@@ -8572,9 +8517,8 @@ msgid "Place Label"
 msgstr "Titulus Loci"
 
 #: src/playturn.cpp:2507
-#, fuzzy
 msgid "Label:"
-msgstr "Titulus"
+msgstr "Titulus: "
 
 #: src/playturn.cpp:2639
 msgid ""
@@ -8610,9 +8554,8 @@ msgstr ""
 "Haec unitas invisibilis est. Non videri aut oppugnari potest a hostibus."
 
 #: src/reports.cpp:108
-#, fuzzy
 msgid "invisible: "
-msgstr "invisibilis"
+msgstr "invisibilis: "
 
 #: src/reports.cpp:113
 msgid ""
@@ -8623,9 +8566,8 @@ msgstr ""
 "oppugnationem in proelio."
 
 #: src/reports.cpp:113
-#, fuzzy
 msgid "slowed: "
-msgstr "lentifactus"
+msgstr "lentifactus: "
 
 #: src/reports.cpp:118
 msgid ""
@@ -8642,37 +8584,32 @@ msgstr ""
 "Unitates non a veneno solo interficiuntur. Venenum PS non minuitur infra I."
 
 #: src/reports.cpp:118
-#, fuzzy
 msgid "poisoned: "
-msgstr "venenatus"
+msgstr "venenatus: "
 
 #: src/reports.cpp:125
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Unitas haec petrificatus est. Non potest movere aut oppugnare."
 
 #: src/reports.cpp:125
-#, fuzzy
 msgid "stone: "
-msgstr "petrificare"
+msgstr "petrificatus: "
 
 #: src/reports.cpp:235
 msgid "damage"
 msgstr "damnum"
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Filii lucis"
+msgstr "Filii lucis: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Filii crepusculi"
+msgstr "Filii crepusculi: "
 
 #: src/reports.cpp:256
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Filii tenebrarum"
+msgstr "Filii tenebrarum: "
 
 #: src/reports.cpp:310
 msgid "Owned village"
@@ -8687,9 +8624,8 @@ msgid "Allied village"
 msgstr "Pagus socius"
 
 #: src/reports.cpp:374
-#, fuzzy
 msgid "Observers:"
-msgstr "Spectatores"
+msgstr "Spectatores: "
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
@@ -8708,8 +8644,9 @@ msgid "Unterminated [element] tag"
 msgstr ""
 
 #: src/serialization/parser.cpp:160 src/serialization/parser.cpp:198
+#, fuzzy
 msgid "Invalid tag name"
-msgstr ""
+msgstr "Saeculum invalidum electum"
 
 #: src/serialization/parser.cpp:163
 msgid "Unterminated [+element] tag"
@@ -8843,147 +8780,6 @@ msgstr "lucis"
 msgid "neutral"
 msgstr "crepusculi"
 
-#, fuzzy
-#~ msgid "Next unit"
-#~ msgstr "Filii crepusculi"
-
-#, fuzzy
-#~ msgid "End Unit Turn"
-#~ msgstr "Tractum finire"
-
-#, fuzzy
-#~ msgid "Undo"
-#~ msgstr "Inmortui"
-
-#, fuzzy
-#~ msgid "Redo"
-#~ msgstr "Ruber"
-
-#, fuzzy
-#~ msgid "Default Zoom"
-#~ msgstr "Solita"
-
-#, fuzzy
-#~ msgid "Unit Description"
-#~ msgstr "Nepa Ingens"
-
-#, fuzzy
-#~ msgid "Repeat Recruit"
-#~ msgstr "Conscribere"
-
-#, fuzzy
-#~ msgid "Speak"
-#~ msgstr "Praecipuum"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Filia Reginae"
-
-#, fuzzy
-#~ msgid "Scenario Objectives"
-#~ msgstr "+Inventores Missionum"
-
-#, fuzzy
-#~ msgid "Quit Game"
-#~ msgstr "Lusum relinquere"
-
-#, fuzzy
-#~ msgid "Set Label"
-#~ msgstr "Titulus Loci"
-
-#, fuzzy
-#~ msgid "Set Terrain"
-#~ msgstr "Ager"
-
-#, fuzzy
-#~ msgid "New Map"
-#~ msgstr "Charta Utentis"
-
-#, fuzzy
-#~ msgid "Load Map"
-#~ msgstr "Lusum Restituere"
-
-#, fuzzy
-#~ msgid "Save Map"
-#~ msgstr "Chartas Compartire"
-
-#, fuzzy
-#~ msgid "Save As"
-#~ msgstr "Servatus"
-
-#, fuzzy
-#~ msgid "Flood Fill"
-#~ msgstr "osculum sanguinis"
-
-#, fuzzy
-#~ msgid "Fill Selection"
-#~ msgstr "Ossa"
-
-#, fuzzy
-#~ msgid "Paste"
-#~ msgstr "Castellum"
-
-#, fuzzy
-#~ msgid "Resize Map"
-#~ msgstr "Charta Utentis"
-
-#, fuzzy
-#~ msgid "Select All"
-#~ msgstr "Unitatem elegere"
-
-#, fuzzy
-#~ msgid "Draw Terrain"
-#~ msgstr "Ager"
-
-#, fuzzy
-#~ msgid "Continue Move"
-#~ msgstr "Ad Moderatrum Coniungere"
-
-#~ msgid "Help"
-#~ msgstr "Auxilium"
-
-#, fuzzy
-#~ msgid "View Chat Log"
-#~ msgstr "Acta Colloquii"
-
-#, fuzzy
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Visne vere hunc lusum delere?"
-
-#, fuzzy
-#~ msgid "player"
-#~ msgstr "Lusores"
-
-#, fuzzy
-#~ msgid "Show Grid"
-#~ msgstr "Remonstare"
-
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Schola"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Tractus: "
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Linguam mutare"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Telum eligere"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Impostationes..."
-
-#~ msgid "Delete File"
-#~ msgstr "Pligam Delere"
-
-#~ msgid "Deletion of the file failed."
-#~ msgstr "Deletio pligae fallitur."
-
 #~ msgid ""
 #~ "The rank of Commander is held by those who lead battle groups into "
 #~ "combat. Possessing leadership skills, they give lower-level units "
@@ -8996,6 +8792,9 @@ msgstr "crepusculi"
 #~ "executionem meliorem in proelio. Duci doctiores gladio sunt sed quoque "
 #~ "arcum trahunt, ut in necessitate utatur. Si perderetur dux, etiam "
 #~ "proelium perderetur."
+
+#~ msgid "Players"
+#~ msgstr "Lusores"
 
 #~ msgid "Load Game..."
 #~ msgstr "Lusum Restituere..."
@@ -9027,6 +8826,15 @@ msgstr "crepusculi"
 
 #~ msgid "1"
 #~ msgstr "I"
+
+#~ msgid "Help"
+#~ msgstr "Auxilium"
+
+#~ msgid "Delete File"
+#~ msgstr "Pligam Delere"
+
+#~ msgid "Deletion of the file failed."
+#~ msgstr "Deletio pligae fallitur."
 
 #~ msgid "&random-enemy.png,Random"
 #~ msgstr "&random-enemy.png,Fortuitus"
