@@ -12,6 +12,7 @@
 */
 
 #include "game_config.hpp"
+#include "network.hpp"
 #include "replay.hpp"
 #include "team.hpp"
 #include "util.hpp"
@@ -138,13 +139,12 @@ team::team_info::team_info(const config& cfg)
 		targets.push_back(target(**tgts.first));
 	}
 
-	use_shroud = (cfg["shroud"] == "yes");
-	use_fog = (cfg["fog"] == "yes");
-	share_maps = (cfg["share_maps"] == "yes");
-	share_vision = (cfg["share_vision"] == "yes");
+	//share_view and share_maps can't both be enabled, so share_view overrides share_maps.
+	share_view = (cfg["share_view"] == "yes");
+	share_maps = !share_view && (cfg["share_maps"] != "no");
 
-	std::cerr << "use_shroud=" << use_shroud << ",use_fog=" << use_fog;
-	std::cerr << ",share_maps=" << share_maps << ",share_vision=" << share_vision << '\n';
+	std::cerr << "team_info::team_info(...): team_name: " << team_name;
+	std::cerr << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
 	
 	music = cfg["music"];
 }
@@ -213,10 +213,8 @@ void team::team_info::write(config& cfg) const
 
 	cfg["recruitment_pattern"] = recruit_pattern_str.str();
 
-	cfg["shroud"] = use_shroud ? "yes" : "no";
-	cfg["fog"] = use_fog ? "yes" : "no";
 	cfg["share_maps"] = share_maps ? "yes" : "no";
-	cfg["share_vision"] = share_vision ? "yes" : "no";
+	cfg["share_view"] = share_view ? "yes" : "no";
 
 	if(music.empty() == false)
 		cfg["music"] = music;
@@ -224,6 +222,13 @@ void team::team_info::write(config& cfg) const
 
 team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true), info_(cfg)
 {
+	fog_.set_enabled(cfg["fog"] == "yes");
+	shroud_.set_enabled(cfg["shroud"] == "yes");
+	shroud_.read(cfg["shroud_data"]);	
+	
+	std::cerr << "team::team(...): team_name: " << info_.team_name;
+	std::cerr << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
+	
 	//gold is the maximum of 'gold' and what is given in the config file
 	if(info_.gold.empty() == false)
 		gold_ = maximum(gold,::atoi(info_.gold.c_str()));
@@ -233,24 +238,13 @@ team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true
 	for(config::child_list::const_iterator v = villages.begin(); v != villages.end(); ++v) {
 		villages_.insert(gamemap::location(**v));
 	}
-
-	const std::string& shroud_data = cfg["shroud_data"];
-	for(std::string::const_iterator sh = shroud_data.begin(); sh != shroud_data.end(); ++sh) {
-		if(*sh == '|')
-			shroud_.resize(shroud_.size()+1);
-
-		if(shroud_.empty() == false) {
-			if(*sh == '1')
-				shroud_.back().push_back(true);
-			else if(*sh == '0')
-				shroud_.back().push_back(false);
-		}
-	}
 }
 
 void team::write(config& cfg) const
 {
 	info_.write(cfg);
+	cfg["shroud"] = uses_shroud() ? "yes" : "no";
+	cfg["fog"] = uses_fog() ? "yes" : "no";
 
 	char buf[50];
 	sprintf(buf,"%d",gold_);
@@ -261,18 +255,7 @@ void team::write(config& cfg) const
 		t->write(cfg.add_child("village"));
 	}
 
-	std::stringstream shroud_str;
-	for(std::vector<std::vector<bool> >::const_iterator sh = shroud_.begin(); sh != shroud_.end(); ++sh) {
-		shroud_str << '|';
-
-		for(std::vector<bool>::const_iterator i = sh->begin(); i != sh->end(); ++i) {
-			shroud_str << (*i ? '1' : '0');
-		}
-
-		shroud_str << '\n';
-	}
-
-	cfg["shroud_data"] = shroud_str.str();
+	cfg["shroud_data"] = shroud_.write();
 }
 
 void team::get_village(const gamemap::location& loc)
@@ -454,122 +437,73 @@ std::vector<team::target>& team::targets()
 
 bool team::shrouded(size_t x, size_t y) const
 {
-	bool res = side_shrouded(x,y);
-	
-	if(!res || teams == NULL || info_.team_name == "" || !info_.share_maps)
-		return res;
+	if(!teams || !share_view())
+		return shroud_.value(x,y);
 
-	for(std::vector<team>::const_iterator t = teams->begin(); t != teams->end(); ++t) {
-		if(t->info_.team_name != info_.team_name)
-			continue;
-		if(t->uses_shroud() && !t->side_shrouded(x,y))
-			return false;
-	}
-	return true;
+	return shroud_.shared_value(ally_shroud(*teams),x,y);
 }
 
 bool team::fogged(size_t x, size_t y) const
 {
-	bool res = side_fogged(x,y);
+	if(shrouded(x,y)) return true;
 	
-	if(!res || !teams || info_.team_name.empty() || !info_.share_maps || !info_.share_vision) {
-		return res;
-	}
+	if(!teams || !share_view())
+		return fog_.value(x,y);
 
-	for(std::vector<team>::const_iterator t = teams->begin(); t != teams->end(); ++t) {
-		if(t->info_.team_name != info_.team_name)
-			continue;
-		if(t->uses_fog() && !t->side_fogged(x,y))
-			return false;
-	}
-	return true;
+	return fog_.shared_value(ally_fog(*teams),x,y);
 }
 
-bool team::side_shrouded(size_t x, size_t y) const
+std::vector<const team::shroud_map*> team::ally_shroud(const std::vector<team>& teams) const
 {
-	if(info_.use_shroud == false)
-		return false;
-
-	if(x >= shroud_.size())
-		return true;
-
-	if(y >= shroud_[x].size())
-		return true;
-
-	return !shroud_[x][y];
-}
-
-bool team::clear_shroud(size_t x, size_t y)
-{
-	if(info_.use_shroud == false)
-		return false;
-
-	if(x >= shroud_.size())
-		shroud_.resize(x+1);
-
-	if(y >= shroud_[x].size())
-		shroud_[x].resize(y+1);
-
-	if(shroud_[x][y] == false) {
-		shroud_[x][y] = true;
-		return true;
-	} else {
-		return false;
+	std::vector<const team::shroud_map*> maps;
+	for(size_t i = 0; i < teams.size(); ++i) {
+		if(!is_enemy(i+1))
+			maps.push_back(&(teams[i].shroud_));
 	}
+	return maps;
 }
 
-bool team::side_fogged(size_t x, size_t y) const
+std::vector<const team::shroud_map*> team::ally_fog(const std::vector<team>& teams) const
 {
-	if(info_.use_fog == false)
-		return side_shrouded(x,y);
-
-	if(x >= fog_.size())
-		return true;
-
-	if(y >= fog_[x].size())
-		return true;
-
-	if(fog_[x][y])
-		return side_shrouded(x,y);
-	else
-		return true;
-}
-
-bool team::clear_fog(size_t x, size_t y)
-{
-	if(info_.use_fog == false)
-		return false;
-
-	if(x >= fog_.size())
-		fog_.resize(x+1);
-
-	if(y >= fog_[x].size())
-		fog_[x].resize(y+1);
-
-	if(fog_[x][y] == false) {
-		fog_[x][y] = true;
-		return true;
-	} else {
-		return false;
+	std::vector<const team::shroud_map*> maps;
+	for(size_t i = 0; i < teams.size(); ++i) {
+		if(!is_enemy(i+1))
+			maps.push_back(&(teams[i].fog_));
 	}
+	return maps;
 }
-
-void team::refog()
-{
-	for(std::vector<std::vector<bool> >::iterator i = fog_.begin();
-	    i != fog_.end(); ++i) {
-		std::fill(i->begin(),i->end(),false);
-	}
-}
-
 
 bool team::knows_about_team(size_t index) const
 {
 	const team& t = (*teams)[index];
+	
 	//We know about our own team
 	if(this == &t) return true;
-	//We know about any allied teams that we're sharing maps with.
-	return !uses_shroud() || !is_enemy(index+1) && t.uses_shroud() && t.share_maps();
+	
+	//If we aren't using shroud or fog, then we know about everyone
+	if(!uses_shroud() && !uses_fog()) return true;
+	
+	//We don't know about enemies
+	if(is_enemy(index+1)) return false;
+	
+	//We know our allies in multiplayer
+	if(network::nconnections() > 0) return true;
+	
+	//We know about allies we're sharing maps with
+	if(share_maps() && t.uses_shroud()) return true;
+	
+	//We know about allies we're sharing view with
+	if(share_view() && (t.uses_fog() || t.uses_shroud())) return true;
+	
+	return false;
+}
+
+bool team::copy_ally_shroud()
+{
+	if(!teams || !share_maps())
+		return false;
+
+	return shroud_.copy_from(ally_shroud(*teams));
 }
 
 const std::string& team::music() const
@@ -624,4 +558,112 @@ void validate_side(int side)
 		std::cerr << "invalid side " << side << " throwing game_error\n";
 		throw gamestatus::game_error("invalid side found in unit definition");
 	}
+}
+
+bool team::shroud_map::clear(size_t x, size_t y)
+{
+	if(enabled_ == false)
+		return false;
+
+	if(x >= data_.size())
+		data_.resize(x+1);
+
+	if(y >= data_[x].size())
+		data_[x].resize(y+1);
+
+	if(data_[x][y] == false) {
+		data_[x][y] = true;
+		return true;
+	} else {
+		return false;
+	}
+}
+
+void team::shroud_map::reset()
+{
+	for(std::vector<std::vector<bool> >::iterator i = data_.begin(); i != data_.end(); ++i) {
+		std::fill(i->begin(),i->end(),false);
+	}
+}
+
+bool team::shroud_map::value(size_t x, size_t y) const
+{
+	if(enabled_ == false)
+		return false;
+
+	if(x >= data_.size())
+		return true;
+
+	if(y >= data_[x].size())
+		return true;
+
+	if(data_[x][y])
+		return false;
+	else
+		return true;
+}
+
+bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, size_t x, size_t y) const
+{
+	if(enabled_ == false)
+		return false;
+	
+	for(std::vector<const shroud_map*>::const_iterator i = maps.begin(); i != maps.end(); ++i) {
+		if((*i)->enabled_ == true && (*i)->value(x,y) == false)
+			return false;
+	}
+	return true;
+}
+
+std::string team::shroud_map::write() const
+{
+	std::stringstream shroud_str;
+	for(std::vector<std::vector<bool> >::const_iterator sh = data_.begin(); sh != data_.end(); ++sh) {
+		shroud_str << '|';
+
+		for(std::vector<bool>::const_iterator i = sh->begin(); i != sh->end(); ++i) {
+			shroud_str << (*i ? '1' : '0');
+		}
+
+		shroud_str << '\n';
+	}
+
+	return shroud_str.str();
+}
+
+void team::shroud_map::read(const std::string& str)
+{
+	for(std::string::const_iterator sh = str.begin(); sh != str.end(); ++sh) {
+		if(*sh == '|')
+			data_.resize(data_.size()+1);
+
+		if(data_.empty() == false) {
+			if(*sh == '1')
+				data_.back().push_back(true);
+			else if(*sh == '0')
+				data_.back().push_back(false);
+		}
+	}
+}
+
+bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
+{
+	if(enabled_ == false)
+		return false;
+	
+	bool cleared = false;
+	for(std::vector<const shroud_map*>::const_iterator i = maps.begin(); i != maps.end(); ++i) {
+		if((*i)->enabled_ == false)
+			continue;
+
+		const std::vector<std::vector<bool> >& v = (*i)->data_;
+		for(size_t x = 0; x != v.size(); ++x) {
+			for(size_t y = 0; y != v[x].size(); ++y) {
+				if(v[x][y]) {
+					cleared |= clear(x,y);
+				}
+			}
+		}
+	}
+	return cleared;
 }

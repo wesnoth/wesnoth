@@ -57,7 +57,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
                               const config& cfg, game_state& state, bool server)
         : disp_(disp), units_data_(units_data), cfg_(cfg), state_(state), server_(server), level_(NULL), map_selection_(-1),
 		  maps_menu_(NULL), turns_slider_(NULL), village_gold_slider_(NULL), xp_modifier_slider_(NULL),
-		  fog_game_(NULL), shroud_game_(NULL), observers_game_(NULL), shared_vision_(NULL),
+		  fog_game_(NULL), shroud_game_(NULL), observers_game_(NULL), vision_combo_(NULL),
           cancel_game_(NULL), launch_game_(NULL), regenerate_map_(NULL), generator_settings_(NULL),
 		  era_combo_(NULL), name_entry_(NULL), generator_(NULL)
 {
@@ -112,9 +112,6 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	shroud_game_.assign(new gui::button(disp_,string_table["shroud"],gui::button::TYPE_CHECK));
 	shroud_game_->set_check(false);
 
-	shared_vision_.assign(new gui::button(disp_,string_table["shared_vision"],gui::button::TYPE_CHECK));
-	shared_vision_->set_check(true);
-	
 	observers_game_.assign(new gui::button(disp_,string_table["observers"],gui::button::TYPE_CHECK));
 	observers_game_->set_check(true);
 
@@ -124,6 +121,13 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	regenerate_map_.assign(new gui::button(disp_,string_table["regenerate_map"]));
 
 	generator_settings_.assign(new gui::button(disp_,string_table["generator_settings"]));
+
+	//The possible vision settings
+	std::vector<std::string> vision_types;
+	vision_types.push_back(string_table["share_view"]);
+	vision_types.push_back(string_table["share_maps"]);
+	vision_types.push_back(string_table["share_none"]);
+	vision_combo_.assign(new gui::combo(disp_,vision_types));
 
 	//the possible eras to play
 	const config::child_list& era_list = cfg.get_children("era");
@@ -249,10 +253,10 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 
 	rect.y += observers_game_->location().h + border_size;
 
-	//Observers
-	shared_vision_->set_location(rect.x,rect.y);
+	//Ally shared view settings
+	vision_combo_->set_location(rect.x,rect.y);
 
-	rect.y += shared_vision_->location().h + border_size;
+	rect.y += vision_combo_->height() + border_size;
 	
 	std::cerr << "h\n";
 
@@ -304,7 +308,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 	village_gold_slider_->process();
 	xp_modifier_slider_->process();
 	era_combo_->process(mousex,mousey,left_button);
-
+	vision_combo_->process(mousex,mousey,left_button);
 	maps_menu_->process(mousex,mousey,left_button,
 	                    key[SDLK_UP],key[SDLK_DOWN],
 	                    key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);
@@ -326,8 +330,6 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 	shroud_game_->draw();
 	observers_game_->pressed();
 	observers_game_->draw();
-	shared_vision_->pressed();
-	shared_vision_->draw();
 
 	events::raise_process_event();
 	events::raise_draw_event();
@@ -486,11 +488,12 @@ void multiplayer_game_setup_dialog::start_game()
 
 	const config::child_list& era_list = cfg_.get_children("era");
 
+	const int share = vision_combo_->selected();
 	const int res = connector.load_map((*era_list[era_combo_->selected()])["id"],
 	                   maps_menu_->selection(), turns, village_gold_slider_->value(),
 					   xp_modifier_slider_->value(), fog_game_->checked(),
 					   shroud_game_->checked(), observers_game_->checked(),
-					   shared_vision_->checked());
+					   share == 0, share == 1);
 	if(res == -1) {
 		return;
 	}
@@ -507,7 +510,7 @@ void multiplayer_game_setup_dialog::start_game()
 	fog_game_.assign(NULL);
 	shroud_game_.assign(NULL);
 	observers_game_.assign(NULL);
-	shared_vision_.assign(NULL);
+	vision_combo_.assign(NULL);
 	cancel_game_.assign(NULL);
 	launch_game_.assign(NULL);
 	regenerate_map_.assign(NULL);

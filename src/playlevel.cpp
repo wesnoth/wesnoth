@@ -566,6 +566,12 @@ redo_turn:
 						uit->second.end_turn();
 				}
 
+				//This implements "delayed map sharing." It's meant as an alternative to shared vision.
+				if(team_it->copy_ally_shroud()) {
+					gui.recalculate_minimap();
+					gui.invalidate_all();
+				}
+				
 				game_events::pump();
 
 				check_victory(units,teams);

@@ -61,10 +61,10 @@ private:
 	util::scoped_ptr<gui::menu> maps_menu_;
 	util::scoped_ptr<gui::slider> turns_slider_, village_gold_slider_, xp_modifier_slider_;
 	util::scoped_ptr<gui::button> fog_game_, shroud_game_, observers_game_,
-	                              cancel_game_, launch_game_, shared_vision_,
+	                              cancel_game_, launch_game_,
 	                              regenerate_map_, generator_settings_;
 
-	util::scoped_ptr<gui::combo> era_combo_;
+	util::scoped_ptr<gui::combo> era_combo_, vision_combo_;
 	util::scoped_ptr<gui::textbox> name_entry_;
 
 	util::scoped_ptr<map_generator> generator_;

@@ -26,6 +26,27 @@
 //e.g. there is only one leader unit per team.
 class team
 {
+	class shroud_map {
+	public:
+		shroud_map() : enabled_(false) {}
+		
+		bool clear(size_t x, size_t y);
+		void reset();
+		
+		bool value(size_t x, size_t y) const;
+		bool shared_value(const std::vector<const shroud_map*>& maps, size_t x, size_t y) const;
+		
+		bool copy_from(const std::vector<const shroud_map*>& maps);
+		
+		std::string write() const;
+		void read(const std::string& shroud_data);
+		
+		bool enabled() const { return enabled_; }
+		void set_enabled(bool enabled) { enabled_ = enabled; }	
+	private:
+		bool enabled_;
+		std::vector<std::vector<bool> > data_;
+	};
 public:
 
 	struct target {
@@ -61,7 +82,7 @@ public:
 
 		std::vector<target> targets;
 
-		bool use_shroud, use_fog, share_maps, share_vision;
+		bool share_maps, share_view;
 
 		std::string music;
 	};
@@ -118,14 +139,16 @@ public:
 	bool shrouded(size_t x, size_t y) const;
 	bool fogged(size_t x, size_t y) const;
 	
-	bool uses_shroud() const { return info_.use_shroud; }
-	bool uses_fog() const { return info_.use_fog; }
-	bool clear_shroud(size_t x, size_t y);
-	bool clear_fog(size_t x, size_t y);
-	void refog();
+	bool uses_shroud() const { return shroud_.enabled(); }
+	bool uses_fog() const { return fog_.enabled(); }
+	bool fog_or_shroud() const { return uses_shroud() || uses_fog(); }
+	bool clear_shroud(size_t x, size_t y) { shroud_.clear(x,y); }
+	bool clear_fog(size_t x, size_t y)  { fog_.clear(x,y); }
+	void refog() { fog_.reset(); }
 	
 	bool knows_about_team(size_t index) const;
-
+	bool copy_ally_shroud();
+	
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	
@@ -136,17 +159,14 @@ public:
 private:
 	//Make these public if you need them, but look at knows_about_team(...) first.
 	bool share_maps() const { return info_.share_maps; }
-	bool share_vision() const { return info_.share_vision; }
+	bool share_view() const { return info_.share_view; }
 	
-	//Return true if the hex is shrouded/fogged for this side only
-	//Ignores allied teams.
-	bool side_shrouded(size_t x, size_t y) const;
-	bool side_fogged(size_t x, size_t y) const;
+	std::vector<const shroud_map*> ally_shroud(const std::vector<team>& teams) const;
+	std::vector<const shroud_map*> ally_fog(const std::vector<team>& teams) const;
 	
 	int gold_;
 	std::set<gamemap::location> villages_;
 
-	typedef std::vector<std::vector<bool> > shroud_map;
 	shroud_map shroud_, fog_;
 
 	bool auto_shroud_updates_;

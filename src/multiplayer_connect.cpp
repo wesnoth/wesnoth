@@ -68,7 +68,7 @@ mp_connect::~mp_connect()
 }
 
 int mp_connect::load_map(const std::string& era, int map, int num_turns, int village_gold, int xpmodifier,
-                         bool fog_game, bool shroud_game, bool allow_observers, bool share_vision)
+                         bool fog_game, bool shroud_game, bool allow_observers, bool share_view, bool share_maps)
 {
 	log_scope("load_map");
 	// Setup the game
@@ -218,10 +218,10 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 			side["shroud"] = shroud_game ? "yes" : "no";
 		
 		if(side["share_maps"].empty())
-			side["share_maps"] = "yes";
+			side["share_maps"] = share_maps ? "yes" : "no";
 		
-		if(side["share_vision"].empty())
-			side["share_vision"] = share_vision ? "yes" : "no";
+		if(side["share_view"].empty())
+			side["share_view"] = share_view ? "yes" : "no";
 
 		if(side["name"].empty())
 			side["name"] = (*possible_sides.front())["name"];
