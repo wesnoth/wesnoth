@@ -54,7 +54,7 @@ team::team_info::team_info(const config& cfg)
 	for(config::child_list::const_iterator aiparam = ai_parameters.begin(); aiparam != ai_parameters.end(); ++aiparam) {
 		ai_params.push_back(**aiparam);
 
-		if((**aiparam)["turn"].empty() && (**aiparam)["time_of_day"].empty()) {
+		if((**aiparam)["turns"].empty() && (**aiparam)["time_of_day"].empty()) {
 			global_ai_params.append(**aiparam);
 		}
 	}
