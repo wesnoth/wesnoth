@@ -72,7 +72,7 @@ void set_random_results(const config& cfg)
 replay::replay() : pos_(0), current_(NULL), skip_(0)
 {}
 
-replay::replay(config& cfg) : cfg_(cfg), pos_(0), current_(NULL), skip_(0)
+replay::replay(const config& cfg) : cfg_(cfg), pos_(0), current_(NULL), skip_(0)
 {}
 
 config& replay::get_config()
@@ -225,6 +225,8 @@ void replay::add_label(const std::string& text, const gamemap::location& loc)
 {
 	config* const cmd = add_command();
 
+	(*cmd)["undo"] = "no";
+
 	config val;
 
 	loc.write(val);
@@ -241,10 +243,14 @@ void replay::end_turn()
 
 void replay::speak(const config& cfg)
 {
-	add_command()->add_child("speak") = cfg;
+	config* const cmd = add_command();
+	if(cmd != NULL) {
+		cmd->add_child("speak",cfg);
+		(*cmd)["undo"] = "no";
+	}
 }
 
-config replay::get_data_range(int cmd_start, int cmd_end)
+config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 {
 	log_scope("get_data_range\n");
 
@@ -252,7 +258,14 @@ config replay::get_data_range(int cmd_start, int cmd_end)
 
 	const config::child_list& cmd = commands();
 	while(cmd_start < cmd_end) {
-		res.add_child("command",*cmd[cmd_start]);
+		if((data_type == ALL_DATA || (*cmd[cmd_start])["undo"] == "no") && (*cmd[cmd_start])["sent"] != "yes") {
+			res.add_child("command",*cmd[cmd_start]);
+
+			if(data_type == NON_UNDO_DATA) {
+				(*cmd[cmd_start])["sent"] = "yes";
+			}
+		}
+
 		++cmd_start;
 	}
 
@@ -261,7 +274,11 @@ config replay::get_data_range(int cmd_start, int cmd_end)
 
 void replay::undo()
 {
-	const config::child_itors& cmd = cfg_.child_range("command");
+	config::child_itors cmd = cfg_.child_range("command");
+	while(cmd.first != cmd.second && (**(cmd.second-1))["undo"] == "no") {
+		--cmd.second;
+	}
+
 	if(cmd.first != cmd.second) {
 		delete *(cmd.second-1);
 		cfg_.remove_child("command",cmd.second - cmd.first - 1);

@@ -130,6 +130,10 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	while(!turn_data.turn_over()) {
 
 		try {
+			config cfg;
+			const network::connection res = network::receive_data(cfg);
+			turn_data.process_network_data(cfg,res);
+
 			turn_data.turn_slice();
 		} catch(end_level_exception& e) {
 			turn_data.send_data(start_command);
@@ -194,9 +198,28 @@ int turn_info::send_data(int first_command)
 	if(network::nconnections() > 0 && (undo_stack_.empty() || end_turn_) &&
 	   first_command < recorder.ncommands()) {
 		config cfg;
-		cfg.add_child("turn",recorder.get_data_range(first_command,recorder.ncommands()));
-		network::send_data(cfg);
+		const config& obj = cfg.add_child("turn",recorder.get_data_range(first_command,recorder.ncommands()));
+
+		if(obj.empty() == false) {
+			network::send_data(cfg);
+		}
+
 		return recorder.ncommands();
+	} else if(network::nconnections() > 0 && first_command < recorder.ncommands()) {
+
+		std::cerr << "getting non-undo commands\n";
+
+		//we don't want to send any moves that haven't been committed, however if there
+		//are any non-undoable moves (speaking, labelling), we want to send it now.
+		config cfg;
+		const config& obj = cfg.add_child("turn",recorder.get_data_range(first_command,recorder.ncommands(),replay::NON_UNDO_DATA));
+
+		if(obj.empty() == false) {
+			std::cerr << "sending non-undo commands\n";
+			network::send_data(cfg);
+		}
+
+		return first_command;
 	} else {
 		return first_command;
 	}
@@ -269,8 +292,9 @@ void turn_info::handle_event(const SDL_Event& event)
 
 void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 {
-	if(commands_disabled)
+	if(commands_disabled) {
 		return;
+	}
 
 	if(minimap_scrolling_) {
 		//if the game is run in a window, we could miss a LMB up event
@@ -820,6 +844,8 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_UNIT_LIST:
 	case hotkey::HOTKEY_STATISTICS:
 	case hotkey::HOTKEY_QUIT_GAME:
+	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:
+	case hotkey::HOTKEY_BEST_ENEMY_MOVES:
 		return true;
 
 	case hotkey::HOTKEY_SPEAK:
@@ -1659,10 +1685,6 @@ void turn_info::speak()
 
 		recorder.speak(cfg);
 		dialogs::unit_speak(cfg,gui_,units_);
-
-		//speaking is an unretractable operation
-		undo_stack_.clear();
-		redo_stack_.clear();
 	}
 }
 
@@ -1854,6 +1876,33 @@ void turn_info::label_terrain()
 	}
 }
 
+// Highlights squares that an enemy could move to on their turn
+void turn_info::show_enemy_moves(bool ignore_units)
+{
+	team& current_team = teams_[team_num_-1];
+	all_paths_ = paths();
+	
+	// Compute enemy movement positions
+	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+		if(current_team.is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y)) {
+			const bool is_skirmisher = u->second.type().is_skirmisher();
+			const bool teleports = u->second.type().teleports();
+			unit_map units;
+			units.insert(*u);
+			const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,
+									  u->first,teams_,is_skirmisher,teleports,1);
+			
+			for (paths::routes_map::const_iterator route = path.routes.begin(); route != path.routes.end(); ++route) {
+				// map<...>::operator[](const key_type& key) inserts key into
+				// the map with a default instance of value_type
+				all_paths_.routes[route->first];
+			}
+		}
+	}
+	
+	gui_.set_paths(&all_paths_);
+}
+
 unit_map::iterator turn_info::current_unit()
 {
 	unit_map::iterator i = units_.end();
@@ -1894,4 +1943,94 @@ unit_map::const_iterator turn_info::current_unit() const
 	}
 
 	return i;
+}
+
+turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, network::connection from)
+{
+	if(from == 0) {
+		return PROCESS_CONTINUE;
+	}
+
+	if(cfg.child("observer") != NULL) {
+		const config::child_list& observers = cfg.get_children("observer");
+		for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
+			gui_.add_observer((**ob)["name"]);
+		}
+
+		return PROCESS_CONTINUE;
+	}
+
+	if(cfg.child("observer_quit") != NULL) {
+		const config::child_list& observers = cfg.get_children("observer_quit");
+		for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
+			gui_.remove_observer((**ob)["name"]);
+		}
+
+		return PROCESS_CONTINUE;
+	}
+
+	if(cfg.child("leave_game") != NULL) {
+		throw network::error("");
+	}
+
+	//if a side has dropped out of the game.
+	if(cfg["side_drop"] != "") {
+		const size_t side = atoi(cfg["side_drop"].c_str())-1;
+		if(side >= teams_.size()) {
+			std::cerr << "unknown side " << side << " is dropping game\n";
+			throw network::error("");
+		}
+
+		int action = 0;
+
+		//see if the side still has a leader alive. If they have
+		//no leader, we assume they just want to be replaced by
+		//the AI.
+		const unit_map::const_iterator leader = find_leader(units_,side+1);
+		if(leader != units_.end()) {
+			std::vector<std::string> options;
+			options.push_back(string_table["replace_ai_message"]);
+			options.push_back(string_table["replace_local_message"]);
+			options.push_back(string_table["abort_game_message"]);
+
+			const std::string msg = leader->second.description() + " " + string_table["player_leave_message"];
+			action = gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY,&options);
+		}
+
+		//make the player an AI, and redo this turn, in case
+		//it was the current player's team who has just changed into
+		//an AI.
+		if(action == 0) {
+			teams_[side].make_ai();
+			return PROCESS_RESTART_TURN;
+		} else if(action == 1) {
+			teams_[side].make_human();
+			return PROCESS_RESTART_TURN;
+		} else {
+			throw network::error("");
+		}
+	}
+
+	bool turn_end = false;
+
+	if(cfg.child("turn") != NULL) {
+		//forward the data to other peers
+		network::send_data_all_except(cfg,from);
+
+		replay replay_obj(*cfg.child("turn"));
+		replay_obj.start_replay();
+
+		try {
+			turn_end = do_replay(gui_,map_,gameinfo_,units_,teams_,
+			   team_num_,status_,state_of_game_,&replay_obj);
+		} catch(replay::error& e) {
+			save_game(string_table["network_sync_error"]);
+
+			throw e;
+		}
+
+		recorder.add_config(*cfg.child("turn"));
+	}
+
+	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;
 }

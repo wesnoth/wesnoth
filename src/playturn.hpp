@@ -74,6 +74,11 @@ public:
 
 	void save_game(const std::string& message);
 
+	enum PROCESS_DATA_RESULT { PROCESS_CONTINUE, PROCESS_RESTART_TURN, PROCESS_END_TURN };
+
+	//function which will process incoming network data, and act on it.
+	PROCESS_DATA_RESULT process_network_data(const config& cfg, network::connection from);
+
 private:
 
 	void write_game_snapshot(config& cfg) const;
@@ -101,6 +106,7 @@ private:
 	void unit_list();
 	void show_statistics();
 	void label_terrain();
+	void show_enemy_moves(bool ignore_units);
 
 	void do_recruit(const std::string& name);
 
@@ -134,7 +140,7 @@ private:
 	bool left_button_, right_button_, middle_button_;
 	bool minimap_scrolling_;
 	gamemap::location next_unit_;
-	paths current_paths_;
+	paths current_paths_, all_paths_;
 	paths::route current_route_;
 	bool enemy_paths_;
 	gamemap::location last_hex_;

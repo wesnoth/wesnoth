@@ -26,7 +26,7 @@ class replay
 {
 public:
 	replay();
-	replay(config& cfg);
+	explicit replay(const config& cfg);
 
 	config& get_config();
 
@@ -50,7 +50,15 @@ public:
 
 	void speak(const config& cfg);
 
-	config get_data_range(int cmd_start, int cmd_end);
+	//get data range will get a range of moves from the replay system.
+	//if data_type is 'ALL_DATA' then it will return all data in this range
+	//except for undoable data that has already been sent. If data_type is
+	//NON_UNDO_DATA, then it will only retrieve undoable data, and will mark
+	//it as already sent.
+	//undoable data includes moves such as placing a label or speaking, which is
+	//ignored by the undo system.
+	enum DATA_TYPE { ALL_DATA, NON_UNDO_DATA };
+	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA);
 	config get_last_turn(int num_turns=1);
 
 	void undo();

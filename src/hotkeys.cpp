@@ -65,6 +65,8 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("statistics",HOTKEY_STATISTICS));
 		m.insert(val("quit",HOTKEY_QUIT_GAME));
 		m.insert(val("labelterrain",HOTKEY_LABEL_TERRAIN));
+		m.insert(val("showenemymoves",HOTKEY_SHOW_ENEMY_MOVES));
+		m.insert(val("bestenemymoves",HOTKEY_BEST_ENEMY_MOVES));
 	}
 
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
@@ -357,6 +359,14 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_LABEL_TERRAIN:
 			if(executor)
 				executor->label_terrain();
+			break;
+		case HOTKEY_SHOW_ENEMY_MOVES:
+			if(executor)
+				executor->show_enemy_moves(false);
+			break;
+		case HOTKEY_BEST_ENEMY_MOVES:
+			if(executor)
+				executor->show_enemy_moves(true);
 			break;
 		case HOTKEY_QUIT_GAME: {
 			const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);

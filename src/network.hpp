@@ -67,8 +67,7 @@ void queue_disconnect(connection connection_num);
 //received in cfg. Times out after timeout milliseconds. Returns
 //the connection that data was received from, or 0 if timeout
 //occurred. Throws error if an error occurred.
-connection receive_data(config& cfg, connection connection_num=0,
-						int timeout=0);
+connection receive_data(config& cfg, connection connection_num=0, int timeout=0);
 
 //sets the default maximum number of bytes to send to a client at a time
 void set_default_send_size(size_t send_size);
