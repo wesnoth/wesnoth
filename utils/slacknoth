@@ -27,7 +27,7 @@ strip usr/bin/*
 echo "Adding package info..."
 mkdir install
 echo wesnoth: Battle for Wesnoth $1 > install/slack-desc
-echo wesnoth: Copyright \(C\) 2003 by David White \<davidnwhite@optusnet.com.au\> >> install/slack-desc
+echo wesnoth: Copyright \(C\) `date +%Y` by David White \<davidnwhite@optusnet.com.au\> >> install/slack-desc
 echo wesnoth: http://www.wesnoth.org/ >> install/slack-desc
 echo wesnoth: Packager: Mark Michelsen \<skovbaer@femgramskovbaerte.dk\> >> install/slack-desc
 echo wesnoth: >> install/slack-desc
