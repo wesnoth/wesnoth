@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-12 17:19+0200\n"
-"PO-Revision-Date: 2004-09-12 22:53+0200\n"
+"POT-Creation-Date: 2004-09-16 14:31+0200\n"
+"PO-Revision-Date: 2004-09-16 22:55+0200\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -884,7 +884,7 @@ msgstr "Vžum"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
-msgstr ""
+msgstr "Uživatelská mapa"
 
 #: data/multiplayer.cfg:20
 msgid "Default"
@@ -954,6 +954,12 @@ msgstr "&white-mage.png,Aliance světla"
 #: data/multiplayer.cfg:265
 msgid "&undead-necromancer.png,Alliance of Darkness"
 msgstr "&undead-necromancer.png,Aliance temnot"
+
+#: data/scenario-test.cfg:38
+msgid ""
+"You can come if you wish, but the leader is only interesting in speaking to "
+"Baldras."
+msgstr ""
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1697,6 +1703,9 @@ msgid ""
 "recruited units, except that instead of a new unit appearing, a unit from a "
 "previous scenario will appear."
 msgstr ""
+"Předně musíš za každou přivolanou jednotku zaplatit 20 zlatých, nezávisle na "
+"jejím typu. Jinak se přivolané jedotky neliší od naverbovaných, kromě toho, "
+"že se namísto nové jednotky objeví jednotka z předchozího scénářů."
 
 #: data/scenarios/tutorial/tutorial2.cfg:90
 msgid "What happens when I recall a unit?"
@@ -1704,7 +1713,7 @@ msgstr "Co se stane, když přivolám jednotku?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:91
 msgid "How should I decide which units to recall?"
-msgstr ""
+msgstr "Čím bych se měl řídit při přivolávání jednotek?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:91
 msgid ""
@@ -1713,6 +1722,10 @@ msgid ""
 "and are thus likely to advance. You should recall units that will be useful "
 "for the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
+"Měl bys v zásadě privolávat jednotky, které již povýšily na vyšší úroveň. "
+"Také však můžeš chtít přivolat jednotky, které mají hodně zkušeností, a "
+"proto s velkou pravděpodobností povýší. Měl bys přivolávat jednotky, které "
+"jsou užitečné pro daný scnénář: například v lesním scénáři přivolej elfy."
 
 #: data/scenarios/tutorial/tutorial2.cfg:100
 msgid ""
@@ -1720,6 +1733,9 @@ msgid ""
 "statistics shown before you recruited them. This is because they have been "
 "assigned traits."
 msgstr ""
+"Možná sis všiml, že některé jednotky mají poněkud odlišné statistiky, než "
+"jaké se ti zobrazily, než jsi je naverboval. To je proto, že při naverbování "
+"získaly vlastnosti. "
 
 #: data/scenarios/tutorial/tutorial2.cfg:104
 msgid ""
@@ -1729,6 +1745,10 @@ msgid ""
 "the Status Table, and the function of a specific trait can be found by "
 "putting your cursor over that trait."
 msgstr ""
+"Vlastnosti slouží k dosažení různorodosti tím, že od sebe odliší jednotky "
+"stejného typu. Děje se to náhodným přiřazením vlastostí jednotce, když je "
+"naverbována. Vlastnosti jednotky se zobrazují v tabulce stavu jednotky, a "
+"jejich funkci můžeš zjistit, když podržíš kursor nad danou vlastností."
 
 #: data/scenarios/tutorial/tutorial2.cfg:104
 msgid "What do traits do?"
@@ -1742,20 +1762,27 @@ msgid ""
 "'negative' traits. Most units have an equal chance to get any two different "
 "traits when they are recruited."
 msgstr ""
+"Existuje pět odlišných vlastností, jejichž vliv sahá od zvětšení počtu "
+"životů po snížení množství zkušeností potřebných k povýšení. Všechny "
+"vlastnosti jsou nicméně určeny k vylepšení jednotky, neexistují žádné "
+"„negativní“ vlastnosti. Většina jednotek má stejnou šanci získat při "
+"naverbování kteroukoli dvojici vlastnosti."
 
 #: data/scenarios/tutorial/tutorial2.cfg:105
 msgid "What kind of traits can my units get?"
-msgstr ""
+msgstr "Jaké vlastnosti mohou mé jednotky získat?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:115
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
+"Když verbuješ a přivoláváš jednotky, ztrácíš zlato. Pokud by ses dostal na "
+"nulu či méně, nemohl bys verbovat ani přivolávat."
 
 #: data/scenarios/tutorial/tutorial2.cfg:119
 msgid "How much gold do my units cost?"
-msgstr ""
+msgstr "Kolik zlatých mě moje jednotky stojí?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:119
 msgid ""
@@ -1768,10 +1795,17 @@ msgid ""
 "displayed on the status bar at the top after a picture of gold and then a "
 "red arrow."
 msgstr ""
+"Za každou jednotku musíš zaplatit při jejím naverbování či přivolání. Cena "
+"naverbování se zobrazuje pod jménem jednotky. Cena přivolání je vždy 20 "
+"zlatých. Jednotka tě také stojí zlato každé kolo, které ji ovládáš. Tato "
+"cena, které se říká vydržování, je rovna úrovni jednotky. Avšak jednotky, "
+"které jsi nenaverboval ani nepřivolal, jako třeba tvůj vůdce, tě nic "
+"nestojí. Celkové výdaje na vydržování jednotek se zobrazují nahoře ve "
+"stavovém řádku po obrázku zlaťáku a červené šipce."
 
 #: data/scenarios/tutorial/tutorial2.cfg:120
 msgid "How do I get gold?"
-msgstr ""
+msgstr "Jak získám zlato?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:120
 msgid ""
@@ -1782,12 +1816,19 @@ msgid ""
 "usually need more gold than that, you should flag villages, which give you 1 "
 "gold per turn."
 msgstr ""
+"Kažou hru začínáš s určitou částí zlata z předchozích úrovní. Je-li to méně "
+"než 100 zlatých, začínáš namísto toho se 100 zlatými. Množství tvého zlata "
+"se zobrazuje nahoře ve stavovém řádku vedle obrázku zlaťáku. Když začínáš "
+"hrát scénář, dostáváš dva zlaté za kolo. Protože obvykle potřebuješ víc než "
+"jen je, měl bys obsazovat vesnice, které ti přinesou jeden zlatý za kolo."
 
 #: data/scenarios/tutorial/tutorial2.cfg:129
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
+"Nad Wesnothem zapadá slunce. Denní doba ovlivňuje, jak velké poškození různé "
+"jednotky působí, podle toho, které denní době jsou přizpůsobeny."
 
 #: data/scenarios/tutorial/tutorial2.cfg:133
 msgid ""
@@ -1797,14 +1838,19 @@ msgid ""
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
+"Existují denní, noční a neutrální jednotky. Také existují tři denní doby: "
+"den, šero a noc. Ve dne působí denní jednotky, jako např. lidé, o 25% větší "
+"poranění; zatímco noční jednotky, jako např. nemrtví, o 25% menší. V noci je "
+"to právě naopak. Za šera způsobují všechny jednotky normální poranění. "
+"Neutrální jednotky, jako např. elfy, střídání dne a noci nijak neovlivňuje."
 
 #: data/scenarios/tutorial/tutorial2.cfg:133
 msgid "What are the different alignments and times of day?"
-msgstr ""
+msgstr "Jaké jsou denní doby a jak jim mohou být jednotky přizpůsobeny?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:134
 msgid "How do I know what time of day it is?"
-msgstr ""
+msgstr "Jak zjistím, jaká denní doba právě je?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:134
 msgid ""
@@ -1815,10 +1861,16 @@ msgid ""
 "a different sequence, such as underground where it is perpetually night. You "
 "can find out the current time of day by looking at the Status Table."
 msgstr ""
+"Denní doby obvykle následují v pořadí: svítání (šero), dopoledne (den), "
+"odpoledne (den), soumrak (šero), první hlídka (noc), druhá hlídka (noc), a "
+"pak se to opakuje. To je representováno sluncem a měsícem, které vycházejí "
+"na východě a zapadají na západě. Některé scénáře však mají tuto posloupnost "
+"odlišnou -- jako podzemí, kde je stále tma. Denní dobu zjistíš pohledem na "
+"tabulku stavu napravo."
 
 #: data/scenarios/tutorial/tutorial2.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
-msgstr ""
+msgstr "Na každém políčku je určitý terén, který mu dává odlišné vlastnosti."
 
 #: data/scenarios/tutorial/tutorial2.cfg:147
 msgid ""
@@ -1832,14 +1884,21 @@ msgid ""
 "For example; elves have 70% defense on grass, and are therefore hit 30% of "
 "the time."
 msgstr ""
+"Dva terény mají vlastnosti, které jsme již probrali: vesnice a hrady. "
+"Vlastnosti většiny terénů jsou však jemnější a souvisejí s výhodami a "
+"nevýhodami různých jednotek, když se do nich přesunou. První vlastnost je "
+"počet pohybů, které jednotka potřebuje, aby prošla skrz políčko. Druhá "
+"vlastnost je možnost obrany, kterou terén jednotce skýtá. Ta je vyjádřena "
+"šancí, že bude jednotka v tomto terénu zasažena. Kupříkladu elfové mají v "
+"lese 70% obranu, takže šance je zasáhnout je jen 30%."
 
 #: data/scenarios/tutorial/tutorial2.cfg:147
 msgid "What are the different properties that terrains have?"
-msgstr ""
+msgstr "Co jsou to ty vlastnosti terénů?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:148
 msgid "How do I find out the properties of a specific terrain?"
-msgstr ""
+msgstr "Jak zjistím vlastnosti určitého terénu?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:148
 msgid ""
@@ -1851,12 +1910,20 @@ msgid ""
 "of the hex, then the selected unit's defense, then the number of move points "
 "it will cost the selected unit to move through that hex."
 msgstr ""
+"Vlastnosti terénu s ohledem na konkrétní jednotku zjistíš tak, že na ni "
+"klikneš pravým tlačítkem myši, vybereš „Popis jednotky“, a tam Terénní "
+"činitele. Jaký je terén na daném políčku, zjistíš tak, že nad něj přesuneš "
+"kursor myši a podíváš se do pravého horního rohu obrazovky. Tam se ukáže (v "
+"tomto pořadí): jméno terénu, souřadnice políčka, obrana vybrané jednotky a "
+"počet pohybů, které by ji stál přesun skrz toto políčko."
 
 #: data/scenarios/tutorial/tutorial2.cfg:157
 msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
 msgstr ""
+"Každý útok má svůj typ poškození, který určuje, jaké poranění různé jednotky "
+"tímto útokem utrpí."
 
 #: data/scenarios/tutorial/tutorial2.cfg:161
 msgid ""
@@ -1868,10 +1935,16 @@ msgid ""
 "bonuses/penalties like time of day, so two -50% penalties would add up to -"
 "100%."
 msgstr ""
+"Každá jednotka má určité odolnosti proti různým typům útoku. Tato odolnost "
+"je poměrná část, která se odečítá z poškození způsobené protivníkovou zbraní "
+"daného typu. Když je kupříkladu elfí průzkumník napaden elfím lučistníkem, "
+"způsobí lučistník o 20% větší poranění než obvykle, protože elfí průzkumníci "
+"mají odolnost -20% proti bodání. Tato dodatečná hodnota se sčítá s ostatními "
+"(jako za denní dobu), takže dvě -50% sankce dají dohromady -100%."
 
 #: data/scenarios/tutorial/tutorial2.cfg:161
 msgid "How does resistance affect attack damage?"
-msgstr ""
+msgstr "Jak odolnost ovlivňuje poranění způsobené útokem?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:162
 msgid ""
@@ -1882,15 +1955,23 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then select Resistance."
 msgstr ""
+"Existuje šest typů útoku (poranění): čepelí, bodáním, úderem, ohněm, chladem "
+"a svatý útok. Těžce obrněné jednotky mívají velkou odolnost proti fyzickým "
+"útokům: čepelí, bodáním a proti úderům; ale nízkou odolnost proti magickým "
+"útokům: ohněm a chladem. Všechny živé jednotky jsou odolné proti svatému "
+"útoku, zatímco nemrtví jsou jím velmi snadno zranitelní. Odolnosti konkrétní "
+"jednotky zjistíš tak, že na ni klineš pravým tlačítkem myši, vybereš „Popis "
+"jednotky“, a tam Odolnosti."
 
 #: data/scenarios/tutorial/tutorial2.cfg:162
 msgid "What are the different damage types?"
-msgstr ""
+msgstr "Jaké jsou druhy poranění?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:171
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
+"Mnoho jednotek má zvláštnosti, které nějakým způsobem pozměňují pravidla."
 
 #: data/scenarios/tutorial/tutorial2.cfg:175
 msgid ""
@@ -1898,10 +1979,12 @@ msgid ""
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
 msgstr ""
+"Každá zvláštnost dělá něco jiného; to je jejich hlavní smysl. Popis "
+"zvláštnosti jednotky se ti ukáže, když podržíš kursor myši nad jejím jménem."
 
 #: data/scenarios/tutorial/tutorial2.cfg:175
 msgid "What do specialties do?"
-msgstr ""
+msgstr "Co dělají zvláštnosti?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:176
 msgid ""
@@ -1910,10 +1993,14 @@ msgid ""
 "abilities, and attack specials. Abilities apply to units while attack "
 "specials only apply to one of the unit's attacks."
 msgstr ""
+"Zvláštnosti jednotek jsou určeny jejich typem; kupříkladu všichni generálové "
+"dokáží velet. Existují dva druhy zvláštností: schopnosti a zvláštnosti "
+"útoků. Schopnosti se týkají jednotky, zatímco zvláštnosti útoku jen "
+"některého z jejich útoků."
 
 #: data/scenarios/tutorial/tutorial2.cfg:176
 msgid "Which units get specialties?"
-msgstr ""
+msgstr "Které jednotky mají zvláštnosti?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:177
 msgid ""
@@ -1923,14 +2010,19 @@ msgid ""
 "hitting enemies regardless of what terrain they are on. Units do more damage "
 "while next to a unit of higher level with leadership."
 msgstr ""
+"Je mnoho různých zvláštností, a jejich poznávání je jedna ze zajímavých "
+"součástí hraní Wesnothu. Nejběžnější dvě zvláštnosti jsou magický útok a "
+"velení. Magické útoky mají vždy 70% šanci zásahu protivníka, nezávisle na "
+"tom, v jakém je terénu. Jednotky se schopností velet umožňují jednotkám na "
+"sousedních polích způsobovat větší poškození."
 
 #: data/scenarios/tutorial/tutorial2.cfg:177
 msgid "What kinds of specialties can my units get?"
-msgstr ""
+msgstr "Jaké zvláštnosti mohou mé jednotky získat?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:178
 msgid "How do I use specialties?"
-msgstr ""
+msgstr "Jak mám používat zvláštnosti?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:178
 msgid ""
@@ -1939,6 +2031,9 @@ msgid ""
 "you must move a unit with leadership next to another unit, then attack with "
 "the other unit."
 msgstr ""
+"Zvláštnosti využiješ tak, že jednotkou táhneš nebo útočíš takovým způsobem, "
+"aby se zvláštnost projevila. Jednotku se schopností velet kupříkladu "
+"využiješ tak, že přisuneš k nějaké jiné jednotce, a tou pak zaútočíš."
 
 #: data/scenarios/tutorial/tutorial2.cfg:195
 msgid ""
@@ -1946,10 +2041,13 @@ msgid ""
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
+"Některé předměty mění statistiky jednotek, jež je sebraly. Jedna z tvých "
+"jednotek našla lektvar, který jí umožuje způsobovat svými útoky větší "
+"poranění. Její nové bojové statistiky si můžeš prohlédnout v tabulce stavu."
 
 #: data/scenarios/tutorial/tutorial2.cfg:202
 msgid "This potion increases the damage of all the drinker's attacks by four."
-msgstr ""
+msgstr "Tento lektvar zvyšuje poškození způsobované všemi útoky o čtyři. "
 
 #: data/scenarios/tutorial/tutorial2.cfg:208
 msgid ""
@@ -1958,20 +2056,25 @@ msgid ""
 "who picks them up a new weapon. However there are usually not that many "
 "objects in a campaign."
 msgstr ""
+"Předměty, s nimiž se ve scénářích setkáváš, tam umisťuje tvůrce scénáře, a "
+"proto se mohou mezi taženími lišit. V Dědici trůnu většina předmětů přidává "
+"jejich nositeli novou zbraň. V tažení ale zase tak mnoho předmětů nebývá."
 
 #: data/scenarios/tutorial/tutorial2.cfg:208
 msgid "What kind of objects am I likely to encounter?"
-msgstr ""
+msgstr "Na jaké druhy předmětů mohu narazit?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:209
 msgid "How long do these objects last?"
-msgstr ""
+msgstr "Jak dlouho tyto předměty vydrží?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:209
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the remainder of the level."
 msgstr ""
+"Většina předmětů způsobí jednotce, která je sebrala, trvalé změny. Několik "
+"předmětů, jako například posvěcená voda, však vydrží jen do konce scénáře."
 
 #: data/scenarios/tutorial/tutorial2.cfg:223
 msgid ""
@@ -1979,6 +2082,8 @@ msgid ""
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
+"Nezapomínej bránit nepříteli v obsazování vesnic a obsazovat ty, které již "
+"vlastní. To ho odřízne od zdrojů zlata, a znemožní mu tím verbovat."
 
 #: data/scenarios/tutorial/tutorial2.cfg:250
 msgid ""
@@ -1986,10 +2091,12 @@ msgid ""
 "training scenario. Next, you may want to begin a campaign, or play "
 "multiplayer."
 msgstr ""
+"Blahopřeji! Porazil jsi mne a dokončil druhý, poslední výcvikový scénář. Teď "
+"můžeš začít hrát tažení nebo hru více hráčů."
 
 #: data/scenarios/tutorial/tutorial2.cfg:254
 msgid "How do I play a campaign?"
-msgstr ""
+msgstr "Jak začnu tažení?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:254
 msgid ""
@@ -1997,10 +2104,13 @@ msgid ""
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
+"Tažení začneš tak, že spustíš Wesnoth, zvolíš „Nová hra“ a vybereš si, které "
+"tažení chceš hrát; potom zvolíš obtížnost: snadnou, střední nebo tvrdou. "
+"Nováčkům doporučuji začít hrát Dědice trůnu."
 
 #: data/scenarios/tutorial/tutorial2.cfg:255
 msgid "How do I play multiplayer?"
-msgstr ""
+msgstr "Jak se hraje hra více hráčů?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:255
 msgid ""
@@ -2010,6 +2120,11 @@ msgid ""
 "wesnoth.org'. This will connect you to the official Wesnoth server, where "
 "you can join a game by selecting it, then selecting 'Join Game'."
 msgstr ""
+"Chceš-li hrát Wesnoth proti jiným lidem, zvol „Hra více hráčů“. Máš-li "
+"nejnovější vývojovou verzi Wesnothu, svol „Připoj se na oficiální severt“. "
+"Pokud však máš verzi 1.0, svol „Přidej se ke hře“, potom do kolonky server "
+"napiš „wesnoth.org“. Tím se připojíš na oficiální herní server Wesnothu, kde "
+"se můžeš přidat ke hře tak, že ji označíš a klikneš na „Přidej se ke hře“."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -2082,6 +2197,26 @@ msgstr "životů"
 #: data/themes/default.cfg:133 data/themes/default.cfg:469
 msgid "xp"
 msgstr "zkušeností"
+
+#: data/themes/default.cfg:142 data/themes/default.cfg:478
+msgid "gold"
+msgstr "zlatých"
+
+#: data/themes/default.cfg:150 data/themes/default.cfg:486
+msgid "villages"
+msgstr "vesnic"
+
+#: data/themes/default.cfg:158 data/themes/default.cfg:494
+msgid "units"
+msgstr "jednotek"
+
+#: data/themes/default.cfg:166 data/themes/default.cfg:502
+msgid "upkeep"
+msgstr "výdaje"
+
+#: data/themes/default.cfg:174 data/themes/default.cfg:510
+msgid "income"
+msgstr "příjmy"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
@@ -2350,12 +2485,14 @@ msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain"
 msgstr ""
+"Tento terén se chová jako tvrz, tj. je-li v něm tvůj vůdce, můžeš verbovat "
+"jednotky."
 
 #: data/translations/english.cfg:88
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain"
-msgstr ""
+msgstr "Tento terén se chová jako hrad, tj. můžeš do něj verbovat jednotky."
 
 #: data/translations/english.cfg:89 src/help.cpp:874
 msgid "or"
@@ -2508,6 +2645,7 @@ msgstr "Písek"
 #: data/translations/english.cfg:141 data/translations/english.cfg:143
 #: data/translations/english.cfg:144 data/translations/english.cfg:145
 #: data/translations/english.cfg:146 data/translations/english.cfg:147
+#: src/reports.cpp:310
 msgid "Village"
 msgstr "Vesnice"
 
@@ -2574,23 +2712,23 @@ msgstr "Ležení"
 
 #: data/translations/english.cfg:166
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "Most $name,Brod $name"
 
 #: data/translations/english.cfg:167
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr ""
+msgstr "Silnice $name,Průsmyk $name,Cesta $name"
 
 #: data/translations/english.cfg:168
 msgid "$name River,River $name"
-msgstr ""
+msgstr "Řeka $name,řeka $name"
 
 #: data/translations/english.cfg:169
 msgid "$name Forest,$name's Forest"
-msgstr ""
+msgstr "Les $name,Les $name"
 
 #: data/translations/english.cfg:170
 msgid "$name Lake"
-msgstr ""
+msgstr "Jezero $name"
 
 #: data/translations/english.cfg:171
 msgid "$name|bury,$name|ham,$name|ton"
@@ -3128,7 +3266,7 @@ msgstr "dýka"
 #: data/units/Dwarvish_Steelclad.cfg:26 data/units/Dwarvish_Thunderer.cfg:21
 #: data/units/Dwarvish_Thunderguard.cfg:21
 #: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:22
-#: data/units/Elvish_Archer.cfg:101 data/units/Elvish_Avenger.cfg:24
+#: data/units/Elvish_Archer.cfg:100 data/units/Elvish_Avenger.cfg:24
 #: data/units/Elvish_Avenger.cfg:97 data/units/Elvish_Captain.cfg:24
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
 #: data/units/Elvish_Hero.cfg:22 data/units/Elvish_High_Lord.cfg:21
@@ -3240,7 +3378,7 @@ msgstr ""
 #: data/units/Dragoon.cfg:27 data/units/Drake_Clasher.cfg:19
 #: data/units/Drake_Fighter.cfg:20 data/units/Drake_Slasher.cfg:20
 #: data/units/Drake_Warrior.cfg:20 data/units/Elvish_Archer.cfg:21
-#: data/units/Elvish_Archer.cfg:100 data/units/Elvish_Avenger.cfg:23
+#: data/units/Elvish_Archer.cfg:99 data/units/Elvish_Avenger.cfg:23
 #: data/units/Elvish_Avenger.cfg:96 data/units/Elvish_Captain.cfg:23
 #: data/units/Elvish_Champion.cfg:21 data/units/Elvish_Fighter.cfg:23
 #: data/units/Elvish_Hero.cfg:21 data/units/Elvish_High_Lord.cfg:20
@@ -3284,6 +3422,10 @@ msgid ""
 "began the battle! Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
+"Krvaví netopýři jsou rychlí a vysávají krev svých protivníků, čímž se sami "
+"léčí, dokonce až tak, že mohou ze souboje vyjít silnější, než do něj "
+"vstoupili! Běsní tak, že srst těchto nemrtvých létajících dravců je "
+"zabarvena krví jejich obětí."
 
 #: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
 #: data/units/Direwolf_Rider.cfg:18 data/units/Goblin_Direwolver.cfg:20
@@ -3301,6 +3443,8 @@ msgid ""
 "These elite undead archers strike terror in the hearts of their foes by "
 "using the bones of the slain as weapons."
 msgstr ""
+"Tito elitní nemrtví lučištníci udeří hrůzou srdce svých nepřátel, neboť jako "
+"své zbraně používají kosti zavražděných."
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Giant_Mudcrawler.cfg:33
 #: data/units/Skeleton_Archer.cfg:23 data/units/Soulless.cfg:19
@@ -3311,7 +3455,7 @@ msgstr "pěst"
 
 #: data/units/Bone_Shooter.cfg:37 data/units/Bowman.cfg:37
 #: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:38
-#: data/units/Elvish_Archer.cfg:117 data/units/Elvish_Avenger.cfg:39
+#: data/units/Elvish_Archer.cfg:116 data/units/Elvish_Avenger.cfg:39
 #: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:39
 #: data/units/Elvish_Champion.cfg:40 data/units/Elvish_Fighter.cfg:40
 #: data/units/Elvish_Hero.cfg:40 data/units/Elvish_Marshal.cfg:40
@@ -3339,7 +3483,7 @@ msgstr "luk"
 #: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:28
 #: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:39
-#: data/units/Elvish_Archer.cfg:118 data/units/Elvish_Avenger.cfg:40
+#: data/units/Elvish_Archer.cfg:117 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Druid.cfg:62
 #: data/units/Elvish_Fighter.cfg:41 data/units/Elvish_Hero.cfg:41
@@ -3386,6 +3530,8 @@ msgid ""
 "Immersed from childhood in the ways of archery, the young Bowmen are the "
 "most common ranged combatants in Wesnothian armies."
 msgstr ""
+"Mladí lučištníci, od dětství ponoření do postupů lukostřelby, jsou "
+"nejběžnější bojovníci útočící na dálku v armádách Wesnothu."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
@@ -3412,6 +3558,9 @@ msgid ""
 "Cavalrymen. This strictly disciplined force is especially suited to "
 "capturing and holding villages."
 msgstr ""
+"Nejlepší jezdci ve Wesnothu se verbují do armády, aby se stali kavaleristy. "
+"Jejich přísně disciplinovaná síla je obzvlášť vhodná k obsazování a držení "
+"vesnic."
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
@@ -3423,6 +3572,9 @@ msgid ""
 "They can bite at close range, thereby poisoning their enemies, and also can "
 "attack with a web at long range, slowing their foes down."
 msgstr ""
+"Říká se, že v hlubinách Knalgy se potulují obří pavouci, požírajíce mnoho "
+"obětí. Zblízka mohou kousat, a otrávit tak svého protivníka, a také mohou na "
+"dálku vrhat sítě, kterými své nepřátele zpomalují."
 
 #: data/units/Cave_Spider.cfg:28
 msgid "web"
@@ -3444,6 +3596,9 @@ msgid ""
 "civilization, the skeleton Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
+"Kostlivčí kostipštrosi se dokáží pohybovat rychleji než většina jízdních "
+"jednotek, jedouce na kostech velikých ptáků podobných pštrosům, které kdysi "
+"využívala jako jízdu ztracená civilizace, "
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:51
 #: data/units/Drake_Guard.cfg:22 data/units/Drake_Slasher.cfg:52
@@ -3528,6 +3683,9 @@ msgid ""
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
+"Sépie jsou obrovská mořská svtoření. Dokáží uchopit své protivníky silnými "
+"chapadly nebo z dálky plivat jedovatý inkoust. Nejlepší způsob, jak přežít, "
+"setkáš-li se s nějakými, je zůstat na břehu."
 
 #: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
 msgid "tentacle"
@@ -3591,13 +3749,15 @@ msgstr "skřek"
 
 #: data/units/Death_Knight.cfg:3
 msgid "Death Knight"
-msgstr "Mrtvý rytíř"
+msgstr "Rytíř smrti"
 
 #: data/units/Death_Knight.cfg:16
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
 "came back to this world as Death Knights."
 msgstr ""
+"Někdy nejmocnější králové a generálové, prokleti zlobou a nenávistí, "
+"přicházejí zpět na tento svět jako rytíři smrti."
 
 #: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:24
 #: data/units/Dwarvish_Steelclad.cfg:24
@@ -3687,6 +3847,8 @@ msgid ""
 "Smaller than most Drakes, the Beaks are therefore more agile and can fight "
 "even when flying."
 msgstr ""
+"Zobáci jsou menší než většina draků, a proto jsou pohyblivější a mohou "
+"bojovat i za letu."
 
 #: data/units/Drake_Beak.cfg:37 data/units/Drake_Petit.cfg:37
 msgid "beak"
@@ -3745,7 +3907,7 @@ msgstr ""
 
 #: data/units/Drake_Mage.cfg:63 data/units/Drake_Warmage.cfg:73
 msgid "ice shot"
-msgstr ""
+msgstr "paprsek ledu"
 
 #: data/units/Drake_Petit.cfg:3
 msgid "Drake Petit"
@@ -3789,6 +3951,9 @@ msgid ""
 "allows them to attack and parry with only one hand, while they wield a "
 "pistol in the other to shoot distant foes."
 msgstr ""
+"Duelisté jsou mistři umění šermu. Jejich zručnost s kordem jim umožňuje "
+"útočit a krýt se jen jednou rukou, zatímco v druhé drží pistoli, kterou "
+"střílejí na vzdálené protivníky."
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
@@ -3835,7 +4000,7 @@ msgstr ""
 #: data/units/Dwarvish_Dragonguard.cfg:20
 #: data/units/Dwarvish_Dragonguard.cfg:38
 msgid "dragonstaff"
-msgstr ""
+msgstr "dračí hůl"
 
 #: data/units/Dwarvish_Fighter.cfg:3
 msgid "Dwarvish Fighter"
@@ -3863,12 +4028,12 @@ msgstr "kladivo"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Trpasličí hlídka"
 
 #: data/units/Dwarvish_Guardsman.cfg:15 data/units/Dwarvish_Sentinel.cfg:17
 #: data/units/Dwarvish_Stalwart.cfg:17 src/actions.cpp:496
 msgid "steadfast"
-msgstr ""
+msgstr "pevně stojící"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
 msgid ""
@@ -4013,11 +4178,11 @@ msgstr "blesk"
 msgid "Elder Wose"
 msgstr "Starý stromový muž"
 
-#: data/units/Elvish_Archer.cfg:3 data/units/Elvish_Archer.cfg:82
+#: data/units/Elvish_Archer.cfg:3 data/units/Elvish_Archer.cfg:81
 msgid "Elvish Archer"
 msgstr "Elfí lučištník"
 
-#: data/units/Elvish_Archer.cfg:18 data/units/Elvish_Archer.cfg:97
+#: data/units/Elvish_Archer.cfg:18 data/units/Elvish_Archer.cfg:96
 msgid ""
 "Elvish Archers are trained from youth in archery, and so skilled in long-"
 "range combat. Able to fire many arrows quickly and accurately, these Archers "
@@ -4133,7 +4298,7 @@ msgstr ""
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "Velký elfí lord"
 
 #: data/units/Elvish_High_Lord.cfg:17
 msgid ""
@@ -4158,6 +4323,8 @@ msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of fire at long range."
 msgstr ""
+"Elfí lordi jsou obávaní v boji, zblízka bojují mečem a na dálku vrhají "
+"ničivé ohnivé koule."
 
 #: data/units/Elvish_Marksman.cfg:3 data/units/Elvish_Marksman.cfg:80
 msgid "Elvish Marksman"
@@ -4212,6 +4379,9 @@ msgid ""
 "at weaker units and exposed flanks. Equally skilled in both bow and sword, "
 "they strike hard before melting into the woods again to evade response."
 msgstr ""
+"Rychlí elfí jezdci, jedoucí jako vítr, se prohánějí lesy aby udeřili na "
+"slabší jednotky a odkrytá křídla. Zruční v boji s lukem i mečem, tvrdě "
+"udeří, než opět zmizí v lese, unikajíce odvetě."
 
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
 msgid "Elvish Ranger"
@@ -4237,6 +4407,8 @@ msgid ""
 "Swift riders, Elvish Riders are fast in the forest as well as in the open. "
 "They can even use a bow from horseback."
 msgstr ""
+"Hbití elfí jezdci jsou rychlí v lese stejně jako v otevření krajině. Navíc "
+"dokáží používat luk i z koňského hřbetu."
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
@@ -4316,6 +4488,10 @@ msgid ""
 "their other hand, they can also deftly parry all kinds of attacks. Fencers "
 "are skirmishers, and so can move right past enemy units."
 msgstr ""
+"Šermíři jsou cvičeni v umění šermu. I když je jejich kord lehká zbraň, "
+"dokáží ji použít rychle a se smrtící obratností. Dýkou, jíž vládnou druhou "
+"rukou, přitom hbitě odrážejí všechny útoky. Šermíři jsou také průbojní, a "
+"dokáží se tak dostat za nepřátelské jednotky."
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
@@ -4452,6 +4628,8 @@ msgid ""
 "constructs of soil and water. They attack by spraying boiling water on their "
 "foes, or with fists of mud."
 msgstr ""
+"Obří blátožrouti jsou větší druh blátožroutů, magických stvoření z hlíny a "
+"vody. Na své nepřátele útočí sprškami vařící vody nebo blátěnými pěstmi."
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Mudcrawler.cfg:20
 msgid "boiling water"
@@ -4467,6 +4645,9 @@ msgid ""
 "their prey. They are merciless and always hungry, so it is wise not to "
 "approach too close to these oversized arachnids."
 msgstr ""
+"Obří škorpioni jsou smrtící stvoření, která se s oblibou skrývají, "
+"vyhlížejíce svou kořist. Jsou nelítostní a vždy hladoví, takže není moudré "
+"se k těmto přerostlým pavoukovcům příliš přibližovat."
 
 #: data/units/Giant_Scorpion.cfg:19
 msgid "sting"
@@ -4554,6 +4735,8 @@ msgid ""
 "ability to regenerate themselves, so that they recover from wounds on their "
 "own, even during battle."
 msgstr ""
+"Velcí trolové jsou silná a surová humanoidní monstra s ohromující schopností "
+"regenerace, takže se sami léčí ze svých zranění, a to i během bitvy."
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
@@ -4579,6 +4762,9 @@ msgid ""
 "an extension of themselves. This special relation makes the heart of the "
 "earth-bound tremble, for these mighty pairs may strike from anywhere."
 msgstr ""
+"Páni gryfonů strávili na hřbetech gryfonů tak dlouhý čas, že se tito stali "
+"součástí jich samých. Jejich zvláštní vztah přiměje srdce pozemských tvorů "
+"třást se strachem, protože tyto mocné dvojice mohou udeřit odkudkoli."
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
@@ -4590,6 +4776,9 @@ msgid ""
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
+"Jen málokteří jsou schopni spojit se s mocnými gryfony. Ti, kteří to dokáží, "
+"se mohou stát jezdci na gryfonech a poznat vzdušný svět na zádech těchto "
+"létajících zvířat."
 
 #: data/units/Halbardier.cfg:3
 msgid "Halbardier"
@@ -4624,6 +4813,8 @@ msgid ""
 "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
 "lack of speed is their only disadvantage."
 msgstr ""
+"Těžkooděnci jsou obrněni železem, což je činí odolným vůči útokům. Jejich "
+"jediná nevýhoda je malá rychlost."
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
@@ -4664,6 +4855,10 @@ msgid ""
 "it not for their slow movement and rarity on the battlefield, these mighty "
 "soldiers would control the continent."
 msgstr ""
+"Železní ničitelé, tyčící se nad bitevním polem jako oceloví obři, jsou "
+"proslulí (a obávaní) pro svou neuvěřitelnou odolnost a ukrutné údery "
+"válečným kladivem. Kdyby nebyli tak pomalí a vzácní, ovládali by tito mocní "
+"bojovníci celý kontinent."
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
@@ -4729,6 +4924,8 @@ msgid ""
 "Longbowmen carry the huge specialized bows that they have learned to handle "
 "after years of combat. Their missiles can pierce even armor."
 msgstr ""
+"Lučistníci s dlouhým lukem nesou své velké zvláštní luky, jež se naučili "
+"ovládat po letech boje. Jejich střely pronikají i brněním."
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:66
 msgid "Lord"
@@ -4810,6 +5007,9 @@ msgid ""
 "human can hope to attain. Their power with this deadly weapon is surpassed "
 "only by that of the Elves."
 msgstr ""
+"Mistři lučištníci dosáhli nejvyšší úrovně dovednosti s lukem, v kterou může "
+"člověk doufat. Jejich schopnosti s touto smrtící zbraní překonávají jen "
+"elfové."
 
 #: data/units/Merman.cfg:3
 msgid "Merman"
@@ -4820,6 +5020,8 @@ msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but struggle greatly to move on land."
 msgstr ""
+"Vodní muži, zkušení obyvatelé moře, jsou silní a rychlí v každém vodním "
+"prostředí, ale velice se trápí při pohybu po souši."
 
 #: data/units/Merman.cfg:19 data/units/Merman_Lord.cfg:20
 #: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:19
@@ -4835,6 +5037,8 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "spraying boiling water on their foes."
 msgstr ""
+"Blátožrouti jsou magická stvoření z hlíny a vody. Na své nepřátele útočí "
+"sprškami vařící vody."
 
 #: data/units/Naga.cfg:3
 msgid "Naga"
@@ -4845,6 +5049,8 @@ msgid ""
 "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more nimble "
 "than their counterparts, they share a distaste for dry land."
 msgstr ""
+"Vodní rejpalové jsou, podobně jako vodní muži, obyvatelé moře. Jsou menší a "
+"hbitější než tyto jejich protějšky, ale sdílejí s nimi odpor k pevné zemi."
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
@@ -4938,6 +5144,9 @@ msgid ""
 "While they can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Obři jsou tupé humanoidní obludy, které obvyke žijí osaměle v divočině. I "
+"když je snadné jim uprchnout nebo je přelstít, jejich sílu není radno "
+"podceňovat."
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
@@ -4950,6 +5159,10 @@ msgid ""
 "since most orcs won't learn how to handle a bow, he is an indispensable part "
 "of the orcish army."
 msgstr ""
+"Sřetí lučištníky považuje mnoho jejich skřetích druhů na nižší třídu "
+"bojovníků, protože útočí na nepřátele zdálky. Avšak protože se většina "
+"skřetů nikdy nenaučí ovládat luk, jsou nepostradatelnou součástí skřetí "
+"armády."
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
@@ -4962,6 +5175,10 @@ msgid ""
 "poisoned darts, and victims of this poison will continually take damage "
 "until they can be cured in town or by a healer."
 msgstr ""
+"Skřetí vrazi nejsou příliš silní v boji, ale jsou rychlí a dokáží se dobře "
+"bránit v nejrůznějších terénech. Používají otrávené šipky, a jejich jed "
+"působí zasaženým jednotkám další a další poranění, dokud se nevyléčí ve "
+"vesnici nebo se o ně nepostará léčitel."
 
 #: data/units/Orcish_Assassin.cfg:36 data/units/Orcish_Slayer.cfg:41
 msgid "darts"
@@ -4982,6 +5199,10 @@ msgid ""
 "Marksmen in long-range combat, they are sturdier and can handle theselves a "
 "little better than the Elves in close combat."
 msgstr ""
+"Skřetí střelci z kuše se snaží vynahradit nedostatek nadání hrubou silou "
+"svých zbraní. I když nejsou v boji na dálku tak úspěšní jako elfí "
+"odstřelovači, jsou statnější a dokáží se v boji zblízka bránit o něco lépe "
+"než elfové."
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
@@ -4993,6 +5214,9 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"Skřetí bručouni tvoří jádro skřetích sil. Jsou sice pomalejší než lidští "
+"nebo elfí bojovníci, ale dokáží zasadit mnohem silnější údery, a vydrží více "
+"zásahů, než padnou."
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
@@ -5115,7 +5339,7 @@ msgstr "Zbojníci bojují lépe v noci."
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
-msgstr ""
+msgstr "Zbojníci bojují lépe v noci. Zbojnice vypadají dobře, když to dělají."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "Outlaw Princess"
@@ -5170,6 +5394,9 @@ msgid ""
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
+"Sedláci jsou páteří zemědělství a vojáky poslední pomoci. Nejsou sice ze své "
+"povahy hroziví, ale neústupně brání své domovy. Vrháš-li však na nepřátele "
+"hordy sedláků, zjevně ti došly lepší jendotky."
 
 #: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
 msgid "pitchfork"
@@ -5252,6 +5479,9 @@ msgid ""
 "warriors' will and soul are all but lost, their fighting skills certainly "
 "remain with the Revenant."
 msgstr ""
+"Revenanti jsou nemrtvá stvoření, jež povstala z kdysi mocných bojovníků. Ač "
+"jsou duše a vůle těchto bojovníků nadobro ztraceny, jejich bojové schopnosti "
+"jim zřejmě zůstaly."
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
@@ -5300,6 +5530,8 @@ msgid ""
 "Sea Hags are older and more experienced Nagas who have learned to control "
 "the water magic."
 msgstr ""
+"Ochechule jsou starší a zkušenejší vodní rejpalové, kteří se naučili ovládat "
+"vodní magii."
 
 #: data/units/Sea_Hag.cfg:27
 msgid "water spray"
@@ -5326,6 +5558,8 @@ msgstr "Mořský had"
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
+"Mořští hadi jsou potvory obřích rozměrů, které jsou schopny samy převrhnout "
+"čluny."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -5357,7 +5591,7 @@ msgstr ""
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
-msgstr "Přepadová jednotka"
+msgstr "Úderná jednotka"
 
 #: data/units/Shock_Trooper.cfg:15
 msgid ""
@@ -5365,6 +5599,9 @@ msgid ""
 "slowly, they are immensely powerful and therefore feared throughout Wesnoth "
 "and even into the lands beyond."
 msgstr ""
+"Úderné jednotky jsou elita wesnothského vojska. Pohybují se sice pomalu, "
+"avšak jsou nesmírně silní, a tudíž i obávaní nejen po celém Wesnothu, ale i "
+"v dalších zemích."
 
 #: data/units/Silver_Mage.cfg:3 data/units/Silver_Mage.cfg:90
 msgid "Silver Mage"
@@ -5403,6 +5640,9 @@ msgid ""
 "dark magics. Like all undead, they are especially vulnerable to fire and "
 "holy spells, but resistant to bladed weapons."
 msgstr ""
+"Kostlivci jsou bojovníci, kteří byli zabiti v bitvě, a pak přivolání zpět "
+"pomocí temné magie. Jsou velmi snadno zranitelní ohněm a svatými kouzly, ale "
+"odolní vůči sečným zbraním, jako všichni nemrtví."
 
 #: data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -5414,6 +5654,9 @@ msgid ""
 "to battle. Like all undead, they are especially vulnerable to flames and "
 "holy attacks, but resistant to edged weapons."
 msgstr ""
+"Nemrtví kostlivci lučištníci jsou těla padlých bojovníků přivedená zpět do "
+"bitvy.  Jsou velmi snadno zranitelní ohněm a svatými kouzly, ale odolní vůči "
+"sečným zbraním, jako všichni nemrtví."
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
@@ -5557,6 +5800,9 @@ msgid ""
 "easily defeat any enemy foolish enough to wander into their preferred "
 "environment."
 msgstr ""
+"Tritoni jsou páni moře. Jsou zkušení v používání trojzubce a snadno zničí "
+"jakékoli nepřátele dostatečně pošetilé, aby se potulovali v jejich oblíbeném "
+"prostředí."
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -5568,6 +5814,8 @@ msgid ""
 "regenerate themselves, so that they recover from wounds on their own, even "
 "during battle."
 msgstr ""
+"Trolové jsou silná a surová humanoidní monstra s ohromující schopností "
+"regenerace, takže se sami léčí ze svých zranění, a to i během bitvy."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
@@ -5579,6 +5827,9 @@ msgid ""
 "to regenerate themselves, so that they recover from wounds on their own, "
 "even during battle."
 msgstr ""
+"Trolí hrdinové jsou silná a surová humanoidní monstra s ohromující "
+"schopností regenerace, takže se sami léčí ze svých zranění, a to i během "
+"bitvy."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -5589,6 +5840,8 @@ msgid ""
 "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, and "
 "are able to regenerate, healing their own wounds during combat."
 msgstr ""
+"Trolí válečníci, zkalení bitvami, uštědřují smrtící údery svými palcáty. A "
+"jsou schopni regenerace, takže se sami léčí ze svých zranění během bitvy."
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
@@ -5614,6 +5867,9 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"Upíří netopíři jsou létající nermtvé bestie kousající své oběti. I když "
+"jejich špičáky nejsou příliš silné, vysávají ze svých obětí s jejich krví i "
+"jejich zdraví, a přidávají ho ke svému."
 
 #: data/units/Vampire_Lady.cfg:3
 msgid "Vampire Lady"
@@ -5624,6 +5880,8 @@ msgid ""
 "Cold and beautiful, she maintains her eternal youthful appeareance drinking "
 "the blood of the living."
 msgstr ""
+"Chladná a krásná upíří dáma udržuje svůj věčně mladistvý vzhled díky "
+"popíjení krve živých."
 
 #: data/units/Vampire_Lady.cfg:19
 msgid "blood kiss"
@@ -5649,7 +5907,7 @@ msgstr "Wall guard"
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "průbojný, regeneruje"
 
 #: data/units/Wall_Guard.cfg:32
 msgid ""
@@ -5742,6 +6000,8 @@ msgid ""
 "Yetis are giant humanoid creatures that live in the mountains. Few have ever "
 "survived an encounter with one, and their existence is doubted by many."
 msgstr ""
+"Yettiové jsou obří humanoidní stvoření žijící v horách. Málokdo přežil "
+"setkání s jedním z nich a je mnoho těch, kdo pochybují o jejich existenci."
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
@@ -6016,11 +6276,11 @@ msgstr "%d. %m. %Y %H:%M"
 msgid "#(Invalid)"
 msgstr "#(Neplatné)"
 
-#: src/dialogs.cpp:365 src/game.cpp:931
+#: src/dialogs.cpp:365 src/game.cpp:989
 msgid "Campaign"
 msgstr "Tažení"
 
-#: src/dialogs.cpp:367 src/game.cpp:978
+#: src/dialogs.cpp:367 src/game.cpp:1125
 msgid "Multiplayer"
 msgstr "Hra více hráčů"
 
@@ -6032,7 +6292,7 @@ msgstr "Výcvik"
 msgid "replay"
 msgstr "záznam"
 
-#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1382
+#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1384
 msgid "Turn"
 msgstr "Kolo"
 
@@ -6040,7 +6300,7 @@ msgstr "Kolo"
 msgid "Scenario Start"
 msgstr "Začátek scénáře"
 
-#: src/dialogs.cpp:384 src/game.cpp:954
+#: src/dialogs.cpp:384 src/game.cpp:1101
 msgid "Difficulty"
 msgstr "Obtížnost"
 
@@ -6088,7 +6348,7 @@ msgstr ""
 msgid "Show replay"
 msgstr "Ukaž záznamy"
 
-#: src/dialogs.cpp:512 src/hotkeys.cpp:133 src/multiplayer.cpp:82
+#: src/dialogs.cpp:512 src/hotkeys.cpp:133 src/multiplayer.cpp:85
 msgid "Load Game"
 msgstr "Načti hru"
 
@@ -6101,33 +6361,33 @@ msgid "Profile"
 msgstr "Profil"
 
 #: src/dialogs.cpp:646 src/display.cpp:884 src/help.cpp:567
-#: src/playturn.cpp:1778
+#: src/playturn.cpp:1784
 msgid "level"
 msgstr "úroveň"
 
 #: src/dialogs.cpp:667 src/display.cpp:902 src/help.cpp:621
-#: src/playturn.cpp:1942 src/unit.cpp:1034
+#: src/playturn.cpp:1947 src/unit.cpp:1034
 msgid "HP"
 msgstr "Životů"
 
 #: src/dialogs.cpp:671 src/dialogs.cpp:679 src/display.cpp:906
-#: src/display.cpp:914 src/playturn.cpp:1780 src/playturn.cpp:1943
+#: src/display.cpp:914 src/playturn.cpp:1786 src/playturn.cpp:1948
 #: src/unit.cpp:1093
 msgid "XP"
 msgstr "Zkušenost"
 
 #: src/dialogs.cpp:684 src/display.cpp:918 src/help.cpp:622
-#: src/playturn.cpp:1944 src/unit.cpp:1070
+#: src/playturn.cpp:1949 src/unit.cpp:1070
 msgid "Moves"
 msgstr "Kroků"
 
 #: src/dialogs.cpp:697 src/display.cpp:935 src/help.cpp:699
-#: src/playturn.cpp:602 src/reports.cpp:230
+#: src/playturn.cpp:599 src/reports.cpp:230
 msgid "melee"
 msgstr "zblízka"
 
 #: src/dialogs.cpp:698 src/display.cpp:936 src/help.cpp:699
-#: src/playturn.cpp:602 src/reports.cpp:231
+#: src/playturn.cpp:599 src/reports.cpp:231
 msgid "ranged"
 msgstr "na dálku"
 
@@ -6143,94 +6403,164 @@ msgstr "neviditelný"
 msgid "Vera.ttf"
 msgstr "Bepa-Roman.ttf"
 
-#: src/game.cpp:137
+#: src/game.cpp:138
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Chceš uložit záznam této hry?"
 
-#: src/game.cpp:138 src/game.cpp:200 src/playturn.cpp:1391
+#: src/game.cpp:139 src/game.cpp:201 src/playturn.cpp:1393
 msgid "Name:"
 msgstr "Jméno:"
 
-#: src/game.cpp:146 src/game.cpp:207 src/playturn.cpp:1408
+#: src/game.cpp:147 src/game.cpp:208 src/playturn.cpp:1410
 msgid "The game could not be saved"
 msgstr "Hru se nepodařlo uložit"
 
-#: src/game.cpp:199
+#: src/game.cpp:200
 msgid "Do you want to save your game?"
 msgstr "Chceš uložit hru?"
 
-#: src/game.cpp:587
+#: src/game.cpp:648
 msgid "The Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
-#: src/game.cpp:807 src/multiplayer_connect.cpp:104
+#: src/game.cpp:868 src/multiplayer_connect.cpp:106
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
-"Tato uložená pozice je z jiné verze této hry. Chceš se ji opravdu pokusit "
-"nahrát?"
+"Tato uložená pozice je z jiné verze hry. Chceš se ji opravdu pokusit nahrát?"
 
-#: src/game.cpp:818 src/game.cpp:823 src/playlevel.cpp:533
-#: src/playlevel.cpp:747
+#: src/game.cpp:879 src/game.cpp:884 src/playlevel.cpp:549
+#: src/playlevel.cpp:789
 msgid "The file you have tried to load is corrupt"
 msgstr "Soubor, který se snažíš načíst, je poškozený."
 
-#: src/game.cpp:924
-msgid "There are no campaigns available"
-msgstr "K dispozici nejsou žádná tažení"
+#: src/game.cpp:984
+msgid " ,Get More Campaigns..."
+msgstr ""
 
-#: src/game.cpp:932
+#: src/game.cpp:990
 msgid "Choose the campaign you want to play:"
 msgstr "Vyber si, kterou hru chceš hrát:"
 
-#: src/game.cpp:955
+#: src/game.cpp:1000
+msgid "Connect to Server"
+msgstr "Připoj se na server"
+
+#: src/game.cpp:1001
+msgid "You will now connect to a campaign server to download campaigns."
+msgstr ""
+
+#: src/game.cpp:1002
+msgid "Server: "
+msgstr "Server:"
+
+#: src/game.cpp:1014
+msgid "Could not connect to host."
+msgstr "Spojení se hostitelem se nezdařilo."
+
+#: src/game.cpp:1014 src/game.cpp:1029 src/game.cpp:1035 src/game.cpp:1046
+#: src/game.cpp:1065 src/game.cpp:1075 src/game.cpp:1078 src/game.cpp:1081
+#: src/playturn.cpp:1396 src/playturn.cpp:1410
+msgid "Error"
+msgstr "Chyba"
+
+#: src/game.cpp:1022
+msgid "Awaiting response from server"
+msgstr "Čekám na odpověď serveru"
+
+#: src/game.cpp:1035
+msgid "Error communicating with the server."
+msgstr "Chyba při komunikaci se serverem."
+
+#: src/game.cpp:1046
+msgid "There are no campaigns available for download from this server."
+msgstr "Na tomto serveru nejsou k dispozici nejsou žádná tažení ke stažení."
+
+#: src/game.cpp:1050
+msgid "Choose the campaign to download."
+msgstr "Vyber si hru ke stažení."
+
+#: src/game.cpp:1050
+msgid "Get Campaign"
+msgstr "Získej tažení"
+
+#: src/game.cpp:1059
+msgid "Downloading campaign..."
+msgstr ""
+
+#: src/game.cpp:1071
+msgid "Campaign Installed"
+msgstr "Tažení nainstalováno"
+
+#: src/game.cpp:1071
+msgid ""
+"The campaign has been installed. You will have to restart Wesnoth before you "
+"can play it."
+msgstr ""
+"Tažení bylo nainstalováno. Budeš muset znovu spustit Wesnoth, abys ho mohl "
+"hrát."
+
+#: src/game.cpp:1075
+msgid "Network communication error."
+msgstr "Chyba při síťové komunikaci."
+
+#: src/game.cpp:1078
+msgid "Remote host disconnected."
+msgstr "Vzdálený hostitel se odpojil."
+
+#: src/game.cpp:1081
+msgid ""
+"There was a problem creating the files necessary to install this campaign."
+msgstr "Vytvoření souborů potřebných k instalaci tažení neproběhlo v pořádku."
+
+#: src/game.cpp:1102
 msgid "Select difficulty level:"
 msgstr "Vyber si obtížnost:"
 
-#: src/game.cpp:973
+#: src/game.cpp:1120
 msgid "Join Official Server"
 msgstr "Připoj se na oficiální server"
 
-#: src/game.cpp:973
+#: src/game.cpp:1120
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Připoj se na oficiální herní server Wesnothu"
 
-#: src/game.cpp:974 src/multiplayer_lobby.cpp:157
+#: src/game.cpp:1121 src/multiplayer_lobby.cpp:157
 msgid "Join Game"
 msgstr "Přidej se ke hře"
 
-#: src/game.cpp:974
+#: src/game.cpp:1121
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:975
+#: src/game.cpp:1122
 msgid "Host Multiplayer Game"
 msgstr "Hostitelská hra více hráčů"
 
-#: src/game.cpp:975
+#: src/game.cpp:1122
 msgid "Host a game without using a server"
-msgstr ""
+msgstr "Hostuj hru bez použití serveru"
 
-#: src/game.cpp:978 src/multiplayer_client.cpp:269
+#: src/game.cpp:1125 src/multiplayer_client.cpp:269
 msgid "Login"
 msgstr "Jméno"
 
-#: src/game.cpp:1058
+#: src/game.cpp:1205
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/game.cpp:1059
+#: src/game.cpp:1206
 msgid "Choose your preferred language"
 msgstr "Vyber si jazyk"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1291
 msgid "Could not initialize video. Exiting.\n"
-msgstr ""
+msgstr "Nemohu inicializovat zobrazení. Končím.\n"
 
-#: src/game.cpp:1146
+#: src/game.cpp:1293
 msgid "Could not initialize fonts. Exiting.\n"
-msgstr ""
+msgstr "Nemohu inicializovat fonty. Končím.\n"
 
 #: src/help.cpp:574
 msgid "Advances to"
@@ -6252,29 +6582,30 @@ msgstr "Potřebné zkušenosti"
 msgid "attacks"
 msgstr "útoky"
 
-#: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1941
+#: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1946
 msgid "Name"
 msgstr "Jméno"
 
-#: src/help.cpp:650 src/help.cpp:651 src/playturn.cpp:1940
+#: src/help.cpp:650 src/help.cpp:651 src/playturn.cpp:1945
 msgid "Type"
 msgstr "Typ"
 
 #: src/help.cpp:654 src/help.cpp:655 src/unit_types.cpp:301
 msgid "Dmg"
-msgstr ""
+msgstr "Poškození"
 
 #: src/help.cpp:658 src/help.cpp:659
 msgid "Strikes"
-msgstr ""
+msgstr "Údery"
 
 #: src/help.cpp:662 src/help.cpp:663
+#, fuzzy
 msgid "Range"
-msgstr ""
+msgstr "Vzdálenost"
 
 #: src/help.cpp:666 src/help.cpp:667
 msgid "Special"
-msgstr ""
+msgstr "Zláštnosti"
 
 #: src/help.cpp:723
 msgid "Resistances"
@@ -6320,7 +6651,7 @@ msgstr "Další jednotka"
 msgid "End Unit Turn"
 msgstr "Ukončit kolo jednotky"
 
-#: src/hotkeys.cpp:122 src/playturn.cpp:1524
+#: src/hotkeys.cpp:122 src/playturn.cpp:1525
 msgid "Leader"
 msgstr "Vůdce"
 
@@ -6356,7 +6687,7 @@ msgstr "Zrychlit"
 msgid "Unit Description"
 msgstr "Popis jednotky"
 
-#: src/hotkeys.cpp:131 src/playturn.cpp:1349
+#: src/hotkeys.cpp:131 src/playturn.cpp:1351
 msgid "Rename Unit"
 msgstr "Přejmenuj"
 
@@ -6382,7 +6713,7 @@ msgstr "Zapni/vypni mřížku"
 
 #: src/hotkeys.cpp:139
 msgid "Status Table"
-msgstr "Stav"
+msgstr "Tabulka stavu"
 
 #: src/hotkeys.cpp:140
 msgid "Mute"
@@ -6408,11 +6739,11 @@ msgstr "Nastavení"
 msgid "Scenario Objectives"
 msgstr "Úkoly scénáře"
 
-#: src/hotkeys.cpp:146 src/playturn.cpp:1993
+#: src/hotkeys.cpp:146 src/playturn.cpp:1998
 msgid "Unit List"
 msgstr "Seznam jednotek"
 
-#: src/hotkeys.cpp:147 src/playturn.cpp:2081
+#: src/hotkeys.cpp:147 src/playturn.cpp:2086
 msgid "Statistics"
 msgstr "Statistiky"
 
@@ -6526,7 +6857,7 @@ msgstr "Nápověda"
 
 #: src/hotkeys.cpp:175
 msgid "View Chat Log"
-msgstr ""
+msgstr "Ukaž záznam rozhovoru"
 
 #: src/hotkeys.cpp:358 src/hotkeys.cpp:542
 msgid "Do you really want to quit?"
@@ -6560,7 +6891,7 @@ msgstr "Zavři okno"
 msgid "Map Generator"
 msgstr "Generátor map"
 
-#: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:481
+#: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:484
 msgid "Players"
 msgstr "Hráčů"
 
@@ -6580,7 +6911,7 @@ msgstr "Opakování"
 msgid "Bump Size"
 msgstr "Hrbolatost"
 
-#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1525
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1526
 msgid "Villages"
 msgstr "Vesnic"
 
@@ -6608,119 +6939,119 @@ msgstr "Vnitrozemí"
 msgid "Island"
 msgstr "Ostrov"
 
-#: src/multiplayer.cpp:94
+#: src/multiplayer.cpp:97
 msgid "The maximum turns the game will go for"
 msgstr "Maximální počet kol, který může hra trvat"
 
-#: src/multiplayer.cpp:100
+#: src/multiplayer.cpp:103
 msgid "The amount of income each village yields per turn"
 msgstr "Příjem z každé vesnice za kolo"
 
-#: src/multiplayer.cpp:106
+#: src/multiplayer.cpp:109
 msgid "The amount of experience a unit needs to advance"
 msgstr "Zkušenost, kterou jednotky potřebují k povýšení"
 
-#: src/multiplayer.cpp:108
+#: src/multiplayer.cpp:111
 msgid "Fog Of War"
 msgstr "Mlha války"
 
-#: src/multiplayer.cpp:110
+#: src/multiplayer.cpp:113
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Nepřátelské jednotky nejsou vidět, dokud nejsou v dosahu tvých"
 
-#: src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:127
+#: src/multiplayer.cpp:115 src/multiplayer_lobby.cpp:127
 msgid "Shroud"
 msgstr "Ochrana tmy"
 
-#: src/multiplayer.cpp:114
+#: src/multiplayer.cpp:117
 msgid "The map is unknown until your units explore it"
 msgstr "Neprozkoumané části mapy nejsou vidět"
 
-#: src/multiplayer.cpp:116 src/reports.cpp:375
+#: src/multiplayer.cpp:119 src/reports.cpp:376
 msgid "Observers"
 msgstr "Pozorovatelé"
 
-#: src/multiplayer.cpp:118
+#: src/multiplayer.cpp:121
 msgid "Allow users who are not playing to watch the game"
 msgstr "Povolit uživatelům, kteří nehrají, pozorovat hru"
 
-#: src/multiplayer.cpp:120 src/multiplayer_client.cpp:119
+#: src/multiplayer.cpp:123 src/multiplayer_client.cpp:119
 #: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:456
 #: src/show_dialog.cpp:462
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/multiplayer.cpp:121 src/show_dialog.cpp:442 src/show_dialog.cpp:455
+#: src/multiplayer.cpp:124 src/show_dialog.cpp:442 src/show_dialog.cpp:455
 msgid "Ok"
 msgstr "OK"
 
-#: src/multiplayer.cpp:123
+#: src/multiplayer.cpp:126
 msgid "Regenerate"
 msgstr "Znovu"
 
-#: src/multiplayer.cpp:125
+#: src/multiplayer.cpp:128
 msgid "Settings..."
 msgstr "Nastavení..."
 
-#: src/multiplayer.cpp:129
+#: src/multiplayer.cpp:132
 msgid "Share View"
 msgstr "Sdílej pohled"
 
-#: src/multiplayer.cpp:130
+#: src/multiplayer.cpp:133
 msgid "Share Maps"
 msgstr "Sdílej mapy"
 
-#: src/multiplayer.cpp:131
+#: src/multiplayer.cpp:134
 msgid "Share None"
 msgstr "Nesdílej nic"
 
-#: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:177
+#: src/multiplayer.cpp:145 src/multiplayer_connect.cpp:181
 msgid "No multiplayer sides."
 msgstr "Hra více hráčů nemá určené strany."
 
-#: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:158
+#: src/multiplayer.cpp:173 src/multiplayer_lobby.cpp:158
 msgid "Create Game"
 msgstr "Vytvoř hru"
 
-#: src/multiplayer.cpp:174
+#: src/multiplayer.cpp:177
 msgid "Name of game"
 msgstr "Název hry"
 
-#: src/multiplayer.cpp:178
+#: src/multiplayer.cpp:181
 msgid "$login's game"
 msgstr "$login hraje"
 
-#: src/multiplayer.cpp:189
+#: src/multiplayer.cpp:192
 msgid "Map to play"
 msgstr "Mapa k hraní"
 
-#: src/multiplayer.cpp:286
+#: src/multiplayer.cpp:289
 msgid "Era"
 msgstr "Epocha"
 
-#: src/multiplayer.cpp:348
+#: src/multiplayer.cpp:351
 msgid "Unlimited"
 msgstr "Neomezeně"
 
-#: src/multiplayer.cpp:352
+#: src/multiplayer.cpp:355
 msgid "Turns"
 msgstr "Kol"
 
-#: src/multiplayer.cpp:360
+#: src/multiplayer.cpp:363
 msgid "Village Gold"
 msgstr "Zlato/Vesnice"
 
-#: src/multiplayer.cpp:372
+#: src/multiplayer.cpp:375
 msgid "Experience Requirements"
 msgstr "Potřebné zkušenosti"
 
-#: src/multiplayer.cpp:497
+#: src/multiplayer.cpp:500
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
 msgstr ""
 
-#: src/multiplayer.cpp:497
+#: src/multiplayer.cpp:500
 msgid "Warning"
 msgstr "Varování"
 
@@ -6732,9 +7063,9 @@ msgstr "Časový limit pro připojení vypršel"
 msgid "Receiving game list..."
 msgstr "Přijímání seznamu her..."
 
-#: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:378
-#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1524
-#: src/playturn.cpp:1529 src/playturn.cpp:1616
+#: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:381
+#: src/multiplayer_connect.cpp:383 src/playlevel.cpp:769 src/playturn.cpp:1525
+#: src/playturn.cpp:1530 src/playturn.cpp:1616
 msgid "Gold"
 msgstr "Zlatých"
 
@@ -6786,11 +7117,11 @@ msgstr "Počítač proti počítači"
 msgid "I'm Ready"
 msgstr "Můžeme začít"
 
-#: src/multiplayer_connect.cpp:97
+#: src/multiplayer_connect.cpp:99
 msgid "This is not a multiplayer save"
 msgstr "Toto není uložená hra více hráčů"
 
-#: src/multiplayer_connect.cpp:237
+#: src/multiplayer_connect.cpp:241
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -6798,81 +7129,81 @@ msgstr ""
 "Vítězství\n"
 "@Znič nepřátelské(ho) vůdce"
 
-#: src/multiplayer_connect.cpp:257
+#: src/multiplayer_connect.cpp:261
 msgid "Network Player"
 msgstr "Síťový hráč"
 
-#: src/multiplayer_connect.cpp:258
+#: src/multiplayer_connect.cpp:262
 msgid "Local Player"
 msgstr "Místní hráč"
 
-#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:467
-#: src/multiplayer_connect.cpp:581 src/multiplayer_connect.cpp:675
+#: src/multiplayer_connect.cpp:263 src/multiplayer_connect.cpp:470
+#: src/multiplayer_connect.cpp:584 src/multiplayer_connect.cpp:678
 msgid "Computer Player"
 msgstr "Počítačový hráč"
 
-#: src/multiplayer_connect.cpp:260
+#: src/multiplayer_connect.cpp:264
 msgid "Empty"
 msgstr "Prázdný"
 
-#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:368
-#: src/multiplayer_connect.cpp:371
+#: src/multiplayer_connect.cpp:291 src/multiplayer_connect.cpp:371
+#: src/multiplayer_connect.cpp:374
 msgid "Team"
 msgstr "Tým"
 
-#: src/multiplayer_connect.cpp:296
+#: src/multiplayer_connect.cpp:299
 msgid "Red"
 msgstr "Červená"
 
-#: src/multiplayer_connect.cpp:298
+#: src/multiplayer_connect.cpp:301
 msgid "Blue"
 msgstr "Modrá"
 
-#: src/multiplayer_connect.cpp:300
+#: src/multiplayer_connect.cpp:303
 msgid "Green"
 msgstr "Zelená"
 
-#: src/multiplayer_connect.cpp:302
+#: src/multiplayer_connect.cpp:305
 msgid "Yellow"
 msgstr "Žlutá"
 
-#: src/multiplayer_connect.cpp:304
+#: src/multiplayer_connect.cpp:307
 msgid "Purple"
 msgstr "Fialová"
 
-#: src/multiplayer_connect.cpp:306
+#: src/multiplayer_connect.cpp:309
 msgid "Orange"
 msgstr "Oranžová"
 
-#: src/multiplayer_connect.cpp:308
+#: src/multiplayer_connect.cpp:311
 msgid "Grey"
 msgstr "Šedá"
 
-#: src/multiplayer_connect.cpp:310
+#: src/multiplayer_connect.cpp:313
 msgid "White"
 msgstr "Bílá"
 
-#: src/multiplayer_connect.cpp:312
+#: src/multiplayer_connect.cpp:315
 msgid "Brown"
 msgstr "Hnědá"
 
-#: src/multiplayer_connect.cpp:357
+#: src/multiplayer_connect.cpp:360
 msgid "Game Lobby"
 msgstr "Herní předsíň"
 
-#: src/multiplayer_connect.cpp:360 src/multiplayer_connect.cpp:362
+#: src/multiplayer_connect.cpp:363 src/multiplayer_connect.cpp:365
 msgid "Player/Type"
 msgstr "Hráč/Typ"
 
-#: src/multiplayer_connect.cpp:363 src/multiplayer_connect.cpp:366
+#: src/multiplayer_connect.cpp:366 src/multiplayer_connect.cpp:369
 msgid "Faction"
 msgstr "Frakce"
 
-#: src/multiplayer_connect.cpp:373 src/multiplayer_connect.cpp:376
+#: src/multiplayer_connect.cpp:376 src/multiplayer_connect.cpp:379
 msgid "Color"
 msgstr "Barva"
 
-#: src/multiplayer_connect.cpp:530 src/multiplayer_connect.cpp:534
+#: src/multiplayer_connect.cpp:533 src/multiplayer_connect.cpp:537
 msgid "Waiting for network players to join"
 msgstr "Čekám, až se připojí další hráči"
 
@@ -6896,60 +7227,60 @@ msgstr "Pozoruj hru"
 msgid "Quit"
 msgstr "Konec"
 
-#: src/playlevel.cpp:672
+#: src/playlevel.cpp:688
 msgid "Game Over"
 msgstr "Konec hry"
 
-#: src/playlevel.cpp:673
+#: src/playlevel.cpp:689
 msgid "The game is over."
 msgstr "Hra skončila."
 
-#: src/playlevel.cpp:686
+#: src/playlevel.cpp:702
 msgid "Defeat"
 msgstr "Porážka"
 
-#: src/playlevel.cpp:687
+#: src/playlevel.cpp:703
 msgid "You have been defeated!"
 msgstr "Byl jsi poražen!"
 
-#: src/playlevel.cpp:719
-msgid "Victory"
-msgstr "Vítězství"
-
-#: src/playlevel.cpp:720
-msgid "You have emerged victorious!"
-msgstr "Zvítězil jsi!"
-
-#: src/playlevel.cpp:722
+#: src/playlevel.cpp:759
 msgid "Remaining gold"
 msgstr "Zbývající zlato"
 
-#: src/playlevel.cpp:725
+#: src/playlevel.cpp:762
 msgid "Early finish bonus"
 msgstr "Bonus za rychlý konec"
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:764
 msgid "per turn"
 msgstr "na kolo"
 
-#: src/playlevel.cpp:728
+#: src/playlevel.cpp:765
 msgid "Turns finished early"
 msgstr "Zbývajících kol"
 
-#: src/playlevel.cpp:730
+#: src/playlevel.cpp:767
 msgid "Bonus"
 msgstr "Bonus"
 
-#: src/playlevel.cpp:737
+#: src/playlevel.cpp:774
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% zlata ti zůstává do dalšího scénáře"
 
-#: src/playlevel.cpp:738
+#: src/playlevel.cpp:774
 msgid "Retained Gold"
 msgstr "Celkem zlatých"
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:778
+msgid "Victory"
+msgstr "Vítězství"
+
+#: src/playlevel.cpp:779
+msgid "You have emerged victorious!"
+msgstr "Zvítězil jsi!"
+
+#: src/playlevel.cpp:804
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6959,56 +7290,52 @@ msgstr "Síťové spojení bylo přerušeno a hra nemůže pokračovat. Mám ji 
 msgid "It is now your turn"
 msgstr "Nyní je řada na tobě"
 
-#: src/playturn.cpp:490
+#: src/playturn.cpp:488
 msgid "Attacker"
 msgstr "Útočník"
 
-#: src/playturn.cpp:492
+#: src/playturn.cpp:490
 msgid "Defender"
 msgstr "Obránce"
 
-#: src/playturn.cpp:516 src/playturn.cpp:636
+#: src/playturn.cpp:514 src/playturn.cpp:633
 msgid "Damage Calculations"
 msgstr "Výpočet poškození"
 
-#: src/playturn.cpp:602
+#: src/playturn.cpp:599
 msgid "Melee"
 msgstr "Zblízka"
 
-#: src/playturn.cpp:615 src/reports.cpp:210
+#: src/playturn.cpp:612 src/reports.cpp:210
 msgid "vs"
 msgstr "vs."
 
-#: src/playturn.cpp:648
+#: src/playturn.cpp:645
 msgid "Attack Enemy"
 msgstr ""
 
-#: src/playturn.cpp:649
+#: src/playturn.cpp:646
 msgid "Choose weapon"
 msgstr "Vyber zbraň"
 
-#: src/playturn.cpp:1136
+#: src/playturn.cpp:1127
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr "Zatím jsi nezačal svoje kolo. Chceš opravdu ukončit kolo?"
 
-#: src/playturn.cpp:1145 src/playturn.cpp:1150
+#: src/playturn.cpp:1136 src/playturn.cpp:1141
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Některé jednotky ztratí kroky. Chceš opravdu ukončit kolo?"
 
-#: src/playturn.cpp:1166
+#: src/playturn.cpp:1157
 msgid "Auto-Save"
 msgstr "Automatické uložení"
 
-#: src/playturn.cpp:1168
+#: src/playturn.cpp:1159
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Hru se nepodařilo uložit automaticky. Ulož ji, prosím, ručně."
 
-#: src/playturn.cpp:1394 src/playturn.cpp:1408
-msgid "Error"
-msgstr "Chyba"
-
-#: src/playturn.cpp:1394
+#: src/playturn.cpp:1396
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -7016,23 +7343,23 @@ msgstr ""
 "Jména uložených her nemohou obsahovat dvojtečky, lomítka nebo zpětná "
 "lomítka. Zvol prosím jiné jméno."
 
-#: src/playturn.cpp:1405
+#: src/playturn.cpp:1407
 msgid "Saved"
 msgstr "Uloženo"
 
-#: src/playturn.cpp:1405
+#: src/playturn.cpp:1407
 msgid "The game has been saved"
 msgstr "Hra byla uložena"
 
-#: src/playturn.cpp:1525
+#: src/playturn.cpp:1526
 msgid "Units"
 msgstr "Jednotky"
 
-#: src/playturn.cpp:1526
+#: src/playturn.cpp:1527
 msgid "Income"
 msgstr "Příjmy"
 
-#: src/playturn.cpp:1526
+#: src/playturn.cpp:1527
 msgid "Upkeep"
 msgstr "Výdaje"
 
@@ -7072,11 +7399,11 @@ msgstr "ho"
 msgid "him"
 msgstr "ji"
 
-#: src/playturn.cpp:1762
+#: src/playturn.cpp:1768
 msgid "You are seperated from your soldiers and may not recall them"
 msgstr "Jsi oddělen od svých vojáků a nemůžeš je přivolat"
 
-#: src/playturn.cpp:1764
+#: src/playturn.cpp:1770
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7084,117 +7411,113 @@ msgstr ""
 "Nejsou k disposici žádní vojáci k přivolání\n"
 "(musíš mít někoho, kdo přežil z minulého scénáře)."
 
-#: src/playturn.cpp:1768
-msgid "You must have at least"
-msgstr "Musíš mít nejméně"
+#: src/playturn.cpp:1776
+msgid "You must have at least $cost gold pieces to recall a unit"
+msgstr "Potřebuje alespoň $cost zlaťáků k přivolání jednotky"
 
-#: src/playturn.cpp:1770
-msgid "gold pieces to recall a unit"
-msgstr "zlaťáků k přivolání jednotky"
-
-#: src/playturn.cpp:1793
+#: src/playturn.cpp:1799
 msgid "Dismiss Unit"
 msgstr "Propusť jednotku"
 
-#: src/playturn.cpp:1806
+#: src/playturn.cpp:1812
 msgid "Select unit"
 msgstr "Vyber jednotku"
 
-#: src/playturn.cpp:1850
+#: src/playturn.cpp:1856
 msgid "Message"
 msgstr "Zpráva"
 
-#: src/playturn.cpp:1850
+#: src/playturn.cpp:1856
 msgid "Send to allies only"
 msgstr "Pošli jen spojencům"
 
-#: src/playturn.cpp:1945
+#: src/playturn.cpp:1950
 msgid "Location"
 msgstr "Umístění"
 
-#: src/playturn.cpp:2027 src/playturn.cpp:2087
+#: src/playturn.cpp:2032 src/playturn.cpp:2092
 msgid "Recruits"
 msgstr "Naverbováno"
 
-#: src/playturn.cpp:2033 src/playturn.cpp:2091
+#: src/playturn.cpp:2038 src/playturn.cpp:2096
 msgid "Recalls"
 msgstr "Přivoláno"
 
-#: src/playturn.cpp:2039 src/playturn.cpp:2095
+#: src/playturn.cpp:2044 src/playturn.cpp:2100
 msgid "Advancements"
 msgstr "Povýšení"
 
-#: src/playturn.cpp:2045 src/playturn.cpp:2099
+#: src/playturn.cpp:2050 src/playturn.cpp:2104
 msgid "Losses"
 msgstr "Ztráty"
 
-#: src/playturn.cpp:2051 src/playturn.cpp:2103
+#: src/playturn.cpp:2056 src/playturn.cpp:2108
 msgid "Kills"
 msgstr "Zabito"
 
-#: src/playturn.cpp:2057
+#: src/playturn.cpp:2062
 msgid "Damage Inflicted"
 msgstr "Způsobené poranění"
 
-#: src/playturn.cpp:2063
+#: src/playturn.cpp:2068
 msgid "Damage Taken"
 msgstr "Utržené poranění"
 
-#: src/playturn.cpp:2069
+#: src/playturn.cpp:2074
 msgid "Damage Inflicted (EV)"
 msgstr ""
 
-#: src/playturn.cpp:2076
+#: src/playturn.cpp:2081
 msgid "Damage Taken (EV)"
 msgstr ""
 
-#: src/playturn.cpp:2118
+#: src/playturn.cpp:2123
 msgid "Search"
 msgstr "Najdi popisek nebo jednotku"
 
-#: src/playturn.cpp:2128
+#: src/playturn.cpp:2133
 msgid "prompt^Command:"
 msgstr "Příkaz:"
 
-#: src/playturn.cpp:2139
+#: src/playturn.cpp:2144
 msgid "Chat Log"
 msgstr ""
 
-#: src/playturn.cpp:2204
+#: src/playturn.cpp:2209
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nenašel jsem popisek ani jednotku obsahující „$search“."
 
-#: src/playturn.cpp:2278
+#: src/playturn.cpp:2283
 msgid "Place Label"
 msgstr "Umísti popisek"
 
-#: src/playturn.cpp:2279
+#: src/playturn.cpp:2284
 msgid "Label"
 msgstr "Název"
 
-#: src/playturn.cpp:2402
+#: src/playturn.cpp:2407
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
 
-#: src/playturn.cpp:2454
+#: src/playturn.cpp:2459
 msgid "Replace with AI"
 msgstr "Nahraď počítačovým hráčem"
 
-#: src/playturn.cpp:2455
+#: src/playturn.cpp:2460
 msgid "Replace with local player"
 msgstr "Nahraď místním hráčem"
 
-#: src/playturn.cpp:2456
+#: src/playturn.cpp:2461
 msgid "Abort game"
 msgstr "Přeruš hru"
 
-#: src/playturn.cpp:2459
+#: src/playturn.cpp:2464
 msgid "Replace with "
 msgstr "Nahraď"
 
-#: src/playturn.cpp:2463
+#: src/playturn.cpp:2468
 msgid "has left the game. What do you want to do?"
 msgstr "opustil(a) hru. Co s tím chceš dělat?"
 
@@ -7256,17 +7579,17 @@ msgstr "Neutrální jednotky"
 msgid "Chaotic units"
 msgstr "Nočních jednotek"
 
-#: src/reports.cpp:311
-msgid "Owned"
-msgstr "Vlastní"
+#: src/reports.cpp:312
+msgid "Owned village"
+msgstr "Vlastní vesnice"
 
-#: src/reports.cpp:313
-msgid "Enemy"
-msgstr "Nepřátelská"
+#: src/reports.cpp:314
+msgid "Enemy village"
+msgstr "Nepřátelská vesnice"
 
-#: src/reports.cpp:315
-msgid "Allied"
-msgstr "Spojenecká"
+#: src/reports.cpp:316
+msgid "Allied village"
+msgstr "Spojenecká vesnice"
 
 #: src/show_dialog.cpp:930
 msgid "KB"
@@ -7375,55 +7698,17 @@ msgstr "Smaž soubor"
 msgid "Deletion of the file failed."
 msgstr "Smazání souboru se nezdařilo."
 
-#~ msgid "Heir to the Throne"
-#~ msgstr "Dědic trůnu"
+#~ msgid "You must have at least"
+#~ msgstr "Musíš mít nejméně"
 
-#~ msgid ""
-#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-#~ "champion.png,Champion,(hardest)"
-#~ msgstr ""
-#~ "&elvish-fighter.png,Bojovník,(nejsnažší);*&elvish-hero.png,Hrdina;&elvish-"
-#~ "champion.png,Přeborník,(nejobtížnějsí)"
+#~ msgid "Owned"
+#~ msgstr "Vlastní"
 
-#~ msgid "The Dark Hordes"
-#~ msgstr "Temné hordy"
+#~ msgid "Enemy"
+#~ msgstr "Nepřátelská"
 
-#~ msgid ""
-#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
-#~ "&undead-lich.png,Dark Lord,(hardest)"
-#~ msgstr ""
-#~ "&undead-initiate.png,Učeň,(nejsnažší);*&undead-necromancer.png,Mistr;"
-#~ "&undead-lich.png,Temný pán,(nejobtížnějsí)"
-
-#~ msgid "Son of the Black Eye (chapter I)"
-#~ msgstr "Syn Černého Oka (kapitola I)"
-
-#~ msgid ""
-#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
-#~ "warlord.png,Warlord,(hardest)"
-#~ msgstr ""
-#~ "&orcish-grunt.png,Bručoun,(nejsnažší);*&orcish-warrior.png,Rváč;&orcish-"
-#~ "warlord.png,Válečník,(nejobtížnějsí)"
-
-#~ msgid "The Eastern Invasion"
-#~ msgstr "Východní invaze"
-
-#~ msgid ""
-#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
-#~ "&human-royalguard.png,Royal Guard,(hardest)"
-#~ msgstr ""
-#~ "&human-spearman.png,Pěšák,(nejsnažší);*&human-swordman.png,Šermíř;&human-"
-#~ "royalguard.png,Královská garda,(nejobtížnějsí)"
-
-#~ msgid "The Rise of Wesnoth"
-#~ msgstr "Úsvit Wesnothu"
-
-#~ msgid ""
-#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
-#~ "&noble-lord.png,Lord,(hardest)"
-#~ msgstr ""
-#~ "&noble-fighter.png,Bojovník,(nejsnažší);*&noble-commander.png,Velitel;"
-#~ "&noble-lord.png,Lord,(nejobtížnějsí)"
+#~ msgid "Allied"
+#~ msgstr "Spojenecká"
 
 #~ msgid ""
 #~ "The video mode could not be changed. Your window manager must be set to "
@@ -7435,201 +7720,14 @@ msgstr "Smazání souboru se nezdařilo."
 #~ "musí zvládat rozlišení alespoň 1024x768x16, aby mohla hra běžet v "
 #~ "celoobrazovkovém módu."
 
-#~ msgid "player"
-#~ msgstr "hráč"
-
-#~ msgid "Full Screen"
-#~ msgstr "Celá obrazovka"
-
-#~ msgid "Accelerated Speed"
-#~ msgstr "Zrychleno"
-
-#~ msgid "Skip AI Moves"
-#~ msgstr "Přeskakuj tahy počítače"
-
-#~ msgid "Show Grid"
-#~ msgstr "Zobrazuj mřížku"
-
-#~ msgid "Show Floating Labels"
-#~ msgstr "Zobrazuj plovoucí popisky"
-
-#~ msgid "Turn Dialog"
-#~ msgstr "Dialog na konci kola"
-
-#~ msgid "Turn Bell"
-#~ msgstr "Zvonek na konci kola"
-
-#~ msgid "Show Team Colors"
-#~ msgstr "Zobrazuj barvy týmů"
-
-#~ msgid "Show Color Cursors"
-#~ msgstr "Zobrazuj barevné kurzory"
-
-#~ msgid "Show Haloing Effects"
-#~ msgstr "Zobrazuj halo efekty"
-
-#~ msgid "Video Mode"
-#~ msgstr "Grafický mód"
-
-#~ msgid "Hotkeys"
-#~ msgstr "Klávesové zkratky"
-
-#~ msgid "Adjust Gamma"
-#~ msgstr "Gama korekce"
-
-#~ msgid "Music Volume:"
-#~ msgstr "Hlasitost hudby:"
-
-#~ msgid "SFX Volume:"
-#~ msgstr "Hlasitost zvuků:"
-
-#~ msgid "Gamma:"
-#~ msgstr "Gama:"
-
-#~ msgid "Scroll Speed:"
-#~ msgstr "Rychlost posouvání:"
-
-#~ msgid "Change the sound effects volume"
-#~ msgstr "Změna hlasitosti zvukových efektů"
-
-#~ msgid "Change the music volume"
-#~ msgstr "Změna hlasitosti hudebního doprovodu"
-
-#~ msgid "Change the speed of scrolling around the map"
-#~ msgstr "Změna rychlosti posouvání mapy"
-
-#~ msgid "Change the brightness of the display"
-#~ msgstr "Změna nastavení jasu"
-
-#~ msgid "Choose whether the game should run full screen or in a window"
-#~ msgstr "Má-li hra běžet v okně, nebo přes celou obrazovku"
-
-#~ msgid "Make units move and fight faster"
-#~ msgstr "Jednotky se pohybují a bojují rychleji"
-
-#~ msgid "Do not animate AI units moving"
-#~ msgstr "Neanimuj jednotky ovládané počítačem"
-
-#~ msgid "Overlay a grid onto the map"
-#~ msgstr "Nakresli přes mapu mřížku"
-
-#~ msgid "Show text above a unit when it is hit to display damage inflicted"
-#~ msgstr "Ukazuj při zásahu nad jednotkou, jak velké zranění utrpěla"
-
-#~ msgid "Change the resolution the game runs at"
-#~ msgstr "Změna rozlišení, ve kterém hra běží"
-
-#~ msgid "Display a dialog at the beginning of your turn"
-#~ msgstr "Zobraz dialog na začátku každého kola"
-
-#~ msgid "Play a bell sound at the beginning of your turn"
-#~ msgstr "Zvonek na začátku každého kola"
-
-#~ msgid ""
-#~ "Show a colored circle around the base of each unit to show which side it "
-#~ "is on"
-#~ msgstr ""
-#~ "Zobrazuj pod jednotkou barevnou kružnici kolem ukazující, za kterou "
-#~ "stranu hraje"
-
-#~ msgid "Use colored mouse cursors (may be slower)"
-#~ msgstr "Používej barevné kursory myši (může zpomalovat)"
-
-#~ msgid "Use graphical special effects (may be slower)"
-#~ msgstr "Používej speciální grafické efekty (může zpomalovat)"
-
-#~ msgid "View and configure keyboard shortcuts"
-#~ msgstr "Zobraz a nastav klávesové zkratky"
-
-#~ msgid "Prefs section^General"
-#~ msgstr "Obecné"
-
-#~ msgid "Prefs section^Display"
-#~ msgstr "Zobrazení"
-
-#~ msgid "Prefs section^Sound"
-#~ msgstr "Zvuky"
-
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "Žádné jiné grafické módy nejsou k dispozici."
-
-#~ msgid "Choose Resolution"
-#~ msgstr "Vyber si rozlišení"
-
-#~ msgid "Hotkey Settings"
-#~ msgstr "Nastavení klávesových zkratek"
-
-#~ msgid "Press desired HotKey"
-#~ msgstr "Stiskni klávesovou zkratku"
-
-#~ msgid "Change Hotkey"
-#~ msgstr "Změň klávesovou zkratku"
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "Ulož klávesové zkratky"
-
-#~ msgid "This HotKey is already in use."
-#~ msgstr "Tato zkratka je již použita pro jinou akci."
-
-#~ msgid ""
-#~ "Yes, we will help you, for although we have no loyalty to Wesnoth, we "
-#~ "believe that you are on a noble quest."
-#~ msgstr ""
-#~ "Ano, pomůžeme vám; i když nejsme oddáni králi Wesnothu, věříme, že jste "
-#~ "na ušlechtilé výpravě."
-
 #~ msgid "They follow us. We must move quickly!"
 #~ msgstr "Pronásledují nás, musíme jít rychle."
 
 #~ msgid "Stop these intruders from getting through. Ambush them!"
 #~ msgstr "Překazte těm vetřelcům průchod! Přepadněte je!"
 
-#~ msgid ""
-#~ "We have defeated these bandits. Perhaps, now that we are here, Owaec's "
-#~ "troops will not be afraid to exit his castle."
-#~ msgstr ""
-#~ "Porazili jsme bandity. Když jsme zde, mohly by se snad Owaecovy jednotky "
-#~ "přestat obávat vyjít ven z hradu."
-
-#~ msgid ""
-#~ "No, I have not encountered any undead yet. However, I don't think me and "
-#~ "my men can do any more good here. We will come with you to see if, "
-#~ "together, we cannot find a way to push back these undead."
-#~ msgstr ""
-#~ "Ne, na nemrtvé jsme zatím nenarazili. Avšak nemyslím si, že tu já a moji "
-#~ "muži budeme ještě k něčemu dobří. Půjdeme se s tebou podívat, zda "
-#~ "společně nenajdeme nějaký způsob, jak ty nemrtvé zatlačit zpět."
-
-#~ msgid "So, you're the leader of this entire undead force?"
-#~ msgstr "Takže to ty vedeš všechny ty síly nemrtvých?"
-
-#~ msgid "We should probably try to get this knowledge to the king."
-#~ msgstr "Měli bychom se o tom pokusit zpravit krále."
-
-#~ msgid ""
-#~ "Sir, we cannot defeat a lich this powerful. I am going to search the "
-#~ "castle and see if there is any way we can escape."
-#~ msgstr ""
-#~ "Pane, nemůžeme porazit tak mocného licha. Jdu prohledat hrad a podívat "
-#~ "se, zda tu není nějaká cesta kudy uniknout a varovat krále."
-
 #~ msgid "Race"
 #~ msgstr "Národ"
 
 #~ msgid "You have reached the end of the currently playable levels"
 #~ msgstr "Dosáhl jsi konce momentálně hratelných úrovní"
-
-#~ msgid "What is the Skull of Agarash? Tell me more."
-#~ msgstr "Co je to Agarašova lebka? Řekni mi víc."
-
-#~ msgid "What? I can't die! I've done so already! Noooo!"
-#~ msgstr "Cože? Já nemůžu umřít! Už jsem mrtvý! Nééé!"
-
-#~ msgid "I am dying, and my army is defeated! This is the end..."
-#~ msgstr "Umírám a má armáda je poražena! To je konec..."
-
-#~ msgid "Let me have peace in Death! Donna I'll be there soo-"
-#~ msgstr "Nechte mne odpočívat v pokjoji. Paní, budu tam brzy..."
-
-#~ msgid "yes"
-#~ msgstr "Ano"
