@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-11-07 11:44+0100\n"
-"PO-Revision-Date: 2004-11-06 17:24+0100\n"
+"PO-Revision-Date: 2004-11-07 12:07+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -132,19 +132,19 @@ msgstr ""
 "für spezielle Situationen und Ausnahmen folgen Sie bitte den angegebenen "
 "Links.\n"
 "\n"
-"Um einzusteigen ist es am besten, den <italic>text=Tutorial</italic>-Button "
-"im Hauptmenü zu drücken. Das startet ein interaktives Tutorial, in welchem "
-"Sie die Grundlagen von Wesnoth lernen. Danach sollten Sie zuerst die "
-"Kampagne 'der Thronerbe' spielen. Dafür drücken Sie zuerst den "
-"<italic>text=Kampagne</italic>-Button und dann <italic>text='Der Thronerbe'</"
-"italic>. Da 'Battle for Wesnoth' ziemlich schwierig werden kann, ist es "
+"Um einzusteigen ist es am besten, wenn Ihr den Bereich "
+"<italic>text=Einführung</italic> im Hauptmenü auswählt. Hier sollen Euch die "
+"Grundlagen von Wesnoth beigebracht werden. Danach solltet Ihr zuerst die "
+"Kampagne »Der Thronerbe« spielen. Dafür wählt zuerst den Punkt "
+"<italic>text=Kampagne</italic> und dann <italic>text='Der Thronerbe'</"
+"italic>. Da Battle for Wesnoth ziemlich schwierig werden kann, ist es "
 "vielleicht sinnvoll, den Schwierigkeitsgrad <italic>text=leicht</italic> zu "
 "wählen.\n"
 "\n"
-"<img>src=help/tooltip.png align=right float=yes</img>Wenn Sie während des "
-"Spiels die Maus über die Menüleiste rechts bewegen, bekommen Sie zu den "
-"meisten Dingen eine kurze Beschreibung. Das ist vor allem sinnvoll wenn "
-"Sieneue Eigenschaften zum ersten mal sehen."
+"<img>src=help/tooltip.png align=right float=yes</img>Wenn Ihr während des "
+"Spiels die Maus über die Menüleiste rechts bewegt, erhaltet Ihr zu den "
+"meisten Dingen eine kurze Beschreibung. Das ist vor allem dann sinnvoll, "
+"wenn Ihr über neue Fertigekeiten stolpern solltet."
 
 #: data/help.cfg:77
 msgid "Recruiting and Recalling"
@@ -503,7 +503,7 @@ msgstr ""
 "\n"
 "Einheiten benötigen eine bestimmte Anzahl von Erfahrungspunkten, um eine "
 "Stufe aufzusteigen (20% weniger bei Einheiten mit der Charakteristik "
-"\"Intelligent\"). Sobald sie diese Anzahl an Punkten erreicht haben, steigen "
+"»Intelligent«). Sobald sie diese Anzahl an Punkten erreicht haben, steigen "
 "sie eine Stufe auf und werden vollständig geheilt. Manchmal müssen Sie "
 "zwischen mehreren Aufstiegsoptionen wählen.\n"
 "\n"
@@ -615,9 +615,9 @@ msgstr ""
 "Es gibt zwei Ausnahmen für die Berechnung der Unterhaltskosten. Erstens "
 "zählen loyale Einheiten (mit der Charakteristik 'loyal') immer nur als Stufe-"
 "1-Einheiten, gleich welche Stufe Sie tatsächlich haben. Zweitens kosten alle "
-"Einheiten, mit denen Sie ein Szenario beginnen (z.B. Konrad und Delfador) "
+"Einheiten, mit denen Sie ein Szenario beginnen (z.B. Konrad oder Delfador) "
 "und Einheiten, die sich Ihnen wärend eines Szenarios anschließen (wie z.B. "
-"der Reiter im zweiten Szenario von \"Der Thronerbe\") niemals Unterhalt."
+"der Reiter im zweiten Szenario von »Der Thronerbe«) niemals Unterhalt."
 
 #: data/help.cfg:195
 msgid "Wrap Up"
@@ -632,10 +632,10 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 "Die Grundlagen des Spiels wurden nun behandelt. Sie können weiterlesen bei "
-"\"Grundlegende Strategien\", oder sich die <ref>dst=traits "
-"text=Charakteristiken</ref> und <ref>dst=abilities text=Eigenschaften</ref> "
+"»Grundlegende Strategien«, oder sich die <ref>dst=traits "
+"text=Charakteristiken</ref> und <ref>dst=abilities text=Fertigkeiten</ref> "
 "anschauen, allerdings wissen Sie schon alles, was zum Spielen des Szenarios "
-"\"Der Thronerbe\" wichtig ist. Viel Spaß dabei!"
+"»Der Thronerbe« wichtig ist. Viel Spaß dabei!"
 
 #: data/help.cfg:201 src/titlescreen.cpp:186
 msgid "About"
@@ -880,9 +880,8 @@ msgid "Only magical beings can wield such an object."
 msgstr ""
 
 #: data/items.cfg:653
-#, fuzzy
 msgid "Storm Trident"
-msgstr "Dreizack"
+msgstr "Dreizack des Sturms"
 
 #: data/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
@@ -893,9 +892,8 @@ msgid "Only the mermen can use this item!"
 msgstr ""
 
 #: data/items.cfg:669
-#, fuzzy
 msgid "storm trident"
-msgstr "Dreizack"
+msgstr "Dreizack des Sturms"
 
 #: data/items.cfg:707
 msgid "Flaming Sword"
@@ -1305,7 +1303,6 @@ msgstr ""
 "Ihr ausbilden wollt, und drückt »Okay«. Um schneller auszubilden könnt Ihr "
 "mit »Ctrl-Shift-R« eine weitere Einheit des letzten Einheitentyps ausbilden."
 
-# Korrektur lesen
 #: data/scenarios/tutorial/Basic_Training.cfg:64
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
@@ -2126,7 +2123,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "Wie kann ich die Eigenschaften eines bestimmten Geländes herausfinden?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -2137,13 +2133,13 @@ msgid ""
 "it will cost the selected unit to move through that hex."
 msgstr ""
 "Um die Eigenschaften eines Geländes für eine bestimmte Einheit "
-"herauszufinden, macht einen Rechtsklick auf die Einheit, wählt "
-"\"Einheitenbeschreibung\" und dann \"Gelände-Modifikatoren\". Wenn Ihr "
-"wissen wollt, welches Gelände ein bestimmtes Feld hat, bewegt den Cursor "
-"dorthin und schaut in die obere linke Bildschirmecke. Dort steht (in dieser "
-"Reihenfolge) der Name des Geländes, die Koordinaten des Hexfeldes, der "
-"Verteidigungswert der ausgewählten Einheit und die Anzahl der "
-"Bewegungspunkte, die es kostet, um dorthin zu kommen."
+"herauszufinden, klickt mit der rechten Maustaste auf die Einheit, wählt "
+"»Einheitenbeschreibung« und seht Euch dann den Abschnitt »Gelände-"
+"Modifikatoren« an. Wenn Ihr wissen wollt, welches Gelände ein bestimmtes "
+"Feld besitzt, bewegt den Cursor dorthin und schaut in die obere linke "
+"Bildschirmecke. Dort steht (in dieser Reihenfolge) die Art des Geländes, die "
+"Koordinaten des Feldes, der Verteidigungswert der ausgewählten Einheit und "
+"die Anzahl der Bewegungspunkte, die es kostet, um dorthin zu gelangen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:146
 msgid ""
@@ -2226,11 +2222,10 @@ msgid ""
 "abilities, and attack specials. Abilities apply to units while attack "
 "specials only apply to one of the unit's attacks."
 msgstr ""
-"Die Spezialitäten einer Einheit hängen ab von ihrem Typ. Beispielsweise "
-"haben alle Generäle Anführerschaft. Es gibt zwei Arten von Spezialitäten: "
-"Eigenschaften, und Angriffsspezialitäten. Eigenschaften beeinflussen "
-"Einheiten, wohingegen Angriffsspezialitäten nur eine Attacke einer Einheit "
-"beeinflussen."
+"Die Fertigkeiten einer Einheit hängen ab von ihrem Typ. Beispielsweise haben "
+"alle Generäle Führungsqualitäten. Es gibt zwei Arten von Spezialitäten: "
+"Fertigkeiten und Waffenspezialitäten. Fertigkeiten beeinflussen Einheiten, "
+"wohingegen Waffenspezialitäten nur Attacken einer Einheit beeinflussen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid "Which units get specialties?"
@@ -2531,7 +2526,7 @@ msgstr "Runde beenden"
 #: data/themes/default.cfg:809 src/dialogs.cpp:658 src/display.cpp:948
 #: src/help.cpp:1059 src/playturn.cpp:1951 src/unit.cpp:1041
 msgid "HP"
-msgstr "LE"
+msgstr "LP"
 
 #: data/themes/default.cfg:133 data/themes/default.cfg:469
 #: data/themes/default.cfg:816 src/dialogs.cpp:662 src/dialogs.cpp:670
@@ -3006,7 +3001,6 @@ msgid "heals"
 msgstr "heilen"
 
 #: data/translations/english.cfg:47
-#, fuzzy
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -3016,11 +3010,15 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 "Lichtaura:\n"
-"This unit illuminates the surrounding area, making lawful units fight "
-"better, and chaotic units fight worse.\n"
+"Durch die Verbundenheit zum Licht und ihre starke Persönlichkeit, sind diese "
+"Magier und Priester zu einem Teil des Lichtes selbst geworden. Sie strahlen "
+"eine dermassen helle Aura aus, dass um sie herum ein Gebiet im Licht "
+"erstrahlt. Dadurch werden redliche Einheiten in ihrem Kampfesmut bestärkt, "
+"wohingegen lichtscheue Einheiten panisch das Weite suchen.\n"
 "\n"
-"Any units adjacent to this unit will fight as if it were dusk when it is "
-"night, and as if it were day when it is dusk."
+"Jede angrenzende Einheit, kämpft, wenn es Nacht ist, als sei es Dämmerung. "
+"Ebenfalls kämpfen Einheiten während der Dämmerung so, als ob es weiterhin "
+"Tag wäre."
 
 #: data/translations/english.cfg:49
 msgid "illuminates"
@@ -4118,7 +4116,6 @@ msgid "Death Knight"
 msgstr "Todesritter"
 
 #: data/units/Death_Knight.cfg:16
-#, fuzzy
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and a sense "
 "of betrayal, came back to this world as Death Knights. Wielding the same "
@@ -4127,7 +4124,9 @@ msgid ""
 msgstr ""
 "Von Zeit zu Zeit geschieht es, das die mächtigsten Krieger und Generäle auf "
 "so grausame Art sterben, dass sie von Furcht und Hass erfüllt ins Reich der "
-"Lebenden als Todesritter zurückkehren."
+"Lebenden als Todesritter zurückkehren. Sie streiten mit den selben Waffen, "
+"mit denen sie zu Lebzeiten kämpfen und führen die Untoten in die Schlacht, "
+"um ihren Rachedurst stillen zu können."
 
 #: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:27
 #: data/units/Dwarvish_Steelclad.cfg:27
@@ -4334,9 +4333,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
-#, fuzzy
 msgid "slam"
-msgstr "Insel"
+msgstr "Sturzflug"
 
 #: data/units/Drake_Inferno.cfg:4
 msgid "Inferno Drake"
@@ -4767,7 +4765,7 @@ msgstr "Verstrickung"
 #: data/units/Elvish_Enchantress.cfg:116 data/units/Elvish_Sorceress.cfg:116
 #: data/units/Elvish_Sylph.cfg:82
 msgid "fey gale"
-msgstr ""
+msgstr "Sturmwind"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -5436,9 +5434,8 @@ msgstr ""
 "sie sich allerdings nur langsam fortbewegen."
 
 #: data/units/Horse_Lord.cfg:3
-#, fuzzy
 msgid "Horse Lord"
-msgstr "Edler Fürst"
+msgstr "Pferdeherr"
 
 #: data/units/Horse_Lord.cfg:17
 msgid ""
@@ -5732,9 +5729,8 @@ msgid "Siren"
 msgstr "Sirene"
 
 #: data/units/Mermaid_Siren.cfg:23
-#, fuzzy
 msgid "naiad touch"
-msgstr "Feenhauch"
+msgstr "Naiads Berührung"
 
 #: data/units/Merman.cfg:3
 msgid "Merman"
@@ -6140,6 +6136,12 @@ msgid ""
 "Orcish Slayers are fast and nimble, competent in short- and long-ranged "
 "combat, and use a poison attack. They make formidable opponents."
 msgstr ""
+"Sobald ein Orkmeuchler eine genügend große Zahl an Opfern auf dem Gewissen "
+"hat, wird ihm von der Gilde der Meuchler der Titel eines Schlächers "
+"verliehen. Auf dem Schlachtfeld ziehen Schlächter eine unübersehbare Spur "
+"des Leides durch die Reihen ihrer Gegner, indem sie sie hinterrücks mit "
+"ihrem Dolch niederstrecken oder aus der Ferne mit ihren vergifteten Dolchen "
+"an den Rand des Todes bringen."
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
@@ -6430,9 +6432,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:4
-#, fuzzy
 msgid "Saurian Icecaster"
-msgstr "Saurianischer Krieger"
+msgstr "Saurianischer Frostmeister"
 
 #: data/units/Saurian_Icecaster.cfg:17
 msgid ""
@@ -7615,9 +7616,8 @@ msgid "Terms"
 msgstr "Team"
 
 #: src/game.cpp:1192 src/game.cpp:1216
-#, fuzzy
 msgid "Response"
-msgstr "Versteinern"
+msgstr "Antwort"
 
 #: src/game.cpp:1228
 msgid "Join Official Server"
@@ -7709,7 +7709,7 @@ msgstr "Reichweite"
 
 #: src/help.cpp:1103 src/help.cpp:1104
 msgid "Special"
-msgstr ""
+msgstr "Spezialität"
 
 #: src/help.cpp:1149
 msgid "Resistances"
@@ -7935,7 +7935,7 @@ msgstr "Name der Partie"
 
 #: src/multiplayer.cpp:176
 msgid "$login's game"
-msgstr "$login's Partie"
+msgstr "$login|s Partie"
 
 #: src/multiplayer.cpp:187
 msgid "Map to play"
@@ -8035,7 +8035,7 @@ msgstr "Herrführer:"
 
 #: src/multiplayer_client.cpp:774
 msgid "Recruits: "
-msgstr "Eiheiten:"
+msgstr "Einheiten:"
 
 #: src/multiplayer_connect.cpp:48
 msgid " Computer vs Computer "
@@ -8141,7 +8141,7 @@ msgstr "1"
 
 #: src/multiplayer_lobby.cpp:145
 msgid "Vacant Slot"
-msgstr "Verfügbare Plätze"
+msgstr "Verfügbarer Platz"
 
 #: src/multiplayer_lobby.cpp:145
 msgid "Vacant Slots"
@@ -8647,7 +8647,7 @@ msgstr "Datei löschen"
 
 #: src/widgets/file_chooser.cpp:157
 msgid "Deletion of the file failed."
-msgstr "Das löschen der Datei ist fehlgeschlagen."
+msgstr "Das Löschen der Datei ist fehlgeschlagen."
 
 #~ msgid "Next tip"
 #~ msgstr "Nächste Tip"
@@ -8658,19 +8658,20 @@ msgstr "Das löschen der Datei ist fehlgeschlagen."
 #~ msgid "Do not show tips"
 #~ msgstr "Nicht nochmal fragen"
 
-#, fuzzy
 #~ msgid ""
 #~ "Riding a fast horse and armed with sword and a magical artifact, a "
 #~ "Dragoon make a versatile enemy."
 #~ msgstr ""
-#~ "Dragoner reiten schnelle Pferde und sind mit Schwert und "
-#~ "Steinschlosspistole ausgerüstet. Das macht sie zu vielseitig einsetzbaren "
-#~ "Truppen."
+#~ "Dragoner verfügen über schnelle Pferde und sind mit Schwert und einem "
+#~ "magischen Artefakt ausgerüstet. Diese Ausrüstung macht sie zu vielseitig "
+#~ "einsetzbaren Truppen."
 
 #~ msgid "Could not initialize video. Exiting.\n"
 #~ msgstr ""
-#~ "Die Videohardware konnte nicht initialisiert werden. Es wird beendet.\n"
+#~ "Die Videohardware konnte nicht initialisiert werden. Das Spiel wird "
+#~ "beendet.\n"
 
 #~ msgid "Could not initialize fonts. Exiting.\n"
 #~ msgstr ""
-#~ "Die Schriftarten konnten nicht initialsiert werden. Es wird beendet.\n"
+#~ "Die Schriftarten konnten nicht initialsiert werden. Das Spiel wird "
+#~ "beendet.\n"
