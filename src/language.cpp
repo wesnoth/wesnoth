@@ -95,16 +95,6 @@ const std::string& symbol_table::operator[](const char* key) const
 	return (*this)[std::string(key)];
 }
 
-const std::string& translate_string(const std::string& str)
-{
-	return str;
-}
-
-const std::string& translate_string_default(const std::string& str, const std::string& default_val)
-{
-	return str;
-}
-
 std::vector<language_def> get_languages()
 {
 	std::vector<language_def> res;

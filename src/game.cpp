@@ -978,7 +978,7 @@ bool game_controller::new_campaign()
 	if(difficulties.empty() == false) {
 		if(difficulty_options.size() != difficulties.size()) {
 			difficulty_options.resize(difficulties.size());
-			std::transform(difficulties.begin(),difficulties.end(),difficulty_options.begin(),translate_string);
+			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
 		}
 
 		const int res = gui::show_dialog(disp(),NULL,_("Difficulty"),

@@ -153,7 +153,7 @@ std::string terrain_palette::get_terrain_string(const gamemap::TERRAIN t) {
 	std::stringstream str;
 	const std::string& name = map_.get_terrain_info(t).name();
 	const std::string& underlying = map_.underlying_terrain(t);
-	str << translate_string(name);
+	str << name;
 	if(underlying.size() != 1 || underlying[0] != t) {
 		str << " (";
 		for(std::string::const_iterator i = underlying.begin();
