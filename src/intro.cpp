@@ -358,22 +358,28 @@ void display_map_scene(display& screen, const std::string& scenario,
 void show_map_scene_cfg(display& screen, const std::string& scenario,
 		const config& cfg) {
 	config::all_children_iterator i = cfg.ordered_begin();
-	std::pair<const std::string*, const config*> item = *i;
+	if(i != cfg.ordered_end()) {
+		std::pair<const std::string*, const config*> item = *i;
 
-	if(*item.first == "if") {
-		const std::string type = game_events::conditional_passed(
-				NULL, *item.second) ? "then":"else";
-		const config* const thens = (*item.second).child(type);
-		if(thens == NULL) {
-			std::cerr << "no map scene this way...\n";
-			return;
+		if(*item.first == "if") {
+			const std::string type = game_events::conditional_passed(
+					NULL, *item.second) ? "then":"else";
+			const config* const thens = (*item.second).child(type);
+			if(thens == NULL) {
+				std::cerr << "no map scene this way...\n";
+				return;
+			}
+			const config& selection = *thens;
+			show_map_scene_cfg(screen, scenario, selection);
+		}else{
+			const config::child_list& dots = cfg.get_children("dot");
+			const std::string& image_file = cfg["image"];
+			display_map_scene(screen, scenario, dots, image_file);
 		}
-		const config& selection = *thens;
-		show_map_scene_cfg(screen, scenario, selection);
-	}else{
-		const config::child_list& dots = cfg.get_children("dot");
+	} else { //it still can have an image attribute
+		const config::child_list dummy;
 		const std::string& image_file = cfg["image"];
-		display_map_scene(screen, scenario, dots, image_file);
+		display_map_scene(screen, scenario, dummy, image_file);
 	}
 }
 
