@@ -22,6 +22,17 @@
 #include <iostream>
 #include <string>
 
+//older versions of SDL don't define the
+//mouse wheel macros, so define them ourselves
+//if necessary.
+#ifndef SDL_BUTTON_WHEELUP
+#define SDL_BUTTON_WHEELUP 4
+#endif
+
+#ifndef SDL_BUTTON_WHEELDOWN
+#define SDL_BUTTON_WHEELDOWN 5
+#endif
+
 struct free_sdl_surface {
 	void operator()(SDL_Surface* surface) const { SDL_FreeSurface(surface); }
 };

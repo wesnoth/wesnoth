@@ -108,7 +108,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		const int res = move_unit(&gui,map,units,teams,route.steps,
 		                          &recorder,&turn_data.undos());
 
-		if(res == route.steps.size())
+		if(size_t(res) == route.steps.size())
 			ui->second.done_goto();
 	}
 
