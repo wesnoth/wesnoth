@@ -85,7 +85,8 @@ namespace {
 			if ((**i).isValid()) {
 				const std::string fname = (**i).getName();
 				const std::string suffix = ".zip";
-				if (0 == fname.compare(fname.size() - suffix.size(), suffix.size(), suffix)) {
+				if ((fname.size() > suffix.size()) &&
+				    (0 == fname.compare(fname.size() - suffix.size(), suffix.size(), suffix))) {
 					zipios::ZipFile zip(game_config::path + "/" + fname);
 					the_collection.addCollection(zip);
 					LOG_G << "zip collection " << fname << 
@@ -103,14 +104,14 @@ bool filesystem_init()
 {
 #ifdef USE_ZIPIOS
 	if (!get_user_data_dir().empty()) {
-		LOG_G << "looking at dir " << get_user_data_dir() << "\n";
+		LOG_G << "looking at user dir " << get_user_data_dir() << "\n";
 		zipios::DirectoryCollection dir(get_user_data_dir());
 		LOG_G << "user collection has " << dir.size() << " elements\n";
 		the_collection.addCollection(dir);
 		register_zipdir(get_user_data_dir());
 	}
 	if (!game_config::path.empty()) {
-		LOG_G << "looking at dir " << game_config::path << "\n";
+		LOG_G << "looking at system dir " << game_config::path << "\n";
 		zipios::DirectoryCollection dir(game_config::path);
 		LOG_G << "system collection has " << dir.size() << " elements\n";
 		the_collection.addCollection(dir);
