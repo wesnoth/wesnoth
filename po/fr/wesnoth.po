@@ -991,6 +991,8 @@ msgid ""
 "You can come if you wish, but the leader is only interesting in speaking to "
 "Baldras."
 msgstr ""
+"Vous pouvez venir si vous le voulez, mais le chef ne souhaite parler "
+"qu'à Baldras."
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1384,8 +1386,9 @@ msgstr "Vous avez attaqué Merle avec succès."
 
 #: data/scenarios/tutorial/tutorial1.cfg:166
 msgid "Can Merle retaliate from my attack?"
-msgstr ""
+msgstr "Est-ce que Merle peut répliquer à mon attaque ?"
 
+#XXX répliquer vs contre-attaquer ?
 #: data/scenarios/tutorial/tutorial1.cfg:166
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
@@ -1401,6 +1404,19 @@ msgid ""
 "shoot across multiple hexes; this is one of the distinctive features of "
 "Wesnoth."
 msgstr ""
+"Lorsque qu'une unité est attaquée, elle réplique avec l'une de ses propres "
+"armes. Cela signifie qu'après chaque coup de l'attaquant, le défenseur "
+"réplique avec un coup. Cela continue jusqu'à ce qu'un côté n'ait plus de "
+"coups à donner, auquel cas l'autre unité termine avec ses coups restants. "
+"Cependant une unité ne peut répliquer qu'avec une arme de même portée que "
+"celle utilisée pour l'attaque. Cela signifie qu'une attaque à distance ne "
+"sera contrée que par une attaque à distance et qu'une attaque de mêlée que "
+"par une attaque de mêlée. La majorité des unités ont des attaques de mêlée "
+"plus puissantes qu'à distance, aussi les unités avec des attaques à "
+"distance sont utiles contre elles puisque la réplique sera moins "
+"puissante; souvent il n'y a même pas de réplique. Cependant les unités à "
+"distance ne peuvent pas tirer à travers plusieurs hexagones; c'est une "
+"particularité de Wesnoth."
 
 #: data/scenarios/tutorial/tutorial1.cfg:167
 msgid ""
@@ -1413,10 +1429,19 @@ msgid ""
 "damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
 "combat."
 msgstr ""
+"Chaque attaque fait une certaine quantité de dégâts par coup, et peut être "
+"utilisée un certain nombre de fois par combat. Ces nombres, dénommés "
+"nombres d'attaques et de coups, sont affichés en ordre sous le nom de "
+"l'attaque sur la table de statut de l'unité et à côté d'elle dans le menu "
+"des options d'attaque. Pour trouver rapidement la quantité maximale de "
+"dégâts que peut infliger une attaque, multipliez les dégâts par le nombre de "
+"coups. Par exemple, mon attaque foudre fait 14 points de dégâts par coup et "
+"a 4 coups, ainsi puis-je infliger jusqu'à 56 points de dégâts dans un seul "
+"combat."
 
 #: data/scenarios/tutorial/tutorial1.cfg:167
 msgid "How can you tell how powerful a unit's attacks are?"
-msgstr ""
+msgstr "Comment connaître la puissance des attaques d'une unité ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:168
 msgid ""
@@ -1424,10 +1449,14 @@ msgid ""
 "based on the defender's skill at defending blows, and is listed on the "
 "attack options menu after the damage and strike numbers for the bow attack."
 msgstr ""
+"Les unités ont la possibilité de bloquer des coups. La chance de toucher "
+"d'une unité est basée sur le talent du défenseur à se protéger des coups, "
+"elle est listée dans le menu des options d'attaque après les nombres de "
+"dégâts et de coups pour l'attaque à l'arc."
 
 #: data/scenarios/tutorial/tutorial1.cfg:168
 msgid "Will my fighter hit every time when he attacks?"
-msgstr ""
+msgstr "Est-ce que mon guerrier touchera à chaque fois qu'il attaquera ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:174
 msgid "End your turn, and wait for Merle to attack you."
@@ -1446,7 +1475,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:184
 msgid "What's experience?"
-msgstr ""
+msgstr "Qu'est-ce que l'expérience ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:184
 msgid ""
@@ -1456,10 +1485,16 @@ msgid ""
 "experience is gained from defeating an enemy unit. The amount of XP gained "
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
+"Lorsqu'une unité en combat une autre, elle gagne de l'expérience, notée "
+"'XP', à la suite du combat. La somme d'expérience gagnée est égale au niveau "
+"de l'adversaire, qui représente généralement sa puissance. Cependant, "
+"beaucoup plus d'expérience est gagné pour avoir détruit une unité ennemie. "
+"La somme d'XP gagnée pour terrasser une unité est égale à 8 fois le niveau "
+"de l'ennemi."
 
 #: data/scenarios/tutorial/tutorial1.cfg:185
 msgid "What happens when a unit advances?"
-msgstr ""
+msgstr "Que se passe-t-il lorsqu'une unité progresse ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:185
 msgid ""
@@ -1470,6 +1505,13 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps that have "
 "been cast on it are removed. This is known as 'advance-heal'."
 msgstr ""
+"Lorsqu'une unité progresse, elle se transforme en une unité d'un autre type. "
+"Ce type d'unité est fonction de l'unité initiale, mais parfois il y aura "
+"plusieurs choix vers lesquels progresser. Les unités avancées sont "
+"généralement plus puissante et 1 niveau plus haut que ce qu'elles étaient "
+"initialement. Par ailleurs, lorsqu'une unité progresse, elle est "
+"complètement guérie et toutes les pénalités subies lui sont retirées. C'est "
+"connu sous le nom de 'guérison par avancement'."
 
 #: data/scenarios/tutorial/tutorial1.cfg:191
 msgid "Move your fighter onto a village."
@@ -1485,7 +1527,7 @@ msgstr "Les villages soignent les unité qui sont dessus."
 
 #: data/scenarios/tutorial/tutorial1.cfg:208
 msgid "What happens when a unit moves onto a village?"
-msgstr ""
+msgstr "Que se passe-t-il lorsqu'une unité rejoint un village ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:208
 msgid ""
@@ -1498,10 +1540,19 @@ msgid ""
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
 msgstr ""
+"Lorsqu'une unité rejoint un village, elle lève les couleurs de son camp sur "
+"le village. Cette action prends tous ses points de mouvement restants. "
+"Les villages capturés offrent plusieurs avantages, comprenant "
+"entre autre une pièce d'or supplémentaire par tour pour son camp, et "
+"réduisant le coût d'entretien des unités de son camp de un. Le nombre total "
+"de villages que vous contrôlez est affiché dans la barre de statut après "
+"l'image d'une maison. En plus de l'avantage économique, les villages peuvent "
+"servir en combat. Les villages soignent les unités qui y siègent de 8 PV par "
+"tour."
 
 #: data/scenarios/tutorial/tutorial1.cfg:209
 msgid "How do I heal when there aren't any villages nearby?"
-msgstr ""
+msgstr "Comment se soigner lorsqu'il n'y a pas de villages à proximité ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:209
 msgid ""
@@ -1512,6 +1563,13 @@ msgid ""
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
 "all your units are healed fully."
 msgstr ""
+"Il y a des moyens de se soigner même sans villages. Si une unité ne bouge "
+"pas et ne combat pas pendant 1 tour, elle regagne 2 PV par le repos. "
+"Cependant si un ennemi l'attaque, elle ne peut pas recevoir de soins par le "
+"repos. Par ailleurs, il y a des unités qui soignent les unités qui les "
+"entourent. Le chaman elfe est une telle unité; les unités à côté d'un chaman "
+"elfe regagnent 4 PV par tour. En dernier lieu, lorsque vous gagnez un niveau "
+"toutes vos unités sont soignées en totalité."
 
 #: data/scenarios/tutorial/tutorial1.cfg:215
 msgid ""
