@@ -23,8 +23,9 @@
 namespace gui {
 
 const int font_size = 12;
-const int horizontal_padding = 6;
-const int vertical_padding = 12;
+const int horizontal_padding = 12;
+const int checkbox_horizontal_padding = 6;
+const int vertical_padding = 6;
 
 button::button(display& disp, const std::string& label, button::TYPE type,
                std::string button_image_name) :
@@ -71,7 +72,7 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,label_,0,0);
 
-	set_height(maximum(textRect_.h+horizontal_padding,button_image->h));
+	set_height(maximum(textRect_.h+vertical_padding,button_image->h));
 
 	if(type == TYPE_PRESS) {
 		set_width(maximum(textRect_.w+horizontal_padding,button_image->w));
@@ -82,7 +83,7 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 		pressedActiveImage_.assign(scale_surface(pressed_active_image,location().w,location().h));
 
 	} else {
-		set_width(horizontal_padding + textRect_.w + button_image->w);
+		set_width(checkbox_horizontal_padding + textRect_.w + button_image->w);
 		image_.assign(scale_surface(button_image,button_image->w,button_image->h));
 		pressedImage_.assign(scale_surface(pressed_image,button_image->w,button_image->h));
 		activeImage_.assign(scale_surface(active_image,button_image->w,button_image->h));
@@ -147,7 +148,7 @@ void button::draw()
 	if(type_ == TYPE_PRESS) {
 		textx = location().x + image->w/2 - textRect_.w/2 + offset;
 	} else {
-		textx = location().x + image_w + horizontal_padding/2;
+		textx = location().x + image_w + checkbox_horizontal_padding/2;
 	}
 
 	scoped_sdl_surface greyed_image(NULL);
