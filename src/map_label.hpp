@@ -1,7 +1,7 @@
 #ifndef MAP_LABEL_HPP_INCLUDED
 #define MAP_LABEL_HPP_INCLUDED
 
-#include "config.hpp"
+class config;
 #include "map.hpp"
 
 #include <map>

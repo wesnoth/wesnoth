@@ -1,8 +1,8 @@
 #ifndef MAP_CREATE_HPP_INCLUDED
 #define MAP_CREATE_HPP_INCLUDED
 
-#include <config.hpp>
-#include <mapgen.hpp>
+class config;
+class map_generator;
 
 #include <string>
 

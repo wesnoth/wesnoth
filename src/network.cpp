@@ -1,5 +1,6 @@
 #include "global.hpp"
 
+#include "config.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "network_worker.hpp"

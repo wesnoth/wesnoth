@@ -1,7 +1,7 @@
 #ifndef NETWORK_HPP_INCLUDED
 #define NETWORK_HPP_INCLUDED
 
-#include "config.hpp"
+class config;
 
 #include "SDL_net.h"
 
