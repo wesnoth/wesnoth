@@ -293,12 +293,14 @@ void team::new_turn()
 
 void team::get_shared_maps()
 {
-	if(teams == NULL || info_.team_name == "" || info_.share_maps == false)
+	if(teams == NULL || info_.team_name == "" || info_.share_maps == false) {
 		return;
+	}
 
 	for(std::vector<team>::const_iterator t = teams->begin(); t != teams->end(); ++t) {
-		if(t->info_.team_name != info_.team_name)
+		if(t->info_.team_name != info_.team_name) {
 			continue;
+		}
 
 		const shroud_map& v = t->shroud_;
 		for(size_t x = 0; x != v.size(); ++x) {
