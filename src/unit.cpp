@@ -635,8 +635,9 @@ void unit::read(const game_data& data, const config& cfg)
 	validate_side(side_);
 
 	description_ = cfg["user_description"];
-	if(cfg["generate_description"] == "yes")
+	if(cfg["generate_description"] == "yes") {
 		description_ = type_->generate_description();
+	}
 
 	underlying_description_ = cfg["description"];
 	if(description_.empty()) {

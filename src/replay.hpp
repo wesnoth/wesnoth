@@ -45,6 +45,7 @@ public:
 	void save_game(const std::string& label, const config& snapshot,
 	               const config& starting_pos, bool include_replay = true);
 
+	void add_start();
 	void add_recruit(int unit_index, const gamemap::location& loc);
 	void add_recall(int unit_index, const gamemap::location& loc);
 	void add_disband(int unit_index);
@@ -73,6 +74,7 @@ public:
 
 	void start_replay();
 	config* get_next_action();
+	void pre_replay();
 
 	bool at_end() const;
 	void set_to_end();
@@ -116,8 +118,8 @@ extern replay recorder;
 //returns true if it got to the end of the turn without data running out
 bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
                std::map<gamemap::location,unit>& units,
-			   std::vector<team>& teams, int team_num, const gamestatus& state,
-			   game_state& state_of_game, replay* obj=NULL);
+	       std::vector<team>& teams, int team_num, const gamestatus& state,
+	       game_state& state_of_game, replay* obj=NULL);
 
 //an object which can be made to undo a recorded move
 //unless the transaction is confirmed

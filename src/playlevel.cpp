@@ -126,6 +126,14 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		game_state& state_of_game,
 		const std::vector<config*>& story)
 {
+	//if the recorder has no event, adds an "game start" event to the
+	//recorder, whose only goal is to initialize the RNG
+	if(recorder.empty()) {
+		recorder.add_start();
+	} else {
+		recorder.pre_replay();
+	}
+
 	const set_random_generator generator_setter(&recorder);
 
 	//guarantee the cursor goes back to 'normal' at the end of the level

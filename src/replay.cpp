@@ -228,6 +228,13 @@ void replay::save_game(const std::string& label, const config& snapshot,
 	saveInfo_.snapshot = config();
 }
 
+void replay::add_start()
+{
+	config* const cmd = add_command();
+	cmd->add_child("start");
+	random_ = cmd;
+}
+
 void replay::add_recruit(int value, const gamemap::location& loc)
 {
 	config* const cmd = add_command();
@@ -285,8 +292,7 @@ void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
 {
 	add_pos("move",a,b);
 	//current_->add_child("verify",make_verify_units());
-	current_ = NULL;
-	random_ = NULL;
+	random_ = current_;
 }
 
 void replay::add_attack(const gamemap::location& a, const gamemap::location& b, int weapon)
@@ -358,7 +364,7 @@ void replay::end_turn()
 {
 	config* const cmd = add_command();
 	cmd->add_child("end_turn");
-	//cmd->add_child("verify",make_verify_units());
+	random_ = current_;
 }
 
 void replay::speak(const config& cfg)
@@ -447,7 +453,10 @@ void replay::mark_current()
 config* replay::add_command()
 {
 	pos_ = ncommands()+1;
-	return current_ = &cfg_.add_child("command");
+	current_ = &cfg_.add_child("command");
+	random_ = current_;
+
+	return current_;
 }
 
 void replay::start_replay()
@@ -465,6 +474,18 @@ config* replay::get_next_action()
 	random_ = current_ = commands()[pos_];
 	++pos_;
 	return current_;
+}
+
+void replay::pre_replay()
+{
+
+	if(pos_ >= commands().size())
+		return;
+
+	while(commands()[pos_]->child("start") != NULL) {
+		if(get_next_action() == NULL)
+			return;
+	}
 }
 
 bool replay::at_end() const
@@ -535,8 +556,8 @@ replay& get_replay_source()
 
 bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
                unit_map& units,
-			   std::vector<team>& teams, int team_num, const gamestatus& state,
-			   game_state& state_of_game, replay* obj)
+	       std::vector<team>& teams, int team_num, const gamestatus& state,
+	       game_state& state_of_game, replay* obj)
 {
 	log_scope("do replay");
 
@@ -602,7 +623,10 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			return false;
 		}
 
-		else if((child = cfg->child("speak")) != NULL) {
+		else if(cfg->child("start") != NULL) {
+			//do nothing
+
+		} else if((child = cfg->child("speak")) != NULL) {
 			const std::string& team_name = (*child)["team_name"];
 			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
 				if(preferences::message_bell()) {

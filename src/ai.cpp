@@ -466,13 +466,13 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 		info_.disp.draw();
 	}
 
+	recorder.add_movement(from,to);
+
 	game_events::fire("moveto",to);
 
 	if((info_.teams.front().uses_fog() || info_.teams.front().uses_shroud()) && !info_.teams.front().fogged(to.x,to.y)) {
 		game_events::fire("sighted",to);
 	}
-
-	recorder.add_movement(from,to);
 
 	sync_network();
 
