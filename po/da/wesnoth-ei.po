@@ -6,7 +6,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2wesnoth-ei\n"
+"Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-08-08 15:00+0200\n"
 "PO-Revision-Date: 2004-09-12 21:42+0200\n"
@@ -25,17 +25,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: data/campaigns/Eastern_Invasion.cfg:5
+#: data/campaigns/Eastern_Invasion.cfg:6
 msgid "The Eastern Invasion"
 msgstr "Invasionen fra Øst"
 
-#: data/campaigns/Eastern_Invasion.cfg:9
+#: data/campaigns/Eastern_Invasion.cfg:10
 msgid ""
 "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
 "royalguard.png,Royal Guard,(hardest)"
 msgstr ""
 "&human-spearman.png,Soldat,(lettest);*&human-swordman.png,Sværdmand;&human-"
 "royalguard.png,Royale Garde,(sværrest)"
+
+#: data/campaigns/Eastern_Invasion.cfg:11
+msgid ""
+"Lead the loyal armies of Wesnoth in battle against the undead hordes from "
+"the East."
+msgstr "Led Wesnoths hære i kamp mod de levende døde flokke fra Øst."
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:4
 msgid "Approaching Weldyn"
@@ -50,7 +56,7 @@ msgid ""
 "#Death of Gweddry\n"
 "#Death of Dacyn\n"
 "#Death of Owaec\n"
-"#Death of Sudoc"
+"#Death of Konrad II"
 msgstr ""
 "\n"
 "Sejr:\n"
@@ -59,9 +65,9 @@ msgstr ""
 "#Gweddry dør\n"
 "#Dacyn dør\n"
 "#Owaec dør\n"
-"#Sudoc dør"
+"#Konrad II dør"
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:122
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:125
 msgid ""
 "We have finally reached Weldyn, but it seems the undead have surrounded it. "
 "We must break through to reach the king!"
@@ -69,18 +75,18 @@ msgstr ""
 "Vi må endelig have nået Weldyn, men det ser ud til at de levende-døde har "
 "omringet den. Vi må bryde igennem for at nå kongen!"
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:136
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:139
 msgid ""
 "We have reached Weldyn. Now we must have a council to decide what to do next."
 msgstr ""
 "Vi har nået Weldyn. Nu må vi samle et råd til at bestemme hvad vi nu skal "
 "gøre."
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:141
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:144
 msgid "Come, into the castle."
 msgstr "Kom, ind i borgen."
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:146
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:149
 msgid ""
 "Wait. First, what was that prophecy the lich talked about? I think you know "
 "of what he spoke."
@@ -88,7 +94,7 @@ msgstr ""
 "Vent. Først, hvad var det for en profeti det Levende Lig talte om? Jeg tror "
 "du ved hvad han talte om."
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:161
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:164
 msgid "Weldyn has been captured, and Wesnoth is no more..."
 msgstr "Weldyn er blevet overtaget, og Wesnoth findes ikke mere..."
 
@@ -160,7 +166,7 @@ msgstr "Um... ja."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:421
 msgid "Shut up! Thats it! I'm putting you in the high-security cave!"
-msgstr ""
+msgstr "Hold kæft! Det var dråben! Jeg putter jer i højsikkerheds grotten!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:438
 msgid "Ugh..."
@@ -190,10 +196,12 @@ msgid ""
 "Since they are probably tied down like I was, I will have to get into their "
 "cells in order to see them."
 msgstr ""
+"Siden de sikker var bundet som jeg var, vil jeg være nødt til at komme ind i "
+"deres celler for at se dem."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:473
 msgid "The high security prisoners are escaping!"
-msgstr ""
+msgstr "Højsikkerheds-fangerne flygter!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:478
 msgid "Kill them."
@@ -220,6 +228,8 @@ msgid ""
 "So, they must have captured $R2.user_description in addition to Dacyn, Owaec "
 "and me. Well, $R2.type, follow me. We have to get out of this dungeon."
 msgstr ""
+"Så de må have fanget $R2.user_description uover Dacyn, Owaec og mig. Vel, "
+"$R2.type, følg efter mig. Vi må slippe ud af denne fangekælder."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:560
 msgid ""
@@ -227,6 +237,9 @@ msgid ""
 "will be able to shoot these devils without them doing anything about it, "
 "since most orcs are melee."
 msgstr ""
+"Jeg har lagt mærke til at en $R1.type er blandt os! Jg gætter på at $R1."
+"user_description vil kunne skyde disse djævle ned uden at de kan gøre noget "
+"ved det, da de fleste orker er nærkampstropper."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:571
 msgid "Dacyn! Good, now we can try to escape. Do you know any way to get out?"
@@ -261,7 +274,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:656
 msgid "Huh! A guard. Lets see how quickly we can kill it."
-msgstr ""
+msgstr "Hva! En vagt. Lad os se hvor hurtigt vi kan dræbe den."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:677
 msgid "I have found the key! Lets get out of here!"
@@ -291,25 +304,25 @@ msgid "Argh! Oh well, at least my vast hordes will defeat you!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:810
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:164
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:166
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:393
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:235
 msgid "Holy Water"
 msgstr "Vievand"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:813
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:167
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:169
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:396
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:238
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr "Dette vand vil gøre alle dine våben hellige i hele dit liv!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:814
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:168
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:170
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:397
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:239
 msgid "I am not suited to using this item! Let another take it."
-msgstr ""
+msgstr "Jeg er ikke passende til at bruge denne ting! Lad en anden tage den."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:848
 msgid ""
@@ -339,7 +352,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sejr:\n"
-"@Gweddry og Owaec over floden\n"
+"@Få Gweddry og Owaec over floden\n"
 "Nederlag:\n"
 "#Gweddry dør\n"
 "#Dacyn dør\n"
@@ -372,11 +385,11 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:113
 msgid "And in Wesnothish that means?..."
-msgstr ""
+msgstr "Og på Wesnothsk betyder det?..."
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:118
 msgid "Orc foolish! Die you now!"
-msgstr ""
+msgstr "Orker dumme! Dø du nu!"
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:123
 msgid "I think the ogres are trying to kill the orcs."
@@ -425,7 +438,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sejr:\n"
-"@Defeat enemy leader\n"
+"@Overvind fjendtlig leder\n"
 "Nederlag:\n"
 "#Gweddry dør\n"
 "#Dacyn dør\n"
@@ -499,68 +512,77 @@ msgstr ""
 msgid "The Escape Tunnel"
 msgstr "Flygttunnelen"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:18
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:20
 msgid ""
 "\n"
 "Victory:\n"
 "@Reach the end of the tunnel\n"
 "Defeat:\n"
-"#Death of Gweddry"
+"#Death of Gweddry\n"
+"#Death of Dacyn\n"
+"#Turns run out"
 msgstr ""
 "\n"
 "Sejr:\n"
-"@Reach the end of the tunnel\n"
+"@Nå enden af tunnelen\n"
 "Nederlag:\n"
-"#Gweddry dør"
+"#Gweddry dør\n"
+"#Dacyn dør\n"
+"#Løber tør for ture"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:94
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:96
 msgid "Where are we? I can't see where we are going."
 msgstr "Hvor er vi? Jeg kan ikke se hvor vi går."
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:99
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:101
 msgid ""
-"I do not know. There are trolls in here, which may try to fight us. now "
+"I do not know. There are trolls in here, which may try to fight us. Now "
 "hurry, we have to move quickly with those Lichs still behind us."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:120
-msgid "This sign says 'Dead End'"
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:122
+msgid "This sign says 'Dead End'."
 msgstr "Skiltet siger 'Blindgyde'"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:133
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:135
 msgid "Who goes there?"
 msgstr "Hvem går der?"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:138
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:140
 msgid ""
 "We are travelers loyal to the king of Wesnoth. Will you help us escape these "
 "trolls?"
 msgstr ""
+"Vi er rejsende loyale til kongen af Wesnoth. Vil I hjælpe os med at "
+"undslippe disse trolde?"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:143
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:145
 msgid ""
 "Yes, we will help you, for we have no love for the trolls. Anyone attacked "
 "by them deserves some help, I think."
 msgstr ""
+"Ja, vi vil hjælpe jer, for vi er ingen trolde-elskere. Enhver der bliver "
+"angrebet af dem fortjener hjælp, tror jeg."
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:205
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:207
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold!"
 msgstr ""
+"Der er stort held i denne skatkiste! Jeg kan tælle to hundrede guldstykker!"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:279
-msgid "We have found you, human- Prepare to die!"
-msgstr "Jeg har fundet dig, menneske - Forbered dig på at dø!"
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:281
+msgid "We have found you, human! Prepare to die!"
+msgstr "Jeg har fundet dig, menneske! Forbered dig på at dø!"
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:284
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:286
 msgid ""
 "So Mal-Ravanal does not follow us himself. That at least is good. But still, "
 "we must get out of this tunnel!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:298
-msgid "We have reached the end of the escape tunnel. I see daylight above us."
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:300
+msgid "We have reached the end of the escape tunnel. I see daylight above us!"
 msgstr "Vi har nået enden af flygttunnelen. Jeg kan se dagslys forude."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:4
@@ -594,6 +616,8 @@ msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...?!? Who are you?"
 msgstr ""
+"Alt er tabt! Vi må komme ud af Nordlandene så hurtigt så mulligt! Løb for "
+"jeres - hvad i...?!? Hvem er du?"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:115
 msgid ""
@@ -607,7 +631,7 @@ msgstr "Hvorfor ville vi gøre det?!?"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
 msgid ""
-"Well, i see those arcs are chasin' you, and if I blow up the bridge, they "
+"Well, I see those arcs are chasin' you, and if I blow up the bridge, they "
 "can't get across. It'll help you escape."
 msgstr ""
 
@@ -625,7 +649,7 @@ msgstr "Meget vel, men først når du broen er nede."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:145
 msgid ""
-"Deal. I c'n blow'er up once i get to that signpost ov'r 'ere. Thats where my "
+"Deal. I c'n blow'er up once I get to that signpost ov'r 'ere. Thats where my "
 "eq'pment is."
 msgstr ""
 
@@ -641,7 +665,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:182
 msgid "I believe you owe me some money first."
-msgstr ""
+msgstr "Jeg mener du skylder mig nolge penge først."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:187
 msgid "Yeah, here you go. Now blow this thing up."
@@ -672,8 +696,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:296
 msgid ""
-"Good, we have  escaped from these orcs. Now we have to go south. i think the "
-"undead probably aren't as densely populated this far west, so we won't get "
+"Good, we have escaped from these orcs. Now we have to go south. I think the "
+"undead probably aren't as numerous this far west, so we won't get "
 "immediately killed, anyway."
 msgstr ""
 
@@ -683,13 +707,16 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:332
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
-msgstr ""
+msgstr "Vi har ikke sænket broen i tide! Nu vil orkerne dræbe os!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:341
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
-"go south. Hopefully the Undead are not as populated this far west."
+"go south. Hopefully the Undead are not as numerous this far west."
 msgstr ""
+"Vel, vi blev ikke nødt til at spring broen alligevel, men vi bliver stadig "
+"nødt til at gå mod syd. Forhåbenlig er de Levende Døde ikke så talrige så "
+"langt mod vest."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:346
 msgid "What? Y'got no need a me se'vices? I quit!"
@@ -797,31 +824,26 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:132
 msgid "These humans have dared to come this far into my land. Crush them!"
-msgstr ""
+msgstr "Disse mennesker har våget at komme så langt ind i mit land. Knus dem!"
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:149
-#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:208
-msgid "You dare to attack ME?!? Go back to your master!"
-msgstr "Hvor vover du at angribe MIG?!? Gå tilbage til din mester!"
-
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:226
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:156
 msgid ""
 "Thank you for destroying that skeleton warrior! Every time you kill one of "
 "the Revenants, one of my ally knights is let free!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:231
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:161
 msgid "Why? Are you the undead's prisoners?"
 msgstr "Hvorfor? Er I disse levende-døde's fanger?"
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:236
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:166
 msgid ""
 "Yes. My allies and I were questing when we were ambushed by undead. The "
 "guard is playing a sick game- whenever one of their warriors dies, one of us "
 "is let free, but whenever you lose a fighter, they kill one of us."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:241
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:171
 msgid ""
 "This sounds like a dangerous game. We will try to free as many of you as "
 "possible before we escape from here."
@@ -829,15 +851,20 @@ msgstr ""
 "Det lyder farligt. Vi vil prøve at befri så mange af jer som mulligt før vi "
 "flygter herfra."
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:246
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:176
 msgid ""
 "There are five of us still locked up in the jail. All of us will join you if "
 "you can get us free."
 msgstr ""
 
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:234
+#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:208
+msgid "You dare to attack ME?!? Go back to your master!"
+msgstr "Hvor vover du at angribe MIG?!? Gå tilbage til din mester!"
+
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:4
 msgid "Northern Outpost"
-msgstr ""
+msgstr "Nordlige Udpost"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:28
 msgid ""
@@ -870,6 +897,8 @@ msgid ""
 "Hello. We have been forced from our positions. Do you think you can help us "
 "regain our outpost?"
 msgstr ""
+"Goddag. Vi er blevet tvynget væk fra vores positioner. Tror du at du kan "
+"hjælpe os med at generobre vores udpost?"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:160
 msgid ""
@@ -913,16 +942,48 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:248
 msgid "Hahaha! I have found you, pesky humans! Prepare to die!"
-msgstr ""
+msgstr "Hahaha! Jeg har fundet jer, hæslige mennesker! Forbered jer på at dø!"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:253
 msgid ""
 "Oh no! The undead have come, and we have not had time to prepare for them! "
 "We will all die now!"
 msgstr ""
+"Åh nej! De levende døde er ommet, og vi har ikke haft tid til at forberede "
+"os på dem! Nu vil vi alle dø!"
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:338
-msgid "{M}"
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:348
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:349
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:350
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:351
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:352
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:353
+msgid ""
+"You have gotten rid of some of these bandits, but I fear many still remain. "
+"Keep searching."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:356
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:357
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:358
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:359
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:360
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:361
+msgid ""
+"Good work so far. I suspect we have significantly weakened the bandit's "
+"number."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:364
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:365
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:366
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:367
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:368
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:369
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:370
+msgid ""
+"I think you have killed most of them. I hope those that are left don't kill "
+"us."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:4
@@ -1093,6 +1154,8 @@ msgid ""
 "creature ever, living in the Eastern Mountains. It must have fled when the "
 "Undead came."
 msgstr ""
+"Ah, dragen Khrakrahs. Da den var i live, var den det mest kraftfulde væsen i "
+"live, levende i de Østlige Bjerge. De må have flygtet da de Levende Døde kom."
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:96
 msgid ""
@@ -1135,7 +1198,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sejr:\n"
-"@Defeat Mal-Ravanal\n"
+"@Overvind Mal-Ravanal\n"
 "Nederlag:\n"
 "#Gweddry dør"
 
@@ -1201,7 +1264,7 @@ msgstr "Og mere til!"
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:4
 msgid "The Outpost"
-msgstr ""
+msgstr "Udposten"
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:25
 msgid ""
@@ -1274,6 +1337,8 @@ msgid ""
 "(sigh) Yes, the prophecy. I know of what the lich spoke. It all started in "
 "the reign of Haldric VII..."
 msgstr ""
+"(suk) Ja, profetien. Jeg ved hvad det levende lig tale om. Det startede alt "
+"sammen i Haldric VII's regeringstid..."
 
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:27
 msgid ""
@@ -1380,12 +1445,16 @@ msgid ""
 "Well, we do know that he is very arrogant, and can be easily tricked. That "
 "is how he fell in the first place."
 msgstr ""
+"Vel, vi ved at han er meget arrogant, og let kan blive narret. Det er sådan "
+"han faldt første gang."
 
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:147
 msgid ""
 "So maybe we can trick him into exposing himself to us? Dacyn, does he know "
 "we know who he is?"
 msgstr ""
+"Så vi kan måske narre ham til at blotte sig selv for os? Dacyn, ved han at "
+"vi ved hvem han er?"
 
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:151
 msgid ""
@@ -1393,14 +1462,17 @@ msgid ""
 "name Mal-Ravanal, and if he had known I was there when he attacked, he would "
 "have pursued us much more vigorously."
 msgstr ""
+"Nej, det torr jeg ikke. Jeg er den eneste mand i live der ville kunne "
+"genkende navnet Mal-Ravanal, og hvis han havde vidst jeg var der da han "
+"angreb, ville han have forfulgt os meget mere ihærdigt."
 
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:163
 msgid "Sire, the undead armies are attacking!"
-msgstr ""
+msgstr "Sir, de levende døde hære angriber!"
 
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:168
 msgid "Well, that will have to be the end of our council. Let us fight!"
-msgstr ""
+msgstr "Vel, det vil være slutningen på vores råd. Lad os kæmpe!"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:4
 msgid "Tribal Warfare"
@@ -1411,6 +1483,8 @@ msgid ""
 "Hail, Dwarves! Will you help us get by these foul Orcs? We need to get "
 "further along this path."
 msgstr ""
+"Hil, Dværge! Vil I hjælpe os med at komme forbi disse fæle Orker? Vi har "
+"brug for at komme videre denne vej."
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:91
 msgid "You human! Call us foul, will you?!?!"
@@ -1521,7 +1595,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sejr:\n"
-"@Defeat either of the enemy leaders\n"
+"@Overvind en af de fjendtlige ledere\n"
 "Nederlag:\n"
 "#Gweddry dør\n"
 "#Dacyn dør\n"
@@ -1590,7 +1664,7 @@ msgstr "Jeg skulle stoppe jer fra at komme ind i Wesnoth igen! Jeg har fejlet."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:4
 msgid "The Undead Border Patrol"
-msgstr ""
+msgstr "De Levende Dødes Grænsepatrolje"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:23
 msgid ""
@@ -1604,7 +1678,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sejr:\n"
-"@Defeat either the necromancer or the lich\n"
+"@Overvind enten åndemaneren eller det levende lig.\n"
 "Nederlag:\n"
 "#Gweddry dør\n"
 "#Dacyn dør\n"
@@ -1622,20 +1696,26 @@ msgid ""
 "I am not yet sure. Whether we go forward or backward, we will have to fight. "
 "The necromancer Mal-Skraat has chased us."
 msgstr ""
+"Jeg er ikke sikker endnu. Hvad enten vi går fremad eller tilbage, bliver vi "
+"nødt til at kæmpe. Åndemaneren Mal-Skraat har jagtet os."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:90
 msgid ""
 "They run from me! Still, it will not help them, the border patrol will "
 "destroy them. I may even be promoted!"
 msgstr ""
+"De løber stadig fra mig! Men det vil ikke hjælpe dem, grænsepatroljen vil "
+"tilintetgøre dem. Jeg bliver måske endda forfremmet!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:102
 msgid "Now I will never get promoted!"
-msgstr ""
+msgstr "Nu bliver jeg aldrig forfremmet!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:107
 msgid "Come, let us return to Wesnoth and aid the Northern Outpost."
 msgstr ""
+"Kom, lad os gå tilbage til Wesnoth, for at kommer den Nordlige Udpost til "
+"hjælp."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:124
 msgid ""
@@ -1651,31 +1731,35 @@ msgstr "Hmm..."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:132
 msgid "We do not want to waste time here fighting Mal-Skraat. Onward!"
-msgstr ""
+msgstr "Vi vil ikke spilde vores tid på at kæmpe mod Mal-Skraat. Fremad!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:137
 msgid "I will not say if this is a good decision, but I will follow you."
-msgstr ""
+msgstr "Jeg vil ikke sige at det er en god beslutning, men jeg vil følge dig."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:142
 msgid "Noo!!! I can't be promoted if they run away!"
-msgstr ""
+msgstr "Nej!!! Jeg kan ikke bliver forfremmet, hvis de løber væk!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:153
 msgid ""
 "You are right. It is foolish to go onward- we must defeat Mal-Skraat and "
 "turn back, going to the Northern Outpost."
 msgstr ""
+"Du har ret. Det er tåbeligt - vi må overvinde Mal-Skraat og vende, og gå mod "
+"den Nordlige Udpost."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:158
 msgid "Good! if I defeat them, I can become a lich!"
-msgstr ""
+msgstr "Godt! Hvis jeg overvinder dem, kan jeg bliver et levende lig!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:175
 msgid ""
 "We failed to defeat either enemy! Now more lichs will come, and we will be "
 "overwhelmed!"
 msgstr ""
+"Det er ikke lykkedes for os at overvinde nogen af fjenderne! Nu vil flere "
+"levende lig komme, og vil vi blive overmandet!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:185
 msgid ""
@@ -1762,7 +1846,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sejr:\n"
-"@Defeat one of the necromancers\n"
+"@Overvind en af åndemanerne\n"
 "Nederlag:\n"
 "#Gweddry dør\n"
 "#Løber tør for ture"
@@ -1832,7 +1916,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sejr:\n"
-"@Survive the night\n"
+"@Overlav natten ud\n"
 "Nederlag:\n"
 "#Gweddry dør\n"
 "#Dacyn dør\n"
