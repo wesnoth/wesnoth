@@ -52,7 +52,9 @@ public:
 	struct location {
 		//any valid direction which can be moved in in our hexagonal world.
 		enum DIRECTION { NORTH, NORTH_EAST, SOUTH_EAST, SOUTH,
-		                 SOUTH_WEST, NORTH_WEST };
+		                 SOUTH_WEST, NORTH_WEST, NDIRECTIONS };
+
+		static DIRECTION parse_direction(const std::string& str);
 
 		location() : x(-1), y(-1) {}
 		location(int x, int y) : x(x), y(y) {}

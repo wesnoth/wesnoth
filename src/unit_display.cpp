@@ -317,7 +317,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		leader->second.set_leading(true);
 	}
 
-	unit_animation attack_anim = attack.animation();
+	unit_animation attack_anim = attack.animation(get_adjacent_direction(a,b));
 
 	//the missile frames are based around the time when the missile impacts.
 	//the 'real' frames are based around the time when the missile launches.
@@ -641,7 +641,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		return unit_attack_ranged(disp, units, a, b, damage, attack);
 	}
 
-	unit_animation attack_anim = attack.animation();
+	unit_animation attack_anim = attack.animation(get_adjacent_direction(a,b));
 
 	const bool hits = damage > 0;
 	const std::vector<unit_animation::sfx>& sounds = attack_anim.sound_effects();

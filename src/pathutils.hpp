@@ -24,6 +24,10 @@ bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
 //res. res must point to an array of 6 location objects.
 void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res);
 
+//function which returns the direction from 'from' to 'to'. If 'from' and 'to' are not adjacent, then
+//the function will return 'NDIRECTIONS'.
+gamemap::location::DIRECTION get_adjacent_direction(const gamemap::location& from, const gamemap::location& to);
+
 //function which gives the number of hexes between two tiles (i.e. the minimum
 //number of hexes that have to be traversed to get from one hex to the other)
 size_t distance_between(const gamemap::location& a, const gamemap::location& b);

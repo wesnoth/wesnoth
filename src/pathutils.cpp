@@ -36,6 +36,19 @@ void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res)
 	res->y = a.y - (is_even(a.x) ? 1:0);
 }
 
+gamemap::location::DIRECTION get_adjacent_direction(const gamemap::location& from, const gamemap::location& to)
+{
+	gamemap::location adj[6];
+	get_adjacent_tiles(from,adj);
+	for(size_t n = 0; n != 6; ++n) {
+		if(adj[n] == to) {
+			return static_cast<gamemap::location::DIRECTION>(n);
+		}
+	}
+
+	return gamemap::location::NDIRECTIONS;
+}
+
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
 {
 	//two tiles are adjacent if y is different by 1, and x by 0, or if

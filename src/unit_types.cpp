@@ -142,7 +142,18 @@ attack_type::attack_type(const config& cfg)
 {
 	const config::child_list& animations = cfg.get_children("animation");
 	for(config::child_list::const_iterator an = animations.begin(); an != animations.end(); ++an) {
-		animation_.push_back(unit_animation(**an));
+		const std::string& dir = (**an)["direction"];
+		if(dir == "") {
+			animation_.push_back(unit_animation(**an));
+		} else {
+			const std::vector<std::string>& directions = config::split(dir);
+			for(std::vector<std::string>::const_iterator i = directions.begin(); i != directions.end(); ++i) {
+				const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
+				if(d != gamemap::location::NDIRECTIONS) {
+					direction_animation_[d].push_back(unit_animation(**an));
+				}
+			}
+		}
 	}
 
 	if(animation_.empty()) {
@@ -225,10 +236,16 @@ bool attack_type::slow() const
 	return slow_;
 }
 
-const unit_animation& attack_type::animation() const
+const unit_animation& attack_type::animation(const gamemap::location::DIRECTION dir) const
 {
-	wassert(animation_.empty() == false);
-	return animation_[rand()%animation_.size()];
+	const std::vector<unit_animation>* animation = &animation_;
+	if(dir < sizeof(direction_animation_)/sizeof(*direction_animation_) &&
+	   direction_animation_[dir].empty() == false) {
+		animation = &direction_animation_[dir];
+	}
+
+	wassert(animation->empty() == false);
+	return (*animation)[rand()%animation->size()];
 }
 
 bool attack_type::matches_filter(const config& cfg) const

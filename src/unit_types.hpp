@@ -94,12 +94,13 @@ public:
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
-	const unit_animation& animation() const;
+	const unit_animation& animation(gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
 
 	bool matches_filter(const config& cfg) const;
 	bool apply_modification(const config& cfg,std::string* description);
 private:
 	std::vector<unit_animation> animation_;
+	std::vector<unit_animation> direction_animation_[6];
 	std::string name_;
 	std::string type_;
 	std::string special_;

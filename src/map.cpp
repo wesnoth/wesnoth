@@ -84,6 +84,25 @@ bool gamemap::is_keep(const gamemap::location& loc) const
 	return on_board(loc) && is_keep(get_terrain(loc));
 }
 
+gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
+{
+	if(str == "n") {
+		return NORTH;
+	} else if(str == "ne") {
+		return NORTH_EAST;
+	} else if(str == "se") {
+		return SOUTH_EAST;
+	} else if(str == "s") {
+		return SOUTH;
+	} else if(str == "sw") {
+		return SOUTH_WEST;
+	} else if(str == "nw") {
+		return NORTH_WEST;
+	} else {
+		return NDIRECTIONS;
+	}
+}
+
 gamemap::location::location(const config& cfg) : x(-1), y(-1)
 {
 	const std::string& xstr = cfg["x"];
