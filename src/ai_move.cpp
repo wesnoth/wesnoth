@@ -257,8 +257,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<ai::t
 		std::pair<Itor,Itor> its = dstsrc.equal_range(*ri);
 		while(its.first != its.second) {
 			if(its.first->second == best->first) {
-				return std::pair<location,location>(its.first->second,
-				                                    its.first->first);
+				return std::pair<location,location>(its.first->second,its.first->first);
 			}
 
 			++its.first;

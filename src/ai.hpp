@@ -56,7 +56,7 @@ private:
 	team& current_team();
 	const team& current_team() const;
 
-	void calculate_possible_moves(std::map<location,paths>& moves, move_map& srcdst, move_map& dstsrc, bool enemy);
+	void calculate_possible_moves(std::map<location,paths>& moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false);
 
 	struct attack_analysis
 	{

@@ -163,7 +163,7 @@ void ai::move_unit(const location& from, const location& to, std::map<location,p
 	}
 }
 
-void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy)
+void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement)
 {
 	for(std::map<gamemap::location,unit>::iterator un_it = units_.begin(); un_it != units_.end(); ++un_it) {
 		if(enemy && current_team().is_enemy(un_it->second.side()) == false ||
@@ -176,7 +176,7 @@ void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcds
 		}
 
 		//if it's an enemy unit, reset its moves while we do the calculations
-		const unit_movement_resetter move_resetter(un_it->second,enemy);
+		const unit_movement_resetter move_resetter(un_it->second,enemy || assume_full_movement);
 
 		//insert the trivial moves of staying on the same location
 		if(un_it->second.movement_left() == un_it->second.total_movement()) {
@@ -468,21 +468,31 @@ bool ai::should_retreat(const gamemap::location& loc, const move_map& srcdst, co
 
 bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
+	//get versions of the move map that assume that all units are at full movement
+	move_map fullmove_srcdst;
+	move_map fullmove_dstsrc;
+	calculate_possible_moves(possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
+
 	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 		if(i->second.side() == team_num_ && i->second.movement_left() == i->second.total_movement()) {
 
 			//this unit still has movement left, and is a candidate to retreat. We see the amount
 			//of power of each side on the situation, and decide whether it should retreat.
-			if(should_retreat(i->first,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc)) {
+			if(should_retreat(i->first,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
 				//time to retreat. Look for the place where the power balance is most in our favor
 				typedef move_map::const_iterator Itor;
 				std::pair<Itor,Itor> itors = srcdst.equal_range(i->first);
 				gamemap::location best_pos;
 				double best_rating = -10000.0;
 				while(itors.first != itors.second) {
+
+					//we rate the power balance of a hex based on our power projection compared
+					//to theirs, multiplying their power projection by their chance to hit us
+					//on the hex we're planning to flee to.
 					const gamemap::location& hex = itors.first->second;
+					const int defense = i->second.type().movement_type().defense_modifier(map_,map_.get_terrain(hex));
 					const double our_power = power_projection(hex,srcdst,dstsrc);
-					const double their_power = power_projection(hex,enemy_srcdst,enemy_dstsrc);
+					const double their_power = power_projection(hex,enemy_srcdst,enemy_dstsrc) * double(defense)/100.0;
 					const double rating = our_power - their_power;
 					if(!best_pos.valid() || rating > best_rating) {
 						best_pos = hex;
