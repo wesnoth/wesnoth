@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "game.hpp"
+#include "log.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
@@ -24,6 +25,9 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+
+#define ERR_CF lg::err(lg::config)
+#define LOG_G lg::info(lg::general)
 
 gamemap::location gamemap::location::null_location;
 
@@ -162,7 +166,7 @@ gamemap::location gamemap::location::get_direction(
 
 gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 {
-	std::cerr << "loading map: '" << data << "'\n";
+	LOG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
 	create_terrain_maps(terrains,terrainList_,letterToTerrain_,terrain_);
 
@@ -189,7 +193,7 @@ void gamemap::read(const std::string& data)
 					startingPositions_[c - '0'] = location(x,y);
 					c = KEEP;
 				} else {
-					std::cerr << "Illegal character in map: (" << int(c) << ") '" << c << "'\n";
+					ERR_CF << "Illegal character in map: (" << int(c) << ") '" << c << "'\n";
 					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
 				}
 			}
@@ -208,15 +212,16 @@ void gamemap::read(const std::string& data)
 		}
 	}
 
-	for(size_t n = 0; n != tiles_.size(); ++n) {
-		if(tiles_[n].size() != size_t(this->y())) {
-			std::cerr << "Map is not rectangular!\n";
+	unsigned ysize = this->y();
+	for(size_t n = 0; n != tiles_.size(); ++n) { // tiles_.size() is not constant
+		if (tiles_[n].size() != ysize) {
+			ERR_CF << "Map is not rectangular!\n";
 			tiles_.erase(tiles_.begin()+n);
 			--n;
 		}
 	}
 
-	std::cerr << "loaded map: " << this->x() << "," << this->y() << "\n";
+	LOG_G << "loaded map: " << this->x() << ',' << ysize << '\n';
 }
 
 std::string gamemap::write() const
