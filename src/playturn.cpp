@@ -383,7 +383,15 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 		std::vector<unit> units_list;
 
+		const int range = distance_between(u->first,enemy->first);
+		std::vector<int> attacks_in_range;
+
 		for(size_t a = 0; a != attacks.size(); ++a) {
+			if(attacks[a].hexes() < range)
+				continue;
+
+			attacks_in_range.push_back(a);
+
 			const battle_stats stats = evaluate_battle_stats(
 			                               map_,selected_hex_,hex,
 										   a,units_,status_,gameinfo_);
@@ -437,11 +445,13 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		gui_.highlight_hex(gamemap::location());
 		gui_.draw(true,true);
 
-		const int res = gui::show_dialog(gui_,NULL,"",
+		int res = gui::show_dialog(gui_,NULL,"",
 		                           string_table["choose_weapon"]+":\n",
 		                           gui::OK_CANCEL,&items,&units_list);
 
-		if(size_t(res) < attacks.size()) {
+		if(size_t(res) < attacks_in_range.size()) {
+			res = attacks_in_range[res];
+
 			u->second.set_goto(gamemap::location());
 			undo_stack_.clear();
 			redo_stack_.clear();
@@ -457,7 +467,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			enemy = units_.find(hex);
 
 			if(u == units_.end() || enemy == units_.end() ||
-			   size_t(res) >= u->second.attacks().size()) {
+			   size_t(res) >= attacks.size()) {
 				return;
 			}
 
@@ -510,22 +520,14 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 		assert(moves <= current_route_.steps.size());
 		const gamemap::location& dst = current_route_.steps[moves-1];
+		const unit_map::const_iterator u = units_.find(dst);
+		assert(u != units_.end());
+
+		const int range = u->second.longest_range();
 
 		current_route_.steps.clear();
 
-		//if there is an enemy in a surrounding hex, then
-		//highlight attack options
-		gamemap::location adj[6];
-		get_adjacent_tiles(dst,adj);
-
-		int n;
-		for(n = 0; n != 6; ++n) {
-			const unit_map::const_iterator u_it = units_.find(adj[n]);
-			if(u_it != units_.end() && u_it->second.side() != team_num_
-			   && current_team.is_enemy(u_it->second.side())){
-				current_paths_.routes[adj[n]] = paths::route();
-			}
-		}
+		show_attack_options(u);
 
 		if(current_paths_.routes.empty() == false) {
 			current_paths_.routes[dst] = paths::route();
@@ -552,6 +554,9 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			const bool teleport = it->second.type().teleports();
 			current_paths_ = paths(map_,gameinfo_,units_,hex,teams_,
 			                   ignore_zocs,teleport,path_turns_);
+
+			show_attack_options(it);
+
 			gui_.set_paths(&current_paths_);
 
 			unit u = it->second;
@@ -569,6 +574,22 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			          route_turns_to_complete(it->second,map_,route);
 				gui_.set_route(&route);
 			}
+		}
+	}
+}
+
+void turn_info::show_attack_options(unit_map::const_iterator u)
+{
+	team& current_team = teams_[team_num_-1];
+
+	if(u == units_.end() || u->second.can_attack() == false)
+		return;
+
+	const int range = u->second.longest_range();
+	for(unit_map::const_iterator target = units_.begin(); target != units_.end(); ++target) {
+		if(current_team.is_enemy(target->second.side()) &&
+			distance_between(target->first,u->first) <= range) {
+			current_paths_.routes[target->first] = paths::route();
 		}
 	}
 }

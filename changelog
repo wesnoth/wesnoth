@@ -1,4 +1,4 @@
-Version CVS:
+Version 0.6:
  * radical storyline changes, this breaks saves from older versions
  * fog of war
  * support for multiple campaigns
@@ -45,14 +45,24 @@ Version CVS:
    * Goblin Pillager
    * Death Knight
    * Elvish Scout
+   * Pikeman
+   * Dwarvish Steelclad
  * undead are now immune to poinson and plague
  * reduced movement for Elvish Lord
  * reduced cost of Mage
  * changed Mage attack to fire based
  * changed Shaman slowing attack to 3-2 from 4-1, and reduced cost from 21 to 18
  * changed 'Red Mage' to neutral alignment
- * removed 'Elvish Outrider' as evolution from 'Horseman'
+ * removed 'Elvish Outrider' as evolution from Horseman
+ * Scout has been renamed to Cavalry
+ * Cavalry stats adjusted, increased cost by one, reduced movement by one,
+ reduced experience needed to advance
  * fixed max experience for Orcish Warlord.
+ * 'Blood Bat' unit description clarified
+ * Halberdier changed to 3rd level unit
+ * Spearman now advances to Pikeman
+ * Fire resistance added to 'Red Mage' branch units
+ * Holy resistance added to Holy units.
  * auto-naming (currently elves and humans only) of units and renaming of units
  * units now have races defined in cfg-files
  * more and improved unit graphics and animations
@@ -77,6 +87,9 @@ Version CVS:
  * added coding support for displaying different terrain images (particularly useful for villages) at different times of the day
  * fixed minor bugs in unit configuration files for Elvish Sharpshooter and Fencer
  * footsteps disappear as you walk over them
+ * added engine support for weapons that can reach multiple hexes
+ * added some utility macros to WML
+ * added a rotate function, you can quickly rotate a SDL_Surface by any angle
  * text is drawn on screen progressively instead of all at once during introductory sequence
  * fixed problems with map updating on map scene
  * fixed bug with 'slow' attacks sometimes causing saved games to be corrupt

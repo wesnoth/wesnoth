@@ -534,8 +534,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				throw replay::error();
 			}
 
-			std::map<gamemap::location,unit>::const_iterator tgt =
-			                                               units.find(dst);
+			std::map<gamemap::location,unit>::const_iterator tgt = units.find(dst);
 
 			if(tgt == units.end()) {
 				std::cerr << "unfound defender for attack\n";

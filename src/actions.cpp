@@ -143,6 +143,10 @@ battle_stats evaluate_battle_stats(
 				   gamemap::TERRAIN attacker_terrain_override,
 				   bool include_strings)
 {
+	//if these are both genuine positions, work out the range
+	//combat is taking place at
+	const int combat_range = attacker_terrain_override == 0 ? distance_between(attacker,defender) : 1;
+
 	battle_stats res;
 
 	res.attack_with = attack_with;
@@ -220,7 +224,8 @@ battle_stats evaluate_battle_stats(
 	int defend;
 	res.ndefends = 0;
 	for(defend = 0; defend != int(defender_attacks.size()); ++defend) {
-		if(defender_attacks[defend].range() == attack.range())
+		if(defender_attacks[defend].range() == attack.range() &&
+		   defender_attacks[defend].hexes() >= combat_range)
 			break;
 	}
 

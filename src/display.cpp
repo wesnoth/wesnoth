@@ -732,8 +732,14 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 				<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
 		            string_table["short_range"] :
-					string_table["long_range"]) << "\n\n";
-			}
+					string_table["long_range"]);
+	
+		if(at_it->hexes() > 1) {
+			details << " (" << at_it->hexes() << ")";
+		}
+					
+		details << "\n\n";
+	}
 
 	description_rect =
 	    font::draw_text(this,clipRect,13,font::NORMAL_COLOUR,

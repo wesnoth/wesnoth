@@ -34,6 +34,7 @@ attack_type::attack_type(const config& cfg)
 	type_ = cfg["type"];
 	special_ = cfg["special"];
 	range_ = cfg["range"] == "long" ? LONG_RANGE : SHORT_RANGE;
+	hexes_ = maximum<int>(1,atoi(cfg["hexes"].c_str()));
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
 
@@ -95,6 +96,11 @@ const std::string& attack_type::special() const
 attack_type::RANGE attack_type::range() const
 {
 	return range_;
+}
+
+int attack_type::hexes() const
+{
+	return hexes_;
 }
 
 int attack_type::damage() const
@@ -315,8 +321,10 @@ int unit_movement_type::damage_against(const attack_type& attack) const
 	const config* const resistance = cfg_.child("resistance");
 	if(resistance != NULL) {
 		const std::string& val = (*resistance)[attack.type()];
-		const int resist = atoi(val.c_str());
-		res = (resist*attack.damage())/100;
+		if(val != "") {
+			const int resist = atoi(val.c_str());
+			res = (resist*attack.damage())/100;
+		}
 	}
 
 	if(res == -1 && parent_ != NULL) {
@@ -329,15 +337,20 @@ int unit_movement_type::damage_against(const attack_type& attack) const
 	return res;
 }
 
-const string_map& unit_movement_type::damage_table() const
+string_map unit_movement_type::damage_table() const
 {
+	string_map res;
+	if(parent_ != NULL)
+		res = parent_->damage_table();
+
 	const config* const resistance = cfg_.child("resistance");
-	if(resistance == NULL) {
-		static const std::map<std::string,std::string> default_val;
-		return default_val;
-	} else {
-		return resistance->values;
+	if(resistance != NULL) {
+		for(string_map::const_iterator i = resistance->values.begin(); i != resistance->values.end(); ++i) {
+			res[i->first] = i->second;
+		}
 	}
+
+	return res;
 }
 
 void unit_movement_type::set_parent(const unit_movement_type* parent)

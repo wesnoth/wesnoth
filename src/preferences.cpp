@@ -256,6 +256,10 @@ const std::string& login()
 		if(login != NULL) {
 			res = login;
 		}
+
+		if(res.empty()) {
+			res = translate_string("generic_player");
+		}
 	}
 
 	return res;

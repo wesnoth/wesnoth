@@ -97,6 +97,8 @@ private:
 	void left_click(const SDL_MouseButtonEvent& event);
 	void show_menu();
 
+	void show_attack_options(unit_map::const_iterator u);
+
 	unit_map::iterator current_unit();
 
 	game_data& gameinfo_;

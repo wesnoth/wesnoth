@@ -247,23 +247,6 @@ paths::paths(const gamemap& map, const game_data& gamedata,
 	find_routes(map,gamedata,units,i->second,loc,
 	            i->second.movement_left(),routes,teams,
 				ignore_zocs,allow_teleport,additional_turns);
-
-	if(i->second.can_attack()) {
-		gamemap::location adjacent[6];
-		get_adjacent_tiles(loc,adjacent);
-		for(int j = 0; j != 6; ++j) {
-			const std::map<gamemap::location,unit>::const_iterator enemy =
-					units.find(adjacent[j]);
-			if(enemy != units.end() &&
-			   enemy->second.side() != i->second.side() &&
-			   teams[i->second.side()-1].is_enemy(enemy->second.side())) {
-				route new_route;
-				new_route.move_left = -1;
-				routes.insert(std::pair<gamemap::location,route>(
-										          adjacent[j],new_route));
-			}
-		}
-	}
 }
 
 int route_turns_to_complete(const unit& u, const gamemap& map,

@@ -351,7 +351,7 @@ bool unit::matches_filter(const config& cfg) const
 
 	if(weapon.empty() == false) {
 		bool has_weapon = false;
-		const std::vector<attack_type>& attacks = this->type().attacks();
+		const std::vector<attack_type>& attacks = this->attacks();
 		for(std::vector<attack_type>::const_iterator i = attacks.begin();
 		    i != attacks.end(); ++i) {
 			if(i->name() == weapon) {
@@ -456,6 +456,19 @@ void unit::read(game_data& data, const config& cfg)
 	if(ai_special == "guardian") {
 		guardian_ = true;
 	}
+
+	role_ = cfg["role"];
+
+	statusFlags_.clear();
+	const config* const status_flags = cfg.child("status");
+	if(status_flags != NULL) {
+		for(string_map::const_iterator i = status_flags->values.begin(); i != status_flags->values.end(); ++i) {
+			statusFlags_.insert(i->first);
+		}
+	}
+
+	goto_.x = atoi(cfg["goto_x"].c_str()) - 1;
+	goto_.y = atoi(cfg["goto_y"].c_str()) - 1;
 }
 
 void unit::write(config& cfg) const
@@ -474,6 +487,15 @@ void unit::write(config& cfg) const
 	sd << side_;
 	cfg["side"] = sd.str();
 
+	cfg["role"] = role_;
+
+	config status_flags;
+	for(std::set<std::string>::const_iterator st = statusFlags_.begin(); st != statusFlags_.end(); ++st) {
+		status_flags[*st] = "on";
+	}
+
+	cfg.children["status"].push_back(new config(status_flags));
+
 	cfg["user_description"] = description_;
 	cfg["description"] = underlying_description_;
 
@@ -491,6 +513,16 @@ void unit::write(config& cfg) const
 	case UPKEEP_LOYAL: cfg["upkeep"] = "loyal"; break;
 	case UPKEEP_FREE: cfg["upkeep"] = "free"; break;
 	}
+
+	if(guardian_) {
+		cfg["ai_special"] = "guardian";
+	}
+
+	char buf[50];
+	sprintf(buf,"%d",goto_.x+1);
+	cfg["goto_x"] = buf;
+	sprintf(buf,"%d",goto_.y+1);
+	cfg["goto_y"] = buf;
 }
 
 void unit::assign_role(const std::string& role)
@@ -501,6 +533,28 @@ void unit::assign_role(const std::string& role)
 const std::vector<attack_type>& unit::attacks() const
 {
 	return attacks_;
+}
+
+int unit::longest_range() const
+{
+	int res = 0;
+	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
+		if(i->hexes() >= res)
+			res = i->hexes();
+	}
+
+	return res;
+}
+
+std::vector<attack_type> unit::attacks_at_range(int range) const
+{
+	std::vector<attack_type> res;
+	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
+		if(i->hexes() >= range)
+			res.push_back(*i);
+	}
+
+	return res;
 }
 
 int unit::movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const

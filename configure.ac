@@ -6,7 +6,7 @@ AC_INIT(wesnoth, 0.5, davidnwhite@optusnet.com.au, Battle for Wesnoth)
 AC_REVISION($Version: 0.5$)
 PACKAGE=wesnoth
 MAJOR_VERSION="0"
-MINOR_VERSION="6RC1"
+MINOR_VERSION="6RC2"
 MICRO_VERSION=""
 
 if test "x$MICRO_VERSION" = "x"; then

@@ -102,34 +102,14 @@ namespace {
 void internal_preprocess_file(const std::string& fname,
                               preproc_map& defines_map,
                               int depth, std::vector<char>& res,
-                              std::vector<line_source>* lines_src, int& line)
+                              std::vector<line_source>* lines_src, int& line);
+
+void internal_preprocess_data(const std::string& data,
+                              preproc_map& defines_map,
+                              int depth, std::vector<char>& res,
+                              std::vector<line_source>* lines_src, int& line,
+							  const std::string& fname, int srcline)
 {
-	//if it's a directory, we process all files in the directory
-	//that end in .cfg
-	if(is_directory(fname)) {
-
-		std::vector<std::string> files;
-		get_files_in_dir(fname,&files,NULL,ENTIRE_FILE_PATH);
-
-		for(std::vector<std::string>::const_iterator f = files.begin();
-		    f != files.end(); ++f) {
-			if(f->size() > 4 && std::equal(f->end()-4,f->end(),".cfg")) {
-				internal_preprocess_file(*f,defines_map,depth,res,
-				                         lines_src,line);
-			}
-		}
-
-		return;
-	}
-
-	int srcline = 1;
-
-	if(lines_src != NULL) {
-		lines_src->push_back(line_source(line,fname,srcline));
-	}
-
-	const std::string data = read_file(fname);
-
 	bool in_quotes = false;
 
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
@@ -187,8 +167,7 @@ void internal_preprocess_file(const std::string& fname,
 					}
 				}
 
-				res.insert(res.end(),str.begin(),str.end());
-				line += std::count(str.begin(),str.end(),'\n');
+				internal_preprocess_data(str,defines_map,depth,res,NULL,line,fname,srcline);
 			} else if(depth < 20) {
 				internal_preprocess_file("data/" + newfilename,
 				                       defines_map, depth+1,res,
@@ -313,8 +292,36 @@ void internal_preprocess_file(const std::string& fname,
 			res.push_back(c);
 		}
 	}
+}
 
-	return;
+void internal_preprocess_file(const std::string& fname,
+                              preproc_map& defines_map,
+                              int depth, std::vector<char>& res,
+                              std::vector<line_source>* lines_src, int& line)
+{
+	//if it's a directory, we process all files in the directory
+	//that end in .cfg
+	if(is_directory(fname)) {
+
+		std::vector<std::string> files;
+		get_files_in_dir(fname,&files,NULL,ENTIRE_FILE_PATH);
+
+		for(std::vector<std::string>::const_iterator f = files.begin();
+		    f != files.end(); ++f) {
+			if(f->size() > 4 && std::equal(f->end()-4,f->end(),".cfg")) {
+				internal_preprocess_file(*f,defines_map,depth,res,
+				                         lines_src,line);
+			}
+		}
+
+		return;
+	}
+
+	if(lines_src != NULL) {
+		lines_src->push_back(line_source(line,fname,1));
+	}
+
+	internal_preprocess_data(read_file(fname),defines_map,depth,res,lines_src,line,fname,1);
 }
 
 } //end anonymous namespace

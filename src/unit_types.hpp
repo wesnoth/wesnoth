@@ -33,6 +33,7 @@ public:
 	const std::string& type() const;
 	const std::string& special() const;
 	RANGE range() const;
+	int hexes() const;
 	int damage() const;
 	int num_attacks() const;
 
@@ -63,6 +64,7 @@ private:
 	std::string type_;
 	std::string special_;
 	RANGE range_;
+	int hexes_;
 	int damage_;
 	int num_attacks_;
 
@@ -105,7 +107,7 @@ public:
 	int defense_modifier(const gamemap& map, gamemap::TERRAIN terrain) const;
 	int damage_against(const attack_type& attack) const;
 
-	const string_map& damage_table() const;
+	string_map damage_table() const;
 
 	void set_parent(const unit_movement_type* parent);
 
