@@ -83,7 +83,7 @@ void show_about(display& disp)
  	text.push_back("+ ");
  
  	text.push_back("+General Purpose Administrator");
- 	text.push_back("-   Crossbow (miyo)");
+ 	text.push_back("-   Crossbow/Miyo");
  	text.push_back("+ ");
  
  	text.push_back("+Internationalization Manager");
