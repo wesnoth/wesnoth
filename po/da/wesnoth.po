@@ -213,6 +213,32 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
+"Bevægelse i Kampen om Wesnoth er simpelt. Du klikken simpelthen på den enhed "
+"du vil flytte, og så klikker du på det felt du vil flytte den til. Når den "
+"er valgt, vil alle felterne som en enhed kan flytte til blive markerede og "
+"alle dem den ikke kan flytte til vil blive matte. Hvis du flytter musen hen "
+"over et mat felt, vil der vises hvor mange ture det vil tage enheden at nå "
+"dette felt. Hvis du klikker på dette matte felt, vil enheden sætte enheden "
+"til at tage den hurtigste rute hen mod dette felt, og enheden vil forsætte "
+"sin rute i de følgende runder.\n"
+"\n"
+"Hver enhed har et antal bevægelsespoint, der bruges enheden flytter til at "
+"nyt felt. Hvor mange point der bruges afhænger af hvilken type "
+"<ret>dst=terrain text=Terræn</ret> der er på feltet. For eksempel koster "
+"græslandskab næsten altid 1 bevægelsespoint at gå ind i. Præcis hvor mange "
+"point det koster at gå ind i et felt afhænger af enhedstypen. I skoven "
+"bruger en elvisk enhed kun 1 bevægelsespoint, hvor de fleste mennesker og "
+"orker bruger 2, mens hestetropper bruger 3. Du kan lære hvor mange "
+"bevægelsespoint en enhed behøver for a gå ind i et bestemt felt, ved at "
+"højreklikke på enheden og vælge Enhedsbeskrivelse, og derefter ruller ned "
+"til <italic>text='Terræn Ændringer'</italic>.\n"
+"\n"
+"En anden ting at huske på at <ref>dst=zones_of_control text='Kontrolzoner'</"
+"ref>. Hver enhed laver en kontrolzone i felterne direkte omkring dem, og "
+"enhver fjend der træder ind i denne zone, mister med det samme resten af sin "
+"bevægelse i den tur. At lære hvordan man kan bruge kontrolzoner til din "
+"fordel er en vigtig del af Wesnoth, da kun <ref>dst=ability_skirmish "
+"text='Hurtigkæmpere'</ref> kan ignorere disse zoner."
 
 #: data/help.cfg:95
 msgid "Combat"
@@ -264,6 +290,48 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
+"Der er to typer af angreb i Kampen om Wesnoth, nærkamp og langtrækkende, men "
+"begge kamptyper finder stad mellem enheder i nærliggende felter. Nærkamp "
+"kæmper for det meste med våben som for eksempel sværd, økser og hugtænder, "
+"mens langtrækkende kampe for det meste kæmpes med våben som buer, spyd og "
+"ildkugler. Kamp er ret ligetil, angriberen og forsvareren skiftes til at "
+"angribe, indtil at de begge har opbrugt alle deres angrebsture.\n"
+"\n"
+"<header>text='Rækkefølgen og mængden af angreb'</header>\n"
+"\n"
+"Angriberen for lov til at angribe først, så forsvareren. Det fortsætter "
+"indtil hver af enhederne har brugt alle deres angreb. Antalllet af angreb "
+"varierer, for eksempel må en Elvisker kriger med et 5-4 sværd angribe 4 "
+"gange, hvor hver gang giver 5 skade, mens en Orkisk Soldat med 9-2 kun får 2 "
+"angreb (menmed 9 skade).\n"
+"\n"
+"<header>text='Chancen for at ramme'</header>\n"
+"\n"
+"Med to undtagelser, er chancen for at ramme baseret alene på hvor godt "
+"enheden forsvarer sig i, i det<ref>dst=terrain text=Terræn</ref> den står i. "
+"Hvor godt den forsvarer sig findes ved at højreklikke på enheden, vælg "
+"Enhedsbeskrivelse, og rulle ned til <italic>text='Terræn Ændringer'</"
+"italic>. For eksempel har elvere en forsvarsrate på 70% i skoven, hvilket "
+"betyder at en enhed der angriber dem kun har 30% chance for at ramme dem. "
+"Omvendt afhænger elverenschance for at ramme angriberen af hvor godt "
+"angriberen forsvarer sig i det terræn angriberen er i.\n"
+"Der er to undtagelser for denne regel. <ref>dst=magical_attacks "
+"text='Magiske angreb'</ref> og <ref>dst=ability_marksman text=Jagtskytter</"
+"ref>. Magiske angreb har altid en 70% chance for at ramme, uanset terræn, og Jagtskytter har altid mindst en 60% chance for at ramme, uanset terræn.\n"
+"\n"
+"<header>text=Skade</header>\n"
+"\n"
+"Hver angreb der rammer giver en vis mængde basisskade, dette afhænger af "
+"våbentypen. For eksempen giver en Elvisk Kriger med et 5-4 sværd en "
+"basisskadepå 5. Dette ændres normalt af to ting: "
+"<ref>dst=damage_type_and_resistance text=Modstandkraf</ref> og "
+"<ref>dst=time_of_day text='Tid på døgnet'</ref>, begge dele er forklaret "
+"neden under.\n"
+"\n"
+"Nogle enheder har specielle evner der indvirker på hvor meget skade der "
+"gives i kamp. Den mest almindelige er <ref>dst=ability_charge "
+"text=Gallopere</ref>, der giver dobbelt skade både til angriber og forsvarer "
+"når den angribende enhed har denne evne."
 
 #: data/help.cfg:116
 msgid "Damage Types and Resistance"
@@ -418,9 +486,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:197
-#, fuzzy
 msgid "About"
-msgstr "Ung"
+msgstr "Om"
 
 #: data/help.cfg:242
 msgid ""
@@ -510,8 +577,7 @@ msgstr "Masser af guld"
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr ""
-"Jeg ønsker, at denne enkelte guldmønt vil blive givet tifold tilbage til mig."
+msgstr "Jeg ønsker, at denne enkelte guldmønt vil blive givet tifold tilbage til mig."
 
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
@@ -611,8 +677,7 @@ msgstr "Storm-Trefork"
 
 #: data/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
-msgstr ""
-"Denne trefork giver en merman evnen til at skyde pile efter hans fjender!"
+msgstr "Denne trefork giver en merman evnen til at skyde pile efter hans fjender!"
 
 #: data/items.cfg:657
 msgid "Only the mermen can use this item!"
@@ -719,7 +784,7 @@ msgstr "&dwarf-warrior.png,Dværge"
 
 #: data/multiplayer.cfg:180
 msgid "&saurian-soothsayer.png,Saurian"
-msgstr ""
+msgstr "&saurian-soothsayer.png,Saurian"
 
 #: data/multiplayer.cfg:193
 msgid "Age of Heroes"
@@ -771,11 +836,11 @@ msgstr "En Ø"
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
-msgstr ""
+msgstr "Blitz"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
-msgstr ""
+msgstr "Borg-hoppe Ø"
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1060,7 +1125,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:96
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "Flyt din Elviske Kriger hen ved siden af Merle"
+msgstr "Flyt din Elviske Soldat hen ved siden af Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:118
 msgid ""
@@ -1068,13 +1133,13 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
-"Excellent! Du har successfuldt flyttet den Elviske Kriger. Men, da han "
+"Excellent! Du har successfuldt flyttet den Elviske Soldat. Men, da han "
 "flyttede hen ved siden af en fjendtlig enhed, mistede han al sin bevægelse; "
 "dette kaldes kontrolzonen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:122
 msgid "How far can my Elvish Fighter move?"
-msgstr "Hvor langt kan min Elviske Kriger bevæge sig?"
+msgstr "Hvor langt kan min Elviske Soldat bevæge sig?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:122
 msgid ""
@@ -1089,10 +1154,10 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
-"Din Elviske Kriger begynder med at bestemt antal bevægelses point hver tur, "
-"dette kaldes hans hastighed. Når din Elviske Kriger bevæger sig i en retning "
+"Din Elviske Soldat begynder med at bestemt antal bevægelses point hver tur, "
+"dette kaldes hans hastighed. Når din Elviske Soldat bevæger sig i en retning "
 "koster hver felt han går gennem bevægelses point, det gælder også hans "
-"destination. Når du vælger din Elviske Kriger, bliver alle felter, som han "
+"destination. Når du vælger din Elviske Soldat, bliver alle felter, som han "
 "ikke kan bevæge sig til på en tur, mørkere. Hvis destinationen er så langt "
 "væk at han bliver nødt til at bruge flere ture vil der vises et tal hvor der "
 "står hvor mange ture det så vil tage ham. Hvis du klikker på et felt der er "
@@ -1398,8 +1463,7 @@ msgstr "Karaktertræk og Specialevner"
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr ""
-"Nu vil du opleve en sværere test. Du må besejre mig i denne træningskamp."
+msgstr "Nu vil du opleve en sværere test. Du må besejre mig i denne træningskamp."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
 msgid ""
@@ -1413,7 +1477,7 @@ msgstr ""
 "dette scenarie ved at overvinde mig. Din kriger fra sidste scenarie kan "
 "hjælpe dig i denne kamp. For at genindkalde ham, højre-klik på et slotsfelt, "
 "vælg Genindkald, vælg din kriger og tryk Ok. Du burde også rekrutere Elviske "
-"Krigere og Elviske Bueskytter."
+"Soldater og Elviske Bueskytter."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:64
 msgid ""
@@ -1447,7 +1511,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 msgid "You have successfully recalled your Elvish Fighter."
-msgstr "Du har successfuldt genindkaldt din Elviske Kriger."
+msgstr "Du har successfuldt genindkaldt din Elviske Soldat."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:77
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:91
@@ -1665,8 +1729,7 @@ msgid "What are the different damage types?"
 msgstr "Hvad er de forskellige angrebstyper?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:160
-msgid ""
-"Many units have a specialty which changes the rules of play in some way."
+msgid "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 "Mange enheder har specielle evner der ændrer spillets regler i en eller "
 "anden form."
@@ -1903,15 +1966,15 @@ msgstr "træk"
 
 #: data/translations/english.cfg:2
 msgid "Easy"
-msgstr "&elvish-fighter.png,Kriger (let)"
+msgstr "Let"
 
 #: data/translations/english.cfg:3
 msgid "Medium"
-msgstr "*&elvish-hero.png,Helt (medium)"
+msgstr "Medium"
 
 #: data/translations/english.cfg:4
 msgid "Hard"
-msgstr "&elvish-champion.png,Mester (svær)"
+msgstr "Svær"
 
 #: data/translations/english.cfg:9
 msgid ""
@@ -2227,7 +2290,7 @@ msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"Finskytte:\n"
+"Jagtskytte:\n"
 "Når dette angreb bruges offensivt, vil det altid have mindst 60% chance for "
 "at ramme."
 
@@ -2434,8 +2497,7 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
 #: data/translations/english.cfg:177
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
 #: data/translations/english.cfg:179
@@ -2527,11 +2589,10 @@ msgid ""
 msgstr ""
 "Chancen for at ramme afhænger for det meste af hvor godt en enhed kan "
 "forsvare sig i det terræn den står i, men magiske angreb har altid 70% "
-"chance for at ramme, og finskytter har en mindst 60% chance."
+"chance for at ramme, og jagtskytter har en mindst 60% chance."
 
 #: data/translations/english.cfg:190
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr "Enheder der står i en landsby får 8 HP i starten af hver tur."
 
 #: data/translations/english.cfg:191
@@ -2593,10 +2654,8 @@ msgstr ""
 "undværlige tropper i andre retninger for at forsinke fjenden."
 
 #: data/translations/english.cfg:198
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
-msgstr ""
-"Vær ikke bange for tilbagetov eller omgrupering, det er ofte nøglen til sejr."
+msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
+msgstr "Vær ikke bange for tilbagetov eller omgrupering, det er ofte nøglen til sejr."
 
 #: data/translations/english.cfg:199
 msgid ""
@@ -4328,8 +4387,7 @@ msgid "Fireball"
 msgstr "Ildkugle"
 
 #: data/units/Fireball.cfg:16
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr "En Ildkugle. Dette skal ikke bruges til andet end en 'Move_Unit_Fake'!"
 
 #: data/units/Footpad.cfg:3
@@ -4387,7 +4445,7 @@ msgstr ""
 
 #: data/units/Ghost.cfg:3
 msgid "Ghost"
-msgstr "Genfærd"
+msgstr "Spøgelse"
 
 #: data/units/Ghost.cfg:16
 msgid ""
@@ -4396,10 +4454,9 @@ msgid ""
 "fly swiftly towards their victims. Even as its ectoplasm matter can cross "
 "physical things it does not too fast nor too deeply."
 msgstr ""
-"Disse ånder er sjælene fra krigere, der døde i smerte for hundreder af år "
-"siden uden at efterlade sig et lig. Da de ikke er begrænsede af en fysisk "
-"krop, kan disse levende-døde\n"
-"hurtigt flyve imod deres ofre."
+"Disse spøgelser er sjælene fra krigere, der døde i smerte for hundreder af "
+"år siden uden at efterlade sig et lig. Da de ikke er begrænsede af en fysisk "
+"krop, kan disse levende-døde hurtigt flyve imod deres ofre."
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
@@ -5394,8 +5451,7 @@ msgstr "Søuhyre"
 msgid ""
 "Sea Hags are older and more experienced Nagas who have learned to control "
 "the water magic."
-msgstr ""
-"Søuhyrer er ældre og mere erfarne Nagaer der har lært at bruge vandmagi."
+msgstr "Søuhyrer er ældre og mere erfarne Nagaer der har lært at bruge vandmagi."
 
 #: data/units/Sea_Hag.cfg:27
 msgid "water spray"
@@ -5419,8 +5475,7 @@ msgid "Sea Serpent"
 msgstr "Søslange"
 
 #: data/units/Sea_Serpent.cfg:16
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
 "Søslangen er et gigantisk monster, der ganske egenhændigt kan vende et skib "
 "rundt."
@@ -5852,7 +5907,7 @@ msgstr ""
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
-msgstr "Genfærd"
+msgstr "Ånd"
 
 #: data/units/Wraith.cfg:16
 msgid ""
@@ -5865,7 +5920,7 @@ msgstr ""
 "at frembringe et spøgelses-sværd, der dræner livet ud af deres fjender og "
 "derved styrker dem selv. De kan desuden lave et frygtet skrig, der kan "
 "stoppe hjertet på de svagere mænd. De, der dræbes af skriget, vender tilbage "
-"til de levendes rige som genfærd for at tjene sin morder."
+"til de levendes rige som ånder for at tjene sin morder."
 
 #: data/units/Yeti.cfg:3
 msgid "Yeti"
@@ -6402,8 +6457,7 @@ msgid "Remote host disconnected."
 msgstr "Fjern host afbrudt."
 
 #: src/game.cpp:1096
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
+msgid "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Der var et problem med at lave de filer der skal bruges til at installere "
 "denne kampagne."
@@ -6527,7 +6581,7 @@ msgstr "Modstandskraft"
 
 #: src/help.cpp:764
 msgid "Terrain Modifiers"
-msgstr ""
+msgstr "Terræn Ændringer"
 
 #: src/help.cpp:768 src/help.cpp:769
 msgid "Terrain"
@@ -6859,8 +6913,7 @@ msgstr "Krigståge"
 
 #: src/multiplayer.cpp:113
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr ""
-"Fjender kan ikke ses medmindre de er inden for dine enheders rækkevidde."
+msgstr "Fjender kan ikke ses medmindre de er inden for dine enheders rækkevidde."
 
 #: src/multiplayer.cpp:115 src/multiplayer_lobby.cpp:130
 msgid "Shroud"
@@ -7230,16 +7283,14 @@ msgid "Choose weapon"
 msgstr "Vælg våben"
 
 #: src/playturn.cpp:1125
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
+msgid "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "Du har ikke startet din tur endnu. Vil du virkelig slutte den før den er "
 "begyndt?"
 
 #: src/playturn.cpp:1134 src/playturn.cpp:1139
 msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr ""
-"Nogle enheder kan bevæge sig længere. Vil du virkelig afslutte din tur?"
+msgstr "Nogle enheder kan bevæge sig længere. Vil du virkelig afslutte din tur?"
 
 #: src/playturn.cpp:1155
 msgid "Auto-Save"
@@ -7462,8 +7513,7 @@ msgstr ""
 
 #: src/reports.cpp:122
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-"Denne enhed er blevet lavet til sten. Den kan ikke bevæge sig eller angribe."
+msgstr "Denne enhed er blevet lavet til sten. Den kan ikke bevæge sig eller angribe."
 
 #: src/reports.cpp:131 src/reports.cpp:142
 msgid "_description"
@@ -7608,3 +7658,4 @@ msgstr "Slet fil"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Slettelse af fil mislykkedes"
+
