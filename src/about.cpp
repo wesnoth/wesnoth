@@ -179,6 +179,10 @@ std::vector<std::string> get_text() {
 		"-   Pieter Vermeylen (Onne)",
 		"+ ",
 
+		"_" N_("+English (GB) Translation"),
+		"-   ott",
+		"+ ",
+
 		"_" N_("+Finnish Translation"),
 		"-   paxed",
 		"+ ",
