@@ -501,7 +501,7 @@ std::istream *stream_file(std::string const &fname)
 	}
 #else
 	if (!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
-		std::ifstream *s = new ifstream((game_config::path + "/" + fname).c_str());
+		std::ifstream *s = new std::ifstream((game_config::path + "/" + fname).c_str());
 		if (s->is_open())
 			return s;
 		delete s;
