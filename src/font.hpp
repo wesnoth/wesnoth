@@ -93,6 +93,12 @@ int line_width(const std::string line, int font_size);
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width);
 
 ///
+/// If the text excedes the specified max width, end it with an ellipsis (...)
+///
+std::string make_text_ellipsis(const std::string& text, int font_size, int max_width);
+	
+
+///
 /// Draw text on the screen. This method makes sure that the text
 /// fits within a given maximum width. If a line exceedes this width it
 /// will be wrapped on a word basis if possible, otherwise on a char

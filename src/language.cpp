@@ -227,32 +227,39 @@ std::string wstring_to_utf8(const wide_string &src)
 	}
 }
 
+int byte_size_from_utf8_first(unsigned char ch)
+{
+	int count;
+
+	if ((ch & 0x80) == 0)
+		count = 1;
+	else if ((ch & 0xE0) == 0xC0)
+		count = 2;
+	else if ((ch & 0xF0) == 0xE0)
+		count = 3;
+	else if ((ch & 0xF8) == 0xF0)
+		count = 4;
+	else if ((ch & 0xFC) == 0xF8)
+		count = 5;
+	else if ((ch & 0xFE) == 0xFC)
+		count = 6;
+	else
+		throw invalid_utf8_exception(); /* stop on invalid characters */
+
+	return count;
+}
+	
 wide_string utf8_to_wstring(const std::string &src)
 {
 	wide_string ret;	
-    wchar_t ch;
+	wchar_t ch;
 	std::string::const_iterator i;
 	
 	try {
 		for(i = src.begin(); i != src.end(); ++i ) {
 			ch = (unsigned char)*i;
-			int count;
-
-			if ((ch & 0x80) == 0)
-				count = 1;
-			else if ((ch & 0xE0) == 0xC0)
-				count = 2;
-			else if ((ch & 0xF0) == 0xE0)
-				count = 3;
-			else if ((ch & 0xF8) == 0xF0)
-				count = 4;
-			else if ((ch & 0xFC) == 0xF8)
-				count = 5;
-			else if ((ch & 0xFE) == 0xFC)
-				count = 6;
-			else
-				throw invalid_utf8_exception(); /* stop on invalid characters */
-		
+			const int count = byte_size_from_utf8_first(ch);
+					
 			if(i + count - 1 == src.end())
 				throw invalid_utf8_exception();
 
@@ -283,9 +290,32 @@ wide_string utf8_to_wstring(const std::string &src)
 
 }
 
+std::vector<std::string> split_utf8_string(const std::string &src)
+{
+	std::vector<std::string> ret;
+	
+	try {
+		for(size_t i = 0; i < src.size(); /* nop */) {
+			const int size = byte_size_from_utf8_first(src[i]);
+			if(i + size > src.size())
+				throw invalid_utf8_exception();
+
+			ret.push_back(src.substr(i, size));
+			i += size;
+		}
+	}
+	
+	catch(invalid_utf8_exception e) {
+		std::cerr << "Invalid UTF-8 string: \"" << src << "\"\n";
+		return ret;
+	}
+
+	return ret;
+}
+
 std::string wstring_to_string(const wide_string &src)
 {
-		return wstring_to_utf8(src);
+	return wstring_to_utf8(src);
 }
 
 wide_string string_to_wstring(const std::string &src)

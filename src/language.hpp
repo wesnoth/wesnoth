@@ -61,6 +61,7 @@ std::string get_locale();
 
 //functions for converting Unicode wide-char strings to UTF-8 encoded
 //strings, back and forth
+std::vector<std::string> split_utf8_string(const std::string &src);
 std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
 
