@@ -18,6 +18,17 @@
 #include <string>
 #include <vector>
 
+//an exception object used when an IO error occurs
+struct io_exception : public std::exception {
+	io_exception() {}
+	io_exception(const std::string& msg) : message(msg) {}
+	virtual ~io_exception() throw() {}
+
+	virtual const char* what() const throw() { return message.c_str(); }
+private:
+	std::string message;
+};
+
 enum FILE_NAME_MODE { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
 
 //function which populates files with all the files and dirs

@@ -41,17 +41,6 @@ struct line_source
 
 bool operator<(const line_source& a, const line_source& b);
 
-//an exception object used when an IO error occurs
-struct io_exception : public std::exception {
-	io_exception() {}
-	io_exception(const std::string& msg) : message(msg) {}
-	virtual ~io_exception() throw() {}
-
-	virtual const char* what() const throw();
-private:
-	std::string message;
-};
-
 struct preproc_define {
 	preproc_define() {}
 	explicit preproc_define(const std::string& val) : value(val) {}

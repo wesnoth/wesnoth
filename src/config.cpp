@@ -74,14 +74,6 @@ line_source get_line_source(const std::vector<line_source>& line_src, int line)
 	return res;
 }
 
-} //end anon namespace
-
-const char* io_exception::what() const throw() {
-	return message.c_str();
-}
-
-namespace {
-
 //this function takes a macro and parses it into the macro followed by its
 //arguments. Arguments are seperated by spaces, but an argument appearing inside
 //braces is treated as a single argument.
