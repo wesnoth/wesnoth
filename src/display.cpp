@@ -918,7 +918,13 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	std::vector<SDL_Surface*> overlaps;
 
 	if(!is_shrouded) {
-		overlaps = getAdjacentTerrain(x,y,image_type);
+		SDL_Surface* const flag = getFlag(terrain,x,y);
+		if(flag != NULL)
+			overlaps.push_back(flag);
+
+		const std::vector<SDL_Surface*>& adj = getAdjacentTerrain(x,y,image_type);
+
+		overlaps.insert(overlaps.end(),adj.begin(),adj.end());
 
 		typedef std::multimap<gamemap::location,std::string>::const_iterator
 		        Itor;
@@ -1430,23 +1436,6 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 	                           map_.get_terrain_info(terrain).image(x,y) :
 	                           map_.get_terrain_info(terrain).default_image());
 
-	if(tower) {
-		
-		size_t i;
-		for(i = 0; i != teams_.size(); ++i) {
-			if(teams_[i].owns_tower(gamemap::location(x,y)) && (!fogged(x,y) || i == currentTeam_)) {
-				char buf[50];
-				sprintf(buf,"-team%d",i+1);
-				image += buf;
-				break;
-			}
-		}
-
-		if(i == teams_.size()) {
-			image += "-neutral";
-		}
-	}
-
 	if(terrain == gamemap::CASTLE &&
 	   map_.is_starting_position(gamemap::location(x,y))) {
 		image = "terrain/keep";
@@ -1471,6 +1460,25 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 	}
 
 	return im;
+}
+
+SDL_Surface* display::getFlag(gamemap::TERRAIN terrain, int x, int y)
+{
+	const bool village = (map_.underlying_terrain(terrain) == gamemap::TOWER);
+	if(!village)
+		return NULL;
+
+	const gamemap::location loc(x,y);
+
+	for(size_t i = 0; i != teams_.size(); ++i) {
+		if(teams_[i].owns_tower(loc) && (!fogged(x,y) || i == currentTeam_)) {
+			char buf[50];
+			sprintf(buf,"terrain/flag-team%d.png",i+1);
+			return image::get_image(buf);
+		}
+	}
+
+	return NULL;
 }
 
 void display::blit_surface(int x, int y, SDL_Surface* surface)

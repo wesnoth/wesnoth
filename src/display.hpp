@@ -276,6 +276,8 @@ private:
 	SDL_Surface* getTerrain(gamemap::TERRAIN, image::TYPE type,
 	                        int x, int y, const std::string& dir="");
 
+	SDL_Surface* getFlag(gamemap::TERRAIN, int x, int y);
+
 	SDL_Surface* getMinimap(int w, int h);
 
 	void clearImageCache();
