@@ -435,6 +435,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	//the visual effect
 	else if(cmd == "move_unit_fake") {
 		const std::string& type = cfg["type"];
+		const std::string& side = cfg["side"];
+		int side_num = atoi(side.c_str())-1;
+		if(side_num < 0 || side_num >= teams->size()) side_num = 0;
+
 		const unit_race::GENDER gender = cfg["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE;
 		const game_data::unit_type_map::const_iterator itor = game_data_ptr->unit_types.find(type);
 		if(itor != game_data_ptr->unit_types.end()) {
@@ -442,12 +446,30 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			const std::vector<std::string> xvals = config::split(cfg["x"]);
 			const std::vector<std::string> yvals = config::split(cfg["y"]);
 			std::vector<gamemap::location> path;
+			gamemap::location src;
+			gamemap::location dst;
 			for(size_t i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
-				path.push_back(gamemap::location(atoi(xvals[i].c_str())-1,
-				                                 atoi(yvals[i].c_str())-1));
-			}
+				if(i==0){
+					src.x = atoi(xvals[i].c_str())-1;
+					src.y = atoi(yvals[i].c_str())-1;
+					continue;
+				}
+				shortest_path_calculator calc(dummy_unit,
+						(*teams)[side_num],
+						*units,
+						*teams,
+						*game_map,
+						*status_ptr);
 
-			unit_display::move_unit(*screen,*game_map,path,dummy_unit,status_ptr->get_time_of_day(),*units,*teams);
+				dst.x = atoi(xvals[i].c_str())-1;
+				dst.y = atoi(yvals[i].c_str())-1;
+
+				paths::route route=a_star_search(src,dst,10000,calc,0);
+				unit_display::move_unit(*screen, *game_map, route.steps,
+						dummy_unit,status_ptr->get_time_of_day(), *units, *teams);
+
+				src = dst;
+			}
 		}
 	}
 
