@@ -73,6 +73,8 @@ To lexical_cast_default(From a, To def=To())
 	}
 }
 
+inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
+
 //a definition of 'push_back' for strings, since some implementations
 //don't support string::push_back
 template<typename T, typename C>
