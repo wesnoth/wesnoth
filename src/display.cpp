@@ -750,23 +750,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const Pixel boxcolour = Pixel(SDL_MapRGB(surface->format,0xFF,0xFF,0xFF));
 	SDL_Surface* const screen = screen_.getSurface();
 
-	surface_lock lock(screen);
-	short* const data = lock.pixels();
-	short* const start_top = data + (y+ybox)*screen->w + (x+xbox);
-	short* const end_top = start_top + wbox;
-
-	std::fill(start_top,end_top,boxcolour);
-
-	short* const start_bot = start_top + hbox*screen->w;
-	short* const end_bot = start_bot + wbox;
-
-	std::fill(start_bot,end_bot+1,boxcolour);
-
-	short* side;
-	for(side = start_top; side != start_bot; side += screen->w) {
-		*side = boxcolour;
-		side[wbox] = boxcolour;
-	}
+	gui::draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
 }
 
 void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
