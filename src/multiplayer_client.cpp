@@ -66,9 +66,9 @@ class wait_for_start : public lobby::dialog
 public:
 	wait_for_start(display& disp, config& cfg, const game_data& data, int team_num,
 			const std::string& team_name, const std::string& team_leader)
-		: got_side(false), team(team_num), name(team_name), leader(team_leader),
-		  status(START_GAME), disp_(disp),
-		  sides_(cfg), cancel_button_(NULL), menu_(NULL), units_data_(data)
+		: status(START_GAME), got_side(false), team(team_num),
+		  name(team_name), leader(team_leader), disp_(disp), sides_(cfg),
+		  units_data_(data), cancel_button_(NULL), menu_(NULL)
 	{
 		SDL_Rect empty_rect = {0,0,0,0};
 		area_ = empty_rect;
@@ -580,7 +580,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 leader_list_manager::leader_list_manager(const config::child_list& side_list,
 		const game_data* data, gui::combo* combo) :
-	combo_(combo), side_list_(side_list), data_(data)
+	side_list_(side_list), data_(data), combo_(combo)
 {
 #if 0
 	for(config::const_child_iterator itor = side_list.begin(); itor != side_list.end(); ++itor) {
@@ -695,10 +695,10 @@ namespace {
 leader_preview_pane::leader_preview_pane(display& disp, const game_data* data,
 		const config::child_list& side_list) :
 	gui::preview_pane(disp),
-	side_list_(side_list), selection_(0),
+	side_list_(side_list),
 	leader_combo_(disp, std::vector<std::string>()), 
 	leaders_(side_list, data, &leader_combo_),
-	data_(data)
+	selection_(0), data_(data)
 {
 
 	set_location(leader_pane_position);

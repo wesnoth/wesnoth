@@ -51,13 +51,13 @@ const int terrain_builder::rule_image::TILEWIDTH = 72;
 const int terrain_builder::rule_image::UNITPOS = 36 + 18;
 
 terrain_builder::rule_image::rule_image(int layer, bool global_image) : 
-	layer(layer), global_image(global_image),
-	position(HORIZONTAL), basex(0), basey(0) 
+	position(HORIZONTAL), layer(layer),
+	basex(0), basey(0), global_image(global_image)
 {};
 
 terrain_builder::rule_image::rule_image(int x, int y, bool global_image) : 
-	layer(0), global_image(global_image),
-	position(VERTICAL), basex(x), basey(y) 
+	position(VERTICAL), layer(0),
+	basex(x), basey(y), global_image(global_image)
 {};
 
 terrain_builder::tile::tile() : last_tod("invalid_tod")
@@ -496,7 +496,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		} else if((**img)["position"] == "vertical") {
 
 			std::vector<std::string> base = config::split((**img)["base"]);
-			int basex, basey;
+			int basex = 0, basey = 0;
 
 			if(base.size() >= 2) {
 				basex = atoi(base[0].c_str());
