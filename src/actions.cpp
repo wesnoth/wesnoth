@@ -50,7 +50,7 @@ private:
 
 std::string recruit_unit(const gamemap& map, int side,
        std::map<gamemap::location,unit>& units, unit& new_unit,
-       gamemap::location recruit_location, display* disp, bool need_castle)
+       gamemap::location recruit_location, display* disp, bool need_castle, bool full_movement)
 {
 	std::cerr << "recruiting unit for side " << side << "\n";
 	typedef std::map<gamemap::location,unit> units_map;
@@ -89,8 +89,13 @@ std::string recruit_unit(const gamemap& map, int side,
 		return string_table["no_recruit_location"];
 	}
 
-	new_unit.set_movement(0);
-	new_unit.set_attacked();
+	if(full_movement) {
+		new_unit.set_movement(new_unit.total_movement());
+	} else {
+		new_unit.set_movement(0);
+		new_unit.set_attacked();
+	}
+
 	units.insert(std::pair<gamemap::location,unit>(
 							recruit_location,new_unit));
 

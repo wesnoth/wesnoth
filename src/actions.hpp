@@ -41,7 +41,7 @@
 //describing why not will be returned. On success, the return string is empty
 std::string recruit_unit(const gamemap& map, int team, unit_map& units,
 						 unit& u, gamemap::location preferred_location,
-                         display *disp=NULL, bool need_castle=true);
+                         display *disp=NULL, bool need_castle=true, bool full_movement=false);
 
 //a structure which defines all the statistics for a potential
 //battle that could take place.

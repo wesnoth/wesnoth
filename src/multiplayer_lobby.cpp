@@ -14,16 +14,23 @@
 
 #include <sstream>
 
+namespace {
+	int xscale(display& disp, int x)
+	{
+		return (x*disp.x())/1024;
+	}
+
+	int yscale(display& disp, int y)
+	{
+		return (y*disp.y())/768;
+	}
+}
+
 namespace lobby {
 
 RESULT enter(display& disp, config& game_data)
 {
-	//prevent entry into the lobby if mode is less than 1024x768
-	//FIXME: the lobby should be fixed properly
-	if(disp.x() < 1024 || disp.y() < 768) {
-		gui::show_dialog(disp,NULL,"","You currently cannot enter the lobby with a resolution of less than 1024x768 (we're working on this)",gui::OK_ONLY);
-		return QUIT;
-	}
+	const events::resize_lock prevent_resizing;
 
 	CKey key;
 
@@ -31,15 +38,14 @@ RESULT enter(display& disp, config& game_data)
 
 	gui::textbox message_entry(disp,500);
 
-	const scoped_sdl_surface background(image::get_image("misc/lobby.png",image::UNSCALED));
+	scoped_sdl_surface background(image::get_image("misc/lobby.png",image::UNSCALED));
+	background.assign(scale_surface(background,disp.x(),disp.y()));
 
 	update_whole_screen();
 
 	for(;;) {
 		if(background != NULL)
 			SDL_BlitSurface(background, NULL, disp.video().getSurface(), NULL);
-
-		std::cerr << "game data: " << game_data.write() << "\n";
 
 		// Display Chats
 		std::stringstream text;
@@ -48,9 +54,11 @@ RESULT enter(display& disp, config& game_data)
 			text << messages[n] << "\n";
 		}
 
-		font::draw_text(&disp,disp.screen_area(),12,font::NORMAL_COLOUR,
-		                text.str(),19,574);
-		update_rect(19,574,832,130);
+		const SDL_Rect chat_area = { xscale(disp,19), yscale(disp,574), xscale(disp,832), yscale(disp,130) };
+
+		font::draw_text(&disp,chat_area,12,font::NORMAL_COLOUR,
+		                text.str(),xscale(disp,19),yscale(disp,574));
+		update_rect(chat_area);
 
 		// Game List GUI
 		const config* const gamelist = game_data.child("gamelist");
@@ -88,17 +96,17 @@ RESULT enter(display& disp, config& game_data)
 		gui::menu users_menu(disp,users);
 
 		// Set GUI locations
-		users_menu.set_loc(869,23);
-		users_menu.set_width(129);
-		update_rect(869,23,129,725);
-		games_menu.set_loc(19,23);
-		games_menu.set_width(832);
-		update_rect(19,23,832,520);
-		join_game.set_xy(19,545);
-		new_game.set_xy(19+join_game.width()+5,545);
-		quit_game.set_xy(19+join_game.width()+5+new_game.width()+5,545);
-		message_entry.set_position(19,725);
-		message_entry.set_width(832);
+		users_menu.set_loc(xscale(disp,869),yscale(disp,23));
+		users_menu.set_width(xscale(disp,129));
+		update_rect(xscale(disp,869),yscale(disp,23),xscale(disp,129),yscale(disp,725));
+		games_menu.set_loc(xscale(disp,19),yscale(disp,23));
+		games_menu.set_width(xscale(disp,832));
+		update_rect(xscale(disp,19),yscale(disp,23),xscale(disp,832),yscale(disp,520));
+		join_game.set_xy(xscale(disp,19),yscale(disp,545));
+		new_game.set_xy(xscale(disp,19)+join_game.width()+5,yscale(disp,545));
+		quit_game.set_xy(xscale(disp,19)+join_game.width()+5+new_game.width()+5,yscale(disp,545));
+		message_entry.set_position(xscale(disp,19),yscale(disp,725));
+		message_entry.set_width(xscale(disp,832));
 
 		update_whole_screen();
 

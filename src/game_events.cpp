@@ -542,7 +542,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		std::vector<unit>& avail = state_of_game->available_units;
 		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			if(u->matches_filter(cfg)) {
-				recruit_unit(*game_map,1,*units,*u,gamemap::location(),screen,false);
+				recruit_unit(*game_map,1,*units,*u,gamemap::location(),screen,false,true);
 				avail.erase(u);
 				break;
 			}
@@ -677,12 +677,23 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 
 		const std::string& lang_message = string_table[id];
-		int option_chosen = gui::show_dialog(*screen,surface,caption,
-		           lang_message.empty() ? cfg["message"] : lang_message,
-		           options.empty() ? gui::MESSAGE : gui::OK_ONLY,
-		           options.empty() ? NULL : &options);
+		int option_chosen = -1;
+		
+		//if we're not replaying, or if there is no choice to be made, show
+		//the dialog.
+		if(recorder.at_end() == false || options.empty()) {
+			option_chosen = gui::show_dialog(*screen,surface,caption,
+		                        lang_message.empty() ? cfg["message"] : lang_message,
+		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
+		                        options.empty() ? NULL : &options);
 
-		if(screen->update_locked() && options.empty() == false) {
+			if(options.empty() == false) {
+				recorder.choose_option(option_chosen);
+			}
+		}
+
+		//otherwise if a choice has to be made, get it from the replay data
+		else if(options.empty() == false) {
 			const config* const action = recorder.get_next_action();
 			if(action == NULL || action->get_children("choose").empty()) {
 				std::cerr << "choice expected but none found\n";
@@ -695,11 +706,9 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 
 			const std::string& val = (*(action->get_children("choose").front()))["value"];
 			option_chosen = atol(val.c_str());
-
-		} else if(options.empty() == false) {
-			recorder.choose_option(option_chosen);
 		}
 
+		//implement the consequences of the choice
 		if(options.empty() == false) {
 			assert(size_t(option_chosen) < menu_items.size());
 			
