@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.3-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-08-26 10:13+0200\n"
-"PO-Revision-Date: 2004-08-19 15:00+0200\n"
+"PO-Revision-Date: 2004-08-26 11:00+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1618,12 +1618,10 @@ msgid "They killed Konrad... now, even if save Weldyn, Wesnoth has fallen."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:3
-#, fuzzy
 msgid "The Drowned Plains"
-msgstr "Llanos Nevados"
+msgstr "Los Llanos Hundidos"
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:24
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1636,11 +1634,11 @@ msgid ""
 msgstr ""
 "\n"
 "Victoria:\n"
-"@Derrotar al líder enemigo\n"
+"@Derrotar a Khrakrahs, el Dragon esquelético\n"
 "Derrota:\n"
-"#Muerte de Konrad\n"
-"#Muerte de Delfador\n"
-"#Muerte de Kalenz\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Muerte de Owaec\n"
 "#Fin de los turnos"
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:64
@@ -1663,7 +1661,6 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:88
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:200
-#, fuzzy
 msgid "What is that?"
 msgstr "¿Qué es eso?"
 
@@ -1673,7 +1670,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:3
 msgid "The Duel"
-msgstr ""
+msgstr "El duelo"
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:21
 msgid ""
@@ -1683,6 +1680,11 @@ msgid ""
 "Defeat:\n"
 "#Death of Gweddry"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Derrotar a Mal-Ravanal\n"
+"Derrota:\n"
+"#Muerte de Gweddry"
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:78
 msgid ""
@@ -2756,132 +2758,111 @@ msgstr ""
 "#Fin de los turnos"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:97
-#, fuzzy
 msgid ""
 "So this is the Bay of Pearls. It looks like they have those mermen working "
 "hard!"
 msgstr ""
-"Así que esta es la Bahía de las Perlas. ¡Parece que esos Sirénidos están "
-"trabajando brutalmente de veras!"
+"Así que esta es la Bahía de las Perlas. ¡Parece que tienen a esos sirénidos "
+"trabajando brutalmente!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:102
-#, fuzzy
 msgid ""
 "Indeed it does. It also looks like they have many, many troops. I should go "
 "around the bay and distract some of them. You and the rest rescue the mermen!"
 msgstr ""
-"Así lo parece. También parece que los Orcos tienen muchas tropas, "
-"muchísimas. Creo que debería ir alrededor de la bahía y distraer a algunos. "
-"¡Tú y el resto de tus hombres rescatad a los Sirénidos!"
+"Así es. También parece que los Orcos tienen muchas tropas, muchísimas. Creo "
+"que debería dar un rodeo a la bahía y distraer a algunos. ¡Tú y el resto de "
+"tus hombres rescatad a los Sirénidos!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:107
-#, fuzzy
 msgid "Very well. Be careful!"
 msgstr "Muy bien. ¡Ten cuidado!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:136
-#, fuzzy
 msgid "But boss, why are we only using bats and nagas?"
-msgstr "¿Pero jefe, por qué sólo usamos Nagas y murciélagos?"
+msgstr "¿Pero jefe, por qué sólo usamos nagas y murciélagos?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:142
-#, fuzzy
 msgid ""
 "Because we need to control the seas and the merman folk, and nagas and bats "
 "are best for doing that!"
 msgstr ""
-"Porque necesitamos controlar los mares y a los Sirénidos, y las Nagas y los "
-"murciélagos son los mejores en ello."
+"Porque necesitamos controlar los mares y a los sirénidos, ¡y las nagas y los "
+"murciélagos son los mejores en ello!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:148
-#, fuzzy
 msgid "But orcs are the most powerful race in all of..."
-msgstr "Pero si los Orcos son la raza más poderosa de..."
+msgstr "Pero si los orcos son la raza más poderosa de..."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:154
-#, fuzzy
 msgid "Shut up, worm! I'm the boss!"
 msgstr "¡Cállate, gusano! ¡Yo soy el jefe!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:182
-#, fuzzy
 msgid "Ha ha ha! Now orcs will rule over land and sea!"
-msgstr "¡Jajaja! ¡Ahora los Orcos dominarán las tierras y los mares!"
+msgstr "¡Jajaja! ¡Ahora los orcos dominarán las tierras y los mares!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:188
-#, fuzzy
 msgid "(Sigh) Will someone kill this idiot for me, please?"
-msgstr "(Sigh) ¿Por favor, alguien se ofrece para matar a este idiota?"
+msgstr "(suspiro) ¿Por favor, alguien se ofrece para matar a este idiota?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:200
-#, fuzzy
 msgid "But...but...how can this be happening to me?"
 msgstr "¿Pero... cómo... cómo me puede haber pasado esto a mí?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:205
-#, fuzzy
 msgid "Who was that idiot?"
-msgstr "¿Quién es ese idiota?"
+msgstr "¿Quién era ese idiota?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:256
-#, fuzzy
 msgid "Free at last! Now death to the Orcs!"
-msgstr "¡Libre al fin! ¡A matar Orcos!"
+msgstr "¡Libre al fin! ¡A matar orcos!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:317
-#, fuzzy
 msgid "Now that we are free, together we can defeat our oppressors!"
 msgstr ""
 "¡Ahora que somos libres, juntos podremos derrotar a nuestros opresores!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:363
-#, fuzzy
 msgid "Freedom! Now where are those Orcs? Let me at 'em!"
-msgstr "¡Libre! ¿Dónde están esos Orcos? ¡Me pido siete!"
+msgstr "¡Libre! ¿Dónde están esos orcos? ¡Me pido siete!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:418
-#, fuzzy
 msgid ""
 "Thank you for rescuing us! Now we can help you fight the evil Orcs!\n"
 "The main cage where they keep most of the mermen is in the south-east!"
 msgstr ""
-"¡Gracias por rescatarnos! ¡Ahora te ayudaremos a luchar contra ellos! \n"
-"¡La jaula donde la mayoría de los Sirénidos están encarcelados está en el "
+"¡Gracias por rescatarnos! ¡Ahora te ayudaremos a luchar contra ellos!\n"
+"¡La jaula donde la mayoría de los sirénidos están encarcelados está al "
 "sudeste!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:480
-#, fuzzy
 msgid "Death to the orcs! Come, let us all fight them, men!"
-msgstr "¡Muerte a los Orcos! ¡Venga, luchemos todos contra ellos!"
+msgstr "¡Muerte a los orcos! ¡Venga, luchemos todos contra ellos!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:503
-#, fuzzy
 msgid ""
 "At last, we have freed the mermen. Go back to the ocean and live in peace."
 msgstr ""
-"Por fin hemos liberado a los Sirénidos. Volved al oceáno y vivid en paz."
+"Por fin hemos liberado a los sirénidos. Volved al oceáno y vivid en paz."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:512
-#, fuzzy
 msgid ""
 "My lord! You may need the help of some of us who have skill in the sea in "
 "future. We would like to offer you help, and come with you."
 msgstr ""
 "¡Mi señor! Tal vez necesitéis nuestra ayuda en un futuro. Nos gustaría "
-"ayudarle, e ir con usted."
+"ayudarlo, e ir con usted."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:517
-#, fuzzy
 msgid "Now where is Delfador? I hope he's safe!"
 msgstr "¿Y dónde está Delfador? ¡Espero que esté bien!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:528
-#, fuzzy
 msgid "I am perfectly safe, friend!"
 msgstr "Sí que lo estoy, amigo."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:533
-#, fuzzy
 msgid ""
 "There you are! I am so glad you are all right! Now we may have a little rest."
 msgstr ""
@@ -2889,7 +2870,6 @@ msgstr ""
 "descansar."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:538
-#, fuzzy
 msgid ""
 "I am afraid there is no time for rest, Konrad. Asheviere has now laid siege "
 "to Elensefar, breaking the century-old treaty between Wesnoth and the Elense "
@@ -2897,54 +2877,46 @@ msgid ""
 "may swallow up!"
 msgstr ""
 "Me temo que no hay tiempo para descansar. Konrad, Asheviere está asediando "
-"la ciudad de Elensefar, rompiendo el tratado desde hace años entre Wesnoth y "
-"la ciudad-estado de Elense. ¡Si la ciudad cae, no sé cuántas tierras le "
-"sucederán!"
+"Elensefar, rompiendo un tratado que data de hace un siglo atrás entre "
+"Wesnoth y la ciudad estado de Elense. ¡Si la ciudad cae, no sé cuántas "
+"tierras le sucederán!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:544
-#, fuzzy
 msgid "Oh no! What shall we do?"
-msgstr "¡Oh no! ¿Y qué hacemos entonces?"
+msgstr "¡Oh, no! ¿Y qué hacemos entonces?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:550
-#, fuzzy
 msgid ""
 "You must lead our men to the city, and help defend it. Or recapture it if it "
 "falls before you arrive."
 msgstr ""
-"Tú debes llevar a tus tropas a la ciudad y defenderla. O recapturarla si ha "
-"caído antes de tu llegada."
+"Debes liderar a tus tropas hacia la ciudad y defenderla, o recapturarla si "
+"ha caído antes de tu llegada."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:556
-#, fuzzy
 msgid ""
 "I must do that? But what about you, Delfador? You're coming with me, right?"
-msgstr "¿Yo tengo que hacer eso? ¿Y qué pasa contigo? Tú vendrás, ¿no?"
+msgstr "¿Yo tengo que hacer eso? ¿Y qué hay de ti, Delfador? Tú vendrás, ¿no?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:562
-#, fuzzy
 msgid ""
 "I am afraid not, Konrad. I have come across some important documents, and "
 "must make haste with them to the Elven Council. It seems that the time to "
 "stop Asheviere is shorter than I had thought."
 msgstr ""
 "Me temo que no, Konrad. He tropezado con unos importantes documentos, y debo "
-"llevarlos rápidamente al Consejo Élfico. Parece que el tiempo para detener a "
+"llevarlos rápidamente al Consejo élfico. Parece que el tiempo para detener a "
 "Asheviere es más corto de lo que pensaba."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:568
-#, fuzzy
 msgid "But Delfador! I can't do it on my own!"
-msgstr "¡Pero Delfador! ¡Yo sólo no podré hacerlo!"
+msgstr "¡Pero Delfador! ¡Yo solo no podré hacerlo!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:578
-#, fuzzy
 msgid "On your own? My lord! We, your loyal soldiers, will support you!"
-msgstr ""
-"¿Sólo? ¡Mi señor! ¡Nosotros, tus leales soldados, te ayudaremos, señor!"
+msgstr "¿Solo? ¡Mi señor! ¡Nosotros, tus leales soldados, te ayudaremos!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:583
-#, fuzzy
 msgid ""
 "You will prevail. I have faith in you. Head north. Elensefar is but three "
 "days travel if you make haste."
@@ -2953,136 +2925,119 @@ msgstr ""
 "tres días de viaje si te das prisa."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:588
-#, fuzzy
 msgid "Very well. But how do I get there?"
-msgstr "Muy bien ¿Pero cómo voy allí?"
+msgstr "Muy bien. ¿Pero cómo voy allí?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:593
-#, fuzzy
 msgid ""
 "It is north-west of here, a few leagues inland. There are two ways to go, by "
 "ship or on foot. Each has its own dangers. You must choose between them."
 msgstr ""
-"Está al Noroeste de aquí, a unas pocas leguas de la costa, tierra a dentro. "
-"Hay dos formas de llegar, por barco o por tierra. Cada forma tiene sus "
-"ventajas e incovenientes. Tú eliges cómo quieres ir."
+"Está al noroeste de aquí, a unas pocas leguas de la costa, tierra adentro. "
+"Hay dos formas de llegar, por barco o por tierra. Cada camino tiene sus "
+"peligros. Tú eliges cómo quieres ir."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:596
-#, fuzzy
 msgid "Ships? Ugh! I have been sea sick for the last time. We shall walk!"
 msgstr ""
-"¿En barco? ¿Otra vez? ¡Ugh! ¡Aún estoy mareado de la última vez! ¡Iremos a "
+"¿En barco? ¿Otra vez? ¡Ugh! ¡Aún estoy mareado del último viaje! ¡Iremos a "
 "pie!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:601
-#, fuzzy
 msgid "Safe journey to you, Konrad. Until we meet again!"
 msgstr "Buen viaje, Konrad. ¡Hasta la vista!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:620
-#, fuzzy
 msgid ""
 "Going by ship we may at least get a little rest for ourselves. By sea it is!"
-msgstr "Si vamos en barco igual descansamos algo ¡En barco!"
+msgstr "Si vamos en barco, igual descansamos algo. ¡En barco!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:625
-#, fuzzy
 msgid "Safe voyage to you then, Konrad. May the weather be fair."
-msgstr "Buena travesía, Konrad. Ojalá el tiempo te acompañe."
+msgstr "Buena travesía, Konrad. Que los vientos te sean favorables."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:717
-#, fuzzy
 msgid ""
 "Have you not been able to defeat our foes in all these days? They have "
 "summoned reinforcements. Surely now our doom is upon us!"
 msgstr ""
-"¿No has podido derrotar a nuestros enemigos? Ellos han podido convocar "
-"refuerzos. ¡Esto es nuestra perdición!"
+"¿No has podido derrotar a nuestros enemigos? Han convocado refuerzos. ¡Esto "
+"es nuestra perdición!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:731
-#, fuzzy
 msgid ""
 "Konrad! We cannot spend any more time here. Though it would be good to "
 "defeat the Orcs and free more of their prisoners, more urgent business calls "
 "us!"
 msgstr ""
-"¡Konrad! No podemos estar aquí más tiempo. ¡Aunque sería bonito eliminar a "
-"los Orcos y liberar todo lo que podamos, unos asuntos mucho más importantes "
+"¡Konrad! No podemos estar aquí más tiempo. ¡Aunque sería excelente eliminar "
+"a los orcos y liberar todo lo que pudiésemos, asuntos mucho más importantes "
 "nos ocupan!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:736
-#, fuzzy
 msgid ""
 "Delfador, thank goodness you have survived! This has been a tough battle, "
 "but why can we not finish it? Why must we leave?"
 msgstr ""
-"¡Delfador, gracias a Dios que sobreviviste! ¿Ésta ha sido una dura batalla, "
-"por qué no la acabamos? ¿Por qué tenemos que irnos?"
+"¡Delfador, gracias a Dios que sobreviviste! Ésta ha sido una dura batalla, "
+"¿por qué no la acabamos? ¿Por qué tenemos que irnos?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:741
-#, fuzzy
 msgid ""
 "I bear ill tidings. Asheviere has now laid siege to Elensefar, breaking the "
 "century-old treaty between Wesnoth and the Elense city-state. If the city "
 "falls, there is no telling how many other lands she may swallow up!"
 msgstr ""
-"Traigo malas nuevas: Asheviere ha atacado la ciudad de Elensefar, rompiendo "
-"así el tratado entre Wesnoth y Elensefar. Tienes que llevar a nuestros "
-"hombres a la ciudad, bien para defenderla bien para atacarla si ya ha caído."
+"Traigo malas nuevas: Asheviere está asediando Elensefar, rompiendo así un "
+"tratado que data de hace un siglo atrás entre Wesnoth y la ciudad estado de "
+"Elense. ¡Si la ciudad cae, no sé cuántas tierras le sucederán!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:746
-#, fuzzy
 msgid "I must do this? But you are coming with me, aren't you, Delfador?"
-msgstr "¿Lo tengo que hacer? Tú vienes conmigo, ¿no?"
+msgstr "¿Lo tengo que hacer? Pero tú vienes conmigo, ¿no, Delfador?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:751
-#, fuzzy
 msgid ""
 "I am afraid not, Konrad. I have found some important documents that need "
 "seeing to. I must ride at once to make council with the Elves. I will meet "
 "you in Elensefar, after you have secured it."
 msgstr ""
-"Me temo que no, Konrad. Yo he encontrando unos importantes documentos que "
-"deben conocerse. Debo ir al Consejo Élfico. Ya nos veremos en Elensefar, "
-"después de que tú la hayas asegurado."
+"Me temo que no, Konrad. He encontrando unos importantes documentos que deben "
+"conocerse. Debo convocar inmedietamente al Consejo élfico. Ya nos veremos en "
+"Elensefar, después de que tú la hayas puesto a salvo."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:756
-#, fuzzy
 msgid ""
 "I fear I will struggle to do this on my own...but what must be must be. How "
 "do I get to Elensefar?"
 msgstr ""
-"Creo que me será difícil hacerlo yo sólo, pero entiendo que así debe ser. "
+"Creo que me será difícil hacerlo yo solo, pero entiendo que así debe ser. "
 "¿Cómo puedo ir allí?"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:772
-#, fuzzy
 msgid ""
 "Since you have broken the Orc's hegemony over the seas, going by ship would "
 "be safest. Sail along the coast, and you can land mere miles from Elensefar. "
 "Make haste!"
 msgstr ""
-"Ya que has roto la hegemonía marítima de los Orcos, ir por mar sería lo más "
+"Ya que has roto la hegemonía marítima de los orcos, ir por mar sería lo más "
 "seguro. Ve a lo largo de la costa y podrás desembarcar a pocas millas de la "
 "ciudad. ¡Date prisa!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:786
-#, fuzzy
 msgid ""
 "With the Orcs controlling the seas, going by ship would not be safe. Travel "
 "by land, Elensefar is only six days' march up the coast. Make haste!"
 msgstr ""
-"Con los Orcos dominando los mares, ir en barco no sería seguro. Ve a pie, "
+"Con los orcos dominando los mares, ir en barco no sería seguro. Ve a pie, "
 "Elensefar está a sólo seis días de marcha por la costa. ¡Apresúrate!"
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:3
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:34
-#, fuzzy
 msgid "Blackwater Port"
 msgstr "Puerto de Aguanegra"
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:27
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -3100,7 +3055,7 @@ msgstr ""
 "Derrota:\n"
 "#Muerte de Konrad\n"
 "#Muerte de Delfador\n"
-"#Muerte de Seimus"
+"#Muerte de Sir Kaylan"
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:103
 msgid ""
@@ -3879,12 +3834,10 @@ msgstr ""
 "pesar de grandes peligros. Quizá os continúe favoreciendo."
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:3
-#, fuzzy
 msgid "The Elves Besieged"
-msgstr "Los Elfos Atrapados"
+msgstr "Los Elfos, atrapados"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:25
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -3903,36 +3856,31 @@ msgstr ""
 "#Fin de los turnos"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:187
-#, fuzzy
 msgid ""
 "Fourteen years into her rule, Asheviere turned her attention to the Elves, "
 "whom she despised. Orcish mercenaries were hired and dispatched to bring "
 "about their ruin."
 msgstr ""
-"Catorce años después de la subida al trono de Asheviere, ella centró su "
-"atención en los Elfos, a los que tenía en poca estima. Mercenarios Orcos "
-"fueron contratados y enviados para llevar la ruina a los Elfos."
+"Catorce años después de subir al trono, Asheviere centró su atención en los "
+"elfos, a los que tenía en poca estima. Mercenarios orcos fueron contratados "
+"y enviados para llevar la ruina a los elfos."
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:192
-#, fuzzy
 msgid ""
 "Master Delfador! Look, there are Orcs coming from all directions! What shall "
 "we do?"
-msgstr "¡Maestro Delfador! ¡Mira, vienen Orcos por todas partes! ¿Qué hacemos?"
+msgstr "¡Maestro Delfador! ¡Mira, vienen orcos por todas partes! ¿Qué hacemos?"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:197
-#, fuzzy
 msgid "There are too many to fight, far too many. We must escape!"
 msgstr "¡Son demasiados para vencerlos! ¡Debemos escapar!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:202
-#, fuzzy
 msgid "But to where? This is the only home we have! What about the Elves?"
 msgstr ""
-"¿Pero adonde? ¡Ésta es la única casa que tenemos! ¿Qué pasa con los Elfos?"
+"¿Pero a dónde? ¡Este es nuestro único hogar! ¿Y qué pasa con los elfos?"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:207
-#, fuzzy
 msgid ""
 "We will fight them, but you must escape, Konrad. It is imperative that you "
 "escape!"
@@ -3940,180 +3888,152 @@ msgstr ""
 "Lucharemos con ellos, pero tú debes escapar, Konrad. ¡Tienes que escapar!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:212
-#, fuzzy
 msgid ""
 "We will go north. Perhaps we can reach the Isle of Anduin. If we can make it "
 "there, surely we will be safe. Konrad, we must recruit some Elves to help "
 "us, and then you must make it to the sign post in the north-west. I will "
 "protect you!"
 msgstr ""
-"Iremos hacia el norte, hacia la Isla de Anduin. Si conseguimos llegar, "
-"probablemente estaremos seguros allí. Konrad, debes reclutar algunos Elfos "
+"Iremos hacia el norte, hacia la isla de Anduin. Si conseguimos llegar, "
+"probablemente estaremos seguros allí. Konrad, debes reclutar algunos elfos "
 "para que nos ayuden, y después iremos hacia la señal del noroeste. ¡Yo te "
 "protegeré!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:217
-#, fuzzy
 msgid "Very well, let us hurry!"
-msgstr "Muy bien, apresurémonos hacia allí!"
+msgstr "Muy bien, ¡apresurémonos hacia allí!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:222
-#, fuzzy
 msgid ""
 "Attack the Elves, my grunts, and take their villages. Let us claim this land "
 "for the Queen!"
 msgstr ""
-"¡Atacad a los Elfos, chicos, tomad sus aldeas, tomemos estas tierras para la "
-"Reina!"
+"¡Atacad a los elfos, chicos, tomad sus aldeas, tomemos estas tierras para la "
+"reina!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:230
-#, fuzzy
 msgid ""
 "Remember, it is rumored that the filthy mage and one that he protects are in "
 "these parts. They are the ones we want!"
 msgstr ""
-"Recordad, se rumorea que el traidor mago y al que protege están por aquí ¡Es "
-"a ellos a quien queremos!"
+"Recordad, se rumorea que el mago traidor y su protegido están por aquí ¡Es a "
+"ellos a quien queremos!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:236
-#, fuzzy
 msgid "Ha ha! We will rip the filthy Elves to pieces!"
-msgstr "¡Jeje! ¡Cortaremos a los Elfos en rebanadas finas para la comida!"
+msgstr "¡Jeje! ¡Cortaremos a los elfos en rebanadas finas para la comida!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:242
-#, fuzzy
 msgid "Let them come. We will fight them with all we have!"
 msgstr "¡Dejadlos venir! ¡Lucharemos con todas nuestras fuerzas!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:247
-#, fuzzy
 msgid "Be careful, Konrad! Guard him well, Delfador!"
 msgstr "¡Ten cuidado, Konrad! ¡Cuídalo bien, Delfador!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:252
-#, fuzzy
 msgid "And so it has begun!"
-msgstr "Y así empezó todo"
+msgstr "Y así empezó todo."
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:272
-#, fuzzy
 msgid "OK, we have made it this far! But where do we go next?"
 msgstr "Bien, hemos llegado hasta aquí. ¿Y ahora qué?"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:277
-#, fuzzy
 msgid ""
 "We must travel north, and try to make it to the Isle of Anduin. Hopefully we "
 "will find refuge there."
 msgstr ""
 "Debemos viajar al norte, e intentar llegar a la Isla de Anduin. Con un poco "
-"de suerte encontraremos refugio."
+"de suerte encontraremos refugio allí."
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:282
-#, fuzzy
 msgid ""
 "Of course you are right, Delfador. But what will become of the Elves here?"
-msgstr "Como siempre, tienes razón. ¿Pero qué pasará con los elfos?"
+msgstr "Como siempre, tienes razón, Delfador. ¿Pero qué será de los elfos?"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:287
-#, fuzzy
 msgid ""
 "The Elves will fight. They may even prevail. But I fear things do not bode "
 "well for them. Let us not speak of it now. Onward!"
 msgstr ""
 "Los Elfos lucharán. Puede que hasta venzan. Pero veo su futuro bastante "
-"negro ¡Adelante!"
+"negro. Pero no hablemos de ello ahora. ¡En marcha!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:292
-#, fuzzy
 msgid "Good luck, Konrad! Don't worry about us, we will fight as best we can!"
 msgstr ""
 "¡Buena suerte, Konrad! ¡No te preocupes por nostros, lucharemos lo mejor que "
 "podamos!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:308
-#, fuzzy
 msgid "I...I don't think I can make it anymore"
-msgstr "Yo... yo no creo que pueda continuar más."
+msgstr "Yo... yo no creo que pueda continuar."
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:313
 #, fuzzy
 msgid "Prince...you must keep fighting! Nooooooo!"
-msgstr "¡Príncipe... debes continuar luchando! ¡Noooooooo!"
+msgstr "¡Príncipe...debes continuar luchando! ¡Noooooooo!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:318
-#, fuzzy
 msgid "It is over, I am doomed..."
 msgstr "Se acabó, estoy perdido..."
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:333
-#, fuzzy
 msgid "I have...have failed in my duty to protect the prince! I am defeated."
-msgstr "He... he fallado en mi tarea, ¡he sido derrotado!"
+msgstr ""
+"He...he fallado en mi tarea de proteger al príncipe, ¡he sido derrotado!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:338
-#, fuzzy
 msgid "Don't die, Delfador! Please, you have to stay alive!"
-msgstr "¡No te mueras, Delfador! ¡Por favor, continúa vivo!"
+msgstr "¡No te mueras, Delfador! ¡Por favor, tienes que vivir!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:343
-#, fuzzy
 msgid "Ugh"
-msgstr "Ugh"
+msgstr "Ugh."
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:355
-#, fuzzy
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
-msgstr "¡Oh no! Se nos ha acabado el tiempo, han llegado sus refuerzos..."
+msgstr "¡Oh no! Se nos ha acabado el tiempo, han llegado con refuerzos..."
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:368
-#, fuzzy
 msgid "Die, Villain, die!"
 msgstr "¡Muere, villano, púdrete!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:380
-#, fuzzy
 msgid "Only the foolish oppose me!"
 msgstr "¡Sólo los locos se oponen a mí!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:392
-#, fuzzy
 msgid "I am Galdrad. You will have to fight me to get any further!"
 msgstr "Yo soy Galdrad. ¡Deberéis vencerme para continuar adelante!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:404
-#, fuzzy
 msgid "Only a fool would dare to attack me!"
 msgstr "¡Sólo un loco se atrevería a atacarme!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:416
-#, fuzzy
 msgid "I am Delfador the Great. Prepare to die!"
 msgstr "¡Yo soy Delfador el Grande, prepárate para morir!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:428
-#, fuzzy
 msgid "Let me through, you rogue!"
 msgstr "¡Te voy a machacar, maldito!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:444
-#, fuzzy
 msgid "They are destroying our home!"
 msgstr "¡Están destruyendo nuestro hogar!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:449
-#, fuzzy
 msgid "There can be no looking back. We must go quickly!"
-msgstr "¡No podemos volver la vista atrás... continuemos rápido!"
+msgstr "¡No podemos volver la vista atrás...continuemos rápido!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:3
-#, fuzzy
 msgid "The Ford of Abez"
-msgstr "El Vado de Abez"
+msgstr "El vado de Abez"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:26
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -4125,19 +4045,17 @@ msgid ""
 msgstr ""
 "\n"
 "Victoria:\n"
-"@Lleva a Konrad hasta el lado norte del río\n"
+"@Lleva a Konrad hasta el lado norte del río.\n"
 "Derrota:\n"
 "#Muerte de Konrad\n"
 "#Muerte de Delfador\n"
 "#Muerte de Kalenz"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:145
-#, fuzzy
 msgid "Stop! You shall not pass! Quick, reinforcements, protect the Princess!"
-msgstr "¡Alto! ¡No pasáreis! ¡Rápido, refuerzos para proteger a la Princesa!"
+msgstr "¡Alto! ¡No pasaréis! ¡Rápido, refuerzos para proteger a la princesa!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:195
-#, fuzzy
 msgid "Ruaarrrrrrrr!"
 msgstr "¡Ruaarrrrrrrr!"
 
