@@ -1,7 +1,7 @@
 CVS HEAD:
  * new campaign: The Rise of Wesnoth (22 scenarios)
  * improved user interface theme
- * new and improved graphics: signpost, mountains, grassland, attack icons and frames, maps
+ * new and improved graphics: lighthouse, signpost, mountains, grassland, attack icons and frames, maps, castle, units
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
    * Peasant Revolt
@@ -44,6 +44,7 @@ CVS HEAD:
  * updated translations:
    * catalan
    * czech
+   * french
    * german
    * slovak
    * spanish
@@ -67,6 +68,8 @@ CVS HEAD:
  * fixed absence of animation when units without attack frame attack
  * fixed obsolete Heavy Infantry unit still used in multiplayer
  * fixed a bug where, in some windowing environments, the colour cursor may not reappear when the user re-enters a Wesnoth window
+ * fixed some duplicate units: Cavalry, Cavalryman, Scout
+ * fixed 'layers' not working as intended in built terrains
  * small fixes to unit display in help browser
  * deleted duplicate battleworld.cg
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
@@ -83,12 +86,14 @@ CVS HEAD:
  * removing commented-out obsolete code in display.cpp
  * optimizing halo movement when unit moves
  * adding animated.hpp, and the animated<T> template.
+ * added proper support for animated time-of-day alternative images
  * partial rewrite of image.?pp for speed: looking up images was what was slowing the game
  * replacing all SDL_Surface*, and scoped_sdl_surface, with shared_sdl_surface, which was renamed surface.
  * inlining some stuff for performance reasons
  * optimizing invalide_all redraws
  * adding support for animated terrain images
  * ran pngcrush on images
+ * concentrate all version and server changes for release-time on top of configure.ac
 
 Version 0.8:
  * added Drake flying animations
