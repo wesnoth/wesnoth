@@ -36,9 +36,20 @@ AC_ARG_ENABLE([static],
 	      [static=no])
 
 AC_ARG_ENABLE([lite],
-	      [  --enable-lite           enable lite version of wesnoth (without music)],
+	      [  --enable-lite           enable lite version of wesnoth (without music or large images)],
 	      [lite=$enableval],
 	      [lite=no])
+
+AC_ARG_ENABLE([tinygui],
+	      [  --enable-tinygui        enable GUI reductions for resolutions down to 320x240 (PDAs)],
+	      [tinygui=$enableval],
+	      [tinygui=no])
+
+if test "x$tinygui" = "xyes"
+then
+	CPPFLAGS="$CPPFLAGS -DUSE_TINY_GUI"
+fi
+AM_CONDITIONAL([TINYGUI], [test "x$tinygui" = "xyes"])
 
 DATADIR=$PACKAGE
 AC_ARG_ENABLE([datadir-name],,[AC_MSG_ERROR([Please use --with-datadir-name instead of obsolete --enable-datadir-name])])
