@@ -588,7 +588,14 @@ AC_SUBST([UTIL_FILES])
 
 
 AC_CONFIG_FILES([Makefile
-		 po/Makefile.in
+		 po/wesnoth/Makefile.in
+		 po/wesnoth-editor/Makefile.in
+		 po/wesnoth-lib/Makefile.in
+		 po/wesnoth-httt/Makefile.in
+		 po/wesnoth-tdh/Makefile.in
+		 po/wesnoth-sotbe/Makefile.in
+		 po/wesnoth-ei/Makefile.in
+		 po/wesnoth-trow/Makefile.in
 		 m4/Makefile
 		 intl/Makefile 
 		 icons/Makefile
