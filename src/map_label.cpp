@@ -33,7 +33,6 @@ void map_labels::read(const config& cfg)
 	const config::child_list& items = cfg.get_children("label");
 	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
 		const gamemap::location loc(**i);
-		const std::string& id = (**i)["id"];
 		const std::string& text = (**i)["text"];
 		set_label(loc,text);
 	}

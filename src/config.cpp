@@ -742,8 +742,7 @@ void config::read(const std::string& data,
 					//all the last values get concatenated onto the last name
 					if(vars.empty() == false) {
 						for(size_t n = 0; n != maximum<size_t>(vars.size(),values.size()); ++n) {
-							const std::string& varname = n < vars.size() ? vars[n] : vars.back();
-							std::string value = "";
+							std::string value;
 							if(n < values.size()) {
 								value = values[n];
 							} else if(values.empty() == false) {

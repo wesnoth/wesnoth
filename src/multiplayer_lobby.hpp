@@ -19,6 +19,7 @@ public:
 	virtual RESULT process() = 0;
 	virtual bool manages_network() const { return false; }
 	virtual bool get_network_data(config& out) { return false; }
+	virtual ~dialog() {}
 };
 
 ///function which controls the lobby, and will result in the player creating

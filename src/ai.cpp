@@ -228,7 +228,6 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
-	bool ambushed = false;
 	if(p_it != possible_moves.end()) {
 		paths& p = p_it->second;
 		std::map<location,paths::route>::iterator rt = p.routes.begin();
@@ -316,7 +315,6 @@ bool ai::multistep_move_possible(location from, location to, location via, std::
 
 				std::cerr << "found leader moves..\n";
 
-				bool can_make_it = false;
 				int move_left = 0;
 
 				//see if the unit can make it to 'via', and if it can, how much movement it will have
@@ -607,8 +605,6 @@ void ai::do_move()
 		remove_unit_from_moves(leader->first,srcdst,dstsrc);
 	}
 
-	int ticks = SDL_GetTicks();
-
 	std::vector<attack_analysis> analysis;
 
 	AI_DIAGNOSTIC("combat phase");
@@ -737,9 +733,6 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		const int weapon = choice_it->weapons[0];
 
 		const unit_map::const_iterator tgt = units_.find(target_loc);
-
-		const bool defender_human = (tgt != units_.end()) ?
-		             teams_[tgt->second.side()-1].is_human() : false;
 
 		const location arrived_at = move_unit(from,to,possible_moves);
 		if(arrived_at != to) {

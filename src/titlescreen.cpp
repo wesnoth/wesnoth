@@ -227,9 +227,6 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::cerr << "entering interactive loop...\n";
 
 	for(;;) {
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-
 		for(size_t b = 0; b != buttons.size(); ++b) {
 			if(buttons[b].pressed()) {
 				return TITLE_RESULT(b);

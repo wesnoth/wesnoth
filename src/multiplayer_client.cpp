@@ -64,7 +64,9 @@ void receive_gamelist(display& disp, config& data)
 class wait_for_start : public lobby::dialog
 {
 public:
-	wait_for_start(display& disp, config& cfg, int team_num, const std::string& team_name) : got_side(false), team(team_num), name(team_name), status(START_GAME), disp_(disp), cancel_button_(NULL), sides_(cfg), menu_(NULL)
+	wait_for_start(display& disp, config& cfg, int team_num, const std::string& team_name)
+		: got_side(false), team(team_num), name(team_name), status(START_GAME), disp_(disp),
+		  sides_(cfg), cancel_button_(NULL), menu_(NULL)
 	{
 		SDL_Rect empty_rect = {0,0,0,0};
 		area_ = empty_rect;

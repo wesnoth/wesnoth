@@ -65,7 +65,6 @@ team::team_info::team_info(const config& cfg)
 	team_name = cfg["team_name"];
 	if(team_name.empty())
 		team_name = cfg["side"];
-	const std::string& side_colour = cfg["colour"];
 	colour = lexical_cast_default<int>(cfg["colour"],-1);
 	if(colour == -1)
 		colour = lexical_cast_default<int>(cfg["side"],-1);

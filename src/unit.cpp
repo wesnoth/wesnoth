@@ -882,7 +882,7 @@ void unit::set_defending(bool newval, bool hits, int ms, attack_type::RANGE rang
 	state_ = newval ? (range == attack_type::LONG_RANGE ? STATE_DEFENDING_LONG :
 	                   STATE_DEFENDING_SHORT): STATE_NORMAL;
 	// attackingMilliseconds_ = ms;
-	const unit_animation* const anim = type_->defend_animation(getsHit_,range);
+	type_->defend_animation(getsHit_,range);
 
 	getsHit_ = hits;
 }
