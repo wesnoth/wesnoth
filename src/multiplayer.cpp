@@ -273,6 +273,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	int new_villagegold = 1;
 	int cur_turns = 50;
 	int new_turns = 50;
+	int cur_playergold = 100;
+	int new_playergold = 100;
 
 	gui::draw_dialog_frame((disp.x()-width)/2, (disp.y()-height)/2,
 			       width, height, disp);
@@ -567,6 +569,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				std::vector<gui::combo> combo_color;
 				std::vector<gui::slider> slider_gold;
 
+				int n = 0;
 				for(sd = sides.begin(); sd != sides.end(); ++sd) {
 					const int side_num = sd - sides.begin();
 
@@ -577,8 +580,14 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					combo_type.back().set_xy((disp.x()-width)/2+30,
 							(disp.y()-height)/2+55+(30*side_num));
 
-					if(side_num>0)
+					if(side_num>0) {
+						sides[n]->values["controller"] = "human";
+						sides[n]->values["description"] = preferences::login();
 						combo_type.back().set_selected(1);
+					}else{
+						sides[n]->values["controller"] = "network";
+						sides[n]->values["description"] = "";
+					}
 
 					combo_race.push_back(gui::combo(disp,player_race));
 					combo_race.back().set_xy((disp.x()-width)/2+145,
@@ -586,6 +595,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					combo_team.push_back(gui::combo(disp,player_team));
 					combo_team.back().set_xy((disp.x()-width)/2+260,
 							(disp.y()-height)/2+55+(30*side_num));
+
 					combo_team.back().set_selected(side_num);
 					combo_color.push_back(gui::combo(disp,player_color));
 					combo_color.back().set_xy((disp.x()-width)/2+375,
@@ -597,7 +607,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					rect.y = (disp.y()-height)/2+55+(30*side_num);
 					rect.w = launch2_game.width()-5;
 					rect.h = launch2_game.height();
-					slider_gold.push_back(gui::slider(disp,rect,0.0));
+					slider_gold.push_back(gui::slider(disp,rect,0.188));
+					n++;
 				}
 
 				update_whole_screen();
@@ -610,104 +621,53 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						//FIXME: the locals player should not be able to
 						//	 change the combo_type of another network
 						//	 player that has already joined the game.
+
 						//Make sure only one side is the local player
 						if(combo_type[n].process(mousex,mousey,left_button)) {
 							if(combo_type[n].selected() == 0) {
+								sides[n]->values["controller"] = "human";
+								sides[n]->values["description"] = preferences::login();
 								for(size_t m = 0; m != combo_type.size(); ++m) {
 									if(combo_type[m].selected() == 0 && m != n) {
 										combo_type[m].set_selected(1);
+										sides[m]->values["controller"] = "network";
+										sides[m]->values["description"] = "";
 									}
 								}
+							}else if(combo_type[n].selected() == 1){
+								sides[n]->values["controller"] = "network";
+								sides[n]->values["description"] = "";
+							}else if(combo_type[n].selected() == 2){
+								sides[n]->values["controller"] = "ai";
+								sides[n]->values["description"] = "";
 							}
 						}
 								
-						combo_race[n].process(mousex,mousey,left_button);
-						combo_team[n].process(mousex,mousey,left_button);
-						combo_color[n].process(mousex,mousey,left_button);
-						int check_playergold = 20+int(480*slider_gold[n].process(mousex,mousey,left_button));
-					}
-
-					if(launch2_game.process(mousex,mousey,left_button)) {
-						res = 0;
-						while(size_t(res) != sides.size()) {
-							std::vector<std::string> sides_list;
-							for(std::vector<config*>::iterator sd = sides.begin();
-							    sd != sides.end(); ++sd) {
-								std::stringstream details;
-								details << (*sd)->values["side"] << ","
-									<< (*sd)->values["name"] << ",";
-
-								const std::string& controller = (*sd)->values["controller"];
-								if(controller == "human")
-									details << string_table["human_controlled"];
-								else if(controller == "network")
-									details << string_table["network_controlled"];
-								else
-									details << string_table["ai_controlled"];
-
-								sides_list.push_back(details.str());
-							}
-	
-							sides_list.push_back(string_table["start_game"]);
-	
-							res = gui::show_dialog(disp,NULL,"",string_table["configure_sides"],
-							                       gui::MESSAGE,&sides_list);
-	
-							if(size_t(res) < sides.size()) {
-								std::vector<std::string> choices;
-	
-								for(int n = 0; n != 3; ++n) {
-									for(std::vector<config*>::iterator i = possible_sides.begin();
-									    i != possible_sides.end(); ++i) {
-										std::stringstream choice;
-										choice << (*i)->values["name"] << " - ";
-										switch(n) {
-											case 0: choice << string_table["human_controlled"];
-											        break;
-											case 1: choice << string_table["ai_controlled"];
-											        break;
-											case 2: choice << string_table["network_controlled"];
-											        break;
-											default: assert(false);
-										}
-							
-										choices.push_back(choice.str());
-									}
-								}
-	
-								int result = gui::show_dialog(disp,NULL,"",
-						                           string_table["choose_side"],
-									   gui::MESSAGE,&choices);
-								if(result >= 0) {
-									std::string controller = "network";
-									if(result < int(choices.size())/3) {
-										controller = "human";
-										sides[res]->values["description"] = preferences::login();
-									} else if(result < int(choices.size()/3)*2) {
-										controller = "ai";
-										result -= choices.size()/3;
-										sides[res]->values["description"] = "";
-									} else {
-										controller = "network";
-										result -= (choices.size()/3)*2;
-									}
-	
-									sides[res]->values["controller"] = controller;
-	
-									assert(result < int(possible_sides.size()));
-
-									std::map<std::string,std::string>& values =
-							                                possible_sides[result]->values;
-									sides[res]->values["name"] = values["name"];
-									sides[res]->values["type"] = values["type"];
-									sides[res]->values["recruit"] = values["recruit"];
-									sides[res]->values["recruitment_pattern"] =
-							                          values["recruitment_pattern"];
-									sides[res]->values["music"] = values["music"];
-								}
-							}
+						if(combo_race[n].process(mousex,mousey,left_button))
+						{
+							std::map<std::string,std::string>& values =
+				                                possible_sides[combo_race[n].selected()]->values;
+							sides[n]->values["name"] = values["name"];
+							sides[n]->values["type"] = values["type"];
+							sides[n]->values["recruit"] = values["recruit"];
+							sides[n]->values["recruitment_pattern"] = values["recruitment_pattern"];
 						}
 
+						if(combo_team[n].process(mousex,mousey,left_button))
+						{
+						}
+
+						combo_color[n].process(mousex,mousey,left_button);
+
+						int check_playergold = 20+int(480*slider_gold[n].process(mousex,mousey,left_button));
+						if(abs(check_playergold) == check_playergold)
+							new_playergold=check_playergold;
+						if(new_playergold != cur_playergold)
+							cur_playergold = new_playergold;
+					}
+
+					if(launch2_game.process(mousex,mousey,left_button))
+					{
 						const network::manager net_manager;
 						const network::server_manager server_man(15000,server);
 	
@@ -743,7 +703,6 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					disp.video().flip();
 					SDL_Delay(20);
 				}
-
 			} else {
 				rect.x=(disp.x()-width)/2;
 				rect.y=(disp.y()-height)/2;
