@@ -577,52 +577,73 @@ surface get_rendered_text(const std::string& str, int size, const SDL_Color& col
 	return render_text(str, size, colour, style);
 }
 
-//measure a single line of ucs2 text with a specific font_size and style
-//without newline chars.
+//Measure a single line of ucs2 text with a specific font_size and
+//style without newline chars.
+//
+//This is INSECURE with lines which are WIDER than UINT16_MAX pixels.
+//
+//It is intended for the command_line widget only which has a line
+//length restriction and small font size.
 SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::const_iterator last, int font_size, int style) {
 	wassert(last - first >= 0);
-
-	ucs2_string chunk((last - first ) + 2);
-
+	
 	SDL_Rect rect;
 	rect.w = 0;
 	rect.h = 0;
+
+	ucs2_string chunk((last - first ) + 2);
+	ucs2_string::iterator chunk_itor = chunk.begin();
+	*chunk_itor = 0;
+
 	int current_font = 0;
 
+	//set the font for the first char
 	if(*first < font_map.size() && font_map[*first] >= 0) {
 		current_font = font_map[*first];
-	}	
-
+	}
+	
 	for(;first != last; ++first) {
 		if(*first < font_map.size() && font_map[*first] >= 0 && font_map[*first] != current_font) {
 			TTF_Font* ttfont = get_font(font_id(current_font, font_size));
 			if(ttfont == NULL) {
-				chunk.clear();
+				chunk_itor = chunk.begin();
+				*(chunk_itor++) = *first;
+				current_font = font_map[*first];
 				continue;
 			}
-			chunk.push_back(0);
+			*(chunk_itor++) = 0;
+			
 			font_style_setter const style_setter(ttfont, style);
+
 			TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), (int*)&rect.x, (int*)&rect.y);
+
 			rect.w += rect.x;
 			rect.h = maximum<Sint16>(rect.h, rect.y);
-			chunk.clear();
+			
+			chunk_itor = chunk.begin();
+			
 			current_font = font_map[*first];
 		}
-		chunk.push_back(*first);
+		*(chunk_itor++) = *first;
 	}
-	if (!chunk.empty()) {
+	if (chunk_itor != chunk.begin()) {
 		TTF_Font* ttfont = get_font(font_id(current_font, font_size));
 		if(ttfont == NULL) {
 			rect.x = 0;
 			rect.y = 0;
 			return rect;
 		}
-		chunk.push_back(0);
+		*(chunk_itor++) = 0;
+
 		font_style_setter const style_setter(ttfont, style);
+
 		TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), (int*)&rect.x, (int*)&rect.y);
+
 		rect.w += rect.x;
 		rect.h = maximum<Sint16>(rect.h, rect.y);
 	}
+	//reset rect.x and rec.y because we abused it to store the area
+	//of the last chunk
 	rect.x = 0;
 	rect.y = 0;
 	return rect;
