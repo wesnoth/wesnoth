@@ -12,15 +12,7 @@
 #ifndef WASSERT_HPP_INCLUDED
 #define WASSERT_HPP_INCLUDED
 
-#ifdef _MSC_VER
-#	define STANDARD_ASSERT_DOES_NOT_WORK
-#endif
-
-#ifdef STANDARD_ASSERT_DOES_NOT_WORK
-void wassert(bool expression);
-#else
 #include <cassert>
 #define wassert assert
-#endif
 
 #endif
