@@ -2107,41 +2107,41 @@ void turn_info::do_search(const std::string& new_search)
 			found = true;
 		}
 	}
-	if(found == false) {
-		//Otherwise, start scanning the game map
-		if(loc.valid() == false)
-			loc = gamemap::location(map_.x()-1,map_.y()-1);
-		gamemap::location start = loc;
-		do {
-			//Move to the next location
-			loc.x = (loc.x + 1) % map_.x();
-			if(loc.x == 0)
-				loc.y = (loc.y + 1) % map_.y();
-			
-			//Search label
-			const std::string label = gui_.labels().get_label(loc);
-			if(label.empty() == false) {
-				if(std::search(label.begin(), label.end(),
-						last_search_.begin(), last_search_.end(),
-						chars_equal_insensitive) != label.end()) {
-					found = true;
-				}
+	//Start scanning the game map
+	if(loc.valid() == false)
+		loc = gamemap::location(map_.x()-1,map_.y()-1);
+	gamemap::location start = loc;
+	while (!found) {
+		//Move to the next location
+		loc.x = (loc.x + 1) % map_.x();
+		if(loc.x == 0)
+			loc.y = (loc.y + 1) % map_.y();
+		
+		//Search label
+		const std::string label = gui_.labels().get_label(loc);
+		if(label.empty() == false) {
+			if(std::search(label.begin(), label.end(),
+					last_search_.begin(), last_search_.end(),
+					chars_equal_insensitive) != label.end()) {
+				found = !gui_.shrouded(loc.x, loc.y);
 			}
-			//Search unit name
-			unit_map::const_iterator ui = units_.find(loc);
-			if(ui != units_.end()) {
-				const std::string name = ui->second.description();
-				if(std::search(name.begin(), name.end(),
-						last_search_.begin(), last_search_.end(),
-						chars_equal_insensitive) != name.end()) {
-					found = true;
-				}
+		}
+		//Search unit name
+		unit_map::const_iterator ui = units_.find(loc);
+		if(ui != units_.end()) {
+			const std::string name = ui->second.description();
+			if(std::search(name.begin(), name.end(),
+					last_search_.begin(), last_search_.end(),
+					chars_equal_insensitive) != name.end()) {
+				found = !gui_.fogged(loc.x, loc.y);
 			}
-		} while (loc != start && !found);
+		}
+		if(loc == start)
+			break;
 	}
 	if(found) {
 		last_search_hit_ = loc;
-		gui_.scroll_to_tile(loc.x,loc.y,display::WARP);
+		gui_.scroll_to_tile(loc.x,loc.y,display::WARP,false);
 		gui_.highlight_hex(loc);
 	} else {
 		last_search_hit_ = gamemap::location();
