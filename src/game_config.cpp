@@ -26,7 +26,7 @@ namespace game_config
 	int recall_cost = 20;
 	int kill_experience = 8;
 	int leadership_bonus = 25;
-	const std::string version = "0.7.9";
+	const std::string version = "0.7.10-CVS";
 	bool debug = false, editor = false;
 
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;
