@@ -593,6 +593,7 @@ int mp_connect::gui_do()
 		gui_update();
 		update_posions();
 		update_network();
+		is_full();
 
 		events::pump();
 		disp_->video().flip();
@@ -681,6 +682,7 @@ void mp_connect::update_network()
 					if(pos != positions_.end()) {
 						pos->second = 0;
 						pos->first->values.erase("taken");
+						pos->first->values["description"] = "";
 						network::send_data(*level_);
 					}
 				}
@@ -731,25 +733,21 @@ void mp_connect::update_network()
 			}
 		}
 	}
-
-	is_full();
 }
 
 void mp_connect::is_full()
 {
 	//see if all positions are now filled
-	bool unclaimed = false;
-	for(std::map<config*,network::connection>::const_iterator p = positions_.begin();
-	    p != positions_.end(); ++p) {
-		if(!p->second) {
-			unclaimed = true;
-			break;
+	full_ = true;
+	const config::child_itors sides = level_->child_range("side");
+	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
+	config::child_iterator sd;
+	for(sd = sides.first; sd != sides.second; ++sd) {
+		if((**sd)["controller"] == "network" &&
+		   (**sd)["description"] == "") {
+			if(positions_[*sd] == 0) {
+				full_ = false;
+			}
 		}
-	}
-
-	if(!unclaimed) {
-		full_ = true;
-	} else {
-		full_ = false;
 	}
 }
