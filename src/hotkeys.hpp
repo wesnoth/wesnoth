@@ -119,6 +119,8 @@ enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF };
 //to execute hotkey commands.
 class command_executor
 {
+protected:
+	virtual ~command_executor() {}
 public:
 
 	virtual void cycle_units() {}

@@ -418,7 +418,7 @@ void unit::heal_all()
 }
 
 static bool is_terrain(std::string const &terrain, gamemap::TERRAIN type) {
-	return std::count(terrain.begin(), terrain.end(), static_cast<gamemap::TERRAIN>(type));
+	return std::count(terrain.begin(), terrain.end(), static_cast<gamemap::TERRAIN>(type)) != 0;
 }
 
 bool unit::invisible(const std::string& terrain, int lawful_bonus, 
