@@ -116,11 +116,17 @@ bool show_intro_part(display& screen, const config& part,
 
 		SDL_BlitSurface(background,NULL,screen.video().getSurface(),&dstrect);
 
+#ifdef USE_TINY_GUI
+		textx = 10;
+		int xbuttons = screen.x() - 50;
+#else
 		textx = dstrect.x;
+		int xbuttons = dstrect.x+dstrect.w-40;
+#endif
 		texty = dstrect.y + dstrect.h + 10;
 
-		next_button.set_location(dstrect.x+dstrect.w-40,dstrect.y+dstrect.h+20);
-		skip_button.set_location(dstrect.x+dstrect.w-40,dstrect.y+dstrect.h+70);
+		next_button.set_location(xbuttons,dstrect.y+dstrect.h+20);
+		skip_button.set_location(xbuttons,dstrect.y+dstrect.h+70);
 	} else {
 		next_button.set_location(screen.x()-200,screen.y()-150);
 		skip_button.set_location(screen.x()-200,screen.y()-100);
