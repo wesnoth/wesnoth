@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-03-28 12:16+0200\n"
+"POT-Creation-Date: 2005-03-29 09:34+0200\n"
 "PO-Revision-Date: 2004-10-17 20:24+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <en@li.org>\n"
@@ -2435,11 +2435,11 @@ msgstr "Dejanja"
 msgid "End Turn"
 msgstr "Končaj potezo"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2121 src/unit.cpp:1040
+#: data/themes/default.cfg:167 src/playturn.cpp:2121 src/unit.cpp:1045
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2122 src/unit.cpp:1099
+#: data/themes/default.cfg:176 src/playturn.cpp:2122 src/unit.cpp:1104
 msgid "XP"
 msgstr "XP"
 
@@ -7738,72 +7738,72 @@ msgstr ""
 msgid "unit^Gold"
 msgstr "Zlata"
 
-#: src/playlevel.cpp:598 src/playlevel.cpp:864
+#: src/playlevel.cpp:606 src/playlevel.cpp:872
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
-#: src/playlevel.cpp:749
+#: src/playlevel.cpp:757
 msgid "Game Over"
 msgstr "Konec igre"
 
-#: src/playlevel.cpp:750
+#: src/playlevel.cpp:758
 msgid "The game is over."
 msgstr "Igra je končana"
 
-#: src/playlevel.cpp:763
+#: src/playlevel.cpp:771
 msgid "Defeat"
 msgstr "Poraz"
 
-#: src/playlevel.cpp:764
+#: src/playlevel.cpp:772
 msgid "You have been defeated!"
 msgstr "Bili ste poraženi!"
 
-#: src/playlevel.cpp:833
+#: src/playlevel.cpp:841
 msgid "Remaining gold: "
 msgstr "Preostalo zlato: "
 
-#: src/playlevel.cpp:836
+#: src/playlevel.cpp:844
 msgid "Early finish bonus: "
 msgstr "Bonus za zgodnji konec: "
 
-#: src/playlevel.cpp:838
+#: src/playlevel.cpp:846
 msgid "per turn"
 msgstr "na potezo"
 
-#: src/playlevel.cpp:839
+#: src/playlevel.cpp:847
 msgid "Turns finished early: "
 msgstr "Preostalih potez: "
 
-#: src/playlevel.cpp:841
+#: src/playlevel.cpp:849
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playlevel.cpp:843
+#: src/playlevel.cpp:851
 msgid "Gold: "
 msgstr "Zlato: "
 
-#: src/playlevel.cpp:848
+#: src/playlevel.cpp:856
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% zlata se bo ohranilo za naslednji scenarij"
 
-#: src/playlevel.cpp:849
+#: src/playlevel.cpp:857
 msgid "Retained Gold: "
 msgstr "Ohranjeno zlato: "
 
-#: src/playlevel.cpp:854
+#: src/playlevel.cpp:862
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playlevel.cpp:855
+#: src/playlevel.cpp:863
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
-#: src/playlevel.cpp:858
+#: src/playlevel.cpp:866
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playlevel.cpp:879
+#: src/playlevel.cpp:887
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7972,7 +7972,7 @@ msgstr "Sporočilo:"
 msgid "Send to allies only"
 msgstr "Pošlji samo zaveznikom"
 
-#: src/playturn.cpp:2124 src/unit.cpp:1076
+#: src/playturn.cpp:2124 src/unit.cpp:1081
 msgid "Moves"
 msgstr "Premiki"
 
@@ -8208,24 +8208,24 @@ msgstr ""
 msgid "Found invalid closing tag for tag $tag (line $line)"
 msgstr ""
 
-#: src/serialization/parser.cpp:211
+#: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
+#, fuzzy
+msgid "Empty variable name"
+msgstr "Izbrana je bila neveljavna era"
+
+#: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 
-#: src/serialization/parser.cpp:214
-#, fuzzy
-msgid "Invalid variable name"
-msgstr "Izbrana je bila neveljavna era"
-
-#: src/serialization/parser.cpp:239 src/serialization/parser.cpp:263
+#: src/serialization/parser.cpp:251 src/serialization/parser.cpp:275
 msgid "Unterminated quoted string"
 msgstr ""
 
-#: src/serialization/parser.cpp:308
+#: src/serialization/parser.cpp:320
 msgid "$error in file $file (line $line, column $column)"
 msgstr ""
 
-#: src/serialization/parser.cpp:309
+#: src/serialization/parser.cpp:321
 msgid "$error (line $line, column $column)"
 msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-03-28 12:16+0200\n"
+"POT-Creation-Date: 2005-03-29 09:34+0200\n"
 "PO-Revision-Date: 2005-03-02 01:48+0100\n"
 "Last-Translator: Alessio D'Ascanio <g3ntaro@fastwebnet.it>\n"
 "Language-Team: \n"
@@ -2766,11 +2766,11 @@ msgstr "Azioni"
 msgid "End Turn"
 msgstr "Fine Turno"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2121 src/unit.cpp:1040
+#: data/themes/default.cfg:167 src/playturn.cpp:2121 src/unit.cpp:1045
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2122 src/unit.cpp:1099
+#: data/themes/default.cfg:176 src/playturn.cpp:2122 src/unit.cpp:1104
 msgid "XP"
 msgstr "XP"
 
@@ -8685,72 +8685,72 @@ msgstr ""
 msgid "unit^Gold"
 msgstr "Oro"
 
-#: src/playlevel.cpp:598 src/playlevel.cpp:864
+#: src/playlevel.cpp:606 src/playlevel.cpp:872
 msgid "The file you have tried to load is corrupt"
 msgstr "Il file che hai provato a caricare è corrotto"
 
-#: src/playlevel.cpp:749
+#: src/playlevel.cpp:757
 msgid "Game Over"
 msgstr ""
 
-#: src/playlevel.cpp:750
+#: src/playlevel.cpp:758
 msgid "The game is over."
 msgstr "La partita è finita."
 
-#: src/playlevel.cpp:763
+#: src/playlevel.cpp:771
 msgid "Defeat"
 msgstr "Sconfitta"
 
-#: src/playlevel.cpp:764
+#: src/playlevel.cpp:772
 msgid "You have been defeated!"
 msgstr "Sei stato sconfitto!"
 
-#: src/playlevel.cpp:833
+#: src/playlevel.cpp:841
 msgid "Remaining gold: "
 msgstr "Oro rimanente:"
 
-#: src/playlevel.cpp:836
+#: src/playlevel.cpp:844
 msgid "Early finish bonus: "
 msgstr "Bonus sui turni risparmiati:"
 
-#: src/playlevel.cpp:838
+#: src/playlevel.cpp:846
 msgid "per turn"
 msgstr "per turno"
 
-#: src/playlevel.cpp:839
+#: src/playlevel.cpp:847
 msgid "Turns finished early: "
 msgstr "Turni risparmiati:"
 
-#: src/playlevel.cpp:841
+#: src/playlevel.cpp:849
 msgid "Bonus: "
 msgstr "Bonus:"
 
-#: src/playlevel.cpp:843
+#: src/playlevel.cpp:851
 msgid "Gold: "
 msgstr "Oro:"
 
-#: src/playlevel.cpp:848
+#: src/playlevel.cpp:856
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% dell'oro è trattenuto per il prossimo scenario"
 
-#: src/playlevel.cpp:849
+#: src/playlevel.cpp:857
 msgid "Retained Gold: "
 msgstr "Oro trattenuto:"
 
-#: src/playlevel.cpp:854
+#: src/playlevel.cpp:862
 msgid "Victory"
 msgstr "Vittoria"
 
-#: src/playlevel.cpp:855
+#: src/playlevel.cpp:863
 msgid "You have emerged victorious!"
 msgstr "Ne sei uscito vincente!"
 
-#: src/playlevel.cpp:858
+#: src/playlevel.cpp:866
 msgid "Scenario Report"
 msgstr "Risultati dello scenario"
 
-#: src/playlevel.cpp:879
+#: src/playlevel.cpp:887
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8924,7 +8924,7 @@ msgstr "Messaggio:"
 msgid "Send to allies only"
 msgstr "Invia solo agli alleati"
 
-#: src/playturn.cpp:2124 src/unit.cpp:1076
+#: src/playturn.cpp:2124 src/unit.cpp:1081
 msgid "Moves"
 msgstr "Mosse"
 
@@ -9160,23 +9160,23 @@ msgstr ""
 msgid "Found invalid closing tag for tag $tag (line $line)"
 msgstr ""
 
-#: src/serialization/parser.cpp:211
+#: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
+msgid "Empty variable name"
+msgstr ""
+
+#: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 
-#: src/serialization/parser.cpp:214
-msgid "Invalid variable name"
-msgstr ""
-
-#: src/serialization/parser.cpp:239 src/serialization/parser.cpp:263
+#: src/serialization/parser.cpp:251 src/serialization/parser.cpp:275
 msgid "Unterminated quoted string"
 msgstr ""
 
-#: src/serialization/parser.cpp:308
+#: src/serialization/parser.cpp:320
 msgid "$error in file $file (line $line, column $column)"
 msgstr ""
 
-#: src/serialization/parser.cpp:309
+#: src/serialization/parser.cpp:321
 msgid "$error (line $line, column $column)"
 msgstr ""
 

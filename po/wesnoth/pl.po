@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-03-28 12:16+0200\n"
+"POT-Creation-Date: 2005-03-29 09:34+0200\n"
 "PO-Revision-Date: 2005-01-22 17:15+0100\n"
 "Last-Translator: Paweł Stradomski <pstradomski@poczta.gazeta.pl>\n"
 "Language-Team:  <pl@li.org>\n"
@@ -2373,11 +2373,11 @@ msgstr "Działania"
 msgid "End Turn"
 msgstr "Zakończ turę"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2121 src/unit.cpp:1040
+#: data/themes/default.cfg:167 src/playturn.cpp:2121 src/unit.cpp:1045
 msgid "HP"
 msgstr "PŻ"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2122 src/unit.cpp:1099
+#: data/themes/default.cfg:176 src/playturn.cpp:2122 src/unit.cpp:1104
 msgid "XP"
 msgstr "PD"
 
@@ -8685,79 +8685,79 @@ msgstr ""
 msgid "unit^Gold"
 msgstr "Złoto"
 
-#: src/playlevel.cpp:598 src/playlevel.cpp:864
+#: src/playlevel.cpp:606 src/playlevel.cpp:872
 msgid "The file you have tried to load is corrupt"
 msgstr "Plik nie może zostać wczytany - jest zepsuty"
 
-#: src/playlevel.cpp:749
+#: src/playlevel.cpp:757
 msgid "Game Over"
 msgstr "Koniec gry"
 
-#: src/playlevel.cpp:750
+#: src/playlevel.cpp:758
 msgid "The game is over."
 msgstr "Gra się skończyła."
 
-#: src/playlevel.cpp:763
+#: src/playlevel.cpp:771
 msgid "Defeat"
 msgstr "Porażka"
 
-#: src/playlevel.cpp:764
+#: src/playlevel.cpp:772
 msgid "You have been defeated!"
 msgstr "Zostałeś(aś) pokonany(a)!"
 
-#: src/playlevel.cpp:833
+#: src/playlevel.cpp:841
 #, fuzzy
 msgid "Remaining gold: "
 msgstr "Pozostałe złoto"
 
-#: src/playlevel.cpp:836
+#: src/playlevel.cpp:844
 #, fuzzy
 msgid "Early finish bonus: "
 msgstr "Nagroda za zakończenie przed czasem"
 
-#: src/playlevel.cpp:838
+#: src/playlevel.cpp:846
 msgid "per turn"
 msgstr "na turę"
 
-#: src/playlevel.cpp:839
+#: src/playlevel.cpp:847
 #, fuzzy
 msgid "Turns finished early: "
 msgstr "Tur przed czasem"
 
-#: src/playlevel.cpp:841
+#: src/playlevel.cpp:849
 #, fuzzy
 msgid "Bonus: "
 msgstr "Nagroda"
 
-#: src/playlevel.cpp:843
+#: src/playlevel.cpp:851
 #, fuzzy
 msgid "Gold: "
 msgstr "Złoto"
 
-#: src/playlevel.cpp:848
+#: src/playlevel.cpp:856
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% złota zostaje zachowane do następnej przygody"
 
-#: src/playlevel.cpp:849
+#: src/playlevel.cpp:857
 #, fuzzy
 msgid "Retained Gold: "
 msgstr "Zachowane złoto"
 
-#: src/playlevel.cpp:854
+#: src/playlevel.cpp:862
 msgid "Victory"
 msgstr "Zwycięstwo"
 
-#: src/playlevel.cpp:855
+#: src/playlevel.cpp:863
 msgid "You have emerged victorious!"
 msgstr "Zwyciężyłeś(aś) wszystkich wrogów!"
 
-#: src/playlevel.cpp:858
+#: src/playlevel.cpp:866
 #, fuzzy
 msgid "Scenario Report"
 msgstr "Początek scenariusza"
 
-#: src/playlevel.cpp:879
+#: src/playlevel.cpp:887
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8929,7 +8929,7 @@ msgstr "Wiadomość"
 msgid "Send to allies only"
 msgstr "Wyślij tylko do sprzymierzeńców"
 
-#: src/playturn.cpp:2124 src/unit.cpp:1076
+#: src/playturn.cpp:2124 src/unit.cpp:1081
 msgid "Moves"
 msgstr "Ilość ruchów"
 
@@ -9177,23 +9177,23 @@ msgstr ""
 msgid "Found invalid closing tag for tag $tag (line $line)"
 msgstr ""
 
-#: src/serialization/parser.cpp:211
+#: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
+msgid "Empty variable name"
+msgstr ""
+
+#: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 
-#: src/serialization/parser.cpp:214
-msgid "Invalid variable name"
-msgstr ""
-
-#: src/serialization/parser.cpp:239 src/serialization/parser.cpp:263
+#: src/serialization/parser.cpp:251 src/serialization/parser.cpp:275
 msgid "Unterminated quoted string"
 msgstr ""
 
-#: src/serialization/parser.cpp:308
+#: src/serialization/parser.cpp:320
 msgid "$error in file $file (line $line, column $column)"
 msgstr ""
 
-#: src/serialization/parser.cpp:309
+#: src/serialization/parser.cpp:321
 msgid "$error (line $line, column $column)"
 msgstr ""
 
