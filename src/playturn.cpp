@@ -1566,14 +1566,20 @@ void turn_info::unit_list()
 
 unit_map::iterator turn_info::current_unit()
 {
-	unit_map::iterator i = find_visible_unit(units_,
-			last_hex_, map_,
-			status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+	unit_map::iterator i = units_.end();
 
-	if(i == units_.end()) {
-		unit_map::iterator i = find_visible_unit(units_, selected_hex_, 
-				map_,
+	if(gui_.fogged(last_hex_.x,last_hex_.y)==false){
+		i = find_visible_unit(units_,
+				last_hex_, map_,
 				status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+	}
+
+	if(gui_.fogged(selected_hex_.x,selected_hex_.y)==false){
+		if(i == units_.end()) {
+			unit_map::iterator i = find_visible_unit(units_, selected_hex_, 
+					map_,
+					status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+		}
 	}
 
 	return i;
@@ -1581,14 +1587,20 @@ unit_map::iterator turn_info::current_unit()
 
 unit_map::const_iterator turn_info::current_unit() const
 {
-	unit_map::const_iterator i = find_visible_unit(units_,
+	unit_map::const_iterator i = units_.end();
+
+	if(gui_.fogged(last_hex_.x,last_hex_.y)==false){
+		i = find_visible_unit(units_,
 			last_hex_, map_,
 			status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+	}
 
-	if(i == units_.end()) {
-		unit_map::const_iterator i = find_visible_unit(units_, selected_hex_, 
-				map_,
-				status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+	if(gui_.fogged(selected_hex_.x,selected_hex_.y)==false){
+		if(i == units_.end()) {
+			i = find_visible_unit(units_, selected_hex_, 
+					map_,
+					status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+		}
 	}
 
 	return i;
