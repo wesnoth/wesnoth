@@ -102,28 +102,30 @@ void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& 
 	std::set<gamemap::location>& res)
 {
 	typedef std::set<gamemap::location> location_set;
-	location_set not_visited(locs.begin(), locs.end()), must_visit, visited;
+	location_set not_visited(locs.begin(), locs.end()), must_visit;
 	++radius;
 
 	for(;;) {
 		location_set::const_iterator it = not_visited.begin(), it_end = not_visited.end();
-		std::copy(it,it_end,std::inserter(visited,visited.end()));
+		std::copy(it,it_end,std::inserter(res,res.end()));
 		for(; it != it_end; ++it) {
 			gamemap::location adj[6];
 			get_adjacent_tiles(*it, adj);
 			for(size_t i = 0; i != 6; ++i) {
 				gamemap::location const &loc = adj[i];
-				if (!map.on_board(loc)) continue;
-				if (visited.find(loc) != visited.end()) continue;
-				must_visit.insert(loc);
+				if(map.on_board(loc) && res.count(loc) == 0) {
+					must_visit.insert(loc);
+				}
 			}
 		}
 
-		if (--radius == 0 || must_visit.empty()) break;
+		if(--radius == 0 || must_visit.empty()) {
+			break;
+		}
+
 		not_visited.swap(must_visit);
 		must_visit.clear();
 	}
-	std::copy(visited.begin(),visited.end(),std::inserter(visited,visited.end()));
 }
 
 bool enemy_zoc(const gamemap& map, const gamestatus& status, 
