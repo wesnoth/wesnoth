@@ -44,11 +44,10 @@ public:
 private:
 	positions_map positions_;
 	config& players_;
-	std::vector<config*>& sides_;
 };
 
 connection_acceptor::connection_acceptor(config& players)
-                   : players_(players), sides_(players.children["side"])
+                   : players_(players)
 {
 	std::vector<config*>& sides = players.children["side"];
 	for(std::vector<config*>::const_iterator i = sides.begin();
@@ -68,6 +67,8 @@ int connection_acceptor::do_action()
 	}
 
 	config cfg;
+
+	std::vector<config*>& sides = players_.children["side"];
 
 	try {
 		sock = network::receive_data(cfg);
@@ -104,15 +105,15 @@ int connection_acceptor::do_action()
 
 	if(sock) {
 		const int side_taken = atoi(cfg.values["side"].c_str())-1;
-		if(side_taken >= 0 && side_taken < int(sides_.size())) {
-			positions_map::iterator pos = positions_.find(sides_[side_taken]);
+		if(side_taken >= 0 && side_taken < int(sides.size())) {
+			positions_map::iterator pos = positions_.find(sides[side_taken]);
 			if(pos != positions_.end()) {
 				if(!pos->second) {
 					std::cerr << "client has taken a valid position\n";
 
 					//broadcast to everyone the new game status
 					pos->first->values["taken"] = "yes";
-					positions_[sides_[side_taken]] = sock;
+					positions_[sides[side_taken]] = sock;
 					network::send_data(players_);
 
 					std::cerr << "sent player data\n";
