@@ -104,6 +104,7 @@ struct config
 	const_child_itors child_range(const std::string& key) const;
 
 	const child_list& get_children(const std::string& key) const;
+	const child_map& all_children() const;
 	
 	config* child(const std::string& key);
 	const config* child(const std::string& key) const;
@@ -135,11 +136,40 @@ struct config
 		std::string message;
 	};
 
+	struct child_pos {
+		child_pos(child_map::const_iterator p, size_t i) : pos(p), index(i) {}
+		child_map::const_iterator pos;
+		size_t index;
+	};
+
+	struct all_children_iterator {
+		typedef std::vector<child_pos>::const_iterator Itor;
+		explicit all_children_iterator(Itor i);
+
+		all_children_iterator operator++();
+		all_children_iterator operator++(int);
+
+		std::pair<const std::string*,const config*> operator*() const;
+
+		bool operator==(all_children_iterator i) const;
+		bool operator!=(all_children_iterator i) const;
+
+	private:
+		Itor i_;
+	};
+
+	//in-order iteration over all children
+	all_children_iterator ordered_begin() const;
+	all_children_iterator ordered_end() const;
+
 	//all the attributes of this node.
 	string_map values;
 
+private:
 	//a list of all children of this node.
 	child_map children;
+
+	std::vector<child_pos> ordered_children;
 };
 
 struct config_has_value {

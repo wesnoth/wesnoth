@@ -374,13 +374,10 @@ config::config(const config& cfg) : values(cfg.values)
 {
 	for(std::map<std::string,std::vector<config*> >::const_iterator i =
 	    cfg.children.begin(); i != cfg.children.end(); ++i) {
-		std::vector<config*> v;
 		for(std::vector<config*>::const_iterator j = i->second.begin();
 		    j != i->second.end(); ++j) {
-			v.push_back(new config(**j));
+			add_child(i->first,**j);
 		}
-
-		children[i->first].swap(v);
 	}
 }
 
@@ -397,13 +394,10 @@ config& config::operator=(const config& cfg)
 
 	for(std::map<std::string,std::vector<config*> >::const_iterator i =
 	    cfg.children.begin(); i != cfg.children.end(); ++i) {
-		std::vector<config*> v;
 		for(std::vector<config*>::const_iterator j = i->second.begin();
 		    j != i->second.end(); ++j) {
-			v.push_back(new config(**j));
+			add_child(i->first,**j);
 		}
-
-		children[i->first].swap(v);
 	}
 
 	return *this;
@@ -483,10 +477,8 @@ void config::read(const std::string& data,
 
 						break;
 					}
-
-					config* const new_config = new config();
-					elements.top()->children[value].push_back(new_config);
-					elements.push(new_config);
+					;
+					elements.push(&elements.top()->add_child(value));
 					element_names.push(value);
 					state = IN_ELEMENT;
 					value = "";
@@ -608,6 +600,8 @@ const config::child_list& config::get_children(const std::string& key) const
 	}
 }
 
+const config::child_map& config::all_children() const { return children; }
+
 config* config::child(const std::string& key)
 {
 	const child_map::const_iterator i = children.find(key);
@@ -627,6 +621,7 @@ config& config::add_child(const std::string& key)
 {
 	std::vector<config*>& v = children[key];
 	v.push_back(new config());
+	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
 	return *v.back();
 }
 
@@ -634,6 +629,7 @@ config& config::add_child(const std::string& key, const config& val)
 {
 	std::vector<config*>& v = children[key];
 	v.push_back(new config(val));
+	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
 	return *v.back();
 }
 
@@ -761,6 +757,48 @@ void config::clear()
 
 	children.clear();
 	values.clear();
+	ordered_children.clear();
+}
+
+config::all_children_iterator::all_children_iterator(config::all_children_iterator::Itor i) : i_(i)
+{}
+
+config::all_children_iterator config::all_children_iterator::operator++()
+{
+	++i_;
+	return *this;
+}
+
+config::all_children_iterator config::all_children_iterator::operator++(int)
+{
+	config::all_children_iterator i = *this;
+	++i_;
+	return i;
+}
+
+std::pair<const std::string*,const config*> config::all_children_iterator::operator*() const
+{
+	return std::pair<const std::string*,const config*>(&(i_->pos->first),i_->pos->second[i_->index]);
+}
+
+bool config::all_children_iterator::operator==(all_children_iterator i) const
+{
+	return i_ == i.i_;
+}
+
+bool config::all_children_iterator::operator!=(all_children_iterator i) const
+{
+	return i_ != i.i_;
+}
+
+config::all_children_iterator config::ordered_begin() const
+{
+	return all_children_iterator(ordered_children.begin());
+}
+
+config::all_children_iterator config::ordered_end() const
+{
+	return all_children_iterator(ordered_children.end());
 }
 
 //#define TEST_CONFIG

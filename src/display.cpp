@@ -1414,8 +1414,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 			highlight_ratio = advancingAmount_;
 		}
 
-		const int height_adjust = it->second.is_flying() ? 0 : map_.get_terrain_info(terrain).unit_height_adjust()*(zoom_/DefaultZoom);
-		const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
+		const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*(zoom_/DefaultZoom));
+		const double submerge = it->second.is_flying() ? 0.0 : int(map_.get_terrain_info(terrain).unit_submerge());
 
 		draw_unit(xpos-xsrc,ypos-ysrc - height_adjust,unit_image,face_left,false,
 		          highlight_ratio,blend_with,submerge);
@@ -2224,11 +2224,11 @@ void display::move_unit_between(const gamemap::location& a,
 	const gamemap::TERRAIN src_terrain = map_.get_terrain(a);
 	const gamemap::TERRAIN dst_terrain = map_.get_terrain(b);
 
-	const int src_height_adjust = u.is_flying() ? 0 : map_.get_terrain_info(src_terrain).unit_height_adjust() * (zoom_/DefaultZoom);
-	const int dst_height_adjust = u.is_flying() ? 0 : map_.get_terrain_info(dst_terrain).unit_height_adjust() * (zoom_/DefaultZoom);
+	const int src_height_adjust = u.is_flying() ? 0 : int(map_.get_terrain_info(src_terrain).unit_height_adjust() * (zoom_/DefaultZoom));
+	const int dst_height_adjust = u.is_flying() ? 0 : int(map_.get_terrain_info(dst_terrain).unit_height_adjust() * (zoom_/DefaultZoom));
 
-	const double src_submerge = u.is_flying() ? 0 : map_.get_terrain_info(src_terrain).unit_submerge();
-	const double dst_submerge = u.is_flying() ? 0 : map_.get_terrain_info(dst_terrain).unit_submerge();
+	const double src_submerge = u.is_flying() ? 0 : int(map_.get_terrain_info(src_terrain).unit_submerge());
+	const double dst_submerge = u.is_flying() ? 0 : int(map_.get_terrain_info(dst_terrain).unit_submerge());
 
 	const double nsteps = turbo() ? 3.0 : 10.0;
 	const double xstep = (xdst - xsrc)/nsteps;

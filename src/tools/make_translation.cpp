@@ -25,8 +25,7 @@ void process_config(const std::string& element_name, const config& cfg,
 {
 	typedef std::pair<string,string> pair;
 
-	for(map<string,vector<config*> >::const_iterator i =
-	    cfg.children.begin(); i != cfg.children.end(); ++i) {
+	for(config::child_map::const_iterator i = cfg.all_children.begin(); i != cfg.all_children().end(); ++i) {
 		for(vector<config*>::const_iterator j = i->second.begin();
 		    j != i->second.end(); ++j) {
 			process_config(i->first,**j,out);

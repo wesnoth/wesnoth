@@ -244,7 +244,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	
 	const config* const status_cfg = cfg.child("status");
 	if(status_cfg != NULL) {
-		for(config::child_map::const_iterator i = status_cfg->children.begin(); i != status_cfg->children.end(); ++i) {
+		for(config::child_map::const_iterator i = status_cfg->all_children().begin(); i != status_cfg->all_children().end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 				status_.insert(std::pair<std::string,status_item>(i->first,status_item(**j)));
 			}
