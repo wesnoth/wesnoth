@@ -327,7 +327,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 		const unit_animation::frame& unit_frame = attack_anim.get_current_frame(unit_animation::UNIT_FRAME);
 
-		std::cerr << "Animation time :" << animation_time << ", image " << unit_frame.image << "\n";
+		//std::cerr << "Animation time :" << animation_time << ", image " << unit_frame.image << "\n";
 		int new_halo_x = unit_frame.halo_x;
 		int new_halo_y = unit_frame.halo_y;
 		const std::string* unit_image = &unit_frame.image;
@@ -373,7 +373,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 		Uint32 defensive_colour = 0;
 		double defensive_alpha = 1.0;
 
-		std::cerr << "Waiting for missile impact at " << missile_impact << "\n";
+		//std::cerr << "Waiting for missile impact at " << missile_impact << "\n";
 		if(damage > 0 && animation_time >= missile_impact) {
 			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
 				dead = true;
@@ -403,7 +403,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 		if(animation_time >= 0 && animation_time < real_last_missile && !hide) {
 			const unit_animation::frame& missile_frame = attack_anim.get_current_frame(unit_animation::MISSILE_FRAME);
-			std::cerr << "Missile: animation time :" << animation_time << ", image " << missile_frame.image << ", halo: " << missile_frame.halo << "\n";
+			//std::cerr << "Missile: animation time :" << animation_time << ", image " << missile_frame.image << ", halo: " << missile_frame.halo << "\n";
 
 			new_halo_x = missile_frame.halo_x;
 			new_halo_y = missile_frame.halo_y;
