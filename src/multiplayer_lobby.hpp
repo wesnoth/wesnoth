@@ -36,7 +36,7 @@ protected:
 	virtual void layout_children(const SDL_Rect& rect);
 	virtual void process_network_data(const config& data, const network::connection sock);
 
-	virtual void gamelist_updated();
+	virtual void gamelist_updated(bool silent=true);
 private:
 
 	std::vector<bool> game_vacant_slots_;

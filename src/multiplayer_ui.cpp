@@ -239,10 +239,10 @@ void ui::process_network_data(const config& data, const network::connection sock
 
 		if(data.child("gamelist")) {
 			gamelist_ = data;
-			gamelist_updated();
+			gamelist_updated(false);
 		} else if(data.child("gamelist_diff")) {
 			gamelist_.apply_diff(*data.child("gamelist_diff"));
-			gamelist_updated();
+			gamelist_updated(false);
 		}
 	}
 }
@@ -277,7 +277,7 @@ void ui::layout_children(const SDL_Rect& rect)
 	entry_textbox_.set_width(xscale(833) - 8);
 }
 
-void ui::gamelist_updated()
+void ui::gamelist_updated(bool silent)
 {
 	std::vector<std::string> user_strings;
 	config::child_list users = gamelist_.get_children("user");
@@ -286,19 +286,21 @@ void ui::gamelist_updated()
 		const std::string prefix = (**user)["available"] == "no" ? "#" : "";
 		user_strings.push_back(prefix + (**user)["name"]);
 	}
-	set_user_list(user_strings);
+	set_user_list(user_strings, silent);
 }
 
-void ui::set_user_list(const std::vector<std::string>& list)
+void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 {
 	const int old_users = user_list_.size();
 	user_list_ = list;
 	const int new_users = user_list_.size();
 
-	if(new_users < old_users) {
-		sound::play_sound(game_config::sounds::user_leave);
-	} else if(new_users > old_users) {
-		sound::play_sound(game_config::sounds::user_arrive);
+	if(!silent) {
+		if(new_users < old_users) {
+			sound::play_sound(game_config::sounds::user_leave);
+		} else if(new_users > old_users) {
+			sound::play_sound(game_config::sounds::user_arrive);
+		}
 	}
 
 	users_menu_.set_items(user_list_);

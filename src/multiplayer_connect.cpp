@@ -497,7 +497,7 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 
 	// Updates the "level_" variable, now that sides are loaded
 	update_level();
-	gamelist_updated();
+	gamelist_updated(true);
 
 	// If we are connected, send data to the connected host
 	network::send_data(level_);
@@ -606,9 +606,9 @@ void connect::hide_children(bool hide)
 	cancel_.hide(hide);
 }
 
-void connect::gamelist_updated()
+void connect::gamelist_updated(bool silent)
 {
-	update_playerlist_state();
+	update_playerlist_state(silent);
 }
 
 void connect::process_network_data(const config& data, const network::connection sock)
@@ -983,7 +983,7 @@ bool connect::sides_available()
 	return false;
 }
 
-void connect::update_playerlist_state()
+void connect::update_playerlist_state(bool silent)
 {
 	waiting_label_.set_text(sides_available() ? _("Waiting for players to join...") : "");
 	launch_.enable(!sides_available());
@@ -991,7 +991,7 @@ void connect::update_playerlist_state()
 	// If the "gamelist_" variable has users, use it. Else, extracts the
 	// user list from the actual player list.
 	if (gamelist().child("user") != NULL) {
-		ui::gamelist_updated();
+		ui::gamelist_updated(silent);
 	} else {
 		// Updates the player list
 		std::vector<std::string> playerlist;
@@ -999,7 +999,7 @@ void connect::update_playerlist_state()
 				++itor) {
 			playerlist.push_back(itor->name);
 		}
-		set_user_list(playerlist);
+		set_user_list(playerlist, silent);
 	}
 }
 

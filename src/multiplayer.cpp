@@ -189,6 +189,8 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 	game_state state;
 	network_game_manager m;
 
+	gamelist.clear();
+
 	{
 		mp::wait ui(disp, game_config, data, chat, gamelist);
 		
@@ -228,6 +230,8 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 			network::server_manager::TRY_CREATE_SERVER :
 			network::server_manager::NO_SERVER);
 	network_game_manager m;
+
+	gamelist.clear();
 
 	{
 		mp::connect ui(disp, game_config, data, chat, gamelist, params, default_controller);
@@ -302,6 +306,8 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 			} catch(network::error& error) {
 				if (!error.message.empty())
 					gui::show_error_message(disp, error.message);
+				// Exit the lobby on network errors
+				return;
 			}
 			break;
 		case mp::ui::QUIT:

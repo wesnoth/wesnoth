@@ -58,9 +58,9 @@ void lobby::layout_children(const SDL_Rect& rect)
 	games_menu_.set_location(xscale(12),yscale(42));
 }
 
-void lobby::gamelist_updated()
+void lobby::gamelist_updated(bool silent)
 {
-	ui::gamelist_updated();
+	ui::gamelist_updated(silent);
 
 	std::vector<std::string> game_strings;
 	const config* list = gamelist().child("gamelist");

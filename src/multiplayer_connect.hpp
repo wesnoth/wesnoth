@@ -156,7 +156,7 @@ protected:
 
 	virtual void hide_children(bool hide=true);
 
-	virtual void gamelist_updated();
+	virtual void gamelist_updated(bool silent=true);
 private:
 	// Those 2 functions are actually the steps of the (complex)
 	// construction of this class.
@@ -174,7 +174,7 @@ private:
 	
 	// Updates the state of the player list, the launch button and of the
 	// start game label, to reflect the actual state.
-	void update_playerlist_state();
+	void update_playerlist_state(bool silent=true);
 
 	// Returns the index of a player, from its id, or -1 if the player was not found
 	connected_user_list::iterator find_player(const std::string& id);

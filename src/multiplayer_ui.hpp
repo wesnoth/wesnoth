@@ -131,10 +131,10 @@ protected:
 
 	// Called each time the gamelist_ variable is updated. May be
 	// overridden by child classes to add custom gamelist behaviour.
-	virtual void gamelist_updated();
+	virtual void gamelist_updated(bool silent=true);
 
 	// Sets the user list
-	void set_user_list(const std::vector<std::string>&);
+	void set_user_list(const std::vector<std::string>&, bool silent);
 
 	// Returns the current gamelist
 	config& gamelist() { return gamelist_; };
