@@ -1,19 +1,37 @@
 CVS HEAD
  * campaign server (campaignd) and capability to download campaigns from campaign server(s)
  * sorting of campaigns by rank
+ * :refresh command
+ * user interface tweaks
+ * graphics improvements
+   * forests
+   * attack icons
  * scenarios balancing on easy and hard for 'The Rise of Wesnoth' campaign
+ * new units:
+   * Elvish Enchantress
+   * Elvish Sorceress
+   * Elvish Sylph
+   * Troll Rocklobber
  * language fixes and polishing (english)
  * updated translations:
+   * basque
    * czech
    * danish
    * dutch
    * french
    * german
    * norwegian
+   * polish
    * portuguese
+   * russian
    * slovak
    * spanish
    * swedish
+ * multiplayer improvements
+   * added increments to sliders
+   * choose your leader
+   * new map: An Island
+ * added new AI parameter: attack_depth
  * fixed 'make clean' not cleaning everything 
  * fixed 'make uninstall' not working because of syntax error
  * fixed 'system default language' selection
@@ -23,7 +41,12 @@ CVS HEAD
  * fixed missing semicolon in sound.cpp
  * fixed tutorial talking of elves having 70% defense on grass
  * fixed many untranslatable strings in e.g. statistics, statusbar tooltips, units
+ * fixed missing movetype for 'Pirate Galleon' and 'Transportation Galleon'
+ * fixed General crossbow attack graphics glitch
+ * fixed "wait for start" lobby dialog
+ * fixed units not submerged when moving/fighting
  * added a way to specify the actual position of multi-hex tiles
+ * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
  * enabled gamestart speedup by not unnecessarily loading campaigns
  * code cleanups
