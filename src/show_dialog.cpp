@@ -12,6 +12,7 @@
 */
 
 #include "config.hpp"
+#include "events.hpp"
 #include "font.hpp"
 #include "language.hpp"
 #include "playlevel.hpp"
@@ -188,7 +189,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(disp.update_locked())
 		return -1;
 
-	const resize_lock prevent_resizing;
+	const events::resize_lock prevent_resizing;
 
 	const std::vector<std::string>& menu_items =
 	   (menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
@@ -454,7 +455,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	bool first_time = true;
 
 	for(;;) {
-		pump_events();
+		events::pump();
 
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
@@ -582,7 +583,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 TITLE_RESULT show_title(display& screen)
 {
-	const resize_lock prevent_resizing;
+	const events::resize_lock prevent_resizing;
 
 	SDL_Surface* const title_surface = screen.getImage("title.png",
 	                                                   display::UNSCALED);
@@ -672,7 +673,7 @@ TITLE_RESULT show_title(display& screen)
 		if(key[KEY_ESCAPE])
 			return QUIT_GAME;
 
-		pump_events();
+		events::pump();
 
 		SDL_Delay(20);
 	}

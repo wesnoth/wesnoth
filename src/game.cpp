@@ -167,7 +167,12 @@ int play_game(int argc, char** argv)
 			game_config::debug = true;
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
-		              << " [options] [data-directory]\n";
+		    << " [options] [data-directory]\n"
+			<< "  -d, --debug       Shows debugging information in-game\n"
+			<< "  -f, --fullscreen  Runs the game in full-screen\n"
+			<< "  -h, --help        Prints this message and exits\n"
+			<< "  -t, --test        Runs the game in a small example scenario\n"
+			<< "  -w, --windowed    Runs the game in windowed mode\n";
 			return 0;
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth " << game_config::version

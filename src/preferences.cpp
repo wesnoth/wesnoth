@@ -10,6 +10,8 @@
 
    See the COPYING file for more details.
 */
+
+#include "events.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "hotkeys.hpp"
@@ -265,7 +267,7 @@ void show_preferences_dialog(display& disp)
 {
 	assert(::disp != NULL);
 
-	const resize_lock prevent_resizing;
+	const events::resize_lock prevent_resizing;
 	
 	log_scope("show_preferences_dialog");
 
@@ -435,7 +437,7 @@ void show_preferences_dialog(display& disp)
 		disp.update_display();
 
 		SDL_Delay(10);
-		pump_events();
+		events::pump();
 	}
 
 	disp.invalidate_all();
@@ -444,7 +446,7 @@ void show_preferences_dialog(display& disp)
 
 void show_video_mode_dialog(display& disp)
 {
-	const resize_lock prevent_resizing;
+	const events::resize_lock prevent_resizing;
 
 	std::vector<std::pair<int,int> > resolutions;
 	std::vector<std::string> options;

@@ -10,6 +10,8 @@
 
    See the COPYING file for more details.
 */
+
+#include "events.hpp"
 #include "font.hpp"
 #include "intro.hpp"
 #include "key.hpp"
@@ -24,7 +26,7 @@
 void show_intro(display& screen, config& data)
 {
 	//stop the screen being resized while we're in this function
-	const resize_lock stop_resizing;
+	const events::resize_lock stop_resizing;
 
 	CKey key;
 
@@ -107,7 +109,7 @@ void show_intro(display& screen, config& data)
 
 			const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-			pump_events();
+			events::pump();
 
 			if(key[KEY_ESCAPE] ||
 			   skip_button.process(mousex,mousey,left_button))
@@ -130,7 +132,7 @@ void show_intro(display& screen, config& data)
 void show_map_scene(display& screen, config& data)
 {
 	//stop the screen being resized while we're in this function
-	const resize_lock stop_resizing;
+	const events::resize_lock stop_resizing;
 
 	//clear the screen
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
@@ -214,7 +216,7 @@ void show_map_scene(display& screen, config& data)
 
 			SDL_Delay(10);
 
-			pump_events();
+			events::pump();
 
 			int a, b;
 			const int mouse_flags = SDL_GetMouseState(&a,&b);
@@ -257,7 +259,7 @@ void show_map_scene(display& screen, config& data)
 		last_state = new_state;
 
 		SDL_Delay(20);
-		pump_events();
+		events::pump();
 	}
 
 	//clear the screen

@@ -10,7 +10,9 @@
 
    See the COPYING file for more details.
 */
+
 #include "config.hpp"
+#include "events.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
 #include "playlevel.hpp"
@@ -151,7 +153,7 @@ HOTKEY_COMMAND check_keys(display& disp)
 {
 	const double zoom_amount = 5.0;
 
-	::pump_events();
+	events::pump();
 
 	CKey key;
 	if(key[KEY_ESCAPE]) {

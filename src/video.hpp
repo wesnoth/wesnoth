@@ -58,13 +58,4 @@ class CVideo {
 	SDL_Surface* frameBuffer;
 };
 
-void allow_resizing(bool);
-
-struct resize_lock {
-	resize_lock();
-	~resize_lock();
-};
-
-void pump_events();
-
 #endif

@@ -10,6 +10,8 @@
 
    See the COPYING file for more details.
 */
+
+#include "events.hpp"
 #include "game_events.hpp"
 #include "intro.hpp"
 #include "language.hpp"
@@ -231,7 +233,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 						gui.draw();
 						game_events::pump();
-						pump_events();
+						events::pump();
 					}
 
 					std::cerr << "replay: '" << cfg.children["turn"].front()->write() << "'\n";

@@ -12,6 +12,7 @@
 */
 
 #include "actions.hpp"
+#include "events.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -965,6 +966,6 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		game_events::pump();
 
-		pump_events();
+		events::pump();
 	}
 }
