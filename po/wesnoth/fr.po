@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-01 18:45+0200\n"
+"POT-Creation-Date: 2004-09-02 22:54+0200\n"
 "PO-Revision-Date: 2004-08-31 22:45+0200\n"
 "Last-Translator: Guillaume Melquiond <guillaume.melquiond@gmail.com>\n"
 "Language-Team: Language fr\n"
@@ -128,11 +128,11 @@ msgstr ""
 "\n"
 "Bataille pour Wesnoth est un jeu de stratégie d'heroic-fantasy quelque peu "
 "inhabituel parmi les jeux de stratégie récents. Alors que les autres jeux "
-"recherchent toujours plus de complexité, aussi bien en terme de règles que de "
-"jouabilité, Bataille pour Wesnoth recherche la simplicité des règles et de "
-"l'interface. Cela n'en fait pas un jeu simple pour autant - de ces règles "
-"simples émerge une richesse de stratégie, rendant le jeu facile à "
-"apprendre mais un défi à maîtriser."
+"recherchent toujours plus de complexité, aussi bien en terme de règles que "
+"de jouabilité, Bataille pour Wesnoth recherche la simplicité des règles et "
+"de l'interface. Cela n'en fait pas un jeu simple pour autant - de ces règles "
+"simples émerge une richesse de stratégie, rendant le jeu facile à apprendre "
+"mais un défi à maîtriser."
 
 #: data/help.cfg:60
 msgid "Fundamentals of Gameplay"
@@ -162,25 +162,26 @@ msgid ""
 msgstr ""
 "Cette page mets en évidence tout ce dont vous aurez besoin pour jouer à "
 "Bataille pour Wesnoth. Elle couvre la manière de jouer et les mécanismes "
-"élémentaires du jeu. Pour en apprendre plus sur les tactiques à employer, vous "
-"pouvez consulter <ref>dst=basic_strategy text='Stratégie élémentaire'</ref> et "
-"<ref>dst=multiplayer_strategy text='Stratégie multijoueurs'</ref>. Gardez en "
-"tête que cela n'est qu'un survol. Pour les cas particuliers et les "
+"élémentaires du jeu. Pour en apprendre plus sur les tactiques à employer, "
+"vous pouvez consulter <ref>dst=basic_strategy text='Stratégie élémentaire'</"
+"ref> et <ref>dst=multiplayer_strategy text='Stratégie multijoueurs'</ref>. "
+"Gardez en tête que cela n'est qu'un survol. Pour les cas particuliers et les "
 "exceptions, veuillez vous reporter aux liens fournis.\n"
 "\n"
-"Pour commencer, l'idéal est de cliquer sur le bouton <italic>text=Didacticiel"
-"</italic> du menu principal. Cela vous conduira à un apprentissage "
-"interactif, qui vous enseignera les bases de Wesnoth. Après cela, il est "
-"recommandé de jouer en premier la campagne L'héritier du trône : "
-"sélectionner <italic>text=Campagne</italic> puis <italic>text='L'héritier "
-"du trône'</italic>. Comme Bataille pour Wesnoth peut être plutôt ardu, "
-"vous pourriez commencer en mode <italic>text=Facile</italic>.\n"
+"Pour commencer, l'idéal est de cliquer sur le bouton "
+"<italic>text=Didacticiel</italic> du menu principal. Cela vous conduira à un "
+"apprentissage interactif, qui vous enseignera les bases de Wesnoth. Après "
+"cela, il est recommandé de jouer en premier la campagne L'héritier du "
+"trône : sélectionner <italic>text=Campagne</italic> puis "
+"<italic>text='L'héritier du trône'</italic>. Comme Bataille pour Wesnoth "
+"peut être plutôt ardu, vous pourriez commencer en mode <italic>text=Facile</"
+"italic>.\n"
 "\n"
 "<img>src=help/tooltip.png align=right float=yes</img>Pendant le jeu, gardez "
-"à l'esprit que si vous glissez le curseur sur les différents éléments de "
-"la barre de menu sur la droite, une brève description apparaîtra expliquant "
-"l'élément. Cela est particulièrement utile lorsque vous rencontrez une nouvelle "
-"capacité pour la première fois."
+"à l'esprit que si vous glissez le curseur sur les différents éléments de la "
+"barre de menu sur la droite, une brève description apparaîtra expliquant "
+"l'élément. Cela est particulièrement utile lorsque vous rencontrez une "
+"nouvelle capacité pour la première fois."
 
 #: data/help.cfg:70
 msgid "Recruiting and Recalling"
@@ -217,37 +218,34 @@ msgid ""
 "Upkeep'</ref> for more information."
 msgstr ""
 "<img>src=help/recruit.png align=left float=yes</img>Au début de chaque "
-"bataille, et parfois pendant son déroulement, vous aurez besoin d'enrôler des "
-"unités dans votre armée. Pour recruter, vous devez avoir votre meneur "
-"(Konrad dans la campagne de L'héritier du trône) sur une case de donjon "
-"d'un château. "
-"Alors vous pourrez recruter soit en choisissant Recruter dans le menu ou par "
-"un clic-droit sur un hexagone et en sélectionnant <italic>text=Recruter"
-"</italic>. Cela amènera le menu d'enrôlement, qui liste les unités "
-"disponibles pour le recrutement, ainsi que leurs coûts en or. "
+"bataille, et parfois pendant son déroulement, vous aurez besoin d'enrôler "
+"des unités dans votre armée. Pour recruter, vous devez avoir votre meneur "
+"(Konrad dans la campagne de L'héritier du trône) sur une case de donjon d'un "
+"château. Alors vous pourrez recruter soit en choisissant Recruter dans le "
+"menu ou par un clic-droit sur un hexagone et en sélectionnant "
+"<italic>text=Recruter</italic>. Cela amènera le menu d'enrôlement, qui liste "
+"les unités disponibles pour le recrutement, ainsi que leurs coûts en or. "
 "Cliquer sur une unité pour voir ses caractéristiques sur la gauche, puis "
 "appuyer sur le bouton Recruter pour l'enrôler.\n"
 "\n"
 "Si vous faites un clic-droit sur un hexagone de château et sélectionnez "
 "Recruter, la nouvelle unité apparaîtra sur cette case. Autrement, elle "
-"apparaîtra sur une case libre près du donjon. Vous pouvez recruter "
-"autant d'unités qu'il y a de cases libres dans votre château, et "
-"vous ne pouvez pas dépenser plus d'or que vous n'en disposez en nouvelles "
-"unités.\n"
+"apparaîtra sur une case libre près du donjon. Vous pouvez recruter autant "
+"d'unités qu'il y a de cases libres dans votre château, et vous ne pouvez pas "
+"dépenser plus d'or que vous n'en disposez en nouvelles unités.\n"
 "\n"
 "Les unités recrutées arrivent avec deux <ref>dst=traits text=Traits</ref> "
 "aléatoires qui modifient leurs caractéristiques.\n"
 "\n"
-"Dans les scénarios ultérieurs, vous pourrez aussi Rappeler des survivants "
-"de batailles antérieures. Le rappel fonctionne à l'identique du "
-"recrutement, sauf qu'un rappel coûte toujours la somme de 20 pièces d'or et vous "
-"présente une liste de toutes les unités survivantes des scénarios "
-"précédents.\n"
+"Dans les scénarios ultérieurs, vous pourrez aussi Rappeler des survivants de "
+"batailles antérieures. Le rappel fonctionne à l'identique du recrutement, "
+"sauf qu'un rappel coûte toujours la somme de 20 pièces d'or et vous présente "
+"une liste de toutes les unités survivantes des scénarios précédents.\n"
 "\n"
 "Gardez à l'esprit que les unités ne coûtent pas seulement de l'or pour le "
-"recrutement et le rappel, elles nécessitent aussi de l'argent pour l'entretien. "
-"Voir <ref>dst=income_and_upkeep text='Revenu et Entretien'</ref> pour plus "
-"d'information."
+"recrutement et le rappel, elles nécessitent aussi de l'argent pour "
+"l'entretien. Voir <ref>dst=income_and_upkeep text='Revenu et Entretien'</"
+"ref> pour plus d'information."
 
 #: data/help.cfg:85 src/help.cpp:767 src/help.cpp:768
 msgid "Movement"
@@ -281,31 +279,31 @@ msgid ""
 msgstr ""
 "Le déplacement dans Bataille pour Wesnoth est simple : cliquez sur l'unité à "
 "déplacer, puis cliquez sur l'hexagone vers lequel vous voulez la déplacer. "
-"Une fois l'unité sélectionnée, tous les hexagones qu'elle peut "
-"atteindre ce tour-ci sont éclairés, et les autres sont grisés. Passer "
-"la souris sur une case grisée affiche le nombre de tours nécessaires pour "
-"l'atteindre, et cliquer dessus provoque le mouvement de l'unité vers cette "
-"case par le chemin le plus court à ce tour et aux suivants.\n"
+"Une fois l'unité sélectionnée, tous les hexagones qu'elle peut atteindre ce "
+"tour-ci sont éclairés, et les autres sont grisés. Passer la souris sur une "
+"case grisée affiche le nombre de tours nécessaires pour l'atteindre, et "
+"cliquer dessus provoque le mouvement de l'unité vers cette case par le "
+"chemin le plus court à ce tour et aux suivants.\n"
 "\n"
 "Chaque unité dispose d'un certain nombre de points de mouvement qui sont "
 "dépensés lors d'un déplacement vers un nouvel hexagone, fonction du <ref> "
 "dst=terrain text=Terrain</ref> de cette case. Par exemple, la prairie coûte "
-"presque toujours 1 point de mouvement. Le nombre exact de points "
-"dépensés pour pénétrer dans un hexagone dépend du type d'unité - en "
-"forêt, les unités elfes n'utilisent qu'1 point, la plupart des unités "
-"humaines et orcs en consomme 2, alors que les cavaliers en dépensent 3. Vous "
-"pouvez apprendre combien de points une unité nécessite pour entrer dans un "
-"type de terrain donné en effectuant un clic-droit sur celle-ci, en choisissant "
-"Description de l'unité, puis enfin en cliquant sur <italic>text='Modificateurs "
-"de Terrain'</italic>.\n"
+"presque toujours 1 point de mouvement. Le nombre exact de points dépensés "
+"pour pénétrer dans un hexagone dépend du type d'unité - en forêt, les unités "
+"elfes n'utilisent qu'1 point, la plupart des unités humaines et orcs en "
+"consomme 2, alors que les cavaliers en dépensent 3. Vous pouvez apprendre "
+"combien de points une unité nécessite pour entrer dans un type de terrain "
+"donné en effectuant un clic-droit sur celle-ci, en choisissant Description "
+"de l'unité, puis enfin en cliquant sur <italic>text='Modificateurs de "
+"Terrain'</italic>.\n"
 "\n"
-"Une autre chose à ne pas oublier lors des déplacements est la notion de <ref>"
-"dst=zones_of_control text='Zones de contrôle'</ref>. Chaque unité génère une "
-"zone de contrôle dans les hexagones qui l'entourent, et toute unité ennemie qui "
-"pénètre dans ces hexagones termine immédiatement son mouvement. Apprendre de "
-"quelle manière utiliser les zones de contrôle à votre avantage est une part "
-"importante de Wesnoth, puisque seuls les <ref>dst=ability_skirmish "
-"text='Tirailleurs'</ref> peuvent les ignorer."
+"Une autre chose à ne pas oublier lors des déplacements est la notion de "
+"<ref>dst=zones_of_control text='Zones de contrôle'</ref>. Chaque unité "
+"génère une zone de contrôle dans les hexagones qui l'entourent, et toute "
+"unité ennemie qui pénètre dans ces hexagones termine immédiatement son "
+"mouvement. Apprendre de quelle manière utiliser les zones de contrôle à "
+"votre avantage est une part importante de Wesnoth, puisque seuls les "
+"<ref>dst=ability_skirmish text='Tirailleurs'</ref> peuvent les ignorer."
 
 #: data/help.cfg:95
 msgid "Combat"
@@ -357,56 +355,54 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
-"Il y a deux types de combat dans Bataille pour Wesnoth, à courte et à "
-"longue portée, mais les deux se déroulent entre des unités adjacentes."
-"Un combat à courte portée implique habituellement des "
-"armes telles des épées, des haches ou des crocs, alors qu'un combat à longue "
-"portée utilise communément des armes telles des arcs, des javelots et des "
-"boules de feu. Le principe d'un combat est très simple; l'attaquant et le "
-"défenseur alternent leurs attaques jusqu'à ce que chacun ait utilisé son "
-"nombre alloué d'attaques.\n"
+"Il y a deux types de combat dans Bataille pour Wesnoth, à courte et à longue "
+"portée, mais les deux se déroulent entre des unités adjacentes.Un combat à "
+"courte portée implique habituellement des armes telles des épées, des haches "
+"ou des crocs, alors qu'un combat à longue portée utilise communément des "
+"armes telles des arcs, des javelots et des boules de feu. Le principe d'un "
+"combat est très simple; l'attaquant et le défenseur alternent leurs attaques "
+"jusqu'à ce que chacun ait utilisé son nombre alloué d'attaques.\n"
 "\n"
 "<header>text='Ordre et nombre d'attaques'</header>\n"
 "\n"
-"L'attaquant a l'initiative, puis le défenseur. Cela se poursuit en alternance "
-"jusqu'à ce que chaque unité ait usé de toutes ses attaques. Le nombre "
-"d'attaques d'une unité varie; par exemple, un guerrier elfe avec une attaque "
-"à l'épée 5-4 peut asséner 4 coups infligeant chacun 5 dommages, alors qu'un "
-"Grognard orc avec 9-2 ne dispose que de 2 coups (mais à 9 points de dégâts).\n"
+"L'attaquant a l'initiative, puis le défenseur. Cela se poursuit en "
+"alternance jusqu'à ce que chaque unité ait usé de toutes ses attaques. Le "
+"nombre d'attaques d'une unité varie; par exemple, un guerrier elfe avec une "
+"attaque à l'épée 5-4 peut asséner 4 coups infligeant chacun 5 dommages, "
+"alors qu'un Grognard orc avec 9-2 ne dispose que de 2 coups (mais à 9 points "
+"de dégâts).\n"
 "\n"
 "<header>text='Probabilité de toucher'</header>\n"
 "\n"
 "Avec deux exceptions, la probabilité de toucher une unité est uniquement "
 "fondée sur son taux de défense dans le <ref>dst=terrain text=Terrain</ref> "
 "sur lequel elle se tient. Cela peut être trouvé par un clic-droit sur une "
-"unité, en choissant Description de l'unité puis en cliquant sur <italic>"
-"text='Modificateurs de terrain'</italic>. Par exemple, les elfes ont une "
-"défense de 70% en forêt, ce qui signifie qu'une unité les attaquant n'a "
-"que 30% de chance de les atteindre. Par opposition, la probabilité de "
-"l'elfe de toucher l'attaquant en retour dépend du terrain sur lequel "
-"celui-ci se trouve.\n"
-"Il y a deux exceptions à cette règle : <ref>dst=magical_attacks "
-"text='les attaques magiques'</ref> et le <ref>dst=ability_marksman "
-"text='tireur d'élite'</ref>. Les attaques magiques ont toujours une "
-"probabilité de toucher de 70%, sans tenir compte du terrain, et les tireurs "
-"d'élite ont toujours au moins 60% de probabilité de toucher, sans tenir "
-"compte du terrain.\n"
+"unité, en choissant Description de l'unité puis en cliquant sur "
+"<italic>text='Modificateurs de terrain'</italic>. Par exemple, les elfes ont "
+"une défense de 70% en forêt, ce qui signifie qu'une unité les attaquant n'a "
+"que 30% de chance de les atteindre. Par opposition, la probabilité de l'elfe "
+"de toucher l'attaquant en retour dépend du terrain sur lequel celui-ci se "
+"trouve.\n"
+"Il y a deux exceptions à cette règle : <ref>dst=magical_attacks text='les "
+"attaques magiques'</ref> et le <ref>dst=ability_marksman text='tireur "
+"d'élite'</ref>. Les attaques magiques ont toujours une probabilité de "
+"toucher de 70%, sans tenir compte du terrain, et les tireurs d'élite ont "
+"toujours au moins 60% de probabilité de toucher, sans tenir compte du "
+"terrain.\n"
 "\n"
 "<header>text=Dommages</header>\n"
 "\n"
 "Chaque coup qui porte cause une quantité initiale de dommages fonction du "
 "type d'attaque. Par exemple, un guerrier elfe avec une attaque à l'épée 5-4 "
 "cause une base de 5 dommages. C'est habituellement modifié par deux "
-"facteurs : "
-"<ref>dst=damage_type_and_resistance text='la résistance'</ref> et "
-"<ref>dst=time_of_day text='la période de la journée'</ref>, "
-"lesquels sont expliqués ci-dessous.\n"
+"facteurs : <ref>dst=damage_type_and_resistance text='la résistance'</ref> et "
+"<ref>dst=time_of_day text='la période de la journée'</ref>, lesquels sont "
+"expliqués ci-dessous.\n"
 "\n"
 "Quelques unités possèdent des capacités spéciales qui affectent la quantité "
 "de dommages infligés au combat. La plus fréquente d'entre elles est la "
-"<ref>dst=ability_charge text=charge</ref>, qui double les dommages "
-"infligés, et par l'attaquant, et par le défenseur lorsque l'unité avec "
-"charge attaque."
+"<ref>dst=ability_charge text=charge</ref>, qui double les dommages infligés, "
+"et par l'attaquant, et par le défenseur lorsque l'unité avec charge attaque."
 
 #: data/help.cfg:116
 msgid "Damage Types and Resistance"
@@ -432,21 +428,21 @@ msgid ""
 msgstr ""
 "Dans Wesnoth, il y a trois types de dommages habituellement associés avec "
 "des attaques physiques : tranchant, perforant et contondant. Par ailleurs, "
-"il y a trois autres types de dommages communément associés avec des "
-"attaques magiques : feu, froid et sacré. Des unités différentes peuvent "
-"avoir des résistances qui modifient la quantité de dommages subis face à "
-"certains types de dommages.\n"
+"il y a trois autres types de dommages communément associés avec des attaques "
+"magiques : feu, froid et sacré. Des unités différentes peuvent avoir des "
+"résistances qui modifient la quantité de dommages subis face à certains "
+"types de dommages.\n"
 "\n"
 "Les résistances fonctionnent très simplement. Si une unité a 40% de "
-"résistance contre un type de dommage, alors elle subit 40% de dommages "
-"en moins sur un coup de ce type de dommage."
-"Il est également possible pour une unité d'avoir une faiblesse; si une "
-"unité a -100% de résistance contre un type de dommage, elle subira "
-"100% de dommages en plus sur une touche de ce type.\n"
+"résistance contre un type de dommage, alors elle subit 40% de dommages en "
+"moins sur un coup de ce type de dommage.Il est également possible pour une "
+"unité d'avoir une faiblesse; si une unité a -100% de résistance contre un "
+"type de dommage, elle subira 100% de dommages en plus sur une touche de ce "
+"type.\n"
 "\n"
 "Par exemple, les Squelettes sont hautement résistants aux dommages "
-"tranchants et perforants, mais sont vulnérables aux dommages contondants "
-"et de feu, et extrèmement vulnérables aux dommages sacrés."
+"tranchants et perforants, mais sont vulnérables aux dommages contondants et "
+"de feu, et extrèmement vulnérables aux dommages sacrés."
 
 #: data/help.cfg:126
 msgid "Time of Day"
@@ -483,9 +479,9 @@ msgid ""
 "mind that some scenarios take place underground, where it is perpetually "
 "night!"
 msgstr ""
-"Les parties de Wesnoth se déroulent habituellement avec un cycle régulier entre "
-"le jour et la nuit. L'heure courante peut être observée sous la mini-carte en haut "
-"à droite.\n"
+"Les parties de Wesnoth se déroulent habituellement avec un cycle régulier "
+"entre le jour et la nuit. L'heure courante peut être observée sous la mini-"
+"carte en haut à droite.\n"
 "\n"
 "Le cycle habituel jour/nuit est le suivant :\n"
 "\n"
@@ -494,24 +490,26 @@ msgstr ""
 "img>\n"
 "Après-midi <jump>to=160</jump><img>src=misc/schedule-afternoon.png "
 "align=here</img>\n"
-"Crépuscule <jump>to=160</jump><img>src=misc/schedule-dusk.png align=here</img> \n"
+"Crépuscule <jump>to=160</jump><img>src=misc/schedule-dusk.png align=here</"
+"img> \n"
 "Première veille <jump>to=160</jump><img>src=misc/schedule-firstwatch.png "
 "align=here</img>\n"
 "Seconde veille <jump>to=160</jump><img>src=misc/schedule-secondwatch.png "
 "align=here</img>\n"
 "\n"
-"Le matin et l'après-midi comptent comme la journée, les première et seconde veilles comme "
-"la nuit.\n"
+"Le matin et l'après-midi comptent comme la journée, les première et seconde "
+"veilles comme la nuit.\n"
 "\n"
-"L'heure courante affecte la quantité de dommages de certaines unités de la manière suivante -\n"
+"L'heure courante affecte la quantité de dommages de certaines unités de la "
+"manière suivante -\n"
 "\n"
 "Les unités loyales infligent +25% de dommages le jour et -25% la nuit.\n"
 "Les unités chaotiques infligent +25% de dommages la nuit et -25% le jour.\n"
 "Les unités neutres ne sont pas affectées par l'heure courante.\n"
 "\n"
-"<img>src=misc/schedule-underground.png align=right float=yes</img>Gardez à l'esprit "
-"que certains scénarios se déroulent sous terre, où il fait perpétuellement nuit !"
-
+"<img>src=misc/schedule-underground.png align=right float=yes</img>Gardez à "
+"l'esprit que certains scénarios se déroulent sous terre, où il fait "
+"perpétuellement nuit !"
 
 #: data/help.cfg:151
 msgid "Experience and Advancement"
@@ -532,22 +530,21 @@ msgid ""
 "Keep in mind that while most units have three levels, not all do, and that "
 "occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
 msgstr ""
-
 "Si les deux unités survivent à un combat, elles gagnent un nombre de points "
-"d'expérience égal au niveau de l'unité qu'elles ont combattue. Si une unité en tue "
-"une autre en combat, quelle qu'en soit la manière, elle reçoit plus d'expérience - "
-"4 pour une unité niveau 0, 8 pour le niveau 1, 16 pour le niveau 2, 24 pour le "
-"niveau 3 et ainsi de suite.\n"
+"d'expérience égal au niveau de l'unité qu'elles ont combattue. Si une unité "
+"en tue une autre en combat, quelle qu'en soit la manière, elle reçoit plus "
+"d'expérience - 4 pour une unité niveau 0, 8 pour le niveau 1, 16 pour le "
+"niveau 2, 24 pour le niveau 3 et ainsi de suite.\n"
 "\n"
 "Les unités nécessitent une certaine quantité d'expérience pour s'améliorer "
 "(c'est 20% de moins pour les unités avec le trait intelligence). Une fois ce "
 "montant atteint, elles avancent immédiatement au niveau suivant, se soignant "
-"complètement au cours du processus. Dans certains cas, le choix des '"
-"options d'avancement vous sera proposé.\n"
+"complètement au cours du processus. Dans certains cas, le choix des 'options "
+"d'avancement vous sera proposé.\n"
 "\n"
-"Gardez à l'esprit que si la plupart des unités ont trois niveaux, ce n'est pas le "
-"cas de toutes, et que des unités occasionnelles (telles les <ref>dst=unit_mage "
-"text=Mages</ref>) peuvent en avoir quatre."
+"Gardez à l'esprit que si la plupart des unités ont trois niveaux, ce n'est "
+"pas le cas de toutes, et que des unités occasionnelles (telles les "
+"<ref>dst=unit_mage text=Mages</ref>) peuvent en avoir quatre."
 
 #: data/help.cfg:161
 msgid "Healing"
@@ -577,25 +574,25 @@ msgid ""
 "Also, units heal fully between scenarios."
 msgstr ""
 "Au combat, vos unités vont inévitablement subir des dommaes. Wesnoth offre "
-"plusieurs solutions pour soigner vos unités, qui s'appliquent toutes au début de "
-"votre tour, avant que vous n'agissiez.\n"
+"plusieurs solutions pour soigner vos unités, qui s'appliquent toutes au "
+"début de votre tour, avant que vous n'agissiez.\n"
 "Repos : Une unité qui ne bouge ni n'attaque se soignera de 2 PV à son "
 "prochain tour.\n"
-"Villages : Une unité qui commence un tour dans un village se soignera de "
-"8 PV.\n"
+"Villages : Une unité qui commence un tour dans un village se soignera de 8 "
+"PV.\n"
 "<ref>dst=ability_regeneration text=Régénération</ref> : Certaines unités "
 "(telles les trolls) guériront automatiquement de 8 PV à chaque tour.\n"
-"Pouvoir de soin : Les unités avec la capacité <ref>dst=ability_heals text=soins"
-"</ref> soigneront tous les unités amicales adjacentes de 4 PV à chaque tour "
-"ou empêcheront le poison d'infliger des dommages.\n"
-"Pouvoir de guérison : Les unités avec la capacité <ref>dst=ability_cures text="
-"Guérison</ref> soigneront tous les unités amicales adjacentes de 8 PV à "
+"Pouvoir de soin : Les unités avec la capacité <ref>dst=ability_heals "
+"text=soins</ref> soigneront tous les unités amicales adjacentes de 4 PV à "
+"chaque tour ou empêcheront le poison d'infliger des dommages.\n"
+"Pouvoir de guérison : Les unités avec la capacité <ref>dst=ability_cures "
+"text=Guérison</ref> soigneront tous les unités amicales adjacentes de 8 PV à "
 "chaque tour ou purgeront une unité du Poison.\n"
 "\n"
 "Gardez en tête que si le repos peut être combiné avec d'autres formes de "
-"soins, les villages, la régénération et les soins/guérisons ne peuvent se cumuler "
-"entre eux. "
-"Par ailleurs, les unités guérissent complètement entre les scénarios."
+"soins, les villages, la régénération et les soins/guérisons ne peuvent se "
+"cumuler entre eux. Par ailleurs, les unités guérissent complètement entre "
+"les scénarios."
 
 #: data/help.cfg:177
 msgid "Income and Upkeep"
@@ -630,32 +627,31 @@ msgid ""
 msgstr ""
 "Dans Wesnoth, il ne suffit pas simplement d'enrôler des unités et de "
 "combattre. Vous devez aussi surveiller votre or, particulièrement en "
-"campagne, où vous pouvez conserver de l'or d'un scénario "
-"au suivant. Il y a deux aspects à cela; "
-"Le revenu et l'entretien.\n"
+"campagne, où vous pouvez conserver de l'or d'un scénario au suivant. Il y a "
+"deux aspects à cela; Le revenu et l'entretien.\n"
 "\n"
 "Le revenu est simple. Pour chaque village que vous contrôlez, vous gagnez "
 "une pièce d'or par tour. Ainsi, si vous avez dix villages, vous gagnerez "
-"normalement dix pièces d'or."
-"Malheureusement, vos coûts d'entretien sont soustraits de ce revenu, "
-"comme détaillé ci-dessous.\n"
+"normalement dix pièces d'or.Malheureusement, vos coûts d'entretien sont "
+"soustraits de ce revenu, comme détaillé ci-dessous.\n"
 "\n"
 "L'entretien est aussi plutôt simple. Chaque unité requiert un montant "
 "d'entretien égal à son niveau. Vous pouvez soutenir autant de niveaux "
 "d'unités que vous possédez de villages, gratuitement. Cependant, pour chaque "
 "niveau d'unité au-delà de ce nombre, vous devez payer une pièce d'or par "
-"tour. Par exemple, si vous avez douze niveaux d'unités et dix villages, "
-"vous devrez payer deux pièces d'or par tour en entretien.\n"
+"tour. Par exemple, si vous avez douze niveaux d'unités et dix villages, vous "
+"devrez payer deux pièces d'or par tour en entretien.\n"
 "\n"
 "Ces coûts sont soustraits de votre revenu, ainsi dans le cas de douze "
-"niveaux d'unités et de dix villages, votre revenu net sera de 8 pièces "
-"d'or par tour.\n"
+"niveaux d'unités et de dix villages, votre revenu net sera de 8 pièces d'or "
+"par tour.\n"
 "Il y a deux exceptions principales à l'entretien. Premièrement, des unités "
-"avec le trait loyal ne compteront toujours que comme unité de niveau un pour l'entretien, "
-"quel que soit leur niveau actuel. Deuxièmement, les unités avec lesquelles "
-"vous débutez le scénario (telles Konrad ou Delfador), ou les unités qui vous "
-"rejoignent au cours d'un scénario (tel l'écuyer dans le second niveau de "
-"L'héritier du trône) ne vous coûteront jamais rien en entretien."
+"avec le trait loyal ne compteront toujours que comme unité de niveau un pour "
+"l'entretien, quel que soit leur niveau actuel. Deuxièmement, les unités avec "
+"lesquelles vous débutez le scénario (telles Konrad ou Delfador), ou les "
+"unités qui vous rejoignent au cours d'un scénario (tel l'écuyer dans le "
+"second niveau de L'héritier du trône) ne vous coûteront jamais rien en "
+"entretien."
 
 #: data/help.cfg:191
 msgid "Wrap Up"
@@ -669,9 +665,9 @@ msgid ""
 "everything you need to know to play the Heir to the Throne scenario. Have "
 "fun, and good luck!"
 msgstr ""
-"Ceci conclut les bases de Wesnoth. Vous pourriez vouloir lire plus avant "
-"la stratégie de base, ou vous familiariser avec les <ref>dst=traits text="
-"traits</ref> et les <ref>dst=abilities text=Capacités</ref>, mais vous "
+"Ceci conclut les bases de Wesnoth. Vous pourriez vouloir lire plus avant la "
+"stratégie de base, ou vous familiariser avec les <ref>dst=traits "
+"text=traits</ref> et les <ref>dst=abilities text=Capacités</ref>, mais vous "
 "connaissez maintenant tout ce qu'il vous faut savoir pour jouer le scénario "
 "L'héritier du trône. Amusez-vous bien et bonne chance !"
 
@@ -749,16 +745,17 @@ msgstr ""
 "normale pour progresser de niveau.\n"
 "\n"
 "Les unités intelligentes sont très utiles au début d'une campagne parce "
-"qu'elles progressent rapidement vers des unités de plus haut niveau "
-"bien plus utiles. Plus tard dans la campagne, elles ne sont plus aussi utiles, et si "
-"vous disposez de nombreuses unités de haut niveau il est possible que vous "
-"préfériez rappeler des unités avec des traits plus utiles sur le ''long terme''.\n"
+"qu'elles progressent rapidement vers des unités de plus haut niveau bien "
+"plus utiles. Plus tard dans la campagne, elles ne sont plus aussi utiles, et "
+"si vous disposez de nombreuses unités de haut niveau il est possible que "
+"vous préfériez rappeler des unités avec des traits plus utiles sur le ''long "
+"terme''.\n"
 "\n"
 "\n"
 "<header>text=Fidèle</header>\n"
 "\n"
-"Les unités fidèles n'auront jamais qu'un coût d'entretien à un, quel que soit "
-"leur niveau.\n"
+"Les unités fidèles n'auront jamais qu'un coût d'entretien à un, quel que "
+"soit leur niveau.\n"
 "\n"
 "La fidélité n'a aucun effet sur une unité de niveau 1, ce que la rend futile "
 "dans le début de campgne. Cependant, une fois qu'une unité commence à monter "
@@ -768,8 +765,8 @@ msgstr ""
 "\n"
 "<header>text=Rapide</header>\n"
 "\n"
-"Les unités rapides disposent d'1 point de mouvement supplémentaire, mais "
-"ont 10% de PV en moins que la normale.\n"
+"Les unités rapides disposent d'1 point de mouvement supplémentaire, mais ont "
+"10% de PV en moins que la normale.\n"
 "\n"
 "Rapide est le trait le plus visible, particulièrement pour les unités lentes "
 "comme les trolls ou l'infanterie lourde. Les unités avec le trait rapide "
@@ -785,9 +782,8 @@ msgstr ""
 "\n"
 "Les unités robustes peuvent être utiles à toutes les périodes d'une campagne "
 "et c'est un trait utile pour toutes les unités, bien qu'il soit plus visible "
-"sur certaines unités que sur d'autres. Les unités "
-"robustes sont particulièrement adéquates pour tenir une position contre des "
-"opposants.\n"
+"sur certaines unités que sur d'autres. Les unités robustes sont "
+"particulièrement adéquates pour tenir une position contre des opposants.\n"
 "\n"
 "\n"
 "<header>text=Forte</header>\n"
@@ -798,8 +794,8 @@ msgstr ""
 "Utiles pour n'importe quelle unité de combat rapproché, la force est la plus "
 "efficaces pour les unités qui ont un nombre élevé de coups, tels les "
 "guerriers elfes. Les unités fortes sont très utiles lorsqu'un tout petit peu "
-"de dommages en plus est juste ce qu'il faut pour transformer un coup blessant "
-"en un coup mortel."
+"de dommages en plus est juste ce qu'il faut pour transformer un coup "
+"blessant en un coup mortel."
 
 #: data/items.cfg:264
 msgid ""
@@ -9969,9 +9965,9 @@ msgstr ""
 "je sens la présence du Rubis de Feu."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:404
+#, fuzzy
 msgid ""
-"You monster! You've betrayed our people- - to ally youself with with these "
-"Orcs?!"
+"You monster! You've betrayed our people- - to ally youself with these Orcs?!"
 msgstr ""
 "Monstre ! Vous avez trahi notre peuple -- oser s'allier avec les orcs !?"
 
@@ -14684,127 +14680,19 @@ msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
-#: data/translations/english.cfg:181
-msgid "Choose a File to Save As"
-msgstr "Choisir un fichier pour enregistrer"
-
-#: data/translations/english.cfg:182
-msgid "The map already exists. Do you want to overwrite it?"
-msgstr "La carte existe déja. Voulez vous l'écraser?"
-
-#: data/translations/english.cfg:183
-msgid "Which Player?"
-msgstr "Quel joueur ?"
-
-#: data/translations/english.cfg:184
-msgid "Which player should start here?"
-msgstr "Quel joueur commencera ici ?"
-
-#: data/translations/english.cfg:185
-msgid "Choose a Map to Load"
-msgstr "Choisir une carte à charger"
-
-#: data/translations/english.cfg:186
-msgid "The file does not contain a valid map."
-msgstr "Ce fichier ne contient pas de carte valide."
-
-#: data/translations/english.cfg:187
-msgid "'$filename' does not exist or can not be read as a file."
-msgstr "« $filename » n'existe pas ou ne peut pas être lu."
-
-#: data/translations/english.cfg:188
-msgid "Load failed: "
-msgstr "Chargement impossible : "
-
-#: data/translations/english.cfg:189
-msgid "You must have a hex selected on the board."
-msgstr "Vous devez sélectionner une case sur le plateau de jeu."
-
-#: data/translations/english.cfg:190
-msgid "Do you want to save the map before quitting?"
-msgstr "Voulez-vous sauvegarder la carte avant de quitter ?"
-
-#: data/translations/english.cfg:191
-msgid "Map saved."
-msgstr "Carte sauvée."
-
-#: data/translations/english.cfg:192
-msgid "Could not save the map: $msg"
-msgstr "Impossible de sauver la carte : $msg"
-
-#: data/translations/english.cfg:193
-msgid "Player "
-msgstr "Joueur "
-
-#: data/translations/english.cfg:194
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Vos modifications de la carte seront perdues. Continuer ?"
-
-#: data/translations/english.cfg:195
-msgid "Create New Map"
-msgstr "Créer une nouvelle carte"
-
-#: data/translations/english.cfg:196
-msgid "Generate New Map"
-msgstr "Créer une nouvelle carte"
-
-#: data/translations/english.cfg:197
-msgid "Generate Random Map"
-msgstr "Générer une carte aléatoirement"
-
-#: data/translations/english.cfg:198
-msgid "Random Generator Settings"
-msgstr "Paramètres du générateur aléatoire"
-
-#: data/translations/english.cfg:199
-msgid "Map creation failed."
-msgstr "Création de la carte impossible."
-
-#: data/translations/english.cfg:200 src/hotkeys.cpp:164
-msgid "Resize Map"
-msgstr "Redimensionner la carte"
-
-#: data/translations/english.cfg:201
-msgid "X-Axis"
-msgstr "Axe X"
-
-#: data/translations/english.cfg:202
-msgid "Y-Axis"
-msgstr "Axe Y"
-
-#: data/translations/english.cfg:203
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Inverser (ceci pourra changer les dimensions de la carte):"
-
-#: data/translations/english.cfg:204
-msgid "Edit"
-msgstr "Éditer"
-
-#: data/translations/english.cfg:205
-msgid "File"
-msgstr "Fichier"
-
-#: data/translations/english.cfg:206
-msgid "FG"
-msgstr "Devant"
-
-#: data/translations/english.cfg:207
-msgid "BG"
-msgstr "Fond"
-
-#: data/translations/english.cfg:209
+#: data/translations/english.cfg:179
 msgid "Next tip"
 msgstr "Astuce suivante"
 
-#: data/translations/english.cfg:210
+#: data/translations/english.cfg:180
 msgid "Tip of the Day"
 msgstr "Astuce du jour"
 
-#: data/translations/english.cfg:211
+#: data/translations/english.cfg:181
 msgid "Do not show tips"
 msgstr "Ne pas afficher les astuces"
 
-#: data/translations/english.cfg:212
+#: data/translations/english.cfg:182
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
@@ -14812,7 +14700,7 @@ msgstr ""
 "Les unités justes se battent mieux le jour et les unités chaotiques mieux la "
 "nuit. Les unités neutres ne sont pas affectées par la période du jour."
 
-#: data/translations/english.cfg:213
+#: data/translations/english.cfg:183
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
@@ -14820,7 +14708,7 @@ msgstr ""
 "Dans une campagne, vous pouvez utiliser des vétérans de vos précédents "
 "scénarios en utilisant l'option « rappeler »."
 
-#: data/translations/english.cfg:214
+#: data/translations/english.cfg:184
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
 "Different units have weaknesses against different types of attacks. Right-"
@@ -14834,7 +14722,7 @@ msgstr ""
 "'Résistance' pour voir la résistance d'une unité face aux différents type "
 "d'attaques."
 
-#: data/translations/english.cfg:215
+#: data/translations/english.cfg:185
 msgid ""
 "The terrain your units are on determines the chance your opponents have of "
 "hitting them in battle. The defensive rating for the currently selected unit "
@@ -14846,7 +14734,7 @@ msgstr ""
 "unité sélectionnée sur le terrain sélectionné est affiché en haut à droite "
 "de l'écran."
 
-#: data/translations/english.cfg:216
+#: data/translations/english.cfg:186
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -14858,7 +14746,7 @@ msgstr ""
 "vie en dessous de 1. Les unités empoisonnées peuvent être guéries en les "
 "plaçant dans un village ou à coté d'une unité ayant l'habilité «traitement»."
 
-#: data/translations/english.cfg:217
+#: data/translations/english.cfg:187
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' by the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -14868,7 +14756,7 @@ msgstr ""
 "«Rappeler» dans le menu de jeu. En rappelant toujours les mêmes unités vous "
 "pouvez former une armée expérimentée et puissante."
 
-#: data/translations/english.cfg:218
+#: data/translations/english.cfg:188
 msgid ""
 "All units have a Zone of Control in each of the hexes next to them. If a "
 "unit moves into an enemy's Zone of Control, it may not move any further that "
@@ -14878,7 +14766,7 @@ msgstr ""
 "sont adjacents. Si une unité se déplace dans la zone de contrôle ennemie "
 "elle ne peut faire aucun autre mouvement pour ce tour."
 
-#: data/translations/english.cfg:219
+#: data/translations/english.cfg:189
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks always have "
@@ -14889,14 +14777,14 @@ msgstr ""
 "attaques magiques ont toujours 70% de chances de toucher, et les tireurs "
 "d'élite ont au minimum 60% de chances de toucher."
 
-#: data/translations/english.cfg:220
+#: data/translations/english.cfg:190
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "Les unités stationnées dans un village regagnent 8 points de vie au début de "
 "leur tour."
 
-#: data/translations/english.cfg:221
+#: data/translations/english.cfg:191
 msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
@@ -14904,7 +14792,7 @@ msgstr ""
 "Les unités qui n'attaquent ni ne se déplacent durant leur tour se reposent "
 "et regagneront 2 points de vie au début de leur prochain tour."
 
-#: data/translations/english.cfg:222
+#: data/translations/english.cfg:192
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
@@ -14914,7 +14802,7 @@ msgstr ""
 "châteaux que sur la plupart des autres terrains, mais les unités montées ne "
 "gagnent aucun avantage défensif à se trouver dans un village ou un château."
 
-#: data/translations/english.cfg:223
+#: data/translations/english.cfg:193
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -14924,7 +14812,7 @@ msgstr ""
 "tranchantes ou contondantes, mais sont vulnérables aux attaques d'armes "
 "perçantes comme les arcs ou les lances."
 
-#: data/translations/english.cfg:224
+#: data/translations/english.cfg:194
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
@@ -14934,7 +14822,7 @@ msgstr ""
 "de l'expérience. Les unités qui tuent un ennemi gagnent 8 points "
 "d'expérience pour chaque niveau de l'unité tuée."
 
-#: data/translations/english.cfg:225
+#: data/translations/english.cfg:195
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
@@ -14942,7 +14830,7 @@ msgstr ""
 "Les elfes se déplacent et combattent très bien dans les forêts. Les nains se "
 "déplacent et combattent très bien dans les collines et les montagnes."
 
-#: data/translations/english.cfg:226
+#: data/translations/english.cfg:196
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
@@ -14951,7 +14839,7 @@ msgstr ""
 "conditions ou avec peu de troupes, attendez pour de meilleures conditions et "
 "alors seulement attaquez."
 
-#: data/translations/english.cfg:227
+#: data/translations/english.cfg:197
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -14960,14 +14848,14 @@ msgstr ""
 "d'envoyer quelques unités sacrifiables dans certaines des directions pour "
 "ralentir l'ennemi."
 
-#: data/translations/english.cfg:228
+#: data/translations/english.cfg:198
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 "N'ayez pas peur de battre en retraite pour vous regrouper, c'est souvent la "
 "clé de la victoire."
 
-#: data/translations/english.cfg:229
+#: data/translations/english.cfg:199
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map, and the number of turns you "
@@ -14979,7 +14867,7 @@ msgstr ""
 "d'avance que vous avez. Vous gagnerez toujours plus d'or ainsi qu'en "
 "capturant tous les villages et en attendant la fin du nombre de tour maximum."
 
-#: data/translations/english.cfg:230
+#: data/translations/english.cfg:200
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -14992,7 +14880,7 @@ msgstr ""
 "de vos alliés peuvent aussi vous faire de la place dans leur donjon afin que "
 "vous puissiez recruter de là."
 
-#: data/translations/english.cfg:231
+#: data/translations/english.cfg:201
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
@@ -15000,7 +14888,7 @@ msgstr ""
 "Les squelettes sont résistants aux attaques perçantes et tranchantes mais "
 "vulnérables aux attaques contondantes, au feu et aux attaques sacrées."
 
-#: data/translations/english.cfg:232
+#: data/translations/english.cfg:202
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
@@ -15008,7 +14896,7 @@ msgstr ""
 "Les unités avec la capacité de commandement aident les unités adjacentes de "
 "leur camp et de niveau inférieur au leur à mieux se battre."
 
-#: data/translations/english.cfg:233
+#: data/translations/english.cfg:203
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
@@ -15018,7 +14906,7 @@ msgstr ""
 "unité ennemie pourrait se déplacer dans ce village et vous attaquer, en "
 "profitant de la défense et des capacités de guérison du village."
 
-#: data/translations/english.cfg:234
+#: data/translations/english.cfg:204
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
@@ -15026,17 +14914,17 @@ msgstr ""
 "Déplacez le curseur de la souris sur une capacité ou un trait de caractère "
 "affiche une description de celui-ci."
 
-#: data/translations/english.cfg:235
+#: data/translations/english.cfg:205
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "Utilisez des lignes d'unités pour protéger les unités blessées et leur "
 "laisser le temps de récupérer."
 
-#: data/translations/english.cfg:236
+#: data/translations/english.cfg:206
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Lisez la liste des raccourcis claviers dans le menu des préférences."
 
-#: data/translations/english.cfg:237
+#: data/translations/english.cfg:207
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -15045,7 +14933,7 @@ msgstr ""
 "découvrez aucune information supplémentaire, vous pouvez annuler votre "
 "mouvement en pressant la touche «u»."
 
-#: data/translations/english.cfg:238
+#: data/translations/english.cfg:208
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -15053,7 +14941,7 @@ msgstr ""
 "Vous pouvez voir jusqu'où une unité ennemie peut se déplacer en plaçant le "
 "curseur de la souris sur celle-ci."
 
-#: data/translations/english.cfg:239
+#: data/translations/english.cfg:209
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
@@ -15061,7 +14949,7 @@ msgstr ""
 "Utilisez des guérisseurs pour soutenir vos attaques, ils gagneront la "
 "bataille sans avoir à frapper par eux-mêmes."
 
-#: data/translations/english.cfg:240
+#: data/translations/english.cfg:210
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also gives "
 "them one less attack than they would normally have. It is thus very "
@@ -15071,11 +14959,11 @@ msgstr ""
 "moins vite, mais aussi qu'elles perdent une attaque. Elle est donc très "
 "efficace contre les unités qui ont un petit nombre d'attaque très puissantes."
 
-#: data/translations/english.cfg:241
+#: data/translations/english.cfg:211
 msgid "Holy attacks are very powerful against undead."
 msgstr "Les attaques sacrées sont très puissantes contre les morts-vivants."
 
-#: data/translations/english.cfg:242
+#: data/translations/english.cfg:212
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -15083,7 +14971,7 @@ msgstr ""
 "Une unité récupère la totalité de ses points de vie lorsqu'elle avance d'un "
 "niveau. Utilisé à bon escient cela peut changer le cours d'une bataille."
 
-#: data/translations/english.cfg:243
+#: data/translations/english.cfg:213
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -18462,48 +18350,37 @@ msgstr "Charger un jeu"
 msgid "Choose the game to load"
 msgstr "Choisissez le jeu à charger"
 
-#: src/dialogs.cpp:567 src/multiplayer.cpp:121 src/show_dialog.cpp:442
-#: src/show_dialog.cpp:455
-msgid "Ok"
-msgstr "Ok"
-
-#: src/dialogs.cpp:568 src/multiplayer.cpp:120 src/multiplayer_client.cpp:119
-#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:456
-#: src/show_dialog.cpp:462
-msgid "Cancel"
-msgstr "Annuler"
-
-#: src/dialogs.cpp:617 src/dialogs.cpp:626
+#: src/dialogs.cpp:550 src/dialogs.cpp:559
 msgid "Profile"
 msgstr "Profile"
 
-#: src/dialogs.cpp:713 src/display.cpp:884 src/help.cpp:563
+#: src/dialogs.cpp:646 src/display.cpp:884 src/help.cpp:563
 #: src/playturn.cpp:1738
 msgid "level"
 msgstr "niveau"
 
-#: src/dialogs.cpp:734 src/display.cpp:902 src/help.cpp:617
+#: src/dialogs.cpp:667 src/display.cpp:902 src/help.cpp:617
 #: src/playturn.cpp:1902 src/unit.cpp:1034
 msgid "HP"
 msgstr "PV"
 
-#: src/dialogs.cpp:738 src/dialogs.cpp:746 src/display.cpp:906
+#: src/dialogs.cpp:671 src/dialogs.cpp:679 src/display.cpp:906
 #: src/display.cpp:914 src/playturn.cpp:1740 src/playturn.cpp:1903
 #: src/unit.cpp:1093
 msgid "XP"
 msgstr "XP"
 
-#: src/dialogs.cpp:751 src/display.cpp:918 src/help.cpp:618
+#: src/dialogs.cpp:684 src/display.cpp:918 src/help.cpp:618
 #: src/playturn.cpp:1904 src/unit.cpp:1070
 msgid "Moves"
 msgstr "Déplacements"
 
-#: src/dialogs.cpp:764 src/display.cpp:935 src/help.cpp:695
+#: src/dialogs.cpp:697 src/display.cpp:935 src/help.cpp:695
 #: src/playturn.cpp:618 src/reports.cpp:230
 msgid "melee"
 msgstr "corps-à-corps"
 
-#: src/dialogs.cpp:765 src/display.cpp:936 src/help.cpp:695
+#: src/dialogs.cpp:698 src/display.cpp:936 src/help.cpp:695
 #: src/playturn.cpp:618 src/reports.cpp:231
 msgid "ranged"
 msgstr "distant"
@@ -18597,11 +18474,11 @@ msgstr "Langue"
 msgid "Choose your preferred language"
 msgstr "Choisissez votre langue"
 
-#: src/game.cpp:1133
+#: src/game.cpp:1136
 msgid "Could not initialize video. Exiting.\n"
 msgstr "Impossible d'initialiser l'affichage. Arrêt du programme.\n"
 
-#: src/game.cpp:1135
+#: src/game.cpp:1138
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr "Impossible d'initialiser les polices. Arrêt du programme.\n"
 
@@ -18853,6 +18730,10 @@ msgstr "Coller"
 msgid "Revert from Disk"
 msgstr "Revenir à la version sur disque"
 
+#: src/hotkeys.cpp:164
+msgid "Resize Map"
+msgstr "Redimensionner la carte"
+
 #: src/hotkeys.cpp:165
 msgid "Flip Map"
 msgstr "Inverser la carte"
@@ -19014,6 +18895,16 @@ msgstr "Observateurs"
 #: src/multiplayer.cpp:118
 msgid "Allow users who are not playing to watch the game"
 msgstr "Permettre aux personnes qui ne jouent pas d'observer la partie"
+
+#: src/multiplayer.cpp:120 src/multiplayer_client.cpp:119
+#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:456
+#: src/show_dialog.cpp:462
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/multiplayer.cpp:121 src/show_dialog.cpp:442 src/show_dialog.cpp:455
+msgid "Ok"
+msgstr "Ok"
 
 #: src/multiplayer.cpp:123
 msgid "Regenerate"
@@ -19384,8 +19275,9 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
-"Les noms des sauvegardes de peuvent past contenir de double-points, de barres obliques ni "
-"de barres obliques inverses. Veuillez choisir un autre nom."
+"Les noms des sauvegardes de peuvent past contenir de double-points, de "
+"barres obliques ni de barres obliques inverses. Veuillez choisir un autre "
+"nom."
 
 #: src/playturn.cpp:1423
 msgid "Saved"
@@ -19940,6 +19832,84 @@ msgstr "Supprimer le fichier"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
+
+#~ msgid "Choose a File to Save As"
+#~ msgstr "Choisir un fichier pour enregistrer"
+
+#~ msgid "The map already exists. Do you want to overwrite it?"
+#~ msgstr "La carte existe déja. Voulez vous l'écraser?"
+
+#~ msgid "Which Player?"
+#~ msgstr "Quel joueur ?"
+
+#~ msgid "Which player should start here?"
+#~ msgstr "Quel joueur commencera ici ?"
+
+#~ msgid "Choose a Map to Load"
+#~ msgstr "Choisir une carte à charger"
+
+#~ msgid "The file does not contain a valid map."
+#~ msgstr "Ce fichier ne contient pas de carte valide."
+
+#~ msgid "'$filename' does not exist or can not be read as a file."
+#~ msgstr "« $filename » n'existe pas ou ne peut pas être lu."
+
+#~ msgid "Load failed: "
+#~ msgstr "Chargement impossible : "
+
+#~ msgid "You must have a hex selected on the board."
+#~ msgstr "Vous devez sélectionner une case sur le plateau de jeu."
+
+#~ msgid "Do you want to save the map before quitting?"
+#~ msgstr "Voulez-vous sauvegarder la carte avant de quitter ?"
+
+#~ msgid "Map saved."
+#~ msgstr "Carte sauvée."
+
+#~ msgid "Could not save the map: $msg"
+#~ msgstr "Impossible de sauver la carte : $msg"
+
+#~ msgid "Player "
+#~ msgstr "Joueur "
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Vos modifications de la carte seront perdues. Continuer ?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Créer une nouvelle carte"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Créer une nouvelle carte"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Générer une carte aléatoirement"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Paramètres du générateur aléatoire"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Création de la carte impossible."
+
+#~ msgid "X-Axis"
+#~ msgstr "Axe X"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Axe Y"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Inverser (ceci pourra changer les dimensions de la carte):"
+
+#~ msgid "Edit"
+#~ msgstr "Éditer"
+
+#~ msgid "File"
+#~ msgstr "Fichier"
+
+#~ msgid "FG"
+#~ msgstr "Devant"
+
+#~ msgid "BG"
+#~ msgstr "Fond"
 
 #~ msgid ""
 #~ "Bugg: Control of the seas! A small step for me, a great leap for all "
