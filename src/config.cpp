@@ -1,7 +1,8 @@
 /* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -16,9 +17,9 @@
 #include <algorithm>
 #include <sstream>
 #include "config.hpp"
+#include "log.hpp"
 #include "variable.hpp"
 #include "wassert.hpp"
-#include "log.hpp"
 
 #define ERR_CF lg::err(lg::config)
 
@@ -280,14 +281,6 @@ const config* config::find_child(const std::string& key,
 		return NULL;
 }
 
-#if 0
-bool config::has_value(const std::string& values, const std::string& val)
-{
-	const std::vector<std::string>& vals = split(values);
-	return std::count(vals.begin(),vals.end(),val) > 0;
-}
-#endif
-
 void config::clear()
 {
 	for(std::map<std::string,std::vector<config*> >::iterator i = children.begin(); i != children.end(); ++i) {
@@ -514,16 +507,8 @@ void config::apply_diff(const config& diff)
 
 bool operator==(const config& a, const config& b)
 {
-	if(a.values.size() != b.values.size()) {
+	if (a.values != b.values)
 		return false;
-	}
-
-	for(string_map::const_iterator i = a.values.begin(); i != a.values.end(); ++i) {
-		const string_map::const_iterator j = b.values.find(i->first);
-		if(j == b.values.end() || i->second != j->second) {
-			return false;
-		}
-	}
 
 	config::all_children_iterator x = a.ordered_begin(), y = b.ordered_begin();
 	while(x != a.ordered_end() && y != b.ordered_end()) {
