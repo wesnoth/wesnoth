@@ -343,13 +343,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::cerr << "done initializing display... " << (SDL_GetTicks() - ticks) << "\n";
 
-	//object that will make sure that labels are removed at the end of the scenario
-	const font::floating_label_context labels_manager;
-
-	const halo::manager halo_manager(gui);
-
-	gui.labels().read(*level);
-
 	std::cerr << "a... " << (SDL_GetTicks() - ticks) << "\n";
 
 	if(first_human_team != -1) {
@@ -373,6 +366,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		}
 	}
 
+	//object that will make sure that labels are removed at the end of the scenario
+	const font::floating_label_context labels_manager;
+	const halo::manager halo_manager(gui);
+	gui.labels().read(*level);
 	std::cerr << "c... " << (SDL_GetTicks() - ticks) << "\n";
 
 	const std::string& music = lvl["music"];
