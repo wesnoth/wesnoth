@@ -98,8 +98,8 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		unit_map::const_iterator ui = units.find(*g);
 		turn_data.move_unit_to_loc(ui,ui->second.get_goto(),false);
 	}
-
-	std::cerr << "done gotos\n";
+	
+	turn_data.start_interative_turn();
 
 	while(!turn_data.turn_over()) {
 
@@ -135,7 +135,7 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
     key_(key), gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), browse_(browse),
     left_button_(false), right_button_(false), middle_button_(false),
-	 minimap_scrolling_(false),
+	 minimap_scrolling_(false), start_ncmd_(-1),
     enemy_paths_(false), path_turns_(0), end_turn_(false), textbox_(textbox)
 {
 	enemies_visible_ = enemies_visible();
@@ -888,6 +888,11 @@ void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamem
 	gui_.invalidate_game_status();
 }
 
+void turn_info::start_interative_turn() {
+	std::cerr << "done gotos\n";
+	start_ncmd_ = recorder.ncommands();
+}
+
 hotkey::ACTION_STATE turn_info::get_action_state(hotkey::HOTKEY_COMMAND command) const
 {
 	switch(command) {
@@ -1130,6 +1135,14 @@ void turn_info::end_turn()
 	if(browse_)
 		return;
 
+	//Ask for confirmation if the player hasn't made any moves (other than gotos).
+	if(preferences::confirm_no_moves()) {
+		if (recorder.ncommands() == start_ncmd_) {
+			const int res = gui::show_dialog(gui_,NULL,"",string_table["end_turn_no_moves"], gui::YES_NO);
+			if (res != 0) return;
+		}
+	}
+	
 	// Ask for confirmation if units still have movement left
 	if(preferences::yellow_confirm()) {
 		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {

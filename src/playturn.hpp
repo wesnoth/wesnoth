@@ -97,6 +97,7 @@ public:
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 	
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move);
+	void start_interative_turn();
 
 	void save_game(const std::string& message);
 
@@ -205,6 +206,7 @@ private:
 	bool enemies_visible_;
 	
 	bool end_turn_;
+	int start_ncmd_;
 
 	std::string last_recruit_;
 	std::string last_search_;

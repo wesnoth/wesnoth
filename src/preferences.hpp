@@ -106,6 +106,7 @@ namespace preferences {
 	// Ask for end turn confirmation
 	bool yellow_confirm();
 	bool green_confirm();
+	bool confirm_no_moves();
 }
 
 #endif

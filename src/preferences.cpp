@@ -897,4 +897,11 @@ bool yellow_confirm()
 	return prefs["confirm_end_turn"] == "yellow";
 }
 
+bool confirm_no_moves()
+{
+	//This is very non-intrusive so it is on by default
+	const std::string confirmation = prefs["confirm_end_turn"];
+	return confirmation == "no_moves" || confirmation.empty();
+}
+
 }
