@@ -1,16 +1,17 @@
-# French translations for Battle for Wesnoth editor
+# French translations for the Battle for Wesnoth editor
 # vim:set encoding=utf-8:
-# Traduction anglaise de l'éditeur de Battle for Wesnoth.
+# Traduction anglaise de l'Ã©diteur de Battle for Wesnoth.
 # Copyright (C) 2004 THE Battle for Wesnoth'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-02 22:38+0200\n"
 "PO-Revision-Date: 2004-09-02 22:32+0200\n"
-"Last-Translator: Cédric Duval <wesnoth@ml.free.fr>\n"
+"Last-Translator: CÃ©dric Duval <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr "Fichier"
 
 #: data/themes/editor.cfg:225
 msgid "Edit"
-msgstr "Édition"
+msgstr "Ã‰diter"
 
 #: data/themes/editor.cfg:233
 msgid "Draw"
@@ -34,7 +35,7 @@ msgstr "Remplir"
 
 #: data/themes/editor.cfg:251
 msgid "Start P"
-msgstr "Départ"
+msgstr "DÃ©part"
 
 #: data/themes/editor.cfg:260
 msgid "Paste"
@@ -42,19 +43,19 @@ msgstr "Coller"
 
 #: src/editor/editor.cpp:310 src/editor/editor.cpp:387
 msgid "Choose a Map to Load"
-msgstr "Choisissez une carte à charger"
+msgstr "Choisissez une carte Ã  charger"
 
 #: src/editor/editor.cpp:314
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "La carte existe déjà. Souhaitez-vous l'écraser ?"
+msgstr "La carte existe dÃ©jÃ . Souhaitez-vous l'Ã©craserÂ ?"
 
 #: src/editor/editor.cpp:335
 msgid "Which Player?"
-msgstr "Quel joueur ?"
+msgstr "Quel joueurÂ ?"
 
 #: src/editor/editor.cpp:336
 msgid "Which player should start here?"
-msgstr "Quel joueur débutera ici ?"
+msgstr "Quel joueur dÃ©butera iciÂ ?"
 
 #: src/editor/editor.cpp:404 src/editor/editor.cpp:483
 msgid "The file does not contain a valid map."
@@ -62,31 +63,31 @@ msgstr "Ce fichier ne contient pas de carte valide."
 
 #: src/editor/editor.cpp:541
 msgid "'$filename' does not exist or can not be read as a file."
-msgstr "'$filename' n'est pas un fichier existant ou ne peut pas être lu."
+msgstr "'$filename' n'est pas un fichier existant ou ne peut pas Ãªtre lu."
 
 #: src/editor/editor.cpp:553
 msgid "Load failed: "
-msgstr "Le chargement a échoué : "
+msgstr "Le chargement a Ã©chouÃ©Â : "
 
 #: src/editor/editor.cpp:748
 msgid "You must have a hex selected on the board."
-msgstr "Vous devez avoir sélectionné un hexagone sur la carte."
+msgstr "Vous devez avoir sÃ©lectionnÃ© un hexagone sur la carte."
 
 #: src/editor/editor.cpp:1000
 msgid "Quit Editor"
-msgstr "Quitter l'éditeur"
+msgstr "Quitter l'Ã©diteur"
 
 #: src/editor/editor.cpp:1005
 msgid "Do you want to save the map before quitting?"
-msgstr "Voulez-vous sauvegarder la carte avant de quitter ?"
+msgstr "Souhaitez-vous sauvegarder la carte avant de quitterÂ ?"
 
 #: src/editor/editor.cpp:1025
 msgid "Map saved."
-msgstr "Carte sauvegardée."
+msgstr "Carte sauvegardÃ©e."
 
 #: src/editor/editor.cpp:1032
 msgid "Could not save the map: $msg"
-msgstr "Impossible de sauvegarder la carte : $msg"
+msgstr "Impossible de sauvegarder la carteÂ : $msg"
 
 #: src/editor/editor.cpp:1099
 msgid "Player"
@@ -94,23 +95,23 @@ msgstr "Joueur"
 
 #: src/editor/editor_dialogs.cpp:45
 msgid "Your modifications to the map will be lost.  Continue?"
-msgstr "Vos modifications à la carte seront perdues. Continuer ?"
+msgstr "Vos modifications Ã  la carte seront perdues. ContinuerÂ ?"
 
 #: src/editor/editor_dialogs.cpp:72 src/editor/editor_dialogs.cpp:191
 msgid "Create New Map"
-msgstr "Créer une nouvelle carte."
+msgstr "CrÃ©er une nouvelle carte"
 
 #: src/editor/editor_dialogs.cpp:91
 msgid "Generate New Map"
-msgstr "Générer une nouvelle carte"
+msgstr "GÃ©nÃ©rer une nouvell carte"
 
 #: src/editor/editor_dialogs.cpp:92
 msgid "Generate Random Map"
-msgstr "Générer une carte aléatoire"
+msgstr "GÃ©nÃ©rer une carte alÃ©atoire"
 
 #: src/editor/editor_dialogs.cpp:93
 msgid "Random Generator Settings"
-msgstr "Paramètres du générateur aléatoire"
+msgstr "ParamÃ¨tres du gÃ©nÃ©rateur alÃ©atoire"
 
 #: src/editor/editor_dialogs.cpp:94 src/editor/editor_dialogs.cpp:402
 msgid "Cancel"
@@ -118,7 +119,7 @@ msgstr "Annuler"
 
 #: src/editor/editor_dialogs.cpp:177
 msgid "Map creation failed."
-msgstr "La création de la carte a échoué."
+msgstr "La crÃ©ation de la carte a Ã©chouÃ©."
 
 #: src/editor/editor_dialogs.cpp:383 src/editor/editor_dialogs.cpp:441
 msgid "Resize Map"
@@ -138,7 +139,7 @@ msgstr "Axe Y"
 
 #: src/editor/editor_dialogs.cpp:486
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Retourner (cela peut modifier les dimensions de la carte) :"
+msgstr "Retourner (cela peut modifier les dimensions de la carte)Â :"
 
 #: src/editor/editor_palettes.cpp:313
 msgid "FG"
