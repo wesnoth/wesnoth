@@ -79,6 +79,37 @@ esac
 AC_SUBST([FULLLOCALEDIR])
 AC_SUBST([HAS_RELATIVE_LOCALEDIR])
 
+
+# icondir and desktopdir may differ from datadir (suggested by Gentoo)
+AC_ARG_WITH([icondir],
+		  [  --with-icondir=dir      change icon directory under gnome],
+		  [case "${withval}" in
+		   yes)
+				ICONDIR="$(datadir)/icons"
+				;;
+		   no)
+				;;
+		   *)
+				ICONDIR="${withval}"
+				;;
+		   esac])
+AC_SUBST([ICONDIR])
+
+AC_ARG_WITH([desktopdir],
+		  [  --with-desktopdir=dir   change desktop directory under gnome 2],
+		  [case "${withval}" in
+		   yes)	
+				DESKTOPDIR="$(datadir)/applications"
+				;;
+		   no)
+				;;
+		   *)
+				DESKTOPDIR="${withval}"
+				;;
+		   esac])
+AC_SUBST([DESKTOPDIR])
+
+
 AC_ARG_ENABLE([server],
 	      [  --enable-server         enable compilation of server],
 	      [server=$enableval],
@@ -102,17 +133,27 @@ AC_ARG_ENABLE([tools],
 AC_ARG_ENABLE([kde],,[AC_MSG_ERROR([Please use --with-kde instead of obsolete --enable-kde])])
 AC_ARG_WITH([kde],
 	      [  --with-kde              enable installation of icon and KDE menu entry],
-	      [kde=$enableval],
+	      [kde=$withval],
 	      [kde=no])
 
 AC_ARG_ENABLE([gnome],,[AC_MSG_ERROR([Please use --with-gnome instead of obsolete --enable-gnome])])
 AC_ARG_WITH([gnome],
 	      [  --with-gnome            enable installation of icon and GNOME menu entry],
-	      [gnome=$enableval],
+	      [gnome=$withval],
 	      [gnome=no])
 
+AC_ARG_ENABLE([gnome1],
+              [  --disable-gnome1        disable installation of icon and menu entry in GNOME1],
+              [gnome1=$enableval],
+              [gnome1=yes])
+
+AC_ARG_ENABLE([gnome2],
+		  [  --disable-gnome2        disable installation of icon and menu entry in GNOME2],
+		  [gnome2=$enableval],
+		  [gnome2=yes])
+			
 AC_ARG_ENABLE([wzip],
-	      [  --enable-wzip           enable compilation of wesnoth_zip program],
+	      [	 --enable-wzip           enable compilation of wesnoth_zip program],
 	      [wzip=$enableval],
 	      [wzip=no])
 
@@ -121,9 +162,6 @@ AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
-AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
-AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes])
-AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome1found = xno])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
@@ -134,6 +172,8 @@ AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 
 AC_PROG_CXX
 AC_PROG_CC
+AC_PROG_INSTALL
+
 have_libx11='no'
 if test "$with_x" != 'no'; then
 
@@ -309,6 +349,9 @@ fi
 AC_SUBST([KDE_DESKTOP])
 AC_SUBST([KDE_ICON])
 
+AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
+AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes && test x$gnome1 = xyes])
+AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome2 = xyes])
 
 #######################################################################
 # Checks for types.                                                   #
