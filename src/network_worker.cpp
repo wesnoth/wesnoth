@@ -54,8 +54,6 @@ int process_queue(void* data)
 		{
 			const threading::lock lock(*global_mutex);
 
-			LOG_NW << "thread " << reinterpret_cast<long>(data) << " looking for a buf to send: " << bufs.size() << "\n";
-
 			for(itor = bufs.begin(); itor != bufs.end(); ++itor) {
 				if(itor->processing_started) {
 					continue;
@@ -127,7 +125,7 @@ manager::manager(size_t nthreads) : active_(!managed)
 		cond = new threading::condition();
 
 		for(size_t n = 0; n != nthreads; ++n) {
-			threads.push_back(new threading::thread(process_queue,reinterpret_cast<void*>(n)));
+			threads.push_back(new threading::thread(process_queue,NULL));
 		}
 	}
 }
