@@ -27,9 +27,9 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 	const unsigned int distance = radius - 1;
 	std::vector<gamemap::location> res;
 	res.push_back(a);
-	for (int d = 1; d <= distance; d++) {
+	for (unsigned int d = 1; d <= distance; d++) {
 		gamemap::location loc = a;
-		int i;
+		unsigned int i;
 		// Get the starting point.
 		for (i = 1; i <= d; i++) {
 			loc = loc.get_direction(gamemap::location::NORTH);
@@ -39,7 +39,7 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 			{gamemap::location::SOUTH_EAST, gamemap::location::SOUTH, gamemap::location::SOUTH_WEST,
 			 gamemap::location::NORTH_WEST, gamemap::location::NORTH, gamemap::location::NORTH_EAST};
 		for (i = 0; i < 6; i++) {
-			for (int j = 1; j <= d; j++) {
+			for (unsigned int j = 1; j <= d; j++) {
 				loc = loc.get_direction(direction[i]);
 				if (map.on_board(loc)) {
 					res.push_back(loc);

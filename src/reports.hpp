@@ -37,7 +37,7 @@ namespace reports {
 		element() {}
 		explicit element(const std::string& text) : text(text) {}
 		element(const std::string& text, const std::string& image, const std::string& tooltip) :
-			text(text), image(image), tooltip(tooltip) {}
+			image(image), text(text), tooltip(tooltip) {}
 		
 		bool operator==(const element& o) const {
 			return o.text == text && o.image == image && o.tooltip == tooltip;

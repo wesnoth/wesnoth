@@ -111,7 +111,7 @@ public:
 	virtual void unit_list() {};
 	virtual void show_statistics() {};
 	virtual void label_terrain() {};
-	virtual void show_enemy_moves(bool ignore_units) {};
+	virtual void show_enemy_moves(bool /*ignore_units*/) {};
 	virtual void toggle_shroud_updates() {};
 	virtual void update_shroud_now() {};
 

@@ -17,7 +17,7 @@
 #include <cstdlib>
 #include <iostream>
 
-terrain_type::terrain_type() : images_(1,"void"), type_(" "), letter_(' '),
+terrain_type::terrain_type() : images_(1,"void"), letter_(' '), type_(" "),
                                height_adjust_(0), submerge_(0.0), equal_precedence_(false),
 							   heals_(false), village_(false), castle_(false), keep_(false)
 {}

@@ -139,7 +139,7 @@ void button::draw()
 
 	SDL_Surface* image = image_;
 	const int image_w = image_->w;
-	const int image_h = image_->h;
+	//const int image_h = image_->h;
 	int offset = 0;
 	switch(state_) {
 		case ACTIVE: image = activeImage_;
@@ -281,6 +281,8 @@ bool button::process(int mousex, int mousey, bool button)
 					state_ = NORMAL;
 				}
 			}
+		case PRESSED_ACTIVE:
+			break;
 		}
 	} else if(type_ == TYPE_CHECK) {
 

@@ -104,7 +104,7 @@ void map_editor::handle_event(const SDL_Event &event) {
 }
 
 void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
-									   const int mousex, const int mousey) {
+									   const int /*mousex*/, const int /*mousey*/) {
 	if (event.type == SDL_KEYDOWN) {
 		const SDLKey sym = event.keysym.sym;
 		// We must intercept escape-presses here because we don't want the
@@ -652,9 +652,9 @@ void map_editor::invalidate_all_and_adjacent(const std::set<gamemap::location> &
 	invalidate_all_and_adjacent(v);
 }
 
-void map_editor::right_button_down(const int mousex, const int mousey) {
+void map_editor::right_button_down(const int /*mousex*/, const int /*mousey*/) {
 }
-void map_editor::middle_button_down(const int mousex, const int mousey) {
+void map_editor::middle_button_down(const int /*mousex*/, const int /*mousey*/) {
 }
 
 
@@ -699,7 +699,7 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 }
 
 void map_editor::show_menu(const std::vector<std::string>& items_arg, const int xloc,
-						   const int yloc, const bool context_menu) {
+						   const int yloc, const bool /*context_menu*/) {
 	std::vector<std::string> items = items_arg;
 	// menu is what to display in the menu.
 	std::vector<std::string> menu;
@@ -731,7 +731,7 @@ void map_editor::show_menu(const std::vector<std::string>& items_arg, const int 
 	static const std::string style = "menu2";
 	const int res = gui::show_dialog(gui_, NULL, "", "", gui::MESSAGE, &menu, NULL, "",
 									 NULL, NULL, NULL, xloc, yloc, &style);
-	if(res < 0 || res >= items.size())
+	if(res < 0 || (unsigned)res >= items.size())
 		return;
 	const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(items[res]);
 	execute_command(cmd);
@@ -791,7 +791,7 @@ void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex)
 
 void map_editor::main_loop() {
 	const int scroll_speed = preferences::scroll_speed();
-	int last_brush_size = brush_.selected_brush_size();
+	unsigned int last_brush_size = brush_.selected_brush_size();
 	while (abort_ == DONT_ABORT) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);

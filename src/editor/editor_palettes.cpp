@@ -112,7 +112,7 @@ void terrain_palette::draw(bool force) {
 		const std::string filename = "terrain/" +
 			map_.get_terrain_info(terrain).default_image() + ".png";
 		scoped_sdl_surface image(image::get_image(filename, image::UNSCALED));
-		if(image->w != size_specs_.terrain_size || image->h != size_specs_.terrain_size) {
+		if((unsigned)image->w != size_specs_.terrain_size || (unsigned)image->h != size_specs_.terrain_size) {
 			image.assign(scale_surface(image, size_specs_.terrain_size,
 									   size_specs_.terrain_size));
 		}
@@ -165,7 +165,7 @@ unsigned int brush_bar::selected_brush_size() {
 void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 	int index = selected_index(mousex, mousey);
 	if(index >= 0) {
-		if (index != selected_) {
+		if ((unsigned)index != selected_) {
 			invalid_ = true;
 			selected_ = index;
 		}
@@ -199,7 +199,7 @@ void brush_bar::draw(bool force) {
 			std::cerr << "Image " << filename.str() << " not found." << std::endl;
 			continue;
 		}
-		if (image->w != size_ || image->h != size_) {
+		if ((unsigned)image->w != size_ || (unsigned)image->h != size_) {
 			image.assign(scale_surface(image, size_, size_));
 		}
 		SDL_Rect dstrect;
@@ -209,7 +209,7 @@ void brush_bar::draw(bool force) {
 		dstrect.h = image->h;
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
 		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h,
-				    (i == selected_brush_size()) ? 0xF000:0 , screen);
+				    ((unsigned)i == selected_brush_size()) ? 0xF000:0 , screen);
 		x += image->w;
 	}
 	update_rect(invalid_rect);
@@ -220,15 +220,15 @@ int brush_bar::selected_index(const int x, const int y) const {
 	const int bar_x = gui_.mapx() + size_specs_.brush_x;
 	const int bar_y = size_specs_.brush_y;
 
-	if ((x < bar_x || x > bar_x + size_ * total_brush_)
-	    || (y < bar_y || y > bar_y + size_)) {
+	if ((x < bar_x || (unsigned)x > bar_x + size_ * total_brush_)
+	    || (y < bar_y || (unsigned)y > bar_y + size_)) {
 		return -1;
 	}
 
-	for(unsigned int i = 0; i < total_brush_; i++) {
+	for(int i = 0; i < total_brush_; i++) {
 		const int px = bar_x + size_ * i;
 
-		if(x >= px && x <= px + size_ && y >= bar_y && y <= bar_y + size_) {
+		if(x >= px && (unsigned)x <= px + size_ && y >= bar_y && (unsigned)y <= bar_y + size_) {
 			return i;
 		}
 	}

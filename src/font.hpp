@@ -66,14 +66,13 @@ extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, BLAC
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
                    int x, int y, SDL_Surface* bg=NULL,
-                   bool use_tooltips=false, MARKUP use_markup=USE_MARKUP);
+                   bool use_tooltips=false, MARKUP use_markup=USE_MARKUP, int style=0);
 
 //function which returns the size of text if it were to be drawn.
-SDL_Rect text_area(const std::string& text, int size);
+SDL_Rect text_area(const std::string& text, int size, int style=0);
 
-// Returns a SDL surface containing only the text rendered in a given colour.
-SDL_Surface* get_rendered_text(const std::string& str, int size,      
-			       const SDL_Color& colour);
+// Returns a SDL surface containing the text rendered in a given colour.
+SDL_Surface* get_rendered_text(const std::string& text, int size, const SDL_Color& colour, int style=0);
   
 bool is_format_char(char c);
 

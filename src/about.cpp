@@ -232,7 +232,7 @@ void show_about(display& disp)
 
 	int mousex, mousey;
 	bool left_button;
-	int first_line_height;
+	int first_line_height = 0;
 
 	// the following rectangles define the top, middle and bottom of the background image
 	// the upper and lower part is later used to mask the upper and lower line of scrolling text

@@ -217,7 +217,7 @@ void team::team_info::write(config& cfg) const
 		cfg["music"] = music;
 }
 
-team::team(const config& cfg, int gold) : gold_(gold), info_(cfg), auto_shroud_updates_(true)
+team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true), info_(cfg)
 {
 	//gold is the maximum of 'gold' and what is given in the config file
 	if(info_.gold.empty() == false)

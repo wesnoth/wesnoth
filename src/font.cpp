@@ -100,6 +100,28 @@ void clear_fonts()
 	font_table.clear();
 }
 
+struct font_style_setter
+{
+	font_style_setter(TTF_Font* font, int style) : font_(font), old_style_(0)
+	{
+		if(style == 0) {
+			style = TTF_STYLE_NORMAL;
+		}
+
+		old_style_ = TTF_GetFontStyle(font_);
+		TTF_SetFontStyle(font_,style);
+	}
+
+	~font_style_setter()
+	{
+		TTF_SetFontStyle(font_,old_style_);
+	}
+
+private:
+	TTF_Font* font_;
+	int old_style_;
+};
+
 }
 
 namespace font {
@@ -169,8 +191,9 @@ const SDL_Color& get_side_colour(int side)
 
 namespace {
 SDL_Surface* render_text(TTF_Font* font,const std::string& str,
-						 const SDL_Color& colour)
+						 const SDL_Color& colour, int style)
 {
+	const font_style_setter style_setter(font,style);
 	switch(charset())
 	{
 	case CHARSET_UTF8:
@@ -236,8 +259,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 }
 
 
-SDL_Surface* get_rendered_text(const std::string& str, int size,
-			       const SDL_Color& colour)
+SDL_Surface* get_rendered_text(const std::string& str, int size, const SDL_Color& colour, int style)
 {
 	TTF_Font* const font = get_font(size);
 	if(font == NULL) {
@@ -245,9 +267,8 @@ SDL_Surface* get_rendered_text(const std::string& str, int size,
 		return NULL;
 	}
 
-	SDL_Surface *res = render_text(font,str,colour);
+	SDL_Surface *res = render_text(font,str,colour,style);
 	if(res == NULL) {
-		std::cerr << "Could not render ttf: '" << str << "'\n";
 		return NULL;
 	}
 	return res;
@@ -256,7 +277,7 @@ SDL_Surface* get_rendered_text(const std::string& str, int size,
 
 SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& colour, const std::string& text,
-		   int x, int y, SDL_Surface* bg, bool use_tooltips)
+		   int x, int y, SDL_Surface* bg, bool use_tooltips, int style)
 {
 	
 	TTF_Font* const font = get_font(size);
@@ -267,7 +288,7 @@ SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size
 		return res;
 	}
 
-	scoped_sdl_surface surface(render_text(font,text.c_str(),colour));
+	scoped_sdl_surface surface(render_text(font,text.c_str(),colour,style));
 	if(surface == NULL) {
 		std::cerr << "Could not render ttf: '" << text << "'\n";
 		SDL_Rect res;
@@ -298,7 +319,7 @@ SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size
 				std::fill(txt.end()-3,txt.end(),'.');
 			}
 
-			return draw_text_line(gui_surface,area,size,colour,txt,x,y,bg,false);
+			return draw_text_line(gui_surface,area,size,colour,txt,x,y,bg,false,style);
 		}
 
 		dest.w = area.x + area.w - dest.x;
@@ -324,9 +345,9 @@ SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size
 
 SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
                         const SDL_Color& colour, const std::string& text,
-                        int x, int y, SDL_Surface* bg, bool use_tooltips)
+                        int x, int y, SDL_Surface* bg, bool use_tooltips, int style)
 {
-	SDL_Surface * surface;
+	SDL_Surface* surface;
 	
 	if(gui == NULL) {
 		surface = NULL;
@@ -334,7 +355,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		surface = gui->video().getSurface();
 	}
 	
-	return draw_text_line(surface, area, size, colour, text, x, y, bg, use_tooltips);
+	return draw_text_line(surface, area, size, colour, text, x, y, bg, use_tooltips, style);
 }
 
 SDL_Rect text_area(const std::string& text, int size)
@@ -346,7 +367,7 @@ SDL_Rect text_area(const std::string& text, int size)
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
                    int x, int y, SDL_Surface* bg, bool use_tooltips,
-                   MARKUP use_markup)
+                   MARKUP use_markup, int style)
 {
 	//make sure there's always at least a space, so we can ensure
 	//that we can return a rectangle for height
@@ -372,7 +393,7 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 
 			config::unescape(new_string);
 
-			const SDL_Rect rect = draw_text_line(gui,area,sz,col,new_string,x,y,bg,use_tooltips);
+			const SDL_Rect rect = draw_text_line(gui,area,sz,col,new_string,x,y,bg,use_tooltips,style);
 			if(rect.w > res.w) {
 				res.w = rect.w;
 			}
@@ -606,7 +627,7 @@ SDL_Surface* floating_label::create_surface()
 			TTF_Font* const font = get_font(size);
 
 			if(str != "" && font != NULL) {
-				surfaces.push_back(shared_sdl_surface(font::render_text(font,str,colour)));
+				surfaces.push_back(shared_sdl_surface(font::render_text(font,str,colour,0)));
 			}
 		}
 

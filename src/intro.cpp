@@ -80,7 +80,7 @@ void show_intro(display& screen, const config& data,
 }
 
 bool show_intro_part(display& screen, const config& part, 
-					 game_state& state_of_game)
+					 game_state& /*state_of_game*/)
 {
 	std::cerr << "showing intro part\n";
 
@@ -171,15 +171,15 @@ bool show_intro_part(display& screen, const config& part,
 			int bytes = 1;
 			
 				if(charset() == CHARSET_UTF8) {
-					if(j[bytes-1] >= 0xC0U) 
+					if((unsigned)j[bytes-1] >= 0xC0U) 
 						bytes++;
-					if(j[bytes-1] >= 0xE0U)
+					if((unsigned)j[bytes-1] >= 0xE0U)
 						bytes++;
-					if(j[bytes-1] >= 0xF0U)
+					if((unsigned)j[bytes-1] >= 0xF0U)
 						bytes++;
-					if(j[bytes-1] >= 0xF8U)
+					if((unsigned)j[bytes-1] >= 0xF8U)
 						bytes++;
-					if(j[bytes-1] >= 0xFCU)
+					if((unsigned)j[bytes-1] >= 0xFCU)
 						bytes++;
 				}
 

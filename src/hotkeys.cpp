@@ -214,7 +214,7 @@ void save_hotkeys(config& cfg)
 		(*item)["ctrl"] = (i->ctrl) ? "yes" : "no";
 		(*item)["shift"] = (i->shift) ? "yes" : "no";
 	}
-};
+}
 
 std::vector<hotkey_item>& get_hotkeys()
 {
