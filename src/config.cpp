@@ -21,6 +21,7 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
+#include "game_config.hpp"
 #include "log.hpp"
 
 bool operator<(const line_source& a, const line_source& b)
@@ -44,26 +45,8 @@ line_source get_line_source(const std::vector<line_source>& line_src, int line)
 	return res;
 }
 
-}
-
-std::string read_file(const std::string& fname)
+std::string read_file_internal(const std::string& fname)
 {
-	//if we have a path to the data
-#ifdef WESNOTH_PATH
-
-	//convert any filepath which is relative
-	if(!fname.empty() && fname[0] != '/' && WESNOTH_PATH[0] == '/') {
-		std::cerr << "trying to read file: '" <<
-		           (WESNOTH_PATH + std::string("/") + fname) << "'\n";
-		const std::string& res =
-		           read_file(WESNOTH_PATH + std::string("/") + fname);
-		if(!res.empty()) {
-			std::cerr << "success\n";
-			return res;
-		}
-	}
-#endif
-
 	std::ifstream file(fname.c_str());
 	std::string res;
 	char c;
@@ -73,6 +56,26 @@ std::string read_file(const std::string& fname)
 	}
 
 	return res;
+}
+
+} //end anon namespace
+
+std::string read_file(const std::string& fname)
+{
+	//if we have a path to the data,
+	//convert any filepath which is relative
+	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
+		std::cerr << "trying to read file: '" <<
+		           game_config::path << "/" << fname << "'\n";
+		const std::string& res =
+		         read_file_internal(game_config::path + "/" + fname);
+		if(!res.empty()) {
+			std::cerr << "success\n";
+			return res;
+		}
+	}
+
+	return read_file_internal(fname);
 }
 
 void write_file(const std::string& fname, const std::string& data)

@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "dialogs.hpp"
 #include "display.hpp"
+#include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
@@ -148,6 +149,32 @@ int play_game(int argc, char** argv)
 	const sound::manager sound_manager;
 	const preferences::manager prefs_manager;
 
+	bool test_mode = false;
+
+	for(int arg = 1; arg != argc; ++arg) {
+		const std::string val(argv[arg]);
+		if(val == "--windowed" || val == "-w") {
+			preferences::set_fullscreen(false);
+		} else if(val == "--test" || val == "-t") {
+			test_mode = true;
+		} else if(val == "--debug" || val == "-d") {
+			game_config::debug = true;
+		} else if(val == "--help" || val == "-h") {
+			std::cout << "usage: " << argv[0]
+		              << " [options] [data-directory]\n";
+		} else if(val == "--version" || val == "-v") {
+			std::cout << "Battle for Wesnoth " << game_config::version
+			          << "\n";
+		} else {
+			if(!is_directory(val)) {
+				std::cerr << "Could not find directory '" << val << "'\n";
+				return 0;
+			}
+
+			game_config::path = val;
+		}
+	}
+
 	std::map<std::string,std::string> defines_map;
 	defines_map["NORMAL"] = "";
 	std::vector<line_source> line_src;
@@ -177,19 +204,6 @@ int play_game(int argc, char** argv)
 		const bool lang_res = set_language("en", game_config);
 		if(!lang_res) {
 			std::cerr << "Language data not found\n";
-		}
-	}
-
-	bool test_mode = false;
-
-	for(int arg = 1; arg != argc; ++arg) {
-		const std::string val(argv[arg]);
-		if(val == "-windowed") {
-			preferences::set_fullscreen(false);
-		} else if(val == "-test") {
-			test_mode = true;
-		} else if(val == "-debug") {
-			game_config::debug = true;
 		}
 	}
 

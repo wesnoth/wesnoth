@@ -33,6 +33,10 @@ public:
 	pixel_data get_rgb() const;
 
 	bool is_alias() const;
+
+	//whether the terrain's overlay precedence is equal (rather than higher
+	//than) the preceeding terrain
+	bool equal_precedence() const;
 private:
 	std::vector<std::string> images_;
 	std::string name_;
@@ -44,6 +48,8 @@ private:
 	char type_, letter_;
 
 	pixel_data colour_;
+
+	bool equal_precedence_;
 };
 
 void create_terrain_maps(std::vector<config*>& cfgs,

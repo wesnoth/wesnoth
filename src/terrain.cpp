@@ -17,7 +17,8 @@
 #include <cstdlib>
 #include <iostream>
 
-terrain_type::terrain_type() : images_(1,"void"), type_(' '), letter_(' ')
+terrain_type::terrain_type() : images_(1,"void"), type_(' '), letter_(' '),
+                               equal_precedence_(false)
 {}
 
 terrain_type::terrain_type(config& cfg)
@@ -35,6 +36,8 @@ terrain_type::terrain_type(config& cfg)
 		type_ = alias[0];
 
 	colour_.read(cfg);
+
+	equal_precedence_ = cfg.values["no_overlay"] == "true";
 }
 
 const std::string& terrain_type::image(int x, int y) const
@@ -73,6 +76,11 @@ pixel_data terrain_type::get_rgb() const
 bool terrain_type::is_alias() const
 {
 	return type_ != letter_;
+}
+
+bool terrain_type::equal_precedence() const
+{
+	return equal_precedence_;
 }
 
 void create_terrain_maps(std::vector<config*>& cfgs,

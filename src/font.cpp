@@ -15,6 +15,7 @@
 
 #include "config.hpp"
 #include "font.hpp"
+#include "game_config.hpp"
 #include "tooltips.hpp"
 
 #include <cstdio>
@@ -33,27 +34,27 @@ TTF_Font* open_font(const std::string& fname, int size)
 {
 	std::string name;
 
-#ifdef WESNOTH_PATH
-	name = std::string(WESNOTH_PATH) + "/fonts/" + fname;
-	std::cerr << "Opening font file: " << name << " ...\n";
+	if(game_config::path.empty() == false) {
+		name = game_config::path + "/fonts/" + fname;
+		std::cerr << "Opening font file: " << name << " ...\n";
 
-	if(read_file(name).empty()) {
+		if(read_file(name).empty()) {
+			name = "fonts/" + fname;
+			std::cerr << "Failed, now trying: " << name << " ...\n";
+			if(read_file(name).empty()) {
+				std::cerr << "Failed :(\n";
+				return NULL;
+			}
+		}
+	} else {
 		name = "fonts/" + fname;
-		std::cerr << "Failed, now trying: " << name << " ...\n";
+		std::cerr << "Opening font file: " << name << " ...\n";
+
 		if(read_file(name).empty()) {
 			std::cerr << "Failed :(\n";
 			return NULL;
 		}
 	}
-#else
-	name = "fonts/" + fname;
-	std::cerr << "Opening font file: " << name << " ...\n";
-
-	if(read_file(name).empty()) {
-		std::cerr << "Failed :(\n";
-		return NULL;
-	}
-#endif
 
 	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
 	if(font == NULL) {

@@ -357,12 +357,12 @@ unit_type::unit_type(config& cfg, const movement_type_map& mv_types,
 	//check if the images necessary for units exist
 #ifdef linux
 	struct stat stat_buf;
-#ifdef WESNOTH_PATH
-	if(::stat((WESNOTH_PATH + std::string("/images/") +
-	           cfg_.values["image"]).c_str(),&stat_buf) >= 0) {
-		return;
+	if(game_config::path.empty() == false) {
+		if(::stat((game_config::path + "/images/" +
+		           cfg_.values["image"]).c_str(),&stat_buf) >= 0) {
+			return;
+		}
 	}
-#endif
 
 	if(::stat(("images/" + cfg_.values["image"]).c_str(),&stat_buf) < 0) {
 		std::cerr << "image '" << cfg_.values["image"] << "' does not exist!\n";

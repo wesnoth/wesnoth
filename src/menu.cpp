@@ -44,8 +44,6 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 	if(top == NULL || bot == NULL || left == NULL || right == NULL)
 		return;
 
-	SDL_Surface* const scr = disp.video().getSurface();
-
 	scoped_sdl_surface top_image(scale_surface(top,w,top->h));
 
 	if(top_image.get() != NULL) {

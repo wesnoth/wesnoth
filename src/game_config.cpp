@@ -24,4 +24,10 @@ namespace game_config
 	const int recall_cost = 20;
 	const std::string version = "0.4.9-CVS";
 	bool debug = false;
+
+#ifdef WESNOTH_PATH
+	std::string path = WESNOTH_PATH;
+#else
+	std::string path = "";
+#endif
 }

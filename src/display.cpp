@@ -1288,10 +1288,15 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 	std::vector<gamemap::TERRAIN>::const_iterator terrain =
 	       std::find(precedence.begin(),precedence.end(),current_terrain);
 
-	if(terrain == precedence.end())
+	if(terrain == precedence.end()) {
 		terrain = precedence.begin();
-	else
+	} else {
 		++terrain;
+		while(terrain != precedence.end() &&
+		      map_.get_terrain_info(*terrain).equal_precedence()) {
+			++terrain;
+		}
+	}
 
 	for(; terrain != precedence.end(); ++terrain){
 		//find somewhere that doesn't have overlap to use as a starting point
@@ -1442,11 +1447,11 @@ SDL_Surface* display::getImage(const std::string& filename,
 		const std::string images_filename = images_path + filename;
 		SDL_Surface* surf = NULL;
 
-#ifdef WESNOTH_PATH
-		const std::string& fullpath = WESNOTH_PATH + std::string("/") +
-		                              images_filename;
-		surf = IMG_Load(fullpath.c_str());
-#endif
+		if(game_config::path.empty() == false) {
+			const std::string& fullpath = game_config::path + "/" +
+			                              images_filename;
+			surf = IMG_Load(fullpath.c_str());
+		}
 
 		if(surf == NULL)
 			surf = IMG_Load(images_filename.c_str());

@@ -28,6 +28,8 @@ namespace game_config
 	extern const std::string version;
 
 	extern bool debug;
+
+	extern std::string path;
 }
 
 #endif

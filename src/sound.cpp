@@ -10,6 +10,8 @@
 
    See the COPYING file for more details.
 */
+
+#include "game_config.hpp"
 #include "sound.hpp"
 
 #include "SDL_mixer.h"
@@ -84,10 +86,10 @@ void play_music(const std::string& file)
 		std::string filename;
 		Mix_Music* music = NULL;
 
-#ifdef WESNOTH_PATH
-		filename = WESNOTH_PATH + std::string("/") + music_prefix + file;
-		music = Mix_LoadMUS(filename.c_str());
-#endif
+		if(game_config::path.empty() == false) {
+			filename = game_config::path + "/" + music_prefix + file;
+			music = Mix_LoadMUS(filename.c_str());
+		}
 
 		if(music == NULL) {
 			filename = music_prefix + file;
@@ -128,10 +130,10 @@ void play_sound(const std::string& file)
 		std::string filename;
 		Mix_Chunk* sfx = NULL;
 
-#ifdef WESNOTH_PATH
-		filename = WESNOTH_PATH + std::string("/") + sound_prefix + file;
-		sfx = Mix_LoadWAV(filename.c_str());
-#endif
+		if(game_config::path.empty() == false) {
+			filename = game_config::path + "/" + sound_prefix + file;
+			sfx = Mix_LoadWAV(filename.c_str());
+		}
 
 		if(sfx == NULL) {
 			filename = sound_prefix + file;

@@ -39,6 +39,7 @@
 #include <iostream>
 
 #include "filesystem.hpp"
+#include "game_config.hpp"
 
 namespace {
 	const mode_t AccessMode = 00770;
@@ -55,18 +56,15 @@ void get_files_in_dir(const std::string& directory,
                       std::vector<std::string>* dirs,
                       FILE_NAME_MODE mode)
 {
-
 	//if we have a path to find directories in, then convert relative
 	//pathnames to be rooted on the wesnoth path
-#ifdef WESNOTH_PATH
-	if(!directory.empty() && directory[0] != '/' && WESNOTH_PATH[0] == '/') {
-		const std::string& dir = WESNOTH_PATH + std::string("/") + directory;
+	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
+		const std::string& dir = game_config::path + "/" + directory;
 		if(is_directory(dir)) {
 			get_files_in_dir(dir,files,dirs,mode);
 			return;
 		}
 	}
-#endif
 
 #ifdef _WIN32
 	_finddata_t fileinfo;
@@ -220,16 +218,10 @@ std::string get_user_data_dir()
 #endif
 }
 
-bool is_directory(const std::string& fname)
+namespace {
+
+bool is_directory_internal(const std::string& fname)
 {
-
-#ifdef WESNOTH_PATH
-	if(!fname.empty() && fname[0] != '/' && WESNOTH_PATH[0] == '/') {
-		if(is_directory(WESNOTH_PATH + std::string("/") + fname))
-			return true;
-	}
-#endif
-
 #ifdef _WIN32
 	_finddata_t info;
 	const long handle = _findfirst((fname + "/*").c_str(),&info);
@@ -249,4 +241,16 @@ bool is_directory(const std::string& fname)
 		return false;
 	}
 #endif
+}
+
+}
+
+bool is_directory(const std::string& fname)
+{
+	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
+		if(is_directory_internal(game_config::path + "/" + fname))
+			return true;
+	}
+
+	return is_directory_internal(fname);
 }
