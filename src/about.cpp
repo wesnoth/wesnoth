@@ -181,6 +181,11 @@ std::vector<std::string> get_text() {
 		"-   Stephan Grochtmann",
 		"+ ",
 
+		_("+Greek Translation"),
+		"-   Katerina Sykioti",
+		"-   Konstantinos Karasavvas",
+		"+ ",
+
 		_("+Hungarian Translation"),
 		"-   Khiraly",
 		"-   Széll Tamás (TomJoad)",
