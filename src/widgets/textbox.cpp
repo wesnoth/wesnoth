@@ -214,6 +214,13 @@ void textbox::set_wrap(bool val)
 	}
 }
 
+void textbox::set_location(const SDL_Rect& rect)
+{
+	text_pos_ = 0;
+
+	scrollarea::set_location(rect);
+}
+
 void textbox::scroll(int pos)
 {
 	yscroll_ = pos;

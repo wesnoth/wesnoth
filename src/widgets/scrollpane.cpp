@@ -46,8 +46,21 @@ scrollpane::scrollpane(display& d) : scrollarea(d), border_(5)
 void scrollpane::clear()
 {
 	content_.clear();
-	
 	update_content_size();
+}
+
+void scrollpane::set_location(SDL_Rect const& rect)
+{
+	scrollarea::set_location(rect);
+	set_shown_size(client_area().h);
+	update_widget_positions();
+}
+
+void scrollpane::hide(bool value)
+{
+	for(widget_map::iterator itor = content_.begin(); itor != content_.end(); ++itor) {
+		itor->second.w->hide(value);
+	}
 }
 
 void scrollpane::add_widget(widget* w, int x, int y, int z_order)
@@ -98,10 +111,14 @@ void scrollpane::scroll(int pos)
 		return;
 
 	content_pos_.y = pos;
+	update_widget_positions();
+}
+
+void scrollpane::update_widget_positions()
+{
+
 	widget_map::iterator itor; 
-
 	std::vector<bool> hidden(content_.size());
-
 	int i = 0;
 	for(itor = content_.begin(); itor != content_.end(); ++itor) {
 		hidden[i++] = itor->second.w->hidden();

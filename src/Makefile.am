@@ -56,6 +56,7 @@ wesnoth_SOURCES = about.cpp \
 		  intro.cpp \
 		  key.cpp \
 		  language.cpp \
+		  leader_list.cpp \
 		  log.cpp \
 		  map.cpp \
 		  map_label.cpp \
@@ -63,8 +64,10 @@ wesnoth_SOURCES = about.cpp \
 		  mapgen_dialog.cpp \
 		  mouse.cpp \
 		  multiplayer.cpp \
-		  multiplayer_client.cpp \
+		  multiplayer_ui.cpp \
+		  multiplayer_wait.cpp \
 		  multiplayer_connect.cpp \
+		  multiplayer_create.cpp \
 		  multiplayer_lobby.cpp \
 		  network.cpp \
 		  network_worker.cpp \
@@ -140,6 +143,7 @@ wesnoth_SOURCES = about.cpp \
 		  intro.hpp \
 		  key.hpp \
 		  language.hpp \
+		  leader_list.hpp \
 		  log.hpp \
 		  map.hpp \
 		  map_label.hpp \
@@ -147,8 +151,10 @@ wesnoth_SOURCES = about.cpp \
 		  mapgen_dialog.hpp \
 		  mouse.hpp \
 		  multiplayer.hpp \
-		  multiplayer_client.hpp \
+		  multiplayer_ui.hpp \
+		  multiplayer_wait.hpp \
 		  multiplayer_connect.hpp \
+		  multiplayer_create.hpp \
 		  multiplayer_lobby.hpp \
 		  network.hpp \
 		  network_worker.hpp \

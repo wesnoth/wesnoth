@@ -128,7 +128,7 @@ struct player_info
 
 //object which holds all the data needed to start a scenario.
 //i.e. this is the object serialized to disk when saving/loading a game.
-//is also the object which needs to be created to start a nwe game
+//is also the object which needs to be created to start a new game
 struct game_state
 {
 	game_state() : difficulty("NORMAL") {}

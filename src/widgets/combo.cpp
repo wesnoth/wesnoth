@@ -50,6 +50,11 @@ void combo::set_items(const std::vector<std::string>& items)
 	selected_ = -1;
 }
 
+size_t combo::items_size() const
+{
+	return items_.size();
+}
+
 void combo::set_selected_internal(int val)
 {
 	const size_t index = size_t(val);

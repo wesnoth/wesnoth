@@ -82,6 +82,7 @@ private:
 	const network::server_manager server_;
 
 	config login_response_;
+	config join_lobby_response_;
 
 	config initial_response_;
 	config old_initial_response_;
@@ -109,6 +110,8 @@ server::server(int port, input_stream& input) : net_manager_(5), server_(port), 
 {
 	login_response_.add_child("mustlogin");
 	login_response_["version"] = game_config::version;
+
+	join_lobby_response_.add_child("join_lobby");
 }
 
 bool server::is_ip_banned(const std::string& ip)
@@ -285,7 +288,6 @@ void server::run()
 
 			config data;
 			while((sock = network::receive_data(data)) != network::null_connection) {
-
 				metrics_.service_request();
 				process_data(sock,data,gamelist);
 			}
@@ -403,6 +405,8 @@ void server::process_login(const network::connection sock, const config& data, c
 		return;
 	}
 	
+	network::send_data(join_lobby_response_, sock);
+
 	config* const player_cfg = &initial_response_.add_child("user");
 
 	const player new_player(username,*player_cfg);
@@ -565,9 +569,19 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	}
 
 	//if the owner is banning someone from the game
-	if(g->is_owner(sock) && data.child("ban") != NULL) {
-		const config& ban = *data.child("ban");
-		const std::string& name = ban["username"];
+	if(g->is_owner(sock) && (data.child("ban") != NULL || data.child("kick") != NULL)) {
+		std::string name;
+		bool ban;
+		if (data.child("ban") != NULL) {
+			const config& u = *data.child("ban");
+			name = u["username"];
+			ban = true;
+		} else if (data.child("kick") != NULL) {
+			const config& u = *data.child("kick");
+			name = u["username"];
+			ban = false;
+		}
+	
 		player_map::iterator pl;
 		for(pl = players_.begin(); pl != players_.end(); ++pl) {
 			if(pl->second.name() == name) {
@@ -576,9 +590,14 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		}
 
 		if(pl->first != sock && pl != players_.end()) {
-			g->ban_player(pl->first);
-			const config& msg = construct_server_message("You have been banned",*g);
-			network::send_data(msg,pl->first);
+			if (ban) {
+				g->ban_player(pl->first);
+				const config& msg = construct_server_message("You have been banned",*g);
+				network::send_data(msg, pl->first);
+			} else {
+				g->remove_player(pl->first, false);
+			}
+
 			config leave_game;
 			leave_game.add_child("leave_game");
 			network::send_data(leave_game,pl->first);
@@ -608,6 +627,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	//if this is data describing changes to a game.
 	else if(g->is_owner(sock) && data.child("scenario_diff")) {
 		g->level().apply_diff(*data.child("scenario_diff"));
+		g->update_side_data();
 		g->send_data(data,sock);
 
 		const bool lobby_changes = g->describe_slots();
@@ -643,6 +663,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 			//record the full description of the scenario in g->level()
 			g->level() = data;
+			g->update_side_data();
 			g->describe_slots();
 
 			//send all players in the lobby the update to the list of games
@@ -652,6 +673,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//we've already initialized this scenario, but clobber its old
 			//contents with the new ones given here
 			g->level() = data;
+			g->update_side_data();
 		}
 
 		//send all players in the level, except the sender, the new data
@@ -863,7 +885,10 @@ int main(int argc, char** argv)
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
 				<< " [options]\n"
-				<< "  -p, --port     Binds the server to the specified port\n";
+				<< "      --fifo file            Sets the path for the FIFO used to communicate with the server\n"
+				<< "  -m, --max_packet_size n    Sets the maximal packet size to n\n" 
+				<< "  -p, --port                 Binds the server to the specified port\n"
+				<< "  -v, --version              Returns the server version\n";
 			return 0;
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth server " << game_config::version

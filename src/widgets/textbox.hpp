@@ -43,6 +43,9 @@ public:
 
 	void set_wrap(bool val);
 
+	void set_location(const SDL_Rect& rect);
+	using scrollarea::set_location;
+
 protected:
 	virtual void draw_contents();
 	virtual void set_inner_location(SDL_Rect const &);

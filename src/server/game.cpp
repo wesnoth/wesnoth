@@ -136,6 +136,7 @@ bool game::take_side(network::connection player, const config& cfg)
 
 				const bool res = take_side(player,new_cfg);
 
+#if 0
 				//if there's another side available, then tell the player that they've
 				//had their side reassigned
 				if(res) {
@@ -145,6 +146,7 @@ bool game::take_side(network::connection player, const config& cfg)
 					reassign["to"] = new_cfg["side"];
 					network::queue_data(response,player);
 				}
+#endif
 
 				return res;
 			}
@@ -160,6 +162,40 @@ bool game::take_side(network::connection player, const config& cfg)
 	}
 
 	return true;
+}
+
+void game::update_side_data()
+{
+	sides_taken_.clear();
+	sides_.clear();
+	
+	const config::child_itors level_sides = level_.child_range("side");
+
+	//for each player:
+	// * Find the player name
+	// * Find the side this player name corresponds to
+	for(std::vector<network::connection>::const_iterator player = players_.begin();
+			player != players_.end(); ++player) {
+
+		player_map::const_iterator info = player_info_->find(*player);
+		if (info == player_info_->end()) {
+			std::cerr << "Error: unable to find player info for connection " << *player << "\n";
+			continue;
+		}
+
+		config::child_iterator sd;
+		for(sd = level_sides.first; sd != level_sides.second; ++sd) {
+			if ((**sd)["id"] == info->second.name()) {
+				break;
+			}
+		}
+
+		if (sd != level_sides.second) {
+			//this user has a side. Updates the variables accordingly.
+			sides_taken_.insert((**sd)["side"]);
+			sides_[*player] = (**sd)["side"];
+		}
+	}
 }
 
 const std::string& game::transfer_side_control(const config& cfg)
@@ -231,16 +267,16 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 size_t game::available_slots() const
 {
-	size_t total_slots = 0;
+	size_t available_slots = 0;
 	const config::child_list& sides = level_.get_children("side");
 	for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
 		std::cerr << "side controller: '" << (**i)["controller"] << "'\n";
-		if((**i)["controller"] == "network") {
-			++total_slots;
+		if((**i)["controller"] == "network" && (**i)["id"].empty()) {
+			++available_slots;
 		}
 	}
 
-	return total_slots - sides_taken_.size();
+	return available_slots;
 }
 
 bool game::describe_slots()
@@ -378,7 +414,7 @@ void game::add_player(network::connection player)
 	network::queue_data(history_,player);
 }
 
-void game::remove_player(network::connection player)
+void game::remove_player(network::connection player, bool notify_creator)
 {
 	const std::vector<network::connection>::iterator itor =
 	             std::find(players_.begin(),players_.end(),player);
@@ -389,7 +425,7 @@ void game::remove_player(network::connection player)
 	std::map<network::connection,std::string>::iterator side = sides_.find(player);
 	if(side != sides_.end()) {
 		//send the host a notification of removal of this side
-		if(players_.empty() == false) {
+		if(notify_creator && players_.empty() == false) {
 			config drop;
 			drop["side_drop"] = side->second;
 			network::queue_data(drop,players_.front());

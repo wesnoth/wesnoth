@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C)
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -11,593 +11,335 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
-#include "cursor.hpp"
-#include "events.hpp"
-#include "filesystem.hpp"
-#include "font.hpp"
-#include "language.hpp"
-#include "log.hpp"
-#include "image.hpp"
-#include "key.hpp"
-#include "log.hpp"
-#include "mapgen.hpp"
 #include "multiplayer.hpp"
+#include "multiplayer_ui.hpp"
 #include "multiplayer_connect.hpp"
-#include "multiplayer_client.hpp"
-#include "network.hpp"
-#include "playlevel.hpp"
+#include "multiplayer_wait.hpp"
+#include "multiplayer_lobby.hpp"
+#include "multiplayer_create.hpp"
 #include "preferences.hpp"
-#include "replay.hpp"
-#include "scoped_resource.hpp"
-#include "show_dialog.hpp"
-#include "util.hpp"
-#include "widgets/textbox.hpp"
-#include "widgets/button.hpp"
-#include "widgets/combo.hpp"
-#include "widgets/menu.hpp"
-#include "widgets/slider.hpp"
-#include "widgets/widget.hpp"
+#include "game_config.hpp"
+#include "log.hpp"
+#include "playlevel.hpp"
+#include "network.hpp"
 
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-
-#define LOG_G lg::info(lg::general)
 #define LOG_NW lg::info(lg::network)
-#define LOG_DP lg::info(lg::display)
-#define ERR_CF lg::err(lg::config)
 
-network_game_manager::~network_game_manager()
+namespace {
+
+class network_game_manager
 {
-	if(network::nconnections() > 0) {
-		LOG_NW << "sending leave_game\n";
-		config cfg;
-		cfg.add_child("leave_game");
-		network::send_data(cfg);
-		LOG_NW << "sent leave_game\n";
-	}
-}
-
-multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
-                              display& disp, game_data& units_data,
-                              const config& cfg, game_state& state, bool server, const std::string& controller)
-        : disp_(disp), units_data_(units_data), cfg_(cfg), state_(state), server_(server), level_(NULL), map_selection_(-1),
-		  maps_menu_(NULL), turns_slider_(NULL), village_gold_slider_(NULL), xp_modifier_slider_(NULL),
-		  fog_game_(NULL), shroud_game_(NULL), observers_game_(NULL),
-          cancel_game_(NULL), launch_game_(NULL), regenerate_map_(NULL), generator_settings_(NULL),
-		  era_combo_(NULL), vision_combo_(NULL), name_entry_(NULL), generator_(NULL), controller_(controller)
-{
-	LOG_DP << "setup dialog ctor\n";
-
-	state_.players.clear();
-	state_.variables.clear();
-
-	//build the list of scenarios to play
-	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
-
-	map_options_ = user_maps_;
-
-	const config::child_list& levels = cfg.get_children("multiplayer");
-	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j){
-		map_options_.push_back((**j)["name"]);
-	}
-
-	//add the 'load game' option
-	map_options_.push_back(_("Load Game..."));
-
-	//create the scenarios menu
-	maps_menu_.assign(new gui::menu(disp_,map_options_));
-	maps_menu_->set_numeric_keypress_selection(false);
-
-	turns_slider_.assign(new gui::slider(disp_));
-	turns_slider_->set_min(20);
-	turns_slider_->set_max(100);
-	turns_slider_->set_value(preferences::turns());
-	turns_slider_->set_help_string(_("The maximum turns the game will go for"));
-
-	village_gold_slider_.assign(new gui::slider(disp_));
-	village_gold_slider_->set_min(1);
-	village_gold_slider_->set_max(5);
-	village_gold_slider_->set_value(preferences::village_gold());
-	village_gold_slider_->set_help_string(_("The amount of income each village yields per turn"));
-
-	xp_modifier_slider_.assign(new gui::slider(disp_));
-	xp_modifier_slider_->set_min(25);
-	xp_modifier_slider_->set_max(200);
-	xp_modifier_slider_->set_value(preferences::xp_modifier());
-	xp_modifier_slider_->set_increment(10);
-	xp_modifier_slider_->set_help_string(_("The amount of experience a unit needs to advance"));
-
-	fog_game_.assign(new gui::button(disp_,_("Fog Of War"),gui::button::TYPE_CHECK));
-	fog_game_->set_check(preferences::fog());
-	fog_game_->set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
-
-	shroud_game_.assign(new gui::button(disp_,_("Shroud"),gui::button::TYPE_CHECK));
-	shroud_game_->set_check(preferences::shroud());
-	shroud_game_->set_help_string(_("The map is unknown until your units explore it"));
-
-	observers_game_.assign(new gui::button(disp_,_("Observers"),gui::button::TYPE_CHECK));
-	observers_game_->set_check(preferences::allow_observers());
-	observers_game_->set_help_string(_("Allow users who are not playing to watch the game"));
-
-	cancel_game_.assign(new gui::button(disp_,_("Cancel")));
-	launch_game_.assign(new gui::button(disp_,_("Ok")));
-
-	regenerate_map_.assign(new gui::button(disp_,_("Regenerate")));
-
-	generator_settings_.assign(new gui::button(disp_,_("Settings...")));
-
-	//The possible vision settings
-	std::vector<std::string> vision_types;
-	vision_types.push_back(_("Share View"));
-	vision_types.push_back(_("Share Maps"));
-	vision_types.push_back(_("Share None"));
-	vision_combo_.assign(new gui::combo(disp_,vision_types));
-
-	//the possible eras to play
-	const config::child_list& era_list = cfg.get_children("era");
-	std::vector<std::string> eras;
-	for(config::child_list::const_iterator er = era_list.begin(); er != era_list.end(); ++er) {
-		eras.push_back((**er)["name"]);
-	}
-
-	if(eras.empty()) {
-		gui::show_dialog(disp_,NULL,"",_("No multiplayer sides."),gui::OK_ONLY);
-		ERR_CF << "no eras found\n";
-		throw config::error("no eras found");
-	}
-
-	era_combo_.assign(new gui::combo(disp_,eras));
-	era_combo_->set_selected(preferences::era());
-
-	LOG_DP << "end setup dialog ctor\n";
-}
-
-void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
-{
-	LOG_DP << "setup dialog set_area\n";
-
-	area_ = area;
-
-	map_selection_ = -1;
-
-	// Dialog width and height
-	int width = int(area.w);
-	int height = int(area.h);
-	const int left = area.x;
-	const int top = area.y;
-	const int border_size = 6;
-	const int right = left + width;
-	const int bottom = top + height;
-
-	int xpos = left + border_size;
-	int ypos = top + gui::draw_dialog_title(left,top,&disp_,_("Create Game")).h + border_size;
-
-	//Name Entry
-	ypos += font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-	                        _("Name of game:"),xpos,ypos).h + border_size;
-	string_map i18n_symbols;
-	i18n_symbols["login"] = preferences::login();
-	name_entry_.assign(new gui::textbox(disp_,width-20,vgettext("$login's game", i18n_symbols)));
-	name_entry_->set_location(xpos,ypos);
-	name_entry_->set_dirty();
-
-	ypos += name_entry_->location().h + border_size;
-
-	const int minimap_width = 200;
-
-	//the map selection menu goes near the middle of the dialog, to the right of
-	//the minimap
-	const int map_label_height = font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-	                                             _("Map to play:"),xpos + minimap_width + border_size,ypos).h;
-
-	maps_menu_->set_max_width(area.x + area.w - (xpos + minimap_width) - 250);
-	maps_menu_->set_max_height(area.y + area.h - (ypos + map_label_height));
-	maps_menu_->set_items(map_options_);
-	maps_menu_->set_location(xpos + minimap_width + border_size,ypos + map_label_height + border_size);
-	maps_menu_->move_selection(preferences::map());
-	maps_menu_->set_dirty();
-
-	SDL_Rect rect;
-
-	//the sliders and other options on the right side of the dialog
-	rect.x = xpos + minimap_width + maps_menu_->width() + border_size;
-	rect.y = ypos;
-	rect.w = maximum<int>(0,right - border_size - rect.x);
-	//a font sized "12" isn't necessarily 12 pixel high.
-	rect.h = font::get_max_height(font::SIZE_SMALL);
-
-	turns_restorer_ = surface_restorer(&disp_.video(),rect);
-
-	rect.y += rect.h + border_size + 1;
-
-	turns_slider_->set_location(rect);
-	turns_slider_->set_dirty();
-
-	//Village Gold
-	rect.y += rect.h + border_size + 1;
-
-	village_gold_restorer_ = surface_restorer(&disp_.video(),rect);
-
-	rect.y += rect.h + border_size + 1;
-
-	village_gold_slider_->set_location(rect);
-	village_gold_slider_->set_dirty();
-
-	//Experience Modifier
-	rect.y += rect.h + border_size + 1;
-
-	xp_restorer_ = surface_restorer(&disp_.video(),rect);
-
-	rect.y += rect.h + border_size + 1;
-
-	xp_modifier_slider_->set_location(rect);
-	xp_modifier_slider_->set_dirty();
-
-	//FOG of war
-	rect.y += rect.h + border_size + 1;
-
-	fog_game_->set_location(rect.x,rect.y);
-	fog_game_->set_dirty();
-
-	rect.y += fog_game_->location().h + border_size + 1;
-
-	//Shroud
-	shroud_game_->set_location(rect.x,rect.y);
-	shroud_game_->set_dirty();
-
-	rect.y += shroud_game_->location().h + border_size;
-
-	//Observers
-	observers_game_->set_location(rect.x,rect.y);
-	observers_game_->set_dirty();
-
-	rect.y += observers_game_->location().h + border_size;
-
-	//Ally shared view settings
-	vision_combo_->set_location(rect.x,rect.y);
-
-	rect.y += vision_combo_->height() + border_size;
-
-	gui::button* left_button = launch_game_;
-	gui::button* right_button = cancel_game_;
-
-#ifdef OK_BUTTON_ON_RIGHT
-	std::swap(left_button,right_button);
-#endif
-
-	//Buttons
-	right_button->set_location(right - right_button->width() - gui::ButtonHPadding,bottom - right_button->height() - gui::ButtonVPadding);
-	left_button->set_location(right - right_button->width() - left_button->width() - gui::ButtonHPadding*2,bottom - left_button->height() - gui::ButtonVPadding);
-
-	cancel_game_->set_dirty();
-	launch_game_->set_dirty();
-	
-
-	regenerate_map_->set_location(rect.x,rect.y);
-
-	rect.y += regenerate_map_->location().h + border_size;
-
-	generator_settings_->set_location(rect.x,rect.y);
-
-	//player amount number background
-	SDL_Rect player_num_rect = {xpos+minimap_width/2 - 30,ypos+minimap_width,100,25};
-	playernum_restorer_ = surface_restorer(&disp_.video(),player_num_rect);
-
-	SDL_Rect era_rect = {xpos,player_num_rect.y+player_num_rect.h + border_size,50,20};
-	era_rect = font::draw_text(&disp_,era_rect,font::SIZE_SMALL,font::GOOD_COLOUR,_("Era:"),
-	                           era_rect.x,era_rect.y);
-	
-	era_combo_->set_location(era_rect.x+era_rect.w+border_size,era_rect.y);
-
-	SDL_Rect minimap_rect = {xpos,ypos,minimap_width,minimap_width};
-	minimap_restorer_ = surface_restorer(&disp_.video(),minimap_rect);
-
-	name_entry_->hide(false);
-	maps_menu_->hide(false);
-	turns_slider_->hide(false);
-	village_gold_slider_->hide(false);
-	xp_modifier_slider_->hide(false);
-	fog_game_->hide(false);
-	shroud_game_->hide(false);
-	observers_game_->hide(false);
-	vision_combo_->hide(false);
-	right_button->hide(false);
-	left_button->hide(false);
-	regenerate_map_->hide(false);
-	generator_settings_->hide(false);
-	era_combo_->hide(false);
-
-	LOG_DP << "setup dialog end set_area\n";
-}
-
-void multiplayer_game_setup_dialog::clear_area()
-{
-	name_entry_->hide();
-	maps_menu_->hide();
-	turns_slider_->hide();
-	village_gold_slider_->hide();
-	xp_modifier_slider_->hide();
-	fog_game_->hide();
-	shroud_game_->hide();
-	observers_game_->hide();
-	vision_combo_->hide();
-	launch_game_->hide();
-	cancel_game_->hide();
-	regenerate_map_->hide();
-	generator_settings_->hide();
-	era_combo_->hide();
-}
-
-lobby::RESULT multiplayer_game_setup_dialog::process()
-{
-	CKey key;
-
-	name_entry_->process();
-	maps_menu_->process();
-
-	if(cancel_game_->pressed() || key[SDLK_ESCAPE]) 
-		return lobby::QUIT;
-
-	if(launch_game_->pressed() || maps_menu_->double_clicked()) {
-		if (!name_entry_->text().empty())
-			return lobby::CREATE;
-		else
-			gui::show_dialog(disp_, NULL, "", _("You must enter a name."), gui::OK_ONLY);
-	}
-
-	events::raise_process_event();
-	events::raise_draw_event();
-	SDL_Rect const &screen_area = disp_.screen_area();
-	display *disp = &disp_;
-
-	//Turns per game
+public:
+	~network_game_manager()
 	{
-		const int cur_turns = turns_slider_->value();
-		turns_restorer_.restore();
+		if(network::nconnections() > 0) {
+			LOG_NW << "sending leave_game\n";
+			config cfg;
+			cfg.add_child("leave_game");
+			network::send_data(cfg);
+			LOG_NW << "sent leave_game\n";
+		}
+	};
+};
 
-		std::stringstream turns_str;
-		turns_str << _("Turns: ");
-		if (cur_turns < 100)
-			turns_str << cur_turns;
-		else
-			turns_str << _("unlimited");
 
-		SDL_Rect const &rect = turns_restorer_.area();
-		font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
-		                turns_str.str(), rect.x, rect.y);
+void run_lobby_loop(display& disp, mp::ui& ui)
+{
+	disp.video().modeChanged();
+	bool first = true;
+
+	while (ui.get_result() == mp::ui::CONTINUE) {
+		if (disp.video().modeChanged() || first) {
+			SDL_Rect lobby_pos = { 0, 0, disp.video().getx(), disp.video().gety() };
+			ui.set_location(lobby_pos);
+			first = false;
+		}
+
+		events::raise_process_event();
+		events::raise_draw_event();
+		events::pump();
+
+		ui.process_network();
+
+		disp.video().flip();
+		SDL_Delay(20);
+	}
+}
+
+enum server_type {
+	ABORT_SERVER,
+	WESNOTHD_SERVER,
+	SIMPLE_SERVER
+};
+
+server_type open_connection(display& disp, const std::string& host)
+{
+	std::string h = host;
+
+	if(h.empty()) {
+		h = preferences::network_host();
+		const int res = gui::show_dialog(disp, NULL, _("Connect to Host"), "",
+				gui::OK_CANCEL, NULL, NULL,
+				_("Choose host to connect to") + std::string(": "), &h);
+
+		if(res != 0 || h.empty()) {
+			return ABORT_SERVER;
+		}
 	}
 
-	//Villages can produce between 1 and 10 gold a turn
-	{
-		const int village_gold = village_gold_slider_->value();
-		village_gold_restorer_.restore();
+	network::connection sock;
 
-		std::stringstream gold_str;
-		gold_str << _("Village Gold: ") << village_gold;
+	const int pos = h.find_first_of(":");
+ 
+ 	if(pos == -1) {
+ 		sock = network::connect(h);
+ 	} else {
+ 		sock = network::connect(h.substr(0,pos),
+				lexical_cast_default<int>(h.substr(pos+1), 15000));
+ 	}
 
-		SDL_Rect const &rect = village_gold_restorer_.area();
-		font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
-		                gold_str.str(), rect.x, rect.y);
+	if (!sock) {
+		return ABORT_SERVER;
 	}
 
-	//Experience modifier
-	{
-		const int xpmod = xp_modifier_slider_->value();
-		xp_restorer_.restore();
+	preferences::set_network_host(h);
+ 
+	config data;
+	network::connection data_res = gui::network_data_dialog(disp,_("Connecting to remote host..."),data);
+	mp::check_response(data_res, data);
 
-		std::stringstream xp_str;
-		xp_str << _("Experience Requirements: ") << xpmod << '%';
-
-		SDL_Rect const &rect = xp_restorer_.area();
-		font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
-		                xp_str.str(), rect.x, rect.y);
+	const std::string& version = data["version"];
+	if(version.empty() == false && version != game_config::version) {
+		throw network::error("The server requires version '" + version
+		      + "' while you are using version '" + game_config::version + "'");
 	}
 
-	bool map_changed = map_selection_ != maps_menu_->selection();
-	map_selection_ = maps_menu_->selection();
+	//if we got a direction to login
+	if(data.child("mustlogin")) {
 
-	if(map_changed) {
-		generator_.assign(NULL);
+		bool first_time = true;
+		config* error = NULL;
 
-		SDL_Rect minimap_rect = minimap_restorer_.area();
-		tooltips::clear_tooltips(minimap_rect);
-
-		const size_t select = size_t(maps_menu_->selection());
-
-		if(select < user_maps_.size()) {
-			const config* const generic_multiplayer = cfg_.child("generic_multiplayer");
-			if(generic_multiplayer != NULL) {
-				scenario_data_ = *generic_multiplayer;
-				scenario_data_["map_data"] = read_map(user_maps_[select]);
-				level_ = &scenario_data_;
+		do {
+			if(error != NULL) {
+				gui::show_dialog(disp,NULL,"",(*error)["message"],gui::OK_ONLY);
 			}
 
-		} else if(select != maps_menu_->nitems()-1) {
-			const size_t index = select - user_maps_.size();
-			const config::child_list& levels = cfg_.get_children("multiplayer");
+			std::string login = preferences::login();
 
-			if(index < levels.size()) {
-
-				scenario_data_ = *levels[index];
-				level_ = &scenario_data_;
-
-				std::string& map_data = scenario_data_["map_data"];
-				if (map_data.empty() && !scenario_data_["map"].empty()) {
-					map_data = read_map(scenario_data_["map"]);
+			if(!first_time) {	
+				const int res = gui::show_dialog(disp, NULL, "",
+						_("You must log in to this server"), gui::OK_CANCEL,
+						NULL, NULL, _("Login") + std::string(": "), &login);
+				if(res != 0 || login.empty()) {
+					return ABORT_SERVER;
 				}
 
-				//if the map should be randomly generated
-				if (!scenario_data_["map_generation"].empty()) {
-					generator_.assign(create_map_generator(scenario_data_["map_generation"],
-					                  scenario_data_.child("generator")));
-				}
-
-				if (!scenario_data_["description"].empty()) {
-					tooltips::add_tooltip(minimap_rect,scenario_data_["description"]);
-				}
+				preferences::set_login(login);
 			}
-		} else {
 
-			scenario_data_.clear();
+			first_time = false;
 
-			playernum_restorer_.restore();
-			minimap_restorer_.restore();
+			config response;
+			response.add_child("login")["username"] = login;
+			network::send_data(response);
+	
+			data_res = network::receive_data(data, 0, 3000);
+			if(!data_res) {
+				throw network::error(_("Connection timed out"));
+			}
 
-			SDL_Rect const &rect = playernum_restorer_.area();
-			font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
-				        _("Players: ") + std::string(1, '?'), rect.x, rect.y);
-		}
+			LOG_NW << "login response: '" << data.write() << "'\n";
+
+			error = data.child("error");
+		} while(error != NULL);
 	}
 
-	if(generator_ != NULL && generator_->allow_user_config() && generator_settings_->pressed()) {
-		generator_->user_config(disp_);
-		map_changed = true;
+	if (data.child("join_lobby")) {
+		return WESNOTHD_SERVER;
+	} else {
+		return SIMPLE_SERVER;
 	}
 
-	if(generator_ != NULL && level_ != NULL && (map_changed || regenerate_map_->pressed())) {
-		const cursor::setter cursor_setter(cursor::WAIT);
+}
 
-		//generate the random map
-		scenario_data_ = generator_->create_scenario(std::vector<std::string>());
-		level_ = &scenario_data_;
-		map_changed = true;
 
-		//set the scenario to have placing of sides based on the terrain they prefer
-		(*level_)["modify_placing"] = "true";
-	}
+// The multiplayer logic consists in 4 screens:
+//
+// lobby <-> create <-> connect <-> (game)
+//       <------------> wait    <-> (game)
+//
+// To each of this screen corresponds a dialog, each dialog being defined in
+// the multiplayer_(screen) file.
+//
+// The functions enter_(screen)_mode are simple functions that take care of
+// creating the dialogs, then, according to the dialog result, of calling other
+// of those screen functions.
 
-	//if the map has changed and "Load Map" is not selected
-	if(map_changed && level_ != NULL) {
-		generator_settings_->hide(generator_ == NULL);
-		regenerate_map_->hide(generator_ == NULL);
+void enter_wait_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, bool observe)
+{
+	mp::ui::result res;
+	config level;
+	game_state state;
+	network_game_manager m;
 
-		const std::string& map_data = (*level_)["map_data"];
-
-		gamemap map(cfg_,map_data);
-
-		//if there are less sides in the configuration than there are starting
-		//positions, then generate the additional sides
-		const int map_positions = map.num_valid_starting_positions();
-
-		for(int pos = level_->get_children("side").size(); pos < map_positions; ++pos) {
-			config& side = level_->add_child("side");
-			side["enemy"] = "1";
-			char buf[50];
-			sprintf(buf,"%d",(pos+1));
-			side["side"] = buf;
-			side["team_name"] = buf;
-			side["canrecruit"] = "1";
-			side["controller"] = "human";
-		}
-
-		//if there are too many sides, remove some
-		while(level_->get_children("side").size() > map_positions) {
-			level_->remove_child("side",level_->get_children("side").size()-1);
-		}
-
-		SDL_Rect minimap_rect = minimap_restorer_.area();
-		const surface mini(image::getMinimap(minimap_rect.w, minimap_rect.h, map, 0));
-
-		if(mini != NULL) {
-			SDL_BlitSurface(mini, NULL, disp_.video().getSurface(), &minimap_rect);
-			update_rect(minimap_rect);
+	{
+		mp::wait ui(disp, game_config, data, chat, gamelist);
 		
-			//Display the number of players
-			const int nsides = level_->get_children("side").size();
-			playernum_restorer_.restore();
+		ui.join_game(observe);
 
-			std::stringstream players;
-			players << _("Players: ") << nsides;
+		run_lobby_loop(disp, ui);
+		res = ui.get_result();
 
-			SDL_Rect const &rect = playernum_restorer_.area();
-			font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
-			                players.str(), rect.x, rect.y);
+		if (res == mp::ui::PLAY) {
+			ui.start_game();
+			level = ui.get_level();
+			state = ui.get_state();
 		}
 	}
 
-	return lobby::CONTINUE;
+	switch (res) {
+	case mp::ui::PLAY:
+		play_level(data, game_config, &level, disp.video(), state, std::vector<config*>());
+		recorder.clear();
+
+		break;
+	case mp::ui::QUIT:
+	default:
+		break;
+	}
 }
 
-void multiplayer_game_setup_dialog::start_game()
+void enter_connect_mode(display& disp, const config& game_config, game_data& data, 
+		mp::chat& chat, config& gamelist, const mp::create::parameters& params,
+		mp::controller default_controller, bool is_server)
 {
-	LOG_G << "calling start_game()\n";
+	mp::ui::result res;
+	config level;
+	game_state state;
 	const network::manager net_manager;
-	const network::server_manager server_man(15000,server_ ? network::server_manager::TRY_CREATE_SERVER : network::server_manager::NO_SERVER);
+	const network::server_manager serv_manager(15000, is_server ? 
+			network::server_manager::TRY_CREATE_SERVER :
+			network::server_manager::NO_SERVER);
+	network_game_manager m;
 
-	if(server_ && server_man.is_running() == false) {
-		gui::show_dialog(disp_,NULL,_("Warning"),_("The game was unable to bind to the port needed to host games over the network. Network players will be unable to connect to this game"),
-		                 gui::OK_ONLY);
+	{
+		mp::connect ui(disp, game_config, data, chat, gamelist, params, default_controller);
+		run_lobby_loop(disp, ui);
+
+		res = ui.get_result();
+
+		// start_game() updates the parameters to reflect game start,
+		// so it must be called before get_level() 
+		if (res == mp::ui::PLAY) {
+			ui.start_game();
+			level = ui.get_level();
+			state = ui.get_state();
+		}
 	}
 
-	turns_restorer_ = surface_restorer();
-	village_gold_restorer_ = surface_restorer();
-	xp_restorer_ = surface_restorer();
-	playernum_restorer_ = surface_restorer();
-	minimap_restorer_ = surface_restorer();
+	switch (res) {
+	case mp::ui::PLAY:
+		play_level(data, game_config, &level, disp.video(), state, std::vector<config*>());
+		recorder.clear();
 
-	std::cerr << "loading connector...\n";
-	//Connector
-	mp_connect connector(disp_, name_entry_->text(), cfg_, units_data_, state_, false, controller_);
-
-	std::cerr << "done loading connector...\n";
-
-	const int turns = turns_slider_->value() < turns_slider_->max_value() ?
-		turns_slider_->value() : -1;
-
-	const config::child_list& era_list = cfg_.get_children("era");
-
-	const int share = vision_combo_->selected();
-
-	//Save values for next game
-	preferences::set_allow_observers(observers_game_->checked());
-	preferences::set_fog(fog_game_->checked());
-	preferences::set_shroud(shroud_game_->checked());
-	preferences::set_turns(turns_slider_->value());
-	preferences::set_village_gold(village_gold_slider_->value());
-	preferences::set_xp_modifier(xp_modifier_slider_->value());
-	preferences::set_era(era_combo_->selected());
-	preferences::set_map(maps_menu_->selection());
-	
-	const int res = connector.load_map((*era_list[era_combo_->selected()])["id"],
-	                   scenario_data_, turns, village_gold_slider_->value(),
-					   xp_modifier_slider_->value(), fog_game_->checked(),
-					   shroud_game_->checked(), observers_game_->checked(),
-					   share == 0, share == 1);
-	if(res == -1) {
-		return;
-	}
-
-	name_entry_->set_focus(false);
-
-	//free up widget resources so they're not consumed while the game is on
-	maps_menu_.assign(NULL);
-	turns_slider_.assign(NULL);
-	village_gold_slider_.assign(NULL);
-	xp_modifier_slider_.assign(NULL);
-	fog_game_.assign(NULL);
-	shroud_game_.assign(NULL);
-	observers_game_.assign(NULL);
-	vision_combo_.assign(NULL);
-	cancel_game_.assign(NULL);
-	launch_game_.assign(NULL);
-	regenerate_map_.assign(NULL);
-	generator_settings_.assign(NULL);
-	era_combo_.assign(NULL);
-	name_entry_.assign(NULL);
-	generator_.assign(NULL);
-
-	std::vector<std::string> messages;
-	config game_data;
-	lobby::RESULT result = lobby::CONTINUE;
-	while(result == lobby::CONTINUE) {
-		result = lobby::enter(disp_,game_data,cfg_,&connector,messages);
-	}
-
-	if(result == lobby::CREATE) {
-		connector.start_game();
+		break;
+	case mp::ui::QUIT:
+	default:
+		break;
 	}
 }
+
+void enter_create_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, mp::controller default_controller, bool is_server)
+{
+	mp::ui::result res;
+	mp::create::parameters params;
+
+	{
+		mp::create ui(disp, game_config, chat, gamelist);
+		run_lobby_loop(disp, ui);
+		res = ui.get_result();
+		params = ui.get_parameters();
+	}
+
+	switch (res) {
+	case mp::ui::CREATE:
+		enter_connect_mode(disp, game_config, data, chat, gamelist, params, default_controller, is_server);
+		break;
+	case mp::ui::QUIT:
+	default:
+		break;
+	}
+}
+
+void enter_lobby_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist) 
+{
+	mp::ui::result res;
+
+	while (true) {
+		{
+			mp::lobby ui(disp, game_config, chat, gamelist);
+			run_lobby_loop(disp, ui);
+			res = ui.get_result();
+		}
+
+		switch (res) {
+		case mp::ui::JOIN:
+			enter_wait_mode(disp, game_config, data, chat, gamelist, false);
+			break;
+		case mp::ui::OBSERVE:
+			enter_wait_mode(disp, game_config, data, chat, gamelist, true);
+			break;
+		case mp::ui::CREATE:
+			try {
+				enter_create_mode(disp, game_config, data, chat, gamelist, mp::CNTR_NETWORK, false);
+			} catch(network::error& error) {
+				if (!error.message.empty())
+					gui::show_error_message(disp, error.message);
+			}
+			break;
+		case mp::ui::QUIT:
+		default:
+			return;
+		}
+	}
+}
+ 
+}
+
+namespace mp {
+
+void start_server(display& disp, const config& game_config, game_data& data,
+		mp::controller default_controller, bool is_server)
+{
+	mp::chat chat;
+	config gamelist;
+	preferences::display_manager disp_manager(&disp);
+
+	enter_create_mode(disp, game_config, data, chat, gamelist, default_controller, is_server);
+}
+
+void start_client(display& disp, const config& game_config, game_data& data,
+		const std::string host)
+{
+	const network::manager net_manager;
+	preferences::display_manager disp_manager(&disp);
+
+	mp::chat chat;
+	config gamelist;
+	server_type type = open_connection(disp, host);
+
+	switch(type) {
+	case WESNOTHD_SERVER:
+		enter_lobby_mode(disp, game_config, data, chat, gamelist);
+		break;
+	case SIMPLE_SERVER:
+		enter_wait_mode(disp, game_config, data, chat, gamelist, false);
+		break;
+	case ABORT_SERVER:
+		break;
+	}
+}
+
+}
+

@@ -43,6 +43,11 @@ public:
 	/// \param callback a callback interface for warning that the grip has been moved
 	scrollpane(display &d);
 
+	virtual void set_location(SDL_Rect const &rect);
+	using widget::set_location;
+
+	virtual void hide(bool value=true);
+
 	void add_widget(widget* w, int x, int y, int z_order = 0);
 	void remove_widget(widget* w);
 	void clear();
@@ -55,6 +60,7 @@ protected:
 	virtual void scroll(int pos);
 
 private:
+	void update_widget_positions();
 	void position_widget(scrollpane_widget& spw);
 	SDL_Rect client_area() const;
 	void update_content_size();

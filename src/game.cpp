@@ -35,7 +35,6 @@
 #include "log.hpp"
 #include "mapgen.hpp"
 #include "multiplayer.hpp"
-#include "multiplayer_client.hpp"
 #include "network.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
@@ -1302,25 +1301,20 @@ bool game_controller::play_multiplayer()
 			std::vector<std::string> chat;
 			config game_data;
 
-			const std::string controller = (res == 2 ? "network" : (res == 3 ? "human" : "ai"));
+			const mp::controller cntr = (res == 2 ? 
+					mp::CNTR_NETWORK : 
+					(res == 3 ? mp::CNTR_LOCAL : mp::CNTR_COMPUTER ));
 			const bool is_server = res == 2;
 
-			multiplayer_game_setup_dialog mp_dialog(disp(),units_data_,game_config_,state_,is_server,controller);
-			lobby::RESULT res = lobby::CONTINUE;
-			while(res == lobby::CONTINUE) {
-				res = lobby::enter(disp(),game_data,game_config_,&mp_dialog,chat);
-			}
+			mp::start_server(disp(), game_config_, units_data_, cntr, is_server);
 
-			if(res == lobby::CREATE) {
-				mp_dialog.start_game();
-			}
 		} else if(res == 0 || res == 1) {
 			std::string host;
 			if(res == 0) {
 				host = preferences::official_network_host();
 			}
 
-			play_multiplayer_client(disp(),units_data_,game_config_,state_,host);
+			mp::start_client(disp(), game_config_, units_data_, host);
 		}
 	} catch(gamestatus::load_game_failed& e) {
 		gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);

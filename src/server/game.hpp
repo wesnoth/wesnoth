@@ -35,6 +35,8 @@ public:
 
 	bool take_side(network::connection player, const config& cfg);
 
+	void update_side_data();
+
 	const std::string& transfer_side_control(const config& cfg);
 	
 	size_t available_slots() const;
@@ -47,7 +49,7 @@ public:
 	void ban_player(network::connection player);
 
 	void add_player(network::connection player);
-	void remove_player(network::connection player);
+	void remove_player(network::connection player, bool notify_creator=true);
 
 	int id() const;
 

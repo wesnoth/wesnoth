@@ -1,453 +1,196 @@
-#include "global.hpp"
+/* $Id$ */
+/*
+   Copyright (C) 
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
-#include "events.hpp"
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+#include "multiplayer_lobby.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
-#include "game_config.hpp"
-#include "hotkeys.hpp"
-#include "image.hpp"
-#include "key.hpp"
-#include "language.hpp"
-#include "multiplayer_lobby.hpp"
-#include "network.hpp"
-#include "preferences.hpp"
-#include "show_dialog.hpp"
-#include "statistics.hpp"
-#include "sound.hpp"
 #include "wassert.hpp"
-#include "widgets/button.hpp"
-#include "widgets/menu.hpp"
-#include "widgets/textbox.hpp"
 
-#include "SDL.h"
+namespace mp {
 
-#include <sstream>
+lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
+	mp::ui(disp, cfg, c, gamelist),
 
-namespace {
-int xscale(display& disp, int x)
+	observe_game_(disp, _("Observe Game")),
+	join_game_(disp, _("Join Game")),
+	create_game_(disp, _("Create Game")),
+	quit_game_(disp, _("Quit")),
+	games_menu_(disp, std::vector<std::string>()),
+	current_game_(0)
 {
-	return (x*disp.x())/1024;
+	gamelist_updated();
 }
 
-int yscale(display& disp, int y)
+void lobby::hide_children(bool hide)
 {
-	return (y*disp.y())/768;
+	mp::ui::hide_children(hide);
+
+	games_menu_.hide(hide);
+	observe_game_.hide(hide);
+	join_game_.hide(hide);
+	create_game_.hide(hide);
+	quit_game_.hide(hide);
 }
 
-const config* generate_game_options(const config& terrain_data, const config& game_data, int& game_selection,
-					 	            std::vector<std::string>& options, std::vector<bool>& game_vacant_slots, std::vector<bool>& game_observers)
+void lobby::layout_children(const SDL_Rect& rect)
 {
-	const config* const gamelist = game_data.child("gamelist");
+	mp::ui::layout_children(rect);
 
-	// Game List GUI
-	if(gamelist == NULL) {
-		return gamelist;
+	join_game_.set_location(xscale(12),yscale(7));
+	observe_game_.set_location(join_game_.location().x + join_game_.location().w + 5,yscale(7));
+	create_game_.set_location(observe_game_.location().x + observe_game_.location().w + 5,yscale(7));
+	quit_game_.set_location(create_game_.location().x + create_game_.location().w + 5,yscale(7));
+
+	games_menu_.set_width(xscale(832));
+	games_menu_.set_location(xscale(12),yscale(42));
+}
+
+void lobby::gamelist_updated()
+{
+	ui::gamelist_updated();
+
+	std::vector<std::string> game_strings;
+	const config* list = gamelist().child("gamelist");
+	if(list == NULL) {
+		// No gamelist yet. Do not update anything.
+		return;
 	}
+	config::child_list games = list->get_children("game");
+	config::child_iterator game;
+	game_observers_.clear();
+	game_vacant_slots_.clear();
 
-	options.clear();
-	game_vacant_slots.clear();
-	game_observers.clear();
-
-	config::const_child_itors i;
-	for(i = gamelist->child_range("game"); i.first != i.second; ++i.first) {
-
-		std::cerr << "game data here:" << (**i.first).write() << "end game data here\n";
+	for(game = games.begin(); game != games.end(); ++game) {
 
 		std::stringstream str;
 
-		//if this is the item that should be selected, make it selected by default
-		if(game_selection-- == 0) {
-			str << DEFAULT_ITEM;
-		}
-
-		std::string map_data = (**i.first)["map_data"];
+		std::string map_data = (**game)["map_data"];
 		if(map_data == "") {
-			map_data = read_map((**i.first)["map"]);
+			map_data = read_map((**game)["map"]);
 		}
 
 		if(map_data != "") {
 			try {
-				gamemap map(terrain_data,map_data);
+				gamemap map(game_config(), map_data);
 				const surface mini(image::getMinimap(100,100,map,0));
 
 				//generate a unique id to show the map as
 				char buf[50];
-				sprintf(buf,"addr %p", (SDL_Surface*)mini);
+				sprintf(buf,"addr %d",(int)(SDL_Surface*)mini);
 
 				image::register_image(buf,mini);
 
-				str << IMAGE_PREFIX << buf << COLUMN_SEPARATOR;
+				str << "&" << buf << COLUMN_SEPARATOR;
 			} catch(gamemap::incorrect_format_exception& e) {
 				std::cerr << "illegal map: " << e.msg_ << "\n";
 			}
 		} else {
-			str << '(' << _("Shroud") << ')' << COLUMN_SEPARATOR;
+			str << "(" << _("Shroud") << ")" << COLUMN_SEPARATOR;
 		}
 
-		std::string name = (**i.first)["name"];
-		if(name.size() > 30)
-			name.resize(30);
+		std::string name = (**game)["name"];
 
-		str << name;
+		str << font::make_text_ellipsis(name, font::SIZE_NORMAL, xscale(300));
 
-		const std::string& turn = (**i.first)["turn"];
-		const std::string& slots = (**i.first)["slots"];
-		if (!turn.empty()) {
-			str << COLUMN_SEPARATOR << _("Turn") << ' ' << turn;
-		} else if(!slots.empty()) {
-			str << COLUMN_SEPARATOR << slots << ' '
-			    << gettext(slots == "1" ? N_("Vacant Slot") : N_("Vacant Slots"));
+		const std::string& turn = (**game)["turn"];
+		const std::string& slots = (**game)["slots"];
+		int nslots = lexical_cast_default<int>(slots, 0);
+
+		if(turn != "") {
+			str << COLUMN_SEPARATOR << _("Turn") << " " << turn;
+		} else if(slots != "") {
+			str << COLUMN_SEPARATOR << slots << " " << 
+				ngettext(_("Vacant Slot"), _("Vacant Slots"), nslots);
 		}
 
-		options.push_back(str.str());
-		game_vacant_slots.push_back(turn.empty() && slots != "" && slots != "0");
-		game_observers.push_back((**i.first)["observer"] != "no");
+		game_strings.push_back(str.str());
+
+		game_vacant_slots_.push_back(slots != "" && slots != "0");
+		game_observers_.push_back((**game)["observer"] != "no");
 	}
 
-	return gamelist;
+	if(game_strings.empty()) {
+		game_strings.push_back("<no games open>");
+	}
+
+	games_menu_.set_items(game_strings);
+
+	if(games_menu_.selection() >= 0 && games_menu_.selection() < int(game_vacant_slots_.size())) {
+		wassert(game_vacant_slots_.size() == game_observers_.size());
+
+		observe_game_.enable(true);
+		join_game_.enable(true);
+		join_game_.hide(!game_vacant_slots_[games_menu_.selection()]);
+		observe_game_.hide(!game_observers_[games_menu_.selection()]);
+	} else {
+		observe_game_.enable(false);
+		join_game_.enable(false);
+	}
+
 }
 
-void generate_user_list(const config& game_data, std::vector<std::string>& users, int& user_selection)
+void lobby::process_event()
 {
-	users.clear();
+	games_menu_.process();
 
-	for(config::const_child_itors i = game_data.child_range("user"); i.first != i.second; ++i.first) {
-		std::string name = (**i.first)["name"];
-		if(name.size() > 30)
-			name.resize(30);
-
-		const std::string avail = (**i.first)["available"];
-
-		//display unavailable players in red
-		if(avail == "no") {
-			name.insert(name.begin(),'#');
-		}
-
-		//if this user should be selected
-		if(user_selection-- == 0) {
-			name.insert(name.begin(), DEFAULT_ITEM);
-		}
-
-		users.push_back(name);
-	}
-}
-
-}
-
-namespace lobby {
-
-RESULT enter(display& disp, config& game_data, const config& terrain_data, dialog* dlg,
-			 std::vector<std::string>& messages)
-{
-	statistics::fresh_stats();
-
-	std::cerr << "entered multiplayer lobby...\n";
-	const preferences::display_manager disp_manager(&disp);
-	const hotkey::basic_handler key_handler(&disp);
-	const tooltips::manager tooltips_manager(disp);
-	disp.video().modeChanged(); // resets modeChanged value
-
-	CKey key;
-
-	surface background(image::get_image("misc/lobby.png",image::UNSCALED));
-	background.assign(scale_surface(background,disp.x(),disp.y()));
-
-	if(background == NULL) {
-		return QUIT;
+	int selection = games_menu_.selection();
+	if(selection != current_game_ && selection >= 0 && selection < int(game_vacant_slots_.size())) {
+		current_game_ = selection;
+		join_game_.hide(!game_vacant_slots_[selection]);
+		observe_game_.hide(!game_observers_[selection]);
 	}
 
-	SDL_BlitSurface(background, NULL, disp.video().getSurface(), NULL);
-	update_whole_screen();
+	const bool games_available = game_vacant_slots_.empty() == false;
+	const bool double_click = games_menu_.double_clicked();
+	const bool observe = observe_game_.pressed() || !games_available && double_click;
 
-	gui::textbox message_entry(disp,500);
+	if(games_available && (observe || join_game_.pressed() || double_click)) {
+		const size_t index = size_t(games_menu_.selection());
+		const config* game = gamelist().child("gamelist");
+		if (game != NULL) {
+			const config::const_child_itors i = game->child_range("game");
+			wassert(index < size_t(i.second - i.first));
+			const std::string& id = (**(i.first+index))["id"];
 
-	bool last_escape = true;
+			config response;
+			config& join = response.add_child("join");
+			join["id"] = id;
+			network::send_data(response);
 
-	int game_selection = 0, user_selection = 0;
-
-	for(bool first_time = true; ; first_time = false) {
-		message_entry.set_focus(true);
-
-		const SDL_Rect dlg_rect = {xscale(disp,12),yscale(disp,42),xscale(disp,832),yscale(disp,518)};
-
-		//if the dialog is present, back it up before we repaint the entire screen
-		surface_restorer dlg_restorer;
-		if(dlg != NULL && first_time == false) {
-			dlg_restorer = surface_restorer(&disp.video(),dlg_rect);
-		}
-
-		SDL_BlitSurface(background, NULL, disp.video().getSurface(), NULL);
-
-		dlg_restorer.restore();
-		dlg_restorer = surface_restorer();
-
-		const SDL_Rect chat_area = { xscale(disp,12), yscale(disp,576), xscale(disp,832), yscale(disp,142) };
-
-		gui::textbox chat_textbox(disp,chat_area.w,"",false);
-
-		std::vector<std::string> options;
-		std::vector<bool> game_vacant_slots, game_observers;
-
-		const config* gamelist = NULL;
-
-		if(dlg == NULL) {
-			gamelist = generate_game_options(terrain_data,game_data,game_selection,options,game_vacant_slots,game_observers);
-			if(gamelist == NULL) {
-				std::cerr << "ERROR: could not find gamelist\n";
-				return QUIT;
-			}
-		}
-
-		if(dlg == NULL && options.empty()) {
-			options.push_back(_("<no games open>"));
-		}
-
-		gui::menu games_menu(disp,options);
-		gui::button observe_game(disp,_("Observe Game"));
-		gui::button join_game(disp,_("Join Game"));
-		gui::button new_game(disp,_("Create Game"));
-		gui::button quit_game(disp,_("Quit"));
-
-		if(dlg != NULL) {
-			observe_game.hide();
-			join_game.hide();
-			new_game.hide();
-			quit_game.hide();
-		}
-
-		if(games_menu.selection() >= 0 && games_menu.selection() < int(game_vacant_slots.size())) {
-			wassert(game_vacant_slots.size() == game_observers.size());
-
-			join_game.hide(!game_vacant_slots[games_menu.selection()]);
-			observe_game.hide(!game_observers[games_menu.selection()]);
-		} else {
-			observe_game.hide();
-			join_game.hide();
-		}
-		
-		std::vector<std::string> users;
-
-		generate_user_list(game_data,users,user_selection);
-
-		if(users.empty()) {
-			users.push_back(preferences::login());
-		}
-
-		std::cerr << "have " << users.size() << " users\n";
-
-		if(users.empty()) {
-			std::cerr << "ERROR: empty user list received\n";
-			users.push_back("error");
-		}
-
-		gui::menu users_menu(disp,users);
-
-		games_menu.set_numeric_keypress_selection(false);
-		users_menu.set_numeric_keypress_selection(false);
-
-		// Set GUI locations
-		users_menu.set_width(xscale(disp,156));
-		users_menu.set_location(xscale(disp,856),yscale(disp,42));
-
-		update_rect(xscale(disp,856),yscale(disp,42),xscale(disp,156),yscale(disp,708));
-
-		if(dlg != NULL) {
-			if(first_time) {
-				dlg->set_area(dlg_rect);
-			}
-		} else {
-			games_menu.set_width(xscale(disp,832));
-			games_menu.set_location(xscale(disp,12),yscale(disp,42));
-		}
-
-		update_rect(xscale(disp,12),yscale(disp,42),xscale(disp,832),yscale(disp,518));
-		join_game.set_location(xscale(disp,12),yscale(disp,7));
-		observe_game.set_location(join_game.location().x + join_game.location().w + 5,yscale(disp,7));
-		new_game.set_location(observe_game.location().x + observe_game.location().w + 5,yscale(disp,7));
-		quit_game.set_location(new_game.location().x + new_game.location().w + 5,yscale(disp,7));
-		message_entry.set_location(xscale(disp,14),yscale(disp,732));
-		message_entry.set_width(xscale(disp,830));
-
-		update_whole_screen();
-
-		bool old_enter = true;
-
-		size_t last_message = messages.size() < 50 ? 0 : messages.size() - 50;
-
-		for(;;) {
-
-			if(last_message < messages.size()) {
-				// Display Chats
-				std::stringstream text;
-				for(; last_message != messages.size(); ++last_message) {
-					text << messages[last_message];
-					if(last_message+1 != messages.size()) {
-						text << "\n";
-					}
-				}
-
-				chat_textbox.append_text(text.str());
-
-				chat_textbox.set_location(chat_area);
-				chat_textbox.set_wrap(true);
-				chat_textbox.scroll_to_bottom();
-				chat_textbox.set_dirty();
-			}
-
-			int mousex, mousey;
-			SDL_GetMouseState(&mousex,&mousey);
-			tooltips::process(mousex, mousey);
-
-			if(dlg != NULL) {
-				const RESULT res = dlg->process();
-				if(res != CONTINUE) {
-					return res;
-				}
+			if (observe) {
+				set_result(OBSERVE);
 			} else {
-				games_menu.process();
-
-				if(games_menu.selection() >= 0 && games_menu.selection() < int(game_vacant_slots.size())) {
-					join_game.hide(!game_vacant_slots[games_menu.selection()]);
-					observe_game.hide(!game_observers[games_menu.selection()]);
-				}
+				set_result(JOIN);
 			}
-
-			users_menu.process();
-			
-			const bool games_available = game_vacant_slots.empty() == false;
-			const bool double_click = games_menu.double_clicked();
-			const bool observe = observe_game.pressed() || games_available && double_click && join_game.hidden();
-			if(games_available && (observe || join_game.pressed() || double_click)) {
-				const size_t index = size_t(games_menu.selection());
-				const config::const_child_itors i = gamelist->child_range("game");
-				wassert(index < size_t(i.second - i.first));
-				const std::string& id = (**(i.first+index))["id"];
-
-				config response;
-				config& join = response.add_child("join");
-				join["id"] = id;
-				network::send_data(response);
-				return observe ? OBSERVE : JOIN;
-			}
-			
-			if(dlg == NULL && new_game.pressed()) {
-				return CREATE;
-				break;
-			}
-
-			const bool enter = key[SDLK_RETURN] && !old_enter;
-			old_enter = key[SDLK_RETURN] != 0;
-			if(enter && message_entry.text().empty() == false) {
-				const std::string& text = message_entry.text();
-
-				static const std::string query = "/query ";
-				if(text.size() >= query.size() && std::equal(query.begin(),query.end(),text.begin())) {
-					const std::string args = text.substr(query.size());
-
-					config cfg;
-					cfg.add_child("query")["type"] = args;
-					network::send_data(cfg);
-				} else {
-
-					config msg;
-					config& child = msg.add_child("message");
-					child["message"] = text;
-					child["sender"] = preferences::login();
-					network::send_data(msg);
-
-					std::stringstream message;
-					message << "<" << child["sender"] << ">  " << child["message"];
-					messages.push_back(message.str());
-				}
-
-				message_entry.clear();
-			}
-
-			if(last_escape == false && key[SDLK_ESCAPE] || dlg == NULL && quit_game.pressed()){
-				return QUIT;
-			}
-
-			last_escape = key[SDLK_ESCAPE] != 0;
-
-			events::raise_process_event();
-			events::raise_draw_event();
-
-			chat_textbox.process();
-
-			user_selection = users_menu.selection();
-			game_selection = games_menu.selection();
-
-			//if the list is refreshed, we want to redraw the entire screen
-			config data;
-			bool got_data = false;
-			if(dlg == NULL || dlg->manages_network() == false) {
-				const network::connection res = network::receive_data(data);
-				if(res) {
-					got_data = true;
-				}
-			} else if(dlg != NULL && dlg->manages_network()) {
-				got_data = dlg->get_network_data(data);
-			}
-
-			if(got_data) {
-				if(data.child("gamelist")) {
-					game_data = data;
-					break;
-				} else if(data.child("gamelist_diff")) {
-					const config old_gamelist = game_data.child("gamelist") != NULL ? *game_data.child("gamelist") : config();
-
-					const int old_users = game_data.get_children("user").size();
-					game_data.apply_diff(*data.child("gamelist_diff"));
-					const int new_users = game_data.get_children("user").size();
-
-					const config new_gamelist = game_data.child("gamelist") != NULL ? *game_data.child("gamelist") : config();
-					if(new_users < old_users) {
-						sound::play_sound(game_config::sounds::user_leave);
-					} else if(new_users > old_users) {
-						sound::play_sound(game_config::sounds::user_arrive);
-					}
-
-					generate_user_list(game_data,users,user_selection);
-					users_menu.set_items(users);
-
-					gamelist = game_data.child("gamelist");
-					if(gamelist == NULL) {
-						std::cerr << "ERROR: could not find game list\n";
-						return QUIT;
-					}
-
-					if(dlg == NULL && *gamelist != old_gamelist) {
-						generate_game_options(terrain_data,game_data,game_selection,options,game_vacant_slots,game_observers);
-					}
-
-					if(dlg == NULL && options.empty()) {
-						options.push_back(_("<no games open>"));
-					}
-
-					games_menu.set_items(options);
-				} else if(data.child("error")) {
-					throw network::error((*data.child("error"))["message"]);
-				} else if(data.child("message")) {
-					sound::play_sound(game_config::sounds::receive_message);
-
-					const config& msg = *data.child("message");
-					std::stringstream message;
-					message << "<" << msg["sender"] << ">  " << msg["message"];
-					messages.push_back(message.str());
-				}
-			}
-
-			if(disp.video().modeChanged()) {
-				if (dlg != NULL)
-					dlg->clear_area();
-				return CONTINUE;
-			}
-
-			events::pump();
-			disp.video().flip();
-			SDL_Delay(20);
 		}
+		return;
 	}
+			
+	if(create_game_.pressed()) {
+		set_result(CREATE);
+		return;
+	}
+
+	if(quit_game_.pressed()) {
+		set_result(QUIT);
+		return;
+	}
+}
+
+
+void lobby::process_network_data(const config& data, const network::connection sock)
+{
+	ui::process_network_data(data, sock);
 }
 
 }

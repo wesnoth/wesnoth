@@ -1,32 +1,55 @@
-#ifndef MULTIPLAYER_LOBBY_INCLUDED
-#define MULTIPLAYER_LOBBY_INCLUDED
+/* $Id$ */
+/*
+   Copyright (C) 
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+#ifndef MULTIPLAYER_LOBBY_HPP_INCLUDED
+#define MULTIPLAYER_LOBBY_HPP_INCLUDED
 
 #include "config.hpp"
 #include "display.hpp"
+#include "multiplayer_ui.hpp"
 
-///this module controls the multiplayer lobby. A section on the server which
-///allows players to chat, create games, and join games.
-namespace lobby {
+#include "widgets/menu.hpp"
 
-enum RESULT { QUIT, CREATE, JOIN, OBSERVE, CONTINUE };
+// This module controls the multiplayer lobby. A section on the server which
+// allows players to chat, create games, and join games.
+namespace mp {
 
-///interface for an interactive dialog that is displayed while lobby user lists
-///and lobby chat continue
-class dialog
+class lobby : public ui
 {
 public:
-	virtual void set_area(const SDL_Rect& area) = 0;
-	virtual void clear_area() {};
-	virtual RESULT process() = 0;
-	virtual bool manages_network() const { return false; }
-	virtual bool get_network_data(config& out) { return false; }
-	virtual ~dialog() {}
-};
+	lobby(display& d, const config& cfg, chat& c, config& gamelist);
 
-///function which controls the lobby, and will result in the player creating
-///a game, joining a game, or quitting the lobby.
-RESULT enter(display& disp, config& data, const config& terrain_data, dialog* dlg,
-			 std::vector<std::string>& messages);
+	virtual void process_event();
+
+protected:
+	virtual void hide_children(bool hide=true);
+	virtual void layout_children(const SDL_Rect& rect);
+	virtual void process_network_data(const config& data, const network::connection sock);
+
+	virtual void gamelist_updated();
+private:
+
+	std::vector<bool> game_vacant_slots_;
+	std::vector<bool> game_observers_;
+
+	gui::button observe_game_;
+	gui::button join_game_;
+	gui::button create_game_;
+	gui::button quit_game_;
+
+	gui::menu games_menu_;
+	int current_game_;
+};
 
 }
 
