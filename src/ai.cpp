@@ -1288,6 +1288,10 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		battle_stats bat_stats;
 		gamemap::location target;
 		int weapon = -1;
+
+		//the behavior of attacking anyone the AI ends up next to
+		//is disabled for the moment, to see how it works out
+		/*
 		for(int n = 0; n != 6; ++n) {
 			const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
 					map_,
@@ -1302,6 +1306,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 				break;
 			}
 		}
+		*/
 
 		const location arrived_at = move_unit(move.first,move.second,possible_moves);
 
