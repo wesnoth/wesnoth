@@ -295,13 +295,13 @@ void game::ban_player(network::connection sock)
 
 bool game::process_commands(const config& cfg)
 {
-	std::cerr << "processing commands: '" << cfg.write() << "'\n";
+	//std::cerr << "processing commands: '" << cfg.write() << "'\n";
 	bool res = false;
 	const config::child_list& cmd = cfg.get_children("command");
 	for(config::child_list::const_iterator i = cmd.begin(); i != cmd.end(); ++i) {
 		if((**i).child("end_turn") != NULL) {
 			res = res || end_turn();
-			std::cerr << "res: " << (res ? "yes" : "no") << "\n";
+			//std::cerr << "res: " << (res ? "yes" : "no") << "\n";
 		}
 	}
 
