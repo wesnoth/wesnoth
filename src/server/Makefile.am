@@ -28,5 +28,5 @@ wesnothd_SOURCES = game.cpp \
 		   ../log.hpp \
 		   ../network.hpp
 
-AM_CXXFLAGS = @SDL_CFLAGS@
+AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(localedir)\"
 AM_LDFLAGS = @SDL_LIBS@ @SDL_NET_LIBS@
