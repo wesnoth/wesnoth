@@ -1481,7 +1481,13 @@ int play_game(int argc, char** argv)
 			<< "  --log-error=\"domain1,domain2,...\", --log-warning=..., --log-info=...\n"
 			<< "                    Set the severity level of the debug domains\n"
 			<< "                    \"all\" can be used to match any debug domain\n"
-			<< "  --nocache         Disables caching of game data\n";
+			<< "  --nocache         Disables caching of game data\n"
+			<< "  --nosound         Disables sounds\n"
+			<< "  --compress file1 file2 Compresses the text-WML file file1 into the\n"
+			<< "                    binary-WML file file2\n"
+			<< "  --decompress file1 file2 Uncompresses the binary-WML file file2 into\n"
+			<< "                    the text-WML file file2\n"
+			;
  			return 0;
  		} else if(val == "--version" || val == "-v") {
  			std::cout << _("Battle for Wesnoth") << " " << game_config::version
