@@ -50,8 +50,13 @@ campaign_server::campaign_server(const std::string& cfgfile)
 
 void campaign_server::run()
 {
-	for(;;) {
+	for(int increment = 0; ; ++increment) {
 		try {
+			//write config to disk every ten minutes
+			if((increment%(60*10*2)) == 0) {
+				write_file(file_,cfg_.write());
+			}
+
 			network::process_send_queue();
 
 			network::connection sock = network::accept_connection();
@@ -132,7 +137,7 @@ void campaign_server::run()
 			std::cerr << "error in receiving data...\n";
 		}
 
-		SDL_Delay(20);
+		SDL_Delay(500);
 	}
 }
 

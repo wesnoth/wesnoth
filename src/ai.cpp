@@ -197,7 +197,7 @@ ai::ai(ai_interface::info& info)
 	   : ai_interface(info), threats_found_(false), disp_(info.disp),
 	     map_(info.map), gameinfo_(info.gameinfo), units_(info.units),
 	     teams_(info.teams), team_num_(info.team_num),
-	     state_(info.state), consider_combat_(true)
+	     state_(info.state), consider_combat_(true), attack_depth_(0)
 {}
 
 bool ai::recruit_usage(const std::string& usage)
@@ -1978,4 +1978,15 @@ const std::set<gamemap::location>& ai::avoided_locations() const
 	}
 
 	return avoid_;
+}
+
+int ai::attack_depth() const
+{
+	if(attack_depth_ > 0) {
+		return attack_depth_;
+	}
+
+	const config& parms = current_team().ai_parameters();
+	attack_depth_ = maximum<int>(1,lexical_cast_default<int>(parms["attack_depth"],4));
+	return attack_depth_;
 }

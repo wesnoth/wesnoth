@@ -260,6 +260,9 @@ protected:
 	const std::set<location>& avoided_locations() const;
 
 	mutable std::set<location> avoid_;
+
+	int attack_depth() const;
+	mutable int attack_depth_;
 };
 
 #endif
