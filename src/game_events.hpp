@@ -34,12 +34,6 @@
 namespace game_events
 {
 
-std::string& get_variable(const std::string& varname);
-const std::string& get_variable_const(const std::string& varname);
-config& get_variable_cfg(const std::string& varname);
-
-void set_variable(const std::string& varname, const std::string& value);
-
 //the game event manager loads the scenario configuration object, and
 //ensures that events are handled according to the scenario configuration
 //for its lifetime.

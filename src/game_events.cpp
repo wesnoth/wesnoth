@@ -24,6 +24,7 @@
 #include "sound.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "variable.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 

@@ -20,13 +20,10 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "log.hpp"
+#include "variable.hpp"
 #include "SDL_types.h"
 
 #define ERR_GENERAL lg::err(lg::general)
-
-namespace game_events {
-std::string const &get_variable_const(std::string const &varname);
-}
 
 namespace {
 

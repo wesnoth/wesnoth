@@ -17,7 +17,7 @@
 #include <sstream>
 
 #include "config.hpp"
-#include "game_events.hpp"
+#include "variable.hpp"
 #include "wassert.hpp"
 
 config::config(const config& cfg)

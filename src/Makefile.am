@@ -192,6 +192,7 @@ wesnoth_SOURCES = \
 	unit_display.hpp \
 	unit_types.hpp \
 	util.hpp \
+	variable.hpp \
 	video.hpp \
 	wassert.hpp \
 	serialization/binary_wml.hpp \
@@ -402,7 +403,7 @@ wesnothd_SOURCES = \
 	serialization/string_utils.cpp \
 	zipios++/xcoll.cpp \
 	server/game.hpp \
-	game_events.hpp \
+	variable.hpp \
 	server/input_stream.hpp \
 	server/metrics.hpp \
 	server/player.hpp \
@@ -440,7 +441,7 @@ campaignd_SOURCES = \
 	serialization/parser.cpp \
 	serialization/string_utils.cpp \
 	zipios++/xcoll.cpp \
-	game_events.hpp \
+	variable.hpp \
 	config.hpp \
 	filesystem.hpp \
 	game_config.hpp \
@@ -478,6 +479,7 @@ exploder_SOURCES = \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
 	zipios++/xcoll.cpp \
+	variable.hpp \
 	tools/exploder_composer.hpp \
 	tools/exploder_cutter.hpp \
 	tools/exploder_utils.hpp \
@@ -502,6 +504,7 @@ cutter_SOURCES = \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
 	zipios++/xcoll.cpp \
+	variable.hpp \
 	tools/exploder_composer.hpp \
 	tools/exploder_cutter.hpp \
 	tools/exploder_utils.hpp \
@@ -526,7 +529,7 @@ wesnoth_zip_SOURCES = \
 	gettext.cpp \
 	log.cpp \
 	network.cpp \
-	game_events.hpp \
+	variable.hpp \
 	config.hpp \
 	gettext.hpp \
 	filesystem.hpp \

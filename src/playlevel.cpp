@@ -16,7 +16,6 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
-#include "game_events.hpp"
 #include "halo.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
@@ -36,6 +35,7 @@
 #include "tooltips.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "variable.hpp"
 
 #include <iostream>
 #include <iterator>
