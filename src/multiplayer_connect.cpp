@@ -738,6 +738,18 @@ lobby::RESULT mp_connect::process()
 	if (ai_.pressed()) {
 		for(size_t m = 0; m != combos_team_.size(); ++m) {
 			config& si = **(sides.first+m);
+			//disconnect everyone except the host
+			std::map<config*,network::connection>::iterator pos = positions_.find(&si);
+			if (pos->first->values["description"] == si["description"]) {
+				network::disconnect(pos->second);
+				pos->second = 0;
+			}
+			pos->first->values.erase("taken");
+			remove_player(pos->first->values["description"]);
+			pos->first->values["description"] = "";
+			pos->first->values["name"] = player_races_.front();
+			pos->first->values["random_faction"] = "yes";
+			pos->first->values["type"] = "";
 			si["controller"] = "ai";
 			si["description"] = _("Computer Player");
 			combos_type_[m].set_selected(2);
