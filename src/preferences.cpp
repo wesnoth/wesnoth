@@ -509,14 +509,6 @@ void show_preferences_dialog(display& disp)
 			break;
 		}
 
-		music_slider.process();
-		sound_slider.process();
-		scroll_slider.process();
-
-		set_sound_volume(sound_slider.value());
-		set_music_volume(music_slider.value());
-		set_scroll_speed(scroll_slider.value());
-
 		if(fullscreen_button.process(mousex,mousey,left_button)) {
 			//the underlying frame buffer is changing, so cancel
 			//the surface restorer restoring the frame buffer state
@@ -585,12 +577,19 @@ void show_preferences_dialog(display& disp)
 			set_show_side_colours(side_colours_button.checked());
 		}
 
-		if (hotkeys_button.process (mousex, mousey, left_button))
-		{
+		if(hotkeys_button.process (mousex, mousey, left_button)) {
 			show_hotkeys_dialog (disp);
 			break;
 		}
-		
+
+		music_slider.process();
+		sound_slider.process();
+		scroll_slider.process();
+
+		set_sound_volume(sound_slider.value());
+		set_music_volume(music_slider.value());
+		set_scroll_speed(scroll_slider.value());
+
 		disp.update_display();
 
 		SDL_Delay(50);

@@ -39,6 +39,20 @@
 #include <map>
 #include <string>
 
+namespace {
+	const size_t nterrains = 6;
+	const size_t terrain_size = 70;
+	const size_t terrain_padding = 2;
+	const size_t terrain_space = terrain_size + terrain_padding;
+	const size_t button_x = 50;
+	const size_t top_button_y = 200;
+	const size_t palette_x = 50;
+	const size_t palette_y = top_button_y + 40;
+	const size_t bot_button_y = palette_y + terrain_space*nterrains;
+
+	bool is_invalid_terrain(char c) { return c == ' ' || c == '~'; }
+}
+
 void drawbar(display& disp);
 bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gamemap map);
 int tileselected(int x, int y, display& disp);
@@ -51,7 +65,7 @@ int main(int argc, char** argv)
 		return 0;
 	}
 
-	const double scroll_speed = 30.0;
+	const double scroll_speed = preferences::scroll_speed();
 	const double zoom_amount = 5.0;
 
 	CVideo video;
@@ -127,7 +141,8 @@ int main(int argc, char** argv)
 	display gui(units,video,map,status,teams,theme_cfg ? *theme_cfg : dummy_theme);
 
 	std::vector<std::string> terrain_names;
-	const std::vector<gamemap::TERRAIN> terrains = map.get_terrain_precedence();
+	std::vector<gamemap::TERRAIN> terrains = map.get_terrain_precedence();
+	terrains.erase(std::remove_if(terrains.begin(),terrains.end(),is_invalid_terrain),terrains.end());
 	if(terrains.empty()) {
 		std::cerr << "No terrain found\n";
 		return 0;
@@ -139,8 +154,8 @@ int main(int argc, char** argv)
 
 	gui::button tup(gui, "", gui::button::TYPE_PRESS,"uparrow-button");
 	gui::button tdown(gui, "", gui::button::TYPE_PRESS,"downarrow-button");
-	tup.set_xy(gui.mapx() + 10, 165);
-	tdown.set_xy((gui.x() - tdown.width()) - 10, 165);
+	tup.set_xy(gui.mapx() + button_x, top_button_y);
+	tdown.set_xy(gui.mapx() + button_x, bot_button_y);
 
 	gamemap::TERRAIN selected_terrain = terrains[1];
 	int tstart = 0;
@@ -200,7 +215,6 @@ int main(int argc, char** argv)
 				const gamemap::TERRAIN terrain = map[hex.x][hex.y];
 				if(selected_terrain != terrain) {
 					map.set_terrain(hex,selected_terrain);
-					gui.recalculate_minimap();
 
 					gamemap::location locs[7];
 					locs[0] = hex;
@@ -208,6 +222,9 @@ int main(int argc, char** argv)
 					for(int i = 0; i != 7; ++i) {
 						gui.draw_tile(locs[i].x,locs[i].y);
 					}
+
+					gui.draw();
+					gui.recalculate_minimap();
 				}
 			}else{
 				int tselect = tileselected(mousex,mousey,gui);
@@ -222,15 +239,15 @@ int main(int argc, char** argv)
 			tstart--;
 
 		if(tup.process(mousex,mousey,new_left_button)) {
-			tstart++;
-		}
-
-		if(tdown.process(mousex,mousey,new_left_button)) {
 			tstart--;
 			if(tstart<0)
 				tstart=0;
 		}
-		
+
+		if(tdown.process(mousex,mousey,new_left_button)) {
+			tstart++;
+		}
+
 		gui.update_display();
 		SDL_Delay(20);
 		events::pump();
@@ -247,44 +264,16 @@ int main(int argc, char** argv)
 
 void drawbar(display& disp)
 {
-	const std::string RightSideBot = "misc/rightside-bottom.png";
-	const std::string RightSideTop = "misc/rightside-editor.png";
 	SDL_Surface* const screen = disp.video().getSurface();
-	const scoped_sdl_surface image_top(image::get_image(RightSideTop,image::UNSCALED));
-
-	const scoped_sdl_surface image(image_top != NULL ?
-	 image::get_image_dim(RightSideBot,image_top->w,screen->h-image_top->h) : NULL);
-	if(image_top != NULL && image != NULL && image_top->h < screen->h) {
-		SDL_Rect dstrect;
-		dstrect.x = disp.mapx();
-		dstrect.y = 0;
-		dstrect.w = image_top->w;
-		dstrect.h = image_top->h;
-
-		if(dstrect.x + dstrect.w <= disp.x() &&
-		   dstrect.y + dstrect.h <= disp.y()) {
-			SDL_BlitSurface(image_top,NULL,screen,&dstrect);
-				dstrect.y = image_top->h;
-			dstrect.h = image->h;
-			if(dstrect.y + dstrect.h <= disp.y()) {
-				SDL_BlitSurface(image,NULL,screen,&dstrect);
-			}
-		} else {
-			std::cout << (dstrect.x+dstrect.w) << " > " << disp.x() << " or " << (dstrect.y + dstrect.h) << " > " << disp.y() << "\n";
-		}
-	}
-
-	update_rect(disp.mapx(),0,disp.x()-disp.mapx(),disp.y());
-}
-
-namespace {
-	const size_t nterrains = 6;
+	SDL_Rect dst = {disp.mapx(),0,disp.x()-disp.mapx(),disp.y()};
+	SDL_FillRect(screen,&dst,0);
+	update_rect(dst);
 }
 
 bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gamemap map)
 {
-	int x = disp.mapx() + 35;
-	int y = 200;
+	int x = disp.mapx() + palette_x;
+	int y = palette_y;
 
 	int starting = start;
 	int ending = starting+nterrains;
@@ -299,7 +288,8 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 	SDL_Surface* const screen = disp.video().getSurface();
 
 	std::vector<gamemap::TERRAIN> terrains = map.get_terrain_precedence();
-	if(ending>terrains.size()){
+	terrains.erase(std::remove_if(terrains.begin(),terrains.end(),is_invalid_terrain),terrains.end());
+	if(ending > terrains.size()){
 		ending = terrains.size();
 		starting = ending - nterrains;
 		status = false;
@@ -307,7 +297,10 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 
 	for(int counter = starting; counter < ending; counter++){
 		const gamemap::TERRAIN terrain = terrains[counter];
-		const scoped_sdl_surface image(image::get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png"));
+		scoped_sdl_surface image(image::get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png",image::UNSCALED));
+		if(image->w != terrain_size || image->h != terrain_size) {
+			image.assign(scale_surface(image,terrain_size,terrain_size));
+		}
 
 		if(image == NULL) {
 			std::cerr << "image for terrain '" << counter << "' not found\n";
@@ -324,7 +317,7 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 		gui::draw_rectangle(x,y,image->w-1,image->h-1,
 		                    terrain == selected?0xF000:0,screen);
 
-		y += dstrect.h+2;
+		y += terrain_space;
 
 		if(image->w > invalid_rect.w)
 			invalid_rect.w = image->w;
@@ -338,17 +331,17 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 
 int tileselected(int x, int y, display& disp)
 {
-	int status = -1;
+	for(int i = 0; i != nterrains; i++) {
+		const int px = disp.mapx() + palette_x;
+		const int py = palette_y + i*terrain_space;
+		const int pw = terrain_space;
+		const int ph = terrain_space;
 
-	for(int i = 0; i != nterrains; i++)
-	{
-		int px = disp.mapx() + 35;
-		int py = 200 + (i * 77);
-		int pxx = disp.mapx() + 35 + 75;
-		int pyy = 200 + ((1 + i) * 77);
-		if(x>px && x<pxx && y>py && y<pyy)
-			status = i;
+		if(x>px && x<px+pw && y>py && y<py+ph) {
+			return i;
+		}
 	}
-	return status;
+
+	return -1;
 }
 

@@ -293,7 +293,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 
 	if(minimap->w != w || minimap->h != h) {
 		SDL_Surface* const surf = minimap;
-		minimap = scale_surface_blended(surf,w,h);
+		minimap = scale_surface(surf,w,h);
 		SDL_FreeSurface(surf);
 	}
 

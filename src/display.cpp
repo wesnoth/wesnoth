@@ -184,12 +184,27 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 	xclick -= rect.x;
 	yclick -= rect.y;
 
-	const double xtile = xpos_/(zoom_*0.75) +
-			               static_cast<double>(xclick)/(zoom_*0.75) - 0.25;
+	const int tile_width = static_cast<int>(static_cast<int>(zoom_)*0.75) + 1;
+
+	const double xtile = xpos_/tile_width +
+			               static_cast<double>(xclick)/tile_width - 0.25;
 	const double ytile = ypos_/zoom_ + static_cast<double>(yclick)/zoom_
 	                      + (is_odd(int(xtile)) ? -0.5:0.0);
 
 	return gamemap::location(static_cast<int>(xtile),static_cast<int>(ytile));
+}
+
+double display::get_location_x(const gamemap::location& loc) const
+{
+	const int tile_width = static_cast<int>(static_cast<int>(zoom_)*0.75) + 1;
+
+	return map_area().x + loc.x*tile_width - xpos_;
+}
+
+double display::get_location_y(const gamemap::location& loc) const
+{
+	return map_area().y + static_cast<double>(loc.y)*zoom_ - ypos_ +
+					         (is_odd(loc.x) ? zoom_/2.0 : 0.0);
 }
 
 gamemap::location display::minimap_location_on(int x, int y)
@@ -350,7 +365,7 @@ void display::bounds_check_position()
 {
 	const double min_zoom1 = static_cast<double>(map_area().w/(map_.x()*0.75 + 0.25));
 	const double min_zoom2 = static_cast<double>(map_area().h/map_.y());
-	const double min_zoom = min_zoom1 > min_zoom2 ? min_zoom1 : min_zoom2;
+	const double min_zoom = ceil(maximum<double>(min_zoom1,min_zoom2)/5.0)*5.0;
 	const double max_zoom = 200.0;
 
 	const int orig_zoom = int(zoom_);
@@ -1690,19 +1705,6 @@ void display::move_unit(const std::vector<gamemap::location>& path, unit& u)
 	    it != path.end(); ++it) {
 		draw_tile(it->x,it->y);
 	}
-}
-
-double display::get_location_x(const gamemap::location& loc) const
-{
-	const int tile_width = static_cast<int>(static_cast<int>(zoom_)*0.75) + 1;
-
-	return map_area().x + loc.x*tile_width - xpos_;
-}
-
-double display::get_location_y(const gamemap::location& loc) const
-{
-	return map_area().y + static_cast<double>(loc.y)*zoom_ - ypos_ +
-					         (is_odd(loc.x) ? zoom_/2.0 : 0.0);
 }
 
 bool display::unit_attack_ranged(const gamemap::location& a,
