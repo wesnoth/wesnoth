@@ -157,6 +157,7 @@ public:
 	std::string id() const;
 	const std::string& name() const;
 	const std::string& image() const;
+	const std::string& image_halo() const;
 	const std::string& image_moving() const;
 	const std::string& image_profile() const;
 	const std::string& image_fighting(attack_type::RANGE range) const;

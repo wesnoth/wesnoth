@@ -552,7 +552,10 @@ void ai::do_move()
 
 	//recruitment phase and leader movement phase
 	if(leader != units_.end()) {
-		move_leader_to_keep(enemy_dstsrc);
+		if(!passive_leader) {
+			move_leader_to_keep(enemy_dstsrc);
+		}
+
 		do_recruitment();
 
 		if(!passive_leader) {

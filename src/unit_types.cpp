@@ -585,6 +585,11 @@ const std::string& unit_type::image() const
 	return cfg_["image"];
 }
 
+const std::string& unit_type::image_halo() const
+{
+	return cfg_["halo"];
+}
+
 const std::string& unit_type::image_moving() const
 {
 	const std::string& res = cfg_["image_moving"];

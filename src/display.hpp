@@ -176,6 +176,8 @@ private:
 	void draw_unit_on_tile(int x, int y, SDL_Surface* unit_image=NULL,
 	                       double alpha=1.0, Uint32 blend_to=0);
 
+	void draw_halo_on_tile(int x, int y);
+
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND };
 	void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
@@ -454,6 +456,9 @@ private:
 	//if we're transitioning from one time of day to the next,
 	//then we will use these two masks on top of all hexes when we blit
 	shared_sdl_surface tod_hex_mask1, tod_hex_mask2;
+
+	typedef std::map<gamemap::location,int> halo_map;
+	halo_map haloes_;
 
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;

@@ -46,6 +46,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	int skips = 0;
 
+	const std::string& halo = u.type().image_halo();
+
 	for(int i = 0; i < nsteps; ++i) {
 		events::pump();
 
@@ -108,8 +110,16 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		const int height_adjust = src_height_adjust + (dst_height_adjust-src_height_adjust)*(i/nsteps);
 		const double submerge = src_submerge + (dst_submerge-src_submerge)*(i/nsteps);
 
+		const int xpos = static_cast<int>(xloc);
+		const int ypos = static_cast<int>(yloc) - height_adjust;
+
 		disp.draw(false);
-		disp.draw_unit((int)xloc,(int)yloc - height_adjust,image,false,1.0,0,submerge);
+		disp.draw_unit(xpos,ypos,image,false,1.0,0,submerge);
+
+		util::scoped_resource<int,halo::remover> halo_effect(0);
+		if(halo.empty() == false) {
+			halo_effect.assign(halo::add(xpos+disp.hex_width()/2,ypos+disp.hex_size()/2,halo));
+		}
 
 		const int new_ticks = SDL_GetTicks();
 		const int wait_time = time_between_frames - (new_ticks - ticks);

@@ -17,6 +17,7 @@
 #include "font.hpp"
 #include "game.hpp"
 #include "game_config.hpp"
+#include "halo.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
 #include "language.hpp"
@@ -1021,6 +1022,28 @@ gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
 	return terrains[index];
 }
 
+void display::draw_halo_on_tile(int x, int y)
+{
+	const gamemap::location loc(x,y);
+	int xpos = get_location_x(loc);
+	int ypos = get_location_y(loc);
+
+	const halo_map::iterator halo_it = haloes_.find(loc);
+
+	//see if there is a unit on this tile
+	const unit_map::const_iterator it = units_.find(gamemap::location(x,y));
+
+	if(halo_it != haloes_.end() && it == units_.end()) {
+		halo::remove(halo_it->second);
+		haloes_.erase(halo_it);
+	} else if(halo_it == haloes_.end() && it != units_.end()) {
+		const std::string& halo = it->second.type().image_halo();
+		if(halo.empty() == false) {
+			haloes_.insert(std::pair<gamemap::location,int>(loc,halo::add(xpos+hex_width()/2,ypos+hex_size()/2,halo)));
+		}
+	}
+}
+
 void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 								double highlight_ratio, Uint32 blend_with)
 {
@@ -1031,6 +1054,13 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
 
+	//see if there is a unit on this tile
+	const unit_map::const_iterator it = units_.find(loc);
+
+	if(it == units_.end()) {
+		return;
+	}
+	
 	SDL_Rect clip_rect = map_area();
 
 	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
@@ -1052,12 +1082,6 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	scoped_sdl_surface unit_image(unit_image_override);
 
 	const std::string* energy_file = NULL;
-
-	//see if there is a unit on this tile
-	const unit_map::const_iterator it = units_.find(gamemap::location(x,y));
-	if(it == units_.end()) {
-		return;
-	}
 
 	const unit& u = it->second;
 
@@ -1287,6 +1311,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 {
 	if(updatesLocked_)
 		return;
+
+	draw_halo_on_tile(x,y);
 	
 	const gamemap::location loc(x,y);
 	int xpos = int(get_location_x(loc));
