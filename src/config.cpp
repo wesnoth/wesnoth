@@ -310,13 +310,19 @@ void internal_preprocess_data(const std::string& data,
 				std::string nfname;
 
 				//if the filename begins with a '~', then look
-				//in the user's data directory
-				if(newfilename != "" && newfilename[0] == '~') {
+				//in the user's data directory. If the filename begins with
+				//a '@' then we look in the user's data directory,
+				//but default to the standard data directory if it's not found
+				//there.
+				if(newfilename != "" && (newfilename[0] == '~' || newfilename[0] == '@')) {
 					nfname = newfilename;
 					prefix = get_user_data_dir() + "/";
 					nfname.erase(nfname.begin(),nfname.begin()+1);
 					nfname = prefix + "data/" + nfname;
 
+					if(newfilename[0] == '@' && file_exists(nfname) == false && is_directory(nfname) == false) {
+						nfname = "data/" + newfilename.substr(1);
+					}
 				} else if(newfilename.size() >= 2 && newfilename[0] == '.' &&
 						newfilename[1] == '/' ) {
 					//if the filename begins with a "./", then look
