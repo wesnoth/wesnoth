@@ -718,7 +718,7 @@ void map_editor::edit_load_map()
 		get_files_in_dir(user_path,&user_files);
 		const int res = gui::show_dialog(gui_, NULL, "",
 						 "Choose map to edit:", gui::OK_CANCEL, &user_files);
-		if (res < 0) {
+		if (res < 0 || user_files.empty()) {
 			return;
 		}
 		filename = user_path + user_files[res];
@@ -728,11 +728,11 @@ void map_editor::edit_load_map()
 		const int res = gui::show_dialog(gui_, NULL, "",
 										 "Enter map to edit:", gui::OK_CANCEL,
 										 NULL, NULL, "", &filename);
-		if (res < 0) {
+		if (res != 0) {
 			return;
 		}
 	}
-	else if(res < 0) {
+	else if(res < 0 || files.empty()) {
 		return;
 	}
 	else {
@@ -741,9 +741,9 @@ void map_editor::edit_load_map()
 	std::string map;
 	bool load_successful = true;
 	std::string msg;
-	if (!file_exists(filename)) {
+	if (!file_exists(filename) || is_directory(filename)) {
 		load_successful = false;
-		msg = filename + " does not exist.";
+		msg = filename + " does not exist or can't be read as a file.";
 	}
 	else {
 		try {
