@@ -87,7 +87,7 @@ my_strdup (char *str)
   return new_str;
 }
 
-int main (int argc, char *argv[])
+int main (int argc, char **argv)
 {
   int major, minor, micro;
   char *tmp_version;
