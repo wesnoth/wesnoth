@@ -119,7 +119,6 @@ public:
 		const bool display_confirmation=true);
 
 	/// Adjust the internal size specifications to fit the display.
-	// This should be replaced by theme handling.
 	void adjust_sizes(const display &disp);
 
 private:
