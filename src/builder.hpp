@@ -73,6 +73,8 @@ private:
 
 		tile &operator[](const gamemap::location &loc) { return map_[(loc.x+1) + (loc.y+1)*(x_+2)]; }
 		const tile &operator[] (const gamemap::location &loc) const { return map_[(loc.x+1) + (loc.y+1)*(x_+2)]; }
+		void clear() { map_.clear(); }
+		
 		std::vector<tile> map_;
 		int x_;
 		int y_;
@@ -83,15 +85,15 @@ private:
 
 	building_rule rotate_rule(const building_rule &rule, int angle, const std::string &angle_name);
 	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints,
-			     const gamemap::location &loc, std::string type,
-			     std::string set_flag = "", std::string no_flag = "");
+			     const gamemap::location &loc, const std::string& type,
+			     const std::string& set_flag = "", const std::string& no_flag = "");
 	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
 			     std::map<int, gamemap::location>& anchors);
 	
 	void parse_config(const config &cfg);
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc);
 	void apply_rule(const building_rule &rule, const gamemap::location &loc);
-	void build_terrains(const config& cfg);
+	void build_terrains();
 	
 	const gamemap& map_;
 	tilemap tile_map_;

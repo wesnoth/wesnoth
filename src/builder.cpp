@@ -20,7 +20,7 @@ terrain_builder::terrain_builder(const config& cfg, const gamemap& gmap) :
 	map_(gmap), tile_map_(gmap.x(), gmap.y())
 {
 	parse_config(cfg);
-	build_terrains(cfg);
+	build_terrains();
 }
 
 const std::vector<image::locator> *terrain_builder::get_terrain_at(const gamemap::location &loc,
@@ -41,6 +41,10 @@ const std::vector<image::locator> *terrain_builder::get_terrain_at(const gamemap
 
 void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 {
+	tile_map_.clear();
+	// For now, rebuild the whole map on each rebuilt_terrain. This is highly slow and
+	// inefficient, but this is simple
+	build_terrains();
 }
 
 terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builder::terrain_constraint &constraint, int angle)
@@ -125,8 +129,8 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 }
 
 void terrain_builder::add_constraints(std::map<gamemap::location, terrain_builder::terrain_constraint> & constraints, 
-				      const gamemap::location &loc, std::string type,
-				      std::string set_flag, std::string no_flag)
+				      const gamemap::location& loc, const std::string& type,
+				      const std::string& set_flag, const std::string& no_flag)
 {
 	if(constraints.find(loc) == constraints.end()) {
 		//the terrain at the current location did not exist, so create it
@@ -337,7 +341,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 	}
 }
 
-void terrain_builder::build_terrains(const config& cfg)
+void terrain_builder::build_terrains()
 {
 	std::cerr << "Built terrain rules: \n";
 	

@@ -150,6 +150,10 @@ bool terrain_type::matches(const std::string &expression) const
 	std::string types;
 	bool negative = false;
 	
+	// If there is a wildcard in the string, it matches.
+	if(expression.find('*') != std::string::npos)
+		return true;
+	
 	if(expression[0] == '!') {
 		types = expression.substr(1);
 		negative = true;
