@@ -54,7 +54,10 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 	static struct { int ii; int ij; int ji; int jj; }  rotations[6] = 
 		{ {  1, 0, 0,  1 }, {  1,  1, -1, 0 }, { 0,  1, -1, -1 },
 		  { -1, 0, 0, -1 }, { -1, -1,  1, 0 }, { 0, -1,  1,  1 } };
-	
+
+	assert(angle >= 0);
+
+	angle %= 6;	
 	terrain_constraint ret = constraint;
 
 	// Vector i is going from n to s, vector j is going from ne to sw.
@@ -86,6 +89,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	ret.image_foreground = rule.image_foreground;
 	ret.image_background = rule.image_background;
 	ret.location_constraints = rule.location_constraints;
+	ret.probability = rule.probability;
 
 	building_rule::constraint_set::const_iterator cons;
 	for(cons = rule.constraints.begin(); cons != rule.constraints.end(); ++cons) {
@@ -128,7 +132,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 
 	replace_rotation(ret.image_foreground, angle_name);
 	replace_rotation(ret.image_background, angle_name);
-
+	
 	return ret;
 }
 
@@ -235,6 +239,10 @@ void terrain_builder::parse_config(const config &cfg)
 
 		pbr.image_foreground = (**br)["image_foreground"];
 		pbr.image_background = (**br)["image_background"];
+		if(!((**br)["x"].empty() || (**br)["y"].empty()))
+			pbr.location_constraints = gamemap::location(atoi((**br)["x"].c_str()), atoi((**br)["y"].c_str()));
+		
+		pbr.probability = (**br)["probability"].empty() ? -1 : atoi((**br)["probability"].c_str());
 	
 		//Mapping anchor indices to anchor locations. 
 		anchormap anchors;
@@ -308,14 +316,20 @@ void terrain_builder::parse_config(const config &cfg)
 	}
 }
 
-bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, const gamemap::location &loc)
+bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, const gamemap::location &loc, int rule_index)
 {
 	if(!loc.valid())
 		return false;
-	
 	if(rule.location_constraints.valid() && rule.location_constraints != loc)
 		return false;
 	
+	if(rule.probability != -1) {
+		int random = ((loc.x^827634) * 7613863 + (loc.y^87623) * 87987 + (rule_index^198729) * 89237) % 100;
+		
+		if(random > rule.probability)
+			return false;
+	}
+		
 	for(building_rule::constraint_set::const_iterator cons = rule.constraints.begin();
 	    cons != rule.constraints.end(); ++cons) {
 		
@@ -416,6 +430,8 @@ void terrain_builder::build_terrains()
 		}
 	}
 
+	int rule_index = 0;
+	
 	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
 
 		//find a constraint that contains an unique terrain type on the current
@@ -437,7 +453,7 @@ void terrain_builder::build_terrains()
 			for(std::vector<gamemap::location>::const_iterator itor = locations.begin();
 			    itor != locations.end(); ++itor) {
 				
-				if(rule_matches(*rule, *itor - loc)) {
+				if(rule_matches(*rule, *itor - loc, rule_index)) {
 					apply_rule(*rule, *itor - loc);
 				}
 			}
@@ -445,10 +461,12 @@ void terrain_builder::build_terrains()
 			for(int x = -1; x <= map_.x(); ++x) {
 				for(int y = -1; y <= map_.y(); ++y) {
 					const gamemap::location loc(x,y);
-					if(rule_matches(*rule, loc))
+					if(rule_matches(*rule, loc, rule_index))
 						apply_rule(*rule, loc);
 				}
 			}
 		}
+
+		rule_index++;
 	}
 }

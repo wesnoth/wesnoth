@@ -58,6 +58,7 @@ private:
 		constraint_set constraints;
 		gamemap::location location_constraints;
 
+		int probability;
 		std::string image_foreground;
 		std::string image_background;
 	};
@@ -98,7 +99,7 @@ private:
 			     anchormap& anchors);
 	
 	void parse_config(const config &cfg);
-	bool rule_matches(const building_rule &rule, const gamemap::location &loc);
+	bool rule_matches(const building_rule &rule, const gamemap::location &loc, int rule_index);
 	void apply_rule(const building_rule &rule, const gamemap::location &loc);
 	void build_terrains();
 	
