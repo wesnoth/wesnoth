@@ -1,9 +1,9 @@
 Version 0.6:
  * radical storyline changes, this breaks saves from older versions
  * fog of war
- * support for multiple campaigns
  * enemy units do not vanish anymore when enemy leader is killed
  * new scenarios for 'Heir to the Throne' (Konrad's Tale):
+   * Isle of the Damned 
    * Northern Winter
    * The Lost General
    * Hasty Alliance
@@ -17,6 +17,7 @@ Version 0.6:
    * Dwarven Doors
    * Mountain Pass
    * Valley of Death
+ * support for multiple campaigns
  * new campaign started: 'Hordes of the Undead'
  * multiplayer improvements:
    * show minimap when selecting map for new game
@@ -47,10 +48,12 @@ Version 0.6:
    * Elvish Scout
    * Pikeman
    * Dwarvish Steelclad
- * undead are now immune to poinson and plague
+ * Konrad now starts as Fighter, which is 1st level unit
+ * undead are now immune to poison and plague
  * reduced movement for Elvish Lord
  * reduced cost of Mage
  * changed Mage attack to fire based
+ * 'Mage of Light' has now both cure and illumination
  * changed Shaman slowing attack to 3-2 from 4-1, and reduced cost from 21 to 18
  * changed 'Red Mage' to neutral alignment
  * removed 'Elvish Outrider' as evolution from Horseman
@@ -61,8 +64,8 @@ Version 0.6:
  * 'Blood Bat' unit description clarified
  * Halberdier changed to 3rd level unit
  * Spearman now advances to Pikeman
- * Fire resistance added to 'Red Mage' branch units
- * Holy resistance added to Holy units.
+ * Increased fire resistance for 'Red Mage' branch units
+ * Increased holy resistance made higher for Holy units.
  * auto-naming (currently elves and humans only) of units and renaming of units
  * units now have races defined in cfg-files
  * more and improved unit graphics and animations
@@ -86,6 +89,7 @@ Version 0.6:
  * added in support for some special effects: flashing and scrolling/tremors
  * added coding support for displaying different terrain images (particularly useful for villages) at different times of the day
  * fixed minor bugs in unit configuration files for Elvish Sharpshooter and Fencer
+ * fixed problem where 'goto numbers' can overwrite part of the right panel
  * footsteps disappear as you walk over them
  * added engine support for weapons that can reach multiple hexes
  * added some utility macros to WML
@@ -122,6 +126,7 @@ Version 0.6:
  * fixed tool tips to work again
  * fix hitpoint bar problem on MacOSX
  * added diagnostic to attack calculations
+ * added error logging and correction for combat related syncing errors
  * client_type=ai in preferences-file make player join networked multiplayer games as AI player
  * added some comments to code
 

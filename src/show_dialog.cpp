@@ -379,7 +379,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 							 text_widget_height + check_button_height;
 
 	if(total_width > scr->w - 100 || total_height > scr->h - 100)
-		return false;
+		return 0;
 
 	int xloc = scr->w/2 - total_width/2;
 	int yloc = scr->h/2 - total_height/2;
@@ -399,9 +399,12 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	//make sure that the dialog doesn't overlap the right part of the screen
 	if(xloc + total_width+border_size >= disp.mapx()-1) {
+		std::cerr << "in if...\n";
 		xloc = disp.mapx()-(total_width+border_size+2);
-		if(xloc < 0)
-			return -1;
+		if(xloc < 0) {
+			std::cerr << "dialog is too large to fit on-screen!\n";
+			return 0;
+		}
 	}
 
 	const int button_hpadding = total_width - button_widths;

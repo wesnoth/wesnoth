@@ -1077,7 +1077,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 	Pixel grid_colour = SDL_MapRGB(dst->format,0,0,0);
 
-	const bool show_unit_colour = preferences::show_side_colours() && it != units_.end();
+	const bool show_unit_colour = preferences::show_side_colours() && !fogged(x,y) && it != units_.end();
 	if(show_unit_colour) {
 		const SDL_Color& colour = font::get_side_colour(it->second.side());
 		grid_colour = SDL_MapRGB(dst->format,colour.r,colour.g,colour.b);
@@ -1344,13 +1344,14 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	draw_unit(xloc,yloc,image,hflip,vflip,0.5);
 
 	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
+		const SDL_Rect rect = {0,0,this->mapx(),this->y()};
 		static std::string str(1,'x');
 		str[0] = '0' + route_.move_left + 1;
 		const SDL_Rect& text_area =
-		    font::draw_text(NULL,screen_area(),18,font::BUTTON_COLOUR,str,0,0);
+		    font::draw_text(NULL,rect,18,font::BUTTON_COLOUR,str,0,0);
 		const int x = xloc + int(zoom_/2.0) - text_area.w/2;
 		const int y = yloc + int(zoom_/2.0) - text_area.h/2;
-		font::draw_text(this,screen_area(),18,font::BUTTON_COLOUR,str,x,y);
+		font::draw_text(this,rect,18,font::BUTTON_COLOUR,str,x,y);
 	}
 }
 

@@ -64,10 +64,10 @@ gamemap::TERRAIN gamemap::underlying_terrain(TERRAIN terrain) const
 	}
 }
 
-gamemap::location::location(config& cfg) : x(-1), y(-1)
+gamemap::location::location(const config& cfg) : x(-1), y(-1)
 {
-	const std::string& xstr = cfg.values["x"];
-	const std::string& ystr = cfg.values["y"];
+	const std::string& xstr = cfg["x"];
+	const std::string& ystr = cfg["y"];
 
 	//the co-ordinates in config files will be 1-based, while we
 	//want them as 0-based

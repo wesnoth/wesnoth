@@ -19,6 +19,9 @@
 
 int get_random();
 
+const config* get_random_results();
+void set_random_results(const config& cfg);
+
 class replay
 {
 public:
@@ -50,6 +53,8 @@ public:
 	void undo();
 
 	int get_random();
+	const config* get_random_results() const;
+	void set_random_results(const config& cfg);
 
 	void start_replay();
 	config* get_next_action();

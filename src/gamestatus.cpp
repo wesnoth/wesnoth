@@ -18,6 +18,7 @@
 
 #include <algorithm>
 #include <cstdio>
+#include <iterator>
 #include <sstream>
 
 time_of_day::time_of_day(config& cfg)
@@ -117,6 +118,14 @@ game_state read_game(game_data& data, config* cfg)
 		res.starting_pos = *starts[0];
 	}
 
+	res.can_recruit.clear();
+
+	const std::string& can_recruit_str = (*cfg)["can_recruit"];
+	if(can_recruit_str != "") {
+		const std::vector<std::string> can_recruit = config::split(can_recruit_str);
+		std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
+	}
+
 	return res;
 }
 
@@ -151,6 +160,16 @@ void write_game(const game_state& game, config& cfg)
 	}
 
 	cfg.children["start"].push_back(new config(game.starting_pos));
+
+	std::stringstream can_recruit;
+	std::copy(game.can_recruit.begin(),game.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));
+	std::string can_recruit_str = can_recruit.str();
+
+	//remove the trailing comma
+	if(can_recruit_str.size() > 0)
+		can_recruit_str.resize(can_recruit_str.size()-1);
+
+	cfg["can_recruit"] = can_recruit_str;
 }
 
 //a structure for comparing to save_info objects based on their modified time.

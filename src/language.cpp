@@ -36,7 +36,7 @@ const std::string& translate_string(const std::string& str)
 const std::string& translate_string_default(const std::string& str, const std::string& default_val)
 {
 	const string_map::const_iterator i = string_table.find(str);
-	if(i != string_table.end())
+	if(i != string_table.end() && i->second != "")
 		return i->second;
 	else
 		return default_val;

@@ -58,6 +58,16 @@ int get_random()
 	return random_generator->get_random();
 }
 
+const config* get_random_results()
+{
+	return random_generator->get_random_results();
+}
+
+void set_random_results(const config& cfg)
+{
+	random_generator->set_random_results(cfg);
+}
+
 replay::replay() : pos_(0), current_(NULL), skip_(0)
 {}
 
@@ -285,6 +295,19 @@ int replay::get_random()
 		current_ = random.front();
 		return res;
 	}
+}
+
+const config* replay::get_random_results() const
+{
+	assert(current_ != NULL);
+	return current_->child("results");
+}
+
+void replay::set_random_results(const config& cfg)
+{
+	assert(current_ != NULL);
+	current_->children["results"].clear();
+	current_->children["results"].push_back(new config(cfg));
 }
 
 void replay::start_replay()
@@ -537,7 +560,9 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			std::map<gamemap::location,unit>::const_iterator tgt = units.find(dst);
 
 			if(tgt == units.end()) {
-				std::cerr << "unfound defender for attack\n";
+				std::cerr << "unfound defender for attack: "
+				          << (src.x+1) << "," << (src.y+1) << " -> "
+						  << (dst.x+1) << "," << (dst.y+1) << "\n";
 				throw replay::error();
 			}
 

@@ -613,6 +613,11 @@ void turn_info::show_menu()
 		menu.push_back(string_table[*items]);
 	}
 
+	static const std::string create_unit_debug = "Create Unit (debug)";
+	if(game_config::debug) {
+		menu.push_back(create_unit_debug);
+	}
+
 	if(un != units_.end()) {
 		menu.push_back(string_table["describe_unit"]);
 
@@ -631,7 +636,24 @@ void turn_info::show_menu()
 		menu.pop_back();
 	}
 
-	if(result == string_table["describe_unit"]) {
+	if(result == create_unit_debug) {
+		std::vector<std::string> options;
+		std::vector<unit> unit_choices;
+		for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin();
+		    i != gameinfo_.unit_types.end(); ++i) {
+			options.push_back(i->first);
+			unit_choices.push_back(unit(&i->second,1,false));
+		}
+
+		const int choice = gui::show_dialog(gui_,NULL,"","Create unit (debug):",
+			                                gui::OK_CANCEL,&options,&unit_choices);
+		if(choice >= 0 && choice < unit_choices.size()) {
+			units_.erase(last_hex_);
+			units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit_choices[choice]));
+			gui_.invalidate(last_hex_);
+			gui_.invalidate_unit();
+		}
+	} else if(result == string_table["describe_unit"]) {
 		unit_description();
 	} else if(result == string_table["rename_unit"]) {
 		rename_unit();
@@ -1003,7 +1025,7 @@ void turn_info::rename_unit()
 void turn_info::save_game()
 {
 	std::stringstream stream;
-	stream << translate_string(state_of_game_.scenario) << " " << string_table["turn"]
+	stream << state_of_game_.label << " " << string_table["turn"]
 	       << " " << status_.turn();
 	std::string label = stream.str();
 
@@ -1189,8 +1211,12 @@ void turn_info::recall()
 			       << string_table["level"] << ": "
 			       << unit->type().level() << ","
 			       << string_table["xp"] << ": "
-			       << unit->experience() << "/"
-			       << unit->max_experience();
+			       << unit->experience() << "/";
+
+			if(unit->type().advances_to().empty())
+				option << "-";
+			else
+				option << unit->max_experience();
 			options.push_back(option.str());
 		}
 

@@ -157,6 +157,11 @@ const std::set<std::string>& team::recruits() const
 	return info_.can_recruit;
 }
 
+std::set<std::string>& team::recruits()
+{
+	return info_.can_recruit;
+}
+
 const std::vector<std::string>& team::recruitment_pattern() const
 {
 	return info_.recruitment_pattern;

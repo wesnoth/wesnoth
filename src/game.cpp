@@ -64,7 +64,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		try {
 			LEVEL_RESULT res = REPLAY;
 
-			state.label = scenario->values["name"];
+			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
 
 			recorder.set_save_info(state);
 
@@ -122,7 +122,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 		//if this isn't the last scenario, then save the game
 		if(scenario != NULL) {
-			state.label = (*scenario)["name"];
+			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
 			
 			const int should_save = dialogs::get_save_name(disp,
 												string_table["save_game_message"],

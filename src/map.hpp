@@ -57,7 +57,7 @@ public:
 
 		location() : x(-1), y(-1) {}
 		location(int x, int y) : x(x), y(y) {}
-		location(config& cfg);
+		location(const config& cfg);
 
 		bool valid() const { return x >= 0 && y >= 0; }
 

@@ -69,6 +69,7 @@ public:
 	void spend_gold(int amount);
 
 	const std::set<std::string>& recruits() const;
+	std::set<std::string>& recruits();
 	const std::vector<std::string>& recruitment_pattern() const;
 	const std::string& name() const;
 

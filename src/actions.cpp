@@ -341,15 +341,72 @@ void attack(display& gui, const gamemap& map,
 
 	while(stats.nattacks > 0 || stats.ndefends > 0) {
 		if(stats.nattacks > 0) {
-			const bool hits = (get_random()%100) < stats.chance_to_hit_defender;
-			const bool dies = gui.unit_attack(attacker,defender,
-			            hits ? stats.damage_defender_takes : 0,
-						a->second.attacks()[attack_with]);
+			const int ran_num = get_random();
+			bool hits = (ran_num%100) < stats.chance_to_hit_defender;
+
+			//make sure that if we're serializing a game here,
+			//we got the same results as the game did originally
+			const config* ran_results = get_random_results();
+			if(ran_results != NULL) {
+				const int results_chance = atoi((*ran_results)["chance"].c_str());
+				const bool results_hits = (*ran_results)["hits"] == "yes";
+				const int results_damage = atoi((*ran_results)["damage"].c_str());
+
+				if(results_chance != stats.chance_to_hit_defender) {
+					std::cerr << "SYNC ERROR: In attack " << a->second.type().name() << " vs "
+					          << d->second.type().name() << ": chance to hit defender is inconsistent. Data source: "
+							  << results_chance << "; Calculation: " << stats.chance_to_hit_defender
+							  << " (over-riding game calculations with data source results)\n";
+					hits = results_hits;
+				} else if(hits != results_hits) {
+					std::cerr << "SYNC ERROR: In attack " << a->second.type().name() << " vs "
+					          << d->second.type().name() << ": the data source says the hit was "
+							  << (results_hits ? "successful" : "unsuccessful") << ", while in-game calculations say the hit was "
+							  << (hits ? "successful" : "unsuccessful")
+							  << " random number: " << ran_num << " = " << (ran_num%100) << "/" << results_chance
+							  << " (over-riding game calculations with data source results)\n";
+					hits = results_hits;
+				} else if(results_damage != stats.damage_defender_takes) {
+					std::cerr << "SYNC ERROR: In attack " << a->second.type().name() << " vs "
+					          << d->second.type().name() << ": the data source says the hit did "
+							  << results_damage << " damage, while in-game calculations show the hit doing "
+							  << stats.damage_defender_takes << " damage (over-riding game calculations with data source results)\n";
+					stats.damage_defender_takes = results_damage;
+				}
+			}
+
+			bool dies = gui.unit_attack(attacker,defender,
+				            hits ? stats.damage_defender_takes : 0,
+							a->second.attacks()[attack_with]);
+
+			if(ran_results == NULL) {
+				config cfg;
+				cfg["hits"] = (hits ? "yes" : "no");
+				cfg["dies"] = (dies ? "yes" : "no");
+				char buf[50];
+				sprintf(buf,"%d",stats.damage_defender_takes);
+				cfg["damage"] = buf;
+				sprintf(buf,"%d",stats.chance_to_hit_defender);
+				cfg["chance"] = buf;
+				set_random_results(cfg);
+			} else {
+				const bool results_dies = (*ran_results)["dies"] == "yes";
+				if(results_dies != dies) {
+					std::cerr << "SYNC ERROR: In attack" << a->second.type().name() << " vs "
+					          << d->second.type().name() << ": the data source the unit "
+							  << (results_dies ? "perished" : "survived") << " while in-game calculations show the unit "
+							  << (dies ? "perished" : "survived") << " (over-riding game calculations with data source results)\n";
+					dies = results_dies;
+				}
+			}
+
 			if(dies) {
 				attackerxp = 8*d->second.type().level();
 				if(d->second.type().level() == 0)
 					attackerxp = 4;
 
+				a->second.get_experience(attackerxp);
+				attackerxp = 0;
 				defenderxp = 0;
 
 				gamemap::location loc = d->first;
@@ -397,16 +454,72 @@ void attack(display& gui, const gamemap& map,
 		}
 
 		if(stats.ndefends > 0) {
-			const bool hits = (get_random()%100) < stats.chance_to_hit_attacker;
-			const bool dies = gui.unit_attack(defender,attacker,
+			const int ran_num = get_random();
+			bool hits = (ran_num%100) < stats.chance_to_hit_attacker;
+
+			//make sure that if we're serializing a game here,
+			//we got the same results as the game did originally
+			const config* ran_results = get_random_results();
+			if(ran_results != NULL) {
+				const int results_chance = atoi((*ran_results)["chance"].c_str());
+				const bool results_hits = (*ran_results)["hits"] == "yes";
+				const int results_damage = atoi((*ran_results)["damage"].c_str());
+
+				if(results_chance != stats.chance_to_hit_attacker) {
+					std::cerr << "SYNC ERROR: In defend " << a->second.type().name() << " vs "
+					          << d->second.type().name() << ": chance to hit attacker is inconsistent. Data source: "
+							  << results_chance << "; Calculation: " << stats.chance_to_hit_attacker
+							  << " (over-riding game calculations with data source results)\n";
+					hits = results_hits;
+				} else if(hits != results_hits) {
+					std::cerr << "SYNC ERROR: In defend " << a->second.type().name() << " vs "
+					          << d->second.type().name() << ": the data source says the hit was "
+							  << (results_hits ? "successful" : "unsuccessful") << ", while in-game calculations say the hit was "
+							  << (hits ? "successful" : "unsuccessful")
+							  << " random number: " << ran_num << " = " << (ran_num%100) << "/" << results_chance
+							  << " (over-riding game calculations with data source results)\n";
+					hits = results_hits;
+				} else if(results_damage != stats.damage_attacker_takes) {
+					std::cerr << "SYNC ERROR: In defend " << a->second.type().name() << " vs "
+					          << d->second.type().name() << ": the data source says the hit did "
+							  << results_damage << " damage, while in-game calculations show the hit doing "
+							  << stats.damage_attacker_takes << " damage (over-riding game calculations with data source results)\n";
+					stats.damage_attacker_takes = results_damage;
+				}
+			}
+
+			bool dies = gui.unit_attack(defender,attacker,
 			               hits ? stats.damage_attacker_takes : 0,
 						   d->second.attacks()[stats.defend_with]);
+
+			if(ran_results == NULL) {
+				config cfg;
+				cfg["hits"] = (hits ? "yes" : "no");
+				cfg["dies"] = (dies ? "yes" : "no");
+				char buf[50];
+				sprintf(buf,"%d",stats.damage_attacker_takes);
+				cfg["damage"] = buf;
+				sprintf(buf,"%d",stats.chance_to_hit_attacker);
+				cfg["chance"] = buf;
+				set_random_results(cfg);
+			} else {
+				const bool results_dies = (*ran_results)["dies"] == "yes";
+				if(results_dies != dies) {
+					std::cerr << "SYNC ERROR: In defend" << a->second.type().name() << " vs "
+					          << d->second.type().name() << ": the data source the unit "
+							  << (results_dies ? "perished" : "survived") << " while in-game calculations show the unit "
+							  << (dies ? "perished" : "survived") << " (over-riding game calculations with data source results)\n";
+					dies = results_dies;
+				}
+			}
 
 			if(dies) {
 				defenderxp = 8*a->second.type().level();
 				if(a->second.type().level() == 0)
 					defenderxp = 4;
 
+				d->second.get_experience(defenderxp);
+				defenderxp = 0;
 				attackerxp = 0;
 
 				gamemap::location loc = a->first;
@@ -742,6 +855,10 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	}
 
 	if(found_enemies == false) {
+		if(found_human) {
+			game_events::fire("enemies defeated");
+		}
+
 		throw end_level_exception(found_human ? VICTORY : DEFEAT);
 	}
 

@@ -88,9 +88,11 @@ struct game_state
 	std::string campaign_type; //type of the game - campaign, multiplayer etc
 	std::string scenario; //the scenario being played
 	int gold; //amount of gold the player has saved
-	std::vector<unit> available_units; //units the player has to recall
+	std::vector<unit> available_units; //units the player may recall
 	std::map<std::string,std::string> variables; //variables that have been set
 	std::string difficulty; //the difficulty level the game is being played on.
+
+	std::set<std::string> can_recruit; //units the player has the ability to recruit
 
 	//if the game is saved mid-level, we have a series of replay steps to
 	//take the game up to the position it was saved at.

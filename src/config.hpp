@@ -107,6 +107,8 @@ struct config
 
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
+
+	const child_list& get_children(const std::string& key) const;
 	
 	config* child(const std::string& key);
 	const config* child(const std::string& key) const;

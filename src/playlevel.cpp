@@ -25,6 +25,7 @@
 #include "tooltips.hpp"
 
 #include <iostream>
+#include <iterator>
 
 LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
                         config* level, CVideo& video,
@@ -68,25 +69,34 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		if(gold.empty())
 			gold = "100";
 
-		const int minimum_gold = 100;
-
 		int ngold = ::atoi(gold.c_str());
-		if(ui == unit_cfg.begin() && state_of_game.gold >= minimum_gold &&
+		if(ui == unit_cfg.begin() && state_of_game.gold >= ngold &&
 		   (*level)["disallow_recall"] != "yes")
 			ngold = state_of_game.gold;
 
-		const gamemap::location& start_pos =
-		             map.starting_position(new_unit.side());
+		const gamemap::location& start_pos = map.starting_position(new_unit.side());
 
-		if(!start_pos.valid()) {
-			std::stringstream err;
-			err << "No starting position for side " << new_unit.side();
-			throw gamestatus::load_game_failed(err.str());
+		if(!start_pos.valid() && new_unit.side() == 1) {
+			throw gamestatus::load_game_failed("No starting position for side 1");
 		}
 
-		units.insert(std::pair<gamemap::location,unit>(
-					     map.starting_position(new_unit.side()), new_unit));
+		if(start_pos.valid()) {
+			units.insert(std::pair<gamemap::location,unit>(
+							map.starting_position(new_unit.side()), new_unit));
+		}
+
 		teams.push_back(team(**ui,ngold));
+
+		//if the game state specifies units that can be recruited for the player
+		//then add them
+		if(teams.size() == 1 && state_of_game.can_recruit.empty() == false) {
+			std::copy(state_of_game.can_recruit.begin(),state_of_game.can_recruit.end(),
+				std::inserter(teams.back().recruits(),teams.back().recruits().end()));
+		}
+		
+		if(teams.size() == 1) {
+			state_of_game.can_recruit = teams.back().recruits();
+		}
 
 		if(first_human_team == -1 && teams.back().is_human()) {
 			first_human_team = teams.size()-1;
@@ -373,10 +383,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				} catch(end_level_exception&) {
 				}
 
-				if((*level)["disallow_recall"] == "yes") {
-					return VICTORY;
-				}
-
 				//add all the units that survived the scenario
 				for(std::map<gamemap::location,unit>::iterator un =
 				    units.begin(); un != units.end(); ++un) {
@@ -385,6 +391,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						state_of_game.available_units.
 						                push_back(un->second);
 					}
+				}
+
+				if((*level)["disallow_recall"] == "yes") {
+					return VICTORY;
 				}
 
 				const int remaining_gold = teams[0].gold();
