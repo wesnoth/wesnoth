@@ -992,9 +992,9 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 				energy_file = "ally-energy.png";
 			}
 		} else {
-			if(unit_move == unit_total_move) {
+			if(activeTeam_ == currentTeam_ && unit_move == unit_total_move) {
 				energy_file = "unmoved-energy.png";
-			} else if(unit_can_move(loc,units_,map_,teams_)) {
+			} else if(activeTeam_ == currentTeam_ && unit_can_move(loc,units_,map_,teams_)) {
 				energy_file = "partmoved-energy.png";
 			} else {
 				energy_file = "moved-energy.png";

@@ -220,6 +220,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				}
 
 				if(!replaying && team_it->music().empty() == false) {
+					std::cerr << "playing music: '" << team_it->music() << "'\n";
 					sound::play_music(team_it->music());
 				}
 

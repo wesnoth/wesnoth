@@ -680,12 +680,11 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 								
 						if(combo_race[n].process(mousex,mousey,left_button))
 						{
-							std::map<std::string,std::string>& values =
-				                                possible_sides[combo_race[n].selected()]->values;
-							sides[n]->values["name"] = values["name"];
-							sides[n]->values["type"] = values["type"];
-							sides[n]->values["recruit"] = values["recruit"];
-							sides[n]->values["recruitment_pattern"] = values["recruitment_pattern"];
+							const string_map& values = possible_sides[combo_race[n].selected()]->values;
+
+							for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
+								(*sides[n])[i->first] = i->second;
+							}
 						}
 
 						if(combo_team[n].process(mousex,mousey,left_button))
