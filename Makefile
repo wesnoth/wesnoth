@@ -6,7 +6,7 @@ DATADIR=/usr/local
 SERVDIR=/usr/local
 
 CC=g++
-CXXFLAGS=-O2 -Wall -DWESNOTH_PATH=\"$(DESTDIR)/share/games/wesnoth-data\"
+CXXFLAGS=-g -O2 -Wall -DWESNOTH_PATH=\"$(DESTDIR)/share/games/wesnoth-data\"
 SDL_CFLAGS=`sdl-config --cflags` `freetype-config --cflags`
 SDL_LIBS=`sdl-config --libs` `freetype-config --libs` -lSDL_mixer -lSDL_ttf -lSDL_image -lSDL_net
 LIBS=${SDL_LIBS} -lstdc++
