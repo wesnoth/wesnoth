@@ -37,15 +37,6 @@ inline bool is_odd(T num) { return (static_cast<unsigned int>(num > 0 ? num : -n
 template<typename T>
 inline bool is_even(T num) { return !is_odd(num); }
 
-//place in our own namespace as to not clash with possible
-//standard library definitions
-namespace util {
-
-template<typename T>
-T round(T n) { return floor(n + 0.5); }
-
-}
-
 struct bad_lexical_cast {};
 
 template<typename To, typename From>
