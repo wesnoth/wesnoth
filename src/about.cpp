@@ -157,6 +157,7 @@ std::vector<std::string> get_text() {
  
  	text.push_back("+Hungarian Translation");
  	text.push_back("-   Khiraly");
+ 	text.push_back("-   Széll Tamás (TomJoad)");
  	text.push_back("+ ");
  
  	text.push_back("+Italian Translation");
