@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GR /GX /Ot /Oa /Ow /Og /Oi /Op /Oy /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GR /GX /Ot /Oa /Ow /Og /Oi /Op /Oy /I "f:/wesnoth/src" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /c
 # SUBTRACT CPP /Ox
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
@@ -70,7 +70,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
+# ADD CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/wesnoth/src" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -113,7 +113,19 @@ SOURCE=.\src\ai_move.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\animated.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\astarnode.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\serialization\binary_or_text.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\serialization\binary_wml.cpp
 # End Source File
 # Begin Source File
 
@@ -158,6 +170,10 @@ SOURCE=.\src\events.cpp
 # Begin Source File
 
 SOURCE=.\src\widgets\file_chooser.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\filechooser.cpp
 # End Source File
 # Begin Source File
 
@@ -221,11 +237,19 @@ SOURCE=.\src\language.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\leader_list.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\log.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\map.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\map_create.cpp
 # End Source File
 # Begin Source File
 
@@ -253,15 +277,23 @@ SOURCE=.\src\multiplayer.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\multiplayer_client.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\multiplayer_connect.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\multiplayer_create.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\multiplayer_lobby.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\multiplayer_ui.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\multiplayer_wait.cpp
 # End Source File
 # Begin Source File
 
@@ -270,6 +302,10 @@ SOURCE=.\src\network.cpp
 # Begin Source File
 
 SOURCE=.\src\network_worker.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\serialization\parser.cpp
 # End Source File
 # Begin Source File
 
@@ -290,6 +326,10 @@ SOURCE=.\src\playturn.cpp
 # Begin Source File
 
 SOURCE=.\src\preferences.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\serialization\preprocessor.cpp
 # End Source File
 # Begin Source File
 
@@ -349,6 +389,10 @@ SOURCE=.\src\statistics.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\serialization\string_utils.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\team.cpp
 # End Source File
 # Begin Source File
@@ -393,6 +437,10 @@ SOURCE=.\src\video.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\wassert.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\widgets\widget.cpp
 # End Source File
 # End Group
@@ -434,6 +482,10 @@ SOURCE=.\src\array.hpp
 # Begin Source File
 
 SOURCE=.\src\astarnode.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\serialization\binary_wml.hpp
 # End Source File
 # Begin Source File
 
@@ -537,6 +589,10 @@ SOURCE=.\src\language.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\leader_list.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\log.hpp
 # End Source File
 # Begin Source File
@@ -577,7 +633,19 @@ SOURCE=.\src\multiplayer_connect.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\multiplayer_create.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\multiplayer_lobby.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\multiplayer_ui.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\multiplayer_wait.hpp
 # End Source File
 # Begin Source File
 
@@ -585,7 +653,19 @@ SOURCE=.\src\network.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\network_worker.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\serialization\parser.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\pathfind.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\pathutils.hpp
 # End Source File
 # Begin Source File
 
@@ -598,6 +678,10 @@ SOURCE=.\src\playturn.hpp
 # Begin Source File
 
 SOURCE=.\src\preferences.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\serialization\preprocessor.hpp
 # End Source File
 # Begin Source File
 
@@ -654,6 +738,10 @@ SOURCE=.\src\sound.hpp
 # Begin Source File
 
 SOURCE=.\src\statistics.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\serialization\string_utils.hpp
 # End Source File
 # Begin Source File
 
