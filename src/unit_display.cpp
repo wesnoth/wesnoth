@@ -151,8 +151,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		disp.draw_tile(a.x, a.y);
 		for(int tile = 0; tile != 6; ++tile)
 			disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
-		// disp.invalidate_animations();
-		disp.draw(false);
 
 		if (!teleport_unit) {
 			const int height_adjust = src_height_adjust + (dst_height_adjust - src_height_adjust) * i / nsteps;
@@ -169,9 +167,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 		const int new_ticks = SDL_GetTicks();
 		const int wait_time = time_between_frames - (new_ticks - ticks);
-		if(wait_time > 0) {
-			SDL_Delay(wait_time);
-		}
+		SDL_Delay(maximum<int>(wait_time,1));
 
 		ticks = SDL_GetTicks();
 
