@@ -22,6 +22,7 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
+#include "game_events.hpp"
 #include "log.hpp"
 #include "scoped_resource.hpp"
 
@@ -642,6 +643,11 @@ const std::string& config::operator[](const std::string& key) const
 {
 	const string_map::const_iterator i = values.find(key);
 	if(i != values.end()) {
+		//see if the value is a variable
+		if(i->second[0] == '$') {
+			return game_events::get_variable(std::string(i->second.begin()+1,i->second.end()));
+		}
+
 		return i->second;
 	} else {
 		static const std::string empty_string;

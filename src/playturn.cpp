@@ -612,7 +612,7 @@ void turn_info::show_menu()
 	}
 
 	static const std::string create_unit_debug = "Create Unit (debug)";
-	if(game_config::debug) {
+	if(game_config::debug && map_.on_board(last_hex_)) {
 		menu.push_back(create_unit_debug);
 	}
 

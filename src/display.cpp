@@ -926,8 +926,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		image_type = image::GREYED;
 	}
 
-	if(loc == mouseoverHex_ || loc == selectedHex_ &&
-	   units_.count(gamemap::location(x,y)) == 1) {
+	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) ||
+	   loc == selectedHex_ && units_.count(gamemap::location(x,y)) == 1) {
 		image_type = image::BRIGHTENED;
 	}
 

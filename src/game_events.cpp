@@ -900,6 +900,20 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 namespace game_events {
 
+const std::string& get_variable(const std::string& key)
+{
+	static const std::string empty_string;
+	if(state_of_game != NULL) {
+		const string_map::const_iterator i = state_of_game->variables.find(key);
+		if(i != state_of_game->variables.end())
+			return i->second;
+		else
+			return empty_string;
+	} else {
+		return empty_string;
+	}
+}
+
 manager::manager(config& cfg, display& gui_, gamemap& map_,
                  std::map<gamemap::location,unit>& units_,
                  std::vector<team>& teams_,
