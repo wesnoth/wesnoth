@@ -384,6 +384,7 @@ AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome1found = xno])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
 AM_CONDITIONAL([X11], [false])
+AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 
 #######################################################################
 # Check for PNG support in SDL_image                                  #
