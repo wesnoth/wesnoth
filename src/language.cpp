@@ -29,8 +29,23 @@ namespace {
 
 language_def known_languages[] = {
  	{ "", N_("System default language") },
+	{ "es_ES", "Castellano" },
+	{ "ca_ES", "Català" },
+	{ "da_DK", "Dansk" },
+	{ "de_DE", "Deutsch" },
  	{ "C", "English" },
  	{ "fr_FR", "Français" },
+	{ "hu_HU", "Hungarian" },
+	{ "it_IT", "Italiano" },
+	{ "nl_NL", "Nederlands" },
+	{ "no_NO", "Norsk" },
+	{ "pl_PL", "Polski" },
+	{ "pt_BR", "Português do Brasil" },
+	{ "sk_SK", "Slovenčina" },
+	{ "fi_FI", "Suomi" },
+	{ "sv_SE", "Swedish" },
+
+	// end of list marker, do not remove
 	{ "", "" }
 };
 
