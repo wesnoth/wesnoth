@@ -376,12 +376,27 @@ int play_game(int argc, char** argv)
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
 		} else {
-			if(!is_directory(val)) {
-				std::cerr << "Could not find directory '" << val << "'\n";
+			char buf[256];
+
+			if(val[0] == '/') {
+				game_config::path = val;
+			} else if(getcwd(buf,sizeof(buf)) != NULL) {
+				std::string cwd(buf);
+
+#ifdef _WIN32
+				std::replace(cwd.begin(),cwd.end(),'\\','/');
+#endif
+				game_config::path = cwd + '/' + val;
+			} else {
+				std::cerr << "Could not get working directory\n";
 				return 0;
 			}
 
-			game_config::path = val;
+			if(!is_directory(game_config::path)) {
+				std::cerr << "Could not find directory '" << game_config::path << "'\n";
+				return 0;
+			}
+
 		}
 	}
 
