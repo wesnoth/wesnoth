@@ -90,11 +90,11 @@ std::string recruit_unit(const gamemap& map, int side,
 	}
 
 	if(u == units.end())
-		return string_table["no_leader_to_recruit"];
+		return _("You don't have a leader to recruit with.");
 
 	if(map.is_keep(u->first) == false) {
 		std::cerr << "Leader not on start: leader is on " << (u->first.x+1) << "," << (u->first.y+1) << "\n";
-		return string_table["leader_not_on_start"];
+		return _("You must have your leader on a keep to recruit or recall units.");
 	}
 
 	if(map.on_board(recruit_location)) {
@@ -111,7 +111,7 @@ std::string recruit_unit(const gamemap& map, int side,
 	}
 
 	if(!map.on_board(recruit_location)) {
-		return string_table["no_recruit_location"];
+		return _("There are no vacant castle tiles in which to recruit a unit.");
 	}
 
 	if(full_movement) {
@@ -199,7 +199,7 @@ battle_stats evaluate_battle_stats(
 	res.attack_with = attack_with;
 
 	if(include_strings)
-		res.defend_name = string_table["weapon_none"];
+		res.defend_name = _("none");
 
 	const std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	const std::map<gamemap::location,unit>::iterator d = units.find(defender);
@@ -314,7 +314,7 @@ battle_stats evaluate_battle_stats(
 
 		if(include_strings) {
 			std::stringstream str_base;
-			str_base << string_table["base_damage"] << "," << base_damage << ",";
+			str_base << _("base damage") << "," << base_damage << ",";
 			res.defend_calculations.push_back(str_base.str());
 		}
 
@@ -324,7 +324,7 @@ battle_stats evaluate_battle_stats(
 		if(include_strings && resist != 0) {
 			std::stringstream str_resist;
 
-			str_resist << string_table[resist < 0 ? "attacker_resistance" : "attacker_vulnerability"] << " " << translate_string(defender_attacks[defend].type())
+			str_resist << gettext(resist < 0 ? N_("attacker resistance vs") : N_("attacker vulnerability vs")) << " " << translate_string(defender_attacks[defend].type())
 				<< ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
 			res.defend_calculations.push_back(str_resist.str());
 		}
@@ -335,7 +335,7 @@ battle_stats evaluate_battle_stats(
 		if(include_strings && tod_modifier != 0) {
 			std::stringstream str_mod;
 			const time_of_day& tod = timeofday_at(state,units,d->first);
-			str_mod << translate_string_default(tod.id,tod.name) << ", ,^"
+			str_mod << tod.name << ", ,^"
 			        << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
 			res.defend_calculations.push_back(str_mod.str());
 		}
@@ -345,7 +345,7 @@ battle_stats evaluate_battle_stats(
 
 			if(include_strings) {
 				std::stringstream str;
-				str << translate_string("charge") << ", ,^+100%";
+				str << _("charge") << ", ,^+100%";
 				res.defend_calculations.push_back(str.str());
 			}
 		}
@@ -356,7 +356,7 @@ battle_stats evaluate_battle_stats(
 
 			if(include_strings) {
 				std::stringstream str;
-				str << translate_string("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
+				str << _("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
 				res.defend_calculations.push_back(str.str());
 			}
 		}
@@ -384,7 +384,7 @@ battle_stats evaluate_battle_stats(
 			percent *= is_negative;
 
 			std::stringstream str;
-			str << translate_string("total_damage") << "," << res.damage_attacker_takes
+			str << _("total damage") << "," << res.damage_attacker_takes
 				<< ",^" << (percent >= 0 ? "+" : "") << percent << "% (" << (difference >= 0 ? "+" : "") << difference << ")";
 			res.defend_calculations.push_back(str.str());
 		}
@@ -431,7 +431,7 @@ battle_stats evaluate_battle_stats(
 	if(include_strings) {
 		std::stringstream str_base;
 
-		str_base << string_table["base_damage"] << "," << base_damage << ",";
+		str_base << _("base damage") << "," << base_damage << ",";
 		res.attack_calculations.push_back(str_base.str());
 	}
 
@@ -441,7 +441,7 @@ battle_stats evaluate_battle_stats(
 	if(include_strings && resist != 0) {
 		std::stringstream str_resist;
 
-		str_resist << string_table[resist < 0 ? "defender_resistance" : "defender_vulnerability"] << " " << translate_string(attack.type())
+		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs")) << " " << translate_string(attack.type())
 			       << ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
 		res.attack_calculations.push_back(str_resist.str());
 	}
@@ -453,7 +453,7 @@ battle_stats evaluate_battle_stats(
 	if(include_strings && tod_modifier != 0) {
 		std::stringstream str_mod;
 		const time_of_day& tod = timeofday_at(state,units,a->first);
-		str_mod << translate_string_default(tod.id,tod.name) << ", ,^"
+		str_mod << tod.name << ", ,^"
 		        << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
 		res.attack_calculations.push_back(str_mod.str());
 	}
@@ -463,7 +463,7 @@ battle_stats evaluate_battle_stats(
 
 		if(include_strings) {
 			std::stringstream str;
-			str << translate_string("charge") << ", ,^+100%";
+			str << _("charge") << ", ,^+100%";
 			res.attack_calculations.push_back(str.str());
 		}
 	}
@@ -472,7 +472,7 @@ battle_stats evaluate_battle_stats(
 		percent += 100;
 		if(include_strings) {
 			std::stringstream str;
-			str << translate_string("backstab") << ", ,^+100%";
+			str << _("backstab") << ", ,^+100%";
 			res.attack_calculations.push_back(str.str());
 		}
 	}
@@ -483,7 +483,7 @@ battle_stats evaluate_battle_stats(
 		
 		if(include_strings) {
 			std::stringstream str;
-			str << translate_string("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
+			str << _("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
 			res.attack_calculations.push_back(str.str());
 		}
 	}
@@ -510,7 +510,7 @@ battle_stats evaluate_battle_stats(
 		percent *= is_negative;
 
 		std::stringstream str;
-		str << translate_string("total_damage") << "," << res.damage_defender_takes
+		str << _("total damage") << "," << res.damage_defender_takes
 			<< ",^" << (percent >= 0 ? "+" : "") << percent << "% (" << (difference >= 0 ? "+" : "") << difference << ")";
 		res.attack_calculations.push_back(str.str());
 	}
@@ -681,12 +681,12 @@ void attack(display& gui, const gamemap& map,
 				if(stats.attack_special == poison_string &&
 				   d->second.has_flag("poisoned") == false &&
 				   !d->second.type().not_living()) {
-					gui.float_label(d->first,translate_string("poisoned"),255,0,0);
+					gui.float_label(d->first,_("poisoned"),255,0,0);
 					d->second.set_flag("poisoned");
 				}
 
 				if(stats.attacker_slows && d->second.has_flag("slowed") == false) {
-					gui.float_label(d->first,translate_string("slowed"),255,0,0);
+					gui.float_label(d->first,_("slowed"),255,0,0);
 					d->second.set_flag("slowed");
 					if(stats.ndefends > 1)
 						--stats.ndefends;
@@ -702,7 +702,7 @@ void attack(display& gui, const gamemap& map,
 				//if the defender is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
 				if(stats.attack_special == stone_string) {
-					gui.float_label(d->first,translate_string("stone"),255,0,0);
+					gui.float_label(d->first,_("stone"),255,0,0);
 					d->second.set_flag(stone_string);
 					stats.ndefends = 0;
 					stats.nattacks = 0;
@@ -817,12 +817,12 @@ void attack(display& gui, const gamemap& map,
 				if(stats.defend_special == poison_string &&
 				   a->second.has_flag("poisoned") == false &&
 				   !a->second.type().not_living()) {
-					gui.float_label(a->first,translate_string("poisoned"),255,0,0);
+					gui.float_label(a->first,_("poisoned"),255,0,0);
 					a->second.set_flag("poisoned");
 				}
 
 				if(stats.defender_slows && a->second.has_flag("slowed") == false) {
-					gui.float_label(a->first,translate_string("slowed"),255,0,0);
+					gui.float_label(a->first,_("slowed"),255,0,0);
 					a->second.set_flag("slowed");
 					if(stats.nattacks > 1)
 						--stats.nattacks;
@@ -839,7 +839,7 @@ void attack(display& gui, const gamemap& map,
 				//if the attacker is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
 				if(stats.defend_special == stone_string) {
-					gui.float_label(a->first,translate_string("stone"),255,0,0);
+					gui.float_label(a->first,_("stone"),255,0,0);
 					a->second.set_flag(stone_string);
 					stats.ndefends = 0;
 					stats.nattacks = 0;
@@ -1688,7 +1688,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		//show messages on the screen here
 		if(discovered_unit) {
 			//we've been ambushed, so display an appropriate message
-			font::add_floating_label(string_table["ambushed"],24,font::BAD_COLOUR,
+			font::add_floating_label(_("Ambushed!"),24,font::BAD_COLOUR,
 			                         disp->map_area().w/2,disp->map_area().h/3,
 									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
 		}
@@ -1710,26 +1710,26 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				std::cerr << "processed...\n";
 			}
 
-			std::string msg_id;
+			char* msg_id;
 
 			//the message we display is different depending on whether units sighted
 			//were enemies or friends, and whether there is one or more
 			if(seen_units.size() == 1) {
 				if(nfriends == 1) {
-					msg_id = "friendly_unit_sighted";
+					msg_id = N_("Friendly unit sighted");
 				} else {
-					msg_id = "enemy_unit_sighted";
+					msg_id = N_("Enemy unit sighted!");
 				}
 			}
 			else if(nfriends == 0 || nenemies == 0) {
 				if(nfriends > 0) {
-					msg_id = "friendly_units_sighted";
+					msg_id = N_("$friends Friendly units sighted");
 				} else {
-					msg_id = "enemy_units_sighted";
+					msg_id = N_("$enemies Enemy units sighted!");
 				}
 			}
 			else {
-				msg_id = "units_sighted";
+				msg_id = N_("Units sighted! ($friends friendly, $enemies enemy)");
 			}
 
 			string_map symbols;
@@ -1737,7 +1737,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			symbols["enemies"] = lexical_cast<std::string>(nenemies);
 
 			std::stringstream msg;
-			msg << string_table[msg_id];
+			msg << gettext(msg_id);
 			
 			if(u.movement_left() > 0) {
 				//see if the "Continue Move" action has an associated hotkey
@@ -1750,7 +1750,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				}
 				if(hk != hotkeys.end()) {
 					symbols["hotkey"] = hotkey::get_hotkey_name(*hk);
-					msg << '\n' << string_table["press_to_continue"];
+					msg << '\n' << _("(press $hotkey to continue)");
 				}
 			}
 			std::cerr << "formatting string...\n";

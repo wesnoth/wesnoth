@@ -1,11 +1,6 @@
-touch configure.ac
-touch aclocal.m4
-touch config.h.in
-touch config.h
-touch Makefile.in
-touch icons/Makefile.in
-touch src/Makefile.in
-touch src/server/Makefile.in
-touch src/tools/Makefile.in
-touch src/zip/Makefile.in
-touch configure
+#! /bin/sh
+
+aclocal -I m4
+autoheader
+automake --add-missing --copy
+autoconf

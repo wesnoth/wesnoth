@@ -39,7 +39,7 @@ private:
 void check_response(network::connection res, const config& data)
 {
 	if(!res) {
-		throw network::error(string_table["connection_timeout"]);
+		throw network::error(_("Connection timed out"));
 	}
 
 	const config* err = data.child("error");
@@ -56,7 +56,7 @@ void receive_gamelist(display& disp, config& data)
 			break;
 		}
 
-		const network::connection res = gui::network_data_dialog(disp,string_table["receive_game_list"],data);
+		const network::connection res = gui::network_data_dialog(disp,_("Receiving game list..."),data);
 		check_response(res,data);
 	}
 }
@@ -90,7 +90,7 @@ public:
 			}
 
 			std::stringstream str;
-			str << description << "," << side_name << "," << sd["gold"] << " " << translate_string("gold") << "," << sd["team_name"];
+			str << description << "," << side_name << "," << sd["gold"] << " " << _("Gold") << "," << sd["team_name"];
 			details.push_back(str.str());
 		}
 
@@ -108,13 +108,13 @@ public:
 		area_ = area;
 		generate_menu();
 
-		const std::string text = string_table["waiting_start"];
+		const std::string text = _("Waiting for game to start...");
 		SDL_Rect rect = font::draw_text(NULL,disp_.screen_area(),14,font::NORMAL_COLOUR,text,0,0);
 		rect.x = area.x + area.w/2 - rect.w/2;
 		rect.y = area.y + (area.h*3)/4 - rect.h/2;
 		font::draw_text(&disp_,rect,14,font::NORMAL_COLOUR,text,rect.x,rect.y);
 
-		cancel_button_.assign(new gui::button(disp_,string_table["cancel"]));
+		cancel_button_.assign(new gui::button(disp_,_("Cancel")));
 		cancel_button_->set_location(area.x+area.w - cancel_button_->width() - gui::ButtonHPadding,
 			                         area.y+area.h - cancel_button_->height() - gui::ButtonVPadding);
 		cancel_button_->draw();
@@ -216,7 +216,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		host = preferences::network_host();
 		const int res = gui::show_dialog(disp,NULL,"","",
 		                                 gui::OK_CANCEL,NULL,NULL,
-		                                 string_table["remote_host"] + ": ",&host);
+		                                 _("Choose host to connect to") + std::string(": "),&host);
 		if(res != 0 || host.empty()) {
 			return;
 		}
@@ -234,7 +234,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
  
 	config sides, data;
 
-	network::connection data_res = gui::network_data_dialog(disp,string_table["connecting_remote"],data);
+	network::connection data_res = gui::network_data_dialog(disp,_("Connecting to remote host..."),data);
 	check_response(data_res,data);
 
 	preferences::set_network_host(host);
@@ -263,8 +263,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 			if(!first_time) {	
 				const int res = gui::show_dialog(disp,NULL,"",
-				                    string_table["must_login"],gui::OK_CANCEL,
-									NULL,NULL,string_table["login"] + ": ",&login);
+				                    _("You must log in to this server"),gui::OK_CANCEL,
+									NULL,NULL,_("Login") + std::string(": "),&login);
 				if(res != 0 || login.empty()) {
 					return;
 				}
@@ -280,7 +280,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	
 			data_res = network::receive_data(data,0,3000);
 			if(!data_res) {
-				throw network::error(string_table["connection_timeout"]);
+				throw network::error(_("Connection timed out"));
 			}
 
 			std::cerr << "login response: '" << data.write() << "'\n";
@@ -343,7 +343,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			}
     
 			for(;;) {
-				data_res = gui::network_data_dialog(disp,string_table["getting_game_data"],sides);
+				data_res = gui::network_data_dialog(disp,_("Getting game data..."),sides);
 				if(data_res && sides.child("error")) {
 					gui::show_dialog(disp,NULL,"",(*sides.child("error"))["message"]);
 					break;
@@ -394,7 +394,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			}
 
 			if(side_choice == sides_list.end()) {
-				gui::show_dialog(disp,NULL,"",string_table["no_sides_available"],gui::OK_ONLY);
+				gui::show_dialog(disp,NULL,"",_("There are no available sides in this game."),gui::OK_ONLY);
 				continue;
 			}
 
@@ -425,7 +425,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			std::vector<std::string> choices;
 			for(config::child_list::const_iterator side =
 			    possible_sides.begin(); side != possible_sides.end(); ++side) {
-				choices.push_back(translate_string_default((**side)["id"],(**side)["name"]));
+				choices.push_back((**side)["name"]);
 
 				if(choices.back() == default_race) {
 					choice = side - possible_sides.begin();
@@ -436,7 +436,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			//it set by the server, do that here.
 			if(allow_changes) {
 				choice = size_t(gui::show_dialog(disp,NULL,"",
-				     string_table["client_choose_side"],gui::OK_ONLY,&choices));
+				     _("Choose your side:"),gui::OK_ONLY,&choices));
 			}
 
 			assert(choice < possible_sides.size());
@@ -461,11 +461,11 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		waiter.clear_widgets();
 
 		if(waiter.status == wait_for_start::GAME_CANCELLED) {
-			gui::show_dialog(disp,NULL,"",string_table["game_cancelled"],
+			gui::show_dialog(disp,NULL,"",_("The game has been cancelled"),
 			                 gui::OK_ONLY);
 			continue;
 		} else if(waiter.status == wait_for_start::SIDE_UNAVAILABLE) {
-			gui::show_dialog(disp,NULL,"",string_table["side_unavailable"],
+			gui::show_dialog(disp,NULL,"",_("The side you have chosen is no longer available"),
 			                 gui::OK_ONLY);
 			continue;			
 		} else if(dialog_res != lobby::CREATE) {
@@ -501,7 +501,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			recorder = replay(replay_data_store);
 			if(!recorder.empty()) {
 				const int res = gui::show_dialog(disp,NULL,
-		               "", string_table["replay_game_message"],
+		               "", _("Show replay of game up to save point?"),
 					   gui::YES_NO);
 				//if yes, then show the replay, otherwise
 				//skip showing the replay

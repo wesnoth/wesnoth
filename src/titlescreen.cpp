@@ -134,7 +134,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 
 	std::cerr << "faded logo\n";
 
-	const std::string& version_str = string_table["version"] + " " +
+	const std::string& version_str = _("Version") + std::string(" ") +
 	                                 game_config::version;
 
 	const SDL_Rect version_area = font::draw_text(NULL,screen.screen_area(),10,
@@ -149,8 +149,22 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::cerr << "drew version number\n";
 
 	//members of this array must correspond to the enumeration TITLE_RESULT
-	static const std::string button_labels[] = { "tutorial_button", "campaign_button", "multiplayer_button",
-		"load_button", "language_button", "preferences", "about_button", "quit_button" };
+	static const char* button_labels[] = { N_("Tutorial"),
+					       N_("Campaign"),
+					       N_("Multiplayer"),
+					       N_("Load"),
+					       N_("Language"),
+					       N_("Preferences"),
+					       N_("About"),
+					       N_("Quit") };
+	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
+						    N_("Start a new single player campaign"),
+						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
+						    N_("Load a single player saved game"),
+						    N_("Change the language"),
+						    N_("Configure the game's settings"),
+						    N_("View the credits"),
+						    N_("Quit the game") };
 
 	static const size_t nbuttons = sizeof(button_labels)/sizeof(*button_labels);
 
@@ -163,10 +177,10 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::vector<button> buttons;
 	size_t b, max_width = 0;
 	for(b = 0; b != nbuttons; ++b) {
-		buttons.push_back(button(screen,string_table[button_labels[b]]));
+		buttons.push_back(button(screen,gettext(button_labels[b])));
 		buttons.back().set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
-		buttons.back().set_help_string(string_table["help_string_" + button_labels[b]]);
-		std::cerr << "set help string for '" << button_labels[b] << "' -> '" << string_table["help_string_" + button_labels[b]] << "'\n";
+		buttons.back().set_help_string(gettext(help_button_labels[b]));
+		std::cerr << "set help string for '" << button_labels[b] << "' -> '" << gettext(help_button_labels[b]) << "'\n";
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 
@@ -174,13 +188,13 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::string style = "mainmenu";
 	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen,&style);
 
-	gui::button next_tip_button(screen,string_table["next_tip"],button::TYPE_PRESS,"lite_small");
+	gui::button next_tip_button(screen,_("More"),button::TYPE_PRESS,"lite_small");
 
 	std::string tip_of_day = get_tip_of_day(ntip);
 	if(tip_of_day.empty() == false) {
 		tip_of_day = font::word_wrap_text(tip_of_day,14,(game_config::title_tip_width*screen.x())/1024);
 
-		const std::string& tome = font::word_wrap_text(string_table["tome"],14,(game_config::title_tip_width*screen.x())/1024);
+		const std::string& tome = font::word_wrap_text(_("-- The Tome of Wesnoth"),14,(game_config::title_tip_width*screen.x())/1024);
 
 		const int pad = game_config::title_tip_padding;
 

@@ -17,6 +17,8 @@ AM_INIT_AUTOMAKE([foreign 1.5])
 AC_CONFIG_SRCDIR([src/actions.cpp])
 AC_CONFIG_HEADER([config.h])
 
+AM_MAINTAINER_MODE
+AM_GNU_GETTEXT
 
 #######################################################################
 # Checks for programs.                                                #
@@ -403,6 +405,7 @@ AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes])
 AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome1found = xno])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
+AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 
 #######################################################################
 # Check for PNG support in SDL_image                                  #
@@ -521,6 +524,9 @@ AC_SUBST([UTIL_FILES])
 
 
 AC_CONFIG_FILES([Makefile
+		 po/Makefile.in
+		 m4/Makefile
+		 intl/Makefile 
 		 icons/Makefile
 		 src/Makefile
 		 src/server/Makefile

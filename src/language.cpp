@@ -12,7 +12,6 @@
 */
 #include "config.hpp"
 #include "font.hpp"
-#include "hotkeys.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
 #include "util.hpp"
@@ -23,8 +22,46 @@
 #include <iostream>
 
 namespace {
-	std::string current_language;
+	language_def current_language;
 	string_map strings_;
+}
+
+language_def known_languages[] = {
+ 	{ "", N_("System default language") },
+	{ "es_ES", "Castellano" },
+	{ "ca_ES", "Català" },
+	{ "cs_CZ", "Čeština" },
+	{ "da_DK", "Dansk" },
+	{ "de_DE", "Deutsch" },
+ 	{ "C", "English" },
+ 	{ "fr_FR", "Français" },
+	{ "hu_HU", "Hungarian" },
+	{ "it_IT", "Italiano" },
+	{ "nl_NL", "Nederlands" },
+	{ "no_NO", "Norsk" },
+	{ "pl_PL", "Polski" },
+	{ "pt_BR", "Português do Brasil" },
+	{ "sk_SK", "Slovenčina" },
+	{ "fi_FI", "Suomi" },
+	{ "sv_SE", "Swedish" },
+
+	// end of list marker, do not remove
+	{ "", "" }
+};
+
+std::string languagedef_name (const language_def& def)
+{
+  return def.language;
+}
+
+bool languagedef_lessthan_p (const language_def& def1, const language_def& def2)
+{
+  return (def1.language < def2.language);
+}
+
+bool language_def::operator== (const language_def& a)
+{
+  return ((language == a.language) /* && (localename == a.localename) */ );
 }
 
 symbol_table string_table;
@@ -52,6 +89,7 @@ const std::string& translate_string(const std::string& str)
 
 const std::string& translate_string_default(const std::string& str, const std::string& default_val)
 {
+#ifdef USE_OLD_TRANS
 	const string_map::const_iterator i = strings_.find(str);
 	if(i != strings_.end() && i->second != "") {
 		return i->second;
@@ -65,44 +103,37 @@ const std::string& translate_string_default(const std::string& str, const std::s
 
 		return default_val;
 	}
+#else
+	return str;
+#endif
 }
 
-std::vector<std::string> get_languages()
+std::vector<language_def> get_languages()
 {
-	std::vector<std::string> res;
+	std::vector<language_def> res;
 
-	config cfg;
-
-	try {
-		cfg.read(preprocess_file("data/translations/",NULL,NULL));
-	} catch(config::error& e) {
-		std::cerr << "could not open translations: '" << e.message << "' -- defaulting to English only\n";
-		res.push_back("English");
-		return res;
-	}
-
-	const config::child_list& lang = cfg.get_children("language");
-	for(config::child_list::const_iterator i = lang.begin(); i != lang.end(); ++i) {
-		res.push_back((**i)["language"]);
+	for(int i = 0; known_languages[i].language[0] != '\0'; i++) {
+		res.push_back(known_languages[i]);
 	}
 
 	return res;
 }
 
 namespace {
-bool internal_set_language(const std::string& locale, config& cfg)
+bool internal_set_language(const language_def& locale, config& cfg)
 {
 	const config::child_list& lang = cfg.get_children("language");
 	for(config::child_list::const_iterator i = lang.begin(); i != lang.end(); ++i) {
-		if((**i)["id"] == locale || (**i)["language"] == locale) {
+		if((**i)["id"] == locale.localename || (**i)["language"] == locale.language) {
 
-			current_language = (**i)["language"];
+			current_language.language = (**i)["language"];
+			current_language.localename = (**i)["id"];
+
+			setlocale (LC_MESSAGES, locale.localename.c_str());
 
 			for(string_map::const_iterator j = (*i)->values.begin(); j != (*i)->values.end(); ++j) {
 				strings_[j->first] = j->second;
 			}
-
-			hotkey::add_hotkeys(**i,false);
 
 			font::set_font((**i)["font"]);
 
@@ -114,48 +145,64 @@ bool internal_set_language(const std::string& locale, config& cfg)
 }
 }
 
-bool set_language(const std::string& locale)
+bool set_language(const language_def& locale)
 {
 	strings_.clear();
 
 	std::string locale_lc;
-	locale_lc.resize(locale.size());
-	std::transform(locale.begin(),locale.end(),locale_lc.begin(),tolower);
+	locale_lc.resize(locale.localename.size());
+	std::transform(locale.localename.begin(),locale.localename.end(),locale_lc.begin(),tolower);
 
 	config cfg;
-	if(locale_lc == "en" || locale_lc == "english") {
+#ifdef USE_OLD_TRANS
+	if(locale_lc == "english") {
+#endif
 		try {
 			cfg.read(preprocess_file("data/translations/english.cfg"));
 		} catch(config::error& e) {
 			std::cerr << "Could not read english.cfg\n";
 			throw e;
 		}
-	} else {
+#ifdef USE_OLD_TRANS
+	} else if (locale.localename != "") {
 		try {
 			cfg.read(preprocess_file("data/translations/"));
 			
 			//default to English locale first, then set desired locale
-			internal_set_language("en",cfg);
+			internal_set_language(known_languages[1],cfg);
 		} catch(config::error& e) {
-			std::cerr << "error opening translations: '" << e.message << "' Defaulting to English\n";
-			return set_language("english");
+			std::cerr << "error opening translations: '" << e.message << "' Defaulting to system locale\n";
+			return set_language(known_languages[0]);
 		}
 	}
+#endif
 
-	return internal_set_language(locale,cfg);
+	current_language = locale;
+	setlocale (LC_MESSAGES, locale.localename.c_str());
+	return true;
 }
 
-const std::string& get_language() { return current_language; }
+const language_def& get_language() { return current_language; }
 
-std::string get_locale()
+const language_def& get_locale()
 {
 	//TODO: Add in support for querying the locale on Windows
 
 	const std::string& prefs_locale = preferences::locale();
 	if(prefs_locale.empty() == false) {
-		return prefs_locale;
+		char* setlocaleres = setlocale (LC_MESSAGES, prefs_locale.c_str());
+		if(setlocaleres == NULL)
+			std::cerr << "call to setlocale() failed for " << prefs_locale.c_str() << "\n";
+		for(int i = 0; known_languages[i].language[0] != '\0'; i++) {
+		  	if (prefs_locale == known_languages[i].localename)
+			  	return known_languages[i];
+		}
+		
+		std::cerr << "setlocale succeeded but locale not found in known array; defaulting to system locale\n";
+		return known_languages[0];
 	}
 
+#if 0
 	const char* const locale = getenv("LANG");
 	if(locale != NULL && strlen(locale) >= 2) {
 		//we can't pass pointers into the string to the std::string
@@ -166,9 +213,10 @@ std::string get_locale()
 		res[1] = tolower(locale[1]);
 		return res;
 	}
+#endif
 
-	std::cerr << "locale could not be determined; defaulting to locale 'en'\n";
-	return "en";
+	std::cerr << "locale could not be determined; defaulting to system locale\n";
+	return known_languages[0];
 }
 
 class invalid_utf8_exception : public std::exception {
@@ -329,4 +377,15 @@ wide_string string_to_wstring(const std::string &src)
 	return utf8_to_wstring(src);
 }
 
-
+const char* sgettext (const char *msgid)
+{
+	const char *msgval = gettext (msgid);
+	if (msgval == msgid) {
+		msgval = strrchr (msgid, '|');
+		if (msgval == NULL)
+			msgval = msgid;
+		else
+			msgval++;
+	}
+	return msgval;
+}

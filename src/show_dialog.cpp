@@ -435,39 +435,39 @@ int show_dialog(display& disp, surface image,
 		                               font::NORMAL_COLOUR,caption,0,0,NULL);
 	}
 
-	const std::string* button_list = NULL;
+	const char** button_list = NULL;
 	std::vector<button> buttons;
 	switch(type) {
 		case MESSAGE:
 			break;
 		case OK_ONLY: {
-			static const std::string thebuttons[] = { "ok_button", "" };
+			static const char* thebuttons[] = { N_("Ok"), "" };
 			button_list = thebuttons;
 			break;
 		}
 
 		case YES_NO: {
-			static const std::string thebuttons[] = { "yes_button",
-			                                          "no_button", ""};
+			static const char* thebuttons[] = { N_("yes"),
+			                                          N_("No"), ""};
 			button_list = thebuttons;
 			break;
 		}
 
 		case OK_CANCEL: {
-			static const std::string thebuttons[] = { "ok_button",
-			                                          "cancel_button",""};
+			static const char* thebuttons[] = { N_("Ok"),
+			                                          N_("Cancel"),""};
 			button_list = thebuttons;
 			break;
 		}
 
 		case CANCEL_ONLY: {
-			static const std::string thebuttons[] = { "cancel_button", "" };
+			static const char* thebuttons[] = { N_("Cancel"), "" };
 			button_list = thebuttons;
 			break;
 		}
 
 		case CLOSE_ONLY: {
-			static const std::string thebuttons[] = { "close_button", "" };
+			static const char* thebuttons[] = { N_("Close"), "" };
 			button_list = thebuttons;
 			break;
 		}
@@ -475,8 +475,8 @@ int show_dialog(display& disp, surface image,
 
 	if(button_list != NULL) {
 		try {
-			while(button_list->empty() == false) {
-				buttons.push_back(button(disp,string_table[*button_list]));
+			while((*button_list)[0] != '\0') {
+				buttons.push_back(button(disp,gettext(*button_list)));
 
 				++button_list;
 			}
@@ -605,7 +605,7 @@ int show_dialog(display& disp, surface image,
 
 	surface_restorer restorer;
 
-	button help_button(disp,string_table["action_help"]);
+	button help_button(disp,_("Help"));
 
 	const std::string& title = image == NULL ? caption : "";
 	draw_dialog(xframe,yframe,frame_width,frame_height,disp,title,dialog_style,&buttons_ptr,&restorer,help_topic.empty() ? NULL : &help_button);
@@ -938,7 +938,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 		std::stringstream str;
 		str << msg;
 		if(stats.first != -1) {
-			str << ": " << (stats.first/1024) << "/" << (stats.second/1024) << string_table["kilobytes"];
+			str << ": " << (stats.first/1024) << "/" << (stats.second/1024) << _("KB");
 		}
 
 		dialog_action_receive_network receiver(connection_num,cfg,stats);

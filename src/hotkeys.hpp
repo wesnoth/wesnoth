@@ -83,6 +83,7 @@ std::string get_hotkey_name(hotkey_item item);
 
 std::string command_to_string(const HOTKEY_COMMAND &command);
 HOTKEY_COMMAND string_to_command(const std::string& str);
+std::string command_to_description(const HOTKEY_COMMAND &command);
 
 enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF };
 

@@ -82,8 +82,8 @@ void advance_unit(const game_data& info,
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		res = gui::show_dialog(gui,NULL,string_table["advance_unit_heading"],
-		                       string_table["advance_unit_message"],
+		res = gui::show_dialog(gui,NULL,_("Advance Unit"),
+		                       _("What should our victorious unit become?"),
 		                       gui::OK_ONLY, &lang_options, &preview_panes);
 	}
 
@@ -152,7 +152,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 
 void show_objectives(display& disp, config& level_info)
 {
-	static const std::string no_objectives(string_table["no_objectives"]);
+	static const std::string no_objectives(_("No objectives available"));
 	const std::string& id = level_info["id"];
 	const std::string& lang_name = string_table[id];
 	const std::string& name = lang_name.empty() ? level_info["name"] :
@@ -175,7 +175,7 @@ int get_save_name(display & disp,const std::string& caption, const std::string& 
         res = gui::show_dialog(disp,NULL,"",caption,dialog_type,NULL,NULL,message,name);
             if (res == 0 && save_game_exists(*name))
                 overwrite = gui::show_dialog(disp,NULL,"",
-                    string_table["save_confirm_overwrite"],gui::YES_NO);
+                    _("Save already exists. Do you want to overwrite it ?"),gui::YES_NO);
         else overwrite = 0;
     } while ((res==0)&&(overwrite!=0));
 	return res;
@@ -204,9 +204,9 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 		//see if we should ask the user for deletion confirmation
 		if(preferences::ask_delete_saves()) {
 			std::vector<gui::check_item> options;
-			options.push_back(gui::check_item(string_table["dont_ask_again"],false));
+			options.push_back(gui::check_item(_("Don't ask me again!"),false));
 
-			const int res = gui::show_dialog(disp_,NULL,"",string_table["really_delete_save"],gui::YES_NO,
+			const int res = gui::show_dialog(disp_,NULL,"",_("Do you really want to delete this game?"),gui::YES_NO,
 			                                 NULL,NULL,"",NULL,NULL,&options);
 
 			//see if the user doesn't want to be asked this again
@@ -347,7 +347,7 @@ void save_preview_pane::draw()
 	}
 
 	char time_buf[256];
-	const size_t res = strftime(time_buf,sizeof(time_buf),string_table["date_format"].c_str(),localtime(&((*info_)[index_].time_modified)));
+	const size_t res = strftime(time_buf,sizeof(time_buf),_("%a %b %d %H:%M %Y"),localtime(&((*info_)[index_].time_modified)));
 	if(res == 0) {
 		time_buf[0] = 0;
 	}
@@ -359,17 +359,17 @@ void save_preview_pane::draw()
 	str << font::BOLD_TEXT << config::escape(name) << "\n" << time_buf;
 
 	if(summary["corrupt"] == "yes") {
-		str << "\n" << string_table["save_invalid"];
+		str << "\n" << _("#(Invalid)");
 	} else if(summary["campaign_type"] != "") {
 		str << "\n";
 			
 		const std::string& campaign_type = summary["campaign_type"];
 		if(campaign_type == "scenario") {
-			str << translate_string("campaign_button");
+			str << _("Campaign");
 		} else if(campaign_type == "multiplayer") {
-			str << translate_string("multiplayer_button");
+			str << _("Multiplayer");
 		} else if(campaign_type == "tutorial") {
-			str << translate_string("tutorial_button");
+			str << _("Tutorial");
 		} else {
 			str << translate_string(campaign_type);
 		}
@@ -377,14 +377,14 @@ void save_preview_pane::draw()
 		str << "\n";
 			
 		if(summary["snapshot"] == "no" && summary["replay"] == "yes") {
-			str << translate_string("replay");
+			str << _("replay");
 		} else if(summary["turn"] != "") {
-			str << translate_string("turn") << " " << summary["turn"];
+			str << _("Turn") << " " << summary["turn"];
 		} else {
-			str << string_table["scenario_start"];
+			str << _("Scenario Start");
 		}
 
-		str << "\n" << translate_string("difficulty") << ": " << translate_string(summary["difficulty"]);
+		str << "\n" << _("Difficulty") << ": " << translate_string(summary["difficulty"]);
 	}
 
 	font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,str.str(),area.x,ypos,NULL,true);
@@ -398,8 +398,9 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 
 	if(games.empty()) {
 		gui::show_dialog(disp,NULL,
-		                 string_table["no_saves_heading"],
-						 string_table["no_saves_message"],
+		                 _("No Saved Games"),
+						 _("There are no saved games to load.\n\
+(Games are saved automatically when you complete a scenario)"),
 		                 gui::OK_ONLY);
 		return "";
 	}
@@ -417,7 +418,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	}
 
 	delete_save save_deleter(disp,games,summaries);
-	gui::dialog_button delete_button(&save_deleter,string_table["delete_save"]);
+	gui::dialog_button delete_button(&save_deleter,_("Delete Save"));
 	std::vector<gui::dialog_button> buttons;
 	buttons.push_back(delete_button);
 
@@ -432,17 +433,18 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 		} else if(preferences::cache_saves() == preferences::CACHE_SAVES_ALWAYS) {
 			generate_summaries = true;
 		} else {
-			std::string caption = "import_saves_caption", message = "import_old_saves";
+			char* caption = N_("Import Saved Games");
+			char* message = N_("Your saves directory contains some files from an old version of Battle for Wesnoth. Would you like to update these to the latest version? This may take some time.");
 
 			//if there are already some cached games, then we assume that the user is importing new
 			//games, and it's not a total import, so tailor the message accordingly
 			if(no_summary.size() < games.size()) {
-				message = "import_saves";
+				message = N_("Your saves directory contains some files that don't appear to have been generated by this version of Battle for Wesnoth. Would you like to register these files with the game?");
 			}
 
 			std::vector<gui::check_item> options;
-			options.push_back(gui::check_item(string_table["dont_ask_again"],false));
-			const int res = gui::show_dialog(disp,NULL,string_table[caption],string_table[message],
+			options.push_back(gui::check_item(_("Don't ask me again!"),false));
+			const int res = gui::show_dialog(disp,NULL,gettext(caption),gettext(message),
 			                                 gui::YES_NO,NULL,NULL,"",NULL,NULL,&options);
 
 			generate_summaries = res == 0;
@@ -507,11 +509,11 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	std::vector<gui::check_item> options;
 
 	if(show_replay != NULL)
-		options.push_back(gui::check_item(string_table["show_replay"],false));
+		options.push_back(gui::check_item(_("Show replay"),false));
 
 	const int res = gui::show_dialog(disp,NULL,
-					 string_table["load_game_heading"],
-					 string_table["load_game_message"],
+					 _("Load Game"),
+					 _("Choose the game to load"),
 			         gui::OK_CANCEL,&items,&preview_panes,"",NULL,NULL,&options,-1,-1,NULL,&buttons);
 
 	if(res == -1)
@@ -565,8 +567,8 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 		yloc = scr->h / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
-	gui::button ok_button_(disp, string_table["ok_button"]);
-	gui::button cancel_button_(disp, string_table["cancel_button"]);
+	gui::button ok_button_(disp, _("Ok"));
+	gui::button cancel_button_(disp, _("Cancel"));
 	buttons_ptr.push_back(&ok_button_);
 	buttons_ptr.push_back(&cancel_button_);
 	surface_restorer restorer;
@@ -615,7 +617,7 @@ namespace {
 }
 
 unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
-                                        : gui::preview_pane(disp), details_button_(disp,translate_string("profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
+                                        : gui::preview_pane(disp), details_button_(disp,_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
 										  map_(map), units_(&unit_store_), index_(0), left_(on_left_side),
 										  weapons_(type == SHOW_ALL)
 {
@@ -624,7 +626,7 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const un
 }
 
 unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, TYPE type, bool on_left_side)
-                                        : gui::preview_pane(disp), details_button_(disp,translate_string("profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
+                                        : gui::preview_pane(disp), details_button_(disp,_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
 										  map_(map), units_(&units), index_(0), left_(on_left_side),
 										  weapons_(type == SHOW_ALL)
 {
@@ -711,7 +713,7 @@ void unit_preview_pane::draw()
 
 	std::stringstream details;
 	details << font::BOLD_TEXT << u.type().language_name()
-			<< "\n" << font::SMALL_TEXT << "(" << string_table["level"] << " "
+			<< "\n" << font::SMALL_TEXT << "(" << _("level") << " "
 			<< u.type().level() << ")\n"
 			<< translate_string(unit_type::alignment_description(u.type().alignment())) << "\n"
 			<< u.traits_description() << " \n";
@@ -732,11 +734,11 @@ void unit_preview_pane::draw()
 	else if(u.hitpoints() > 2*(u.max_hitpoints()/3))
 		details << font::GOOD_TEXT;
 
-	details << string_table["hp"] << ": " << u.hitpoints()
+	details << _("HP") << ": " << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n";
 	
 	if(u.can_advance() == false) {
-		details << string_table["xp"] << ": " << u.experience() << "/-";
+		details << _("XP") << ": " << u.experience() << "/-";
 	} else {
 		//if killing a unit the same level as us would level us up,
 		//then display in green
@@ -744,12 +746,12 @@ void unit_preview_pane::draw()
 			details << font::GOOD_TEXT;
 		}
 
-		details << string_table["xp"] << ": " << u.experience() << "/" << u.max_experience();
+		details << _("XP") << ": " << u.experience() << "/" << u.max_experience();
 	}
 	
 	if(weapons_) {
 		details << "\n"
-				<< string_table["moves"] << ": " << u.movement_left() << "/"
+				<< _("Moves") << ": " << u.movement_left() << "/"
 				<< u.total_movement()
 				<< "\n";
 
@@ -766,8 +768,8 @@ void unit_preview_pane::draw()
 					<< (lang_special.empty() ? at_it->special():lang_special)<<"\n"
 					<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
 			        << (at_it->range() == attack_type::SHORT_RANGE ?
-			            string_table["short_range"] :
-						string_table["long_range"]);
+			            _("melee") :
+						_("ranged"));
 	
 			if(at_it->hexes() > 1) {
 				details << " (" << at_it->hexes() << ")";
@@ -809,13 +811,13 @@ void unit_preview_pane::process()
 void show_unit_description(display& disp, const gamemap& map, const unit& u)
 {
 	const std::string description = u.unit_description()
-	                                + "\n\n" + string_table["see_also"];
+	                                + "\n\n" + _("See Also...");
 
 	std::vector<std::string> options;
 
-	options.push_back(string_table["terrain_info"]);
-	options.push_back(string_table["attack_resistance"]);
-	options.push_back(string_table["close_window"]);
+	options.push_back(_("Terrain Modifiers"));
+	options.push_back(_("Resistance"));
+	options.push_back(_("Close Window"));
 
 	const surface profile(image::get_image(u.type().image_profile(),image::SCALED));
 
@@ -831,7 +833,7 @@ void show_unit_description(display& disp, const gamemap& map, const unit& u)
 void show_unit_resistance(display& disp, const unit& u)
 {
 	std::vector<std::string> items;
-	items.push_back(string_table["attack_type"] + "," + string_table["attack_resistance"]);
+	items.push_back(_("Attack Type") + std::string(",") + _("Resistance"));
 	const std::map<std::string,std::string>& table = u.type().movement_type().damage_table();
 	for(std::map<std::string,std::string>::const_iterator i = table.begin(); i != table.end(); ++i) {
 		int resistance = 100 - atoi(i->second.c_str());
@@ -854,16 +856,16 @@ void show_unit_resistance(display& disp, const unit& u)
 
 	gui::show_dialog(disp,NULL,
 	                 u.type().language_name(),
-					 string_table["unit_resistance_table"],
+					 _("Unit resistance table"),
 					 gui::MESSAGE,&items,&preview_panes);
 }
 
 void show_unit_terrain_table(display& disp, const gamemap& map, const unit& u)
 {
 	std::vector<std::string> items;
-	items.push_back(string_table["terrain"] + "," +
-	                string_table["movement"] + "," +
-					string_table["defense"]);
+	items.push_back(_("Terrain") + std::string(",") +
+	                _("Moves") + "," +
+					_("Defense"));
 
 	const unit_type& type = u.type();
 	const unit_movement_type& move_type = type.movement_type();
@@ -879,7 +881,7 @@ void show_unit_terrain_table(display& disp, const gamemap& map, const unit& u)
 		const terrain_type& info = map.get_terrain_info(*t);
 		if(!info.is_alias()) {
 			const std::string& name = map.terrain_name(*t);
-			const std::string& lang_name = string_table[name];
+			const std::string& lang_name = name;
 			const int moves = move_type.movement_cost(map,*t);
 
 			std::stringstream str;
@@ -902,7 +904,7 @@ void show_unit_terrain_table(display& disp, const gamemap& map, const unit& u)
 	preview_panes.push_back(&unit_preview);
 
 	gui::show_dialog(disp,NULL,u.type().language_name(),
-					 string_table["terrain_info"],
+					 _("Terrain Modifiers"),
 					 gui::MESSAGE,&items,&preview_panes);
 }
 

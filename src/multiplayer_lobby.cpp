@@ -123,7 +123,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 						std::cerr << "illegal map: " << e.msg_ << "\n";
 					}
 				} else {
-					str << "(" << translate_string("shroud") << "),";
+					str << "(" << _("Shroud") << "),";
 				}
 	
 				std::string name = (**i.first)["name"];
@@ -135,9 +135,9 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				const std::string& turn = (**i.first)["turn"];
 				const std::string& slots = (**i.first)["slots"];
 				if(turn != "") {
-					str << "," << translate_string("turn") << " " << turn;
+					str << "," << _("Turn") << " " << turn;
 				} else if(slots != "") {
-					str << "," << slots << " " << string_table[slots == "1" ? "vacant_slot" : "vacant_slots"];
+					str << "," << slots << " " << gettext(slots == "1" ? N_("Vacant Slot") : N_("Vacant Slots"));
 				}
 	
 				options.push_back(str.str());
@@ -152,10 +152,10 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		}
 
 		gui::menu games_menu(disp,options);
-		gui::button observe_game(disp,string_table["observe_game"]);
-		gui::button join_game(disp,string_table["join_game"]);
-		gui::button new_game(disp,string_table["create_new_game"]);
-		gui::button quit_game(disp,string_table["quit_button"]);
+		gui::button observe_game(disp,_("Observe Game"));
+		gui::button join_game(disp,_("Join Game"));
+		gui::button new_game(disp,_("Create Game"));
+		gui::button quit_game(disp,_("Quit"));
 
 		if(dlg != NULL) {
 			observe_game.hide();

@@ -76,7 +76,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	}
 
 	if(preferences::turn_dialog()) {
-		gui::show_dialog(gui,NULL,"",string_table["your_turn"],gui::MESSAGE);
+		gui::show_dialog(gui,NULL,"",_("It is now your turn"),gui::MESSAGE);
 	}
 
 	turn_info turn_data(gameinfo,state_of_game,status,terrain_config,level,
@@ -496,9 +496,9 @@ gui::dialog_button_action::RESULT attack_calculations_displayer::button_pressed(
 		std::vector<std::string> calcs;
 
 		std::stringstream str;
-		str << string_table["attacker"] << ", , ,";
+		str << _("Attacker") << ", , ,";
 		if(stats.defend_calculations.empty() == false) {
-			str << string_table["defender"];
+			str << _("Defender");
 		}
 
 		calcs.push_back(str.str());
@@ -522,7 +522,7 @@ gui::dialog_button_action::RESULT attack_calculations_displayer::button_pressed(
 			calcs.push_back(str.str());
 		}
 
-		gui::show_dialog(disp_,NULL,"",string_table["damage_calculations"],gui::OK_ONLY,&calcs);
+		gui::show_dialog(disp_,NULL,"",_("Damage Calculations"),gui::OK_ONLY,&calcs);
 	}
 
 	return NO_EFFECT;
@@ -613,7 +613,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			const std::string& defend_type = translate_string_default("weapon_type_"+st.defend_type,st.defend_type);
 			const std::string& defend_special = translate_string_default("weapon_special_"+st.defend_special,st.defend_special);
 
-			const std::string& range = translate_string_default(st.range == "Melee" ? "short_range" : "long_range",st.range);
+			const std::string& range = gettext(st.range == "Melee" ? N_("melee") : N_("ranged"));
 
 			//if there is an attack special or defend special, we output a single space for the other unit, to make sure
 			//that the attacks line up nicely.
@@ -626,7 +626,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				<< stats.back().chance_to_hit_defender << "%)\n"
 				<< attack_special << special_pad;
 
-			att << "," << string_table["versus"] << ",";
+			att << "," << _("vs") << ",";
 			att << font::BOLD_TEXT << defend_name << "\n" << stats.back().damage_attacker_takes << "-"
 				<< stats.back().ndefends << " " << range << " ("
 				<< stats.back().chance_to_hit_attacker
@@ -647,7 +647,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 		attack_calculations_displayer calc_displayer(gui_,stats);
 		std::vector<gui::dialog_button> buttons;
-		buttons.push_back(gui::dialog_button(&calc_displayer,string_table["damage_calculations"]));
+		buttons.push_back(gui::dialog_button(&calc_displayer,_("Damage Calculations")));
 
 		int res = 0;
 
@@ -659,8 +659,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			preview_panes.push_back(&attacker_preview);
 			preview_panes.push_back(&defender_preview);
 
-			res = gui::show_dialog(gui_,NULL,string_table["attack_enemy"],
-			                           string_table["choose_weapon"]+":\n",
+			res = gui::show_dialog(gui_,NULL,_("Attack Enemy"),
+			                           _("Choose weapon")+std::string(":\n"),
 			                           gui::OK_CANCEL,&items,&preview_panes,"",NULL,NULL,NULL,-1,-1,
 									   NULL,&buttons);
 		}
@@ -1040,7 +1040,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 			str << '&' << img << ',';
 		}
 		
-		str << translate_string("action_" + *i);
+		str << hotkey::command_to_description(hotkey::string_to_command(*i));
 		
 		//see if this menu item has an associated hotkey
 		const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
@@ -1143,7 +1143,7 @@ void turn_info::end_turn()
 	//Ask for confirmation if the player hasn't made any moves (other than gotos).
 	if(preferences::confirm_no_moves() && unmoved_units) {
 		if (recorder.ncommands() == start_ncmd_) {
-			const int res = gui::show_dialog(gui_,NULL,"",string_table["end_turn_no_moves"], gui::YES_NO);
+			const int res = gui::show_dialog(gui_,NULL,"",_("You have not started your turn yet.  Do you really want to end your turn?"), gui::YES_NO);
 			if(res != 0) {
 				return;
 			}
@@ -1152,12 +1152,12 @@ void turn_info::end_turn()
 	
 	// Ask for confirmation if units still have movement left
 	if(preferences::yellow_confirm() && partmoved_units) {
-		const int res = gui::show_dialog(gui_,NULL,"",string_table["end_turn_message"],gui::YES_NO);
+		const int res = gui::show_dialog(gui_,NULL,"",_("Some units have movement left. Do you really want to end your turn?"),gui::YES_NO);
 		if (res != 0) {
 			return;
 		}
 	} else if (preferences::green_confirm() && unmoved_units) {
-		const int res = gui::show_dialog(gui_,NULL,"",string_table["end_turn_message"],gui::YES_NO);
+		const int res = gui::show_dialog(gui_,NULL,"",_("Some units have movement left. Do you really want to end your turn?"),gui::YES_NO);
 		if (res != 0) {
 			return;
 		}
@@ -1173,9 +1173,9 @@ void turn_info::end_turn()
 	write_game_snapshot(snapshot);
 	try {
 		config starting_pos;
-		recorder.save_game(gameinfo_,string_table["auto_save"],snapshot,state_of_game_.starting_pos);
+		recorder.save_game(gameinfo_,_("Auto-Save"),snapshot,state_of_game_.starting_pos);
 	} catch(gamestatus::save_game_failed& e) {
-		gui::show_dialog(gui_,NULL,"",string_table["auto_save_game_failed"],gui::MESSAGE);
+		gui::show_dialog(gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
 		//do not bother retrying, since the user can just save the game
 	}
 
@@ -1374,7 +1374,7 @@ void turn_info::rename_unit()
 		return;
 
 	std::string name = un->second.description();
-	const int res = gui::show_dialog(gui_,NULL,"",string_table["rename_unit"], gui::OK_CANCEL,NULL,NULL,"",&name);
+	const int res = gui::show_dialog(gui_,NULL,"",_("Rename Unit"), gui::OK_CANCEL,NULL,NULL,"",&name);
 	if(res == 0) {
 		un->second.rename(name);
 		gui_.invalidate_unit();
@@ -1398,14 +1398,14 @@ void turn_info::load_game()
 void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type)
 {
 	std::stringstream stream;
-	stream << state_of_game_.label << " " << string_table["turn"]
+	stream << state_of_game_.label << " " << _("Turn")
 	       << " " << status_.turn();
 	std::string label = stream.str();
 	if(dialog_type == gui::NULL_DIALOG && message != "") {
 		label = message;
 	}
 
-	const int res = dialog_type == gui::NULL_DIALOG ? 0 : dialogs::get_save_name(gui_,message,string_table["save_game_label"],&label,dialog_type);
+	const int res = dialog_type == gui::NULL_DIALOG ? 0 : dialogs::get_save_name(gui_,message,_("Name:"),&label,dialog_type);
 
 	if(res == 0) {
 		config snapshot;
@@ -1413,10 +1413,10 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 		try {
 			recorder.save_game(gameinfo_,label,snapshot,state_of_game_.starting_pos);
 			if(dialog_type != gui::NULL_DIALOG) {
-				gui::show_dialog(gui_,NULL,"",string_table["save_confirm_message"], gui::OK_ONLY);
+				gui::show_dialog(gui_,NULL,"",_("The game has been saved"), gui::OK_ONLY);
 			}
 		} catch(gamestatus::save_game_failed& e) {
-			gui::show_dialog(gui_,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
+			gui::show_dialog(gui_,NULL,"",_("The game could not be saved"),gui::MESSAGE);
 			//do not bother retrying, since the user can just try to save the game again
 		};
 	}
@@ -1474,12 +1474,12 @@ void turn_info::status_table()
 {
 	std::vector<std::string> items;
 	std::stringstream heading;
-	heading << string_table["leader"] << ", ," << string_table["gold"] << ","
-			<< string_table["villages"] << "," << string_table["units"] << ","
-			<< string_table["upkeep"] << "," << string_table["income"];
+	heading << _("Leader") << ", ," << _("Gold") << ","
+			<< _("Villages") << "," << _("Units") << ","
+			<< _("Upkeep") << "," << _("Income");
 
 	if(game_config::debug)
-		heading << "," << string_table["gold"];
+		heading << "," << _("Gold");
 
 	items.push_back(heading.str());
 
@@ -1566,13 +1566,13 @@ void turn_info::recruit()
 		std::stringstream description;
 
 		description << font::IMAGE << type.image() << "," << font::LARGE_TEXT << prefix << type.language_name() << "\n"
-		            << prefix << type.cost() << " " << string_table["gold"];
+		            << prefix << type.cost() << " " << _("Gold");
 		items.push_back(description.str());
 		sample_units.push_back(unit(&type,team_num_));
 	}
 
 	if(sample_units.empty()) {
-		gui::show_dialog(gui_,NULL,"",string_table["no_units_to_recruit"],gui::MESSAGE);
+		gui::show_dialog(gui_,NULL,"",_("You have no units available to recruit."),gui::MESSAGE);
 		return;
 	}
 
@@ -1585,7 +1585,7 @@ void turn_info::recruit()
 		preview_panes.push_back(&unit_preview);
 
 		recruit_res = gui::show_dialog(gui_,NULL,"",
-		                                 string_table["recruit_unit"] + ":\n",
+		                                 _("Recruit unit") + std::string(":\n"),
 		                                 gui::OK_CANCEL,&items,&preview_panes,"",NULL,NULL,NULL,-1,-1,
 										 NULL,NULL,"recruit_and_recall");
 	}
@@ -1614,7 +1614,7 @@ void turn_info::do_recruit(const std::string& name)
 
 	if(u_type->second.cost() > current_team.gold()) {
 		gui::show_dialog(gui_,NULL,"",
-		     string_table["not_enough_gold_to_recruit"],gui::OK_ONLY);
+		     _("You don't have enough gold to recruit that unit"),gui::OK_ONLY);
 	} else {
 		last_recruit_ = name;
 
@@ -1672,9 +1672,9 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		//about it
 		std::string message = "";
 		if(u.type().level() > 1) {
-			message = string_table["really_delete_veteran_unit"];
+			message = _("My lord, this unit is an experienced one, having advanced levels! Do you really want to dismiss $noun?");
 		} else if(u.experience() > u.max_experience()/2) {
-			message = string_table["really_delete_xp_unit"];
+			message = _("My lord, this unit is close to advancing a level! Do you really want to dismiss $noun?");
 		}
 
 		if(message != "") {
@@ -1712,14 +1712,15 @@ void turn_info::recall()
 	gui_.draw(); //clear the old menu
 
 	if((*level_)["disallow_recall"] == "yes") {
-		gui::show_dialog(gui_,NULL,"",string_table["recall_disallowed"]);
+		gui::show_dialog(gui_,NULL,"",_("You are seperated from your soldiers and may not recall them"));
 	} else if(recall_list.empty()) {
-		gui::show_dialog(gui_,NULL,"",string_table["no_recall"]);
+		gui::show_dialog(gui_,NULL,"",_("There are no troops available to recall\n\
+(You must have veteran survivors from a previous scenario)"));
 	} else if(current_team.gold() < game_config::recall_cost) {
 		std::stringstream msg;
-		msg << string_table["not_enough_gold_to_recall_1"]
+		msg << _("You must have at least")
 		    << " " << game_config::recall_cost << " "
-			<< string_table["not_enough_gold_to_recall_2"];
+			<< _("gold pieces to recall a unit");
 		gui::show_dialog(gui_,NULL,"",msg.str());
 	} else {
 		std::vector<std::string> options;
@@ -1727,9 +1728,9 @@ void turn_info::recall()
 			std::stringstream option;
 			const std::string& description = u->description().empty() ? "-" : u->description();
 			option << "&" << u->type().image() << "," << u->type().language_name() << "," << description << ","
-			       << string_table["level"] << ": "
+			       << _("level") << ": "
 			       << u->type().level() << ","
-			       << string_table["xp"] << ": "
+			       << _("XP") << ": "
 			       << u->experience() << "/";
 
 			if(u->can_advance() == false) {
@@ -1742,7 +1743,7 @@ void turn_info::recall()
 		}
 
 		delete_recall_unit recall_deleter(gui_,recall_list);
-		gui::dialog_button delete_button(&recall_deleter,string_table["delete_unit"]);
+		gui::dialog_button delete_button(&recall_deleter,_("Dismiss Unit"));
 		std::vector<gui::dialog_button> buttons;
 		buttons.push_back(delete_button);
 
@@ -1755,7 +1756,7 @@ void turn_info::recall()
 			preview_panes.push_back(&unit_preview);
 
 			res = gui::show_dialog(gui_,NULL,"",
-			                       string_table["select_unit"] + ":\n",
+			                       _("Select unit") + std::string(":\n"),
 			                       gui::OK_CANCEL,&options,
 			                       &preview_panes,"",NULL,
 			                       NULL,NULL,-1,-1,NULL,&buttons);
@@ -1799,7 +1800,7 @@ bool turn_info::has_friends() const
 
 void turn_info::speak()
 {
-	create_textbox(floating_textbox::TEXTBOX_MESSAGE,string_table["message"] + ":", has_friends() ? string_table["speak_allies_only"] : "", preferences::message_private());
+	create_textbox(floating_textbox::TEXTBOX_MESSAGE,_("Message") + std::string(":"), has_friends() ? _("Send to allies only") : "", preferences::message_private());
 }
 
 void turn_info::do_speak(const std::string& message, bool allies_only)
@@ -1889,12 +1890,12 @@ void turn_info::objectives()
 
 void turn_info::unit_list()
 {
-	const std::string heading = string_table["type"] + "," +
-	                            string_table["name"] + "," +
-	                            string_table["hp"] + "," +
-	                            string_table["xp"] + "," +
-	                            string_table["moves"] + "," +
-	                            string_table["location"];
+	const std::string heading = _("Type") + std::string(",") +
+	                            _("Name") + "," +
+	                            _("HP") + "," +
+	                            _("XP") + "," +
+	                            _("Moves") + "," +
+	                            _("Location");
 
 	std::vector<std::string> items;
 	items.push_back(heading);
@@ -1942,7 +1943,7 @@ void turn_info::unit_list()
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		selected = gui::show_dialog(gui_,NULL,string_table["unit_list"],"",
+		selected = gui::show_dialog(gui_,NULL,_("Unit List"),"",
 		                            gui::OK_ONLY,&items,&preview_panes);
 	}
 
@@ -1976,57 +1977,57 @@ void turn_info::show_statistics()
 	
 	{
 		std::stringstream str;
-		str << string_table["total_recruits"] << "," << statistics::sum_str_int_map(stats.recruits);
+		str << _("Recruits") << "," << statistics::sum_str_int_map(stats.recruits);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << string_table["total_recalls"] << "," << statistics::sum_str_int_map(stats.recalls);
+		str << _("Recalls") << "," << statistics::sum_str_int_map(stats.recalls);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << string_table["total_advances"] << "," << statistics::sum_str_int_map(stats.advanced_to);
+		str << _("Advancements") << "," << statistics::sum_str_int_map(stats.advanced_to);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << string_table["total_deaths"] << "," << statistics::sum_str_int_map(stats.deaths);
+		str << _("Losses") << "," << statistics::sum_str_int_map(stats.deaths);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << string_table["total_kills"] << "," << statistics::sum_str_int_map(stats.killed);
+		str << _("Kills") << "," << statistics::sum_str_int_map(stats.killed);
 		items.push_back(str.str());
 	}
 
-	const int res = gui::show_dialog(gui_,NULL,"",string_table["action_statistics"],gui::MESSAGE,&items);
+	const int res = gui::show_dialog(gui_,NULL,"",_("Statistics"),gui::MESSAGE,&items);
 	std::string title;
 	items.clear();
 	switch(res) {
 	case 0:
 		items = create_unit_table(stats.recruits);
-		title = string_table["total_recruits"];
+		title = _("Recruits");
 		break;
 	case 1:
 		items = create_unit_table(stats.recalls);
-		title = string_table["total_recalls"];
+		title = _("Recalls");
 		break;
 	case 2:
 		items = create_unit_table(stats.advanced_to);
-		title = string_table["total_advances"];
+		title = _("Advancements");
 		break;
 	case 3:
 		items = create_unit_table(stats.deaths);
-		title = string_table["total_deaths"];
+		title = _("Losses");
 		break;
 	case 4:
 		items = create_unit_table(stats.killed);
-		title = string_table["total_kills"];
+		title = _("Kills");
 		break;
 	default:
 		return;
@@ -2041,7 +2042,7 @@ void turn_info::show_statistics()
 void turn_info::search()
 {
 	std::ostringstream msg;
-	msg << string_table["search_prompt"];
+	msg << _("Search");
 	if(last_search_hit_.valid()) {
 		msg << " [" << last_search_ << "]";
 	}
@@ -2062,7 +2063,7 @@ void turn_info::show_help()
 void turn_info::show_chat_log()
 {
 	std::string text = recorder.build_chat_log(teams_[gui_.viewing_team()].team_name());
-	gui::show_dialog(gui_,NULL,string_table["chat_log"],"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
+	gui::show_dialog(gui_,NULL,_("Chat Log"),"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
 }
 
 void turn_info::do_search(const std::string& new_search)
@@ -2127,7 +2128,7 @@ void turn_info::do_search(const std::string& new_search)
 		string_map symbols;
 		symbols["search"] = last_search_;
 		const std::string msg = config::interpolate_variables_into_string(
-			string_table["search_string_not_found"],&symbols);
+			_("Couldn't find label or unit containing the string '$search'."),&symbols);
 		gui::show_dialog(gui_,NULL,"",msg);
 	}
 }
@@ -2167,8 +2168,8 @@ void turn_info::label_terrain()
 	}
 
 	std::string label = gui_.labels().get_label(last_hex_);
-	const int res = gui::show_dialog(gui_,NULL,"",string_table["place_label"],gui::OK_CANCEL,
-	                                 NULL,NULL,string_table["label"] + ":",&label);
+	const int res = gui::show_dialog(gui_,NULL,"",_("Place Label"),gui::OK_CANCEL,
+	                                 NULL,NULL,_("Label") + std::string(":"),&label);
 	if(res == 0) {
 		gui_.labels().set_label(last_hex_,label);
 		recorder.add_label(label,last_hex_);
@@ -2331,7 +2332,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				turn_end = do_replay(gui_,map_,gameinfo_,units_,teams_,
 				team_num_,status_,state_of_game_,&replay_obj);
 			} catch(replay::error& e) {
-				save_game(string_table["network_sync_error"],gui::YES_NO);
+				save_game(_("The games are out of sync and will have to exit. Do you want to save an error log of your game?"),gui::YES_NO);
 
 				//throw e;
 			}
@@ -2362,11 +2363,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const unit_map::const_iterator leader = find_leader(units_,side+1);
 		if(leader != units_.end()) {
 			std::vector<std::string> options;
-			options.push_back(string_table["replace_ai_message"]);
-			options.push_back(string_table["replace_local_message"]);
-			options.push_back(string_table["abort_game_message"]);
+			options.push_back(_("Replace with AI"));
+			options.push_back(_("Replace with local player"));
+			options.push_back(_("Abort game"));
 
-			const std::string msg = leader->second.description() + " " + string_table["player_leave_message"];
+			const std::string msg = leader->second.description() + " " + _("has left the game. What do you want to do?");
 			action = gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY,&options);
 		}
 

@@ -19,6 +19,8 @@
 #include <sstream>
 #include <vector>
 
+#include <language.hpp>
+
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
@@ -714,6 +716,7 @@ void config::read(const std::string& data,
 						std::string val = value;
 						if(strip(val) == "_") {
 							value = "";
+							translatable = true;
 						}
 					}
 				} else if(c == '\n' && !in_quotes) {
@@ -747,7 +750,7 @@ void config::read(const std::string& data,
 							}
 
 							if(translatable) {
-								//translate 'value' here using gettext
+								value = sgettext(value.c_str());
 							}
 
 							if(n < vars.size()) {

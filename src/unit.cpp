@@ -1025,7 +1025,7 @@ void unit::add_modification(const std::string& type,
 			const std::string& violate_max = (**i.first)["violate_maximum"];
 
 			if(increase_total.empty() == false) {
-				description << (increase_total[0] != '-' ? "+" : "") << increase_total << translate_string("hp");
+				description << (increase_total[0] != '-' ? "+" : "") << increase_total << _("HP");
 
 				//a percentage on the end means increase by that many percent
 				if(increase_total[increase_total.size()-1] == '%') {
@@ -1061,7 +1061,7 @@ void unit::add_modification(const std::string& type,
 			const std::string& set_to = (**i.first)["set"];
 
 			if(increase.empty() == false) {
-				description << (increase[0] != '-' ? "+" : "") << increase << translate_string("moves");
+				description << (increase[0] != '-' ? "+" : "") << increase << _("Moves");
 
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
@@ -1084,7 +1084,7 @@ void unit::add_modification(const std::string& type,
 			const std::string& increase = (**i.first)["increase"];
 
 			if(increase.empty() == false) {
-				description << (increase[0] != '-' ? "+" : "") << increase << translate_string("xp");
+				description << (increase[0] != '-' ? "+" : "") << increase << _("XP");
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
 					maxExperience_ += (maxExperience_*atoi(inc.c_str()))/100;
@@ -1118,9 +1118,9 @@ void unit::add_modification(const std::string& type,
 	}
 
 	std::stringstream description;
-	description << translate_string_default(mod["id"],mod["name"]) << ": ";
+	description << mod["name"] << ": ";
 	if(mod["id"].empty() == false) {
-		description << translate_string_default(mod["id"] + "_description",mod["description"]) << " ";
+		description << mod["description"] << " ";
 	}
 
 	if(effects_description.empty() == false) {

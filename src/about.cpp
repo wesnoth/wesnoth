@@ -237,7 +237,7 @@ void show_about(display& disp)
 	map_rect.w = map_image->w;
 	map_rect.h = map_image->h;
 
-	gui::button close(disp,string_table["close_button"]);
+	gui::button close(disp,_("Close"));
 	close.set_location((disp.x()/2)-(close.width()/2), map_rect.y+map_rect.h+15);
 
 

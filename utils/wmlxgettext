@@ -1,0 +1,102 @@
+#!/usr/bin/perl -w
+
+# FIXME:
+# - maybe restrict "ability" matching to unit defs (not yet necessary)
+# - maybe handle some xgettext flags and behaviours to be more
+#   predictable to the command-line user
+
+use strict;
+use File::Basename;
+
+our $module = dirname ($0) . "/wmltrans.pm";
+eval "require \"$module\";";
+
+our ($str,$translatable,$line,%messages);
+chdir "..";
+foreach my $file (@ARGV) {
+  open (FILE, "<$file") or die "cannot read from $file";
+  my $readingattack = 0;
+
+ LINE: while (<FILE>) {
+    # skip comments
+    next LINE if m/^\s*\#/ and !defined $str;
+
+    if (m/\S+\s*=\s*((?:_\s*)?)\"([^\"]*)\"\s*(?:\#.*)?$/) {
+      # single-line quoted string
+      die "nested string in $file" if defined $str;
+
+      push @{$messages{raw2postring($2)}}, "$file:$."
+	if ($1 ne ''); # ie. translatable
+
+    } elsif (m/\S+\s*=\s*((?:_\s*)?)\s*\"([^\"]*)/) {
+      # start of multi-line
+      die "nested string in $file" if defined $str;
+
+      $translatable = ($1 ne '');
+      $str = $2;
+      $line = $.;
+
+    } elsif (m/(.*)\"\s*(?:\#.*)?$/) {
+      # end of multi-line
+      die "end of string without a start in $file" if !defined $str;
+
+      $str .= $1;
+
+      push @{$messages{"\"\"\n" . raw2postring($str)}}, "$file:$."
+	if $translatable;
+      $str = undef;
+
+    } elsif (defined $str) {
+      # part of multi-line
+      $str .= $_;
+
+    } elsif (m/(\S+)\s*=\s*(.*)$/) {
+      # single-line non-quoted string
+      die "nested string in $file" if defined $str;
+
+      # magic handling of weapon descriptions
+      push @{$messages{raw2postring($2)}},  "$file:$."
+	if $readingattack and
+	  ($1 eq 'name' or $1 eq 'type' or $1 eq 'special');
+
+      # magic handling of unit abilities
+      push @{$messages{raw2postring($2)}},  "$file:$."
+	if $1 eq 'ability';
+
+    } elsif (m,\[attack\],) {
+      $readingattack = 1;
+    } elsif (m,\[/attack\],) {
+      $readingattack = 0;
+    }
+
+  }
+
+  close FILE;
+}
+
+## output
+
+print <<EOH
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\\n"
+"POT-Creation-Date: 2004-08-08 15:00+0200\\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"
+"Last-Translator: FULL NAME <EMAIL\@ADDRESS>\\n"
+"Language-Team: LANGUAGE <LL\@li.org>\\n"
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+EOH
+;
+
+foreach my $key (keys %messages) {
+  print "#:";
+  foreach my $line (@{$messages{$key}}) {
+    print " $line";
+  }
+  print "\nmsgid $key",
+    "msgstr \"\"\n\n";
+}

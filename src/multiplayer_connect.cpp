@@ -45,9 +45,9 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    player_types_(), player_races_(), player_teams_(),
 	    player_colors_(), combos_type_(), combos_race_(),
 	    combos_team_(), combos_color_(), sliders_gold_(),
-	    launch_(gui::button(disp, string_table["im_ready"])),
-	    cancel_(gui::button(disp, string_table["cancel"])),
-	    ai_(gui::button(disp, string_table["ai_players"])),
+	    launch_(gui::button(disp, _("I'm Ready"))),
+	    cancel_(gui::button(disp, _("Cancel"))),
+	    ai_(gui::button(disp, _(" Computer vs Computer "))),
 		message_full_(true)
 {
 	// Send Initial information
@@ -94,14 +94,14 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 
 		if(state_->campaign_type != "multiplayer") {
 			gui::show_dialog(*disp_, NULL, "", 
-					 string_table["not_multiplayer_save_message"],
+					 _("This is not a multiplayer save"),
 					 gui::OK_ONLY);
 			return -1;
 		}
 
 		if(state_->version != game_config::version) {
 			const int res = gui::show_dialog(*disp_, NULL, "",
-						string_table["version_save_message"],
+						_("This save is from a different version of the game. Do you want to try to load it?"),
 						gui::YES_NO);
 			if(res == 1) {
 				return -1;
@@ -174,7 +174,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 
 	if(sides.first == sides.second || possible_sides.empty()) {
 		gui::show_dialog(*disp_, NULL, "", 
-				 string_table["error_no_mp_sides"],
+				 _("No multiplayer sides."),
 				 gui::OK_ONLY);
 		std::cerr << "no multiplayer sides found\n";
 		return -1;
@@ -234,7 +234,8 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 	}
 
 	if((*level_)["objectives"] == "") {
-		(*level_)["objectives"] = string_table["mp_objectives"];
+		(*level_)["objectives"] = _("Victory\n\
+@Defeat enemy leader(s)");
 	}
 
 	if(save_ == false) {
@@ -253,10 +254,10 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 void mp_connect::lists_init()
 {
 	//Options
-	player_types_.push_back(string_table["network_controlled"]);
-	player_types_.push_back(string_table["human_controlled"]);
-	player_types_.push_back(string_table["ai_controlled"]);
-	player_types_.push_back(string_table["null_controlled"]);
+	player_types_.push_back(_("Network Player"));
+	player_types_.push_back(_("Local Player"));
+	player_types_.push_back(_("Computer Player"));
+	player_types_.push_back(_("Empty"));
 	player_types_.push_back("-----");
 	player_types_.push_back(preferences::login());
 
@@ -284,30 +285,30 @@ void mp_connect::lists_init()
 			team_name = lexical_cast<std::string>(team_num+1);
 		}
 
-		player_teams_.push_back(string_table["team"] + " " + team_name);
+		player_teams_.push_back(_("Team") + std::string(" ") + team_name);
 	}
 
 	std::string prefix;
 	prefix.resize(1);
 	//Colors
 	prefix[0] = 1;
-	player_colors_.push_back(prefix + translate_string("red"));
+	player_colors_.push_back(prefix + _("Red"));
 	prefix[0] = 2;
-	player_colors_.push_back(prefix + translate_string("blue"));
+	player_colors_.push_back(prefix + _("Blue"));
 	prefix[0] = 3;
-	player_colors_.push_back(prefix + translate_string("green"));
+	player_colors_.push_back(prefix + _("Green"));
 	prefix[0] = 4;
-	player_colors_.push_back(prefix + translate_string("yellow"));
+	player_colors_.push_back(prefix + _("Yellow"));
 	prefix[0] = 5;
-	player_colors_.push_back(prefix + translate_string("purple"));
+	player_colors_.push_back(prefix + _("Purple"));
 	prefix[0] = 6;
-	player_colors_.push_back(prefix + translate_string("orange"));
+	player_colors_.push_back(prefix + _("Orange"));
 	prefix[0] = 7;
-	player_colors_.push_back(prefix + translate_string("grey"));
+	player_colors_.push_back(prefix + _("Grey"));
 	prefix[0] = 8;
-	player_colors_.push_back(prefix + translate_string("white"));
+	player_colors_.push_back(prefix + _("White"));
 	prefix[0] = 9;
-	player_colors_.push_back(prefix + translate_string("brown"));
+	player_colors_.push_back(prefix + _("Brown"));
 }
 
 void mp_connect::add_player(const std::string& name)
@@ -357,30 +358,30 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	ai_.set_location(left+30,bottom-60);
 
 	//Title and labels
-	gui::draw_dialog_title(left,top,disp_,string_table["game_lobby"]);
+	gui::draw_dialog_title(left,top,disp_,_("Game Lobby"));
 
 	SDL_Rect labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,
-			                          string_table["player_type"],0,0);
+			                          _("Player/Type"),0,0);
 	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
-	                string_table["player_type"],(left+30)+(launch_.width()/2)-(labelr.w/2),top+35);
-	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,string_table["race"],0,0);
+	                _("Player/Type"),(left+30)+(launch_.width()/2)-(labelr.w/2),top+35);
+	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Race"),0,0);
 
 	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
-	                string_table["race"],(left+145)+(launch_.width()/2)-(labelr.w/2),top+35);
+	                _("Race"),(left+145)+(launch_.width()/2)-(labelr.w/2),top+35);
 	
-	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,string_table["team"],0,0);
-
-	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
-	                string_table["team"],(left+260)+(launch_.width()/2)-(labelr.w/2),top+35);
-	
-	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,string_table["color"],0,0);
+	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Team"),0,0);
 
 	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
-	                string_table["color"],(left+375)+(launch_.width()/2)-(labelr.w/2),top+35);
+	                _("Team"),(left+260)+(launch_.width()/2)-(labelr.w/2),top+35);
 	
-	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,string_table["gold"],0,0);
+	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Color"),0,0);
+
+	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
+	                _("Color"),(left+375)+(launch_.width()/2)-(labelr.w/2),top+35);
+	
+	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Gold"),0,0);
 	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
-	                string_table["gold"],(left+480)+(launch_.width()/2)-(labelr.w/2),top+35);
+	                _("Gold"),(left+480)+(launch_.width()/2)-(labelr.w/2),top+35);
 
 	//Per player settings
 	const config::child_itors sides = level_->child_range("side");
@@ -471,7 +472,7 @@ void mp_connect::gui_update()
 		if (side["controller"] == "network") {
 			if (side["description"] == "") {
 				combos_type_[n].set_selected(0);
-			} else if (side["description"] == string_table["ai_controlled"]) {
+			} else if (side["description"] == _("Computer Player")) {
 				//When loading a game you did not create AI players are marked
 				//as network players, set back to AI
 				combos_type_[n].set_selected(2);
@@ -534,11 +535,11 @@ void mp_connect::gui_update()
 			message_bg_.restore();
 			message_bg_ = surface_restorer();
 		} else {
-			SDL_Rect rect = font::draw_text(NULL,rect_,12,font::NORMAL_COLOUR,string_table["waiting_other_players"],0,0);
+			SDL_Rect rect = font::draw_text(NULL,rect_,12,font::NORMAL_COLOUR,_("Waiting for network players to join"),0,0);
 			rect.x = ai_.location().x + ai_.location().w + 10;
 			rect.y = ai_.location().y;
 			message_bg_ = surface_restorer(&disp_->video(),rect);
-			font::draw_text(disp_,rect,12,font::NORMAL_COLOUR,string_table["waiting_other_players"],rect.x,rect.y);
+			font::draw_text(disp_,rect,12,font::NORMAL_COLOUR,_("Waiting for network players to join"),rect.x,rect.y);
 		}
 	}
 }
@@ -585,7 +586,7 @@ lobby::RESULT mp_connect::process()
 				side["description"] = "";
 			} else if(combos_type_[n].selected() == 2){
 				side["controller"] = "ai";
-				side["description"] = string_table["ai_controlled"];
+				side["description"] = _("Computer Player");
 			} else if(combos_type_[n].selected() == 3) {
 				side["controller"] = "null";
 				side["description"] = "";
@@ -679,7 +680,7 @@ lobby::RESULT mp_connect::process()
 		for(size_t m = 0; m != combos_team_.size(); ++m) {
 			config& si = **(sides.first+m);
 			si["controller"] = "ai";
-			si["description"] = string_table["ai_controlled"];
+			si["description"] = _("Computer Player");
 			combos_type_[m].set_selected(2);
 		}
 		level_changed = true;

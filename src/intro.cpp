@@ -88,8 +88,8 @@ bool show_intro_part(display& screen, const config& part,
 
 	CKey key;
 
-	gui::button next_button(screen,string_table["next_button"] + ">>>");
-	gui::button skip_button(screen,string_table["skip_button"]);
+	gui::button next_button(screen,_("Next") + std::string(">>>"));
+	gui::button skip_button(screen,_("Skip"));
 
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,
 			0,0,0,1.0,screen.video().getSurface());

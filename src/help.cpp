@@ -491,14 +491,14 @@ std::vector<topic> generate_unit_topics() {
 			if (female_type != NULL && female_type != male_type) {
 				ss << "<img>src='" << female_type->image() << "'</img> ";
 			}
-			ss  << "<format>font_size=11 text=' " << escape(translate_string("level"))
+			ss  << "<format>font_size=11 text=' " << escape(_("level"))
 				<< " " << type.level() << "'</format>\n";
 
 			// Print the units this unit can advance to. Cross reference
 			// to the topics containing information about those units.
 			std::vector<std::string> next_units = type.advances_to();
 			if (next_units.size() > 0) {
-				ss << cap(translate_string("advances_to")) << ": ";
+				ss << cap(_("Advances to")) << ": ";
 				for (std::vector<std::string>::const_iterator advance_it = next_units.begin();
 					 advance_it != next_units.end(); advance_it++) {
 					std::string unit_id = *advance_it;
@@ -524,7 +524,7 @@ std::vector<topic> generate_unit_topics() {
 			// Print the abilities the units has, cross-reference them
 			// to their respective topics.
 			if (type.abilities().size() > 0) {
-				ss << cap(translate_string("abilities")) << ": ";
+				ss << cap(_("Abilities")) << ": ";
 				for (std::vector<std::string>::const_iterator ability_it = type.abilities().begin();
 					 ability_it != type.abilities().end(); ability_it++) {
 					const std::string ref_id = std::string("ability_") + *ability_it;
@@ -545,14 +545,14 @@ std::vector<topic> generate_unit_topics() {
 				ss << "\n";
 			}
 			// Print some basic information such as HP and movement points.
-			ss << translate_string("hp") << ": " << type.hitpoints() << jump_to(100)
-			   << translate_string("moves") << ": " << type.movement() << jump_to(240)
-			   << translate_string("alignment") << ": "
-			   << translate_string(type.alignment_description(type.alignment()))
+			ss << _("HP") << ": " << type.hitpoints() << jump_to(100)
+			   << _("Moves") << ": " << type.movement() << jump_to(240)
+			   << _("alignment") << ": "
+			   << type.alignment_description(type.alignment())
 			   << jump_to(390);
 			if (type.experience_needed() != 500) {
 				// 500 is apparently used when the units cannot advance.
-				ss << translate_string("required_xp") << ": " << type.experience_needed();
+				ss << _("Required XP") << ": " << type.experience_needed();
 			}
 
 			// Print the detailed description about the unit.
@@ -562,14 +562,14 @@ std::vector<topic> generate_unit_topics() {
 			std::vector<attack_type> attacks = type.attacks();
 			if (attacks.size() > 0) {
 				// Print headers for the table.
-				ss << "\n\n<header>text='" << escape(cap(translate_string("attacks")))
+				ss << "\n\n<header>text='" << escape(cap(_("attacks")))
 				   << "'</header>\n\n";
-				ss << jump_to(60) << bold(cap(translate_string("name"))) << jump_to(200)
-				   << bold(cap(translate_string("type")))
-				   << jump_to(280) << bold(cap(translate_string("dmg"))) << jump_to(340)
-				   << bold(cap(translate_string("nattacks")))
-				   << jump_to(400) << bold(cap(translate_string("range"))) << jump_to(480)
-				   << bold(cap(translate_string("special"))) << "\n";
+				ss << jump_to(60) << bold(cap(_("Name"))) << jump_to(200)
+				   << bold(cap(_("Type")))
+				   << jump_to(280) << bold(cap(_("Dmg"))) << jump_to(340)
+				   << bold(cap(_("strikes")))
+				   << jump_to(400) << bold(cap(_("Range"))) << jump_to(480)
+				   << bold(cap(_("Special"))) << "\n";
 
 				// Print information about every attack.
 				for (std::vector<attack_type>::const_iterator attack_it =attacks.begin();
@@ -589,7 +589,7 @@ std::vector<topic> generate_unit_topics() {
 					   << jump_to(280) << (*attack_it).damage() << jump_to(340)
 					   << (*attack_it).num_attacks() << jump_to(400)
 					   << ((*attack_it).range() == attack_type::SHORT_RANGE ?
-						   translate_string("short_range") : translate_string("long_range"));
+						   _("melee") : _("ranged"));
 					
 					// Show this attack's special, if it has any. Cross
 					// reference it to the section describing the
@@ -609,7 +609,7 @@ std::vector<topic> generate_unit_topics() {
 			}
 
 			// Print the resistance table of the unit.
-			ss << "\n\n<header>text='" << cap(escape(translate_string("resistances")))
+			ss << "\n\n<header>text='" << cap(escape(_("Resistances")))
 			   << "'</header>\n\n";
 			const unit_movement_type &movement_type = type.movement_type();
 			string_map dam_tab = movement_type.damage_table();
@@ -1695,8 +1695,8 @@ std::string help_text_area::ref_at(const int x, const int y) {
 help_browser::help_browser(display &disp, const section &toplevel)
 	: gui::widget(disp), disp_(disp), menu_(disp, toplevel),
 	  text_area_(disp, toplevel), toplevel_(toplevel), ref_cursor_(false),
-	  back_button_(disp, translate_string("help_back"), gui::button::TYPE_PRESS),
-	  forward_button_(disp, translate_string("help_forward"), gui::button::TYPE_PRESS),
+	  back_button_(disp, _("< Back"), gui::button::TYPE_PRESS),
+	  forward_button_(disp, _("Forward >"), gui::button::TYPE_PRESS),
 	  shown_topic_(NULL) {
 	// Hide the buttons at first since we do not have any forward or
 	// back topics at this point. They will be unhidden when history
@@ -2184,10 +2184,10 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 		yloc = scr->h / 2 - height / 2; 
 	}
 	std::vector<gui::button*> buttons_ptr;
-	gui::button close_button_(disp, string_table["close_button"]);
+	gui::button close_button_(disp, _("Close"));
 	buttons_ptr.push_back(&close_button_);
 	surface_restorer restorer;
-	gui::draw_dialog(xloc, yloc, width, height, disp, translate_string("help_title"),
+	gui::draw_dialog(xloc, yloc, width, height, disp, _("The Battle for Wesnoth Help"),
 					 NULL, &buttons_ptr, &restorer);
 
 	generate_contents();

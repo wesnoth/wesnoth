@@ -116,6 +116,73 @@ std::string command_to_string(const HOTKEY_COMMAND &command)
 	return "";
 }
 
+std::string command_to_description(const HOTKEY_COMMAND &command)
+{
+	switch (command) {
+	case HOTKEY_CYCLE_UNITS: return _("Next unit");
+	case HOTKEY_END_UNIT_TURN: return _("End Unit Turn");
+	case HOTKEY_LEADER: return _("Leader");
+	case HOTKEY_UNDO: return _("Undo");
+	case HOTKEY_REDO: return _("Redo");
+	case HOTKEY_ZOOM_IN: return _("Zoom In");
+	case HOTKEY_ZOOM_OUT: return _("Zoom Out");
+	case HOTKEY_ZOOM_DEFAULT: return _("Default Zoom");
+	case HOTKEY_FULLSCREEN: return _("Fullscreen");
+	case HOTKEY_ACCELERATED: return _("Accelerated");
+	case HOTKEY_ATTACK_RESISTANCE: return _("Attack Resistance");
+	case HOTKEY_TERRAIN_TABLE: return _("Terrain Table");
+	case HOTKEY_UNIT_DESCRIPTION: return _("Unit Description");
+	case HOTKEY_RENAME_UNIT: return _("Rename Unit");
+	case HOTKEY_SAVE_GAME: return _("Save Game");
+	case HOTKEY_LOAD_GAME: return _("Load Game");
+	case HOTKEY_RECRUIT: return _("Recruit");
+	case HOTKEY_REPEAT_RECRUIT: return _("Repeat Recruit");
+	case HOTKEY_RECALL: return _("Recall");
+	case HOTKEY_ENDTURN: return _("End Turn");
+	case HOTKEY_TOGGLE_GRID: return _("Toggle Grid");
+	case HOTKEY_STATUS_TABLE: return _("Status Table");
+	case HOTKEY_MUTE: return _("Mute");
+	case HOTKEY_SPEAK: return _("Speak");
+	case HOTKEY_CREATE_UNIT: return _("Create Unit (Debug!)");
+	case HOTKEY_CHANGE_UNIT_SIDE: return _("Change Unit Side (Debug!)");
+	case HOTKEY_PREFERENCES: return _("Preferences");
+	case HOTKEY_OBJECTIVES: return _("Scenario Objectives");
+	case HOTKEY_UNIT_LIST: return _("Unit List");
+	case HOTKEY_STATISTICS: return _("Statistics");
+	case HOTKEY_QUIT_GAME: return _("Quit Game");
+	case HOTKEY_LABEL_TERRAIN: return _("Set Label");
+	case HOTKEY_SHOW_ENEMY_MOVES: return _("Show Enemy Moves");
+	case HOTKEY_BEST_ENEMY_MOVES: return _("Best Possible Enemy Moves");
+	case HOTKEY_EDIT_QUIT: return _("Quit Editor");
+	case HOTKEY_EDIT_NEW_MAP: return _("New Map");
+	case HOTKEY_EDIT_LOAD_MAP: return _("Load Map");
+	case HOTKEY_EDIT_SAVE_MAP: return _("Save Map");
+	case HOTKEY_EDIT_SAVE_AS: return _("Save As");
+	case HOTKEY_EDIT_SET_START_POS: return _("Set Player Start Position");
+	case HOTKEY_EDIT_FLOOD_FILL: return _("Flood Fill");
+	case HOTKEY_EDIT_FILL_SELECTION: return _("Fill Selection");
+	case HOTKEY_EDIT_CUT: return _("Cut");
+	case HOTKEY_EDIT_COPY: return _("Copy");
+	case HOTKEY_EDIT_PASTE: return _("Paste");
+	case HOTKEY_EDIT_REVERT: return _("Revert from Disk");
+	case HOTKEY_EDIT_RESIZE: return _("Resize Map");
+	case HOTKEY_EDIT_FLIP: return _("Flip Map");
+	case HOTKEY_EDIT_SELECT_ALL: return _("Select All");
+	case HOTKEY_EDIT_DRAW: return _("Draw Terrain");
+	case HOTKEY_DELAY_SHROUD: return _("Delay Shroud Updates");
+	case HOTKEY_UPDATE_SHROUD: return _("Update Shroud Now");
+	case HOTKEY_CONTINUE_MOVE: return _("Continue Move");
+	case HOTKEY_SEARCH: return _("Find Label or Unit");
+	case HOTKEY_SPEAK_ALLY: return _("Speak to Ally");
+	case HOTKEY_SPEAK_ALL: return _("Speak to All");
+	case HOTKEY_HELP: return _("Help");
+	case HOTKEY_CHAT_LOG: return _("View Chat Log");
+	default:
+	  std::cerr << "\n command_to_description: No matching command found...";
+	  return "";
+	}
+}
+
 
 hotkey_item::hotkey_item(const config& cfg) : lastres(false)
 {
@@ -292,7 +359,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 {
 	if(event.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
 		std::cerr << "escape pressed..showing quit\n";
-		const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);
+		const int res = gui::show_dialog(disp,NULL,"",_("Do you really want to quit?"),gui::YES_NO);
 		if(res == 0) {
 			throw end_level_exception(QUIT);
 		} else {
@@ -484,7 +551,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_QUIT_GAME: {
 			if(disp.in_game()) {
 				std::cerr << "is in game -- showing quit message\n";
-				const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);
+				const int res = gui::show_dialog(disp,NULL,"",_("Do you really want to quit?"),gui::YES_NO);
 				if(res == 0) {
 					throw end_level_exception(QUIT);
 				}

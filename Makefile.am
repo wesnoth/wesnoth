@@ -1,5 +1,5 @@
 ISUBDIRS = icons
-SUBDIRS = src $(ISUBDIRS)
+SUBDIRS = intl po m4 src $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
 
 dist_noinst_DATA = @MANUAL_FILES@ copyright changelog wesnoth.dsp wesnoth.dsw \
@@ -33,3 +33,7 @@ data-dist:
 	@cd $(BINARY_STAGING) ; tar cf - * | gzip -c >$(DATA_DIST)
 	@rm -rf $(BINARY_STAGING)
 	@echo "Precompiled data tarball is in $(DATA_DIST)"
+
+ACLOCAL_AMFLAGS = -I m4
+
+EXTRA_DIST = config/config.rpath

@@ -298,7 +298,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 		}
 
 		if(description != NULL) {
-			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage << translate_string("dmg");
+			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage << _("Dmg");
 		}
 	}
 
@@ -310,7 +310,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 		}
 
 		if(description != NULL) {
-			desc << (increase > 0 ? "+" : "") << increase << translate_string("strikes");
+			desc << (increase > 0 ? "+" : "") << increase << _("strikes");
 		}
 	}
 
@@ -634,23 +634,24 @@ std::string unit_type::generate_description() const
 
 std::string unit_type::id() const
 {
-	std::string n = name();
+	std::string n = cfg_["id"];
+
+	if (n.empty())
+		// this code is only for compatibility with old unit defs and savefiles
+		n = cfg_["name"];
+
 	n.erase(std::remove(n.begin(),n.end(),' '),n.end());
 	return n;
 }
 
 std::string unit_type::language_name() const
 {
-	const std::string& lang_name = string_table[id()];
-	if(lang_name.empty() == false)
-		return lang_name;
-	else
-		return name();
+	return cfg_["name"];
 }
 
 const std::string& unit_type::name() const
 {
-	return cfg_["name"];
+	return cfg_["id"];
 }
 
 const std::string& unit_type::image() const
@@ -854,10 +855,10 @@ unit_type::ALIGNMENT unit_type::alignment() const
 	}
 }
 
-const std::string& unit_type::alignment_description(unit_type::ALIGNMENT align)
+const char* unit_type::alignment_description(unit_type::ALIGNMENT align)
 {
-	static const std::string aligns[] = { "lawful", "neutral", "chaotic" };
-	return aligns[align];
+	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic") };
+	return (gettext(aligns[align]));
 }
 
 double unit_type::alpha() const
@@ -1002,5 +1003,7 @@ game_data::game_data(const config& cfg)
 	    j.first != j.second; ++j.first) {
 		const unit_type u_type(**j.first,movement_types,races,unit_traits);
 		unit_types.insert(std::pair<std::string,unit_type>(u_type.name(),u_type));
+		std::cerr << "Inserting unit " << u_type.id() << " (" << u_type.name() << ")"
+			  << "\n";
 	}
 }

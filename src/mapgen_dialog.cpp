@@ -66,21 +66,21 @@ void default_map_generator::user_config(display& disp)
 
 	surface_restorer restorer;
 
-	gui::button close_button(disp,string_table["close_window"]);
+	gui::button close_button(disp,_("Close Window"));
 	std::vector<gui::button*> buttons(1,&close_button);
 
-	gui::draw_dialog(xpos,ypos,width,height,disp,string_table["map_generator"],NULL,&buttons,&restorer);
+	gui::draw_dialog(xpos,ypos,width,height,disp,_("Map Generator"),NULL,&buttons,&restorer);
 
 	SDL_Rect dialog_rect = {xpos,ypos,width,height};
 	surface_restorer dialog_restorer(&disp.video(),dialog_rect);
 
-	const std::string& players_label = string_table["num_players"] + ":";
-	const std::string& width_label = string_table["map_width"] + ":";
-	const std::string& height_label = string_table["map_height"] + ":";
-	const std::string& iterations_label = string_table["mapgen_iterations"] + ":";
-	const std::string& hillsize_label = string_table["mapgen_hillsize"] + ":";
-	const std::string& villages_label = string_table["mapgen_villages"] + ":";
-	const std::string& landform_label = string_table["landform"] + ":";
+	const std::string& players_label = _("Players") + std::string(":");
+	const std::string& width_label = _("Width") + std::string(":");
+	const std::string& height_label = _("Height") + std::string(":");
+	const std::string& iterations_label = _("Iterations") + std::string(":");
+	const std::string& hillsize_label = _("Bump Size") + std::string(":");
+	const std::string& villages_label = _("Villages") + std::string(":");
+	const std::string& landform_label = _("Landform") + std::string(":");
 
 	SDL_Rect players_rect = font::draw_text(NULL,disp.screen_area(),14,font::NORMAL_COLOUR,players_label,0,0);
 	SDL_Rect width_rect = font::draw_text(NULL,disp.screen_area(),14,font::NORMAL_COLOUR,width_label,0,0);
@@ -180,7 +180,7 @@ void default_map_generator::user_config(display& disp)
 	SDL_Rect link_rect = slider_rect;
 	link_rect.y = link_rect.y + link_rect.h + vertical_margin;
 
-	gui::button link_castles(disp,string_table["link_castles"],gui::button::TYPE_CHECK);
+	gui::button link_castles(disp,_("Roads Between Castles"),gui::button::TYPE_CHECK);
 	link_castles.set_check(link_castles_);
 	link_castles.set_location(link_rect);
 
@@ -243,12 +243,12 @@ void default_map_generator::user_config(display& disp)
 		                slider_right+horz_margin,height_rect.y);
 		
 		std::stringstream villages_str;
-		villages_str << nvillages_ << string_table["thousand_tiles"];
+		villages_str << nvillages_ << _("/1000 tiles");
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,villages_str.str(),
 		                slider_right+horz_margin,villages_rect.y);
 
 		std::stringstream landform_str;
-		landform_str << string_table[island_size_ == 0 ? "inland" : (island_size_ < max_coastal ? "coastal" : "island")];
+		landform_str << gettext(island_size_ == 0 ? N_("Inland") : (island_size_ < max_coastal ? N_("Coastal") : N_("Island")));
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,landform_str.str(),
 			            slider_right+horz_margin,landform_rect.y);
 

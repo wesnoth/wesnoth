@@ -102,22 +102,24 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus,loc,units,teams)) {
 			unit_status << "misc/invisible.png";
-			tooltip << string_table["invisible"] << ": " << string_table["invisible_description"];
+			tooltip << _("invisible") << ": " << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
 			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("slowed")) {
 			unit_status << "misc/slowed.png";
-			tooltip << string_table["slowed"] << ": " << string_table["slowed_description"];
+			tooltip << _("slowed") << ": " << _("This unit has been slowed. It moves at half normal speed and receives one less attack than normal in combat.");
 			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("poisoned")) {
 			unit_status << "misc/poisoned.png";
-			tooltip << string_table["poisoned"] << ": " << string_table["poisoned_description"];
+			tooltip << _("poisoned") << ": " << _("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the 'cures' ability.\n\
+\n\
+Units cannot be killed by poison alone. The poison will not reduce it below 1 HP.");
 			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("stone")) {
 			unit_status << "misc/stone.png";
-			tooltip << string_table["stone"] << ": " << string_table["stone_description"];
+			tooltip << _("stone") << ": " << _("This unit has been turned to stone. It may not move or attack.");
 			res.add_image(unit_status,tooltip);
 		}
 
@@ -204,7 +206,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 			for(std::map<int,std::vector<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
 				std::sort(resist->second.begin(),resist->second.end());
-				tooltip << (resist->first >= 0 ? "+" : "") << resist->first << "% " << string_table["versus"] << " ";
+				tooltip << (resist->first >= 0 ? "+" : "") << resist->first << "% " << _("vs") << " ";
 				for(std::vector<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
 					if(i != resist->second.begin()) {
 						tooltip << ",";
@@ -224,14 +226,14 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 			
 			str << at_it->damage() << "-" << at_it->num_attacks() << " -- "
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
-		            string_table["short_range"] :
-					string_table["long_range"]);
-			tooltip << at_it->damage() << " " << string_table["damage"] << ", "
-					<< at_it->num_attacks() << " " << string_table["attacks"];
+		            _("melee") :
+					_("ranged"));
+			tooltip << at_it->damage() << " " << _("damage") << ", "
+					<< at_it->num_attacks() << " " << _("attacks");
 			
 			if(at_it->hexes() > 1) {
 				str << " (" << at_it->hexes() << ")";
-				tooltip << ", " << at_it->hexes() << " " << string_table["hexes"];
+				tooltip << ", " << at_it->hexes() << " " << _("hexes");
 			}
 			str << "\n";
 			res.add_text(str,tooltip);
@@ -247,11 +249,11 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		const time_of_day& tod = timeofday_at(status,units,mouseover);
 		std::stringstream tooltip;
 		
-		tooltip << font::LARGE_TEXT << translate_string_default(tod.id,tod.name) << "\n"
-		        << string_table["lawful_units"] << ": "
+		tooltip << font::LARGE_TEXT << tod.name << "\n"
+		        << _("Lawful units") << ": "
 				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
-				<< string_table["neutral_units"] << ": " << "0%\n"
-				<< string_table["chaotic_units"] << ": "
+				<< _("Neutral units") << ": " << "0%\n"
+				<< _("Chaotic units") << ": "
 				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
 		
 		return report("",tod.image,tooltip.str());
@@ -305,11 +307,11 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 			const int owner = village_owner(mouseover,teams)+1;
 			if(owner == 0) {
 			} else if(owner == current_side) {
-				str << translate_string("owned");
+				str << _("Owned");
 			} else if(current_team.is_enemy(owner)) {
-				str << translate_string("enemy");
+				str << _("Enemy");
 			} else {
-				str << translate_string("ally");
+				str << _("Allied");
 			}
 
 			str << " ";
@@ -371,7 +373,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 			return report();
 		}
 
-		str << translate_string("observers") << ":\n";
+		str << _("Observers") << ":\n";
 
 		for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
 			str << *i << "\n";

@@ -1,0 +1,67 @@
+#! /usr/bin/perl -w
+
+# Script to automate the incremental merge operation of a branch into
+# current cvs workdir, taking into account binary files while still
+# avoiding spurious conflicts due to the use of RCS keyword in source
+# files.
+
+# Example of use:
+#  - initial merge on the 1st syncpoint of a series:
+#      utils/cvsmerge syncpoint_gettext1_1
+#  - incremental merge of changes between 7th and 8th syncpoints:
+#      utils/cvsmerge syncpoint_gettext1_8
+
+use strict;
+
+## parameters
+
+# this may need adjustments as the source tree evolves
+our @binarydirs = qw(fonts icons images music sounds);
+our @excludeddirs = qw(. .. CVS);
+
+## infer non-binary dirs
+
+our @nonbindirs;
+{
+  opendir TOP, '.' or die "cannot open top-level dir";
+  my @direntries = readdir TOP or die "cannot read top-level dir";
+  close TOP;
+
+  foreach my $entry (@direntries) {
+    push @nonbindirs, $entry
+      if -d $entry and ! grep { $entry eq $_ } (@binarydirs,@excludeddirs);
+  }
+}
+
+## parse command line
+
+our ($basetag, $targettag);
+if (@ARGV == 1) {
+  die "single argument must be a syncpoint tag"
+    unless $ARGV[0] =~ m/^(syncpoint_.*_)(\d+)$/;
+
+  my ($tagroot, $target) = ($1, $2);
+  $targettag = $ARGV[0];
+  $basetag = $tagroot . ($target-1) if $target > 1;
+} elsif (@ARGV == 2) {
+  ($basetag, $targettag) = @ARGV;
+} else {
+  die "this script wants 1 or 2 arguments";
+}
+
+
+## base of the command
+
+our $basecmd = 'cvs -f -z4 upd -dP ';
+$basecmd .= '-j ' . $basetag . ' ' if defined $basetag;
+$basecmd .= '-j ' . $targettag . ' ';
+
+## do merge
+
+foreach my $cmd ($basecmd . '-kk -l',
+		 $basecmd . join (' ', @binarydirs),
+		 $basecmd . '-kk ' . join (' ', @nonbindirs),
+		) {
+  print "** Now running $cmd\n";
+  system ($cmd) and die "partial merge failed: $!";
+}

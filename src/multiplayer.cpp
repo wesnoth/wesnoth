@@ -85,7 +85,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	}
 
 	//add the 'load game' option
-	options.push_back(string_table["load_game"] + "...");
+	options.push_back(_("Load Game") + std::string("..."));
 
 	//create the scenarios menu
 	maps_menu_.assign(new gui::menu(disp_,options));
@@ -97,55 +97,55 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	turns_slider_->set_min(20);
 	turns_slider_->set_max(100);
 	turns_slider_->set_value(50);
-	turns_slider_->set_help_string(string_table["help_string_turns_slider"]);
+	turns_slider_->set_help_string(_("The maximum turns the game will go for"));
 
 	village_gold_slider_.assign(new gui::slider(disp_,rect));
 	village_gold_slider_->set_min(1);
 	village_gold_slider_->set_max(5);
 	village_gold_slider_->set_value(1);
-	village_gold_slider_->set_help_string(string_table["help_string_village_gold_slider"]);
+	village_gold_slider_->set_help_string(_("The amount of income each village yields per turn"));
 
 	xp_modifier_slider_.assign(new gui::slider(disp_,rect));
 	xp_modifier_slider_->set_min(25);
 	xp_modifier_slider_->set_max(200);
 	xp_modifier_slider_->set_value(100);
-	xp_modifier_slider_->set_help_string(string_table["help_string_xp_modifier_slider"]);
+	xp_modifier_slider_->set_help_string(_("The amount of experience a unit needs to advance"));
 
-	fog_game_.assign(new gui::button(disp_,string_table["fog_of_war"],gui::button::TYPE_CHECK));
+	fog_game_.assign(new gui::button(disp_,_("Fog Of War"),gui::button::TYPE_CHECK));
 	fog_game_->set_check(false);
-	fog_game_->set_help_string(string_table["help_string_fog_of_war"]);
+	fog_game_->set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
 
-	shroud_game_.assign(new gui::button(disp_,string_table["shroud"],gui::button::TYPE_CHECK));
+	shroud_game_.assign(new gui::button(disp_,_("Shroud"),gui::button::TYPE_CHECK));
 	shroud_game_->set_check(false);
-	shroud_game_->set_help_string(string_table["help_string_shroud"]);
+	shroud_game_->set_help_string(_("The map is unknown until your units explore it"));
 
-	observers_game_.assign(new gui::button(disp_,string_table["observers"],gui::button::TYPE_CHECK));
+	observers_game_.assign(new gui::button(disp_,_("Observers"),gui::button::TYPE_CHECK));
 	observers_game_->set_check(true);
-	observers_game_->set_help_string(string_table["help_string_observers"]);
+	observers_game_->set_help_string(_("Allow users who are not playing to watch the game"));
 
-	cancel_game_.assign(new gui::button(disp_,string_table["cancel_button"]));
-	launch_game_.assign(new gui::button(disp_,string_table["ok_button"]));
+	cancel_game_.assign(new gui::button(disp_,_("Cancel")));
+	launch_game_.assign(new gui::button(disp_,_("Ok")));
 
-	regenerate_map_.assign(new gui::button(disp_,string_table["regenerate_map"]));
+	regenerate_map_.assign(new gui::button(disp_,_("Regenerate")));
 
-	generator_settings_.assign(new gui::button(disp_,string_table["generator_settings"]));
+	generator_settings_.assign(new gui::button(disp_,_("Settings...")));
 
 	//The possible vision settings
 	std::vector<std::string> vision_types;
-	vision_types.push_back(string_table["share_view"]);
-	vision_types.push_back(string_table["share_maps"]);
-	vision_types.push_back(string_table["share_none"]);
+	vision_types.push_back(_("Share View"));
+	vision_types.push_back(_("Share Maps"));
+	vision_types.push_back(_("Share None"));
 	vision_combo_.assign(new gui::combo(disp_,vision_types));
 
 	//the possible eras to play
 	const config::child_list& era_list = cfg.get_children("era");
 	std::vector<std::string> eras;
 	for(config::child_list::const_iterator er = era_list.begin(); er != era_list.end(); ++er) {
-		eras.push_back(translate_string_default((**er)["id"],(**er)["name"]));
+		eras.push_back((**er)["name"]);
 	}
 
 	if(eras.empty()) {
-		gui::show_dialog(disp_,NULL,"",string_table["error_no_mp_sides"],gui::OK_ONLY);
+		gui::show_dialog(disp_,NULL,"",_("No multiplayer sides."),gui::OK_ONLY);
 		std::cerr << "ERROR: no eras found\n";
 		throw config::error("no eras found");
 	}
@@ -173,12 +173,12 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	const int bottom = top + height;
 
 	int xpos = left + border_size;
-	int ypos = top + gui::draw_dialog_title(left,top,&disp_,string_table["create_new_game"]).h + border_size;
+	int ypos = top + gui::draw_dialog_title(left,top,&disp_,_("Create Game")).h + border_size;
 
 	//Name Entry
 	ypos += font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
-	                        string_table["name_of_game"] + ":",xpos,ypos).h + border_size;
-	name_entry_.assign(new gui::textbox(disp_,width-20,string_table["game_prefix"] + preferences::login() + string_table["game_postfix"]));
+	                        _("Name of game") + std::string(":"),xpos,ypos).h + border_size;
+	name_entry_.assign(new gui::textbox(disp_,width-20,string_table["game_prefix"] + preferences::login() + _("'s game")));
 	name_entry_->set_location(xpos,ypos);
 	name_entry_->set_dirty();
 
@@ -189,7 +189,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	//the map selection menu goes near the middle of the dialog, to the right of
 	//the minimap
 	const int map_label_height = font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
-	                                             string_table["map_to_play"] + ":",xpos + minimap_width + border_size,ypos).h;
+	                                             _("Map to play") + std::string(":"),xpos + minimap_width + border_size,ypos).h;
 
 	maps_menu_->set_loc(xpos + minimap_width + border_size,ypos + map_label_height + border_size);
 	maps_menu_->set_dirty();
@@ -286,7 +286,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	playernum_restorer_ = surface_restorer(&disp_.video(),player_num_rect);
 
 	SDL_Rect era_rect = {xpos,player_num_rect.y+player_num_rect.h + border_size,50,20};
-	era_rect = font::draw_text(&disp_,era_rect,12,font::GOOD_COLOUR,translate_string("Era") + ":",
+	era_rect = font::draw_text(&disp_,era_rect,12,font::GOOD_COLOUR,_("Era") + std::string(":"),
 	                           era_rect.x,era_rect.y);
 	
 	era_combo_->set_location(era_rect.x+era_rect.w+border_size,era_rect.y);
@@ -348,11 +348,11 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 		sprintf(buf,"%d", cur_turns);
 		turns_str = buf;
 	} else {
-		turns_str = string_table["unlimited"];
+		turns_str = _("Unlimited");
 	}
 
 	font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
-	                string_table["turns"] + ": " + turns_str,
+	                _("Turns") + std::string(": ") + turns_str,
 					turns_restorer_.area().x,turns_restorer_.area().y);
 
 	//Villages can produce between 1 and 10 gold a turn
@@ -360,7 +360,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 	village_gold_restorer_.restore();
 	sprintf(buf,": %d", village_gold);
 	font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
-	                string_table["village_gold"] + buf,
+	                _("Village Gold") + std::string(buf),
 					village_gold_restorer_.area().x,village_gold_restorer_.area().y);
 
 
@@ -372,7 +372,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 
 	const SDL_Rect& xp_rect = xp_restorer_.area();
 	font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
-	                string_table["xp_modifier"] + buf,xp_rect.x,xp_rect.y);
+	                _("Experience Requirements") + std::string(buf),xp_rect.x,xp_rect.y);
 
 	bool map_changed = map_selection_ != maps_menu_->selection();
 	map_selection_ = maps_menu_->selection();
@@ -481,7 +481,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 			const int nsides = level_->get_children("side").size();
 
 			std::stringstream players;
-			players << string_table["num_players"] << ": " << nsides;
+			players << _("Players") << ": " << nsides;
 			font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
 			                players.str(),players_rect.x,players_rect.y);
 		}

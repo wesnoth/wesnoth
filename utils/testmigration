@@ -1,0 +1,36 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+our %langs = (
+	      'ca' => 'catalan',
+	      'cs' => 'czech',
+	      'da' => 'danish',
+	      'de' => 'german',
+	      'es' => 'spanish',
+	      'fi' => 'finnish',
+	      'fr' => 'french',
+	      'hu' => 'hungarian',
+	      'it' => 'italian',
+	      'nl' => 'dutch',
+	      'no' => 'norwegian',
+	      'pl' => 'polish',
+	      'pt_BR' => 'brazilian',
+	      'sk' => 'slovak',
+	      'sv' => 'swedish',
+	     );
+
+our @locales;
+if (@ARGV == 0) {
+  @locales = keys %langs;
+} else {
+  @locales = @ARGV;
+}
+
+foreach my $key (@locales) {
+  print STDERR " $langs{$key} -> $key:\n";
+  system ("./utils/wml2po.pl data/translations/" . $langs{$key} .
+	  ".cfg po/$key.po > out-$key.log 2> err-$key.log")
+    and print STDERR "translation ended in error !\n";
+  system ("grep FINAL err-$key.log");
+}

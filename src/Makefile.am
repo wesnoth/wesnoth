@@ -20,6 +20,8 @@ endif
 
 pkgdatadir=$(datadir)/@DATADIR@
 
+localedir=$(datadir)/locale
+
 #############################################################################
 #    Wesnoth                                                                #
 #############################################################################
@@ -298,7 +300,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/slider.hpp \
 			 widgets/widget.hpp
 
-AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
+AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -DLOCALEDIR=\"$(localedir)\" \
+	-I../intl -I$(top_srcdir)/intl
 
 if X11
     CXXFLAGS += -D_X11 @X_CFLAGS@
@@ -307,8 +310,8 @@ if GCC
     CXXFLAGS += -fno-omit-frame-pointer
 endif
 
-AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ \
-	@SDL_TTF_LIBS@
+LIBS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ \
+	@SDL_TTF_LIBS@ @LIBINTL@
 
 if STATIC
 LIBS += -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \

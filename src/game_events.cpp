@@ -815,7 +815,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		SDL_Color colour = {red,green,blue,255};
 
-		const std::string& msg = translate_string_default(id,text);
+		const std::string& msg = text;
 		if(msg != "") {
 			const SDL_Rect rect = screen->map_area();
 			font::add_floating_label(msg,size,colour,rect.w/2,rect.h/2,
@@ -891,7 +891,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const config::child_list& menu_items = cfg.get_children("option");
 		for(config::child_list::const_iterator mi = menu_items.begin();
 		    mi != menu_items.end(); ++mi) {
-			const std::string& msg = translate_string_default((**mi)["id"],(**mi)["message"]);
+			const std::string& msg = (**mi)["message"];
 			options.push_back(msg);
 			option_events.push_back((*mi)->child_range("command"));
 		}

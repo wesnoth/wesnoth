@@ -861,26 +861,26 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		update_rect(description_rect);
 	}
 
-	std::string status = string_table["healthy"];
+	std::string status = _("healthy");
 	if(map_.on_board(loc) &&
 	   u.invisible(map_.underlying_terrain(map_[loc.x][loc.y]), 
 			status_.get_time_of_day().lawful_bonus,loc,
 			units_,teams_)) {
-		status = font::GOOD_TEXT + string_table["invisible"];
+		status = font::GOOD_TEXT + _("invisible");
 	}
 
 	if(u.has_flag("slowed")) {
-		status = font::BAD_TEXT + string_table["slowed"];
+		status = font::BAD_TEXT + _("slowed");
 	}
 
 	if(u.has_flag("poisoned")) {
-		status = font::BAD_TEXT + string_table["poisoned"];
+		status = font::BAD_TEXT + _("poisoned");
 	}
 
 	std::stringstream details;
 	details << font::LARGE_TEXT << u.description() << "\n"
 	        << font::LARGE_TEXT << u.type().language_name()
-			<< "\n" << font::SMALL_TEXT << "(" << string_table["level"] << " "
+			<< "\n" << font::SMALL_TEXT << "(" << _("level") << " "
 			<< u.type().level() << ")\n"
 			<< status << "\n"
 			<< translate_string(unit_type::alignment_description(u.type().alignment()))
@@ -898,11 +898,11 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	else if(u.hitpoints() > 2*(u.max_hitpoints()/3))
 		details << font::GOOD_TEXT;
 
-	details << string_table["hp"] << ": " << u.hitpoints()
+	details << _("HP") << ": " << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n";
 	
 	if(u.can_advance() == false) {
-		details << string_table["xp"] << ": " << u.experience() << "/-";
+		details << _("XP") << ": " << u.experience() << "/-";
 	} else {
 		//if killing a unit the same level as us would level us up,
 		//then display in green
@@ -910,11 +910,11 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 			details << font::GOOD_TEXT;
 		}
 
-		details << string_table["xp"] << ": " << u.experience() << "/" << u.max_experience();
+		details << _("XP") << ": " << u.experience() << "/" << u.max_experience();
 	}
 	
 	details << "\n"
-			<< string_table["moves"] << ": " << u.movement_left() << "/"
+			<< _("Moves") << ": " << u.movement_left() << "/"
 			<< u.total_movement()
 			<< "\n";
 
@@ -931,8 +931,8 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 				<< (lang_special.empty() ? at_it->special():lang_special)<<"\n"
 				<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
-		            string_table["short_range"] :
-					string_table["long_range"]);
+		            _("melee") :
+					_("ranged"));
 	
 		if(at_it->hexes() > 1) {
 			details << " (" << at_it->hexes() << ")";

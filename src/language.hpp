@@ -24,6 +24,16 @@ typedef std::vector<wchar_t> wide_string;
 
 //this module controls internationalization.
 
+struct language_def
+{
+	std::string localename;
+  	std::string language;
+	bool operator== (const language_def&);
+};
+extern language_def known_languages[];
+std::string languagedef_name (const language_def& def);
+bool languagedef_lessthan_p (const language_def& def1, const language_def& def2);
+
 struct symbol_table
 {
 	const std::string& operator[](const std::string& key) const;
@@ -45,19 +55,19 @@ const std::string& translate_string_default(const std::string& key, const std::s
 
 //function which, given the main configuration object, will return
 //a list of the translations of the game available.
-std::vector<std::string> get_languages();
+std::vector<language_def> get_languages();
 
 //function which, given the main configuration object, and a locale,
 //will set string_table to be populated with data from that locale.
 //locale may be either the full name of the language, like 'English',
 //or the 2-letter version, like 'en'.
-bool set_language(const std::string& locale);
+bool set_language(const language_def& locale);
 
 //function which returns the name of the language currently used
-const std::string& get_language();
+const language_def& get_language();
 
 //function which attempts to query and return the locale on the system
-std::string get_locale();
+const language_def& get_locale();
 
 //functions for converting Unicode wide-char strings to UTF-8 encoded
 //strings, back and forth
@@ -66,5 +76,12 @@ std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
 std::string wchar_to_string(const wchar_t);
 
+
+// gettext-related declarations
+#include <libintl.h>
+const char* sgettext (const char*);
+#define _(String) gettext(String)
+#define gettext_noop(String) String
+#define N_(String) gettext_noop (String)
 
 #endif
