@@ -12,12 +12,14 @@
 
 #include "help.hpp"
 
+#include "about.hpp"
 #include "cursor.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
 #include "show_dialog.hpp"
+#include "unit.hpp"
 #include "util.hpp"
 
 #include "SDL_ttf.h"
@@ -56,8 +58,53 @@ namespace {
 		return true;
 	}
 
+	/// Class to be used as a function object when generating the about
+	/// text. Translate the about dialog formatting to format suitable
+	/// for the help dialog.
+	class about_text_formatter {
+	public:
+		about_text_formatter() : text_started_(false) {}
+		std::string operator()(const std::string &s) {
+			std::string res = s;
+			if (res.size() > 0) {
+				bool header = false;
+				// Format + as headers, and the rest as normal text.
+				if (res[0] == '+') {
+					header = true;
+					res.erase(res.begin());
+				}
+				else if (res[0] == '-') {
+					res.erase(res.begin());
+				}
+				// There is a bunch of empty rows in the start in about.cpp,
+				// we do not want to show these here. Thus, if we still
+				// encounter one of those, return an empty string that will
+				// be removed totally at a later stage.
+				if (!text_started_ && res.find_first_not_of(' ') != std::string::npos) {
+					text_started_ = true;
+				}
+				if (text_started_) {
+					std::stringstream ss;
+					if (header) {
+						ss << "<header>text='" << res << "'</header>";
+						res = ss.str();
+					}
+				}
+				else {
+					res = "";
+				}
+			}
+			return res;
+		}
+	private:
+		bool text_started_;
+	};
+}
+
+namespace help {
+
 	void parse_config_internal(const config *help_cfg, const config *section_cfg,
-							   help::section &sec, int level=0) {
+							   section &sec, int level) {
 		if (level > max_section_level) {
 			std::cerr << "Maximum section depth has been reached. Maybe circular dependency?"
 					  << std::endl;
@@ -69,7 +116,7 @@ namespace {
 				if (!is_valid_id(id)) {
 					std::stringstream ss;
 					ss << "Invalid ID, used for internal purpose: '" << id << "'";
-					throw help::parse_error(ss.str());
+					throw parse_error(ss.str());
 				}
 			}
 			const std::string title = level == 0 ? "" : (*section_cfg)["title"];
@@ -80,7 +127,7 @@ namespace {
 			for (it = sections.begin(); it != sections.end(); it++) {
 				config const *child_cfg = help_cfg->find_child("section", "id", *it);
 				if (child_cfg != NULL) {
-					help::section child_section;
+					section child_section;
 					parse_config_internal(help_cfg, child_cfg, child_section, level + 1);
 					sec.add_section(child_section);
 				}
@@ -88,20 +135,25 @@ namespace {
 					std::stringstream ss;
 					ss << "Help-section '" << *it << "' referenced from '"
 					   << id << "' but could not be found.";
-					throw help::parse_error(ss.str());
+					throw parse_error(ss.str());
 				}
 			}
+			const std::vector<section> generated_sections =
+				generate_sections((*section_cfg)["generator"]);
+			std::transform(generated_sections.begin(), generated_sections.end(),
+						   std::back_inserter(sec.sections), create_section());
 			const std::vector<std::string> topics  = config::quoted_split((*section_cfg)["topics"]);
 			// Find all topics in this section.
 			for (it = topics.begin(); it != topics.end(); it++) {
 				config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
 				if (topic_cfg != NULL) {
-					help::topic child_topic((*topic_cfg)["title"], (*topic_cfg)["id"],
-											(*topic_cfg)["text"]);
+					std::string text = (*topic_cfg)["text"];
+					text += generate_topic_text((*topic_cfg)["generator"]);
+					topic child_topic((*topic_cfg)["title"], (*topic_cfg)["id"], text);
 					if (!is_valid_id(child_topic.id)) {
 						std::stringstream ss;
 						ss << "Invalid ID, used for internal purpose: '" << id << "'";
-						throw help::parse_error(ss.str());
+						throw parse_error(ss.str());
 					}
 					sec.topics.push_back(child_topic);
 				}
@@ -109,14 +161,16 @@ namespace {
 					std::stringstream ss;
 					ss << "Help-topic '" << *it << "' referenced from '" << id
 					   << "' but could not be found." << std::endl;
-					throw help::parse_error(ss.str());
+					throw parse_error(ss.str());
 				}
 			}
+			const std::vector<topic> generated_topics =
+				generate_topics((*section_cfg)["generator"]);
+			std::copy(generated_topics.begin(), generated_topics.end(),
+					  std::back_inserter(sec.topics));
+								  
 		}
 	}	
-}
-
-namespace help {
 
 section parse_config(const config *cfg) {
 	section sec;
@@ -126,6 +180,57 @@ section parse_config(const config *cfg) {
 	}
 	return sec;
 }
+
+
+std::vector<section> generate_sections(const std::string &generator) {
+	std::vector<section> empty_vec;
+	if (generator == "") {
+		return empty_vec;
+	}
+
+	return empty_vec;
+}
+
+std::vector<topic> generate_topics(const std::string &generator) {
+	std::vector<topic> empty_vec;
+	if (generator == "") {
+		return empty_vec;
+	}
+	if (generator == "traits") {
+		return generate_trait_topics();
+	}
+	return empty_vec;
+}
+
+std::string generate_topic_text(const std::string &generator) {
+	std::string empty_string = "";
+	if (generator == "") {
+		return empty_string;
+	}
+	if (generator == "about") {
+		return generate_about();
+	}
+	return empty_string;
+}
+
+std::vector<topic> generate_trait_topics() {
+	return std::vector<topic>();
+}
+
+
+std::string generate_about() {
+	std::vector<std::string> about_lines = about::get_text();
+	std::vector<std::string> res_lines;
+	std::transform(about_lines.begin(), about_lines.end(), std::back_inserter(res_lines),
+				   about_text_formatter());
+	std::vector<std::string>::iterator it =
+		std::remove(res_lines.begin(), res_lines.end(), "");
+	std::vector<std::string> res_lines_rem(res_lines.begin(), it);
+	std::string text = config::join(res_lines_rem, '\n');
+	return text;
+}
+
+
 
 help_manager::help_manager(const config *hlp_config) {
 	help_config = hlp_config == NULL ? &dummy_cfg : hlp_config;
@@ -944,8 +1049,7 @@ void help_text_area::handle_event(const SDL_Event &event) {
 		return;
 	}
 	if (focus()) {
-		switch (event.type) {
-		case SDL_MOUSEBUTTONDOWN:
+		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			// Scroll up/down when the mouse wheel is used.
 			SDL_MouseButtonEvent mouse_event = event.button;
 			if (mouse_event.button == SDL_BUTTON_WHEELUP) {
@@ -954,9 +1058,6 @@ void help_text_area::handle_event(const SDL_Event &event) {
 			if (mouse_event.button == SDL_BUTTON_WHEELDOWN) {
 				scroll_down();
 			}
-			break;
-		default:
-			;
 		}
 	}
 }

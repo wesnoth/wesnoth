@@ -64,6 +64,7 @@ struct section {
 	/// Comparison on the ID.
 	bool operator<(const section &) const;
 	
+	/// Allocate memory for and add the section.
 	void add_section(const section &s);
 	
 	void clear();
@@ -381,6 +382,17 @@ private:
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
 section parse_config(const config *cfg); 
+/// Recursive function used by parse_config.
+void parse_config_internal(const config *help_cfg, const config *section_cfg,
+						   section &sec, int level=0);
+
+/// Dispatch generators to their appropriate functions.
+std::vector<section> generate_sections(const std::string &generator);
+std::vector<topic> generate_topics(const std::string &generator);
+std::string generate_topic_text(const std::string &generator);
+
+std::string generate_about();
+std::vector<topic> generate_trait_topics();
 
 /// Search for the topic with the specified identifier in the section
 /// and it's subsections. Return the found topic, or NULL if none could

@@ -15,11 +15,14 @@
 #define ABOUT_H_INCLUDED
 
 #include "display.hpp"
+#include <vector>
+#include <string>
 
 namespace about
 {
 
 void show_about(display& disp);
+std::vector<std::string> get_text();
 
 }
 

@@ -23,33 +23,11 @@
 #include "widgets/button.hpp"
 
 #include <sstream>
-#include <string>
 
 namespace about
 {
 
-void show_about(display& disp)
-{
-	SDL_Rect rect = {0, 0, disp.x(), disp.y()};
-
-	const surface_restorer restorer(&disp.video(), rect);
-
-	// Clear the screen
-	gui::draw_solid_tinted_rectangle(0,0,disp.x()-1,disp.y()-1,
-	                                 0,0,0,1.0,disp.video().getSurface());
-	update_whole_screen();
-
-	const scoped_sdl_surface map_image(image::get_image(game_config::map_image,image::UNSCALED));
-	SDL_Rect map_rect;
-	map_rect.x = disp.x()/2 - map_image->w/2;
-	map_rect.y = disp.y()/2 - map_image->h/2;
-	map_rect.w = map_image->w;
-	map_rect.h = map_image->h;
-
-	gui::button close(disp,string_table["close_button"]);
-	close.set_location((disp.x()/2)-(close.width()/2), map_rect.y+map_rect.h+15);
-
-
+std::vector<std::string> get_text() {
 	std::vector<std::string> text;
 	text.push_back(" ");
 	text.push_back("- ");
@@ -225,6 +203,31 @@ void show_about(display& disp)
  	text.push_back("-   Frédéric Wagner");
  	text.push_back("-   Jan Zvánovec (jaz)");
  	text.push_back("+ ");
+	return text;
+}
+
+void show_about(display& disp)
+{
+	std::vector<std::string> text = get_text();
+	SDL_Rect rect = {0, 0, disp.x(), disp.y()};
+
+	const surface_restorer restorer(&disp.video(), rect);
+
+	// Clear the screen
+	gui::draw_solid_tinted_rectangle(0,0,disp.x()-1,disp.y()-1,
+	                                 0,0,0,1.0,disp.video().getSurface());
+	update_whole_screen();
+
+	const scoped_sdl_surface map_image(image::get_image(game_config::map_image,image::UNSCALED));
+	SDL_Rect map_rect;
+	map_rect.x = disp.x()/2 - map_image->w/2;
+	map_rect.y = disp.y()/2 - map_image->h/2;
+	map_rect.w = map_image->w;
+	map_rect.h = map_image->h;
+
+	gui::button close(disp,string_table["close_button"]);
+	close.set_location((disp.x()/2)-(close.width()/2), map_rect.y+map_rect.h+15);
+
 
 	//substitute in the correct control characters for '+' and '-'
 	for(std::vector<std::string>::iterator itor = text.begin(); itor != text.end(); ++itor) {
