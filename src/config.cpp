@@ -606,7 +606,7 @@ void config::read(const std::string& data,
 				break;
 
 			case VALUE:
-				if(c == '[') {
+				if(c == '[' && in_quotes) {
 					if(line_sources != NULL) {
 						const line_source src = get_line_source(*line_sources,line);
 						std::cerr << src.file << " " << src.fileline << ": ";
@@ -1280,7 +1280,7 @@ void do_interpolation(std::string& res, size_t npos, const string_map* m)
 			res.insert(npos-1,itor->second);
 		}
 	} else {
-		res.insert(npos-1,game_events::get_variable(key));
+		res.insert(npos-1,game_events::get_variable_const(key));
 	}
 
 	do_interpolation(res,npos,m);
