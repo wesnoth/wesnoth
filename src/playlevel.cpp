@@ -180,6 +180,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 				std::cerr << "initializing side '" << (**ui)["side"] << "' at " << start_pos.x << "," << start_pos.y << "\n";
 			}
 
+			if(map.empty()) {
+				throw gamestatus::load_game_failed("Map not found");
+			}
+
 			if(!start_pos.valid() && new_unit.side() == 1) {
 				throw gamestatus::load_game_failed("No starting position for side 1");
 			}

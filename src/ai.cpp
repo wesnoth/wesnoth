@@ -766,7 +766,7 @@ void ai::do_recruitment()
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end())
+	if(leader == units_.end() || leader->second.stone())
 		return;
 
 	//find where the leader can move
@@ -791,7 +791,7 @@ void ai::leader_attack()
 {
 	std::cerr << "leader attack analysis...\n";
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end())
+	if(leader == units_.end() || leader->second.stone())
 		return;
 
 	gamemap::location choice;
@@ -831,7 +831,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 	leader_attack();
 
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end())
+	if(leader == units_.end() || leader->second.stone())
 		return;
 
 	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
