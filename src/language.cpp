@@ -52,7 +52,7 @@ language_def known_languages[] = {
 	language_def("pt_BR", "Português do Brasil"),
 	language_def("ru_RU", "Русский (Russkij)"),
 	language_def("sk_SK", "Slovenčina"),
-	language_def("sl_SL", "Slovenščina"),
+	language_def("sl_SI", "Slovenščina"),
 	language_def("fi_FI", "Suomi"),
 	language_def("sv_SE", "Svenska"),
 
