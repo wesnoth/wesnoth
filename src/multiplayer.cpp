@@ -547,6 +547,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				player_type.push_back(preferences::login());
 				player_type.push_back(string_table["network_controlled"]);
 				player_type.push_back(string_table["ai_controlled"]);
+				player_type.push_back(string_table["human_controlled"]);
 
 				//player_race is a list of the names of possible races in the current locale.
 				//internal_player_race is a list of the internally used races that have
@@ -598,7 +599,12 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						if((**sd)["controller"] == "network") {
 							combo_type.back().set_selected(1);
 						}else if((**sd)["controller"] == "human") {
-							combo_type.back().set_selected(0);
+							if((**sd)["description"] == preferences::login())
+							{
+								combo_type.back().set_selected(0);
+							}else{
+								combo_type.back().set_selected(3);
+							}
 						}else if((**sd)["controller"] == "ai") {
 							combo_type.back().set_selected(2);
 						}
@@ -683,6 +689,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 							}else if(combo_type[n].selected() == 2){
 								side["controller"] = "ai";
 								side["description"] = string_table["ai_controlled"];
+							}else if(combo_type[n].selected() == 3){
+								side["controller"] = "human";
+								side["description"] = "";
 							}
 						}
 								
