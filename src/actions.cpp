@@ -686,12 +686,13 @@ void attack(display& gui, const gamemap& map,
 				const int defender_side = d->second.side();
 				LOG_NG << "firing die event\n";
 				game_events::fire("die",loc,a->first);
-				d = units.end();
+				d = units.find(loc);
 				a = units.end();
 
-				//the handling of the event may have removed the object
-				//so we have to find it again
-				units.erase(loc);
+				if(d != units.end() && d->second.hitpoints() <= 0) {
+					units.erase(d);
+					d = units.end();
+				}
 
 				//plague units make clones of themselves on the target hex
 				//units on villages that die cannot be plagued
@@ -832,12 +833,13 @@ void attack(display& gui, const gamemap& map,
 				gamemap::location defender_loc = d->first;
 				const int attacker_side = a->second.side();
 				game_events::fire("die",loc,d->first);
-				a = units.end();
+				a = units.find(loc);
 				d = units.end();
 
-				//the handling of the event may have removed the object
-				//so we have to find it again
-				units.erase(loc);
+				if(a != units.end() && a->second.hitpoints() <= 0) {
+					units.erase(a);
+					a = units.end();
+				}
 
 				//plague units make clones of themselves on the target hex.
 				//units on villages that die cannot be plagued
