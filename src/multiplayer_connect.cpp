@@ -661,7 +661,7 @@ lobby::RESULT mp_connect::process()
 		}
 
 			
-		if (combos_race_[n].changed()) {
+		if (!save_ && combos_race_[n].changed()) {
 			const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
 			side["random_faction"] = "";
 			for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
@@ -670,13 +670,11 @@ lobby::RESULT mp_connect::process()
 			}
 			level_changed = true;
 
-			assert(!save_);
-				player_leaders_[n].update_leader_list(combos_race_[n].selected());
+			player_leaders_[n].update_leader_list(combos_race_[n].selected());
 		}
 
 		//Player leader
-		if (combos_leader_[n].changed()) {
-			assert(!save_);
+		if (!save_ && combos_leader_[n].changed()) {
 			std::stringstream str;
 			str << (combos_team_[n].selected()+1);
 			side["type"] = player_leaders_[n].get_leader();
