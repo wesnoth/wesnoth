@@ -256,14 +256,15 @@ void terrain_palette::draw(bool force) {
 		const std::string filename = "terrain/" +
 			map_.get_terrain_info(terrain).default_image() + ".png";
 		surface image(image::get_image(filename, image::UNSCALED));
+		if(image == NULL) {
+			std::cerr << "image for terrain " << counter << ": '" << filename << "' not found\n";
+			return;
+		}
+
 		if((unsigned)image->w != size_specs_.terrain_size
 		   || (unsigned)image->h != size_specs_.terrain_size) {
 			image.assign(scale_surface(image, size_specs_.terrain_size,
 									   size_specs_.terrain_size));
-		}
-		if(image == NULL) {
-			std::cerr << "image for terrain '" << counter << "' not found\n";
-			return;
 		}
 		const int counter_from_zero = counter - starting;
 		SDL_Rect dstrect;
