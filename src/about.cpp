@@ -193,6 +193,7 @@ std::vector<std::string> get_text() {
 
 		_("+Italian Translation"),
 		"-   Alessio D'Ascanio (otaku)",
+		"-   Americo",
 		"-   crys0000",
 		"-   Federico Tomassetti",
 		"-   isazi",
