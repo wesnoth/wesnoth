@@ -75,6 +75,9 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		halo_effect.assign(halo::add(0,0,halo));
 	}
 
+	gamemap::location src_adjacent[6];
+	get_adjacent_tiles(a, src_adjacent);
+
 	for(int i = 0; i < nsteps; ++i) {
 		events::pump();
 
@@ -113,11 +116,9 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 		//invalidate the source tile and all adjacent tiles,
 		//since the unit can partially overlap adjacent tiles
-		gamemap::location adjacent[6];
-		get_adjacent_tiles(a,adjacent);
 		disp.draw_tile(a.x,a.y);
 		for(int tile = 0; tile != 6; ++tile) {
-			disp.draw_tile(adjacent[tile].x,adjacent[tile].y);
+			disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
 		}
 
 		const int height_adjust = src_height_adjust + (dst_height_adjust-src_height_adjust)*(i/nsteps);
