@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-03-29 17:30+0100\n"
+"PO-Revision-Date: 2005-03-30 13:30+0100\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -1794,7 +1794,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "¿Puede Merle devolver mi ataque?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:199
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1813,11 +1812,11 @@ msgstr ""
 "significa que después de cada ataque del ofensor, el defensor responde con "
 "uno de sus ataques. Esta secuencia continúa hasta que uno de los bandos se "
 "queda sin ataques, caso en el cual la otra unidad continúa atacando hasta "
-"que también agota su número de ataques. Sin embargo, cada unidad sólo puede "
-"responder a los ataques con un arma del mismo tipo que la que se usó para "
-"atacarlo. Esto quiere decir que a un ataque a distancia sólo se puede "
-"contestar con otro ataque a distancia y que a uno de cuerpo a cuerpo sólo se "
-"puede responder con otro. Algunas unidades tienen ataques a distancia muy "
+"que también agota sus ataques. Sin embargo, cada unidad sólo puede responder "
+"a los ataques con un arma del mismo tipo que la que se usó para atacarlo. "
+"Esto quiere decir que a un ataque a distancia sólo se puede contestar con "
+"otro ataque a distancia y que a uno de cuerpo a cuerpo sólo se puede "
+"responder con otro. Algunas unidades tienen ataques a distancia muy "
 "poderosos, y son muy útiles para atacar a las unidades orientadas al cuerpo "
 "a cuerpo, dado que sus respuestas serán más débiles o incluso ni siquiera "
 "las habrá. Sin embargo, has de saber que las unidades con ataques a "
@@ -1868,7 +1867,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Termina tu turno, y espera a que Merle te ataque."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:216
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
@@ -1899,10 +1897,9 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:222
 msgid "What happens when a unit advances?"
-msgstr "¿Qué pasa cuando una unidad avanza en su categoría?"
+msgstr "¿Qué pasa cuando una unidad sube de nivel en su categoría?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:222
-#, fuzzy
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1911,7 +1908,7 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps that have "
 "been cast on it are removed. This is known as 'advance-heal'."
 msgstr ""
-"Cuando una unidad avanza en su categoría, se transforma en un tipo de unidad "
+"Cuando una unidad sube de nivel, se transforma en un tipo de unidad "
 "diferente. El nuevo tipo de unidad dependerá de lo que fuese la unidad "
 "originalmente, pero en algunas ocasiones habrá más de una opción entre las "
 "que escoger. Las unidades que avanzan en sus categorías son normalmente más "
@@ -1934,7 +1931,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "¿Qué sucede cuando una unidad entra en una aldea?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:251
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1962,7 +1958,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "¿Cómo puedo sanarme si no hay aldeas cerca?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:252
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -2005,7 +2000,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:300
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:264
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
@@ -2015,7 +2009,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:308
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:272
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
@@ -2024,7 +2017,6 @@ msgstr ""
 "formas espero que hayas recibido sabiduría de mis enseñanzas."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:320
-#, fuzzy
 msgid "You have successfully completed the first training scenario."
 msgstr "Has completado el primer escenario de entrenamiento correctamente."
 
@@ -2038,7 +2030,6 @@ msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr "¿Cómo sé cómo completar un escenario? ¿Siempre me lo dirás?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:325
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -2076,7 +2067,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:333
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr ""
 "¿Quieres volver a ver alguna de las habilidades que has aprendido en este "
@@ -2093,7 +2083,6 @@ msgid "I'm done reviewing skills!"
 msgstr "¡He acabado de ejercitar mis habilidades!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:358
-#, fuzzy
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
@@ -2116,7 +2105,6 @@ msgstr ""
 "combate de mentira. ¡No quiero hacerte daño!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
-#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -2168,7 +2156,6 @@ msgid "Turns run out"
 msgstr "Fin de los turnos"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
-#, fuzzy
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Has reincorporado correctamente a tu luchador elfo."
 
@@ -2180,7 +2167,6 @@ msgstr "Has reincorporado correctamente a tu luchador elfo."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:179
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
-#, fuzzy
 msgid "En garde!"
 msgstr "¡En guardia!"
 
@@ -2206,7 +2192,6 @@ msgid "How should I decide which units to recall?"
 msgstr "¿Cómo debería decidir qué unidades reincorporar?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:100
-#, fuzzy
 msgid ""
 "You should usually recall units that have already advanced to the next "
 "level. However, you may also want to recall units that have high experience, "
@@ -2221,7 +2206,6 @@ msgstr ""
 "elfos."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
@@ -2306,7 +2290,6 @@ msgid "How do I get gold?"
 msgstr "¿Cómo consigo oro?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
-#, fuzzy
 msgid ""
 "You begin each scenario with a percentage of gold from the previous "
 "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
@@ -2377,7 +2360,6 @@ msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr "Cada hexágono tiene un terreno, que da al hexágono propiedades únicas."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2389,7 +2371,7 @@ msgid ""
 "For example; many elves have 70% defense in woods, and are therefore hit 30% "
 "of the time."
 msgstr ""
-"Ya hemos descrito las propiedades de dos terrenos: las aldeas y los "
+"Ya hemos descrito dos propiedades de terrenos: las de las aldeas y los "
 "castillos. Sin embargo, las propiedades de la mayoría de los terrenos son "
 "algo más elaboradas, y tienen que ver con las ventajas y desventajas que "
 "adquieren las diferentes unidades cuando se mueven a ellos. La primera "
@@ -2409,7 +2391,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "¿Cómo puedo ver las propiedades de un terreno en particular?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -2461,7 +2442,6 @@ msgid "How does resistance affect attack damage?"
 msgstr "¿Cómo afecta la resistencia al daño de los ataques?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:182
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2594,7 +2574,6 @@ msgid "How long do these objects last?"
 msgstr "¿Cuánto duran estos objetos?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:236
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
@@ -4366,9 +4345,9 @@ msgid ""
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
-"Montando los esqueletos de unas grandes aves usadas una vez por una antigua "
-"y olvidada civilización, los chocobos se pueden mover más rápido que muchas "
-"otras unidades de caballería."
+"Los esqueléticos chocobos, a la grupa de los esqueletos de unas grandes aves "
+"usadas una vez por una antigua y olvidada civilización, se pueden mover más "
+"rápido que muchas otras unidades de caballería."
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
 #: data/units/Drake_Gladiator.cfg:43 data/units/Drake_Slasher.cfg:39
@@ -4804,6 +4783,12 @@ msgid ""
 "Infernos have utterly mastered their internal fire, and rival their "
 "predecessors the Dragons in their ability to use it."
 msgstr ""
+"La especie voladora conocida como draco infernal viste una vasta armadura "
+"completa de oro prácticamente impenetrable. Asimismo, estos dracos son "
+"prácticamente inmunes al fuego, ya que se han acostumbrado a esconderse en "
+"los cráteres de los volcanes. Los dracos infernales han controlado su fuego "
+"interno completamente, y rivalizan con sus antepasados, los dragones, en su "
+"habilidad para usarlo."
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
@@ -4845,6 +4830,8 @@ msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors."
 msgstr ""
+"Los guerreros dracos esgrimen sus espadas con gran habilidad, y poseen las "
+"capacidades de escupir fuego de sus ancestros."
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
@@ -5229,7 +5216,7 @@ msgstr "enredar"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
 msgid "fey gale"
-msgstr ""
+msgstr "tormenta gélida"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -6941,12 +6928,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:4
-#, fuzzy
 msgid "Saurian Ambusher"
-msgstr "Saurio hechicero de hielo"
+msgstr "Emboscador saurio"
 
 #: data/units/Saurian_Ambusher.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6954,20 +6939,19 @@ msgid ""
 "opponents. Saurian Ambushers possess the strength to take full advantage of "
 "this fact. The best Ambushers go on to become Saurian Flankers"
 msgstr ""
-"Los guerreros saurios tienen una gran habilidad utilizando la lanza. A pesar "
-"de sus costumbres letárgicas, herencia de sus antepasados de sangre fría, y "
-"a su relativa fragilidad, tienen un gran valor como exploradores, ya que "
-"pueden moverse bien a través de terreno difícil y alrededor de sus "
-"oponentes. Y los guerreros saurios poseen la fuerza necesaria para "
-"aprovecharse de ello."
+"Los emboscadores saurios tienen una gran habilidad utilizando la lanza. A "
+"pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
+"fría, y a su relativa fragilidad, tienen un gran valor como exploradores, ya "
+"que pueden moverse bien a través de terreno difícil y alrededor de sus "
+"oponentes. Y los emboscadores saurios poseen la fuerza necesaria para "
+"aprovecharse de ello. Los mejores emboscadores siguen su carrera "
+"convirtiéndose en flanqueadores."
 
 #: data/units/Saurian_Flanker.cfg:4
-#, fuzzy
 msgid "Saurian Flanker"
-msgstr "Saurio hechicero de hielo"
+msgstr "Flanqueador saurio"
 
 #: data/units/Saurian_Flanker.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6975,16 +6959,16 @@ msgid ""
 "opponents. Saurian Flankers possess the strength to take full advantage of "
 "this fact."
 msgstr ""
-"Los guerreros saurios tienen una gran habilidad utilizando la lanza. A pesar "
-"de sus costumbres letárgicas, herencia de sus antepasados de sangre fría, y "
-"a su relativa fragilidad, tienen un gran valor como exploradores, ya que "
-"pueden moverse bien a través de terreno difícil y alrededor de sus "
-"oponentes. Y los guerreros saurios poseen la fuerza necesaria para "
+"Los flanqueadores saurios tienen una gran habilidad utilizando la lanza. A "
+"pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
+"fría, y a su relativa fragilidad, tienen un gran valor como exploradores, ya "
+"que pueden moverse bien a través de terreno difícil y alrededor de sus "
+"oponentes. Y los flanqueadores saurios poseen la fuerza necesaria para "
 "aprovecharse de ello."
 
 #: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
-msgstr "Saurio hechicero de hielo"
+msgstr "Hechicero de hielo saurio"
 
 #: data/units/Saurian_Icecaster.cfg:17
 msgid ""
@@ -6993,6 +6977,10 @@ msgid ""
 "call forth the magic of the cold north, and the do retain their basic "
 "healing ability."
 msgstr ""
+"Los hechiceros de hielo saurios han evitado continuar con cualquier "
+"entrenamiento en sanación y curación para refinar sus habilidades en artes "
+"oscuras. Aunque son frágiles, pueden convocar la magia del norte helado, y "
+"aún así retienen sus habilidades básicas de sanación."
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
@@ -7000,24 +6988,22 @@ msgid "frost blast"
 msgstr "golpe de escarcha"
 
 #: data/units/Saurian_Skirmisher.cfg:4
-#, fuzzy
 msgid "Saurian Skirmisher"
-msgstr "Guerrero saurio"
+msgstr "Merodeador saurio"
 
 #: data/units/Saurian_Skirmisher.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
 "valued as scouts as they can navigate through rough terrain and around "
 "opponents. The best Skirmishers go on to become Saurian Ambushers."
 msgstr ""
-"Los guerreros saurios tienen una gran habilidad utilizando la lanza. A pesar "
-"de sus costumbres letárgicas, herencia de sus antepasados de sangre fría, y "
-"a su relativa fragilidad, tienen un gran valor como exploradores, ya que "
-"pueden moverse bien a través de terreno difícil y alrededor de sus "
-"oponentes. Y los guerreros saurios poseen la fuerza necesaria para "
-"aprovecharse de ello."
+"Los merodeadores saurios tienen una gran habilidad utilizando la lanza. A "
+"pesar de sus costumbres letárgicas, herencia de sus antepasados de sangre "
+"fría, y a su relativa fragilidad, tienen un gran valor como exploradores, ya "
+"que pueden moverse bien a través de terreno difícil y alrededor de sus "
+"oponentes. Los mejores merodeadores siguen su carrera convirtiéndose en "
+"emboscadores."
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
@@ -7055,7 +7041,6 @@ msgid "Saurian Warrior"
 msgstr "Guerrero saurio"
 
 #: data/units/Saurian_Warrior.cfg:19
-#, fuzzy
 msgid ""
 "Saurian Warriors are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -7259,7 +7244,6 @@ msgid "Spearman"
 msgstr "Lancero"
 
 #: data/units/Spearman.cfg:16
-#, fuzzy
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
@@ -7713,9 +7697,8 @@ msgid "+Catalan Translation"
 msgstr "+Traducción catalana"
 
 #: src/about.cpp:164
-#, fuzzy
 msgid "+Chinese Translation"
-msgstr "+Traducción finesa"
+msgstr "+Traducción china"
 
 #: src/about.cpp:168
 msgid "+Czech Translation"
@@ -8332,14 +8315,12 @@ msgid "Battle for Wesnoth"
 msgstr "La Batalla por Wesnoth"
 
 #: src/game_events.cpp:569
-#, fuzzy
 msgid "Victory:"
-msgstr "Victoria"
+msgstr "Victoria:"
 
 #: src/game_events.cpp:572
-#, fuzzy
 msgid "Defeat:"
-msgstr "Derrota"
+msgstr "Derrota:"
 
 #: src/help.cpp:1062
 msgid "Advances to: "
@@ -9504,7 +9485,6 @@ msgstr "neutral"
 #~ msgid "Preferences"
 #~ msgstr "Preferencias"
 
-#, fuzzy
 #~ msgid "Scenario Objectives"
 #~ msgstr "+Diseñadores de escenarios"
 
@@ -9520,7 +9500,6 @@ msgstr "neutral"
 #~ msgid "Best Possible Enemy Moves"
 #~ msgstr "Mejores movimientos del enemigo"
 
-#, fuzzy
 #~ msgid "Set Terrain"
 #~ msgstr "Terreno"
 
@@ -9731,7 +9710,6 @@ msgstr "neutral"
 #~ msgid "Deletion of the file failed."
 #~ msgstr "Ha habido algún fallo en el proceso de borrado."
 
-#, fuzzy
 #~ msgid "Test Objectifs"
 #~ msgstr "Objetivos del escenario"
 
