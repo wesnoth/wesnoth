@@ -222,6 +222,7 @@ battle_stats evaluate_battle_stats(
 
 	static const std::string charge_string("charge");
 	const bool charge = (attack.special() == charge_string);
+	const bool steadfast = d->second.type().steadfast();
 
 	bool backstab = false;
 
@@ -473,6 +474,15 @@ battle_stats evaluate_battle_stats(
 		if(include_strings) {
 			std::stringstream str;
 			str << _("backstab") << ", ,^+100%";
+			res.attack_calculations.push_back(str.str());
+		}
+	}
+
+	if(steadfast) {
+		percent -= 50;
+		if(include_strings) {
+			std::stringstream str;
+			str << _("steadfast") << ", ,-50%";
 			res.attack_calculations.push_back(str.str());
 		}
 	}

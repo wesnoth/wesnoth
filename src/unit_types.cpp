@@ -516,7 +516,8 @@ unit_type::unit_type(const unit_type& o)
       max_heals_(o.max_heals_), heals_(o.heals_), regenerates_(o.regenerates_),
       leadership_(o.leadership_), illuminates_(o.illuminates_),
       skirmish_(o.skirmish_), teleport_(o.teleport_),
-      nightvision_(o.nightvision_), can_advance_(o.can_advance_),
+      nightvision_(o.nightvision_), steadfast_(o.steadfast_),
+      can_advance_(o.can_advance_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_)
 {
@@ -587,6 +588,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	skirmish_ = has_ability("skirmisher");
 	teleport_ = has_ability("teleport");
 	nightvision_ = has_ability("night vision");
+	steadfast_ = has_ability("steadfast");
 
 	const std::string& alpha_blend = cfg_["alpha"];
 	if(alpha_blend.empty() == false) {
@@ -909,6 +911,11 @@ bool unit_type::teleports() const
 bool unit_type::nightvision() const
 {
 	return nightvision_;
+}
+
+bool unit_type::steadfast() const
+{
+	return steadfast_;
 }
 
 bool unit_type::not_living() const

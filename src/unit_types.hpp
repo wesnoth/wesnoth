@@ -224,6 +224,7 @@ public:
 	bool is_skirmisher() const;
 	bool teleports() const;
 	bool nightvision() const;
+	bool steadfast() const;
 	bool not_living() const;
 	bool can_advance() const;
 
@@ -260,6 +261,7 @@ private:
 	bool skirmish_;
 	bool teleport_;
 	bool nightvision_;
+	bool steadfast_;
 	bool can_advance_;
 
 	unit_movement_type movementType_;
