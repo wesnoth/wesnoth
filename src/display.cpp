@@ -1185,11 +1185,16 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	if(loc != hiddenUnit_) {
 		//the circle around the base of the unit
 		if(preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
-			const SDL_Color& col = font::get_side_colour(it->second.side());
-			const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
-			SDL_Rect clip = {xpos,ypos,unit_image->w,unit_image->h};
+			char buf[50];
+			sprintf(buf,"misc/ellipse-%d-top.png",it->second.side());
+			const scoped_sdl_surface surf(image::get_image(buf));
 
-			draw_unit_ellipse(dst,colour,energy_uses_alpha ? Uint8(highlight_ratio*255) : SDL_ALPHA_OPAQUE,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_TOP);
+			if(surf != NULL) {
+				SDL_Surface* const dst = screen_.getSurface();
+				SDL_Rect rect = {xpos,ypos - height_adjust,surf->w,surf->h};
+
+				SDL_BlitSurface(surf,NULL,dst,&rect);
+			}
 		}
 
 		draw_unit(xpos,ypos - height_adjust,unit_image,face_left,false,
@@ -1224,11 +1229,17 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 
 	//the bottom half of the circle around the base of the unit
 	if(loc != hiddenUnit_ && preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
-		const SDL_Color& col = font::get_side_colour(it->second.side());
-		const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
-		SDL_Rect clip = {xpos,ypos,unit_image->w,unit_image->h};
 
-		draw_unit_ellipse(dst,colour,energy_uses_alpha ? Uint8(highlight_ratio*255) : SDL_ALPHA_OPAQUE,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_BOTTOM);
+		char buf[50];
+		sprintf(buf,"misc/ellipse-%d-bottom.png",it->second.side());
+		const scoped_sdl_surface surf(image::get_image(buf));
+
+		if(surf != NULL) {
+			SDL_Surface* const dst = screen_.getSurface();
+			SDL_Rect rect = {xpos,ypos - height_adjust,surf->w,surf->h};
+
+			SDL_BlitSurface(surf,NULL,dst,&rect);
+		}
 	}
 }
 

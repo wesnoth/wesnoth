@@ -21,6 +21,8 @@ void set(CURSOR_TYPE type);
 void draw(SDL_Surface* screen);
 void undraw(SDL_Surface* screen);
 
+void set_focus(bool focus);
+
 struct setter
 {
 	setter(CURSOR_TYPE type);

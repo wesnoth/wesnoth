@@ -1,3 +1,4 @@
+#include "cursor.hpp"
 #include "events.hpp"
 #include "mouse.hpp"
 #include "preferences.hpp"
@@ -89,18 +90,18 @@ void pump()
 
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
-		if(event_contexts.empty() == false) {
-
-			const std::vector<handler*>& event_handlers = event_contexts.top();
-
-			//events may cause more event handlers to be added and/or removed,
-			//so we must use indexes instead of iterators here.
-			for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-				event_handlers[i1]->handle_event(event);
-			}
-		}
 
 		switch(event.type) {
+
+			case SDL_APPMOUSEFOCUS: {
+				SDL_ActiveEvent& ae = reinterpret_cast<SDL_ActiveEvent&>(event);
+				if(ae.state == SDL_APPMOUSEFOCUS) {
+					cursor::set_focus(ae.gain == 1);
+				}
+				break;
+			}
+
+			//if the window must be redrawn, update the entire screen
 			case SDL_VIDEOEXPOSE: {
 				update_whole_screen();
 				break;
@@ -155,6 +156,17 @@ void pump()
 
 			case SDL_QUIT: {
 				throw CVideo::quit();
+			}
+		}
+
+		if(event_contexts.empty() == false) {
+
+			const std::vector<handler*>& event_handlers = event_contexts.top();
+
+			//events may cause more event handlers to be added and/or removed,
+			//so we must use indexes instead of iterators here.
+			for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+				event_handlers[i1]->handle_event(event);
 			}
 		}
 	}

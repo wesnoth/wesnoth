@@ -61,6 +61,7 @@ cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
 
 int cursor_x = -1, cursor_y = -1;
 SDL_Surface* cursor_buf = NULL;
+bool have_focus = true;
 
 SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
@@ -123,6 +124,11 @@ void set(CURSOR_TYPE type)
 	}
 }
 
+void set_focus(bool focus)
+{
+	have_focus = focus;
+}
+
 setter::setter(CURSOR_TYPE type) : old_(current_cursor)
 {
 	set(type);
@@ -140,6 +146,12 @@ void draw(SDL_Surface* screen)
 	}
 
 	if(current_cursor == NUM_CURSORS) {
+		return;
+	}
+
+	if(have_focus == NULL) {
+		SDL_FreeSurface(cursor_buf);
+		cursor_buf = NULL;
 		return;
 	}
 
