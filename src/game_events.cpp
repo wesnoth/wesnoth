@@ -31,8 +31,7 @@
 
 namespace game_events {
 
-bool conditional_passed(game_state& state_of_game,
-                        const std::map<gamemap::location,unit>* units,
+bool conditional_passed(const std::map<gamemap::location,unit>* units,
                         const config& cond)
 {
 	//an 'or' statement means that if the contained statements are true,
@@ -40,7 +39,7 @@ bool conditional_passed(game_state& state_of_game,
 	const config::child_list& or_statements = cond.get_children("or");
 	for(config::child_list::const_iterator or_it = or_statements.begin();
 	    or_it != or_statements.end(); ++or_it) {
-		if(conditional_passed(state_of_game,units,**or_it)) {
+		if(conditional_passed(units,**or_it)) {
 			return true;
 		}
 	}
@@ -567,7 +566,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string fail = (cmd == "if" ? "else" : "");
 		for(size_t i = 0; i != max_iterations; ++i) {
 			const std::string type = game_events::conditional_passed(
-			                              *state_of_game,units,cfg) ? pass : fail;
+			                              units,cfg) ? pass : fail;
 
 			if(type == "") {
 				break;

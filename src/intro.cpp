@@ -58,7 +58,7 @@ void show_intro(display& screen, const config& data,
 		const std::pair<const std::string*, const config*> item = *i;
 		if (*item.first == "if") {
 			const std::string type = game_events::conditional_passed(
-							state_of_game, NULL, *item.second) ? "then":"else";
+							NULL, *item.second) ? "then":"else";
 				
 			const config::child_list& thens = (*item.second).get_children(type);
 			for (config::child_list::const_iterator t = thens.begin();
@@ -386,7 +386,7 @@ void show_map_scene(display& screen, config& data, game_state& state_of_game)
 
 	if(*item.first == "if") {
 		const std::string type = game_events::conditional_passed(
-				state_of_game, NULL, *item.second) ? "then":"else";
+				NULL, *item.second) ? "then":"else";
 		const config* const thens = (*item.second).child(type);
 		if(thens == NULL) {
 			std::cerr << "no map scene this way...\n";
