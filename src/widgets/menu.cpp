@@ -185,18 +185,20 @@ void menu::handle_event(const SDL_Event& event)
 int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
                   bool page_up, bool page_down, int select_item)
 {
-	const bool up = uparrow_.process(x,y,button);
-	if(up && first_item_on_screen_ > 0) {
-		--first_item_on_screen_;
-		itemRects_.clear();
-		drawn_ = false;
-	}
+	if(items_.size() > max_menu_items) {
+		const bool up = uparrow_.process(x,y,button);
+		if(up && first_item_on_screen_ > 0) {
+			--first_item_on_screen_;
+			itemRects_.clear();
+			drawn_ = false;
+		}
 
-	const bool down = downarrow_.process(x,y,button);
-	if(down && first_item_on_screen_ + max_menu_items < items_.size()) {
-		++first_item_on_screen_;
-		itemRects_.clear();
-		drawn_ = false;
+		const bool down = downarrow_.process(x,y,button);
+		if(down && first_item_on_screen_ + max_menu_items < items_.size()) {
+				++first_item_on_screen_;
+			itemRects_.clear();
+			drawn_ = false;
+		}
 	}
 
 	if(!drawn_) {
