@@ -727,11 +727,13 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		std::string text;
 
 		gamemap::location loc;
+		bool remove_overlay = false;
 		if(filter != NULL) {
 			loc = gamemap::location(*filter);
 		}
 
 		if(loc.valid() == false) {
+			remove_overlay = true;
 			loc = event_info.loc1;
 		}
 
@@ -749,7 +751,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 			u->second.add_modification("object",cfg);
 
-			if(!loc.valid()) {
+			if(remove_overlay) {
 				screen->remove_overlay(event_info.loc1);
 			}
 

@@ -355,6 +355,11 @@ bool team::is_enemy(int n) const
 		return false;
 	}
 
+	//we're not enemies of ourselves
+	if(&(*teams)[index] == this) {
+		return false;
+	}
+
 	//if we have a team name, we are friends with anyone who has the same team name
 	if(info_.team_name.empty() == false) {
 		return (*teams)[index].info_.team_name != info_.team_name;

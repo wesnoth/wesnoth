@@ -646,7 +646,7 @@ std::vector<std::pair<gamemap::location,gamemap::location> > ai::get_village_com
 																						  const std::vector<std::pair<gamemap::location,gamemap::location> >& village_moves,
 																						  std::vector<std::pair<gamemap::location,gamemap::location> >::const_iterator start_at)
 {
-	const int leader_distance_from_keep = 10000;
+	int leader_distance_from_keep = -1;
 
 	std::vector<std::pair<location,location> > result;
 
@@ -674,6 +674,10 @@ std::vector<std::pair<gamemap::location,gamemap::location> > ai::get_village_com
 		if(result_better) {
 			result.swap(res);
 			result.push_back(*i);
+
+			if(distance != -1) {
+				leader_distance_from_keep = distance;
+			}
 		}
 
 		taken_villages.erase(i->first);
@@ -686,6 +690,7 @@ std::vector<std::pair<gamemap::location,gamemap::location> > ai::get_village_com
 
 bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
+	std::cerr << "deciding which villages we want...\n";
 	//we want to build up a list of possible moves we can make that will capture villages.
 	//limit the moves to 'max_village_moves' to make sure things don't get out of hand.
 	const size_t max_village_moves = 50;
@@ -714,6 +719,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 		}
 
 		if(want_village) {
+			std::cerr << "want village at " << (j->first.x+1) << "," << (j->first.y+1) << "\n";
 			village_moves.push_back(*j);
 		}
 	}
@@ -743,7 +749,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 		//worth of healing, and doesn't regenerate itself, then try to
 		//find a vacant village for it to rest in
 		if(u.side() == team_num_ &&
-		   u.type().hitpoints() - u.hitpoints() >= game_config::cure_amount/2 &&
+		   u.max_hitpoints() - u.hitpoints() >= game_config::cure_amount/2 &&
 		   !u.type().regenerates()) {
 
 			//look for the village which is the least vulnerable to enemy attack
@@ -1265,7 +1271,7 @@ void ai::leader_attack()
 {
 	std::cerr << "leader attack analysis...\n";
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.stone())
+	if(leader == units_.end() || leader->second.stone() || leader->second.can_attack() == false)
 		return;
 
 	gamemap::location choice;

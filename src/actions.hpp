@@ -113,7 +113,7 @@ unit_map::const_iterator find_leader(const unit_map& units, int side);
 
 //calculates healing for all units for the given side. Should be called
 //at the beginning of a side's turn.
-void calculate_healing(display& disp, const gamemap& map,
+void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
                        std::map<gamemap::location,unit>& units, int side,
 					   const std::vector<team>& teams);
 

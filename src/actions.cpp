@@ -947,7 +947,7 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 
 }
 
-void calculate_healing(display& disp, const gamemap& map,
+void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
                        std::map<gamemap::location,unit>& units, int side,
 					   const std::vector<team>& teams)
 {
@@ -1075,12 +1075,15 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		const gamemap::location& loc = h->first;
 
-		const bool show_healing = !disp.turbo() && !recorder.skipping() &&
-		                          !disp.fogged(loc.x,loc.y);
-
 		assert(units.count(loc) == 1);
 
 		unit& u = units.find(loc)->second;
+
+		const bool show_healing = !disp.turbo() && !recorder.skipping() &&
+		                          !disp.fogged(loc.x,loc.y) &&
+								  (!u.invisible(map.underlying_terrain(map[h->first.x][h->first.y]),
+								                status.get_time_of_day().lawful_bonus,h->first,units,teams) ||
+								                teams[disp.viewing_team()].is_enemy(side) == false);
 
 		typedef std::multimap<gamemap::location,gamemap::location>::const_iterator healer_itor;
 		const std::pair<healer_itor,healer_itor> healer_itors = healers.equal_range(loc);

@@ -441,7 +441,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 						team_it->spend_gold(expense);
 					}
 
-					calculate_healing(gui,map,units,player_number,teams);
+					calculate_healing(gui,status,map,units,player_number,teams);
 				}
 
 				gui.set_playing_team(size_t(player_number-1));

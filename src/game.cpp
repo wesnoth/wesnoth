@@ -64,7 +64,10 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 	config* scenario = NULL;
 
-	config starting_pos;
+	//'starting_pos' will contain the position we start the game from.
+	//'replay_starting_pos' will contain the position as at the start of the scenario
+	//which is useful for saving replays
+	config starting_pos, replay_starting_pos;
 
 	//see if we load the scenario from the scenario data -- if there is
 	//no snapshot data available from a save, or if the user has selected
@@ -76,15 +79,19 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 			std::cerr << "loading starting position: '" << state.starting_pos.write() << "'\n";
 			starting_pos = state.starting_pos;
 			scenario = &starting_pos;
+			replay_starting_pos = state.starting_pos;
 		} else {
 			scenario = game_config.find_child(type,"id",state.scenario);
 		}
 
-		statistics::clear_current_scenario();
+		if(!recorder.at_end()) {
+			statistics::clear_current_scenario();
+		}
 	} else {
 		std::cerr << "loading snapshot...\n";
 		//load from a save-snapshot.
 		starting_pos = state.snapshot;
+		replay_starting_pos = state.starting_pos;
 		scenario = &starting_pos;
 		state = read_game(units_data,&state.snapshot);
 	}
@@ -130,7 +137,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 						try {
 							config snapshot;
 
-							recorder.save_game(units_data,label,snapshot,starting_pos);
+							recorder.save_game(units_data,label,snapshot,replay_starting_pos);
 						} catch(gamestatus::save_game_failed& e) {
 							gui::show_dialog(disp,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
 							retry = true;

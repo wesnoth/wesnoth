@@ -1,5 +1,6 @@
 #include "display.hpp"
 #include "font.hpp"
+#include "language.hpp"
 #include "map_label.hpp"
 
 map_labels::map_labels(const display& disp, const gamemap& map) : disp_(disp), map_(map)
@@ -32,8 +33,9 @@ void map_labels::read(const config& cfg)
 	const config::child_list& items = cfg.get_children("label");
 	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
 		const gamemap::location loc(**i);
+		const std::string& id = (**i)["id"];
 		const std::string& text = (**i)["text"];
-		set_label(loc,text);
+		set_label(loc,translate_string_default(id,text));
 	}
 }
 
