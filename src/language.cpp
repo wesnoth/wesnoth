@@ -14,7 +14,6 @@
 #include "global.hpp"
 
 #include "config.hpp"
-#include "font.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
 #include "util.hpp"
@@ -149,7 +148,6 @@ bool set_language(const language_def& locale)
 
 	current_language = locale;
 	wesnoth_setlocale (LC_MESSAGES, locale.localename.c_str());
-	font::set_font();
 	known_languages[0].language = gettext("System default language");
 
 	// fill string_table (should be moved somwhere else some day)

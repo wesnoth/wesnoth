@@ -30,8 +30,16 @@ struct manager {
 	struct error {};
 };
 
-//function which sets the name of the font to use
-void set_font();
+//structure used to describe a font, and the subset of the Unicode character
+//set it covers.
+struct subset_descriptor
+{
+	std::string name;
+	std::vector<std::pair<size_t, size_t> > present_codepoints;
+};
+
+//sets the font list to be used.
+void set_font_list(const std::vector<subset_descriptor>& fontlist);
 
 //various standard colours
 extern const SDL_Color NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,
@@ -49,17 +57,17 @@ const int SIZE_NORMAL = 14;
 #endif
 inline int relative_size(int size)
 {
-  return (SIZE_NORMAL * size / 14);
+	return (SIZE_NORMAL * size / 14);
 }
 // automatic computation of other font sizes, to be made a default for theme-provided values
 const int
-  SIZE_TINY	= relative_size(10),
-  SIZE_SMALL	= relative_size(12),
+	SIZE_TINY       = relative_size(10),
+	SIZE_SMALL      = relative_size(12),
 
-  SIZE_15	= relative_size(15),
-  SIZE_PLUS	= relative_size(16),
-  SIZE_LARGE	= relative_size(18),
-  SIZE_XLARGE	= relative_size(24)
+	SIZE_15         = relative_size(15),
+	SIZE_PLUS       = relative_size(16),
+	SIZE_LARGE      = relative_size(18),
+	SIZE_XLARGE     = relative_size(24)
   ;  
 //function to draw text on the screen. The text will be clipped to area.
 //If the text runs outside of area horizontally, an ellipsis will be displayed

@@ -318,6 +318,7 @@ public:
 	bool init_video();
 	bool init_config();
 	bool init_language();
+	bool init_fonts();
 	bool play_test();
 	bool play_multiplayer_mode();
 
@@ -597,12 +598,12 @@ bool game_controller::init_config()
 
 bool game_controller::init_language()
 {
-	const bool lang_res = set_language(get_locale());
+	const bool lang_res = ::set_language(get_locale());
 	if(!lang_res) {
 		std::cerr << "No translation for locale '" << get_locale().language
 		          << "', default to system locale\n";
 
-		const bool lang_res = set_language(known_languages[0]);
+		const bool lang_res = ::set_language(known_languages[0]);
 		if(!lang_res) {
 			std::cerr << "Language data not found\n";
 		}
@@ -615,6 +616,74 @@ bool game_controller::init_language()
 	hotkey::load_descriptions();
 
 	return true;
+}
+
+namespace {
+	bool add_font_to_fontlist(config* fonts_config, std::vector<font::subset_descriptor>& fontlist, const std::string& name) 
+	{
+		config* font = fonts_config->find_child("font", "name", name);
+		if(font == NULL)
+			return false;
+		
+		fontlist.push_back(font::subset_descriptor());
+		fontlist.back().name = name;
+		std::vector<std::string> ranges = utils::split((*font)["codepoints"]);
+
+		for(std::vector<std::string>::const_iterator itor = ranges.begin();
+				itor != ranges.end(); ++itor) {
+
+			std::vector<std::string> r = utils::split(*itor, '-');
+			if(r.size() == 1) {
+				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+				fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
+			} else if(r.size() == 2) {
+				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
+				size_t r2 = lexical_cast_default<size_t>(r[1], 0);
+
+				fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
+			}
+		}
+	}
+}
+
+bool game_controller::init_fonts()
+{
+	//read font config separately, so we do not have to re-read the whole
+	//config when changing languages
+	config cfg;
+	try {
+		cfg.read(preprocess_file("data/fonts.cfg"));
+	} catch(config::error&) {
+		std::cerr << "Could not read fonts.cfg\n";
+		return false;
+	}
+
+	config* fonts_config = cfg.child("fonts");
+	if(fonts_config == NULL)
+		return false;
+
+	std::set<std::string> known_fonts;
+	const config::child_list fonts = fonts_config->get_children("font");
+	for (config::child_list::const_iterator child = fonts.begin(); child != fonts.end(); ++child) {
+		known_fonts.insert((**child)["name"]);
+	}
+
+	const std::vector<std::string> font_order = utils::split((*fonts_config)["order"]);
+	std::vector<font::subset_descriptor> fontlist;
+	std::vector<std::string>::const_iterator font;
+	for(font = font_order.begin(); font != font_order.end(); ++font) {
+		add_font_to_fontlist(fonts_config, fontlist, *font);
+		known_fonts.erase(*font);
+	}
+	std::set<std::string>::const_iterator kfont;
+	for(kfont = known_fonts.begin(); kfont != known_fonts.end(); ++kfont) {
+		add_font_to_fontlist(fonts_config, fontlist, *kfont);
+	}
+
+	if(fontlist.empty())
+		return false;
+
+	font::set_font_list(fontlist);
 }
 
 bool game_controller::play_test()
@@ -1363,7 +1432,7 @@ bool game_controller::change_language()
 	                         _("Choose your preferred language") + std::string(":"),
 	                         gui::OK_CANCEL,&langs);
 	if(size_t(res) < langs.size()) {
-		set_language(known_languages[res]);
+		::set_language(known_languages[res]);
 		preferences::set_language(known_languages[res].localename);
 
 		//force a reload of configuration information
@@ -1373,6 +1442,7 @@ bool game_controller::change_language()
 		use_caching_ = old_cache;
 	}
 
+	init_fonts();
 	hotkey::load_descriptions();
 
 	return false;
@@ -1593,6 +1663,12 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 #endif
+
+	res = game.init_fonts();
+	if(res == false) {
+		std::cerr << "could not initialize fonts\n";
+		return 0;
+	}
 
 	const cursor::manager cursor_manager;
 #if defined(_X11) && !defined(__APPLE__)

@@ -40,11 +40,77 @@
 
 namespace {
 
-std::map<int,TTF_Font*> font_table;
-std::string font_name = "Vera.ttf";
+// Signed int. Negative values mean "no subset".
+typedef int subset_id;
 
-//SDL_ttf seems to have a problem where TTF_OpenFont will seg fault if
-//the font file doesn't exist, so make sure it exists first.
+struct font_id
+{
+	font_id(subset_id subset, int size) : subset(subset), size(size) {};
+	bool operator==(const font_id& o) const
+	{
+		return subset == o.subset && size == o.size;
+	};
+	bool operator<(const font_id& o) const
+	{
+		return subset < o.subset || subset == o.subset && size < o.size;
+	};
+
+	subset_id subset;
+	int size;
+};
+
+std::map<font_id, TTF_Font*> font_table;
+std::vector<std::string> font_names;
+
+struct text_chunk
+{
+	text_chunk(subset_id subset, const wide_string& text) : subset(subset), text(text) {};
+
+	subset_id subset;
+	wide_string text;
+};
+
+std::vector<subset_id> font_map;
+
+//Splits the text into chunks of text using the same font.
+std::vector<text_chunk> split_text(wide_string text)
+{
+	wide_string current_chunk;
+	std::vector<text_chunk> res;
+	bool first = true;
+	int current_font;
+
+	for(wide_string::const_iterator itor = text.begin(); itor != text.end(); ++itor) {
+
+		if(first) {
+			if(*itor < font_map.size() && font_map[*itor] >= 0) {
+				current_font = font_map[*itor];
+			} else {
+				current_font = 0;
+			}
+			first = false;
+		}
+
+		// If the current character is outside the text map, we do not
+		// know how to do about it. So, just push it into the current
+		// chunk.
+		if(*itor >= font_map.size() || font_map[*itor] < 0) {
+			current_chunk.push_back(*itor);
+		} else if(font_map[*itor] == current_font) {
+			current_chunk.push_back(*itor);
+		} else {
+			res.push_back(text_chunk(current_font, current_chunk));
+			current_chunk.clear();
+			current_chunk.push_back(*itor);
+			current_font = font_map[*itor];
+		}
+	}
+	if (!current_chunk.empty()) {
+		res.push_back(text_chunk(current_font, current_chunk));
+	}
+	return res;
+}
+
 TTF_Font* open_font(const std::string& fname, int size)
 {
 	std::string name;
@@ -97,13 +163,16 @@ TTF_Font* open_font(const std::string& fname, int size)
 	return font;
 }
 
-TTF_Font* get_font(int size)
+TTF_Font* get_font(font_id id)
 {
-	const std::map<int,TTF_Font*>::iterator it = font_table.find(size);
+	const std::map<font_id, TTF_Font*>::iterator it = font_table.find(id);
 	if(it != font_table.end())
 		return it->second;
 
-	TTF_Font* font = open_font(font_name,size);
+	if(id.subset < 0 || id.subset >= font_names.size())
+		return NULL;
+
+	TTF_Font* font = open_font(font_names[id.subset], id.size);
 
 	if(font == NULL)
 		return NULL;
@@ -111,17 +180,19 @@ TTF_Font* get_font(int size)
 	TTF_SetFontStyle(font,TTF_STYLE_NORMAL);
 
 	LOG_FT << "Inserting font...\n";
-	font_table.insert(std::pair<int,TTF_Font*>(size,font));
+	font_table.insert(std::pair<font_id,TTF_Font*>(id, font));
 	return font;
 }
 
 void clear_fonts()
 {
-	for(std::map<int,TTF_Font*>::iterator i = font_table.begin(); i != font_table.end(); ++i) {
+	for(std::map<font_id,TTF_Font*>::iterator i = font_table.begin(); i != font_table.end(); ++i) {
 		TTF_CloseFont(i->second);
 	}
 
 	font_table.clear();
+	font_names.clear();
+	font_map.clear();
 }
 
 struct font_style_setter
@@ -134,9 +205,14 @@ struct font_style_setter
 
 		old_style_ = TTF_GetFontStyle(font_);
 
-		//according to the SDL_ttf documentation, combinations of styles may cause
-		//SDL_ttf to segfault. We work around this here by disallowing combinations
-		//of styles
+		// I thought I had killed this. Now that we ship SDL_TTF, we
+		// should fix the bug directly in SDL_ttf instead of disabling
+		// features. -- Ayin 25/2/2005
+#if 0
+		//according to the SDL_ttf documentation, combinations of
+		//styles may cause SDL_ttf to segfault. We work around this
+		//here by disallowing combinations of styles
+		
 		if((style&TTF_STYLE_UNDERLINE) != 0) {
 			//style = TTF_STYLE_NORMAL; //TTF_STYLE_UNDERLINE;
 			style = TTF_STYLE_UNDERLINE;
@@ -146,8 +222,9 @@ struct font_style_setter
 			//style = TTF_STYLE_NORMAL; //TTF_STYLE_ITALIC;
 			style = TTF_STYLE_ITALIC;
 		} 
+#endif
 
-		TTF_SetFontStyle(font_,style);
+		TTF_SetFontStyle(font_, style);
 	}
 
 	~font_style_setter()
@@ -184,7 +261,33 @@ manager::~manager()
 void set_font()
 {
 	clear_fonts();
-	font_name = _("Vera.ttf");
+	font_names.push_back(_("Vera.ttf"));
+}
+
+void set_font_list(const std::vector<subset_descriptor>& fontlist)
+{
+	clear_fonts();
+	font_map.reserve(0x10000);
+
+	std::vector<subset_descriptor>::const_iterator itor;
+	for(itor = fontlist.begin(); itor != fontlist.end(); ++itor) {
+		subset_id subset = font_names.size();
+		font_names.push_back(itor->name);
+
+		std::vector<std::pair<size_t,size_t> >::const_iterator cp_range;
+		for(cp_range = itor->present_codepoints.begin(); 
+				cp_range != itor->present_codepoints.end(); ++cp_range) {
+
+			size_t cp_max = maximum<size_t>(cp_range->first, cp_range->second);
+			if(cp_max >= font_map.size()) {
+				font_map.resize(cp_max+1, -1);
+			}
+			for(size_t cp = cp_range->first; cp <= cp_range->second; ++cp) {
+				if(font_map[cp] < 0) 
+					font_map[cp] = subset;
+			}
+		}
+	}
 }
 
 const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
@@ -206,35 +309,37 @@ static const size_t max_text_line_width = 4096;
 class text_surface
 {
 public:
-	text_surface(TTF_Font *font, std::string const &str, SDL_Color color, int style);
-	text_surface(TTF_Font *font, SDL_Color color, int style);
+	text_surface(std::string const &str, int size, SDL_Color color, int style);
+	text_surface(int size, SDL_Color color, int style);
 	void set_text(std::string const &str);
 	bool operator==(text_surface const &t) const { return hash_ == t.hash_ && equal(t); }
 	bool operator!=(text_surface const &t) const { return hash_ != t.hash_ || !equal(t); }
 	size_t width() const;
 	size_t height() const;
-	surface const &get_surface() const;
+	std::vector<surface> const & get_surfaces() const;
 private:
 	int hash_;
-	TTF_Font *font_; // no font should ever be closed
+	int font_size_;
 	std::string str_;
 	SDL_Color color_;
 	int style_;
 	mutable int w_, h_;
-	mutable surface surf_;
+	mutable std::vector<surface> surfs_;
+	mutable bool initialized_;
 	void hash();
 	void measure() const;
 	bool equal(text_surface const &t) const;
 };
 
-text_surface::text_surface(TTF_Font *font, std::string const &str, SDL_Color color, int style)
-  : font_(font), str_(str), color_(color), style_(style), w_(-1), h_(-1)
+text_surface::text_surface(std::string const &str, int size, SDL_Color color, int style)
+  : font_size_(size), str_(str), color_(color), style_(style), w_(-1), h_(-1), 
+  initialized_(false)
 {
 	hash();
 }
 
-text_surface::text_surface(TTF_Font *font, SDL_Color color, int style)
-  : hash_(0), font_(font), color_(color), style_(style), w_(-1), h_(-1)
+text_surface::text_surface(int size, SDL_Color color, int style)
+  : hash_(0), font_size_(size), color_(color), style_(style), w_(-1), h_(-1), initialized_(false)
 {}
 
 void text_surface::set_text(std::string const &str)
@@ -253,7 +358,7 @@ void text_surface::hash()
 
 bool text_surface::equal(text_surface const &t) const
 {
-	return font_ == t.font_
+	return font_size_ == t.font_size_
 		&& color_.r == t.color_.r && color_.g == t.color_.g && color_.b == t.color_.b
 		&& style_ == t.style_
 		&& str_ == t.str_;
@@ -261,8 +366,36 @@ bool text_surface::equal(text_surface const &t) const
 
 void text_surface::measure() const
 {
-	font_style_setter const style_setter(font_, style_);
-	TTF_SizeUTF8(font_, str_.c_str(), &w_, &h_);
+	w_ = 0;
+	h_ = 0;
+	
+	wide_string ws = string_to_wstring(str_);
+	std::vector<text_chunk> substrings = split_text(ws);
+
+	for(std::vector<text_chunk>::const_iterator itor = substrings.begin(); 
+			itor != substrings.end(); ++itor) {
+
+		TTF_Font* ttfont = get_font(font_id(itor->subset, font_size_));
+		if(ttfont == NULL)
+			continue;
+		font_style_setter const style_setter(ttfont, style_);
+
+		//Convert the wide_string into something usable by sdl_ttf.
+		//This is pretty ugly.
+		util::scoped_array<Uint16> text(new Uint16[itor->text.size() + 1]);
+		wide_string::const_iterator c = itor->text.begin();
+		int i;
+		for(i = 0; c != itor->text.end(); ++c, ++i)
+			text[i] = *c;
+		text[i] = 0;
+
+		int w;
+		int h;
+
+		TTF_SizeUNICODE(ttfont, text, &w, &h);
+		w_ += w;
+		h_ = maximum<int>(h_, h);
+	}
 }
 
 size_t text_surface::width() const
@@ -279,33 +412,43 @@ size_t text_surface::height() const
 	return h_;
 }
 
-surface const &text_surface::get_surface() const
+std::vector<surface> const &text_surface::get_surfaces() const
 {
-	if (!surf_.null())
-		return surf_;
+	if(initialized_)
+		return surfs_;
+
+	initialized_ = true;
 
 	// Impose a maximal number of characters for a text line. Do now draw
 	// any text longer that that, to prevent a SDL buffer overflow
-	if (width() > max_text_line_width)
-		return surf_;
+	if(width() > max_text_line_width)
+		return surfs_;
 
-	// Validate the UTF-8 string: workaround a SDL_TTF bug that makes it
-	// crash when used with an invalid UTF-8 string
 	wide_string ws = string_to_wstring(str_);
+	std::vector<text_chunk> substrings = split_text(ws);
 
-	for(wide_string::const_iterator itor = ws.begin(); itor != ws.end(); ++itor) {
-		int minx, miny, maxx, maxy, advance;	
+	for(std::vector<text_chunk>::const_iterator itor = substrings.begin(); 
+			itor != substrings.end(); ++itor) {
+		TTF_Font* ttfont = get_font(font_id(itor->subset, font_size_));
+		if (ttfont == NULL)
+			continue;
+		font_style_setter const style_setter(ttfont, style_);
 
-		if(TTF_GlyphMetrics(font_, *itor, &minx, &maxx, &miny, &maxy, &advance) != 0 ) {
-			std::cerr << "glyph with strange size: " << *itor << "(" << char(*itor) << ") " << minx << ", " << maxx  << ", " << miny << ", " << maxy << ", " << advance << "\n";
-		}
+		//Convert the wide_string into something usable by sdl_ttf.
+		//This is pretty ugly.
+		util::scoped_array<Uint16> text(new Uint16[itor->text.size() + 1]);
+		wide_string::const_iterator c = itor->text.begin();
+		int i;
+		for(i = 0; c != itor->text.end(); ++c, ++i)
+			text[i] = *c;
+		text[i] = 0;
+
+		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, text, color_));
+		if(!s.null())
+			surfs_.push_back(s);
 	}
 
-	std::string fixed_str = wstring_to_string(string_to_wstring(str_));
-
-	font_style_setter const style_setter(font_, style_);
-	surf_ = surface(TTF_RenderUTF8_Blended(font_, fixed_str.c_str(), color_));
-	return surf_;
+	return surfs_;
 }
 
 class text_cache
@@ -339,50 +482,55 @@ text_surface &text_cache::find(text_surface const &t)
 	return cache_.front();
 }
 
-surface render_text(TTF_Font* font,const std::string& text, const SDL_Color& colour, int style)
+surface render_text(const std::string& text, int fontsize, const SDL_Color& colour, int style)
 {
-	if (font == NULL)
-		return surface();
-
-	// XXX Changed by erl, to not strip when rendering text. Works everywhere?
 	const std::vector<std::string> lines = utils::split(text, '\n', utils::REMOVE_EMPTY);
-	std::vector<surface> surfaces;
+	std::vector<std::vector<surface> > surfaces;
 	surfaces.reserve(lines.size());
 	size_t width = 0, height = 0;
-	text_surface txt_surf(font, colour, style);
+	text_surface txt_surf(fontsize, colour, style);
 
 	for(std::vector< std::string >::const_iterator ln = lines.begin(), ln_end = lines.end(); ln != ln_end; ++ln) {
 		if (!ln->empty()) {
 			txt_surf.set_text(*ln);
-			surface const &res = text_cache::find(txt_surf).get_surface();
+			const text_surface& cached_surf = text_cache::find(txt_surf);
+			const std::vector<surface>&res = cached_surf.get_surfaces();
 
-			if (!res.null()) {
+			if (!res.empty()) {
 				surfaces.push_back(res);
-				width = maximum<size_t>(res->w,width);
-				height += res->h;
+				width = maximum<size_t>(cached_surf.width(), width);
+				height += cached_surf.height();
 			}
 		}
 	}
 
 	if (surfaces.empty()) {
 		return surface();
-	} else if (surfaces.size() == 1) {
-		surface surf = surfaces.front();
+	} else if (surfaces.size() == 1 && surfaces.front().size() == 1) {
+		surface surf = surfaces.front().front();
 		SDL_SetAlpha(surf, SDL_SRCALPHA | SDL_RLEACCEL, SDL_ALPHA_OPAQUE);
 		return surf;
 	} else {
 
-		surface res(create_compatible_surface(surfaces.front(),width,height));
+		surface res(create_compatible_surface(surfaces.front().front(),width,height));
 		if (res.null())
 			return res;
 
 		size_t ypos = 0;
-		for(std::vector< surface >::const_iterator i = surfaces.begin(),
+		for(std::vector< std::vector<surface> >::const_iterator i = surfaces.begin(),
 		    i_end = surfaces.end(); i != i_end; ++i) {
-			SDL_SetAlpha(*i, 0, 0); // direct blit without alpha blending
-			SDL_Rect dstrect = {0, ypos, 0, 0};
-			SDL_BlitSurface(*i, NULL, res, &dstrect);
-			ypos += (*i)->h;
+			size_t xpos = 0;
+			size_t height = 0;
+
+			for(std::vector<surface>::const_iterator j = i->begin(),
+					j_end = i->end(); j != j_end; ++j) {
+				SDL_SetAlpha(*j, 0, 0); // direct blit without alpha blending
+				SDL_Rect dstrect = {xpos, ypos, 0, 0};
+				SDL_BlitSurface(*j, NULL, res, &dstrect);
+				xpos += (*j)->w;
+				height = maximum<size_t>((*j)->h, height);
+			}
+			ypos += height;
 		}
 
 		return res;
@@ -443,40 +591,24 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 
 }
 
-
 surface get_rendered_text(const std::string& str, int size, const SDL_Color& colour, int style)
 {
-	TTF_Font* const font = get_font(size);
-	if(font == NULL) {
-		ERR_FT << "Could not get font for size " << size << "\n";
-		return NULL;
-	}
-
-	return render_text(font, str, colour, style);
+	return render_text(str, size, colour, style);
 }
-
 
 SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& colour, const std::string& text,
 		   int x, int y, bool use_tooltips, int style)
 {
-	
-	TTF_Font* const font = get_font(size);
-	if(font == NULL) {
-		ERR_FT << "Could not get font for size " << size << "\n";
-		SDL_Rect res = {0,0,0,0};
-		return res;
-	}
-
 	const std::string etext = make_text_ellipsis(text, size, area.w);
 
 	if (gui_surface.null()) {
-		text_surface const &u = text_cache::find(text_surface(font, text, colour, style));
+		text_surface const &u = text_cache::find(text_surface(text, size, colour, style));
 		SDL_Rect res = {0, 0, u.width(), u.height()};
 		return res;
 	}
 
-	surface surface(render_text(font,etext,colour,style));
+	surface surface(render_text(etext,size,colour,style));
 	if(surface == NULL) {
 		SDL_Rect res = {0,0,0,0};
 		return res;
@@ -592,7 +724,10 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 
 int get_max_height(int size)
 {
-	TTF_Font* const font = get_font(size);
+	// Only returns the maximal size of the first font
+	TTF_Font* const font = get_font(font_id(0, size));
+	if(font == NULL)
+		return 0;
 	return TTF_FontHeight(font);
 }
 
@@ -624,19 +759,10 @@ namespace font {
 
 	int line_width(const std::string line, int font_size, int style)
 	{
+		const SDL_Color col = { 0, 0, 0, 0 };
+		text_surface s(line, font_size, col, style);
     
-		TTF_Font* const font = get_font(font_size);
-		if(font == NULL) {
-			ERR_FT << "Could not get font for size " << font_size << "\n";
-			return 0;
-		}
-		int w = 0;
-		int h = 0;
-  
-		font_style_setter style_setter(font, style);
-		TTF_SizeUTF8(font, line.c_str(), &w, &h);
-
-		return w;
+		return s.width();
 	}
 
   
@@ -819,7 +945,7 @@ int floating_label::xpos(size_t width) const
 surface floating_label::create_surface()
 {
 	if (surf_.null()) {
-		foreground_ = font::render_text(get_font(font_size_), text_, colour_, 0);
+		foreground_ = font::render_text(text_, font_size_, colour_, 0);
 
 		if(foreground_ == NULL) {
 			return NULL;
@@ -842,7 +968,7 @@ surface floating_label::create_surface()
 
 			surf_.assign(tmp);
 		} else {
-			surface background = font::render_text(get_font(font_size_), text_, font::BLACK_COLOUR, 0);
+			surface background = font::render_text(text_, font_size_, font::BLACK_COLOUR, 0);
 			background = blur_surface(background,4);
 			background = adjust_surface_alpha(background, ftofxp(4.0));
 

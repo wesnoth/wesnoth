@@ -60,6 +60,9 @@ public:
 	/// Set scroll rate.
 	void set_scroll_rate(unsigned r);
 
+	/// Return true if the scrollbar has a valid size.
+	bool has_valid_size() const;
+
 protected:
 	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);

@@ -138,6 +138,17 @@ void scrollbar::set_scroll_rate(unsigned r)
 	scroll_rate_ = r;
 }
 
+bool scrollbar::has_valid_size() const
+{
+	int uh = uparrow_.height();
+	int dh = downarrow_.height();
+	if(uh + dh >= location().h) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
 void scrollbar::process_event()
 {
 	if (uparrow_.pressed())
@@ -150,8 +161,13 @@ SDL_Rect scrollbar::groove_area() const
 {
 	SDL_Rect loc = location();
 	int uh = uparrow_.height();
-	loc.y += uh;
-	loc.h -= uh + downarrow_.height();
+	int dh = downarrow_.height();
+	if(uh + dh >= loc.h) {
+		loc.h = 0;
+	} else {
+		loc.y += uh;
+		loc.h -= uh + dh;
+	}
 	return loc;
 }
 

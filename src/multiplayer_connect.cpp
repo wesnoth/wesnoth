@@ -437,9 +437,9 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	level_(),
 	params_(params),
 
-	team_prefix_(_("Team ")),
+	team_prefix_(std::string(_("Team")) + " "),
 
-	waiting_label_(disp, _("")),
+	waiting_label_(disp, ""),
 	message_full_(false),
 	default_controller_(default_controller),
 
