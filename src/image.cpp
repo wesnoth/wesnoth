@@ -1,6 +1,7 @@
 #include "game_config.hpp"
 #include "image.hpp"
 #include "display.hpp"
+#include "font.hpp"
 #include "sdl_utils.hpp"
 #include "team.hpp"
 #include "util.hpp"
@@ -284,7 +285,7 @@ SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 	return surf;
 }
 
-SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm)
+SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm, const unit_map* units)
 {
 	SDL_Surface* minimap = NULL;
 	if(minimap == NULL) {
@@ -306,9 +307,14 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm)
 		SDL_Rect minirect = {0,0,scale,scale};
 		for(int y = 0; y != map.y(); ++y) {
 			for(int x = 0; x != map.x(); ++x) {
+
+				SDL_Surface* surf = NULL;
+				scoped_sdl_surface scoped_surface(NULL);
 				
-				if(map.on_board(gamemap::location(x,y))) {
+				const gamemap::location loc(x,y);
+				if(map.on_board(loc)) {
 					const bool shrouded = tm != NULL && tm->shrouded(x,y);
+					const bool fogged = tm != NULL && tm->fogged(x,y);
 					const gamemap::TERRAIN terrain = shrouded ? gamemap::VOID_TERRAIN : map[x][y];
 					cache_map::iterator i = cache.find(terrain);
 
@@ -321,14 +327,34 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm)
 							continue;
 						}
 
-						SDL_Surface* const minitile = scale_surface(tile,scale,scale);
-						i = cache.insert(cache_map::value_type(terrain,minitile)).first;
+						surf = scale_surface(tile,scale,scale);
+
+						if(units != NULL && !fogged) {
+							const unit_map::const_iterator u = units->find(loc);
+							if(u != units->end()) {
+								const SDL_Color& colour = font::get_side_colour(u->second.side());								
+								SDL_Rect rect = {0,0,surf->w,surf->h};
+								const short col = SDL_MapRGB(surf->format,colour.r,colour.g,colour.b);
+								SDL_FillRect(surf,&rect,col);
+							}
+
+							//we're not caching the surface, so make sure
+							//that it gets freed after use
+							scoped_surface.assign(surf);
+						} else if(fogged) {
+							adjust_surface_colour(surf,-50,-50,-50);
+							scoped_surface.assign(surf);
+						} else {
+							i = cache.insert(cache_map::value_type(terrain,surf)).first;
+						}
+					} else {
+						surf = i->second;
 					}
 
-					assert(i != cache.end());
+					assert(surf != NULL);
 					
 					SDL_Rect maprect = {x*scale,y*scale,0,0};
-					SDL_BlitSurface(i->second, &minirect, minimap, &maprect);
+					SDL_BlitSurface(surf, &minirect, minimap, &maprect);
 				}
 			}
 		}

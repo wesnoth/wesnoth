@@ -159,7 +159,13 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 				}
 			}
 
-			const gamemap::location& start_pos = map.starting_position(new_unit.side());
+			//see if the side specifies its location. Otherwise start it at the map-given
+			//starting position
+			const std::string& has_loc = (**ui)["x"];
+			gamemap::location start_pos(**ui);
+
+			if(has_loc.empty())
+				start_pos = map.starting_position(new_unit.side());
 
 			if(!start_pos.valid() && new_unit.side() == 1) {
 				throw gamestatus::load_game_failed("No starting position for side 1");

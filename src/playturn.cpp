@@ -845,6 +845,8 @@ void turn_info::undo()
 	gui_.set_route(NULL);
 
 	recorder.undo();
+
+	clear_shroud(gui_,map_,gameinfo_,units_,teams_,team_num_-1);
 }
 
 void turn_info::redo()

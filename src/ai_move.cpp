@@ -218,7 +218,7 @@ std::pair<location,location> choose_move(
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
 		assert(map.on_board(tg->loc));
 		const paths::route cur_route = a_star_search(u->first,tg->loc,
-		                       minimum(tg->value/best_rating,100.0),cost_calc);
+		                       minimum(tg->value/best_rating,500.0),cost_calc);
 		const double rating = tg->value/cur_route.move_left;
 		std::cerr << tg->value << "/" << cur_route.move_left << " = " << rating << "\n";
 		if(best_target == targets.end() || rating > best_rating) {

@@ -1632,7 +1632,7 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 SDL_Surface* display::getMinimap(int w, int h)
 {
 	if(minimap_ == NULL)
-		minimap_ = image::getMinimap(w,h,map_,team_valid() ? &teams_[currentTeam_] : NULL);
+		minimap_ = image::getMinimap(w,h,map_,team_valid() ? &teams_[currentTeam_] : NULL, &units_);
 
 	sdl_add_ref(minimap_);
 	return minimap_;

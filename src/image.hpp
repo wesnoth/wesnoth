@@ -2,6 +2,7 @@
 #define IMAGE_HPP_INCLUDED
 
 #include "map.hpp"
+#include "unit.hpp"
 
 #include "SDL.h"
 #include <string>
@@ -62,7 +63,7 @@ namespace image {
 	SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y);
 
 	//the surface returned must be freed by the user
-	SDL_Surface* getMinimap(int w, int h, const gamemap& map_, const team* tm=NULL);
+	SDL_Surface* getMinimap(int w, int h, const gamemap& map_, const team* tm=NULL, const unit_map* units=NULL);
 }
 
 #endif
