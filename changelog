@@ -1,6 +1,7 @@
 CVS HEAD:
+ * theme update
  * added new sounds and attack icons
- * invisible units are discovered when passing near them, undo stack is cleared and movement finished
+ * invisibility now "wears off" when enemy unit comes adjacent (#6879)
  * new units:
    * Footpad
  * language fixes (english)
@@ -15,10 +16,14 @@ CVS HEAD:
    * hungarian
    * norwegian
    * swedish
- * attempt to fix bug where teleporting units would have the tiles they can move to displayed incorrectly
+   * spanish 
+ * fixed teleporting displaying incorrectly where unit can move
  * fixed crash when you press escape when a menu is displayed (#7863)
- * fixed unit description being accessible through fog of war (#7843)
+ * fixed unit descriptions leaking thru fog of war (#7843)
  * fixed bug where units would regain hitpoints after reloading the game (#7842)
+ * fixed slow down right before a unit arrives at its destination hex, due to redrawing of the minimap                                      
+ * fixed ghosted usernames on server (#7655)
+ * fixed focus not returning Konrad on new turn (#7188)
  * tweaks to the widget class, fixes to the textbox widget
  * removed some debug cerrs
  * refactored widget class
