@@ -591,9 +591,9 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			const battle_stats& st = stats.back();
 
 			const std::string& attack_name = st.attack_name;
-			const std::string& attack_special = st.attack_special;
+			const std::string& attack_special = st.attack_special.empty() ? "" : gettext(st.attack_special.c_str());
 			const std::string& defend_name = st.defend_name;
-			const std::string& defend_special = st.defend_special;
+			const std::string& defend_special = st.defend_special.empty() ? "" : gettext(st.defend_special.c_str());
 
 			const std::string& range = gettext(st.range == "Melee" ? N_("melee") : N_("ranged"));
 
