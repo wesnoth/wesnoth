@@ -3,19 +3,22 @@ Version 0.8.9:
    * bulgarian
    * latin
  * updated most translations
+ * new or updated portraits:
+   * Konrad, Delfador, Li'sar and Kalenz (Heir to the Throne)
+   * Gweddry and Dacyn (Eastern Invasion)
  * added missing animations for:
    * Mermaid Initiate, Mermaid Enchantress and Mermaid Siren
    * Ancient Wose
    * Goblin Direwolf Rider and Goblin Knight
    * Gryphon
    * Skeleton Archer, Revenant and Death Knight
-   * Troll Warrior, Troll Hero and Great Troll
+   * Troll Warrior, Troll Hero and Great Troll, Young Ogre
    * Grand Knight, Lord and Master Bowman
- * new portraits for Heir to the Throne characters:
-   * Konrad, Delfador, Li'sar and Kalenz
- * overhauled Graphics for:
+   * Cuttlefish
+ * new or overhauled Graphics for:
    * Footpad, Outlaw, Thief and Rogue
    * Orcish Shamans, Elvish Lord and Elvish High Lord
+   * Ghost, Nightgaunt, Shadow, Spectre and Wraith
  * new female units for:
    * Footpad, Thief, Rogue and Assassin
  * added new tiles:
@@ -23,6 +26,9 @@ Version 0.8.9:
      desert road, desert oasis, savanna, tropical forest,
      tropical forest village
  * added icon for petrified units
+ * fixed missing diagonal projectiles on many units
+ * removed old unused images:
+   * time-of-day
  * downloaded campaigns no longer require a restart to be able to play them
  * new units:
    * Javelineer
@@ -44,8 +50,18 @@ Version 0.8.9:
    * Poacher: Reduce cost to 14
    * Tentacle of the Deep: Change movement type to 'float'
    * Flying creatures can now cross canyons
+   * Removed ZoC from level 0 units
  * Language fixes and polishing (English)
- * Scenario revisions in Eastern Invasion
+ * Added 'x' to the terrain letters reserved for campaign writers
+ * Scenario revisions for 'The Eastern Invasion' campaign:
+   * Lake Vrug
+   * Two Paths
+   * Northern Outpost
+   * Elven Alliance
+   * Unexpected Appearance
+   * Escape Tunnel
+   * Tribal Warfare
+   * Approaching Weldyn
  * Scenario revisions in Heir to the Throne:
    * Blackwater Port- Make the port look like more of a port, other minor 
      changes that mute each other out
@@ -54,8 +70,8 @@ Version 0.8.9:
    * The Bay of Pearls- Flip the map so the Ocean is on the West side
    * Muff Malal's Peninsula- Make it a peninsula, give Konrad the option of 
      fighting (bonus) or fleeing
-   * Isle of the Damned- Touch up the map so it is clear that the islands are 
-     islands, made the islands tropical, and moves the temples
+   * Isle of the Damned- Touched up the map so it is clear that the islands are 
+     islands, made the islands tropical, and moved the temples
    * The Siege of Elensefar- New map, and other changes
    * The Crossroads- New map, weaker more diffuse ambushes, and less gold for 
      the Orcs 
@@ -72,14 +88,15 @@ Version 0.8.9:
    * Made 'Peoples in Decline' and 'Rough Landing' look tropical
  * multiplayer improvements
    * multiplayer game settings (map name, gold per village, ...) are saved now
-   * fixed missing Deathblade in multiplayer
+   * added several missing units
    * Random Map (Desert) uses new desert environment; also tweaked
    * make the cave in 'An Island' (MP) be 'underground'
    * enlarge side descriptions for remote player during game creation
+   * added support for player nick tab completion and /me-substitution in game chat
  * theme syntax improvements:
    * added support for specifying a reference rectangle when using 
      relative-positioning syntax
-   * added support for theme inheritance, to avoid duplicating mostly-unchanged
+   * added support for theme inheritance; avoids duplicating mostly-unchanged
      code
  * added a "droid" game command, and allow for computer player to do a campaign
  * added a "canrecruit" filter
@@ -89,20 +106,22 @@ Version 0.8.9:
  * take advantage of libzipios++ if available, to read cfg files, maps,
    images, sound effects, and fonts from zip files.  Call "make	zip-install"
    to install data zipped.
- * remove drain allowing to go past maximum hp
- * remove long-range attacks
+ * removed drain allowing to go past maximum hp
+ * removed long-range attacks
    (Pirate Galleon, Transport Galleon, Wall Guard, Watch Tower)
  * fixed various bugs with respect to multiplayer game setup
    (#10896, #11236, #11265, #11442, #11527)
- * fixed pathfinding bug (#11196)
+ * added new pathfinder (Redsun)
+ * fixed some pathfinding bugs
  * fixed untranslatable strings
  * fixed "damage inflicted" statistic (incorrectly computed when defending)
- * fixed missing diagonal projectiles on many units
- * remove obsolete tools: make_translation merge_translations
- * remove obsolete id= for messages in TRoW & HttT
- * remove old unused images:
-   * time-of-day
- * code cleanups
+ * fixed that move-and-attack allowed attacking stone units
+ * fixed the side turn event being fired incorrectly
+ * fixed repeat recruit hotkey not respecting WML recruit changes
+ * removed support for turning off genders
+ * removed obsolete tools: make_translation merge_translations
+ * removed obsolete id= for messages in TRoW & HttT
+ * code cleanups and bug fixing
  * added a wesnoth "fortunes" file
 
 Version 0.8.8:
