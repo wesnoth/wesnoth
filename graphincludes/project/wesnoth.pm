@@ -12,6 +12,8 @@ sub filelabel {
   my ($file,$level) = @_;
   $level = $main::minshow unless defined $level;
 
+  $file =~ s/^$self->{PFXSTRIP}// if defined $self->{PFXSTRIP};
+
   if ($level == 0) {
     return $file;
   } elsif ($level == 1) {
