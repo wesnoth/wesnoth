@@ -677,11 +677,6 @@ lobby::RESULT mp_connect::process()
 			level_changed = true;
 		}
 
-		if (combos_color_[n].changed()) {
-			side["colour"] = lexical_cast_default<std::string>(combos_color_[n].selected()+1);
-		}
-
-			
 		if (!save_ && combos_race_[n].changed()) {
 			const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
 			side["random_faction"] = "";
@@ -693,6 +688,12 @@ lobby::RESULT mp_connect::process()
 
 			player_leaders_[n].update_leader_list(combos_race_[n].selected());
 		}
+		
+		//Player colour
+		if (combos_color_[n].changed()) {
+			side["colour"] = lexical_cast_default<std::string>(combos_color_[n].selected()+1);
+			level_changed = true;
+		}
 
 		//Player leader
 		if (!save_ && combos_leader_[n].changed()) {
@@ -703,10 +704,6 @@ lobby::RESULT mp_connect::process()
 		//Player team
 		if (combos_team_[n].changed()) {
 			side["team_name"] = team_names_[combos_team_[n].selected()];
-			level_changed = true;
-		}
-
-		if (combos_color_[n].changed()) {
 			level_changed = true;
 		}
 
@@ -921,6 +918,9 @@ void mp_connect::update_network()
 				i->first->values.erase("taken");
 				remove_player(i->first->values["description"]);
 				i->first->values["description"] = "";
+				i->first->values["name"] = player_races_.front();
+				i->first->values["random_faction"] = "yes";
+				i->first->values["type"] = "";
 			}
 		}
 
@@ -950,6 +950,9 @@ void mp_connect::update_network()
 				pos->first->values.erase("taken");
 				remove_player(pos->first->values["description"]);
 				pos->first->values["description"] = "";
+				pos->first->values["name"] = player_races_.front();
+				pos->first->values["random_faction"] = "yes";
+				pos->first->values["type"] = "";
 				network::send_data(*level_);
 			}
 			return;
