@@ -90,6 +90,8 @@ void show_about(display& disp)
 	text.push_back("Guillaume Duwelz-Rebert");
 	text.push_back("-translator");
 	text.push_back("-developer");
+	text.push_back("Isaac Clerencia");
+	text.push_back("-developer");
 	text.push_back("Jaramir");
 	text.push_back("-web developer");
 	text.push_back("Johanna Manninen (lohari)");
@@ -129,44 +131,78 @@ void show_about(display& disp)
 	text.push_back("-artwork and graphics designer");
 
 	int startline = 0;
-	int timer = 0;
-	for(;;) {
-		events::pump();
 
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+	// the following two lines should be changed if the image of the map is changed
+	const int top_margin = 60;		// distance from top of map image to top of scrolling text
+	const int bottom_margin = 40;	// distance from bottom of scrolling text to bottom of map image
 
-		SDL_BlitSurface(map_image,NULL,disp.video().getSurface(),&map_rect);
-		update_rect(map_rect);
+	int offset = 0;
+	bool is_new_line = true;
 
-		int height = map_rect.y + 60;
+	int mousex, mousey;
+	bool left_button;
+	int first_line_height;
+
+	// the following rectangles define the top, middle and bottom of the background image
+	// the upper and lower part is later used to mask the upper and lower line of scrolling text
+	SDL_Rect upper_src = {0, 0, map_rect.w, top_margin};
+	SDL_Rect upper_dest = {map_rect.x, map_rect.y, map_rect.w, top_margin};
+	SDL_Rect middle_src = {0, top_margin, map_rect.w, map_rect.h - top_margin - bottom_margin};
+	SDL_Rect middle_dest = {map_rect.x, map_rect.y + top_margin, map_rect.w, map_rect.h - top_margin - bottom_margin};
+	SDL_Rect lower_src = {0, map_rect.h - bottom_margin, map_rect.w, bottom_margin};
+	SDL_Rect lower_dest = {map_rect.x, map_rect.y + map_rect.h - bottom_margin, map_rect.w, bottom_margin};
+
+	do {
+		// draw map to screen, thus erasing all text
+		SDL_BlitSurface(map_image,&middle_src,disp.video().getSurface(),&middle_dest);
+
+		// draw one screen full of text
+		const int line_spacing = 5;
+		int y = map_rect.y + top_margin - offset;
 		int line = startline;
-		for(int cur_line=0;cur_line<12;cur_line++)
-		{
-			if(size_t(line) > text.size()-1)
-				line=0;
+		int cur_line = 0;
+
+		do {
 			SDL_Rect tr = font::draw_text(&disp,disp.screen_area(),24,font::BLACK_COLOUR,
-					              text[line], -1,height);
+					              text[line], -1,y);
+			if(is_new_line) {
+				is_new_line = false;
+				first_line_height = tr.h + line_spacing;
+			}
 			line++;
-			height += tr.h + 5;
-		}
-		timer++;
-		if(timer == 20)
-		{
-			timer = 0;
+			if(size_t(line) > text.size()-1)
+				line = 0;
+			y += tr.h + line_spacing;
+			cur_line++;
+		} while(y<map_rect.y + map_rect.h - bottom_margin);
+
+		// performs the actual scrolling
+		const int scroll_speed = 2;		// scroll_speed*50 = speed of scroll in pixel per second
+
+		offset += scroll_speed;
+		if(offset>=first_line_height) {
+			offset -= first_line_height;
+			is_new_line = true;
 			startline++;
-		}
-		if(size_t(startline) == text.size())
-			startline = 0;
-
-		if(close.process(mousex,mousey,left_button)) {
-			return;
+			if(size_t(startline) == text.size())
+				startline = 0;
 		}
 
+		// mask off the upper and lower half of the map,
+		// so text will scroll into view rather than
+		// suddenly appearing out of nowhere
+		SDL_BlitSurface(map_image,&upper_src,disp.video().getSurface(),&upper_dest);
+		SDL_BlitSurface(map_image,&lower_src,disp.video().getSurface(),&lower_dest);
+
+		// update screen and wait, so the text does not scroll too fast
+		update_rect(map_rect);
 		disp.video().flip();
 		SDL_Delay(20);
-	}
+
+		// handle events
+		events::pump();
+		left_button = SDL_GetMouseState(&mousex,&mousey)&SDL_BUTTON_LMASK;
+	} while(!close.process(mousex,mousey,left_button));
 
 }
 
