@@ -79,7 +79,9 @@ bool map_editor::first_time_created_ = true;
 int map_editor::num_operations_since_save_ = 0;
 config map_editor::prefs_;
 config map_editor::hotkeys_;
-map_editor::LEFT_BUTTON_FUNC map_editor::l_button_func_ = DRAW;
+// Do not init the l_button_func_ to DRAW, since it should be changed in
+// the constructor to update the report the first time.
+map_editor::LEFT_BUTTON_FUNC map_editor::l_button_func_ = PASTE; 
 gamemap::TERRAIN map_editor::old_fg_terrain_;
 gamemap::TERRAIN map_editor::old_bg_terrain_;
 int map_editor::old_brush_size_;
@@ -87,7 +89,7 @@ int map_editor::old_brush_size_;
 map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
 	  theme_(theme), game_config_(game_config), map_dirty_(false), l_button_palette_dirty_(true),
-	  palette_(gui, size_specs_, map), brush_(gui, size_specs_),
+	  everything_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
 	  l_button_held_func_(NONE), highlighted_locs_cleared_(false), prefs_disp_manager_(&gui_),
 	  all_hexes_selected_(false) {
 
@@ -145,6 +147,9 @@ map_editor::~map_editor() {
 }
 
 void map_editor::handle_event(const SDL_Event &event) {
+	if (event.type == SDL_VIDEORESIZE) {
+		everything_dirty_ = true;
+	}
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
 	const SDL_KeyboardEvent keyboard_event = event.key;
@@ -173,7 +178,7 @@ void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
 			// changed and if so redraw everything.
 			if (preferences::fullscreen() != old_fullscreen
 				|| old_resolution != preferences::resolution()) {
-				redraw_everything();
+				everything_dirty_ = true;
 			}
 		}
 	}
@@ -696,7 +701,7 @@ void map_editor::redo() {
 
 void map_editor::preferences() {
 	preferences_dialog(gui_, prefs_);
-	redraw_everything();
+	everything_dirty_ = true;
 }
 
 void map_editor::redraw_everything() {
@@ -704,6 +709,7 @@ void map_editor::redraw_everything() {
 	palette_.adjust_size();
 	brush_.adjust_size();
 	gui_.redraw_everything();
+	update_l_button_palette();
 	palette_.draw(true);
 	brush_.draw(true);
 }
@@ -1271,6 +1277,10 @@ void map_editor::main_loop() {
 		gui_.update_display();
 		SDL_Delay(sdl_delay);
 		events::pump();
+		if (everything_dirty_) {
+			redraw_everything();
+			everything_dirty_ = false;
+		}
 		if (abort_ == ABORT_NORMALLY) {
 			if (!confirm_exit_and_save()) {
 				set_abort(DONT_ABORT);

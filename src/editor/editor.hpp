@@ -300,6 +300,7 @@ private:
 	// positions.
 	bool map_dirty_;
 	bool l_button_palette_dirty_;
+	bool everything_dirty_;
 	terrain_palette palette_;
 	brush_bar brush_;
 	std::vector<gamemap::location> starting_positions_;
