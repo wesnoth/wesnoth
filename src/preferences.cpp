@@ -12,6 +12,7 @@
 */
 #include "filesystem.hpp"
 #include "font.hpp"
+#include "hotkeys.hpp"
 #include "language.hpp"
 #include "menu.hpp"
 #include "preferences.hpp"
@@ -49,6 +50,8 @@ manager::~manager()
 display_manager::display_manager(display* d)
 {
 	disp = d;
+
+	add_hotkeys(prefs);
 
 	set_grid(grid());
 	set_turbo(turbo());

@@ -55,7 +55,6 @@ class CVideo {
      private:
 
 	SDL_Surface* frameBuffer;
-//	SDL_Surface* backBuffer;
 	char text_[256*8];
 };
 
