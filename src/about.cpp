@@ -262,6 +262,7 @@ std::vector<std::string> get_text() {
 		"-   Claus Aranha",
 		"-   Michel Loos",
 		"-   Renato Cunha",
+		"-   Sérgio de Miranda Costa",
 		"+ ",
 
 		"_" N_("+Russian Translation"),
