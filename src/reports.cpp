@@ -31,12 +31,18 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 {
 	unit_map::const_iterator u = units.end();
 	
-	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)
-	   || type == POSITION) {
-		u = units.find(mouseover);
+	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
+
+		if(!current_team.fogged(mouseover.x,mouseover.y)) {
+			u = units.find(mouseover);
+		}
+
 		if(u == units.end()) {
-			u = units.find(loc);
-			if(u == units.end()) {
+			if(!current_team.fogged(loc.x,loc.y)) {
+				u = units.find(loc);
+			}
+
+			if(u == units.end() && type != POSITION) {
 				return report();
 			}
 		}
@@ -213,8 +219,9 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		break;
 	}
 	case POSITION: {
-		if(!map.on_board(mouseover))
+		if(!map.on_board(mouseover)) {
 			break;
+		}
 
 		str << (mouseover.x+1) << ", " << (mouseover.y+1);
 

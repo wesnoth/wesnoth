@@ -99,10 +99,11 @@ void check_response(network::connection res, const config& data)
 	}
 }
 
-void receive_gamelist(config& data)
+void receive_gamelist(display& disp, config& data)
 {
 	for(;;) {
-		const network::connection res = network::receive_data(data,0,3000);
+
+		const network::connection res = gui::network_data_dialog(disp,string_table["receive_game_list"],data);
 		check_response(res,data);
 
 		if(data.child("gamelist")) {
@@ -169,7 +170,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	sock = network::connect(host);
 	config sides, data;
 
-	network::connection data_res = network::receive_data(data,0,10000);
+
+	network::connection data_res = gui::network_data_dialog(disp,string_table["connecting_remote"],data);
 	check_response(data_res,data);
 
 	preferences::set_network_host(host);
@@ -223,7 +225,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	    first_time = false) {
 
 		if(!first_time) {
-			receive_gamelist(data);
+			receive_gamelist(disp,data);
 		}
 
 		//if we got a gamelist back - otherwise we have
@@ -251,7 +253,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			}
     
 			for(;;) {
-				data_res = network::receive_data(sides,0,10000);
+				data_res = gui::network_data_dialog(disp,string_table["getting_game_data"],data);
 				check_response(data_res,data);
     
 				//if we have got valid side data

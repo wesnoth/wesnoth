@@ -14,10 +14,13 @@
 #ifndef SHOW_DIALOG_HPP_INCLUDED
 #define SHOW_DIALOG_HPP_INCLUDED
 
+#include "config.hpp"
 #include "display.hpp"
-#include "SDL.h"
+#include "network.hpp"
 #include "unit.hpp"
 #include "video.hpp"
+
+#include "SDL.h"
 
 #include <string>
 #include <vector>
@@ -79,6 +82,8 @@ int show_dialog(display& screen, SDL_Surface* image,
                 dialog_action* action=NULL,
 				std::vector<check_item>* options=NULL
 			 );
+
+network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 
 enum TITLE_RESULT { TUTORIAL, NEW_CAMPAIGN, MULTIPLAYER, LOAD_GAME, QUIT_GAME,
                     CHANGE_LANGUAGE, EDIT_PREFERENCES, SHOW_ABOUT };

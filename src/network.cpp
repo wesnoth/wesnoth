@@ -21,7 +21,9 @@ struct partial_buffer {
 	size_t upto;
 };
 
-std::map<network::connection,partial_buffer> received_data;
+typedef std::map<network::connection,partial_buffer> partial_map;
+partial_map received_data;
+partial_map::const_iterator current_connection = received_data.end();
 
 TCPsocket server_socket;
 
@@ -148,6 +150,7 @@ void disconnect(connection s)
 	}
 
 	received_data.erase(s);
+	current_connection = received_data.end();
 
 	const sockets_list::iterator i = std::find(sockets.begin(),sockets.end(),s);
 	if(i != sockets.end()) {
@@ -212,6 +215,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				part_received->second.buf.resize(len);
 			}
 
+			current_connection = part_received;
 			partial_buffer& buf = part_received->second;
 
 			const size_t expected = buf.buf.size() - buf.upto;
@@ -225,6 +229,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 			std::cerr << "received " << nbytes << "=" << buf.upto << "/" << buf.buf.size() << "\n";
 
 			if(buf.upto == buf.buf.size()) {
+				current_connection = received_data.end();
 				const std::string buffer(buf.buf.begin(),buf.buf.end());
 				received_data.erase(part_received); //invalidates buf. don't use again
 				if(buffer == "") {
@@ -294,6 +299,14 @@ void send_data_all_except(const config& cfg, connection connection_num)
 		assert(*i && *i != server_socket);
 		send_data(cfg,*i);
 	}
+}
+
+std::pair<int,int> current_transfer_stats()
+{
+	if(current_connection == received_data.end())
+		return std::pair<int,int>(-1,-1);
+	else
+		return std::pair<int,int>(current_connection->second.upto,current_connection->second.buf.size());
 }
 
 } //end namespace network

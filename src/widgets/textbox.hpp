@@ -44,7 +44,8 @@ public:
 private:
 	display& disp_;
 	std::string text_;
-	unsigned int firstOnScreen_, cursor_;
+	mutable unsigned int firstOnScreen_;
+	unsigned int cursor_;
 
 	scoped_sdl_surface buffer_;
 

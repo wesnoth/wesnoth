@@ -77,6 +77,9 @@ void send_data(const config& cfg, connection connection_num=0);
 //function to send data to all peers except 'connection_num'
 void send_data_all_except(const config& cfg, connection connection_num);
 
+//function to see the number of bytes being processed on the current socket
+std::pair<int,int> current_transfer_stats();
+
 struct error
 {
 	error(const std::string& msg, connection sock=0)

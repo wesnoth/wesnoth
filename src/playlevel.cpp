@@ -16,6 +16,7 @@
 #include "hotkeys.hpp"
 #include "intro.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "mapgen.hpp"
 #include "network.hpp"
 #include "playlevel.hpp"
@@ -200,6 +201,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 
 			for(std::vector<team>::iterator team_it = teams.begin()+first_player;
 			    team_it != teams.end(); ++team_it) {
+				log_scope("player turn");
 				const int player_number = (team_it - teams.begin()) + 1;
 
 				//if a side is dead, don't do their turn
@@ -279,7 +281,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 					if(game_config::debug)
 						display::clear_debug_highlights();
 
+					std::cerr << "human finished turn...\n";
+
 				} else if(!replaying && team_it->is_ai()) {
+					std::cerr << "is ai...\n";
 					const hotkey::basic_handler key_events_handler(gui);
 
 					const int start_command = recorder.ncommands();

@@ -620,6 +620,68 @@ int show_dialog(display& disp, SDL_Surface* image,
 	return -1;
 }
 
+}
+
+namespace {
+class dialog_action_receive_network : public gui::dialog_action
+{
+public:
+	dialog_action_receive_network(network::connection connection, config& cfg, const std::pair<int,int>& connection_stats);
+	int do_action();
+	network::connection result() const;
+
+	enum { CONNECTION_COMPLETE = 1, CONNECTION_CONTINUING = 2 };
+private:
+	config& cfg_;
+	network::connection connection_, res_;
+	std::pair<int,int> stats_;
+};
+
+dialog_action_receive_network::dialog_action_receive_network(network::connection connection, config& cfg,
+															 const std::pair<int,int>& stats)
+: cfg_(cfg), connection_(connection), res_(0), stats_(stats)
+{
+}
+
+int dialog_action_receive_network::do_action()
+{
+	res_ = network::receive_data(cfg_,connection_,100);
+	if(res_ != 0)
+		return CONNECTION_COMPLETE;
+	else if(network::current_transfer_stats().first != stats_.first) {
+		std::cerr << "continuing connection...\n";
+		return CONNECTION_CONTINUING;
+	} else
+		return CONTINUE_DIALOG;
+};
+
+network::connection dialog_action_receive_network::result() const
+{
+	return res_;
+}
+
+}
+
+namespace gui {
+
+network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
+{
+	for(;;) {
+		const std::pair<int,int> stats = network::current_transfer_stats();
+		std::stringstream str;
+		str << msg;
+		if(stats.first != -1) {
+			str << ": " << (stats.first/1024) << "/" << (stats.second/1024) << string_table["kilobytes"];
+		}
+
+		dialog_action_receive_network receiver(connection_num,cfg,stats);
+		const int res = gui::show_dialog(disp,NULL,"",str.str(),CANCEL_ONLY,NULL,NULL,"",NULL,&receiver);
+		if(res != int(dialog_action_receive_network::CONNECTION_CONTINUING)) {
+			return receiver.result();
+		}
+	}
+}
+
 TITLE_RESULT show_title(display& screen)
 {
 	const events::resize_lock prevent_resizing;

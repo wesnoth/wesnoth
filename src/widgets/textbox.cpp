@@ -96,6 +96,8 @@ void textbox::draw() const
 
 		//if we can't fit the next character on screen
 		if(pos + area.w > location().w) {
+			if(cursor_ > i)
+				++firstOnScreen_;
 			break;
 		}
 

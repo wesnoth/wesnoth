@@ -385,7 +385,7 @@ int play_game(int argc, char** argv)
 
 			//only play replay data if the user has selected to view the replay,
 			//or if there is no starting position data to use.
-			if(!show_replay && state.starting_pos.child("side") == NULL) {
+			if(!show_replay && state.starting_pos.child("side") != NULL) {
 				recorder.set_to_end();
 			}
 
@@ -400,6 +400,13 @@ int play_game(int argc, char** argv)
 			}
 
 			if(state.campaign_type == "multiplayer") {
+				//make all network players local
+				for(config::child_itors sides = state.starting_pos.child_range("side");
+				    sides.first != sides.second; ++sides.first) {
+					if((**sides.first)["controller"] == "network")
+						(**sides.first)["controller"] = "human";
+				}
+				
 				recorder.set_save_info(state);
 				std::vector<config*> story;
 

@@ -20,6 +20,7 @@
 
 #include <cassert>
 #include <map>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -166,6 +167,8 @@ struct config
 	string_map values;
 
 private:
+	void write_internal(std::stringstream& str) const;
+
 	//a list of all children of this node.
 	child_map children;
 

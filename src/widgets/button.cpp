@@ -33,7 +33,6 @@ button::button(display& disp, const std::string& label, button::TYPE type,
                           x_(0), y_(0), button_(true),
                           state_(UNINIT), type_(type)
 {
-	log_scope("button constructor");
 	if(button_image_name.empty() && type == TYPE_PRESS) {
 		button_image_name = "button";
 	} else if(button_image_name.empty() && type == TYPE_CHECK) {

@@ -111,6 +111,7 @@ std::string read_file(const std::string& fname)
 
 void write_file(const std::string& fname, const std::string& data)
 {
+	log_scope("write_file");
 	std::ofstream file(fname.c_str());
 	if(file.bad()) {
 		std::cerr << "error writing to file: '" << fname << "'\n";
@@ -541,13 +542,12 @@ void config::read(const std::string& data,
 	}
 }
 
-std::string config::write() const
+void config::write_internal(std::stringstream& res) const
 {
-	std::string res;
 	for(std::map<std::string,std::string>::const_iterator i = values.begin();
 					i != values.end(); ++i) {
 		if(i->second.empty() == false) {
-			res += i->first + "=\"" + i->second + "\"\n";
+			res << i->first << "=\"" << i->second << "\"\n";
 		}
 	}
 
@@ -556,15 +556,23 @@ std::string config::write() const
 		const std::vector<config*>& v = j->second;
 		for(std::vector<config*>::const_iterator it = v.begin();
 						it != v.end(); ++it) {
-			res += "[" + j->first + "]\n";
-			res += (*it)->write();
-			res += "[/" + j->first + "]\n";
+			res << "[" << j->first << "]\n";
+			(*it)->write_internal(res);
+			res << "[/" << j->first << "]\n";
 		}
 	}
 
-	res += "\n";
+	res << "\n";
+}
 
-	return res;
+std::string config::write() const
+{
+	log_scope("config::write");
+
+	std::stringstream res;
+	write_internal(res);
+
+	return res.str();
 }
 
 config::child_itors config::child_range(const std::string& key)

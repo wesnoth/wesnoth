@@ -173,6 +173,7 @@ game_state read_game(game_data& data, const config* cfg)
 
 void write_game(const game_state& game, config& cfg)
 {
+	log_scope("write_game");
 	cfg["label"] = game.label;
 	cfg["version"] = game_config::version;
 
@@ -267,6 +268,7 @@ void load_game(game_data& data, const std::string& name, game_state& state)
 
 void save_game(const game_state& state)
 {
+	log_scope("save_game");
 	std::string name = state.label;
 	std::replace(name.begin(),name.end(),' ','_');
 
