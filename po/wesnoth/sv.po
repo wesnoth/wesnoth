@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.7-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-31 02:21+0200\n"
-"PO-Revision-Date: 2004-10-29 10:32+0200\n"
+"PO-Revision-Date: 2004-10-31 13:23+0100\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -1062,6 +1062,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"En slumpkarta med sand som huvudsaklig terräng. Observera att slumpkartor "
+"ofta är obalanserade, men i mån av tid kan du skapa om dem tills du får en "
+"bra karta."
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:17
@@ -1074,6 +1077,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"En slumpkarta med träsk som huvudsaklig terräng. Observera att slumpkartor "
+"ofta är obalanserade, men i mån av tid kan du skapa om dem tills du får en "
+"bra karta."
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
@@ -1086,6 +1092,9 @@ msgid ""
 "terrains.  Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"En slumpkarta som utspelar sig i brytningen mellan vår och vinter, och som "
+"huvudsakligen har snötäckt terräng. Observera att slumpkartor ofta är "
+"obalanserade, men i mån av tid kan du skapa om dem tills du får en bra karta."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
@@ -4335,7 +4344,6 @@ msgid "Drake Warrior"
 msgstr "Drakkrigare"
 
 #: data/units/Drake_Warrior.cfg:18
-#, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors."
@@ -5720,7 +5728,6 @@ msgid "Merman Hoplite"
 msgstr "Hoplit"
 
 #: data/units/Merman_Hoplite.cfg:19
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm.  Their powerful armor and rigid discipline allow them to hold "
@@ -7678,39 +7685,34 @@ msgid "or"
 msgstr "eller"
 
 #: src/help.cpp:876
-#, fuzzy
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
 "Den här terrängen betraktas som $terrains ur förflyttnings- och "
 "försvarssynpunkt"
 
 #: src/help.cpp:878
-#, fuzzy
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Den för truppen mest fördelaktiga terrängen används automatiskt"
 
 #: src/help.cpp:882
-#, fuzzy
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
-"Den här terrängen är som ett kärntorn. Du kan alltså rekrytera trupper när "
-"din ledare befinner på den här sortens terräng"
+"Den här terrängen fungerar som ett kärntorn. Du kan alltså rekrytera trupper "
+"när din ledare befinner på den här sortens terräng"
 
 #: src/help.cpp:884
-#, fuzzy
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
-"Den här terrängen är som en borg. Rekryterade trupper kan alltså placeras på "
-"den här sortens terräng"
+"Den här terrängen fungerar som en borg. Rekryterade trupper kan alltså "
+"placeras på den här sortens terräng"
 
 #: src/help.cpp:886
-#, fuzzy
 msgid "This terrain gives healing."
-msgstr "Den här terrängen läker trupper"
+msgstr "Den här terrängen läker trupper."
 
 #: src/help.cpp:1893
 msgid "< Back"
@@ -8584,207 +8586,3 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
-
-#~ msgid "Next unit"
-#~ msgstr "Nästa trupp"
-
-#~ msgid "End Unit Turn"
-#~ msgstr "Avsluta truppens drag"
-
-#~ msgid "Undo"
-#~ msgstr "Ångra"
-
-#~ msgid "Redo"
-#~ msgstr "Gör om"
-
-#~ msgid "Zoom In"
-#~ msgstr "Zooma in"
-
-#~ msgid "Zoom Out"
-#~ msgstr "Zooma ut"
-
-#~ msgid "Default Zoom"
-#~ msgstr "Standardinzoomning"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Fullskärm"
-
-#~ msgid "Accelerated"
-#~ msgstr "Accelererad"
-
-#~ msgid "Unit Description"
-#~ msgstr "Truppbeskrivning"
-
-#~ msgid "Repeat Recruit"
-#~ msgstr "Upprepa rekrytering"
-
-#~ msgid "Toggle Grid"
-#~ msgstr "Rutnät av/på"
-
-#~ msgid "Status Table"
-#~ msgstr "Statustabell"
-
-#~ msgid "Mute"
-#~ msgstr "Tyst"
-
-#~ msgid "Speak"
-#~ msgstr "Tala"
-
-#~ msgid "Create Unit (Debug!)"
-#~ msgstr "Skapa trupp (debuggning!)"
-
-#~ msgid "Change Unit Side (Debug!)"
-#~ msgstr "Byt truppens lojalitet (debuggning!)"
-
-#~ msgid "Preferences"
-#~ msgstr "Inställningar"
-
-#~ msgid "Scenario Objectives"
-#~ msgstr "Scenariomål"
-
-#~ msgid "Quit Game"
-#~ msgstr "Avsluta spelet"
-
-#~ msgid "Set Label"
-#~ msgstr "Namnge"
-
-#~ msgid "Show Enemy Moves"
-#~ msgstr "Visa fiendedrag"
-
-#~ msgid "Best Possible Enemy Moves"
-#~ msgstr "Bästa möjliga fiendedrag"
-
-#~ msgid "Quit Editor"
-#~ msgstr "Avsluta kartritaren"
-
-#~ msgid "New Map"
-#~ msgstr "Ny karta"
-
-#~ msgid "Load Map"
-#~ msgstr "Öppna karta"
-
-#~ msgid "Save Map"
-#~ msgstr "Spara karta"
-
-#~ msgid "Save As"
-#~ msgstr "Spara som"
-
-#~ msgid "Set Player Start Position"
-#~ msgstr "Ange spelarens startposition"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Fyll allt"
-
-#~ msgid "Fill Selection"
-#~ msgstr "Fyll markerat"
-
-#~ msgid "Cut"
-#~ msgstr "Klipp ut"
-
-#~ msgid "Copy"
-#~ msgstr "Kopiera"
-
-#~ msgid "Paste"
-#~ msgstr "Klistra in"
-
-#~ msgid "Revert from Disk"
-#~ msgstr "Återställ från disk"
-
-#~ msgid "Resize Map"
-#~ msgstr "Ändra storlek på karta"
-
-#~ msgid "Flip Map"
-#~ msgstr "Flippa kartan"
-
-#~ msgid "Select All"
-#~ msgstr "Markera alla"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "Rita terräng"
-
-#~ msgid "Delay Shroud Updates"
-#~ msgstr "Fördröj slöjuppdateringarna"
-
-#~ msgid "Update Shroud Now"
-#~ msgstr "Uppdatera slöjan nu"
-
-#~ msgid "Continue Move"
-#~ msgstr "Fortsätt draget"
-
-#~ msgid "Find Label or Unit"
-#~ msgstr "Sök efter namn eller trupp"
-
-#~ msgid "Speak to Ally"
-#~ msgstr "Tala med allierad"
-
-#~ msgid "Speak to All"
-#~ msgstr "Tala med alla"
-
-#~ msgid "View Chat Log"
-#~ msgstr "Se chattloggen"
-
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Vill du verkligen sluta?"
-
-#~ msgid "minimum damage"
-#~ msgstr "minsta möjliga skada"
-
-#~ msgid "Game"
-#~ msgstr "Spel"
-
-#~ msgid "Scenario"
-#~ msgstr "Scenario"
-
-#~ msgid "Configure Sides:"
-#~ msgstr "Konfigurera sidor:"
-
-#~ msgid "Choose Team Settings:"
-#~ msgstr "Välj laginställningar:"
-
-#~ msgid "Could not connect to the remote host"
-#~ msgstr "Kunde inte ansluta till servern"
-
-#~ msgid "Waiting for players to connect"
-#~ msgstr "Väntar på att spelare skall ansluta"
-
-#~ msgid "Filled"
-#~ msgstr "Upptagen"
-
-#~ msgid "Available"
-#~ msgstr "Ledig"
-
-#~ msgid "&misc/observer.png,Observer"
-#~ msgstr "&misc/observer.png,Åskådare"
-
-#~ msgid "Describe Unit"
-#~ msgstr "Beskriv truppen"
-
-#~ msgid "Full Screen or Windowed?"
-#~ msgstr "Fullskärm eller fönsterläge?"
-
-#~ msgid "Display:"
-#~ msgstr "Skärm:"
-
-#~ msgid "Windowed"
-#~ msgstr "Fönster"
-
-#~ msgid "Speed:"
-#~ msgstr "Hastighet:"
-
-#~ msgid "Normal"
-#~ msgstr "Normal"
-
-#~ msgid "Sound Settings..."
-#~ msgstr "Ljudinställningar..."
-
-#~ msgid "Options"
-#~ msgstr "Alternativ"
-
-#~ msgid "Choose Scenario"
-#~ msgstr "Välj scenario"
-
-#~ msgid "Unit resistance table"
-#~ msgstr "Motståndskraftstabell för trupper"
-
-#~ msgid "See Also..."
-#~ msgstr "Se även..."
