@@ -135,6 +135,10 @@ void show_about(display& disp)
  	text.push_back("-   Michel Loos");
  	text.push_back("+ ");
  
+ 	text.push_back("+Catalan Translation");
+ 	text.push_back("-   Dan Rosàs Garcia (focks)");
+ 	text.push_back("+ ");
+ 
  	text.push_back("+Danish Translation");
  	text.push_back("-   Mark Joakim Bekker Michelsen (skovbaer)");
  	text.push_back("+ ");
