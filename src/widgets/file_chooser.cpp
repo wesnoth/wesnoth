@@ -33,7 +33,8 @@ file_chooser::file_chooser(display &disp, std::string start_file)
 	: widget(disp), delete_button_(disp, _("Delete File")),
 	  path_delim_('/'), current_dir_(get_path(start_file)),
 	  chosen_file_(start_file), file_list_(disp, files_in_current_dir_, false),
-	  filename_textbox_(disp, 100, start_file, true), choice_made_(false),
+	  filename_textbox_(disp, 100, start_file, true),
+	  current_path_label_(disp, current_dir_), choice_made_(false),
 	  last_selection_(-1) {
 	// If the start file is not a file or directory, use the root.
 	if(!file_exists(chosen_file_) && !is_directory(chosen_file_)
@@ -44,6 +45,7 @@ file_chooser::file_chooser(display &disp, std::string start_file)
 	// Set sizes to some default values.
 	set_measurements(400, 500);
 	update_file_lists();
+	display_chosen_file();
 }
 
 void file_chooser::display_current_files() {
@@ -76,7 +78,8 @@ void file_chooser::display_current_files() {
 	file_list_.set_items(to_show);
 	// This will prevent the "box" with filenames from changing size on
 	// every redisplay, it looks better when it's static.
-	file_list_.set_width(width());  
+	file_list_.set_width(width());
+	current_path_label_.set_text(current_dir_);
 }
 
 void file_chooser::display_chosen_file() {
@@ -88,12 +91,6 @@ void file_chooser::display_chosen_file() {
 	else {
 		filename_textbox_.set_text(chosen_file_);
 	}
-}
-
-void file_chooser::draw_contents() {
-	font::draw_text(&disp(), current_path_rect_, font::SIZE_NORMAL, font::NORMAL_COLOUR,
-					current_dir_, current_path_rect_.x, current_path_rect_.y,
-					disp().video().getSurface());
 }
 
 void file_chooser::process_event() {
@@ -217,12 +214,7 @@ std::string file_chooser::get_choice() const {
 }
 
 void file_chooser::update_location(SDL_Rect const &rect) {
-	const int current_path_y = rect.y;
-	current_path_rect_.y = current_path_y;
-	current_path_rect_.w = rect.w;
-	current_path_rect_.x = rect.x;
-	current_path_rect_.h = 18;
-	const int file_list_y = current_path_y + current_path_rect_.h + 10;
+	const int file_list_y = rect.y + current_path_label_.height() + 10;
 	const int filename_textbox_y = rect.y + rect.h - filename_textbox_.height();
 	const int file_list_height = filename_textbox_y  - file_list_y - 10 - 32;
 
@@ -230,9 +222,11 @@ void file_chooser::update_location(SDL_Rect const &rect) {
 	const int delete_button_y = file_list_y + file_list_height + 5;
 	delete_button_.set_location(delete_button_x, delete_button_y);
 
+	current_path_label_.set_width(rect.w);
 	file_list_.set_width(rect.w);
 	filename_textbox_.set_width(rect.w);
 
+	current_path_label_.set_location(rect.x, rect.y);
 	file_list_.set_location(rect.x, file_list_y);
 	filename_textbox_.set_location(rect.x, filename_textbox_y);
 

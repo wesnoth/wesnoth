@@ -13,6 +13,7 @@
 #ifndef FILE_CHOOSER_H_INCLUDED
 #define FILE_CHOOSER_H_INCLUDED
 
+#include "label.hpp"
 #include "menu.hpp"
 #include "textbox.hpp"
 #include "widget.hpp"
@@ -37,7 +38,6 @@ protected:
 	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();
-	virtual void draw_contents();
 
 private:
 	/// If file_or_dir is a file, return the directory the file is in,
@@ -90,7 +90,7 @@ private:
 	std::vector<std::string> files_in_current_dir_, dirs_in_current_dir_;
 	menu file_list_;
 	textbox filename_textbox_;
-	SDL_Rect current_path_rect_;
+	label current_path_label_;
 	bool choice_made_;
 	int last_selection_;
 };
