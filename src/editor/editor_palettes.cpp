@@ -261,18 +261,21 @@ void terrain_palette::draw(bool force) {
 		dstrect.h = image->h;
 
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
+		SDL_Surface* const screen = gui_.video().getSurface();
+		Uint32 color;
 		if (terrain == selected_bg_terrain() && terrain == selected_fg_terrain()) {
-			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0xF0F0, screen);
+			color = SDL_MapRGB(screen->format,0xFF,0x00,0xFF);
 		}
 		else if (terrain == selected_bg_terrain()) {
-			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0x00F0, screen);
+			color = SDL_MapRGB(screen->format,0x00,0x00,0xFF);
 		}
 		else if (terrain == selected_fg_terrain()) {
-			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0xF000, screen);
+			color = SDL_MapRGB(screen->format,0xFF,0x00,0x00);
 		}
 		else {
-			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0, screen);
+			color = SDL_MapRGB(screen->format,0x00,0x00,0x00);
 		}
+		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 		if (counter_from_zero % 2 != 0)
 			y += size_specs_.terrain_space;
 	}
@@ -393,8 +396,10 @@ void brush_bar::draw(bool force) {
 		dstrect.w = image->w;
 		dstrect.h = image->h;
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
-		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h,
-				    ((unsigned)i == selected_brush_size()) ? 0xF000:0 , screen);
+		const Uint32 color = (unsigned)i == selected_brush_size() ? 
+			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
+			SDL_MapRGB(screen->format,0x00,0x00,0x00);
+		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 		x += image->w;
 	}
 	update_rect(loc);

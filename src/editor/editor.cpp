@@ -900,7 +900,9 @@ void map_editor::perform_selection_move() {
 
 void map_editor::draw_terrain(const gamemap::TERRAIN terrain,
 							  const gamemap::location hex) {
-	const gamemap::TERRAIN current_terrain = map_[hex.x][hex.y];
+	const gamemap::TERRAIN current_terrain = map_.get_terrain(hex);
+	//const int xpos = gui_.get_location_x(hex);
+	//const int ypos = gui_.get_location_x(hex);
 	map_undo_action undo_action;
 	undo_action.add_terrain(current_terrain, terrain, hex);
 	map_.set_terrain(hex, terrain);
@@ -1148,12 +1150,13 @@ void map_editor::update_l_button_palette() {
 			const int draw_w = minimum<int>(r.w + 2, gui_.screen_area().w);
 			const int draw_h = minimum<int>(r.h + 2, gui_.screen_area().h);
 			const SDL_Rect draw_rect = {draw_x, draw_y, draw_w, draw_h};
+			SDL_Surface* const screen = gui_.video().getSurface();
 			Uint32 color;
 			if ((*it).items().back() == get_action_name(l_button_func_)) {
-				color = 0xF000;
+				color = SDL_MapRGB(screen->format,0xFF,0x00,0x00);
 			}
 			else {
-				color = 0x0000;
+				color = SDL_MapRGB(screen->format,0x00,0x00,0x00);
 			}
 			gui::draw_rectangle(draw_rect.x, draw_rect.y, draw_rect.w, draw_rect.h,
 								color, gui_.video().getSurface());

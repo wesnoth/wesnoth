@@ -87,20 +87,14 @@ int main(int argc, char** argv)
 		}
 	}
 	
-	if(bpp != 16) {
-		std::cerr << "Video mode must be emulated; the game may run slowly. "
-				  << "For best results, run the program on a 16 bpp display\n";
-	}
-	
 	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
-	const int res = video.setMode(resolution.first,resolution.second,16,video_flags);
+	const int res = video.setMode(resolution.first,resolution.second,bpp,video_flags);
 	video.setBpp(bpp);
-	if(res != 16) {
+	if(res == 0) {
 		std::cerr << "required video mode, " << resolution.first << "x"
-				  << resolution.second << "x16 is not supported\n";
+				  << resolution.second << "x" << bpp << " is not supported\n";
 		return 0;
 	}
-	
 	preproc_map defines_map;
 	defines_map["MEDIUM"] = preproc_define();
 	defines_map["NORMAL"] = preproc_define();
