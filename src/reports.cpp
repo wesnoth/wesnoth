@@ -31,25 +31,17 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 					   const gamemap::location& loc, const gamemap::location& mouseover,
 					   const gamestatus& status, const std::string* format_string)
 {
-	unit_map::const_iterator u;
+	unit_map::const_iterator u = units.end();
 	
 	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
 
-		u = units.find(mouseover);
-		if(current_team.fogged(mouseover.x,mouseover.y) ||
-				(current_team.is_enemy(u->second.side()) &&
-				u->second.invisible(map[mouseover.x][mouseover.y],
-				status.get_time_of_day().lawful_bonus,mouseover,units,teams))) {
-			u = units.end();
+		if(!current_team.fogged(mouseover.x,mouseover.y)) {
+			u = units.find(mouseover);
 		}
 
 		if(u == units.end()) {
-			u = units.find(loc);
-			if(current_team.fogged(loc.x,loc.y) ||
-				(current_team.is_enemy(u->second.side()) &&
-				 u->second.invisible(map[loc.x][loc.y],
-				 status.get_time_of_day().lawful_bonus,loc,units,teams))) {
-				u = units.end();
+			if(!current_team.fogged(loc.x,loc.y)) {
+				u = units.find(loc);
 			}
 
 			if(u == units.end() && type != POSITION) {
