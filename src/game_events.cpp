@@ -1269,7 +1269,7 @@ bool filter_loc(const gamemap::location& loc, const config& cfg)
 	//iterate over any [not] tags, and if any match, then the filter does not match
 	const config::child_list& negatives = cfg.get_children("not");
 	for(config::child_list::const_iterator i = negatives.begin(); i != negatives.end(); ++i) {
-		if((cfg["x"] != "" || cfg["y"] != "") && filter_loc(loc,**i)) {
+		if(((**i)["x"] != "" || (**i)["y"] != "") && filter_loc(loc,**i)) {
 			return false;
 		}
 	}
