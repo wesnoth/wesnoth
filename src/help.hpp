@@ -32,6 +32,9 @@ struct help_manager {
 	~help_manager();
 };
 
+struct section;
+
+typedef std::list<section *> section_list;
 
 /// A topic contains a title, an id and some text.
 struct topic {
@@ -45,25 +48,29 @@ struct topic {
 	std::string title, id, text;
 };
 
+typedef std::list<topic> topic_list;
+
 /// A section contains topics and sections along with title and ID.
 struct section {
-	section(const std::string _title, const std::string _id, const std::list<topic> &_topics,
-			const std::list<section> &_sections)
-		: title(_title), id(_id), topics(_topics), sections(_sections) {}
+	section(const std::string _title, const std::string _id, const topic_list &_topics,
+			const std::vector<section> &_sections);
 	section() : title(""), id("") {}
+	section(const section&);
+	section& operator=(const section&);
+	~section();
 	/// Two sections are equal if their IDs are equal.
 	bool operator==(const section &) const;
 	/// Comparison on the ID.
 	bool operator<(const section &) const;
 	
+	void add_section(const section &s);
+	
 	void clear();
 	std::string title, id;
-	std::list<topic> topics;
-	std::list<section> sections;
+	topic_list topics;
+	section_list sections;
 };
 
-typedef std::list<topic> topic_list;
-typedef std::list<section> section_list;
 
 /// To be used as a function object to locate sections and topics
 /// with a specified ID.
@@ -74,6 +81,15 @@ public:
 	bool operator()(const section &s) { return s.id == id_; }
 private:
 	const std::string id_;
+};
+
+struct delete_section {
+	void operator()(section *s) { delete s; }
+};
+
+struct create_section {
+	section *operator()(const section *s) { return new section(*s); }
+	section *operator()(const section &s) { return new section(s); }
 };
 		
 /// The menu to the left in the help browser, where topics can be

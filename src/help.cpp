@@ -78,7 +78,7 @@ namespace {
 				if (child_cfg != NULL) {
 					help::section child_section;
 					parse_config_internal(help_cfg, child_cfg, child_section, level + 1);
-					sec.sections.push_back(child_section);
+					sec.add_section(child_section);
 				}
 				else {
 					std::stringstream ss;
@@ -139,6 +139,31 @@ bool topic::operator<(const topic &t) const {
 	return id < t.id;
 }
 
+
+section::section(const std::string _title, const std::string _id, const topic_list &_topics,
+		const std::vector<section> &_sections)
+	: title(_title), id(_id), topics(_topics) {
+	std::transform(_sections.begin(), _sections.end(), std::back_inserter(sections),
+				   create_section());
+}
+
+section::~section() {
+	std::for_each(sections.begin(), sections.end(), delete_section());
+}
+
+section::section(const section &sec) 
+	: title(sec.title), id(sec.id), topics(sec.topics) {
+	std::transform(sec.sections.begin(), sec.sections.end(),
+				   std::back_inserter(sections), create_section());
+}
+
+section& section::operator=(const section &sec) {
+	std::transform(sec.sections.begin(), sec.sections.end(),
+				   std::back_inserter(sections), create_section());
+	return *this;
+}
+	
+
 bool section::operator==(const section &sec) const {
 	return sec.id == id;
 }
@@ -147,8 +172,13 @@ bool section::operator<(const section &sec) const {
 	return id < sec.id;
 }
 
+void section::add_section(const section &s) {
+	sections.push_back(new section(s));
+}
+
 void section::clear() {
 	topics.clear();
+	std::for_each(sections.begin(), sections.end(), delete_section());
 	sections.clear();
 }
 
@@ -193,10 +223,10 @@ void help_menu::update_visible_items(const section &sec, unsigned level) {
 	}
 	section_list::const_iterator sec_it;
 	for (sec_it = sec.sections.begin(); sec_it != sec.sections.end(); sec_it++) {
-		const std::string vis_string = get_string_to_show(*sec_it, level);
-		visible_items_.push_back(visible_item(&(*sec_it), vis_string));
-		if (expanded((*sec_it))) {
-			update_visible_items(*sec_it, level + 1);
+		const std::string vis_string = get_string_to_show(*(*sec_it), level);
+		visible_items_.push_back(visible_item(*sec_it, vis_string));
+		if (expanded(*(*sec_it))) {
+			update_visible_items(*(*sec_it), level + 1);
 		}
 	}
 	topic_list::const_iterator topic_it;
@@ -271,7 +301,7 @@ bool help_menu::select_topic_internal(const topic &t, const section &sec) {
 	}
 	section_list::const_iterator sit;
 	for (sit = sec.sections.begin(); sit != sec.sections.end(); sit++) {
-		if (select_topic_internal(t, *sit)) {
+		if (select_topic_internal(t, *(*sit))) {
 			expand(sec);
 			return true;
 		}
@@ -1058,7 +1088,7 @@ const topic *find_topic(const section &sec, const std::string &id) {
 	}
 	section_list::const_iterator sit;
 	for (sit = sec.sections.begin(); sit != sec.sections.end(); sit++) {
-		const topic *t = find_topic(*sit, id);
+		const topic *t = find_topic(*(*sit), id);
 		if (t != NULL) {
 			return t;
 		}
