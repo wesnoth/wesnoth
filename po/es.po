@@ -1,5 +1,6 @@
 # translation of es.po to 
 # translation of es.po to
+# translation of es.po to
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -10,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-28 13:32+0200\n"
-"PO-Revision-Date: 2004-08-28 13:48+0200\n"
+"POT-Creation-Date: 2004-08-28 13:54+0200\n"
+"PO-Revision-Date: 2004-08-28 14:20+0200\n"
 "Last-Translator: Isaac Clerencia <isaac@sindominio.net>\n"
 "Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -710,9 +711,8 @@ msgid "&human-general.png,Humans"
 msgstr "&human-general.png,Humanos"
 
 #: data/multiplayer.cfg:114
-#, fuzzy
 msgid "&elvish-high-lord.png,Elves"
-msgstr "&elvish-lord.png,Elfos"
+msgstr "&elvish-high-lord.png,Elfos"
 
 #: data/multiplayer.cfg:125
 msgid "&orcish-warlord.png,Orcs"
@@ -731,14 +731,12 @@ msgid "Great War"
 msgstr "La Gran Guerra"
 
 #: data/multiplayer.cfg:254
-#, fuzzy
 msgid "&white-mage.png,Alliance of Light"
-msgstr "&elvish-lord.png,Alianza de la Luz"
+msgstr "&white-mage.png,Alianza de la Luz"
 
 #: data/multiplayer.cfg:265
-#, fuzzy
 msgid "&undead-necromancer.png,Alliance of Darkness"
-msgstr "&undead-lich.png,Alianza de la Oscuridad"
+msgstr "&undead-necromancer.png,Alianza de la Oscuridad"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:3
 msgid "Approaching Weldyn"
@@ -769,6 +767,8 @@ msgid ""
 "We have finally reached Weldyn, but it seems the undead have surrounded it. "
 "We must break through to reach the king!"
 msgstr ""
+"Por fin hemos llegado a Weldyn, pero parece que los No Muertos lo han rodeado. "
+"¡Debemos abrirnos paso hasta el rey!"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:138
 msgid "We have reached Weldyn. Now we must have a council to decide what to do next."
@@ -1178,7 +1178,7 @@ msgstr ""
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:132
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:157
 msgid "Who goes there?"
-msgstr ""
+msgstr "¿Quién hay ahí?"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:137
 msgid ""
@@ -1667,9 +1667,8 @@ msgid "Die... die... my master is calling you... Die!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:87
-#, fuzzy
 msgid "What is that?!?"
-msgstr "¿Qué es eso?"
+msgstr "¡¿Qué es eso?!"
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:91
 msgid "I leave you to your doom."
@@ -7278,7 +7277,7 @@ msgstr ""
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:98
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:928
 msgid "Why?"
-msgstr ""
+msgstr "¿Por qué?"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:103
 #, fuzzy
@@ -12902,6 +12901,14 @@ msgstr "Acciones"
 msgid "End Turn"
 msgstr "Fin de turno"
 
+#: data/themes/default.cfg:126
+msgid "hp"
+msgstr "pv"
+
+#: data/themes/default.cfg:133
+msgid "xp"
+msgstr "px"
+
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
 msgstr "nivel"
@@ -13036,7 +13043,8 @@ msgstr ""
 "enemigos.\n"
 "\n"
 "Las unidades enemigas no pueden ver o atacar esta unidad cuando se encuentra "
-"en un bosque, excepto en los turnos inmediatamente después de que haya atacado o si hay unidades enemigas junto a ella."
+"en un bosque, excepto en los turnos inmediatamente después de que haya "
+"atacado o si hay unidades enemigas junto a ella."
 
 #: data/translations/english.cfg:50
 msgid ""
@@ -13730,8 +13738,8 @@ msgstr ""
 msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 "La gloria también está en las retiradas:\n"
-"No hay que tener miedo a las retiradas, permiten reagruparse, lo que puede ser "
-"vital para la victoria."
+"No hay que tener miedo a las retiradas, permiten reagruparse, lo que puede "
+"ser vital para la victoria."
 
 #: data/translations/english.cfg:232
 msgid ""
@@ -13799,7 +13807,8 @@ msgstr ""
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "La virtud de la cautela:\n"
-"Usad líneas de tropas para proteger a las unidades heridas mientras se recuperan."
+"Usad líneas de tropas para proteger a las unidades heridas mientras se "
+"recuperan."
 
 #: data/translations/english.cfg:239
 msgid "Read the hotkeys list in the preferences menu."
@@ -13822,7 +13831,8 @@ msgid ""
 "them."
 msgstr ""
 "La virtud de la circunspección:\n"
-"Podéis conocer hasta donde pueden moverse las tropas enemigas situando el puntero encima de ellas."
+"Podéis conocer hasta donde pueden moverse las tropas enemigas situando el "
+"puntero encima de ellas."
 
 #: data/translations/english.cfg:242
 msgid ""
@@ -13830,7 +13840,8 @@ msgid ""
 "needing to attack anything themselves."
 msgstr ""
 "La virtud de la reserva:\n"
-"Usad sanadores para respaldar vuestros ataques; ganarán batallas incluso sin atacar nada por sí mismos."
+"Usad sanadores para respaldar vuestros ataques; ganarán batallas incluso sin "
+"atacar nada por sí mismos."
 
 #: data/translations/english.cfg:243
 msgid ""
@@ -13855,7 +13866,8 @@ msgid ""
 "fight."
 msgstr ""
 "La virtud de la astucia:\n"
-"Las unidades se curan cuando suben de nivel. Usado astutamente, puede cambiar el signo de la batalla."
+"Las unidades se curan cuando suben de nivel. Usado astutamente, puede "
+"cambiar el signo de la batalla."
 
 #: data/translations/english.cfg:246
 msgid ""
