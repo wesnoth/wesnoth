@@ -47,24 +47,23 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	surface button_image(image::get_image(button_image_file,image::UNSCALED));
 	surface pressed_image(image::get_image("buttons/" + button_image_name + "-pressed.png", image::UNSCALED));
 	surface active_image(image::get_image("buttons/" + button_image_name + "-active.png", image::UNSCALED));
-	surface pressed_active_image(image::get_image("buttons/" + button_image_name + "-active-pressed.png", image::UNSCALED));
+	surface pressed_active_image;
 
-	if(pressed_image == NULL) {
-		pressed_image.assign(image::get_image(button_image_file,image::UNSCALED));
+	if (pressed_image.null())
+		pressed_image.assign(button_image);
+
+	if (active_image.null())
+		active_image.assign(button_image);
+
+	if (type == TYPE_CHECK) {
+		pressed_active_image.assign(image::get_image("buttons/" + button_image_name + "-active-pressed.png",
+		                                             image::UNSCALED));
+		if (pressed_active_image.null())
+			pressed_active_image.assign(pressed_image);
 	}
 
-	if(active_image == NULL) {
-		active_image.assign(image::get_image(button_image_file,image::UNSCALED));
-	}
-
-	if(pressed_active_image == NULL) {
-		pressed_active_image.assign(image::get_image(button_image_file,image::UNSCALED));
-	}
-
-	if(button_image == NULL) {
-		std::cerr << "could not find button image: '" << button_image_file << "'\n";
+	if (button_image.null())
 		throw error();
-	}
 
 	textRect_.x = 0;
 	textRect_.y = 0;
@@ -92,14 +91,13 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		image_.assign(scale_surface(button_image,location().w,location().h));
 		pressedImage_.assign(scale_surface(pressed_image,location().w,location().h));
 		activeImage_.assign(scale_surface(active_image,location().w,location().h));
-		pressedActiveImage_.assign(scale_surface(pressed_active_image,location().w,location().h));
-
 	} else {
 		set_width(checkbox_horizontal_padding + textRect_.w + button_image->w);
 		image_.assign(scale_surface(button_image,button_image->w,button_image->h));
 		pressedImage_.assign(scale_surface(pressed_image,button_image->w,button_image->h));
 		activeImage_.assign(scale_surface(active_image,button_image->w,button_image->h));
-		pressedActiveImage_.assign(scale_surface(pressed_active_image,button_image->w,button_image->h));
+		if (type == TYPE_CHECK)
+			pressedActiveImage_.assign(scale_surface(pressed_active_image, button_image->w, button_image->h));
 	}
 }
 
