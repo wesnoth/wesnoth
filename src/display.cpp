@@ -2239,8 +2239,8 @@ namespace {
 	const int chat_message_border = 5;
 	const int chat_message_x = 10;
 	const int chat_message_y = 10;
-	const SDL_Color chat_message_colour = {200,200,200,200};
-	const SDL_Color chat_message_bg     = {0,0,0,100};
+	const SDL_Color chat_message_colour = {255,255,255,255};
+	const SDL_Color chat_message_bg     = {0,0,0,140};
 }
 
 void display::add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type)

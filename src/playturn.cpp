@@ -2524,11 +2524,13 @@ void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& l
 
 	const SDL_Rect& area = gui_.map_area();
 
+	const SDL_Color textbox_bg = {0,0,0,140};
+
 	const int border_size = 10;
 
 	const int ypos = area.y+area.h-30 - (textbox_.check != NULL ? textbox_.check->height() + border_size : 0);
 	textbox_.label = font::add_floating_label(label,font::SIZE_NORMAL,font::YELLOW_COLOUR,area.x+border_size,ypos,0,0,-1,
-	                                          area,font::LEFT_ALIGN);
+		area,font::LEFT_ALIGN, &textbox_bg);
 	if(textbox_.label == 0) {
 		return;
 	}
@@ -2541,7 +2543,7 @@ void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& l
 		return;
 	}
 
-	textbox_.box.assign(new gui::textbox(gui_,textbox_width));
+	textbox_.box.assign(new gui::textbox(gui_,textbox_width,"",true,256,0.8,0.6));
 	textbox_.box->set_volatile(true);
 	textbox_.box->set_location(area.x + label_area.w + border_size*2,ypos);
 

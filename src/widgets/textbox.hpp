@@ -28,7 +28,7 @@ namespace gui {
 class textbox : public scrollarea
 {
 public:
-	textbox(display& d, int width, const std::string& text="", bool editable=true, size_t max_size = 256);
+	textbox(display& d, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2);
 
 	const std::string text() const;
 	void set_text(const std::string& text);
@@ -52,7 +52,7 @@ private:
 	size_t max_size_;
 
 	wide_string text_;
-	
+
 	// mutable unsigned int firstOnScreen_;
 	int cursor_;
 	int selstart_;
@@ -76,6 +76,9 @@ private:
 	bool wrap_;
 
 	size_t line_height_, yscroll_;
+
+	double alpha_;
+	double alpha_focus_;
 
 	void handle_event(const SDL_Event& event);
 

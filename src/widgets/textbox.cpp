@@ -28,12 +28,13 @@ namespace gui {
 
 const int font_size = font::SIZE_PLUS;
 
-textbox::textbox(display& d, int width, const std::string& text, bool editable, size_t max_size)
+textbox::textbox(display& d, int width, const std::string& text, bool editable, size_t max_size, double alpha, double alpha_focus)
 	   : scrollarea(d), max_size_(max_size), text_(string_to_wstring(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
-	     wrap_(false), line_height_(0), yscroll_(0)
+	     wrap_(false), line_height_(0), yscroll_(0), alpha_(alpha),
+		  alpha_focus_(alpha_focus)
 {
 	// static const SDL_Rect area = d.screen_area();
 	// const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
@@ -118,7 +119,7 @@ void textbox::draw_contents()
 
 	surface surf = disp().video().getSurface();
 	gui::draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
-	                          focus() ? 0.2 : 0.4, surf);
+	                          focus() ? alpha_focus_ : alpha_, surf);
 	
 	SDL_Rect src;
 
