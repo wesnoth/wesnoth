@@ -1021,6 +1021,7 @@ SDL_Surface *TTF_RenderUNICODE_Solid(TTF_Font *font,
 	const Uint16* ch;
 	Uint8* src;
 	Uint8* dst;
+	Uint8 *dst_check;
 	int swapped;
 	int row, col;
 	c_glyph *glyph;
@@ -1042,6 +1043,10 @@ SDL_Surface *TTF_RenderUNICODE_Solid(TTF_Font *font,
 	if( textbuf == NULL ) {
 		return NULL;
 	}
+
+	/* Adding bound checking to avoid all kinds of memory corruption errors
+	   that may occur. */
+	dst_check = (Uint8*)textbuf->pixels + textbuf->pitch * textbuf->h;
 
 	/* Fill the palette with the foreground color */
 	palette = textbuf->format->palette;
@@ -1086,7 +1091,12 @@ SDL_Surface *TTF_RenderUNICODE_Solid(TTF_Font *font,
 		}
 		glyph = font->current;
 		current = &glyph->bitmap;
-
+		/* Ensure the width of the pixmap is correct. On some cases,
+		 * freetype may report a larger pixmap than possible.*/
+		width = current->width;
+		if (width > glyph->maxx - glyph->minx) {
+			width = glyph->maxx - glyph->minx;
+		}
 		/* do kerning, if possible AC-Patch */
 		if ( use_kerning && prev_index && glyph->index ) {
 			FT_Vector delta; 
@@ -1112,7 +1122,7 @@ SDL_Surface *TTF_RenderUNICODE_Solid(TTF_Font *font,
 				xstart + glyph->minx;
 			src = current->buffer + row * current->pitch;
 
-			for ( col=current->width; col>0; --col ) {
+			for ( col=width; col>0 && dst < dst_check; --col ) {
 				*dst++ |= *src++;
 			}
 		}
@@ -1272,6 +1282,7 @@ SDL_Surface* TTF_RenderUNICODE_Shaded( TTF_Font* font,
 	const Uint16* ch;
 	Uint8* src;
 	Uint8* dst;
+	Uint8* dst_check;
 	int swapped;
 	int row, col;
 	FT_Bitmap* current;
@@ -1292,6 +1303,10 @@ SDL_Surface* TTF_RenderUNICODE_Shaded( TTF_Font* font,
 	if( textbuf == NULL ) {
 		return NULL;
 	}
+
+	/* Adding bound checking to avoid all kinds of memory corruption errors
+	   that may occur. */
+	dst_check = (Uint8*)textbuf->pixels + textbuf->pitch * textbuf->h;
 
 	/* Fill the palette with NUM_GRAYS levels of shading from bg to fg */
 	palette = textbuf->format->palette;
@@ -1337,7 +1352,12 @@ SDL_Surface* TTF_RenderUNICODE_Shaded( TTF_Font* font,
 			return NULL;
 		}
 		glyph = font->current;
-   
+		/* Ensure the width of the pixmap is correct. On some cases,
+		 * freetype may report a larger pixmap than possible.*/
+		width = glyph->pixmap.width;
+		if (width > glyph->maxx - glyph->minx) {
+			width = glyph->maxx - glyph->minx;
+		}
 		/* do kerning, if possible AC-Patch */
 		if ( use_kerning && prev_index && glyph->index ) {
 			FT_Vector delta; 
@@ -1363,7 +1383,7 @@ SDL_Surface* TTF_RenderUNICODE_Shaded( TTF_Font* font,
 				(row+glyph->yoffset) * textbuf->pitch +
 				xstart + glyph->minx;
 			src = current->buffer + row * current->pitch;
-			for ( col=current->width; col>0; --col ) {
+			for ( col=width; col>0 && dst < dst_check; --col ) {
 				*dst++ |= *src++;
 			}
 		}
