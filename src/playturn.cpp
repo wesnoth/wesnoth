@@ -2033,7 +2033,7 @@ void turn_info::show_statistics()
 {
 	const statistics::stats& stats = statistics::calculate_stats(0,gui_.viewing_team()+1);
 	std::vector<std::string> items;
-	
+
 	{
 		std::stringstream str;
 		str << _("Recruits") << "," << statistics::sum_str_int_map(stats.recruits);
@@ -2090,37 +2090,38 @@ void turn_info::show_statistics()
 		items.push_back(str.str());
 	}
 
-	const int res = gui::show_dialog(gui_,NULL,_("Statistics"),"",gui::CLOSE_ONLY,&items);
-	std::string title;
-	items.clear();
-	switch(res) {
-	case 0:
-		items = create_unit_table(stats.recruits);
-		title = _("Recruits");
-		break;
-	case 1:
-		items = create_unit_table(stats.recalls);
-		title = _("Recalls");
-		break;
-	case 2:
-		items = create_unit_table(stats.advanced_to);
-		title = _("Advancements");
-		break;
-	case 3:
-		items = create_unit_table(stats.deaths);
-		title = _("Losses");
-		break;
-	case 4:
-		items = create_unit_table(stats.killed);
-		title = _("Kills");
-		break;
-	default:
-		return;
-	}
+	for(;;) {
+		const int res = gui::show_dialog(gui_, NULL, _("Statistics"), "", gui::OK_CANCEL, &items);
+		std::string title;
+		std::vector<std::string> items_sub;
 
-	if(items.empty() == false) {
-		gui::show_dialog(gui_,NULL,"",title,gui::OK_ONLY,&items);
-		show_statistics();
+		switch(res) {
+		case 0:
+			items_sub = create_unit_table(stats.recruits);
+			title = _("Recruits");
+			break;
+		case 1:
+			items_sub = create_unit_table(stats.recalls);
+			title = _("Recalls");
+			break;
+		case 2:
+			items_sub = create_unit_table(stats.advanced_to);
+			title = _("Advancements");
+			break;
+		case 3:
+			items_sub = create_unit_table(stats.deaths);
+			title = _("Losses");
+			break;
+		case 4:
+			items_sub = create_unit_table(stats.killed);
+			title = _("Kills");
+			break;
+		default:
+			return;
+		}
+
+		if (items_sub.empty() == false)
+			gui::show_dialog(gui_, NULL, "", title, gui::OK_ONLY, &items_sub);
 	}
 }
 
