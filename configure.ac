@@ -599,12 +599,16 @@ fi
 #######################################################################
 
 rm -rf translations
+case $srcdir in
+/*) podir=$srcdir/po ;;
+*)  podir=../../../$srcdir/po ;;
+esac
 for domain in `grep ^SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
 do
     for lang in `cat $srcdir/po/$domain/LINGUAS`
     do
         mkdir -p translations/$lang/LC_MESSAGES
-	ln -s ../../../po/$domain/$lang.gmo translations/$lang/LC_MESSAGES/$domain.mo
+	ln -s $podir/$domain/$lang.gmo translations/$lang/LC_MESSAGES/$domain.mo
     done
 done
 
