@@ -4,24 +4,31 @@ CVS HEAD:
  * swamp village
  * ice terrain
  * dirt and swamp transitions
+ * new minor terrain item: trash heap
  * new fog of war images
+ * undergound daytime images
  * fading effect between daytime changes
  * made the 'Sword of Fire' shoot fireballs instead of lightning bolt
  * resting stacks with heal and cure
  * shortcut keys are displayed next to menu items
  * undo, redo and next unit added to context menu
- * new minor terrain item: trash heap
- * village number slider in random map generation is now proportional
  * added deleting saved games 
  * added deleting units from recall list
- * added cave-based terrain generator
  * added fight calculations
  * added in-game statistics
- * random map generator enhanced
+ * multiplayer enhancements:
+   * random map generator enhanced
+   * village number slider in random map generation is now proportional
+   * users in lobby can see minimap of non-shroud games being played
+   * number of available positions in a game is shown in the lobby
+   * current turn of a game underway is shown in the lobby
+   * eye of the observer
+ * General melee attack number of strikes increased by one
+ * Princess (Li'Sar) changed to 2nd level unit
  * new units
    * Cockatrice
    * Yeti
- * General melee attack number of strikes increased by one
+   * Battle Princess
  * new scenarios for 'Heir to the Throne' campaign:
    * Return to Wesnoth
    * Valley of Statues
@@ -32,6 +39,8 @@ CVS HEAD:
  * added Bepa-Roman.ttf which has cyrillic characters
  * updated translations:
    * hungarian
+   * danish
+   * portuguese-brazilian
  * added [store_gold] tag to WML
  * defenders will choose their weapons more intelligently
  * de-elvished Gryphon Rider description and set race to human
@@ -41,6 +50,7 @@ CVS HEAD:
  * fixed units not getting resting if they ended turn with space
  * fixed enemies getting healed after loading, resting serialized in unit
  * fixed Merman Lord -> Triton in some scenarios
+ * fixed allow/deny observers being not respected in multiplayer game creation
  * improved network protocol (breaks backward compatibility)
  * slacknoth now ignores an insignificant makefile error
 
