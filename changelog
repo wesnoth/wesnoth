@@ -1,12 +1,14 @@
 CVS HEAD:
- * trained AI to take advantage of backstab
  * added and improved unit images and castle images
- * improved AI recruiting, decisions are now based on terrain and enemy unit structure
  * reduced Dwarvish Fighter hitpoints to 36
  * reduced Dwarvish Lord hitpoints to 75 and changed ranged attack to 10-2
  * increased Dwarvish Steelclad hitpoints to 50 and melee attack to 11-3
  * new units:
    * Lizardman
+ * AI improvements
+   * fixed AI attacking from silly places
+   * improved AI recruiting, decisions are now based on terrain and enemy unit structure
+   * trained AI to take advantage of backstab
  * multiplayer improvements:
    * added Lieutenant to Loyalists in Age of Heroes era
    * 9 player support in random map generator
@@ -25,7 +27,6 @@ CVS HEAD:
  * added attack_weight and defense_weight in [attack] tags so that
    units can choose a different weapon upon attack or defense
  * [have_unit] can now use a location filter
- * fixed AI attacking from silly places
  * fixed victory_when_enemies_defeated attribute wasn't serialized properly
  * fixed statistics showing incorrectly on all but scenario 1
  * fixed infliced damage labels being not always displayed
