@@ -19,51 +19,42 @@
 #include "../key.hpp"
 #include "../sdl_utils.hpp"
 
+#include "widget.hpp"
+
 #include "SDL.h"
 
 namespace gui {
 
-#define INPUT_CHAR_START (' ')
-#define INPUT_CHAR_END ('~' + 1)
-#define CHAR_LENGTH (INPUT_CHAR_END - INPUT_CHAR_START)
-
-class textbox : public events::handler
+class textbox : public widget
 {
+public:
+	textbox(display& disp, int width, const std::string& text="");
+
+	const std::string& text() const;
+	void set_text(std::string text);
+	void clear();
+
+	void set_position(int x, int y);
+	void set_width(int w);
+
+	void set_focus(bool new_focus);
+
+	using widget::location;
+
+private:
 	display& disp_;
 	std::string text_;
 	unsigned int firstOnScreen_, cursor_;
-	int height_, width_;
 
 	scoped_sdl_surface buffer_;
-	int x_, y_;
-
-	CKey key_;
-	bool previousKeyState_[CHAR_LENGTH];
 
 	bool focus_;
 
 	void handle_event(const SDL_Event& event);
 
-	void draw_cursor(int pos) const;
-
-public:
-	textbox(display& disp, int width, const std::string& text="");
-
-	int x() const;
-	int y() const;
-	int height() const;
-	int width() const;
-	const std::string& text() const;
-	void set_text(std::string text);
-	void clear();
-
 	void draw() const;
-	void process();
 
-	void set_location(int x, int y);
-	void set_width(int w);
-
-	void set_focus(bool new_focus);
+	void draw_cursor(int pos) const;
 };
 
 }

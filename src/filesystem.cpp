@@ -229,7 +229,10 @@ bool is_directory_internal(const std::string& fname)
 
 #else
 	struct stat dir_stat;
-	::stat(fname.c_str(), &dir_stat);
+	if(::stat(fname.c_str(), &dir_stat) == -1) {
+		return false;
+	}
+
 	return S_ISDIR(dir_stat.st_mode);
 #endif
 }
@@ -258,6 +261,8 @@ bool file_exists(const std::string& name)
 time_t file_create_time(const std::string& fname)
 {
 	struct stat buf;
-	::stat(fname.c_str(),&buf);
+	if(::stat(fname.c_str(),&buf) == -1)
+		return 0;
+
 	return buf.st_mtime;
 }

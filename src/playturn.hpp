@@ -71,6 +71,8 @@ public:
 
 private:
 
+	void write_game_snapshot(config& cfg) const;
+
 	void cycle_units();
 	void end_turn();
 	void goto_leader();

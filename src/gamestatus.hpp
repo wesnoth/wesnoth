@@ -25,6 +25,7 @@
 struct time_of_day
 {
 	explicit time_of_day(const config& cfg);
+	void write(config& cfg) const;
 
 	//the % bonus lawful units receive. chaotic units will
 	//receive -lawful_bonus.
@@ -46,6 +47,7 @@ class gamestatus
 {
 public:
 	gamestatus(config& time_cfg, int num_turns);
+	void write(config& cfg) const;
 
 	const time_of_day& get_time_of_day(bool illuminated=false) const;
 	size_t turn() const;
@@ -112,6 +114,9 @@ struct save_info {
 
 //function to get a list of available saves.
 std::vector<save_info> get_saves_list();
+
+game_state read_game(game_data& data, const config* cfg);
+void write_game(const game_state& game, config& cfg);
 
 // function returns true iff there is already savegame with that name
 bool save_game_exists(const std::string & name);

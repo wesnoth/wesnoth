@@ -82,7 +82,7 @@ namespace preferences {
 	std::string client_type();
 
 	void show_preferences_dialog(display& disp);
-	void show_video_mode_dialog(display& disp);
+	bool show_video_mode_dialog(display& disp);
 	void show_hotkeys_dialog (display & disp);
 }
 

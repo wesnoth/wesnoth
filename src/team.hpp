@@ -28,6 +28,7 @@ public:
 
 	struct target {
 		explicit target(const config& cfg);
+		void write(config& cfg) const;
 		config criteria;
 		double value;
 	};
@@ -35,6 +36,7 @@ public:
 	struct team_info
 	{
 		team_info(const config& cfg);
+		void write(config& cfg) const;
 		std::string name;
 		std::string gold;
 		std::string income;
@@ -58,6 +60,9 @@ public:
 	};
 
 	team(const config& cfg, int gold=100);
+
+	void write(config& cfg) const;
+
 	void get_tower(const gamemap::location&);
 	void lose_tower(const gamemap::location&);
 	const std::set<gamemap::location>& towers() const;

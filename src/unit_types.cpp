@@ -353,6 +353,15 @@ string_map unit_movement_type::damage_table() const
 	return res;
 }
 
+bool unit_movement_type::is_flying() const
+{
+	const std::string& flies = cfg_["flies"];
+	if(flies == "" && parent_ != NULL)
+		return parent_->is_flying();
+
+	return flies == "true";
+}
+
 void unit_movement_type::set_parent(const unit_movement_type* parent)
 {
 	parent_ = parent;
@@ -677,9 +686,8 @@ const std::vector<config*>& unit_type::possible_traits() const
 game_data::game_data(const config& cfg)
 {
 	static const std::vector<config*> dummy_traits;
-	const config::child_map::const_iterator traits = cfg.children.find("trait");
-	const std::vector<config*>& unit_traits = traits == cfg.children.end() ?
-	                                  dummy_traits : traits->second;
+	
+	const config::child_list& unit_traits = cfg.get_children("trait");
 
 	for(config::const_child_itors i = cfg.child_range("movetype");
 	    i.first != i.second; ++i.first) {

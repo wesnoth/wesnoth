@@ -110,6 +110,8 @@ public:
 
 	void set_parent(const unit_movement_type* parent);
 
+	bool is_flying() const;
+
 private:
 	const config& cfg_;
 

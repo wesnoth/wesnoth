@@ -13,6 +13,7 @@
 
 #include "events.hpp"
 #include "font.hpp"
+#include "game_config.hpp"
 #include "image.hpp"
 #include "key.hpp"
 #include "language.hpp"
@@ -38,7 +39,7 @@ void show_about(display& disp)
 	                                 0,0,0,1.0,disp.video().getSurface());
 	update_whole_screen();
 
-	const scoped_sdl_surface map_image(image::get_image("misc/map.png",image::UNSCALED));
+	const scoped_sdl_surface map_image(image::get_image(game_config::map_image,image::UNSCALED));
 	SDL_Rect map_rect;
 	map_rect.x = disp.x()/2 - map_image->w/2;
 	map_rect.y = disp.y()/2 - map_image->h/2;
@@ -97,7 +98,7 @@ void show_about(display& disp)
 	text.push_back("-web developer");
 	text.push_back("-artwork and graphics designer");
 	text.push_back("Joseph Toscano (zhaymusic.com)");
-	text.push_back("-music and sound designer");
+	text.push_back("-music");
 	text.push_back("Justin Zaun (jzaun)");
 	text.push_back("-developer");
 	text.push_back("-scenario designer");
@@ -109,7 +110,9 @@ void show_about(display& disp)
 	text.push_back("-internationalization manager");
 	text.push_back("-translator");
 	text.push_back("Pau Congost");
-	text.push_back("-music and sound designer");
+	text.push_back("-music");
+	text.push_back("Fredrik Lindroth");
+	text.push_back("-music");
 	text.push_back("Slainte");
 	text.push_back("-artwork and graphics designer");
 	text.push_back("Zas");
@@ -141,7 +144,7 @@ void show_about(display& disp)
 		int line = startline;
 		for(int cur_line=0;cur_line<12;cur_line++)
 		{
-			if(line>text.size()-1)
+			if(size_t(line) > text.size()-1)
 				line=0;
 			SDL_Rect tr = font::draw_text(&disp,disp.screen_area(),24,font::BLACK_COLOUR,
 					              text[line], -1,height);
@@ -154,7 +157,7 @@ void show_about(display& disp)
 			timer = 0;
 			startline++;
 		}
-		if(startline == text.size())
+		if(size_t(startline) == text.size())
 			startline = 0;
 
 		if(close.process(mousex,mousey,left_button)) {

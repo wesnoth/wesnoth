@@ -35,6 +35,9 @@ public:
 
 	bool is_alias() const;
 
+	int unit_height_adjust() const;
+	double unit_submerge() const;
+
 	//whether the terrain's overlay precedence is equal (rather than higher
 	//than) the preceeding terrain
 	bool equal_precedence() const;
@@ -50,6 +53,10 @@ private:
 	char type_, letter_;
 
 	pixel_data colour_;
+
+	int height_adjust_;
+
+	double submerge_;
 
 	bool equal_precedence_;
 };

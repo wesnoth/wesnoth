@@ -105,14 +105,16 @@ bool replay::skipping() const
 	return skip_ != 0;
 }
 
-void replay::save_game(game_data& data, const std::string& label)
+void replay::save_game(game_data& data, const std::string& label, const config& start_pos)
 {
+	saveInfo_.starting_pos = start_pos;
 	saveInfo_.replay_data = cfg_;
 	saveInfo_.label = label;
 
 	::save_game(saveInfo_);
 
 	saveInfo_.replay_data = config();
+	saveInfo_.starting_pos = config();
 }
 
 void replay::add_recruit(int value, const gamemap::location& loc)
@@ -216,6 +218,11 @@ void replay::end_turn()
 	cmd->add_child("end_turn");
 }
 
+void replay::speak(const config& cfg)
+{
+	add_command()->add_child("speak") = cfg;
+}
+
 config replay::get_data_range(int cmd_start, int cmd_end)
 {
 	log_scope("get_data_range\n");
@@ -240,7 +247,7 @@ void replay::undo()
 	}
 }
 
-const config::child_list& replay::commands()
+const config::child_list& replay::commands() const
 {
 	return cfg_.get_children("command");
 }
@@ -321,6 +328,17 @@ config* replay::get_next_action()
 	return current_;
 }
 
+bool replay::at_end() const
+{
+	return pos_ >= commands().size();
+}
+
+void replay::set_to_end()
+{
+	pos_ = commands().size();
+	current_ = NULL;
+}
+
 void replay::clear()
 {
 	cfg_ = config();
@@ -362,25 +380,22 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 	for(;;) {
 		config* const cfg = replayer.get_next_action();
 
-		std::map<std::string,std::vector<config*> >::iterator it;
+		config* child;
 
 		//if we are expecting promotions here
 		if(advancing_units.empty() == false) {
-			if(cfg == NULL ||
-			   (it = cfg->children.find("choose")) == cfg->children.end()) {
+			if(cfg == NULL || (child = cfg->child("choose")) == NULL) {
 				std::cerr << "promotion expected, but none found\n";
 				throw replay::error();
 			}
 
-			const std::map<gamemap::location,unit>::iterator u =
-			                            units.find(advancing_units.front());
+			const std::map<gamemap::location,unit>::iterator u = units.find(advancing_units.front());
 			assert(u != units.end());
 
-			const std::string& num = it->second.front()->values["value"];
+			const std::string& num = (*child)["value"];
 			const int val = atoi(num.c_str());
 
-			const std::vector<std::string>& options =
-			                       u->second.type().advances_to();
+			const std::vector<std::string>& options = u->second.type().advances_to();
 			if(size_t(val) >= options.size()) {
 				std::cerr << "illegal advancement type\n";
 				throw replay::error();
@@ -398,31 +413,28 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		}
 
 		//if there is an end turn directive
-		else if(cfg->children.find("end_turn") != cfg->children.end()) {
+		else if(cfg->child("end_turn") != NULL) {
 			replayer.next_skip();
 			return true;
 		}
 
-		else if((it = cfg->children.find("recruit")) != cfg->children.end()) {
-			assert(!it->second.empty());
-			const std::string& recruit_num=it->second.front()->values["value"];
+		else if((child = cfg->child("recruit")) != NULL) {
+			const std::string& recruit_num = (*child)["value"];
 			const int val = atoi(recruit_num.c_str());
 
-			const gamemap::location loc(*(it->second.front()));
+			const gamemap::location loc(*child);
 
 			const std::set<std::string>& recruits = current_team.recruits();
 			std::set<std::string>::const_iterator itor = recruits.begin();
 			std::advance(itor,val);
-			const std::map<std::string,unit_type>::const_iterator u_type =
-			                               gameinfo.unit_types.find(*itor);
+			const std::map<std::string,unit_type>::const_iterator u_type = gameinfo.unit_types.find(*itor);
 			if(u_type == gameinfo.unit_types.end()) {
 				std::cerr << "recruiting illegal unit\n";
 				throw replay::error();
 			}
 
 			unit new_unit(&(u_type->second),team_num,true);
-			const std::string& res =
-			              recruit_unit(map,team_num,units,new_unit,loc);
+			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc);
 			if(!res.empty()) {
 				std::cerr << "cannot recruit unit: " << res << "\n";
 				throw replay::error();
@@ -431,36 +443,35 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			current_team.spend_gold(u_type->second.cost());
 		}
 
-		else if((it = cfg->children.find("recall")) != cfg->children.end()) {
+		else if((child = cfg->child("recall")) != NULL) {
 			std::sort(state_of_game.available_units.begin(),
 			          state_of_game.available_units.end(),
 			          compare_unit_values());
 
-			assert(!it->second.empty());
-			const std::string recall_num = it->second.front()->values["value"];
+			const std::string recall_num = (*child)["value"];
 			const int val = atoi(recall_num.c_str());
 
-			const gamemap::location loc(*(it->second.front()));
+			const gamemap::location loc(*child);
 
-			recruit_unit(map,team_num,units,
-			             state_of_game.available_units[val],loc);
-			state_of_game.available_units.erase(
-			                   state_of_game.available_units.begin()+val);
+			recruit_unit(map,team_num,units,state_of_game.available_units[val],loc);
+			state_of_game.available_units.erase(state_of_game.available_units.begin()+val);
 			current_team.spend_gold(game_config::recall_cost);
 		}
 
-		else if((it = cfg->children.find("move")) != cfg->children.end()) {
-			assert(!it->second.empty());
+		else if((child = cfg->child("move")) != NULL) {
 
-			config* const move = it->second.front();
+			const config* const destination = child->child("destination");
+			const config* const source = child->child("source");
 
-			assert(move->child("destination") != NULL);
-			assert(move->child("source") != NULL);
+			if(destination == NULL || source == NULL) {
+				std::cerr << "no destination/source found in movement\n";
+				throw replay::error();
+			}
 
-			const gamemap::location src(*(move->child("source")));
-			const gamemap::location dst(*(move->child("destination")));
+			const gamemap::location src(*source);
+			const gamemap::location dst(*destination);
 
-			const std::map<gamemap::location,unit>::iterator u=units.find(src);
+			const std::map<gamemap::location,unit>::iterator u = units.find(src);
 			if(u == units.end()) {
 				std::cerr << "unfound location for source of movement: "
 				          << (src.x+1) << "," << (src.y+1) << "-"
@@ -526,21 +537,23 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			clear_shroud(disp,map,gameinfo,units,teams,team_num-1);
 		}
 
-		else if((it = cfg->children.find("attack")) != cfg->children.end()) {
-			assert(!it->second.empty());
+		else if((child = cfg->child("attack")) != NULL) {
 
-			config* const move = it->second.front();
+			const config* const destination = child->child("destination");
+			const config* const source = child->child("source");
 
-			assert(move->child("destination") != NULL);
-			assert(move->child("source") != NULL);
+			if(destination == NULL || source == NULL) {
+				std::cerr << "no destination/source found in attack\n";
+				throw replay::error();
+			}
 
-			const gamemap::location src(*(move->child("source")));
-			const gamemap::location dst(*(move->child("destination")));
+			const gamemap::location src(*source);
+			const gamemap::location dst(*destination);
 
-			const std::string& weapon = move->values["weapon"];
+			const std::string& weapon = (*child)["weapon"];
 			const int weapon_num = atoi(weapon.c_str());
 
-			std::map<gamemap::location,unit>::iterator u=units.find(src);
+			std::map<gamemap::location,unit>::iterator u = units.find(src);
 			if(u == units.end()) {
 				std::cerr << "unfound location for source of attack\n";
 				throw replay::error();
@@ -582,6 +595,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			   tgt->second.type().advances_to().empty() == false) {
 				advancing_units.push_back(tgt->first);
 			}
+		} else if((child = cfg->child("speak")) != NULL) {
+			dialogs::unit_speak(*child,disp,units);
 		} else {
 			std::cerr << "unrecognized action: '" << cfg->write() << "'\n";
 			throw replay::error();

@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <stack>
 #include <utility>
 #include <vector>
 
@@ -26,22 +27,50 @@ resize_lock::~resize_lock()
 	--disallow_resize;
 }
 
-std::vector<handler*> event_handlers;
+//this object stores all the event handlers. It is a stack of event 'contexts'.
+//a new event context is created when e.g. a modal dialog is opened, and then
+//closed when that dialog is closed. Each context contains a list of the handlers
+//in that context. The current context is the one on the top of the stack
+std::stack<std::vector<handler*> > event_contexts;
+
+event_context::event_context()
+{
+	event_contexts.push(std::vector<handler*>());
+}
+
+event_context::~event_context()
+{
+	assert(event_contexts.empty() == false);
+	assert(event_contexts.top().empty());
+
+	event_contexts.pop();
+}
 
 handler::handler() : unicode_(SDL_EnableUNICODE(1))
 {
 	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
-	event_handlers.push_back(this);
+	event_contexts.top().push_back(this);
 }
 
 handler::~handler()
 {
-	assert(!event_handlers.empty());
-	if(event_handlers.back() == this) {
-		event_handlers.pop_back();
+	assert(event_contexts.empty() == false);
+
+	std::vector<handler*>& handlers = event_contexts.top();
+
+	assert(handlers.empty() == false);
+
+	//the handler is most likely on the back of the events array,
+	//so look there first, otherwise do a complete search.
+	if(handlers.back() == this) {
+		handlers.pop_back();
 	} else {
-		event_handlers.erase(std::find(event_handlers.begin(),
-		                               event_handlers.end(),this));
+		const std::vector<handler*>::iterator i = std::find(handlers.begin(),handlers.end(),this);
+		if(i != handlers.end()) {
+			handlers.erase(i);
+		} else {
+			std::cerr << "CRITICAL ERROR: Could not find event handler in events array\n";
+		}
 	}
 
 	SDL_EnableUNICODE(unicode_);
@@ -59,16 +88,20 @@ void pump()
 
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
-		//events may cause more event handlers to be added and/or removed,
-		//so we must use indexes instead of iterators here.
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->handle_event(event);
+		if(event_contexts.empty() == false) {
+
+			const std::vector<handler*>& event_handlers = event_contexts.top();
+
+			//events may cause more event handlers to be added and/or removed,
+			//so we must use indexes instead of iterators here.
+			for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+				event_handlers[i1]->handle_event(event);
+			}
 		}
 
 		switch(event.type) {
 			case SDL_VIDEORESIZE: {
-				const SDL_ResizeEvent* const resize
-				              = reinterpret_cast<SDL_ResizeEvent*>(&event);
+				const SDL_ResizeEvent* const resize = reinterpret_cast<SDL_ResizeEvent*>(&event);
 
 				if(resize->w < 800 || resize->h < 600) {
 					resize_dimensions.first = 0;
@@ -124,6 +157,34 @@ void pump()
 		preferences::set_resolution(resize_dimensions);
 		resize_dimensions.first = 0;
 		resize_dimensions.second = 0;
+	}
+}
+
+void raise_process_event()
+{
+	if(event_contexts.empty() == false) {
+
+		const std::vector<handler*>& event_handlers = event_contexts.top();
+
+		//events may cause more event handlers to be added and/or removed,
+		//so we must use indexes instead of iterators here.
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->process();
+		}
+	}
+}
+
+void raise_draw_event()
+{
+	if(event_contexts.empty() == false) {
+
+		const std::vector<handler*>& event_handlers = event_contexts.top();
+
+		//events may cause more event handlers to be added and/or removed,
+		//so we must use indexes instead of iterators here.
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->draw();
+		}
 	}
 }
 

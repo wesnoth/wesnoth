@@ -264,14 +264,15 @@ battle_stats evaluate_battle_stats(
 			res.defend_special = defender_attacks[defend].special();
 		}
 
-		if(defender_attacks[defend].special() == drain_string) {
+		//if the defender drains, and the attacker is a living creature, then
+		//the defender will drain for half the damage it does
+		if(defender_attacks[defend].special() == drain_string && !a->second.type().not_living()) {
 			res.amount_defender_drains = res.damage_attacker_takes/2;
 		} else {
 			res.amount_defender_drains = 0;
 		}
 
-		res.defender_plague =
-		        (defender_attacks[defend].special() == plague_string);
+		res.defender_plague = (defender_attacks[defend].special() == plague_string);
 	}
 
 	if(attack.special() == magical_string)
@@ -291,7 +292,9 @@ battle_stats evaluate_battle_stats(
 	if(under_leadership(units,attacker))
 		res.damage_defender_takes += res.damage_defender_takes/8 + 1;
 
-	if(attack.special() == drain_string) {
+	//if the attacker drains, and the defender is a living creature, then
+	//the attacker will drain for half the damage it does
+	if(attack.special() == drain_string && !d->second.type().not_living()) {
 		res.amount_attacker_drains = res.damage_defender_takes/2;
 	} else {
 		res.amount_attacker_drains = 0;
@@ -1056,6 +1059,9 @@ void clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 	    i != p.routes.end(); ++i) {
 		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
 	}
+
+	//clear the location the unit is at
+	clear_shroud_loc(map,teams[team],loc,&cleared_locations);
 
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {

@@ -24,35 +24,14 @@ namespace gui {
 const int font_size = 16;
 
 textbox::textbox(display& disp, int width, const std::string& text)
-           : disp_(disp), text_(text), firstOnScreen_(0),
-             cursor_(text.size()), height_(-1), width_(width),
-             buffer_(NULL), x_(-1), y_(-1), focus_(true)
+           : widget(), disp_(disp), text_(text), firstOnScreen_(0),
+             cursor_(text.size()), buffer_(NULL), focus_(true)
 {
-	std::fill(previousKeyState_,
-	          previousKeyState_+CHAR_LENGTH,true);
 	static const SDL_Rect area = disp.screen_area();
-	height_ = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,
-	                          "ABCD",0,0).h;
-}
-
-int textbox::x() const
-{
-	return x_;
-}
-
-int textbox::y() const
-{
-	return y_;
-}
-
-int textbox::height() const
-{
-	return height_;
-}
-
-int textbox::width() const
-{
-	return width_;
+	const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
+	std::cerr << "initializing textbox with height " << height << "\n";
+	const SDL_Rect starting_rect = {0,0,width,height};
+	set_location(starting_rect);
 }
 
 const std::string& textbox::text() const
@@ -76,13 +55,13 @@ void textbox::clear()
 void textbox::draw_cursor(int pos) const
 {
 	const bool show_cursor = (SDL_GetTicks()%1000) > 500;
-	static const short cursor_colour = 0xFFFF;
+	static const short cursor_colour = short(0xFFFF);
 
 	if(show_cursor) {
 		surface_lock lock(disp_.video().getSurface());
-		short* dst = lock.pixels() + y_*disp_.x() + x_ + pos;
+		short* dst = lock.pixels() + location().y*disp_.x() + location().x + pos;
 
-		for(int i = 0; i != height(); ++i, dst += disp_.x()) {
+		for(int i = 0; i != location().h; ++i, dst += disp_.x()) {
 			*dst = cursor_colour;
 		}
 	}
@@ -90,15 +69,15 @@ void textbox::draw_cursor(int pos) const
 
 void textbox::draw() const
 {
-	if(x_ == -1)
+	if(location().h == 0)
 		return;
 
 	if(buffer_.get() != NULL) {
-		SDL_Rect rect = { x_, y_, width(), height() };
+		SDL_Rect rect = location();
 		SDL_BlitSurface(buffer_,NULL,disp_.video().getSurface(),&rect);
 	}
 
-	gui::draw_solid_tinted_rectangle(x_,y_,width(),height(),0,0,0,
+	gui::draw_solid_tinted_rectangle(location().x,location().y,location().w,location().h,0,0,0,
 	                          focus_ ? 0.2 : 0.4, disp_.video().getSurface());
 
 	if(cursor_ == 0)
@@ -106,7 +85,7 @@ void textbox::draw() const
 
 	int pos = 1;
 	std::string str(1,'x');
-	static const SDL_Rect clip = disp_.screen_area();
+	const SDL_Rect clip = disp_.screen_area();
 
 	//draw the text
 	for(size_t i = firstOnScreen_; i < text_.size(); ++i) {
@@ -116,12 +95,12 @@ void textbox::draw() const
 		                    NULL,false,font::NO_MARKUP);
 
 		//if we can't fit the next character on screen
-		if(pos + area.w > width()) {
+		if(pos + area.w > location().w) {
 			break;
 		}
 
 		font::draw_text(&disp_,clip,font_size,font::NORMAL_COLOUR,str,
-		                x_ + pos, y_, NULL, false, font::NO_MARKUP);
+		                location().x + pos, location().y, NULL, false, font::NO_MARKUP);
 
 		pos += area.w;
 
@@ -129,7 +108,7 @@ void textbox::draw() const
 			draw_cursor(pos-1);
 	}
 
-	update_rect(x_,y_,width(),height());
+	update_rect(location());
 }
 
 void textbox::handle_event(const SDL_Event& event)
@@ -140,8 +119,7 @@ void textbox::handle_event(const SDL_Event& event)
 	if(event.type != SDL_KEYDOWN || !focus_)
 		return;
 
-	const SDL_keysym& key
-	           = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
+	const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 	
 	const int c = key.sym;
 
@@ -173,34 +151,24 @@ void textbox::handle_event(const SDL_Event& event)
 
 	const char character = static_cast<char>(key.unicode);
 
-	if(character >= INPUT_CHAR_START && character < INPUT_CHAR_END) {
+	if(isgraph(character) || character == ' ') {
 		text_.insert(text_.begin()+cursor_,character);
 		++cursor_;
 	}
 }
 
-void textbox::process()
+void textbox::set_position(int x, int y)
 {
-	draw();
-}
-
-void textbox::set_location(int x, int y)
-{
-	x_ = x;
-	y_ = y;
-
-	SDL_Rect portion;
-	portion.x = x_;
-	portion.y = y_;
-	portion.w = width();
-	portion.h = height();
-	buffer_.assign(get_surface_portion(disp_.video().getSurface(),portion));
+	SDL_Rect rect = {x,y,location().w,location().h};
+	set_location(rect);
+	buffer_.assign(get_surface_portion(disp_.video().getSurface(),rect));
 }
 
 void textbox::set_width(int w)
 {
-	width_ = w;
-	set_location(x_, y_);
+	SDL_Rect rect = location();
+	rect.w = w;
+	set_location(rect);
 }
 
 void textbox::set_focus(bool new_focus)

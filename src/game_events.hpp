@@ -49,6 +49,8 @@ struct manager {
 	~manager();
 };
 
+void write_events(config& cfg);
+
 //function to fire an event. Events may have up to two arguments, both of
 //which must be locations.
 bool fire(const std::string& event,

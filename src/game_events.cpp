@@ -162,6 +162,13 @@ public:
 	                 cfg_(cfg)
 	{}
 
+	void write(config& cfg) const {
+		if(cfg_ == NULL || disabled_)
+			return;
+
+		cfg = *cfg_;
+	}
+
 	const std::string& name() const { return name_; }
 
 	bool first_time_only() const { return first_time_only_; }
@@ -914,6 +921,35 @@ manager::manager(config& cfg, display& gui_, gamemap& map_,
 	game_data_ptr = &game_data_;
 
 	used_items.clear();
+	const std::string& used = cfg["used_items"];
+	if(!used.empty()) {
+		const std::vector<std::string>& v = config::split(used);
+		for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
+			used_items.insert(*i);
+		}
+	}
+}
+
+void write_events(config& cfg)
+{
+	for(std::multimap<std::string,event_handler>::const_iterator i = events_map.begin(); i != events_map.end(); ++i) {
+		if(!i->second.disabled()) {
+			i->second.write(cfg.add_child("event"));
+		}
+	}
+
+	std::stringstream used;
+	for(std::set<std::string>::const_iterator u = used_items.begin(); u != used_items.end(); ++u) {
+		if(u != used_items.begin())
+			used << ",";
+
+		used << *u;
+	}
+
+	cfg["used_items"] = used.str();
+
+	if(screen != NULL)
+		screen->write_overlays(cfg);
 }
 
 manager::~manager() {

@@ -19,6 +19,7 @@
 #include "config.hpp"
 #include "dialogs.hpp"
 #include "display.hpp"
+#include "events.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
@@ -26,6 +27,7 @@
 #include "gamestatus.hpp"
 #include "key.hpp"
 #include "language.hpp"
+#include "mapgen.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_client.hpp"
 #include "network.hpp"
@@ -55,7 +57,22 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 	if(type.empty())
 		type = "scenario";
 
-	config* scenario = game_config.find_child(type,"id",state.scenario);
+	config* scenario = NULL;
+
+	config starting_pos;
+
+	//see if we load the scenario from the scenario data -- if there is
+	//no snapshot data available from a save, or if the user has selected
+	//to view the replay from scratch
+	if(state.starting_pos.child("side") == NULL || !recorder.at_end()) {
+		scenario = game_config.find_child(type,"id",state.scenario);
+	} else {
+		//load from a save-snapshot.
+		starting_pos = state.starting_pos;
+		scenario = &starting_pos;
+		state = read_game(units_data,&state.starting_pos);
+	}
+
 	while(scenario != NULL) {
 
 		const config::child_list& story = scenario->get_children("story");
@@ -78,6 +95,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				                 video,state,story);
 			}
 
+			state.starting_pos = config();
+
 			//ask to save a replay of the game
 			if(res == VICTORY || res == DEFEAT) {
 				const std::string orig_scenario = state.scenario;
@@ -90,7 +109,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 											string_table["save_game_label"],
 											&label);	
 				if(should_save == 0) {
-					recorder.save_game(units_data,label);
+					config starting_pos;
+					recorder.save_game(units_data,label,starting_pos);
 				}
 
 				state.scenario = orig_scenario;
@@ -103,13 +123,16 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				return res;
 			}
 		} catch(gamestatus::load_game_failed& e) {
+			gui::show_dialog(disp,NULL,"","The game could not be loaded: " + e.message,gui::OK_ONLY);
 			std::cerr << "The game could not be loaded: " << e.message << "\n";
 			return QUIT;
 		} catch(gamestatus::game_error& e) {
+			gui::show_dialog(disp,NULL,"","An error occurred while playing the game: " + e.message,gui::OK_ONLY);
 			std::cerr << "An error occurred while playing the game: "
 			          << e.message << "\n";
 			return QUIT;
 		} catch(gamemap::incorrect_format_exception& e) {
+			gui::show_dialog(disp,NULL,"",e.msg_,gui::OK_ONLY);
 			std::cerr << "The game map could not be loaded: " << e.msg_ << "\n";
 			return QUIT;
 		}
@@ -145,11 +168,14 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 int play_game(int argc, char** argv)
 {
+	srand(time(NULL));
+
 	CVideo video;
 	const font::manager font_manager;
 	const sound::manager sound_manager;
 	const preferences::manager prefs_manager;
 	const image::manager image_manager;
+	const events::event_context main_event_context;
 
 	bool test_mode = false;
 
@@ -197,13 +223,16 @@ int play_game(int argc, char** argv)
 	defines_map["NORMAL"] = preproc_define();
 	std::vector<line_source> line_src;
 
-	std::string game_cfg = preprocess_file("data/game.cfg",&defines_map,
-	                                              &line_src);
+	std::string game_cfg = preprocess_file("data/game.cfg",&defines_map,&line_src);
 
 	config game_config(game_cfg,&line_src);
 
 	//clear game_cfg so it doesn't take up memory
 	std::string().swap(game_cfg);
+
+	game_config::load_config(game_config.child("game_config"));
+
+	const map_generator::manager map_generation_manager(game_config);
 
 	const config::child_list& units = game_config.get_children("units");
 	if(units.empty()) {
@@ -296,7 +325,7 @@ int play_game(int argc, char** argv)
 	SDL_WM_SetCaption(string_table["game_title"].c_str(), NULL);
 
 	for(;;) {
-		sound::play_music("wesnoth-1.ogg");
+		sound::play_music(game_config::title_music);
 
 		game_state state;
 
@@ -313,11 +342,12 @@ int play_game(int argc, char** argv)
 			return 0;
 		}
 
+		recorder.clear();
+
 		gui::TITLE_RESULT res = gui::show_title(disp);
 		if(res == gui::QUIT_GAME) {
 			return 0;
 		} else if(res == gui::LOAD_GAME) {
-			srand(SDL_GetTicks());
 
 			bool show_replay;
 
@@ -352,7 +382,14 @@ int play_game(int argc, char** argv)
 			}
 
 			recorder = replay(state.replay_data);
-			if(!recorder.empty()) {
+
+			//only play replay data if the user has selected to view the replay,
+			//or if there is no starting position data to use.
+			if(!show_replay && state.starting_pos.child("side") == NULL) {
+				recorder.set_to_end();
+			}
+
+			if(!recorder.at_end()) {
 				//set whether the replay is to be skipped or not
 				if(show_replay) {
 					recorder.set_skip(0);
@@ -450,15 +487,20 @@ int play_game(int argc, char** argv)
 					play_multiplayer_client(disp,units_data,game_config,state);
 				}
 			} catch(gamestatus::load_game_failed& e) {
-				std::cerr << "error loading the game: " << e.message
-				          << "\n";
+				gui::show_dialog(disp,NULL,"","error loading the game: " + e.message,gui::OK_ONLY);
+				std::cerr << "error loading the game: " << e.message << "\n";
 				return 0;
 			} catch(gamestatus::game_error& e) {
+				gui::show_dialog(disp,NULL,"","error while playing the game: " + e.message,gui::OK_ONLY);
 				std::cerr << "error while playing the game: "
 				          << e.message << "\n";
 				return 0;
 			} catch(network::error& e) {
 				gui::show_dialog(disp,NULL,"",e.message,gui::OK_ONLY);
+			} catch(gamemap::incorrect_format_exception& e) {
+				gui::show_dialog(disp,NULL,"",std::string("The game map could not be loaded: ") + e.msg_,gui::OK_ONLY);
+				std::cerr << "The game map could not be loaded: " << e.msg_ << "\n";
+				continue;
 			}
 
 			continue;
@@ -476,6 +518,7 @@ int play_game(int argc, char** argv)
 		} else if(res == gui::EDIT_PREFERENCES) {
 			const preferences::display_manager disp_manager(&disp);
 			preferences::show_preferences_dialog(disp);
+
 			disp.redraw_everything();
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {

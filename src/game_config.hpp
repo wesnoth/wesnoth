@@ -13,25 +13,35 @@
 #ifndef GAME_CONFIG_H_INCLUDED
 #define GAME_CONFIG_H_INCLUDED
 
+#include "config.hpp"
+
 #include <string>
 
 //basic game configuration information is here.
 namespace game_config
 {
-	extern const int unit_cost;
-	extern const int base_income;
-	extern const int tower_income;
-	extern const int heal_amount;
-	extern const int healer_heals_per_turn;
-	extern const int cure_amount;
-	extern const int curer_heals_per_turn;
-	extern const int recall_cost;
-	extern const int kill_experience;
+	extern int base_income;
+	extern int tower_income;
+	extern int heal_amount;
+	extern int healer_heals_per_turn;
+	extern int cure_amount;
+	extern int curer_heals_per_turn;
+	extern int recall_cost;
+	extern int kill_experience;
 	extern const std::string version;
 
 	extern bool debug;
 
 	extern std::string path;
+
+	extern std::string game_icon, game_title, title_music, map_image, rightside_image, rightside_image_bot,
+		               moved_energy_image, unmoved_energy_image, partmoved_energy_image,
+					   enemy_energy_image,ally_energy_image,
+					   dot_image,cross_image,
+					   foot_left_nw,foot_left_n,foot_right_nw,foot_right_n,
+					   missile_n_image,missile_ne_image;
+
+	void load_config(const config* cfg);
 }
 
 #endif

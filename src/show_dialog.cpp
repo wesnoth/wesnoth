@@ -192,6 +192,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(disp.update_locked())
 		return -1;
 
+	const events::event_context dialog_events_context;
 	const dialog_manager manager;
 
 	const events::resize_lock prevent_resizing;
@@ -221,8 +222,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 		text_widget_width =
 		 font::draw_text(NULL, clipRect, message_font_size,
 		                 font::NORMAL_COLOUR, text_widget_label, 0, 0, NULL).w +
-		                            text_widget.width();
-		text_widget_height = text_widget.height() + 6;
+		                            text_widget.location().w;
+		text_widget_height = text_widget.location().h + 6;
 	}
 
 	menu menu_(disp,menu_items,type == MESSAGE);
@@ -436,10 +437,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 	const int text_widget_y = yloc+top_padding+image_h-6+text_size.h+menu_hpadding;
 
 	if(use_textbox) {
-		text_widget.set_location(xloc + left_padding +
-		                         text_widget_width - text_widget.width(),
+		text_widget.set_position(xloc + left_padding +
+		                         text_widget_width - text_widget.location().w,
 		                         text_widget_y);
-		text_widget.draw();
+		events::raise_draw_event();
 		font::draw_text(&disp, clipRect, message_font_size,
 		                font::NORMAL_COLOUR, text_widget_label,
 						xloc + left_padding,text_widget_y);
@@ -448,7 +449,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	//set the position of any tick boxes. they go right below the menu, slammed against
 	//the right side of the dialog
 	if(options != NULL) {
-		int options_y = text_widget_y + (use_textbox ? text_widget.height() : 0) + menu_.height() + button_height_padding + menu_hpadding;
+		int options_y = text_widget_y + (use_textbox ? text_widget.location().h : 0) + menu_.height() + button_height_padding + menu_hpadding;
 		for(size_t i = 0; i != check_buttons.size(); ++i) {
 			check_buttons[i].set_x(xloc + total_width - padding_width - check_buttons[i].width());
 			check_buttons[i].set_y(options_y);
@@ -565,10 +566,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 		page_up = new_page_up;
 		page_down = new_page_down;
 
-		if(use_textbox) {
-			text_widget.process();
-		}
-
+		events::raise_process_event();
+		events::raise_draw_event();
 
 		if(buttons.empty() && (new_left_button && !left_button ||
 		                       new_right_button && !right_button) ||
@@ -578,7 +577,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 		left_button = new_left_button;
 		right_button = new_right_button;
-		key_down = new_key_down;
+		key_down = new_key_down;	
 
 		for(std::vector<button>::iterator button_it = buttons.begin();
 		    button_it != buttons.end(); ++button_it) {
@@ -625,7 +624,7 @@ TITLE_RESULT show_title(display& screen)
 {
 	const events::resize_lock prevent_resizing;
 
-	const scoped_sdl_surface title_surface(image::get_image("title.png",image::UNSCALED));
+	const scoped_sdl_surface title_surface(image::get_image(game_config::game_title,image::UNSCALED));
 
 	if(title_surface == NULL) {
 		std::cerr << "Could not find title image 'title.png'\n";

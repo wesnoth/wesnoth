@@ -97,7 +97,7 @@ RESULT enter(display& disp, config& game_data)
 		join_game.set_xy(19,545);
 		new_game.set_xy(19+join_game.width()+5,545);
 		quit_game.set_xy(19+join_game.width()+5+new_game.width()+5,545);
-		message_entry.set_location(19,725);
+		message_entry.set_position(19,725);
 		message_entry.set_width(832);
 
 		update_whole_screen();
@@ -153,7 +153,8 @@ RESULT enter(display& disp, config& game_data)
 				return QUIT;
 			}
 
-			message_entry.process();
+			events::raise_process_event();
+			events::raise_draw_event();
 
 			config data;
 

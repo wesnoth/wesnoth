@@ -106,6 +106,8 @@ public:
 
 	int upkeep() const;
 
+	bool is_flying() const;
+
 	void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
 

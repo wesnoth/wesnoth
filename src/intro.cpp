@@ -13,11 +13,13 @@
 
 #include "events.hpp"
 #include "font.hpp"
+#include "game_config.hpp"
 #include "image.hpp"
 #include "intro.hpp"
 #include "key.hpp"
 #include "language.hpp"
 #include "show_dialog.hpp"
+#include "sound.hpp"
 #include "util.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
@@ -44,6 +46,11 @@ void show_intro(display& screen, const config& data)
 	next_button.set_y(screen.y()-150);
 	skip_button.set_x(screen.x()-200);
 	skip_button.set_y(screen.y()-100);
+
+	const std::string& music = data["music"];
+	if(music != "") {
+		sound::play_music(music);
+	}
 
 	const config::child_list& parts = data.get_children("part");
 
@@ -192,9 +199,12 @@ void show_map_scene(display& screen, config& data)
 	const std::string& image_file = cfg["image"];
 
 	const scoped_sdl_surface image(image::get_image(image_file,image::UNSCALED));
-	const scoped_sdl_surface dot_image(image::get_image("misc/dot.png",image::UNSCALED));
-	const scoped_sdl_surface cross_image(image::get_image("misc/cross.png",image::UNSCALED));
+	const scoped_sdl_surface dot_image(image::get_image(game_config::dot_image,image::UNSCALED));
+	const scoped_sdl_surface cross_image(image::get_image(game_config::cross_image,image::UNSCALED));
 	if(image == NULL || dot_image == NULL || cross_image == NULL) {
+		std::cerr << "could not find map image: '" << image_file << "': " << (image == NULL ? "failed" : "ok") << "\n"
+			<< "'" << game_config::dot_image << "': " << (dot_image == NULL ? "failed" : "ok") << "\n"
+			<< "'" << game_config::cross_image << "': " << (cross_image == NULL ? "failed" : "ok") << "\n";
 		return;
 	}
 

@@ -154,8 +154,10 @@ paths::route a_star_search(const gamemap::location& src,
 	using namespace detail;
 	typedef gamemap::location location;
 	std::list<node> open_list, closed_list;
+	std::map<location,double> lowest_f;
 
 	open_list.push_back(node(src,dst,0.0,NULL,teleports));
+	lowest_f.insert(std::pair<location,double>(src,0.0));
 
 	while(!open_list.empty()) {
 
@@ -206,24 +208,15 @@ paths::route a_star_search(const gamemap::location& src,
 			const node nd(locs[j],dst,lowest->g+obj.cost(locs[j],lowest->g),
 			              &*lowest,teleports);
 
-			for(i = open_list.begin(); i != open_list.end(); ++i) {
-				if(i->loc == nd.loc && i->f <= nd.f) {
-					break;
+			const std::map<location,double>::iterator current = lowest_f.find(nd.loc);
+			if(current != lowest_f.end()) {
+				if(current->second <= nd.f) {
+					continue;
+				} else {
+					current->second = nd.f;
 				}
-			}
-
-			if(i != open_list.end()) {
-				continue;
-			}
-
-			for(i = closed_list.begin(); i != closed_list.end(); ++i) {
-				if(i != lowest && i->loc == nd.loc && i->f <= nd.f) {
-					break;
-				}
-			}
-
-			if(i != closed_list.end()) {
-				continue;
+			} else {
+				lowest_f.insert(std::pair<location,double>(nd.loc,nd.f));
 			}
 
 			open_list.push_back(nd);

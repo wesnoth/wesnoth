@@ -174,19 +174,20 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 	const int starting_ticks = SDL_GetTicks();
 
+	std::cerr << "checking sockets...\n";
 	const int res = SDLNet_CheckSockets(socket_set,timeout);
 	if(res <= 0) {
 		return 0;
 	}
 
-	for(sockets_list::const_iterator i = sockets.begin();
-	    i != sockets.end(); ++i) {
+	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
 		if(SDLNet_SocketReady(*i)) {
 			std::string buffer;
 
 			for(;;) {
 				char c;
 				const int len = SDLNet_TCP_Recv(*i,&c,1);
+
 				if(len == 0) {
 					break;
 				} else if(len < 0) {
@@ -248,8 +249,6 @@ void send_data(const config& cfg, connection connection_num)
 		return;
 	}
 
-	std::cerr << "a\n";
-
 	assert(connection_num != server_socket);
 
 	std::string value = cfg.write();
@@ -264,4 +263,15 @@ void send_data(const config& cfg, connection connection_num)
 	}
 }
 
+void send_data_all_except(const config& cfg, connection connection_num)
+{
+	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
+		if(*i == connection_num)
+			continue;
+
+		assert(*i && *i != server_socket);
+		send_data(cfg,*i);
+	}
 }
+
+} //end namespace network

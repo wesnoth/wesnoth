@@ -78,19 +78,19 @@ void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res)
 	res->y = a.y-1;
 	++res;
 	res->x = a.x+1;
-	res->y = a.y - is_even(a.x);
+	res->y = a.y - (is_even(a.x) ? 1:0);
 	++res;
 	res->x = a.x+1;
-	res->y = a.y + is_odd(a.x);
+	res->y = a.y + (is_odd(a.x) ? 1:0);
 	++res;
 	res->x = a.x;
 	res->y = a.y+1;
 	++res;
 	res->x = a.x-1;
-	res->y = a.y + is_odd(a.x);
+	res->y = a.y + (is_odd(a.x) ? 1:0);
 	++res;
 	res->x = a.x-1;
-	res->y = a.y - is_even(a.x);
+	res->y = a.y - (is_even(a.x) ? 1:0);
 }
 
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
@@ -102,7 +102,7 @@ bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
 	const int xdiff = abs(a.x - b.x);
 	const int ydiff = abs(a.y - b.y);
 	return ydiff == 1 && a.x == b.x || xdiff == 1 && a.y == b.y ||
-	   xdiff == 1 && ydiff == 1 && (a.y > b.y ? (a.x%2) == 1 : (b.x%2) == 1);
+	       xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_odd(a.x) : is_odd(b.x));
 }
 
 size_t distance_between(const gamemap::location& a, const gamemap::location& b)

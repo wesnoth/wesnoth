@@ -16,6 +16,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "image.hpp"
+#include "mapgen.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_client.hpp"
 #include "network.hpp"
@@ -286,7 +287,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
 	                string_table["name_of_game"] + ":",(disp.x()-width)/2+10,(disp.y()-height)/2+38);
 	gui::textbox name_entry(disp,width-20,string_table["game_prefix"] + preferences::login() + string_table["game_postfix"]);
-	name_entry.set_location((disp.x()-width)/2+10,(disp.y()-height)/2+55);
+	name_entry.set_position((disp.x()-width)/2+10,(disp.y()-height)/2+55);
 
 	//Maps
 	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
@@ -317,9 +318,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	rect.h = 12;
 	SDL_Surface* village_bg=get_surface_portion(disp.video().getSurface(), rect);
 	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-	                "Turns: 50",rect.x,rect.y);
+	                string_table["turns"] + ": 50",rect.x,rect.y);
 	rect.y = (disp.y()-height)/2+100;
-	rect.h = name_entry.width();
+	rect.h = name_entry.location().w;
 
 	gui::slider turns_slider(disp,rect,0.38);
 
@@ -329,9 +330,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
 	rect.h = 12;
 	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-	                "Village Gold: 1",rect.x,rect.y);
+	                string_table["village_gold"] + ": 1",rect.x,rect.y);
 	rect.y = (disp.y()-height)/2+147;
-	rect.h = name_entry.width();
+	rect.h = name_entry.location().w;
 	gui::slider villagegold_slider(disp,rect,0.0);
 
 	//FOG of war
@@ -403,15 +404,12 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					load_game(units_data,game,state);
 
 					if(state.campaign_type != "multiplayer") {
-						gui::show_dialog(disp,NULL,"",
-				                 "This is not a multiplayer save",gui::OK_ONLY);
+						gui::show_dialog(disp,NULL,"",string_table["not_multiplayer_save_message"],gui::OK_ONLY);
 						break;
 					}
 
 					if(state.version != game_config::version) {
-						const int res = gui::show_dialog(disp,NULL,"",
-					                        string_table["version_save_message"],
-					                        gui::YES_NO);
+						const int res = gui::show_dialog(disp,NULL,"",string_table["version_save_message"],gui::YES_NO);
 						if(res == 1)
 							break;
 					}
@@ -429,6 +427,10 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					}
 
 					recorder = replay(state.replay_data);
+
+					//if this is a snapshot save, we don't want to use the replay data
+					if(loaded_level["snapshot"] == "yes")
+						recorder.set_to_end();
 
 					//add the replay data under the level data so clients can
 					//receive it
@@ -791,7 +793,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 		fog_game.process(mousex,mousey,left_button);
 		shroud_game.process(mousex,mousey,left_button);
 		observers_game.process(mousex,mousey,left_button);
-		name_entry.process();
+
+		events::raise_process_event();
+		events::raise_draw_event();
 
 		//Game turns are 20 to 99
 		//FIXME: Should never be a - number, but it is sometimes
@@ -837,6 +841,16 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				std::string map_data = (*level_ptr)["map_data"];
 				if(map_data == "" && (*level_ptr)["map"] != "") {
 					map_data = read_file("data/maps/" + (*level_ptr)["map"]);
+				}
+
+				//if the map should be randomly generated
+				if(map_data == "" && (*level_ptr)["map_generation"] != "") {
+					map_data = random_generate_map((*level_ptr)["map_generation"]);
+
+					//record the map data of the map, so that when we send to
+					//remote clients, they will use the given map, and won't try
+					//to generate their own.
+					(*level_ptr)["map_data"] = map_data;
 				}
 
 				gamemap map(cfg,map_data);

@@ -120,7 +120,7 @@ SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 /* Rotates 8-, 16-, and 32-bit sprites.  24-bit sprites aren't handled; you
  * must convert to one of these color depths before calling this function.
  * */
-#ifdef WIN32
+#if (defined(_WIN32) || defined(__APPLE__)) 
 #define tanf(value) (float)tan(value)
 #define sinf(value) (float)sin(value)
 #define cosf(value) (float)cos(value)
@@ -461,11 +461,18 @@ surface_restorer::~surface_restorer()
 
 void surface_restorer::restore()
 {
-	::SDL_BlitSurface(surface_,NULL,target_,&rect_);
-	update_rect(rect_);
+	if(surface_ != NULL) {
+		::SDL_BlitSurface(surface_,NULL,target_,&rect_);
+		update_rect(rect_);
+	}
 }
 
 void surface_restorer::update()
 {
 	surface_.assign(::get_surface_portion(target_,rect_));
+}
+
+void surface_restorer::cancel()
+{
+	surface_.assign(NULL);
 }

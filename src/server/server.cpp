@@ -328,7 +328,7 @@ void run_server()
 	}
 }
 
-int main()
+int main(int argc, char** argv)
 {
 	try {
 		run_server();
@@ -336,4 +336,6 @@ int main()
 		std::cerr << "error starting server: " << e.message << "\n";
 		return -1;
 	}
+
+	return 0;
 }

@@ -74,6 +74,9 @@ connection receive_data(config& cfg, connection connection_num=0,
 //to all peers if connection_num is 0. throws error.
 void send_data(const config& cfg, connection connection_num=0);
 
+//function to send data to all peers except 'connection_num'
+void send_data_all_except(const config& cfg, connection connection_num);
+
 struct error
 {
 	error(const std::string& msg, connection sock=0)

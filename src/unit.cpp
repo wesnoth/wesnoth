@@ -413,18 +413,6 @@ void unit::read(game_data& data, const config& cfg)
 	maxExperience_ = type_->experience_needed();
 	backupMaxExperience_ = type_->experience_needed();
 
-	const std::string& hitpoints = cfg["hitpoints"];
-	if(hitpoints.size() == 0)
-		hitpoints_ = type().hitpoints();
-	else
-		hitpoints_ = atoi(hitpoints.c_str());
-
-	const std::string& experience = cfg["experience"];
-	if(experience.size() == 0)
-		experience_ = 0;
-	else
-		experience_ = atoi(experience.c_str());
-
 	side_ = atoi(cfg["side"].c_str());
 	description_ = cfg["user_description"];
 	underlying_description_ = cfg["description"];
@@ -477,6 +465,24 @@ void unit::read(game_data& data, const config& cfg)
 
 	goto_.x = atoi(cfg["goto_x"].c_str()) - 1;
 	goto_.y = atoi(cfg["goto_y"].c_str()) - 1;
+
+	const std::string& moves = cfg["moves"];
+	if(moves.empty())
+		moves_ = total_movement();
+	else
+		moves_ = atoi(moves.c_str());
+
+	const std::string& hitpoints = cfg["hitpoints"];
+	if(hitpoints.size() == 0)
+		hitpoints_ = type().hitpoints();
+	else
+		hitpoints_ = atoi(hitpoints.c_str());
+
+	const std::string& experience = cfg["experience"];
+	if(experience.size() == 0)
+		experience_ = 0;
+	else
+		experience_ = atoi(experience.c_str());
 }
 
 void unit::write(config& cfg) const
@@ -531,6 +537,9 @@ void unit::write(config& cfg) const
 	cfg["goto_x"] = buf;
 	sprintf(buf,"%d",goto_.y+1);
 	cfg["goto_y"] = buf;
+
+	sprintf(buf,"%d",moves_);
+	cfg["moves"] = buf;
 }
 
 void unit::assign_role(const std::string& role)
@@ -785,6 +794,11 @@ int unit::upkeep() const
 	case UPKEEP_FULL_PRICE: return type().level();
 	default: assert(false); return 0;
 	}
+}
+
+bool unit::is_flying() const
+{
+	return type().movement_type().is_flying();
 }
 
 int team_units(const unit_map& units, int side)

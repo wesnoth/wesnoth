@@ -16,6 +16,7 @@
 #include "hotkeys.hpp"
 #include "intro.hpp"
 #include "language.hpp"
+#include "mapgen.hpp"
 #include "network.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
@@ -40,6 +41,11 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		map_data = read_file("data/maps/" + (*level)["map"]);
 	}
 
+	//if the map should be randomly generated
+	if(map_data == "" && (*level)["map_generation"] != "") {
+		map_data = random_generate_map((*level)["map_generation"]);
+	}
+
 	gamemap map(terrain_config,map_data);
 
 	CKey key;
@@ -51,17 +57,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 	const config::child_list& unit_cfg = level->get_children("side");
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
-		unit new_unit(gameinfo, **ui);
-		if(ui == unit_cfg.begin()) {
-			for(std::vector<unit>::iterator it = state_of_game.available_units.begin();
-			    it != state_of_game.available_units.end(); ++it) {
-				if(it->can_recruit()) {
-					new_unit = *it;
-					state_of_game.available_units.erase(it);
-					break;
-				}
-			}
-		}
 
 		std::string gold = (**ui)["gold"];
 		if(gold.empty())
@@ -73,15 +68,33 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			ngold = state_of_game.gold;
 		}
 
-		const gamemap::location& start_pos = map.starting_position(new_unit.side());
+		//if this side tag describes the leader of the side
+		if((**ui)["no_leader"] != "yes") {
+			unit new_unit(gameinfo, **ui);
 
-		if(!start_pos.valid() && new_unit.side() == 1) {
-			throw gamestatus::load_game_failed("No starting position for side 1");
-		}
+			//search the recall list for leader units, and if there is
+			//one, use it in place of the config-described unit
+			if(ui == unit_cfg.begin()) {
+				for(std::vector<unit>::iterator it = state_of_game.available_units.begin();
+					it != state_of_game.available_units.end(); ++it) {
+					if(it->can_recruit()) {
+						new_unit = *it;
+						state_of_game.available_units.erase(it);
+						break;
+					}
+				}
+			}
 
-		if(start_pos.valid()) {
-			units.insert(std::pair<gamemap::location,unit>(
-							map.starting_position(new_unit.side()), new_unit));
+			const gamemap::location& start_pos = map.starting_position(new_unit.side());
+
+			if(!start_pos.valid() && new_unit.side() == 1) {
+				throw gamestatus::load_game_failed("No starting position for side 1");
+			}
+
+			if(start_pos.valid()) {
+				units.insert(std::pair<gamemap::location,unit>(
+								map.starting_position(new_unit.side()), new_unit));
+			}
 		}
 
 		teams.push_back(team(**ui,ngold));
@@ -110,10 +123,11 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			const std::string& y = (**su)["y"];
 
 			const gamemap::location loc(**su);
-			if(x.size() == 0 || y.size() == 0 || !map.on_board(loc)) {
+			if(x.empty() || y.empty() || !map.on_board(loc)) {
 				state_of_game.available_units.push_back(new_unit);
 			} else {
 				units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
+				std::cerr << "inserting unit for side " << new_unit.side() << "\n";
 			}
 		}
 	}
@@ -150,18 +164,22 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		gui.add_overlay(gamemap::location(**overlay),(**overlay)["image"]);
 	}
 
-	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-		i->second.new_turn();
-	}
-
 	gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,
 	                   display::WARP);
 
 	bool replaying = (recorder.empty() == false);
 
+	//if a team is specified whose turn it is, it means we're loading a game
+	//instead of starting a fresh one
+	const bool loading_game = (*level)["playing_team"].empty() == false;
+	int first_player = atoi((*level)["playing_team"].c_str());
+	if(first_player < 0 || first_player >= int(teams.size())) {
+		first_player = 0;
+	}
+
 	int turn = 1;
 	std::cout << "starting main loop\n";
-	for(bool first_time = true; true; first_time = false) {
+	for(bool first_time = true; true; first_time = false, first_player = 0) {
 		try {
 
 			if(first_time) {
@@ -178,7 +196,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 			std::cerr << "turn: " << turn++ << "\n";
 
-			for(std::vector<team>::iterator team_it = teams.begin();
+			for(std::vector<team>::iterator team_it = teams.begin()+first_player;
 			    team_it != teams.end(); ++team_it) {
 				const int player_number = (team_it - teams.begin()) + 1;
 
@@ -186,13 +204,19 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				if(team_units(units,player_number) == 0)
 					continue;
 
-				for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-					if(i->second.side() == player_number) {
-						i->second.new_turn();
-					}
-				}
+				//we want to work out if units for this player should get healed, and the
+				//player should get income now. healing/income happen if it's not the first
+				//turn of processing, or if we are loading a game, and this is not the
+				//player it started with.
+				const bool turn_refresh = !first_time || loading_game && team_it != teams.begin()+first_player;
 
-				if(!first_time) {
+				if(turn_refresh) {
+					for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+						if(i->second.side() == player_number) {
+							i->second.new_turn();
+						}
+					}
+
 					team_it->new_turn();
 
 					//if the expense is less than the number of villages owned,
@@ -202,17 +226,16 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					if(expense > 0) {
 						team_it->spend_gold(expense);
 					}
+
+					calculate_healing(gui,map,units,player_number);
 				}
 
 				gui.set_playing_team(size_t(player_number-1));
 
 				clear_shroud(gui,map,gameinfo,units,teams,player_number-1);
 
-				calculate_healing(gui,map,units,player_number);
-
 				//scroll the map to the leader
-				const unit_map::iterator leader =
-				                   find_leader(units,player_number);
+				const unit_map::iterator leader = find_leader(units,player_number);
 
 				if(leader != units.end() && !recorder.skipping()) {
 					const hotkey::basic_handler key_events_handler(gui);
@@ -295,10 +318,14 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 							}
 
 							if(res && cfg.child("turn") != NULL) {
+								//forward the data to other peers
+								network::send_data_all_except(cfg,res);
 								break;
 							}
 
+							const int ncommand = recorder.ncommands();
 							turn_data.turn_slice();
+							turn_data.send_data(ncommand);
 							gui.draw();
 						}
 
@@ -315,7 +342,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 							               gui::YES_NO,NULL,NULL,"",&output);
 							if(res == 0 && output.empty() == false) {
 								recorder.mark_current();
-								recorder.save_game(gameinfo,output);
+								config starting_pos;
+								recorder.save_game(gameinfo,output,starting_pos);
 							}
 
 							return QUIT;
@@ -437,7 +465,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			                 gui::OK_CANCEL,NULL,NULL,
 			                 string_table["save_game_label"],&label);
 			if(res == 0) {
-				recorder.save_game(gameinfo,label);
+				config starting_pos;
+				recorder.save_game(gameinfo,label,starting_pos);
 			}
 
 			return QUIT;

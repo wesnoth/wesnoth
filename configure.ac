@@ -1,13 +1,17 @@
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.57)
-AC_INIT(wesnoth, 0.8, davidnwhite@optusnet.com.au, Battle for Wesnoth)
+#######################################################################
+# Initial configuration                                               #
+#######################################################################
 
-AC_REVISION($Version: 0.8$)
+AC_PREREQ(2.57)
+AC_INIT(wesnoth, 0.11, davidnwhite@optusnet.com.au, Battle for Wesnoth)
+
+AC_REVISION($Version: 0.11$)
 PACKAGE=wesnoth
 MAJOR_VERSION="0"
 MINOR_VERSION="6"
-MICRO_VERSION="1"
+MICRO_VERSION="2-CVS"
 
 if test "x$MICRO_VERSION" = "x"; then
         VERSION=$MAJOR_VERSION.$MINOR_VERSION
@@ -19,23 +23,63 @@ AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 AC_CONFIG_SRCDIR([src/actions.cpp])
 AC_CONFIG_HEADER([config.h])
 
-# Checks for programs.
+
+#######################################################################
+# Checks for programs.                                                #
+#######################################################################
 
 AC_PROG_CXX
 AC_PROG_CC
+
+
+# SDL_CONFIG
 
 AC_PATH_PROGS(SDL_CONFIG, [sdl-config sdl11-config], none)
 
 if test "x$SDL_CONFIG" = "xnone"; then
 	
-AC_MSG_ERROR([*** SDL not found! Get SDL from www.libsdl.org.
+	AC_MSG_ERROR([*** SDL not found! Get SDL from www.libsdl.org.
 If you already installed it, check it's in the path. If problem remains,
 please send a mail to the address that appears in ./configure --version
 indicating your platform, the version of configure script and the problem.])
 
 fi
 
-# Checks for libraries.
+
+# GNOME_CONFIG
+
+AC_PATH_PROGS([GNOME_CONFIG], [gnome-config], [none])
+
+if test "x$GNOME_CONFIG" = "xnone"; then
+	gnome1=no
+else
+	GNOME1_DESKTOP=`$GNOME_CONFIG --datadir`/gnome/apps/Games
+	gnome1=yes
+fi
+
+AC_SUBST([GNOME1_DESKTOP])
+AM_CONDITIONAL(GNOME1, test x$gnome1 = xyes)
+
+
+# KDE_CONFIG
+
+AC_PATH_PROGS(KDE_CONFIG, kde-config, none)
+
+if test "x$KDE_CONFIG" = "xnone"; then
+	kde=no
+else
+	KDE_DESKTOP=`$KDE_CONFIG --expandvars --install apps`/Games/TacticStrategy
+	KDE_ICON=`$KDE_CONFIG --expandvars --install icon`
+	kde=yes
+fi
+
+AC_SUBST([KDE_DESKTOP])
+AC_SUBST([KDE_ICON])
+AM_CONDITIONAL(KDE, test x$kde = xyes)
+
+#######################################################################
+# Checks for libraries.                                               #
+#######################################################################
 
 SDL_LIBS=`$SDL_CONFIG --libs`
 OLD_LIBS=$LIBS
@@ -50,7 +94,7 @@ AC_CHECK_LIB([SDL_image],
 	     [SDL_IMAGE_LIBS=-lSDL_image],
 	     [AC_MSG_ERROR([*** SDL_image lib not found! Get SDL_image from
 http://www.libsdl.org/projects/SDL_image/index.html])])
-	     
+
 AC_CHECK_LIB([SDL_mixer],
 	     [Mix_OpenAudio],
 	     [SDL_MIXER_LIBS=-lSDL_mixer],
@@ -77,7 +121,11 @@ AC_SUBST([SDL_MIXER_LIBS])
 AC_SUBST([SDL_NET_LIBS])
 AC_SUBST([SDL_TTF_LIBS])
 
-# Checks for header files.
+
+#######################################################################
+# Checks for header files.                                            #
+#######################################################################
+
 AC_HEADER_DIRENT
 AC_HEADER_STDC
 
@@ -121,7 +169,11 @@ AC_SUBST([SDL_CFLAGS])
 
 AC_CHECK_HEADERS([stdlib.h unistd.h])
 
-# Checks for typedefs, structures, and compiler characteristics.
+
+#######################################################################
+# Checks for typedefs, structures, and compiler characteristics.      #
+#######################################################################
+
 AC_HEADER_STDBOOL
 AC_C_CONST
 AC_C_INLINE
@@ -134,6 +186,64 @@ AC_FUNC_ERROR_AT_LINE
 AC_FUNC_STAT
 AC_FUNC_STRFTIME
 AC_CHECK_FUNCS([floor socket strtoul])
+
+
+#######################################################################
+# Check for PNG support in SDL_image                                  #
+#######################################################################
+
+AC_MSG_CHECKING([for PNG support in SDL_image])
+
+OLD_CPPFLAGS=$CPPFLAGS
+OLD_CXXFLAGS=$CXXFLAGS
+OLD_LIBS=$LIBS
+
+CPPFLAGS="$CFLAGS $SDL_CFLAGS"
+CXXFLAGS="$CFLAGS $SDL_CFLAGS"
+LIBS="$LIBS $SDL_LIBS $SDL_IMAGE_LIBS"
+
+AC_TRY_RUN([
+#include <SDL_image.h>
+#include <stdlib.h>
+
+int main(void)
+{
+	SDL_RWops *src;
+
+	src = SDL_RWFromFile("images/mage.png", "rb");
+	if (src == NULL)
+		exit(0);
+	exit(!IMG_isPNG(src));
+}
+	],
+	[AC_MSG_RESULT(yes)],
+	[AC_MSG_RESULT(no)] 
+	[AC_MSG_ERROR([*** SDL_image has no PNG support! You need SDL_image with PNG support])],
+	[AC_MSG_RESULT[not tested in cross-compiling]])
+
+CPPFLAGS=$OLD_CPPFLAGS
+CXXFLAGS=$OLD_CXXFLAGS
+LIBS=$OLD_LIBS
+
+
+#######################################################################
+# Check for OGG support in SDL_mixer                                  #
+#######################################################################
+
+OLD_LIBS=$LIBS
+LIBS="$LIBS $SDL_LIBS $SDL_MIXER_LIBS"
+
+AC_CHECK_LIB([SDL_mixer],
+	     [OGG_new],
+	     ,
+	     [AC_MSG_WARN([*** SDL_mixer has no OGG support. You won't have music in the game.])])
+
+LIBS=$OLD_LIBS
+
+
+#######################################################################
+# Configuration options                                               #
+#######################################################################
 
 AC_ARG_ENABLE(debug,
 	      [  --enable-debug        Enable debug in wesnoth],
@@ -172,9 +282,27 @@ AC_ARG_ENABLE(tools,
 	      [  --enable-tools        Enable compilation of translation tools],
 	      tools=yes)
 
+AC_ARG_ENABLE(icons,
+	      [  --disable-icons       Disable installation of icons and menu entries],
+	      icons=$enableval,
+	      icons=yes)
+
 AM_CONDITIONAL(SERVER, test x$server = xyes)
 AM_CONDITIONAL(EDITOR, test x$editor = xyes)
 AM_CONDITIONAL(TOOLS, test x$tools = xyes)
+AM_CONDITIONAL(ICONS, test x$icons = xyes)
+
+
+
+
+#######################################################################
+# Icon and menu handling                                              #
+#######################################################################
+
+
+#######################################################################
+# Data file substitution.                                             #
+#######################################################################
 
 MANUAL_FILES=`ls MANUAL*`
 MANUAL_FILES=`echo $MANUAL_FILES`
@@ -199,7 +327,9 @@ AC_SUBST([MUSIC_FILES])
 AC_SUBST([SOUND_FILES])
 AC_SUBST([UTIL_FILES])
 
+
 AC_CONFIG_FILES([Makefile
+		 icons/Makefile
 		 src/Makefile
 		 src/server/Makefile
 		 src/tools/Makefile])

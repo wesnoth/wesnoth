@@ -134,8 +134,7 @@ manager::~manager()
 
 void set_wm_icon()
 {
-	//this code seems to only display the top part of the icon in Windows XP
-	scoped_sdl_surface icon(get_image("icon.png",UNSCALED));
+	scoped_sdl_surface icon(get_image(game_config::game_icon,UNSCALED));
 	if(icon != NULL) {
 		std::cerr << "setting icon...\n";
 		::SDL_WM_SetIcon(icon,NULL);

@@ -33,7 +33,7 @@ public:
 	//in dynamically because they're special. It's asserted that there will
 	//be corresponding entries for these types of terrain in the terrain
 	//configuration file.
-	enum { VOID_TERRAIN = ' ', CASTLE = 'C', TOWER = 't', FOREST = 'f' };
+	enum { VOID_TERRAIN = ' ', KEEP = 'K', CASTLE = 'C', TOWER = 't', FOREST = 'f' };
 
 	//the name of the terrain is the terrain itself, the underlying terrain
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain
@@ -59,6 +59,8 @@ public:
 		location(int x, int y) : x(x), y(y) {}
 		location(const config& cfg);
 
+		void write(config& cfg) const;
+
 		bool valid() const { return x >= 0 && y >= 0; }
 
 		int x, y;
@@ -76,8 +78,7 @@ public:
 	//data should be a series of lines, with each character representing
 	//one hex on the map. Starting locations are represented by numbers,
 	//and will be of type keep.
-	gamemap(config& terrain_cfg,
-	        const std::string& data); //throw(incorrect_format_exception)
+	gamemap(config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
 
 	std::string write() const;
 
@@ -87,6 +88,11 @@ public:
 
 	//allows lookup of terrain at a particular location.
 	const std::vector<TERRAIN>& operator[](int index) const;
+
+	//looks up terrain at a particular location. Hexes off the map
+	//may be looked up, and their 'emulated' terrain will also be returned.
+	//this allows proper drawing of the edges of the map
+	TERRAIN get_terrain(const location& loc) const;
 
 	//functions to manipulate starting positions of the different sides.
 	const location& starting_position(int side) const;
@@ -129,6 +135,8 @@ private:
 	std::vector<std::vector<TERRAIN> > tiles_;
 	std::vector<location> towers_;
 	location startingPositions_[10];
+
+	mutable std::map<location,TERRAIN> borderCache_;
 };
 
 #endif

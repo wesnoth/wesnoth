@@ -33,9 +33,34 @@ time_of_day::time_of_day(const config& cfg)
 		name = lang_name;
 }
 
+void time_of_day::write(config& cfg) const
+{
+	char buf[50];
+	sprintf(buf,"%d",lawful_bonus);
+	cfg["lawful_bonus"] = buf;
+
+	sprintf(buf,"%d",red);
+	cfg["red"] = buf;
+
+	sprintf(buf,"%d",green);
+	cfg["green"] = buf;
+
+	sprintf(buf,"%d",blue);
+	cfg["blue"] = buf;
+
+	cfg["image"] = image;
+	cfg["name"] = name;
+	cfg["id"] = id;
+}
+
 gamestatus::gamestatus(config& time_cfg, int num_turns) :
                  turn_(1),numTurns_(num_turns)
 {
+	const std::string& turn_at = time_cfg["turn_at"];
+	if(turn_at.empty() == false) {
+		turn_ = atoi(turn_at.c_str());
+	}
+
 	const config::child_list& times = time_cfg.get_children("time");
 	config::child_list::const_iterator t;
 	for(t = times.begin(); t != times.end(); ++t) {
@@ -47,6 +72,25 @@ gamestatus::gamestatus(config& time_cfg, int num_turns) :
 
 	for(t = illum.begin(); t != illum.end(); ++t) {
 		illuminatedTimes_.push_back(time_of_day(**t));
+	}
+}
+
+void gamestatus::write(config& cfg) const
+{
+	char buf[50];
+	sprintf(buf,"%d",turn_);
+	cfg["turn_at"] = buf;
+
+	sprintf(buf,"%d",numTurns_);
+	cfg["turns"] = buf;
+
+	std::vector<time_of_day>::const_iterator t;
+	for(t = times_.begin(); t != times_.end(); ++t) {
+		t->write(cfg.add_child("time"));
+	}
+
+	for(t = illuminatedTimes_.begin(); t != illuminatedTimes_.end(); ++t) {
+		t->write(cfg.add_child("illuminated_time"));
 	}
 }
 
@@ -79,7 +123,7 @@ bool gamestatus::next_turn()
 	return turn_ <= numTurns_;
 }
 
-game_state read_game(game_data& data, config* cfg)
+game_state read_game(game_data& data, const config* cfg)
 {
 	log_scope("read_game");
 	game_state res;
@@ -151,7 +195,7 @@ void write_game(const game_state& game, config& cfg)
 		cfg.add_child("unit",new_cfg);
 	}
 
-	if(game.replay_data.children.empty() == false) {
+	if(game.replay_data.child("replay") == NULL) {
 		cfg.add_child("replay",game.replay_data);
 	}
 

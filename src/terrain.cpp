@@ -18,7 +18,7 @@
 #include <iostream>
 
 terrain_type::terrain_type() : images_(1,"void"), type_(' '), letter_(' '),
-                               equal_precedence_(false)
+                               height_adjust_(0), submerge_(0.0), equal_precedence_(false)
 {}
 
 terrain_type::terrain_type(const config& cfg)
@@ -40,6 +40,9 @@ terrain_type::terrain_type(const config& cfg)
 		type_ = alias[0];
 
 	colour_.read(cfg);
+
+	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
+	submerge_ = atof(cfg["submerge"].c_str());
 
 	equal_precedence_ = cfg["no_overlay"] == "true";
 }
@@ -85,6 +88,16 @@ pixel_data terrain_type::get_rgb() const
 bool terrain_type::is_alias() const
 {
 	return type_ != letter_;
+}
+
+int terrain_type::unit_height_adjust() const
+{
+	return height_adjust_;
+}
+
+double terrain_type::unit_submerge() const
+{
+	return submerge_;
 }
 
 bool terrain_type::equal_precedence() const

@@ -37,7 +37,7 @@ public:
 	void next_skip();
 	bool skipping() const;
 
-	void save_game(game_data& data, const std::string& label);
+	void save_game(game_data& data, const std::string& label, const config& start_pos);
 
 	void add_recruit(int unit_index, const gamemap::location& loc);
 	void add_recall(int unit_index, const gamemap::location& loc);
@@ -46,6 +46,8 @@ public:
 	                int weapon);
 	void choose_option(int index);
 	void end_turn();
+
+	void speak(const config& cfg);
 
 	config get_data_range(int cmd_start, int cmd_end);
 	config get_last_turn(int num_turns=1);
@@ -58,6 +60,9 @@ public:
 
 	void start_replay();
 	config* get_next_action();
+
+	bool at_end() const;
+	void set_to_end();
 
 	void clear();
 	bool empty();
@@ -77,7 +82,7 @@ private:
 
 	void add_value(const std::string& type, int value);
 
-	const config::child_list& commands();
+	const config::child_list& commands() const;
 	config* add_command();
 	config cfg_;
 	unsigned int pos_;

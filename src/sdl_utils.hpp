@@ -131,6 +131,7 @@ struct surface_restorer
 
 	void restore();
 	void update();
+	void cancel();
 
 private:
 	SDL_Surface* target_;

@@ -12,6 +12,7 @@
 */
 #include "game.hpp"
 #include "map.hpp"
+#include "pathfind.hpp"
 #include "util.hpp"
 
 #include <algorithm>
@@ -78,6 +79,15 @@ gamemap::location::location(const config& cfg) : x(-1), y(-1)
 		y = atoi(ystr.c_str()) - 1;
 }
 
+void gamemap::location::write(config& cfg) const
+{
+	char buf[50];
+	sprintf(buf,"%d",x+1);
+	cfg["x"] = buf;
+	sprintf(buf,"%d",y+1);
+	cfg["y"] = buf;
+}
+
 bool gamemap::location::operator==(const gamemap::location& a) const
 {
 	return x == a.x && y == a.y;
@@ -126,7 +136,7 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 			if(letterToTerrain_.count(c) == 0) {
 				if(isdigit(*i)) {
 					startingPositions_[c - '0'] = location(x,y);
-					c = CASTLE;
+					c = KEEP;
 				} else {
 					std::cerr << "Illegal character in map: (" << int(c) << ") '" << c << "'\n";
 					throw incorrect_format_exception("Illegal character");
@@ -188,6 +198,47 @@ int gamemap::y() const { return tiles_[0].size(); }
 const std::vector<gamemap::TERRAIN>& gamemap::operator[](int index) const
 {
 	return tiles_[index];
+}
+
+gamemap::TERRAIN gamemap::get_terrain(const gamemap::location& loc) const
+{
+	if(on_board(loc))
+		return tiles_[loc.x][loc.y];
+
+	const std::map<location,TERRAIN>::const_iterator itor = borderCache_.find(loc);
+	if(itor != borderCache_.end())
+		return itor->second;
+
+	//if not on the board, decide based on what surrounding terrain is
+	TERRAIN items[6];
+	int nitems = 0;
+	
+	location adj[6];
+	get_adjacent_tiles(loc,adj);
+	for(int n = 0; n != 6; ++n) {
+		if(on_board(adj[n])) {
+			items[nitems] = tiles_[adj[n].x][adj[n].y];
+			++nitems;
+		}
+	}
+
+	//count all the terrain types found, and see which one
+	//is the most common, and use it.
+	TERRAIN used_terrain = 0;
+	int terrain_count = 0;
+	for(int i = 0; i != nitems; ++i) {
+		if(items[i] != used_terrain) {
+			const int c = std::count(items+i+1,items+nitems,items[i]) + 1;
+			if(c > terrain_count) {
+				used_terrain = items[i];
+				terrain_count = c;
+			}
+		}
+	}
+
+	borderCache_.insert(std::pair<location,TERRAIN>(loc,used_terrain));
+
+	return used_terrain;
 }
 
 const gamemap::location& gamemap::starting_position(int n) const

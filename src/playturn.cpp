@@ -616,6 +616,11 @@ void turn_info::show_menu()
 		menu.push_back(create_unit_debug);
 	}
 
+	const unit_map::iterator leader = find_leader(units_,gui_.viewing_team()+1);
+	if(network::nconnections() > 0 && leader != units_.end()) {
+		menu.push_back(string_table["speak"]);
+	}
+
 	if(un != units_.end()) {
 		menu.push_back(string_table["describe_unit"]);
 
@@ -634,7 +639,26 @@ void turn_info::show_menu()
 		menu.pop_back();
 	}
 
-	if(result == create_unit_debug) {
+	if(result == string_table["speak"]) {
+		std::string message;
+		const int res = gui::show_dialog(gui_,NULL,"",string_table["speak"],gui::OK_CANCEL,NULL,NULL,
+			                             string_table["message"] + ":", &message);
+		if(res == 0) {
+			config cfg;
+			cfg["description"] = leader->second.description();
+			cfg["message"] = message;
+			char buf[50];
+			sprintf(buf,"%d",leader->second.side());
+			cfg["side"] = buf;
+
+			recorder.speak(cfg);
+			dialogs::unit_speak(cfg,gui_,units_);
+
+			//speaking is an unretractable operation
+			undo_stack_.clear();
+			redo_stack_.clear();
+		}
+	} else if(result == create_unit_debug) {
 		std::vector<std::string> options;
 		std::vector<unit> unit_choices;
 		for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin();
@@ -669,7 +693,8 @@ void turn_info::show_menu()
 	} else if(result == string_table["status_table"]) {
 		status_table();
 	} else if(result == string_table["unit_list"]) {
-		const std::string heading = string_table["name"] + "," +
+		const std::string heading = string_table["type"] + "," +
+		                            string_table["name"] + "," +
 		                            string_table["hp"] + "," +
 		                            string_table["xp"] + "," +
 		                            string_table["moves"] + "," +
@@ -685,7 +710,9 @@ void turn_info::show_menu()
 				continue;
 
 			std::stringstream row;
-			row << i->second.name() << "," << i->second.hitpoints()
+			row << i->second.type().language_name() << ","
+				<< i->second.description() << ","
+				<< i->second.hitpoints()
 			    << "/" << i->second.max_hitpoints() << ","
 				<< i->second.experience() << "/";
 
@@ -764,7 +791,9 @@ void turn_info::end_turn()
 		return;
 
 	end_turn_ = true;
-	recorder.save_game(gameinfo_,string_table["auto_save"]);
+	config start_pos;
+	write_game_snapshot(start_pos);
+	recorder.save_game(gameinfo_,string_table["auto_save"],start_pos);
 	recorder.end_turn();
 }
 
@@ -1028,9 +1057,55 @@ void turn_info::save_game()
 	const int res = dialogs::get_save_name(gui_,"",string_table["save_game_label"],&label,gui::OK_CANCEL);
 
 	if(res == 0) {
-		recorder.save_game(gameinfo_,label);
+		config start;
+		write_game_snapshot(start);
+		recorder.save_game(gameinfo_,label,start);
 		gui::show_dialog(gui_,NULL,"",string_table["save_confirm_message"], gui::OK_ONLY);
 	}
+}
+
+void turn_info::write_game_snapshot(config& start) const
+{
+	start["snapshot"] = "yes";
+
+	char buf[50];
+	sprintf(buf,"%d",gui_.playing_team());
+	start["playing_team"] = buf;
+
+	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
+		const int side_num = t - teams_.begin() + 1;
+
+		config& side = start.add_child("side");
+		t->write(side);
+		side["no_leader"] = "yes";
+		sprintf(buf,"%d",side_num);
+		side["side"] = buf;
+
+		for(std::map<gamemap::location,unit>::const_iterator i = units_.begin();
+		    i != units_.end(); ++i) {
+			if(i->second.side() == side_num) {
+				config& u = side.add_child("unit");
+				i->first.write(u);
+				i->second.write(u);
+			}
+		}
+	}
+
+	status_.write(start);
+	game_events::write_events(start);
+
+	write_game(state_of_game_,start);
+	start["gold"] = "-1000000"; //just make sure gold is read in from the teams
+
+	//copy over important scenario stats
+	start["id"] = (*level_)["id"];
+	start["name"] = (*level_)["name"];
+	start["objectives"] = (*level_)["objectives"];
+	start["next_scenario"] = (*level_)["next_scenario"];
+	start["music"] = (*level_)["music"];
+
+	//write out the current state of the map
+	start["map_data"] = map_.write();
 }
 
 void turn_info::toggle_grid()
@@ -1046,6 +1121,9 @@ void turn_info::status_table()
 	heading << string_table["leader"] << "," << string_table["villages"] << ","
 	        << string_table["units"] << "," << string_table["upkeep"] << ","
 	        << string_table["income"];
+
+	if(game_config::debug)
+		heading << "," << string_table["gold"];
 
 	items.push_back(heading.str());
 
@@ -1068,6 +1146,9 @@ void turn_info::status_table()
 		    << data.villages << ","
 		    << data.units << "," << data.upkeep << ","
 		    << (data.net_income < 0 ? "#":"") << data.net_income;
+
+		if(game_config::debug)
+			str << "," << teams_[n].gold();
 
 		items.push_back(str.str());
 	}
@@ -1208,7 +1289,8 @@ void turn_info::recall()
 		  state_of_game_.available_units.begin();
 		  unit != state_of_game_.available_units.end(); ++unit) {
 			std::stringstream option;
-			option << unit->type().language_name() << ","
+			const std::string& description = unit->description().empty() ? "-" : unit->description();
+			option << unit->type().language_name() << "," << description << ","
 			       << string_table["level"] << ": "
 			       << unit->type().level() << ","
 			       << string_table["xp"] << ": "

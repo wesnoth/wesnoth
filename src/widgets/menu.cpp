@@ -3,6 +3,7 @@
 #include "../font.hpp"
 #include "../sdl_utils.hpp"
 #include "../show_dialog.hpp"
+#include "../util.hpp"
 #include "../video.hpp"
 
 #include <numeric>
@@ -32,6 +33,14 @@ menu::menu(display& disp, const std::vector<std::string>& items,
 		//make sure there is always at least one item
 		if(items_.back().empty())
 			items_.back().push_back(" ");
+
+		//if the first character in an item is an asterisk,
+		//it means this item should be selected by default
+		std::string& first_item = items_.back().front();
+		if(first_item.empty() == false && first_item[0] == '*') {
+			selected_ = items_.size()-1;
+			first_item.erase(first_item.begin());
+		}
 	}
 }
 
@@ -367,18 +376,14 @@ SDL_Rect menu::get_item_rect(int item) const
 
 	static const SDL_Rect area = {0,0,display_->x(),display_->y()};
 
+	SDL_Rect res = {x_,y,0,0};
+
 	//use the first field that is non-blank
-	size_t n;
-	for(n = 0; n != items_[item].size(); ++n) {
-		if(items_[item][n] != "")
-			break;
+	for(size_t n = 0; n != items_[item].size(); ++n) {
+		SDL_Rect rect = font::draw_text(NULL,area,menu_font_size,
+			                   font::NORMAL_COLOUR,items_[item][n],x_,y);
+		res.h = maximum<int>(rect.h,res.h);
 	}
-
-	if(n == items_[item].size())
-		n = 0;
-
-	SDL_Rect res = font::draw_text(NULL,area,menu_font_size,
-		                   font::NORMAL_COLOUR,items_[item][n],x_,y);
 
 	res.w = width();
 

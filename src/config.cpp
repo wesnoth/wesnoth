@@ -23,6 +23,7 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
+#include "scoped_resource.hpp"
 
 bool operator<(const line_source& a, const line_source& b)
 {
@@ -58,37 +59,53 @@ line_source get_line_source(const std::vector<line_source>& line_src, int line)
 	return res;
 }
 
-std::string read_file_internal(const std::string& fname)
+struct close_FILE
 {
-	std::ifstream file(fname.c_str());
-	std::string res;
-	char c;
-	while(file.get(c)) {
-		res.resize(res.size()+1);
-		res[res.size()-1] = c;
+	void operator()(FILE* f) const { if(f != NULL) { fclose(f); } }
+};
+
+void read_file_internal(const std::string& fname, std::string& res)
+{
+	res.resize(0);
+
+	const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"rb"));
+	if(file == NULL) {
+		return;
 	}
 
-	return res;
+	const int block_size = 4096;
+	char buf[block_size];
+
+	for(;;) {
+		size_t nbytes = fread(buf,1,block_size,file);
+		res.resize(res.size()+nbytes);
+		std::copy(buf,buf+nbytes,res.end()-nbytes);
+
+		if(nbytes < block_size) {
+			return;
+		}
+	}
 }
 
 } //end anon namespace
 
 std::string read_file(const std::string& fname)
 {
+	log_scope("reading file");
+
 	//if we have a path to the data,
 	//convert any filepath which is relative
 	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
-		std::cerr << "trying to read file: '" <<
-		           game_config::path << "/" << fname << "'\n";
-		const std::string& res =
-		         read_file_internal(game_config::path + "/" + fname);
+		std::string res;
+		read_file_internal(game_config::path + "/" + fname,res);
 		if(!res.empty()) {
-			std::cerr << "success\n";
 			return res;
 		}
 	}
 
-	return read_file_internal(fname);
+	std::string res;
+	read_file_internal(fname,res);
+	return res;
 }
 
 void write_file(const std::string& fname, const std::string& data)

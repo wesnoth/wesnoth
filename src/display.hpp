@@ -193,6 +193,9 @@ public:
 	void add_overlay(const gamemap::location& loc, const std::string& image);
 	void remove_overlay(const gamemap::location& loc);
 
+	//function to serialize overlay data
+	void write_overlays(config& cfg) const;
+
 	//function which draws the details of the unit at the given location, at
 	//(x,y) on-screen. xprofile and yprofile are the size of the unit's image.
 	//this function is suitable for drawing a unit's details on the sidebar,
@@ -247,7 +250,10 @@ public:
 
 	bool fogged(int x, int y) const;
 
+	//the viewing team is the team currently viewing the game. The playing team
+	//is the team whose turn it is
 	size_t viewing_team() const;
+	size_t playing_team() const;
 
 private:
 	display(const display&);
@@ -257,9 +263,19 @@ private:
 					       const gamemap::location& b,
 						   const unit& u);
 
+	//function to draw the image of a unit at a certain location
+	//x,y: pixel location on screen to draw the unit
+	//image: the image of the unit
+	//reverse: if the unit should be flipped across the y axis
+	//upside_down: if the unit should be flipped across the x axis
+	//alpha: the merging to use with the background
+	//blendto: if blendto is not 0, then the alpha parameter will be used
+	//         to blend to this colour, instead of the background
+	//submerged: the amount of the unit out of 1.0 that is submerged
+	//           (presumably under water) and thus shouldn't be drawn
 	void draw_unit(int x, int y, SDL_Surface* image,
 	               bool reverse, bool upside_down=false,
-	               double alpha=1.0, short blendto=0);
+	               double alpha=1.0, short blendto=0, double submerged=0.0);
 
 	void unit_die(const gamemap::location& loc, SDL_Surface* image=NULL);
 

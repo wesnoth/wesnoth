@@ -168,6 +168,7 @@ wesnoth_SOURCES = about.cpp \
 		  language.cpp \
 		  log.cpp \
 		  map.cpp \
+		  mapgen.cpp \
 		  mouse.cpp \
 		  multiplayer.cpp \
 		  multiplayer_client.cpp \
@@ -215,6 +216,7 @@ wesnoth_SOURCES = about.cpp \
 		  language.hpp \
 		  log.hpp \
 		  map.hpp \
+		  mapgen.hpp \
 		  mouse.hpp \
 		  multiplayer.hpp \
 		  multiplayer_client.hpp \
@@ -269,6 +271,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 language.cpp \
 			 log.cpp \
 			 map.cpp \
+			 mapgen.cpp \
 			 mouse.cpp \
 			 network.cpp \
 			 pathfind.cpp \
@@ -310,6 +313,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 language.hpp \
 			 log.hpp \
 			 map.hpp \
+			 mapgen.hpp \
 			 mouse.hpp \
 			 network.hpp \
 			 pathfind.hpp \
@@ -348,14 +352,15 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	game_config.$(OBJEXT) game_events.$(OBJEXT) \
 	gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
 	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
-	map.$(OBJEXT) mouse.$(OBJEXT) multiplayer.$(OBJEXT) \
-	multiplayer_client.$(OBJEXT) multiplayer_lobby.$(OBJEXT) \
-	network.$(OBJEXT) pathfind.$(OBJEXT) playlevel.$(OBJEXT) \
-	playturn.$(OBJEXT) preferences.$(OBJEXT) race.$(OBJEXT) \
-	replay.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
-	sound.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
-	tooltips.$(OBJEXT) unit.$(OBJEXT) unit_types.$(OBJEXT) \
-	video.$(OBJEXT) button.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
+	map.$(OBJEXT) mapgen.$(OBJEXT) mouse.$(OBJEXT) \
+	multiplayer.$(OBJEXT) multiplayer_client.$(OBJEXT) \
+	multiplayer_lobby.$(OBJEXT) network.$(OBJEXT) \
+	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
+	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
+	sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) sound.$(OBJEXT) \
+	team.$(OBJEXT) terrain.$(OBJEXT) tooltips.$(OBJEXT) \
+	unit.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
+	button.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
 	slider.$(OBJEXT) textbox.$(OBJEXT)
 wesnoth_OBJECTS = $(am_wesnoth_OBJECTS)
 wesnoth_LDADD = $(LDADD)
@@ -368,14 +373,14 @@ am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) actions.$(OBJEXT) \
 	game_config.$(OBJEXT) game_events.$(OBJEXT) \
 	gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
 	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
-	map.$(OBJEXT) mouse.$(OBJEXT) network.$(OBJEXT) \
-	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
-	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
-	sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) sound.$(OBJEXT) \
-	team.$(OBJEXT) terrain.$(OBJEXT) tooltips.$(OBJEXT) \
-	unit.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
-	button.$(OBJEXT) menu.$(OBJEXT) textbox.$(OBJEXT) \
-	slider.$(OBJEXT)
+	map.$(OBJEXT) mapgen.$(OBJEXT) mouse.$(OBJEXT) \
+	network.$(OBJEXT) pathfind.$(OBJEXT) playlevel.$(OBJEXT) \
+	playturn.$(OBJEXT) preferences.$(OBJEXT) race.$(OBJEXT) \
+	replay.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
+	sound.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
+	tooltips.$(OBJEXT) unit.$(OBJEXT) unit_types.$(OBJEXT) \
+	video.$(OBJEXT) button.$(OBJEXT) menu.$(OBJEXT) \
+	textbox.$(OBJEXT) slider.$(OBJEXT)
 wesnoth_editor_OBJECTS = $(am_wesnoth_editor_OBJECTS)
 wesnoth_editor_LDADD = $(LDADD)
 wesnoth_editor_DEPENDENCIES =
@@ -397,8 +402,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/image.Po ./$(DEPDIR)/intro.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/key.Po ./$(DEPDIR)/language.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/log.Po ./$(DEPDIR)/map.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/menu.Po ./$(DEPDIR)/mouse.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/multiplayer.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/mapgen.Po ./$(DEPDIR)/menu.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/mouse.Po ./$(DEPDIR)/multiplayer.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_client.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_lobby.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/network.Po ./$(DEPDIR)/pathfind.Po \
@@ -501,6 +506,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/language.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/map.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mapgen.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/menu.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mouse.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/multiplayer.Po@am__quote@

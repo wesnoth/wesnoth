@@ -14,8 +14,10 @@
 #define DIALOGS_H_INCLUDED
 
 #include "actions.hpp"
+#include "config.hpp"
 #include "display.hpp"
 #include "show_dialog.hpp"
+#include "unit.hpp"
 
 namespace dialogs
 {
@@ -37,6 +39,8 @@ int get_save_name(display & disp, const std::string& caption,
 //a replay of the game in show_replay. If show_replay is NULL, then
 //the user will not be asked if they want to show a replay.
 std::string load_game_dialog(display& disp, bool* show_replay);
+
+void unit_speak(const config& message_info, display& disp, const unit_map& units);
 
 }
 

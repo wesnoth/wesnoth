@@ -359,9 +359,10 @@ void show_preferences_dialog(display& disp)
 	const int height = 400;
 
 	//make sure that the frame buffer is restored to its original state
-	//when the dialog closes
+	//when the dialog closes. Not const, because we might want to cancel
+	//it in the case of video mode changes
 	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
-	const surface_restorer restorer(disp.video().getSurface(),dialog_rect);
+	surface_restorer restorer(disp.video().getSurface(),dialog_rect);
 
 	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
 	SDL_Rect title_rect = font::draw_text(NULL,clip_rect,16,font::NORMAL_COLOUR,
@@ -472,10 +473,9 @@ void show_preferences_dialog(display& disp)
 			break;
 		}
 
-		const double new_music=music_slider.process(mousex,mousey,left_button);
-		const double new_sound=sound_slider.process(mousex,mousey,left_button);
-		const double new_scroll =
-		         scroll_slider.process(mousex,mousey,left_button);
+		const double new_music = music_slider.process(mousex,mousey,left_button);
+		const double new_sound = sound_slider.process(mousex,mousey,left_button);
+		const double new_scroll = scroll_slider.process(mousex,mousey,left_button);
 
 		if(new_sound >= 0.0) {
 			set_sound_volume(new_sound);
@@ -490,6 +490,9 @@ void show_preferences_dialog(display& disp)
 		}
 
 		if(fullscreen_button.process(mousex,mousey,left_button)) {
+			//the underlying frame buffer is changing, so cancel
+			//the surface restorer restoring the frame buffer state
+			restorer.cancel();
 			set_fullscreen(fullscreen_button.checked());
 			redraw_all = true;
 		}
@@ -536,7 +539,12 @@ void show_preferences_dialog(display& disp)
 		}
 
 		if(resolution_button.process(mousex,mousey,left_button)) {
-			show_video_mode_dialog(disp);
+			const bool mode_changed = show_video_mode_dialog(disp);
+			if(mode_changed) {
+				//the underlying frame buffer is changing, so cancel
+				//the surface restorer restoring the frame buffer state
+				restorer.cancel();
+			}
 			break;
 		}
 
@@ -548,8 +556,7 @@ void show_preferences_dialog(display& disp)
 			set_turn_dialog(turn_dialog_button.checked());
 		}
 
-		if (hotkeys_button.
-		    process (mousex, mousey, left_button))
+		if (hotkeys_button.process (mousex, mousey, left_button))
 		{
 			show_hotkeys_dialog (disp);
 			break;
@@ -562,7 +569,7 @@ void show_preferences_dialog(display& disp)
 	}
 }
 
-void show_video_mode_dialog(display& disp)
+bool show_video_mode_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;
 
@@ -580,7 +587,7 @@ void show_video_mode_dialog(display& disp)
 		else
 			std::cerr << "No modes supported\n";
 		gui::show_dialog(disp,NULL,"",string_table["video_mode_unavailable"]);
-		return;
+		return false;
 	}
 
 	for(int i = 0; modes[i] != NULL; ++i) {
@@ -599,7 +606,7 @@ void show_video_mode_dialog(display& disp)
 
 	if(resolutions.size() < 2) {
 		gui::show_dialog(disp,NULL,"",string_table["video_mode_unavailable"]);
-		return;
+		return false;
 	}
 
 	const int result = gui::show_dialog(disp,NULL,"",
@@ -607,6 +614,9 @@ void show_video_mode_dialog(display& disp)
 	                                    gui::MESSAGE,&options);
 	if(size_t(result) < resolutions.size()) {
 		set_resolution(resolutions[result]);
+		return true;
+	} else {
+		return false;
 	}
 }
 

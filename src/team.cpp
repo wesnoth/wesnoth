@@ -18,10 +18,16 @@
 
 #include <algorithm>
 #include <cstdlib>
+#include <sstream>
 
 team::target::target(const config& cfg)
               : criteria(cfg), value(atof(cfg["value"].c_str()))
 {
+}
+
+void team::target::write(config& cfg) const
+{
+	cfg = criteria;
 }
 
 team::team_info::team_info(const config& cfg)
@@ -106,11 +112,111 @@ team::team_info::team_info(const config& cfg)
 	music = cfg["music"];
 }
 
+void team::team_info::write(config& cfg) const
+{
+	cfg["gold"] = gold;
+	cfg["income"] = income;
+	cfg["name"] = name;
+
+	char buf[50];
+	sprintf(buf,"%d",income_per_village);
+	cfg["village_gold"] = buf;
+
+	sprintf(buf,"%f",aggression);
+	cfg["aggression"] = buf;
+
+	std::stringstream enemies_str;
+	for(std::vector<int>::const_iterator en = enemies.begin(); en != enemies.end(); ++en) {
+		enemies_str << *en;
+		if(en+1 != enemies.end())
+			enemies_str << ",";
+	}
+
+	cfg["enemy"] = enemies_str.str();
+
+	switch(controller) {
+	case AI: cfg["controller"] = "ai"; break;
+	case HUMAN: cfg["controller"] = "human"; break;
+	case NETWORK: cfg["controller"] = "network"; break;
+	default: assert(false);
+	}
+
+	sprintf(buf,"%d",villages_per_scout);
+	cfg["villages_per_scout"] = buf;
+
+	sprintf(buf,"%f",leader_value);
+	cfg["leader_value"] = buf;
+
+	sprintf(buf,"%f",village_value);
+	cfg["village_value"] = buf;
+
+	for(std::vector<target>::const_iterator tg = targets.begin(); tg != targets.end(); ++tg) {
+		tg->write(cfg.add_child("target"));
+	}
+
+	std::stringstream can_recruit_str;
+	for(std::set<std::string>::const_iterator cr = can_recruit.begin(); cr != can_recruit.end(); ++cr) {
+		if(cr != can_recruit.begin())
+			can_recruit_str << ",";
+
+		can_recruit_str << *cr;
+	}
+
+	cfg["recruit"] = can_recruit_str.str();
+
+	std::stringstream recruit_pattern_str;
+	for(std::vector<std::string>::const_iterator p = recruitment_pattern.begin(); p != recruitment_pattern.end(); ++p) {
+		if(p != recruitment_pattern.begin())
+			recruit_pattern_str << ",";
+
+		recruit_pattern_str << *p;
+	}
+
+	cfg["recruitment_pattern"] = recruit_pattern_str.str();
+
+	cfg["shroud"] = use_shroud ? "yes" : "no";
+	cfg["fog"] = use_fog ? "yes" : "no";
+
+	if(music.empty() == false)
+		cfg["music"] = music;
+}
+
 team::team(const config& cfg, int gold) : gold_(gold), info_(cfg)
 {
 	//gold is the maximum of 'gold' and what is given in the config file
 	if(info_.gold.empty() == false)
 		gold_ = maximum(gold,::atoi(info_.gold.c_str()));
+
+	//load in the villages the side controls at the start
+	const config::child_list& villages = cfg.get_children("village");
+	for(config::child_list::const_iterator v = villages.begin(); v != villages.end(); ++v) {
+		towers_.insert(gamemap::location(**v));
+	}
+}
+
+void team::write(config& cfg) const
+{
+	info_.write(cfg);
+
+	char buf[50];
+	sprintf(buf,"%d",gold_);
+	cfg["gold"] = buf;
+
+	//write village locations
+	for(std::set<gamemap::location>::const_iterator t = towers_.begin(); t != towers_.end(); ++t) {
+		t->write(cfg.add_child("village"));
+	}
+
+	std::stringstream shroud_str;
+	for(std::vector<std::vector<bool> >::const_iterator sh = shroud_.begin(); sh != shroud_.end(); ++sh) {
+		for(std::vector<bool>::const_iterator i = sh->begin(); i != sh->end(); ++i) {
+			shroud_str << (*i ? '1' : '0');
+		}
+
+		shroud_str << '\n';
+	}
+
+	cfg["shroud_data"] = shroud_str.str();
 }
 
 void team::get_tower(const gamemap::location& loc)

@@ -43,6 +43,7 @@ wesnoth_SOURCES = about.cpp \
 		  language.cpp \
 		  log.cpp \
 		  map.cpp \
+		  mapgen.cpp \
 		  mouse.cpp \
 		  multiplayer.cpp \
 		  multiplayer_client.cpp \
@@ -68,6 +69,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/menu.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
+		  widgets/widget.cpp \
                   about.hpp \
 		  actions.hpp \
 		  ai.hpp \
@@ -90,6 +92,7 @@ wesnoth_SOURCES = about.cpp \
 		  language.hpp \
 		  log.hpp \
 		  map.hpp \
+		  mapgen.hpp \
 		  mouse.hpp \
 		  multiplayer.hpp \
 		  multiplayer_client.hpp \
@@ -116,7 +119,8 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
 		  widgets/slider.hpp \
-		  widgets/textbox.hpp
+		  widgets/textbox.hpp \
+		  widgets/widget.hpp
 
 #############################################################################
 #    Editor                                                                 #
@@ -143,6 +147,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 language.cpp \
 			 log.cpp \
 			 map.cpp \
+			 mapgen.cpp \
 			 mouse.cpp \
 			 network.cpp \
 			 pathfind.cpp \
@@ -164,6 +169,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/menu.cpp \
 			 widgets/textbox.cpp \
 			 widgets/slider.cpp \
+			 widgets/widget.cpp \
 			 actions.hpp \
 			 ai.hpp \
 			 ai_attack.hpp \
@@ -184,6 +190,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 language.hpp \
 			 log.hpp \
 			 map.hpp \
+			 mapgen.hpp \
 			 mouse.hpp \
 			 network.hpp \
 			 pathfind.hpp \
@@ -204,4 +211,5 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.hpp \
 			 widgets/menu.hpp \
 			 widgets/textbox.hpp \
-			 widgets/slider.hpp
+			 widgets/slider.hpp \
+			 widgets/widget.hpp

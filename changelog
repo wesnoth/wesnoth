@@ -1,3 +1,29 @@
+Version 0.6.2:
+ * extended tutorial
+ * two new music tracks
+ * new scenarios for 'The Dark Hordes' campaign:
+   * Mages and Elves
+ * scenario balancing for 'Dark Hordes' campaign:
+   * Brother Against Brother
+   * The Skull of Agarash
+ * multiplayer improvements:
+   * added basic random map generator 
+   * made basic messaging possible using 'Speak' from main menu
+ * medium difficulty level is used by default when starting new campaign
+ * snapshot saving, faster loading if you skip replay
+ * more unit graphics and animations
+ * undeads can not be drained anymore
+ * fixed description for 'Wolf Rider'
+ * updated translations:
+   * dutch
+ * internationalization: string fixes
+ * fixed client-hosted multiplayer bug where more than two player games were not possible
+ * fixed problem with saving at the end of the scenario pointing to the previous scenario
+ * autotools: checks for png support in sdl_image and ogg support in sdl_mixer
+ * autotools: application icon and menu entries in KDE and GNOME
+ * improved speed of reading cfg-files
+ * code refactoring
+
 Version 0.6.1:
  * removed plague ability from Wraiths
  * decreased Lich's melee damage by one
