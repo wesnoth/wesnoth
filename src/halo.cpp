@@ -56,8 +56,8 @@ private:
 	bool reverse_;
 	int start_cycle_, cycle_time_, lifetime_;
 	
-	int x_, y_;
-	double zoom_;
+	int origx_, origy_, x_, y_;
+	double origzoom_, zoom_;
 	shared_sdl_surface surf_, buffer_;
 	SDL_Rect rect_;
 };
@@ -70,7 +70,7 @@ bool hide_halo = false;
 static const SDL_Rect empty_rect = {0,0,0,0};
 
 effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime)
-: reverse_(orientation == REVERSE), start_cycle_(-1), cycle_time_(50), lifetime_(lifetime), x_(xpos), y_(ypos), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
+: reverse_(orientation == REVERSE), start_cycle_(-1), cycle_time_(50), lifetime_(lifetime), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos), origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
 {
 	if(std::find(img.begin(),img.end(),',') != img.end()) {
 		const std::vector<std::string>& imgs = config::split(img,',');
@@ -98,8 +98,13 @@ effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientati
 void effect::set_location(int x, int y)
 {
 	const gamemap::location zero_loc(0,0);
-	x_ = x - disp->get_location_x(zero_loc);
-	y_ = y - disp->get_location_y(zero_loc);
+	x_ = origx_ = x - disp->get_location_x(zero_loc);
+	y_ = origy_ = y - disp->get_location_y(zero_loc);
+	origzoom_ = disp->zoom();
+
+	if(zoom_ != origzoom_) {
+		rezoom();
+	}
 }
 
 const std::string& effect::current_image()
@@ -122,11 +127,9 @@ const std::string& effect::current_image()
 
 void effect::rezoom()
 {
-	const double new_zoom = disp->zoom();
-	x_ = int((x_*new_zoom)/zoom_);
-	y_ = int((y_*new_zoom)/zoom_);
-
-	zoom_ = new_zoom;
+	zoom_ = disp->zoom();
+	x_ = int((origx_*zoom_)/origzoom_);
+	y_ = int((origy_*zoom_)/origzoom_);
 
 	surf_.assign(image::get_image(current_image_,image::UNSCALED));
 	if(surf_ != NULL && reverse_) {
@@ -224,12 +227,14 @@ manager::~manager()
 
 halo_hider::halo_hider() : old(hide_halo)
 {
+	render();
 	hide_halo = true;
 }
 
 halo_hider::~halo_hider()
 {
 	hide_halo = old;
+	unrender();
 }
 
 int add(int x, int y, const std::string& image, ORIENTATION orientation, int lifetime_cycles)
