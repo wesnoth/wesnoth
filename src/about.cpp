@@ -126,6 +126,10 @@ std::vector<std::string> get_text() {
 		"-   Mark Michelsen (skovbaer)",
 		"+ ",
 
+		_("+Basque Translation"),
+		"-   Alfredo Beaumont (ziberpunk)",
+		"+ ",
+
 		_("+Catalan Translation"),
 		"-   Dan Rosàs Garcia (focks)",
 		"-   Jordà Polo (ettin)",
