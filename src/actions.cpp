@@ -1018,7 +1018,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		//the unit heals if it's on this side, and it's on a village or
 		//it has regeneration, and it is wounded
 		if(i->second.side() == side) {
-			if(i->second.hitpoints() < i->second.max_hitpoints()){
+			if(i->second.hitpoints() < i->second.max_hitpoints() || i->second.poisoned()){
 				if(map.gives_healing(i->first) || i->second.type().regenerates()) {
 					amount_healed = game_config::cure_amount;
 				}
@@ -1096,7 +1096,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	//are no longer poisoned
 	for(i = units.begin(); i != units.end(); ++i) {
 
-		if(i->second.side() == side && i->second.has_flag("poisoned")) {
+		if(i->second.side() == side && i->second.poisoned()) {
 			const int damage = minimum<int>(game_config::cure_amount,
 			                                i->second.hitpoints()-1);
 
@@ -1109,7 +1109,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	for(i = units.begin(); i != units.end(); ++i) {
 		if(i->second.side() == side) {
 			if(i->second.hitpoints() < i->second.max_hitpoints() || 
-					i->second.has_flag("poisoned")){
+					i->second.poisoned()){
 				if(i->second.is_resting()) {
 					const std::map<gamemap::location,int>::iterator u =
 						healed_units.find(i->first);
