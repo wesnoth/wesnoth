@@ -1188,13 +1188,9 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 
 	SDL_Surface* const dst = screen_.getSurface();
 
-	Pixel grid_colour = SDL_MapRGB(dst->format,0,0,0);
+	const Pixel grid_colour = SDL_MapRGB(dst->format,0,0,0);
 
 	const bool show_unit_colour = preferences::show_side_colours() && !fogged(x,y) && it != units_.end();
-	if(show_unit_colour) {
-		const SDL_Color& colour = font::get_side_colour(it->second.side());
-		grid_colour = SDL_MapRGB(dst->format,colour.r,colour.g,colour.b);
-	}
 
 	int j;
 	for(j = ypos; j != yend; ++j) {
@@ -1289,10 +1285,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		}
 	}
 
-	if(show_unit_colour) {
-		draw_ellipse(dst,grid_colour,xpos,ypos,zoom_,zoom_);
-	}
-
 	if(game_config::debug && debugHighlights_.count(gamemap::location(x,y))) {
 		const scoped_sdl_surface cross(image::get_image(game_config::cross_image));
 		if(cross != NULL)
@@ -1385,6 +1377,14 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 					++startenergy;
 			}
 		}
+	}
+
+	if(show_unit_colour && unit_image != NULL) {
+		const SDL_Color& col = font::get_side_colour(it->second.side());
+		const short colour = SDL_MapRGB(dst->format,colour.r,colour.g,colour.b);
+		SDL_Rect clip = {xpos,ypos,xend-xpos,yend-ypos};
+
+		draw_ellipse(dst,colour,clip,xpos-xsrc+zoom_/4,ypos-ysrc + zoom_*0.66,zoom_*0.6,zoom_/8,unit_image);
 	}
 }
 
