@@ -20,6 +20,9 @@ CVS HEAD:
    * fog of war
    * attack icons and frames
  * new musics: main menu
+ * intro for 'The Dark Hordes'
+ * new scenarios for 'The Dark Hordes' campaign:
+   * Underground Pool
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
    * Peasant Revolt
@@ -65,6 +68,7 @@ CVS HEAD:
    * limited maximum lenght of observer messages
    * added server commands: msg, kick, ban, unban, status, metrics
  * language fixes and polishing (english)
+ * updated sample translation
  * updated translations:
    * catalan
    * czech
@@ -105,7 +109,6 @@ CVS HEAD:
  * fixed terrain glitches, added a default base-terrain
  * fixed graphic glitches
  * fixed macro errors
- * reverted castle tiles not being expanded to the border
  * fixed edges of the map not getting cleared of shroud and fog of war
  * fixed unit description on sidebar not getting updated when cycling units with 'n' (#8798)
  * fixed segfault in display.hpp
@@ -115,8 +118,11 @@ CVS HEAD:
  * fixed bug where clicking a menu item could generate multiple events
  * fixed duplicate battleworld.cfg
  * fixed bug in WML with using value instead of equals in [if] (#9398)
+ * fixed visual glitches caused by copy-paste
+ * fixed bug in intro which segfaulted when no "file" attribute in [image] tag
  * small fixes to unit display in help browser
  * pngcrushed images
+ * gettext implementation preparations
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
  * moved items to their own hierarchy: images/items/
  * adding a limit to number of characters in a textbox
@@ -129,6 +135,7 @@ CVS HEAD:
  * added support for animated terrain images
  * added support for animated flags on villages
  * cleaned the terrain-graphics.cfg - terrain graphics rule precedence is now depracated, use terrain layers.
+ * reverted castle tiles not being expanded to the border
  * replacing all SDL_Surface*, and scoped_sdl_surface, with shared_sdl_surface, which was renamed surface.
  * partial rewrite of image.?pp for speed: looking up images was what was slowing the game
  * inlining some stuff for performance reasons
