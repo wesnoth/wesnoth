@@ -459,24 +459,24 @@ wesnoth_LDFLAGS =
 am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) editor_layout.$(OBJEXT) \
 	map_manip.$(OBJEXT) editor_palettes.$(OBJEXT) \
 	editor_main.$(OBJEXT) editor_dialogs.$(OBJEXT) \
-	actions.$(OBJEXT) ai.$(OBJEXT) ai_attack.$(OBJEXT) \
-	ai_move.$(OBJEXT) builder.$(OBJEXT) cavegen.$(OBJEXT) \
-	config.$(OBJEXT) cursor.$(OBJEXT) dialogs.$(OBJEXT) \
-	display.$(OBJEXT) events.$(OBJEXT) filesystem.$(OBJEXT) \
-	font.$(OBJEXT) game_config.$(OBJEXT) game_events.$(OBJEXT) \
-	gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
-	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
-	map_label.$(OBJEXT) map.$(OBJEXT) mapgen.$(OBJEXT) \
-	mapgen_dialog.$(OBJEXT) mouse.$(OBJEXT) network.$(OBJEXT) \
-	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
-	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
-	reports.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
-	sound.$(OBJEXT) statistics.$(OBJEXT) team.$(OBJEXT) \
-	terrain.$(OBJEXT) theme.$(OBJEXT) tooltips.$(OBJEXT) \
-	unit.$(OBJEXT) unit_display.$(OBJEXT) unit_types.$(OBJEXT) \
-	video.$(OBJEXT) button.$(OBJEXT) menu.$(OBJEXT) \
-	textbox.$(OBJEXT) scrollbar.$(OBJEXT) slider.$(OBJEXT) \
-	widget.$(OBJEXT)
+	editor_undo.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
+	ai_attack.$(OBJEXT) ai_move.$(OBJEXT) builder.$(OBJEXT) \
+	cavegen.$(OBJEXT) config.$(OBJEXT) cursor.$(OBJEXT) \
+	dialogs.$(OBJEXT) display.$(OBJEXT) events.$(OBJEXT) \
+	filesystem.$(OBJEXT) font.$(OBJEXT) game_config.$(OBJEXT) \
+	game_events.$(OBJEXT) gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) \
+	image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
+	language.$(OBJEXT) log.$(OBJEXT) map_label.$(OBJEXT) \
+	map.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
+	mouse.$(OBJEXT) network.$(OBJEXT) pathfind.$(OBJEXT) \
+	playlevel.$(OBJEXT) playturn.$(OBJEXT) preferences.$(OBJEXT) \
+	race.$(OBJEXT) replay.$(OBJEXT) reports.$(OBJEXT) \
+	sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) sound.$(OBJEXT) \
+	statistics.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
+	theme.$(OBJEXT) tooltips.$(OBJEXT) unit.$(OBJEXT) \
+	unit_display.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
+	button.$(OBJEXT) menu.$(OBJEXT) textbox.$(OBJEXT) \
+	scrollbar.$(OBJEXT) slider.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_editor_OBJECTS = $(am_wesnoth_editor_OBJECTS)
 wesnoth_editor_LDADD = $(LDADD)
 wesnoth_editor_DEPENDENCIES =
@@ -496,9 +496,9 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/editor_layout.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/editor_main.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/editor_palettes.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/events.Po ./$(DEPDIR)/filesystem.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/font.Po ./$(DEPDIR)/game.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/game_config.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/editor_undo.Po ./$(DEPDIR)/events.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/filesystem.Po ./$(DEPDIR)/font.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/game.Po ./$(DEPDIR)/game_config.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_events.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/gamestatus.Po ./$(DEPDIR)/hotkeys.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/image.Po ./$(DEPDIR)/intro.Po \
@@ -608,6 +608,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/editor_layout.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/editor_main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/editor_palettes.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/editor_undo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/events.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/filesystem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/font.Po@am__quote@
@@ -965,6 +966,28 @@ editor_dialogs.obj: editor/editor_dialogs.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/editor_dialogs.Po' tmpdepfile='$(DEPDIR)/editor_dialogs.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o editor_dialogs.obj `if test -f 'editor/editor_dialogs.cpp'; then $(CYGPATH_W) 'editor/editor_dialogs.cpp'; else $(CYGPATH_W) '$(srcdir)/editor/editor_dialogs.cpp'; fi`
+
+editor_undo.o: editor/editor_undo.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT editor_undo.o -MD -MP -MF "$(DEPDIR)/editor_undo.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o editor_undo.o `test -f 'editor/editor_undo.cpp' || echo '$(srcdir)/'`editor/editor_undo.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/editor_undo.Tpo" "$(DEPDIR)/editor_undo.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/editor_undo.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='editor/editor_undo.cpp' object='editor_undo.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/editor_undo.Po' tmpdepfile='$(DEPDIR)/editor_undo.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o editor_undo.o `test -f 'editor/editor_undo.cpp' || echo '$(srcdir)/'`editor/editor_undo.cpp
+
+editor_undo.obj: editor/editor_undo.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT editor_undo.obj -MD -MP -MF "$(DEPDIR)/editor_undo.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o editor_undo.obj `if test -f 'editor/editor_undo.cpp'; then $(CYGPATH_W) 'editor/editor_undo.cpp'; else $(CYGPATH_W) '$(srcdir)/editor/editor_undo.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/editor_undo.Tpo" "$(DEPDIR)/editor_undo.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/editor_undo.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='editor/editor_undo.cpp' object='editor_undo.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/editor_undo.Po' tmpdepfile='$(DEPDIR)/editor_undo.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o editor_undo.obj `if test -f 'editor/editor_undo.cpp'; then $(CYGPATH_W) 'editor/editor_undo.cpp'; else $(CYGPATH_W) '$(srcdir)/editor/editor_undo.cpp'; fi`
 uninstall-info-am:
 
 # This directory's subdirectories are mostly independent; you can cd
