@@ -213,8 +213,10 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		        possible_sides.front()->values["recruitment_pattern"];
 	}
 
-	(*level_)["objectives"] = "Victory:\n@Defeat enemy leader(s)\n";
-
+	if ((*level_)["objectives"] == "")
+	{
+		(*level_)["objectives"] = "Victory:\n@Defeat enemy leader(s)\n";
+	}
 
 	lists_init();
 	gui_init();
@@ -569,6 +571,7 @@ int mp_connect::gui_do()
 				si["description"] = string_table["ai_controlled"];
 				combos_type_[m].set_selected(2);
 			}
+			network::send_data(*level_);
 		}
 
 		launch_.enable(full_);
