@@ -1470,7 +1470,7 @@ int play_game(int argc, char** argv)
 			<< "  --nocache         Disables caching of game data\n";
  			return 0;
  		} else if(val == "--version" || val == "-v") {
- 			std::cout << "Battle for Wesnoth " << game_config::version
+ 			std::cout << _("Battle for Wesnoth") << " " << game_config::version
  			          << "\n";
  			return 0;
  		} else if(val == "--path") {
@@ -1503,6 +1503,44 @@ int play_game(int argc, char** argv)
 				}
 				p = q;
 			}
+		} else if(val == "--compress" || val == "--decompress") {
+			if(argc != arg+3) {
+				std::cerr << "format of " << val << " command: " << val << " <input file> <output file>\n";
+				return 0;
+			}
+
+			const std::string input(argv[arg+1]);
+			const std::string output(argv[arg+2]);
+
+			const std::string in(read_file(input));
+			if(in == "") {
+				std::cerr << "could not read file '" << input << "'\n";
+				return 0;
+			}
+
+			config cfg;
+
+			const bool compress = val == "--compress";
+			try {
+				const bool is_compressed = cfg.detect_format_and_read(in);
+				if(is_compressed && compress) {
+					std::cerr << input << " is already compressed\n";
+					return 0;
+				} else if(!is_compressed && !compress) {
+					std::cerr << input << " is already decompressed\n";
+					return 0;
+				}
+
+				const std::string res(compress ? cfg.write_compressed() : cfg.write());
+				write_file(output,res);
+
+			} catch(config::error& e) {
+				std::cerr << input << " is not a valid Wesnoth file: " << e.message << "\n";
+			} catch(io_exception& e) {
+				std::cerr << "IO error: " << e.what() << "\n";
+			}
+
+			return 0;
 		}
 	}
 
@@ -1656,7 +1694,7 @@ int main(int argc, char** argv)
 	} catch(end_level_exception&) {
 		std::cerr << "caught end_level_exception (quitting)\n";
 	} catch(std::bad_alloc&) {
-		std::cerr << "ran out of memory: game aborted\n";
+		std::cerr << "Ran out of memory. Aborted.\n";
 	} /*catch(...) {
 		std::cerr << "Unhandled exception. Exiting\n";
 	}*/

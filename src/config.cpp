@@ -1065,6 +1065,19 @@ void config::read_compressed(const std::string& data, compression_schema& schema
 	read_compressed_internal(data.begin(),data.end(),schema,0);
 }
 
+bool config::detect_format_and_read(const std::string& data)
+{
+	try {
+		compression_schema schema;
+		read_compressed(data,schema);
+		return true;
+	} catch(config::error&) {
+	}
+
+	read(data);
+	return false;
+}
+
 config::child_itors config::child_range(const std::string& key)
 {
 	child_map::iterator i = children.find(key);

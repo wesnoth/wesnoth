@@ -716,6 +716,11 @@ void set_show_fps(bool value)
 	fps = value;
 }
 
+bool compress_saves()
+{
+	return prefs["compress_saves"] != "no";
+}
+
 std::set<std::string> &encountered_units() {
 	return encountered_units_set;
 }

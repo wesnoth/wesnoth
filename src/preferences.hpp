@@ -149,6 +149,8 @@ namespace preferences {
 	bool show_fps();
 	void set_show_fps(bool value);
 
+	bool compress_saves();
+
 	std::set<std::string> &encountered_units();
 	std::set<std::string> &encountered_terrains();
 
