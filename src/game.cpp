@@ -270,7 +270,9 @@ int play_game(int argc, char** argv)
 	}
 
 	if(!no_gui) {
-		image::set_wm_icon();
+		#if !(defined(__APPLE__))
+                image::set_wm_icon();
+                #endif
 
 		int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 

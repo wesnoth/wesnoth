@@ -41,6 +41,7 @@ public:
 	void draw();
 
 	void set_x(int val);
+        int get_x() {return x_;}
 	void set_y(int val);
 	void set_xy(int valx, int valy);
 	void set_label(const std::string& val);
