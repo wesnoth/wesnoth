@@ -1189,6 +1189,10 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 			sprintf(buf,"misc/ellipse-%d-top.png",it->second.side());
 			const scoped_sdl_surface surf(image::get_image(buf));
 
+			if(surf == NULL) {
+				std::cerr << "could not open ellipse: '" << buf << "'\n";
+			}
+
 			if(surf != NULL) {
 				SDL_Surface* const dst = screen_.getSurface();
 				SDL_Rect rect = {xpos,ypos - height_adjust,surf->w,surf->h};

@@ -105,7 +105,13 @@ namespace {
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			config u;
 			i->first.write(u);
-			i->second.write(u);
+
+			static const std::string fields[] = {"type","hitpoints","experience","side",""};
+			config tmp;
+			i->second.write(tmp);
+			for(const std::string* f = fields; f->empty() == false; ++f) {
+				u[*f] = tmp[*f];
+			}
 
 			res.add_child("unit",u);
 		}
@@ -501,11 +507,14 @@ bool replay::empty()
 	return commands().empty();
 }
 
-void replay::add_config(const config& cfg)
+void replay::add_config(const config& cfg, MARK_SENT mark)
 {
 	for(config::const_child_itors i = cfg.child_range("command");
 	    i.first != i.second; ++i.first) {
-		cfg_.add_child("command",**i.first);
+		config& cfg = cfg_.add_child("command",**i.first);
+		if(mark == MARK_AS_SENT) {
+			cfg["sent"] = "yes";
+		}
 	}
 }
 

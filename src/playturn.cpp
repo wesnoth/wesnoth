@@ -2029,7 +2029,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			//throw e;
 		}
 
-		recorder.add_config(*cfg.child("turn"));
+		recorder.add_config(*cfg.child("turn"),replay::MARK_AS_SENT);
 	}
 
 	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;

@@ -83,7 +83,8 @@ public:
 	void clear();
 	bool empty();
 
-	void add_config(const config& cfg);
+	enum MARK_SENT { MARK_AS_UNSENT, MARK_AS_SENT };
+	void add_config(const config& cfg, MARK_SENT mark=MARK_AS_UNSENT);
 
 	int ncommands();
 

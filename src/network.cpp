@@ -16,7 +16,14 @@ SDLNet_SocketSet socket_set = 0;
 typedef std::vector<network::connection> sockets_list;
 sockets_list sockets;
 
-std::map<network::connection,compression_schema> schemas;
+struct schema_pair
+{
+	compression_schema incoming, outgoing;
+};
+
+typedef std::map<network::connection,schema_pair> schema_map;
+
+schema_map schemas;
 
 struct partial_buffer {
 	partial_buffer() : upto(0) {}
@@ -129,7 +136,7 @@ connection connect(const std::string& host, int port)
 
 		assert(sock != server_socket);
 		sockets.push_back(sock);
-		schemas.insert(std::pair<network::connection,compression_schema>(sock,compression_schema()));
+		schemas.insert(std::pair<network::connection,schema_pair>(sock,schema_pair()));
 	}
 
 	return sock;
@@ -150,7 +157,7 @@ connection accept_connection()
 
 		assert(sock != server_socket);
 		sockets.push_back(sock);
-		schemas.insert(std::pair<network::connection,compression_schema>(sock,compression_schema()));
+		schemas.insert(std::pair<network::connection,schema_pair>(sock,schema_pair()));
 	}
 
 	return sock;
@@ -268,10 +275,10 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 					throw network::error("sanity check on incoming data failed",*i);
 				}
 
-				const std::map<network::connection,compression_schema>::iterator schema = schemas.find(*i);
+				const schema_map::iterator schema = schemas.find(*i);
 				assert(schema != schemas.end());
 
-				cfg.read_compressed(buffer,schema->second);
+				cfg.read_compressed(buffer,schema->second.incoming);
 				return *i;
 			}
 		}
@@ -321,11 +328,11 @@ void send_data(const config& cfg, connection connection_num, size_t max_size)
 
 	assert(connection_num != server_socket);
 
-	const std::map<network::connection,compression_schema>::iterator schema = schemas.find(connection_num);
+	const schema_map::iterator schema = schemas.find(connection_num);
 	assert(schema != schemas.end());
 
 	std::string value(4,'x');
-	value += cfg.write_compressed(schema->second);
+	value += cfg.write_compressed(schema->second.outgoing);
 
 	char buf[4];
 	SDLNet_Write32(value.size()+1-4,buf);
