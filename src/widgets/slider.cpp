@@ -18,26 +18,48 @@
 #include <algorithm>
 #include <iostream>
 
+namespace {
+	const std::string slider_image = "buttons/slider.png";
+	const std::string selected_image = "buttons/slider-selected.png";
+}
+
 namespace gui {
 
 slider::slider(display& disp, SDL_Rect& rect, double value)
-: disp_(disp), image_(image::get_image("buttons/slider.png",image::UNSCALED)),
- selectedImage_(image::get_image("buttons/slider-selected.png",image::UNSCALED)),
+: disp_(&disp),
  buffer_(NULL), area_(rect), value_(value), drawn_(false),
  highlight_(false), clicked_(true), dragging_(false)
 {
 	background_changed();
+}
 
-	if(selectedImage_ == NULL) {
-		std::cerr << "defaulting to normal image\n";
-		selectedImage_ = image_;
-	}
+slider::slider(const slider& o) :
+   disp_(o.disp_),
+   buffer_(NULL),
+   area_(o.area_), value_(o.value_), drawn_(o.drawn_), highlight_(o.highlight_),
+   clicked_(o.clicked_), dragging_(o.dragging_)
+{
+	   background_changed();
+}
+
+slider& slider::operator=(const slider& o)
+{
+	disp_ = o.disp_;
+	buffer_.assign(NULL);
+	area_ = o.area_;
+	value_ = o.value_;
+	drawn_ = o.drawn_;
+	highlight_ = o.highlight_;
+	clicked_ = o.clicked_;
+	dragging_ = o.dragging_;
+	background_changed();
+
+	return *this;
 }
 
 int slider::height(display& disp)
 {
-	SDL_Surface* const image = image::get_image("buttons/slider.png",
-	                                         image::UNSCALED);
+	SDL_Surface* const image = image::get_image(slider_image,image::UNSCALED);
 	if(image != NULL)
 		return image->h;
 	else
@@ -48,15 +70,15 @@ void slider::draw()
 {
 	drawn_ = true;
 
-	SDL_Surface* const image = highlight_ ? selectedImage_ : image_;
-	if(image == NULL || buffer_.get() == NULL)
+	SDL_Surface* const image = image::get_image(highlight_ ? selected_image : slider_image,image::UNSCALED);
+	if(image == NULL || buffer_ == NULL)
 		return;
 
 	const int hpadding = image->w/2;
 	if(hpadding*2 >= area_.w)
 		return;
 
-	SDL_Surface* const screen = disp_.video().getSurface();
+	SDL_Surface* const screen = disp_->video().getSurface();
 
 	SDL_BlitSurface(buffer_,NULL,screen,&area_);
 
@@ -67,14 +89,15 @@ void slider::draw()
 	std::fill(line_dest,line_dest+area_.w-hpadding*2,0xFFFF);
 
 	SDL_Rect slider = slider_area();
-	disp_.blit_surface(slider.x,slider.y,image);
+	disp_->blit_surface(slider.x,slider.y,image);
 
 	update_rect(area_);
 }
 
 double slider::process(int mousex, int mousey, bool button)
 {
-	if(image_ == NULL)
+	SDL_Surface* const img = image::get_image(slider_image,image::UNSCALED);
+	if(img == NULL)
 		return 0.0;
 
 	bool should_draw = !drawn_;
@@ -102,8 +125,8 @@ double slider::process(int mousex, int mousey, bool button)
 	double new_value = value_;
 
 	if(dragging_) {
-		new_value = double(mousex - (area_.x + image_->w/2))/
-		            double(area_.w - image_->w);
+		new_value = double(mousex - (area_.x + img->w/2))/
+		            double(area_.w - img->w);
 		if(new_value < 0.0)
 			new_value = 0.0;
 
@@ -125,24 +148,26 @@ double slider::process(int mousex, int mousey, bool button)
 SDL_Rect slider::slider_area() const
 {
 	static const SDL_Rect default_value = {0,0,0,0};
-	if(image_ == NULL)
+	SDL_Surface* const img = image::get_image(slider_image,image::UNSCALED);
+	if(img == NULL)
 		return default_value;
 
-	const int hpadding = image_->w/2;
+	const int hpadding = img->w/2;
 	if(hpadding*2 >= area_.w)
 		return default_value;
 
 	const int position = int(value_*double(area_.w - hpadding*2));
 	const int xpos = area_.x + position;
-	SDL_Rect res = {xpos,area_.y,image_->w,image_->h};
+	SDL_Rect res = {xpos,area_.y,img->w,img->h};
 	return res;
 }
 
 void slider::background_changed()
 {
-	if(image_ != NULL) {
-		area_.h = image_->h;
-		buffer_.assign(get_surface_portion(disp_.video().getSurface(),area_));
+	SDL_Surface* const img = image::get_image(slider_image,image::UNSCALED);
+	if(img != NULL) {
+		area_.h = img->h;
+		buffer_.assign(get_surface_portion(disp_->video().getSurface(),area_));
 	}
 }
 

@@ -24,8 +24,7 @@ namespace gui {
 
 class slider
 {
-	display& disp_;
-	SDL_Surface* image_, *selectedImage_;
+	display* disp_;
 	scoped_sdl_surface buffer_;
 	SDL_Rect area_;
 
@@ -39,6 +38,8 @@ class slider
 
 public:
 	slider(display& disp, SDL_Rect& rect, double value);
+	slider(const slider& o);
+	slider& operator=(const slider& o);
 
 	static int height(display& disp);
 

@@ -262,6 +262,19 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		screen->draw(true,true);
 	}
 
+	const config* scroll_to = cfg->child("scroll_to_unit");
+	if(scroll_to != NULL) {
+		unit_map::const_iterator u;
+		for(u = units->begin(); u != units->end(); ++u){
+			if(u->second.matches_filter(*scroll_to))
+				break;
+		}
+
+		if(u != units->end()) {
+			screen->scroll_to_tile(u->first.x,u->first.y);
+		}
+	}
+
 	//an award of gold to a particular side
 	std::vector<config*>& gold = cfg->children["gold"];
 	for(std::vector<config*>::iterator gd = gold.begin(); gd!=gold.end();++gd) {
