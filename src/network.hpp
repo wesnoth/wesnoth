@@ -70,12 +70,27 @@ void queue_disconnect(connection connection_num);
 connection receive_data(config& cfg, connection connection_num=0,
 						int timeout=0);
 
+//sets the default maximum number of bytes to send to a client at a time
+void set_default_send_size(size_t send_size);
+
 //function to send data down a given connection, or broadcast
 //to all peers if connection_num is 0. throws error.
-void send_data(const config& cfg, connection connection_num=0);
+//it will send a maximum of 'max_size' bytes. If cfg when serialized is more than
+//'max_size' bytes, then any remaining bytes will be appended to the connection's
+//send queue. Also if there is data already in the send queue, then it will be
+//appended to the send queue, and max_size bytes in the send queue will be sent.
+//if 'max_size' is 0, then the entire contents of the send_queue as well as 'cfg'
+//will be sent.
+//
+//data in the send queue can be sent using process_send_queue
+void send_data(const config& cfg, connection connection_num=0, size_t max_size=0);
+
+//function to send any data that is in a connection's send_queue, up to a maximum
+//of 'max_size' bytes -- or the entire send queue if 'max_size' bytes is 0
+void process_send_queue(connection connection_num=0, size_t max_size=0);
 
 //function to send data to all peers except 'connection_num'
-void send_data_all_except(const config& cfg, connection connection_num);
+void send_data_all_except(const config& cfg, connection connection_num, size_t max_size=0);
 
 //function to see the number of bytes being processed on the current socket
 std::pair<int,int> current_transfer_stats();

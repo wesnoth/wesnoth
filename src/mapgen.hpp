@@ -35,7 +35,7 @@ public:
 
 map_generator* create_map_generator(const std::string& name, const config* cfg);
 
-std::string default_generate_map(size_t width, size_t height,
+std::string default_generate_map(size_t width, size_t height, size_t island_size,
                                  size_t iterations, size_t hill_size,
 						         size_t max_lakes, size_t nvillages, size_t nplayers,
 						         const config& cfg);

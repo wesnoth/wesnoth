@@ -28,6 +28,9 @@ typedef std::map<network::connection,partial_buffer> partial_map;
 partial_map received_data;
 partial_map::const_iterator current_connection = received_data.end();
 
+typedef std::multimap<network::connection,partial_buffer> send_queue_map;
+send_queue_map send_queue;
+
 TCPsocket server_socket;
 
 std::deque<network::connection> disconnection_queue;
@@ -280,10 +283,27 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 	return receive_data(cfg,connection_num,time_left);
 }
 
-void send_data(const config& cfg, connection connection_num)
+namespace {
+	size_t default_max_send_size = 0;
+}
+
+void set_default_send_size(size_t max_size)
+{
+	default_max_send_size = max_size;
+}
+
+void send_data(const config& cfg, connection connection_num, size_t max_size)
 {
 	if(bad_sockets.count(connection_num) || bad_sockets.count(0))
 		return;
+
+	if(max_size == 0) {
+		max_size = default_max_send_size;
+	}
+
+	if(max_size > 0 && max_size < 8) {
+		max_size = 8;
+	}
 
 	log_scope("sending data");
 	if(!connection_num) {
@@ -311,25 +331,92 @@ void send_data(const config& cfg, connection connection_num)
 	SDLNet_Write32(value.size()+1-4,buf);
 	std::copy(buf,buf+4,value.begin());
 
-	std::cerr << "sending " << (value.size()+1) << " bytes\n";
-	const int res = SDLNet_TCP_Send(connection_num,
-	                                const_cast<char*>(value.c_str()),
-	                                value.size()+1);
+	//if the data is less than our maximum chunk, and there is no data queued to send
+	//to this host, then send all data now
+	if((max_size == 0 || value.size()+1 <= max_size) && send_queue.count(connection_num) == 0) {
+		std::cerr << "sending " << (value.size()+1) << " bytes\n";
+		const int res = SDLNet_TCP_Send(connection_num,
+		                                const_cast<char*>(value.c_str()),
+		                                value.size()+1);
 
-	if(res < int(value.size()+1)) {
-		std::cerr << "sending data failed: " << res << "/" << value.size() << "\n";
-		throw error("Could not send data over socket",connection_num);
+		if(res < int(value.size()+1)) {
+			std::cerr << "sending data failed: " << res << "/" << value.size() << "\n";
+			throw error("Could not send data over socket",connection_num);
+		}
+	} else {
+		std::cerr << "cannot send all " << (value.size()+1) << " bytes at once. Placing in send queue.\n";
+		//place the data in the send queue
+		const send_queue_map::iterator itor =
+		     send_queue.insert(std::pair<network::connection,partial_buffer>(connection_num,partial_buffer()));
+
+		itor->second.buf.resize(value.size()+1);
+		std::copy(value.begin(),value.end(),itor->second.buf.begin());
+		itor->second.buf.back() = 0;
+
+		process_send_queue(connection_num,max_size);
 	}
 }
 
-void send_data_all_except(const config& cfg, connection connection_num)
+void process_send_queue(connection connection_num, size_t max_size)
+{
+	if(connection_num == 0) {
+		for(sockets_list::iterator i = sockets.begin(); i != sockets.end(); ++i) {
+			process_send_queue(*i,max_size);
+		}
+
+		return;
+	}
+
+	if(max_size == 0) {
+		max_size = default_max_send_size;
+	}
+	
+	if(max_size != 0 && max_size < 8) {
+		max_size = 8;
+	}
+
+	std::pair<send_queue_map::iterator,send_queue_map::iterator> itor = send_queue.equal_range(connection_num);
+	if(itor.first != itor.second) {
+		std::vector<char>& buf = itor.first->second.buf;
+		size_t& upto = itor.first->second.upto;
+
+		size_t bytes_to_send = buf.size() - upto;
+		if(max_size != 0 && bytes_to_send > max_size) {
+			bytes_to_send = max_size;
+		}
+
+		std::cerr << "sending " << bytes_to_send << " from send queue\n";
+
+		const int res = SDLNet_TCP_Send(connection_num,&buf[upto],bytes_to_send);
+		if(res < int(bytes_to_send)) {
+			std::cerr << "sending data failed: " << res << "/" << bytes_to_send << "\n";
+			throw error("Sending queued data failed",connection_num);
+		}
+
+		upto += bytes_to_send;
+
+		//if we've now sent the entire item, erase it from the send queue
+		if(upto == buf.size()) {
+			std::cerr << "erasing item from the send queue\n";
+			send_queue.erase(itor.first);
+		}
+
+		//if we haven't sent 'max_size' bytes yet, try to go onto the next item in
+		//the queue by recursing
+		if(bytes_to_send < max_size || max_size == 0) {
+			process_send_queue(connection_num,max_size-bytes_to_send);
+		}
+	}
+}
+
+void send_data_all_except(const config& cfg, connection connection_num, size_t max_size)
 {
 	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
 		if(*i == connection_num)
 			continue;
 
 		assert(*i && *i != server_socket);
-		send_data(cfg,*i);
+		send_data(cfg,*i,max_size);
 	}
 }
 

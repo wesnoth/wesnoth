@@ -289,7 +289,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			if((**s)["controller"] == "network" &&
 			   (**s)["taken"] != "yes") {
 				choice_map[choices.size()] = 1 + s - sides_list.begin();
-				choices.push_back((**s)["name"] + "," + (**s)["type"]);
+				choices.push_back((**s)["name"] + "," + (**s)["type"] + "," + (**s)["description"]);
 			}
 
 			race_names.push_back((**s)["name"]);

@@ -1085,7 +1085,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 
 	//see if there is a unit on this tile
 	const unit_map::const_iterator it = units_.find(gamemap::location(x,y));
-	if(it != units_.end() && it->second.hitpoints() > 0 && (loc != hiddenUnit_ || !hideEnergy_)) {
+	if(it != units_.end() && (loc != hiddenUnit_ || !hideEnergy_)) {
 		if(unit_image == NULL)
 			unit_image.assign(image::get_image(it->second.image(),it->second.stone() ? image::GREYED : image::SCALED));
 

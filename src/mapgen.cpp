@@ -66,10 +66,17 @@ typedef std::vector<std::vector<char> > terrain_map;
 //The size of each hill varies randomly from 1-hill_size.
 //we generate 'iterations' hills in total.
 //the range of heights is normalized to 0-1000
+//'island_size' controls whether or not the map should tend toward an island shape, and if
+//so, how large the island should be. Hills will not have centers that are more than 'island_size'
+//away from the center of the map. 'island_size' as 0 will allow hills anywhere.
 height_map generate_height_map(size_t width, size_t height,
-                               size_t iterations, size_t hill_size)
+                               size_t iterations, size_t hill_size,
+							   size_t island_size)
 {
 	height_map res(width,std::vector<int>(height,0));
+
+	const size_t center_x = width/2;
+	const size_t center_y = height/2;
 
 	for(size_t i = 0; i != iterations; ++i) {
 
@@ -82,8 +89,27 @@ height_map generate_height_map(size_t width, size_t height,
 		//a rectangle that contains all the positive values for this formula --
 		//the rectangle is given by min_x,max_x,min_y,max_y
 
-		const int x1 = int(rand()%width);
-		const int y1 = int(rand()%height);
+		int x1 = 0, y1 = 0, tries = 0;
+		bool valid_values = false;
+
+		while(!valid_values && tries < 20) {
+
+			x1 = island_size > 0 ? center_x - island_size + (rand()%(island_size*2)) :
+			                                 int(rand()%width);
+			y1 = island_size > 0 ? center_y - island_size + (rand()%(island_size*2)) :
+			                                 int(rand()%height);
+			if(island_size == 0) {
+				valid_values = true;
+			} else {
+				const size_t diffx = abs(x1 - center_x);
+				const size_t diffy = abs(y1 - center_y);
+				const size_t dist = size_t(sqrt(double(diffx*diffx + diffy*diffy)));
+				valid_values = dist < island_size;
+			}
+
+			++tries;
+		}
+
 		const int radius = rand()%hill_size + 1;
 
 		const int min_x = x1 - radius > 0 ? x1 - radius : 0;
@@ -451,7 +477,7 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 }
 
 //function to generate the map.
-std::string default_generate_map(size_t width, size_t height,
+std::string default_generate_map(size_t width, size_t height, size_t island_size,
                                  size_t iterations, size_t hill_size,
 						         size_t max_lakes, size_t nvillages, size_t nplayers,
 						         const config& cfg)
@@ -478,7 +504,7 @@ std::string default_generate_map(size_t width, size_t height,
 	height *= 3;
 	
 	//generate the height of everything.
-	const height_map heights = generate_height_map(width,height,iterations,hill_size);
+	const height_map heights = generate_height_map(width,height,iterations,hill_size,20);
 
 	//the configuration file should contain a number of [height] tags:
 	//[height]
@@ -534,7 +560,7 @@ std::string default_generate_map(size_t width, size_t height,
 	//of height and terrain to divide flatland up into more interesting types than the default
 	const height_map temperature_map = generate_height_map(width,height,
 	                                                       atoi(cfg["temperature_iterations"].c_str()),
-														   atoi(cfg["temperature_size"].c_str()));
+														   atoi(cfg["temperature_size"].c_str()),0);
 
 	std::cerr << "generated temperature map...\n";
 

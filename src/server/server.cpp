@@ -69,6 +69,8 @@ void server::run()
 
 	for(;;) {
 		try {
+			network::process_send_queue();
+
 			network::connection sock = network::accept_connection();
 			if(sock) {
 				network::send_data(login_response_,sock);
@@ -370,13 +372,18 @@ int main(int argc, char** argv)
 {
 	int port = 15000;
 
+	network::set_default_send_size(4096);
+
 	for(int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if(val.empty()) {
 			continue;
 		}
 
-		if(val == "--port" || val == "-p") {
+		if((val == "--max_packet_size" || val == "-m") && arg+1 != argc) {
+			network::set_default_send_size(size_t(atoi(argv[++arg])));
+		}
+		else if((val == "--port" || val == "-p") && arg+1 != argc) {
 			port = atoi(argv[++arg]);
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]

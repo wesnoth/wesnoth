@@ -16,7 +16,7 @@ public:
 	std::string create_map(const std::vector<std::string>& args);
 
 private:
-	size_t width_, height_, iterations_, hill_size_, max_lakes_, nvillages_, nplayers_;
+	size_t width_, height_, island_size_, iterations_, hill_size_, max_lakes_, nvillages_, nplayers_;
 	const config* cfg_;
 };
 
