@@ -503,7 +503,7 @@ std::string config::write() const
 	for(std::map<std::string,std::string>::const_iterator i = values.begin();
 					i != values.end(); ++i) {
 		if(i->second.empty() == false) {
-			res += i->first + "=" + i->second + "\n";
+			res += i->first + "=\"" + i->second + "\"\n";
 		}
 	}
 

@@ -788,7 +788,7 @@ int combat_modifier(const gamestatus& status,
 	else if(alignment == unit_type::CHAOTIC)
 		bonus = -bonus;
 
-	return 1.0 + static_cast<double>(bonus)/100.0;
+	return bonus;
 }
 
 size_t move_unit(display* disp, const gamemap& map,
