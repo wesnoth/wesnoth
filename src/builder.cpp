@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -119,7 +119,9 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 		for(flag = cons2->second.no_flag.begin(); flag != cons2->second.no_flag.end(); flag++) {
 			replace_rotation(*flag, angle_name);
 		}
-		
+		for(flag = cons2->second.has_flag.begin(); flag != cons2->second.has_flag.end(); flag++) {
+			replace_rotation(*flag, angle_name);
+		}
 	}
 
 	replace_rotation(ret.image_foreground, angle_name);
@@ -128,26 +130,36 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	return ret;
 }
 
+void terrain_builder::add_constraint_item(std::vector<std::string> &list, const std::string &item)
+{
+	if(!item.empty())
+		list.push_back(item);
+}
+
 void terrain_builder::add_constraints(std::map<gamemap::location, terrain_builder::terrain_constraint> & constraints, 
-				      const gamemap::location& loc, const std::string& type,
-				      const std::string& set_flag, const std::string& no_flag)
+				      const gamemap::location& loc, const std::string& type)
 {
 	if(constraints.find(loc) == constraints.end()) {
 		//the terrain at the current location did not exist, so create it
 		constraints[loc] = terrain_constraint(loc);
 	}
 
-	//Add terrain properties here
 	if(type.size())
-		constraints[loc].terrain_types = type;
-	if(set_flag.size())
-		constraints[loc].set_flag.push_back(set_flag);
-	if(no_flag.size())
-		constraints[loc].set_flag.push_back(no_flag);			
+		constraints[loc].terrain_types = type;			
+}
+
+void terrain_builder::add_constraints(std::map<gamemap::location, terrain_builder::terrain_constraint> &constraints, 
+				      const gamemap::location& loc, const config& cfg)
+{
+	add_constraints(constraints, loc, cfg["type"]);
+
+	add_constraint_item(constraints[loc].set_flag, cfg["set_flag"]);
+	add_constraint_item(constraints[loc].has_flag, cfg["has_flag"]);
+	add_constraint_item(constraints[loc].no_flag, cfg["no_flag"]);		
 }
 
 void terrain_builder::parse_mapstring(const std::string &mapstring, struct building_rule &br,
-				      std::map<int, gamemap::location>& anchors)
+				      anchormap& anchors)
 {
 	int lineno = 0;
 	int x = 0;
@@ -180,13 +192,17 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 		}
 
 		while(lpos < line->size()) {
-			const std::string types = line->substr(lpos, 4);
+			std::string types = line->substr(lpos, 4);
+			config::strip(types);
+			
 			std::cerr << types << "/";
 			
 			//If there are numbers in the types string, consider it is an anchor
-			if(types.find_first_of("0123456789") != std::string::npos) {
+			if(types[0] == '.') {
+				// Dots are simple placeholders, which do not represent actual terrains.
+			} else if(types.find_first_of("0123456789") != std::string::npos) {
 				int anchor = atoi(types.c_str());
-				anchors[anchor] = gamemap::location(x, lineno / 2);
+				anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, lineno / 2)));
 			} else {
 				const gamemap::location loc(x, lineno / 2);
 				add_constraints(br.constraints, loc, types);
@@ -214,15 +230,14 @@ void terrain_builder::parse_config(const config &cfg)
 		pbr.image_foreground = (**br)["image_foreground"];
 		pbr.image_background = (**br)["image_background"];
 	
-		//Mapping anchor indices to anchor locations. Using a map for simplicity, but should
-		//change it to a vector if it proves to be slow
-		std::map<int, gamemap::location> anchors;
+		//Mapping anchor indices to anchor locations. 
+		anchormap anchors;
 		
 		// Parse the map= , if there is one (and fill the anchors list)
 		parse_mapstring((**br)["map"], pbr, anchors);
 
 		// Parses the terrain constraints (TCs)
-		config::child_list tcs((*br)->get_children("terrain"));
+		config::child_list tcs((*br)->get_children("tile"));
 		
 		for(config::child_list::const_iterator tc = tcs.begin(); tc != tcs.end(); tc++) {
 			//Adds the terrain constraint to the current built terrain's list of terrain 
@@ -234,25 +249,29 @@ void terrain_builder::parse_config(const config &cfg)
 			if((**tc)["y"].size()) {
 				loc.y = atoi((**tc)["y"].c_str());
 			} 
+			if(loc.valid()) {
+				add_constraints(pbr.constraints, loc, **tc);
+			}
 			if((**tc)["pos"].size()) {
 				int pos = atoi((**tc)["pos"].c_str());
 				if(anchors.find(pos) == anchors.end()) {
 					std::cerr << "Invalid anchor!\n";
 					continue;
 				}
-				loc = anchors[pos];
-			}
-			if(!loc.valid()) {
-				//Todo: Change the following by a decent debug message
-				std::cerr << "Built terrain without position!\n";
-				continue;
-			}
 
-			add_constraints(pbr.constraints, loc, (**tc)["type"], (**tc)["set_flag"], (**tc)["no_flag"]);
+				std::pair<anchormap::const_iterator, anchormap::const_iterator> range =
+					anchors.equal_range(pos);
+				
+				for(; range.first != range.second; range.first++) {
+					loc = range.first->second;
+					add_constraints(pbr.constraints, loc, **tc);
+				}					
+			}
 		}
 
 		const std::string global_set_flag = (**br)["set_flag"];
 		const std::string global_no_flag = (**br)["no_flag"];
+		const std::string global_has_flag = (**br)["has_flag"];
 		
 		for(building_rule::constraint_set::iterator constraint = pbr.constraints.begin(); constraint != pbr.constraints.end();
 		    constraint++) {
@@ -262,6 +281,10 @@ void terrain_builder::parse_config(const config &cfg)
 			
 			if(global_no_flag.size())
 				constraint->second.no_flag.push_back(global_no_flag);
+			
+			if(global_has_flag.size())
+				constraint->second.has_flag.push_back(global_has_flag);
+
 		}
 
 		// Handles rotations
@@ -279,7 +302,7 @@ void terrain_builder::parse_config(const config &cfg)
 	}
 }
 
-bool terrain_builder::rule_matches(const  terrain_builder::building_rule &rule, const gamemap::location &loc)
+bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, const gamemap::location &loc)
 {
 	if(rule.location_constraints.valid() && rule.location_constraints != loc)
 		return false;
@@ -292,7 +315,7 @@ bool terrain_builder::rule_matches(const  terrain_builder::building_rule &rule, 
 		if(!map_.on_board(tloc))
 			return false;
 		
-		tile& btile = tile_map_[tloc];
+		const tile& btile = tile_map_[tloc];
 
 		if(!map_.get_terrain_info(tloc).matches(cons->second.terrain_types))
 			return false;
@@ -302,6 +325,13 @@ bool terrain_builder::rule_matches(const  terrain_builder::building_rule &rule, 
 			
 			//If a flag listed in "no_flag" is present, the rule does not match
 			if(btile.flags.find(*itor) != btile.flags.end())
+				return false;
+		}
+		for(std::vector<std::string>::const_iterator itor = cons->second.has_flag.begin(); 
+		    itor != cons->second.has_flag.end(); itor++) {
+			
+			//If a flag listed in "has_flag" is not present, this rule does not match
+			if(btile.flags.find(*itor) == btile.flags.end())
 				return false;
 		}
 	}
@@ -366,11 +396,13 @@ void terrain_builder::build_terrains()
 
 	}
 
-	for(int x = -1; x <= map_.x(); ++x) {
-		for(int y = -1; y <= map_.y(); ++y) {
-			for(building_ruleset::const_iterator rule = building_rules_.begin();
-			    rule != building_rules_.end(); ++rule) {
-				
+	log_scope("terrain_builder::build_terrains");
+
+	for(building_ruleset::const_iterator rule = building_rules_.begin();
+	    rule != building_rules_.end(); ++rule) {
+
+		for(int x = -1; x <= map_.x(); ++x) {
+			for(int y = -1; y <= map_.y(); ++y) {
 				const gamemap::location loc(x,y);
 				if(rule_matches(*rule, loc))
 					apply_rule(*rule, loc);

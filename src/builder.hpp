@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -48,6 +48,7 @@ private:
 		std::string terrain_types;
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
+		std::vector<std::string> has_flag;
 	};
 
 	struct building_rule
@@ -84,11 +85,16 @@ private:
 	void replace_rotation(std::string &s, const std::string &replacement);
 
 	building_rule rotate_rule(const building_rule &rule, int angle, const std::string &angle_name);
+
+	void add_constraint_item(std::vector<std::string> &list, const std::string &item);
 	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints,
-			     const gamemap::location &loc, const std::string& type,
-			     const std::string& set_flag = "", const std::string& no_flag = "");
+			     const gamemap::location &loc, const std::string& type);
+	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints, const gamemap::location &loc,
+			     const config &cfg);
+
+	typedef std::multimap<int, gamemap::location> anchormap;
 	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
-			     std::map<int, gamemap::location>& anchors);
+			     anchormap& anchors);
 	
 	void parse_config(const config &cfg);
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc);
