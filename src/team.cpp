@@ -511,3 +511,16 @@ int team::nteams()
 		return teams->size();
 	}
 }
+
+const std::set<gamemap::location> vacant_towers(const std::set<gamemap::location>& towers, const unit_map& units)
+{
+	std::set<gamemap::location> res;
+	
+	for(std::set<gamemap::location>::const_iterator i = towers.begin(); i != towers.end(); ++i) {
+		if(units.count(*i) == 0) {
+			res.insert(*i);
+		}
+	}
+
+	return res;
+}

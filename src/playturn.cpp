@@ -92,8 +92,15 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		unit u = ui->second;
 		const shortest_path_calculator calc(u,current_team,units,map);
 
-		const std::set<gamemap::location>* const teleports =
-		     u.type().teleports() ? &current_team.towers() : NULL;
+		const std::set<gamemap::location>* teleports = NULL;
+
+		std::set<gamemap::location> allowed_teleports;
+		if(u.type().teleports()) {
+			allowed_teleports = vacant_towers(current_team.towers(),units);
+			teleports = &allowed_teleports;
+			if(current_team.towers().count(ui->first))
+				allowed_teleports.insert(ui->first);
+		}
 
 		paths::route route = a_star_search(ui->first,ui->second.get_goto(),
 		                                   10000.0,calc,teleports);
@@ -275,8 +282,15 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 				                                    units_,map_);
 				const bool can_teleport = un->second.type().teleports();
 
-				const std::set<gamemap::location>* const teleports =
-				     can_teleport ? &current_team.towers() : NULL;
+				const std::set<gamemap::location>* teleports = NULL;
+
+				std::set<gamemap::location> allowed_teleports;
+				if(can_teleport) {
+					allowed_teleports = vacant_towers(current_team.towers(),units_);
+					teleports = &allowed_teleports;
+					if(current_team.towers().count(un->first))
+						allowed_teleports.insert(un->first);
+				}
 
 				current_route_ = a_star_search(selected_hex_,new_hex,
 				                               10000.0,calc,teleports);
@@ -594,8 +608,16 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				const shortest_path_calculator calc(u,current_team,
 				                                    units_,map_);
 
-				const std::set<gamemap::location>* const teleports =
-				        teleport ? &current_team.towers() : NULL;
+				const std::set<gamemap::location>* teleports = NULL;
+
+				std::set<gamemap::location> allowed_teleports;
+				if(u.type().teleports()) {
+					allowed_teleports = vacant_towers(current_team.towers(),units_);
+					teleports = &allowed_teleports;
+					if(current_team.towers().count(it->first))
+						allowed_teleports.insert(it->first);
+
+				}
 
 				paths::route route = a_star_search(it->first,go_to,
 				                               10000.0,calc,teleports);

@@ -25,26 +25,20 @@
 #include <iostream>
 #include <set>
 
-namespace {
-
 const int max_positions = 10000;
 
-using namespace ai;
-
 //analyze possibility of attacking target on 'loc'
-void do_analysis(
-                 const gamemap& map,
-                 const location& loc,
-                 const move_map& srcdst, const move_map& dstsrc,
-                 const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
-				 const location* tiles, bool* used_locations,
-                 std::vector<location>& units,
-				 std::map<gamemap::location,unit>& units_map,
-                 std::vector<attack_analysis>& result,
-				 const game_data& data, const gamestatus& status,
-				 attack_analysis& cur_analysis
-                )
+void ai::do_attack_analysis(
+	                 const location& loc,
+	                 const move_map& srcdst, const move_map& dstsrc,
+	                 const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
+					 const location* tiles, bool* used_locations,
+	                 std::vector<location>& units,
+	                 std::vector<attack_analysis>& result,
+					 attack_analysis& cur_analysis
+	                )
 {
+	std::cerr << "doing attack analysis...\n";
 	if(cur_analysis.movements.size() >= 4)
 		return;
 
@@ -93,28 +87,27 @@ void do_analysis(
 			if(its.first == its.second)
 				continue;
 
-			cur_analysis.movements.push_back(
-			           std::pair<location,location>(current_unit,tiles[j]));
+			cur_analysis.movements.push_back(std::pair<location,location>(current_unit,tiles[j]));
 
 			//find out how vulnerable we are to attack from enemy units in this hex
-			const double vulnerability = power_projection(tiles[j],enemy_srcdst,enemy_dstsrc,units_map,map);
+			const double vulnerability = power_projection(tiles[j],enemy_srcdst,enemy_dstsrc);
 			cur_analysis.vulnerability += vulnerability;
 
 			//calculate how much support we have on this hex from allies. Support does not
 			//take into account terrain, because we don't want to move into a hex that is
 			//surrounded by good defensive terrain
-			const double support = power_projection(tiles[j],srcdst,dstsrc,units_map,map,false);
+			const double support = power_projection(tiles[j],srcdst,dstsrc,false);
 			cur_analysis.support += support;
 
-			cur_analysis.analyze(map,units_map,status,data,50);
+			cur_analysis.analyze(map_,units_,state_,gameinfo_,50,*this);
 
 			if(cur_analysis.rating(0.0) > rating_to_beat) {
 
 				result.push_back(cur_analysis);
 				used_locations[j] = true;
-				do_analysis(map,loc,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
-				            tiles,used_locations,
-				            units,units_map,result,data,status,cur_analysis);
+				do_attack_analysis(loc,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
+				                   tiles,used_locations,
+				                   units,result,cur_analysis);
 				used_locations[j] = false;
 			}
 
@@ -128,9 +121,6 @@ void do_analysis(
 	}
 }
 
-}
-
-namespace ai {
 
 struct battle_type {
 	battle_type(const gamemap::location& a, const gamemap::location& d,
@@ -161,21 +151,18 @@ bool operator==(const battle_type& a, const battle_type& b)
 
 std::set<battle_type> weapon_choice_cache;
 
-int choose_weapon(const gamemap& map, std::map<location,unit>& units,
-                  const gamestatus& status, const game_data& info,
-				  const location& att, const location& def,
-				  battle_stats& cur_stats, gamemap::TERRAIN terrain)
+int ai::choose_weapon(const location& att, const location& def,
+					  battle_stats& cur_stats, gamemap::TERRAIN terrain)
 {
-	const std::map<location,unit>::const_iterator itor = units.find(att);
-	if(itor == units.end())
+	const std::map<location,unit>::const_iterator itor = units_.find(att);
+	if(itor == units_.end())
 		return -1;
 
 	static int cache_hits = 0;
 	static int cache_misses = 0;
 
 	battle_type battle(att,def,terrain);
-	const std::set<battle_type>::const_iterator cache_itor
-	                           = weapon_choice_cache.find(battle);
+	const std::set<battle_type>::const_iterator cache_itor = weapon_choice_cache.find(battle);
 
 	if(cache_itor != weapon_choice_cache.end()) {
 		assert(*cache_itor == battle);
@@ -203,13 +190,13 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 	const std::vector<attack_type>& attacks = itor->second.attacks();
 	assert(!attacks.empty());
 
-	const std::map<location,unit>::const_iterator d_itor = units.find(def);
+	const unit_map::const_iterator d_itor = units_.find(def);
 	int d_hitpoints = d_itor->second.hitpoints();
 	int a_hitpoints = itor->second.hitpoints();
 	
 	for(size_t a = 0; a != attacks.size(); ++a) {
-		const battle_stats stats = evaluate_battle_stats(map,att,def,a,units,
-		                                          status,info,terrain,false);
+		const battle_stats stats = evaluate_battle_stats(map_,att,def,a,units_,
+		                                                 state_,gameinfo_,terrain,false);
 
 		//TODO: improve this rating formula!
 		const double rating =
@@ -233,12 +220,12 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 	return current_choice;
 }
 
-void attack_analysis::analyze(const gamemap& map,
-                              std::map<location,unit>& units,
-							  const gamestatus& status,
-							  const game_data& info, int num_sims)
+void ai::attack_analysis::analyze(const gamemap& map,
+                                  unit_map& units,
+						 	      const gamestatus& status,
+							      const game_data& info, int num_sims, ai& ai_obj)
 {
-	const std::map<location,unit>::const_iterator defend_it =units.find(target);
+	const std::map<location,unit>::const_iterator defend_it = units.find(target);
 	assert(defend_it != units.end());
 
 	target_value = defend_it->second.type().cost();
@@ -266,9 +253,7 @@ void attack_analysis::analyze(const gamemap& map,
 	std::vector<std::pair<location,location> >::const_iterator m;
 	for(m = movements.begin(); m != movements.end(); ++m) {
 		battle_stats bat_stats;
-		const int weapon = choose_weapon(map,units,status,info,
-		                                 m->first,target, bat_stats,
-		                                 map[m->second.x][m->second.y]);
+		const int weapon = ai_obj.choose_weapon(m->first,target, bat_stats, map[m->second.x][m->second.y]);
 
 		assert(weapon != -1);
 		weapons.push_back(weapon);
@@ -289,8 +274,7 @@ void attack_analysis::analyze(const gamemap& map,
 			int attacks = stat.nattacks;
 			int defends = stat.ndefends;
 
-			std::map<location,unit>::const_iterator att
-			               = units.find(movements[i].first);
+			unit_map::const_iterator att = units.find(movements[i].first);
 			double cost = att->second.type().cost();
 
 			//up to double the value of a unit based on experience
@@ -398,7 +382,7 @@ void attack_analysis::analyze(const gamemap& map,
 	avg_losses /= num_sims;
 }
 
-double attack_analysis::rating(double aggression) const
+double ai::attack_analysis::rating(double aggression) const
 {
 	double value = chance_to_kill*target_value - avg_losses;
 
@@ -414,14 +398,10 @@ double attack_analysis::rating(double aggression) const
 	return value;
 }
 
-std::vector<attack_analysis> analyze_targets(
-             const gamemap& map,
-             const move_map& srcdst, const move_map& dstsrc,
-             const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
-			 std::map<location,unit>& units,
-			 const team& current_team, int team_num,
-			 const gamestatus& status, const game_data& data
-            )
+std::vector<ai::attack_analysis> ai::analyze_targets(
+	             const move_map& srcdst, const move_map& dstsrc,
+	             const move_map& enemy_srcdst, const move_map& enemy_dstsrc
+                )
 {
 	log_scope("analyzing targets...");
 
@@ -430,9 +410,8 @@ std::vector<attack_analysis> analyze_targets(
 	std::vector<attack_analysis> res;
 
 	std::vector<location> unit_locs;
-	for(std::map<location,unit>::const_iterator i = units.begin();
-	    i != units.end(); ++i) {
-		if(i->second.side() == team_num) {
+	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+		if(i->second.side() == team_num_) {
 			unit_locs.push_back(i->first);
 		}
 	}
@@ -440,13 +419,12 @@ std::vector<attack_analysis> analyze_targets(
 	bool used_locations[6];
 	std::fill(used_locations,used_locations+6,false);
 
-	for(std::map<location,unit>::const_iterator j = units.begin();
-	    j != units.end(); ++j) {
+	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
 		//attack anyone who is on the enemy side, and who is not invisible
-		if(current_team.is_enemy(j->second.side()) &&
-		   j->second.invisible(map.underlying_terrain(
-		                         map[j->first.x][j->first.y])) == false) {
+		if(current_team().is_enemy(j->second.side()) &&
+		   j->second.invisible(map_.underlying_terrain(map_[j->first.x][j->first.y])) == false) {
+			std::cerr << "analyzing attack on " << j->first.x+1 << "," << j->first.y+1 << "\n";
 			location adjacent[6];
 			get_adjacent_tiles(j->first,adjacent);
 			attack_analysis analysis;
@@ -456,9 +434,8 @@ std::vector<attack_analysis> analyze_targets(
 
 			const int ticks = SDL_GetTicks();
 
-			do_analysis(map,j->first,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
-			            adjacent,used_locations,unit_locs,units,
-			            res,data,status,analysis);
+			do_attack_analysis(j->first,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
+			            adjacent,used_locations,unit_locs,res,analysis);
 
 			const int time_taken = SDL_GetTicks() - ticks;
 			static int max_time = 0;
@@ -472,9 +449,7 @@ std::vector<attack_analysis> analyze_targets(
 	return res;
 }
 
-double power_projection(const gamemap::location& loc,
-                        const move_map& srcdst, const move_map& dstsrc,
-                        const unit_map& units, const gamemap& map, bool use_terrain)
+double ai::power_projection(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, bool use_terrain)
 {
 	static gamemap::location used_locs[6];
 	static double ratings[6];
@@ -486,11 +461,11 @@ double power_projection(const gamemap::location& loc,
 	double res = 0.0;
 
 	for(int i = 0; i != 6; ++i) {
-		if(map.on_board(locs[i]) == false) {
+		if(map_.on_board(locs[i]) == false) {
 			continue;
 		}
 
-		const gamemap::TERRAIN terrain = map[locs[i].x][locs[i].y];
+		const gamemap::TERRAIN terrain = map_[locs[i].x][locs[i].y];
 
 		typedef move_map::const_iterator Itor;
 		typedef std::pair<Itor,Itor> Range;
@@ -508,10 +483,10 @@ double power_projection(const gamemap::location& loc,
 					continue;
 				}
 
-				const unit_map::const_iterator u = units.find(it->second);
+				const unit_map::const_iterator u = units_.find(it->second);
 
 				//unit might have been killed, and no longer exist
-				if(u == units.end()) {
+				if(u == units_.end()) {
 					continue;
 				}
 
@@ -527,10 +502,10 @@ double power_projection(const gamemap::location& loc,
 						most_damage = damage;
 				}
 
-				const bool village = map.underlying_terrain(terrain) == gamemap::TOWER;
+				const bool village = map_.underlying_terrain(terrain) == gamemap::TOWER;
 				const double village_bonus = (use_terrain && village) ? 1.5 : 1.0;
 
-				const double defense = use_terrain ? double(100 - un.defense_modifier(map,terrain))/100.0 : 0.5;
+				const double defense = use_terrain ? double(100 - un.defense_modifier(map_,terrain))/100.0 : 0.5;
 				const double rating = village_bonus*hp*defense*double(most_damage);
 				if(rating > best_rating) {
 					best_rating = rating;
@@ -543,8 +518,7 @@ double power_projection(const gamemap::location& loc,
 			//a better position to attack from
 			if(n == 1 && best_unit.valid()) {
 				end_used = beg_used + num_used_locs;
-				gamemap::location* const pos
-				                  = std::find(beg_used,end_used,best_unit);
+				gamemap::location* const pos = std::find(beg_used,end_used,best_unit);
 				const int index = pos - beg_used;
 				if(best_rating >= ratings[index]) {
 					res -= ratings[index];
@@ -573,6 +547,4 @@ double power_projection(const gamemap::location& loc,
 	}
 
 	return res;
-}
-
 }

@@ -202,4 +202,6 @@ team_data calculate_team_data(const class team& tm, int side, const unit_map& un
 
 std::string get_team_name(int side, const unit_map& units);
 
+const std::set<gamemap::location> vacant_towers(const std::set<gamemap::location>& towers, const unit_map& units);
+
 #endif

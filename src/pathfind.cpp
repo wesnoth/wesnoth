@@ -161,7 +161,7 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 		//teleport to
 		for(std::vector<gamemap::location>::const_iterator t = towers.begin();
 		    t != towers.end(); ++t) {
-			if(!current_team.owns_tower(*t))
+			if(!current_team.owns_tower(*t) || units.count(*t))
 				continue;
 
 			locs.push_back(*t);

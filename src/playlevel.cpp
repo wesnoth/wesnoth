@@ -391,8 +391,7 @@ redo_turn:
 
 					update_locker lock(gui,!preferences::show_ai_moves());
 
-					ai::do_move(gui,map,gameinfo,units,teams,
-					            player_number,status);
+					ai(gui,map,gameinfo,units,teams,player_number,status).do_move();
 
 					if(network::nconnections() > 0) {
 						config cfg;

@@ -14,31 +14,30 @@
 #include "display.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "util.hpp"
 
 #include <iostream>
-
-namespace ai {
 
 struct move_cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
 	                     const game_data& data,
-					 	 const std::map<location,unit>& units,
+					 	 const unit_map& units,
 	                     const gamemap::location& loc,
-	                     const std::multimap<location,location>& dstsrc)
+						 const std::multimap<gamemap::location,gamemap::location>& dstsrc)
 	  : unit_(u), map_(map), data_(data), units_(units),
 	    move_type_(u.type().movement_type()), loc_(loc), dstsrc_(dstsrc)
 	{}
 
-	double cost(const location& loc, double so_far) const
+	double cost(const gamemap::location& loc, double so_far) const
 	{
 		if(!map_.on_board(loc))
 			return 1000.0;
 
 		//if this unit can move to that location this turn, it has a very
 		//very low cost
-		typedef std::multimap<location,location>::const_iterator Itor;
+		typedef std::multimap<gamemap::location,gamemap::location>::const_iterator Itor;
 		std::pair<Itor,Itor> range = dstsrc_.equal_range(loc);
 		while(range.first != range.second) {
 			if(range.first->second == loc_)
@@ -83,52 +82,47 @@ private:
 	const unit& unit_;
 	const gamemap& map_;
 	const game_data& data_;
-	const std::map<location,unit>& units_;
+	const unit_map& units_;
 	const unit_movement_type& move_type_;
 	const gamemap::location loc_;
-	const std::multimap<location,location> dstsrc_;
+	const ai::move_map dstsrc_;
 
 };
 
-std::vector<target> find_targets(
-                           const gamemap& map, std::map<location,unit>& units,
-						   std::vector<team>& teams, int current_team, bool has_leader
-						  )
+std::vector<ai::target> ai::find_targets(bool has_leader)
 {
 	log_scope("finding targets...");
 
-	team& tm = teams[current_team-1];
-
 	std::vector<target> targets;
 
-	if(has_leader && tm.village_value() > 0.0) {
-		const std::vector<location>& towers = map.towers();
+	if(has_leader && current_team().village_value() > 0.0) {
+		const std::vector<location>& towers = map_.towers();
 		for(std::vector<location>::const_iterator t = towers.begin(); t != towers.end(); ++t) {
 			assert(map.on_board(*t));
 			bool get_tower = true;
-			for(size_t i = 0; i != teams.size(); ++i) {
-				if(!tm.is_enemy(i+1) && teams[i].owns_tower(*t)) {
+			for(size_t i = 0; i != teams_.size(); ++i) {
+				if(!current_team().is_enemy(i+1) && teams_[i].owns_tower(*t)) {
 					get_tower = false;
 					break;
 				}
 			}
 
 			if(get_tower) {
-				targets.push_back(target(*t,tm.village_value()));
+				targets.push_back(target(*t,current_team().village_value()));
 			}
 		}
 	}
 
-	std::vector<team::target>& team_targets = tm.targets();
+	std::vector<team::target>& team_targets = current_team().targets();
 
 	//find the enemy leaders and explicit targets
-	std::map<location,unit>::const_iterator u;
-	for(u = units.begin(); u != units.end(); ++u) {
+	unit_map::const_iterator u;
+	for(u = units_.begin(); u != units_.end(); ++u) {
 
 		//is an enemy leader
-		if(u->second.can_recruit() && tm.is_enemy(u->second.side())) {
-			assert(map.on_board(u->first));
-			targets.push_back(target(u->first,tm.leader_value()));
+		if(u->second.can_recruit() && current_team().is_enemy(u->second.side())) {
+			assert(map_.on_board(u->first));
+			targets.push_back(target(u->first,current_team().leader_value()));
 		}
 
 		//explicit targets for this team
@@ -148,8 +142,7 @@ std::vector<target> find_targets(
 
 		new_values.push_back(i->value);
 
-		for(std::vector<target>::const_iterator j = targets.begin();
-		    j != targets.end(); ++j) {
+		for(std::vector<target>::const_iterator j = targets.begin(); j != targets.end(); ++j) {
 			if(i->loc == j->loc) {
 				continue;
 			}
@@ -169,14 +162,7 @@ std::vector<target> find_targets(
 	return targets;
 }
 
-std::pair<location,location> choose_move(
-                           std::vector<target>& targets,
-                           const std::multimap<location,location>& dstsrc,
-						   std::map<location,unit>& units,
-						   const gamemap& map, const std::vector<team>& teams,
-						   int current_team,
-						   const game_data& data
-						  )
+std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<ai::target>& targets,const std::multimap<location,location>& dstsrc)
 {
 	log_scope("choosing move");
 
@@ -186,21 +172,20 @@ std::pair<location,location> choose_move(
 	}
 
 	paths::route best_route;
-	std::map<location,unit>::iterator best = units.end();
+	unit_map::iterator best = units_.end();
 	double best_rating = 0.1;
 	std::vector<target>::iterator best_target = targets.end();
 
-	std::map<location,unit>::iterator u;
+	unit_map::iterator u;
 
 	//find the first eligible unit
-	for(u = units.begin(); u != units.end(); ++u) {
-		if(!(u->second.side() != current_team || u->second.can_recruit() ||
-		   u->second.movement_left() <= 0)) {
+	for(u = units_.begin(); u != units_.end(); ++u) {
+		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0)) {
 			break;
 		}
 	}
 
-	if(u == units.end()) {
+	if(u == units_.end()) {
 		std::cout << "no eligible units found\n";
 		return std::pair<location,location>();
 	}
@@ -211,8 +196,7 @@ std::pair<location,location> choose_move(
 		return std::pair<location,location>(u->first,u->first);
 	}
 
-	const move_cost_calculator cost_calc(u->second,map,data,units,
-	                                     u->first,dstsrc);
+	const move_cost_calculator cost_calc(u->second,map_,gameinfo_,units_,u->first,dstsrc);
 
 	//choose the best target for that unit
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
@@ -236,18 +220,17 @@ std::pair<location,location> choose_move(
 	}
 
 	//now see if any other unit can put a better bid forward
-	for(++u; u != units.end(); ++u) {
-		if(u->second.side() != current_team || u->second.can_recruit() ||
+	for(++u; u != units_.end(); ++u) {
+		if(u->second.side() != team_num_ || u->second.can_recruit() ||
 		   u->second.movement_left() <= 0 || u->second.is_guardian()) {
 			continue;
 		}
 
-		const move_cost_calculator calc(u->second,map,data,units,
-		                                u->first,dstsrc);
+		const move_cost_calculator calc(u->second,map_,gameinfo_,units_,u->first,dstsrc);
 		const paths::route cur_route = a_star_search(u->first,best_target->loc,
 			               minimum(best_target->value/best_rating,100.0),calc);
 		const double rating = best_target->value/cur_route.move_left;
-		if(best == units.end() || rating > best_rating) {
+		if(best == units_.end() || rating > best_rating) {
 			best_rating = rating;
 			best = u;
 			best_route = cur_route;
@@ -259,8 +242,7 @@ std::pair<location,location> choose_move(
 	if(best_target->value <= 0.0)
 		targets.erase(best_target);
 
-	for(ittg = targets.begin();
-	    ittg != targets.end(); ++ittg) {
+	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
 		assert(map.on_board(ittg->loc));
 	}
 
@@ -283,13 +265,11 @@ std::pair<location,location> choose_move(
 		}
 	}
 
-	if(best != units.end()) {
+	if(best != units_.end()) {
 		std::cout << "Could not make good move, staying still\n";
 		return std::pair<location,location>(best->first,best->first);
 	}
 
 	std::cout << "Could not find anywhere to move!\n";
 	return std::pair<location,location>();
-}
-
 }
