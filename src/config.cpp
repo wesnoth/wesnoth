@@ -15,10 +15,12 @@
 
 #include <algorithm>
 #include <sstream>
-
 #include "config.hpp"
 #include "variable.hpp"
 #include "wassert.hpp"
+#include "log.hpp"
+
+#define ERR_CF lg::err(lg::config)
 
 config::config(const config& cfg)
 {
@@ -186,7 +188,12 @@ void config::remove_child(const std::string& key, size_t index)
 
 	//remove from the child map
 	child_list& v = children[key];
-	wassert(index < v.size());
+	//wassert(index < v.size());
+	if(index >= v.size()) {
+		ERR_CF << "Error: attempting to delete non-existing child: " 
+			<< key << "[" << index << "]\n";
+		return;
+	}
 	config* const res = v[index];
 	v.erase(v.begin()+index);
 	delete res;

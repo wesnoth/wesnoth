@@ -332,7 +332,7 @@ void wait::process_network_data(const config& data, const network::connection so
 		set_result(QUIT);
 		return;
 	} else if(data.child("scenario_diff")) {
-		LOG_NW << "received diff for scenario....applying...\n";
+		LOG_NW << "received diff for scenario... applying...\n";
 		level_.apply_diff(*data.child("scenario_diff"));
 		generate_menu();
 	} else if(data.child("side")) {

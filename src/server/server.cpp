@@ -373,8 +373,8 @@ void server::process_login(const network::connection sock, const config& data, c
 	//check the username is valid (all alpha-numeric or space)
 	std::string username = (*login)["username"];
 	utils::strip(username);
-	const int alnum = std::count_if(username.begin(),username.end(),isalnum);
-	const int spaces = std::count(username.begin(),username.end(),' ');
+	const size_t alnum = std::count_if(username.begin(),username.end(),isalnum);
+	const size_t spaces = std::count(username.begin(),username.end(),' ');
 	if((alnum + spaces != username.size()) || spaces == username.size() || username.empty()) {
 		network::send_data(construct_error(
 		                   "This username is not valid"),sock);
@@ -630,7 +630,6 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	else if(g->is_owner(sock) && data.child("scenario_diff")) {
 		g->level().apply_diff(*data.child("scenario_diff"));
 		g->update_side_data();
-		g->send_data(data,sock);
 
 		const bool lobby_changes = g->describe_slots();
 		if(lobby_changes) {
