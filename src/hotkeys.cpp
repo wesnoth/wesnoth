@@ -67,6 +67,10 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("labelterrain",HOTKEY_LABEL_TERRAIN));
 		m.insert(val("showenemymoves",HOTKEY_SHOW_ENEMY_MOVES));
 		m.insert(val("bestenemymoves",HOTKEY_BEST_ENEMY_MOVES));
+		m.insert(val("editquit",HOTKEY_EDIT_QUIT));
+		m.insert(val("editsavemap",HOTKEY_EDIT_SAVE_MAP));
+		m.insert(val("editsaveas",HOTKEY_EDIT_SAVE_AS));
+		m.insert(val("editsetstartpos",HOTKEY_EDIT_SET_START_POS));
 	}
 
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
@@ -143,13 +147,12 @@ namespace {
 void add_hotkey(const config& cfg,bool overwrite)
 {
 	const hotkey::hotkey_item new_hotkey(cfg);
-
 	for(std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin();
 	    i != hotkeys.end(); ++i) {
 		if(i->action == new_hotkey.action) {
-			if(overwrite)
-				*i = new_hotkey;	
-			return;
+		  if(overwrite)
+			*i = new_hotkey;	
+		  return;
 		}
 	}
 	hotkeys.push_back(new_hotkey);
@@ -182,7 +185,7 @@ void add_hotkeys(config& cfg,bool overwrite)
 {
 	const config::child_list& children = cfg.get_children("hotkey");
 	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
-		add_hotkey(**i,overwrite);
+	  add_hotkey(**i,overwrite);
 	}
 }
 
@@ -381,7 +384,22 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			if(executor)
 				executor->edit_set_terrain();
 			break;
-
+		case HOTKEY_EDIT_QUIT:
+			if(executor)
+				executor->edit_quit();
+			break;
+		 case HOTKEY_EDIT_SAVE_MAP:
+			if(executor)
+				executor->edit_save_map();
+			break;
+		 case HOTKEY_EDIT_SAVE_AS:
+			if(executor)
+				executor->edit_save_as();
+			break;
+		 case HOTKEY_EDIT_SET_START_POS:
+			if(executor)
+				executor->edit_set_start_pos();
+			break;
 		default:
 			break;
 	}

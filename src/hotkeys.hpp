@@ -36,7 +36,10 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
                       HOTKEY_LABEL_TERRAIN, HOTKEY_SHOW_ENEMY_MOVES, HOTKEY_BEST_ENEMY_MOVES,
 
 					  //editing specific commands
-					  HOTKEY_EDIT_SET_TERRAIN,
+		      HOTKEY_EDIT_SET_TERRAIN,
+		      HOTKEY_EDIT_QUIT, HOTKEY_EDIT_SAVE_MAP, 
+		      HOTKEY_EDIT_SAVE_AS, HOTKEY_EDIT_SET_START_POS,
+		      
 					  HOTKEY_NULL };
 
 struct hotkey_item {
@@ -51,13 +54,13 @@ struct hotkey_item {
 //function to load a hotkey configuration object. hotkey configuration objects
 //are a list of nodes that look like:
 //[hotkey]
-//command='cmd'
-//key='k'
+//command="cmd"
+//key="k"
 //ctrl=(yes|no)
 //alt=(yes|no)
 //shift=(yes|no)
 //[/hotkey]
-//where 'cmd' is a command name, and 'k' is a key. see hotkeys.cpp for the
+//where "cmd" is a command name, and "k" is a key. see hotkeys.cpp for the
 //valid command names.
 void add_hotkeys(config& cfg, bool overwrite);
 
@@ -104,7 +107,12 @@ public:
 	virtual void label_terrain() = 0;
 	virtual void show_enemy_moves(bool ignore_units) = 0;
 
+	// Map editor stuff.
 	virtual void edit_set_terrain() {}
+	virtual void edit_quit() {}
+	virtual void edit_save_map() {}
+	virtual void edit_save_as() {}
+	virtual void edit_set_start_pos() {}
 
 	virtual bool can_execute_command(HOTKEY_COMMAND command) const = 0;
 };
