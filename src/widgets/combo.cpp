@@ -18,7 +18,7 @@
 
 namespace gui {
 
-const int font_size = 12;
+const int font_size = font::SIZE_SMALL;
 const int horizontal_padding = 10;
 const int vertical_padding = 10;
 

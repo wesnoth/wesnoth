@@ -90,7 +90,7 @@ void file_chooser::display_current_files() {
 		const std::string display_string = std::string(" ,") + *it;
 		to_show.push_back(display_string);
 	}
-	const int menu_font_size = 14; // Known from menu.cpp.
+	const int menu_font_size = font::SIZE_NORMAL; // Known from menu.cpp.
 	for (it = to_show.begin(); it != to_show.end(); it++) {
 		// Make sure that all lines fit.
 		// Guess the width of the scrollbar to be 30 since it is not accessible from here.

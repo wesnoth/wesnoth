@@ -50,11 +50,11 @@ namespace {
 	config dummy_cfg;
 	std::vector<std::string> empty_string_vector;
 	const int max_section_level = 15;
-	const int menu_font_size = 14;
-	const int title_size = 18;
-	const int title2_size = 15;
+  const int menu_font_size = font::SIZE_NORMAL;
+	const int title_size = font::SIZE_LARGE;
+	const int title2_size = font::SIZE_15;
 	const int box_width = 2;
-	const int normal_font_size = 12;
+	const int normal_font_size = font::SIZE_SMALL;
 	const unsigned max_history = 100;
 	const std::string topic_img = "help/topic.png";
 	const std::string closed_section_img = "help/closed_section.png";
@@ -644,29 +644,29 @@ std::vector<topic> generate_unit_topics() {
 				// Dummy element, icons are below.
 				first_row.push_back(item("", 0));
 				first_row.push_back(item(bold(_("Name")),
-												   font::line_width(cap(_("Name")),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+							 font::line_width(cap(_("Name")),
+									  normal_font_size,
+									  TTF_STYLE_BOLD)));
 				first_row.push_back(item(bold(_("Type")),
-												   font::line_width(_("Type"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+							 font::line_width(_("Type"),
+									  normal_font_size,
+									  TTF_STYLE_BOLD)));
 				first_row.push_back(item(bold(_("Dmg")),
-												   font::line_width(_("Dmg"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+							 font::line_width(_("Dmg"),
+									  normal_font_size,
+									  TTF_STYLE_BOLD)));
 				first_row.push_back(item(bold(_("Strikes")),
-												   font::line_width(_("Strikes"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+							 font::line_width(_("Strikes"),
+									  normal_font_size,
+									  TTF_STYLE_BOLD)));
 				first_row.push_back(item(bold(_("Range")),
-												   font::line_width(_("Range"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+							 font::line_width(_("Range"),
+									  normal_font_size,
+									  TTF_STYLE_BOLD)));
 				first_row.push_back(item(bold(_("Special")),
-												   font::line_width(_("Special"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+							 font::line_width(_("Special"),
+									  normal_font_size,
+									  TTF_STYLE_BOLD)));
 				table.push_back(first_row);
 				// Print information about every attack.
 				for (std::vector<attack_type>::const_iterator attack_it =attacks.begin();
@@ -685,7 +685,7 @@ std::vector<topic> generate_unit_topics() {
 					std::stringstream attack_ss;
 					attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
 					row.push_back(std::make_pair(attack_ss.str(),
-												 image_width(attack_it->icon())));
+								     image_width(attack_it->icon())));
 					attack_ss.str("");
 					push_tab_pair(row, lang_weapon);
 					push_tab_pair(row, lang_type);
@@ -711,8 +711,9 @@ std::vector<topic> generate_unit_topics() {
 						attack_ss << "<ref>dst='" << escape(ref_id) << "' text='"
 								  << escape(lang_special) << "'</ref>";
 						row.push_back(std::make_pair(attack_ss.str(),
-													 font::line_width(lang_special, normal_font_size)));
-																	  
+									     font::line_width(lang_special,
+											      normal_font_size)));
+						
 					}
 					table.push_back(row);
 				}
@@ -725,13 +726,13 @@ std::vector<topic> generate_unit_topics() {
 			table_spec resistance_table;
 			std::vector<std::pair<std::string, unsigned> > first_res_row;
 			first_res_row.push_back(std::make_pair(bold(_("Attack Type")),
-												   font::line_width(_("Attack Type"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+							       font::line_width(_("Attack Type"),
+										normal_font_size,
+										TTF_STYLE_BOLD)));
 			first_res_row.push_back(std::make_pair(bold(_("Resistance")),
-												   font::line_width(_("Resistance"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+							       font::line_width(_("Resistance"),
+										normal_font_size,
+										TTF_STYLE_BOLD)));
 			resistance_table.push_back(first_res_row);
 			const unit_movement_type &movement_type = type.movement_type();
 			string_map dam_tab = movement_type.damage_table();
@@ -754,7 +755,7 @@ std::vector<topic> generate_unit_topics() {
 				str.str("");
 				str << resistance << "%";
 				row.push_back(std::make_pair(markup,
-											 font::line_width(str.str(), normal_font_size)));
+							     font::line_width(str.str(), normal_font_size)));
 				resistance_table.push_back(row);
 			}
 			ss << generate_table(resistance_table);
@@ -765,17 +766,17 @@ std::vector<topic> generate_unit_topics() {
 				std::vector<std::pair<std::string, unsigned> > first_row;
 				table_spec table;
 				first_row.push_back(std::make_pair(bold(_("Terrain")),
-												   font::line_width(_("Terrain"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+								   font::line_width(_("Terrain"),
+										    normal_font_size,
+										    TTF_STYLE_BOLD)));
 				first_row.push_back(std::make_pair(bold(_("Movement")),
-												   font::line_width(_("Movement"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+								   font::line_width(_("Movement"),
+										    normal_font_size,
+										    TTF_STYLE_BOLD)));
 				first_row.push_back(std::make_pair(bold(_("Defense")),
-												   font::line_width(_("Defense"),
-																	normal_font_size,
-																	TTF_STYLE_BOLD)));
+								   font::line_width(_("Defense"),
+										    normal_font_size,
+										    TTF_STYLE_BOLD)));
 				table.push_back(first_row);
 				for (std::set<std::string>::const_iterator terrain_it =
 						 preferences::encountered_terrains().begin();
@@ -795,8 +796,8 @@ std::vector<topic> generate_unit_topics() {
 						str << "<ref>text='" << escape(name) << "' dst='"
 							<< escape(std::string("terrain_") + terrain) << "'</ref>";
 						row.push_back(std::make_pair(str.str(), 
-													 font::line_width(name,
-																	  normal_font_size)));
+									     font::line_width(name,
+											      normal_font_size)));
 						str.str("");
 						if(moves < 100)
 							str << moves;
@@ -1279,7 +1280,7 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 	const std::string show_title =
 		font::make_text_ellipsis(shown_topic_->title, title_size, text_width());
 	surface surf(font::get_rendered_text(show_title, title_size,
-													font::NORMAL_COLOUR, TTF_STYLE_BOLD));
+					     font::NORMAL_COLOUR, TTF_STYLE_BOLD));
 	if (surf != NULL) {
 		add_item(item(surf, 0, 0, show_title));
 		curr_loc_.second = title_spacing_;

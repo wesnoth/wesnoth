@@ -655,9 +655,9 @@ slider_label_width_(0), tab_(GENERAL_TAB)
 {
 	set_location(preferences_dialog_area);
 
-	slider_label_width_ = maximum<size_t>(font::text_area(music_label_,14).w,
-	                      maximum<size_t>(font::text_area(sound_label_,14).w,
-						  maximum<size_t>(font::text_area(scroll_label_,14).w,font::text_area(gamma_label_,14).w)));
+	slider_label_width_ = maximum<size_t>(font::text_area(music_label_,font::SIZE_NORMAL).w,
+	                      maximum<size_t>(font::text_area(sound_label_,font::SIZE_NORMAL).w,
+						  maximum<size_t>(font::text_area(scroll_label_,font::SIZE_NORMAL).w,font::text_area(gamma_label_,font::SIZE_NORMAL).w)));
 
 	sound_slider_.set_min(1);
 	sound_slider_.set_max(100);
@@ -809,7 +809,7 @@ void preferences_dialog::draw()
 
 	int ypos = location().y;
 	if(tab_ == GENERAL_TAB) {
-		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,scroll_label_,location().x,ypos);
+		font::draw_text(&disp(),location(),font::SIZE_NORMAL,font::NORMAL_COLOUR,scroll_label_,location().x,ypos);
 		const SDL_Rect scroll_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
 		scroll_slider_.set_location(scroll_rect);
 
@@ -840,7 +840,7 @@ void preferences_dialog::draw()
 		ypos += 50;
 
 		if(adjust_gamma()) {
-			font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,gamma_label_,location().x,ypos);
+			font::draw_text(&disp(),location(),font::SIZE_NORMAL,font::NORMAL_COLOUR,gamma_label_,location().x,ypos);
 		}
 
 		const SDL_Rect gamma_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,gamma_slider_.location().h};
@@ -862,13 +862,13 @@ void preferences_dialog::draw()
 		video_mode_button_.set_location(location().x,ypos);
 
 	} else if(tab_ == SOUND_TAB) {
-		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,music_label_,location().x,ypos);
+		font::draw_text(&disp(),location(),font::SIZE_NORMAL,font::NORMAL_COLOUR,music_label_,location().x,ypos);
 		const SDL_Rect music_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,music_slider_.location().h};
 		music_slider_.set_location(music_rect);
 
 		ypos += 50;
 
-		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,sound_label_,location().x,ypos);
+		font::draw_text(&disp(),location(),font::SIZE_NORMAL,font::NORMAL_COLOUR,sound_label_,location().x,ypos);
 		const SDL_Rect sound_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,sound_slider_.location().h};
 		sound_slider_.set_location(sound_rect);
 	}
@@ -1026,7 +1026,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::draw_dialog(xpos,ypos,width,height,disp,_("Hotkey Settings"),NULL,&buttons,&restorer);
 	
 	SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
-	SDL_Rect text_size = font::draw_text(NULL, clip_rect, 16,
+	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_PLUS,
 			           font::NORMAL_COLOUR,_("Press desired HotKey"),
 						0, 0);
 
@@ -1084,7 +1084,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 									centery-text_size.h/2 - 6,
 									text_size.w+40,
 									text_size.h+12,disp);
-			font::draw_text (&disp, clip_rect, 18,font::NORMAL_COLOUR,
+			font::draw_text (&disp, clip_rect, font::SIZE_LARGE,font::NORMAL_COLOUR,
 				 _("Press desired HotKey"),centerx-text_size.w/2-10,
 				 centery-text_size.h/2-3);
 			disp.update_display();

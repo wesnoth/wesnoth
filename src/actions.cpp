@@ -1735,7 +1735,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		//show messages on the screen here
 		if(discovered_unit) {
 			//we've been ambushed, so display an appropriate message
-			font::add_floating_label(_("Ambushed!"),24,font::BAD_COLOUR,
+			font::add_floating_label(_("Ambushed!"),font::SIZE_XLARGE,font::BAD_COLOUR,
 			                         disp->map_area().w/2,disp->map_area().h/3,
 									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
 		}
@@ -1802,7 +1802,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			}
 			const std::string message = config::interpolate_variables_into_string(msg.str(),&symbols);
 
-			font::add_floating_label(message,24,font::BAD_COLOUR,
+			font::add_floating_label(message,font::SIZE_XLARGE,font::BAD_COLOUR,
 			                         disp->map_area().w/2,disp->map_area().h/3,
 									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
 		}

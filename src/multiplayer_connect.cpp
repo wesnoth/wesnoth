@@ -367,27 +367,27 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	//Title and labels
 	gui::draw_dialog_title(left,top,disp_,_("Game Lobby"));
 
-	SDL_Rect labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,
+	SDL_Rect labelr = font::draw_text(NULL,rect,font::SIZE_NORMAL,font::GOOD_COLOUR,
 			                          _("Player/Type"),0,0);
-	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
+	font::draw_text(disp_,rect,font::SIZE_NORMAL,font::GOOD_COLOUR,
 	                _("Player/Type"),(left+30)+(launch_.width()/2)-(labelr.w/2),top+35);
-	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Faction"),0,0);
+	labelr = font::draw_text(NULL,rect,font::SIZE_NORMAL,font::GOOD_COLOUR,_("Faction"),0,0);
 
-	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
+	font::draw_text(disp_,rect,font::SIZE_NORMAL,font::GOOD_COLOUR,
 	                _("Faction"),(left+145)+(launch_.width()/2)-(labelr.w/2),top+35);
 	
-	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Team"),0,0);
+	labelr = font::draw_text(NULL,rect,font::SIZE_NORMAL,font::GOOD_COLOUR,_("Team"),0,0);
 
-	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
+	font::draw_text(disp_,disp_->screen_area(),font::SIZE_NORMAL,font::GOOD_COLOUR,
 	                _("Team"),(left+260)+(launch_.width()/2)-(labelr.w/2),top+35);
 	
-	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Color"),0,0);
+	labelr = font::draw_text(NULL,rect,font::SIZE_NORMAL,font::GOOD_COLOUR,_("Color"),0,0);
 
-	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
+	font::draw_text(disp_,disp_->screen_area(),font::SIZE_NORMAL,font::GOOD_COLOUR,
 	                _("Color"),(left+375)+(launch_.width()/2)-(labelr.w/2),top+35);
 	
-	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Gold"),0,0);
-	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
+	labelr = font::draw_text(NULL,rect,font::SIZE_NORMAL,font::GOOD_COLOUR,_("Gold"),0,0);
+	font::draw_text(disp_,rect,font::SIZE_NORMAL,font::GOOD_COLOUR,
 	                _("Gold"),(left+480)+(launch_.width()/2)-(labelr.w/2),top+35);
 
 	//Per player settings
@@ -411,7 +411,7 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		const int side_num = sd - sides.first;
 
 		//Player number
-		font::draw_text(disp_,rect, 24, font::GOOD_COLOUR,
+		font::draw_text(disp_,rect, font::SIZE_XLARGE, font::GOOD_COLOUR,
 		                (*sd)->values["side"], left+10, top+53+(60*side_num));
 
 		//Player type
@@ -451,7 +451,7 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		r.w = 30;
 		r.x = left+603;
 		gold_bg_.push_back(surface_restorer(&disp_->video(),r));
-		font::draw_text(disp_, disp_->screen_area(), 12, font::GOOD_COLOUR,
+		font::draw_text(disp_, disp_->screen_area(), font::SIZE_SMALL, font::GOOD_COLOUR,
 		                "100", r.x, r.y);
 	}
 
@@ -543,7 +543,7 @@ void mp_connect::gui_update()
 		rect.w = 30;
 		rect.h = launch_.height();
 		gold_bg_[n].restore();
-		font::draw_text(disp_, disp_->screen_area(), 12,
+		font::draw_text(disp_, disp_->screen_area(), font::SIZE_SMALL,
 				font::GOOD_COLOUR,
 		                side["gold"],
 				rect.x, rect.y);
@@ -557,11 +557,11 @@ void mp_connect::gui_update()
 			message_bg_.restore();
 			message_bg_ = surface_restorer();
 		} else {
-			SDL_Rect rect = font::draw_text(NULL,rect_,12,font::NORMAL_COLOUR,_("Waiting for network players to join"),0,0);
+			SDL_Rect rect = font::draw_text(NULL,rect_,font::SIZE_SMALL,font::NORMAL_COLOUR,_("Waiting for network players to join"),0,0);
 			rect.x = ai_.location().x + ai_.location().w + 10;
 			rect.y = ai_.location().y;
 			message_bg_ = surface_restorer(&disp_->video(),rect);
-			font::draw_text(disp_,rect,12,font::NORMAL_COLOUR,_("Waiting for network players to join"),rect.x,rect.y);
+			font::draw_text(disp_,rect,font::SIZE_SMALL,font::NORMAL_COLOUR,_("Waiting for network players to join"),rect.x,rect.y);
 		}
 	}
 }
@@ -695,7 +695,7 @@ lobby::RESULT mp_connect::process()
 				rect.w = 30;
 				rect.h = launch_.height();
 				gold_bg_[n].restore();
-				font::draw_text(disp_, rect_, 12,font::GOOD_COLOUR,(*sides.first[n])["gold"],
+				font::draw_text(disp_, rect_, font::SIZE_SMALL,font::GOOD_COLOUR,(*sides.first[n])["gold"],
 						        rect.x, rect.y);
 				update_rect(rect);
 				level_changed = true;

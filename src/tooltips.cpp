@@ -30,7 +30,7 @@ struct tooltip
 	std::string message;
 };
 
-static const int font_size = 12;
+static const int font_size = font::SIZE_SMALL;
 
 std::vector<tooltip> tips;
 std::vector<tooltip>::const_iterator current_tooltip = tips.end();

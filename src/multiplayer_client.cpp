@@ -137,10 +137,10 @@ public:
 		generate_menu(true);
 
 		const std::string text = _("Waiting for game to start...");
-		SDL_Rect rect = font::draw_text(NULL,disp_.screen_area(),14,font::NORMAL_COLOUR,text,0,0);
+		SDL_Rect rect = font::draw_text(NULL,disp_.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,text,0,0);
 		rect.x = area.x + area.w/2 - rect.w/2;
 		rect.y = area.y + (area.h*3)/4 - rect.h/2;
-		font::draw_text(&disp_,rect,14,font::NORMAL_COLOUR,text,rect.x,rect.y);
+		font::draw_text(&disp_,rect,font::SIZE_NORMAL,font::NORMAL_COLOUR,text,rect.x,rect.y);
 
 		cancel_button_.assign(new gui::button(disp_,_("Cancel")));
 		cancel_button_->set_location(area.x+area.w - cancel_button_->width() - gui::ButtonHPadding,
@@ -775,10 +775,10 @@ void leader_preview_pane::draw()
 			SDL_BlitSurface(unit_image,NULL,screen,&image_rect);
 		}
 
-		font::draw_text(&disp(),area,16,font::NORMAL_COLOUR,faction,area.x + 80, area.y + 30);
-		const SDL_Rect leader_rect = font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,
+		font::draw_text(&disp(),area,font::SIZE_PLUS,font::NORMAL_COLOUR,faction,area.x + 80, area.y + 30);
+		const SDL_Rect leader_rect = font::draw_text(&disp(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
 				_("Leader: "),area.x, area.y + 80);
-		font::draw_wrapped_text(&disp(),area,12,font::NORMAL_COLOUR,
+		font::draw_wrapped_text(&disp(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
 				_("Recruits: ") + recruit_string.str(),area.x, area.y + 102,
 				area.w);
 

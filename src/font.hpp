@@ -48,6 +48,7 @@ const int SIZE_NORMAL = 14,
   SIZE_TINY = 10,
   SIZE_SMALL = 12,
 
+  SIZE_15 = 15,
   SIZE_PLUS = 16,
   SIZE_LARGE = 18,
   SIZE_XLARGE = 24
@@ -57,6 +58,7 @@ const int SIZE_NORMAL = 10,
   SIZE_TINY = 6,
   SIZE_SMALL = 8,
 
+  SIZE_15 = 11,
   SIZE_PLUS = 12,
   SIZE_LARGE = 14,
   SIZE_XLARGE = 20

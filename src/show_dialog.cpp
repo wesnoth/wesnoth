@@ -180,7 +180,7 @@ SDL_Rect draw_dialog_title(int x, int y, display* disp, const std::string& text)
 		rect = disp->screen_area();
 	}
 
-	return font::draw_text(disp,rect,18,font::TITLE_COLOUR,text,x,y+5,NULL,false,font::USE_MARKUP,TTF_STYLE_BOLD);
+	return font::draw_text(disp,rect,font::SIZE_LARGE,font::TITLE_COLOUR,text,x,y+5,NULL,false,font::USE_MARKUP,TTF_STYLE_BOLD);
 }
 
 void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& title,
@@ -384,8 +384,8 @@ int show_dialog(display& disp, surface image,
 	const std::vector<std::string>& menu_items =
 		(menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
 
-	static const int message_font_size = 16;
-	static const int caption_font_size = 18;
+	static const int message_font_size = font::SIZE_PLUS;
+	static const int caption_font_size = font::SIZE_LARGE;
 
 	CVideo& screen = disp.video();
 	surface const scr = screen.getSurface();
@@ -410,7 +410,7 @@ int show_dialog(display& disp, surface image,
 		text_widget.set_width(minimum<size_t>(disp.x()/2,maximum<size_t>(area.w,text_widget.location().w)));
 		text_widget.set_height(minimum<size_t>(disp.y()/2,maximum<size_t>(area.h,text_widget.location().h)));
 		text_widget_width = font::text_area(text_widget_label,message_font_size).w + text_widget.location().w;;
-		text_widget_height = text_widget.location().h + 16;
+		text_widget_height = text_widget.location().h + message_font_size;
 	}
 
 	menu menu_(disp,menu_items,type == MESSAGE);

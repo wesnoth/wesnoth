@@ -1,3 +1,4 @@
+#include "font.hpp"
 #include "language.hpp"
 #include "sdl_utils.hpp"
 #include "theme.hpp"
@@ -10,7 +11,7 @@ namespace {
 	const int XDim = 1024;
 	const int YDim = 768;
 
-	const size_t DefaultFontSize = 14;
+	const size_t DefaultFontSize = font::SIZE_NORMAL;
 
 	SDL_Rect read_rect(const config& cfg) {
 		SDL_Rect rect;

@@ -26,7 +26,7 @@
 
 namespace gui {
 
-const int font_size = 16;
+const int font_size = font::SIZE_PLUS;
 
 textbox::textbox(display& d, int width, const std::string& text, bool editable, size_t max_size)
 	   : widget(d), max_size_(max_size), text_(string_to_wstring(text)),

@@ -887,7 +887,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	//displaying a message on-screen
 	else if(cmd == "print") {
 		const std::string& text = cfg["text"];
-		const int size = lexical_cast_default<int>(cfg["size"],12);
+		const int size = lexical_cast_default<int>(cfg["size"],font::SIZE_SMALL);
 		const int lifetime = lexical_cast_default<int>(cfg["duration"],20);
 		const int red = lexical_cast_default<int>(cfg["red"],0);
 		const int green = lexical_cast_default<int>(cfg["green"],0);
