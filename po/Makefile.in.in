@@ -90,7 +90,7 @@ all-no:
 # if updating the $(CATALOGS) would always touch them; however, the rule for
 # $(POFILES) has been designed to not touch files that don't need to be
 # changed.
-stamp-po: $(srcdir)/$(DOMAIN).pot
+stamp-po: $(srcdir)/*.pot
 	test -z "$(GMOFILES)" || \
 	  for domain in `cat $(srcdir)/DOMAINS`; do \
 	    $(MAKE) DOMAIN=$$domain $(GMOFILES) ;\
@@ -145,9 +145,20 @@ stamp-po: $(srcdir)/$(DOMAIN).pot
 $(srcdir)/$(DOMAIN).pot:
 	$(MAKE) $(DOMAIN).pot-update
 
+# This rule catch requests to rebuild po files whenever any pot file
+# is more recent even if that pot file is not related, but only
+# extract the textdomain, and use a recursive make call that will have
+# stricter deps and will use lang as a rule stem
+ifneq ($(NOGENERIC),1)
+%.po: *.pot
+	@domain=`basename \`dirname $@\``; \
+	echo " make DOMAIN=$$domain NOGENERIC=1 $@"; \
+	$(MAKE) DOMAIN=$$domain NOGENERIC=1 $@
+endif
+
 # This target rebuilds a PO file if $(DOMAIN).pot has changed.
 # Note that a PO file is not touched if it doesn't need to be changed.
-$(POFILES): $(srcdir)/$(DOMAIN).pot
+$(DOMAIN)/%.po: $(srcdir)/$(DOMAIN).pot
 	@lang=`echo $@ | sed -e 's,.*/,,' -e 's/\.po$$//'`; \
 	if test -f "$(srcdir)/$(DOMAIN)/$${lang}.po"; then \
 	  test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
