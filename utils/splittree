@@ -23,16 +23,21 @@ dirs_junk='scenario-test.cfg convert.pl README man'
 
 for p in music sound httt ei sotbe tdh trow devel editor tutorial mp locales junk
 do
-    rm -rf $dst/wesnoth-$p
+    [ "x$dst" = "x--zip" ] || rm -rf $dst/wesnoth-$p
     eval dirs=\${dirs_$p}
     findexpr=-false
     for d in $dirs
     do
 	findexpr="$findexpr -o -name $d"
     done
-    for d in $(cd $src && find $findexpr)
-    do
-	mkdir -p $dst/wesnoth-$p/$(dirname $d)
-	mv $src/$d $dst/wesnoth-$p/$(dirname $d)
-    done
+    if [ "x$dst" = "x--zip" ]
+    then
+	(cd $src && zip -Drum wesnoth-$p.zip $(find $findexpr))
+    else
+	for d in $(cd $src && find $findexpr)
+	do
+	    mkdir -p $dst/wesnoth-$p/$(dirname $d)
+	    mv $src/$d $dst/wesnoth-$p/$(dirname $d)
+	done
+    fi
 done
