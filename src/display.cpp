@@ -1770,9 +1770,8 @@ surface display::get_minimap(int w, int h)
 	}
 
 	if(minimap_ == NULL) {
-		minimap_ = image::getMinimap(w,h,map_,
-				status_.get_time_of_day().lawful_bonus,
-				team_valid() ? &teams_[currentTeam_] : NULL);
+		minimap_ = image::getMinimap(w, h, map_,
+		                             team_valid() ? &teams_[currentTeam_] : NULL);
 	}
 
 	return minimap_;

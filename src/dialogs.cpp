@@ -325,7 +325,7 @@ void save_preview_pane::draw_contents()
 			try {
 				map_->read(map_data);
 
-				map_surf = image::getMinimap(100,100,*map_,0,NULL);
+				map_surf = image::getMinimap(100, 100, *map_);
 				if(map_surf != NULL) {
 					map_cache_.insert(std::pair<std::string,surface>(map_data,surface(map_surf)));
 				}

@@ -400,7 +400,7 @@ void set_zoom(int amount)
 	}
 }
 
-surface get_unmasked(const locator i_locator, COLOUR_ADJUSTMENT adj)
+surface get_unmasked(const locator i_locator)
 {
 	surface image(get_image(i_locator, UNSCALED));
 
@@ -511,7 +511,7 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 			res = get_scaled(i_locator, adj);
 			break;
 		case UNMASKED:
-			res = get_unmasked(i_locator, adj);
+			res = get_unmasked(i_locator);
 			break;
 		case GREYED:
 			res = get_greyed(i_locator, adj);
@@ -626,8 +626,7 @@ bool exists(const image::locator& i_locator)
 	return ret;
 }
 
-surface getMinimap(int w, int h, const gamemap& map, 
-		int lawful_bonus, const team* tm)
+surface getMinimap(int w, int h, const gamemap& map, const team* tm)
 {
 	const int scale = 8;
 
