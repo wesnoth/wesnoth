@@ -374,6 +374,8 @@ void wait::generate_menu()
 		if (utypes.find(leader_type) != utypes.end()) {
 			leader_name = utypes.find(leader_type)->second.language_name();
 			leader_image = utypes.find(leader_type)->second.image();
+		} else {
+			leader_image = leader_list_manager::random_enemy_picture;
 		}
 		if (!leader_image.empty()) {
 			// Dumps the "image" part of the faction name, if any,

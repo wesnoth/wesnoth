@@ -16,6 +16,8 @@
 #include "serialization/string_utils.hpp"
 #include "widgets/menu.hpp"
 
+const std::string leader_list_manager::random_enemy_picture("random-enemy.png");
+
 leader_list_manager::leader_list_manager(const config::child_list& side_list,
 		const game_data* data, gui::combo* combo) :
 	side_list_(side_list), data_(data), combo_(combo)
@@ -90,7 +92,7 @@ void leader_list_manager::update_leader_list(int side_index)
 
 	leaders_.push_back("random");
 	// FIXME: Maybe this should not code into the code.
-	leader_strings.push_back(IMAGE_PREFIX + std::string("random-enemy.png") +
+	leader_strings.push_back(IMAGE_PREFIX + random_enemy_picture +
 	                         COLUMN_SEPARATOR + _("Random"));
 
 	if(combo_ != NULL) {

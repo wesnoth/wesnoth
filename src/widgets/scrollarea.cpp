@@ -31,7 +31,7 @@ scrollarea::scrollarea(display &d)
 
 bool scrollarea::has_scrollbar() const
 {
-	return scrollbar_.grip_height_ < scrollbar_.full_height_ && scrollbar_.has_valid_size();
+	return scrollbar_.grip_height_ < scrollbar_.full_height_ && scrollbar_.is_valid_height(location().h);
 }
 
 void scrollarea::update_location(SDL_Rect const &rect)

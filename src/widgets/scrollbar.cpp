@@ -138,11 +138,11 @@ void scrollbar::set_scroll_rate(unsigned r)
 	scroll_rate_ = r;
 }
 
-bool scrollbar::has_valid_size() const
+bool scrollbar::is_valid_height(int height) const
 {
 	int uh = uparrow_.height();
 	int dh = downarrow_.height();
-	if(uh + dh >= location().h) {
+	if(uh + dh >= height) {
 		return false;
 	} else {
 		return true;

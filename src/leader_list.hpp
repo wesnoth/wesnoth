@@ -22,6 +22,8 @@
 class leader_list_manager
 {
 public:
+	static const std::string random_enemy_picture;
+
 	leader_list_manager(const config::child_list& side_list, const game_data* data,
 			gui::combo* combo = NULL);
 
