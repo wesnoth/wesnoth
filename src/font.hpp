@@ -73,7 +73,10 @@ SDL_Rect text_area(const std::string& text, int size, int style=0);
 
 // Returns a SDL surface containing the text rendered in a given colour.
 SDL_Surface* get_rendered_text(const std::string& text, int size, const SDL_Color& colour, int style=0);
-  
+	
+// Returns the maximum height of a font, in pixels
+int get_max_height(int size);
+	
 bool is_format_char(char c);
 
 ///

@@ -190,7 +190,8 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	rect.x = xpos + minimap_width + maps_menu_->width() + border_size*2;
 	rect.y = ypos;
 	rect.w = maximum<int>(0,right - border_size - rect.x);
-	rect.h = 12;
+	//a font sized "12" isn't necessarily 12 pixel high.
+	rect.h = font::get_max_height(12);
 
 	turns_restorer_ = surface_restorer(&disp_.video(),rect);
 

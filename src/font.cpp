@@ -412,6 +412,12 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 	return res;
 }
 
+int get_max_height(int size)
+{
+	TTF_Font* const font = get_font(size);
+	return TTF_FontHeight(font);
+}
+
 bool is_format_char(char c)
 {
 	switch(c) {
