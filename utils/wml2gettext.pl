@@ -1,7 +1,15 @@
-#! /usr/bin/perl -wp
+#! /usr/bin/perl -wpi.bak
+
+# This script extracts strings from english.cfg and injects them into
+# the C++ code tagged for gettext.  Then it produces an english.cfg
+# stripped down from those (hopefully) now-useless strings.
+
+# BUGS:
+# - should give special treatment to multiline strings
 
 use strict;
 our %trans;
+our @ids;
 
 BEGIN {
   require "utils/wmltrans.pm";
@@ -12,8 +20,9 @@ while (m/^(.*)translate_string\(\"([^\"]*)\"\)(.*)/) {
   my $str = $trans{$2};
   unless (defined $str) {
     print STDERR "no translation found for \"$2\"\n";
-    last;
+    $str = $2;
   }
+  push @ids, $2;
   $_ = "$1_(\"$str\")$3\n";
 }
 
@@ -23,5 +32,15 @@ while (m/^(.*)string_table\[\"([^\"]*)\"\](.*)/) {
     print STDERR "no translation found for \"$2\"\n";
     last;
   }
+  push @ids, $2;
   $_ = "$1_(\"$str\")$3\n";
+}
+
+END {
+  open (OUTFD, ">data/translations/english.cfg.new")
+    or die "cannot create new english conf";
+
+  stripfromwml ('data/translations/english.cfg', @ids);
+
+  close OUTFD;
 }
