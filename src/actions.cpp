@@ -130,6 +130,9 @@ std::string recruit_unit(const gamemap& map, int side,
 	units.insert(std::pair<gamemap::location,unit>(
 							recruit_location,new_unit));
 
+	std::cerr << "firing recruit event\n";
+	game_events::fire("recruit",recruit_location);
+
 	if(show) {
 
 		for(double alpha = 0.0; alpha <= 1.0; alpha += 0.1) {
