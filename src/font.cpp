@@ -98,7 +98,7 @@ std::vector<text_chunk> split_text(std::string const & utf8_text) {
 				//null-terminate ucs2_text so we can pass it to SDL_ttf later
 				current_chunk.ucs2_text.push_back(0);
 				chunks.push_back(current_chunk);
-				current_chunk.text.clear();
+				current_chunk.text = "";
 				current_chunk.ucs2_text.clear();
 				current_chunk.subset = font_map[*ch];
 			}
