@@ -22,6 +22,7 @@
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
+#include "sound.hpp"
 #include "util.hpp"
 
 #include <cmath>
@@ -60,6 +61,14 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	team& current_team = teams[team_num-1];
 
 	const paths_wiper wiper(gui);
+
+	if(preferences::turn_bell()) {
+		sound::play_sound("bell.wav");
+	}
+
+	if(preferences::turn_dialog()) {
+		gui::show_dialog(gui,NULL,"",string_table["your_turn"],gui::MESSAGE);
+	}
 
 	turn_info turn_data;
 

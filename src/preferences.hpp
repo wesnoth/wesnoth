@@ -64,6 +64,12 @@ namespace preferences {
 	double get_scroll_speed();
 	void set_scroll_speed(double scroll);
 
+	bool turn_bell();
+	void set_turn_bell(bool ison);
+
+	bool turn_dialog();
+	void set_turn_dialog(bool ison);
+
 	void show_preferences_dialog(display& disp);
 	void show_video_mode_dialog(display& disp);
 }

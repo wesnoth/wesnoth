@@ -281,6 +281,26 @@ void set_scroll_speed(double new_speed)
 	scroll = new_speed;
 }
 
+bool turn_bell()
+{
+	return prefs["turn_bell"] == "yes";
+}
+
+void set_turn_bell(bool ison)
+{
+	prefs["turn_bell"] = (ison ? "yes" : "no");
+}
+
+bool turn_dialog()
+{
+	return prefs["turn_dialog"] == "yes";
+}
+
+void set_turn_dialog(bool ison)
+{
+	prefs["turn_dialog"] = (ison ? "yes" : "no");
+}
+
 void show_preferences_dialog(display& disp)
 {
 	assert(::disp != NULL);
@@ -375,6 +395,18 @@ void show_preferences_dialog(display& disp)
 	resolution_button.set_x(slider_left);
 	resolution_button.set_y(sound_pos + 80 + 150);
 
+	gui::button turn_dialog_button(disp,string_table["turn_dialog_button"],
+	                               gui::button::TYPE_CHECK);
+	turn_dialog_button.set_check(turn_dialog());
+	turn_dialog_button.set_x(slider_left+fullscreen_button.width()+30);
+	turn_dialog_button.set_y(sound_pos + 80);
+
+	gui::button turn_bell_button(disp,string_table["turn_bell_button"],
+	                             gui::button::TYPE_CHECK);
+	turn_bell_button.set_check(turn_bell());
+	turn_bell_button.set_x(slider_left+fullscreen_button.width()+30);
+	turn_bell_button.set_y(sound_pos + 80 + 50);
+
 	bool redraw_all = true;
 
 	for(;;) {
@@ -422,6 +454,8 @@ void show_preferences_dialog(display& disp)
 			grid_button.draw();
 			close_button.draw();
 			resolution_button.draw();
+			turn_dialog_button.draw();
+			turn_bell_button.draw();
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,music_label,
 	                        music_rect.x,music_rect.y);
@@ -450,6 +484,14 @@ void show_preferences_dialog(display& disp)
 		if(resolution_button.process(mousex,mousey,left_button)) {
 			show_video_mode_dialog(disp);
 			break;
+		}
+
+		if(turn_bell_button.process(mousex,mousey,left_button)) {
+			set_turn_bell(turn_bell_button.checked());
+		}
+
+		if(turn_dialog_button.process(mousex,mousey,left_button)) {
+			set_turn_dialog(turn_dialog_button.checked());
 		}
 
 		disp.update_display();
