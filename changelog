@@ -7,6 +7,7 @@ CVS HEAD
    * forests
    * attack icons
    * unit images and frames
+ * tutorial update
  * scenario balancing for 'Heir to the Throne' campaign
    * Return to Wesnoth
  * scenario balancing for 'The Rise of Wesnoth' campaign
@@ -14,26 +15,35 @@ CVS HEAD
  * scenario balancing for 'The Eastern Invasion' campaign
    * An Unexpected Appearance
  * new units:
+   * Drake Flare
+   * Drake Gladiator
+   * Drake Glider
    * Elvish Enchantress
    * Elvish Sorceress
    * Elvish Sylph
    * Goblin Impaler
    * Goblin Spearman
+   * Inferno Drake
    * Saurian Icecaster
    * Saurian Soothsayer
    * Saurian Tribalist
-   * Troll Rocklobber
-   * Drake Flare
-   * Drake Gladiator
-   * Drake Glider
-   * Inferno Drake
    * Sky Drake
+   * Troll Rocklobber
  * unit balancing:
    * Drake Burner: advances also to Drake Flare
    * Drake Clasher: reduced experience needed to advance, advances also to Drake Gladiator
    * Fire Drake: advances now to Inferno Drake
    * Drake Flameheart: increased movement, gave leadership, replaced claw attack with sword attack, reduced ranged attack damage
    * Drake Slasher: increased hitpoints, reduced experience needed to advance, reduced cost, increased sword attack damage and reduced number of strikes, increased spear attack damage, reduced number of spear attack strikes and made it first strike
+ * removed legacy units
+   * Drake Fighter
+   * Drake Guard
+   * Drake Hatchling
+   * Drake Mage
+   * Drake Slave
+   * Drake Warmage
+   * Drake Warrior
+   * Drake Worker
  * language fixes and polishing (english)
  * updated translations:
    * basque
@@ -75,6 +85,7 @@ CVS HEAD
  * fixed fixed illegal character 'x' in 'The Eastern Invasion: Weldyn Under Attack' scenario
  * fixed defeat conditions on 'The Eastern Invasion: Escape Tunnel' scenario
  * fixed incorrectly using 'Heavy Infantry' instead of 'Heavy Infantryman' in some of The Eastern Invasion scenarios
+ * fixed knight appearances bug on 'The Eastern Invasion: Mal-Ravalans Capital' scenario
  * added a way to specify the actual position of multi-hex tiles
  * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
