@@ -724,11 +724,12 @@ void calculate_healing(display& disp, const gamemap& map,
 	std::map<gamemap::location,unit>::iterator i;
 	for(i = units.begin(); i != units.end(); ++i) {
 
-		//the unit heals if it's on this side, and if it's on a tower or
-		//it has regeneration
+		//the unit heals if it's on this side, and it's on a tower or
+		//it has regeneration, and it is wounded
 		if(i->second.side() == side &&
 		   (map.underlying_terrain(map[i->first.x][i->first.y]) == gamemap::TOWER ||
-		    i->second.type().regenerates())) {
+		    i->second.type().regenerates()) &&
+		    i->second.hitpoints() < i->second.max_hitpoints()) {
 			healed_units.insert(std::pair<gamemap::location,int>(
 			                            i->first, game_config::cure_amount));
 
