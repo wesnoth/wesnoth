@@ -1,7 +1,25 @@
 CVS HEAD
-
- * fixed "make clean" not cleaning everything and "make uninstall" not working because of syntax error
- * fixed "system default language" selection
+ * campaign server and capability to download campaigns from campaign servers
+ * sorting of campaigns by rank
+ * updated translations:
+   * czech
+   * danish
+   * german
+   * norwegian
+   * portuguese
+   * spanish
+   * swedish
+ * fixed 'make clean' not cleaning everything 
+ * fixed 'make uninstall' not working because of syntax error
+ * fixed 'system default language' selection
+ * fixed several graphic clitches
+ * fixed a bug where tiles from terrain_graphics rule did not have the per-rule image when only defined through [map]
+ * fixed bug with [not] tags in filters
+ * fixed untranslatable units.
+ * added a way to specify the actual position of multi-hex tiles
+ * made it possible to have [terrain_graphics] rule as childs of [scenario]s
+ * enabled gamestart speedup by not unnecessarily loading campaigns
+ * code cleanups
 
 Version 0.8.4:
  * changed vision range based on potential move
