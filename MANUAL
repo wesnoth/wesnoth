@@ -1,40 +1,45 @@
 /* $Id$ */
 
+The Battle For Wesnoth Manual
+
+If you are new to Battle for Wesnoth you might want to read the GettingStarted guide first.
+
+
 Controls
 
-   Arrow keys:     Scroll
-   Left click:     Select unit/move unit
-   Right click:    Main menu, cancel action
-   Middle click:   Center on pointer location
-   Escape:         Exit game, exit menu
-   z:              Zoom in
-   x:              Zoom out
-   c:              Reset zoom to default
-   u:              Undo last move (only deterministic moves can be undone)
-   r:              Redo move
-   n:              Cycle through units that have movement left
-   1-7:            Show how far currently selected unit can move in that many turns
-   space:          End unit turn and cycle to next unit that has movement left
-   l:              Move to leader unit
-   ctrl-f:         Toggle fullscreen/windowed mode
-   ctrl-r:         Recruit unit
-   ctrl-shift-r:   Repeat last recruit
-   ctrl-c:         Recall unit
-   ctrl-a:         Toggle accelerated game mode
-   d:              Describe current unit
-   ctrl-d:         View defensive ratings of current unit against attacks
-   ctrl-t:         View how the current unit behaves in various terrain
-   ctrl-s:         Save game
+ Arrow keys:     Scroll
+ Left click:     Select unit/move unit
+ Right click:    Main menu, cancel action
+ Middle click:   Center on pointer location
+ Escape:         Exit game,exit menu
+ z:              Zoom in
+ x:              Zoom out
+ c:              Reset zoom to default
+ u:              Undo last move (only deterministic moves can be undone)
+ r:              Redo move
+ n:              Cycle through units that have movement left
+ 1-7:            Show how far currently selected unit can move in that many turns
+ space:          End unit turn and cycle to next unit that has movement left
+ l:              Move to leader unit
+ ctrl-f:         Toggle fullscreen/windowed mode
+ ctrl-r:         Recruit unit
+ ctrl-shift-r:   Repeat last recruit
+ ctrl-c:         Recall unit
+ ctrl-a:         Toggle accelerated game mode
+ d:              Describe current unit
+ ctrl-d:         View defensive ratings of current unit against attacks
+ ctrl-t:         View how the current unit behaves in various terrain
+ ctrl-s:         Save game
 
-
+	  
 Orbs
 
 On the top of the energy bar shown next to each unit of yours is an orb. This orb is:
 
-    * green if you control the unit and it hasn't moved this turn
-    * yellow if you control the unit and it has moved this turn, but could still move further.
-    * red if you control this unit, but it has already used all its movement this turn
-    * blue if the unit is an ally, but you cannot move it 
+ * green if you control the unit and it hasn't moved this turn
+ * yellow if you control the unit and it has moved this turn, but could still move further.
+ * red if you control this unit, but it has already used all its movement this turn
+ * blue if the unit is an ally, but you cannot move it 
 
 Enemy units have no orb on the top of their energy bar. (In older versions < 0.5.2 there was a black orb on the top of energy bar of enemy units)
 
@@ -48,16 +53,16 @@ Gold
 
 Each side is given some amount of gold to begin with, and receives 2 gold pieces per turn, plus 1 more gold piece for every village that side controls.
 
-Each unit also has a maintenance cost. The maintenance cost is generally equal to the level of the unit (but see the 'Loyal' trait below). Units that are not recalled or recruited - i.e. that lead the side or join the side voluntarily - do not have a maintenance cost associated with them. Maintenance is only paid if the total maintenance of a side's units is greater than the number of villages that side controls. Maintenance paid is the difference between the number of villages and the maintenance cost. So, the formula for determining the income per turn is,
+Each unit also has a upkeep cost. The upkeep cost is generally equal to the level of the unit (but see the 'Loyal' trait below). Units that are not recalled or recruited - i.e. that lead the side or join the side voluntarily - do not have a upkeep cost associated with them. upkeep is only paid if the total upkeep of a side's units is greater than the number of villages that side controls. Upkeep paid is the difference between the number of villages and the upkeep cost. So, the formula for determining the income per turn is,
 
-2 + villages - maximum(0,maintenance - villages)
+ 2 + villages - maximum(0,upkeep - villages)
 
-where maintenance is equal to the sum of the levels of all units that have been recalled and recruited.
+where upkeep is equal to the sum of the levels of all units that have been recalled and recruited.
 
 
 Recruiting and recalling
 
-Units may be recruited for a price, as long as the leader is on a keep, and there is at least one vacant castle hex in the castle the leader is in. Right-click and select Recruit to recruit new troops.
+Units may be recruited with gold, as long as the leader is on a keep, and there is at least one vacant castle hex in the castle the leader is in. Right-click and select Recruit to recruit new troops.
 
 After you complete a scenario, all surviving will be available to you next scenario. Right-click and select Recall to re-recruit units from previous scenarios. Recalling costs 20 pieces of gold.
 
@@ -68,25 +73,25 @@ You are not able to move a unit on the turn you recruit or recall that unit.
 
 Unit specialties
 
-Unit specialties are decribed under Unit Description in-game.
+Unit specialties are described under Unit Description in-game.
 
 
 Traits
 
 Units have traits which reflect aspects of their character. Traits are assigned randomly to units when they are created. Each unit receives two traits. The possible traits are as follows:
 
-   Loyal:         The unit never has a maintenance above 1.
-   Strong:        The unit does extra damage in close combat, and has a few more hitpoints.
-   Quick:         The unit has one extra movement point, but a few less hitpoints.
-   Resilient:     The unit has more hitpoints.
-   Intelligent:   The unit requires less experience to advance a level.
+ Loyal:         The unit never has a upkeep cost above 1.
+ Strong:        The unit does extra damage in close combat, and has a few more hitpoints.
+ Quick:         The unit has one extra movement point, but a few less hitpoints.
+ Resilient:     The unit has more hitpoints.
+ Intelligent:   The unit requires less experience to advance a level.
 
 
 Moving
 
 When a unit is clicked on, all the places it can move to on the current turn become lit up, while everywhere it can't move is greyed. You can then click on the hex you want it to move to. Moving onto a village that is neutral or owned by an enemy will take ownership of it. If you select destination which beyond reach in your turn the unit will enter 'goto-mode' and continue moving towards destination thru next turn(s). You can easily undo goto movements in the beginning of your turn, goto can be broken by selecting unit and choosing new destination.
 
-You may not move through the six spaces around an enemy piece (their Zone of Control) without stopping.
+You may not move through enemy unit's adjacents hexes (their Zone of Control) without stopping.
 
 
 Fighting
@@ -118,13 +123,15 @@ Units that are Lawful deal 25% more damage at day, and 25% less damage at night.
 
 Healing
 
-Injured units in villages will recover 8 hitpoints every turn. Injured units that are adjacent to units with the 'heal' or 'cure' abilities will also heal. Units next to unit(s) with the 'heal' ability will heal a maximum of 4 hitpoints per turn, and 8 hitpoints per turn for unit(s) with the 'cure' ability. However the more units around a unit that can heal, the less each one will be healed.
+Injured units in villages will recover 8 hitpoints every turn. Injured units that are adjacent to units with the 'heal' or 'cure' abilities will also heal. Units next to unit(s) with the 'heal' ability will heal a maximum of 4 hitpoints per turn, and 8 hitpoints per turn for unit(s) with the 'cure' ability. However the more units around a unit that can heal, the less each one will be healed. Maximum healing for a unit is 8 hitpoints, and thus a Troll residing in a village will only recover 8 hitpoints, not 16. Nor will a unit inside a village get extra healing from adjacent healers.
 
 'Heal' prevents poisoning to cause damage while 'cure' removes poisoning. When poisoning is cured unit does not gain hitpoints on that turn.
+
 
 Experience
 
 Units are awarded experience for fighting, and after obtaining enough experience, they will advance a level, and become more powerful.
+
 
 Multiplayer
 
