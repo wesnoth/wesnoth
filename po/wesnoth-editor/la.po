@@ -1,185 +1,186 @@
-# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Latin translations for Battle for Wesnoth package.
+# ----wesnoth-editor.cpp1.po (Wesnoth-editor 0.8.8)  ----translation of Wesnoth-editor.
 # Copyright (C) 2005 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-#
+# This file is distributed under the same license as the Wesnoth-editor package.
+# <>, 2005.
+# <>, 2005.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
+"Project-Id-Version: Wesnoth-editor 0.8.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-11-25 11:44+0100\n"
-"PO-Revision-Date: 2004-11-25 11:44+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-01-17 14:37+0100\n"
+"Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
+"Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/themes/editor.cfg:216
 msgid "File"
-msgstr ""
+msgstr "Archivum"
 
 #: data/themes/editor.cfg:225
 msgid "Edit"
-msgstr ""
+msgstr "Recensere"
 
 #: data/themes/editor.cfg:233
 msgid "Draw"
-msgstr ""
+msgstr "Pingere"
 
 #: data/themes/editor.cfg:242
 msgid "Flood"
-msgstr ""
+msgstr "Inundare"
 
 #: data/themes/editor.cfg:251
 msgid "Start P"
-msgstr ""
+msgstr "Pos. Init."
 
 #: data/themes/editor.cfg:260
 msgid "Paste"
-msgstr ""
+msgstr "Glutinare"
 
 #: src/editor/editor.cpp:306 src/editor/editor.cpp:383
 msgid "Choose a Map to Load"
-msgstr ""
+msgstr "Chartam Restituendam Eligire"
 
 #: src/editor/editor.cpp:310
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Charta iam adest. Visne eam superscribere?"
 
 #: src/editor/editor.cpp:331
 msgid "Which Player?"
-msgstr ""
+msgstr "Qualis lusor?"
 
 #: src/editor/editor.cpp:332
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Qualis lusor hic incipere debet?"
 
 #: src/editor/editor.cpp:400 src/editor/editor.cpp:479
 msgid "The file does not contain a valid map."
-msgstr ""
+msgstr "Archivum chartam validam non continet."
 
 #: src/editor/editor.cpp:537
 msgid "'$filename' does not exist or can not be read as a file."
-msgstr ""
+msgstr "'$filename' non adest aut legi non potest."
 
 #: src/editor/editor.cpp:549
 msgid "Load failed: "
-msgstr ""
+msgstr "Restitutio fefellit: "
 
 #: src/editor/editor.cpp:744
 msgid "You must have a hex selected on the board."
-msgstr ""
+msgstr "Debes hexagonem in tabula eligere."
 
 #: src/editor/editor.cpp:996
 msgid "Quit Editor"
-msgstr ""
+msgstr "Recensorem Relinquere"
 
 #: src/editor/editor.cpp:1001
 msgid "Do you want to save the map before quitting?"
-msgstr ""
+msgstr "Visne chartam servarve priusquam reliqueris?"
 
 #: src/editor/editor.cpp:1021
 msgid "Map saved."
-msgstr ""
+msgstr "Charta servata."
 
 #: src/editor/editor.cpp:1028
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Charta non servare potest: $msg"
 
 #: src/editor/editor.cpp:1084
 msgid "Player"
-msgstr ""
+msgstr "Lusor"
 
 #: src/editor/editor_dialogs.cpp:45
 msgid "Your modifications to the map will be lost.  Continue?"
-msgstr ""
+msgstr "Mutationes tuae ad chartam perdentur. Pergere?"
 
 #: src/editor/editor_dialogs.cpp:72 src/editor/editor_dialogs.cpp:193
 msgid "Create New Map"
-msgstr ""
+msgstr "Novam Chartam Creare"
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:388
 msgid "Width:"
-msgstr ""
+msgstr "Amplitudo:"
 
 #: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:389
 msgid "Height:"
-msgstr ""
+msgstr "Altitudo:"
 
 #: src/editor/editor_dialogs.cpp:91
 msgid "Generate New Map"
-msgstr ""
+msgstr "Chartam Novam Generare"
 
 #: src/editor/editor_dialogs.cpp:92
 msgid "Generate Random Map"
-msgstr ""
+msgstr "Chartam Fortuitam Generare"
 
 #: src/editor/editor_dialogs.cpp:93
 msgid "Random Generator Settings"
-msgstr ""
+msgstr "Impostationes Generatoris Fortuiti"
 
 #: src/editor/editor_dialogs.cpp:94 src/editor/editor_dialogs.cpp:405
 msgid "Cancel"
-msgstr ""
+msgstr "Abrogare"
 
 #: src/editor/editor_dialogs.cpp:179
 msgid "Map creation failed."
-msgstr ""
+msgstr "Creatio chartae fefellit."
 
 #: src/editor/editor_dialogs.cpp:245
 msgid "Close Window"
-msgstr ""
+msgstr "Fenestram Claudere"
 
 #: src/editor/editor_dialogs.cpp:251 src/editor/editor_dialogs.cpp:318
 msgid "Preferences"
-msgstr ""
+msgstr "Impostationes"
 
 #: src/editor/editor_dialogs.cpp:253
 msgid "Scroll Speed:"
-msgstr ""
+msgstr "Velocitas Gyri:"
 
 #: src/editor/editor_dialogs.cpp:280
 msgid "Full Screen"
-msgstr ""
+msgstr "Scrinium Totum"
 
 #: src/editor/editor_dialogs.cpp:287
 msgid "Show Grid"
-msgstr ""
+msgstr "Rete Monstrare"
 
 #: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
-msgstr ""
+msgstr "Modus Visivus"
 
 #: src/editor/editor_dialogs.cpp:297
 msgid "Hotkeys"
-msgstr ""
+msgstr "Claves Notarum"
 
 #: src/editor/editor_dialogs.cpp:386 src/editor/editor_dialogs.cpp:446
 msgid "Resize Map"
-msgstr ""
+msgstr "Magnitudinem Chartae Mutare"
 
 #: src/editor/editor_dialogs.cpp:406
 msgid "Ok"
-msgstr ""
+msgstr "Bene"
 
 #: src/editor/editor_dialogs.cpp:489
 msgid "X-Axis"
-msgstr ""
+msgstr "Axis ξ"
 
 #: src/editor/editor_dialogs.cpp:490
 msgid "Y-Axis"
-msgstr ""
+msgstr "Axis υ"
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr ""
+msgstr "Volvi (hoc dimensiones chartae mutare potest)"
 
 #: src/editor/editor_palettes.cpp:316
 msgid "FG"
-msgstr ""
+msgstr "Eminentia"
 
 #: src/editor/editor_palettes.cpp:318
 msgid "BG"
-msgstr ""
+msgstr "Recessus"
