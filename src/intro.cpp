@@ -122,6 +122,8 @@ void show_intro(display& screen, config& data)
 			} else {
 				last = false;
 			}
+
+			screen.draw();
 		}
 	}
 

@@ -50,4 +50,17 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			   std::vector<team>& teams, int team_num,
 			   std::map<gamemap::location,unit>& units);
 
+bool turn_slice(game_data& gameinfo, game_state& state_of_game,
+                gamestatus& status, config& terrain_config, config* level,
+                CVideo& video, CKey& key, display& gui, gamemap& map,
+                std::vector<team>& teams, int team_num,
+                std::map<gamemap::location,unit>& units,
+                bool& left_button, bool& right_button,
+                gamemap::location& next_unit, paths& current_paths,
+                paths::route& current_route, bool& enemy_paths,
+                gamemap::location& last_hex, gamemap::location& selected_hex,
+                undo_list& undo_stack, undo_list& redo_stack,
+                bool browse_only);
+                
+
 #endif

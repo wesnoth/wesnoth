@@ -209,31 +209,27 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					SDL_Delay(500);
 				} else if(!replaying && team_it->is_network()) {
 					config cfg;
+	
+					bool left_button = false, right_button = false;
+					gamemap::location next_unit;
+					paths current_paths;
+					paths::route current_route;
+					bool enemy_paths = false;
+					gamemap::location last_hex, selected_hex;
+					undo_list undo_stack, redo_stack;
+
 					for(;;) {
-						network::connection res=network::receive_data(cfg,0,20);
+						network::connection res = network::receive_data(cfg);
 						if(res && cfg.children["turn"].empty() == false) {
 							break;
 						}
-	
-						//FIXME: call a proper event handling function here
-						int mousex, mousey;
-						SDL_GetMouseState(&mousex,&mousey);
 
-						if(key[KEY_UP] || mousey == 0)
-							gui.scroll(0.0,-preferences::scroll_speed());
-
-						if(key[KEY_DOWN] || mousey == gui.y()-1)
-							gui.scroll(0.0,preferences::scroll_speed());
-
-						if(key[KEY_LEFT] || mousex == 0)
-							gui.scroll(-preferences::scroll_speed(),0.0);
-
-						if(key[KEY_RIGHT] || mousex == gui.x()-1)
-							gui.scroll(preferences::scroll_speed(),0.0);
-
-						gui.draw();
-						game_events::pump();
-						events::pump();
+						turn_slice(gameinfo,state_of_game,status,terrain_config,
+						          level,video,key,gui,map,teams,player_number,
+						          units,left_button,right_button,next_unit,
+						          current_paths,current_route,enemy_paths,
+						          last_hex,selected_hex,undo_stack,redo_stack,
+						          true);
 					}
 
 					std::cerr << "replay: '" << cfg.children["turn"].front()->write() << "'\n";
