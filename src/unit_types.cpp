@@ -267,25 +267,25 @@ int unit_movement_type::movement_cost(const gamemap& map,
 	return res;
 }
 
-double unit_movement_type::defense_modifier(const gamemap& map,
-                                            gamemap::TERRAIN terrain) const
+int unit_movement_type::defense_modifier(const gamemap& map,
+                                         gamemap::TERRAIN terrain) const
 {
-	const std::map<gamemap::TERRAIN,double>::const_iterator i =
-	                                          defenseMods_.find(terrain);
+	const std::map<gamemap::TERRAIN,int>::const_iterator i =
+	                                      defenseMods_.find(terrain);
 	if(i != defenseMods_.end()) {
 		return i->second;
 	}
 
 	const config* const defense = cfg_.child("defense");
 	if(defense == NULL) {
-		return 1;
+		return 100;
 	}
 
 	const std::string& name = map.underlying_terrain_name(terrain);
 	const std::string& val = (*defense)[name];
 
-	const double res = atof(val.c_str());
-	defenseMods_.insert(std::pair<gamemap::TERRAIN,double>(terrain,res));
+	const int res = atoi(val.c_str());
+	defenseMods_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
 	return res;
 }
 
@@ -297,9 +297,8 @@ int unit_movement_type::damage_against(const attack_type& attack) const
 	}
 
 	const std::string& val = (*resistance)[attack.type()];
-	const double resist = atof(val.c_str());
-	return static_cast<int>(
-	         util::round(resist * static_cast<double>(attack.damage())));
+	const int resist = atoi(val.c_str());
+	return (resist*attack.damage())/100;
 }
 
 const string_map& unit_movement_type::damage_table() const

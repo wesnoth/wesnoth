@@ -604,13 +604,12 @@ void display::draw_game_status(int x, int y)
 
 			const unit& u = unit_selected->second;
 			const int move_cost = u.movement_cost(map_,terrain);
-			const double defense = u.defense_modifier(map_,terrain);
-			const int def = 100-int(util::round(100.0*defense));
+			const int defense = 100 - u.defense_modifier(map_,terrain);
 
 			if(move_cost > 10) {
 				details << " (-)";
 			} else {
-				details << " (" << def << "%," << move_cost << ")";
+				details << " (" << defense << "%," << move_cost << ")";
 			}
 		}
 

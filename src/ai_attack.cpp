@@ -512,7 +512,8 @@ double power_projection(const gamemap::location& loc,
 						most_damage = damage;
 				}
 
-				const double defense = 1.0 - un.defense_modifier(map,terrain);
+				const double defense =
+				        double(100 - un.defense_modifier(map,terrain))/100.0;
 				const double rating = hp*defense*double(most_damage);
 				if(rating > best_rating) {
 					best_rating = rating;

@@ -99,16 +99,16 @@ public:
 
 	const std::string& name() const;
 	int movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const;
-	double defense_modifier(const gamemap& map, gamemap::TERRAIN terrain) const;
+	int defense_modifier(const gamemap& map, gamemap::TERRAIN terrain) const;
 	int damage_against(const attack_type& attack) const;
 
-	const std::map<std::string,std::string>& damage_table() const;
+	const string_map& damage_table() const;
 
 private:
 	const config& cfg_;
 
 	mutable std::map<gamemap::TERRAIN,int> moveCosts_;
-	mutable std::map<gamemap::TERRAIN,double> defenseMods_;
+	mutable std::map<gamemap::TERRAIN,int> defenseMods_;
 };
 
 typedef std::map<std::string,unit_movement_type> movement_type_map;

@@ -235,7 +235,7 @@ battle_stats evaluate_battle_stats(
 	if(counterattack) {
 		//magical attacks always have a 70% chance to hit
 		if(defender_attacks[defend].special() == magical_string)
-			res.chance_to_hit_attacker = 0.7;
+			res.chance_to_hit_attacker = 70;
 
 		res.damage_attacker_takes = int(double(
 		 a->second.damage_against(defender_attacks[defend]))
@@ -270,13 +270,13 @@ battle_stats evaluate_battle_stats(
 	}
 
 	if(attack.special() == magical_string)
-		res.chance_to_hit_defender = 0.7;
+		res.chance_to_hit_defender = 70;
 
 	static const std::string marksman_string("marksman");
 
 	//offensive marksman attacks always have at least 60% chance to hit
-	if(res.chance_to_hit_defender < 0.6 && attack.special() == marksman_string)
-		res.chance_to_hit_defender = 0.6;
+	if(res.chance_to_hit_defender < 60 && attack.special() == marksman_string)
+		res.chance_to_hit_defender = 60;
 
 	res.damage_defender_takes = int(util::round(
 			double(d->second.damage_against(attack))
@@ -334,8 +334,7 @@ void attack(display& gui, const gamemap& map,
 
 	while(stats.nattacks > 0 || stats.ndefends > 0) {
 		if(stats.nattacks > 0) {
-			const double roll = double(get_random()%1000)/1000.0;
-			const bool hits = roll < stats.chance_to_hit_defender;
+			const bool hits = (get_random()%100)/stats.chance_to_hit_defender;
 			const bool dies = gui.unit_attack(attacker,defender,
 			            hits ? stats.damage_defender_takes : 0,
 						a->second.attacks()[attack_with]);
@@ -391,8 +390,7 @@ void attack(display& gui, const gamemap& map,
 		}
 
 		if(stats.ndefends > 0) {
-			const double roll = double(get_random()%1000)/1000.0;
-			const bool hits = roll < stats.chance_to_hit_attacker;
+			const bool hits = (get_random()%100)/stats.chance_to_hit_attacker;
 			const bool dies = gui.unit_attack(defender,attacker,
 			               hits ? stats.damage_attacker_takes : 0,
 						   d->second.attacks()[stats.defend_with]);

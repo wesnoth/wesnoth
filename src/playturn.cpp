@@ -416,14 +416,14 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			att << attack_name << " (" << attack_type
 			    << ") " << stats.damage_defender_takes << "-"
 				<< stats.nattacks << " " << range << " "
-				<< int(util::round(100.0*stats.chance_to_hit_defender))
+				<< stats.chance_to_hit_defender
 			    << "%";
 
 			att << "," << string_table["versus"] << ",";
 			att << defend_name << " (" << defend_type
 			    << ") " << stats.damage_attacker_takes << "-"
 				<< stats.ndefends << " "
-				<< int(util::round(100.0*stats.chance_to_hit_attacker))
+				<< stats.chance_to_hit_attacker
 			    << "%";
 
 			items.push_back(att.str());
@@ -855,10 +855,6 @@ void turn_info::terrain_table()
 			const std::string& lang_name = string_table[name];
 			const int moves = move_type.movement_cost(map_,*t);
 
-			const double defense = move_type.defense_modifier(map_,*t);
-
-			const int def = 100-int(util::round(100.0*defense));
-
 			std::stringstream str;
 			str << lang_name << ",";
 			if(moves < 10)
@@ -866,7 +862,8 @@ void turn_info::terrain_table()
 			else
 				str << "--";
 
-			str << "," << def << "%";
+			const int defense = 100 - move_type.defense_modifier(map_,*t);
+			str << "," << defense << "%";
 
 			items.push_back(str.str());
 		}
@@ -895,22 +892,20 @@ void turn_info::attack_resistance()
 	     un->second.type().movement_type().damage_table();
 	for(std::map<std::string,std::string>::const_iterator i
 	    = table.begin(); i != table.end(); ++i) {
-		double resistance = atof(i->second.c_str());
+		int resistance = 100 - atoi(i->second.c_str());
 
 		//if resistance is less than 0, display in red
 		std::string prefix = "";
-		if(resistance > 1.0) {
+		if(resistance < 0) {
 			prefix = "#";
 		}
-
-		const int resist = 100 - int(util::round(100.0*resistance));
 
 		const std::string& lang_weapon =
 		               string_table["weapon_type_" + i->first];
 		const std::string& weap = lang_weapon.empty() ? i->first : lang_weapon;
 
 		std::stringstream str;
-		str << weap << "," << prefix << resist << "%";
+		str << weap << "," << prefix << resistance << "%";
 		items.push_back(str.str());
 	}
 

@@ -469,7 +469,7 @@ int unit::movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const
 	return res;
 }
 
-double unit::defense_modifier(const gamemap& map,
+int unit::defense_modifier(const gamemap& map,
                               gamemap::TERRAIN terrain) const
 {
 	return type_->movement_type().defense_modifier(map,terrain);

@@ -76,7 +76,7 @@ public:
 	const std::vector<attack_type>& attacks() const;
 
 	int movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const;
-	double defense_modifier(const gamemap& map, gamemap::TERRAIN terrain) const;
+	int defense_modifier(const gamemap& map, gamemap::TERRAIN terrain) const;
 	int damage_against(const attack_type& attack) const;
 
 	//gets the unit image that should currently be displayed
