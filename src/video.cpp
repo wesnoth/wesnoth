@@ -318,8 +318,8 @@ void CVideo::flip()
 		return;
 
 	halo::render();
-	events::raise_volatile_draw_event();
 	font::draw_floating_labels(frameBuffer);
+	events::raise_volatile_draw_event();
 	cursor::draw(frameBuffer);
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
@@ -330,8 +330,8 @@ void CVideo::flip()
 	clear_updates();
 
 	cursor::undraw(frameBuffer);
-	font::undraw_floating_labels(frameBuffer);
 	events::raise_volatile_undraw_event();
+	font::undraw_floating_labels(frameBuffer);
 	halo::unrender();
 }
 
