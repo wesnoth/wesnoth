@@ -958,7 +958,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						direction = 2;
 					}
 
-					if(on_bridge == false) {
+					if(labels != NULL && on_bridge == false) {
 						on_bridge = true;
 						const std::string& name = generate_name(name_generator,"bridge_name");
 						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
