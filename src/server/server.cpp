@@ -313,6 +313,8 @@ void server::run()
 				//send all players the information that a player has logged
 				//out of the system
 				lobby_players_.send_data(initial_response_);
+
+				std::cerr << "done closing socket...\n";
 			}
 
 			continue;

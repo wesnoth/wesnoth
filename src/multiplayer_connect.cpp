@@ -109,7 +109,7 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		}
 
 		loaded_level_ = state_->starting_pos;
-		level_ptr= &loaded_level_;
+		level_ptr = &loaded_level_;
 
 		//make all sides untaken
 		for(config::child_itors i = level_ptr->child_range("side");
@@ -122,14 +122,20 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 
 		recorder = replay(state_->replay_data);
 
-		//if this is a snapshot save, we don't want to use the replay data
-		if(loaded_level_["snapshot"] == "yes")
-			recorder.set_to_end();
+		config* const start = level_ptr->child("start");
 
-		//add the replay data under the level data so clients can
-		//receive it
-		level_ptr->clear_children("replay");
-		level_ptr->add_child("replay") = state_->replay_data;
+		//if this is a snapshot save, we don't want to use the replay data
+		if(loaded_level_["snapshot"] == "yes") {
+			if(start != NULL)
+				start->clear_children("replay");
+			level_ptr->clear_children("replay");
+			recorder.set_to_end();
+		} else {
+			//add the replay data under the level data so clients can
+			//receive it
+			level_ptr->clear_children("replay");
+			level_ptr->add_child("replay") = state_->replay_data;
+		}
 
 	} else {
 		//Load a new map

@@ -42,7 +42,6 @@ error::error(const std::string& msg, connection sock) : message(msg), socket(soc
 
 void error::disconnect()
 {
-	bad_sockets.erase(socket);
 	if(socket) {
 		network::disconnect(socket);
 	}
@@ -164,6 +163,7 @@ void disconnect(connection s)
 		return;
 	}
 
+	bad_sockets.erase(s);
 	received_data.erase(s);
 	current_connection = received_data.end();
 
