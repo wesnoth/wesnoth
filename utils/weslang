@@ -1,8 +1,10 @@
 #!/bin/sh
+# by Mark Michelsen (Skovbaer)
+
 if [ "$2" == "" ]; then
 	cat << EOF
-WesLang v0.1 - Automatic language cfg updater/creator script
----------------------------------Mark-Michelsen-/-Skovbaer--
+WesLang v0.1.1 - Automatic language cfg updater/creator script
+--------------------------------------------------------------
 Usage: weslang [make/update] [language name e.g. danish] ([v])
 
    make - Creates a new basic cfg ready for translation
@@ -46,6 +48,4 @@ else
 	rm -f weslang.tmp
 	mv -f $2.cfg data/translations
 fi
-echo Cleaning up...
-make distclean > /dev/null
 echo Done.
