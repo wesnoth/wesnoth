@@ -2,14 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-04 11:52+0200\n"
-"PO-Revision-Date: 2004-08-08 15:00+0200\n"
+"POT-Creation-Date: 2004-09-05 19:02+0200\n"
+"PO-Revision-Date: 2004-09-08 19:05+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: data/game.cfg:257
 msgid "Heir to the Throne"
@@ -57,7 +58,7 @@ msgid ""
 "royalguard.png,Royal Guard,(hardest)"
 msgstr ""
 "&human-spearman.png,Spjutbärare,(lätt);*&human-swordman.png,Svärdssoldat;"
-"&human-royalguard.png,Kunglig Vakt,(svår)"
+"&human-royalguard.png,Kunglig Vakt,(svårt)"
 
 #: data/game.cfg:296
 msgid "The Rise of Wesnoth"
@@ -68,8 +69,8 @@ msgid ""
 "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;&noble-"
 "lord.png,Lord,(hardest)"
 msgstr ""
-"&noble-fighter.png,Kämpe,(lätt);*&noble-commander.png,Kommendör;&noble-lord."
-"png,Furste,(svår)"
+"&noble-fighter.png,Krigare,(lätt);*&noble-commander.png,Befälhavare;&noble-"
+"lord.png,Furste,(svårt)"
 
 #: data/game.cfg:370
 msgid "loyal"
@@ -120,10 +121,10 @@ msgid ""
 msgstr ""
 "<img>src=misc/logo.png align=middle box=no</img>\n"
 "\n"
-"Striden om Wesnoth är ett dragbaserat strategispel i fantasymiljö som är lite "
-"annorlunda jämfört med andra moderna strategispel. Medan andra spel strävar "
-"efter komplexitet, både vad gäller regler och spelteknik, är Striden om "
-"Wesnoth uppbyggt kring enkla regler och enkel spelteknik. Tro nu inte att "
+"Striden om Wesnoth är ett dragbaserat strategispel i fantasymiljö som är "
+"lite annorlunda jämfört med andra moderna strategispel. Medan andra spel "
+"strävar efter komplexitet, både vad gäller regler och spelteknik, är Striden "
+"om Wesnoth uppbyggt kring enkla regler och enkel spelteknik. Tro nu inte att "
 "detta gör spelet i sig lätt - dessa enkla regler ger ett mycket rikt "
 "strategispel, som är lätt att lära sig men en rejäl utmaning att bemästra. "
 
@@ -153,10 +154,10 @@ msgid ""
 "description will pop up explaining that item. This is especially useful when "
 "you encounter new abilities for the first time."
 msgstr ""
-"Den här sidan ger en översikt över allt du behöver veta för att spela Slaget "
-"om Wesnoth. Den tar upp hur man spelar och de grundläggande mekanismerna som "
-"styr spelet. För mer information om hur man spelar, kan du studera "
-"<ref>dst=basic_strategy text='Grundläggande strategi'</ref> och "
+"Den här sidan ger en översikt över allt du behöver veta för att spela "
+"Striden om Wesnoth. Den tar upp hur man spelar och de grundläggande "
+"mekanismerna som styr spelet. För mer information om hur man spelar, kan du "
+"studera <ref>dst=basic_strategy text='Grundläggande strategi'</ref> och "
 "<ref>dst=multiplayer_strategy text='Strategi för flera spelare'</ref>. Tänk "
 "på att detta bara är en översikt - om du följer länkarna kan du läsa om "
 "speciella undantag och situationer. \n"
@@ -224,11 +225,11 @@ msgstr ""
 "under rekryteringen.\n"
 "\n"
 "Rekryterade trupper får två slumpmässigt valda <ref>dst=traits "
-"text=Karaktärsdrag</ref> som ändrar deras egenskaper.\n"
+"text='Karaktärsdrag'</ref> som ändrar deras egenskaper.\n"
 "\n"
 "I senare scenarior kommer du också kunna välja att Återkalla veteraner från "
 "tidigare strider. Detta fungerar likadant som rekrytering, bortsett från att "
-"det kostar 20 guld att återkalla en enhet oavsett vad den kostade när du "
+"det kostar 20 guld att återkalla en trupp oavsett vad den kostade när du "
 "rekryterade den. Om du väljer att Återkalla får du upp en lista över de "
 "tillgängliga veteraner som du kan välja bland.\n"
 "\n"
@@ -275,12 +276,12 @@ msgstr ""
 "\n"
 "Varje trupp har ett givet antal förflyttningspoäng för varje drag, och "
 "kostnaden att förflytta sig över en viss ruta avgörs av dess "
-"<ref>dst=terrain text=Terräng</ref>. Till exempel kostar det nästan alltid 1 "
-"förflyttningspoäng att gå på en slättruta. Exakt hur många poäng det kostar "
-"att gå på en vis typ av ruta avgörs av truppens typ. I skog kostar det bara "
-"1 poäng för alver, 2 för de flesta människo- och orchtrupper, medan det för "
-"ryttare kostar 3. Om du vill veta vad det kostar för en trupp att gå på en "
-"viss typ av terräng, så kan du högerklicka på truppen, välja "
+"<ref>dst=terrain text='Terräng'</ref>. Till exempel kostar det nästan alltid "
+"1 förflyttningspoäng att gå på en slättruta. Exakt hur många poäng det "
+"kostar att gå på en vis typ av ruta avgörs av truppens typ. I skog kostar "
+"det bara 1 poäng för alver, 2 för de flesta människo- och orchtrupper, medan "
+"det för ryttare kostar 3. Om du vill veta vad det kostar för en trupp att gå "
+"på en viss typ av terräng, så kan du högerklicka på truppen, välja "
 "Truppbeskrivning, och sedan <italic>text='Terrängavdrag'</italic>.\n"
 "\n"
 "Under förflyttning är det viktigt att komma ihåg de så kallade "
@@ -360,29 +361,30 @@ msgstr ""
 "<header>text='Chans för träff'</header>\n"
 "\n"
 "Chansen att en trupp träffar en annan beror i stort sett bara på vilken "
-"<ref>dst=terrain text=Terräng</ref> försvararen står på. Chansen att träffa "
-"kan man se genom att högerklicka på en trupp, välja Truppbeskrivning, och "
-"sedan <italic>text=Terrängavdrag</italic>. Till exempel har en alv en "
-"försvarsnivå av 70% i skog, vilket innebär att en attackerande trupp bara "
+"<ref>dst=terrain text='Terräng'</ref> försvararen står på. Chansen att "
+"träffa kan man se genom att högerklicka på en trupp, välja Truppbeskrivning, "
+"och sedan <italic>text=Terrängavdrag</italic>. Till exempel har en alv en "
+"försvarsnivå på 70% i skog, vilket innebär att en attackerande trupp bara "
 "har 30% chans att träffa. Precis på samma sätt avgörs träffmöjligheten för "
 "alven av terrängen som den andra truppen står på. \n"
 "Det finns två undantag på den här regeln: vid <ref>dst=magical_attacks "
-"text=Magiska attacker</ref> och då <ref>dst=ability_marksman "
+"text='Magiska attacker'</ref> och då <ref>dst=ability_marksman "
 "text=Prickskyttar</ref> anfaller. Magiska attacker träffar alltid med en "
 "sannolikhet av 70%, och prickskyttar träffar med 60% sannolikhet.\n"
 "\n"
 "<header>text=Skada</header>\n"
 "\n"
 "Varje träff ger en grundskada som beror på typen av attack. Till exempel ger "
-"en alvkrigare med ett 5-4-svärd en grundskada på 5 kroppspoäng, förkortat KP. Detta kan ändras "
-"beroende på två saker: försvararens <ref>dst=damage_type_and_resistance "
-"text=Motståndskraft</ref> samt vilken<ref>dst=time_of_day text='Tid på "
-"dygnet'</ref> det är. Båda dessa förklaras nedan.\n"
+"en alvkrigare med ett 5-4-svärd en grundskada på 5 kroppspoäng (KP). Detta "
+"kan ändras beroende på två saker: försvararens "
+"<ref>dst=damage_type_and_resistance text='Motståndskraft'</ref> samt "
+"vilken<ref>dst=time_of_day text='Tid på dygnet'</ref> det är. Båda dessa "
+"förklaras nedan.\n"
 "\n"
-"Vissa enheter har speciella förmågor som påverkar den i strid åsamkade "
-"skadan. Den vanligaste förmågan är att <ref>dst=ability_charge text=Storma</"
-"ref>, vilket fördubblar skadan som både anfallaren och försvararen vållar "
-"när truppen som kan storma gör detta. "
+"Vissa trupper har speciella förmågor som påverkar den i strid åsamkade "
+"skadan. Den vanligaste förmågan är att <ref>dst=ability_charge "
+"text='Storma'</ref>, vilket fördubblar skadan som både anfallaren och "
+"försvararen vållar när truppen som kan storma gör detta. "
 
 #: data/help.cfg:116
 msgid "Damage Types and Resistance"
@@ -406,11 +408,22 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
-"I Wesnoth finns det tre sorters skador som vanligtvis associeras med fysiska attacker. Skärande, stickande och krossande skador. Det finns ytterligare tre sorters skador vanligtvis associerade med magiska attacker: eld ,frost, samt heliga attacker. Truppernas olika motståndskraft kan förändra skadan de får från olika skadetyper.\n"
+"I Wesnoth finns det tre sorters skador som vanligtvis associeras med fysiska "
+"attacker: skär-, stick- och krosskador. Det finns ytterligare tre sorters "
+"skador vanligtvis associerade med magiska attacker: eld, frost, och heliga "
+"attacker. Truppernas olika motståndskraft kan förändra skadan de får från "
+"olika skadetyper.\n"
 "\n"
-"Motståndskrafter är lätta att förstå. En trupp som exempelvis har 40% motståndskraft mot en viss typ av skada kommer att få 40% mindre skada när får en skada av just den sorten. Det är också möjligt att en trupp är extra sårbar för vissa typer. Om en trupp har en negativ motståndskraft, till exempel -100%, så kommer den att få 100% mer i skada när den får den sortens skada.\n"
+"Motståndskrafter är lätta att förstå. En trupp som exempelvis har 40% "
+"motståndskraft mot en viss typ av skada kommer att få 40% mindre skada när "
+"får en skada av just den sorten. Det är också möjligt att en trupp är extra "
+"sårbar för vissa typer. Om en trupp har en negativ motståndskraft, till "
+"exempel -100%, så kommer den att få 100% mer i skada när den får den sortens "
+"skada.\n"
 "\n"
-"Till exempel är skelett mycket motståndskraftiga mot skärande och stickande attacker, men de är sårbara för krossande attacker och eld. De är dessutom extremt sårbara för heliga attacker. "
+"Till exempel är skelett mycket motståndskraftiga mot skärande och stickande "
+"attacker, men de är sårbara för krossande attacker och eld. De är dessutom "
+"extremt sårbara för heliga attacker. "
 
 #: data/help.cfg:126
 msgid "Time of Day"
@@ -447,28 +460,35 @@ msgid ""
 "mind that some scenarios take place underground, where it is perpetually "
 "night!"
 msgstr ""
-"Under ett spel i Wesnoth växlar dygnet vanligtvis regelbundet mellan dag och natt. Den aktuella tiden visas under minikartan uppe i panelen till höger. \n"
+"Under ett spel i Wesnoth växlar dygnet vanligtvis regelbundet mellan dag och "
+"natt. Den aktuella tiden visas under minikartan uppe i panelen till höger. \n"
 "\n"
 "Dygnscykeln går enligt följande:\n"
 "\n"
 "Gryning <jump>to=160</jump><img>src=misc/schedule-dawn.png align=here</img>\n"
-"Förmiddag <jump>to=160</jump><img>src=misc/schedule-morning.png align=here</img>\n"
+"Förmiddag <jump>to=160</jump><img>src=misc/schedule-morning.png align=here</"
+"img>\n"
 "Eftermiddag <jump>to=160</jump><img>src=misc/schedule-afternoon.png "
 "align=here</img>\n"
-"Skymning <jump>to=160</jump><img>src=misc/schedule-dusk.png align=here</img> \n"
+"Skymning <jump>to=160</jump><img>src=misc/schedule-dusk.png align=here</"
+"img> \n"
 "Första vakten <jump>to=160</jump><img>src=misc/schedule-firstwatch.png "
 "align=here</img>\n"
-"Andra vakten <jump>to=160</jump><img>src=misc/schedule-secondwatch.png align=here</img>\n"
+"Andra vakten <jump>to=160</jump><img>src=misc/schedule-secondwatch.png "
+"align=here</img>\n"
 "\n"
-"Förmiddag och eftermiddag räknas som dag, och Första och Andra vakten som natt.\n"
+"Förmiddag och eftermiddag räknas som dag, och Första och Andra vakten som "
+"natt.\n"
 "\n"
-"Tiden på dygnet påverkar skadorna som vissa trupper åsamkar enligt följande -\n"
+"Tiden på dygnet påverkar skadorna som vissa trupper åsamkar enligt "
+"följande:\n"
 "\n"
 "Lagenliga trupper ger 25% mer skada dagtid, och 25% mindre under natten.\n"
 "Kaotiska trupper ger 25% mer skada nattetid, och 25% mindre under dagen.\n"
 "Neutrala trupper är opåverkade av tiden på dygnet. \n"
 "\n"
-"<img>src=misc/schedule-underground.png align=right float=yes</img>Somliga scenarior äger rum i underjorden eller i grottor, där det råder evig natt!"
+"<img>src=misc/schedule-underground.png align=right float=yes</img>Somliga "
+"scenarior äger rum i underjorden eller i grottor, där det råder evig natt!"
 
 #: data/help.cfg:151
 msgid "Experience and Advancement"
@@ -489,11 +509,19 @@ msgid ""
 "Keep in mind that while most units have three levels, not all do, and that "
 "occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
 msgstr ""
-"Om båda trupper överlever en strid, får de lika många erfarenhetspoäng (XP) som nivån deras motståndares är på. Om en trupp dödar en annan i strid, får den däremot mycket mer erfarenhet: 4 poäng för en trupp på nollte nivån, 8 för en på första, 16 för en på andra, 24 för en på tredje, och så vidare.\n"
+"Om båda trupper överlever en strid, får de lika många erfarenhetspoäng (XP) "
+"som den erfarenhetsnivå deras motståndares är på. Om en trupp dödar en annan "
+"i strid, får den däremot mycket mer erfarenhet: 4 poäng för en trupp på "
+"nollte nivån, 8 för en på första, 16 för en på andra, 24 för en på tredje, "
+"och så vidare.\n"
 "\n"
-"För olika trupper krävs olika mycket erfarenhetspoäng för befordran. Om en trupp är Intelligent, är kravet 20% lägre. När en trupp samlat ihop tillräckligt med poäng, befordras de omedelbart, och återfår samtidigt sin fulla styrka. I vissa fall ges möjlighet att välja truppens nästa roll.\n"
+"För olika trupper krävs olika mycket erfarenhetspoäng för befordran. Om en "
+"trupp är Intelligent, är kravet 20% lägre. När en trupp samlat ihop "
+"tillräckligt med poäng, befordras de omedelbart, och återfår samtidigt sin "
+"fulla styrka. I vissa fall ges möjlighet att välja truppens nästa roll.\n"
 "\n"
-"De flesta trupper har tre erfarenhetsnivåer, men de kan också ha färre, och somliga har fyra. "
+"De flesta trupper har tre erfarenhetsnivåer, men de kan också ha färre, och "
+"somliga har fyra. "
 
 #: data/help.cfg:161
 msgid "Healing"
@@ -522,17 +550,27 @@ msgid ""
 "villages, regeneration, and healing/curing cannot combine with each other. "
 "Also, units heal fully between scenarios."
 msgstr ""
-"I strid kommer dina trupper oundvikligen att skadas. I Wesnoth kan dina trupper helas på många olika sätt. Det gemensamma för dessa olika sätt är att de äger rum i början av ditt drag, innan några order ges.\n"
+"I strid kommer dina trupper oundvikligen att skadas. I Wesnoth kan dina "
+"trupper helas på många olika sätt. Det gemensamma för dessa olika sätt är "
+"att de äger rum i början av ditt drag, innan några order ges.\n"
 "\n"
-"Vila: En trupp som varken förflyttas eller anfaller kommer att återfå 2 KP nästa drag.\n"
-"Byar: Enheter som som befinner sig vid en by då ett drag startar återfår 8 KP. \n"
-"<ref>dst=ability_regeneration text=Regenerering</ref>: Vissa trupper (såsom troll) återfår alltid 8 KP i början av draget.\n"
-"Vårdande trupper: Trupper med förmågan att <ref>dst=ability_heals text=Vårda</ref> "
-"återskänker 4 KP per drag till trupper som står i rutorna alldeles bredvid, samtidigt som de också skyddar mot gift.\n"
+"Vila: En trupp som varken förflyttas eller anfaller kommer att återfå 2 KP "
+"nästa drag.\n"
+"Byar: trupper som som befinner sig vid en by då ett drag startar återfår 8 "
+"KP. \n"
+"<ref>dst=ability_regeneration text=Regenerering</ref>: Vissa trupper (såsom "
+"troll) återfår alltid 8 KP i början av draget.\n"
+"Vårdande trupper: Trupper med förmågan att <ref>dst=ability_heals "
+"text=Vårda</ref> återskänker 4 KP per drag till trupper som står i rutorna "
+"alldeles bredvid, samtidigt som de också skyddar mot gift.\n"
 "\n"
-"Botande trupper: Trupper med förmågan att <ref>dst=ability_cures text=Bota</ref> återskänker 8 KP per drag till trupper som står i de intilliggande rutorna, alternativt botar en trupps förgiftning. \n"
+"Botande trupper: Trupper med förmågan att <ref>dst=ability_cures text=Bota</"
+"ref> återskänker 8 KP per drag till trupper som står i de intilliggande "
+"rutorna, alternativt botar en trupps förgiftning. \n"
 "\n"
-"Kom ihåg att vila kombineras med andra sorters helande, medan byar, regenerering och vårda/bota inte kan kombineras med varandra. Alla trupper återfår sin styrka mellan scenarior."
+"Kom ihåg att vila kombineras med andra sorters helande, medan byar, "
+"regenerering och vårda/bota inte kan kombineras med varandra. Alla trupper "
+"återfår sin styrka mellan scenarior."
 
 #: data/help.cfg:177
 msgid "Income and Upkeep"
@@ -565,14 +603,30 @@ msgid ""
 "Delfador), or units who join you during a scenario (such as the Horseman in "
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
-"I Wesnoth räcker det inte att rekrytera trupper och slåss. Du måste också hålla ordning på ditt guld, speciellt i kampanjer där du får ta med dig guld till ett scenario till nästa. Det finns två aspekter av detta: inkomst och underhåll.\n"
+"I Wesnoth räcker det inte att rekrytera trupper och slåss. Du måste också "
+"hålla ordning på ditt guld, speciellt i kampanjer där du får ta med dig guld "
+"till ett scenario till nästa. Det finns två aspekter av detta: inkomst och "
+"underhåll.\n"
 "\n"
-"Inkomst är enkelt. Du får ett guld per drag för varje by du kontrollerar. Alltså, om du har tio byar, får du vanligtvis också tio guld. Tyvärr dras din kostnad för underhåll från denna inkomst, såsom beskrivs nedan.\n"
+"Inkomst är enkelt. Du får ett guld per drag för varje by du kontrollerar. "
+"Alltså, om du har tio byar, får du vanligtvis också tio guld. Tyvärr dras "
+"din kostnad för underhåll från denna inkomst, såsom beskrivs nedan.\n"
 "\n"
-"Underhåll är också ganska enkelt. Varje trupp kräver ett underhåll som är likamed truppens erfarenhetsnivå. Det är gratis att underhålla trupper så länge deras sammanlagda erfarenhetsnivå är mindre än eller likamed antalet byar. Om den sammanlagda erfarenhetsnivån är högre, måste mellanskillnaden betalas ur din egen kassakista. Om du till exempel har tolv trupper på nivå ett och tio byar så måste du betala två guldmynt per drag i underhåll.\n"
+"Underhåll är också ganska enkelt. Varje trupp kräver ett underhåll som är "
+"likamed truppens erfarenhetsnivå. Det är gratis att underhålla trupper så "
+"länge deras sammanlagda erfarenhetsnivå är mindre än eller likamed antalet "
+"byar. Om den sammanlagda erfarenhetsnivån är högre, måste mellanskillnaden "
+"betalas ur din egen kassakista. Om du till exempel har tolv trupper på nivå "
+"ett och tio byar så måste du betala två guldmynt per drag i underhåll.\n"
 "\n"
-"De kostnader som underhållet utgör dras från din inkomst, vilket innebär att i exemplet med tolv trupper och tio byar kommer din inkomst att bli åtta guldmynt per drag.\n"
-"Det finns två undantag. För det första kostar dina Lojala trupper alltid som en trupp på nivå ett, oavsett deras faktiska nivå. För det andra kostar det inget underhåll för trupper som du startar ett scenario med (som Konrad eller Delfador), eller för trupper som förenar sig med dig under ett scenarios gång (som ryttaren i det andra scenariot i Tronarvingen)."
+"De kostnader som underhållet utgör dras från din inkomst, vilket innebär att "
+"i exemplet med tolv trupper och tio byar kommer din inkomst att bli åtta "
+"guldmynt per drag.\n"
+"Det finns två undantag. För det första kostar dina Lojala trupper alltid som "
+"en trupp på nivå ett, oavsett deras faktiska nivå. För det andra kostar det "
+"inget underhåll för trupper som du startar ett scenario med (som Konrad "
+"eller Delfador), eller för trupper som förenar sig med dig under ett "
+"scenarios gång (som ryttaren i det andra scenariot i Tronarvingen)."
 
 #: data/help.cfg:191
 msgid "Wrap Up"
@@ -585,7 +639,12 @@ msgid ""
 "ref> and <ref>dst=abilities text=Abilities</ref>, but you now know "
 "everything you need to know to play the Heir to the Throne scenario. Have "
 "fun, and good luck!"
-msgstr "Detta avslutar genomgången av grunderna i Wesnoth. Om du vill kan du läsa vidare om Grundläggande strategi, eller bekanta dig med <ref>dst=traits text=Karaktärsdrag</ref> och <ref>dst=abilities text=Förmågor</ref>, men nu vet allt du behöver veta för att spela Tronarvingen. Ha så roligt, och lycka till! "
+msgstr ""
+"Detta avslutar genomgången av grunderna i Wesnoth. Om du vill kan du läsa "
+"vidare om Grundläggande strategi, eller bekanta dig med <ref>dst=traits "
+"text=Karaktärsdrag</ref> och <ref>dst=abilities text=Förmågor</ref>, men nu "
+"vet allt du behöver veta för att spela Tronarvingen. Ha så roligt, och lycka "
+"till! "
 
 #: data/help.cfg:242
 msgid ""
@@ -648,44 +707,64 @@ msgid ""
 "be very useful when a tiny bit of extra damage is all that is needed to turn "
 "a damaging stroke into a killing blow. "
 msgstr ""
-"De flesta trupper har två karaktärsdrag. Dessa är attribut som förändrar truppens egenskaper något. De tilldelas nyrekryterade trupper på måfå.\n"
+"De flesta trupper har två karaktärsdrag. Dessa är attribut som förändrar "
+"truppens egenskaper något. De tilldelas nyrekryterade trupper på måfå.\n"
 "\n"
 "De tillgängliga karaktärsdragen är de följande.\n"
 "\n"
 "\n"
 "<header>text=Intelligent</header>\n"
 "\n"
-"Intelligenta trupper kräver 20% mindre erfarenhet än vanligt för att befordras.\n"
+"Intelligenta trupper kräver 20% mindre erfarenhet än vanligt för att "
+"befordras.\n"
 "\n"
-"Intelligenta trupper är mycket användbara i början av en kampanj, eftersom de snabbt befordras till de välbehövliga trupper som finns på högre nivåer. Senare i kampanjen är de inte lika viktiga, och om du har många trupper på högre nivåer kan det vara bättre att återkalla trupper som har andra karaktärsdrag.\n"
+"Intelligenta trupper är mycket användbara i början av en kampanj, eftersom "
+"de snabbt befordras till de välbehövliga trupper som finns på högre nivåer. "
+"Senare i kampanjen är de inte lika viktiga, och om du har många trupper på "
+"högre nivåer kan det vara bättre att återkalla trupper som har andra "
+"karaktärsdrag.\n"
 "\n"
 "\n"
 "<header>text=Lojal</header>\n"
 "\n"
-"Lojala trupper kräver alltid bara ett guldmynt i underhåll, oavsett vilken nivå de är på.\n"
+"Lojala trupper kräver alltid bara ett guldmynt i underhåll, oavsett vilken "
+"nivå de är på.\n"
 "\n"
-"Att en trupp är lojal spelar ingen roll då den är på nivå 1, vilket gör den värdefull först när den är på högre nivåer. På högre nivåer kan den spara avsevärda mängder guld under kampanjens gång.\n"
+"Att en trupp är lojal spelar ingen roll då den är på nivå 1, vilket gör den "
+"värdefull först när den är på högre nivåer. På högre nivåer kan den spara "
+"avsevärda mängder guld under kampanjens gång.\n"
 "\n"
 "\n"
 "<header>text=Snabb</header>\n"
 "\n"
-"Snabba trupper har en extra förflyttningspoäng, men 10% mindre kroppspoäng än vanligt.\n"
+"Snabba trupper har en extra förflyttningspoäng, men 10% mindre kroppspoäng "
+"än vanligt.\n"
 "\n"
-"Detta är det karaktärsdrag som märks mest, speciellt hos långsamma trupper som troll eller tungt infanteri. Dessa trupper rör sig ofta mycket snabbare över oländig terräng, vilket är något att tänka på när man skickar ut sina trupper. Eftersom dessa trupper inte är så starka är de inte så lämpade för att hålla positioner.\n"
+"Detta är det karaktärsdrag som märks mest, speciellt hos långsamma trupper "
+"som troll eller tungt infanteri. Dessa trupper rör sig ofta mycket snabbare "
+"över oländig terräng, vilket är något att tänka på när man skickar ut sina "
+"trupper. Eftersom dessa trupper inte är så starka är de inte så lämpade för "
+"att hålla positioner.\n"
 "\n"
 "\n"
 "<header>text=Stryktålig</header>\n"
 "\n"
 "Stryktåliga trupper har 7 kroppspoäng mer än vanligt.\n"
 "\n"
-"Stryktåliga enheter är användbara i alla lägen under en kampanj. Det är ett nyttigt karaktärsdrag för alla trupper, även om det märks mer hos vissa. Stryktåliga trupper är speciellt lämpade att hålla positioner.\n"
+"Stryktåliga trupper är användbara i alla lägen under en kampanj. Det är ett "
+"nyttigt karaktärsdrag för alla trupper, även om det märks mer hos vissa. "
+"Stryktåliga trupper är speciellt lämpade att hålla positioner.\n"
 "\n"
 "\n"
 "<header>text=Stark</header>\n"
 "\n"
-"Starka trupper vållar 1 mer skada per träff i närstrid och har 2 mer kroppspoäng.\n"
+"Starka trupper vållar 1 mer skada per träff i närstrid och har 2 mer "
+"kroppspoäng.\n"
 "\n"
-"Starka trupper är bra för närstridstrupper och allra bäst är det för trupper som har ett stort antal slag, såsom alvkrigaren. Starka trupper kan vara mycket nyttiga när det krävs lite extra skada för att göra en träff till nådastöten."
+"Starka trupper är bra för närstridstrupper och allra bäst är det för trupper "
+"som har ett stort antal slag, såsom alvkrigaren. Starka trupper kan vara "
+"mycket nyttiga när det krävs lite extra skada för att göra en träff till "
+"nådastöten."
 
 #: data/items.cfg:264
 msgid ""
@@ -711,7 +790,8 @@ msgstr "Massor av guld"
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr "Jag önskar att detta enda guldmynt skall återbördas tiofaldigt till mig."
+msgstr ""
+"Jag önskar att detta enda guldmynt skall återbördas tiofaldigt till mig."
 
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
@@ -844,7 +924,9 @@ msgid ""
 "This ancient Sceptre was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Sceptre has the power to shoot fireballs at enemies of the "
 "bearer!"
-msgstr "Denna uråldriga spira smiddes av dvärgarna. Som symbolen för Wesnoths kungadöme har den makt att slunga eldklot mot bärarens fiender!"
+msgstr ""
+"Denna uråldriga spira smiddes av dvärgarna. Som symbolen för Wesnoths "
+"kungadöme har den makt att slunga eldklot mot bärarens fiender!"
 
 #: data/items.cfg:759
 msgid ""
@@ -953,9 +1035,11 @@ msgid ""
 msgstr ""
 "\n"
 "Seger:\n"
-"@Flytta bollarna till din motståndares målzon fler gånger än de flyttar dem till din\n"
+"@Flytta bollarna till din motståndares målzon fler gånger än de flyttar dem "
+"till din\n"
 "Nederlag:\n"
-"#Din motståndare flyttar bollarna till din målzon fler gånger än du flyttar dem till deras"
+"#Din motståndare flyttar bollarna till din målzon fler gånger än du flyttar "
+"dem till deras"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:199
 #: data/scenarios/multiplayer/Wesbowl.cfg:476
@@ -1061,9 +1145,92 @@ msgstr ""
 "trupper på borgrutor som finns i samma borg som kärntornet din ledare står "
 "på."
 
+#: data/scenarios/tutorial/tutorial1.cfg:73
+msgid "Recruit a unit"
+msgstr "Rekrytera trupp"
+
 #: data/scenarios/tutorial/tutorial1.cfg:79
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Utmärkt! Du har rekryterat en alvkrigare."
+
+#: data/scenarios/tutorial/tutorial1.cfg:81
+#: data/scenarios/tutorial/tutorial1.cfg:101
+#: data/scenarios/tutorial/tutorial1.cfg:136
+#: data/scenarios/tutorial/tutorial1.cfg:164
+#: data/scenarios/tutorial/tutorial1.cfg:182
+#: data/scenarios/tutorial/tutorial1.cfg:206
+msgid "What do I do next?"
+msgstr "Vad skall jag göra nu?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:83
+msgid "How do I recruit units?"
+msgstr "Hur gör jag för att rekrytera trupper?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:83
+msgid ""
+"To recruit a unit, right click on the castle tile on which you wish to "
+"recruit the unit. Then select Recruit, or just hold your cursor over the "
+"tile and press 'Ctrl-R'. Next, select the type of unit that you want to "
+"recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
+"Shift-R' to re-recruit the last type of unit you recruited."
+msgstr ""
+"För att rekrytera trupper, högerklicka på den borgruta där du vill placera "
+"truppen. Välj sedan Rekrytera, eller håll muspekare över rutan och tryck "
+"Ctrl-R. Sedan väljer du vilket truppslag du vill rekrytera och trycker Ok. "
+"Om du vill att rekryteringen skall gå snabbare, kan du använda Ctrl-Shift-R "
+"för att upprepa renaste rekryteringen. "
+
+#: data/scenarios/tutorial/tutorial1.cfg:84
+msgid ""
+"A leader is a unit that can recruit. This means that when the leader is on a "
+"keep, he can recruit units on the surrounding castle tiles. Leaders are "
+"usually powerful units that each side only controls one of. Also, your "
+"leader is usually the first unit that your side controls, and starts on a "
+"keep. You can select your leader quickly by pressing 'l'. If your leader "
+"dies, you lose the game. You can win most scenarios by defeating all enemy "
+"leaders."
+msgstr ""
+"En ledare är en trupp som kan rekrytera. Rekrytering kan bara ske när "
+"ledaren står i ett kärntorn, och de rekryterade trupperna kommer att "
+"placeras på de omgivande borgrutorna. Det finns bara en ledare per sida, och "
+"de är vanligtvis kraftfulla trupper. Ledaren startar oftast i ett kärntorn "
+"och är den första truppen som din sida kontrollerar. För att snabbt välja "
+"ledaren och fokusera spelplanen på denne, kan du trycka 'l'. Om ledaren dör, "
+"har du förlorat spelet. Du vinner de flesta scenarior genom att besegra alla "
+"fiendeledare. "
+
+#: data/scenarios/tutorial/tutorial1.cfg:84
+msgid "What's a leader?"
+msgstr "Vad är en ledare?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:85
+msgid "How should I choose what kind of units to recruit?"
+msgstr "Hur kan jag veta vilken sorts trupper jag ska rekrytera?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:85
+msgid ""
+"You have to carefully review their skills, which are displayed to the left "
+"of the unit selection box,  and cost, which is displayed after the name of "
+"the unit. You will learn more about these statistics throughout the tutorial."
+msgstr ""
+"Du måste noggrannt studera deras egenskaper som visas till vänster om "
+"truppen i dialogrutan för rekrytering. Kostnaden att rekrytera en trupp "
+"visas vid truppens typ. Du kommer att lära dig mer om all denna statistik "
+"under det här träningsspelet."
+
+#: data/scenarios/tutorial/tutorial1.cfg:86
+msgid "What happens when I recruit a unit?"
+msgstr "Vad händer när jag rekryterar en trupp?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:86
+msgid ""
+"When you recruit a unit, it appears at full health on a castle tile of your "
+"choice. It also receives two traits, which will be discussed later. It "
+"cannot move or attack until you end your turn."
+msgstr ""
+"När du rekryterat en trupp, placeras den vid full hälsa på den borgruta du "
+"valt. Den får också två karaktärsdrag som vi kommer ta upp senare. Den nya "
+"truppen kan inte förflytta sig eller anfalla förrän du avslutat draget."
 
 #: data/scenarios/tutorial/tutorial1.cfg:92
 msgid ""
@@ -1075,9 +1242,47 @@ msgstr ""
 "du avsluta ditt drag. Detta gör du genom att helt enklet klicka på 'Avsluta "
 "draget' längst ner till höger i bild."
 
+#: data/scenarios/tutorial/tutorial1.cfg:94
+msgid "End your turn"
+msgstr "Avsluta ditt drag"
+
 #: data/scenarios/tutorial/tutorial1.cfg:99
 msgid "You have successfully ended your turn."
 msgstr "Du har avslutat ditt drag."
+
+#: data/scenarios/tutorial/tutorial1.cfg:103
+msgid "How do I end my turn?"
+msgstr "Hur avslutar jag mitt drag?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:103
+msgid ""
+"One way to end your turn is to press 'Alt-E'. Alternatively, you can right-"
+"click and select End Turn, or select the End Turn button in the lower-right "
+"hand corner."
+msgstr ""
+"Ett sätt att avsluta ditt drag är att trycka 'Alt-E'. Du kan också "
+"högerklicka och välja Avsluta draget, eller trycka på knappen där det står "
+"Avsluta draget längst ner till höger i bild. "
+
+#: data/scenarios/tutorial/tutorial1.cfg:104
+msgid "What happens when I end my turn?"
+msgstr "Vad händer när jag avslutar draget?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:104
+msgid ""
+"When you end your turn, it becomes another side's turn and only that side "
+"has the right to move, until that side ends its turn. After all sides end "
+"their turns, the next turn begins. This has various effects, including "
+"causing all units to regain their full movement potential. The number of the "
+"current turn is displayed on the status bar next to the image of a flag. "
+"When this number exceeds the maximum number of turns, you lose the game."
+msgstr ""
+"När du avslutar draget går turen över till en annan sida. Fram tills det att "
+"den andra sidan avslutar sitt drag är det bara den sidan som får göra något. "
+"Efter att alla sidor avslutat sina drag blir det ditt drag igen. Vid varje "
+"nytt drag får trupperna tillbaka alla förflyttningspoäng. Vilket drag det är "
+"i ordningen visas på statuspanelen vid bilden av en flagga. Om antalet drag "
+"överskrider det maximala antalet drag förlorar du spelet."
 
 #: data/scenarios/tutorial/tutorial1.cfg:110
 msgid ""
@@ -1085,9 +1290,13 @@ msgid ""
 "it, then select his destination. In this case, his destination is the forest "
 "next to the Elvish Shaman, Merle."
 msgstr ""
-"Nästa uppgift är att förflytta din alvkrigare. För att förflytta en enhet "
+"Nästa uppgift är att förflytta din alvkrigare. För att förflytta en trupp "
 "måste du först välja den och därefter dess destination. I det här fallet är "
 "destinationen skogen alldels bredvid alvshamanen Merle."
+
+#: data/scenarios/tutorial/tutorial1.cfg:112
+msgid "Move your Elvish Fighter next to Merle"
+msgstr "Flytta din krigare till Merle"
 
 #: data/scenarios/tutorial/tutorial1.cfg:134
 msgid ""
@@ -1099,20 +1308,162 @@ msgstr ""
 "alldeles bredvid en fiendetrupp är kan han inte förflytta sig mer. Detta "
 "kallas fiendens 'kontrollzon'. Alla trupper har en sådan."
 
+#: data/scenarios/tutorial/tutorial1.cfg:138
+msgid "How far can my Elvish Fighter move?"
+msgstr "Hur långt kan min alvkrigare flytta?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:138
+msgid ""
+"Your Elvish Fighter begins with a certain number of move points each turn; "
+"this is called his speed. When your Elvish Fighter moves along a path, each "
+"hex he goes through costs him move points; this includes his destination. "
+"When you select your Elvish Fighter, all hexes he can't move onto within one "
+"turn will be shaded. If the destination is far enough away that he needs "
+"more than one turn to reach it, a number will appear showing how many turns "
+"it will take him. Clicking on a far-away space will set the unit on a course "
+"for that space, which means it automatically moves as far as it can towards "
+"that space every turn. If you accidentally set a unit on a course, select it "
+"twice to remove the course."
+msgstr ""
+"Din alvkrigare har ett antal förflyttningspoäng varje drag, som kallas hans "
+"hastighet. När din alvkrigare förflyttar sig en viss väg, kostar det en "
+"poäng för varje ruta han passerar, inklusive destinationen. När du väljer "
+"din krigare skuggas de rutor som han inte kan flytta till inom ett drag. Om "
+"destinationen är så långt bort att han behöver flera drag för att nå dit, "
+"visas en siffra som anger hur många drag som krävs för att nå fram. Om du "
+"väljer en destination långt bort, kommer truppen att välja en så snabb väg "
+"som möjligt för att ta sig dit. Om du råkar skicka en trupp långt bort av "
+"misstag så avbryter du förflyttningen genom att välja truppen igen."
+
+#: data/scenarios/tutorial/tutorial1.cfg:139
+msgid ""
+"A unit's zone of control is the location consisting of all hexes the unit is "
+"adjacent to. Units cannot move through opponent's zones of control; they can "
+"only move into it. When they do this, they lose all of their remaining "
+"movement. Zones of control can be used to block enemies from reaching your "
+"weak and wounded units."
+msgstr ""
+"En trupps kontrollzon utgörs av rutorna närmast truppen. Trupper kan inte "
+"passera genom en motståndares kontrollzoner, utan när en trupp hamnar på en "
+"ruta som kontrolleras av en motståndartrupp kommer dess förflyttning att "
+"avbrytas, och all återstående förflyttning går förlorad. Kontrollzoner kan "
+"användas för att hindra fiender från att nå dina svaga och sårare trupper."
+
+#: data/scenarios/tutorial/tutorial1.cfg:139
+msgid "What's the zone of control?"
+msgstr "Vad är en kontrollzon?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:140
+msgid "How do I tell who is allied and who is an enemy?"
+msgstr "Hur avgör jag vem som är allierad och vem som är en fiende?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:140
+msgid ""
+"Units you control have a green, yellow, or red energy circle above their "
+"health bar, the green vertical bar next to them. Units with full movement "
+"have green: ones with some movement yellow, ones with no movement red. Units "
+"controlled by the enemy do not have an energy circle. Allied units you do "
+"not control, like me, have a blue energy circle. Also, the option 'Show Team "
+"Colors', in Preferences, causes the color of a unit's controller is "
+"displayed as a disc below the unit."
+msgstr ""
+"Dina egna trupper har en grön, gul eller röd sfär över deras hälsoindikator "
+"- den vertikala stapeln bredvid dem. Trupper som ännu inte gjort sin "
+"förflyttning har en grön sfär, trupper som gjort en del av sin förflyttning "
+"har en gul, och de som gjort all sin försfyttning under draget har en röd "
+"sfär. Fiendetrupper har ingen sådan sfär. Allierade trupper, som jag, har en "
+"blå sfär. Om du väljer 'Visa lagfärger' i 'Inställningar' kommer en trupps "
+"lagfärg att visas som en färgad skiva under truppen. "
+
 #: data/scenarios/tutorial/tutorial1.cfg:146
 msgid ""
 "Now, you need to attack with your fighter. To attack, first select a unit, "
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
-"Nu skall du låta din kämpe anfalla. Först väljer du truppen du vill anfalla "
-"med och därefter truppen du vill anfalla. De två trupperna måste stå bredvid "
-"varandra. Du får då upp en dialogruta där du får välja sättet du vill "
-"anfalla på. "
+"Nu skall du låta din krigare anfalla. Först väljer du truppen du vill "
+"anfalla med och därefter truppen du vill anfalla. De två trupperna måste stå "
+"bredvid varandra. Du får då upp en dialogruta där du får välja sättet du "
+"vill anfalla på. "
+
+#: data/scenarios/tutorial/tutorial1.cfg:148
+msgid "Attack Merle"
+msgstr "Anfall Merle"
 
 #: data/scenarios/tutorial/tutorial1.cfg:162
 msgid "You have successfully attacked Merle."
 msgstr "Du har anfallit Merle."
+
+#: data/scenarios/tutorial/tutorial1.cfg:166
+msgid "Can Merle retaliate from my attack?"
+msgstr "Kan Merle slå tillbaka?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:166
+msgid ""
+"Whenever a unit is attacked, it retaliates with one of their own weapons. "
+"This means that after each blow from the attacker, the defender retaliates "
+"with one blow. This continues until one side runs out of blows, in which "
+"case the other unit continues attacking until its blows are depleted as "
+"well. However, any unit can only retaliate by using a weapon of the same "
+"range as the one used to attack. This means that a ranged attack can only be "
+"countered by a ranged attack and a melee attack can only be countered by a "
+"melee attack. Most units have more powerful melee attacks than ranged, so "
+"units with ranged attacks are useful in that retaliation against them is "
+"less powerful; often there is no retaliation. However ranged units cannot "
+"shoot across multiple hexes; this is one of the distinctive features of "
+"Wesnoth."
+msgstr ""
+"När en trupp attackeras kommer den att slå tillbaka med ett av sina egna "
+"vapen. Detta betyder att varje gång den anfallande truppen har gjort ett "
+"slag, slår motståndaren tillbaka en gång. Detta fortsätter tills en sida har "
+"använt alla sida slag, varefter den andra truppen fortsätter anfalla tills "
+"också dennas slag är slut. En trupp kan bara slå tillbaka med ett vapen med "
+"samma räckvidd som den anfallande truppen använde. Detta betyder att om en "
+"trupp attackerar en annan med ett distansvapen, måste den andra truppen "
+"svara med ett distansvapen, och om attacken skett med ett närstridsvapen "
+"måste den andra truppen svara med ett närstridsvapen. De flesta trupper har "
+"starkare attacker i närstrid än på distans, så trupper med distansvapen är "
+"oftast bra att använda när motståndaren inte har något distansvapen att "
+"svara med. Trupper med distansvapen kan dock inte skjuta över flera rutor, "
+"vilket är en av Wesnoths särskilda egenskaper."
+
+#: data/scenarios/tutorial/tutorial1.cfg:167
+msgid ""
+"Every attack does a certain amount of damage per hit, and can be used a "
+"certain number of times per battle. These numbers, called the attack's "
+"damage and strike numbers, are displayed in order under the name of the "
+"attack on the unit's status table and next to it on the attack options menu. "
+"To quickly find the maximum damage an attack can inflict, multiply the "
+"damage by the number of strikes. For example, my lightning attack does 14 "
+"damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
+"combat."
+msgstr ""
+"Varje attack åsamkar den andra truppen en viss mängd skada per slag, och "
+"varje vapen kan användas ett bestämt antal gånger anfall. Dessa tal, "
+"attackens skada och antalet attacker visas i denna ordning vid den aktuella "
+"attackens namn i truppens statustabell och i dialogrutan då du väljer en "
+"trupps attack. Om du vill veta hur mycket skada en attack vållar sammanlagt, "
+"multiplicerar du skadan med antalet attacker. Till exempel gör min "
+"blixtattack 14 i skada per träff, och då jag har 4 attacker med den, kan jag "
+"göra totalt 56 i skada vid varje tillfälle. "
+
+#: data/scenarios/tutorial/tutorial1.cfg:167
+msgid "How can you tell how powerful a unit's attacks are?"
+msgstr "Hur avgör man hur kraftfulla en trupps attacker är?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:168
+msgid ""
+"Units have the ability to block blows. The chance that a unit has to hit is "
+"based on the defender's skill at defending blows, and is listed on the "
+"attack options menu after the damage and strike numbers for the bow attack."
+msgstr ""
+"Trupper har också förmågan att parera slag. Sannolikheten för en trupp att "
+"träffa baseras på försvararens skicklighet att parera, och visas i "
+"dialogrutan då du väljer attack alldeles efter skadan och antalet attacker. "
+
+#: data/scenarios/tutorial/tutorial1.cfg:168
+msgid "Will my fighter hit every time when he attacks?"
+msgstr "Kommer min krigare att träffa varje gång han anfaller?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:174
 msgid "End your turn, and wait for Merle to attack you."
@@ -1124,23 +1475,125 @@ msgid ""
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
-"Din kämpe har överlevt Merles anfall. När en trupp överlever en slag får den "
-"erfarenhet av striden. När en trupp har fått tillräckligt med erfarenhet "
+"Din krigare har överlevt Merles anfall. När en trupp överlever en slag får "
+"den erfarenhet av striden. När en trupp har fått tillräckligt med erfarenhet "
 "befordras den till nästa nivå och blir mäktigare."
+
+#: data/scenarios/tutorial/tutorial1.cfg:184
+msgid "What's experience?"
+msgstr "Vad är erfarenhet?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:184
+msgid ""
+"When a unit fights another unit, it gains experience, denoted 'XP', from the "
+"combat. The amount of experience gained is equal to the opponent's level, "
+"which is usually a representation of that unit's power. However, much more "
+"experience is gained from defeating an enemy unit. The amount of XP gained "
+"from killing an enemy is equal to 8 times the enemy's level."
+msgstr ""
+"När en trupp slåss med en annan får den erfarenhet - förkortat 'XP' - av "
+"striden. Mängden erhållen erfarenhet är lika med motståndarens "
+"erfarenhetsnivå, vilket är en representation av hur mäktig den truppen är. "
+"Betydligt mer erfarenhet får en trupp om den besegrar en fiende. Mängden "
+"erhållen XP är då lika med 8 gånger fiendetruppens nivå. "
+
+#: data/scenarios/tutorial/tutorial1.cfg:185
+msgid "What happens when a unit advances?"
+msgstr "Vad händer när du trupp befordras?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:185
+msgid ""
+"When a unit advances, it transforms into a different unit type. This unit "
+"type is dependent on what the unit was originally, but occasionally there "
+"will be more than one choice of what to advance into. Advanced units are "
+"usually more powerful and 1 level higher than they were originally. Also, "
+"when a unit advances, it is healed completely and any handicaps that have "
+"been cast on it are removed. This is known as 'advance-heal'."
+msgstr ""
+"När en trupp befordras, blir den en annan liknande men starkare sorts trupp. "
+"Vad den nya truppen blir, beror på vad truppen var innan, och ibland finns "
+"det också flera valmöjligheter, så att man kan välja vad truppen skall "
+"befordas till. Då en trupp befordras ökar dess nivå med 1, och den blir "
+"oftast mycket kraftfullare. Vid befordran återfår truppen dessutom all sin "
+"styrka och alla handikapp den haft försvinner."
 
 #: data/scenarios/tutorial/tutorial1.cfg:191
 msgid "Move your fighter onto a village."
-msgstr "Flytta din kämpe till en by."
+msgstr "Flytta din krigare till en by."
+
+#: data/scenarios/tutorial/tutorial1.cfg:193
+msgid "Move your fighter onto a village"
+msgstr "Flytta din krigare till en by"
 
 #: data/scenarios/tutorial/tutorial1.cfg:204
 msgid "Villages heal the units on them."
 msgstr "Byar läker trupper. "
 
+#: data/scenarios/tutorial/tutorial1.cfg:208
+msgid "What happens when a unit moves onto a village?"
+msgstr "Vad händer när en trupp kommer in i en by?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:208
+msgid ""
+"Whenever a unit moves onto a village, he flags the village for his side. "
+"This action takes all of the unit's remaining movement. Villages flagged for "
+"a side give the side several benefits, including giving the side a extra "
+"gold coin every turn, and reducing the total upkeep cost of that side's "
+"units by one. The total number of villages you control is also displayed on "
+"the status bar after the picture of a house. In addition to the economic "
+"benefit of villages, villages can be used in battle. Villages heal the units "
+"on them 8 HP per turn."
+msgstr ""
+"När en trupp hamnar i en by hamnar byn i den sidans kontroll. Detta kostar "
+"truppens återstående förflyttning. Byar ger den kontrollerande sidan "
+"fördelar, såsom mer inkomst, och genom att minska underhållskostnaden per "
+"drag med ett. Antalet byar du kontrollerar visas på statuspanelen bredvid "
+"bilden av ett hus. Utöver de ekonokiska fördelarna av byarna, kan de också "
+"användas i strid. Byar läker trupperna i dem med 8 KP per drag."
+
+#: data/scenarios/tutorial/tutorial1.cfg:209
+msgid "How do I heal when there aren't any villages nearby?"
+msgstr "Hur kan man läka trupper när det inte finns några byar i närheten?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:209
+msgid ""
+"There are ways to heal even without villages. If a unit does not move or "
+"attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
+"him he cannot receive rest-heal. Also, there are some units which heal the "
+"units surrounding them. The Elvish Shaman is one such unit; units next to an "
+"Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
+"all your units are healed fully."
+msgstr ""
+"Trupper kan läka även utan byar. Om en trupp inte förflyttar sig eller "
+"anfaller under ett drag, så återfår den 2 KP genom att vila. Om en fiende "
+"attackerar truppen får truppen inte sin vila och kan då heller inte läka "
+"under det draget. Det finns också vissa trupper som kan läka trupperna som "
+"omger dem. Alvshamanen är en sådan trupp, och trupper som står alldeles "
+"bredvid en alvshaman får tillbaka 8 KP per drag. Och slutligen, när du "
+"vinner ett scenario återfår dina trupper alla sina krafter. "
+
 #: data/scenarios/tutorial/tutorial1.cfg:215
 msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
-msgstr "Nu måste du strida mot Merle tills hon har 0 KP. Fortsätt bara anfalla."
+msgstr ""
+"Nu måste du strida mot Merle tills hon har 0 KP. Fortsätt bara anfalla."
+
+#: data/scenarios/tutorial/tutorial1.cfg:217
+msgid "Defeat Merle"
+msgstr "Besegra Merle"
+
+#: data/scenarios/tutorial/tutorial1.cfg:232
+msgid ""
+"Oops! You moved your leader off of the keep. Remember, when your leader is "
+"not on a keep, you cannot recruit. Also remember that if your leader dies, "
+"you lose. In order to continue the tutorial, I will have to teleport you "
+"back onto your keep."
+msgstr ""
+"Hoppsan! Du flyttade ut din ledare ur kärntornet. Kom ihåg att du inte kan "
+"rekrytera om din ledare inte står i kärntornet. Det är också viktigt att "
+"komma ihåg att om ledare dör, så förlorar du. För att fortsätta "
+"träningsspelet så teleporterar jag tillbaka dig till kärntornet. "
 
 #: data/scenarios/tutorial/tutorial1.cfg:248
 #: data/scenarios/tutorial/tutorial2.cfg:233
@@ -1164,6 +1617,48 @@ msgstr ""
 msgid "You have successfully completed the first training scenario."
 msgstr "Ditt första träningsscenario är avklarat!"
 
+#: data/scenarios/tutorial/tutorial1.cfg:267
+#: data/scenarios/tutorial/tutorial2.cfg:252
+msgid "Hooray!"
+msgstr "Hurra!"
+
+#: data/scenarios/tutorial/tutorial1.cfg:269
+msgid "How do I know how to complete a scenario? Will you always tell me?"
+msgstr "Hur vet jag hur jag vinner ett scenario? Berättar du det alltid?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:269
+msgid ""
+"Sometimes it is not clear how to win a scenario just by listening to the "
+"dialog. In this case you need to look at the scenario objectives, which "
+"appear after the opening dialog. It can also be accessed by clicking "
+"'Objectives' on the menu. The scenario objectives are a list of victory "
+"conditions and defeat conditions, and if any of the conditions are met, the "
+"level is over. Hopefully, it was a victory condition that was met."
+msgstr ""
+"Ibland är framgår det inte hur man vinner ett scenario enbart genom "
+"dialogen. I de här fallen får du titta på scenariomålen, som visas efter "
+"inledningsdialogen. Du kan även se scenariots mål på huvudmenyn, under "
+"'Scenariomål'. Scenariomålen är en lista med villkor för vinst och nederlag, "
+"och om något av dessa villkor är uppfyllda, så är scenariot slut. "
+"Förhoppningsvis var det ett vinstvillkor."
+
+#: data/scenarios/tutorial/tutorial1.cfg:270
+msgid "What happens when I win a scenario?"
+msgstr "Vad händer när jag vinner ett scenario?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:270
+msgid ""
+"When you win a scenario, all of your units survive and are revived to full "
+"health, and you do not have to pay them for the remaining turns. Also, if "
+"your army remains in the area after you win, all villages surrender to you "
+"immediately after you win. However between scenarios, 20% of your gold is "
+"lost."
+msgstr ""
+"När du vinner ett scenario, återfår alla dina trupper full styrka, och du "
+"behöver inte betala dem för de återstående dragen. Om din armé stannar kvar "
+"i området efter att du vunnit, kommer alla byar att övergå till dig. Du "
+"mister dock 20% av ditt guld mellan varje scenario."
+
 #: data/scenarios/tutorial/tutorial1.cfg:276
 #: data/scenarios/tutorial/tutorial2.cfg:261
 msgid "Do you want to review any of the skills learned on this level?"
@@ -1174,6 +1669,11 @@ msgstr "Vill du se över de färdigheter du lärde dig på den här nivån?"
 msgid "Yes"
 msgstr "Ja"
 
+#: data/scenarios/tutorial/tutorial1.cfg:280
+#: data/scenarios/tutorial/tutorial2.cfg:265
+msgid "I'm done reviewing skills!"
+msgstr "Nu är jag klar med att gå igenom mina färdigheter!"
+
 #: data/scenarios/tutorial/tutorial1.cfg:297
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
@@ -1182,6 +1682,10 @@ msgid ""
 msgstr ""
 "Träningen är inte över än! I nästa scenario skall du besegra mig i en "
 "låtsasstrid."
+
+#: data/scenarios/tutorial/tutorial2.cfg:3
+msgid "Traits and Specialties"
+msgstr "Karaktärsdrag och specialiteter"
 
 #: data/scenarios/tutorial/tutorial2.cfg:60
 msgid ""
@@ -1198,7 +1702,11 @@ msgid ""
 "you in this battle. To recall him, right-click on a castle tile, select "
 "Recall, select your fighter, then select 'Ok'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
-msgstr "Oftast vinner du ett scenario genom att besegra alla fiendeledare. Vinn detta scenario genom att besegra mig. Din krigare från förra scenariot kan hjälpa dig här. Om du vill återkalla honom, högerklicka på en borgruta, välj Återkalla, och klicka Ok. Du bör också rekrytera alvkrigare och -bågskyttar."
+msgstr ""
+"Oftast vinner du ett scenario genom att besegra alla fiendeledare. Vinn "
+"detta scenario genom att besegra mig. Din krigare från förra scenariot kan "
+"hjälpa dig här. Om du vill återkalla honom, högerklicka på en borgruta, välj "
+"Återkalla, och klicka Ok. Du bör också rekrytera alvkrigare och -bågskyttar."
 
 #: data/scenarios/tutorial/tutorial2.cfg:79
 msgid ""
@@ -1234,6 +1742,50 @@ msgstr ""
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Du har återkallat din alvkrigare."
 
+#: data/scenarios/tutorial/tutorial2.cfg:88
+#: data/scenarios/tutorial/tutorial2.cfg:102
+#: data/scenarios/tutorial/tutorial2.cfg:117
+#: data/scenarios/tutorial/tutorial2.cfg:131
+#: data/scenarios/tutorial/tutorial2.cfg:145
+#: data/scenarios/tutorial/tutorial2.cfg:159
+#: data/scenarios/tutorial/tutorial2.cfg:173
+#: data/scenarios/tutorial/tutorial2.cfg:206
+msgid "En guarde!"
+msgstr "En garde!"
+
+#: data/scenarios/tutorial/tutorial2.cfg:90
+msgid ""
+"First, you must pay 20 pieces of gold for each unit you recall, regardless "
+"of the type of unit. Other than that, recalled units are basically like "
+"recruited units, except that instead of a new unit appearing, a unit from a "
+"previous scenario will appear."
+msgstr ""
+"Till att börja med måste du betala 20 guldmunt för varje trupp du "
+"återkallar, oavsett truppslag. Annars är dina återkallade trupper precis som "
+"rekryterade trupper, med den enda skillnaden att istället för att en ny "
+"trupp dyker upp, så kommer en veteran från ett tidigare scenario tillbaka. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:90
+msgid "What happens when I recall a unit?"
+msgstr "Vad händer när jag återkallar en trupp?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:91
+msgid "How should I decide which units to recall?"
+msgstr "Hur avgör jag vilka trupper jag ska återkalla?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:91
+msgid ""
+"You should usually recall units that have already advanced to the next "
+"level. However, you may also want to recall units that have high experience, "
+"and are thus likely to advance. You should recall units that will be useful "
+"for the scenario you are in; for example in a forest scenario, recall elves."
+msgstr ""
+"Vanligtvis bör du återalla trupper som redan befordrats, men du bör också "
+"titta efter trupper med mer erfarenhet och som därför snart kommer att "
+"befordras. Du bör återkalla trupper som är användbara i det aktuella "
+"scenariot. Om scenariot till exempel utspelas i en skog, är det lämpligt att "
+"återkalla alver. "
+
 #: data/scenarios/tutorial/tutorial2.cfg:100
 msgid ""
 "You may notice that your units have slightly different statistics than the "
@@ -1243,6 +1795,39 @@ msgstr ""
 "Du kanske har märkt att dina trupper har något annorlunda statistik jämfört "
 "med innan du rekryterade dem. Detta beror på att de fått karaktärsdrag."
 
+#: data/scenarios/tutorial/tutorial2.cfg:104
+msgid ""
+"The function of traits is add variety by making units of the same type "
+"different from each other. This is done by randomly assigning each unit "
+"traits when they are recruited. The traits that a unit has are displayed on "
+"the Status Table, and the function of a specific trait can be found by "
+"putting your cursor over that trait."
+msgstr ""
+"Syftet med karaktärsdrag är att göra trupper av samma slag lite mer olika. "
+"En trupps karaktärsdrag väljs på måfå då den rekryteras, och visas sen "
+"statustabellen. Hur ett karaktärsdrag fungerar visas om du pekar på det. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:104
+msgid "What do traits do?"
+msgstr "Vad gör karaktärsdrag?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:105
+msgid ""
+"There are five distinct traits, which have effects ranging from increasing a "
+"unit's hit points to decreasing the amount of XP required to advance. "
+"However all traits are designed to improve unit's power; there are no "
+"'negative' traits. Most units have an equal chance to get any two different "
+"traits when they are recruited."
+msgstr ""
+"Det finns fem olika karaktärsdrag som t ex gör att en trupps KP ökar eller "
+"att minska antalet XP som krävs för befordran. Alla karaktärsdrag är till "
+"för att göra trupperna mer kraftfulla. De flesta truppslag har lika stor "
+"sannolikhet för att få ett visst karaktärsdrag då de rekryteras. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:105
+msgid "What kind of traits can my units get?"
+msgstr "Vilka sorters karaktärsdrag kan mina trupper få?"
+
 #: data/scenarios/tutorial/tutorial2.cfg:115
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
@@ -1250,6 +1835,49 @@ msgid ""
 msgstr ""
 "Det kostar guld att rekrytera och återkalla trupper, och utan guld kan du "
 "inte rekrytera eller återkalla."
+
+#: data/scenarios/tutorial/tutorial2.cfg:119
+msgid "How much gold do my units cost?"
+msgstr "Hur mycket guld kostar mina trupper?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:119
+msgid ""
+"You need to pay each unit you recruit or recall gold when you recruit it. "
+"The cost of recruiting a unit is displayed under the unit's name. The cost "
+"of recalling a unit is always 20 gold. A unit also costs gold for each turn "
+"it is under your control. This cost, called 'upkeep', is equal to the level "
+"of the unit. However, units you do not recruit or recall such as your leader "
+"do not cost any gold at all. The total upkeep cost of your units is "
+"displayed on the status bar at the top after a picture of gold and then a "
+"red arrow."
+msgstr ""
+"Det kostar guld både då du rekryterar och då du återkallar en trupp. "
+"Kostnaden att rekrytera ett visst truppslag visas vid truppslagets namn. Det "
+"kostar däremot alltid 20 guld att återkalla en trupp. En trupp kostar "
+"dessutom för varje drag den är under ditt befäl. Den här kostnade,n som "
+"kallas 'underhåll', är lika med truppens erfarenhetsnivå. Trupper du inte "
+"rekryterar eller återkallar, t ex din ledare, kostar inget alls. Den totala "
+"kostnaden för underhåll visas på statuspanelen bredvid bilden av guld och en "
+"röd pil. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:120
+msgid "How do I get gold?"
+msgstr "Hur får jag guld?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:120
+msgid ""
+"You begin each level with a percentage of gold from the previous level. If "
+"this is less than 100 gold, you begin with 100 gold instead. The amount of "
+"gold you have is displayed on the status bar after the picture of gold. "
+"After the start of a scenario, you receive 2 gold every turn. Since you "
+"usually need more gold than that, you should flag villages, which give you 1 "
+"gold per turn."
+msgstr ""
+"Du startar varje scenario med en viss procent av guldet du hade i förra "
+"scenariot. Om detta uppgår till mindre än 100 guldmynt få du 100 guld att "
+"starta med istället. Mängden guld du har visas i statuspanelen bredvid "
+"bilden av guld. Eftersom du oftast behöver mer guld än så, måste du ta över "
+"byar. Varje by ger dig ett guldmynt per drag. "
 
 #: data/scenarios/tutorial/tutorial2.cfg:129
 msgid ""
@@ -1259,11 +1887,99 @@ msgstr ""
 "Solen går ner över Wesnoth. Vad tiden är på dygnet påverkar hur mycket skada "
 "som trupper med olika livsåskådningar kan åsamka varandra."
 
+#: data/scenarios/tutorial/tutorial2.cfg:133
+msgid ""
+"There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
+"of day: day, twilight, and night. During day, units of the alignment Lawful, "
+"such as humans, do 25% more damage, while Chaotic units such as undead do "
+"25% less. At night it is reversed. During twilight, all units do their "
+"normal damage. Neutral units such as elves are unaffected by day and night."
+msgstr ""
+"Det finns tre livsåskådningar: lagenlig, neutral och kaotisk. Dygnet är "
+"också uppdelat i tre huvuddelar: dag, gryning/skymning, och natt. Under "
+"dagtid vållar lagenliga truppers attacker 25% mer skada, medan kaotiska "
+"trupper vållar 25% mindre skada. Under nattetid är det tvärtom. Under "
+"gryning och skymning vållar alla trupper lika mycket skada. Neutrala trupper "
+"såsom alver är opåverkade av tiden på dygnet. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:133
+msgid "What are the different alignments and times of day?"
+msgstr ""
+"Vilka är de olika livsåskådningarna och vilka tider på dygnet finns det?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:134
+msgid "How do I know what time of day it is?"
+msgstr "Hur vet jag vilken tid på dygnet det är?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:134
+msgid ""
+"The times of day usually progress in a sequence: dawn- identical to "
+"twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
+"second-watch- night, then repeat. This is represented by the sun and moon "
+"which each rise in the east and set in the west. However some scenarios have "
+"a different sequence, such as underground where it is perpetually night. You "
+"can find out the current time of day by looking at the Status Table."
+msgstr ""
+"Dygnet framskrider i följden gryning, förmiddag, eftermiddag, skymning, "
+"första vakten, andra vakten, varefter det börjar om från början. Dagen "
+"utgörs av för- och eftermiddag och natten av första och andra vakten. Detta "
+"visas genom solen och månen som går upp i öster och går ner i väster. Vissa "
+"scenarior kan vara annorlunda, som t ex om ett scenario utspelar sig i "
+"underjorden eller i grottor, där det råder evig natt. Tiden på dygnet visas "
+"i statustabellen. "
+
 #: data/scenarios/tutorial/tutorial2.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr ""
 "Varje ruta är associerad med en viss terräng som ger den ruta speciella "
 "egenskaper."
+
+#: data/scenarios/tutorial/tutorial2.cfg:147
+msgid ""
+"Two terrains have properties which have already been described; namely "
+"villages and castle. However the properties of most terrains are more "
+"subtle, and have to do with the advantages and disadvantages different units "
+"have when they move onto them. The first property of a terrain is the number "
+"of move points it takes each unit to move through the hex. The second "
+"property is the defense that the terrain gives units standing on it. This is "
+"a percentage which determines the unit's chance to be hit on that terrain. "
+"For example; elves have 70% defense on grass, and are therefore hit 30% of "
+"the time."
+msgstr ""
+"Två sorters terräng har redan beskrivits, nämligen byar och borgar. Hur "
+"andra sorters terräng påverkar spelet är inte lika uppenbart, men det har "
+"att göra hur olika truppslag påverkas. Den första egenskapen är hur mycket "
+"det kostar för en trupp att förflytta sig över en ruta med en viss terräng. "
+"Den andra egenskapen är det försvar som olika sorters terräng ger olika "
+"truppslag. Varje terräng ger en trupp en viss sannolikhet att den träffas av "
+"en viss attack. Till exempel har alver 70% försvar på slätter, vilket "
+"innebär att de träffas av attacker 30% av fallen. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:147
+msgid "What are the different properties that terrains have?"
+msgstr "Vilka olika egenskaper har olika sorters terräng?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:148
+msgid "How do I find out the properties of a specific terrain?"
+msgstr "Hur ser jag vilka egenskaper en viss sorts terräng har?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:148
+msgid ""
+"To find out the properties of a terrain with respect to a specific unit, "
+"right-click on the unit, select Unit Description, then select Terrain "
+"Modifiers. To find out which terrain is on a particular hex, move your "
+"cursor over that hex and look in the upper-right hand corner of the screen. "
+"This will display, in order, the name of the terrain, then the coordinates "
+"of the hex, then the selected unit's defense, then the number of move points "
+"it will cost the selected unit to move through that hex."
+msgstr ""
+"För att se vilka egenskaper en viss terräng har med avseende på ett visst "
+"truppslag, högerklickar du på truppen och väljer Truppbeskrivning, och "
+"därefter Terrängavdrag. För att se vilken sorts terräng en viss ruta består "
+"av, håller du muspekare över den och tittar i det övre högar hörnet av "
+"bilden. Där visas, i tur och ordning, terrängens namn, rutans koordinater, "
+"den valda truppens försvar, och slutligen hur många förflyttningspoäng det "
+"kostar truppen att röra sig över den rutan."
 
 #: data/scenarios/tutorial/tutorial2.cfg:157
 msgid ""
@@ -1273,9 +1989,119 @@ msgstr ""
 "Varje attacks typ av skada påverkar hur mycket skada olika trupper får av "
 "den attacken."
 
+#: data/scenarios/tutorial/tutorial2.cfg:161
+msgid ""
+"Each unit has a certain resistance against each attack type. This resistance "
+"is a percentage which is subtracted from the damage of opponent's weapons of "
+"that type. For example, if an Elvish Scout is attacked by an Elvish Archer, "
+"the archer does 20% more damage than normal, since Elvish Scouts have -20% "
+"resistance to pierce. This bonus/penalty is calculated additively with other "
+"bonuses/penalties like time of day, so two -50% penalties would add up to -"
+"100%."
+msgstr ""
+"Varje trupp har en visst motståndskraft mot varje typ av attack. Dena "
+"motståndskraft anges som en procentsats som dras från skadan som en "
+"motståndares vapen av en viss typ ger. Om till exempel en alvspejare anfalls "
+"av en alvbågskytt, för bågskytten 20% mer skada än normalt, eftersom "
+"alvspejare har en motståndskraft på -20% mot spetsande attacker. Denna bonus "
+"eller avdrag beräknas tillsammans med andra bonusar eller avdrag, vilket "
+"betyder att två avdrag på -50% tillsammans ger -100%. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:161
+msgid "How does resistance affect attack damage?"
+msgstr "Hur påverkar en trupps motståndskraft en attacks skada?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:162
+msgid ""
+"There are 6 different damage types: blade, pierce, impact, fire, cold, and "
+"holy. Heavily armored units have high resistance to the physical types: "
+"blade, pierce, and impact, but low resistance to the magical types: fire and "
+"cold. All living units have resistance to holy while undead are extremely "
+"weak to it. To find out a specific unit's resistance, right-click on the "
+"unit, select Unit Description, then select Resistance."
+msgstr ""
+"Det finns 6 olika typer av attacker: skärande, spetsande, krossande, eld, "
+"frost, och heliga attacker. Trupper med tunga rustningar har en hög "
+"motståndskraft mot de fysiska attackerna, dvs de skärande, spetsande och "
+"krossande attackerna. Däremot har de en låg motståndskraft mot de magiska "
+"attackerna, dvs eld och frost. Alla levande trupper har en hög "
+"motståndskraft mot heliga attacker, medan vandöda är mycket sårbara för "
+"dessa. För att ta reda på en trupps motståndskraft mot en viss typ av "
+"attack, högerklickar du på truppen, väljer Truppbeskrivning och därefter "
+"Motståndskraft. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:162
+msgid "What are the different damage types?"
+msgstr "Vilka är de olika typerna av skador?"
+
 #: data/scenarios/tutorial/tutorial2.cfg:171
-msgid "Many units have a specialty which changes the rules of play in some way."
+msgid ""
+"Many units have a specialty which changes the rules of play in some way."
 msgstr "Många trupper har en specialitet som ändrar spelreglerna på något vis."
+
+#: data/scenarios/tutorial/tutorial2.cfg:175
+msgid ""
+"Each specialty does something different; that's the whole point of a "
+"specialty. To find a description of a unit's specialty, put your cursor over "
+"the name of the specialty."
+msgstr ""
+"Varje specialitet gör olika saker, vilket är hela poängen med dem. För att "
+"ta reda på vad en viss specialitet gör, håll muspekare över specialitetens "
+"namn."
+
+#: data/scenarios/tutorial/tutorial2.cfg:175
+msgid "What do specialties do?"
+msgstr "Vad gör de olika specialiteterna?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:176
+msgid ""
+"The specialties a unit gets are determined by the unit type; for example all "
+"generals have the specialty leadership. There are two kinds of specialties: "
+"abilities, and attack specials. Abilities apply to units while attack "
+"specials only apply to one of the unit's attacks."
+msgstr ""
+"En trupps specialiteter bestäms av truppslaget; till exempel har alla "
+"generaler specialiteten ledarskap. Det finns två olika sortes specialiteter: "
+"förmågor och specialattacker. Förmågorna har med trupper att göra, medan "
+"specialattacker bara har med en viss attack att göra. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:176
+msgid "Which units get specialties?"
+msgstr "Vilka trupper får specialiteter?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:177
+msgid ""
+"There are many different specialties, and learning about them is one of the "
+"interesting parts of playing Wesnoth. The two most common specialties are "
+"called 'magical' and 'leadership'. Magical attacks have a 70% chance of "
+"hitting enemies regardless of what terrain they are on. Units do more damage "
+"while next to a unit of higher level with leadership."
+msgstr ""
+"Det finns många olika specialiteter, och att lära sig om dem är en av "
+"sakerna som gör Wesnoth intressant. De två vanligaste specialiteterna heter "
+"'magisk' och 'ledarskap'. Magiska attacker ha 70% sannolikhet att träffa en "
+"fiende, oavsett vilken terräng den står på. Trupper som står bredvid en "
+"trupp med ledarskapsförmåga vållar mer skada än vanligt. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:177
+msgid "What kinds of specialties can my units get?"
+msgstr "VIlka olika specialiteter kan min trupper få?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:178
+msgid "How do I use specialties?"
+msgstr "Hur använder jag specialiteter?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:178
+msgid ""
+"To use a specialty, you just have to move and/or attack with your units in a "
+"way which triggers the specialty. For example, in order to use leadership, "
+"you must move a unit with leadership next to another unit, then attack with "
+"the other unit."
+msgstr ""
+"För att använda en specialitet, behöver du bara förflytta en trupp och/eller "
+"anfalla med den på något sätt som gör att specialiteten används. För att "
+"till exempel använda en trupps ledarskapsförmåga, flyttar du en annan trupp "
+"till den, och sedan attackerar du med denna andra trupp. "
 
 #: data/scenarios/tutorial/tutorial2.cfg:195
 msgid ""
@@ -1286,6 +2112,39 @@ msgstr ""
 "Vissa föremål påverkar en trupps egenskaper. En av dina trupper hittade en "
 "trolldryck som gör hans attacker starkare. Hans nya stridsstatistik kan du "
 "se i Statustabellen."
+
+#: data/scenarios/tutorial/tutorial2.cfg:202
+msgid "This potion increases the damage of all the drinker's attacks by four."
+msgstr ""
+"Den här trolldrycken ökar skadan som truppen som drack den utdelar med fyra. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:208
+msgid ""
+"The objects you encounter are put in by the scenario designer, so they vary "
+"from campaign to campaign. In Heir to the Throne, most objects give the unit "
+"who picks them up a new weapon. However there are usually not that many "
+"objects in a campaign."
+msgstr ""
+"De saker du stöter på är placerade av scenarioförfattaren, så de varierar "
+"från kampanj till kampanj. I Tronarvingen utgör dessa saker oftast ett vapen "
+"som truppen som plockar upp dem kan använda. Det finns vanligtvis inte så "
+"många saker att hitta i en kampanj. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:208
+msgid "What kind of objects am I likely to encounter?"
+msgstr "Vilka olika sorters saker kan jag störa på under spelets gång?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:209
+msgid "How long do these objects last?"
+msgstr "Hur länge räcker de här sakerna?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:209
+msgid ""
+"Most objects are permanent changes to the unit that receives them. However a "
+"few objects, such as holy water, last only until the remainder of the level."
+msgstr ""
+"De flesta saker är ger upphittaren permanenta fördelar. Dock finns det vissa "
+"saker som bara kan användas under ett enskilt scenario, såsom vigvatten."
 
 #: data/scenarios/tutorial/tutorial2.cfg:223
 msgid ""
@@ -1307,21 +2166,43 @@ msgstr ""
 "träningsscenariot avslutat. Om du vill kan du nu starta en egen kampanj "
 "eller spela med andra."
 
+#: data/scenarios/tutorial/tutorial2.cfg:254
+msgid "How do I play a campaign?"
+msgstr "Hur spelar jag en kampanj?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:254
+msgid ""
+"To begin a campaign, run Wesnoth, select 'Campaign', select which campaign "
+"to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
+"suggested for newcomers to Wesnoth."
+msgstr ""
+"För att börja spela en kampanj, startar du Wesnoth, och väljer vilken "
+"kampanj du vill spela under Kampanj, och därefter väljer du vilken nivå du "
+"vill spela på, Lätt, Normal, eller Svår. Tronarvingen rekommenderas för "
+"nybörjare. "
+
+#: data/scenarios/tutorial/tutorial2.cfg:255
+msgid "How do I play multiplayer?"
+msgstr "Hur startar jag ett spel för flera spelare?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:255
+msgid ""
+"To play Wesnoth against other people, select 'Multiplayer'. If you have the "
+"latest development version of Wesnoth, select 'Join Official Server'. "
+"However, if you have version 1.0, select 'Join Game', then type in 'server."
+"wesnoth.org'. This will connect you to the official Wesnoth server, where "
+"you can join a game by selecting it, then selecting 'Join Game'."
+msgstr ""
+"För att spela Wesnoth mot andra spelare, väljer du 'Flera spelare'. Om du "
+"har den senaste utvecklingsversionen av Wesnoth, väljer du därefter 'Anslut "
+"till den officiella servern'. Om du har version 1.0, väljer du 'Anslut till "
+"spel', och därefter skriver du 'server.wesnoth.org'. Detta kopplar upp dig "
+"mot Wesnoth officiella spelserver, där du kan ansluta dig till ett spel "
+"genom välja det, och sen klicka 'Anslut till spel'."
+
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
 msgstr "Det förklarade du bra! Men..."
-
-#: data/scenarios/tutorial/utils.cfg:13
-msgid "{END_MESSAGE}"
-msgstr "{END_MESSAGE}"
-
-#: data/scenarios/tutorial/utils.cfg:21
-msgid "{QUESTION}"
-msgstr "{QUESTION}"
-
-#: data/scenarios/tutorial/utils.cfg:25
-msgid "{ANSWER}"
-msgstr "{ANSWER}"
 
 #: data/scenarios/tutorial/utils.cfg:44
 msgid ""
@@ -1549,8 +2430,8 @@ msgid ""
 "Zones of Control."
 msgstr ""
 "Stigfinnare:\n"
-"Denna trupp är skicklig i att finna vägar förbi fienden, och hindras inte av "
-"fiendens kontrollzoner."
+"Denna trupp finner vägar förbi fienden, och hindras därmed inte av fiendens "
+"kontrollzoner."
 
 #: data/translations/english.cfg:52
 msgid "Never more than 1 upkeep"
@@ -1582,7 +2463,7 @@ msgstr "Välj laginställningar:"
 
 #: data/translations/english.cfg:64
 msgid "Could not connect to the remote host"
-msgstr "Kunde inte ansluta till värden"
+msgstr "Kunde inte ansluta till servern"
 
 #: data/translations/english.cfg:65
 msgid "Waiting for players to connect"
@@ -1648,7 +2529,7 @@ msgstr "Den för truppen mest fördelaktiga terrängen används automatiskt"
 
 #: data/translations/english.cfg:86
 msgid "This terrain gives healing"
-msgstr "Den här terrängen är läkande"
+msgstr "Den här terrängen läker trupper"
 
 #: data/translations/english.cfg:87
 msgid ""
@@ -1656,7 +2537,7 @@ msgid ""
 "location with this terrain"
 msgstr ""
 "Den här terrängen är som ett kärntorn. Du kan alltså rekrytera trupper när "
-"din ledare befinner på den här sortens terräng."
+"din ledare befinner på den här sortens terräng"
 
 #: data/translations/english.cfg:88
 msgid ""
@@ -1664,7 +2545,7 @@ msgid ""
 "with this terrain"
 msgstr ""
 "Den här terrängen är som en borg. Rekryterade trupper kan alltså placeras på "
-"den här sortens terräng."
+"den här sortens terräng"
 
 #: data/translations/english.cfg:89 src/help.cpp:874
 msgid "or"
@@ -1705,7 +2586,8 @@ msgid ""
 "amount of damage it deals."
 msgstr ""
 "Suga livskraft:\n"
-"Denna typ av attack suger livskraften ur levande trupper, och förbättrar den anfallande truppens hälsa med hälften av den skada den orsakar."
+"Denna typ av attack suger livskraften ur levande trupper, och förbättrar den "
+"anfallande truppens hälsa med hälften av den skada den orsakar."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -1713,7 +2595,7 @@ msgid ""
 "This attack always has a 70% chance to hit."
 msgstr ""
 "Magisk:\n"
-"Denna attack har alltid en 70-procentig chans att träffa."
+"Denna attack har alltid 70% chans att träffa."
 
 #: data/translations/english.cfg:108
 msgid ""
@@ -1925,7 +2807,8 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|torp,$name|hult,$name|by,$name|kulle,$name|krön"
 
 #: data/translations/english.cfg:177
-msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid ""
+"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|torp,$name|hult,$name|by,$name|Berget,$name|Berget,$name|klippa,$name|"
 "klippa"
@@ -1966,11 +2849,11 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
-"Det finns sex typer av attacker: spetsande, skärande, krossande, eld, "
-"frost samt heliga attacker. Olika trupper har olika motståndskraft mot olika "
-"typer av vapen. Om du högerklickar på en trupp och väljer 'Truppbeskrivning' "
-"och därefter 'Motståndskraft' så kan du se hur mycket motståndskraft truppen "
-"har mot de olika vapenslagen."
+"Det finns sex typer av attacker: spetsande, skärande, krossande, eld, frost "
+"samt heliga attacker. Olika trupper har olika motståndskraft mot olika typer "
+"av vapen. Om du högerklickar på en trupp och väljer 'Truppbeskrivning' och "
+"därefter 'Motståndskraft' så kan du se hur mycket motståndskraft truppen har "
+"mot de olika vapenslagen."
 
 #: data/translations/english.cfg:185
 msgid ""
@@ -2026,7 +2909,8 @@ msgstr ""
 "att träffa, och en prickskytt har alltid åtminstone 60% chans att träffa."
 
 #: data/translations/english.cfg:190
-msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid ""
+"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr "Trupper som befinner sig i byar återfår 8 KP i början på sitt drag."
 
 #: data/translations/english.cfg:191
@@ -2092,7 +2976,8 @@ msgstr ""
 "iväg trupper som du kan avvara, så att dessa sinkar fiendens trupper."
 
 #: data/translations/english.cfg:198
-msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid ""
+"Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 "Dra dig inte för att omgruppera eller slå till reträtt, detta är ofta "
 "nyckeln till den slutliga segern."
@@ -2216,7 +3101,8 @@ msgstr ""
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
-msgstr "Stormande trupper används bäst mot fiender som de kan döda med ett slag."
+msgstr ""
+"Stormande trupper används bäst mot fiender som de kan döda med ett slag."
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
@@ -2398,10 +3284,10 @@ msgstr "Lönnmördare"
 
 #: data/units/Assassin.cfg:16 data/units/Duelist.cfg:16
 #: data/units/Fencer.cfg:16 data/units/Outlaw_Princess.cfg:17
-#: data/units/Rogue.cfg:16 data/units/Saurian.cfg:16
-#: data/units/Saurian_Warrior.cfg:16
+#: data/units/Rogue.cfg:16 data/units/Saurian.cfg:17
+#: data/units/Saurian_Warrior.cfg:17
 msgid "skirmisher"
-msgstr "Stigfinnare"
+msgstr "stigfinnare"
 
 #: data/units/Assassin.cfg:17
 msgid ""
@@ -2513,7 +3399,8 @@ msgid "Bandit"
 msgstr "Bandit"
 
 #: data/units/Bandit.cfg:16
-msgid "Armed with heavy mace, Bandits are adept at robbing and killing at night."
+msgid ""
+"Armed with heavy mace, Bandits are adept at robbing and killing at night."
 msgstr ""
 "Banditer bär tunga spikklubbor och är skickliga på att råna och mörda "
 "nattetid."
@@ -2549,7 +3436,7 @@ msgstr ""
 "Prinsessan är av ädel börd, och har utbildats i svärdskonst av de största "
 "generalerna och i strategi av de största tänkarna. Detta har fått henne att "
 "bli både en utsökt krigare och ledare. Lägre rankade trupper omkring "
-"Prinsessan inspireras av hennes närvaro och kämpar bättre.Prinsessan är en "
+"Prinsessan inspireras av hennes närvaro och kämpar bättre. Prinsessan är en "
 "skicklig stigfinnare och ignorerar fiendens kontrollzoner."
 
 #: data/units/Battle_Princess.cfg:22 data/units/Battle_Princess.cfg:60
@@ -2603,10 +3490,11 @@ msgid ""
 "began the battle! Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
-"Den blodsugande fladdermusen är ett snabbt djur som suger blodet och därmed livskraften ur sin "
-"motståndare, och använder blodet för att förbättra sin egen hälsa. På så vis "
-"kan den blodsugande fladdermusen till och med bli kraftigare under pågående "
-"strid. Dess päls är rödfärgad av blodet från dess offer."
+"Den blodsugande fladdermusen är ett snabbt djur som suger blodet och därmed "
+"livskraften ur sin motståndare, och använder blodet för att förbättra sin "
+"egen hälsa. På så vis kan den blodsugande fladdermusen till och med bli "
+"kraftigare under pågående strid. Dess päls är rödfärgad av blodet från dess "
+"offer."
 
 #: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
 #: data/units/Direwolf_Rider.cfg:18 data/units/Goblin_Direwolver.cfg:20
@@ -2687,10 +3575,10 @@ msgstr "båge"
 #: data/units/Orcish_Shaman.cfg:69 data/units/Orcish_Shaman.cfg:112
 #: data/units/Orcish_Sovereign.cfg:43 data/units/Orcish_Warlord.cfg:30
 #: data/units/Paladin.cfg:42 data/units/Peasant.cfg:21
-#: data/units/Peasant.cfg:35 data/units/Pikeman.cfg:20
+#: data/units/Peasant.cfg:34 data/units/Pikeman.cfg:20
 #: data/units/Pirate_Galleon.cfg:62 data/units/Poacher.cfg:42
-#: data/units/Saurian.cfg:20 data/units/Saurian.cfg:37
-#: data/units/Saurian_Warrior.cfg:20 data/units/Saurian_Warrior.cfg:37
+#: data/units/Saurian.cfg:21 data/units/Saurian.cfg:38
+#: data/units/Saurian_Warrior.cfg:21 data/units/Saurian_Warrior.cfg:38
 #: data/units/Sea_Hag.cfg:21 data/units/Sea_Serpent.cfg:20
 #: data/units/Sergeant.cfg:39 data/units/Skeleton_Archer.cfg:41
 #: data/units/Soul_Shooter.cfg:38 data/units/Spearman.cfg:20
@@ -2788,9 +3676,9 @@ msgstr ""
 #: data/units/Drake_Guard.cfg:22 data/units/Drake_Slasher.cfg:52
 #: data/units/Dwarvish_Guardsman.cfg:38 data/units/Dwarvish_Guardsman.cfg:52
 #: data/units/Dwarvish_Stalwart.cfg:38 data/units/Dwarvish_Stalwart.cfg:52
-#: data/units/Horseman.cfg:20 data/units/Saurian.cfg:18
-#: data/units/Saurian.cfg:35 data/units/Saurian_Warrior.cfg:18
-#: data/units/Saurian_Warrior.cfg:35 data/units/Spearman.cfg:19
+#: data/units/Horseman.cfg:20 data/units/Saurian.cfg:19
+#: data/units/Saurian.cfg:36 data/units/Saurian_Warrior.cfg:19
+#: data/units/Saurian_Warrior.cfg:36 data/units/Spearman.cfg:19
 #: data/units/Spearman.cfg:32
 msgid "spear"
 msgstr "spjut"
@@ -2827,7 +3715,7 @@ msgstr "sten"
 
 #: data/units/Commander.cfg:3 data/units/Commander.cfg:78
 msgid "Commander"
-msgstr "Kommendör"
+msgstr "Befälhavare"
 
 #: data/units/Commander.cfg:11 data/units/Commander.cfg:86
 #: data/units/Death_Knight.cfg:14 data/units/Elvish_Captain.cfg:11
@@ -2851,10 +3739,10 @@ msgid ""
 "although they also carry a bow to use when necessary. If the Commander is "
 "lost, so is the battle."
 msgstr ""
-"Den som leder härar i strid kallas för kommendör. Hans goda "
+"Den som leder härar i strid kallas för bevälhavare. Hans goda "
 "ledarskapsförmåga får närliggande trupper av lägre rang att slåss bättre. "
 "Han slåss själv helst med sitt svärd, men har också en båge om så behövs. Om "
-"en kommendör dör är striden förlorad."
+"befälhavaren besegras är striden förlorad."
 
 #: data/units/Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
@@ -3151,8 +4039,8 @@ msgid ""
 "pistol in the other to shoot distant foes."
 msgstr ""
 "Duellanterna är mästare i svärdsfäktandets sköna konst. Deras färdighet med "
-"värjan tillåter dem att attackera och parera med en hand,samtidigt som den "
-"andra håller en pistol redo för att skjuta."
+"värjan tillåter dem att attackera och parera med en hand, samtidigt som den "
+"andra håller ett armborst redo för att skjuta."
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
@@ -3163,6 +4051,7 @@ msgid "Dwarvish Berserker"
 msgstr "Dvärgbärsärk"
 
 #: data/units/Dwarvish_Berserker.cfg:16
+#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forgo all "
 "defense in exchange for massive damage against their enemies. Once a battle "
@@ -3171,8 +4060,8 @@ msgid ""
 msgstr ""
 "Dvärgarna är en urgammal ras av kraftfulla krigare. Deras bärsärkar glömmer "
 "all självbevarelsedrift för att få in fler träffar på motståndaren. När de "
-"har givit sig in i striden, så attackerar de vildsint, tills antingen de "
-"själva eller deras fiende ligger död på marken."
+"har givit sig in i striden attackerar de vildsint tills antingen de själva "
+"eller deras fiende ligger död på marken."
 
 #: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Ulfserker.cfg:33
 msgid "berserker frenzy"
@@ -3296,9 +4185,9 @@ msgid ""
 "armor from the ruins of their enemies. While slow, they are the feared for "
 "their resilience and strength."
 msgstr ""
-"Pansarinfanteriet har efter år av strider dragit nytta av sina fienders "
-"nederlag och skapat nya sköldar och starka runstningar. Även om de är "
-"långsamma, är de fruktade för sin uthållighet och styrka."
+"Pansarnävarna har efter år av strider dragit nytta av sina fienders nederlag "
+"och skapat nya sköldar och starka runstningar. Även om de är långsamma, är "
+"de fruktade för sin uthållighet och styrka."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -3526,8 +4415,8 @@ msgid ""
 "fighting, with both the sword and the bow."
 msgstr ""
 "Som några av de högst rankade officerarna i alvernas armé, kan överstarna "
-"leda både nivå 1- och 2- trupper i strid, och få dem att slåss bättre. "
-"Alvlöjtnanterna är själv mycket skickliga krigare, både med svärd och båge."
+"leda både nivå 1- och 2-trupper i strid, och få dem att slåss bättre. "
+"Alvöverstarna är själv mycket skickliga krigare, både med svärd och båge."
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -3545,7 +4434,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
 msgid "Elvish Ranger"
-msgstr "Skogsvaktaralv"
+msgstr "Skogvaktaralv"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -3633,7 +4522,7 @@ msgstr ""
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
-msgstr "Kämpe"
+msgstr "Krigare"
 
 #: data/units/Fighter.cfg:17 data/units/Fighter.cfg:58
 msgid ""
@@ -3641,7 +4530,7 @@ msgid ""
 "from enemies. However they have the potential to become great warriors one "
 "day."
 msgstr ""
-"Den unge och obetänksamme kämpen slåss med ett svärd, och är sårbar för "
+"Den unge och obetänksamme krigaren slåss med ett svärd, och är sårbar för "
 "attacker från fienden. Han besitter dock talang och lyckas han bara hålla "
 "sig levande så kan han bli en mäktig krigare en dag."
 
@@ -3676,8 +4565,10 @@ msgid "Fireball"
 msgstr "Eldklot"
 
 #: data/units/Fireball.cfg:16
-msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
-msgstr "Ett eldklot. Detta ska inte användas till nåt annat än 'Move_Unit_Fake'!"
+msgid ""
+"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgstr ""
+"Ett eldklot. Detta ska inte användas till nåt annat än 'Move_Unit_Fake'!"
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
@@ -4052,8 +4943,9 @@ msgid ""
 msgstr ""
 "Häxmästaren är en magiker som oåterkalleligt har gett sig hän till de mörka "
 "konsterna. För att kunna kontrollera de vandöda har han offrat sin egen "
-"kropp, och själv blivit en vandöd. Detta ger honom förmågan att suga livskraften "
-"ur sina fiender genom beröring, och att kasta kraftfulla frostbesvärjelser."
+"kropp, och själv blivit en vandöd. Detta ger honom förmågan att suga "
+"livskraften ur sina fiender genom beröring, och att kasta kraftfulla "
+"frostbesvärjelser."
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
@@ -4093,7 +4985,7 @@ msgid ""
 "level units."
 msgstr ""
 "Den adlige ledaren av stora mängder trupper, så är fursten särskilt stark i "
-"närstrid, men inte heller oäven med bågen. Liksom kommendörer har furstar "
+"närstrid, men inte heller oäven med bågen. Liksom befälhavare har furstar "
 "ledarskapsförmåga, och förbättrar stridsförmågan hos all lägre rankade "
 "trupper i närheten."
 
@@ -4220,8 +5112,8 @@ msgid ""
 msgstr ""
 "En nekromantiker är en magiker som har valt att följa de mörka krafterna som "
 "finns hos de döda. Genom att utnyttja energin hos de vandöda kan "
-"nekromantikern suga livskraften ur sina fiender, och använda den för öka "
-"sin egen."
+"nekromantikern suga livskraften ur sina fiender, och använda den för öka sin "
+"egen."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
@@ -4244,7 +5136,11 @@ msgid ""
 "Nightgaunts haunt the night, keeping their ugly faces behind masks in an "
 "effort to hide their souls of pure evil. These despicable creatures are able "
 "to hide at night, leaving no trace of their presence."
-msgstr "Blekmännen sprider skräck i natten; de döljer sina hemska ansikten bakom masker, för att försöka dölja sin genomonda själar. Dessa föraktliga varelser kan gömma sig i natten, utan att lämna ett endaste spår av sin närvaro."
+msgstr ""
+"Blekmännen sprider skräck i natten; de döljer sina hemska ansikten bakom "
+"masker, för att försöka dölja sin genomonda själar. Dessa föraktliga "
+"varelser kan gömma sig i natten, utan att lämna ett endaste spår av sin "
+"närvaro."
 
 #: data/units/Nightgaunt.cfg:18 data/units/Shadow.cfg:16
 msgid "nightstalk"
@@ -4252,7 +5148,7 @@ msgstr "smyga"
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr "Adlig kommendör"
+msgstr "Adlig befälhavare"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
@@ -4264,7 +5160,7 @@ msgid ""
 "attacks from enemies. However they have the potential to become great "
 "Commanders one day."
 msgstr ""
-"Den unge och obetänksamme kämpen slåss med ett svärd, och är sårbar för "
+"Den unge och obetänksamme krigaren slåss med ett svärd, och är sårbar för "
 "attacker från fienden. Han besitter dock talang och lyckas han bara hålla "
 "sig levande så kan han bli en mäktig krigare en dag."
 
@@ -4329,8 +5225,8 @@ msgid ""
 "until they can be cured in town or by a healer."
 msgstr ""
 "Den orchiska lönnmördaren kompenserar sin mindre styrka med snabbhet och "
-"anpassningsbarhet till terrängen. Lönnmördaren använder giftpilar som försvagar "
-"sina offer tills de botas av en läkekunnig i en by eller i fält."
+"anpassningsbarhet till terrängen. Lönnmördaren använder giftpilar som "
+"försvagar sina offer tills de botas av en läkekunnig i en by eller i fält."
 
 #: data/units/Orcish_Assassin.cfg:36 data/units/Orcish_Slayer.cfg:41
 msgid "darts"
@@ -4528,7 +5424,8 @@ msgstr "Laglösa slåss bättre nattetid."
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
-msgstr "Laglösa slåss bättre nattetid. De kvinnliga laglösa ser bra ut under tiden."
+msgstr ""
+"Laglösa slåss bättre nattetid. De kvinnliga laglösa ser bra ut under tiden."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "Outlaw Princess"
@@ -4598,8 +5495,8 @@ msgstr ""
 "troget sina hem. Men, om du skickar bönder in i stridens hetta, så har du "
 "helt klart slut på bättre trupper."
 
-#: data/units/Peasant.cfg:20 data/units/Peasant.cfg:34
-msgid "Pitch Fork"
+#: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
+msgid "pitchfork"
 msgstr "högaffel"
 
 #: data/units/Pikeman.cfg:3
@@ -4736,7 +5633,7 @@ msgstr ""
 
 #: data/units/Sea_Hag.cfg:27
 msgid "water spray"
-msgstr "skum"
+msgstr "vattenstråle"
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
@@ -4761,7 +5658,8 @@ msgid "Sea Serpent"
 msgstr "Sjöorm"
 
 #: data/units/Sea_Serpent.cfg:16
-msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgid ""
+"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
 "Sjöormarna är ett gigantiska monster, fullt kapabla att på egen hand sänka "
 "fartyg."
@@ -4893,7 +5791,8 @@ msgstr "Själlös"
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
-msgstr "Dessa gående lik har blivit starka genom att länge slåss mot de levande."
+msgstr ""
+"Dessa gående lik har blivit starka genom att länge slåss mot de levande."
 
 #: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:24
 msgid "plague"
@@ -5072,8 +5971,8 @@ msgid ""
 "away along with their blood, and given to the Bats."
 msgstr ""
 "En vandöd flygande best, som attackerar genom att bita sina fiender, fastän "
-"deras huggtänder inte är så kraftfulla, så kan de suga blodet och därmed livskraften ur sina "
-"offer och utvinna styrka ur detta."
+"deras huggtänder inte är så kraftfulla, så kan de suga blodet och därmed "
+"livskraften ur sina offer och utvinna styrka ur detta."
 
 #: data/units/Vampire_Lady.cfg:3
 msgid "Vampire Lady"
@@ -5199,10 +6098,10 @@ msgid ""
 "strengthening themselves. They also have a terrible wail that freezes the "
 "heart of the weak."
 msgstr ""
-"Gastarna är bland de mäktigaste av spökena och kan använda sina krafter "
-"för att frammana ett spektralsvärd, som suger livskraften ur sina "
-"motståndare, och förbättrar deras egen. De har också ett förfärligt tjut, "
-"som får de svagas hjärtan att förfrysa."
+"Gastarna är bland de mäktigaste av spökena och kan använda sina krafter för "
+"att frammana ett spektralsvärd, som suger livskraften ur sina motståndare, "
+"och förbättrar deras egen. De har också ett förfärligt tjut, som får de "
+"svagas hjärtan att förfrysa."
 
 #: data/units/Yeti.cfg:3
 msgid "Yeti"
@@ -5243,7 +6142,9 @@ msgstr "Yngling"
 msgid ""
 "Today almost a boy, by his devotion to the crown he is seeking to become a "
 "Lord -- to join the elite of human fighters."
-msgstr "Idag nästan en pojke, men med sin trohet mot kronan önskar han att bli en Furste, att få tillhöra eliten av de mänskliga krigarna."
+msgstr ""
+"Idag nästan en pojke, men med sin trohet mot kronan önskar han att bli en "
+"Furste, att få tillhöra eliten av de mänskliga krigarna."
 
 #: src/about.cpp:45
 msgid "+Core Developers"
@@ -5650,8 +6551,8 @@ msgstr ""
 "Detta sparade spel är från en annan version av Wesnoth. Vill du försöka "
 "öppna spelet ändå?"
 
-#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:533
-#: src/playlevel.cpp:747
+#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:535
+#: src/playlevel.cpp:749
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
@@ -5725,7 +6626,7 @@ msgstr "Livsåskådning"
 
 #: src/help.cpp:628
 msgid "Required XP"
-msgstr "XP som krävs"
+msgstr "XP för nästa nivå"
 
 #: src/help.cpp:638 src/reports.cpp:233
 msgid "attacks"
@@ -5741,7 +6642,7 @@ msgstr "Typ"
 
 #: src/help.cpp:654 src/help.cpp:655 src/unit_types.cpp:301
 msgid "Dmg"
-msgstr "skada"
+msgstr "Skada"
 
 #: src/help.cpp:658 src/help.cpp:659
 msgid "Strikes"
@@ -5757,7 +6658,7 @@ msgstr "Specialitet"
 
 #: src/help.cpp:723
 msgid "Resistances"
-msgstr "Motståndskraftighet"
+msgstr "Motståndskraft mot olika attacker"
 
 #: src/help.cpp:727 src/help.cpp:728
 msgid "Attack Type"
@@ -6105,7 +7006,8 @@ msgstr "Stridsdimma"
 
 #: src/multiplayer.cpp:110
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr "Fiendetrupper kan ses endast om de befinner sig inom dina truppers räckvidd"
+msgstr ""
+"Fiendetrupper kan ses endast om de befinner sig inom dina truppers räckvidd"
 
 #: src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:127
 msgid "Shroud"
@@ -6215,7 +7117,7 @@ msgid "Receiving game list..."
 msgstr "Hämtar spellista..."
 
 #: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:378
-#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1484
+#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:734 src/playturn.cpp:1484
 #: src/playturn.cpp:1489 src/playturn.cpp:1576
 msgid "Gold"
 msgstr "Guld"
@@ -6226,11 +7128,11 @@ msgstr "Väntar på att spelet skall starta..."
 
 #: src/multiplayer_client.cpp:221
 msgid "Choose host to connect to"
-msgstr "Välj värd att ansluta dig till"
+msgstr "Välj server att ansluta dig till"
 
 #: src/multiplayer_client.cpp:239
 msgid "Connecting to remote host..."
-msgstr "Ansluter till värddator"
+msgstr "Ansluter till server"
 
 #: src/multiplayer_client.cpp:268
 msgid "You must log in to this server"
@@ -6378,60 +7280,60 @@ msgstr "Var åskådare till spel"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/playlevel.cpp:672
+#: src/playlevel.cpp:674
 msgid "Game Over"
 msgstr "Spelet är slut"
 
-#: src/playlevel.cpp:673
+#: src/playlevel.cpp:675
 msgid "The game is over."
 msgstr "Spelet är slut."
 
-#: src/playlevel.cpp:686
+#: src/playlevel.cpp:688
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playlevel.cpp:687
+#: src/playlevel.cpp:689
 msgid "You have been defeated!"
 msgstr "Du har förlorat!"
 
-#: src/playlevel.cpp:719
+#: src/playlevel.cpp:721
 msgid "Victory"
 msgstr "Seger"
 
-#: src/playlevel.cpp:720
+#: src/playlevel.cpp:722
 msgid "You have emerged victorious!"
 msgstr "Du har segrat!"
 
-#: src/playlevel.cpp:722
+#: src/playlevel.cpp:724
 msgid "Remaining gold"
 msgstr "Resterande guld"
 
-#: src/playlevel.cpp:725
+#: src/playlevel.cpp:727
 msgid "Early finish bonus"
 msgstr "Bonus för tidig seger"
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:729
 msgid "per turn"
 msgstr "per drag"
 
-#: src/playlevel.cpp:728
+#: src/playlevel.cpp:730
 msgid "Turns finished early"
 msgstr "Tidigt avklarade drag"
 
-#: src/playlevel.cpp:730
+#: src/playlevel.cpp:732
 msgid "Bonus"
 msgstr "Bonus"
 
-#: src/playlevel.cpp:737
+#: src/playlevel.cpp:739
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% av guldet bibehålls till nästa scenario"
 
-#: src/playlevel.cpp:738
+#: src/playlevel.cpp:740
 msgid "Retained Gold"
 msgstr "Bibehållet guld"
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:764
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6472,12 +7374,15 @@ msgid "Choose weapon"
 msgstr "Välj vapen:"
 
 #: src/playturn.cpp:1154
-msgid "You have not started your turn yet.  Do you really want to end your turn?"
-msgstr "Du har ännu inte påbörjat ditt drag. Vill du verkligen avsluta ditt drag?"
+msgid ""
+"You have not started your turn yet.  Do you really want to end your turn?"
+msgstr ""
+"Du har ännu inte påbörjat ditt drag. Vill du verkligen avsluta ditt drag?"
 
 #: src/playturn.cpp:1163 src/playturn.cpp:1168
 msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr "Några trupper kan fortfarande flytta. Vill du verkligen avsluta ditt drag?"
+msgstr ""
+"Några trupper kan fortfarande flytta. Vill du verkligen avsluta ditt drag?"
 
 #: src/playturn.cpp:1184
 msgid "Auto-Save"
@@ -6536,8 +7441,8 @@ msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
-"Ers nåd, denna trupp är erfaren och har befordrats. Vill du "
-"verkligen avskeda $noun?"
+"Ers nåd, denna trupp är erfaren och har befordrats. Vill du verkligen "
+"avskeda $noun?"
 
 #: src/playturn.cpp:1684
 msgid ""
@@ -6557,7 +7462,8 @@ msgstr "honom"
 
 #: src/playturn.cpp:1722
 msgid "You are seperated from your soldiers and may not recall them"
-msgstr "Du är inte tillsammans med dina soldater och kan därför inte återkalla dem"
+msgstr ""
+"Du är inte tillsammans med dina soldater och kan därför inte återkalla dem"
 
 #: src/playturn.cpp:1724
 msgid ""
@@ -6645,7 +7551,8 @@ msgstr "Chatlogg"
 
 #: src/playturn.cpp:2164
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr "Kunde inte finna etikett eller trupp som innehöll textsträngen '$search'."
+msgstr ""
+"Kunde inte finna etikett eller trupp som innehöll textsträngen '$search'."
 
 #: src/playturn.cpp:2238
 msgid "Place Label"
@@ -6723,7 +7630,7 @@ msgstr "_beskrivning"
 
 #: src/reports.cpp:232
 msgid "damage"
-msgstr "skada"
+msgstr "Skada"
 
 #: src/reports.cpp:237
 msgid "hexes"
@@ -6861,3 +7768,15 @@ msgstr "Radera fil"
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
 
+#~ msgid "Dwarvish Sentinel"
+#~ msgstr "Dvärgarnas Väktare"
+
+#~ msgid ""
+#~ "The Sentinel, with his tower shield and great courage, refuses to yeild "
+#~ "under even the strongest of enemy attacks."
+#~ msgstr ""
+#~ "Väktaren, med sin breda sköld och sitt stora mod, håller stånd mot "
+#~ "fiendens mäktigaste attacker."
+
+#~ msgid "Elvish Lady"
+#~ msgstr "Alvfurstinna"
