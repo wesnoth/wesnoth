@@ -20,6 +20,8 @@ CVS HEAD:
    * start positions of players are now displayed as labels on the map
    * painting something on top of starting position now removes that starting position
    * cancel in new map dialog confirmation returns to dialog instead of map
+   * added ability to mark tiles and fill marked tiles with selected terrain
+   * added templates for cut and paste functionality
    * fixed tiles on the border of the map updating incorrectly when nearby tiles are drawn
    * fixed a bug where odd number of terrains where not drawn correctly in the palette.
    * fixed dynamically generated terrain not showing correctly
@@ -28,6 +30,7 @@ CVS HEAD:
  * added idle AI
  * added image_healing' and 'image_leading' animation code
  * added floating labels to indicate healing/poisoning of units
+ * added ability to highlight several hexes
  * fixed Li'sar dying in Hasty Alliance not resulting in a loss
  * fixed game creator being able to click [I'm Ready] before all networked players have joined when loading game from save
  * fixed first player gold reset to 100 in multiplayer games when starting gold set less than 100
@@ -39,6 +42,7 @@ CVS HEAD:
  * fixed opening sequence in 'Isle of Anduin'
  * fixed cycling units not showing attack options
  * fixed units with drain not getting more than the max hitpoints
+ * fixed Battle Princess not being able to get Scepter
  * fixed "invalid font characters" for slovak translation by adding 'font=Bepa-Roman.ttf', translators should ensure this line is preserved when upgrading translations
  * fixed support for UTF-8 languages on text-boxes
  * fixed wesnoth.desktop (FreeDesktop shortcut definition file), which did contain invalid UTF-8 sequences
