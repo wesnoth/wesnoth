@@ -38,7 +38,6 @@ void ai::do_attack_analysis(
 					 attack_analysis& cur_analysis
 	                )
 {
-	std::cerr << "doing attack analysis...\n";
 	if(cur_analysis.movements.size() >= 4)
 		return;
 
@@ -451,7 +450,6 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 		   j->second.invisible(map_.underlying_terrain(map_[j->first.x][j->first.y]), 
 				state_.get_time_of_day().lawful_bonus,j->first,
 				units_,teams_) == false) {
-			std::cerr << "analyzing attack on " << j->first.x+1 << "," << j->first.y+1 << "\n";
 			location adjacent[6];
 			get_adjacent_tiles(j->first,adjacent);
 			attack_analysis analysis;
@@ -468,8 +466,6 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 			static int max_time = 0;
 			if(time_taken > max_time)
 				max_time = time_taken;
-
-			std::cerr << "do_analysis took " << time_taken << " (" << max_time << ")\n";
 		}
 	}
 

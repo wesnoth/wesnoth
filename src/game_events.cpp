@@ -903,7 +903,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	    ffi != first_filters.end(); ++ffi) {
 
 			if(!game_events::unit_matches_filter(unit1,**ffi))
-			return false;
+				return false;
 	}
 
 	const config::child_list& second_filters = handler.second_arg_filters();

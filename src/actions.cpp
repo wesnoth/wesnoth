@@ -430,6 +430,7 @@ void attack(display& gui, const gamemap& map,
 				gamemap::location loc = d->first;
 				gamemap::location attacker_loc = a->first;
 				const int defender_side = d->second.side();
+				std::cerr << "firing die event\n";
 				game_events::fire("die",loc,a->first);
 				d = units.end();
 				a = units.end();
