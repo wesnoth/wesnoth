@@ -549,6 +549,13 @@ battle_stats evaluate_battle_stats(
 	return res;
 }
 
+static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
+{
+	std::stringstream s;
+	s << u.second.type().name() << " (" << u.first.x + 1 << ',' << u.first.y + 1 << ')';
+	return s.str();
+}
+
 void attack(display& gui, const gamemap& map, 
 				std::vector<team>& teams,
             gamemap::location attacker,
@@ -606,16 +613,15 @@ void attack(display& gui, const gamemap& map,
 				const int results_damage = atoi((*ran_results)["damage"].c_str());
 
 				if(results_chance != stats.chance_to_hit_defender) {
-					ERR_NW << "SYNC: In attack " << a->second.type().name() << " vs "
-						<< d->second.type().name()
+					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": chance to hit defender is inconsistent. Data source: "
 						<< results_chance << "; Calculation: " << stats.chance_to_hit_defender
 						<< " (over-riding game calculations with data source results)\n";
 					stats.chance_to_hit_defender = results_chance;
 				}
 				if(hits != results_hits) {
-					ERR_NW << "SYNC: In attack " << a->second.type().name() << " vs "
-						<< d->second.type().name() << ": the data source says the hit was "
+					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source says the hit was "
 						<< (results_hits ? "successful" : "unsuccessful")
 						<< ", while in-game calculations say the hit was "
 						<< (hits ? "successful" : "unsuccessful")
@@ -625,9 +631,8 @@ void attack(display& gui, const gamemap& map,
 					hits = results_hits;
 				}
 				if(results_damage != stats.damage_defender_takes) {
-					ERR_NW << "SYNC: In attack " << a->second.type().name() << " vs "
-						<< d->second.type().name() << ": the data source says the hit did "
-						<< results_damage
+					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source says the hit did " << results_damage
 						<< " damage, while in-game calculations show the hit doing "
 						<< stats.damage_defender_takes
 						<< " damage (over-riding game calculations with data source results)\n";
@@ -657,8 +662,8 @@ void attack(display& gui, const gamemap& map,
 			} else {
 				const bool results_dies = (*ran_results)["dies"] == "yes";
 				if(results_dies != dies) {
-					ERR_NW << "SYNC: In attack" << a->second.type().name() << " vs "
-						<< d->second.type().name() << ": the data source the unit "
+					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source the unit "
 						<< (results_dies ? "perished" : "survived")
 						<< " while in-game calculations show the unit "
 						<< (dies ? "perished" : "survived")
@@ -758,16 +763,15 @@ void attack(display& gui, const gamemap& map,
 				const int results_damage = atoi((*ran_results)["damage"].c_str());
 
 				if(results_chance != stats.chance_to_hit_attacker) {
-					ERR_NW << "SYNC: In defend " << a->second.type().name() << " vs "
-						<< d->second.type().name()
+					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": chance to hit attacker is inconsistent. Data source: "
 						<< results_chance << "; Calculation: " << stats.chance_to_hit_attacker
 						<< " (over-riding game calculations with data source results)\n";
 					stats.chance_to_hit_attacker = results_chance;
 				}
 				if(hits != results_hits) {
-					ERR_NW << "SYNC: In defend " << a->second.type().name() << " vs "
-						<< d->second.type().name() << ": the data source says the hit was "
+					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source says the hit was "
 						<< (results_hits ? "successful" : "unsuccessful")
 						<< ", while in-game calculations say the hit was "
 						<< (hits ? "successful" : "unsuccessful")
@@ -777,9 +781,8 @@ void attack(display& gui, const gamemap& map,
 					hits = results_hits;
 				}
 				if(results_damage != stats.damage_attacker_takes) {
-					ERR_NW << "SYNC: In defend " << a->second.type().name() << " vs "
-						<< d->second.type().name() << ": the data source says the hit did "
-						<< results_damage
+					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source says the hit did " << results_damage
 						<< " damage, while in-game calculations show the hit doing "
 						<< stats.damage_attacker_takes
 						<< " damage (over-riding game calculations with data source results)\n";
@@ -805,8 +808,8 @@ void attack(display& gui, const gamemap& map,
 			} else {
 				const bool results_dies = (*ran_results)["dies"] == "yes";
 				if(results_dies != dies) {
-					ERR_NW << "SYNC: In defend" << a->second.type().name() << " vs "
-						<< d->second.type().name() << ": the data source the unit "
+					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source the unit "
 						<< (results_dies ? "perished" : "survived")
 						<< " while in-game calculations show the unit "
 						<< (dies ? "perished" : "survived")
