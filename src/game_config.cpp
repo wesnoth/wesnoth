@@ -27,7 +27,8 @@ namespace game_config
 	const std::string version = "0.6.99.1";
 	bool debug = false;
 
-	std::string game_icon, game_title, title_music;
+	std::string game_icon, game_title, game_logo, title_music;
+	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0;
 
 	std::string missile_n_image, missile_ne_image;
 
@@ -70,7 +71,13 @@ namespace game_config
 
 		game_icon = v["icon"];
 		game_title = v["title"];
+		game_logo = v["logo"];
 		title_music = v["title_music"];
+
+		title_logo_x = atoi(v["logo_x"].c_str());
+		title_logo_y = atoi(v["logo_y"].c_str());
+		title_buttons_x = atoi(v["buttons_x"].c_str());
+		title_buttons_y = atoi(v["buttons_y"].c_str());
 
 		map_image = v["map_image"];
 		rightside_image = v["sidebar_image"];

@@ -85,8 +85,8 @@ int show_dialog(display& screen, SDL_Surface* image,
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 
-enum TITLE_RESULT { TUTORIAL, NEW_CAMPAIGN, MULTIPLAYER, LOAD_GAME, QUIT_GAME,
-                    CHANGE_LANGUAGE, EDIT_PREFERENCES, SHOW_ABOUT };
+enum TITLE_RESULT { TUTORIAL, NEW_CAMPAIGN, MULTIPLAYER, LOAD_GAME,
+                    CHANGE_LANGUAGE, EDIT_PREFERENCES, SHOW_ABOUT, QUIT_GAME };
 
 TITLE_RESULT show_title(display& screen);
 

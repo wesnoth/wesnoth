@@ -695,6 +695,39 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	}
 }
 
+void fade_logo(display& screen, int xpos, int ypos)
+{
+	const scoped_sdl_surface logo_unscaled(image::get_image(game_config::game_logo,image::UNSCALED));
+	const scoped_sdl_surface logo(scale_surface(logo_unscaled,(logo_unscaled->w*screen.x())/1024,(logo_unscaled->h*screen.y())/768));
+	if(logo == NULL) {
+		std::cerr << "Could not find game logo\n";
+		return;
+	}
+
+	CKey key;
+
+	bool last_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
+
+	for(int i = 0; i < 170; i += 5) {
+		const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
+		if(new_button && !last_button)
+			break;
+
+		last_button = new_button;
+
+		SDL_SetAlpha(logo,SDL_SRCALPHA,i);
+		screen.blit_surface(xpos,ypos,logo);
+		update_rect(xpos,ypos,logo->w,logo->h);
+		screen.video().flip();
+		SDL_Delay(20);
+		events::pump();
+	}
+
+	SDL_SetAlpha(logo,SDL_SRCALPHA,255);
+	screen.blit_surface(xpos,ypos,logo);
+	update_rect(xpos,ypos,logo->w,logo->h);
+}
+
 TITLE_RESULT show_title(display& screen)
 {
 	const events::resize_lock prevent_resizing;
@@ -703,11 +736,13 @@ TITLE_RESULT show_title(display& screen)
 	const scoped_sdl_surface title_surface(scale_surface(title_surface_unscaled,screen.x(),screen.y()));
 
 	if(title_surface == NULL) {
-		std::cerr << "Could not find title image 'title.png'\n";
-		return QUIT_GAME;
+		std::cerr << "Could not find title image\n";
+	} else {
+		screen.blit_surface(0,0,title_surface);
+		update_rect(screen.screen_area());
 	}
 
-	screen.blit_surface(0,0,title_surface);
+	fade_logo(screen,(game_config::title_logo_x*screen.x())/1024,(game_config::title_logo_y*screen.y())/768);
 
 	const std::string& version_str = string_table["version"] + " " +
 	                                 game_config::version;
@@ -721,39 +756,32 @@ TITLE_RESULT show_title(display& screen)
 		                  10,font::NORMAL_COLOUR,version_str,0,versiony);
 	}
 
-	button tutorial_button(screen,string_table["tutorial_button"]);
-	button new_button(screen,string_table["campaign_button"]);
-	button load_button(screen,string_table["load_button"]);
-	button multi_button(screen,string_table["multiplayer_button"]);
-	button quit_button(screen,string_table["quit_button"]);
-	button language_button(screen,string_table["language_button"]);
-	button preferences_button(screen,string_table["preferences"]);
-	button about_button(screen,string_table["about_button"]);
-
-	const int menu_xbase = (705*screen.x())/1024;
+	const int menu_xbase = (game_config::title_buttons_x*screen.x())/1024;
 	const int menu_xincr = 0;
-	const int menu_ybase = (230*screen.y())/768;
+	const int menu_ybase = (game_config::title_buttons_y*screen.y())/768;
 	const int menu_yincr = 40;
-	int bc = 0; //button count
-#define BUTTON_XY() (menu_xbase+(bc)*menu_xincr), (menu_ybase+(bc++)*menu_yincr)
 
-	tutorial_button.set_xy(BUTTON_XY());
-	new_button.set_xy(BUTTON_XY());
-	load_button.set_xy(BUTTON_XY());
-	multi_button.set_xy(BUTTON_XY());
-	language_button.set_xy(BUTTON_XY());
-	preferences_button.set_xy(BUTTON_XY());
-	about_button.set_xy(BUTTON_XY());
-	quit_button.set_xy(BUTTON_XY());
+	//members of this array must correspond to the enumeration TITLE_RESULT
+	static const std::string button_labels[] = { "tutorial_button", "campaign_button", "multiplayer_button",
+		"load_button", "language_button", "preferences", "about_button", "quit_button" };
 
-	tutorial_button.draw();
-	new_button.draw();
-	load_button.draw();
-	multi_button.draw();
-	quit_button.draw();
-	language_button.draw();
-	preferences_button.draw();
-	about_button.draw();
+	static const size_t nbuttons = sizeof(button_labels)/sizeof(*button_labels);
+
+	std::vector<button> buttons;
+	size_t b, max_width = 0;
+	for(b = 0; b != nbuttons; ++b) {
+		buttons.push_back(button(screen,string_table[button_labels[b]]));
+		buttons.back().set_xy(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
+		max_width = maximum<size_t>(max_width,buttons.back().width());
+	}
+
+	const size_t padding = 10;
+	draw_dialog_frame(menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2,screen);
+
+	for(b = 0; b != nbuttons; ++b) {
+		buttons.back().draw();
+	}
+
 	screen.video().flip();
 
 	CKey key;
@@ -767,29 +795,11 @@ TITLE_RESULT show_title(display& screen)
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-		if(tutorial_button.process(mousex,mousey,left_button))
-			return TUTORIAL;
-
-		if(new_button.process(mousex,mousey,left_button))
-			return NEW_CAMPAIGN;
-
-		if(load_button.process(mousex,mousey,left_button))
-			return LOAD_GAME;
-
-		if(multi_button.process(mousex,mousey,left_button))
-			return MULTIPLAYER;
-
-		if(language_button.process(mousex,mousey,left_button))
-			return CHANGE_LANGUAGE;
-
-		if(preferences_button.process(mousex,mousey,left_button))
-			return EDIT_PREFERENCES;
-
-		if(about_button.process(mousex,mousey,left_button))
-			return SHOW_ABOUT;
-
-		if(quit_button.process(mousex,mousey,left_button))
-			return QUIT_GAME;
+		for(size_t b = 0; b != buttons.size(); ++b) {
+			if(buttons[b].process(mousex,mousey,left_button)) {
+				return TITLE_RESULT(b);
+			}
+		}
 
 		if(!last_escape && key[SDLK_ESCAPE])
 			return QUIT_GAME;
