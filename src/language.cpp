@@ -277,31 +277,30 @@ int byte_size_from_utf8_first(unsigned char ch)
 wide_string utf8_to_wstring(const std::string &src)
 {
 	wide_string ret;	
-	wchar_t ch;
-	std::string::const_iterator i;
 	
 	try {
-		for(i = src.begin(); i != src.end(); ++i ) {
-			ch = (unsigned char)*i;
+		for(size_t i = 0, l = src.size(); i != l;) {
+			wchar_t ch = (unsigned char)src[i];
 			const int count = byte_size_from_utf8_first(ch);
-					
-			if(i + count - 1 == src.end())
+
+			if (i + count > l)
 				throw invalid_utf8_exception();
 
 			/* Convert the first character */
 			if (count != 1) {
 				ch &= 0xFF >> (count + 1);
 			}
-			
+
 			/* Convert the continuation bytes */
-			for(std::string::const_iterator j = i+1; j != i+count; ++j) {
-				if((*j & 0xC0) != 0x80)
+			for(size_t j = i + 1; j != i + count; ++j) {
+				unsigned char ch2 = src[j];
+				if ((ch2 & 0xC0) != 0x80)
 					throw invalid_utf8_exception();
-				
-				ch = (ch << 6) | (*j & 0x3F);
+
+				ch = (ch << 6) | (ch2 & 0x3F);
 			}
-			i += (count - 1);
-			
+			i += count;
+
 			push_back(ret,ch);
 		}
 	}
