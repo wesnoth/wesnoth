@@ -33,6 +33,9 @@
 #include <time.h>
 #include <vector>
 
+#define LOG_DP lg::info(lg::display)
+#define ERR_G  lg::err(lg::general)
+
 namespace dialogs
 {
 
@@ -46,7 +49,7 @@ void advance_unit(const game_data& info,
 	if(u == units.end() || u->second.advances() == false)
 		return;
 
-	std::cerr << "advance_unit: " << u->second.type().name() << "\n";
+	LOG_DP << "advance_unit: " << u->second.type().name() << "\n";
 
 	const std::vector<std::string>& options = u->second.type().advances_to();
 
@@ -69,7 +72,7 @@ void advance_unit(const game_data& info,
 		lang_options.push_back("&" + type.image() + "," + (**mod)["description"]);
 	}
 
-	std::cerr << "options: " << options.size() << "\n";
+	LOG_DP << "options: " << options.size() << "\n";
 
 	int res = 0;
 
@@ -91,7 +94,7 @@ void advance_unit(const game_data& info,
 
 	recorder.choose_option(res);
 
-	std::cerr << "animating advancement...\n";
+	LOG_DP << "animating advancement...\n";
 	animate_unit_advancement(info,units,loc,gui,size_t(res));
 }
 
@@ -312,7 +315,7 @@ void save_preview_pane::draw()
 				try {
 					map_data = read_map((*scenario)["map"]);
 				} catch(io_exception& e) {
-					std::cerr << "could not read map '" << (*scenario)["map"] << "': " << e.what() << "\n";
+					ERR_G << "could not read map '" << (*scenario)["map"] << "': " << e.what() << "\n";
 				}
 			}
 		}
@@ -475,13 +478,13 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 				extract_summary_data_from_save(state,summary);
 			} catch(io_exception&) {
 				summary["corrupt"] = "yes";
-				std::cerr << "save '" << games[*s].name << "' could not be loaded (io_exception)\n";
+				ERR_G << "save '" << games[*s].name << "' could not be loaded (io_exception)\n";
 			} catch(config::error&) {
 				summary["corrupt"] = "yes";
-				std::cerr << "save '" << games[*s].name << "' could not be loaded (config parse error)\n";
+				ERR_G << "save '" << games[*s].name << "' could not be loaded (config parse error)\n";
 			} catch(gamestatus::load_game_failed&) {
 				summary["corrupt"] = "yes";
-				std::cerr << "save '" << games[*s].name << "' could not be loaded (load_game_failed exception)\n";
+				ERR_G << "save '" << games[*s].name << "' could not be loaded (load_game_failed exception)\n";
 			}
 		}
 

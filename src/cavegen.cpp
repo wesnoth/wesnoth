@@ -1,6 +1,9 @@
 #include "cavegen.hpp"
+#include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
+
+#define LOG_NG lg::info(lg::engine)
 
 cave_map_generator::cave_map_generator(const config* cfg) : wall_('W'), clear_('u'), village_('D'), castle_('o'),
                                                             cfg_(cfg), width_(50), height_(50), village_density_(0),
@@ -20,7 +23,7 @@ cave_map_generator::cave_map_generator(const config* cfg) : wall_('W'), clear_('
 
 	flipx_ = r < chance;
 
-	std::cerr << "flipx: " << r << " < " << chance << " = " << (flipx_ ? "true" : "false") << "\n";
+	LOG_NG << "flipx: " << r << " < " << chance << " = " << (flipx_ ? "true" : "false") << "\n";
 	flipy_ = (rand()%100) < atoi((*cfg_)["flipy_chance"].c_str());
 
 
@@ -68,21 +71,21 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& args)
 		res_ = *settings;
 	}
 
-	std::cerr << "creating scenario....\n";
+	LOG_NG << "creating scenario....\n";
 	generate_chambers();
 
-	std::cerr << "placing chambers...\n";
+	LOG_NG << "placing chambers...\n";
 	for(std::vector<chamber>::const_iterator c = chambers_.begin(); c != chambers_.end(); ++c) {
 		place_chamber(*c);
 	}
 
-	std::cerr << "placing passages...\n";
+	LOG_NG << "placing passages...\n";
 
 	for(std::vector<passage>::const_iterator p = passages_.begin(); p != passages_.end(); ++p) {
 		place_passage(*p);
 	}
 
-	std::cerr << "outputting map....\n";
+	LOG_NG << "outputting map....\n";
 	std::stringstream out;
 	for(size_t y = 0; y != height_; ++y) {
 		for(size_t x = 0; x != width_; ++x) {
@@ -94,7 +97,7 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& args)
 
 	res_["map_data"] = out.str();
 
-	std::cerr << "returning result...\n";
+	LOG_NG << "returning result...\n";
 
 	return res_;
 }

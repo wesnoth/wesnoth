@@ -39,6 +39,8 @@
 #include <iostream>
 #include <sstream>
 
+#define ERR_DP lg::err(lg::display)
+
 std::map<gamemap::location,double> display::debugHighlights_;
 
 namespace {
@@ -97,7 +99,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 			flag = teams_[i].flag();
 		}
 
-		std::cerr << "Adding flag for team " << i << " from animation " << flag << "\n";
+		lg::info(lg::display) << "Adding flag for team " << i << " from animation " << flag << "\n";
 		flags_.push_back(animated<image::locator>(flag));
 		flags_.back().start_animation(0, animated<image::locator>::INFINITE_CYCLES);
 	}
@@ -766,7 +768,7 @@ void display::draw_report(reports::TYPE report_num)
 			if(rect.w > 0 && rect.h > 0) {
 				surf.assign(get_surface_portion(screen_.getSurface(),rect));
 				if(reportSurfaces_[report_num] == NULL) {
-					std::cerr << "Could not backup background for report!\n";
+					ERR_DP << "Could not backup background for report!\n";
 				}
 			}
 
@@ -809,7 +811,7 @@ void display::draw_report(reports::TYPE report_num)
 					surface img(image::get_image(i->image,image::UNSCALED));
 
 					if(img == NULL) {
-						std::cerr << "could not find image for report: '" << i->image << "'\n";
+						ERR_DP << "could not find image for report: '" << i->image << "'\n";
 						continue;
 					}
 
@@ -1129,7 +1131,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 		assert(energy_file != NULL);
 		if(energy_file == NULL) {
-			std::cerr << "energy file is NULL\n";
+			ERR_DP << "energy file is NULL\n";
 			return;
 		}
 
@@ -1404,7 +1406,7 @@ void display::draw_tile(int x, int y, surface unit_image, double alpha, Uint32 b
 		surface surface(image::get_image("terrain/void.png"));
 
 		if(surface == NULL) {
-			std::cerr << "Could not get void surface!\n";
+			ERR_DP << "Could not get void surface!\n";
 			return;
 		}
 
@@ -1521,7 +1523,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 
 	surface image(image::get_image(*image_str));
 	if(image == NULL) {
-		std::cerr << "Could not find image: " << *image_str << "\n";
+		ERR_DP << "Could not find image: " << *image_str << "\n";
 		return;
 	}
 
@@ -1732,7 +1734,7 @@ surface display::get_terrain(const image::locator& image, image::TYPE image_type
 		const surface backup(im);
 		im = surface(adjust_surface_colour(im,radj,gadj,badj));
 		if(im == NULL)
-			std::cerr << "could not adjust surface..\n";
+			ERR_DP << "could not adjust surface..\n";
 	}
 #endif
 	
@@ -1858,7 +1860,7 @@ void display::draw_unit(int x, int y, surface image,
 	}
 
 	if(surf == NULL) {
-		std::cerr << "surface lost...\n";
+		ERR_DP << "surface lost...\n";
 		return;
 	}
 

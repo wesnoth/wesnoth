@@ -1314,7 +1314,7 @@ void advance_unit(const game_data& info,
 
 	statistics::advance_unit(new_unit);
 	preferences::encountered_units().insert(new_unit.type().name());
-	std::cout << "Added '" << new_unit.type().name() << "' to encountered units" << std::endl;
+	lg::info(lg::config) << "Added '" << new_unit.type().name() << "' to encountered units\n";
 
 	units.erase(loc);
 	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));

@@ -35,6 +35,10 @@
 #include "util.hpp"
 #include "wesconfig.h"
 
+#define ERR_CF lg::err(lg::config)
+#define WRN_CF lg::warn(lg::config)
+#define LOG_CF lg::info(lg::config)
+
 bool operator<(const line_source& a, const line_source& b)
 {
 	return a.linenum < b.linenum;
@@ -268,7 +272,7 @@ void internal_preprocess_data(const std::string& data,
 
 				const preproc_define& val = defines_map[symbol];
 				if(val.arguments.size() != items.size()) {
-					std::cerr << "error: preprocessor symbol '" << symbol << "' has "
+					ERR_CF << "preprocessor symbol '" << symbol << "' has "
 					          << items.size() << " arguments, "
 							  << val.arguments.size() << " expected: '" << newfilename << "'\n";
 				}
@@ -288,7 +292,7 @@ void internal_preprocess_data(const std::string& data,
 						str.replace(pos,item.size(),replace_with);
 						const std::string::size_type new_pos = str.find(item);
 						if(new_pos < pos+replace_with.size()) {
-							std::cerr << "macro substitution in symbol '" << symbol
+							ERR_CF << "macro substitution in symbol '" << symbol
 								      << "' could lead to infinite recursion. Aborting.\n";
 							break;
 						}
@@ -312,7 +316,7 @@ void internal_preprocess_data(const std::string& data,
 					nfname.erase(nfname.begin(),nfname.begin()+1);
 					nfname = get_user_data_dir() + "/data/" + nfname;
 
-					std::cerr << "got relative name '" << newfilename << "' -> '" << nfname << "'\n";
+					LOG_CF << "got relative name '" << newfilename << "' -> '" << nfname << "'\n";
 
 					if(newfilename[0] == '@' && file_exists(nfname) == false && is_directory(nfname) == false) {
 						nfname = "data/" + newfilename.substr(1);
@@ -708,12 +712,12 @@ void config::read(const std::string& data,
 				if(c == '[' && in_quotes) {
 					if(line_sources != NULL) {
 						const line_source src = get_line_source(*line_sources,line);
-						std::cerr << src.file << " " << src.fileline << ": ";
+						LOG_CF << src.file << " " << src.fileline << ": ";
 					} else {
-						std::cerr << "line " << line << ": ";
+						LOG_CF << "line " << line << ": ";
 					}
 
-					std::cerr << "WARNING: square bracket found in string. Is this a run-away string?\n";
+					WRN_CF << "square bracket found in string. Is this a run-away string?\n";
 				}
 				
 				if(in_quotes && c == '"' && (i+1) != data.end() && *(i+1) == '"') {
@@ -902,7 +906,7 @@ std::string config::write() const
 	const std::string::iterator i = write_internal(res.begin());
 	assert(i == res.end());
 	if(i != res.end()) {
-		std::cerr << "ERROR in size of config buffer: " << (i - res.begin()) << "/" << res.size() << "\n";
+		ERR_CF << "size of config buffer: " << (i - res.begin()) << "/" << res.size() << "\n";
 	}
 
 	return res;
@@ -1078,7 +1082,7 @@ std::string::const_iterator config::read_compressed_internal(std::string::const_
 
 				const compression_schema::char_word_map::const_iterator itor = schema.char_to_word.find(code);
 				if(itor == schema.char_to_word.end()) {
-					std::cerr << "illegal word code: " << code << "\n";
+					ERR_CF << "illegal word code: " << code << "\n";
 					throw error("Illegal character in compression input\n");
 				}
 
@@ -1452,7 +1456,7 @@ bool not_id(char c)
 
 void do_interpolation(std::string& res, size_t npos, const string_map* m)
 {
-	std::cerr << "doing interpolation into '" << res << "': " << npos << "\n";
+	LOG_CF << "doing interpolation into '" << res << "': " << npos << "\n";
 	const std::string::iterator i = std::find(res.begin()+npos,res.end(),'$');
 	if(i == res.end() || i+1 == res.end()) {
 		return;

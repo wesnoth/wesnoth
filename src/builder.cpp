@@ -22,6 +22,8 @@
 #include "terrain.hpp"
 #include "util.hpp"
 
+#define ERR_NG lg::err(lg::engine)
+
 namespace {
 
 class locator_string_initializer : public animated<image::locator>::string_initializer
@@ -373,7 +375,7 @@ void terrain_builder::replace_token(std::string &s, const std::string &token, co
 	size_t pos;
 	
 	if(token.empty()) {
-		std::cerr << "Error: empty token in replace_token\n";
+		ERR_NG << "empty token in replace_token\n";
 		return;
 	}
 	while((pos = s.find(token)) != std::string::npos) {
@@ -432,7 +434,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 {
 	building_rule ret;
 	if(rot.size() != 6) {
-		std::cerr << "Error: invalid rotations\n";
+		ERR_NG << "invalid rotations\n";
 		return ret;
 	}
 	ret.location_constraints = rule.location_constraints;
@@ -700,7 +702,7 @@ void terrain_builder::parse_config(const config &cfg)
 			if((**tc)["pos"].size()) {
 				int pos = atoi((**tc)["pos"].c_str());
 				if(anchors.find(pos) == anchors.end()) {
-					std::cerr << "Invalid anchor!\n";
+					lg::warn(lg::engine) << "Invalid anchor!\n";
 					continue;
 				}
 
