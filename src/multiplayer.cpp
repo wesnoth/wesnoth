@@ -284,7 +284,6 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 
 lobby::RESULT multiplayer_game_setup_dialog::process()
 {
-	std::cerr << "setup dialog process\n";
 	CKey key;
 
 	int mousex, mousey;
@@ -461,8 +460,6 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 			                players.str(),players_rect.x,players_rect.y);
 		}
 	}
-
-	std::cerr << "setup dialog end process\n";
 
 	return lobby::CONTINUE;
 }

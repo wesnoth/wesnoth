@@ -290,7 +290,6 @@ SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size
 
 	scoped_sdl_surface surface(render_text(font,text.c_str(),colour,style));
 	if(surface == NULL) {
-		std::cerr << "Could not render ttf: '" << text << "'\n";
 		SDL_Rect res;
 		res.x = 0; res.y = 0; res.w = 0; res.h = 0;
 		return res;
