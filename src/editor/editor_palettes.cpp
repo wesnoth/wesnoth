@@ -260,7 +260,7 @@ void terrain_palette::draw(bool force) {
 
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
 		if (terrain == selected_bg_terrain() && terrain == selected_fg_terrain()) {
-			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0x0F00, screen);
+			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0xF0F0, screen);
 		}
 		else if (terrain == selected_bg_terrain()) {
 			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0x00F0, screen);
