@@ -253,6 +253,13 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	} else	return 0;
 }
 
+int CVideo::setGamma(float gamma)
+{
+	SDL_SetGamma(gamma, gamma, gamma);
+
+	return 0;
+}
+
 int CVideo::getx() const
 {
 	return frameBuffer->w;

@@ -76,6 +76,7 @@ display_manager::display_manager(display* d)
 	set_grid(grid());
 	set_turbo(turbo());
 	set_fullscreen(fullscreen());
+	set_gamma(gamma());
 }
 
 display_manager::~display_manager()
@@ -234,6 +235,26 @@ void mute(bool muted)
 	sound::set_music_volume(muted ? 0 : music_volume());
 	sound::set_sound_volume(muted ? 0 : sound_volume());
 	muted_ = muted;
+}
+
+int gamma()
+{
+	static const int default_value = 100;
+	const string_map::const_iterator gamma = prefs.values.find("gamma");
+	if(gamma != prefs.values.end() && gamma->second.empty() == false)
+		return atoi(gamma->second.c_str());
+	else
+		return default_value;
+}
+
+void set_gamma(int gamma)
+{
+	std::stringstream stream;
+	stream << gamma;
+	prefs["gamma"] = stream.str();
+
+	CVideo& video = disp->video();
+	video.setGamma((float)gamma / 100);
 }
 
 bool is_muted()
@@ -480,7 +501,7 @@ void show_preferences_dialog(display& disp)
 	log_scope("show_preferences_dialog");
 
 	const int width = 600;
-	const int height = 450;
+	const int height = 500;
 	const int xpos = disp.x()/2 - width/2;
 	const int ypos = disp.y()/2 - height/2;
 
@@ -497,6 +518,7 @@ void show_preferences_dialog(display& disp)
 	const std::string& music_label = string_table["music_volume"];
 	const std::string& sound_label = string_table["sound_volume"];
 	const std::string& scroll_label = string_table["scroll_speed"];
+	const std::string& gamma_label = string_table["gamma"];
 
 	SDL_Rect music_rect = {0,0,0,0};
 	music_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
@@ -510,12 +532,18 @@ void show_preferences_dialog(display& disp)
 	scroll_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
 	                              scroll_label,0,0);
 
+	SDL_Rect gamma_rect = {0,0,0,0};
+	gamma_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
+	                              gamma_label,0,0);
 
-	const int text_right = xpos + maximum(scroll_rect.w,maximum(music_rect.w,sound_rect.w)) + 5;
+	const int text_right = xpos + maximum(maximum(scroll_rect.w, gamma_rect.w),
+			maximum(music_rect.w,sound_rect.w)) + 5;
 
 	const int music_pos = ypos + 20;
 	const int sound_pos = music_pos + 50;
 	const int scroll_pos = sound_pos + 50;
+	const int gamma_pos = scroll_pos + 50;
+	const int buttons_pos = gamma_pos + 50;
 
 	music_rect.x = text_right - music_rect.w;
 	music_rect.y = music_pos;
@@ -525,6 +553,9 @@ void show_preferences_dialog(display& disp)
 
 	scroll_rect.x = text_right - scroll_rect.w;
 	scroll_rect.y = scroll_pos;
+
+	gamma_rect.x = text_right - gamma_rect.w;
+	gamma_rect.y = gamma_pos;
 
 	const int slider_left = text_right + 10;
 	const int slider_right = xpos + width - 5;
@@ -549,16 +580,23 @@ void show_preferences_dialog(display& disp)
 	scroll_slider.set_max(100);
 	scroll_slider.set_value(scroll_speed());
 
-	gui::button fullscreen_button(disp,string_table["full_screen"],gui::button::TYPE_CHECK);
+	slider_rect.y = gamma_pos;
+	gui::slider gamma_slider(disp,slider_rect);
+	gamma_slider.set_min(50);
+	gamma_slider.set_max(200);
+	gamma_slider.set_value(gamma());
+
+	gui::button fullscreen_button(disp,string_table["full_screen"],
+	                              gui::button::TYPE_CHECK);
 
 	fullscreen_button.set_check(fullscreen());
 
-	fullscreen_button.set_location(slider_left,sound_pos + 80);
+	fullscreen_button.set_location(slider_left,buttons_pos );
 
 	gui::button turbo_button(disp,string_table["speed_turbo"],gui::button::TYPE_CHECK);
 	turbo_button.set_check(turbo());
 
-	turbo_button.set_location(slider_left,sound_pos + 80 + 50);
+	turbo_button.set_location(slider_left,buttons_pos  + 50);
 
 	gui::button show_ai_moves_button(disp,string_table["skip_ai_moves"],gui::button::TYPE_CHECK);
 	show_ai_moves_button.set_check(!show_ai_moves());
@@ -567,37 +605,37 @@ void show_preferences_dialog(display& disp)
 	gui::button grid_button(disp,string_table["grid_button"],gui::button::TYPE_CHECK);
 	grid_button.set_check(grid());
 
-	grid_button.set_location(slider_left,sound_pos + 80 + 150);
+	grid_button.set_location(slider_left,buttons_pos  + 100);
 
 	gui::button floating_labels_button(disp,string_table["floating_labels_button"],gui::button::TYPE_CHECK);
 	floating_labels_button.set_check(show_floating_labels());
-	floating_labels_button.set_location(slider_left,sound_pos + 80 + 200);
+	floating_labels_button.set_location(slider_left,buttons_pos + 150);
 
 	gui::button resolution_button(disp,string_table["video_mode"]);
-	resolution_button.set_location(slider_left,sound_pos + 80 + 250);
+	resolution_button.set_location(slider_left,buttons_pos + 250);
 
 	gui::button turn_dialog_button(disp,string_table["turn_dialog_button"],gui::button::TYPE_CHECK);
 	turn_dialog_button.set_check(turn_dialog());
-	turn_dialog_button.set_location(slider_left+fullscreen_button.width()+100,sound_pos + 80);
+	turn_dialog_button.set_location(slider_left+fullscreen_button.width()+100,buttons_pos);
 
 	gui::button turn_bell_button(disp,string_table["turn_bell_button"],gui::button::TYPE_CHECK);
 	turn_bell_button.set_check(turn_bell());
-	turn_bell_button.set_location(slider_left+fullscreen_button.width()+100,sound_pos + 80 + 50);
+	turn_bell_button.set_location(slider_left+fullscreen_button.width()+100,buttons_pos + 50);
 
 	gui::button side_colours_button(disp,string_table["show_side_colours"],gui::button::TYPE_CHECK);
 	side_colours_button.set_check(show_side_colours());
-	side_colours_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 100);
+	side_colours_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 100);
 
 	gui::button colour_cursors_button(disp,string_table["show_colour_cursors"],gui::button::TYPE_CHECK);
 	colour_cursors_button.set_check(use_colour_cursors());
-	colour_cursors_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 150);
+	colour_cursors_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 150);
 
 	gui::button haloes_button(disp,string_table["show_haloes"],gui::button::TYPE_CHECK);
 	haloes_button.set_check(show_haloes());
-	haloes_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 200);
+	haloes_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 200);
 
 	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
-	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 250);
+	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 250);
 
 	bool redraw_all = true;
 
@@ -638,6 +676,7 @@ void show_preferences_dialog(display& disp)
 			sound_slider.set_dirty();
 			scroll_slider.set_dirty();
 			music_slider.set_dirty();
+			gamma_slider.set_dirty();
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,music_label,
 	                        music_rect.x,music_rect.y);
@@ -647,6 +686,9 @@ void show_preferences_dialog(display& disp)
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,scroll_label,
 	    	                scroll_rect.x,scroll_rect.y);
+
+			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,gamma_label,
+	    	                gamma_rect.x,gamma_rect.y);
 
 			update_rect(disp.screen_area());
 
@@ -711,6 +753,7 @@ void show_preferences_dialog(display& disp)
 		set_sound_volume(sound_slider.value());
 		set_music_volume(music_slider.value());
 		set_scroll_speed(scroll_slider.value());
+		set_gamma(gamma_slider.value());
 
 		disp.update_display();
 

@@ -39,6 +39,8 @@ class CVideo {
 	int modePossible( int x, int y, int bits_per_pixel, int flags );
 	int setMode( int x, int y, int bits_per_pixel, int flags );
 
+	int setGamma(float gamma);
+
 	//functions to get the dimensions of the current video-mode
 	int getx() const;
 	int gety() const;
