@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-07-20 14:29+0200\n"
-"PO-Revision-Date: 2004-07-20 13:35+0200\n"
+"POT-Creation-Date: 2004-07-21 11:48+0200\n"
+"PO-Revision-Date: 2004-07-21 10:46+0200\n"
 "Last-Translator: Yann Dirson <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -17,36 +17,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/about.cpp:232 src/help.cpp:2058 src/show_dialog.cpp:470
+#, fuzzy
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 #: src/actions.cpp:93
+#, fuzzy
 msgid "You don't have a leader to recruit with."
-msgstr ""
+msgstr "Vous n'avez pas de chef vous permettant de recruter des unités."
 
 #: src/actions.cpp:97
+#, fuzzy
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
+"Votre chef doit se trouver sur un donjon pour pouvoir recruter des unités."
 
 #: src/actions.cpp:114
+#, fuzzy
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
+msgstr "Il n'y a pas de place vacante dans le château pour recruter une unité."
 
 #: src/actions.cpp:199
+#, fuzzy
 msgid "none"
-msgstr ""
+msgstr "aucune"
 
 #: src/actions.cpp:314 src/actions.cpp:431
+#, fuzzy
 msgid "base damage"
-msgstr ""
+msgstr "dommage de base"
 
 #: src/actions.cpp:324
+#, fuzzy
 msgid "attacker resistance vs"
-msgstr ""
+msgstr "résistance de l'attaquant contre"
 
 #: src/actions.cpp:324
+#, fuzzy
 msgid "attacker vulnerability vs"
-msgstr ""
+msgstr "vulnerabilité de l'attaquant contre"
 
 #: src/actions.cpp:345 src/actions.cpp:463
 msgid "charge"
@@ -57,16 +66,19 @@ msgid "leadership"
 msgstr ""
 
 #: src/actions.cpp:384 src/actions.cpp:510
+#, fuzzy
 msgid "total damage"
-msgstr ""
+msgstr "dommages totaux"
 
 #: src/actions.cpp:441
+#, fuzzy
 msgid "defender resistance vs"
-msgstr ""
+msgstr "résistance du défenseur contre"
 
 #: src/actions.cpp:441
+#, fuzzy
 msgid "defender vulnerability vs"
-msgstr ""
+msgstr "vulnerabilité du défenseur contre"
 
 #: src/actions.cpp:472
 msgid "backstab"
@@ -74,85 +86,104 @@ msgstr ""
 
 #: src/actions.cpp:681 src/actions.cpp:817 src/display.cpp:844
 #: src/reports.cpp:115
+#, fuzzy
 msgid "poisoned"
-msgstr ""
+msgstr "empoisonné"
 
 #: src/actions.cpp:686 src/actions.cpp:822 src/display.cpp:840
 #: src/reports.cpp:110
+#, fuzzy
 msgid "slowed"
-msgstr ""
+msgstr "ralentie"
 
 #: src/actions.cpp:702 src/actions.cpp:839 src/reports.cpp:122
+#, fuzzy
 msgid "stone"
-msgstr ""
+msgstr "Pierre"
 
 #: src/actions.cpp:1683
+#, fuzzy
 msgid "Ambushed!"
-msgstr ""
+msgstr "Embuscade !"
 
 #: src/actions.cpp:1711
+#, fuzzy
 msgid "Friendly unit sighted"
-msgstr ""
+msgstr "Unité alliée en vue"
 
 #: src/actions.cpp:1713
+#, fuzzy
 msgid "Enemy unit sighted!"
-msgstr ""
+msgstr "Unité ennemie en vue !"
 
 #: src/actions.cpp:1718
+#, fuzzy
 msgid "$friends Friendly units sighted"
-msgstr ""
+msgstr "%friends unité(s) alliée(s) en vue"
 
 #: src/actions.cpp:1720
+#, fuzzy
 msgid "$enemies Enemy units sighted!"
-msgstr ""
+msgstr "%enemies unité(s) ennemie(s) en vue !"
 
 #: src/actions.cpp:1724
+#, fuzzy
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr ""
+msgstr "Unités en vue ! (%friends alliée(s), %enemies ennemie(s))"
 
 #: src/actions.cpp:1745
+#, fuzzy
 msgid "(press $hotkey to continue)"
-msgstr ""
+msgstr "(appuyez sur $hotkey pour continuer)"
 
 #: src/dialogs.cpp:85
+#, fuzzy
 msgid "Advance Unit"
-msgstr ""
+msgstr "Unité Avancée"
 
 #: src/dialogs.cpp:86
+#, fuzzy
 msgid "What should our victorious unit become?"
-msgstr ""
+msgstr "Que va devenir notre victorieuse unité ?"
 
 #: src/dialogs.cpp:155
+#, fuzzy
 msgid "No objectives available"
-msgstr ""
+msgstr "Aucun objectif disponible"
 
 #: src/dialogs.cpp:178
+#, fuzzy
 msgid "Save already exists. Do you want to overwrite it ?"
-msgstr ""
+msgstr "Ce fichier existe déjà. Voulez-vous l'écraser ?"
 
 #: src/dialogs.cpp:207 src/dialogs.cpp:446
+#, fuzzy
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "Ne me redemande jamais ça !"
 
 #: src/dialogs.cpp:209
+#, fuzzy
 msgid "Do you really want to delete this game?"
-msgstr ""
+msgstr "Voulez-vous vraiment effacer cette sauvegarde ?"
 
 #: src/dialogs.cpp:350
+#, fuzzy
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:362
 msgid "#(Invalid)"
 msgstr ""
 
 #: src/dialogs.cpp:368 src/game.cpp:896 src/titlescreen.cpp:153
+#, fuzzy
 msgid "Campaign"
-msgstr ""
+msgstr "Campagne"
 
 #: src/dialogs.cpp:370 src/game.cpp:943 src/titlescreen.cpp:154
+#, fuzzy
 msgid "Multiplayer"
-msgstr ""
+msgstr "Multi-joueurs"
 
 #: src/dialogs.cpp:372 src/titlescreen.cpp:152
 msgid "Tutorial"
@@ -163,8 +194,9 @@ msgid "replay"
 msgstr ""
 
 #: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:138 src/playturn.cpp:1399
+#, fuzzy
 msgid "Turn"
-msgstr ""
+msgstr "Tour"
 
 #: src/dialogs.cpp:384
 msgid "Scenario Start"
@@ -175,8 +207,9 @@ msgid "Difficulty"
 msgstr ""
 
 #: src/dialogs.cpp:401
+#, fuzzy
 msgid "No Saved Games"
-msgstr ""
+msgstr "Aucun jeu sauvegardé"
 
 #: src/dialogs.cpp:402
 msgid ""
@@ -185,8 +218,9 @@ msgid ""
 msgstr ""
 
 #: src/dialogs.cpp:421
+#, fuzzy
 msgid "Delete Save"
-msgstr ""
+msgstr "Effacer Sauvegarde"
 
 #: src/dialogs.cpp:436
 msgid "Import Saved Games"
@@ -207,27 +241,32 @@ msgid ""
 msgstr ""
 
 #: src/dialogs.cpp:512
+#, fuzzy
 msgid "Show replay"
-msgstr ""
+msgstr "Montrer les actions déjà effectuées"
 
 #: src/dialogs.cpp:515 src/multiplayer.cpp:88
+#, fuzzy
 msgid "Load Game"
-msgstr ""
+msgstr "Charger une partie sauvegardée"
 
 #: src/dialogs.cpp:516
+#, fuzzy
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Choisissez le jeu à charger"
 
 #: src/dialogs.cpp:570 src/multiplayer.cpp:127 src/show_dialog.cpp:444
 #: src/show_dialog.cpp:457
+#, fuzzy
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/dialogs.cpp:571 src/multiplayer.cpp:126 src/multiplayer_client.cpp:117
 #: src/multiplayer_connect.cpp:49 src/show_dialog.cpp:458
 #: src/show_dialog.cpp:464
+#, fuzzy
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: src/dialogs.cpp:620 src/dialogs.cpp:629
 msgid "Profile"
@@ -235,117 +274,145 @@ msgstr ""
 
 #: src/dialogs.cpp:716 src/display.cpp:850 src/help.cpp:477
 #: src/playturn.cpp:1724
+#, fuzzy
 msgid "level"
-msgstr ""
+msgstr "Niveau"
 
 #: src/dialogs.cpp:737 src/display.cpp:868 src/help.cpp:530
 #: src/playturn.cpp:1888 src/unit.cpp:989
+#, fuzzy
 msgid "HP"
-msgstr ""
+msgstr "PV"
 
 #: src/dialogs.cpp:741 src/dialogs.cpp:749 src/display.cpp:872
 #: src/display.cpp:880 src/playturn.cpp:1726 src/playturn.cpp:1889
 #: src/unit.cpp:1048
+#, fuzzy
 msgid "XP"
-msgstr ""
+msgstr "PE"
 
 #: src/dialogs.cpp:754 src/dialogs.cpp:867 src/display.cpp:884
 #: src/help.cpp:531 src/playturn.cpp:1890 src/unit.cpp:1025
+#, fuzzy
 msgid "Moves"
-msgstr ""
+msgstr "Déplacements"
 
 #: src/dialogs.cpp:771 src/display.cpp:901 src/help.cpp:572
 #: src/playturn.cpp:616 src/reports.cpp:229
+#, fuzzy
 msgid "melee"
-msgstr ""
+msgstr "corps à corps"
 
 #: src/dialogs.cpp:772 src/display.cpp:902 src/help.cpp:572
 #: src/playturn.cpp:616 src/reports.cpp:230
+#, fuzzy
 msgid "ranged"
-msgstr ""
+msgstr "distant"
 
 #: src/dialogs.cpp:814
+#, fuzzy
 msgid "See Also..."
-msgstr ""
+msgstr "Voir Aussi..."
 
 #: src/dialogs.cpp:818 src/dialogs.cpp:907
+#, fuzzy
 msgid "Terrain Modifiers"
-msgstr ""
+msgstr "Modificateurs de Terrain"
 
 #: src/dialogs.cpp:819 src/dialogs.cpp:836
+#, fuzzy
 msgid "Resistance"
-msgstr ""
+msgstr "Résistance"
 
 #: src/dialogs.cpp:820 src/mapgen_dialog.cpp:69 src/preferences.cpp:961
+#, fuzzy
 msgid "Close Window"
-msgstr ""
+msgstr "Fermer la fenêtre"
 
 #: src/dialogs.cpp:836
+#, fuzzy
 msgid "Attack Type"
-msgstr ""
+msgstr "Type d'attaque"
 
 #: src/dialogs.cpp:859
+#, fuzzy
 msgid "Unit resistance table"
-msgstr ""
+msgstr "Table de résistance des unités"
 
 #: src/dialogs.cpp:866
+#, fuzzy
 msgid "Terrain"
-msgstr ""
+msgstr "Terrain"
 
 #: src/dialogs.cpp:868
+#, fuzzy
 msgid "Defense"
-msgstr ""
+msgstr "Défense"
 
 #: src/display.cpp:831
+#, fuzzy
 msgid "healthy"
-msgstr ""
+msgstr "vigoureux"
 
 #: src/display.cpp:836 src/reports.cpp:105
+#, fuzzy
 msgid "invisible"
-msgstr ""
+msgstr "invisible"
 
 #: src/game.cpp:133
+#, fuzzy
 msgid "Do you want to save a replay of this scenario?"
-msgstr ""
+msgstr "Voulez-vous sauvegarder un replay de ce scénario ?"
 
 #: src/game.cpp:134 src/game.cpp:196 src/playturn.cpp:1403
+#, fuzzy
 msgid "Name:"
-msgstr ""
+msgstr "Nom:"
 
 #: src/game.cpp:142 src/game.cpp:203 src/playturn.cpp:1412
+#, fuzzy
 msgid "The game could not be saved"
-msgstr ""
+msgstr "Le jeu ne peut pas être sauvegardé"
 
 #: src/game.cpp:195
+#, fuzzy
 msgid "Do you want to save your game?"
-msgstr ""
+msgstr "Voulez-vous sauvegarder votre jeu ?"
 
 #: src/game.cpp:548
+#, fuzzy
 msgid "The Battle for Wesnoth"
-msgstr ""
+msgstr "Bataille pour Wesnoth"
 
 #: src/game.cpp:768 src/multiplayer_connect.cpp:104
+#, fuzzy
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
+"Cette sauvegarde a été enregistrée sous une version différente du jeu. "
+"Voulez-vous essayer de la charger ?"
 
 #: src/game.cpp:779 src/game.cpp:784 src/game.cpp:789 src/playlevel.cpp:487
 #: src/playlevel.cpp:700
+#, fuzzy
 msgid "The file you have tried to load is corrupt"
-msgstr ""
+msgstr "Le fichier sauvegardé est corrompu"
 
 #: src/game.cpp:889
+#, fuzzy
 msgid "There are no campaigns available"
-msgstr ""
+msgstr "Il n'y a pas de campagne disponible"
 
 #: src/game.cpp:897
+#, fuzzy
 msgid "Choose the campaign you want to play:"
-msgstr ""
+msgstr "Choisissez la campagne à laquelle vous souhaitez jouer:"
 
 #: src/game.cpp:920
+#, fuzzy
 msgid "Select difficulty level:"
-msgstr ""
+msgstr "Choisissez le niveau de difficulté:"
 
 #: src/game.cpp:938
 msgid "Join Official Server"
@@ -356,40 +423,46 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
 #: src/game.cpp:939 src/multiplayer_lobby.cpp:156
+#, fuzzy
 msgid "Join Game"
-msgstr ""
+msgstr "Joindre un jeu"
 
 #: src/game.cpp:939
 msgid "Join a server or hosted game"
 msgstr ""
 
 #: src/game.cpp:940
+#, fuzzy
 msgid "Host Multiplayer Game"
-msgstr ""
+msgstr "Démarrer un serveur de jeu multijoueur"
 
 #: src/game.cpp:940
 msgid "Host a game without using a server"
 msgstr ""
 
 #: src/game.cpp:943 src/multiplayer_client.cpp:267
+#, fuzzy
 msgid "Login"
-msgstr ""
+msgstr "Connexion"
 
 #: src/game.cpp:1023 src/titlescreen.cpp:156
+#, fuzzy
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #: src/game.cpp:1024
 msgid "Choose your preferred language"
 msgstr ""
 
 #: src/game.cpp:1071
+#, fuzzy
 msgid "The End"
-msgstr ""
+msgstr "Fin"
 
 #: src/game.cpp:1072
+#, fuzzy
 msgid "You have reached the end of the currently playable levels"
-msgstr ""
+msgstr "Vous avez fini tous les niveaux actuellement jouables"
 
 #: src/game.cpp:1100
 msgid "Could not initialize video. Exiting.\n"
@@ -416,24 +489,29 @@ msgid "Required XP"
 msgstr ""
 
 #: src/help.cpp:546 src/reports.cpp:232
+#, fuzzy
 msgid "attacks"
-msgstr ""
+msgstr "attaques"
 
 #: src/help.cpp:547 src/playturn.cpp:1887
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: src/help.cpp:548 src/playturn.cpp:1886
+#, fuzzy
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: src/help.cpp:549 src/unit_types.cpp:286
+#, fuzzy
 msgid "Dmg"
-msgstr ""
+msgstr "Dmg"
 
 #: src/help.cpp:550 src/unit_types.cpp:298
+#, fuzzy
 msgid "strikes"
-msgstr ""
+msgstr "attaques"
 
 #: src/help.cpp:551
 msgid "Range"
@@ -460,72 +538,88 @@ msgid "The Battle for Wesnoth Help"
 msgstr ""
 
 #: src/hotkeys.cpp:294 src/hotkeys.cpp:486
+#, fuzzy
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Voulez-vous réellement quitter ?"
 
 #: src/intro.cpp:90
+#, fuzzy
 msgid "Next"
-msgstr ""
+msgstr "Suite"
 
 #: src/intro.cpp:91
+#, fuzzy
 msgid "Skip"
-msgstr ""
+msgstr "Sauter"
 
 #: src/language.cpp:31
 msgid "System default language"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:72
+#, fuzzy
 msgid "Map Generator"
-msgstr ""
+msgstr "Générateur de carte"
 
 #: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:484
+#, fuzzy
 msgid "Players"
-msgstr ""
+msgstr "Joueurs"
 
 #: src/mapgen_dialog.cpp:78
+#, fuzzy
 msgid "Width"
-msgstr ""
+msgstr "Largeur"
 
 #: src/mapgen_dialog.cpp:79
+#, fuzzy
 msgid "Height"
-msgstr ""
+msgstr "Hauteur"
 
 #: src/mapgen_dialog.cpp:80
+#, fuzzy
 msgid "Iterations"
-msgstr ""
+msgstr "Itérations"
 
 #: src/mapgen_dialog.cpp:81
+#, fuzzy
 msgid "Bump Size"
-msgstr ""
+msgstr "Taille des collines"
 
 #: src/mapgen_dialog.cpp:82 src/playturn.cpp:1471
+#, fuzzy
 msgid "Villages"
-msgstr ""
+msgstr "Villages"
 
 #: src/mapgen_dialog.cpp:83
+#, fuzzy
 msgid "Landform"
-msgstr ""
+msgstr "Forme du terrain"
 
 #: src/mapgen_dialog.cpp:183
+#, fuzzy
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Routes entre les châteaux"
 
 #: src/mapgen_dialog.cpp:246
+#, fuzzy
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 cases"
 
 #: src/mapgen_dialog.cpp:251
+#, fuzzy
 msgid "Inland"
-msgstr ""
+msgstr "Intérieur des terres"
 
 #: src/mapgen_dialog.cpp:251
+#, fuzzy
 msgid "Coastal"
-msgstr ""
+msgstr "côte"
 
 #: src/mapgen_dialog.cpp:251
+#, fuzzy
 msgid "Island"
-msgstr ""
+msgstr "Île"
 
 #: src/multiplayer.cpp:100
 msgid "The maximum turns the game will go for"
@@ -540,154 +634,189 @@ msgid "The amount of experience a unit needs to advance"
 msgstr ""
 
 #: src/multiplayer.cpp:114
+#, fuzzy
 msgid "Fog Of War"
-msgstr ""
+msgstr "Brouillard de guerre"
 
 #: src/multiplayer.cpp:116
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 
 #: src/multiplayer.cpp:118 src/multiplayer_lobby.cpp:126
+#, fuzzy
 msgid "Shroud"
-msgstr ""
+msgstr "Voile"
 
 #: src/multiplayer.cpp:120
 msgid "The map is unknown until your units explore it"
 msgstr ""
 
 #: src/multiplayer.cpp:122 src/reports.cpp:376
+#, fuzzy
 msgid "Observers"
-msgstr ""
+msgstr "Observateurs"
 
 #: src/multiplayer.cpp:124
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
 #: src/multiplayer.cpp:129
+#, fuzzy
 msgid "Regenerate"
-msgstr ""
+msgstr "Régénérer"
 
 #: src/multiplayer.cpp:131
+#, fuzzy
 msgid "Settings..."
-msgstr ""
+msgstr "Paramètres..."
 
 #: src/multiplayer.cpp:135
+#, fuzzy
 msgid "Share View"
-msgstr ""
+msgstr "Partager la vue"
 
 #: src/multiplayer.cpp:136
+#, fuzzy
 msgid "Share Maps"
-msgstr ""
+msgstr "Partager les cartes"
 
 #: src/multiplayer.cpp:137
+#, fuzzy
 msgid "Share None"
-msgstr ""
+msgstr "Pas de partage"
 
 #: src/multiplayer.cpp:148 src/multiplayer_connect.cpp:177
+#, fuzzy
 msgid "No multiplayer sides."
-msgstr ""
+msgstr "Aucuns côtés multijoueurs."
 
 #: src/multiplayer.cpp:176 src/multiplayer_lobby.cpp:157
+#, fuzzy
 msgid "Create Game"
-msgstr ""
+msgstr "Créer un jeu"
 
 #: src/multiplayer.cpp:180
+#, fuzzy
 msgid "Name of game"
-msgstr ""
+msgstr "Nom du jeu"
 
 #: src/multiplayer.cpp:181
+#, fuzzy
 msgid "'s game"
-msgstr ""
+msgstr " jeu"
 
 #: src/multiplayer.cpp:192
+#, fuzzy
 msgid "Map to play"
-msgstr ""
+msgstr "Carte à jouer"
 
 #: src/multiplayer.cpp:289
 msgid "Era"
 msgstr ""
 
 #: src/multiplayer.cpp:351
+#, fuzzy
 msgid "Unlimited"
-msgstr ""
+msgstr "Illimité"
 
 #: src/multiplayer.cpp:355
+#, fuzzy
 msgid "Turns"
-msgstr ""
+msgstr "Tours"
 
 #: src/multiplayer.cpp:363
+#, fuzzy
 msgid "Village Gold"
-msgstr ""
+msgstr "Or du village"
 
 #: src/multiplayer.cpp:375
+#, fuzzy
 msgid "Experience Requirements"
-msgstr ""
+msgstr "Expérience Requise"
 
 #: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:283
+#, fuzzy
 msgid "Connection timed out"
-msgstr ""
+msgstr "Tentative de connexion expirée"
 
 #: src/multiplayer_client.cpp:59
+#, fuzzy
 msgid "Receiving game list..."
-msgstr ""
+msgstr "Réception de la liste des jeu..."
 
 #: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:382
 #: src/multiplayer_connect.cpp:384 src/playlevel.cpp:686 src/playturn.cpp:1470
 #: src/playturn.cpp:1475 src/playturn.cpp:1562
+#, fuzzy
 msgid "Gold"
-msgstr ""
+msgstr "Or"
 
 #: src/multiplayer_client.cpp:111
+#, fuzzy
 msgid "Waiting for game to start..."
-msgstr ""
+msgstr "En attente de démarrage du jeu..."
 
 #: src/multiplayer_client.cpp:219
+#, fuzzy
 msgid "Choose host to connect to"
-msgstr ""
+msgstr "Choisissez un serveur sur lequel vous connecter"
 
 #: src/multiplayer_client.cpp:237
+#, fuzzy
 msgid "Connecting to remote host..."
-msgstr ""
+msgstr "Connexion au serveur distant..."
 
 #: src/multiplayer_client.cpp:266
+#, fuzzy
 msgid "You must log in to this server"
-msgstr ""
+msgstr "Vous devez vous connecter à ce serveur"
 
 #: src/multiplayer_client.cpp:346
+#, fuzzy
 msgid "Getting game data..."
-msgstr ""
+msgstr "Réception des données du jeu..."
 
 #: src/multiplayer_client.cpp:388
+#, fuzzy
 msgid "There are no available sides in this game."
 msgstr ""
+"Il n'y a aucun camp de disponible, et les observateurs ne sont pas admis "
+"dans ce jeu."
 
 #: src/multiplayer_client.cpp:430
+#, fuzzy
 msgid "Choose your side:"
-msgstr ""
+msgstr "Choisissez votre camp:"
 
 #: src/multiplayer_client.cpp:455
+#, fuzzy
 msgid "The game has been cancelled"
-msgstr ""
+msgstr "Le jeu a été annulé"
 
 #: src/multiplayer_client.cpp:459
+#, fuzzy
 msgid "The side you have chosen is no longer available"
-msgstr ""
+msgstr "Le camp que vous avez choisi n'est plus disponible"
 
 #: src/multiplayer_client.cpp:495
+#, fuzzy
 msgid "Show replay of game up to save point?"
-msgstr ""
+msgstr "Montrer les actions déjà effectuées jusqu'au point de sauvegarde ?"
 
 #: src/multiplayer_connect.cpp:48
+#, fuzzy
 msgid "I'm Ready"
-msgstr ""
+msgstr "Je suis prêt"
 
 #: src/multiplayer_connect.cpp:50
+#, fuzzy
 msgid " Computer vs Computer "
-msgstr ""
+msgstr "Ordinateur contre Ordinateur"
 
 #: src/multiplayer_connect.cpp:97
+#, fuzzy
 msgid "This is not a multiplayer save"
-msgstr ""
+msgstr "Cette sauvegarde ne provient pas d'un jeu multi-joueurs"
 
 #: src/multiplayer_connect.cpp:237
 msgid ""
@@ -696,46 +825,56 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer_connect.cpp:257
+#, fuzzy
 msgid "Network Player"
-msgstr ""
+msgstr "Joueur réseau"
 
 #: src/multiplayer_connect.cpp:258
+#, fuzzy
 msgid "Local Player"
-msgstr ""
+msgstr "Humain"
 
 #: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:475
 #: src/multiplayer_connect.cpp:589 src/multiplayer_connect.cpp:683
+#, fuzzy
 msgid "Computer Player"
-msgstr ""
+msgstr "Ordinateur"
 
 #: src/multiplayer_connect.cpp:260
+#, fuzzy
 msgid "Empty"
-msgstr ""
+msgstr "Vide"
 
 #: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:372
 #: src/multiplayer_connect.cpp:375
+#, fuzzy
 msgid "Team"
-msgstr ""
+msgstr "Équipe"
 
 #: src/multiplayer_connect.cpp:295
+#, fuzzy
 msgid "Red"
-msgstr ""
+msgstr "Rouge"
 
 #: src/multiplayer_connect.cpp:297
+#, fuzzy
 msgid "Blue"
-msgstr ""
+msgstr "Bleu"
 
 #: src/multiplayer_connect.cpp:299
+#, fuzzy
 msgid "Green"
-msgstr ""
+msgstr "Vert"
 
 #: src/multiplayer_connect.cpp:301
+#, fuzzy
 msgid "Yellow"
-msgstr ""
+msgstr "Jaune"
 
 #: src/multiplayer_connect.cpp:303
+#, fuzzy
 msgid "Purple"
-msgstr ""
+msgstr "Violet"
 
 #: src/multiplayer_connect.cpp:305
 msgid "Orange"
@@ -754,204 +893,260 @@ msgid "Brown"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:361
+#, fuzzy
 msgid "Game Lobby"
-msgstr ""
+msgstr "Début du jeu"
 
 #: src/multiplayer_connect.cpp:364 src/multiplayer_connect.cpp:366
+#, fuzzy
 msgid "Player/Type"
-msgstr ""
+msgstr "Type de joueur"
 
 #: src/multiplayer_connect.cpp:367 src/multiplayer_connect.cpp:370
+#, fuzzy
 msgid "Race"
-msgstr ""
+msgstr "Race"
 
 #: src/multiplayer_connect.cpp:377 src/multiplayer_connect.cpp:380
+#, fuzzy
 msgid "Color"
-msgstr ""
+msgstr "Couleur"
 
 #: src/multiplayer_connect.cpp:538 src/multiplayer_connect.cpp:542
+#, fuzzy
 msgid "Waiting for network players to join"
-msgstr ""
+msgstr "En attente d'autre joueur"
 
 #: src/multiplayer_lobby.cpp:140
 msgid "1"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:140
+#, fuzzy
 msgid "Vacant Slot"
-msgstr ""
+msgstr "Place vacante"
 
 #: src/multiplayer_lobby.cpp:140
+#, fuzzy
 msgid "Vacant Slots"
-msgstr ""
+msgstr "Places vacantes"
 
 #: src/multiplayer_lobby.cpp:155
+#, fuzzy
 msgid "Observe Game"
-msgstr ""
+msgstr "Observer la partie"
 
 #: src/multiplayer_lobby.cpp:158 src/titlescreen.cpp:159
+#, fuzzy
 msgid "Quit"
-msgstr ""
+msgstr "Quitter"
 
 #: src/playlevel.cpp:626
+#, fuzzy
 msgid "Game Over"
-msgstr ""
+msgstr "Fin de la partie"
 
 #: src/playlevel.cpp:627
+#, fuzzy
 msgid "The game is over."
-msgstr ""
+msgstr "La partie est terminé."
 
 #: src/playlevel.cpp:640
+#, fuzzy
 msgid "Defeat"
-msgstr ""
+msgstr "Défaite"
 
 #: src/playlevel.cpp:641
+#, fuzzy
 msgid "You have been defeated!"
-msgstr ""
+msgstr "Vous avez été battu !"
 
 #: src/playlevel.cpp:673
+#, fuzzy
 msgid "Victory"
-msgstr ""
+msgstr "Victoire"
 
 #: src/playlevel.cpp:674
+#, fuzzy
 msgid "You have emerged victorious!"
-msgstr ""
+msgstr "Vous êtes victorieux !"
 
 #: src/playlevel.cpp:676
+#, fuzzy
 msgid "Remaining gold"
-msgstr ""
+msgstr "Or restant"
 
 #: src/playlevel.cpp:679
+#, fuzzy
 msgid "Early finish bonus"
-msgstr ""
+msgstr "Bonus de fin anticipée"
 
 #: src/playlevel.cpp:681
+#, fuzzy
 msgid "per turn"
-msgstr ""
+msgstr "par tour"
 
 #: src/playlevel.cpp:682
+#, fuzzy
 msgid "Turns finished early"
-msgstr ""
+msgstr "Tours finis de façon anticipée"
 
 #: src/playlevel.cpp:684
+#, fuzzy
 msgid "Bonus"
-msgstr ""
+msgstr "Bonus"
 
 #: src/playlevel.cpp:690
-#, c-format
+#, fuzzy, c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr ""
+msgstr "80% de l'or est gardé pour le prochain scénario"
 
 #: src/playlevel.cpp:691
+#, fuzzy
 msgid "Retained Gold"
-msgstr ""
+msgstr "Or retenu"
 
 #: src/playlevel.cpp:715
+#, fuzzy
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"Une déconnexion réseau est survenue. Le jeu ne peut pas continuer. Voulez-"
+"vous sauvegarder le jeu ?"
 
 #: src/playturn.cpp:79
+#, fuzzy
 msgid "It is now your turn"
-msgstr ""
+msgstr "À vous de jouer"
 
 #: src/playturn.cpp:499
+#, fuzzy
 msgid "Attacker"
-msgstr ""
+msgstr "Attaquant"
 
 #: src/playturn.cpp:501
+#, fuzzy
 msgid "Defender"
-msgstr ""
+msgstr "Défenseur"
 
 #: src/playturn.cpp:525 src/playturn.cpp:650
+#, fuzzy
 msgid "Damage Calculations"
-msgstr ""
+msgstr "Calcul des Dommages"
 
 #: src/playturn.cpp:616
 msgid "Melee"
 msgstr ""
 
 #: src/playturn.cpp:629 src/reports.cpp:209
+#, fuzzy
 msgid "vs"
-msgstr ""
+msgstr "contre"
 
 #: src/playturn.cpp:662
 msgid "Attack Enemy"
 msgstr ""
 
 #: src/playturn.cpp:663
+#, fuzzy
 msgid "Choose weapon"
-msgstr ""
+msgstr "Choisissez une arme"
 
 #: src/playturn.cpp:1144
+#, fuzzy
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
+"Vous n'avez pas encore commencer votre tour. voulez vous vraiment finir "
+"votre tour?"
 
 #: src/playturn.cpp:1153 src/playturn.cpp:1158
+#, fuzzy
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
+"Certaines unités peuvent encore se déplacer. Voulez-vous vraiment finir "
+"votre tour ?"
 
 #: src/playturn.cpp:1174
+#, fuzzy
 msgid "Auto-Save"
-msgstr ""
+msgstr "Sauvegarde automatique"
 
 #: src/playturn.cpp:1176
+#, fuzzy
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
+"Impossible de sauver le jeu automatiquement. Vous devez le faire "
+"manuellement."
 
 #: src/playturn.cpp:1375
+#, fuzzy
 msgid "Rename Unit"
-msgstr ""
+msgstr "Renommer l'unité"
 
 #: src/playturn.cpp:1410
+#, fuzzy
 msgid "The game has been saved"
-msgstr ""
+msgstr "Le jeu a été sauvegardé"
 
 #: src/playturn.cpp:1470
+#, fuzzy
 msgid "Leader"
-msgstr ""
+msgstr "Chef"
 
 #: src/playturn.cpp:1471
+#, fuzzy
 msgid "Units"
-msgstr ""
+msgstr "Unités"
 
 #: src/playturn.cpp:1472
+#, fuzzy
 msgid "Upkeep"
-msgstr ""
+msgstr "Entretien"
 
 #: src/playturn.cpp:1472
+#, fuzzy
 msgid "Income"
-msgstr ""
+msgstr "Revenu"
 
 #: src/playturn.cpp:1568
+#, fuzzy
 msgid "You have no units available to recruit."
-msgstr ""
+msgstr "Vous ne pouvez pas recruter d'unités."
 
 #: src/playturn.cpp:1581
+#, fuzzy
 msgid "Recruit unit"
-msgstr ""
+msgstr "Recrutez une unité"
 
 #: src/playturn.cpp:1610
+#, fuzzy
 msgid "You don't have enough gold to recruit that unit"
-msgstr ""
+msgstr "Vous n'avez pas assez d'or pour recruter cette unité"
 
 #: src/playturn.cpp:1668
+#, fuzzy
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
+"Mon seigneur, cette unité a de l'expérience, et un niveau avancé ! Voulez-"
+"vous vraiment renvoyer $noun ?"
 
 #: src/playturn.cpp:1670
+#, fuzzy
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
+"Mon seigneur, cette unité est proche de gagner un niveau ! Voulez-vous "
+"vraiment renvoyer $noun ?"
 
 #: src/playturn.cpp:1708
+#, fuzzy
 msgid "You are seperated from your soldiers and may not recall them"
-msgstr ""
+msgstr "Vous vous êtes séparés de vos soldats et nous pouvez les rappeler"
 
 #: src/playturn.cpp:1710
 msgid ""
@@ -960,177 +1155,221 @@ msgid ""
 msgstr ""
 
 #: src/playturn.cpp:1714
+#, fuzzy
 msgid "You must have at least"
-msgstr ""
+msgstr "Vous devez avoir au moins"
 
 #: src/playturn.cpp:1716
+#, fuzzy
 msgid "gold pieces to recall a unit"
-msgstr ""
+msgstr "pièces d'or pour rappeler une unité"
 
 #: src/playturn.cpp:1739
+#, fuzzy
 msgid "Dismiss Unit"
-msgstr ""
+msgstr "Renvoyer Unité"
 
 #: src/playturn.cpp:1752
+#, fuzzy
 msgid "Select unit"
-msgstr ""
+msgstr "Sélectionnez l'unité"
 
 #: src/playturn.cpp:1796
+#, fuzzy
 msgid "Message"
-msgstr ""
+msgstr "Message"
 
 #: src/playturn.cpp:1796
+#, fuzzy
 msgid "Send to allies only"
-msgstr ""
+msgstr "Parler aux alliés seulement"
 
 #: src/playturn.cpp:1891
+#, fuzzy
 msgid "Location"
-msgstr ""
+msgstr "Localisation"
 
 #: src/playturn.cpp:1939
+#, fuzzy
 msgid "Unit List"
-msgstr ""
+msgstr "Lister les unités"
 
 #: src/playturn.cpp:1973 src/playturn.cpp:2007
+#, fuzzy
 msgid "Recruits"
-msgstr ""
+msgstr "Recrutements"
 
 #: src/playturn.cpp:1979 src/playturn.cpp:2011
+#, fuzzy
 msgid "Recalls"
-msgstr ""
+msgstr "Vétérans rappelés"
 
 #: src/playturn.cpp:1985 src/playturn.cpp:2015
+#, fuzzy
 msgid "Advancements"
-msgstr ""
+msgstr "Avancements"
 
 #: src/playturn.cpp:1991 src/playturn.cpp:2019
+#, fuzzy
 msgid "Losses"
-msgstr ""
+msgstr "Pertes"
 
 #: src/playturn.cpp:1997 src/playturn.cpp:2023
+#, fuzzy
 msgid "Kills"
-msgstr ""
+msgstr "Ennemis tués"
 
 #: src/playturn.cpp:2001
+#, fuzzy
 msgid "Statistics"
-msgstr ""
+msgstr "Statistiques"
 
 #: src/playturn.cpp:2038
+#, fuzzy
 msgid "Search"
-msgstr ""
+msgstr "Rechercher"
 
 #: src/playturn.cpp:2054
 msgid "Chat Log"
 msgstr ""
 
 #: src/playturn.cpp:2119
+#, fuzzy
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
+msgstr "Impossible de trouver une étiquette ou une unité contenant: '$search'."
 
 #: src/playturn.cpp:2131
+#, fuzzy
 msgid "Place Label"
-msgstr ""
+msgstr "Placez l'étiquette"
 
 #: src/playturn.cpp:2132
+#, fuzzy
 msgid "Label"
-msgstr ""
+msgstr "Étiquette"
 
 #: src/playturn.cpp:2295
+#, fuzzy
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
+"Le jeu est désynchronisé et doit se terminer. Voulez vous sauvegarder les "
+"messages d'erreur dans un fichier ?"
 
 #: src/playturn.cpp:2326
+#, fuzzy
 msgid "Replace with AI"
-msgstr ""
+msgstr "Remplacer par l'ordinateur"
 
 #: src/playturn.cpp:2327
+#, fuzzy
 msgid "Replace with local player"
-msgstr ""
+msgstr "Remplacer par un joueur local"
 
 #: src/playturn.cpp:2328
+#, fuzzy
 msgid "Abort game"
-msgstr ""
+msgstr "Annuler le jeu"
 
 #: src/playturn.cpp:2330
+#, fuzzy
 msgid "has left the game. What do you want to do?"
-msgstr ""
+msgstr "a quitté le jeu. Que voulez-vous faire ?"
 
 #: src/preferences.cpp:110 src/preferences.cpp:156
+#, fuzzy
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
+"Le mode vidéo n'a pas pu être changé. Votre gestionnaire de fenêtres doit "
+"être configuré en 16 bits par pixel pour lancer le jeu en mode fenêtré. "
+"Votre écran doit supporter une résolution de 1024x768x16 pour lancer le jeu "
+"en plein écran."
 
 #: src/preferences.cpp:328
+#, fuzzy
 msgid "player"
-msgstr ""
+msgstr "joueur"
 
 #: src/preferences.cpp:587
+#, fuzzy
 msgid "Full Screen"
-msgstr ""
+msgstr "Plein écran"
 
 #: src/preferences.cpp:588
+#, fuzzy
 msgid "Accelerated Speed"
-msgstr ""
+msgstr "Turbo"
 
 #: src/preferences.cpp:589
 msgid "Skip AI Moves"
 msgstr ""
 
 #: src/preferences.cpp:590
+#, fuzzy
 msgid "Show Grid"
-msgstr ""
+msgstr "Afficher la Grille"
 
 #: src/preferences.cpp:591
+#, fuzzy
 msgid "Show Floating Labels"
-msgstr ""
+msgstr "Afficher les étiquettes"
 
 #: src/preferences.cpp:592
+#, fuzzy
 msgid "Turn Dialog"
-msgstr ""
+msgstr "Activer les dialogues"
 
 #: src/preferences.cpp:593
+#, fuzzy
 msgid "Turn Bell"
-msgstr ""
+msgstr "Activer la cloche"
 
 #: src/preferences.cpp:594
+#, fuzzy
 msgid "Show Team Colors"
-msgstr ""
+msgstr "Montrer les couleurs des équipes"
 
 #: src/preferences.cpp:595
+#, fuzzy
 msgid "Show Color Cursors"
-msgstr ""
+msgstr "Utiliser les curseurs colorés"
 
 #: src/preferences.cpp:596
 msgid "Show Haloing Effects"
 msgstr ""
 
 #: src/preferences.cpp:597
+#, fuzzy
 msgid "Video Mode"
-msgstr ""
+msgstr "Mode vidéo"
 
 #: src/preferences.cpp:598
+#, fuzzy
 msgid "Hotkeys"
-msgstr ""
+msgstr "Touches de raccourci"
 
 #: src/preferences.cpp:599
 msgid "Adjust Gamma"
 msgstr ""
 
 #: src/preferences.cpp:600
+#, fuzzy
 msgid "Music Volume:"
-msgstr ""
+msgstr "Volume de la musique:"
 
 #: src/preferences.cpp:600
+#, fuzzy
 msgid "SFX Volume:"
-msgstr ""
+msgstr "Volume des bruitages:"
 
 #: src/preferences.cpp:601
+#, fuzzy
 msgid "Scroll Speed:"
-msgstr ""
+msgstr "Vitesse de défilement:"
 
 #: src/preferences.cpp:601
 msgid "Gamma:"
@@ -1215,46 +1454,60 @@ msgid "Sound"
 msgstr ""
 
 #: src/preferences.cpp:870 src/titlescreen.cpp:157
+#, fuzzy
 msgid "Preferences"
-msgstr ""
+msgstr "Préférences"
 
 #: src/preferences.cpp:914 src/preferences.cpp:933
+#, fuzzy
 msgid "There are no alternative video modes available"
-msgstr ""
+msgstr "Il n'y a pas d'autres modes vidéo disponibles"
 
 #: src/preferences.cpp:938
+#, fuzzy
 msgid "Choose Resolution"
-msgstr ""
+msgstr "Choisissez une résolution"
 
 #: src/preferences.cpp:966
+#, fuzzy
 msgid "Hotkey Settings"
-msgstr ""
+msgstr "Configuration des touches de raccourci"
 
 #: src/preferences.cpp:970 src/preferences.cpp:1028
+#, fuzzy
 msgid "Press desired HotKey"
-msgstr ""
+msgstr "Pressez la touche désirée"
 
 #: src/preferences.cpp:989
+#, fuzzy
 msgid "Change Hotkey"
-msgstr ""
+msgstr "Modifier les touches de raccourci"
 
 #: src/preferences.cpp:992
+#, fuzzy
 msgid "Save Hotkeys"
-msgstr ""
+msgstr "Sauver les touches de raccourci"
 
 #: src/preferences.cpp:1061
+#, fuzzy
 msgid "This HotKey is already in use."
-msgstr ""
+msgstr "Cette touche est déjà utilisée. Pas de mise à jour."
 
 #: src/reports.cpp:105
+#, fuzzy
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
+"Cette unité est invisible. Elle ne peut être vue ou attaquée par des unités "
+"ennemies."
 
 #: src/reports.cpp:110
+#, fuzzy
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
 msgstr ""
+"Cette unité a été ralentie. Elle se déplace deux fois plus lentement que la "
+"normale et peut lancer une attaque de moins que la normale."
 
 #: src/reports.cpp:115
 msgid ""
@@ -1267,28 +1520,36 @@ msgid ""
 msgstr ""
 
 #: src/reports.cpp:122
+#, fuzzy
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
+"Cette unité a été changée en pierre. Elle ne peut plus ni bouger, ni "
+"attaquer."
 
 #: src/reports.cpp:231
+#, fuzzy
 msgid "damage"
-msgstr ""
+msgstr "dommage"
 
 #: src/reports.cpp:236
+#, fuzzy
 msgid "hexes"
-msgstr ""
+msgstr "hexagones"
 
 #: src/reports.cpp:253
+#, fuzzy
 msgid "Lawful units"
-msgstr ""
+msgstr "Unités justes"
 
 #: src/reports.cpp:255
+#, fuzzy
 msgid "Neutral units"
-msgstr ""
+msgstr "Unités neutres"
 
 #: src/reports.cpp:256
+#, fuzzy
 msgid "Chaotic units"
-msgstr ""
+msgstr "Unités chaotiques"
 
 #: src/reports.cpp:310
 msgid "Owned"
@@ -1307,28 +1568,33 @@ msgid "yes"
 msgstr ""
 
 #: src/show_dialog.cpp:451
+#, fuzzy
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: src/show_dialog.cpp:608
 msgid "Help"
 msgstr ""
 
 #: src/show_dialog.cpp:938
+#, fuzzy
 msgid "KB"
-msgstr ""
+msgstr "Ko"
 
 #: src/titlescreen.cpp:137
+#, fuzzy
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: src/titlescreen.cpp:155
+#, fuzzy
 msgid "Load"
-msgstr ""
+msgstr "Charger"
 
 #: src/titlescreen.cpp:158
+#, fuzzy
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 #: src/titlescreen.cpp:160
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -1373,8 +1639,9 @@ msgid "-- The Tome of Wesnoth"
 msgstr ""
 
 #: data/game.cfg:87
+#, fuzzy
 msgid "Heir to the Throne"
-msgstr ""
+msgstr "Héritier du trône"
 
 #: data/game.cfg:91
 msgid ""
@@ -1383,8 +1650,9 @@ msgid ""
 msgstr ""
 
 #: data/game.cfg:97
+#, fuzzy
 msgid "The Dark Hordes"
-msgstr ""
+msgstr "Les hordes sombres"
 
 #: data/game.cfg:101
 msgid ""
@@ -1410,6 +1678,16 @@ msgstr ""
 msgid ""
 "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
 "royalguard.png,Royal Guard,(hardest)"
+msgstr ""
+
+#: data/game.cfg:126
+msgid "The Rise of Wesnoth"
+msgstr ""
+
+#: data/game.cfg:130
+msgid ""
+"&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;&noble-"
+"lord.png,Lord,(hardest)"
 msgstr ""
 
 #: data/multiplayer.cfg:2
@@ -1448,6 +1726,10 @@ msgstr ""
 msgid "&drake-warrior.png,Drakes"
 msgstr ""
 
+#: data/multiplayer.cfg:94
+msgid "Classic"
+msgstr ""
+
 #: data/multiplayer.cfg:103
 msgid "&human-general.png,Humans"
 msgstr ""
@@ -1462,6 +1744,10 @@ msgstr ""
 
 #: data/multiplayer.cfg:147
 msgid "&dwarf-lord.png,Dwarves"
+msgstr ""
+
+#: data/multiplayer.cfg:169
+msgid "Age of Heroes"
 msgstr ""
 
 #: data/schedules.cfg:4
@@ -1494,7 +1780,7 @@ msgstr ""
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
 msgid "Menu"
-msgstr ""
+msgstr "Menu Principal"
 
 #: data/themes/default.cfg:32 data/themes/default.cfg:368
 msgid "Actions"
@@ -1502,4 +1788,810 @@ msgstr ""
 
 #: data/themes/default.cfg:79 data/themes/default.cfg:415
 msgid "End Turn"
+msgstr "Fin du tour"
+
+#: data/items.cfg:263
+msgid ""
+"You have come across a wishing well.\n"
+"What would you like to wish for?"
 msgstr ""
+
+#: data/items.cfg:268
+msgid "A swift victory"
+msgstr ""
+
+#: data/items.cfg:276
+msgid ""
+"With this golden coin, I wish that this battle end in a swift and safe "
+"victory."
+msgstr ""
+
+#: data/items.cfg:283
+msgid "Lots of gold"
+msgstr ""
+
+#: data/items.cfg:291
+msgid "I wish this single gold coin be returned ten-fold to me."
+msgstr ""
+
+#: data/items.cfg:298
+msgid "Peace throughout Wesnoth."
+msgstr ""
+
+#: data/items.cfg:306
+msgid "The only thing worth wishing for is peace throughout the land."
+msgstr ""
+
+#: data/items.cfg:313
+msgid "Don't make a wish."
+msgstr ""
+
+#: data/items.cfg:336
+msgid "Potion of Healing"
+msgstr ""
+
+#: data/items.cfg:339
+msgid "A feeling of well-being overwhelms the drinker."
+msgstr ""
+
+#: data/items.cfg:340
+msgid "You are not worthy of healing."
+msgstr ""
+
+#: data/items.cfg:374
+msgid "Poison"
+msgstr ""
+
+#: data/items.cfg:377
+msgid "Poison is seeping through the veins of this unit at this very moment."
+msgstr ""
+
+#: data/items.cfg:412
+msgid "Holy Water"
+msgstr ""
+
+#: data/items.cfg:415
+msgid "This water will make melee weapons holy."
+msgstr ""
+
+#: data/items.cfg:416
+msgid "I am not suited to the use of this item! Let another take it."
+msgstr ""
+
+#: data/items.cfg:451
+msgid "Potion of Strength"
+msgstr ""
+
+#: data/items.cfg:454
+msgid "Strength is given to the drinker."
+msgstr ""
+
+#: data/items.cfg:495
+msgid "Potion of Decay"
+msgstr ""
+
+#: data/items.cfg:498
+msgid "This poor unit drank something really bad."
+msgstr ""
+
+#: data/items.cfg:533
+msgid "Ring of Regeneration"
+msgstr ""
+
+#: data/items.cfg:536
+msgid "This ring will heal the bearer a little each turn."
+msgstr ""
+
+#: data/items.cfg:556
+msgid "Can't set abilities yet, sorry."
+msgstr ""
+
+#: data/items.cfg:577
+msgid "Ring of Slowness"
+msgstr ""
+
+#: data/items.cfg:580
+msgid "The bearer of this ring is slowed."
+msgstr ""
+
+#: data/items.cfg:615
+msgid "Staff of Swiftness"
+msgstr ""
+
+#: data/items.cfg:618
+msgid "This staff will grant the bearer swift movement."
+msgstr ""
+
+#: data/items.cfg:619
+msgid "Only magical beings can wield such an object."
+msgstr ""
+
+#: data/items.cfg:653
+msgid "Storm Trident"
+msgstr ""
+
+#: data/items.cfg:656
+msgid "This trident allows a merman to shoot electric bolts at his enemies!"
+msgstr ""
+
+#: data/items.cfg:657
+msgid "Only the mermen can use this item!"
+msgstr ""
+
+#: data/items.cfg:669
+msgid "storm trident"
+msgstr ""
+
+#: data/items.cfg:707
+msgid "Flaming Sword"
+msgstr ""
+
+#: data/items.cfg:711
+msgid "Only the leader of an army can wield this sword!"
+msgstr ""
+
+#: data/items.cfg:723
+msgid "flaming sword"
+msgstr ""
+
+#: data/items.cfg:755
+msgid "Sceptre of Fire"
+msgstr ""
+
+#: data/items.cfg:758
+msgid ""
+"This ancient Sceptre was forged by the Dwarves. A symbol of the kingship of "
+"Wesnoth, the Sceptre has the power to shoot fireballs at enemies of the "
+"bearer!"
+msgstr ""
+
+#: data/items.cfg:759
+msgid ""
+"This is the Sceptre of Fire. Only a true successor to the throne can "
+"possibly dare to take this!"
+msgstr ""
+
+#: data/items.cfg:771
+msgid "sceptre of fire"
+msgstr ""
+
+#: data/items.cfg:827
+msgid "Zap~"
+msgstr ""
+
+#: data/tutorial.cfg:2
+msgid "Under Elves' Protection"
+msgstr ""
+
+#: data/tutorial.cfg:16
+msgid ""
+"Tasks:\n"
+"@1. Control two villages near the river.\n"
+"@2. Return to the castle and recruit units.\n"
+"@3. Defeat enemies, control western villages.\n"
+"@4. Defeat dark adepts.\n"
+"@5. Defeat walking corpses.\n"
+"@6. Defeat bandit leader.\n"
+"Defeat:\n"
+"#Death of Konrad\n"
+"#Death of Delfador\n"
+"#Death of any of the elvish leaders\n"
+"#Turns run out"
+msgstr ""
+
+#: data/tutorial.cfg:362
+msgid "Hmmm...this is Delfador's...I wonder what it is used for..."
+msgstr ""
+
+#: data/tutorial.cfg:363
+msgid "A human's magical staff -- I'd better not touch it!"
+msgstr ""
+
+#: data/tutorial.cfg:414
+msgid ""
+"This is my old staff. Although not very useful at close range, its magic may "
+"still prove deadly to your enemies. Its powers are waning, so it will not "
+"last long. Do not be afraid to use this weapon now - I will make sure you do "
+"not hurt yourself."
+msgstr ""
+
+#: data/tutorial.cfg:420
+msgid ""
+"Magic items could help you in your quest, but you should be aware that some "
+"items can only be picked up by certain units."
+msgstr ""
+
+#: data/tutorial.cfg:477
+msgid "Surprise! You have walked into our trap, foolish boy!"
+msgstr ""
+
+#: data/tutorial.cfg:482
+msgid "Konrad!"
+msgstr ""
+
+#: data/tutorial.cfg:487
+msgid "Delfador! Help me!"
+msgstr ""
+
+#: data/tutorial.cfg:492
+msgid ""
+"Stay calm, Konrad. I am coming to save you. Meanwhile try to defend "
+"yourself. When you are in a village they have little chance to hurt you. "
+"Look -- one of them stays in the water. Try to hit him!"
+msgstr ""
+
+#: data/tutorial.cfg:497
+msgid ""
+"Fighting is the best way to improve your skills. When you get enough "
+"experience (XP) you advance to become a better fighter.\n"
+"\n"
+"When you attack an enemy unit, you may choose which weapon you want to fight "
+"with. For every weapon, there are three important numbers shown: the damage "
+"it causes, the number of attempts you make with it, and the probability of "
+"hitting the enemy. The opponent's values are likewise displayed."
+msgstr ""
+
+#: data/tutorial.cfg:505
+msgid "To attack with a unit, first select it..."
+msgstr ""
+
+#: data/tutorial.cfg:511
+msgid ""
+"...then click to select a target.\n"
+"Once you do this you have to choose the weapon."
+msgstr ""
+
+#: data/tutorial.cfg:527
+msgid "Well done! This is Garard's nephew!"
+msgstr ""
+
+#: data/tutorial.cfg:541
+msgid "Excellent, young human!"
+msgstr ""
+
+#: data/tutorial.cfg:571
+msgid ""
+"If you are finished with the villages, go back to the castle to recruit your "
+"soldiers. Remember that in a real battle, you will probably start with some "
+"money to recruit soldiers at the beginning."
+msgstr ""
+
+#: data/tutorial.cfg:577
+msgid ""
+"To recruit units you must place your main leader in the keep tile of the "
+"castle.\n"
+"If you move away from it you will be unable to recruit or recall units."
+msgstr ""
+
+#: data/tutorial.cfg:596
+msgid "Look behind you!"
+msgstr ""
+
+#: data/tutorial.cfg:617
+msgid "There is one still hiding there!"
+msgstr ""
+
+#: data/tutorial.cfg:647
+msgid "Now you are ready to recruit units (right click and select Recruit)."
+msgstr ""
+
+#: data/tutorial.cfg:652
+msgid "So how should I choose what kind of soldiers to hire, Delfador?"
+msgstr ""
+
+#: data/tutorial.cfg:657
+msgid ""
+"You have to carefully review their skills. Early on, you want fast units to "
+"sieze as many villages as possible. After that, fighters should probably "
+"make up the bulk of your army. Remember: all Elvish units fight very well in "
+"the forest; horsemen are excellent on open ground; and mages are good for "
+"support and can be used much like archers. If you can get your mages more "
+"experienced, they can be especially powerful."
+msgstr ""
+
+#: data/tutorial.cfg:674
+msgid "Go to the two villages near the river."
+msgstr ""
+
+#: data/tutorial.cfg:736
+msgid "So far, so good, but we need more of them."
+msgstr ""
+
+#: data/tutorial.cfg:764
+msgid "Excellent, human commander!"
+msgstr ""
+
+#: data/tutorial.cfg:779
+msgid ""
+"Well, fighter is an excellent choice for every battle, but I would use "
+"archers here instead. They are better shooters than fighters."
+msgstr ""
+
+#: data/tutorial.cfg:1053
+msgid ""
+"You have recruited Scouts. Elvish Scouts aren't very good in combat although "
+"they can sieze large territories in a short time. They are excellent at "
+"capturing villages.\n"
+"@EXERCISE\n"
+"Take over the western villages to get more gold."
+msgstr ""
+
+#: data/tutorial.cfg:1075
+msgid ""
+"You have recruited Archers. Elvish Archers are weak in hand-to-hand combat, "
+"but are excellent shooters. Send your archers against enemies who don't have "
+"long range weapons and avoid leaving the forests and villages.\n"
+"Archers advance to Marksman or Rangers, who are deadly with their long bows "
+"and swords.\n"
+"@EXERCISE\n"
+"We have prepared a practice target for you -- Gerlog, the thief, due south "
+"of your castle."
+msgstr ""
+
+#: data/tutorial.cfg:1105
+msgid ""
+"You have recruited Fighters. They are well prepared for combat in both close "
+"and long range. As all the Elves, they defend themselves well in forests and "
+"villages.\n"
+"A Fighter's career ends at Marshal or Champion, both well prepared to fight "
+"against all types of enemies. Marshals can also lead soldiers in battle.\n"
+"@EXERCISE\n"
+"To test Fighters, send them against Kharhbrah, the Poacher on the brigde."
+msgstr ""
+
+#: data/tutorial2.cfg:2
+msgid "The Raiders Camp"
+msgstr ""
+
+#: data/tutorial2.cfg:16
+msgid ""
+"Victory:\n"
+"@Defeat Minueth\n"
+"Defeat:\n"
+"#Death of Konrad\n"
+"#Turns run out"
+msgstr ""
+
+#: data/tutorial2.cfg:82
+msgid ""
+"Now, we have arrived at their camp. I am going to teach you about recall."
+msgstr ""
+
+#: data/tutorial2.cfg:88
+msgid "Recall?"
+msgstr ""
+
+#: data/tutorial2.cfg:94
+msgid ""
+"Soldiers that have fought for you in past battles - and survived - may be "
+"called again to serve you."
+msgstr ""
+
+#: data/tutorial2.cfg:100
+msgid "Ahhh, I see. So I can have more experienced soldiers at my side."
+msgstr ""
+
+#: data/tutorial2.cfg:106
+msgid "Yes, that is the point."
+msgstr ""
+
+#: data/tutorial2.cfg:115
+msgid ""
+"I noticed that the bandits have the aid of some dark initiates and their "
+"undead minions."
+msgstr ""
+
+#: data/tutorial2.cfg:120
+msgid "Yes, I could see them. Those unholy creatures look nasty!"
+msgstr ""
+
+#: data/tutorial2.cfg:126
+msgid ""
+"And they are dangerous too. Their claws can poison your troops. Perhaps you "
+"should recruit some Shamans to your side."
+msgstr ""
+
+#: data/tutorial2.cfg:133
+msgid "Units with healing power heal units near around them."
+msgstr ""
+
+#: data/tutorial2.cfg:140
+msgid ""
+"Poisoned units lose hitpoints every turn until they are cured. \n"
+"The heal skill can only hold off the poison's effects for one turn.\n"
+"You must use a village or a unit with the cure skill to eliminate the poison."
+msgstr ""
+
+#: data/tutorial2.cfg:159
+msgid ""
+"A nice try, Konrad, but it seems your skills still have much to be improved."
+msgstr ""
+
+#: data/tutorial2.cfg:171
+msgid "They caught me. You should have been more cautious."
+msgstr ""
+
+#: data/tutorial2.cfg:183
+msgid ""
+"You have bested all your enemies, Konrad. Congratulations on your skill."
+msgstr ""
+
+#: data/help.cfg:10 data/help.cfg:46
+msgid "Introduction"
+msgstr ""
+
+#: data/help.cfg:16
+msgid "Gameplay"
+msgstr ""
+
+#: data/help.cfg:22 data/help.cfg:198
+msgid "Traits"
+msgstr ""
+
+#: data/help.cfg:47
+msgid ""
+"<img>src=misc/logo.png align=middle box=no</img>\n"
+"\n"
+"Battle for Wesnoth is a turn-based fantasy strategy game somewhat unusual "
+"amongst modern strategy games. While other games strive for complexity, both "
+"in rules and gameplay, Battle for Wesnoth strives for simplicity of rules "
+"and gameplay. This does not make the game simple, however - from these "
+"simple rules arise a wealth of strategy, making the game easy to learn but a "
+"challenge to master."
+msgstr ""
+
+#: data/help.cfg:54
+msgid "Fundamentals of Gameplay"
+msgstr ""
+
+#: data/help.cfg:55
+msgid ""
+"This page outlines all you need to know to play Battle for Wesnoth. It "
+"covers how to play and the basic mechanics behind the game. For more "
+"information on conquering the game, you may wish to consult "
+"<ref>dst=basic_strategy text='Basic Strategy'</ref> and "
+"<ref>dst=multiplayer_strategy text='Multiplayer Strategy'</ref>. Keep in "
+"mind that this is just an outline - for special exceptions and situations, "
+"please follow the links included.\n"
+"\n"
+"To begin with, it's best to click the <italic>text=Tutorial</italic> button "
+"at the main menu. This will take you to the interactive tutorial, which will "
+"teach you the basics of Wesnoth. After this, it is recommended that you play "
+"the Heir to the Throne campaign first - click <italic>text=Campaign</italic> "
+"then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
+"be quite challenging, you may wish to start on <italic>text=Easy</italic>.\n"
+"\n"
+"<img>src=help/tooltip.png align=right float=yes</img>While playing, keep in "
+"mind that if you mouse-over many items on the menu bar to the right, a brief "
+"description will pop up explaining that item. This is especially useful when "
+"you encounter new abilities for the first time."
+msgstr ""
+
+#: data/help.cfg:64
+msgid "Recruiting and Recalling"
+msgstr ""
+
+#: data/help.cfg:65
+msgid ""
+"<img>src=help/recruit.png align=left float=yes</img>At the start of any "
+"battle, and at times during it, you will need to recruit units into your "
+"army. To recruit, you must have your leader (Konrad in the Heir to the "
+"Throne campaign) on the Keep square of a Castle. Then you may recruit by "
+"either choosing Recruit from the menu or right-clicking on a hex and "
+"selecting <italic>text=Recruit</italic>. This brings up the recruit menu, "
+"which lists units available for recruitment, along with their gold cost. "
+"Click on a unit to see its statistics to the left, then press the recruit "
+"button to recruit it.\n"
+"\n"
+"If you right-clicked on a castle hex and selected recruit, the new unit will "
+"appear in that square. Otherwise, it will appear in a free square near the "
+"keep. You may only recruit as many units as you have free hexes in your "
+"castle, and you cannot spend more gold than you actually have on "
+"recruiting.\n"
+"\n"
+"Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
+"modify their statistics.\n"
+"\n"
+"In later scenarios, you may also Recall survivors from earlier battles. "
+"Recalling functions identically to Recruiting, save that recalling costs a "
+"standard 20 gold and presents you with a list of all surviving units from "
+"previous scenarios.\n"
+"\n"
+"Keep in mind that units not only cost gold to Recruit or Recall, they also "
+"require money to support. See <ref>dst=income_and_upkeep text='Income and "
+"Upkeep'</ref> for more information.\n"
+msgstr ""
+
+#: data/help.cfg:79
+msgid "Movement"
+msgstr ""
+
+#: data/help.cfg:80
+msgid ""
+"Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
+"to move, then click on the hex you wish to move it to. When selected, all "
+"the hexes a unit can move to this turn will be highlighted, and all those it "
+"can't made dull. Mousing over a dull square will show the number of turns "
+"required to reach it, and clicking will cause the unit to move towards it by "
+"the fastest route over this and subsequent turns.\n"
+"\n"
+"Each unit has a certain number of movement points which are expended when "
+"moving into a new hex, depending on the <ref>dst=terrain text=Terrain</ref> "
+"of that particular hex. For instance, grassland nearly always costs 1 "
+"movement point to enter. Exactly how many movement points are spent entering "
+"a hex depends on the unit type - in forest, elvish units only spend 1 "
+"movement point, most human and orc units spend 2, while horsemen spend 3. "
+"You can learn how many unit points a unit requires to enter a certain "
+"terrain type by right-clicking on it, selecting Unit Description, and then "
+"clicking <italic>text='Terrain Modifiers'</italic>.\n"
+"\n"
+"Another thing to keep in mind while moving is <ref>dst=zones_of_control "
+"text='Zones of Control'</ref>. Each unit generates a zone of control in the "
+"hexes immediately surrounding it, and any enemy unit entering those hexes "
+"immediately ends its movement. Learning how to use zones of control to your "
+"advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
+"text='Skirmishers'</ref> can ignore zones of control."
+msgstr ""
+
+#: data/help.cfg:89
+msgid "Combat"
+msgstr ""
+
+#: data/help.cfg:90
+msgid ""
+"There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
+"but both of them take place between units in adjacent hexes. Short-range "
+"combat usually involves weapons such as swords, axes or fangs, while long-"
+"range combat usually involves weapons such as bows, spears and fireballs. "
+"Combat is relatively straightforward; the attacker and defender alternate "
+"attacks until each has used their allotted number of attacks.\n"
+"\n"
+"<header>text='Order and number of attacks'</header>\n"
+"\n"
+"The attacker gets the first attack, then the defender. This continues to "
+"alternate until each unit has used up all of its attacks. The number of "
+"attacks a unit gets varies; for instance, an Elvish fighter with a 5-4 sword "
+"attack may make 4 swings each dealing 5 damage, while an Orcish Grunt with 9-"
+"2 only gets 2 swings (but at 9 damage).\n"
+"\n"
+"<header>text='Chance to hit'</header>\n"
+"\n"
+"With two exceptions, the chance to hit a unit is based solely on its defense "
+"rating in the <ref>dst=terrain text=Terrain</ref> it is currently standing "
+"in. This may be found by right-clicking a unit, selecting Unit Description, "
+"and then clicking <italic>text='Terrain Modifiers'</italic>. For instance, "
+"elves have a defense rating of 70% in forest, meaning a unit attacking them "
+"has only a 30% chance of hitting them. Conversely, the elf's chance of "
+"hitting the attacker in return depends on what terrain the attacker is in.\n"
+"There are two exceptions to this rule: <ref>dst=magical_attacks "
+"text='Magical attacks'</ref> and <ref>dst=ability_marksman text=Marksmen</"
+"ref>. Magical attacks always have a 70% chance to hit, regardless of "
+"terrain, and Marksmen always have at least a 60% chance to hit, regardless "
+"of terrain.\n"
+"\n"
+"<header>text=Damage</header>\n"
+"\n"
+"Each blow which hits causes a base amount of damage depending on the attack "
+"type. For instance, an Elvish Fighter with a 5-4 sword attack causes a base "
+"of 5 damage. This is usually modified by two things: "
+"<ref>dst=damage_type_and_resistance text=Resistance</ref> and "
+"<ref>dst=time_of_day text='Time of Day'</ref>, both of which are explained "
+"below.\n"
+"\n"
+"A few units have special abilities which affect damage dealt in combat. The "
+"most common of these is <ref>dst=ability_charge text=Charge</ref>, which "
+"doubles the damage dealt by both attacker and defender when the unit with "
+"Charge attacks."
+msgstr ""
+
+#: data/help.cfg:110
+msgid "Damage Types and Resistance"
+msgstr ""
+
+#: data/help.cfg:111
+msgid ""
+"In Wesnoth, there are three types of damage usually associated with physical "
+"attacks: Blade, Pierce and Impact damage. Additionally, there are three "
+"further types of damage usually associated with magical attacks: Fire, Cold "
+"and Holy attacks. Different units may have resistances which alter the "
+"damage which they take from certain damage types.\n"
+"\n"
+"Resistances work very simply: If a unit has 40% resistance against a damage "
+"type, then they will suffer 40% less damage when hit with that damage type. "
+"It is also possible for a unit to have weakness; if a unit has -100% "
+"resistance against a damage type, it will suffer 100% more damage when hit "
+"by that type. \n"
+"\n"
+"For example, Skeletons are highly resistant to Blade and Pierce damage, but "
+"are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
+"damage."
+msgstr ""
+
+#: data/help.cfg:120
+msgid "Time of Day"
+msgstr ""
+
+#: data/help.cfg:121
+msgid ""
+"Wesnoth games usually take place with a regular cycle between day and night. "
+"The current time of day can be observed under the minimap in the upper "
+"right. \n"
+"\n"
+"The usual day/night cycle runs:\n"
+"\n"
+"Dawn <jump>to=160</jump><img>src=Dawn.png align=here</img>\n"
+"Morning <jump>to=160</jump><img>src=Morning.png align=here</img>\n"
+"Afternoon <jump>to=160</jump><img>src=Afternoon.png align=here</img>\n"
+"Dusk <jump>to=160</jump><img>src=Dusk.png align=here</img> \n"
+"First Watch <jump>to=160</jump><img>src=FirstWatch.png align=here</img>\n"
+"Second Watch <jump>to=160</jump><img>src=SecondWatch.png align=here</img>\n"
+"\n"
+"Morning and Afternoon count as day, First and Second Watch count as night.\n"
+"\n"
+"The time of day affects the damage of certain units as follows -\n"
+"\n"
+"Lawful units get +25% damage in daytime, and -25% damage at night.\n"
+"Chaotic units get +25% damage at night, and -25% in daytime.\n"
+"Neutral units are unaffected by the time of day.\n"
+"\n"
+"<img>src=Underground.png align=right float=yes</img>Keep in mind that some "
+"scenarios take place underground, where it is perpetually night!"
+msgstr ""
+
+#: data/help.cfg:145
+msgid "Experience and Advancement"
+msgstr ""
+
+#: data/help.cfg:146
+msgid ""
+"If both units survive a combat, they gain a number of experience points "
+"equal to the level of the unit they're fighting. If a unit kills another in "
+"combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
+"level 1, 16 for level 2, 24 for level 3, and so forth.\n"
+"\n"
+"Units have a certain amount of experience required to advance (this is 20% "
+"less for units with the Intelligent trait). Once they achieve this amount, "
+"they immediately advance to the next level, healing fully in the process. In "
+"some cases, you will be given a choice of advancement options.\n"
+"\n"
+"Keep in mind that while most units have three levels, not all do, and that "
+"occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
+msgstr ""
+
+#: data/help.cfg:155
+msgid "Healing"
+msgstr ""
+
+#: data/help.cfg:156
+msgid ""
+"In combat, your units will inevitably take damage. Wesnoth offers several "
+"ways for your units to heal, all of which take place at the beginning of "
+"your turn, before you take action.\n"
+"\n"
+"Resting: A unit which neither moves nor attacks will heal 2HP in its next "
+"turn.\n"
+"Villages: A unit which starts a turn in a village will heal 8HP.\n"
+"<ref>dst=ability_regeneration text=Regeneration</ref>: Certain units (such "
+"as trolls) will automatically heal 8HP every turn.\n"
+"Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
+"ability will heal all friendly units immediately beside them for 4HP each "
+"turn, or prevent Poison from dealing damage.\n"
+"\n"
+"Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
+"will heal all friendly units immediately beside them for 8HP each turn, or "
+"cure a unit of Poison.\n"
+"\n"
+"Keep in mind that while Resting can be combined with other forms of healing, "
+"villages, regeneration, and healing/curing cannot combine with each other. "
+"Also, units heal fully between scenarios.\n"
+msgstr ""
+
+#: data/help.cfg:171
+msgid "Income and Upkeep"
+msgstr ""
+
+#: data/help.cfg:172
+msgid ""
+"In Wesnoth, it is not enough simply to recruit units and fight. You must "
+"watch your gold as well, especially in campaigns, where you can carry extra "
+"gold over from one scenario to the next. There are two aspects to this; "
+"Income and Upkeep.\n"
+"\n"
+"Income is simple. For every village you control, you gain one gold a turn. "
+"Thus, if you have ten villages, you would normally gain ten gold. "
+"Unfortunately, your Upkeep costs are subtracted from this income, as "
+"detailed below.\n"
+"\n"
+"Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
+"to its level. You can support as many levels <italic>text=worth</italic> of "
+"units as you have villages for free. However, for each level of unit beyond "
+"the number of villages you have, you must pay one gold per turn. For "
+"example, if you have twelve level one units and ten villages, you would have "
+"to pay two gold a turn in upkeep.\n"
+"\n"
+"These costs are subtracted from your Income, so in the case of twelve levels "
+"of units and ten villages, your resultant Income would be 8 gold a turn.\n"
+"There are two main exceptions to Upkeep. Firstly, units with the Loyal trait "
+"will only ever count as level one for upkeep purposes, regardless of their "
+"actual level. Secondly, units you begin the scenario with (such as Konrad or "
+"Delfador), or units who join you during a scenario (such as the Horseman in "
+"the second level of Heir to the Throne) will never charge any upkeep.\n"
+msgstr ""
+
+#: data/help.cfg:185
+msgid "Wrap Up"
+msgstr ""
+
+#: data/help.cfg:186
+msgid ""
+"This concludes the fundamentals of Wesnoth. You might want to read up on "
+"Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
+"ref> and <ref>dst=abilities text=Abilities</ref>, but you now know "
+"everything you need to know to play the Heir to the Throne scenario. Have "
+"fun, and good luck!"
+msgstr ""
+
+#: data/help.cfg:199
+msgid ""
+"Most units have two traits. Traits are attributes of the unit that modify "
+"its attributes slightly. They are assigned to a unit randomly when the unit "
+"is recruited.\n"
+"\n"
+"The currently available traits are the following.\n"
+"\n"
+"\n"
+"<header>text=Intelligent</header>\n"
+"\n"
+"Intelligent units require 20% less experience than usual to advance.\n"
+"\n"
+"Intelligent units are very useful at the beginning of a campaign, as they "
+"can be quickly advanced into much needed higher level units. Later in the "
+"campaign, they are not quite so useful, and if you have plenty of high level "
+"units you may find yourself recalling units with more useful long-term "
+"traits.\n"
+"\n"
+"\n"
+"<header>text=Loyal</header>\n"
+"\n"
+"Loyal units only ever require an upkeep of one, no matter what level they "
+"are.\n"
+"\n"
+"Loyal has no affect on a level one unit, which makes it useless in the early "
+"campaign. Once a unit begins to level up, however, it can save you "
+"considerable gold over the course of the campaign.\n"
+"\n"
+"\n"
+"<header>text=Quick</header>\n"
+"\n"
+"Quick units have 1 extra movement point, but 10% less HP than usual.\n"
+"\n"
+"Quick is the most noticeable trait, particularly in slower units such as "
+"trolls or heavy infantry. Units with the Quick trait can often have greatly "
+"increased mobility in rough terrain, so consider that when deploying your "
+"forces. Also, remember that Quick units aren't quite as tough as usual, and "
+"so aren't so good for holding positions.\n"
+"\n"
+"\n"
+"<header>text=Resilient</header>\n"
+"\n"
+"Resilient units have 7 more HP than usual.\n"
+"\n"
+"Resilient units can be useful at all stages in the campaign, and is a useful "
+"trait for all units, though you'll find yourself noticing it more in some "
+"units than others. Resilient units are especially useful for holding ground "
+"against opponents.\n"
+"\n"
+"\n"
+"<header>text=Strong</header>\n"
+"\n"
+"Strong units do 1 more damage per swing in melee combat, and have 2 more "
+"HP.\n"
+"\n"
+"Useful for any close-combat unit, Strong is most effective for units who "
+"have a high number of swings, such as the Elvish Fighter. Strong units can "
+"be very useful when a tiny bit of extra damage is all that is needed to turn "
+"a damaging stroke into a killing blow. \n"
+msgstr ""
+
+#~ msgid "Elder Mage"
+#~ msgstr "Mage Vénérable"

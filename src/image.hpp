@@ -11,10 +11,7 @@
 class team;
 
 ///this module manages the cache of images. With an image name, you can get
-///the surface corresponding to that image, and don't need to free the image.
-///Note that surfaces returned from here are invalidated whenever events::pump()
-///is called, and so shouldn't be kept, but should be regotten from here as
-///needed.
+///the surface corresponding to that image.
 //
 ///images come in a number of varieties:
 /// - unscaled: no modifications have been done on the image.
@@ -23,15 +20,14 @@ class team;
 /// - greyed: images are scaled and in greyscale
 /// - brightened: images are scaled and brighter than normal.
 namespace image {
+	template<typename T>
 	struct cache_item {
-		cache_item() : loaded(false), image(NULL) {}
-		cache_item(surface image) : loaded(true), image(image) {}
+		cache_item() : loaded(false), item() {}
+		cache_item(T item) : loaded(true), item(item) {}
 
 		bool loaded;
-		surface image;
+		T item;
 	};
-
-	typedef std::vector<cache_item> cache;
 
 	//a generic image locator. Abstracts the location of an image.
 	class locator
@@ -80,16 +76,20 @@ namespace image {
 		// returns true if the locator does not correspond to any
 		// actual image 
 		bool is_void() const { return val_.type_ == NONE; }
-		// returns true if the locator already was stored in the given
-		// cache
-		bool locator::in_cache(const cache& cache) const;
 		// loads the image it is pointing to from the disk
 		surface load_from_disk() const;
+		
+		// returns true if the locator already was stored in the given
+		// cache
+		template<typename T>
+		bool locator::in_cache(const std::vector<cache_item<T> >& cache) const;
 		// returns the image it is corresponding to in the given cache
-		surface locate_in_cache(const cache& cache) const;
+		template<typename T>
+		T locate_in_cache(const std::vector<cache_item<T> >& cache) const;
 		// adds the given image to the given cache, indexed with the
 		// current locator
-		void add_to_cache(cache& cache, const surface &image) const;
+		template<typename T>
+		void add_to_cache(std::vector<cache_item<T> >& cache, const T &image) const;
 	protected:
 		static int last_index_;
 	private:
@@ -100,6 +100,10 @@ namespace image {
 		int index_;
 		value val_;
 	};
+
+
+	typedef std::vector<cache_item<surface> > image_cache;
+	typedef std::vector<cache_item<locator> > locator_cache;
 
 	///the image manager is responsible for setting up images, and destroying
 	///all images when the program exits. It should probably
@@ -154,6 +158,9 @@ namespace image {
 	///an image:: function. Returned images have the same semantics as for get_image()
 	///and must be freed using SDL_FreeSurface()
 	surface reverse_image(const surface &surf);
+
+
+	locator get_alternative(const locator &i_locator, const std::string &alt);
 
 	///function to register an image with the given id. Calls to get_image(id,UNSCALED) will
 	///return this image. register_image() will take ownership of this image and free
