@@ -13,31 +13,32 @@
 #include "mapgen.hpp"
 #include "mapgen_dialog.hpp"
 #include "pathfind.hpp"
+#include "scoped_resource.hpp"
 #include "util.hpp"
 
 //function to generate a random map, from a string which describes
 //the generator to use and its arguments
-std::string random_generate_map(const std::string& parms)
+std::string random_generate_map(const std::string& parms, const config* cfg)
 {
 	//the first token is the name of the generator, tokens after
 	//that are arguments to the generator
 	std::vector<std::string> parameters = config::split(parms,' ');
-	map_generator* const generator = get_map_generator(parameters.front());
+	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
 		std::cerr << "could not find map generator '" << parameters.front() << "'\n";
 		return "";
 	}
 
 	parameters.erase(parameters.begin());
-	return generator->create_map(parameters);
+	return generator.get()->create_map(parameters);
 }
 
-config random_generate_scenario(const std::string& parms)
+config random_generate_scenario(const std::string& parms, const config* cfg)
 {
 	//the first token is the name of the generator, tokens after
 	//that are arguments to the generator
 	std::vector<std::string> parameters = config::split(parms,' ');
-	map_generator* const generator = get_map_generator(parameters.front());
+	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
 		std::cerr << "could not find map generator '" << parameters.front() << "'\n";
 		return config();
@@ -802,32 +803,15 @@ generator_map generators;
 
 }
 
-map_generator::manager::manager(const config& game_config)
+map_generator* create_map_generator(const std::string& name, const config* cfg)
 {
-	map_generator* gen = new default_map_generator(game_config);
-	assert(generators.count(gen->name()) == 0);
-	generators[gen->name()] = gen;
-
-	gen = new cave_map_generator(game_config);
-	generators[gen->name()] = gen;
-}
-
-map_generator::manager::~manager()
-{
-	for(generator_map::iterator i = generators.begin(); i != generators.end(); ++i) {
-		delete i->second;
-	}
-
-	generators.clear();
-}
-
-map_generator* get_map_generator(const std::string& name)
-{
-	const generator_map::iterator i = generators.find(name);
-	if(i != generators.end())
-		return i->second;
-	else
+	if(name == "default" || name == "") {
+		return new default_map_generator(cfg);
+	} else if(name == "cave") {
+		return new cave_map_generator(cfg);
+	} else {
 		return NULL;
+	}
 }
 
 #ifdef TEST_MAPGEN

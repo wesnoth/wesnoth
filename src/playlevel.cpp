@@ -111,7 +111,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 
 	//if the map should be randomly generated
 	if(map_data == "" && (*level)["map_generation"] != "") {
-		map_data = random_generate_map((*level)["map_generation"]);
+		map_data = random_generate_map((*level)["map_generation"],level->child("generator"));
 	}
 
 	gamemap map(game_config,map_data);

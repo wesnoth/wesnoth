@@ -2,11 +2,9 @@
 #include "pathfind.hpp"
 #include "util.hpp"
 
-cave_map_generator::cave_map_generator(const config& cfg) : wall_('W'), clear_('u'), village_('D'), castle_('C'),
-                                                            cfg_(NULL), width_(50), height_(50)
+cave_map_generator::cave_map_generator(const config* cfg) : wall_('W'), clear_('u'), village_('D'), castle_('C'),
+                                                            cfg_(cfg), width_(50), height_(50)
 {
-	cfg_ = cfg.find_child("map_generator","name",name());
-
 	if(cfg_ == NULL) {
 		static const config default_cfg;
 		cfg_ = &default_cfg;
@@ -178,6 +176,7 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 	while(i1 != i2) {
 		const std::string& key = *(*i1).first;
 		config cfg = *(*i1).second;
+		config* const filter = cfg.child("filter");
 		if(cfg["same_location_as_previous"] != "yes") {
 			index = rand()%c.locs.size();
 		}
@@ -188,9 +187,15 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 		char buf[50];
 		sprintf(buf,"%d",loc->x+1);
 		cfg.values["x"] = buf;
+		if(filter != NULL) {
+			(*filter)["x"] = buf;
+		}
 
 		sprintf(buf,"%d",loc->y+1);
 		cfg.values["y"] = buf;
+		if(filter != NULL) {
+			(*filter)["y"] = buf;
+		}
 
 		//if this is a side, place a castle for the side
 		if(key == "side" && cfg["no_castle"] != "yes") {

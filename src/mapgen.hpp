@@ -6,8 +6,8 @@
 
 #include <string>
 
-std::string random_generate_map(const std::string& parms);
-config random_generate_scenario(const std::string& parms);
+std::string random_generate_map(const std::string& parms, const config* cfg);
+config random_generate_scenario(const std::string& parms, const config* cfg);
 
 class map_generator
 {
@@ -31,15 +31,9 @@ public:
 	virtual std::string create_map(const std::vector<std::string>& args) = 0;
 
 	virtual config create_scenario(const std::vector<std::string>& args);
-
-	struct manager
-	{
-		manager(const config& game_config);
-		~manager();
-	};
 };
 
-map_generator* get_map_generator(const std::string& name);
+map_generator* create_map_generator(const std::string& name, const config* cfg);
 
 std::string default_generate_map(size_t width, size_t height,
                                  size_t iterations, size_t hill_size,

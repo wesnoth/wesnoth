@@ -10,13 +10,11 @@
 #include "widgets/button.hpp"
 #include "widgets/slider.hpp"
 
-default_map_generator::default_map_generator(const config& game_config)
+default_map_generator::default_map_generator(const config* cfg)
 : width_(40), height_(40), iterations_(1000), hill_size_(10), max_lakes_(20),
-  nvillages_(25), nplayers_(2), cfg_(NULL)
+  nvillages_(25), nplayers_(2), cfg_(cfg)
 {
-	const config* const cfg = game_config.find_child("map_generator","name",name());
-	if(cfg != NULL) {
-		cfg_ = cfg;
+	if(cfg_ != NULL) {
 
 		const int width = ::atoi((*cfg)["map_width"].c_str());
 		if(width > 0)

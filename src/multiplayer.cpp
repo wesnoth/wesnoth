@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "scoped_resource.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "language.hpp"
@@ -184,7 +185,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	update_whole_screen();
 
 	//the current map generator
-	map_generator* generator = NULL;
+	util::scoped_ptr<map_generator> generator(NULL);
 
 	CKey key;
 	config* level_ptr = NULL;
@@ -272,7 +273,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 		
 		if(maps_menu.selection() != cur_selection) {
 			map_changed = true;
-			generator = NULL;
+			generator.assign(NULL);
 
 			cur_selection = maps_menu.selection();
 			if(size_t(maps_menu.selection()) != options.size()-1) {
@@ -285,7 +286,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				//if the map should be randomly generated
 				if((*level_ptr)["map_generation"] != "") {
-					generator = get_map_generator((*level_ptr)["map_generation"]);
+					generator.assign(create_map_generator((*level_ptr)["map_generation"],level_ptr->child("generator")));
 				}
 			}else{
 				const scoped_sdl_surface disk(image::get_image("misc/disk.png",image::UNSCALED));
@@ -310,14 +311,14 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 			}
 		}
 
-		if(generator != NULL && generator->allow_user_config() && generator_settings.process(mousex,mousey,left_button)) {
-			generator->user_config(disp);
+		if(generator != NULL && generator.get()->allow_user_config() && generator_settings.process(mousex,mousey,left_button)) {
+			generator.get()->user_config(disp);
 			map_changed = true;
 		}
 
-		if(generator != NULL && (map_changed || regenerate_map.process(mousex,mousey,left_button))) {
+		if(generator.get() != NULL && (map_changed || regenerate_map.process(mousex,mousey,left_button))) {
 			//generate the random map
-			(*level_ptr)["map_data"] = generator->create_map(std::vector<std::string>());
+			(*level_ptr)["map_data"] = generator.get()->create_map(std::vector<std::string>());
 			map_changed = true;
 
 			//set the scenario to have placing of sides based on the terrain they prefer

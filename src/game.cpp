@@ -266,8 +266,6 @@ int play_game(int argc, char** argv)
 
 	game_config::load_config(game_config.child("game_config"));
 
-	const map_generator::manager map_generation_manager(game_config);
-
 	const config::child_list& units = game_config.get_children("units");
 	if(units.empty()) {
 		std::cerr << "ERROR: Could not find game configuration files\n";
