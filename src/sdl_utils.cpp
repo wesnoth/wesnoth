@@ -143,10 +143,8 @@ surface scale_surface(surface const &surf, int w, int h)
 		return NULL;
 	}
 
-	const double xratio = static_cast<double>(surf->w)/
-			              static_cast<double>(w);
-	const double yratio = static_cast<double>(surf->h)/
-			              static_cast<double>(h);
+	const fixed_t xratio = fxpdiv(surf->w,w);
+	const fixed_t yratio = fxpdiv(surf->h,h);
 
 	{
 		surface_lock src_lock(src);
@@ -155,12 +153,12 @@ surface scale_surface(surface const &surf, int w, int h)
 		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
 		Uint32* const dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
 
-		double ysrc = 0.0;
+		fixed_t ysrc = ftofxp(0.0);
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
-			double xsrc = 0.0;
+			fixed_t xsrc = ftofxp(0.0);
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				const int xsrcint = static_cast<int>(xsrc);
-				const int ysrcint = static_cast<int>(ysrc);
+				const int xsrcint = fxptoi(xsrc);
+				const int ysrcint = fxptoi(ysrc);
 
 				dst_pixels[ydst*dst->w + xdst] = src_pixels[ysrcint*src->w + xsrcint];
 			}
@@ -320,7 +318,7 @@ surface greyscale_image(surface const &surf)
 	return create_optimized_surface(nsurf);
 }
 
-surface brighten_image(surface const &surf, double amount)
+surface brighten_image(surface const &surf, fixed_t amount)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -338,13 +336,14 @@ surface brighten_image(surface const &surf, double amount)
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*surf->h;
 
+		if (amount < 0) amount = 0;
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
 			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
-			red = Uint8(minimum<double>(maximum<double>(double(red) * amount,0.0),255.0));
-			green = Uint8(minimum<double>(maximum<double>(double(green) * amount,0.0),255.0));
-			blue = Uint8(minimum<double>(maximum<double>(double(blue) * amount,0.0),255.0));
+			red = minimum<unsigned>(unsigned(fxpmult(red,amount)),255);
+			green = minimum<unsigned>(unsigned(fxpmult(green,amount)),255);
+			blue = minimum<unsigned>(unsigned(fxpmult(blue,amount)),255);
 
 			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
 
@@ -355,7 +354,7 @@ surface brighten_image(surface const &surf, double amount)
 	return create_optimized_surface(nsurf);
 }
 
-surface adjust_surface_alpha(surface const &surf, double amount)
+surface adjust_surface_alpha(surface const &surf, fixed_t amount)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -373,11 +372,12 @@ surface adjust_surface_alpha(surface const &surf, double amount)
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*surf->h;
 
+		if (amount < 0) amount = 0;
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
 			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
-			alpha = Uint8(minimum<double>(maximum<double>(double(alpha) * amount,0.0),255.0));
+			alpha = minimum<unsigned>(unsigned(fxpmult(alpha,amount)),255);
 
 			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
 

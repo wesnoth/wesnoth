@@ -43,7 +43,7 @@
 
 #define ERR_DP lg::err(lg::display)
 
-std::map<gamemap::location,double> display::debugHighlights_;
+std::map<gamemap::location,fixed_t> display::debugHighlights_;
 
 namespace {
 	const int DefaultZoom = 72;
@@ -73,7 +73,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0), hideEnergy_(false),
-	deadAmount_(0.0), advancingAmount_(0.0), updatesLocked_(0),
+	deadAmount_(ftofxp(0.0)), advancingAmount_(0.0), updatesLocked_(0),
 	turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
@@ -148,12 +148,12 @@ void display::new_turn()
 			for(int i = 0; i != niterations; ++i) {
 
 				if(old_mask != NULL) {
-					const double proportion = 1.0 - double(i)/double(niterations);
+					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
 					tod_hex_mask1.assign(adjust_surface_alpha(old_mask,proportion));
 				}
 
 				if(new_mask != NULL) {
-					const double proportion = double(i)/double(niterations);
+					const fixed_t proportion = fxpdiv(i,niterations);
 					tod_hex_mask2.assign(adjust_surface_alpha(new_mask,proportion));
 				}
 
@@ -1111,7 +1111,7 @@ void display::draw_halo_on_tile(int x, int y)
 }
 
 void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
-		double highlight_ratio, Uint32 blend_with)
+		fixed_t highlight_ratio, Uint32 blend_with)
 {
 	if(updatesLocked_)
 		return;
@@ -1183,18 +1183,18 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 			return;
 		}
 
-		if(highlight_ratio == 1.0)
+		if(highlight_ratio == ftofxp(1.0))
 			highlight_ratio = it->second.alpha();
 
 		if(u.invisible(map_.underlying_terrain(map_[x][y]), 
 					status_.get_time_of_day().lawful_bonus,loc,
 					units_,teams_) &&
-		   highlight_ratio > 0.5) {
-			highlight_ratio = 0.5;
+		   highlight_ratio > ftofxp(0.5)) {
+			highlight_ratio = ftofxp(0.5);
 		}
 
-		if(loc == selectedHex_ && highlight_ratio == 1.0) {
-			highlight_ratio = 1.5;
+		if(loc == selectedHex_ && highlight_ratio == ftofxp(1.0)) {
+			highlight_ratio = ftofxp(1.5);
 			// blend_with = rgb(255,255,255);
 		}
 
@@ -1277,7 +1277,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		          highlight_ratio,blend_with,blend_ratio,submerge,ellipse_back,ellipse_front);
 	}
 
-	const double bar_alpha = highlight_ratio < 1.0 && blend_with == 0 ? highlight_ratio : 1.0;
+	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : ftofxp(1.0);
 	if(energy_file != NULL) {
 		draw_bar(*energy_file,xpos,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
 	}
@@ -1309,7 +1309,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	}
 }
 
-void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, double alpha)
+void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
 {
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
 
@@ -1324,7 +1324,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 		height = bar_loc.h;
 	}
 
-	if(alpha != 1.0) {
+	if(alpha != ftofxp(1.0)) {
 		surf.assign(adjust_surface_alpha(surf,alpha));
 		if(surf == NULL) {
 			return;
@@ -1342,7 +1342,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 
 	const size_t unfilled = (const size_t)(height*(1.0 - filled));
 
-	if(unfilled < height && alpha >= 0.3) {
+	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		SDL_Rect filled_area = {xpos+bar_loc.x,ypos+bar_loc.y+unfilled,bar_loc.w,height-unfilled};
 		const Uint32 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		SDL_FillRect(video().getSurface(),&filled_area,colour);
@@ -1376,7 +1376,7 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 	}
 }
 
-void display::draw_tile(int x, int y, surface unit_image, double alpha, Uint32 blend_to)
+void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 blend_to)
 {
 	if(updatesLocked_)
 		return;
@@ -1592,7 +1592,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		image.assign(image::reverse_image(image));
 	}
 
-	draw_unit(xloc,yloc,image,vflip,0.5);
+	draw_unit(xloc,yloc,image,vflip,ftofxp(0.5));
 
 	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
 		const SDL_Rect& rect = map_area();
@@ -1843,14 +1843,14 @@ void display::float_label(const gamemap::location& loc, const std::string& text,
 }
 
 void display::draw_unit(int x, int y, surface image,
-		bool upside_down, double alpha, Uint32 blendto, double blend_ratio, double submerged,
+		bool upside_down, fixed_t alpha, Uint32 blendto, double blend_ratio, double submerged,
 		surface ellipse_back, surface ellipse_front)
 {
 	//calculate the y position of the ellipse. It should be the same as the y position of the image, unless
 	//the image is partially submerged, in which case the ellipse should appear to float 'on top of' the water
 	const int ellipse_ypos = y - (ellipse_back != NULL && submerged > 0.0 ? int(double(ellipse_back->h)*submerged) : 0)/2;
 	if(ellipse_back != NULL) {
-		draw_unit(x,ellipse_ypos,ellipse_back,false,blendto == 0 ? alpha : 1.0,0,0.0);
+		draw_unit(x,ellipse_ypos,ellipse_back,false,blendto == 0 ? alpha : ftofxp(1.0),0,0.0);
 	}
 
 	surface surf(image);
@@ -1862,11 +1862,11 @@ void display::draw_unit(int x, int y, surface image,
 	if(blend_ratio != 0) {
 		surf = blend_surface(surf, blend_ratio, blendto);
 	}
-	if(alpha > 1.0) {
+	if(alpha > ftofxp(1.0)) {
 		surf = brighten_image(surf,alpha);
 	//} else if(alpha != 1.0 && blendto != 0) {
 	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
-	} else if(alpha != 1.0) {
+	} else if(alpha != ftofxp(1.0)) {
 		surf = adjust_surface_alpha(surf,alpha);
 	}
 
@@ -1882,7 +1882,7 @@ void display::draw_unit(int x, int y, surface image,
 	blit_surface(x,y,surf,&srcrect,&clip_rect);
 
 	if(submerge_height != surf->h) {
-		surf.assign(adjust_surface_alpha(surf,0.2));
+		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2)));
 		
 		srcrect.y = submerge_height;
 		srcrect.h = surf->h-submerge_height;
@@ -1892,7 +1892,7 @@ void display::draw_unit(int x, int y, surface image,
 	}
 
 	if(ellipse_front != NULL) {
-		draw_unit(x,ellipse_ypos,ellipse_front,false,blendto == 0 ? alpha : 1.0,0,0.0);
+		draw_unit(x,ellipse_ypos,ellipse_front,false,blendto == 0 ? alpha : ftofxp(1.0),0,0.0);
 	}
 }
 
@@ -2081,7 +2081,7 @@ void display::set_grid(bool grid)
 	grid_ = grid;
 }
 
-void display::debug_highlight(const gamemap::location& loc, double amount)
+void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 {
 	wassert(game_config::debug);
 	debugHighlights_[loc] += amount;

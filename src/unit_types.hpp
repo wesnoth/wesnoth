@@ -213,7 +213,7 @@ public:
 	static const char* alignment_description(ALIGNMENT align);
 	static const char* alignment_id(ALIGNMENT align);
 
-	double alpha() const;
+	fixed_t alpha() const;
 
 	const std::vector<std::string>& abilities() const;
 
@@ -257,7 +257,7 @@ private:
 
 	const unit_race* race_;
 
-	double alpha_;
+	fixed_t alpha_;
 
 	std::vector<std::string> abilities_;
 

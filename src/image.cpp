@@ -464,13 +464,13 @@ surface get_greyed(const locator i_locator, COLOUR_ADJUSTMENT adj)
 surface get_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
 	surface image(get_image(i_locator, SCALED, adj));
-	return surface(brighten_image(image, 1.5));
+	return surface(brighten_image(image, ftofxp(1.5)));
 }
 
 surface get_semi_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
 	surface image(get_image(i_locator, SCALED, adj));
-	return surface(brighten_image(image, 1.25));
+	return surface(brighten_image(image, ftofxp(1.25)));
 }
 
 surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT adj)

@@ -236,7 +236,7 @@ bool unit::unrenamable() const
 	return unrenamable_;
 }
 
-double unit::alpha() const
+fixed_t unit::alpha() const
 {
 	return type().alpha();
 }

@@ -176,7 +176,7 @@ public:
 	//alpha controls how faded the unit is. If blend_to is not 0, then the
 	//unit will be alpha-blended to blend_to instead of the background colour
 	void draw_tile(int x, int y, surface unit_image=surface(NULL),
-	               double alpha=1.0, Uint32 blend_to=0);
+	               fixed_t alpha=ftofxp(1.0), Uint32 blend_to=0);
 
 	//function to float a label above a tile
 	void float_label(const gamemap::location& loc, const std::string& text,
@@ -189,7 +189,7 @@ private:
 	void draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
 	void draw_unit_on_tile(int x, int y, surface unit_image=surface(NULL),
-	                       double alpha=1.0, Uint32 blend_to=0);
+	                       fixed_t alpha=ftofxp(1.0), Uint32 blend_to=0);
 
 	void draw_halo_on_tile(int x, int y);
 
@@ -287,7 +287,7 @@ public:
 
 	//a debug highlight draws a cross on a tile to emphasize something there.
 	//it is used in debug mode, typically to show AI plans.
-	static void debug_highlight(const gamemap::location& loc, double amount);
+	static void debug_highlight(const gamemap::location& loc, fixed_t amount);
 	static void clear_debug_highlights();
 
 	//function which returns true if location (x,y) is covered in shroud.
@@ -328,7 +328,7 @@ public:
 	//submerged: the amount of the unit out of 1.0 that is submerged
 	//           (presumably under water) and thus shouldn't be drawn
 	void draw_unit(int x, int y, surface image,
-			bool upside_down=false,double alpha=1.0, 
+		        bool upside_down=false,fixed_t alpha=ftofxp(1.0), 
 			Uint32 blendto=0, double blend_ratio=0,
 			double submerged=0.0,
 			surface ellipse_back=surface(NULL),
@@ -399,7 +399,7 @@ private:
 
 	unit_map& units_;
 
-	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, double alpha);
+	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy
@@ -452,7 +452,7 @@ private:
 
 	//used to store any unit that is dying
 	gamemap::location deadUnit_;
-	double deadAmount_;
+	fixed_t deadAmount_;
 
 	//used to store any unit that is advancing
 	gamemap::location advancingUnit_;
@@ -497,7 +497,7 @@ private:
 	halo_map haloes_;
 
 	//for debug mode
-	static std::map<gamemap::location,double> debugHighlights_;
+	static std::map<gamemap::location,fixed_t> debugHighlights_;
 
 	std::set<gamemap::location> highlighted_locations_;
 

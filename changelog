@@ -3,7 +3,10 @@ CVS HEAD:
   * British English
  * updated translations:
   * catalan
- * In language-selection dialog, consistently use native name for all languages, with the (hopefully) official latin transcription for those that cannot be displayed in the default font (russian, bulgarian, greek)
+ * In language-selection dialog, consistently use native name for
+   all languages, with the (hopefully) official latin transcription
+   for those that cannot be displayed in the default font (russian,
+   bulgarian, greek)
  * language fixes and polishing (English)
  * fixed Delfador appearing in the water when turns run out in 'The Bay of Pearls'
  * fixed the talking tentacle in 'Temple of the Deep'
@@ -16,6 +19,8 @@ CVS HEAD:
  * fixed locale-dependent numeric input/output bug,
    it allowed units to walk on the water, and prevented
    the AI from being correctly configured in campaigns
+ * use fixed-point arithmetics in critical functions, so that wesnoth
+   can reasonably run on an FPU-less machine (eg. ipaq PDA)
 
 Version 0.8.10:
  * user interface tweaks

@@ -107,7 +107,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			for(int tile = 0; tile != 6; ++tile) {
 				disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
 			}
-			disp.draw_unit(xsrc,ysrc,image,false, 1.0, 0, 0.0, src_submerge);
+			disp.draw_unit(xsrc,ysrc,image,false, ftofxp(1.0), 0, 0.0, src_submerge);
 			disp.update_display();
 			events::pump();
 			teleport_animation.update_current_frames();
@@ -157,7 +157,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			const double submerge = src_submerge + (dst_submerge - src_submerge) * i / nsteps;
 			const int xpos = xloc;
 			const int ypos = yloc - height_adjust;
-			disp.draw_unit(xpos, ypos, image, false, 1.0, 0, 0.0, submerge);
+			disp.draw_unit(xpos, ypos, image, false, ftofxp(1.0), 0, 0.0, submerge);
 
 			if (halo_effect != 0) {
 				int d = disp.hex_size() / 2;
@@ -202,7 +202,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			for(int tile = 0; tile != 6; ++tile) {
 				disp.draw_tile(dst_adjacent[tile].x,dst_adjacent[tile].y);
 			}
-			disp.draw_unit(xdst, ydst, image, false, 1.0, 0, 0.0, dst_submerge);
+			disp.draw_unit(xdst, ydst, image, false, ftofxp(1.0), 0, 0.0, dst_submerge);
 			disp.update_display();
 			events::pump();
 			teleport_animation.update_current_frames();
@@ -280,7 +280,7 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u)
 	const int frame_time = 30;
 	int ticks = SDL_GetTicks();
 
-	for(double alpha = 1.0; alpha > 0.0; alpha -= 0.05) {
+	for(fixed_t alpha = ftofxp(1.0); alpha > ftofxp(0.0); alpha -= ftofxp(0.05)) {
 		disp.draw_tile(loc.x,loc.y,NULL,alpha);
 
 		const int wait_time = ticks + frame_time - SDL_GetTicks();
@@ -293,7 +293,7 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u)
 		disp.update_display();
 	}
 
-	disp.draw_tile(loc.x,loc.y,NULL,0.0);
+	disp.draw_tile(loc.x,loc.y,NULL,ftofxp(0.0));
 	disp.update_display();
 }
 
@@ -438,7 +438,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		}
 
 		Uint32 defensive_colour = 0;
-		double defensive_alpha = 1.0;
+		fixed_t defensive_alpha = ftofxp(1.0);
 
 		LOG_DP << "Waiting for missile impact at " << missile_impact << "\n";
 		if(damage > 0 && animation_time >= missile_impact) {
@@ -450,7 +450,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			}
 
 			if(flash_num == 0 || flash_num == 2) {
-				defensive_alpha = 0.0;
+				defensive_alpha = ftofxp(0.0);
 				defensive_colour = disp.rgb(200,0,0);
 			}
 
@@ -728,7 +728,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		}
 
 		Uint32 defender_colour = 0;
-		double defender_alpha = 1.0;
+		fixed_t defender_alpha = ftofxp(1.0);
 
 		if(damage > 0 && animation_time >= 0 && shown_label == false) {
 			shown_label = true;
@@ -744,7 +744,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			}
 
 			if(flash_num == 0 || flash_num == 2) {
-				defender_alpha = 0.0;
+				defender_alpha = ftofxp(0.0);
 				defender_colour = disp.rgb(200,0,0);
 			}
 
@@ -808,7 +808,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const double submerge = src_submerge*pos + dst_submerge*(1.0-pos);
 
 		if(image != NULL && !hide) {
-			disp.draw_unit(posx, posy - height_adjust, image, false, 1.0, 0, 0.0, submerge);
+			disp.draw_unit(posx, posy - height_adjust, image, false, ftofxp(1.0), 0, 0.0, submerge);
 		}
 
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();

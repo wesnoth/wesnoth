@@ -549,7 +549,7 @@ unit_type::unit_type(const unit_type& o)
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
-                : cfg_(cfg), alpha_(1.0), movementType_(cfg), possibleTraits_(traits)
+	: cfg_(cfg), alpha_(ftofxp(1.0)), movementType_(cfg), possibleTraits_(traits)
 {
 	const config::child_list& variations = cfg.get_children("variation");
 	for(config::child_list::const_iterator var = variations.begin(); var != variations.end(); ++var) {
@@ -619,7 +619,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	const std::string& alpha_blend = cfg_["alpha"];
 	if(alpha_blend.empty() == false) {
-		alpha_ = atof(alpha_blend.c_str());
+		alpha_ = ftofxp(atof(alpha_blend.c_str()));
 	}
 
 	const std::string& move_type = cfg_["movement_type"];
@@ -913,7 +913,7 @@ const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
 	return (aligns[align]);
 }
 
-double unit_type::alpha() const
+fixed_t unit_type::alpha() const
 {
 	return alpha_;
 }

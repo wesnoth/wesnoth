@@ -58,7 +58,7 @@ public:
 	int side() const;
 	unit_race::GENDER gender() const;
 	void set_side(int new_side);
-	double alpha() const;
+	fixed_t alpha() const;
 	void make_recruiter();
 	bool can_recruit() const;
 	int total_movement() const;

@@ -841,7 +841,7 @@ surface floating_label::create_surface()
 		} else {
 			surface background = font::render_text(get_font(font_size_), text_, font::BLACK_COLOUR, 0);
 			background = blur_surface(background,4);
-			background = adjust_surface_alpha(background, 4);
+			background = adjust_surface_alpha(background, ftofxp(4.0));
 
 			surf_.assign(background);
 		}

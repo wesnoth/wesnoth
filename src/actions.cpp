@@ -142,7 +142,7 @@ std::string recruit_unit(const gamemap& map, int side,
 
 	if(show) {
 
-		for(double alpha = 0.0; alpha <= 1.0; alpha += 0.1) {
+		for(fixed_t alpha = ftofxp(0.0); alpha <= ftofxp(1.0); alpha += ftofxp(0.1)) {
 			events::pump();
 			disp->draw_tile(recruit_location.x,recruit_location.y,NULL,alpha);
 			disp->update_display();
@@ -1220,7 +1220,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 			if(show_healing) {
 				if(is_odd(h->second))
-					disp.draw_tile(loc.x,loc.y,NULL,0.5,heal_colour);
+					disp.draw_tile(loc.x,loc.y,NULL,ftofxp(0.5),heal_colour);
 				else
 					disp.draw_tile(loc.x,loc.y);
 
@@ -1238,7 +1238,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 			if(show_healing) {
 				if(is_odd(h->second))
-					disp.draw_tile(loc.x,loc.y,NULL,0.5,damage_colour);
+					disp.draw_tile(loc.x,loc.y,NULL,ftofxp(0.5),damage_colour);
 				else
 					disp.draw_tile(loc.x,loc.y);
 
