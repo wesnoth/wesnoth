@@ -15,7 +15,7 @@
 
 #include "log.hpp"
 #include "map.hpp"
-#include "pathfind.hpp"
+#include "pathutils.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
