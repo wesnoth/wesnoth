@@ -112,7 +112,7 @@ const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
                 BLACK_COLOUR  = {0x00,0x00,0x00,0},
                 DARK_COLOUR   = {0x00,0x00,0x66,0},
                 YELLOW_COLOUR = {0xFF,0xFF,0x00,0},
-                BUTTON_COLOUR = {0xFF,0xFF,0x00,0};
+                BUTTON_COLOUR = {0xBC,0xB0,0x88,0};
 
 const SDL_Color& get_side_colour(int side)
 {
