@@ -13,6 +13,7 @@
 #ifndef UTIL_H_INCLUDED
 #define UTIL_H_INCLUDED
 
+#include <cmath>
 #include <map>
 
 //instead of playing with VC++'s crazy definitions of min and max,
@@ -34,5 +35,14 @@ inline bool is_odd(T num) { return (static_cast<unsigned int>(num)&1) == 1; }
 
 template<typename T>
 inline bool is_even(T num) { return !is_odd(num); }
+
+//place in our own namespace as to not clash with possible
+//standard library definitions
+namespace util {
+
+template<typename T>
+T round(T n) { return floor(n + 0.5); }
+
+}
 
 #endif

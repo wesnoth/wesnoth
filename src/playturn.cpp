@@ -19,6 +19,7 @@
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
+#include "util.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -238,13 +239,15 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					att << attack_name << " (" << attack_type
 					    << ") " << stats.damage_defender_takes << "-"
 						<< stats.nattacks << " " << range << " "
-						<< int(round(100.0*stats.chance_to_hit_defender))<< "%";
+						<< int(util::round(100.0*stats.chance_to_hit_defender))
+					    << "%";
 
 					att << "," << string_table["versus"] << ",";
 					att << defend_name << " (" << defend_type
 					    << ") " << stats.damage_attacker_takes << "-"
 						<< stats.ndefends << " "
-						<< int(round(100.0*stats.chance_to_hit_attacker))<< "%";
+						<< int(util::round(100.0*stats.chance_to_hit_attacker))
+					    << "%";
 
 					items.push_back(att.str());
 					units_list.push_back(enemy->second);
@@ -696,7 +699,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					prefix = "#";
 				}
 
-				const int resist = 100 - int(round(100.0*resistance));
+				const int resist = 100 - int(util::round(100.0*resistance));
 
 				const std::string& lang_weapon =
 				               string_table["weapon_type_" + i->first];
@@ -741,7 +744,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 					const double defense = move_type.defense_modifier(map,*t);
 
-					const int def = 100-int(round(100.0*defense));
+					const int def = 100-int(util::round(100.0*defense));
 
 					std::stringstream str;
 					str << lang_name << ",";
