@@ -515,7 +515,6 @@ msgid "Dawn"
 msgstr "Aube"
 
 #: data/help.cfg:138
-#, fuzzy
 msgid ""
 "Wesnoth games usually take place with a regular cycle between day and night. "
 "The current time of day can be observed under the minimap in the upper "
@@ -528,7 +527,8 @@ msgstr ""
 "entre le jour et la nuit. L'heure courante peut être observée sous la mini-"
 "carte en haut à droite.\n"
 "\n"
-"Le cycle habituel jour/nuit est le suivant :"
+"Le cycle habituel jour/nuit est le suivant :\n"
+"\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -1169,23 +1169,20 @@ msgstr "Par défaut"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/multiplayer_client.cpp:664
-#, fuzzy
 msgid "Random"
-msgstr "Carte aléatoire"
+msgstr "Aléatoire"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Loyalistes"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
-#, fuzzy
 msgid "Rebels"
-msgstr "Vétérans rappelés"
+msgstr "Rebelles"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
-#, fuzzy
 msgid "Northerners"
-msgstr "Hiver au nord"
+msgstr "Nordiques"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:127
@@ -1193,14 +1190,12 @@ msgid "Undead"
 msgstr "Morts-vivants"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "Une alliance elfe"
+msgstr "Alliance Knalgane"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Drake du firmament"
+msgstr "Drakes"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -1219,9 +1214,8 @@ msgid "Orcs"
 msgstr "Orcs"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Château nain"
+msgstr "Nains"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
@@ -1236,17 +1230,14 @@ msgid "Great War"
 msgstr "Grande Guerre"
 
 #: data/multiplayer.cfg:311
-#, fuzzy
 msgid "Alliance of Light"
-msgstr "Mage de lumière"
+msgstr "Alliance de la Lumière"
 
 #: data/multiplayer.cfg:324
-#, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,Alliance des Ténèbres"
+msgstr "Alliance des Ténèbres"
 
 #: data/scenario-test.cfg:38
-#, fuzzy
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
@@ -5615,7 +5606,6 @@ msgid "Goblin Impaler"
 msgstr "Empaleur gobelin"
 
 #: data/units/Goblin_Impaler.cfg:17
-#, fuzzy
 msgid ""
 "Goblins tend to try and make up for their general idiocy, frailty, and lack "
 "of sophisticated weaponry by attempting to overwhelm their foes by sheer "
@@ -5624,9 +5614,10 @@ msgid ""
 "them to deal the first strike in melee."
 msgstr ""
 "Les gobelins ont tendance à essayer de compenser leur idiotie, leur "
-"fragilité, et leur manque d'armes sophistiquées en utilisant d'écraser "
-"l'ennemi sous leur nombre. Ceux-ci sont plus grands, et meilleurs "
-"combattants, que les lanciers gobelins."
+"fragilité, et leur manque d'armes sophistiquées en essayant de submerger "
+"l'ennemi sous leur nombre. Ceux qui ont tant bien que mal réussi à survivre "
+"à l'enfer des batailles finissent toujours par s'équiper d'une lance bien "
+"plus grande leur permettant d'avoir l'initiative au corps-à-corps."
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -5668,7 +5659,6 @@ msgid "Goblin Spearman"
 msgstr "Lancier gobelin"
 
 #: data/units/Goblin_Spearman.cfg:17
-#, fuzzy
 msgid ""
 "Goblins tend to try and make up for their general idiocy, frailty, and lack "
 "of sophisticated weaponry by attempting to overwhelm their foes by sheer "
@@ -5677,10 +5667,10 @@ msgid ""
 "forward to becoming Goblin Impalers."
 msgstr ""
 "Les gobelins ont tendance à essayer de compenser leur idiotie, leur "
-"fragilité, et leur manque d'armes sophistiquées en utilisant d'écraser "
-"l'ennemi sous leur nombre. Bien que dépourvus d'armes ou d'armures, ces "
-"faibles lanciers sont bien équipés pour une guerre d'usure. Les meilleurs "
-"lanciers gobelins peuvent espérer devenir des empaleurs gobelins."
+"fragilité, et leur manque d'armes sophistiquées en essayant de submerger "
+"l'ennemi sous leur nombre. Bien que dépourvus d'armes ou d'armures de "
+"qualité, ces faibles lanciers sont bien équipés pour une guerre d'usure. Les "
+"meilleurs lanciers gobelins peuvent espérer devenir des empaleurs gobelins."
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -5791,12 +5781,10 @@ msgstr ""
 "découvrent le monde des cieux sur le dos de ces créatures volantes."
 
 #: data/units/Halbardier.cfg:3
-#, fuzzy
 msgid "Halberdier"
 msgstr "Hallebardier"
 
 #: data/units/Halbardier.cfg:18
-#, fuzzy
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -5805,10 +5793,12 @@ msgid ""
 "can keep further than the end of their weapons, but find some difficulty in "
 "very close combat."
 msgstr ""
-"Les meilleurs parmi les épéistes sont choisi pour devenir des hallebardiers. "
-"Certes un peu plus lentes que les épées, leurs armes peuvent donner des "
-"coups mortels et, grâce à leur allonge, accordent aux hallebardiers le "
-"premier coup lors des combats, même lorsqu'ils se défendent."
+"Les meilleurs soldats sont choisis pour devenir des hallebardiers. Certes un "
+"peu plus lente que l'épée, leur arme peut donner des coups mortels, et grâce "
+"à son allonge, elle accorde aux hallebardiers l'initiative lors des "
+"affrontements, même lorsqu'ils se défendent. Les hallebardiers n'ont aucune "
+"difficulté à maîtriser les troupes qu'ils peuvent tenir à distance grâce à "
+"leur arme, mais ils risquent quelques mésaventures en combat très rapproché."
 
 #: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
 msgid "halberd"
@@ -6339,7 +6329,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Myrmidon.cfg:38
-#, fuzzy
 msgid "Nagini Myrmidon"
 msgstr "Myrmidon naga"
 
@@ -6477,7 +6466,6 @@ msgstr ""
 "être sous-estimée."
 
 #: data/units/Ogre.cfg:19 data/units/Young_Ogre.cfg:18
-#, fuzzy
 msgid "cleaver"
 msgstr "hachoir à viande"
 
@@ -6804,7 +6792,6 @@ msgid "Pikeman"
 msgstr "Piquier"
 
 #: data/units/Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Pikemen are more experienced soldiers who have changed their spears for long "
 "pikes. Because of the length of their weapons, they always strike first in "
@@ -6815,7 +6802,8 @@ msgstr ""
 "Les piquiers sont des soldats expérimentés qui ont troqué leurs lances "
 "contre de longues piques. Grâce à l'allonge de leur arme, les piquiers "
 "frappent toujours les premiers en combat, même lorsqu'ils se défendent. Ils "
-"sont particulièrement efficaces contre toute cavalerie."
+"sont particulièrement efficaces contre toute cavalerie, mais ils éprouvent "
+"quelques difficultés en combat très rapproché."
 
 #: data/units/Pikeman.cfg:22
 msgid "pike"
@@ -7285,17 +7273,16 @@ msgid "Spearman"
 msgstr "Lancier"
 
 #: data/units/Spearman.cfg:16
-#, fuzzy
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
-"Le lancier forme la base des armées humaines. Ces jeunes soldats ont reçu un "
-"entraînement de base et sont envoyés sur les lignes de front pour former le "
-"gros des troupes. À cause de la longueur de leurs lances, ils frappent les "
-"premiers en combat et ceci même s'ils se défendent."
+"Les lanciers forment la base des armées humaines. Ces jeunes soldats ont "
+"reçu un entraînement de base et sont envoyés au front pour former le gros "
+"des troupes. Grâce à la longueur de leurs lances, ils frappent les premiers "
+"en combat et ceci même lorsqu'ils se défendent."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
@@ -7727,9 +7714,8 @@ msgid "+Miscellaneous"
 msgstr "+Divers"
 
 #: src/about.cpp:139
-#, fuzzy
 msgid "+Internationalization Managers"
-msgstr "+Coordinateur des traductions"
+msgstr "+Coordinateurs des traductions"
 
 #: src/about.cpp:146
 msgid "+Basque Translation"
@@ -8082,19 +8068,16 @@ msgid "The game could not be saved"
 msgstr "Le jeu ne peut pas être sauvegardé"
 
 #: src/game.cpp:166 src/game.cpp:888 src/game.cpp:1278
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "Le jeu ne peut pas être sauvegardé"
+msgstr "Le jeu n'a pas pu être chargé : "
 
 #: src/game.cpp:169 src/game.cpp:890 src/game.cpp:1280
-#, fuzzy
 msgid "Error while playing the game: "
-msgstr "Erreur d'E/S en chargeant le jeu"
+msgstr "Erreur lors du déroulement de la partie : "
 
 #: src/game.cpp:172 src/game.cpp:1292
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "Le jeu ne peut pas être sauvegardé"
+msgstr "La carte n'a pas pu être chargée : "
 
 #: src/game.cpp:193
 msgid "Do you want to save your game?"
@@ -8102,7 +8085,7 @@ msgstr "Voulez-vous sauvegarder votre jeu ?"
 
 #: src/game.cpp:214
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Scénario inconnu : '"
 
 #: src/game.cpp:603
 msgid "The Battle for Wesnoth"
@@ -8117,18 +8100,16 @@ msgstr ""
 "Voulez-vous essayer de la charger ?"
 
 #: src/game.cpp:828 src/game.cpp:831
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Le fichier sauvegardé est corrompu"
+msgstr "Le fichier que vous avez essayé de charger est corrompu : '"
 
 #: src/game.cpp:834
 msgid "File I/O Error while reading the game"
 msgstr "Erreur d'E/S en chargeant le jeu"
 
 #: src/game.cpp:939
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr " ,Récupérer d'autres campagnes..."
+msgstr "Récupérer d'autres campagnes..."
 
 #: src/game.cpp:940
 msgid "Download more campaigns from a server on Internet."
@@ -8176,18 +8157,16 @@ msgid "Name"
 msgstr "Nom"
 
 #: src/game.cpp:1042
-#, fuzzy
 msgid "Author"
-msgstr "épines"
+msgstr "Auteur"
 
 #: src/game.cpp:1043
 msgid "Downloads"
-msgstr ""
+msgstr "Téléchargements"
 
 #: src/game.cpp:1044
-#, fuzzy
 msgid "Size"
-msgstr "Sirène"
+msgstr "Taille"
 
 #: src/game.cpp:1063
 msgid "B"
@@ -8231,11 +8210,11 @@ msgstr "Campagne installée"
 
 #: src/game.cpp:1136
 msgid "The campaign has been installed."
-msgstr "La campagne a été installée"
+msgstr "La campagne a été installée."
 
 #: src/game.cpp:1138
 msgid "Network communication error."
-msgstr "Erreur de communication réseau;"
+msgstr "Erreur de communication réseau."
 
 #: src/game.cpp:1140
 msgid "Remote host disconnected."
@@ -8245,7 +8224,7 @@ msgstr "Serveur distant déconnecté."
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
-"Il s'est produit un problème pendant la création des fichiers nécessaires à "
+"Il y a eu un problème lors de la création des fichiers nécessaires à "
 "l'installation de cette campagne."
 
 #: src/game.cpp:1154 src/game.cpp:1193 src/game.cpp:1218
@@ -8319,12 +8298,11 @@ msgstr "Choisissez votre langue"
 
 #: src/game.cpp:1356
 msgid "Error loading game configuration files: '"
-msgstr ""
+msgstr "Erreur lors du chargement des fichiers de configuration du jeu : '"
 
 #: src/game.cpp:1357
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "La partie est terminé."
+msgstr "' (Le jeu va maintenant se terminer)"
 
 #: src/help.cpp:1021
 msgid "Advances to"
@@ -8592,9 +8570,8 @@ msgid "Era"
 msgstr "Ère"
 
 #: src/multiplayer.cpp:343
-#, fuzzy
 msgid "You must enter a name."
-msgstr "Vous devez avoir au moins"
+msgstr "Vous devez entrer un nom."
 
 #: src/multiplayer.cpp:360
 msgid "Unlimited"
@@ -8805,7 +8782,7 @@ msgstr "Places vacantes"
 
 #: src/multiplayer_lobby.cpp:159
 msgid "<no games open>"
-msgstr ""
+msgstr "<aucune partie en cours>"
 
 #: src/multiplayer_lobby.cpp:163
 msgid "Observe Game"
