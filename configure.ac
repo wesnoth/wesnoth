@@ -730,7 +730,8 @@ fi
 # Tune gettext stuff for our needs                                    #
 #######################################################################
 
-rm -rf translations
+AC_CONFIG_COMMANDS([translations],
+[rm -rf translations
 case $srcdir in
 /*) topdir=$srcdir ;;
 *)  topdir=`pwd`/$srcdir ;;
@@ -744,12 +745,15 @@ do
     ln -s $topdir/po/Makefile.in.in po/$domain/Makefile.in.in
 
     # Symlinks that allow message catalogs to be used from build tree
-    for lang in `cat $srcdir/po/$domain/LINGUAS`
-    do
-        mkdir -p translations/$lang/LC_MESSAGES
-	ln -s $topdir/po/$domain/$lang.gmo translations/$lang/LC_MESSAGES/$domain.mo
-    done
-done
+    if test -w $srcdir; then
+	for lang in `cat $srcdir/po/$domain/LINGUAS`
+	do
+	    mkdir -p $srcdir/translations/$lang/LC_MESSAGES
+	    rm -f $srcdir/translations/$lang/LC_MESSAGES/$domain.mo
+	    ln -s $topdir/po/$domain/$lang.gmo $srcdir/translations/$lang/LC_MESSAGES/$domain.mo
+	done
+    fi
+done])
 
 #######################################################################
 # Data file substitution.                                             #
