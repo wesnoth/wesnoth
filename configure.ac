@@ -79,7 +79,7 @@ AC_SUBST([KDE_ICON])
 # Checks for libraries.                                               #
 #######################################################################
 
-SDL_LIBS=`$SDL_CONFIG --libs`
+SDL_LIBS=`$SDL_CONFIG --static-libs`
 OLD_LIBS=$LIBS
 LIBS="$LIBS $SDL_LIBS"
 
@@ -131,8 +131,9 @@ OLD_CPPFLAGS=$CPPFLAGS
 OLD_CXXFLAGS=$CXXFLAGS
 
 SDL_CFLAGS=`$SDL_CONFIG --cflags`
-CPPFLAGS="$CFLAGS $SDL_CFLAGS"
-CXXFLAGS="$CFLAGS $SDL_CFLAGS"
+SDL_CFLAGS="$SDL_CFLAGS"
+CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
+CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
 
 
 AC_CHECK_HEADER([SDL.h],
@@ -196,15 +197,15 @@ OLD_CPPFLAGS=$CPPFLAGS
 OLD_CXXFLAGS=$CXXFLAGS
 OLD_LIBS=$LIBS
 
-CPPFLAGS="$CFLAGS $SDL_CFLAGS"
-CXXFLAGS="$CFLAGS $SDL_CFLAGS"
+CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
+CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS $SDL_IMAGE_LIBS"
 
 AC_TRY_RUN([
 #include <SDL_image.h>
 #include <stdlib.h>
 
-int main(void)
+int main(int argc, char **argv)
 {
 	SDL_RWops *src;
 
@@ -228,14 +229,38 @@ LIBS=$OLD_LIBS
 # Check for OGG support in SDL_mixer                                  #
 #######################################################################
 
+AC_MSG_CHECKING([for OGG support in SDL_mixer])
+
+OLD_CPPFLAGS=$CPPFLAGS
+OLD_CXXFLAGS=$CXXFLAGS
 OLD_LIBS=$LIBS
+
+CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
+CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS $SDL_MIXER_LIBS"
 
-AC_CHECK_LIB([SDL_mixer],
-	     [OGG_new],
-	     ,
-	     [AC_MSG_WARN([*** SDL_mixer has no OGG support. You won't have music in the game.])])
+AC_TRY_RUN([
+#include <SDL_mixer.h>
+#include <stdlib.h>
 
+int main(int argc, char **argv)
+{
+	char *music;
+
+	music = (char *) OGG_new("music/wesnoth-1.ogg");
+	if (music == NULL)
+		exit(1);
+	exit(0);
+}
+	],
+	[AC_MSG_RESULT(yes)],
+	[AC_MSG_RESULT(no)]
+	[AC_MSG_ERROR([*** SDL_mixer has no OGG support! You need SDL_mixer with OGG support])],
+	[AC_MSG_RESULT[not tested in cross-compiling]])
+
+
+CPPFLAGS=$OLD_CPPFLAGS
+CXXFLAGS=$OLD_CXXFLAGS
 LIBS=$OLD_LIBS
 
 
@@ -246,6 +271,11 @@ LIBS=$OLD_LIBS
 AC_ARG_ENABLE(debug,
 	      [  --enable-debug        Enable debug in wesnoth],
 	      CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3")
+
+AC_ARG_ENABLE([static],
+              [  --enable-static       Enable static building of wesnoth],
+	      [CXXFLAGS="$CXXFLAGS -static"]
+	      [LIBS="$LIBS -static"])
 
 DATADIR=$PACKAGE
 AC_ARG_ENABLE(datadir-name,
