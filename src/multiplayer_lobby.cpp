@@ -145,6 +145,7 @@ void lobby::process_event()
 	games_menu_.process();
 
 	int selection = games_menu_.selection();
+
 	if(selection != current_game_ && selection >= 0 && selection < int(game_vacant_slots_.size())) {
 		current_game_ = selection;
 		join_game_.hide(!game_vacant_slots_[selection]);
@@ -152,8 +153,9 @@ void lobby::process_event()
 	}
 
 	const bool games_available = game_vacant_slots_.empty() == false;
+	wassert(!games_available || selection >= 0 && selection < int(game_vacant_slots_.size()));
 	const bool double_click = games_menu_.double_clicked();
-	const bool observe = observe_game_.pressed() || !games_available && double_click;
+	const bool observe = observe_game_.pressed() || games_available && !game_vacant_slots_[selection] && double_click;
 
 	if(games_available && (observe || join_game_.pressed() || double_click)) {
 		const size_t index = size_t(games_menu_.selection());
