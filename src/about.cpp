@@ -101,6 +101,7 @@ std::vector<std::string> get_text() {
 
 		_("+Scenario Designers"),
 		"-   Benjamin Drieu",
+		"-   Dacyn",
 		"-   David White (Sirp)",
 		"-   Francisco Muñoz (fmunoz)",
 		"-   James Spencer (Shade)",
@@ -186,6 +187,7 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		_("+Italian Translation"),
+		"-   Alessio D'Ascanio (otaku)",
 		"-   crys0000",
 		"-   Federico Tomassetti",
 		"-   isazi",
