@@ -1168,7 +1168,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	const int width = 300;			  // FIXME: should compute this, but using what data ?
 	const int height = 220;
 #else
-	const int width = 600;
+	const int width = 700;
 	const int height = 500;
 #endif
 	const int xpos = centerx  - width/2;
@@ -1183,8 +1183,8 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	
 	SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_PLUS,
-			           font::NORMAL_COLOUR,_("Press desired HotKey"),
-						0, 0);
+					     font::NORMAL_COLOUR,_("Press desired HotKey"),
+					     0, 0);
 
 	std::vector<std::string> menu_items;
 
