@@ -162,6 +162,9 @@ bool show_intro_part(display& screen, const config& part,
 			surface img(image::get_image(image_name,image::UNSCALED));
 			if(img.null()) continue;
 
+			if ((**i)["flip"] == "yes")
+				img.assign(image::reverse_image(img));
+
 			SDL_Rect image_rect;
 			image_rect.x = x + dstrect.x;
 			image_rect.y = y + dstrect.y;
