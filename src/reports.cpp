@@ -197,7 +197,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 			for(std::map<int,std::vector<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
 				std::sort(resist->second.begin(),resist->second.end());
-				tooltip << (resist->first >= 0 ? "+" : "") << resist->first << "% vs ";
+				tooltip << (resist->first >= 0 ? "+" : "") << resist->first << "% " << string_table["versus"] << " ";
 				for(std::vector<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
 					if(i != resist->second.begin()) {
 						tooltip << ",";

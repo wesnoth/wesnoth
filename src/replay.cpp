@@ -611,7 +611,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string& team_name = (*child)["team_name"];
 			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
 				if(preferences::message_bell()) {
-					sound::play_sound("bell.wav");
+					sound::play_sound(game_config::sounds::receive_message);
 				}
 
 				const int side = lexical_cast_default<int>((*child)["side"].c_str());

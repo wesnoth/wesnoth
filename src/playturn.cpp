@@ -70,7 +70,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	const paths_wiper wiper(gui);
 
 	if(preferences::turn_bell()) {
-		sound::play_sound("bell.wav");
+		sound::play_sound(game_config::sounds::turn_bell);
 	}
 
 	if(preferences::turn_dialog()) {

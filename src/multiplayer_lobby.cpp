@@ -1,6 +1,7 @@
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
+#include "game_config.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
 #include "key.hpp"
@@ -9,6 +10,7 @@
 #include "network.hpp"
 #include "preferences.hpp"
 #include "show_dialog.hpp"
+#include "sound.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
@@ -344,11 +346,21 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 					game_data = data;
 					break;
 				} else if(data.child("gamelist_diff")) {
+					const int old_users = game_data.get_children("user").size();
 					game_data.apply_diff(*data.child("gamelist_diff"));
+					const int new_users = game_data.get_children("user").size();
+					if(new_users < old_users) {
+						sound::play_sound(game_config::sounds::user_leave);
+					} else if(new_users > old_users) {
+						sound::play_sound(game_config::sounds::user_arrive);
+					}
+
 					break;
 				} else if(data.child("error")) {
 					throw network::error((*data.child("error"))["message"]);
 				} else if(data.child("message")) {
+					sound::play_sound(game_config::sounds::receive_message);
+
 					const config& msg = *data.child("message");
 					std::stringstream message;
 					message << "<" << msg["sender"] << ">  " << msg["message"];

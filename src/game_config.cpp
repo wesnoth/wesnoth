@@ -55,6 +55,15 @@ namespace game_config
 	std::string unchecked_menu_image = "buttons/checkbox.png";
 	std::string checked_menu_image = "buttons/checkbox-pressed.png";
 
+	namespace sounds {
+		const std::string turn_bell = "bell.wav",
+		                  receive_message = "receive.wav",
+						  user_arrive = "arrive.wav",
+						  user_leave = "leave.wav";
+	}
+
+
+
 #ifdef WESNOTH_PATH
 	std::string path = WESNOTH_PATH;
 #else

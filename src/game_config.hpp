@@ -45,6 +45,10 @@ namespace game_config
 
 	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding;
 
+	namespace sounds {
+		extern const std::string turn_bell, receive_message, user_arrive, user_leave;
+	}
+
 	void load_config(const config* cfg);
 }
 
