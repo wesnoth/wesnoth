@@ -1,25 +1,31 @@
-CVS HEAD:
+Version 0.6.99.4:
  * added alpha channel
  * new tutorial
  * theme update
- * more unit graphics, animations, attack icons
+ * more unit graphics, animations and attack icons
+ * new music added
  * resting implemented: units that don't do anything for a turn get few hitpoints back
+ * 'Mage of Light' gives advantage also at dawn
+ * multiplayer changes
+   * Knalgan Alliance: dwarves and their allies
+   * Rebels can't recruit dwarves or thieves anymore
+   * ally village ownership information is shared over fog of war (#7154)
  * synced MANUAL with Wiki
  * language fixes (english)
  * new translations:
    * brazilian
  * sea creatures in Ford of Abez do not attack Li'sar
- * made 'Mage of Light' give an advantage at dawn
  * made energy bars fade out when a unit is killed
  * made circles disappear after a unit is killed
  * made recruiting update fog of war and shroud
  * made it so you can't create units that are off the map
- * fixed missing race=elf for 'Elvish Captain'
  * fixed flaming sword not being found
+ * fixed missing race=elf for 'Elvish Captain'
+ * fixed bug where Elf wouldn't do anything in 'Mages and Elves' scenario
+ * fixed units disappearing on event (#7032)
  * fixed need to be able to escape opening conversation (#7798)
  * fixed problem where some menus would have scroll buttons displayed in top-left corner
  * fixed problem with textbox not processing properly
- * fixed bug where Elf wouldn't do anything in 'Mages and Elves' scenario
  * fixed illegal memory access
  * fixed flop() to work properly
  * workaround to SDL bug
@@ -93,7 +99,7 @@ Version 0.6.99.2:
    * slider updated
    * new buttons
    * status icons in unit information panel
- * Multiplayer improvements:
+ * multiplayer improvements:
    * Loyalists can recruit Horseman
    * Rebels can recruit Dwarves
  * wesnothd.6 manual updated
