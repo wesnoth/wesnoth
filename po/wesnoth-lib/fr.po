@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-11 22:09+0100\n"
+"POT-Creation-Date: 2005-01-25 10:47+0100\n"
 "PO-Revision-Date: 2004-11-15 22:20+0100\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -113,7 +113,7 @@ msgstr "Créer une unité (débug!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Changer le camp de l'unité (débug!)"
 
-#: src/hotkeys.cpp:68 src/preferences.cpp:1017
+#: src/hotkeys.cpp:68 src/preferences.cpp:1005
 msgid "Preferences"
 msgstr "Préférences"
 
@@ -257,7 +257,7 @@ msgstr "Voulez-vous réellement quitter ?"
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/preferences.cpp:150 src/preferences.cpp:201
+#: src/preferences.cpp:149 src/preferences.cpp:200
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -268,184 +268,184 @@ msgstr ""
 "Votre écran doit supporter une résolution de 1024x768x16 pour lancer le jeu "
 "en plein écran."
 
-#: src/preferences.cpp:373
+#: src/preferences.cpp:372
 msgid "player"
 msgstr "joueur"
 
-#: src/preferences.cpp:793
+#: src/preferences.cpp:781
 msgid "Full Screen"
 msgstr "Plein écran"
 
-#: src/preferences.cpp:794
+#: src/preferences.cpp:782
 msgid "Accelerated Speed"
 msgstr "Turbo"
 
-#: src/preferences.cpp:795
+#: src/preferences.cpp:783
 msgid "Skip AI Moves"
 msgstr "Sauter les déplacements de l'IA"
 
-#: src/preferences.cpp:796
+#: src/preferences.cpp:784
 msgid "Show Grid"
 msgstr "Afficher la Grille"
 
-#: src/preferences.cpp:797
+#: src/preferences.cpp:785
 msgid "Show Floating Labels"
 msgstr "Afficher les étiquettes"
 
-#: src/preferences.cpp:798
+#: src/preferences.cpp:786
 msgid "Turn Dialog"
 msgstr "Dialogue en fin de tour"
 
-#: src/preferences.cpp:799
+#: src/preferences.cpp:787
 msgid "Turn Bell"
 msgstr "Cloche en fin de tour"
 
-#: src/preferences.cpp:800
+#: src/preferences.cpp:788
 msgid "Show Team Colors"
 msgstr "Montrer les couleurs des équipes"
 
-#: src/preferences.cpp:801
+#: src/preferences.cpp:789
 msgid "Show Color Cursors"
 msgstr "Utiliser les curseurs colorés"
 
-#: src/preferences.cpp:802
+#: src/preferences.cpp:790
 msgid "Show Haloing Effects"
 msgstr "Afficher les effets de halo"
 
-#: src/preferences.cpp:803
+#: src/preferences.cpp:791
 msgid "Video Mode"
 msgstr "Mode vidéo"
 
-#: src/preferences.cpp:804
+#: src/preferences.cpp:792
 msgid "Hotkeys"
 msgstr "Raccourcis clavier"
 
-#: src/preferences.cpp:805
+#: src/preferences.cpp:793
 msgid "Adjust Gamma"
 msgstr "Gamma de l'écran"
 
-#: src/preferences.cpp:806
+#: src/preferences.cpp:794
 msgid "Music Volume:"
 msgstr "Volume de la musique :"
 
-#: src/preferences.cpp:806
+#: src/preferences.cpp:794
 msgid "SFX Volume:"
 msgstr "Volume des effets sonores :"
 
-#: src/preferences.cpp:807
+#: src/preferences.cpp:795
 msgid "Gamma:"
 msgstr "Gamma "
 
-#: src/preferences.cpp:807
+#: src/preferences.cpp:795
 msgid "Scroll Speed:"
 msgstr "Vitesse de défilement :"
 
-#: src/preferences.cpp:820
+#: src/preferences.cpp:808
 msgid "Change the sound effects volume"
 msgstr "Modifier le volume des effets sonores"
 
-#: src/preferences.cpp:825
+#: src/preferences.cpp:813
 msgid "Change the music volume"
 msgstr "Modifier le volume de la musique"
 
-#: src/preferences.cpp:830
+#: src/preferences.cpp:818
 msgid "Change the speed of scrolling around the map"
 msgstr "Modifier la vitesse de défilement de la carte"
 
-#: src/preferences.cpp:833 src/preferences.cpp:838
+#: src/preferences.cpp:821 src/preferences.cpp:826
 msgid "Change the brightness of the display"
 msgstr "Modifier la luminosité de l'écran"
 
-#: src/preferences.cpp:841
+#: src/preferences.cpp:829
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Choisir entre le mode plein écran et le mode fenêtré"
 
-#: src/preferences.cpp:844
+#: src/preferences.cpp:832
 msgid "Make units move and fight faster"
 msgstr "Accélérer les déplacements et combats"
 
-#: src/preferences.cpp:847
+#: src/preferences.cpp:835
 msgid "Do not animate AI units moving"
 msgstr "Ne pas animer les déplacements des unités de l'ordinateur"
 
-#: src/preferences.cpp:850
+#: src/preferences.cpp:838
 msgid "Overlay a grid onto the map"
 msgstr "Afficher une grille en surimpression sur la carte"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:841
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Afficher au dessus d'une unité touchée la quantité de dégâts reçus"
 
-#: src/preferences.cpp:855
+#: src/preferences.cpp:843
 msgid "Change the resolution the game runs at"
 msgstr "Changer la résolution d'écran utilisée par le jeu"
 
-#: src/preferences.cpp:858
+#: src/preferences.cpp:846
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Afficher un message au début de votre tour"
 
-#: src/preferences.cpp:861
+#: src/preferences.cpp:849
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Jouer un son de cloche au début de votre tour"
 
-#: src/preferences.cpp:864
+#: src/preferences.cpp:852
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Afficher sous l'unité un cercle de la couleur de son camp"
 
-#: src/preferences.cpp:867
+#: src/preferences.cpp:855
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Utiliser les curseurs souris colorés (possible ralentissement)"
 
-#: src/preferences.cpp:870
+#: src/preferences.cpp:858
 msgid "Use graphical special effects (may be slower)"
 msgstr "Utiliser les effets spéciaux (possible ralentissement)"
 
-#: src/preferences.cpp:872
+#: src/preferences.cpp:860
 msgid "View and configure keyboard shortcuts"
 msgstr "Voir et configurer les raccourcis clavier"
 
-#: src/preferences.cpp:1005
+#: src/preferences.cpp:993
 msgid "Prefs section^General"
 msgstr "Général"
 
-#: src/preferences.cpp:1006
+#: src/preferences.cpp:994
 msgid "Prefs section^Display"
 msgstr "Vidéo"
 
-#: src/preferences.cpp:1007
+#: src/preferences.cpp:995
 msgid "Prefs section^Sound"
 msgstr "Audio"
 
-#: src/preferences.cpp:1063
+#: src/preferences.cpp:1051
 msgid "There are no alternative video modes available"
 msgstr "Il n'y a pas d'autres modes vidéo disponibles"
 
-#: src/preferences.cpp:1092
+#: src/preferences.cpp:1080
 msgid "Choose Resolution"
 msgstr "Choisissez une résolution"
 
-#: src/preferences.cpp:1115
+#: src/preferences.cpp:1103
 msgid "Close Window"
 msgstr "Fermer la fenêtre"
 
-#: src/preferences.cpp:1120
+#: src/preferences.cpp:1108
 msgid "Hotkey Settings"
 msgstr "Configuration des raccourcis clavier"
 
-#: src/preferences.cpp:1124 src/preferences.cpp:1168
+#: src/preferences.cpp:1112 src/preferences.cpp:1156
 msgid "Press desired HotKey"
 msgstr "Pressez la touche désirée"
 
-#: src/preferences.cpp:1145
+#: src/preferences.cpp:1133
 msgid "Change Hotkey"
 msgstr "Modifier le raccourci"
 
-#: src/preferences.cpp:1148
+#: src/preferences.cpp:1136
 msgid "Save Hotkeys"
 msgstr "Sauver les touches de raccourci"
 
-#: src/preferences.cpp:1194
+#: src/preferences.cpp:1182
 msgid "This HotKey is already in use."
 msgstr "Cette touche est déjà utilisée."

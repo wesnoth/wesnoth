@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-21 00:15+0100\n"
+"POT-Creation-Date: 2005-01-25 10:47+0100\n"
 "PO-Revision-Date: 2004-09-13 17:48+0200\n"
 "Last-Translator: Mathias Bundgaard Svensson <freaken@freaken.dk>\n"
 "Language-Team:  <da@li.org>\n"
@@ -46,11 +46,11 @@ msgstr "Introduktion"
 msgid "Gameplay"
 msgstr "Gameplay"
 
-#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2096
+#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2099
 msgid "Traits"
 msgstr "Karaktertræk"
 
-#: data/help.cfg:28 src/playturn.cpp:1666
+#: data/help.cfg:28 src/playturn.cpp:1664
 msgid "Units"
 msgstr "Enheder"
 
@@ -840,7 +840,7 @@ msgid "Default"
 msgstr "Standard"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
-#: data/multiplayer.cfg:305 src/multiplayer_client.cpp:673
+#: data/multiplayer.cfg:305 src/multiplayer_client.cpp:675
 #, fuzzy
 msgid "Random"
 msgstr "Tilfældig bane"
@@ -1075,7 +1075,7 @@ msgstr "Ja!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:490
+#: src/show_dialog.cpp:491
 msgid "No"
 msgstr "Nej"
 
@@ -1628,7 +1628,7 @@ msgstr "Vil du gennemse nogen af de færdigheder du lærte på dette level?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:489
+#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr "Ja"
 
@@ -2234,13 +2234,13 @@ msgid "End Turn"
 msgstr "Slut Tur"
 
 #: data/themes/default.cfg:153 src/dialogs.cpp:661 src/display.cpp:946
-#: src/help.cpp:1060 src/playturn.cpp:2094 src/unit.cpp:1058
+#: src/help.cpp:1060 src/playturn.cpp:2097 src/unit.cpp:1055
 msgid "HP"
 msgstr "HP"
 
 #: data/themes/default.cfg:162 src/dialogs.cpp:665 src/dialogs.cpp:673
-#: src/display.cpp:950 src/display.cpp:958 src/playturn.cpp:1934
-#: src/playturn.cpp:2095 src/unit.cpp:1117
+#: src/display.cpp:950 src/display.cpp:958 src/playturn.cpp:1937
+#: src/playturn.cpp:2098 src/unit.cpp:1114
 msgid "XP"
 msgstr "XP"
 
@@ -3056,9 +3056,9 @@ msgstr "magi"
 #: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Lord.cfg:117
 #: data/units/Mage.cfg:39 data/units/Mage.cfg:106
 #: data/units/Mage_of_Light.cfg:48 data/units/Mage_of_Light.cfg:108
-#: data/units/Mermaid_Diviner.cfg:37 data/units/Mermaid_Enchantress.cfg:35
+#: data/units/Mermaid_Diviner.cfg:37 data/units/Mermaid_Enchantress.cfg:37
 #: data/units/Mermaid_Initiate.cfg:37 data/units/Mermaid_Priestess.cfg:35
-#: data/units/Mermaid_Siren.cfg:26 data/units/Mermaid_Siren.cfg:37
+#: data/units/Mermaid_Siren.cfg:28 data/units/Mermaid_Siren.cfg:71
 #: data/units/Necromancer.cfg:37 data/units/Princess.cfg:80
 #: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:112
 #: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
@@ -3120,10 +3120,10 @@ msgstr "knus"
 #: data/units/Great_Troll.cfg:21 data/units/Heavy_Infantryman.cfg:20
 #: data/units/Horse_Lord.cfg:44 data/units/Iron_Mauler.cfg:20
 #: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:90
-#: data/units/Mermaid_Diviner.cfg:27 data/units/Mermaid_Enchantress.cfg:24
-#: data/units/Mermaid_Enchantress.cfg:33 data/units/Mermaid_Initiate.cfg:21
+#: data/units/Mermaid_Diviner.cfg:27 data/units/Mermaid_Enchantress.cfg:21
+#: data/units/Mermaid_Enchantress.cfg:35 data/units/Mermaid_Initiate.cfg:21
 #: data/units/Mermaid_Initiate.cfg:35 data/units/Mermaid_Priestess.cfg:25
-#: data/units/Mermaid_Siren.cfg:24 data/units/Mermaid_Siren.cfg:35
+#: data/units/Mermaid_Siren.cfg:26 data/units/Mermaid_Siren.cfg:69
 #: data/units/Merman_Entangler.cfg:27 data/units/Merman_Netcaster.cfg:27
 #: data/units/Mounted_Captain.cfg:47 data/units/Mounted_Commander.cfg:47
 #: data/units/Mounted_Fighter.cfg:44 data/units/Mounted_Warrior.cfg:44
@@ -3164,7 +3164,7 @@ msgstr ""
 #: data/units/Elvish_Druid.cfg:23 data/units/Elvish_Enchantress.cfg:25
 #: data/units/Elvish_Shaman.cfg:24 data/units/Elvish_Sorceress.cfg:25
 #: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:100
-#: data/units/Mermaid_Diviner.cfg:26 data/units/Mermaid_Enchantress.cfg:23
+#: data/units/Mermaid_Diviner.cfg:26 data/units/Mermaid_Enchantress.cfg:20
 #: data/units/Mermaid_Initiate.cfg:20 data/units/Mermaid_Priestess.cfg:24
 #: data/units/Necromancer.cfg:19 data/units/Orcish_Shaman.cfg:19
 #: data/units/Orcish_Shaman.cfg:78 data/units/Orcish_Shaman.cfg:137
@@ -5301,7 +5301,7 @@ msgstr ""
 msgid "female^Mermaid Enchantress"
 msgstr ""
 
-#: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
+#: data/units/Mermaid_Enchantress.cfg:17 data/units/Mermaid_Siren.cfg:17
 #: data/units/Merman.cfg:19 data/units/Merman_Entangler.cfg:15
 #: data/units/Merman_Fighter.cfg:19 data/units/Merman_Hunter.cfg:15
 #: data/units/Merman_Javelineer.cfg:15 data/units/Merman_Netcaster.cfg:15
@@ -5313,8 +5313,8 @@ msgstr ""
 "Som et af havets veltrænede skabninger er Havmanden stærk og hurtig i "
 "ethvert hav-miljø, men han må kæmpe hårdt for at klare sig på land."
 
-#: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:33
-#: data/units/Mermaid_Siren.cfg:33 data/units/Sea_Hag.cfg:27
+#: data/units/Mermaid_Enchantress.cfg:33 data/units/Mermaid_Initiate.cfg:33
+#: data/units/Mermaid_Siren.cfg:67 data/units/Sea_Hag.cfg:27
 msgid "water spray"
 msgstr "sprøjte med vand"
 
@@ -5345,7 +5345,7 @@ msgstr ""
 msgid "Siren"
 msgstr "ild"
 
-#: data/units/Mermaid_Siren.cfg:23
+#: data/units/Mermaid_Siren.cfg:25
 #, fuzzy
 msgid "naiad touch"
 msgstr "fe-kontakt"
@@ -6781,37 +6781,37 @@ msgstr "+Norsk Oversættelse"
 msgid "+Polish Translation"
 msgstr "+Polsk Oversættelse"
 
-#: src/about.cpp:248
+#: src/about.cpp:250
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugisisk (Brasiliansk) Oversættelse"
 
-#: src/about.cpp:256
+#: src/about.cpp:258
 #, fuzzy
 msgid "+Russian Translation"
 msgstr "+Ungarsk Oversættelse"
 
-#: src/about.cpp:262
+#: src/about.cpp:264
 msgid "+Slovak Translation"
 msgstr "+Slovakisk Oversættelse"
 
-#: src/about.cpp:266
+#: src/about.cpp:268
 msgid "+Spanish Translation"
 msgstr "+Spansk Oversættelse"
 
-#: src/about.cpp:274
+#: src/about.cpp:276
 msgid "+Swedish Translation"
 msgstr "+Svensk Oversættelse"
 
-#: src/about.cpp:281
+#: src/about.cpp:283
 msgid "+Contributors"
 msgstr "+Bidragere"
 
-#: src/about.cpp:285
+#: src/about.cpp:287
 #, fuzzy
 msgid "+Bots"
 msgstr "+ Bots"
 
-#: src/about.cpp:321 src/help.cpp:2568 src/show_dialog.cpp:509
+#: src/about.cpp:323 src/help.cpp:2569 src/show_dialog.cpp:510
 msgid "Close"
 msgstr "Luk"
 
@@ -6953,11 +6953,11 @@ msgstr "%a %d %b %Y %H:%M"
 msgid "#(Invalid)"
 msgstr "#(Ugyldig)"
 
-#: src/dialogs.cpp:363 src/game.cpp:955
+#: src/dialogs.cpp:363 src/game.cpp:962
 msgid "Campaign"
 msgstr "Kampagne"
 
-#: src/dialogs.cpp:365 src/game.cpp:1249
+#: src/dialogs.cpp:365 src/game.cpp:1256
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -6969,7 +6969,7 @@ msgstr "Tutorial"
 msgid "replay"
 msgstr "replay"
 
-#: src/dialogs.cpp:377 src/multiplayer_lobby.cpp:96 src/playturn.cpp:1516
+#: src/dialogs.cpp:377 src/multiplayer_lobby.cpp:96 src/playturn.cpp:1514
 msgid "Turn"
 msgstr "Tur"
 
@@ -6977,11 +6977,11 @@ msgstr "Tur"
 msgid "Scenario Start"
 msgstr "Scenarie Start"
 
-#: src/dialogs.cpp:382 src/game.cpp:985
+#: src/dialogs.cpp:382 src/game.cpp:992
 msgid "Difficulty"
 msgstr "Svært"
 
-#: src/dialogs.cpp:384 src/game.cpp:1047 src/titlescreen.cpp:165
+#: src/dialogs.cpp:384 src/game.cpp:1054 src/titlescreen.cpp:165
 msgid "Version"
 msgstr "Version"
 
@@ -7041,12 +7041,12 @@ msgid "Profile"
 msgstr "Profil"
 
 #: src/dialogs.cpp:640 src/display.cpp:928 src/help.cpp:1015
-#: src/playturn.cpp:1933
+#: src/playturn.cpp:1936
 msgid "level"
 msgstr "niveau"
 
 #: src/dialogs.cpp:678 src/display.cpp:962 src/help.cpp:1061
-#: src/playturn.cpp:2097 src/unit.cpp:1094
+#: src/playturn.cpp:2100 src/unit.cpp:1091
 msgid "Moves"
 msgstr "Bevægelser"
 
@@ -7066,25 +7066,25 @@ msgstr "Vera.ttf"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Vil du gemme en replay af dette scenarie?"
 
-#: src/game.cpp:137 src/game.cpp:195 src/playturn.cpp:1525
+#: src/game.cpp:137 src/game.cpp:195 src/playturn.cpp:1523
 msgid "Name:"
 msgstr "Navn: "
 
-#: src/game.cpp:145 src/game.cpp:202 src/playturn.cpp:1542
+#: src/game.cpp:145 src/game.cpp:202 src/playturn.cpp:1540
 msgid "The game could not be saved"
 msgstr "Spillet kunne ikke gemmes"
 
-#: src/game.cpp:167 src/game.cpp:894 src/game.cpp:1284
+#: src/game.cpp:167 src/game.cpp:901 src/game.cpp:1291
 #, fuzzy
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke gemmes"
 
-#: src/game.cpp:170 src/game.cpp:896 src/game.cpp:1286
+#: src/game.cpp:170 src/game.cpp:903 src/game.cpp:1293
 #, fuzzy
 msgid "Error while playing the game: "
 msgstr "Fil I/O Fejl under læsningen af spillet"
 
-#: src/game.cpp:173 src/game.cpp:1298
+#: src/game.cpp:173 src/game.cpp:1305
 #, fuzzy
 msgid "The game map could not be loaded: "
 msgstr "Spillet kunne ikke gemmes"
@@ -7101,7 +7101,7 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:826 src/multiplayer_connect.cpp:108
+#: src/game.cpp:833 src/multiplayer_connect.cpp:108
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7109,210 +7109,210 @@ msgstr ""
 "Dette gemte spil er fra en anden version af spillet. Vil du prøve at hente "
 "det?"
 
-#: src/game.cpp:834 src/game.cpp:837
+#: src/game.cpp:841 src/game.cpp:844
 #, fuzzy
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Der var en fejl i filen du prøvede at hente"
 
-#: src/game.cpp:840
+#: src/game.cpp:847
 msgid "File I/O Error while reading the game"
 msgstr "Fil I/O Fejl under læsningen af spillet"
 
-#: src/game.cpp:945
+#: src/game.cpp:952
 #, fuzzy
 msgid "Get More Campaigns..."
 msgstr " ,Få flere kampagner..."
 
-#: src/game.cpp:946
+#: src/game.cpp:953
 msgid "Download more campaigns from a server on Internet."
 msgstr "Download flere kampagner fra en server på Internettet."
 
-#: src/game.cpp:956
+#: src/game.cpp:963
 msgid "Choose the campaign you want to play:"
 msgstr "Vælg kampagnen du vil spille:"
 
-#: src/game.cpp:986
+#: src/game.cpp:993
 msgid "Select difficulty level:"
 msgstr "Vælg sværhedsgrad:"
 
-#: src/game.cpp:1005
+#: src/game.cpp:1012
 msgid "Connect to Server"
 msgstr "Forbind til Server"
 
-#: src/game.cpp:1006
+#: src/game.cpp:1013
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Du vil nu oprette forbindelse med en kampagne server for at downloade "
 "kampagner."
 
-#: src/game.cpp:1007
+#: src/game.cpp:1014
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:1019
+#: src/game.cpp:1026
 msgid "Could not connect to host."
 msgstr "Kunne ikke forbindes til hosten"
 
-#: src/game.cpp:1027
+#: src/game.cpp:1034
 msgid "Awaiting response from server"
 msgstr "Venter på svar fra server"
 
-#: src/game.cpp:1040
+#: src/game.cpp:1047
 msgid "Error communicating with the server."
 msgstr "Fejl i kommunikationen med serveren."
 
-#: src/game.cpp:1046 src/help.cpp:1084 src/help.cpp:1085 src/playturn.cpp:2093
+#: src/game.cpp:1053 src/help.cpp:1084 src/help.cpp:1085 src/playturn.cpp:2096
 msgid "Name"
 msgstr "Navn"
 
-#: src/game.cpp:1048
+#: src/game.cpp:1055
 #, fuzzy
 msgid "Author"
 msgstr "torne"
 
-#: src/game.cpp:1049
+#: src/game.cpp:1056
 msgid "Downloads"
 msgstr ""
 
-#: src/game.cpp:1050
+#: src/game.cpp:1057
 #, fuzzy
 msgid "Size"
 msgstr "ild"
 
-#: src/game.cpp:1069
+#: src/game.cpp:1076
 #, fuzzy
 msgid "B"
 msgstr "kB"
 
-#: src/game.cpp:1072 src/show_dialog.cpp:959
+#: src/game.cpp:1079 src/show_dialog.cpp:960
 msgid "KB"
 msgstr "kB"
 
-#: src/game.cpp:1075
+#: src/game.cpp:1082
 msgid "MB"
 msgstr ""
 
-#: src/game.cpp:1092
+#: src/game.cpp:1099
 msgid "Publish campaign: "
 msgstr "Uddgiv kampagne: "
 
-#: src/game.cpp:1096
+#: src/game.cpp:1103
 msgid "Delete campaign: "
 msgstr "Slet kampagne: "
 
-#: src/game.cpp:1100
+#: src/game.cpp:1107
 msgid "There are no campaigns available for download from this server."
 msgstr "Der er ingen kampagner der kan downloades fra denne server."
 
-#: src/game.cpp:1104
+#: src/game.cpp:1111
 msgid "Choose the campaign to download."
 msgstr "Vælg en kampagne at downloade."
 
-#: src/game.cpp:1104
+#: src/game.cpp:1111
 msgid "Get Campaign"
 msgstr "Hent kampagne"
 
-#: src/game.cpp:1123
+#: src/game.cpp:1130
 msgid "Downloading campaign..."
 msgstr "Downloader kampagne..."
 
-#: src/game.cpp:1142
+#: src/game.cpp:1149
 msgid "Campaign Installed"
 msgstr "Kampagne Installeret"
 
-#: src/game.cpp:1142
+#: src/game.cpp:1149
 msgid "The campaign has been installed."
 msgstr "Kampagnen er blevet installeret."
 
-#: src/game.cpp:1144
+#: src/game.cpp:1151
 msgid "Network communication error."
 msgstr "Netværks-kommunikations-fejl."
 
-#: src/game.cpp:1146
+#: src/game.cpp:1153
 msgid "Remote host disconnected."
 msgstr "Fjern host afbrudt."
 
-#: src/game.cpp:1148
+#: src/game.cpp:1155
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Der var et problem med at lave de filer der skal bruges til at installere "
 "denne kampagne."
 
-#: src/game.cpp:1160 src/game.cpp:1199 src/game.cpp:1224
+#: src/game.cpp:1167 src/game.cpp:1206 src/game.cpp:1231
 #: src/multiplayer_client.cpp:50 src/multiplayer_client.cpp:327
 msgid "Connection timed out"
 msgstr "Forbindelsestiden løb ud."
 
-#: src/game.cpp:1163 src/game.cpp:1201 src/game.cpp:1226
+#: src/game.cpp:1170 src/game.cpp:1208 src/game.cpp:1233
 msgid "The server responded with an error: \""
 msgstr "Serveren svarede med en fejl:\""
 
-#: src/game.cpp:1167
+#: src/game.cpp:1174
 msgid "Terms"
 msgstr ""
 
-#: src/game.cpp:1204 src/game.cpp:1229
+#: src/game.cpp:1211 src/game.cpp:1236
 msgid "Response"
 msgstr "Svare"
 
-#: src/game.cpp:1242
+#: src/game.cpp:1249
 msgid "Join Official Server"
 msgstr "Forbind til Officiel Server"
 
-#: src/game.cpp:1242
+#: src/game.cpp:1249
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Log på den officielle Wesnoth multiplayer server"
 
-#: src/game.cpp:1243 src/multiplayer_lobby.cpp:207
+#: src/game.cpp:1250 src/multiplayer_lobby.cpp:207
 msgid "Join Game"
 msgstr "Tilslut Spil"
 
-#: src/game.cpp:1243
+#: src/game.cpp:1250
 msgid "Join a server or hosted game"
 msgstr "Tilslut en server eller et hostet spil"
 
-#: src/game.cpp:1244
+#: src/game.cpp:1251
 msgid "Host Networked Game"
 msgstr "Bevært Netværks Spil"
 
-#: src/game.cpp:1244
+#: src/game.cpp:1251
 msgid "Host a game without using a server"
 msgstr "Bevært et spil uden at bruge en server"
 
-#: src/game.cpp:1245
+#: src/game.cpp:1252
 msgid "Hotseat Game"
 msgstr "'Varm Stol' Spil"
 
-#: src/game.cpp:1245
+#: src/game.cpp:1252
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Spil et multiplayer spil, hvor spillerne deler den samme computer"
 
-#: src/game.cpp:1246
+#: src/game.cpp:1253
 msgid "Human vs AI"
 msgstr "Menneske mod Computer"
 
-#: src/game.cpp:1246
+#: src/game.cpp:1253
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1249 src/multiplayer_client.cpp:311
+#: src/game.cpp:1256 src/multiplayer_client.cpp:311
 msgid "Login"
 msgstr "Login"
 
-#: src/game.cpp:1324
+#: src/game.cpp:1331
 msgid "Language"
 msgstr "Sprog"
 
-#: src/game.cpp:1325
+#: src/game.cpp:1332
 msgid "Choose your preferred language"
 msgstr "Vælg dit foretrukne sprog"
 
-#: src/game.cpp:1363
+#: src/game.cpp:1370
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1364
+#: src/game.cpp:1371
 #, fuzzy
 msgid "' (The game will now exit)"
 msgstr "Dette spil er slut."
@@ -7333,7 +7333,7 @@ msgstr "Krævet XP"
 msgid "attacks"
 msgstr "angreb"
 
-#: src/help.cpp:1088 src/help.cpp:1089 src/playturn.cpp:2092
+#: src/help.cpp:1088 src/help.cpp:1089 src/playturn.cpp:2095
 msgid "Type"
 msgstr "Type"
 
@@ -7414,15 +7414,15 @@ msgstr ""
 msgid "This terrain gives healing."
 msgstr "Terrænet giver healing"
 
-#: src/help.cpp:2109
+#: src/help.cpp:2110
 msgid "< Back"
 msgstr "< Tilbage"
 
-#: src/help.cpp:2110
+#: src/help.cpp:2111
 msgid "Forward >"
 msgstr "Fremad >"
 
-#: src/help.cpp:2571
+#: src/help.cpp:2572
 msgid "The Battle for Wesnoth Help"
 msgstr "Kampen om Wesnoth Hjælp"
 
@@ -7470,7 +7470,7 @@ msgstr "Gentagelser"
 msgid "Bump Size"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1665
+#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1663
 msgid "Villages"
 msgstr "Landsbyer"
 
@@ -7537,12 +7537,12 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Tillad brugere der ikke spiller, at kigge på"
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:497
-#: src/show_dialog.cpp:503
+#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
+#: src/show_dialog.cpp:504
 msgid "Cancel"
 msgstr "Annuller"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:483 src/show_dialog.cpp:496
+#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
 msgid "Ok"
 msgstr "Ok"
 
@@ -7638,7 +7638,7 @@ msgstr "Advarsel"
 msgid "Receiving game list..."
 msgstr "Henter spil liste..."
 
-#: src/multiplayer_client.cpp:132 src/playturn.cpp:1761
+#: src/multiplayer_client.cpp:132 src/playturn.cpp:1759
 #, fuzzy
 msgid "unit^Gold"
 msgstr "Guld"
@@ -7663,39 +7663,39 @@ msgstr "Oprretter forbindelse..."
 msgid "You must log in to this server"
 msgstr "Du må logge ind på serveren"
 
-#: src/multiplayer_client.cpp:390
+#: src/multiplayer_client.cpp:392
 msgid "Getting game data..."
 msgstr "Henter spil data..."
 
-#: src/multiplayer_client.cpp:442
+#: src/multiplayer_client.cpp:444
 msgid "There are no available sides in this game."
 msgstr "Der er ingen sider tilgængelige i dette spil."
 
-#: src/multiplayer_client.cpp:490
+#: src/multiplayer_client.cpp:492
 msgid "Choose your side:"
 msgstr "Vælg din side:"
 
-#: src/multiplayer_client.cpp:522
+#: src/multiplayer_client.cpp:524
 msgid "The game has been cancelled"
 msgstr "Spillet er blevet annulleret"
 
-#: src/multiplayer_client.cpp:526
+#: src/multiplayer_client.cpp:528
 msgid "The side you have chosen is no longer available"
 msgstr "Den side du har valgt er ikke længere tilgængelig"
 
-#: src/multiplayer_client.cpp:562
+#: src/multiplayer_client.cpp:564
 msgid "Show replay of game up to save point?"
 msgstr "Vil et replay af spillet indtil gemme punktet?"
 
-#: src/multiplayer_client.cpp:700 src/multiplayer_client.cpp:703
+#: src/multiplayer_client.cpp:702 src/multiplayer_client.cpp:705
 msgid "?"
 msgstr "?"
 
-#: src/multiplayer_client.cpp:788
+#: src/multiplayer_client.cpp:790
 msgid "Leader: "
 msgstr "Leder: "
 
-#: src/multiplayer_client.cpp:790
+#: src/multiplayer_client.cpp:792
 msgid "Recruits: "
 msgstr "Rekruteringer. "
 
@@ -7733,7 +7733,7 @@ msgid "Local Player"
 msgstr "Lokal Spiller"
 
 #: src/multiplayer_connect.cpp:276 src/multiplayer_connect.cpp:554
-#: src/multiplayer_connect.cpp:648 src/multiplayer_connect.cpp:742
+#: src/multiplayer_connect.cpp:648 src/multiplayer_connect.cpp:754
 msgid "Computer Player"
 msgstr "Computer Spiller"
 
@@ -7794,7 +7794,7 @@ msgid "Color"
 msgstr "Farve"
 
 #: src/multiplayer_connect.cpp:412 src/multiplayer_connect.cpp:414
-#: src/playlevel.cpp:798 src/playturn.cpp:1664 src/playturn.cpp:1671
+#: src/playlevel.cpp:807 src/playturn.cpp:1662 src/playturn.cpp:1669
 msgid "Gold"
 msgstr "Guld"
 
@@ -7826,64 +7826,56 @@ msgstr "Observer Spillet"
 msgid "Quit"
 msgstr "Afslut"
 
-#: src/playlevel.cpp:560 src/playlevel.cpp:817
+#: src/playlevel.cpp:566 src/playlevel.cpp:826
 msgid "The file you have tried to load is corrupt"
 msgstr "Der var en fejl i filen du prøvede at hente"
 
-#: src/playlevel.cpp:701
-msgid "Game Over"
-msgstr "Game Over"
-
-#: src/playlevel.cpp:702
-msgid "The game is over."
-msgstr "Dette spil er slut."
-
-#: src/playlevel.cpp:725
+#: src/playlevel.cpp:730
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playlevel.cpp:726
+#: src/playlevel.cpp:731
 msgid "You have been defeated!"
 msgstr "Du er blevet overvundet!"
 
-#: src/playlevel.cpp:788
+#: src/playlevel.cpp:797
 msgid "Remaining gold"
 msgstr "Tilbageværende guld"
 
-#: src/playlevel.cpp:791
+#: src/playlevel.cpp:800
 msgid "Early finish bonus"
 msgstr "Bonus for at vinde hurtigt"
 
-#: src/playlevel.cpp:793
+#: src/playlevel.cpp:802
 msgid "per turn"
 msgstr "per tur"
 
-#: src/playlevel.cpp:794
+#: src/playlevel.cpp:803
 msgid "Turns finished early"
 msgstr "Ture afsluttet tidligt"
 
-#: src/playlevel.cpp:796
+#: src/playlevel.cpp:805
 msgid "Bonus"
 msgstr "Bonus"
 
-#: src/playlevel.cpp:803
+#: src/playlevel.cpp:812
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80 % af guldet bliver gemt til næste scenarie"
 
-#: src/playlevel.cpp:803
+#: src/playlevel.cpp:812
 msgid "Retained Gold"
 msgstr "Gemt guld"
 
-#: src/playlevel.cpp:807
+#: src/playlevel.cpp:816
 msgid "Victory"
 msgstr "Sejr"
 
-#: src/playlevel.cpp:808
+#: src/playlevel.cpp:817
 msgid "You have emerged victorious!"
 msgstr "Du har vundet!"
 
-#: src/playlevel.cpp:832
+#: src/playlevel.cpp:841
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7903,51 +7895,51 @@ msgstr "Angriber"
 msgid "Defender"
 msgstr "Forsvarer"
 
-#: src/playturn.cpp:570 src/playturn.cpp:638
+#: src/playturn.cpp:570 src/playturn.cpp:636
 msgid "Damage Calculations"
 msgstr "Skades beregninger"
 
-#: src/playturn.cpp:617 src/reports.cpp:209
+#: src/playturn.cpp:615 src/reports.cpp:209
 msgid "vs"
 msgstr "mod"
 
-#: src/playturn.cpp:650
+#: src/playturn.cpp:648
 msgid "Attack Enemy"
 msgstr "Angrib Fjende"
 
-#: src/playturn.cpp:651
+#: src/playturn.cpp:649
 msgid "Choose weapon"
 msgstr "Vælg våben"
 
-#: src/playturn.cpp:1250
+#: src/playturn.cpp:1248
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "Du har ikke startet din tur endnu. Vil du virkelig slutte den før den er "
 "begyndt?"
 
-#: src/playturn.cpp:1259 src/playturn.cpp:1264
+#: src/playturn.cpp:1257 src/playturn.cpp:1262
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Nogle enheder kan bevæge sig længere. Vil du virkelig afslutte din tur?"
 
-#: src/playturn.cpp:1279
+#: src/playturn.cpp:1277
 msgid "Auto-Save"
 msgstr "Auto-Gem"
 
-#: src/playturn.cpp:1281
+#: src/playturn.cpp:1279
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kunne ikke auto-gemme. Gem venligst spillet manuelt."
 
-#: src/playturn.cpp:1480
+#: src/playturn.cpp:1478
 msgid "Rename Unit"
 msgstr "Omdøb Enhed"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1526 src/playturn.cpp:1540 src/show_dialog.cpp:388
 msgid "Error"
 msgstr "Fejl"
 
-#: src/playturn.cpp:1528
+#: src/playturn.cpp:1526
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -7955,43 +7947,43 @@ msgstr ""
 "Spilnavne må ikke indeholde koloner eller nogen form for skråstrege. Vælg "
 "venligts et andet navn."
 
-#: src/playturn.cpp:1539
+#: src/playturn.cpp:1537
 msgid "Saved"
 msgstr "Gemt"
 
-#: src/playturn.cpp:1539
+#: src/playturn.cpp:1537
 msgid "The game has been saved"
 msgstr "Spillet er blevet gemt"
 
-#: src/playturn.cpp:1663
+#: src/playturn.cpp:1661
 msgid "Leader"
 msgstr "Leder"
 
-#: src/playturn.cpp:1667
+#: src/playturn.cpp:1665
 msgid "Upkeep"
 msgstr "Udgifter"
 
-#: src/playturn.cpp:1668
+#: src/playturn.cpp:1666
 msgid "Income"
 msgstr "Inkomst"
 
-#: src/playturn.cpp:1767
+#: src/playturn.cpp:1765
 msgid "You have no units available to recruit."
 msgstr "Du har ingen enheder at rekrutere."
 
-#: src/playturn.cpp:1779
+#: src/playturn.cpp:1777
 msgid "Recruit"
 msgstr "Rekruter"
 
-#: src/playturn.cpp:1780 src/playturn.cpp:1959
+#: src/playturn.cpp:1778 src/playturn.cpp:1962
 msgid "Select unit"
 msgstr "Vælg enhed"
 
-#: src/playturn.cpp:1809
+#: src/playturn.cpp:1812
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Du har ikke nok guld til at rekrutere denne enhed"
 
-#: src/playturn.cpp:1867
+#: src/playturn.cpp:1870
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -7999,7 +7991,7 @@ msgstr ""
 "Min herre, denne enhed er erfaren. Han er blevet forfremmet.Vil du virkelig "
 "sætte $noun fri fra tjeneste?"
 
-#: src/playturn.cpp:1869
+#: src/playturn.cpp:1872
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -8007,19 +7999,19 @@ msgstr ""
 "My lord, denne enhed er tæt på at blive forfremmet! Vil du virkelig sætte "
 "$noun fri fra tjeneste?"
 
-#: src/playturn.cpp:1874
+#: src/playturn.cpp:1877
 msgid "her"
 msgstr "hende"
 
-#: src/playturn.cpp:1874
+#: src/playturn.cpp:1877
 msgid "him"
 msgstr "ham"
 
-#: src/playturn.cpp:1915
+#: src/playturn.cpp:1918
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Du er adskilt fra dine soldater og kan ikke genindkalde dem"
 
-#: src/playturn.cpp:1917
+#: src/playturn.cpp:1920
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8027,121 +8019,121 @@ msgstr ""
 "Der er ingen soldat der kan genindkaldes\n"
 "(Du må have trænede soldater fra et tidligere scenarie)"
 
-#: src/playturn.cpp:1923
+#: src/playturn.cpp:1926
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Du må have mindst $cost guldstykker for at genindkalde en enhed."
 
-#: src/playturn.cpp:1946
+#: src/playturn.cpp:1949
 msgid "Dismiss Unit"
 msgstr "Send bort"
 
-#: src/playturn.cpp:1958
+#: src/playturn.cpp:1961
 msgid "Recall"
 msgstr "Genindkald"
 
-#: src/playturn.cpp:2003
+#: src/playturn.cpp:2006
 msgid "Message"
 msgstr "Besked"
 
-#: src/playturn.cpp:2003
+#: src/playturn.cpp:2006
 msgid "Send to allies only"
 msgstr "Send kun til allierede"
 
-#: src/playturn.cpp:2098
+#: src/playturn.cpp:2101
 msgid "Location"
 msgstr "Lokalitet"
 
-#: src/playturn.cpp:2146
+#: src/playturn.cpp:2149
 msgid "Unit List"
 msgstr "Enheds Liste"
 
-#: src/playturn.cpp:2181 src/playturn.cpp:2243
+#: src/playturn.cpp:2184 src/playturn.cpp:2246
 msgid "Recruits"
 msgstr "Rekruteringer"
 
-#: src/playturn.cpp:2187 src/playturn.cpp:2247
+#: src/playturn.cpp:2190 src/playturn.cpp:2250
 msgid "Recalls"
 msgstr "Genindkaldelser"
 
-#: src/playturn.cpp:2193 src/playturn.cpp:2251
+#: src/playturn.cpp:2196 src/playturn.cpp:2254
 msgid "Advancements"
 msgstr "Forfremmelser"
 
-#: src/playturn.cpp:2199 src/playturn.cpp:2255
+#: src/playturn.cpp:2202 src/playturn.cpp:2258
 msgid "Losses"
 msgstr "Tab"
 
-#: src/playturn.cpp:2205 src/playturn.cpp:2259
+#: src/playturn.cpp:2208 src/playturn.cpp:2262
 msgid "Kills"
 msgstr "Drab"
 
-#: src/playturn.cpp:2211
+#: src/playturn.cpp:2214
 msgid "Damage Inflicted"
 msgstr "Skade påført"
 
-#: src/playturn.cpp:2217
+#: src/playturn.cpp:2220
 msgid "Damage Taken"
 msgstr "Skade taget"
 
-#: src/playturn.cpp:2223
+#: src/playturn.cpp:2226
 msgid "Damage Inflicted (EV)"
 msgstr "Skade påført (forventet værdi)"
 
-#: src/playturn.cpp:2230
+#: src/playturn.cpp:2233
 msgid "Damage Taken (EV)"
 msgstr "Skade taget (forventet værdi)"
 
-#: src/playturn.cpp:2236
+#: src/playturn.cpp:2239
 msgid "Statistics"
 msgstr "Statistikker"
 
-#: src/playturn.cpp:2273
+#: src/playturn.cpp:2276
 msgid "Search"
 msgstr "Søg"
 
-#: src/playturn.cpp:2283
+#: src/playturn.cpp:2286
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/playturn.cpp:2294
+#: src/playturn.cpp:2297
 msgid "Chat Log"
 msgstr "Chat Log"
 
-#: src/playturn.cpp:2359
+#: src/playturn.cpp:2362
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kunne ikke finde label eller enhed der indeholder strengen @search."
 
-#: src/playturn.cpp:2440
+#: src/playturn.cpp:2455
 msgid "Place Label"
 msgstr "Sæt Label"
 
-#: src/playturn.cpp:2441
+#: src/playturn.cpp:2456
 msgid "Label"
 msgstr "Label"
 
-#: src/playturn.cpp:2573
+#: src/playturn.cpp:2588
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
 
-#: src/playturn.cpp:2625
+#: src/playturn.cpp:2640
 msgid "Replace with AI"
 msgstr "Erstart med en Computer."
 
-#: src/playturn.cpp:2626
+#: src/playturn.cpp:2641
 msgid "Replace with local player"
 msgstr "Erstat med lokal spiller"
 
-#: src/playturn.cpp:2627
+#: src/playturn.cpp:2642
 msgid "Abort game"
 msgstr "Afslut spil"
 
-#: src/playturn.cpp:2630
+#: src/playturn.cpp:2645
 msgid "Replace with "
 msgstr "Erstat med"
 
-#: src/playturn.cpp:2634
+#: src/playturn.cpp:2649
 msgid "has left the game. What do you want to do?"
 msgstr "har forladt spillet. Hvad vil du?"
 
@@ -8207,7 +8199,7 @@ msgstr "Fjendtlig landsby"
 msgid "Allied village"
 msgstr "Allieret landsby"
 
-#: src/show_dialog.cpp:646
+#: src/show_dialog.cpp:647
 msgid "Help"
 msgstr "Hjælp"
 
@@ -8306,6 +8298,12 @@ msgstr "Slet fil"
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
 msgstr "Slettelse af fil mislykkedes"
+
+#~ msgid "Game Over"
+#~ msgstr "Game Over"
+
+#~ msgid "The game is over."
+#~ msgstr "Dette spil er slut."
 
 #~ msgid ""
 #~ "Plague:\n"
