@@ -866,9 +866,11 @@ void show_preferences_dialog(display& disp)
 {
 	std::vector<std::string> items;
 
-	items.push_back(std::string("&icons/icon-general.png,") + dsgettext(GETTEXT_DOMAIN,"Prefs section^General"));
-	items.push_back(std::string("&icons/icon-display.png,") + dsgettext(GETTEXT_DOMAIN,"Prefs section^Display"));
-	items.push_back(std::string("&icons/icon-music.png,") + dsgettext(GETTEXT_DOMAIN,"Prefs section^Sound"));
+	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
+	char const sep = COLUMN_SEPARATOR;
+	items.push_back(pre + "general.png" + sep + dsgettext(GETTEXT_DOMAIN,"Prefs section^General"));
+	items.push_back(pre + "display.png" + sep + dsgettext(GETTEXT_DOMAIN,"Prefs section^Display"));
+	items.push_back(pre + "music.png" + sep + dsgettext(GETTEXT_DOMAIN,"Prefs section^Sound"));
 	
 	for(;;) {
 		try {
@@ -945,9 +947,8 @@ bool show_video_mode_dialog(display& disp)
 	std::vector<std::string> options;
 	for(std::vector<std::pair<int,int> >::const_iterator j = resolutions.begin(); j != resolutions.end(); ++j) {
 		std::ostringstream option;
-		if(*j == current_res) {
-			option << char(gui::menu::DEFAULT_ITEM);
-		}
+		if (*j == current_res)
+			option << DEFAULT_ITEM;
 
 		option << j->first << "x" << j->second;
 		options.push_back(option.str());
@@ -998,7 +999,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 		std::stringstream str,name;
 		name << i->get_description();
 		str << name.str();
-		str << ",  :  ,";
+		str << COLUMN_SEPARATOR << "  :  " << COLUMN_SEPARATOR;
 		str << i->get_name();
 		menu_items.push_back (str.str ());
 	}

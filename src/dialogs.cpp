@@ -26,6 +26,7 @@
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
+#include "widgets/menu.hpp"
 #include "widgets/progressbar.hpp"
 
 #include <cstdio>
@@ -61,7 +62,7 @@ void advance_unit(const game_data& info,
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
 		const unit_type& type = sample_units.back().type();
-		lang_options.push_back("&" + type.image() + "," + type.language_name());
+		lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + type.language_name());
 	}
 
 	const config::child_list& mod_options = u->second.get_modification_advances();
@@ -70,7 +71,7 @@ void advance_unit(const game_data& info,
 		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type().name()));
 		sample_units.back().add_modification("advance",**mod);
 		const unit_type& type = sample_units.back().type();
-		lang_options.push_back("&" + type.image() + "," + (**mod)["description"]);
+		lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + (**mod)["description"]);
 	}
 
 	LOG_DP << "options: " << options.size() << "\n";

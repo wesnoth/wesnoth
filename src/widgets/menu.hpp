@@ -12,6 +12,8 @@
 
 #include "SDL.h"
 
+char const HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*', COLUMN_SEPARATOR = '\t', IMAGE_PREFIX = '&';
+
 namespace gui {
 
 class menu : public scrollarea
@@ -50,7 +52,6 @@ public:
 
 	void scroll(int pos);
 
-	enum { HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*' };
 	enum { IMG_TEXT_SEPARATOR = 1 }; // Re-evaluate if this should be something else to be settable from WML.
 
 protected:

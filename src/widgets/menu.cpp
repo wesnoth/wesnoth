@@ -36,7 +36,7 @@ void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();
 	    item != items.end(); ++item) {
-		items_.push_back(config::quoted_split(*item, ',', !strip_spaces));
+		items_.push_back(config::quoted_split(*item, COLUMN_SEPARATOR, !strip_spaces));
 
 		//make sure there is always at least one item
 		if(items_.back().empty())
@@ -327,8 +327,6 @@ void menu::scroll(int)
 }
 
 namespace {
-	const char ImagePrefix = '&';
-
 	SDL_Rect item_size(const std::string& item) {
 		SDL_Rect res = {0,0,0,0};
 		std::vector<std::string> img_text_items = config::split(item, menu::IMG_TEXT_SEPARATOR);
@@ -339,7 +337,7 @@ namespace {
 				res.w += 5;
 			}
 			const std::string str = *it;
-			if(str.empty() == false && str[0] == ImagePrefix) {
+			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
 				surface const img = image::get_image(image_name,image::UNSCALED);
 				if(img != NULL) {
@@ -412,7 +410,7 @@ void menu::draw_item(int item)
 		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 			 it != img_text_items.end(); it++) {
 			str = *it;
-			if(str.empty() == false && str[0] == ImagePrefix) {
+			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
 				surface const img = image::get_image(image_name,image::UNSCALED);
 				const int max_width = max_width_ < 0 ? area.w :

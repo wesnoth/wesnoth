@@ -1494,14 +1494,14 @@ std::string help_menu::get_string_to_show(const section &sec, const unsigned lev
 	std::string pad_string;
 	// Indentation is represented as three spaces per level.
 	pad_string.resize(level * 3, ' ');
-	to_show << pad_string << char(menu::IMG_TEXT_SEPARATOR) << "&" ;
+	to_show << pad_string << char(gui::menu::IMG_TEXT_SEPARATOR) << "&" ;
 	if (expanded(sec)) {
 		to_show << open_section_img;
 	}
 	else {
 		to_show << closed_section_img;
 	}
-	to_show << char(menu::IMG_TEXT_SEPARATOR) << sec.title;
+	to_show << char(gui::menu::IMG_TEXT_SEPARATOR) << sec.title;
 	return to_show.str();
 }
 
@@ -1509,8 +1509,8 @@ std::string help_menu::get_string_to_show(const topic &topic, const unsigned lev
 	std::string pad_string;
 	pad_string.resize(level * 3, ' ');
 	std::stringstream to_show;
-	to_show << pad_string << char(menu::IMG_TEXT_SEPARATOR) << "&" << topic_img
-			<< char(menu::IMG_TEXT_SEPARATOR) << topic.title;
+	to_show << pad_string << char(gui::menu::IMG_TEXT_SEPARATOR) << "&" << topic_img
+	        << char(gui::menu::IMG_TEXT_SEPARATOR) << topic.title;
 	return to_show.str();
 }
 
@@ -1550,7 +1550,7 @@ void help_menu::select_topic(const topic &t) {
 }
 	
 int help_menu::process() {
-	int res = menu::process();
+	int res = gui::menu::process();
 	if (double_clicked())
 		res = selection();
 	if (!visible_items_.empty() && (unsigned)res < visible_items_.size()) {
