@@ -21,6 +21,8 @@ cp -Rf changelog COPYING copyright INSTALL MANUAL* README /wesnothpack/wesnoth-$
 echo "Cleaning up source..."
 make clean
 cd /wesnothpack/wesnoth-$1
+echo "Stripping binaries..."
+strip usr/bin/*
 echo "Building package..."
 tar cf wesnoth-$1-$2-1.tar .
 gzip -9 wesnoth-$1-$2-1.tar
