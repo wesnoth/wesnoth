@@ -207,9 +207,11 @@ int scrollbar::get_grip_position() const
 	return grip_position_;
 }
 
-int scrollbar::groove_clicked() const
+int scrollbar::groove_clicked()
 {
-	return groove_click_code_;
+	int res = groove_click_code_;
+	groove_click_code_ = 0;
+	return res;
 }
 
 void scrollbar::process()
@@ -245,8 +247,6 @@ void scrollbar::process()
 		highlight_ = on;
 		set_dirty(true);
 	}
-
-	groove_click_code_ = 0;
 
 	if(dragging_) {
 		// mouse over grip & button down

@@ -96,10 +96,11 @@ public:
 	bool set_grip_height(int pos);
 
 	/// This function determines whether the user clicked on the scrollbar
-	/// groove, and whether it was above or below the grip
+	/// groove, and whether it was above or below the grip. The query
+	/// resets the state.
 	/// 
 	/// \return -1 if click was above, 1 if click was below, 0 otherwise
-	int  groove_clicked() const;
+	int groove_clicked();
 
 private:
 	SDL_Rect scroll_grip_area() const;
