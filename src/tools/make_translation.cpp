@@ -46,7 +46,7 @@ void process_config(const std::string& element_name, const config& cfg,
 			out.insert(std::pair<string,string>(id->second + "_difficulties",diff->second));
 		}
 	}
-	else if(element_name == "message") {
+	else if(element_name == "message" || element_name=="option" ) {
 		const map<string,string>::const_iterator msg = table.find("message");
 
 		if(id == table.end()) {
@@ -139,10 +139,18 @@ void process_config(const std::string& element_name, const config& cfg,
 
 int main()
 {
-	config cfg(preprocess_file("data/game.cfg") + "\n" + preprocess_file("data/translations/"));
-
+	const std::string difficulties[3] = { "EASY", "NORMAL", "HARD" };
 	map<string,string> table;
-	process_config("",cfg,table);
+       
+	for (int i = 0; i < 3; i++) {
+		preproc_map defines;
+		defines[difficulties[i]] = preproc_define();
+		
+		config cfg(preprocess_file("data/game.cfg", &defines) + "\n" + preprocess_file("data/translations/", &defines));
+
+		process_config("",cfg,table);
+	}
+	
 	std::cout << "[language]\n\tlanguage=\"Language Name Goes Here\"\n" <<
 	             "id=en  #language code - English=en, French=fr, etc\n";
 	for(map<string,string>::const_iterator i = table.begin();
