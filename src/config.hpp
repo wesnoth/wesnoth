@@ -124,6 +124,7 @@ struct config
 		child_list& v = children[key];
 		assert(index < v.size());
 		v.erase(v.begin()+index);
+		ordered_children.erase(ordered_children.end());
 	}
 
 	static std::vector<std::string> split(const std::string& val, char c=',');
