@@ -671,7 +671,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 
 		disp.video().flip();
-		SDL_Delay(20);
+		SDL_Delay(10);
 	}
 
 	return -1;

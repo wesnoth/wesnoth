@@ -37,7 +37,7 @@ config prefs;
 display* disp = NULL;
 
 bool muted_ = false;
-bool colour_cursors = true;
+bool colour_cursors = false;
 
 }
 
@@ -50,7 +50,7 @@ manager::manager()
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
-	set_colour_cursors(prefs["colour_cursors"] != "no");
+	set_colour_cursors(prefs["colour_cursors"] == "yes");
 }
 
 manager::~manager()

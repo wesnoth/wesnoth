@@ -202,6 +202,9 @@ battle_stats evaluate_battle_stats(
 
 	bool backstab = false;
 
+	static const std::string to_the_death_string("berserk");
+	res.to_the_death = attack.special() == to_the_death_string;
+
 	static const std::string backstab_string("backstab");
 	if(attack.special() == backstab_string) {
 		gamemap::location adj[6];
@@ -264,9 +267,14 @@ battle_stats evaluate_battle_stats(
 
 	res.damage_attacker_takes = 0;
 	if(counterattack) {
+		if(defender_attacks[defend].special() == to_the_death_string) {
+			res.to_the_death = true;
+		}
+
 		//magical attacks always have a 70% chance to hit
-		if(defender_attacks[defend].special() == magical_string)
+		if(defender_attacks[defend].special() == magical_string) {
 			res.chance_to_hit_attacker = 70;
+		}
 
 		int percent = 0;
 
@@ -524,6 +532,10 @@ void attack(display& gui, const gamemap& map,
 	                                           attack_with,units,state,info);
 
 	statistics::attack_context attack_stats(a->second,d->second,stats);
+
+	const int orig_attacks = stats.nattacks;
+	const int orig_defends = stats.ndefends;
+	int to_the_death = stats.to_the_death ? 10 : 0;
 
 	static const std::string poison_string("poison");
 
@@ -794,6 +806,12 @@ void attack(display& gui, const gamemap& map,
 			}
 
 			--stats.ndefends;
+		}
+
+		if(to_the_death > 0 && stats.ndefends == 0 && stats.nattacks == 0) {
+			stats.nattacks = orig_attacks;
+			stats.ndefends = orig_defends;
+			--to_the_death;
 		}
 	}
 

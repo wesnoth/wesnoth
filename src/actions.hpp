@@ -59,6 +59,7 @@ struct battle_stats
 	int attack_with, defend_with;
 	bool attacker_plague, defender_plague;
 	std::vector<std::string> attack_calculations, defend_calculations;
+	bool to_the_death;
 };
 
 //evaluate_battle_stats: a function which, if given an attacker
