@@ -132,29 +132,30 @@ namespace image {
 
 bool locator::operator==(const locator& a) const 
 {
-	if(a.type != type)
+	if(a.type != type) {
 		return false;
-	
-	if(type == FILE)
+	} else if(type == FILE) {
 		return filename == a.filename;
-	
-	if(type == SUB_FILE)
+	} else if(type == SUB_FILE) {
 		return filename == a.filename && loc == a.loc;
+	} else {
+		return false;
+	}
 }
 
 bool locator::operator<(const locator &a) const
 {
-	if(type != a.type)
+	if(type != a.type) {
 		return type < a.type;
-
-	if(type == FILE)
+	} else if(type == FILE) {
 		return filename < a.filename;
-
-	if(type == SUB_FILE) {
+	} else if(type == SUB_FILE) {
 		if(filename != a.filename)
 			return filename < a.filename;
 
 		return loc < a.loc;
+	} else {
+		return false;
 	}
 }
 

@@ -329,15 +329,14 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, c
 		if(!map_.get_terrain_info(tloc).matches(cons->second.terrain_types))
 			return false;
 		
-		for(std::vector<std::string>::const_iterator itor = cons->second.no_flag.begin(); 
-		    itor != cons->second.no_flag.end(); itor++) {
+		std::vector<std::string>::const_iterator itor;
+		for(itor = cons->second.no_flag.begin(); itor != cons->second.no_flag.end(); ++itor) {
 			
 			//If a flag listed in "no_flag" is present, the rule does not match
 			if(btile.flags.find(*itor) != btile.flags.end())
 				return false;
 		}
-		for(std::vector<std::string>::const_iterator itor = cons->second.has_flag.begin(); 
-		    itor != cons->second.has_flag.end(); itor++) {
+		for(itor = cons->second.has_flag.begin(); itor != cons->second.has_flag.end(); ++itor) {
 			
 			//If a flag listed in "has_flag" is not present, this rule does not match
 			if(btile.flags.find(*itor) == btile.flags.end())
@@ -384,8 +383,8 @@ void terrain_builder::build_terrains()
 {
 	std::cerr << "Built terrain rules: \n";
 	
-	for(building_ruleset::const_iterator rule = building_rules_.begin();
-	    rule != building_rules_.end(); ++rule) {
+	building_ruleset::const_iterator rule;
+	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
 		std::cerr << ">> New rule: image_background = " << rule->image_background << " , image_foreground = "<< rule->image_foreground << "\n";
 		for(building_rule::constraint_set::const_iterator constraint = rule->constraints.begin();
 		    constraint != rule->constraints.end(); ++constraint) {
@@ -417,8 +416,7 @@ void terrain_builder::build_terrains()
 		}
 	}
 
-	for(building_ruleset::const_iterator rule = building_rules_.begin();
-	    rule != building_rules_.end(); ++rule) {
+	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
 
 		//find a constraint that contains an unique terrain type on the current
 		//rule

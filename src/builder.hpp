@@ -37,7 +37,6 @@ public:
 	// regenerate the generated content at the given location.
 	void rebuild_terrain(const gamemap::location &loc);
 
-private:
 	struct terrain_constraint
 	{
 		terrain_constraint() : loc() {};
@@ -50,6 +49,8 @@ private:
 		std::vector<std::string> no_flag;
 		std::vector<std::string> has_flag;
 	};
+
+private:
 
 	struct building_rule
 	{
