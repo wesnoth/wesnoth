@@ -180,7 +180,7 @@ void internal_preprocess_file(const std::string& fname,
 						pos = new_pos;
 					}
 
-					std::cerr << "'" << replace_with << "' (substituted " << subs << " times), ";
+					std::cerr << "'" << item << "' -> '" << replace_with << "' (substituted " << subs << " times), ";
 				}
 
 				std::cerr << "\n";
