@@ -881,7 +881,7 @@ void show_unit_terrain_table(display& disp, const gamemap& map, const unit& u)
 		const terrain_type& info = map.get_terrain_info(*t);
 		if(!info.is_alias()) {
 			const std::string& name = map.terrain_name(*t);
-			const std::string& lang_name = string_table[name];
+			const std::string& lang_name = name;
 			const int moves = move_type.movement_cost(map,*t);
 
 			std::stringstream str;
