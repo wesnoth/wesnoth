@@ -34,7 +34,8 @@
 namespace game_events
 {
 
-const std::string& get_variable(const std::string& varname);
+std::string& get_variable(const std::string& varname);
+config& get_variable_cfg(const std::string& varname);
 
 void set_variable(const std::string& varname, const std::string& value);
 

@@ -142,6 +142,8 @@ struct config
 	std::string& operator[](const std::string& key);
 	const std::string& operator[](const std::string& key) const;
 
+	const std::string& get_attribute(const std::string& key) const;
+
 	config* find_child(const std::string& key, const std::string& name,
 	                   const std::string& value);
 	const config* find_child(const std::string& key, const std::string& name,
@@ -159,7 +161,10 @@ struct config
 	static std::string& strip(std::string& str);
 	static bool has_value(const std::string& values, const std::string& val);
 
-	static std::string interpolate_variables_into_string(const std::string& str, const string_map& symbols);
+	//function which will interpolate variables, starting with '$' in the string 'str' with
+	//the equivalent symbols in the given symbol table. If 'symbols' is NULL, then game event
+	//variables will be used instead
+	static std::string interpolate_variables_into_string(const std::string& str, const string_map* symbols=NULL);
 
 	void clear();
 	bool empty() const;
@@ -236,22 +241,6 @@ struct config_has_value {
 
 private:
 	const std::string name_, value_;
-};
-
-//an object which wraps around a config object and interpolates
-//variables into all strings it returns
-struct config_interpolater {
-	config_interpolater(const config& cfg, const string_map& m) : cfg_(cfg), map_(m)
-	{}
-
-	std::string operator[](const std::string& str) const
-	{
-		return config::interpolate_variables_into_string(cfg_[str],map_);
-	}
-
-private:
-	const config& cfg_;
-	const string_map& map_;
 };
 
 #endif

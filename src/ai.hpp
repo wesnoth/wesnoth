@@ -275,28 +275,39 @@ class ai : public ai_interface {
 public:
 
 	ai(ai_interface::info& info);
+	virtual ~ai() {}
 
-	void play_turn();
+	virtual void play_turn();
 
-private:
+	virtual int choose_weapon(const location& att, const location& def,
+	                          battle_stats& cur_stats, gamemap::TERRAIN terrain);
 
-	void do_move();
+	struct target {
+		target(const location& pos, double val) : loc(pos), value(val)
+		{}
+		location loc;
+		double value;
+	};
 
-	bool do_combat(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
-	bool get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
-	bool get_healing(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
-	bool retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
-	bool move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
+protected:
 
-	bool should_retreat(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc) const;
+	virtual void do_move();
 
-	void do_recruitment();
+	virtual bool do_combat(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
+	virtual bool get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
+	virtual bool get_healing(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
+	virtual bool retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
+	virtual bool move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
 
-	void move_leader_to_keep(const move_map& enemy_dstsrc);
-	void move_leader_after_recruit(const move_map& enemy_dstsrc);
-	void leader_attack();
+	virtual bool should_retreat(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc) const;
 
-	bool recruit_usage(const std::string& usage);
+	virtual void do_recruitment();
+
+	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
+	virtual void move_leader_after_recruit(const move_map& enemy_dstsrc);
+	virtual void leader_attack();
+
+	virtual bool recruit_usage(const std::string& usage);
 
 	struct attack_analysis
 	{
@@ -345,7 +356,7 @@ private:
 		bool leader_threat;
 	};
 
-	void do_attack_analysis(
+	virtual void do_attack_analysis(
 	                 const location& loc,
 	                 const move_map& srcdst, const move_map& dstsrc,
 	                 const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
@@ -356,32 +367,20 @@ private:
 	                );
 
 
-	double power_projection(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, bool use_terrain=true) const;
+	virtual double power_projection(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, bool use_terrain=true) const;
 
-public:
-	int choose_weapon(const location& att, const location& def,
-					  battle_stats& cur_stats, gamemap::TERRAIN terrain);
-
-	struct target {
-		target(const location& pos, double val) : loc(pos), value(val)
-		{}
-		location loc;
-		double value;
-	};
-
-private:
-	std::vector<attack_analysis> analyze_targets(
+	virtual std::vector<attack_analysis> analyze_targets(
 	             const move_map& srcdst, const move_map& dstsrc,
 	             const move_map& enemy_srcdst, const move_map& enemy_dstsrc
             );
 
 
-	std::vector<target> find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
+	virtual std::vector<target> find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 
-	std::pair<location,location> choose_move(std::vector<target>& targets,const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
+	virtual std::pair<location,location> choose_move(std::vector<target>& targets,const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 
 	//function which rates the value of moving onto certain terrain for a unit
-	int rate_terrain(const unit& u, const location& loc);
+	virtual int rate_terrain(const unit& u, const location& loc);
 
 	display& disp_;
 	const gamemap& map_;
@@ -396,28 +395,28 @@ private:
 	//function which will analyze all the units that this side can recruit and rate
 	//their movement types. Ratings will be placed in 'unit_movement_scores_', with
 	//lower scores being better, and the lowest possible rating being '10'.
-	void analyze_potential_recruit_movements();
+	virtual void analyze_potential_recruit_movements();
 
-	std::map<std::string,int> unit_movement_scores_;
-	std::set<std::string> not_recommended_units_;
+	virtual std::map<std::string,int> unit_movement_scores_;
+	virtual std::set<std::string> not_recommended_units_;
 
 	//function which will analyze all the units that this side can recruit and rate
 	//their fighting suitability against enemy units. Ratings will be placed in
 	//'unit_combat_scores_' with a '0' rating indicating that the unit is 'average'
 	//against enemy units, negative ratings meaning they are poorly suited, and
 	//positive ratings meaning they are well suited
-	void analyze_potential_recruit_combat();
+	virtual void analyze_potential_recruit_combat();
 
 	std::map<std::string,int> unit_combat_scores_;
 
 	//function which rates two unit types for their suitability against each other.
 	//returns 0 if the units are equally matched, a positive number if a is suited
 	//against b, and a negative number if b is suited against a.
-	int compare_unit_types(const unit_type& a, const unit_type& b) const;
+	virtual int compare_unit_types(const unit_type& a, const unit_type& b) const;
 
 	//function which calculates the average resistance unit type a has against
 	//the attacks of unit type b.
-	int average_resistance_against(const unit_type& a, const unit_type& b) const;
+	virtual int average_resistance_against(const unit_type& a, const unit_type& b) const;
 };
 
 #endif

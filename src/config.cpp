@@ -1056,13 +1056,19 @@ std::string& config::operator[](const std::string& key)
 
 const std::string& config::operator[](const std::string& key) const
 {
+	const std::string& str = get_attribute(key);
+	//see if the value is a variable
+	if(str != "" && str[0] == '$') {
+		return game_events::get_variable(std::string(str.begin()+1,str.end()));
+	} else {
+		return str;
+	}
+}
+
+const std::string& config::get_attribute(const std::string& key) const
+{
 	const string_map::const_iterator i = values.find(key);
 	if(i != values.end()) {
-		//see if the value is a variable
-		if(i->second[0] == '$') {
-			return game_events::get_variable(std::string(i->second.begin()+1,i->second.end()));
-		}
-
 		return i->second;
 	} else {
 		static const std::string empty_string;
@@ -1251,10 +1257,10 @@ namespace {
 
 bool not_id(char c)
 {
-	return !isalpha(c);
+	return !isalpha(c) && c != '.';
 }
 
-void do_interpolation(std::string& res, size_t npos, const string_map& m)
+void do_interpolation(std::string& res, size_t npos, const string_map* m)
 {
 	const std::string::iterator i = std::find(res.begin()+npos,res.end(),'$');
 	if(i == res.end() || i+1 == res.end()) {
@@ -1268,9 +1274,13 @@ void do_interpolation(std::string& res, size_t npos, const string_map& m)
 	const std::string key(i+1,end);
 	res.erase(i,end);
 
-	const string_map::const_iterator itor = m.find(key);
-	if(itor != m.end()) {
-		res.insert(npos-1,itor->second);
+	if(m != NULL) {
+		const string_map::const_iterator itor = m->find(key);
+		if(itor != m->end()) {
+			res.insert(npos-1,itor->second);
+		}
+	} else {
+		res.insert(npos-1,game_events::get_variable(key));
 	}
 
 	do_interpolation(res,npos,m);
@@ -1278,7 +1288,7 @@ void do_interpolation(std::string& res, size_t npos, const string_map& m)
 
 }
 
-std::string config::interpolate_variables_into_string(const std::string& str, const string_map& symbols)
+std::string config::interpolate_variables_into_string(const std::string& str, const string_map* symbols)
 {
 	std::string res = str;
 	do_interpolation(res,0,symbols);

@@ -567,8 +567,17 @@ void unit::read(game_data& data, const config& cfg)
 	const config* const status_flags = cfg.child("status");
 	if(status_flags != NULL) {
 		for(string_map::const_iterator i = status_flags->values.begin(); i != status_flags->values.end(); ++i) {
-			statusFlags_.insert(i->first);
+			if(i->second == "on") {
+				statusFlags_.insert(i->first);
+			}
 		}
+	}
+
+	const config* const variables = cfg.child("variables");
+	if(variables != NULL) {
+		variables_ = *variables;
+	} else {
+		variables_.clear();
 	}
 
 	const config* const modifications = cfg.child("modifications");
@@ -623,6 +632,8 @@ void unit::write(config& cfg) const
 	for(std::set<std::string>::const_iterator st = statusFlags_.begin(); st != statusFlags_.end(); ++st) {
 		status_flags[*st] = "on";
 	}
+
+	cfg.add_child("variables",variables_);
 
 	cfg.add_child("status",status_flags);
 

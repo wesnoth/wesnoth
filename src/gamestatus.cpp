@@ -215,7 +215,7 @@ game_state read_game(game_data& data, const config* cfg)
 
 	const config* const vars = cfg->child("variables");
 	if(vars != NULL) {
-		res.variables = vars->values;
+		res.variables = *vars;
 	}
 
 	const config* const replay = cfg->child("replay");
@@ -271,7 +271,7 @@ void write_game(const game_state& game, config& cfg)
 
 	cfg["difficulty"] = game.difficulty;
 
-	cfg.add_child("variables").values = game.variables;
+	cfg.add_child("variables",game.variables);
 
 	for(std::vector<unit>::const_iterator i = game.available_units.begin();
 	    i != game.available_units.end(); ++i) {

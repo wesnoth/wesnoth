@@ -1647,7 +1647,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		if(message != "") {
 			string_map symbols;
 			symbols["noun"] = string_table[u.type().gender() == unit_race::MALE ? "noun_male" : "noun_female"];
-			message = config::interpolate_variables_into_string(message,symbols);
+			message = config::interpolate_variables_into_string(message,&symbols);
 
 			const int res = gui::show_dialog(disp_,NULL,"",message,gui::YES_NO);
 			if(res != 0) {

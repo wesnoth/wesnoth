@@ -115,7 +115,7 @@ struct game_state
 	std::string scenario; //the scenario being played
 	int gold; //amount of gold the player has saved
 	std::vector<unit> available_units; //units the player may recall
-	std::map<std::string,std::string> variables; //variables that have been set
+	config variables; //variables that have been set
 	std::string difficulty; //the difficulty level the game is being played on.
 
 	std::set<std::string> can_recruit; //units the player has the ability to recruit

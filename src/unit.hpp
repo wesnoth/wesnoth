@@ -166,6 +166,9 @@ private:
 
 	std::set<std::string> statusFlags_;
 
+	//this field stores user-variables associated with the unit
+	config variables_;
+
 	std::vector<attack_type> attacks_;
 	std::vector<attack_type> backupAttacks_;
 
