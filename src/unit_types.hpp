@@ -129,7 +129,7 @@ public:
 	const std::string& name() const;
 	const std::string& image() const;
 	const std::string& image_profile() const;
-	const std::string& image_defensive() const;
+	const std::string& image_defensive(attack_type::RANGE range) const;
 	const std::string& unit_description() const;
 	int hitpoints() const;
 	std::vector<attack_type> attacks() const;

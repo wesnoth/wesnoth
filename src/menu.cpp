@@ -732,6 +732,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 		if(!key_down && key[KEY_ENTER] &&
 		   (type == YES_NO || type == OK_CANCEL)) {
+
+			if(text_widget_text != NULL && use_textbox)
+				*text_widget_text = text_widget.text();
+
 			if(menu_.height() == 0) {
 				return 0;
 			} else {

@@ -22,6 +22,6 @@ namespace game_config
 	const int cure_amount = 8;
 	const int curer_heals_per_turn = 18;
 	const int recall_cost = 20;
-	const std::string version = "0.4.8 RC1";
+	const std::string version = "0.4.8 RC3";
 	bool debug = false;
 }

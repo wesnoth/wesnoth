@@ -80,7 +80,8 @@ public:
 	//(could be in the middle of an attack etc)
 	const std::string& image() const;
 
-	void set_defending(bool newval);
+	void set_defending(bool newval,
+	                   attack_type::RANGE range=attack_type::LONG_RANGE);
 	void set_attacking(bool newval, const attack_type* type=NULL, int ms=0);
 
 	bool facing_left() const;
@@ -100,7 +101,8 @@ public:
 private:
 	const unit_type* type_;
 
-	enum STATE { STATE_NORMAL, STATE_ATTACKING, STATE_DEFENDING };
+	enum STATE { STATE_NORMAL, STATE_ATTACKING,
+	             STATE_DEFENDING_LONG, STATE_DEFENDING_SHORT };
 	STATE state_;
 	const attack_type* attackType_;
 	int attackingMilliseconds_;

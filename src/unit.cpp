@@ -479,7 +479,10 @@ const std::string& unit::image() const
 {
 	switch(state_) {
 		case STATE_NORMAL: return type_->image();
-		case STATE_DEFENDING: return type_->image_defensive();
+		case STATE_DEFENDING_LONG:
+		           return type_->image_defensive(attack_type::LONG_RANGE);
+		case STATE_DEFENDING_SHORT:
+		           return type_->image_defensive(attack_type::SHORT_RANGE);
 		case STATE_ATTACKING: {
 			if(attackType_ == NULL)
 				return type_->image();
@@ -496,9 +499,10 @@ const std::string& unit::image() const
 	}
 }
 
-void unit::set_defending(bool newval)
+void unit::set_defending(bool newval, attack_type::RANGE range)
 {
-	state_ = newval ? STATE_DEFENDING : STATE_NORMAL;
+	state_ = newval ? (range == attack_type::LONG_RANGE ? STATE_DEFENDING_LONG :
+	                   STATE_DEFENDING_SHORT): STATE_NORMAL;
 }
 
 void unit::set_attacking(bool newval, const attack_type* type, int ms)

@@ -515,7 +515,13 @@ std::vector<std::string> config::split(const std::string& val)
 
 std::string& config::strip(std::string& str)
 {
-	str.erase(str.begin(),std::find_if(str.begin(),str.end(),isgraph));
+	//if all the string contains is whitespace, then the whitespace may
+	//have meaning, so don't strip it
+	const std::string::iterator it=std::find_if(str.begin(),str.end(),isgraph);
+	if(it == str.end())
+		return str;
+
+	str.erase(str.begin(),it);
 	str.erase(std::find_if(str.rbegin(),str.rend(),isgraph).base(),str.end());
 
 	return str;

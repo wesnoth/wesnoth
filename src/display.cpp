@@ -1591,6 +1591,8 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 {
 	const unit_map::iterator def = units_.find(b);
 
+	def->second.set_defending(true,attack_type::LONG_RANGE);
+
 	//the missile frames are based around the time when the missile impacts.
 	//the 'real' frames are based around the time when the missile launches.
 	const int first_missile = minimum<int>(-100,
@@ -1716,6 +1718,8 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 		update_display();
 	}
 
+	def->second.set_defending(false);
+
 	if(dead) {
 		unit_die(b);
 	}
@@ -1779,7 +1783,7 @@ bool display::unit_attack(const gamemap::location& a,
 
 	const int time_resolution = 20;
 
-	def->second.set_defending(true);
+	def->second.set_defending(true,attack_type::SHORT_RANGE);
 
 	const int begin_at = minimum<int>(-200,attack.get_first_frame());
 	const int end_at = maximum<int>((damage+1)*time_resolution,
