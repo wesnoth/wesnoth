@@ -2,9 +2,10 @@
 #define THEME_HPP_INCLUDED
 
 #include <map>
+#include <string>
 #include <vector>
 
-#include "config.hpp"
+class config;
 
 #include "SDL.h"
 

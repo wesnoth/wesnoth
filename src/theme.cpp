@@ -1,5 +1,6 @@
 #include "global.hpp"
 
+#include "config.hpp"
 #include "font.hpp"
 #include "language.hpp"
 #include "log.hpp"

@@ -1,6 +1,7 @@
 #ifndef MAPGEN_DIALOG_HPP_INCLUDED
 #define MAPGEN_DIALOG_HPP_INCLUDED
 
+#include "config.hpp"
 #include "mapgen.hpp"
 
 class default_map_generator : public map_generator

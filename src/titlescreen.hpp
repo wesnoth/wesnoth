@@ -1,7 +1,8 @@
 #ifndef TITLE_HPP_INCLUDED
 #define TITLE_HPP_INCLUDED
 
-#include "display.hpp"
+class config;
+class display;
 
 namespace gui {
 

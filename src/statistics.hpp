@@ -1,8 +1,8 @@
 #ifndef STATISTICS_HPP_INCLUDED
 #define STATISTICS_HPP_INCLUDED
 
+class unit;
 #include "actions.hpp"
-#include "unit.hpp"
 
 namespace statistics
 {

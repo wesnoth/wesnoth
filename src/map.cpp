@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "config.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathutils.hpp"

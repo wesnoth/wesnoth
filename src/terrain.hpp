@@ -13,10 +13,12 @@
 #ifndef TERRAIN_H_INCLUDED
 #define TERRAIN_H_INCLUDED
 
-#include "config.hpp"
+class config;
 #include "sdl_utils.hpp"
 
+#include <map>
 #include <string>
+#include <vector>
 
 class terrain_type
 {

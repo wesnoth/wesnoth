@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "config.hpp"
 #include "terrain.hpp"
 
 #include <cstdlib>
