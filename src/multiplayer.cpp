@@ -89,32 +89,32 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	turns_slider_.assign(new gui::slider(disp_));
 	turns_slider_->set_min(20);
 	turns_slider_->set_max(100);
-	turns_slider_->set_value(50);
+	turns_slider_->set_value(preferences::turns());
 	turns_slider_->set_help_string(_("The maximum turns the game will go for"));
 
 	village_gold_slider_.assign(new gui::slider(disp_));
 	village_gold_slider_->set_min(1);
 	village_gold_slider_->set_max(5);
-	village_gold_slider_->set_value(1);
+	village_gold_slider_->set_value(preferences::village_gold());
 	village_gold_slider_->set_help_string(_("The amount of income each village yields per turn"));
 
 	xp_modifier_slider_.assign(new gui::slider(disp_));
 	xp_modifier_slider_->set_min(25);
 	xp_modifier_slider_->set_max(200);
-	xp_modifier_slider_->set_value(100);
+	xp_modifier_slider_->set_value(preferences::xp_modifier());
 	xp_modifier_slider_->set_increment(10);
 	xp_modifier_slider_->set_help_string(_("The amount of experience a unit needs to advance"));
 
 	fog_game_.assign(new gui::button(disp_,_("Fog Of War"),gui::button::TYPE_CHECK));
-	fog_game_->set_check(false);
+	fog_game_->set_check(preferences::fog());
 	fog_game_->set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
 
 	shroud_game_.assign(new gui::button(disp_,_("Shroud"),gui::button::TYPE_CHECK));
-	shroud_game_->set_check(false);
+	shroud_game_->set_check(preferences::shroud());
 	shroud_game_->set_help_string(_("The map is unknown until your units explore it"));
 
 	observers_game_.assign(new gui::button(disp_,_("Observers"),gui::button::TYPE_CHECK));
-	observers_game_->set_check(true);
+	observers_game_->set_check(preferences::allow_observers());
 	observers_game_->set_help_string(_("Allow users who are not playing to watch the game"));
 
 	cancel_game_.assign(new gui::button(disp_,_("Cancel")));
@@ -145,6 +145,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	}
 
 	era_combo_.assign(new gui::combo(disp_,eras));
+	era_combo_->set_selected(preferences::era());
 
 	std::cerr << "end setup dialog ctor\n";
 }
@@ -191,6 +192,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	maps_menu_->set_max_height(area.y + area.h - (ypos + map_label_height));
 	maps_menu_->set_items(map_options_);
 	maps_menu_->set_location(xpos + minimap_width + border_size,ypos + map_label_height + border_size);
+	maps_menu_->move_selection(preferences::map());
 	maps_menu_->set_dirty();
 
 	SDL_Rect rect;
@@ -534,6 +536,17 @@ void multiplayer_game_setup_dialog::start_game()
 	const config::child_list& era_list = cfg_.get_children("era");
 
 	const int share = vision_combo_->selected();
+
+	//Save values for next game
+	preferences::set_allow_observers(observers_game_->checked());
+	preferences::set_fog(fog_game_->checked());
+	preferences::set_shroud(shroud_game_->checked());
+	preferences::set_turns(turns_slider_->value());
+	preferences::set_village_gold(village_gold_slider_->value());
+	preferences::set_xp_modifier(xp_modifier_slider_->value());
+	preferences::set_era(era_combo_->selected());
+	preferences::set_map(maps_menu_->selection());
+	
 	const int res = connector.load_map((*era_list[era_combo_->selected()])["id"],
 	                   scenario_data_, turns, village_gold_slider_->value(),
 					   xp_modifier_slider_->value(), fog_game_->checked(),

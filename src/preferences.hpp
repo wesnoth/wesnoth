@@ -98,6 +98,30 @@ namespace preferences {
 
 	bool show_combat();
 
+	bool allow_observers();
+	void set_allow_observers(bool value);
+
+	bool fog();
+	void set_fog(bool value);
+
+	bool shroud();
+	void set_shroud(bool value);
+
+	int turns();
+	void set_turns(int value);
+
+	int village_gold();
+	void set_village_gold(int value);
+
+	int xp_modifier();
+	void set_xp_modifier(int value);
+
+	int era();
+	void set_era(int value);
+
+	int map();
+	void set_map(int value);
+
 	bool show_ai_moves();
 	void set_show_ai_moves(bool value);
 

@@ -457,6 +457,140 @@ bool show_combat()
 	return prefs["show_combat"] != "no";
 }
 
+bool allow_observers()
+{	
+	return prefs["allow_observers"] != "no";
+}
+
+void set_allow_observers(bool value)
+{	
+	prefs["allow_observers"] = value ? "yes" : "no";
+}
+
+bool fog()
+{	
+	return prefs["mp_fog"] != "no";
+}
+
+void set_fog(bool value)
+{	
+	prefs["mp_fog"] = value ? "yes" : "no";
+}
+
+bool shroud()
+{	
+	return prefs["mp_shroud"] != "no";
+}
+
+void set_shroud(bool value)
+{	
+	prefs["mp_shroud"] = value ? "yes" : "no";
+}
+
+int turns()
+{	
+	static const int default_value = 50;
+	int value = 0;
+	const string_map::const_iterator i = prefs.values.find("mp_turns");
+	if(i != prefs.values.end() && i->second.empty() == false) {
+		value = atoi(i->second.c_str());
+	}
+
+	if(value < 20 || value > 100) {
+		value = default_value;
+	}
+
+	return value;
+}
+
+void set_turns(int value)
+{	
+	std::stringstream stream;
+	stream << value;
+	prefs["mp_turns"] = stream.str();
+}
+
+int village_gold()
+{	
+	static const int default_value = 1;
+	int value = 0;
+	const string_map::const_iterator i = prefs.values.find("mp_village_gold");
+	if(i != prefs.values.end() && i->second.empty() == false) {
+		value = atoi(i->second.c_str());
+	}
+
+	if(value < 1 || value > 5) {
+		value = default_value;
+	}
+
+	return value;
+}
+
+void set_village_gold(int value)
+{	
+	std::stringstream stream;
+	stream << value;
+	prefs["mp_village_gold"] = stream.str();
+}
+
+int xp_modifier()
+{	
+	static const int default_value = 100;
+	int value = 0;
+	const string_map::const_iterator i = prefs.values.find("mp_xp_modifier");
+	if(i != prefs.values.end() && i->second.empty() == false) {
+		value = atoi(i->second.c_str());
+	}
+
+	if(value < 30 || value > 200) {
+		value = default_value;
+	}
+
+	return value;
+}
+
+void set_xp_modifier(int value)
+{	
+	std::stringstream stream;
+	stream << value;
+	prefs["mp_xp_modifier"] = stream.str();
+}
+
+int era()
+{	
+	int value = 0;
+	const string_map::const_iterator i = prefs.values.find("mp_era");
+	if(i != prefs.values.end() && i->second.empty() == false) {
+		value = atoi(i->second.c_str());
+	}
+
+	return value;
+}
+
+void set_era(int value)
+{	
+	std::stringstream stream;
+	stream << value;
+	prefs["mp_era"] = stream.str();
+}
+
+int map()
+{	
+	int value = 0;
+	const string_map::const_iterator i = prefs.values.find("mp_map");
+	if(i != prefs.values.end() && i->second.empty() == false) {
+		value = atoi(i->second.c_str());
+	}
+	return value;
+}
+
+void set_map(int value)
+{	
+	std::stringstream stream;
+	stream << value;
+	prefs["mp_map"] = stream.str();
+}
+
 bool show_ai_moves()
 {	
 	return prefs["show_ai_moves"] != "no";

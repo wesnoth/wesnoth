@@ -24,6 +24,7 @@ public:
 	     bool click_selects=false, int max_height=-1, int max_width=-1);
 
 	int selection() const;
+	void move_selection(size_t pos);
 
 	// allows user to change_item while running (dangerous)
 	void change_item(int pos1,int pos2,std::string str);
@@ -121,7 +122,6 @@ private:
 	void update_size();
 	void move_selection_up(size_t dep);
 	void move_selection_down(size_t dep);
-	void move_selection(size_t pos);
 };
 
 }
