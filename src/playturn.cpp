@@ -2291,11 +2291,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	if(turns.empty() == false && from != network::null_connection) {
 		//forward the data to other peers
 		network::send_data_all_except(cfg,from);
-
-		if(allow_network_commands_ == false) {
-			gui::show_dialog(gui_,NULL,"Error","Network error: Received unexpected command from remote host",gui::OK_ONLY);
-			std::cerr << "Received unexpected command from remote host: '" << cfg.write() << "'\n";
-		}
 	}
 
 	for(config::child_list::const_iterator t = turns.begin(); t != turns.end(); ++t) {
