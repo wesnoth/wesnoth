@@ -69,6 +69,9 @@ namespace preferences {
 	bool turn_bell();
 	void set_turn_bell(bool ison);
 
+	bool message_bell();
+	void set_message_bell(bool ison);
+
 	bool turn_dialog();
 	void set_turn_dialog(bool ison);
 
@@ -87,6 +90,9 @@ namespace preferences {
 
 	bool show_floating_labels();
 	void set_show_floating_labels(bool value);
+
+	bool message_private();
+	void set_message_private(bool value);
 
 	std::string client_type();
 

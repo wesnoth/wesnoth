@@ -41,10 +41,6 @@ int sdl_add_ref(SDL_Surface* surface);
 
 typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
 
-enum ELLIPSE_HALF { ELLIPSE_TOP, ELLIPSE_BOTTOM };
-
-void draw_unit_ellipse(SDL_Surface* surf, Uint16 colour, Uint8 alpha, const SDL_Rect& clip, int unitx, int unity, SDL_Surface* unit_image, bool image_reverse, ELLIPSE_HALF half);
-
 SDL_Surface* make_neutral_surface(SDL_Surface* surf);
 SDL_Surface* clone_surface(SDL_Surface* surface);
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h);

@@ -207,6 +207,19 @@ void game::send_data(const config& data, network::connection exclude)
 	}
 }
 
+void game::send_data_team(const config& data, const std::string& team, network::connection exclude)
+{
+	for(std::vector<network::connection>::const_iterator
+	    i = players_.begin(); i != players_.end(); ++i) {
+		if(*i != exclude && sides_.count(*i) == 1) {
+			const config* const side = level_.find_child("side","side",sides_[*i]);
+			if(side != NULL && (*side)["team_name"] == team) {
+				network::send_data(data,*i);
+			}
+		}
+	}
+}
+
 void game::record_data(const config& data)
 {
 	history_.push_back(data);

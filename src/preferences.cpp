@@ -39,6 +39,8 @@ display* disp = NULL;
 bool muted_ = false;
 bool colour_cursors = false;
 
+bool message_private_on = true;
+
 }
 
 namespace preferences {
@@ -322,6 +324,16 @@ void set_turn_bell(bool ison)
 	prefs["turn_bell"] = (ison ? "yes" : "no");
 }
 
+bool message_bell()
+{
+	return prefs["message_bell"] != "no";
+}
+
+void set_message_bell(bool ison)
+{
+	prefs["message_bell"] = (ison ? "yes" : "no");
+}
+
 bool turn_dialog()
 {
 	return prefs["turn_dialog"] == "yes";
@@ -421,10 +433,21 @@ void set_show_floating_labels(bool value)
 	prefs["floating_labels"] = value ? "yes" : "no";
 }
 
+bool message_private()
+{
+	return message_private_on;
+}
+
+void set_message_private(bool value)
+{
+	message_private_on = value;
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
+	const gui::dialog_manager dialog_mgr;
 	
 	log_scope("show_preferences_dialog");
 

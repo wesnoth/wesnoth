@@ -1449,8 +1449,7 @@ void turn_info::recruit()
 		const std::map<std::string,unit_type>::const_iterator
 				u_type = gameinfo_.unit_types.find(*it);
 		if(u_type == gameinfo_.unit_types.end()) {
-			std::cerr << "could not find " << *it << std::endl;
-			assert(false);
+			std::cerr << "ERROR: could not find unit '" << *it << "'";
 			return;
 		}
 
@@ -1672,9 +1671,25 @@ void turn_info::speak()
 	if(leader == units_.end())
 		return;
 
+	//see if this team has any networked friends. If so, then the player can choose to send
+	//to allies only.
+	bool has_friends = false;
+	for(size_t n = 0; n != teams_.size(); ++n) {
+		if(n != gui_.viewing_team() && teams_[gui_.viewing_team()].team_name() == teams_[n].team_name() &&
+		   teams_[n].is_network()) {
+			has_friends = true;
+		}
+	}
+
+	std::vector<gui::check_item> checks;
+
+	if(has_friends) {
+		checks.push_back(gui::check_item(string_table["speak_allies_only"],preferences::message_private()));
+	}
+
 	std::string message;
 	const int res = gui::show_dialog(gui_,NULL,"",string_table["speak"],gui::OK_CANCEL,NULL,NULL,
-		                             string_table["message"] + ":", &message);
+		                             string_table["message"] + ":", &message,NULL,&checks);
 	if(res == 0) {
 		config cfg;
 		cfg["description"] = leader->second.description();
@@ -1683,9 +1698,19 @@ void turn_info::speak()
 		sprintf(buf,"%d",leader->second.side());
 		cfg["side"] = buf;
 
+		bool private_message = false;
+
+		if(has_friends) {
+			private_message = checks.front().checked;
+			preferences::set_message_private(private_message);
+			if(private_message) {
+				cfg["team_name"] = teams_[gui_.viewing_team()].team_name();
+			}
+		}
+
 		recorder.speak(cfg);
-		gui_.add_chat_message(leader->second.description(),message);
-//		dialogs::unit_speak(cfg,gui_,units_);
+		gui_.add_chat_message(leader->second.description(),message,
+			                  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
 	}
 }
 

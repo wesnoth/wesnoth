@@ -290,7 +290,8 @@ public:
 	map_labels& labels() { return map_labels_; }
 	const map_labels& labels() const { return map_labels_; }
 
-	void add_chat_message(const std::string& speaker, const std::string& msg);
+	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
+	void add_chat_message(const std::string& speaker, const std::string& msg, MESSAGE_TYPE type);
 
 private:
 	display(const display&);

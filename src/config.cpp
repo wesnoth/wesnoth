@@ -1190,7 +1190,7 @@ config config::get_diff(const config& c) const
 	string_map::const_iterator i;
 	for(i = values.begin(); i != values.end(); ++i) {
 		const string_map::const_iterator j = c.values.find(i->first);
-		if(j == c.values.end() || i->second != j->second) {
+		if(j == c.values.end() || i->second != j->second && i->second != "") {
 			if(inserts == NULL) {
 				inserts = &res.add_child("insert");
 			}
@@ -1202,7 +1202,8 @@ config config::get_diff(const config& c) const
 	config* deletes = NULL;
 
 	for(i = c.values.begin(); i != c.values.end(); ++i) {
-		if(values.count(i->first) == 0) {
+		const string_map::const_iterator itor = values.find(i->first);
+		if(itor == values.end() || itor->second == "") {
 			if(deletes == NULL) {
 				deletes = &res.add_child("delete");
 			}

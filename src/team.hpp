@@ -97,6 +97,8 @@ public:
 	void make_network();
 	void make_ai();
 
+	const std::string& team_name() const;
+
 	const std::string& ai_algorithm() const;
 	const config& ai_parameters() const;
 

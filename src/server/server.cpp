@@ -370,13 +370,44 @@ void server::run()
 						continue;
 					}
 
-					if(data.child("turn") != NULL) {
+					const config* const turn = data.child("turn");
+					if(turn != NULL) {
 						//notify the game of the commands, and if it changes
 						//the description, then sync the new description
 						//to players in the lobby
-						const bool res = g->process_commands(*data.child("turn"));
+						const bool res = g->process_commands(*turn);
 						if(res) {
 							lobby_players_.send_data(sync_initial_response());
+						}
+
+						//any private 'speak' commands must be repackaged seperate
+						//to other commands, and re-sent, since they should only go
+						//to some clients.
+						const config::child_list& speaks = turn->get_children("speak");
+						if(speaks.empty() == false) {
+							int npublic = 0, nprivate = 0;
+							std::string team_name;
+							for(config::child_list::const_iterator i = speaks.begin();
+							    i != speaks.end(); ++i) {
+								if((**i)["team_name"] == "") {
+									++npublic;
+								} else {
+									++nprivate;
+									team_name = (**i)["team_name"];
+								}
+							}
+
+							//if all there are are messages and they're all private, then
+							//just forward them on to the client that should receive them.
+							if(nprivate > 0 && npublic == 0 && turn->all_children().size() == 1) {
+								g->send_data_team(data,team_name,sock);
+								continue;
+							}
+
+							//at the moment, if private messages are mixed in with other
+							//data, then let them go through. It's exceedingly unlikely that
+							//this will happen anyway, and if it does, the client should
+							//respect not displaying the message.
 						}
 					}
 

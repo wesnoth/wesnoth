@@ -20,8 +20,10 @@
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
+#include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
+#include "sound.hpp"
 #include "statistics.hpp"
 
 #include <cstdio>
@@ -777,7 +779,15 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				advancing_units.push_back(tgt->first);
 			}
 		} else if((child = cfg->child("speak")) != NULL) {
-			disp.add_chat_message((*child)["description"],(*child)["message"]);
+			const std::string& team_name = (*child)["team_name"];
+			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
+				if(preferences::message_bell()) {
+					sound::play_sound("bell.wav");
+				}
+
+				disp.add_chat_message((*child)["description"],(*child)["message"],
+				                      team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
+			}
 		} else if((child = cfg->child("label")) != NULL) {
 			const gamemap::location loc(*child);
 			const std::string& text = (*child)["text"];

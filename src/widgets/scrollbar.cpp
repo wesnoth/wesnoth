@@ -110,8 +110,6 @@ void scrollbar::redraw()
 	draw();
 }
 
-// I'm sure this code is inefficient, but I'm not sure of how to do 
-// it more efficiently using scoped_resource 
 void scrollbar::draw()
 {
 	if (!enabled() || !dirty())
@@ -124,12 +122,9 @@ void scrollbar::draw()
 	const scoped_sdl_surface top_img(image::get_image(highlight_ ?
 					scrollbar_top_hl : scrollbar_top, image::UNSCALED));
 
-	const scoped_sdl_surface top_grv(image::get_image(groove_top,
-											image::UNSCALED));
-	const scoped_sdl_surface mid_grv(image::get_image(groove_mid,
-											image::UNSCALED));
-	const scoped_sdl_surface bottom_grv(image::get_image(groove_bottom,
-											image::UNSCALED));
+	const scoped_sdl_surface top_grv(image::get_image(groove_top,image::UNSCALED));
+	const scoped_sdl_surface mid_grv(image::get_image(groove_mid,image::UNSCALED));
+	const scoped_sdl_surface bottom_grv(image::get_image(groove_bottom,image::UNSCALED));
 
 	if (mid_img == NULL || bottom_img == NULL || top_img == NULL
 	 || top_grv == NULL || bottom_grv == NULL || mid_grv == NULL){

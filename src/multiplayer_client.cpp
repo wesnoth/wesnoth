@@ -391,10 +391,11 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		{
 			const config::child_list& sides_list = sides.get_children("side");
 			for(config::child_list::const_iterator side = sides_list.begin(); side != sides_list.end(); ++side) {
-				if(team_num-1 == side - sides_list.begin())
+				if(team_num-1 == side - sides_list.begin()) {
 					(**side)["controller"] = preferences::client_type();
-				else
+				} else {
 					(**side)["controller"] = "network";
+				}
 			}
 		}
     

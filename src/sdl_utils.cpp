@@ -64,53 +64,6 @@ int sdl_add_ref(SDL_Surface* surface)
 		return 0;
 }
 
-void draw_unit_ellipse(SDL_Surface* target, Uint16 colour, Uint8 alpha, const SDL_Rect& clip, int unitx, int unity, SDL_Surface* behind, bool image_reverse, ELLIPSE_HALF half)
-{
-	const int xloc = unitx + (behind->w*15)/100;
-	const int yloc = unity + (behind->h*7)/10;
-	const int width = (behind->w*70)/100;
-	const int height = behind->h/6;
-
-	const double centerx = xloc + double(width)*0.5;
-	const double centery = yloc + double(height)*0.5;
-	const double r = double(width)*0.5;
-
-	const double yratio = double(height)/double(width);
-
-	int last_y = 0;
-	for(int xit = xloc; xit != xloc+width; ++xit) {
-		//r^2 = x^2 + y^2
-		//y^2 = r^2 - x^2
-		const double x = double(xit) - centerx;
-		const int y = int(sqrt(r*r - x*x)*yratio);
-
-		const int direction = y > last_y ? 1 : -1;
-		for(int i = last_y; i != y+direction; i += direction) {
-			int yit = yloc+height/2-y;
-			int xpos = xit - unitx;
-			if(image_reverse)
-				xpos = behind->w - xpos - 1;
-
-			int ypos = yit - unity;
-			if(half == ELLIPSE_TOP && xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit+1 < clip.y + clip.h &&
-				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos+1 < behind->h) {
-				SDL_Rect rect = {xit,yit,1,2};
-				fill_rect_alpha(rect,colour,alpha,target);
-			}
-
-			yit = yloc+height/2+y;
-			ypos = yit - unity;
-			if(half == ELLIPSE_BOTTOM && xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit+1 < clip.y + clip.h &&
-				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos+1 < behind->h) {
-				SDL_Rect rect = {xit,yit,1,2};
-				fill_rect_alpha(rect,colour,alpha,target);
-			}
-		}
-
-		last_y = y;
-	}
-}
-
 SDL_Surface* clone_surface(SDL_Surface* surface)
 {
 	if(surface == NULL)

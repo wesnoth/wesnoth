@@ -2579,10 +2579,14 @@ namespace {
 	const SDL_Color chat_message_colour = {200,200,200,200};
 }
 
-void display::add_chat_message(const std::string& speaker, const std::string& msg)
+void display::add_chat_message(const std::string& speaker, const std::string& msg, display::MESSAGE_TYPE type)
 {
 	std::stringstream str;
-	str << "<" << speaker << "> " << msg;
+	if(type == MESSAGE_PUBLIC) {
+		str << "<" << speaker << "> " << msg;
+	} else {
+		str << "*" << speaker << "* " << msg;
+	}
 
 	std::cerr << "chat message '" << str.str() << "'\n";
 	const SDL_Rect rect = map_area();
@@ -2597,7 +2601,7 @@ void display::add_chat_message(const std::string& speaker, const std::string& ms
 
 void display::prune_chat_messages(bool remove_all)
 {
-	const int message_ttl = remove_all ? 0 : 30000;
+	const int message_ttl = remove_all ? 0 : 1200000;
 	if(chat_messages_.empty() == false && (chat_messages_.front().created_at+message_ttl < SDL_GetTicks() || chat_messages_.size() > max_chat_messages)) {
 		font::remove_floating_label(chat_messages_.front().handle);
 		chat_messages_.erase(chat_messages_.begin());

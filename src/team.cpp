@@ -410,6 +410,11 @@ void team::make_ai()
 	info_.controller = team_info::AI;
 }
 
+const std::string& team::team_name() const
+{
+	return info_.team_name;
+}
+
 const std::string& team::ai_algorithm() const
 {
 	return info_.ai_algorithm;

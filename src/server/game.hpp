@@ -37,6 +37,7 @@ public:
 	int id() const;
 
 	void send_data(const config& data, network::connection exclude=0);
+	void send_data_team(const config& data, const std::string& team, network::connection exclude=0);
 	void record_data(const config& data);
 
 	//the full scenario data

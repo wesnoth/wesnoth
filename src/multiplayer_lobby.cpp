@@ -36,18 +36,22 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data)
 
 	std::vector<std::string> messages;
 
-	gui::textbox message_entry(disp,500);
-
 	scoped_sdl_surface background(image::get_image("misc/lobby.png",image::UNSCALED));
 	background.assign(scale_surface(background,disp.x(),disp.y()));
 
+	if(background == NULL) {
+		return QUIT;
+	}
+
+	SDL_BlitSurface(background, NULL, disp.video().getSurface(), NULL);
 	update_whole_screen();
+
+	gui::textbox message_entry(disp,500);
 
 	bool last_escape = true;
 
 	for(;;) {
-		if(background != NULL)
-			SDL_BlitSurface(background, NULL, disp.video().getSurface(), NULL);
+		SDL_BlitSurface(background, NULL, disp.video().getSurface(), NULL);
 
 		// Display Chats
 		std::stringstream text;
@@ -64,7 +68,10 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data)
 
 		// Game List GUI
 		const config* const gamelist = game_data.child("gamelist");
-		assert(gamelist != NULL);
+		if(gamelist == NULL) {
+			std::cerr << "ERROR: could not find gamelist\n";
+			return QUIT;
+		}
 
 		std::vector<std::string> options;
 		config::const_child_itors i;
