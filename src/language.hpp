@@ -65,10 +65,4 @@ std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
 
 
-//two character sets are supported: LATIN1 and UTF-8. This is
-//set in the translation by using encoding=(LATIN1|UTF-8)
-//the character set used affects the font rendering function called
-enum CHARSET { CHARSET_LATIN1, CHARSET_UTF8 };
-CHARSET charset();
-
 #endif

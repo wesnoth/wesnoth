@@ -168,7 +168,7 @@ bool show_intro_part(display& screen, const config& part,
 			//how many bytes does the current utf8 character require?
 			int bytes = 1;
 			
-				if(charset() == CHARSET_UTF8) {
+//				if(charset() == CHARSET_UTF8) {
 					if((unsigned)j[bytes-1] >= 0xC0U) 
 						bytes++;
 					if((unsigned)j[bytes-1] >= 0xE0U)
@@ -179,7 +179,7 @@ bool show_intro_part(display& screen, const config& part,
 						bytes++;
 					if((unsigned)j[bytes-1] >= 0xFCU)
 						bytes++;
-				}
+//				}
 
 			//copy the character
 			buf.resize(bytes);

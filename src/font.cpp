@@ -197,17 +197,7 @@ SDL_Rect text_size(TTF_Font* font, const std::string& str, const SDL_Color& colo
 	SDL_Rect res = {0,0,0,0};
 	int w = 0, h = 0;
 
-	switch(charset())
-	{
-	case CHARSET_UTF8:
-		TTF_SizeUTF8(font,str.c_str(),&w,&h);
-		break;
-	case CHARSET_LATIN1:
-		TTF_SizeText(font,str.c_str(),&w,&h);
-		break;
-	default:
-		std::cerr << "Unrecognized charset\n";
-	}
+	TTF_SizeUTF8(font,str.c_str(),&w,&h);
 
 	res.w = size_t(w);
 	res.h = size_t(h);
@@ -219,16 +209,9 @@ SDL_Surface* render_text_internal(TTF_Font* font,const std::string& str,
 						 const SDL_Color& colour, int style)
 {
 	const font_style_setter style_setter(font,style);
-	switch(charset())
-	{
-	case CHARSET_UTF8:
-		return TTF_RenderUTF8_Blended(font,str.c_str(),colour);
-	case CHARSET_LATIN1:
-		return TTF_RenderText_Blended(font,str.c_str(),colour);
-	default:
-		std::cerr << "Unrecognized charset\n";
-		return NULL;
-	}
+
+	return TTF_RenderUTF8_Blended(font,str.c_str(),colour);
+
 }
 
 SDL_Surface* render_text(TTF_Font* font,const std::string& text, const SDL_Color& colour, int style)
@@ -523,17 +506,7 @@ namespace font {
     int w = 0;
     int h = 0;
   
-    switch(charset())
-      {
-      case CHARSET_UTF8:
-	TTF_SizeUTF8(font, line.c_str(), &w, &h);
-	break;
-      case CHARSET_LATIN1:
-	TTF_SizeText(font, line.c_str(), &w, &h);
-	break;
-      default:
-	std::cerr << "Unrecognized charset\n";
-      }
+    TTF_SizeUTF8(font, line.c_str(), &w, &h);
 
     return w;
   }

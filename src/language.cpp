@@ -23,12 +23,9 @@
 #include <iostream>
 
 namespace {
-	CHARSET charset_used = CHARSET_LATIN1;
 	std::string current_language;
 	string_map strings_;
 }
-
-CHARSET charset() { return charset_used; }
 
 symbol_table string_table;
 
@@ -92,17 +89,6 @@ bool internal_set_language(const std::string& locale, config& cfg)
 		if((**i)["id"] == locale || (**i)["language"] == locale) {
 
 			current_language = (**i)["language"];
-
-			const std::string& enc = (**i)["encoding"];
-			if(enc == "UTF-8") {
-				charset_used = CHARSET_UTF8;
-			} else if(enc == "LATIN1" || enc == "") {
-				charset_used = CHARSET_LATIN1;
-			} else {
-				std::cerr << "Unrecognized character set: '" << enc
-				          << "' (defaulting to LATIN1)\n";
-				charset_used = CHARSET_LATIN1;
-			}
 
 			for(string_map::const_iterator j = (*i)->values.begin(); j != (*i)->values.end(); ++j) {
 				strings_[j->first] = j->second;
@@ -290,32 +276,12 @@ wide_string utf8_to_wstring(const std::string &src)
 
 std::string wstring_to_string(const wide_string &src)
 {
-	if(charset() == CHARSET_UTF8) {
 		return wstring_to_utf8(src);
-	}
-	
-	std::string ret;
-	for(wide_string::const_iterator itor = src.begin(); itor != src.end(); ++itor) {
-		if(*itor <= 0xff) {
-			push_back(ret,*itor);
-		} else {
-			push_back(ret,'?');
-		}
-	}
-	return ret;
 }
 
 wide_string string_to_wstring(const std::string &src)
 {
-	if(charset() == CHARSET_UTF8) {
-		return utf8_to_wstring(src);
-	}
-
-	wide_string ret;
-	ret.resize(src.size());
-	std::copy(src.begin(),src.end(),ret.begin());
-
-	return ret;
+	return utf8_to_wstring(src);
 }
 
 

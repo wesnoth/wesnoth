@@ -69,7 +69,7 @@ void show_about(display& disp)
  	text.push_back("   David White (Sirp)");
   	text.push_back("- ");
  	text.push_back("-   Artwork and graphics designer");
- 	text.push_back("   Francisco MuÒoz (fmunoz)");
+ 	text.push_back("   Francisco Mu√±oz (fmunoz)");
  	text.push_back("+ ");
  
  	text.push_back("+Developers");
@@ -97,7 +97,7 @@ void show_about(display& disp)
 	text.push_back("-   Jimmy Olsson (Azlan)");
  	text.push_back("-   Johanna Manninen (lohari)");
 	text.push_back("-   John Muccigrosso (Eponymous Archon)");
- 	text.push_back("-   Jonatan Alam‡ (tin)");
+ 	text.push_back("-   Jonatan Alam√† (tin)");
  	text.push_back("-   Joseph Simmons (Turin)");
 	text.push_back("-   J.W.C. McNabb (Darth Fool)");
  	text.push_back("-   Neorice");
@@ -115,7 +115,7 @@ void show_about(display& disp)
  	text.push_back("+Scenario Designers");
 	text.push_back("-   Benjamin Drieu");
  	text.push_back("-   David White (Sirp)");
- 	text.push_back("-   Francisco MuÒoz (fmunoz)");
+ 	text.push_back("-   Francisco Mu√±oz (fmunoz)");
  	text.push_back("-   Joseph Simmons (Turin)");
  	text.push_back("-   Justin Zaun (jzaun)");
  	text.push_back("+ ");
@@ -130,7 +130,7 @@ void show_about(display& disp)
 
  	text.push_back("+Miscellaneous");
  	text.push_back("-   Jaramir");
- 	text.push_back("-   Jord‡ Polo (ettin)");
+ 	text.push_back("-   Jord√† Polo (ettin)");
  	text.push_back("-   Tom Chance (telex4)");
  	text.push_back("+ ");
   
@@ -144,7 +144,7 @@ void show_about(display& disp)
  	text.push_back("+ ");
  
  	text.push_back("+Catalan Translation");
- 	text.push_back("-   Dan Ros‡s Garcia (focks)");
+ 	text.push_back("-   Dan Ros√†s Garcia (focks)");
  	text.push_back("+ ");
  
  	text.push_back("+Danish Translation");
@@ -185,7 +185,7 @@ void show_about(display& disp)
  	text.push_back("+ ");
  
  	text.push_back("+Norwegian Translation");
- 	text.push_back("-   Hallvard Norheim B¯ (Lysander)");
+ 	text.push_back("-   Hallvard Norheim B√∏ (Lysander)");
  	text.push_back("-   Erik J. Mesoy (Circon)");
  	text.push_back("+ ");
  
@@ -205,21 +205,21 @@ void show_about(display& disp)
  	text.push_back("+ ");
  
  	text.push_back("+Spanish Translation");
- 	text.push_back("-   Franciso MuÒoz (fmunoz)");
- 	text.push_back("-   Jord‡ Polo (ettin)");
+ 	text.push_back("-   Franciso Mu√±oz (fmunoz)");
+ 	text.push_back("-   Jord√† Polo (ettin)");
  	text.push_back("-   Jose Gordillo (kilder)");
  	text.push_back("-   Jose Manuel Gomez (joseg)");
  	text.push_back("+ ");
  
  	text.push_back("+Swedish Translation");
- 	text.push_back("-   Alexander Kj‰ll (capitol)");
+ 	text.push_back("-   Alexander Kj√§ll (capitol)");
  	text.push_back("-   wint3r");
  	text.push_back("+ ");
  
   	text.push_back("+Past Contributors");
  	text.push_back("-   edge");
- 	text.push_back("-   FrÈdÈric Wagner");
- 	text.push_back("-   Jan Zv·novec (jaz)");
+ 	text.push_back("-   Fr√©d√©ric Wagner");
+ 	text.push_back("-   Jan Zv√°novec (jaz)");
  	text.push_back("-   Jay Hopping");
  	text.push_back("+ ");
 
