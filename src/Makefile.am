@@ -33,6 +33,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai.cpp \
 		  ai_attack.cpp \
 		  ai_move.cpp \
+		  astarnode.cpp \
 		  builder.cpp \
 		  cavegen.cpp \
 		  clipboard.cpp \
@@ -113,6 +114,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai_move.hpp \
 		  animated.hpp \
 		  array.hpp \
+		  astarnode.hpp \
 		  builder.hpp \
 		  cavegen.hpp \
 		  clipboard.hpp \
@@ -202,6 +204,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 editor/editor_undo.cpp \
 			 about.cpp \
 			 actions.cpp \
+			 astarnode.cpp \
 			 builder.cpp \
 			 cavegen.cpp \
 			 clipboard.cpp \
@@ -274,6 +277,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai_attack.hpp \
 			 ai_move.hpp \
 			 array.hpp \
+			 astarnode.hpp \
 		         builder.hpp \
 		 	 cavegen.hpp \
 			 clipboard.hpp \
