@@ -332,15 +332,12 @@ void read(config &cfg, std::string const &data, std::vector< line_source > const
 	}
 }
 
-namespace {
-	const std::string AttributeEquals = "=\"";
-	const std::string AttributePostfix = "\"\n";
-	const std::string ElementPrefix = "[";
-	const std::string ElementPostfix = "]\n";
-	const std::string EndElementPrefix = "[/";
-	const std::string EndElementPostfix = "]\n";
-	const std::string ConfigPostfix = "\n";
-}
+static char const *AttributeEquals = "=\"";
+static char const *AttributePostfix = "\"\n";
+static char const *ElementPrefix = "[";
+static char const *ElementPostfix = "]\n";
+static char const *EndElementPrefix = "[/";
+static char const *EndElementPostfix = "]\n";
 
 static std::string escaped_string(const std::string& value) {
 	std::vector<char> res;
@@ -352,45 +349,16 @@ static std::string escaped_string(const std::string& value) {
 	return std::string(res.begin(), res.end());
 }
 
-static size_t write_size(config const &cfg, size_t tab = 0)
+static void write_internal(config const &cfg, std::ostream &out, size_t tab = 0)
 {
-	size_t res = 0;
-	for(string_map::const_iterator i = cfg.values.begin(), i_end = cfg.values.end(); i != i_end; ++i) {
-		if(i->second.empty() == false) {
-			res += i->first.size() + AttributeEquals.size() +
-			       escaped_string(i->second).size() + AttributePostfix.size() + tab;
-		}
-	}
-
-	for(config::all_children_iterator j = cfg.ordered_begin(), j_end = cfg.ordered_end(); j != j_end; ++j) {
-		const std::pair<const std::string*,const config*>& item = *j;
-		const std::string& name = *item.first;
-		const config& cfg = *item.second;
-		res += ElementPrefix.size() + name.size() + ElementPostfix.size() +
-		       write_size(cfg, tab + 1) + EndElementPrefix.size() + name.size() + EndElementPostfix.size() + tab * 2;
-		
-	}
-
-	res += ConfigPostfix.size();
-
-	return res;
-}
-
-static std::string::iterator write_internal(config const &cfg, std::string::iterator out, size_t tab = 0)
-{
-	if(tab > max_recursion_levels)
-		return out;
+	if (tab > max_recursion_levels)
+		return;
 
 	for(string_map::const_iterator i = cfg.values.begin(), i_end = cfg.values.end(); i != i_end; ++i) {
-		if(i->second.empty() == false) {
-			std::fill(out,out+tab,'\t');
-			out += tab;
-
-			out = std::copy(i->first.begin(),i->first.end(),out);
-			out = std::copy(AttributeEquals.begin(),AttributeEquals.end(),out);
-			std::string value = escaped_string(i->second);
-			out = std::copy(value.begin(),value.end(),out);
-			out = std::copy(AttributePostfix.begin(),AttributePostfix.end(),out);
+		if (!i->second.empty()) {
+			out << std::string(tab, '\t')
+			    << i->first << AttributeEquals << escaped_string(i->second)
+			    << AttributePostfix;
 		}
 	}
 
@@ -399,37 +367,17 @@ static std::string::iterator write_internal(config const &cfg, std::string::iter
 		const std::string& name = *item.first;
 		const config& cfg = *item.second;
 
-		std::fill(out,out+tab,'\t');
-		out += tab;
-
-		out = std::copy(ElementPrefix.begin(),ElementPrefix.end(),out);
-		out = std::copy(name.begin(),name.end(),out);
-		out = std::copy(ElementPostfix.begin(),ElementPostfix.end(),out);
-		out = write_internal(cfg, out, tab + 1);
-
-		std::fill(out,out+tab,'\t');
-		out += tab;
-
-		out = std::copy(EndElementPrefix.begin(),EndElementPrefix.end(),out);
-		out = std::copy(name.begin(),name.end(),out);
-		out = std::copy(EndElementPostfix.begin(),EndElementPostfix.end(),out);
+		out << std::string(tab, '\t')
+		    << ElementPrefix << name << ElementPostfix;
+		write_internal(cfg, out, tab + 1);
+		out << std::string(tab, '\t')
+		    << EndElementPrefix << name << EndElementPostfix;
 	}
-
-	out = std::copy(ConfigPostfix.begin(),ConfigPostfix.end(),out);
-	return out;
 }
 
 std::string write(config const &cfg)
 {
-	std::string res;
-
-	res.resize(write_size(cfg));
-
-	const std::string::iterator i = write_internal(cfg, res.begin());
-	wassert(i == res.end());
-	if(i != res.end()) {
-		ERR_CF << "size of config buffer: " << (i - res.begin()) << "/" << res.size() << "\n";
-	}
-
-	return res;
+	std::stringstream res;
+	write_internal(cfg, res);
+	return res.str();
 }
