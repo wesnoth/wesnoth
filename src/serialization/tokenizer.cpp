@@ -126,11 +126,13 @@ void tokenizer::next_char()
 		colno_++;
 	}
 
-	if(in_.good()) {
-		current_ = in_.get();
-	} else {
-		current_ = EOF;
-	}
+	do {
+		if(in_.good()) {
+			current_ = in_.get();
+		} else {
+			current_ = EOF;
+		}
+	} while(current_ == '\r');
 }
 
 int tokenizer::peek_char()
@@ -140,7 +142,7 @@ int tokenizer::peek_char()
 
 bool tokenizer::is_space(int c)
 {
-	return c == ' ' || c == '\t' || c == '\r';
+	return c == ' ' || c == '\t';
 }
 
 bool tokenizer::is_alnum(int c)
