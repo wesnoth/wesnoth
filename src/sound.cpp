@@ -50,7 +50,7 @@ manager::manager(bool sound_on)
 //sounds don't sound good on Windows unless the buffer size is 4k,
 //but this seems to cause crashes on other systems...
 #ifdef WIN32
-	const size_t buf_size = 4096
+	const size_t buf_size = 4096;
 #else
 	const size_t buf_size = 1024;
 #endif
