@@ -78,6 +78,7 @@ private:
 	std::vector<gui::combo> combos_color_;
 	std::vector<gui::slider> sliders_gold_;
 
+	gui::button ai_;
 	gui::button launch_;
 	gui::button cancel_;
 

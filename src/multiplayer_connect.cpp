@@ -46,6 +46,7 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    combos_team_(), combos_color_(), sliders_gold_(),
 	    launch_(gui::button(disp, string_table["im_ready"])),
 	    cancel_(gui::button(disp, string_table["cancel"])),
+	    ai_(gui::button(disp, " Computer vs Computer ")),
 	    width_(630), height_(290), full_(false)
 {
 	// Send Initial information
@@ -244,7 +245,9 @@ void mp_connect::lists_init()
 
 	//Teams
 	config::child_iterator sd;
+	height_ = 120;
 	for(sd = sides.first; sd != sides.second; ++sd) {
+		height_ = height_ + 30;
 		const int team_num = sd - sides.first;
 		const std::string& team_name = (**sd)["team_name"];
 		std::stringstream str;
@@ -291,9 +294,11 @@ void mp_connect::gui_init()
 
 	//Buttons
 	launch_.set_xy((disp_->x()/2)-launch_.width()/2-100,
-		       (disp_->y()-height_)/2+height_-29);
+		       (disp_->y()-height_)/2+height_-30);
 	cancel_.set_xy((disp_->x()/2)-launch_.width()/2+100,
-		       (disp_->y()-height_)/2+height_-29);
+		       (disp_->y()-height_)/2+height_-30);
+	ai_.set_xy((disp_->x()-width_)/2+30,
+		   (disp_->y()-height_)/2+height_-60);
 
 	//Title and labels
 	SDL_Rect labelr;
@@ -460,7 +465,7 @@ int mp_connect::gui_do()
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-		for(size_t n = 0; n != combos_type_.size(); ++n) {
+		for(size_t n = 0; n != combos_team_.size(); ++n) {
 			config& side = **(sides.first+n);
 
 			//Player type
@@ -555,6 +560,15 @@ int mp_connect::gui_do()
 		if(cancel_.process(mousex,mousey,left_button)) {
 			status_ = 0;
 			return status_;
+		}
+
+		if(ai_.process(mousex,mousey,left_button)) {
+			for(size_t m = 0; m != combos_team_.size(); ++m) {
+				config& si = **(sides.first+m);
+				si["controller"] = "ai";
+				si["description"] = string_table["ai_controlled"];
+				combos_type_[m].set_selected(2);
+			}
 		}
 
 		launch_.enable(full_);
