@@ -46,6 +46,9 @@ if TINYGUI
 	done
 endif
 
+zip-install: install
+	$(top_srcdir)/utils/splittree "$(DESTDIR)$(pkgdatadir)" --zip
+
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
