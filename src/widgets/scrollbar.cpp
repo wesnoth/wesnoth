@@ -251,6 +251,7 @@ void scrollbar::process()
 	
 	if(highlight_ != on) {
 		highlight_ = on;
+		mid_scaled_.assign(NULL);
 		set_dirty(true);
 	}
 
