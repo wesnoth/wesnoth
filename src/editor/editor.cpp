@@ -277,8 +277,13 @@ void map_editor::left_click(const gamemap::location hex_clicked) {
 	}
 }
 
-void map_editor::right_click(const gamemap::location /* hex_clicked */) {
-
+void map_editor::right_click(const gamemap::location hex_clicked ) {
+	if (key_[SDLK_RCTRL] || key_[SDLK_LCTRL]) {
+		const gamemap::TERRAIN terrain = map_.get_terrain(hex_clicked);
+		if(palette_.selected_fg_terrain() != terrain) {
+			palette_.select_bg_terrain(terrain);
+		}
+	}
 }
 	
 
@@ -396,8 +401,8 @@ void map_editor::edit_fill_selection() {
 	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
 		 it != selected_hexes_.end(); it++) {
 		if (map_.on_board(*it)) {
-			undo_action.add_terrain(map_.get_terrain(*it), palette_.selected_bg_terrain(), *it);
-			map_.set_terrain(*it, palette_.selected_bg_terrain());
+			undo_action.add_terrain(map_.get_terrain(*it), palette_.selected_fg_terrain(), *it);
+			map_.set_terrain(*it, palette_.selected_fg_terrain());
 		}
 	}
 	terrain_changed(selected_hexes_, undo_action);
