@@ -427,9 +427,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 	gamemap::location hex = gui_.hex_clicked_on(event.x,event.y);
 
-	unit_map::iterator u = find_visible_unit(units_,
-			selected_hex_, map_,
-			status_.get_time_of_day().lawful_bonus,teams_,current_team);
+	//selected_hex_ cannot have an invisible unit
+	unit_map::iterator u = units_.find(selected_hex_);
 
 	//if the unit is selected and then itself clicked on,
 	//any goto command is cancelled
