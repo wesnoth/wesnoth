@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
 "PO-Revision-Date: 2004-08-08 15:00+0200\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/fonts.cfg:4
+#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -55,6 +56,10 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Tietyillä yksiköillä on kykyjä, jotka vaikuttavat joko suoraan "
+"toisiinyksiköihin tai siihen, kuinka yksikkö toimii kohdatessaan muita "
+"yksiköitä. Nämäkyvyt listautuvat tämän otsikon alle sitä mukaa kun kohtaat "
+"niitä."
 
 #: data/help.cfg:62
 #, fuzzy
@@ -83,14 +88,21 @@ msgid "Fundamentals of Gameplay"
 msgstr "Pelaamisen perusteet"
 
 #: data/help.cfg:68
+#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. Keep in mind "
 "that this is just an outline - for special exceptions and situations, please "
 "follow the links included."
 msgstr ""
+"Tämä sivu rajaa kaiken mitä sinun tarvitsee tietää pelataksesi Battlefor "
+"Wesnothia sekä pelin toiminnan ytimen. Lisätietoja halutessasi voit "
+"konsultoida<ref>dst=basic_strategy text='Basic Strategy'</ref> ja "
+"<ref>dst=multiplayer_strategy text='Multiplayer Strategy'</ref>.Muista, että "
+"tämä on vain kuori - juuri tiettyä tilannetta varten seuraa linkkejä."
 
 #: data/help.cfg:70
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -101,6 +113,12 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"/n/nAloittaaksesi, sinun kannattaa klikata <italic>text=Tutorial</italic> - "
+"nappulaapäävalikossa. Tämä vie sinut interaktiiviseen tutoriaaliin, joka "
+"opettaa sinulleWesnothin perusteet. Tämän jälkeen suosittelemme Heir to the "
+"Trone- kampanjaa - paina <italic>text=Campaign</italic> ja sitten "
+"<italic>text='Heir to the Throne'</italic>.Koska Battle for Wesnoth voi olla "
+"melko hankalaa, voi olla hyödyllistä aloittaa<italic>text=Helpolla</italic>."
 
 #: data/help.cfg:73
 msgid ""
@@ -108,6 +126,9 @@ msgid ""
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
+"Kun pelaat, muista että pitäessäsi hiirtä liikkumattomana jonkin "
+"asianpäällä, esiin nousee nopea yhteenveto tuosta asiasta. Tämä on erityisen "
+"hyödyllistäkohdattaessa uusia asioita ensimmäistä kertaa."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -124,6 +145,14 @@ msgid ""
 "cost. Click on a unit to see its statistics to the left, then press the "
 "recruit button to recruit it."
 msgstr ""
+"Taistelun alussa, ja ajoittain sen aikana, sinun täytyy värvätä "
+"yksiköitäarmeijaasi. Värvätäksesi, johtajasi (Konrad Heir to the Throne- "
+"kampanjassa) linnan linnoitusruudussa. Sitten voit värvätä joko valitsemalla "
+"Värvää valikostatai klikkaamalla  linnaheksaa oikealla hiirennäppäimellä ja "
+"valitsemalla <italic>text=Värvää</italic>.Tämä aukaisee värväysvalikon, joka "
+"listaa mahdolliset värvättävät yksiköt, sekäkultamäärän, jonka niiden "
+"värvääminen maksaa. Klikkaa yksikköä nähdäksesi sentiedot vasemmalla, sitten "
+"paina värväysnappia värvätäksesi sen."
 
 #: data/help.cfg:81
 msgid ""
@@ -134,6 +163,13 @@ msgid ""
 "keep. You may only recruit as many units as you have free hexes in your "
 "castle, and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Jos klikkasit oikealla hiirennäppäimellä heksaa ja valitsit värvää, "
+"yksikkövärväytyy siihen heksaan. Muutoin se värvätään heksaan lähellä "
+"linnoitusta.Voit värvätä vain sen verran yksiköitä, kuin sinulla on vapaita "
+"heksoja linnassasi, etkä voi käyttää värväykseen enempää kultaa kuin mitä "
+"sinulla oikeasti on."
 
 #: data/help.cfg:83
 msgid ""
@@ -142,6 +178,10 @@ msgid ""
 "Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
 "modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Värvätyt yksiköt saavat kaksi satunnaista <ref>dst=traits text=Kykyä</ref>,"
+"jotka vaikuttavat niiden ominaisuuksiin."
 
 #: data/help.cfg:85
 msgid ""
@@ -152,6 +192,11 @@ msgid ""
 "standard 20 gold and presents you with a list of all surviving units from "
 "previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"Myöhemmissä skenaarioissa voit myös kutsua veteraaneja edellisistä "
+"taisteluista.Kutsuminen toimii kuten värväys, paitsi että se maksaa aina 20 "
+"kultaa ja saat nähtäväksesi listan edellisten skenaarioiden selviytyjistä."
 
 #: data/help.cfg:87
 msgid ""
@@ -161,6 +206,11 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"Muista että yksiköt eivät pelkästään maksa värvätä tai kutsua, ne myös "
+"vaativatvaroja ylläpitoon.Katso <ref>dst=income_and_upkeep text='Income and "
+"Upkeep'</ref> saadaksesi lisätietoja."
 
 #: data/help.cfg:92 src/help.cpp:1234 src/help.cpp:1235
 msgid "Movement"
@@ -175,8 +225,16 @@ msgid ""
 "required to reach it, and clicking will cause the unit to move towards it by "
 "the fastest route over this and subsequent turns."
 msgstr ""
+"Liikkuminen Battle for Wesnothissa on helppoa: yksinkertaisestiklikkaa "
+"yksikköä jonka haluat siirtää ja sitten heksaa, johon haluat sen siirtyvän."
+"Kun valittuna, kaikki heksat joihin kyseinen yksikkö sillä vuorolla pystyy "
+"liikkumaan ovat valaistuina, ja kaikki joihin se ei pääse värittömiä. "
+"Liikuttamallahiirtä värittämän heksan päällä näet kuinka kauan yksiköltä "
+"menee sinne pääsemiseen, ja sen klikkaaminen saa yksikön yrittämään nopeinta "
+"reittiä sinnetällä ja seuraavilla vuoroilla."
 
 #: data/help.cfg:95
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -190,8 +248,21 @@ msgid ""
 "it, selecting Unit Description, and then look at <italic>text='Terrain "
 "Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Jokaisella yksiköllä on tietty määrä liikkumispisteitä joita käytetään "
+"uuteen heksan siirryttäessä, riippuen sen heksan <ref>dst=terrain "
+"text=Maastosta</ref>.Esimerkiksi ruohotasanko miltei aina vie yhden "
+"liikkumispisteen. Kuinka montaliikkumispistettä siirryttäessä heksaan "
+"riippuu yksikön tyypistä - metsässähaltiat käyttävät vain yhden pisteen, kun "
+"taas useimmat ihmis- ja örkkiyksikötkäyttävät kaksi ja hevosmiehet kolme. "
+"Voit tarkistaa kuinka paljon tiettyyn heksaan siirtyminen vie pisteitä "
+"tietyllä yksiköllä klikkaamalla sitä oikeallahiirennäppäimellä, valitsemalla "
+"Yksikön ominaisuudetja sitten katsomalla<italic>text='Maaston vaikutukset'</"
+"italic>- taulukkoa."
 
 #: data/help.cfg:97
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -202,6 +273,8 @@ msgid ""
 "as only <ref>dst=ability_skirmisher text='Skirmishers'</ref> can ignore "
 "zones of control."
 msgstr ""
+"\n"
+"\n"
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -216,6 +289,13 @@ msgid ""
 "Combat is relatively straightforward; the attacker and defender alternate "
 "attacks until each has used their allotted number of attacks."
 msgstr ""
+"Battle for Wesnothissa on kahdenlaisia taistelutapoja: lyhyen japitkän "
+"kantaman, mutta molemmat yleensä tapahtuvat vierekäisissä heksoissaolevien "
+"yksiköiden välillä. Lyhyen matkan taistelu yleensä sisältää aseita "
+"kutenkirveitä, miekkoja ja torahampaita, kun taas pitkän kantaman "
+"taistelussayleensä aseina ovat jouset, keihäät taikka tulipallot. Taistelu "
+"on melko yksinkertaista: hyökkääjä ja puolustaja vuorottelevat iskuissaan "
+"kunnes molempieniskut on käytetty."
 
 #: data/help.cfg:105
 msgid ""
@@ -802,7 +882,7 @@ msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
-"Tämä on tulen valtikka. Vain aito kruununperillinen voisiuskaltaa ottaa "
+"Tämä on tulen valtikka. Vain aito kruununperillinen voisi uskaltaa ottaa "
 "tämän!"
 
 #: data/items.cfg:812
@@ -847,9 +927,8 @@ msgid "Knalgan Alliance"
 msgstr "&dwarf-lord.png,Knalganin Liittoutuma"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Iskut"
+msgstr ""
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -869,7 +948,7 @@ msgstr "Örkit"
 
 #: data/multiplayer.cfg:171
 msgid "Dwarves"
-msgstr ""
+msgstr "Kääpiöt"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
@@ -886,12 +965,12 @@ msgstr "Suuri Sota"
 #: data/multiplayer.cfg:311
 #, fuzzy
 msgid "Alliance of Light"
-msgstr "Valon velho"
+msgstr "Valon liitto"
 
 #: data/multiplayer.cfg:324
 #, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,Pimeyden Liitto"
+msgstr "Pimeyden Liitto"
 
 #: data/scenario-test.cfg:38
 #, fuzzy
@@ -899,8 +978,8 @@ msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
 msgstr ""
-"Voit tulla jos haluat, mutta johtajaa kiinnostaa puhutella "
-"ainoastaanBaldrasia."
+"Voit tulla jos haluat, mutta johtajaa kiinnostaa puhutella ainoastaan "
+"Baldrasia."
 
 #: data/scenarios/multiplayer/An_Island.cfg:7
 #, fuzzy
@@ -926,7 +1005,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
-msgstr ""
+msgstr "Hajonnut silta"
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
@@ -1179,7 +1258,6 @@ msgid "Recruit a unit"
 msgstr "Värvää yksikkö"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
-#, fuzzy
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Hyvä! Värväsit juuri Elvish Fighter -yksikön."
 
@@ -1274,7 +1352,6 @@ msgid "End your turn"
 msgstr "Lopeta vuorosi"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:116
-#, fuzzy
 msgid "You have successfully ended your turn."
 msgstr "Olet onnistuneesti lopettanut vuorosi."
 
@@ -1379,7 +1456,6 @@ msgid "Attack Merle"
 msgstr "Hyökkää Merleä kohti"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "You have successfully attacked Merle."
 msgstr "Olet onnistuneesti hyökännyt Merleä vastaan."
 
@@ -1527,7 +1603,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:300
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:264
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
@@ -1537,7 +1612,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:308
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:272
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
@@ -1546,7 +1620,6 @@ msgstr ""
 "kuitenkin oppinut jotain opetuksestani."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:320
-#, fuzzy
 msgid "You have successfully completed the first training scenario."
 msgstr ""
 "Olet onnistuneesti suorittanut ensimmäisen harjoitteluskenaarion loppuun."
@@ -1654,9 +1727,8 @@ msgid "Turns run out"
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
-#, fuzzy
 msgid "You have successfully recalled your Elvish Fighter."
-msgstr "Olet onnistuneesti lopettanut vuorosi."
+msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:97
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:113
@@ -3270,7 +3342,7 @@ msgstr "Salamurhaaja"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
-msgstr "Roisto"
+msgstr "Bandiitto"
 
 #: data/units/Bandit.cfg:16
 msgid ""
@@ -3784,7 +3856,7 @@ msgstr "kynnet"
 
 #: data/units/Dragoon.cfg:3
 msgid "Dragoon"
-msgstr ""
+msgstr "Rakuuna"
 
 #: data/units/Dragoon.cfg:24
 msgid ""
@@ -4559,7 +4631,7 @@ msgstr ""
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
-msgstr ""
+msgstr "Taistelija"
 
 #: data/units/Fighter.cfg:17 data/units/Fighter.cfg:58
 msgid ""
@@ -4600,7 +4672,7 @@ msgstr ""
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
-msgstr ""
+msgstr "Tiedustalija"
 
 #: data/units/Footpad.cfg:17 data/units/Footpad.cfg:83
 msgid ""
@@ -4785,7 +4857,7 @@ msgstr ""
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
-msgstr ""
+msgstr "Mahtiritari"
 
 #: data/units/Grand_Knight.cfg:16
 msgid ""
@@ -4800,7 +4872,7 @@ msgstr "keihäs"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr ""
+msgstr "Suurmarsalkka"
 
 #: data/units/Grand_Marshal.cfg:21
 msgid ""
@@ -4902,7 +4974,7 @@ msgstr ""
 #: data/units/Horse_Lord.cfg:3
 #, fuzzy
 msgid "Horse Lord"
-msgstr "Ylväs lordi"
+msgstr "Hevoslordi"
 
 #: data/units/Horse_Lord.cfg:17
 msgid ""
@@ -5048,11 +5120,11 @@ msgstr ""
 #: data/units/Mage.cfg:41 data/units/Mage.cfg:118
 #: data/units/Silver_Mage.cfg:93 data/units/Silver_Mage.cfg:222
 msgid "missile"
-msgstr ""
+msgstr "ammus"
 
 #: data/units/Mage.cfg:80
 msgid "female^Mage"
-msgstr ""
+msgstr "Velho"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
@@ -5103,8 +5175,8 @@ msgid ""
 "only by that of the Elves."
 msgstr ""
 "Mestarijousimiehet ovat saavuttaneet korkeimman tason jousen käsittelyssä "
-"minkäkukaan ihminen voi toivoa saavuttavansa. Vain haltiat ohittavat "
-"heidätjousenkäsittelytaidossa."
+"minkä kukaan ihminen voi toivoa saavuttavansa. Vain haltiat ohittavat heidät "
+"jousenkäsittelytaidossa."
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
@@ -5184,9 +5256,8 @@ msgid "Merman Entangler"
 msgstr ""
 
 #: data/units/Merman_Fighter.cfg:3
-#, fuzzy
 msgid "Merman Fighter"
-msgstr "Ylväs soturi"
+msgstr ""
 
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
@@ -5266,9 +5337,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Fighter.cfg:3
-#, fuzzy
 msgid "Mounted Fighter"
-msgstr "Ylväs soturi"
+msgstr ""
 
 #: data/units/Mounted_Warrior.cfg:3
 #, fuzzy
@@ -5296,7 +5366,7 @@ msgstr ""
 #: data/units/Naga-Fighter.cfg:3
 #, fuzzy
 msgid "Naga Fighter"
-msgstr "Ylväs soturi"
+msgstr "Nagataistelija"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:52
 msgid ""
@@ -5310,11 +5380,11 @@ msgstr ""
 #: data/units/Naga-Fighter.cfg:38
 #, fuzzy
 msgid "Nagini Fighter"
-msgstr "Ylväs soturi"
+msgstr "Nagataistelijatar"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "Nagamyrmidoni"
 
 #: data/units/Naga-Myrmidon.cfg:21
 msgid ""
@@ -5327,7 +5397,7 @@ msgstr ""
 
 #: data/units/Naga-Myrmidon.cfg:42
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "Nagamyrmidonitar"
 
 #: data/units/Naga-Myrmidon.cfg:60
 msgid ""
@@ -5341,7 +5411,7 @@ msgstr ""
 #: data/units/Naga-Warrior.cfg:3
 #, fuzzy
 msgid "Naga Warrior"
-msgstr "Peikkotaistelija"
+msgstr "Nagataistelija"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:60
 msgid ""
@@ -5356,7 +5426,7 @@ msgstr ""
 #: data/units/Naga-Warrior.cfg:42
 #, fuzzy
 msgid "Nagini Warrior"
-msgstr "Örkkisoturi"
+msgstr "Nagataistelijatar"
 
 #: data/units/Naga.cfg:6
 msgid "female^Naga"
@@ -5728,7 +5798,7 @@ msgstr ""
 #: data/units/Pirate_Galleon.cfg:16 data/units/Transport_Galleon.cfg:16
 #: data/units/Watch_Tower.cfg:17
 msgid "ballista"
-msgstr ""
+msgstr "ballista"
 
 #: data/units/Poacher.cfg:3
 msgid "Poacher"
@@ -5783,7 +5853,7 @@ msgstr ""
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
-msgstr ""
+msgstr "Roisto"
 
 #: data/units/Rogue.cfg:18 data/units/Rogue.cfg:78
 msgid ""
@@ -5799,7 +5869,7 @@ msgstr ""
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
-msgstr "Kuninkaallinen vartiosto"
+msgstr "Kuninkaallinen vartija"
 
 #: data/units/Royal_Guard.cfg:20
 msgid ""
@@ -5859,14 +5929,12 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
-#, fuzzy
 msgid "frost blast"
-msgstr "ensi-isku"
+msgstr ""
 
 #: data/units/Saurian_Skirmisher.cfg:4
-#, fuzzy
 msgid "Saurian Skirmisher"
-msgstr "kahakointi"
+msgstr ""
 
 #: data/units/Saurian_Skirmisher.cfg:17
 msgid ""
@@ -8247,6 +8315,235 @@ msgstr "lainkuuliainen"
 msgid "neutral"
 msgstr "neutraali"
 
+#, fuzzy
+#~ msgid "Merle"
+#~ msgstr "Lähitaistelu"
+
+#~ msgid ""
+#~ "Congratulations! You have defeated me, and completed the second and final "
+#~ "training scenario. Next, you may want to begin a campaign, or play "
+#~ "multiplayer."
+#~ msgstr ""
+#~ "Onneksi olkoon! Olet voittanut minut, ja samalla suoritit loppuun toisen "
+#~ "ja viimeisen harjoitteluskenaarion. Seuraavaksi voit haluta aloittaa "
+#~ "kampanjan, tai pelata moninpelejä."
+
+#~ msgid ""
+#~ "This page outlines all you need to know to play Battle for Wesnoth. It "
+#~ "covers how to play and the basic mechanics behind the game. For more "
+#~ "information on conquering the game, you may wish to consult "
+#~ "<ref>dst=basic_strategy text='Basic Strategy'</ref> and "
+#~ "<ref>dst=multiplayer_strategy text='Multiplayer Strategy'</ref>. Keep in "
+#~ "mind that this is just an outline - for special exceptions and "
+#~ "situations, please follow the links included.\n"
+#~ "\n"
+#~ "To begin with, it's best to click the <italic>text=Tutorial</italic> "
+#~ "button at the main menu. This will take you to the interactive tutorial, "
+#~ "which will teach you the basics of Wesnoth. After this, it is recommended "
+#~ "that you play the Heir to the Throne campaign first - click "
+#~ "<italic>text=Campaign</italic> then <italic>text='Heir to the Throne'</"
+#~ "italic>. As Battle for Wesnoth can be quite challenging, you may wish to "
+#~ "start on <italic>text=Easy</italic>.\n"
+#~ "\n"
+#~ "<img>src=help/tooltip.png align=right float=yes</img>While playing, keep "
+#~ "in mind that if you mouse-over many items on the menu bar to the right, a "
+#~ "brief description will pop up explaining that item. This is especially "
+#~ "useful when you encounter new abilities for the first time."
+#~ msgstr ""
+#~ "Tämä sivusto kertoo pääpiirteittäin kaiken jota tarvitset pelataksesi "
+#~ "Battle for Wesnothia. Kuinka tätä peliä pelataan ja kaikki "
+#~ "perusmekanismit pelissä löytyvät täältä. Jos haluat lisää tietoa pelin "
+#~ "voittamisesta, voit tutkia <ref>dst=basic_strategy text='Perusstrategia'</"
+#~ "ref> ja <ref>dst=multiplayer_strategy text='Moninpelistrategia'</ref>-"
+#~ "osuuksia. Muista että tämä on kuitenkin vain luonnostelma; "
+#~ "erikoistapauksia ja muita tilanteita varten, seuraa sisällytettyjä "
+#~ "linkkejä.\n"
+#~ "\n"
+#~ "Ensiksi on parasta kun valitset <italic>text=Harjoittelun</italic> "
+#~ "päävalikosta. Siitä pääset vuorovaikutteiseen ohjaukseen, joka opettaa "
+#~ "sinulle Wesnothin perusteet. Tämän jälkeen on suositeltavaa että pelaat "
+#~ "Heir to the Throne -kampanjan ensin: valitse <italic>text=Kampanja</"
+#~ "italic> ja sitten <italic>text='Heir to the Throne'</italic>. Battle for "
+#~ "Wesnoth voi olla hyvinkin haastava, joten voi olla hyvä, että aloitat "
+#~ "<italic>text=Helpolla</italic> vaikeustasolla.\n"
+#~ "\n"
+#~ "<img>src=help/tooltip.png align=right float=yes</img>Pelatessasi, muista "
+#~ "että voit viedä hiiren useimpien oikealla olevan valikon kohteiden "
+#~ "päälle, ja saat lyhyen selostuksen siitä kohteesta. Tämä on hyvin "
+#~ "käytännöllistä kun näet tuntemattomia kykyjä ensimmäistä kertaa."
+
+#~ msgid "&random-enemy.png,Random"
+#~ msgstr "&random-enemy.png,Satunnaisesti valittu"
+
+#, fuzzy
+#~ msgid "&human-lieutenant.png,Loyalists"
+#~ msgstr "&human-lieutenant.png,Lojalistit"
+
+#, fuzzy
+#~ msgid "&elvish-captain.png,Rebels"
+#~ msgstr "&elvish-captain.png,Kapinalliset"
+
+#, fuzzy
+#~ msgid "&orcish-warrior.png,Northerners"
+#~ msgstr "&orcish-warrior.png,Pohjalaiset"
+
+#, fuzzy
+#~ msgid "&undead-necromancer.png,Undead"
+#~ msgstr "&undead-necromancer.png,Epäkuolleet"
+
+#, fuzzy
+#~ msgid "&dwarf-warrior.png,Knalgan Alliance"
+#~ msgstr "&dwarf-warrior.png,Knalganin Liittoutuma"
+
+#, fuzzy
+#~ msgid "&drake-flare.png,Drakes"
+#~ msgstr "&drake-flare.png,Draket"
+
+#, fuzzy
+#~ msgid "&human-lieutenant.png,Humans"
+#~ msgstr "&human-lieutenant.png,Ihmiset"
+
+#, fuzzy
+#~ msgid "&elvish-captain.png,Elves"
+#~ msgstr "&elvish-captain.png,Haltiat"
+
+#, fuzzy
+#~ msgid "&orcish-warrior.png,Orcs"
+#~ msgstr "&orcish-warrior.png,√ñrkit"
+
+#, fuzzy
+#~ msgid "&dwarf-warrior.png,Dwarves"
+#~ msgstr "&dwarf-warrior.png,Kääpiöt"
+
+#~ msgid "&saurian-soothsayer.png,Saurian"
+#~ msgstr "&saurian-soothsayer.png,Saurianit"
+
+#~ msgid "&human-general.png,Loyalists"
+#~ msgstr "&human-general.png,Lojalistit"
+
+#, fuzzy
+#~ msgid "&elvish-marshal.png,Rebels"
+#~ msgstr "&elvish-marshal.png,Kapinalliset"
+
+#~ msgid "&orcish-warlord.png,Northerners"
+#~ msgstr "&orcish-warlord.png,Pohjalaiset"
+
+#~ msgid "&undead-lich.png,Undead"
+#~ msgstr "&undead-lich.png,Epäkuolleet"
+
+#~ msgid "&white-mage.png,Alliance of Light"
+#~ msgstr "&white-mage.png,Valon Liitto"
+
+#~ msgid "Move your fighter onto a village"
+#~ msgstr "Siirrä taistelijasi kylään."
+
+#~ msgid "minimum damage"
+#~ msgstr "minimivahinko"
+
+#~ msgid "Game"
+#~ msgstr "Peli"
+
+#~ msgid "Scenario"
+#~ msgstr "Skenaario"
+
+#~ msgid "Configure Sides:"
+#~ msgstr "Muokkaa puolia:"
+
+#~ msgid "Choose Team Settings:"
+#~ msgstr "Joukkueen asetukset:"
+
+#~ msgid "Could not connect to the remote host"
+#~ msgstr "Yhteyttä isäntäkoneeseen ei saatu"
+
+#~ msgid "Filled"
+#~ msgstr "Täytetty"
+
+#~ msgid "Available"
+#~ msgstr "Vapaa"
+
+#~ msgid "&misc/observer.png,Observer"
+#~ msgstr "&misc/observer.png,Tarkkailija"
+
+#~ msgid "Describe Unit"
+#~ msgstr "Kuvaile yksikköä"
+
+#~ msgid "Full Screen or Windowed?"
+#~ msgstr "Koko ruudun kokoinen vai ikkunoitu?"
+
+#~ msgid "Display:"
+#~ msgstr "Näyttö:"
+
+#~ msgid "Windowed"
+#~ msgstr "Ikkunoitu"
+
+#~ msgid "Speed:"
+#~ msgstr "Nopeus:"
+
+#~ msgid "Normal"
+#~ msgstr "Normaali"
+
+#~ msgid "Sound Settings..."
+#~ msgstr "√Ñäniasetukset..."
+
+#~ msgid "Options"
+#~ msgstr "Asetukset"
+
+#~ msgid "Choose Scenario"
+#~ msgstr "Valitse skenaario"
+
+#~ msgid "Unit resistance table"
+#~ msgstr "Yksikön vastustustaulukko"
+
+#~ msgid "See Also..."
+#~ msgstr "Katso myös..."
+
+#~ msgid ""
+#~ "Plague:\n"
+#~ "If this unit kills a living target and that unit was not stationed in a "
+#~ "village, the dead target's corpse will rise up and fight for you."
+#~ msgstr ""
+#~ "Rutto:\n"
+#~ "Mikäli tämä yksikkö tappaa elävän yksikön ja se ei ollut kylässä, se "
+#~ "nousee kuolleista ja taistelee puolellasi."
+
+#~ msgid "first strike"
+#~ msgstr "ensi-isku"
+
+#~ msgid "Tundra"
+#~ msgstr "Tundra"
+
+#~ msgid "Next tip"
+#~ msgstr "Seuraava vinkki"
+
+#~ msgid "Tip of the Day"
+#~ msgstr "Päivän vinkki"
+
+#~ msgid "Do not show tips"
+#~ msgstr "√Ñlä näytä vinkkejä"
+
+#~ msgid "pistol"
+#~ msgstr "pistooli"
+
+#~ msgid "Naga"
+#~ msgstr "Naga"
+
+#, fuzzy
+#~ msgid "skirmisher,heals"
+#~ msgstr "kahakointi"
+
+#, fuzzy
+#~ msgid "skirmisher,cures"
+#~ msgstr "kahakointi"
+
+#~ msgid "bone"
+#~ msgstr "luut"
+
+#~ msgid ",Name,Version,Author,Downloads"
+#~ msgstr ",Nimi,Versio,Tekijä,Latauksia"
+
+#~ msgid "Host Multiplayer Game"
+#~ msgstr "Isännöi moninpeliä"
+
 #~ msgid "Next unit"
 #~ msgstr "Seuraava yksikkö"
 
@@ -8301,9 +8598,8 @@ msgstr "neutraali"
 #~ msgid "Preferences"
 #~ msgstr "Asetukset"
 
-#, fuzzy
 #~ msgid "Scenario Objectives"
-#~ msgstr "Skenaarion alku"
+#~ msgstr "Skenaarion tavoitteet"
 
 #~ msgid "Quit Game"
 #~ msgstr "Poistu pelistä"
@@ -8316,10 +8612,6 @@ msgstr "neutraali"
 
 #~ msgid "Best Possible Enemy Moves"
 #~ msgstr "Vihollisen parhaat mahdolliset liikkeet"
-
-#, fuzzy
-#~ msgid "Set Terrain"
-#~ msgstr "Maasto"
 
 #~ msgid "Quit Editor"
 #~ msgstr "Poistu"
@@ -8338,10 +8630,6 @@ msgstr "neutraali"
 
 #~ msgid "Set Player Start Position"
 #~ msgstr "Aseta pelaajien aloituspisteet"
-
-#, fuzzy
-#~ msgid "Flood Fill"
-#~ msgstr "verisuudelma"
 
 #~ msgid "Fill Selection"
 #~ msgstr "Täytä valinta"
@@ -8396,6 +8684,170 @@ msgstr "neutraali"
 
 #~ msgid "Do you really want to quit?"
 #~ msgstr "Haluatko todellakin lopettaa?"
+
+#~ msgid "Experience Requirements"
+#~ msgstr "Vaadittu kokemus"
+
+#~ msgid "Warning"
+#~ msgstr "Varoitus"
+
+#~ msgid "Receiving game list..."
+#~ msgstr "Vastaanotetaan pelilistaa..."
+
+#~ msgid "The game has been cancelled"
+#~ msgstr "Peli on peruutettu"
+
+#~ msgid "The side you have chosen is no longer available"
+#~ msgstr "Joukkue jonka valitsit ei ole enää käytettävissä"
+
+#~ msgid "Show replay of game up to save point?"
+#~ msgstr "Näytä pelin uusinta tallennuspisteeseen asti?"
+
+#~ msgid "Waiting for network players to join"
+#~ msgstr "Odotetaan verkkopelaajien liittymistä"
+
+#, fuzzy
+#~ msgid "_description"
+#~ msgstr "Yksikön kuvaus"
+
+#~ msgid "hexes"
+#~ msgstr "heksaa"
+
+#~ msgid "TitleScreen button^About"
+#~ msgstr "Tietoja"
+
+#~ msgid "Deletion of the file failed."
+#~ msgstr "Tiedoston tuhoaminen epäonnistui."
+
+#~ msgid "hp"
+#~ msgstr "osumapisteet (HP)"
+
+#~ msgid "xp"
+#~ msgstr "kokemuspisteet (XP)"
+
+#~ msgid "beak"
+#~ msgstr "nokka"
+
+#~ msgid "ice shot"
+#~ msgstr "jääpiikki"
+
+#~ msgid "Save"
+#~ msgstr "Tallenna"
+
+#~ msgid ""
+#~ "The campaign has been installed. You will have to restart Wesnoth before "
+#~ "you can play it."
+#~ msgstr ""
+#~ "Kampanja on asennettu. Sinun täytyy käynnistää Wesnoth uudelleen "
+#~ "ennenkuin voit pelata sitä."
+
+#~ msgid "Quit?"
+#~ msgstr "Lopeta?"
+
+#~ msgid "Recruit unit"
+#~ msgstr "Värvää yksikkö"
+
+#~ msgid "Owned"
+#~ msgstr "Omia"
+
+#~ msgid "Enemy"
+#~ msgstr "Vihollisia"
+
+#~ msgid "Heir to the Throne"
+#~ msgstr "Valtaistuimen perillinen"
+
+#~ msgid ""
+#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
+#~ "champion.png,Champion,(hardest)"
+#~ msgstr ""
+#~ "&elvish-fighter.png,Fighter,(helpoin);*&elvish-hero.png,Hero;&elvish-"
+#~ "champion.png,Champion,(vaikein)"
+
+#~ msgid ""
+#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
+#~ "&undead-lich.png,Dark Lord,(hardest)"
+#~ msgstr ""
+#~ "&undead-initiate.png,Apprentice,(helpoin);*&undead-necromancer.png,Master;"
+#~ "&undead-lich.png,Dark Lord,(vaikein)"
+
+#~ msgid ""
+#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
+#~ "warlord.png,Warlord,(hardest)"
+#~ msgstr ""
+#~ "&orcish-grunt.png,Grunt,(helpoin);*&orcish-warrior.png,Warrior;&orcish-"
+#~ "warlord.png,Warlord,(vaikein)"
+
+#~ msgid ""
+#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
+#~ "&human-royalguard.png,Royal Guard,(hardest)"
+#~ msgstr ""
+#~ "&human-spearman.png,Spearman,(helpoin);*&human-swordman.png,Swordsman;"
+#~ "&human-royalguard.png,Royal Guard,(vaikein)"
+
+#~ msgid ""
+#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
+#~ "&noble-lord.png,Lord,(hardest)"
+#~ msgstr ""
+#~ "&noble-fighter.png,Fighter,(helpoin);*&noble-commander.png,Commander;"
+#~ "&noble-lord.png,Lord,(vaikein)"
+
+#, fuzzy
+#~ msgid "Epilogue"
+#~ msgstr "Epillogi"
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Move Kapou'e to the end of the mountains\n"
+#~ "Defeat:\n"
+#~ "#Death of Kapou'e\n"
+#~ "#Turns run out"
+#~ msgstr ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat Albert and his troops\n"
+#~ "Defeat:\n"
+#~ "#Death of Kapou'e\n"
+#~ "#Turns run out"
+
+#~ msgid ""
+#~ "By nightfall his troops reached a mountainous territory, under the "
+#~ "authority of orcish leader Kapou'e, the son of the Black Eye."
+#~ msgstr ""
+#~ "By nightfall his troops reached a mountainous territory, under the "
+#~ "authority of orcish ruler Kapou'e, the son of the Black Eye."
+
+#~ msgid ""
+#~ "With the finding of Crelanu's ancient tome, fresh strength had flowed to "
+#~ "Gwiti's army, and they had made good time. However, Gwiti's march was "
+#~ "halted by Leonard as he reentered Wesnothian territory. The general of "
+#~ "several outlying areas, his troops were many but untrained."
+#~ msgstr ""
+#~ "Entering the edges of Wesnothian territories again, Gwiti's march was "
+#~ "halted by Leonard. The general of several outlying areas, his troops were "
+#~ "many but untrained."
+
+#~ msgid ""
+#~ "In truth, Leonards army was unprepared and under-equipped, and he had "
+#~ "neglected to send word. Luckily, behind him came one whose name was a "
+#~ "bane to the undead: Lord Aretu. Gwiti knew that even if he defeated "
+#~ "Leonard, his best hope was now to flee into the mountains."
+#~ msgstr ""
+#~ "In truth, Leonards army was unprepared and under-equipped, and he had "
+#~ "neglected to send word. Luckily, behind him came one whose name was a "
+#~ "bane to the undead: Lord Aretu."
+
+#~ msgid ""
+#~ "Do you see the three orc clans of this land? Their banners are topped "
+#~ "with skulls, as is their custom. But one of these is the Skull of Agarash "
+#~ "- Take it and your power will grow greater by far."
+#~ msgstr ""
+#~ "Do you see the three orc clans of this land? Their banners are topped "
+#~ "with skulls, as is their custom. But one of these is the Skull of Agarash "
+#~ "- which once was mine. Take it and your power will grow greater by far."
+
+#~ msgid "No!"
+#~ msgstr "Ei!"
 
 #~ msgid ""
 #~ "The video mode could not be changed. Your window manager must be set to "
@@ -8542,414 +8994,6 @@ msgstr "neutraali"
 
 #~ msgid "This HotKey is already in use."
 #~ msgstr "Tämä pikanäppäin on jo käytössä."
-
-#, fuzzy
-#~ msgid "Delete File"
-#~ msgstr "Tuhoa tallenne"
-
-#~ msgid "Deletion of the file failed."
-#~ msgstr "Tiedoston tuhoaminen epäonnistui."
-
-#, fuzzy
-#~ msgid "Test Objectifs"
-#~ msgstr "Skenaarion tavoitteet"
-
-#~ msgid "Move your fighter onto a village"
-#~ msgstr "Siirrä taistelijasi kylään."
-
-#, fuzzy
-#~ msgid ""
-#~ "Congratulations! By defeating me, you complete the second training "
-#~ "scenario."
-#~ msgstr ""
-#~ "Olet onnistuneesti suorittanut ensimmäisen harjoitteluskenaarion loppuun."
-
-#, fuzzy
-#~ msgid "Merle"
-#~ msgstr "Lähitaistelu"
-
-#~ msgid ""
-#~ "Congratulations! You have defeated me, and completed the second and final "
-#~ "training scenario. Next, you may want to begin a campaign, or play "
-#~ "multiplayer."
-#~ msgstr ""
-#~ "Onneksi olkoon! Olet voittanut minut, ja samalla suoritit loppuun toisen "
-#~ "ja viimeisen harjoitteluskenaarion. Seuraavaksi voit haluta aloittaa "
-#~ "kampanjan, tai pelata moninpelejä."
-
-#~ msgid ""
-#~ "This page outlines all you need to know to play Battle for Wesnoth. It "
-#~ "covers how to play and the basic mechanics behind the game. For more "
-#~ "information on conquering the game, you may wish to consult "
-#~ "<ref>dst=basic_strategy text='Basic Strategy'</ref> and "
-#~ "<ref>dst=multiplayer_strategy text='Multiplayer Strategy'</ref>. Keep in "
-#~ "mind that this is just an outline - for special exceptions and "
-#~ "situations, please follow the links included.\n"
-#~ "\n"
-#~ "To begin with, it's best to click the <italic>text=Tutorial</italic> "
-#~ "button at the main menu. This will take you to the interactive tutorial, "
-#~ "which will teach you the basics of Wesnoth. After this, it is recommended "
-#~ "that you play the Heir to the Throne campaign first - click "
-#~ "<italic>text=Campaign</italic> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As Battle for Wesnoth can be quite challenging, you may wish to "
-#~ "start on <italic>text=Easy</italic>.\n"
-#~ "\n"
-#~ "<img>src=help/tooltip.png align=right float=yes</img>While playing, keep "
-#~ "in mind that if you mouse-over many items on the menu bar to the right, a "
-#~ "brief description will pop up explaining that item. This is especially "
-#~ "useful when you encounter new abilities for the first time."
-#~ msgstr ""
-#~ "Tämä sivusto kertoo pääpiirteittäin kaiken jota tarvitset pelataksesi "
-#~ "Battle for Wesnothia. Kuinka tätä peliä pelataan ja kaikki "
-#~ "perusmekanismit pelissä löytyvät täältä. Jos haluat lisää tietoa pelin "
-#~ "voittamisesta, voit tutkia <ref>dst=basic_strategy text='Perusstrategia'</"
-#~ "ref> ja <ref>dst=multiplayer_strategy text='Moninpelistrategia'</ref>-"
-#~ "osuuksia. Muista että tämä on kuitenkin vain luonnostelma; "
-#~ "erikoistapauksia ja muita tilanteita varten, seuraa sisällytettyjä "
-#~ "linkkejä.\n"
-#~ "\n"
-#~ "Ensiksi on parasta kun valitset <italic>text=Harjoittelun</italic> "
-#~ "päävalikosta. Siitä pääset vuorovaikutteiseen ohjaukseen, joka opettaa "
-#~ "sinulle Wesnothin perusteet. Tämän jälkeen on suositeltavaa että pelaat "
-#~ "Heir to the Throne -kampanjan ensin: valitse <italic>text=Kampanja</"
-#~ "italic> ja sitten <italic>text='Heir to the Throne'</italic>. Battle for "
-#~ "Wesnoth voi olla hyvinkin haastava, joten voi olla hyvä, että aloitat "
-#~ "<italic>text=Helpolla</italic> vaikeustasolla.\n"
-#~ "\n"
-#~ "<img>src=help/tooltip.png align=right float=yes</img>Pelatessasi, muista "
-#~ "että voit viedä hiiren useimpien oikealla olevan valikon kohteiden "
-#~ "päälle, ja saat lyhyen selostuksen siitä kohteesta. Tämä on hyvin "
-#~ "käytännöllistä kun näet tuntemattomia kykyjä ensimmäistä kertaa."
-
-#~ msgid "&random-enemy.png,Random"
-#~ msgstr "&random-enemy.png,Satunnaisesti valittu"
-
-#, fuzzy
-#~ msgid "&human-lieutenant.png,Loyalists"
-#~ msgstr "&human-lieutenant.png,Lojalistit"
-
-#, fuzzy
-#~ msgid "&elvish-captain.png,Rebels"
-#~ msgstr "&elvish-captain.png,Kapinalliset"
-
-#, fuzzy
-#~ msgid "&orcish-warrior.png,Northerners"
-#~ msgstr "&orcish-warrior.png,Pohjalaiset"
-
-#, fuzzy
-#~ msgid "&undead-necromancer.png,Undead"
-#~ msgstr "&undead-necromancer.png,Epäkuolleet"
-
-#, fuzzy
-#~ msgid "&dwarf-warrior.png,Knalgan Alliance"
-#~ msgstr "&dwarf-warrior.png,Knalganin Liittoutuma"
-
-#, fuzzy
-#~ msgid "&drake-flare.png,Drakes"
-#~ msgstr "&drake-flare.png,Draket"
-
-#, fuzzy
-#~ msgid "&human-lieutenant.png,Humans"
-#~ msgstr "&human-lieutenant.png,Ihmiset"
-
-#, fuzzy
-#~ msgid "&elvish-captain.png,Elves"
-#~ msgstr "&elvish-captain.png,Haltiat"
-
-#, fuzzy
-#~ msgid "&orcish-warrior.png,Orcs"
-#~ msgstr "&orcish-warrior.png,√ñrkit"
-
-#, fuzzy
-#~ msgid "&dwarf-warrior.png,Dwarves"
-#~ msgstr "&dwarf-warrior.png,Kääpiöt"
-
-#~ msgid "&saurian-soothsayer.png,Saurian"
-#~ msgstr "&saurian-soothsayer.png,Saurianit"
-
-#~ msgid "&human-general.png,Loyalists"
-#~ msgstr "&human-general.png,Lojalistit"
-
-#, fuzzy
-#~ msgid "&elvish-marshal.png,Rebels"
-#~ msgstr "&elvish-marshal.png,Kapinalliset"
-
-#~ msgid "&orcish-warlord.png,Northerners"
-#~ msgstr "&orcish-warlord.png,Pohjalaiset"
-
-#~ msgid "&undead-lich.png,Undead"
-#~ msgstr "&undead-lich.png,Epäkuolleet"
-
-#~ msgid "&white-mage.png,Alliance of Light"
-#~ msgstr "&white-mage.png,Valon Liitto"
-
-#~ msgid "minimum damage"
-#~ msgstr "minimivahinko"
-
-#~ msgid "Game"
-#~ msgstr "Peli"
-
-#~ msgid "Scenario"
-#~ msgstr "Skenaario"
-
-#~ msgid "Configure Sides:"
-#~ msgstr "Muokkaa puolia:"
-
-#~ msgid "Choose Team Settings:"
-#~ msgstr "Joukkueen asetukset:"
-
-#~ msgid "Could not connect to the remote host"
-#~ msgstr "Yhteyttä isäntäkoneeseen ei saatu"
-
-#~ msgid "Filled"
-#~ msgstr "Täytetty"
-
-#~ msgid "Available"
-#~ msgstr "Vapaa"
-
-#~ msgid "&misc/observer.png,Observer"
-#~ msgstr "&misc/observer.png,Tarkkailija"
-
-#~ msgid "Describe Unit"
-#~ msgstr "Kuvaile yksikköä"
-
-#~ msgid "Full Screen or Windowed?"
-#~ msgstr "Koko ruudun kokoinen vai ikkunoitu?"
-
-#~ msgid "Display:"
-#~ msgstr "Näyttö:"
-
-#~ msgid "Windowed"
-#~ msgstr "Ikkunoitu"
-
-#~ msgid "Speed:"
-#~ msgstr "Nopeus:"
-
-#~ msgid "Normal"
-#~ msgstr "Normaali"
-
-#~ msgid "Sound Settings..."
-#~ msgstr "√Ñäniasetukset..."
-
-#~ msgid "Options"
-#~ msgstr "Asetukset"
-
-#~ msgid "Choose Scenario"
-#~ msgstr "Valitse skenaario"
-
-#~ msgid "Unit resistance table"
-#~ msgstr "Yksikön vastustustaulukko"
-
-#~ msgid "See Also..."
-#~ msgstr "Katso myös..."
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "If this unit kills a living target and that unit was not stationed in a "
-#~ "village, the dead target's corpse will rise up and fight for you."
-#~ msgstr ""
-#~ "Rutto:\n"
-#~ "Mikäli tämä yksikkö tappaa elävän yksikön ja se ei ollut kylässä, se "
-#~ "nousee kuolleista ja taistelee puolellasi."
-
-#~ msgid "first strike"
-#~ msgstr "ensi-isku"
-
-#~ msgid "Tundra"
-#~ msgstr "Tundra"
-
-#~ msgid "Next tip"
-#~ msgstr "Seuraava vinkki"
-
-#~ msgid "Tip of the Day"
-#~ msgstr "Päivän vinkki"
-
-#~ msgid "Do not show tips"
-#~ msgstr "√Ñlä näytä vinkkejä"
-
-#~ msgid "pistol"
-#~ msgstr "pistooli"
-
-#~ msgid "Naga"
-#~ msgstr "Naga"
-
-#, fuzzy
-#~ msgid "skirmisher,heals"
-#~ msgstr "kahakointi"
-
-#, fuzzy
-#~ msgid "skirmisher,cures"
-#~ msgstr "kahakointi"
-
-#~ msgid "bone"
-#~ msgstr "luut"
-
-#~ msgid ",Name,Version,Author,Downloads"
-#~ msgstr ",Nimi,Versio,Tekijä,Latauksia"
-
-#~ msgid "Host Multiplayer Game"
-#~ msgstr "Isännöi moninpeliä"
-
-#~ msgid "Experience Requirements"
-#~ msgstr "Vaadittu kokemus"
-
-#~ msgid "Warning"
-#~ msgstr "Varoitus"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Vastaanotetaan pelilistaa..."
-
-#~ msgid "The game has been cancelled"
-#~ msgstr "Peli on peruutettu"
-
-#~ msgid "The side you have chosen is no longer available"
-#~ msgstr "Joukkue jonka valitsit ei ole enää käytettävissä"
-
-#~ msgid "Show replay of game up to save point?"
-#~ msgstr "Näytä pelin uusinta tallennuspisteeseen asti?"
-
-#~ msgid "Waiting for network players to join"
-#~ msgstr "Odotetaan verkkopelaajien liittymistä"
-
-#, fuzzy
-#~ msgid "_description"
-#~ msgstr "Yksikön kuvaus"
-
-#~ msgid "hexes"
-#~ msgstr "heksaa"
-
-#~ msgid "TitleScreen button^About"
-#~ msgstr "Tietoja"
-
-#~ msgid "hp"
-#~ msgstr "osumapisteet (HP)"
-
-#~ msgid "xp"
-#~ msgstr "kokemuspisteet (XP)"
-
-#~ msgid "beak"
-#~ msgstr "nokka"
-
-#~ msgid "ice shot"
-#~ msgstr "jääpiikki"
-
-#~ msgid "Save"
-#~ msgstr "Tallenna"
-
-#~ msgid ""
-#~ "The campaign has been installed. You will have to restart Wesnoth before "
-#~ "you can play it."
-#~ msgstr ""
-#~ "Kampanja on asennettu. Sinun täytyy käynnistää Wesnoth uudelleen "
-#~ "ennenkuin voit pelata sitä."
-
-#~ msgid "Quit?"
-#~ msgstr "Lopeta?"
-
-#~ msgid "Recruit unit"
-#~ msgstr "Värvää yksikkö"
-
-#~ msgid "Owned"
-#~ msgstr "Omia"
-
-#~ msgid "Enemy"
-#~ msgstr "Vihollisia"
-
-#~ msgid "Heir to the Throne"
-#~ msgstr "Valtaistuimen perillinen"
-
-#~ msgid ""
-#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-#~ "champion.png,Champion,(hardest)"
-#~ msgstr ""
-#~ "&elvish-fighter.png,Fighter,(helpoin);*&elvish-hero.png,Hero;&elvish-"
-#~ "champion.png,Champion,(vaikein)"
-
-#~ msgid ""
-#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
-#~ "&undead-lich.png,Dark Lord,(hardest)"
-#~ msgstr ""
-#~ "&undead-initiate.png,Apprentice,(helpoin);*&undead-necromancer.png,Master;"
-#~ "&undead-lich.png,Dark Lord,(vaikein)"
-
-#~ msgid ""
-#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
-#~ "warlord.png,Warlord,(hardest)"
-#~ msgstr ""
-#~ "&orcish-grunt.png,Grunt,(helpoin);*&orcish-warrior.png,Warrior;&orcish-"
-#~ "warlord.png,Warlord,(vaikein)"
-
-#~ msgid ""
-#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
-#~ "&human-royalguard.png,Royal Guard,(hardest)"
-#~ msgstr ""
-#~ "&human-spearman.png,Spearman,(helpoin);*&human-swordman.png,Swordsman;"
-#~ "&human-royalguard.png,Royal Guard,(vaikein)"
-
-#~ msgid ""
-#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
-#~ "&noble-lord.png,Lord,(hardest)"
-#~ msgstr ""
-#~ "&noble-fighter.png,Fighter,(helpoin);*&noble-commander.png,Commander;"
-#~ "&noble-lord.png,Lord,(vaikein)"
-
-#, fuzzy
-#~ msgid "Epilogue"
-#~ msgstr "Epillogi"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move Kapou'e to the end of the mountains\n"
-#~ "Defeat:\n"
-#~ "#Death of Kapou'e\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat Albert and his troops\n"
-#~ "Defeat:\n"
-#~ "#Death of Kapou'e\n"
-#~ "#Turns run out"
-
-#~ msgid ""
-#~ "By nightfall his troops reached a mountainous territory, under the "
-#~ "authority of orcish leader Kapou'e, the son of the Black Eye."
-#~ msgstr ""
-#~ "By nightfall his troops reached a mountainous territory, under the "
-#~ "authority of orcish ruler Kapou'e, the son of the Black Eye."
-
-#~ msgid ""
-#~ "With the finding of Crelanu's ancient tome, fresh strength had flowed to "
-#~ "Gwiti's army, and they had made good time. However, Gwiti's march was "
-#~ "halted by Leonard as he reentered Wesnothian territory. The general of "
-#~ "several outlying areas, his troops were many but untrained."
-#~ msgstr ""
-#~ "Entering the edges of Wesnothian territories again, Gwiti's march was "
-#~ "halted by Leonard. The general of several outlying areas, his troops were "
-#~ "many but untrained."
-
-#~ msgid ""
-#~ "In truth, Leonards army was unprepared and under-equipped, and he had "
-#~ "neglected to send word. Luckily, behind him came one whose name was a "
-#~ "bane to the undead: Lord Aretu. Gwiti knew that even if he defeated "
-#~ "Leonard, his best hope was now to flee into the mountains."
-#~ msgstr ""
-#~ "In truth, Leonards army was unprepared and under-equipped, and he had "
-#~ "neglected to send word. Luckily, behind him came one whose name was a "
-#~ "bane to the undead: Lord Aretu."
-
-#~ msgid ""
-#~ "Do you see the three orc clans of this land? Their banners are topped "
-#~ "with skulls, as is their custom. But one of these is the Skull of Agarash "
-#~ "- Take it and your power will grow greater by far."
-#~ msgstr ""
-#~ "Do you see the three orc clans of this land? Their banners are topped "
-#~ "with skulls, as is their custom. But one of these is the Skull of Agarash "
-#~ "- which once was mine. Take it and your power will grow greater by far."
-
-#~ msgid "No!"
-#~ msgstr "Ei!"
 
 #~ msgid "Choose a File to Save As"
 #~ msgstr "Valitse mihin tiedostoon tallennetaan"
