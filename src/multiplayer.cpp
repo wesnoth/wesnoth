@@ -656,6 +656,16 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 						if(combo_team[n].process(mousex,mousey,left_button))
 						{
+							for(size_t l = 0; l != sides.size(); ++l) {
+								std::stringstream myenemy;
+								for(size_t m = 0; m != sides.size(); ++m) {
+									if(combo_team[m].selected() != combo_team[l].selected()) {
+										myenemy << sides[m]->values["side"] << ",";
+									}
+								}
+								myenemy << "\b";
+								sides[l]->values["enemy"] = myenemy.str();
+							}
 						}
 
 						combo_color[n].process(mousex,mousey,left_button);
