@@ -344,7 +344,6 @@ void show_preferences_dialog(display& disp)
 	bool redraw_all = true;
 
 	for(;;) {
-		log_scope("looping");
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 

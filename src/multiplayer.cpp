@@ -57,6 +57,9 @@ connection_acceptor::connection_acceptor(config& players)
 			positions_[*i] = 0;
 		}
 	}
+
+	//if we have any connected players when we are created, send them the data
+	network::send_data(players_);
 }
 
 int connection_acceptor::do_action()
@@ -157,8 +160,7 @@ int connection_acceptor::do_action()
 				          << "\n";
 			}
 		} else {
-			std::cerr << "tried to take unknown side: " << side_taken
-			          << "\n";
+			std::cerr << "tried to take unknown side: " << side_taken << "\n";
 		}
 
 		return CONNECTIONS_PART_FILLED;
@@ -211,9 +213,11 @@ bool accept_network_connections(display& disp, config& players)
 
 }
 
-void play_multiplayer(display& disp, game_data& units_data, config& cfg,
-                      game_state& state)
+void play_multiplayer(display& disp, game_data& units_data, config cfg,
+                      game_state& state, bool server)
 {
+	log_scope("play multiplayer");
+
 	std::vector<std::string> options;
 	std::vector<config*>& levels = cfg.children["multiplayer"];
 	for(std::vector<config*>::iterator i = levels.begin(); i!=levels.end();++i){
@@ -325,7 +329,7 @@ void play_multiplayer(display& disp, game_data& units_data, config& cfg,
 	}
 
 	const network::manager net_manager;
-	const network::server_manager server_man;
+	const network::server_manager server_man(15000,server);
 
 	const bool network_state = accept_network_connections(disp,level);
 	if(network_state == false)

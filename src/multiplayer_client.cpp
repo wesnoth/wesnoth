@@ -1,4 +1,5 @@
 #include "language.hpp"
+#include "log.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_client.hpp"
 #include "playlevel.hpp"
@@ -51,7 +52,19 @@ GAME_LIST_RESULT manage_game_list(display& disp, const config* gamelist)
 		if(res == gamelist_manager::UPDATED_GAMELIST) {
 			gamelist = manager.get_gamelist();
 		} else if(res == 0) {
-			return CREATE_GAME;
+			std::string name;
+			const int res = gui::show_dialog(disp,NULL,"","Name your game:",
+			                   gui::OK_CANCEL,NULL,NULL,"Name:",&name);
+			if(res == 0) {
+				config response;
+				config create_game;
+				create_game["name"] = name;
+				response.children["create_game"].push_back(
+				                                    new config(create_game));
+				network::send_data(response);
+
+				return CREATE_GAME;
+			}
 		} else if(size_t(res) == options.size()-1) {
 			return QUIT_GAME;
 		} else if(res > 0 && size_t(res) < options.size()) {
@@ -77,6 +90,8 @@ GAME_LIST_RESULT manage_game_list(display& disp, const config* gamelist)
 void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
                              game_state& state)
 {
+	log_scope("playing multiplayer client");
+
 	const network::manager net_manager;
 
 	std::string host;
@@ -103,13 +118,17 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	if(gamelist != NULL) {
 		const GAME_LIST_RESULT res = manage_game_list(disp,gamelist);
 		switch(res) {
-			case QUIT_GAME:
+			case QUIT_GAME: {
 				return;
-			case CREATE_GAME:
-				play_multiplayer(disp,units_data,cfg,state);
+			}
+			case CREATE_GAME: {
+				std::cerr << "playing multiplayer...\n";
+				play_multiplayer(disp,units_data,cfg,state,false);
 				return;
-			case JOIN_GAME:
+			}
+			case JOIN_GAME: {
 				break;
+			}
 		}
 
 		for(;;) {

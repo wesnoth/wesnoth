@@ -12,11 +12,17 @@ namespace network {
 struct manager {
 	manager();
 	~manager();
+
+private:
+	bool free_;
 };
 
 struct server_manager {
 	server_manager(int port=15000, bool create_server=true);
 	~server_manager();
+
+private:
+	bool free_;
 };
 
 typedef TCPsocket connection;
@@ -29,11 +35,12 @@ void disconnect(connection connection_num=0);
 
 connection receive_data(config& cfg, connection connection_num=0, int tout=0);
 
-void send_data(config& cfg, connection connection_num=0);
+void send_data(const config& cfg, connection connection_num=0);
 
 struct error
 {
-	error(const std::string& msg, connection sock=0) : message(msg) {}
+	error(const std::string& msg, connection sock=0)
+	                                 : message(msg), socket(sock) {}
 	std::string message;
 	connection socket;
 

@@ -21,8 +21,14 @@ TCPsocket server_socket;
 
 namespace network {
 
-manager::manager()
+manager::manager() : free_(true)
 {
+	//if the network is already being managed
+	if(socket_set) {
+		free_ = false;
+		return;
+	}
+
 	if(SDLNet_Init() == -1) {
 		throw error(SDL_GetError());
 	}
@@ -34,20 +40,23 @@ manager::~manager()
 {
 	disconnect();
 	SDLNet_FreeSocketSet(socket_set);
+	socket_set = 0;
 	SDLNet_Quit();
 }
 
 server_manager::server_manager(int port, bool create_server)
+                                    : free_(false)
 {
-	if(create_server) {
+	if(create_server && !server_socket) {
 		server_socket = connect("",port);
 		std::cerr << "server socket initialized: " << server_socket << "\n";
+		free_ = true;
 	}
 }
 
 server_manager::~server_manager()
 {
-	if(server_socket) {
+	if(free_) {
 		SDLNet_TCP_Close(server_socket);
 		server_socket = 0;
 	}
@@ -89,7 +98,9 @@ connection connect(const std::string& host, int port)
 
 connection accept_connection()
 {
-	assert(server_socket);
+	if(!server_socket)
+		return 0;
+
 	const connection sock = SDLNet_TCP_Accept(server_socket);
 	if(sock) {
 		const int res = SDLNet_TCP_AddSocket(socket_set,sock);
@@ -124,6 +135,11 @@ void disconnect(connection s)
 		sockets.erase(i);
 		SDLNet_TCP_DelSocket(socket_set,s);
 		SDLNet_TCP_Close(s);
+	} else {
+		std::cerr << "Could not find socket to close: " << (int)s << "\n";
+		if(sockets.size() == 1) {
+			std::cerr << "valid socket: " << (int)*sockets.begin() << "\n";
+		}
 	}
 }
 
@@ -164,6 +180,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 			}
 
 			if(buffer == "") {
+				std::cerr << "error receiving data: " << (int)*i << "\n";
 				throw error("error receiving data",*i);
 			}
 
@@ -195,7 +212,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 	return 0;
 }
 
-void send_data(config& cfg, connection connection_num)
+void send_data(const config& cfg, connection connection_num)
 {
 	log_scope("sending data");
 	if(!connection_num) {
