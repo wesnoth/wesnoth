@@ -391,7 +391,8 @@ redo_turn:
 
 					update_locker lock(gui,!preferences::show_ai_moves());
 
-					std::auto_ptr<ai_interface> ai_obj(create_ai("",ai_interface::info(gui,map,gameinfo,units,teams,player_number,status)));
+					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status);
+					std::auto_ptr<ai_interface> ai_obj(create_ai("",ai_info));
 					ai_obj->play_turn();
 
 					if(network::nconnections() > 0) {
