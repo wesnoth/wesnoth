@@ -16,6 +16,7 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "font.hpp"
+#include "game_config.hpp"
 #include "image.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
@@ -35,7 +36,7 @@
 #include <sstream>
 
 namespace {
-	const config *game_config = NULL;
+	const config *game_cfg = NULL;
 	game_data *game_info = NULL;
 	gamemap *map = NULL;
 	// The default toplevel.
@@ -205,7 +206,7 @@ namespace {
 namespace help {
 
 help_manager::help_manager(const config *cfg, game_data *gameinfo, gamemap *_map) {
-	game_config = cfg == NULL ? &dummy_cfg : cfg;
+	game_cfg = cfg == NULL ? &dummy_cfg : cfg;
 	game_info = gameinfo;
 	map = _map;
 }
@@ -213,8 +214,8 @@ help_manager::help_manager(const config *cfg, game_data *gameinfo, gamemap *_map
 void generate_contents() {
 	toplevel.clear();
 	hidden_sections.clear();
-	if (game_config != NULL) {
-		const config *help_config = game_config->child("help");
+	if (game_cfg != NULL) {
+		const config *help_config = game_cfg->child("help");
 		if (help_config == NULL) {
 			help_config = &dummy_cfg;
 		}
@@ -274,7 +275,7 @@ void generate_contents() {
 }
 
 help_manager::~help_manager() {
-	game_config = NULL;
+	game_cfg = NULL;
 	game_info = NULL;
 	map = NULL;
 	toplevel.clear();
@@ -818,6 +819,9 @@ std::vector<topic> generate_unit_topics() {
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type) {
 	const std::string id = type.name();
 	const std::set<std::string> &encountered_units = preferences::encountered_units();
+	if (game_config::debug) {
+		return FULL_DESCRIPTION;
+	}
 	if (encountered_units.find(id) != encountered_units.end()) {
 		return FULL_DESCRIPTION;
 	}
@@ -826,18 +830,29 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type) {
 
 std::vector<topic> generate_terrains_topics() {
 	std::vector<topic> res;
-	for (std::set<std::string>::const_iterator terrain_it =
-			 preferences::encountered_terrains().begin();
-		 terrain_it != preferences::encountered_terrains().end();
-		 terrain_it++) {
-		assert(terrain_it->size() > 0);
-		const gamemap::TERRAIN terrain = (*terrain_it)[0];
-		if (terrain == gamemap::FOGGED || terrain == gamemap::VOID_TERRAIN) {
-			continue;
+	std::vector<gamemap::TERRAIN> show_info_about;
+	if (game_config::debug) {
+		show_info_about = map->get_terrain_precedence();
+	}
+	else {
+		for (std::set<std::string>::const_iterator terrain_it =
+				 preferences::encountered_terrains().begin();
+			 terrain_it != preferences::encountered_terrains().end();
+			 terrain_it++) {
+			assert(terrain_it->size() > 0);
+			const gamemap::TERRAIN terrain = (*terrain_it)[0];
+			show_info_about.push_back(terrain);
 		}
-		const std::string& name = map->terrain_name(terrain);
+	}
+	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
+									  gamemap::VOID_TERRAIN), show_info_about.end());
+	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
+									  gamemap::FOGGED), show_info_about.end());
+	for (std::vector<gamemap::TERRAIN>::const_iterator terrain_it = show_info_about.begin();
+		 terrain_it != show_info_about.end(); terrain_it++) {
+		const std::string& name = map->terrain_name(*terrain_it);
 		const std::string& lang_name = translate_string(name);
-		const terrain_type& info = map->get_terrain_info(terrain);
+		const terrain_type& info = map->get_terrain_info(*terrain_it);
 		std::stringstream ss;
 		ss << "<img>src='terrain/" << info.default_image() << ".png'</img>\n\n";
 		if (info.is_alias()) {
@@ -875,7 +890,7 @@ std::vector<topic> generate_terrains_topics() {
 		if (info.gives_healing()) {
 			ss << string_table["terrain_gives_healing"] << ".\n\n";
 		}
-		topic t(lang_name, std::string("terrain_") + terrain, ss.str());
+		topic t(lang_name, std::string("terrain_") + *terrain_it, ss.str());
 		res.push_back(t);
 	}
 	return res;
@@ -886,8 +901,8 @@ std::string generate_traits_text() {
 	// generated from this is rather short and not suitable for the help
 	// system. Hence, this method is not used currently :).
 	std::stringstream ss;
-	if (game_config != NULL) {
-		const config *unit_cfg = game_config->child("units");
+	if (game_cfg != NULL) {
+		const config *unit_cfg = game_cfg->child("units");
 		if (unit_cfg != NULL) {
 			const config::child_list child_list = unit_cfg->get_children("trait");
 			for (config::const_child_iterator it = child_list.begin();
