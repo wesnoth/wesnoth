@@ -48,7 +48,7 @@ namespace {
 					}
 				}
 			}
-		}z
+		}
 
 		return (100*liked)/positions;
 	}
