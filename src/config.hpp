@@ -24,9 +24,11 @@
 #include <string>
 #include <vector>
 
-// gettext-related stuff
+// gettext-related declarations
 #include <clocale>
-#define _(STR) gettext(STR)
+#define _(String) gettext(String)
+#define gettext_noop(String) String
+#define N_(String) gettext_noop (String)
 
 #ifdef HAVE_CONFIG_H
 # include "config.h"

@@ -149,8 +149,16 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::cerr << "drew version number\n";
 
 	//members of this array must correspond to the enumeration TITLE_RESULT
-	static const std::string button_labels[] = { "tutorial_button", "campaign_button", "multiplayer_button",
+	static const char* button_labels[] = { N_("Tutorial"), "campaign_button", "multiplayer_button",
 		"load_button", "language_button", "preferences", "about_button", "quit_button" };
+	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
+						    "help_string_campaign_button",
+						    "help_string_multiplayer_button",
+						    "help_string_load_button",
+						    "help_string_language_button",
+						    "help_string_preferences",
+						    "help_string_about_button",
+						    "help_string_quit_button" };
 
 	static const size_t nbuttons = sizeof(button_labels)/sizeof(*button_labels);
 
@@ -163,10 +171,10 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::vector<button> buttons;
 	size_t b, max_width = 0;
 	for(b = 0; b != nbuttons; ++b) {
-		buttons.push_back(button(screen,string_table[button_labels[b]]));
+		buttons.push_back(button(screen,gettext(button_labels[b])));
 		buttons.back().set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
-		buttons.back().set_help_string(string_table["help_string_" + button_labels[b]]);
-		std::cerr << "set help string for '" << button_labels[b] << "' -> '" << string_table["help_string_" + button_labels[b]] << "'\n";
+		buttons.back().set_help_string(gettext(help_button_labels[b]));
+		std::cerr << "set help string for '" << button_labels[b] << "' -> '" << gettext(help_button_labels[b]) << "'\n";
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 

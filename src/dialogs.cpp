@@ -348,7 +348,7 @@ void save_preview_pane::draw()
 		} else if(campaign_type == "multiplayer") {
 			str << translate_string("multiplayer_button");
 		} else if(campaign_type == "tutorial") {
-			str << translate_string("tutorial_button");
+			str << _("Tutorial");
 		} else {
 			str << translate_string(campaign_type);
 		}
