@@ -267,7 +267,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	}
 }
 
-void unit_die(display& disp, const gamemap::location& loc, const unit& u)
+void unit_die(display& disp, const gamemap::location& loc, const unit& u, const attack_type* attack)
 {
 	if(disp.update_locked() || disp.fogged(loc.x,loc.y) || preferences::show_combat() == false) {
 		return;
@@ -278,11 +278,34 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u)
 		sound::play_sound(die_sound);
 	}
 
+	surface unit_image(NULL);
+
+	const unit_animation* const anim_ptr = u.type().die_animation(attack);
+	if(anim_ptr != NULL) {
+		unit_animation anim(*anim_ptr);
+
+		anim.start_animation(anim.get_first_frame_time(),unit_animation::UNIT_FRAME,disp.turbo() ? 5:1);
+		anim.update_current_frames();
+
+		while(!anim.animation_finished()) {
+
+			const unit_animation::frame& frame = anim.get_current_frame();
+
+			unit_image = surface(image::get_image(frame.image));
+			disp.draw_tile(loc.x,loc.y,unit_image);
+			disp.update_display();
+
+			SDL_Delay(10);
+
+			anim.update_current_frames();
+		}
+	}
+
 	const int frame_time = 30;
 	int ticks = SDL_GetTicks();
 
 	for(fixed_t alpha = ftofxp(1.0); alpha > ftofxp(0.0); alpha -= ftofxp(0.05)) {
-		disp.draw_tile(loc.x,loc.y,NULL,alpha);
+		disp.draw_tile(loc.x,loc.y,unit_image,alpha);
 
 		const int wait_time = ticks + frame_time - SDL_GetTicks();
 
@@ -294,7 +317,7 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u)
 		disp.update_display();
 	}
 
-	disp.draw_tile(loc.x,loc.y,NULL,ftofxp(0.0));
+	disp.draw_tile(loc.x,loc.y,unit_image,ftofxp(0.0));
 	disp.update_display();
 }
 
@@ -591,7 +614,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	}
 
 	if(dead) {
-		unit_die(disp,def->first,def->second);
+		unit_die(disp,def->first,def->second,&attack);
 	}
 
 	return dead;
@@ -853,7 +876,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	def->second.set_standing();
 
 	if(dead) {
-		unit_display::unit_die(disp,def->first,def->second);
+		unit_display::unit_die(disp,def->first,def->second,&attack);
 	}
 
 	return dead;

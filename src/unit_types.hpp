@@ -245,6 +245,7 @@ public:
 
 	const unit_animation* defend_animation(bool hits, attack_type::RANGE range) const;
 	const unit_animation* teleport_animation() const;
+	const unit_animation* die_animation(const attack_type* attack) const;
 
 private:
 	void operator=(const unit_type& o);
@@ -284,7 +285,7 @@ private:
 
 	struct defensive_animation
 	{
-		defensive_animation(const config& cfg);
+		explicit defensive_animation(const config& cfg);
 		bool matches(bool hits, attack_type::RANGE range) const;
 
 		enum { HIT, MISS, HIT_OR_MISS } hits;
@@ -295,6 +296,17 @@ private:
 	std::vector<defensive_animation> defensive_animations_;
 
 	std::vector<unit_animation> teleport_animations_;
+
+	struct death_animation
+	{
+		explicit death_animation(const config& cfg);
+		bool matches(const attack_type* attack) const;
+
+		std::vector<std::string> damage_type, special;
+		unit_animation animation;
+	};
+
+	std::vector<death_animation> death_animations_;
 };
 
 struct game_data

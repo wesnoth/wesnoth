@@ -531,7 +531,7 @@ unit_type::unit_type(const unit_type& o)
       can_advance_(o.can_advance_), alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
-      teleport_animations_(o.teleport_animations_)
+      teleport_animations_(o.teleport_animations_), death_animations_(o.death_animations_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -657,6 +657,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config::child_list& teleports = cfg_.get_children("teleport_anim");
 	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
 		teleport_animations_.push_back(unit_animation(**t));
+	}
+
+	const config::child_list& deaths = cfg_.get_children("death");
+	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
+		death_animations_.push_back(death_animation(**death));
 	}
 }
 
@@ -1038,6 +1043,28 @@ bool unit_type::defensive_animation::matches(bool h, attack_type::RANGE r) const
 	}
 }
 
+unit_type::death_animation::death_animation(const config& cfg)
+: damage_type(utils::split(cfg["damage_type"])), special(utils::split(cfg["attack_special"])), animation(cfg)
+{
+}
+
+bool unit_type::death_animation::matches(const attack_type* attack) const
+{
+	if(attack == NULL) {
+		return true;
+	}
+
+	if(damage_type.empty() == false && std::find(damage_type.begin(),damage_type.end(),attack->type()) == damage_type.end()) {
+		return false;
+	}
+
+	if(special.empty() == false && std::find(special.begin(),special.end(),attack->special()) == special.end()) {
+		return false;
+	}
+
+	return true;
+}
+
 const unit_animation* unit_type::defend_animation(bool hits, attack_type::RANGE range) const
 {
 	//select one of the matching animations at random
@@ -1065,6 +1092,36 @@ const unit_animation* unit_type::teleport_animation( ) const
 {
 	if (teleport_animations_.empty()) return NULL;
 	return &teleport_animations_[rand() % teleport_animations_.size()];
+}
+
+const unit_animation* unit_type::die_animation(const attack_type* attack) const
+{
+	if(death_animations_.empty()) {
+		return NULL;
+	}
+
+	if(attack == NULL) {
+		return &death_animations_[rand()%death_animations_.size()].animation;
+	}
+
+	const unit_animation* res = NULL;
+	std::vector<const unit_animation*> options;
+	for(std::vector<death_animation>::const_iterator i = death_animations_.begin(); i != death_animations_.end(); ++i) {
+		if(i->matches(attack)) {
+			if(res != NULL) {
+				options.push_back(res);
+			}
+
+			res = &i->animation;
+		}
+	}
+
+	if(options.empty()) {
+		return res;
+	} else {
+		options.push_back(res);
+		return options[rand()%options.size()];
+	}
 }
 
 game_data::game_data()
