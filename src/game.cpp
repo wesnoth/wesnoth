@@ -445,6 +445,11 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 display& game_controller::disp()
 {
 	if(disp_.get() == NULL) {
+
+		if(get_video_surface() == NULL) {
+			throw CVideo::error();
+		}
+
 		static display::unit_map dummy_umap;
 		static config dummy_cfg("");
 		static gamemap dummy_map(dummy_cfg, "1");
@@ -1354,6 +1359,7 @@ void game_controller::refresh_game_cfg()
 			old_defines_map_ = defines_map_;
 		}
 	} catch(config::error& e) {
+		std::cerr << "Error loading game configuration files\n";
 		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
 		                        e.message + _("' (The game will now exit)"));
 		throw e;
