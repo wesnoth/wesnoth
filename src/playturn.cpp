@@ -638,7 +638,10 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		current_route_.steps.clear();
 		gui_.set_route(NULL);
 
-		const unit_map::iterator it = units_.find(hex);
+		const unit_map::iterator it = find_visible_unit(units_,
+				hex, map_,
+				status_.get_time_of_day().lawful_bonus,teams_,current_team);
+
 		if(it != units_.end() && it->second.side() == team_num_ && !gui_.fogged(it->first.x,it->first.y)) {
 			const bool ignore_zocs = it->second.type().is_skirmisher();
 			const bool teleport = it->second.type().teleports();
@@ -1548,17 +1551,19 @@ unit_map::iterator turn_info::current_unit()
 				status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
 	}
 
-	if(i != units_.end()){
-		std::cerr << "Selected " << i->second.name() << std::endl;
-	}
 	return i;
 }
 
 unit_map::const_iterator turn_info::current_unit() const
 {
-	unit_map::const_iterator i = units_.find(last_hex_);
+	unit_map::const_iterator i = find_visible_unit(units_,
+			last_hex_, map_,
+			status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+
 	if(i == units_.end()) {
-		i = units_.find(selected_hex_);
+		unit_map::const_iterator i = find_visible_unit(units_, selected_hex_, 
+				map_,
+				status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
 	}
 
 	return i;
