@@ -70,7 +70,7 @@ namespace {
 
 }
 
-surface make_neutral_surface(surface surf)
+surface make_neutral_surface(surface const &surf)
 {
 	if(surf == NULL) {
 		std::cerr << "null neutral surface...\n";
@@ -86,7 +86,7 @@ surface make_neutral_surface(surface surf)
 }
 
 
-surface create_optimized_surface(surface surf)
+surface create_optimized_surface(surface const &surf)
 {
 	if(surf == NULL)
 		return NULL;
@@ -103,7 +103,7 @@ surface create_optimized_surface(surface surf)
 	return result;
 }
 
-surface scale_surface(surface surf, int w, int h)
+surface scale_surface(surface const &surf, int w, int h)
 {
 	if(surf == NULL)
 		return NULL;
@@ -147,7 +147,7 @@ surface scale_surface(surface surf, int w, int h)
 	return create_optimized_surface(dst);
 }
 
-surface scale_surface_blended(surface surf, int w, int h)
+surface scale_surface_blended(surface const &surf, int w, int h)
 {
 	if(surf== NULL)
 		return NULL;
@@ -223,7 +223,7 @@ surface scale_surface_blended(surface surf, int w, int h)
 	return create_optimized_surface(dst);
 }
 
-surface adjust_surface_colour(surface surf, int r, int g, int b)
+surface adjust_surface_colour(surface const &surf, int r, int g, int b)
 {
 	if(r == 0 && g == 0 && b == 0 || surf == NULL)
 		return create_optimized_surface(surf);
@@ -257,7 +257,7 @@ surface adjust_surface_colour(surface surf, int r, int g, int b)
 	return create_optimized_surface(nsurf);
 }
 
-surface greyscale_image(surface surf)
+surface greyscale_image(surface const &surf)
 {
 	if(surf == NULL)
 		return NULL;
@@ -297,7 +297,7 @@ surface greyscale_image(surface surf)
 	return create_optimized_surface(nsurf);
 }
 
-surface brighten_image(surface surf, double amount)
+surface brighten_image(surface const &surf, double amount)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -332,7 +332,7 @@ surface brighten_image(surface surf, double amount)
 	return create_optimized_surface(nsurf);
 }
 
-surface adjust_surface_alpha(surface surf, double amount)
+surface adjust_surface_alpha(surface const &surf, double amount)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -365,7 +365,7 @@ surface adjust_surface_alpha(surface surf, double amount)
 	return create_optimized_surface(nsurf);
 }
 
-surface adjust_surface_alpha_add(surface surf, int amount)
+surface adjust_surface_alpha_add(surface const &surf, int amount)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -399,7 +399,7 @@ surface adjust_surface_alpha_add(surface surf, int amount)
 }
 
 // Applies a mask on a surface
-surface mask_surface(surface surf, surface mask)
+surface mask_surface(surface const &surf, surface const &mask)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -443,7 +443,7 @@ surface mask_surface(surface surf, surface mask)
 }
 
 // Cross-fades a surface
-surface blur_surface(surface surf, int depth)
+surface blur_surface(surface const &surf, int depth)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -527,7 +527,7 @@ surface blur_surface(surface surf, int depth)
 }
 
 // Cuts a rectangle from a surface.
-surface cut_surface(surface surf, const SDL_Rect& r)
+surface cut_surface(surface const &surf, SDL_Rect const &r)
 {
 	surface res = create_compatible_surface(surf, r.w, r.h);
 
@@ -557,7 +557,7 @@ surface cut_surface(surface surf, const SDL_Rect& r)
 	return res;
 }
 
-surface blend_surface(surface surf, double amount, Uint32 colour)
+surface blend_surface(surface const &surf, double amount, Uint32 colour)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -601,7 +601,7 @@ surface blend_surface(surface surf, double amount, Uint32 colour)
 	return create_optimized_surface(nsurf);
 }
 
-surface flip_surface(surface surf)
+surface flip_surface(surface const &surf)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -630,7 +630,7 @@ surface flip_surface(surface surf)
 	return create_optimized_surface(nsurf);
 }
 
-surface flop_surface(surface surf)
+surface flop_surface(surface const &surf)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -660,7 +660,7 @@ surface flop_surface(surface surf)
 }
 
 
-surface create_compatible_surface(surface surf, int width, int height)
+surface create_compatible_surface(surface const &surf, int width, int height)
 {
 	if(surf == NULL)
 		return NULL;
@@ -675,7 +675,7 @@ surface create_compatible_surface(surface surf, int width, int height)
 		                        surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
 }
 
-void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, surface target)
+void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &target)
 {
 	if(alpha == SDL_ALPHA_OPAQUE) {
 		SDL_FillRect(target,&rect,colour);
@@ -695,7 +695,7 @@ void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, surface target)
 	SDL_BlitSurface(tmp,NULL,target,&rect);
 }
 
-surface get_surface_portion(surface src, SDL_Rect& area)
+surface get_surface_portion(surface const &src, SDL_Rect &area)
 {
 	if(area.x >= src->w || area.y >= src->h) {
 		std::cerr << "illegal surface portion...\n";
@@ -741,7 +741,7 @@ private:
 
 }
 
-SDL_Rect get_non_transperant_portion(surface surf)
+SDL_Rect get_non_transperant_portion(surface const &surf)
 {
 	SDL_Rect res = {0,0,0,0};
 	const surface nsurf(make_neutral_surface(surf));

@@ -95,27 +95,27 @@ private:
 
 bool operator<(const surface& a, const surface& b);
 
-surface make_neutral_surface(surface surf);
-surface create_optimized_surface(surface surface);
-surface scale_surface(surface surface, int w, int h);
-surface scale_surface_blended(surface surface, int w, int h);
-surface adjust_surface_colour(surface surface, int r, int g, int b);
-surface greyscale_image(surface surface);
-surface brighten_image(surface surface, double amount);
-surface get_surface_portion(surface src, SDL_Rect& rect);
-surface adjust_surface_alpha(surface surface, double amount);
-surface adjust_surface_alpha_add(surface surface, int amount);
-surface mask_surface(surface surf, surface mask);
-surface blur_surface(surface surf, int depth=1);
-surface cut_surface(surface surface, const SDL_Rect& r);
-surface blend_surface(surface surface, double amount, Uint32 colour);
-surface flip_surface(surface surface);
-surface flop_surface(surface surface);
-surface create_compatible_surface(surface surf, int width=-1, int height=-1);
+surface make_neutral_surface(surface const &surf);
+surface create_optimized_surface(surface const &surf);
+surface scale_surface(surface const &surf, int w, int h);
+surface scale_surface_blended(surface const &surf, int w, int h);
+surface adjust_surface_colour(surface const &surf, int r, int g, int b);
+surface greyscale_image(surface const &surf);
+surface brighten_image(surface const &surf, double amount);
+surface get_surface_portion(surface const &surf, SDL_Rect &rect);
+surface adjust_surface_alpha(surface const &surf, double amount);
+surface adjust_surface_alpha_add(surface const &surf, int amount);
+surface mask_surface(surface const &surf, surface const &mask);
+surface blur_surface(surface const &surf, int depth = 1);
+surface cut_surface(surface const &surf, SDL_Rect const &r);
+surface blend_surface(surface const &surf, double amount, Uint32 colour);
+surface flip_surface(surface const &surf);
+surface flop_surface(surface const &surf);
+surface create_compatible_surface(surface const &surf, int width = -1, int height = -1);
 
-void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, surface target);
+void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &target);
 
-SDL_Rect get_non_transperant_portion(surface surf);
+SDL_Rect get_non_transperant_portion(surface const &surf);
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
@@ -155,7 +155,7 @@ struct pixel_data
 
 struct surface_lock
 {
-	surface_lock(surface surface) : surface_(surface), locked_(false)
+	surface_lock(surface const &surf) : surface_(surf), locked_(false)
 	{
 		if(SDL_MUSTLOCK(surface_)) {
 			const int res = SDL_LockSurface(surface_);
@@ -199,7 +199,7 @@ private:
 
 struct clip_rect_setter
 {
-	clip_rect_setter(surface surf, const SDL_Rect& r) : surface_(surf)
+	clip_rect_setter(surface const &surf, const SDL_Rect& r) : surface_(surf)
 	{
 		SDL_GetClipRect(surface_,&rect);
 		SDL_SetClipRect(surface_,&r);
