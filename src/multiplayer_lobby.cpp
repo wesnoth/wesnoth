@@ -88,12 +88,12 @@ void lobby::gamelist_updated()
 				const surface mini(image::getMinimap(100,100,map,0));
 
 				//generate a unique id to show the map as
-				char buf[50];
-				sprintf(buf,"addr %lu",(size_t)(SDL_Surface*)mini);
+				std::stringstream id;
+				id << "addr " << mini.get();
+				std::string const &image_id = id.str();
+				image::register_image(image_id, mini);
 
-				image::register_image(buf,mini);
-
-				str << "&" << buf << COLUMN_SEPARATOR;
+				str << "&" << image_id << COLUMN_SEPARATOR;
 			} catch(gamemap::incorrect_format_exception& e) {
 				std::cerr << "illegal map: " << e.msg_ << "\n";
 			}
