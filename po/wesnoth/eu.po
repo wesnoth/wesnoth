@@ -12,17 +12,16 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth HEAD\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-28 12:16+0200\n"
-"PO-Revision-Date: 2005-03-25 18:41+0100\n"
-"Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
+"PO-Revision-Date: 2005-03-28 18:07+0200\n"
+"Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -369,21 +368,23 @@ msgstr "Arratsaldea"
 #: data/help.cfg:141 data/schedules.cfg:59 data/schedules.cfg:89
 #: data/schedules.cfg:111
 msgid "Dusk"
-msgstr ""
+msgstr "Ilunabarra"
 
 #: data/help.cfg:142 data/schedules.cfg:79
 msgid "First Watch"
-msgstr ""
+msgstr "Lehen ikusketa"
 
 #: data/help.cfg:143 data/schedules.cfg:101
 msgid "Second Watch"
-msgstr ""
+msgstr "Bigarren ikusketa"
 
 #: data/help.cfg:145
 msgid ""
 "\n"
 "Morning and Afternoon count as day, First and Second Watch count as night."
 msgstr ""
+"\n"
+"Goizak eta arratsaldeak egun bezala hartzen dira, lehen eta bigarren ikusketak gau bezala."
 
 #: data/help.cfg:151
 msgid ""
@@ -432,6 +433,9 @@ msgid ""
 "Keep in mind that while most units have three levels, not all do, and that "
 "occasional units (such as <ref>dst=unit_Mage text=Mages</ref>) may have four."
 msgstr ""
+"\n"
+"\n"
+"Kontutan eduki unitate gehienak hiru maila dituztela, baina ez denek, eta batzuk (adibidez <ref>dst=unit_Mage text=Magoak</ref>) lahu eduki ditzazkete."
 
 #: data/help.cfg:169
 msgid "Healing"
@@ -881,7 +885,7 @@ msgstr "Ez Hilak"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
 msgid "Knalgan Alliance"
-msgstr ""
+msgstr "Knalgan-en aliantza"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
 msgid "Drakes"
@@ -1008,7 +1012,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "2 vs. 2 edo 3 vs. 3 talde jokua."
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:3
 msgid "Icy Waters"
@@ -1018,6 +1022,7 @@ msgstr "Ur izoztuak"
 msgid ""
 "Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 msgstr ""
+"Borrokatu ur izoztu hauen barru eta inguruetan Wesnoth iparreko portu garrantzitsu honegatik."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1131,7 +1136,7 @@ msgstr "Berdinketa! Azken emaitza: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/WeslinBridge.cfg:3
 msgid "Battle for Weslin Bridge"
-msgstr ""
+msgstr "Weslin-eko zubiaren guda"
 
 #: data/scenarios/multiplayer/WeslinBridge.cfg:5
 msgid ""
@@ -1145,7 +1150,7 @@ msgstr "Mundu borroka"
 
 #: data/scenarios/multiplayer/castles.cfg:7
 msgid "Siege Castles"
-msgstr ""
+msgstr "Gazteluak setiatu"
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
 msgid "Across The River"
@@ -1200,24 +1205,18 @@ msgstr ""
 "adineko magua zarenez, seguraski gudako artea azal diezadakezu."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:75
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
 "select Recruit, and select 'OK'. You can only recruit units on castle tiles "
 "connected to the keep your leader is on."
-msgstr ""
-"Borrokan hasi aurretik, unitateak bildu behar dituzu. Unitate bat biltzeko, "
-"eskuinbotoiaz klik egin unitatea bildu nahi duzun gazteluaren gelaxkan. "
-"Ondoren Bildu aukeratu eta Ok sakatu. Buruzagia dagoen gotorlekuarekin "
-"konektatutako gaztelu gelaxketan bakarrik bildu ditzakezu unitateak."
+msgstr "Borrokan hasi aurretik, unitateak bildu behar dituzu. Unitate bat biltzeko, eskuinbotoiaz klik egin unitatea bildu nahi duzun gazteluaren gelaxkan. Ondoren Bildu aukeratu eta Ados sakatu. Buruzagia dagoen gotorlekuarekin konektatutako gaztelu gelaxketan bakarrik bildu ditzakezu unitateak."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:78
 msgid "Recruit a unit"
 msgstr "Unitate bat bildu"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
-#, fuzzy
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Bikain! Elfo borrokalari bat bildu duzu."
 
@@ -1235,19 +1234,13 @@ msgid "How do I recruit units?"
 msgstr "Nola bildu ditzaket unitateak?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:91
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
 "tile and press 'Ctrl-R'. Next, select the type of unit that you want to "
 "recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
-msgstr ""
-"Unitate bat biltzeko, eskuin-botoiaz klik egin unitatea bildu nahi duzun "
-"gaztelu gelaxkan. Ondoren Bildu aukeratu, eta Ctrl-R sakatu. Jarraian, "
-"aukeratu bildu nahi duzun unitatea eta Ok aukeratu. Azkarrago biltzeko, "
-"Shift-Ctrl-R bidez azkena bildutako unitatearen motako unitatea bilduko "
-"dituzu."
+msgstr "Unitate bat biltzeko, eskuin-botoiaz klik egin unitatea bildu nahi duzun gaztelu gelaxkan. Ondoren Bildu aukeratu, edo kurtsorea gelaxka gainean jarri eta Ctrl-R sakatu. Jarraian, aukeratu bildu nahi duzun unitatea eta Ados aukeratu. Azkarrago biltzeko, Shift-Ctrl-R bidez azkena bildutako unitatearen motako unitatea bilduko duzu."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:92
 msgid ""
@@ -1304,7 +1297,6 @@ msgid "End your turn"
 msgstr "Bukatu zure txanda"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:116
-#, fuzzy
 msgid "You have successfully ended your turn."
 msgstr "Zure txanda modu egokian bukatu duzu."
 
@@ -1353,6 +1345,8 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
+"Bikain! Zure elfo gerlaria mugitu duzu. Ala ere, unitate etsai baten albora mugitzen, txandako "
+"mugimendu guztiak galduko ditu; honi 'gunea kontrolatzea' deritzo."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:164
 msgid "How far can my Elvish Fighter move?"
@@ -1412,7 +1406,6 @@ msgid "Attack Merle"
 msgstr "Merle eraso"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "You have successfully attacked Merle."
 msgstr "Merle modu egokian eraso duzu."
 
@@ -1562,40 +1555,36 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:300
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:264
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
 msgstr ""
 "Zoritxarrez, galdu egin duzu, zure buruzagia gainditu baitute. Dena den, "
-"agian nire irakasketetik jakinduria irabazi duzu"
+"agian nire irakasketetik jakinduria irabazi duzu."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:308
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:272
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
 msgstr ""
 "Zoritxarrez, galdu egin duzu, denborarik gabe geratu bait zara. Dena den, "
-"agian nire irakasketetik jakinduria irabazi duzu"
+"agian nire irakasketetik jakinduria irabazi duzu."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:320
-#, fuzzy
 msgid "You have successfully completed the first training scenario."
 msgstr "Lehenengo entrenamendu gudagunea ederto gainditu duzu."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:323
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:322
 msgid "Hooray!"
-msgstr ""
+msgstr "Aupa!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:325
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr "Nola jakingo dut Guda bat nola irabazi? Beti zuk kontatuko al didazu?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:325
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -1606,10 +1595,9 @@ msgid ""
 msgstr ""
 "Batzuetan elkarrizketa entzute hutsarekin ez da garbi geratuko nola irabazi "
 "behar den guda bat. Kasu honetan hasierako elkarrizketa ondoren agertzen "
-"diren gudaren xedeak begiratu behar duzu. Menuan 'Helburuak' klikatuz ere "
-"ikus dezakezu. Gudako helburuak irabazteko eta galtzeko baldintzen zerrenda "
-"bana dauka, eta baldintza bat betetzean guda amaituko da. Ea irabazteko "
-"baldintzetako bat betetzen duzun."
+"diren gudaren xedeak begiratu behar dituzu. Menuan 'Helburuak' klikatuz ere "
+"ikus ditzazkezu. Gudako helburuak irabazteko eta galtzeko baldintzen zerrenda "
+"bana dauka, eta baldintza bat betetzean guda amaituko da. Zortez, garaipen helburu bat bete duzu."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:326
 msgid "What happens when I win a scenario?"
@@ -1626,9 +1614,8 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:333
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr "Gudagune honen errepikapena gorde nahi al duzu?"
+msgstr "Gudagune honetan ikasitako trebetasunak berrikusi nahi dituzu?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:336
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:287
@@ -1649,7 +1636,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:4
 msgid "Traits and Specialties"
-msgstr ""
+msgstr "Ezaugarri eta berezitasunak"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:46
 msgid ""
@@ -1680,22 +1667,20 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:71
-#, fuzzy
 msgid "Defeat Delfador"
-msgstr "Defentsari"
+msgstr "Delfador gainditu"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 #: data/scenarios/tutorial/utils.cfg:51
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Konrad-en heriotza"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
 #: data/scenarios/tutorial/utils.cfg:59
 msgid "Turns run out"
-msgstr ""
+msgstr "Txanda pasa da"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
-#, fuzzy
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Zure elfo borrokalariari egindako deia arrakastatsua izan da"
 
@@ -1708,7 +1693,7 @@ msgstr "Zure elfo borrokalariari egindako deia arrakastatsua izan da"
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
 msgid "En garde!"
-msgstr ""
+msgstr "Guardian!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:99
 msgid ""
@@ -1727,17 +1712,16 @@ msgid "How should I decide which units to recall?"
 msgstr "Nola erabaki beharko nuke zein unitate deitu?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:100
-#, fuzzy
 msgid ""
 "You should usually recall units that have already advanced to the next "
 "level. However, you may also want to recall units that have high experience, "
 "and are thus likely to advance. You should recall units that will be useful "
 "for the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
-"Normalean maila aurreratu duten unitateak deitu beharko zenuke. Hala ere, "
+"Normalean maila aurreratu duten unitateak deitu beharko zenituzke. Hala ere, "
 "esperientzia handia duten unitateak deitzea aukera dezakezu, eta horrela "
-"aurreratzeko erreztasuna izango dute. Zauden guda-gunerako erabilgarrika "
-"izango diren unitateak deitu beharko zenuke, adibidez, baso guda-gune "
+"aurreratzeko erreztasuna izango dute. Zauden guda-gunerako erabilgarriak "
+"izango diren unitateak deitu beharko zenituzke, adibidez, baso guda-gune "
 "batean, elfoak deitu."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
@@ -1758,7 +1742,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:115
 msgid "What do traits do?"
-msgstr ""
+msgstr "Zer egiten dute ezaugarriek?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:116
 msgid ""
@@ -1771,7 +1755,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:116
 msgid "What kind of traits can my units get?"
-msgstr ""
+msgstr "Nolako ezaugarriak lor ditzazkete nire unitateek?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:128
 msgid ""
@@ -1883,6 +1867,7 @@ msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
 msgstr ""
+"Eraso bakoitzak kalte mota bat du eta efektu ezberdina du erasoan erasotuak izan diren unitateen arabera."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:181
 msgid ""
@@ -2041,7 +2026,7 @@ msgstr "Wesnoth-en beste jokalari batzuren aurka jolasteko, aukeratu '"
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
-msgstr ""
+msgstr "Ongi adierazia! Baina..."
 
 #: data/scenarios/tutorial/utils.cfg:44
 msgid ""
@@ -2058,9 +2043,8 @@ msgid "Current objective:"
 msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:55
-#, fuzzy
 msgid "Death of Delfador"
-msgstr "Defentsari"
+msgstr "Delfador-en heriotza"
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -2119,7 +2103,7 @@ msgstr "Zelaia"
 
 #: data/terrain.cfg:156
 msgid "Savanna"
-msgstr ""
+msgstr "Sabana"
 
 #: data/terrain.cfg:218 data/terrain.cfg:229
 msgid "Desert Village"
@@ -2497,9 +2481,8 @@ msgid "loyal"
 msgstr "leial"
 
 #: data/traits.cfg:5
-#, fuzzy
 msgid "Zero upkeep"
-msgstr "gastuak"
+msgstr "Zaintza gasturik ez"
 
 #: data/traits.cfg:15
 msgid "undead"
@@ -2507,7 +2490,7 @@ msgstr "Ez Hilak"
 
 #: data/traits.cfg:16
 msgid "Immune to poison"
-msgstr ""
+msgstr "Pozoinei inmunea"
 
 #: data/traits.cfg:23
 msgid "strong"
@@ -2515,7 +2498,7 @@ msgstr "indartsua"
 
 #: data/traits.cfg:40
 msgid "dextrous"
-msgstr ""
+msgstr "trebea"
 
 #: data/traits.cfg:52
 msgid "quick"
@@ -2554,6 +2537,7 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"Unitate neutralei ez die egunak edo gauak eragiten, eta berdin borrokatzen dute bi kondizioetan."
 
 #: data/translations/english.cfg:14
 msgid ""
@@ -2577,7 +2561,7 @@ msgstr ""
 #: data/units/Elvish_Avenger.cfg:106 data/units/Elvish_Ranger.cfg:19
 #: data/units/Elvish_Ranger.cfg:109
 msgid "ambush"
-msgstr ""
+msgstr "Sarekada"
 
 #: data/translations/english.cfg:31
 msgid ""
@@ -2657,7 +2641,7 @@ msgstr ""
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
 #: data/units/Warrior_King.cfg:20 src/actions.cpp:351 src/actions.cpp:452
 msgid "leadership"
-msgstr ""
+msgstr "buruzagia"
 
 #: data/translations/english.cfg:59
 msgid ""
@@ -2825,7 +2809,7 @@ msgstr ""
 
 #: data/translations/english.cfg:134
 msgid "$name River,River $name"
-msgstr ""
+msgstr "$name Erreka,Erreka $name"
 
 #: data/translations/english.cfg:135
 msgid "$name Forest,$name's Forest"
@@ -2952,7 +2936,7 @@ msgstr ""
 #: data/units/Ancient_Wose.cfg:7 data/units/Elder_Wose.cfg:7
 #: data/units/Wose.cfg:7
 msgid "ambush,regenerates"
-msgstr ""
+msgstr "sarekada, birsortu"
 
 #: data/units/Ancient_Wose.cfg:16
 msgid ""
@@ -3442,7 +3426,7 @@ msgstr ""
 #: data/units/Lieutenant.cfg:41 data/units/Orcish_Crossbowman.cfg:38
 #: data/units/Sergeant.cfg:41 data/units/Wall_Guard.cfg:35
 msgid "crossbow"
-msgstr ""
+msgstr "Balezta"
 
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
@@ -3510,14 +3494,14 @@ msgstr ""
 #: data/units/Saurian_Warrior.cfg:41 data/units/Spearman.cfg:36
 #: data/units/Spearman.cfg:87
 msgid "spear"
-msgstr ""
+msgstr "lantza"
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
 #: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:361
 #: src/actions.cpp:461
 msgid "charge"
-msgstr ""
+msgstr "kargatu"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -4517,14 +4501,14 @@ msgstr ""
 #: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:19
 #: data/units/Troll.cfg:20 data/units/Troll_Hero.cfg:20
 msgid "club"
-msgstr ""
+msgstr "kluba"
 
 #: data/units/Footpad.cfg:38 data/units/Footpad.cfg:104
 #: data/units/Outlaw.cfg:38 data/units/Outlaw.cfg:111
 #: data/units/Outlaw_Princess.cfg:77 data/units/Outlaw_Queen.cfg:77
 #: data/units/Troll_Rocklobber.cfg:38
 msgid "sling"
-msgstr ""
+msgstr "euskarria"
 
 #: data/units/Footpad.cfg:69
 msgid "female^Footpad"
@@ -4544,7 +4528,7 @@ msgstr ""
 
 #: data/units/Galleon.cfg:18
 msgid "dummy"
-msgstr ""
+msgstr "txotxoloa"
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
@@ -4556,7 +4540,7 @@ msgstr ""
 
 #: data/units/Gate.cfg:20
 msgid "bump"
-msgstr ""
+msgstr "astindu"
 
 #: data/units/General.cfg:3
 msgid "General"
@@ -6138,7 +6122,7 @@ msgstr ""
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
-msgstr ""
+msgstr "Errege gerlaria"
 
 #: data/units/Warrior_King.cfg:22
 msgid ""
@@ -6262,7 +6246,6 @@ msgid "+Developers"
 msgstr "+Garatzaileak"
 
 #: src/about.cpp:71
-#, fuzzy
 msgid "+General Purpose Administrators"
 msgstr "+Administratzaile orokorrak"
 
@@ -6275,9 +6258,8 @@ msgid "+Music"
 msgstr "+Musika"
 
 #: src/about.cpp:108
-#, fuzzy
 msgid "+Scenario Designers"
-msgstr "+ Guda-lekuen diseinatzaileak"
+msgstr "+Gudaguneko diseinatzaileak"
 
 #: src/about.cpp:118
 msgid "+Multiplayer Maps"
@@ -6308,9 +6290,8 @@ msgid "+Catalan Translation"
 msgstr "+Katalan Itzulpena"
 
 #: src/about.cpp:164
-#, fuzzy
 msgid "+Chinese Translation"
-msgstr "+Finlandiera Itzulpena"
+msgstr "+Txinera Itzulpena"
 
 #: src/about.cpp:168
 msgid "+Czech Translation"
@@ -6521,7 +6502,7 @@ msgstr "Gainidatzi?"
 
 #: src/dialogs.cpp:186
 msgid "Save already exists. Do you want to overwrite it ?"
-msgstr ""
+msgstr "Gordeketa existitzen da dagoeneko. Gainidatzi nahi duzu?"
 
 #: src/dialogs.cpp:215 src/dialogs.cpp:447
 msgid "Don't ask me again!"
@@ -6906,9 +6887,8 @@ msgid "Language"
 msgstr "Hizkuntza"
 
 #: src/game.cpp:1380
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Aukeratu zure lehentasunezko hizkuntza"
+msgstr "Aukeratu zure lehentasunezko hizkuntza:"
 
 #: src/game.cpp:1419
 msgid "Error loading game configuration files: '"
@@ -6919,24 +6899,20 @@ msgid "' (The game will now exit)"
 msgstr "' (Jokua orain irten egingo da)"
 
 #: src/game.cpp:1487
-#, fuzzy
 msgid "Battle for Wesnoth"
-msgstr "Wesnoth-eko Gudaren Laguntza"
+msgstr "Wesnoth-eko Guda"
 
 #: src/game_events.cpp:569
-#, fuzzy
 msgid "Victory:"
-msgstr "Garaipena!"
+msgstr "Garaipena:"
 
 #: src/game_events.cpp:572
-#, fuzzy
 msgid "Defeat:"
-msgstr "Gainditu"
+msgstr "Gainditu:"
 
 #: src/help.cpp:1062
-#, fuzzy
 msgid "Advances to: "
-msgstr "Unitatea mailaz igo"
+msgstr "Hurrengo unitatea: "
 
 #: src/help.cpp:1083
 msgid "Abilities: "
@@ -7239,7 +7215,7 @@ msgstr "Garaia:"
 
 #: src/multiplayer_create.cpp:48
 msgid "Map to play:"
-msgstr ""
+msgstr "Jokatzeko mapa:"
 
 #: src/multiplayer_create.cpp:49
 msgid "Fog Of War"
@@ -7301,7 +7277,7 @@ msgstr "Ez banatu ezer"
 
 #: src/multiplayer_create.cpp:120
 msgid "No multiplayer sides."
-msgstr ""
+msgstr "Ez dago jokalari anitzeko alderik."
 
 #: src/multiplayer_create.cpp:122
 msgid "No eras found"
@@ -7324,9 +7300,8 @@ msgid "Turns: "
 msgstr "Txandak: "
 
 #: src/multiplayer_create.cpp:203
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "Bukatu unitatearen txanda"
+msgstr "Txanda mugagabeak"
 
 #: src/multiplayer_create.cpp:210
 msgid "Village Gold: "
@@ -7429,7 +7404,6 @@ msgid "Era not available"
 msgstr "Garaia ez dao eskuragarri"
 
 #: src/multiplayer_wait.cpp:211
-#, fuzzy
 msgid "No multiplayer sides found"
 msgstr "Ez da jokalari anitzeko alderik aurkitu"
 
@@ -7483,7 +7457,7 @@ msgstr "txandako"
 
 #: src/playlevel.cpp:839
 msgid "Turns finished early: "
-msgstr ""
+msgstr "Txanda azkarregi amaitu da: "
 
 #: src/playlevel.cpp:841
 msgid "Bonus: "
@@ -7512,13 +7486,14 @@ msgstr "Garaile irten zara gudatik!"
 
 #: src/playlevel.cpp:858
 msgid "Scenario Report"
-msgstr ""
+msgstr "Gudagunearen txostena"
 
 #: src/playlevel.cpp:879
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"Sareko deskonexio bat gertatu da, eta jokuak ezin du jarraitu. Jokua gorde nahi duzu?"
 
 #: src/playturn.cpp:87
 msgid "It is now your turn"
@@ -8004,7 +7979,7 @@ msgstr "Gehiago"
 
 #: src/titlescreen.cpp:242
 msgid "-- The Tome of Wesnoth"
-msgstr ""
+msgstr "-- Wesnoth-eko liburukotea"
 
 #: src/unit_types.cpp:324
 msgid "strikes"
