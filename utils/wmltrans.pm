@@ -13,7 +13,7 @@ sub readwml {
 
       $trans{$1} = $2;
 
-    } elsif (m/(\S+)\s*=(?:_\s*)?\s*\"(.*)/) {
+    } elsif (m/(\S+)\s*=\s*(?:_\s*)?\s*\"(.*)/) {
       # start of multi-line
       die "nested key" if defined $key;
 
