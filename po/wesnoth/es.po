@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-03-22 13:30+0100\n"
+"PO-Revision-Date: 2005-03-29 17:30+0100\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -1285,21 +1284,20 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Charge.cfg:7
 msgid "Charge"
-msgstr "carga"
+msgstr "Carga"
 
 #: data/scenarios/multiplayer/Clash.cfg:3
-#, fuzzy
 msgid "Clash"
-msgstr "Clásico"
+msgstr "Choque"
 
 #: data/scenarios/multiplayer/Clash.cfg:5
-#, fuzzy
 msgid ""
 "Small map for 2v2.   Teams should be player 1 and 3, vs player 2 and 4.  "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"Un mapa para duelos extremadamente rápido. Se recomienda la opción de 2 "
-"piezas de oro por aldea."
+"Es un mapa pequeño para 2 contra 2. Los equipos deberían ser los jugadores 1 "
+"y 3, contra el 2 y el 4. Se recomienda la opción de 2 piezas de oro por "
+"aldea."
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1525,7 +1523,6 @@ msgstr ""
 "experiencia que eres, seguro que me podrás explicar el arte del combate..."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:75
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1543,7 +1540,6 @@ msgid "Recruit a unit"
 msgstr "Reclutar una unidad"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
-#, fuzzy
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "¡Excelente! Has reclutado un luchador elfo."
 
@@ -1561,7 +1557,6 @@ msgid "How do I recruit units?"
 msgstr "¿Cómo recluto unidades?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:91
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1604,7 +1599,6 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "¿Cómo elijo qué tipo de unidades reclutar?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:93
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box,  and cost, which is displayed after the name of "
@@ -1644,7 +1638,6 @@ msgid "End your turn"
 msgstr "Termina tu turno"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:116
-#, fuzzy
 msgid "You have successfully ended your turn."
 msgstr "Has concluido tu turno con éxito."
 
@@ -1698,7 +1691,6 @@ msgid "Move your Elvish Fighter next to Merle"
 msgstr "Mueve tu luchador elfo cerca de Merle."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:159
-#, fuzzy
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
@@ -1794,7 +1786,6 @@ msgid "Attack Merle"
 msgstr "Ataca a Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "You have successfully attacked Merle."
 msgstr "Has atacado a Merle correctamente."
 
@@ -2838,11 +2829,11 @@ msgstr "ruinas pantanosas"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
-msgstr ""
+msgstr "Vado del río"
 
 #: data/terrain.cfg:480
 msgid "Lava"
-msgstr ""
+msgstr "Lava"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -9177,11 +9168,11 @@ msgstr "No se encontró una etiquieta o unidad con la cadena «$search»."
 
 #: src/playturn.cpp:2417
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Elección de tema guardada: "
 
 #: src/playturn.cpp:2423
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "El nuevo tema tendrá efecto en el siguiente juego nuevo o cargado."
 
 #: src/playturn.cpp:2506
 msgid "Place Label"
@@ -9302,69 +9293,74 @@ msgstr "Observadores:"
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "No se esperaban caracteres al comienzo de la línea"
 
 #: src/serialization/parser.cpp:133
 msgid "Missing closing tag for tag $tag (file $file, line $line)"
 msgstr ""
+"Falta etiqueta de cierre de la etiqueta $tag (fichero $file, línea $line)"
 
 #: src/serialization/parser.cpp:134
 msgid "Missing closing tag for tag $tag (line $line)"
-msgstr ""
+msgstr "Falta etiqueta de cierre de la etiqueta $tag (línea $line)"
 
 #: src/serialization/parser.cpp:149
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Etiqueta [element] sin terminar"
 
 #: src/serialization/parser.cpp:160 src/serialization/parser.cpp:198
-#, fuzzy
 msgid "Invalid tag name"
-msgstr "Era seleccionada inválida"
+msgstr "Nombre de etiqueta inválido"
 
 #: src/serialization/parser.cpp:163
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Etiqueta [+element] sin terminar"
 
 #: src/serialization/parser.cpp:180
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Nombre de etiqueta de cierre inválido"
 
 #: src/serialization/parser.cpp:183
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Etiqueta de cierre sin terminar"
 
 #: src/serialization/parser.cpp:185
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "No se esperaba etiqueta de cierre"
 
 #: src/serialization/parser.cpp:190
 msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
 msgstr ""
+"Se ha encontrado una etiqueta de cierre inválida de la etiqueta $tag "
+"(fichero $file, línea $line)"
 
 #: src/serialization/parser.cpp:191
 msgid "Found invalid closing tag for tag $tag (line $line)"
 msgstr ""
+"Se ha encontrado una etiqueta de cierre inválida de la etiqueta $tag (línea "
+"$line)"
 
 #: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
-#, fuzzy
 msgid "Empty variable name"
-msgstr "Era seleccionada inválida"
+msgstr "Nombre de variable vacío"
 
 #: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
+"Caracteres no esperados detrás del nombre de variable (se esperaban «,» ó "
+"«=» )"
 
 #: src/serialization/parser.cpp:251 src/serialization/parser.cpp:275
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Cadena entrecomillada sin terminar"
 
 #: src/serialization/parser.cpp:320
 msgid "$error in file $file (line $line, column $column)"
-msgstr ""
+msgstr "$error en el fichero $file (línea $line, columna $column)"
 
 #: src/serialization/parser.cpp:321
 msgid "$error (line $line, column $column)"
-msgstr ""
+msgstr "$error (línea $line, columna $column)"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
