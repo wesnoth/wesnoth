@@ -212,7 +212,24 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						if(res && cfg.children["turn"].empty() == false) {
 							break;
 						}
+	
+						//FIXME: call a proper event handling function here
+						int mousex, mousey;
+						SDL_GetMouseState(&mousex,&mousey);
 
+						if(key[KEY_UP] || mousey == 0)
+							gui.scroll(0.0,-preferences::scroll_speed());
+
+						if(key[KEY_DOWN] || mousey == gui.y()-1)
+							gui.scroll(0.0,preferences::scroll_speed());
+
+						if(key[KEY_LEFT] || mousex == 0)
+							gui.scroll(-preferences::scroll_speed(),0.0);
+
+						if(key[KEY_RIGHT] || mousex == gui.x()-1)
+							gui.scroll(preferences::scroll_speed(),0.0);
+
+						gui.draw();
 						game_events::pump();
 						pump_events();
 					}
