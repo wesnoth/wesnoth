@@ -466,6 +466,11 @@ bool unit::incapacitated() const
 	return stone();
 }
 
+bool unit::emits_zoc() const
+{
+	return type().has_zoc() && stone() == false;
+}
+
 bool unit::matches_filter(const config& cfg) const
 {
 	const std::string& description = cfg["description"];

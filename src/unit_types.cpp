@@ -961,6 +961,11 @@ bool unit_type::can_advance() const
 	return can_advance_;
 }
 
+bool unit_type::has_zoc() const
+{
+	return level() > 0;
+}
+
 bool unit_type::has_ability(const std::string& ability) const
 {
 	return std::find(abilities_.begin(),abilities_.end(),ability) != abilities_.end();

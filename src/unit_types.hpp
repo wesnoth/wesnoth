@@ -231,6 +231,8 @@ public:
 	bool not_living() const;
 	bool can_advance() const;
 
+	bool has_zoc() const;
+
 	bool has_ability(const std::string& ability) const;
 
 	const std::vector<config*>& possible_traits() const;
