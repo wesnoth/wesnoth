@@ -634,7 +634,7 @@ std::string& config::strip(std::string& str)
 		return str;
 
 	str.erase(str.begin(),it);
-	str.erase(std::find_if(str.rbegin(),str.rend(),isgraph).base(),str.end());
+	str.erase(std::find_if(str.rbegin(),str.rend(),notspace).base(),str.end());
 
 	return str;
 }
