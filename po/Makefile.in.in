@@ -103,14 +103,14 @@ stamp-po: $(srcdir)/$(DOMAIN).pot
 $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
 	$(XGETTEXT) --default-domain=$(DOMAIN) --directory=$(top_srcdir) \
 	  --add-comments=TRANSLATORS: $(XGETTEXT_OPTIONS) \
-	  $(shell grep -v '\.cfg$$' $(srcdir)/POTFILES.in) \
+	  `grep -v '\.cfg$$' $(srcdir)/POTFILES.in` \
 	  --copyright-holder='$(COPYRIGHT_HOLDER)' \
 	  --msgid-bugs-address='$(MSGID_BUGS_ADDRESS)' \
 	  --keyword=_ --keyword=N_ \
 	  --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $(DOMAIN).cpp.po
 	$(XGETTEXT) --default-domain=$(DOMAIN) --directory=$(top_srcdir) \
 	  --add-comments=TRANSLATORS: $(XGETTEXT_OPTIONS) \
-	  $(shell grep '\.cfg$$' $(srcdir)/POTFILES.in) \
+	  `cd $(top_srcdir) && find data -name '*.cfg'` \
 	  --copyright-holder='$(COPYRIGHT_HOLDER)' \
 	  --msgid-bugs-address='$(MSGID_BUGS_ADDRESS)' \
 	  --keyword=_ --language=Shell \
