@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTH 6 "October 16, 2003" "Wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "December 28, 2004" "Wesnoth" "Battle for Wesnoth"
 
 .SH NAME
 battle for wesnoth \- fantasy turn-based strategy game
@@ -39,31 +39,44 @@ abilities, weapons and spells.
 .SH OPTIONS
 
 .TP
-.BR -h , \ --help
-should tell you about what the command line options do, but doesn't yet :)
+.BR -d , \ --debug
+show some extra debugging information in-game.
 
 .TP
 .BR -f , \ --fullscreen
-run program in full screen mode.
+runs the game in full screen mode.
 
 .TP
-.BR -w , \ --windowed
-run program in windowed mode.
+.BR -h , \ --help
+tells you about what the command line options do.
+
+.TP
+.BR --path
+prints the name of the game data directory and exits.
 
 .TP
 .BR -t , \ --test
-run program in a small test scenario.
+runs the game in a small test scenario.
 
 .TP
-.BR -d , \ --debug
-show some extra debugging information in-game.
+.BR -w , \ --windowed
+runs the game in windowed mode.
 
 .TP
 .BR -v , \ --version
 print version number and exit.
 
+.TP
+.BR --log-error="domain1,domain2,..." , \ --log-warning=... , \ --log-info=...
+sets the severity level of the debug domains. "all" can be used to match any debug domain.
+
+.TP
+.BR --nocache
+disables chaching of game data.
+
 .SH AUTHOR
 Written by David White <davidnwhite@optusnet.com.au>.
+Edited by Nils Kneuper <crazy-ivanovic@gmx.net>.
 This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
 .br
 Visit the official homepage: http://www.wesnoth.org/
