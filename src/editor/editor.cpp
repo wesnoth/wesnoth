@@ -285,10 +285,14 @@ void map_editor::edit_new_map() {
 }
 
 void map_editor::edit_load_map() {
-	std::string fn = "";
-	const std::string map = load_map_dialog(gui_, changed_since_save(), fn);
-	if (map != "") {
-		throw new_map_exception(map, fn);
+	const std::string fn = load_map_dialog(gui_);
+	if (fn != "") {
+		const std::string new_map = load_map(fn);
+		if (new_map != "") {
+			if (!changed_since_save() || confirm_modification_disposal(gui_)) {
+				throw new_map_exception(new_map, fn);
+			}
+		}
 	}
 }
 
@@ -344,6 +348,41 @@ void map_editor::edit_paste() {
 	add_undo_action(undo_action);
 }
 
+void map_editor::edit_revert() {
+	const std::string new_map = load_map(filename_);
+	if (new_map != "") {
+		if (!changed_since_save() || confirm_modification_disposal(gui_)) {
+			throw new_map_exception(new_map, filename_);
+		}
+	}
+}
+
+std::string map_editor::load_map(const std::string filename) {
+	bool load_successful = true;
+	std::string msg;
+	std::string new_map;
+	if (!file_exists(filename) || is_directory(filename)) {
+		load_successful = false;
+		msg = filename + " does not exist or can't be read as a file.";
+	}
+	else {
+		try {
+			new_map = read_file(filename);
+		}
+		catch (io_exception e) {
+			load_successful = false;
+			msg = e.what();
+		}
+	}
+	if (!load_successful) {
+		gui::show_dialog(gui_, NULL, "", std::string("Load failed: ") + msg, gui::OK_ONLY);
+		return "";
+	}
+	else {
+		return new_map;
+	}
+}
+
 
 void map_editor::insert_selection_in_clipboard() {
 	if (selected_hexes_.empty()) {
@@ -389,6 +428,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_COPY:
 	case hotkey::HOTKEY_EDIT_CUT:
 	case hotkey::HOTKEY_EDIT_PASTE:
+	case hotkey::HOTKEY_EDIT_REVERT:
 		return true;
 	default:
 		return false;
@@ -619,7 +659,6 @@ void map_editor::perform_selection_move() {
 
 void map_editor::draw_terrain(const gamemap::TERRAIN terrain,
 							  const gamemap::location hex) {
-	++num_operations_since_save_;
 	redo_stack_.clear();
 	const gamemap::TERRAIN current_terrain = map_[hex.x][hex.y];
 	add_undo_action(map_undo_action(current_terrain, terrain, hex));

@@ -89,6 +89,10 @@ public:
 	/// display_confirmation is true. Return false if the save failed.
 	bool save_map(const std::string filename="",
 				  const bool display_confirmation=true);
+
+	/// Load the map from filename. Return the string representation of
+	/// the map, or the empty string of the load failed.
+	std::string load_map(const std::string filename);
 	
 	virtual void handle_event(const SDL_Event &event);
 	
@@ -126,6 +130,7 @@ public:
 	virtual void edit_cut();
 	virtual void edit_copy();
 	virtual void edit_paste();
+	virtual void edit_revert();
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	

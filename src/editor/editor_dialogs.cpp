@@ -211,10 +211,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 }
 
 
-std::string load_map_dialog(display &disp, bool confirmation_needed,
-							std::string &loaded_file) {
+std::string load_map_dialog(display &disp) {
 	const std::string system_path = game_config::path + "/data/maps/";
-	
 	std::vector<std::string> files;
 	get_files_in_dir(system_path,&files);
 	files.push_back("Enter Path...");
@@ -249,36 +247,7 @@ std::string load_map_dialog(display &disp, bool confirmation_needed,
 	else {
 		filename = system_path + files[res];
 	}
-	std::string map;
-	bool load_successful = true;
-	std::string msg;
-	if (!file_exists(filename) || is_directory(filename)) {
-		load_successful = false;
-		msg = filename + " does not exist or can't be read as a file.";
-	}
-	else {
-		try {
-			map = read_file(filename);
-		}
-		catch (io_exception e) {
-			load_successful = false;
-			msg = e.what();
-		}
-	}
-	if (!load_successful) {
-		gui::show_dialog(disp, NULL, "", std::string("Load failed: ") + msg, gui::OK_ONLY);
-		return "";
-	}
-	else {
-		if (confirmation_needed
-			&& !confirm_modification_disposal(disp)) {
-			return "";
-		}
-		loaded_file = filename;
-		return map;
-	}
+	return filename;
 }
 
-
 }
-

@@ -35,14 +35,10 @@ std::string new_map_dialog(display &disp, gamemap::TERRAIN fill_terrain,
 						   bool confirmation_needed, const config &gconfig);
 
 
-/// Show a dialog where the user may chose a map to load. If
-/// confirmation_needed is true, the user will be asked if she wants to
-/// continue even though the changes to the current map is lost. Return
-/// the string representation of the map that is loaded, or the empty
-/// string if none was and the filename. loaded_file will be set to the
-/// filename loaded if the load succeeded.
-std::string load_map_dialog(display &disp, bool confirmation_needed,
-							std::string &loaded_file);
+/// Show a dialog where the user may chose a map to load. Return the
+/// filename of the chosen file. An empty string is returned if no file
+/// is chosen.
+std::string load_map_dialog(display &disp);
 
 
 

@@ -78,18 +78,19 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("editcut",HOTKEY_EDIT_CUT));
 		m.insert(val("editcopy",HOTKEY_EDIT_COPY));
 		m.insert(val("editpaste",HOTKEY_EDIT_PASTE));
+		m.insert(val("editrevert",HOTKEY_EDIT_REVERT));
 		m.insert(val("delayshroud",HOTKEY_DELAY_SHROUD));
 		m.insert(val("updateshroud",HOTKEY_UPDATE_SHROUD));
 		m.insert(val("continue",HOTKEY_CONTINUE_MOVE));
 	}
-
+	
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
 	if(i == m.end())
 		return HOTKEY_NULL;
 	else
 		return i->second;
 }
-
+	
 std::string command_to_string(const HOTKEY_COMMAND &command)
 {
 	for(std::map<std::string,HOTKEY_COMMAND>::iterator i = m.begin(); i != m.end(); ++i) {
@@ -450,6 +451,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		 case HOTKEY_EDIT_COPY:
 			if(executor)
 				executor->edit_copy();
+			break;
+		 case HOTKEY_EDIT_REVERT:
+			if(executor)
+				executor->edit_revert();
 			break;
 		default:
 			break;
