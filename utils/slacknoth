@@ -12,7 +12,7 @@ fi
 cd $3
 mkdir -p /wesnothpack/wesnoth-$1
 echo "Configuring..."
-#./autogen.sh
+./autogen.sh
 ./configure --prefix=/usr --enable-server --enable-tools --enable-kde --enable-gnome
 make clean
 echo "Compiling and gathering package contents..."
