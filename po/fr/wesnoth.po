@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-16 14:31+0200\n"
-"PO-Revision-Date: 2004-09-23 23:55+0200\n"
+"PO-Revision-Date: 2004-09-28 00:08+0200\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -325,7 +325,7 @@ msgstr ""
 "de toucher l'attaquant en retour dépend du terrain sur lequel celui-ci se "
 "trouve.\n"
 "Il y a deux exceptions à cette règle : <ref>dst=magical_attacks text='les "
-"attaques magiques'</ref> et le <ref>dst=ability_marksman text='tireur "
+"attaques enchantées'</ref> et le <ref>dst=ability_marksman text='tireur "
 "d'élite'</ref>. Les attaques magiques ont toujours une probabilité de "
 "toucher de 70%, sans tenir compte du terrain, et les tireurs d'élite ont "
 "toujours au moins 60% de probabilité de toucher, sans tenir compte du "
@@ -370,7 +370,7 @@ msgstr ""
 "Dans Wesnoth, il y a trois types de dégâts habituellement associés avec des "
 "attaques physiques : tranchant, perforant et contondant. Par ailleurs, il y "
 "a trois autres types de dégâts communément associés avec des attaques "
-"magiques : feu, froid et sacré. Des unités différentes peuvent avoir des "
+"enchantées : feu, froid et sacré. Des unités différentes peuvent avoir des "
 "résistances qui modifient la quantité de dégâts subis face à certains types "
 "d'attaques.\n"
 "\n"
@@ -1637,7 +1637,7 @@ msgstr ""
 "Parfois il ne suffit pas de suivre les dialogues pour savoir comment "
 "gagner un scénario. Dans ce cas, regardez les objectifs du scénarios, "
 "qui apparaissent après le dialogue d'ouverture. Ils peuvent être vus à "
-"nouveau en cliquant sur "Objectifs" dans le menu. Les objectifs du "
+"nouveau en cliquant sur \"Objectifs\" dans le menu. Les objectifs du "
 "scénario sont une liste de conditions de victoire et de conditions de "
 "défaites, et si l'une ou l'autre est remplie, le niveau est fini. Espérons "
 "que ce soit une condition de victoire qui fut remplie."
@@ -2040,7 +2040,7 @@ msgstr ""
 "Il y a 6 types de dégâts différents : tranchant, perforant, contondant, feu, "
 "froid et sacré. Des unités fortement blindées ont une résistance élevée face "
 "aux attaques physiques : tranchante, perforante et contondante, mais une "
-"faible résistance face aux attaques magiques : feu et froid. Toutes les "
+"faible résistance face aux attaques enchantées : feu et froid. Toutes les "
 "unités vivantes ont une résistance face au sacré alors que les morts-vivants "
 "sont extrêmement faibles face à lui. Pour trouver la résistance d'une unité "
 "particulière, faites un clic-droit sur l'unité, sélectionnez Description de "
@@ -2097,9 +2097,9 @@ msgid ""
 "while next to a unit of higher level with leadership."
 msgstr ""
 "Il y a de nombreuses spécialités différentes, et apprendre à les connaître "
-"fait partie des points intéressant de Wesnoth. Les deux spécialités les plus "
-"fréquentes sont 'magique' et 'commandement'. Les attaques magiques ont 70% "
-"de chances de toucher l'ennemi quel que soit le terrain. Les unités à côté "
+"fait partie des points intéressants de Wesnoth. Les deux spécialités les plus "
+"fréquentes sont 'enchantée' et 'commandement'. Les attaques enchantées ont 70% "
+"de chances de toucher les ennemis quel que soit le terrain. Les unités à côté "
 "d'une unité de plus haut niveau avec 'commandement' font plus de dégâts."
 
 #: data/scenarios/tutorial/tutorial2.cfg:177
@@ -2341,7 +2341,7 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
-"Les unités justes se battent mieux le jour et moins bien la nuit.\n"
+"Les unités loyales se battent mieux le jour et moins bien la nuit.\n"
 "\n"
 "Jour: +25% de dégâts infligés\n"
 "Nuit: -25% de dégâts infligés"
@@ -2639,7 +2639,7 @@ msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
-"Enchantement :\n"
+"Enchantée :\n"
 "Cette attaque a toujours 70 % de chance d'atteindre sa cible."
 
 #: data/translations/english.cfg:108
@@ -2961,7 +2961,7 @@ msgid ""
 msgstr ""
 "La probabilité de toucher une unité dépend normalement de la capacité de "
 "l'unité ciblée à se défendre sur le terrain où elle se trouve. Cependant les "
-"attaques magiques ont toujours 70% de chances de toucher, et les tireurs "
+"attaques enchantées ont toujours 70% de chances de toucher, et les tireurs "
 "d'élite ont au minimum 60% de chances de toucher."
 
 #: data/translations/english.cfg:190
@@ -3240,7 +3240,7 @@ msgstr "magie"
 #: data/units/Silver_Mage.cfg:131 data/units/White_Mage.cfg:47
 #: data/units/White_Mage.cfg:106
 msgid "magical"
-msgstr "enchantement"
+msgstr "enchantée"
 
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
@@ -3997,7 +3997,7 @@ msgid ""
 "Riding fast horses and armed with sword and magical pistol artifacts, "
 "Dragoons make versatile troops."
 msgstr ""
-"Montant des chevaux rapides et armés d'épées et de pistolets magiques, les "
+"Montant des chevaux rapides et armés d'épées et de pistolets enchantés, les "
 "dragons sont des troupes très polyvalentes."
 
 # Bof. Meilleure idée ? (Cédric)
@@ -4208,7 +4208,7 @@ msgstr "Garde nain"
 #: data/units/Dwarvish_Guardsman.cfg:15 data/units/Dwarvish_Sentinel.cfg:17
 #: data/units/Dwarvish_Stalwart.cfg:17 src/actions.cpp:496
 msgid "steadfast"
-msgstr ""
+msgstr "innamovible"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
 msgid ""
@@ -4274,20 +4274,24 @@ msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yeild "
 "under even the strongest of enemy attacks."
 msgstr ""
+"La sentinelle, avec son pavoi et son grand courage, refuse de se rendre "
+"même face à l'attaque ennemie la plus puissante."
 
+#XXX Nain indéfectible plutôt? Ou autre...
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Indéfectible nain"
 
+#XXX "des restes" ? Pas convaincu.
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are the feared for "
 "their resilience and strength."
 msgstr ""
-"Les stalwarts, après des années de combat, ont conçus de nouveaux boucliers "
-"et de solides armures à partir des restes de leurs ennemis. Bien que lents, "
-"ils sont craints pour leur résistance et leur force."
+"Les indéfectibles nains, après des années de combat, ont conçus de "
+"nouveaux boucliers et de solides armures à partir des restes de leurs "
+"ennemis. Bien que lents, ils sont craints pour leur résistance et leur force."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -4298,8 +4302,8 @@ msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
 msgstr ""
-"Les expérimentés nains d'acier portent de lourdes cottes de mailles et "
-"armures de plaques qui ont fait, à juste titre, leur renommée."
+"Les nains d'acier expérimentés portent de lourdes cottes de mailles et "
+"des armures de plaques qui ont fait, à juste titre, leur renommée."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
 msgid "Dwarvish Thunderer"
@@ -4530,16 +4534,18 @@ msgid "Elvish Marksman"
 msgstr "Tireur d'élite elfe"
 
 #: data/units/Elvish_Marksman.cfg:18 data/units/Elvish_Marksman.cfg:96
+
+#XXX lesser speed, pour une unité avec 6 points de mouvement??
 msgid ""
 "Elvish Marksman are expert in use of the bow. Their skill guarantees them a "
 "60% chance to hit enemies, even those hidden in difficult terrain. This "
 "great skill with the bow compensates for their lack of skill in melee combat "
 "and lesser speed."
 msgstr ""
-"le Tireur d'élite elfe est un expert dans le maniement de l'arc. Ses "
-"capacités lui garantissent un taux de réussite de 60% de touche durant les "
-"attaques, même en terrain difficile. Son manque d'habileté en combat "
-"rapproché, et sa vitesse de déplacement moindre est compensée par sa grande "
+"Le tireur d'élite elfe est un expert dans le maniement de l'arc. Ses "
+"capacités lui assurent un taux de toucher de 60% durant les attaques, "
+"même en terrain difficile. Son manque d'habileté en combat rapproché, "
+"et sa vitesse de déplacement moindre est compensée par sa grande "
 "dextérité à l'arc."
 
 #: data/units/Elvish_Marksman.cfg:37 data/units/Elvish_Marksman.cfg:115
@@ -5334,7 +5340,7 @@ msgstr ""
 
 #: data/units/Nightgaunt.cfg:18 data/units/Shadow.cfg:16
 msgid "nightstalk"
-msgstr ""
+msgstr "chasseur nocturne"
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
@@ -5931,7 +5937,7 @@ msgstr ""
 "Les mages argents sont les plus mobiles et insaisissables de tous les mages. "
 "Ils peuvent se téléporter instantanément de n'importe quel village allié "
 "vers un autre village allié. Ils sont également très résistants à la plupart "
-"des attaques magiques."
+"des attaques enchantées."
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
@@ -6424,9 +6430,8 @@ msgid "+Internationalization Manager"
 msgstr "+Coordinateur des traductions"
 
 #: src/about.cpp:129
-#, fuzzy
 msgid "+Brazilian Translation"
-msgstr "+Traduction italienne"
+msgstr "+Traduction brésilienne"
 
 #: src/about.cpp:134
 msgid "+Catalan Translation"
