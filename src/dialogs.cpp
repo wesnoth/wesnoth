@@ -63,12 +63,14 @@ void advance_unit(const game_data& info,
 
 	//when the unit advances, it fades to white, and then switches to the
 	//new unit, then fades back to the normal colour
-	double intensity;
-	for(intensity = 1.0; intensity >= 0.0; intensity -= 0.05) {
-		gui.set_advancing_unit(loc,intensity);
-		gui.draw(false);
-		gui.update_display();
-		SDL_Delay(30);
+	
+	if(!gui.update_locked()) {
+		for(double intensity = 1.0; intensity >= 0.0; intensity -= 0.05) {
+			gui.set_advancing_unit(loc,intensity);
+			gui.draw(false);
+			gui.update_display();
+			SDL_Delay(30);
+		}
 	}
 
 	recorder.choose_option(res);
@@ -77,11 +79,13 @@ void advance_unit(const game_data& info,
 
 	gui.invalidate_unit();
 
-	for(intensity = 0.0; intensity <= 1.0; intensity += 0.05) {
-		gui.set_advancing_unit(loc,intensity);
-		gui.draw(false);
-		gui.update_display();
-		SDL_Delay(30);
+	if(!gui.update_locked()) {
+		for(double intensity = 0.0; intensity <= 1.0; intensity += 0.05) {
+			gui.set_advancing_unit(loc,intensity);
+			gui.draw(false);
+			gui.update_display();
+			SDL_Delay(30);
+		}
 	}
 
 	gui.set_advancing_unit(gamemap::location(),0.0);
