@@ -579,6 +579,7 @@ redo_turn:
 				//and the player returns 100% of gold.
 				if(end_level.result == CONTINUE) {
 					state_of_game.gold = teams[0].gold();
+					return VICTORY;
 				}
 
 				if((*level)["disallow_recall"] == "yes") {

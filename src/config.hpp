@@ -101,7 +101,7 @@ struct config
 	config() {}
 
 	//create a node from data
-	config(const std::string& data,
+	explicit config(const std::string& data,
 	       const std::vector<line_source>* lines=0); //throws config::error
 	config(const config& cfg);
 	~config();
