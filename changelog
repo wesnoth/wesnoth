@@ -13,6 +13,7 @@ CVS HEAD:
  * language fixes and polishing (english)
  * updated translations:
    * brazilian
+   * catalan
    * danish
    * hungarian
    * italian
@@ -40,9 +41,11 @@ CVS HEAD:
  * fixed Wesbowl
  * fixed compiling errors in the zip-directory (#10189, #10362)
  * fixed lag when chatting in multiplayer lobby
+ * fixed --with-kde and --with-gnome
  * switched using gettext-standard multi-textdomain
  * suppressed warnings from msgfmt 
  * po-header cleanups
+ * added support for desktopdir and icondir customization for --with-kde and --with-gnome
  * logging system improvements
  * campaign image-files hierarchy cleanup
  * code cleanups
