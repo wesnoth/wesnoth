@@ -70,7 +70,7 @@ AC_SUBST([KDE_ICON])
 # Checks for libraries.                                               #
 #######################################################################
 
-SDL_LIBS=`$SDL_CONFIG --static-libs`
+SDL_LIBS=`$SDL_CONFIG --libs`
 OLD_LIBS=$LIBS
 LIBS="$LIBS $SDL_LIBS"
 
@@ -264,7 +264,7 @@ AC_ARG_ENABLE([debug],
 	      [CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"])
 
 AC_ARG_ENABLE([static],
-              [  --enable-static       Enable static building of wesnoth],
+              [  --enable-static       Enable static building of wesnoth (doesn't work yet)],
 	      [CXXFLAGS="$CXXFLAGS -static"]
 	      [LIBS="$LIBS -static"])
 
