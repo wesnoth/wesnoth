@@ -75,6 +75,7 @@ public:
 
 		enum CONTROLLER { HUMAN, AI, NETWORK, EMPTY };
 		CONTROLLER controller;
+		bool persistent;
 		std::string ai_algorithm;
 
 		std::vector<config> ai_params;
@@ -131,6 +132,8 @@ public:
 	bool is_network() const;
 	bool is_ai() const;
 	bool is_empty() const;
+
+	bool is_persistent() const;
 
 	void make_human();
 	void make_network();

@@ -2373,6 +2373,18 @@ void turn_info::do_command(const std::string& str)
 	if(cmd == "refresh") {
 		image::flush_cache();
 		gui_.redraw_everything();
+	} else if (cmd == "droid") {
+		const int side = lexical_cast_default<int>(data, 1);
+		const size_t index = static_cast<size_t>(side - 1);
+		if (index >= teams_.size() || teams_[index].is_network()) {
+			//do nothing
+		} else if (teams_[index].is_human()) {
+			teams_[index].make_ai();
+			close_textbox();
+			throw end_turn_exception(side);
+		} else if (teams_[index].is_ai()) {
+			teams_[index].make_human();
+		}
 	} else if(cmd == "ban") {
 		config cfg;
 		config& ban = cfg.add_child("ban");

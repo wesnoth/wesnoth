@@ -1322,7 +1322,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	}
 
 	bool found_enemies = false;
-	bool found_human = false;
+	bool found_player = false;
 
 	for(size_t n = 0; n != seen_leaders.size(); ++n) {
 		const size_t side = seen_leaders[n]-1;
@@ -1335,13 +1335,13 @@ void check_victory(std::map<gamemap::location,unit>& units,
 			}
 		}
 
-		if(side < teams.size() && teams[side].is_human()) {
-			found_human = true;
+		if (side < teams.size() && (teams[side].is_human() || teams[side].is_persistent())) {
+			found_player = true;
 		}
 	}
 
 	if(found_enemies == false) {
-		if(found_human) {
+		if (found_player) {
 			game_events::fire("enemies defeated");
 			if (victory_conditions::victory_when_enemies_defeated() == false) {
 				// this level has asked not to be ended by this condition
@@ -1360,7 +1360,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 		}
 
 		LOG_NG << "throwing end level exception...\n";
-		throw end_level_exception(found_human ? VICTORY : DEFEAT);
+		throw end_level_exception(found_player ? VICTORY : DEFEAT);
 	}
 
 	//remove any units which are leaderless

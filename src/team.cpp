@@ -100,14 +100,20 @@ team::team_info::team_info(const config& cfg)
 		}
 	}
 
-	if(cfg["controller"] == "human")
+	std::string control = cfg["controller"];
+	if (control == "human")
 		controller = HUMAN;
-	else if(cfg["controller"] == "network")
+	else if (control == "network")
 		controller = NETWORK;
-	else if(cfg["controller"] == "null")
+	else if (control == "null")
 		controller = EMPTY;
 	else
 		controller = AI;
+
+	bool persistent;
+	std::string persist = cfg["persistent"];
+	if (persist.empty()) persistent = controller == HUMAN;
+	else persistent = persist == "1";
 
 	ai_algorithm = cfg["ai_algorithm"];
 
@@ -224,6 +230,8 @@ void team::team_info::write(config& cfg) const
 	case EMPTY: cfg["controller"] = "null"; break;
 	default: wassert(false);
 	}
+
+	cfg["persistent"] = persistent ? "1" : "0";
 
 	sprintf(buf,"%d",villages_per_scout);
 	cfg["villages_per_scout"] = buf;
@@ -478,6 +486,11 @@ bool team::is_network() const
 bool team::is_empty() const
 {
 	return info_.controller == team_info::EMPTY;
+}
+
+bool team::is_persistent() const
+{
+	return info_.persistent;
 }
 
 void team::make_human()

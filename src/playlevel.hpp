@@ -44,6 +44,11 @@ struct end_level_exception {
 	bool gold_bonus;
 };
 
+struct end_turn_exception {
+	end_turn_exception(int r = 0): redo(r) {}
+	int redo;
+};
+
 LEVEL_RESULT play_level(game_data& gameinfo, const config& terrain_config,
 		config* level, CVideo& video,
 		game_state& state_of_game,

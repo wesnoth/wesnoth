@@ -221,7 +221,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 		LOG_NG << "initializing team...\n";
 
-		if(first_human_team == -1 && (**ui)["controller"] == "human") {
+		if (first_human_team == -1 && ((**ui)["controller"] == "human" || (**ui)["persistent"] == "1")) {
 			first_human_team = ui - unit_cfg.begin();
 		}
 
@@ -585,9 +585,14 @@ redo_turn:
 						}
 					}
 
-					play_turn(gameinfo,state_of_game,status,game_config,
-					          level, key, gui, map, teams, player_number,
-					          units, textbox_info, replay_sender);
+					try {
+						play_turn(gameinfo,state_of_game,status,game_config,
+						          level, key, gui, map, teams, player_number,
+						          units, textbox_info, replay_sender);
+					} catch(end_turn_exception& end_turn) {
+						if (end_turn.redo == player_number)
+							goto redo_turn;
+					}
 
 					if(game_config::debug)
 						display::clear_debug_highlights();
@@ -700,12 +705,6 @@ redo_turn:
 		} //end for loop
 
 	} catch(end_level_exception& end_level) {
-
-		if((end_level.result == DEFEAT || end_level.result == VICTORY) && is_observer(teams)) {
-			gui::show_dialog(gui,NULL,_("Game Over"),
-			                          _("The game is over."), gui::OK_ONLY);
-			return end_level.result;
-		}
 
 		//if we're a player, and the result is victory/defeat, then send a message to notify
 		//the server of the reason for the game ending
