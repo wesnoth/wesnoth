@@ -609,6 +609,9 @@ void show_preferences_dialog(display& disp)
 			side_colours_button.set_dirty();
 			colour_cursors_button.set_dirty();
 			hotkeys_button.set_dirty();
+			sound_slider.set_dirty();
+			scroll_slider.set_dirty();
+			music_slider.set_dirty();
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,music_label,
 	                        music_rect.x,music_rect.y);
