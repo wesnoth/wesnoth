@@ -3,12 +3,16 @@ CVS HEAD:
  * added testing mode to move units on fog/shroud maps without updating the fog/shroud
  * lobby logo updated
  * new dialogs
+ * increased Wose defense in woods
+ * increased Dwarf defense in castle
  * scenario balancing for 'Heir to the Throne' campaign:
    * Test of the Clans
  * multiplayer improvements:
    * made observers see perspective of active player
+   * allowed observers to talk
    * game creator can chat while setting up game
    * players can chat with other game members when waiting for game to start
+   * random faction
  * editor improvements:
    * allowed setting start pos for player 0
    * load map and new map menu items and hotkeys added
@@ -51,6 +55,10 @@ CVS HEAD:
  * fixed "invalid font characters" for slovak translation by adding 'font=Bepa-Roman.ttf', translators should ensure this line is preserved when upgrading translations
  * fixed support for UTF-8 languages on text-boxes
  * fixed wesnoth.desktop (FreeDesktop shortcut definition file), which did contain invalid UTF-8 sequences
+ * fixed experience modifier not working correctly when loading saved multiplayer game.
+ * fixed pressing escape key not closing dialogs which had only 'ok' button
+ * fixed observers getting victory/defeat message at the end of the game
+ * fixed statistics not working correctly when loading with replay
  * fix to preprocessor
  * fixed some compile warnings
  * various improvements to wesnothd
@@ -59,6 +67,8 @@ CVS HEAD:
  * added definitions of new pure virtual methods in hotkey.hpp
  * added wstring_to_string and string_to_wstring routines in language.cpp, which convert strings according to the current charset()
  * added toggleable action support to hotkey.[c|h]pp & playturn.[c|h]pp.
+ * added code to wesnothd to prevent spoofing of messages
+ * added code to wesnothd to stop malicious observer clients issuing commands for players
  * converted hex calculations to fixed point instead of floating point
  * changed hex size to 72x72, converted images
  * added -fno-omit-frame-pointer to autotools to prevent possible crashes due gcc bug
