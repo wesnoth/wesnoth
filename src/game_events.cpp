@@ -703,10 +703,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	}
 
 	else if(cmd == "object") {
+		const config* filter = cfg.child("filter");
+
 		const std::string& id = cfg["id"];
 
 		//if this item has already been used
-		if(used_items.count(id))
+		if(id != "" && used_items.count(id))
 			return rval;
 
 		const std::string image = cfg["image"];
@@ -717,8 +719,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			caption = caption_lang;
 
 		std::string text;
-
-		const config* filter = cfg.child("filter");
 
 		gamemap::location loc;
 		if(filter != NULL) {
@@ -742,7 +742,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				text = cfg["description"];
 
 			u->second.add_modification("object",cfg);
-			screen->remove_overlay(event_info.loc1);
+
+			if(!loc.valid()) {
+				screen->remove_overlay(event_info.loc1);
+			}
+
 			screen->select_hex(event_info.loc1);
 			screen->invalidate_unit();
 
@@ -756,17 +760,18 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				text = cfg["cannot_use_message"];
 		}
 
-		scoped_sdl_surface surface(NULL);
+		if(cfg["silent"] != "yes") {
+			scoped_sdl_surface surface(NULL);
 
-		if(image.empty() == false) {
-			surface.assign(image::get_image(image,image::UNSCALED));
+			if(image.empty() == false) {
+				surface.assign(image::get_image(image,image::UNSCALED));
+			}
+
+			//this will redraw the unit, with its new stats
+			screen->draw();
+
+			gui::show_dialog(*screen,surface,caption,text);
 		}
-
-		//this will redraw the unit, with its new stats
-		screen->draw();
-
-		gui::show_dialog(*screen,surface,caption,text);
-
 	}
 
 	//displaying a message on-screen
