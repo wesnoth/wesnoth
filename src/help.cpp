@@ -575,16 +575,13 @@ std::vector<topic> generate_unit_topics() {
 				for (std::vector<std::string>::const_iterator advance_it = next_units.begin();
 					 advance_it != next_units.end(); advance_it++) {
 					std::string unit_id = *advance_it;
+					std::string lang_unit = gettext(unit_id.c_str());
 					// Remove the spaces, which will create the ID to
 					// reference to. This relies a bit on that we know
 					// that unit_type::id() does this.
 					unit_id.erase(std::remove(unit_id.begin(), unit_id.end(), ' '),
 								  unit_id.end());
 					std::string ref_id = std::string("unit_") + unit_id;
-					std::string lang_unit = string_table[unit_id];
-					if (lang_unit == "") {
-						lang_unit = *advance_it;
-					}
 					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit)
 					   << "'</ref>";
 					if (advance_it + 1 != next_units.end()) {
@@ -670,16 +667,8 @@ std::vector<topic> generate_unit_topics() {
 				// Print information about every attack.
 				for (std::vector<attack_type>::const_iterator attack_it =attacks.begin();
 					 attack_it != attacks.end(); attack_it++) {
-					std::string lang_weapon
-						= string_table["weapon_name_" + attack_it->name()];
-					if (lang_weapon == "") {
-						lang_weapon = attack_it->name();
-					}
-					std::string lang_type
-						= string_table["weapon_type_" + attack_it->type()];
-					if (lang_type == "") {
-						lang_type = attack_it->type();
-					}
+					std::string lang_weapon = gettext(attack_it->name().c_str());
+					std::string lang_type = gettext(attack_it->type().c_str());
 					std::vector<std::pair<std::string, unsigned> > row;
 					std::stringstream attack_ss;
 					attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
@@ -702,11 +691,7 @@ std::vector<topic> generate_unit_topics() {
 					if ((*attack_it).special() != "") {
 						const std::string ref_id = std::string("weaponspecial_")
 							+ (*attack_it).special();
-						std::string lang_special
-							= string_table["weapon_special_" + attack_it->special()];
-						if (lang_special == "") {
-							lang_special = attack_it->special();
-						}
+						std::string lang_special = gettext(attack_it->special().c_str());
 						attack_ss << "<ref>dst='" << escape(ref_id) << "' text='"
 								  << escape(lang_special) << "'</ref>";
 						row.push_back(std::make_pair(attack_ss.str(),
@@ -743,10 +728,7 @@ std::vector<topic> generate_unit_topics() {
 				if (resistance < 0) {
 					color = "red";
 				}
-				std::string lang_weapon = string_table["weapon_type_" + (*dam_it).first];
-				if (lang_weapon == "") {
-					lang_weapon = (*dam_it).first;
-				}
+				std::string lang_weapon = gettext(dam_it->first.c_str());
 				push_tab_pair(row, lang_weapon);
 				std::stringstream str;
 				str << "<format>color=" << color << " text='"<< resistance << "%'</format>";
