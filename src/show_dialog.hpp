@@ -18,6 +18,7 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "font.hpp"
+#include "halo.hpp"
 #include "network.hpp"
 #include "unit.hpp"
 #include "video.hpp"
@@ -37,7 +38,7 @@ extern const int ButtonVPadding;
 
 bool in_dialog();
 
-struct dialog_manager : private cursor::setter, private font::floating_label_hider {
+struct dialog_manager : private cursor::setter, private font::floating_label_hider, private halo::halo_hider {
 	dialog_manager();
 	~dialog_manager();
 

@@ -87,6 +87,8 @@ team::team_info::team_info(const config& cfg)
 		controller = HUMAN;
 	else if(cfg["controller"] == "network")
 		controller = NETWORK;
+	else if(cfg["controller"] == "null")
+		controller = EMPTY;
 	else
 		controller = AI;
 
@@ -177,6 +179,7 @@ void team::team_info::write(config& cfg) const
 	case AI: cfg["controller"] = "ai"; break;
 	case HUMAN: cfg["controller"] = "human"; break;
 	case NETWORK: cfg["controller"] = "network"; break;
+	case EMPTY: cfg["controller"] = "null"; break;
 	default: assert(false);
 	}
 
@@ -378,6 +381,11 @@ bool team::is_ai() const
 bool team::is_network() const
 {
 	return info_.controller == team_info::NETWORK;
+}
+
+bool team::is_empty() const
+{
+	return info_.controller == team_info::EMPTY;
 }
 
 void team::make_human()

@@ -132,6 +132,10 @@ public:
 			return lobby::QUIT;
 		}
 
+		if(menu_ != NULL) {
+			menu_->process(mousex,mousey,button,false,false,false,false);
+		}
+
 		config reply;
 		const network::connection res = network::receive_data(reply);
 		if(res) {

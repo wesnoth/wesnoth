@@ -32,6 +32,8 @@ private:
 std::map<int,effect> haloes;
 int halo_id = 1;
 
+bool hide_halo = false;
+
 static const SDL_Rect empty_rect = {0,0,0,0};
 
 effect::effect(int xpos, int ypos, const std::string& img)
@@ -133,6 +135,16 @@ manager::~manager()
 	disp = old;
 }
 
+halo_hider::halo_hider() : old(hide_halo)
+{
+	hide_halo = true;
+}
+
+halo_hider::~halo_hider()
+{
+	hide_halo = old;
+}
+
 int add(int x, int y, const std::string& image)
 {
 	const int id = halo_id++;
@@ -147,6 +159,10 @@ void remove(int handle)
 
 void render()
 {
+	if(hide_halo) {
+		return;
+	}
+
 	for(std::map<int,effect>::iterator i = haloes.begin(); i != haloes.end(); ++i) {
 		i->second.render();
 	}
@@ -154,6 +170,10 @@ void render()
 
 void unrender()
 {
+	if(hide_halo) {
+		return;
+	}
+
 	for(std::map<int,effect>::reverse_iterator i = haloes.rbegin(); i != haloes.rend(); ++i) {
 		i->second.unrender();
 	}

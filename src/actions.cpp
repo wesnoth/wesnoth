@@ -19,6 +19,7 @@
 #include "game_events.hpp"
 #include "key.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
@@ -546,6 +547,8 @@ void attack(display& gui, const gamemap& map,
 	static const std::string poison_string("poison");
 
 	while(stats.nattacks > 0 || stats.ndefends > 0) {
+		std::cerr << "start of attack loop...\n";
+
 		if(stats.nattacks > 0) {
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < stats.chance_to_hit_defender;
@@ -585,10 +588,13 @@ void attack(display& gui, const gamemap& map,
 				            hits ? stats.damage_defender_takes : 0,
 							a->second.attacks()[attack_with]);
 
+			std::cerr << "done attacking\n";
+
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES);
 
 			if(ran_results == NULL) {
+				log_scope("setting random results");
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
@@ -681,6 +687,8 @@ void attack(display& gui, const gamemap& map,
 		}
 
 		if(stats.ndefends > 0) {
+			std::cerr << "doing defender attack...\n";
+
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < stats.chance_to_hit_attacker;
 

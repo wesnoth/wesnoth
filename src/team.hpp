@@ -72,7 +72,7 @@ public:
 
 		std::string description;
 
-		enum CONTROLLER { HUMAN, AI, NETWORK };
+		enum CONTROLLER { HUMAN, AI, NETWORK, EMPTY };
 		CONTROLLER controller;
 		std::string ai_algorithm;
 		config ai_params;
@@ -116,6 +116,7 @@ public:
 	bool is_human() const;
 	bool is_network() const;
 	bool is_ai() const;
+	bool is_empty() const;
 
 	void make_human();
 	void make_network();

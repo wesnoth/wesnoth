@@ -207,7 +207,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		teams.push_back(team(**ui,ngold));
 
 		//if this side tag describes the leader of the side
-		if((**ui)["no_leader"] != "yes") {
+		if((**ui)["no_leader"] != "yes" && (**ui)["controller"] != "null") {
 			unit new_unit(gameinfo, **ui);
 
 			//search the recall list for leader units, and if there is
@@ -410,8 +410,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				player_number = (team_it - teams.begin()) + 1;
 
 				//if a side is dead, don't do their turn
-				if(team_units(units,player_number) == 0)
+				if(team_it->is_empty() || team_units(units,player_number) == 0) {
 					continue;
+				}
 
 				if(is_observer(teams)) {
 					gui.set_team(size_t(player_number-1));

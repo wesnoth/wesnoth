@@ -256,6 +256,7 @@ void mp_connect::lists_init()
 	player_types_.push_back(string_table["network_controlled"]);
 	player_types_.push_back(string_table["human_controlled"]);
 	player_types_.push_back(string_table["ai_controlled"]);
+	player_types_.push_back(string_table["null_controlled"]);
 	player_types_.push_back("-----");
 	player_types_.push_back(preferences::login());
 
@@ -462,7 +463,7 @@ void mp_connect::gui_update()
 			}
 		} else if (side["controller"] == "human") {
 			if (side["description"] == preferences::login()) {
-				combos_type_[n].set_selected(4);
+				combos_type_[n].set_selected(5);
 			} else if (side["description"] != "") {
 				//When loading a game and you use a name not originally used during
 				//the initial game, mark that original slot as network
@@ -472,6 +473,8 @@ void mp_connect::gui_update()
 			}
 		} else if (side["controller"] == "ai") {
 			combos_type_[n].set_selected(2);
+		} else if(side["controller"] == "null") {
+			combos_type_[n].set_selected(3);
 		}
 
 		//Player Race
@@ -556,15 +559,18 @@ lobby::RESULT mp_connect::process()
 			if(combos_type_[n].selected() == 0) {
 				side["controller"] = "network";
 				side["description"] = "";
-			}else if(combos_type_[n].selected() == 1){
+			} else if(combos_type_[n].selected() == 1){
 				side["controller"] = "human";
 				side["description"] = "";
-			}else if(combos_type_[n].selected() == 2){
+			} else if(combos_type_[n].selected() == 2){
 				side["controller"] = "ai";
 				side["description"] = string_table["ai_controlled"];
-			}else if(combos_type_[n].selected() == 3){
+			} else if(combos_type_[n].selected() == 3) {
+				side["controller"] = "null";
+				side["description"] = "";
+			} else if(combos_type_[n].selected() == 4){
 				combos_type_[n].set_selected(old_select);
-			}else if(combos_type_[n].selected() == 4){
+			} else if(combos_type_[n].selected() == 5){
 				side["controller"] = "human";
 				side["description"] = preferences::login();
 				for(size_t m = 0; m != combos_type_.size(); ++m) {

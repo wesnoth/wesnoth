@@ -17,6 +17,14 @@ private:
 	display* const old;
 };
 
+struct halo_hider
+{
+	halo_hider();
+	~halo_hider();
+private:
+	bool old;
+};
+
 ///function to add a haloing effect using 'image'
 ///centered on (x,y)
 ///returns the handle to the halo object
