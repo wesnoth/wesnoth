@@ -195,6 +195,7 @@ void close_socket(TCPsocket sock)
 			}
 		}
 
+		return;
 	}
 }
 
