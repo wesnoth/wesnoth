@@ -79,7 +79,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	}
 
 	turn_info turn_data(gameinfo,state_of_game,status,terrain_config,level,
-	                    key,gui,map,teams,team_num,units,false,textbox,network_sender);
+	                    key,gui,map,teams,team_num,units,turn_info::PLAY_TURN,textbox,network_sender);
 
 	//execute gotos - first collect gotos in a list
 	std::vector<gamemap::location> gotos;
@@ -130,12 +130,12 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
                      gamestatus& status, const config& terrain_config, config* level,
                      CKey& key, display& gui, gamemap& map,
                      std::vector<team>& teams, int team_num,
-                     unit_map& units, bool browse, floating_textbox& textbox, replay_network_sender& replay_sender)
+                     unit_map& units, TURN_MODE mode, floating_textbox& textbox, replay_network_sender& replay_sender)
   : paths_wiper(gui),
     gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
     terrain_config_(terrain_config), level_(level),
     key_(key), gui_(gui), map_(map), teams_(teams), team_num_(team_num),
-    units_(units), browse_(browse),
+    units_(units), browse_(mode != PLAY_TURN), allow_network_commands_(mode == BROWSE_NETWORKED),
     left_button_(false), right_button_(false), middle_button_(false),
 	 minimap_scrolling_(false), start_ncmd_(-1),
     enemy_paths_(false), path_turns_(0), end_turn_(false), textbox_(textbox), replay_sender_(replay_sender)
@@ -2291,6 +2291,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	if(turns.empty() == false && from != network::null_connection) {
 		//forward the data to other peers
 		network::send_data_all_except(cfg,from);
+
+		if(allow_network_commands_ == false) {
+			gui::show_dialog(gui_,NULL,"Error","Network error: Received unexpected command from remote host",gui::OK_ONLY);
+			std::cerr << "Received unexpected command from remote host: '" << cfg.write() << "'\n";
+		}
 	}
 
 	for(config::child_list::const_iterator t = turns.begin(); t != turns.end(); ++t) {

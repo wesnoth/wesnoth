@@ -78,12 +78,14 @@ public:
 
 		bool active() const { return box.get() != NULL; }
 	};
+
+	enum TURN_MODE { PLAY_TURN, BROWSE_NETWORKED, BROWSE_AI };
 	
 	turn_info(game_data& gameinfo, game_state& state_of_game,
 	          gamestatus& status, const config& terrain_config, config* level,
 	          CKey& key, display& gui, gamemap& map,
 	          std::vector<team>& teams, int team_num,
-	          unit_map& units, bool browse_only, floating_textbox& textbox, replay_network_sender& network_sender);
+	          unit_map& units, TURN_MODE mode, floating_textbox& textbox, replay_network_sender& network_sender);
 
 	void turn_slice();
 
@@ -188,6 +190,7 @@ private:
 	int team_num_;
 	unit_map& units_;
 	bool browse_;
+	bool allow_network_commands_;
 
 	bool left_button_, right_button_, middle_button_;
 	bool minimap_scrolling_;

@@ -172,14 +172,18 @@ const team& ai_interface::current_team() const
 void ai_interface::sync_network()
 {
 	if(network::nconnections() > 0) {
-		info_.turn_data_.send_data();
 
+		//receive data first, and then send data. When we sent the end of
+		//the AI's turn, we don't want there to be any chance where we
+		//could get data back pertaining to the next turn.
 		config cfg;
 		while(network::connection res = network::receive_data(cfg)) {
 			std::deque<config> backlog;
 			info_.turn_data_.process_network_data(cfg,res,backlog);
 			cfg.clear();
 		}
+
+		info_.turn_data_.send_data();
 	}
 }
 
@@ -563,6 +567,7 @@ void ai::do_move()
 	AI_DIAGNOSTIC("");
 
 	recorder.end_turn();
+	sync_network();
 }
 
 bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)

@@ -735,7 +735,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 					if(!touches_other_lake) {
 						const std::string& name = generate_name(name_generator,"lake_name");
-						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
+						const gamemap::location loc(x-width/3,y-height/3);
+						labels->erase(loc);
+						labels->insert(std::pair<gamemap::location,std::string>(loc,name));
 					}
 				}
 

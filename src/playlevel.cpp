@@ -514,12 +514,11 @@ redo_turn:
 					turn_info turn_data(gameinfo,state_of_game,status,
 						                game_config,level,key,gui,
 						                map,teams,player_number,units,
-					                    true,textbox_info,replay_sender);
+										turn_info::BROWSE_AI,textbox_info,replay_sender);
 
 					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status,turn_data);
 					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
 					ai_obj->play_turn();
-					ai_obj->sync_network();
 
 					gui.invalidate_unit();
 					gui.invalidate_game_status();
@@ -531,7 +530,7 @@ redo_turn:
 
 					turn_info turn_data(gameinfo,state_of_game,status,
 					                    game_config,level,key,gui,
-					                    map,teams,player_number,units,true,textbox_info,replay_sender);
+										map,teams,player_number,units,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
 
 					for(;;) {
 
@@ -699,7 +698,7 @@ redo_turn:
 
 		turn_info turn_data(gameinfo,state_of_game,status,
 					        game_config,level,key,gui,
-					        map,teams,player_number,units,true,textbox_info,replay_sender);
+							map,teams,player_number,units,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
 
 		turn_data.save_game(string_table["save_game_error"],gui::YES_NO);
 		if(disconnect) {
