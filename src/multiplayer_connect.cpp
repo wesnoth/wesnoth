@@ -655,7 +655,7 @@ void connect::process_network_data(const config& data, const network::connection
 	}
 
 	if (!data["side"].empty()) {
-		int side_taken = lexical_cast_default<int>(data["side"], 0);
+		int side_taken = lexical_cast_default<int>(data["side"], 0) - 1;
 
 		// Checks if the connecting user has a valid and unique name.
 		const std::string name = data["name"];

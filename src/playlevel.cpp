@@ -234,7 +234,9 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 
 		LOG_NG << "initializing team...\n";
 
-		if (first_human_team == -1 && ((**ui)["controller"] == "human" || (**ui)["persistent"] == "1")) {
+		if ((**ui)["controller"] == preferences::client_type() && (**ui)["description"] == preferences::login()) {
+			first_human_team = ui - unit_cfg.begin();
+		} else if(first_human_team == -1 && ((**ui)["controller"] == "human" || (**ui)["persistent"] == "1")) {
 			first_human_team = ui - unit_cfg.begin();
 		}
 

@@ -237,7 +237,7 @@ void wait::join_game(bool observe)
 		//team_ = faction_choice;
 
 		config response;
-		response["side"] = lexical_cast<std::string>(side_choice);
+		response["side"] = lexical_cast<std::string>(side_choice + 1);
 		response["name"] = preferences::login();
 		response["faction"] = lexical_cast<std::string>(faction_choice);
 		response["leader"] = leader_choice;
