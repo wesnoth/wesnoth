@@ -15,6 +15,7 @@
 #include <cmath>
 #include <iostream>
 
+#include "config.hpp"
 #include "game.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
@@ -729,6 +730,27 @@ bool operator==(const SDL_Rect& a, const SDL_Rect& b)
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
 {
 	return !operator==(a,b);
+}
+
+void pixel_data::read(const config& cfg) {
+	const std::string& red = cfg["red"];
+	const std::string& green = cfg["green"];
+	const std::string& blue = cfg["blue"];
+
+	if (red.empty())
+		r = 0;
+	else
+		r = atoi(red.c_str());
+
+	if (green.empty())
+		g = 0;
+	else
+		g = atoi(green.c_str());
+
+	if (blue.empty())
+		b = 0;
+	else
+		b = atoi(blue.c_str());
 }
 
 namespace {

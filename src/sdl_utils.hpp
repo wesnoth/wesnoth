@@ -13,7 +13,6 @@
 #ifndef SDL_UTILS_INCLUDED
 #define SDL_UTILS_INCLUDED
 
-#include "config.hpp"
 #include "scoped_resource.hpp"
 
 #include "SDL.h"
@@ -120,6 +119,8 @@ SDL_Rect get_non_transperant_portion(surface surf);
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 
+struct config; // no need to include config.hpp
+
 struct pixel_data
 {
 	pixel_data() : r(0), g(0), b(0)
@@ -146,26 +147,7 @@ struct pixel_data
 		b = ((pixel&fmt->Bmask) >> fmt->Bshift);
 	}
 
-	void read(const config& cfg) {
-		const std::string& red = cfg["red"];
-		const std::string& green = cfg["green"];
-		const std::string& blue = cfg["blue"];
-
-		if(red.empty())
-			r = 0;
-		else
-			r = atoi(red.c_str());
-
-		if(green.empty())
-			g = 0;
-		else
-			g = atoi(green.c_str());
-
-		if(blue.empty())
-			b = 0;
-		else
-			b = atoi(blue.c_str());
-	}
+	void read(const config& cfg);
 
 	int r, g, b;
 };
