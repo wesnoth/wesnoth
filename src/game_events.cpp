@@ -14,6 +14,7 @@
 #include "game_events.hpp"
 #include "image.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "playlevel.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
@@ -216,6 +217,9 @@ std::multimap<std::string,event_handler> events_map;
 //by an event.
 bool event_handler::handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg)
 {
+	log_scope("handle_event_command");
+	std::cerr << "handling command: '" << cmd << "'\n";
+
 	bool rval = true;
 	//sub commands that need to be handled in a guaranteed ordering
 	if(cmd == "command") {
@@ -860,24 +864,26 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	else if(cmd == "kill") {
 
-		for(std::map<gamemap::location,unit>::iterator un = units->begin();
-		    un != units->end(); ++un) {
-			while(un != units->end() && game_events::unit_matches_filter(un,cfg)) {
+		for(std::map<gamemap::location,unit>::iterator un = units->begin(); un != units->end();) {
+			if(game_events::unit_matches_filter(un,cfg)) {
 				if(cfg["animate"] == "yes") {
 					screen->scroll_to_tile(un->first.x,un->first.y,display::WARP);
 					screen->unit_die(un->first);
 				}
 
-				units->erase(un);
-				un = units->begin();
+				units->erase(un++);
+			} else {
+				++un;
 			}
+
 		}
 
 		std::vector<unit>& avail_units = state_of_game->available_units;
-		for(std::vector<unit>::iterator j = avail_units.begin();
-		    j != avail_units.end(); ++j) {
-			while(j != avail_units.end() && j->matches_filter(cfg)) {
+		for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
+			if(j->matches_filter(cfg)) {
 				j = avail_units.erase(j);
+			} else {
+				++j;
 			}
 		}
 	}
@@ -904,6 +910,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			throw end_level_exception(DEFEAT);
 		}
 	}
+
+	std::cerr << "done handling command...\n";
 
 	return rval;
 }
