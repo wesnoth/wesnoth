@@ -10,16 +10,19 @@ Kontroller
     * u: Fortryd sidste træk (du kan kun fortryde træk foretaget af egen vilje)
     * r: Gentag træk
     * n: Skift mellem enheder der stadig har træk tilbage
-    * e: Afslut enhedens træk og skift til næste enhed, der stadig har træk tilbage
+    * 1-7: Vis hvor langt den nuværende valgte enhed kan flyttes i angivne antal runder
+    * Space/Mellemrum: Afslut enhedens træk og skift til næste enhed, der stadig har træk tilbage
     * l: Skift til leder-enhed
     * ctrl-f: Vælg fuld-skærm/vindue
     * ctrl-r: Rekruttér enhed
+    * ctrl-shift-r: Gentag sidste rekruttéring
     * ctrl-c: Genindkald enhed
     * ctrl-a: Skift accelereret spille-stil
     * d: Beskriv nuværende enhed
     * ctrl-d: Se nuværende enheds forsvars-styrker mod angrebstyper
     * ctrl-t: Se hvordan den nuværende enhed klarer sig i forskelligt terræn
     * ctrl-s: Gem spil
+    * ctrl-m: Sluk/Tænd lyd og musik
 
 
 
@@ -41,7 +44,15 @@ Spillet sker over en serie af slag/kampe, også kaldet scenarier. Hvert scenarie 
 
 Guld
 
-Hver side får et vist guld-beløb til at begynde med og modtager 2 guldstykker per runde plus 2 ekstra guldstykker for hver landsby, denne side har under sin kontrol. Hver side skal hver runde betale 1 guldstykke for hver enhed, de har, til vedligeholdelse.
+Hver side får et vist guld-beløb til at begynde med og modtager 2 guldstykker per runde plus 1 ekstra guldstykke for hver landsby, denne side har under sin kontrol.
+
+Hver enhed har også en vedligeholdelsesudgift. Vedligeholdelsesudgiften er generelt den samme som enhedens erfaringsniveau (se alligevel 'Loyal'-karaktertrækket længere nede). Enheder, der ikke er blevet genindkaldt eller rekruttéret - dvs. ledere eller enheder der frivilligt slutter sig til lederen undervejs - har ikke vedligeholdelsesudgifter. Vedligeholdelsen betales kun, hvis en sides totale vedligeholdelse er større end antallet af landsbyer, der er under denne sides kontrol. Den betalte vedligeholdelse er forskellen mellem antallet af landsbyer og vedligeholdelsesudgifterne.
+
+Altså er formlen til at fastsætte indkomsten per runde således:
+
+2 + landsbyer - maksimum(0,vedligeholdelse - landsbyer)
+
+hvor vedligeholdelse er lig med summen af erfaringsniveauerne på alle de enheder, der er blevet genindkaldt og rekruttéret.
 
 Rekruttéring og genindkaldelse
 
@@ -53,7 +64,18 @@ Hvis du vil vælge, hvor de rekruttérede enheder skal placeres, så kan du, når du
 
 Enheds-specialiteter
 
-Enheds-specialiteter er beskrevet under "Beskriv Enhed" i hoved-menuen.
+Enheds-specialiteter er beskrevet under "Beskriv Enhed" i selve spillet.
+
+
+Karaktertræk
+
+Enheder har karaktertræk, der reflekterer deres karakters forskellige aspekter. Karaktertræk tildeles tilfældigt til enheder, når de skabes. Hver enhed får to karaktertræk. De mulige karaktertræk er som følger:
+
+   Loyal:         Enheden vil aldrig have en vedligeholdelse over 1.
+   Stærk:         Enheden giver ekstra skade i nærkamp og har lidt ekstra udholdenhed.
+   Hurtig:        Enheden kan flytte længere per runde men har lidt mindre udholdenhed.
+   Hårdfør:       Enheden har større udholdenhed.
+   Intelligent:   Enheden kræver en mindre mængde erfaring for at stige i niveau.
 
 Bevægelse/træk
 
