@@ -47,7 +47,7 @@
 #include <string>
 
 namespace {
-	const unsigned int undo_limit = 100;
+	const unsigned int undo_limit = 1000;
 	// Milliseconds to sleep in every iteration of the main loop.
 	const unsigned int sdl_delay = 20;
 	const size_t default_terrain_size = 35;
@@ -92,7 +92,7 @@ void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
 		const SDLKey sym = event.keysym.sym;
 		// We must intercept escape-presses here because we don't want the
 		// default shutdown behavior, we want to ask for saving.
-		if(sym == SDLK_ESCAPE) {
+		if (sym == SDLK_ESCAPE) {
 			set_abort();
 		}
 		else {
@@ -298,8 +298,7 @@ void map_editor::edit_quit() {
 	set_abort();
 }
 
-void map_editor::edit_new_map()
-{
+void map_editor::edit_new_map() {
 	const std::string map = new_map_dialog(gui_);
  	if (map != "") {
 		throw new_map_exception(map);
@@ -349,6 +348,20 @@ void map_editor::edit_set_start_pos() {
 	}
 }
 
+void map_editor::edit_flood_fill() {
+	terrain_log log;
+	flood_fill(map_, selected_hex_, palette_.selected_terrain(), &log);
+	std::vector<gamemap::location> to_invalidate;
+	for (terrain_log::iterator it = log.begin(); it != log.end(); it++) {
+		to_invalidate.push_back((*it).first);
+		undo_stack_.push_back(map_undo_action((*it).second, palette_.selected_terrain(),
+											  (*it).first));
+		if(undo_stack_.size() > undo_limit)
+			undo_stack_.pop_front();
+	}
+	invalidate_all_and_adjacent(to_invalidate);
+}
+
 bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	switch (command) {
 	case hotkey::HOTKEY_UNDO:
@@ -364,6 +377,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_SET_START_POS:
 	case hotkey::HOTKEY_EDIT_NEW_MAP:
 	case hotkey::HOTKEY_EDIT_LOAD_MAP:
+	case hotkey::HOTKEY_EDIT_FLOOD_FILL:
 		return true;
 	default:
 		return false;
@@ -519,6 +533,35 @@ void map_editor::invalidate_adjacent(const gamemap::location hex) {
 	minimap_dirty_ = true;
 }
 
+void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes) {
+	std::vector<gamemap::location> to_invalidate;
+	std::vector<gamemap::location>::const_iterator it;
+	for (it = hexes.begin(); it != hexes.end(); it++) {
+		gamemap::location locs[7];
+		locs[0] = *it;
+		get_adjacent_tiles(*it, locs+1);
+		for(int i = 0; i != 7; ++i) {
+			to_invalidate.push_back(locs[i]);
+		}
+	}
+	std::sort(to_invalidate.begin(), to_invalidate.end());;
+	std::vector<gamemap::location>::iterator end_of_unique =
+		std::unique(to_invalidate.begin(), to_invalidate.end());
+	for (it = to_invalidate.begin(); it != end_of_unique; it++) {
+		if (!map_.on_board(*it)) {
+			gamemap::TERRAIN terrain_before = map_.get_terrain(*it);
+			map_.remove_from_border_cache(*it);
+			gamemap::TERRAIN terrain_after = map_.get_terrain(*it);
+			if (terrain_before != terrain_after) {
+				invalidate_adjacent(*it);
+			}
+		}
+		gui_.rebuild_terrain(*it);
+		gui_.invalidate(*it);
+	}
+	minimap_dirty_ = true;
+}
+
 void map_editor::right_button_down(const int mousex, const int mousey) {
 }
 void map_editor::middle_button_down(const int mousex, const int mousey) {
@@ -544,8 +587,7 @@ bool map_editor::confirm_exit_and_save() {
 	return true;
 }
 
-bool map_editor::confirm_modification_disposal(display& disp, const std::string message)
-{
+bool map_editor::confirm_modification_disposal(display& disp, const std::string message) {
 	bool ret = true;
 	if (num_operations_since_save_ != 0) {
 		const int res = gui::show_dialog(gui_, NULL, "", message,
@@ -703,8 +745,7 @@ void map_editor::main_loop() {
 	}
 }
 
-void map_editor::edit_load_map()
-{
+void map_editor::edit_load_map() {
 	const std::string system_path = game_config::path + "/data/maps/";
 	
 	std::vector<std::string> files;
@@ -944,7 +985,7 @@ void brush_bar::draw(bool force) {
 		filename << "editor/brush-" << i << ".png";
 		scoped_sdl_surface image(image::get_image(filename.str(), image::UNSCALED));
 		if (image == NULL) {
-			std::cerr << "Image " << filename << " not found." << std::endl;
+			std::cerr << "Image " << filename.str() << " not found." << std::endl;
 			continue;
 		}
 		if (image->w != size_ || image->h != size_) {
@@ -1027,8 +1068,44 @@ bool is_invalid_terrain(char c) {
 }
 
 
-
-
+void flood_fill(gamemap &map, const gamemap::location &start_loc,
+				const gamemap::TERRAIN fill_with, terrain_log *log) {
+	gamemap::TERRAIN terrain_to_fill = map.get_terrain(start_loc);
+	if (fill_with == terrain_to_fill) {
+		return;
+	}
+	std::vector<gamemap::location> to_fill;
+	// First push the starting location onto a stack. Then, in every
+	// iteration, pop one element from the stack, fill this tile and add
+	// all adjacent tiles that have the terrain that should be
+	// filled. Continue until the stack is empty.
+	to_fill.push_back(start_loc);
+	while (!to_fill.empty()) {
+		gamemap::location loc = to_fill.back();
+		to_fill.pop_back();
+		if (log != NULL) {
+			log->push_back(std::make_pair(loc, terrain_to_fill));
+		}
+		map.set_terrain(loc, fill_with);
+		// Find all adjacent tiles with the terrain that should be
+		// filled and add these to the to_fill vector.
+		std::vector<gamemap::location> adj = get_tiles(map, loc, 2);
+		for (std::vector<gamemap::location>::iterator it2 = adj.begin();
+			 it2 != adj.end(); it2++) {
+			if (map.get_terrain(*it2) == terrain_to_fill && map.on_board(*it2)) {
+				to_fill.push_back(*it2);
+			}
+		}
+		// Remove duplicates.
+		std::sort(to_fill.begin(), to_fill.end());
+		std::vector<gamemap::location>::iterator end_of_unique =
+			std::unique(to_fill.begin(), to_fill.end());
+		to_fill.erase(end_of_unique, to_fill.end());
+		for (std::vector<gamemap::location>::iterator ii = to_fill.begin();
+			 ii != to_fill.end(); ii++) {
+		}
+	}
+}
 
 
 

@@ -191,6 +191,7 @@ public:
 	/// Display a dialog asking for a player number and set the starting
 	/// position of the given player to the currently selected hex.
 	virtual void edit_set_start_pos();
+	virtual void edit_flood_fill();
 	
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	
@@ -225,7 +226,7 @@ private:
 	
 	/// Display a menu with given items and at the given location.
 	void show_menu(const std::vector<std::string>& items_arg, const int xloc,
-		   const int yloc, const bool context_menu=false);
+				   const int yloc, const bool context_menu=false);
 	
 	/// Pass the command onto the hotkey handling system. Quit requests
 	/// are intercepted because the editor does not want the default
@@ -235,12 +236,17 @@ private:
 	/// Draw terrain at a location. The operation is saved in the undo
 	/// stack. Update the map to reflect the change.
 	void draw_terrain(const gamemap::TERRAIN terrain,
-			  const gamemap::location hex);
+					  const gamemap::location hex);
 	
 	/// Invalidate the given hex and all the adjacent ones. Assume the
 	/// hex has changed, so rebuild the dynamic terrain at the hex and
 	/// the adjacent hexes.
 	void invalidate_adjacent(const gamemap::location hex);
+
+	/// Invalidate the hexes in the give vector and the ones that are
+	/// adjacent. Rebuild the terrain on the same hexes. Make sure that
+	/// the operations only happen once per hex for efficiency purposes.
+	void invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes);
 
 	/// Shows dialog to create new map.
 	std::string new_map_dialog(display& disp);
@@ -288,9 +294,20 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected,
 
 bool is_invalid_terrain(char c);
 
+
+typedef std::vector<std::pair<gamemap::location, gamemap::TERRAIN> > terrain_log;
+
 std::vector<gamemap::location> get_tiles(const gamemap &map,
 										 const gamemap::location& a,
 										 const unsigned int radius);
+
+/// Flood fill the map with the terrain fill_with starting from the
+/// location start_loc. If log is non-null it will contain the positions
+/// of the changed tiles and the terrains they had before the filling
+/// started.
+void flood_fill(gamemap &map, const gamemap::location &start_loc,
+				const gamemap::TERRAIN fill_with, terrain_log *log = NULL);
+				
 
 
 }

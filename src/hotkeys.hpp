@@ -37,10 +37,10 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
 					  HOTKEY_TOGGLE_SHROUD, HOTKEY_UPDATE_SHROUD,
 
 					  //editing specific commands
-		      HOTKEY_EDIT_SET_TERRAIN,
-		      HOTKEY_EDIT_QUIT, HOTKEY_EDIT_SAVE_MAP, 
-		      HOTKEY_EDIT_SAVE_AS, HOTKEY_EDIT_SET_START_POS,
-		      HOTKEY_EDIT_NEW_MAP, HOTKEY_EDIT_LOAD_MAP,
+					  HOTKEY_EDIT_SET_TERRAIN,
+					  HOTKEY_EDIT_QUIT, HOTKEY_EDIT_SAVE_MAP, 
+					  HOTKEY_EDIT_SAVE_AS, HOTKEY_EDIT_SET_START_POS,
+					  HOTKEY_EDIT_NEW_MAP, HOTKEY_EDIT_LOAD_MAP, HOTKEY_EDIT_FLOOD_FILL,
 					  HOTKEY_NULL };
 
 struct hotkey_item {
@@ -118,6 +118,7 @@ public:
 	virtual void edit_save_map() {}
 	virtual void edit_save_as() {}
 	virtual void edit_set_start_pos() {}
+	virtual void edit_flood_fill() {}
 
 	virtual bool can_execute_command(HOTKEY_COMMAND command) const = 0;
 };

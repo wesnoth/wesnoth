@@ -73,6 +73,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("editsavemap",HOTKEY_EDIT_SAVE_MAP));
 		m.insert(val("editsaveas",HOTKEY_EDIT_SAVE_AS));
 		m.insert(val("editsetstartpos",HOTKEY_EDIT_SET_START_POS));
+		m.insert(val("editfloodfill",HOTKEY_EDIT_FLOOD_FILL));
 		m.insert(val("toggleshroud",HOTKEY_TOGGLE_SHROUD));
 		m.insert(val("updateshroud",HOTKEY_UPDATE_SHROUD));
 	}
@@ -417,6 +418,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		 case HOTKEY_EDIT_SET_START_POS:
 			if(executor)
 				executor->edit_set_start_pos();
+			break;
+		 case HOTKEY_EDIT_FLOOD_FILL:
+			if(executor)
+				executor->edit_flood_fill();
 			break;
 		default:
 			break;
