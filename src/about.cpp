@@ -216,6 +216,7 @@ void show_about(display& disp)
  	text.push_back("+ ");
  
   	text.push_back("+Past Contributors");
+ 	text.push_back("-   edge");
  	text.push_back("-   Frédéric Wagner");
  	text.push_back("-   Jan Zvánovec (jaz)");
  	text.push_back("-   Jay Hopping");
