@@ -733,7 +733,7 @@ void calculate_healing(display& disp, const gamemap& map,
 			if(i->second.hitpoints() < i->second.max_hitpoints()){
 				if((map.underlying_terrain(map[i->first.x][i->first.y]) == gamemap::TOWER ||
 				 i->second.type().regenerates())) {
-				amount_healed = game_config::cure_amount;
+					amount_healed = game_config::cure_amount;
 				} else if(i->second.is_resting()){
 					amount_healed = game_config::rest_heal_amount;
 				}
