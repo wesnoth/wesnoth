@@ -135,25 +135,6 @@ Units are awarded experience for fighting, and after obtaining enough experience
 
 Multiplayer
 
-There are a number of ways to play a multiplayer game of Wesnoth. The simplest way is a 'hotseat' game: Multiple players on one computer, each player takes the 'hotseat' when it is their turn. To start a 'hotseat' game, select 'Multiplayer' from the main menu -> 'Host Multiplayer Game'. After selecting your map, change all the names in 'Player/Type' to be human players or computer players (i.e. no 'Network Players'), and then start your game.
-
-You can also play networked games of Wesnoth. One player 'hosts' a game on their computer, and other players join. Select 'Multiplayer' -> 'Host Multiplayer Game', and then change some of the 'Player/Type' entries to 'Network Player'. Once you start the game, it will wait for other players to connect. The other players must select 'Multiplayer' -> 'Join Game', and then type the host name or ip address of the player who is hosting the game.
-
-Once all players have joined the game, the game will start. The player hosting the game must be able to receive connections on port 15000. The other players must be able to connect to port 15000 on a remote machine. You can only play network games against players who have exactly the same version of the game as you.
-
-You can also play games over the Wesnoth server. Wesnoth has two public servers:
-
-server.wesnoth.org: for releases of the game devsrv.wesnoth.org: for CVS versions of the game
-
-To connect to a server, select 'Multiplayer' -> 'Join Game' and then type in the host name of the server. You must be using the exact version of the game the server is intended to be used with to be allowed onto the server.
-
-Once you are on the server, you will be placed in the 'lobby' areas. The lobby is where you can see which other players are online, see the games currently open, and create new games. One player should create the game, and other players can join the game.
-
-It is possible to simply observe an ongoing game, by joining the game as an 'Observer'. 
-
-
-Multiplayer
-
 You can host multiplayer game with your client or connect to wesnoth game server and setup your game there. If you host game with your client other players need to be able to connect your port 15000.
 
 Public servers:
