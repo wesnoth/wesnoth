@@ -114,6 +114,8 @@ namespace image {
 	typedef std::vector<cache_item<surface> > image_cache;
 	typedef std::vector<cache_item<locator> > locator_cache;
 
+	void flush_cache();
+
 	///the image manager is responsible for setting up images, and destroying
 	///all images when the program exits. It should probably
 	///be created once for the life of the program 

@@ -2217,7 +2217,10 @@ void turn_info::do_command(const std::string& str)
 	const std::string cmd(str.begin(),i);
 	const std::string data(i == str.end() ? str.end() : i+1,str.end());
 
-	if(cmd == "ban") {
+	if(cmd == "refresh") {
+		image::flush_cache();
+		gui_.redraw_everything();
+	} else if(cmd == "ban") {
 		config cfg;
 		config& ban = cfg.add_child("ban");
 		ban["username"] = data;
