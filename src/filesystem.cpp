@@ -81,18 +81,7 @@ void get_files_in_dir(const std::string& directory,
 #endif
 
 	if(DIR_INVALID(dir)) {
-		//try to make the directory
-		const int res = mkdir(directory.c_str(),AccessMode);
-		if(res == 0) {
-#ifdef _WIN32
-			dir = _findfirst((directory + "/*.*").c_str(),&fileinfo);
-#else
-			dir = opendir(directory.c_str());
-#endif
-		}
-
-		if(DIR_INVALID(dir))
-			return;
+		return;
 	}
 
 #ifdef _WIN32

@@ -135,11 +135,11 @@ manager::~manager()
 void set_wm_icon()
 {
 	//this code seems to only display the top part of the icon in Windows XP
-//	SDL_Surface* const icon = scale_surface(get_image("icon.png",UNSCALED),32,32);
-//	if(icon != NULL) {
-//		std::cerr << "setting icon...\n";
-//		::SDL_WM_SetIcon(icon,NULL);
-//	}
+	SDL_Surface* const icon = get_image("icon.png",UNSCALED);
+	if(icon != NULL) {
+		std::cerr << "setting icon...\n";
+		::SDL_WM_SetIcon(icon,NULL);
+	}
 }
 
 void set_pixel_format(SDL_PixelFormat* format)

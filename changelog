@@ -4,6 +4,7 @@ Version 0.6:
  * enemy units do not vanish anymore when enemy leader is killed
  * new scenarios for 'Heir to the Throne' (Konrad's Tale):
    * Isle of the Damned 
+   * Crossroads
    * Northern Winter
    * The Lost General
    * Hasty Alliance
@@ -17,6 +18,7 @@ Version 0.6:
    * Dwarven Doors
    * Mountain Pass
    * Valley of Death
+   * Ford of Abez
  * support for multiple campaigns
  * new campaign started: 'Hordes of the Undead'
  * multiplayer improvements:
@@ -39,6 +41,7 @@ Version 0.6:
  * income calculations are now done at the beginning of each player's turn
  * made it so units that can no longer advance have experience needed displayed as '-'
  * allow use of escape to exit out of ok/cancel and yes/no dialogs with negative results
+ * double-click support in menus
  * new units:
    * Heavy Infantry
    * Shock Trooper
@@ -54,12 +57,14 @@ Version 0.6:
  * reduced cost of Mage
  * changed Mage attack to fire based
  * 'Mage of Light' has now both cure and illumination
- * changed Shaman slowing attack to 3-2 from 4-1, and reduced cost from 21 to 18
+ * Increased shaman slowing attack damage, decreased unit cost
  * changed 'Red Mage' to neutral alignment
  * removed 'Elvish Outrider' as evolution from Horseman
  * Scout has been renamed to Cavalry
- * Cavalry stats adjusted, increased cost by one, reduced movement by one,
- reduced experience needed to advance
+ * Cavalry stats adjusted, increased cost by one, reduced movement by one, reduced experience needed to advance
+ * Horseman now needs more experience to advance
+ * 'Vampire Bat' now needs more experience to advance and costs more
+ * 'Mage of Light' attack is now a bit more powerful
  * fixed max experience for Orcish Warlord.
  * 'Blood Bat' unit description clarified
  * Halberdier changed to 3rd level unit
@@ -86,6 +91,10 @@ Version 0.6:
  * fixed problem with stripping of non-latin characters at end of string in config files
  * allow internationalization of traits
  * made AI more intelligent
+ * scenario building:
+   * added [remove_shroud]
+   * added [allow_recruit]
+   * added [teleport]
  * added in support for some special effects: flashing and scrolling/tremors
  * added coding support for displaying different terrain images (particularly useful for villages) at different times of the day
  * fixed minor bugs in unit configuration files for Elvish Sharpshooter and Fencer
@@ -129,6 +138,7 @@ Version 0.6:
  * added error logging and correction for combat related syncing errors
  * client_type=ai in preferences-file make player join networked multiplayer games as AI player
  * added some comments to code
+ * added icon to Windows distribution
 
 Version 0.5.1:
  * more and improved unit graphics and animations

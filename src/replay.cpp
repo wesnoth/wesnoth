@@ -589,7 +589,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				advancing_units.push_back(tgt->first);
 			}
 		} else {
-			std::cerr << "unrecognized action\n";
+			std::cerr << "unrecognized action: '" << cfg->write() << "'\n";
 			throw replay::error();
 		}
 	}

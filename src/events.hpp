@@ -3,6 +3,9 @@
 
 #include "SDL.h"
 
+//our user-defined double-click event type
+#define DOUBLE_CLICK_EVENT SDL_USEREVENT
+
 namespace events
 {
 

@@ -89,6 +89,8 @@ void set_fullscreen(bool ison)
 			if(video.modePossible(res.first,res.second,16,flags)) {
 				video.setMode(res.first,res.second,16,flags);
 				disp->redraw_everything();
+			} else if(video.modePossible(1024,768,16,flags)) {
+				set_resolution(std::pair<int,int>(1024,768));
 			} else {
 				gui::show_dialog(*disp,NULL,"",string_table["video_mode_fail"],
 				                 gui::MESSAGE);
@@ -125,7 +127,7 @@ void set_resolution(const std::pair<int,int>& resolution)
 		res.second &= ~1;
 
 		CVideo& video = disp->video();
-		const int flags = video.isFullScreen() ? FULL_SCREEN : 0;
+		const int flags = fullscreen() ? FULL_SCREEN : 0;
 		if(video.modePossible(res.first,res.second,16,flags)) {
 
 			video.setMode(res.first,res.second,16,flags);

@@ -53,12 +53,15 @@ void pump()
 
 	static std::pair<int,int> resize_dimensions(0,0);
 
+	//used to keep track of double click events
+	static int last_mouse_down = -1;
+	static int last_click_x = -1, last_click_y = -1;
+
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
-		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2; ++i1) {
-			assert(i1 < event_handlers.size());
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->handle_event(event);
 		}
 
@@ -77,10 +80,32 @@ void pump()
 
 				break;
 			}
-
-			//mouse wheel support
+			
 			case SDL_MOUSEBUTTONDOWN: {
-				if(event.button.button == 4) {
+				
+				if(event.button.button == SDL_BUTTON_LEFT) {
+					static const int DoubleClickTime = 500;
+
+					static const int DoubleClickMaxMove = 3;
+					const int current_ticks = ::SDL_GetTicks();
+					if(last_mouse_down >= 0 && current_ticks - last_mouse_down < DoubleClickTime &&
+					   abs(event.button.x - last_click_x) < DoubleClickMaxMove &&
+					   abs(event.button.y - last_click_y) < DoubleClickMaxMove) {
+						SDL_UserEvent user_event;
+						user_event.type = DOUBLE_CLICK_EVENT;
+						user_event.code = 0;
+						user_event.data1 = reinterpret_cast<void*>(event.button.x);
+						user_event.data2 = reinterpret_cast<void*>(event.button.y);
+						::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
+					}
+
+					last_mouse_down = current_ticks;
+					last_click_x = event.button.x;
+					last_click_y = event.button.y;
+				}
+
+				//mouse wheel support
+				else if(event.button.button == 4) {
 					gui::scroll_dec();
 				} else if(event.button.button == 5) {
 					gui::scroll_inc();

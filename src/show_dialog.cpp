@@ -353,8 +353,9 @@ int show_dialog(display& disp, SDL_Surface* image,
 	const int image_h_padding = image != NULL ? 10 : 0;
 	const int top_padding = 10;
 	const int bottom_padding = 10;
+	const int menu_hpadding = text_size.h > 0 && menu_.height() > 0 ? 10 : 0;
 	const int padding_width = left_padding + right_padding + image_h_padding;
-	const int padding_height = top_padding + bottom_padding;
+	const int padding_height = top_padding + bottom_padding + menu_hpadding;
 	const int caption_width = caption_size.w;
 	const int image_width = image != NULL ? image->w : 0;
 	const int total_image_width = caption_width > image_width ?
@@ -407,10 +408,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 	}
 
-	const int button_hpadding = total_width - button_widths;
+	const int button_wpadding = total_width - button_widths;
 	int button_offset = 0;
 	for(size_t button_num = 0; button_num != buttons.size(); ++button_num) {
-		const int padding_amount = button_hpadding/(buttons.size()+1);
+		const int padding_amount = button_wpadding/(buttons.size()+1);
 		buttons[button_num].set_x(xloc + padding_amount*(button_num+1) +
 		                          button_offset);
 		buttons[button_num].set_y(yloc + total_height - button_heights);
@@ -425,7 +426,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	if(menu_.height() > 0)
 		menu_.set_loc(xloc+total_image_width+left_padding+image_h_padding,
-		              yloc+top_padding+text_size.h);
+		              yloc+top_padding+text_size.h+menu_hpadding);
 
 	if(image != NULL) {
 		const int x = xloc + left_padding;
@@ -453,7 +454,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 					yloc+top_padding);
 
 	const int image_h = image != NULL ? image->h : 0;
-	const int text_widget_y = yloc+top_padding+image_h-6+text_size.h;
+	const int text_widget_y = yloc+top_padding+image_h-6+text_size.h+menu_hpadding;
 
 	if(use_textbox) {
 		text_widget.set_location(xloc + left_padding +
@@ -468,7 +469,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	//set the position of any tick boxes. they go right below the menu, slammed against
 	//the right side of the dialog
 	if(options != NULL) {
-		int options_y = text_widget_y + (use_textbox ? text_widget.height() : 0) + menu_.height() + button_height_padding;
+		int options_y = text_widget_y + (use_textbox ? text_widget.height() : 0) + menu_.height() + button_height_padding + menu_hpadding;
 		for(size_t i = 0; i != check_buttons.size(); ++i) {
 			check_buttons[i].set_x(xloc + total_width - padding_width - check_buttons[i].width());
 			check_buttons[i].set_y(options_y);
@@ -518,8 +519,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 				select_item = item;
 		}
 
-		if(!key_down && key[SDLK_RETURN] &&
-		   (type == YES_NO || type == OK_CANCEL)) {
+		if((!key_down && key[SDLK_RETURN] || menu_.double_clicked()) &&
+		   (type == YES_NO || type == OK_CANCEL || type == OK_ONLY)) {
 
 			if(text_widget_text != NULL && use_textbox)
 				*text_widget_text = text_widget.text();

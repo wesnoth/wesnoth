@@ -68,48 +68,13 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 			   backupAttacks_(t->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE)
 {
-	//units that don't have traits generated are just generic
-	//units, so they shouldn't get a description either.
 	if(use_traits) {
+		//units that don't have traits generated are just generic
+		//units, so they shouldn't get a description either.
 		description_ = t->generate_description();
+		generate_traits();
 	}
 
-	//calculate the unit's traits
-	const std::vector<config*> traits = t->possible_traits();
-
-	const size_t num_traits = type_->num_traits();
-	if(use_traits && traits.size() >= num_traits) {
-		std::set<int> chosen_traits;
-		for(size_t i = 0; i != num_traits; ++i) {
-			int num = get_random()%(traits.size()-i);
-			while(chosen_traits.count(num)) {
-				++num;
-			}
-
-			chosen_traits.insert(num);
-
-			add_modification("trait",*traits[num]);
-
-		}
-
-		//build the traits description, making sure the traits are always
-		//in the same order.
-		for(std::set<int>::const_iterator itor = chosen_traits.begin();
-		    itor != chosen_traits.end(); ++itor) {
-			const std::string& trait_name = (*traits[*itor])["name"];
-			const std::string& lang_trait = string_table["trait_"+trait_name];
-			if(lang_trait.empty() == false)
-				traitsDescription_ += lang_trait;
-			else
-				traitsDescription_ += trait_name;
-
-			traitsDescription_ += ",";
-		}
-
-		//get rid of the trailing comma
-		if(!traitsDescription_.empty())
-			traitsDescription_.resize(traitsDescription_.size()-1);
-	}
 }
 
 //constructor for advancing a unit from a lower level
@@ -134,6 +99,48 @@ unit::unit(const unit_type* t, const unit& u) :
 {
 	//apply modifications etc, refresh the unit
 	new_level();
+}
+
+void unit::generate_traits()
+{
+	if(!traitsDescription_.empty())
+		return;
+
+	//calculate the unit's traits
+	const std::vector<config*> traits = type().possible_traits();
+
+	const size_t num_traits = type().num_traits();
+	if(traits.size() >= num_traits) {
+		std::set<int> chosen_traits;
+		for(size_t i = 0; i != num_traits; ++i) {
+			int num = get_random()%(traits.size()-i);
+			while(chosen_traits.count(num)) {
+				++num;
+			}
+
+			chosen_traits.insert(num);
+
+			add_modification("trait",*traits[num]);
+		}
+
+		//build the traits description, making sure the traits are always
+		//in the same order.
+		for(std::set<int>::const_iterator itor = chosen_traits.begin();
+		    itor != chosen_traits.end(); ++itor) {
+			const std::string& trait_name = (*traits[*itor])["name"];
+			const std::string& lang_trait = string_table["trait_"+trait_name];
+			if(lang_trait.empty() == false)
+				traitsDescription_ += lang_trait;
+			else
+				traitsDescription_ += trait_name;
+
+			traitsDescription_ += ",";
+		}
+
+		//get rid of the trailing comma
+		if(!traitsDescription_.empty())
+			traitsDescription_.resize(traitsDescription_.size()-1);
+	}
 }
 
 const unit_type& unit::type() const

@@ -229,7 +229,7 @@ int play_game(int argc, char** argv)
 
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 
-	const std::pair<int,int>& resolution = preferences::resolution();
+	std::pair<int,int> resolution = preferences::resolution();
 
 	std::cerr << "checking mode possible...\n";
 	const int bpp = video.modePossible(resolution.first,resolution.second,
@@ -238,18 +238,32 @@ int play_game(int argc, char** argv)
 	std::cerr << bpp << "\n";
 
 	if(bpp == 0) {
-		std::cerr << "The required video mode, " << resolution.first
-		          << "x" << resolution.second << "x16 "
-		          << "is not supported\n";
+ 		//Video mode not supported, maybe from bad prefs.
+ 		std::cerr << "The video mode, " << resolution.first
+ 		          << "x" << resolution.second << "x16 "
+ 		          << "is not supported\nAttempting 1024x768x16...\n";
+ 		
+ 		//Attempt 1024x768.
+ 		resolution.first = 1024;
+ 		resolution.second = 768;
 
-		if((video_flags&FULL_SCREEN) != 0 && argc == 0)
-			std::cerr << "Try running the program with the -windowed option "
-			          << "using a 16bpp X windows setting\n";
+ 		const int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+ 		if(bpp == 0) {
+ 			//couldn't do 1024x768 either
 
-		if((video_flags&FULL_SCREEN) == 0 && argc == 0)
-			std::cerr << "Try running with the -fullscreen option\n";
+			std::cerr << "The required video mode, " << resolution.first
+			          << "x" << resolution.second << "x16 "
+			          << "is not supported\n";
 
-		return 0;
+			if((video_flags&FULL_SCREEN) != 0 && argc == 0)
+				std::cerr << "Try running the program with the -windowed option "
+				          << "using a 16bpp X windows setting\n";
+
+			if((video_flags&FULL_SCREEN) == 0 && argc == 0)
+				std::cerr << "Try running with the -fullscreen option\n";
+
+			return 0;
+		}
 	}
 
 	if(bpp != 16) {

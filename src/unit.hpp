@@ -154,6 +154,7 @@ private:
 	UPKEEP_COST upkeep_;
 
 	void apply_modifications();
+	void generate_traits();
 };
 
 //object which temporarily resets a unit's movement

@@ -233,6 +233,50 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 		handle_event(event_info,*i);
 	}
 
+	//reveal sections of the map that would otherwise be under shroud
+	const config::child_list& remove_shroud = cfg->get_children("remove_shroud");
+	for(i = remove_shroud.begin(); i != remove_shroud.end(); ++i) {
+		const size_t index = maximum<int>(1,atoi((**i)["side"].c_str())) - 1;
+		if(index < teams->size()) {
+			const std::vector<gamemap::location>& locs = multiple_locs(**i);
+			for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
+				(*teams)[index].clear_shroud(j->x,j->y);
+			}
+		}
+		
+		screen->invalidate_all();
+	}
+
+
+	//teleport a unit from one location to another
+	const config::child_list& teleports = cfg->get_children("teleport");
+	for(i = teleports.begin(); i != teleports.end(); ++i) {
+
+		//search for a valid unit filter, and if we have one, look for the matching unit
+		const config* const filter = (*i)->child("filter");
+		if(filter != NULL) {
+			unit_map::iterator u;
+			for(u = units->begin(); u != units->end(); ++u){
+				if(u->second.matches_filter(*filter))
+					break;
+			}
+
+			//we have found a unit that matches the filter
+			if(u != units->end()) {
+				const gamemap::location dst(**i);
+				if(game_map->on_board(dst)) {
+					const gamemap::location vacant_dst = find_vacant_tile(*game_map,*units,dst,(*game_map)[dst.x][dst.y]);
+					if(game_map->on_board(vacant_dst)) {
+						//note that inserting into a map does NOT invalidate iterators
+						//into the map, so this sequence is fine.
+						units->insert(std::pair<gamemap::location,unit>(vacant_dst,u->second));
+						units->erase(u);
+					}
+				}
+			}
+		}
+	}
+
 	//allow a side to recruit a new type of unit
 	const config::child_list& allow_recruit = cfg->get_children("allow_recruit");
 	for(i = allow_recruit.begin(); i != allow_recruit.end(); ++i) {

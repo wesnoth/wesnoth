@@ -22,7 +22,8 @@ menu::menu(display& disp, const std::vector<std::string>& items,
           previous_button_(true), drawn_(false), show_result_(false),
           height_(-1), width_(-1), first_item_on_screen_(0),
 		  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow"),
-          downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow")
+          downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow"),
+		  double_clicked_(false)
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();
 	    item != items.end(); ++item) {
@@ -182,15 +183,29 @@ void menu::handle_event(const SDL_Event& event)
 	if(event.type == SDL_KEYDOWN) {
 		key_press(event.key.keysym.sym);
 	} else if(event.type == SDL_MOUSEBUTTONDOWN &&
-	          event.button.button == SDL_BUTTON_LEFT) {
+	          event.button.button == SDL_BUTTON_LEFT ||
+			  event.type == DOUBLE_CLICK_EVENT) {
+		int x = 0;
+		int y = 0;
+		if(event.type == SDL_MOUSEBUTTONDOWN) {
+			x = event.button.x;
+			y = event.button.y;
+		} else {
+			x = reinterpret_cast<int>(event.user.data1);
+			y = reinterpret_cast<int>(event.user.data2);
+		}
 
-		const int item = hit(event.button.x,event.button.y);
+		const int item = hit(x,y);
 		if(item != -1) {
 			selected_ = item;
 			drawn_ = false;
 
 			if(click_selects_) {
 				show_result_ = true;
+			}
+
+			if(event.type == DOUBLE_CLICK_EVENT) {
+				double_clicked_ = true;
 			}
 		}
 	} else if(event.type == SDL_MOUSEMOTION && click_selects_) { 
@@ -248,6 +263,11 @@ int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	} else {
 		return -1;
 	}
+}
+
+bool menu::double_clicked() const
+{
+	return double_clicked_;
 }
 
 const std::vector<int>& menu::column_widths() const

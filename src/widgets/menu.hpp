@@ -36,6 +36,8 @@ public:
 	int process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	            bool page_up, bool page_down, int select_item=-1);
 
+	bool double_clicked() const;
+
 private:
 	void calculate_position();
 	void key_press(SDLKey key);
@@ -60,6 +62,8 @@ private:
 
 	mutable int first_item_on_screen_;
 	gui::button uparrow_, downarrow_;
+
+	bool double_clicked_;
 
 	const std::vector<int>& column_widths() const;
 	void draw_item(int item);
