@@ -322,7 +322,7 @@ public:
 	}
 
 	int process(int x, int y, bool button,bool up_arrow,bool down_arrow,
-	            bool page_up, bool page_down) {
+	            bool page_up, bool page_down, int select_item) {
 		if(items_.size() > size_t(max_menu_items)) {
 			const bool up = uparrow_.process(x,y,button);
 			if(up && first_item_on_screen_ > 0) {
@@ -339,6 +339,21 @@ public:
 				++first_item_on_screen_;
 				draw();
 			}
+		}
+
+		if(select_item >= 0 && size_t(select_item) < items_.size()) {
+			selected_ = select_item;
+			if(selected_ < first_item_on_screen_) {
+				itemRects_.clear();
+				first_item_on_screen_ = selected_;
+			}
+
+			if(size_t(selected_ - first_item_on_screen_) >= max_menu_items) {
+				itemRects_.clear();
+				first_item_on_screen_ = selected_ - max_menu_items - 1;
+			}
+
+			draw();
 		}
 
 		if(up_arrow && !click_selects_ && selected_ > 0) {
@@ -706,6 +721,12 @@ int show_dialog(display& disp, SDL_Surface* image,
 		const bool new_page_up = key[SDLK_PAGEUP];
 		const bool new_page_down = key[SDLK_PAGEDOWN];
 
+		int select_item = -1;
+		for(int item = 0; item != 10; ++item) {
+			if(key['1' + item])
+				select_item = item;
+		}
+
 
 		if(!key_down && key[KEY_ENTER] &&
 		   (type == YES_NO || type == OK_CANCEL)) {
@@ -747,7 +768,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 			                              !up_arrow && new_up_arrow,
 										  !down_arrow && new_down_arrow,
 			                              !page_up && new_page_up,
-			                              !page_down && new_page_down);
+			                              !page_down && new_page_down,
+			                              select_item);
 			if(res != -1)
 				return res;
 		}

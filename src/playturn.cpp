@@ -399,36 +399,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				}
 
 				if(result == string_table["describe_unit"]) {
-
-					const std::string description
-					            = un->second.type().unit_description() +
-								"\n\n" + string_table["see_also"];
-
-					std::vector<std::string> options;
-
-					options.push_back(string_table["terrain_info"]);
-					options.push_back(string_table["attack_resistance"]);
-					options.push_back(string_table["close_window"]);
-
-					std::vector<unit> units_list(options.size(),un->second);
-
-					SDL_Surface* const unit_image =
-					       gui.getImage(un->second.type().image_profile(),
-					                    display::UNSCALED);
-
-					const int res = gui::show_dialog(gui,unit_image,
-					       un->second.type().language_name(),
-						   description,gui::MESSAGE,&options,&units_list);
-
-					//terrain table
-					if(res == 0) {
-						command = HOTKEY_TERRAIN_TABLE;
-					}
-
-					//attack resistance table
-					else if(res == 1) {
-						command = HOTKEY_ATTACK_RESISTANCE;
-					}
+					command = HOTKEY_UNIT_DESCRIPTION;
 				}
 
 				else if(result == string_table["preferences"]) {
@@ -456,125 +427,10 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				}
 
 				else if(result == string_table["recall"]) {
-					//sort the available units into order by value
-					//so that the most valuable units are shown first
-					std::sort(state_of_game.available_units.begin(),
-					          state_of_game.available_units.end(),
-							  compare_unit_values());
-
-					gui.draw(); //clear the old menu
-					if(state_of_game.available_units.empty()) {
-						gui::show_dialog(gui,NULL,"",string_table["no_recall"]);
-					} else if(current_team.gold() < game_config::recall_cost) {
-						std::stringstream msg;
-						msg << string_table["not_enough_gold_to_recall_1"]
-						    << " " << game_config::recall_cost << " "
-							<< string_table["not_enough_gold_to_recall_2"];
-						gui::show_dialog(gui, NULL,"",msg.str());
-					} else {
-						std::vector<std::string> options;
-						for(std::vector<unit>::const_iterator unit =
-						  state_of_game.available_units.begin();
-						  unit != state_of_game.available_units.end(); ++unit) {
-							std::stringstream option;
-							option << unit->type().language_name() << ","
-							       << string_table["level"] << ": "
-							       << unit->type().level() << ","
-							       << string_table["xp"] << ": "
-							       << unit->experience() << "/"
-							       << unit->max_experience();
-							options.push_back(option.str());
-						}
-
-						const int res = gui::show_dialog(gui,NULL,"",
-						           string_table["select_unit"] + ":\n",
-						           gui::OK_CANCEL,&options,
-								   &state_of_game.available_units);
-						if(res >= 0) {
-
-							const std::string err = recruit_unit(map,team_num,
-							  units,state_of_game.available_units[res],
-							  last_hex,&gui);
-							if(!err.empty()) {
-								gui::show_dialog(gui,NULL,"",err,gui::OK_ONLY);
-							} else {
-								current_team.spend_gold(
-								             game_config::recall_cost);
-								state_of_game.available_units.erase(
-								   state_of_game.available_units.begin()+res);
-
-								recorder.add_recall(res,last_hex);
-
-								undo_stack.clear();
-								redo_stack.clear();
-
-								gui.invalidate_game_status();
-							}
-						}
-					}
+					command = HOTKEY_RECALL;
 				}
 				else if(result == string_table["recruit"]) {
-
-					std::vector<unit> sample_units;
-
-					gui.draw(); //clear the old menu
-					std::vector<std::string> item_keys;
-					std::vector<std::string> items;
-					const std::set<std::string>& recruits
-					                        = current_team.recruits();
-					for(std::set<std::string>::const_iterator it =
-					    recruits.begin(); it != recruits.end(); ++it) {
-						item_keys.push_back(*it);
-						const std::map<std::string,unit_type>::const_iterator
-								u_type = gameinfo.unit_types.find(*it);
-						if(u_type == gameinfo.unit_types.end()) {
-							std::cerr << "could not find " << *it << std::endl;
-							assert(false);
-							continue;
-						}
-
-						const unit_type& type = u_type->second;
-						std::stringstream description;
-
-						description << type.language_name() << ": "
-						            << type.cost() << " gold";
-						items.push_back(description.str());
-						sample_units.push_back(unit(&type,team_num));
-					}
-
-					const int recruit_res =
-					gui::show_dialog(gui,NULL,"",
-									 string_table["recruit_unit"] + ":\n",
-					                 gui::OK_CANCEL,&items,&sample_units);
-					if(recruit_res != -1) {
-						const std::string& name = item_keys[recruit_res];
-						const std::map<std::string,unit_type>::const_iterator
-								u_type = gameinfo.unit_types.find(name);
-						assert(u_type != gameinfo.unit_types.end());
-
-						if(u_type->second.cost() > current_team.gold()) {
-							gui::show_dialog(gui,NULL,"",
-							     string_table["not_enough_gold_to_recruit"],
-								 gui::OK_ONLY);
-						} else {
-							recorder.add_recruit(recruit_res,last_hex);
-
-							//create a unit with traits
-							unit new_unit(&(u_type->second),team_num,true);
-							const std::string& msg =
-							    recruit_unit(map,team_num,units,new_unit,
-							                 last_hex,&gui);
-							if(msg.empty())
-								current_team.spend_gold(u_type->second.cost());
-							else
-								gui::show_dialog(gui,NULL,"",msg,gui::OK_ONLY);
-
-							undo_stack.clear();
-							redo_stack.clear();
-
-							gui.invalidate_game_status();
-						}
-					}
+					command = HOTKEY_RECRUIT;
 				} else if(result == string_table["unit_list"]) {
 					const std::string heading = string_table["name"] + "," +
 					                            string_table["hp"] + "," +
@@ -612,23 +468,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					gui::show_dialog(gui,NULL,string_table["unit_list"],"",
 					                 gui::OK_ONLY,&items,&units_list);
 				} else if(result == string_table["save_game"]) {
-					std::stringstream stream;
-					stream << string_table["scenario"]
-					       << " " << (state_of_game.scenario+1)
-					       << " " << string_table["turn"]
-					       << " " << status.turn();
-					std::string label = stream.str();
-
-					const int res = gui::show_dialog(gui, NULL, "", "",
-					                            gui::OK_CANCEL,NULL,NULL,
-												string_table["save_game_label"],
-												&label);
-
-					if(res == 0) {
-						recorder.save_game(gameinfo,label);
-						gui::show_dialog(gui,NULL,"",
-						   string_table["save_confirm_message"], gui::OK_ONLY);
-					}
+					command = HOTKEY_SAVE_GAME;
 				}
 			}
 		}
@@ -650,9 +490,182 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		if(command == HOTKEY_NULL)
 			command = check_keys(gui);
 
+		if(command == HOTKEY_RECRUIT) {
+			std::vector<unit> sample_units;
+
+			gui.draw(); //clear the old menu
+			std::vector<std::string> item_keys;
+			std::vector<std::string> items;
+			const std::set<std::string>& recruits
+			                        = current_team.recruits();
+			for(std::set<std::string>::const_iterator it =
+			    recruits.begin(); it != recruits.end(); ++it) {
+				item_keys.push_back(*it);
+				const std::map<std::string,unit_type>::const_iterator
+						u_type = gameinfo.unit_types.find(*it);
+				if(u_type == gameinfo.unit_types.end()) {
+					std::cerr << "could not find " << *it << std::endl;
+					assert(false);
+					continue;
+				}
+
+				const unit_type& type = u_type->second;
+				std::stringstream description;
+
+				description << type.language_name() << ","
+				            << type.cost() << " gold";
+				items.push_back(description.str());
+				sample_units.push_back(unit(&type,team_num));
+			}
+
+			const int recruit_res =
+			gui::show_dialog(gui,NULL,"",
+							 string_table["recruit_unit"] + ":\n",
+			                 gui::OK_CANCEL,&items,&sample_units);
+			if(recruit_res != -1) {
+				const std::string& name = item_keys[recruit_res];
+				const std::map<std::string,unit_type>::const_iterator
+						u_type = gameinfo.unit_types.find(name);
+				assert(u_type != gameinfo.unit_types.end());
+
+				if(u_type->second.cost() > current_team.gold()) {
+					gui::show_dialog(gui,NULL,"",
+					     string_table["not_enough_gold_to_recruit"],
+						 gui::OK_ONLY);
+				} else {
+					recorder.add_recruit(recruit_res,last_hex);
+
+					//create a unit with traits
+					unit new_unit(&(u_type->second),team_num,true);
+					const std::string& msg =
+					    recruit_unit(map,team_num,units,new_unit,
+					                 last_hex,&gui);
+					if(msg.empty())
+						current_team.spend_gold(u_type->second.cost());
+					else
+						gui::show_dialog(gui,NULL,"",msg,gui::OK_ONLY);
+
+					undo_stack.clear();
+					redo_stack.clear();
+
+					gui.invalidate_game_status();
+				}
+			}
+		}
+
+		if(command == HOTKEY_RECALL) {
+			//sort the available units into order by value
+			//so that the most valuable units are shown first
+			std::sort(state_of_game.available_units.begin(),
+			          state_of_game.available_units.end(),
+					  compare_unit_values());
+
+			gui.draw(); //clear the old menu
+			if(state_of_game.available_units.empty()) {
+				gui::show_dialog(gui,NULL,"",string_table["no_recall"]);
+			} else if(current_team.gold() < game_config::recall_cost) {
+				std::stringstream msg;
+				msg << string_table["not_enough_gold_to_recall_1"]
+				    << " " << game_config::recall_cost << " "
+					<< string_table["not_enough_gold_to_recall_2"];
+				gui::show_dialog(gui, NULL,"",msg.str());
+			} else {
+				std::vector<std::string> options;
+				for(std::vector<unit>::const_iterator unit =
+				  state_of_game.available_units.begin();
+				  unit != state_of_game.available_units.end(); ++unit) {
+					std::stringstream option;
+					option << unit->type().language_name() << ","
+					       << string_table["level"] << ": "
+					       << unit->type().level() << ","
+					       << string_table["xp"] << ": "
+					       << unit->experience() << "/"
+					       << unit->max_experience();
+					options.push_back(option.str());
+				}
+
+				const int res = gui::show_dialog(gui,NULL,"",
+				           string_table["select_unit"] + ":\n",
+				           gui::OK_CANCEL,&options,
+						   &state_of_game.available_units);
+				if(res >= 0) {
+
+					const std::string err = recruit_unit(map,team_num,
+					  units,state_of_game.available_units[res],
+					  last_hex,&gui);
+					if(!err.empty()) {
+						gui::show_dialog(gui,NULL,"",err,gui::OK_ONLY);
+					} else {
+						current_team.spend_gold(
+						             game_config::recall_cost);
+						state_of_game.available_units.erase(
+						   state_of_game.available_units.begin()+res);
+
+						recorder.add_recall(res,last_hex);
+
+						undo_stack.clear();
+						redo_stack.clear();
+
+						gui.invalidate_game_status();
+					}
+				}
+			}
+		}
+
+		if(command == HOTKEY_SAVE_GAME) {
+			std::stringstream stream;
+			stream << string_table["scenario"]
+			       << " " << (state_of_game.scenario+1)
+			       << " " << string_table["turn"]
+			       << " " << status.turn();
+			std::string label = stream.str();
+
+			const int res = gui::show_dialog(gui, NULL, "", "",
+			                            gui::OK_CANCEL,NULL,NULL,
+										string_table["save_game_label"],
+										&label);
+
+			if(res == 0) {
+				recorder.save_game(gameinfo,label);
+				gui::show_dialog(gui,NULL,"",
+				   string_table["save_confirm_message"], gui::OK_ONLY);
+			}
+		}
+
 		unit_map::const_iterator un = units.find(new_hex);
 		if(un == units.end())
 			un = units.find(selected_hex);
+
+		if(command == HOTKEY_UNIT_DESCRIPTION && un != units.end()) {
+			const std::string description = un->second.type().unit_description()
+			                                + "\n\n" + string_table["see_also"];
+
+			std::vector<std::string> options;
+
+			options.push_back(string_table["terrain_info"]);
+			options.push_back(string_table["attack_resistance"]);
+			options.push_back(string_table["close_window"]);
+
+			std::vector<unit> units_list(options.size(),un->second);
+
+			SDL_Surface* const unit_image = gui.getImage(
+			           un->second.type().image_profile(), display::UNSCALED);
+
+			const int res = gui::show_dialog(gui,unit_image,
+		                                     un->second.type().language_name(),
+			                                 description,gui::MESSAGE,
+			                                 &options,&units_list);
+
+			//terrain table
+			if(res == 0) {
+				command = HOTKEY_TERRAIN_TABLE;
+			}
+
+			//attack resistance table
+			else if(res == 1) {
+				command = HOTKEY_ATTACK_RESISTANCE;
+			}
+		}
 
 		if(un != units.end() && command == HOTKEY_ATTACK_RESISTANCE) {
 			gui.draw();

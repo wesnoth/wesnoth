@@ -22,6 +22,8 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
                       HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
                       HOTKEY_FULLSCREEN, HOTKEY_ACCELERATED,
                       HOTKEY_TERRAIN_TABLE, HOTKEY_ATTACK_RESISTANCE,
+                      HOTKEY_UNIT_DESCRIPTION, HOTKEY_SAVE_GAME,
+                      HOTKEY_RECRUIT, HOTKEY_RECALL,
                       HOTKEY_NULL };
 
 void add_hotkeys(config& cfg);

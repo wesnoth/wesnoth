@@ -41,6 +41,10 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("accelerated",HOTKEY_ACCELERATED));
 		m.insert(val("resistance",HOTKEY_ATTACK_RESISTANCE));
 		m.insert(val("terraintable",HOTKEY_TERRAIN_TABLE));
+		m.insert(val("describeunit",HOTKEY_UNIT_DESCRIPTION));
+		m.insert(val("save",HOTKEY_SAVE_GAME));
+		m.insert(val("recruit",HOTKEY_RECRUIT));
+		m.insert(val("recall",HOTKEY_RECALL));
 	}
 
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
