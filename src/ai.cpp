@@ -570,6 +570,17 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(units.count(attacker) && units.count(target)) {
 				attack(disp,map,attacker,target,weapon,units,state,
 				       gameinfo,false);
+
+				const std::map<gamemap::location,unit>::const_iterator tgt =
+		                                              units.find(target);
+
+				const bool defender_human = (tgt != units.end()) ?
+		             teams[tgt->second.side()-1].is_human() : false;
+
+
+				dialogs::advance_unit(gameinfo,units,attacker,disp,true);
+				dialogs::advance_unit(gameinfo,units,target,disp,!defender_human);
+
 				check_victory(units,teams);
 			}
 			

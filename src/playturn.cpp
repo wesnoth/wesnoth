@@ -267,9 +267,11 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 			}
 		}
 
-		const unit_map::const_iterator un = units_.find(new_hex);
+		const unit_map::iterator un = units_.find(new_hex);
 
 		if(un != units_.end() && un->second.side() != team_num_) {
+			unit_movement_resetter move_reset(un->second);
+
 			const bool ignore_zocs = un->second.type().is_skirmisher();
 			const bool teleport = un->second.type().teleports();
 			current_paths_ = paths(map_,gameinfo_,units_,new_hex,teams_,
