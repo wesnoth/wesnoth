@@ -244,8 +244,9 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 
 gamemap::location display::pixel_position_to_hex(int x, int y)
 {
-	const int tesselation_x_size = hex_size() * 3 / 2;
-	const int tesselation_y_size = hex_size();
+	const int s = hex_size();
+	const int tesselation_x_size = s * 3 / 2;
+	const int tesselation_y_size = s;
 	const int x_base = x / tesselation_x_size * 2;
 	const int x_mod = x % tesselation_x_size;
 	const int y_base = y / tesselation_y_size;
@@ -255,10 +256,10 @@ gamemap::location display::pixel_position_to_hex(int x, int y)
 	int y_modifier;
 	
 	if (y_mod < tesselation_y_size / 2) {
-		if ((x_mod * 2 + y_mod) < (hex_size() / 2)) {
+		if ((x_mod * 2 + y_mod) < (s / 2)) {
 			x_modifier = -1;
 			y_modifier = -1;
-		} else if ((x_mod * 2 - y_mod) < (hex_size() * 3 / 2)) {
+		} else if ((x_mod * 2 - y_mod) < (s * 3 / 2)) {
 			x_modifier = 0;
 			y_modifier = 0;
 		} else {
@@ -267,10 +268,10 @@ gamemap::location display::pixel_position_to_hex(int x, int y)
 		}
 		
 	} else {
-		if ((x_mod * 2 - (y_mod - hex_size() / 2)) < 0) {
+		if ((x_mod * 2 - (y_mod - s / 2)) < 0) {
 			x_modifier = -1;
 			y_modifier = 0;
-		} else if ((x_mod * 2 + (y_mod - hex_size() / 2)) < hex_size() * 2) {
+		} else if ((x_mod * 2 + (y_mod - s / 2)) < s * 2) {
 			x_modifier = 0;
 			y_modifier = 0;
 		} else {
@@ -279,8 +280,7 @@ gamemap::location display::pixel_position_to_hex(int x, int y)
 		}
 	}
 
-	return gamemap::location(x_base + x_modifier,
-		y_base + y_modifier);
+	return gamemap::location(x_base + x_modifier, y_base + y_modifier);
 }
 
 int display::get_location_x(const gamemap::location& loc) const
