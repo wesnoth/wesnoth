@@ -32,6 +32,7 @@
 #include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "hotkeys.hpp"
+#include "intro.hpp"
 #include "key.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -1098,10 +1099,8 @@ int play_game(int argc, char** argv)
 		try {
 			const LEVEL_RESULT result = play_game(disp,state,game_config,units_data,video);
 			if(result == VICTORY) {
-				gui::show_dialog(disp,NULL,
-				  _("The End"),
-				  _("You have reached the end of the currently playable levels"),
-				  gui::OK_ONLY);
+				the_end(disp);
+				about::show_about(disp);
 			}
 		} catch(gamestatus::load_game_exception& e) {
 

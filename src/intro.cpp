@@ -300,3 +300,32 @@ bool show_intro_part(display& screen, const config& part,
 
 	return true;
 }
+
+void the_end(display& screen)
+{
+	SDL_Rect area = screen.screen_area();
+	SDL_FillRect(screen.video().getSurface(),&area,0);
+
+	update_whole_screen();
+	screen.video().flip();
+
+	const std::string text = _("The End");
+	const size_t font_size = 24;
+	
+	area = font::text_area(text,font_size);
+	area.x = screen.screen_area().w/2 - area.w/2;
+	area.y = screen.screen_area().h/2 - area.h/2;
+
+	for(size_t n = 0; n < 255; n += 5) {
+		const SDL_Color col = {n,n,n,n};
+		font::draw_text(&screen,area,font_size,col,text,area.x,area.y);
+		update_rect(area);
+		screen.video().flip();
+
+		SDL_FillRect(screen.video().getSurface(),&area,0);
+
+		SDL_Delay(10);
+	}
+
+	SDL_Delay(4000);
+}

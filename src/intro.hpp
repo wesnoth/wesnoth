@@ -34,4 +34,6 @@
 //user able to go to the next part, or skip it entirely.
 void show_intro(display& screen, const config& data, const config& level);
 
+void the_end(display& screen);
+
 #endif
