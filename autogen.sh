@@ -7,4 +7,5 @@ touch icons/Makefile.in
 touch src/Makefile.in
 touch src/server/Makefile.in
 touch src/tools/Makefile.in
+touch src/zip/Makefile.in
 touch configure

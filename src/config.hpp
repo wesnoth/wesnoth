@@ -62,6 +62,7 @@ private:
 std::string read_file(const std::string& fname);
 //throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data);
+std::string read_stdin();
 
 struct preproc_define {
 	preproc_define() {}

@@ -14,6 +14,10 @@ if EDITOR
 bin_PROGRAMS += wesnoth_editor
 endif
 
+if WZIP
+SUBDIRS += zip
+endif
+
 pkgdatadir=$(datadir)/@DATADIR@
 
 #############################################################################

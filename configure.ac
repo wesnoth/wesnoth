@@ -234,7 +234,7 @@ AC_ARG_ENABLE([server],
 	      [server=no])
 
 AC_ARG_ENABLE([editor],
-	      [  --enable-editor       Enable compilation editor],
+	      [  --enable-editor       Enable compilation of map editor],
 	      [editor=$enableval],
 	      [editor=no])
 
@@ -253,6 +253,11 @@ AC_ARG_ENABLE([gnome],
 	      [gnome=$enableval],
 	      [gnome=no])
 
+AC_ARG_ENABLE([wzip],
+	      [  --enable-wzip         Enable compilation of wesnoth_zip program],
+	      [wzip=$enableval],
+	      [wzip=no])
+
 AM_CONDITIONAL([STATIC], [test x$static = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
@@ -261,6 +266,7 @@ AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
 AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes])
 AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome1found = xno])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
+AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
 
 #######################################################################
 # Check for PNG support in SDL_image                                  #
@@ -384,6 +390,7 @@ AC_CONFIG_FILES([Makefile
 		 icons/Makefile
 		 src/Makefile
 		 src/server/Makefile
-		 src/tools/Makefile])
+		 src/tools/Makefile
+		 src/zip/Makefile])
 
 AC_OUTPUT

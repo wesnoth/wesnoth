@@ -102,6 +102,27 @@ void read_file_internal(const std::string& fname, std::string& res)
 
 } //end anon namespace
 
+std::string read_stdin()
+{
+	std::vector<char> v;
+	const int block_size = 65536;
+
+	size_t nbytes = 1;
+	while(nbytes > 0) {
+		v.resize(v.size() + block_size);
+		nbytes = fread(&v[v.size() - block_size],1,block_size,stdin);
+		if(nbytes < block_size) {
+			v.resize(v.size() - (block_size - nbytes));
+			break;
+		}
+	}
+	
+	std::string res;
+	res.resize(v.size());
+	std::copy(v.begin(),v.end(),res.begin());
+	return res;
+}
+
 const char* io_exception::what() const throw() {
 	return message.c_str();
 }
