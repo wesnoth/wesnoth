@@ -250,7 +250,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		 font::draw_text(NULL, clipRect, message_font_size,
 		                 font::NORMAL_COLOUR, text_widget_label, 0, 0, NULL).w +
 		                            text_widget.location().w;
-		text_widget_height = text_widget.location().h + 6;
+		text_widget_height = text_widget.location().h + 16;
 	}
 
 	menu menu_(disp,menu_items,type == MESSAGE);
@@ -458,19 +458,20 @@ int show_dialog(display& disp, SDL_Surface* image,
 	const int text_widget_y = yloc+top_padding+image_h-6+text_size.h+menu_hpadding;
 
 	if(use_textbox) {
+		const int text_widget_y_unpadded = text_widget_y + (text_widget_height - text_widget.location().h)/2;
 		text_widget.set_position(xloc + left_padding +
 		                         text_widget_width - text_widget.location().w,
-		                         text_widget_y);
+		                         text_widget_y_unpadded);
 		events::raise_draw_event();
 		font::draw_text(&disp, clipRect, message_font_size,
 		                font::NORMAL_COLOUR, text_widget_label,
-						xloc + left_padding,text_widget_y);
+						xloc + left_padding,text_widget_y_unpadded);
 	}
 
 	//set the position of any tick boxes. they go right below the menu, slammed against
 	//the right side of the dialog
 	if(options != NULL) {
-		int options_y = text_widget_y + (use_textbox ? text_widget.location().h : 0) + menu_.height() + button_height_padding + menu_hpadding;
+		int options_y = text_widget_y + text_widget_height + menu_.height() + button_height_padding + menu_hpadding;
 		for(size_t i = 0; i != check_buttons.size(); ++i) {
 			check_buttons[i].set_x(xloc + total_width - padding_width - check_buttons[i].width());
 			check_buttons[i].set_y(options_y);
