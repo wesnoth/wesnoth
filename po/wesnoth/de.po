@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-01-11 22:07+0100\n"
-"PO-Revision-Date: 2004-12-30 22:17+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2005-01-12 13:39+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -648,8 +648,8 @@ msgstr ""
 "gibt es verschiedene Möglichkeiten, diesen Schaden zu heilen. Schaden wird "
 "immer am Anfang Ihres Zuges, bevor Sie etwas tun können, geheilt."
 
+# edited by ivanovic
 #: data/help.cfg:172
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -680,8 +680,8 @@ msgstr ""
 "<ref>dst=ability_regeneration text=Regeneration</ref>: Manche Einheiten (z."
 "B. Trolle) heilen jeden Zug automatisch 8 Punkte."
 
+# edited by ivanovic
 #: data/help.cfg:175
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -692,10 +692,11 @@ msgstr ""
 "\n"
 "Heilende Einheiten: Einheiten mit der <ref>dst=ability_heals text='Heilung'</"
 "ref>-Fähigkeit heilen 4 Lebenspunkte bei allen direkt benachbarten Einheiten "
-"oder verhindern Giftschaden."
+"oder verhindern Giftschaden. Dabei wird eine Einheit höchstens um 8LP "
+"geheilt."
 
+# edited by ivanovic
 #: data/help.cfg:177
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -707,7 +708,8 @@ msgstr ""
 "\n"
 "Einheiten mit der Fertigkeit <ref>dst=ability_cures text='Kurieren'</ref> "
 "heilen 8 Lebenspunkte bei benachbarten Einheiten oder heilen eine Einheit "
-"von ihrer Vergiftung."
+"von ihrer Vergiftung. Es werden bei der betroffenen Einheit höchstens 18LP "
+"geheilt."
 
 #: data/help.cfg:179
 msgid ""
@@ -3251,8 +3253,8 @@ msgstr ""
 msgid "illuminates"
 msgstr "Lichtaura"
 
+# edited by ivanovic
 #: data/translations/english.cfg:54
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -3268,7 +3270,7 @@ msgstr ""
 "Nahestehenden besser kämpfen.\n"
 "\n"
 "Benachbarte Einheiten niedrigerer Stufen richten im Kampf einen höheren "
-"Schaden an."
+"Schaden an. Dabei erhöht sich der Schaden um 25% pro Stufe unterschied."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -3293,8 +3295,8 @@ msgstr ""
 "Loyal:\n"
 "Zählen nie mehr als 1 zum Unterhalt."
 
+# edited by ivanovic
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -3369,8 +3371,8 @@ msgstr ""
 msgid "steadfast"
 msgstr "Unerschütterlich"
 
+# edited by ivanovic
 #: data/translations/english.cfg:86
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -3385,8 +3387,8 @@ msgstr ""
 msgid "teleport"
 msgstr "Teleportation"
 
+# edited by ivanovic
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
@@ -3395,7 +3397,8 @@ msgstr ""
 "Hinterlistiger Angriff:\n"
 "Hinterlistig schleicht sich diese Einheit in den Rücken des Gegners um ihm "
 "bei einem Angriff den doppelten Schaden zuzufügen. Dies geling nur, wenn der "
-"Feind von einer freundlichen Einheit abgelenkt wird."
+"Feind von einer eigenen Einheit abgelenkt wird. (Es funktioniert nicht mit "
+"alleierten Einheiten.)"
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -3457,6 +3460,7 @@ msgstr ""
 "Erprobt durch Jahre des Trainierens, greift diese Einheit immer mit 60%iger "
 "Trefferwahrscheinlichkeit an."
 
+# edited by ivanovic
 #: data/translations/english.cfg:114
 msgid ""
 "Plague:\n"
@@ -3464,6 +3468,11 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
+"untote Plage:\n"
+"Wenn eine Einheit von einer Einheit mit der Fähigkeit untote Plage "
+"vernichtet wird, wird die getötete Einheit durch eine eigene, identische "
+"Einheit ersetzt. (Dies funktioniert nicht gegen Untote oder Einheiten in "
+"Dörfern.)"
 
 #: data/translations/english.cfg:117
 msgid ""
@@ -3476,8 +3485,8 @@ msgstr ""
 "vergiften. Dadurch veliert das Opfer pro Runde 8 LP, bis es geheilt wird "
 "oder sein LP auf 1 reduziert wurde."
 
+# edited by ivanovic
 #: data/translations/english.cfg:120
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
@@ -8595,10 +8604,10 @@ msgstr "Inland"
 msgid "Island"
 msgstr "Insel"
 
+# edited by ivanovic
 #: src/multiplayer.cpp:89
-#, fuzzy
 msgid "Load Game..."
-msgstr "Spielstand laden"
+msgstr "Spielstand laden..."
 
 #: src/multiplayer.cpp:99
 msgid "The maximum turns the game will go for"
@@ -8675,53 +8684,53 @@ msgstr "Keine Mitspieler gefunden."
 msgid "Create Game"
 msgstr "Partie eröffnen"
 
+# edited by ivanovic
 #: src/multiplayer.cpp:181
-#, fuzzy
 msgid "Name of game:"
-msgstr "Name der Partie"
+msgstr "Name der Partie:"
 
 #: src/multiplayer.cpp:184
 msgid "$login's game"
 msgstr "$login|s Partie"
 
+# edited by ivanovic
 #: src/multiplayer.cpp:195
-#, fuzzy
 msgid "Map to play:"
-msgstr "Verfügbare Karten"
+msgstr "Verfügbare Karten:"
 
+# edited by ivanovic
 #: src/multiplayer.cpp:291
-#, fuzzy
 msgid "Era:"
-msgstr "Ära"
+msgstr "Ära:"
 
 #: src/multiplayer.cpp:349
 msgid "You must enter a name."
 msgstr "Ihr müsst einen Namen eingeben."
 
+# edited by ivanovic
 #: src/multiplayer.cpp:363
-#, fuzzy
 msgid "Turns: "
-msgstr "Runden"
+msgstr "Runden:"
 
+# edited by ivanovic
 #: src/multiplayer.cpp:367
-#, fuzzy
 msgid "unlimited"
 msgstr "Unbegrenzt"
 
+# edited by ivanovic
 #: src/multiplayer.cpp:380
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Steuereinnahmen pro Dorf"
+msgstr "Steuereinnahmen pro Dorf:"
 
+# edited by ivanovic
 #: src/multiplayer.cpp:393
-#, fuzzy
 msgid "Experience Requirements: "
-msgstr "Vorausgesetzte Erfahrungen"
+msgstr "Vorausgesetzte Erfahrungen:"
 
+# edited by ivanovic
 #: src/multiplayer.cpp:452 src/multiplayer.cpp:514
-#, fuzzy
 msgid "Players: "
-msgstr "Spieler"
+msgstr "Spieler:"
 
 #: src/multiplayer.cpp:532
 msgid ""
@@ -9420,28 +9429,3 @@ msgstr "Datei löschen"
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
 msgstr "Das Löschen der Datei ist fehlgeschlagen."
-
-#~ msgid ""
-#~ "Nightstalk:\n"
-#~ "The unit becomes invisible during night."
-#~ msgstr ""
-#~ "Schattenfusion:\n"
-#~ "Dämonische Kräfte lassen diese Einheit mit der Nacht verschmelzen, so "
-#~ "dass sie nur noch ein Schatten in der Dunkelheit ist. Dadurch können die "
-#~ "Feinde sie nachts nicht entdecken."
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "If this unit kills a living target and that unit was not stationed in a "
-#~ "village, the dead target's corpse will rise up and fight for you."
-#~ msgstr ""
-#~ "Untote Plage:\n"
-#~ "Finstere mächte rufen sämtliche von dieser Einheit getöteten Einheiten "
-#~ "als untote Zombies zurück ins leben. Es sei denn, der Feind befand sich "
-#~ "in einem Dorf, weswegen er in geweihtem Boden beigesetzt werden konnte."
-
-#~ msgid "skirmisher,heals"
-#~ msgstr "Plänkler,Heilen"
-
-#~ msgid "skirmisher,cures"
-#~ msgstr "Plänkler,Kurieren"
