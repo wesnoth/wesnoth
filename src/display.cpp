@@ -1311,19 +1311,24 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 			(teams_[currentTeam_].is_enemy(it->second.side()) && 
 			it->second.invisible(map_.underlying_terrain(map_[x][y]), 
 					status_.get_time_of_day().lawful_bonus,loc,
-					units_,teams_)))
+					units_,teams_))) {
 		return;
+	}
 
 	if(loc != hiddenUnit_) {
 		if(draw_hit) {
 			blend_with = hit_colour;
 			highlight_ratio = 0.7;
 		} else if(loc == advancingUnit_ && it != units_.end()) {
-			//set the advancing colour to white if it's a non-chaotic unit,
-			//otherwise black
+			//the unit is advancing - set the advancing colour to white if it's a
+			//non-chaotic unit, otherwise black
 			blend_with = it->second.type().alignment() == unit_type::CHAOTIC ?
 			                                        0x0001 : 0xFFFF;
 			highlight_ratio = advancingAmount_;
+		} else if(it->second.poisoned()) {
+			//the unit is poisoned - draw with a green hue
+			blend_with = SDL_MapRGB(dst->format,0,255,0);
+			highlight_ratio = 0.75;
 		}
 
 		const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*(zoom_/DefaultZoom));
@@ -1473,16 +1478,15 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
 		//draw number in yellow if terrain is light, else draw in black
 		gamemap::TERRAIN terrain = map_.get_terrain(loc);
-		bool tile_is_light = map_.get_terrain_info (terrain).is_light ();;
+		const bool tile_is_light = map_.get_terrain_info(terrain).is_light();
 		SDL_Color text_colour = tile_is_light ? font::DARK_COLOUR : font::YELLOW_COLOUR;
 
 		const SDL_Rect& rect = map_area();
-		static std::string str(1,'x');
-		str[0] = '0' + route_.move_left + 1;
-		const SDL_Rect& text_area = font::draw_text(NULL,map_area(),18,text_colour,str,0,0);
+		const std::string str(1,'1' + route_.move_left);
+		const SDL_Rect& text_area = font::draw_text(NULL,rect,18,text_colour,str,0,0);
 		const int x = xloc + int(zoom_/2.0) - text_area.w/2;
 		const int y = yloc + int(zoom_/2.0) - text_area.h/2;
-		font::draw_text(this,map_area(),18,text_colour,str,x,y);
+		font::draw_text(this,rect,18,text_colour,str,x,y);
 	}
 }
 

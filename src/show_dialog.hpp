@@ -80,7 +80,7 @@ int show_dialog(display& screen, SDL_Surface* image,
 				const std::string& text_widget_label="",
 				std::string* text_widget_text=NULL,
                 dialog_action* action=NULL,
-				std::vector<check_item>* options=NULL
+				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1
 			 );
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);

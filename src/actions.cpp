@@ -800,12 +800,6 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		unit& u = units.find(loc)->second;
 
-		if(h->second > 0 && h->second > u.max_hitpoints()-u.hitpoints()) {
-			h->second = u.max_hitpoints()-u.hitpoints();
-			if(h->second <= 0)
-				continue;
-		}
-
 		if(show_healing) {
 			disp.scroll_to_tile(loc.x,loc.y,display::WARP);
 			disp.select_hex(loc);
@@ -813,6 +807,8 @@ void calculate_healing(display& disp, const gamemap& map,
 		}
 
 		const int DelayAmount = 50;
+
+		std::cerr << "unit is poisoned? " << (u.has_flag("poisoned") ? "yes" : "no") << "," << h->second << "," << max_healing[h->first] << "\n";
 
 		if(u.has_flag("poisoned") && h->second > 0) {
 
@@ -836,6 +832,12 @@ void calculate_healing(display& disp, const gamemap& map,
 		} else if(h->second > 0) {
 			if(show_healing)
 				sound::play_sound("heal.wav");
+		}
+
+		if(h->second > 0 && h->second > u.max_hitpoints()-u.hitpoints()) {
+			h->second = u.max_hitpoints()-u.hitpoints();
+			if(h->second <= 0)
+				continue;
 		}
 
 		while(h->second > 0) {

@@ -715,6 +715,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_PREFERENCES:
 	case hotkey::HOTKEY_OBJECTIVES:
 	case hotkey::HOTKEY_UNIT_LIST:
+	case hotkey::HOTKEY_QUIT_GAME:
 		return true;
 
 	case hotkey::HOTKEY_SPEAK:

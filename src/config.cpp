@@ -856,7 +856,7 @@ std::string& config::escape(std::string& str)
 		std::string::size_type pos = 0;
 
 		do {
-			pos=str.find_first_of("#@{}+-,\\*",pos);
+			pos = str.find_first_of("#@{}+-,\\*",pos);
 			if(pos != std::string::npos) {
 				str.insert(pos,1,'\\');
 				pos += 2;
@@ -874,7 +874,7 @@ std::string& config::unescape(std::string& str)
 		pos = str.find('\\',pos);
 		if(pos != std::string::npos) {
 			str.erase(pos,1);
-			pos++;
+			++pos;
 		}
 	} while(pos < str.size() && pos != std::string::npos);
 	return str;

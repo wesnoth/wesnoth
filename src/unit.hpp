@@ -70,6 +70,7 @@ public:
 	bool invisible(gamemap::TERRAIN terrain, int lawful_bonus, 
 			const gamemap::location loc,
 			const unit_map& units,const std::vector<team>& teams) const;
+	bool poisoned() const;
 
 	bool matches_filter(const config& cfg) const;
 

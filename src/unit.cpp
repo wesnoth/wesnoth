@@ -348,6 +348,12 @@ bool unit::invisible(gamemap::TERRAIN terrain, int lawful_bonus,
 	return false;
 }
 
+bool unit::poisoned() const
+{
+	static const std::string poisoned_str("poisoned");
+	return has_flag(poisoned_str);
+}
+
 bool unit::matches_filter(const config& cfg) const
 {
 	const std::string& description = cfg["description"];

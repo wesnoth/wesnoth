@@ -221,7 +221,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 				const std::vector<unit>* units_ptr,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
-                dialog_action* action, std::vector<check_item>* options)
+                dialog_action* action, std::vector<check_item>* options, int xloc, int yloc)
 {
 	if(disp.update_locked())
 		return -1;
@@ -385,8 +385,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 	                         padding_height + button_heights + menu_.height() +
 							 text_widget_height + check_button_height;
 
-	int xloc = scr->w/2 - total_width/2;
-	int yloc = scr->h/2 - total_height/2;
+	if(xloc == -1 || yloc == -1) {
+		xloc = scr->w/2 - total_width/2;
+		yloc = scr->h/2 - total_height/2;
+	}
 
 	int unitx = 0;
 	int unity = 0;
@@ -688,7 +690,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 		}
 
 		dialog_action_receive_network receiver(connection_num,cfg,stats);
-		const int res = gui::show_dialog(disp,NULL,"",str.str(),CANCEL_ONLY,NULL,NULL,"",NULL,&receiver);
+		const int res = show_dialog(disp,NULL,"",str.str(),CANCEL_ONLY,NULL,NULL,"",NULL,&receiver);
 		if(res != int(dialog_action_receive_network::CONNECTION_CONTINUING)) {
 			return receiver.result();
 		}
@@ -698,6 +700,11 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 void fade_logo(display& screen, int xpos, int ypos)
 {
 	const scoped_sdl_surface logo_unscaled(image::get_image(game_config::game_logo,image::UNSCALED));
+	if(logo_unscaled == NULL) {
+		std::cerr << "Could not find game logo\n";
+		return;
+	}
+
 	const scoped_sdl_surface logo(scale_surface(logo_unscaled,(logo_unscaled->w*screen.x())/1024,(logo_unscaled->h*screen.y())/768));
 	if(logo == NULL) {
 		std::cerr << "Could not find game logo\n";
