@@ -521,7 +521,8 @@ unit_type::unit_type(const unit_type& o)
       nightvision_(o.nightvision_), steadfast_(o.steadfast_),
       can_advance_(o.can_advance_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
-      genders_(o.genders_), defensive_animations_(o.defensive_animations_)
+      genders_(o.genders_), defensive_animations_(o.defensive_animations_),
+      teleport_animations_(o.teleport_animations_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -619,6 +620,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config::child_list& defends = cfg_.get_children("defend");
 	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
 		defensive_animations_.push_back(defensive_animation(**d));
+	}
+	const config::child_list& teleports = cfg_.get_children("teleport_anim");
+	for(config::child_list::const_iterator d = teleports.begin(); d != teleports.end(); ++d) {
+		teleport_animations_.push_back(unit_animation(**d));
 	}
 }
 
@@ -1014,6 +1019,12 @@ const unit_animation* unit_type::defend_animation(bool hits, attack_type::RANGE 
 	}
 
 	return NULL;
+}
+
+const unit_animation* unit_type::teleport_animation( ) const
+{
+	if (teleport_animations_.empty()) return NULL;
+	return &teleport_animations_[rand() % teleport_animations_.size()];
 }
 
 game_data::game_data()

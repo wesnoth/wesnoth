@@ -71,14 +71,45 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	int skips = 0;
 
+	const int acceleration = disp.turbo() ? 5:1;
+
+	gamemap::location src_adjacent[6];
+	get_adjacent_tiles(a, src_adjacent);
+
 	const std::string& halo = u.type().image_halo();
 	util::scoped_resource<int,halo::remover> halo_effect(0);
 	if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
 		halo_effect.assign(halo::add(0,0,halo));
 	}
-
-	gamemap::location src_adjacent[6];
-	get_adjacent_tiles(a, src_adjacent);
+	
+	const unit_animation *teleport_animation_p = u.type().teleport_animation();
+	if (teleport_animation_p && !tiles_adjacent(a, b) && !disp.fogged(a.x, a.y)) { // teleport
+		unit_animation teleport_animation =  *teleport_animation_p;
+		int animation_time;
+		const int begin_at = teleport_animation.get_first_frame_time(unit_animation::UNIT_FRAME);
+		teleport_animation.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
+		animation_time = teleport_animation.get_animation_time();
+		adjust_map_position(disp, xsrc, ysrc, disp.hex_size(), disp.hex_size());
+		while(animation_time < 0) {
+			const std::string* unit_image = &teleport_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
+			if (unit_image->empty()) {
+				unit_image = &u.type().image();
+			}
+			surface image(image::get_image(*unit_image));
+			if (!face_left) {
+				image.assign(image::reverse_image(image));
+			}
+			disp.draw_tile(a.x,a.y);
+			for(int tile = 0; tile != 6; ++tile) {
+				disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
+			}
+			disp.draw_unit(xsrc,ysrc,image,false, 1.0, 0, 0.0, src_submerge);
+			disp.update_display();
+			events::pump();
+			teleport_animation.update_current_frames();
+			animation_time = teleport_animation.get_animation_time();
+		}
+	}
 
 	for(int i = 0; i < nsteps; ++i) {
 		events::pump();
@@ -113,6 +144,10 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 		//invalidate the source tile and all adjacent tiles,
 		//since the unit can partially overlap adjacent tiles
+		/* FIXME: This code is wrong for short-range teleportation since the teleported unit is not
+		 * near its source location; consequently the unit leaves a ghost trace behind it. It does
+		 * not happen for long-range teleportation since the scrolling has the nice side effect of
+		 * cleaning up the display. -- silene */
 		disp.draw_tile(a.x,a.y);
 		for(int tile = 0; tile != 6; ++tile) {
 			disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
@@ -144,6 +179,37 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			disp.update_display();
 		} else {
 			++skips;
+		}
+	}
+
+	gamemap::location dst_adjacent[6];
+	get_adjacent_tiles(b, dst_adjacent);
+
+	if (teleport_animation_p && !tiles_adjacent(a, b) && !disp.fogged(b.x, b.y)) { // teleport
+		unit_animation teleport_animation =  *teleport_animation_p;
+		int animation_time;
+		const int end_at = teleport_animation.get_last_frame_time();
+		teleport_animation.start_animation(0, unit_animation::UNIT_FRAME, acceleration);
+		animation_time = teleport_animation.get_animation_time();
+		adjust_map_position(disp, xdst, ydst, disp.hex_size(), disp.hex_size());
+		while(animation_time < end_at) {
+			const std::string* unit_image = &teleport_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
+			if (unit_image->empty()) {
+				unit_image = &u.type().image();
+			}
+			surface image(image::get_image(*unit_image));
+			if (!face_left) {
+				image.assign(image::reverse_image(image));
+			}
+			disp.draw_tile(b.x,b.y);
+			for(int tile = 0; tile != 6; ++tile) {
+				disp.draw_tile(dst_adjacent[tile].x,dst_adjacent[tile].y);
+			}
+			disp.draw_unit(xdst, ydst, image, false, 1.0, 0, 0.0, dst_submerge);
+			disp.update_display();
+			events::pump();
+			teleport_animation.update_current_frames();
+			animation_time = teleport_animation.get_animation_time();
 		}
 	}
 }

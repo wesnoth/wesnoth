@@ -240,6 +240,7 @@ public:
 	const std::string& race() const;
 
 	const unit_animation* defend_animation(bool hits, attack_type::RANGE range) const;
+	const unit_animation* teleport_animation() const;
 
 private:
 	void operator=(const unit_type& o);
@@ -287,6 +288,8 @@ private:
 	};
 
 	std::vector<defensive_animation> defensive_animations_;
+
+	std::vector<unit_animation> teleport_animations_;
 };
 
 struct game_data
