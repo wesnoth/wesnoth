@@ -41,6 +41,7 @@
 std::map<gamemap::location,double> display::debugHighlights_;
 
 namespace {
+	const int MinZoom = 36;
 	const int DefaultZoom = 72;
 	const int MaxZoom = 200;
 
@@ -290,7 +291,7 @@ double display::zoom(int amount)
 	const int orig_zoom = zoom_;
 
 	zoom_ += amount;
-	if(zoom_ > MaxZoom) {
+	if(zoom_ < MinZoom || zoom_ > MaxZoom) {
 		zoom_ = orig_zoom;
 		xpos_ = orig_xpos;
 		ypos_ = orig_ypos;
