@@ -332,7 +332,8 @@ public:
 	bool play_multiplayer();
 	bool change_language();
 
-	void play_game();
+	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
+	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 
 private:
 	game_controller(const game_controller&);
@@ -797,7 +798,28 @@ bool game_controller::load_game()
 	}
 
 	try {
-		::load_game(units_data_,game,state_);
+		//to load a save file, we first load the file in, then we re-parse game
+		//data with the save's #defines, and then we finally parse the save file,
+		//with the game data ready to go.
+		config cfg;
+		read_save_file(game,cfg);
+
+		defines_map_.clear();
+		defines_map_[cfg["difficulty"]] = preproc_define();
+
+		if(defines_map_.count("NORMAL")) {
+			defines_map_["MEDIUM"] = preproc_define();
+		}
+
+		const std::string& campaign_define = cfg["campaign_define"];
+		if(campaign_define.empty() == false) {
+			defines_map_[campaign_define] = preproc_define();
+		}
+
+		refresh_game_cfg();
+
+		state_ = read_game(units_data_,&cfg);
+		
 		if(state_.version != game_config::version) {
 			const int res = gui::show_dialog(disp(),NULL,"",
 			                      _("This save is from a different version of the game. Do you want to try to load it?"),
@@ -807,8 +829,6 @@ bool game_controller::load_game()
 			}
 		}
 
-		defines_map_.clear();
-		defines_map_[state_.difficulty] = preproc_define();
 	} catch(gamestatus::error& e) {
 		std::cerr << "caught load_game_failed\n";
 		gui::show_dialog(disp(),NULL,"",
@@ -1322,10 +1342,12 @@ void game_controller::refresh_game_cfg()
 {
 	try {
 		if(old_defines_map_.empty() || defines_map_ != old_defines_map_) {
-			std::vector<line_source> line_src;
-			read_game_cfg(defines_map_,line_src,game_config_,use_caching_);
 
 			units_data_.clear();
+			game_config_.clear();
+
+			std::vector<line_source> line_src;
+			read_game_cfg(defines_map_,line_src,game_config_,use_caching_);
 
 			const config* const units = game_config_.child("units");
 			if(units != NULL) {
@@ -1340,17 +1362,19 @@ void game_controller::refresh_game_cfg()
 	}
 }
 
-void game_controller::play_game()
+void game_controller::play_game(RELOAD_GAME_DATA reload)
 {
-	if(state_.campaign_define.empty() == false) {
-		defines_map_[state_.campaign_define] = preproc_define();
-	}
+	if(reload == RELOAD_DATA) {
+		if(state_.campaign_define.empty() == false) {
+			defines_map_[state_.campaign_define] = preproc_define();
+		}
 
-	if(defines_map_.count("NORMAL")) {
-		defines_map_["MEDIUM"] = preproc_define();
-	}
+		if(defines_map_.count("NORMAL")) {
+			defines_map_["MEDIUM"] = preproc_define();
+		}
 	
-	refresh_game_cfg();
+		refresh_game_cfg();
+	}
 
 	const binary_paths_manager bin_paths_manager(game_config_);
 
@@ -1518,6 +1542,7 @@ int play_game(int argc, char** argv)
 		}
 		tips_of_day.clear();
 
+		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
 		std::cerr << "title screen returned result\n";
 		if(res == gui::QUIT_GAME) {
 			std::cerr << "quitting game...\n";
@@ -1526,6 +1551,8 @@ int play_game(int argc, char** argv)
 			if(game.load_game() == false) {
 				continue;
 			}
+
+			should_reload = game_controller::NO_RELOAD_DATA;
 		} else if(res == gui::TUTORIAL) {
 			game.set_tutorial();
 		} else if(res == gui::NEW_CAMPAIGN) {
@@ -1551,7 +1578,7 @@ int play_game(int argc, char** argv)
 			continue;
 		}
 		
-		game.play_game();
+		game.play_game(should_reload);
 	}
 
 	return 0;
