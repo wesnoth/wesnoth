@@ -589,6 +589,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		race_ = &dummy_race;
 	}
 
+	//insert any traits that are just for this unit type
+	const config::child_list& unit_traits = cfg.get_children("trait");
+	possibleTraits_.insert(possibleTraits_.end(),traits.begin(),traits.end());
+
 	abilities_ = utils::split(cfg_["ability"]);
 
 	//if the string was empty, split will give us one empty string in the list,
