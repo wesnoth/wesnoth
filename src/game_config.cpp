@@ -31,7 +31,7 @@ namespace game_config
 	int kill_experience = 8;
 	int leadership_bonus = 25;
 	const std::string version = VERSION;
-	bool debug = false, editor = false;
+	bool debug = false, editor = false, ignore_replay_errors = false;
 
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,

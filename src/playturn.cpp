@@ -2414,6 +2414,8 @@ void turn_info::do_command(const std::string& str)
 		throw end_level_exception(QUIT);
 	} else if(cmd == "debug") {
 		game_config::debug = (data != "off") ? true : false;
+	} else if(cmd == "ignore_replay_errors") {
+		game_config::ignore_replay_errors = (data != "off") ? true : false;
 	} else if(cmd == "n" && game_config::debug) {
 		throw end_level_exception(VICTORY);
 	} else if(game_config::debug && cmd == "unit") {
