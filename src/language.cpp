@@ -44,6 +44,7 @@ language_def known_languages[] = {
  	language_def("el_GR", "Greek"),
 	language_def("hu_HU", "Hungarian"),
 	language_def("it_IT", "Italiano"),
+	language_def("la_IT", "Latina"),
 	language_def("nl_NL", "Nederlands"),
 	language_def("no_NO", "Norsk"),
 	language_def("pl_PL", "Polski"),
