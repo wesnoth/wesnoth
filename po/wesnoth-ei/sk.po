@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-03-12 18:37+0100\n"
+"POT-Creation-Date: 2005-03-20 17:10+0100\n"
 "PO-Revision-Date: 2005-01-17 21:39+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -32,14 +32,14 @@ msgstr "Kopijník"
 msgid "Swordsman"
 msgstr "Bojovník"
 
+#: data/campaigns/Eastern_Invasion.cfg:12
+msgid "(hardest)"
+msgstr "(ťažká)"
+
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:158
 #: data/campaigns/Eastern_Invasion.cfg:12
 msgid "Royal Guard"
 msgstr "Kráľovský gardista"
-
-#: data/campaigns/Eastern_Invasion.cfg:12
-msgid "(hardest)"
-msgstr "(ťažká)"
 
 #: data/campaigns/Eastern_Invasion.cfg:13
 msgid ""
@@ -81,7 +81,7 @@ msgstr ""
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:45
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:43
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:42
-#: data/scenarios/Eastern_Invasion/Reject.cfg:43
+#: data/scenarios/Eastern_Invasion/Reject.cfg:42
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:39
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:36
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:48
@@ -980,7 +980,7 @@ msgid "Ravanal-Guard"
 msgstr "Kráľovský gardista"
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:94
-#: data/scenarios/Eastern_Invasion/Reject.cfg:92
+#: data/scenarios/Eastern_Invasion/Reject.cfg:91
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:46
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:103
 #, fuzzy
@@ -1276,7 +1276,8 @@ msgstr "Nezajali sme dosť ohyzdov. Musíme pokračovať bez nich."
 msgid "Weldyn Besieged"
 msgstr "Obliehanie Weldynu"
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:26
+#: data/scenarios/Eastern_Invasion/Reject.cfg:25
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1285,7 +1286,6 @@ msgid ""
 "#Death of Gweddry\n"
 "#Death of Dacyn\n"
 "#Death of Owaec\n"
-"#Death of Sudoc\n"
 "#Letting any enemy unit onto your keep"
 msgstr ""
 "\n"
@@ -1298,31 +1298,31 @@ msgstr ""
 "#Zomrie Sudoc\n"
 "#Nejaká nepriateľská jednotka vojne do tvojej pevnosti"
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:52
+#: data/scenarios/Eastern_Invasion/Reject.cfg:51
 msgid "Mal-Akranbral"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:62
+#: data/scenarios/Eastern_Invasion/Reject.cfg:61
 msgid "Mal-Hadanak"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:72
+#: data/scenarios/Eastern_Invasion/Reject.cfg:71
 msgid "Mal-Drakanal"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:82
+#: data/scenarios/Eastern_Invasion/Reject.cfg:81
 msgid "Mal-Larakan"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:102
+#: data/scenarios/Eastern_Invasion/Reject.cfg:101
 msgid "Mal-Xaskanat"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:112
+#: data/scenarios/Eastern_Invasion/Reject.cfg:111
 msgid "Mal-Katklagad"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:133
+#: data/scenarios/Eastern_Invasion/Reject.cfg:132
 msgid ""
 "You people are fools! You decided to reject my master's duel... very well, "
 "you will all DIE! And know, my master is here, watching your very demise. "
@@ -1336,19 +1336,19 @@ msgstr ""
 "nás tu sedem, a iba JEDEN z nás je pravý veliteľ! Ha ha ha ha! Aby sme boli "
 "féroví, prezradíme vám naše mená."
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:137
+#: data/scenarios/Eastern_Invasion/Reject.cfg:136
 msgid "Remember, we have to kill Mal-Ravanal. He's here somewhere..."
 msgstr "Pamätaj, musíme zabiť Mal-Ravanala. Je niekde tu..."
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:149
+#: data/scenarios/Eastern_Invasion/Reject.cfg:148
 msgid "How did you know...?"
 msgstr "Ako si vedel...?"
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:167
+#: data/scenarios/Eastern_Invasion/Reject.cfg:166
 msgid "Kill the king!"
 msgstr "Zabite kráľa!"
 
-#: data/scenarios/Eastern_Invasion/Reject.cfg:171
+#: data/scenarios/Eastern_Invasion/Reject.cfg:170
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
 msgstr "Zabili Konráda... teraz, aj keby sme zachránili Weldyn, Wesnoth padol."
 
@@ -2493,6 +2493,16 @@ msgid ""
 msgstr ""
 "Máš jednoduchú voľbu. Prijmi, alebo čeľ útoku hôrd môjho pána ako pravý "
 "zbabelec."
+
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:324
+msgid ""
+"I will accept this challenge. By your own master's terms, that proves I am "
+"no coward."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:333
+msgid "I will not accept a fight in which he will obviously cheat! I refuse!"
+msgstr ""
 
 #: data/scenarios/Eastern_Invasion/deaths.cfg:9
 msgid "No! I have failed in my mission to save Wesnoth from destruction..."
