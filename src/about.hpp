@@ -14,7 +14,8 @@
 #ifndef ABOUT_H_INCLUDED
 #define ABOUT_H_INCLUDED
 
-#include "display.hpp"
+class display;
+
 #include <vector>
 #include <string>
 

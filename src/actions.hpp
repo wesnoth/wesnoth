@@ -14,16 +14,18 @@
 #ifndef ACTIONS_H_INCLUDED
 #define ACTIONS_H_INCLUDED
 
-#include "display.hpp"
-#include "gamestatus.hpp"
+class display;
+class gamestatus;
+class replay;
+
 #include "map.hpp"
-#include "replay.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"
 
 #include <deque>
 #include <map>
 #include <string>
+#include <vector>
 
 //this file defines various functions which implement different in-game
 //events and commands.

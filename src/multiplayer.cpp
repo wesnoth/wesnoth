@@ -25,6 +25,7 @@
 #include "network.hpp"
 #include "playlevel.hpp"
 #include "preferences.hpp"
+#include "replay.hpp"
 
 #define LOG_NW lg::info(lg::network)
 

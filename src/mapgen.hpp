@@ -1,10 +1,14 @@
 #ifndef MAP_GEN_HPP_INCLUDED
 #define MAP_GEN_HPP_INCLUDED
 
-#include "config.hpp"
-#include "display.hpp"
+class config;
+class display;
 
+#include "map.hpp"
+
+#include <map>
 #include <string>
+#include <vector>
 
 class map_generator
 {

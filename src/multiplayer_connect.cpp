@@ -15,11 +15,12 @@
 #include "dialogs.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "gettext.hpp"
 #include "multiplayer_connect.hpp"
 #include "preferences.hpp"
+#include "replay.hpp"
 #include "show_dialog.hpp"
 #include "wassert.hpp"
-#include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 
 #define LOG_NW lg::info(lg::network)

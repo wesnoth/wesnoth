@@ -13,6 +13,8 @@
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
+class replay_network_sender;
+
 #include "actions.hpp"
 #include "ai_interface.hpp"
 #include "config.hpp"

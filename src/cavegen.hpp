@@ -3,6 +3,8 @@
 
 #include "mapgen.hpp"
 
+#include <set>
+
 class cave_map_generator : public map_generator
 {
 public:

@@ -4,6 +4,7 @@
 #include "log.hpp"
 #include "map_create.hpp"
 #include "mapgen_dialog.hpp"
+#include "serialization/string_utils.hpp"
 
 #define ERR_CF lg::err(lg::config)
 
