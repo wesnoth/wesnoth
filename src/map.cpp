@@ -287,7 +287,7 @@ std::string gamemap::write() const
 }
 
 int gamemap::x() const { return tiles_.size(); }
-int gamemap::y() const { return tiles_[0].size(); }
+int gamemap::y() const { return tiles_.empty() ? 0 : tiles_.front().size(); }
 
 const std::vector<gamemap::TERRAIN>& gamemap::operator[](int index) const
 {
