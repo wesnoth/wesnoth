@@ -4,6 +4,7 @@
 #include "image.hpp"
 #include "display.hpp"
 #include "font.hpp"
+#include "log.hpp"
 #include "sdl_utils.hpp"
 #include "team.hpp"
 #include "util.hpp"
@@ -13,6 +14,9 @@
 #include <iostream>
 #include <map>
 #include <string>
+
+#define LOG_DP lg::info(lg::display)
+#define ERR_DP lg::err(lg::display)
 
 namespace {
 
@@ -197,7 +201,7 @@ surface locator::load_image_file() const
 	} else {
 		const surface res(IMG_Load(location.c_str()));
 		if(res == NULL) {
-			std::cerr << "Error: could not open image '" << val_.filename_ << "'\n";
+			ERR_DP << "could not open image '" << val_.filename_ << "'\n";
 		}
 
 		return res;
@@ -623,10 +627,9 @@ bool exists(const image::locator& i_locator)
 surface getMinimap(int w, int h, const gamemap& map, 
 		int lawful_bonus, const team* tm)
 {
-	std::cerr << "generating minimap\n";
 	const int scale = 8;
 
-	std::cerr << "creating minimap " << int(map.x()*scale*0.75) << "," << int(map.y()*scale) << "\n";
+	LOG_DP << "creating minimap " << int(map.x()*scale*0.75) << "," << int(map.y()*scale) << "\n";
 
 	const size_t map_width = map.x()*scale*3/4;
 	const size_t map_height = map.y()*scale;
@@ -643,8 +646,6 @@ surface getMinimap(int w, int h, const gamemap& map,
 	                               pixel_format->Amask));
 	if(minimap == NULL)
 		return surface(NULL);
-
-	// std::cerr << "created minimap: " << int(minimap) << "," << int(minimap->pixels) << "\n";
 
 	typedef mini_terrain_cache_map cache_map;
 	cache_map& cache = mini_terrain_cache;
@@ -665,7 +666,7 @@ surface getMinimap(int w, int h, const gamemap& map,
 					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).symbol_image() + ".png",image::UNSCALED));
 
 					if(tile == NULL) {
-						std::cerr << "Could not get image for terrrain '"
+						ERR_DP << "could not get image for terrrain '"
 						          << terrain << "'\n";
 						continue;
 					}
@@ -693,14 +694,12 @@ surface getMinimap(int w, int h, const gamemap& map,
 		}
 	}
 
-	// std::cerr << "scaling minimap..." << int(minimap) << "." << int(minimap->pixels) << "\n";
-
 	if((minimap->w != w || minimap->h != h) && w != 0) {
 		const surface surf(minimap);
 		minimap = surface(scale_surface(surf,w,h));
 	}
 
-	std::cerr << "done generating minimap\n";
+	LOG_DP << "done generating minimap\n";
 
 	return minimap;
 }
