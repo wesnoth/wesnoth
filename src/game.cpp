@@ -1143,7 +1143,8 @@ void game_controller::download_campaigns()
 		//force a reload of configuration information
 		const bool old_cache = use_caching_;
 		use_caching_ = false;
-		init_config();
+		old_defines_map_.clear();
+		refresh_game_cfg();
 		use_caching_ = old_cache;
 
 		gui::show_dialog(disp(),NULL,_("Campaign Installed"),_("The campaign has been installed."),gui::OK_ONLY);

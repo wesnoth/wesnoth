@@ -190,7 +190,7 @@ void gamemap::read(const std::string& data)
 					c = KEEP;
 				} else {
 					std::cerr << "Illegal character in map: (" << int(c) << ") '" << c << "'\n";
-					throw incorrect_format_exception("Illegal character");
+					throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
 				}
 			}
 
