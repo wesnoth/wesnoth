@@ -26,7 +26,8 @@ const std::string& report_name(TYPE type)
 }
 
 report generate_report(TYPE type, const gamemap& map, const unit_map& units,
-                       const team& current_team, int current_side, int playing_side,
+						const std::vector<team>& teams,
+                  const team& current_team, int current_side, int playing_side,
 					   const gamemap::location& loc, const gamemap::location& mouseover,
 					   const gamestatus& status, const std::string* format_string)
 {
@@ -69,7 +70,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	}
 	case UNIT_STATUS: {
 		std::string unit_status = "healthy", prefix = "";
-		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus)) {
+		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus,loc,units,teams)) {
 			unit_status = "invisible";
 			prefix = font::GOOD_TEXT;
 		} else if(u->second.has_flag("slowed")) {

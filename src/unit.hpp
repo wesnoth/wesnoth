@@ -22,6 +22,10 @@
 #include <string>
 #include <vector>
 
+class unit;
+
+typedef std::map<gamemap::location,unit> unit_map;
+
 class unit
 {
 public:
@@ -63,7 +67,9 @@ public:
 	void heal(int amount);
 	void heal_all();
 
-	bool invisible(gamemap::TERRAIN terrain, int lawful_bonus) const;
+	bool invisible(gamemap::TERRAIN terrain, int lawful_bonus, 
+			const gamemap::location loc,
+			const unit_map& units,const std::vector<team>& teams) const;
 
 	bool matches_filter(const config& cfg) const;
 
@@ -185,8 +191,6 @@ struct compare_unit_values
 {
 	bool operator()(const unit& a, const unit& b) const;
 };
-
-typedef std::map<gamemap::location,unit> unit_map;
 
 int team_units(const unit_map& units, int team_num);
 int team_upkeep(const unit_map& units, int team_num);

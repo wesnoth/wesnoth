@@ -53,6 +53,7 @@ gamemap::location find_vacant_tile(const gamemap& map,
 //function which determines if a given location is an enemy zone of control
 bool enemy_zoc(const gamemap& map,const gamestatus& status, 
 		         const std::map<gamemap::location,unit>& units,
+		         const std::vector<team>& teams,
                const gamemap::location& loc,const team& current_team,int side);
 
 //object which contains all the possible locations a unit can move to, with

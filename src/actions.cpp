@@ -1176,7 +1176,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			moves_left -= mv;
 		}
 
-		if(!skirmisher && enemy_zoc(map,status,units,*step,teams[team_num],
+		if(!skirmisher && enemy_zoc(map,status,units,teams,*step,teams[team_num],
 					u.side())) {
 			moves_left = 0;
 		}

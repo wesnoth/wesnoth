@@ -616,10 +616,11 @@ void display::draw_report(reports::TYPE report_num)
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
 	if(item != NULL) {
 
-		const reports::report& report = reports::generate_report(report_num,map_,units_,
-		                                                         teams_[viewing_team()],
-																 currentTeam_+1,activeTeam_+1,
-																 selectedHex_,mouseoverHex_,status_);
+		const reports::report& report = reports::generate_report(report_num,map_,
+				units_, teams_,
+		      teams_[viewing_team()],
+				currentTeam_+1,activeTeam_+1,
+				selectedHex_,mouseoverHex_,status_);
 
 		SDL_Rect& rect = reportRects_[report_num];
 		const SDL_Rect& new_rect = item->location(screen_area());
@@ -758,7 +759,8 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	std::string status = string_table["healthy"];
 	if(map_.on_board(loc) &&
 	   u.invisible(map_.underlying_terrain(map_[loc.x][loc.y]), 
-			status_.get_time_of_day().lawful_bonus)) {
+			status_.get_time_of_day().lawful_bonus,loc,
+			units_,teams_)) {
 		status = font::GOOD_TEXT + string_table["invisible"];
 	}
 
@@ -1142,7 +1144,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 			highlight_ratio = it->second.alpha();
 
 		if(it->second.invisible(map_.underlying_terrain(map_[x][y]), 
-					status_.get_time_of_day().lawful_bonus) &&
+					status_.get_time_of_day().lawful_bonus,loc,
+					units_,teams_) &&
 		   highlight_ratio > 0.5) {
 			highlight_ratio = 0.5;
 		}

@@ -16,6 +16,7 @@
 #include "gamestatus.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "pathfind.hpp"
 #include "replay.hpp"
 #include "unit.hpp"
 #include "util.hpp"
@@ -319,14 +320,28 @@ void unit::heal_all()
 	hitpoints_ = max_hitpoints();
 }
 
-bool unit::invisible(gamemap::TERRAIN terrain, int lawful_bonus) const
+bool unit::invisible(gamemap::TERRAIN terrain, int lawful_bonus, 
+		const gamemap::location loc, 
+		const unit_map& units,const std::vector<team>& teams) const
 {
+	bool is_inv = false;
+
 	static const std::string forest_invisible("ambush");
 	if((terrain == gamemap::FOREST) && has_flag(forest_invisible)) {
-		return true;
+		is_inv = true;
 	}
 	static const std::string night_invisible("nightstalk");
 	if((lawful_bonus < 0) && has_flag(night_invisible)) {
+		is_inv = true;
+	}
+
+	if(is_inv){
+		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
+			if(teams[side_-1].is_enemy(u->second.side())) {
+				if(tiles_adjacent(loc,u->first)) 
+					return false;
+			}
+		}
 		return true;
 	}
 

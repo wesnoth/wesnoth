@@ -119,6 +119,7 @@ size_t distance_between(const gamemap::location& a, const gamemap::location& b)
 
 bool enemy_zoc(const gamemap& map, const gamestatus& status, 
 					const std::map<gamemap::location,unit>& units,
+					const std::vector<team>& teams,
                const gamemap::location& loc, const team& current_team, int side)
 {
 	gamemap::location locs[6];
@@ -130,7 +131,8 @@ bool enemy_zoc(const gamemap& map, const gamestatus& status,
 		   current_team.is_enemy(it->second.side()) &&
 		   !it->second.invisible(map.underlying_terrain(
 		                             map[it->first.x][it->first.y]),
-				status.get_time_of_day().lawful_bonus)) {
+				status.get_time_of_day().lawful_bonus,it->first,
+				units,teams)) {
 			return true;
 		}
 	}
@@ -212,7 +214,7 @@ void find_routes(const gamemap& map, const gamestatus& status,
 			   rtit->second.move_left >= total_movement)
 				continue;
 
-			const bool zoc = enemy_zoc(map,status,units,currentloc,
+			const bool zoc = enemy_zoc(map,status,units,teams,currentloc,
 			                           current_team,u.side()) &&
 			                 !ignore_zocs;
 			paths::route new_route = routes[loc];
