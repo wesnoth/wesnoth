@@ -141,6 +141,11 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 
 	recorder.add_movement(from,to);
 
+	if(from == to) {
+		u_it->second.set_movement(0);
+		return to;
+	}
+
 	const bool ignore_zocs = u_it->second.type().is_skirmisher();
 	const bool teleport = u_it->second.type().teleports();
 	paths current_paths = paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport);
@@ -180,7 +185,8 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 						//actually have to check if it's invisible, since it being invisible is
 						//the only possibility
 						const unit_map::const_iterator invisible_unit = info_.units.find(adj[n]);
-						if(!ignore_zocs && invisible_unit != info_.units.end() && current_team().is_enemy(invisible_unit->second.side())) {
+						if(!ignore_zocs && invisible_unit != info_.units.end() && invisible_unit->second.stone() == false &&
+						   current_team().is_enemy(invisible_unit->second.side())) {
 							to = *i;
 							steps.erase(i,steps.end());
 							break;
@@ -228,7 +234,7 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		}
 
 		//discount our own leader, and our units that have been turned to stone
-		if(!enemy && (un_it->second.can_recruit() || un_it->second.stone())) {
+		if(!enemy && un_it->second.can_recruit() || un_it->second.stone()) {
 			continue;
 		}
 
@@ -408,9 +414,6 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 			additional_targets_.push_back(target(target_loc,3.0));
 		}
 
-		dialogs::advance_unit(gameinfo_,units_,to,disp_,true);
-		dialogs::advance_unit(gameinfo_,units_,target_loc,disp_,!defender_human);
-
 		return true;
 
 	} else {
@@ -440,6 +443,15 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 	if(info_.units.count(u) && info_.units.count(target)) {
 		attack(info_.disp,info_.map,info_.teams,u,target,weapon,info_.units,info_.state,info_.gameinfo,false);
 		check_victory(info_.units,info_.teams);
+		dialogs::advance_unit(info_.gameinfo,info_.units,u,info_.disp,true);
+
+		const unit_map::const_iterator defender = info_.units.find(target);
+		if(defender != info_.units.end()) {
+			const size_t defender_team = defender->second.side();
+			if(defender_team < info_.teams.size()) {
+				dialogs::advance_unit(info_.gameinfo,info_.units,target,info_.disp,!info_.teams[defender_team].is_human());
+			}
+		}
 	}
 }
 
@@ -674,7 +686,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 					teams_,current_team());
 
 			if(enemy != units_.end() &&
-			   current_team().is_enemy(enemy->second.side())) {
+			   current_team().is_enemy(enemy->second.side()) && enemy->second.stone() == false) {
 				target = adj[n];
 				weapon = choose_weapon(move.first,target,bat_stats,
 				                       map_[move.second.x][move.second.y]);
@@ -690,28 +702,11 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 			return true;
 		}
 
+		const unit_map::const_iterator u_it = units_.find(move.second);
+
 		//if we're going to attack someone
-		if(weapon != -1) {
-
-			const location& attacker = move.second;
-				
-			recorder.add_attack(attacker,target,weapon);
-
-			game_events::fire("attack",attacker,target);
-			if(units_.count(attacker) && units_.count(target)) {
-				attack(disp_,map_,teams_,attacker,target,weapon,units_,state_,gameinfo_,false);
-
-				const std::map<gamemap::location,unit>::const_iterator tgt = units_.find(target);
-
-				const bool defender_human = (tgt != units_.end()) ?
-		             teams_[tgt->second.side()-1].is_human() : false;
-
-				dialogs::advance_unit(gameinfo_,units_,attacker,disp_,true);
-				dialogs::advance_unit(gameinfo_,units_,target,disp_,!defender_human);
-
-				check_victory(units_,teams_);
-			}
-			
+		if(u_it != units_.end() && u_it->second.stone() == false && weapon != -1) {
+			attack_enemy(move.second,target,weapon);			
 		}
 
 		//don't allow any other units to move onto the tile our unit
@@ -800,7 +795,7 @@ void ai::leader_attack()
 	get_adjacent_tiles(leader->first,adj);
 	for(size_t n = 0; n != 6; ++n) {
 		const unit_map::const_iterator u = units_.find(adj[n]);
-		if(u != units_.end() && current_team().is_enemy(u->second.side())) {
+		if(u != units_.end() && current_team().is_enemy(u->second.side()) && u->second.stone() == false) {
 			attack_analysis analysis;
 			analysis.target = adj[n];
 			analysis.movements.push_back(std::pair<location,location>(leader->first,leader->first));

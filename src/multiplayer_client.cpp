@@ -407,6 +407,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		std::cerr << "starting game\n";
     
 		state.starting_pos = sides;
+		state.can_recruit.clear();
     
 		recorder.set_save_info(state);
     

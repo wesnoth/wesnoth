@@ -637,6 +637,7 @@ int mp_connect::gui_do()
 			//it was just there to tell clients about the replay data
 			level_->clear_children("replay");
 			std::vector<config*> story;
+			state_->can_recruit.clear();
 			play_level(*data_, *cfg_, level_, disp_->video(), *state_, story);
 			recorder.clear();
 
