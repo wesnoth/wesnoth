@@ -1651,12 +1651,26 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				msg_id = "units_sighted";
 			}
 
+			//see if the "Continue Move" action has an associated hotkey
+			const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
+			std::vector<hotkey::hotkey_item>::const_iterator hk;
+			for(hk = hotkeys.begin(); hk != hotkeys.end(); ++hk) {
+				if(hk->action == hotkey::HOTKEY_CONTINUE_MOVE) {
+					break;
+				}
+			}
 			string_map symbols;
 			symbols["friends"] = lexical_cast<std::string>(nfriends);
 			symbols["enemies"] = lexical_cast<std::string>(nenemies);
 
+			std::stringstream msg;
+			msg << string_table[msg_id];
+			if(hk != hotkeys.end()) {
+				symbols["hotkey"] = hotkey::get_hotkey_name(*hk);
+				 msg << '\n' << string_table["press_to_continue"];
+			}
 			std::cerr << "formatting string...\n";
-			const std::string message = config::interpolate_variables_into_string(string_table[msg_id],&symbols);
+			const std::string message = config::interpolate_variables_into_string(msg.str(),&symbols);
 
 			std::cerr << "displaying label...\n";
 			font::add_floating_label(message,24,font::BAD_COLOUR,

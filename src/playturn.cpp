@@ -2033,8 +2033,9 @@ void turn_info::search() {
 			}
 		}
 		//Not found, inform the player
-		std::string msg = string_table["search_string_not_found"];
-		msg.replace(msg.find("%s"), 2, last_search_);
+		string_map symbols;
+		symbols["search"] = last_search_;
+		const std::string msg = config::interpolate_variables_into_string(string_table["search_string_not_found"],&symbols);
 		gui::show_dialog(gui_,NULL,"",msg);
 	}
 }
