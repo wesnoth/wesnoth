@@ -1096,9 +1096,9 @@ int main(int argc, char** argv)
 		//just means the game should quit
 	} catch(end_level_exception&) {
 		std::cerr << "caught end_level_exception (quitting)\n";
-	} catch(...) {
+	} /*catch(...) {
 		std::cerr << "Unhandled exception. Exiting\n";
-	}
+	}*/
 
 	return 0;
 }

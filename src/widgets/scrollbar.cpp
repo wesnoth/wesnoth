@@ -41,7 +41,7 @@ scrollbar::scrollbar(display& d, scrollable* callback)
 	  grip_position_(0), grip_height_(0), enabled_(false), width_(0),
 	  minimum_grip_height_(0), groove_click_code_(0)
 {
-	static const scoped_sdl_surface img(image::get_image(scrollbar_mid, 
+	static const surface img(image::get_image(scrollbar_mid, 
 										image::UNSCALED));
 	
 	if (img != NULL) {
@@ -120,16 +120,16 @@ void scrollbar::draw()
 
 	set_dirty(false);
 	
-	const scoped_sdl_surface mid_img(image::get_image(highlight_ ? 
+	const surface mid_img(image::get_image(highlight_ ? 
 					scrollbar_mid_hl : scrollbar_mid, image::UNSCALED));
-	const scoped_sdl_surface bottom_img(image::get_image(highlight_ ? 
+	const surface bottom_img(image::get_image(highlight_ ? 
 					scrollbar_bottom_hl : scrollbar_bottom, image::UNSCALED));
-	const scoped_sdl_surface top_img(image::get_image(highlight_ ?
+	const surface top_img(image::get_image(highlight_ ?
 					scrollbar_top_hl : scrollbar_top, image::UNSCALED));
 
-	const scoped_sdl_surface top_grv(image::get_image(groove_top,image::UNSCALED));
-	const scoped_sdl_surface mid_grv(image::get_image(groove_mid,image::UNSCALED));
-	const scoped_sdl_surface bottom_grv(image::get_image(groove_bottom,image::UNSCALED));
+	const surface top_grv(image::get_image(groove_top,image::UNSCALED));
+	const surface mid_grv(image::get_image(groove_mid,image::UNSCALED));
+	const surface bottom_grv(image::get_image(groove_bottom,image::UNSCALED));
 
 	if (mid_img == NULL || bottom_img == NULL || top_img == NULL
 	 || top_grv == NULL || bottom_grv == NULL || mid_grv == NULL){
@@ -144,14 +144,14 @@ void scrollbar::draw()
 		// of a larger problem, I think.
 		mid_height = 1;
 	}
-	const scoped_sdl_surface mid_scaled(scale_surface_blended(mid_img, 
+	const surface mid_scaled(scale_surface_blended(mid_img, 
 										mid_img->w, mid_height));
 
 	int groove_height = location().h - top_grv->h - bottom_grv->h;
 	if (groove_height <= 0) {
 		groove_height = 1;
 	}
-	const scoped_sdl_surface groove_scaled(scale_surface_blended(mid_grv,
+	const surface groove_scaled(scale_surface_blended(mid_grv,
 											 mid_grv->w, groove_height));
 
 	if (mid_scaled == NULL || groove_scaled == NULL) {
@@ -164,7 +164,7 @@ void scrollbar::draw()
 		return;
 	}
 
-	SDL_Surface* const screen = disp().video().getSurface();
+	surface const screen = disp().video().getSurface();
 
 	bg_restore();
 

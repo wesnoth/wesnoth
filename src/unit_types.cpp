@@ -28,38 +28,35 @@
 #include <unistd.h>
 #endif
 
-unit_animation::unit_animation(const config& cfg)
+unit_animation::frame::frame(const config& cfg)
+{
+	xoffset = atoi(cfg["xoffset"].c_str()); 
+	image = cfg["image"];
+	image_diagonal = cfg["image_diagonal"];
+	halo = cfg["halo"];
+	halo_x = atoi(cfg["halo_x"].c_str());
+	halo_y = atoi(cfg["halo_y"].c_str());
+}
+
+unit_animation::unit_animation(const config& cfg) 
 {
 	config::const_child_itors range = cfg.child_range("frame");
-	for(; range.first != range.second; ++range.first){
-		const int beg = atoi((**range.first)["begin"].c_str());
-		const int end = atoi((**range.first)["end"].c_str());
-		const int xoff = atoi((**range.first)["xoffset"].c_str());
-		const std::string& img = (**range.first)["image"];
-		const std::string& halo = (**range.first)["halo"];
-		const int halo_x = atoi((**range.first)["halo_x"].c_str());
-		const int halo_y = atoi((**range.first)["halo_y"].c_str());
-		frames_[UNIT_FRAME].push_back(frame(beg,end,img,halo,xoff,halo_x,halo_y));
+	
+	int last_end = INT_MIN;
+	for(; range.first != range.second; ++range.first) {
+		unit_frames_.add_frame(atoi((**range.first)["begin"].c_str()), frame(**range.first));
+		last_end = maximum<int>(atoi((**range.first)["end"].c_str()), last_end);
 	}
+	//unit_frames_.set_animation_end(last_end);
+	unit_frames_.add_frame(last_end);
 
+	last_end = INT_MIN;
 	range = cfg.child_range("missile_frame");
-	for(; range.first != range.second; ++range.first){
-		const int beg = atoi((**range.first)["begin"].c_str());
-		const int end = atoi((**range.first)["end"].c_str());
-		const int xoff = atoi((**range.first)["xoffset"].c_str());
-		
-		const std::string& img = (**range.first)["image"];
-		const std::string& img_diag = (**range.first)["image_diagonal"];
-		const std::string& halo = (**range.first)["halo"];
-		const int halo_x = atoi((**range.first)["halo_x"].c_str());
-		const int halo_y = atoi((**range.first)["halo_y"].c_str());
-
-		if(img_diag.empty())
-			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,halo,xoff,halo_x,halo_y));
-		else
-			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,img_diag,halo,xoff,halo_x,halo_y));
-
+	for(; range.first != range.second; ++range.first) {
+		missile_frames_.add_frame(atoi((**range.first)["begin"].c_str()), frame(**range.first));
+		last_end = maximum<int>(atoi((**range.first)["end"].c_str()), last_end);
 	}
+	missile_frames_.add_frame(last_end);
 
 	range = cfg.child_range("sound");
 	for(; range.first != range.second; ++range.first){
@@ -77,62 +74,56 @@ unit_animation::unit_animation(const config& cfg)
 	}
 }
 
-int unit_animation::get_first_frame(unit_animation::FRAME_TYPE type) const
+int unit_animation::get_first_frame_time(unit_animation::FRAME_TYPE type) const
 {
-	if(frames_[type].empty())
-		return 0;
-	else
-		return minimum<int>(frames_[type].front().start,0);
-}
-
-int unit_animation::get_last_frame(unit_animation::FRAME_TYPE type) const
-{
-	if(frames_[type].empty())
-		return 0;
-	else
-		return maximum<int>(frames_[type].back().end,0);
-}
-
-const std::string* unit_animation::get_frame(int milliseconds, int* xoff,
-                                       unit_animation::FRAME_TYPE type,
-									   unit_animation::FRAME_DIRECTION dir,
-									   const std::string** halo, int* halo_x, int* halo_y) const
-{
-	for(std::vector<frame>::const_iterator i = frames_[type].begin();
-	    i != frames_[type].end(); ++i) {
-		if(i->start > milliseconds)
-			return NULL;
-
-		if(i->start <= milliseconds && i->end > milliseconds) {
-			if(xoff != NULL) {
-				*xoff = i->xoffset;
-			}
-
-			if(halo != NULL) {
-				if(i->halo.empty()) {
-					*halo = NULL;
-				} else {
-					*halo = &i->halo;
-				}
-
-				if(halo_x != NULL) {
-					*halo_x = i->halo_x;
-				}
-
-				if(halo_y != NULL) {
-					*halo_y = i->halo_y;
-				}
-			}
-
-			if(dir == DIAGONAL && i->image_diagonal != "") {
-				return &i->image_diagonal;
-			} else {
-				return &i->image;
-			}
-		}
+	if(type == UNIT_FRAME) {
+		return unit_frames_.get_first_frame_time();
+	} else {
+		return missile_frames_.get_first_frame_time();
 	}
+}
 
-	return NULL;
+int unit_animation::get_last_frame_time(unit_animation::FRAME_TYPE type) const
+{
+	if(type == UNIT_FRAME) {
+		return unit_frames_.get_last_frame_time();
+	} else {
+		return missile_frames_.get_last_frame_time();
+	}
+}
+
+void unit_animation::start_animation(int start_frame, FRAME_TYPE type, int acceleration)
+{
+	if (type == UNIT_FRAME) {
+		unit_frames_.start_animation(start_frame, 1, acceleration);
+	} else {
+		missile_frames_.start_animation(start_frame, 1, acceleration);
+	}
+}
+
+void unit_animation::update_current_frames()
+{
+	unit_frames_.update_current_frame();
+	missile_frames_.update_current_frame();
+}
+
+bool unit_animation::animation_finished() const
+{
+	return unit_frames_.animation_finished() && missile_frames_.animation_finished();
+}
+
+const unit_animation::frame& unit_animation::get_current_frame(FRAME_TYPE type) const
+{
+	if(type == UNIT_FRAME) {
+		return unit_frames_.get_current_frame();
+	} else {
+		return missile_frames_.get_current_frame();
+	}
+}
+
+int unit_animation::get_animation_time() const
+{
+	return unit_frames_.get_animation_time();
 }
 
 const std::vector<unit_animation::sfx>& unit_animation::sound_effects() const

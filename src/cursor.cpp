@@ -18,30 +18,30 @@ bool use_colour_cursors()
 	return game_config::editor == false && preferences::use_colour_cursors();
 }
 
-SDL_Cursor* create_cursor(SDL_Surface* surface)
+SDL_Cursor* create_cursor(surface surf)
 {
-	const scoped_sdl_surface surf(make_neutral_surface(surface));
-	if(surf == NULL) {
+	const surface nsurf(make_neutral_surface(surf));
+	if(nsurf == NULL) {
 		return NULL;
 	}
 
 	//the width must be a multiple of 8 (SDL requirement)
-	size_t cursor_width = surf->w;
+	size_t cursor_width = nsurf->w;
 	if((cursor_width%8) != 0) {
 		cursor_width += 8 - (cursor_width%8);
 	}
 
-	std::vector<Uint8> data((cursor_width*surf->h)/8,0);
+	std::vector<Uint8> data((cursor_width*nsurf->h)/8,0);
 	std::vector<Uint8> mask(data.size(),0);
 
 	//see http://sdldoc.csn.ul.ie/sdlcreatecursor.php for documentation on
 	//the format that data has to be in to pass to SDL_CreateCursor
-	surface_lock lock(surf);
+	surface_lock lock(nsurf);
 	const Uint32* const pixels = reinterpret_cast<Uint32*>(lock.pixels());
-	for(size_t y = 0; y != surf->h; ++y) {
-		for(size_t x = 0; x != surf->w; ++x) {
+	for(size_t y = 0; y != nsurf->h; ++y) {
+		for(size_t x = 0; x != nsurf->w; ++x) {
 			Uint8 r,g,b,a;
-			SDL_GetRGBA(pixels[y*surf->w + x],surf->format,&r,&g,&b,&a);
+			SDL_GetRGBA(pixels[y*nsurf->w + x],nsurf->format,&r,&g,&b,&a);
 
 			const size_t index = y*cursor_width + x;
 			
@@ -55,7 +55,7 @@ SDL_Cursor* create_cursor(SDL_Surface* surface)
 		}
 	}
 
-	return SDL_CreateCursor(&data[0],&mask[0],cursor_width,surf->h,0,0);
+	return SDL_CreateCursor(&data[0],&mask[0],cursor_width,nsurf->h,0,0);
 }
 
 SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL };
@@ -66,14 +66,14 @@ const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "mov
 cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
 
 int cursor_x = -1, cursor_y = -1;
-SDL_Surface* cursor_buf = NULL;
+surface cursor_buf = NULL;
 bool have_focus = true;
 
 SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
 	if(cache[type] == NULL) {
 		static const std::string prefix = "cursors-bw/";
-		const scoped_sdl_surface surf(image::get_image(prefix + images[type],image::UNSCALED));
+		const surface surf(image::get_image(prefix + images[type],image::UNSCALED));
 		cache[type] = create_cursor(surf);
 	}
 
@@ -147,7 +147,7 @@ setter::~setter()
 	set(old_);
 }
 
-void draw(SDL_Surface* screen)
+void draw(surface screen)
 {
 	if(use_colour_cursors() == false) {
 		return;
@@ -170,7 +170,7 @@ void draw(SDL_Surface* screen)
 	cursor_x = new_cursor_x;
 	cursor_y = new_cursor_y;
 
-	const scoped_sdl_surface surf(image::get_image("cursors/" + images[current_cursor],image::UNSCALED));
+	const surface surf(image::get_image("cursors/" + images[current_cursor],image::UNSCALED));
 	if(surf == NULL) {
 		//fall back to b&w cursors
 		std::cerr << "could not load colour cursors. Falling back to hardware cursors\n";
@@ -203,7 +203,7 @@ void draw(SDL_Surface* screen)
 	}
 }
 
-void undraw(SDL_Surface* screen)
+void undraw(surface screen)
 {
 	if(use_colour_cursors() == false) {
 		return;

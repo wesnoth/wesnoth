@@ -195,7 +195,7 @@ SDL_Rect text_size(TTF_Font* font, const std::string& str, const SDL_Color& colo
 	return res;
 }
 
-SDL_Surface* render_text_internal(TTF_Font* font,const std::string& str,
+surface render_text_internal(TTF_Font* font,const std::string& str,
 						 const SDL_Color& colour, int style)
 {
 	const font_style_setter style_setter(font,style);
@@ -212,15 +212,15 @@ SDL_Surface* render_text_internal(TTF_Font* font,const std::string& str,
 
 }
 
-SDL_Surface* render_text(TTF_Font* font,const std::string& text, const SDL_Color& colour, int style)
+surface render_text(TTF_Font* font,const std::string& text, const SDL_Color& colour, int style)
 {
 	// XXX Changed by erl, to not strip when rendering text. Works everywhere?
 	const std::vector<std::string> lines = config::split(text,'\n', config::REMOVE_EMPTY);
-	std::vector<shared_sdl_surface> surfaces;
+	std::vector<surface> surfaces;
 	size_t width = 0, height = 0;
 	for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
 		if(*ln != "" && font != NULL) {
-			shared_sdl_surface res(render_text_internal(font,*ln,colour,style));
+			surface res(render_text_internal(font,*ln,colour,style));
 
 			if(res != NULL) {
 				surfaces.push_back(res);
@@ -233,24 +233,22 @@ SDL_Surface* render_text(TTF_Font* font,const std::string& text, const SDL_Color
 	if(surfaces.empty()) {
 		return NULL;
 	} else if(surfaces.size() == 1) {
-		sdl_add_ref(surfaces.front());
 		return surfaces.front();
 	} else {
 
-		shared_sdl_surface res(create_compatible_surface(surfaces.front(),width,height));
+		surface res(create_compatible_surface(surfaces.front(),width,height));
 		if(res == NULL) {
 			return NULL;
 		}
 
 		size_t ypos = 0;
-		for(std::vector<shared_sdl_surface>::const_iterator i = surfaces.begin(); i != surfaces.end(); ++i) {
+		for(std::vector<surface>::const_iterator i = surfaces.begin(); i != surfaces.end(); ++i) {
 			SDL_SetAlpha(*i,0,0);
 			SDL_Rect dstrect = {0,ypos,(*i)->w,(*i)->h};
 			SDL_BlitSurface(*i,NULL,res,&dstrect);
 			ypos += (*i)->h;
 		}
 
-		sdl_add_ref(res);
 		return res;
 	}
 }
@@ -310,7 +308,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 }
 
 
-SDL_Surface* get_rendered_text(const std::string& str, int size, const SDL_Color& colour, int style)
+surface get_rendered_text(const std::string& str, int size, const SDL_Color& colour, int style)
 {
 	TTF_Font* const font = get_font(size);
 	if(font == NULL) {
@@ -318,7 +316,7 @@ SDL_Surface* get_rendered_text(const std::string& str, int size, const SDL_Color
 		return NULL;
 	}
 
-	SDL_Surface *res = render_text(font,str,colour,style);
+	surface res = render_text(font,str,colour,style);
 	if(res == NULL) {
 		return NULL;
 	}
@@ -326,9 +324,9 @@ SDL_Surface* get_rendered_text(const std::string& str, int size, const SDL_Color
 }
 
 
-SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size,
+SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& colour, const std::string& text,
-		   int x, int y, SDL_Surface* bg, bool use_tooltips, int style)
+		   int x, int y, surface bg, bool use_tooltips, int style)
 {
 	
 	TTF_Font* const font = get_font(size);
@@ -344,7 +342,7 @@ SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size
 		return text_size(font,etext,colour,style);
 	}
 
-	scoped_sdl_surface surface(render_text(font,etext,colour,style));
+	surface surface(render_text(font,etext,colour,style));
 	if(surface == NULL) {
 		SDL_Rect res = {0,0,0,0};
 		return res;
@@ -390,9 +388,9 @@ SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size
 
 SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
                         const SDL_Color& colour, const std::string& text,
-                        int x, int y, SDL_Surface* bg, bool use_tooltips, int style)
+                        int x, int y, surface bg, bool use_tooltips, int style)
 {
-	SDL_Surface* surface;
+	surface surface;
 	
 	if(gui == NULL) {
 		surface = NULL;
@@ -411,7 +409,7 @@ SDL_Rect text_area(const std::string& text, int size, int style)
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
-                   int x, int y, SDL_Surface* bg, bool use_tooltips,
+                   int x, int y, surface bg, bool use_tooltips,
                    MARKUP use_markup, int style)
 {
 	//make sure there's always at least a space, so we can ensure
@@ -603,7 +601,7 @@ namespace font {
 	
 	SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
 			     const SDL_Color& colour, const std::string& text,
-			     int x, int y, int max_width, SDL_Surface* bg)
+			     int x, int y, int max_width, surface bg)
 	{
 		std::string wrapped_text = word_wrap_text(text, font_size, max_width);
 		return font::draw_text(gui, area, font_size, colour, wrapped_text, x, y, bg, false, NO_MARKUP);
@@ -627,10 +625,10 @@ public:
 
 	void move(double xmove, double ymove);
 
-	void draw(SDL_Surface* screen);
-	void undraw(SDL_Surface* screen);
+	void draw(surface screen);
+	void undraw(surface screen);
 
-	SDL_Surface* create_surface();
+	surface create_surface();
 
 	bool expired() const;
 
@@ -644,7 +642,7 @@ private:
 
 	int xpos(size_t width) const;
 
-	shared_sdl_surface surf_, buf_, foreground_;
+	surface surf_, buf_, foreground_;
 	std::string text_;
 	int font_size_;
 	SDL_Color colour_, bgcolour_;
@@ -683,12 +681,12 @@ int floating_label::xpos(size_t width) const
 	return xpos;
 }
 
-SDL_Surface* floating_label::create_surface()
+surface floating_label::create_surface()
 {
 	if(surf_ == NULL) {
 
 		const std::vector<std::string> lines = config::split(text_,'\n');
-		std::vector<shared_sdl_surface> surfaces;
+		std::vector<surface> surfaces;
 		for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
 			SDL_Color colour = colour_;
 			int size = font_size_;
@@ -699,7 +697,7 @@ SDL_Surface* floating_label::create_surface()
 			TTF_Font* const font = get_font(size);
 
 			if(str != "" && font != NULL) {
-				surfaces.push_back(shared_sdl_surface(font::render_text(font,str,colour,style)));
+				surfaces.push_back(surface(font::render_text(font,str,colour,style)));
 			}
 		}
 
@@ -709,7 +707,7 @@ SDL_Surface* floating_label::create_surface()
 			surf_.assign(surfaces.front());
 		} else {
 			size_t width = 0, height = 0;
-			std::vector<shared_sdl_surface>::const_iterator i;
+			std::vector<surface>::const_iterator i;
 			for(i = surfaces.begin(); i != surfaces.end(); ++i) {
 				width = maximum<size_t>((*i)->w,width);
 				height += (*i)->h;
@@ -733,14 +731,14 @@ SDL_Surface* floating_label::create_surface()
 
 		//if the surface has to be created onto some kind of background, then do that here
 		if(bgalpha_ != 0) {
-			shared_sdl_surface tmp(create_compatible_surface(surf_,surf_->w+border_*2,surf_->h+border_*2));
+			surface tmp(create_compatible_surface(surf_,surf_->w+border_*2,surf_->h+border_*2));
 			if(tmp == NULL) {
 				return NULL;
 			}
 
-			SDL_FillRect(tmp,NULL,SDL_MapRGB(tmp.get()->format,bgcolour_.r,bgcolour_.g,bgcolour_.b));
+			SDL_FillRect(tmp,NULL,SDL_MapRGB(tmp->format,bgcolour_.r,bgcolour_.g,bgcolour_.b));
 			if(bgalpha_ != 255) {
-				tmp.assign(adjust_surface_alpha_add(tmp.get(),bgalpha_ - 255));
+				tmp.assign(adjust_surface_alpha_add(tmp,bgalpha_ - 255));
 				if(tmp == NULL) {
 					return NULL;
 				}
@@ -754,7 +752,7 @@ SDL_Surface* floating_label::create_surface()
 	return surf_;
 }
 
-void floating_label::draw(SDL_Surface* screen)
+void floating_label::draw(surface screen)
 {
 	if(!visible_) {
 		buf_.assign(NULL);
@@ -790,7 +788,7 @@ void floating_label::draw(SDL_Surface* screen)
 	update_rect(rect);
 }
 
-void floating_label::undraw(SDL_Surface* screen)
+void floating_label::undraw(surface screen)
 {
 	if(screen == NULL || buf_ == NULL) {
 		return;
@@ -896,7 +894,7 @@ SDL_Rect get_floating_label_rect(int handle)
 	static const SDL_Rect empty_rect = {0,0,0,0};
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
-		const SDL_Surface* const surf = i->second.create_surface();
+		const surface surf = i->second.create_surface();
 		if(surf != NULL) {
 			SDL_Rect rect = {0,0,surf->w,surf->h};
 			return rect;
@@ -908,7 +906,7 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
-	SDL_Surface* const screen = SDL_GetVideoSurface();
+	surface const screen = SDL_GetVideoSurface();
 	if(screen != NULL) {
 		draw_floating_labels(screen);
 	}
@@ -925,13 +923,13 @@ floating_label_context::~floating_label_context()
 
 	label_contexts.pop();
 
-	SDL_Surface* const screen = SDL_GetVideoSurface();
+	surface const screen = SDL_GetVideoSurface();
 	if(screen != NULL) {
 		undraw_floating_labels(screen);
 	}
 }
 
-void draw_floating_labels(SDL_Surface* screen)
+void draw_floating_labels(surface screen)
 {
 	if(label_contexts.empty()) {
 		return;
@@ -948,7 +946,7 @@ void draw_floating_labels(SDL_Surface* screen)
 	}
 }
 
-void undraw_floating_labels(SDL_Surface* screen)
+void undraw_floating_labels(surface screen)
 {
 	if(label_contexts.empty()) {
 		return;

@@ -61,14 +61,14 @@ extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, BLAC
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
-                   int x, int y, SDL_Surface* bg=NULL,
+                   int x, int y, surface bg=NULL,
                    bool use_tooltips=false, MARKUP use_markup=USE_MARKUP, int style=0);
 
 //function which returns the size of text if it were to be drawn.
 SDL_Rect text_area(const std::string& text, int size, int style=0);
 
 // Returns a SDL surface containing the text rendered in a given colour.
-SDL_Surface* get_rendered_text(const std::string& text, int size, const SDL_Color& colour, int style=0);
+surface get_rendered_text(const std::string& text, int size, const SDL_Color& colour, int style=0);
 	
 // Returns the maximum height of a font, in pixels
 int get_max_height(int size);
@@ -105,7 +105,7 @@ std::string make_text_ellipsis(const std::string& text, int font_size, int max_w
 /// 
 SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
 			     const SDL_Color& colour, const std::string& text,
-			     int x, int y, int max_width, SDL_Surface* bg = NULL);
+			     int x, int y, int max_width, surface bg = NULL);
 
 
 /// structure which will hide all current floating labels, and cause floating labels
@@ -150,8 +150,8 @@ const std::string& get_floating_label_text(int handle);
 
 SDL_Rect get_floating_label_rect(int handle);
 
-void draw_floating_labels(SDL_Surface* screen);
-void undraw_floating_labels(SDL_Surface* screen);
+void draw_floating_labels(surface screen);
+void undraw_floating_labels(surface screen);
 
 }
 

@@ -222,7 +222,7 @@ void show_about(display& disp)
 	                                 0,0,0,1.0,disp.video().getSurface());
 	update_whole_screen();
 
-	const scoped_sdl_surface map_image(image::get_image(game_config::map_image,image::UNSCALED));
+	const surface map_image(image::get_image(game_config::map_image,image::UNSCALED));
 	SDL_Rect map_rect;
 	map_rect.x = disp.x()/2 - map_image->w/2;
 	map_rect.y = disp.y()/2 - map_image->h/2;

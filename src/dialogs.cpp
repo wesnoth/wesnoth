@@ -264,7 +264,7 @@ private:
 	const std::vector<save_info>* info_;
 	const std::vector<config*>* summaries_;
 	int index_;
-	std::map<std::string,shared_sdl_surface> map_cache_;
+	std::map<std::string,surface> map_cache_;
 };
 
 void save_preview_pane::draw()
@@ -285,7 +285,7 @@ void save_preview_pane::draw()
 
 	const config& summary = *(*summaries_)[index_];
 
-	SDL_Surface* const screen = disp().video().getSurface();
+	surface const screen = disp().video().getSurface();
 
 	const SDL_Rect area = { location().x+save_preview_border, location().y+save_preview_border,
 	                        location().w-save_preview_border*2, location().h-save_preview_border*2 };
@@ -296,7 +296,7 @@ void save_preview_pane::draw()
 
 	const game_data::unit_type_map::const_iterator leader = data_->unit_types.find(summary["leader"]);
 	if(leader != data_->unit_types.end()) {
-		const scoped_sdl_surface image(image::get_image(leader->second.image(),image::UNSCALED));
+		const surface image(image::get_image(leader->second.image(),image::UNSCALED));
 		if(image != NULL) {
 			SDL_Rect image_rect = {area.x,area.y,image->w,image->h};
 			ypos += image_rect.h + save_preview_border;
@@ -321,10 +321,10 @@ void save_preview_pane::draw()
 		}
 	}
 
-	SDL_Surface* map_surf = NULL;
+	surface map_surf(NULL);
 
 	if(map_data.empty() == false) {
-		const std::map<std::string,shared_sdl_surface>::const_iterator itor = map_cache_.find(map_data);
+		const std::map<std::string,surface>::const_iterator itor = map_cache_.find(map_data);
 		if(itor != map_cache_.end()) {
 			map_surf = itor->second;
 		} else if(map_ != NULL) {
@@ -333,7 +333,7 @@ void save_preview_pane::draw()
 
 				map_surf = image::getMinimap(100,100,*map_,0,NULL);
 				if(map_surf != NULL) {
-					map_cache_.insert(std::pair<std::string,shared_sdl_surface>(map_data,shared_sdl_surface(map_surf)));
+					map_cache_.insert(std::pair<std::string,surface>(map_data,surface(map_surf)));
 				}
 			} catch(gamemap::incorrect_format_exception&) {
 			}
@@ -534,7 +534,7 @@ void unit_speak(const config& message_info, display& disp, const unit_map& units
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->second.matches_filter(message_info)) {
 			disp.scroll_to_tile(i->first.x,i->first.y);
-			const scoped_sdl_surface surface(image::get_image(i->second.type().image_profile(),image::UNSCALED));
+			const surface surface(image::get_image(i->second.type().image_profile(),image::UNSCALED));
 			gui::show_dialog(disp,surface,i->second.underlying_description(),message_info["message"],gui::MESSAGE);
 		}
 	}
@@ -549,7 +549,7 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 	const events::resize_lock prevent_resizing;
 
 	CVideo& screen = disp.video();
-	SDL_Surface* const scr = screen.getSurface();
+	surface const scr = screen.getSurface();
 
 	const int width = 400;
 	const int height = 400;
@@ -671,14 +671,14 @@ void unit_preview_pane::draw()
 
 	const bool right_align = left_side();
 
-	SDL_Surface* const screen = disp().video().getSurface();
+	surface const screen = disp().video().getSurface();
 
 	const SDL_Rect area = { location().x+unit_preview_border, location().y+unit_preview_border,
 	                        location().w-unit_preview_border*2, location().h-unit_preview_border*2 };
 	SDL_Rect clip_area = area;
 	const clip_rect_setter clipper(screen,clip_area);
 
-	scoped_sdl_surface unit_image(image::get_image(u.type().image(),image::UNSCALED));
+	surface unit_image(image::get_image(u.type().image(),image::UNSCALED));
 	if(left_side() == false && unit_image != NULL) {
 		unit_image.assign(image::reverse_image(unit_image));
 	}
@@ -817,7 +817,7 @@ void show_unit_description(display& disp, const gamemap& map, const unit& u)
 	options.push_back(string_table["attack_resistance"]);
 	options.push_back(string_table["close_window"]);
 
-	const scoped_sdl_surface profile(image::get_image(u.type().image_profile(),image::SCALED));
+	const surface profile(image::get_image(u.type().image_profile(),image::SCALED));
 
 	const int res = gui::show_dialog(disp, profile, u.type().language_name(),
 	                                 description,gui::MESSAGE, &options);

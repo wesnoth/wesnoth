@@ -62,10 +62,10 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::str
 		dialog_style = &default_style;
 	}
 
-	const scoped_sdl_surface top(image::get_image("misc/" + *dialog_style + "-border-top.png",image::UNSCALED));
-	const scoped_sdl_surface bot(image::get_image("misc/" + *dialog_style + "-border-bottom.png",image::UNSCALED));
-	const scoped_sdl_surface left(image::get_image("misc/" + *dialog_style + "-border-left.png",image::UNSCALED));
-	const scoped_sdl_surface right(image::get_image("misc/" + *dialog_style + "-border-right.png",image::UNSCALED));
+	const surface top(image::get_image("misc/" + *dialog_style + "-border-top.png",image::UNSCALED));
+	const surface bot(image::get_image("misc/" + *dialog_style + "-border-bottom.png",image::UNSCALED));
+	const surface left(image::get_image("misc/" + *dialog_style + "-border-left.png",image::UNSCALED));
+	const surface right(image::get_image("misc/" + *dialog_style + "-border-right.png",image::UNSCALED));
 
 	const bool have_border = top != NULL && bot != NULL && left != NULL && right != NULL;
 
@@ -83,36 +83,36 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::str
 		return;
 	}
 
-	scoped_sdl_surface top_image(scale_surface(top,w,top->h));
+	surface top_image(scale_surface(top,w,top->h));
 
-	if(top_image.get() != NULL) {
-		disp.blit_surface(x,y-top->h,top_image.get());
+	if(top_image != NULL) {
+		disp.blit_surface(x,y-top->h,top_image);
 	}
 
-	scoped_sdl_surface bot_image(scale_surface(bot,w,bot->h));
+	surface bot_image(scale_surface(bot,w,bot->h));
 
-	if(bot_image.get() != NULL) {
-		disp.blit_surface(x,y+h,bot_image.get());
+	if(bot_image != NULL) {
+		disp.blit_surface(x,y+h,bot_image);
 	}
 
-	scoped_sdl_surface left_image(scale_surface(left,left->w,h));
+	surface left_image(scale_surface(left,left->w,h));
 
-	if(left_image.get() != NULL) {
-		disp.blit_surface(x-left->w,y,left_image.get());
+	if(left_image != NULL) {
+		disp.blit_surface(x-left->w,y,left_image);
 	}
 
-	scoped_sdl_surface right_image(scale_surface(right,right->w,h));
+	surface right_image(scale_surface(right,right->w,h));
 
-	if(right_image.get() != NULL) {
-		disp.blit_surface(x+w,y,right_image.get());
+	if(right_image != NULL) {
+		disp.blit_surface(x+w,y,right_image);
 	}
 
 	update_rect(x-left->w,y-top->h,w+left->w+right->w,h+top->h+bot->h);
 
-	const scoped_sdl_surface top_left(image::get_image("misc/" + *dialog_style + "-border-topleft.png",image::UNSCALED));
-	const scoped_sdl_surface bot_left(image::get_image("misc/" + *dialog_style + "-border-botleft.png",image::UNSCALED));
-	const scoped_sdl_surface top_right(image::get_image("misc/" + *dialog_style + "-border-topright.png",image::UNSCALED));
-	const scoped_sdl_surface bot_right(image::get_image("misc/" + *dialog_style + "-border-botright.png",image::UNSCALED));
+	const surface top_left(image::get_image("misc/" + *dialog_style + "-border-topleft.png",image::UNSCALED));
+	const surface bot_left(image::get_image("misc/" + *dialog_style + "-border-botleft.png",image::UNSCALED));
+	const surface top_right(image::get_image("misc/" + *dialog_style + "-border-topright.png",image::UNSCALED));
+	const surface bot_right(image::get_image("misc/" + *dialog_style + "-border-botright.png",image::UNSCALED));
 	if(top_left == NULL || bot_left == NULL || top_right == NULL || bot_right == NULL) {
 		return;
 	}
@@ -127,7 +127,7 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp, const std
 {
 	const std::string menu_background = "misc/" + style + "-background.png";
 
-	const scoped_sdl_surface bg(image::get_image(menu_background,image::UNSCALED));
+	const surface bg(image::get_image(menu_background,image::UNSCALED));
 	if(bg == NULL) {
 		std::cerr << "could not find dialog background '" << style << "'\n";
 		return;
@@ -245,7 +245,7 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 	}
 }
 
-void draw_rectangle(int x, int y, int w, int h, Uint32 colour,SDL_Surface* target)
+void draw_rectangle(int x, int y, int w, int h, Uint32 colour,surface target)
 {
 	if(x < 0 || y < 0 || x+w >= target->w || y+h >= target->h) {
 		std::cerr << "Rectangle has illegal co-ordinates: " << x << "," << y
@@ -266,7 +266,7 @@ void draw_rectangle(int x, int y, int w, int h, Uint32 colour,SDL_Surface* targe
 
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,
-                                 double alpha, SDL_Surface* target)
+                                 double alpha, surface target)
 {
 	if(x < 0 || y < 0 || x+w >= target->w || y+h >= target->h) {
 		std::cerr << "Rectangle has illegal co-ordinates: " << x << "," << y
@@ -355,7 +355,7 @@ private:
 
 }
 
-int show_dialog(display& disp, SDL_Surface* image,
+int show_dialog(display& disp, surface image,
                 const std::string& caption, const std::string& msg,
                 DIALOG_TYPE type,
 				const std::vector<std::string>* menu_items_ptr,
@@ -389,7 +389,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	static const int caption_font_size = 18;
 
 	CVideo& screen = disp.video();
-	SDL_Surface* const scr = screen.getSurface();
+	surface const scr = screen.getSurface();
 
 	SDL_Rect clipRect = disp.screen_area();
 

@@ -17,6 +17,30 @@
 #include "terrain.hpp"
 #include "util.hpp"
 
+namespace {
+
+class locator_string_initializer : public animated<image::locator>::string_initializer
+{
+public:
+	locator_string_initializer() : loc_(), no_loc_(true) {}
+	locator_string_initializer(const gamemap::location& loc): loc_(loc), no_loc_(false) {}
+	image::locator operator()(const std::string &s) const;
+
+private:
+	bool no_loc_;
+	gamemap::location loc_;
+};
+
+image::locator locator_string_initializer::operator()(const std::string &s) const
+{
+	if(no_loc_) {
+		return image::locator("terrain/" + s + ".png");
+	} else {
+		return image::locator("terrain/" + s + ".png", loc_);
+	}
+}
+
+}
 
 terrain_builder::tile::tile() 
 {
@@ -67,8 +91,8 @@ terrain_builder::terrain_builder(const config& cfg, const gamemap& gmap) :
 	//rebuild_terrain(gamemap::location(0,0));
 }
 
-const std::vector<image::locator> *terrain_builder::get_terrain_at(const gamemap::location &loc,
-								   ADJACENT_TERRAIN_TYPE terrain_type) const 
+const terrain_builder::imagelist *terrain_builder::get_terrain_at(const gamemap::location &loc,
+		ADJACENT_TERRAIN_TYPE terrain_type) const 
 {
 	if(!tile_map_.on_map(loc))
 		return NULL;
@@ -86,6 +110,29 @@ const std::vector<image::locator> *terrain_builder::get_terrain_at(const gamemap
 	return NULL;
 }
 
+bool terrain_builder::update_animation(const gamemap::location &loc)
+{
+	imagelist& bg = tile_map_[loc].images_background;
+	imagelist& fg = tile_map_[loc].images_foreground;
+	bool changed = false;
+
+	imagelist::iterator itor = bg.begin();
+	for(; itor != bg.end(); ++itor) {
+		itor->update_current_frame();
+		if(itor->frame_changed())
+			changed = true;
+	}
+
+	itor = fg.begin();
+	for(; itor != fg.end(); ++itor) {
+		itor->update_current_frame();
+		if(itor->frame_changed())
+			changed = true;
+	}
+
+	return changed;
+}
+
 void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 {
 	if (tile_map_.on_map(loc)) {
@@ -93,7 +140,7 @@ void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 		btile.clear();
 		const std::string filename =
 			map_.get_terrain_info(map_.get_terrain(loc)).default_image();
-		image::locator img_loc(filename);
+		animated<image::locator> img_loc(filename);
 		btile.images_foreground.push_back(img_loc);
 	}
 }
@@ -142,9 +189,9 @@ void terrain_builder::replace_token(std::string &s, const std::string &token, co
 	}
 }
 
-void terrain_builder::replace_token(terrain_builder::imagelist &list, const std::string &token, const std::string &replacement)
+void terrain_builder::replace_token(terrain_builder::rule_imagelist &list, const std::string &token, const std::string &replacement)
 {
-	for(imagelist::iterator itor = list.begin(); itor != list.end(); ++itor) {
+	for(rule_imagelist::iterator itor = list.begin(); itor != list.end(); ++itor) {
 		replace_token(itor->second, token, replacement);
 		replace_token(itor->second, token, replacement);
 	}
@@ -225,7 +272,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	return ret;
 }
 
-void terrain_builder::add_images_from_config(imagelist& images, const config &cfg)
+void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg)
 {
 	const config::child_list& cimages = cfg.get_children("image");
 
@@ -561,7 +608,11 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 		std::multimap<int, std::string>::const_iterator img;
 		
 		for(img = rule.images.begin(); img != rule.images.end(); ++img) {
-			image::locator th(img->second, constraint->second.loc);
+			animated<image::locator> th(img->second, locator_string_initializer(constraint->second.loc));
+			th.start_animation(0,animated<image::locator>::INFINITE_CYCLES);
+			th.update_current_frame();
+			
+			//image::locator th(img->second, constraint->second.loc);
 			if(img->first < 0) {
 				btile.images_background.push_back(th);
 			} else {
@@ -571,7 +622,10 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 		}
 
 		for(img = constraint->second.images.begin(); img != constraint->second.images.end(); ++img) {
-			image::locator th(img->second);
+			animated<image::locator> th(img->second, locator_string_initializer());
+			th.start_animation(0,animated<image::locator>::INFINITE_CYCLES);
+			th.update_current_frame();
+
 			if(img->first < 0) {
 				btile.images_background.push_back(th);
 			} else {
@@ -699,13 +753,16 @@ void terrain_builder::build_terrains()
 		//checks if all the images referenced by the current rule are valid.
 		//if not, this rule will not match.
 		bool absent_image = false;
-		imagelist::const_iterator image;
+		rule_imagelist::const_iterator image;
 		constraint_set::const_iterator constraint;
 
 		for(image = rule->second.images.begin(); 
 				!absent_image && (image != rule->second.images.end()); ++image) {
 
-			if(!image::exists("terrain/" + image->second + ".png"))
+			std::string s = image->second;
+			s = s.substr(0, s.find_first_of(",:"));
+
+			if(!image::exists("terrain/" + s + ".png"))
 				absent_image = true;
 		}
 
@@ -714,7 +771,11 @@ void terrain_builder::build_terrains()
 			for(image = constraint->second.images.begin(); 
 					!absent_image && (image != constraint->second.images.end());
 					++image) {
-				if(!image::exists("terrain/" + image->second + ".png"))
+
+				std::string s = image->second;
+				s = s.substr(0, s.find_first_of(",:"));
+
+				if(!image::exists("terrain/" + s + ".png"))
 					absent_image = true;
 			}
 		}

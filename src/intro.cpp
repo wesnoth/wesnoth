@@ -94,7 +94,7 @@ bool show_intro_part(display& screen, const config& part,
 			0,0,0,1.0,screen.video().getSurface());
 	const std::string& image_name = part["image"];
 
-	scoped_sdl_surface image(NULL);
+	surface image(NULL);
 	if(image_name.empty() == false) {
 		image.assign(image::get_image(image_name,image::UNSCALED));
 	}
@@ -251,9 +251,9 @@ void show_map_scene(display& screen, config& data)
 
 	const std::string& image_file = cfg["image"];
 
-	const scoped_sdl_surface image(image::get_image(image_file,image::UNSCALED));
-	const scoped_sdl_surface dot_image(image::get_image(game_config::dot_image,image::UNSCALED));
-	const scoped_sdl_surface cross_image(image::get_image(game_config::cross_image,image::UNSCALED));
+	const surface image(image::get_image(image_file,image::UNSCALED));
+	const surface dot_image(image::get_image(game_config::dot_image,image::UNSCALED));
+	const surface cross_image(image::get_image(game_config::cross_image,image::UNSCALED));
 	if(image == NULL || dot_image == NULL || cross_image == NULL) {
 		std::cerr << "could not find map image: '" << image_file << "': " << (image == NULL ? "failed" : "ok") << "\n"
 			<< "'" << game_config::dot_image << "': " << (dot_image == NULL ? "failed" : "ok") << "\n"
@@ -291,7 +291,7 @@ void show_map_scene(display& screen, config& data)
 		if(x < 0 || x >= image->w || y < 0 || y >= image->w)
 			continue;
 
-		SDL_Surface* img = dot_image;
+		surface img = dot_image;
 		if((**d)["type"] == "cross") {
 			img = cross_image;
 		}

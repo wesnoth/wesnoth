@@ -744,3 +744,4 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 		}
 	}
 }
+

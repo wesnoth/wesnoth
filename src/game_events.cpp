@@ -776,7 +776,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 
 		if(cfg["silent"] != "yes") {
-			scoped_sdl_surface surface(NULL);
+			surface surface(NULL);
 
 			if(image.empty() == false) {
 				surface.assign(image::get_image(image,image::UNSCALED));
@@ -872,7 +872,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			option_events.push_back((*mi)->child_range("command"));
 		}
 
-		scoped_sdl_surface surface(NULL);
+		surface surface(NULL);
 		if(image.empty() == false) {
 			surface.assign(image::get_image(image,image::UNSCALED));
 		}

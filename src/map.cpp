@@ -132,21 +132,6 @@ void gamemap::location::write(config& cfg) const
 	cfg["y"] = buf;
 }
 
-bool gamemap::location::operator==(const gamemap::location& a) const
-{
-	return x == a.x && y == a.y;
-}
-
-bool gamemap::location::operator!=(const gamemap::location& a) const
-{
-	return !operator==(a);
-}
-
-bool gamemap::location::operator<(const gamemap::location& a) const
-{
-	return x < a.x || x == a.x && y < a.y;
-}
-
 gamemap::location gamemap::location::operator-() const
 {
 	location ret;

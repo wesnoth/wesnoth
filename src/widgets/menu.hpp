@@ -98,7 +98,7 @@ private:
 
 	mutable std::vector<int> column_widths_;
 
-	scoped_sdl_surface buffer_;
+	surface buffer_;
 	int selected_;
 	bool click_selects_;
 	bool previous_button_;

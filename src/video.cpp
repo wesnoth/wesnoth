@@ -94,7 +94,7 @@ void clear_updates()
 	update_rects.clear();
 }
 
-SDL_Surface* frameBuffer = NULL;
+surface frameBuffer = NULL;
 
 }
 
@@ -103,7 +103,7 @@ bool non_interactive()
 	return SDL_GetVideoSurface() == NULL;
 }
 
-SDL_Surface* display_format_alpha(SDL_Surface* surf)
+surface display_format_alpha(surface surf)
 {
 	if(SDL_GetVideoSurface() != NULL)
 		return SDL_DisplayFormatAlpha(surf);
@@ -113,7 +113,7 @@ SDL_Surface* display_format_alpha(SDL_Surface* surf)
 		return NULL;
 }
 
-SDL_Surface* get_video_surface()
+surface get_video_surface()
 {
 	return frameBuffer;
 }
@@ -131,7 +131,7 @@ void update_rect(const SDL_Rect& rect_value)
 
 	SDL_Rect rect = rect_value;
 
-	SDL_Surface* const fb = SDL_GetVideoSurface();
+	surface const fb = SDL_GetVideoSurface();
 	if(fb != NULL) {
 		if(rect.x < 0) {
 			if(rect.x*-1 >= int(rect.w))
@@ -337,7 +337,7 @@ int CVideo::mustLock()
 	return SDL_MUSTLOCK(frameBuffer);
 }
 
-SDL_Surface* CVideo::getSurface( void )
+surface CVideo::getSurface( void )
 {
 	return frameBuffer;
 }

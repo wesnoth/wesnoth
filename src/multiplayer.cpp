@@ -467,7 +467,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 		}
 
 		SDL_Rect rect = minimap_restorer_.area();
-		const scoped_sdl_surface mini(image::getMinimap(rect.w,rect.h,map,0));
+		const surface mini(image::getMinimap(rect.w,rect.h,map,0));
 
 		if(mini != NULL) {
 			SDL_BlitSurface(mini, NULL, disp_.video().getSurface(), &rect);

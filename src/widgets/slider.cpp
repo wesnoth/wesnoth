@@ -78,7 +78,7 @@ int slider::max_value() const
 SDL_Rect slider::slider_area() const
 {
 	static const SDL_Rect default_value = {0,0,0,0};
-	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));
+	const surface img(image::get_image(slider_image,image::UNSCALED));
 	if(img == NULL)
 		return default_value;
 
@@ -98,14 +98,14 @@ void slider::draw()
 		return;
 	}
 
-	const scoped_sdl_surface image(image::get_image(highlight_ ? selected_image : slider_image,image::UNSCALED));
+	const surface image(image::get_image(highlight_ ? selected_image : slider_image,image::UNSCALED));
 	if(image == NULL || dirty() == false)
 		return;
 
 	if(image->w >= location().w)
 		return;
 
-	SDL_Surface* const screen = disp().video().getSurface();
+	surface const screen = disp().video().getSurface();
 
 	bg_restore();
 
@@ -130,7 +130,7 @@ void slider::process()
 	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 	const bool button = mouse_flags&SDL_BUTTON_LMASK;
 
-	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));
+	const surface img(image::get_image(slider_image,image::UNSCALED));
 	if(img == NULL)
 		return;
 

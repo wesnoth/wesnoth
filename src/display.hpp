@@ -135,8 +135,8 @@ public:
 	//over
 	void highlight_hex(gamemap::location hex);
 
-	//given x,y co-ordinates of the mouse, will return the location of the
-	//hex that the mouse is currently over. Returns an invalid location is
+	//given x,y co-ordinates of a pixel, will return the location of the
+	//hex that this pixel corresponds to. Returns an invalid location is
 	//the mouse isn't over any valid location.
 	gamemap::location hex_clicked_on(int x, int y);
 
@@ -160,6 +160,9 @@ public:
 	int get_location_x(const gamemap::location& loc) const;
 	int get_location_y(const gamemap::location& loc) const;
 
+	//returns the locations of 2 hexes that bind the visible area of the map.
+	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
+
 	//function to remove a footstep from a specific location
 	void remove_footstep(const gamemap::location& loc);
 
@@ -167,7 +170,7 @@ public:
 	//then it will be used, otherwise the unit's default image will be used.
 	//alpha controls how faded the unit is. If blend_to is not 0, then the
 	//unit will be alpha-blended to blend_to instead of the background colour
-	void draw_tile(int x, int y, SDL_Surface* unit_image=NULL,
+	void draw_tile(int x, int y, surface unit_image=surface(NULL),
 	               double alpha=1.0, Uint32 blend_to=0);
 
 	//function to float a label above a tile
@@ -180,7 +183,7 @@ private:
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
-	void draw_unit_on_tile(int x, int y, SDL_Surface* unit_image=NULL,
+	void draw_unit_on_tile(int x, int y, surface unit_image=surface(NULL),
 	                       double alpha=1.0, Uint32 blend_to=0);
 
 	void draw_halo_on_tile(int x, int y);
@@ -199,7 +202,7 @@ public:
 	CVideo& video() { return screen_; }
 
 	//blits a surface with black as alpha
-	void blit_surface(int x, int y, SDL_Surface* surface, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
+	void blit_surface(int x, int y, surface surface, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
 
 	//function to invalidate all tiles.
 	void invalidate_all();
@@ -212,6 +215,9 @@ public:
 
 	//function to invalidate that unit status displayed on the sidebar.
 	void invalidate_unit();
+
+	//function to invalidate animated terrains which may have changed.
+	void invalidate_animations();
 
 	//function to schedule the minimap for recalculation. Useful if any
 	//terrain in the map has changed.
@@ -314,12 +320,13 @@ public:
 	//         to blend to this colour, instead of the background
 	//submerged: the amount of the unit out of 1.0 that is submerged
 	//           (presumably under water) and thus shouldn't be drawn
-	void draw_unit(int x, int y, SDL_Surface* image,
-	               bool upside_down=false,double alpha=1.0, Uint32 blendto=0, double submerged=0.0,
-				   SDL_Surface* ellipse_back=NULL, SDL_Surface* ellipse_front=NULL);
+	void draw_unit(int x, int y, surface image,
+			bool upside_down=false,double alpha=1.0, Uint32 blendto=0, double submerged=0.0,
+			surface ellipse_back=surface(NULL),
+			surface ellipse_front=surface(NULL));
 
 	//rebuild the dynamic terrain at the given location.
-    void rebuild_terrain(const gamemap::location &location);
+	void rebuild_terrain(const gamemap::location &location);
 	//rebuild all dynamic terrain.
 	void rebuild_all();
 	
@@ -355,32 +362,32 @@ private:
 	SDL_Rect unitDescriptionRect_;
 	SDL_Rect unitProfileRect_;
 
-	void draw_image_for_report(scoped_sdl_surface& img, 
-			scoped_sdl_surface& surf, SDL_Rect& rect);
+	void draw_image_for_report(surface& img, 
+			surface& surf, SDL_Rect& rect);
 	void draw_report(reports::TYPE report_num);
 	SDL_Rect reportRects_[reports::NUM_REPORTS];
-	scoped_sdl_surface reportSurfaces_[reports::NUM_REPORTS];
+	surface reportSurfaces_[reports::NUM_REPORTS];
 	reports::report reports_[reports::NUM_REPORTS];
 
 	void bounds_check_position();
 
-	// std::vector<shared_sdl_surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
-	std::vector<shared_sdl_surface> get_terrain_images(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
+	// std::vector<surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
+	std::vector<surface> get_terrain_images(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
 
 	//this surface must be freed by the caller
-	//SDL_Surface* get_terrain(gamemap::TERRAIN, image::TYPE type,
+	//surface get_terrain(gamemap::TERRAIN, image::TYPE type,
 	//                        int x, int y, const std::string& dir="");
 	//this surface must be freed by the caller
-	SDL_Surface* get_terrain(const image::locator &image, image::TYPE type,
+	surface get_terrain(const image::locator &image, image::TYPE type,
 	                        int x, int y, bool search_tod);
 
 	//this surface must be freed by the caller
-	SDL_Surface* get_flag(gamemap::TERRAIN, int x, int y);
+	surface get_flag(gamemap::TERRAIN, int x, int y);
 
 	//this surface must be freed by the caller
-	SDL_Surface* get_minimap(int w, int h);
+	surface get_minimap(int w, int h);
 
 	CVideo& screen_;
 	mutable CKey keys_;
@@ -396,10 +403,10 @@ private:
 
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy
-	const SDL_Rect& calculate_energy_bar(SDL_Surface* surf);
-	std::map<SDL_Surface*,SDL_Rect> energy_bar_rects_;
+	const SDL_Rect& calculate_energy_bar(surface surf);
+	std::map<surface,SDL_Rect> energy_bar_rects_;
 
-	SDL_Surface* minimap_;
+	surface minimap_;
 	bool redrawMinimap_;
 
 	const paths* pathsList_;
@@ -474,7 +481,7 @@ private:
 
 	//if we're transitioning from one time of day to the next,
 	//then we will use these two masks on top of all hexes when we blit
-	shared_sdl_surface tod_hex_mask1, tod_hex_mask2;
+	surface tod_hex_mask1, tod_hex_mask2;
 
 	typedef std::map<gamemap::location,int> halo_map;
 	halo_map haloes_;

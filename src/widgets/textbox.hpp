@@ -71,7 +71,7 @@ private:
 	//the cursor should be inverted every 500 ms.
 	//this will be reset when keyboard input events occur
 	int show_cursor_at_;
-	shared_sdl_surface text_image_;
+	surface text_image_;
 	SDL_Rect text_size_;
 
 	//variables used for multi-line textboxes which support scrolling

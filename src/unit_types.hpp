@@ -17,6 +17,7 @@
 #include "map.hpp"
 #include "race.hpp"
 #include "team.hpp"
+#include "animated.hpp"
 
 #include <string>
 #include <vector>
@@ -25,22 +26,30 @@
 class unit_animation
 {
 public:
+	struct frame {
+		frame() {};
+		frame(const config& cfg);
+
+		// int start, end;
+		int xoffset;
+		std::string image;
+		std::string image_diagonal;
+		std::string halo;
+		int halo_x, halo_y;
+	};
+
 	unit_animation(const config& cfg);
 
 	enum FRAME_TYPE { UNIT_FRAME, MISSILE_FRAME };
 	enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
 
-	int get_first_frame(FRAME_TYPE type=UNIT_FRAME) const;
-	int get_last_frame(FRAME_TYPE type=UNIT_FRAME) const;
-
-	//function which gets an attack animation frame. The argument
-	//is 0 for the frame at the time of impact, and negative for
-	//frames before the time of impact
-	const std::string* get_frame(int milliseconds, int* xoffset=NULL,
-	                             FRAME_TYPE type=UNIT_FRAME,
-								 FRAME_DIRECTION direction=VERTICAL,
-								 const std::string** halo=NULL,
-								 int* halo_x=NULL, int* halo_y=NULL) const;
+	void start_animation(int start_frame, FRAME_TYPE type, int acceleration);
+	void update_current_frames();
+	bool animation_finished() const;
+	const frame& get_current_frame(FRAME_TYPE type=UNIT_FRAME) const;
+	int get_animation_time() const;
+	int get_first_frame_time(FRAME_TYPE type=UNIT_FRAME) const;
+	int get_last_frame_time(FRAME_TYPE type=UNIT_FRAME) const;
 
 	struct sfx {
 		int time;
@@ -50,26 +59,10 @@ public:
 	const std::vector<sfx>& sound_effects() const;
 
 private:
-	struct frame {
-		frame(int i1, int i2, const std::string& img, const std::string& halo, int offset, int halo_x, int halo_y)
-		      : start(i1), end(i2), xoffset(offset), image(img), halo(halo), halo_x(halo_x), halo_y(halo_y)
-		{}
 
-		frame(int i1, int i2, const std::string& img, const std::string& diag,
-		      const std::string& halo, int offset, int halo_x, int halo_y)
-		      : start(i1), end(i2), xoffset(offset),
-		        image(img), image_diagonal(diag), halo(halo), halo_x(halo_x), halo_y(halo_y)
-		{}
-
-		int start, end;
-		int xoffset;
-		std::string image;
-		std::string image_diagonal;
-		std::string halo;
-		int halo_x, halo_y;
-	};
-
-	std::vector<frame> frames_[2];
+	// std::vector<frame> frames_[2];
+	animated<frame> unit_frames_;
+	animated<frame> missile_frames_;
 
 	std::vector<sfx> sfx_;
 };

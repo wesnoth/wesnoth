@@ -41,7 +41,7 @@ namespace {
 
 		if(first_time) {
 			first_time = false;
-			scoped_sdl_surface surf(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+			surface surf(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,0xFF0000,0xFF00,0xFF,0xFF000000));
 			format = *surf->format;
 			format.palette = NULL;
 		}
@@ -51,14 +51,33 @@ namespace {
 
 }
 
-SDL_Surface* make_neutral_surface(SDL_Surface* surf)
+void free_sdl_surface::operator()(SDL_Surface* surf) const
+{
+	if(surf != NULL)
+		 SDL_FreeSurface(surf); 
+}
+
+/*explicit*/ surface::surface(SDL_Surface* surf) : surface_(surf)
+{
+}
+
+int surface::sdl_add_ref(SDL_Surface* surf)
+{
+	if(surf != NULL) {
+		return surf->refcount++;
+	} else {
+		return 0;
+	}
+}
+
+surface make_neutral_surface(surface surf)
 {
 	if(surf == NULL) {
 		std::cerr << "null neutral surface...\n";
 		return NULL;
 	}
 
-	SDL_Surface* const result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
+	surface const result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
 	if(result != NULL) {
 		SDL_SetAlpha(result,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
 	}
@@ -66,21 +85,14 @@ SDL_Surface* make_neutral_surface(SDL_Surface* surf)
 	return result;
 }
 
-int sdl_add_ref(SDL_Surface* surface)
-{
-	if(surface != NULL)
-		return surface->refcount++;
-	else
-		return 0;
-}
 
-SDL_Surface* create_optimized_surface(SDL_Surface* surface)
+surface create_optimized_surface(surface surf)
 {
-	if(surface == NULL)
+	if(surf == NULL)
 		return NULL;
 
-	SDL_Surface* const result = display_format_alpha(surface);
-	if(result == surface) {
+	surface const result = display_format_alpha(surf);
+	if(result == surf) {
 		std::cerr << "resulting surface is the same as the source!!!\n";
 	}
 
@@ -91,27 +103,26 @@ SDL_Surface* create_optimized_surface(SDL_Surface* surface)
 	return result;
 }
 
-SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
+surface scale_surface(surface surf, int w, int h)
 {
-	if(surface == NULL)
+	if(surf == NULL)
 		return NULL;
 
-	if(w == surface->w && h == surface->h) {
-		sdl_add_ref(surface);
-		return surface;
+	if(w == surf->w && h == surf->h) {
+		return surf;
 	}
 
-	scoped_sdl_surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
-	scoped_sdl_surface src(make_neutral_surface(surface));
+	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+	surface src(make_neutral_surface(surf));
 
 	if(src == NULL || dst == NULL) {
 		std::cerr << "Could not create surface to scale onto\n";
 		return NULL;
 	}
 
-	const double xratio = static_cast<double>(surface->w)/
+	const double xratio = static_cast<double>(surf->w)/
 			              static_cast<double>(w);
-	const double yratio = static_cast<double>(surface->h)/
+	const double yratio = static_cast<double>(surf->h)/
 			              static_cast<double>(h);
 
 	{
@@ -136,27 +147,26 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 	return create_optimized_surface(dst);
 }
 
-SDL_Surface* scale_surface_blended(SDL_Surface* surface, int w, int h)
+surface scale_surface_blended(surface surf, int w, int h)
 {
-	if(surface == NULL)
+	if(surf== NULL)
 		return NULL;
 
-	if(w == surface->w && h == surface->h) {
-		sdl_add_ref(surface);
-		return surface;
+	if(w == surf->w && h == surf->h) {
+		return surf;
 	}
 
-	scoped_sdl_surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
-	scoped_sdl_surface src(make_neutral_surface(surface));
+	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+	surface src(make_neutral_surface(surf));
 
 	if(src == NULL || dst == NULL) {
 		std::cerr << "Could not create surface to scale onto\n";
 		return NULL;
 	}
 
-	const double xratio = static_cast<double>(surface->w)/
+	const double xratio = static_cast<double>(surf->w)/
 			              static_cast<double>(w);
-	const double yratio = static_cast<double>(surface->h)/
+	const double yratio = static_cast<double>(surf->h)/
 			              static_cast<double>(h);
 
 	{
@@ -213,59 +223,59 @@ SDL_Surface* scale_surface_blended(SDL_Surface* surface, int w, int h)
 	return create_optimized_surface(dst);
 }
 
-SDL_Surface* adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
+surface adjust_surface_colour(surface surf, int r, int g, int b)
 {
-	if(r == 0 && g == 0 && b == 0 || surface == NULL)
-		return create_optimized_surface(surface);
+	if(r == 0 && g == 0 && b == 0 || surf == NULL)
+		return create_optimized_surface(surf);
 
-	scoped_sdl_surface surf(make_neutral_surface(surface));
+	surface nsurf(make_neutral_surface(surf));
 
-	if(surf == NULL) {
+	if(nsurf == NULL) {
 		std::cerr << "failed to make neutral surface\n";
 		return NULL;
 	}
 
 	{
-		surface_lock lock(surf);
+		surface_lock lock(nsurf);
 		Uint32* beg = lock.pixels();
-		Uint32* end = beg + surf->w*surf->h;
+		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
+			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
 			red = maximum<int>(8,minimum<int>(255,int(red)+r));
 			green = maximum<int>(0,minimum<int>(255,int(green)+g));
 			blue  = maximum<int>(0,minimum<int>(255,int(blue)+b));
 
-			*beg = SDL_MapRGBA(surf->format,red,green,blue,alpha);
+			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
 
 			++beg;
 		}
 	}
 
-	return create_optimized_surface(surf);
+	return create_optimized_surface(nsurf);
 }
 
-SDL_Surface* greyscale_image(SDL_Surface* surface)
+surface greyscale_image(surface surf)
 {
-	if(surface == NULL)
+	if(surf == NULL)
 		return NULL;
 
-	scoped_sdl_surface surf(make_neutral_surface(surface));
-	if(surf == NULL) {
+	surface nsurf(make_neutral_surface(surf));
+	if(nsurf == NULL) {
 		std::cerr << "failed to make neutral surface\n";
 		return NULL;
 	}
 
 	{
-		surface_lock lock(surf);
+		surface_lock lock(nsurf);
 		Uint32* beg = lock.pixels();
-		Uint32* end = beg + surf->w*surf->h;
+		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
+			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
 			//const Uint8 avg = (red+green+blue)/3;
 
@@ -278,137 +288,137 @@ SDL_Surface* greyscale_image(SDL_Surface* surface)
 						   29*(Uint16)blue) / 256);
 
 
-			*beg = SDL_MapRGBA(surf->format,avg,avg,avg,alpha);
+			*beg = SDL_MapRGBA(nsurf->format,avg,avg,avg,alpha);
 
 			++beg;
 		}
 	}
 
-	return create_optimized_surface(surf);
+	return create_optimized_surface(nsurf);
 }
 
-SDL_Surface* brighten_image(SDL_Surface* surface, double amount)
+surface brighten_image(surface surf, double amount)
 {
-	if(surface == NULL) {
+	if(surf == NULL) {
 		return NULL;
 	}
 
-	scoped_sdl_surface surf(make_neutral_surface(surface));
+	surface nsurf(make_neutral_surface(surf));
 
-	if(surf == NULL) {
+	if(nsurf == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
 
 	{
-		surface_lock lock(surf);
+		surface_lock lock(nsurf);
 		Uint32* beg = lock.pixels();
-		Uint32* end = beg + surf->w*surf->h;
+		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
+			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
 			red = Uint8(minimum<double>(maximum<double>(double(red) * amount,0.0),255.0));
 			green = Uint8(minimum<double>(maximum<double>(double(green) * amount,0.0),255.0));
 			blue = Uint8(minimum<double>(maximum<double>(double(blue) * amount,0.0),255.0));
 
-			*beg = SDL_MapRGBA(surf->format,red,green,blue,alpha);
+			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
 
 			++beg;
 		}
 	}
 
-	return create_optimized_surface(surf);
+	return create_optimized_surface(nsurf);
 }
 
-SDL_Surface* adjust_surface_alpha(SDL_Surface* surface, double amount)
+surface adjust_surface_alpha(surface surf, double amount)
 {
-	if(surface == NULL) {
+	if(surf== NULL) {
 		return NULL;
 	}
 
-	scoped_sdl_surface surf(make_neutral_surface(surface));
+	surface nsurf(make_neutral_surface(surf));
 
-	if(surf == NULL) {
+	if(nsurf == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
 
 	{
-		surface_lock lock(surf);
+		surface_lock lock(nsurf);
 		Uint32* beg = lock.pixels();
-		Uint32* end = beg + surf->w*surf->h;
+		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
+			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
 			alpha = Uint8(minimum<double>(maximum<double>(double(alpha) * amount,0.0),255.0));
 
-			*beg = SDL_MapRGBA(surf->format,red,green,blue,alpha);
+			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
 
 			++beg;
 		}
 	}
 
-	return create_optimized_surface(surf);
+	return create_optimized_surface(nsurf);
 }
 
-SDL_Surface* adjust_surface_alpha_add(SDL_Surface* surface, int amount)
+surface adjust_surface_alpha_add(surface surf, int amount)
 {
-	if(surface == NULL) {
+	if(surf== NULL) {
 		return NULL;
 	}
 
-	scoped_sdl_surface surf(make_neutral_surface(surface));
+	surface nsurf(make_neutral_surface(surf));
 
-	if(surf == NULL) {
+	if(nsurf == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
 
 	{
-		surface_lock lock(surf);
+		surface_lock lock(nsurf);
 		Uint32* beg = lock.pixels();
-		Uint32* end = beg + surf->w*surf->h;
+		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
+			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
 			alpha = Uint8(maximum<int>(0,minimum<int>(255,int(alpha) + amount)));
 
-			*beg = SDL_MapRGBA(surf->format,red,green,blue,alpha);
+			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
 
 			++beg;
 		}
 	}
 
-	return create_optimized_surface(surf);
+	return create_optimized_surface(nsurf);
 }
 
 // Applies a mask on a surface
-SDL_Surface* mask_surface(SDL_Surface* surface, SDL_Surface* mask)
+surface mask_surface(surface surf, surface mask)
 {
-	if(surface == NULL) {
+	if(surf == NULL) {
 		return NULL;
 	}
 
-	SDL_Surface* surf = make_neutral_surface(surface);
-	scoped_sdl_surface nmask(make_neutral_surface(mask));
+	surface nsurf = make_neutral_surface(surf);
+	surface nmask(make_neutral_surface(mask));
 	
-	if(surf == NULL || nmask == NULL) {
+	if(nsurf == NULL || nmask == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
 
 	{
-		surface_lock lock(surf);
+		surface_lock lock(nsurf);
 		surface_lock mlock(nmask);
 		
 		Uint32* beg = lock.pixels();
-		Uint32* end = beg + surf->w*surf->h;
+		Uint32* end = beg + nsurf->w*surf->h;
 		Uint32* mbeg = mlock.pixels();
 		Uint32* mend = mbeg + nmask->w*nmask->h;
 
@@ -416,42 +426,45 @@ SDL_Surface* mask_surface(SDL_Surface* surface, SDL_Surface* mask)
 			Uint8 red, green, blue, alpha;
 			Uint8 mred, mgreen, mblue, malpha;
 
-			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
+			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 			SDL_GetRGBA(*mbeg,nmask->format,&mred,&mgreen,&mblue,&malpha);
 
 			alpha = Uint8(minimum<int>(malpha, alpha));
 
-			*beg = SDL_MapRGBA(surf->format,red,green,blue,alpha);
+			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
 
 			++beg;
 			++mbeg;
 		}
 	}
 
-	return surf;
-	//return create_optimized_surface(surf);
+	return nsurf;
+	//return create_optimized_surface(nsurf);
 }
 
 // Cuts a rectangle from a surface.
-SDL_Surface* cut_surface(SDL_Surface *surface, const SDL_Rect& r)
+surface cut_surface(surface surf, const SDL_Rect& r)
 {
-	SDL_Surface* res = create_compatible_surface(surface, r.w, r.h);
+	surface res = create_compatible_surface(surf, r.w, r.h);
 
-	size_t sbpp = surface->format->BytesPerPixel;
-	size_t spitch = surface->pitch;
+	size_t sbpp = surf->format->BytesPerPixel;
+	size_t spitch = surf->pitch;
 	size_t rbpp = res->format->BytesPerPixel;
 	size_t rpitch = res->pitch;
 
-	surface_lock slock(surface);
+	surface_lock slock(surf);
 	surface_lock rlock(res);
 
 	Uint8* src = reinterpret_cast<Uint8 *>(slock.pixels());
 	Uint8* dest = reinterpret_cast<Uint8 *>(rlock.pixels());
 
-	for(int y = 0; y < r.h && (r.y + y) < surface->h; ++y) {
+	if(r.x >= surf->w)
+		return res;
+
+	for(int y = 0; y < r.h && (r.y + y) < surf->h; ++y) {
 		Uint8* line_src = src + (r.y + y) * spitch + r.x * sbpp;
 		Uint8* line_dest = dest + y * rpitch;
-		size_t size = r.w + r.x <= surface->w ? r.w : surface->w - r.x; 
+		size_t size = r.w + r.x <= surf->w ? r.w : surf->w - r.x; 
 		
 		assert(rpitch >= r.w * rbpp);
 		memcpy(line_dest, line_src, size * rbpp);
@@ -460,26 +473,26 @@ SDL_Surface* cut_surface(SDL_Surface *surface, const SDL_Rect& r)
 	return res;
 }
 
-SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour)
+surface blend_surface(surface surf, double amount, Uint32 colour)
 {
-	if(surface == NULL) {
+	if(surf== NULL) {
 		return NULL;
 	}
 
-	scoped_sdl_surface surf(make_neutral_surface(surface));
+	surface nsurf(make_neutral_surface(surf));
 
-	if(surf == NULL) {
+	if(nsurf == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
 
 	{
-		surface_lock lock(surf);
+		surface_lock lock(nsurf);
 		Uint32* beg = lock.pixels();
-		Uint32* end = beg + surf->w*surf->h;
+		Uint32* end = beg + nsurf->w*surf->h;
 
 		Uint8 red2, green2, blue2, alpha2;
-		SDL_GetRGBA(colour,surf->format,&red2,&green2,&blue2,&alpha2);
+		SDL_GetRGBA(colour,nsurf->format,&red2,&green2,&blue2,&alpha2);
 
 		red2 = Uint8(red2*amount);
 		green2 = Uint8(green2*amount);
@@ -489,80 +502,80 @@ SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour)
 
 		while(beg != end) {
 			Uint8 red, green, blue, alpha;
-			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
+			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
 			red = Uint8(red*amount) + red2;
 			green = Uint8(green*amount) + green2;
 			blue = Uint8(blue*amount) + blue2;
 
-			*beg = SDL_MapRGBA(surf->format,red,green,blue,alpha);
+			*beg = SDL_MapRGBA(nsurf->format,red,green,blue,alpha);
 
 			++beg;
 		}
 	}
 
-	return create_optimized_surface(surf);
+	return create_optimized_surface(nsurf);
 }
 
-SDL_Surface* flip_surface(SDL_Surface* surface)
+surface flip_surface(surface surf)
 {
-	if(surface == NULL) {
+	if(surf == NULL) {
 		return NULL;
 	}
 
-	scoped_sdl_surface surf(make_neutral_surface(surface));
+	surface nsurf(make_neutral_surface(surf));
 
-	if(surf == NULL) {
+	if(nsurf == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
 
 	{
-		surface_lock lock(surf);
+		surface_lock lock(nsurf);
 		Uint32* const pixels = lock.pixels();
 
-		for(size_t y = 0; y != surf->h; ++y) {
-			for(size_t x = 0; x != surf->w/2; ++x) {
-				const size_t index1 = y*surf->w + x;
-				const size_t index2 = (y+1)*surf->w - x - 1;
+		for(size_t y = 0; y != nsurf->h; ++y) {
+			for(size_t x = 0; x != nsurf->w/2; ++x) {
+				const size_t index1 = y*nsurf->w + x;
+				const size_t index2 = (y+1)*nsurf->w - x - 1;
 				std::swap(pixels[index1],pixels[index2]);
 			}
 		}
 	}
 
-	return create_optimized_surface(surf);
+	return create_optimized_surface(nsurf);
 }
 
-SDL_Surface* flop_surface(SDL_Surface* surface)
+surface flop_surface(surface surf)
 {
-	if(surface == NULL) {
+	if(surf == NULL) {
 		return NULL;
 	}
 
-	scoped_sdl_surface surf(make_neutral_surface(surface));
+	surface nsurf(make_neutral_surface(surf));
 
-	if(surf == NULL) {
+	if(nsurf == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
 
 	{
-		surface_lock lock(surf);
+		surface_lock lock(nsurf);
 		Uint32* const pixels = lock.pixels();
 
-		for(size_t x = 0; x != surf->w; ++x) {
-			for(size_t y = 0; y != surf->h/2; ++y) {
-				const size_t index1 = y*surf->w + x;
-				const size_t index2 = (surf->h-y-1)*surf->w + x;
+		for(size_t x = 0; x != nsurf->w; ++x) {
+			for(size_t y = 0; y != nsurf->h/2; ++y) {
+				const size_t index1 = y*nsurf->w + x;
+				const size_t index2 = (nsurf->h-y-1)*surf->w + x;
 				std::swap(pixels[index1],pixels[index2]);
 			}
 		}		
 	}
 
-	return create_optimized_surface(surf);
+	return create_optimized_surface(nsurf);
 }
 
-SDL_Surface* create_compatible_surface(SDL_Surface* surf, int width, int height)
+surface create_compatible_surface(surface surf, int width, int height)
 {
 	if(surf == NULL)
 		return NULL;
@@ -577,7 +590,7 @@ SDL_Surface* create_compatible_surface(SDL_Surface* surf, int width, int height)
 		                        surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
 }
 
-void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, SDL_Surface* target)
+void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, surface target)
 {
 	if(alpha == SDL_ALPHA_OPAQUE) {
 		SDL_FillRect(target,&rect,colour);
@@ -586,7 +599,7 @@ void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, SDL_Surface* ta
 		return;
 	}
 
-	scoped_sdl_surface tmp(create_compatible_surface(target,rect.w,rect.h));
+	surface tmp(create_compatible_surface(target,rect.w,rect.h));
 	if(tmp == NULL) {
 		return;
 	}
@@ -597,7 +610,7 @@ void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, SDL_Surface* ta
 	SDL_BlitSurface(tmp,NULL,target,&rect);
 }
 
-SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
+surface get_surface_portion(surface src, SDL_Rect& area)
 {
 	if(area.x >= src->w || area.y >= src->h) {
 		std::cerr << "illegal surface portion...\n";
@@ -612,7 +625,7 @@ SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 		area.h = src->h - area.y;
 	}
 
-	SDL_Surface* const dst = create_compatible_surface(src,area.w,area.h);
+	surface const dst = create_compatible_surface(src,area.w,area.h);
 	if(dst == NULL) {
 		std::cerr << "Could not create a new surface in get_surface_portion()\n";
 		return NULL;
@@ -643,24 +656,24 @@ private:
 
 }
 
-SDL_Rect get_non_transperant_portion(SDL_Surface* surface)
+SDL_Rect get_non_transperant_portion(surface surf)
 {
 	SDL_Rect res = {0,0,0,0};
-	const scoped_sdl_surface surf(make_neutral_surface(surface));
-	if(surf == NULL) {
+	const surface nsurf(make_neutral_surface(surf));
+	if(nsurf == NULL) {
 		std::cerr << "failed to make neutral surface\n";
 		return res;
 	}
 
-	const not_alpha calc(*(surf->format));
+	const not_alpha calc(*(nsurf->format));
 
-	surface_lock lock(surf);
+	surface_lock lock(nsurf);
 	const Uint32* const pixels = lock.pixels();
 
 	size_t n;
-	for(n = 0; n != surf->h; ++n) {
-		const Uint32* const start_row = pixels + n*surf->w;
-		const Uint32* const end_row = start_row + surf->w;
+	for(n = 0; n != nsurf->h; ++n) {
+		const Uint32* const start_row = pixels + n*nsurf->w;
+		const Uint32* const end_row = start_row + nsurf->w;
 
 		if(std::find_if(start_row,end_row,calc) != end_row)
 			break;
@@ -668,9 +681,9 @@ SDL_Rect get_non_transperant_portion(SDL_Surface* surface)
 
 	res.y = n;
 
-	for(n = 0; n != surf->h-res.y; ++n) {
-		const Uint32* const start_row = pixels + (surf->h-n-1)*surf->w;
-		const Uint32* const end_row = start_row + surf->w;
+	for(n = 0; n != nsurf->h-res.y; ++n) {
+		const Uint32* const start_row = pixels + (nsurf->h-n-1)*surf->w;
+		const Uint32* const end_row = start_row + nsurf->w;
 
 		if(std::find_if(start_row,end_row,calc) != end_row)
 			break;
@@ -678,35 +691,35 @@ SDL_Rect get_non_transperant_portion(SDL_Surface* surface)
 
 	//the height is the height of the surface, minus the distance from the top and the
 	//distance from the bottom
-	res.h = surf->h - res.y - n;
+	res.h = nsurf->h - res.y - n;
 
-	for(n = 0; n != surf->w; ++n) {
+	for(n = 0; n != nsurf->w; ++n) {
 		size_t y;
-		for(y = 0; y != surf->h; ++y) {
-			const Uint32 pixel = pixels[y*surf->w + n];
+		for(y = 0; y != nsurf->h; ++y) {
+			const Uint32 pixel = pixels[y*nsurf->w + n];
 			if(calc(pixel))
 				break;
 		}
 
-		if(y != surf->h)
+		if(y != nsurf->h)
 			break;
 	}
 
 	res.x = n;
 
-	for(n = 0; n != surf->w-res.x; ++n) {
+	for(n = 0; n != nsurf->w-res.x; ++n) {
 		size_t y;
-		for(y = 0; y != surf->h; ++y) {
-			const Uint32 pixel = pixels[y*surf->w + surf->w - n - 1];
+		for(y = 0; y != nsurf->h; ++y) {
+			const Uint32 pixel = pixels[y*nsurf->w + surf->w - n - 1];
 			if(calc(pixel))
 				break;
 		}
 
-		if(y != surf->h)
+		if(y != nsurf->h)
 			break;
 	}
 
-	res.w = surf->w - res.x - n;
+	res.w = nsurf->w - res.x - n;
 
 	return res;
 }

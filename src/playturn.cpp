@@ -118,6 +118,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			throw e;
 		}
 
+		// gui.invalidate_animations();
 		gui.draw();
 
 		turn_data.send_data();
@@ -2361,7 +2362,7 @@ void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& l
 
 	const int border_size = 10;
 
-	const int ypos = area.y+area.h-30 - (textbox_.check.get() != NULL ? textbox_.check->height() + border_size : 0);
+	const int ypos = area.y+area.h-30 - (textbox_.check != NULL ? textbox_.check->height() + border_size : 0);
 	textbox_.label = font::add_floating_label(label,14,font::YELLOW_COLOUR,area.x+border_size,ypos,0,0,-1,
 	                                          area,font::LEFT_ALIGN);
 	if(textbox_.label == 0) {
@@ -2380,7 +2381,7 @@ void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& l
 	textbox_.box->set_volatile(true);
 	textbox_.box->set_location(area.x + label_area.w + border_size*2,ypos);
 
-	if(textbox_.check.get() != NULL) {
+	if(textbox_.check != NULL) {
 		textbox_.check->set_volatile(true);
 		textbox_.check->set_location(textbox_.box->location().x,textbox_.box->location().y + textbox_.box->location().h + border_size);
 	}
@@ -2391,7 +2392,7 @@ void turn_info::close_textbox()
 	if(textbox_.active() == false) {
 		return;
 	}
-	if(textbox_.check.get() != NULL) {
+	if(textbox_.check != NULL) {
 		if(textbox_.mode == floating_textbox::TEXTBOX_MESSAGE) {
 			preferences::set_message_private(textbox_.check->checked());
 		}
@@ -2414,7 +2415,7 @@ void turn_info::enter_textbox()
 		do_search(textbox_.box->text());
 		break;
 	case floating_textbox::TEXTBOX_MESSAGE:
-		do_speak(textbox_.box->text(),textbox_.check.get() != NULL ? textbox_.check->checked() : false);
+		do_speak(textbox_.box->text(),textbox_.check != NULL ? textbox_.check->checked() : false);
 		break;
 	default:
 		std::cerr << "unknown textbox mode\n";
