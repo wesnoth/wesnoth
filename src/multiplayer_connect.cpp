@@ -282,7 +282,7 @@ config connect::side::get_config() const
 
 	// If the user is allowed to change type, faction, leader etc, then
 	// import their new values in the config.
-	if(enabled_) {
+	if(enabled_ && !parent_->era_sides_.empty()) {
 		// Merge the faction data to res
 		res.append(*(parent_->era_sides_[faction_]));
 	}
@@ -432,6 +432,9 @@ void connect::side::reset(mp::controller controller)
 
 void connect::side::resolve_random()
 {
+	if(!enabled_ || parent_->era_sides_.empty())
+		return;
+
 	if((*parent_->era_sides_[faction_])["random_faction"] == "yes") {
 
 		// Builds the list of sides which aren't random
@@ -819,18 +822,9 @@ void connect::lists_init()
 	player_types_.push_back(_("Computer Player"));
 	player_types_.push_back(_("Empty"));
 
-	const config* const era_cfg = game_config().find_child("era","id",era_);
-	if(era_cfg == NULL) {
-		throw config::error(_("Era not available: ") + era_);
-	}
-
-	era_sides_ = era_cfg->get_children("multiplayer_side");
-	level_.add_child("era", *era_cfg);
-
 	for(std::vector<config*>::const_iterator faction = era_sides_.begin(); faction != era_sides_.end(); ++faction) {
 		player_factions_.push_back((**faction)["name"]);
 	}
-
 
 	//Factions
 	const config::child_itors sides = level_.child_range("side");
@@ -922,28 +916,23 @@ void connect::load_game()
 			level_.clear_children("replay");
 			level_.add_child("replay") = state_.replay_data;
 		}
-
-		// Gets the era from the era of the savegame
-		era_ = level_["era"];
-		if(era_.empty())
-			era_ = params_.era;
-
 	} else {
 		level_ = params_.scenario_data;
 		level_["turns"] = lexical_cast_default<std::string>(params_.num_turns, "20");
 
-		era_ = params_.era;
-		level_["era"] = era_;
+		// Gets the era from the era of the savegame
+		const std::string& era = params_.era;
+
+		// Initialize the list of sides available for the current era.
+		const config* const era_cfg = game_config().find_child("era", "id", era);
+		if(era_cfg == NULL) {
+			utils::string_map i18n_symbols;
+			i18n_symbols["era"] = era;
+			throw config::error(vgettext("Cannot find era $era", i18n_symbols));
+		}
+		era_sides_ = era_cfg->get_children("multiplayer_side");
+		level_.add_child("era", *era_cfg);
 	}
-	
-	// Initialize the list of sides available for the current era.
-	const config* const era_cfg = game_config().find_child("era","id",era_);
-	if(era_cfg == NULL) {
-		utils::string_map i18n_symbols;
-		i18n_symbols["era"] = era_;
-		throw config::error(vgettext("Cannot find era $era", i18n_symbols));
-	}
-	era_sides_ = era_cfg->get_children("multiplayer_side");
 
 	//this will force connecting clients to be using the same version number as us.
 	level_["version"] = game_config::version;

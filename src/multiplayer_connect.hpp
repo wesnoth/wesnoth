@@ -200,9 +200,6 @@ private:
 	// "level" object
 	game_state state_;
 
-	// The era used for factions
-	std::string era_;
-
 	// The list of available sides for the current era
 	config::child_list era_sides_;
 
