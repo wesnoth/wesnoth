@@ -16,7 +16,7 @@ translations.
 
 The .tar.gz file is distributed with a working set of configure files. They
 are not in the CVS repository though. Consequently, if you are building from
-CVS, you will need autoconf (>= 2.59) and automake (>= 1.8).
+CVS, you will need autoconf (>= 2.59) and automake (>= 1.9).
 
 Sourcecode:
 
@@ -59,8 +59,13 @@ order for it to work.
 You most likely want to change the default localstatedir since it will
 probably default to PREFIX/var.
 
-Updating:
+Rebuilding:
 
- When updating wesnoth (e.g. redoing "configure" with new switches, or updating from CVS) clean the tree first with:
+You should clean your existing wesnoth release build first with:
 
- $ make clean
+ $ make distclean
+
+If you want to clean your wesnoth CVS build do:
+
+ $ make maintainer-clean
+
