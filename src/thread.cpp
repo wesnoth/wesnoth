@@ -54,12 +54,12 @@ condition::~condition()
 
 bool condition::wait(const mutex& m)
 {
-	SDL_CondWait(cond_,m.m_);
+	return SDL_CondWait(cond_,m.m_) == 0;
 }
 
 bool condition::wait_timeout(const mutex& m, unsigned int timeout)
 {
-	SDL_CondWaitTimeout(cond_,m.m_,timeout);
+	return SDL_CondWaitTimeout(cond_,m.m_,timeout) == 0;
 }
 
 void condition::notify_one()

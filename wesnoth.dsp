@@ -261,7 +261,15 @@ SOURCE=.\src\network.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\network_worker.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\pathfind.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\pathutils.cpp
 # End Source File
 # Begin Source File
 
@@ -278,6 +286,10 @@ SOURCE=.\src\preferences.cpp
 # Begin Source File
 
 SOURCE=.\src\widgets\progressbar.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\publish_campaign.cpp
 # End Source File
 # Begin Source File
 
@@ -334,6 +346,10 @@ SOURCE=.\src\widgets\textbox.cpp
 # Begin Source File
 
 SOURCE=.\src\theme.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\thread.cpp
 # End Source File
 # Begin Source File
 

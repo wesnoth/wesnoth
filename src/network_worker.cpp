@@ -8,8 +8,6 @@
 #include <map>
 #include <set>
 
-#include <unistd.h>
-
 namespace {
 
 unsigned int buf_id = 0;
