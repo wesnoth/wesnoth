@@ -1,4 +1,5 @@
 CVS HEAD:
+ * new campaign: The Rise of Wesnoth (22 scenarios)
  * improved user interface theme
  * new and improved graphics: signpost, mountains, grassland, attack icons and frames
  * new scenarios for 'The Eastern Invasion' campaign:
@@ -39,6 +40,7 @@ CVS HEAD:
  * return can now be used to navigate through help topics and sections
  * a box is now drawn around images in the help browser (can be disabled through minor tweaks to help config to handle new borders around images wml)
  * implemented feature to tell observers when a new player has arrived in the lobby
+ * language fixes and polishing (english)
  * updated translations:
    * catalan
    * czech
@@ -61,7 +63,10 @@ CVS HEAD:
  * fixed bug where multiplayer games that disallowed observers didn't work properly
  * fixed items not removed after being picked up
  * fixed victory conditions in 'The Siege of Barag Gor'
+ * fixed attack animation not being complete
+ * fixed absence of animation when units without attack frame attack
  * small fixes to unit display in help browser
+ * deleted duplicate battleworld.cg
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
  * moved items to their own hierarchy: images/items/
  * added exploder and cutter tools
