@@ -612,22 +612,15 @@ done
 # Data file substitution.                                             #
 #######################################################################
 
-MANUAL_FILES=`ls MANUAL*`
-MANUAL_FILES=`echo $MANUAL_FILES`
 AM_CONDITIONAL([LITE], [test "x$lite" = "xyes"])
 if test "x$lite" = "xyes"; then
     PACKAGE=$PACKAGE-lite
 fi
-UTIL_FILES=`find utils -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
-UTIL_FILES=`echo $UTIL_FILES`
-
-AC_SUBST([MANUAL_FILES])
 AC_SUBST([DATA_FILES])
 AC_SUBST([FONT_FILES])
 AC_SUBST([IMAGE_FILES])
 AC_SUBST([MUSIC_FILES])
 AC_SUBST([SOUND_FILES])
-AC_SUBST([UTIL_FILES])
 
 
 AC_CONFIG_FILES([Makefile

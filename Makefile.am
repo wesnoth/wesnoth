@@ -10,8 +10,9 @@ else
 findmoredata=;find images music $(extrawesnothdatadirs) $(findfilterflags) -o -print
 endif
 
-finddata=find data fonts sounds $(extrawesnothdatadirs) $(findfilterflags) -o -print \
-	 $(findmoredata)
+finddata=(cd $(top_srcdir) && find data fonts sounds $(extrawesnothdatadirs) $(findfilterflags) -o -print \
+	 $(findmoredata) )
+findnoinst=(cd $(top_srcdir) && find utils -name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d -o -print && find MANUAL*)
 
 install-data-local:
 	@$(NORMAL_INSTALL)
@@ -39,10 +40,9 @@ uninstall-local:
 	done
 dist-hook:
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
-	( $(finddata) ) | tar cf - -T - | (cd $(distdir) && tar xf -)
+	( $(finddata); $(findnoinst) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
 
-dist_noinst_DATA = @MANUAL_FILES@ copyright changelog wesnoth.dsp wesnoth.dsw \
-	@UTIL_FILES@
+dist_noinst_DATA = copyright changelog wesnoth.dsp wesnoth.dsw
 dist_man6_MANS = doc/man/wesnoth.6 doc/man/wesnothd.6 doc/man/wesnoth_editor.6
 
 uninstall-hook:
