@@ -13,6 +13,28 @@
 namespace
 {
 
+// ensure the map position is sufficiently centered on the acting rectangle
+void adjust_map_position(display& disp, int x, int y, int w, int h)
+{
+	const int side_threshold = 80;
+	int border;
+	SDL_Rect area = disp.map_area();
+
+	border = area.x + side_threshold;
+	if (x < border) disp.scroll(x - border, 0);
+
+	border = area.y + side_threshold;
+	if (y < border) disp.scroll(0, y - border);
+
+	x += w;
+	border = area.x + area.w - side_threshold;
+	if (x > border) disp.scroll(x - border, 0);
+
+	y += h;
+	border = area.y + area.h - side_threshold;
+	if (y > border) disp.scroll(0, y - border);
+}
+
 void move_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, const unit& u)
 {
 	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
@@ -20,8 +42,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	}
 
 	const bool face_left = u.facing_left();
-
-	const int side_threshhold = 80;
 
 	int xsrc = disp.get_location_x(a);
 	int ysrc = disp.get_location_y(a);
@@ -79,21 +99,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		//we try to scroll the map if the unit is at the edge.
 		//keep track of the old position, and if the map moves at all,
 		//then recenter it on the unit
-		if(xloc < side_threshhold) {
-			disp.scroll(xloc - side_threshhold,0);
-		}
-
-		if(yloc < side_threshhold) {
-			disp.scroll(0,yloc - side_threshhold);
-		}
-
-		if(xloc + double(image->w) > disp.mapx() - side_threshhold) {
-			disp.scroll(((xloc + image->w) - (disp.mapx() - side_threshhold)),0);
-		}
-
-		if(yloc + double(image->h) > disp.y() - side_threshhold) {
-			disp.scroll(0,((yloc + image->h) - (disp.y() - side_threshhold)));
-		}
+		adjust_map_position(disp, xloc, yloc, image->w, image->h);
 
 		if(xsrc != disp.get_location_x(a) || ysrc != disp.get_location_y(a)) {
 			disp.scroll_to_tile(b.x,b.y,display::WARP);
@@ -117,8 +123,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		const int height_adjust = src_height_adjust + (dst_height_adjust-src_height_adjust)*(i/nsteps);
 		const double submerge = src_submerge + (dst_submerge-src_submerge)*(double(i)/double(nsteps));
 
-		const int xpos = static_cast<int>(xloc);
-		const int ypos = static_cast<int>(yloc) - height_adjust;
+		const int xpos = xloc;
+		const int ypos = yloc - height_adjust;
 
 		// disp.invalidate_animations();
 		disp.draw(false);
@@ -539,8 +545,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	                  || preferences::show_combat() == false;
 
 	if(!hide) {
-		const int side_threshhold = 80;
-
 		int xloc = disp.get_location_x(a);
 		int yloc = disp.get_location_y(a);
 
@@ -549,21 +553,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		//we try to scroll the map if the unit is at the edge.
 		//keep track of the old position, and if the map moves at all,
 		//then recenter it on the unit
-		if(xloc < area.x + side_threshhold) {
-			disp.scroll(xloc - side_threshhold - disp.map_area().x,0);
-		}
-
-		if(yloc < area.y + side_threshhold) {
-			disp.scroll(0,yloc - side_threshhold - area.y);
-		}
-
-		if(xloc + disp.hex_size() > area.x + area.w - side_threshhold) {
-			disp.scroll(((xloc + disp.hex_size()) - (area.x + area.w - side_threshhold)),0);
-		}
-
-		if(yloc + disp.hex_size() > area.y + area.h - side_threshhold) {
-			disp.scroll(0,((yloc + disp.hex_size()) - (area.y + area.h - side_threshhold)));
-		}
+		adjust_map_position(disp, xloc, yloc, disp.hex_size(), disp.hex_size());
 
 		if(xloc != disp.get_location_x(a) || yloc != disp.get_location_y(a)) {
 			disp.scroll_to_tile(a.x,a.y,display::WARP);
