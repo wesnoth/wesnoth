@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-08 15:00+0200\n"
-"PO-Revision-Date: 2004-10-17 18:05+0300\n"
+"POT-Creation-Date: 2004-10-17 14:44+0200\n"
+"PO-Revision-Date: 2004-10-18 17:05+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -712,7 +712,7 @@ msgstr "(Шепчущий) Немного друзей. Я должен сказ
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:4
 msgid "A Summer of Storms"
-msgstr "Штормовое лето"
+msgstr "Лето штормов"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:27
 msgid ""
@@ -1689,6 +1689,7 @@ msgid "Fallen Lich Point"
 msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:28
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1700,6 +1701,13 @@ msgid ""
 "#Death of Lady Jessica or\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Условие победы:\n"
+"@Убейте всех врагов\n"
+"Поражение:\n"
+"#Смерть Принца Халдрика или\n"
+"#Смерть Леди Джессики или\n"
+"#Конец количества разрешённых ходов"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:211
 msgid ""
@@ -2690,6 +2698,7 @@ msgid "Sewer of Southbay"
 msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:23
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -2700,6 +2709,13 @@ msgid ""
 "#Death of Lady Jessica or\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Условие победы:\n"
+"@Убейте всех врагов\n"
+"Поражение:\n"
+"#Смерть Принца Халдрика или\n"
+"#Смерть Леди Джессики или\n"
+"#Конец количества разрешённых ходов"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:144
 msgid ""
@@ -4241,7 +4257,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-macros.cfg:23
 msgid "You retrieve {AMOUNT} pieces of gold."
-msgstr "Вы нашли {AMOUNT} кусков золота."
+msgstr "Вы получили {AMOUNT} единиц золота."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-nlmsg.cfg:12
 msgid "I still think I should be called 'Dragonbain'."

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-15 23:28+0200\n"
-"PO-Revision-Date: 2004-10-17 15:25+0300\n"
+"POT-Creation-Date: 2004-10-17 14:42+0200\n"
+"PO-Revision-Date: 2004-10-18 17:53+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Введение"
 msgid "Gameplay"
 msgstr "Игра"
 
-#: data/help.cfg:22 data/help.cfg:203
+#: data/help.cfg:22 data/help.cfg:200
 msgid "Traits"
 msgstr "Особенности"
 
@@ -56,11 +56,12 @@ msgstr "Соединения"
 
 #: data/help.cfg:34 src/help.cpp:600
 msgid "Abilities"
-msgstr ""
+msgstr "Способности"
 
 #: data/help.cfg:40
+#, fuzzy
 msgid "Weapon Specials"
-msgstr "Специальное оружие"
+msgstr "Специальное"
 
 #: data/help.cfg:46
 msgid "Terrains"
@@ -107,9 +108,9 @@ msgstr ""
 
 #: data/help.cfg:70
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "Покупка и Воскрешение"
 
-#: data/help.cfg:80
+#: data/help.cfg:79
 msgid ""
 "<img>src=help/recruit.png align=left float=yes</img>At the start of any "
 "battle, and at times during it, you will need to recruit units into your "
@@ -140,11 +141,11 @@ msgid ""
 "Upkeep'</ref> for more information."
 msgstr ""
 
-#: data/help.cfg:85 src/help.cpp:771 src/help.cpp:772
+#: data/help.cfg:84 src/help.cpp:771 src/help.cpp:772
 msgid "Movement"
 msgstr "Ходы"
 
-#: data/help.cfg:90
+#: data/help.cfg:89
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -171,11 +172,11 @@ msgid ""
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
 
-#: data/help.cfg:95
+#: data/help.cfg:94
 msgid "Combat"
 msgstr "Битва"
 
-#: data/help.cfg:111
+#: data/help.cfg:110
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -222,11 +223,11 @@ msgid ""
 "Charge attacks."
 msgstr ""
 
-#: data/help.cfg:116
+#: data/help.cfg:115
 msgid "Damage Types and Resistance"
-msgstr ""
+msgstr "Типы урона и Сопротивление"
 
-#: data/help.cfg:121
+#: data/help.cfg:120
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -245,11 +246,11 @@ msgid ""
 "damage."
 msgstr ""
 
-#: data/help.cfg:126
+#: data/help.cfg:125
 msgid "Time of Day"
-msgstr ""
+msgstr "Время суток"
 
-#: data/help.cfg:146
+#: data/help.cfg:145
 msgid ""
 "Wesnoth games usually take place with a regular cycle between day and night. "
 "The current time of day can be observed under the minimap in the upper "
@@ -281,11 +282,11 @@ msgid ""
 "night!"
 msgstr ""
 
-#: data/help.cfg:151
+#: data/help.cfg:150
 msgid "Experience and Advancement"
 msgstr "Опыт и Улучшения"
 
-#: data/help.cfg:156
+#: data/help.cfg:155
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -301,11 +302,11 @@ msgid ""
 "occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
 msgstr ""
 
-#: data/help.cfg:161
+#: data/help.cfg:160
 msgid "Healing"
-msgstr ""
+msgstr "Лечение"
 
-#: data/help.cfg:172
+#: data/help.cfg:170
 msgid ""
 "In combat, your units will inevitably take damage. Wesnoth offers several "
 "ways for your units to heal, all of which take place at the beginning of "
@@ -329,11 +330,11 @@ msgid ""
 "Also, units heal fully between scenarios."
 msgstr ""
 
-#: data/help.cfg:177
+#: data/help.cfg:175
 msgid "Income and Upkeep"
 msgstr "Доход и Содержание"
 
-#: data/help.cfg:186
+#: data/help.cfg:183
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -361,11 +362,11 @@ msgid ""
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
 
-#: data/help.cfg:191
+#: data/help.cfg:188
 msgid "Wrap Up"
 msgstr ""
 
-#: data/help.cfg:192
+#: data/help.cfg:189
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -374,11 +375,11 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 
-#: data/help.cfg:197 src/titlescreen.cpp:172
+#: data/help.cfg:194 src/titlescreen.cpp:172
 msgid "About"
 msgstr "О игре"
 
-#: data/help.cfg:242
+#: data/help.cfg:238
 msgid ""
 "Most units have two traits. Traits are attributes of the unit that modify "
 "its attributes slightly. They are assigned to a unit randomly when the unit "
@@ -437,7 +438,7 @@ msgid ""
 "Useful for any close-combat unit, Strong is most effective for units who "
 "have a high number of swings, such as the Elvish Fighter. Strong units can "
 "be very useful when a tiny bit of extra damage is all that is needed to turn "
-"a damaging stroke into a killing blow. "
+"a damaging stroke into a killing blow."
 msgstr ""
 
 #: data/items.cfg:264
@@ -448,7 +449,7 @@ msgstr ""
 
 #: data/items.cfg:268
 msgid "A swift victory"
-msgstr ""
+msgstr "Быстрая победа"
 
 #: data/items.cfg:276
 msgid ""
@@ -458,7 +459,7 @@ msgstr ""
 
 #: data/items.cfg:283
 msgid "Lots of gold"
-msgstr ""
+msgstr "Количество золота"
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
@@ -478,7 +479,7 @@ msgstr ""
 
 #: data/items.cfg:336
 msgid "Potion of Healing"
-msgstr ""
+msgstr "Лечебное снадобье"
 
 #: data/items.cfg:339
 msgid "A feeling of well-being overwhelms the drinker."
@@ -510,7 +511,7 @@ msgstr ""
 
 #: data/items.cfg:451
 msgid "Potion of Strength"
-msgstr ""
+msgstr "Снадобье силы"
 
 #: data/items.cfg:454
 msgid "Strength is given to the drinker."
@@ -518,7 +519,7 @@ msgstr ""
 
 #: data/items.cfg:495
 msgid "Potion of Decay"
-msgstr ""
+msgstr "Снадобье разрушения"
 
 #: data/items.cfg:498
 msgid "This poor unit drank something really bad."
@@ -526,7 +527,7 @@ msgstr ""
 
 #: data/items.cfg:533
 msgid "Ring of Regeneration"
-msgstr ""
+msgstr "Кольцо регенерации"
 
 #: data/items.cfg:536
 msgid "This ring will heal the bearer a little each turn."
@@ -538,7 +539,7 @@ msgstr ""
 
 #: data/items.cfg:577
 msgid "Ring of Slowness"
-msgstr ""
+msgstr "Кольцо медлительности"
 
 #: data/items.cfg:580
 msgid "The bearer of this ring is slowed."
@@ -546,7 +547,7 @@ msgstr ""
 
 #: data/items.cfg:615
 msgid "Staff of Swiftness"
-msgstr ""
+msgstr "Посох быстроты"
 
 #: data/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
@@ -558,7 +559,7 @@ msgstr ""
 
 #: data/items.cfg:653
 msgid "Storm Trident"
-msgstr ""
+msgstr "Штормовой трезубец"
 
 #: data/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
@@ -570,7 +571,7 @@ msgstr ""
 
 #: data/items.cfg:669
 msgid "storm trident"
-msgstr ""
+msgstr "штормовой трезубец"
 
 #: data/items.cfg:707
 msgid "Flaming Sword"
@@ -614,7 +615,7 @@ msgid "Default"
 msgstr "По умолчанию"
 
 #: data/multiplayer.cfg:23 data/multiplayer.cfg:104 data/multiplayer.cfg:196
-#: data/multiplayer.cfg:278 src/multiplayer_client.cpp:662
+#: data/multiplayer.cfg:278 src/multiplayer_client.cpp:658
 msgid "&random-enemy.png,Random"
 msgstr "&random-enemy.png,Случайные"
 
@@ -632,7 +633,7 @@ msgstr "&orcish-warrior.png,Северяне"
 
 #: data/multiplayer.cfg:64 data/multiplayer.cfg:145
 msgid "&undead-necromancer.png,Undead"
-msgstr ""
+msgstr "&undead-necromancer.png,Мертвецы"
 
 #: data/multiplayer.cfg:76
 msgid "&dwarf-warrior.png,Knalgan Alliance"
@@ -640,7 +641,7 @@ msgstr ""
 
 #: data/multiplayer.cfg:88 data/multiplayer.cfg:169 data/multiplayer.cfg:261
 msgid "&drake-flare.png,Drakes"
-msgstr ""
+msgstr "&drake-flare.png,Драконы"
 
 #: data/multiplayer.cfg:101
 msgid "Classic"
@@ -725,6 +726,7 @@ msgid "Forest of Fear"
 msgstr "Лес страха"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
+#: data/scenarios/multiplayer/Random_Scenario.cfg:16
 msgid "Random map"
 msgstr "Случайная карта"
 
@@ -884,7 +886,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:64
 msgid "What's a leader?"
-msgstr "Кто лидер?"
+msgstr "Кто такой лидер?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:65
 msgid "How should I choose what kind of units to recruit?"
@@ -1854,8 +1856,9 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:61
+#, fuzzy
 msgid "illuminates"
-msgstr "освещать"
+msgstr "Деревни"
 
 #: data/translations/english.cfg:64
 msgid ""
@@ -3232,7 +3235,7 @@ msgstr ""
 
 #: data/units/Drake_Burner.cfg:4
 msgid "Drake Burner"
-msgstr ""
+msgstr "Горящий дракон"
 
 #: data/units/Drake_Burner.cfg:18
 msgid ""
@@ -3253,7 +3256,7 @@ msgstr "огненное дыхание"
 
 #: data/units/Drake_Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr ""
+msgstr "Конфликтный дракон"
 
 #: data/units/Drake_Clasher.cfg:18
 msgid ""
@@ -3267,7 +3270,7 @@ msgstr ""
 
 #: data/units/Drake_Fighter.cfg:4
 msgid "Drake Fighter"
-msgstr ""
+msgstr "Дракон боец"
 
 #: data/units/Drake_Fighter.cfg:18
 msgid ""
@@ -3282,7 +3285,7 @@ msgstr "ятаган"
 
 #: data/units/Drake_Fire.cfg:4
 msgid "Fire Drake"
-msgstr ""
+msgstr "Огненный дракон"
 
 #: data/units/Drake_Fire.cfg:18
 msgid ""
@@ -3295,7 +3298,7 @@ msgstr ""
 
 #: data/units/Drake_Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Дракон пламенное сердце"
 
 #: data/units/Drake_Flameheart.cfg:20
 msgid ""
@@ -3308,7 +3311,7 @@ msgstr ""
 
 #: data/units/Drake_Flare.cfg:4
 msgid "Drake Flare"
-msgstr ""
+msgstr "Сияющий дракон"
 
 #: data/units/Drake_Flare.cfg:20
 msgid ""
@@ -3320,7 +3323,7 @@ msgstr ""
 
 #: data/units/Drake_Gladiator.cfg:4
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "Дракон гладиатор"
 
 #: data/units/Drake_Gladiator.cfg:19
 msgid ""
@@ -3351,7 +3354,7 @@ msgstr "шлем"
 
 #: data/units/Drake_Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr ""
+msgstr "Адский дракон"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -3364,7 +3367,7 @@ msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
-msgstr ""
+msgstr "Небесный дракон"
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -3381,7 +3384,7 @@ msgstr ""
 
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "Дракон воин"
 
 #: data/units/Drake_Warrior.cfg:18
 msgid ""
@@ -3406,7 +3409,7 @@ msgstr "рапира"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
-msgstr ""
+msgstr "Безумный дворвиш"
 
 #: data/units/Dwarvish_Berserker.cfg:16
 msgid ""
@@ -3422,7 +3425,7 @@ msgstr "неустрашимый"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "Дворвиш драконий страж"
 
 #: data/units/Dwarvish_Dragonguard.cfg:16
 msgid ""
@@ -3434,11 +3437,11 @@ msgstr ""
 #: data/units/Dwarvish_Dragonguard.cfg:20
 #: data/units/Dwarvish_Dragonguard.cfg:38
 msgid "dragonstaff"
-msgstr ""
+msgstr "посох дракона"
 
 #: data/units/Dwarvish_Fighter.cfg:3
 msgid "Dwarvish Fighter"
-msgstr ""
+msgstr "Дворвиш боец"
 
 #: data/units/Dwarvish_Fighter.cfg:16
 msgid ""
@@ -3460,7 +3463,7 @@ msgstr "молот"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Дворвиш охранник"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
 msgid ""
@@ -3471,7 +3474,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
-msgstr ""
+msgstr "Дворвиш лорд"
 
 #: data/units/Dwarvish_Lord.cfg:21
 msgid ""
@@ -3486,7 +3489,7 @@ msgstr "засада"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "Дворвиш мастер рун"
 
 #: data/units/Dwarvish_Runemaster.cfg:16
 msgid ""
@@ -3506,7 +3509,7 @@ msgstr "Удар молнии"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "Дворвиш часовой"
 
 #: data/units/Dwarvish_Sentinel.cfg:23
 msgid ""
@@ -3516,7 +3519,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Дворвиш решительный"
 
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
@@ -3527,7 +3530,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "Дворвиш бронированный"
 
 #: data/units/Dwarvish_Steelclad.cfg:21
 msgid ""
@@ -3537,7 +3540,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Thunderer.cfg:3
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "Дворвиш громовержец"
 
 #: data/units/Dwarvish_Thunderer.cfg:16
 msgid ""
@@ -3549,11 +3552,11 @@ msgstr ""
 
 #: data/units/Dwarvish_Thunderer.cfg:40
 msgid "thunderstick"
-msgstr ""
+msgstr "трость грома"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
-msgstr ""
+msgstr "Дворвиш страж грома"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
 msgid ""
@@ -3565,7 +3568,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Thunderguard.cfg:46
 msgid "dragonstick"
-msgstr ""
+msgstr "трость дракона"
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
@@ -3683,7 +3686,7 @@ msgstr "запутывать"
 #: data/units/Elvish_Enchantress.cfg:116 data/units/Elvish_Sorceress.cfg:116
 #: data/units/Elvish_Sylph.cfg:82
 msgid "fey gale"
-msgstr ""
+msgstr "обречённый шторм"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -3965,7 +3968,7 @@ msgstr "удар"
 
 #: data/units/General.cfg:3
 msgid "General"
-msgstr ""
+msgstr "Генерал"
 
 #: data/units/General.cfg:18
 msgid ""
@@ -4000,7 +4003,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Гигантское грязевое чудище"
 
 #: data/units/Giant_Mudcrawler.cfg:16
 msgid ""
@@ -4047,7 +4050,7 @@ msgstr ""
 #: data/units/Halbardier.cfg:41 data/units/Pikeman.cfg:24
 #: data/units/Spearman.cfg:24
 msgid "firststrike"
-msgstr ""
+msgstr "первый удар"
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -4075,7 +4078,7 @@ msgstr "факел"
 
 #: data/units/Goblin_Pillager.cfg:35
 msgid "net"
-msgstr ""
+msgstr "сеть"
 
 #: data/units/Goblin_Spearman.cfg:4
 msgid "Goblin Spearman"
@@ -4219,7 +4222,7 @@ msgstr ""
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
-msgstr ""
+msgstr "Инициировать"
 
 #: data/units/Initiate.cfg:16
 msgid ""
@@ -4263,7 +4266,7 @@ msgstr ""
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
-msgstr ""
+msgstr "Лич"
 
 #: data/units/Lich.cfg:16
 msgid ""
@@ -4287,7 +4290,7 @@ msgstr ""
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
-msgstr ""
+msgstr "Лучник с длинным луком"
 
 #: data/units/Longbowman.cfg:18
 msgid ""
@@ -4366,7 +4369,7 @@ msgstr ""
 
 #: data/units/Merman.cfg:3
 msgid "Merman"
-msgstr ""
+msgstr "Водяной"
 
 #: data/units/Merman.cfg:16
 msgid ""
@@ -4381,7 +4384,7 @@ msgstr "трезубец"
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
-msgstr ""
+msgstr "Грязевое чудище"
 
 #: data/units/Mudcrawler.cfg:16
 msgid ""
@@ -4391,7 +4394,7 @@ msgstr ""
 
 #: data/units/Naga.cfg:3
 msgid "Naga"
-msgstr ""
+msgstr "Нага"
 
 #: data/units/Naga.cfg:17
 msgid ""
@@ -4525,7 +4528,7 @@ msgstr ""
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "Орк ворчун"
 
 #: data/units/Orcish_Grunt.cfg:16
 msgid ""
@@ -4833,7 +4836,7 @@ msgstr ""
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
 msgid "frost blast"
-msgstr ""
+msgstr "морозный порыв"
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
@@ -4935,7 +4938,7 @@ msgstr ""
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
-msgstr ""
+msgstr "Ударный кавалерист"
 
 #: data/units/Shock_Trooper.cfg:15
 msgid ""
@@ -4987,7 +4990,7 @@ msgstr ""
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
-msgstr ""
+msgstr "Спящий грифон"
 
 #: data/units/Sleeping_Gryphon.cfg:15
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
@@ -5222,7 +5225,7 @@ msgstr ""
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
-msgstr ""
+msgstr "Король воинов"
 
 #: data/units/Warrior_King.cfg:19
 msgid ""
@@ -5255,7 +5258,7 @@ msgstr ""
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
-msgstr ""
+msgstr "Наездник волка"
 
 #: data/units/Wolf_Rider.cfg:17
 msgid ""
@@ -5282,7 +5285,7 @@ msgstr ""
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
-msgstr ""
+msgstr "Привидение"
 
 #: data/units/Wraith.cfg:16
 msgid ""
@@ -5404,8 +5407,9 @@ msgid "+German Translation"
 msgstr "+Немецкий перевод"
 
 #: src/about.cpp:184
+#, fuzzy
 msgid "+Greek Translation"
-msgstr "+Греческий перевод"
+msgstr "+Французский перевод"
 
 #: src/about.cpp:189
 msgid "+Hungarian Translation"
@@ -5469,19 +5473,19 @@ msgstr "нет"
 
 #: src/actions.cpp:321 src/actions.cpp:438
 msgid "base damage"
-msgstr ""
+msgstr "базовое повреждение"
 
 #: src/actions.cpp:331
 msgid "attacker resistance vs"
-msgstr ""
+msgstr "атакующий сопротивляется"
 
 #: src/actions.cpp:331
 msgid "attacker vulnerability vs"
-msgstr ""
+msgstr "атакующий уязвим против"
 
 #: src/actions.cpp:363 src/actions.cpp:481 src/actions.cpp:490
 msgid "Doubled"
-msgstr ""
+msgstr "Удвоен"
 
 #: src/actions.cpp:391 src/actions.cpp:526
 msgid "total damage"
@@ -5489,15 +5493,15 @@ msgstr "всего повреждений"
 
 #: src/actions.cpp:448
 msgid "defender resistance vs"
-msgstr ""
+msgstr "защитник сопротивляется"
 
 #: src/actions.cpp:448
 msgid "defender vulnerability vs"
-msgstr ""
+msgstr "защитник уязвим против"
 
 #: src/actions.cpp:499
 msgid "Halved"
-msgstr ""
+msgstr "Уменьшен вдвое"
 
 #: src/actions.cpp:714 src/actions.cpp:861 src/display.cpp:917
 #: src/reports.cpp:115
@@ -5511,7 +5515,7 @@ msgstr ""
 
 #: src/actions.cpp:1738
 msgid "Ambushed!"
-msgstr ""
+msgstr "Попал в засаду!"
 
 #: src/actions.cpp:1766
 msgid "Friendly unit sighted"
@@ -5523,19 +5527,19 @@ msgstr "Замечено вражеское соединение!"
 
 #: src/actions.cpp:1773
 msgid "$friends Friendly units sighted"
-msgstr ""
+msgstr "$friends видим дружественные соединения"
 
 #: src/actions.cpp:1775
 msgid "$enemies Enemy units sighted!"
-msgstr ""
+msgstr "$enemies видим соединения противника!"
 
 #: src/actions.cpp:1779
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr ""
+msgstr "Видим соединения! ($friends дружественные, $enemies враждебные)"
 
 #: src/actions.cpp:1800
 msgid "(press $hotkey to continue)"
-msgstr ""
+msgstr "(нажмите $hotkey для продолжения)"
 
 #: src/dialogs.cpp:90
 msgid "Advance Unit"
@@ -5571,7 +5575,7 @@ msgstr "Вы действительно хотите удалить эту иг�
 
 #: src/dialogs.cpp:350
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:363
 msgid "#(Invalid)"
@@ -5614,6 +5618,8 @@ msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
+"Нет сохранённых игр, которые можно загрузить.\n"
+"(Игра автоматически сохраняется после успешного прохождения сценария)"
 
 #: src/dialogs.cpp:421
 msgid "Delete Save"
@@ -5641,7 +5647,7 @@ msgstr ""
 msgid "Show replay"
 msgstr "Показать повтор"
 
-#: src/dialogs.cpp:515 src/hotkeys.cpp:133 src/multiplayer.cpp:85
+#: src/dialogs.cpp:515 src/hotkeys.cpp:133 src/multiplayer.cpp:81
 msgid "Load Game"
 msgstr "Загрузить игру"
 
@@ -5705,7 +5711,7 @@ msgstr "Вы действительно хотите сохранить игру
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
-#: src/game.cpp:795 src/multiplayer_connect.cpp:104
+#: src/game.cpp:795 src/multiplayer_connect.cpp:100
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -5720,7 +5726,7 @@ msgstr "Файл, который Вы пытались загрузить, по�
 
 #: src/game.cpp:816
 msgid "File I/O Error while reading the game"
-msgstr ""
+msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
 #: src/game.cpp:925
 msgid " ,Get More Campaigns..."
@@ -5776,15 +5782,15 @@ msgstr ",Название,Версия,Автор,Загрузок"
 
 #: src/game.cpp:1045
 msgid "Publish campaign: "
-msgstr ""
+msgstr "Опубликовать кампанию:"
 
 #: src/game.cpp:1049
 msgid "Delete campaign: "
-msgstr ""
+msgstr "Удалить кампанию:"
 
 #: src/game.cpp:1053
 msgid "There are no campaigns available for download from this server."
-msgstr ""
+msgstr "На этом сервере нет доступных для загрузки кампаний."
 
 #: src/game.cpp:1057
 msgid "Choose the campaign to download."
@@ -5818,6 +5824,8 @@ msgstr "Не могу подключиться к серверу."
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
+"Возникла проблема с созданием файлов, необходимых для полной установки "
+"кампании."
 
 #: src/game.cpp:1112 src/game.cpp:1150 src/game.cpp:1174
 #: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:314
@@ -5853,24 +5861,27 @@ msgid "Join a server or hosted game"
 msgstr "Подключиться к серверу или игре"
 
 #: src/game.cpp:1192
+#, fuzzy
 msgid "Host Networked Game"
-msgstr "Создать игру"
+msgstr "Сетевая игра"
 
 #: src/game.cpp:1192
 msgid "Host a game without using a server"
 msgstr "Создать локальную игру"
 
 #: src/game.cpp:1193
+#, fuzzy
 msgid "Hotseat Game"
-msgstr "Сетевая игра"
+msgstr "Создать игру"
 
 #: src/game.cpp:1193
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
 #: src/game.cpp:1194
+#, fuzzy
 msgid "Human vs AI"
-msgstr "Человек против Компьютера"
+msgstr "Люди"
 
 #: src/game.cpp:1194
 msgid "Play a game against AI opponents"
@@ -5890,11 +5901,11 @@ msgstr "Выберите предпочтительный язык"
 
 #: src/game.cpp:1529
 msgid "Could not initialize video. Exiting.\n"
-msgstr ""
+msgstr "Не могу определить видео режим. Выходим.\n"
 
 #: src/game.cpp:1531
 msgid "Could not initialize fonts. Exiting.\n"
-msgstr ""
+msgstr "Не могу определить шрифт. Выходим.\n"
 
 #: src/help.cpp:574
 msgid "Advances to"
@@ -5902,7 +5913,7 @@ msgstr "Улучшение"
 
 #: src/help.cpp:623
 msgid "Alignment"
-msgstr ""
+msgstr "Тип"
 
 #: src/help.cpp:627
 msgid "Required XP"
@@ -5926,7 +5937,7 @@ msgstr "Урон"
 
 #: src/help.cpp:657 src/help.cpp:658
 msgid "Strikes"
-msgstr ""
+msgstr "Атака"
 
 #: src/help.cpp:661 src/help.cpp:662
 msgid "Range"
@@ -6002,7 +6013,7 @@ msgstr "Уменьшить"
 
 #: src/hotkeys.cpp:127
 msgid "Default Zoom"
-msgstr ""
+msgstr "Увеличение по умолчанию"
 
 #: src/hotkeys.cpp:128
 msgid "Fullscreen"
@@ -6010,7 +6021,7 @@ msgstr "На весь экран"
 
 #: src/hotkeys.cpp:129
 msgid "Accelerated"
-msgstr ""
+msgstr "Ускоренный"
 
 #: src/hotkeys.cpp:130
 msgid "Unit Description"
@@ -6034,7 +6045,7 @@ msgstr "Воскресить"
 
 #: src/hotkeys.cpp:138
 msgid "Toggle Grid"
-msgstr ""
+msgstr "Показать сетку"
 
 #: src/hotkeys.cpp:139
 msgid "Status Table"
@@ -6042,11 +6053,11 @@ msgstr "Текущее состояние"
 
 #: src/hotkeys.cpp:140
 msgid "Mute"
-msgstr ""
+msgstr "Выключить звук"
 
 #: src/hotkeys.cpp:141
 msgid "Speak"
-msgstr ""
+msgstr "Говорить"
 
 #: src/hotkeys.cpp:142
 msgid "Create Unit (Debug!)"
@@ -6202,7 +6213,7 @@ msgstr "Пропустить"
 
 #: src/intro.cpp:312
 msgid "The End"
-msgstr ""
+msgstr "Конец"
 
 #: src/language.cpp:31
 msgid "System default language"
@@ -6216,7 +6227,7 @@ msgstr "Закрыть окно"
 msgid "Map Generator"
 msgstr "Генератор карты"
 
-#: src/mapgen_dialog.cpp:80 src/multiplayer.cpp:487
+#: src/mapgen_dialog.cpp:80 src/multiplayer.cpp:483
 msgid "Players"
 msgstr "Игроки"
 
@@ -6264,121 +6275,121 @@ msgstr "Внутренний"
 msgid "Island"
 msgstr "Остров"
 
-#: src/multiplayer.cpp:97
+#: src/multiplayer.cpp:93
 msgid "The maximum turns the game will go for"
 msgstr ""
 
-#: src/multiplayer.cpp:103
+#: src/multiplayer.cpp:99
 msgid "The amount of income each village yields per turn"
 msgstr ""
 
-#: src/multiplayer.cpp:109
+#: src/multiplayer.cpp:105
 msgid "The amount of experience a unit needs to advance"
 msgstr ""
 
-#: src/multiplayer.cpp:111
+#: src/multiplayer.cpp:107
 msgid "Fog Of War"
 msgstr "Дым войны"
 
-#: src/multiplayer.cpp:113
+#: src/multiplayer.cpp:109
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Вы не можете видеть соединения противника пока они не окажутся в поле зрения "
 "Ваших соединений"
 
-#: src/multiplayer.cpp:115 src/multiplayer_lobby.cpp:130
+#: src/multiplayer.cpp:111 src/multiplayer_lobby.cpp:130
 msgid "Shroud"
 msgstr "Пелена"
 
-#: src/multiplayer.cpp:117
+#: src/multiplayer.cpp:113
 msgid "The map is unknown until your units explore it"
 msgstr "Карта неизвестна, пока Ваши соединения не исследуют её"
 
-#: src/multiplayer.cpp:119 src/reports.cpp:376
+#: src/multiplayer.cpp:115 src/reports.cpp:376
 msgid "Observers"
 msgstr "Наблюдатели"
 
-#: src/multiplayer.cpp:121
+#: src/multiplayer.cpp:117
 msgid "Allow users who are not playing to watch the game"
 msgstr "Разрешить наблюдать за игрой"
 
-#: src/multiplayer.cpp:123 src/multiplayer_client.cpp:145
+#: src/multiplayer.cpp:119 src/multiplayer_client.cpp:145
 #: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:460
 #: src/show_dialog.cpp:466
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/multiplayer.cpp:124 src/show_dialog.cpp:446 src/show_dialog.cpp:459
+#: src/multiplayer.cpp:120 src/show_dialog.cpp:446 src/show_dialog.cpp:459
 msgid "Ok"
 msgstr "Ok"
 
-#: src/multiplayer.cpp:126
+#: src/multiplayer.cpp:122
 msgid "Regenerate"
-msgstr ""
+msgstr "Регенерировать"
 
-#: src/multiplayer.cpp:128
+#: src/multiplayer.cpp:124
 msgid "Settings..."
 msgstr "Настройки..."
 
-#: src/multiplayer.cpp:132
+#: src/multiplayer.cpp:128
 msgid "Share View"
 msgstr ""
 
-#: src/multiplayer.cpp:133
+#: src/multiplayer.cpp:129
 msgid "Share Maps"
 msgstr ""
 
-#: src/multiplayer.cpp:134
+#: src/multiplayer.cpp:130
 msgid "Share None"
 msgstr ""
 
-#: src/multiplayer.cpp:145 src/multiplayer_connect.cpp:185
+#: src/multiplayer.cpp:141 src/multiplayer_connect.cpp:178
 msgid "No multiplayer sides."
 msgstr ""
 
-#: src/multiplayer.cpp:173 src/multiplayer_lobby.cpp:161
+#: src/multiplayer.cpp:169 src/multiplayer_lobby.cpp:161
 msgid "Create Game"
 msgstr "Создать игру"
 
-#: src/multiplayer.cpp:177
+#: src/multiplayer.cpp:173
 msgid "Name of game"
 msgstr "Название игры"
 
-#: src/multiplayer.cpp:181
+#: src/multiplayer.cpp:177
 msgid "$login's game"
 msgstr "Игра $login"
 
-#: src/multiplayer.cpp:192
+#: src/multiplayer.cpp:188
 msgid "Map to play"
 msgstr "Карта для игры"
 
-#: src/multiplayer.cpp:292
+#: src/multiplayer.cpp:288
 msgid "Era"
 msgstr "Эра"
 
-#: src/multiplayer.cpp:354
+#: src/multiplayer.cpp:350
 msgid "Unlimited"
 msgstr "Неограничено"
 
-#: src/multiplayer.cpp:358
+#: src/multiplayer.cpp:354
 msgid "Turns"
 msgstr "Ходы"
 
-#: src/multiplayer.cpp:366
+#: src/multiplayer.cpp:362
 msgid "Village Gold"
 msgstr "Золота в деревнях"
 
-#: src/multiplayer.cpp:378
+#: src/multiplayer.cpp:374
 msgid "Experience Requirements"
 msgstr "Необходимый опыт"
 
-#: src/multiplayer.cpp:503
+#: src/multiplayer.cpp:499
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
 msgstr ""
 
-#: src/multiplayer.cpp:503
+#: src/multiplayer.cpp:499
 msgid "Warning"
 msgstr "Внимание"
 
@@ -6386,8 +6397,8 @@ msgstr "Внимание"
 msgid "Receiving game list..."
 msgstr "Получаем список игр..."
 
-#: src/multiplayer_client.cpp:121 src/multiplayer_connect.cpp:393
-#: src/multiplayer_connect.cpp:395 src/playlevel.cpp:780 src/playturn.cpp:1531
+#: src/multiplayer_client.cpp:121 src/multiplayer_connect.cpp:386
+#: src/multiplayer_connect.cpp:388 src/playlevel.cpp:780 src/playturn.cpp:1531
 #: src/playturn.cpp:1536 src/playturn.cpp:1623
 msgid "Gold"
 msgstr "Золото"
@@ -6397,6 +6408,7 @@ msgid "Waiting for game to start..."
 msgstr "Ждём начала игры..."
 
 #: src/multiplayer_client.cpp:248
+#, fuzzy
 msgid "Connect to Host"
 msgstr "Подключиться к серверу"
 
@@ -6436,17 +6448,17 @@ msgstr ""
 msgid "Show replay of game up to save point?"
 msgstr ""
 
-#: src/multiplayer_client.cpp:687 src/multiplayer_client.cpp:690
+#: src/multiplayer_client.cpp:683 src/multiplayer_client.cpp:686
 msgid "?"
 msgstr "?"
 
-#: src/multiplayer_client.cpp:781
+#: src/multiplayer_client.cpp:777
 msgid "Leader: "
 msgstr "Лидер:"
 
-#: src/multiplayer_client.cpp:783
+#: src/multiplayer_client.cpp:779
 msgid "Recruits: "
-msgstr ""
+msgstr "Новобранцы:"
 
 #: src/multiplayer_connect.cpp:48
 msgid " Computer vs Computer "
@@ -6456,11 +6468,11 @@ msgstr "Компьютер с Компьютером"
 msgid "I'm Ready"
 msgstr "Я готов"
 
-#: src/multiplayer_connect.cpp:97
+#: src/multiplayer_connect.cpp:93
 msgid "This is not a multiplayer save"
-msgstr ""
+msgstr "Это не сетевое сохранение."
 
-#: src/multiplayer_connect.cpp:250
+#: src/multiplayer_connect.cpp:243
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -6468,81 +6480,81 @@ msgstr ""
 "Условие победы\n"
 "@Поражение лидера(ов) противника(ов)"
 
-#: src/multiplayer_connect.cpp:270
+#: src/multiplayer_connect.cpp:263
 msgid "Network Player"
 msgstr "Сетевая игра"
 
-#: src/multiplayer_connect.cpp:271
+#: src/multiplayer_connect.cpp:264
 msgid "Local Player"
 msgstr "Локальная игра"
 
-#: src/multiplayer_connect.cpp:272 src/multiplayer_connect.cpp:505
-#: src/multiplayer_connect.cpp:628 src/multiplayer_connect.cpp:734
+#: src/multiplayer_connect.cpp:265 src/multiplayer_connect.cpp:498
+#: src/multiplayer_connect.cpp:621 src/multiplayer_connect.cpp:727
 msgid "Computer Player"
 msgstr "Компьютер"
 
-#: src/multiplayer_connect.cpp:273
+#: src/multiplayer_connect.cpp:266
 msgid "Empty"
 msgstr "Пусто"
 
-#: src/multiplayer_connect.cpp:300 src/multiplayer_connect.cpp:383
-#: src/multiplayer_connect.cpp:386
+#: src/multiplayer_connect.cpp:293 src/multiplayer_connect.cpp:376
+#: src/multiplayer_connect.cpp:379
 msgid "Team"
 msgstr "Команда"
 
-#: src/multiplayer_connect.cpp:311
+#: src/multiplayer_connect.cpp:304
 msgid "Red"
 msgstr "Красный"
 
-#: src/multiplayer_connect.cpp:313
+#: src/multiplayer_connect.cpp:306
 msgid "Blue"
 msgstr "Синий"
 
-#: src/multiplayer_connect.cpp:315
+#: src/multiplayer_connect.cpp:308
 msgid "Green"
 msgstr "Зелёный"
 
-#: src/multiplayer_connect.cpp:317
+#: src/multiplayer_connect.cpp:310
 msgid "Yellow"
 msgstr "Жёлтый"
 
-#: src/multiplayer_connect.cpp:319
+#: src/multiplayer_connect.cpp:312
 msgid "Purple"
 msgstr "Фиолетовый"
 
-#: src/multiplayer_connect.cpp:321
+#: src/multiplayer_connect.cpp:314
 msgid "Orange"
 msgstr "Оранжевый"
 
-#: src/multiplayer_connect.cpp:323
+#: src/multiplayer_connect.cpp:316
 msgid "Grey"
 msgstr "Серый"
 
-#: src/multiplayer_connect.cpp:325
+#: src/multiplayer_connect.cpp:318
 msgid "White"
 msgstr "Белый"
 
-#: src/multiplayer_connect.cpp:327
+#: src/multiplayer_connect.cpp:320
 msgid "Brown"
 msgstr "Коричневый"
 
-#: src/multiplayer_connect.cpp:372
+#: src/multiplayer_connect.cpp:365
 msgid "Game Lobby"
-msgstr ""
+msgstr "Холл игры:"
 
-#: src/multiplayer_connect.cpp:375 src/multiplayer_connect.cpp:377
+#: src/multiplayer_connect.cpp:368 src/multiplayer_connect.cpp:370
 msgid "Player/Type"
 msgstr "Игрок/Тип"
 
-#: src/multiplayer_connect.cpp:378 src/multiplayer_connect.cpp:381
+#: src/multiplayer_connect.cpp:371 src/multiplayer_connect.cpp:374
 msgid "Faction"
 msgstr "Команда"
 
-#: src/multiplayer_connect.cpp:388 src/multiplayer_connect.cpp:391
+#: src/multiplayer_connect.cpp:381 src/multiplayer_connect.cpp:384
 msgid "Color"
 msgstr "Цвет"
 
-#: src/multiplayer_connect.cpp:577 src/multiplayer_connect.cpp:581
+#: src/multiplayer_connect.cpp:570 src/multiplayer_connect.cpp:574
 msgid "Waiting for network players to join"
 msgstr "Ждём подключения сетевых игроков"
 
@@ -6552,11 +6564,11 @@ msgstr "1"
 
 #: src/multiplayer_lobby.cpp:144
 msgid "Vacant Slot"
-msgstr ""
+msgstr "Свободный слот"
 
 #: src/multiplayer_lobby.cpp:144
 msgid "Vacant Slots"
-msgstr ""
+msgstr "Свободные слоты"
 
 #: src/multiplayer_lobby.cpp:159
 msgid "Observe Game"
@@ -6564,7 +6576,7 @@ msgstr "Наблюдать за игрой"
 
 #: src/playlevel.cpp:699
 msgid "Game Over"
-msgstr ""
+msgstr "Игра завершена"
 
 #: src/playlevel.cpp:700
 msgid "The game is over."
@@ -6580,7 +6592,7 @@ msgstr "Вы проиграли!"
 
 #: src/playlevel.cpp:770
 msgid "Remaining gold"
-msgstr ""
+msgstr "Остаток золота"
 
 #: src/playlevel.cpp:773
 msgid "Early finish bonus"
@@ -6601,11 +6613,11 @@ msgstr "Бонус"
 #: src/playlevel.cpp:785
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr ""
+msgstr "80% золота сохраняется в следующем сценарии"
 
 #: src/playlevel.cpp:785
 msgid "Retained Gold"
-msgstr ""
+msgstr "Сохранённое золото"
 
 #: src/playlevel.cpp:789
 msgid "Victory"
@@ -6620,6 +6632,7 @@ msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"Произошло отключение, игра не может быть продолжена. Хотите сохранить игру?"
 
 #: src/playturn.cpp:78
 msgid "It is now your turn"
@@ -6657,6 +6670,7 @@ msgstr "Выберите оружие"
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
+"Вы ещё не начинали свой ход. Вы действительно хотите завершить свой ход?"
 
 #: src/playturn.cpp:1134 src/playturn.cpp:1139
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -6675,6 +6689,8 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Сохранение не должно содержать двоеточий, слэшей и обратных слэшей. Выберите "
+"другое имя."
 
 #: src/playturn.cpp:1407
 msgid "Saved"
@@ -6733,10 +6749,13 @@ msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
+"Нет соединений для воскрешения\n"
+"(У Вас должны быть уцелевшие с прошлого сценария соединения)"
 
 #: src/playturn.cpp:1785
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
+"У Вас должно быть по крайней мере $cost единиц золота для покупки соединения"
 
 #: src/playturn.cpp:1808
 msgid "Dismiss Unit"
@@ -6748,11 +6767,11 @@ msgstr "Сообщение"
 
 #: src/playturn.cpp:1865
 msgid "Send to allies only"
-msgstr ""
+msgstr "Отправить только союзникам"
 
 #: src/playturn.cpp:1959
 msgid "Location"
-msgstr ""
+msgstr "Позиция"
 
 #: src/playturn.cpp:2041 src/playturn.cpp:2103
 msgid "Recruits"
@@ -6764,23 +6783,23 @@ msgstr "Воскрешённые"
 
 #: src/playturn.cpp:2053 src/playturn.cpp:2111
 msgid "Advancements"
-msgstr ""
+msgstr "Прогресс"
 
 #: src/playturn.cpp:2059 src/playturn.cpp:2115
 msgid "Losses"
-msgstr ""
+msgstr "Потери"
 
 #: src/playturn.cpp:2065 src/playturn.cpp:2119
 msgid "Kills"
-msgstr ""
+msgstr "Убийства"
 
 #: src/playturn.cpp:2071
 msgid "Damage Inflicted"
-msgstr ""
+msgstr "Нанесли ущерба"
 
 #: src/playturn.cpp:2077
 msgid "Damage Taken"
-msgstr ""
+msgstr "Получили ущебра"
 
 #: src/playturn.cpp:2083
 msgid "Damage Inflicted (EV)"
@@ -6874,7 +6893,7 @@ msgstr "ущерб"
 
 #: src/reports.cpp:237
 msgid "hexes"
-msgstr ""
+msgstr "квадратов"
 
 #: src/reports.cpp:254
 msgid "Lawful units"
@@ -6981,7 +7000,7 @@ msgstr "-- Великая книга Веснота"
 
 #: src/unit_types.cpp:314
 msgid "strikes"
-msgstr ""
+msgstr "ударов"
 
 #: src/unit_types.cpp:891
 msgid "chaotic"
@@ -7002,3 +7021,9 @@ msgstr "Удалить файл"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Ошибка удаления файла."
+
+#~ msgid "Host Multiplayer Game"
+#~ msgstr "Создать игру"
+
+#~ msgid "TitleScreen button^About"
+#~ msgstr "О игре"
