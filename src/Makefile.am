@@ -164,6 +164,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 key.cpp \
 			 language.cpp \
 			 log.cpp \
+		     map_label.cpp \
 			 map.cpp \
 			 mapgen.cpp \
 			 mapgen_dialog.cpp \
@@ -214,6 +215,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 key.hpp \
 			 language.hpp \
 			 log.hpp \
+			 map_label.hpp \
 			 map.hpp \
 			 mapgen.hpp \
 			 mapgen_dialog.hpp \

@@ -301,6 +301,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 key.cpp \
 			 language.cpp \
 			 log.cpp \
+		     map_label.cpp \
 			 map.cpp \
 			 mapgen.cpp \
 			 mapgen_dialog.cpp \
@@ -351,6 +352,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 key.hpp \
 			 language.hpp \
 			 log.hpp \
+			 map_label.hpp \
 			 map.hpp \
 			 mapgen.hpp \
 			 mapgen_dialog.hpp \
@@ -425,16 +427,17 @@ am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) actions.$(OBJEXT) \
 	filesystem.$(OBJEXT) font.$(OBJEXT) game_config.$(OBJEXT) \
 	game_events.$(OBJEXT) gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) \
 	image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
-	language.$(OBJEXT) log.$(OBJEXT) map.$(OBJEXT) mapgen.$(OBJEXT) \
-	mapgen_dialog.$(OBJEXT) mouse.$(OBJEXT) network.$(OBJEXT) \
-	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
-	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
-	reports.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
-	sound.$(OBJEXT) statistics.$(OBJEXT) team.$(OBJEXT) \
-	terrain.$(OBJEXT) theme.$(OBJEXT) tooltips.$(OBJEXT) \
-	unit.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
-	button.$(OBJEXT) menu.$(OBJEXT) textbox.$(OBJEXT) \
-	scrollbar.$(OBJEXT) slider.$(OBJEXT) widget.$(OBJEXT)
+	language.$(OBJEXT) log.$(OBJEXT) map_label.$(OBJEXT) \
+	map.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
+	mouse.$(OBJEXT) network.$(OBJEXT) pathfind.$(OBJEXT) \
+	playlevel.$(OBJEXT) playturn.$(OBJEXT) preferences.$(OBJEXT) \
+	race.$(OBJEXT) replay.$(OBJEXT) reports.$(OBJEXT) \
+	sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) sound.$(OBJEXT) \
+	statistics.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
+	theme.$(OBJEXT) tooltips.$(OBJEXT) unit.$(OBJEXT) \
+	unit_types.$(OBJEXT) video.$(OBJEXT) button.$(OBJEXT) \
+	menu.$(OBJEXT) textbox.$(OBJEXT) scrollbar.$(OBJEXT) \
+	slider.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_editor_OBJECTS = $(am_wesnoth_editor_OBJECTS)
 wesnoth_editor_LDADD = $(LDADD)
 wesnoth_editor_DEPENDENCIES =
