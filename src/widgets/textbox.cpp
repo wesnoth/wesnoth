@@ -69,7 +69,7 @@ void textbox::draw_cursor(int pos) const
 
 void textbox::draw() const
 {
-	if(location().h == 0)
+	if(location().x == 0)
 		return;
 
 	if(buffer_.get() != NULL) {
@@ -113,6 +113,9 @@ void textbox::draw() const
 
 void textbox::handle_event(const SDL_Event& event)
 {
+	if(location().x == 0)
+		return;
+
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
 
