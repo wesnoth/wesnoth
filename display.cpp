@@ -498,6 +498,7 @@ void display::draw_game_status(int x, int y)
 	if(map_.on_board(mouseoverHex_)) {
 		const gamemap::TERRAIN terrain = map_[mouseoverHex_.x][mouseoverHex_.y];
 		std::string name = map_.terrain_name(terrain);
+		std::string underlying_name = map_.underlying_terrain_name(terrain);
 
 		if(terrain == gamemap::CASTLE &&
 		   map_.is_starting_position(mouseoverHex_)) {
@@ -505,11 +506,16 @@ void display::draw_game_status(int x, int y)
 		}
 
 		const std::string& lang_name = string_table[name];
+		const std::string& underlying_lang_name = string_table[underlying_name];
+
+		const std::string& name1 = lang_name.empty() ? name : lang_name;
+		const std::string& name2 = underlying_lang_name.empty() ?
+		                              underlying_name : underlying_lang_name;
 		
-		if(!lang_name.empty())
-			details << lang_name << "\n";
+		if(name1 != name2)
+			details << name1 << " (" << name2 << ")\n";
 		else
-			details << name << "\n";
+			details << name1 << "\n";
 
 		const int xhex = mouseoverHex_.x + 1;
 		const int yhex = mouseoverHex_.y + 1;
