@@ -77,6 +77,8 @@ namespace preferences {
 
 	bool show_ai_moves();
 
+	bool show_side_colours();
+
 	std::string client_type();
 
 	void show_preferences_dialog(display& disp);

@@ -328,6 +328,11 @@ bool show_ai_moves()
 	return prefs["show_ai_moves"] != "no";
 }
 
+bool show_side_colours()
+{
+	return prefs["show_side_colours"] == "yes";
+}
+
 std::string client_type()
 {
 	if(prefs["client_type"] == "ai")

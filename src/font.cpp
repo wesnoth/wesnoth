@@ -116,7 +116,7 @@ const SDL_Color& get_side_colour(int side)
 {
 	side -= 1;
 
-	static const SDL_Color sides[] = { {0xAA,0x00,0x00,0},
+	static const SDL_Color sides[] = { {0xFF,0x00,0x00,0},
 	                                   {0x00,0x00,0xFF,0},
 	                                   {0x00,0xFF,0x00,0},
 	                                   {0xFF,0xFF,0x00,0},

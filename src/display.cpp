@@ -1063,7 +1063,13 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 	SDL_Surface* const dst = screen_.getSurface();
 
-	const Pixel grid_colour = SDL_MapRGB(dst->format,0,0,0);
+	Pixel grid_colour = SDL_MapRGB(dst->format,0,0,0);
+
+	const bool show_unit_colour = preferences::show_side_colours() && it != units_.end();
+	if(show_unit_colour) {
+		const SDL_Color& colour = font::get_side_colour(it->second.side());
+		grid_colour = SDL_MapRGB(dst->format,colour.r,colour.g,colour.b);
+	}
 
 	int j;
 	for(j = ypos; j != yend; ++j) {
@@ -1158,7 +1164,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 				std::fill(dst,dst+extra,beg[-1]);
 		}
 
-		if(grid_ && startsrc < endsrc) {
+		if((grid_ || show_unit_colour) && startsrc < endsrc) {
 			*startdst = grid_colour;
 			*(startdst+len-1) = grid_colour;
 			if(j == ypos || j == yend-1) {
