@@ -683,6 +683,16 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 							if(combo_type[n].selected() == 0) {
 								side["controller"] = "human";
 								side["description"] = preferences::login();
+								for(size_t m = 0; m != combo_type.size(); ++m) {
+									if(m != n) {
+										if(combo_type[m].selected() == 0){
+											combo_type[m].set_selected(1);
+											config& si = **(sides.first+m);
+											si["controller"] = "network";
+											si["description"] = "";
+										}
+									}
+								}
 							}else if(combo_type[n].selected() == 1){
 								side["controller"] = "network";
 								side["description"] = "";
