@@ -488,15 +488,20 @@ int play_game(int argc, char** argv)
 
 			state.scenario = campaign["first_scenario"];
 
+			const std::string difficulty_descriptions = translate_string_default(campaign["id"] + "_difficulties",campaign["difficulty_descriptions"]);
+			std::vector<std::string> difficulty_options = config::split(difficulty_descriptions,';');
+
 			const std::vector<std::string> difficulties = config::split(campaign["difficulties"]);
 
 			if(difficulties.empty() == false) {
-				std::vector<std::string> options(difficulties.size());
-				std::transform(difficulties.begin(),difficulties.end(),options.begin(),translate_string);
+				if(difficulty_options.size() != difficulties.size()) {
+					difficulty_options.resize(difficulties.size());
+					std::transform(difficulties.begin(),difficulties.end(),difficulty_options.begin(),translate_string);
+				}
 
 				const int res = gui::show_dialog(disp,NULL,"",
 				                            string_table["difficulty_level"],
-				                            gui::OK_CANCEL,&options);
+				                            gui::OK_CANCEL,&difficulty_options);
 				if(res == -1)
 					continue;
 

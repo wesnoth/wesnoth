@@ -35,7 +35,18 @@ void process_config(const std::string& element_name, const config& cfg,
 	const map<string,string>& table = cfg.values;
 	const map<string,string>::const_iterator id = table.find("id");
 
-	if(element_name == "message") {
+	if(element_name == "campaign") {
+		const map<string,string>::const_iterator name = table.find("name");
+		const map<string,string>::const_iterator diff = table.find("difficulty_descriptions");
+		if(name != table.end()) {
+			out.insert(std::pair<string,string>(id->second,name->second));
+		}
+
+		if(diff != table.end()) {
+			out.insert(std::pair<string,string>(id->second + "_difficulties",diff->second));
+		}
+	}
+	else if(element_name == "message") {
 		const map<string,string>::const_iterator msg = table.find("message");
 
 		if(id == table.end()) {
