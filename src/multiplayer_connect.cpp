@@ -346,6 +346,10 @@ void mp_connect::remove_player(const std::string& name)
 	const std::vector<std::string>::iterator itor = std::find(player_types_.begin(),player_types_.end(),name);
 	if(itor != player_types_.end())
 		player_types_.erase(itor);
+
+	for(size_t n = 0; n != combos_type_.size(); ++n) {
+		combos_type_[n].set_items(player_types_);
+	}
 }
 
 void mp_connect::set_area(const SDL_Rect& rect)
