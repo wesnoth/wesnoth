@@ -387,10 +387,10 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 				current_route.steps.clear();
 				gui.set_route(NULL);
 
-				gui.invalidate_unit();
-				gui.draw(); //clear the screen
-
 				check_victory(units,teams);
+
+				gui.invalidate_all();
+				gui.draw(); //clear the screen
 			}
 		}
 

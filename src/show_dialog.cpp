@@ -223,7 +223,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 	menu menu_(disp,menu_items,type == MESSAGE);
 
 	const int border_size = 6;
-	const short border_colour = 0xF000;
 	int nlines = 1;
 	int longest_line = 0;
 	int cur_line = 0;
@@ -414,12 +413,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 	const int unitw = 200;
 	const int unith = disp.y()/2;
 
-	if(!units.empty()) {
-		draw_solid_tinted_rectangle(unitx,unity,unitw,unith,
-		                            0,0,0,1.0,scr);
-		draw_rectangle(unitx,unity,unitw,unith,border_colour,scr);
-	}
-
 	font::draw_text(&disp, clipRect, message_font_size,
 	                font::NORMAL_COLOUR, message,
 					xloc+total_image_width+left_padding+image_h_padding,
@@ -503,10 +496,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 				selection = 0;
 
 			if(size_t(selection) < units.size()) {
-				SDL_Surface* const screen = disp.video().getSurface();
-				if(unit_details_rect.w > 0) {
-					SDL_FillRect(screen,&unit_details_rect,0);
-				}
+				draw_dialog_frame(unitx,unity,unitw,unith,disp);
 
 				SDL_Rect clip_rect = { unitx, unity, unitw, unith };
 
