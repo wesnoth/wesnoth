@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-26 17:03+0100\n"
-"PO-Revision-Date: 2005-01-26 20:11+0300\n"
+"POT-Creation-Date: 2005-02-26 17:05+0100\n"
+"PO-Revision-Date: 2005-02-26 15:49+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -502,7 +502,6 @@ msgid "Dawn"
 msgstr "Рассвет"
 
 #: data/help.cfg:138
-#, fuzzy
 msgid ""
 "Wesnoth games usually take place with a regular cycle between day and night. "
 "The current time of day can be observed under the minimap in the upper "
@@ -514,7 +513,8 @@ msgstr ""
 "В Весноте постоянно происходит смена дня и ночи. Текущее время суток можно "
 "увидеть справа вверху под мини-картой.\n"
 "\n"
-"Порядок смены дня и ночи таков:"
+"Порядок смены дня и ночи таков:\n"
+"\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -1109,12 +1109,10 @@ msgid "flaming sword"
 msgstr "пылающий меч"
 
 #: data/items.cfg:755
-#, fuzzy
 msgid "Scepter of Fire"
 msgstr "Огненный Скипетр"
 
 #: data/items.cfg:758
-#, fuzzy
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
@@ -1124,11 +1122,10 @@ msgstr ""
 "метать огненные шары во врагов!"
 
 #: data/items.cfg:759
-#, fuzzy
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
-msgstr "Это Огненный Скипетр. Только истинный владелец трона может взять его!"
+msgstr "Это Огненный скипетр. Только истинный владелец трона может взять его!"
 
 #: data/items.cfg:812
 msgid "Zap~"
@@ -1454,7 +1451,6 @@ msgid "The Valley of Death"
 msgstr "Долина Смерти"
 
 #: data/scenarios/multiplayer/scenarios.cfg:240
-#, fuzzy
 msgid "Dwarven Wasteland"
 msgstr "Пустыня Гномов"
 
@@ -1468,9 +1464,8 @@ msgstr "Король Холма"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
-#, fuzzy
 msgid "Konrad"
-msgstr "Лорд"
+msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
@@ -1487,7 +1482,6 @@ msgstr ""
 "несомненно, Вы можете объяснить мне искусство битвы..."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:53
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1497,7 +1491,7 @@ msgstr ""
 "Прежде чем начинать любую битву, Вы должны завербовать соединения. Чтобы "
 "завербовать соединение, нажмите правой кнопкой мыши на том квадрате внутри "
 "замка, на который Вы хотите завербовать соединение. Затем выберите Вербовать "
-"новобранца, и нажмите 'Ok'. Вы можете вербовать соединения только на "
+"новобранца, и нажмите 'OK'. Вы можете вербовать соединения только на "
 "квадраты замка, в котором находится Ваш лидер."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:55
@@ -1522,7 +1516,6 @@ msgid "How do I recruit units?"
 msgstr "Как покупать соединения?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:65
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1533,7 +1526,7 @@ msgstr ""
 "Чтобы завербовать новобранца, нажмите правой кнопкой мыши на том квадрате в "
 "замке, на который Вы хотите поставить соединение. Затем выберите Вербовать "
 "новобранца, либо наведите курсор на квадрат и нажмите 'Ctrl-R'. Далее, "
-"выберите соединение, которое Вы хотите завербовать и нажмите 'Ok'. Чтобы "
+"выберите соединение, которое Вы хотите завербовать и нажмите 'OK'. Чтобы "
 "ускорить процесс, Вы можете использовать комбинацию 'Ctrl-Shift-R', нажав "
 "которую, Вы сразу завербуете соединение, которое вербовали в прошлый раз. "
 
@@ -1895,7 +1888,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Что происходит когда соединение входит в деревню?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:196
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1920,7 +1912,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Как я могу восстановить здоровье без деревень?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:197
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1933,7 +1924,7 @@ msgstr ""
 "соединение не двигалось и не атаковало один ход, оно восстанавливает 2 ЗД "
 "при отдыхе. Если противник атакует его, то оно не получит отдыха и не "
 "восстановится. Также, некоторые соединения со способностью исцеления могут "
-"исцелять других, если находятся рядом. Эльф Шаман - один из таких "
+"исцелять других, если находятся рядом. Эльф Шаман - одно из таких "
 "соединений; соединения, находящиеся рядом с Эльфом Шаманом, восстанавливают "
 "4 ЗД за ход. Наконец, когда Вы победите в сценарии, все Ваши соединения "
 "полностью восстановят свое здоровье."
@@ -1999,7 +1990,6 @@ msgstr ""
 "расскажите?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:257
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -2008,12 +1998,12 @@ msgid ""
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the scenario is over. Hopefully, it was a victory condition that was met."
 msgstr ""
-"Возможно, если будет непонятно, как победить в сценарии, просто прочитав "
+"Иногда бывает, что не совсем понятно, как победить в сценарии, просто читая "
 "диалоги. В этом случае Вам нужно посмотреть в условиях сценария, которые "
 "появятся после диалогов. Также к ним можно получить доступ, нажав на 'Задачи "
 "Сценария' в меню. Условия сценария отображают список условий для победы и "
-"для поражения, и если одно из условий будет выполнено сценарий закончится. "
-"Надеюсь, это будет одно из условий победы."
+"для поражения, и когда любое из условий будет выполнено, сценарий "
+"закончится. Надеюсь, это будет одно из условий победы."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:258
 msgid "What happens when I win a scenario?"
@@ -2035,9 +2025,8 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:264
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr "Вы хотите посмотреть уроки, которые были пройдены на данном уровне?"
+msgstr "Вы хотите просмотреть уроки, которые были изучены на данном уровне?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
@@ -2072,7 +2061,6 @@ msgstr ""
 "тренировочном бою."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:45
-#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -2084,7 +2072,7 @@ msgstr ""
 "Выиграйте данный сценарий, победив меня. Ваш боец с прошлого сценария может "
 "помочь Вам в битве. Чтобы призвать его, нажмите правой кнопкой мыши на "
 "квадрате в замке, выберите Призвать, выберите Вашего бойца, затем нажмите "
-"'Ok'. Вы также можете призвать Эльфов Бойцов и Эльфов Лучников."
+"'OK'. Вы также можете призывать Эльфов Бойцов и Эльфов Лучников."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:66
 msgid ""
@@ -2128,7 +2116,6 @@ msgstr "Вы успешно призвали Вашего Эльфа Бойца.
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
-#, fuzzy
 msgid "En garde!"
 msgstr "Защищайся!"
 
@@ -2245,7 +2232,6 @@ msgid "How do I get gold?"
 msgstr "Где мне доставать золото?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:111
-#, fuzzy
 msgid ""
 "You begin each scenario with a percentage of gold from the previous "
 "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
@@ -2315,7 +2301,6 @@ msgstr ""
 "отличительные особенности."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:138
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2329,12 +2314,12 @@ msgid ""
 msgstr ""
 "Две местности уже определены - это деревни и замок. Тем не менее особенности "
 "большинства земель более различимы и дают выгодное или невыгодное положение "
-"различным соединению, находящемуся на них. Первая особенность земли - "
-"количество оков движения, требуемое для входа в квадрат. Вторая особенность "
-"- защищённость, которая даётся соединению, стоящему на этой земле. Это "
-"процент, определяющий шанс соединения получить повреждение на этой земле. "
-"Например, эльфы имеют 70% защищённость в лесу, значит, они имеют шанс в 30% "
-"получить повреждение."
+"различным соединениям, находящимся на них. Первая особенность местности - "
+"количество очков движения, требуемое для входа в квадрат. Вторая особенность "
+"- защищённость, которая даётся соединению, стоящему на этой местности. Это "
+"процент, определяющий шанс соединения получить повреждение на этой "
+"местности. Например, многие эльфы имеют 70% защищённость в лесу, "
+"следовательно, они имеют шанс в 30% получить повреждение."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:138
 msgid "What are the different properties that terrains have?"
@@ -2518,13 +2503,13 @@ msgid "How long do these objects last?"
 msgstr "Как долго используются предметы?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:200
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
 "Большинство предметов используется соединением постоянно. Но некоторые "
-"предметы, как Святая Вода, используются только до конца текущего сценария."
+"предметы, такие как Святая Вода, используются только до конца текущего "
+"сценария."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:214
 msgid ""
@@ -2684,9 +2669,8 @@ msgid "Hills"
 msgstr "Холмы"
 
 #: data/terrain.cfg:288
-#, fuzzy
 msgid "Snow Hills"
-msgstr "Заснеженная деревня"
+msgstr "Заснеженные холмы"
 
 #: data/terrain.cfg:297
 msgid "Desert Hills"
@@ -2865,7 +2849,6 @@ msgstr ""
 "создаёте более мощную и опытную армию. "
 
 #: data/tips.cfg:7
-#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -2874,7 +2857,9 @@ msgid ""
 msgstr ""
 "Все соединения имеют свою зону контроля в каждом следующем за ним квадрате. "
 "Если соединение передвигается в зону контроля противника, оно больше не "
-"может двигаться на этом же ходу."
+"может двигаться на этом же ходу. Соединения с 0 уровнем слишком хилые чтобы "
+"контролировать зону; кроме того, соединения застрельщики достаточно хорошо "
+"обучены и такие соединения игнорируют эти зоны."
 
 #: data/tips.cfg:8
 msgid ""
@@ -3230,7 +3215,6 @@ msgid "illuminates"
 msgstr "освещающий"
 
 #: data/translations/english.cfg:54
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -3242,11 +3226,13 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "Лидер:\n"
-"Это соединение может возглавлять соединения, находящиеся рядом, делая их в "
-"бою более умелыми.\n"
+"Это соединение может возглавлять дружественные соединения, находящиеся "
+"рядом, делая их в бою более умелыми.\n"
 "\n"
 "Соседнее дружественное соединение более низкого уровня будет наносить больше "
-"урона в бою."
+"урона в бою. Когда соединение с более низким уровнем смежно и на той же "
+"стороне, что и соединение-лидер, то такому соединения в бою добавляется до "
+"25% дополнительного урона в зависимости от его уровня."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -3272,7 +3258,6 @@ msgstr ""
 "Требует не больше 1 единицы содержания."
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -3282,11 +3267,11 @@ msgid ""
 "to this unit."
 msgstr ""
 "Скрытный:\n"
-"Такое соединение может скрываться в лесу и быть невидимым для противников.\n"
+"Такое соединение становится невидимым ночью.\n"
 "\n"
-"Вражеские соединения не могут видеть или атаковать это соединение, когда оно "
-"в лесу, кроме тех случаев, когда любого хода оно было атаковано или "
-"находится рядом с вражеским соединением."
+"Вражеские соединения не могут видеть или атаковать это соединение ночью, "
+"кроме тех случаев, когда после любого хода оно было атаковано или находится "
+"рядом с вражеским соединением."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
@@ -3496,28 +3481,29 @@ msgstr "$name|гавань,$name|порт"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr ""
+msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
+msgstr "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "$name|ham,$name|ton,$name|field"
 
 #: data/translations/english.cfg:142
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr ""
+msgstr "$name|ham,$name|ton,$name|wood,$name Лес"
 
 #: data/translations/english.cfg:143
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
+msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
 #: data/translations/english.cfg:144
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
+"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
@@ -4271,7 +4257,6 @@ msgid "Cuttle Fish"
 msgstr "Каракатица"
 
 #: data/units/Cuttle_Fish.cfg:16
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -4280,7 +4265,7 @@ msgid ""
 msgstr ""
 "Каракатица - это гигантское создание морей. Она может захватить противника "
 "сильными щупальцами или выпустить отравленные чёрные чернила с дистанции. "
-"Наилучший путь выжить при встрече с этими монстрами, быть на берегу."
+"Наилучший путь выжить при встрече с этими монстрами, быть на суше."
 
 #: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
 msgid "tentacle"
@@ -4581,7 +4566,6 @@ msgid "Drake Glider"
 msgstr "Парящий Дракон"
 
 #: data/units/Drake_Glider.cfg:19
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armour as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -4590,8 +4574,8 @@ msgid ""
 "submission. The best gliders can look forward to being accepted into the "
 "ranks of the high flying Sky Drakes."
 msgstr ""
-"Парящие Драконы одеты самую лёгкую броню, что позволяет им быстро настигать "
-"врагов, пытающихся войти в их пещеры. Эти Драконы - достойные противники, "
+"Парящие Драконы одеты в самую лёгкую броню, что позволяет им быстро убегать "
+"от врагов, когда они покидают их пещеры. Эти Драконы - достойные противники, "
 "владеющие внутренним огнём, унаследованным от их предков. Парящие Драконы "
 "также могут эффективно использовать свою скорость для злобного хлопанья "
 "крыльями по своим противникам. Лучшие Парящие Драконы могут в скором времени "
@@ -4723,7 +4707,6 @@ msgid "Dwarvish Dragonguard"
 msgstr "Гном Драконий Страж"
 
 #: data/units/Dwarvish_Dragonguard.cfg:16
-#, fuzzy
 msgid ""
 "The guardians of the great dwarvish cities, they blast at their enemies "
 "using fire from what are called dragonstaves. They are the chief possessors "
@@ -4764,7 +4747,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Гном Охранник"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsman. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -5104,7 +5086,6 @@ msgid "female^Elvish Lady"
 msgstr "Эльфийка Леди"
 
 #: data/units/Elvish_Lady.cfg:18
-#, fuzzy
 msgid ""
 "The Elvish Lady is a singular combination of beauty and wisdom, and is "
 "deeply respected by all elves. Her ability to see through the shroud of "
@@ -5112,9 +5093,10 @@ msgid ""
 "authority is used sparingly with a sense of gentle benevolence to guide her "
 "people in times of uncertainty."
 msgstr ""
-"Эльфийская Леди Паранда - одна из наиболее уважаемых эльфов. Её возможность "
-"видеть сквозь пелену судьбы позволяет ей мудро использовать власть над "
-"своими эльфами и руководить ими во времена смуты."
+"Эльфийская Леди является единственным воплощением красоты и мудрости, она "
+"очень уважаема всеми эльфами. Её возможность видеть сквозь пелену судьбы "
+"позволяет ей мудро использовать власть над своими эльфами и руководить ими "
+"во времена смуты."
 
 #: data/units/Elvish_Lady.cfg:20
 msgid "shove"
@@ -5699,7 +5681,6 @@ msgid "Halberdier"
 msgstr "Алебардист"
 
 #: data/units/Halbardier.cfg:18
-#, fuzzy
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -5710,7 +5691,9 @@ msgid ""
 msgstr ""
 "Лучшие из набранных солдат становятся Алебардистами. Их оружие медленнее, "
 "чем меч, но может наносить удары убийственной силы. Так как Алебардисты "
-"высокого роста, они всегда наносят удар первыми, даже если защищаются."
+"высокого роста, они всегда наносят удар первыми, даже если защищаются. "
+"Алебардисты имеют великолепные способности работать в группах, но для них "
+"сложно участвовать в рукопашных схватках."
 
 #: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
 msgid "halberd"
@@ -5791,12 +5774,10 @@ msgstr ""
 "боя, эти солдаты могли бы контролировать континент."
 
 #: data/units/Javelineer.cfg:3
-#, fuzzy
 msgid "Javelineer"
-msgstr "Всадник"
+msgstr "Копьеносец"
 
 #: data/units/Javelineer.cfg:16
-#, fuzzy
 msgid ""
 "Javelineers have mastered the use of the pointy sticks they were given as "
 "recruits.  Dangerous in melee, they have also developed their skill at "
@@ -5804,9 +5785,10 @@ msgid ""
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
-"Копьеносцы являются основой армий людей. Эти молодые солдаты изучили основы "
-"боя и были призваны в ряды в большом количестве. Из-за длины своих копий, в "
-"бою они наносят удар первыми, даже если защищаются."
+"Копьеносцы мастерски владеют своими копьями, которые они получают как "
+"новобранцы. Опасные в бою, они так же обучены бросать свои копья, делая их в "
+"два раза более мощными в бою. Из-за длины своих копий, в бою они наносят "
+"удар первыми, даже если защищаются."
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
@@ -6088,7 +6070,7 @@ msgstr "Водяной Охотник"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Водяной Копьеносец"
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
@@ -6405,7 +6387,6 @@ msgid "Orcish Crossbowman"
 msgstr "Орк Арбалетчик"
 
 #: data/units/Orcish_Crossbowman.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
 "power of their weapon. While they are not as effective as the Elvish "
@@ -6413,8 +6394,8 @@ msgid ""
 "little better than the Elves in close combat."
 msgstr ""
 "Орки Арбалетчики пытаются компенсировать свой недостаток в навыке стрельбы "
-"мощью своего оружия. Они не столь точны в стрельбе, как Эльфы Стрелки, но "
-"чуть лучше Эльфов управляются в рукопашной схватке."
+"мощью своего оружия. Они не столь точны в стрельбе, как Эльфы Стрелки на "
+"дальних расстояниях, но чуть лучше Эльфов управляются в рукопашной схватке."
 
 #: data/units/Orcish_Crossbowman.cfg:19
 msgid "short sword"
@@ -6873,7 +6854,6 @@ msgid "Saurian Skirmisher"
 msgstr "Ящер Застрельщик"
 
 #: data/units/Saurian_Skirmisher.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6890,7 +6870,6 @@ msgid "Saurian Soothsayer"
 msgstr "Ящер Предсказатель"
 
 #: data/units/Saurian_Soothsayer.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -6905,7 +6884,6 @@ msgid "Saurian Tribalist"
 msgstr "Ящер Трибалист"
 
 #: data/units/Saurian_Tribalist.cfg:18
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Tribalists are valued as healers because they can provide aid to "
@@ -7322,7 +7300,6 @@ msgid "female^Vampire Lady"
 msgstr "Вампирша Леди"
 
 #: data/units/Vampire_Lady.cfg:17
-#, fuzzy
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
@@ -7581,14 +7558,13 @@ msgid "+Dutch Translation"
 msgstr "+Голландский перевод"
 
 #: src/about.cpp:182
-#, fuzzy
 msgid "+English (GB) Translation"
-msgstr "+Польский перевод"
+msgstr "+Британский английский перевод"
 
 #: src/about.cpp:186
 #, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Русский перевод"
+msgstr "+Итальянский перевод"
 
 #: src/about.cpp:190
 msgid "+Finnish Translation"
@@ -8730,9 +8706,8 @@ msgid "You have emerged victorious!"
 msgstr "Вы выиграли!"
 
 #: src/playlevel.cpp:833
-#, fuzzy
 msgid "Scenario Report"
-msgstr "Начать сценарий"
+msgstr "Отчёт о сценарии"
 
 #: src/playlevel.cpp:854
 msgid ""
@@ -9196,15 +9171,3 @@ msgstr "нейтральный"
 
 #~ msgid "<no games open>"
 #~ msgstr "<нет открытых игр>"
-
-#~ msgid "Help"
-#~ msgstr "Помощь"
-
-#~ msgid "Delete File"
-#~ msgstr "Удалить файл"
-
-#~ msgid "Deletion of the file failed."
-#~ msgstr "Ошибка удаления файла."
-
-#~ msgid "Move your fighter onto a village"
-#~ msgstr "Переместите Вашего бойца в деревню"
