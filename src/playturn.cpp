@@ -93,6 +93,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		assert(route.steps.front() == *g);
 
+		route.move_left = route_turns_to_complete(ui->second,map,route);
 		gui.set_route(&route);
 		const size_t moves = move_unit(&gui,map,units,teams,route.steps,
 		                               &recorder,&turn_data.undo_stack);
@@ -198,6 +199,8 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 				current_route = a_star_search(selected_hex,new_hex,
 				                              10000.0,calc,teleports);
 
+				current_route.move_left =
+				        route_turns_to_complete(un->second,map,current_route);
 				gui.set_route(&current_route);
 			}
 		}
@@ -437,6 +440,8 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 
 					paths::route route = a_star_search(it->first,go_to,
 					                               10000.0,calc,teleports);
+					route.move_left =
+				          route_turns_to_complete(it->second,map,route);
 					gui.set_route(&route);
 				}
 			}

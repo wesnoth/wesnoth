@@ -55,6 +55,9 @@ struct paths
 	routes_map routes;
 };
 
+int route_turns_to_complete(const unit& u, const gamemap& map,
+                            const paths::route& rt);
+
 struct shortest_path_calculator
 {
 	shortest_path_calculator(const unit& u, const team& t,

@@ -254,6 +254,31 @@ paths::paths(const gamemap& map, const game_data& gamedata,
 	}
 }
 
+int route_turns_to_complete(const unit& u, const gamemap& map,
+                            const paths::route& rt)
+{
+	if(rt.steps.empty())
+		return 0;
+
+	int turns = 0, movement = u.movement_left();
+	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin()+1;
+	    i != rt.steps.end(); ++i) {
+		assert(map.on_board(*i));
+		const int move_cost = u.movement_cost(map,map[i->x][i->y]);
+		movement -= move_cost;
+		if(movement < 0) {
+			++turns;
+			movement = u.total_movement() - move_cost;
+			if(movement < 0) {
+				return -1;
+			}
+		}
+	}
+
+	return turns;
+}
+
+
 shortest_path_calculator::shortest_path_calculator(const unit& u, const team& t,
                                                    const unit_map& units,
                                                    const gamemap& map)

@@ -23,6 +23,8 @@ RESULT enter(display& disp, config& game_data)
 
 	std::vector<std::string> messages;
 
+	gui::textbox message_entry(disp,300);
+
 	for(;;) {
 		std::cerr << "game data: " << game_data.write() << "\n";
 		gui::draw_solid_tinted_rectangle(0,0,disp.x()-1,disp.y()-1,0,0,0,1.0,
@@ -34,7 +36,6 @@ RESULT enter(display& disp, config& game_data)
 			text << messages[n] << "\n";
 		}
 
-		gui::textbox message_entry(disp,300);
 		message_entry.set_location(border,
 		                           disp.y()-border-message_entry.height());
 

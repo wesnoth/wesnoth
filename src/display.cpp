@@ -601,7 +601,34 @@ void display::draw_game_status(int x, int y)
 		const int xhex = mouseoverHex_.x + 1;
 		const int yhex = mouseoverHex_.y + 1;
 
-		details << xhex << ", " << yhex << "\n";
+		details << xhex << ", " << yhex;
+
+		//we display the unit the mouse is over if it is over a unit
+		//otherwise we display the unit that is selected
+		std::map<gamemap::location,unit>::const_iterator unit_selected
+		                                = units_.find(mouseoverHex_);
+		if(unit_selected == units_.end()) {
+			unit_selected = units_.find(selectedHex_);
+		}
+
+		if(unit_selected != units_.end() && map_.on_board(mouseoverHex_)) {
+			const gamemap::TERRAIN terrain =
+			                 map_[mouseoverHex_.x][mouseoverHex_.y];
+
+			const unit& u = unit_selected->second;
+			const int move_cost = u.movement_cost(map_,terrain);
+			const double defense = u.defense_modifier(map_,terrain);
+			const int def = 100-int(util::round(100.0*defense));
+
+			if(move_cost > 10) {
+				details << " (-)";
+			} else {
+				details << " (" << def << "%," << move_cost << ")";
+			}
+		}
+
+		details << "\n";
+
 	} else {
 		details << "\n";
 	}
@@ -1208,6 +1235,8 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	if(i == route_.steps.begin() || i == route_.steps.end())
 		return;
 
+	const bool show_time = (i+1 == route_.steps.end());
+
 	const bool left_foot = is_even(i - route_.steps.begin());
 
 	//generally we want the footsteps facing toward the direction they're going
@@ -1263,6 +1292,16 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	                    direction <= gamemap::location::SOUTH_WEST);
 
 	draw_unit(xloc,yloc,image,hflip,vflip,0.5);
+
+	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
+		static std::string str(1,'x');
+		str[0] = '0' + route_.move_left + 1;
+		const SDL_Rect& text_area =
+		    font::draw_text(NULL,screen_area(),18,font::BUTTON_COLOUR,str,0,0);
+		const int x = xloc + int(zoom_/2.0) - text_area.w/2;
+		const int y = yloc + int(zoom_/2.0) - text_area.h/2;
+		font::draw_text(this,screen_area(),18,font::BUTTON_COLOUR,str,x,y);
+	}
 }
 
 namespace {
