@@ -37,7 +37,7 @@ namespace game_config
 
 	std::string terrain_mask_image = "terrain/alphamask.png";
 
-	std::string map_image = "misc/map.png";
+	std::string map_image = "maps/wesnoth.png";
 	std::string rightside_image = "misc/rightside.png";
 	std::string rightside_image_bot = "misc/rightside-bottom.png";
 
