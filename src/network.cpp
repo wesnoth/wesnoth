@@ -174,7 +174,6 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 	const int starting_ticks = SDL_GetTicks();
 
-	std::cerr << "checking sockets...\n";
 	const int res = SDLNet_CheckSockets(socket_set,timeout);
 	if(res <= 0) {
 		return 0;
@@ -182,8 +181,29 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
 		if(SDLNet_SocketReady(*i)) {
-			std::string buffer;
+			char num_buf[4];
+			size_t len = SDLNet_TCP_Recv(*i,num_buf,4);
 
+			if(len != 4) {
+				throw error(std::string("network error receiving length data: ") + SDLNet_GetError(),*i);
+			}
+
+			len = SDLNet_Read32(num_buf);
+
+			std::cerr << "received packet length: " << len << "\n";
+
+			if(len > 10000000) {
+				throw error(std::string("network error: bad length data"),*i);
+			}
+
+			std::vector<char> v(len);
+			const size_t nbytes = SDLNet_TCP_Recv(*i,&v[0],len);
+			if(nbytes != len) {
+				throw error(std::string("network error: received wrong number of bytes: ") + SDLNet_GetError(),*i);
+			}
+
+			std::string buffer(v.begin(),v.end());
+/*
 			for(;;) {
 				char c;
 				const int len = SDLNet_TCP_Recv(*i,&c,1);
@@ -191,8 +211,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				if(len == 0) {
 					break;
 				} else if(len < 0) {
-					throw error(std::string("error receiving data: ") +
-					            SDLNet_GetError(),*i);
+					throw error(std::string("error receiving data: ") + SDLNet_GetError(),*i);
 				}
 
 				buffer.resize(buffer.size()+1);
@@ -202,7 +221,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 					break;
 				}
 			}
-
+*/
 			if(buffer == "") {
 				throw error("remote host closed connection",*i);
 			}
@@ -216,8 +235,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 					return 0;
 				}
 			} else {
-				const std::map<connection,std::string>::iterator it =
-				                                   received_data.find(*i);
+				const std::map<connection,std::string>::iterator it = received_data.find(*i);
 				if(it != received_data.end()) {
 					buffer = it->second + buffer;
 					received_data.erase(it);
@@ -251,7 +269,13 @@ void send_data(const config& cfg, connection connection_num)
 
 	assert(connection_num != server_socket);
 
-	std::string value = cfg.write();
+	std::string value(4,'x');
+	value += cfg.write();
+
+	char buf[4];
+	SDLNet_Write32(value.size()+1-4,buf);
+	std::copy(buf,buf+4,value.begin());
+
 	std::cerr << "sending " << (value.size()+1) << " bytes\n";
 	const int res = SDLNet_TCP_Send(connection_num,
 	                                const_cast<char*>(value.c_str()),
