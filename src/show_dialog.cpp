@@ -438,6 +438,7 @@ int show_dialog(display& disp, surface image,
 	switch(type) {
 		case MESSAGE:
 			break;
+
 		case OK_ONLY: {
 			static const char* thebuttons[] = { N_("Ok"), "" };
 			button_list = thebuttons;
@@ -543,21 +544,21 @@ int show_dialog(display& disp, surface image,
 	const int padding_height = top_padding + bottom_padding + menu_hpadding;
 	const int caption_width = caption_size.w;
 	const int image_width = image != NULL ? image->w : 0;
-	const int total_image_width = caption_width > image_width ?
-	                              caption_width : image_width;
 	const int image_height = image != NULL ? image->h : 0;
-	const int total_image_height = image_height + caption_size.h;
+	const int total_text_height = text_size.h + caption_size.h;
 
 	int text_width = text_size.w;
+	if(caption_width > text_width)
+		text_width = caption_width;
 	if(menu_.width() > text_width)
 		text_width = menu_.width();
 
-	int total_width = total_image_width + text_width + padding_width;
+	int total_width = image_width + text_width + padding_width;
 
 	if(text_widget_width+left_padding+right_padding > total_width)
 		total_width = text_widget_width+left_padding+right_padding;
 
-	const size_t text_and_image_height = total_image_height > text_size.h ? total_image_height : text_size.h;
+	const size_t text_and_image_height = image_height > total_text_height ? image_height : total_text_height;
 
 	const int total_height = text_and_image_height +
 	                         padding_height + menu_.height() +
@@ -655,7 +656,7 @@ int show_dialog(display& disp, surface image,
 						xloc + left_padding,text_widget_y_unpadded);
 	}
 
-	const int menu_xpos = xloc+total_image_width+left_padding+image_h_padding;
+	const int menu_xpos = xloc+image_width+left_padding+image_h_padding;
 	const int menu_ypos = yloc+top_padding+text_and_image_height+menu_hpadding+ (use_textbox ? text_widget.location().h + top_padding : 0);
 	if(menu_.height() > 0) {
 		menu_.set_loc(menu_xpos,menu_ypos);
@@ -667,21 +668,16 @@ int show_dialog(display& disp, surface image,
 
 		disp.blit_surface(x,y,image);
 
-		int center_font = 0;
-		if(caption_size.w < image->w) {
-			center_font = image->w/2 - caption_size.w/2;
-		}
-
 		font::draw_text(&disp, clipRect, caption_font_size,
 		                font::NORMAL_COLOUR, caption,
-						xloc+left_padding+center_font,
-		                yloc+top_padding+image->h, NULL);
+		                xloc+image_width+left_padding+image_h_padding,
+		                yloc+top_padding, NULL);
 	}
 
 	font::draw_text(&disp, clipRect, message_font_size,
 	                font::NORMAL_COLOUR, message,
-					xloc+total_image_width+left_padding+image_h_padding,
-					yloc+top_padding);
+	                xloc+image_width+left_padding+image_h_padding,
+	                yloc+top_padding+caption_size.h);
 
 	//set the position of any tick boxes. they go right below the menu, slammed against
 	//the right side of the dialog
