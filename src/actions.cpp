@@ -332,7 +332,7 @@ battle_stats evaluate_battle_stats(
 		if(include_strings && tod_modifier != 0) {
 			std::stringstream str_mod;
 			const time_of_day& tod = timeofday_at(state,units,d->first);
-			str_mod << translate_string_default(tod.id,tod.name) << ", ,^"
+			str_mod << tod.name << ", ,^"
 			        << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
 			res.defend_calculations.push_back(str_mod.str());
 		}
@@ -450,7 +450,7 @@ battle_stats evaluate_battle_stats(
 	if(include_strings && tod_modifier != 0) {
 		std::stringstream str_mod;
 		const time_of_day& tod = timeofday_at(state,units,a->first);
-		str_mod << translate_string_default(tod.id,tod.name) << ", ,^"
+		str_mod << tod.name << ", ,^"
 		        << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
 		res.attack_calculations.push_back(str_mod.str());
 	}

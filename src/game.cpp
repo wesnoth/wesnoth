@@ -111,7 +111,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		bool save_game_after_scenario = true;
 
 		try {
-			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
+			state.label = (*scenario)["name"];
 
 			LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story);
 
@@ -183,7 +183,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 		//if this isn't the last scenario, then save the game
 		if(scenario != NULL && save_game_after_scenario) {
-			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
+			state.label = (*scenario)["name"];
 			state.starting_pos = config();
 
 			bool retry = true;
@@ -880,7 +880,7 @@ int play_game(int argc, char** argv)
 					str << "&" << icon << ",";
 				}
 
-				str << translate_string_default((**i)["id"],(**i)["name"]);
+				str << (**i)["name"];
 
 				campaign_names.push_back(str.str());
 			}

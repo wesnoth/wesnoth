@@ -141,7 +141,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	const config::child_list& era_list = cfg.get_children("era");
 	std::vector<std::string> eras;
 	for(config::child_list::const_iterator er = era_list.begin(); er != era_list.end(); ++er) {
-		eras.push_back(translate_string_default((**er)["id"],(**er)["name"]));
+		eras.push_back((**er)["name"]);
 	}
 
 	if(eras.empty()) {

@@ -155,7 +155,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::cerr << "generated map " << (SDL_GetTicks() - ticks) << "\n";
 
-	const statistics::scenario_context statistics_context(translate_string_default(lvl["id"],lvl["name"]));
+	const statistics::scenario_context statistics_context(lvl["name"]);
 
 	const int num_turns = atoi(lvl["turns"].c_str());
 	gamestatus status(*level,num_turns);

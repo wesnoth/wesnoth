@@ -249,7 +249,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const time_of_day& tod = timeofday_at(status,units,mouseover);
 		std::stringstream tooltip;
 		
-		tooltip << font::LARGE_TEXT << translate_string_default(tod.id,tod.name) << "\n"
+		tooltip << font::LARGE_TEXT << tod.name << "\n"
 		        << _("Lawful units") << ": "
 				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
 				<< _("Neutral units") << ": " << "0%\n"

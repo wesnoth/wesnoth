@@ -1118,9 +1118,9 @@ void unit::add_modification(const std::string& type,
 	}
 
 	std::stringstream description;
-	description << translate_string_default(mod["id"],mod["name"]) << ": ";
+	description << mod["name"] << ": ";
 	if(mod["id"].empty() == false) {
-		description << translate_string_default(mod["id"] + "_description",mod["description"]) << " ";
+		description << mod["description"] << " ";
 	}
 
 	if(effects_description.empty() == false) {

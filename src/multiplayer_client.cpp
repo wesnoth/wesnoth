@@ -416,7 +416,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			std::vector<std::string> choices;
 			for(config::child_list::const_iterator side =
 			    possible_sides.begin(); side != possible_sides.end(); ++side) {
-				choices.push_back(translate_string_default((**side)["id"],(**side)["name"]));
+				choices.push_back((**side)["name"]);
 
 				if(choices.back() == default_race) {
 					choice = side - possible_sides.begin();
