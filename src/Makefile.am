@@ -105,6 +105,7 @@ wesnoth_SOURCES = about.cpp \
 		  about.hpp \
 		  actions.hpp \
 		  ai.hpp \
+		  ai2.hpp \
 		  ai_attack.hpp \
 		  ai_interface.hpp \
 		  ai_move.hpp \
@@ -125,6 +126,7 @@ wesnoth_SOURCES = about.cpp \
 		  game_events.hpp \
 		  gamestatus.hpp \
 		  gettext.hpp \
+		  global.hpp \
 		  halo.hpp \
 		  help.hpp \
 		  hotkeys.hpp \
