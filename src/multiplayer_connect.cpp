@@ -812,9 +812,6 @@ void connect::lists_init()
 			team_names_.push_back(team_name);
 			player_teams_.push_back(team_prefix_ + team_name);
 		}
-		
-		//Side color
-		(**sd)["colour"] = lexical_cast_default<std::string>(side_num);
 	}
 
 	std::string prefix;
