@@ -27,6 +27,9 @@ typedef std::vector<wchar_t> wide_string;
 
 struct language_def
 {
+	language_def() {}
+	language_def(const std::string& name, const std::string& lang) : localename(name), language(lang)
+	{}
 	std::string localename;
   	std::string language;
 	bool operator== (const language_def&);

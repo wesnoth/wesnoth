@@ -27,26 +27,26 @@ namespace {
 }
 
 language_def known_languages[] = {
- 	{ "", N_("System default language") },
-	{ "es_ES", "Castellano" },
-	{ "ca_ES", "Català" },
-	{ "cs_CZ", "Čeština" },
-	{ "da_DK", "Dansk" },
-	{ "de_DE", "Deutsch" },
- 	{ "C", "English" },
- 	{ "fr_FR", "Français" },
-	{ "hu_HU", "Hungarian" },
-	{ "it_IT", "Italiano" },
-	{ "nl_NL", "Nederlands" },
-	{ "no_NO", "Norsk" },
-	{ "pl_PL", "Polski" },
-	{ "pt_BR", "Português do Brasil" },
-	{ "sk_SK", "Slovenčina" },
-	{ "fi_FI", "Suomi" },
-	{ "sv_SE", "Swedish" },
+ 	language_def("", N_("System default language")),
+	language_def("es_ES", "Castellano"),
+	language_def("ca_ES", "Català"),
+	language_def("cs_CZ", "Čeština"),
+	language_def("da_DK", "Dansk"),
+	language_def("de_DE", "Deutsch"),
+ 	language_def("C", "English"),
+ 	language_def("fr_FR", "Français"),
+	language_def("hu_HU", "Hungarian"),
+	language_def("it_IT", "Italiano"),
+	language_def("nl_NL", "Nederlands"),
+	language_def("no_NO", "Norsk"),
+	language_def("pl_PL", "Polski"),
+	language_def("pt_BR", "Português do Brasil"),
+	language_def("sk_SK", "Slovenčina"),
+	language_def("fi_FI", "Suomi"),
+	language_def("sv_SE", "Swedish"),
 
 	// end of list marker, do not remove
-	{ "", "" }
+	language_def("", "")
 };
 
 std::string languagedef_name (const language_def& def)

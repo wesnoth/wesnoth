@@ -14,7 +14,7 @@
 #define CONFIG_HPP_INCLUDED
 
 //disable the very annoying VC++ warning 4786
-#ifdef _WIN32
+#ifdef WIN32
 #pragma warning(disable:4786)
 #endif
 
@@ -96,8 +96,9 @@ struct compression_schema
 
 //a config object defines a single node in a WML file, with access to
 //child nodes.
-struct config
+class config
 {
+public:
 	//create an empty node.
 	config() {}
 

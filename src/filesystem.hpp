@@ -92,7 +92,7 @@ std::string directory_name(const std::string& file);
 ///Binaries will be searched for in [wesnoth-path]/data/<path>/images/
 struct binary_paths_manager
 {
-	binary_paths_manager(const struct config& cfg);
+	binary_paths_manager(const class config& cfg);
 	~binary_paths_manager();
 
 private:

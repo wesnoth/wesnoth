@@ -10,6 +10,12 @@
 
    See the COPYING file for more details.
 */
+
+//disable the very annoying VC++ warning 4786
+#ifdef WIN32
+#pragma warning(disable:4786)
+#endif
+
 #include <stdio.h>
 #include <iostream>
 #include <vector>

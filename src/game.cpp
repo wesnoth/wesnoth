@@ -11,6 +11,11 @@
    See the COPYING file for more details.
 */
 
+//disable the very annoying VC++ warning 4786
+#ifdef WIN32
+#pragma warning(disable:4786)
+#endif
+
 #include "SDL.h"
 
 #include "about.hpp"
@@ -405,7 +410,6 @@ int play_game(int argc, char** argv)
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
 		} else {
-			char buf[256];
 
 			if(val[0] == '/') {
 				game_config::path = val;

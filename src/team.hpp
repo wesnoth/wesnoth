@@ -205,7 +205,7 @@ private:
 	bool calculate_is_enemy(size_t index) const;
 	mutable std::vector<bool> enemies_;
 
-	mutable std::vector<const team::shroud_map*> ally_shroud_, ally_fog_;
+	mutable std::vector<const shroud_map*> ally_shroud_, ally_fog_;
 };
 
 struct teams_manager {

@@ -142,24 +142,24 @@ namespace {
 		return ss.str();
 	}
 
-	typedef std::vector<std::vector<std::pair<std::string, unsigned> > > table_spec;
+	typedef std::vector<std::vector<std::pair<std::string, unsigned int > > > table_spec;
 	// Create a table using the table specs. Return markup with jumps
 	// that create a table. The table spec contains a vector with
 	// vectors with pairs. The pairs are the markup string that should
 	// be in a cell, and the width of that cell.
-	std::string generate_table(const table_spec &tab, const unsigned spacing=20) {
+	std::string generate_table(const table_spec &tab, const unsigned int spacing=20) {
 		table_spec::const_iterator row_it;
 		std::vector<std::pair<std::string, unsigned> >::const_iterator col_it;
-		unsigned num_cols = 0;
+		unsigned int num_cols = 0;
 		for (row_it = tab.begin(); row_it != tab.end(); row_it++) {
 			if (row_it->size() > num_cols) {
 				num_cols = row_it->size();
 			}
 		}
-		std::vector<unsigned> col_widths(num_cols, 0);
+		std::vector<unsigned int> col_widths(num_cols, 0);
 		// Calculate the width of all columns, including spacing.
 		for (row_it = tab.begin(); row_it != tab.end(); row_it++) {
-			unsigned col = 0;
+			unsigned int col = 0;
 			for (col_it = row_it->begin(); col_it != row_it->end(); col_it++) {
 				if (col_widths[col] < col_it->second + spacing) {
 					col_widths[col] = col_it->second + spacing;
@@ -167,18 +167,18 @@ namespace {
 				col++;
 			}
 		}
-		std::vector<unsigned> col_starts(num_cols);
+		std::vector<unsigned int> col_starts(num_cols);
 		// Calculate the starting positions of all columns
-		for (unsigned i = 0; i < num_cols; i++) {
-			unsigned this_col_start = 0;
-			for (unsigned j = 0; j < i; j++) {
+		for (unsigned int i = 0; i < num_cols; i++) {
+			unsigned int this_col_start = 0;
+			for (unsigned int j = 0; j < i; j++) {
 				this_col_start += col_widths[j];
 			}
 			col_starts[i] = this_col_start;
 		}
 		std::stringstream ss;
 		for (row_it = tab.begin(); row_it != tab.end(); row_it++) {
-			unsigned col = 0;
+			unsigned int col = 0;
 			for (col_it = row_it->begin(); col_it != row_it->end(); col_it++) {
 				ss << jump_to(col_starts[col]) << col_it->first;
 				col++;
@@ -191,14 +191,14 @@ namespace {
 	// Return the width for the image with filename.
 	unsigned image_width(const std::string &filename) {
 		image::locator loc(filename);
-		surface surf(get_image(loc, image::UNSCALED));
+		surface surf(image::get_image(loc, image::UNSCALED));
 		if (surf != NULL) {
 			return surf->w;
 		}
 		return 0;
 	}
 
-	void push_tab_pair(std::vector<std::pair<std::string, unsigned> > &v, const std::string &s) {
+	void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s) {
 		v.push_back(std::make_pair(s, font::line_width(s, normal_font_size)));
 	}
 }
@@ -632,30 +632,32 @@ std::vector<topic> generate_unit_topics() {
 				ss << "\n\n<header>text='" << escape(cap(_("attacks")))
 				   << "'</header>\n\n";
 				table_spec table;
-				std::vector<std::pair<std::string, unsigned> > first_row;
+
+				typedef std::pair<std::string,unsigned int> item;
+				std::vector<item> first_row;
 				// Dummy element, icons are below.
-				first_row.push_back(std::make_pair("", 0));
-				first_row.push_back(std::make_pair(bold(_("Name")),
+				first_row.push_back(item("", 0));
+				first_row.push_back(item(bold(_("Name")),
 												   font::line_width(cap(_("Name")),
 																	normal_font_size,
 																	TTF_STYLE_BOLD)));
-				first_row.push_back(std::make_pair(bold(_("Type")),
+				first_row.push_back(item(bold(_("Type")),
 												   font::line_width(_("Type"),
 																	normal_font_size,
 																	TTF_STYLE_BOLD)));
-				first_row.push_back(std::make_pair(bold(_("Dmg")),
+				first_row.push_back(item(bold(_("Dmg")),
 												   font::line_width(_("Dmg"),
 																	normal_font_size,
 																	TTF_STYLE_BOLD)));
-				first_row.push_back(std::make_pair(bold(_("Strikes")),
+				first_row.push_back(item(bold(_("Strikes")),
 												   font::line_width(_("Strikes"),
 																	normal_font_size,
 																	TTF_STYLE_BOLD)));
-				first_row.push_back(std::make_pair(bold(_("Range")),
+				first_row.push_back(item(bold(_("Range")),
 												   font::line_width(_("Range"),
 																	normal_font_size,
 																	TTF_STYLE_BOLD)));
-				first_row.push_back(std::make_pair(bold(_("Special")),
+				first_row.push_back(item(bold(_("Special")),
 												   font::line_width(_("Special"),
 																	normal_font_size,
 																	TTF_STYLE_BOLD)));
