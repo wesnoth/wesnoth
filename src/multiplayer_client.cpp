@@ -253,8 +253,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			}
     
 			for(;;) {
-				data_res = gui::network_data_dialog(disp,string_table["getting_game_data"],data);
-				check_response(data_res,data);
+				data_res = gui::network_data_dialog(disp,string_table["getting_game_data"],sides);
+				check_response(data_res,sides);
     
 				//if we have got valid side data
 				if(sides.child("gamelist") == NULL) {
