@@ -492,6 +492,8 @@ void connect::process_event()
 
 	if (ai_.pressed()) {
 		for(size_t m = 0; m != sides_.size(); ++m) {
+			if(sides_[m].get_id() != preferences::login())
+				kick_player(sides_[m].get_id());
 			sides_[m].set_controller(CNTR_COMPUTER);
 		}
 		changed = true;
