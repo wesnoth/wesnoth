@@ -77,11 +77,10 @@ namespace {
 	const size_t SideBarUnitProfile_y = 375;
 	const size_t SideBarGameStatus_x = 16;
 	const size_t SideBarGameStatus_y = 220;
-	const size_t Minimap_x = 30;
-	const size_t Minimap_y = 35;
-	const size_t Minimap_w = 60;
-	const size_t Minimap_h = 120;
-
+	const size_t Minimap_x = 13;
+	const size_t Minimap_y = 11;
+	const size_t Minimap_w = 119;
+	const size_t Minimap_h = 146;
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
@@ -193,18 +192,17 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 gamemap::location display::minimap_location_on(int x, int y)
 {
 	const SDL_Rect rect =
-	      get_minimap_location(mapx()+Minimap_x,Minimap_y,
-	                           (this->x()-mapx())-Minimap_w,Minimap_h);
+	    get_minimap_location(mapx()+Minimap_x,Minimap_y,Minimap_w,Minimap_h);
 
 	if(x < rect.x || y < rect.y ||
 	   x >= rect.x + rect.w || y >= rect.y + rect.h) {
 		return gamemap::location();
 	}
 
-	const int xdiv = rect.w / map_.x();
-	const int ydiv = rect.h / map_.y();
+	const double xdiv = double(rect.w) / double(map_.x());
+	const double ydiv = double(rect.h) / double(map_.y());
 
-	return gamemap::location((x - rect.x)/xdiv,(y-rect.y)/ydiv);
+	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
 }
 
 display::Pixel display::rgb(int r, int g, int b) const
@@ -440,7 +438,7 @@ void display::draw(bool update,bool force)
 			for(int y = -1; y <= map_.y(); ++y)
 				draw_tile(x,y);
 		invalidateAll_ = false;
-		draw_minimap(mapx()+13,11,119,146);
+		draw_minimap(mapx()+Minimap_x,Minimap_y,Minimap_w,Minimap_h);
 	} else {
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
