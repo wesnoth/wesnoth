@@ -82,6 +82,7 @@ private:
 	mutable bool needs_restore_; // Have we drawn ourselves, so that if moved, we need to restore the background?
 
 	enum { UNINIT, HIDDEN, DIRTY, DRAWN } state_;
+	bool clip_;
 	SDL_Rect clip_rect_;
 
 	bool volatile_;

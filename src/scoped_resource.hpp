@@ -88,7 +88,7 @@ public:
 	*
 	* @ret the underlying resource
   */
-  resource_type get() const { return resource; }
+	resource_type get() const { return resource; }
 
 	/**
   * This function provides convenient direct access to the -> operator

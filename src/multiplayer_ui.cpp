@@ -139,17 +139,22 @@ ui::result ui::set_result(ui::result res)
 
 int ui::xscale(int x) const
 {
-	return (x*disp().x())/1024;
+	return (x * width())/1024;
 }
 
 int ui::yscale(int y) const
 {
-	return (y*disp().y())/768;
+	return (y * height())/768;
 }
 
 SDL_Rect ui::client_area() const
 {
-	SDL_Rect res = { xscale(11)+6, yscale(40)+6, xscale(833)-12, yscale(524)-12 };
+	SDL_Rect res;
+
+	res.x = xscale(11) + 6;
+	res.y = yscale(40) + 6;
+	res.w = xscale(833) > 12 ? xscale(833) - 12 : 0;
+	res.h = yscale(524) > 12 ? yscale(524) - 12 : 0;
 
 	return res;
 }
@@ -257,10 +262,10 @@ void ui::hide_children(bool hide)
 void ui::layout_children(const SDL_Rect& rect)
 {
 	users_menu_.set_width(xscale(156));
-	users_menu_.set_location(xscale(856),yscale(42));
-	chat_textbox_.set_location(xscale(11) + 4, xscale(573) + 4);
-	chat_textbox_.set_measurements(xscale(833) - 8, xscale(143) - 8);
-	entry_textbox_.set_location(xscale(11) + 4,yscale(732));
+	users_menu_.set_location(xscale(856), yscale(42));
+	chat_textbox_.set_location(xscale(11) + 4, yscale(573) + 4);
+	chat_textbox_.set_measurements(xscale(833) - 8, yscale(143) - 8);
+	entry_textbox_.set_location(xscale(11) + 4, yscale(732));
 	entry_textbox_.set_width(xscale(833) - 8);
 }
 
