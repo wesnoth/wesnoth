@@ -1583,6 +1583,11 @@ int play_game(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
+	if (!filesystem_init()) {
+		std::cerr << "cannot init filesystem code\n";
+		return 1;
+	}
+
 	try {
 		std::cerr << "started game: " << SDL_GetTicks() << "\n";
 		const int res = play_game(argc,argv);

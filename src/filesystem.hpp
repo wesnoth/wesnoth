@@ -45,6 +45,7 @@ std::string get_cwd();
 void make_directory(const std::string& dirname);
 
 //basic disk I/O
+bool filesystem_init();
 std::string read_file(const std::string& fname);
 //throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data);

@@ -62,6 +62,61 @@ BPath be_path;
 #include "scoped_resource.hpp"
 #include "util.hpp"
 
+#ifdef USE_ZIPIOS
+#include <zipios++/collcoll.h>
+#include <zipios++/dircoll.h>
+#include <zipios++/zipfile.h>
+#include <zipios++/simplesmartptr.h>
+#include <zipios++/basicentry.h>
+
+namespace {
+	zipios::CColl the_collection;
+}
+#endif
+
+bool filesystem_init()
+{
+#ifdef USE_ZIPIOS
+	if (!get_user_data_dir().empty()) {
+		zipios::DirectoryCollection dir(get_user_data_dir());
+		std::cerr << "user collection has " << dir.size() << " elements\n";
+		the_collection.addCollection(dir);
+	}
+	if (!game_config::path.empty()) {
+		zipios::DirectoryCollection dir(game_config::path);
+		std::cerr << "system collection has " << dir.size() << " elements\n";
+		the_collection.addCollection(dir);
+# if 1
+		zipios::DirectoryCollection dir2(game_config::path,false);
+		if (!dir2.entries().empty())
+		for (zipios::ConstEntries::iterator i = dir2.entries().begin(); i != dir2.entries().end(); ++i) {
+			// FIXME: why the heck is the 1st entry corrupted !?
+			if (i == dir2.entries().begin()) continue;
+
+			zipios::EntryPointer j = *i;
+			zipios::FileEntry& k = *j;
+			//for (int a=0; a<sizeof(k); a++) std::cerr << std::hex << (unsigned int)(((unsigned char*)&k)[a]) << ".";
+			//	std::cerr << std::dec << "\n";
+			//continue;
+			if (k.isValid()) {
+				const std::string fname = k.getName();
+				const std::string suffix = ".zip";
+				if (0 == fname.compare(fname.size() - suffix.size(), suffix.size(), suffix)) {
+					zipios::ZipFile zip(game_config::path + "/" + fname);
+					the_collection.addCollection(zip);
+					std::cerr << "zip collection " << fname << 
+						" has " << zip.size() << " elements\n";
+				}
+				else std::cerr << "skipping non-zip " << fname << "\n";
+			}
+			else std::cerr << "skipping invalid entry\n";
+		}
+# endif
+	}
+#endif
+	return true;
+}
+
 namespace {
 	const mode_t AccessMode = 00770;
 }
@@ -366,7 +421,7 @@ void read_file_internal(const std::string& fname, std::string& res)
 }
 } //end anon namespace
 
-std::string read_stdin()
+std::string read_stream(std::istream& s)
 {
 	std::vector<char> v;
 	const int block_size = 65536;
@@ -374,7 +429,7 @@ std::string read_stdin()
 	size_t nbytes = 1;
 	while(nbytes > 0) {
 		v.resize(v.size() + block_size);
-		nbytes = fread(&v[v.size() - block_size],1,block_size,stdin);
+		nbytes = s.readsome(&v[v.size() - block_size],block_size);
 		if(nbytes < block_size) {
 			v.resize(v.size() - (block_size - nbytes));
 			break;
@@ -387,10 +442,26 @@ std::string read_stdin()
 	return res;
 }
 
+std::string read_stdin()
+{
+	return read_stream(std::cin);
+}
+
 std::string read_file(const std::string& fname)
 {
 	//if we have a path to the data,
 	//convert any filepath which is relative
+#ifdef USE_ZIPIOS
+	if(!fname.empty() && fname[0] != '/') {
+		zipios::ConstEntryPointer p = the_collection.getEntry(fname);
+		if (p != 0) {
+			std::istream* s = the_collection.getInputStream(p);
+			if (s != NULL) {
+				return read_stream(*s);
+			}
+		}
+	}
+#else
 	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
 		std::string res;
 		read_file_internal(game_config::path + "/" + fname,res);
@@ -398,10 +469,15 @@ std::string read_file(const std::string& fname)
 			return res;
 		}
 	}
+#endif
 
-	std::string res;
-	read_file_internal(fname,res);
-	return res;
+	// FIXME: why do we rely on this even with relative paths ?
+	{
+		// still useful with zipios, for things like cache and prefs
+		std::string res;
+		read_file_internal(fname,res);
+		return res;
+	}
 }
 
 //throws io_exception if an error occurs
