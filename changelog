@@ -1,6 +1,8 @@
 Version CVS:
  * fog of war
- * new scenarios:
+ * support for multiple campaigns
+ * new campaign: 'Hordes of the Undead'
+ * new scenarios for 'Heir to the Throne' (Konrad's Tale):
    * Northern Winter
 	* The Lost General
  * scenario balacing:
@@ -8,6 +10,7 @@ Version CVS:
 	* Isle of Anduin
 	* Dwarven Doors
 	* Mountain Pass
+	* Valley of Death
  * new Makefile (debugging is now enabled by default)
  * added Makefile.nodebug 
  * updated docs - INSTALL, MANUAL
@@ -15,9 +18,14 @@ Version CVS:
  * added a script for easy Slackware package creation - utils/slacknoth
  * added random map generator (requires Perl) - utils/random_map.pl
  * added in repeatable recruit using ctrl+shift+r
+ * hotkey configuration from GUI
  * confirm overwriting of save games
- * new multiplayer game creation dialog
- * configurable 'gold per village' for multiplayer
+ * savegames now display and are sorted by date and time
+ * multiplayer improvements:
+ 	* show minimap when selecting map for new game
+   * per side configurable starting gold
+	* configurable 'gold per village'
+	* teaming (alliances)
  * income calculations are now done at the beginning of each player's turn
  * made it so units that can no longer advance have experience needed displayed as '-'
  * allow use of escape to exit out of ok/cancel and yes/no dialogs with negative results
@@ -31,8 +39,9 @@ Version CVS:
  * reduced cost of Mage
  * changed Mage attack to fire based
  * changed Shaman slowing attack to 3-2 from 4-1, and reduced cost from 21 to 18
+ * changed 'Red Mage' to neutral alignment
  * more and improved unit graphics and animations
- * changed team 6 flag to purple
+ * changed team 6 color to purple
  * new translations:
    * german
  * updated translations:
@@ -44,6 +53,7 @@ Version CVS:
  * changed "AI" in the english config to "Computer Player"
  * fixed problem with stripping of non-latin characters at end of string in config files
  * allow internationalization of traits
+ * made AI more intelligent
  * added in support for some special effects: flashing and scrolling/tremors
  * added coding support for displaying different terrain images (particularly useful for villages) at different times of the day
  * fixed minor bugs in unit configuration files for Elvish Sharpshooter and Fencer
@@ -97,7 +107,6 @@ Version 0.5.1:
  * made some templated code more portable across compilers 
  * fixed problem with AI attacking units not always advancing levels
  * map file format is now correctly oriented
- * 'flags' to show which side unit is on
 
 Version 0.5:
  * low traffic wesnoth-releases mailing-list, subscribe at http://mail.nongnu.org/mailman/listinfo/wesnoth-releases
