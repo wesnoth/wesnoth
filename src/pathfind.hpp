@@ -18,6 +18,7 @@
 #include "unit_types.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 #include <iostream>
 #include <map>
@@ -133,6 +134,8 @@ paths::route a_star_search(const gamemap::location& src,
 				std::reverse(rt.steps.begin(),rt.steps.end());
 				rt.steps.push_back(dst);
 				rt.move_left = int(lowest->f);
+
+				assert(rt.steps.front() == src);
 
 				std::cout << "exiting a* search (solved)\n";
 
