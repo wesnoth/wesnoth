@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-04 11:52+0200\n"
-"PO-Revision-Date: 2004-08-24 07:17+0100\n"
+"POT-Creation-Date: 2004-09-05 19:02+0200\n"
+"PO-Revision-Date: 2004-09-05 18:22+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -48,6 +48,8 @@ msgid ""
 "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
 "warlord.png,Warlord,(hardest)"
 msgstr ""
+"&orcish-grunt.png,Fotsoldat,(lettest);*&orcish-warrior.png,Kriger;&orcish-"
+"warlord.png,Krigsherre,(vanskeligst)"
 
 #: data/game.cfg:286
 msgid "The Eastern Invasion"
@@ -417,7 +419,7 @@ msgstr ""
 
 #: data/help.cfg:191
 msgid "Wrap Up"
-msgstr ""
+msgstr "Avslutning"
 
 #: data/help.cfg:192
 msgid ""
@@ -871,8 +873,74 @@ msgid ""
 "connected to the keep your leader is on."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial1.cfg:73
+#, fuzzy
+msgid "Recruit a unit"
+msgstr "Rekrutter enhet"
+
 #: data/scenarios/tutorial/tutorial1.cfg:79
 msgid "Excellent! You have recruited an Elvish Fighter."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:81
+#: data/scenarios/tutorial/tutorial1.cfg:101
+#: data/scenarios/tutorial/tutorial1.cfg:136
+#: data/scenarios/tutorial/tutorial1.cfg:164
+#: data/scenarios/tutorial/tutorial1.cfg:182
+#: data/scenarios/tutorial/tutorial1.cfg:206
+#, fuzzy
+msgid "What do I do next?"
+msgstr "Hva mener du?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:83
+#, fuzzy
+msgid "How do I recruit units?"
+msgstr "Rekrutter enhet"
+
+#: data/scenarios/tutorial/tutorial1.cfg:83
+msgid ""
+"To recruit a unit, right click on the castle tile on which you wish to "
+"recruit the unit. Then select Recruit, or just hold your cursor over the "
+"tile and press 'Ctrl-R'. Next, select the type of unit that you want to "
+"recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
+"Shift-R' to re-recruit the last type of unit you recruited."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:84
+msgid ""
+"A leader is a unit that can recruit. This means that when the leader is on a "
+"keep, he can recruit units on the surrounding castle tiles. Leaders are "
+"usually powerful units that each side only controls one of. Also, your "
+"leader is usually the first unit that your side controls, and starts on a "
+"keep. You can select your leader quickly by pressing 'l'. If your leader "
+"dies, you lose the game. You can win most scenarios by defeating all enemy "
+"leaders."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:84
+msgid "What's a leader?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:85
+msgid "How should I choose what kind of units to recruit?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:85
+msgid ""
+"You have to carefully review their skills, which are displayed to the left "
+"of the unit selection box,  and cost, which is displayed after the name of "
+"the unit. You will learn more about these statistics throughout the tutorial."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:86
+msgid "What happens when I recruit a unit?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:86
+msgid ""
+"When you recruit a unit, it appears at full health on a castle tile of your "
+"choice. It also receives two traits, which will be discussed later. It "
+"cannot move or attack until you end your turn."
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:92
@@ -882,8 +950,38 @@ msgid ""
 "corner."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial1.cfg:94
+#, fuzzy
+msgid "End your turn"
+msgstr "Det er nå din tur"
+
 #: data/scenarios/tutorial/tutorial1.cfg:99
 msgid "You have successfully ended your turn."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:103
+msgid "How do I end my turn?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:103
+msgid ""
+"One way to end your turn is to press 'Alt-E'. Alternatively, you can right-"
+"click and select End Turn, or select the End Turn button in the lower-right "
+"hand corner."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:104
+msgid "What happens when I end my turn?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:104
+msgid ""
+"When you end your turn, it becomes another side's turn and only that side "
+"has the right to move, until that side ends its turn. After all sides end "
+"their turns, the next turn begins. This has various effects, including "
+"causing all units to regain their full movement potential. The number of the "
+"current turn is displayed on the status bar next to the image of a flag. "
+"When this number exceeds the maximum number of turns, you lose the game."
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:110
@@ -893,11 +991,61 @@ msgid ""
 "next to the Elvish Shaman, Merle."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial1.cfg:112
+msgid "Move your Elvish Fighter next to Merle"
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial1.cfg:134
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:138
+msgid "How far can my Elvish Fighter move?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:138
+msgid ""
+"Your Elvish Fighter begins with a certain number of move points each turn; "
+"this is called his speed. When your Elvish Fighter moves along a path, each "
+"hex he goes through costs him move points; this includes his destination. "
+"When you select your Elvish Fighter, all hexes he can't move onto within one "
+"turn will be shaded. If the destination is far enough away that he needs "
+"more than one turn to reach it, a number will appear showing how many turns "
+"it will take him. Clicking on a far-away space will set the unit on a course "
+"for that space, which means it automatically moves as far as it can towards "
+"that space every turn. If you accidentally set a unit on a course, select it "
+"twice to remove the course."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:139
+msgid ""
+"A unit's zone of control is the location consisting of all hexes the unit is "
+"adjacent to. Units cannot move through opponent's zones of control; they can "
+"only move into it. When they do this, they lose all of their remaining "
+"movement. Zones of control can be used to block enemies from reaching your "
+"weak and wounded units."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:139
+msgid "What's the zone of control?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:140
+msgid "How do I tell who is allied and who is an enemy?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:140
+msgid ""
+"Units you control have a green, yellow, or red energy circle above their "
+"health bar, the green vertical bar next to them. Units with full movement "
+"have green: ones with some movement yellow, ones with no movement red. Units "
+"controlled by the enemy do not have an energy circle. Allied units you do "
+"not control, like me, have a blue energy circle. Also, the option 'Show Team "
+"Colors', in Preferences, causes the color of a unit's controller is "
+"displayed as a disc below the unit."
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:146
@@ -907,8 +1055,60 @@ msgid ""
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial1.cfg:148
+#, fuzzy
+msgid "Attack Merle"
+msgstr "Angrepstype"
+
 #: data/scenarios/tutorial/tutorial1.cfg:162
 msgid "You have successfully attacked Merle."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:166
+msgid "Can Merle retaliate from my attack?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:166
+msgid ""
+"Whenever a unit is attacked, it retaliates with one of their own weapons. "
+"This means that after each blow from the attacker, the defender retaliates "
+"with one blow. This continues until one side runs out of blows, in which "
+"case the other unit continues attacking until its blows are depleted as "
+"well. However, any unit can only retaliate by using a weapon of the same "
+"range as the one used to attack. This means that a ranged attack can only be "
+"countered by a ranged attack and a melee attack can only be countered by a "
+"melee attack. Most units have more powerful melee attacks than ranged, so "
+"units with ranged attacks are useful in that retaliation against them is "
+"less powerful; often there is no retaliation. However ranged units cannot "
+"shoot across multiple hexes; this is one of the distinctive features of "
+"Wesnoth."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:167
+msgid ""
+"Every attack does a certain amount of damage per hit, and can be used a "
+"certain number of times per battle. These numbers, called the attack's "
+"damage and strike numbers, are displayed in order under the name of the "
+"attack on the unit's status table and next to it on the attack options menu. "
+"To quickly find the maximum damage an attack can inflict, multiply the "
+"damage by the number of strikes. For example, my lightning attack does 14 "
+"damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
+"combat."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:167
+msgid "How can you tell how powerful a unit's attacks are?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:168
+msgid ""
+"Units have the ability to block blows. The chance that a unit has to hit is "
+"based on the defender's skill at defending blows, and is listed on the "
+"attack options menu after the damage and strike numbers for the bow attack."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:168
+msgid "Will my fighter hit every time when he attacks?"
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:174
@@ -922,18 +1122,92 @@ msgid ""
 "advances to the next level, and becomes more powerful."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial1.cfg:184
+msgid "What's experience?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:184
+msgid ""
+"When a unit fights another unit, it gains experience, denoted 'XP', from the "
+"combat. The amount of experience gained is equal to the opponent's level, "
+"which is usually a representation of that unit's power. However, much more "
+"experience is gained from defeating an enemy unit. The amount of XP gained "
+"from killing an enemy is equal to 8 times the enemy's level."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:185
+msgid "What happens when a unit advances?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:185
+msgid ""
+"When a unit advances, it transforms into a different unit type. This unit "
+"type is dependent on what the unit was originally, but occasionally there "
+"will be more than one choice of what to advance into. Advanced units are "
+"usually more powerful and 1 level higher than they were originally. Also, "
+"when a unit advances, it is healed completely and any handicaps that have "
+"been cast on it are removed. This is known as 'advance-heal'."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial1.cfg:191
 msgid "Move your fighter onto a village."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:193
+msgid "Move your fighter onto a village"
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:204
 msgid "Villages heal the units on them."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial1.cfg:208
+msgid "What happens when a unit moves onto a village?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:208
+msgid ""
+"Whenever a unit moves onto a village, he flags the village for his side. "
+"This action takes all of the unit's remaining movement. Villages flagged for "
+"a side give the side several benefits, including giving the side a extra "
+"gold coin every turn, and reducing the total upkeep cost of that side's "
+"units by one. The total number of villages you control is also displayed on "
+"the status bar after the picture of a house. In addition to the economic "
+"benefit of villages, villages can be used in battle. Villages heal the units "
+"on them 8 HP per turn."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:209
+msgid "How do I heal when there aren't any villages nearby?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:209
+msgid ""
+"There are ways to heal even without villages. If a unit does not move or "
+"attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
+"him he cannot receive rest-heal. Also, there are some units which heal the "
+"units surrounding them. The Elvish Shaman is one such unit; units next to an "
+"Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
+"all your units are healed fully."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial1.cfg:215
 msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:217
+#, fuzzy
+msgid "Defeat Merle"
+msgstr "Nederlag"
+
+#: data/scenarios/tutorial/tutorial1.cfg:232
+msgid ""
+"Oops! You moved your leader off of the keep. Remember, when your leader is "
+"not on a keep, you cannot recruit. Also remember that if your leader dies, "
+"you lose. In order to continue the tutorial, I will have to teleport you "
+"back onto your keep."
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:248
@@ -954,6 +1228,38 @@ msgstr ""
 msgid "You have successfully completed the first training scenario."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial1.cfg:267
+#: data/scenarios/tutorial/tutorial2.cfg:252
+msgid "Hooray!"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:269
+msgid "How do I know how to complete a scenario? Will you always tell me?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:269
+msgid ""
+"Sometimes it is not clear how to win a scenario just by listening to the "
+"dialog. In this case you need to look at the scenario objectives, which "
+"appear after the opening dialog. It can also be accessed by clicking "
+"'Objectives' on the menu. The scenario objectives are a list of victory "
+"conditions and defeat conditions, and if any of the conditions are met, the "
+"level is over. Hopefully, it was a victory condition that was met."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:270
+msgid "What happens when I win a scenario?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:270
+msgid ""
+"When you win a scenario, all of your units survive and are revived to full "
+"health, and you do not have to pay them for the remaining turns. Also, if "
+"your army remains in the area after you win, all villages surrender to you "
+"immediately after you win. However between scenarios, 20% of your gold is "
+"lost."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial1.cfg:276
 #: data/scenarios/tutorial/tutorial2.cfg:261
 msgid "Do you want to review any of the skills learned on this level?"
@@ -964,11 +1270,20 @@ msgstr ""
 msgid "Yes"
 msgstr "Ja"
 
+#: data/scenarios/tutorial/tutorial1.cfg:280
+#: data/scenarios/tutorial/tutorial2.cfg:265
+msgid "I'm done reviewing skills!"
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial1.cfg:297
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:3
+msgid "Traits and Specialties"
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:60
@@ -1007,11 +1322,74 @@ msgstr ""
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial2.cfg:88
+#: data/scenarios/tutorial/tutorial2.cfg:102
+#: data/scenarios/tutorial/tutorial2.cfg:117
+#: data/scenarios/tutorial/tutorial2.cfg:131
+#: data/scenarios/tutorial/tutorial2.cfg:145
+#: data/scenarios/tutorial/tutorial2.cfg:159
+#: data/scenarios/tutorial/tutorial2.cfg:173
+#: data/scenarios/tutorial/tutorial2.cfg:206
+msgid "En guarde!"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:90
+msgid ""
+"First, you must pay 20 pieces of gold for each unit you recall, regardless "
+"of the type of unit. Other than that, recalled units are basically like "
+"recruited units, except that instead of a new unit appearing, a unit from a "
+"previous scenario will appear."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:90
+#, fuzzy
+msgid "What happens when I recall a unit?"
+msgstr "gullstykker for å tilbakekalle en enhet."
+
+#: data/scenarios/tutorial/tutorial2.cfg:91
+msgid "How should I decide which units to recall?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:91
+msgid ""
+"You should usually recall units that have already advanced to the next "
+"level. However, you may also want to recall units that have high experience, "
+"and are thus likely to advance. You should recall units that will be useful "
+"for the scenario you are in; for example in a forest scenario, recall elves."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial2.cfg:100
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
 "assigned traits."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:104
+msgid ""
+"The function of traits is add variety by making units of the same type "
+"different from each other. This is done by randomly assigning each unit "
+"traits when they are recruited. The traits that a unit has are displayed on "
+"the Status Table, and the function of a specific trait can be found by "
+"putting your cursor over that trait."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:104
+#, fuzzy
+msgid "What do traits do?"
+msgstr "Hva er det?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:105
+msgid ""
+"There are five distinct traits, which have effects ranging from increasing a "
+"unit's hit points to decreasing the amount of XP required to advance. "
+"However all traits are designed to improve unit's power; there are no "
+"'negative' traits. Most units have an equal chance to get any two different "
+"traits when they are recruited."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:105
+msgid "What kind of traits can my units get?"
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:115
@@ -1020,14 +1398,103 @@ msgid ""
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial2.cfg:119
+msgid "How much gold do my units cost?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:119
+msgid ""
+"You need to pay each unit you recruit or recall gold when you recruit it. "
+"The cost of recruiting a unit is displayed under the unit's name. The cost "
+"of recalling a unit is always 20 gold. A unit also costs gold for each turn "
+"it is under your control. This cost, called 'upkeep', is equal to the level "
+"of the unit. However, units you do not recruit or recall such as your leader "
+"do not cost any gold at all. The total upkeep cost of your units is "
+"displayed on the status bar at the top after a picture of gold and then a "
+"red arrow."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:120
+msgid "How do I get gold?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:120
+msgid ""
+"You begin each level with a percentage of gold from the previous level. If "
+"this is less than 100 gold, you begin with 100 gold instead. The amount of "
+"gold you have is displayed on the status bar after the picture of gold. "
+"After the start of a scenario, you receive 2 gold every turn. Since you "
+"usually need more gold than that, you should flag villages, which give you 1 "
+"gold per turn."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial2.cfg:129
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial2.cfg:133
+msgid ""
+"There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
+"of day: day, twilight, and night. During day, units of the alignment Lawful, "
+"such as humans, do 25% more damage, while Chaotic units such as undead do "
+"25% less. At night it is reversed. During twilight, all units do their "
+"normal damage. Neutral units such as elves are unaffected by day and night."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:133
+msgid "What are the different alignments and times of day?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:134
+msgid "How do I know what time of day it is?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:134
+msgid ""
+"The times of day usually progress in a sequence: dawn- identical to "
+"twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
+"second-watch- night, then repeat. This is represented by the sun and moon "
+"which each rise in the east and set in the west. However some scenarios have "
+"a different sequence, such as underground where it is perpetually night. You "
+"can find out the current time of day by looking at the Status Table."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial2.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:147
+msgid ""
+"Two terrains have properties which have already been described; namely "
+"villages and castle. However the properties of most terrains are more "
+"subtle, and have to do with the advantages and disadvantages different units "
+"have when they move onto them. The first property of a terrain is the number "
+"of move points it takes each unit to move through the hex. The second "
+"property is the defense that the terrain gives units standing on it. This is "
+"a percentage which determines the unit's chance to be hit on that terrain. "
+"For example; elves have 70% defense on grass, and are therefore hit 30% of "
+"the time."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:147
+msgid "What are the different properties that terrains have?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:148
+msgid "How do I find out the properties of a specific terrain?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:148
+msgid ""
+"To find out the properties of a terrain with respect to a specific unit, "
+"right-click on the unit, select Unit Description, then select Terrain "
+"Modifiers. To find out which terrain is on a particular hex, move your "
+"cursor over that hex and look in the upper-right hand corner of the screen. "
+"This will display, in order, the name of the terrain, then the coordinates "
+"of the hex, then the selected unit's defense, then the number of move points "
+"it will cost the selected unit to move through that hex."
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:157
@@ -1036,9 +1503,86 @@ msgid ""
 "take from that attack."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial2.cfg:161
+msgid ""
+"Each unit has a certain resistance against each attack type. This resistance "
+"is a percentage which is subtracted from the damage of opponent's weapons of "
+"that type. For example, if an Elvish Scout is attacked by an Elvish Archer, "
+"the archer does 20% more damage than normal, since Elvish Scouts have -20% "
+"resistance to pierce. This bonus/penalty is calculated additively with other "
+"bonuses/penalties like time of day, so two -50% penalties would add up to -"
+"100%."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:161
+msgid "How does resistance affect attack damage?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:162
+msgid ""
+"There are 6 different damage types: blade, pierce, impact, fire, cold, and "
+"holy. Heavily armored units have high resistance to the physical types: "
+"blade, pierce, and impact, but low resistance to the magical types: fire and "
+"cold. All living units have resistance to holy while undead are extremely "
+"weak to it. To find out a specific unit's resistance, right-click on the "
+"unit, select Unit Description, then select Resistance."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:162
+msgid "What are the different damage types?"
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial2.cfg:171
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:175
+msgid ""
+"Each specialty does something different; that's the whole point of a "
+"specialty. To find a description of a unit's specialty, put your cursor over "
+"the name of the specialty."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:175
+msgid "What do specialties do?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:176
+msgid ""
+"The specialties a unit gets are determined by the unit type; for example all "
+"generals have the specialty leadership. There are two kinds of specialties: "
+"abilities, and attack specials. Abilities apply to units while attack "
+"specials only apply to one of the unit's attacks."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:176
+msgid "Which units get specialties?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:177
+msgid ""
+"There are many different specialties, and learning about them is one of the "
+"interesting parts of playing Wesnoth. The two most common specialties are "
+"called 'magical' and 'leadership'. Magical attacks have a 70% chance of "
+"hitting enemies regardless of what terrain they are on. Units do more damage "
+"while next to a unit of higher level with leadership."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:177
+msgid "What kinds of specialties can my units get?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:178
+msgid "How do I use specialties?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:178
+msgid ""
+"To use a specialty, you just have to move and/or attack with your units in a "
+"way which triggers the specialty. For example, in order to use leadership, "
+"you must move a unit with leadership next to another unit, then attack with "
+"the other unit."
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:195
@@ -1046,6 +1590,32 @@ msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:202
+msgid "This potion increases the damage of all the drinker's attacks by four."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:208
+msgid ""
+"The objects you encounter are put in by the scenario designer, so they vary "
+"from campaign to campaign. In Heir to the Throne, most objects give the unit "
+"who picks them up a new weapon. However there are usually not that many "
+"objects in a campaign."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:208
+msgid "What kind of objects am I likely to encounter?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:209
+msgid "How long do these objects last?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:209
+msgid ""
+"Most objects are permanent changes to the unit that receives them. However a "
+"few objects, such as holy water, last only until the remainder of the level."
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:223
@@ -1062,20 +1632,32 @@ msgid ""
 "multiplayer."
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial2.cfg:254
+msgid "How do I play a campaign?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:254
+msgid ""
+"To begin a campaign, run Wesnoth, select 'Campaign', select which campaign "
+"to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
+"suggested for newcomers to Wesnoth."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:255
+msgid "How do I play multiplayer?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:255
+msgid ""
+"To play Wesnoth against other people, select 'Multiplayer'. If you have the "
+"latest development version of Wesnoth, select 'Join Official Server'. "
+"However, if you have version 1.0, select 'Join Game', then type in 'server."
+"wesnoth.org'. This will connect you to the official Wesnoth server, where "
+"you can join a game by selecting it, then selecting 'Join Game'."
+msgstr ""
+
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
-msgstr ""
-
-#: data/scenarios/tutorial/utils.cfg:13
-msgid "{END_MESSAGE}"
-msgstr ""
-
-#: data/scenarios/tutorial/utils.cfg:21
-msgid "{QUESTION}"
-msgstr ""
-
-#: data/scenarios/tutorial/utils.cfg:25
-msgid "{ANSWER}"
 msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:44
@@ -2103,8 +2685,8 @@ msgstr "Snikmorder"
 
 #: data/units/Assassin.cfg:16 data/units/Duelist.cfg:16
 #: data/units/Fencer.cfg:16 data/units/Outlaw_Princess.cfg:17
-#: data/units/Rogue.cfg:16 data/units/Saurian.cfg:16
-#: data/units/Saurian_Warrior.cfg:16
+#: data/units/Rogue.cfg:16 data/units/Saurian.cfg:17
+#: data/units/Saurian_Warrior.cfg:17
 #, fuzzy
 msgid "skirmisher"
 msgstr "speider"
@@ -2404,10 +2986,10 @@ msgstr "bue"
 #: data/units/Orcish_Shaman.cfg:69 data/units/Orcish_Shaman.cfg:112
 #: data/units/Orcish_Sovereign.cfg:43 data/units/Orcish_Warlord.cfg:30
 #: data/units/Paladin.cfg:42 data/units/Peasant.cfg:21
-#: data/units/Peasant.cfg:35 data/units/Pikeman.cfg:20
+#: data/units/Peasant.cfg:34 data/units/Pikeman.cfg:20
 #: data/units/Pirate_Galleon.cfg:62 data/units/Poacher.cfg:42
-#: data/units/Saurian.cfg:20 data/units/Saurian.cfg:37
-#: data/units/Saurian_Warrior.cfg:20 data/units/Saurian_Warrior.cfg:37
+#: data/units/Saurian.cfg:21 data/units/Saurian.cfg:38
+#: data/units/Saurian_Warrior.cfg:21 data/units/Saurian_Warrior.cfg:38
 #: data/units/Sea_Hag.cfg:21 data/units/Sea_Serpent.cfg:20
 #: data/units/Sergeant.cfg:39 data/units/Skeleton_Archer.cfg:41
 #: data/units/Soul_Shooter.cfg:38 data/units/Spearman.cfg:20
@@ -2504,9 +3086,9 @@ msgstr ""
 #: data/units/Drake_Guard.cfg:22 data/units/Drake_Slasher.cfg:52
 #: data/units/Dwarvish_Guardsman.cfg:38 data/units/Dwarvish_Guardsman.cfg:52
 #: data/units/Dwarvish_Stalwart.cfg:38 data/units/Dwarvish_Stalwart.cfg:52
-#: data/units/Horseman.cfg:20 data/units/Saurian.cfg:18
-#: data/units/Saurian.cfg:35 data/units/Saurian_Warrior.cfg:18
-#: data/units/Saurian_Warrior.cfg:35 data/units/Spearman.cfg:19
+#: data/units/Horseman.cfg:20 data/units/Saurian.cfg:19
+#: data/units/Saurian.cfg:36 data/units/Saurian_Warrior.cfg:19
+#: data/units/Saurian_Warrior.cfg:36 data/units/Spearman.cfg:19
 #: data/units/Spearman.cfg:32
 #, fuzzy
 msgid "spear"
@@ -3027,12 +3609,10 @@ msgstr ""
 "krigerne kalles Stålkledde."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
-#, fuzzy
 msgid "Dwarvish Thunderer"
 msgstr "Dvergisk Tordenkaster"
 
 #: data/units/Dwarvish_Thunderer.cfg:16
-#, fuzzy
 msgid ""
 "Dwarvish Thunderers provide much needed ranged support to the mighty, yet "
 "slow, close-range fighters of the Dwarvish armies. Their mysterious weapons "
@@ -3200,47 +3780,41 @@ msgid ""
 "devastating balls of fire at long range."
 msgstr ""
 "Den Alviske Herren er fryktelig i kamp, med både sverd i nærkamp og ildkuler "
-"over distanse på sitt repetoire."
+"over distanse som en del av sitt repertoar."
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
 msgstr "Alvisk Herre"
 
 #: data/units/Elvish_Lord.cfg:17
-#, fuzzy
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of fire at long range."
 msgstr ""
 "Den Alviske Herren er fryktelig i kamp, med både sverd i nærkamp og ildkuler "
-"over distanse på sitt repetoire."
+"over distanse som en del av sitt repertoar."
 
 #: data/units/Elvish_Marksman.cfg:3 data/units/Elvish_Marksman.cfg:80
-#, fuzzy
 msgid "Elvish Marksman"
 msgstr "Alvisk Jeger"
 
 #: data/units/Elvish_Marksman.cfg:37 data/units/Elvish_Marksman.cfg:115
 #: data/units/Elvish_Sharpshooter.cfg:38
 #: data/units/Elvish_Sharpshooter.cfg:117
-#, fuzzy
 msgid "longbow"
 msgstr "langbue"
 
 #: data/units/Elvish_Marksman.cfg:39 data/units/Elvish_Marksman.cfg:117
 #: data/units/Elvish_Sharpshooter.cfg:40
 #: data/units/Elvish_Sharpshooter.cfg:119 data/units/Fire_Dragon.cfg:60
-#, fuzzy
 msgid "marksman"
 msgstr "skarpskytter"
 
 #: data/units/Elvish_Marshal.cfg:3
-#, fuzzy
 msgid "Elvish Marshal"
 msgstr "Alvisk Marskalk"
 
 #: data/units/Elvish_Marshal.cfg:21
-#, fuzzy
 msgid ""
 "Possessing one of the highest ranks in the Elven military, Elvish Marshals "
 "can lead any level 1 or 2 units in adjacent hexes, causing them to fight "
@@ -3253,12 +3827,10 @@ msgstr ""
 "sverd og bue."
 
 #: data/units/Elvish_Outrider.cfg:3
-#, fuzzy
 msgid "Elvish Outrider"
 msgstr "Alvisk Forrytter"
 
 #: data/units/Elvish_Outrider.cfg:20
-#, fuzzy
 msgid ""
 "Riding like the wind, Elvish Outriders breeze through the forests to strike "
 "at weaker units and exposed flanks. Equally skilled in both bow and sword, "
@@ -3269,7 +3841,6 @@ msgstr ""
 "skyte piler etter fiender som måtte dukke opp."
 
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
-#, fuzzy
 msgid "Elvish Ranger"
 msgstr "Alvisk Skogvokter"
 
@@ -3284,12 +3855,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Scout.cfg:3
-#, fuzzy
 msgid "Elvish Scout"
 msgstr "Alvisk Speider"
 
 #: data/units/Elvish_Scout.cfg:28
-#, fuzzy
 msgid ""
 "Elvish Scouts move swiftly through forest and grassland alike. Their skill "
 "on horseback is virtually unmatched, although they do lack power in combat."
@@ -3298,17 +3867,14 @@ msgstr ""
 "dyktighet på hesteryggen er makeløs, selv om de mangler kampstyrke."
 
 #: data/units/Elvish_Shaman.cfg:3
-#, fuzzy
 msgid "Elvish Shaman"
 msgstr "Alvisk Sjaman"
 
 #: data/units/Elvish_Shaman.cfg:11 data/units/Paladin.cfg:20
-#, fuzzy
 msgid "heals"
 msgstr "helbreder"
 
 #: data/units/Elvish_Shaman.cfg:20
-#, fuzzy
 msgid ""
 "Elvish Shamans focus on less violent ways to hinder the enemy. Their "
 "entangling attack slows enemies down and reduces by one the number of times "
@@ -3319,22 +3885,18 @@ msgstr ""
 "gjøre. Hun besitter også enkle kunnskaper om helbredelse."
 
 #: data/units/Elvish_Shaman.cfg:43
-#, fuzzy
 msgid "entangle"
 msgstr "innfiltre"
 
 #: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
-#, fuzzy
 msgid "Elvish Sharpshooter"
 msgstr "Alvisk Skarpskytter"
 
 #: data/units/Elvish_Shyde.cfg:3
-#, fuzzy
 msgid "Elvish Shyde"
 msgstr "Alvisk Sidhe"
 
 #: data/units/Elvish_Shyde.cfg:20
-#, fuzzy
 msgid ""
 "Shydes are Elves that are devoted to nature and their faerie side. Dragonfly "
 "wings sprout from their backs and change them into beautiful creatures "
@@ -3350,12 +3912,10 @@ msgid "faerie touch"
 msgstr ""
 
 #: data/units/Fencer.cfg:3
-#, fuzzy
 msgid "Fencer"
 msgstr "Fekter"
 
 #: data/units/Fencer.cfg:17
-#, fuzzy
 msgid ""
 "Fencers are trained in the arts of swordplay. While their rapier is a light "
 "weapon, they can use it quickly and with deadly skill. Wielding a dagger in "
@@ -3367,12 +3927,10 @@ msgstr ""
 "hånda kan de også parere alle typer angrep uten å anstrenge seg."
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
-#, fuzzy
 msgid "Fighter"
 msgstr "Stridsmann"
 
 #: data/units/Fighter.cfg:17 data/units/Fighter.cfg:58
-#, fuzzy
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to attack "
 "from enemies. However they have the potential to become great warriors one "
@@ -3395,7 +3953,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Fire_Dragon.cfg:21
-#, fuzzy
 msgid "bite"
 msgstr "bitt"
 
@@ -3426,7 +3983,6 @@ msgstr ""
 
 #: data/units/Footpad.cfg:19 data/units/Thug.cfg:19 data/units/Troll.cfg:20
 #: data/units/Troll_Hero.cfg:20
-#, fuzzy
 msgid "club"
 msgstr "klubbe"
 
@@ -3437,12 +3993,10 @@ msgid "sling"
 msgstr "slynge"
 
 #: data/units/Galleon.cfg:4
-#, fuzzy
 msgid "Galleon"
 msgstr "Gallion"
 
 #: data/units/Galleon.cfg:16
-#, fuzzy
 msgid "dummy"
 msgstr "plassholder"
 
@@ -3460,7 +4014,6 @@ msgid "General"
 msgstr "General"
 
 #: data/units/General.cfg:18
-#, fuzzy
 msgid ""
 "As the great leaders of the human armies, Generals are responsible for the "
 "protection of large or important areas in the human kingdoms. Generals can "
@@ -3473,12 +4026,10 @@ msgstr ""
 "slike at effektiviteten i kamp økes."
 
 #: data/units/Ghost.cfg:3
-#, fuzzy
 msgid "Ghost"
 msgstr "Spøkelse"
 
 #: data/units/Ghost.cfg:16
-#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
 "leaving a corpse behind. Not limited by physical bodies, these undead can "
@@ -3490,12 +4041,10 @@ msgstr ""
 "gir, kan disse vandøde fly raskt mot deres ofre."
 
 #: data/units/Ghoul.cfg:3
-#, fuzzy
 msgid "Ghoul"
 msgstr "Utyske"
 
 #: data/units/Ghoul.cfg:16
-#, fuzzy
 msgid ""
 "Sometimes starved and ravenous humans who are forced to eat human corpses "
 "awake after their deaths to find that they are trapped in a tortured "
@@ -3539,12 +4088,10 @@ msgid "pincers"
 msgstr ""
 
 #: data/units/Goblin_Knight.cfg:3
-#, fuzzy
 msgid "Goblin Knight"
 msgstr "Gnomeridder"
 
 #: data/units/Goblin_Knight.cfg:15
-#, fuzzy
 msgid ""
 "The Goblin Knights are the elite of the Goblin Wolf Riders. They travel with "
 "great speed, yet can inflict substantial damage in battle."
@@ -3553,12 +4100,10 @@ msgstr ""
 "raskt, og legge selv menneskenes og alvenes ryttere bak seg."
 
 #: data/units/Goblin_Pillager.cfg:3
-#, fuzzy
 msgid "Goblin Pillager"
 msgstr "Gnomisk Plyndrer"
 
 #: data/units/Goblin_Pillager.cfg:16
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. These Goblin "
 "Pillagers cause havoc among their enemies by attacking with torches and nets."
@@ -3568,12 +4113,10 @@ msgstr ""
 "fiender."
 
 #: data/units/Goblin_Pillager.cfg:19
-#, fuzzy
 msgid "torch"
 msgstr "fakkel"
 
 #: data/units/Goblin_Pillager.cfg:35
-#, fuzzy
 msgid "net"
 msgstr "nett"
 
@@ -3589,25 +4132,20 @@ msgstr ""
 
 #: data/units/Grand_Knight.cfg:36 data/units/Knight.cfg:36
 #: data/units/Lancer.cfg:20 data/units/Paladin.cfg:41
-#, fuzzy
 msgid "lance"
 msgstr "lanse"
 
 #: data/units/Great_Mage.cfg:3 data/units/Great_Mage.cfg:79
-#, fuzzy
 msgid "Great Mage"
 msgstr "Mektig Trollmann"
 
 #: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:96
-#, fuzzy
 msgid ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
 "in power."
 msgstr ""
 "Den Mektige Trollmannen er en fryktinngytende og forferdelig fiende, og "
-"overgår selv den Eldre Trollmannen i makt. I likhet med den Eldre "
-"Trollmannen kan den Mektige Trollmannen teleportere seg selv mellom "
-"landsbyer, og slik bruke sin makt i alle hjørner av slagmarken."
+"overgår selv den Eldre Trollmannen i makt."
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
@@ -3631,7 +4169,6 @@ msgid "Gryphon"
 msgstr "Griff"
 
 #: data/units/Gryphon.cfg:15
-#, fuzzy
 msgid ""
 "Half-lion, half-bird, these majestic creatures dominate the skies of the "
 "world. Since they are wary of other intelligent races, Gryphons should not "
@@ -3660,32 +4197,28 @@ msgid "Gryphon Rider"
 msgstr "Grifferytter"
 
 #: data/units/Gryphon_Rider.cfg:16
-#, fuzzy
 msgid ""
 "Only a few are able to bond with the mighty Gryphons. Those who do may "
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
-"Bare noen få av de allerede naturelskende alvene er i stand til å oppnå "
-"vennskap med de mektige griffene. De som kan ri disse flygende beistene "
-"oppdager en helt ny verden sett ovenfra."
+"Bare noen få er i stand til å oppnå vennskap med de mektige griffene. De som "
+"kan ri disse flygende beistene oppdager en helt ny verden sett ovenfra."
 
 #: data/units/Halbardier.cfg:3
-#, fuzzy
 msgid "Halbardier"
-msgstr "Hellebarder"
+msgstr "Hellebardør"
 
 #: data/units/Halbardier.cfg:15
-#, fuzzy
 msgid ""
 "The best of the soldiers are choosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
 "because of its great length, Halbardiers always strike first in combat, even "
 "when defending."
 msgstr ""
-"De beste blant Soldatene blir valgt til å være Hellebarderer. Selv om de er "
-"litt langsommere enn sverdkjemperne, gjør deres evner med hellebarden dem "
-"til en minst like dødelig motstander."
+"De beste soldatene blir valgt til å være Hellebarderer. Selv om de er litt "
+"langsommere enn sverdkjemperne, gjør deres evner med hellebarden dem til en "
+"minst like dødelig motstander."
 
 #: data/units/Halbardier.cfg:18 data/units/Halbardier.cfg:36
 msgid "halberd"
@@ -3701,7 +4234,6 @@ msgid "Heavy Infantryman"
 msgstr ""
 
 #: data/units/Heavy_Infantryman.cfg:15
-#, fuzzy
 msgid ""
 "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
 "lack of speed is their only disadvantage."
@@ -3710,12 +4242,10 @@ msgstr ""
 "kamp. Deres eneste ulempe er mangel på hurtighet."
 
 #: data/units/Horseman.cfg:3
-#, fuzzy
 msgid "Horseman"
 msgstr "Rytter"
 
 #: data/units/Horseman.cfg:17
-#, fuzzy
 msgid ""
 "Trained from childhood to ride and to follow a strict code of honor, "
 "Horsemen are both fast and powerful attackers. Charging at their enemies, "
@@ -3751,7 +4281,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Knight.cfg:3
-#, fuzzy
 msgid "Knight"
 msgstr "Ridder"
 
@@ -3774,12 +4303,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Lich.cfg:3
-#, fuzzy
 msgid "Lich"
 msgstr "Mørkeånd"
 
 #: data/units/Lich.cfg:16
-#, fuzzy
 msgid ""
 "Liches are mages that have committed completely to the path of the dark "
 "arts. To gain control over the undead, Liches have forfeited their own "
@@ -3793,12 +4320,10 @@ msgstr ""
 "med en eneste berøring, og evnen til å kaste mektige frost-trylleformular."
 
 #: data/units/Lieutenant.cfg:3
-#, fuzzy
 msgid "Lieutenant"
 msgstr "Løytnant"
 
 #: data/units/Lieutenant.cfg:18
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks and increasing the fighting ability of "
@@ -3819,12 +4344,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:66
-#, fuzzy
 msgid "Lord"
 msgstr "Herre"
 
 #: data/units/Lord.cfg:19 data/units/Lord.cfg:82 data/units/Noble_Lord.cfg:19
-#, fuzzy
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
@@ -3841,7 +4364,6 @@ msgid "Mage"
 msgstr ""
 
 #: data/units/Mage.cfg:17 data/units/Mage.cfg:84
-#, fuzzy
 msgid ""
 "Mages are both weak and powerful. Moving slowly, and with poor defensive "
 "skills, Mages attack with magical missiles that always have a high chance of "
@@ -3856,22 +4378,18 @@ msgstr ""
 "gjemmer seg i vanskelig terreng."
 
 #: data/units/Mage.cfg:36 data/units/Mage.cfg:103
-#, fuzzy
 msgid "missile"
 msgstr "prosjektil"
 
 #: data/units/Mage_of_Light.cfg:3 data/units/Mage_of_Light.cfg:66
-#, fuzzy
 msgid "Mage of Light"
 msgstr "Lysets Trollmann"
 
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
-#, fuzzy
 msgid "illuminates,cures"
 msgstr "opplyser, kurerer"
 
 #: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:86
-#, fuzzy
 msgid ""
 "Mages of Light are awesome allies of all lawful combatants, and fearsome "
 "foes to the forces of chaos. These Mages' powers of illumination are so "
@@ -3893,14 +4411,12 @@ msgstr ""
 
 #: data/units/Mage_of_Light.cfg:45 data/units/Mage_of_Light.cfg:105
 #: data/units/White_Mage.cfg:44 data/units/White_Mage.cfg:103
-#, fuzzy
 msgid "lightbeam"
 msgstr "lysstråle"
 
 #: data/units/Mage_of_Light.cfg:46 data/units/Mage_of_Light.cfg:106
 #: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:45
 #: data/units/White_Mage.cfg:104
-#, fuzzy
 msgid "holy"
 msgstr "hellig"
 
@@ -3916,22 +4432,19 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman.cfg:3
-#, fuzzy
 msgid "Merman"
 msgstr "Havmann"
 
 #: data/units/Merman.cfg:16
-#, fuzzy
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but struggle greatly to move on land."
 msgstr ""
-"Havmannen er en veltrent skapning fra sjøen, sterk og rask i ethvert "
-"amfibiemiljø, men nærmest hjelpeløs på land."
+"Havmannen er en veltrent skapning fra sjøen, sterk og rask i ethvert vått "
+"miljø, men nærmest hjelpeløs på land."
 
 #: data/units/Merman.cfg:19 data/units/Merman_Lord.cfg:20
 #: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:19
-#, fuzzy
 msgid "trident"
 msgstr "trefork"
 
@@ -3946,12 +4459,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga.cfg:3
-#, fuzzy
 msgid "Naga"
 msgstr "Naga"
 
 #: data/units/Naga.cfg:17
-#, fuzzy
 msgid ""
 "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more nimble "
 "than their counterparts, they share a distaste for dry land."
@@ -3960,12 +4471,10 @@ msgstr ""
 "og spinklere enn sine medborgere, deler de havmennenes avsmak for tørt land."
 
 #: data/units/Necromancer.cfg:3
-#, fuzzy
 msgid "Necromancer"
 msgstr "Åndemaner"
 
 #: data/units/Necromancer.cfg:16
-#, fuzzy
 msgid ""
 "Necromancer are Mages that have decided to follow the paths of the dark "
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
@@ -4051,12 +4560,10 @@ msgstr ""
 "undervurdere styrken deres."
 
 #: data/units/Orcish_Archer.cfg:3
-#, fuzzy
 msgid "Orcish Archer"
 msgstr "Orkisk Bueskytter"
 
 #: data/units/Orcish_Archer.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Archers are considered by many of their fellow orcs to be a lesser "
 "caste of warrior, for attacking their enemies from a distance. However, "
@@ -4069,12 +4576,10 @@ msgstr ""
 "orkiske hæren."
 
 #: data/units/Orcish_Assassin.cfg:3
-#, fuzzy
 msgid "Orcish Assassin"
 msgstr "Orkisk Snikmorder"
 
 #: data/units/Orcish_Assassin.cfg:16
-#, fuzzy
 msgid ""
 "While not so strong in combat, Orcish Assassins are fast and can defend "
 "themselves well over different kinds of terrain. These Assassins use "
@@ -4099,7 +4604,6 @@ msgid "Orcish Crossbowman"
 msgstr ""
 
 #: data/units/Orcish_Crossbowman.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
 "power of their weapon. While they are not as effective as the Elvish "
@@ -4231,12 +4735,10 @@ msgstr ""
 "krigerne de orkiske klanene."
 
 #: data/units/Orcish_Warrior.cfg:3
-#, fuzzy
 msgid "Orcish Warrior"
 msgstr "Orkisk Kriger"
 
 #: data/units/Orcish_Warrior.cfg:16
-#, fuzzy
 msgid ""
 "Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
 "respected among the Orcs, and highly feared by their foes. Their only "
@@ -4315,8 +4817,9 @@ msgid ""
 "of superior forces."
 msgstr ""
 
-#: data/units/Peasant.cfg:20 data/units/Peasant.cfg:34
-msgid "Pitch Fork"
+#: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
+#, fuzzy
+msgid "pitchfork"
 msgstr "Høygaffel"
 
 #: data/units/Pikeman.cfg:3
@@ -4346,17 +4849,14 @@ msgstr ""
 
 #: data/units/Pirate_Galleon.cfg:61 data/units/Transport_Galleon.cfg:15
 #: data/units/Watch_Tower.cfg:17
-#, fuzzy
 msgid "ballista"
 msgstr "ballista"
 
 #: data/units/Poacher.cfg:3
-#, fuzzy
 msgid "Poacher"
 msgstr "Krypskytter"
 
 #: data/units/Poacher.cfg:16
-#, fuzzy
 msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
@@ -4365,7 +4865,6 @@ msgstr ""
 "myrlendte områder."
 
 #: data/units/Princess.cfg:19 data/units/Princess.cfg:57
-#, fuzzy
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -4394,28 +4893,24 @@ msgstr ""
 "er verdifull i så godt som alle situasjoner."
 
 #: data/units/Revenant.cfg:3
-#, fuzzy
 msgid "Revenant"
-msgstr "Hjemsøker"
+msgstr "Oppreist"
 
 #: data/units/Revenant.cfg:15
-#, fuzzy
 msgid ""
 "Revenants are undead creatures raised from once mighty warriors. While the "
 "warriors' will and soul are all but lost, their fighting skills certainly "
 "remain with the Revenant."
 msgstr ""
-"En Hjemsøker er en vandød oppstått fra en engang så mektig kriger. Selv om "
+"En Oppreist er en vandød oppstått fra en engang så mektig kriger. Selv om "
 "krigerens vilje og sjel er så godt som tapt, er kampdyktigheten absolutt "
 "tilstede."
 
 #: data/units/Rogue.cfg:3
-#, fuzzy
 msgid "Rogue"
 msgstr "Kjeltring"
 
 #: data/units/Rogue.cfg:17
-#, fuzzy
 msgid ""
 "Rogues are masters of agility and can move right past an enemy, ignoring any "
 "zones of control. Master thieves, they too have the backstab ability, which "
@@ -4428,19 +4923,17 @@ msgstr ""
 "Kjeltringens allierte er på motsatt side av av fienden de angriper."
 
 #: data/units/Royal_Guard.cfg:3
-#, fuzzy
 msgid "Royal Guard"
 msgstr "Kongelig Gardist"
 
 #: data/units/Royal_Guard.cfg:16
-#, fuzzy
 msgid ""
 "Members of the Royal Guard are hand picked from the strongest and sturdiest "
 "of the army. They are deployed only in critical situations and, so far, have "
 "always succeeded in their assigned tasks."
 msgstr ""
 "Medlemmer av den Kongelige Garde blir håndplukket blant de sterkeste og mest "
-"robuste i hæren. De blir bare brukt i kritiske situasjoner, og har så langt "
+"robuste i hæren. De blir bare brukt i kritiske situasjoner, og har hittil "
 "alltid fullført oppdraget med suksess."
 
 #: data/units/Saurian.cfg:3
@@ -4485,7 +4978,6 @@ msgid "Sea Serpent"
 msgstr "Sjøorm"
 
 #: data/units/Sea_Serpent.cfg:16
-#, fuzzy
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr "Sjøormen er et gigantisk monster, kapabel til å kantre båter!"
@@ -4506,7 +4998,6 @@ msgid "Shadow"
 msgstr "Skygge"
 
 #: data/units/Shadow.cfg:17
-#, fuzzy
 msgid ""
 "Souls blackened by evil, Shadows roam the night attacking unsuspecting foes. "
 "These incorporeal fiends are able to hide at night, leaving no trace of "
@@ -4517,26 +5008,24 @@ msgstr ""
 "mørket uten å etterlate noe tegn på sin tilstedeværelse."
 
 #: data/units/Shock_Trooper.cfg:3
-#, fuzzy
 msgid "Shock Trooper"
 msgstr "Stormtropp"
 
 #: data/units/Shock_Trooper.cfg:15
-#, fuzzy
 msgid ""
 "Shock Troopers are the elite of the Wesnothian military. Although they move "
 "slowly, they are immensely powerful and therefore feared throughout Wesnoth "
 "and even into the lands beyond."
 msgstr ""
-"Stormtroppene er eliten i Wesnoths arme. Mens de beveger seg sakte, er de "
-"sterke som få, og fryktet overalt i Wesnoth og landene i nærheten."
+"Stormtroppene er eliten i Wesnoths arme. Om de beveger seg sakte, er de "
+"sterke som få, og fryktet overalt i Wesnoth og til og med i landene "
+"bortenfor."
 
 #: data/units/Silver_Mage.cfg:3 data/units/Silver_Mage.cfg:90
 msgid "Silver Mage"
 msgstr ""
 
 #: data/units/Silver_Mage.cfg:21 data/units/Silver_Mage.cfg:108
-#, fuzzy
 msgid "teleport"
 msgstr "teleporterer"
 
@@ -4556,28 +5045,24 @@ msgid "jaw"
 msgstr "kjeve"
 
 #: data/units/Skeleton.cfg:3
-#, fuzzy
 msgid "Skeleton"
 msgstr "Skjelett"
 
 #: data/units/Skeleton.cfg:16
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Like all undead, they are especially vulnerable to fire and "
 "holy spells, but resistant to bladed weapons."
 msgstr ""
-"En kriger drept i kamp og brakt tilbake ved hjelp av svart magi. Alle "
-"vandøde er sårbare for ild og hellige trylleformularer, men motstandsdyktige "
-"mot skarpeggede våpen."
+"Et Skjelett er en kriger drept i kamp og brakt tilbake ved hjelp av svart "
+"magi. Alle vandøde er sårbare for ild og hellige trylleformularer, men "
+"motstandsdyktige mot skarpeggede våpen."
 
 #: data/units/Skeleton_Archer.cfg:3
-#, fuzzy
 msgid "Skeleton Archer"
 msgstr "Skjelettbueskytter"
 
 #: data/units/Skeleton_Archer.cfg:14
-#, fuzzy
 msgid ""
 "The undead Skeleton Archers are the bodies of fallen archers, brought back "
 "to battle. Like all undead, they are especially vulnerable to flames and "
@@ -4589,7 +5074,6 @@ msgstr ""
 "egg."
 
 #: data/units/Sleeping_Gryphon.cfg:3
-#, fuzzy
 msgid "Sleeping Gryphon"
 msgstr "Sovende Griff"
 
@@ -4626,21 +5110,20 @@ msgid "plague"
 msgstr "pest"
 
 #: data/units/Spearman.cfg:3
-#, fuzzy
 msgid "Spearman"
 msgstr "Spydkaster"
 
 #: data/units/Spearman.cfg:16
-#, fuzzy
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
 "Because of the length of their spears, they strike first in combat, even "
 "when defending."
 msgstr ""
-"Spydkasteren er den grunnleggende enheten i de menneskelige hærene. Disse "
-"unge soldatene gis enkel trening og settes på fremste rad for å motta "
-"kampens hovedstøt."
+"Spydkasteren utgjr kjernen i de menneskelige hærene. Disse unge soldatene "
+"gis enkel trening og settes på fremste rad for å motta kampens hovedstøt. "
+"Pga. deres lange våpen, får de inn første slag i en kamp, selv når de "
+"forsvarer seg."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
@@ -4655,19 +5138,17 @@ msgid ""
 msgstr ""
 
 #: data/units/Swordsman.cfg:3
-#, fuzzy
 msgid "Swordsman"
 msgstr "Sverdkjemper"
 
 #: data/units/Swordsman.cfg:16
-#, fuzzy
 msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting."
 msgstr ""
-"Sverdkjemperen utgjør basisen i menneskenes hærer. Disse unge soldatene blir "
-"gitt grunnleggende trening og deretter plassert i frontlinjen for å kjempe "
-"der det er hardest."
+"Sverdkjemperen utgjør basisen i menneskenes hærer. Disse unge soldatene gis "
+"grunnleggende trening og deretter plassert i frontlinjen for å kjempe der "
+"det er hardest."
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -4682,12 +5163,10 @@ msgstr ""
 "bølgene."
 
 #: data/units/Thief.cfg:3
-#, fuzzy
 msgid "Thief"
 msgstr "Tyv"
 
 #: data/units/Thief.cfg:16
-#, fuzzy
 msgid ""
 "Thieves are deft of foot and elusive, making them difficult to hit. Skilled "
 "at back-stabbing, Thieves do double damage if an ally of theirs is on the "
@@ -4700,12 +5179,10 @@ msgstr ""
 "har et kaotisk gemytt, og slåss derfor bedre om natten enn om dagen."
 
 #: data/units/Thug.cfg:3
-#, fuzzy
 msgid "Thug"
 msgstr "Røver"
 
 #: data/units/Thug.cfg:16
-#, fuzzy
 msgid "Thugs are bandits who use large clubs to beat their victims."
 msgstr "Røvere er banditter som bruker store klubber til å slå sine ofre."
 
@@ -4735,12 +5212,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Troll.cfg:3
-#, fuzzy
 msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:16
-#, fuzzy
 msgid ""
 "Trolls are strong and brutal humanoid monsters with the amazing ability to "
 "regenerate themselves, so that they recover from wounds on their own, even "
@@ -4761,12 +5236,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Troll_Warrior.cfg:3
-#, fuzzy
 msgid "Troll Warrior"
 msgstr "Trollkriger"
 
 #: data/units/Troll_Warrior.cfg:16
-#, fuzzy
 msgid ""
 "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, and "
 "are able to regenerate, healing their own wounds during combat."
@@ -4775,7 +5248,6 @@ msgstr ""
 "bærer, i tillegg til å kunne regenerere skader fortløpende."
 
 #: data/units/Troll_Whelp.cfg:3
-#, fuzzy
 msgid "Troll Whelp"
 msgstr "Trollyngel"
 
@@ -4791,12 +5263,10 @@ msgstr ""
 "utvikle seg utrolig raskt."
 
 #: data/units/Vampire_Bat.cfg:3
-#, fuzzy
 msgid "Vampire Bat"
 msgstr "Vampyrflaggermus"
 
 #: data/units/Vampire_Bat.cfg:16
-#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -4808,13 +5278,16 @@ msgstr ""
 
 #: data/units/Vampire_Lady.cfg:3
 msgid "Vampire Lady"
-msgstr ""
+msgstr "Vampyrinne"
 
 #: data/units/Vampire_Lady.cfg:16
+#, fuzzy
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appeareance drinking "
 "the blood of the living."
 msgstr ""
+"Kald og vakker, hun har beholdt sitt ungdommelig utseende ved å drikke "
+"blodet fra de levende."
 
 #: data/units/Vampire_Lady.cfg:19
 msgid "blood kiss"
@@ -4840,7 +5313,7 @@ msgstr ""
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "speider,regenerer"
 
 #: data/units/Wall_Guard.cfg:32
 msgid ""
@@ -4895,7 +5368,6 @@ msgid "Wolf Rider"
 msgstr "Ulverytter"
 
 #: data/units/Wolf_Rider.cfg:17
-#, fuzzy
 msgid ""
 "Smaller and weaker than the orcs, goblins have learned to train large wolves "
 "to serve as mounts, creating the awesome team of the Wolf Riders, who serve "
@@ -5382,8 +5854,8 @@ msgstr ""
 "Dette lagrede spillet er fra en annen versjon. Vil du prøve å laste det inn "
 "likevel?"
 
-#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:533
-#: src/playlevel.cpp:747
+#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:535
+#: src/playlevel.cpp:749
 #, fuzzy
 msgid "The file you have tried to load is corrupt"
 msgstr "Det er noe galt med fila du prøvde å laste"
@@ -5600,7 +6072,6 @@ msgid "Recall"
 msgstr "Tilbakekall"
 
 #: src/hotkeys.cpp:138
-#, fuzzy
 msgid "Toggle Grid"
 msgstr "Rutenett"
 
@@ -5666,23 +6137,23 @@ msgstr ""
 
 #: src/hotkeys.cpp:153
 msgid "New Map"
-msgstr ""
+msgstr "Nytt kart"
 
 #: src/hotkeys.cpp:154
 msgid "Load Map"
-msgstr ""
+msgstr "Last inn kart"
 
 #: src/hotkeys.cpp:155
 msgid "Save Map"
-msgstr ""
+msgstr "Lagre kart"
 
 #: src/hotkeys.cpp:156
 msgid "Save As"
-msgstr ""
+msgstr "Lagre som"
 
 #: src/hotkeys.cpp:157
 msgid "Set Player Start Position"
-msgstr ""
+msgstr "Sett startposisjon for spiller"
 
 #: src/hotkeys.cpp:158
 msgid "Flood Fill"
@@ -5690,19 +6161,19 @@ msgstr ""
 
 #: src/hotkeys.cpp:159
 msgid "Fill Selection"
-msgstr ""
+msgstr "Fyll valgt"
 
 #: src/hotkeys.cpp:160
 msgid "Cut"
-msgstr ""
+msgstr "Klipp ut"
 
 #: src/hotkeys.cpp:161
 msgid "Copy"
-msgstr ""
+msgstr "Kopier"
 
 #: src/hotkeys.cpp:162
 msgid "Paste"
-msgstr ""
+msgstr "Lim inn"
 
 #: src/hotkeys.cpp:163
 msgid "Revert from Disk"
@@ -5718,20 +6189,19 @@ msgstr ""
 
 #: src/hotkeys.cpp:166
 msgid "Select All"
-msgstr ""
+msgstr "Velg alt/alle"
 
 #: src/hotkeys.cpp:167
 msgid "Draw Terrain"
 msgstr "Tegn terreng"
 
 #: src/hotkeys.cpp:168
-#, fuzzy
 msgid "Delay Shroud Updates"
 msgstr "Forsink skyggeoppdateringer"
 
 #: src/hotkeys.cpp:169
 msgid "Update Shroud Now"
-msgstr ""
+msgstr "Oppdater skygge nå"
 
 #: src/hotkeys.cpp:170
 msgid "Continue Move"
@@ -5782,7 +6252,7 @@ msgstr "Slutt"
 
 #: src/language.cpp:30
 msgid "System default language"
-msgstr ""
+msgstr "Automatisk språkvalg"
 
 #: src/mapgen_dialog.cpp:69
 #, fuzzy
@@ -5981,7 +6451,7 @@ msgid "Receiving game list..."
 msgstr "Mottar spilliste..."
 
 #: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:378
-#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1484
+#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:734 src/playturn.cpp:1484
 #: src/playturn.cpp:1489 src/playturn.cpp:1576
 #, fuzzy
 msgid "Gold"
@@ -6159,70 +6629,70 @@ msgstr ""
 msgid "Quit"
 msgstr "Avslutt"
 
-#: src/playlevel.cpp:672
+#: src/playlevel.cpp:674
 msgid "Game Over"
 msgstr ""
 
-#: src/playlevel.cpp:673
+#: src/playlevel.cpp:675
 msgid "The game is over."
 msgstr ""
 
-#: src/playlevel.cpp:686
+#: src/playlevel.cpp:688
 #, fuzzy
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playlevel.cpp:687
+#: src/playlevel.cpp:689
 #, fuzzy
 msgid "You have been defeated!"
 msgstr "Du har tapt!"
 
-#: src/playlevel.cpp:719
+#: src/playlevel.cpp:721
 #, fuzzy
 msgid "Victory"
 msgstr "Seier"
 
-#: src/playlevel.cpp:720
+#: src/playlevel.cpp:722
 #, fuzzy
 msgid "You have emerged victorious!"
 msgstr "Du har vunnet!"
 
-#: src/playlevel.cpp:722
+#: src/playlevel.cpp:724
 #, fuzzy
 msgid "Remaining gold"
 msgstr "Gjenværende gullstykker"
 
-#: src/playlevel.cpp:725
+#: src/playlevel.cpp:727
 #, fuzzy
 msgid "Early finish bonus"
 msgstr "Tidlig ferdig bonus"
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:729
 #, fuzzy
 msgid "per turn"
 msgstr "for hver runde"
 
-#: src/playlevel.cpp:728
+#: src/playlevel.cpp:730
 #, fuzzy
 msgid "Turns finished early"
 msgstr "Antall runder ferdig før tiden"
 
-#: src/playlevel.cpp:730
+#: src/playlevel.cpp:732
 #, fuzzy
 msgid "Bonus"
 msgstr "Bonus"
 
-#: src/playlevel.cpp:737
+#: src/playlevel.cpp:739
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% av gullet blir med videre til neste scenario"
 
-#: src/playlevel.cpp:738
+#: src/playlevel.cpp:740
 #, fuzzy
 msgid "Retained Gold"
 msgstr "Beholdte gullstykker"
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:764
 #, fuzzy
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
@@ -6296,7 +6766,7 @@ msgstr ""
 #: src/playturn.cpp:1423
 #, fuzzy
 msgid "Saved"
-msgstr "Hule"
+msgstr "Lagre som"
 
 #: src/playturn.cpp:1423
 msgid "The game has been saved"
@@ -6671,12 +7141,23 @@ msgstr ""
 msgid "Deletion of the file failed."
 msgstr ""
 
+#~ msgid "sceptre of fire"
+#~ msgstr "ildsepter"
+
+#~ msgid "&elvish-lord.png,Rebels"
+#~ msgstr "&elvish-lord.png,Opprørere"
+
+#~ msgid "&elvish-lord.png,Elves"
+#~ msgstr "&elvish-lord.png,Alver"
+
+#~ msgid "&elvish-lord.png,Alliance of Light"
+#~ msgstr "&elvish-lord.png,Lysets Allianse"
+
+#~ msgid "&undead-lich.png,Alliance of Darkness"
+#~ msgstr "&undead-lich.png,Mørkets Allianse"
+
 #~ msgid "Captured"
 #~ msgstr "Fanget"
-
-#, fuzzy
-#~ msgid "Prison"
-#~ msgstr "Gift"
 
 #~ msgid "Hurry up. We need to get across before these undead slaughter us!"
 #~ msgstr "Skynd dere. Vi må komme oss over før de vandøde slakter oss ned!"
@@ -6764,41 +7245,6 @@ msgstr ""
 #~ "Snikmorderen min er død! Alvene skal får betale for dette, ikke for hans "
 #~ "død, men for å ha forhindret oppdraget hans!"
 
-#, fuzzy
-#~ msgid "We have defeated these bandits. Dacyn, where should we go now?"
-#~ msgstr "Vi har slått dem! Hva gjør vi nå?"
-
-#, fuzzy
-#~ msgid "The Drowned Plains"
-#~ msgstr "Snøkledde Vidder"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat Khrakrahs the Skeletal Dragon\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Seier:\n"
-#~ "@Overvinn fiendens leder\n"
-#~ "Tap:\n"
-#~ "#Gweddry dør\n"
-#~ "#Dacyn dør\n"
-#~ "#Volas dør"
-
-#, fuzzy
-#~ msgid "What is that?!?"
-#~ msgstr "Hva er det?"
-
-#, fuzzy
-#~ msgid "So what should we do now?"
-#~ msgstr "Vi kan ikke komme inn! Hva skal vi finne på nå?"
-
 #~ msgid "A Choice Must Be Made"
 #~ msgstr "Et Valg Må Gjøres"
 
@@ -6819,6 +7265,13 @@ msgstr ""
 #~ "Nederlag:\n"
 #~ "#Konrad dør\n"
 #~ "#Delfador dør"
+
+#~ msgid ""
+#~ "Well, thank you for helping me get back to the surface, but now I must "
+#~ "take what is mine!"
+#~ msgstr ""
+#~ "Vel, takk for at dere hjalp meg tilbake til overflaten, men nå må jeg ta "
+#~ "det som er mitt!"
 
 #, fuzzy
 #~ msgid "You still want to fight me, do you, Princess?"
@@ -6973,9 +7426,8 @@ msgstr ""
 #~ "If the Elves will promise me refuge and safe passage, then I will go."
 #~ msgstr "Hvis alvene kan love meg asyl og fri passasje, da vil jeg dra."
 
-#, fuzzy
 #~ msgid ""
-#~ "That we will, Princess. Even though you are the daughter of the Queen, "
+#~ "That we will, Princess. Even thought you are the daughter of the Queen, "
 #~ "our enemy, we shall not harm you on this encounter, for you have helped "
 #~ "us."
 #~ msgstr ""
@@ -6991,25 +7443,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Vi må gjøre et valg. I nord, forbi orkene, er et snøkledde sletter. I "
 #~ "sør, forbi de vandødes hær ligger Fryktens Sump."
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat Asheviere\n"
-#~ "Defeat:\n"
-#~ "#Death of Konrad\n"
-#~ "#Death of Delfador\n"
-#~ "#Death of Li'sar\n"
-#~ "#Death of Kalenz\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Seier:\n"
-#~ "@Overvinn fiendens leder\n"
-#~ "Nederlag:\n"
-#~ "#Konrad dør\n"
-#~ "#Delfador dør"
 
 #~ msgid "The Bay of Pearls"
 #~ msgstr "Perlebukta"
@@ -7201,9 +7634,17 @@ msgstr ""
 #~ "du kan komme deg dit på, med skip, eller over land. Hver av måtene har "
 #~ "sine farer. Du må velge hvordan du vil komme deg dit."
 
+#~ msgid "Ships? Ugh! I have been sea sick for the last time. We shall walk!"
+#~ msgstr "Skip? Pføy! Jeg har vært sjøsyk for siste gang! Vi går!"
+
 #, fuzzy
 #~ msgid "Safe journey to you, Konrad. Until we meet again!"
 #~ msgstr "Ha en god reise, Konrad. Vi møtes igjen!"
+
+#~ msgid ""
+#~ "Going by ship we may at least get a little rest for ourselves. By sea it "
+#~ "is!"
+#~ msgstr "Tar vi skip, får vi hvilt litt på veien. Jeg velger sjøveien!"
 
 #, fuzzy
 #~ msgid "Safe voyage to you then, Konrad. May the weather be fair."
@@ -7313,17 +7754,140 @@ msgstr ""
 #~ "#Delfador dør\n"
 #~ "#Seimus dør"
 
+#~ msgid ""
+#~ "We should be able to board a ship at Blackwater Port, but it seems the "
+#~ "Orcs are heading there too. Rebels who hate Asheviere and are loyal to "
+#~ "the memory of the king desperately hold the port, as it is one of the "
+#~ "only places where they can ship supplies and weapons."
+#~ msgstr ""
+#~ "Vi håper å kunne komme ombord på et skip i Svartvann Havn, men det virker "
+#~ "som om orkene også drar ditover. Desperate opprørere som hater Asheviere "
+#~ "og er lojale til gamlekongens minne holder porten, siden det er et av de "
+#~ "få stedene de kan frakte forsyninger og våpen."
+
 #, fuzzy
-#~ msgid "Delfador, some Orcs are following us! We must make haste!"
+#~ msgid "Defaldor, some Orcs are following us! We must make haste!"
 #~ msgstr "Defaldor, noen orker følger etter oss! Vi må skynde oss!"
+
+#~ msgid ""
+#~ "Delfador, my old friend! We had heard of your coming, and of the attacks "
+#~ "on the Elves. It is good to see you again, although I would prefer it "
+#~ "were not in such sad times."
+#~ msgstr ""
+#~ "Delfador, gamle venn! Vi hadde hørt du kom, og om angrepene på alvene! "
+#~ "Det er godt å se deg igjen, selv om jeg ønsker det hadde skjedd i "
+#~ "hyggeligere tider."
+
+#~ msgid ""
+#~ "Konrad, this is Kaylan, one of the mightiest of the horse lords, and one "
+#~ "of the few who is willing to oppose the dark crown. Rumor has it that his "
+#~ "lance has slain fifty men and a hundred orcs."
+#~ msgstr ""
+#~ "Konrad, dette er Kaylan, en av de mektigste hesteherrene, og en av de få "
+#~ "som er villige til å stå imot den mørke kronen. Ryktet har det til at "
+#~ "lansen hans har drept femti menn og hundre orker."
+
+#~ msgid ""
+#~ "It seems the orcs have come here too, to try to wrest this port from our "
+#~ "hands. Our defenses are still weak, but reinforcements will arrive soon!"
+#~ msgstr ""
+#~ "Det virker som orkene har også kommet hit for å prøve å overta havna. "
+#~ "Forsvaret vårt er fortsatt svakt, men forsterkningene skal ankomme snart!"
 
 #, fuzzy
 #~ msgid "We will help you fight them off until the reinforcements arrive."
 #~ msgstr "Vi skal hjelpe dere å drive dem på flukt."
 
+#~ msgid ""
+#~ "Hopefully with your help we can ward them off. But you must not tarry "
+#~ "here long, for your survival is even more important to our cause than the "
+#~ "strength of the port. A ship is due here in two days, surely it will be "
+#~ "able to take you to safety."
+#~ msgstr ""
+#~ "Med deres hjelp burde de gå an å motstå dem. Men dere må ikke vente her "
+#~ "lenge, for det er viktigere at dere overlever enn at vi holder havna. Vi "
+#~ "venter et skip om to dager, det vil sikkert kunne frakte dere til et "
+#~ "trygt sted."
+
+#~ msgid "And the ship will take us to Anduin?"
+#~ msgstr "Og skipet vil ta oss med til Anduin?"
+
+#~ msgid ""
+#~ "Yes, we will sail to the Isle of Anduin, my home Konrad, and the home of "
+#~ "many mages."
+#~ msgstr ""
+#~ "Ja, vi skal seile til øya Anduin, mitt hjem, Konrad, og hjemstedet til "
+#~ "mange andre trollmenn."
+
+#~ msgid ""
+#~ "I will send one of my horsemen to serve under you. I offer you my support "
+#~ "Konrad, and the support of my men - from now on you will be able to "
+#~ "recruit horsemen."
+#~ msgstr ""
+#~ "I sender en av mine ryttere for å hjelpe deg. Konrad, jeg tilbyr også min "
+#~ "og mine menns støtte - fra nå av kan du rekruttere ryttere."
+
+#~ msgid ""
+#~ "Thank you, sir. But how shall I best use these horsemen? How do they "
+#~ "differ from Elves?"
+#~ msgstr ""
+#~ "Takk, sir. Men hvordan er det best å anvende ryttere? Hvordan er de "
+#~ "forskjellige fra alver?"
+
+#~ msgid ""
+#~ "Elves are a powerful race, Konrad, more powerful than my own people "
+#~ "usually acknowledge. But horsemen are powerful in a different way. They "
+#~ "have no long range attack, but can charge into combat, inflicting double "
+#~ "normal damage, though taking double damage in return. They are also "
+#~ "lawful, meaning they are better at day, and worse at night. Horsemen are "
+#~ "unmatched on open land, though Elves will serve you better in rugged "
+#~ "terrain."
+#~ msgstr ""
+#~ "Alver er en mektig rase, Konrad, mektigere enn mitt folk vanligvis "
+#~ "innrømmer. Men ryttere er sterke på en annen måte. De har intet "
+#~ "avstandsangrep, men kan storme inn i kamp, noe som gjør dobbel skade, men "
+#~ "de mottar også det dobbelte. De er lovlydige, noe som betyr at de er "
+#~ "bedre om dagen, og verre om natten. De er uovertrufne på flatmark, men "
+#~ "alver vil tjene deg bedre i ulent terreng."
+
+#~ msgid ""
+#~ "Recruit troops wisely, Konrad, and remember that you can recall "
+#~ "experienced units from past battles to help you fight again."
+#~ msgstr ""
+#~ "Tenk deg om før du rekrutterer, Konrad, og husk at du kan tilbakekalle "
+#~ "tropper fra tidligere kamper for å kjempe igjen."
+
+#~ msgid ""
+#~ "Reinforcements have arrived! Forward men! I expect each of you to bring "
+#~ "me back the head of an orc!"
+#~ msgstr ""
+#~ "Forsterkningene har ankommet! Fremad, menn! Jeg venter at hver og en av "
+#~ "dere kommer tilbake med hodet til en ork!"
+
+#~ msgid ""
+#~ "So many foul humans riding on horses! There is no way we can defeat them. "
+#~ "Quick, we must make our escape!"
+#~ msgstr ""
+#~ "Æsj, så mange mennesker på hester! Vi kan ikke slå dem. Fort, trekk dere "
+#~ "tilbake!"
+
+#~ msgid ""
+#~ "Thank you for the help, friends. The ship should arrive soon, it will "
+#~ "take you to Anduin."
+#~ msgstr ""
+#~ "Takk for hjelpen, venner. Skipet skulle ankomme snart, det vil frakte "
+#~ "dere til Anduin."
+
 #, fuzzy
 #~ msgid "We should embark now."
 #~ msgstr "Vi må gå ombord nå."
+
+#~ msgid ""
+#~ "Safe voyage to you, friends. Rest assured that we will never surrender to "
+#~ "the forces of the Dark Queen."
+#~ msgstr ""
+#~ "Ha en trygg tur. Og jeg kan forsikre dere at vi vil aldri overgi oss til "
+#~ "den Mørke Dronnings hær."
 
 #, fuzzy
 #~ msgid "I have failed in my duty to protect the Rightful Heir and the port"
@@ -7433,6 +7997,12 @@ msgstr ""
 #~ msgid "Then we must make it to that tunnel!"
 #~ msgstr "Da må vi se å komme oss til den gruvegangen!"
 
+#~ msgid "This old mine seems to be connected to the main tunnels."
+#~ msgstr "Denne gamle hulen ser ut til å være forbundet med hovedtunnelene."
+
+#~ msgid "I am hesitant to enter. It will be so difficult in the darkness!"
+#~ msgstr "Jeg vet ikke om det er lurt. Det blir så vanskelig i mørket!"
+
 #, fuzzy
 #~ msgid "There is no time for idle chatter or delay of any kind. Onward!"
 #~ msgstr "Det er ikke tid til forsinkelse eller tomt koseprat, fremad!"
@@ -7535,6 +8105,13 @@ msgstr ""
 #, fuzzy
 #~ msgid "This does not please me, but I will listen to your advice."
 #~ msgstr "Jeg er ikke fornøyd med det, men jeg ser behovet for å skynde seg."
+
+#~ msgid ""
+#~ "My uncle used to smuggle...err...I mean...trade food for the Dwarves. He "
+#~ "could get grain carts in under the very noses of those ugly orcs."
+#~ msgstr ""
+#~ "Onkelen min pleide å smug... unnskyld, jeg mener selge mat til dvergene. "
+#~ "Han kunne få sneket inn en vogn under nesa på de støgge orkene."
 
 #, fuzzy
 #~ msgid "The Elves Besieged"
@@ -7726,10 +8303,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "There can be no looking back. We must go quickly!"
 #~ msgstr "Vi kan ikke se oss tilbake. Vi må dra raskt avgårde!"
-
-#, fuzzy
-#~ msgid "Epilogue"
-#~ msgstr "pest"
 
 #, fuzzy
 #~ msgid "The Ford of Abez"
@@ -8154,10 +8727,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "High King at Sea"
 #~ msgstr "Sjøens Høye Konge"
-
-#, fuzzy
-#~ msgid "Very well. We will fight you."
-#~ msgstr "Det er bra. Dere kan bli med oss."
 
 #, fuzzy
 #~ msgid "Home of the North Elves"
@@ -8822,32 +9391,26 @@ msgstr ""
 #~ "#Delfador dør\n"
 #~ "#Kalenz dør"
 
-#, fuzzy
 #~ msgid "It's so dark in here I can hardly see!"
 #~ msgstr "Det er så mørkt her inne! Jeg kan såvidt se!"
 
-#, fuzzy
 #~ msgid ""
 #~ "It is dark indeed. We shall have to light torches, and tread slowly and "
 #~ "carefully. Hopefully there are still Dwarves down here who can aid us!"
 #~ msgstr ""
 #~ "Det er sannelig mørkt. Vi vil måtte tenne fakler, og trå sakte og "
-#~ "varsomt. Jeg håper at det fremdeles er dverger her need som kan hjelpe "
+#~ "varsomt. Jeg håper at det fremdeles er dverger her nede som kan hjelpe "
 #~ "oss!"
 
-#, fuzzy
 #~ msgid "Indeed. We Elves are not well skilled in these dark pits."
 #~ msgstr "Ja. Vi alver er ikke vante med slike mørke huler."
 
-#, fuzzy
 #~ msgid "Who are these that approach? Surface-dwellers! On your guard, men!"
 #~ msgstr "Hvem er disse som nærmer seg? Overflate-boere! På vakt!"
 
-#, fuzzy
 #~ msgid "We come in peace, friends. We come in peace!"
 #~ msgstr "Vi kommer med fred, venner. Vi kommer med fred!"
 
-#, fuzzy
 #~ msgid ""
 #~ "Oh, do you? I see that you are accompanied by Elves. Can we Dwarves not "
 #~ "live in peace without the treacherous Elves coming to bother us?"
@@ -8856,11 +9419,9 @@ msgstr ""
 #~ "dverger leve i fred uten at de forræderske alvene kommer og forstyrrer "
 #~ "oss?"
 
-#, fuzzy
 #~ msgid "Why such harsh words, Dwarf? Elves have never done you any harm."
 #~ msgstr "Hvorfor slike ord, Dverg? Alvene har aldri gjort dere noe ondt."
 
-#, fuzzy
 #~ msgid ""
 #~ "'Never done us any harm?' Why I was there myself, when the Elves did not "
 #~ "come to honor our alliance. Many Dwarves were slaughtered, and you "
@@ -8870,7 +9431,6 @@ msgstr ""
 #~ "vår allianse. Mange dverger ble drept, og dere feige alver gjorde "
 #~ "ingenting for å hjelpe!"
 
-#, fuzzy
 #~ msgid ""
 #~ "You go too far! I am Kalenz, a mighty Elvish lord! How dare such as you, "
 #~ "snivelling in his tunnel, call me a coward?"
@@ -8879,7 +9439,6 @@ msgstr ""
 #~ "at slike som deg, reddharer som gjemmer seg i en hule, våger å kalle meg "
 #~ "for feig?"
 
-#, fuzzy
 #~ msgid ""
 #~ "Peace, friends! Peace! The evil Orcs roam the lands above us, we must not "
 #~ "fight among ourselves."
@@ -8887,7 +9446,6 @@ msgstr ""
 #~ "Fred venner! Fred! De onde orkene kjemper i landene over oss, må vi også "
 #~ "slåss mot hverandre?"
 
-#, fuzzy
 #~ msgid ""
 #~ "Very well! Explain your presence here then, human. Who are you? Why have "
 #~ "you risked life and limb to come to Knalga, home of the Dwarves?"
@@ -8896,11 +9454,9 @@ msgstr ""
 #~ "Hvorfor har dere risikert livene deres for å komme til Knalga, dvergenes "
 #~ "hjem?"
 
-#, fuzzy
 #~ msgid "Well, we...we..."
 #~ msgstr "Vel, vi...vi..."
 
-#, fuzzy
 #~ msgid ""
 #~ "We have come so that an heir may claim his inheritance, that a king may "
 #~ "claim his throne. We seek the Scepter of Fire."
@@ -8908,22 +9464,19 @@ msgstr ""
 #~ "Vi har kommet for at en arving skal kreve sitt arvegods. For at en konge "
 #~ "skal ta tilbake sin trone. Vi søker Ildsepteret."
 
-#, fuzzy
 #~ msgid ""
 #~ "The Scepter of Fire? Are you out of your minds? Surely you speak in jest!"
 #~ msgstr "Ildsepteret? Er du gal? Dette er vel bare et narrespill!"
 
-#, fuzzy
 #~ msgid ""
 #~ "We jest not, friend. We seek the Scepter of Fire. We seek the help of the "
 #~ "Dwarves in finding it. But know that we will find it, whether you help us "
 #~ "or not."
 #~ msgstr ""
-#~ "Vi spøker ikke, venn. Vi søker Ildsepteret. Vi søker dvergenes hjelp til "
-#~ "å finne det. Velg å hjelpe oss eller la være, om dere så vil. Vi vil "
-#~ "finne det, enten dere hjelper oss eller ei."
+#~ "Det er intet narrespill, venn. Vi søker Ildsepteret. Vi søker dvergenes "
+#~ "hjelp til å finne det. Velg å hjelpe oss eller la være, om dere så vil. "
+#~ "Vi vil finne det, enten dere hjelper oss eller ei."
 
-#, fuzzy
 #~ msgid ""
 #~ "Your speech is like that of a fool. No-one even knows if the Scepter of "
 #~ "Fire exists. And who is this heir, this king that you speak of?"
@@ -8931,19 +9484,16 @@ msgstr ""
 #~ "Du taler som en tåpe. Ingen vet om Ildsepteret engang eksisterer. Hvem er "
 #~ "denne arvingen, denne kongen du taler om?"
 
-#, fuzzy
 #~ msgid "I am, sir."
 #~ msgstr "Det er meg, herre."
 
-#, fuzzy
 #~ msgid ""
 #~ "You? Ha ha! This boy that stands before me is the king of Wesnoth? Ha ha! "
 #~ "I haven't had such a laugh in a long time. And who are you, old man?"
 #~ msgstr ""
-#~ "Du, hahaha, denne gutten som står foran meg er kongen av Wesnoth? Haha! "
-#~ "Jeg har ikke ledd så godt på lenge. Og hvem er du, gamle mann?"
+#~ "Du? Haha, denne gutten som står foran meg skulle være kongen av Wesnoth? "
+#~ "Haha! Jeg har ikke ledd så godt på lenge. Og hvem er du, gamle mann?"
 
-#, fuzzy
 #~ msgid ""
 #~ "I am Delfador, Delfador the Great, Arch Mage to King Garard, and "
 #~ "Protector of his heir."
@@ -8951,21 +9501,18 @@ msgstr ""
 #~ "Jeg er Delfador. Delfador den Store, Erketrollmann til Kong Garard, og "
 #~ "Beskytter av hans arving."
 
-#, fuzzy
 #~ msgid ""
 #~ "You...you are Delfador? I saw Delfador when I was but a young Dwarf, and "
 #~ "I will tell you, old man, you are not Delfador. Men! Take these liars out "
 #~ "of my sight. Delfador perished many years ago."
 #~ msgstr ""
 #~ "Du...Du er Delfador? Jeg så Delfador da jeg var kun en ung dverg, og jeg "
-#~ "vil si deg gamle mann, du er ikke Delfador. Vakter! Få vekk disee "
+#~ "vil si deg gamle mann, du er ikke Delfador. Vakter! Få vekk disse "
 #~ "løgnerne. Delfador døde mange år tilbake."
 
-#, fuzzy
 #~ msgid "I am Delfador the Great! Any who dare oppose me shall perish!"
 #~ msgstr "Jeg er Delfador den Store! Alle som setter seg imot meg skal dø!"
 
-#, fuzzy
 #~ msgid ""
 #~ "You...you really are Delfador! But we had news that you were dead, years "
 #~ "ago!"
@@ -8973,17 +9520,14 @@ msgstr ""
 #~ "Du...Du er virkelig Delfador! Men vi hørte at du var død, for mange år "
 #~ "tilbake!"
 
-#, fuzzy
 #~ msgid "They thought I was dead. They hoped I was dead. Yet still I live."
 #~ msgstr ""
 #~ "De trodde jeg var død. De håpet at jeg var død. Men likevel, likevel "
 #~ "lever jeg."
 
-#, fuzzy
 #~ msgid "And you really think that you can find the Scepter of Fire?"
 #~ msgstr "Og du tror virkelig at du skal kunne finne Ildsepteret?"
 
-#, fuzzy
 #~ msgid ""
 #~ "Yes, I do. If you help us, friend, all the treasures of Knalga that we "
 #~ "find are yours. We want only the Scepter. It will be dangerous. Make no "
@@ -8995,74 +9539,56 @@ msgstr ""
 #~ "mine ord: Dverger vil bli drept, kanskje mange dverger. Men det vil være "
 #~ "bedre enn å gjemme seg som mark for orkene."
 
-#, fuzzy
 #~ msgid "Hmm...there seems to be a secret passage behind these rocks!"
 #~ msgstr "Hmm...der ser ut til at det er en hemmelig gang bak disse steinene!"
 
-#, fuzzy
 #~ msgid "The Princess of Wesnoth"
 #~ msgstr "Prinsessen av Wesnoth"
 
-#, fuzzy
 #~ msgid ""
 #~ "...but one of the Orcs survived long enough to send the news to the "
 #~ "queen..."
 #~ msgstr ""
-#~ "... men en av orkene overlevde lenge nok til å sende bud om nyhetene til "
-#~ "dronningen..."
+#~ "... men en av orkene overlevde lenge nok til å sende bud om hendelsene "
+#~ "til dronningen..."
 
-#, fuzzy
 #~ msgid "...and she sent her most able commander."
-#~ msgstr "... og hun sendte sin beste kommandør..."
-
-#, fuzzy
-#~ msgid "Elbridge"
-#~ msgstr "Bru"
+#~ msgstr "... og hun sendte sin beste kommandør."
 
 #, fuzzy
 #~ msgid ""
 #~ "On the road to Knalga, the party was opposed by the forces of Asheviere."
 #~ msgstr "På vei til Knalga ble de angrepet av Ashevieres styrker."
 
-#, fuzzy
 #~ msgid "The Queen has sent me to stop you, you imposter!"
 #~ msgstr "Dronningen har sendt meg for å stoppe deg, din bedrager!"
 
-#, fuzzy
 #~ msgid ""
 #~ "That's the princess, Li'sar. The daughter of the Queen, and her successor!"
-#~ msgstr "Det er prinsessen, Li'sar. Dronningens datter, og hennes arving!"
+#~ msgstr "Det er prinsesse Li'sar. Dronningens datter, og hennes arving!"
 
-#, fuzzy
 #~ msgid "I'm no imposter. It seems that your mother has lied to you."
 #~ msgstr ""
 #~ "Jeg er ingen bedrager. Det må være moren din som har løyet for deg om det."
 
-#, fuzzy
 #~ msgid "This is treason! Your lies will perish with you!"
 #~ msgstr "Forræderi! Løgnene dine vil dø sammen med deg!"
 
-#, fuzzy
 #~ msgid ""
 #~ "There is no use in reasoning. She will understand only one thing. To arms!"
 #~ msgstr ""
 #~ "Her hjelper det ikke å snakke fornuft. Det er bare en ting hun vil "
 #~ "forstå. Til våpen!"
 
-#, fuzzy
 #~ msgid "This is taking too much time, I had best call some reinforcements!"
-#~ msgstr ""
-#~ "Dette tar for lang tid, så det er best jeg kaller inn forsterkninger!"
+#~ msgstr "Dette tar for lang tid! Forsterkninger!"
 
-#, fuzzy
 #~ msgid "Maybe I was not using enough forces..."
 #~ msgstr "Kanskje jeg ikke brukte nok styrker..."
 
-#, fuzzy
 #~ msgid "I surrender! Don't hurt me, Imposter."
-#~ msgstr "Jeg overgir meg! Ikke skad meg, bedrager."
+#~ msgstr "Jeg overgir meg! Ikke skad meg, Bedrager."
 
-#, fuzzy
 #~ msgid ""
 #~ "I said before I'm not an imposter, but if you yield, I will spare your "
 #~ "life."
@@ -9070,15 +9596,12 @@ msgstr ""
 #~ "Jeg har allerede sagt at jeg ikke er noen bedrager, men hvis du gir deg, "
 #~ "vil jeg spare livet ditt."
 
-#, fuzzy
 #~ msgid "Let me go!"
 #~ msgstr "La meg gå!"
 
-#, fuzzy
 #~ msgid "Think about the story of the old king. Ask somebody who knew of him."
-#~ msgstr "Tenk på historien om gamlekongen. Spør noen eldre om den."
+#~ msgstr "Tenk på historien om den gamle kongen. Spør noen som kjente ham."
 
-#, fuzzy
 #~ msgid ""
 #~ "The old king? I have heard about that, but I know it is not true. My "
 #~ "mother told me."
@@ -9086,7 +9609,6 @@ msgstr ""
 #~ "Den forrige kongen? Jeg har hørt om det, men jeg vet det ikke er sant. "
 #~ "Moren min fortalte meg det."
 
-#, fuzzy
 #~ msgid ""
 #~ "Your mother has lied to you, child. Now I suggest you reconsider, and "
 #~ "either join us, or flee an exile. There will be a great battle soon, and "
@@ -9098,7 +9620,6 @@ msgstr ""
 #~ "stort slag snart, og hvis du er på feil side da, har vi kanskje ikke "
 #~ "mulighet til å spare livet ditt for andre gang."
 
-#, fuzzy
 #~ msgid ""
 #~ "I am not a child, and I do not want to talk about it! You said you would "
 #~ "spare me, so be on your way. The northern road should be safe for you."
@@ -9106,11 +9627,9 @@ msgstr ""
 #~ "Jeg er ikke et barn, og jeg vil ikke snakke om det! Du sa du ville spare "
 #~ "meg, så dra avgårde. Veien mot nord burde være trygg for dere."
 
-#, fuzzy
 #~ msgid "Good day then, Princess. Come, men, to the northern road!"
 #~ msgstr "Far vel, prinsesse. Kom menn, til veien mot nord!"
 
-#, fuzzy
 #~ msgid ""
 #~ "(He he, little do they know just how many undead have wandered the "
 #~ "northern road of late. Surely they are doomed!)"
@@ -9118,11 +9637,9 @@ msgstr ""
 #~ "(hehe, lite vet de om hvor mange vandøde som har vandret på nordveien i "
 #~ "det siste. De er fortapt!)"
 
-#, fuzzy
 #~ msgid "The Sceptre of Fire"
 #~ msgstr "Ildsepteret"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Victory:\n"
@@ -9142,39 +9659,31 @@ msgstr ""
 #~ "#Kalenz dør\n"
 #~ "#Li'sar dør"
 
-#, fuzzy
 #~ msgid "The Sceptre must be getting close now! Where shall we go?"
 #~ msgstr "Septeret må være i nærheten nå! Hvor skal vi gå?"
 
-#, fuzzy
 #~ msgid "Yes, I feel it is near here! We must search for it carefully."
 #~ msgstr ""
 #~ "Ja, jeg føler det er i nærheten! Vi må lete etter det, men vær forsiktige."
 
-#, fuzzy
 #~ msgid "Here it is at last, I have the Sceptre!"
 #~ msgstr "Endelig, her er det. Jeg har Septeret!"
 
-#, fuzzy
 #~ msgid "So it is in our hands! Now let us leave this stinking pit."
 #~ msgstr "Så det er i våre hender! La oss forlate disse stinkende grottene."
 
-#, fuzzy
 #~ msgid ""
 #~ "I think that if we travel just a little north, we might be able to get "
 #~ "out."
 #~ msgstr "Jeg tror vi kommer oss ut hvis vi drar litt mot nord."
 
-#, fuzzy
 #~ msgid "At last! I have the Sceptre!"
 #~ msgstr "Endelig! Jeg har Septeret!"
 
-#, fuzzy
 #~ msgid ""
 #~ "Indeed. You managed to reach it Li'sar. I hope you shall use it wisely."
 #~ msgstr "Riktig. Du fikk tak i det, Li'sar. Jeg håper du bruker det klokt."
 
-#, fuzzy
 #~ msgid ""
 #~ "Well my first use for it is going to be to help us get out of this hole! "
 #~ "I hope you consider that wise."
@@ -9182,7 +9691,6 @@ msgstr ""
 #~ "Min første gjerning blir å bruke det for å få oss ut av dette hullet! Jeg "
 #~ "håper du regner det for klokt."
 
-#, fuzzy
 #~ msgid ""
 #~ "The Sceptre makes its wielder powerful, but hardly immortal, child. Use "
 #~ "it prudently. Now come, I believe there is an exit to the north!"
@@ -9190,15 +9698,12 @@ msgstr ""
 #~ "Septeret gjør brukeren mektig, men langtifra udødelig, barn. Bruk det "
 #~ "fornuftig. Kom nå, jeg tror det er en utgang mot nord!"
 
-#, fuzzy
 #~ msgid "I think I know what I'm doing. Come, let us go!"
 #~ msgstr "Jeg tror jeg vet hva jeg gjør. Kom, la oss gå!"
 
-#, fuzzy
 #~ msgid "Snow Plains"
 #~ msgstr "Snøkledde Vidder"
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "Victory:\n"
@@ -9214,9 +9719,10 @@ msgstr ""
 #~ "@Overvinn fiendens leder\n"
 #~ "Nederlag:\n"
 #~ "#Konrad dør\n"
-#~ "#Delfador dør"
+#~ "#Delfador dør\n"
+#~ "Li'sar dør\n"
+#~ "Kalenz dør"
 
-#, fuzzy
 #~ msgid ""
 #~ "These fields of snow were once the home of my people. We left here "
 #~ "centuries ago. Legends say a great sword of fire was left behind."
@@ -9225,7 +9731,6 @@ msgstr ""
 #~ "videre for flere hundre år siden. Legenden sier at et mektig flammesverd "
 #~ "ble værende igjen."
 
-#, fuzzy
 #~ msgid ""
 #~ "This sword may prove useful on our journey ahead. I wonder where it could "
 #~ "be hidden."
@@ -9233,7 +9738,6 @@ msgstr ""
 #~ "Det sverdet kan vise seg å bli nyttig senere på reisen vår. Jeg lurer på "
 #~ "hvor det kan være gjemt."
 
-#, fuzzy
 #~ msgid "Swamp Of Dread"
 #~ msgstr "Fryktens Sump"
 
@@ -9913,22 +10417,41 @@ msgstr ""
 #~ "beskyttelse av alvene. Delfador kunne bare trist se på mens Asheviere "
 #~ "styrte landet med hard hånd og grusomme metoder..."
 
-#, fuzzy
+#~ msgid "A New Chance"
+#~ msgstr "En Ny Mulighet"
+
 #~ msgid ""
 #~ "\n"
 #~ "Victory:\n"
-#~ "@Move Kapou'e to the end of the mountains\n"
+#~ "@Clear the land of monsters\n"
 #~ "Defeat:\n"
-#~ "#Death of Kapou'e\n"
+#~ "#Death of Gwiti Ha'atel\n"
 #~ "#Turns run out"
 #~ msgstr ""
 #~ "\n"
 #~ "Seier:\n"
-#~ "@Flytt Konrad til skiltet i nordvest\n"
+#~ "@Rydd området for monstre\n"
 #~ "Nederlag:\n"
-#~ "#Konrad dør\n"
-#~ "#Delfador dør\n"
+#~ "#Gwiti Ha'atel dør\n"
 #~ "#Tiden renner ut"
+
+#~ msgid ""
+#~ "After his banishment from Wesnoth for practising necromancy, the young "
+#~ "Gwiti Ha'atel arrived on a strange shore. He decided to claim it for his "
+#~ "own."
+#~ msgstr ""
+#~ "Etter hans utvisning fra Wesnoth for å ha drevet åndemaning og "
+#~ "svartekunster, landet den unge Gwiti Ha'atel på en ukjent kyst. Han "
+#~ "besluttet straks å gjøre den sin egen."
+
+#~ msgid "Noooo! Not now, not when I have escaped!"
+#~ msgstr "Neeeeei! Ikke nå, nå som jeg har unnsluppet!"
+
+#~ msgid "Argh! I die!"
+#~ msgstr "Fillern også."
+
+#~ msgid "The Wesnothians have discovered my escape! This is not good..."
+#~ msgstr "Wesnoths menn har oppdaget meg! Dette lover dårlig..."
 
 #, fuzzy
 #~ msgid "Brother Against Brother"
@@ -9949,6 +10472,184 @@ msgstr ""
 #~ "Nederlag:\n"
 #~ "#Gwiti Ha'atel dør\n"
 #~ "#Tiden renner ut"
+
+#~ msgid ""
+#~ "As the sun set, Gwiti discovered that his arch-rival and brother, Nati, "
+#~ "had already ensconced himself nearby."
+#~ msgstr ""
+#~ "Mens solen sank, oppdaget Gwiti at hans erkerival og bror, Nati, hadde "
+#~ "allerede forskanset seg i nærheten."
+
+#~ msgid ""
+#~ "Ah, hated brother mine. Look well upon the setting sun, for you shall not "
+#~ "live to see another in this land."
+#~ msgstr ""
+#~ "Vel møtt, men forhatte bror. Se godt på solen der den går ned, for du vil "
+#~ "ikke leve lenge nok til å se solen igjen i dette land."
+
+#~ msgid ""
+#~ "This land? Do you truly not know where we are? Then you are a greater "
+#~ "fool than I had thought."
+#~ msgstr ""
+#~ "'Dette land'? Så du har ikke oppdaget hvor vi er? Du er sannelig en "
+#~ "større tåpe enn jeg hadde trodd."
+
+#~ msgid "Cease your blustering, fool, and prepare to die...again."
+#~ msgstr ""
+#~ "Hold skrytet ditt for deg selv, tåpe, og forbered deg på døden... igjen."
+
+#~ msgid ""
+#~ "I will fight you with all my strength to prevent that, and I was always "
+#~ "the stronger of us. Flee now and save your miserable hide before I make "
+#~ "it a carpet."
+#~ msgstr ""
+#~ "Jeg vil kjempe med all min makt for å forhindre det, og jeg var alltid "
+#~ "den sterkeste av oss. Flykt nå og redd skinnet ditt før jeg gjør et teppe "
+#~ "av det."
+
+#~ msgid ""
+#~ "Don't be silly! I'm not hairy enough to be a carpet! But your scalp would "
+#~ "make a good pillow."
+#~ msgstr ""
+#~ "Ikke tull! Jeg er ikke hårete nok til et teppe! Men skalpen din kunne bli "
+#~ "en fin pute."
+
+#~ msgid "What? I can't die! I already have! Noooo!"
+#~ msgstr "Hva? Jeg kan ikke dø! Jeg har dødd allerede! Neeeei!"
+
+#~ msgid ""
+#~ "Ha ha ha, did I not tell you it would be so? Perhaps I shall summon your "
+#~ "shade to serve me one day. Until then...farewell!"
+#~ msgstr ""
+#~ "Ha ha, sa jeg ikke at det ville bli slik? Kanskje jeg skal tilkalle den "
+#~ "skygge for å tjene meg en dag. Inntil da... farvel."
+
+#~ msgid "It is over. I am doomed."
+#~ msgstr "Det er over. Jeg er fortapt."
+
+#~ msgid ""
+#~ "I...have failed to win this battle. I am defeated. I will not believe it."
+#~ msgstr "Jeg... har feilet. Jeg har lidd nederlag. Jeg nekter å tro det."
+
+#~ msgid ""
+#~ "Die, yes, die, and go to the Land of the Dead. Perhaps one day you will "
+#~ "be back under my command!"
+#~ msgstr ""
+#~ "Dø, ja dø, og dra til de dødes land! Kanskje en dag vender du tilbake i "
+#~ "min hær?"
+
+#~ msgid "Didn't I tell you so?!"
+#~ msgstr "Sa jeg ikke at det ville bli slik?"
+
+#~ msgid "And by my own hands you died!"
+#~ msgstr "Og ved mine egne hender skjedde det!"
+
+#~ msgid "I am Gwiti the Mighty, prepare to die!"
+#~ msgstr "Jeg er Gwiti den Store, forbered deg på å dø!"
+
+#~ msgid "Now you shall die!"
+#~ msgstr "Nå skal du dø!"
+
+#~ msgid ""
+#~ "You miserable wretch, know that it is only by my mercy that you look upon "
+#~ "the sun again, for you shall die before it sets."
+#~ msgstr ""
+#~ "Din ynkelige krøpling, vit at det er bare på min nåde at du ser solen "
+#~ "igjen; du skal dø før den går ned."
+
+#~ msgid ""
+#~ "May I remind you that even as we speak, my undead legions are marching "
+#~ "towards you?"
+#~ msgstr ""
+#~ "Behøver jeg påpeke at mine vandøde legioner marsjerer mot deg, enda mens "
+#~ "vi taler?"
+
+#~ msgid "Crelanu's Book"
+#~ msgstr "Crelanu's Bok"
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Move Gwiti to take the Book\n"
+#~ "Defeat:\n"
+#~ "#Death of Gwiti\n"
+#~ "#Turns run out"
+#~ msgstr ""
+#~ "\n"
+#~ "Seier:\n"
+#~ "@Beveg Gwiti bort til Boken\n"
+#~ "Defeat:\n"
+#~ "#Gwiti dør\n"
+#~ "#Tiden renner ut"
+
+#~ msgid ""
+#~ "Time marched on, and so did Gwiti. He was nearing the place where the "
+#~ "dreadful tome of Crelanu was hidden."
+#~ msgstr ""
+#~ "Tiden gikk videre, og Gwiti likedan. Han nærmet seg stedet der han visste "
+#~ "at Crelanus skrekkelige bok lå gjemt."
+
+#~ msgid "I feel that it must be close. Could it be in that swamp?"
+#~ msgstr "Jeg merker dens nærhet. Kan den være i sumpen?"
+
+#~ msgid ""
+#~ "But the ancient mages had done their job well. The book had been hidden "
+#~ "in a grove over which Elves and Orcs had waged war for many years, and "
+#~ "any to approach would suffer their combined wrath..."
+#~ msgstr ""
+#~ "Men de gamle trollmenn hadde gjemt den bedre enn som så. Boken lå gjemt i "
+#~ "et skogbryn som alver og orker hadde kriget om i mange år, og all som "
+#~ "nærmet seg ville føle deres vrede..."
+
+#~ msgid "Oh no. The orcs seem to have recruited the undead to their side."
+#~ msgstr "Å nei. Orkene har visst fått vandøde med seg."
+
+#~ msgid ""
+#~ "Blast it! However did the elves get a necromancer to march with them?"
+#~ msgstr ""
+#~ "Dæven! Hvordan i alle dager har alvene fått en åndemaner til å alliere "
+#~ "seg med dem?"
+
+#~ msgid "I side not with either of you!"
+#~ msgstr "Jeg er ikke alliert med noen av dere?"
+
+#~ msgid "A truce, then? I fear he will be the death of us both."
+#~ msgstr "Øsnker du våpenstillstand? Jeg frykter han vil drepe oss begge."
+
+#~ msgid ""
+#~ "Very well. We have hated you Orcs for centuries, but the Undead are a "
+#~ "danger to all that live."
+#~ msgstr ""
+#~ "Enig. Vi har hatet dere orker i århundrer, men de vandøde er en trussel "
+#~ "til alt som lever."
+
+#~ msgid ""
+#~ "The book is not here, but these swamps contain enough corpses to suit my "
+#~ "purposes."
+#~ msgstr "Boken er ikke her, men sumpen innholder nok lik til mine formål."
+
+#~ msgid "What? I can't die! Noooo!"
+#~ msgstr "Hva? Jeg kan ikke dø! Neeeei!"
+
+#~ msgid "I die a terrible death... not knowing why."
+#~ msgstr "Jeg dør en forferdelig død... uten viten om hvorfor."
+
+#~ msgid "A curse upon that necromancer! Why did he have to come here?!"
+#~ msgstr "En forbannelse over han! Hvorfor måtte han komme hit?"
+
+#~ msgid ""
+#~ "At last! This is it! Now I must laugh crazedly as a true villain always "
+#~ "must!"
+#~ msgstr ""
+#~ "Endelig! Her er den! Nå må jeg komme med ondskapsfull latter slike de "
+#~ "onde alltid skal!"
+
+#~ msgid ""
+#~ "My lord, your suspicions were correct. There is indeed a necromancer in "
+#~ "this part of the country!"
+#~ msgstr ""
+#~ "Herre, dine mistanker har vist seg å holde stikk! Det er visstnok en "
+#~ "svartkunstner i denne provinsen!"
 
 #, fuzzy
 #~ msgid "Mages and Elves"
@@ -9993,25 +10694,8 @@ msgstr ""
 #~ "#Tiden renner ut"
 
 #, fuzzy
-#~ msgid "Speak on."
-#~ msgstr "Snakk med alle"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move Gwiti or Tanar into the water\n"
-#~ "Defeat\n"
-#~ "#Death of Gwiti\n"
-#~ "#Death of Tanar"
-#~ msgstr ""
-#~ "\n"
-#~ "Seier:\n"
-#~ "@Flytt Gwiti til Trolldomstårnet\n"
-#~ "@Drep begge fiendens ledere\n"
-#~ "Nederlag:\n"
-#~ "#Gwiti Ha'atel dør\n"
-#~ "#Tiden renner ut"
+#~ msgid "I am dying, and my army is defeated! This is the end..."
+#~ msgstr "I am dying, and my army is defeated! This is the end...!"
 
 #~ msgid "You swore you would protect me!"
 #~ msgstr "Du sverget å beskytte meg!"
@@ -10060,90 +10744,57 @@ msgstr ""
 #~ msgid "Lizard Beach"
 #~ msgstr "Øglenes strand"
 
-#, fuzzy
-#~ msgid "Return of the Fleet"
-#~ msgstr "Fangarm fra Dypet"
+#~ msgid "'s game"
+#~ msgstr "s spill"
+
+#~ msgid "About"
+#~ msgstr "Om"
+
+#~ msgid "Turn Dialog"
+#~ msgstr "Dialogboks på ny runde"
+
+#~ msgid "Turn Bell"
+#~ msgstr "Pling på ny runde"
+
+#~ msgid "Show Team Colors"
+#~ msgstr "Vis lagenes farger"
+
+#~ msgid "Lawful"
+#~ msgstr "Lovlydig"
+
+#~ msgid "Neutral"
+#~ msgstr "Nøytral"
+
+#~ msgid "Chaotic"
+#~ msgstr "Kaotisk"
+
+#~ msgid "Load"
+#~ msgstr "Laste spill"
+
+#~ msgid "Start Game!"
+#~ msgstr "Start Spill!"
+
+#~ msgid "multiplayer save"
+#~ msgstr "flerspiller-lagret spill"
+
+#~ msgid "player"
+#~ msgstr "spiller"
 
 #, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat all Enemies\n"
-#~ "Defeat:\n"
-#~ "#Death of Prince Haldric or\n"
-#~ "#Death of Lady Jessica or\n"
-#~ "#Death of Lt. Aethyr or\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Seier:\n"
-#~ "@Overvinn fiendens ledere\n"
-#~ "Nederlag:\n"
-#~ "#Konrad dør\n"
-#~ "#Delfador dør\n"
-#~ "#Kalenz dør\n"
-#~ "#Tiden renner ut"
+#~ msgid "You have reached the end of the currently playable levels"
+#~ msgstr "Du har nådd enden av de eksisterende spillnivåene."
 
 #, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Slay the Dragon or\n"
-#~ "@Heroic: Slay the Dragon and defeat all Enemies\n"
-#~ "Defeat:\n"
-#~ "#Death of Prince Haldric or\n"
-#~ "#Death of Lady Jessica or\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Seier:\n"
-#~ "@Flytt Konrad til skiltet i nordvest\n"
-#~ "Nederlag:\n"
-#~ "#Konrad dør\n"
-#~ "#Delfador dør\n"
-#~ "#Tiden renner ut"
+#~ msgid "Choose Resolution"
+#~ msgstr "Velg oppløsning"
 
 #, fuzzy
-#~ msgid "The Plan"
-#~ msgstr "Slutt"
+#~ msgid "Video Mode"
+#~ msgstr "Video-modus"
 
 #, fuzzy
-#~ msgid "So what is your plan?"
-#~ msgstr "Hva mener du?"
-
-#, fuzzy
-#~ msgid "Right!"
-#~ msgstr "Ridder"
-
-#, fuzzy
-#~ msgid "The Vanguard"
-#~ msgstr "Slutt"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat all Enemies\n"
-#~ "Defeat:\n"
-#~ "#Death of Prince Haldric or\n"
-#~ "#Death of Lt. Aethyr or\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Seier:\n"
-#~ "@Overvinn fiendens leder\n"
-#~ "Nederlag:\n"
-#~ "#Konrad dør\n"
-#~ "#Delfador dør\n"
-#~ "#Tiden renner ut"
-
-#, fuzzy
-#~ msgid "I could have told you that."
-#~ msgstr "Mine herrer! Endelig fant jeg dere."
-
-#, fuzzy
-#~ msgid "Rhaarg!"
-#~ msgstr "stormangrep"
+#~ msgid "There are no alternative video modes available"
+#~ msgstr "Det finnes ingen alternative video-moduser tilgjengelig"
 
 #, fuzzy
 #~ msgid ""
@@ -10155,57 +10806,21 @@ msgstr ""
 #~ "bits per pixel for å kjøre dette spillet i vindumodus. Displayet må "
 #~ "støtte 1024x768x16 for å kunne kjøres med full skjerm."
 
-#~ msgid "player"
-#~ msgstr "spiller"
-
 #, fuzzy
 #~ msgid "Full Screen"
 #~ msgstr "Fullskjerm"
-
-#, fuzzy
-#~ msgid "Accelerated Speed"
-#~ msgstr "Akselerert"
-
-#, fuzzy
-#~ msgid "Show Grid"
-#~ msgstr "Vis rutenett"
-
-#~ msgid "Turn Dialog"
-#~ msgstr "Dialogboks på ny runde"
-
-#~ msgid "Turn Bell"
-#~ msgstr "Pling på ny runde"
-
-#~ msgid "Show Team Colors"
-#~ msgstr "Vis lagenes farger"
-
-#, fuzzy
-#~ msgid "Video Mode"
-#~ msgstr "Video-modus"
 
 #, fuzzy
 #~ msgid "Hotkeys"
 #~ msgstr "Hurtigtaster"
 
 #, fuzzy
-#~ msgid "Music Volume:"
-#~ msgstr "Musikkvolum:"
+#~ msgid "Save Hotkeys"
+#~ msgstr "Lagre hurtigtaster"
 
 #, fuzzy
-#~ msgid "SFX Volume:"
-#~ msgstr "Lydeffektvolum:"
-
-#, fuzzy
-#~ msgid "Scroll Speed:"
-#~ msgstr "Panoreringsfart:"
-
-#, fuzzy
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "Det finnes ingen alternative video-moduser tilgjengelig"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Velg oppløsning"
+#~ msgid "Change Hotkey"
+#~ msgstr "Endre hurtigtast"
 
 #, fuzzy
 #~ msgid "Hotkey Settings"
@@ -10216,57 +10831,32 @@ msgstr ""
 #~ msgstr "Trykk ønsket hurtigtast"
 
 #, fuzzy
-#~ msgid "Change Hotkey"
-#~ msgstr "Endre hurtigtast"
-
-#, fuzzy
-#~ msgid "Save Hotkeys"
-#~ msgstr "Lagre hurtigtaster"
-
-#, fuzzy
 #~ msgid "This HotKey is already in use."
 #~ msgstr "Denne hurtigtasten er allerede i bruk. Ingen endringer ble gjort."
 
 #, fuzzy
-#~ msgid ""
-#~ "Bugg: Control of the seas! A small step for me, a great leap for all "
-#~ "goblinoids! *Glub*"
-#~ msgstr ""
-#~ "Bugg: Kontroll over havene! Et lite skritt for meg, et stort sprang for "
-#~ "alle gnomer! *Glubb*"
+#~ msgid "Accelerated Speed"
+#~ msgstr "Akselerert"
 
 #, fuzzy
-#~ msgid "You have reached the end of the currently playable levels"
-#~ msgstr "Du har nådd enden av de eksisterende spillnivåene."
+#~ msgid "Show Grid"
+#~ msgstr "Vis rutenett"
+
+#, fuzzy
+#~ msgid "SFX Volume:"
+#~ msgstr "Lydeffektvolum:"
+
+#, fuzzy
+#~ msgid "Music Volume:"
+#~ msgstr "Musikkvolum:"
+
+#, fuzzy
+#~ msgid "Scroll Speed:"
+#~ msgstr "Panoreringsfart:"
 
 #, fuzzy
 #~ msgid "Race"
 #~ msgstr "Rase"
-
-#~ msgid "Chaotic"
-#~ msgstr "Kaotisk"
-
-#~ msgid "Lawful"
-#~ msgstr "Lovlydig"
-
-#~ msgid "Neutral"
-#~ msgstr "Nøytral"
-
-#, fuzzy
-#~ msgid "I am dying, and my army is defeated! This is the end..."
-#~ msgstr "I am dying, and my army is defeated! This is the end...!"
-
-#~ msgid "About"
-#~ msgstr "Om"
-
-#~ msgid "Load"
-#~ msgstr "Laste spill"
-
-#~ msgid "Start Game!"
-#~ msgstr "Start Spill!"
-
-#~ msgid "multiplayer save"
-#~ msgstr "flerspiller-lagret spill"
 
 #~ msgid "Battle Princess"
 #~ msgstr "Prinsesse"
@@ -10284,6 +10874,20 @@ msgstr ""
 #~ "De beste rytterne i Wesnoth blir rekruttert til militæret for å bli "
 #~ "medlemmer i kavaleriet. Denne svært disiplinerte styrken er spesielt "
 #~ "egnet til å ta og holde landsbyer."
+
+#, fuzzy
+#~ msgid "Dragoon "
+#~ msgstr "Dragon"
+
+#~ msgid ""
+#~ "Dwarvish Fighters wield mighty battle axes, which make them feared "
+#~ "opponents in close range combat. They are excellent in mountainous "
+#~ "terrain or underground. Though not swift, their power and endurance more "
+#~ "than compensate."
+#~ msgstr ""
+#~ "Med sine mektige stridsøkser er dvergiske krigere fyktet i nærkamp. De "
+#~ "utmerker seg i fjellendt terreng eller under bakken. Om de ikke er raske, "
+#~ "gjør deres styrke og utholdenhet mer enn opp for det."
 
 #~ msgid ""
 #~ "Elvish Archers are trained from youth in archery, and so skilled in long-"
@@ -10319,7 +10923,6 @@ msgstr ""
 #~ "mer enn kompenserer for hans mangel på ferdigheter i nærkamp og manglende "
 #~ "hurtighet."
 
-#, fuzzy
 #~ msgid ""
 #~ "Elvish Rangers are quick and powerful. Skilled in both short- and long-"
 #~ "range combat, Rangers are truly all-round fighters. The best of all "
@@ -10344,15 +10947,12 @@ msgstr ""
 #~ "garantert 60% sjanse for å treffe, er skarpskyttere glimrende til å jage "
 #~ "ut motstandere bak gode forsvarsverk."
 
-#, fuzzy
 #~ msgid "Heavy Infantry"
 #~ msgstr "Tungt Infanteri"
 
-#, fuzzy
 #~ msgid "Merman Lord"
 #~ msgstr "Havmannherre"
 
-#, fuzzy
 #~ msgid ""
 #~ "Merman Lords are masters of the sea. Skilled in use of the trident, "
 #~ "Merman Lords easily defeat any enemy foolish enough to wander into their "
@@ -10362,9 +10962,25 @@ msgstr ""
 #~ "en hvilken som helst fiende som er dum nok til å entre hans foretrukne "
 #~ "miljø; nemlig sjøen."
 
-#, fuzzy
 #~ msgid "Orcish Crossbow"
 #~ msgstr "Orkisk Armbrøstskytter"
+
+#~ msgid "Pitch Fork"
+#~ msgstr "Høygaffel"
+
+#~ msgid ""
+#~ "Bugg: Control of the seas! A small step for me, a great leap for all "
+#~ "goblinoids! *Glub*"
+#~ msgstr ""
+#~ "Bugg: Makt over havene! Et lite skritt for meg, et stort sprang for alle "
+#~ "gnomer! *Glubb*"
+
+#~ msgid ""
+#~ "Cold and beautifull, she mantains its ethernal youthfull apareance "
+#~ "drinking the blood of the living."
+#~ msgstr ""
+#~ "Kald og vakker, hun har beholdt sitt ungdommelig utseende ved å drikke "
+#~ "blodet fra de levende."
 
 #~ msgid "yes"
 #~ msgstr "ja"
