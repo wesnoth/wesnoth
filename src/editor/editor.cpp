@@ -301,13 +301,7 @@ void map_editor::edit_new_map()
 {
 	const std::string map = new_map_dialog(gui_);
  	if (map != "") {
-		int res = 0;
-		if (num_operations_since_save_ != 0) {
-			res = gui::show_dialog(gui_, NULL, "",
-								   "The modification to the map will be discarded.  Continue?",
-								   gui::OK_CANCEL);
-		}
-		if (res == 0)
+		if (confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?"))
 			throw new_map_exception(map);
 	}
 }
@@ -552,6 +546,17 @@ bool map_editor::confirm_exit_and_save() {
 	return true;
 }
 
+bool map_editor::confirm_modification_disposal(display& disp, const std::string message)
+{
+	bool ret = true;
+	if (num_operations_since_save_ != 0) {
+		const int res = gui::show_dialog(gui_, NULL, "", message,
+						 gui::OK_CANCEL);
+		ret = res == 0;
+	}
+	return ret;
+}
+
 bool map_editor::save_map(const std::string fn, const bool display_confirmation) {
 	std::string filename = fn;
 	if (filename == "") {
@@ -758,12 +763,8 @@ void map_editor::edit_load_map()
 		gui::show_dialog(gui_, NULL, "", std::string("Load failed: ") + msg, gui::OK_ONLY);
 	}
 	else {
-		if (num_operations_since_save_ != 0) {
-			const int res = gui::show_dialog(gui_, NULL, "",
-											 "The modification to the map will be discarded.  Continue?",
-											 gui::OK_CANCEL);
-			if (res != 0)
-				return;
+		if (! confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
+			return;
 		}
 		throw new_map_exception(map);
 	}

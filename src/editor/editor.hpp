@@ -165,6 +165,10 @@ private:
 	/// Shows dialog to create new map.
 	std::string new_map_dialog(display& disp);
 
+	/// Return true iff the map is not modified or user agreed to
+	/// dispose the modification.
+	bool confirm_modification_disposal(display& disp, const std::string message);
+
 	display &gui_;
 	gamemap &map_;
 	std::vector<gamemap::TERRAIN> terrains_;
