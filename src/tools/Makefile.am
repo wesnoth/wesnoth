@@ -63,7 +63,10 @@ exploder_SOURCES = exploder.cpp \
 		   ../filesystem.cpp \
 		   ../game_config.cpp \
 		   ../sdl_utils.cpp \
-		   ../log.cpp
+		   ../log.cpp \
+		   exploder_composer.hpp \
+		   exploder_cutter.hpp \
+		   exploder_utils.hpp
 
  cutter_SOURCES = cutter.cpp \
 		   exploder_utils.cpp \
@@ -74,7 +77,10 @@ exploder_SOURCES = exploder.cpp \
 		   ../filesystem.cpp \
 		   ../game_config.cpp \
 		   ../sdl_utils.cpp \
-		   ../log.cpp
+		   ../log.cpp \
+		   exploder_composer.hpp \
+		   exploder_cutter.hpp \
+		   exploder_utils.hpp
 
 
 exploder_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@

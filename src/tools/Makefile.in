@@ -215,7 +215,10 @@ merge_translations_SOURCES = merge_translations.cpp \
 @LIBPNG_TRUE@		   ../filesystem.cpp \
 @LIBPNG_TRUE@		   ../game_config.cpp \
 @LIBPNG_TRUE@		   ../sdl_utils.cpp \
-@LIBPNG_TRUE@		   ../log.cpp
+@LIBPNG_TRUE@		   ../log.cpp \
+@LIBPNG_TRUE@		   exploder_composer.hpp \
+@LIBPNG_TRUE@		   exploder_cutter.hpp \
+@LIBPNG_TRUE@		   exploder_utils.hpp
 
 
 @LIBPNG_TRUE@cutter_SOURCES = cutter.cpp \
@@ -227,7 +230,10 @@ merge_translations_SOURCES = merge_translations.cpp \
 @LIBPNG_TRUE@		   ../filesystem.cpp \
 @LIBPNG_TRUE@		   ../game_config.cpp \
 @LIBPNG_TRUE@		   ../sdl_utils.cpp \
-@LIBPNG_TRUE@		   ../log.cpp
+@LIBPNG_TRUE@		   ../log.cpp \
+@LIBPNG_TRUE@		   exploder_composer.hpp \
+@LIBPNG_TRUE@		   exploder_cutter.hpp \
+@LIBPNG_TRUE@		   exploder_utils.hpp
 
 
 @LIBPNG_TRUE@exploder_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@
@@ -247,7 +253,8 @@ PROGRAMS = $(bin_PROGRAMS)
 am__cutter_SOURCES_DIST = cutter.cpp exploder_utils.cpp \
 	exploder_cutter.cpp ../server/variable.cpp dummy_video.cpp \
 	../config.cpp ../filesystem.cpp ../game_config.cpp \
-	../sdl_utils.cpp ../log.cpp
+	../sdl_utils.cpp ../log.cpp exploder_composer.hpp \
+	exploder_cutter.hpp exploder_utils.hpp
 @LIBPNG_TRUE@am_cutter_OBJECTS = cutter.$(OBJEXT) \
 @LIBPNG_TRUE@	exploder_utils.$(OBJEXT) exploder_cutter.$(OBJEXT) \
 @LIBPNG_TRUE@	variable.$(OBJEXT) dummy_video.$(OBJEXT) \
@@ -261,7 +268,8 @@ am__exploder_SOURCES_DIST = exploder.cpp exploder_utils.cpp \
 	exploder_cutter.cpp exploder_composer.cpp \
 	../server/variable.cpp dummy_video.cpp ../config.cpp \
 	../filesystem.cpp ../game_config.cpp ../sdl_utils.cpp \
-	../log.cpp
+	../log.cpp exploder_composer.hpp exploder_cutter.hpp \
+	exploder_utils.hpp
 @LIBPNG_TRUE@am_exploder_OBJECTS = exploder.$(OBJEXT) \
 @LIBPNG_TRUE@	exploder_utils.$(OBJEXT) exploder_cutter.$(OBJEXT) \
 @LIBPNG_TRUE@	exploder_composer.$(OBJEXT) variable.$(OBJEXT) \
