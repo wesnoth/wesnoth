@@ -1360,7 +1360,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 		image_type = image::BRIGHTENED;
 	}
 	else if (highlighted_locations_.find(loc) != highlighted_locations_.end()) {
-		image_type = image::BRIGHTENED;
+		image_type = image::SEMI_BRIGHTENED;
 	}
 
 	scoped_sdl_surface surface(getTerrain(terrain,image_type,x,y));

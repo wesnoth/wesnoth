@@ -19,7 +19,8 @@ typedef std::map<gamemap::TERRAIN,SDL_Surface*> mini_terrain_cache_map;
 mini_terrain_cache_map mini_terrain_cache;
 
 typedef std::map<image::locator,SDL_Surface*> image_map;
-image_map images_,scaledImages_,unmaskedImages_,greyedImages_,brightenedImages_;
+image_map images_,scaledImages_,unmaskedImages_,greyedImages_;
+image_map brightenedImages_,semiBrightenedImages_;
 
 std::map<SDL_Surface*,SDL_Surface*> reversedImages_;
 
@@ -49,22 +50,35 @@ void clear_surfaces(Map& surfaces)
 	clear_surfaces_internal(surfaces,surfaces.begin(),surfaces.end());
 }
 
-enum TINT { GREY_IMAGE, BRIGHTEN_IMAGE };
+enum TINT { GREY_IMAGE, BRIGHTEN_IMAGE, SEMI_BRIGHTEN_IMAGE };
 
 SDL_Surface* get_tinted(const image::locator& i_locator, TINT tint)
 {
-	image_map& images = tint == GREY_IMAGE ? greyedImages_ : brightenedImages_;
+	image_map* images;
+	if (tint == GREY_IMAGE) {
+		images = &greyedImages_;
+	} else if (tint == BRIGHTEN_IMAGE) {
+		images = &brightenedImages_;
+	} else {
+		images = &semiBrightenedImages_;
+	}
 
-	const image_map::iterator itor = images.find(i_locator);
+	const image_map::iterator itor = images->find(i_locator);
 
-	if(itor != images.end()) {
+	if(itor != images->end()) {
 		return itor->second;
 	}
 
 	scoped_sdl_surface base(image::get_image(i_locator,image::SCALED));
-	SDL_Surface* const surface = (tint == GREY_IMAGE ? greyscale_image(base) : brighten_image(base,1.5));
-
-	images.insert(std::pair<image::locator,SDL_Surface*>(i_locator,surface));
+	SDL_Surface* surface;
+	if (tint == GREY_IMAGE) {
+		surface = greyscale_image(base);
+	} else if (tint == BRIGHTEN_IMAGE) {
+		surface = brighten_image(base,1.5);
+	} else {
+		surface = brighten_image(base, 1.25);
+	}
+	images->insert(std::pair<image::locator,SDL_Surface*>(i_locator,surface));
 
 	return surface;
 }
@@ -247,6 +261,8 @@ SDL_Surface* get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUST
 		result = get_tinted(i_locator,GREY_IMAGE);
 	} else if(type == BRIGHTENED) {
 		result = get_tinted(i_locator,BRIGHTEN_IMAGE);
+	} else if(type == SEMI_BRIGHTENED) {
+		result = get_tinted(i_locator,SEMI_BRIGHTEN_IMAGE);
 	} else {
 
 		image_map::iterator i;

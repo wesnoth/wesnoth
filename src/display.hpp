@@ -316,7 +316,8 @@ public:
     void rebuild_terrain(const gamemap::location &location);
 	
 	//Add a location to highlight. Note that this has nothing to do with
-	//selecting hexes, it is pure highlighting.
+	//selecting hexes, it is pure highlighting. These hexes will be
+	//highlighted slightly darker than the currently selected hex.
 	void add_highlighted_loc(const gamemap::location &hex);
 
 	void clear_highlighted_locs();

@@ -73,7 +73,7 @@ namespace image {
 	///scaled images.
 	void set_zoom(int zoom);
 
-	enum TYPE { UNSCALED, SCALED, UNMASKED, GREYED, BRIGHTENED };
+	enum TYPE { UNSCALED, SCALED, UNMASKED, GREYED, BRIGHTENED, SEMI_BRIGHTENED };
 
 	enum COLOUR_ADJUSTMENT { ADJUST_COLOUR, NO_ADJUST_COLOUR };
 
