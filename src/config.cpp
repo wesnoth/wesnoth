@@ -621,11 +621,15 @@ std::vector<std::string> config::split(const std::string& val)
 	return res;
 }
 
+namespace {
+bool notspace(char c) { return !isspace(c); }
+}
+
 std::string& config::strip(std::string& str)
 {
 	//if all the string contains is whitespace, then the whitespace may
 	//have meaning, so don't strip it
-	const std::string::iterator it=std::find_if(str.begin(),str.end(),isgraph);
+	const std::string::iterator it=std::find_if(str.begin(),str.end(),notspace);
 	if(it == str.end())
 		return str;
 
