@@ -584,8 +584,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		leader->second.set_leading(false);
 	}
 
-	disp.draw_tile(a.x,a.y);
-	disp.draw_tile(b.x,b.y);
+	disp.invalidate(a);
+	disp.invalidate(b);
 
 	def->second.set_standing();
 
@@ -596,8 +596,6 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	if(dead) {
 		unit_die(disp,def->first,def->second);
 	}
-
-	disp.update_display();
 
 	return dead;
 }
@@ -849,8 +847,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		leader->second.set_leading(false);
 	}
 
-	disp.draw_tile(a.x,a.y);
-	disp.draw_tile(b.x,b.y);
+	disp.invalidate(a);
+	disp.invalidate(b);
 	if(leader_loc.valid()) {
 		disp.draw_tile(leader_loc.x,leader_loc.y);
 	}
@@ -860,8 +858,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	if(dead) {
 		unit_display::unit_die(disp,def->first,def->second);
 	}
-
-	disp.update_display();
 
 	return dead;
 }
