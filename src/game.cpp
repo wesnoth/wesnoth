@@ -1649,6 +1649,8 @@ int main(int argc, char** argv)
 		//just means the game should quit
 	} catch(end_level_exception&) {
 		std::cerr << "caught end_level_exception (quitting)\n";
+	} catch(std::bad_alloc&) {
+		std::cerr << "ran out of memory: game aborted\n";
 	} /*catch(...) {
 		std::cerr << "Unhandled exception. Exiting\n";
 	}*/
