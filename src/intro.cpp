@@ -21,6 +21,7 @@
 #include "image.hpp"
 #include "intro.hpp"
 #include "key.hpp"
+#include "log.hpp"
 #include "sdl_utils.hpp"
 #include "sound.hpp"
 #include "util.hpp"
@@ -32,6 +33,8 @@
 #include <sstream>
 #include <vector>
 
+#define LOG_NG LOG_STREAM(info, engine)
+
 namespace {
 	const int min_room_at_bottom = 150;
 }
@@ -41,7 +44,7 @@ bool show_intro_part(display &disp, const config& part,
 
 void show_intro(display &disp, const config& data, const config& level)
 {
-	std::cerr << "showing intro sequence...\n";
+	LOG_NG << "showing intro sequence...\n";
 
 	//stop the screen being resized while we're in this function
 	const events::resize_lock stop_resizing;
@@ -62,7 +65,7 @@ void show_intro(display &disp, const config& data, const config& level)
 				NULL, item.second) ? "then":"else";
 			const config* const thens = (*item.second).child(type);
 			if(thens == NULL) {
-				std::cerr << "no intro story this way...\n";
+				LOG_NG << "no intro story this way...\n";
 				return;
 			}
 			const config& selection = *thens;
@@ -70,13 +73,13 @@ void show_intro(display &disp, const config& data, const config& level)
 		}
 	}
 
-	std::cerr << "intro sequence finished...\n";
+	LOG_NG << "intro sequence finished...\n";
 }
 
 bool show_intro_part(display &disp, const config& part,
 		const std::string& scenario)
 {
-	std::cerr << "showing intro part\n";
+	LOG_NG << "showing intro part\n";
 
 	CVideo &video = disp.video();
 	const std::string& music_file = part["music"];
@@ -186,7 +189,6 @@ bool show_intro_part(display &disp, const config& part,
 			if(pass == false) {
 				for(int i = 0; i != 50; ++i) {
 					if(key[SDLK_ESCAPE] || next_button.pressed() || skip_button.pressed()) {
-						std::cerr << "escape pressed..\n";
 						return false;
 					}
 
@@ -199,7 +201,6 @@ bool show_intro_part(display &disp, const config& part,
 					int a, b;
 					const int mouse_flags = SDL_GetMouseState(&a,&b);
 					if(key[SDLK_RETURN] || key[SDLK_SPACE] || mouse_flags) {
-						std::cerr << "key pressed..\n";
 						pass = true;
 						continue;
 					}
@@ -209,7 +210,6 @@ bool show_intro_part(display &disp, const config& part,
 			}
 
 			if(key[SDLK_ESCAPE] || next_button.pressed() || skip_button.pressed()) {
-				std::cerr << "escape pressed..\n";
 				pass = true;
 				continue;
 			}
@@ -218,8 +218,6 @@ bool show_intro_part(display &disp, const config& part,
 
 	const std::string& story = part["story"];
 	utils::utf8_iterator itor(story);
-
-	std::cerr << story << std::endl;
 
 	bool skip = false, last_key = true;
 
