@@ -191,7 +191,7 @@ void ai_interface::sync_network()
 
 gamemap::location ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
-	std::cerr << "ai_interface::move_unit " << (from.x+1) << (from.y+1) << " -> " << (to.x+1) << "," << (to.y+1) << "\n";
+	std::cerr << "ai_interface::move_unit " << (from.x+1) << "," << (from.y+1) << " -> " << (to.x+1) << "," << (to.y+1) << "\n";
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands(&info_.disp);
 
@@ -346,7 +346,6 @@ bool ai::multistep_move_possible(location from, location to, location via, std::
 
 gamemap::location ai::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
-	std::cerr << "ai::move_unit " << (from.x+1) << (from.y+1) << " -> " << (to.x+1) << "," << (to.y+1) << "\n";
 	std::map<location,paths> temp_possible_moves;
 	std::map<location,paths>* possible_moves_ptr = &possible_moves;
 

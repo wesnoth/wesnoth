@@ -18,7 +18,7 @@ namespace gui {
 menu::menu(display& disp, const std::vector<std::string>& items,
            bool click_selects, int max_height)
         : max_height_(max_height), max_items_(-1), item_height_(-1),
-		  display_(&disp), x_(0), y_(0), buffer_(NULL),
+		  display_(&disp), x_(0), y_(0), cur_help_(-1,-1), help_string_(-1), buffer_(NULL),
           selected_(click_selects ? -1:0), click_selects_(click_selects),
           previous_button_(true), drawn_(false), show_result_(false),
           height_(-1), width_(-1), first_item_on_screen_(0),
@@ -43,6 +43,29 @@ menu::menu(display& disp, const std::vector<std::string>& items,
 		if(first_item.empty() == false && first_item[0] == '*') {
 			selected_ = items_.size()-1;
 			first_item.erase(first_item.begin());
+		}
+	}
+
+	create_help_strings();
+}
+
+void menu::create_help_strings()
+{
+	help_.clear();
+	for(std::vector<std::vector<std::string> >::iterator i = items_.begin(); i != items_.end(); ++i) {
+		help_.resize(help_.size()+1);
+		for(std::vector<std::string>::iterator j = i->begin(); j != i->end(); ++j) {
+			if(std::find(j->begin(),j->end(),HELP_STRING_SEPERATOR) == j->end()) {
+				help_.back().push_back("");
+			} else {
+				const std::vector<std::string>& items = config::split(*j,HELP_STRING_SEPERATOR,0);
+				if(items.size() >= 2) {
+					*j = items.front();
+					help_.back().push_back(items.back());
+				} else {
+					help_.back().push_back("");
+				}
+			}
 		}
 	}
 }
@@ -641,6 +664,27 @@ int menu::hit(int x, int y) const
 	return -1;
 }
 
+std::pair<int,int> menu::hit_cell(int x, int y) const
+{
+	if(x > x_  && x < x_ + width() - scrollbar_.get_width() && 
+	   y > y_ && y < y_ + height()) {
+		for(size_t i = 0; i != items_.size(); ++i) {
+			const SDL_Rect& rect = get_item_rect(i);
+			if(y > rect.y && y < rect.y + rect.h) {
+				const std::vector<int>& widths = column_widths();
+				for(std::vector<int>::const_iterator w = widths.begin(); w != widths.end(); ++w) {
+					x -= *w;
+					if(x <= x_) {
+						return std::pair<int,int>(int(i),int(w-widths.begin()));
+					}
+				}
+			}
+		}
+	}
+
+	return std::pair<int,int>(-1,-1);
+}
+
 SDL_Rect menu::get_item_rect(int item) const
 {
 	const SDL_Rect empty_rect = {0,0,0,0};
@@ -707,6 +751,32 @@ size_t menu::get_item_height(int item) const
 	}
 
 	return item_height_ = max_height;
+}
+
+void menu::process_help_string(int mousex, int mousey)
+{
+	const std::pair<int,int> loc = hit_cell(mousex,mousey);
+	if(loc == cur_help_) {
+		return;
+	} else if(loc.first == -1) {
+		display_->clear_help_string(help_string_);
+		help_string_ = -1;
+	} else {
+		if(help_string_ != -1) {
+			display_->clear_help_string(help_string_);
+			help_string_ = -1;
+		}
+
+		if(size_t(loc.first) < help_.size()) {
+			const std::vector<std::string>& row = help_[loc.first];
+			if(size_t(loc.second) < help_.size()) {
+				const std::string& help = row[loc.second];
+				help_string_ = display_->set_help_string(help);
+			}
+		}
+	}
+
+	cur_help_ = loc;
 }
 
 }

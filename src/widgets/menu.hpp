@@ -56,6 +56,8 @@ public:
 
 	void set_dirty() { drawn_ = false; }
 
+	enum { HELP_STRING_SEPERATOR = '|' };
+
 private:
 	size_t max_items_onscreen() const;
 
@@ -71,7 +73,14 @@ private:
 
 	display* display_;
 	int x_, y_;
-	std::vector<std::vector<std::string> > items_;
+	std::vector<std::vector<std::string> > items_, help_;
+
+	void create_help_strings();
+	void process_help_string(int mousex, int mousey);
+
+	std::pair<int,int> cur_help_;
+	int help_string_;
+
 	mutable std::vector<int> column_widths_;
 
 	scoped_sdl_surface buffer_;
@@ -96,6 +105,8 @@ private:
 	void clear_item(int item);
 	void draw();
 	int hit(int x, int y) const;
+
+	std::pair<int,int> hit_cell(int x, int y) const;
 
 	mutable std::map<int,SDL_Rect> itemRects_;
 

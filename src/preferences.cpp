@@ -277,6 +277,12 @@ void set_grid(bool ison)
 	}
 }
 
+const std::string& official_network_host()
+{
+	static const std::string host = "devsrv.wesnoth.org";
+	return host;
+}
+
 const std::string& network_host()
 {
 	std::string& res = prefs["host"];

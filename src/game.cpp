@@ -329,6 +329,8 @@ int play_game(int argc, char** argv)
 
 	bool use_caching = true;
 
+	int force_bpp = -1;
+
 	for(arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if(val.empty()) {
@@ -350,6 +352,11 @@ int play_game(int argc, char** argv)
 						preferences::set_resolution(resolution);
 					}
 				}
+			}
+		} else if(val == "--bpp") {
+			if(arg+1 != argc) {
+				++arg;
+				force_bpp = lexical_cast_default<int>(argv[arg],-1);
 			}
 		} else if(val == "--nogui") {
 			no_gui = true;
@@ -437,6 +444,10 @@ int play_game(int argc, char** argv)
 	
 				return 0;
 			}
+		}
+
+		if(force_bpp > 0) {
+			bpp = force_bpp;
 		}
 	
 		std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
@@ -713,7 +724,7 @@ int play_game(int argc, char** argv)
 		std::cerr << "title screen returned result\n";
 
 		if(res == gui::QUIT_GAME) {
-			std::cerr << "quiting game...\n";
+			std::cerr << "quitting game...\n";
 			return 0;
 		} else if(res == gui::LOAD_GAME) {
 
@@ -904,13 +915,19 @@ int play_game(int argc, char** argv)
 			state.campaign_define = "MULTIPLAYER";
 
 			std::vector<std::string> host_or_join;
-			host_or_join.push_back(string_table["join_game"]);
-			host_or_join.push_back(string_table["host_game"]);
+			host_or_join.push_back(string_table["join_server"] + menu::HELP_STRING_SEPERATOR + string_table["join_server_help"]);
+			host_or_join.push_back(string_table["join_game"] + menu::HELP_STRING_SEPERATOR + string_table["join_game_help"]);
+			host_or_join.push_back(string_table["host_game"] + menu::HELP_STRING_SEPERATOR + string_table["host_game_help"]);
 
-			const int res = gui::show_dialog(disp,NULL,"","",gui::OK_CANCEL,&host_or_join);
+			std::string login = preferences::login();
+			const int res = gui::show_dialog(disp,NULL,string_table["multiplayer"],"",gui::OK_CANCEL,&host_or_join,NULL,string_table["login"] + ": ",&login);
+
+			if(res >= 0) {
+				preferences::set_login(login);
+			}
 			
 			try {
-				if(res == 1) {
+				if(res == 2) {
 					std::vector<std::string> chat;
 					config game_data;
 					multiplayer_game_setup_dialog mp_dialog(disp,units_data,game_config,state,true);
@@ -922,8 +939,13 @@ int play_game(int argc, char** argv)
 					if(res == lobby::CREATE) {
 						mp_dialog.start_game();
 					}
-				} else if(res == 0) {
-					play_multiplayer_client(disp,units_data,game_config,state);
+				} else if(res == 0 || res == 1) {
+					std::string host;
+					if(res == 0) {
+						host = preferences::official_network_host();
+					}
+
+					play_multiplayer_client(disp,units_data,game_config,state,host);
 				}
 			} catch(gamestatus::load_game_failed& e) {
 				gui::show_dialog(disp,NULL,"","error loading the game: " + e.message,gui::OK_ONLY);

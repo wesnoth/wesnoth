@@ -206,18 +206,20 @@ private:
 }
 
 void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
-                             game_state& state)
+                             game_state& state, std::string& host)
 {
 	log_scope("playing multiplayer client");
 
 	const network::manager net_manager;
 
-	std::string host = preferences::network_host();
-	const int res = gui::show_dialog(disp,NULL,"","",
-	                                 gui::OK_CANCEL,NULL,NULL,
-	                                 string_table["remote_host"] + ": ",&host);
-	if(res != 0 || host.empty()) {
-		return;
+	if(host.empty()) {
+		host = preferences::network_host();
+		const int res = gui::show_dialog(disp,NULL,"","",
+		                                 gui::OK_CANCEL,NULL,NULL,
+		                                 string_table["remote_host"] + ": ",&host);
+		if(res != 0 || host.empty()) {
+			return;
+		}
 	}
 
 	network::connection sock;
@@ -249,6 +251,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	//if we got a direction to login
 	if(data.child("mustlogin")) {
 
+		bool first_time = true;
 		config* error = NULL;
 
 		do {
@@ -257,14 +260,19 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			}
 
 			std::string login = preferences::login();
-			const int res = gui::show_dialog(disp,NULL,"",
-			                    string_table["must_login"],gui::OK_CANCEL,
-								NULL,NULL,string_table["login"] + ": ",&login);
-			if(res != 0 || login.empty()) {
-				return;
+
+			if(!first_time) {	
+				const int res = gui::show_dialog(disp,NULL,"",
+				                    string_table["must_login"],gui::OK_CANCEL,
+									NULL,NULL,string_table["login"] + ": ",&login);
+				if(res != 0 || login.empty()) {
+					return;
+				}
+
+				preferences::set_login(login);
 			}
 
-			preferences::set_login(login);
+			first_time = false;
 
 			config response;
 			response.add_child("login")["username"] = login;

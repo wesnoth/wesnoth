@@ -219,7 +219,9 @@ CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
 
 CVideo::~CVideo()
 {
+	std::cerr << "calling SDL_Quit()\n";
 	SDL_Quit();
+	std::cerr << "called SDL_Quit()\n";
 }
 
 void CVideo::make_fake()

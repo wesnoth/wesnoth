@@ -49,6 +49,7 @@ manager::manager()
 
 manager::~manager()
 {
+	std::cerr << "closing audio...\n";
 	if(!mix_ok)
 		return;
 
@@ -65,7 +66,9 @@ manager::~manager()
 		Mix_FreeMusic(j->second);
 	}
 
+	std::cerr << "final closing audio...\n";
 	Mix_CloseAudio();
+	std::cerr << "done closing audio...\n";
 }
 
 void play_music(const std::string& file)

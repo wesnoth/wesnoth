@@ -465,12 +465,6 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	out["replay"] = has_replay ? "yes" : "no";
 	out["snapshot"] = has_snapshot ? "yes" : "no";
 	
-	if(has_snapshot) {
-		out["map_data"] = state.snapshot["map_data"];
-	} else if(has_replay) {
-		out["map_data"] = state.starting_pos["map_data"];
-	}
-
 	out["campaign_type"] = state.campaign_type;
 	out["scenario"] = state.scenario;
 	out["difficulty"] = state.difficulty;
@@ -492,6 +486,8 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 		}
 	}
 
+	bool shrouded = false;
+
 	if(leader == "") {
 		const config& snapshot = has_snapshot ? state.snapshot : state.starting_pos;
 		const config::child_list& sides = snapshot.get_children("side");
@@ -499,6 +495,10 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 
 			if((**s)["controller"] != "human") {
 				continue;
+			}
+
+			if((**s)["shroud"] == "yes") {
+				shrouded = true;
 			}
 
 			const config::child_list& units = (**s).get_children("unit");
@@ -512,4 +512,12 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	}
 
 	out["leader"] = leader;
+
+	if(!shrouded) {
+		if(has_snapshot) {
+			out["map_data"] = state.snapshot["map_data"];
+		} else if(has_replay) {
+			out["map_data"] = state.starting_pos["map_data"];
+		}
+	}
 }

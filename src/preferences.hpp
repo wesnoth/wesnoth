@@ -60,6 +60,8 @@ namespace preferences {
 	bool grid();
 	void set_grid(bool ison);
 
+	const std::string& official_network_host();
+
 	const std::string& network_host();
 	void set_network_host(const std::string& host);
 

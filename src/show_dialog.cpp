@@ -591,8 +591,21 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 	}
 
+	const int text_widget_y = yloc+top_padding+text_and_image_height-6+menu_hpadding;
+
+	if(use_textbox) {
+		const int text_widget_y_unpadded = text_widget_y + (text_widget_height - text_widget.location().h)/2;
+		text_widget.set_location(xloc + left_padding +
+		                         text_widget_width - text_widget.location().w,
+		                         text_widget_y_unpadded);
+		events::raise_draw_event();
+		font::draw_text(&disp, clipRect, message_font_size,
+		                font::NORMAL_COLOUR, text_widget_label,
+						xloc + left_padding,text_widget_y_unpadded);
+	}
+
 	const int menu_xpos = xloc+total_image_width+left_padding+image_h_padding;
-	const int menu_ypos = yloc+top_padding+text_and_image_height+menu_hpadding;
+	const int menu_ypos = yloc+top_padding+text_and_image_height+menu_hpadding+ (use_textbox ? text_widget.location().h + top_padding : 0);
 	if(menu_.height() > 0) {
 		menu_.set_loc(menu_xpos,menu_ypos);
 	}
@@ -621,19 +634,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 	                font::NORMAL_COLOUR, message,
 					xloc+total_image_width+left_padding+image_h_padding,
 					yloc+top_padding);
-
-	const int text_widget_y = yloc+top_padding+text_and_image_height-6+menu_hpadding;
-
-	if(use_textbox) {
-		const int text_widget_y_unpadded = text_widget_y + (text_widget_height - text_widget.location().h)/2;
-		text_widget.set_location(xloc + left_padding +
-		                         text_widget_width - text_widget.location().w,
-		                         text_widget_y_unpadded);
-		events::raise_draw_event();
-		font::draw_text(&disp, clipRect, message_font_size,
-		                font::NORMAL_COLOUR, text_widget_label,
-						xloc + left_padding,text_widget_y_unpadded);
-	}
 
 	//set the position of any tick boxes. they go right below the menu, slammed against
 	//the right side of the dialog
