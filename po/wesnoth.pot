@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth.cpp.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-28 13:54+0200\n"
+"POT-Creation-Date: 2004-08-28 17:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3270,7 +3270,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Elven_Council.cfg:110
 msgid ""
-"How quickly do the race of men mature! Only fourteen winters have passed "
+"How quickly do the race of men mature! Only seventeen winters have passed "
 "since I last laid eyes on you, Konrad, yet you are now a grown man. A brave "
 "warrior stands before me!"
 msgstr ""
@@ -3291,8 +3291,8 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Elven_Council.cfg:130
 msgid ""
-"Rescued him from my mother? But nineteen years ago Konrad would have been an "
-"infant! What is this you are talking about?"
+"Rescued him from my mother? But seventeen years ago Konrad would have been "
+"an infant! What is this you are talking about?"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Elven_Council.cfg:135
@@ -11602,11 +11602,11 @@ msgstr ""
 msgid "End Turn"
 msgstr ""
 
-#: data/themes/default.cfg:126
+#: data/themes/default.cfg:126 data/themes/default.cfg:462
 msgid "hp"
 msgstr ""
 
-#: data/themes/default.cfg:133
+#: data/themes/default.cfg:133 data/themes/default.cfg:469
 msgid "xp"
 msgstr ""
 
@@ -11618,19 +11618,23 @@ msgstr ""
 msgid "statuspanel^movement"
 msgstr ""
 
-#: data/translations/english.cfg:5
-msgid "Easy"
+#: data/translations/english.cfg:4
+msgid "Vera.ttf"
 msgstr ""
 
 #: data/translations/english.cfg:6
-msgid "Medium"
+msgid "Easy"
 msgstr ""
 
 #: data/translations/english.cfg:7
+msgid "Medium"
+msgstr ""
+
+#: data/translations/english.cfg:8
 msgid "Hard"
 msgstr ""
 
-#: data/translations/english.cfg:12
+#: data/translations/english.cfg:13
 msgid ""
 "Lawful units fight better at day, and worse at night.\n"
 "\n"
@@ -11638,13 +11642,13 @@ msgid ""
 "Night: -25% Damage"
 msgstr ""
 
-#: data/translations/english.cfg:13
+#: data/translations/english.cfg:14
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
 
-#: data/translations/english.cfg:17
+#: data/translations/english.cfg:18
 msgid ""
 "Chaotic units fight better at night, and worse at day.\n"
 "\n"
@@ -11652,7 +11656,7 @@ msgid ""
 "Night: +25% Damage"
 msgstr ""
 
-#: data/translations/english.cfg:24
+#: data/translations/english.cfg:25
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of the "
@@ -11664,7 +11668,7 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 
-#: data/translations/english.cfg:32
+#: data/translations/english.cfg:33
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -11678,13 +11682,13 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#: data/translations/english.cfg:35
+#: data/translations/english.cfg:36
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages instantly."
 msgstr ""
 
-#: data/translations/english.cfg:40
+#: data/translations/english.cfg:41
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -11693,7 +11697,7 @@ msgid ""
 "Adjacent friendly units of lower level will do more damage in battle."
 msgstr ""
 
-#: data/translations/english.cfg:45
+#: data/translations/english.cfg:46
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -11703,7 +11707,7 @@ msgid ""
 "units next to this unit."
 msgstr ""
 
-#: data/translations/english.cfg:50
+#: data/translations/english.cfg:51
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -11713,488 +11717,488 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 
-#: data/translations/english.cfg:53
+#: data/translations/english.cfg:54
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
 "Zones of Control."
 msgstr ""
 
-#: data/translations/english.cfg:55
+#: data/translations/english.cfg:56
 msgid "Never more than 1 upkeep"
 msgstr ""
 
-#: data/translations/english.cfg:57
+#: data/translations/english.cfg:58
 msgid "This unit takes half normal damage when it did not initiate the attack."
 msgstr ""
 
-#: data/translations/english.cfg:59
+#: data/translations/english.cfg:60
 msgid "minimum damage"
 msgstr ""
 
-#: data/translations/english.cfg:61
+#: data/translations/english.cfg:62
 msgid "Game"
 msgstr ""
 
-#: data/translations/english.cfg:63
+#: data/translations/english.cfg:64
 msgid "Scenario"
 msgstr ""
 
-#: data/translations/english.cfg:65
+#: data/translations/english.cfg:66
 msgid "Configure Sides:"
 msgstr ""
 
-#: data/translations/english.cfg:66
+#: data/translations/english.cfg:67
 msgid "Choose Team Settings:"
 msgstr ""
 
-#: data/translations/english.cfg:67
+#: data/translations/english.cfg:68
 msgid "Could not connect to the remote host"
 msgstr ""
 
-#: data/translations/english.cfg:68
+#: data/translations/english.cfg:69
 msgid "Waiting for players to connect"
 msgstr ""
 
-#: data/translations/english.cfg:69
+#: data/translations/english.cfg:70
 msgid "Filled"
 msgstr ""
 
-#: data/translations/english.cfg:70
+#: data/translations/english.cfg:71
 msgid "Available"
 msgstr ""
 
-#: data/translations/english.cfg:71
+#: data/translations/english.cfg:72
 msgid "&misc/observer.png,Observer"
 msgstr ""
 
-#: data/translations/english.cfg:73
+#: data/translations/english.cfg:74
 msgid "Describe Unit"
 msgstr ""
 
-#: data/translations/english.cfg:75
+#: data/translations/english.cfg:76
 msgid "Full Screen or Windowed?"
 msgstr ""
 
-#: data/translations/english.cfg:76
+#: data/translations/english.cfg:77
 msgid "Display:"
 msgstr ""
 
-#: data/translations/english.cfg:77
+#: data/translations/english.cfg:78
 msgid "Windowed"
 msgstr ""
 
-#: data/translations/english.cfg:79
+#: data/translations/english.cfg:80
 msgid "Speed:"
 msgstr ""
 
-#: data/translations/english.cfg:80
+#: data/translations/english.cfg:81
 msgid "Normal"
 msgstr ""
 
-#: data/translations/english.cfg:82
+#: data/translations/english.cfg:83
 msgid "Sound Settings..."
 msgstr ""
 
-#: data/translations/english.cfg:83
+#: data/translations/english.cfg:84
 msgid "Options"
 msgstr ""
 
-#: data/translations/english.cfg:85
+#: data/translations/english.cfg:86
 msgid "Choose Scenario"
 msgstr ""
 
-#: data/translations/english.cfg:87
+#: data/translations/english.cfg:88
 msgid "This terrain acts as $terrains for movement and defense purposes"
 msgstr ""
 
-#: data/translations/english.cfg:88
+#: data/translations/english.cfg:89
 msgid "The terrain with the best modifier is chosen automatically"
 msgstr ""
 
-#: data/translations/english.cfg:89
+#: data/translations/english.cfg:90
 msgid "This terrain gives healing"
 msgstr ""
 
-#: data/translations/english.cfg:90
+#: data/translations/english.cfg:91
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain"
 msgstr ""
 
-#: data/translations/english.cfg:91
+#: data/translations/english.cfg:92
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain"
 msgstr ""
 
-#: data/translations/english.cfg:92 src/help.cpp:869
+#: data/translations/english.cfg:93 src/help.cpp:869
 msgid "or"
 msgstr ""
 
-#: data/translations/english.cfg:93
+#: data/translations/english.cfg:94
 msgid "Unit resistance table"
 msgstr ""
 
-#: data/translations/english.cfg:95
+#: data/translations/english.cfg:96
 msgid "See Also..."
 msgstr ""
 
-#: data/translations/english.cfg:99
+#: data/translations/english.cfg:100
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target."
 msgstr ""
 
-#: data/translations/english.cfg:102
+#: data/translations/english.cfg:103
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
 
-#: data/translations/english.cfg:105
+#: data/translations/english.cfg:106
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals."
 msgstr ""
 
-#: data/translations/english.cfg:108
+#: data/translations/english.cfg:109
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:111
+#: data/translations/english.cfg:112
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:114
+#: data/translations/english.cfg:115
 msgid ""
 "Plague:\n"
 "If this unit kills a living target and that unit was not stationed in a "
 "village, the dead target's corpse will rise up and fight for you."
 msgstr ""
 
-#: data/translations/english.cfg:117
+#: data/translations/english.cfg:118
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
 
-#: data/translations/english.cfg:120
+#: data/translations/english.cfg:121
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
 "receive one less attack than normal in combat for the duration of one turn."
 msgstr ""
 
-#: data/translations/english.cfg:123
+#: data/translations/english.cfg:124
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
 
-#: data/translations/english.cfg:126
+#: data/translations/english.cfg:127
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
 
-#: data/translations/english.cfg:129
+#: data/translations/english.cfg:130
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 
-#: data/translations/english.cfg:131
+#: data/translations/english.cfg:132
 msgid "first strike"
 msgstr ""
 
-#: data/translations/english.cfg:134
+#: data/translations/english.cfg:135
 msgid "Elves"
 msgstr ""
 
-#: data/translations/english.cfg:135
+#: data/translations/english.cfg:136
 msgid "Orcs"
 msgstr ""
 
-#: data/translations/english.cfg:136
+#: data/translations/english.cfg:137
 msgid "Humans"
 msgstr ""
 
-#: data/translations/english.cfg:137
+#: data/translations/english.cfg:138
 msgid "Undead"
 msgstr ""
 
-#: data/translations/english.cfg:141
+#: data/translations/english.cfg:142
 msgid "Deep Water"
 msgstr ""
 
-#: data/translations/english.cfg:142
+#: data/translations/english.cfg:143
 msgid "Shallow Water"
 msgstr ""
 
-#: data/translations/english.cfg:143
+#: data/translations/english.cfg:144
 msgid "Sand"
 msgstr ""
 
-#: data/translations/english.cfg:144 data/translations/english.cfg:146
-#: data/translations/english.cfg:147 data/translations/english.cfg:148
-#: data/translations/english.cfg:149 data/translations/english.cfg:150
+#: data/translations/english.cfg:145 data/translations/english.cfg:147
+#: data/translations/english.cfg:148 data/translations/english.cfg:149
+#: data/translations/english.cfg:150 data/translations/english.cfg:151
 msgid "Village"
 msgstr ""
 
-#: data/translations/english.cfg:145
+#: data/translations/english.cfg:146
 msgid "Swamp"
 msgstr ""
 
-#: data/translations/english.cfg:151
+#: data/translations/english.cfg:152
 msgid "Tundra"
 msgstr ""
 
-#: data/translations/english.cfg:152
+#: data/translations/english.cfg:153
 msgid "Ice"
 msgstr ""
 
-#: data/translations/english.cfg:153
+#: data/translations/english.cfg:154
 msgid "Road"
 msgstr ""
 
-#: data/translations/english.cfg:154
+#: data/translations/english.cfg:155
 msgid "Dirt"
 msgstr ""
 
-#: data/translations/english.cfg:155
+#: data/translations/english.cfg:156
 msgid "Grassland"
 msgstr ""
 
-#: data/translations/english.cfg:156
+#: data/translations/english.cfg:157
 msgid "Hills"
 msgstr ""
 
-#: data/translations/english.cfg:157
+#: data/translations/english.cfg:158
 msgid "Mountains"
 msgstr ""
 
-#: data/translations/english.cfg:158
+#: data/translations/english.cfg:159
 msgid "Forest"
 msgstr ""
 
-#: data/translations/english.cfg:159 data/translations/english.cfg:160
-#: data/translations/english.cfg:161
+#: data/translations/english.cfg:160 data/translations/english.cfg:161
+#: data/translations/english.cfg:162
 msgid "Bridge"
 msgstr ""
 
-#: data/translations/english.cfg:162
+#: data/translations/english.cfg:163
 msgid "Castle"
 msgstr ""
 
-#: data/translations/english.cfg:163
+#: data/translations/english.cfg:164
 msgid "Keep"
 msgstr ""
 
-#: data/translations/english.cfg:164
+#: data/translations/english.cfg:165
 msgid "Cave"
 msgstr ""
 
-#: data/translations/english.cfg:165
+#: data/translations/english.cfg:166
 msgid "Cave Wall"
 msgstr ""
 
-#: data/translations/english.cfg:166
+#: data/translations/english.cfg:167
 msgid "Encampment"
 msgstr ""
 
-#: data/translations/english.cfg:169
+#: data/translations/english.cfg:170
 msgid "$name's Bridge,$name's Crossing"
 msgstr ""
 
-#: data/translations/english.cfg:170
+#: data/translations/english.cfg:171
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr ""
 
-#: data/translations/english.cfg:171
+#: data/translations/english.cfg:172
 msgid "$name River,River $name"
 msgstr ""
 
-#: data/translations/english.cfg:172
+#: data/translations/english.cfg:173
 msgid "$name Forest,$name's Forest"
 msgstr ""
 
-#: data/translations/english.cfg:173
+#: data/translations/english.cfg:174
 msgid "$name Lake"
 msgstr ""
 
-#: data/translations/english.cfg:174
+#: data/translations/english.cfg:175
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr ""
 
-#: data/translations/english.cfg:175
+#: data/translations/english.cfg:176
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 
-#: data/translations/english.cfg:176
+#: data/translations/english.cfg:177
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
-#: data/translations/english.cfg:177
+#: data/translations/english.cfg:178
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 
-#: data/translations/english.cfg:178
+#: data/translations/english.cfg:179
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 
-#: data/translations/english.cfg:179
+#: data/translations/english.cfg:180
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
-#: data/translations/english.cfg:180
+#: data/translations/english.cfg:181
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
-#: data/translations/english.cfg:184
+#: data/translations/english.cfg:185
 msgid "Choose a File to Save As"
 msgstr ""
 
-#: data/translations/english.cfg:185
+#: data/translations/english.cfg:186
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: data/translations/english.cfg:186
+#: data/translations/english.cfg:187
 msgid "Which Player?"
 msgstr ""
 
-#: data/translations/english.cfg:187
+#: data/translations/english.cfg:188
 msgid "Which player should start here?"
 msgstr ""
 
-#: data/translations/english.cfg:188
+#: data/translations/english.cfg:189
 msgid "Choose a Map to Load"
 msgstr ""
 
-#: data/translations/english.cfg:189
+#: data/translations/english.cfg:190
 msgid "The file does not contain a valid map."
 msgstr ""
 
-#: data/translations/english.cfg:190
+#: data/translations/english.cfg:191
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr ""
 
-#: data/translations/english.cfg:191
+#: data/translations/english.cfg:192
 msgid "Load failed: "
 msgstr ""
 
-#: data/translations/english.cfg:192
+#: data/translations/english.cfg:193
 msgid "You must have a hex selected on the board."
 msgstr ""
 
-#: data/translations/english.cfg:193
+#: data/translations/english.cfg:194
 msgid "Do you want to save the map before quitting?"
 msgstr ""
 
-#: data/translations/english.cfg:194
+#: data/translations/english.cfg:195
 msgid "Map saved."
 msgstr ""
 
-#: data/translations/english.cfg:195
+#: data/translations/english.cfg:196
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: data/translations/english.cfg:196
+#: data/translations/english.cfg:197
 msgid "Player "
 msgstr ""
 
-#: data/translations/english.cfg:197
+#: data/translations/english.cfg:198
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr ""
 
-#: data/translations/english.cfg:198
+#: data/translations/english.cfg:199
 msgid "Create New Map"
 msgstr ""
 
-#: data/translations/english.cfg:199
+#: data/translations/english.cfg:200
 msgid "Generate New Map"
 msgstr ""
 
-#: data/translations/english.cfg:200
+#: data/translations/english.cfg:201
 msgid "Generate Random Map"
 msgstr ""
 
-#: data/translations/english.cfg:201
+#: data/translations/english.cfg:202
 msgid "Random Generator Settings"
 msgstr ""
 
-#: data/translations/english.cfg:202
+#: data/translations/english.cfg:203
 msgid "Map creation failed."
 msgstr ""
 
-#: data/translations/english.cfg:203 src/hotkeys.cpp:164
+#: data/translations/english.cfg:204 src/hotkeys.cpp:164
 msgid "Resize Map"
 msgstr ""
 
-#: data/translations/english.cfg:204
+#: data/translations/english.cfg:205
 msgid "X-Axis"
 msgstr ""
 
-#: data/translations/english.cfg:205
+#: data/translations/english.cfg:206
 msgid "Y-Axis"
 msgstr ""
 
-#: data/translations/english.cfg:206
+#: data/translations/english.cfg:207
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr ""
 
-#: data/translations/english.cfg:207
+#: data/translations/english.cfg:208
 msgid "Edit"
 msgstr ""
 
-#: data/translations/english.cfg:208
+#: data/translations/english.cfg:209
 msgid "File"
 msgstr ""
 
-#: data/translations/english.cfg:209
+#: data/translations/english.cfg:210
 msgid "FG"
 msgstr ""
 
-#: data/translations/english.cfg:210
+#: data/translations/english.cfg:211
 msgid "BG"
 msgstr ""
 
-#: data/translations/english.cfg:212
+#: data/translations/english.cfg:213
 msgid "Next tip"
 msgstr ""
 
-#: data/translations/english.cfg:213
+#: data/translations/english.cfg:214
 msgid "Tip of the Day"
 msgstr ""
 
-#: data/translations/english.cfg:214
+#: data/translations/english.cfg:215
 msgid "Do not show tips"
 msgstr ""
 
-#: data/translations/english.cfg:215
+#: data/translations/english.cfg:216
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
 
-#: data/translations/english.cfg:216
+#: data/translations/english.cfg:217
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
 
-#: data/translations/english.cfg:217
+#: data/translations/english.cfg:218
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
 "Different units have weaknesses against different types of attacks. Right-"
@@ -12203,7 +12207,7 @@ msgid ""
 "types."
 msgstr ""
 
-#: data/translations/english.cfg:218
+#: data/translations/english.cfg:219
 msgid ""
 "The terrain your units are on determines the chance your opponents have of "
 "hitting them in battle. The defensive rating for the currently selected uni "
@@ -12211,7 +12215,7 @@ msgid ""
 "the screen."
 msgstr ""
 
-#: data/translations/english.cfg:219
+#: data/translations/english.cfg:220
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -12219,83 +12223,83 @@ msgid ""
 "the 'cure' ability."
 msgstr ""
 
-#: data/translations/english.cfg:220
+#: data/translations/english.cfg:221
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' by the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
 
-#: data/translations/english.cfg:221
+#: data/translations/english.cfg:222
 msgid ""
 "All units have a Zone of Control in each of the hexes next to them. If a "
 "unit moves into an enemy's Zone of Control, it may not move any further that "
 "turn."
 msgstr ""
 
-#: data/translations/english.cfg:222
+#: data/translations/english.cfg:223
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks always have "
 "a 70% chance to hit, and marksman attacks have at least 60% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:223
+#: data/translations/english.cfg:224
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 
-#: data/translations/english.cfg:224
+#: data/translations/english.cfg:225
 msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
 msgstr ""
 
-#: data/translations/english.cfg:225
+#: data/translations/english.cfg:226
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
 "villages and castles."
 msgstr ""
 
-#: data/translations/english.cfg:226
+#: data/translations/english.cfg:227
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
 
-#: data/translations/english.cfg:227
+#: data/translations/english.cfg:228
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr ""
 
-#: data/translations/english.cfg:228
+#: data/translations/english.cfg:229
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr ""
 
-#: data/translations/english.cfg:229
+#: data/translations/english.cfg:230
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
 
-#: data/translations/english.cfg:230
+#: data/translations/english.cfg:231
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
 
-#: data/translations/english.cfg:231
+#: data/translations/english.cfg:232
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 
-#: data/translations/english.cfg:232
+#: data/translations/english.cfg:233
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map, and the number of turns you "
@@ -12303,7 +12307,7 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 
-#: data/translations/english.cfg:233
+#: data/translations/english.cfg:234
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -12311,75 +12315,75 @@ msgid ""
 "for you on their keep so you can recruit there."
 msgstr ""
 
-#: data/translations/english.cfg:234
+#: data/translations/english.cfg:235
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
 
-#: data/translations/english.cfg:235
+#: data/translations/english.cfg:236
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
 
-#: data/translations/english.cfg:236
+#: data/translations/english.cfg:237
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
 
-#: data/translations/english.cfg:237
+#: data/translations/english.cfg:238
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
 
-#: data/translations/english.cfg:238
+#: data/translations/english.cfg:239
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 
-#: data/translations/english.cfg:239
+#: data/translations/english.cfg:240
 msgid "Read the hotkeys list in the preferences menu."
 msgstr ""
 
-#: data/translations/english.cfg:240
+#: data/translations/english.cfg:241
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
 
-#: data/translations/english.cfg:241
+#: data/translations/english.cfg:242
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
 
-#: data/translations/english.cfg:242
+#: data/translations/english.cfg:243
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
 
-#: data/translations/english.cfg:243
+#: data/translations/english.cfg:244
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also gives "
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
 
-#: data/translations/english.cfg:244
+#: data/translations/english.cfg:245
 msgid "Holy attacks are very powerful against undead."
 msgstr ""
 
-#: data/translations/english.cfg:245
+#: data/translations/english.cfg:246
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
 
-#: data/translations/english.cfg:246
+#: data/translations/english.cfg:247
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -15132,12 +15136,12 @@ msgid "Moves"
 msgstr ""
 
 #: src/dialogs.cpp:764 src/display.cpp:935 src/help.cpp:694
-#: src/playturn.cpp:618 src/reports.cpp:229
+#: src/playturn.cpp:618 src/reports.cpp:230
 msgid "melee"
 msgstr ""
 
 #: src/dialogs.cpp:765 src/display.cpp:936 src/help.cpp:694
-#: src/playturn.cpp:618 src/reports.cpp:230
+#: src/playturn.cpp:618 src/reports.cpp:231
 msgid "ranged"
 msgstr ""
 
@@ -15260,7 +15264,7 @@ msgstr ""
 msgid "Required XP"
 msgstr ""
 
-#: src/help.cpp:633 src/reports.cpp:232
+#: src/help.cpp:633 src/reports.cpp:233
 msgid "attacks"
 msgstr ""
 
@@ -15636,7 +15640,7 @@ msgstr ""
 msgid "The map is unknown until your units explore it"
 msgstr ""
 
-#: src/multiplayer.cpp:116 src/reports.cpp:374
+#: src/multiplayer.cpp:116 src/reports.cpp:375
 msgid "Observers"
 msgstr ""
 
@@ -15953,7 +15957,7 @@ msgstr ""
 msgid "Melee"
 msgstr ""
 
-#: src/playturn.cpp:631 src/reports.cpp:209
+#: src/playturn.cpp:631 src/reports.cpp:210
 msgid "vs"
 msgstr ""
 
@@ -16363,35 +16367,39 @@ msgstr ""
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
 
-#: src/reports.cpp:231
+#: src/reports.cpp:131 src/reports.cpp:142
+msgid "_description"
+msgstr ""
+
+#: src/reports.cpp:232
 msgid "damage"
 msgstr ""
 
-#: src/reports.cpp:236
+#: src/reports.cpp:237
 msgid "hexes"
 msgstr ""
 
-#: src/reports.cpp:253
+#: src/reports.cpp:254
 msgid "Lawful units"
 msgstr ""
 
-#: src/reports.cpp:255
+#: src/reports.cpp:256
 msgid "Neutral units"
 msgstr ""
 
-#: src/reports.cpp:256
+#: src/reports.cpp:257
 msgid "Chaotic units"
 msgstr ""
 
-#: src/reports.cpp:310
+#: src/reports.cpp:311
 msgid "Owned"
 msgstr ""
 
-#: src/reports.cpp:312
+#: src/reports.cpp:313
 msgid "Enemy"
 msgstr ""
 
-#: src/reports.cpp:314
+#: src/reports.cpp:315
 msgid "Allied"
 msgstr ""
 
@@ -16482,15 +16490,15 @@ msgid "strikes"
 msgstr ""
 
 #: src/unit_types.cpp:862
-msgid "Chaotic"
+msgid "chaotic"
 msgstr ""
 
 #: src/unit_types.cpp:862
-msgid "Lawful"
+msgid "lawful"
 msgstr ""
 
 #: src/unit_types.cpp:862
-msgid "Neutral"
+msgid "neutral"
 msgstr ""
 
 #: src/widgets/file_chooser.cpp:30
