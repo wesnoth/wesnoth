@@ -525,22 +525,10 @@ fi
 
 MANUAL_FILES=`ls MANUAL*`
 MANUAL_FILES=`echo $MANUAL_FILES`
-DATA_FILES=`find data -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
-DATA_FILES=`echo $DATA_FILES`
-FONT_FILES=`find fonts  -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
-FONT_FILES=`echo $FONT_FILES`
+AM_CONDITIONAL([LITE], [test "x$lite" = "xyes"])
 if test "x$lite" = "xyes"; then
     PACKAGE=$PACKAGE-lite
-    IMAGE_FILES=`find images -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -path "images/misc/tutorial*" -o -path "images/misc/story*" -o -type d -o -print`
-    MUSIC_FILES=""
-else
-    IMAGE_FILES=`find images -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
-    MUSIC_FILES=`find music -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
-    MUSIC_FILES=`echo $MUSIC_FILES`
 fi
-IMAGE_FILES=`echo $IMAGE_FILES`
-SOUND_FILES=`find sounds -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
-SOUND_FILES=`echo $SOUND_FILES`
 UTIL_FILES=`find utils -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
 UTIL_FILES=`echo $UTIL_FILES`
 

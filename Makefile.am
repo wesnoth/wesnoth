@@ -2,10 +2,44 @@ ISUBDIRS = icons
 SUBDIRS = intl po m4 src $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
 
+findfilterflags=-name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d
+
+if LITE
+findmoredata=;find images $(extrawesnothdatadirs) $(findfilterflags) -o -path "images/misc/tutorial*" -o -path "images/misc/story*" -o -print
+else
+findmoredata=;find images music $(extrawesnothdatadirs) $(findfilterflags) -o -print
+endif
+
+finddata=find data fonts sounds $(extrawesnothdatadirs) $(findfilterflags) -o -print \
+	 $(findmoredata)
+
+install-data-local:
+	@$(NORMAL_INSTALL)
+	test -z "$(pkgdatadir)" || $(mkdir_p) "$(DESTDIR)$(pkgdatadir)"
+	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
+	( $(finddata) ) | while read p; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  case $$p in \
+	    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+	    *) f=$$p;; \
+	  esac; \
+	  echo " $(install_sh_DATA) '$$d$$p' '$(DESTDIR)$(pkgdatadir)/$$f'"; \
+	  $(install_sh_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	done
+uninstall-local:
+	@$(NORMAL_UNINSTALL)
+	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
+	( $(finddata) ) | while read p; do \
+	  case $$p in \
+	    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+	    *) f=$$p;; \
+	  esac; \
+	  echo " rm -f '$(DESTDIR)$(pkgdatadir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	done
+
 dist_noinst_DATA = @MANUAL_FILES@ copyright changelog wesnoth.dsp wesnoth.dsw \
 	@UTIL_FILES@
-nobase_dist_pkgdata_DATA = @DATA_FILES@ @FONT_FILES@ @IMAGE_FILES@ \
-	@MUSIC_FILES@ @SOUND_FILES@
 dist_man6_MANS = doc/man/wesnoth.6 doc/man/wesnothd.6 doc/man/wesnoth_editor.6
 
 uninstall-hook:
@@ -26,7 +60,7 @@ binary-dist:
 	@cd $(BINARY_STAGING) ; tar cf - * | gzip -c >$(BINARY_DIST)
 	@rm -rf $(BINARY_STAGING)
 	@echo "Precompiled binary tarball is in $(BINARY_DIST)"
-    
+
 data-dist:
 	@rm -rf $(BINARY_STAGING) $(DATA_DIST)
 	@make install-data DESTDIR=$(BINARY_STAGING)
