@@ -610,7 +610,9 @@ int show_dialog(display& disp, SDL_Surface* image,
 			return ESCAPE_DIALOG;
 		}
 
-		if(!key_down && key[SDLK_ESCAPE] && type != OK_ONLY) {
+		//escape quits from the dialog -- unless it's an "ok" dialog with a menu,
+		//since such dialogs require a selection of some kind.
+		if(!key_down && key[SDLK_ESCAPE] && (type != OK_ONLY || menu_.height() == 0)) {
 
 			if(menu_.height() == 0) {
 				return 1;
