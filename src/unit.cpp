@@ -101,7 +101,9 @@ unit::unit(const unit_type* t, const unit& u) :
                guardian_(false), upkeep_(u.upkeep_)
 {
 	//apply modifications etc, refresh the unit
-	new_level();
+	apply_modifications();
+	heal_all();
+	statusFlags_.clear();
 
 	//generate traits for the unit if it doesn't already have some
 	//currently removed, because we are testing not giving advancing
@@ -255,6 +257,8 @@ void unit::new_level()
 
 	//set the goto command to be going to no-where
 	goto_ = gamemap::location();
+
+	remove_temporary_modifications();
 
 	//reapply all permanent modifications
 	apply_modifications();
@@ -724,10 +728,9 @@ void unit::set_goto(const gamemap::location& new_goto)
 void unit::add_modification(const std::string& type,
                             const config& mod, bool no_add)
 {
-	const std::string& span = mod["duration"];
-
-	if(no_add == false && (span.empty() || span == "forever"))
+	if(no_add == false) {
 		modifications_.add_child(type,mod);
+	}
 
 	std::vector<std::string> effects_description;
 
@@ -876,6 +879,20 @@ void unit::apply_modifications()
 		for(config::child_list::const_iterator j = mods.begin(); j != mods.end(); ++j) {
 			log_scope("add mod");
 			add_modification(ModificationTypes[i],**j,true);
+		}
+	}
+}
+
+void unit::remove_temporary_modifications()
+{
+	for(int i = 0; i != NumModificationTypes; ++i) {
+		const std::string& mod = ModificationTypes[i];
+		const config::child_list& mods = modifications_.get_children(mod);
+		for(int j = 0; j != mods.size(); ++j) {
+			if((*mods[j])["duration"] != "forever" && (*mods[j])["duration"] != "") {
+				modifications_.remove_child(mod,j);
+				--j;
+			}
 		}
 	}
 }

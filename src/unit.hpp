@@ -168,6 +168,7 @@ private:
 	UPKEEP_COST upkeep_;
 
 	void apply_modifications();
+	void remove_temporary_modifications();
 	void generate_traits();
 };
 
