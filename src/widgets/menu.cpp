@@ -143,6 +143,7 @@ void menu::redraw()
 void menu::change_item(int pos1, int pos2,std::string str)
 {
 	items_[pos1][pos2] = str;
+	undrawn_items_.insert(pos1);
 }
 
 void menu::erase_item(size_t index)
