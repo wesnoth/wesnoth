@@ -509,6 +509,11 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				player_number_str << player_number;
 				game_events::set_variable("side_number",player_number_str.str());
 
+				//fire side turn event only if real side change occurs not counting changes from void to a side
+				if (team_it != teams.begin()+first_player || !first_time) {
+					game_events::fire("side turn");
+				}
+
 				//we want to work out if units for this player should get healed, and the
 				//player should get income now. healing/income happen if it's not the first
 				//turn of processing, or if we are loading a game, and this is not the
@@ -516,7 +521,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				const bool turn_refresh = !first_time || loading_game && team_it != teams.begin()+first_player;
 
 				if(turn_refresh) {
-					game_events::fire("side turn");
 					for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 						if(i->second.side() == player_number) {
 							i->second.new_turn();
