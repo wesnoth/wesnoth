@@ -852,7 +852,6 @@ TITLE_RESULT show_title(display& screen)
 	for(;;) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
 		if(tutorial_button.process(mousex,mousey,left_button))

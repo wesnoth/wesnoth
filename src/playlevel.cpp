@@ -110,16 +110,15 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		                (*overlay)->values["image"]);
 	}
 
-	const double scroll_speed = 30.0;
-	const double zoom_amount = 5.0;
+	//UNUSED: const double scroll_speed = 30.0;
+	//UNUSED: const double zoom_amount = 5.0;
 
 	for(units_map::iterator i = units.begin(); i != units.end(); ++i) {
 		i->second.new_turn();
 	}
 
-	bool left_button = false, right_button = false;
-
-	gamemap::location selected_hex;
+	//UNUSED: bool left_button = false, right_button = false;
+	//UNUSED: gamemap::location selected_hex;
 
 	gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,
 	                   display::WARP);

@@ -202,7 +202,7 @@ void set_grid(bool ison)
 
 void show_preferences_dialog(display& disp)
 {
-	const int border_size = 6;
+	//UNUSED: const int border_size = 6;
 	const int xpos = disp.x()/2 - 300;
 	const int ypos = disp.y()/2 - 200;
 	const int width = 600;
@@ -286,7 +286,7 @@ void show_preferences_dialog(display& disp)
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-		const bool right_button = mouse_flags&SDL_BUTTON_RMASK;
+		//UNUSED: const bool right_button = mouse_flags&SDL_BUTTON_RMASK;
 
 		if(close_button.process(mousex,mousey,left_button)) {
 			break;

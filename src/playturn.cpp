@@ -46,7 +46,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	team& current_team = teams[team_num-1];
 
 	const double scroll_speed = 30.0;
-	const double zoom_amount = 5.0;
+	//UNUSED: const double zoom_amount = 5.0;
 
 	const std::string menu_items[] = {"scenario_objectives","recruit",
 	                                  "recall","unit_list","save_game",
@@ -129,12 +129,11 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			   hex != selected_hex &&
 			   enemy->second.side() != u->second.side()) {
 
-				const unit_type& type = u->second.type();
-				const unit_type& enemy_type = enemy->second.type();
+				//UNUSED: const unit_type& type = u->second.type();
+				//UNUSED: const unit_type& enemy_type = enemy->second.type();
 				const std::vector<attack_type>& attacks = u->second.attacks();
 				std::vector<std::string> items;
-				const std::vector<attack_type>& defends =
-				                         enemy->second.attacks();
+				//UNUSED: const std::vector<attack_type>& defends = enemy->second.attacks();
 
 				std::vector<unit> units_list;
 
