@@ -1,6 +1,17 @@
 CVS HEAD:
+ * show possible enemy moves view (context menu -> show possible enemy moves)
+ * added and improved unit images
+ * new unit side ellipses
+ * language fixes and polishing (english)
+ * randomization of temples in Muff Malal's peninsula
  * fixed attack miscalculation for offensive units which ignored time of day
  * fixed typo in Toward Mountains of Haag
+ * fixed many 'end of line' warnings
+ * fixed active player not receiveing labels and messages immidiately while it was his/her turn
+ * fixed networking problems which caused out-of-syncs
+ * reports handle multiple images & strings per report each with their own tooltips
+ * added diagnostics to help tracking out-of-sync errors
+ * renamed wesnoth.png to wesnoth-icon.png
 
 Version 0.7.1:
  * changed damage calculations to use additive percentage calculations
