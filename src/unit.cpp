@@ -685,9 +685,9 @@ int unit::upkeep() const
 	if(description_.empty() == false)
 		return 0;
 
-	//loyal units always have an upkeep of 1 gold. Other units have an
+	//loyal units have a maximum upkeep of 1 gold. Other units have an
 	//upkeep equal to their level
-	return loyal_ ? 1 : type().level();
+	return loyal_ ? minimum<int>(1,type().level()) : type().level();
 }
 
 int team_units(const unit_map& units, int side)
