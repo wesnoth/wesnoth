@@ -134,7 +134,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 
 	std::cerr << "faded logo\n";
 
-	const std::string& version_str = string_table["version"] + " " +
+	const std::string& version_str = _("Version") + std::string(" ") +
 	                                 game_config::version;
 
 	const SDL_Rect version_area = font::draw_text(NULL,screen.screen_area(),10,
@@ -188,13 +188,13 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::string style = "mainmenu";
 	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen,&style);
 
-	gui::button next_tip_button(screen,string_table["next_tip"],button::TYPE_PRESS,"lite_small");
+	gui::button next_tip_button(screen,_("More"),button::TYPE_PRESS,"lite_small");
 
 	std::string tip_of_day = get_tip_of_day(ntip);
 	if(tip_of_day.empty() == false) {
 		tip_of_day = font::word_wrap_text(tip_of_day,14,(game_config::title_tip_width*screen.x())/1024);
 
-		const std::string& tome = font::word_wrap_text(string_table["tome"],14,(game_config::title_tip_width*screen.x())/1024);
+		const std::string& tome = font::word_wrap_text(_("-- The Tome of Wesnoth"),14,(game_config::title_tip_width*screen.x())/1024);
 
 		const int pad = game_config::title_tip_padding;
 

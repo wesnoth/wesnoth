@@ -292,7 +292,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 		}
 
 		if(description != NULL) {
-			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage << translate_string("dmg");
+			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage << _("Dmg");
 		}
 	}
 
@@ -304,7 +304,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 		}
 
 		if(description != NULL) {
-			desc << (increase > 0 ? "+" : "") << increase << translate_string("strikes");
+			desc << (increase > 0 ? "+" : "") << increase << _("strikes");
 		}
 	}
 

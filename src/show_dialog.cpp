@@ -605,7 +605,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	surface_restorer restorer;
 
-	button help_button(disp,string_table["action_help"]);
+	button help_button(disp,_("Help"));
 
 	const std::string& title = image == NULL ? caption : "";
 	draw_dialog(xframe,yframe,frame_width,frame_height,disp,title,dialog_style,&buttons_ptr,&restorer,help_topic.empty() ? NULL : &help_button);
@@ -935,7 +935,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 		std::stringstream str;
 		str << msg;
 		if(stats.first != -1) {
-			str << ": " << (stats.first/1024) << "/" << (stats.second/1024) << string_table["kilobytes"];
+			str << ": " << (stats.first/1024) << "/" << (stats.second/1024) << _("KB");
 		}
 
 		dialog_action_receive_network receiver(connection_num,cfg,stats);

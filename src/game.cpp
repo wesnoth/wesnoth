@@ -130,8 +130,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 					retry = false;
 
 					const int should_save = dialogs::get_save_name(disp,
-												string_table["save_replay_message"],
-												string_table["save_game_label"],
+												_("Do you want to save a replay of this scenario?"),
+												_("Name:"),
 												&label);
 					if(should_save == 0) {
 						try {
@@ -139,7 +139,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 							recorder.save_game(units_data,label,snapshot,state.starting_pos);
 						} catch(gamestatus::save_game_failed& e) {
-							gui::show_dialog(disp,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
+							gui::show_dialog(disp,NULL,"",_("The game could not be saved"),gui::MESSAGE);
 							retry = true;
 						};
 					}
@@ -192,15 +192,15 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				retry = false;
 
 				const int should_save = dialogs::get_save_name(disp,
-													string_table["save_game_message"],
-													string_table["save_game_label"],
+													_("Do you want to save your game?"),
+													_("Name:"),
 													&state.label);
 
 				if(should_save == 0) {
 					try {
 						save_game(state);
 					} catch(gamestatus::save_game_failed& e) {
-						gui::show_dialog(disp,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
+						gui::show_dialog(disp,NULL,"",_("The game could not be saved"),gui::MESSAGE);
 						retry = true;
 					}
 				}
@@ -538,7 +538,7 @@ int play_game(int argc, char** argv)
 	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
 	if(!no_gui) {
-		SDL_WM_SetCaption(string_table["game_title"].c_str(), NULL);
+		SDL_WM_SetCaption(_("The Battle for Wesnoth"), NULL);
 	}
 
 	//these variables are used to store the game that the user selects to load
@@ -758,7 +758,7 @@ int play_game(int argc, char** argv)
 				load_game(units_data,game,state);
 				if(state.version != game_config::version) {
 					const int res = gui::show_dialog(disp,NULL,"",
-					                      string_table["version_save_message"],
+					                      _("This save is from a different version of the game. Do you want to try to load it?"),
 					                      gui::YES_NO);
 					if(res == 1)
 						continue;
@@ -769,17 +769,17 @@ int play_game(int argc, char** argv)
 			} catch(gamestatus::load_game_failed& e) {
 				std::cerr << "caught load_game_failed\n";
 				gui::show_dialog(disp,NULL,"",
-				           string_table["bad_save_message"],gui::OK_ONLY);
+				           _("The file you have tried to load is corrupt"),gui::OK_ONLY);
 				continue;
 			} catch(gamestatus::game_error& e) {
 				std::cerr << "caught game_error\n";
 				gui::show_dialog(disp,NULL,"",
-				           string_table["bad_save_message"],gui::OK_ONLY);
+				           _("The file you have tried to load is corrupt"),gui::OK_ONLY);
 				continue;
 			} catch(config::error& e) {
 				std::cerr << "caught config::error\n";
 				gui::show_dialog(disp,NULL,"",
-				    string_table["bad_save_message"] + ": " + e.message + "\n",
+				    _("The file you have tried to load is corrupt") + std::string(": ") + e.message + "\n",
 				    gui::OK_ONLY);
 				continue;
 			} catch(io_exception& e) {
@@ -879,15 +879,15 @@ int play_game(int argc, char** argv)
 			}
 
 			if(campaign_names.empty()) {
-				gui::show_dialog(disp,NULL,"",string_table["error_no_campaigns"],gui::OK_ONLY);
+				gui::show_dialog(disp,NULL,"",_("There are no campaigns available"),gui::OK_ONLY);
 				continue;
 			}
 
 			int res = 0;
 
 			if(campaign_names.size() > 1) {
-				res = gui::show_dialog(disp,NULL,string_table["new_campaign"],
-				                                 string_table["choose_campaign"],
+				res = gui::show_dialog(disp,NULL,_("Campaign"),
+				                                 _("Choose the campaign you want to play:"),
 												 gui::OK_CANCEL,&campaign_names);
 
 				if(res == -1)
@@ -909,8 +909,8 @@ int play_game(int argc, char** argv)
 					std::transform(difficulties.begin(),difficulties.end(),difficulty_options.begin(),translate_string);
 				}
 
-				const int res = gui::show_dialog(disp,NULL,string_table["difficulty"],
-				                            string_table["difficulty_level"],
+				const int res = gui::show_dialog(disp,NULL,_("Difficulty"),
+				                            _("Select difficulty level:"),
 				                            gui::OK_CANCEL,&difficulty_options);
 				if(res == -1)
 					continue;
@@ -928,12 +928,12 @@ int play_game(int argc, char** argv)
 
 			std::vector<std::string> host_or_join;
 			const std::string sep(1,gui::menu::HELP_STRING_SEPERATOR);
-			host_or_join.push_back("&icons/icon-server.png," + string_table["join_server"] + sep + string_table["join_server_help"]);
-			host_or_join.push_back("&icons/icon-serverother.png," + string_table["join_game"] + sep + string_table["join_game_help"]);
-			host_or_join.push_back("&icons/icon-hostgame.png," + string_table["host_game"] + sep + string_table["host_game_help"]);
+			host_or_join.push_back(std::string("&icons/icon-server.png,") + _("Join Official Server") + sep + _("Log on to the official Wesnoth multiplayer server"));
+			host_or_join.push_back(std::string("&icons/icon-serverother.png,") + _("Join Game") + sep + _("Join a server or hosted game"));
+			host_or_join.push_back(std::string("&icons/icon-hostgame.png,") + _("Host Multiplayer Game") + sep + _("Host a game without using a server"));
 
 			std::string login = preferences::login();
-			const int res = gui::show_dialog(disp,NULL,string_table["multiplayer_button"],"",gui::OK_CANCEL,&host_or_join,NULL,string_table["login"] + ": ",&login);
+			const int res = gui::show_dialog(disp,NULL,_("Multiplayer"),"",gui::OK_CANCEL,&host_or_join,NULL,_("Login") + std::string(": "),&login);
 
 			if(res >= 0) {
 				preferences::set_login(login);
@@ -1013,8 +1013,8 @@ int play_game(int argc, char** argv)
 			langs.reserve(langdefs.size());
 			std::transform(langdefs.begin(),langdefs.end(),std::back_inserter(langs),languagedef_name);
 
-			const int res = gui::show_dialog(disp,NULL,string_table["language_button"],
-			                         string_table["choose_language"] + ":",
+			const int res = gui::show_dialog(disp,NULL,_("Language"),
+			                         _("Choose your preferred language") + std::string(":"),
 			                         gui::OK_CANCEL,&langs);
 			if(size_t(res) < langs.size()) {
 				set_language(known_languages[res]);
@@ -1061,8 +1061,8 @@ int play_game(int argc, char** argv)
 			const LEVEL_RESULT result = play_game(disp,state,game_config,units_data,video);
 			if(result == VICTORY) {
 				gui::show_dialog(disp,NULL,
-				  string_table["end_game_heading"],
-				  string_table["end_game_message"],
+				  _("The End"),
+				  _("You have reached the end of the currently playable levels"),
 				  gui::OK_ONLY);
 			}
 		} catch(gamestatus::load_game_exception& e) {

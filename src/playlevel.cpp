@@ -484,7 +484,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 						                      player_number,status,state_of_game);
 					} catch(replay::error& e) {
 						std::cerr << "caught replay::error\n";
-						gui::show_dialog(gui,NULL,"",string_table["bad_save_message"],gui::OK_ONLY);
+						gui::show_dialog(gui,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
 
 						replaying = false;
 					}
@@ -623,8 +623,8 @@ redo_turn:
 	} catch(end_level_exception& end_level) {
 
 		if((end_level.result == DEFEAT || end_level.result == VICTORY) && is_observer(teams)) {
-			gui::show_dialog(gui,NULL,string_table["observer_endgame_heading"],
-			                          string_table["observer_endgame"], gui::OK_ONLY);
+			gui::show_dialog(gui,NULL,_("Game Over"),
+			                          _("The game is over."), gui::OK_ONLY);
 			return end_level.result;
 		}
 
@@ -637,8 +637,8 @@ redo_turn:
 			}
 
 			gui::show_dialog(gui,NULL,
-			                 string_table["defeat_heading"],
-			                 string_table["defeat_message"],
+			                 _("Defeat"),
+			                 _("You have been defeated!"),
 			                 gui::OK_ONLY);
 			return DEFEAT;
 		} else if(end_level.result == VICTORY || end_level.result == LEVEL_CONTINUE || end_level.result == LEVEL_CONTINUE_NO_SAVE) {
@@ -670,25 +670,25 @@ redo_turn:
 			              (finishing_bonus_per_turn * turns_left) : 0;
 			state_of_game.gold = ((remaining_gold+finishing_bonus)*80)/100;
 
-			gui::show_dialog(gui,NULL,string_table["victory_heading"],
-			                 string_table["victory_message"],gui::OK_ONLY);
+			gui::show_dialog(gui,NULL,_("Victory"),
+			                 _("You have emerged victorious!"),gui::OK_ONLY);
 			std::stringstream report;
-			report << string_table["remaining_gold"] << ": "
+			report << _("Remaining gold") << ": "
 			       << remaining_gold << "\n";
 			if(end_level.gold_bonus) {
-				report << string_table["early_finish_bonus"] << ": "
+				report << _("Early finish bonus") << ": "
 				       << finishing_bonus_per_turn
-					   << " " << string_table["per_turn"] << "\n"
-				       << string_table["turns_finished_early"] << ": "
+					   << " " << _("per turn") << "\n"
+				       << _("Turns finished early") << ": "
 				       << turns_left << "\n"
-				       << string_table["bonus"] << ": "
+				       << _("Bonus") << ": "
 					   << finishing_bonus << "\n"
-				       << string_table["gold"] << ": "
+				       << _("Gold") << ": "
 					   << (remaining_gold+finishing_bonus);
 			}
 
-			report << "\n" << string_table["fifty_percent"] << "\n"
-				   << string_table["retained_gold"] << ": "
+			report << "\n" << _("80% of gold is retained for the next scenario") << "\n"
+				   << _("Retained Gold") << ": "
 				   << state_of_game.gold;
 
 			gui::show_dialog(gui,NULL,"",report.str(),gui::OK_ONLY);
@@ -697,7 +697,7 @@ redo_turn:
 	} //end catch
 	catch(replay::error& e) {
 		std::cerr << "caught replay::error\n";
-		gui::show_dialog(gui,NULL,"",string_table["bad_save_message"],
+		gui::show_dialog(gui,NULL,"",_("The file you have tried to load is corrupt"),
 		                 gui::OK_ONLY);
 		return QUIT;
 	}
@@ -712,7 +712,7 @@ redo_turn:
 					        game_config,level,key,gui,
 							map,teams,player_number,units,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
 
-		turn_data.save_game(string_table["save_game_error"],gui::YES_NO);
+		turn_data.save_game(_("A network disconnection has occured, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
 		} else {
