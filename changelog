@@ -8,6 +8,7 @@ CVS HEAD:
  * Outlaw given faster movement
  * Orcish Ruler attack changed to sword, race changed to orc
  * Walking Corpse made a bit easier to advance
+ * Goblin Knight experience needed to advance decreased to 150
  * new units:
    * Dwarvish Thunderguard
    * Iron Mauler
@@ -51,7 +52,8 @@ CVS HEAD:
  * fixed bugs with tooltips
  * fixed network bug
  * minor autotools fixes
- * autotools support for static builds
+ * autotools basic support for static building
+ * added autotools configure checks for signed char
  * slacknoth improvements
  * added recovering connections framework to network protocol
 
