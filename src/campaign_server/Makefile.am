@@ -15,6 +15,7 @@ campaignd_SOURCES = campaign_server.cpp \
 		   ../network_worker.cpp \
 		   ../publish_campaign.cpp \
 		   ../thread.cpp \
+		   ../zipios++/xcoll.cpp \
 		   ../game_events.hpp \
 		   ../config.hpp \
 		   ../filesystem.hpp \
@@ -24,7 +25,8 @@ campaignd_SOURCES = campaign_server.cpp \
 		   ../network.hpp \
 		   ../network_worker.hpp \
 		   ../publish_campaign.hpp \
-		   ../thread.hpp 
+		   ../thread.hpp \
+		   ../zipios++/xcoll.hpp
 
-AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(LOCALEDIR)\"
-AM_LDFLAGS = @SDL_LIBS@ @SDL_NET_LIBS@
+AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(LOCALEDIR)\" -I$(srcdir)/..
+AM_LDFLAGS = @SDL_LIBS@ @SDL_NET_LIBS@ $(LIBZIPIOS)

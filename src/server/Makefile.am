@@ -18,6 +18,7 @@ wesnothd_SOURCES = game.cpp \
 		   ../network.cpp \
 		   ../network_worker.cpp \
 		   ../thread.cpp \
+		   ../zipios++/xcoll.cpp \
 		   game.hpp \
 		   ../game_events.hpp \
 		   input_stream.hpp \
@@ -30,7 +31,8 @@ wesnothd_SOURCES = game.cpp \
 		   ../log.hpp \
 		   ../network.hpp \
 		   ../network_worker.hpp \
-		   ../thread.hpp
+		   ../thread.hpp \
+		   ../zipios++/xcoll.hpp
 
-AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(LOCALEDIR)\"
-AM_LDFLAGS = @SDL_LIBS@ @SDL_NET_LIBS@
+AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(LOCALEDIR)\" -I$(srcdir)/..
+AM_LDFLAGS = @SDL_LIBS@ @SDL_NET_LIBS@ $(LIBZIPIOS)

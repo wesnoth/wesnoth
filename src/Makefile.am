@@ -264,6 +264,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/scrollbar.cpp \
 			 widgets/slider.cpp \
 			 widgets/widget.cpp \
+			 zipios++/xcoll.cpp \
 			 sdl_ttf/SDL_ttf.c \
 			 editor/editor.hpp \
 			 editor/editor_layout.hpp \
@@ -338,6 +339,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/scrollbar.hpp \
 			 widgets/slider.hpp \
 			 widgets/widget.hpp \
+			 zipios++/xcoll.hpp \
 			 sdl_ttf/SDL_ttf.h \
 			 wesconfig.h
 
