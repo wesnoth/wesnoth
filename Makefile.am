@@ -32,13 +32,17 @@ install-data-local:
 	  $(install_sh_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
 if TINYGUI
-	(cd $(top_srcdir) && find images/portraits $(findfilterflags) -o -print) | while read p; do \
+	(cd $(top_srcdir) && find images images/terrain \( $(findfilterflags) -o -name '*.png' -print \) ) | while read p; do \
 	  $(w_preparefileinstall) \
-	  convert -size 80x80 -resize 80x80 "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
-	done
-	(cd $(top_srcdir) && find images/maps images/campaigns/*/maps images/campaigns/*/story $(findfilterflags) -o -print) | while read p; do \
-	  $(w_preparefileinstall) \
-	  convert -size 240x180 -resize 240x180 "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	  eval `pngmeta --all $$d$$p | grep -E 'image-(width|height):' | tr -d ' -' | tr : =` ;\
+	  case $${imagewidth}x$$imageheight in \
+	  1024x768) dstsize=320x240 ;; \
+	  640x480)  dstsize=240x180 ;; \
+	  205x205)  dstsize=80x80 ;; \
+	  *) if [ $$imageheight -gt $$imagewidth ]; then max=`expr $$imageheight / 2`; else max=`expr $$imagewidth / 2`; fi ;\
+	     dstsize=$${max}x$${max} ;; \
+	  esac ; \
+	  convert -size $$dstsize -resize $$dstsize "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
 endif
 

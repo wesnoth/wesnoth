@@ -47,7 +47,11 @@ std::string image_mask;
 
 SDL_PixelFormat* pixel_format = NULL;
 
+#ifdef USE_TINY_GUI
+const int tile_size = 36;
+#else
 const int tile_size = 72;
+#endif
 int zoom = tile_size;
 
 //The "pointer to surfaces" vector is not cleared anymore (the surface are
