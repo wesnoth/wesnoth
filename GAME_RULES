@@ -1,52 +1,114 @@
-In the Battle for Wesnoth, you take command of an army in a fantasy world, and have to maneuver the army to accomplish one or more goals. The game is divided into scenarios. Once you complete one scenario, you move onto the next. A story sequence during which the key players in the game discuss the situation occurs at the beginning and end of each scenario.
+In the Battle for Wesnoth, you take command of an army in a fantasy world,
+and have to maneuver the army to accomplish one or more goals. The game is
+divided into scenarios. Once you complete one scenario, you move onto the
+next. A story sequence during which the key players in the game discuss
+the situation occurs at the beginning and end of each scenario.
 
 Basic controls:
 
-    *  Escape: Exit game
+    * Escape: Exit game
     * z: Zoom in
     * x: Zoom out
     * d: Default zoom level
     * Arrow key: Scroll
     * Left click: Select unit/move unit
     * Right click: Main menu, cancel action
-    * u: undo last move (only moves which have a deterministic outcome may be undone)
+    * u: undo last move (only moves which have a deterministic outcome may
+         be undone)
     * r: redo move
 
-When you complete a scenario, your game is automatically saved, so that it can be loaded later. A game may not be saved during a scenario at this time.
+When you complete a scenario, your game is automatically saved, so that it
+can be loaded later. A game may not be saved during a scenario at this time.
 
-The map is made up of hexagons. Each army is divided up into units. Up to 1 unit can be in each hexagon.
+The map is made up of hexagons. Each army is divided up into units. Up to 1
+unit can be in each hexagon.
 
-Every scenario will have your army fighting against one or more enemy armies. The scenario will be divided up into turns. You move your units and decide who to attack on your turn, and your enemies do the same on your turn.
+Every scenario will have your army fighting against one or more enemy armies.
+The scenario will be divided up into turns. You move your units and decide
+who to attack on your turn, and your enemies do the same on your turn.
 
-At the start of each scenario, you will start with one unit, your commander, and perhaps a few other key units. You will usually start on castle terrain. While you're on a castle, you can recruit units into your army. Each unit has a cost associated with it, which is deducted from your gold balance displayed on the right. You recruit units by right-clicking and select the 'recruit' option from the menu that is displayed.
+At the start of each scenario, you will start with one unit, your commander,
+and perhaps a few other key units. You will usually start on castle terrain.
+While you're on a castle, you can recruit units into your army. Each unit
+has a cost associated with it, which is deducted from your gold balance
+displayed on the right. You recruit units by right-clicking and select the
+'recruit' option from the menu that is displayed.
 
-If you have successfully completed previous scenarios, and have surviving units in those scenarios, you may re-recruit them into your army with the 'recall' option. The recall option has a cost of 20 gold pieces for each time it is used.
+If you have successfully completed previous scenarios, and have surviving
+units in those scenarios, you may re-recruit them into your army with the
+'recall' option. The recall option has a cost of 20 gold pieces for each
+time it is used.
 
-Scattered around the map are villages. If you move a unit onto a village, it will turn to your army's color (red). For each village you control, you earn revenue of 2 gold every turn. For each unit your army has fielded, you pay expenses of 1 gold every turn.
+Scattered around the map are villages. If you move a unit onto a village, it
+will turn to your army's color (red). For each village you control, you earn
+revenue of 2 gold every turn. For each unit your army has fielded, you pay
+expenses of 1 gold every turn.
 
-Each unit can move a certain number of hexagons every turn. Typically foot soldiers will be able to move 5 hexagons every turn, but this will vary depending upon the unit. However, some terrain types are more difficult for some units to traverse than others, and units may move at half, a third, or a quarter of their normal speed over some types of terrain. Additionally, some types of terrain cannot be traversed at all by certain units.
+Each unit can move a certain number of hexagons every turn. Typically foot
+soldiers will be able to move 5 hexagons every turn, but this will vary
+depending upon the unit. However, some terrain types are more difficult for
+some units to traverse than others, and units may move at half, a third, or
+a quarter of their normal speed over some types of terrain. Additionally,
+some types of terrain cannot be traversed at all by certain units.
 
-If you click on a unit, all the hexagons it can move to this turn are colored, while all the hexagons it cannot move to are displayed in black and white. You may then click on the hexagon you want the unit to move to, to move it there.
+If you click on a unit, all the hexagons it can move to this turn are
+colored, while all the hexagons it cannot move to are displayed in black and
+white. You may then click on the hexagon you want the unit to move to, to
+move it there.
 
-If a unit moves next to an enemy unit, it must stop moving immediately. A unit that moves next to an enemy unit may attack the enemy unit. You can do this by clicking on the unit, and then clicking on the adjacent enemy you want to attack.
+If a unit moves next to an enemy unit, it must stop moving immediately.
+A unit that moves next to an enemy unit may attack the enemy unit. You can
+do this by clicking on the unit, and then clicking on the adjacent enemy you
+want to attack.
 
-Every unit has one or more attacks it can use. Every attack has a rating for how much damage it does, and how many times the unit can strike with that attack in a turn. When you attack an enemy, they will be able to strike back at you.
+Every unit has one or more attacks it can use. Every attack has a rating for
+how much damage it does, and how many times the unit can strike with that
+attack in a turn. When you attack an enemy, they will be able to strike back
+at you.
 
-Some attacks are short range, and some attacks are long range. If you attack with a short range attack, then the enemy you are attacking will strike back at short range. If you attack with a long range attack, they will strike back with a long range attack, if they have one. If you attack a unit that has no long range attack with a long range attack, it will not be able to strike back at all.
+Some attacks are short range, and some attacks are long range. If you attack
+with a short range attack, then the enemy you are attacking will strike back
+at short range. If you attack with a long range attack, they will strike back
+with a long range attack, if they have one. If you attack a unit that has no
+long range attack with a long range attack, it will not be able to strike
+back at all.
 
-When a unit attacks another unit, it will be given a % chance that each attack will hit its target. This chance to hit is based on the terrain the defending unit is standing in. Different units have better defense in different types of terrain.
+When a unit attacks another unit, it will be given a % chance that each
+attack will hit its target. This chance to hit is based on the terrain the
+defending unit is standing in. Different units have better defense in
+different types of terrain.
 
-When a unit is hit, it loses some hitpoints. If a unit runs out of hitpoints, it is killed and removed from the game. Units are rewarded experience for each battle they are in, and especially for each unit that they kill. If a unit reaches its experience needed, it will become a more powerful unit.
+When a unit is hit, it loses some hitpoints. If a unit runs out of hitpoints,
+it is killed and removed from the game. Units are rewarded experience for
+each battle they are in, and especially for each unit that they kill.
+If a unit reaches its experience needed, it will become a more powerful unit.
 
-If a unit is injured, it may move onto a village to heal itself. It will receive 8 hitpoints back every turn it remains on the village.
+If a unit is injured, it may move onto a village to heal itself. It will
+receive 8 hitpoints back every turn it remains on the village.
 
-Every attack has a type. For instance, swords are 'blade' attacks. Bows are 'piercing' attacks. Each unit has different vulnerability to different kinds of attacks. For instance, horsemen are especially vulnerable to piercing attacks. The more vulnerable a unit is to an attack, the more damage it will suffer against it.
+Every attack has a type. For instance, swords are 'blade' attacks.
+Bows are 'piercing' attacks. Each unit has different vulnerability to
+different kinds of attacks. For instance, horsemen are especially vulnerable
+to piercing attacks. The more vulnerable a unit is to an attack, the more
+damage it will suffer against it.
 
-On the right of the screen, an image is displayed which shows what time of day it is. It may be dawn, day, dusk, or night. Every unit is Lawful, Neutral, or Chaotic. It is possible for evil units to be lawful and good units to be chaotic. For instance, a soldier might concentrate on how they can lawfully do as much evil as they can.
+On the right of the screen, an image is displayed which shows what time of
+day it is. It may be dawn, day, dusk, or night. Every unit is Lawful,
+Neutral, or Chaotic. It is possible for evil units to be lawful and good
+units to be chaotic. For instance, a soldier might concentrate on how they
+can lawfully do as much evil as they can.
 
-Lawful units fight better at day, and Chaotic units fight better at night. Neutral units are unaffected by day and night.
+Lawful units fight better at day, and Chaotic units fight better at night.
+Neutral units are unaffected by day and night.
 
-Some units may have special skills or abilities that allow them to operate in ways which distort the normal game rules. If you right-click on a unit and select 'Description', the abilities of that unit will be described (This is not yet fully implemented for all units).
+Some units may have special skills or abilities that allow them to operate
+in ways which distort the normal game rules. If you right-click on a unit
+and select 'Description', the abilities of that unit will be described
+(This is not yet fully implemented for all units).
+
 
 David White
 davidnwhite@optusnet.com.au
+
+
+/* $Id$ */
