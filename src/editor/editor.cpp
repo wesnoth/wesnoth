@@ -60,7 +60,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	  tdown_(gui, "", gui::button::TYPE_PRESS, "downarrow-button"), abort_(DONT_ABORT),
 	  num_operations_since_save_(0), theme_(theme), game_config_(game_config),
 	  draw_terrain_(false), minimap_dirty_(false),
-	  palette_(gui, size_specs_, map) {
+	  palette_(gui, size_specs_, map), brush_(gui, size_specs_) {
 
 
 	// Set size specs.
@@ -115,6 +115,7 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 		if (button == SDL_BUTTON_LEFT) {
 			draw_terrain_ = true;
 			palette_.left_mouse_click(mousex, mousey);
+			brush_.left_mouse_click(mousex, mousey);
 		}
 	}
 	if (event.type == SDL_MOUSEBUTTONUP) {
@@ -373,7 +374,9 @@ void map_editor::adjust_sizes(const display &disp) {
 	size_specs_.terrain_space = size_specs_.terrain_size + size_specs_.terrain_padding;
 	size_specs_.palette_x = 40;
 	size_specs_.button_x = size_specs_.palette_x + size_specs_.terrain_space - 12;
-	size_specs_.top_button_y = 190;
+	size_specs_.brush_x = 25;
+	size_specs_.brush_y = 190;
+	size_specs_.top_button_y = size_specs_.brush_y + 40;
 	size_specs_.palette_y = size_specs_.top_button_y + button_height +
 		button_palette_padding;
 	const size_t max_bot_button_y = disp.y() - 60 - button_height;
@@ -453,12 +456,29 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 		const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
 		if(map_.on_board(hex)) {
 			const gamemap::TERRAIN terrain = map_[hex.x][hex.y];
-			if(palette_.selected_terrain() != terrain) {
-				if(key_[SDLK_RCTRL] || key_[SDLK_LCTRL]) {
+			if(key_[SDLK_RCTRL] || key_[SDLK_LCTRL]) {
+				if(palette_.selected_terrain() != terrain) {
 					palette_.select_terrain(terrain);
 				}
+			}
+			else {
+				// optimize for common case
+				if(brush_.selected_brush_size() == 1) {
+					if(palette_.selected_terrain() != terrain) {
+						draw_terrain(palette_.selected_terrain(), hex);
+					}
+				}
 				else {
-					draw_terrain(palette_.selected_terrain(), hex);
+					std::vector<gamemap::location> locs =
+						get_tiles(map_, hex, brush_.selected_brush_size());
+					for(std::vector<gamemap::location>::const_iterator it = locs.begin();
+					    it != locs.end(); ++it) {
+						const gamemap::TERRAIN tmp_terrain = map_[it->x][it->y];
+						if(palette_.selected_terrain() != tmp_terrain) {
+							draw_terrain(palette_.selected_terrain(), *it);
+						}
+					}
+
 				}
 			}
 		}
@@ -651,6 +671,7 @@ void map_editor::main_loop() {
 
 		gui_.draw(false);
 		palette_.draw();
+		brush_.draw();
 		//if(drawterrainpalette(gui_, tstart_, selected_terrain_, map_, size_specs_) == false)
 		//	scroll_palette_down();
 
@@ -748,13 +769,6 @@ void map_editor::edit_load_map()
 	}
 }
 
-void drawbar(display& disp)
-{
-	SDL_Surface* const screen = disp.video().getSurface();
-	SDL_Rect dst = {disp.mapx(), 0, disp.x() - disp.mapx(), disp.y()};
-	SDL_FillRect(screen,&dst,0);
-	update_rect(dst);
-}
 
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
@@ -816,7 +830,6 @@ void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
 size_t terrain_palette::num_terrains() const {
 	return terrains_.size();
 }
-	
 
 void terrain_palette::draw(bool force) {
 	if (!invalid_ && !force) {
@@ -889,9 +902,136 @@ int terrain_palette::tile_selected(const int x, const int y) const {
 	return -1;
 }
 
+
+brush_bar::brush_bar(display &gui, const size_specs &sizes)
+	: size_specs_(sizes), gui_(gui), selected_(0), total_brush_(3),
+	  size_(30), invalid_(true) {}
+
+unsigned int brush_bar::selected_brush_size() {
+	return selected_ + 1;
+}
+		
+void brush_bar::left_mouse_click(const int mousex, const int mousey) {
+	int index = selected_index(mousex, mousey);
+	if(index >= 0) {
+		if (index != selected_) {
+			invalid_ = true;
+			selected_ = index;
+		}
+	}
+}
+
+void brush_bar::draw(bool force) {
+	if (!invalid_ && !force) {
+		return;
+	}
+	size_t x = gui_.mapx() + size_specs_.brush_x;
+	size_t y = size_specs_.brush_y;
+
+	SDL_Rect invalid_rect;
+	invalid_rect.x = x;
+	invalid_rect.y = y;
+	invalid_rect.w = size_ * total_brush_;
+	invalid_rect.h = size_;
+	// Everything will be redrawn even though only one little part may
+	// have changed, but that happens so seldom so we'll settle with
+	// this.
+	SDL_Surface* const screen = gui_.video().getSurface();
+	SDL_BlitSurface(surf_, NULL, screen, &invalid_rect);
+	surf_.assign(get_surface_portion(screen, invalid_rect));
+
+	for (int i = 1; i <= total_brush_; i++) {
+		std::stringstream filename;
+		filename << "editor/brush-" << i << ".png";
+		scoped_sdl_surface image(image::get_image(filename.str(), image::UNSCALED));
+		if (image == NULL) {
+			std::cerr << "Image " << filename << " not found." << std::endl;
+			continue;
+		}
+		if (image->w != size_ || image->h != size_) {
+			image.assign(scale_surface(image, size_, size_));
+		}
+		SDL_Rect dstrect;
+		dstrect.x = x;
+		dstrect.y = size_specs_.brush_y;
+		dstrect.w = image->w;
+		dstrect.h = image->h;
+		SDL_BlitSurface(image, NULL, screen, &dstrect);
+		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h,
+				    (i == selected_brush_size()) ? 0xF000:0 , screen);
+		x += image->w;
+	}
+	update_rect(invalid_rect);
+	invalid_ = false;
+}
+
+void drawbar(display& disp) {
+	SDL_Surface* const screen = disp.video().getSurface();
+	SDL_Rect dst = {disp.mapx(), 0, disp.x() - disp.mapx(), disp.y()};
+	SDL_FillRect(screen,&dst,0);
+	update_rect(dst);
+}
+
+
+int brush_bar::selected_index(const int x, const int y) const {
+	const int bar_x = gui_.mapx() + size_specs_.brush_x;
+	const int bar_y = size_specs_.brush_y;
+
+	if ((x < bar_x || x > bar_x + size_ * total_brush_)
+	    || (y < bar_y || y > bar_y + size_)) {
+		return -1;
+	}
+
+	for(unsigned int i = 0; i < total_brush_; i++) {
+		const int px = bar_x + size_ * i;
+
+		if(x >= px && x <= px + size_ && y >= bar_y && y <= bar_y + size_) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+
+
+std::vector<gamemap::location> get_tiles(const gamemap &map,
+										 const gamemap::location& a,
+										 const unsigned int radius) {
+	const unsigned int distance = radius - 1;
+	std::vector<gamemap::location> res;
+	res.push_back(a);
+	for (int d = 1; d <= distance; d++) {
+		gamemap::location loc = a;
+		int i;
+		// get starting point
+		for (i = 1; i <= d; i++) {
+			loc = loc.get_direction(gamemap::location::NORTH);
+		}
+		// get all the tile clockwise with distance d
+		const gamemap::location::DIRECTION direction[6] =
+			{gamemap::location::SOUTH_EAST, gamemap::location::SOUTH, gamemap::location::SOUTH_WEST,
+			 gamemap::location::NORTH_WEST, gamemap::location::NORTH, gamemap::location::NORTH_EAST};
+		for (i = 0; i < 6; i++) {
+			for (int j = 1; j <= d; j++) {
+				loc = loc.get_direction(direction[i]);
+				if (map.on_board(loc)) {
+					res.push_back(loc);
+				}
+			}
+		}
+	}
+	return res;
+}
+
 bool is_invalid_terrain(char c) {
 	return c == ' ' || c == '~';
 }
+
+
+
+
+
+
 
 }
 

@@ -40,6 +40,8 @@ struct size_specs {
 	size_t terrain_space;
 	size_t palette_x;
 	size_t button_x;
+	size_t brush_x;
+	size_t brush_y;
 	size_t top_button_y;
 	size_t palette_y;
 	size_t bot_button_y;
@@ -98,6 +100,40 @@ private:
 	const gamemap &map_;
 	// Set invalid_ to true if an operation that requires that the
 	// palette is redrawn takes place.
+	bool invalid_;
+};
+
+/// A bar where the brush is drawin
+class brush_bar
+{
+public:
+	brush_bar(display &gui, const size_specs &sizes);
+
+	/// Return the size of currently selected brush.
+ 	unsigned int selected_brush_size();
+
+	/// To be called when a mouse click occurs. Check if the coordinates
+	/// is a terrain that may be chosen, select the terrain if that is
+	/// the case.
+ 	void left_mouse_click(const int mousex, const int mousey);
+
+	// Draw the palette. If force is true everything will be redrawn
+	// even though it is not invalidated.
+	void draw(bool force=false);
+
+private:
+	/// Return the index of the brush that is at coordinates (x, y) in the
+	/// panel.
+	int selected_index(const int x, const int y) const;
+					  
+	const size_specs &size_specs_;
+	scoped_sdl_surface surf_;
+	display &gui_;
+	unsigned int selected_;
+	const int total_brush_;
+	const size_t size_;
+	// Set invalid_ to true if an operation that requires that the
+	// bar is redrawn takes place.
 	bool invalid_;
 };
 
@@ -236,6 +272,7 @@ private:
 	// scheduled.
 	bool minimap_dirty_;
 	terrain_palette palette_;
+	brush_bar brush_;
 };
 
 
@@ -250,6 +287,11 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected,
 
 
 bool is_invalid_terrain(char c);
+
+std::vector<gamemap::location> get_tiles(const gamemap &map,
+										 const gamemap::location& a,
+										 const unsigned int radius);
+
 
 }
 

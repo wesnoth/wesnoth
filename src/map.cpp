@@ -156,7 +156,7 @@ gamemap::location gamemap::location::get_direction(
 		case SOUTH_EAST: return gamemap::location(x+1,y+is_odd(x));
 		case SOUTH:      return gamemap::location(x,y+1);
 		case SOUTH_WEST: return gamemap::location(x-1,y+is_odd(x));
-		case NORTH_WEST: return gamemap::location(x-1,y+is_even(x));
+		case NORTH_WEST: return gamemap::location(x-1,y-is_even(x));
 		default:
 			assert(false);
 			return gamemap::location();
