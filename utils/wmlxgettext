@@ -1,5 +1,10 @@
 #!/usr/bin/perl -w
 
+# FIXME:
+# - maybe restrict "ability" matching to unit defs (not yet necessary)
+# - maybe handle some xgettext flags and behaviours to be more
+#   predictable to the command-line user
+
 use strict;
 use File::Basename;
 
@@ -7,24 +12,21 @@ our $module = dirname ($0) . "/wmltrans.pm";
 eval "require \"$module\";";
 
 our ($str,$translatable,$line,%messages);
-
 chdir "..";
 foreach my $file (@ARGV) {
   open (FILE, "<$file") or die "cannot read from $file";
+  my $readingattack = 0;
 
  LINE: while (<FILE>) {
     # skip comments
     next LINE if m/^\s*\#/ and !defined $str;
 
     if (m/\S+\s*=\s*((?:_\s*)?)\"([^\"]*)\"\s*(?:\#.*)?$/) {
-      # single-line
+      # single-line quoted string
       die "nested string in $file" if defined $str;
 
       push @{$messages{raw2postring($2)}}, "$file:$."
-#       print "#: $file:$.\n",
-# 	    "msgid ", raw2postring($2),
-# 	    "msgstr \"\"\n\n"
-	if ($1 ne '');
+	if ($1 ne ''); # ie. translatable
 
     } elsif (m/\S+\s*=\s*((?:_\s*)?)\s*\"([^\"]*)/) {
       # start of multi-line
@@ -41,14 +43,30 @@ foreach my $file (@ARGV) {
       $str .= $1;
 
       push @{$messages{"\"\"\n" . raw2postring($str)}}, "$file:$."
-#       print "#: $file:$line\n",
-# 	    "msgid \"\"\n", raw2postring($str),
-# 	    "msgstr \"\"\n\n"
 	if $translatable;
       $str = undef;
+
     } elsif (defined $str) {
       # part of multi-line
       $str .= $_;
+
+    } elsif (m/(\S+)\s*=\s*(.*)$/) {
+      # single-line non-quoted string
+      die "nested string in $file" if defined $str;
+
+      # magic handling of weapon descriptions
+      push @{$messages{raw2postring($2)}},  "$file:$."
+	if $readingattack and
+	  ($1 eq 'name' or $1 eq 'type' or $1 eq 'special');
+
+      # magic handling of unit abilities
+      push @{$messages{raw2postring($2)}},  "$file:$."
+	if $1 eq 'ability';
+
+    } elsif (m,\[attack\],) {
+      $readingattack = 1;
+    } elsif (m,\[/attack\],) {
+      $readingattack = 0;
     }
 
   }

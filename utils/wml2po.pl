@@ -48,6 +48,8 @@ foreach my $wmlfile (@wmlfiles) {
 #       $id = undef;
     } elsif (m/\[attack\]/) {
       $readingattack = 1;
+    } elsif (m/ability\s*=\s*(.*)/) {
+      set('ability_' . $1, $1);
     } elsif (m/unit_description\s*=\s*(?:_\s*)\"(.*)\"\s*$/) {
       # single-line
       if (defined $id) {
