@@ -2158,3 +2158,11 @@ void display::prune_chat_messages(bool remove_all)
 		prune_chat_messages(remove_all);
 	}
 }
+
+
+void display::rebuild_terrains(const std::vector<gamemap::location> &locations) {
+    for (std::vector<gamemap::location>::const_iterator it = locations.begin();
+         it != locations.end(); it++) {
+        builder_.rebuild_terrain(*it);
+    }
+}

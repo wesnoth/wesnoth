@@ -34,7 +34,9 @@ public:
 	//Returns NULL if there is no built content for this tile.
 	const std::vector<std::string> *terrain_builder::get_terrain_at(const gamemap::location &loc,
 								  ADJACENT_TERRAIN_TYPE terrain_type) const;
-       
+	// regenerate the generated content at the given location.
+    void rebuild_terrain(const gamemap::location &loc);
+
 private:
 	//pre-calculates the list of generated content for all tiles (will slow the game
 	//too much otherwise)

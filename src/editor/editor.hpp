@@ -165,6 +165,8 @@ public:
 	};
 	
 private:
+	void map_editor::rebuild_dirty_terrains();
+
 	/// Called in every iteration when the left mouse button is held
 	/// down. Note that this differs from a click.
 	void left_button_down(const int mousex, const int mousey);
@@ -234,6 +236,7 @@ private:
 	// scheduled.
 	bool minimap_dirty_;
 	terrain_palette palette_;
+	std::vector<gamemap::location> dirty_positions_;
 };
 
 

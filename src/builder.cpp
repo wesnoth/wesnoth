@@ -32,6 +32,24 @@ const std::vector<std::string>* terrain_builder::get_terrain_at(const gamemap::l
 	}
 }
 
+void terrain_builder::rebuild_terrain(const gamemap::location &loc) {
+    const std::vector<std::string> &vback = build_terrain_at(loc, ADJACENT_BACKGROUND);
+	if (vback.empty()) {
+		buildings_background.erase(loc);
+	}
+	else {
+		buildings_background[loc] = vback;
+	}
+    const std::vector<std::string> &vfore = build_terrain_at(loc, ADJACENT_FOREGROUND);
+	if (vfore.empty()) {
+		buildings_foreground.erase(loc);
+	}
+	else {
+		buildings_foreground[loc] = vfore;
+	}
+}
+
+
 void terrain_builder::build_terrains()
 {
 	for(int x = -1; x <= map_.x(); ++x) {

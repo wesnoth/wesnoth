@@ -394,6 +394,7 @@ void map_editor::undo() {
 		--num_operations_since_save_;
 		map_undo_action action = undo_stack_.back();
 		map_.set_terrain(action.location,action.old_terrain);
+		dirty_positions_.push_back(action.location);
 		undo_stack_.pop_back();
 		redo_stack_.push_back(action);
 		if(redo_stack_.size() > undo_limit)
@@ -407,6 +408,7 @@ void map_editor::redo() {
 		++num_operations_since_save_;
 		map_undo_action action = redo_stack_.back();
 		map_.set_terrain(action.location,action.new_terrain);
+		dirty_positions_.push_back(action.location);
 		redo_stack_.pop_back();
 		undo_stack_.push_back(action);
 		if(undo_stack_.size() > undo_limit)
@@ -417,6 +419,7 @@ void map_editor::redo() {
 
 void map_editor::set_starting_position(const int player, const gamemap::location loc) {
 	if(map_.on_board(loc)) {
+		dirty_positions_.push_back(loc);
 		map_.set_terrain(loc, gamemap::CASTLE);
 		// This operation is currently not undoable, so we need to make sure
 		// that save is always asked for after it is performed.
@@ -470,6 +473,7 @@ void map_editor::draw_terrain(const gamemap::TERRAIN terrain,
 	if(undo_stack_.size() > undo_limit)
 		undo_stack_.pop_front();
 	map_.set_terrain(hex, terrain);
+	dirty_positions_.push_back(hex);
 	invalidate_adjacent(hex);
 }
 
@@ -598,6 +602,21 @@ void map_editor::execute_command(const hotkey::HOTKEY_COMMAND command) {
 	}
 }
   
+void map_editor::rebuild_dirty_terrains() {
+    std::vector<gamemap::location> including_adjacent;
+    for (std::vector<gamemap::location>::const_iterator it = dirty_positions_.begin();
+         it != dirty_positions_.end(); it++) {
+        gamemap::location locs[7];
+        locs[0] = *it;
+        get_adjacent_tiles(*it,locs+1);
+        for(int i = 0; i != 7; ++i) {
+            including_adjacent.push_back(locs[i]);
+        }
+        gui_.rebuild_terrains(including_adjacent);
+    }
+	dirty_positions_.clear();
+}
+
 void map_editor::main_loop() {
 	const double scroll_speed = preferences::scroll_speed();
 	unsigned int counter = 0;
@@ -644,6 +663,7 @@ void map_editor::main_loop() {
 			middle_button_down(mousex, mousey);
 		}
 
+		rebuild_dirty_terrains();
 		gui_.draw(false);
 		palette_.draw();
 		//if(drawterrainpalette(gui_, tstart_, selected_terrain_, map_, size_specs_) == false)
