@@ -364,6 +364,10 @@ void show_video_mode_dialog(display& disp)
 	CVideo& video = disp.video();
 	SDL_Rect** modes = SDL_ListModes(video.getSurface()->format,FULL_SCREEN);
 	if(reinterpret_cast<int>(modes) == -1 || modes == NULL) {
+		if(modes != NULL)
+			std::cerr << "Can support any video mode\n";
+		else
+			std::cerr << "No modes supported\n";
 		gui::show_dialog(disp,NULL,"",string_table["video_mode_unavailable"]);
 		return;
 	}
