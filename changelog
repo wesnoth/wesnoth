@@ -40,6 +40,8 @@ CVS HEAD:
    * Shadow: switched movetype to 'spirit', halved hitpoints, reduced movement
    * Orcish Archer: reduced cost
    * Peasant: reduced cost, increased melee damage
+   * Dwarvish Guardsman: reduced blade, pierce, impact, fire and cold resistances, reduced cost
+   * Dwarvish Stawlart: reduced blade, pierce, impact, fire and cold resistances
  * new units
    * Dark Queen
  * language fixes and polishing (english)
@@ -80,6 +82,8 @@ CVS HEAD:
  * fixed 'Orcish Ruler' appearing in 'The Rise of Wesnoth' campaign
  * fixed 'Heavy Infantryman' recruiting bug in 'The Eastern Invasion: Mal-Ravanals Capital' scenario
  * fixed editor not being translatable
+ * fixed Parandra missing in 'Heir to the Throne: The Elven Council' scenario
+ * fixed king going to swimming on 'The Rise of Wesnoth: A Final Spring' scenario
  * workaround for Reiser4 feature bug (#10264)
  * re-implemented enhanced sound quality fix
  * added error dialog when a campaign has corrupt WML
@@ -92,7 +96,7 @@ CVS HEAD:
  * compile speed optimizations
  * text rendering optimizations
  * squashed many compile warnings
- * code cleanups
+ * code cleanups and refactoring
  
 Version 0.8.3:
  * information about encountered terrain added in the help system
