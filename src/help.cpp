@@ -34,9 +34,13 @@
 #include <sstream>
 
 namespace {
-	const config *help_config = NULL;
 	const config *game_config = NULL;
 	game_data *game_info = NULL;
+	// The default toplevel.
+	help::section toplevel; 
+	// All sections and topics not referenced from the default toplevel.
+	help::section hidden_sections; 
+								   
 	config dummy_cfg;
 	std::vector<std::string> empty_string_vector;
 	const int max_section_level = 15;
@@ -65,6 +69,9 @@ namespace {
 			return false;
 		}
 		if (id.find("weaponspecial_") == 0) {
+			return false;
+		}
+		if (id == "hidden") {
 			return false;
 		}
 		return true;
@@ -131,15 +138,118 @@ namespace help {
 
 help_manager::help_manager(const config *cfg, game_data *gameinfo) {
 	game_config = cfg == NULL ? &dummy_cfg : cfg;
+	game_info = gameinfo;
 	if (game_config != NULL) {
-		help_config = game_config->child("help");
+		const config *help_config = game_config->child("help");
 		if (help_config == NULL) {
 			help_config = &dummy_cfg;
 		}
+		try {
+			toplevel = parse_config(help_config);
+			// Create a config object that contains everything that is
+			// not referenced from the toplevel element. Read this
+			// config and save these sections and topics so that they
+			// can be referenced later on when showing help about
+			// specified things, but that should not be shown when
+			// opening the help browser in the default manner.
+			config hidden_toplevel;
+			std::stringstream ss;
+			config::const_child_itors itors;
+			for (itors = help_config->child_range("section"); itors.first != itors.second;
+				 itors.first++) {
+				const std::string id = (*(*itors.first))["id"];
+				if (find_section(toplevel, id) == NULL) {
+					// This section does not exist referenced from the
+					// toplevel. Hence, add it to the hidden ones if it
+					// is not referenced from another section.
+					if (!section_is_referenced(id, *help_config)) {
+						if (ss.str() != "") {
+							ss << ",";
+						}
+						ss << id;
+					}
+				}
+			}
+			hidden_toplevel["sections"] = ss.str();
+			ss.str("");
+			for (itors = help_config->child_range("topic"); itors.first != itors.second;
+				 itors.first++) {
+				const std::string id = (*(*itors.first))["id"];
+				if (find_topic(toplevel, id) == NULL) {
+					if (!topic_is_referenced(id, *help_config)) {
+						if (ss.str() != "") {
+							ss << ",";
+						}
+						ss << id;
+					}
+				}
+			}
+			hidden_toplevel["topics"] = ss.str();
+			config hidden_cfg = *help_config;
+			// Change the toplevel to our new, custom built one.
+			hidden_cfg.clear_children("toplevel");
+			hidden_cfg.add_child("toplevel", hidden_toplevel);
+			hidden_sections = parse_config(&hidden_cfg);
+		}
+		catch (parse_error e) {
+			std::stringstream msg;
+			msg << "Parse error when parsing help text: '" << e.message << "'";
+			std::cerr << msg.str() << std::endl;
+		}
 	}
-	game_info = gameinfo;
 }
 
+help_manager::~help_manager() {
+	game_config = NULL;
+	game_info = NULL;
+	toplevel = section();
+	hidden_sections = section();
+}
+
+bool section_is_referenced(const std::string &section_id, const config &cfg) {
+	const config *toplevel = cfg.child("toplevel");
+	if (toplevel != NULL) {
+		const std::vector<std::string> toplevel_refs
+			= config::quoted_split((*toplevel)["sections"]);
+		if (std::find(toplevel_refs.begin(), toplevel_refs.end(), section_id)
+			!= toplevel_refs.end()) {
+			return true;
+		}
+	}
+	for (config::const_child_itors itors = cfg.child_range("section");
+		 itors.first != itors.second; itors.first++) {
+		const std::vector<std::string> sections_refd
+			= config::quoted_split((*(*itors.first))["sections"]);
+		if (std::find(sections_refd.begin(), sections_refd.end(), section_id)
+			!= sections_refd.end()) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool topic_is_referenced(const std::string &topic_id, const config &cfg) {
+	const config *toplevel = cfg.child("toplevel");
+	if (toplevel != NULL) {
+		const std::vector<std::string> toplevel_refs
+			= config::quoted_split((*toplevel)["topics"]);
+		if (std::find(toplevel_refs.begin(), toplevel_refs.end(), topic_id)
+			!= toplevel_refs.end()) {
+			return true;
+		}
+	}
+	for (config::const_child_itors itors = cfg.child_range("section");
+		 itors.first != itors.second; itors.first++) {
+		const std::vector<std::string> topics_refd
+			= config::quoted_split((*(*itors.first))["topics"]);
+		if (std::find(topics_refd.begin(), topics_refd.end(), topic_id)
+			!= topics_refd.end()) {
+			return true;
+		}
+	}
+	return false;
+}
+	
 void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level) {
 	if (level > max_section_level) {
@@ -179,7 +289,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			generate_sections((*section_cfg)["generator"]);
 		std::transform(generated_sections.begin(), generated_sections.end(),
 					   std::back_inserter(sec.sections), create_section());
-		const std::vector<std::string> topics  = config::quoted_split((*section_cfg)["topics"]);
+		const std::vector<std::string> topics = config::quoted_split((*section_cfg)["topics"]);
 		// Find all topics in this section.
 		for (it = topics.begin(); it != topics.end(); it++) {
 			config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
@@ -205,7 +315,6 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			generate_topics((*section_cfg)["generator"]);
 		std::copy(generated_topics.begin(), generated_topics.end(),
 				  std::back_inserter(sec.topics));
-							  
 	}
 }	
 
@@ -550,10 +659,6 @@ std::string generate_about_text() {
 	return text;
 }
 
-help_manager::~help_manager() {
-	help_config = NULL;
-}
-
 bool topic::operator==(const topic &t) const {
 	return t.id == id;
 }
@@ -581,6 +686,9 @@ section::section(const section &sec)
 }
 
 section& section::operator=(const section &sec) {
+	title = sec.title;
+	id = sec.id;
+	std::copy(sec.topics.begin(), sec.topics.end(), std::back_inserter(topics));
 	std::transform(sec.sections.begin(), sec.sections.end(),
 				   std::back_inserter(sections), create_section());
 	return *this;
@@ -955,10 +1063,20 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 void help_text_area::handle_ref_cfg(const config &cfg) {
 	const std::string dst = cfg["dst"];
 	const std::string text = cfg["text"];
+	const bool force = get_bool(cfg["force"]);
+	bool show_ref = true;
+	if (find_topic(toplevel_, dst) == NULL && !force) {
+		show_ref = false;
+	}
 	if (dst == "" || text == "") {
 		throw parse_error("Ref markup must have both dst and text attributes.");
 	}
-	add_text_item(text, dst);
+	if (show_ref) {
+		add_text_item(text, dst);
+	}
+	else {
+		add_text_item(text);
+	}
 }
 
 void help_text_area::handle_img_cfg(const config &cfg) {
@@ -1431,7 +1549,7 @@ std::string help_text_area::ref_at(const int x, const int y) {
 
 
 
-help_browser::help_browser(display &disp, section &toplevel)
+help_browser::help_browser(display &disp, const section &toplevel)
 	: gui::widget(disp), disp_(disp), menu_(disp, toplevel),
 	  text_area_(disp, toplevel), toplevel_(toplevel), ref_cursor_(false),
 	  back_button_(disp, translate_string("help_back"), gui::button::TYPE_PRESS),
@@ -1611,6 +1729,21 @@ const topic *find_topic(const section &sec, const std::string &id) {
 		const topic *t = find_topic(*(*sit), id);
 		if (t != NULL) {
 			return t;
+		}
+	}
+	return NULL;
+}
+
+const section *find_section(const section &sec, const std::string &id) {
+	section_list::const_iterator sit =
+		std::find_if(sec.sections.begin(), sec.sections.end(), has_id(id));
+	if (sit != sec.sections.end()) {
+		return *sit;
+	}
+	for (sit = sec.sections.begin(); sit != sec.sections.end(); sit++) {
+		const section *s = find_section(*(*sit), id);
+		if (s != NULL) {
+			return s;
 		}
 	}
 	return NULL;
@@ -1833,6 +1966,41 @@ std::string get_first_word(const std::string &s) {
 }
 
 void show_help(display &disp, std::string show_topic, int xloc, int yloc) {
+	show_help(disp, toplevel, show_topic, xloc, yloc);
+}
+
+void show_help(display &disp, const std::vector<std::string> &topics_to_show,
+			   const std::vector<std::string> &sections_to_show, const std::string show_topic,
+			   int xloc, int yloc) {
+	section to_show;
+	std::vector<std::string>::const_iterator it;
+	for (it = topics_to_show.begin(); it != topics_to_show.end(); it++) {
+		// Check both the visible toplevel and the hidden sections.
+		const topic *t = find_topic(toplevel, *it);
+		t = t == NULL ? find_topic(hidden_sections, *it) : t;
+		if (t != NULL) {
+			to_show.topics.push_back(*t);
+		}
+		else {
+			std::cerr << "Warning: topic with id " << *it << " does not exist." << std::endl;
+		}
+	}
+	for (it = sections_to_show.begin(); it != sections_to_show.end(); it++) {
+		const section *s = find_section(toplevel, *it);
+		s = s == NULL ? find_section(hidden_sections, *it) : s;
+		if (s != NULL) {
+			to_show.add_section(*s);
+		}
+		else {
+			std::cerr << "Warning: section with id " << *it << " does not exist." << std::endl;
+		}
+	}
+	show_help(disp, to_show, show_topic, xloc, yloc);
+}
+
+/// Open a help dialog using a toplevel other than the default.
+void show_help(display &disp, const section &toplevel_sec, const std::string show_topic,
+			   int xloc, int yloc) {
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 	const events::resize_lock prevent_resizing;
@@ -1861,8 +2029,7 @@ void show_help(display &disp, std::string show_topic, int xloc, int yloc) {
 					 NULL, &buttons_ptr, &restorer);
 
 	try {
-		section toplevel = parse_config(help_config);
-		help_browser hb(disp, toplevel);
+		help_browser hb(disp, toplevel_sec);
 		hb.set_location(xloc + left_padding, yloc + top_padding);
 		hb.set_width(width - left_padding - right_padding);
 		hb.set_height(height - top_padding - bot_padding);

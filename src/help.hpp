@@ -83,6 +83,7 @@ public:
 	has_id(const std::string &id) : id_(id) {}
 	bool operator()(const topic &t) { return t.id == id_; }
 	bool operator()(const section &s) { return s.id == id_; }
+	bool operator()(const section *s) { return s != NULL && s->id == id_; }
 private:
 	const std::string id_;
 };
@@ -345,7 +346,7 @@ private:
 /// A help browser widget.
 class help_browser : public gui::widget {
 public:
-	help_browser(display &disp, section &toplevel);
+	help_browser(display &disp, const section &toplevel);
 
 	// Overloaded from widget so that the layout may be adjusted to fit
 	// the new dimensions.
@@ -403,8 +404,6 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
 std::vector<topic> generate_ability_topics();
 std::vector<topic> generate_weapon_special_topics();
 
-
-
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
 section parse_config(const config *cfg); 
@@ -412,10 +411,22 @@ section parse_config(const config *cfg);
 void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level=0);
 
+/// Return true if the section with id section_id is referenced from
+/// another section in the config, or the toplevel.
+bool section_is_referenced(const std::string &section_id, const config &cfg);
+/// Return true if the topic with id topic_id is referenced from
+/// another section in the config, or the toplevel.
+bool topic_is_referenced(const std::string &topic_id, const config &cfg);
+
 /// Search for the topic with the specified identifier in the section
-/// and it's subsections. Return the found topic, or NULL if none could
+/// and its subsections. Return the found topic, or NULL if none could
 /// be found.
 const topic *find_topic(const section &sec, const std::string &id);
+
+/// Search for the section with the specified identifier in the section
+/// and its subsections. Return the found section or NULL if none could
+/// be found.
+const section *find_section(const section &sec, const std::string &id);
 
 /// Parse a text string. Return a vector with the different parts of the
 /// text. Each markup item is a separate part while the text between
@@ -450,8 +461,22 @@ std::string cap(const std::string &s);
 /// it.
 std::string get_first_word(const std::string &s);
 
-/// Open a help dialog. The help topic will have the topic with id
-/// show_topic open if it is not the empty string.
+/// Open a help dialog showing the topics with ids topics_to_show and
+/// the sections with ids sections_to_show. Subsections and subtopics of
+/// the sections will be added recursively according to the help config.
+void show_help(display &disp, const std::vector<std::string> &topics_to_show,
+			   const std::vector<std::string> &sections_to_show, const std::string show_topic="",
+			   int xloc=-1, int yloc=-1);
+
+/// Open a help dialog using a toplevel other than the default. This
+/// allows for complete customization of the contents, although not in a
+/// very easy way.
+void show_help(display &disp, const section &toplevel, const std::string show_topic="",
+			   int xloc=-1, int yloc=-1);
+
+/// Open the help browser. The help browser will have the topic with id
+/// show_topic open if it is not the empty string. The default topic
+/// will be shown if show_topic sis the empty string.
 void show_help(display &disp, const std::string show_topic="", int xloc=-1, int yloc=-1);
 
 } // End namespace help.
