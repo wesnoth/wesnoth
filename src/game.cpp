@@ -51,6 +51,7 @@
 #include "unit.hpp"
 #include "video.hpp"
 #include "wassert.hpp"
+#include "serialization/string_utils.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 

@@ -26,6 +26,7 @@
 #include "show_dialog.hpp"
 #include "sound.hpp"
 #include "util.hpp"
+#include "serialization/string_utils.hpp"
 #include "widgets/button.hpp"
 #include "widgets/label.hpp"
 #include "widgets/menu.hpp"

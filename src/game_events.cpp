@@ -25,6 +25,7 @@
 #include "unit_display.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <cstdlib>
 #include <deque>

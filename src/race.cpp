@@ -2,6 +2,7 @@
 
 #include "race.hpp"
 #include "replay.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <cstdlib>
 

@@ -12,6 +12,7 @@
 */
 
 #include "leader_list.hpp"
+#include "serialization/string_utils.hpp"
 #include "widgets/menu.hpp"
 
 leader_list_manager::leader_list_manager(const config::child_list& side_list,

@@ -20,6 +20,7 @@
 #include "race.hpp"
 #include "scoped_resource.hpp"
 #include "util.hpp"
+#include "serialization/string_utils.hpp"
 
 #define ERR_CF lg::err(lg::config)
 #define LOG_NG lg::info(lg::engine)

@@ -5,6 +5,7 @@
 #include "pathfind.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "serialization/string_utils.hpp"
 
 #define LOG_NG lg::info(lg::engine)
 

@@ -17,6 +17,7 @@
 #include "wassert.hpp"
 #include "util.hpp"
 #include "replay.hpp"
+#include "serialization/string_utils.hpp"
 
 #define LOG_NW lg::info(lg::network)
 #define ERR_NW lg::err(lg::network)

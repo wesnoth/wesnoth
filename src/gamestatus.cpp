@@ -21,6 +21,7 @@
 #include "preferences.hpp"
 #include "statistics.hpp"
 #include "util.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 #include <cstdio>

@@ -20,17 +20,11 @@
 #include "unit_types.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
-
-//these headers are used to check for file existence
-#ifdef linux
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#endif
 
 unit_animation::frame::frame(const config& cfg)
 {

@@ -23,6 +23,7 @@
 #include "team.hpp"
 #include "tooltips.hpp"
 #include "util.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 #include <cstdio>

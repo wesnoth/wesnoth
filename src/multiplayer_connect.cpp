@@ -12,13 +12,14 @@
 */
 
 #include "global.hpp"
-#include "multiplayer_connect.hpp"
+#include "dialogs.hpp"
 #include "font.hpp"
+#include "game_config.hpp"
+#include "multiplayer_connect.hpp"
 #include "preferences.hpp"
 #include "show_dialog.hpp"
-#include "dialogs.hpp"
-#include "game_config.hpp"
 #include "wassert.hpp"
+#include "serialization/string_utils.hpp"
 
 #define LOG_NW lg::info(lg::network)
 #define ERR_NW lg::err(lg::network)

@@ -31,6 +31,7 @@
 #include "../team.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
+#include "serialization/string_utils.hpp"
 
 #include "editor.hpp"
 #include "map_manip.hpp"

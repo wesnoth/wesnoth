@@ -25,6 +25,7 @@
 #include "../team.hpp"
 #include "../util.hpp"
 #include "../wesconfig.h"
+#include "serialization/string_utils.hpp"
 
 #include <cctype>
 #include <cstdlib>

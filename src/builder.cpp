@@ -19,6 +19,7 @@
 #include "terrain.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "serialization/string_utils.hpp"
 
 #define ERR_NG lg::err(lg::engine)
 
