@@ -77,6 +77,11 @@ const std::string& symbol_table::operator[](const std::string& key) const
 		return i->second;
 	} else {
 		static std::string empty_string;
+		// Let's do it the painful way (untlb means untranslatABLE).
+		// It will cause problem if somebody stores more than one reference at once
+		// but I don't really care since this path is an error path and it should
+		// not have been taken in the first place. -- silene
+		empty_string = "UNTLB " + key;
 		return empty_string;
 	}
 }
