@@ -226,15 +226,14 @@ void show_map_scene(display& screen, config& data)
 			ydot = 0;
 
 		SDL_Rect dot_rect;
-		dot_rect.x = xdot;
-		dot_rect.y = ydot;
+		dot_rect.x = xdot + dstrect.x;
+		dot_rect.y = ydot + dstrect.y;
 		dot_rect.w = img->w;
 		dot_rect.h = img->h;
 
-		SDL_BlitSurface(img,NULL,image,&dot_rect);
+		SDL_BlitSurface(img,NULL,screen.video().getSurface(),&dot_rect);
 
-		SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
-		update_rect(dstrect);
+		update_rect(dot_rect);
 
 		for(int i = 0; i != 50; ++i) {
 			if(key[SDLK_ESCAPE]) {
@@ -269,8 +268,6 @@ void show_map_scene(display& screen, config& data)
 	update_rect(font::draw_text(&screen,area,24,font::NORMAL_COLOUR,scenario,
 		                        dstrect.x,dstrect.y - scenario_size.h - 4));
 
-	SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
-	update_rect(dstrect);
 	screen.video().flip();
 
 	bool last_state = true;

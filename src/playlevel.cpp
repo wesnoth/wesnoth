@@ -142,6 +142,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		try {
 
 			if(first_time) {
+				const hotkey::basic_handler key_events_handler(gui);
 				clear_shroud(gui,map,gameinfo,units,teams,0);
 
 				update_locker lock_display(gui,recorder.skipping());
