@@ -1,16 +1,16 @@
 # Latin translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# nalbad80 <mpolon7@netscape.net>, 2005.
+# MPolo <mpolon7@netscape.net>, 2005.
 # 
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth Latin 0.8.8\n"
+"Project-Id-Version: Wesnoth Latin 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-01-21 00:15+0100\n"
-"PO-Revision-Date: 2005-01-21 09:01+0100\n"
-"Last-Translator: MPolo <mpolon7@netscape.net>\n"
+"PO-Revision-Date: 2005-01-24 18:52+0100\n"
+"Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1995,9 +1995,8 @@ msgid "Savanna"
 msgstr ""
 
 #: data/terrain.cfg:218 data/terrain.cfg:229
-#, fuzzy
 msgid "Desert Village"
-msgstr "Pagus"
+msgstr "Pagus Loci Deserti"
 
 #: data/terrain.cfg:240
 msgid "Tropical Forest Village"
@@ -2012,9 +2011,8 @@ msgid "Snow"
 msgstr "Nix"
 
 #: data/terrain.cfg:270
-#, fuzzy
 msgid "Snow Village"
-msgstr "Pagus"
+msgstr "Pagus Nivis"
 
 #: data/terrain.cfg:281
 msgid "Hills"
@@ -2029,18 +2027,16 @@ msgid "Mountains"
 msgstr "Montes"
 
 #: data/terrain.cfg:312
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Montes"
+msgstr "Montes Loci Deserti"
 
 #: data/terrain.cfg:320
 msgid "Forest"
 msgstr "Silva"
 
 #: data/terrain.cfg:328
-#, fuzzy
 msgid "Snow Forest"
-msgstr "Silva"
+msgstr "Silva Nivis"
 
 #: data/terrain.cfg:336
 msgid "Tropical Forest"
@@ -2528,7 +2524,7 @@ msgstr ""
 #: data/units/Saurian_Ambusher.cfg:19 data/units/Saurian_Flanker.cfg:20
 #: data/units/Saurian_Skirmisher.cfg:19 data/units/Saurian_Warrior.cfg:21
 msgid "skirmisher"
-msgstr "velitatur"
+msgstr "excursor"
 
 #: data/translations/english.cfg:81
 msgid ""
@@ -3064,7 +3060,7 @@ msgstr "Filia Reginae"
 
 #: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:56
 msgid "leadership,skirmisher"
-msgstr "ductus,velitatur"
+msgstr "ductus,excursator"
 
 #: data/units/Battle_Princess.cfg:20
 msgid ""
@@ -4645,7 +4641,6 @@ msgid "Ghost"
 msgstr "Larva"
 
 #: data/units/Ghost.cfg:16
-#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
 "leaving a corpse behind. Although their non-corporeal form allows them great "
@@ -4654,8 +4649,9 @@ msgid ""
 msgstr ""
 "Larvae animae sunt bellatorum qui magno cum dolore abhinc saecula mortuae "
 "sunt sine cadavere relicto. Non a corporibus physicis limitati hi inmortui "
-"celeriter ad victimas volare possunt. Etsi ectoplasma eorum res physicas "
-"transire potest, non transit nimis celeriter neque alte."
+"celeriter ad victimas volare possunt. Etsi forma noncorporalis earum "
+"libertatem motus praebet et protectionem ab oppugnationibus physicis, larvae "
+"transire aquam fluentam faciliter non possunt."
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
@@ -4673,7 +4669,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr "Repens Humi Ingente"
+msgstr "Repens Luti Ingente"
 
 #: data/units/Giant_Mudcrawler.cfg:16
 msgid ""
@@ -4837,7 +4833,7 @@ msgstr "Striga Magna"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
-msgstr "Gigas Magnus"
+msgstr "Troglodyta Magnus"
 
 #: data/units/Great_Troll.cfg:16
 msgid ""
@@ -4845,7 +4841,7 @@ msgid ""
 "ability to regenerate themselves, so that they recover from wounds on their "
 "own, even during battle."
 msgstr ""
-"Gigantes Magni fortia et atrocia sunt monstra quasi humana. Habent "
+"Troglodytae Magni fortia et atrocia sunt monstra quasi humana. Habent "
 "facultatem miram se regenerandi, ut ab iniuriis per se recuperent, et in "
 "proelio."
 
@@ -5122,7 +5118,7 @@ msgstr "Magus Luminis"
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
 #: data/units/Mermaid_Diviner.cfg:8
 msgid "illuminates,cures"
-msgstr "illuminat,curat"
+msgstr "illustrat,sanat"
 
 #: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:86
 msgid ""
@@ -5134,27 +5130,32 @@ msgid ""
 "night. Like the White Mages, the Mages of Light also cure adjacent friendly "
 "units."
 msgstr ""
+"Magi Luminis socii potentes filiorum lucis et adversarii formidolosi "
+"filiorum tenebrarum. Potestates horum Magorum illustrationis tam magni sunt "
+"ut hexagones proprii et vicini numquam noctem patiuntur. Quo fit ut unitates "
+"vicinae Mago Lumenis pugnent vespere tamquam die et noctu tamquam vespere. "
+"Sicut Magi Albi, Magi Luminis unitates amicos vicinos sanant."
 
 #: data/units/Mage_of_Light.cfg:45 data/units/Mage_of_Light.cfg:105
 #: data/units/Mermaid_Diviner.cfg:34 data/units/Mermaid_Priestess.cfg:32
 #: data/units/White_Mage.cfg:44 data/units/White_Mage.cfg:103
 msgid "lightbeam"
-msgstr ""
+msgstr "radius lucis"
 
 #: data/units/Mage_of_Light.cfg:46 data/units/Mage_of_Light.cfg:106
 #: data/units/Mermaid_Diviner.cfg:35 data/units/Mermaid_Priestess.cfg:33
 #: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:45
 #: data/units/White_Mage.cfg:104
 msgid "holy"
-msgstr ""
+msgstr "sanctus"
 
 #: data/units/Mage_of_Light.cfg:66
 msgid "female^Mage of Light"
-msgstr ""
+msgstr "Striga Luminis"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
-msgstr ""
+msgstr "Sagittarius Peritus"
 
 #: data/units/Master_Bowman.cfg:17
 msgid ""
@@ -5162,10 +5163,13 @@ msgid ""
 "human can hope to attain. Their power with this deadly weapon is surpassed "
 "only by that of the Elves."
 msgstr ""
+"Sagittarii Periti grados altissimos peritiae cum arcu attingunt quos homo "
+"ullus adsequi esperare potest. Potestas eorum cum telo hoc funesto superatur "
+"tamen a Dryadalibus."
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "Augur Nereia"
 
 #: data/units/Mermaid_Diviner.cfg:23
 msgid ""
@@ -5173,10 +5177,13 @@ msgid ""
 "illumination, which prevents their surroundings from ever seeing true "
 "night.  Their power is a stalwart counter to the forces of darkness."
 msgstr ""
+"Religiosissimae et piissimae inter nereides potestatem illustrationis "
+"adipiscuntur, quae vicinos earum impediunt quominus noctem veram videant. "
+"Potestas earum remedium robustum est contra greges obscuritatis."
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "Incantatrix Nereia"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
 #: data/units/Merman.cfg:19 data/units/Merman_Entangler.cfg:15
@@ -5187,15 +5194,17 @@ msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but struggle greatly to move on land."
 msgstr ""
+"Creaturae peritae maris, Nereii potentes et rapidi sunt in vicinia ulla "
+"aquosa, sed valde nituntur ut se in terra moveant."
 
 #: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:33
 #: data/units/Mermaid_Siren.cfg:33 data/units/Sea_Hag.cfg:27
 msgid "water spray"
-msgstr ""
+msgstr "aspergo aquae"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Initiata Nereia"
 
 #: data/units/Mermaid_Initiate.cfg:17
 msgid ""
@@ -5203,6 +5212,9 @@ msgid ""
 "Despite their frailty, this makes them formidable opponents, as they can "
 "call upon the very water about them to smite their enemies."
 msgstr ""
+"Nereides juvenes saepe initiantur in magicis aquae populi eorum. Tamquam "
+"fragiles sunt, hoc facit ut adversariae formidolosae sint, quia aquam ipsam "
+"circa eas vocare possunt ut inimicos discutant."
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
@@ -5214,6 +5226,9 @@ msgid ""
 "leaves them quite capable of ministering to the wounds of their comrades, as "
 "well as being a potent defense against the unworldly."
 msgstr ""
+"Plus docti nereidum viam studii sancti saepe prendunt. Hoc eas reliquit "
+"capaces ad vulnera sociorum ministranda, atque defensum potens contra "
+"immundanos."
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "Siren"
@@ -5225,7 +5240,7 @@ msgstr "tactus naiadis"
 
 #: data/units/Merman.cfg:6
 msgid "Merman"
-msgstr "Nereus"
+msgstr "Nereius"
 
 #: data/units/Merman.cfg:22 data/units/Merman_Fighter.cfg:22
 #: data/units/Merman_Hoplite.cfg:35 data/units/Merman_Triton.cfg:22
@@ -5240,11 +5255,11 @@ msgstr "Impeditor Nereius"
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
-msgstr ""
+msgstr "Pugnator Nereius"
 
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "Hoplomachus Nereius"
 
 #: data/units/Merman_Hoplite.cfg:32
 msgid ""
@@ -5253,26 +5268,30 @@ msgid ""
 "a steadfast line against the rages of battle.  In times of desperation, they "
 "can even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
+"Scutis eminentibus Hoplomachi Nerei florem custodum regni aquosi formant. "
+"Arma potentia et disciplina rigida eos aciem stabilem tenere contra furores "
+"proelii permittunt. Tempore desperationis et in terra hoc facere possunt, "
+"sedminus bene longe quam creatura cum cruribus."
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
-msgstr ""
+msgstr "Venator Nereius"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Pilatus Nereius"
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
-msgstr ""
+msgstr "Retiarius Nereius"
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
-msgstr ""
+msgstr "Hastatus Nereius"
 
 #: data/units/Merman_Triton.cfg:3
 msgid "Merman Triton"
-msgstr ""
+msgstr "Triton Nereius"
 
 #: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:22
 msgid ""
@@ -5280,20 +5299,25 @@ msgid ""
 "easily defeat any enemy foolish enough to wander into their preferred "
 "environment."
 msgstr ""
+"Tritones domini sunt maris. Periti cum tridente, Tritones ullum hostem "
+"faciliter possunt, qui tam insipiens est quam in viciniis eorum delectis "
+"erret."
 
 #: data/units/Merman_Warrior.cfg:3
 msgid "Merman Warrior"
-msgstr ""
+msgstr "Bellator Nereius"
 
 #: data/units/Merman_Warrior.cfg:19
 msgid ""
 "The Mermen Warriors form the core of the mermen armies.  Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
+"Bellatores Nereii nucleum exercituum Nereiorum formant. Tridentes potentes "
+"gerentes, ruina sunt omni qui in aquas eorum intrat."
 
 #: data/units/Mounted_Captain.cfg:6
 msgid "Mounted Captain"
-msgstr ""
+msgstr "Tribunus Equester"
 
 #: data/units/Mounted_Captain.cfg:20 data/units/Mounted_Fighter.cfg:17
 msgid ""
@@ -5302,10 +5326,13 @@ msgid ""
 "commanding their comrades, and they are the ones that become the captains of "
 "the armies of the Clans."
 msgstr ""
+"Nobiles virorum camporum educantur cum ceteris equitibus ad essendum "
+"bellatores magnos. Tamen et educantur in ductu contubernalium, ii fiunt "
+"Tribuni exercituum Gentium."
 
 #: data/units/Mounted_Commander.cfg:6
 msgid "Mounted Commander"
-msgstr ""
+msgstr "Dux Equester"
 
 #: data/units/Mounted_Commander.cfg:20
 msgid ""
@@ -5314,6 +5341,9 @@ msgid ""
 "the battlefield with great speed, and can provide much needed assistance to "
 "different fronts."
 msgstr ""
+"Duces Equestres camporum periti sunt cum gladio et aspergillo. Equitantes se "
+"per aciem magna celeritate movere possunt et subsidium necessarium ad "
+"frontes varios praebere possunt."
 
 #: data/units/Mounted_Fighter.cfg:3
 msgid "Mounted Fighter"
@@ -5321,7 +5351,7 @@ msgstr "Pugnator Equester"
 
 #: data/units/Mounted_Warrior.cfg:3
 msgid "Mounted Warrior"
-msgstr ""
+msgstr "Bellator Equester"
 
 #: data/units/Mounted_Warrior.cfg:17
 msgid ""
@@ -5330,20 +5360,25 @@ msgid ""
 "battlefield with great speed, and can provide much needed assistance to "
 "different fronts."
 msgstr ""
+"Duces Equestres camporum, Bellatores Equestres periti sunt cum gladio et "
+"aspergillo. Equitantes se per aciem magna celeritate movere possunt et "
+"subsidium necessarium ad frontes varios praebere possunt."
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
-msgstr ""
+msgstr "Repens Luti"
 
 #: data/units/Mudcrawler.cfg:16
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "spraying boiling water on their foes."
 msgstr ""
+"Repentia Luti exstructiones sunt magicae ex humo et aqua. Oppugnant "
+"aspergentes aquam ferventem in hostes."
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
-msgstr ""
+msgstr "Pugnator Nagarum"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:48
 msgid ""
@@ -5353,14 +5388,19 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss.  They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Nagae sepentipedes unus ex gentibus paucis sunt, qui se significanter in "
+"aqua movere possunt, hoc eis mundum praebet qui vetatur terrestribus. "
+"Nihilominus non sunt creaturae verae maris, non potentes aquam spirare. Hoc "
+"efficit ut trepidatio habeant ante gurgem. Parvae sunt et aliquantum "
+"fragiles formae, sed saepe multo perniciores quam adversarii."
 
 #: data/units/Naga-Fighter.cfg:34
 msgid "Nagini Fighter"
-msgstr ""
+msgstr "Pugnatrix Nagarum"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "Dimachaerus Nagarum"
 
 #: data/units/Naga-Myrmidon.cfg:21
 msgid ""
@@ -5370,10 +5410,15 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"Educatissimi dominorum laminarum nagarum initiantur in ordinem "
+"Dimachaerorum, domini artis eorum duarum laminarum. Percutunt tam celeriter "
+"quam serpentes quibus similes sunt, et absaltant ab oppugnationibus cum "
+"gratia. Non solum inimici potentes in agris apertis sunt, sed facultas eorum "
+"natandi eis mobilitatem funestam permittit."
 
 #: data/units/Naga-Myrmidon.cfg:38
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "Dimachaera Nagarum"
 
 #: data/units/Naga-Myrmidon.cfg:56
 msgid ""
@@ -5383,10 +5428,15 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"Educatissimi dominarum laminarum nagarum initiantur in ordinem "
+"Dimachaerarum, dominae artis eorum duarum laminarum. Percutunt tam celeriter "
+"quam serpentes quibus similes sunt, et absaltant ab oppugnationibus cum "
+"gratia. Non solum inimicae potentes in agris apertis sunt, sed facultas "
+"earum natandi eis mobilitatem funestam permittit."
 
 #: data/units/Naga-Warrior.cfg:3
 msgid "Naga Warrior"
-msgstr ""
+msgstr "Bellator Nagarum"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:56
 msgid ""
@@ -5397,24 +5447,32 @@ msgid ""
 "dodge from blows.  This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"Nonnulli bellatores adulescentes nagarum diem expectant in quo laminam "
+"secundam merent. Ars martialis eorum utendi laminis geminis dissimilis est "
+"omnino arte Orcorum et generis aliis, quia coeperunt discere artem utendi "
+"forma eorum serpentipedi ad exitum optimum, torquentes et vertentes ut ictos "
+"vetent. Hoc eos potentes facit in terra, sed frictio aquae valde impedit "
+"facultatem ad hoc facendum."
 
 #: data/units/Naga-Warrior.cfg:38
 msgid "Nagini Warrior"
-msgstr ""
+msgstr "Bellatrix Nagarum"
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
-msgstr ""
+msgstr "Naga"
 
 #: data/units/Naga.cfg:17
 msgid ""
 "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more nimble "
 "than their counterparts, they share a distaste for dry land."
 msgstr ""
+"Sicut Nereii, Nagae maria inhabitant. Minores et perniciores paribus, "
+"partiuntur fastidium terrae aridae."
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
-msgstr ""
+msgstr "Mortuorum Evocator"
 
 #: data/units/Necromancer.cfg:16
 msgid ""
@@ -5422,20 +5480,26 @@ msgid ""
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
 "that drain the lifeforce from their foes and add it to their own."
 msgstr ""
+"Mortuorum Evocatores Magi sunt qui vias artium obscurorum sequi "
+"constituerunt. Linentes potestatem immortuorum, Evocatores Mortuorum "
+"incantamenta dicere possunt quibus vim vitalem adversariorum exhauriunt et "
+"ad propriam addunt."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
-msgstr ""
+msgstr "Necrophagus"
 
 #: data/units/Necrophage.cfg:16
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with poisonous claws."
 msgstr ""
+"Coacti ad voracitatem fame carnis mortuae, Necrophagi cibum expectatum "
+"unguibus venenosis oppugnant."
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
-msgstr ""
+msgstr "Macer Noctis"
 
 #: data/units/Nightgaunt.cfg:16
 msgid ""
@@ -5443,14 +5507,17 @@ msgid ""
 "effort to hide their souls of pure evil. These despicable creatures are able "
 "to hide at night, leaving no trace of their presence."
 msgstr ""
+"Macri Noctis per noctem venantur, facies turpes post personas tenentes, quia "
+"conantur animas sceleritatis purae occultare. Creaturae hae despectae se "
+"noctu occultare possunt, relinquentes vestigium nullum praesentiae earum."
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr ""
+msgstr "Dux Nobilis"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr ""
+msgstr "Pugnator Nobilis"
 
 #: data/units/Noble_Fighter.cfg:20
 msgid ""
@@ -5458,28 +5525,32 @@ msgid ""
 "attacks from enemies. However they have the potential to become great "
 "Commanders one day."
 msgstr ""
+"Juvenes et audaces, Pugnatores gladio pugnant et vulnerabiles sunt hostium "
+"oppugnationibus. Sed potentiam habent ut Duces magni olim fiant."
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr ""
+msgstr "Dominus Nobilis"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr ""
+msgstr "Adulescens Nobilis"
 
 #: data/units/Noble_Youth.cfg:20
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
 "become a Lord -- to join the elite of humanity."
 msgstr ""
+"Hodie adulescens est, sed per devotionem regni adpetit Dominum esse -- se ad "
+"florem humanitatis adiungere."
 
 #: data/units/Noble_Youth.cfg:23 data/units/Youth.cfg:20
 msgid "training sword"
-msgstr ""
+msgstr "gladius scholae"
 
 #: data/units/Ogre.cfg:3
 msgid "Ogre"
-msgstr ""
+msgstr "Immane"
 
 #: data/units/Ogre.cfg:16
 msgid ""
@@ -5487,14 +5558,16 @@ msgid ""
 "While they can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Immania stulta sunt quasi humana quae in solitudine vivunt. Etsi faciliter "
+"praeverti aut decipi possunt, vis eorum non minoris aestimanda est."
 
 #: data/units/Ogre.cfg:19 data/units/Young_Ogre.cfg:19
 msgid "cleaver"
-msgstr ""
+msgstr "dolabra"
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
-msgstr ""
+msgstr "Sagittarius Orcorum"
 
 #: data/units/Orcish_Archer.cfg:16
 msgid ""
@@ -5503,10 +5576,14 @@ msgid ""
 "since most orcs won't learn how to handle a bow, he is an indispensable part "
 "of the orcish army."
 msgstr ""
+"Sagittarii Orcorum a multis orcis sociis ordinem minorem pugnatorum "
+"considerantur, quia hostes a longe oppugnant. Quoquo modo, quia plurimi "
+"orcorum non arcu uti discere volunt, sagittarii pars necessarius est "
+"exercitus orcorum."
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
-msgstr ""
+msgstr "Sicarius Orcarum"
 
 #: data/units/Orcish_Assassin.cfg:16
 msgid ""
@@ -5515,14 +5592,18 @@ msgid ""
 "poisoned darts, and victims of this poison will continually take damage "
 "until they can be cured in town or by a healer."
 msgstr ""
+"Etsi non tam fortes sunt in concursu, Sicarii Orcorum rapidi sunt et bene se "
+"defendunt in agris variis. Hi Sicarii iaculis venenosis utuntur quorum "
+"victimae continenter damnum patientur donec sanari possunt in pago aut ab "
+"sanatoris."
 
 #: data/units/Orcish_Assassin.cfg:36 data/units/Orcish_Slayer.cfg:41
 msgid "darts"
-msgstr ""
+msgstr "iacula"
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "Scorpiarius Orcorum"
 
 #: data/units/Orcish_Crossbowman.cfg:16
 msgid ""
@@ -5531,14 +5612,18 @@ msgid ""
 "Marksmen in long-range combat, they are sturdier and can handle theselves a "
 "little better than the Elves in close combat."
 msgstr ""
+"Scorpiarii Orcorum carentiam peritiae compensare conantur potestate cruda "
+"telo. Quamquam minus valentes sunt quam Periti Arcus Dryadales in proelio a "
+"procul, robustiores sunt et paulum melius se tractant in concursu quam "
+"Dryadales."
 
 #: data/units/Orcish_Crossbowman.cfg:19
 msgid "short sword"
-msgstr ""
+msgstr "gladius brevis"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "Manipularis Orcorum"
 
 #: data/units/Orcish_Grunt.cfg:16
 msgid ""
@@ -5546,10 +5631,13 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"Manipulares Orcorum nucleum gregium orcorum formant. Quamquam lentiores "
+"pugnatoribus hominum dryadalumve sunt, ictos multo potentiores intendere "
+"possunt, et plures ictos pati priusquam conciderint."
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr ""
+msgstr "Dux Orcorum"
 
 #: data/units/Orcish_Leader.cfg:18 data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -5559,14 +5647,18 @@ msgid ""
 "powerful fighters.  Their natural leadership skills make them very precious "
 "in the battle: if the Ruler is lost, so is the battle."
 msgstr ""
+"Domini Orcorum principes sunt tribus eorum. Sententias magni momenti faciunt "
+"et populum in proelium ducunt. Arcum gerunt ex necessitate, sed peritiores "
+"sunt gladio; pugnatores protentes omnino sunt. Peritiae ductus naturales eos "
+"faciunt pretiosos valde in proelio:si perditur Dominus, ita proelium."
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "Dominus Orcorum"
 
 #: data/units/Orcish_Shaman.cfg:3
 msgid "Orcish Shaman"
-msgstr ""
+msgstr "Flamen Orcorum"
 
 #: data/units/Orcish_Shaman.cfg:16
 msgid ""
@@ -5577,15 +5669,20 @@ msgid ""
 "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
 msgstr ""
+"Flamines Orcorum custodes sunt magicae orcorum. In tribubus orcorum "
+"honorati, formant Concilium Orcorum, quod decreta magni momenti communiati "
+"toto Orcorum facit et contentiones inter tribus generis huius litigosi "
+"arbitrant. Etsi debiles sunt corporis (inter Orcos), Flamines Orcorum "
+"incantatores probi sunt et hostes execrari possunt, haurientes vitam eorum."
 
 #: data/units/Orcish_Shaman.cfg:36 data/units/Orcish_Shaman.cfg:95
 #: data/units/Orcish_Shaman.cfg:154 data/units/Vampire_Lady.cfg:34
 msgid "curse"
-msgstr ""
+msgstr "maledictum"
 
 #: data/units/Orcish_Shaman.cfg:62
 msgid "Novice Orcish Shaman"
-msgstr ""
+msgstr "Flamen Orcorum Novitius"
 
 #: data/units/Orcish_Shaman.cfg:75
 msgid ""
@@ -5597,10 +5694,17 @@ msgid ""
 "draining their life. Novice Shamans are still young and vigorous, but their "
 "spell-casting ability still needs improvement."
 msgstr ""
+"Flamines Orcorum custodes sunt magicae orcorum. In tribubus orcorum "
+"honorati, formant Concilium Orcorum, quod decreta magni momenti communiati "
+"toto Orcorum facit et contentiones inter tribus generis huius litigosi "
+"arbitrant. Etsi debiles sunt corporis (inter Orcos), Flamines Orcorum "
+"incantatores probi sunt et hostes execrari possunt, haurientes vitam eorum. "
+"Flamines Novitii juvenes sunt et vegeti, sed facultas eorum incantamenta "
+"dicendi etiamnum emendatione caret."
 
 #: data/units/Orcish_Shaman.cfg:121
 msgid "Old Orcish Shaman"
-msgstr ""
+msgstr "Flamen Orcorum Senex"
 
 #: data/units/Orcish_Shaman.cfg:134
 msgid ""
@@ -5612,20 +5716,29 @@ msgid ""
 "draining their life. Old Orcish Shamans are shamans that have mastered "
 "magic, although their physical strength has declined with age."
 msgstr ""
+"Flamines Orcorum custodes sunt magicae orcorum. In tribubus orcorum "
+"honorati, formant Concilium Orcorum, quod decreta magni momenti communiati "
+"toto Orcorum facit et contentiones inter tribus generis huius litigosi "
+"arbitrant. Etsi debiles sunt corporis (inter Orcos), Flamines Orcorum "
+"incantatores probi sunt et hostes execrari possunt, haurientes vitam eorum. "
+"Flamines Senes in magicam dominantur, sed vis physica in aetate minuiti est."
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "Interfector Orcorum"
 
 #: data/units/Orcish_Slayer.cfg:16
 msgid ""
 "Orcish Slayers are fast and nimble, competent in short- and long-ranged "
 "combat, and use a poison attack. They make formidable opponents."
 msgstr ""
+"Interfectores Orcorum celeres sunt et perniciosi, satis docti in concursu et "
+"in proelio a longe, atquae oppugnatione venenosa utuntur. Adversarii "
+"formidolosi sunt."
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "Rex Orcorum"
 
 #: data/units/Orcish_Sovereign.cfg:18
 msgid ""
@@ -5635,10 +5748,14 @@ msgid ""
 "powerful fighters.  Their natural leadership skills make them very precious "
 "in the battle: if the Ruler is lost, so is the battle."
 msgstr ""
+"Reges Orcorum principes sunt tribus eorum. Sententias magni momenti faciunt "
+"et populum in proelium ducunt. Arcum gerunt ex necessitate, sed peritiores "
+"sunt gladio; pugnatores protentes omnino sunt. Peritiae ductus naturales eos "
+"faciunt pretiosos valde in proelio:si perditur Rex, ita proelium."
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
-msgstr ""
+msgstr "Dominus Belli Orcorum"
 
 #: data/units/Orcish_Warlord.cfg:16
 msgid ""
@@ -5646,10 +5763,13 @@ msgid ""
 "Warlords. Skilled with both the sword and the bow, these beast-warriors lead "
 "the orcish fighting groups."
 msgstr ""
+"Tantum Orci magna cum astutia et singulari cum vi Domini Belli fieri "
+"possunt. Periti et arcu et gladio, hi pugnatores bestiales turbas belli "
+"orcorum ducunt."
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
-msgstr ""
+msgstr "Bellator Orcorum"
 
 #: data/units/Orcish_Warrior.cfg:16
 msgid ""
@@ -5657,26 +5777,31 @@ msgid ""
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
+"Periti artis pugnandi duobus gladiis, Bellatores Orcorum aestimati maiores "
+"sunt inter Orcos et ab hostibus maxime metuti. Infirmitas unica eorum est "
+"carentia facultate arcus."
 
 #: data/units/Outlaw.cfg:3
 msgid "Outlaw"
-msgstr ""
+msgstr "Proscriptus"
 
 #: data/units/Outlaw.cfg:17
 msgid "Outlaws fight better at night."
-msgstr ""
+msgstr "Proscripti noctu melius pugnant."
 
 #: data/units/Outlaw.cfg:75
 msgid "female^Outlaw"
-msgstr ""
+msgstr "Proscripta"
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
 msgstr ""
+"Proscripti noctu melius pugnant. Proscriptae speciem bonam praebent cum "
+"pugnant."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
-msgstr ""
+msgstr "Proscripta Regalis"
 
 #: data/units/Outlaw_Princess.cfg:22
 msgid ""
@@ -5685,14 +5810,17 @@ msgid ""
 "the life of an Outlaw. She dreams of founding her own Queendom with the "
 "plunder she finds on the road."
 msgstr ""
+"Nobilis natu, Proscripta Regalis artem gladiatoris cum imperatoris maioribus "
+"didiscit, sed fructus est nobilum defactorum quae vitam Proscriptae eligit. "
+"Somniat fundare Regnum proprium ex praeda quam in via invenit."
 
 #: data/units/Outlaw_Queen.cfg:3
 msgid "female^Outlaw Queen"
-msgstr ""
+msgstr "Regina Proscriptarum"
 
 #: data/units/Outlaw_Queen.cfg:20
 msgid "skirmisher,leadership"
-msgstr ""
+msgstr "excursor,ductus"
 
 #: data/units/Outlaw_Queen.cfg:23
 msgid ""
@@ -5703,20 +5831,27 @@ msgid ""
 "Queendom with the plunder she finds on the road, and she is ever so close to "
 "that goal."
 msgstr ""
+"Nobilis natu, Regina Proscriptarum artem gladiatoris cum imperatoris "
+"maioribus et rationem belli a sapientibus maximis didiscit, quo fit ut "
+"pugnatrix magna et dux sit. Sed fructus est nobilum defactorum quae vitam "
+"Proscriptae eligit. Somniat fundare Regnum proprium ex praeda quam in via "
+"invenit, et nimium propinqua est metae illi."
 
 #: data/units/Paladin.cfg:3
 msgid "Paladin"
-msgstr ""
+msgstr "Paladinus"
 
 #: data/units/Paladin.cfg:21
 msgid ""
 "Knights of the highest virtue, Paladins have all the skills of the Knight, "
 "and can also heal adjacent friendly units."
 msgstr ""
+"Equites Ordinis virtutis maximi, Paladines omnias peritias Equitum habet, et "
+"unitates vicinas socias mederi potest."
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
-msgstr ""
+msgstr "Colonus"
 
 #: data/units/Peasant.cfg:17
 msgid ""
@@ -5725,14 +5860,17 @@ msgid ""
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
+"Coloni spina sunt economiae ruralis et milites ultimi auxilii. Quamquam non "
+"formidolosi sunt naturae, domus pervicaciter defendent. Sed si colonos in "
+"hostes conicis, sane carent tibi vires superiores."
 
 #: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
 msgid "pitchfork"
-msgstr ""
+msgstr "furca"
 
 #: data/units/Pikeman.cfg:3
 msgid "Pikeman"
-msgstr ""
+msgstr "Hastatus Maior"
 
 #: data/units/Pikeman.cfg:19
 msgid ""
@@ -5742,14 +5880,18 @@ msgid ""
 "cavalry, though they find some difficulty in fighting in extremely close "
 "quarters."
 msgstr ""
+"Hastati Maiores milites sunt expertiores, qui hastas longiores gerunt. Ob "
+"longitudinem telorum semper primi percutunt in concursu, etsi defendunt. "
+"Funestissimi sunt cum contra equites pugnant, etsi difficultatem nonnullam "
+"inveniunt in concursu propinquissimo."
 
 #: data/units/Pikeman.cfg:22
 msgid "pike"
-msgstr ""
+msgstr "hasta longa"
 
 #: data/units/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "Navis Veligera Praedonum"
 
 #: data/units/Pirate_Galleon.cfg:14
 msgid ""
@@ -5757,6 +5899,9 @@ msgid ""
 "of goods shouldn't be lonely, far away from any land, better to help them to "
 "avoid it being sunk from overloading..."
 msgstr ""
+"Naves Veligerae praedonum sunt ad naves transportantes quod lupi ad oves. "
+"Naves plenae mercium non debent solae esse, procul a terra. Melius eas "
+"adiuvare ut non mergant quia obruuntur."
 
 #: data/units/Pirate_Galleon.cfg:16 data/units/Transport_Galleon.cfg:16
 #: data/units/Watch_Tower.cfg:17
@@ -5765,13 +5910,15 @@ msgstr "ballista"
 
 #: data/units/Poacher.cfg:3
 msgid "Poacher"
-msgstr ""
+msgstr "Surripior"
 
 #: data/units/Poacher.cfg:16
 msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
 msgstr ""
+"Surripiores experientiae suae venandi confidunt et pretiosissimi sunt noctu "
+"et in silvis paludibusque."
 
 #: data/units/Princess.cfg:20 data/units/Princess.cfg:58
 msgid ""
@@ -5781,10 +5928,14 @@ msgid ""
 "fight better due to her presence. The Princess is also nimble and dextrous, "
 "having skills like that of a thief."
 msgstr ""
+"Nobilis natu, Filia Reginae artem gladiatorum magnis cum imperatoribus "
+"didicit et rationes belli a maximis sapientibus; ergo est dux et pugnatrix "
+"magna. Unitates ex gradibus inferioribus vicinae Filiae Reginae melius ob "
+"praesentiam eius pugnabunt. Pernicies est et agilis, habens peritias ut fur."
 
 #: data/units/Red_Mage.cfg:3
 msgid "Red Mage"
-msgstr ""
+msgstr "Magus Ruber"
 
 #: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:90
 msgid ""
@@ -5792,14 +5943,17 @@ msgid ""
 "chance of hitting. Deft of foot, and skilled fighters both day and night, "
 "Red Mages are therefore valuable in almost all situations."
 msgstr ""
+"Magi Rubri globibus magicis ignis potentibus oppugnant qui semper "
+"probabilitatem bonam habent percutendi. Habiles pedis et pugnatores periti "
+"et die et noctu, Magi Rubri pretiosi sunt in paene omni situ."
 
 #: data/units/Red_Mage.cfg:73
 msgid "female^Red Mage"
-msgstr ""
+msgstr "Striga Rubra"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
-msgstr ""
+msgstr "Reveniens"
 
 #: data/units/Revenant.cfg:16
 msgid ""
@@ -5807,6 +5961,9 @@ msgid ""
 "warriors' will and soul are all but lost, their fighting skills certainly "
 "remain with the Revenant."
 msgstr ""
+"Revenientes sunt imortuae creaturae sublatae ex bellatoribus olim fortibus. "
+"Etsi voluntaset anima bellatorum paene amissae sunt, peritia pugnae in "
+"Reveniente remanet."
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
@@ -5830,7 +5987,7 @@ msgstr "Veteratrix"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
-msgstr ""
+msgstr "Bucellarius"
 
 #: data/units/Royal_Guard.cfg:20
 msgid ""
@@ -5838,6 +5995,9 @@ msgid ""
 "of the army. They are deployed only in critical situations and, so far, have "
 "always succeeded in their assigned tasks."
 msgstr ""
+"Bucellarii accurate eliguntur ex fortissimis et validissimis exercitus. "
+"Instuuntur tantum in sitibus dubiis et adhuc semper res delegatas bene "
+"egerunt."
 
 #: data/units/Saurian.cfg:19
 msgid ""
@@ -5846,10 +6006,14 @@ msgid ""
 "scouts as the can navigate through rough terrain and around opponents. The "
 "best Saurians go on to become Saurian Warriors."
 msgstr ""
+"Lacertae peritae sunt hasta. Quamquam hereditas earum veternosa et sanguinis "
+"frigidi est et fragiles sunt ex comparatione, magnae aestimantur "
+"exploratores, quia per agros asperos navigare possunt et circum adversarios. "
+"Lacertae optimae fiunt Bellatores Lacertarum."
 
 #: data/units/Saurian_Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr ""
+msgstr "Insidiator Lacertarum"
 
 #: data/units/Saurian_Ambusher.cfg:17
 msgid ""
@@ -5859,10 +6023,15 @@ msgid ""
 "opponents. Saurian Ambushers possess the strength to take full advantage of "
 "this fact. The best Ambushers go on to become Saurian Flankers"
 msgstr ""
+"Insidiatores Lacertarum valde periti sunt hasta. Quamquam hereditas earum "
+"veternosa et sanguinis frigidi est et fragiles sunt ex comparatione, magni "
+"aestimantur exploratores, quia per agros asperos navigare possunt et circum "
+"adversarios. Insidiatores Lacertarum potestatem necessarium habent ut hoc "
+"plene utantur. Insidiatores Lacertarum optimi fiunt Circumeuntes Lacertarum."
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr ""
+msgstr "Circumeuns Lacertarum"
 
 #: data/units/Saurian_Flanker.cfg:18
 msgid ""
@@ -5872,10 +6041,15 @@ msgid ""
 "opponents. Saurian Flankers possess the strength to take full advantage of "
 "this fact."
 msgstr ""
+"Circumeuntes Lacertarum valde periti sunt hasta. Quamquam hereditas earum "
+"veternosa et sanguinis frigidi est et fragiles sunt ex comparatione, magni "
+"aestimantur exploratores, quia per agros asperos navigare possunt et circum "
+"adversarios. Circumeuntes Lacertarum potestatem necessarium habent ut hoc "
+"plene utantur."
 
 #: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
-msgstr ""
+msgstr "Glaciator Lacertarum"
 
 #: data/units/Saurian_Icecaster.cfg:17
 msgid ""
@@ -5884,15 +6058,19 @@ msgid ""
 "call forth the magic of the cold north, and the do retain their basic "
 "healing ability."
 msgstr ""
+"Glaciatores Lacertarum exercitationem ulteriorem medendi et sanandi "
+"vitaverunt ut facultates artium obscurorum excolant. Fragiles sunt, sed "
+"magicam septentrionum frigidorum advocare possunt et potestatem primam "
+"medendi retinent."
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
 msgid "frost blast"
-msgstr ""
+msgstr "flatus gelus"
 
 #: data/units/Saurian_Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr ""
+msgstr "Excursor Lacertarum"
 
 #: data/units/Saurian_Skirmisher.cfg:17
 msgid ""
@@ -5901,10 +6079,14 @@ msgid ""
 "valued as scouts as the can navigate through rough terrain and around "
 "opponents. The best Skirmishers go on to become Saurian Ambushers."
 msgstr ""
+"Excursores Lacertarum periti sunt hasta. Quamquam hereditas earum veternosa "
+"et sanguinis frigidi est et fragiles sunt ex comparatione, magni aestimantur "
+"exploratores, quia per agros asperos navigare possunt et circum adversarios. "
+"Excursores Lacertarum optimi fiunt Insidiatores Lacertarum."
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr ""
+msgstr "Vates Lacertarum"
 
 #: data/units/Saurian_Soothsayer.cfg:18
 msgid ""
@@ -5912,10 +6094,13 @@ msgid ""
 "aide to their friends regardless of terrain or opposition. In addition to "
 "cure their allies they possess knowledge of cold magic."
 msgstr ""
+"Vates Lacertarum magni aestimantur sanatores quia auxilium sociis praebere "
+"possunt neglegentes agros et adversarios. Praeter facultates sanandi "
+"scientes sunt magicae frigidae."
 
 #: data/units/Saurian_Tribalist.cfg:4
 msgid "Saurian Tribalist"
-msgstr ""
+msgstr "Tribuarius Lacertarum"
 
 #: data/units/Saurian_Tribalist.cfg:18
 msgid ""
@@ -5924,10 +6109,14 @@ msgid ""
 "their allies regardless of terrain or opposition. In addition to healing "
 "they possess knowledge of cold magic."
 msgstr ""
+"Quamquam hereditas earum veternosa et sanguinis frigidi est et fragiles sunt "
+"ex comparatione, Tribuarii Lacertarum magni aestimantur sanatores quia "
+"auxilium sociis praebere possunt neglegentes agros et adversarios. Praeter "
+"facultates sanandi scientes sunt magicae frigidae."
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
-msgstr ""
+msgstr "Bellator Lacertarum"
 
 #: data/units/Saurian_Warrior.cfg:19
 msgid ""
@@ -5937,20 +6126,27 @@ msgid ""
 "opponents. Saurian Warriors possess the strength to take full advantage of "
 "this fact."
 msgstr ""
+"Bellatores Lacertarum valde periti sunt hasta. Quamquam hereditas earum "
+"veternosa et sanguinis frigidi est et fragiles sunt ex comparatione, magni "
+"aestimantur exploratores, quia per agros asperos navigare possunt et circum "
+"adversarios. Bellatores Lacertarum potestatem necessarium habent ut hoc "
+"plene utantur."
 
 #: data/units/Sea_Hag.cfg:3
 msgid "female^Sea Hag"
-msgstr ""
+msgstr "Anus Maris"
 
 #: data/units/Sea_Hag.cfg:17
 msgid ""
 "Sea Hags are older and more experienced Nagas who have learned to control "
 "the water magic."
 msgstr ""
+"Anus Maris seniores et expertiores Nagae sunt qui didiscerunt imperium "
+"magicae aquosae."
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr ""
+msgstr "Orcus Maris"
 
 #: data/units/Sea_Orc.cfg:16
 msgid ""
@@ -5960,19 +6156,23 @@ msgid ""
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
+"Etsi saepe videntur inferiores paribus terrestribus, Orci Maris saltum "
+"magnum omnibus cobalinis proponunt, quia accomodati sunt viciniis aquaticis. "
+"Acinacibus competentes sunt pugnaoris, etsi carentia oppugnationis a longe "
+"et defensum miserum in terra debilitates in arte belli sunt."
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
-msgstr ""
+msgstr "Serpens Maris"
 
 #: data/units/Sea_Serpent.cfg:16
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
+msgstr "Serpentes Maris ingentes sunt beluae, qui soli naves evertere possunt."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
-msgstr ""
+msgstr "Centurio"
 
 #: data/units/Sergeant.cfg:21
 msgid ""
@@ -5980,10 +6180,13 @@ msgid ""
 "stronger than other fighters, but he has hopes of advancing to greatness. As "
 "the leader of his unit, he must survive for the battle to be won."
 msgstr ""
+"Centurio est praefectus in gradibus Exercitus Regali. Non fortior est quam "
+"alteros pugnatores, sed expectat procedere ad praeclaritatem. Dux unitatis, "
+"superessendus est, si proelium vincendum est."
 
 #: data/units/Shadow.cfg:3
 msgid "Shadow"
-msgstr ""
+msgstr "Umbra"
 
 #: data/units/Shadow.cfg:17
 msgid ""
@@ -5991,10 +6194,13 @@ msgid ""
 "These incorporeal fiends are able to hide at night, leaving no trace of "
 "their presence."
 msgstr ""
+"Animae nigras factae a malitia, Umbrae vagantur noctu oppugnates hostes "
+"imprudentes. Hi diaboli incorporeales noctu se possunt occultare, vestigium "
+"nullum praesentiae suae relinquentes."
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
-msgstr ""
+msgstr "Concursor Gravis"
 
 #: data/units/Shock_Trooper.cfg:15
 msgid ""
@@ -6002,10 +6208,13 @@ msgid ""
 "slowly, they are immensely powerful and therefore feared throughout Wesnoth "
 "and even into the lands beyond."
 msgstr ""
+"Concursores Graves flos sunt militum Occidiseptentrionis. Etsi lente se "
+"movent, potentes sunt valde. Ergo metuti sunt per Occidiseptentrionem totam "
+"atque in terris ulterioribus."
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
-msgstr ""
+msgstr "Magus Argenteus"
 
 #: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:162
 msgid ""
@@ -6013,14 +6222,17 @@ msgid ""
 "teleport from any friendly village to another, translating themselves in an "
 "instant. They are also highly resistant to most forms of magical attack."
 msgstr ""
+"Magi Argentei habillimi sunt pedis et fallacissimi omnium magorum. Possunt "
+"teleportare ab ullo pago amico ad alteram, se transferentes ilico. Resistunt "
+"bene plurimas formas oppugnationis magicae."
 
 #: data/units/Silver_Mage.cfg:143
 msgid "female^Silver Mage"
-msgstr ""
+msgstr "Striga Argentea"
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "Draco Osseus"
 
 #: data/units/Skeletal_Dragon.cfg:17
 msgid ""
@@ -6030,14 +6242,19 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"Iampridem una ex creaturis fortissimis vivis, hic Draco metutus factus est "
+"tantum ossa et nervi tenebrosi. Post mortem longo tempore sublatus est "
+"potestatibus tenebrosis necromantiae quibus nunc servit. Draco Osseus videri "
+"potest nullum amplium quam acervus ossum, sed pauci qui eo modo censabant, "
+"viverunt satis longe ut reconsiderarent."
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
-msgstr ""
+msgstr "fauces"
 
 #: data/units/Skeleton.cfg:3
 msgid "Skeleton"
-msgstr ""
+msgstr "Ossa"
 
 #: data/units/Skeleton.cfg:16
 msgid ""
@@ -6045,10 +6262,13 @@ msgid ""
 "dark magics. Like all undead, they are especially vulnerable to fire and "
 "holy spells, but resistant to bladed weapons."
 msgstr ""
+"Ossa sunt pungnatores qui in proelio interfecti et a artibus tenebrosis "
+"relati sunt. Sicut omnes inmortui possunt facile incantamentis igneis et "
+"sanctis vulnerari, sed tela cum laminis resistunt."
 
 #: data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
-msgstr ""
+msgstr "Sagittarius Osseus"
 
 #: data/units/Skeleton_Archer.cfg:15
 msgid ""
@@ -6056,18 +6276,21 @@ msgid ""
 "to battle. Like all undead, they are especially vulnerable to flames and "
 "holy attacks, but resistant to edged weapons."
 msgstr ""
+"Sagittarii Ossei inmortui corpora sunt sagittariorum interfectorum, relati "
+"adproelium. Sicut omnes inmortui possunt facile incantamentis igneis et "
+"sanctis vulnerari, sed tela cum laminis resistunt."
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
-msgstr ""
+msgstr "Gryps Dormiens"
 
 #: data/units/Sleeping_Gryphon.cfg:15
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr ""
+msgstr "St! Gryps dormit! Non opportet eum excitare!"
 
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
-msgstr ""
+msgstr "Coniector Animarum"
 
 #: data/units/Soul_Shooter.cfg:15
 msgid ""
@@ -6077,24 +6300,30 @@ msgid ""
 "nor caring what their purpose, or foes be.  They are driven only by a malice "
 "borne of the anguish of their empty and incoherent existence."
 msgstr ""
+"Potentissimi sagittariorum inmortuorum sunt qui ipsi sagittarii in vita "
+"erunt. Errant per campos proelii, ducti a memoria peritiae prioris suae, "
+"nescientes et nil morentes quod prositum, qui hostes sint. Coguntur tantum a "
+"malitia natu ex angore existentiae suae vacuae et interruptae."
 
 #: data/units/Soulless.cfg:3
 msgid "Soulless"
-msgstr ""
+msgstr "Carens Anima"
 
 #: data/units/Soulless.cfg:16
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
 msgstr ""
+"Haec cadaveres animata ambulanita facta sunt fortia ab experientia longa in "
+"proelio contra vivos."
 
 #: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:24
 msgid "plague"
-msgstr ""
+msgstr "pestilentia"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
-msgstr ""
+msgstr "Hastatus"
 
 #: data/units/Spearman.cfg:16
 msgid ""
@@ -6103,10 +6332,14 @@ msgid ""
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
+"Hastati sunt nucleus exercituum humanorum. His militibus juvenibus "
+"disciplina prima datur, et postea ii in aciebus primis ponuntur ut maiorem "
+"partem pugnae faciant. Ob longitudinem hastarum eorum, primi percutunt in "
+"concusu et si defendunt."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
-msgstr ""
+msgstr "Spectrum"
 
 #: data/units/Spectre.cfg:21
 msgid ""
@@ -6115,30 +6348,38 @@ msgid ""
 "strengthen themselves. They also have a terrible wail that freezes the heart "
 "of the weak."
 msgstr ""
+"Spectra, larvae potentissimae in aciebus immortuorum, potestatibus uti "
+"possunt arcessentes gladium spectralem quo vitam ex hostibus exhauriunt ut "
+"semetipsos firment. Et eiulatum terribilem habent qui corda debilium gelat."
 
 #: data/units/Swordsman.cfg:3
 msgid "Swordsman"
-msgstr ""
+msgstr "Gladiator"
 
 #: data/units/Swordsman.cfg:20
 msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting."
 msgstr ""
+"Gladiatores sunt nucleus exercituum humanorum. His militibus juvenibus "
+"disciplina prima datur, et postea ii in aciebus primis ponuntur ut maiorem "
+"partem pugnae faciant."
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "Bracchium ex Gurgite"
 
 #: data/units/Tentacle.cfg:17
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves."
 msgstr ""
+"Bracchia ex Gurgite membra sunt aliquod monstrum maiorem quod sub undis "
+"latet."
 
 #: data/units/Thief.cfg:3
 msgid "Thief"
-msgstr ""
+msgstr "Fur"
 
 #: data/units/Thief.cfg:17 data/units/Thief.cfg:54
 msgid ""
@@ -6147,6 +6388,10 @@ msgid ""
 "opposite side of an enemy they are attacking. Being of chaotic disposition, "
 "Thieves fight better at night than day."
 msgstr ""
+"Fures habiles sunt pedis et fallaces, difficiles percutendi. Facultatem in "
+"tergum percutendi habent, quo damnum duplice facent si unitas amica in "
+"latere contrario hostis oppugnati est. Filii noctis, Fures melius noctu "
+"pugnant quam die."
 
 #: data/units/Thief.cfg:40
 msgid "female^Thief"
@@ -6154,39 +6399,45 @@ msgstr "Fur"
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
-msgstr ""
+msgstr "Percussor"
 
 #: data/units/Thug.cfg:16
 msgid "Thugs are bandits who use large clubs to beat their victims."
 msgstr ""
+"Percussores sunt latrones qui fustibus magnis utuntur ut victimas feriant."
 
 #: data/units/Transport_Galleon.cfg:3
 msgid "Transport Galleon"
-msgstr ""
+msgstr "Navis Veligera Transportis"
 
 #: data/units/Transport_Galleon.cfg:13
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"Naves Veligera Transportis naves bene armatae sunt qui milites ferunt. Si "
+"oram attingunt, milites ad oppugnationem deponere possunt."
 
 #: data/units/Trapper.cfg:3
 msgid "Trapper"
-msgstr ""
+msgstr "Inlaqueator"
 
 #: data/units/Trapper.cfg:16
 msgid ""
 "Trappers usually work supplying food for bandits and outlaws. Their hunting "
 "experience makes them most valuable at night and in forests and swamps."
 msgstr ""
+"Inlaqueatores solent laborare ad cibum latronibus et proscriptis "
+"providendum. Experientia venandi fit ut pretiosiores sunt noctu et in silvis "
+"paludinibusque."
 
 #: data/units/Triton.cfg:6
 msgid "Triton"
-msgstr ""
+msgstr "Triton"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
-msgstr ""
+msgstr "Troglodyta"
 
 #: data/units/Troll.cfg:16
 msgid ""
@@ -6194,10 +6445,12 @@ msgid ""
 "regenerate themselves, so that they recover from wounds on their own, even "
 "during battle."
 msgstr ""
+"Troglodytae fortia et atrocia sunt monstra quasi humana. Habent facultatem "
+"miram se regenerandi, ut ab iniuriis per se recuperent, et in proelio."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
-msgstr ""
+msgstr "Heros Troglodytarum"
 
 #: data/units/Troll_Hero.cfg:16
 msgid ""
@@ -6205,10 +6458,13 @@ msgid ""
 "to regenerate themselves, so that they recover from wounds on their own, "
 "even during battle."
 msgstr ""
+"Heroes Troglodytarum fortia et atrocia sunt monstra quasi humana. Habent "
+"facultatem miram se regenerandi, ut ab iniuriis per se recuperent, et in "
+"proelio."
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "Iactor Saxorum Troglodytarum"
 
 #: data/units/Troll_Rocklobber.cfg:17
 msgid ""
@@ -6216,20 +6472,26 @@ msgid ""
 "recovering from their wounds during battle. These trolls have armed "
 "themselves with large rocks they hurl at their opponents."
 msgstr ""
+"Troglodytae fortia et atrocia sunt monstra quasi humana. Habent facultatem "
+"miram se regenerandi, ut ab iniuriis per se recuperent in proelio. Hi "
+"troglodytae se armaverunt saxis magnis quae in hostes iaciunt."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
-msgstr ""
+msgstr "Bellator Troglodytarum"
 
 #: data/units/Troll_Warrior.cfg:17
 msgid ""
 "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, and "
 "are able to regenerate, healing their own wounds during combat."
 msgstr ""
+"In proelio obduresciverunt Bellatores Troglodytarum et iam ictos funestos "
+"scipione intendere possunt. Se regenerare possunt, ut ab iniuriis per se "
+"recuperent in proelio."
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
-msgstr ""
+msgstr "Catulus Troglodytarum"
 
 #: data/units/Troll_Whelp.cfg:17
 msgid ""
@@ -6237,10 +6499,14 @@ msgid ""
 "recovering from their wounds during battle. Although these Trolls are still "
 "weak whelps, their race is known for developing amazingly fast."
 msgstr ""
+"Troglodytae sunt monstra quasi humana quae habent facultatem miram se "
+"regenerandi, ut ab iniuriis per se recuperent in proelio. Etsi hi "
+"troglodytae adhuc catuli debiles sunt, genus eorum cognotum est evolvere "
+"obstupefacenter celeriter."
 
 #: data/units/Vampire_Bat.cfg:3
 msgid "Vampire Bat"
-msgstr ""
+msgstr "Vespertilio Vampiricus"
 
 #: data/units/Vampire_Bat.cfg:16
 msgid ""
@@ -6248,24 +6514,28 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"Vespertiliones Vampirici sunt bestiae volantes immortuae qui mordentes "
+"victimas oppugnant. Etsi dentes non potentes sunt, iis salutem victimarum "
+"exhauriunt cum sanguine et salus Vespertilionibus datur."
 
 #: data/units/Vampire_Lady.cfg:3
 msgid "female^Vampire Lady"
-msgstr ""
+msgstr "Domina Vampirica"
 
 #: data/units/Vampire_Lady.cfg:17
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appeareance drinking "
 "the blood of the living."
 msgstr ""
+"Frigida et pulchra, adspectus juvenis mantenet bibens sanguinem viventium."
 
 #: data/units/Vampire_Lady.cfg:20
 msgid "blood kiss"
-msgstr ""
+msgstr "osculum sanguinis"
 
 #: data/units/Walking_Corpse.cfg:3
 msgid "Walking Corpse"
-msgstr ""
+msgstr "Cadaver Ambulans"
 
 #: data/units/Walking_Corpse.cfg:16
 msgid ""
@@ -6273,14 +6543,17 @@ msgid ""
 "Although weak in combat, these zombies can spread their curse to those they "
 "kill, increasing the army of undead."
 msgstr ""
+"Cadavera Ambulantia corpora sunt mortuorum, reanimata a magica tenebrosa. "
+"Etsi debiles sunt in proelio, hi immortui maledictionem suam ad interfectos "
+"extendere possunt, exercitum immortuorum augentes."
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
-msgstr ""
+msgstr "Custos Muri"
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "excursor,regenerat"
 
 #: data/units/Wall_Guard.cfg:32
 msgid ""
@@ -6290,10 +6563,14 @@ msgid ""
 "are mounted on high walls, they cannot move anywhere except on walls and the "
 "roofs of castles."
 msgstr ""
+"Custodes capitis Veldinae, Custodes Muri muros urbis circumeunt, conicientes "
+"in hostes appropinquantes scorpionibus priusquam adversarius a longe ulcisci "
+"possunt. Quia positi sunt in muribus altis, non se possunt movere nisi in "
+"muribus et tectis castellorum."
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
-msgstr ""
+msgstr "Rex Bellator"
 
 #: data/units/Warrior_King.cfg:22
 msgid ""
@@ -6301,20 +6578,25 @@ msgid ""
 "protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
 "units, thereby increasing their fighting efficiency."
 msgstr ""
+"Duces regnorum humanorum, Reges imperium et protectionem civibus suis "
+"praestant. Reges oppugnationes unitatum ex gradibus I et II ordinare "
+"possunt, ea re virtutem pugnae augentes."
 
 #: data/units/Watch_Tower.cfg:3
 msgid "Watch Tower"
-msgstr ""
+msgstr "Specula"
 
 #: data/units/Watch_Tower.cfg:14
 msgid ""
 "Watch Towers are good places from which to spot enemies and then shoot "
 "miscellaneous items at them with ballistas."
 msgstr ""
+"Speculae loca sunt bona ex quibus inimicos videre potes et posthac conicere "
+"res varias in eos ballistis."
 
 #: data/units/White_Mage.cfg:3
 msgid "White Mage"
-msgstr ""
+msgstr "Magus Alba"
 
 #: data/units/White_Mage.cfg:25 data/units/White_Mage.cfg:84
 msgid ""
@@ -6323,10 +6605,14 @@ msgid ""
 "village. White Mages are potent in battle against the undead, which suffer "
 "high damage from their light beam"
 msgstr ""
+"Magi Albi debiles sunt in concursu sed periti in viis sanandi. Unitates qui "
+"Mago Albo vicini sunt sanantur sicut in pago quiesecentes. Magi Albi "
+"potentes sunt in proelio contra immortuos, qui damnum magnum patiuntur ex "
+"radio eorum lucis."
 
 #: data/units/White_Mage.cfg:65
 msgid "female^White Mage"
-msgstr ""
+msgstr "Striga Alba"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
@@ -6347,7 +6633,7 @@ msgstr ""
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
-msgstr ""
+msgstr "Vosium"
 
 #: data/units/Wose.cfg:16
 msgid ""
@@ -6359,10 +6645,17 @@ msgid ""
 "drawing nutrients from the ground and energy from the sun, Woses can regrow "
 "missing limbs after a fight."
 msgstr ""
+"Vosia creaturae quasi arbores ex fabulis. Surrexerunt ex silva et in silva "
+"non possunt distingui ab arboribus solitis. Forma eorum valde lenta et "
+"rigida est, ex quo non possunt oppugnationes bene vitare. Cortex durus "
+"resitat valide frigum, oppognationes contundendi et sagittas, etsi laminae "
+"non habent difficultatem secandi eum, et flammabiles sunt valde. Alimenta ex "
+"solo et energiam a sole ducentia, Vosia membra carentia post proelio rursus "
+"crescere possunt."
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
-msgstr ""
+msgstr "Idolon"
 
 #: data/units/Wraith.cfg:21
 msgid ""
@@ -6371,20 +6664,26 @@ msgid ""
 "strengthening themselves. They also have a terrible wail that freezes the "
 "heart of the weak."
 msgstr ""
+"Idolona sunt inter larvas potentissimas gradium immortuorum. Potestatibus "
+"uti possunt arcessentes gladium spectralem quo vitam ex hostibus exhauriunt "
+"ut semetipsos firment. Et eiulatum terribilem habent qui corda debilium "
+"gelat."
 
 #: data/units/Yeti.cfg:3
 msgid "Yeti"
-msgstr ""
+msgstr "Ietium"
 
 #: data/units/Yeti.cfg:30
 msgid ""
 "Yetis are giant humanoid creatures that live in the mountains. Few have ever "
 "survived an encounter with one, and their existence is doubted by many."
 msgstr ""
+"Ietia creaturae sunt quasi humanae ingentes quae in montibus habitant. Pauci "
+"occursum cum uno superant et multi existentiam eorum dubitant."
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
-msgstr ""
+msgstr "Immane Juvene"
 
 #: data/units/Young_Ogre.cfg:16
 msgid ""
@@ -6392,16 +6691,21 @@ msgid ""
 "manage weapons skillfully, so they are given a large blade, in the hope that "
 "they will be smart enough to swing it at their enemies, not their throat."
 msgstr ""
+"Cum iuvena sunt, Immania ad exercitum feruntur doctum. Non possunt tela "
+"perite gerere, ergo lamina magna eis datur, sperens eos satis prudentes esse "
+"ut eam in hostes librent non contra guttura eorum."
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
-msgstr ""
+msgstr "Adulescens"
 
 #: data/units/Youth.cfg:17
 msgid ""
 "Today almost a boy, by his devotion to the crown he is seeking to become a "
 "Lord -- to join the elite of human fighters."
 msgstr ""
+"Hodie quasi puer est, sed per devotionem regni adpetit Dominum esse -- se ad "
+"florem pugnatorum humanorum adiungere."
 
 #: src/about.cpp:46
 msgid "+Core Developers"
@@ -6500,9 +6804,8 @@ msgid "+Italian Translation"
 msgstr ""
 
 #: src/about.cpp:232
-#, fuzzy
 msgid "+Latin Translation"
-msgstr "+Reditio bulgara"
+msgstr "+Reditio Latina"
 
 #: src/about.cpp:236
 msgid "+Norwegian Translation"
