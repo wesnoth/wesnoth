@@ -1,9 +1,9 @@
-#include <cerrno>
 #include "network_worker.hpp"
 #include "network.hpp"
 #include "thread.hpp"
 
 #include <cassert>
+#include <cerrno>
 #include <iostream>
 #include <map>
 #include <set>
