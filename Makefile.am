@@ -1,5 +1,5 @@
 ISUBDIRS = icons
-SUBDIRS = src $(ISUBDIRS)
+SUBDIRS = m4  src $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
 
 dist_noinst_DATA = @MANUAL_FILES@ copyright changelog wesnoth.dsp wesnoth.dsw \
@@ -15,3 +15,7 @@ uninstall-hook:
 	if test -d $(bindir) ; then echo `rmdir $(bindir)` ; fi
 	if test -d $(datadir) ; then echo `rmdir $(datadir)` ; fi
 	if test -d $(prefix) ; then echo `rmdir $(prefix)` ; fi
+
+ACLOCAL_AMFLAGS = -I m4
+
+EXTRA_DIST = config/config.rpath

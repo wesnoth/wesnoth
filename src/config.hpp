@@ -24,6 +24,11 @@
 #include <string>
 #include <vector>
 
+// gettext-related stuff
+#include <clocale>
+#define _(STR) gettext(STR)
+
+
 //This module defines the interface to Wesnoth Markup Language (WML).
 //WML is a simple hierarchical text-based file format. The format
 //is defined in Wiki, under BuildingScenariosWML

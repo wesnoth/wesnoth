@@ -1061,13 +1061,18 @@ int play_game(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
+	// setup locale first so that early error messages can get localized
+	setlocale (LC_ALL, "");
+	bindtextdomain ("wesnoth", "/usr/share/locale");
+	textdomain ("wesnoth");
+
 	try {
 		std::cerr << "started game: " << SDL_GetTicks() << "\n";
 		const int res = play_game(argc,argv);
 		std::cerr << "exiting with code " << res << "\n";
 		return res;
 	} catch(CVideo::error&) {
-		std::cerr << "Could not initialize video. Exiting.\n";
+		std::cerr << _("Could not initialize video. Exiting.\n");
 	} catch(font::manager::error&) {
 		std::cerr << "Could not initialize fonts. Exiting\n";
 	} catch(config::error& e) {

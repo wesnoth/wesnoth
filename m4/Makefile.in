@@ -176,151 +176,23 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-EXTRA_DIST = wesnoth.desktop
-
-@GNOME1_TRUE@gnome1desktopdir = @GNOME1_DESKTOP@
-@GNOME1_TRUE@dist_gnome1desktop_DATA = wesnoth.desktop
-@GNOME1_TRUE@gnome1icondir = $(datadir)/icons
-@GNOME1_TRUE@gnome1icon_DATA = ../images/wesnoth-icon.png
-
-@GNOME2_TRUE@gnome2desktopdir = $(datadir)/applications
-@GNOME2_TRUE@dist_gnome2desktop_DATA = wesnoth.desktop 
-@GNOME2_TRUE@gnome2icondir = $(datadir)/icons
-@GNOME2_TRUE@gnome2icon_DATA = ../images/wesnoth-icon.png
-
-@KDE_TRUE@kdedesktopdir = @KDE_DESKTOP@
-@KDE_TRUE@dist_kdedesktop_DATA = wesnoth.desktop
-@KDE_TRUE@kdeicondir = @KDE_ICON@
-@KDE_TRUE@kdeicon_DATA = ../images/wesnoth-icon.png
-subdir = icons
+EXTRA_DIST = codeset.m4 gettext.m4 glibc21.m4 iconv.m4 intdiv0.m4 intmax.m4 inttypes.m4 inttypes_h.m4 inttypes-pri.m4 isc-posix.m4 lcmessage.m4 lib-ld.m4 lib-link.m4 lib-prefix.m4 longdouble.m4 longlong.m4 nls.m4 po.m4 printf-posix.m4 progtest.m4 signed.m4 size_max.m4 stdint_h.m4 uintmax_t.m4 ulonglong.m4 wchar_t.m4 wint_t.m4 xsize.m4
+subdir = m4
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
-DATA = $(dist_gnome1desktop_DATA) $(dist_gnome2desktop_DATA) \
-	$(dist_kdedesktop_DATA) $(gnome1icon_DATA) $(gnome2icon_DATA) \
-	$(kdeicon_DATA)
-
-DIST_COMMON = $(dist_gnome1desktop_DATA) $(dist_gnome2desktop_DATA) \
-	$(dist_kdedesktop_DATA) $(srcdir)/Makefile.in Makefile.am
+DIST_COMMON = $(srcdir)/Makefile.in ChangeLog Makefile.am
 all: all-am
 
 .SUFFIXES:
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign  icons/Makefile
+	  $(AUTOMAKE) --foreign  m4/Makefile
 Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
 uninstall-info-am:
-dist_gnome1desktopDATA_INSTALL = $(INSTALL_DATA)
-install-dist_gnome1desktopDATA: $(dist_gnome1desktop_DATA)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(gnome1desktopdir)
-	@list='$(dist_gnome1desktop_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(dist_gnome1desktopDATA_INSTALL) $$d$$p $(DESTDIR)$(gnome1desktopdir)/$$f"; \
-	  $(dist_gnome1desktopDATA_INSTALL) $$d$$p $(DESTDIR)$(gnome1desktopdir)/$$f; \
-	done
-
-uninstall-dist_gnome1desktopDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(dist_gnome1desktop_DATA)'; for p in $$list; do \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(gnome1desktopdir)/$$f"; \
-	  rm -f $(DESTDIR)$(gnome1desktopdir)/$$f; \
-	done
-dist_gnome2desktopDATA_INSTALL = $(INSTALL_DATA)
-install-dist_gnome2desktopDATA: $(dist_gnome2desktop_DATA)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(gnome2desktopdir)
-	@list='$(dist_gnome2desktop_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(dist_gnome2desktopDATA_INSTALL) $$d$$p $(DESTDIR)$(gnome2desktopdir)/$$f"; \
-	  $(dist_gnome2desktopDATA_INSTALL) $$d$$p $(DESTDIR)$(gnome2desktopdir)/$$f; \
-	done
-
-uninstall-dist_gnome2desktopDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(dist_gnome2desktop_DATA)'; for p in $$list; do \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(gnome2desktopdir)/$$f"; \
-	  rm -f $(DESTDIR)$(gnome2desktopdir)/$$f; \
-	done
-dist_kdedesktopDATA_INSTALL = $(INSTALL_DATA)
-install-dist_kdedesktopDATA: $(dist_kdedesktop_DATA)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(kdedesktopdir)
-	@list='$(dist_kdedesktop_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(dist_kdedesktopDATA_INSTALL) $$d$$p $(DESTDIR)$(kdedesktopdir)/$$f"; \
-	  $(dist_kdedesktopDATA_INSTALL) $$d$$p $(DESTDIR)$(kdedesktopdir)/$$f; \
-	done
-
-uninstall-dist_kdedesktopDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(dist_kdedesktop_DATA)'; for p in $$list; do \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(kdedesktopdir)/$$f"; \
-	  rm -f $(DESTDIR)$(kdedesktopdir)/$$f; \
-	done
-gnome1iconDATA_INSTALL = $(INSTALL_DATA)
-install-gnome1iconDATA: $(gnome1icon_DATA)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(gnome1icondir)
-	@list='$(gnome1icon_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(gnome1iconDATA_INSTALL) $$d$$p $(DESTDIR)$(gnome1icondir)/$$f"; \
-	  $(gnome1iconDATA_INSTALL) $$d$$p $(DESTDIR)$(gnome1icondir)/$$f; \
-	done
-
-uninstall-gnome1iconDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(gnome1icon_DATA)'; for p in $$list; do \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(gnome1icondir)/$$f"; \
-	  rm -f $(DESTDIR)$(gnome1icondir)/$$f; \
-	done
-gnome2iconDATA_INSTALL = $(INSTALL_DATA)
-install-gnome2iconDATA: $(gnome2icon_DATA)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(gnome2icondir)
-	@list='$(gnome2icon_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(gnome2iconDATA_INSTALL) $$d$$p $(DESTDIR)$(gnome2icondir)/$$f"; \
-	  $(gnome2iconDATA_INSTALL) $$d$$p $(DESTDIR)$(gnome2icondir)/$$f; \
-	done
-
-uninstall-gnome2iconDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(gnome2icon_DATA)'; for p in $$list; do \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(gnome2icondir)/$$f"; \
-	  rm -f $(DESTDIR)$(gnome2icondir)/$$f; \
-	done
-kdeiconDATA_INSTALL = $(INSTALL_DATA)
-install-kdeiconDATA: $(kdeicon_DATA)
-	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(kdeicondir)
-	@list='$(kdeicon_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(kdeiconDATA_INSTALL) $$d$$p $(DESTDIR)$(kdeicondir)/$$f"; \
-	  $(kdeiconDATA_INSTALL) $$d$$p $(DESTDIR)$(kdeicondir)/$$f; \
-	done
-
-uninstall-kdeiconDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(kdeicon_DATA)'; for p in $$list; do \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(kdeicondir)/$$f"; \
-	  rm -f $(DESTDIR)$(kdeicondir)/$$f; \
-	done
 tags: TAGS
 TAGS:
 
@@ -361,10 +233,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(DATA)
+all-am: Makefile
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(gnome1desktopdir) $(DESTDIR)$(gnome2desktopdir) $(DESTDIR)$(kdedesktopdir) $(DESTDIR)$(gnome1icondir) $(DESTDIR)$(gnome2icondir) $(DESTDIR)$(kdeicondir)
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -405,10 +276,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-dist_gnome1desktopDATA \
-	install-dist_gnome2desktopDATA install-dist_kdedesktopDATA \
-	install-gnome1iconDATA install-gnome2iconDATA \
-	install-kdeiconDATA
+install-data-am:
 
 install-exec-am:
 
@@ -434,25 +302,16 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-dist_gnome1desktopDATA \
-	uninstall-dist_gnome2desktopDATA uninstall-dist_kdedesktopDATA \
-	uninstall-gnome1iconDATA uninstall-gnome2iconDATA \
-	uninstall-info-am uninstall-kdeiconDATA
+uninstall-am: uninstall-info-am
 
 .PHONY: all all-am check check-am clean clean-generic distclean \
 	distclean-generic distdir dvi dvi-am info info-am install \
-	install-am install-data install-data-am \
-	install-dist_gnome1desktopDATA install-dist_gnome2desktopDATA \
-	install-dist_kdedesktopDATA install-exec install-exec-am \
-	install-gnome1iconDATA install-gnome2iconDATA install-info \
-	install-info-am install-kdeiconDATA install-man install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
-	pdf-am ps ps-am uninstall uninstall-am \
-	uninstall-dist_gnome1desktopDATA \
-	uninstall-dist_gnome2desktopDATA uninstall-dist_kdedesktopDATA \
-	uninstall-gnome1iconDATA uninstall-gnome2iconDATA \
-	uninstall-info-am uninstall-kdeiconDATA
+	install-am install-data install-data-am install-exec \
+	install-exec-am install-info install-info-am install-man \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am \
+	uninstall-info-am
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

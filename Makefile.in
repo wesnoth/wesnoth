@@ -34,6 +34,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
+host_triplet = @host@
 pkgdatadir = $(datadir)/@DATADIR@
 ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
@@ -66,6 +67,7 @@ EXEEXT = @EXEEXT@
 FONT_FILES = @FONT_FILES@
 GCC_FALSE = @GCC_FALSE@
 GCC_TRUE = @GCC_TRUE@
+GMSGFMT = @GMSGFMT@
 GNOME1_DESKTOP = @GNOME1_DESKTOP@
 GNOME1_FALSE = @GNOME1_FALSE@
 GNOME1_TRUE = @GNOME1_TRUE@
@@ -77,19 +79,30 @@ INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+INTLLIBS = @INTLLIBS@
 KDE_CONFIG = @KDE_CONFIG@
 KDE_DESKTOP = @KDE_DESKTOP@
 KDE_FALSE = @KDE_FALSE@
 KDE_ICON = @KDE_ICON@
 KDE_TRUE = @KDE_TRUE@
 LDFLAGS = @LDFLAGS@
+LIBICONV = @LIBICONV@
+LIBINTL = @LIBINTL@
 LIBOBJS = @LIBOBJS@
 LIBPNG_FALSE = @LIBPNG_FALSE@
 LIBPNG_TRUE = @LIBPNG_TRUE@
 LIBS = @LIBS@
+LTLIBICONV = @LTLIBICONV@
+LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
+MAINT = @MAINT@
+MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
 MAKEINFO = @MAKEINFO@
 MANUAL_FILES = @MANUAL_FILES@
+MKINSTALLDIRS = @MKINSTALLDIRS@
+MSGFMT = @MSGFMT@
+MSGMERGE = @MSGMERGE@
 MUSIC_FILES = @MUSIC_FILES@
 OBJEXT = @OBJEXT@
 PACKAGE = @PACKAGE@
@@ -102,6 +115,7 @@ PATH_SEPARATOR = @PATH_SEPARATOR@
 PNG_CFLAGS = @PNG_CFLAGS@
 PNG_CONFIG = @PNG_CONFIG@
 PNG_LIBS = @PNG_LIBS@
+POSUB = @POSUB@
 SDL_CFLAGS = @SDL_CFLAGS@
 SDL_CONFIG = @SDL_CONFIG@
 SDL_IMAGE_LIBS = @SDL_IMAGE_LIBS@
@@ -119,10 +133,12 @@ STATIC_TRUE = @STATIC_TRUE@
 STRIP = @STRIP@
 TOOLS_FALSE = @TOOLS_FALSE@
 TOOLS_TRUE = @TOOLS_TRUE@
+USE_NLS = @USE_NLS@
 UTIL_FILES = @UTIL_FILES@
 VERSION = @VERSION@
 WZIP_FALSE = @WZIP_FALSE@
 WZIP_TRUE = @WZIP_TRUE@
+XGETTEXT = @XGETTEXT@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
 ac_ct_STRIP = @ac_ct_STRIP@
@@ -134,10 +150,18 @@ am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
 bindir = @bindir@
+build = @build@
 build_alias = @build_alias@
+build_cpu = @build_cpu@
+build_os = @build_os@
+build_vendor = @build_vendor@
 datadir = @datadir@
 exec_prefix = @exec_prefix@
+host = @host@
 host_alias = @host_alias@
+host_cpu = @host_cpu@
+host_os = @host_os@
+host_vendor = @host_vendor@
 includedir = @includedir@
 infodir = @infodir@
 install_sh = @install_sh@
@@ -153,7 +177,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 ISUBDIRS = icons
-SUBDIRS = src $(ISUBDIRS)
+SUBDIRS = m4  src $(ISUBDIRS)
 
 dist_noinst_DATA = @MANUAL_FILES@ copyright changelog wesnoth.dsp wesnoth.dsw \
 	@UTIL_FILES@
@@ -162,6 +186,10 @@ nobase_dist_pkgdata_DATA = @DATA_FILES@ @FONT_FILES@ @IMAGE_FILES@ \
 	@MUSIC_FILES@ @SOUND_FILES@
 
 dist_man6_MANS = doc/man/wesnoth.6 doc/man/wesnothd.6 doc/man/wesnoth_editor.6
+
+ACLOCAL_AMFLAGS = -I m4
+
+EXTRA_DIST = config/config.rpath
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
@@ -181,9 +209,11 @@ RECURSIVE_TARGETS = info-recursive dvi-recursive pdf-recursive \
 	check-recursive installcheck-recursive
 DIST_COMMON = README $(dist_man6_MANS) $(dist_noinst_DATA) \
 	$(nobase_dist_pkgdata_DATA) $(srcdir)/Makefile.in \
-	$(srcdir)/configure COPYING INSTALL Makefile.am aclocal.m4 \
-	config.h.in config/depcomp config/install-sh config/missing \
-	config/mkinstalldirs configure configure.ac
+	$(srcdir)/configure ABOUT-NLS COPYING ChangeLog INSTALL \
+	Makefile.am aclocal.m4 config.h.in config/config.guess \
+	config/config.rpath config/config.sub config/depcomp \
+	config/install-sh config/missing config/mkinstalldirs configure \
+	configure.ac
 DIST_SUBDIRS = $(SUBDIRS)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
@@ -192,18 +222,18 @@ all: config.h
 
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno
-$(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
 	  $(AUTOMAKE) --foreign  Makefile
-Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
+Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe)
 
 $(top_builddir)/config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
-$(srcdir)/configure:  $(srcdir)/configure.ac $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
+$(srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(srcdir)/configure.ac $(ACLOCAL_M4) $(CONFIGURE_DEPENDENCIES)
 	cd $(srcdir) && $(AUTOCONF)
 
-$(ACLOCAL_M4):  configure.ac 
+$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ configure.ac m4/codeset.m4 m4/gettext.m4 m4/glibc21.m4 m4/iconv.m4 m4/intdiv0.m4 m4/intmax.m4 m4/inttypes-pri.m4 m4/inttypes.m4 m4/inttypes_h.m4 m4/isc-posix.m4 m4/lcmessage.m4 m4/lib-ld.m4 m4/lib-link.m4 m4/lib-prefix.m4 m4/longdouble.m4 m4/longlong.m4 m4/nls.m4 m4/po.m4 m4/printf-posix.m4 m4/progtest.m4 m4/signed.m4 m4/size_max.m4 m4/stdint_h.m4 m4/uintmax_t.m4 m4/ulonglong.m4 m4/wchar_t.m4 m4/wint_t.m4 m4/xsize.m4
 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 
 config.h: stamp-h1
@@ -216,7 +246,7 @@ stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
 	@rm -f stamp-h1
 	cd $(top_builddir) && $(SHELL) ./config.status config.h
 
-$(srcdir)/config.h.in:  $(top_srcdir)/configure.ac $(ACLOCAL_M4) 
+$(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(top_srcdir)/configure.ac $(ACLOCAL_M4) 
 	cd $(top_srcdir) && $(AUTOHEADER)
 	touch $(srcdir)/config.h.in
 
@@ -429,7 +459,7 @@ distcleancheck_listfiles = find . -type f -print
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
 	mkdir $(distdir)
-	$(mkinstalldirs) $(distdir)/config $(distdir)/doc/man
+	$(mkinstalldirs) $(distdir)/config $(distdir)/doc/man $(distdir)/po
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
