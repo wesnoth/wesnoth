@@ -212,15 +212,18 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	size_t b, max_width = 0;
 	for(b = 0; b != nbuttons; ++b) {
 		buttons.push_back(button(screen,sgettext(button_labels[b])));
-		buttons.back().set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
 		buttons.back().set_help_string(sgettext(help_button_labels[b]));
-		LOG_DP << "set help string for '" << button_labels[b] << "' -> '" << sgettext(help_button_labels[b]) << "'\n";
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 
 	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2};
 	std::string style = "mainmenu";
 	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen,&style);
+
+	for(b = 0; b != nbuttons; ++b) {
+		buttons[b].set_width(max_width);
+		buttons[b].set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
+	}
 
 	gui::button next_tip_button(screen,_("More"),button::TYPE_PRESS,"lite_small");
 
