@@ -1,13 +1,19 @@
 CVS HEAD:
  * information about encountered terrain added in the help system
+ * removed the unit description dialog in favor of in-game help
+ * user interface tweaks
+ * added damage taken and inflicted with expected values to statistics
  * new and improved graphics:
    * dwarvish castle
    * swamp, deep water, shallow water, snow, cave wall, cave floor, ice, lava, dirt, forest, bridge, road
    * chest, nest
    * portraits and unit animations
-   * icon resize
+   * preferences icons
  * scenario balancing for 'The Dark Hordes' campaign:
+   * The Skull of Agarash
    * Underground Pool
+ * new scenarios for 'The Eastern Invasion' campaign:
+   * The Drowned Plains
  * scenario balancing for 'The Eastern Invasion' campaign:
    * Captured
    * Evacuation
@@ -19,12 +25,13 @@ CVS HEAD:
  * scenario balancing for 'The Rise of Wesnoth' campaign:
    * Temple in the Deep
  * replaced Duelist's pistol with crossbow
- * hammer attack given to 'Dwarvish Fighter' and 'Dwarvish Steelclad'
- * increased 'Dwarvish Steelclad' required experience to level
- * reduced 'Bone Shooter' required experience to level
- * increased Soul Shooter ranged damage
- * reduced Woses resistance to cold
  * more female units
+ * unit balancing: 
+   * Dwarvish Fighter: gave hammer attack
+   * Dwarvish Steelclad: gave hammer attack, increased experience required to level
+   * Bone Shooter: reduced experience required to level
+   * Soul Shooter: increased ranged damage
+   * Woses: reduced cold resistance
  * new units
    * Dwarvish Guardsman
    * Dwarvish Stalwart
@@ -34,8 +41,11 @@ CVS HEAD:
    * french
    * spanish
  * multiplayer improvements:
+   * turn_cmd preferences option which can be pointed to a command executed at the start of the player's turn
    * replace AI or local player with observer
+   * allowed recruiting Ghoul
  * added 'steadfast' ability
+ * added automatic path search to [move_unit_fake]
  * fixed Windows compile errors
  * fixed Mac OS X compile error
  * fixed syntax error appearing in the help about units under some translations
@@ -66,15 +76,15 @@ CVS HEAD:
  * fixed crash bug that could occur after undoing
  * changes in #ifdefs to prevent the game from using the X11 clipboard on MacOSX
  * fixed a little bug where a space could disappear near EOL in the help system
- * new file hierarchy for portraits
- * minor speed optimizations
  * help system shows everything when wesnoth is running in debug mode
- * removed the unit description dialog in favor of in-game help
  * added support for 2- and 3-sided transitions on the TERRAIN_ADJACENT_NORTH macro
  * added possiblity for terrains to be defined as 2-layered, with a base part and an overlay part
- * changed building static binary to use libtool when available
- * multiplayer file hierarchy cleanup
+ * added possibility to flip overlayed image
  * optimized menu scrolling
+ * other minor speed optimizations
+ * multiplayer file hierarchy cleanup
+ * new file hierarchy for portraits
+ * changed building static binary to use libtool when available
 
 Version 0.8.2:
  * new and improved graphics: 
