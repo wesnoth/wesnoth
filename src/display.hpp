@@ -309,6 +309,7 @@ public:
 
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
 	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type);
+	void clear_chat_messages();
 
 	//function to draw the image of a unit at a certain location
 	//x,y: pixel location on screen to draw the unit

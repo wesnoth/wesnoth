@@ -922,6 +922,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_QUIT_GAME:
 	case hotkey::HOTKEY_SEARCH:
 	case hotkey::HOTKEY_HELP:
+	case hotkey::HOTKEY_USER_CMD:
 		return true;
 
 	case hotkey::HOTKEY_SAVE_GAME:
@@ -938,7 +939,6 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SPEAK_ALLY:
 	case hotkey::HOTKEY_SPEAK_ALL:
 	case hotkey::HOTKEY_CHAT_LOG:
-	case hotkey::HOTKEY_USER_CMD:
 		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
@@ -1401,15 +1401,20 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 	stream << state_of_game_.label << " " << string_table["turn"]
 	       << " " << status_.turn();
 	std::string label = stream.str();
+	if(dialog_type == gui::NULL_DIALOG && message != "") {
+		label = message;
+	}
 
-	const int res = dialogs::get_save_name(gui_,message,string_table["save_game_label"],&label,dialog_type);
+	const int res = dialog_type == gui::NULL_DIALOG ? 0 : dialogs::get_save_name(gui_,message,string_table["save_game_label"],&label,dialog_type);
 
 	if(res == 0) {
 		config snapshot;
 		write_game_snapshot(snapshot);
 		try {
 			recorder.save_game(gameinfo_,label,snapshot,state_of_game_.starting_pos);
-			gui::show_dialog(gui_,NULL,"",string_table["save_confirm_message"], gui::OK_ONLY);
+			if(dialog_type != gui::NULL_DIALOG) {
+				gui::show_dialog(gui_,NULL,"",string_table["save_confirm_message"], gui::OK_ONLY);
+			}
 		} catch(gamestatus::save_game_failed& e) {
 			gui::show_dialog(gui_,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
 			//do not bother retrying, since the user can just try to save the game again
@@ -2139,6 +2144,19 @@ void turn_info::do_command(const std::string& str)
 		ban["username"] = data;
 
 		network::send_data(cfg);
+	} else if(cmd == "clear") {
+		gui_.clear_chat_messages();
+	} else if(cmd == "w") {
+		save_game(data,gui::NULL_DIALOG);
+	} else if(cmd == "wq") {
+		save_game(data,gui::NULL_DIALOG);
+		throw end_level_exception(QUIT);
+	} else if(cmd == "q!" || cmd == "q") {
+		throw end_level_exception(QUIT);
+	} else if(cmd == "debug") {
+		game_config::debug = (data != "off") ? true : false;
+	} else if(cmd == "n" && game_config::debug) {
+		throw end_level_exception(VICTORY);
 	}
 }
 

@@ -1008,8 +1008,8 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const int xbox = static_cast<int>(xscaling*xpos_/(zoom_*0.75));
 	const int ybox = static_cast<int>(yscaling*ypos_/zoom_);
 
-	const int wbox = static_cast<int>(xscaling*map_area().w/(zoom_*0.75) - xscaling);
-	const int hbox = static_cast<int>(yscaling*map_area().h/zoom_ - yscaling);
+	const int wbox = static_cast<int>(xscaling*map_area().w/(zoom_*0.75) - xscaling) + 3;
+	const int hbox = static_cast<int>(yscaling*map_area().h/zoom_ - yscaling) + 3;
 
 	const Uint32 boxcolour = SDL_MapRGB(surf->format,0xFF,0xFF,0xFF);
 	const surface screen(screen_.getSurface());
@@ -2229,6 +2229,11 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
 
 	prune_chat_messages();
+}
+
+void display::clear_chat_messages()
+{
+	prune_chat_messages(true);
 }
 
 void display::prune_chat_messages(bool remove_all)

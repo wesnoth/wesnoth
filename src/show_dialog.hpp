@@ -105,7 +105,7 @@ struct dialog_button
 
 enum { ESCAPE_DIALOG=-3 };
 
-enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY, CLOSE_ONLY };
+enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY, CLOSE_ONLY, NULL_DIALOG };
 
 struct check_item {
 	check_item(const std::string& label, bool checked) : label(label), checked(checked) {}
