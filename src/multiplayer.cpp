@@ -493,7 +493,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						       width, height, disp);
 
 				//Buttons
-				gui::button launch2_game(disp,string_table["im_ready"],gui::button::TYPE_CHECK);
+				gui::button launch2_game(disp,string_table["im_ready"]);
 				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
 
 				//Title and labels
