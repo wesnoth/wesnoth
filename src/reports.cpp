@@ -5,8 +5,9 @@
 #include "reports.hpp"
 
 #include <cassert>
-#include <sstream>
 #include <map>
+#include <set>
+#include <sstream>
 
 namespace {
 	const std::string report_names[] = { "unit_description", "unit_type", "unit_level",
@@ -179,6 +180,35 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 			
 			str << (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
 				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n";
+
+			tooltip << (lang_weapon.empty() ? at_it->name():lang_weapon) << "\n";
+
+			//find all the unit types on the map, and show this weapon's bonus against all the different units
+			std::set<const unit_type*> seen_units;
+			std::map<int,std::vector<std::string> > resistances;
+			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
+				if(current_team.is_enemy(u_it->second.side()) && !current_team.fogged(u_it->first.x,u_it->first.y) &&
+				   seen_units.count(&u_it->second.type()) == 0) {
+					seen_units.insert(&u_it->second.type());
+					const int resistance = u_it->second.type().movement_type().resistance_against(*at_it) - 100;
+					resistances[resistance].push_back(translate_string(u_it->second.type().name()));
+				}
+			}
+
+			for(std::map<int,std::vector<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
+				std::sort(resist->second.begin(),resist->second.end());
+				tooltip << (resist->first >= 0 ? "+" : "") << resist->first << "% vs ";
+				for(std::vector<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
+					if(i != resist->second.begin()) {
+						tooltip << ",";
+					}
+
+					tooltip << *i;
+				}
+
+				tooltip << "\n";
+			}
+
 			res.add_text(str,tooltip);
 			
 			str << (lang_special.empty() ? at_it->special():lang_special) << "\n";
