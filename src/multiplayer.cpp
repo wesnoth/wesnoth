@@ -21,6 +21,7 @@
 #include "log.hpp"
 #include "image.hpp"
 #include "key.hpp"
+#include "log.hpp"
 #include "mapgen.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_connect.hpp"
@@ -44,14 +45,19 @@
 #include <string>
 #include <vector>
 
+#define LOG_G lg::info(lg::general)
+#define LOG_NW lg::info(lg::network)
+#define LOG_DP lg::info(lg::display)
+#define ERR_CF lg::err(lg::config)
+
 network_game_manager::~network_game_manager()
 {
 	if(network::nconnections() > 0) {
-		std::cerr << "sending leave_game\n";
+		LOG_NW << "sending leave_game\n";
 		config cfg;
 		cfg.add_child("leave_game");
 		network::send_data(cfg);
-		std::cerr << "sent leave_game\n";
+		LOG_NW << "sent leave_game\n";
 	}
 }
 
@@ -64,7 +70,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
           cancel_game_(NULL), launch_game_(NULL), regenerate_map_(NULL), generator_settings_(NULL),
 		  era_combo_(NULL), vision_combo_(NULL), name_entry_(NULL), generator_(NULL), controller_(controller)
 {
-	std::cerr << "setup dialog ctor\n";
+	LOG_DP << "setup dialog ctor\n";
 
 	state_.players.clear();
 	state_.variables.clear();
@@ -80,7 +86,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	}
 
 	//add the 'load game' option
-	map_options_.push_back(_("Load Game") + std::string("..."));
+	map_options_.push_back(_("Load Game..."));
 
 	//create the scenarios menu
 	maps_menu_.assign(new gui::menu(disp_,map_options_));
@@ -140,19 +146,19 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 
 	if(eras.empty()) {
 		gui::show_dialog(disp_,NULL,"",_("No multiplayer sides."),gui::OK_ONLY);
-		std::cerr << "ERROR: no eras found\n";
+		ERR_CF << "no eras found\n";
 		throw config::error("no eras found");
 	}
 
 	era_combo_.assign(new gui::combo(disp_,eras));
 	era_combo_->set_selected(preferences::era());
 
-	std::cerr << "end setup dialog ctor\n";
+	LOG_DP << "end setup dialog ctor\n";
 }
 
 void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 {
-	std::cerr << "setup dialog set_area\n";
+	LOG_DP << "setup dialog set_area\n";
 
 	area_ = area;
 
@@ -172,7 +178,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 
 	//Name Entry
 	ypos += font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-	                        _("Name of game") + std::string(":"),xpos,ypos).h + border_size;
+	                        _("Name of game:"),xpos,ypos).h + border_size;
 	string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 	name_entry_.assign(new gui::textbox(disp_,width-20,vgettext("$login's game", i18n_symbols)));
@@ -186,7 +192,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	//the map selection menu goes near the middle of the dialog, to the right of
 	//the minimap
 	const int map_label_height = font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-	                                             _("Map to play") + std::string(":"),xpos + minimap_width + border_size,ypos).h;
+	                                             _("Map to play:"),xpos + minimap_width + border_size,ypos).h;
 
 	maps_menu_->set_max_width(area.x + area.w - (xpos + minimap_width) - 250);
 	maps_menu_->set_max_height(area.y + area.h - (ypos + map_label_height));
@@ -282,7 +288,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	playernum_restorer_ = surface_restorer(&disp_.video(),player_num_rect);
 
 	SDL_Rect era_rect = {xpos,player_num_rect.y+player_num_rect.h + border_size,50,20};
-	era_rect = font::draw_text(&disp_,era_rect,font::SIZE_SMALL,font::GOOD_COLOUR,_("Era") + std::string(":"),
+	era_rect = font::draw_text(&disp_,era_rect,font::SIZE_SMALL,font::GOOD_COLOUR,_("Era:"),
 	                           era_rect.x,era_rect.y);
 	
 	era_combo_->set_location(era_rect.x+era_rect.w+border_size,era_rect.y);
@@ -305,7 +311,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	generator_settings_->hide(false);
 	era_combo_->hide(false);
 
-	std::cerr << "setup dialog end set_area\n";
+	LOG_DP << "setup dialog end set_area\n";
 }
 
 void multiplayer_game_setup_dialog::clear_area()
@@ -345,43 +351,51 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 
 	events::raise_process_event();
 	events::raise_draw_event();
+	SDL_Rect const &screen_area = disp_.screen_area();
+	display *disp = &disp_;
 
 	//Turns per game
-	const int cur_turns = turns_slider_->value();
-	turns_restorer_.restore();
+	{
+		const int cur_turns = turns_slider_->value();
+		turns_restorer_.restore();
 
-	std::string turns_str;
+		std::stringstream turns_str;
+		turns_str << _("Turns: ");
+		if (cur_turns < 100)
+			turns_str << cur_turns;
+		else
+			turns_str << _("unlimited");
 
-	char buf[100];
-	if(cur_turns < 100) {
-		sprintf(buf,"%d", cur_turns);
-		turns_str = buf;
-	} else {
-		turns_str = _("Unlimited");
+		SDL_Rect const &rect = turns_restorer_.area();
+		font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
+		                turns_str.str(), rect.x, rect.y);
 	}
 
-	font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-	                _("Turns") + std::string(": ") + turns_str,
-					turns_restorer_.area().x,turns_restorer_.area().y);
-
 	//Villages can produce between 1 and 10 gold a turn
-	const int village_gold = village_gold_slider_->value();
-	village_gold_restorer_.restore();
-	sprintf(buf,": %d", village_gold);
-	font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-	                _("Village Gold") + std::string(buf),
-					village_gold_restorer_.area().x,village_gold_restorer_.area().y);
+	{
+		const int village_gold = village_gold_slider_->value();
+		village_gold_restorer_.restore();
 
+		std::stringstream gold_str;
+		gold_str << _("Village Gold: ") << village_gold;
 
+		SDL_Rect const &rect = village_gold_restorer_.area();
+		font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
+		                gold_str.str(), rect.x, rect.y);
+	}
 
-	//experience modifier
-	const int xpmod = xp_modifier_slider_->value();
-	xp_restorer_.restore();
-	sprintf(buf,": %d%%", xpmod);
+	//Experience modifier
+	{
+		const int xpmod = xp_modifier_slider_->value();
+		xp_restorer_.restore();
 
-	const SDL_Rect& xp_rect = xp_restorer_.area();
-	font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-	                _("Experience Requirements") + std::string(buf),xp_rect.x,xp_rect.y);
+		std::stringstream xp_str;
+		xp_str << _("Experience Requirements: ") << xpmod << '%';
+
+		SDL_Rect const &rect = xp_restorer_.area();
+		font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
+		                xp_str.str(), rect.x, rect.y);
+	}
 
 	bool map_changed = map_selection_ != maps_menu_->selection();
 	map_selection_ = maps_menu_->selection();
@@ -412,16 +426,17 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 				level_ = &scenario_data_;
 
 				std::string& map_data = scenario_data_["map_data"];
-				if(map_data == "" && scenario_data_["map"] != "") {
+				if (map_data.empty() && !scenario_data_["map"].empty()) {
 					map_data = read_map(scenario_data_["map"]);
 				}
 
 				//if the map should be randomly generated
-				if(scenario_data_["map_generation"] != "") {
-					generator_.assign(create_map_generator(scenario_data_["map_generation"],scenario_data_.child("generator")));
+				if (!scenario_data_["map_generation"].empty()) {
+					generator_.assign(create_map_generator(scenario_data_["map_generation"],
+					                  scenario_data_.child("generator")));
 				}
 
-				if(scenario_data_["description"].empty() == false) {
+				if (!scenario_data_["description"].empty()) {
 					tooltips::add_tooltip(minimap_rect,scenario_data_["description"]);
 				}
 			}
@@ -431,9 +446,10 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 
 			playernum_restorer_.restore();
 			minimap_restorer_.restore();
-			const SDL_Rect& player_num_rect = playernum_restorer_.area();
-			font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-				                _("Players") + std::string(": ?"),player_num_rect.x,player_num_rect.y);
+
+			SDL_Rect const &rect = playernum_restorer_.area();
+			font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
+				        _("Players: ") + std::string(1, '?'), rect.x, rect.y);
 		}
 	}
 
@@ -483,24 +499,23 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 			level_->remove_child("side",level_->get_children("side").size()-1);
 		}
 
-		SDL_Rect rect = minimap_restorer_.area();
-		const surface mini(image::getMinimap(rect.w,rect.h,map,0));
+		SDL_Rect minimap_rect = minimap_restorer_.area();
+		const surface mini(image::getMinimap(minimap_rect.w, minimap_rect.h, map, 0));
 
 		if(mini != NULL) {
-			SDL_BlitSurface(mini, NULL, disp_.video().getSurface(), &rect);
-			update_rect(rect);
+			SDL_BlitSurface(mini, NULL, disp_.video().getSurface(), &minimap_rect);
+			update_rect(minimap_rect);
 		
 			//Display the number of players
-			SDL_Rect players_rect = playernum_restorer_.area();
-
-			playernum_restorer_.restore();			
-
 			const int nsides = level_->get_children("side").size();
+			playernum_restorer_.restore();
 
 			std::stringstream players;
-			players << _("Players") << ": " << nsides;
-			font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-			                players.str(),players_rect.x,players_rect.y);
+			players << _("Players: ") << nsides;
+
+			SDL_Rect const &rect = playernum_restorer_.area();
+			font::draw_text(disp, screen_area, font::SIZE_SMALL, font::GOOD_COLOUR,
+			                players.str(), rect.x, rect.y);
 		}
 	}
 
@@ -509,7 +524,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 
 void multiplayer_game_setup_dialog::start_game()
 {
-	std::cerr << "calling start_game()\n";
+	LOG_G << "calling start_game()\n";
 	const network::manager net_manager;
 	const network::server_manager server_man(15000,server_ ? network::server_manager::TRY_CREATE_SERVER : network::server_manager::NO_SERVER);
 
