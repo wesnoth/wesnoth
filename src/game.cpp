@@ -210,7 +210,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 {
 	log_scope("read_game_cfg");
 
-	if(defines.size() < 4 && use_cache) {
+	if(defines.size() < 4) {
 		bool is_valid = true;
 		std::stringstream str;
 		for(preproc_map::const_iterator i = defines.begin(); i != defines.end(); ++i) {
@@ -226,7 +226,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 			const std::string& cache = get_cache_dir();
 			if(cache != "") {
 				const std::string fname = cache + "/game.cfg-cache" + str.str();
-				if(file_exists(fname) && file_create_time(fname) > data_tree_modified_time()) {
+				if(use_cache && file_exists(fname) && file_create_time(fname) > data_tree_modified_time()) {
 					std::cerr << "found valid cache at '" << fname << "' using it\n";
 					log_scope("read cache");
 					compression_schema schema;

@@ -470,8 +470,6 @@ void ai::do_move()
 {
 	log_scope("doing ai move");
 
-	game_config::debug = true;
-
 	invalidate_defensive_position_cache();
 
 	user_interact();

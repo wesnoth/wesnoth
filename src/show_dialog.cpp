@@ -503,9 +503,11 @@ int show_dialog(display& disp, SDL_Surface* image,
 	const std::string& title = image == NULL ? caption : "";
 	draw_dialog(xloc,yloc,total_width,total_height,disp,title,dialog_style,&buttons_ptr,&restorer);
 
-	if(menu_.height() > 0)
-		menu_.set_loc(xloc+total_image_width+left_padding+image_h_padding,
-		              yloc+top_padding+text_size.h+menu_hpadding);
+	const int menu_xpos = xloc+total_image_width+left_padding+image_h_padding;
+	const int menu_ypos = yloc+top_padding+text_size.h+menu_hpadding;
+	if(menu_.height() > 0) {
+		menu_.set_loc(menu_xpos,menu_ypos);
+	}
 
 	if(image != NULL) {
 		const int x = xloc + left_padding;
@@ -673,7 +675,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		if(buttons.empty() && (new_left_button && !left_button ||
+		const SDL_Rect menu_rect = {menu_xpos,menu_ypos,menu_.width(),menu_.height()};
+		if(buttons.empty() && (new_left_button && !left_button && !point_in_rect(mousex,mousey,menu_rect) ||
 		                       new_right_button && !right_button) ||
 		   buttons.size() < 2 && new_key_down && !key_down &&
 		   menu_.height() == 0)

@@ -891,9 +891,22 @@ void unit::add_modification(const std::string& type,
 		if(apply_to == "new_attack") {
 			attacks_.push_back(attack_type(**i.first));
 		} else if(apply_to == "attack") {
+
+			bool first_attack = true;
+
 			for(std::vector<attack_type>::iterator a = attacks_.begin();
 			    a != attacks_.end(); ++a) {
-				a->apply_modification(**i.first);
+				std::string desc;
+				const bool affected = a->apply_modification(**i.first,&desc);
+				if(affected && desc != "") {
+					if(first_attack) {
+						first_attack = false;
+					} else {
+						description << "; ";
+					}
+					
+					description << translate_string(a->name()) << " " << desc;
+				}
 			}
 		} else if(apply_to == "hitpoints") {
 			std::cerr << "applying hitpoint mod...." << hitpoints_ << "/" << maxHitpoints_ << "\n";
@@ -977,7 +990,6 @@ void unit::add_modification(const std::string& type,
 				maxExperience_ = 1;
 			}
 		} else if(apply_to == "loyal") {
-			description << string_table["loyal_description"];
 			if(upkeep_ > UPKEEP_LOYAL)
 				upkeep_ = UPKEEP_LOYAL;
 		} else if(apply_to == "status") {

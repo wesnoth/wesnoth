@@ -217,17 +217,18 @@ bool attack_type::matches_filter(const config& cfg) const
 	return true;
 }
 
-void attack_type::apply_modification(const config& cfg)
+bool attack_type::apply_modification(const config& cfg, std::string* description)
 {
 	if(!matches_filter(cfg))
-		return;
+		return false;
 
 	const std::string& set_name = cfg["set_name"];
 	const std::string& set_type = cfg["set_type"];
 	const std::string& set_special = cfg["set_special"];
 	const std::string& increase_damage = cfg["increase_damage"];
-	const std::string& multiply_damage = cfg["multiply_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
+
+	std::stringstream desc;
 
 	if(set_name.empty() == false) {
 		name_ = set_name;
@@ -242,18 +243,23 @@ void attack_type::apply_modification(const config& cfg)
 	}
 
 	if(increase_damage.empty() == false) {
-		const int increase = atoi(increase_damage.c_str());
-		damage_ += increase;
-		if(damage_ < 1)
-			damage_ = 1;
-	}
+		int increase = 0;
+		
+		if(increase_damage[increase_damage.size()-1] == '%') {
+			const std::string inc(increase_damage.begin(),increase_damage.end()-1);
+			const int percent = atoi(inc.c_str());
+			increase = (damage_*percent)/100;
+		} else {
+			increase = atoi(increase_damage.c_str());
+		}
 
-	if(multiply_damage.empty() == false) {
-		const double multiply = atof(increase_damage.c_str());
-		if(multiply != 0.0) {
-			damage_ = int(double(damage_)*multiply);
-			if(damage_ < 1)
-				damage_ = 1;
+		damage_ += increase;
+		if(damage_ < 1) {
+			damage_ = 1;
+		}
+
+		if(description != NULL) {
+			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage << translate_string("dmg");
 		}
 	}
 
@@ -263,7 +269,17 @@ void attack_type::apply_modification(const config& cfg)
 		if(num_attacks_ < 1) {
 			num_attacks_ = 1;
 		}
+
+		if(description != NULL) {
+			desc << (increase > 0 ? "+" : "") << increase << translate_string("strikes");
+		}
 	}
+
+	if(description != NULL) {
+		*description = desc.str();
+	}
+
+	return true;
 }
 
 unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent)
@@ -557,6 +573,16 @@ const std::string& unit_type::name() const
 const std::string& unit_type::image() const
 {
 	return cfg_["image"];
+}
+
+const std::string& unit_type::image_moving() const
+{
+	const std::string& res = cfg_["image_moving"];
+	if(res.empty()) {
+		return image();
+	} else {
+		return res;
+	}
 }
 
 const std::string& unit_type::image_fighting(attack_type::RANGE range) const

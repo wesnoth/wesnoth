@@ -63,7 +63,7 @@ public:
 	const std::vector<sfx>& sound_effects() const;
 
 	bool matches_filter(const config& cfg) const;
-	void apply_modification(const config& cfg);
+	bool apply_modification(const config& cfg,std::string* description);
 private:
 	std::string name_;
 	std::string type_;
@@ -155,6 +155,7 @@ public:
 	std::string id() const;
 	const std::string& name() const;
 	const std::string& image() const;
+	const std::string& image_moving() const;
 	const std::string& image_profile() const;
 	const std::string& image_fighting(attack_type::RANGE range) const;
 	const std::string& image_defensive(attack_type::RANGE range) const;

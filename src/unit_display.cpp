@@ -47,13 +47,13 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	for(int i = 0; i < nsteps; ++i) {
 		events::pump();
 
-		scoped_sdl_surface image(image::get_image(u.type().image()));
+		scoped_sdl_surface image(image::get_image(u.type().image_moving()));
 		if(!face_left) {
 			image.assign(image::reverse_image(image));
 		}
 
 		if(image == NULL) {
-			std::cerr << "failed to get image " << u.type().image() << "\n";
+			std::cerr << "failed to get image " << u.type().image_moving() << "\n";
 			return;
 		}
 
