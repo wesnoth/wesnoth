@@ -170,7 +170,7 @@ public:
 	std::string language_name() const;
 
 	//unique identifier that doesn't have any whitespace
-	std::string id() const;
+	const std::string& id() const;
 	const std::string& name() const;
 	const std::string& image() const;
 	const std::string& image_halo() const;
@@ -249,6 +249,8 @@ private:
 	double alpha_;
 
 	std::vector<std::string> abilities_;
+
+	mutable std::string id_;
 
 	int max_heals_;
 	int heals_;

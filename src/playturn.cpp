@@ -2125,6 +2125,14 @@ void turn_info::do_command(const std::string& str)
 		ban["username"] = data;
 
 		network::send_data(cfg);
+	} else if(cmd == "control") {
+		const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
+		if(j != data.end()) {
+			const std::string side(data.begin(),j);
+			const std::string player(j+1,data.end());
+
+			change_side_controller(side,player);
+		}
 	} else if(cmd == "clear") {
 		gui_.clear_chat_messages();
 	} else if(cmd == "w") {
@@ -2139,6 +2147,16 @@ void turn_info::do_command(const std::string& str)
 	} else if(cmd == "n" && game_config::debug) {
 		throw end_level_exception(VICTORY);
 	}
+}
+
+void turn_info::change_side_controller(const std::string& side, const std::string& player)
+{
+	config cfg;
+	config& change = cfg.add_child("change_controller");
+	change["side"] = side;
+	change["player"] = player;
+
+	network::send_data(cfg);
 }
 
 void turn_info::label_terrain()
@@ -2327,6 +2345,25 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 	}
 
+	if(const config* change= cfg.child("change_controller")) {
+		const int side = lexical_cast_default<int>((*change)["side"],1);
+		const size_t index = static_cast<size_t>(side-1);
+
+		const std::string& controller = (*change)["controller"];
+
+		if(index < teams_.size()) {
+			if(controller == "human") {
+				teams_[index].make_human();
+			} else if(controller == "network") {
+				teams_[index].make_network();
+			} else if(controller == "ai") {
+				teams_[index].make_ai();
+			}
+
+			return PROCESS_RESTART_TURN;
+		}
+	}
+
 	//if a side has dropped out of the game.
 	if(cfg["side_drop"] != "") {
 		const size_t side = atoi(cfg["side_drop"].c_str())-1;
@@ -2337,6 +2374,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		int action = 0;
 
+		std::vector<std::string> observers;
+
 		//see if the side still has a leader alive. If they have
 		//no leader, we assume they just want to be replaced by
 		//the AI.
@@ -2346,6 +2385,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
 			options.push_back(_("Abort game"));
+
+			for(std::set<std::string>::const_iterator ob = gui_.observers().begin(); ob != gui_.observers().end(); ++ob) {
+				options.push_back(_("Replace with ") + *ob);
+				observers.push_back(*ob);
+			}
 
 			const std::string msg = leader->second.description() + " " + _("has left the game. What do you want to do?");
 			action = gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY,&options);
@@ -2360,9 +2404,17 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		} else if(action == 1) {
 			teams_[side].make_human();
 			return PROCESS_RESTART_TURN;
-		} else {
-			throw network::error("");
+		} else if(action > 2) {
+			const size_t index = size_t(action - 2);
+			if(index < observers.size()) {
+				change_side_controller(cfg["side_drop"],observers[index]);
+			}
+
+			teams_[side].make_human();
+			return PROCESS_RESTART_TURN;
 		}
+
+		throw network::error("");
 	}
 
 	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;

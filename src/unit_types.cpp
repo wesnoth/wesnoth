@@ -632,16 +632,20 @@ std::string unit_type::generate_description() const
 	return race_->generate_name(cfg_["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE);
 }
 
-std::string unit_type::id() const
+const std::string& unit_type::id() const
 {
-	std::string n = cfg_["id"];
+	if(id_.empty()) {
+		id_ = cfg_["id"];
 
-	if (n.empty())
-		// this code is only for compatibility with old unit defs and savefiles
-		n = cfg_["name"];
+		if(id_.empty()) {
+			// this code is only for compatibility with old unit defs and savefiles
+			id_ = cfg_["name"];
+		}
 
-	n.erase(std::remove(n.begin(),n.end(),' '),n.end());
-	return n;
+		id_.erase(std::remove(id_.begin(),id_.end(),' '),id_.end());
+	}
+
+	return id_;
 }
 
 std::string unit_type::language_name() const

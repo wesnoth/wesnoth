@@ -447,7 +447,7 @@ int show_dialog(display& disp, surface image,
 		}
 
 		case YES_NO: {
-			static const char* thebuttons[] = { N_("yes"),
+			static const char* thebuttons[] = { N_("Yes"),
 			                                          N_("No"), ""};
 			button_list = thebuttons;
 			break;

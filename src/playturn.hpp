@@ -182,6 +182,8 @@ private:
 	
 	bool enemies_visible() const;
 
+	void change_side_controller(const std::string& side, const std::string& player);
+
 	game_data& gameinfo_;
 	game_state& state_of_game_;
 	gamestatus& status_;

@@ -159,6 +159,58 @@ bool game::take_side(network::connection player, const config& cfg)
 	return true;
 }
 
+const std::string& game::transfer_side_control(const config& cfg)
+{
+	const std::string& player = cfg["player"];
+
+	std::vector<network::connection>::const_iterator i;
+	for(i = players_.begin(); i != players_.end(); ++i) {
+		const player_map::const_iterator pl = player_info_->find(*i);
+		if(pl != player_info_->end() && pl->second.name() == player) {
+			break;
+		}
+	}
+
+	if(i == players_.end()) {
+		static const std::string notfound = "Player not found";
+		return notfound;
+	}
+
+	const std::string& side = cfg["side"];
+
+	for(std::map<network::connection,std::string>::const_iterator j = sides_.begin(); j != sides_.end(); ++j) {
+		if(j->second == side) {
+			static const std::string already = "This side is already controlled by a player";
+			return already;
+		}
+	}
+
+	if(sides_.count(*i) == 1) {
+		static const std::string already = "Player already controls a side";
+		return already;
+	}
+
+	config response;
+	config& change = response.add_child("change_controller");
+
+	change["side"] = side;
+	change["controller"] = "network";
+
+	network::queue_data(response,players_.front());
+
+	change["controller"] = "human";
+	network::queue_data(response,*i);
+
+	if(i != players_.begin()) {
+		sides_[*i] = side;
+	}
+
+	sides_taken_.insert(side);
+	
+	static const std::string success = "";
+	return success;
+}
+
 size_t game::available_slots() const
 {
 	size_t total_slots = 0;

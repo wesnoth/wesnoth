@@ -446,8 +446,21 @@ void server::run()
 						continue;
 					}
 
+					//if the owner is changing the controller for a side
+					if(g->is_owner(sock) && data.child("change_controller") != NULL) {
+						const config& change = *data.child("change_controller");
+						const std::string& result = g->transfer_side_control(change);
+						if(result == "") {
+							const config& msg = construct_server_message(change["player"] + " takes control of side " + change["side"],*g);
+							g->send_data(msg);
+						} else {
+							const config& msg = construct_server_message(result,*g);
+							network::send_data(msg,sock);
+						}
+					}
+
 					//if the owner is banning someone from the game
-					if(g->is_owner(sock) && data.child("ban")) {
+					if(g->is_owner(sock) && data.child("ban") != NULL) {
 						const config& ban = *data.child("ban");
 						const std::string& name = ban["username"];
 						player_map::iterator pl;

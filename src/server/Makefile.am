@@ -13,6 +13,7 @@ wesnothd_SOURCES = game.cpp \
 		   ../config.cpp \
 		   ../filesystem.cpp \
 		   ../game_config.cpp \
+		   ../gettext.cpp \
 		   ../log.cpp \
 		   ../network.cpp \
 		   game.hpp \
@@ -23,6 +24,7 @@ wesnothd_SOURCES = game.cpp \
 		   ../config.hpp \
 		   ../filesystem.hpp \
 		   ../game_config.hpp \
+		   ../gettext.hpp \
 		   ../log.hpp \
 		   ../network.hpp
 

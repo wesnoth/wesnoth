@@ -301,6 +301,7 @@ public:
 
 	void add_observer(const std::string& name);
 	void remove_observer(const std::string& name);
+	const std::set<std::string>& observers() const { return observers_; }
 
 	map_labels& labels() { return map_labels_; }
 	const map_labels& labels() const { return map_labels_; }

@@ -34,6 +34,8 @@ public:
 	void start_game();
 
 	bool take_side(network::connection player, const config& cfg);
+
+	const std::string& transfer_side_control(const config& cfg);
 	
 	size_t available_slots() const;
 

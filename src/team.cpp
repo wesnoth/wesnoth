@@ -403,13 +403,21 @@ const std::string& team::name() const
 	return info_.name;
 }
 
-bool team::is_enemy(int n) const
+bool team::calculate_enemies(size_t index) const
 {
-	const size_t index = size_t(n-1);
 	if(teams == NULL || index >= teams->size()) {
 		return false;
 	}
 
+	while(enemies_.size() <= index) {
+		enemies_.push_back(calculate_is_enemy(enemies_.size()));
+	}
+
+	return enemies_.back();
+}
+
+bool team::calculate_is_enemy(size_t index) const
+{
 	//we're not enemies of ourselves
 	if(&(*teams)[index] == this) {
 		return false;
@@ -424,7 +432,7 @@ bool team::is_enemy(int n) const
 	if(info_.enemies.empty())
 		return true;
 
-	return std::find(info_.enemies.begin(),info_.enemies.end(),n) != info_.enemies.end();
+	return std::find(info_.enemies.begin(),info_.enemies.end(),int(index+1)) != info_.enemies.end();
 }
 
 double team::aggression() const
@@ -535,24 +543,30 @@ bool team::fogged(int x, int y) const
 	return fog_.shared_value(ally_fog(*teams),x+1,y+1);
 }
 
-std::vector<const team::shroud_map*> team::ally_shroud(const std::vector<team>& teams) const
+const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
 {
-	std::vector<const team::shroud_map*> maps;
-	for(size_t i = 0; i < teams.size(); ++i) {
-		if(!is_enemy(i+1))
-			maps.push_back(&(teams[i].shroud_));
+	if(ally_shroud_.empty()) {
+		for(size_t i = 0; i < teams.size(); ++i) {
+			if(!is_enemy(i+1)) {
+				ally_shroud_.push_back(&(teams[i].shroud_));
+			}
+		}
 	}
-	return maps;
+
+	return ally_shroud_;
 }
 
-std::vector<const team::shroud_map*> team::ally_fog(const std::vector<team>& teams) const
+const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
 {
-	std::vector<const team::shroud_map*> maps;
-	for(size_t i = 0; i < teams.size(); ++i) {
-		if(!is_enemy(i+1))
-			maps.push_back(&(teams[i].fog_));
+	if(ally_fog_.empty()) {
+		for(size_t i = 0; i < teams.size(); ++i) {
+			if(!is_enemy(i+1)) {
+				ally_fog_.push_back(&(teams[i].fog_));
+			}
+		}
 	}
-	return maps;
+
+	return ally_fog_;
 }
 
 bool team::knows_about_team(size_t index) const

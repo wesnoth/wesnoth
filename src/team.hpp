@@ -114,7 +114,15 @@ public:
 	const std::vector<std::string>& recruitment_pattern() const;
 	const std::string& name() const;
 
-	bool is_enemy(int side) const;
+	bool is_enemy(int n) const {
+		const size_t index = size_t(n-1);
+		if(index < enemies_.size()) {
+			return enemies_[index];
+		} else {
+			return calculate_enemies(index);
+		}
+	}
+
 	double aggression() const;
 	double caution() const;
 
@@ -176,8 +184,8 @@ private:
 	bool share_maps() const { return info_.share_maps; }
 	bool share_view() const { return info_.share_view; }
 	
-	std::vector<const shroud_map*> ally_shroud(const std::vector<team>& teams) const;
-	std::vector<const shroud_map*> ally_fog(const std::vector<team>& teams) const;
+	const std::vector<const shroud_map*>& ally_shroud(const std::vector<team>& teams) const;
+	const std::vector<const shroud_map*>& ally_fog(const std::vector<team>& teams) const;
 	
 	int gold_;
 	std::set<gamemap::location> villages_;
@@ -192,6 +200,12 @@ private:
 
 	//cached values for ai parameters
 	double aggression_, caution_;
+
+	bool calculate_enemies(size_t index) const;
+	bool calculate_is_enemy(size_t index) const;
+	mutable std::vector<bool> enemies_;
+
+	mutable std::vector<const team::shroud_map*> ally_shroud_, ally_fog_;
 };
 
 struct teams_manager {
