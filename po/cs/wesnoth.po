@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-11 23:01+0200\n"
+"POT-Creation-Date: 2004-09-12 17:19+0200\n"
 "PO-Revision-Date: 2004-09-06 00:14+0200\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
@@ -18,83 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: data/game.cfg:257
-msgid "Heir to the Throne"
-msgstr "Dědic trůnu"
-
-#: data/game.cfg:261
-msgid ""
-"&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-"champion.png,Champion,(hardest)"
-msgstr ""
-"&elvish-fighter.png,Bojovník,(nejsnažší);*&elvish-hero.png,Hrdina;&elvish-"
-"champion.png,Přeborník,(nejobtížnějsí)"
-
-#: data/game.cfg:267
-msgid "The Dark Hordes"
-msgstr "Temné hordy"
-
-#: data/game.cfg:271
-msgid ""
-"&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
-"&undead-lich.png,Dark Lord,(hardest)"
-msgstr ""
-"&undead-initiate.png,Učeň,(nejsnažší);*&undead-necromancer.png,Mistr;&undead-"
-"lich.png,Temný pán,(nejobtížnějsí)"
-
-#: data/game.cfg:276
-msgid "Son of the Black Eye (chapter I)"
-msgstr "Syn Černého Oka (kapitola I)"
-
-#: data/game.cfg:280
-msgid ""
-"&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
-"warlord.png,Warlord,(hardest)"
-msgstr ""
-"&orcish-grunt.png,Bručoun,(nejsnažší);*&orcish-warrior.png,Rváč;&orcish-"
-"warlord.png,Válečník,(nejobtížnějsí)"
-
-#: data/game.cfg:286
-msgid "The Eastern Invasion"
-msgstr "Východní invaze"
-
-#: data/game.cfg:290
-msgid ""
-"&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
-"royalguard.png,Royal Guard,(hardest)"
-msgstr ""
-"&human-spearman.png,Pěšák,(nejsnažší);*&human-swordman.png,Šermíř;&human-"
-"royalguard.png,Královská garda,(nejobtížnějsí)"
-
-#: data/game.cfg:296
-msgid "The Rise of Wesnoth"
-msgstr ""
-
-#: data/game.cfg:300
-msgid ""
-"&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;&noble-"
-"lord.png,Lord,(hardest)"
-msgstr ""
-"&noble-fighter.png,Bojovník,(nejsnažší);*&noble-commander.png,Velitel;&noble-"
-"lord.png,Lord,(nejobtížnějsí)"
-
-#: data/game.cfg:370
+#: data/game.cfg:319
 msgid "loyal"
 msgstr "věrný"
 
-#: data/game.cfg:378
+#: data/game.cfg:327
 msgid "strong"
 msgstr "silný"
 
-#: data/game.cfg:393
+#: data/game.cfg:342
 msgid "quick"
 msgstr "rychlý"
 
-#: data/game.cfg:407
+#: data/game.cfg:356
 msgid "intelligent"
 msgstr "chytrý"
 
-#: data/game.cfg:416
+#: data/game.cfg:365
 msgid "resilient"
 msgstr "houževnatý"
 
@@ -3921,6 +3861,16 @@ msgstr "Starý stromový muž"
 msgid "Elvish Archer"
 msgstr "Elfí lučištník"
 
+#: data/units/Elvish_Archer.cfg:18 data/units/Elvish_Archer.cfg:97
+msgid ""
+"Elvish Archers are trained from youth in archery, and so skilled in long-"
+"range combat. Able to fire many arrows quickly and accurately, these Archers "
+"make up a large portion of the Elvish military."
+msgstr ""
+"Elfští lučištníci byli cvičeni už od mládí ve střelbě a jsou zběhlí v boji "
+"na dálku. Díky tomu, že dokáží rychle a přesně vystřelit mnoho šípů, jsou "
+"hlavní součást elfské armády."
+
 #: data/units/Elvish_Avenger.cfg:3 data/units/Elvish_Avenger.cfg:76
 msgid "Elvish Avenger"
 msgstr "Elfí mstitel"
@@ -3929,6 +3879,18 @@ msgstr "Elfí mstitel"
 #: data/units/Elvish_Ranger.cfg:17 data/units/Elvish_Ranger.cfg:94
 msgid "ambush"
 msgstr "přepadení"
+
+#: data/units/Elvish_Avenger.cfg:20 data/units/Elvish_Avenger.cfg:93
+msgid ""
+"Elvish Avengers are extremely skillful and extremely quick, powerful in all "
+"forms of combat. Avengers are considered the best of all woodsmen in "
+"Wesnoth, and can ambush their foes in the forest, because they cannot be "
+"seen in the woods until just after they have attacked."
+msgstr ""
+"Elfští mstitelé jsou neobyčejně zruční a neobyčejně rychlí, silní ve všech "
+"způsobech boje. Mstitelé jsou považováni za nelepší zálesáky ve Wesnothu a "
+"dokáží přepadávat své nepřátele z lesa, protože v lese nemohou být spatřeni, "
+"pokud právě nezaútočili."
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -4046,6 +4008,18 @@ msgstr ""
 msgid "Elvish Marksman"
 msgstr "Elfí odstřelovač"
 
+#: data/units/Elvish_Marksman.cfg:18 data/units/Elvish_Marksman.cfg:96
+msgid ""
+"Elvish Marksman are expert in use of the bow. Their skill guarantees them a "
+"60% chance to hit enemies, even those hidden in difficult terrain. This "
+"great skill with the bow compensates for their lack of skill in melee combat "
+"and lesser speed."
+msgstr ""
+"Eflí odstřelovači jsou odborníci v používání luku. Jejich schopnosti jim "
+"zaručují 60% šanci zasáhnout protivníka, i když jsou ukryti v obtížném "
+"terénu. Skvělé zacházení s lukem jim vynahrazuje jejich nedostatky v boji "
+"zblízka a menší rychlost."
+
 #: data/units/Elvish_Marksman.cfg:37 data/units/Elvish_Marksman.cfg:115
 #: data/units/Elvish_Sharpshooter.cfg:38
 #: data/units/Elvish_Sharpshooter.cfg:117
@@ -4087,6 +4061,17 @@ msgstr ""
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
 msgid "Elvish Ranger"
 msgstr "Elfí hraničář"
+
+#: data/units/Elvish_Ranger.cfg:18 data/units/Elvish_Ranger.cfg:95
+msgid ""
+"Elvish Rangers are quick and powerful. Skilled in both short- and long-range "
+"combat, Rangers are truly all-round fighters. The best of all woodsmen, "
+"Rangers cannot be seen by enemies while they are in forest, unless they have "
+"just made an attack, or there are enemies adjacent to them."
+msgstr ""
+"Elfí hraničář je rychlý a silný. Hraničář je zkušený v boji zblízka i z "
+"dálky, je to opravdu všestranný bojovník. Hraničáři jsou nejlepší zálesáci, "
+"a dokud jsou v lese, tak je nepřítel nedokáže spatřit, dokud sami nezaútočí."
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -4135,6 +4120,17 @@ msgstr "zamotání"
 #: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
 msgid "Elvish Sharpshooter"
 msgstr "Elfí ostrostřelec"
+
+#: data/units/Elvish_Sharpshooter.cfg:18 data/units/Elvish_Sharpshooter.cfg:97
+msgid ""
+"The most elite archers in all of Wesnoth, Elvish Sharpshooters are "
+"incredibly accurate, guaranteed a 60% chance to hit when attacking, even "
+"when firing very quickly. Sharpshooters are excellent at picking off "
+"entrenched enemies."
+msgstr ""
+"Nejelitnější lučištníci ve Wesnothu, elfští ostrostřelci, jsou neuvěřitelně "
+"přesní, což jim zaručuje 60% šanci zasáhu, i když střílejí velice rychle. "
+"Ostrostřelci jsou vynikající k odstřelování opevněných nepřátel."
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "Elvish Shyde"
@@ -5865,11 +5861,11 @@ msgstr "%d. %m. %Y %H:%M"
 msgid "#(Invalid)"
 msgstr "#(Neplatné)"
 
-#: src/dialogs.cpp:365 src/game.cpp:924
+#: src/dialogs.cpp:365 src/game.cpp:931
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:367 src/game.cpp:971
+#: src/dialogs.cpp:367 src/game.cpp:978
 msgid "Multiplayer"
 msgstr "Hra více hráčů"
 
@@ -5889,7 +5885,7 @@ msgstr "Kolo"
 msgid "Scenario Start"
 msgstr "Začátek scénáře"
 
-#: src/dialogs.cpp:384 src/game.cpp:947
+#: src/dialogs.cpp:384 src/game.cpp:954
 msgid "Difficulty"
 msgstr "Obtížnost"
 
@@ -5992,27 +5988,27 @@ msgstr "neviditelný"
 msgid "Vera.ttf"
 msgstr "Bepa-Roman.ttf"
 
-#: src/game.cpp:136
+#: src/game.cpp:137
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Chceš uložit záznam této hry?"
 
-#: src/game.cpp:137 src/game.cpp:199 src/playturn.cpp:1391
+#: src/game.cpp:138 src/game.cpp:200 src/playturn.cpp:1391
 msgid "Name:"
 msgstr "Jméno:"
 
-#: src/game.cpp:145 src/game.cpp:206 src/playturn.cpp:1408
+#: src/game.cpp:146 src/game.cpp:207 src/playturn.cpp:1408
 msgid "The game could not be saved"
 msgstr "Hru se nepodařlo uložit"
 
-#: src/game.cpp:198
+#: src/game.cpp:199
 msgid "Do you want to save your game?"
 msgstr "Chceš uložit hru?"
 
-#: src/game.cpp:581
+#: src/game.cpp:587
 msgid "The Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
-#: src/game.cpp:801 src/multiplayer_connect.cpp:104
+#: src/game.cpp:807 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6020,64 +6016,64 @@ msgstr ""
 "Tato uložená pozice je z jiné verze této hry. Chceš se ji opravdu pokusit "
 "nahrát?"
 
-#: src/game.cpp:812 src/game.cpp:817 src/playlevel.cpp:533
+#: src/game.cpp:818 src/game.cpp:823 src/playlevel.cpp:533
 #: src/playlevel.cpp:747
 msgid "The file you have tried to load is corrupt"
 msgstr "Soubor, který se snažíš načíst, je poškozený."
 
-#: src/game.cpp:917
+#: src/game.cpp:924
 msgid "There are no campaigns available"
 msgstr "K dispozici nejsou žádná tažení"
 
-#: src/game.cpp:925
+#: src/game.cpp:932
 msgid "Choose the campaign you want to play:"
 msgstr "Vyber si, kterou hru chceš hrát:"
 
-#: src/game.cpp:948
+#: src/game.cpp:955
 msgid "Select difficulty level:"
 msgstr "Vyber si obtížnost:"
 
-#: src/game.cpp:966
+#: src/game.cpp:973
 msgid "Join Official Server"
 msgstr "Připoj se na oficiální server"
 
-#: src/game.cpp:966
+#: src/game.cpp:973
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Připoj se na oficiální herní server Wesnothu"
 
-#: src/game.cpp:967 src/multiplayer_lobby.cpp:157
+#: src/game.cpp:974 src/multiplayer_lobby.cpp:157
 msgid "Join Game"
 msgstr "Přidej se ke hře"
 
-#: src/game.cpp:967
+#: src/game.cpp:974
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:968
+#: src/game.cpp:975
 msgid "Host Multiplayer Game"
 msgstr "Hostitelská hra více hráčů"
 
-#: src/game.cpp:968
+#: src/game.cpp:975
 msgid "Host a game without using a server"
 msgstr ""
 
-#: src/game.cpp:971 src/multiplayer_client.cpp:269
+#: src/game.cpp:978 src/multiplayer_client.cpp:269
 msgid "Login"
 msgstr "Jméno"
 
-#: src/game.cpp:1051
+#: src/game.cpp:1058
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/game.cpp:1052
+#: src/game.cpp:1059
 msgid "Choose your preferred language"
 msgstr "Vyber si jazyk"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1144
 msgid "Could not initialize video. Exiting.\n"
 msgstr ""
 
-#: src/game.cpp:1139
+#: src/game.cpp:1146
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
@@ -7224,6 +7220,53 @@ msgstr "Smaž soubor"
 msgid "Deletion of the file failed."
 msgstr "Smazání souboru se nezdařilo."
 
+#~ msgid "Heir to the Throne"
+#~ msgstr "Dědic trůnu"
+
+#~ msgid ""
+#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
+#~ "champion.png,Champion,(hardest)"
+#~ msgstr ""
+#~ "&elvish-fighter.png,Bojovník,(nejsnažší);*&elvish-hero.png,Hrdina;&elvish-"
+#~ "champion.png,Přeborník,(nejobtížnějsí)"
+
+#~ msgid "The Dark Hordes"
+#~ msgstr "Temné hordy"
+
+#~ msgid ""
+#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
+#~ "&undead-lich.png,Dark Lord,(hardest)"
+#~ msgstr ""
+#~ "&undead-initiate.png,Učeň,(nejsnažší);*&undead-necromancer.png,Mistr;"
+#~ "&undead-lich.png,Temný pán,(nejobtížnějsí)"
+
+#~ msgid "Son of the Black Eye (chapter I)"
+#~ msgstr "Syn Černého Oka (kapitola I)"
+
+#~ msgid ""
+#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
+#~ "warlord.png,Warlord,(hardest)"
+#~ msgstr ""
+#~ "&orcish-grunt.png,Bručoun,(nejsnažší);*&orcish-warrior.png,Rváč;&orcish-"
+#~ "warlord.png,Válečník,(nejobtížnějsí)"
+
+#~ msgid "The Eastern Invasion"
+#~ msgstr "Východní invaze"
+
+#~ msgid ""
+#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
+#~ "&human-royalguard.png,Royal Guard,(hardest)"
+#~ msgstr ""
+#~ "&human-spearman.png,Pěšák,(nejsnažší);*&human-swordman.png,Šermíř;&human-"
+#~ "royalguard.png,Královská garda,(nejobtížnějsí)"
+
+#~ msgid ""
+#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
+#~ "&noble-lord.png,Lord,(hardest)"
+#~ msgstr ""
+#~ "&noble-fighter.png,Bojovník,(nejsnažší);*&noble-commander.png,Velitel;"
+#~ "&noble-lord.png,Lord,(nejobtížnějsí)"
+
 #~ msgid ""
 #~ "The video mode could not be changed. Your window manager must be set to "
 #~ "16 bits per pixel to run the game in windowed mode. Your display must "
@@ -7429,60 +7472,6 @@ msgstr "Smazání souboru se nezdařilo."
 
 #~ msgid "Let me have peace in Death! Donna I'll be there soo-"
 #~ msgstr "Nechte mne odpočívat v pokjoji. Paní, budu tam brzy..."
-
-#~ msgid ""
-#~ "Elvish Archers are trained from youth in archery, and so skilled in long-"
-#~ "range combat. Able to fire many arrows quickly and accurately, these "
-#~ "Archers make up a large portion of the Elvish military."
-#~ msgstr ""
-#~ "Elfští lučištníci byli cvičeni už od mládí ve střelbě a jsou zběhlí v "
-#~ "boji na dálku. Díky tomu, že dokáží rychle a přesně vystřelit mnoho šípů, "
-#~ "jsou hlavní součást elfské armády."
-
-#~ msgid ""
-#~ "Elvish Avengers are extremely skillful and extremely quick, powerful in "
-#~ "all forms of combat. Avengers are considered the best of all woodsmen in "
-#~ "Wesnoth, and can ambush their foes in the forest, because they cannot be "
-#~ "seen in the woods until just after they have attacked."
-#~ msgstr ""
-#~ "Elfští mstitelé jsou neobyčejně zruční a neobyčejně rychlí, silní ve "
-#~ "všech způsobech boje. Mstitelé jsou považováni za nelepší zálesáky ve "
-#~ "Wesnothu a dokáží přepadávat své nepřátele z lesa, protože v lese nemohou "
-#~ "být spatřeni, pokud právě nezaútočili."
-
-#~ msgid ""
-#~ "Elvish Marksman are expert in use of the bow. Their skill guarantees them "
-#~ "a 60% chance to hit enemies, even those hidden in difficult terrain. This "
-#~ "great skill with the bow compensates for their lack of skill in melee "
-#~ "combat and lesser speed."
-#~ msgstr ""
-#~ "Eflí odstřelovači jsou odborníci v používání luku. Jejich schopnosti jim "
-#~ "zaručují 60% šanci zasáhnout protivníka, i když jsou ukryti v obtížném "
-#~ "terénu. Skvělé zacházení s lukem jim vynahrazuje jejich nedostatky v boji "
-#~ "zblízka a menší rychlost."
-
-#~ msgid ""
-#~ "Elvish Rangers are quick and powerful. Skilled in both short- and long-"
-#~ "range combat, Rangers are truly all-round fighters. The best of all "
-#~ "woodsmen, Rangers cannot be seen by enemies while they are in forest, "
-#~ "unless they have just made an attack, or there are enemies adjacent to "
-#~ "them."
-#~ msgstr ""
-#~ "Elfí hraničář je rychlý a silný. Hraničář je zkušený v boji zblízka i z "
-#~ "dálky, je to opravdu všestranný bojovník. Hraničáři jsou nejlepší "
-#~ "zálesáci, a dokud jsou v lese, tak je nepřítel nedokáže spatřit, dokud "
-#~ "sami nezaútočí."
-
-#~ msgid ""
-#~ "The most elite archers in all of Wesnoth, Elvish Sharpshooters are "
-#~ "incredibly accurate, guaranteed a 60% chance to hit when attacking, even "
-#~ "when firing very quickly. Sharpshooters are excellent at picking off "
-#~ "entrenched enemies."
-#~ msgstr ""
-#~ "Nejelitnější lučištníci ve Wesnothu, elfští ostrostřelci, jsou "
-#~ "neuvěřitelně přesní, což jim zaručuje 60% šanci zasáhu, i když střílejí "
-#~ "velice rychle. Ostrostřelci jsou vynikající k odstřelování opevněných "
-#~ "nepřátel."
 
 #~ msgid "yes"
 #~ msgstr "Ano"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-11 23:01+0200\n"
+"POT-Creation-Date: 2004-09-12 17:19+0200\n"
 "PO-Revision-Date: 2004-09-05 19:06+0200\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -17,83 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/game.cfg:257
-msgid "Heir to the Throne"
-msgstr "L'héritier du trône"
-
-#: data/game.cfg:261
-msgid ""
-"&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-"champion.png,Champion,(hardest)"
-msgstr ""
-"&elvish-fighter.png,Guerrier (facile);*&elvish-hero.png,Héros;&elvish-"
-"champion.png,Champion (difficile)"
-
-#: data/game.cfg:267
-msgid "The Dark Hordes"
-msgstr "Les hordes sombres"
-
-#: data/game.cfg:271
-msgid ""
-"&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
-"&undead-lich.png,Dark Lord,(hardest)"
-msgstr ""
-"&undead-adept.png,Apprenti,(facile);*&undead-necromancer.png,Maître;&undead-"
-"lich.png,Seigneur des Forces Obscures,(difficile)"
-
-#: data/game.cfg:276
-msgid "Son of the Black Eye (chapter I)"
-msgstr "Le Fils De l'Œil Noir (chapitre I)"
-
-#: data/game.cfg:280
-msgid ""
-"&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
-"warlord.png,Warlord,(hardest)"
-msgstr ""
-"&orcish-grunt.png,Grognard,(facile);*&orcish-warrior.png,Guerrier;&orcish-"
-"warlord.png,Seigneur de guerre orc,(difficile)"
-
-#: data/game.cfg:286
-msgid "The Eastern Invasion"
-msgstr "L'invasion orientale"
-
-#: data/game.cfg:290
-msgid ""
-"&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
-"royalguard.png,Royal Guard,(hardest)"
-msgstr ""
-"&human-spearman.png,Lancier,(facile);*&human-swordman.png,Épéiste;&human-"
-"royalguard.png,Garde royal,(difficile)"
-
-#: data/game.cfg:296
-msgid "The Rise of Wesnoth"
-msgstr "L'Essor de Wesnoth"
-
-#: data/game.cfg:300
-msgid ""
-"&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;&noble-"
-"lord.png,Lord,(hardest)"
-msgstr ""
-"&noble-fighter.png,Guerrier,(facile);*&noble-commander.png,Commandant;&noble-"
-"lord.png,Seigneur,(difficile)"
-
-#: data/game.cfg:370
+#: data/game.cfg:319
 msgid "loyal"
 msgstr "loyal"
 
-#: data/game.cfg:378
+#: data/game.cfg:327
 msgid "strong"
 msgstr "fort"
 
-#: data/game.cfg:393
+#: data/game.cfg:342
 msgid "quick"
 msgstr "rapide"
 
-#: data/game.cfg:407
+#: data/game.cfg:356
 msgid "intelligent"
 msgstr "intelligent"
 
-#: data/game.cfg:416
+#: data/game.cfg:365
 msgid "resilient"
 msgstr "résistant"
 
@@ -4150,6 +4090,17 @@ msgstr "Wose vénérable"
 msgid "Elvish Archer"
 msgstr "Archer elfe"
 
+#: data/units/Elvish_Archer.cfg:18 data/units/Elvish_Archer.cfg:97
+msgid ""
+"Elvish Archers are trained from youth in archery, and so skilled in long-"
+"range combat. Able to fire many arrows quickly and accurately, these Archers "
+"make up a large portion of the Elvish military."
+msgstr ""
+"Entraîné depuis son enfance au maniement de l'arc, l'Archer elfe est habile "
+"dans les combats à distance. Étant capable de tirer plusieurs flèches "
+"rapidement et avec précision, l'Archer elfe compose une grande partie de "
+"l'armée elfe."
+
 #: data/units/Elvish_Avenger.cfg:3 data/units/Elvish_Avenger.cfg:76
 msgid "Elvish Avenger"
 msgstr "Vengeur elfe"
@@ -4158,6 +4109,18 @@ msgstr "Vengeur elfe"
 #: data/units/Elvish_Ranger.cfg:17 data/units/Elvish_Ranger.cfg:94
 msgid "ambush"
 msgstr "embuscade"
+
+#: data/units/Elvish_Avenger.cfg:20 data/units/Elvish_Avenger.cfg:93
+msgid ""
+"Elvish Avengers are extremely skillful and extremely quick, powerful in all "
+"forms of combat. Avengers are considered the best of all woodsmen in "
+"Wesnoth, and can ambush their foes in the forest, because they cannot be "
+"seen in the woods until just after they have attacked."
+msgstr ""
+"Très habile et extrêmement rapide, le vengeur elfe est bon dans toute forme "
+"de combat. Le vengeur est considéré comme le meilleur homme des bois de "
+"Wesnoth. Dans les forêts il peut tendre des embuscades à ses ennemis, "
+"restant invisible jusqu'à ce qu'il attaque."
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -4285,6 +4248,19 @@ msgstr ""
 msgid "Elvish Marksman"
 msgstr "Tireur d'élite elfe"
 
+#: data/units/Elvish_Marksman.cfg:18 data/units/Elvish_Marksman.cfg:96
+msgid ""
+"Elvish Marksman are expert in use of the bow. Their skill guarantees them a "
+"60% chance to hit enemies, even those hidden in difficult terrain. This "
+"great skill with the bow compensates for their lack of skill in melee combat "
+"and lesser speed."
+msgstr ""
+"le Tireur d'élite elfe est un expert dans le maniement de l'arc. Ses "
+"capacités lui garantissent un taux de réussite de 60% de touche durant les "
+"attaques, même en terrain difficile. Son manque d'habileté en combat "
+"rapproché, et sa vitesse de déplacement moindre est compensée par sa grande "
+"dextérité à l'arc."
+
 #: data/units/Elvish_Marksman.cfg:37 data/units/Elvish_Marksman.cfg:115
 #: data/units/Elvish_Sharpshooter.cfg:38
 #: data/units/Elvish_Sharpshooter.cfg:117
@@ -4331,6 +4307,19 @@ msgstr ""
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
 msgid "Elvish Ranger"
 msgstr "Rôdeur elfe"
+
+#: data/units/Elvish_Ranger.cfg:18 data/units/Elvish_Ranger.cfg:95
+msgid ""
+"Elvish Rangers are quick and powerful. Skilled in both short- and long-range "
+"combat, Rangers are truly all-round fighters. The best of all woodsmen, "
+"Rangers cannot be seen by enemies while they are in forest, unless they have "
+"just made an attack, or there are enemies adjacent to them."
+msgstr ""
+"Le rôdeur elfe est rapide et puissant. Habile aussi bien en combat rapproché "
+"qu'à distance, le rôdeur elfe est réellement un guerrier complet. Les "
+"rôdeurs, les meilleurs parmi les hommes des bois, ne peuvent être vus par "
+"les ennemis tant qu'ils sont en forêt, sauf s'ils viennent juste d'attaquer, "
+"ou si des ennemis leur sont adjacents."
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -4384,6 +4373,18 @@ msgstr "enchevêtrement"
 #: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
 msgid "Elvish Sharpshooter"
 msgstr "Archer d'élite elfe"
+
+#: data/units/Elvish_Sharpshooter.cfg:18 data/units/Elvish_Sharpshooter.cfg:97
+msgid ""
+"The most elite archers in all of Wesnoth, Elvish Sharpshooters are "
+"incredibly accurate, guaranteed a 60% chance to hit when attacking, even "
+"when firing very quickly. Sharpshooters are excellent at picking off "
+"entrenched enemies."
+msgstr ""
+"Le meilleur des archers d'élite de tout Wesnoth, les Archers d'élite elfes "
+"sont incroyablement précis ; il est garanti qu'ils ont 60% de changes de "
+"toucher, même en tirant très rapidement. Les Archers d'élite elfes sont "
+"excellents pour éliminer des ennemis retranchés."
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "Elvish Shyde"
@@ -6344,11 +6345,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Invalide)"
 
-#: src/dialogs.cpp:365 src/game.cpp:924
+#: src/dialogs.cpp:365 src/game.cpp:931
 msgid "Campaign"
 msgstr "Campagne"
 
-#: src/dialogs.cpp:367 src/game.cpp:971
+#: src/dialogs.cpp:367 src/game.cpp:978
 msgid "Multiplayer"
 msgstr "Multi-joueurs"
 
@@ -6368,7 +6369,7 @@ msgstr "Tour"
 msgid "Scenario Start"
 msgstr "Commencer le scénario"
 
-#: src/dialogs.cpp:384 src/game.cpp:947
+#: src/dialogs.cpp:384 src/game.cpp:954
 msgid "Difficulty"
 msgstr "Difficulté"
 
@@ -6472,27 +6473,27 @@ msgstr "invisible"
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
-#: src/game.cpp:136
+#: src/game.cpp:137
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Voulez-vous sauvegarder un replay de ce scénario ?"
 
-#: src/game.cpp:137 src/game.cpp:199 src/playturn.cpp:1391
+#: src/game.cpp:138 src/game.cpp:200 src/playturn.cpp:1391
 msgid "Name:"
 msgstr "Nom :"
 
-#: src/game.cpp:145 src/game.cpp:206 src/playturn.cpp:1408
+#: src/game.cpp:146 src/game.cpp:207 src/playturn.cpp:1408
 msgid "The game could not be saved"
 msgstr "Le jeu ne peut pas être sauvegardé"
 
-#: src/game.cpp:198
+#: src/game.cpp:199
 msgid "Do you want to save your game?"
 msgstr "Voulez-vous sauvegarder votre jeu ?"
 
-#: src/game.cpp:581
+#: src/game.cpp:587
 msgid "The Battle for Wesnoth"
 msgstr "La bataille de Wesnoth"
 
-#: src/game.cpp:801 src/multiplayer_connect.cpp:104
+#: src/game.cpp:807 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6500,64 +6501,64 @@ msgstr ""
 "Cette sauvegarde a été enregistrée sous une version différente du jeu. "
 "Voulez-vous essayer de la charger ?"
 
-#: src/game.cpp:812 src/game.cpp:817 src/playlevel.cpp:533
+#: src/game.cpp:818 src/game.cpp:823 src/playlevel.cpp:533
 #: src/playlevel.cpp:747
 msgid "The file you have tried to load is corrupt"
 msgstr "Le fichier sauvegardé est corrompu"
 
-#: src/game.cpp:917
+#: src/game.cpp:924
 msgid "There are no campaigns available"
 msgstr "Il n'y a pas de campagne disponible"
 
-#: src/game.cpp:925
+#: src/game.cpp:932
 msgid "Choose the campaign you want to play:"
 msgstr "Choisissez la campagne à laquelle vous souhaitez jouer :"
 
-#: src/game.cpp:948
+#: src/game.cpp:955
 msgid "Select difficulty level:"
 msgstr "Choisissez le niveau de difficulté :"
 
-#: src/game.cpp:966
+#: src/game.cpp:973
 msgid "Join Official Server"
 msgstr "Se connecter au serveur officiel"
 
-#: src/game.cpp:966
+#: src/game.cpp:973
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Se connecter sur le serveur multi-joueur officiel de Wesnoth"
 
-#: src/game.cpp:967 src/multiplayer_lobby.cpp:157
+#: src/game.cpp:974 src/multiplayer_lobby.cpp:157
 msgid "Join Game"
 msgstr "Se connecter à une partie"
 
-#: src/game.cpp:967
+#: src/game.cpp:974
 msgid "Join a server or hosted game"
 msgstr "Se connecter à un serveur ou une partie hébergée"
 
-#: src/game.cpp:968
+#: src/game.cpp:975
 msgid "Host Multiplayer Game"
 msgstr "Démarrer un serveur de jeu multi-joueurs"
 
-#: src/game.cpp:968
+#: src/game.cpp:975
 msgid "Host a game without using a server"
 msgstr "Héberger un jeu sans utiliser de serveur"
 
-#: src/game.cpp:971 src/multiplayer_client.cpp:269
+#: src/game.cpp:978 src/multiplayer_client.cpp:269
 msgid "Login"
 msgstr "Connexion"
 
-#: src/game.cpp:1051
+#: src/game.cpp:1058
 msgid "Language"
 msgstr "Langue"
 
-#: src/game.cpp:1052
+#: src/game.cpp:1059
 msgid "Choose your preferred language"
 msgstr "Choisissez votre langue"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1144
 msgid "Could not initialize video. Exiting.\n"
 msgstr "Impossible d'initialiser l'affichage. Arrêt du programme.\n"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1146
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr "Impossible d'initialiser les polices. Arrêt du programme.\n"
 
@@ -7722,6 +7723,56 @@ msgstr "Supprimer le fichier"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
+
+#~ msgid "Heir to the Throne"
+#~ msgstr "L'héritier du trône"
+
+#~ msgid ""
+#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
+#~ "champion.png,Champion,(hardest)"
+#~ msgstr ""
+#~ "&elvish-fighter.png,Guerrier (facile);*&elvish-hero.png,Héros;&elvish-"
+#~ "champion.png,Champion (difficile)"
+
+#~ msgid "The Dark Hordes"
+#~ msgstr "Les hordes sombres"
+
+#~ msgid ""
+#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
+#~ "&undead-lich.png,Dark Lord,(hardest)"
+#~ msgstr ""
+#~ "&undead-adept.png,Apprenti,(facile);*&undead-necromancer.png,Maître;"
+#~ "&undead-lich.png,Seigneur des Forces Obscures,(difficile)"
+
+#~ msgid "Son of the Black Eye (chapter I)"
+#~ msgstr "Le Fils De l'Œil Noir (chapitre I)"
+
+#~ msgid ""
+#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
+#~ "warlord.png,Warlord,(hardest)"
+#~ msgstr ""
+#~ "&orcish-grunt.png,Grognard,(facile);*&orcish-warrior.png,Guerrier;&orcish-"
+#~ "warlord.png,Seigneur de guerre orc,(difficile)"
+
+#~ msgid "The Eastern Invasion"
+#~ msgstr "L'invasion orientale"
+
+#~ msgid ""
+#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
+#~ "&human-royalguard.png,Royal Guard,(hardest)"
+#~ msgstr ""
+#~ "&human-spearman.png,Lancier,(facile);*&human-swordman.png,Épéiste;&human-"
+#~ "royalguard.png,Garde royal,(difficile)"
+
+#~ msgid "The Rise of Wesnoth"
+#~ msgstr "L'Essor de Wesnoth"
+
+#~ msgid ""
+#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
+#~ "&noble-lord.png,Lord,(hardest)"
+#~ msgstr ""
+#~ "&noble-fighter.png,Guerrier,(facile);*&noble-commander.png,Commandant;"
+#~ "&noble-lord.png,Seigneur,(difficile)"
 
 # à quoi correspondent ces trois chaînes ?
 #~ msgid "{END_MESSAGE}"
@@ -14873,63 +14924,6 @@ msgstr "La suppression du fichier a échoué."
 
 #~ msgid "game name suffix^'s game"
 #~ msgstr " "
-
-#~ msgid ""
-#~ "Elvish Archers are trained from youth in archery, and so skilled in long-"
-#~ "range combat. Able to fire many arrows quickly and accurately, these "
-#~ "Archers make up a large portion of the Elvish military."
-#~ msgstr ""
-#~ "Entraîné depuis son enfance au maniement de l'arc, l'Archer elfe est "
-#~ "habile dans les combats à distance. Étant capable de tirer plusieurs "
-#~ "flèches rapidement et avec précision, l'Archer elfe compose une grande "
-#~ "partie de l'armée elfe."
-
-#~ msgid ""
-#~ "Elvish Avengers are extremely skillful and extremely quick, powerful in "
-#~ "all forms of combat. Avengers are considered the best of all woodsmen in "
-#~ "Wesnoth, and can ambush their foes in the forest, because they cannot be "
-#~ "seen in the woods until just after they have attacked."
-#~ msgstr ""
-#~ "Très habile et extrêmement rapide, le vengeur elfe est bon dans toute "
-#~ "forme de combat. Le vengeur est considéré comme le meilleur homme des "
-#~ "bois de Wesnoth. Dans les forêts il peut tendre des embuscades à ses "
-#~ "ennemis, restant invisible jusqu'à ce qu'il attaque."
-
-#~ msgid ""
-#~ "Elvish Marksman are expert in use of the bow. Their skill guarantees them "
-#~ "a 60% chance to hit enemies, even those hidden in difficult terrain. This "
-#~ "great skill with the bow compensates for their lack of skill in melee "
-#~ "combat and lesser speed."
-#~ msgstr ""
-#~ "le Tireur d'élite elfe est un expert dans le maniement de l'arc. Ses "
-#~ "capacités lui garantissent un taux de réussite de 60% de touche durant "
-#~ "les attaques, même en terrain difficile. Son manque d'habileté en combat "
-#~ "rapproché, et sa vitesse de déplacement moindre est compensée par sa "
-#~ "grande dextérité à l'arc."
-
-#~ msgid ""
-#~ "Elvish Rangers are quick and powerful. Skilled in both short- and long-"
-#~ "range combat, Rangers are truly all-round fighters. The best of all "
-#~ "woodsmen, Rangers cannot be seen by enemies while they are in forest, "
-#~ "unless they have just made an attack, or there are enemies adjacent to "
-#~ "them."
-#~ msgstr ""
-#~ "Le rôdeur elfe est rapide et puissant. Habile aussi bien en combat "
-#~ "rapproché qu'à distance, le rôdeur elfe est réellement un guerrier "
-#~ "complet. Les rôdeurs, les meilleurs parmi les hommes des bois, ne peuvent "
-#~ "être vus par les ennemis tant qu'ils sont en forêt, sauf s'ils viennent "
-#~ "juste d'attaquer, ou si des ennemis leur sont adjacents."
-
-#~ msgid ""
-#~ "The most elite archers in all of Wesnoth, Elvish Sharpshooters are "
-#~ "incredibly accurate, guaranteed a 60% chance to hit when attacking, even "
-#~ "when firing very quickly. Sharpshooters are excellent at picking off "
-#~ "entrenched enemies."
-#~ msgstr ""
-#~ "Le meilleur des archers d'élite de tout Wesnoth, les Archers d'élite "
-#~ "elfes sont incroyablement précis ; il est garanti qu'ils ont 60% de "
-#~ "changes de toucher, même en tirant très rapidement. Les Archers d'élite "
-#~ "elfes sont excellents pour éliminer des ennemis retranchés."
 
 #~ msgid "Start Game!"
 #~ msgstr "Démarrer le jeu !"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-11 23:01+0200\n"
+"POT-Creation-Date: 2004-09-12 17:19+0200\n"
 "PO-Revision-Date: 2004-09-11 12:11+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
@@ -17,83 +17,23 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: data/game.cfg:257
-msgid "Heir to the Throne"
-msgstr "Der Thronerbe"
-
-#: data/game.cfg:261
-msgid ""
-"&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-"champion.png,Champion,(hardest)"
-msgstr ""
-"&elvish-fighter.png,Krieger,(einfach);*&elvish-hero.png,Held,(mittel);"
-"&elvish-champion.png,Schwertmeister,(schwierig)"
-
-#: data/game.cfg:267
-msgid "The Dark Hordes"
-msgstr "Die dunklen Horden"
-
-#: data/game.cfg:271
-msgid ""
-"&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
-"&undead-lich.png,Dark Lord,(hardest)"
-msgstr ""
-"&undead-initiate.png,Lehrling,(leicht);*&undead-necromancer.png,Meister,"
-"(mittel);&undead-lich.png,Dunkler Fürst,(schwierig)"
-
-#: data/game.cfg:276
-msgid "Son of the Black Eye (chapter I)"
-msgstr "Schwarzauges Sohn (Kapitel I)"
-
-#: data/game.cfg:280
-msgid ""
-"&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
-"warlord.png,Warlord,(hardest)"
-msgstr ""
-"&orcish-grunt.png,Grunzer,(leicht);*&orcish-warrior.png,Krieger,(mittel);"
-"&orcish-warlord.png,Kriegsherr,(schwierig)"
-
-#: data/game.cfg:286
-msgid "The Eastern Invasion"
-msgstr "Die Ost-Invasion"
-
-#: data/game.cfg:290
-msgid ""
-"&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
-"royalguard.png,Royal Guard,(hardest)"
-msgstr ""
-"&human-spearman.png,Speerträger,(leicht);*&human-swordman.png,Schwertkämpfer,"
-"(mittel);&human-royalguard.png,Leibgardist,(schwierig)"
-
-#: data/game.cfg:296
-msgid "The Rise of Wesnoth"
-msgstr "Der Aufstieg Wesnoths"
-
-#: data/game.cfg:300
-msgid ""
-"&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;&noble-"
-"lord.png,Lord,(hardest)"
-msgstr ""
-"&noble-fighter.png,Krieger,(leicht);*&noble-commander.png,Kommandant,"
-"(mittel);&noble-lord.png,Baron,(schwierig)"
-
-#: data/game.cfg:370
+#: data/game.cfg:319
 msgid "loyal"
 msgstr "loyal"
 
-#: data/game.cfg:378
+#: data/game.cfg:327
 msgid "strong"
 msgstr "kräftig"
 
-#: data/game.cfg:393
+#: data/game.cfg:342
 msgid "quick"
 msgstr "schnell"
 
-#: data/game.cfg:407
+#: data/game.cfg:356
 msgid "intelligent"
 msgstr "intelligent"
 
-#: data/game.cfg:416
+#: data/game.cfg:365
 msgid "resilient"
 msgstr "robust"
 
@@ -3515,6 +3455,13 @@ msgstr ""
 msgid "Elvish Archer"
 msgstr ""
 
+#: data/units/Elvish_Archer.cfg:18 data/units/Elvish_Archer.cfg:97
+msgid ""
+"Elvish Archers are trained from youth in archery, and so skilled in long-"
+"range combat. Able to fire many arrows quickly and accurately, these Archers "
+"make up a large portion of the Elvish military."
+msgstr ""
+
 #: data/units/Elvish_Avenger.cfg:3 data/units/Elvish_Avenger.cfg:76
 msgid "Elvish Avenger"
 msgstr ""
@@ -3522,6 +3469,14 @@ msgstr ""
 #: data/units/Elvish_Avenger.cfg:18 data/units/Elvish_Avenger.cfg:91
 #: data/units/Elvish_Ranger.cfg:17 data/units/Elvish_Ranger.cfg:94
 msgid "ambush"
+msgstr ""
+
+#: data/units/Elvish_Avenger.cfg:20 data/units/Elvish_Avenger.cfg:93
+msgid ""
+"Elvish Avengers are extremely skillful and extremely quick, powerful in all "
+"forms of combat. Avengers are considered the best of all woodsmen in "
+"Wesnoth, and can ambush their foes in the forest, because they cannot be "
+"seen in the woods until just after they have attacked."
 msgstr ""
 
 #: data/units/Elvish_Captain.cfg:3
@@ -3624,6 +3579,14 @@ msgstr ""
 msgid "Elvish Marksman"
 msgstr ""
 
+#: data/units/Elvish_Marksman.cfg:18 data/units/Elvish_Marksman.cfg:96
+msgid ""
+"Elvish Marksman are expert in use of the bow. Their skill guarantees them a "
+"60% chance to hit enemies, even those hidden in difficult terrain. This "
+"great skill with the bow compensates for their lack of skill in melee combat "
+"and lesser speed."
+msgstr ""
+
 #: data/units/Elvish_Marksman.cfg:37 data/units/Elvish_Marksman.cfg:115
 #: data/units/Elvish_Sharpshooter.cfg:38
 #: data/units/Elvish_Sharpshooter.cfg:117
@@ -3661,6 +3624,14 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
 msgid "Elvish Ranger"
+msgstr ""
+
+#: data/units/Elvish_Ranger.cfg:18 data/units/Elvish_Ranger.cfg:95
+msgid ""
+"Elvish Rangers are quick and powerful. Skilled in both short- and long-range "
+"combat, Rangers are truly all-round fighters. The best of all woodsmen, "
+"Rangers cannot be seen by enemies while they are in forest, unless they have "
+"just made an attack, or there are enemies adjacent to them."
 msgstr ""
 
 #: data/units/Elvish_Rider.cfg:3
@@ -3704,6 +3675,14 @@ msgstr "Verstrickung"
 
 #: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
 msgid "Elvish Sharpshooter"
+msgstr ""
+
+#: data/units/Elvish_Sharpshooter.cfg:18 data/units/Elvish_Sharpshooter.cfg:97
+msgid ""
+"The most elite archers in all of Wesnoth, Elvish Sharpshooters are "
+"incredibly accurate, guaranteed a 60% chance to hit when attacking, even "
+"when firing very quickly. Sharpshooters are excellent at picking off "
+"entrenched enemies."
 msgstr ""
 
 #: data/units/Elvish_Shyde.cfg:3
@@ -5385,11 +5364,11 @@ msgstr "%a %d %b %H:%M %Y"
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:365 src/game.cpp:924
+#: src/dialogs.cpp:365 src/game.cpp:931
 msgid "Campaign"
 msgstr "Kampagne"
 
-#: src/dialogs.cpp:367 src/game.cpp:971
+#: src/dialogs.cpp:367 src/game.cpp:978
 msgid "Multiplayer"
 msgstr "Mehrspieler"
 
@@ -5409,7 +5388,7 @@ msgstr "Runde"
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:384 src/game.cpp:947
+#: src/dialogs.cpp:384 src/game.cpp:954
 msgid "Difficulty"
 msgstr "Schwierigkeitsgrad"
 
@@ -5506,27 +5485,27 @@ msgstr ""
 msgid "Vera.ttf"
 msgstr ""
 
-#: src/game.cpp:136
+#: src/game.cpp:137
 msgid "Do you want to save a replay of this scenario?"
 msgstr ""
 
-#: src/game.cpp:137 src/game.cpp:199 src/playturn.cpp:1391
+#: src/game.cpp:138 src/game.cpp:200 src/playturn.cpp:1391
 msgid "Name:"
 msgstr "Name:"
 
-#: src/game.cpp:145 src/game.cpp:206 src/playturn.cpp:1408
+#: src/game.cpp:146 src/game.cpp:207 src/playturn.cpp:1408
 msgid "The game could not be saved"
 msgstr ""
 
-#: src/game.cpp:198
+#: src/game.cpp:199
 msgid "Do you want to save your game?"
 msgstr "Möchtet Ihr Euren Spielstand abspeichern?"
 
-#: src/game.cpp:581
+#: src/game.cpp:587
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:801 src/multiplayer_connect.cpp:104
+#: src/game.cpp:807 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -5534,64 +5513,64 @@ msgstr ""
 "Dieser Spielstand stammt aus einer früheren Version. Möchtet Ihr den "
 "Spielstand laden?"
 
-#: src/game.cpp:812 src/game.cpp:817 src/playlevel.cpp:533
+#: src/game.cpp:818 src/game.cpp:823 src/playlevel.cpp:533
 #: src/playlevel.cpp:747
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/game.cpp:917
+#: src/game.cpp:924
 msgid "There are no campaigns available"
 msgstr "Es sind keine Kampagnen verfügabr"
 
-#: src/game.cpp:925
+#: src/game.cpp:932
 msgid "Choose the campaign you want to play:"
 msgstr "Wählt die Kampagne, die Ihr spielen wollt:"
 
-#: src/game.cpp:948
+#: src/game.cpp:955
 msgid "Select difficulty level:"
 msgstr "Schwierigkeitsgrad auswählen:"
 
-#: src/game.cpp:966
+#: src/game.cpp:973
 msgid "Join Official Server"
 msgstr "Offiziellem Server beitreten"
 
-#: src/game.cpp:966
+#: src/game.cpp:973
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Dem offiziellen Wesnoth Server beitreten"
 
-#: src/game.cpp:967 src/multiplayer_lobby.cpp:157
+#: src/game.cpp:974 src/multiplayer_lobby.cpp:157
 msgid "Join Game"
 msgstr "Spiel beitreten"
 
-#: src/game.cpp:967
+#: src/game.cpp:974
 msgid "Join a server or hosted game"
 msgstr "Einem Server oder einer Mehrspielerpartie beitreten"
 
-#: src/game.cpp:968
+#: src/game.cpp:975
 msgid "Host Multiplayer Game"
 msgstr "Mehrspielerpartie eröffnen"
 
-#: src/game.cpp:968
+#: src/game.cpp:975
 msgid "Host a game without using a server"
 msgstr "Eine Mehrspielerpartie ohne Zuhilfenahme eines Servers eröffnen"
 
-#: src/game.cpp:971 src/multiplayer_client.cpp:269
+#: src/game.cpp:978 src/multiplayer_client.cpp:269
 msgid "Login"
 msgstr "Euer Name"
 
-#: src/game.cpp:1051
+#: src/game.cpp:1058
 msgid "Language"
 msgstr "Sprache"
 
-#: src/game.cpp:1052
+#: src/game.cpp:1059
 msgid "Choose your preferred language"
 msgstr "Wählt die gewünschte Sprache"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1144
 msgid "Could not initialize video. Exiting.\n"
 msgstr ""
 
-#: src/game.cpp:1139
+#: src/game.cpp:1146
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
@@ -6732,3 +6711,53 @@ msgstr ""
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr ""
+
+#~ msgid "Heir to the Throne"
+#~ msgstr "Der Thronerbe"
+
+#~ msgid ""
+#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
+#~ "champion.png,Champion,(hardest)"
+#~ msgstr ""
+#~ "&elvish-fighter.png,Krieger,(einfach);*&elvish-hero.png,Held,(mittel);"
+#~ "&elvish-champion.png,Schwertmeister,(schwierig)"
+
+#~ msgid "The Dark Hordes"
+#~ msgstr "Die dunklen Horden"
+
+#~ msgid ""
+#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
+#~ "&undead-lich.png,Dark Lord,(hardest)"
+#~ msgstr ""
+#~ "&undead-initiate.png,Lehrling,(leicht);*&undead-necromancer.png,Meister,"
+#~ "(mittel);&undead-lich.png,Dunkler Fürst,(schwierig)"
+
+#~ msgid "Son of the Black Eye (chapter I)"
+#~ msgstr "Schwarzauges Sohn (Kapitel I)"
+
+#~ msgid ""
+#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
+#~ "warlord.png,Warlord,(hardest)"
+#~ msgstr ""
+#~ "&orcish-grunt.png,Grunzer,(leicht);*&orcish-warrior.png,Krieger,(mittel);"
+#~ "&orcish-warlord.png,Kriegsherr,(schwierig)"
+
+#~ msgid "The Eastern Invasion"
+#~ msgstr "Die Ost-Invasion"
+
+#~ msgid ""
+#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
+#~ "&human-royalguard.png,Royal Guard,(hardest)"
+#~ msgstr ""
+#~ "&human-spearman.png,Speerträger,(leicht);*&human-swordman.png,"
+#~ "Schwertkämpfer,(mittel);&human-royalguard.png,Leibgardist,(schwierig)"
+
+#~ msgid "The Rise of Wesnoth"
+#~ msgstr "Der Aufstieg Wesnoths"
+
+#~ msgid ""
+#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
+#~ "&noble-lord.png,Lord,(hardest)"
+#~ msgstr ""
+#~ "&noble-fighter.png,Krieger,(leicht);*&noble-commander.png,Kommandant,"
+#~ "(mittel);&noble-lord.png,Baron,(schwierig)"
