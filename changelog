@@ -59,10 +59,13 @@ Version 0.7.6:
  * fixed pressing escape key not closing dialogs which had only 'ok' button
  * fixed observers getting victory/defeat message at the end of the game
  * fixed statistics not working correctly when loading with replay
+ * fixed screen menu flickering when dialog is cancelled
+ * fixed negative numbers not displaying minus in front of them
  * fix to preprocessor
  * fixed some compile warnings
  * various improvements to wesnothd
  * relocated 'Heir to the Throne' scenarios to data/scenarios/Heir_To_The_Throne/
+ * relocated 'The Dark Hordes' scenarios to data/scenarios/The_Dark_Hordes/
  * added ability to remove tiles from the border cache
  * added definitions of new pure virtual methods in hotkey.hpp
  * added wstring_to_string and string_to_wstring routines in language.cpp, which convert strings according to the current charset()
