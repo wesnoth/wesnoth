@@ -198,10 +198,11 @@ std::vector<std::string> get_text() {
  	text.push_back("-   wint3r");
  	text.push_back("+ ");
  
-  	text.push_back("+Past Contributors");
+  	text.push_back("+Contributors");
  	text.push_back("-   edge");
  	text.push_back("-   Frédéric Wagner");
  	text.push_back("-   Jan Zvánovec (jaz)");
+ 	text.push_back("-   Maksim Orlovich (SadEagle)");
  	text.push_back("+ ");
 	return text;
 }
