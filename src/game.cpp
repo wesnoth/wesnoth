@@ -1168,6 +1168,12 @@ void game_controller::download_campaigns()
 
 		unarchive_campaign(cfg);
 
+		// when using zipios, force a reread zip and directory indices
+		if (!filesystem_init()) {
+			gui::show_error_message(disp(), _("Cannot rescan the filesystem"));
+			return;
+		}
+
 		//force a reload of configuration information
 		const bool old_cache = use_caching_;
 		use_caching_ = false;
