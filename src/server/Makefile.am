@@ -8,7 +8,6 @@ wesnothd_SOURCES = game.cpp \
 		   player.cpp \
 		   server.cpp \
 		   variable.cpp \
-		   ../builder.cpp \
 		   ../config.cpp \
 		   ../filesystem.cpp \
 		   ../game_config.cpp \
@@ -17,7 +16,6 @@ wesnothd_SOURCES = game.cpp \
 		   game.hpp \
 		   ../game_events.hpp \
 		   player.hpp \
-		   ../builder.hpp \
 		   ../config.hpp \
 		   ../filesystem.hpp \
 		   ../game_config.hpp \

@@ -1,9 +1,15 @@
 CVS HEAD:
+ * added and improved unit images and castle images
  * new units:
    * Lizardman
  * updated translations:
    * catalan
+   * french
  * fixed victory_when_enemies_defeated attribute wasn't serialized properly
+ * fixed statistics showing incorrectly on all but scenario 1
+ * fixed infliced damage labels being not always displayed
+ * fixed strange name-endings in name generator
+ * added fixes for OSX from Sithrandel
  * autotools signed char detection fix, now it uses C++ compiler
 
 Version 0.7.3:
