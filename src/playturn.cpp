@@ -2743,11 +2743,10 @@ void turn_info::tab_textbox()
 	switch(textbox_.mode) {
 	case floating_textbox::TEXTBOX_MESSAGE:
 	{
-		std::cerr << "Tab pressed in active textbox" << std::endl;
 		std::string text = textbox_.box->text();
-		std::cerr << "Current text: " << text << std::endl;
 		std::string semiword;
-	
+		bool beginning;
+
 		const size_t last_space = text.rfind(" ");
 
 		//if last character is a space return
@@ -2756,12 +2755,13 @@ void turn_info::tab_textbox()
 		}
 
 		if(last_space == -1) {
+			beginning = true;
 			semiword = text;	
 		}else{
+			beginning = false;
 			semiword.assign(text,last_space+1,text.size());
 		}
 
-		std::cerr << "Semiword: " << semiword << std::endl;
 		std::string guess;
 
 		for(size_t n = 0; n != teams_.size(); ++n) {
@@ -2787,10 +2787,9 @@ void turn_info::tab_textbox()
 			}
 		}
 
-		std::cerr << "Guess: " << guess << std::endl;
 		if(guess.size() != 0) {
-			text.replace(last_space+1, semiword.size(), guess);
-			std::cerr << "Replaced text: " << text << std::endl;
+			std::string add = beginning ? ": " : " ";
+			text.replace(last_space+1, semiword.size(), guess + add);
 			textbox_.box->set_text(text);
 		}
 		break;
