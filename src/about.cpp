@@ -53,6 +53,7 @@ std::vector<std::string> get_text() {
 		_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   Cyril Bouthors (CyrilB)",
+		"-   Guillaume Melquiond (silene)",
 		"-   Isaac Clerencia",
 		"-   John B. Messerly",
 		"-   Justin Zaun (jzaun)",
@@ -69,6 +70,7 @@ std::vector<std::string> get_text() {
 
 		_("+Artwork and graphics designers"),
 		"-   Andrew James Patterson (Kamahawk)",
+		"-   antwerp",
 		"-   Christophe Anjard",
 		"-   Diego Brea (Cobretti)",
 		"-   Eli Dupree (Elvish Pillager)",
@@ -134,12 +136,12 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		_("+Czech Translation"),
-		"- David Nečas (Yeti)",
-		"- Mintaka",
-		"- Petr Kopač (Ferda)",
-		"- Petr Kovár (Juans)",
-		"- Sofronius",
-		"- Vít Krčál",
+		"-   David Nečas (Yeti)",
+		"-   Mintaka",
+		"-   Petr Kopač (Ferda)",
+		"-   Petr Kovár (Juans)",
+		"-   Sofronius",
+		"-   Vít Krčál",
 		"+ ",
 
 		_("+Danish Translation"),
@@ -156,8 +158,11 @@ std::vector<std::string> get_text() {
 
 		_("+French Translation"),
 		"-   Benoit Astruc",
+		"_   Cedric Duval",
 		"-   Guillaume Duwelz-Rebert",
+		"-   Guillaume Melquiond (silene)",
 		"-   DaringTremayne",
+		"-   Philippe Plantier (Ayin)",
 		"-   Zas",
 		"+ ",
 
@@ -201,8 +206,9 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		_("+Spanish Translation"),
+		"-   David Martínez",
 		"-   Franciso Muñoz (fmunoz)",
-		"-   Gabriel Rodríguez (Chewie))",
+		"-   Gabriel Rodríguez (Chewie)",
 		"-   Jose Gordillo (kilder)",
 		"-   Jose Manuel Gomez (joseg)",
 		"+ ",
@@ -211,7 +217,7 @@ std::vector<std::string> get_text() {
 		"-   Alexander Kjäll (capitol)",
 		"-   wint3r",
 		"+ ",
-
+		
 		_("+Contributors"),
 		"-   Cyril Bouthors (CyrilB)",
 		"-   edge",
