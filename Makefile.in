@@ -600,8 +600,10 @@ ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-info-am uninstall-local uninstall-man \
+uninstall-am: uninstall-info-am uninstall-man \
 	uninstall-nobase_dist_pkgdataDATA
+	@$(NORMAL_INSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) uninstall-hook
 
 uninstall-info: uninstall-info-recursive
 
@@ -622,13 +624,18 @@ uninstall-man: uninstall-man6
 	maintainer-clean-recursive mostlyclean mostlyclean-generic \
 	mostlyclean-recursive pdf pdf-am pdf-recursive ps ps-am \
 	ps-recursive tags tags-recursive uninstall uninstall-am \
-	uninstall-info-am uninstall-info-recursive uninstall-local \
-	uninstall-man uninstall-man6 uninstall-nobase_dist_pkgdataDATA \
+	uninstall-info-am uninstall-info-recursive uninstall-man \
+	uninstall-man6 uninstall-nobase_dist_pkgdataDATA \
 	uninstall-recursive
 
 
-uninstall-local:
-	rm -r $(prefix)
+uninstall-hook:
+	if test -d $(pkgdatadir) ; then rm -r $(pkgdatadir) ; fi
+	if test -d $(mandir)/man6 ; then echo `rmdir $(mandir)/man6` ; fi
+	if test -d $(mandir); then echo `rmdir $(mandir)` ; fi
+	if test -d $(bindir) ; then echo `rmdir $(bindir)` ; fi
+	if test -d $(datadir) ; then echo `rmdir $(datadir)` ; fi
+	if test -d $(prefix) ; then echo `rmdir $(prefix)` ; fi
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
