@@ -70,15 +70,15 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 
 	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 
-	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
+	SDL_Rect title_rect = font::draw_text(NULL,screen_area(),24,font::NORMAL_COLOUR,
 					      _("Create New Map"),0,0);
 
 	const std::string& width_label = _("Width:");
 	const std::string& height_label = _("Height:");
 
-	SDL_Rect width_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
+	SDL_Rect width_rect = font::draw_text(NULL, screen_area(), 14, font::NORMAL_COLOUR,
 										  width_label, 0, 0);
-	SDL_Rect height_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
+	SDL_Rect height_rect = font::draw_text(NULL, screen_area(), 14, font::NORMAL_COLOUR,
 										   height_label, 0, 0);
 
 	const int text_right = xpos + horz_margin +
@@ -191,23 +191,23 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 			map_width = width_slider.value();
 			map_height = height_slider.value();
 			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
-			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+			title_rect = font::draw_text(&disp.video(),screen_area(),24,font::NORMAL_COLOUR,
 										 _("Create New Map"),
 										 xpos+(width-title_rect.w)/2,ypos+10);
 
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
+			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,
 							width_label,width_rect.x,width_rect.y);
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
+			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,
 							height_label,height_rect.x,height_rect.y);
 			
 			std::stringstream width_str;
 			width_str << map_width;
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
+			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
 							slider_right+horz_margin,width_rect.y);
 			
 			std::stringstream height_str;
 			height_str << map_height;
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
+			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
 							slider_right+horz_margin,height_rect.y);
 			
 		}
@@ -325,10 +325,10 @@ void preferences_dialog(display &disp, config &prefs) {
 			hotkeys_button.set_dirty();
 			scroll_slider.set_dirty();
 
-			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,scroll_label,
+			font::draw_text(&disp.video(),clip_rect,14,font::NORMAL_COLOUR,scroll_label,
 	    	                scroll_rect.x,scroll_rect.y);
 
-			update_rect(disp.screen_area());
+			update_rect(screen_area());
 
 			redraw_all = false;
 		}
@@ -384,15 +384,15 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 
 	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 
-	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
+	SDL_Rect title_rect = font::draw_text(NULL,screen_area(),24,font::NORMAL_COLOUR,
 					      _("Resize Map"),0,0);
 
 	const std::string& width_label = _("Width:");
 	const std::string& height_label = _("Height:");
 
-	SDL_Rect width_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
+	SDL_Rect width_rect = font::draw_text(NULL, screen_area(), 14, font::NORMAL_COLOUR,
 										  width_label, 0, 0);
-	SDL_Rect height_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
+	SDL_Rect height_rect = font::draw_text(NULL, screen_area(), 14, font::NORMAL_COLOUR,
 										   height_label, 0, 0);
 
 	const int text_right = xpos + horz_margin +
@@ -444,23 +444,23 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 			map_width = width_slider.value();
 			map_height = height_slider.value();
 			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
-			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+			title_rect = font::draw_text(&disp.video(),screen_area(),24,font::NORMAL_COLOUR,
 										 _("Resize Map"),
 										 xpos+(width-title_rect.w)/2,ypos+10);
 
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
+			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,
 							width_label,width_rect.x,width_rect.y);
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
+			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,
 							height_label,height_rect.x,height_rect.y);
 			
 			std::stringstream width_str;
 			width_str << map_width;
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
+			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
 							slider_right+horz_margin,width_rect.y);
 			
 			std::stringstream height_str;
 			height_str << map_height;
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
+			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
 							slider_right+horz_margin,height_rect.y);
 			
 		}

@@ -58,7 +58,7 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 
 //given the location of a dialog, will draw its title.
 //Returns the area the title takes up
-SDL_Rect draw_dialog_title(int x, int y, display* disp, const std::string& text);
+SDL_Rect draw_dialog_title(int x, int y, CVideo* disp, const std::string& text);
 
 //function to draw a dialog on the screen. x,y,w,h give the dimensions of the client area
 //of the dialog. 'title' is the title of the dialog. The title will be displayed at the

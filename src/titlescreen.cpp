@@ -155,7 +155,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 		ERR_DP << "Could not find title image\n";
 	} else {
 		screen.blit_surface(0,0,title_surface);
-		update_rect(screen.screen_area());
+		update_rect(screen_area());
 
 		LOG_DP << "displayed title image\n";
 	}
@@ -167,13 +167,13 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	const std::string& version_str = _("Version") + std::string(" ") +
 	                                 game_config::version;
 
-	const SDL_Rect version_area = font::draw_text(NULL,screen.screen_area(),
+	const SDL_Rect version_area = font::draw_text(NULL,screen_area(),
 						      font::SIZE_TINY,
 	                                    font::NORMAL_COLOUR,version_str,0,0);
 	const size_t versiony = screen.y() - version_area.h;
 
 	if(versiony < size_t(screen.y())) {
-		font::draw_text(&screen,screen.screen_area(),
+		font::draw_text(&screen.video(),screen.screen_area(),
 				font::SIZE_TINY,
 				font::NORMAL_COLOUR,version_str,0,versiony);
 	}
@@ -255,8 +255,8 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 		draw_dialog_frame(area.x,area.y,area.w,area.h,screen,&style);
 
-		font::draw_text(&screen,area,font::SIZE_NORMAL,font::NORMAL_COLOUR,tip_of_day,area.x+pad,area.y+pad);
-		font::draw_text(&screen, area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
+		font::draw_text(&screen.video(),area,font::SIZE_NORMAL,font::NORMAL_COLOUR,tip_of_day,area.x+pad,area.y+pad);
+		font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
 		                tome, area.x + area.w - tome_area.w - pad,
 		                next_tip_button.location().y - tome_area.h - pad, false, TTF_STYLE_ITALIC);
 	}

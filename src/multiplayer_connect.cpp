@@ -758,7 +758,7 @@ void connect::layout_children(const SDL_Rect& rect)
 			bottom-left_button->height()-gui::ButtonVPadding);
 
 	// Title and labels
-	gui::draw_dialog_title(left,top,&disp(),_("Game Lobby"));
+	gui::draw_dialog_title(left,top,&disp().video(),_("Game Lobby"));
 
 	type_title_label_.set_location((left+30)+(launch_.width()/2)-(type_title_label_.width()/2),top+35);
 	faction_title_label_.set_location((left+145)+(launch_.width()/2)-(faction_title_label_.width()/2),top+35);

@@ -16,7 +16,7 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 
-class display;
+class CVideo;
 #include "sdl_utils.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -88,7 +88,7 @@ const int
 //a bounding rectangle of the text is returned. If gui is NULL, then the
 //text will not be drawn, and a bounding rectangle only will be returned.
 
-SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
+SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 
@@ -134,7 +134,7 @@ std::string make_text_ellipsis(const std::string& text, int font_size, int max_w
 ///
 /// @return a bounding rectangle of the text.
 /// 
-SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
+SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 			     const SDL_Color& colour, const std::string& text,
 			     int x, int y, int max_width);
 

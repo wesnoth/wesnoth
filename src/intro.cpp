@@ -140,8 +140,8 @@ bool show_intro_part(display& screen, const config& part,
 		const SDL_Rect area = {0,0,screen.x(),screen.y()};
 		const SDL_Rect scenario_size =
 		      font::draw_text(NULL,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,0,0);
-				update_rect(font::draw_text(&screen,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,
-				dstrect.x,dstrect.y - scenario_size.h - 4));
+		update_rect(font::draw_text(&screen.video(),area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,
+					    dstrect.x,dstrect.y - scenario_size.h - 4));
 	}
 
 	update_whole_screen();
@@ -257,7 +257,7 @@ bool show_intro_part(display& screen, const config& part,
 			// FIXME: this is broken: it does not take kerning into account.
 			std::string tmp;
 			tmp.append(itor.substr().first, itor.substr().second);
-			const SDL_Rect rect = font::draw_text(&screen,
+			const SDL_Rect rect = font::draw_text(&screen.video(),
 					screen.screen_area(),font::SIZE_PLUS,
 					font::NORMAL_COLOUR,tmp,xpos,ypos,
 					false);
@@ -303,28 +303,28 @@ bool show_intro_part(display& screen, const config& part,
 	return true;
 }
 
-void the_end(display& screen)
+void the_end(CVideo& screen)
 {
-	SDL_Rect area = screen.screen_area();
-	SDL_FillRect(screen.video().getSurface(),&area,0);
+	SDL_Rect area = screen_area();
+	SDL_FillRect(screen.getSurface(),&area,0);
 
 	update_whole_screen();
-	screen.video().flip();
+	screen.flip();
 
 	const std::string text = _("The End");
 	const size_t font_size = font::SIZE_XLARGE;
 	
 	area = font::text_area(text,font_size);
-	area.x = screen.screen_area().w/2 - area.w/2;
-	area.y = screen.screen_area().h/2 - area.h/2;
+	area.x = screen_area().w/2 - area.w/2;
+	area.y = screen_area().h/2 - area.h/2;
 
 	for(size_t n = 0; n < 255; n += 5) {
 		const SDL_Color col = {n,n,n,n};
 		font::draw_text(&screen,area,font_size,col,text,area.x,area.y);
 		update_rect(area);
-		screen.video().flip();
+		screen.flip();
 
-		SDL_FillRect(screen.video().getSurface(),&area,0);
+		SDL_FillRect(screen.getSurface(),&area,0);
 
 		SDL_Delay(10);
 	}

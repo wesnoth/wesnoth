@@ -108,10 +108,10 @@ void wait::leader_preview_pane::draw_contents()
 			SDL_BlitSurface(unit_image,NULL,screen,&image_rect);
 		}
 
-		font::draw_text(&disp(),area,font::SIZE_PLUS,font::NORMAL_COLOUR,faction,area.x + 80, area.y + 30);
-		const SDL_Rect leader_rect = font::draw_text(&disp(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
+		font::draw_text(&disp().video(),area,font::SIZE_PLUS,font::NORMAL_COLOUR,faction,area.x + 80, area.y + 30);
+		const SDL_Rect leader_rect = font::draw_text(&disp().video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
 				_("Leader: "),area.x, area.y + 80);
-		font::draw_wrapped_text(&disp(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
+		font::draw_wrapped_text(&disp().video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
 				_("Recruits: ") + recruit_string.str(),area.x, area.y + 102,
 				area.w);
 

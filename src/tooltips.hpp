@@ -2,7 +2,6 @@
 #define TOOLTIPS_HPP_INCLUDED
 
 class CVideo;
-class display;
 
 #include "SDL.h"
 
@@ -10,7 +9,7 @@ namespace tooltips {
 
 struct manager
 {
-	manager(CVideo& disp);
+	manager(CVideo& video);
 	~manager();
 };
 
@@ -22,7 +21,7 @@ void process(int mousex, int mousey);
 
 //a function exactly the same as font::draw_text, but will also register
 //a tooltip
-SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
+SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
                    int x, int y);
 

@@ -1193,7 +1193,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 									centery-text_size.h/2 - 6,
 									text_size.w+40,
 									text_size.h+12,disp);
-			font::draw_text (&disp, clip_rect, font::SIZE_LARGE,font::NORMAL_COLOUR,
+			font::draw_text (&disp.video(), clip_rect, font::SIZE_LARGE,font::NORMAL_COLOUR,
 				 _("Press desired HotKey"),centerx-text_size.w/2-10,
 				 centery-text_size.h/2-3);
 			disp.update_display();

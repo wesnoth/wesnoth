@@ -14,6 +14,7 @@
 #define INTRO_HPP_INCLUDED
 
 class config;
+class CVideo;
 class display;
 #include "SDL.h"
 
@@ -33,6 +34,6 @@ class display;
 //user able to go to the next part, or skip it entirely.
 void show_intro(display& screen, const config& data, const config& level);
 
-void the_end(display& screen);
+void the_end(CVideo& screen);
 
 #endif

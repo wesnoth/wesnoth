@@ -376,7 +376,7 @@ void create::layout_children(const SDL_Rect& rect)
 	int ypos = ca.y;
 
 	// Dialog title
-	ypos += gui::draw_dialog_title(xpos, ypos, &disp(), _("Create Game")).h + border_size;
+	ypos += gui::draw_dialog_title(xpos, ypos, &disp().video(), _("Create Game")).h + border_size;
 
 	// Name Entry
 	name_entry_label_.set_location(xpos, ypos);

@@ -156,7 +156,7 @@ void process(int mousex, int mousey)
 	current_tooltip = tips.end();
 }
 
-SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
+SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
                    int x, int y)
 {

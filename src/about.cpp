@@ -382,7 +382,7 @@ void show_about(display& disp)
 		int cur_line = 0;
 
 		do {
-			SDL_Rect tr = font::draw_text(&disp,disp.screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
+			SDL_Rect tr = font::draw_text(&disp.video(),screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
 					              text[line], map_rect.x + map_rect.w / 8,y);
 			if(is_new_line) {
 				is_new_line = false;

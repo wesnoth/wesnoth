@@ -14,7 +14,6 @@
 #include "wesconfig.h"
 #include "global.hpp"
 
-#include "display.hpp"
 #include "font.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
@@ -718,7 +717,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 	return dest;
 }
 
-SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
+SDL_Rect draw_text_line(CVideo* gui, const SDL_Rect& area, int size,
                         const SDL_Color& colour, const std::string& text,
                         int x, int y, bool use_tooltips, int style)
 {
@@ -727,7 +726,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 	if(gui == NULL) {
 		surface = NULL;
 	} else {
-		surface = gui->video().getSurface();
+		surface = gui->getSurface();
 	}
 	
 	return draw_text_line(surface, area, size, colour, text, x, y, use_tooltips, style);
@@ -739,7 +738,7 @@ SDL_Rect text_area(const std::string& text, int size, int style)
 	return draw_text(NULL, area, size, font::NORMAL_COLOUR, text, 0, 0, false, style);
 }
 
-SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
+SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
@@ -926,7 +925,7 @@ std::string make_text_ellipsis(const std::string &text, int font_size, int max_w
 	return text; // Should not happen
 }
 
-SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
+SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 		     const SDL_Color& colour, const std::string& text,
 		     int x, int y, int max_width)
 {

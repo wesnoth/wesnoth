@@ -89,13 +89,13 @@ void default_map_generator::user_config(display& disp)
 	const std::string& villages_label = _("Villages:");
 	const std::string& landform_label = _("Landform:");
 
-	SDL_Rect players_rect = font::draw_text(NULL,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_label,0,0);
-	SDL_Rect width_rect = font::draw_text(NULL,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_label,0,0);
-	SDL_Rect height_rect = font::draw_text(NULL,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_label,0,0);
-	SDL_Rect iterations_rect = font::draw_text(NULL,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,iterations_label,0,0);
-	SDL_Rect hillsize_rect = font::draw_text(NULL,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,hillsize_label,0,0);
-	SDL_Rect villages_rect = font::draw_text(NULL,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_label,0,0);
-	SDL_Rect landform_rect = font::draw_text(NULL,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,0,0);
+	SDL_Rect players_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_label,0,0);
+	SDL_Rect width_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_label,0,0);
+	SDL_Rect height_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_label,0,0);
+	SDL_Rect iterations_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,iterations_label,0,0);
+	SDL_Rect hillsize_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,hillsize_label,0,0);
+	SDL_Rect villages_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_label,0,0);
+	SDL_Rect landform_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,0,0);
 
 	const int horz_margin = 5;
 	const int text_right = xpos + horz_margin +
@@ -226,37 +226,37 @@ void default_map_generator::user_config(display& disp)
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_label,players_rect.x,players_rect.y);
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_label,height_rect.x,height_rect.y);
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,iterations_label,iterations_rect.x,iterations_rect.y);
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_label,villages_rect.x,villages_rect.y);
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,landform_rect.x,landform_rect.y);
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_label,players_rect.x,players_rect.y);
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_label,height_rect.x,height_rect.y);
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,iterations_label,iterations_rect.x,iterations_rect.y);
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_label,villages_rect.x,villages_rect.y);
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,landform_rect.x,landform_rect.y);
 
 		std::stringstream players_str;
 		players_str << nplayers_;
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_str.str(),
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_str.str(),
 		                slider_right+horz_margin,players_rect.y);
 
 		std::stringstream width_str;
 		width_str << width_;
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_str.str(),
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_str.str(),
 		                slider_right+horz_margin,width_rect.y);
 
 		std::stringstream height_str;
 		height_str << height_;
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_str.str(),
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_str.str(),
 		                slider_right+horz_margin,height_rect.y);
 		
 		std::stringstream villages_str;
 		villages_str << nvillages_ << _("/1000 tiles");
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_str.str(),
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_str.str(),
 		                slider_right+horz_margin,villages_rect.y);
 
 		std::stringstream landform_str;
 		landform_str << gettext(island_size_ == 0 ? N_("Inland") : (island_size_ < max_coastal ? N_("Coastal") : N_("Island")));
-		font::draw_text(&disp,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_str.str(),
+		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_str.str(),
 			            slider_right+horz_margin,landform_rect.y);
 
 		update_rect(xpos,ypos,width,height);

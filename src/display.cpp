@@ -567,13 +567,13 @@ void draw_panel(display& disp, const theme::panel& panel, std::vector<gui::butto
 	}
 }
 
-void draw_label(display& disp, surface target, const theme::label& label)
+void draw_label(CVideo& video, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
 
 	const std::string& text = label.text();
 	const std::string& icon = label.icon();
-	SDL_Rect& loc = label.location(disp.screen_area());
+	SDL_Rect& loc = label.location(screen_area());
 	
 	if(icon.empty() == false) {
 		surface surf(image::get_image(icon,image::UNSCALED));
@@ -587,7 +587,7 @@ void draw_label(display& disp, surface target, const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::draw_text(&disp,loc,label.font_size(),font::NORMAL_COLOUR,text,loc.x,loc.y);
+		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOUR,text,loc.x,loc.y);
 	}
 
 
@@ -613,7 +613,7 @@ void display::draw(bool update,bool force)
 
 		const std::vector<theme::label>& labels = theme_.labels();
 		for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-			draw_label(*this,screen,*i);
+			draw_label(video(),screen,*i);
 		}
 		
 		//invalidate the reports so they are redrawn
@@ -865,7 +865,7 @@ void display::draw_report(reports::TYPE report_num)
 			for(reports::report::iterator i = report.begin(); i != report.end(); ++i) {
 				if(i->text.empty() == false) {
 					// Draw a text element
-					area = font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,i->text,x,y);
+					area = font::draw_text(&screen_,rect,item->font_size(),font::NORMAL_COLOUR,i->text,x,y);
 					if(area.h > tallest) tallest = area.h;
 					if(i->text[i->text.size() - 1] == '\n') {
 						x = rect.x;
@@ -1017,7 +1017,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	//with on the right-side panel
 	const size_t font_size = this->y() >= 700 ? 13 : 10;
 
-	description_rect = font::draw_text(this,clipRect,font_size,font::NORMAL_COLOUR,
+	description_rect = font::draw_text(&screen_,clipRect,font_size,font::NORMAL_COLOUR,
 	                                   details.str(),x,y);
 
 	update_rect(description_rect);
@@ -1608,15 +1608,15 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		const int y = yloc + zoom_/2 - text_area.h/2;
 
 		//draw the text with a black outline
-		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y-1);
-		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y);
-		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y+1);
-		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y-1);
-		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y-1);
-		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y);
-		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y+1);
-		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y+1);
-		font::draw_text(this,rect,font::SIZE_LARGE,font::YELLOW_COLOUR,str,x,y);
+		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y-1);
+		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y);
+		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y+1);
+		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y-1);
+		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y-1);
+		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y);
+		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y+1);
+		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y+1);
+		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::YELLOW_COLOUR,str,x,y);
 	}
 }
 

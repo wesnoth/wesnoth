@@ -157,7 +157,7 @@ void button::draw_contents()
 		break;
 	}
 
-	SDL_Rect const &clipArea = disp().screen_area();
+	SDL_Rect const &clipArea = screen_area();
 	SDL_Rect const &loc = location();
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
@@ -172,7 +172,7 @@ void button::draw_contents()
 
 	disp().blit_surface(loc.x, loc.y, image);
 	const std::string etext = font::make_text_ellipsis(label_, font_size, loc.w);
-	font::draw_text(&disp(), clipArea, font_size, font::BUTTON_COLOUR, etext, textx, texty);
+	font::draw_text(&disp().video(), clipArea, font_size, font::BUTTON_COLOUR, etext, textx, texty);
 
 	update_rect(loc);
 }

@@ -429,7 +429,7 @@ void menu::draw_item(int item)
 					font::make_text_ellipsis(str, menu_font_size, loc.w - (xpos - rect.x)) : str;
 				const SDL_Rect& text_size = font::text_area(str,menu_font_size);
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
-				font::draw_text(&disp(),area,menu_font_size,font::NORMAL_COLOUR,to_show,xpos,y);
+				font::draw_text(&disp().video(),area,menu_font_size,font::NORMAL_COLOUR,to_show,xpos,y);
 				xpos += text_size.w + 5;
 			}
 		}

@@ -204,11 +204,11 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp, const std
 	}
 }
 
-SDL_Rect draw_dialog_title(int x, int y, display* disp, const std::string& text)
+SDL_Rect draw_dialog_title(int x, int y, CVideo* disp, const std::string& text)
 {
 	SDL_Rect rect = {0,0,10000,10000};
 	if(disp != NULL) {
-		rect = disp->screen_area();
+		rect = screen_area();
 	}
 
 	return font::draw_text(disp, rect, font::SIZE_LARGE, font::TITLE_COLOUR,
@@ -257,7 +257,7 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 	draw_dialog_frame(xpos,ypos,width,height,disp,style,restorer);
 
 	if (!title.empty()) {
-		draw_dialog_title(x + border_size, y - title_area.h, &disp, title);
+	  draw_dialog_title(x + border_size, y - title_area.h, &disp.video(), title);
 	}
 
 	if(buttons != NULL) {
@@ -696,7 +696,7 @@ int show_dialog(display& disp, surface image,
 		                         text_widget_width - text_widget.location().w,
 		                         text_widget_y_unpadded);
 		events::raise_draw_event();
-		font::draw_text(&disp, clipRect, message_font_size,
+		font::draw_text(&disp.video(), clipRect, message_font_size,
 		                font::NORMAL_COLOUR, text_widget_label,
 						xloc + left_padding,text_widget_y_unpadded);
 	}
@@ -713,13 +713,13 @@ int show_dialog(display& disp, surface image,
 
 		disp.blit_surface(x,y,image);
 
-		font::draw_text(&disp, clipRect, caption_font_size,
+		font::draw_text(&disp.video(), clipRect, caption_font_size,
 		                font::NORMAL_COLOUR, caption,
 		                xloc+image_width+left_padding+image_h_padding,
 		                yloc+top_padding);
 	}
 
-	font::draw_text(&disp, clipRect, message_font_size,
+	font::draw_text(&disp.video(), clipRect, message_font_size,
 	                font::NORMAL_COLOUR, message,
 	                xloc+image_width+left_padding+image_h_padding,
 	                yloc+top_padding+caption_size.h);

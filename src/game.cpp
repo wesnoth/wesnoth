@@ -1429,7 +1429,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 	try {
 		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_,video_);
 		if(result == VICTORY) {
-			the_end(disp());
+			the_end(disp().video());
 			about::show_about(disp());
 		}
 	} catch(gamestatus::load_game_exception& e) {
