@@ -68,6 +68,8 @@ public:
 
 	bool started() const;
 
+	size_t nplayers() const { return players_.size(); }
+
 private:
 
 	//function which returns true iff 'player' is on 'team'.

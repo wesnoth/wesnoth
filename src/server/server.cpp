@@ -1,6 +1,7 @@
 #include "../config.hpp"
 #include "../game_config.hpp"
 #include "../network.hpp"
+#include "../util.hpp"
 
 #include "SDL.h"
 
@@ -13,6 +14,7 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <ctime>
 #include <vector>
 
 config construct_error(const std::string& msg)
@@ -30,6 +32,8 @@ public:
 private:
 	void delete_game(std::vector<game>::iterator i);
 
+	void dump_stats();
+
 	const network::manager net_manager_;
 	const network::server_manager server_;
 
@@ -45,9 +49,11 @@ private:
 	game not_logged_in_;
 	game lobby_players_;
 	std::vector<game> games_;
+
+	time_t last_stats_;
 };
 
-server::server(int port) : net_manager_(), server_(port), not_logged_in_(players_), lobby_players_(players_)
+server::server(int port) : net_manager_(), server_(port), not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL))
 {
 	login_response_.add_child("mustlogin");
 	login_response_["version"] = game_config::version;
@@ -61,13 +67,34 @@ config server::sync_initial_response()
 	return res;
 }
 
+void server::dump_stats()
+{
+	config parent;
+	config& stats = parent.add_child("statistics");
+
+	stats["num_players"] = str_cast(players_.size());
+	stats["lobby_players"] = str_cast(lobby_players_.nplayers());
+	stats["num_games"] = str_cast(games_.size());
+	stats["start_interval"] = str_cast(last_stats_);
+	last_stats_ = time(NULL);
+	stats["end_interval"] = str_cast(last_stats_);
+
+	std::cout << parent.write() << "\n";
+}
+
 void server::run()
 {
 	config& gamelist = initial_response_.add_child("gamelist");
 	old_initial_response_ = initial_response_;
 
-	for(;;) {
+	for(int loop = 0;; ++loop) {
 		try {
+			//make sure we log stats every 5 minutes
+			if((loop%100) == 0 && last_stats_+5*60 < time(NULL)) {
+				dump_stats();
+			}
+
+
 			network::process_send_queue();
 
 			network::connection sock = network::accept_connection();
