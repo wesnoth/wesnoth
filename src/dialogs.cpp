@@ -171,7 +171,7 @@ int get_save_name(display & disp,const std::string& caption, const std::string& 
     int overwrite=0;
     int res=0;
     do {
-        res = gui::show_dialog(disp,NULL,_("Save"),caption,dialog_type,NULL,NULL,message,name);
+        res = gui::show_dialog(disp,NULL,_("Save Game"),caption,dialog_type,NULL,NULL,message,name);
             if (res == 0 && save_game_exists(*name))
                 overwrite = gui::show_dialog(disp,NULL,_("Overwrite?"),
                     _("Save already exists. Do you want to overwrite it ?"),gui::YES_NO);

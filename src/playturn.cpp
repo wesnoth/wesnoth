@@ -1348,7 +1348,7 @@ void turn_info::rename_unit()
 		return;
 
 	std::string name = un->second.description();
-	const int res = gui::show_dialog(gui_,NULL,"",_("Rename Unit"), gui::OK_CANCEL,NULL,NULL,"",&name);
+	const int res = gui::show_dialog(gui_,NULL,_("Rename Unit"),"", gui::OK_CANCEL,NULL,NULL,"",&name);
 	if(res == 0) {
 		un->second.rename(name);
 		gui_.invalidate_unit();
@@ -1631,8 +1631,8 @@ void turn_info::recruit()
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		recruit_res = gui::show_dialog(gui_,NULL,"",
-		                                 _("Recruit unit") + std::string(":\n"),
+		recruit_res = gui::show_dialog(gui_,NULL,_("Recruit"),
+		                                 _("Select unit") + std::string(":\n"),
 		                                 gui::OK_CANCEL,&items,&preview_panes,"",NULL,NULL,NULL,-1,-1,
 										 NULL,NULL,"recruit_and_recall");
 	}
@@ -1808,7 +1808,7 @@ void turn_info::recall()
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
-			res = gui::show_dialog(gui_,NULL,"",
+			res = gui::show_dialog(gui_,NULL,_("Recall"),
 			                       _("Select unit") + std::string(":\n"),
 			                       gui::OK_CANCEL,&options,
 			                       &preview_panes,"",NULL,
@@ -2083,7 +2083,7 @@ void turn_info::show_statistics()
 		items.push_back(str.str());
 	}
 
-	const int res = gui::show_dialog(gui_,NULL,"",_("Statistics"),gui::MESSAGE,&items);
+	const int res = gui::show_dialog(gui_,NULL,_("Statistics"),"",gui::MESSAGE,&items);
 	std::string title;
 	items.clear();
 	switch(res) {
@@ -2283,7 +2283,7 @@ void turn_info::label_terrain()
 	}
 
 	std::string label = gui_.labels().get_label(last_hex_);
-	const int res = gui::show_dialog(gui_,NULL,"",_("Place Label"),gui::OK_CANCEL,
+	const int res = gui::show_dialog(gui_,NULL,_("Place Label"),"",gui::OK_CANCEL,
 	                                 NULL,NULL,_("Label") + std::string(":"),&label);
 	if(res == 0) {
 		gui_.labels().set_label(last_hex_,label);
