@@ -98,7 +98,7 @@ team::team_info::team_info(const config& cfg)
 
 	const std::string& scouts_val = cfg["villages_per_scout"];
 	if(scouts_val.empty()) {
-		villages_per_scout = 8;
+		villages_per_scout = 4;
 	} else {
 		villages_per_scout = atoi(scouts_val.c_str());
 	}

@@ -142,6 +142,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	CKey key;
 	unit_map units;
 
+	const verification_manager verify_manager(units);
+
 	std::vector<team> teams;
 
 	int first_human_team = -1;

@@ -16,6 +16,13 @@
 #include "config.hpp"
 #include "display.hpp"
 #include "map.hpp"
+#include "unit.hpp"
+
+struct verification_manager
+{
+	verification_manager(const unit_map& units);
+	~verification_manager();
+};
 
 int get_random();
 

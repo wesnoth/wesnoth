@@ -30,6 +30,95 @@
 #include <iostream>
 #include <sstream>
 
+//functions to verify that the unit structure on both machines is identical
+namespace {
+	void verify(const unit_map& units, const config& cfg)
+	{
+		std::cerr << "verifying unit structure...\n";
+
+		const size_t nunits = atoi(cfg["num_units"].c_str());
+		if(nunits != units.size()) {
+			std::cerr << "SYNC VERIFICATION FAILED: number of units from data source differ: "
+			          << nunits << " according to data source. " << units.size() << " locally\n";
+			throw replay::error();
+		}
+
+		const config::child_list& items = cfg.get_children("unit");
+		for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
+			const gamemap::location loc(**i);
+			const unit_map::const_iterator u = units.find(loc);
+			if(u == units.end()) {
+				std::cerr << "SYNC VERIFICATION FAILED: data source says there is a '"
+				          << (**i)["type"] << "' (side " << (**i)["side"] << ") at " << (**i)["x"] << "," << (**i)["y"]
+						  << " but there is no local record of it\n";
+				throw replay::error();
+			}
+
+			config cfg;
+			u->second.write(cfg);
+
+			bool is_ok = true;
+			static const std::string fields[] = {"type","hitpoints","experience","side","moves",""};
+			for(const std::string* str = fields; str->empty() == false; ++str) {
+				if(cfg[*str] != (**i)[*str]) {
+					std::cerr << "ERROR IN FIELD FOR UNIT at " << (**i)["x"] << "," << (**i)["y"]
+						      << " data source: '" << (**i)[*str] << "' local: '" << cfg[*str] << "'\n";
+					is_ok = false;
+				}
+			}
+
+			if(!is_ok) {
+				std::cerr << "(SYNC VERIFICATION FAILED)\n";
+				throw replay::error();
+			}
+		}
+
+		std::cerr << "verification passed\n";
+	}
+
+	config create_verification(const unit_map& units)
+	{
+		config res;
+		char buf[50];
+		sprintf(buf,"%d",units.size());
+		res["num_units"] = buf;
+
+		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+			config u;
+			i->first.write(u);
+			i->second.write(u);
+
+			res.add_child("unit",u);
+		}
+
+		return res;
+	}
+
+	const unit_map* unit_map_ref = NULL;
+
+	void verify_units(const config& cfg)
+	{
+		if(unit_map_ref != NULL) {
+			verify(*unit_map_ref,cfg);
+		}
+	}
+
+	config make_verify_units()
+	{
+		return create_verification(*unit_map_ref);
+	}
+}
+
+verification_manager::verification_manager(const unit_map& units)
+{
+	unit_map_ref = &units;
+}
+
+verification_manager::~verification_manager()
+{
+	unit_map_ref = NULL;
+}
+
 replay recorder;
 
 namespace {
@@ -239,6 +328,7 @@ void replay::end_turn()
 {
 	config* const cmd = add_command();
 	cmd->add_child("end_turn");
+	cmd->add_child("verify",make_verify_units());
 }
 
 void replay::speak(const config& cfg)
@@ -400,7 +490,7 @@ void replay::add_config(const config& cfg)
 }
 
 bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
-               std::map<gamemap::location,unit>& units,
+               unit_map& units,
 			   std::vector<team>& teams, int team_num, const gamestatus& state,
 			   game_state& state_of_game, replay* obj)
 {
@@ -457,6 +547,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		//if there is an end turn directive
 		else if(cfg->child("end_turn") != NULL) {
 			replayer.next_skip();
+
+			child = cfg->child("verify");
+			if(child != NULL) {
+				verify_units(*child);
+			}
+
 			return true;
 		}
 
@@ -661,6 +757,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		} else {
 			std::cerr << "unrecognized action: '" << cfg->write() << "'\n";
 			throw replay::error();
+		}
+
+		child = cfg->child("verify");
+		if(child != NULL) {
+			verify_units(*child);
 		}
 	}
 
