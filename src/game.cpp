@@ -778,7 +778,7 @@ int play_game(int argc, char** argv)
 			const int res = gui::show_dialog(disp,NULL,"","",gui::OK_CANCEL,&host_or_join);
 			
 			try {
-				if(res == 0) {
+				if(res == 1) {
 					std::vector<std::string> chat;
 					config game_data;
 					multiplayer_game_setup_dialog mp_dialog(disp,units_data,game_config,state,true);
@@ -786,7 +786,7 @@ int play_game(int argc, char** argv)
 					if(res == lobby::CREATE) {
 						mp_dialog.start_game();
 					}
-				} else if(res == 1) {
+				} else if(res == 0) {
 					play_multiplayer_client(disp,units_data,game_config,state);
 				}
 			} catch(gamestatus::load_game_failed& e) {
