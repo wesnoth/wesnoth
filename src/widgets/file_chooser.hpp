@@ -65,9 +65,6 @@ private:
 	/// Return true if the path is the root of the filesystem.
 	bool is_root(const std::string path) const;
 
-	/// Adjust the layout of the widget.
-	void adjust_layout();
-
 	/// Show the files in the current directory.
 	void display_current_files();
 

@@ -46,32 +46,6 @@ file_chooser::file_chooser(display &disp, std::string start_file)
 	update_file_lists();
 }
 
-void file_chooser::adjust_layout() {
-	const int current_path_y = location().y;
-	current_path_rect_.y = current_path_y;
-	current_path_rect_.w = width();
-	current_path_rect_.x = location().x;
-	current_path_rect_.h = 18;
-	const int file_list_y = current_path_y + current_path_rect_.h + 10;
-	const int filename_textbox_y = location().y + height() - filename_textbox_.height();
-	const int file_list_height = filename_textbox_y  - file_list_y - 10 - 32;
-
-	const int delete_button_x = location().x + width() - delete_button_.width();
-	const int delete_button_y = file_list_y + file_list_height + 5;
-	delete_button_.set_location(delete_button_x, delete_button_y);
-
-	file_list_.set_width(width());
-	filename_textbox_.set_width(width());
-
-	file_list_.set_location(location().x, file_list_y);
-	filename_textbox_.set_location(location().x, filename_textbox_y);
-
-	file_list_.set_max_height(file_list_height);
-	// When the layout has changed we want to redisplay the files to
-	// make them fit into the newly adjusted widget.
-	set_dirty(true);
-}
-
 void file_chooser::display_current_files() {
 	std::vector<std::string> to_show;
 	if (!is_root(current_dir_)) {
@@ -255,7 +229,26 @@ void file_chooser::set_dirty(bool dirty) {
 }
 
 void file_chooser::update_location(SDL_Rect const &rect) {
-	adjust_layout();
+	const int current_path_y = rect.y;
+	current_path_rect_.y = current_path_y;
+	current_path_rect_.w = rect.w;
+	current_path_rect_.x = rect.x;
+	current_path_rect_.h = 18;
+	const int file_list_y = current_path_y + current_path_rect_.h + 10;
+	const int filename_textbox_y = rect.y + rect.h - filename_textbox_.height();
+	const int file_list_height = filename_textbox_y  - file_list_y - 10 - 32;
+
+	const int delete_button_x = rect.x + rect.w - delete_button_.width();
+	const int delete_button_y = file_list_y + file_list_height + 5;
+	delete_button_.set_location(delete_button_x, delete_button_y);
+
+	file_list_.set_width(rect.w);
+	filename_textbox_.set_width(rect.w);
+
+	file_list_.set_location(rect.x, file_list_y);
+	filename_textbox_.set_location(rect.x, filename_textbox_y);
+
+	file_list_.set_max_height(file_list_height);
 }
 
 std::string file_chooser::get_path(const std::string file_or_dir) const {
