@@ -31,7 +31,7 @@ gamemap::location find_vacant(const gamemap& map,
 	touched.insert(loc);
 
 	if(map.on_board(loc) && units.find(loc) == units.end() &&
-	   map[loc.x][loc.y] != gamemap::TOWER &&
+	   map.underlying_terrain(map[loc.x][loc.y]) != gamemap::TOWER &&
 	   (terrain == 0 || terrain == map[loc.x][loc.y])) {
 		return loc;
 	} else if(depth == 0) {
@@ -154,7 +154,7 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 	get_adjacent_tiles(loc,&locs[0]);
 
 	//check for teleporting units
-	if(allow_teleport && map[loc.x][loc.y] == gamemap::TOWER) {
+	if(allow_teleport && map.underlying_terrain(map[loc.x][loc.y]) == gamemap::TOWER) {
 		const std::vector<gamemap::location>& towers = map.towers();
 
 		//if we are on a tower, see all friendly towers that we can

@@ -756,7 +756,7 @@ void turn_info::undo()
 		return;
 	}
 
-	if(map_[route.front().x][route.front().y] == gamemap::TOWER) {
+	if(map_.underlying_terrain(map_[route.front().x][route.front().y]) == gamemap::TOWER) {
 		get_tower(route.front(),teams_,
 		          undo_stack_.back().original_village_owner);
 	}
@@ -818,7 +818,7 @@ void turn_info::redo()
 
 	recorder.add_movement(route.front(),route.back());
 
-	if(map_[route.back().x][route.back().y] == gamemap::TOWER) {
+	if(map_.underlying_terrain(map_[route.back().x][route.back().y]) == gamemap::TOWER) {
 		get_tower(route.back(),teams_,un.side()-1);
 	}
 
@@ -978,6 +978,9 @@ void turn_info::status_table()
 
 	items.push_back(heading.str());
 
+	const team& current_team = teams_[team_num_-1];
+	const bool fog = current_team.uses_fog() || current_team.uses_shroud();
+
 	for(size_t n = 0; n != teams_.size(); ++n) {
 		const team_data data = calculate_team_data(teams_[n],n+1,units_);
 
@@ -987,8 +990,14 @@ void turn_info::status_table()
 		//cause it to be displayed in the correct colour
 		str << (char)(n+1) << team_name(n+1,units_) << ",";
 
-		str << data.villages << "," << data.units << "," << data.upkeep << ","
-		    << (data.net_income < 0 ? "#":"") << data.net_income;
+		str << data.villages << ",";
+		
+		if(fog && team_num_-1 != n)
+			str << "???,???,";
+		else
+			str << data.units << "," << data.upkeep << ",";
+
+		str << (data.net_income < 0 ? "#":"") << data.net_income;
 
 		items.push_back(str.str());
 	}

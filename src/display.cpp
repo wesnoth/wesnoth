@@ -640,6 +640,8 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	if(teams_.empty())
 		return;
 
+	tooltips::clear_tooltips();
+
 	SDL_Rect clipRect = clip_rect != NULL ? *clip_rect : screen_area();
 
 	SDL_Surface* const background = image::get_image(RightSideTop,image::UNSCALED);
@@ -1418,7 +1420,7 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type,
                                  int x, int y, const std::string& direction)
 {
-	const bool tower = (terrain == gamemap::TOWER);
+	const bool tower = (map_.underlying_terrain(terrain) == gamemap::TOWER);
 	std::string image = "terrain/" + (direction.empty() ?
 	                           map_.get_terrain_info(terrain).image(x,y) :
 	                           map_.get_terrain_info(terrain).default_image());

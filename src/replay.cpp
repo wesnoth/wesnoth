@@ -482,7 +482,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				disp.move_unit(rt->second.steps,current_unit);
 
 			current_unit.set_movement(rt->second.move_left);
-			if(map[dst.x][dst.y] == gamemap::TOWER) {
+			if(map.underlying_terrain(map[dst.x][dst.y]) == gamemap::TOWER) {
 				const int orig_owner = tower_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
 					current_unit.set_movement(0);

@@ -355,7 +355,7 @@ void attack(display& gui, const gamemap& map,
 
 				//plague units make clones of themselves on the target hex
 				//units on villages that die cannot be plagued
-				if(stats.attacker_plague && map[loc.x][loc.y]!=gamemap::TOWER) {
+				if(stats.attacker_plague && map.underlying_terrain(map[loc.x][loc.y]) != gamemap::TOWER) {
 					a = units.find(attacker_loc);
 					if(a != units.end()) {
 						units.insert(std::pair<gamemap::location,unit>(
@@ -412,7 +412,7 @@ void attack(display& gui, const gamemap& map,
 
 				//plague units make clones of themselves on the target hex.
 				//units on villages that die cannot be plagued
-				if(stats.defender_plague && map[loc.x][loc.y]!=gamemap::TOWER) {
+				if(stats.defender_plague && map.underlying_terrain(map[loc.x][loc.y]) != gamemap::TOWER) {
 					d = units.find(defender_loc);
 					if(d != units.end()) {
 						units.insert(std::pair<gamemap::location,unit>(
@@ -501,7 +501,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		//the unit heals if it's on this side, and if it's on a tower or
 		//it has regeneration
 		if(i->second.side() == side &&
-		   (map[i->first.x][i->first.y] == gamemap::TOWER ||
+		   (map.underlying_terrain(map[i->first.x][i->first.y]) == gamemap::TOWER ||
 		    i->second.type().regenerates())) {
 			healed_units.insert(std::pair<gamemap::location,int>(
 			                            i->first, game_config::cure_amount));
@@ -863,7 +863,7 @@ size_t move_unit(display* disp, const gamemap& map,
 	u.set_movement(moves_left);
 
 	int orig_tower_owner = -1;
-	if(map[steps.back().x][steps.back().y] == gamemap::TOWER) {
+	if(map.underlying_terrain(map[steps.back().x][steps.back().y]) == gamemap::TOWER) {
 		orig_tower_owner = tower_owner(steps.back(),teams);
 
 		if(orig_tower_owner != team_num) {

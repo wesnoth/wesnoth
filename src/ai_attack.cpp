@@ -347,8 +347,7 @@ void attack_analysis::analyze(const gamemap& map,
 				break;
 			} else if(atthp == 0) {
 				avg_losses += cost;
-			} else if(map[movements[i].second.x][movements[i].second.y] ==
-			          gamemap::TOWER) {
+			} else if(map.underlying_terrain(map[movements[i].second.x][movements[i].second.y]) == gamemap::TOWER) {
 				atthp += game_config::heal_amount;
 				if(atthp > hitpoints[i])
 					atthp = hitpoints[i];
@@ -366,7 +365,7 @@ void attack_analysis::analyze(const gamemap& map,
 			chance_to_kill -= 1.0;
 		} else if(defhp == 0) {
 			chance_to_kill += 1.0;
-		} else if(map[defend_it->first.x][defend_it->first.y]==gamemap::TOWER) {
+		} else if(map.underlying_terrain(map[defend_it->first.x][defend_it->first.y]) == gamemap::TOWER) {
 			defhp += game_config::heal_amount;
 			if(defhp > target_hp)
 				defhp = target_hp;

@@ -114,7 +114,6 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 	std::vector<config*>& terrains = cfg.children["terrain"];
 	create_terrain_maps(terrains,terrainPrecedence_,letterToTerrain_,terrain_);
 
-
 	size_t x = 0, y = 0;
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		char c = *i;
@@ -132,7 +131,7 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 				}
 			}
 
-			if(c == TOWER) {
+			if(underlying_terrain(c) == TOWER) {
 				towers_.push_back(location(int(x),int(y)));
 			}
 

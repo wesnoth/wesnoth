@@ -147,7 +147,7 @@ void move_unit(const game_data& gameinfo, display& disp,
 
 	current_unit.set_movement(0);
 	units.insert(std::pair<location,unit>(to,current_unit));
-	if(map[to.x][to.y] == gamemap::TOWER)
+	if(map.underlying_terrain(map[to.x][to.y]) == gamemap::TOWER)
 		get_tower(to,teams,team_num-1);
 
 	disp.draw_tile(to.x,to.y);
@@ -424,7 +424,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 	//try to acquire towers
 	for(std::multimap<location,location>::const_iterator i = dstsrc.begin();
 	    i != dstsrc.end(); ++i) {
-		if(map[i->first.x][i->first.y] != gamemap::TOWER)
+		if(map.underlying_terrain(map[i->first.x][i->first.y]) != gamemap::TOWER)
 			continue;
 
 		bool want_tower = true;
@@ -476,7 +476,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const location& dst = it.first->second;
-				if(map[dst.x][dst.y] == gamemap::TOWER &&
+				if(map.underlying_terrain(map[dst.x][dst.y]) == gamemap::TOWER &&
 				   units.find(dst) == units.end()) {
 					const double vuln = power_projection(it.first->first,
 					                    enemy_srcdst,enemy_dstsrc,units,map);
