@@ -643,6 +643,8 @@ msgid ""
 "You have come across a wishing well.\n"
 "What would you like to wish for?"
 msgstr ""
+"ВЫ подошли к колодцу желаний.\n"
+"Какое желание Вы хотите загадать?"
 
 #: data/items.cfg:268
 msgid "A swift victory"
@@ -653,6 +655,8 @@ msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr ""
+"С этой золотой монетой Я желаю, чтобы эта битва закончилась быстрой и полной "
+"победой."
 
 #: data/items.cfg:283
 msgid "Lots of gold"
@@ -660,7 +664,7 @@ msgstr "Немного золота"
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr ""
+msgstr "Я желаю, чтобы эта золотая монета вернулась в десятикратном размере."
 
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
@@ -668,11 +672,11 @@ msgstr "Мир в Весноте"
 
 #: data/items.cfg:306
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr ""
+msgstr "Только одно желание - мир на этих землях."
 
 #: data/items.cfg:313
 msgid "Don't make a wish."
-msgstr ""
+msgstr "Я не хочу загадывать желание."
 
 #: data/items.cfg:336
 msgid "Potion of Healing"
@@ -680,7 +684,7 @@ msgstr "Лечебное снадобье"
 
 #: data/items.cfg:339
 msgid "A feeling of well-being overwhelms the drinker."
-msgstr ""
+msgstr "Самочуствие выпившего улучшится."
 
 #: data/items.cfg:340
 msgid "You are not worthy of healing."
@@ -740,7 +744,7 @@ msgstr "Кольцо Медлительности"
 
 #: data/items.cfg:580
 msgid "The bearer of this ring is slowed."
-msgstr "Тот, кто носит данное кольцо, замедлен."
+msgstr "Тот, кто носит это кольцо, замедлен."
 
 #: data/items.cfg:615
 msgid "Staff of Swiftness"
@@ -748,11 +752,11 @@ msgstr "Посох Быстроты"
 
 #: data/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
-msgstr ""
+msgstr "Этот посох подарит тому, кто его носит, быстроту ног."
 
 #: data/items.cfg:619
 msgid "Only magical beings can wield such an object."
-msgstr ""
+msgstr "Только маги могут владеть этим предметом."
 
 #: data/items.cfg:653
 msgid "Storm Trident"
@@ -938,7 +942,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
-msgstr ""
+msgstr "Разрушенный Мост"
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
@@ -965,9 +969,8 @@ msgstr ""
 "быстрой игры. Рекомендуемые настройки - 2 золота за деревню."
 
 #: data/scenarios/multiplayer/Charge.cfg:7
-#, fuzzy
 msgid "Charge"
-msgstr "заряд"
+msgstr "Бросок"
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1003,6 +1006,8 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Случайная карта с болотами. Внимание: случайные карты не сбалансированы, но "
+"если у Вас есть время, Вы можете регенерировать её, пока не получите хорошую."
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
@@ -1015,10 +1020,13 @@ msgid ""
 "terrains.  Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"Случайная карта между осенью и зимой, преимущественно со снежным покровом. "
+"Внимание: случайные карты не сбалансированы, но если у Вас есть время, Вы "
+"можете регенерировать её, пока не получите хорошую."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
-msgstr ""
+msgstr "Кубок Веснота"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:6
 msgid ""
@@ -1027,6 +1035,10 @@ msgid ""
 "blunt weapons, and healers are on hand, so when units are killed, they "
 "return to that player's end zone with an injury."
 msgstr ""
+"В Кубке Веснота игрок должен пронести мяч до конечной зоны другого игрока. "
+"Другой игрок может атаковать Ваши соединения. Кубок Веснота играется с тупым "
+"оружием, и санитары всегда готовы, так что когда бойцов выводят из строя, "
+"они возвращаются в конечную зону игрока с ушибами."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:11
 msgid ""
@@ -1038,21 +1050,26 @@ msgid ""
 "#Opponent moves the balls to your endzone more times than you move them to "
 "theirs"
 msgstr ""
+"\n"
+"Победа:\n"
+"@Пронесите мяч в конечную зону оппонента больше раз, чем он пронесёт в Вашу\n"
+"Поражение:\n"
+"#Оппонент пронёс мяч в Вашу конечную зону больше раз, чем Вы в его"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:199
 #: data/scenarios/multiplayer/Wesbowl.cfg:476
 msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr "Очки красных! Текущее количество очков $redscore-$bluescore"
+msgstr "Красные забили! Текущее количество очков $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:247
 #: data/scenarios/multiplayer/Wesbowl.cfg:524
 msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr "Очки синих! Текущее количество очков $redscore-$bluescore"
+msgstr "Синие забили! Текущее количество очков $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:337
 #: data/scenarios/multiplayer/Wesbowl.cfg:614
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr ""
+msgstr "Я проёс мяч в $passto.type ($xloc,$yloc)?"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:339
 #: data/scenarios/multiplayer/Wesbowl.cfg:616
@@ -1069,15 +1086,15 @@ msgstr "Нет"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:661
 msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr "Синяя команда выиграла! Финальные очки: $redscore-$bluescore"
+msgstr "Синяя команда выиграла! Финальный счёт: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:673
 msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr "Красная команда выиграла! Финальные очки: $redscore-$bluescore"
+msgstr "Красная команда выиграла! Финальный счёт: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:685
 msgid "Draw! Final score: $redscore-$bluescore"
-msgstr "Ничья! Финальные очки: $redscore-$bluescore"
+msgstr "Ничья! Финальный счёт: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/WeslinBridge.cfg:3
 msgid "Battle for Weslin Bridge"
@@ -1110,6 +1127,10 @@ msgid ""
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
 msgstr ""
+"Эта карта удобна для тестирования для двух сторон, она неплохо "
+"сбалансирована по отношению к обеим сторонам.\n"
+"Вы можете использовать её в 'компьютер против компьютера', чтобы увидеть, "
+"сколько одна сторона продержиться против другой."
 
 #: data/scenarios/multiplayer/scenarios.cfg:110
 msgid "The Isle of Anduin"
@@ -1282,7 +1303,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:88
 msgid "What happens when I end my turn?"
-msgstr "Что происходит когда я заканчиваю свой ход?"
+msgstr "Что происходит\\, когда я заканчиваю свой ход?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:88
 msgid ""
@@ -1465,7 +1486,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:151
 msgid "How can you tell how powerful a unit's attacks are?"
-msgstr "Скажите, какая атака соединения сильнее?"
+msgstr "Скажите\\, какая атака соединения сильнее?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:152
 msgid ""
@@ -1479,7 +1500,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:152
 msgid "Will my fighter hit every time when he attacks?"
-msgstr "Почему мой боец всегда получает повреждения, когда она атакует?"
+msgstr "Почему мой боец получает повреждения\\, когда она атакует?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:158
 msgid "End your turn, and wait for Merle to attack you."
@@ -1681,9 +1702,10 @@ msgid ""
 "lost."
 msgstr ""
 "Когда Вы победите в сценарии, все ваши выжившие соединения восстановятся, и "
-"Вам не нужно будет платить за них на оставшихся ходах. Also, if your army "
-"remains in the area after you win, all villages surrender to you immediately "
-"after you win. Также между сценариями 20% Вашего золота теряется."
+"Вам не нужно будет платить за них на оставшихся ходах. Если Ваша армия "
+"останется на карте после Ваше победы, все деревни сдадутся Вам "
+"непосредственно перед тем, как Вы победите. Также между сценариями 20% "
+"Вашего золота теряется."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:260
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
@@ -1789,18 +1811,18 @@ msgid ""
 "recruited units, except that instead of a new unit appearing, a unit from a "
 "previous scenario will appear."
 msgstr ""
-"Сначала Вы должны заплатить 20 золотых монет за каждого воскрешаемого "
+"Сначала Вы должны заплатить 20 золотых монет за каждого призываемого "
 "соединения. В остальном, призванные соединения похожи на завербованные, за "
 "исключением того, что это не новое соединение, а выбранное из прошлого "
 "сценария."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
 msgid "What happens when I recall a unit?"
-msgstr "Что происходит когда я воскрешаю соединение?"
+msgstr "Что происходит\\, когда я призываю соединение?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:80
 msgid "How should I decide which units to recall?"
-msgstr "Какие соединения мне выбирать для воскрешения?"
+msgstr "Какие соединения мне выбирать для призыва?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:80
 msgid ""
@@ -1865,7 +1887,7 @@ msgid ""
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
 "Когда Вы призываете и вербуете соединения, Вы теряете золото. Если у Вас "
-"будет менее 0 золота, Вы не сможете призывать и вербовать."
+"будет менее 0 золота, Вы не сможете призывать или вербовать."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid "How much gold do my units cost?"
@@ -1975,10 +1997,18 @@ msgid ""
 "For example; elves have 70% defense in woods, and are therefore hit 30% of "
 "the time."
 msgstr ""
+"Две местности уже определены - это деревни и замок. Тем не менее особенности "
+"большинства земель более различимы и дают выгодное или невыгодное положение "
+"различным соединению, находящемуся на них. Первая особенность земли - "
+"количество оков движения, требуемое для входа в квадрат. Вторая особенность "
+"- защищённость, которая даётся соединению, стоящему на этой земле. Это "
+"процент, определяющий шанс соединения получить повреждение на этой земле. "
+"Например, эльфы имеют 70% защищённость в лесу, значит, они имеют шанс в 30% "
+"получить повреждение."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
 msgid "What are the different properties that terrains have?"
-msgstr ""
+msgstr "Что за отличительные особенности имеют земли?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
 msgid "How do I find out the properties of a specific terrain?"
@@ -1994,6 +2024,13 @@ msgid ""
 "of the hex, then the selected unit's defense, then the number of move points "
 "it will cost the selected unit to move through that hex."
 msgstr ""
+"Чтобы определить свойства земли для отдельного соединения, нажмите правой "
+"кнопкой мыши по соединению, выберите Описание Соединения, затем взгляните в "
+"Тип Местности. Чтобы определить, какая земля в квадрате, наведите курсор на "
+"этот курсор и посмотрите в верхний правый угол экрана. Там отображены "
+"название земли, координаты квадрата, защищённость выбранного соединения и "
+"количество очков движения, необходимых для выбранного соединения для того, "
+"чтобы дойти до этого квадрата."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:146
 msgid ""
@@ -2023,7 +2060,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid "How does resistance affect attack damage?"
-msgstr "Как сопротивляемость влияет на ущерб, получаемый при атаке?"
+msgstr "Как сопротивляемость влияет на ущерб\\, получаемый при атаке?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid ""
@@ -2034,11 +2071,11 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then look at Resistances."
 msgstr ""
-"Есть 6 различных типов урона - холодное, колющее, удар, огонь, холод и "
-"святое оружие. Сильно защищённые соединения хорошо сопротивляются физическим "
-"типам урона - холодное, колющее оружие и удар, но плохо - магическим типам "
-"урона - огню и холоду. Все живые соединения имеют сопротивляемость к святой "
-"атаке, когда как мертвецы уязвимы ей. Чтобы узнать, какая сопротивляемость у "
+"Есть 6 различных типов урона - режущее, колющее, удар, огонь, холод и святое "
+"оружие. Сильно защищённые соединения хорошо сопротивляются физическим типам "
+"урона - режущее, колющее оружие и удар, но плохо - магическим типам урона - "
+"огню и холоду. Все живые соединения имеют сопротивляемость к святой атаке, "
+"когда как мертвецы уязвимы ей. Чтобы узнать, какая сопротивляемость у "
 "соединения, нажмите правой кнопкой мыши по соединению и выберите Описание "
 "Соединения, а после загляните в Сопротивляемость."
 
@@ -2144,7 +2181,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
 msgid "What kind of objects am I likely to encounter?"
-msgstr "Что за предметы, которые я нашёл?"
+msgstr "Что за предметы\\, которые я нашёл?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:198
 msgid "How long do these objects last?"
@@ -2423,7 +2460,7 @@ msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
-"Гражданские соединения лучше сражаются днём, а хаотичные соединения лучше "
+"Порядочные соединения лучше сражаются днём, а хаотичные соединения лучше "
 "сражаются ночью. Нейтральные соединения сражаются и днём и ночью с "
 "одинаковой силой."
 
@@ -2444,7 +2481,7 @@ msgid ""
 "types."
 msgstr ""
 "Существует шесть типов атаки, различающихся по применяемым типам оружия: "
-"колющее, холодное оружие, удар, огонь, холод и святое оружие. Разные "
+"колющее, режущее оружие, удар, огонь, холод и святое оружие. Разные "
 "соединения имеют разную сопротивляемость против каждого типа атаки. Нажмите "
 "правой кнопкой мыши на соединении и выберите 'Описание соединения', затем "
 "нажмите 'Сопротивление' чтобы увидеть как данное соединения сопротивляется "
@@ -2537,7 +2574,7 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
-"Конные соединения хорошо защищены от атак холодным оружием и от ударов, но "
+"Конные соединения хорошо защищены от атак режущим оружием и от ударов, но "
 "уязвимы против атак колющего оружия, включая стрелы и копья."
 
 #: data/tips.cfg:13
@@ -2613,8 +2650,8 @@ msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
-"Скелеты хорошо защищены от атак с применением колющего и холодного оружия, "
-"но более уязвимы атакам с применением ударов, огня и святого оружия."
+"Скелеты хорошо защищены от атак с применением колющего и режущего оружия, но "
+"более уязвимы атакам с применением ударов, огня и святого оружия."
 
 #: data/tips.cfg:21
 msgid ""
@@ -2704,7 +2741,7 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
-"соединения с зарядом великолепно справляются с противникоми, которых могут "
+"Соединения с броском великолепно справляются с противникоми, которых могут "
 "убить с одного удара."
 
 #: data/translations/english.cfg:2
@@ -2751,7 +2788,6 @@ msgstr ""
 "Ночь: +25% ущебра"
 
 #: data/translations/english.cfg:21
-#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -2760,8 +2796,9 @@ msgid ""
 "any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
-"Засада:\n"
+"Скрытный:\n"
 "Такое соединение может скрываться в лесу и быть невидимым для противников.\n"
+"\n"
 "Вражеские соединения не могут видеть или атаковать это соединеие, когда оно "
 "в лесу, кроме тех случаев, когда любого хода оно было атаковано или "
 "находится рядом с вражеским соединением."
@@ -2976,6 +3013,9 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
+"Берсерк:\n"
+"Используемая в ярости или в защите, эта атака продолжает битву, пока один из "
+"бойцов не погибнет."
 
 #: data/translations/english.cfg:97
 msgid ""
@@ -2983,7 +3023,7 @@ msgid ""
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
-"Заряд:\n"
+"Бросок:\n"
 "Эта атака наносит двойной урон цели. Соединение также будет получать двойной "
 "урон при ответном ударе цели."
 
@@ -3030,8 +3070,8 @@ msgid ""
 "village, the dead target's corpse will rise up and fight for you."
 msgstr ""
 "Чума:\n"
-"Если это соединение убъет живую цель и она не находится в деревне, "
-"мертвоетело восстанет и станет драться за Вас."
+"Если это соединение убъет живую цель и она не находится в деревне, мертвое "
+"тело восстанет и станет драться за Вас."
 
 #: data/translations/english.cfg:115
 msgid ""
@@ -3295,6 +3335,8 @@ msgid ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
 "enemies."
 msgstr ""
+"Лидеры среди магов, Радужные Маги бросают огромные огненные шары в своих "
+"врагов."
 
 #: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:102
 #: data/units/Deathmaster.cfg:19 data/units/Elder_Mage.cfg:22
@@ -3467,6 +3509,9 @@ msgid ""
 "Wearing brown cloaks and black hoods, they steal from the peasants who live "
 "near them when not fighting against invaders."
 msgstr ""
+"Вооружённые тяжёлой булавой, Бандиты - почитатели грабежа и убийства ночью. "
+"Одетые в коричневые накидки и чёрные капюшоны, они грабят крестьян, которые "
+"живут неподалёку и которые не могут драться против захватчиков."
 
 #: data/units/Bandit.cfg:19 data/units/Drake_Gladiator.cfg:57
 #: data/units/Great_Troll.cfg:20 data/units/Heavy_Infantry.cfg:21
@@ -3575,6 +3620,10 @@ msgid ""
 "began the battle. Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
+"Кровавые Мыши быстры и могут выпивать кровь из жертве при атаке, "
+"восстанавливая своё здоровье и становясь сильнее, чем в начале битвы. Кожа "
+"этих мёртвых летающих тварей окрашена в красный цвет из-за выпитой крови "
+"своих жертв."
 
 #: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
 #: data/units/Direwolf_Rider.cfg:18 data/units/Goblin_Direwolver.cfg:21
@@ -3599,7 +3648,7 @@ msgstr ""
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
 #, fuzzy
 msgid "stab"
-msgstr "исподтишка"
+msgstr "посох"
 
 #: data/units/Bone_Shooter.cfg:26 data/units/Bone_Shooter.cfg:39
 #: data/units/Bowman.cfg:38 data/units/Cavalier.cfg:49
@@ -3693,6 +3742,10 @@ msgid ""
 "rigorous a training as the spearman or heavy infantry, because their battle "
 "tactic requires more finess than brute strength."
 msgstr ""
+"Выпущенные из школы стрельбы, молодые Лучники - самые многочисленные стрелки "
+"в армиях Веснота. Они не подвергались изнуряющей тренировке, как копейщики "
+"или тяжёлая пехота, так как их тактика требует больше точности, чем грубой "
+"силы."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
@@ -3726,6 +3779,9 @@ msgid ""
 "field of battle like a horseman, but makes more of an effort to hold his "
 "position."
 msgstr ""
+"Лучшие всадники в Весноте, завербованые в армию, становятся Кавалеристами."
+"Кавалеристы, строго дисциплинированные, не будут бросаться через всё поле "
+"битвы, как Всадники и затратят больше усилий для удержания своих позиций."
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
@@ -3737,6 +3793,10 @@ msgid ""
 "They can bite at close range, thereby poisoning their enemies, and also can "
 "attack with a web at long range, slowing their foes down."
 msgstr ""
+"Гигантские Пауки обитают в землях Кналги, в глубоких пещерах, выжидая какую-"
+"нибудб жертву. Они могут кусать в ближнем бою, отравляя своим ядом "
+"противников, а также атаковать паутиной с дальней дистанции, замедляя своих "
+"врагов."
 
 #: data/units/Cave_Spider.cfg:28
 msgid "web"
@@ -3752,7 +3812,7 @@ msgstr "замедление"
 
 #: data/units/Chocobone.cfg:3
 msgid "Chocobone"
-msgstr ""
+msgstr "Мёртвый Всадник"
 
 #: data/units/Chocobone.cfg:17
 msgid ""
@@ -3760,6 +3820,9 @@ msgid ""
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
+"Верхом на костях огромной, похожей на страуса птицы, используя экипировку "
+"погибших цивилизаций, Мёртвые Всадники могут быстро передвигаться, как и "
+"любая кавалерия."
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
 #: data/units/Drake_Gladiator.cfg:43 data/units/Drake_Slasher.cfg:39
@@ -3787,7 +3850,7 @@ msgstr "копьё"
 #: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:368
 #: src/actions.cpp:488
 msgid "charge"
-msgstr "заряд"
+msgstr "бросок"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -3799,6 +3862,9 @@ msgid ""
 "are deceiving. With just a glance at their enemies, Cockatrices can turn "
 "them into stone until the source of their power is destroyed."
 msgstr ""
+"На первый взгляд, эти мистические змееподобные создания выглядят слабыми, но "
+"это не так. Просто взлянув на своих врагов, Василиски могут превратить их в "
+"камень до тех пор, пока источник их силы не будет уничтожен."
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
@@ -3821,6 +3887,10 @@ msgid ""
 "they also carry a bow to use when necessary. If the Commander is lost, so is "
 "the battle."
 msgstr ""
+"Обязанности Командира - возглавлять боевые группы в бою. Знающий навыки "
+"лидерства, он даёт соединениям низшего уровня улучшенные действия в битве. "
+"Командиры отлично обучены владеть мечом, к тому же они могут использовать "
+"при необходимости лук. Гибель Командира означает проигрыш в битве."
 
 #: data/units/Commander.cfg:95 data/units/Noble_Commander.cfg:22
 msgid ""
@@ -3830,6 +3900,11 @@ msgid ""
 "although they also carry a bow to use when necessary. If the Commander is "
 "lost, so is the battle."
 msgstr ""
+"Обязанности Командира - возглавлять боевые группы в бою. Знающий навыки "
+"лидерства, он даёт соседним соединениям низшего уровня улучшенные действия в "
+"битве. Командиры отлично обучены владеть мечом, к тому же они могут "
+"использовать при необходимости лук. Гибель Командира означает проигрыш в "
+"битве."
 
 #: data/units/Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
@@ -3882,6 +3957,9 @@ msgid ""
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
+"Злобная королева-мать Ашевьер терроризировала Веснот много лет. Её знания в "
+"магии делают её опасным врагом в битве, хотя её сила главным образом "
+"получена из тех, кем она командует."
 
 #: data/units/Dark_Queen.cfg:21
 msgid "scepter"
@@ -3897,6 +3975,8 @@ msgid ""
 "dead, and a force of dread in this world. Happily, they have rarely been "
 "seen in Wesnoth."
 msgstr ""
+"Тёмные Духи - вестники и переносчики новостей из царства мёртвых и силы "
+"страха в этом мире. К счастью, они редко встречаются в Весноте."
 
 #: data/units/Dark_Spirit.cfg:19 data/units/Spectre.cfg:19
 #: data/units/Wraith.cfg:19
@@ -3919,6 +3999,10 @@ msgid ""
 "weapons as they did before, they command the Undead in their quest for "
 "revenge."
 msgstr ""
+"Когда-то могущественные воины и генералы, проклятые с ненавистью и "
+"предательством, вернулись назад в этот мир в качестве Рыцарей Смерти. "
+"Вооружённые оружием, что имели при жизни, они командуют нежитью для "
+"осуществления своей мести."
 
 #: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:27
 #: data/units/Dwarvish_Steelclad.cfg:27
@@ -3936,10 +4020,14 @@ msgid ""
 "are gradually claiming his mortal shell too, and with time, he will be a "
 "true undead and a terror to all that lives."
 msgstr ""
+"Продвижение Гвити по тёмному пути дало ему силу, недоступную простым "
+"смертным, но за ужасную цену - мертвец, отдавший свою душу, постепенно "
+"теряет и свою телесную оболочку. Со временем он станет настоящим мертвецом и "
+"будет устрашать всех живых."
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
-msgstr ""
+msgstr "Демилич"
 
 #: data/units/Demilich.cfg:15
 msgid ""
@@ -3948,9 +4036,11 @@ msgid ""
 "becoming undead themselves. With time, they may become fully undead, and "
 "feared by all alike."
 msgstr ""
+"После долгого и изучения забытых книг по магии и тёмному искусству, эти маги "
+"в начале заплатили высокую цену - Демиличи потеряли свои тела, став нежитью. "
+"Со временем, они могут стать полностю мертвецами, ужасными как и все "
+"мертвецы."
 
-# #"После продолжительного изучения потеряных манускриптов по магии и тёмного "
-# #"искусства, эти маги"
 #: data/units/Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
 msgstr "Наездник Страшного Волка"
@@ -3961,6 +4051,9 @@ msgid ""
 "giant wolves with poisoned claws. These Goblins are fearsome and merciless "
 "enemies."
 msgstr ""
+"Наездники Страшных Волков - самые быстрые соединения, которые можно найти в "
+"Весноте, воюющие верхом на ужасных волках с ядовитыми когтями. Эти Гоблины "
+"страшны и беспощадны к врагам."
 
 #: data/units/Direwolf_Rider.cfg:30 data/units/Drake_Burner.cfg:21
 #: data/units/Drake_Fire.cfg:24 data/units/Drake_Inferno.cfg:24
@@ -3984,10 +4077,14 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
+"Более способные кавалеристы в армиях Веснота, обученные использовать арбалет "
+"и имеющие лучших коней. Неплохо защищённые и обученные владеть своим мечом, "
+"эти солдаты могут уходить далеко вперёд и удерживать взятые позиции. Их "
+"подвижность и устойчивость делает их очень ценными на боле битвы."
 
 #: data/units/Drake_Burner.cfg:4
 msgid "Drake Burner"
-msgstr "Горящий дракон"
+msgstr "Дракон Поджигатель"
 
 #: data/units/Drake_Burner.cfg:18
 msgid ""
@@ -3997,6 +4094,11 @@ msgid ""
 "often go on to become Fire Drakes who seek to master their internal fire, or "
 "Drake Flares who aspire to be leaders of their kind."
 msgstr ""
+"Дракон Поджигатель может не только использовать убийственные когти, но "
+"огнедышащую способность своих дальних предков. Враги предпочитают находиться "
+"на пордочнеой дистанции от них. Большинство одарённых Поджигателей часто "
+"становится или Огненными Драконами, которые постигают мастерство внутреннего "
+"огня, или Сияющими Драконами, которые стремятся стать лидерами своего рода."
 
 #: data/units/Drake_Burner.cfg:40 data/units/Drake_Fighter.cfg:44
 #: data/units/Drake_Fire.cfg:42 data/units/Drake_Flameheart.cfg:47
@@ -4030,6 +4132,9 @@ msgid ""
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
 "join the ranks of the elite Drake Warriors."
 msgstr ""
+"Драконы Бойцы умеют обращаться с изогнутыми ятаганами со смертельным "
+"мастерством и имеют огнедышащие навыки от своих предков. Большинство "
+"одарённых Бойцов вступят в ряды элитных Драконов Воинов."
 
 #: data/units/Drake_Fighter.cfg:21
 msgid "scimitar"
@@ -4047,6 +4152,10 @@ msgid ""
 "most ferocious Fire Drakes become the flying configurations known as Drake "
 "Infernos."
 msgstr ""
+"Великие огненные Драконы экипированы серебряной бронёй для защиты от "
+"серьёзных ран. Хотя их техника ближнего боя примитивна, они мастера "
+"внутреннего огня и этим страшны. Большинство одарённых Огненных Драконов "
+"становится летающими, известными как Адские Драконы."
 
 #: data/units/Drake_Flameheart.cfg:4
 msgid "Drake Flameheart"
@@ -4060,10 +4169,14 @@ msgid ""
 "between their crackling flames and their wicked swords, few who meet them "
 "survive to confirm this saying."
 msgstr ""
+"Одна из пословиц гласит: 'У генералов в армиях Драконов в венах огонь вместо "
+"крови'. Никто не знает, что на самом деле течёт внутри этих возвышающихся "
+"созданий абсолютного хаоса... Тем не менее, после всрытия их сердцец и их "
+"страшных мечей мало кто выжил, чтобы об этом поведать."
 
 #: data/units/Drake_Flare.cfg:4
 msgid "Drake Flare"
-msgstr "Сияющий дракон"
+msgstr "Сияющий Дракон"
 
 #: data/units/Drake_Flare.cfg:20
 msgid ""
@@ -4072,6 +4185,10 @@ msgid ""
 "broader aspirations. They are skilled with swords, and they aspire to be the "
 "greatest of their kind."
 msgstr ""
+"Сияющие Драконы стремятся стать лидерами своего рода. Хотя их мастерство "
+"внутреннего огня не очень выдающееся по сравнению со многими из их рода, эти "
+"Драконы очень чистолюбивы. Они обучены владением мечами и они хотят стать "
+"величайшими из своего рода."
 
 #: data/units/Drake_Gladiator.cfg:4
 msgid "Drake Gladiator"
@@ -4088,7 +4205,7 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "Парящий Дракон"
 
 #: data/units/Drake_Glider.cfg:19
 msgid ""
@@ -4102,7 +4219,7 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
 msgid "slam"
-msgstr "шлем"
+msgstr "хлопанье"
 
 #: data/units/Drake_Inferno.cfg:4
 msgid "Inferno Drake"
@@ -4149,11 +4266,12 @@ msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors."
 msgstr ""
+"Драконы Воины обучены великолепно обращаться с мечами, и они владеют "
+"огнедышащими навыками от своих предков."
 
 #: data/units/Draug.cfg:3
-#, fuzzy
 msgid "Draug"
-msgstr "Драгун"
+msgstr "Дрог"
 
 #: data/units/Draug.cfg:16
 msgid ""
@@ -4180,6 +4298,9 @@ msgid ""
 "allows them to attack and parry with only one hand, while they wield a "
 "crossbow in the other to shoot distant foes."
 msgstr ""
+"Дуэлянты - мастера искусства фехтования. Их навыки владения рапирой "
+"позволяет им атаковать и отражать атаки только одной рукой, используя другой "
+"рукой арбалет в случаях, когда надо стрелять во врага на дистанции."
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
@@ -4263,10 +4384,13 @@ msgid ""
 "axe is unmatched, and they are able to hit even enemies that are far away. "
 "Their fine armor is made of the strong alloys crafted by their kin."
 msgstr ""
+"Гномы Лорды - короли подгорья. Их владение боевым топором не имеет равных, и "
+"они способны ударять врага даже издали. Их великолепная броня сделана из "
+"твёрдых сплавов, созданных их родом."
 
 #: data/units/Dwarvish_Lord.cfg:60
 msgid "hatchet"
-msgstr "засада"
+msgstr "топор"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
@@ -4297,6 +4421,8 @@ msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
 msgstr ""
+"Часовой, с его башенной защитой и великой смелостью, не сдаётся даже после "
+"сильных вражеских атак."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
@@ -4446,6 +4572,9 @@ msgid ""
 "amounts of damage in close combat. Master fighters, they are also adept with "
 "the bow, able to inflict damage on their enemies from both near and far."
 msgstr ""
+"Эльфы Чемпионы - устрашающие мастера меча, наносящие огромный урон в "
+"рукопашной схватке. Мастера драки, они также знатоки лука, способные "
+"наносить урон своим врагам одинково как вблизи, так и издали."
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
@@ -4508,6 +4637,9 @@ msgid ""
 "tweaked their combat skills to the very maximum. Elvish Heroes prefer "
 "fighting at close range with the sword, but are also skilled at the bow."
 msgstr ""
+"Эльфы Герои, имея максимльно улучшенные навыки боя, акцентируются на личных "
+"умениях на поле битвы. Эльфы Герои предпочитают драться в рукопашной битве, "
+"хотя они также могут использовать и лук."
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
@@ -4628,6 +4760,8 @@ msgid ""
 "Swift riders, Elvish Riders are fast in the forest as well as in the open. "
 "They can even use a bow from horseback."
 msgstr ""
+"Быстрые наездники, Эльфы Всадники также быстры в лесу, как и на открытом "
+"пространстве. Они могут использовать луки, не спешиваясь."
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
@@ -4661,6 +4795,10 @@ msgid ""
 "when firing very quickly. Sharpshooters are excellent at picking off "
 "entrenched enemies."
 msgstr ""
+"Самые лучшие лучники во всём Весноте. У Эльфов Снайперов невероятная "
+"точность, гарантирующая 60% шанс подстрелить противника, и при этом они они "
+"стреляют очень быстро. Снайперы великолепны для выбивания укрепившихся "
+"врагов."
 
 #: data/units/Elvish_Sharpshooter.cfg:82
 msgid "female^Elvish Sharpshooter"
@@ -4668,7 +4806,7 @@ msgstr "Эльфийка Снайперша"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
-msgstr ""
+msgstr "Эльфийка Фея"
 
 #: data/units/Elvish_Shyde.cfg:20
 msgid ""
@@ -4679,7 +4817,7 @@ msgstr ""
 
 #: data/units/Elvish_Shyde.cfg:24 data/units/Elvish_Sylph.cfg:24
 msgid "faerie touch"
-msgstr ""
+msgstr "прикосновение феи"
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "female^Elvish Sorceress"
@@ -4730,6 +4868,8 @@ msgid ""
 "from enemies. However they have the potential to become great warriors one "
 "day."
 msgstr ""
+"Молодые и дерзкие, Бойцы дерутся с мечом и уязвимы атакам врагов. Тем не "
+"менее, однажды они могут стать великими воинами."
 
 #: data/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
@@ -4772,6 +4912,8 @@ msgid ""
 "The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
 "places and people to rob."
 msgstr ""
+"Грязные Разбойники используются бандитскими бандами, чтобы найти впереди "
+"места и людей для грабежа."
 
 #: data/units/Footpad.cfg:19 data/units/Thug.cfg:19 data/units/Troll.cfg:20
 #: data/units/Troll_Hero.cfg:20
@@ -4897,7 +5039,7 @@ msgstr "клешни"
 
 #: data/units/Goblin_Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr ""
+msgstr "Гоблин Закалыватель"
 
 #: data/units/Goblin_Impaler.cfg:17
 msgid ""
@@ -4959,6 +5101,8 @@ msgid ""
 "The most powerful mounted warriors of any race, Grand Knights have reached "
 "the acme of skill with sword and lance."
 msgstr ""
+"Самые сильные воители любой расы, Великие Рыцари достигли вершины искусства "
+"владения мечом и копьём."
 
 #: data/units/Grand_Knight.cfg:36 data/units/Knight.cfg:36
 #: data/units/Lancer.cfg:20 data/units/Paladin.cfg:41
@@ -4987,6 +5131,8 @@ msgid ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
 "in power."
 msgstr ""
+"Великие Маги - устрашающие и грозные противники, превосходящие по силе даже "
+"Радужных Магов."
 
 #: data/units/Great_Mage.cfg:79
 msgid "female^Great Mage"
@@ -5002,6 +5148,9 @@ msgid ""
 "ability to regenerate themselves, so that they recover from wounds on their "
 "own, even during battle."
 msgstr ""
+"Великие Тролли - сильные и грубые человекообразные монстры с удивительной "
+"способностью регенерироваться, так что их раны залечиваются сами, даже во "
+"время битвы."
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
@@ -5014,8 +5163,8 @@ msgid ""
 "be disturbed without a good reason."
 msgstr ""
 "Полульвы, полуптицы, эти магические существа господствуют в мировом небе. "
-"Грифонов, служивших другой развитой разумной расе, не стоит беспокоить без "
-"веской причины."
+"Они осторожны к другой разумной расе, и их не стоит беспокоить без веской "
+"причины."
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
@@ -5030,7 +5179,7 @@ msgstr ""
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
-msgstr "Грифон Наездник"
+msgstr "Наездник Грифона"
 
 #: data/units/Gryphon_Rider.cfg:16
 msgid ""
@@ -5038,6 +5187,9 @@ msgid ""
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
+"Только избранные могут поймать сильного Грифона. Тот, кто может стать "
+"Наездником Грифона, сможет исследовать небесный мир на спине этих летающих "
+"созданий."
 
 #: data/units/Halbardier.cfg:3
 msgid "Halbardier"
@@ -5067,10 +5219,12 @@ msgid ""
 "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
 "lack of speed is their only disadvantage."
 msgstr ""
+"Тяжёлый Пехотинец закован в железо, что делает его устойчивым к атакам. "
+"Низкая скорость - его единственный минус."
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
-msgstr "Лорд наездник"
+msgstr "Лорд Наездник"
 
 #: data/units/Horse_Lord.cfg:17
 msgid ""
@@ -5078,6 +5232,9 @@ msgid ""
 "their houses and are respected by all, friend or foe. Their sword can kill "
 "most ordinary enemies, and their morning star crushes those who are left."
 msgstr ""
+"Лучший из людей равнин, Лорд Наездник возглавляют свой род и уважаем всеми, "
+"друзьями или врагами. Его меч убивает всех простых противников, а его "
+"моргенштерн крушит тех, кто покрепче."
 
 #: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:43
 #: data/units/Mounted_Commander.cfg:43
@@ -5130,8 +5287,8 @@ msgid ""
 "Knights are skilled in the use of both lance and sword. With the lance, they "
 "charge at enemies, inflicting and receiving double damage."
 msgstr ""
-"Рыцари обучены использовать копьё и меч. Копьём они могут протыкать врагов, "
-"нанося и получая двойной урон."
+"Рыцари обучены использовать копьё и меч. С копьём они могут совершать бросок "
+"на врагов, нанося и получая двойной урон."
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
@@ -5181,6 +5338,9 @@ msgid ""
 "Longbowmen carry the huge specialized bows that they have learned to handle "
 "after years of combat. Their missiles can pierce even armor."
 msgstr ""
+"Лучники с Длинным Луком используют большие композитные луки, которыми "
+"научились владеть после нескольких лет битв. Их стрелы могут пробивать даже "
+"броню."
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:66
 msgid "Lord"
@@ -5193,6 +5353,10 @@ msgid ""
 "leadership skills, and improve the fighting ability of all adjacent lower-"
 "level units."
 msgstr ""
+"Благородные лидеры солдат, Лорды особенно сильны в рукопашной схватке и "
+"также владеют навыками обращения с луком. Как и Командиры, Лорды имеют "
+"навыки лидерства и повышают боеспособность всех соседних соединений низших "
+"уровней."
 
 #: data/units/Mage.cfg:3
 msgid "Mage"
@@ -5205,6 +5369,10 @@ msgid ""
 "hitting their target. For this reason, Mages are an excellent choice for "
 "flushing out enemies hiding in difficult terrain."
 msgstr ""
+"Маги одновременно и слабы, и сильны. Медленно передвигаясь и имея плохие "
+"навыки самообороны, Маги атакуют магическими снарядами, которые всегда имеют "
+"большой шанс поразить цель. В этом случае, Маги - прекрасный выбор для "
+"выбивания противников, скрытых в трудной местности."
 
 #: data/units/Mage.cfg:36 data/units/Mage.cfg:103
 msgid "missile"
@@ -5221,7 +5389,7 @@ msgstr "Светлый Маг"
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
 #: data/units/Mermaid_Diviner.cfg:8
 msgid "illuminates,cures"
-msgstr "освещать,лечить"
+msgstr "освещающий,лекарь"
 
 #: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:86
 msgid ""
@@ -5233,6 +5401,13 @@ msgid ""
 "night. Like the White Mages, the Mages of Light also cure adjacent friendly "
 "units."
 msgstr ""
+"Светлые Маги - устрашающие союзники для всех порядочных бойцов и грозные "
+"противники всем силам хаоса. Магический свет Магов великолепно освещает "
+"квадраты, занимаемые ими, и все прилежащие квадраты не будут ввергнуты во "
+"тьму. В итоге, когда соединение находится рядом со Светлым Магом, оно "
+"дерётся в семерки так, если бы это был день, а ночью дерётся так, если бы "
+"это были сумерки. Как и Белые Маги, Светлые Маги также лечат все "
+"дружественные соединения, находящиеся рядом."
 
 #: data/units/Mage_of_Light.cfg:45 data/units/Mage_of_Light.cfg:105
 #: data/units/Mermaid_Diviner.cfg:34 data/units/Mermaid_Priestess.cfg:32
@@ -5261,6 +5436,8 @@ msgid ""
 "human can hope to attain. Their power with this deadly weapon is surpassed "
 "only by that of the Elves."
 msgstr ""
+"Мастер Лучник достиг высоких вершин искусства владения луком, подвластных "
+"человеку. Его сила с этим смертельным оружием сравнима только с силой Эльфов."
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
@@ -5286,6 +5463,8 @@ msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but struggle greatly to move on land."
 msgstr ""
+"Морские создания, Водяные сильны и быстры в любой водной среде, но неуклюжи "
+"на замле."
 
 #: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:31
 #: data/units/Mermaid_Siren.cfg:33 data/units/Sea_Hag.cfg:27
@@ -5338,6 +5517,7 @@ msgstr "трезубец"
 msgid "Merman Entangler"
 msgstr ""
 
+# #Водяной (Связанное с запутыванием)
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
 msgstr "Водяной Боец"
@@ -5424,11 +5604,12 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "spraying boiling water on their foes."
 msgstr ""
+"Грязевые Чудища - магические конструкы из земли и воды. Их атака поражает "
+"врагоов разбрызгиванием кипящей струи."
 
 #: data/units/Naga-Fighter.cfg:3
-#, fuzzy
 msgid "Naga Fighter"
-msgstr "Боец"
+msgstr "Наг Боец"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:48
 msgid ""
@@ -5440,9 +5621,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:34
-#, fuzzy
 msgid "Nagini Fighter"
-msgstr "Водяной Боец"
+msgstr "Нага Боец"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
@@ -5471,9 +5651,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
-#, fuzzy
 msgid "Naga Warrior"
-msgstr "Ящер Воин"
+msgstr "Наг Воин"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:56
 msgid ""
@@ -5486,9 +5665,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:38
-#, fuzzy
 msgid "Nagini Warrior"
-msgstr "Ящер Воин"
+msgstr "Нага Воин"
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
@@ -5499,8 +5677,8 @@ msgid ""
 "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more nimble "
 "than their counterparts, they share a distaste for dry land."
 msgstr ""
-"Как и Водяной, Нага является жителем морей. Меньше и проворнее своего "
-"собрата, сухая земля вызывает у них отвращение."
+"Как и Водяные, Наги являются жителями морей. Меньше и проворнее своих "
+"собратьев, сухая земля вызывает у них отвращение."
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
@@ -5512,10 +5690,13 @@ msgid ""
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
 "that drain the lifeforce from their foes and add it to their own."
 msgstr ""
+"Некроманты - это Маги, выбравшие путь познания тёмного мастерства. Познав "
+"силу мёртвых, Некроманты могут вызывать заклинания, высасывающие жизненные "
+"силы из врагов для восстановления себя."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
-msgstr ""
+msgstr "Мёртвый Пожиратель"
 
 #: data/units/Necrophage.cfg:16
 msgid ""
@@ -5548,6 +5729,8 @@ msgid ""
 "attacks from enemies. However they have the potential to become great "
 "Commanders one day."
 msgstr ""
+"Молодые и дерзкие, Бойцы дерутся с мечом и уязвимы вражеским атакам с "
+"расстояния. Тем не менее, однажды они могут стать великими Командирами."
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
@@ -5632,6 +5815,9 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"Орки Ворчуны составляют основу сил орков. Хотя они медлительны по сравнению "
+"с с бойцами людей или эльфов, они могут наносить болше мощных ударов и "
+"получать больше порежднгий перед боем."
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
@@ -5701,13 +5887,15 @@ msgstr ""
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "Орк Наёмный Убийца"
 
 #: data/units/Orcish_Slayer.cfg:16
 msgid ""
 "Orcish Slayers are fast and nimble, competent in short- and long-ranged "
 "combat, and use a poison attack. They make formidable opponents."
 msgstr ""
+"Орки Наёмные Убийцы быстры и проворны, хорошо владеют навыками ближнего и "
+"дального боя и используют яд для атак. Это делает их опасными соперниками."
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
@@ -5743,6 +5931,9 @@ msgid ""
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
+"Мастера в искусстве битвы двумя мечами, Орки Воины весьма уважаемы среди "
+"Орков и очень грозны для врагов. У них только одна слабость - неспособность "
+"противостоять стрелам."
 
 #: data/units/Outlaw.cfg:3
 msgid "Outlaw"
@@ -5759,6 +5950,8 @@ msgstr "Изгнанная"
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
 msgstr ""
+"Изгои лучше сражаются ночью. Женщины-Изгои хорошо осмотрятся, прежде чем "
+"сделают что-либо."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
@@ -5771,6 +5964,10 @@ msgid ""
 "the life of an Outlaw. She dreams of founding her own Queendom with the "
 "plunder she finds on the road."
 msgstr ""
+"Благородная от рождения, Принцесса изучала искусство меча с великими "
+"генералами, но она - продукт отверженной аристократии, которая пала ради "
+"жизни Изгнанной. Она мечтает найти своё богатое Королевство, которое она "
+"ищет в пути."
 
 #: data/units/Outlaw_Queen.cfg:3
 msgid "female^Outlaw Queen"
@@ -5799,6 +5996,8 @@ msgid ""
 "Knights of the highest virtue, Paladins have all the skills of the Knight, "
 "and can also heal adjacent friendly units."
 msgstr ""
+"Рыцари высших помыслов, Паладины имеют все навыки Рыцарей и может к тому же "
+"восстанавливать находящиеся рядом соединения."
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
@@ -5860,6 +6059,8 @@ msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
 msgstr ""
+"Браконьеры полагаются на свой охотничий опыт и очень ценны ночью в лесах и "
+"на болотах."
 
 #: data/units/Princess.cfg:20 data/units/Princess.cfg:58
 msgid ""
@@ -5887,7 +6088,7 @@ msgstr "Красная Волшебница"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
-msgstr "Возрождённые"
+msgstr "Возрождённый"
 
 #: data/units/Revenant.cfg:15
 msgid ""
@@ -5938,7 +6139,7 @@ msgstr ""
 #: data/units/Saurian_Ambusher.cfg:4
 #, fuzzy
 msgid "Saurian Ambusher"
-msgstr "Ящер Предсказатель"
+msgstr "Ящер Заклинатель Льда"
 
 #: data/units/Saurian_Ambusher.cfg:17
 msgid ""
@@ -5952,7 +6153,7 @@ msgstr ""
 #: data/units/Saurian_Flanker.cfg:4
 #, fuzzy
 msgid "Saurian Flanker"
-msgstr "Ящер Воин"
+msgstr "Ящер Заклинатель Льда"
 
 #: data/units/Saurian_Flanker.cfg:18
 msgid ""
@@ -5965,7 +6166,7 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
-msgstr ""
+msgstr "Ящер Заклинатель Льда"
 
 #: data/units/Saurian_Icecaster.cfg:17
 msgid ""
@@ -5977,7 +6178,7 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:19 data/units/Saurian_Tribalist.cfg:20
 msgid "skirmisher,heals"
-msgstr "застрельщик, целитель"
+msgstr "застрельщик,целитель"
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
@@ -5987,7 +6188,7 @@ msgstr "морозный порыв"
 #: data/units/Saurian_Skirmisher.cfg:4
 #, fuzzy
 msgid "Saurian Skirmisher"
-msgstr "Ящер Воин"
+msgstr "Ящер Предсказатель"
 
 #: data/units/Saurian_Skirmisher.cfg:17
 msgid ""
@@ -6010,7 +6211,7 @@ msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:20
 msgid "skirmisher,cures"
-msgstr "застрельщик, лекарь"
+msgstr "застрельщик,лекарь"
 
 #: data/units/Saurian_Tribalist.cfg:4
 msgid "Saurian Tribalist"
@@ -6051,7 +6252,7 @@ msgstr ""
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr "Морской орк"
+msgstr "Морской Орк"
 
 #: data/units/Sea_Orc.cfg:16
 msgid ""
@@ -6081,6 +6282,9 @@ msgid ""
 "stronger than other fighters, but he has hopes of advancing to greatness. As "
 "the leader of his unit, he must survive for the battle to be won."
 msgstr ""
+"Сержант - это офицер в званиях Королевской Армии. Он не сильнее других "
+"бойцов, но он подаёт надежды для скорейшего продвижения. Как лидер "
+"соединений, он должен выжить в битве чтобы победить."
 
 #: data/units/Shadow.cfg:3
 msgid "Shadow"
@@ -6092,6 +6296,9 @@ msgid ""
 "These incorporeal fiends are able to hide at night, leaving no trace of "
 "their presence."
 msgstr ""
+"Очернённые злом души, Тени бродят в ночи в поисках ничего неподозревающих "
+"врагов. Эти бестелесные демоны могут скрываться в ночи, уходя без следов "
+"своего присутствия."
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
@@ -6146,6 +6353,9 @@ msgid ""
 "dark magics. Like all undead, they are especially vulnerable to fire and "
 "holy spells, but resistant to bladed weapons."
 msgstr ""
+"Скелеты - это воины, павшие в битве и восставшие с помощью тёмной магии. Как "
+"и все мертвецы, они очень уязвимы огню и святым заклинаниям, но защищенны от "
+"холодного оружия."
 
 #: data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -6159,7 +6369,7 @@ msgid ""
 msgstr ""
 "Скелеты Лучники - это тела павших лучников, вернувшихся на поле битвы. Как и "
 "вся нежить, они особенно уязвимы огню и святой атаке, но хорошо защищены от "
-"холодного оружия."
+"режущего и колющего оружия."
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
@@ -6190,7 +6400,7 @@ msgstr "Бездушный"
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
-msgstr ""
+msgstr "Эти ходячие трупы стали сильнее после опыта долгих битв с живыми."
 
 #: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:24
 msgid "plague"
@@ -6207,6 +6417,9 @@ msgid ""
 "Because of the length of their spears, they strike first in combat, even "
 "when defending."
 msgstr ""
+"Копьеносецы являются основой армий людей. Эти молодые солдаты изучили основы "
+"боя и были призваны в ряды в большом количестве. Из-за длины своих копий, в "
+"бою они наносят удар первыми, даже если защищаются."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
@@ -6233,8 +6446,8 @@ msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting."
 msgstr ""
-"Меченосцы являются основой армий людей. Эти молодые люди получили основы боя "
-"и были призваны в ряды в большом количестве."
+"Меченосцы являются основой армий людей. Эти молодые солдаты изучили основы "
+"боя и были призваны в ряды в большом количестве."
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -6291,6 +6504,8 @@ msgid ""
 "Trappers usually work supplying food for bandits and outlaws. Their hunting "
 "experience makes them most valuable at night and in forests and swamps."
 msgstr ""
+"Звероловы в основном снабжают едой бандитов и изгоев. И охотничий опыт "
+"делает их очень ценными ночью в лесах и болотах."
 
 #: data/units/Triton.cfg:3
 msgid "Triton"
@@ -6306,6 +6521,9 @@ msgid ""
 "regenerate themselves, so that they recover from wounds on their own, even "
 "during battle."
 msgstr ""
+"Тролли - сильные и грубые человекообразные монстры с удивительной "
+"способностью регенерироваться, так что их раны залечиваются сами, даже во "
+"время битвы."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
@@ -6317,10 +6535,13 @@ msgid ""
 "to regenerate themselves, so that they recover from wounds on their own, "
 "even during battle."
 msgstr ""
+"Тролли Герои - сильные и грубые человекообразные монстры с удивительной "
+"способностью регенерироваться, так что их раны залечиваются сами, даже во "
+"время битвы."
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "Тролль Метатель Камней"
 
 #: data/units/Troll_Rocklobber.cfg:17
 msgid ""
@@ -6328,6 +6549,9 @@ msgid ""
 "recovering from their wounds during battle. These trolls have armed "
 "themselves with large rocks they hurl at their opponents."
 msgstr ""
+"Тролли - человекообразные монстры с удивительной способностью "
+"регенерироваться, так что их раны залечиваются сами, даже во время битвы.Эти "
+"Тролли вооружены большими булыжниками, которые они метают во врагов."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -6338,6 +6562,9 @@ msgid ""
 "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, and "
 "are able to regenerate, healing their own wounds during combat."
 msgstr ""
+"Закалённые в битве, Тролли Воины могут раздавать убийственные удары булавой "
+"и обладают способностью регенерироваться, залечивая свои раны даже во время "
+"битвы."
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
@@ -6387,6 +6614,9 @@ msgid ""
 "Although weak in combat, these zombies can spread their curse to those they "
 "kill, increasing the army of undead."
 msgstr ""
+"Ходячие трупы - это мёртвые тела, реанимированные тёмной магией. Хотя и "
+"слабые в бою, эти зомби могут распространять чуму на убитых ими, увеличивая "
+"армию нежити."
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
@@ -6415,6 +6645,9 @@ msgid ""
 "protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
 "units, thereby increasing their fighting efficiency."
 msgstr ""
+"Как лидеры Королевств людей, Короли ответственны за правление и защиту своих "
+"владений. Короли могут координировать атаки соединений 1 и 2 уровня, "
+"увеличивая их боеспособность."
 
 #: data/units/Watch_Tower.cfg:3
 msgid "Watch Tower"
@@ -6642,9 +6875,8 @@ msgid "+Contributors"
 msgstr "+Помощники"
 
 #: src/about.cpp:263
-#, fuzzy
 msgid "+Bots"
-msgstr "+ Боты"
+msgstr "+Боты"
 
 #: src/about.cpp:299 src/help.cpp:2566 src/show_dialog.cpp:498
 msgid "Close"
@@ -6984,21 +7216,20 @@ msgid "Error communicating with the server."
 msgstr "Ошибка при подключении к серверу."
 
 #: src/game.cpp:1044
-#, fuzzy
 msgid ",Name,Version,Author,Downloads,Size"
-msgstr ",Название,Версия,Автор,Загрузок"
+msgstr ",Имя,Версия,Автор,Загрузок,Размер"
 
 #: src/game.cpp:1063
 msgid "B"
-msgstr ""
+msgstr "Байт"
 
 #: src/game.cpp:1066 src/show_dialog.cpp:948
 msgid "KB"
-msgstr ""
+msgstr "КБайт"
 
 #: src/game.cpp:1069
 msgid "MB"
-msgstr ""
+msgstr "МБайт"
 
 #: src/game.cpp:1081
 msgid "Publish campaign: "
@@ -7956,7 +8187,7 @@ msgstr "квадратов"
 
 #: src/reports.cpp:256
 msgid "Lawful units"
-msgstr "Гражданские соединения"
+msgstr "Порядочные соединения"
 
 #: src/reports.cpp:258
 msgid "Neutral units"
@@ -8063,7 +8294,7 @@ msgstr "хаотичный"
 
 #: src/unit_types.cpp:892
 msgid "lawful"
-msgstr "гражданский"
+msgstr "порядочный"
 
 #: src/unit_types.cpp:892
 msgid "neutral"
@@ -8318,7 +8549,7 @@ msgstr "Ошибка удаления файла."
 #~ "\n"
 #~ "Некоторые соединения имеют специальные возможности, позволяющие увеличить "
 #~ "урон в бою. Большинство из них используют <ref>dst=ability_charge "
-#~ "text=Заряд</ref>, который удваивает наносимый урон атакующего и "
+#~ "text=Бросок</ref>, который удваивает наносимый урон атакующего и "
 #~ "обороняющегося."
 
 #~ msgid ""
@@ -8340,7 +8571,7 @@ msgstr "Ошибка удаления файла."
 #~ "Holy damage."
 #~ msgstr ""
 #~ "В Весноте есть три типа наносимых поврежднений, связанных с физической "
-#~ "атакой: Колющее, Холодное оружие и Удар. Также есть три типа повреждений, "
+#~ "атакой: Колющее, Режущее оружие и Удар. Также есть три типа повреждений, "
 #~ "связанных с магической атакой: Огонь, Холод и Святая атака. Разные "
 #~ "соединения имеют разную сопротивляемость против каждого типа атаки.\n"
 #~ "\n"
@@ -8350,7 +8581,7 @@ msgstr "Ошибка удаления файла."
 #~ "имеет -100% сопротивляемости против одного типа атаки, то оно получит на "
 #~ "100% больше урона от этого типа атаки. \n"
 #~ "\n"
-#~ "Например, Скелеты хорошо сопротивляются Колющему и Холодному оружию, но "
+#~ "Например, Скелеты хорошо сопротивляются Колющему и Режущему оружию, но "
 #~ "уязвимы Удару и Огню, и сильно уязвимы Святой атаке."
 
 #~ msgid ""
