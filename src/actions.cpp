@@ -1342,16 +1342,14 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 	adj[6] = loc;
 	for(int i = 0; i != 7; ++i) {
 		if(map.on_board(adj[i])) {
-			if(tm.fogged(adj[i].x,adj[i].y)) {
-				const bool res = tm.clear_shroud(adj[i].x,adj[i].y) ||
-				                 tm.clear_fog(adj[i].x,adj[i].y);
+			const bool res = tm.clear_shroud(adj[i].x,adj[i].y) ||
+								tm.clear_fog(adj[i].x,adj[i].y);
 
-				if(res && cleared != NULL) {
-					cleared->push_back(adj[i]);
-				}
-
-				result |= res;
+			if(res && cleared != NULL) {
+				cleared->push_back(adj[i]);
 			}
+
+			result |= res;
 		}
 	}
 
