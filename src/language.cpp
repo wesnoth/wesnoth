@@ -210,6 +210,7 @@ std::string wstring_to_utf8(const wide_string &src)
 			} else {
 				for(j = count-1; j >= 0; --j) {
 					unsigned char c = (ch >> (6*j)) & 0x3f;
+					c |= 0x80;
 					if(j == count-1)
 						c |= 0xff << (8 - count);
 					push_back(ret,c);

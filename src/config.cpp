@@ -43,6 +43,9 @@ bool isnewline(char c)
 //and they will work, by making sure the definition of whitespace is consistent
 bool portable_isspace(char c)
 {
+	// returns true only on ASCII spaces
+	if((unsigned char)c >= 128)
+		return false;
 	return isnewline(c) || isspace(c);
 }
 
