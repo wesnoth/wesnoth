@@ -423,6 +423,10 @@ void unit::heal_all()
 	hitpoints_ = max_hitpoints();
 }
 
+static bool is_terrain(std::string const &terrain, gamemap::TERRAIN type) {
+	return std::count(terrain.begin(), terrain.end(), static_cast<gamemap::TERRAIN>(type));
+}
+
 bool unit::invisible(const std::string& terrain, int lawful_bonus, 
 		const gamemap::location& loc, 
 		const unit_map& units,const std::vector<team>& teams) const
@@ -430,8 +434,7 @@ bool unit::invisible(const std::string& terrain, int lawful_bonus,
 	bool is_inv = false;
 
 	static const std::string forest_invisible("ambush");
-	if ((has_flag(forest_invisible)) &&
-		(std::count(terrain.begin(), terrain.end(), gamemap::FOREST))) {
+	if (has_flag(forest_invisible) && is_terrain(terrain, gamemap::FOREST)) {
 		is_inv = true;
 	}
 	else
@@ -443,11 +446,10 @@ bool unit::invisible(const std::string& terrain, int lawful_bonus,
 		else
 		{
 			static const std::string sea_invisible("submerge");
-			if ((has_flag(sea_invisible)) &&
-				((std::count(terrain.begin(), terrain.end(), gamemap::SEA)) ||
-				(std::count(terrain.begin(), terrain.end(), gamemap::DEEP_SEA)))) {
-					is_inv = true;
-				}
+			if (has_flag(sea_invisible) &&
+			    (is_terrain(terrain, gamemap::SEA) || is_terrain(terrain, gamemap::DEEP_SEA))) {
+				is_inv = true;
+			}
 		}
 	}
 
