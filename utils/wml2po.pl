@@ -9,6 +9,8 @@
 
 # TODO:
 # - how to permanently get rid of this supurious c-format keyword ?
+# - maybe try to detect when a single english string was translated in
+# different ways, instead of just taking the 1st version ?
 
 use strict;
 
@@ -140,7 +142,7 @@ foreach my $wmlfile (@wmlfiles) {
 
 # reverse the hash to use the strings to find the id
 foreach my $key (keys %english) {
-  $revenglish{$english{$key}} = $key;
+  push @{$revenglish{$english{$key}}}, $key;
 }
 
 # get translations from wml file
@@ -187,7 +189,8 @@ if ($n == 0) {
   print STDERR "\nFINAL WORD: ALL $migrated TRANSLATIONS MIGRATED !\n";
 } else {
   my $total = $migrated+$n;
-  print STDERR "\nFINAL WARNING: the following $n/$total translations were NOT migrated:\n";
+  my $percent = (100 * $n) / $total;
+  print STDERR "\nFINAL WARNING: the following $n/$total ($percent\%) translations were NOT migrated:\n";
   foreach my $key (keys %lang) {
     print STDERR $key, ' = "', $lang{$key}, "\"\n";
   }
@@ -208,13 +211,15 @@ sub processentry {
   # lookup
 
   if ($curmsg eq "\"\"\n") {
-    my $id = $revenglish{po2rawstring($curid)};
-    if (defined $id) {
+    my $ids = $revenglish{po2rawstring($curid)};
+    if (defined $ids) {
+      my $id = $ids->[0];
       my $trans = $lang{$id};
       if (defined $trans) {
 	$output = raw2postring($trans);
 	$touched = 1;
-	delete $lang{$id}; delete $english{$id};
+	foreach my $anid (@{$ids}) { delete $lang{$anid}; };
+	delete $english{$id};
 	$migrated++;
       } else {
 	# print STDERR "WARNING: no translation found for $id - setting to empty\n";
