@@ -73,9 +73,7 @@ int main(int argc, char** argv)
 
 	std::map<gamemap::location,unit> units;
 	display gui(units,video,map,status,teams);
-	gui.draw_terrain_palette(gui.mapx()+10,150,0);
-
-	gamemap::TERRAIN selected_terrain = 0;
+//	gui.draw_terrain_palette(gui.mapx()+10,150,0);
 
 	bool first_time = true;
 
@@ -83,9 +81,18 @@ int main(int argc, char** argv)
 
 	std::vector<std::string> terrain_names;
 	const std::vector<gamemap::TERRAIN> terrains = map.get_terrain_precedence();
+	if(terrains.empty()) {
+		std::cerr << "No terrain found\n";
+		return 0;
+	}
+
 	for(std::vector<gamemap::TERRAIN>::const_iterator t = terrains.begin(); t != terrains.end(); ++t) {
 		terrain_names.push_back(map.terrain_name(*t));
 	}
+
+	gui::menu terrain_menu(gui,terrain_names);
+	terrain_menu.set_width((gui.x() - gui.mapx()) - 5);
+	terrain_menu.set_loc(gui.mapx()+2,200);
 
 	std::cerr << "starting for(;;)\n";
 	for(;;) {
@@ -120,17 +127,12 @@ int main(int argc, char** argv)
 
 		gui.highlight_hex(gui.hex_clicked_on(mousex,mousey));
 		if(new_left_button) {
-			const gamemap::TERRAIN terrain_on =
-			               gui.get_terrain_on(gui.mapx()+10,150,mousex,mousey);
-			if(terrain_on && terrain_on != selected_terrain) {
-				selected_terrain = terrain_on;
-				gui.draw_terrain_palette(gui.mapx()+10,150,selected_terrain);
-			}
 
 			const gamemap::location hex = gui.hex_clicked_on(mousex,mousey);
 			if(map.on_board(hex)) {
+				const gamemap::TERRAIN selected_terrain = terrains[terrain_menu.selection()];
 				const gamemap::TERRAIN terrain = map[hex.x][hex.y];
-				if(selected_terrain && selected_terrain != terrain) {
+				if(selected_terrain != terrain) {
 					map.set_terrain(hex,selected_terrain);
 					gui.recalculate_minimap();
 
@@ -144,11 +146,15 @@ int main(int argc, char** argv)
 			}
 		}
 
-		gui.draw();
+		gui.draw(false);
+
+		terrain_menu.process(mousex,mousey,new_left_button,false,false,false,false);
+
+		gui.update_display();
 
 		if(first_time) {
-			std::cerr << "drawing terrain pallette...\n";
-			gui.draw_terrain_palette(gui.mapx()+10,150,0);
+//			std::cerr << "drawing terrain pallette...\n";
+//			gui.draw_terrain_palette(gui.mapx()+10,150,0);
 			first_time = false;
 		}
 
