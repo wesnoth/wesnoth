@@ -65,50 +65,39 @@ std::vector<std::string> font_names;
 
 struct text_chunk
 {
-	text_chunk(subset_id subset, const std::string& text) : subset(subset), text(text) {};
-
+	text_chunk(subset_id subset) : subset(subset) {}
+	text_chunk(subset_id subset, std::string const & text) : subset(subset), text(text) {}
+	text_chunk(subset_id subset, ucs2_string const & ucs2_text) : subset(subset), ucs2_text(ucs2_text) {}
+	text_chunk(subset_id subset, std::string const & text, ucs2_string const & ucs2_text) : subset(subset), text(text), ucs2_text(ucs2_text) {}
 	subset_id subset;
 	std::string text;
+	ucs2_string ucs2_text;
 };
 
 std::vector<subset_id> font_map;
 
-//Splits the UTF-8 text into chunks of UTF-8 text using the same font.
-//Converts UTF-8 bytes into one wchar_t at a time and gets the subset
-//id for it. The correspondending UTF-8 bytes then are appended to a 
-//chunk.
-std::vector<text_chunk> split_text(const std::string& utf8_text) {
-	bool first = true;
-	int current_font = 0;
-	std::string current_chunk;
+//Splits the UTF-8 text into text_chunks using the same font.
+std::vector<text_chunk> split_text(std::string const & utf8_text) {
+	text_chunk current_chunk(0);
 	std::vector<text_chunk> chunks;
 	
 	try {
-		//size_t i = 0;
-		for(utils::utf8_iterator ch(utf8_text); ch != utils::utf8_iterator::end(utf8_text); ++ch) {
-			
-			if(first) {
-				if(*ch < font_map.size() && font_map[*ch] >= 0) {
-					current_font = font_map[*ch];
-				} else {
-					current_font = 0;
-				}
-				first = false;
-			}
-			
-			if(*ch >= font_map.size() || font_map[*ch] < 0) {
-				current_chunk.append(ch.substr().first, ch.substr().second);
-			} else if(font_map[*ch] == current_font) {
-				current_chunk.append(ch.substr().first, ch.substr().second);
-			} else {
-				chunks.push_back(text_chunk(current_font, current_chunk));
-				current_chunk.clear();
-				current_chunk.append(ch.substr().first, ch.substr().second);
-				current_font = font_map[*ch];
-			}
+		utils::utf8_iterator ch(utf8_text);
+		if(*ch < font_map.size() && font_map[*ch] >= 0) {
+			current_chunk.subset = font_map[*ch];
 		}
-		if (!current_chunk.empty()) {
-			chunks.push_back(text_chunk(current_font, current_chunk));
+		for(; ch != utils::utf8_iterator::end(utf8_text); ++ch) {
+			if(*ch < font_map.size() && font_map[*ch] >= 0 && font_map[*ch] != current_chunk.subset) {
+				chunks.push_back(current_chunk);
+				current_chunk.text.clear();
+				current_chunk.ucs2_text.clear();
+				current_chunk.subset = font_map[*ch];
+			}
+			current_chunk.ucs2_text.push_back((Uint16)*ch);
+			current_chunk.text.append(ch.substr().first, ch.substr().second);
+		}
+		if (!current_chunk.text.empty()) {
+			chunks.push_back(current_chunk);
 		}
 	}
 	catch(utils::invalid_utf8_exception e) {
@@ -612,7 +601,7 @@ SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::
 			font_style_setter const style_setter(ttfont, style);
 			TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), (int*)&rect.x, (int*)&rect.y);
 			rect.w += rect.x;
-			rect.h = maximum<int>(rect.h, rect.y);
+			rect.h = maximum<Sint16>(rect.h, rect.y);
 			chunk.clear();
 			current_font = font_map[*first];
 		}
@@ -620,11 +609,16 @@ SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::
 	}
 	if (!chunk.empty()) {
 		TTF_Font* ttfont = get_font(font_id(current_font, font_size));
+		if(ttfont == NULL) {
+			rect.x = 0;
+			rect.y = 0;
+			return rect;
+		}
 		chunk.push_back(0);
 		font_style_setter const style_setter(ttfont, style);
 		TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), (int*)&rect.x, (int*)&rect.y);
 		rect.w += rect.x;
-		rect.h = maximum<int>(rect.h, rect.y);
+		rect.h = maximum<Sint16>(rect.h, rect.y);
 	}
 	rect.x = 0;
 	rect.y = 0;
