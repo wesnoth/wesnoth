@@ -54,6 +54,7 @@ public:
 	void write(config& cfg) const;
 
 	const time_of_day& get_time_of_day() const;
+	const time_of_day& get_previous_time_of_day() const;
 	const time_of_day& get_time_of_day(bool illuminated, const gamemap::location& loc) const;
 	size_t turn() const;
 	size_t number_of_turns() const;
@@ -86,6 +87,8 @@ public:
 	};
 
 private:
+	const time_of_day& get_time_of_day_turn(int nturn) const;
+
 	std::vector<time_of_day> times_, illuminatedTimes_;
 
 	struct area_time_of_day {

@@ -564,7 +564,7 @@ void process_send_queue(connection connection_num, size_t max_size)
 		std::cerr << "sending " << bytes_to_send << " from send queue\n";
 
 		const int res = SDLNet_TCP_Send(sock,&buf[upto],bytes_to_send);
-		if(res < int(bytes_to_send)) {
+		if(res != int(bytes_to_send)) {
 			std::cerr << "sending data failed: " << res << "/" << bytes_to_send << "\n";
 			throw error("Sending queued data failed",connection_num);
 		}
@@ -575,6 +575,8 @@ void process_send_queue(connection connection_num, size_t max_size)
 		if(upto == buf.size()) {
 			std::cerr << "erasing item from the send queue\n";
 			send_queue.erase(itor.first);
+		} else if(upto > buf.size()) {
+			std::cerr << "ERROR: buffer overrun sending data\n";
 		}
 
 		//if we haven't sent 'max_size' bytes yet, try to go onto the next item in

@@ -60,7 +60,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 					   currentTeam_(0), activeTeam_(0), hideEnergy_(false),
 					   deadAmount_(0.0), advancingAmount_(0.0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
-					   theme_(theme_cfg,screen_area()), firstTurn_(true), map_labels_(*this,map)
+					   theme_(theme_cfg,screen_area()), firstTurn_(true), map_labels_(*this,map),
+					   tod_hex_mask1(NULL), tod_hex_mask2(NULL)
 {
 	if(non_interactive())
 		updatesLocked_++;
@@ -70,8 +71,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	create_buttons();
 
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
-
-	new_turn();
 
 	image::set_zoom(zoom_);
 
@@ -116,32 +115,49 @@ Uint32 display::rgb(Uint8 red, Uint8 green, Uint8 blue)
 
 void display::new_turn()
 {
-/*	int r,g,b;
-	image::get_colour_adjustment(&r,&g,&b);
-
 	const time_of_day& tod = status_.get_time_of_day();
-	const int red = tod.red - r;
-	const int green = tod.green - g;
-	const int blue = tod.blue - b;
 
-	const int niterations = turbo() || firstTurn_ || (!red && !green && !blue) ? 0 : 10;
+	if(!turbo() && !firstTurn_) {
+		image::set_image_mask("");
+
+		const time_of_day& old_tod = status_.get_previous_time_of_day();
+
+		if(old_tod.image_mask != tod.image_mask) {
+			const scoped_sdl_surface old_mask(image::get_image(old_tod.image_mask,image::UNMASKED));
+			const scoped_sdl_surface new_mask(image::get_image(tod.image_mask,image::UNMASKED));
+
+			const int niterations = 10;
+			const int frame_time = 30;
+			const int starting_ticks = SDL_GetTicks();
+			for(int i = 0; i != niterations; ++i) {
+
+				if(old_mask != NULL) {
+					const double proportion = 1.0 - double(i)/double(niterations);
+					tod_hex_mask1.assign(adjust_surface_alpha(old_mask,proportion));
+				}
+
+				if(new_mask != NULL) {
+					const double proportion = double(i)/double(niterations);
+					tod_hex_mask2.assign(adjust_surface_alpha(new_mask,proportion));
+				}
+
+				invalidate_all();
+				draw();
+
+				const int cur_ticks = SDL_GetTicks();
+				const int wanted_ticks = starting_ticks + i*frame_time;
+				if(cur_ticks < wanted_ticks) {
+					SDL_Delay(wanted_ticks - cur_ticks);
+				}
+			}	
+		}
+
+		tod_hex_mask1.assign(NULL);
+		tod_hex_mask2.assign(NULL);
+	}
+
 	firstTurn_ = false;
 
-	const int frame_time = 30;
-	const int starting_ticks = SDL_GetTicks();
-	for(int i = 0; i != niterations; ++i) {
-		image::set_colour_adjustment(r+(i*red)/niterations,g+(i*green)/niterations,b+(i*blue)/niterations);
-		invalidate_all();
-		draw();
-
-		const int cur_ticks = SDL_GetTicks();
-		const int wanted_ticks = starting_ticks + i*frame_time;
-		if(cur_ticks < wanted_ticks) {
-			SDL_Delay(wanted_ticks - cur_ticks);
-		}
-	}
-*/
-	const time_of_day& tod = status_.get_time_of_day();
 	image::set_colour_adjustment(tod.red,tod.green,tod.blue);
 	image::set_image_mask(tod.image_mask);
 }
@@ -1294,9 +1310,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 
 	const time_of_day& tod = status_.get_time_of_day();
 	const time_of_day& tod_at = timeofday_at(status_,units_,loc);
-	std::string mask;
-	if(tod.image_mask != tod_at.image_mask) {
-		std::cerr << "drawing unmasked image at " << (x+1) << "," << (y+1) << "\n";
+	std::string mask = tod_at.image_mask;
+	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL || tod.image_mask != tod_at.image_mask) {
 		image_type = image::UNMASKED;
 		mask = tod_at.image_mask;
 	}
@@ -1352,12 +1367,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 		}
 	}
 
-	if(mask != "") {
-		scoped_sdl_surface img(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(img,NULL,dst,&dstrect);
-	}
-
 	if(!is_shrouded) {
 		draw_footstep(loc,xpos,ypos);
 	}
@@ -1374,6 +1383,23 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 
 	if(!shrouded(x,y)) {
 		draw_tile_adjacent(x,y,image_type,ADJACENT_FOREGROUND);
+	}
+
+	//draw the time-of-day mask on top of the hex
+	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
+		if(tod_hex_mask1 != NULL) {
+			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+			SDL_BlitSurface(tod_hex_mask1,NULL,dst,&dstrect);
+		}
+
+		if(tod_hex_mask2 != NULL) {
+			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+			SDL_BlitSurface(tod_hex_mask2,NULL,dst,&dstrect);
+		}
+	} else if(mask != "") {
+		scoped_sdl_surface img(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
+		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+		SDL_BlitSurface(img,NULL,dst,&dstrect);
 	}
 
 	if(grid_) {

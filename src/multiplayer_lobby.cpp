@@ -50,6 +50,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data)
 
 	bool last_escape = true;
 
+	int game_selection = 0, user_selection = 0;
+
 	for(;;) {
 		SDL_BlitSurface(background, NULL, disp.video().getSurface(), NULL);
 
@@ -80,6 +82,11 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data)
 			std::cerr << "game data here:" << (**i.first).write() << "end game data here\n";
 
 			std::stringstream str;
+
+			//if this is the item that should be selected, make it selected by default
+			if(game_selection-- == 0) {
+				str << "*";
+			}
 
 			std::string map_data = (**i.first)["map_data"];
 			if(map_data == "") {
@@ -143,6 +150,11 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data)
 			//display unavailable players in red
 			if(avail == "no") {
 				name.insert(name.begin(),'#');
+			}
+
+			//if this user should be selected
+			if(user_selection-- == 0) {
+				name.insert(name.begin(),'*');
 			}
 
 			users.push_back(name);
@@ -227,6 +239,9 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data)
 
 			events::raise_process_event();
 			events::raise_draw_event();
+
+			user_selection = users_menu.selection();
+			game_selection = games_menu.selection();
 
 			config data;
 

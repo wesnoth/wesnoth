@@ -436,6 +436,10 @@ private:
 
 	std::vector<chat_message> chat_messages_;
 
+	//if we're transitioning from one time of day to the next,
+	//then we will use these two masks on top of all hexes when we blit
+	shared_sdl_surface tod_hex_mask1, tod_hex_mask2;
+
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;
 };

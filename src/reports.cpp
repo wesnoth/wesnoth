@@ -299,13 +299,17 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	case SIDE_PLAYING: {
 		char buf[50];
 		sprintf(buf,"terrain/flag-team%d.png",playing_side);
-		return report("",buf,"");
+
+		u = find_leader(units,playing_side);
+		return report("",buf,u != units.end() ? u->second.description() : "");
 	}
 
 	case OBSERVERS: {
 		if(observers.empty()) {
 			return report();
 		}
+
+		str << translate_string("observers") << ":\n";
 
 		for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
 			str << *i << "\n";
