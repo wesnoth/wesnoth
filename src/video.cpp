@@ -254,11 +254,6 @@ SDL_Surface* CVideo::getSurface( void )
 
 bool CVideo::isFullScreen() const { return fullScreen; }
 
-void CVideo::setBitsPerPixel( int bpp )
-{
-	frameBuffer->format->BitsPerPixel = bpp;
-}
-
 void CVideo::setBpp( int bpp )
 {
 	this->bpp = bpp;

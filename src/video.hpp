@@ -58,7 +58,6 @@ class CVideo {
 	struct quit {};
 
 	//functions to allow changing video modes when 16BPP is emulated
-	void setBitsPerPixel( int bpp );
 	void setBpp( int bpp );
 	int getBpp();
      private:
