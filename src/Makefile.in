@@ -501,7 +501,8 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/scrollbar.hpp \
 		  widgets/slider.hpp \
 		  widgets/textbox.hpp \
-		  widgets/widget.hpp
+		  widgets/widget.hpp \
+		  wesconfig.h
 
 
 #############################################################################
@@ -640,7 +641,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/textbox.hpp \
 			 widgets/scrollbar.hpp \
 			 widgets/slider.hpp \
-			 widgets/widget.hpp
+			 widgets/widget.hpp \
+			 wesconfig.h
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -DLOCALEDIR=\"$(localedir)\" \
 	-I../intl -I$(top_srcdir)/intl
