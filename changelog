@@ -13,16 +13,17 @@ CVS HEAD:
  * campaign modifications
   * tutorial polishing
   * updated HttT, TDH, TRoW, SotBE, and the Tutorial to use the new [objectives] tag
-  * updated 'The Siege of Elensefar', 'Mountian Pass', 'The Swamp of Esten', and 'A Final Spring' to
+  * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to
     use the new ford terrain (HttT & TRoW).
   * updated the behaviour of the thieves in 'The Siege of Elensefar' (HttT)
-  * updated Haldric's portrait in TRoW
-  * added graphics for generic Lich-Lords and the Archmages in 'The Sewer of Southbay' (TRoW)
   * updated HttT and TRoW to use the ruined keeps where appropriate
   * dialog improvements in EI
   * new map for Drowned Plains (EI)
   * changed the Wesfolk Leader's guards to poachers in "The Fall" (TRoW)
  * unit modifications
+  * updated Haldric's portrait in TRoW
+  * added graphics for generic Lich-Lords and the Archmages in 'The Sewer of Southbay' (TRoW)
+  * new images for Haldric and Lady Jessica
   * added support for animated deaths, and added animations for skeleton and revenant
   * balancing of water units: swimmer units (merfolk) have defense on water and swamp reduced by 
     10%. Merman Hunter cost: 13 -> 15. Melee attack: 5-2 -> 4-2. Naga have defense on shallow water 
@@ -51,10 +52,9 @@ CVS HEAD:
  * multiplayer improvements
   * rewrite of mp lobby code
   * changed Broken_Bridge to use new ruined castles
-  * added new multiplayer map: Icy Waters
+  * added new multiplayer maps: Icy Waters, Clash
   * changed King_of_the_Hill to use a Dwarvish Castle
   * messages are now displayed in the user's colour when prefixed with /me
-  * added the map 'Clash'
   * split the map and scenario file for 'An Island'
  * fixed bug that made the ai recruit badly
  * added debug command to give gold to current side
