@@ -621,7 +621,7 @@ void undraw_floating_labels(SDL_Surface* screen)
 	for(label_map::iterator i = labels.begin(); i != labels.end(); ) {
 		i->second.undraw(screen);
 		if(i->second.expired()) {
-			i = labels.erase(i);
+			labels.erase(i++);
 		} else {
 			++i;
 		}
