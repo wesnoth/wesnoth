@@ -35,8 +35,8 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 	const double yratio = static_cast<double>(surface->h)/
 			              static_cast<double>(h);
 
-	const int srcxpad = is_odd(surface->w);
-	const int dstxpad = is_odd(dest->w);
+	const int srcxpad = is_odd(surface->w) ? 1:0;
+	const int dstxpad = is_odd(dest->w) ? 1:0;
 
 	surface_lock dstlock(dest);
 	surface_lock srclock(surface);
@@ -58,6 +58,33 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 	}
 
 	return dest;
+}
+
+void adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
+{
+	if(r == 0 && g == 0 && b == 0)
+		return;
+
+	const int xpad = is_odd(surface->w) ? 1:0;
+
+	short* pixel = reinterpret_cast<short*>(surface->pixels);
+	for(int y = 0; y != surface->h; ++y, pixel += xpad) {
+		const short* const end = pixel + surface->w;
+		while(pixel != end) {
+			if(*pixel != 0 && *pixel != 0xFF) {
+				Uint8 red, green, blue;
+				SDL_GetRGB(*pixel,surface->format,&red,&green,&blue);
+
+				red = maximum<int>(8,minimum<int>(255,int(red)+r));
+				green = maximum<int>(0,minimum<int>(255,int(green)+g));
+				blue  = maximum<int>(0,minimum<int>(255,int(blue)+b));
+
+				*pixel = SDL_MapRGB(surface->format,red,green,blue);
+			}
+
+			++pixel;
+		}
+	}
 }
 
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)

@@ -133,6 +133,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				gui.draw();
 			}
 
+			gui.new_turn();
 			gui.invalidate_game_status();
 
 			for(std::vector<team>::iterator team_it = teams.begin();

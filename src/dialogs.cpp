@@ -85,12 +85,15 @@ void show_objectives(display& disp, config& level_info)
 {
 	static const std::string no_objectives(string_table["no_objectives"]);
 	const std::string& id = level_info.values["id"];
+	const std::string& lang_name = string_table[id];
+	const std::string& name = lang_name.empty() ? level_info.values["name"] :
+	                                              lang_name;
 	const std::string& lang_objectives = string_table[id + "_objectives"];
 
 	const std::string& objectives = lang_objectives.empty() ?
 	        level_info.values["objectives"] : lang_objectives;
-	gui::show_dialog(disp, NULL, "",
-	            objectives.empty() ? no_objectives : objectives, gui::OK_ONLY);
+	gui::show_dialog(disp, NULL, "", "+" + name + "\n" +
+	         (objectives.empty() ? no_objectives : objectives), gui::OK_ONLY);
 
 }
 

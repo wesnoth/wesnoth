@@ -118,6 +118,13 @@ display::~display()
 	SDL_FreeSurface(minimap_);
 }
 
+void display::new_turn()
+{
+	clear_surfaces(scaledImages_);
+	clear_surfaces(greyedImages_);
+	clear_surfaces(brightenedImages_);
+}
+
 int display::x() const { return screen_.getx(); }
 int display::mapx() const { return x() - 140; }
 int display::y() const { return screen_.gety(); }
@@ -490,7 +497,6 @@ void display::draw_game_status(int x, int y)
 	rect.w = this->x() - x;
 
 	const time_of_day& tod = timeofday_at(status_,units_,mouseoverHex_);
-
 
 	SDL_Surface* const tod_surface = getImage(tod.image,UNSCALED);
 
@@ -1530,6 +1536,9 @@ SDL_Surface* display::getImage(const std::string& filename,
 
 	if(new_surface == NULL)
 		return NULL;
+
+	const time_of_day& tod = status_.get_time_of_day();
+	adjust_surface_colour(new_surface,tod.red,tod.green,tod.blue);
 
 	scaledImages_.insert(std::pair<std::string,SDL_Surface*>(filename,
 								                             new_surface));

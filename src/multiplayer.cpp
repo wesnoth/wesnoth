@@ -88,7 +88,7 @@ int connection_acceptor::do_action()
 			if(i->second == e.socket) {
 				changes = true;
 				i->second = 0;
-				i->first.values.erase("taken");
+				i->first->values.erase("taken");
 			}
 		}
 

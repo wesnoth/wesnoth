@@ -38,6 +38,8 @@ public:
 			const std::vector<team>& t);
 	~display();
 
+	void new_turn();
+
 	Pixel rgb(int r, int g, int b) const;
 
 	void scroll(double xmov, double ymov);
