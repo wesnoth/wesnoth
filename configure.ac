@@ -549,7 +549,6 @@ fi
 # Symlinks that allow message catalogs to be used from build tree     #
 #######################################################################
 
-set -x
 for lang in `cat po/LINGUAS`
 do
     mkdir -p po/$lang/LC_MESSAGES
@@ -559,7 +558,6 @@ do
 	ln -s ../$domain.gmo po/$lang/LC_MESSAGES/$domain.mo
     done
 done
-set +x
 
 #######################################################################
 # Data file substitution.                                             #
