@@ -67,7 +67,7 @@ int main()
 						continue;
 					}
 
-					//check the username is valid (all alnum)
+					//check the username is valid (all alpha-numeric)
 					const std::string& username = (*login)["username"];
 					if(std::count_if(username.begin(),username.end(),isalnum)
 					   != username.size() || username.empty()) {
@@ -86,7 +86,7 @@ int main()
 
 					if(p != players.end()) {
 						network::send_data(construct_error(
-						                   "This username is already taken"));
+						              "This username is already taken"),sock);
 						continue;
 					}
 					

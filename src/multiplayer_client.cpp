@@ -169,20 +169,33 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 	//if we got a direction to login
 	if(data.child("mustlogin")) {
-		std::string login = preferences::login();
-		const int res = gui::show_dialog(disp,NULL,"",
-		                    "You must login to this server",gui::OK_CANCEL,
-		                    NULL,NULL,"Login: ",&login);
-		if(res != 0 || login.empty()) {
-			return;
-		}
 
-		config response;
-		response.add_child("login")["username"] = login;
-		network::send_data(response);
+		config* error = NULL;
 
-		data_res = network::receive_data(data,0,5000);
-		check_response(data_res,data);
+		do {
+			if(error != NULL) {
+				gui::show_dialog(disp,NULL,"",(*error)["message"],gui::OK_ONLY);
+			}
+
+			std::string login = preferences::login();
+			const int res = gui::show_dialog(disp,NULL,"",
+			                    "You must log in to this server",gui::OK_CANCEL,
+			                    NULL,NULL,"Login: ",&login);
+			if(res != 0 || login.empty()) {
+				return;
+			}
+
+			config response;
+			response.add_child("login")["username"] = login;
+			network::send_data(response);
+	
+			data_res = network::receive_data(data,0,5000);
+			if(!data_res) {
+				throw network::error(string_table["connection_timeout"]);
+			}
+
+			error = data.child("error");
+		} while(error != NULL);
 	}
 
 	//if we got a gamelist back - otherwise we have
