@@ -419,7 +419,8 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 				} else if(result < int(choices.size()/3)*2) {
 					controller = "ai";
 					result -= choices.size()/3;
-					sides[res]->values["description"] = "";
+					sides[res]->values["description"] =
+					                string_table["ai_controlled"];
 				} else {
 					controller = "network";
 					result -= (choices.size()/3)*2;

@@ -375,12 +375,10 @@ void display::bounds_check_position()
 
 	if(zoom_ < min_zoom) {
 		zoom_ = min_zoom;
-		image::set_zoom(zoom_);
 	}
 
 	if(zoom_ > max_zoom) {
 		zoom_ = max_zoom;
-		image::set_zoom(zoom_);
 	}
 
 	const double xend = zoom_*map_.x()*0.75 + zoom_*0.25;
@@ -1449,7 +1447,7 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 	image += direction + ".png";
 
 	SDL_Surface* im = image::get_image(image,image_type);
-	if(im == NULL) {
+	if(im == NULL && direction.empty()) {
 		im = image::get_image("terrain/" +
 		        map_.get_terrain_info(terrain).default_image() + ".png");
 	}
