@@ -256,8 +256,8 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 				if(use_cache) {
 					try {
 						if(file_exists(fname_checksum)) {
-							config const checksum_cfg;
-							read(cfg, read_file(fname_checksum));
+							config checksum_cfg;
+							read(checksum_cfg, read_file(fname_checksum));
 							dir_checksum = file_tree_checksum(checksum_cfg);
 						}
 					} catch(config::error&) {
