@@ -713,6 +713,10 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 bool turn_info::move_unit_along_current_route(bool check_shroud)
 {
 	const std::vector<gamemap::location> steps = current_route_.steps;
+	if(steps.empty()) {
+		return false;
+	}
+
 	const size_t moves = ::move_unit(&gui_,gameinfo_,status_,map_,units_,teams_,
 	                   steps,&recorder,&undo_stack_,&next_unit_,false,check_shroud);
 
