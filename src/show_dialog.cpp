@@ -414,12 +414,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 		button_offset += buttons[button_num].width();
 	}
 
-	SDL_Rect dlgr;
-	dlgr.x=xloc-10;
-	dlgr.y=yloc-10;
-	dlgr.w=total_width+20;
-	dlgr.h=total_height+20;
-	SDL_Surface *original = get_surface_portion(disp.video().getSurface(),dlgr);
+	SDL_Rect dlgr = {xloc-10,yloc-10,total_width+20,total_height+20};
+
+	const surface_restorer restorer(disp.video().getSurface(),dlgr);
+
 	draw_dialog_frame(xloc,yloc,total_width,total_height,disp);
 
 	if(menu_.height() > 0)
@@ -524,22 +522,13 @@ int show_dialog(display& disp, SDL_Surface* image,
 				*text_widget_text = text_widget.text();
 
 			if(menu_.height() == 0) {
-				SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-				SDL_FreeSurface(original);
-				update_rect(dlgr);
 				return 0;
 			} else {
-				SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-				SDL_FreeSurface(original);
-				update_rect(dlgr);
 				return menu_.selection();
 			}
 		}
 
 		if(!key_down && key[SDLK_ESCAPE] && type == MESSAGE) {
-			SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-			SDL_FreeSurface(original);
-			update_rect(dlgr);
 			return -1;
 		}
 
@@ -547,14 +536,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 		   (type == YES_NO || type == OK_CANCEL)) {
 
 			if(menu_.height() == 0) {
-				SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-				SDL_FreeSurface(original);
-				update_rect(dlgr);
 				return 1;
 			} else {
-				SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-				SDL_FreeSurface(original);
-				update_rect(dlgr);
 				return -1;
 			}
 		}
@@ -590,9 +573,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 			                              select_item);
 			if(res != -1)
 			{
-				SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-				SDL_FreeSurface(original);
-				update_rect(dlgr);
 				return res;	
 			}
 		}
@@ -628,20 +608,11 @@ int show_dialog(display& disp, SDL_Surface* image,
 				//item selected if the last button is not pressed, and
 				//cancel (-1) otherwise
 				if(menu_.height() == 0) {
-					SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-					SDL_FreeSurface(original);
-					update_rect(dlgr);
 					return button_it - buttons.begin();
 				} else if(buttons.size() <= 1 ||
 				       size_t(button_it-buttons.begin()) != buttons.size()-1) {
-					SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-					SDL_FreeSurface(original);
-					update_rect(dlgr);
 					return menu_.selection();
 				} else {
-					SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-					SDL_FreeSurface(original);
-					update_rect(dlgr);
 					return -1;
 				}
 			}
@@ -656,9 +627,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 		if(action != NULL) {
 			const int act = action->do_action();
 			if(act != dialog_action::CONTINUE_DIALOG) {
-				SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-				SDL_FreeSurface(original);
-				update_rect(dlgr);
 				return act;
 			}
 		}
@@ -667,9 +635,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 		SDL_Delay(20);
 	}
 
-	SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
-	SDL_FreeSurface(original);
-	update_rect(dlgr);
 	return -1;
 }
 

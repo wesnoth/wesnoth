@@ -122,4 +122,18 @@ private:
 	bool locked_;
 };
 
+struct surface_restorer
+{
+	surface_restorer(SDL_Surface* surface, SDL_Rect& rect);
+	~surface_restorer();
+
+	void restore();
+	void update();
+
+private:
+	SDL_Surface* target_;
+	SDL_Rect rect_;
+	scoped_sdl_surface surface_;
+};
+
 #endif

@@ -16,6 +16,7 @@
 #include "game.hpp"
 #include "sdl_utils.hpp"
 #include "util.hpp"
+#include "video.hpp"
 
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 {
@@ -102,4 +103,26 @@ SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 	SDL_BlitSurface(src,&area,dst,&dstarea);
 
 	return dst;
+}
+
+surface_restorer::surface_restorer(SDL_Surface* surface, SDL_Rect& rect)
+: target_(surface), rect_(rect), surface_(NULL)
+{
+	update();
+}
+
+surface_restorer::~surface_restorer()
+{
+	restore();
+}
+
+void surface_restorer::restore()
+{
+	::SDL_BlitSurface(surface_,NULL,target_,&rect_);
+	update_rect(rect_);
+}
+
+void surface_restorer::update()
+{
+	surface_.assign(::get_surface_portion(target_,rect_));
 }
