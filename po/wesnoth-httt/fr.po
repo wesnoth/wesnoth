@@ -576,7 +576,6 @@ msgid "Freedom! Now where are those Orcs? Let me at 'em!"
 msgstr "Liberté ! Maintenant, où sont ces orcs ? Laissez-les moi !"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:374
-#, fuzzy
 msgid ""
 "Thank you for rescuing us! Now we can help you fight the evil Orcs! The main "
 "cage where they keep most of the mermen is in the south-east!"
@@ -943,6 +942,10 @@ msgid ""
 "the plains under the midday sun they can fell the toughest foes with sharp "
 "spears and under heavy hoofs!"
 msgstr ""
+"Les elfes sont certes les seigneurs de la forêt, mais les cavaliers n'en "
+"sont pas moins puissants. En plaine et en plein jour ils peuvent terrasser "
+"les ennemies les plus résistants de leur lance perçante et sous leurs lourds "
+"sabots !"
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:188
 msgid ""
@@ -2362,7 +2365,6 @@ msgid "Test of the Clan"
 msgstr "À l'épreuve des clans"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:28
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -2377,8 +2379,9 @@ msgid ""
 msgstr ""
 "\n"
 "Victoire:\n"
-"@Vaincre 25 unités et au moins un chef de clan (bonus)\n"
-"@Vaincre tous les chefs de clanDéfaite:\n"
+"@Vaincre 25 unités puis un chef de clan (bonus)\n"
+"@Vaincre tous les chefs de clan\n"
+"Défaite:\n"
 "#Mort de Konrad\n"
 "#Mort de Delfador\n"
 "#Mort de Kalenz\n"
@@ -2458,6 +2461,10 @@ msgid ""
 "our flanks. This is unfortunate as it complicates our march to confront the "
 "queen."
 msgstr ""
+"Malgré leur opposition véhémente, nous avons dominé le champ de bataille "
+"aujourd'hui. Mais parce que nous avons vaincu les chefs de clan, il ne nous "
+"reste personne pour assurer la protection de nos flancs. Cela complique "
+"malheureusement notre future confrontation avec la reine."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:229
 msgid ""
@@ -2536,10 +2543,11 @@ msgstr ""
 msgid ""
 "I cannot believe this! You have defeated me! But the Clan shall fight on!"
 msgstr ""
+"Je ne peux y croire ! J'ai perdu ! Mais le clan ne s'avouera pas vaincu !"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:330
 msgid "Their leader has fallen but still they fight!"
-msgstr ""
+msgstr "Leur chef a beau avoir flanché, ils continuent à combattre !"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:361
 msgid "You can defeat me, but more will take my place!"
@@ -2581,7 +2589,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:464
 msgid "|$units_slain| Clan Members Defeated"
-msgstr ""
+msgstr "|$units_slain| guerriers vaincus"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:484
 msgid ""
@@ -2589,6 +2597,9 @@ msgid ""
 "help in guarding our flanks would be invaluable. Let's take this fight to "
 "their leaders!"
 msgstr ""
+"Nous mettons leurs forces en déroute ! Voyons si le clan s'avoue vaincu. "
+"Leur aide nous serait précieuse pour protéger nos flancs. Portons le combat "
+"jusqu'à leurs chefs !"
 
 #: data/scenarios/Heir_To_The_Throne/Home_North_Elves.cfg:4
 msgid "Home of the North Elves"
@@ -3239,7 +3250,6 @@ msgid "Muff Malal's Peninsula"
 msgstr "La péninsule de Muff Malal"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:25
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -3251,7 +3261,8 @@ msgid ""
 msgstr ""
 "\n"
 "Victoire:\n"
-"@Vaincre Muff Malal\n"
+"@Vaincre Muff Malal (bonus)\n"
+"@S'échapper en direction d'Elensefar\n"
 "Défaite:\n"
 "#Mort de Konrad\n"
 "#Nombre de tours dépassé"
@@ -3265,7 +3276,6 @@ msgstr ""
 "sur des morts-vivants."
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:100
-#, fuzzy
 msgid "My lord! On yonder peninsula there seems to be some movement!"
 msgstr ""
 "Mon Seigneur ! On dirait qu'il y a du mouvement dans les ruines là-bas !"
@@ -3277,6 +3287,10 @@ msgid ""
 "strength or time to persevere against such a foe. Either way it looks like "
 "there will be a fight, prepare for battle men!"
 msgstr ""
+"Il semble qu'il y ait des morts-vivants ici ! Si nous arrivons à les "
+"vaincre, nous disposerons de précieux alliés pour protéger nos arrières. "
+"Mais je ne sais pas si nous aurons la force et le temps de vaincre un tel "
+"ennemi. Quoiqu'il en soit, il y aura une bataille, préparez vous au combat !"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:110
 msgid "To arms!"
@@ -3291,29 +3305,29 @@ msgstr ""
 "notre service !"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:133
-#, fuzzy
 msgid "To Elensefar"
-msgstr "Le Siège d'Elensefar"
+msgstr "Vers Elensefar"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:157
 msgid "We do not have time to tarry here! On to Elensefar!"
-msgstr ""
+msgstr "Nous n'avons pas de temps à perdre ici ! En route pour Elensefar !"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:168
 msgid ""
 "Shirk not your duty! I will decide when it is time to leave for Elensefar."
 msgstr ""
+"Ne fuyez pas comme ça ! Ce sera moi qui déciderai quand il sera temps de "
+"partir pour Elensefar."
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:182
-#, fuzzy
 msgid ""
 "Victory is ours! Let us hope that this delay will not hamper our quest to "
 "save Elensefar, but at least we have some new allies in our struggle. We "
 "must move onward with haste!"
 msgstr ""
 "La victoire est à nous ! Espérons juste que ce délai n'aura pas de "
-"conséquences sur notre sauvetage d'Elensefar. Nous devons continuer à "
-"avancer rapidement !"
+"conséquence sur notre sauvetage d'Elensefar. Au moins disposons-nous de "
+"nouveaux alliés prêts à nous aider dans notre lutte. Nous devons nous hâter."
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:4
 msgid "Northern Winter"
@@ -3871,6 +3885,8 @@ msgid ""
 "We must make haste! Far greater challenges lay before us, by tarring here "
 "were diminish our resources."
 msgstr ""
+"Nous devons nous hâter ! De nombreuses difficultés nous attendent encore. En "
+"nous attardant ici, nous ne faisons que gaspiller nos moyens."
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:4
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:13
