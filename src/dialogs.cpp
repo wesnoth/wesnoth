@@ -738,4 +738,83 @@ void show_unit_description(display& disp, const gamemap& map, const unit& u)
 	help::show_help(disp,"unit_" + u.type().id());
 }
 
+
+namespace {
+	static const SDL_Rect campaign_preview_size = {-350,-400,350,400};
+	static const int campaign_preview_border = 10;
+}
+
+campaign_preview_pane::campaign_preview_pane(display& disp,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(disp),descriptions_(desc),index_(0)
+{
+	set_location(campaign_preview_size);
+}
+
+bool campaign_preview_pane::show_above() const { return false; }
+bool campaign_preview_pane::left_side() const { return false; }
+
+void campaign_preview_pane::set_selection(int index)
+{
+	index = minimum<int>(descriptions_->size()-1,index);
+	if(index != index_ && index >= 0) {
+		index_ = index;
+		set_dirty();
+	}
+}
+
+void campaign_preview_pane::draw()
+{
+	if(!dirty()) {
+		return;
+	}
+
+	bg_restore();
+
+	if(index_ < 0 || index_ >= descriptions_->size()) {
+		return;
+	}
+
+	set_dirty(false);
+
+	const SDL_Rect area = {
+		location().x+campaign_preview_border,
+		location().y+campaign_preview_border*5,
+		location().w-campaign_preview_border*2,
+		location().h-campaign_preview_border*6 };
+
+	/* background frame */
+	static const std::string default_style("mainmenu");
+	const std::string* style = &default_style;
+	gui::draw_dialog_frame(area.x,area.y,area.w,area.h,disp(),style);
+
+	/* description text */
+	const std::string& desc_text = font::word_wrap_text((*descriptions_)[index_].first,12,area.w-2*campaign_preview_border);
+	const std::vector<std::string> lines = config::split(desc_text,'\n');
+	SDL_Rect txt_area = { area.x+campaign_preview_border,area.y,0,0 };
+
+	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
+		txt_area = font::draw_text(&disp(),location(),12,font::NORMAL_COLOUR,*line,txt_area.x,txt_area.y);
+		txt_area.y += txt_area.h;
+	}
+
+	/* description image */
+	surface img(NULL);
+	const std::string desc_img_name = (*descriptions_)[index_].second;
+	if(!desc_img_name.empty()) {
+		img.assign(image::get_image(desc_img_name,image::UNSCALED));
+	}
+	if (!img.null()) {
+		SDL_Rect src_rect,dst_rect;
+		int max_height = area.h-(txt_area.h+txt_area.y-area.y);
+
+		src_rect.x = src_rect.y = 0;
+		src_rect.w = minimum((int)area.w,img->w);
+		src_rect.h = minimum(max_height,img->h);
+		dst_rect.x = area.x+(area.w-src_rect.w)/2;
+		dst_rect.y = txt_area.y+(max_height-src_rect.h)/2;
+
+		SDL_BlitSurface(img,&src_rect,disp().video().getSurface(),&dst_rect);
+
+	}
+}
+
 } //end namespace dialogs

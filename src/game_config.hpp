@@ -41,7 +41,7 @@ namespace game_config
 					   enemy_energy_image,ally_energy_image,flag_image,
 					   dot_image,cross_image,
 					   foot_left_nw,foot_left_n,foot_right_nw,foot_right_n,
-					   missile_n_image,missile_ne_image,terrain_mask_image,observer_image,
+					   missile_n_image,missile_ne_image,terrain_mask_image,observer_image,download_campaign_image,
 					   checked_menu_image,unchecked_menu_image;
 
 	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding, title_tip_x, title_tip_y, title_tip_width, title_tip_padding;

@@ -892,10 +892,13 @@ bool game_controller::new_campaign()
 	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
 
 	std::vector<std::string> campaign_names;
+	std::vector<std::pair<std::string,std::string> > campaign_desc;
 
 	for(config::child_list::const_iterator i = campaigns.begin(); i != campaigns.end(); ++i) {
 		std::stringstream str;
 		const std::string& icon = (**i)["icon"];
+		const std::string desc = (**i)["description"];
+		const std::string image = (**i)["image"];
 		if(icon == "") {
 			str << " ,";
 		} else {
@@ -905,16 +908,22 @@ bool game_controller::new_campaign()
 		str << (**i)["name"];
 
 		campaign_names.push_back(str.str());
+		campaign_desc.push_back(std::pair<std::string,std::string>(desc,image));
 	}
 
 	campaign_names.push_back(_(" ,Get More Campaigns..."));
+	campaign_desc.push_back(std::pair<std::string,std::string>(_("Download more campaigns from a server on Internet."),game_config::download_campaign_image));
 
 	int res = 0;
 
+	dialogs::campaign_preview_pane campaign_preview(disp(),&campaign_desc);
+	std::vector<gui::preview_pane*> preview_panes;
+	preview_panes.push_back(&campaign_preview);
+
 	if(campaign_names.size() > 1) {
 		res = gui::show_dialog(disp(),NULL,_("Campaign"),
-		                                 _("Choose the campaign you want to play:"),
-										 gui::OK_CANCEL,&campaign_names);
+				_("Choose the campaign you want to play:"),
+				gui::OK_CANCEL,&campaign_names,&preview_panes);
 
 		if(res == -1) {
 			return false;

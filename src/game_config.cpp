@@ -59,6 +59,8 @@ namespace game_config
 	std::string unchecked_menu_image = "buttons/checkbox.png";
 	std::string checked_menu_image = "buttons/checkbox-pressed.png";
 
+	std::string download_campaign_image;
+
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
 		                  receive_message = "receive.wav",
@@ -131,5 +133,7 @@ namespace game_config
 		terrain_mask_image = v["terrain_mask_image"];
 		
 		observer_image = v["observer_image"];
+
+		download_campaign_image = v["download_campaign_image"];
 	}
 }

@@ -88,6 +88,23 @@ private:
 
 void show_unit_description(display& disp, const gamemap& map, const unit& u);
 
-}
+
+class campaign_preview_pane : public gui::preview_pane
+{
+public:
+	campaign_preview_pane(display& disp,std::vector<std::pair<std::string,std::string> >* descriptions);
+
+	bool show_above() const;
+	bool left_side() const;
+	void set_selection(int index);
+
+private:
+	void draw();
+
+	const std::vector<std::pair<std::string,std::string> >* descriptions_;
+	int index_;
+};
+
+} //end namespace dialogs
 
 #endif
