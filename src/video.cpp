@@ -204,10 +204,15 @@ CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
 {
 	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
-		throw error();
+		std::cerr << "Could not initialize SDL: " << SDL_GetError() << "\n";
+		throw CVideo::error();
 	}
 
-	setMode( x, y, bits_per_pixel, flags );
+	const int mode_res = setMode( x, y, bits_per_pixel, flags );
+	if (mode_res == 0) {
+		std::cerr << "Could not set Video Mode\n";
+		throw CVideo::error();
+	}
 }
 
 CVideo::~CVideo()

@@ -26,6 +26,7 @@ namespace font {
 struct manager {
 	manager();
 	~manager();
+	struct error {};
 };
 
 //function which sets the name of the font to use

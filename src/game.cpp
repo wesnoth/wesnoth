@@ -830,6 +830,8 @@ int main(int argc, char** argv)
 		return play_game(argc,argv);
 	} catch(CVideo::error&) {
 		std::cerr << "Could not initialize video. Exiting.\n";
+	} catch(font::manager::error&) {
+		std::cerr << "Could not initialize fonts. Exiting\n";
 	} catch(config::error& e) {
 		std::cerr << e.message << "\n";
 	} catch(gui::button::error&) {

@@ -107,8 +107,9 @@ namespace font {
 manager::manager()
 {
 	const int res = TTF_Init();
-	if(res < 0) {
+	if(res == -1) {
 		std::cerr << "Could not initialize true type fonts\n";
+		throw error();
 	} else {
 		std::cerr << "Initialized true type fonts\n";
 	}
