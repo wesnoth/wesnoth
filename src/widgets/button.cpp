@@ -168,8 +168,9 @@ void button::draw()
 	}
 
 	display_->blit_surface(location().x,location().y,image);
+	const std::string etext = font::make_text_ellipsis(label_, font_size, width());
 	font::draw_text(display_,clipArea,font_size,
-					font::BUTTON_COLOUR,label_,textx,texty);
+					font::BUTTON_COLOUR,etext,textx,texty);
 
 	update_rect(location());
 
@@ -199,8 +200,9 @@ void button::set_label(const std::string& val)
 	}
 
 	textRect_ = display_->screen_area();
+	const std::string etext = font::make_text_ellipsis(label_, font_size, width());
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
-	                            font::BUTTON_COLOUR,label_,0,0);
+	                            font::BUTTON_COLOUR,etext,0,0);
 
 	set_dirty(true);
 }
