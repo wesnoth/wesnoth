@@ -1,0 +1,41 @@
+#!/bin/sh
+if [ "$3" = "" ]
+then
+echo "slacknoth - Creates a Wesnoth package for Slackware Linux"
+echo "- by Skovbaer (Mark Michelsen)"
+echo ""
+echo "Usage: slacknoth [date in format mm_dd_yy] [architecture e.g. i386 or athlon]"
+echo "                 [wesnoth root e.g. /usr/games/src/wesnoth]"
+echo ""
+echo "During package creation you might get some 'find'-warnings,"
+echo "don't mind those..."
+echo ""
+exit 0;
+fi
+cd $3
+mkdir -p /wesnothpack/wesnoth-$1/usr
+echo "Compiling..."
+make DESTDIR=/usr DATADIR=/usr SERVDIR=/usr CXXFLAGS="-march=$2 -O2 -Wall -DWESNOTH_PATH=\\\"/usr/share/games/wesnoth-data\\\"" -j 5
+echo "Gathering package contents..."
+make DESTDIR=/wesnothpack/wesnoth-$1/usr DATADIR=/wesnothpack/wesnoth-$1/usr SERVDIR=/wesnothpack/wesnoth-$1/usr CXXFLAGS="-march=$2 -O2 -Wall -DWESNOTH_PATH=\\\"/usr/share/games/wesnoth-data\\\"" install
+mkdir -p /wesnothpack/wesnoth-$1/usr/doc/wesnoth-$1
+cp -Rf changelog COPYING copyright INSTALL MANUAL* README /wesnothpack/wesnoth-$1/usr/doc/wesnoth-$1
+echo "Cleaning up source..."
+make clean
+echo "Removing cvs stuff from package contents..."
+cd /wesnothpack/wesnoth-$1/usr
+find . -name "CVS" -exec rm -Rf {} \;
+find . -name ".cvsignore" -exec rm -Rf {} \;
+cd ..
+echo "Building package..."
+tar cf wesnoth-$1-$2-1.tar .
+gzip -9 wesnoth-$1-$2-1.tar
+mv -f wesnoth-$1-$2-1.tar.gz wesnoth-$1-$2-1.tgz
+echo "Moving package to $3 ..."
+mv -f wesnoth-$1-$2-1.tgz $3
+cd $3
+echo "Removing temporary directory..."
+rm -Rf /wesnothpack
+echo "And that's it, we're done!"
+echo "If everything went all right, you should have the package"
+echo "$3/wesnoth-$1-$2-1.tgz"
