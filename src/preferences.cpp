@@ -364,6 +364,7 @@ void set_theme(const std::string& theme)
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;
+	const events::event_context dialog_events_context;
 	
 	log_scope("show_preferences_dialog");
 
@@ -541,6 +542,8 @@ void show_preferences_dialog(display& disp)
 			                string_table["preferences"],
 			                xpos+(width-title_rect.w)/2,ypos+10);
 
+			update_rect(disp.screen_area());
+
 			redraw_all = false;
 		}
 
@@ -586,6 +589,7 @@ void show_preferences_dialog(display& disp)
 bool show_video_mode_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;
+	const events::event_context dialog_events_context;
 
 	std::vector<std::pair<int,int> > resolutions;
 	std::vector<std::string> options;
@@ -637,6 +641,8 @@ bool show_video_mode_dialog(display& disp)
 void show_hotkeys_dialog (display & disp)
 {
 	log_scope ("show_hotkeys_dialog");
+
+	const events::event_context dialog_events_context;
 
 	const int centerx = disp.x()/2;
 	const int centery = disp.y()/2;

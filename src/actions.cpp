@@ -1004,8 +1004,10 @@ size_t move_unit(display* disp, const gamemap& map,
 	}
 
 	units.insert(std::pair<gamemap::location,unit>(steps.back(),u));
-	if(disp != NULL)
+	if(disp != NULL) {
 		disp->invalidate_unit();
+		disp->invalidate(steps.back());
+	}
 
 	const bool event_mutated = game_events::fire("moveto",steps.back());
 
