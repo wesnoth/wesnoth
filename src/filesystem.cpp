@@ -433,29 +433,9 @@ void read_file_internal(const std::string& fname, std::string& res)
 
 std::string read_stream(std::istream& s)
 {
-#if 1
 	std::stringstream ss;
 	ss << s.rdbuf();
 	return ss.str();
-#else
-	std::vector<char> v;
-	const int block_size = 65536;
-
-	size_t nbytes = 1;
-	while(nbytes > 0) {
-		v.resize(v.size() + block_size);
-		nbytes = s.readsome(&v[v.size() - block_size],block_size);
-		if(nbytes < block_size) {
-			v.resize(v.size() - (block_size - nbytes));
-			break;
-		}
-	}
-	
-	std::string res;
-	res.resize(v.size());
-	std::copy(v.begin(),v.end(),res.begin());
-	return res;
-#endif
 }
 
 std::string read_stdin()
