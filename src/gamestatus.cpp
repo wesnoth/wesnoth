@@ -33,6 +33,15 @@
 #include <iterator>
 #include <sstream>
 
+player_info* game_state::get_player(const std::string& id) {
+	std::map< std::string, player_info >::iterator found = players.find(id);
+	if (found == players.end()) {
+		LOG_STREAM(warn, engine) << "player " << id << " does not exist.\n";
+		return NULL;
+	} else
+		return &found->second;
+}
+
 time_of_day::time_of_day(const config& cfg)
                  : lawful_bonus(atoi(cfg["lawful_bonus"].c_str())),
                    image(cfg["image"]), name(cfg["name"]), id(cfg["id"]),
