@@ -709,6 +709,16 @@ void set_show_haloes(bool value)
 	prefs["show_haloes"] = value ? "yes" : "no";
 }
 
+bool flip_time()
+{
+	return prefs["flip_time"] == "yes";
+}
+
+void set_flip_time(bool value)
+{
+	prefs["flip_time"] = value ? "yes" : "no";
+}
+
 bool show_fps()
 {
 	return fps;
@@ -786,7 +796,8 @@ private:
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
 	            show_grid_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
-	            show_haloing_button_, video_mode_button_, hotkeys_button_, gamma_button_;
+	            show_haloing_button_, video_mode_button_, hotkeys_button_, gamma_button_,
+				flip_time_button_;
 	gui::label music_label_, sound_label_, scroll_label_, gamma_label_;
 	unsigned slider_label_width_;
 
@@ -811,6 +822,7 @@ preferences_dialog::preferences_dialog(display& disp)
 	  video_mode_button_(disp, _("Video Mode")),
 	  hotkeys_button_(disp, _("Hotkeys")),
 	  gamma_button_(disp, _("Adjust Gamma"), gui::button::TYPE_CHECK),
+	  flip_time_button_(disp, _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
 	  music_label_(disp, _("Music Volume:")), sound_label_(disp, _("SFX Volume:")),
 	  scroll_label_(disp, _("Scroll Speed:")), gamma_label_(disp, _("Gamma:")),
 	  slider_label_width_(0), tab_(GENERAL_TAB)
@@ -871,6 +883,9 @@ preferences_dialog::preferences_dialog(display& disp)
 	show_team_colours_button_.set_check(show_side_colours());
 	show_team_colours_button_.set_help_string(_("Show a colored circle around the base of each unit to show which side it is on"));
 
+	flip_time_button_.set_check(flip_time());
+	flip_time_button_.set_help_string(_("Choose whether the sun moves left-to-right or right-to-left"));
+
 	show_colour_cursors_button_.set_check(use_colour_cursors());
 	show_colour_cursors_button_.set_help_string(_("Use colored mouse cursors (may be slower)"));
 
@@ -907,6 +922,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	SDL_Rect gamma_rect = { rect.x + slider_label_width_, ypos,
 	                        rect.w - slider_label_width_ - border, 0 };
 	gamma_slider_.set_location(gamma_rect);
+	ypos += 50; flip_time_button_.set_location(rect.x,ypos);
 	ypos += 50; show_floating_labels_button_.set_location(rect.x, ypos);
 	ypos += 50; show_colour_cursors_button_.set_location(rect.x, ypos);
 	ypos += 50; show_haloing_button_.set_location(rect.x, ypos);
@@ -962,6 +978,8 @@ void preferences_dialog::process_event()
 		gamma_slider_.hide(hide_gamma);
 		gamma_label_.hide(hide_gamma);
 	}
+	if (flip_time_button_.pressed())
+		set_flip_time(flip_time_button_.checked());
 	set_sound_volume(sound_slider_.value());
 	set_music_volume(music_slider_.value());
 	set_scroll_speed(scroll_slider_.value());
@@ -994,6 +1012,7 @@ void preferences_dialog::set_selection(int index)
 	show_haloing_button_.hide(hide_display);
 	fullscreen_button_.hide(hide_display);
 	video_mode_button_.hide(hide_display);
+	flip_time_button_.hide(hide_display);
 
 	bool hide_sound = tab_ != SOUND_TAB;
 	music_label_.hide(hide_sound);

@@ -149,6 +149,9 @@ namespace preferences {
 	bool show_fps();
 	void set_show_fps(bool value);
 
+	bool flip_time();
+	void set_flip_time(bool value);
+
 	bool compress_saves();
 
 	std::set<std::string> &encountered_units();

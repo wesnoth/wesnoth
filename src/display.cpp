@@ -876,6 +876,10 @@ void display::draw_report(reports::TYPE report_num)
 					// Draw an image element
 					surface img(image::get_image(i->image,image::UNSCALED));
 
+					if(report_num == reports::TIME_OF_DAY && img != NULL && preferences::flip_time()) {
+						img = flip_surface(img);
+					}
+
 					if(img == NULL) {
 						ERR_DP << "could not find image for report: '" << i->image << "'\n";
 						continue;
