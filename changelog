@@ -1,21 +1,42 @@
 CVS HEAD:
- * graphics improvements
-   * bridge
-   * ice
-   * castle floor
-   * grassland
+ * graphics improvements: bridge, ice, castle floor, grassland
  * scenario balancing for 'The Eastern Invasion' campaign
    * Weldyn under Attack
  * increased 'drakefoot' and 'drakefly' defense on grassland, sand and forest
+ * unit balancing: 
+   * Halbardier: increased melee damage
+   * Pikeman: increased melee damage
+ * new units:
+   * Mermaid Diviner
+   * Mermaid Enchantress
+   * Mermaid Initiate
+   * Mermaid Priestess
+   * Mermaid Siren
+   * Mermaid Temptress
+   * Merman Entangler
+   * Merman Fighter
+   * Merman Hoplite
+   * Merman Hunter
+   * Merman Javelineer
+   * Merman Netcaster
+   * Merman Spearman
+   * Merman Triton
+   * Merman Warrior
+ * language fixes and polishing (english)
  * new translations:
    * russian
  * updated translations:
    * danish
+   * french
+   * hungarian
    * italian
    * norwegian
    * portuguese
+   * slovenian
    * spanish
    * swedish
+ * multiplayer improvements
+   * winter, desert and marsh random map generators
  * fixed road layering in terrain-graphics.cfg
  * fixed assumption that "no advance" == 500 XP required in help code
  * fixed bugs in 'The Eastern Invasion: Weldyn Under Attack' scenario
@@ -24,7 +45,13 @@ CVS HEAD:
  * fixed recruit/recall bug multiplayer
  * fixed gold not being reset in multiplayer
  * fixed 'random map' being untranslatable
- * removed obsolete pier graphics
+ * fixed wmlxgettext for header generation
+ * fixed showing incorrect teams when loading a saved multiplayer game
+ * fixed compile error on 64bit systems
+ * fixed 'Drake Slashers' first strike
+ * added missing 'regenerates' description
+ * switched networking code to new logging system
+ * image and data-file cleanups
 
 Version 0.8.6:
  * user interface tweaks
