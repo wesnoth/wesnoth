@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-21 09:57+0100\n"
-"PO-Revision-Date: 2005-03-17 00:23+0100\n"
+"PO-Revision-Date: 2005-03-21 17:43+0100\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -55,7 +54,7 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
-"Ciertas unidades tienen abilidades que o bien afectan a otras unidades, o "
+"Ciertas unidades tienen habilidades que o bien afectan a otras unidades, o "
 "influyen en cómo la unidad interactúa con otras unidades. Estas habilidades "
 "estarán siempre bajo este apartado."
 
@@ -85,7 +84,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Fundamentos del juego"
 
 #: data/help.cfg:68
-#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. Keep in mind "
@@ -94,12 +92,9 @@ msgid ""
 msgstr ""
 "Esta página esboza todo lo que tiene que saber para jugar a La Batalla por "
 "Wesnoth. Cubre el sistema de juego y la mecánica básica que se esconde "
-"detrás. Si quiere más información para dominarlo completamente, puede que "
-"desee consultar los apartados <ref>dst=basic_strategy text='Estrategia "
-"básica'</ref> y <ref>dst=multiplayer_strategy text='Estrategias con varios "
-"jugadores'</ref>. Tenga en cuenta que esto es simplemente un resumen; si "
-"desea conocer todas las excepciones y situaciones especiales, por favor, "
-"siga los enlaces que se indican."
+"detrás. Tenga en cuenta que esto es simplemente un resumen; si desea conocer "
+"todas las excepciones y situaciones especiales, por favor, siga los enlaces "
+"que se indican."
 
 #: data/help.cfg:70
 msgid ""
@@ -243,7 +238,6 @@ msgstr ""
 "turno en curso y los siguientes."
 
 #: data/help.cfg:95
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -260,19 +254,17 @@ msgstr ""
 "\n"
 "\n"
 "Cada unidad tiene un determinado número de puntos de movimiento, que gasta "
-"cuando se mueve hacia otro hexágono. La cantidad depende del "
-"<ref>dst=terrain text=terreno</ref> que haya en esa casilla. Por ejemplo, la "
-"pradera casi siempre tiene un coste de 1 punto de movimiento. Dependiendo "
-"del tipo de unidad, el coste será distinto: en bosques, por ejemplo, las "
-"unidades de elfos sólo gastan 1 punto de movimiento por casilla, la mayoría "
-"de las unidades de humanos y orcos gastan 2, y las tropas a caballo gastan "
-"3. Puede conocer cuántos puntos le cuesta a una unidad entrar en un "
-"determinado tipo de terreno pinchando sobre ella con el botón derecho, "
-"seleccionando «Descripción de unidad», y después mirando en "
-"<italic>text='Modificadores por terreno'</italic>."
+"cuando se mueve hacia otro hexágono. La cantidad depende del terreno que "
+"haya en esa casilla. Por ejemplo, la pradera casi siempre tiene un coste de "
+"1 punto de movimiento. Dependiendo del tipo de unidad, el coste será "
+"distinto: en bosques, por ejemplo, las unidades de elfos sólo gastan 1 punto "
+"de movimiento por casilla, la mayoría de las unidades de humanos y orcos "
+"gastan 2, y las tropas a caballo gastan 3. Puede conocer cuántos puntos le "
+"cuesta a una unidad entrar en un determinado tipo de terreno pinchando sobre "
+"ella con el botón derecho, seleccionando «Descripción de unidad», y después "
+"mirando en <italic>text='Modificadores por terreno'</italic>."
 
 #: data/help.cfg:97
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -285,13 +277,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Otra cosa que hay que tener presente durante el movimiento son las "
-"<ref>dst=zones_of_control text='zonas de control'</ref>. Cada unidad genera "
-"una zona de control en los 6 hexágonos que la rodean, y cualquier unidad "
-"enemiga que entre en esos hexágonos terminará inmediatamente su movimiento. "
-"Es importante que aprenda a utilizar las zonas de control en Wesnoth, ya que "
-"las únicas unidades que pueden ignorarlas son aquellas con la habilidad "
-"<ref>dst=ability_skirmish text='hostigador'</ref>."
+"Otra cosa que hay que tener presente durante el movimiento son las «zonas de "
+"control». Cada unidad genera una zona de control en los 6 hexágonos que la "
+"rodean, y cualquier unidad enemiga que entre en esos hexágonos terminará "
+"inmediatamente su movimiento. Es importante que aprenda a utilizar las zonas "
+"de control en Wesnoth, ya que las únicas unidades que pueden ignorarlas son "
+"aquellas con la habilidad <ref>dst=ability_skirmish text='hostigador'</ref>."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -354,7 +345,6 @@ msgstr ""
 "<header>text='Probabilidad de acierto'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -369,17 +359,16 @@ msgstr ""
 "\n"
 "\n"
 "Salvo por dos excepciones, la probabilidad de golpear a una unidad siempre "
-"está basada de forma única en el valor de defensa del <ref>dst=terrain "
-"text=terreno</ref> en el que está. Puede hallarse este valor si se pincha "
-"con el botón derecho una unidad, se selecciona «Descripción de unidad» y "
-"allí se mira en <italic>text='Modificadores por terreno'</italic>. Por "
-"ejemplo, los elfos tienen un valor de defensa en bosques de un 70%, lo cual "
-"significa que una unidad que los ataque sólo tiene una probabilidad de un "
-"30% de acertar. Asimismo, la probabilidad del elfo de acertar vendrá dada "
-"por el tipo de terreno en el que esté su atacante."
+"está basada de forma única en el valor de defensa del terreno en el que "
+"está. Puede hallarse este valor si se pincha con el botón derecho una "
+"unidad, se selecciona «Descripción de unidad» y allí se mira en "
+"<italic>text='Modificadores por terreno'</italic>. Por ejemplo, los elfos "
+"tienen un valor de defensa en bosques de un 70%, lo cual significa que una "
+"unidad que los ataque sólo tiene una probabilidad de un 30% de acertar. "
+"Asimismo, la probabilidad del elfo de acertar vendrá dada por el tipo de "
+"terreno en el que esté su atacante."
 
 #: data/help.cfg:112
-#, fuzzy
 msgid ""
 "\n"
 "There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
@@ -389,12 +378,13 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Hay dos excepciones a esta regla: los <ref>dst=magical_attacks text='ataques "
-"mágicos'</ref> y la habilidad de <ref>dst=ability_marksman text=tirador</"
-"ref>. Los ataques mágicos siempre tienen un 70% de probabilidades de "
-"impactar, sin importar el terreno, y cuando son ellos los que atacan (y no "
-"defienden), los «tiradores» siempre tienen por lo menos un 60% de "
-"posibilidades de acierto, independendientemente del terreno."
+"Hay dos excepciones a esta regla: los <ref>dst=weaponspecial_magical "
+"text='ataques mágicos'</ref> y la habilidad de "
+"<ref>dst=weaponspecial_marksman text=tirador</ref>. Los ataques mágicos "
+"siempre tienen un 70% de probabilidades de impactar, sin importar el "
+"terreno, y cuando son ellos los que atacan (y no defienden), los «tiradores» "
+"siempre tienen por lo menos un 60% de posibilidades de acierto, "
+"independendientemente del terreno."
 
 #: data/help.cfg:114
 msgid ""
@@ -427,7 +417,6 @@ msgstr ""
 "más abajo."
 
 #: data/help.cfg:118
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -439,9 +428,10 @@ msgstr ""
 "\n"
 "\n"
 "Unas cuantas unidades tienen habilidades especiales que afectan al daño "
-"producido en combate. La más común de ellas es la <ref>dst=ability_charge "
-"text=carga</ref>, que dobla el daño que hacen tanto atacante como defensor "
-"cuando la unidad ataca utilizando la habilidad de «carga»."
+"producido en combate. La más común de ellas es la "
+"<ref>dst=weaponspecial_charge text=carga</ref>, que dobla el daño que hacen "
+"tanto atacante como defensor cuando la unidad ataca utilizando la habilidad "
+"de «carga»."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -612,7 +602,6 @@ msgstr ""
 "ofrecerá una opción entre los avances posibles."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -622,7 +611,7 @@ msgstr ""
 "\n"
 "\n"
 "Tenga en mente que la gran mayoría de las unidades, pero no todas, tienen "
-"tres niveles, y que algunas unidades puntuales (como los <ref>dst=unit_mage "
+"tres niveles, y que algunas unidades puntuales (como los <ref>dst=unit_Mage "
 "text=magos</ref>) pueden tener cuatro."
 
 #: data/help.cfg:169
@@ -660,15 +649,14 @@ msgstr ""
 "Aldeas: una unidad que comience un turno en una aldea recuperará 8 pv."
 
 #: data/help.cfg:174
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text=Regeneración</ref>: algunas unidades "
-"(como los trolls) automáticamente recuperarán 8 pv por turno."
+"<ref>dst=ability_regenerates text=Regeneración</ref>: algunas unidades (como "
+"los trolls) automáticamente recuperarán 8 pv por turno."
 
 #: data/help.cfg:175
 msgid ""
@@ -4301,12 +4289,12 @@ msgstr ""
 "Entrenados desde la infancia en el tiro con arco, los arqueros jóvenes son "
 "las tropas de apoyo de largo alcance más comunes entre los ejércitos de "
 "Wesnoth. No tienen que soportar un entrenamiento tan severo como el de los "
-"lanceros o la infantería pesada, porque su táctica de combate requere más "
+"lanceros o la infantería pesada, porque su táctica de combate requiere más "
 "destreza que fuerza bruta."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
-msgstr "Caballero"
+msgstr "Coracero"
 
 #: data/units/Cavalier.cfg:24
 msgid ""
@@ -4315,6 +4303,10 @@ msgid ""
 "allows them to strike at many a foe with impunity, and their mettle has "
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
+"Una visión triunfante en el campo de batalla, los coraceros son maestros en "
+"el uso de la espada y la ballesta a caballo. Su habilidad con las armas a "
+"distancia les permite atacar a sus enemigos a placer, y su intervención ha "
+"cambiado el rumbo de algunas de las grandes batallas en la historia."
 
 #: data/units/Cavalier.cfg:48 data/units/Death_Knight.cfg:38
 #: data/units/Dragoon.cfg:48 data/units/Duelist.cfg:36
@@ -4326,7 +4318,7 @@ msgstr "ballesta"
 
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
-msgstr ""
+msgstr "Húsar"
 
 #: data/units/Cavalryman.cfg:25
 msgid ""
@@ -4335,6 +4327,10 @@ msgid ""
 "field of battle like a horseman, but makes more of an effort to hold his "
 "position."
 msgstr ""
+"Los mejores jinetes de Wesnoth son reclutados por los militares para "
+"convertirse en húsares. Un húsar, gracias a su férrea disciplina, no cargará "
+"en el campo de batalla como haría un jinete, sino que hará lo posible por "
+"mantener su posición."
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
@@ -4441,6 +4437,12 @@ msgid ""
 "they also carry a bow to use when necessary. If the Commander is lost, so is "
 "the battle."
 msgstr ""
+"Aquellos que lideran escuadras de hombres en la batalla ostentan el rango de "
+"comandante. Gracias a sus habilidades de liderazgo, las unidades de menor "
+"nivel que se encuentren en los hexágonos adyacentes ven aumentada su "
+"capacidad de combate. Los comandantes se sienten más cómodos con la espada, "
+"aunque a pesar de todo llevan un arco para usarlo cuando es necesario. Si el "
+"comandante muere, se acabó la batalla."
 
 #: data/units/Commander.cfg:95 data/units/Noble_Commander.cfg:22
 msgid ""
@@ -4450,10 +4452,16 @@ msgid ""
 "although they also carry a bow to use when necessary. If the Commander is "
 "lost, so is the battle."
 msgstr ""
+"Aquellos que lideran escuadras de hombres en la batalla ostentan el rango de "
+"comandante. Gracias a sus habilidades de liderazgo, las unidades de menor "
+"nivel que se encuentren en los hexágonos adyacentes ven aumentada su "
+"capacidad de combate. Los comandantes se sienten más cómodos con la espada, "
+"aunque a pesar de todo llevan un arco para usarlo cuando es necesario. Si el "
+"comandante muere, se acabó la batalla."
 
 #: data/units/Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
-msgstr "Sepia"
+msgstr "Sepia gigante"
 
 #: data/units/Cuttle_Fish.cfg:16
 msgid ""
@@ -4462,10 +4470,10 @@ msgid ""
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
-"Las sepias son enormes criaturas marinas. Pueden atacar a sus enemigos con "
-"sus fuertes tentáculos, o lanzar una venenosa tinta negra a distancia. La "
-"mejor forma de sobrevivir a un encuentro con unas lindezas como estas es "
-"permanecer alejado de la costa."
+"Las sepias gigantes son enormes criaturas marinas. Pueden atacar a sus "
+"enemigos con sus fuertes tentáculos, o lanzar una venenosa tinta negra a "
+"distancia. La mejor forma de sobrevivir a un encuentro con unas lindezas "
+"como estas es permanecer alejado de la costa."
 
 #: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
 msgid "tentacle"
@@ -4506,15 +4514,17 @@ msgid ""
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
+"Asheviere, la malvada reina madre, ha aterrorizado Wesnoth durante muchos "
+"años. Su conocimiento de la magia la hace una oponente temible en combate, "
+"aunque su poder realmente deriva de aquellos a quienes manda."
 
 #: data/units/Dark_Queen.cfg:22
 msgid "scepter"
 msgstr "cetro"
 
 #: data/units/Dark_Sorcerer.cfg:3
-#, fuzzy
 msgid "Dark Sorcerer"
-msgstr "Trabajador draco"
+msgstr "Hechicero oscuro"
 
 #: data/units/Dark_Sorcerer.cfg:16
 msgid ""
@@ -4522,7 +4532,7 @@ msgid ""
 "undead themselves. Instead, their advanced studies of the dark arts have "
 "made them stronger, but not nearly as powerful as they would have been as "
 "Liches. Because they retain their humanity, they do not fear holy magic. "
-msgstr ""
+msgstr "Los hechiceros oscuros no "
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -8197,7 +8207,7 @@ msgstr "Descargando campaña..."
 
 #: src/game.cpp:1183
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "No se pudo revisar de nuevo el sistema de ficheros"
 
 #: src/game.cpp:1194
 msgid "Campaign Installed"
@@ -8557,7 +8567,7 @@ msgstr "Cancelar"
 
 #: src/multiplayer_connect.cpp:509
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "El escenario es inválido, ya que no tiene bandos."
 
 #: src/multiplayer_connect.cpp:799
 msgid "Game Lobby"
@@ -8775,7 +8785,7 @@ msgstr "Marrón"
 
 #: src/multiplayer_ui.cpp:68
 msgid "Invalid colour"
-msgstr ""
+msgstr "Color inválido"
 
 #: src/multiplayer_wait.cpp:113
 msgid "Leader: "
@@ -8811,11 +8821,11 @@ msgstr "Escoja su bando:"
 
 #: src/multiplayer_wait.cpp:414
 msgid "("
-msgstr ""
+msgstr "("
 
 #: src/multiplayer_wait.cpp:414
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/multiplayer_wait.cpp:415 src/playturn.cpp:1775
 msgid "unit^Gold"
