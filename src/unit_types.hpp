@@ -199,7 +199,7 @@ public:
 	enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC };
 
 	ALIGNMENT alignment() const;
-	static const std::string& alignment_description(ALIGNMENT align);
+	static const char* alignment_description(ALIGNMENT align);
 
 	double alpha() const;
 

@@ -785,10 +785,10 @@ unit_type::ALIGNMENT unit_type::alignment() const
 	}
 }
 
-const std::string& unit_type::alignment_description(unit_type::ALIGNMENT align)
+const char* unit_type::alignment_description(unit_type::ALIGNMENT align)
 {
-	static const std::string aligns[] = { "lawful", "neutral", "chaotic" };
-	return aligns[align];
+	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic") };
+	return (gettext(aligns[align]));
 }
 
 double unit_type::alpha() const
