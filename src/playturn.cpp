@@ -567,8 +567,16 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 			recorder.add_attack(selected_hex_,hex,res);
 
-			attack(gui_,map_,teams_,selected_hex_,hex,res,units_,
-			       status_,gameinfo_,true);
+			try {
+				attack(gui_,map_,teams_,selected_hex_,hex,res,units_,
+				       status_,gameinfo_,true);
+			} catch(end_level_exception&) {
+				//if the level ends due to a unit being killed, still see if
+				//either the attacker or defender should advance
+				dialogs::advance_unit(gameinfo_,units_,selected_hex_,gui_);
+				dialogs::advance_unit(gameinfo_,units_,hex,gui_,!defender_human);
+				throw;
+			}
 
 			dialogs::advance_unit(gameinfo_,units_,selected_hex_,gui_);
 			dialogs::advance_unit(gameinfo_,units_,hex,gui_,!defender_human);
