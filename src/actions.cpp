@@ -642,6 +642,15 @@ void attack(display& gui, const gamemap& map,
 				}
 			}
 
+			if(dies || hits) {
+				if(stats.amount_attacker_drains > 0) {
+					char buf[50];
+					sprintf(buf,"%d",stats.amount_attacker_drains);
+					gui.float_label(a->first,buf,0,255,0);
+					a->second.gets_hit(-stats.amount_attacker_drains);
+				}
+			}
+
 			if(dies) {
 				attackerxp = game_config::kill_experience*d->second.type().level();
 				if(d->second.type().level() == 0)
@@ -690,13 +699,6 @@ void attack(display& gui, const gamemap& map,
 					d->second.set_flag("slowed");
 					if(stats.ndefends > 1)
 						--stats.ndefends;
-				}
-
-				if(stats.amount_attacker_drains > 0) {
-					char buf[50];
-					sprintf(buf,"%d",stats.amount_attacker_drains);
-					gui.float_label(a->first,buf,0,255,0);
-					a->second.gets_hit(-stats.amount_attacker_drains);
 				}
 
 				//if the defender is turned to stone, the fight stops immediately
@@ -779,6 +781,16 @@ void attack(display& gui, const gamemap& map,
 				}
 			}
 
+			if(hits || dies){
+				if(stats.amount_defender_drains > 0) {
+					char buf[50];
+					sprintf(buf,"%d",stats.amount_defender_drains);
+					gui.float_label(d->first,buf,0,255,0);
+
+					d->second.gets_hit(-stats.amount_defender_drains);
+				}
+			}
+				
 			if(dies) {
 				defenderxp = game_config::kill_experience*a->second.type().level();
 				if(a->second.type().level() == 0)
@@ -828,13 +840,6 @@ void attack(display& gui, const gamemap& map,
 						--stats.nattacks;
 				}
 
-				if(stats.amount_defender_drains > 0) {
-					char buf[50];
-					sprintf(buf,"%d",stats.amount_defender_drains);
-					gui.float_label(d->first,buf,0,255,0);
-
-					d->second.gets_hit(-stats.amount_defender_drains);
-				}
 
 				//if the attacker is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
