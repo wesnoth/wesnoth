@@ -623,8 +623,7 @@ std::vector<topic> generate_unit_topics() {
 			   << _("Alignment") << ": "
 			   << type.alignment_description(type.alignment())
 			   << jump(30);
-			if (type.experience_needed() != 500) {
-				// 500 is apparently used when the units cannot advance.
+			if (type.can_advance()) {
 				ss << _("Required XP") << ": " << type.experience_needed();
 			}
 

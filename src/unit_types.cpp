@@ -844,7 +844,7 @@ unit_type::experience_accelerator::~experience_accelerator()
 
 int unit_type::experience_needed() const
 {
-	return (atoi(cfg_["experience"].c_str())*experience_modifier)/100;
+	return (lexical_cast_default<int>(cfg_["experience"],500)*experience_modifier)/100;
 }
 
 std::vector<std::string> unit_type::advances_to() const
