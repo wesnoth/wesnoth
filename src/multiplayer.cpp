@@ -30,6 +30,7 @@
 #include "widgets/combo.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/slider.hpp"
+#include "widgets/widget.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -196,6 +197,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 		if(launch_game.process(mousex,mousey,left_button)) {
 			if(name_entry.text().empty() == false) {
 				//Connector
+				name_entry.set_focus(false);
 				mp_connect connector(disp, name_entry.text(), cfg, units_data, state);
 
 				const int res = connector.load_map(maps_menu.selection(), cur_turns, cur_villagegold, fog_game.checked(), shroud_game.checked());

@@ -34,8 +34,6 @@ public:
 	void set_text(std::string text);
 	void clear();
 
-	void set_focus(bool new_focus);
-
 protected:
 	using widget::bg_restore;
 	using widget::update;
