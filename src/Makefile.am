@@ -68,6 +68,7 @@ wesnoth_SOURCES = about.cpp \
 		  team.cpp \
 		  terrain.cpp \
 		  theme.cpp \
+		  titlescreen.cpp \
 		  tooltips.cpp \
 		  unit.cpp \
 		  unit_display.cpp \
@@ -129,6 +130,7 @@ wesnoth_SOURCES = about.cpp \
 		  team.hpp \
 		  terrain.hpp \
 		  theme.hpp \
+		  titlescreen.hpp \
 		  tooltips.hpp \
 		  unit.hpp \
 		  unit_display.hpp \
