@@ -52,6 +52,8 @@ bool haloes = true;
 
 bool unit_genders = true;
 
+bool fps = false;
+
 std::set<std::string> encountered_units_set;
 std::set<std::string> encountered_terrains_set;
 
@@ -702,6 +704,16 @@ void set_show_haloes(bool value)
 {
 	haloes = value;
 	prefs["show_haloes"] = value ? "yes" : "no";
+}
+
+bool show_fps()
+{
+	return fps;
+}
+
+void set_show_fps(bool value)
+{
+	fps = value;
 }
 
 std::set<std::string> &encountered_units() {

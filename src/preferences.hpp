@@ -146,6 +146,9 @@ namespace preferences {
 	bool show_haloes();
 	void set_show_haloes(bool value);
 
+	bool show_fps();
+	void set_show_fps(bool value);
+
 	std::set<std::string> &encountered_units();
 	std::set<std::string> &encountered_terrains();
 

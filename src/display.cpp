@@ -78,7 +78,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), diagnostic_label_(0),
-	help_string_(0)
+	help_string_(0), fps_handle_(0)
 {
 	if(non_interactive())
 		updatesLocked_++;
@@ -671,11 +671,14 @@ void display::draw(bool update,bool force)
 	SDL_Delay(maximum<int>(10,wait_time));
 
 	if(update) {
-		lastDraw_ = SDL_GetTicks();
+		const int thisDraw = SDL_GetTicks();
+		const int latency = thisDraw - lastDraw_;
+		lastDraw_ = thisDraw;
 
 		if(wait_time >= 0 || drawSkips_ >= max_skips || force) {
-			if(changed)
+			if(changed) {
 				update_display();
+			}
 		} else {
 			drawSkips_++;
 		}
@@ -686,6 +689,31 @@ void display::update_display()
 {
 	if(updatesLocked_ > 0)
 		return;
+
+	if(preferences::show_fps()) {
+		static int last_sample = SDL_GetTicks();
+		static int frames = 0;
+		++frames;
+
+		if(frames == 10) {
+			const int this_sample = SDL_GetTicks();
+
+			const int fps = (frames*1000)/(this_sample - last_sample);
+			last_sample = this_sample;
+			frames = 0;
+
+			if(fps_handle_ != 0) {
+				font::remove_floating_label(fps_handle_);
+				fps_handle_ = 0;
+			}
+			std::ostringstream stream;
+			stream << fps << "fps";
+			fps_handle_ = font::add_floating_label(stream.str(),12,font::NORMAL_COLOUR,10,100,0,0,-1,screen_area(),font::LEFT_ALIGN);
+		}
+	} else if(fps_handle_ != 0) {
+		font::remove_floating_label(fps_handle_);
+		fps_handle_ = 0;
+	}
 
 	screen_.flip();
 }

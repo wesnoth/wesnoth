@@ -508,6 +508,9 @@ private:
 
 	//animated flags for each team
 	std::vector<animated<image::locator> > flags_;
+
+	//the handle for the label which displays fps
+	int fps_handle_;
 };
 
 //an object which will lock the display for the duration of its lifetime.

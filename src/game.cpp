@@ -384,7 +384,9 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 			continue;
 		}
 
-		if(val == "--nocache") {
+		if(val == "--fps") {
+			preferences::set_show_fps(true);
+		} else if(val == "--nocache") {
 			use_caching_ = false;
 		} else if(val == "--resolution" || val == "-r") {
 			if(arg_+1 != argc_) {
