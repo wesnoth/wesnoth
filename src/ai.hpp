@@ -38,11 +38,9 @@ public:
 	///that an AI might need access to in order to make and implement its decisions
 	struct info {
 		info(display& disp, const gamemap& map, const game_data& gameinfo, unit_map& units,
-			std::vector<team>& teams, int team_num, const gamestatus& state, class turn_info& turn_data,
-			replay& replayer)
+			std::vector<team>& teams, int team_num, const gamestatus& state, class turn_info& turn_data)
 			: disp(disp), map(map), gameinfo(gameinfo), units(units), teams(teams),
-			  team_num(team_num), state(state), turn_data_(turn_data), recorder(replayer),
-			  start_command(replayer.ncommands())
+			  team_num(team_num), state(state), turn_data_(turn_data)
 		{}
 
 		///the display object, used to draw the moves the AI makes.
@@ -70,10 +68,6 @@ public:
 		///the object that allows the player to interact with the game.
 		///should not be used outside of ai_interface
 		class turn_info& turn_data_;
-
-		///objects used to send the AI's turn over the network as the turn progresses.
-		replay& recorder;
-		int start_command;
 	};
 
 	///the constructor. All derived classes should take an argument of type info& which

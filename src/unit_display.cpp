@@ -596,10 +596,18 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			disp.draw_tile(leader_loc.x,leader_loc.y);
 		}
 
+		const std::string* halo_image = NULL;
+		int halo_x = 0, halo_y = 0;
+
 		int xoffset = 0;
-		const std::string* unit_image = attack.get_frame(i,&xoffset);
-		if(!attacker.facing_left())
+		const std::string* unit_image = attack.get_frame(i,&xoffset,attack_type::UNIT_FRAME,attack_type::VERTICAL,
+		                                                 &halo_image,&halo_x,&halo_y);
+		if(!attacker.facing_left()) {
 			xoffset *= -1;
+			halo_x *= -1;
+		}
+
+		halo_x *= disp.zoom();
 
 		xoffset = int(double(xoffset)*disp.zoom());
 
@@ -615,6 +623,11 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const double pos = double(i)/double(i < 0 ? begin_at : end_at);
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst) + xoffset;
 		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
+
+		util::scoped_resource<int,halo::remover> halo_effect(0);
+		if(halo_image != NULL) {
+			halo_effect.assign(halo::add(posx+disp.hex_width()/2,posy+disp.hex_size()/2,*halo_image));
+		}
 
 		const int height_adjust = int(src_height_adjust*pos + dst_height_adjust*(1.0-pos));
 		const double submerge = src_submerge*pos + dst_submerge*(1.0-pos);

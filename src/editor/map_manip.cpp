@@ -234,7 +234,7 @@ std::string flip_map(const gamemap &map, const FLIP_AXIS axis) {
 			 it != lines.end(); it++) {
 			for (std::string::const_reverse_iterator sit = (*it).rbegin();
 				 sit != (*it).rend(); sit++) {
-				(*new_line_it).push_back(*sit);
+				push_back(*new_line_it,*sit);
 			}
 			new_line_it++;
 		}

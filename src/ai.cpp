@@ -138,9 +138,8 @@ void ai_interface::user_interact()
 		return;
 	}
 
-	const int ncommand = recorder.ncommands();
 	info_.turn_data_.turn_slice();
-	info_.turn_data_.send_data(ncommand);
+	info_.turn_data_.send_data();
 	info_.disp.draw();
 
 	last_interact_ = SDL_GetTicks();
@@ -172,14 +171,10 @@ const team& ai_interface::current_team() const
 
 void ai_interface::sync_network()
 {
-	if(network::nconnections() > 0 && info_.start_command != info_.recorder.ncommands()) {
+	if(network::nconnections() > 0) {
+		info_.turn_data_.send_data();
+
 		config cfg;
-		cfg.add_child("turn",recorder.get_data_range(info_.start_command,info_.recorder.ncommands()));
-		network::send_data(cfg);
-
-		info_.start_command = info_.recorder.ncommands();
-
-		cfg.clear();
 		while(network::connection res = network::receive_data(cfg)) {
 			std::deque<config> backlog;
 			info_.turn_data_.process_network_data(cfg,res,backlog);

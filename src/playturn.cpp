@@ -55,7 +55,8 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			   CVideo& video, CKey& key, display& gui,
                game_events::manager& events_manager, gamemap& map,
 			   std::vector<team>& teams, int team_num,
-			   std::map<gamemap::location,unit>& units, turn_info::floating_textbox& textbox)
+			   std::map<gamemap::location,unit>& units, turn_info::floating_textbox& textbox,
+			   replay_network_sender& network_sender)
 {
 	log_scope("player turn");
 
@@ -78,9 +79,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	}
 
 	turn_info turn_data(gameinfo,state_of_game,status,terrain_config,level,
-	                    key,gui,map,teams,team_num,units,false,textbox);
-
-	int start_command = recorder.ncommands();
+	                    key,gui,map,teams,team_num,units,false,textbox,network_sender);
 
 	//execute gotos - first collect gotos in a list
 	std::vector<gamemap::location> gotos;
@@ -114,24 +113,24 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 			turn_data.turn_slice();
 		} catch(end_level_exception& e) {
-			turn_data.send_data(start_command);
+			turn_data.send_data();
 			throw e;
 		}
 
 		gui.draw();
 
-		start_command = turn_data.send_data(start_command);
+		turn_data.send_data();
 	}
 
 	//send one more time to make sure network is up-to-date.
-	start_command = turn_data.send_data(start_command);
+	turn_data.send_data();
 }
 
 turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
                      gamestatus& status, const config& terrain_config, config* level,
                      CKey& key, display& gui, gamemap& map,
                      std::vector<team>& teams, int team_num,
-                     unit_map& units, bool browse, floating_textbox& textbox)
+                     unit_map& units, bool browse, floating_textbox& textbox, replay_network_sender& replay_sender)
   : paths_wiper(gui),
     gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
     terrain_config_(terrain_config), level_(level),
@@ -139,7 +138,7 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
     units_(units), browse_(browse),
     left_button_(false), right_button_(false), middle_button_(false),
 	 minimap_scrolling_(false), start_ncmd_(-1),
-    enemy_paths_(false), path_turns_(0), end_turn_(false), textbox_(textbox)
+    enemy_paths_(false), path_turns_(0), end_turn_(false), textbox_(textbox), replay_sender_(replay_sender)
 {
 	enemies_visible_ = enemies_visible();
 }
@@ -180,37 +179,12 @@ void turn_info::turn_slice()
 
 bool turn_info::turn_over() const { return end_turn_; }
 
-int turn_info::send_data(int first_command)
+void turn_info::send_data()
 {
-	if(!browse_ && network::nconnections() > 0 && (undo_stack_.empty() || end_turn_) &&
-	   first_command < recorder.ncommands()) {
-		config cfg;
-		const config& obj = cfg.add_child("turn",recorder.get_data_range(first_command,recorder.ncommands()));
-
-		std::cerr << "sending commands " << first_command << "-" << recorder.ncommands() << ": '"
-			      << obj.write() << "'\n";
-		if(obj.empty() == false) {
-			network::send_data(cfg);
-		}
-
-		return recorder.ncommands();
-	} else if(network::nconnections() > 0 && first_command < recorder.ncommands()) {
-
-		std::cerr << "getting non-undo commands\n";
-
-		//we don't want to send any moves that haven't been committed, however if there
-		//are any non-undoable moves (speaking, labelling), we want to send it now.
-		config cfg;
-		const config& obj = cfg.add_child("turn",recorder.get_data_range(first_command,recorder.ncommands(),replay::NON_UNDO_DATA));
-
-		if(obj.empty() == false) {
-			std::cerr << "sending non-undo commands\n";
-			network::send_data(cfg);
-		}
-
-		return first_command;
+	if(undo_stack_.empty() || end_turn_) {
+		replay_sender_.commit_and_sync();
 	} else {
-		return first_command;
+		replay_sender_.sync_non_undoable();
 	}
 }
 

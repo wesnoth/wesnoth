@@ -17,6 +17,7 @@
 #include "dialogs.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
+#include "network.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
@@ -866,4 +867,37 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 	}
 
 	return false; /* Never attained, but silent a gcc warning. --Zas */
+}
+
+replay_network_sender::replay_network_sender(replay& obj) : obj_(obj), upto_(obj_.ncommands())
+{
+}
+
+replay_network_sender::~replay_network_sender()
+{
+	commit_and_sync();
+}
+
+void replay_network_sender::sync_non_undoable()
+{
+	if(network::nconnections() > 0) {
+		config cfg;
+		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands(),replay::NON_UNDO_DATA));
+		if(data.empty() == false) {
+			network::send_data(cfg);
+		}
+	}
+}
+
+void replay_network_sender::commit_and_sync()
+{
+	if(network::nconnections() > 0) {
+		config cfg;
+		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands()));
+		if(data.empty() == false) {
+			network::send_data(cfg);
+		}
+
+		upto_ = obj_.ncommands();
+	}
 }

@@ -135,4 +135,17 @@ private:
 	replay* obj_;
 };
 
+class replay_network_sender
+{
+public:
+	replay_network_sender(replay& obj);
+	~replay_network_sender();
+
+	void sync_non_undoable();
+	void commit_and_sync();
+private:
+	replay& obj_;
+	int upto_;
+};
+
 #endif

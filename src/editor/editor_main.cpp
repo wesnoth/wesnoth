@@ -139,10 +139,13 @@ int main(int argc, char** argv)
 		std::cerr << "Editor theme could not be loaded." << std::endl;
 		theme_cfg = &dummy_theme;
 	}
+
+	std::cerr << "entering while...\n";
 	std::map<gamemap::location,unit> units;
 	events::event_context ec;
 	while (! done) {
 		try {
+			std::cerr << "creating map...\n";
 			gamemap map(cfg, mapdata);
 
 			std::cerr << "Using theme cfg: " << std::endl << theme_cfg->write() << std::endl;

@@ -1468,8 +1468,6 @@ bool pump()
 		const std::string& event_name = ev.name;
 		typedef std::multimap<std::string,event_handler>::iterator itor;
 
-		std::cerr << "pumping event '" << event_name << "'\n";
-
 		//find all handlers for this event in the map
 		std::pair<itor,itor> i = events_map.equal_range(event_name);
 

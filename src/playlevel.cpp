@@ -349,6 +349,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::cerr << "entering try... " << (SDL_GetTicks() - ticks) << "\n";
 
+	replay_network_sender replay_sender(recorder);
+
 	try {
 		gui.begin_game();
 		gui.adjust_colours(0,0,0);
@@ -494,7 +496,7 @@ redo_turn:
 
 					play_turn(gameinfo,state_of_game,status,game_config,
 					          level, video, key, gui, events_manager, map,
-							  teams, player_number, units, textbox_info);
+							  teams, player_number, units, textbox_info, replay_sender);
 
 					if(game_config::debug)
 						display::clear_debug_highlights();
@@ -507,15 +509,14 @@ redo_turn:
 
 					const cursor::setter cursor_setter(cursor::WAIT);
 
-					const int start_command = recorder.ncommands();
-
 					update_locker lock(gui,!preferences::show_ai_moves());
 
 					turn_info turn_data(gameinfo,state_of_game,status,
-						                    game_config,level,key,gui,
-						                    map,teams,player_number,units,true,textbox_info);
+						                game_config,level,key,gui,
+						                map,teams,player_number,units,
+					                    true,textbox_info,replay_sender);
 
-					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status,turn_data,recorder);
+					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status,turn_data);
 					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
 					ai_obj->play_turn();
 					ai_obj->sync_network();
@@ -530,7 +531,7 @@ redo_turn:
 
 					turn_info turn_data(gameinfo,state_of_game,status,
 					                    game_config,level,key,gui,
-					                    map,teams,player_number,units,true,textbox_info);
+					                    map,teams,player_number,units,true,textbox_info,replay_sender);
 
 					for(;;) {
 
@@ -557,9 +558,8 @@ redo_turn:
 							}
 						}
 
-						const int ncommand = recorder.ncommands();
 						turn_data.turn_slice();
-						turn_data.send_data(ncommand);
+						turn_data.send_data();
 						gui.draw();
 					}
 
@@ -699,7 +699,7 @@ redo_turn:
 
 		turn_info turn_data(gameinfo,state_of_game,status,
 					        game_config,level,key,gui,
-					        map,teams,player_number,units,true,textbox_info);
+					        map,teams,player_number,units,true,textbox_info,replay_sender);
 
 		turn_data.save_game(string_table["save_game_error"],gui::YES_NO);
 		if(disconnect) {

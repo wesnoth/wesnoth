@@ -227,12 +227,40 @@ paths::route a_star_search(const gamemap::location& src,
 				return rt;
 			}
 
-			if(open_list.count(locs[j]) > 0 || closed_list.count(locs[j]) > 0) {
+			list_map::iterator current_best = open_list.find(locs[j]);
+			const bool in_open = current_best != open_list.end();
+			if(!in_open) {
+				current_best = closed_list.find(locs[j]);
+			}
+
+			if(current_best != closed_list.end() && current_best->second.g <= lowest->second.g+1.0) {
 				continue;
 			}
 
-			const node nd(locs[j],dst,lowest->second.g+obj.cost(locs[j],lowest->second.g),
+			const double new_cost = obj.cost(locs[j],lowest->second.g);
+
+			const node nd(locs[j],dst,lowest->second.g+new_cost,
 			              lowest->second.loc,teleports);
+
+			if(current_best != closed_list.end()) {
+				if(current_best->second.g <= nd.g) {
+					continue;
+				} else if(in_open) {
+					typedef std::multimap<double,location>::iterator Itor;
+					std::pair<Itor,Itor> itors = open_list_ordered.equal_range(current_best->second.f);
+					while(itors.first != itors.second) {
+						if(itors.first->second == current_best->second.loc) {
+							open_list_ordered.erase(itors.first);
+							break;
+						}
+						++itors.first;
+					}
+
+					open_list.erase(current_best);
+				} else {
+					closed_list.erase(current_best);
+				}
+			}
 
 			if(nd.f < stop_at) {
 				open_list.insert(list_type(nd.loc,nd));

@@ -83,13 +83,13 @@ public:
 	          gamestatus& status, const config& terrain_config, config* level,
 	          CKey& key, display& gui, gamemap& map,
 	          std::vector<team>& teams, int team_num,
-	          unit_map& units, bool browse_only, floating_textbox& textbox);
+	          unit_map& units, bool browse_only, floating_textbox& textbox, replay_network_sender& network_sender);
 
 	void turn_slice();
 
 	bool turn_over() const;
 
-	int send_data(int first_command);
+	void send_data();
 
 	undo_list& undos() { return undo_stack_; }
 
@@ -218,6 +218,8 @@ private:
 	void create_textbox(floating_textbox::MODE mode, const std::string& label, const std::string& check_label="", bool checked=false);
 	void close_textbox();
 	void enter_textbox();
+
+	replay_network_sender& replay_sender_;
 };
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,
@@ -225,6 +227,6 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			   CVideo& video, CKey& key, display& gui,
                game_events::manager& events_manager, gamemap& map,
 			   std::vector<team>& teams, int team_num, unit_map& units,
-			   turn_info::floating_textbox& textbox);
+			   turn_info::floating_textbox& textbox, replay_network_sender& replay_sender);
 
 #endif
