@@ -315,13 +315,16 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::cerr << "b... " << (SDL_GetTicks() - ticks) << "\n";
 
+	game_events::manager events_manager(*level,gui,map,units,teams,
+	                                    state_of_game,status,gameinfo);
+
 	if(recorder.skipping() == false) {
 		for(std::vector<config*>::const_iterator story_i = story.begin();
 		    story_i != story.end(); ++story_i) {
 			show_intro(gui,**story_i, state_of_game);
 		}
 
-		show_map_scene(gui,*level);
+		show_map_scene(gui,*level,state_of_game);
 	}
 
 	std::cerr << "c... " << (SDL_GetTicks() - ticks) << "\n";
@@ -338,8 +341,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::cerr << "initializing events manager... " << (SDL_GetTicks() - ticks) << "\n";
 
-	game_events::manager events_manager(*level,gui,map,units,teams,
-	                                    state_of_game,status,gameinfo);
 	help::help_manager help_manager(&game_config, &gameinfo);
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them

@@ -227,29 +227,8 @@ bool show_intro_part(display& screen, const config& part,
 	return true;
 }
 
-void show_map_scene(display& screen, config& data)
-{
-	std::cerr << "showing map scene...\n";
-	//stop the screen being resized while we're in this function
-	const events::resize_lock stop_resizing;
-	const events::event_context context;
-
-	//clear the screen
-	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
-                                     screen.video().getSurface());
-
-
-	const config* const cfg_item = data.child("bigmap");
-	if(cfg_item == NULL) {
-		std::cerr << "no map scene...\n";
-		return;
-	}
-
-	const config& cfg = *cfg_item;
-
-	const config::child_list& dots = cfg.get_children("dot");
-
-	const std::string& image_file = cfg["image"];
+void display_map_scene(display& screen, const std::string& scenario,
+		const config::child_list& dots, const std::string& image_file) {
 
 	const surface image(image::get_image(image_file,image::UNSCALED));
 	const surface dot_image(image::get_image(game_config::dot_image,image::UNSCALED));
@@ -274,11 +253,6 @@ void show_map_scene(display& screen, config& data)
 	SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
 	update_whole_screen();
 
-	const std::string& id = data.values["id"];
-	const std::string& scenario_name = string_table[id];
-
-	const std::string& scenario = scenario_name.empty() ? data.values["name"] :
-	                                                      scenario_name;
 	screen.video().flip();
 
 	CKey key;
@@ -379,4 +353,52 @@ void show_map_scene(display& screen, config& data)
 	//clear the screen
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
                                      screen.video().getSurface());
+}
+
+void show_map_scene(display& screen, config& data, game_state& state_of_game)
+{
+	std::cerr << "showing map scene...\n";
+	//stop the screen being resized while we're in this function
+	const events::resize_lock stop_resizing;
+	const events::event_context context;
+
+	//clear the screen
+	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
+                                     screen.video().getSurface());
+
+
+	const config* const cfg_item = data.child("bigmap");
+	if(cfg_item == NULL) {
+		std::cerr << "no map scene...\n";
+		return;
+	}
+
+	const std::string& id = data.values["id"];
+	const std::string& scenario_name = string_table[id];
+
+	const std::string& scenario = scenario_name.empty() ? data.values["name"] :
+	                                                      scenario_name;
+
+	const config& cfg = *cfg_item;
+
+	config::all_children_iterator i = cfg.ordered_begin();
+	std::pair<const std::string*, const config*> item = *i;
+
+	if(*item.first == "if") {
+		const std::string type = game_events::conditional_passed(
+				state_of_game, NULL, *item.second) ? "then":"else";
+		const config* const thens = (*item.second).child(type);
+		if(thens == NULL) {
+			std::cerr << "no map scene this way...\n";
+			return;
+		}
+		const config& selection = *thens;
+		const config::child_list& dots = selection.get_children("dot");
+		const std::string& image_file = selection["image"];
+		display_map_scene(screen, scenario, dots, image_file);
+	}else{
+		const config::child_list& dots = cfg.get_children("dot");
+		const std::string& image_file = cfg["image"];
+		display_map_scene(screen, scenario, dots, image_file);
+	}
 }

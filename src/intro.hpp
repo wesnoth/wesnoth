@@ -49,6 +49,6 @@ void show_intro(display& screen, const config& data, game_state& state_of_game);
 //where 'map-image' is the image of the map. dots are displayed
 //at 'x','y' on the image in sequence. type=cross should be used
 //for the last dot, to show where the battle takes place.
-void show_map_scene(display& screen, config& data);
+void show_map_scene(display& screen, config& data, game_state& state_of_game);
 
 #endif
