@@ -290,7 +290,7 @@ int play_game(int argc, char** argv)
 		}
 
  		if(bpp == 0) {
- 			//couldn't do 1024x768 or 800x600 either
+ 			//couldn't do 1024x768 or 800x600
 
 			std::cerr << "The required video mode, " << resolution.first
 			          << "x" << resolution.second << "x16 "
