@@ -15,6 +15,19 @@ const char* sgettext (const char *msgid)
 	return msgval;
 }
 
+const char* dsgettext (const char * domainname, const char *msgid)
+{
+	const char *msgval = dgettext (domainname, msgid);
+	if (msgval == msgid) {
+		msgval = strrchr (msgid, '^');
+		if (msgval == NULL)
+			msgval = msgid;
+		else
+			msgval++;
+	}
+	return msgval;
+}
+
 const char* vgettext (const char *msgid, const string_map& symbols)
 {
 	const std::string orig(gettext(msgid));
