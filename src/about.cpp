@@ -78,6 +78,7 @@ void show_about(display& disp)
  	text.push_back("-   Isaac Clerencia");
  	text.push_back("-   J.R. Blain (Cowboy)");
  	text.push_back("-   Justin Zaun (jzaun)");
+ 	text.push_back("-   Kristoffer Erlandsson (erl)");
  	text.push_back("-   Philippe Plantier (Ayin)");
  	text.push_back("-   Zas");
  	text.push_back("+ ");
@@ -95,11 +96,11 @@ void show_about(display& disp)
  	text.push_back("-   Johanna Manninen (lohari)");
 	text.push_back("-   John Muccigrosso (Eponymous Archon)");
  	text.push_back("-   Jonatan Alamà (tin)");
+ 	text.push_back("-   Joseph Simmons (Turin)");
 	text.push_back("-   J.W.C. McNabb (Darth Fool)");
  	text.push_back("-   Neorice");
  	text.push_back("-   Slainte");
  	text.push_back("-   Svetac");
- 	text.push_back("-   Turin");
  	text.push_back("+ ");
 
  	text.push_back("+Music");
@@ -117,7 +118,7 @@ void show_about(display& disp)
  	text.push_back("+ ");
 
  	text.push_back("+Packagers");
- 	text.push_back("-   ahwayakchih");
+ 	text.push_back("-   Marcin Konicki (ahwayakchih)");
  	text.push_back("-   Cyril Bouthors (CyrilB)");
  	text.push_back("-   Darryl Dixon");
  	text.push_back("-   Marcus Phillips (Sithrandel)");
