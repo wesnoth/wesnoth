@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-03-24 11:36+0300\n"
+"PO-Revision-Date: 2005-04-05 15:51+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -25,9 +25,8 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr "Bepa-Roman.ttf,Vera.ttf,FreeSans.ttf,sazanami.ttf"
+msgstr "Bepa-Roman.ttf,Vera.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -1254,18 +1253,16 @@ msgid "Charge"
 msgstr "Бросок"
 
 #: data/scenarios/multiplayer/Clash.cfg:3
-#, fuzzy
 msgid "Clash"
-msgstr "Классическая"
+msgstr "Столкновение"
 
 #: data/scenarios/multiplayer/Clash.cfg:5
-#, fuzzy
 msgid ""
 "Small map for 2v2.   Teams should be player 1 and 3, vs player 2 and 4.  "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
+"Небольшая карта 2 на 2. Команды должны состоять из 1-го и 3-го игрока против "
+"2-го и 4-го игрока. Рекомендуемые настройки 2 золота на деревню."
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1484,7 +1481,6 @@ msgstr ""
 "несомненно, Вы можете объяснить мне искусство битвы..."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:75
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1502,7 +1498,6 @@ msgid "Recruit a unit"
 msgstr "Вербовать новобранца"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
-#, fuzzy
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Отлично! Вы завербовали Эльфа Бойца."
 
@@ -1520,7 +1515,6 @@ msgid "How do I recruit units?"
 msgstr "Как покупать соединения?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:91
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1562,7 +1556,6 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "Как мне выбрать какие именно соединения покупать?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:93
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box,  and cost, which is displayed after the name of "
@@ -1603,7 +1596,6 @@ msgid "End your turn"
 msgstr "Закончить ход"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:116
-#, fuzzy
 msgid "You have successfully ended your turn."
 msgstr "Вы успешно завершили свой ход."
 
@@ -1656,7 +1648,6 @@ msgid "Move your Elvish Fighter next to Merle"
 msgstr "Переместите Вашего Эльфа бойца к Мирли"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:159
-#, fuzzy
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
@@ -1751,7 +1742,6 @@ msgid "Attack Merle"
 msgstr "Атакуйте Мирли"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "You have successfully attacked Merle."
 msgstr "Вы успешно атаковали Мирли."
 
@@ -1760,7 +1750,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Может ли Мирли ответить на мою атаку?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:199
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1775,18 +1764,19 @@ msgid ""
 "to retaliate at all. However ranged units cannot shoot across multiple "
 "hexes; this is one of the distinctive features of Wesnoth."
 msgstr ""
-"Когда соединение атаковано, оно отвечает одним из своих вооружений. После "
-"каждого удара атакующего обороняющийся отвечает ударом.Так продолжается до "
-"тех пор, пока одна из сторон не исчерпает количество своих ударов. В этом "
-"случае другое соединение продолжает атаковать, пока и у него не закончатся "
-"удары. Также каждое соединение может использовать только тот тип атаки, "
-"который применил противник. Поэтому только рукопашная атака используется "
-"против рукопашной, а атака на расстоянии - против атаки на расстоянии. "
-"Большинство соединений более сильны в рукопашной, чем в атаке на расстоянии. "
-"Соединения с сильной атакой на расстоянии полезнее против соединений "
-"ближнего боя. Некоторые соединения ближнего боя не могут атаковать на "
-"расстоянии и не смогут ответить на атаку стрелков. Также стрелки не могут "
-"стрелять через несколько квадратов; это один из главных принципов Веснота."
+"Когда соединение атаковано, оно отвечает одним из своих вооружений. Это "
+"значит, что после каждого удара атакующего обороняющийся отвечает ударом.Так "
+"продолжается до тех пор, пока одна из сторон не исчерпает количество своих "
+"ударов. В этом случае другое соединение продолжает атаковать, пока и у него "
+"не закончатся удары. Также каждое соединение может использовать только тот "
+"тип атаки, который применил противник. Поэтому только рукопашная атака "
+"используется против рукопашной, а атака на расстоянии - против атаки на "
+"расстоянии. Большинство соединений более сильны в рукопашной, чем в атаке на "
+"расстоянии. Соединения с сильной атакой на расстоянии полезнее против "
+"соединений ближнего боя. Некоторые соединения ближнего боя не могут "
+"атаковать на расстоянии и не смогут ответить на атаку стрелков. Также "
+"стрелки не могут стрелять через несколько квадратов; это один из главных "
+"принципов Веснота."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:200
 msgid ""
@@ -1830,7 +1820,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Завершите свой ход и подождите пока Мирли атакует Вас."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:216
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
@@ -1864,7 +1853,6 @@ msgid "What happens when a unit advances?"
 msgstr "Что происходит при улучшении соединения?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:222
-#, fuzzy
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1894,7 +1882,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Что происходит когда соединение входит в деревню?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:251
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1919,7 +1906,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Как я могу восстановить здоровье без деревень?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:252
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1964,7 +1950,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:300
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:264
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
@@ -1974,7 +1959,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:308
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:272
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
@@ -1983,7 +1967,6 @@ msgstr ""
 "получили новые знания от моего обучения."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:320
-#, fuzzy
 msgid "You have successfully completed the first training scenario."
 msgstr "Вы успешно завершили первый обучающий сценарий."
 
@@ -1999,7 +1982,6 @@ msgstr ""
 "расскажите?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:325
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -2035,7 +2017,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:333
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr "Вы хотите просмотреть уроки, которые были изучены на данном уровне?"
 
@@ -2050,7 +2031,6 @@ msgid "I'm done reviewing skills!"
 msgstr "Я закончил просмотр пройденных уроков!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:358
-#, fuzzy
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
@@ -2073,7 +2053,6 @@ msgstr ""
 "тренировочном бою."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
-#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -2124,7 +2103,6 @@ msgid "Turns run out"
 msgstr "Ходы закончились"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
-#, fuzzy
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Вы успешно призвали Вашего Эльфа Бойца."
 
@@ -2136,7 +2114,6 @@ msgstr "Вы успешно призвали Вашего Эльфа Бойца.
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:179
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
-#, fuzzy
 msgid "En garde!"
 msgstr "Защищайся!"
 
@@ -2161,7 +2138,6 @@ msgid "How should I decide which units to recall?"
 msgstr "Какие соединения мне выбирать для призыва?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:100
-#, fuzzy
 msgid ""
 "You should usually recall units that have already advanced to the next "
 "level. However, you may also want to recall units that have high experience, "
@@ -2174,7 +2150,6 @@ msgstr ""
 "сценарии; например, в лесу призывайте эльфов."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
@@ -2255,7 +2230,6 @@ msgid "How do I get gold?"
 msgstr "Где мне доставать золото?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
-#, fuzzy
 msgid ""
 "You begin each scenario with a percentage of gold from the previous "
 "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
@@ -2324,7 +2298,6 @@ msgstr ""
 "отличительные особенности."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2354,7 +2327,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "Как мне найти свойства отдельной земли?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -2403,7 +2375,6 @@ msgid "How does resistance affect attack damage?"
 msgstr "Как сопротивляемость влияет на ущерб\\, получаемый при атаке?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:182
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2529,7 +2500,6 @@ msgid "How long do these objects last?"
 msgstr "Как долго используются предметы?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:236
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
@@ -2764,11 +2734,11 @@ msgstr "болотные руины"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
-msgstr ""
+msgstr "Река Форд"
 
 #: data/terrain.cfg:480
 msgid "Lava"
-msgstr ""
+msgstr "Лава"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -5861,7 +5831,7 @@ msgstr ""
 
 #: data/units/Javelineer.cfg:3
 msgid "Javelineer"
-msgstr "Копьеносец"
+msgstr "Дротикометатель"
 
 #: data/units/Javelineer.cfg:16
 msgid ""
@@ -5871,10 +5841,10 @@ msgid ""
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
-"Копьеносцы мастерски владеют своими копьями, которые они получают как "
-"новобранцы. Опасные в бою, они так же обучены бросать свои копья, делая их в "
-"два раза более мощными в бою. Из-за длины своих копий, в бою они наносят "
-"удар первыми, даже если защищаются."
+"Дротикометатели мастерски владеют своими дротиками, которые они получают как "
+"новобранцы. Опасные в бою, они так же обучены бросать свои дротики, делая их "
+"в два раза более мощными в бою. Из-за длины своих дротиков, в бою они "
+"наносят удар первыми, даже если защищаются."
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
@@ -5945,7 +5915,7 @@ msgid ""
 "Longbowmen carry the huge specialized bows that they have learned to handle "
 "after years of combat. Their missiles can pierce even armor."
 msgstr ""
-"Лучники с Длинным Луком используют большие композитные луки, которыми "
+" Лучники с Длинным Луком используют большие композитные луки, которыми "
 "научились владеть после нескольких лет битв. Их стрелы могут пробивать даже "
 "броню."
 
@@ -7632,9 +7602,8 @@ msgid "+Catalan Translation"
 msgstr "+Каталонский перевод"
 
 #: src/about.cpp:164
-#, fuzzy
 msgid "+Chinese Translation"
-msgstr "+Финский перевод"
+msgstr "+Китайский перевод"
 
 #: src/about.cpp:168
 msgid "+Czech Translation"
@@ -7979,7 +7948,7 @@ msgstr "невидимый"
 
 #: src/filechooser.cpp:38
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/filechooser.cpp:39 src/multiplayer_connect.cpp:492
 #: src/multiplayer_create.cpp:52 src/multiplayer_wait.cpp:148
@@ -8251,14 +8220,12 @@ msgid "Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
 #: src/game_events.cpp:569
-#, fuzzy
 msgid "Victory:"
-msgstr "Победа"
+msgstr "Победа:"
 
 #: src/game_events.cpp:572
-#, fuzzy
 msgid "Defeat:"
-msgstr "Поражение"
+msgstr "Поражение:"
 
 #: src/help.cpp:1062
 msgid "Advances to: "
@@ -8386,7 +8353,7 @@ msgstr "Язык по умолчанию"
 
 #: src/leader_list.cpp:124 src/leader_list.cpp:130
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: src/mapgen_dialog.cpp:78
 msgid "Close Window"
@@ -9085,11 +9052,11 @@ msgstr "Не могу найти метку или соединение, сод�
 
 #: src/playturn.cpp:2417
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Сохранённая предпочтительная тема:"
 
 #: src/playturn.cpp:2423
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Новая тема будет задействована в следующей новой или загруженной игре."
 
 #: src/playturn.cpp:2506
 msgid "Place Label"
@@ -9214,69 +9181,68 @@ msgstr "Наблюдатели:"
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "Неожиданные символы в стартовой строке"
 
 #: src/serialization/parser.cpp:133
 msgid "Missing closing tag for tag $tag (file $file, line $line)"
-msgstr ""
+msgstr "Отсутствует закрывающейся тэг для тэга $tag (файл $file, строка $line)"
 
 #: src/serialization/parser.cpp:134
 msgid "Missing closing tag for tag $tag (line $line)"
-msgstr ""
+msgstr "Отсутствует закрывающейся тэг для тэга $tag (строка $line)"
 
 #: src/serialization/parser.cpp:149
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Незавершённый [элемент] тэг"
 
 #: src/serialization/parser.cpp:160 src/serialization/parser.cpp:198
-#, fuzzy
 msgid "Invalid tag name"
-msgstr "Выбрана неправильная эра"
+msgstr "Неправильное название тэга"
 
 #: src/serialization/parser.cpp:163
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Незавершённый [+элемент] тэг"
 
 #: src/serialization/parser.cpp:180
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Неверное название закрывающего тэга"
 
 #: src/serialization/parser.cpp:183
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Незавершённый закрывающий тэг"
 
 #: src/serialization/parser.cpp:185
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Неожиданный закрывающий тэг"
 
 #: src/serialization/parser.cpp:190
 msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
 msgstr ""
+"Найден неверный закрывающий тэг для тэга $tag (файл $file, строка $line)"
 
 #: src/serialization/parser.cpp:191
 msgid "Found invalid closing tag for tag $tag (line $line)"
-msgstr ""
+msgstr "Найден неверный закрывающий тэг для тэга $tag (строка $line)"
 
 #: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
-#, fuzzy
 msgid "Empty variable name"
-msgstr "Выбрана неправильная эра"
+msgstr "Пустое название переменной"
 
 #: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Неожиданные символы после переменной имени (отсутствует , или =)"
 
 #: src/serialization/parser.cpp:251 src/serialization/parser.cpp:275
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Незавершённая ссылаемая строка"
 
 #: src/serialization/parser.cpp:320
 msgid "$error in file $file (line $line, column $column)"
-msgstr ""
+msgstr "$error в файле $file (строка $line, колонка $column)"
 
 #: src/serialization/parser.cpp:321
 msgid "$error (line $line, column $column)"
-msgstr ""
+msgstr "$error (строка $line, колонка $column)"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
@@ -9365,160 +9331,3 @@ msgstr "порядочный"
 #: src/unit_types.cpp:926
 msgid "neutral"
 msgstr "нейтральный"
-
-#, fuzzy
-#~ msgid "Next unit"
-#~ msgstr "Нейтральные соединения:"
-
-#, fuzzy
-#~ msgid "End Unit Turn"
-#~ msgstr "Закончить ход"
-
-#, fuzzy
-#~ msgid "Undo"
-#~ msgstr "Мертвецы"
-
-#, fuzzy
-#~ msgid "Redo"
-#~ msgstr "Красный"
-
-#, fuzzy
-#~ msgid "Default Zoom"
-#~ msgstr "По умолчанию"
-
-#, fuzzy
-#~ msgid "Unit Description"
-#~ msgstr "Гигантский Скорпион"
-
-#, fuzzy
-#~ msgid "Repeat Recruit"
-#~ msgstr "Завербовать"
-
-#, fuzzy
-#~ msgid "Speak"
-#~ msgstr "Специальное"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Принцесса"
-
-#, fuzzy
-#~ msgid "Scenario Objectives"
-#~ msgstr "+Дизайн сценариев"
-
-#, fuzzy
-#~ msgid "Quit Game"
-#~ msgstr "Выйти из игры"
-
-#, fuzzy
-#~ msgid "Set Label"
-#~ msgstr "Поставить метку"
-
-#, fuzzy
-#~ msgid "Set Terrain"
-#~ msgstr "Местность"
-
-#, fuzzy
-#~ msgid "New Map"
-#~ msgstr "Карта Пользователя"
-
-#, fuzzy
-#~ msgid "Load Map"
-#~ msgstr "Загрузить игру"
-
-#, fuzzy
-#~ msgid "Save Map"
-#~ msgstr "Распределить карты"
-
-#, fuzzy
-#~ msgid "Save As"
-#~ msgstr "Сохранено"
-
-#, fuzzy
-#~ msgid "Flood Fill"
-#~ msgstr "кровавый поцелуй"
-
-#, fuzzy
-#~ msgid "Fill Selection"
-#~ msgstr "Скелет"
-
-#, fuzzy
-#~ msgid "Paste"
-#~ msgstr "Замок"
-
-#, fuzzy
-#~ msgid "Resize Map"
-#~ msgstr "Карта Пользователя"
-
-#, fuzzy
-#~ msgid "Select All"
-#~ msgstr "Выберите соединение:"
-
-#, fuzzy
-#~ msgid "Draw Terrain"
-#~ msgstr "Местность"
-
-#, fuzzy
-#~ msgid "Continue Move"
-#~ msgstr "Подключиться к серверу"
-
-#, fuzzy
-#~ msgid "View Chat Log"
-#~ msgstr "Лог чата"
-
-#, fuzzy
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Вы действительно хотите удалить эту игру?"
-
-#, fuzzy
-#~ msgid "player"
-#~ msgstr "Игроки:"
-
-#, fuzzy
-#~ msgid "Show Grid"
-#~ msgstr "Показать повтор"
-
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Обучение"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Ходы:"
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Изменить язык игры"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Выберите оружие:"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Настройки..."
-
-#, fuzzy
-#~ msgid "Delete File"
-#~ msgstr "Удалить сохранение"
-
-#~ msgid "Move your fighter onto a village"
-#~ msgstr "Переместите Вашего бойца в деревню."
-
-#~ msgid ""
-#~ "Congratulations! By defeating me, you complete the second training "
-#~ "scenario."
-#~ msgstr "Поздравляю! Убив меня, Вы завершили второй обучающий сценарий."
-
-#~ msgid ""
-#~ "The rank of Commander is held by those who lead battle groups into "
-#~ "combat. Possessing leadership skills, they give lower-level units "
-#~ "improved performance in combat. Commanders are best skilled with the "
-#~ "sword, although they also carry a bow to use when necessary. If the "
-#~ "Commander is lost, so is the battle."
-#~ msgstr ""
-#~ "Обязанности Командира - возглавлять боевые группы в бою. Знающий навыки "
-#~ "лидерства, он даёт соединениям низшего уровня улучшенные действия в "
-#~ "битве. Командиры отлично обучены владеть мечом, к тому же они могут "
-#~ "использовать при необходимости лук. Гибель Командира означает проигрыш в "
-#~ "битве."
