@@ -86,23 +86,25 @@ void menu::update_scrollbar_grip_height()
 }
 
 void menu::update_size() {
-	SDL_Rect rect = location();
+	unsigned h = 0;
 	for(size_t i = get_position(),
 	    i_end = minimum(items_.size(), i + max_items_onscreen());
 	    i != i_end; ++i)
-		rect.h += get_item_rect(i).h;
-	if (max_height_ > 0 && rect.h > max_height_)
-		rect.h = max_height_;
+		h += get_item_rect(i).h;
+	h = maximum(h, height());
+	if (max_height_ > 0 && h > max_height_)
+		h = max_height_;
 
 	std::vector<int> const &widths = column_widths();
-	rect.w = std::accumulate(widths.begin(), widths.end(), 0);
+	unsigned w = std::accumulate(widths.begin(), widths.end(), 0);
 	if (items_.size() > max_items_onscreen())
-		rect.w += scrollbar_width();
-	if (max_width_ > 0 && rect.w > max_width_)
-		rect.w = max_width_;
+		w += scrollbar_width();
+	w = maximum(w, width());
+	if (max_width_ > 0 && w > max_width_)
+		w = max_width_;
 
 	update_scrollbar_grip_height();
-	set_location(rect);
+	set_measurements(w, h);
 }
 
 int menu::selection() const { return selected_; }
