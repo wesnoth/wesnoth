@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-25 10:47+0100\n"
+"POT-Creation-Date: 2005-01-28 22:56+0100\n"
 "PO-Revision-Date: 2005-01-21 00:45+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
@@ -45,11 +45,11 @@ msgstr "Einführung"
 msgid "Gameplay"
 msgstr "Spielregeln"
 
-#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2099
+#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2100
 msgid "Traits"
 msgstr "Charakteristiken"
 
-#: data/help.cfg:28 src/playturn.cpp:1664
+#: data/help.cfg:28 src/playturn.cpp:1665
 msgid "Units"
 msgstr "Einheiten"
 
@@ -2795,14 +2795,14 @@ msgstr "Aktionen"
 msgid "End Turn"
 msgstr "Zug beenden"
 
-#: data/themes/default.cfg:153 src/dialogs.cpp:661 src/display.cpp:946
-#: src/help.cpp:1060 src/playturn.cpp:2097 src/unit.cpp:1055
+#: data/themes/default.cfg:153 src/dialogs.cpp:661 src/display.cpp:972
+#: src/help.cpp:1060 src/playturn.cpp:2098 src/unit.cpp:1055
 msgid "HP"
 msgstr "LP"
 
 #: data/themes/default.cfg:162 src/dialogs.cpp:665 src/dialogs.cpp:673
-#: src/display.cpp:950 src/display.cpp:958 src/playturn.cpp:1937
-#: src/playturn.cpp:2098 src/unit.cpp:1114
+#: src/display.cpp:976 src/display.cpp:984 src/playturn.cpp:1938
+#: src/playturn.cpp:2099 src/unit.cpp:1114
 msgid "XP"
 msgstr "EP"
 
@@ -8027,12 +8027,12 @@ msgstr "Es gibt keine freien Burgfelder zum Rekrutieren von Einheiten."
 msgid "none"
 msgstr "nichts"
 
-#: src/actions.cpp:272 src/dialogs.cpp:693 src/display.cpp:979
+#: src/actions.cpp:272 src/dialogs.cpp:693 src/display.cpp:1005
 #: src/help.cpp:1130 src/reports.cpp:231
 msgid "melee"
 msgstr "Nahkampf"
 
-#: src/actions.cpp:272 src/dialogs.cpp:693 src/display.cpp:980
+#: src/actions.cpp:272 src/dialogs.cpp:693 src/display.cpp:1006
 #: src/help.cpp:1130 src/reports.cpp:232
 msgid "ranged"
 msgstr "Fernkampf"
@@ -8069,12 +8069,12 @@ msgstr "Verwundbarkeit des Verteidigers gegen"
 msgid "Halved"
 msgstr "Halbiert"
 
-#: src/actions.cpp:697 src/actions.cpp:842 src/display.cpp:922
+#: src/actions.cpp:697 src/actions.cpp:842 src/display.cpp:948
 #: src/reports.cpp:116
 msgid "poisoned"
 msgstr "vergiftet"
 
-#: src/actions.cpp:702 src/actions.cpp:847 src/display.cpp:918
+#: src/actions.cpp:702 src/actions.cpp:847 src/display.cpp:944
 #: src/reports.cpp:111
 msgid "slowed"
 msgstr "verlangsamt"
@@ -8147,11 +8147,11 @@ msgstr "%a %d %b %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Ungültig)"
 
-#: src/dialogs.cpp:363 src/game.cpp:962
+#: src/dialogs.cpp:363 src/game.cpp:964
 msgid "Campaign"
 msgstr "Kampagne"
 
-#: src/dialogs.cpp:365 src/game.cpp:1256
+#: src/dialogs.cpp:365 src/game.cpp:1258
 msgid "Multiplayer"
 msgstr "Mehrspieler"
 
@@ -8171,11 +8171,11 @@ msgstr "Runde"
 msgid "Scenario Start"
 msgstr "Szenariobeginn"
 
-#: src/dialogs.cpp:382 src/game.cpp:992
+#: src/dialogs.cpp:382 src/game.cpp:994
 msgid "Difficulty"
 msgstr "Schwierigkeitsgrad"
 
-#: src/dialogs.cpp:384 src/game.cpp:1054 src/titlescreen.cpp:165
+#: src/dialogs.cpp:384 src/game.cpp:1056 src/titlescreen.cpp:165
 msgid "Version"
 msgstr "Version"
 
@@ -8235,21 +8235,21 @@ msgstr "Wählt den zu ladenden Spielstand"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:640 src/display.cpp:928 src/help.cpp:1015
-#: src/playturn.cpp:1936
+#: src/dialogs.cpp:640 src/display.cpp:954 src/help.cpp:1015
+#: src/playturn.cpp:1937
 msgid "level"
 msgstr "Stufe"
 
-#: src/dialogs.cpp:678 src/display.cpp:962 src/help.cpp:1061
-#: src/playturn.cpp:2100 src/unit.cpp:1091
+#: src/dialogs.cpp:678 src/display.cpp:988 src/help.cpp:1061
+#: src/playturn.cpp:2101 src/unit.cpp:1091
 msgid "Moves"
 msgstr "BP"
 
-#: src/display.cpp:909
+#: src/display.cpp:935
 msgid "healthy"
 msgstr "gesund"
 
-#: src/display.cpp:914 src/reports.cpp:106
+#: src/display.cpp:940 src/reports.cpp:106
 msgid "invisible"
 msgstr "unsichtbar"
 
@@ -8269,16 +8269,16 @@ msgstr "Name:"
 msgid "The game could not be saved"
 msgstr "Der Spielstand konnte nicht gespeichert werden"
 
-#: src/game.cpp:167 src/game.cpp:901 src/game.cpp:1291
+#: src/game.cpp:167 src/game.cpp:903 src/game.cpp:1293
 msgid "The game could not be loaded: "
 msgstr "Der Spielstand konnte nicht geladen werden:"
 
 # klingt doof
-#: src/game.cpp:170 src/game.cpp:903 src/game.cpp:1293
+#: src/game.cpp:170 src/game.cpp:905 src/game.cpp:1295
 msgid "Error while playing the game: "
 msgstr "Fehler beim spielen des Spieles:"
 
-#: src/game.cpp:173 src/game.cpp:1305
+#: src/game.cpp:173 src/game.cpp:1307
 msgid "The game map could not be loaded: "
 msgstr "Die Karte konnte nicht geladen werden:"
 
@@ -8291,11 +8291,11 @@ msgid "Unknown scenario: '"
 msgstr "Unbekanntes Szenario: '"
 
 # Vielleicht "Der Kampf um Wesnoth"
-#: src/game.cpp:609
+#: src/game.cpp:611
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:833 src/multiplayer_connect.cpp:108
+#: src/game.cpp:835 src/multiplayer_connect.cpp:108
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -8303,203 +8303,203 @@ msgstr ""
 "Dieser Spielstand stammt aus einer früheren Version. Möchtet Ihr den "
 "Spielstand laden?"
 
-#: src/game.cpp:841 src/game.cpp:844
+#: src/game.cpp:843 src/game.cpp:846
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt: '"
 
-#: src/game.cpp:847
+#: src/game.cpp:849
 msgid "File I/O Error while reading the game"
 msgstr "Dateifehler beim Einlesen des Spieles."
 
-#: src/game.cpp:952
+#: src/game.cpp:954
 msgid "Get More Campaigns..."
 msgstr "Weitere Kampagnen..."
 
-#: src/game.cpp:953
+#: src/game.cpp:955
 msgid "Download more campaigns from a server on Internet."
 msgstr "Ladet weitere Kampagnen von einem Server aus dem Internet herunter."
 
-#: src/game.cpp:963
+#: src/game.cpp:965
 msgid "Choose the campaign you want to play:"
 msgstr "Wählt die Kampagne, die Ihr spielen wollt:"
 
-#: src/game.cpp:993
+#: src/game.cpp:995
 msgid "Select difficulty level:"
 msgstr "Schwierigkeitsgrad auswählen:"
 
-#: src/game.cpp:1012
+#: src/game.cpp:1014
 msgid "Connect to Server"
 msgstr "Mit Kampagnenserver verbinden"
 
-#: src/game.cpp:1013
+#: src/game.cpp:1015
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Gebt einen Server an, von dem Ihr Kampagnen herunterladen wollt."
 
-#: src/game.cpp:1014
+#: src/game.cpp:1016
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:1026
+#: src/game.cpp:1028
 msgid "Could not connect to host."
 msgstr "Es konnte keine Verbindung zum Gastgeber aufgebaut werden."
 
-#: src/game.cpp:1034
+#: src/game.cpp:1036
 msgid "Awaiting response from server"
 msgstr "Warte auf Serverantwort..."
 
-#: src/game.cpp:1047
+#: src/game.cpp:1049
 msgid "Error communicating with the server."
 msgstr "Kommunikationsfehler mit dem Server."
 
-#: src/game.cpp:1053 src/help.cpp:1084 src/help.cpp:1085 src/playturn.cpp:2096
+#: src/game.cpp:1055 src/help.cpp:1084 src/help.cpp:1085 src/playturn.cpp:2097
 msgid "Name"
 msgstr "Name"
 
-#: src/game.cpp:1055
+#: src/game.cpp:1057
 msgid "Author"
 msgstr "Autor"
 
-#: src/game.cpp:1056
+#: src/game.cpp:1058
 msgid "Downloads"
 msgstr "Heruntergeladen"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1059
 msgid "Size"
 msgstr "Größe"
 
-#: src/game.cpp:1076
+#: src/game.cpp:1078
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:1079 src/show_dialog.cpp:960
+#: src/game.cpp:1081 src/show_dialog.cpp:960
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:1082
+#: src/game.cpp:1084
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:1099
+#: src/game.cpp:1101
 msgid "Publish campaign: "
 msgstr "Kampagne veröffentlichen:"
 
-#: src/game.cpp:1103
+#: src/game.cpp:1105
 msgid "Delete campaign: "
 msgstr "Kampagne löschen:"
 
-#: src/game.cpp:1107
+#: src/game.cpp:1109
 msgid "There are no campaigns available for download from this server."
 msgstr "Auf diesem Server sind keine Kampagnen zum Herunterladen verfügabr"
 
-#: src/game.cpp:1111
+#: src/game.cpp:1113
 msgid "Choose the campaign to download."
 msgstr "Wählt die Kampagne, die Ihr herunterladen wollt."
 
-#: src/game.cpp:1111
+#: src/game.cpp:1113
 msgid "Get Campaign"
 msgstr "Kampagnen herunterladen"
 
-#: src/game.cpp:1130
+#: src/game.cpp:1132
 msgid "Downloading campaign..."
 msgstr "Herunterladen der Kampagne..."
 
-#: src/game.cpp:1149
+#: src/game.cpp:1151
 msgid "Campaign Installed"
 msgstr "Kampagne installiert"
 
-#: src/game.cpp:1149
+#: src/game.cpp:1151
 msgid "The campaign has been installed."
 msgstr "Die Kampagne wurde erfolgreich installiert."
 
-#: src/game.cpp:1151
+#: src/game.cpp:1153
 msgid "Network communication error."
 msgstr "Netzwerkverbindungsfehler"
 
-#: src/game.cpp:1153
+#: src/game.cpp:1155
 msgid "Remote host disconnected."
 msgstr "Der Gastgeber hat die Verbindung unterbrochen."
 
-#: src/game.cpp:1155
+#: src/game.cpp:1157
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Es gab ein Problem beim Erstellen der für die Installation der Kampagne "
 "nötigen Dateien."
 
-#: src/game.cpp:1167 src/game.cpp:1206 src/game.cpp:1231
+#: src/game.cpp:1169 src/game.cpp:1208 src/game.cpp:1233
 #: src/multiplayer_client.cpp:50 src/multiplayer_client.cpp:327
 msgid "Connection timed out"
 msgstr "Zeitlimit der Verbindung überschritten"
 
-#: src/game.cpp:1170 src/game.cpp:1208 src/game.cpp:1233
+#: src/game.cpp:1172 src/game.cpp:1210 src/game.cpp:1235
 msgid "The server responded with an error: \""
 msgstr "Der Server gab folgenden Fehler zurück: \""
 
-#: src/game.cpp:1174
+#: src/game.cpp:1176
 msgid "Terms"
 msgstr "Bedingungen"
 
-#: src/game.cpp:1211 src/game.cpp:1236
+#: src/game.cpp:1213 src/game.cpp:1238
 msgid "Response"
 msgstr "Antwort"
 
-#: src/game.cpp:1249
+#: src/game.cpp:1251
 msgid "Join Official Server"
 msgstr "Offiziellem Server beitreten"
 
-#: src/game.cpp:1249
+#: src/game.cpp:1251
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Beim offiziellen Wesnoth-Server anmelden"
 
-#: src/game.cpp:1250 src/multiplayer_lobby.cpp:207
+#: src/game.cpp:1252 src/multiplayer_lobby.cpp:207
 msgid "Join Game"
 msgstr "Spiel beitreten"
 
-#: src/game.cpp:1250
+#: src/game.cpp:1252
 msgid "Join a server or hosted game"
 msgstr "Einem Server oder einer Mehrspielerpartie beitreten"
 
-#: src/game.cpp:1251
+#: src/game.cpp:1253
 msgid "Host Networked Game"
 msgstr "Netzwerkpartie eröffnen"
 
-#: src/game.cpp:1251
+#: src/game.cpp:1253
 msgid "Host a game without using a server"
 msgstr "Eine Mehrspielerpartie ohne Zuhilfenahme eines Servers eröffnen"
 
-#: src/game.cpp:1252
+#: src/game.cpp:1254
 msgid "Hotseat Game"
 msgstr "Heißer Stuhl"
 
-#: src/game.cpp:1252
+#: src/game.cpp:1254
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Eine Mehrspielerpartie am selben Rechner spielen"
 
-#: src/game.cpp:1253
+#: src/game.cpp:1255
 msgid "Human vs AI"
 msgstr "Mensch gegen Computer"
 
-#: src/game.cpp:1253
+#: src/game.cpp:1255
 msgid "Play a game against AI opponents"
 msgstr "Eine Partie gegen den Computer eröffnen"
 
-#: src/game.cpp:1256 src/multiplayer_client.cpp:311
+#: src/game.cpp:1258 src/multiplayer_client.cpp:311
 msgid "Login"
 msgstr "Euer Name"
 
-#: src/game.cpp:1331
+#: src/game.cpp:1333
 msgid "Language"
 msgstr "Sprache"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1334
 msgid "Choose your preferred language"
 msgstr "Wählt die gewünschte Sprache"
 
-#: src/game.cpp:1370
+#: src/game.cpp:1372
 msgid "Error loading game configuration files: '"
 msgstr "Fehler beim Laden der Konfigurationsdateien: '"
 
-#: src/game.cpp:1371
+#: src/game.cpp:1373
 msgid "' (The game will now exit)"
 msgstr "' (Das Spiel wird nun beendet)"
 
@@ -8519,7 +8519,7 @@ msgstr "Benötigte EP"
 msgid "attacks"
 msgstr "Attacken"
 
-#: src/help.cpp:1088 src/help.cpp:1089 src/playturn.cpp:2095
+#: src/help.cpp:1088 src/help.cpp:1089 src/playturn.cpp:2096
 msgid "Type"
 msgstr "Typ"
 
@@ -8656,7 +8656,7 @@ msgstr "Iterationen"
 msgid "Bump Size"
 msgstr "Hügelgrösse"
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1663
+#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1664
 msgid "Villages"
 msgstr "Dörfer"
 
@@ -8829,7 +8829,7 @@ msgstr "Warnung"
 msgid "Receiving game list..."
 msgstr "Partieliste wird empfangen..."
 
-#: src/multiplayer_client.cpp:132 src/playturn.cpp:1759
+#: src/multiplayer_client.cpp:132 src/playturn.cpp:1760
 msgid "unit^Gold"
 msgstr "Gold"
 
@@ -8985,7 +8985,7 @@ msgid "Color"
 msgstr "Farbe"
 
 #: src/multiplayer_connect.cpp:412 src/multiplayer_connect.cpp:414
-#: src/playlevel.cpp:807 src/playturn.cpp:1662 src/playturn.cpp:1669
+#: src/playlevel.cpp:807 src/playturn.cpp:1663 src/playturn.cpp:1670
 msgid "Gold"
 msgstr "Gold"
 
@@ -9065,6 +9065,11 @@ msgstr "Sieg"
 #: src/playlevel.cpp:817
 msgid "You have emerged victorious!"
 msgstr "Ihr seid siegreich aus der Schlacht hervorgegangen!"
+
+#: src/playlevel.cpp:820
+#, fuzzy
+msgid "Scenario Report"
+msgstr "Szenariobeginn"
 
 #: src/playlevel.cpp:841
 msgid ""
@@ -9149,35 +9154,35 @@ msgstr "Gespeichert"
 msgid "The game has been saved"
 msgstr "Der Spielstand wurde gespeichert"
 
-#: src/playturn.cpp:1661
+#: src/playturn.cpp:1662
 msgid "Leader"
 msgstr "Heerführer"
 
-#: src/playturn.cpp:1665
+#: src/playturn.cpp:1666
 msgid "Upkeep"
 msgstr "Ausgaben"
 
-#: src/playturn.cpp:1666
+#: src/playturn.cpp:1667
 msgid "Income"
 msgstr "Einkommen"
 
-#: src/playturn.cpp:1765
+#: src/playturn.cpp:1766
 msgid "You have no units available to recruit."
 msgstr "Es gibt keine Einheiten, die Ihr ausbilden könntet."
 
-#: src/playturn.cpp:1777
+#: src/playturn.cpp:1778
 msgid "Recruit"
 msgstr "Ausbilden"
 
-#: src/playturn.cpp:1778 src/playturn.cpp:1962
+#: src/playturn.cpp:1779 src/playturn.cpp:1963
 msgid "Select unit"
 msgstr "Einheit auswählen"
 
-#: src/playturn.cpp:1812
+#: src/playturn.cpp:1813
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Ihr verfügt nicht über genug Gold, um diese Einheit auszubilden."
 
-#: src/playturn.cpp:1870
+#: src/playturn.cpp:1871
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -9185,7 +9190,7 @@ msgstr ""
 "Diese Einheit ist sehr erfahren und ist bereits mindestens eine Stufe "
 "aufgestiegen. Wollt Ihr $noun wirklich entlassen?"
 
-#: src/playturn.cpp:1872
+#: src/playturn.cpp:1873
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -9193,19 +9198,19 @@ msgstr ""
 "Diese Einheit steht kurz vor dem Stufenaufstieg! Wollt Ihr $noun wirklich "
 "entlassen?"
 
-#: src/playturn.cpp:1877
+#: src/playturn.cpp:1878
 msgid "her"
 msgstr "ihr"
 
-#: src/playturn.cpp:1877
+#: src/playturn.cpp:1878
 msgid "him"
 msgstr "sein"
 
-#: src/playturn.cpp:1918
+#: src/playturn.cpp:1919
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Ihr seid von Euren Soldaten getrennt und könnt diese nicht einberufen."
 
-#: src/playturn.cpp:1920
+#: src/playturn.cpp:1921
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -9213,103 +9218,103 @@ msgstr ""
 "Ihr verfügt über keine Truppen, die Ihr einberufen könntet.\n"
 "(Ihr benötigt überlebende Veteranen aus früheren Szenarien)"
 
-#: src/playturn.cpp:1926
+#: src/playturn.cpp:1927
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 "Ihr benötigt mindestens $cost Goldstücke, um eine Einheit einberufen zu "
 "können."
 
-#: src/playturn.cpp:1949
+#: src/playturn.cpp:1950
 msgid "Dismiss Unit"
 msgstr "Einheit entlassen"
 
-#: src/playturn.cpp:1961
+#: src/playturn.cpp:1962
 msgid "Recall"
 msgstr "Einberufen"
 
-#: src/playturn.cpp:2006
+#: src/playturn.cpp:2007
 msgid "Message"
 msgstr "Nachricht"
 
-#: src/playturn.cpp:2006
+#: src/playturn.cpp:2007
 msgid "Send to allies only"
 msgstr "Nur an Verbündete senden"
 
-#: src/playturn.cpp:2101
+#: src/playturn.cpp:2102
 msgid "Location"
 msgstr "Standort"
 
-#: src/playturn.cpp:2149
+#: src/playturn.cpp:2150
 msgid "Unit List"
 msgstr "Einheitenübersicht"
 
-#: src/playturn.cpp:2184 src/playturn.cpp:2246
+#: src/playturn.cpp:2185 src/playturn.cpp:2247
 msgid "Recruits"
 msgstr "Ausgebildet"
 
-#: src/playturn.cpp:2190 src/playturn.cpp:2250
+#: src/playturn.cpp:2191 src/playturn.cpp:2251
 msgid "Recalls"
 msgstr "Einberufungen"
 
-#: src/playturn.cpp:2196 src/playturn.cpp:2254
+#: src/playturn.cpp:2197 src/playturn.cpp:2255
 msgid "Advancements"
 msgstr "Stufenaufstiege"
 
-#: src/playturn.cpp:2202 src/playturn.cpp:2258
+#: src/playturn.cpp:2203 src/playturn.cpp:2259
 msgid "Losses"
 msgstr "Verluste"
 
-#: src/playturn.cpp:2208 src/playturn.cpp:2262
+#: src/playturn.cpp:2209 src/playturn.cpp:2263
 msgid "Kills"
 msgstr "Tötungen"
 
-#: src/playturn.cpp:2214
+#: src/playturn.cpp:2215
 msgid "Damage Inflicted"
 msgstr "Verursachter Schaden"
 
-#: src/playturn.cpp:2220
+#: src/playturn.cpp:2221
 msgid "Damage Taken"
 msgstr "Erlittener Schaden"
 
-#: src/playturn.cpp:2226
+#: src/playturn.cpp:2227
 msgid "Damage Inflicted (EV)"
 msgstr "Verursachter Schaden (EV)"
 
-#: src/playturn.cpp:2233
+#: src/playturn.cpp:2234
 msgid "Damage Taken (EV)"
 msgstr "Erlittener Schaden (EV)"
 
-#: src/playturn.cpp:2239
+#: src/playturn.cpp:2240
 msgid "Statistics"
 msgstr "Statistiken"
 
-#: src/playturn.cpp:2276
+#: src/playturn.cpp:2277
 msgid "Search"
 msgstr "Suchen"
 
-#: src/playturn.cpp:2286
+#: src/playturn.cpp:2287
 msgid "prompt^Command:"
 msgstr "Befehl:"
 
-#: src/playturn.cpp:2297
+#: src/playturn.cpp:2298
 msgid "Chat Log"
 msgstr "Gesprächsprotokoll"
 
-#: src/playturn.cpp:2362
+#: src/playturn.cpp:2363
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Eine Beschriftung oder Einheit, deren Name »$search« enthält, konnte nicht "
 "gefunden werden."
 
-#: src/playturn.cpp:2455
+#: src/playturn.cpp:2456
 msgid "Place Label"
 msgstr "Beschriftung erstellen"
 
-#: src/playturn.cpp:2456
+#: src/playturn.cpp:2457
 msgid "Label"
 msgstr "Beschriftung"
 
-#: src/playturn.cpp:2588
+#: src/playturn.cpp:2589
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -9317,23 +9322,23 @@ msgstr ""
 "Das Spiel läuft nicht mehr syncron und muss beendet werden. Möchtet Ihr "
 "einen Fehlerbericht dieses Spiels abspeichern?"
 
-#: src/playturn.cpp:2640
+#: src/playturn.cpp:2642
 msgid "Replace with AI"
 msgstr "Durch Computer ersetzen"
 
-#: src/playturn.cpp:2641
+#: src/playturn.cpp:2643
 msgid "Replace with local player"
 msgstr "Durch lokalen Spieler ersetzen"
 
-#: src/playturn.cpp:2642
+#: src/playturn.cpp:2644
 msgid "Abort game"
 msgstr "Spiel abbrechen"
 
-#: src/playturn.cpp:2645
+#: src/playturn.cpp:2647
 msgid "Replace with "
 msgstr "Ersetzen durch "
 
-#: src/playturn.cpp:2649
+#: src/playturn.cpp:2651
 msgid "has left the game. What do you want to do?"
 msgstr "hat das Spiel verlassen. Was wollt Ihr tun?"
 
