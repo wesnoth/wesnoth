@@ -81,7 +81,7 @@ int main(int argc, char** argv)
 	defines_map["NORMAL"] = preproc_define();
 	config cfg(preprocess_file("data/game.cfg",&defines_map));
 
-	set_language("English", cfg);
+	set_language("English");
 
 	std::string filename;
 

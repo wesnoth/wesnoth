@@ -36,13 +36,13 @@ const std::string& translate_string_default(const std::string& key, const std::s
 
 //function which, given the main configuration object, will return
 //a list of the translations of the game available.
-std::vector<std::string> get_languages(config& cfg);
+std::vector<std::string> get_languages();
 
 //function which, given the main configuration object, and a locale,
 //will set string_table to be populated with data from that locale.
 //locale may be either the full name of the language, like 'English',
 //or the 2-letter version, like 'en'.
-bool set_language(const std::string& locale, config& cfg);
+bool set_language(const std::string& locale);
 
 //function which returns the name of the language currently used
 const std::string& get_language();

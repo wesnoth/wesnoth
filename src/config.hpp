@@ -78,8 +78,8 @@ typedef std::map<std::string,preproc_define> preproc_map;
 //preprocessed file data. defines is a map of symbols defined. src is used
 //internally and should be set to NULL
 std::string preprocess_file(const std::string& fname,
-                            const preproc_map* defines=0,
-                            std::vector<line_source>* src=0);
+                            const preproc_map* defines=NULL,
+                            std::vector<line_source>* src=NULL);
 
 typedef std::map<std::string,std::string> string_map;
 

@@ -383,12 +383,12 @@ int play_game(int argc, char** argv)
 
 	game_data units_data(*units[0]);
 
-	const bool lang_res = set_language(get_locale(), game_config);
+	const bool lang_res = set_language(get_locale());
 	if(!lang_res) {
 		std::cerr << "No translation for locale '" << get_locale()
 		          << "', default to locale 'en'\n";
 
-		const bool lang_res = set_language("en", game_config);
+		const bool lang_res = set_language("en");
 		if(!lang_res) {
 			std::cerr << "Language data not found\n";
 		}
@@ -759,7 +759,7 @@ int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::CHANGE_LANGUAGE) {
 
-			std::vector<std::string> langs = get_languages(game_config);
+			std::vector<std::string> langs = get_languages();
 
 			std::sort(langs.begin(),langs.end());
 
@@ -771,7 +771,7 @@ int play_game(int argc, char** argv)
 			                         string_table["language_button"] + ":",
 			                         gui::OK_CANCEL,&langs);
 			if(size_t(res) < langs.size()) {
-				set_language(langs[res], game_config);
+				set_language(langs[res]);
 				preferences::set_locale(langs[res]);
 			}
 			continue;

@@ -95,10 +95,15 @@ manager::~manager()
 
 void set(CURSOR_TYPE type)
 {
+	current_cursor = type;
+
+	if(type == NUM_CURSORS) {
+		return;
+	}
+
 	SDL_Cursor* const cursor = get_cursor(type);
 	if(cursor != NULL) {
 		SDL_SetCursor(cursor);
-		current_cursor = type;
 	}
 }
 

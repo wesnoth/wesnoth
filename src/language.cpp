@@ -44,7 +44,7 @@ const std::string& translate_string_default(const std::string& str, const std::s
 		return default_val;
 }
 
-std::vector<std::string> get_languages(config& c)
+std::vector<std::string> get_languages()
 {
 	std::vector<std::string> res;
 
@@ -102,7 +102,7 @@ bool internal_set_language(const std::string& locale, config& cfg)
 }
 }
 
-bool set_language(const std::string& locale, config& c)
+bool set_language(const std::string& locale)
 {
 	string_table.clear();
 
@@ -113,20 +113,20 @@ bool set_language(const std::string& locale, config& c)
 	config cfg;
 	if(locale_lc == "en" || locale_lc == "english") {
 		try {
-			cfg.read(read_file("data/translations/english.cfg"));
+			cfg.read(preprocess_file("data/translations/english.cfg"));
 		} catch(config::error& e) {
 			std::cerr << "Could not read english.cfg\n";
 			throw e;
 		}
 	} else {
 		try {
-			cfg.read(preprocess_file("data/translations/",NULL,NULL));
+			cfg.read(preprocess_file("data/translations/"));
 			
 			//default to English locale first, then set desired locale
 			internal_set_language("en",cfg);
 		} catch(config::error& e) {
 			std::cerr << "error opening translations: '" << e.message << "' Defaulting to English\n";
-			return set_language("english",c);
+			return set_language("english");
 		}
 	}
 
