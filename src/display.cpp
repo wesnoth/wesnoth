@@ -632,16 +632,12 @@ void display::draw_game_status(int x, int y)
 void display::draw_image_for_report(scoped_sdl_surface& img, scoped_sdl_surface& surf, SDL_Rect& rect)
 {
 	SDL_Rect visible_area = get_non_transperant_portion(img);
+	SDL_Rect target = rect;
 	if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
 		if(visible_area.w == 0 || visible_area.h == 0) {
 			return;
 		}
 
-		//since we're blitting a transperant image, we need to back up
-		//the surface for later restoration
-		surf.assign(get_surface_portion(screen_.getSurface(),rect));
-
-		SDL_Rect target = rect;
 		if(visible_area.w > rect.w || visible_area.h > rect.h) {
 			img.assign(get_surface_portion(img,visible_area));
 			img.assign(scale_surface(img,rect.w,rect.h));
@@ -662,7 +658,7 @@ void display::draw_image_for_report(scoped_sdl_surface& img, scoped_sdl_surface&
 			img.assign(scale_surface(img,rect.w,rect.h));
 		}
 
-		SDL_BlitSurface(img,NULL,screen_.getSurface(),&rect);
+		SDL_BlitSurface(img,NULL,screen_.getSurface(),&target);
 	}
 }
 
@@ -719,7 +715,7 @@ void display::draw_report(reports::TYPE report_num)
 
 		SDL_Rect area = rect;
 
-			int x = rect.x, y = rect.y;
+		int x = rect.x, y = rect.y;
 		if(!report.empty()) {
 			// Add prefix, postfix elements. Make sure that they get the same tooltip as the guys
 			// around them.
@@ -743,20 +739,17 @@ void display::draw_report(reports::TYPE report_num)
 						x = rect.x;
 						y += tallest;
 						tallest = 0;
-			} else {
+					} else {
 						x += area.w;
 					}
 				} else if(i->image.empty() == false) {
-				//first back up the current area for later restoration
-					//surf.assign(get_surface_portion(screen_.getSurface(),rect));
-
 					// Draw an image element
 					scoped_sdl_surface img(image::get_image(i->image,image::UNSCALED));
 
 					if(img == NULL) {
 						std::cerr << "could not find image for report: '" << i->image << "'\n";
 						continue;
-						}
+					}
 
 					area.x = x;
 					area.y = y;
@@ -766,11 +759,10 @@ void display::draw_report(reports::TYPE report_num)
 
 					if(area.h > tallest) tallest = area.h;
 					x += area.w;
-
 				} else {
 					// No text or image, skip this element
 					continue;
-					}
+				}
 				if(i->tooltip.empty() == false) {
 					tooltips::add_tooltip(area,i->tooltip);
 				}
