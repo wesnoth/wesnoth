@@ -367,26 +367,14 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		//we want to round the absolute value of the difference down
 		//at 0.5 and below
-		const int is_negative = percent < 0 ? -1 : 1;
-
-		if(percent < 0) {
-			percent *= -1;
-		}
-
-		int difference = percent*base_damage;
-
-		//round up if greater than half
-		if((difference%100) > 50) {
-			difference += 50;
-		}
-
-		difference /= 100*is_negative;
+		bool const is_negative = percent < 0;
+		int difference = is_negative ? -percent : percent;
+		difference = (difference * base_damage + 49) / 100;
+		if (is_negative) difference = -difference;
 
 		res.damage_attacker_takes = maximum<int>(1,base_damage + difference);
 
 		if (strings) {
-			percent *= is_negative;
-
 			std::stringstream str;
 			str << _("total damage") << COLUMN_SEPARATOR << res.damage_attacker_takes
 			    << COLUMN_SEPARATOR << (percent >= 0 ? "+" : "") << percent
@@ -502,25 +490,13 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	//we want to round the absolute value of the difference down
 	//at 0.5 and below
-	const int is_negative = percent < 0 ? -1 : 1;
-
-	if(percent < 0) {
-		percent *= -1;
-	}
-
-	int difference = percent*base_damage;
-
-	//round up if greater than half
-	if((difference%100) > 50) {
-		difference += 50;
-	}
-
-	difference /= 100*is_negative;
+	bool const is_negative = percent < 0;
+	int difference = is_negative ? -percent : percent;
+	difference = (difference * base_damage + 49) / 100;
+	if (is_negative) difference = -difference;
 
 	res.damage_defender_takes = maximum<int>(1,base_damage + difference);
 	if (strings) {
-		percent *= is_negative;
-
 		std::stringstream str;
 		str << _("total damage") << COLUMN_SEPARATOR << res.damage_defender_takes
 		    << COLUMN_SEPARATOR << (percent >= 0 ? "+" : "") << percent
