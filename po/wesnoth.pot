@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth.cpp.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-30 00:55+0200\n"
+"POT-Creation-Date: 2004-08-30 17:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2753,7 +2753,7 @@ msgid ""
 "where the dreaded swamps await."
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:3 src/game.cpp:576
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:3 src/game.cpp:580
 msgid "The Battle for Wesnoth"
 msgstr ""
 
@@ -11527,7 +11527,7 @@ msgstr ""
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/tutorial1.cfg:292
-#: data/scenarios/tutorial/tutorial2.cfg:279 src/show_dialog.cpp:450
+#: data/scenarios/tutorial/tutorial2.cfg:279 src/show_dialog.cpp:449
 msgid "No"
 msgstr ""
 
@@ -11686,7 +11686,7 @@ msgid "Do you want to review any of the skills learned on this level?"
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:278
-#: data/scenarios/tutorial/tutorial2.cfg:263 src/show_dialog.cpp:449
+#: data/scenarios/tutorial/tutorial2.cfg:263 src/show_dialog.cpp:448
 msgid "Yes"
 msgstr ""
 
@@ -15200,7 +15200,7 @@ msgid ""
 "Lord -- to join the elite of human fighters."
 msgstr ""
 
-#: src/about.cpp:241 src/help.cpp:2368 src/show_dialog.cpp:469
+#: src/about.cpp:241 src/help.cpp:2368 src/show_dialog.cpp:468
 msgid "Close"
 msgstr ""
 
@@ -15254,31 +15254,31 @@ msgstr ""
 msgid "slowed"
 msgstr ""
 
-#: src/actions.cpp:1710
+#: src/actions.cpp:1718
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:1738
+#: src/actions.cpp:1746
 msgid "Friendly unit sighted"
 msgstr ""
 
-#: src/actions.cpp:1740
+#: src/actions.cpp:1748
 msgid "Enemy unit sighted!"
 msgstr ""
 
-#: src/actions.cpp:1745
+#: src/actions.cpp:1753
 msgid "$friends Friendly units sighted"
 msgstr ""
 
-#: src/actions.cpp:1747
+#: src/actions.cpp:1755
 msgid "$enemies Enemy units sighted!"
 msgstr ""
 
-#: src/actions.cpp:1751
+#: src/actions.cpp:1759
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
 
-#: src/actions.cpp:1772
+#: src/actions.cpp:1780
 msgid "(press $hotkey to continue)"
 msgstr ""
 
@@ -15292,6 +15292,14 @@ msgstr ""
 
 #: src/dialogs.cpp:157
 msgid "No objectives available"
+msgstr ""
+
+#: src/dialogs.cpp:174
+msgid "Save"
+msgstr ""
+
+#: src/dialogs.cpp:176
+msgid "Overwrite?"
 msgstr ""
 
 #: src/dialogs.cpp:177
@@ -15314,11 +15322,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:365 src/game.cpp:919
+#: src/dialogs.cpp:365 src/game.cpp:923
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:367 src/game.cpp:966
+#: src/dialogs.cpp:367 src/game.cpp:970
 msgid "Multiplayer"
 msgstr ""
 
@@ -15330,7 +15338,7 @@ msgstr ""
 msgid "replay"
 msgstr ""
 
-#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1382
+#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1400
 msgid "Turn"
 msgstr ""
 
@@ -15338,7 +15346,7 @@ msgstr ""
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:384 src/game.cpp:942
+#: src/dialogs.cpp:384 src/game.cpp:946
 msgid "Difficulty"
 msgstr ""
 
@@ -15386,14 +15394,14 @@ msgstr ""
 msgid "Choose the game to load"
 msgstr ""
 
-#: src/dialogs.cpp:567 src/multiplayer.cpp:121 src/show_dialog.cpp:443
-#: src/show_dialog.cpp:456
+#: src/dialogs.cpp:567 src/multiplayer.cpp:121 src/show_dialog.cpp:442
+#: src/show_dialog.cpp:455
 msgid "Ok"
 msgstr ""
 
 #: src/dialogs.cpp:568 src/multiplayer.cpp:120 src/multiplayer_client.cpp:119
-#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:457
-#: src/show_dialog.cpp:463
+#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:456
+#: src/show_dialog.cpp:462
 msgid "Cancel"
 msgstr ""
 
@@ -15402,23 +15410,23 @@ msgid "Profile"
 msgstr ""
 
 #: src/dialogs.cpp:713 src/display.cpp:884 src/help.cpp:563
-#: src/playturn.cpp:1712
+#: src/playturn.cpp:1738
 msgid "level"
 msgstr ""
 
 #: src/dialogs.cpp:734 src/display.cpp:902 src/help.cpp:617
-#: src/playturn.cpp:1876 src/unit.cpp:1034
+#: src/playturn.cpp:1902 src/unit.cpp:1034
 msgid "HP"
 msgstr ""
 
 #: src/dialogs.cpp:738 src/dialogs.cpp:746 src/display.cpp:906
-#: src/display.cpp:914 src/playturn.cpp:1714 src/playturn.cpp:1877
+#: src/display.cpp:914 src/playturn.cpp:1740 src/playturn.cpp:1903
 #: src/unit.cpp:1093
 msgid "XP"
 msgstr ""
 
 #: src/dialogs.cpp:751 src/display.cpp:918 src/help.cpp:618
-#: src/playturn.cpp:1878 src/unit.cpp:1070
+#: src/playturn.cpp:1904 src/unit.cpp:1070
 msgid "Moves"
 msgstr ""
 
@@ -15440,15 +15448,19 @@ msgstr ""
 msgid "invisible"
 msgstr ""
 
+#: src/font.cpp:161
+msgid "Vera.ttf"
+msgstr ""
+
 #: src/game.cpp:136
 msgid "Do you want to save a replay of this scenario?"
 msgstr ""
 
-#: src/game.cpp:137 src/game.cpp:199 src/playturn.cpp:1389
+#: src/game.cpp:137 src/game.cpp:199 src/playturn.cpp:1409
 msgid "Name:"
 msgstr ""
 
-#: src/game.cpp:145 src/game.cpp:206 src/playturn.cpp:1400
+#: src/game.cpp:145 src/game.cpp:206 src/playturn.cpp:1426
 msgid "The game could not be saved"
 msgstr ""
 
@@ -15456,70 +15468,70 @@ msgstr ""
 msgid "Do you want to save your game?"
 msgstr ""
 
-#: src/game.cpp:796 src/multiplayer_connect.cpp:104
+#: src/game.cpp:800 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:807 src/game.cpp:812 src/playlevel.cpp:533
+#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:533
 #: src/playlevel.cpp:747
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/game.cpp:912
+#: src/game.cpp:916
 msgid "There are no campaigns available"
 msgstr ""
 
-#: src/game.cpp:920
+#: src/game.cpp:924
 msgid "Choose the campaign you want to play:"
 msgstr ""
 
-#: src/game.cpp:943
+#: src/game.cpp:947
 msgid "Select difficulty level:"
 msgstr ""
 
-#: src/game.cpp:961
+#: src/game.cpp:965
 msgid "Join Official Server"
 msgstr ""
 
-#: src/game.cpp:961
+#: src/game.cpp:965
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
-#: src/game.cpp:962 src/multiplayer_lobby.cpp:157
+#: src/game.cpp:966 src/multiplayer_lobby.cpp:157
 msgid "Join Game"
 msgstr ""
 
-#: src/game.cpp:962
+#: src/game.cpp:966
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:963
+#: src/game.cpp:967
 msgid "Host Multiplayer Game"
 msgstr ""
 
-#: src/game.cpp:963
+#: src/game.cpp:967
 msgid "Host a game without using a server"
 msgstr ""
 
-#: src/game.cpp:966 src/multiplayer_client.cpp:269
+#: src/game.cpp:970 src/multiplayer_client.cpp:269
 msgid "Login"
 msgstr ""
 
-#: src/game.cpp:1046
+#: src/game.cpp:1050
 msgid "Language"
 msgstr ""
 
-#: src/game.cpp:1047
+#: src/game.cpp:1051
 msgid "Choose your preferred language"
 msgstr ""
 
-#: src/game.cpp:1129
+#: src/game.cpp:1133
 msgid "Could not initialize video. Exiting.\n"
 msgstr ""
 
-#: src/game.cpp:1131
+#: src/game.cpp:1135
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
@@ -15543,11 +15555,11 @@ msgstr ""
 msgid "attacks"
 msgstr ""
 
-#: src/help.cpp:642 src/help.cpp:643 src/playturn.cpp:1875
+#: src/help.cpp:642 src/help.cpp:643 src/playturn.cpp:1901
 msgid "Name"
 msgstr ""
 
-#: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1874
+#: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1900
 msgid "Type"
 msgstr ""
 
@@ -15611,7 +15623,7 @@ msgstr ""
 msgid "End Unit Turn"
 msgstr ""
 
-#: src/hotkeys.cpp:122 src/playturn.cpp:1458
+#: src/hotkeys.cpp:122 src/playturn.cpp:1484
 msgid "Leader"
 msgstr ""
 
@@ -15647,7 +15659,7 @@ msgstr ""
 msgid "Unit Description"
 msgstr ""
 
-#: src/hotkeys.cpp:131 src/playturn.cpp:1358
+#: src/hotkeys.cpp:131 src/playturn.cpp:1367
 msgid "Rename Unit"
 msgstr ""
 
@@ -15699,11 +15711,11 @@ msgstr ""
 msgid "Scenario Objectives"
 msgstr ""
 
-#: src/hotkeys.cpp:146 src/playturn.cpp:1927
+#: src/hotkeys.cpp:146 src/playturn.cpp:1953
 msgid "Unit List"
 msgstr ""
 
-#: src/hotkeys.cpp:147 src/playturn.cpp:2015
+#: src/hotkeys.cpp:147 src/playturn.cpp:2041
 msgid "Statistics"
 msgstr ""
 
@@ -15807,7 +15819,7 @@ msgstr ""
 msgid "Speak to All"
 msgstr ""
 
-#: src/hotkeys.cpp:174 src/show_dialog.cpp:606
+#: src/hotkeys.cpp:174 src/show_dialog.cpp:605
 msgid "Help"
 msgstr ""
 
@@ -15817,6 +15829,10 @@ msgstr ""
 
 #: src/hotkeys.cpp:358 src/hotkeys.cpp:542
 msgid "Do you really want to quit?"
+msgstr ""
+
+#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
+msgid "Quit?"
 msgstr ""
 
 #: src/intro.cpp:87
@@ -15863,7 +15879,7 @@ msgstr ""
 msgid "Bump Size"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1459
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1485
 msgid "Villages"
 msgstr ""
 
@@ -16006,8 +16022,8 @@ msgid "Receiving game list..."
 msgstr ""
 
 #: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:378
-#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1458
-#: src/playturn.cpp:1463 src/playturn.cpp:1550
+#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1484
+#: src/playturn.cpp:1489 src/playturn.cpp:1576
 msgid "Gold"
 msgstr ""
 
@@ -16136,7 +16152,7 @@ msgid "Player/Type"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:363 src/multiplayer_connect.cpp:366
-msgid "Race"
+msgid "Faction"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:373 src/multiplayer_connect.cpp:376
@@ -16258,192 +16274,206 @@ msgstr ""
 msgid "Choose weapon"
 msgstr ""
 
-#: src/playturn.cpp:1145
+#: src/playturn.cpp:1154
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 
-#: src/playturn.cpp:1154 src/playturn.cpp:1159
+#: src/playturn.cpp:1163 src/playturn.cpp:1168
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/playturn.cpp:1175
+#: src/playturn.cpp:1184
 msgid "Auto-Save"
 msgstr ""
 
-#: src/playturn.cpp:1177
+#: src/playturn.cpp:1186
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 
-#: src/playturn.cpp:1397
+#: src/playturn.cpp:1412 src/playturn.cpp:1426
+msgid "Error"
+msgstr ""
+
+#: src/playturn.cpp:1412
+msgid ""
+"Save names may not contain colons, slashes, or backslashes. Please choose a "
+"different name."
+msgstr ""
+
+#: src/playturn.cpp:1423
+msgid "Saved"
+msgstr ""
+
+#: src/playturn.cpp:1423
 msgid "The game has been saved"
 msgstr ""
 
-#: src/playturn.cpp:1459
+#: src/playturn.cpp:1485
 msgid "Units"
 msgstr ""
 
-#: src/playturn.cpp:1460
+#: src/playturn.cpp:1486
 msgid "Income"
 msgstr ""
 
-#: src/playturn.cpp:1460
+#: src/playturn.cpp:1486
 msgid "Upkeep"
 msgstr ""
 
-#: src/playturn.cpp:1556
+#: src/playturn.cpp:1582
 msgid "You have no units available to recruit."
 msgstr ""
 
-#: src/playturn.cpp:1569
+#: src/playturn.cpp:1595
 msgid "Recruit unit"
 msgstr ""
 
-#: src/playturn.cpp:1598
+#: src/playturn.cpp:1624
 msgid "You don't have enough gold to recruit that unit"
 msgstr ""
 
-#: src/playturn.cpp:1656
+#: src/playturn.cpp:1682
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1658
+#: src/playturn.cpp:1684
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1663
+#: src/playturn.cpp:1689
 msgid "her"
 msgstr ""
 
-#: src/playturn.cpp:1663
+#: src/playturn.cpp:1689
 msgid "him"
 msgstr ""
 
-#: src/playturn.cpp:1696
+#: src/playturn.cpp:1722
 msgid "You are seperated from your soldiers and may not recall them"
 msgstr ""
 
-#: src/playturn.cpp:1698
+#: src/playturn.cpp:1724
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 
-#: src/playturn.cpp:1702
+#: src/playturn.cpp:1728
 msgid "You must have at least"
 msgstr ""
 
-#: src/playturn.cpp:1704
+#: src/playturn.cpp:1730
 msgid "gold pieces to recall a unit"
 msgstr ""
 
-#: src/playturn.cpp:1727
+#: src/playturn.cpp:1753
 msgid "Dismiss Unit"
 msgstr ""
 
-#: src/playturn.cpp:1740
+#: src/playturn.cpp:1766
 msgid "Select unit"
 msgstr ""
 
-#: src/playturn.cpp:1784
+#: src/playturn.cpp:1810
 msgid "Message"
 msgstr ""
 
-#: src/playturn.cpp:1784
+#: src/playturn.cpp:1810
 msgid "Send to allies only"
 msgstr ""
 
-#: src/playturn.cpp:1879
+#: src/playturn.cpp:1905
 msgid "Location"
 msgstr ""
 
-#: src/playturn.cpp:1961 src/playturn.cpp:2021
+#: src/playturn.cpp:1987 src/playturn.cpp:2047
 msgid "Recruits"
 msgstr ""
 
-#: src/playturn.cpp:1967 src/playturn.cpp:2025
+#: src/playturn.cpp:1993 src/playturn.cpp:2051
 msgid "Recalls"
 msgstr ""
 
-#: src/playturn.cpp:1973 src/playturn.cpp:2029
+#: src/playturn.cpp:1999 src/playturn.cpp:2055
 msgid "Advancements"
 msgstr ""
 
-#: src/playturn.cpp:1979 src/playturn.cpp:2033
+#: src/playturn.cpp:2005 src/playturn.cpp:2059
 msgid "Losses"
 msgstr ""
 
-#: src/playturn.cpp:1985 src/playturn.cpp:2037
+#: src/playturn.cpp:2011 src/playturn.cpp:2063
 msgid "Kills"
 msgstr ""
 
-#: src/playturn.cpp:1991
+#: src/playturn.cpp:2017
 msgid "Damage Inflicted"
 msgstr ""
 
-#: src/playturn.cpp:1997
+#: src/playturn.cpp:2023
 msgid "Damage Taken"
 msgstr ""
 
-#: src/playturn.cpp:2003
+#: src/playturn.cpp:2029
 msgid "Damage Inflicted (EV)"
 msgstr ""
 
-#: src/playturn.cpp:2010
+#: src/playturn.cpp:2036
 msgid "Damage Taken (EV)"
 msgstr ""
 
-#: src/playturn.cpp:2052
+#: src/playturn.cpp:2078
 msgid "Search"
 msgstr ""
 
-#: src/playturn.cpp:2062
+#: src/playturn.cpp:2088
 msgid "prompt^Command:"
 msgstr ""
 
-#: src/playturn.cpp:2073
+#: src/playturn.cpp:2099
 msgid "Chat Log"
 msgstr ""
 
-#: src/playturn.cpp:2138
+#: src/playturn.cpp:2164
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/playturn.cpp:2212
+#: src/playturn.cpp:2238
 msgid "Place Label"
 msgstr ""
 
-#: src/playturn.cpp:2213
+#: src/playturn.cpp:2239
 msgid "Label"
 msgstr ""
 
-#: src/playturn.cpp:2376
+#: src/playturn.cpp:2402
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
 
-#: src/playturn.cpp:2428
+#: src/playturn.cpp:2454
 msgid "Replace with AI"
 msgstr ""
 
-#: src/playturn.cpp:2429
+#: src/playturn.cpp:2455
 msgid "Replace with local player"
 msgstr ""
 
-#: src/playturn.cpp:2430
+#: src/playturn.cpp:2456
 msgid "Abort game"
 msgstr ""
 
-#: src/playturn.cpp:2433
+#: src/playturn.cpp:2459
 msgid "Replace with "
 msgstr ""
 
-#: src/playturn.cpp:2437
+#: src/playturn.cpp:2463
 msgid "has left the game. What do you want to do?"
 msgstr ""
 
@@ -16692,85 +16722,85 @@ msgstr ""
 msgid "Allied"
 msgstr ""
 
-#: src/show_dialog.cpp:931
+#: src/show_dialog.cpp:930
 msgid "KB"
 msgstr ""
 
-#: src/titlescreen.cpp:137
+#: src/titlescreen.cpp:145
 msgid "Version"
 msgstr ""
 
-#: src/titlescreen.cpp:152
+#: src/titlescreen.cpp:160
 msgid "TitleScreen button^Tutorial"
 msgstr ""
 
-#: src/titlescreen.cpp:153
+#: src/titlescreen.cpp:161
 msgid "TitleScreen button^Campaign"
 msgstr ""
 
-#: src/titlescreen.cpp:154
+#: src/titlescreen.cpp:162
 msgid "TitleScreen button^Multiplayer"
 msgstr ""
 
-#: src/titlescreen.cpp:155
+#: src/titlescreen.cpp:163
 msgid "TitleScreen button^Load"
 msgstr ""
 
-#: src/titlescreen.cpp:156
+#: src/titlescreen.cpp:164
 msgid "TitleScreen button^Language"
 msgstr ""
 
-#: src/titlescreen.cpp:157
+#: src/titlescreen.cpp:165
 msgid "TitleScreen button^Preferences"
 msgstr ""
 
-#: src/titlescreen.cpp:158
+#: src/titlescreen.cpp:166
 msgid "TitleScreen button^About"
 msgstr ""
 
-#: src/titlescreen.cpp:159
+#: src/titlescreen.cpp:167
 msgid "TitleScreen button^Quit"
 msgstr ""
 
-#: src/titlescreen.cpp:160
+#: src/titlescreen.cpp:168
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr ""
 
-#: src/titlescreen.cpp:161
+#: src/titlescreen.cpp:169
 msgid "Start a new single player campaign"
 msgstr ""
 
-#: src/titlescreen.cpp:162
+#: src/titlescreen.cpp:170
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
 
-#: src/titlescreen.cpp:163
+#: src/titlescreen.cpp:171
 msgid "Load a single player saved game"
 msgstr ""
 
-#: src/titlescreen.cpp:164
+#: src/titlescreen.cpp:172
 msgid "Change the language"
 msgstr ""
 
-#: src/titlescreen.cpp:165
+#: src/titlescreen.cpp:173
 msgid "Configure the game's settings"
 msgstr ""
 
-#: src/titlescreen.cpp:166
+#: src/titlescreen.cpp:174
 msgid "View the credits"
 msgstr ""
 
-#: src/titlescreen.cpp:167
+#: src/titlescreen.cpp:175
 msgid "Quit the game"
 msgstr ""
 
-#: src/titlescreen.cpp:191
+#: src/titlescreen.cpp:199
 msgid "More"
 msgstr ""
 
-#: src/titlescreen.cpp:197
+#: src/titlescreen.cpp:205
 msgid "-- The Tome of Wesnoth"
 msgstr ""
 
