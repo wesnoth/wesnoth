@@ -30,7 +30,7 @@ bool game::is_observer(network::connection player) const
 
 bool game::observers_can_label() const
 {
-	return true;
+	return false;
 }
 
 bool game::observers_can_chat() const
@@ -47,9 +47,9 @@ bool game::filter_commands(network::connection player, config& cfg)
 		const config::child_list& children = cfg.get_children("command");
 		for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
 
-			if(observers_can_label() && (*i)->child("label") != NULL) {
+			if(observers_can_label() && (*i)->child("label") != NULL && (*i)->all_children().size() == 1) {
 				;
-			} else if(observers_can_chat() && (*i)->child("speak") != NULL) {
+			} else if(observers_can_chat() && (*i)->child("speak") != NULL && (*i)->all_children().size() == 1) {
 				;
 			} else {
 				std::cerr << "removing observer's illegal command: '" << (*i)->write() << "'\n";

@@ -151,11 +151,13 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		state_of_game.starting_pos = new_level;
 	}
 
+	const config& lvl = *level;
+
 	std::cerr << "generated map " << (SDL_GetTicks() - ticks) << "\n";
 
-	const statistics::scenario_context statistics_context(translate_string_default((*level)["id"],(*level)["name"]));
+	const statistics::scenario_context statistics_context(translate_string_default(lvl["id"],lvl["name"]));
 
-	const int num_turns = atoi(level->values["turns"].c_str());
+	const int num_turns = atoi(lvl["turns"].c_str());
 	gamestatus status(*level,num_turns);
 
 	gamemap map(game_config,map_data);
@@ -167,7 +169,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	const verification_manager verify_manager(units);
 
-	const int xp_modifier = atoi((*level)["experience_modifier"].c_str());
+	const int xp_modifier = atoi(lvl["experience_modifier"].c_str());
 	const unit_type::experience_accelerator xp_mod(xp_modifier > 0 ? xp_modifier : 100);
 
 	std::vector<team> teams;
@@ -178,7 +180,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	const config::child_list& unit_cfg = level->get_children("side");
 
-	if((*level)["modify_placing"] == "true") {
+	if(lvl["modify_placing"] == "true") {
 		std::cerr << "modifying placing...\n";
 		place_sides_in_preferred_locations(map,unit_cfg);
 	}
@@ -281,8 +283,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	std::cerr << "initialized teams... " << (SDL_GetTicks() - ticks) << "\n";
 
 	const config* theme_cfg = NULL;
-	if((*level)["theme"] != "") {
-		theme_cfg = game_config.find_child("theme","name",(*level)["theme"]);
+	if(lvl["theme"] != "") {
+		theme_cfg = game_config.find_child("theme","name",lvl["theme"]);
 	}
 
 	if(theme_cfg == NULL) {
@@ -324,7 +326,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::cerr << "c... " << (SDL_GetTicks() - ticks) << "\n";
 
-	const std::string& music = level->values["music"];
+	const std::string& music = lvl["music"];
 	if(music != "") {
 		sound::play_music(music);
 	}
@@ -332,7 +334,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	std::cerr << "d... " << (SDL_GetTicks() - ticks) << "\n";
 
 	victory_conditions::set_victory_when_enemies_defeated(
-						(*level)["victory_when_enemies_defeated"] != "no");
+						lvl["victory_when_enemies_defeated"] != "no");
 
 	std::cerr << "initializing events manager... " << (SDL_GetTicks() - ticks) << "\n";
 
@@ -357,7 +359,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	try {
 		//if a team is specified whose turn it is, it means we're loading a game
 		//instead of starting a fresh one
-		const bool loading_game = (*level)["playing_team"].empty() == false;
+		const bool loading_game = lvl["playing_team"].empty() == false;
 		
 		gui.begin_game();
 		gui.adjust_colours(0,0,0);
@@ -379,7 +381,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 		bool replaying = (recorder.at_end() == false);
 	
-		int first_player = atoi((*level)["playing_team"].c_str());
+		int first_player = atoi(lvl["playing_team"].c_str());
 		if(first_player < 0 || first_player >= int(teams.size())) {
 			first_player = 0;
 		}
@@ -503,7 +505,7 @@ redo_turn:
 					std::cerr << "is human...\n";
 
 					if(first_time && team_it == teams.begin()) {
-						if(level->values["objectives"].empty() == false) {
+						if(lvl["objectives"].empty() == false) {
 							dialogs::show_objectives(gui,*level);
 						}
 					}

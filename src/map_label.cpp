@@ -54,8 +54,14 @@ const std::string& map_labels::get_label(const gamemap::location& loc) const
 	}
 }
 
-void map_labels::set_label(const gamemap::location& loc, const std::string& text)
+void map_labels::set_label(const gamemap::location& loc, const std::string& str)
 {
+	const size_t max_label_size = 32;
+	std::string text = str;
+	if(text.size() > max_label_size) {
+		text.resize(max_label_size);
+	}
+
 	const label_map::iterator current_label = labels_.find(loc);
 	if(current_label != labels_.end()) {
 		font::remove_floating_label(current_label->second);

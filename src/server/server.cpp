@@ -19,6 +19,8 @@
 
 #include <signal.h>
 
+namespace {
+
 config construct_error(const std::string& msg)
 {
 	config cfg;
@@ -38,10 +40,18 @@ config construct_system_message(const std::string& message)
 	return turn;
 }
 
+void truncate_message(std::string& str)
+{
+	const size_t max_message_length = 240;
+	str.resize(minimum<size_t>(str.size(),max_message_length));
+}
+
+}
+
 class server
 {
 public:
-	server(int port);
+	explicit server(int port);
 	void run();
 private:
 	void delete_game(std::vector<game>::iterator i);
@@ -262,6 +272,9 @@ void server::run()
 						const player_map::const_iterator p = players_.find(sock);
 						assert(p != players_.end());
 						(*message)["sender"] = p->second.name();
+
+						truncate_message((*message)["message"]);
+
 						lobby_players_.send_data(data,sock);
 					}
 				} else {
@@ -454,6 +467,8 @@ void server::run()
 								++nother;
 								continue;
 							}
+
+							truncate_message((*speak)["message"]);
 
 							//force the description to be correct to prevent
 							//spoofing of messages
