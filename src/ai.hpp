@@ -34,17 +34,12 @@ public:
 
 	void do_move();
 
-/*
-void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
-             std::map<gamemap::location,unit>& units,
-             std::vector<team>& teams, int team_num, const gamestatus& state,
-             bool consider_combat=true,
-             std::vector<target>* additional_targets=NULL);
-*/
 private:
 	bool recruit(const std::string& usage);
 	void move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves);
 	team& current_team();
+
+	void calculate_possible_moves(std::map<location,paths>& moves, move_map& srcdst, move_map& dstsrc, bool enemy);
 
 	struct attack_analysis
 	{

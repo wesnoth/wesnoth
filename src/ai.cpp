@@ -157,48 +157,11 @@ void ai::move_unit(const location& from, const location& to, std::map<location,p
 	}
 }
 
-
-void ai::do_move()
+void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy)
 {
-	log_scope("doing ai move");
-
-	typedef paths::route route;
-
-	std::multimap<location,location> enemy_srcdst;
-	std::multimap<location,location> enemy_dstsrc;
-
-	std::multimap<location,location> srcdst;
-	std::multimap<location,location> dstsrc;
-
-	std::vector<gamemap::location> leader_locations;
-
-	typedef std::map<location,paths> moves_map;
-	moves_map possible_moves;
-
-	for(std::map<gamemap::location,unit>::iterator un_it = units_.begin();
-	    un_it != units_.end(); ++un_it) {
-
-		if(current_team().is_enemy(un_it->second.side())) {
-			std::pair<location,location> trivial_mv(un_it->first,un_it->first);
-			enemy_srcdst.insert(trivial_mv);
-			enemy_dstsrc.insert(trivial_mv);
-
-			const unit_movement_resetter resetter(un_it->second);
-
-			const bool ignore_zocs = un_it->second.type().is_skirmisher();
-			const bool teleports = un_it->second.type().teleports();
-			const paths new_paths(map_,state_,gameinfo_,units_,
-			                      un_it->first,teams_,ignore_zocs,teleports);
-			for(paths::routes_map::const_iterator rt = new_paths.routes.begin();
-			    rt != new_paths.routes.end(); ++rt) {
-				const std::pair<location,location> item(un_it->first,rt->first);
-				const std::pair<location,location> item_reverse(rt->first,un_it->first);
-				enemy_srcdst.insert(item);
-				enemy_dstsrc.insert(item_reverse);
-			}
-		}
-		
-		if(un_it->second.side() != team_num_) {
+	for(std::map<gamemap::location,unit>::iterator un_it = units_.begin(); un_it != units_.end(); ++un_it) {
+		if(enemy && current_team().is_enemy(un_it->second.side()) == false ||
+		   !enemy && un_it->second.side() != team_num_) {
 			continue;
 		}
 
@@ -209,22 +172,14 @@ void ai::do_move()
 			dstsrc.insert(trivial_mv);
 		}
 
-		if(un_it->second.can_recruit()) {
-			//save so we can remove from possible moves later
-			leader_locations.push_back(un_it->first);
-			continue;
-		}
-
 		const bool ignore_zocs = un_it->second.type().is_skirmisher();
 		const bool teleports = un_it->second.type().teleports();
-		possible_moves.insert(std::pair<gamemap::location,paths>(
+		res.insert(std::pair<gamemap::location,paths>(
 		                un_it->first,paths(map_,state_,gameinfo_,units_,
 		                un_it->first,teams_,ignore_zocs,teleports)));
 	}
 
-
-	for(moves_map::iterator m = possible_moves.begin();
-	    m != possible_moves.end(); ++m) {
+	for(std::map<location,paths>::iterator m = res.begin(); m != res.end(); ++m) {
 		for(paths::routes_map::iterator rtit =
 		    m->second.routes.begin(); rtit != m->second.routes.end(); ++rtit) {
 			const location& src = m->first;
@@ -236,6 +191,23 @@ void ai::do_move()
 			}
 		}
 	}
+}
+
+void ai::do_move()
+{
+	log_scope("doing ai move");
+
+	typedef paths::route route;
+
+	typedef std::map<location,paths> moves_map;
+	moves_map possible_moves, enemy_possible_moves;
+
+	move_map srcdst, dstsrc, enemy_srcdst, enemy_dstsrc;
+
+	std::vector<gamemap::location> leader_locations;
+
+	calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
+	calculate_possible_moves(enemy_possible_moves,enemy_srcdst,enemy_dstsrc,true);
 
 	unit_map::iterator leader = find_leader(units_,team_num_);
 

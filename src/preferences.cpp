@@ -331,7 +331,13 @@ bool show_combat()
 
 bool show_ai_moves()
 {
-	return prefs["show_ai_moves"] != "no";
+	//there is currently a bug with not showing ai moves where
+	//any dialogs that pop up during the ai's turn will not be shown,
+	//due to the display being locked. Thus for the moment, we always
+	//show ai moves.
+	return true;
+	
+	//return prefs["show_ai_moves"] != "no";
 }
 
 void set_show_side_colours(bool value)

@@ -235,7 +235,7 @@ int play_game(int argc, char** argv)
 
 	const config::child_list& units = game_config.get_children("units");
 	if(units.empty()) {
-		std::cerr << "Could not find units configuration\n";
+		std::cerr << "ERROR: Could not find game configuration files\n";
 		std::cerr << game_config.write();
 		return 0;
 	}
@@ -549,7 +549,7 @@ int play_game(int argc, char** argv)
 
 		const config::child_list& units = game_config.get_children("units");
 		if(units.empty()) {
-			std::cerr << "Could not find units configuration\n";
+			std::cerr << "ERROR: Could not find game configuration files\n";
 			std::cerr << game_config.write();
 			return 0;
 		}
