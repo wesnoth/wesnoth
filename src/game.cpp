@@ -338,6 +338,9 @@ int play_game(int argc, char** argv)
  			<< "  -t, --test        Runs the game in a small example scenario\n"
  			<< "  -w, --windowed    Runs the game in windowed mode\n"
  			<< "  -v, --version     Prints the game's version number and exits\n"
+			<< "  --log-error=\"domain1,domain2,...\", --log-warning=..., --log-info=...\n"
+			<< "                    Set the severity level of the debug domains\n"
+			<< "                    \"all\" can be used to match any debug domain\n"
 			<< "  --nocache         Disables caching of game data\n";
  			return 0;
  		} else if(val == "--version" || val == "-v") {
@@ -350,6 +353,30 @@ int play_game(int argc, char** argv)
  			return 0;
 		} else if(val == "--nosound") {
 			use_sound = false;
+		} else if (val.substr(0, 6) == "--log-") {
+			size_t p = val.find('=');
+			if (p == std::string::npos) {
+				std::cerr << "unknown option: " << val << '\n';
+				return 0;
+			}
+			std::string s = val.substr(6, p - 6);
+			int severity;
+			if (s == "error") severity = 0;
+			else if (s == "warning") severity = 1;
+			else if (s == "info") severity = 2;
+			else {
+				std::cerr << "unknown debug level: " << s << '\n';
+				return 0;
+			}
+			while (p != std::string::npos) {
+				size_t q = val.find(',', p + 1);
+				s = val.substr(p + 1, q == std::string::npos ? q : q - (p + 1));
+				if (!lg::set_log_domain_severity(s, severity)) {
+					std::cerr << "unknown debug domain: " << s << '\n';
+					return 0;
+				}
+				p = q;
+			}
 		} else if(val == "--publish-campaign") {
 			if(arg+3 != argc && arg+4 != argc && arg+5 != argc) {
 				std::cerr << "usage: --publish-campaign <campaign> <passphrase> [<server> [<port>]]\n";
@@ -477,6 +504,7 @@ int play_game(int argc, char** argv)
 			test_mode = true;
 		} else if(val == "--debug" || val == "-d") {
 			game_config::debug = true;
+		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
