@@ -10,6 +10,8 @@
    See the COPYING file for more details.
 */
 
+#ifdef STANDARD_ASSERT_DOES_NOT_WORK
+
 #include "log.hpp"
 
 #include <iostream>
@@ -22,3 +24,5 @@ void wassert(bool expression)
 		*reinterpret_cast<int*>(0) = 5;
 	}
 }
+
+#endif
