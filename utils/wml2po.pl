@@ -17,9 +17,84 @@ use strict;
 require "utils/wmltrans.pm";
 
 # get some id->english from english.cfg
-our ($wmlfile, $pofile) = @ARGV;
+our ($wmltransfile, $pofile) = @ARGV;
 our %english = readwml ('data/translations/english.cfg');
 our %revenglish;
+
+sub set($$) {
+  my ($id, $str) = @_;
+  if (defined $english{$id}) {
+    print STDERR "WARNING: duplicate def for $id: $str\n";
+    return;
+  }
+  $english{$id}=$str;
+  print STDERR "$id=$str\n";
+}
+
+# get ids from unit files
+our @wmlfiles = glob ("data/units/*.cfg");
+foreach my $wmlfile (@wmlfiles) {
+  open (WML, $wmlfile) or die "cannot open $wmlfile";
+  my ($id, $str);
+  while (<WML>) {
+    if (m/id\s*=\s*(.*)/) {
+      $id = $str = $1;
+      $id =~ s/\s+//g;
+      set($id,$str);
+#     } elsif (m,\[/.*\],) {
+#       $id = undef;
+    } elsif (m/unit_description\s*=\s*(?:_\s*)\"(.*)\"\s*$/) {
+      # single-line
+      if (defined $id) {
+	set($id . '_description',$1);
+      } else {
+	print STDERR "No id for unit_description $1\n";
+      }
+    }
+  }
+  close WML;
+}
+
+our %suffix = (
+	       'difficulty_descriptions' => '_difficulties',
+	       'cannot_use_message' => '_cannot_use_message',
+	      );
+
+# get ids from other wml files
+#our @wmlfiles = glob ("data/*.cfg data/scenarios/*/*.cfg");
+@wmlfiles = glob ("data/*.cfg");
+foreach my $wmlfile (@wmlfiles) {
+  open (WML, $wmlfile) or die "cannot open $wmlfile";
+  my ($id, $str);
+  while (<WML>) {
+#    print STDERR $_;
+    if (m/id\s*=\s*(.*)/) {
+      $id = $1;
+      print STDERR "XXX $id\n";
+#     } elsif (m,\[/.*\],) {
+#       $id = undef;
+    } elsif (m/unit_description\s*=\s*(?:_\s*)\"(.*)\"\s*$/) {
+      # single-line
+      if (defined $id) {
+	set($id . '_description',$1);
+      } else {
+	print STDERR "No id for unit_description $1\n";
+      }
+    } elsif (m/(difficulty\_descriptions|cannot\_use\_message)\s*=\s*(?:_\s*)?\"(.*)\"\s*$/) {
+      # single-line
+      if (defined $id) {
+	set($id . $suffix{$1},$2);
+      } else {
+	print STDERR "No id for $1 $2\n";
+      }
+    } elsif (m/(?:title|message|name)\s*=\s*(?:_\s*)\"(.*)\"\s*$/) {
+      set($id,$1);
+    }
+  }
+  close WML;
+}
+
+exit;
 
 # reverse the hash to use the strings to find the id
 foreach my $key (keys %english) {
@@ -27,7 +102,7 @@ foreach my $key (keys %english) {
 }
 
 # get translations from wml file
-our %lang = readwml ($wmlfile);
+our %lang = readwml ($wmltransfile);
 
 ## process pofile, filling holes when we can
 
