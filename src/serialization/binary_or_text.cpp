@@ -22,7 +22,7 @@
 bool detect_format_and_read(config &cfg, std::istream &in)
 {
 	unsigned char c = in.peek();
-	if (c < 5) {
+	if (c < 4) {
 		read_compressed(cfg, in);
 		return true;
 	} else {

@@ -113,12 +113,11 @@ static void compress_emit_word(std::ostream &out, std::string const &word, compr
 
 static std::string compress_read_literal_word(std::istream &in)
 {
-	std::stringstream stream;
-	if (in.peek()) // this conditional works around the failure of the empty word
-		in.get(*stream.rdbuf(), 0);
-	if (in.get() || !in.good())
+	std::string buffer;
+	std::getline(in, buffer, '\0');
+	if (!in.good())
 		throw config::error("Unexpected end of data in compressed config read");
-	return stream.str();
+	return buffer;
 }
 
 static void write_compressed_internal(std::ostream &out, config const &cfg, compression_schema &schema, int level)
