@@ -525,6 +525,15 @@ void config::read(const std::string& data,
 				break;
 
 			case VALUE:
+				if(c == '[') {
+					if(line_sources != NULL) {
+						const line_source src = get_line_source(*line_sources,line);
+						std::cerr << src.file << " " << src.fileline << ": ";
+					}
+
+					std::cerr << "WARNING: square bracket found in string. Is this a run-away string?\n";
+				}
+				
 				if(c == '"') {
 					in_quotes = !in_quotes;
 					has_quotes = true;
