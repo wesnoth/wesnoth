@@ -1206,6 +1206,80 @@ config config::get_diff(const config& c) const
 		}
 	}
 
+	std::vector<std::string> entities;
+
+	child_map::const_iterator ci;
+	for(ci = children.begin(); ci != children.end(); ++ci) {
+		entities.push_back(ci->first);
+	}
+
+	for(ci = c.children.begin(); ci != c.children.end(); ++ci) {
+		if(children.count(ci->first) == 0) {
+			entities.push_back(ci->first);
+		}
+	}
+
+	for(std::vector<std::string>::const_iterator itor = entities.begin(); itor != entities.end(); ++itor) {
+
+		const child_map::const_iterator itor_a = children.find(*itor);
+		const child_map::const_iterator itor_b = c.children.find(*itor);
+
+		static const child_list dummy;
+
+		//get the two child lists. 'b' has to be modified to look like 'a'
+		const child_list& a = itor_a != children.end() ? itor_a->second : dummy;
+		const child_list& b = itor_b != c.children.end() ? itor_b->second : dummy;
+		
+		size_t ndeletes = 0;
+		size_t ai = 0, bi = 0;
+		while(ai != a.size() || bi != b.size()) {
+			//if the two elements are the same, nothing needs to be done
+			if(ai < a.size() && bi < b.size() && *a[ai] == *b[bi]) {
+				++ai;
+				++bi;
+			} else {
+				//we have to work out what the most appropriate operation --
+				//delete, insert, or change is the best to get b[bi] looking like a[ai]
+				//if b has more elements than a, then we assume this element is an
+				//element that needs deleting
+				if(b.size() - bi > a.size() - ai) {
+					config& new_delete = res.add_child("delete_child");
+					char buf[50];
+					sprintf(buf,"%d",bi-ndeletes);
+					new_delete.values["index"] = buf;
+					new_delete.add_child(*itor);
+
+					++ndeletes;
+					++bi;
+				} 
+
+				//if b has less elements than a, then we assume this element is an
+				//element that needs inserting
+				else if(b.size() - bi < a.size() - ai) {
+					config& new_insert = res.add_child("insert_child");
+					char buf[50];
+					sprintf(buf,"%d",ai);
+					new_insert.values["index"] = buf;
+					new_insert.add_child(*itor,*a[ai]);
+
+					++ai;
+				}
+
+				//otherwise, they have the same number of elements, so try just
+				//changing this element to match
+				else {
+					config& new_change = res.add_child("change_child");
+					char buf[50];
+					sprintf(buf,"%d",bi);
+					new_change.values["index"] = buf;
+					new_change.add_child(*itor,a[ai]->get_diff(*b[bi]));
+
+					++ai;
+					++bi;
+				}
+			}
+		}
+	}
 
 
 	return res;
@@ -1224,6 +1298,53 @@ void config::apply_diff(const config& diff)
 	if(deletes != NULL) {
 		for(string_map::const_iterator i = deletes->values.begin(); i != deletes->values.end(); ++i) {
 			values.erase(i->first);
+		}
+	}
+
+	const child_list& child_changes = diff.get_children("change_child");
+	child_list::const_iterator i;
+	for(i = child_changes.begin(); i != child_changes.end(); ++i) {
+		const size_t index = atoi((**i)["index"].c_str());
+		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
+			const std::pair<const std::string*,const config*> item = *j;
+			
+			const child_map::iterator itor = children.find(*item.first);
+			if(itor == children.end() || index >= itor->second.size()) {
+				throw error("error in diff: could not find element '" + *item.first + "");
+			}
+
+			itor->second[index]->apply_diff(*item.second);
+		}
+	}
+
+	const child_list& child_inserts = diff.get_children("insert_child");
+	for(i = child_inserts.begin(); i != child_inserts.end(); ++i) {
+		const size_t index = atoi((**i)["index"].c_str());
+		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
+			const std::pair<const std::string*,const config*> item = *j;
+
+			const child_map::iterator itor = children.find(*item.first);
+			if(itor == children.end() || index > itor->second.size()) {
+				throw error("error in diff: could not find element '" + *item.first + "'");
+			}
+
+			itor->second.insert(itor->second.begin()+index,new config(*item.second));
+		}
+	}
+
+	const child_list& child_deletes = diff.get_children("delete_child");
+	for(i = child_deletes.begin(); i != child_deletes.end(); ++i) {
+		const size_t index = atoi((**i)["index"].c_str());
+		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
+			const std::pair<const std::string*,const config*> item = *j;
+
+			const child_map::iterator itor = children.find(*item.first);
+			if(itor == children.end() || index > itor->second.size()) {
+				throw error("error in diff: could not find element '" + *item.first + "'");
+			}
+
+			delete *(itor->second.begin()+index);
+			itor->second.erase(itor->second.begin()+index);
 		}
 	}
 }

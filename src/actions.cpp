@@ -746,13 +746,23 @@ void get_tower(const gamemap::location& loc, std::vector<team>& teams,
 		return;
 	}
 
-	//get the village, and strip it off any enemies
-	teams[team_num].get_tower(loc);
+	if(teams[team_num].owns_tower(loc)) {
+		return;
+	}
 
-	//if the side doesn't have a leader, it should become neutral
 	const bool has_leader = find_leader(units,int(team_num+1)) != units.end();
-	if(has_leader == false) {
-		teams[team_num].lose_tower(loc);
+
+	//we strip the village off all other sides, unless it is held by an ally
+	//and we don't have a leader (and thus can't occupy it)
+	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
+		const int side = i - teams.begin() + 1;
+		if(has_leader || teams[team_num].is_enemy(side)) {
+			i->lose_tower(loc);
+		}
+	}
+
+	if(has_leader) {
+		teams[team_num].get_tower(loc);
 	}
 }
 

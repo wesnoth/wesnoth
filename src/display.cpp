@@ -1893,6 +1893,9 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 	def->second.set_defending(false);
 
+	draw_tile(a.x,a.y);
+	draw_tile(b.x,b.y);
+
 	if(dead) {
 		unit_die(b);
 	}
@@ -2086,6 +2089,9 @@ bool display::unit_attack(const gamemap::location& a,
 
 	hiddenUnit_ = gamemap::location();
 	def->second.set_defending(false);
+
+	draw_tile(a.x,a.y);
+	draw_tile(b.x,b.y);
 
 	if(dead) {
 		unit_die(b);
