@@ -84,6 +84,11 @@ AC_ARG_ENABLE([server],
 	      [server=$enableval],
 	      [server=no])
 
+AC_ARG_ENABLE([campaign_server],
+	      [  --enable-campaign-server       enable compilation of campaign server],
+	      [campaignserver=$enableval],
+	      [campaignserver=no])
+
 AC_ARG_ENABLE([editor],
 	      [  --enable-editor         enable compilation of map editor],
 	      [editor=$enableval],
@@ -113,6 +118,7 @@ AC_ARG_ENABLE([wzip],
 
 AM_CONDITIONAL([STATIC], [test x$static = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
+AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
@@ -588,6 +594,7 @@ AC_CONFIG_FILES([Makefile
 		 icons/Makefile
 		 src/Makefile
 		 src/server/Makefile
+		 src/campaign_server/Makefile
 		 src/tools/Makefile
 		 src/zip/Makefile])
 

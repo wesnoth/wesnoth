@@ -134,6 +134,8 @@ struct error
 	void disconnect();
 };
 
+bool sends_queued();
+
 }
 
 #endif

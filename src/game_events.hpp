@@ -59,6 +59,7 @@ void write_events(config& cfg);
 
 bool unit_matches_filter(const unit& u, const config& filter);
 bool unit_matches_filter(unit_map::const_iterator itor, const config& filter);
+bool unit_matches_filter(const unit& u, const config& filter);
 
 //function to fire an event. Events may have up to two arguments, both of
 //which must be locations.

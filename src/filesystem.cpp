@@ -226,6 +226,15 @@ std::string get_dir(const std::string& dir_path)
 	return dir_path;
 }
 
+void make_directory(const std::string& path)
+{
+#ifdef _WIN32
+	_mkdir(path.c_str());
+#else
+	mkdir(path.c_str(),AccessMode);
+#endif
+}
+
 std::string get_cwd()
 {
 	char buf[1024];

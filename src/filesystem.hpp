@@ -42,6 +42,8 @@ std::string get_user_data_dir();
 
 std::string get_cwd();
 
+void make_directory(const std::string& dirname);
+
 std::string read_map(const std::string& name);
 
 //function which returns true iff the given file is a directory

@@ -309,9 +309,10 @@ void internal_preprocess_data(const std::string& data,
 				//there.
 				if(newfilename != "" && (newfilename[0] == '~' || newfilename[0] == '@')) {
 					nfname = newfilename;
-					prefix = get_user_data_dir() + "/";
 					nfname.erase(nfname.begin(),nfname.begin()+1);
-					nfname = prefix + "data/" + nfname;
+					nfname = get_user_data_dir() + "/data/" + nfname;
+
+					std::cerr << "got relative name '" << newfilename << "' -> '" << nfname << "'\n";
 
 					if(newfilename[0] == '@' && file_exists(nfname) == false && is_directory(nfname) == false) {
 						nfname = "data/" + newfilename.substr(1);
@@ -639,12 +640,8 @@ void config::read(const std::string& data,
 						last_element.top()[name] = element;
 
 						if(element->values.count("textdomain") != 0){
-							std::cerr << "out of " << element
-							     << ", restoring from textdomain "
-							     << current_textdomain;
 							current_textdomain = textdomains.top();
 							textdomains.pop();
-							std::cerr << " to " << current_textdomain << "\n";
 						}
 
 						state = IN_ELEMENT;
@@ -751,8 +748,6 @@ void config::read(const std::string& data,
 							bindtextdomain(current_textdomain.c_str(),
 								       get_intl_dir().c_str());
 							bind_textdomain_codeset (current_textdomain.c_str(), "UTF-8");
-							std::cerr << "textdomain = " << value << " in "
-								  << element_names.top() << "\n";
 						}
 					}
 

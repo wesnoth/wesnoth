@@ -59,7 +59,7 @@ void truncate_message(std::string& str)
 class server
 {
 public:
-	explicit server(int port, input_stream& input);
+	server(int port, input_stream& input);
 	void run();
 private:
 	void process_command(const std::string& cmd);

@@ -68,6 +68,7 @@ wesnoth_SOURCES = about.cpp \
 		  playlevel.cpp \
 		  playturn.cpp \
 		  preferences.cpp \
+		  publish_campaign.cpp \
 		  race.cpp \
 		  replay.cpp \
 		  reports.cpp \
@@ -139,6 +140,7 @@ wesnoth_SOURCES = about.cpp \
 		  playlevel.hpp \
 		  playturn.hpp \
 		  preferences.hpp \
+		  publish_campaign.hpp \
 		  race.hpp \
 		  replay.hpp \
 		  reports.hpp \
