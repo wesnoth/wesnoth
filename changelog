@@ -84,6 +84,9 @@ CVS HEAD:
  * borders of game field show dummy terrain instead of black areas
  * made images use proper transparency, instead of using black as transperant colour
  * pressing space really ends turn for a unit (#7311)
+ * menu arrows are disabled when we are on top or in the bottom of menu (#7389)
+ * allow scrolling to fogged zones clicking the minimap 
+ * fixed clicking on the mini map to lose focus on your unit (#7307)
  * fixed pressing 'n' (next unit) returning to same unit (#7308)
  * fixed player being able to see enemy unit list on enemy turn (#7312)
  * fixed unit list not showing data in correct columns for units without name (#7313)
@@ -107,6 +110,7 @@ CVS HEAD:
  * fixed bug where an invalid side specification for a unit could crash the game
  * fixed problem in Ford of Abez with monsters attacking Li'sar
  * music on intro now has less interference
+ * credits now run smoother
  * fixed Wraith appearing squashed in the panel (#7185)
  * fixed WML parser bugs
  * fixed misspelled 'The Siege of Elensefar' scenario filename 
