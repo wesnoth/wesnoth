@@ -3,15 +3,35 @@ CVS HEAD
  * sorting of campaigns by rank
  * :refresh command
  * user interface tweaks
- * graphics improvements
+ * graphics improvements:
    * forests
    * attack icons
- * scenarios balancing on easy and hard for 'The Rise of Wesnoth' campaign
+   * unit images and frames
+ * scenario balancing for 'The Rise of Wesnoth' campaign
+   * pretty much all scenarios
+ * scenario balancing for 'The Eastern Invasion' campaign
+   * An Unexpected Appearance
  * new units:
    * Elvish Enchantress
    * Elvish Sorceress
    * Elvish Sylph
+   * Goblin Impaler
+   * Goblin Spearman
+   * Saurian Icecaster
+   * Saurian Soothsayer
+   * Saurian Tribalist
    * Troll Rocklobber
+   * Drake Flare
+   * Drake Gladiator
+   * Drake Glider
+   * Inferno Drake
+   * Sky Drake
+ * unit balancing:
+   * Drake Burner: advances also to Drake Flare
+   * Drake Clasher: reduced experience needed to advance, advances also to Drake Gladiator
+   * Fire Drake: advances now to Inferno Drake
+   * Drake Flameheart: increased movement, gave leadership, replaced claw attack with sword attack, reduced ranged attack damage
+   * Drake Slasher: increased hitpoints, reduced experience needed to advance, reduced cost, increased sword attack damage and reduced number of strikes, increased spear attack damage, reduced number of spear attack strikes and made it first strike
  * language fixes and polishing (english)
  * updated translations:
    * basque
@@ -47,6 +67,8 @@ CVS HEAD
  * fixed "wait for start" lobby dialog
  * fixed units not submerged when moving/fighting
  * fixed bug where [modify_side] couldn't change a side's team name properly
+ * fixed victory and defeat conditions on 'The Eastern Invasion: Approaching Weldyn' scenario
+ * fixed fixed illegal character 'x' in 'The Eastern Invasion: Weldyn Under Attack' scenario
  * added a way to specify the actual position of multi-hex tiles
  * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
