@@ -83,19 +83,18 @@ battle_stats evaluate_battle_stats(
 				   int attack_with,
 				   std::map<gamemap::location,unit>& units,
 				   const gamestatus& state,
-				   const game_data& info,
 				   gamemap::TERRAIN attacker_terrain_override=0,
 				   bool include_strings=true);
 
 //attack: executes an attack.
 void attack(display& gui, const gamemap& map,
-				std::vector<team>& teams,
+            std::vector<team>& teams,
             gamemap::location attacker,
             gamemap::location defender,
             int attack_with,
             std::map<gamemap::location,unit>& units,
             const gamestatus& state,
-            const game_data& info, bool player_is_attacker);
+            const game_data& info);
 
 //given the location of a village, will return the 0-based index of the team
 //that currently owns it, and -1 if it is unowned.

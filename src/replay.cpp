@@ -896,7 +896,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			tgt = units.find(dst);
 
 			if(u != units.end() && tgt != units.end()) {
-				attack(disp,map,teams,src,dst,weapon_num,units,state,gameinfo,false);
+				attack(disp, map, teams, src, dst, weapon_num, units, state, gameinfo);
 			}
 
 			u = units.find(src);

@@ -578,9 +578,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 			attacks_in_range.push_back(a);
 
-			stats.push_back(evaluate_battle_stats(
-			                               map_,selected_hex_,hex,
-										   a,units_,status_,gameinfo_));
+			stats.push_back(evaluate_battle_stats(map_, selected_hex_, hex,
+			                                      a, units_, status_));
 
 			int weapon_rating = stats.back().chance_to_hit_defender *
 			                stats.back().damage_defender_takes * stats.back().nattacks;
@@ -680,7 +679,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			recorder.add_attack(selected_hex_,hex,res);
 
 			try {
-				attack(gui_,map_,teams_,selected_hex_,hex,res,units_,status_,gameinfo_,true);
+				attack(gui_,map_,teams_,selected_hex_,hex,res,units_,status_,gameinfo_);
 			} catch(end_level_exception&) {
 				//if the level ends due to a unit being killed, still see if
 				//either the attacker or defender should advance

@@ -191,7 +191,6 @@ battle_stats evaluate_battle_stats(
 				   int attack_with,
 				   std::map<gamemap::location,unit>& units,
 				   const gamestatus& state,
-				   const game_data& info,
 				   gamemap::TERRAIN attacker_terrain_override,
 				   bool include_strings)
 {
@@ -561,13 +560,13 @@ static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 }
 
 void attack(display& gui, const gamemap& map, 
-				std::vector<team>& teams,
+            std::vector<team>& teams,
             gamemap::location attacker,
             gamemap::location defender,
-			int attack_with,
-			std::map<gamemap::location,unit>& units,
-			const gamestatus& state,
-			const game_data& info, bool player_is_attacker)
+            int attack_with,
+            std::map<gamemap::location,unit>& units,
+            const gamestatus& state,
+            const game_data& info)
 {
 	//stop the user from issuing any commands while the units are fighting
 	const command_disabler disable_commands;
@@ -591,8 +590,8 @@ void attack(display& gui, const gamemap& map,
 	static const std::string night_invisible("nightstalk");
 	a->second.remove_flag(night_invisible);
 
-	battle_stats stats = evaluate_battle_stats(map,attacker,defender,
-	                                           attack_with,units,state,info);
+	battle_stats stats = evaluate_battle_stats(map, attacker, defender,
+	                                           attack_with, units, state);
 
 	statistics::attack_context attack_stats(a->second,d->second,stats);
 

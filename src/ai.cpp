@@ -110,7 +110,7 @@ private:
         int best_attack_rating = -1;
         int best_attack = -1;
         for(size_t n = 0; n != attacks.size(); ++n) {
-			const battle_stats stats = evaluate_battle_stats(get_info().map,attacker,defender,n,get_info().units,get_info().state,get_info().gameinfo,0,false);
+			const battle_stats stats = evaluate_battle_stats(get_info().map, attacker, defender, n, get_info().units, get_info().state, 0, false);
 			const int attack_rating = stats.damage_defender_takes*stats.nattacks*stats.chance_to_hit_defender;
 			if(best_attack == -1 || attack_rating > best_attack_rating) {
                  best_attack = n;
@@ -924,7 +924,7 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 		recorder.add_attack(u,target,weapon);
 		game_events::fire("attack",u,target);
 
-		attack(info_.disp,info_.map,info_.teams,u,target,weapon,info_.units,info_.state,info_.gameinfo,false);
+		attack(info_.disp, info_.map, info_.teams, u, target, weapon, info_.units, info_.state, info_.gameinfo);
 		check_victory(info_.units,info_.teams);
 		dialogs::advance_unit(info_.gameinfo,info_.map,info_.units,u,info_.disp,true);
 
