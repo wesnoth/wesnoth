@@ -1130,6 +1130,12 @@ void turn_info::terrain_table()
 	                    map_.get_terrain_precedence();
 	for(std::vector<gamemap::TERRAIN>::const_iterator t =
 	    terrains.begin(); t != terrains.end(); ++t) {
+
+		//exclude fog and shroud
+		if(*t == gamemap::FOGGED || *t == gamemap::VOID_TERRAIN) {
+			continue;
+		}
+
 		const terrain_type& info = map_.get_terrain_info(*t);
 		if(!info.is_alias()) {
 			const std::string& name = map_.terrain_name(*t);

@@ -542,22 +542,29 @@ std::string default_generate_map(size_t width, size_t height,
 	//based on our [flatland] tags.
 	for(x = 0; x != width; ++x) {
 		for(y = 0; y != height; ++y) {
-			if(terrain[x][y] != grassland)
-				continue;
 
 			const int temperature = temperature_map[x][y];
 			const int height = heights[x][y];
 
-			//iterate over our list of [flatland] tags. Each tag specifies ranges
+			//iterate over our list of [convert] tags. Each tag specifies a source
+			//terrain type, and ranges
 			//for temperature and height, and if that range is met, then the terrain
 			//becomes the type specified. For instance, a tag to put snow in 
 			//high areas with low temperature would look like:
-			//[flatland]
+			//[convert]
+			//from=g
+			//to=S
 			//max_temp=200
 			//min_height=600
-			//[/flatland]
-			const config::child_list& items = cfg.get_children("flatland");
+			//[/convert]
+			const config::child_list& items = cfg.get_children("convert");
 			for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
+				
+				const std::string& from = (**i)["from"];
+				if(std::count(from.begin(),from.end(),terrain[x][y]) == 0) {
+					continue;
+				}
+
 				const std::string& min_temp = (**i)["min_temperature"];
 				const std::string& max_temp = (**i)["max_temperature"];
 				const std::string& min_height = (**i)["min_height"];
@@ -577,7 +584,7 @@ std::string default_generate_map(size_t width, size_t height,
 				
 				//we are in the right range, so set the terrain and go
 				//on to the next tile.
-				const std::string& set_to = (**i)["terrain"];
+				const std::string& set_to = (**i)["to"];
 				if(set_to.empty() == false)
 					terrain[x][y] = set_to[0];
 
