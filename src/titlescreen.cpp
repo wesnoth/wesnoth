@@ -4,6 +4,7 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
+#include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
 #include "hotkeys.hpp"
@@ -126,7 +127,8 @@ const config get_tips_of_day()
 
 	std::cerr << "Loading tips of day\n";
 	try {
-		read(cfg, preprocess_file("data/tips.cfg"));
+		scoped_istream stream = preprocess_file("data/tips.cfg");
+		read(cfg, *stream);
 	} catch(config::error&) {
 		std::cerr << "Could not read tips.cfg\n";
 	}

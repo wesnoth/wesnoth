@@ -27,12 +27,12 @@ cutter::cutter() : verbose_(false)
 const config cutter::load_config(const std::string &filename)
 {
 	const std::string conf_string = find_configuration(filename);
-	const std::string pre_conf_string = preprocess_file(conf_string);
 
 	config res;
 	
 	try {
-		read(res, pre_conf_string);
+		scoped_istream stream = preprocess_file(conf_string);
+		read(res, *stream);
 	} catch(config::error err) {
 		throw exploder_failure("Unable to load the configuration for the file " + filename + ": "+ err.message);
 	}

@@ -825,3 +825,13 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	return "";
 }
 
+void scoped_istream::operator=(std::istream *s)
+{
+	delete stream;
+	stream = s;
+}
+
+scoped_istream::~scoped_istream()
+{
+	delete stream;
+}

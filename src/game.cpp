@@ -256,7 +256,8 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 					try {
 						if(file_exists(fname_checksum)) {
 							config checksum_cfg;
-							read(checksum_cfg, read_file(fname_checksum));
+							scoped_istream stream = stream_file(fname_checksum);
+							read(checksum_cfg, *stream);
 							dir_checksum = file_tree_checksum(checksum_cfg);
 						}
 					} catch(config::error&) {
@@ -269,12 +270,9 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 				if(use_cache && file_exists(fname) && file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum()) {
 					std::cerr << "found valid cache at '" << fname << "' using it\n";
 					log_scope("read cache");
-					compression_schema schema;
-
 					try {
-						std::istream *stream = stream_file(fname);
-						read_compressed(cfg, *stream, schema);
-						delete stream;
+						scoped_istream stream = stream_file(fname);
+						read_compressed(cfg, *stream);
 						return;
 					} catch(config::error&) {
 						std::cerr << "cache is corrupt. Loading from files\n";
@@ -286,10 +284,10 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 				std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
 				
 				//read the file and then write to the cache
-				read(cfg, preprocess_file("data/game.cfg", &defines, &line_src), &line_src);
+				scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
+				read(cfg, *stream, &line_src);
 				try {
-					compression_schema schema;
-					write_file(fname, write_compressed(cfg, schema));
+					write_file(fname, write_compressed(cfg));
 
 					config checksum_cfg;
 					data_tree_checksum().write(checksum_cfg);
@@ -305,7 +303,8 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 	}
 
 	std::cerr << "caching cannot be done. Reading file\n";
-	read(cfg, preprocess_file("data/game.cfg", &defines, &line_src), &line_src);
+	scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
+	read(cfg, *stream, &line_src);
 }
 
 bool less_campaigns_rank(const config* a, const config* b) {
@@ -1525,8 +1524,8 @@ int play_game(int argc, char** argv)
 			const std::string input(argv[arg+1]);
 			const std::string output(argv[arg+2]);
 
-			const std::string in(read_file(input));
-			if(in == "") {
+			scoped_istream stream = stream_file(input);
+			if (stream->fail()) {
 				std::cerr << "could not read file '" << input << "'\n";
 				return 0;
 			}
@@ -1535,7 +1534,7 @@ int play_game(int argc, char** argv)
 
 			const bool compress = val == "--compress";
 			try {
-				const bool is_compressed = detect_format_and_read(cfg, in);
+				const bool is_compressed = detect_format_and_read(cfg, *stream);
 				if(is_compressed && compress) {
 					std::cerr << input << " is already compressed\n";
 					return 0;

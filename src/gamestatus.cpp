@@ -418,13 +418,12 @@ void read_save_file(const std::string& name, config& cfg)
 	std::replace(modified_name.begin(),modified_name.end(),' ','_');
 
 	//try reading the file both with and without underscores
-	std::string file_data = read_file(get_saves_dir() + "/" + modified_name);
-	if(file_data.empty()) {
-		file_data = read_file(get_saves_dir() + "/" + name);
-	}
+	scoped_istream file_stream = stream_file(get_saves_dir() + "/" + modified_name);
+	if (file_stream->fail())
+		file_stream = stream_file(get_saves_dir() + "/" + name);
 
 	cfg.clear();
-	detect_format_and_read(cfg, file_data);
+	detect_format_and_read(cfg, *file_stream);
 
 	if(cfg.empty()) {
 		std::cerr << "Could not parse file data into config\n";
@@ -479,7 +478,8 @@ config& save_index()
 {
 	if(save_index_loaded == false) {
 		try {
-			detect_format_and_read(save_index_cfg, read_file(get_save_index_file()));
+			scoped_istream stream = stream_file(get_save_index_file());
+			detect_format_and_read(save_index_cfg, *stream);
 		} catch(io_exception& e) {
 			std::cerr << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error&) {

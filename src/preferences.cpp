@@ -68,7 +68,8 @@ namespace preferences {
 
 manager::manager()
 {
-	read(prefs, read_file(get_prefs_file()));
+	scoped_istream stream = stream_file(get_prefs_file());
+	read(prefs, *stream);
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 

@@ -26,7 +26,8 @@ void setup_dirs()
 
 void get_campaign_info(const std::string& campaign_name, config& cfg)
 {
-	read(cfg, read_file(campaign_dir() + "/" + campaign_name + ".pbl"));
+	scoped_istream stream = stream_file(campaign_dir() + "/" + campaign_name + ".pbl");
+	read(cfg, *stream);
 }
 
 void set_campaign_info(const std::string& campaign_name, const config& cfg)

@@ -15,6 +15,7 @@
 
 #include <time.h>
 
+#include <iosfwd>
 #include <string>
 #include <vector>
 
@@ -138,5 +139,15 @@ const std::vector<std::string>& get_binary_paths(const std::string& type);
 //will return a complete path to the actual file, or an empty string if
 //the file isn't present
 std::string get_binary_file_location(const std::string& type, const std::string& filename);
+
+class scoped_istream {
+	std::istream *stream;
+public:
+	scoped_istream(std::istream *s): stream(s) {}
+	void operator=(std::istream *);
+	std::istream &operator*() { return *stream; }
+	std::istream *operator->() { return stream; }
+	~scoped_istream();
+};
 
 #endif

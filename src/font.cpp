@@ -1322,7 +1322,8 @@ bool load_font_config()
 	//config when changing languages
 	config cfg;
 	try {
-		read(cfg, preprocess_file("data/fonts.cfg"));
+		scoped_istream stream = preprocess_file("data/fonts.cfg");
+		read(cfg, *stream);
 	} catch(config::error&) {
 		std::cerr << "Could not read fonts.cfg\n";
 		return false;

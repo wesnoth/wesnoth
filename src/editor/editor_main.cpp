@@ -227,7 +227,8 @@ int main(int argc, char** argv)
 	//Read the configuration af
 	config cfg;
 	try {
-		read(cfg, preprocess_file("data/game.cfg", &defines_map));
+		scoped_istream stream = preprocess_file("data/game.cfg", &defines_map);
+		read(cfg, *stream);
 	}
 	catch (config::error e) {
 		std::cerr << "Error when reading game config: '" << e.message << "'" << std::endl;

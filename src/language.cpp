@@ -15,6 +15,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "filesystem.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
@@ -158,7 +159,8 @@ bool set_language(const language_def& locale)
 
 	// fill string_table (should be moved somwhere else some day)
 	try {
-		read(cfg, preprocess_file("data/translations/english.cfg"));
+		scoped_istream stream = preprocess_file("data/translations/english.cfg");
+		read(cfg, *stream);
 	} catch(config::error& e) {
 		std::cerr << "Could not read english.cfg\n";
 		throw e;

@@ -389,7 +389,7 @@ void internal_preprocess_file(const std::string& fname,
 
 } //end anonymous namespace
 
-std::string preprocess_file(std::string const &fname,
+std::istream *preprocess_file(std::string const &fname,
                             const preproc_map* defines,
                             std::vector<line_source>* line_sources)
 {
@@ -401,5 +401,5 @@ std::string preprocess_file(std::string const &fname,
 	std::vector<char> res;
 	int linenum = 0;
 	internal_preprocess_file(fname,defines_copy,0,res,line_sources,linenum);
-	return std::string(res.begin(),res.end());
+	return new std::istringstream(std::string(res.begin(), res.end()));
 }

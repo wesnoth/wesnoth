@@ -44,7 +44,8 @@ private:
 
 int campaign_server::load_config()
 {
-	read(cfg_, read_file(file_));
+	scoped_istream stream = stream_file(file_);
+	read(cfg_, *stream);
 	return lexical_cast_default<int>(cfg_["port"], 15002);
 }
 
@@ -90,9 +91,8 @@ void campaign_server::run()
 						network::send_data(construct_error("Campaign not found."),sock);
 					} else {
 						config cfg;
-						std::istream *stream = stream_file((*campaign)["filename"]);
+						scoped_istream stream = stream_file((*campaign)["filename"]);
 						read_compressed(cfg, *stream);
-						delete stream;
 						network::queue_data(cfg,sock);
 
 						const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;

@@ -14,6 +14,7 @@
 #ifndef SERIALIZATION_PREPROCESSOR_HPP_INCLUDED
 #define SERIALIZATION_PREPROCESSOR_HPP_INCLUDED
 
+#include <iosfwd>
 #include <map>
 #include <string>
 #include <vector>
@@ -48,8 +49,8 @@ typedef std::map< std::string, preproc_define > preproc_map;
 //function to use the WML preprocessor on a file, and returns the resulting
 //preprocessed file data. defines is a map of symbols defined. src is used
 //internally and should be set to NULL
-std::string preprocess_file(std::string const &fname,
-                            preproc_map const *defines = NULL,
-                            std::vector< line_source > *src = NULL);
+std::istream *preprocess_file(std::string const &fname,
+                              preproc_map const *defines = NULL,
+                              std::vector< line_source > *src = NULL);
 
 #endif

@@ -50,8 +50,17 @@ line_source get_line_source(std::vector< line_source > const &line_src, int line
 	return res;
 }
 
-void read(config &cfg, std::string const &data, std::vector< line_source > const *line_sources)
+void read(config &cfg, std::istream &data_in, std::vector< line_source > const *line_sources)
 {
+	std::string data_str;
+	{
+		//temporary, only here to accomodate the old parser
+		std::stringstream tmp_in;
+		tmp_in << data_in.rdbuf();
+		data_str = tmp_in.str();
+	}
+	std::string const &data = data_str;
+
 	cfg.clear();
 
 	std::stack< std::string > element_names;

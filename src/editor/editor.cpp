@@ -99,7 +99,8 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 		// Perform some initializations that should only be performed
 		// the first time the editor object is created.
 		try {
-			read(prefs_, read_file(prefs_filename));
+			scoped_istream stream = stream_file(prefs_filename);
+			read(prefs_, *stream);
 		}
 		catch (config::error e) {
 			std::cerr << "Error when reading " << prefs_filename << ": "

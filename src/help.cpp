@@ -1677,7 +1677,8 @@ void help_text_area::set_items() {
 			// Should be parsed as WML.
 			try {
 				config cfg;
-				read(cfg, *it);
+				std::istringstream stream(*it);
+				read(cfg, stream);
 				config *child = cfg.child("ref");
 				if (child != NULL) {
 					handle_ref_cfg(*child);

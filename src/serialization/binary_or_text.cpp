@@ -16,17 +16,14 @@
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 
-#include <sstream>
-
-bool detect_format_and_read(config &cfg, std::string const &data)
+bool detect_format_and_read(config &cfg, std::istream &in)
 {
 	try {
-		std::istringstream stream(data);
-		read_compressed(cfg, stream);
+		read_compressed(cfg, in);
 		return true;
 	} catch (config::error &) {
 	}
 
-	read(cfg, data);
+	read(cfg, in);
 	return false;
 }
