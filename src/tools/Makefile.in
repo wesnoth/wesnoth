@@ -35,7 +35,6 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-@LIBPNG_TRUE@am__append_1 = exploder
 ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
@@ -154,7 +153,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 
-bin_PROGRAMS = make_translation merge_translations  $(am__append_1)
+bin_PROGRAMS = make_translation merge_translations 
 
 
 #############################################################################
@@ -194,49 +193,14 @@ merge_translations_SOURCES = merge_translations.cpp \
 			     ../game_config.hpp \
 			     ../log.hpp 
 
-
-
-#############################################################################
-#    Exploder tool
-#############################################################################
-@LIBPNG_TRUE@exploder_SOURCES = exploder.cpp \
-@LIBPNG_TRUE@		   exploder_utils.cpp \
-@LIBPNG_TRUE@		   exploder_cutter.cpp \
-@LIBPNG_TRUE@		   exploder_composer.cpp \
-@LIBPNG_TRUE@		   ../config.cpp \
-@LIBPNG_TRUE@		   ../filesystem.cpp \
-@LIBPNG_TRUE@		   ../game_config.cpp \
-@LIBPNG_TRUE@		   ../sdl_utils.cpp \
-@LIBPNG_TRUE@		   ../log.cpp \
-@LIBPNG_TRUE@		   ../server/variable.cpp \
-@LIBPNG_TRUE@		   dummy_video.cpp
-
-
-@LIBPNG_TRUE@exploder_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@
 subdir = src/tools
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-@LIBPNG_TRUE@bin_PROGRAMS = make_translation$(EXEEXT) \
-@LIBPNG_TRUE@	merge_translations$(EXEEXT) exploder$(EXEEXT)
-@LIBPNG_FALSE@bin_PROGRAMS = make_translation$(EXEEXT) \
-@LIBPNG_FALSE@	merge_translations$(EXEEXT)
+bin_PROGRAMS = make_translation$(EXEEXT) merge_translations$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
 
-am__exploder_SOURCES_DIST = exploder.cpp exploder_utils.cpp \
-	exploder_cutter.cpp exploder_composer.cpp ../config.cpp \
-	../filesystem.cpp ../game_config.cpp ../sdl_utils.cpp \
-	../log.cpp ../server/variable.cpp dummy_video.cpp
-@LIBPNG_TRUE@am_exploder_OBJECTS = exploder.$(OBJEXT) \
-@LIBPNG_TRUE@	exploder_utils.$(OBJEXT) exploder_cutter.$(OBJEXT) \
-@LIBPNG_TRUE@	exploder_composer.$(OBJEXT) config.$(OBJEXT) \
-@LIBPNG_TRUE@	filesystem.$(OBJEXT) game_config.$(OBJEXT) \
-@LIBPNG_TRUE@	sdl_utils.$(OBJEXT) log.$(OBJEXT) \
-@LIBPNG_TRUE@	variable.$(OBJEXT) dummy_video.$(OBJEXT)
-exploder_OBJECTS = $(am_exploder_OBJECTS)
-exploder_LDADD = $(LDADD)
-exploder_DEPENDENCIES =
 am_make_translation_OBJECTS = make_translation.$(OBJEXT) \
 	config.$(OBJEXT) filesystem.$(OBJEXT) game_config.$(OBJEXT) \
 	log.$(OBJEXT) variable.$(OBJEXT)
@@ -255,16 +219,11 @@ merge_translations_LDFLAGS =
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/config.Po ./$(DEPDIR)/dummy_video.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/exploder.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/exploder_composer.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/exploder_cutter.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/exploder_utils.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/filesystem.Po \
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/config.Po ./$(DEPDIR)/filesystem.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_config.Po ./$(DEPDIR)/log.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/make_translation.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/merge_translations.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/sdl_utils.Po ./$(DEPDIR)/variable.Po
+@AMDEP_TRUE@	./$(DEPDIR)/variable.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -274,10 +233,9 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-DIST_SOURCES = $(am__exploder_SOURCES_DIST) $(make_translation_SOURCES) \
-	$(merge_translations_SOURCES)
+DIST_SOURCES = $(make_translation_SOURCES) $(merge_translations_SOURCES)
 DIST_COMMON = $(srcdir)/Makefile.in Makefile.am
-SOURCES = $(exploder_SOURCES) $(make_translation_SOURCES) $(merge_translations_SOURCES)
+SOURCES = $(make_translation_SOURCES) $(merge_translations_SOURCES)
 
 all: all-am
 
@@ -312,9 +270,6 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-exploder$(EXEEXT): $(exploder_OBJECTS) $(exploder_DEPENDENCIES) 
-	@rm -f exploder$(EXEEXT)
-	$(CXXLINK) $(exploder_LDFLAGS) $(exploder_OBJECTS) $(exploder_LDADD) $(LIBS)
 make_translation$(EXEEXT): $(make_translation_OBJECTS) $(make_translation_DEPENDENCIES) 
 	@rm -f make_translation$(EXEEXT)
 	$(CXXLINK) $(make_translation_LDFLAGS) $(make_translation_OBJECTS) $(make_translation_LDADD) $(LIBS)
@@ -329,17 +284,11 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/config.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dummy_video.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exploder.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exploder_composer.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exploder_cutter.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exploder_utils.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/filesystem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game_config.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/make_translation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/merge_translations.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sdl_utils.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/variable.Po@am__quote@
 
 .cpp.o:
@@ -429,28 +378,6 @@ game_config.obj: ../game_config.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/game_config.Po' tmpdepfile='$(DEPDIR)/game_config.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o game_config.obj `if test -f '../game_config.cpp'; then $(CYGPATH_W) '../game_config.cpp'; else $(CYGPATH_W) '$(srcdir)/../game_config.cpp'; fi`
-
-sdl_utils.o: ../sdl_utils.cpp
-@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sdl_utils.o -MD -MP -MF "$(DEPDIR)/sdl_utils.Tpo" \
-@am__fastdepCXX_TRUE@	  -c -o sdl_utils.o `test -f '../sdl_utils.cpp' || echo '$(srcdir)/'`../sdl_utils.cpp; \
-@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/sdl_utils.Tpo" "$(DEPDIR)/sdl_utils.Po"; \
-@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/sdl_utils.Tpo"; exit 1; \
-@am__fastdepCXX_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../sdl_utils.cpp' object='sdl_utils.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/sdl_utils.Po' tmpdepfile='$(DEPDIR)/sdl_utils.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sdl_utils.o `test -f '../sdl_utils.cpp' || echo '$(srcdir)/'`../sdl_utils.cpp
-
-sdl_utils.obj: ../sdl_utils.cpp
-@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT sdl_utils.obj -MD -MP -MF "$(DEPDIR)/sdl_utils.Tpo" \
-@am__fastdepCXX_TRUE@	  -c -o sdl_utils.obj `if test -f '../sdl_utils.cpp'; then $(CYGPATH_W) '../sdl_utils.cpp'; else $(CYGPATH_W) '$(srcdir)/../sdl_utils.cpp'; fi`; \
-@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/sdl_utils.Tpo" "$(DEPDIR)/sdl_utils.Po"; \
-@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/sdl_utils.Tpo"; exit 1; \
-@am__fastdepCXX_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../sdl_utils.cpp' object='sdl_utils.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/sdl_utils.Po' tmpdepfile='$(DEPDIR)/sdl_utils.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o sdl_utils.obj `if test -f '../sdl_utils.cpp'; then $(CYGPATH_W) '../sdl_utils.cpp'; else $(CYGPATH_W) '$(srcdir)/../sdl_utils.cpp'; fi`
 
 log.o: ../log.cpp
 @am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT log.o -MD -MP -MF "$(DEPDIR)/log.Tpo" \
