@@ -5,8 +5,7 @@ CVS HEAD:
  * campaign modifications
     * tutorial polishing
     * updated all campaigns to use the new [objectives] tag
-    * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to
-      use the new ford terrain (Heir to the Throne & The Rise of Wesnoth).
+    * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to use the new ford terrain (Heir to the Throne & The Rise of Wesnoth).
     * updated the behaviour of the thieves in 'The Siege of Elensefar' (Heir to the Throne)
     * updated Heir to the Throne and The Rise of Wesnoth to use the ruined keeps where appropriate
     * dialog improvements in Eastern Invasion
@@ -17,10 +16,10 @@ CVS HEAD:
      * swamp
      * keep to keep
    * added new terrains:
-      * ruined castle
-      * sunken ruin
-      * swamp-ruin
-      * river ford
+     * ruined castle
+     * sunken ruin
+     * swamp-ruin
+     * river ford
    * improved lava terrain
  * unit graphics and sound improvements 
    * updated images for several units: Cave Spider, Haldric, Lady Jessica, Mermaid Priestess, Mermaid Diviner, Merman Hunter, Merman Javelineer, Merman Spearman
@@ -113,32 +112,29 @@ Version 0.8.11:
    * Swedish
  * in language-selection dialog, consistently use native name for all languages, with the (hopefully) official latin transcription for those that cannot be displayed in the default font (russian, bulgarian, greek)
  * language fixes and polishing (English)
- * campaign fixes and changes:
-  * fixed Delfador appearing in the water when turns run out in 'The Bay of Pearls' (HttT)
-  * updated maps for: 'Northern Winter' & 'Mountain Pass' (HttT)
-  * updated 'Evacuation' & 'Captured' (EI)
-  * fixed the talking tentacle in 'Temple of the Deep' (TroW)
-  * switch to the new Merfolk and Nagas in TRoW and HttT
- * unit fixes and changes:
-  * fixed several units using non-existing sound files
-  * added sounds (existing) to several attacks
-  * updated all uses of the 'old fireball' to use the 'new fireballs'
-  * added new images and animations for all mages
-  * updated the attack frame sequences for the Drakes
-  * added attack icons for 'slam' and 'ballista'
-  * obsoleted all instances of the old 'Mermen' & 'Naga' unit lines
-  * modified defense weight for Drake Slasher
-  * decreased hitpoints for Gate
-  * renamed 'Elvish Lady Parandra' 'Elvish Lady'
-  * made all mages use staff (impact) as melee attack
-  * added support for directional attack animations
  * fixed slovene being wrongly localized as sl_SL insteof sl_SI
+ * campaign fixes and changes:
+   * fixed Delfador appearing in the water when turns run out in 'The Bay of Pearls' (HttT)
+   * updated maps for: 'Northern Winter' & 'Mountain Pass' (HttT)
+   * updated 'Evacuation' & 'Captured' (EI)
+   * fixed the talking tentacle in 'Temple of the Deep' (TroW)
+   * switch to the new Merfolk and Nagas in TRoW and HttT
+ * unit fixes and changes:
+   * fixed several units using non-existing sound files
+   * added sounds (existing) to several attacks
+   * updated all uses of the 'old fireball' to use the 'new fireballs'
+   * added new images and animations for all mages
+   * updated the attack frame sequences for the Drakes
+   * added attack icons for 'slam' and 'ballista'
+   * obsoleted all instances of the old 'Mermen' & 'Naga' unit lines
+   * modified defense weight for Drake Slasher
+   * decreased hitpoints for Gate
+   * renamed 'Elvish Lady Parandra' 'Elvish Lady'
+   * made all mages use staff (impact) as melee attack
+   * added support for directional attack animations
  * fixed zipios support so that user campaigns custom images and sounds can be loaded
- * fixed locale-dependent numeric input/output bug,
-   it allowed units to walk on the water, and prevented
-   the AI from being correctly configured in campaigns
- * use fixed-point arithmetics in critical functions, so that wesnoth
-   can reasonably run on an FPU-less machine (eg. ipaq PDA)
+ * fixed locale-dependent numeric input/output bug, it allowed units to walk on the water, and prevented the AI from being correctly configured in campaigns
+ * use fixed-point arithmetics in critical functions, so that wesnoth can reasonably run on an FPU-less machine (eg. ipaq PDA)
  * fixed the width of 'HP' and 'XP' in the right side panel
  * fixed some multiplayer connect bugs
  * fixed the AI not going through the no-ZoC of lv0 units when it should have
@@ -147,39 +143,38 @@ Version 0.8.11:
 Version 0.8.10:
  * user interface tweaks
  * updated translations:
-  * catalan
-  * french
-  * german
-  * latin
-  * russian
-  * swedish
-  * updated manpages
- * updated images for footpad and dwarvish sentinel
+   * catalan
+   * french
+   * german
+   * latin
+   * russian
+   * swedish
+ * updated manpages
  * language fixes and polishing (English)
+ * updated images for footpad and dwarvish sentinel
  * scenario revisions for 'The Heir to the Throne' campaign:
-  * Dwarven Doors & Siege of Elensefar- Decreased the AI's gold
-  * Bay of Pearls- Added an extra keep square on EASY
-  * Sceptre of Fire- Reduced that AI's income on HARD
-  * Norther Winter- Updated the map to use the snow tiles
-  * tweaks to several maps
-  * difficulty balancing for most scenarios
+   * Dwarven Doors & Siege of Elensefar- Decreased the AI's gold
+   * Bay of Pearls - Added an extra keep square on EASY
+   * Sceptre of Fire- Reduced that AI's income on HARD
+   * Northern Winter- Updated the map to use the snow tiles
+   * tweaks to several maps
+   * difficulty balancing for most scenarios
  * scenario revisions for 'Son of the Black Eye' campaign:
-  * End of Peace
+   * End of Peace
  * scenario revisions for 'The Eastern Invasion' campaign:
-  * Escape Tunnel
+   * Escape Tunnel
  * scenario revisions for 'The Rise of Wesnoth' campaign:
-  * reduced the AI's gold in 'A Harrowing Escape'
-  * allowed the AI to initially recruit scouts in several scenarios
-  * altered / fixed the recruitment pattern in several scenarios
-  * tweaks to 'The Plan' & 'Epilogue' (both non-playable)
+   * reduced the AI's gold in 'A Harrowing Escape'
+   * allowed the AI to initially recruit scouts in several scenarios
+   * altered / fixed the recruitment pattern in several scenarios
+   * tweaks to 'The Plan' & 'Epilogue' (both non-playable)
  * really removed ZoC from lv0 units this time
  * fixed editor to work with zipios support enabled
  * fixed zipios support to honor path to data given on command-line
  * fixed zipios support crashes when running from CVS
  * new cmd line option --fps to display frames/second refresh in game
  * modified how damage is calculated (RATE)
- * fixed bug which caused unnecessary waits during unit movement;
-   should make unit movement much smoother
+ * made unit movement smoother
  * fixed poison not being cured when the unit had too much HP (#11565)
  * fixed bugs when replacing player with observer in mp (#11231)
  * fixed several pathfinding bugs (#11769)
@@ -213,9 +208,15 @@ Version 0.8.9:
  * new female units for:
    * Footpad, Thief, Rogue and Assassin
  * added new tiles:
-   * Desert, desert hills, desert mountain, desert villages (adobe and tent),
-     desert road, desert oasis, savanna, tropical forest,
-     tropical forest village
+    * desert
+    * desert hills
+    * desert mountain
+    * desert villages (adobe and tent)
+    * desert road
+    * desert oasis
+    * savanna
+    * tropical forest
+    * tropical forest village
  * added icon for petrified units
  * fixed missing diagonal projectiles on many units
  * removed old unused images:
@@ -226,25 +227,22 @@ Version 0.8.9:
  * unit balancing:
    * Naga fighter: increased hitpoints from 27 to 30
    * Merman Hoplite: increased resistances and damage
-   * Mermaid Initiate/Enchantress/Siren: reduced number of attacks,
-     increased damage, removed special resistances
+   * Mermaid Initiate/Enchantress/Siren: reduced number of attacks, increased damage, removed special resistances
    * Mermaid Initiate: increased experience needed to level, other minor tweaks
    * Swordsman: increase resistance to blade and impact
    * Royal guard: increase resistance to blade and impact
    * Pikeman: increase resistance to pierce, change attacks number and damage
-   * Halberdier: increase resistance to pierce, increase blade damage, decrease
-     pierce damage
+   * Halberdier: increase resistance to pierce, increase blade damage, decrease pierce damage
    * Saurian Tribalist, Saurian Icecaster, Saurian Soothsayer: remove 'skirmish'
    * Saurian Skirmisher: Increase cost to 14 gold
-   * Wraith, Spectre: reduce resistance to blade, pierce, impact by 20%, 
-     increase HP by 10%
+   * Wraith, Spectre: reduce resistance to blade, pierce, impact by 20%, increase HP by 10%
    * Poacher: Reduce cost to 14
    * Tentacle of the Deep: Change movement type to 'float'
    * Flying creatures can now cross canyons
    * Removed ZoC from level 0 units
- * Language fixes and polishing (English)
- * Added 'x' to the terrain letters reserved for campaign writers
- * Scenario revisions for 'The Eastern Invasion' campaign:
+ * language fixes and polishing (English)
+ * added 'x' to the terrain letters reserved for campaign writers
+ * scenario revisions for 'The Eastern Invasion' campaign:
    * Lake Vrug
    * Two Paths
    * Northern Outpost
@@ -253,29 +251,22 @@ Version 0.8.9:
    * Escape Tunnel
    * Tribal Warfare
    * Approaching Weldyn
- * Scenario revisions in Heir to the Throne:
-   * Blackwater Port- Make the port look like more of a port, other minor 
-     changes that mute each other out
-   * The Isle of Anduin- Extend shallow water around the Isle, remove the 
-     Saurians in favour of Goblins
+ * scenario revisions in Heir to the Throne:
+   * Blackwater Port- Make the port look like more of a port, other minor changes that mute each other out
+   * The Isle of Anduin- Extend shallow water around the Isle, remove the Saurians in favour of Goblins
    * The Bay of Pearls- Flip the map so the Ocean is on the West side
-   * Muff Malal's Peninsula- Make it a peninsula, give Konrad the option of 
-     fighting (bonus) or fleeing
-   * Isle of the Damned- Touched up the map so it is clear that the islands are 
-     islands, made the islands tropical, and moved the temples
+   * Muff Malal's Peninsula- Make it a peninsula, give Konrad the option of fighting (bonus) or fleeing
+   * Isle of the Damned- Touched up the map so it is clear that the islands are islands, made the islands tropical, and moved the temples
    * The Siege of Elensefar- New map, and other changes
-   * The Crossroads- New map, weaker more diffuse ambushes, and less gold for 
-     the Orcs 
+   * The Crossroads- New map, weaker more diffuse ambushes, and less gold for the Orcs 
    * The Princess of Wesnoth- Minor map changes, and made the scenario harder
    * Set result=continue in 'Plunging into the Darkness'
  * Scenario revisions in The Rise of Wesnoth:
    * fixed {CROSS} in 'Temple of the Deep'
    * fixed sign glitch
-   * Reduce the difficulty of TRoW on 'Hard' particularly, and reduce the
-     difficulty slightly on 'Easy' & 'Normal'
+   * Reduce the difficulty of TRoW on 'Hard' particularly, and reduce the difficulty slightly on 'Easy' & 'Normal'
    * A New Land - Sync with the map from Bay of Pearls
-   * Cursed Isle- Sync with the map from Isle of the Damned, make the temples
-     match locations
+   * Cursed Isle- Sync with the map from Isle of the Damned, make the temples match locations
    * Made 'Peoples in Decline' and 'Rough Landing' look tropical
  * multiplayer improvements
    * multiplayer game settings (map name, gold per village, ...) are saved now
@@ -285,23 +276,16 @@ Version 0.8.9:
    * enlarge side descriptions for remote player during game creation
    * added support for player nick tab completion and /me-substitution in game chat
  * theme syntax improvements:
-   * added support for specifying a reference rectangle when using 
-     relative-positioning syntax
-   * added support for theme inheritance; avoids duplicating mostly-unchanged
-     code
+   * added support for specifying a reference rectangle when using relative-positioning syntax
+   * added support for theme inheritance; avoids duplicating mostly-unchanged code
  * added a "droid" game command, and allow for computer player to do a campaign
  * added a "canrecruit" filter
  * updated manpages and added support for translating them
- * "," is no longer the column separator, it does not have to be escaped
-   anymore in some translations, "=" is the new separator (#10368)
- * take advantage of libzipios++ if available, to read cfg files, maps,
-   images, sound effects, and fonts from zip files.  Call "make	zip-install"
-   to install data zipped.
+ * "," is no longer the column separator, it does not have to be escaped anymore in some translations, "=" is the new separator (#10368)
+ * take advantage of libzipios++ if available, to read cfg files, maps, images, sound effects, and fonts from zip files.  Call "make zip-install" to install data zipped.
  * removed drain allowing to go past maximum hp
- * removed long-range attacks
-   (Pirate Galleon, Transport Galleon, Wall Guard, Watch Tower)
- * fixed various bugs with respect to multiplayer game setup
-   (#10896, #11236, #11265, #11442, #11527)
+ * removed long-range attacks (Pirate Galleon, Transport Galleon, Wall Guard, Watch Tower)
+ * fixed various bugs with respect to multiplayer game setup (#10896, #11236, #11265, #11442, #11527)
  * added new pathfinder (Redsun)
  * fixed some pathfinding bugs
  * fixed untranslatable strings
