@@ -35,16 +35,26 @@ our @nonbindirs;
 
 ## parse command line
 
-die "must give only a syncpoint tag as argument"
-  unless @ARGV == 1 and $ARGV[0] =~ m/^(syncpoint_.*_)(\d+)$/;
+our ($basetag, $targettag);
+if (@ARGV == 1) {
+  die "single argument must be a syncpoint tag"
+    unless $ARGV[0] =~ m/^(syncpoint_.*_)(\d+)$/;
 
-our ($basetag, $target) = ($1, $2);
+  my ($tagroot, $target) = ($1, $2);
+  $targettag = $ARGV[0];
+  $basetag = $tagroot . ($target-1) if $target > 1;
+} elsif (@ARGV == 2) {
+  ($basetag, $targettag) = @ARGV;
+} else {
+  die "this script wants 1 or 2 arguments";
+}
+
 
 ## base of the command
 
-our $basecmd = 'cvs -f upd -dP ';
-$basecmd .= '-j syncpoint_gettext1_' . ($target-1) . ' ' if $target > 1;
-$basecmd .= '-j syncpoint_gettext1_' . $target . ' ';
+our $basecmd = 'cvs -f upd -dP -z4 ';
+$basecmd .= '-j ' . $basetag . ' ' if defined $basetag;
+$basecmd .= '-j ' . $targettag . ' ';
 
 ## do merge
 
