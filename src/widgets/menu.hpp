@@ -8,6 +8,7 @@
 #include "../events.hpp"
 #include "../sdl_utils.hpp"
 
+#include "scrollbar.hpp"
 #include "button.hpp"
 
 #include "SDL.h"
@@ -86,6 +87,14 @@ private:
 
 	int items_end() const;
 	int items_height() const;
+
+	/// Set the vertical size of the scroll bar grip. The size should
+	/// vary inversely with the ratio of the number of items to the 
+	/// size of the viewing rect
+	void set_scrollbar_height();
+	gui::scrollbar scrollbar_;
+	int scrollbar_width_;
+	int scrollbar_height_;
 };
 
 }

@@ -24,6 +24,7 @@ menu::menu(display& disp, const std::vector<std::string>& items,
           height_(-1), width_(-1), first_item_on_screen_(0),
 		  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow-button"),
           downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow-button"),
+		  scrollbar_(disp),  scrollbar_height_(0),
 		  double_clicked_(false)
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();
@@ -42,6 +43,23 @@ menu::menu(display& disp, const std::vector<std::string>& items,
 			first_item.erase(first_item.begin());
 		}
 	}
+}
+
+// The scrollbar height depends on the number of visible items versus
+void menu::set_scrollbar_height()
+{
+	float pos_percent = (float)max_items_onscreen()/(float)items_.size();
+	scrollbar_height_ = (int)(pos_percent * items_height());
+	int min_height = scrollbar_.get_minimum_grip_height();
+	if (scrollbar_height_ < min_height) 
+		scrollbar_height_ = min_height;
+	if (scrollbar_height_ > items_height()) {
+		std::cerr << "Strange. For some reason I want my scrollbar" << 
+			      " to be larger than me!\n\n";
+		scrollbar_height_ = items_height();
+	}
+					
+	scrollbar_.set_grip_height(scrollbar_height_);
 }
 
 int menu::height() const
@@ -65,6 +83,9 @@ int menu::width() const
 	if(width_ == -1) {
 		const std::vector<int>& widths = column_widths();
 		width_ = std::accumulate(widths.begin(),widths.end(),0);
+		if (show_scrollbar()) {
+				 width_ += scrollbar_.get_max_width();
+		}
 	}
 
 	return width_;
@@ -83,11 +104,24 @@ void menu::set_loc(int x, int y)
 	SDL_Surface* const screen = display_->video().getSurface();
 	buffer_.assign(get_surface_portion(screen, portion));
 
+	const std::vector<int>& widths = column_widths();
+	int menu_width = std::accumulate(widths.begin(), widths.end(), 0);
 	if(show_scrollbar()) {
-		uparrow_.set_x(x_);
-		uparrow_.set_y(y_);
-		downarrow_.set_x(x_);
-		downarrow_.set_y(y_+items_end());
+		scrollbar_.enable(true);
+		int scr_width = scrollbar_.get_width();
+		
+		// this seems to be the best configuration
+		int fudge = (uparrow_.width() - scr_width);
+
+		uparrow_.set_x(x_ + menu_width - fudge);
+		uparrow_.set_y(y_ );
+		downarrow_.set_x(x_+ menu_width - fudge);
+		downarrow_.set_y(y_ + items_end());
+
+		SDL_Rect scroll_rect = {x_ + menu_width, y_+uparrow_.height(),
+								scr_width, items_height()};
+		scrollbar_.set_location(scroll_rect);
+		set_scrollbar_height();
 	}
 }
 
@@ -103,11 +137,12 @@ void menu::redraw()
 	draw();
 	uparrow_.draw();
 	downarrow_.draw();
+	scrollbar_.redraw();
 }
 
 void menu::change_item(int pos1, int pos2,std::string str)
 {
- items_[pos1][pos2] = str;
+	items_[pos1][pos2] = str;
 }
 
 size_t menu::max_items_onscreen() const
@@ -273,7 +308,10 @@ void menu::handle_event(const SDL_Event& event)
 int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
                   bool page_up, bool page_down, int select_item)
 {
-	if(items_.size() > max_items_onscreen()) {
+	static int last_scroll_position = 0;
+	bool scroll_in_use = false;
+	const int last_top_idx = items_.size() - max_items_onscreen();
+	if(show_scrollbar()) {
 		const bool up = uparrow_.process(x,y,button);
 		if(up && first_item_on_screen_ > 0) {
 			--first_item_on_screen_;
@@ -281,14 +319,43 @@ int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 			drawn_ = false;
 		}
 		const bool down = downarrow_.process(x,y,button);
-		if(down && first_item_on_screen_ + max_items_onscreen() < items_.size()) {
+		if(down && first_item_on_screen_ < last_top_idx) {
 			++first_item_on_screen_;
 			itemRects_.clear();
 			drawn_ = false;
 		}
+
+		scrollbar_.process();
+		int scroll_position = scrollbar_.get_grip_position();
+		int new_first_item; 
+		if (scroll_position != last_scroll_position) {
+			last_scroll_position = scroll_position;
+			if (scroll_position == 0) {
+				new_first_item = 0;
+			}
+			else if (scroll_position > items_height() - scrollbar_height_) {
+				new_first_item = last_top_idx;
+			}
+			else {
+				new_first_item = scroll_position * last_top_idx /
+									(items_height() - scrollbar_height_);
+			}
+			if (new_first_item != first_item_on_screen_) {
+				scroll_in_use = true;
+				first_item_on_screen_ = new_first_item;
+				itemRects_.clear();
+				drawn_ = false;
+			}
+		}
 	}
 
 	if(!drawn_) {
+		if (!scroll_in_use && show_scrollbar()) {
+			int new_scrollpos = (first_item_on_screen_ * 
+					(items_height() - scrollbar_height_)) / last_top_idx;
+			scrollbar_.set_grip_position(new_scrollpos);
+			last_scroll_position = new_scrollpos;
+		}
 		draw();
 	}
 
@@ -366,7 +433,7 @@ void menu::draw_item(int item)
 		                display_->video().getSurface(),&dstrect);
 	}
 
-	gui::draw_solid_tinted_rectangle(x_,rect.y,width(),rect.h,
+	gui::draw_solid_tinted_rectangle(x_,rect.y,width()-scrollbar_.get_width(),rect.h,
 	                                 item == selected_ ? 150:0,0,0,
 	                                 item == selected_ ? 0.6 : 0.2,
 	                                 display_->video().getSurface());
@@ -423,7 +490,8 @@ void menu::draw()
 
 int menu::hit(int x, int y) const
 {
-	if(x > x_ && x < x_ + width() && y > y_ && y < y_ + height()){
+	if(x > x_  && x < x_ + width() - scrollbar_.get_width() && 
+	   y > y_ && y < y_ + height()) {
 		for(size_t i = 0; i != items_.size(); ++i) {
 			const SDL_Rect& rect = get_item_rect(i);
 			if(y > rect.y && y < rect.y + rect.h)
@@ -454,7 +522,9 @@ SDL_Rect menu::get_item_rect(int item) const
 
 	const SDL_Rect screen_area = display_->screen_area();
 
-	SDL_Rect res = {x_,y,width(),get_item_height(item)};
+	SDL_Rect res = {x_, y,
+		            width() - scrollbar_.get_width(),
+					get_item_height(item)};
 
 	if(res.x > screen_area.w) {
 		return empty_rect;
