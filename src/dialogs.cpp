@@ -583,8 +583,8 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 }
 
 namespace {
-	static const SDL_Rect unit_preview_size = {-190,-370,190,370};
-	static const SDL_Rect weaponless_unit_preview_size = {-220,-140,220,140};
+	static const SDL_Rect unit_preview_size = {-200,-370,200,370};
+	static const SDL_Rect weaponless_unit_preview_size = {-190,-140,190,140};
 	static const int unit_preview_border = 10;
 }
 
@@ -717,12 +717,12 @@ void unit_preview_pane::draw()
 		details << string_table["xp"] << ": " << u.experience() << "/" << u.max_experience();
 	}
 	
-	details << "\n"
-			<< string_table["moves"] << ": " << u.movement_left() << "/"
-			<< u.total_movement()
-			<< "\n";
-
 	if(weapons_) {
+		details << "\n"
+				<< string_table["moves"] << ": " << u.movement_left() << "/"
+				<< u.total_movement()
+				<< "\n";
+
 		const std::vector<attack_type>& attacks = u.attacks();
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
