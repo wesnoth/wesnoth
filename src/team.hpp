@@ -125,7 +125,7 @@ public:
 	const std::string& name() const;
 	const std::string& save_id() const;
 
-	void set_objectives(const std::string& new_objectives);
+	void set_objectives(const std::string& new_objectives, bool silently=false);
 	void reset_objectives_changed();
 
 	const std::string& objectives() const;

@@ -526,10 +526,11 @@ const std::string& team::save_id() const
 	return info_.save_id;
 }
 
-void team::set_objectives(const std::string& new_objectives)
+void team::set_objectives(const std::string& new_objectives, bool silently)
 {
 	info_.objectives = new_objectives;
-	info_.objectives_changed = true;
+	if(!silently)
+		info_.objectives_changed = true;
 }
 
 void team::reset_objectives_changed() 

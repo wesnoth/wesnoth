@@ -531,10 +531,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "objectives") {
 		const std::string win_str = "@";
 		const std::string lose_str = "#";
-		const std::string none_str = _("None specified");
 
 		const std::string& summary = cfg["summary"];
 		const size_t side = lexical_cast_default<size_t>(cfg["side"], 0);
+		bool silent = cfg["silent"] == "yes";
 
 		if(side != 0 && (side - 1) >= teams->size()) {
 			ERR_NG << "Invalid side: " << cfg["side"] << " in objectives event\n";
@@ -574,16 +574,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		std::stringstream objs;
 		if(!summary.empty())
 			objs << "*" << summary << "\n";
-		objs << win_string << "\n";
-		if(win_objectives.empty()) {
-			objs << none_str << "\n";
-		} else {
+		if(!win_objectives.empty()) {
+			objs << win_string << "\n";
 			objs << win_objectives << "\n";
 		}
-		objs << lose_string << "\n";
-		if(lose_objectives.empty()) {
-			objs << none_str << "\n";
-		} else {
+		if(!lose_objectives.empty()) {
+			objs << lose_string << "\n";
 			objs << lose_objectives << "\n";
 		}
 
@@ -591,10 +587,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			for(std::vector<team>::iterator itor = teams->begin();
 					itor != teams->end(); ++itor) {
 
-				itor->set_objectives(objs.str());
+				itor->set_objectives(objs.str(), silent);
 			}
 		} else {
-			(*teams)[side - 1].set_objectives(objs.str());
+			(*teams)[side - 1].set_objectives(objs.str(), silent);
 		}
 	}
 
