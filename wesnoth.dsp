@@ -209,6 +209,10 @@ SOURCE=.\src\key.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\widgets\label.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\language.cpp
 # End Source File
 # Begin Source File
@@ -309,7 +313,15 @@ SOURCE=.\src\editor\scenario_editor.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\widgets\scrollarea.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\widgets\scrollbar.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\widgets\scrollpane.cpp
 # End Source File
 # Begin Source File
 
@@ -393,11 +405,23 @@ SOURCE=.\src\ai.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\ai2.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\ai_attack.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\ai_interface.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\ai_move.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\animated.hpp
 # End Source File
 # Begin Source File
 
@@ -466,6 +490,14 @@ SOURCE=.\src\game_events.hpp
 # Begin Source File
 
 SOURCE=.\src\gamestatus.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\gettext.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\global.hpp
 # End Source File
 # Begin Source File
 
