@@ -124,12 +124,14 @@ public:
 			if(reply.values["failed"] == "yes") {
 				got_side = false;
 				throw network::error("Side chosen is unavailable");
-			} else if(reply.values["side_secured"].empty() == false) {
+			} else if(reply["side_secured"].empty() == false) {
 				got_side = true;
-			} else if(reply.children["start_game"].empty() == false) {
+			} else if(reply.child("start_game")) {
 				std::cerr << "received start_game message\n";
 				//break out of dialog
 				return START_GAME;
+			} else if(reply.child("leave_game")) {
+				return GAME_CANCELLED;
 			} else {
 				sides_ = reply;
 			}
@@ -140,7 +142,7 @@ public:
 
 	bool got_side;
 
-	enum { START_GAME = 1 };
+	enum { START_GAME = 1, GAME_CANCELLED = 2 };
 
 private:
 	config& sides_;
@@ -282,19 +284,47 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
     
 		//send our choice of team to the server
 		if(!observer) {
+
 			config response;
 			std::stringstream stream;
 			stream << team_num;
 			response["side"] = stream.str();
 			response["description"] = preferences::login();
+
+			const std::vector<config*>& possible_sides =
+			                            cfg.children["multiplayer_side"];
+			if(possible_sides.empty()) {
+				std::cerr << "no multiplayer sides found\n";
+				return;
+			}
+
+			std::vector<std::string> choices;
+			for(std::vector<config*>::const_iterator side =
+			    possible_sides.begin(); side != possible_sides.end(); ++side) {
+				choices.push_back((**side)["name"]);
+			}
+
+			const size_t choice = size_t(gui::show_dialog(disp,NULL,"",
+			     string_table["client_choose_side"],gui::OK_ONLY,&choices));
+			assert(choice < possible_sides.size());
+
+			const config& chosen_side = *possible_sides[choice];
+			response["name"] = chosen_side["name"];
+			response["type"] = chosen_side["type"];
+			response["recruit"] = chosen_side["recruit"];
+
 			network::send_data(response);
 		}
     
 		wait_for_start waiter(sides);
 		const int dialog_res = gui::show_dialog(disp,NULL,"",
-		                        "Waiting for game to start...",
+		                        string_table["waiting_start"],
 		                        gui::CANCEL_ONLY,NULL,NULL,"",NULL,&waiter);
-		if(dialog_res != wait_for_start::START_GAME) {
+		if(dialog_res == wait_for_start::GAME_CANCELLED) {
+			gui::show_dialog(disp,NULL,"",string_table["game_cancelled"],
+			                 gui::OK_ONLY);
+			continue;
+		} else if(dialog_res != wait_for_start::START_GAME) {
 			continue;
 		}
     

@@ -141,6 +141,9 @@ int connection_acceptor::do_action()
 					//broadcast to everyone the new game status
 					pos->first->values["taken"] = "yes";
 					pos->first->values["description"] = cfg["description"];
+					pos->first->values["name"] = cfg["name"];
+					pos->first->values["type"] = cfg["type"];
+					pos->first->values["recruit"] = cfg["recruit"];
 					positions_[sides[side_taken]] = sock;
 					network::send_data(players_);
 
