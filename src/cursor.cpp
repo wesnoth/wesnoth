@@ -90,7 +90,6 @@ void clear_cache()
 	}
 
 	if(cursor_buf != NULL) {
-		SDL_FreeSurface(cursor_buf);
 		cursor_buf = NULL;
 	}
 }
@@ -158,7 +157,6 @@ void draw(surface screen)
 	}
 
 	if(have_focus == false) {
-		SDL_FreeSurface(cursor_buf);
 		cursor_buf = NULL;
 		return;
 	}
@@ -179,7 +177,6 @@ void draw(surface screen)
 	}
 
 	if(cursor_buf != NULL && (cursor_buf->w != surf->w || cursor_buf->h != surf->h)) {
-		SDL_FreeSurface(cursor_buf);
 		cursor_buf = NULL;
 	}
 

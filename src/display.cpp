@@ -1728,7 +1728,6 @@ void display::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Re
 surface display::get_minimap(int w, int h)
 {
 	if(minimap_ != NULL && (minimap_->w != w || minimap_->h != h)) {
-		SDL_FreeSurface(minimap_);
 		minimap_ = NULL;
 	}
 

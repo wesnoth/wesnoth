@@ -33,6 +33,8 @@ std::map<image::locator,bool> image_existance_map;
 
 std::map<surface, surface> reversed_images_;
 
+std::map<image::locator, image::locator> alternative_images_;
+
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
 std::string image_mask;
@@ -496,6 +498,15 @@ surface reverse_image(const surface& surf)
 	reversed_images_.insert(std::pair<surface,surface>(surf,rev));
 	// sdl_add_ref(rev);
 	return rev;
+}
+
+image::locator get_alternative(const image::locator &i_locator, const std::string &alt)
+{
+	const std::map<locator,locator>::iterator itor = alternative_images_.find(i_locator);
+
+	if(itor != alternative_images_.end())
+		return itor->second;
+
 }
 
 void register_image(const image::locator& id, const surface& surf)
