@@ -32,6 +32,7 @@ namespace {
 
 language_def known_languages[] = {
  	language_def("", N_("System default language")),
+	language_def("en_GB", "British English"),
 	language_def("bg_BG", "Български"),
 	language_def("es_ES", "Castellano"),
 	language_def("ca_ES", "Català"),
