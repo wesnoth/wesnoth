@@ -369,7 +369,19 @@ void wait::generate_menu()
 		} else {
 			side_name = sd["name"];
 		}
+		
 		std::string leader_type = sd["type"];
+
+		// Hack: if there is a unit which can recruit, use it as a
+		// leader. Necessary to display leader information when loading
+		// saves.
+		config::const_child_itors side_units = sd.child_range("unit");
+		for(;side_units.first != side_units.second; ++side_units.first) {
+			if((**side_units.first)["canrecruit"] == "1") {
+				leader_type = (**side_units.first)["type"];
+				break;
+			}
+		}
 
 		if(!sd["description"].empty())
 			playerlist.push_back(sd["description"]);

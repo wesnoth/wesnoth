@@ -74,7 +74,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 
 	//create the scenarios menu
 	maps_menu_.set_items(map_options_);
-	if (preferences::map() < map_options_.size())
+	if (size_t(preferences::map()) < map_options_.size())
 		maps_menu_.move_selection(preferences::map());
 	maps_menu_.set_numeric_keypress_selection(false);
 
@@ -123,7 +123,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	}
 	era_combo_.set_items(eras);
 
-	if (preferences::era() < eras.size())
+	if (size_t(preferences::era()) < eras.size())
 		era_combo_.set_selected(preferences::era());
 
 	string_map i18n_symbols;

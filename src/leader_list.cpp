@@ -95,7 +95,6 @@ void leader_list_manager::update_leader_list(int side_index)
 	}
 
 	leaders_.push_back("random");
-	// FIXME: Maybe this should not code into the code.
 	leader_strings.push_back(IMAGE_PREFIX + random_enemy_picture +
 	                         COLUMN_SEPARATOR + _("Random"));
 

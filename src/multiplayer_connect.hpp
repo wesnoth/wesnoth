@@ -121,10 +121,9 @@ public:
 		gui::slider slider_gold_;
 		gui::label label_gold_;
 
-		leader_list_manager llm_;
-
 		bool enabled_;
 		bool changed_;
+		leader_list_manager llm_;
 	};
 
 	friend class side;

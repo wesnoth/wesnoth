@@ -57,11 +57,9 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	combo_colour_(parent.disp(), parent.player_colours_),
 	slider_gold_(parent.video()),
 	label_gold_(parent.video(), "100", font::SIZE_NORMAL, font::GOOD_COLOUR),
-
-	llm_(parent.era_sides_, &parent.game_data_, &combo_leader_),
-
 	enabled_(!parent_->params_.saved_game),
-	changed_(false)
+	changed_(false),
+	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL)
 {
 	if(enabled_) {
 		controller_ = parent_->default_controller_;
@@ -110,6 +108,32 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		pseudo_factions.push_back(cfg_["name"]);
 		combo_faction_.set_items(pseudo_factions);
 		combo_faction_.set_selected(0);
+
+		// Hack: if there is a unit which can recruit, use it as a
+		// leader. Necessary to display leader information when loading
+		// saves.
+		config::const_child_itors side_units = cfg.child_range("unit");
+		std::string leader_type;
+		for(;side_units.first != side_units.second; ++side_units.first) {
+			if((**side_units.first)["canrecruit"] == "1") {
+				leader_type = (**side_units.first)["type"];
+				break;
+			}
+		}
+		std::vector<std::string> leader_name_pseudolist;
+		if(leader_type.empty()) {
+			leader_name_pseudolist.push_back("-");
+		} else {
+			game_data::unit_type_map::const_iterator leader_name = 
+				parent_->game_data_.unit_types.find(leader_type);
+			if(leader_name == parent_->game_data_.unit_types.end()) {
+				leader_name_pseudolist.push_back("-");
+			} else {
+				leader_name_pseudolist.push_back(leader_name->second.language_name());
+			}
+		}
+		combo_leader_.set_items(leader_name_pseudolist);
+		combo_leader_.set_selected(0);
 	}
 
 	update_ui();
@@ -125,10 +149,10 @@ connect::side::side(const side& a) :
 	orig_controller_(a.orig_controller_),
 	combo_faction_(a.combo_faction_), combo_leader_(a.combo_leader_),
 	combo_team_(a.combo_team_), combo_colour_(a.combo_colour_),
-	slider_gold_(a.slider_gold_), label_gold_(a.label_gold_), llm_(a.llm_),
-	enabled_(a.enabled_), changed_(a.changed_)
+	slider_gold_(a.slider_gold_), label_gold_(a.label_gold_), 
+	enabled_(a.enabled_), changed_(a.changed_), llm_(a.llm_)
 {
-	llm_.set_combo(&combo_leader_);
+	llm_.set_combo(enabled_ ? &combo_leader_ : NULL);
 }
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
