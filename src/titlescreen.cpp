@@ -91,7 +91,13 @@ const std::string& get_tip_of_day(int* ntip)
 	}
 
 	int ntips = 0;
+	/*
+	It is probably the only part of the code where it makes sense for string_table
+	to send back an empty string. So let's avoid this problem while the "UNTBL" hack
+	is in effect. -- silene
 	while(ntips < 1000 && string_table["tip_of_day" + str_cast(ntips+1)] != "") {
+	*/
+	while(ntips < 1000 && string_table["tip_of_day" + str_cast(ntips+1)].substr(0, 5) != "UNTLB") {
 		++ntips;
 	}
 
