@@ -645,7 +645,7 @@ void config::read(const std::string& data,
 
 						last_element.top()[name] = element;
 
-						if (element->values["textdomain"] != "") {
+						if(element->values.count("textdomain") != 0){
 							std::cerr << "out of " << element
 							     << ", restoring from textdomain "
 							     << current_textdomain;
