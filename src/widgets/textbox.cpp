@@ -36,12 +36,17 @@ textbox::textbox(display& d, int width, const std::string& text, bool editable, 
 	     scrollbar_(d, *this, this),
 	     scroll_bottom_(false), wrap_(false), line_height_(0), yscroll_(0)
 {
-	static const SDL_Rect area = d.screen_area();
+	// static const SDL_Rect area = d.screen_area();
 	// const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
-	const int height = font::get_max_height(font_size);
-	const SDL_Rect starting_rect = {0,0,width,height};
-	set_location(starting_rect);
+	set_height(font::get_max_height(font_size));
+	set_width(width);
 	update_text_cache(true);
+}
+
+void textbox::set_location(SDL_Rect const &rect)
+{
+	widget::set_location(rect);
+	register_rectangle(rect);
 }
 
 const std::string textbox::text() const
@@ -112,7 +117,7 @@ void textbox::draw_cursor(int pos, display &disp) const
 
 void textbox::draw()
 {
-	if (location().x == 0 || !dirty())
+	if (hidden() || !dirty())
 		return;
 
 	bg_restore();

@@ -46,6 +46,8 @@ public:
 	void set_wrap(bool val);
 
 	void draw();
+	virtual void set_location(SDL_Rect const &);
+	using widget::set_location;
 
 private:
 	size_t max_size_;
