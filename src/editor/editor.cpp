@@ -200,6 +200,37 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 			else {
 			}
 		}
+		// Mimic the game's behavior on middle click and mouse wheel
+		// movement. It would be nice to have had these in functions
+		// provided from the game, but I don't want to interfer too much
+		// with the game code and it's fairly simple stuff to rip.
+		if (button == SDL_BUTTON_MIDDLE) {
+			const SDL_Rect& rect = gui_.map_area();
+			const int centerx = (rect.x + rect.w) / 2;
+			const int centery = (rect.y + rect.h) / 2;
+			
+			const int xdisp = mousex - centerx;
+			const int ydisp = mousey - centery;
+			gui_.scroll(xdisp, ydisp);
+		}
+		if(button == SDL_BUTTON_WHEELUP ||
+		   button == SDL_BUTTON_WHEELDOWN) {
+			if (point_in_rect(mousex, mousey, gui_.map_area())) {
+				const int speed = preferences::scroll_speed() *
+					(button == SDL_BUTTON_WHEELUP ? -1 : 1);
+				
+				const int centerx = gui_.mapx() / 2;
+				const int centery = gui_.y() / 2;
+				
+				const int xdisp = abs(centerx - mousex);
+				const int ydisp = abs(centery - mousey);
+				
+				if(xdisp > ydisp)
+					gui_.scroll(speed,0);
+				else
+					gui_.scroll(0,speed);
+			}
+		}
 	}
 	if (event.type == SDL_MOUSEBUTTONUP) {
 		// If we miss the mouse up event we need to perform the actual
@@ -871,9 +902,14 @@ void map_editor::invalidate_all_and_adjacent(const std::set<gamemap::location> &
 
 void map_editor::right_button_down(const int /*mousex*/, const int /*mousey*/) {
 }
-void map_editor::middle_button_down(const int /*mousex*/, const int /*mousey*/) {
-}
 
+void map_editor::middle_button_down(const int mousex, const int mousey) {
+	const gamemap::location& minimap_loc = gui_.minimap_location_on(mousex,mousey);
+	const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
+	if (minimap_loc.valid()) {
+		gui_.scroll_to_tile(minimap_loc.x,minimap_loc.y,display::WARP,false);
+	}
+}
 
 bool map_editor::confirm_exit_and_save() {
 	if (gui::show_dialog(gui_, NULL, "Exit?",

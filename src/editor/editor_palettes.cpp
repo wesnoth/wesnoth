@@ -160,6 +160,20 @@ void terrain_palette::draw() {
 }
 
 void terrain_palette::handle_event(const SDL_Event& event) {
+	if (event.type == SDL_MOUSEMOTION) {
+		// If the mouse is inside the palette, give it focus.
+		if (point_in_rect(event.button.x, event.button.y, location())) {
+			if (!focus()) {
+				set_focus(true);
+			}
+		}
+		// If the mouse is outside, remove focus.
+		else {
+			if (focus()) {
+				set_focus(false);
+			}
+		}
+	}
 	if (!focus()) {
 		return;
 	}
@@ -277,6 +291,20 @@ void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 
 
 void brush_bar::handle_event(const SDL_Event& event) {
+	if (event.type == SDL_MOUSEMOTION) {
+		// If the mouse is inside the palette, give it focus.
+		if (point_in_rect(event.button.x, event.button.y, location())) {
+			if (!focus()) {
+				set_focus(true);
+			}
+		}
+		// If the mouse is outside, remove focus.
+		else {
+			if (focus()) {
+				set_focus(false);
+			}
+		}
+	}
 	if (!focus()) {
 		return;
 	}
