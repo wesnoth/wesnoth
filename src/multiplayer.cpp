@@ -11,7 +11,7 @@
    See the COPYING file for more details.
 */
 
-#include "scoped_resource.hpp"
+#include "cursor.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "language.hpp"
@@ -25,6 +25,7 @@
 #include "playlevel.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
+#include "scoped_resource.hpp"
 #include "show_dialog.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
@@ -317,6 +318,8 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 		}
 
 		if(generator.get() != NULL && (map_changed || regenerate_map.process(mousex,mousey,left_button))) {
+			const cursor::setter cursor_setter(cursor::WAIT);
+
 			//generate the random map
 			(*level_ptr)["map_data"] = generator.get()->create_map(std::vector<std::string>());
 			map_changed = true;

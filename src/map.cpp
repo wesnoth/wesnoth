@@ -121,6 +121,7 @@ gamemap::location gamemap::location::get_direction(
 
 gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 {
+	std::cerr << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
 	create_terrain_maps(terrains,terrainPrecedence_,letterToTerrain_,terrain_);
 
@@ -167,6 +168,8 @@ gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 			--n;
 		}
 	}
+
+	std::cerr << "loaded map: " << this->x() << "," << this->y() << "\n";
 }
 
 std::string gamemap::write() const

@@ -107,6 +107,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	//if the map should be randomly generated
 	if(map_data == "" && (*level)["map_generation"] != "") {
+		const cursor::setter cursor_setter(cursor::WAIT);
 		map_data = random_generate_map((*level)["map_generation"],level->child("generator"));
 
 		//since we've had to generate the map, make sure that when we save the game,
