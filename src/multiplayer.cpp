@@ -267,8 +267,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	int height=290;
 
 	int cur_selection = -1;
-	int cur_villagegold = 2;
-	int new_villagegold = 2;
+	int cur_villagegold = 1;
+	int new_villagegold = 1;
 	int cur_turns = 50;
 	int new_turns = 50;
 
@@ -327,10 +327,10 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	rect.h = 12;
 	//SDL_Surface* village_bg=get_surface_portion(disp.video().getSurface(), rect);
 	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-	                "Village Gold: 2",rect.x,rect.y);
+	                "Village Gold: 1",rect.x,rect.y);
 	rect.y = (disp.y()-height)/2+147;
 	rect.h = name_entry.width();
-	gui::slider villagegold_slider(disp,rect,0.1);
+	gui::slider villagegold_slider(disp,rect,0.0);
 
 	//FOG of war
 	gui::button fog_game(disp,"Fog Of War",gui::button::TYPE_CHECK);
@@ -440,7 +440,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 					//set the number of turns here
 					std::stringstream turns;
-					turns << new_turns;
+					turns << cur_turns;
 					(*level_ptr)["turns"] = turns.str();
 				}
 
@@ -460,6 +460,10 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				std::vector<config*>::iterator sd;
 				for(sd = sides.begin(); sd != sides.end(); ++sd) {
+
+					std::stringstream village_gold;
+					village_gold << cur_villagegold;
+					(**sd)["village_gold"] = village_gold.str();
 
 					if((**sd)["fog"].empty())
 						(**sd)["fog"] = fog_game.checked() ? "yes" : "no";

@@ -29,6 +29,12 @@ team::team_info::team_info(const config& cfg)
 	income = cfg["income"];
 	name = cfg["name"];
 
+	const std::string& village_income = cfg["village_gold"];
+	if(village_income.empty())
+		income_per_village = game_config::tower_income;
+	else
+		income_per_village = atoi(village_income.c_str());
+
 	const std::string& aggression_val = cfg["aggression"];
 	if(aggression_val.empty())
 		aggression = 0.5;
@@ -133,7 +139,7 @@ int team::gold() const
 int team::income() const
 {
 	return atoi(info_.income.c_str()) +
-	       towers_.size()*game_config::tower_income+game_config::base_income;
+	       towers_.size()*info_.income_per_village+game_config::base_income;
 }
 
 void team::new_turn()

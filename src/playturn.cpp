@@ -494,6 +494,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		const size_t moves = move_unit(&gui_,map_,units_,teams_,
 		                   current_route_.steps,&recorder,&undo_stack_);
 
+		gui_.invalidate_game_status();
+
 		selected_hex_ = gamemap::location();
 		gui_.set_route(NULL);
 		gui_.select_hex(gamemap::location());

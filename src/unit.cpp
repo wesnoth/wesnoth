@@ -741,7 +741,7 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 	res.upkeep = team_upkeep(units,side);
 	res.villages = tm.towers().size();
 	res.expenses = maximum<int>(0,res.upkeep - res.villages);
-	res.net_income = game_config::base_income + res.villages - res.expenses;
+	res.net_income = tm.income() - res.expenses;
 	res.gold = tm.gold();
 	return res;
 }
