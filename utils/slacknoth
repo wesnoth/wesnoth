@@ -16,7 +16,7 @@ echo "Configuring..."
 ./configure --prefix=/usr --enable-server --enable-tools --enable-kde --enable-gnome
 make clean
 echo "Compiling and gathering package contents..."
-make DESTDIR=/wesnothpack/wesnoth-$1 CXXFLAGS="-g -O2 -march=$2" install -i -k
+make DESTDIR=/wesnothpack/wesnoth-$1 CXXFLAGS="-g -O2 -fno-omit-frame-pointer -march=$2" install -i -k
 mkdir -p /wesnothpack/wesnoth-$1/usr/doc/wesnoth-$1
 cp -Rf changelog COPYING copyright INSTALL MANUAL* README /wesnothpack/wesnoth-$1/usr/doc/wesnoth-$1
 echo "Cleaning up source..."
