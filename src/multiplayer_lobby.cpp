@@ -1,5 +1,6 @@
 #include "events.hpp"
 #include "font.hpp"
+#include "image.hpp"
 #include "key.hpp"
 #include "language.hpp"
 #include "multiplayer_lobby.hpp"
@@ -23,8 +24,8 @@ RESULT enter(display& disp, config& game_data)
 
 	gui::textbox message_entry(disp,500);
 
-	SDL_Surface* const background = disp.getImage("misc/lobby.png",
-	                                              display::UNSCALED);
+	SDL_Surface* const background = image::get_image("misc/lobby.png",
+	                                                  image::UNSCALED);
 
 	update_whole_screen();
 

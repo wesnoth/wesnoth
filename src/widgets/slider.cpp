@@ -12,6 +12,7 @@
 */
 
 #include "slider.hpp"
+#include "../image.hpp"
 #include "../video.hpp"
 
 #include <algorithm>
@@ -20,8 +21,8 @@
 namespace gui {
 
 slider::slider(display& disp, SDL_Rect& rect, double value)
-: disp_(disp), image_(disp.getImage("buttons/slider.png",display::UNSCALED)),
- selectedImage_(disp.getImage("buttons/slider-selected.png",display::UNSCALED)),
+: disp_(disp), image_(image::get_image("buttons/slider.png",image::UNSCALED)),
+ selectedImage_(image::get_image("buttons/slider-selected.png",image::UNSCALED)),
  buffer_(NULL), area_(rect), value_(value), drawn_(false),
  highlight_(false), clicked_(true), dragging_(false)
 {
@@ -35,8 +36,8 @@ slider::slider(display& disp, SDL_Rect& rect, double value)
 
 int slider::height(display& disp)
 {
-	SDL_Surface* const image = disp.getImage("buttons/slider.png",
-	                                         display::UNSCALED);
+	SDL_Surface* const image = image::get_image("buttons/slider.png",
+	                                         image::UNSCALED);
 	if(image != NULL)
 		return image->h;
 	else

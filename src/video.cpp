@@ -14,6 +14,7 @@
 #include <iostream>
 #include <vector>
 
+#include "image.hpp"
 #include "mouse.hpp"
 #include "preferences.hpp"
 #include "video.hpp"
@@ -170,6 +171,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
 
 	if( frameBuffer != NULL ) {
+		image::set_pixel_format(frameBuffer->format);
 		return bits_per_pixel;
 	} else	return 0;
 }

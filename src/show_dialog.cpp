@@ -14,6 +14,7 @@
 #include "config.hpp"
 #include "events.hpp"
 #include "font.hpp"
+#include "image.hpp"
 #include "language.hpp"
 #include "playlevel.hpp"
 #include "show_dialog.hpp"
@@ -43,14 +44,14 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 {
 	draw_dialog_background(x,y,w,h,disp);
 
-	SDL_Surface* const top = disp.getImage("misc/menu-border-top.png",
-	                                       display::UNSCALED);
-	SDL_Surface* const bot = disp.getImage("misc/menu-border-bottom.png",
-	                                       display::UNSCALED);
-	SDL_Surface* const left = disp.getImage("misc/menu-border-left.png",
-	                                       display::UNSCALED);
-	SDL_Surface* const right = disp.getImage("misc/menu-border-right.png",
-	                                       display::UNSCALED);
+	SDL_Surface* const top = image::get_image("misc/menu-border-top.png",
+	                                          image::UNSCALED);
+	SDL_Surface* const bot = image::get_image("misc/menu-border-bottom.png",
+	                                          image::UNSCALED);
+	SDL_Surface* const left = image::get_image("misc/menu-border-left.png",
+	                                           image::UNSCALED);
+	SDL_Surface* const right = image::get_image("misc/menu-border-right.png",
+	                                            image::UNSCALED);
 
 	if(top == NULL || bot == NULL || left == NULL || right == NULL)
 		return;
@@ -81,14 +82,14 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 
 	update_rect(x-left->w,y-top->h,w+left->w+right->w,h+top->h+bot->h);
 
-	SDL_Surface* const top_left = disp.getImage("misc/menu-border-topleft.png",
-	                                            display::UNSCALED);
-	SDL_Surface* const bot_left = disp.getImage("misc/menu-border-botleft.png",
-	                                            display::UNSCALED);
-	SDL_Surface* const top_right=disp.getImage("misc/menu-border-topright.png",
-	                                            display::UNSCALED);
-	SDL_Surface* const bot_right=disp.getImage("misc/menu-border-botright.png",
-	                                            display::UNSCALED);
+	SDL_Surface* const top_left = image::get_image("misc/menu-border-topleft.png",
+	                                            image::UNSCALED);
+	SDL_Surface* const bot_left = image::get_image("misc/menu-border-botleft.png",
+	                                            image::UNSCALED);
+	SDL_Surface* const top_right = image::get_image("misc/menu-border-topright.png",
+	                                            image::UNSCALED);
+	SDL_Surface* const bot_right = image::get_image("misc/menu-border-botright.png",
+	                                            image::UNSCALED);
 	if(top_left == NULL || bot_left == NULL || top_right == NULL ||
 	   bot_right == NULL)
 		return;
@@ -103,7 +104,7 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp)
 {
 	static const std::string menu_background = "misc/menu-background.png";
 
-	SDL_Surface* const bg = disp.getImage(menu_background,display::UNSCALED);
+	SDL_Surface* const bg = image::get_image(menu_background,image::UNSCALED);
 
 	for(int i = 0; i < w; i += bg->w) {
 		for(int j = 0; j < h; j += bg->h) {
@@ -592,8 +593,8 @@ TITLE_RESULT show_title(display& screen)
 {
 	const events::resize_lock prevent_resizing;
 
-	SDL_Surface* const title_surface = screen.getImage("title.png",
-	                                                   display::UNSCALED);
+	SDL_Surface* const title_surface = image::get_image("title.png",
+	                                                   image::UNSCALED);
 
 	if(title_surface == NULL) {
 		std::cerr << "Could not find title image 'title.png'\n";

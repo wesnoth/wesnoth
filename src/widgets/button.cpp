@@ -10,9 +10,11 @@
 
    See the COPYING file for more details.
 */
+
 #include "button.hpp"
 #include "../game.hpp"
 #include "../font.hpp"
+#include "../image.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 
@@ -30,20 +32,19 @@ button::button(display& disp, const std::string& label, button::TYPE type,
                           state_(UNINIT), type_(type)
 {
 	SDL_Surface* button_image =
-	       disp.getImage("buttons/button.png",display::UNSCALED);
+	       image::get_image("buttons/button.png",image::UNSCALED);
 	SDL_Surface* pressed_image =
-	       disp.getImage("buttons/button-pressed.png", display::UNSCALED);
+	       image::get_image("buttons/button-pressed.png", image::UNSCALED);
 	SDL_Surface* active_image =
-	       disp.getImage("buttons/button-active.png", display::UNSCALED);
-
+	       image::get_image("buttons/button-active.png", image::UNSCALED);
 
 	if(!button_image_name.empty()) {
-		button_image = disp.getImage("buttons/" + button_image_name +
-		                             "-button.png", display::UNSCALED);
-		pressed_image = disp.getImage("buttons/" + button_image_name +
-		                              "-button-pressed.png",display::UNSCALED);
-		active_image = disp.getImage("buttons/" + button_image_name +
-		                              "-button-active.png",display::UNSCALED);
+		button_image = image::get_image("buttons/" + button_image_name +
+		                             "-button.png", image::UNSCALED);
+		pressed_image = image::get_image("buttons/" + button_image_name +
+		                              "-button-pressed.png",image::UNSCALED);
+		active_image = image::get_image("buttons/" + button_image_name +
+		                              "-button-active.png",image::UNSCALED);
 	}
 
 	if(pressed_image == NULL)

@@ -14,6 +14,7 @@
 #include "actions.hpp"
 #include "events.hpp"
 #include "hotkeys.hpp"
+#include "image.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "mouse.hpp"
@@ -828,7 +829,7 @@ void turn_info::terrain_table()
 
 	const std::vector<unit> units_list(items.size(),un->second);
 	SDL_Surface* const unit_image =
-      gui_.getImage(un->second.type().image_profile(),display::UNSCALED);
+      image::get_image(un->second.type().image_profile(),image::UNSCALED);
 	gui::show_dialog(gui_,unit_image,un->second.type().language_name(),
 					 string_table["terrain_info"],
 					 gui::MESSAGE,&items,&units_list);
@@ -870,7 +871,7 @@ void turn_info::attack_resistance()
 
 	const std::vector<unit> units_list(items.size(), un->second);
 	SDL_Surface* const unit_image =
-      gui_.getImage(un->second.type().image_profile(),display::UNSCALED);
+      image::get_image(un->second.type().image_profile(),image::UNSCALED);
 	gui::show_dialog(gui_,unit_image,
 	                 un->second.type().language_name(),
 					 string_table["unit_resistance_table"],
@@ -892,8 +893,8 @@ void turn_info::unit_description()
 	options.push_back(string_table["attack_resistance"]);
 	options.push_back(string_table["close_window"]);
 
-	SDL_Surface* const unit_image = gui_.getImage(
-	           un->second.type().image_profile(), display::UNSCALED);
+	SDL_Surface* const unit_image = image::get_image(
+	           un->second.type().image_profile(), image::UNSCALED);
 
 	const int res = gui::show_dialog(gui_,unit_image,
                                      un->second.type().language_name(),

@@ -10,7 +10,9 @@
 
    See the COPYING file for more details.
 */
+
 #include "game_events.hpp"
+#include "image.hpp"
 #include "language.hpp"
 #include "playlevel.hpp"
 #include "replay.hpp"
@@ -467,7 +469,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 
 		SDL_Surface* surface = NULL;
 		if(image.empty() == false) {
-			surface = screen->getImage(image,display::UNSCALED);
+			surface = image::get_image(image,image::UNSCALED);
 		}
 
 		gui::show_dialog(*screen,surface,caption,text);
@@ -547,7 +549,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 
 		SDL_Surface* surface = NULL;
 		if(image.empty() == false) {
-			surface = screen->getImage(image,display::UNSCALED);
+			surface = image::get_image(image,image::UNSCALED);
 		}
 
 		const std::string& lang_message = string_table[id];

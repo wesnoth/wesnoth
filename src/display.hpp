@@ -14,6 +14,7 @@
 #define DISPLAY_H_INCLUDED
 
 #include "gamestatus.hpp"
+#include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
@@ -83,9 +84,6 @@ public:
 
 	CVideo& video() { return screen_; }
 
-	enum IMAGE_TYPE { UNSCALED, SCALED, GREYED, BRIGHTENED };
-	SDL_Surface* getImage(const std::string& filename,IMAGE_TYPE type=SCALED);
-
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, SDL_Surface* surface);
 
@@ -153,12 +151,10 @@ private:
 
 	void bounds_check_position();
 
-	std::vector<SDL_Surface*> getAdjacentTerrain(int x, int y, IMAGE_TYPE type);
-	SDL_Surface* getTerrain(gamemap::TERRAIN, IMAGE_TYPE type,
+	std::vector<SDL_Surface*> getAdjacentTerrain(int x, int y, image::TYPE type);
+	SDL_Surface* getTerrain(gamemap::TERRAIN, image::TYPE type,
 	                        int x, int y, const std::string& dir="");
 
-	enum TINT { GREY_IMAGE, BRIGHTEN_IMAGE };
-	SDL_Surface* getImageTinted(const std::string& filename, TINT tint);
 	SDL_Surface* getMinimap(int w, int h);
 
 	void clearImageCache();
@@ -172,9 +168,6 @@ private:
 	gamemap::location mouseoverHex_;
 
 	unit_map& units_;
-
-	std::map<std::string,SDL_Surface*> images_, scaledImages_,
-	                                   greyedImages_, brightenedImages_;
 
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy

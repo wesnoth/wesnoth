@@ -146,6 +146,7 @@ int play_game(int argc, char** argv)
 	const font::manager font_manager;
 	const sound::manager sound_manager;
 	const preferences::manager prefs_manager;
+	const image::manager image_manager;
 
 	bool test_mode = false;
 

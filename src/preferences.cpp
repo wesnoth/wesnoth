@@ -102,8 +102,10 @@ std::pair<int,int> resolution()
 	   x->second.empty() == false && y->second.empty() == false) {
 		std::pair<int,int> res (maximum(atoi(x->second.c_str()),1024),
 		                        maximum(atoi(y->second.c_str()),768));
-		res.first &= ~1;
-		res.second &= ~1;
+
+		//make sure resolutions are always divisible by 4
+		res.first &= ~3;
+		res.second &= ~3;
 		return res;
 	} else {
 		return std::pair<int,int>(1024,768);

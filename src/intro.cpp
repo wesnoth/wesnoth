@@ -13,6 +13,7 @@
 
 #include "events.hpp"
 #include "font.hpp"
+#include "image.hpp"
 #include "intro.hpp"
 #include "key.hpp"
 #include "language.hpp"
@@ -47,7 +48,7 @@ void show_intro(display& screen, config& data)
 		const std::string& image_name = (*i)->values["image"];
 		SDL_Surface* image = NULL;
 		if(image_name.empty() == false) {
-			image = screen.getImage(image_name,display::UNSCALED);
+			image = image::get_image(image_name,image::UNSCALED);
 		}
 
 		int textx = 200;
@@ -154,11 +155,11 @@ void show_map_scene(display& screen, config& data)
 
 	const std::string& image_file = cfg.values["image"];
 
-	SDL_Surface* const image = screen.getImage(image_file,display::UNSCALED);
+	SDL_Surface* const image = image::get_image(image_file,image::UNSCALED);
 	SDL_Surface* const dot_image =
-	             screen.getImage("misc/dot.png",display::UNSCALED);
+	             image::get_image("misc/dot.png",image::UNSCALED);
 	SDL_Surface* const cross_image =
-	             screen.getImage("misc/cross.png",display::UNSCALED);
+	             image::get_image("misc/cross.png",image::UNSCALED);
 	if(image == NULL || dot_image == NULL || cross_image == NULL) {
 		return;
 	}
