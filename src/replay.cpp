@@ -376,6 +376,9 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 	log_scope("do replay");
 	replay& replayer = (obj != NULL) ? *obj : recorder;
 
+	clear_shroud(disp,map,gameinfo,units,teams,team_num-1);
+	disp.recalculate_minimap();
+
 	const set_random_generator generator_setter(&replayer);
 
 	update_locker lock_update(disp,replayer.skipping());
