@@ -74,7 +74,7 @@ int process_queue(void* data)
 
 			if(itor == bufs.end()) {
 				if(managed == false) {
-					LOG_NW << "worker thread " << reinterpret_cast<long>(data) << " exiting...\n";
+					LOG_NW << "worker thread exiting...\n";
 					return 0;
 				}
 
