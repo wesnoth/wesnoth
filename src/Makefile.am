@@ -150,6 +150,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai.cpp \
 			 ai_attack.cpp \
 			 ai_move.cpp \
+		     builder.cpp \
 		 	 cavegen.cpp \
 			 config.cpp \
 			 cursor.cpp \
@@ -201,6 +202,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai.hpp \
 			 ai_attack.hpp \
 			 ai_move.hpp \
+		     builder.hpp \
 		 	 cavegen.hpp \
 			 config.hpp \
 			 cursor.hpp \
