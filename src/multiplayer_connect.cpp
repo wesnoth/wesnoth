@@ -276,6 +276,7 @@ config connect::side::get_config() const
 			res["type"] = leader_;
 		}
 		res["team"] = lexical_cast<std::string>(team_);
+		res["team_name"] = lexical_cast<std::string>(team_ + 1);
 		res["colour"] = lexical_cast<std::string>(colour_);
 		res["gold"] = lexical_cast<std::string>(gold_);
 
