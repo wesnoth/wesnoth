@@ -43,7 +43,7 @@ namespace map_editor {
 bool confirm_modification_disposal(display& disp) {
 	const int res = gui::show_dialog(disp, NULL, "",
 					 _("Your modifications to the map will be lost.  Continue?"),
-									 gui::OK_CANCEL);
+					 gui::OK_CANCEL);
 	return res == 0;
 }
 
@@ -71,8 +71,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
 					      _("Create New Map"),0,0);
 
-	const std::string& width_label = _("Width") + ":";
-	const std::string& height_label = _("Height") + ":";
+	const std::string& width_label = _("Width:");
+	const std::string& height_label = _("Height:");
 
 	SDL_Rect width_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
 										  width_label, 0, 0);
@@ -382,8 +382,8 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
 					      _("Resize Map"),0,0);
 
-	const std::string& width_label = _("Width") + ":";
-	const std::string& height_label = _("Height") + ":";
+	const std::string& width_label = _("Width:");
+	const std::string& height_label = _("Height:");
 
 	SDL_Rect width_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
 										  width_label, 0, 0);
