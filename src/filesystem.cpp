@@ -501,7 +501,7 @@ std::istream *istream_file(std::string const &fname)
 	}
 #else
 	if (!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
-		std::ifstream *s = new std::ifstream((game_config::path + "/" + fname).c_str());
+		std::ifstream *s = new std::ifstream((game_config::path + "/" + fname).c_str(),std::ios_base::binary);
 		if (s->is_open())
 			return s;
 		delete s;
@@ -510,7 +510,7 @@ std::istream *istream_file(std::string const &fname)
 
 	// FIXME: why do we rely on this even with relative paths ?
 	// still useful with zipios, for things like cache and prefs
-	return new std::ifstream(fname.c_str());
+	return new std::ifstream(fname.c_str(),std::ios_base::binary);
 }
 
 std::ostream *ostream_file(std::string const &fname)
@@ -605,7 +605,7 @@ bool file_exists(const std::string& name)
 	if (the_collection->getEntry(name))
 		return true;
 #endif
-	std::ifstream file(name.c_str());
+	std::ifstream file(name.c_str(),std::ios_base::binary);
 	if (file.rdstate() != 0)
 	        return false;
 	file.close();
