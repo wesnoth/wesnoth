@@ -1535,7 +1535,7 @@ void turn_info::status_table()
 	if(fog)
 		items.push_back("???\n");
 
-	gui::show_dialog(gui_,NULL,"","",gui::OK_ONLY,&items);
+	gui::show_dialog(gui_,NULL,"","",gui::CLOSE_ONLY,&items);
 }
 
 void turn_info::recruit()

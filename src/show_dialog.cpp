@@ -387,6 +387,12 @@ int show_dialog(display& disp, SDL_Surface* image,
 			button_list = thebuttons;
 			break;
 		}
+
+		case CLOSE_ONLY: {
+			static const std::string thebuttons[] = { "close_button", "" };
+			button_list = thebuttons;
+			break;
+		}
 	}
 
 	if(button_list != NULL) {
@@ -596,7 +602,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 
 		if((!key_down && key[SDLK_RETURN] || menu_.double_clicked()) &&
-		   (type == YES_NO || type == OK_CANCEL || type == OK_ONLY)) {
+		   (type == YES_NO || type == OK_CANCEL || type == OK_ONLY || type == CLOSE_ONLY)) {
 
 			if(text_widget_text != NULL && use_textbox)
 				*text_widget_text = text_widget.text();
