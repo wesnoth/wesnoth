@@ -6,6 +6,9 @@ CVS HEAD:
    * Isle of Anduin
    * Elves Besieged
  * 'first strike' ability given to Spearman, Halbardier and Pikeman
+ * 'teleport' ability removed from 'Arch Mage' and 'Great Mage'
+ * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
+ * Yeti's race changed to monster
  * new units
    * Cavalier
    * Drakonian Burner
@@ -46,7 +49,7 @@ CVS HEAD:
    * Princess: reduced melee damage
    * Royal Guard: reduced melee damage
    * Shock Trooper: reduced melee damage
-   * Spearman: reduced melee damage, reduced ranged attack damage
+   * Spearman: reduced melee damage, reduced ranged damage
    * Wose: increased cost
  * multiplayer improvements:
    * balanced 'King of the Hill' map
@@ -72,14 +75,12 @@ CVS HEAD:
    * added new AI parameters
    * various AI improvements
  * added WML feature to append an element to another using [+element] syntax
- * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
  * fixed multiline text box not wrapping lines at word boundaries
  * fixed loading/saving of multiplayer games that have a double-quote (") in the chat text.
  * fixed spaces following non-ASCII characters disappearing in intro (#9163)
  * made intro.cpp use the unicode routines in language.cpp to split UTF-8 sequences in character
  * improved terrain transition code
  * relocated weapon icons to their own hierarchy: images/attacks/
- * yeti's race changed to monster
  * increased the horizontal padding of button widgets when having a label that is wider than the minimum width
  * added a trigger to the test map, when activated Orc leader can recruit.
 
