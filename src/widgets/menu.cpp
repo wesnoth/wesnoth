@@ -334,8 +334,18 @@ SDL_Rect menu::get_item_rect(int item) const
 
 	static const SDL_Rect area = {0,0,display_->x(),display_->y()};
 
+	//use the first field that is non-blank
+	int n;
+	for(n = 0; n != items_[item].size(); ++n) {
+		if(items_[item][n] != "")
+			break;
+	}
+
+	if(n == items_[item].size())
+		n = 0;
+
 	SDL_Rect res = font::draw_text(NULL,area,menu_font_size,
-		                   font::NORMAL_COLOUR,items_[item][0],x_,y);
+		                   font::NORMAL_COLOUR,items_[item][n],x_,y);
 
 	res.w = width();
 
