@@ -1865,7 +1865,8 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 		// Always override the color if we have a cross reference.
 		const SDL_Color color = ref_dst == "" ? text_color : font::YELLOW_COLOUR;
 		surface surf(font::get_rendered_text(first_part, font_size, color, state));
-		add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
+		if (!surf.null())
+			add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
 		if (parts.size() > 1) {
 			// Parts remain, remove the first part from the string and
 			// add the remaining parts.
