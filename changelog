@@ -1,8 +1,8 @@
 CVS HEAD:
- * fix to bug which caused unnecessary waits during unit movement; should make unit movement much smoother.
  * user interface tweaks
  * updated translations:
   * catalan
+  * french
   * german
   * latin
   * russian
@@ -21,17 +21,23 @@ CVS HEAD:
  * scenario revisions for 'The Eastern Invasion' campaign:
   * Escape Tunnel
  * scenario revisions for 'The Rise of Wesnoth' campaign:
-  * Reduced the AI's gold in 'A Harrowing Escape'
-  * Allowed the AI to initially recruit scouts in several scenarios
-  * Altered / fixed the recruitment pattern in several scenarios
-  * Tweaks to 'The Plan' & 'Epilouge' (both non-playable)
+  * reduced the AI's gold in 'A Harrowing Escape'
+  * allowed the AI to initially recruit scouts in several scenarios
+  * altered / fixed the recruitment pattern in several scenarios
+  * tweaks to 'The Plan' & 'Epilogue' (both non-playable)
+ * really removed ZoC from lv0 units this time
  * fixed editor to work with zipios support enabled
  * fixed zipios support to honor path to data given on command-line
  * fixed zipios support crashes when running from CVS
  * new cmd line option --fps to display frames/second refresh in game
  * modified how damage is calculated (RATE)
- * fixed bugs when replacing player with observer in mp
- * fixed several pathfinding bugs
+ * fixed bug which caused unnecessary waits during unit movement;
+   should make unit movement much smoother
+ * fixed poison not being cured when the unit had too much HP (#11565)
+ * fixed bugs when replacing player with observer in mp (#11231)
+ * fixed several pathfinding bugs (#11769)
+ * fixed cave random map generation, especially Scepter of Fire (#11748)
+ * fixed dialogs shown at end of MP game (#11830)
  * added several fortunes
  * code cleanups and bug fixes
 
