@@ -9,6 +9,8 @@ CVS HEAD:
  * AI improvements
    * added recruitment_ignore_bad_movement option
    * added recruitment_ignore_bad_combat option
+ * multiplayer improvements
+   * added scrolling and wrapping support for chat in lobby
  * editor improvements:
    * added revert from disk functionality
    * selection of terrain is kep through undo and redo operations
@@ -19,6 +21,9 @@ CVS HEAD:
  * fixed terrain type and position problems with 800x600 resolution
  * fixed game creator not getting ally messages
  * fixed font redrawing for the font used in the slovak and polish translations
+ * fixed typos in 'Shan Taum the Smug' that caused scenario to have only two turns
+ * made input of search strings and messages use a textbox that overlays the map, which allows these operations to be performed asynchronously
+ * removed old castle images
 
 Version 0.7.6:
  * added and improved unit images, leadership and healing images
