@@ -25,10 +25,14 @@ namespace gui {
 
 const int font_size = 16;
 
-textbox::textbox(display& d, int width, const std::string& text)
+textbox::textbox(display& d, int width, const std::string& text, bool editable)
            : widget(d), text_(string_to_wstring(text)), text_pos_(0),
              cursor_(text_.size()), selstart_(-1), selend_(-1), grabmouse_(false),
-	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL)
+	         editable_(editable), show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
+			 scrollbar_(d,this),
+             uparrow_(d,"",gui::button::TYPE_PRESS,"uparrow-button"),
+             downarrow_(d,"",gui::button::TYPE_PRESS,"downarrow-button"),
+			 scroll_bottom_(false), wrap_(false)
 {
 	static const SDL_Rect area = d.screen_area();
 	const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
@@ -63,7 +67,7 @@ void textbox::clear()
 
 void textbox::draw_cursor(int pos, display &disp) const
 {
-	if(show_cursor_) {
+	if(show_cursor_ && editable_) {
 		SDL_Rect rect = {location().x + pos, location().y, 1, location().h };
 		SDL_Surface* const frame_buffer = disp.video().getSurface();
 		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
@@ -72,64 +76,165 @@ void textbox::draw_cursor(int pos, display &disp) const
 
 void textbox::draw()
 {
-	if(location().x == 0 || !dirty())
+	if(location().x == 0 || !dirty()) {
+		uparrow_.draw();
+		downarrow_.draw();
 		return;
+	}
 
 	bg_restore();
 
-	gui::draw_solid_tinted_rectangle(location().x,location().y,location().w,location().h,0,0,0,
-	                          focus() ? 0.2 : 0.4, disp().video().getSurface());
+	const bool has_scrollbar = show_scrollbar();
+	SDL_Rect loc = location();
+	if(has_scrollbar && loc.w > scrollbar_.get_max_width()) {
+		scrollbar_.set_dirty();
+		loc.w -= scrollbar_.get_max_width();
+	}
 
+	gui::draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
+	                          focus() ? 0.2 : 0.4, disp().video().getSurface());
 	
 	SDL_Rect src;
 
 	// Fills the selected area
 	if(is_selection()) {
-		int x = minimum<int>(char_pos_[selstart_], char_pos_[selend_]) - text_pos_ + location().x;
+		int x = minimum<int>(char_pos_[selstart_], char_pos_[selend_]) - text_pos_ + loc.x;
 		int w = abs(char_pos_[selstart_] - char_pos_[selend_]);
 
-		if(!((x > location().x + location().w) || ((x + w) < location().x))) {
-			src.x = maximum<int>(x, location().x);
-			src.y = location().y;
-			src.w = src.x + w > location().x + location().w ? location().x + location().w - src.x : w;
-			src.h = location().h;
+		if(!((x > loc.x + loc.w) || ((x + w) < loc.x))) {
+			src.x = maximum<int>(x, loc.x);
+			src.y = loc.y;
+			src.w = src.x + w > loc.x + loc.w ? loc.x + loc.w - src.x : w;
+			src.h = loc.h;
 
-			Uint16 colour = Uint16(SDL_MapRGB(disp().video().getSurface()->format,
-							  font::YELLOW_COLOUR.r, font::YELLOW_COLOUR.g, font::YELLOW_COLOUR.b));
-			SDL_FillRect(disp().video().getSurface(), &src, colour);
+			Uint16 colour = Uint16(SDL_MapRGB(disp().video().getSurface()->format, 160, 0, 0));
+			fill_rect_alpha(src,colour,140,disp().video().getSurface());
 		}
 	}
-			
-	src.y = 0;
-	src.w = text_size_.w;
-	src.h = text_size_.h;
-	src.x = text_pos_;
-	SDL_Rect dest = disp().screen_area();
-	dest.x = location().x;
-	dest.y = location().y;
-	SDL_BlitSurface(text_image_,&src,disp().video().getSurface(),&dest);
+
+	if(text_image_ != NULL) {
+		src.y = 0;
+		src.w = minimum<size_t>(loc.w,text_image_->w);
+		src.h = minimum<size_t>(loc.h,text_image_->h);
+		src.x = text_pos_;
+		SDL_Rect dest = disp().screen_area();
+		dest.x = loc.x;
+		dest.y = loc.y;
+
+		scrollbar_.enable(has_scrollbar);
+
+		if(has_scrollbar && text_image_->h > 0 && loc.h > uparrow_.height() + downarrow_.height()) {
+			SDL_Rect scroll_loc = {loc.x + loc.w,loc.y + uparrow_.height(),
+			                       scrollbar_.get_max_width(),loc.h - uparrow_.height() - downarrow_.height()};
+			scrollbar_.set_location(scroll_loc);
+
+			uparrow_.set_location(loc.x + loc.w,loc.y);
+			downarrow_.set_location(loc.x + loc.w,loc.y + loc.h - downarrow_.height());
+
+			const size_t max_height = scrollbar_.location().h;
+			const size_t proportion = (loc.h*100)/text_image_->h;
+			const size_t grip_height = (max_height*proportion)/100;
+			scrollbar_.set_grip_height(grip_height);
+
+			const size_t max_y = text_image_->h - loc.h;
+
+			const size_t max_grip_y = scrollbar_.location().h - grip_height;
+
+			if(scroll_bottom_) {
+				scrollbar_.set_grip_position(max_grip_y);
+			}
+
+			if(max_grip_y > 0) {
+				const size_t grip_y = scrollbar_.get_grip_position();
+
+				uparrow_.hide(grip_y == 0);
+				downarrow_.hide(grip_y == max_grip_y);
+
+				src.y = (max_y*(grip_y*100)/max_grip_y)/100;
+				std::cerr << "set src.y to " << src.y << "/" << max_grip_y << "\n";
+			}
+
+			uparrow_.set_dirty(true);
+			downarrow_.set_dirty(true);
+			uparrow_.draw();
+			downarrow_.draw();
+
+			scrollbar_.redraw();
+		} else {
+			uparrow_.hide();
+			downarrow_.hide();
+		}
+
+		scroll_bottom_ = false;
+
+		SDL_BlitSurface(text_image_,&src,disp().video().getSurface(),&dest);
+	}
 
 	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), disp());
 
 	set_dirty(false);
-	update_rect(location());
+	update_rect(loc);
 }
 
 void textbox::process()
 {
-	if(focus()) {
-		const int ticks = SDL_GetTicks();
-		if(ticks > show_cursor_at_+500) {
-			show_cursor_ = !show_cursor_;
-			show_cursor_at_ = ticks;
+	if(show_scrollbar()) {
+		if(uparrow_.pressed()) {
+			scrollbar_.set_grip_position(scrollbar_.get_grip_position() - scrollbar_.get_grip_height()/5);
+			set_dirty(true);
+		}
+
+		if(downarrow_.pressed()) {
+			scrollbar_.set_grip_position(scrollbar_.get_grip_position() + scrollbar_.get_grip_height()/5);
+			set_dirty(true);
+		}
+	}
+
+	if(editable_) {
+		if(focus()) {
+			const int ticks = SDL_GetTicks();
+			if(ticks > show_cursor_at_+500) {
+				show_cursor_ = !show_cursor_;
+				show_cursor_at_ = ticks;
+				set_dirty();
+			}
+		} else if(show_cursor_ == true) {
+			show_cursor_ = false;
 			set_dirty();
 		}
-	} else if(show_cursor_ == true) {
-		show_cursor_ = false;
-		set_dirty();
 	}
 	
 	draw();
+}
+
+void textbox::set_editable(bool value)
+{
+	editable_ = value;
+}
+
+bool textbox::editable() const
+{
+	return editable_;
+}
+
+void textbox::scroll_to_bottom()
+{
+	scroll_bottom_ = true;
+	set_dirty(true);
+}
+
+void textbox::set_wrap(bool val)
+{
+	if(wrap_ != val) {
+		wrap_ = val;
+		update_text_cache(true);
+		set_dirty(true);
+	}
+}
+
+void textbox::scroll(int pos)
+{
+	set_dirty(true);
 }
 
 void textbox::update_text_cache(bool changed)
@@ -143,19 +248,35 @@ void textbox::update_text_cache(bool changed)
 		// some more complex scripts (that is, RTL languages). This part of the work should
 		// actually be done by the font-rendering system.
 		std::string visible_string;
+
+		std::wstring wrapped_text;
 		
 		for(std::wstring::const_iterator itor = text_.begin(); itor != text_.end(); itor++) {
 			std::wstring s;
 			push_back(s,*itor);
 			visible_string.append(wstring_to_string(s));
-			const int w = font::line_width(visible_string, font_size);		
-		
-			char_pos_.push_back(w);
+
+			if(char(*itor) == '\n') {
+				visible_string = "";
+			}
+
+			int w = font::line_width(visible_string, font_size);
+
+			if(wrap_ && w >= location().w - scrollbar_.get_max_width()) {
+				push_back(wrapped_text,wchar_t('\n'));
+				char_pos_.push_back(0);
+				visible_string = wstring_to_string(s);
+				w = font::line_width(visible_string, font_size);	
+			} else {
+				char_pos_.push_back(w);
+			}
+
+			push_back(wrapped_text,*itor);
 		}
 
 		text_size_.x = 0;
 		text_size_.y = 0;
-		const std::string s = wstring_to_string(text_);
+		const std::string s = wstring_to_string(wrapped_text);
 		text_size_.w = font::line_width(s, font_size);
 		text_size_.h = location().h;
 
@@ -192,8 +313,9 @@ void textbox::handle_event(const SDL_Event& event)
 {
 	bool changed = false;
 	
-	if(location().x == 0)
+	if(location().x == 0 || editable_ == false) {
 		return;
+	}
 
 	int mousex, mousey;
 	const Uint8 mousebuttons = SDL_GetMouseState(&mousex,&mousey);
@@ -277,11 +399,11 @@ void textbox::handle_event(const SDL_Event& event)
 		selend_ = cursor_;
 	} 
 	
-	if(c == SDLK_BACKSPACE && cursor_ > 0) {
+	if(c == SDLK_BACKSPACE) {
 		changed = true;
 		if(is_selection()) {
 			erase_selection();
-		} else {
+		} else if(cursor_ > 0) {
 			--cursor_;
 			text_.erase(text_.begin()+cursor_);
 		}
@@ -328,4 +450,9 @@ void textbox::handle_event(const SDL_Event& event)
 	draw();
 }
 
+bool textbox::show_scrollbar() const
+{
+	return text_image_ != NULL && text_image_->h > location().h;
 }
+
+} //end namespace gui

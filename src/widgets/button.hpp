@@ -47,6 +47,7 @@ public:
 	void set_label(const std::string& val);
 
 	bool process(int mousex, int mousey, bool button);
+	bool pressed();
 
 	void enable(bool new_val);
 	bool enabled() const;

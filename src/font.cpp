@@ -190,7 +190,7 @@ const SDL_Color& get_side_colour(int side)
 }
 
 namespace {
-SDL_Surface* render_text(TTF_Font* font,const std::string& str,
+SDL_Surface* render_text_internal(TTF_Font* font,const std::string& str,
 						 const SDL_Color& colour, int style)
 {
 	const font_style_setter style_setter(font,style);
@@ -206,6 +206,47 @@ SDL_Surface* render_text(TTF_Font* font,const std::string& str,
 	}
 }
 
+SDL_Surface* render_text(TTF_Font* font,const std::string& text, const SDL_Color& colour, int style)
+{
+	const std::vector<std::string> lines = config::split(text,'\n');
+	std::vector<shared_sdl_surface> surfaces;
+	size_t width = 0, height = 0;
+	for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
+		if(*ln != "" && font != NULL) {
+			shared_sdl_surface res(render_text_internal(font,*ln,colour,0));
+
+			if(res != NULL) {
+				surfaces.push_back(res);
+				width = maximum<size_t>(res->w,width);
+				height += res->h;
+			}
+		}
+	}
+
+	if(surfaces.empty()) {
+		return NULL;
+	} else if(surfaces.size() == 1) {
+		sdl_add_ref(surfaces.front());
+		return surfaces.front();
+	} else {
+
+		shared_sdl_surface res(create_compatible_surface(surfaces.front(),width,height));
+		if(res == NULL) {
+			return NULL;
+		}
+
+		size_t ypos = 0;
+		for(std::vector<shared_sdl_surface>::const_iterator i = surfaces.begin(); i != surfaces.end(); ++i) {
+			SDL_SetAlpha(*i,0,0);
+			SDL_Rect dstrect = {0,ypos,(*i)->w,(*i)->h};
+			SDL_BlitSurface(*i,NULL,res,&dstrect);
+			ypos += (*i)->h;
+		}
+
+		sdl_add_ref(res);
+		return res;
+	}
+}
 
 //function which will parse the markup tags at the front of a string
 std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,

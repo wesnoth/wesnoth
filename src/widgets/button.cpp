@@ -152,7 +152,7 @@ void button::draw()
 
 	scoped_sdl_surface greyed_image(NULL);
 	if(!enabled_) {
-		greyed_image.assign(adjust_surface_colour(image,-50,-50,-50));
+		greyed_image.assign(greyscale_image(image));
 		image = greyed_image;
 	}
 
@@ -190,6 +190,8 @@ void button::set_label(const std::string& val)
 	textRect_ = display_->screen_area();
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,label_,0,0);
+
+	set_dirty(true);
 }
 
 void button::mouse_motion(const SDL_MouseMotionEvent& event)
@@ -261,8 +263,11 @@ void button::handle_event(const SDL_Event& event)
 
 bool button::process(int mousex, int mousey, bool button)
 {
-	draw();
+	return pressed();
+}
 
+bool button::pressed()
+{
 	const bool res = pressed_;
 	pressed_ = false;
 	return res;

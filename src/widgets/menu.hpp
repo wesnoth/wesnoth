@@ -15,7 +15,7 @@
 
 namespace gui {
 
-class menu : public events::handler
+class menu : public events::handler, public scrollable
 {
 public:
 	menu(display& disp, const std::vector<std::string>& items,
@@ -44,6 +44,8 @@ public:
 	bool double_clicked() const;
 
 	void set_numeric_keypress_selection(bool value);
+
+	void scroll(int pos);
 
 private:
 	size_t max_items_onscreen() const;

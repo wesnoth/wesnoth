@@ -24,7 +24,7 @@ menu::menu(display& disp, const std::vector<std::string>& items,
           height_(-1), width_(-1), first_item_on_screen_(0),
 		  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow-button"),
           downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow-button"),
-		  scrollbar_(disp),  scrollbar_height_(0),
+		  scrollbar_(disp,this),  scrollbar_height_(0),
 		  double_clicked_(false), num_selects_(true)
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();
@@ -83,7 +83,7 @@ int menu::width() const
 		const std::vector<int>& widths = column_widths();
 		width_ = std::accumulate(widths.begin(),widths.end(),0);
 		if(show_scrollbar()) {
-				 width_ += scrollbar_.get_max_width();
+			width_ += scrollbar_.get_max_width();
 		}
 	}
 
@@ -130,6 +130,10 @@ void menu::set_width(int w)
 
 void menu::redraw()
 {
+	if(x_ == 0 && y_ == 0) {
+		return;
+	}
+
 	draw();
 	uparrow_.draw();
 	downarrow_.draw();
@@ -417,6 +421,10 @@ void menu::set_numeric_keypress_selection(bool value)
 	num_selects_ = value;
 }
 
+void menu::scroll(int pos)
+{
+}
+
 namespace {
 	const char ImagePrefix = '&';
 
@@ -514,6 +522,10 @@ void menu::draw_item(int item)
 
 void menu::draw()
 {
+	if(x_ == 0 && y_ == 0 || drawn_) {
+		return;
+	}
+
 	drawn_ = true;
 
 	// update enabled/disabled status for up/down buttons

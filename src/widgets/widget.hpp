@@ -31,6 +31,9 @@ public:
 
 	void bg_backup();
 
+	void set_dirty(bool dirty=true);
+	const bool dirty() const;
+
 protected:
 	widget(const widget &o);
 	widget(display& disp);
@@ -38,8 +41,6 @@ protected:
 	virtual ~widget() { restorer_.cancel(); }
 
 	void bg_restore() const;
-	void set_dirty(bool dirty=true);
-	const bool dirty() const;
 
 	display& disp() const { return *disp_; }
 

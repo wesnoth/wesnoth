@@ -18,21 +18,30 @@
 #include "../key.hpp"
 #include "../sdl_utils.hpp"
 
+#include "button.hpp"
+#include "scrollbar.hpp"
 #include "widget.hpp"
 
 #include "SDL.h"
 
 namespace gui {
 
-class textbox : public widget
+class textbox : public widget, public scrollable
 {
 public:
-	textbox(display& d, int width, const std::string& text="");
+	textbox(display& d, int width, const std::string& text="", bool editable=true);
 
 	const std::string text() const;
 	void set_text(std::string text);
 	void clear();
 	void process();
+
+	void set_editable(bool value);
+	bool editable() const;
+
+	void scroll_to_bottom();
+
+	void set_wrap(bool val);
 
 protected:
 	using widget::bg_restore;
@@ -40,6 +49,8 @@ protected:
 	using widget::dirty;
 
 private:
+	void scroll(int pos);
+
 	std::wstring text_;
 	
 	// mutable unsigned int firstOnScreen_;
@@ -52,6 +63,8 @@ private:
 	int cursor_pos_;
 	std::vector<int> char_pos_;
 
+	bool editable_;
+
 	bool show_cursor_;
 
 	//records the time the cursor was shown at last
@@ -60,6 +73,14 @@ private:
 	int show_cursor_at_;
 	shared_sdl_surface text_image_;
 	SDL_Rect text_size_;
+
+	//variables used for multi-line textboxes which support scrolling
+	scrollbar scrollbar_;
+	button uparrow_, downarrow_;
+
+	bool scroll_bottom_;
+
+	bool wrap_;
 
 	void handle_event(const SDL_Event& event);
 
@@ -71,7 +92,9 @@ private:
 
 	//make it so that only one textbox object can be receiving
 	//events at a time.
-	bool requires_event_focus() const { return true; }
+	bool requires_event_focus() const { return editable_; }
+
+	bool show_scrollbar() const;
 };
 
 }

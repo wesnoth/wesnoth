@@ -61,20 +61,17 @@ void default_map_generator::user_config(display& disp)
 	const int width = 600;
 	const int height = 400;
 	const int xpos = disp.x()/2 - width/2;
-	const int ypos = disp.y()/2 - height/2;
+	int ypos = disp.y()/2 - height/2;
 
-	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
-	surface_restorer restorer(&disp.video(),dialog_rect);
-
-	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
-
-	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
-	                                            string_table["map_generator"],0,0);
+	surface_restorer restorer;
 
 	gui::button close_button(disp,string_table["close_window"]);
+	std::vector<gui::button*> buttons(1,&close_button);
 
-	close_button.set_location(xpos + width/2 - close_button.width()/2,
-	                          ypos + height - close_button.height()-14);
+	gui::draw_dialog(xpos,ypos,width,height,disp,string_table["map_generator"],NULL,&buttons,&restorer);
+
+	SDL_Rect dialog_rect = {xpos,ypos,width,height};
+	surface_restorer dialog_restorer(&disp.video(),dialog_rect);
 
 	const std::string& players_label = string_table["num_players"] + ":";
 	const std::string& width_label = string_table["map_width"] + ":";
@@ -106,7 +103,7 @@ void default_map_generator::user_config(display& disp)
 	landform_rect.x = text_right - landform_rect.w;
 	
 	const int vertical_margin = 20;
-	players_rect.y = ypos + title_rect.h + vertical_margin*2;
+	players_rect.y = ypos + vertical_margin*2;
 	width_rect.y = players_rect.y + players_rect.h + vertical_margin;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 	iterations_rect.y = height_rect.y + height_rect.h + vertical_margin;
@@ -185,10 +182,6 @@ void default_map_generator::user_config(display& disp)
 
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-		if(close_button.process(mousex,mousey,left_button)) {
-			break;
-		}
-
 		nplayers_ = players_slider.value();
 		width_ = width_slider.value();
 		height_ = height_slider.value();
@@ -197,7 +190,11 @@ void default_map_generator::user_config(display& disp)
 		nvillages_ = villages_slider.value();
 		island_size_ = landform_slider.value();
 
-		gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+		dialog_restorer.restore();
+		close_button.set_dirty(true);
+		if(close_button.process(mousex,mousey,left_button)) {
+			break;
+		}
 
 		players_slider.process();
 		width_slider.process();
@@ -212,9 +209,6 @@ void default_map_generator::user_config(display& disp)
 
 		events::raise_process_event();
 		events::raise_draw_event();
-
-		title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-                       string_table["map_generator"],xpos+(width-title_rect.w)/2,ypos+10);
 
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,players_label,players_rect.x,players_rect.y);
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
@@ -248,8 +242,6 @@ void default_map_generator::user_config(display& disp)
 		landform_str << string_table[island_size_ == 0 ? "inland" : (island_size_ < max_coastal ? "coastal" : "island")];
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,landform_str.str(),
 			            slider_right+horz_margin,landform_rect.y);
-
-		close_button.draw();
 
 		update_rect(xpos,ypos,width,height);
 

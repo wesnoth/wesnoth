@@ -28,7 +28,7 @@ class handler
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
 	virtual void process() {}
-	virtual void draw() const {}
+	virtual void draw() {}
 
 	virtual bool requires_event_focus() const { return false; }
 

@@ -16,7 +16,6 @@ widget::widget(const widget &o) :
 widget::widget(display& disp) :
 	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false)
 {
-	bg_backup();
 }
 
 widget::widget(display& disp, SDL_Rect& rect) :
@@ -28,41 +27,53 @@ widget::widget(display& disp, SDL_Rect& rect) :
 
 void widget::set_location(const SDL_Rect& rect)
 {
+	if(rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h) {
+		return;
+	}
+
 	bg_restore();
 	rect_ = rect;
 	dirty_ = true;
 	bg_backup();
-	draw();
 }
 
 void widget::set_location(int x, int y)
 {
+	if(x == rect_.x && y == rect_.y) {
+		return;
+	}
+
 	bg_restore();
 	SDL_Rect rect = {x,y,location().w,location().h};
 	rect_ = rect;
 	dirty_ = true;
 	bg_backup();
-	draw();
 }
 
 void widget::set_width(int w)
 {
+	if(w == rect_.w) {
+		return;
+	}
+
 	bg_restore();
 	SDL_Rect rect = {location().x,location().y,w,location().h};
 	rect_ = rect;
 	dirty_ = true;
 	bg_backup();
-	draw();
 }
 
 void widget::set_height(int h)
 {
+	if(h == rect_.h) {
+		return;
+	}
+
 	bg_restore();
 	SDL_Rect rect = {location().x,location().y,location().w,h};
 	rect_ = rect;
 	dirty_ = true;
 	bg_backup();
-	draw();
 }
 
 size_t widget::width() const
@@ -88,7 +99,6 @@ void widget::set_focus(bool focus)
 
 	focus_ = focus;
 	dirty_ = true;
-	draw();
 }
 
 bool widget::focus() const
@@ -136,10 +146,8 @@ void widget::bg_restore() const
 
 void widget::handle_event(const SDL_Event& event)
 {
-	if (!focus_)
+	if(!focus_)
 		return;
-
-	draw();
 }
 
 }

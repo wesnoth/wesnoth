@@ -356,6 +356,11 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 		disp.update_display();
 	}
 
+	if(damage > 0 && def->second.gets_hit(damage)) {
+		dead = true;
+		damage = 0;
+	}
+
 	def->second.set_defending(false);
 
 	if(leader_loc.valid()){
@@ -586,6 +591,11 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	}
 
 	disp.hide_unit(gamemap::location());
+
+	if(damage > 0 && def->second.gets_hit(damage)) {
+		dead = true;
+		damage = 0;
+	}
 
 	def->second.set_defending(false);
 

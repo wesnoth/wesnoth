@@ -70,16 +70,17 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 
 		// Display Chats
 		std::stringstream text;
-		for(size_t n = messages.size() > 6 ? messages.size()-6 : 0;
+		for(size_t n = messages.size() > 60 ? messages.size()-60 : 0;
 		    n != messages.size(); ++n) {
 			text << messages[n] << "\n";
 		}
 
 		const SDL_Rect chat_area = { xscale(disp,19), yscale(disp,574), xscale(disp,832), yscale(disp,130) };
 
-		font::draw_text(&disp,chat_area,12,font::NORMAL_COLOUR,
-		                text.str(),xscale(disp,19),yscale(disp,574));
-		update_rect(chat_area);
+		gui::textbox chat_textbox(disp,chat_area.w,text.str(),false);
+		chat_textbox.set_location(chat_area);
+		chat_textbox.set_wrap(true);
+		chat_textbox.scroll_to_bottom();
 
 		std::vector<std::string> options;
 
@@ -155,6 +156,12 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		gui::button join_game(disp,string_table["join_game"]);
 		gui::button new_game(disp,string_table["create_new_game"]);
 		gui::button quit_game(disp,string_table["quit_button"]);
+
+		if(dlg != NULL) {
+			join_game.hide();
+			new_game.hide();
+			quit_game.hide();
+		}
 		
 		std::vector<std::string> users;
 		for(config::const_child_itors i = game_data.child_range("user"); i.first != i.second; ++i.first) {
@@ -279,6 +286,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 
 			events::raise_process_event();
 			events::raise_draw_event();
+
+			chat_textbox.process();
 
 			user_selection = users_menu.selection();
 			game_selection = games_menu.selection();

@@ -135,9 +135,7 @@ TITLE_RESULT show_title(display& screen)
 	std::string style = "mainmenu";
 	draw_dialog_frame(menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2,screen,&style);
 
-	for(b = 0; b != nbuttons; ++b) {
-		buttons.back().draw();
-	}
+	events::raise_draw_event();
 
 	std::cerr << "drew buttons dialog\n";
 
@@ -159,6 +157,9 @@ TITLE_RESULT show_title(display& screen)
 				return TITLE_RESULT(b);
 			}
 		}
+
+		events::raise_process_event();
+		events::raise_draw_event();
 
 		screen.video().flip();
 

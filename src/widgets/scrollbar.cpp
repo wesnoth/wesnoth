@@ -36,8 +36,8 @@ namespace {
 
 namespace gui {
 
-scrollbar::scrollbar(display& d)
-	: widget(d), highlight_(false), clicked_(false), dragging_(false),
+scrollbar::scrollbar(display& d, scrollable* callback)
+	: widget(d), callback_(callback), highlight_(false), clicked_(false), dragging_(false),
 	  grip_position_(0), grip_height_(0), enabled_(false), width_(0),
 	  minimum_grip_height_(0), groove_click_code_(0)
 {
@@ -86,7 +86,11 @@ bool scrollbar::set_grip_height(int h)
 		return false;
 	}
 
-	grip_height_ = h;
+	if(h != grip_height_) {
+		grip_height_ = h;
+		set_dirty(true);
+	}
+
 	return true;
 }
 
@@ -155,8 +159,10 @@ void scrollbar::draw()
 		return;
 	}
 
-	if (grip_height_ >= location().h)
+	if(grip_height_ >= location().h) {
+		std::cerr << "abort draw scrollbar: grip too large\n";
 		return;
+	}
 
 	SDL_Surface* const screen = disp().video().getSurface();
 
@@ -188,9 +194,11 @@ bool scrollbar::set_grip_position(int pos)
 	if (pos >= location().h - grip_height_) 
 		pos = location().h - grip_height_;
 
-	grip_position_ = pos;
+	if(pos != grip_position_) {
+		grip_position_ = pos;
+		set_dirty();
+	}
 
-	set_dirty();
 	return true;
 }
 
@@ -214,51 +222,48 @@ void scrollbar::process()
 	const bool button = mouse_flags & SDL_BUTTON_LMASK;
 	static int mousey_on_grip = 0;
 
-	if(dirty()) {
-		SDL_Rect rect = {location().x, location().y, width_, location().h};
-		set_location(rect);
-	}
-
 	const SDL_Rect& hit_area = scroll_grip_area();
 	const bool barx= mousex > hit_area.x && mousex <= hit_area.x+hit_area.w;
 	const bool gripy = mousey > hit_area.y && mousey <= hit_area.y+hit_area.h;
 	const bool bary = mousey > location().y && 
 					  mousey <= location().y+location().h;
 
-
 	const bool on = barx && gripy;
 
 	bool start_dragging = (button && !clicked_ && on);
 
-	if (start_dragging) {
+	if(start_dragging) {
 		dragging_ = true;
 		mousey_on_grip = mousey - grip_position_;
 	}
 
-	if (!button) 
+	if(!button) {
 		dragging_ = false;
+	}
 	
-	if (highlight_ != on) {
+	if(highlight_ != on) {
 		highlight_ = on;
 		set_dirty(true);
 	}
 
 	groove_click_code_ = 0;
 
-	if (dragging_) {
+	if(dragging_) {
 		// mouse over grip & button down
 		int new_position = grip_position_;
 		highlight_ = true;
 		new_position = mousey - mousey_on_grip;
 		
-		if (new_position < 0)
+		if(new_position < 0)
 			new_position = 0;
-		if (new_position > location().h - grip_height_)
+		if(new_position > location().h - grip_height_)
 			new_position = location().h - grip_height_;
 
-		if (new_position != grip_position_) {
+		if(new_position != grip_position_) {
 			grip_position_ = new_position;
 			set_dirty(true);
+
+			callback_->scroll(grip_position_);
 		}
 	}
 	else if (button && barx && bary && (!clicked_)) {

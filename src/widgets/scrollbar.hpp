@@ -19,7 +19,13 @@
 #include "widget.hpp"
 #include <vector>
 
-namespace gui{
+namespace gui {
+
+class scrollable
+{
+public:
+	virtual void scroll(int pos) = 0;
+};
 
 /// class scrollbar implements a rather stupid scrollbar widget. It requires
 /// some hand-holding from the widget using it. Many of these functions will
@@ -31,7 +37,7 @@ public:
 	/// Create a scrollbar
 	/// \param d The display object
 	///
-	scrollbar(display& d);
+	scrollbar(display& d, scrollable* callback);
 
 	/// \return the current width of the scrollbar (if it is disabled,
 	///			that value is zero
@@ -95,14 +101,11 @@ public:
 	/// \return -1 if click was above, 1 if click was below, 0 otherwise
 	int  groove_clicked() const;
 
-protected:
-	using widget::bg_restore;
-	using widget::set_dirty;
-	using widget::dirty;
-
 private:
 	SDL_Rect scroll_grip_area() const;
 	void draw();
+
+	scrollable* callback_;
 
 	int minimum_grip_height_;
 	int width_;

@@ -221,7 +221,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 		if(side["name"].empty())
 			side["name"] = (*possible_sides.front())["name"];
 
-		if(side["type"].empty())
+		if(side["type"].empty() && save_ == false)
 			side["type"] = (*possible_sides.front())["type"];
 
 		if(side["recruit"].empty())
