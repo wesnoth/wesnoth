@@ -86,6 +86,8 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("updateshroud",HOTKEY_UPDATE_SHROUD));
 		m.insert(val("continue",HOTKEY_CONTINUE_MOVE));
 		m.insert(val("search",HOTKEY_SEARCH));
+		m.insert(val("speaktoally",HOTKEY_SPEAK_ALLY));
+		m.insert(val("speaktoall",HOTKEY_SPEAK_ALL));
 	}
 	
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
@@ -373,6 +375,18 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_SPEAK:
 			if(executor)
 				executor->speak();
+			break;
+		case HOTKEY_SPEAK_ALLY:
+			if(executor) {
+				preferences::set_message_private(true);
+				executor->speak();
+			}
+			break;
+		case HOTKEY_SPEAK_ALL:
+			if(executor) {
+				preferences::set_message_private(false);
+				executor->speak();
+			}
 			break;
 		case HOTKEY_CREATE_UNIT:
 			if(executor)

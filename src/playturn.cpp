@@ -956,6 +956,8 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return enemies_visible_;
 
 	case hotkey::HOTKEY_SPEAK:
+	case hotkey::HOTKEY_SPEAK_ALLY:
+	case hotkey::HOTKEY_SPEAK_ALL:
 		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
