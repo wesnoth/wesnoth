@@ -635,20 +635,26 @@ fi
 
 
 #######################################################################
-# Symlinks that allow message catalogs to be used from build tree     #
+# Tune gettext stuff for our needs                                    #
 #######################################################################
 
 rm -rf translations
 case $srcdir in
-/*) podir=$srcdir/po ;;
-*)  podir=../../../$srcdir/po ;;
+/*) topdir=$srcdir ;;
+*)  topdir=`pwd`/$srcdir ;;
 esac
 for domain in `grep ^SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
 do
+    # Symlinks to the single copy of Makefile.in.in
+    echo "creating po/$domain/Makefile.in.in"
+    rm -f po/$domain/Makefile.in.in
+    ln -s $topdir/po/Makefile.in.in po/$domain/Makefile.in.in
+
+    # Symlinks that allow message catalogs to be used from build tree
     for lang in `cat $srcdir/po/$domain/LINGUAS`
     do
         mkdir -p translations/$lang/LC_MESSAGES
-	ln -s $podir/$domain/$lang.gmo translations/$lang/LC_MESSAGES/$domain.mo
+	ln -s $topdir/po/$domain/$lang.gmo translations/$lang/LC_MESSAGES/$domain.mo
     done
 done
 

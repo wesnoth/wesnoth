@@ -4,3 +4,8 @@ update-po:
 	@for dir in $(SUBDIRS); do \
 		( cd $$dir && make $@ || exit $? ); \
 	done
+
+clean-local:
+	@for dir in $(SUBDIRS); do \
+		rm -f $$dir/Makefile.in.in ; \
+	done
