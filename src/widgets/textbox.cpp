@@ -23,11 +23,11 @@ namespace gui {
 
 const int font_size = 16;
 
-textbox::textbox(display& disp, int width, const std::string& text)
-           : widget(), disp_(disp), text_(text), firstOnScreen_(0),
-             cursor_(text.size()), buffer_(NULL), focus_(true)
+textbox::textbox(display& d, int width, const std::string& text)
+           : widget(d), text_(text), firstOnScreen_(0),
+             cursor_(text.size())
 {
-	static const SDL_Rect area = disp.screen_area();
+	static const SDL_Rect area = d.screen_area();
 	const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
 	const SDL_Rect starting_rect = {0,0,width,height};
 	set_location(starting_rect);
@@ -51,36 +51,33 @@ void textbox::clear()
 	firstOnScreen_ = 0;
 }
 
-void textbox::draw_cursor(int pos) const
+void textbox::draw_cursor(int pos, display &disp)
 {
 	const bool show_cursor = (SDL_GetTicks()%1000) > 500;
 
 	if(show_cursor) {
 		SDL_Rect rect = {location().x + pos, location().y, 1, location().h };
-		SDL_Surface* const frame_buffer = disp_.video().getSurface();
+		SDL_Surface* const frame_buffer = disp.video().getSurface();
 		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
 	}
 }
 
-void textbox::draw() const
+void textbox::draw(display &disp)
 {
 	if(location().x == 0)
 		return;
 
-	if(buffer_.get() != NULL) {
-		SDL_Rect rect = location();
-		SDL_BlitSurface(buffer_,NULL,disp_.video().getSurface(),&rect);
-	}
+	bg_restore();
 
 	gui::draw_solid_tinted_rectangle(location().x,location().y,location().w,location().h,0,0,0,
-	                          focus_ ? 0.2 : 0.4, disp_.video().getSurface());
+	                          focus() ? 0.2 : 0.4, disp.video().getSurface());
 
 	if(cursor_ == 0)
-		draw_cursor(0);
+		draw_cursor(0, disp);
 
 	int pos = 1;
 	std::string str(1,'x');
-	const SDL_Rect clip = disp_.screen_area();
+	const SDL_Rect clip = disp.screen_area();
 
 	//draw the text
 	for(size_t i = firstOnScreen_; i < text_.size(); ++i) {
@@ -96,13 +93,13 @@ void textbox::draw() const
 			break;
 		}
 
-		font::draw_text(&disp_,clip,font_size,font::NORMAL_COLOUR,str,
+		font::draw_text(&disp,clip,font_size,font::NORMAL_COLOUR,str,
 		                location().x + pos, location().y, NULL, false, font::NO_MARKUP);
 
 		pos += area.w;
 
 		if(cursor_ == i+1)
-			draw_cursor(pos-1);
+			draw_cursor(pos-1, disp);
 	}
 
 	update_rect(location());
@@ -116,7 +113,7 @@ void textbox::handle_event(const SDL_Event& event)
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
 
-	if(event.type != SDL_KEYDOWN || !focus_)
+	if(event.type != SDL_KEYDOWN || !focus())
 		return;
 
 	const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
@@ -155,25 +152,8 @@ void textbox::handle_event(const SDL_Event& event)
 		text_.insert(text_.begin()+cursor_,character);
 		++cursor_;
 	}
-}
 
-void textbox::set_position(int x, int y)
-{
-	SDL_Rect rect = {x,y,location().w,location().h};
-	set_location(rect);
-	buffer_.assign(get_surface_portion(disp_.video().getSurface(),rect));
-}
-
-void textbox::set_width(int w)
-{
-	SDL_Rect rect = location();
-	rect.w = w;
-	set_location(rect);
-}
-
-void textbox::set_focus(bool new_focus)
-{
-	focus_ = new_focus;
+	update();
 }
 
 }

@@ -28,34 +28,27 @@ namespace gui {
 class textbox : public widget
 {
 public:
-	textbox(display& disp, int width, const std::string& text="");
+	textbox(display& d, int width, const std::string& text="");
 
 	const std::string& text() const;
 	void set_text(std::string text);
 	void clear();
 
-	void set_position(int x, int y);
-	void set_width(int w);
-
 	void set_focus(bool new_focus);
 
-	using widget::location;
+protected:
+	using widget::bg_restore;
+	using widget::update;
 
 private:
-	display& disp_;
 	std::string text_;
 	mutable unsigned int firstOnScreen_;
 	unsigned int cursor_;
 
-	scoped_sdl_surface buffer_;
-
-	bool focus_;
-
 	void handle_event(const SDL_Event& event);
 
-	void draw() const;
-
-	void draw_cursor(int pos) const;
+	void draw(display &disp);
+	void draw_cursor(int pos, display &disp);
 };
 
 }
