@@ -67,17 +67,24 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 	undo_list undo_stack, redo_stack;
 
-	//execute gotos
+	//execute gotos - first collect gotos in a list
+	std::vector<gamemap::location> gotos;
+
 	for(unit_map::iterator ui = units.begin(); ui != units.end(); ++ui) {
 		if(ui->second.get_goto() == ui->first)
 			ui->second.set_goto(gamemap::location());
 
-		if(ui->second.side() != team_num ||
-		   map.on_board(ui->second.get_goto()) == false)
-			continue;
+		if(ui->second.side() == team_num && map.on_board(ui->second.get_goto()))
+			gotos.push_back(ui->first);
+	}
 
-		log_scope("doing goto...");
-		
+	for(std::vector<gamemap::location>::const_iterator g = gotos.begin();
+	    g != gotos.end(); ++g) {
+
+		const unit_map::iterator ui = units.find(*g);
+
+		assert(ui != units.end());
+
 		unit u = ui->second;
 		const shortest_path_calculator calc(u,current_team,units,map);
 		const bool can_teleport = u.type().teleports() &&
