@@ -339,6 +339,10 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 	}
 
+	else if(cmd == "music") {
+		sound::play_music(cfg["name"]);
+	}
+
 	else if(cmd == "sound") {
 		sound::play_sound(cfg["name"]);
 	}
