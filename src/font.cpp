@@ -17,6 +17,7 @@
 #include "font.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "tooltips.hpp"
 
 #include <cstdio>
@@ -209,6 +210,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		SDL_Rect src = dest;
 		src.x = 0;
 		src.y = 0;
+		log_scope("blit text");
 		SDL_BlitSurface(surface,&src,gui->video().getSurface(),&dest);
 	}
 
@@ -225,6 +227,8 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    int x, int y, SDL_Surface* bg, bool use_tooltips,
                    MARKUP use_markup)
 {
+	log_scope("draw_text");
+	std::cerr << "draw text: '" << txt << "'\n";
 	//make sure there's always at least a space, so we can ensure
 	//that we can return a rectangle for height
 	static const std::string blank_text(" ");

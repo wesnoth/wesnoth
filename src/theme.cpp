@@ -240,8 +240,10 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		}
 	}
 
-	if(current == resolutions.end())
+	if(current == resolutions.end()) {
+		std::cerr << "ERROR: No valid resolution found\n";
 		return false;
+	}
 
 	panels_.clear();
 	labels_.clear();

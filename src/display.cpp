@@ -511,6 +511,10 @@ void display::draw(bool update,bool force)
 			b->draw();
 		}
 
+		//invalidate the reports so they are redrawn
+		std::cerr << "invalidating reports...\n";
+		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
+		invalidateGameStatus_ = true;
 		panelsDrawn_ = true;
 	}
 
@@ -723,8 +727,10 @@ void display::draw_report(reports::TYPE report_num)
 		const SDL_Rect& new_rect = item->location(screen_area());
 
 		//report and its location is unchanged since last time. Do nothing.
-		if(rect == new_rect && reports_[report_num] == report)
+		if(rect == new_rect && reports_[report_num] == report) {
+			std::cerr << "report unchanged\n";
 			return;
+		}
 
 		reports_[report_num] = report;
 
