@@ -277,7 +277,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "unstone") {
 		const config* const filter = cfg.child("filter");
 		for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
-			if(i->second.stone() && (filter == NULL || i->second.matches_filter(*filter))) {
+			if(i->second.stone() && (filter == NULL || game_events::unit_matches_filter(i,*filter))) {
 				i->second.remove_flag("stone");
 			}
 		}
@@ -635,7 +635,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			//iterate over the units, and try to find one that matches
 			for(ui = state_of_game->available_units.begin();
 			    ui != state_of_game->available_units.end(); ++ui) {
-				if(ui->matches_filter(item)) {
+				if(game_events::unit_matches_filter(*ui,item)) {
 					ui->assign_role(cfg["role"]);
 					break;
 				}
@@ -736,7 +736,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "recall") {
 		std::vector<unit>& avail = state_of_game->available_units;
 		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
-			if(u->matches_filter(cfg)) {
+			if(game_events::unit_matches_filter(*u,cfg)) {
 				gamemap::location loc(cfg);
 				recruit_unit(*game_map,1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
 				avail.erase(u);
@@ -781,7 +781,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		std::string command_type = "then";
 
-		if(u != units->end() && (filter == NULL || u->second.matches_filter(*filter))) {
+		if(u != units->end() && (filter == NULL || game_events::unit_matches_filter(u,*filter))) {
 			const std::string& lang = string_table[id];
 			if(!lang.empty())
 				text = lang;
@@ -997,7 +997,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		if(cfg["x"].empty() && cfg["y"].empty()) {
 			std::vector<unit>& avail_units = state_of_game->available_units;
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				if(j->matches_filter(cfg)) {
+				if(game_events::unit_matches_filter(*j,cfg)) {
 					j = avail_units.erase(j);
 				} else {
 					++j;
@@ -1045,7 +1045,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		if(filter["x"].empty() && filter["y"].empty()) {
 			std::vector<unit>& avail_units = state_of_game->available_units;
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				if(j->matches_filter(filter) == false) {
+				if(game_events::unit_matches_filter(*j,filter) == false) {
 					++j;
 					continue;
 				}
@@ -1266,14 +1266,6 @@ bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
 
 bool filter_loc(const gamemap::location& loc, const config& cfg)
 {
-	//iterate over any [not] tags, and if any match, then the filter does not match
-	const config::child_list& negatives = cfg.get_children("not");
-	for(config::child_list::const_iterator i = negatives.begin(); i != negatives.end(); ++i) {
-		if(((**i)["x"] != "" || (**i)["y"] != "") && filter_loc(loc,**i)) {
-			return false;
-		}
-	}
-
 	const std::string& xloc = cfg["x"];
 	const std::string& yloc = cfg["y"];
 
@@ -1383,9 +1375,34 @@ void get_variable_internal(const std::string& key, config& cfg,
 
 namespace game_events {
 
+bool unit_matches_filter(const unit& u, const config& filter)
+{
+	const bool res = u.matches_filter(filter);
+	if(res == true) {
+		const config::child_list& nots = filter.get_children("not");
+		for(config::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
+			if(unit_matches_filter(u,**i)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
 bool unit_matches_filter(unit_map::const_iterator itor, const config& filter)
 {
-	return filter_loc(itor->first,filter) && itor->second.matches_filter(filter);
+	const bool res = filter_loc(itor->first,filter) && itor->second.matches_filter(filter);
+	if(res == true) {
+		const config::child_list& nots = filter.get_children("not");
+		for(config::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
+			if(unit_matches_filter(itor,**i)) {
+				return false;
+			}
+		}
+	}
+
+	return res;
 }
 
 std::string& get_variable(const std::string& key)
