@@ -33,6 +33,7 @@
 #include "unit.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "widgets/menu.hpp"
 
 #include <cmath>
 #include <cstdlib>
@@ -486,7 +487,7 @@ gui::dialog_button_action::RESULT attack_calculations_displayer::button_pressed(
 		std::vector<std::string> calcs;
 
 		std::stringstream str;
-		str << _("Attacker") << ", , ,";
+		str << _("Attacker") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR;
 		if(stats.defend_calculations.empty() == false) {
 			str << _("Defender");
 		}
@@ -498,15 +499,15 @@ gui::dialog_button_action::RESULT attack_calculations_displayer::button_pressed(
 			if(i < stats.attack_calculations.size() && stats.attack_calculations.empty() == false) {
 				str << stats.attack_calculations[i];
 			} else {
-				str << ", , ";
+				str << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR << ' ';
 			}
 
-			str << ",";
+			str << COLUMN_SEPARATOR;
 
 			if(i < stats.defend_calculations.size() && stats.defend_calculations.empty() == false) {
 				str << stats.defend_calculations[i];
 			} else {
-				str << " , , ";
+				str << ' ' << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR << ' ';
 			}
 
 			calcs.push_back(str.str());
@@ -603,23 +604,25 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			std::string special_pad = (attack_special.empty() == false || defend_special.empty() == false) ? " " : "";
 
 			std::stringstream att;
-			att << "&" << stats.back().attack_icon << "," << font::BOLD_TEXT << attack_name
+			att << IMAGE_PREFIX << stats.back().attack_icon << COLUMN_SEPARATOR
+			    << font::BOLD_TEXT << attack_name
 			    << "\n" << stats.back().damage_defender_takes << "-"
 				<< stats.back().nattacks << " " << range << " ("
 				<< stats.back().chance_to_hit_defender << "%)\n"
 				<< attack_special << special_pad;
 
-			att << "," << _("vs") << ",";
+			att << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR;
 			att << font::BOLD_TEXT << defend_name << "\n" << stats.back().damage_attacker_takes << "-"
 				<< stats.back().ndefends << " " << range << " ("
 				<< stats.back().chance_to_hit_attacker
-			    << "%)\n" << defend_special << special_pad << ",&" << stats.back().defend_icon;
+			    << "%)\n" << defend_special << special_pad << COLUMN_SEPARATOR
+			    << IMAGE_PREFIX << stats.back().defend_icon;
 
 			items.push_back(att.str());
 		}
 		
 		if (best_weapon_index >= 0) {
-			items[best_weapon_index] = "*" + items[best_weapon_index];
+			items[best_weapon_index] = DEFAULT_ITEM + items[best_weapon_index];
 		}
 			
 		//make it so that when we attack an enemy, the attacking unit
@@ -1528,12 +1531,15 @@ void turn_info::status_table()
 {
 	std::vector<std::string> items;
 	std::stringstream heading;
-	heading << _("Leader") << ", ," << _("Gold") << ","
-			<< _("Villages") << "," << _("Units") << ","
-			<< _("Upkeep") << "," << _("Income");
+	heading << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
+	        << _("Gold") << COLUMN_SEPARATOR
+	        << _("Villages") << COLUMN_SEPARATOR
+	        << _("Units") << COLUMN_SEPARATOR
+	        << _("Upkeep") << COLUMN_SEPARATOR
+	        << _("Income");
 
 	if(game_config::debug)
-		heading << "," << _("Gold");
+		heading << COLUMN_SEPARATOR << _("Gold");
 
 	items.push_back(heading.str());
 
@@ -1561,30 +1567,32 @@ void turn_info::status_table()
 
 		const unit_map::const_iterator leader = team_leader(n+1,units_);
 		if(leader != units_.end()) {
-			str << "&" << leader->second.type().image() << "," << char(n+1) << leader->second.description() << ",";
+			str << IMAGE_PREFIX << leader->second.type().image() << COLUMN_SEPARATOR
+			    << char(n+1) << leader->second.description() << COLUMN_SEPARATOR;
 		} else {
-			str << char(n+1) << "-," << char(n+1) << "-,";
+			str << char(n+1) << '-' << COLUMN_SEPARATOR << char(n+1) << '-' << COLUMN_SEPARATOR;
 		}
 
 		if(enemy) {
-			str << " ,";
+			str << ' ' << COLUMN_SEPARATOR;
 		} else {
-			str << data.gold << ",";
+			str << data.gold << COLUMN_SEPARATOR;
 		}
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct colour
-		str << data.villages << ","
-		    << data.units << "," << data.upkeep << ","
+		str << data.villages << COLUMN_SEPARATOR
+		    << data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
 			<< (data.net_income < 0 ? font::BAD_TEXT:font::NULL_MARKUP) << data.net_income;
 
 		if(game_config::debug)
-			str << "," << teams_[n].gold();
+			str << COLUMN_SEPARATOR << teams_[n].gold();
 
 		items.push_back(str.str());
 	}
 
 	if(fog)
-		items.push_back("&random-enemy.png,&random-enemy.png");
+		items.push_back(IMAGE_PREFIX + std::string("random-enemy.png") + COLUMN_SEPARATOR +
+		                IMAGE_PREFIX + "random-enemy.png");
 
 	gui::show_dialog(gui_,NULL,"","",gui::CLOSE_ONLY,&items);
 }
@@ -1619,7 +1627,8 @@ void turn_info::recruit()
 
 		std::stringstream description;
 
-		description << font::IMAGE << type.image() << "," << font::LARGE_TEXT << prefix << type.language_name() << "\n"
+		description << font::IMAGE << type.image() << COLUMN_SEPARATOR << font::LARGE_TEXT
+		            << prefix << type.language_name() << "\n"
 		            << prefix << type.cost() << " " << sgettext("unit^Gold");
 		items.push_back(description.str());
 		sample_units.push_back(unit(&type,team_num_));
@@ -1789,11 +1798,11 @@ void turn_info::recall()
 		for(std::vector<unit>::const_iterator u = recall_list.begin(); u != recall_list.end(); ++u) {
 			std::stringstream option;
 			const std::string& description = u->description().empty() ? "-" : u->description();
-			option << "&" << u->type().image() << "," << u->type().language_name() << "," << description << ","
-			       << _("level") << ": "
-			       << u->type().level() << ","
-			       << _("XP") << ": "
-			       << u->experience() << "/";
+			option << IMAGE_PREFIX << u->type().image() << COLUMN_SEPARATOR
+			       << u->type().language_name() << COLUMN_SEPARATOR
+			       << description << COLUMN_SEPARATOR
+			       << _("level") << ": " << u->type().level() << COLUMN_SEPARATOR
+			       << _("XP") << ": " << u->experience() << "/";
 
 			if(u->can_advance() == false) {
 				option << "-";
@@ -1951,11 +1960,11 @@ void turn_info::objectives()
 
 void turn_info::unit_list()
 {
-	const std::string heading = _("Type") + std::string(",") +
-	                            _("Name") + "," +
-	                            _("HP") + "," +
-	                            _("XP") + "," +
-	                            _("Moves") + "," +
+	const std::string heading = _("Type") + std::string(1, COLUMN_SEPARATOR) +
+	                            _("Name") + COLUMN_SEPARATOR +
+	                            _("HP") + COLUMN_SEPARATOR +
+	                            _("XP") + COLUMN_SEPARATOR +
+	                            _("Moves") + COLUMN_SEPARATOR +
 	                            _("Location");
 
 	std::vector<std::string> items;
@@ -1968,21 +1977,20 @@ void turn_info::unit_list()
 			continue;
 
 		std::stringstream row;
-		row << i->second.type().language_name() << ","
-			<< i->second.description() << ","
-			<< i->second.hitpoints()
-		    << "/" << i->second.max_hitpoints() << ","
-			<< i->second.experience() << "/";
+		row << i->second.type().language_name() << COLUMN_SEPARATOR
+		    << i->second.description() << COLUMN_SEPARATOR
+		    << i->second.hitpoints() << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR
+		    << i->second.experience() << "/";
 
 		if(i->second.can_advance() == false)
 			row << "-";
 		else
 			row << i->second.max_experience();
 
-		row << ","
-			<< i->second.movement_left() << "/"
-			<< i->second.total_movement() << ","
-			<< (i->first.x+1) << "-" << (i->first.y+1);
+		row << COLUMN_SEPARATOR
+		    << i->second.movement_left() << "/"
+		    << i->second.total_movement() << COLUMN_SEPARATOR
+		    << (i->first.x + 1) << "-" << (i->first.y + 1);
 
 		items.push_back(row.str());
 
@@ -2024,7 +2032,8 @@ std::vector<std::string> turn_info::create_unit_table(const statistics::stats::s
 		}
 
 		std::stringstream str;
-		str << "&" << type->second.image() << "," << type->second.language_name() << "," << i->second << "\n";
+		str << IMAGE_PREFIX << type->second.image() << COLUMN_SEPARATOR
+		    << type->second.language_name() << COLUMN_SEPARATOR << i->second << "\n";
 		table.push_back(str.str());
 	}
 
@@ -2038,57 +2047,57 @@ void turn_info::show_statistics()
 
 	{
 		std::stringstream str;
-		str << _("Recruits") << "," << statistics::sum_str_int_map(stats.recruits);
+		str << _("Recruits") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.recruits);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << _("Recalls") << "," << statistics::sum_str_int_map(stats.recalls);
+		str << _("Recalls") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.recalls);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << _("Advancements") << "," << statistics::sum_str_int_map(stats.advanced_to);
+		str << _("Advancements") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.advanced_to);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << _("Losses") << "," << statistics::sum_str_int_map(stats.deaths);
+		str << _("Losses") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.deaths);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << _("Kills") << "," << statistics::sum_str_int_map(stats.killed);
+		str << _("Kills") << COLUMN_SEPARATOR << statistics::sum_str_int_map(stats.killed);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << _("Damage Inflicted") << "," << stats.damage_inflicted;
+		str << _("Damage Inflicted") << COLUMN_SEPARATOR << stats.damage_inflicted;
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << _("Damage Taken") << "," << stats.damage_taken;
+		str << _("Damage Taken") << COLUMN_SEPARATOR << stats.damage_taken;
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << _("Damage Inflicted (EV)") << "," << 
-			(stats.expected_damage_inflicted / 100.0);
+		str << _("Damage Inflicted (EV)") << COLUMN_SEPARATOR
+		    << (stats.expected_damage_inflicted / 100.0);
 		items.push_back(str.str());
 	}
 
 	{
 		std::stringstream str;
-		str << _("Damage Taken (EV)") << "," << 
-			(stats.expected_damage_taken / 100.0);
+		str << _("Damage Taken (EV)") <<  COLUMN_SEPARATOR
+		    << (stats.expected_damage_taken / 100.0);
 		items.push_back(str.str());
 	}
 
