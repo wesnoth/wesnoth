@@ -19,6 +19,8 @@
 
 #include <iostream>
 
+#define LOG_AI lg::info(lg::ai)
+
 struct move_cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
@@ -79,7 +81,7 @@ private:
 
 std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
 {
-	log_scope("finding targets...");
+	log_scope2(ai, "finding targets...");
 
 	const bool has_leader = leader != units_.end();
 
@@ -148,7 +150,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		for(std::vector<team::target>::iterator j = team_targets.begin();
 		    j != team_targets.end(); ++j) {
 			if(u->second.matches_filter(j->criteria)) {
-				std::cerr << "found explicit target..." << j->value << "\n";
+				LOG_AI << "found explicit target..." << j->value << "\n";
 				targets.push_back(target(u->first,j->value,target::EXPLICIT));
 			}
 		}
@@ -174,7 +176,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 
 	assert(new_values.size() == targets.size());
 	for(size_t n = 0; n != new_values.size(); ++n) {
-		std::cerr << "target value: " << targets[n].value << " -> " << new_values[n] << "\n";
+		LOG_AI << "target value: " << targets[n].value << " -> " << new_values[n] << "\n";
 		targets[n].value = new_values[n];
 	}
 
@@ -243,7 +245,7 @@ bool ai::move_group(const location& dst, const std::vector<location>& route, con
 		return false;
 	}
 
-	AI_DIAGNOSTIC("group has " + str_cast(units.size()) + " members");
+	LOG_AI << "group has " << units.size() << " members\n";
 
 	location next;
 
@@ -322,11 +324,11 @@ bool ai::move_group(const location& dst, const std::vector<location>& route, con
 				if(n != direction && ((n+3)%6) != direction && map_.on_board(adj[n]) &&
 				   units_.count(adj[n]) == 0 && std::count(preferred_moves.begin(),preferred_moves.end(),adj[n]) == 0) {
 					preferred_moves.push_front(adj[n]);
-					AI_LOG("added moves: " + str_cast(adj[n].x+1) + "," + str_cast(adj[n].y+1));
+					LOG_AI << "added moves: " << adj[n].x + 1 << "," << adj[n].y + 1 << "\n";
 				}
 			}
 		} else {
-			AI_DIAGNOSTIC("Could not move group member to any of " + str_cast(preferred_moves.size()) + " locations");
+			LOG_AI << "Could not move group member to any of " << preferred_moves.size() << " locations\n";
 		}
 	}
 
@@ -374,7 +376,7 @@ double ai::compare_groups(const std::set<location>& our_group, const std::set<lo
 
 std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
 {
-	log_scope("choosing move");
+	log_scope2(ai, "choosing move");
 
 	user_interact();
 
@@ -398,13 +400,13 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	if(u == units_.end()) {
-		std::cerr  << "no eligible units found\n";
+		LOG_AI  << "no eligible units found\n";
 		return std::pair<location,location>();
 	}
 
 	//guardian units stay put
 	if(u->second.is_guardian()) {
-		std::cerr << u->second.type().name() << " is guardian, staying still\n";
+		LOG_AI << u->second.type().name() << " is guardian, staying still\n";
 		return std::pair<location,location>(u->first,u->first);
 	}
 
@@ -467,7 +469,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 
 	if(best_target == targets.end()) {
-		std::cerr  << "no eligible targets found\n";
+		LOG_AI << "no eligible targets found\n";
 		return std::pair<location,location>();
 	}
 
@@ -476,7 +478,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	const bool dumb_ai = current_team().ai_parameters()["simple_targetting"] == "yes";
 
 	if(dumb_ai == false) {
-		std::cerr << "complex targetting...\n";
+		LOG_AI << "complex targetting...\n";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if(u->second.side() != team_num_ || u->second.can_recruit() ||
@@ -520,12 +522,12 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			}
 		}
 
-		std::cerr << "done complex targetting...\n";
+		LOG_AI << "done complex targetting...\n";
 	} else {
 		u = units_.end();
 	}
 
-	std::cerr << "best unit: " << (best->first.x+1) << "," << (best->first.y+1) << "\n";
+	LOG_AI << "best unit: " << (best->first.x+1) << "," << (best->first.y+1) << "\n";
 
 	assert(best_target >= targets.begin() && best_target < targets.end());
 
@@ -536,13 +538,13 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	//if our target is a position to support, then we
 	//see if we can move to a position in support of this target
 	if(best_target->type == target::SUPPORT) {
-		std::cerr << "support...\n";
+		LOG_AI << "support...\n";
 
 		std::vector<location> locs;
 		access_points(srcdst,best->first,best_target->loc,locs);
 
 		if(locs.empty() == false) {
-			AI_LOG("supporting unit at " + str_cast(best_target->loc.x+1) + "," + str_cast(best_target->loc.y+1));
+			LOG_AI << "supporting unit at " << best_target->loc.x + 1 << "," << best_target->loc.y + 1 << "\n";
 			location best_loc;
 			int best_defense = 0;
 			double best_vulnerability = 0.0;
@@ -561,7 +563,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				}
 			}
 
-			std::cerr << "returning support...\n";
+			LOG_AI << "returning support...\n";
 			return std::pair<location,location>(best->first,best_loc);
 		}
 	}
@@ -574,7 +576,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	bool dangerous = false;
 
 	if(current_team().ai_parameters()["grouping"] != "no") {
-		std::cerr << "grouping...\n";
+		LOG_AI << "grouping...\n";
 		const unit_map::const_iterator unit_at_target = units_.find(best_target->loc);
 		int movement = best->second.movement_left();
 
@@ -597,11 +599,11 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			}
 		}
 
-		std::cerr << "done grouping...\n";
+		LOG_AI << "done grouping...\n";
 	}
 
 	if(dangerous) {
-		AI_LOG("dangerous path");
+		LOG_AI << "dangerous path\n";
 		std::set<location> group, enemies;
 		const location dst = form_group(best_route.steps,dstsrc,srcdst,group);
 		enemies_along_path(best_route.steps,enemy_dstsrc,enemy_srcdst,enemies);
@@ -609,20 +611,20 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		const double our_strength = compare_groups(group,enemies,best_route.steps);
 
 		if(our_strength > 0.5 + current_team().caution()) {
-			AI_DIAGNOSTIC("moving group");
+			LOG_AI << "moving group\n";
 			const bool res = move_group(dst,best_route.steps,group);
-			AI_DIAGNOSTIC("");
 			if(res) {
 				return std::pair<location,location>(location(1,1),location());
 			} else {
-				AI_LOG("group didn't move " + str_cast(group.size()));
+				LOG_AI << "group didn't move " << group.size() << "\n";
 
 				//the group didn't move, so end the first unit in the group's turn, to prevent an infinite loop
 				return std::pair<location,location>(best->first,best->first);
 
 			}
 		} else {
-			AI_LOG("massing to attack " + str_cast(best_target->loc.x+1) + "," + str_cast(best_target->loc.y+1) + " " + str_cast(our_strength));
+			LOG_AI << "massing to attack " << best_target->loc.x + 1 << "," << best_target->loc.y + 1
+				<< " " << our_strength << "\n";
 
 			const double value = best_target->value;
 			const location target_loc = best_target->loc;
@@ -697,11 +699,11 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 						targets.erase(best_target);
 					}
 
-					AI_LOG("Moving to " + str_cast(its.first->first.x+1) + "," + str_cast(its.first->first.y+1));
+					LOG_AI << "Moving to " << its.first->first.x + 1 << "," << its.first->first.y + 1 << "\n";
 				
 					return std::pair<location,location>(its.first->second,its.first->first);
 				} else {
-					AI_LOG("dangerous!");
+					LOG_AI << "dangerous!\n";
 					is_dangerous = true;
 				}
 			}
@@ -711,7 +713,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	if(best != units_.end()) {
-		AI_LOG("Could not make good move, staying still");
+		LOG_AI << "Could not make good move, staying still\n";
 
 		//this sounds like the road ahead might be dangerous, and that's why we don't advance.
 		//create this as a target, attempting to rally units around
@@ -719,7 +721,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		return std::pair<location,location>(best->first,best->first);
 	}
 
-	AI_LOG("Could not find anywhere to move!");
+	LOG_AI << "Could not find anywhere to move!\n";
 	return std::pair<location,location>();
 }
 

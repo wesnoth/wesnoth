@@ -16,9 +16,6 @@
 #include "actions.hpp"
 #include "ai_interface.hpp"
 
-#define AI_DIAGNOSTIC(MSG) if(game_config::debug) { diagnostic(MSG); } std::cerr << "AI_DIAGNOSTIC: " << MSG << "\n";
-#define AI_LOG(MSG) if(game_config::debug) { log_message(MSG); } std::cerr << "AI_LOG: " << MSG << "\n";
-
 class ai : public ai_interface {
 public:
 

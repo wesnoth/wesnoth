@@ -24,6 +24,8 @@
 #include <iostream>
 #include <set>
 
+#define LOG_AI lg::info(lg::ai)
+
 const int max_positions = 10000;
 
 //analyze possibility of attacking target on 'loc'
@@ -53,7 +55,7 @@ void ai::do_attack_analysis(
 
 	const size_t max_positions = 1000;
 	if(result.size() > max_positions && !cur_analysis.movements.empty()) {
-		std::cerr << "cut analysis short with number of positions\n";
+		LOG_AI << "cut analysis short with number of positions\n";
 		return;
 	}
 
@@ -253,7 +255,7 @@ int ai::choose_weapon(const location& att, const location& def,
 		cur_stats = cache_itor->stats;
 
 		if(!(size_t(cache_itor->weapon) < itor->second.attacks().size())) {
-			std::cerr << "cached illegal weapon: " << cache_itor->weapon
+			lg::err(lg::ai) << "cached illegal weapon: " << cache_itor->weapon
 			          << "/" << itor->second.attacks().size() << "\n";
 		}
 
@@ -264,7 +266,7 @@ int ai::choose_weapon(const location& att, const location& def,
 	++cache_misses;
 
 	if((cache_misses%100) == 0) {
-		std::cerr << "cache_stats: " << cache_hits << ":" << cache_misses << " " << weapon_choice_cache.size() << "\n";
+		LOG_AI << "cache_stats: " << cache_hits << ":" << cache_misses << " " << weapon_choice_cache.size() << "\n";
 	}
 
 	int current_choice = -1;
@@ -543,7 +545,7 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 	//only use the leader if we do a serious amount of damage
 	//compared to how much they do to us.
 	if(uses_leader && aggression > -4.0) {
-		std::cerr << "uses leader..\n";
+		LOG_AI << "uses leader..\n";
 		aggression = -4.0;
 	}
 
@@ -556,7 +558,8 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 
 		const double exposure_mod = uses_leader ? 2.0 : ai_obj.current_team().caution();
 		const double exposure = exposure_mod*resources_used*(terrain_quality - alternative_terrain_quality)*vulnerability/maximum<double>(0.01,support);
-		std::cerr << "attack option has base value " << value << " with exposure " << exposure << ": " << vulnerability << "/" << support << " = " << (vulnerability/support) << "\n";
+		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "
+			<< vulnerability << "/" << support << " = " << (vulnerability/support) << "\n";
 		if(uses_leader) {
 			ai_obj.log_message("attack option has value " + str_cast(value) + " with exposure " + str_cast(exposure) + ": " + str_cast(vulnerability) + "/" + str_cast(support));
 		}
@@ -589,9 +592,11 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		value *= 5.0;
 	}
 
-	std::cerr << "attack on " << (target.x+1) << "," << (target.y+1) << ": attackers: " << movements.size() << " value: " << value
-	          << " chance to kill: " << chance_to_kill << " damage inflicted: " << avg_damage_inflicted << " damage taken: " << avg_damage_taken
-		      << " vulnerability: " << vulnerability << " support: " << support << " quality: " << terrain_quality << " alternative quality: " << alternative_terrain_quality << "\n";
+	LOG_AI << "attack on " << (target.x+1) << "," << (target.y+1) << ": attackers: " << movements.size()
+		<< " value: " << value << " chance to kill: " << chance_to_kill << " damage inflicted: "
+		<< avg_damage_inflicted << " damage taken: " << avg_damage_taken << " vulnerability: "
+		<< vulnerability << " support: " << support << " quality: " << terrain_quality
+		<< " alternative quality: " << alternative_terrain_quality << "\n";
 
 	return value;
 }
@@ -601,7 +606,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	             const move_map& enemy_srcdst, const move_map& enemy_dstsrc
                 )
 {
-	log_scope("analyzing targets...");
+	log_scope2(ai, "analyzing targets...");
 
 	weapon_choice_cache.clear();
 
