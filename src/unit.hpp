@@ -106,8 +106,6 @@ public:
 	void assign_role(const std::string& role);
 
 	const std::vector<attack_type>& attacks() const;
-	int longest_range() const;
-	std::vector<attack_type> attacks_at_range(int range) const;
 
 	int movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const;
 	int defense_modifier(const gamemap& map, gamemap::TERRAIN terrain) const;

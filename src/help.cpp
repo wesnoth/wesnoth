@@ -1549,7 +1549,7 @@ void help_menu::select_topic(const topic &t) {
 }
 	
 int help_menu::process() {
-	int res = gui::menu::process();
+	int res = menu::process();
 	if (double_clicked())
 		res = selection();
 	if (!visible_items_.empty() && (unsigned)res < visible_items_.size()) {

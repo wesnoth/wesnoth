@@ -800,29 +800,6 @@ const std::vector<attack_type>& unit::attacks() const
 	return attacks_;
 }
 
-int unit::longest_range() const
-{
-	int res = 0;
-	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
-		if(i->hexes() >= res) {
-			res = i->hexes();
-		}
-	}
-
-	return res;
-}
-
-std::vector<attack_type> unit::attacks_at_range(int range) const
-{
-	std::vector<attack_type> res;
-	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
-		if(i->hexes() >= range)
-			res.push_back(*i);
-	}
-
-	return res;
-}
-
 int unit::movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const
 {
 //don't allow level 0 units to take villages - removed until AI

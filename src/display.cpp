@@ -237,7 +237,7 @@ void display::highlight_hex(gamemap::location hex)
 		invalidate_unit();
 }
 
-gamemap::location display::hex_clicked_on(int xclick, int yclick)
+gamemap::location display::hex_clicked_on(int xclick, int yclick, gamemap::location::DIRECTION* nearest_hex)
 {
 	const SDL_Rect& rect = map_area();
 	if(point_in_rect(xclick,yclick,rect) == false) {
@@ -247,10 +247,10 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 	xclick -= rect.x;
 	yclick -= rect.y;
 
-	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick);
+	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick, nearest_hex);
 }
 
-gamemap::location display::pixel_position_to_hex(int x, int y)
+gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location::DIRECTION* nearest_hex)
 {
 	const int s = hex_size();
 	const int tesselation_x_size = s * 3 / 2;
@@ -260,8 +260,8 @@ gamemap::location display::pixel_position_to_hex(int x, int y)
 	const int y_base = y / tesselation_y_size;
 	const int y_mod = y % tesselation_y_size;
 	
-	int x_modifier;
-	int y_modifier;
+	int x_modifier = 0;
+	int y_modifier = 0;
 	
 	if (y_mod < tesselation_y_size / 2) {
 		if ((x_mod * 2 + y_mod) < (s / 2)) {
@@ -288,7 +288,33 @@ gamemap::location display::pixel_position_to_hex(int x, int y)
 		}
 	}
 
-	return gamemap::location(x_base + x_modifier, y_base + y_modifier);
+	const gamemap::location res(x_base + x_modifier, y_base + y_modifier);
+	
+	if(nearest_hex != NULL) {
+		const int westx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/3;
+		const int eastx = westx + hex_size()/3;
+		const int centery = (get_location_y(res) - map_area().y + ypos_) + hex_size()/2;
+
+		const bool west = x < westx;
+		const bool east = x > eastx;
+		const bool north = y < centery;
+
+		if(north && west) {
+			*nearest_hex = gamemap::location::NORTH_WEST;
+		} else if(north && east) {
+			*nearest_hex = gamemap::location::NORTH_EAST;
+		} else if(north) {
+			*nearest_hex = gamemap::location::NORTH;
+		} else if(west) {
+			*nearest_hex = gamemap::location::SOUTH_WEST;
+		} else if(east) {
+			*nearest_hex = gamemap::location::SOUTH_EAST;
+		} else {
+			*nearest_hex = gamemap::location::SOUTH;
+		}
+	}
+
+	return res;
 }
 
 int display::get_location_x(const gamemap::location& loc) const
@@ -952,11 +978,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
 		            _("melee") :
 					_("ranged"));
-	
-		if(at_it->hexes() > 1) {
-			details << " (" << at_it->hexes() << ")";
-		}
-					
+						
 		details << "\n\n";
 	}
 

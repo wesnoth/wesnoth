@@ -66,11 +66,12 @@ struct preproc_define {
 		: value(val), arguments(args) {}
 	std::string value;
 	std::vector<std::string> arguments;
-	bool operator==(preproc_define const &p) const
-	{ return value == p.value && arguments == p.arguments; }
 };
 
 typedef std::map<std::string,preproc_define> preproc_map;
+
+inline bool operator==(const preproc_define& a, const preproc_define& b) { return a.value == b.value && a.arguments == b.arguments; }
+inline bool operator!=(const preproc_define& a, const preproc_define& b) { return !operator==(a,b); }
 
 //function to use the WML preprocessor on a file, and returns the resulting
 //preprocessed file data. defines is a map of symbols defined. src is used

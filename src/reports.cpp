@@ -233,10 +233,6 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			tooltip << at_it->damage() << " " << _("damage") << ", "
 					<< at_it->num_attacks() << " " << _("attacks");
 			
-			if(at_it->hexes() > 1) {
-				str << " (" << at_it->hexes() << ")";
-				tooltip << ", " << at_it->hexes() << " " << _("hexes");
-			}
 			str << "\n";
 			res.add_text(str,tooltip);
 		}

@@ -189,7 +189,7 @@ private:
 	//function which, given the location of a potential enemy to attack, will return the location
 	//that the currently selected unit would move to and attack it from this turn. Returns an
 	//invalid location if not possible.
-	gamemap::location current_unit_attacks_from(const gamemap::location& loc) const;
+	gamemap::location current_unit_attacks_from(const gamemap::location& loc, const gamemap::location* preferred) const;
 
 	bool attack_enemy(unit_map::iterator attacker, unit_map::iterator defender);
 	bool move_unit_along_current_route(bool check_shroud=true);
@@ -227,6 +227,7 @@ private:
 	paths::route current_route_;
 	bool enemy_paths_;
 	gamemap::location last_hex_;
+	gamemap::location::DIRECTION last_nearest_;
 	gamemap::location selected_hex_;
 	undo_list undo_stack_;
 	undo_list redo_stack_;

@@ -186,12 +186,12 @@ surface scale_surface_blended(surface surf, int w, int h)
 				//we now have a rectangle, (xsrc,ysrc,xratio,yratio) which we
 				//want to derive the pixel from
 				for(double xloc = xsrc; xloc < xsrc+xratio; xloc += 1.0) {
-					const double xsize = minimum<double>(std::floor(xloc+1.0)-xloc,xsrc+xratio-xloc);
+					const double xsize = minimum<double>(floor(xloc+1.0)-xloc,xsrc+xratio-xloc);
 					for(double yloc = ysrc; yloc < ysrc+yratio; yloc += 1.0) {
 						const int xsrcint = maximum<int>(0,minimum<int>(src->w-1,static_cast<int>(xsrc)));
 						const int ysrcint = maximum<int>(0,minimum<int>(src->h-1,static_cast<int>(ysrc)));
 
-						const double ysize = minimum<double>(std::floor(yloc+1.0)-yloc,ysrc+yratio-yloc);		
+						const double ysize = minimum<double>(floor(yloc+1.0)-yloc,ysrc+yratio-yloc);		
 
 						Uint8 r,g,b,a;
 
