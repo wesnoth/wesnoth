@@ -1,0 +1,10 @@
+touch configure.ac
+touch aclocal.m4
+touch config.h.in
+touch config.h
+touch Makefile.in
+touch icons/Makefile.in
+touch src/Makefile.in
+touch src/server/Makefile.in
+touch src/tools/Makefile.in
+touch configure
