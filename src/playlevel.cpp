@@ -177,6 +177,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				if(team_units(units,player_number) == 0)
 					continue;
 
+				for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+					if(i->second.side() == player_number) {
+						i->second.new_turn();
+					}
+				}
+
 				if(!first_time) {
 					team_it->new_turn();
 
@@ -342,11 +348,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			{
 				update_locker lock_display(gui,recorder.skipping());
 				game_events::fire(event_stream.str());
-			}
-
-			for(unit_map::iterator i = units.begin();
-			    i != units.end(); ++i) {
-				i->second.new_turn();
 			}
 
 		} catch(end_level_exception& end_level) {
