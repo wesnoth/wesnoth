@@ -36,6 +36,9 @@
 #include <string>
 #include <sstream>
 
+#define LOG_NG lg::info(lg::engine)
+#define ERR_NW lg::err(lg::network)
+
 struct castle_cost_calculator
 {
 	castle_cost_calculator(const gamemap& map) : map_(map)
@@ -77,7 +80,7 @@ std::string recruit_unit(const gamemap& map, int side,
 {
 	const command_disabler disable_commands(disp);
 
-	std::cerr << "recruiting unit for side " << side << "\n";
+	LOG_NG << "recruiting unit for side " << side << "\n";
 	typedef std::map<gamemap::location,unit> units_map;
 
 	//find the unit that can recruit
@@ -93,7 +96,7 @@ std::string recruit_unit(const gamemap& map, int side,
 		return _("You don't have a leader to recruit with.");
 
 	if(map.is_keep(u->first) == false) {
-		std::cerr << "Leader not on start: leader is on " << (u->first.x+1) << "," << (u->first.y+1) << "\n";
+		LOG_NG << "Leader not on start: leader is on " << (u->first.x+1) << "," << (u->first.y+1) << "\n";
 		return _("You must have your leader on a keep to recruit or recall units.");
 	}
 
@@ -130,7 +133,7 @@ std::string recruit_unit(const gamemap& map, int side,
 	units.insert(std::pair<gamemap::location,unit>(
 							recruit_location,new_unit));
 
-	std::cerr << "firing recruit event\n";
+	LOG_NG << "firing recruit event\n";
 	game_events::fire("recruit",recruit_location);
 
 	if(show) {
@@ -585,7 +588,7 @@ void attack(display& gui, const gamemap& map,
 	static const std::string poison_string("poison");
 
 	while(stats.nattacks > 0 || stats.ndefends > 0) {
-		std::cerr << "start of attack loop...\n";
+		LOG_NG << "start of attack loop...\n";
 
 		if(stats.nattacks > 0 && stats.defender_strikes_first == false) {
 			const int ran_num = get_random();
@@ -600,24 +603,29 @@ void attack(display& gui, const gamemap& map,
 				const int results_damage = atoi((*ran_results)["damage"].c_str());
 
 				if(results_chance != stats.chance_to_hit_defender) {
-					std::cerr << "SYNC ERROR: In attack " << a->second.type().name() << " vs "
-					          << d->second.type().name() << ": chance to hit defender is inconsistent. Data source: "
-							  << results_chance << "; Calculation: " << stats.chance_to_hit_defender
-							  << " (over-riding game calculations with data source results)\n";
+					ERR_NW << "SYNC: In attack " << a->second.type().name() << " vs "
+						<< d->second.type().name()
+						<< ": chance to hit defender is inconsistent. Data source: "
+						<< results_chance << "; Calculation: " << stats.chance_to_hit_defender
+						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
 				} else if(hits != results_hits) {
-					std::cerr << "SYNC ERROR: In attack " << a->second.type().name() << " vs "
-					          << d->second.type().name() << ": the data source says the hit was "
-							  << (results_hits ? "successful" : "unsuccessful") << ", while in-game calculations say the hit was "
-							  << (hits ? "successful" : "unsuccessful")
-							  << " random number: " << ran_num << " = " << (ran_num%100) << "/" << results_chance
-							  << " (over-riding game calculations with data source results)\n";
+					ERR_NW << "SYNC: In attack " << a->second.type().name() << " vs "
+						<< d->second.type().name() << ": the data source says the hit was "
+						<< (results_hits ? "successful" : "unsuccessful")
+						<< ", while in-game calculations say the hit was "
+						<< (hits ? "successful" : "unsuccessful")
+						<< " random number: " << ran_num << " = "
+						<< (ran_num%100) << "/" << results_chance
+						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
 				} else if(results_damage != stats.damage_defender_takes) {
-					std::cerr << "SYNC ERROR: In attack " << a->second.type().name() << " vs "
-					          << d->second.type().name() << ": the data source says the hit did "
-							  << results_damage << " damage, while in-game calculations show the hit doing "
-							  << stats.damage_defender_takes << " damage (over-riding game calculations with data source results)\n";
+					ERR_NW << "SYNC: In attack " << a->second.type().name() << " vs "
+						<< d->second.type().name() << ": the data source says the hit did "
+						<< results_damage
+						<< " damage, while in-game calculations show the hit doing "
+						<< stats.damage_defender_takes
+						<< " damage (over-riding game calculations with data source results)\n";
 					stats.damage_defender_takes = results_damage;
 				}
 			}
@@ -626,13 +634,13 @@ void attack(display& gui, const gamemap& map,
 				            hits ? stats.damage_defender_takes : 0,
 							a->second.attacks()[attack_with]);
 
-			std::cerr << "done attacking\n";
+			LOG_NG << "done attacking\n";
 
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES);
 
 			if(ran_results == NULL) {
-				log_scope("setting random results");
+				log_scope2(engine, "setting random results");
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
@@ -644,10 +652,12 @@ void attack(display& gui, const gamemap& map,
 			} else {
 				const bool results_dies = (*ran_results)["dies"] == "yes";
 				if(results_dies != dies) {
-					std::cerr << "SYNC ERROR: In attack" << a->second.type().name() << " vs "
-					          << d->second.type().name() << ": the data source the unit "
-							  << (results_dies ? "perished" : "survived") << " while in-game calculations show the unit "
-							  << (dies ? "perished" : "survived") << " (over-riding game calculations with data source results)\n";
+					ERR_NW << "SYNC: In attack" << a->second.type().name() << " vs "
+						<< d->second.type().name() << ": the data source the unit "
+						<< (results_dies ? "perished" : "survived")
+						<< " while in-game calculations show the unit "
+						<< (dies ? "perished" : "survived")
+						<< " (over-riding game calculations with data source results)\n";
 					dies = results_dies;
 				}
 			}
@@ -674,7 +684,7 @@ void attack(display& gui, const gamemap& map,
 				gamemap::location loc = d->first;
 				gamemap::location attacker_loc = a->first;
 				const int defender_side = d->second.side();
-				std::cerr << "firing die event\n";
+				LOG_NG << "firing die event\n";
 				game_events::fire("die",loc,a->first);
 				d = units.end();
 				a = units.end();
@@ -729,7 +739,7 @@ void attack(display& gui, const gamemap& map,
 		stats.defender_strikes_first = false;
 
 		if(stats.ndefends > 0) {
-			std::cerr << "doing defender attack...\n";
+			LOG_NG << "doing defender attack...\n";
 
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < stats.chance_to_hit_attacker;
@@ -743,24 +753,29 @@ void attack(display& gui, const gamemap& map,
 				const int results_damage = atoi((*ran_results)["damage"].c_str());
 
 				if(results_chance != stats.chance_to_hit_attacker) {
-					std::cerr << "SYNC ERROR: In defend " << a->second.type().name() << " vs "
-					          << d->second.type().name() << ": chance to hit attacker is inconsistent. Data source: "
-							  << results_chance << "; Calculation: " << stats.chance_to_hit_attacker
-							  << " (over-riding game calculations with data source results)\n";
+					ERR_NW << "SYNC: In defend " << a->second.type().name() << " vs "
+						<< d->second.type().name()
+						<< ": chance to hit attacker is inconsistent. Data source: "
+						<< results_chance << "; Calculation: " << stats.chance_to_hit_attacker
+						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
 				} else if(hits != results_hits) {
-					std::cerr << "SYNC ERROR: In defend " << a->second.type().name() << " vs "
-					          << d->second.type().name() << ": the data source says the hit was "
-							  << (results_hits ? "successful" : "unsuccessful") << ", while in-game calculations say the hit was "
-							  << (hits ? "successful" : "unsuccessful")
-							  << " random number: " << ran_num << " = " << (ran_num%100) << "/" << results_chance
-							  << " (over-riding game calculations with data source results)\n";
+					ERR_NW << "SYNC: In defend " << a->second.type().name() << " vs "
+						<< d->second.type().name() << ": the data source says the hit was "
+						<< (results_hits ? "successful" : "unsuccessful")
+						<< ", while in-game calculations say the hit was "
+						<< (hits ? "successful" : "unsuccessful")
+						<< " random number: " << ran_num << " = " << (ran_num%100) << "/"
+						<< results_chance
+						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
 				} else if(results_damage != stats.damage_attacker_takes) {
-					std::cerr << "SYNC ERROR: In defend " << a->second.type().name() << " vs "
-					          << d->second.type().name() << ": the data source says the hit did "
-							  << results_damage << " damage, while in-game calculations show the hit doing "
-							  << stats.damage_attacker_takes << " damage (over-riding game calculations with data source results)\n";
+					ERR_NW << "SYNC: In defend " << a->second.type().name() << " vs "
+						<< d->second.type().name() << ": the data source says the hit did "
+						<< results_damage
+						<< " damage, while in-game calculations show the hit doing "
+						<< stats.damage_attacker_takes
+						<< " damage (over-riding game calculations with data source results)\n";
 					stats.damage_attacker_takes = results_damage;
 				}
 			}
@@ -783,10 +798,12 @@ void attack(display& gui, const gamemap& map,
 			} else {
 				const bool results_dies = (*ran_results)["dies"] == "yes";
 				if(results_dies != dies) {
-					std::cerr << "SYNC ERROR: In defend" << a->second.type().name() << " vs "
-					          << d->second.type().name() << ": the data source the unit "
-							  << (results_dies ? "perished" : "survived") << " while in-game calculations show the unit "
-							  << (dies ? "perished" : "survived") << " (over-riding game calculations with data source results)\n";
+					ERR_NW << "SYNC: In defend" << a->second.type().name() << " vs "
+						<< d->second.type().name() << ": the data source the unit "
+						<< (results_dies ? "perished" : "survived")
+						<< " while in-game calculations show the unit "
+						<< (dies ? "perished" : "survived")
+						<< " (over-riding game calculations with data source results)\n";
 					dies = results_dies;
 				}
 			}
@@ -1174,7 +1191,8 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 		const int DelayAmount = 50;
 
-		std::cerr << "unit is poisoned? " << (u.has_flag("poisoned") ? "yes" : "no") << "," << h->second << "," << max_healing[h->first] << "\n";
+		LOG_NG << "unit is poisoned? " << (u.has_flag("poisoned") ? "yes" : "no") << ","
+			<< h->second << "," << max_healing[h->first] << "\n";
 
 		if(u.has_flag("poisoned") && h->second > 0) {
 
@@ -1307,7 +1325,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	for(std::map<gamemap::location,unit>::const_iterator i = units.begin();
 	    i != units.end(); ++i) {
 		if(i->second.can_recruit()) {
-			std::cerr << "seen leader for side " << i->second.side() << "\n";
+			LOG_NG << "seen leader for side " << i->second.side() << "\n";
 			seen_leaders.push_back(i->second.side());
 		}
 	}
@@ -1357,7 +1375,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 			std::cout << "\n";
 		}
 
-		std::cerr << "throwing end level exception...\n";
+		LOG_NG << "throwing end level exception...\n";
 		throw end_level_exception(found_human ? VICTORY : DEFEAT);
 	}
 
@@ -1604,7 +1622,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		//which case we should stop immediately.
 		if(check_shroud) {
 			if(units.count(*step) == 0 && !map.is_village(*step)) {
-				std::cerr << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
+				LOG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
 				//temporarily reset the unit's moves to full
 				const unit_movement_resetter move_resetter(ui->second);
@@ -1725,7 +1743,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			//they are allies or enemies, so calculate that out here
 			int nfriends = 0, nenemies = 0;
 			for(std::set<gamemap::location>::const_iterator i = seen_units.begin(); i != seen_units.end(); ++i) {
-				std::cerr << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
+				LOG_NG << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
 				const unit_map::const_iterator u = units.find(*i);
 				assert(u != units.end());
 				if(team.is_enemy(u->second.side())) {
@@ -1734,7 +1752,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 					++nfriends;
 				}
 
-				std::cerr << "processed...\n";
+				LOG_NG << "processed...\n";
 			}
 
 			char* msg_id;
@@ -1780,10 +1798,8 @@ size_t move_unit(display* disp, const game_data& gamedata,
 					msg << '\n' << _("(press $hotkey to continue)");
 				}
 			}
-			std::cerr << "formatting string...\n";
 			const std::string message = config::interpolate_variables_into_string(msg.str(),&symbols);
 
-			std::cerr << "displaying label...\n";
 			font::add_floating_label(message,24,font::BAD_COLOUR,
 			                         disp->map_area().w/2,disp->map_area().h/3,
 									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
