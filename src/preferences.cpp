@@ -41,6 +41,8 @@ bool colour_cursors = false;
 
 bool message_private_on = true;
 
+bool haloes = true;
+
 }
 
 namespace preferences {
@@ -53,6 +55,7 @@ manager::manager()
 	set_sound_volume(sound_volume());
 
 	set_colour_cursors(prefs["colour_cursors"] == "yes");
+	set_show_haloes(prefs["show_haloes"] != "no");
 }
 
 manager::~manager()
@@ -458,6 +461,17 @@ void set_show_tip_of_day(bool value)
 	prefs["tip_of_day"] = value ? "yes" : "no";
 }
 
+bool show_haloes()
+{
+	return haloes;
+}
+
+void set_show_haloes(bool value)
+{
+	haloes = value;
+	prefs["show_haloes"] = value ? "yes" : "no";
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;
@@ -467,7 +481,7 @@ void show_preferences_dialog(display& disp)
 	log_scope("show_preferences_dialog");
 
 	const int width = 600;
-	const int height = 400;
+	const int height = 450;
 	const int xpos = disp.x()/2 - width/2;
 	const int ypos = disp.y()/2 - height/2;
 
@@ -555,36 +569,35 @@ void show_preferences_dialog(display& disp)
 
 	grid_button.set_location(slider_left,sound_pos + 80 + 100);
 
-	gui::button floating_labels_button(disp,string_table["floating_labels_button"],
-	                                   gui::button::TYPE_CHECK);
+	gui::button floating_labels_button(disp,string_table["floating_labels_button"],gui::button::TYPE_CHECK);
 	floating_labels_button.set_check(show_floating_labels());
 	floating_labels_button.set_location(slider_left,sound_pos + 80 + 150);
 
 	gui::button resolution_button(disp,string_table["video_mode"]);
-	resolution_button.set_location(slider_left,sound_pos + 80 + 200);
+	resolution_button.set_location(slider_left,sound_pos + 80 + 250);
 
-	gui::button turn_dialog_button(disp,string_table["turn_dialog_button"],
-	                               gui::button::TYPE_CHECK);
+	gui::button turn_dialog_button(disp,string_table["turn_dialog_button"],gui::button::TYPE_CHECK);
 	turn_dialog_button.set_check(turn_dialog());
 	turn_dialog_button.set_location(slider_left+fullscreen_button.width()+100,sound_pos + 80);
 
-	gui::button turn_bell_button(disp,string_table["turn_bell_button"],
-	                             gui::button::TYPE_CHECK);
+	gui::button turn_bell_button(disp,string_table["turn_bell_button"],gui::button::TYPE_CHECK);
 	turn_bell_button.set_check(turn_bell());
 	turn_bell_button.set_location(slider_left+fullscreen_button.width()+100,sound_pos + 80 + 50);
 
-	gui::button side_colours_button(disp,string_table["show_side_colours"],
-	                                gui::button::TYPE_CHECK);
+	gui::button side_colours_button(disp,string_table["show_side_colours"],gui::button::TYPE_CHECK);
 	side_colours_button.set_check(show_side_colours());
 	side_colours_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 100);
 
-	gui::button colour_cursors_button(disp,string_table["show_colour_cursors"],
-	                                gui::button::TYPE_CHECK);
+	gui::button colour_cursors_button(disp,string_table["show_colour_cursors"],gui::button::TYPE_CHECK);
 	colour_cursors_button.set_check(use_colour_cursors());
 	colour_cursors_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 150);
 
+	gui::button haloes_button(disp,string_table["show_haloes"],gui::button::TYPE_CHECK);
+	haloes_button.set_check(show_haloes());
+	haloes_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 200);
+
 	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
-	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 200);
+	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 250);
 
 	bool redraw_all = true;
 
@@ -619,6 +632,7 @@ void show_preferences_dialog(display& disp)
 			turn_bell_button.set_dirty();
 			side_colours_button.set_dirty();
 			colour_cursors_button.set_dirty();
+			haloes_button.set_dirty();
 			hotkeys_button.set_dirty();
 			sound_slider.set_dirty();
 			scroll_slider.set_dirty();
@@ -679,6 +693,10 @@ void show_preferences_dialog(display& disp)
 
 		if(colour_cursors_button.process(mousex,mousey,left_button)) {
 			set_colour_cursors(colour_cursors_button.checked());
+		}
+
+		if(haloes_button.process(mousex,mousey,left_button)) {
+			set_show_haloes(haloes_button.checked());
 		}
 
 		events::pump();

@@ -1,5 +1,6 @@
 #include "halo.hpp"
 #include "image.hpp"
+#include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "util.hpp"
 
@@ -253,7 +254,7 @@ void remove(int handle)
 
 void render()
 {
-	if(hide_halo) {
+	if(hide_halo || preferences::show_haloes() == false) {
 		return;
 	}
 
@@ -269,7 +270,7 @@ void render()
 
 void unrender()
 {
-	if(hide_halo) {
+	if(hide_halo || preferences::show_haloes() == false) {
 		return;
 	}
 

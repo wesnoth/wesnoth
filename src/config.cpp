@@ -522,10 +522,12 @@ void config::read(const std::string& data,
 	clear();
 
 	std::stack<std::string> element_names;
+	std::stack<int> element_locs;
 	std::stack<config*> elements;
 	std::stack<std::map<std::string,config*> > last_element; //allows [+element] syntax
 	elements.push(this);
 	element_names.push("");
+	element_locs.push(0);
 	last_element.push(std::map<std::string,config*>());
 
 	enum { ELEMENT_NAME, IN_ELEMENT, VARIABLE_NAME, VALUE }
@@ -585,6 +587,7 @@ void config::read(const std::string& data,
 
 						elements.pop();
 						element_names.pop();
+						element_locs.pop();
 						last_element.pop();
 
 						if(elements.empty()) {
@@ -618,6 +621,7 @@ void config::read(const std::string& data,
 						if(itor != last_element.top().end()) {
 							elements.push(itor->second);
 							element_names.push(value);
+							element_locs.push(line);
 							last_element.push(std::map<std::string,config*>());
 							state = IN_ELEMENT;
 							value = "";
@@ -627,6 +631,7 @@ void config::read(const std::string& data,
 
 					elements.push(&elements.top()->add_child(value));
 					element_names.push(value);
+					element_locs.push(line);
 					last_element.push(std::map<std::string,config*>());
 
 					state = IN_ELEMENT;
@@ -731,12 +736,10 @@ void config::read(const std::string& data,
 		}
 	}
 
-	assert(!element_names.empty());
 	const std::string top = element_names.top();
 	element_names.pop();
 	if(!element_names.empty()) {
-		throw error("Configuration not terminated: no closing tag to '" +
-		            top + "'");
+		throw error("Configuration not terminated: no closing tag to '" + top + "' (line " + str_cast(element_locs.top()) + ")");
 	}
 }
 

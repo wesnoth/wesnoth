@@ -44,7 +44,7 @@ namespace game_config
 					   missile_n_image,missile_ne_image,terrain_mask_image,observer_image,
 					   checked_menu_image,unchecked_menu_image;
 
-	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding;
+	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding, title_tip_x, title_tip_y, title_tip_width, title_tip_padding;
 
 	namespace sounds {
 		extern const std::string turn_bell, receive_message, user_arrive, user_leave;

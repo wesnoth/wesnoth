@@ -13,6 +13,8 @@
 #include "util.hpp"
 #include "video.hpp"
 
+#include "SDL_ttf.h"
+
 namespace {
 
 void fade_logo(display& screen, int xpos, int ypos)
@@ -67,6 +69,26 @@ void fade_logo(display& screen, int xpos, int ypos)
 	std::cerr << "logo faded in\n";
 
 	faded_in = true;
+}
+
+const std::string& get_tip_of_day()
+{
+	static const std::string empty_string;
+	if(preferences::show_tip_of_day() == false) {
+		return empty_string;
+	}
+
+	int ntips = 0;
+	while(ntips < 1000 && string_table["tip_of_day" + str_cast(ntips+1)] != "") {
+		++ntips;
+	}
+
+	if(ntips == 0) {
+		return empty_string;
+	}
+
+	const int tip = (rand()%ntips) + 1;
+	return string_table["tip_of_day" + str_cast(tip)];
 }
 
 }
@@ -134,6 +156,27 @@ TITLE_RESULT show_title(display& screen)
 
 	std::string style = "mainmenu";
 	draw_dialog_frame(menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2,screen,&style);
+
+	std::string tip_of_day = get_tip_of_day();
+	if(tip_of_day.empty() == false) {
+		tip_of_day = font::word_wrap_text(tip_of_day,14,(game_config::title_tip_width*screen.x())/1024);
+
+		const std::string& tome = font::word_wrap_text(string_table["tome"],14,(game_config::title_tip_width*screen.x())/1024);
+
+		SDL_Rect area = font::text_area(tip_of_day,14);
+		SDL_Rect tome_area = font::text_area(tome,14,TTF_STYLE_ITALIC);
+		area.w = maximum<size_t>(area.w,tome_area.w);
+		area.h += tome_area.h;
+
+		area.x = game_config::title_tip_x;
+		area.y = (game_config::title_tip_y*screen.y())/768;
+
+		const int pad = game_config::title_tip_padding;
+		draw_dialog_frame(area.x-pad,area.y-pad,area.w+pad*2,area.h+pad*2,screen,&style);
+
+		font::draw_text(&screen,area,14,font::NORMAL_COLOUR,tip_of_day,area.x,area.y);
+		font::draw_text(&screen,area,14,font::NORMAL_COLOUR,tome,area.x+area.w-tome_area.w,area.y+area.h-tome_area.h,NULL,false,font::NO_MARKUP,TTF_STYLE_ITALIC);
+	}
 
 	events::raise_draw_event();
 

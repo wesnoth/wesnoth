@@ -168,13 +168,12 @@ void turn_info::turn_slice()
 	if(key_[SDLK_DOWN] || mousey > gui_.y()-scroll_threshold)
 		gui_.scroll(0,preferences::scroll_speed());
 
-	if(textbox_.active() == false) {
-		if(key_[SDLK_LEFT] || mousex < scroll_threshold)
-			gui_.scroll(-preferences::scroll_speed(),0);
+	const bool use_left_right = (textbox_.active() == false);
+	if(use_left_right && key_[SDLK_LEFT] || mousex < scroll_threshold)
+		gui_.scroll(-preferences::scroll_speed(),0);
 	
-		if(key_[SDLK_RIGHT] || mousex > gui_.x()-scroll_threshold)
-			gui_.scroll(preferences::scroll_speed(),0);
-	}
+	if(use_left_right && key_[SDLK_RIGHT] || mousex > gui_.x()-scroll_threshold)
+		gui_.scroll(preferences::scroll_speed(),0);
 }
 
 bool turn_info::turn_over() const { return end_turn_; }
@@ -1120,43 +1119,39 @@ void turn_info::end_turn()
 	if(browse_)
 		return;
 
+	bool unmoved_units = false, partmoved_units = false;
+	for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
+		if(un->second.side() == team_num_) {
+			if(unit_can_move(un->first,units_,map_,teams_)) {
+				if(un->second.movement_left() == un->second.total_movement()) {
+					unmoved_units = true;
+				}
+
+				partmoved_units = true;
+			}
+		}
+	}
+
 	//Ask for confirmation if the player hasn't made any moves (other than gotos).
-	if(preferences::confirm_no_moves()) {
+	if(preferences::confirm_no_moves() && unmoved_units) {
 		if (recorder.ncommands() == start_ncmd_) {
 			const int res = gui::show_dialog(gui_,NULL,"",string_table["end_turn_no_moves"], gui::YES_NO);
-			if (res != 0) return;
+			if(res != 0) {
+				return;
+			}
 		}
 	}
 	
 	// Ask for confirmation if units still have movement left
-	if(preferences::yellow_confirm()) {
-		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
-			if(un->second.side() == team_num_ && 
-					unit_can_move(un->first,units_,map_,teams_)) {
-				const int res = gui::show_dialog(gui_,NULL,"",
-						string_table["end_turn_message"],
-						gui::YES_NO);
-				if (res != 0) {
-					return;
-				} else {
-					break;
-				}
-			}
+	if(preferences::yellow_confirm() && partmoved_units) {
+		const int res = gui::show_dialog(gui_,NULL,"",string_table["end_turn_message"],gui::YES_NO);
+		if (res != 0) {
+			return;
 		}
-	} else if (preferences::green_confirm()) {
-		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
-			if(un->second.side() == team_num_ && 
-					un->second.movement_left() == un->second.total_movement() &&
-					unit_can_move(un->first,units_,map_,teams_)) {
-				const int res = gui::show_dialog(gui_,NULL,"",
-						string_table["end_turn_message"],
-						gui::YES_NO);
-				if (res != 0) {
-					return;
-				} else {
-					break;
-				}
-			}
+	} else if (preferences::green_confirm() && unmoved_units) {
+		const int res = gui::show_dialog(gui_,NULL,"",string_table["end_turn_message"],gui::YES_NO);
+		if (res != 0) {
+			return;
 		}
 	}
 

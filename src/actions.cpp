@@ -24,6 +24,7 @@
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
+#include "preferences.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
@@ -120,11 +121,16 @@ std::string recruit_unit(const gamemap& map, int side,
 		new_unit.set_attacked();
 	}
 
+	const bool show = disp != NULL && !disp->turbo() &&
+	                  !disp->fogged(recruit_location.x,recruit_location.y);
+	if(show) {
+		disp->draw(true,true);
+	}
+
 	units.insert(std::pair<gamemap::location,unit>(
 							recruit_location,new_unit));
 
-	if(disp != NULL && !disp->turbo() &&
-	   !disp->fogged(recruit_location.x,recruit_location.y)) {
+	if(show) {
 
 		for(double alpha = 0.0; alpha <= 1.0; alpha += 0.1) {
 			events::pump();
@@ -1125,15 +1131,20 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
 				assert(units.count(i->second));
 				unit& healer = units.find(i->second)->second;
-				healer.set_healing(true);
 
 				const std::string& halo_image = healer.type().image_halo_healing();
-				if(halo_image.empty() == false) {
-					halo::add(disp.get_location_x(i->second)+disp.hex_size()/2,disp.get_location_y(i->second)+disp.hex_size()/2,
-					          halo_image,healer.facing_left() ? halo::NORMAL : halo::REVERSE,1);
-				}
 
-				disp.draw_tile(i->second.x,i->second.y);
+				//only show healing frames if haloing is enabled, or if there is no halo
+				if(halo_image.empty() || preferences::show_haloes()) {
+					healer.set_healing(true);
+
+					if(halo_image.empty() == false) {
+						halo::add(disp.get_location_x(i->second)+disp.hex_size()/2,disp.get_location_y(i->second)+disp.hex_size()/2,
+								halo_image,healer.facing_left() ? halo::NORMAL : halo::REVERSE,1);
+					}
+
+					disp.draw_tile(i->second.x,i->second.y);
+				}
 			}
 
 			disp.update_display();

@@ -221,7 +221,7 @@ SDL_Surface* render_text(TTF_Font* font,const std::string& text, const SDL_Color
 	size_t width = 0, height = 0;
 	for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
 		if(*ln != "" && font != NULL) {
-			shared_sdl_surface res(render_text_internal(font,*ln,colour,0));
+			shared_sdl_surface res(render_text_internal(font,*ln,colour,style));
 
 			if(res != NULL) {
 				surfaces.push_back(res);
