@@ -99,7 +99,6 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 				string_table["stone_description"] << ";";
 		}
 
-		std::cerr << "Status report: " << unit_status.str() << std::endl;
 		report res("",unit_status.str());
 		res.tooltip = tooltip.str();
 		return res;

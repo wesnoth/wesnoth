@@ -776,9 +776,7 @@ namespace {
 void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc)
 {
 	std::vector<std::string> items = items_arg;
-	std::cerr << "Erasing elements" << std::endl;
 	items.erase(std::remove_if(items.begin(),items.end(),cannot_execute(*this)),items.end());
-	std::cerr << "Finished erasing elements" << std::endl;
 	if(items.empty())
 		return;
 
@@ -902,6 +900,7 @@ void turn_info::goto_leader()
 {
 	const unit_map::const_iterator i = team_leader(team_num_,units_);
 	if(i != units_.end()) {
+		clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
 		gui_.scroll_to_tile(i->first.x,i->first.y,display::WARP);
 	}
 }
