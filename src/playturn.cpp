@@ -1504,7 +1504,13 @@ void turn_info::write_game_snapshot(config& start) const
 
 	write_game(state_of_game_,start,WRITE_SNAPSHOT_ONLY);
 
-	start["gold"] = "-1000000"; //just make sure gold is read in from the teams
+	// Clobber gold values to make sure the snapshot uses the values
+	// in [side] instead.
+	const config::child_list& players=start.get_children("player");
+	for(config::child_list::const_iterator pi=players.begin();
+	    pi!=players.end(); ++pi) {
+		(**pi)["gold"] = "-1000000";
+	}
 
 	//write out the current state of the map
 	start["map_data"] = map_.write();
