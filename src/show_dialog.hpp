@@ -124,9 +124,6 @@ public:
 	virtual void set_selection(int index) = 0;
 };
 
-//function to chop up one long string of text into lines
-size_t text_to_lines(std::string& text, size_t max_length);
-
 //if a menu is given, then returns -1 if the dialog was cancelled, and the
 //index of the selection otherwise. If no menu is given, returns the index
 //of the button that was pressed

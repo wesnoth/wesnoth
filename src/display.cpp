@@ -2196,7 +2196,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 		msg = message;
 		action = false;
 	}
-	gui::text_to_lines(msg,80);
+	font::text_to_lines(msg,80);
 
 	int ypos = chat_message_x;
 	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {

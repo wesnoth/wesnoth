@@ -188,6 +188,9 @@ void undraw_floating_labels(surface screen);
 
 bool load_font_config();
 
+//function to chop up one long string of text into lines
+size_t text_to_lines(std::string& text, size_t max_length);
+
 }
 
 #endif

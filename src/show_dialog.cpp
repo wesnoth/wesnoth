@@ -310,55 +310,6 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 
 } //end namespace gui
 
-namespace gui
-{
-
-size_t text_to_lines(std::string& message, size_t max_length)
-{
-	std::string starting_markup;
-	bool at_start = true;
-
-	size_t cur_line = 0, longest_line = 0;
-	for(std::string::iterator i = message.begin(); i != message.end(); ++i) {
-		if(at_start) {
-			if(font::is_format_char(*i)) {
-				push_back(starting_markup,*i);
-			} else {
-				at_start = false;
-			}
-		}
-
-		if(*i == '\n') {
-			at_start = true;
-			starting_markup = "";
-		}
-
-		if(*i == ' ' && cur_line > max_length) {
-			*i = '\n';
-			const size_t index = i - message.begin();
-			message.insert(index+1,starting_markup);
-			i = message.begin() + index + starting_markup.size();
-
-			if(cur_line > longest_line)
-				longest_line = cur_line;
-
-			cur_line = 0;
-		}
-
-		if(*i == '\n' || i+1 == message.end()) {
-			if(cur_line > longest_line)
-				longest_line = cur_line;
-
-			cur_line = 0;
-
-		} else {
-			++cur_line;
-		}
-	}
-
-	return longest_line;
-}
-
 namespace {
 
 struct help_handler : public hotkey::command_executor
@@ -384,6 +335,9 @@ private:
 };
 
 }
+
+namespace gui
+{
 
 void show_error_message(display &disp, std::string const &message)
 {
@@ -462,7 +416,7 @@ int show_dialog(display& disp, surface image,
 #endif
 
 	std::string message = msg;
-	text_to_lines(message,max_line_length);
+	font::text_to_lines(message,max_line_length);
 
 	SDL_Rect text_size = { 0, 0, 0, 0 };
 	if(!message.empty()) {

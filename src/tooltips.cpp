@@ -2,7 +2,6 @@
 
 #include "font.hpp"
 #include "sdl_utils.hpp"
-#include "show_dialog.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
 
@@ -27,7 +26,7 @@ struct tooltip
 {
 	tooltip(const SDL_Rect& r, const std::string& msg) : rect(r), message(msg)
 	{
-		gui::text_to_lines(message,60);
+		font::text_to_lines(message,60);
 	}
 	SDL_Rect rect;
 	std::string message;
