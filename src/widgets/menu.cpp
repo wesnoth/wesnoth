@@ -16,9 +16,9 @@ namespace gui {
 menu::menu(display& disp, const std::vector<std::string>& items,
            bool click_selects)
         : display_(&disp), x_(0), y_(0), buffer_(NULL),
-          selected_(-1), click_selects_(click_selects),
-          previous_button_(true), drawn_(false), height_(-1), width_(-1),
-		  first_item_on_screen_(0),
+          selected_(click_selects ? -1:0), click_selects_(click_selects),
+          previous_button_(true), drawn_(false), show_result_(false),
+          height_(-1), width_(-1), first_item_on_screen_(0),
 		  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow"),
           downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow")
 {
@@ -79,114 +79,135 @@ void menu::set_loc(int x, int y)
 	}
 }
 
+void menu::calculate_position()
+{
+	if(click_selects_)
+		return;
+
+	if(selected_ < first_item_on_screen_) {
+		first_item_on_screen_ = selected_;
+		itemRects_.clear();
+	} else if(selected_ >= first_item_on_screen_ + int(max_menu_items)) {
+		first_item_on_screen_ = selected_ - (max_menu_items - 1);
+		itemRects_.clear();
+	}
+}
+
+void menu::key_press(SDLKey key)
+{
+	switch(key) {
+		case SDLK_UP: {
+			if(!click_selects_ && selected_ > 0) {
+				--selected_;
+				calculate_position();
+				drawn_ = false;
+			}
+
+			break;
+		}
+
+		case SDLK_DOWN: {
+			if(!click_selects_ && selected_ < int(items_.size())-1) {
+				++selected_;
+				calculate_position();
+				drawn_ = false;
+			}
+
+			break;
+		}
+
+		case SDLK_PAGEUP: {
+			if(!click_selects_) {
+				selected_ -= max_menu_items;
+				if(selected_ < 0)
+					selected_ = 0;
+				
+				calculate_position();
+				drawn_ = false;
+			}
+
+			break;
+		}
+
+		case SDLK_PAGEDOWN: {
+			if(!click_selects_) {
+				selected_ += max_menu_items;
+				if(selected_ >= int(items_.size()))
+					selected_ = int(items_.size())-1;
+
+				calculate_position();
+				drawn_ = false;
+			}
+
+			break;
+		}
+
+		default:
+			break;
+	}
+
+	if(key >= SDLK_1 && key <= SDLK_9) {
+		const int pos = key - SDLK_1;
+		if(size_t(pos) < items_.size()) {
+			selected_ = pos;
+			calculate_position();
+			drawn_ = false;
+		}
+	}
+}
+
+void menu::handle_event(const SDL_Event& event)
+{
+	if(event.type == SDL_KEYDOWN) {
+		key_press(event.key.keysym.sym);
+	} else if(event.type == SDL_MOUSEBUTTONDOWN &&
+	          event.button.button == SDL_BUTTON_LEFT) {
+
+		const int item = hit(event.button.x,event.button.y);
+		if(item != -1) {
+			selected_ = item;
+			drawn_ = false;
+
+			if(click_selects_) {
+				show_result_ = true;
+			}
+		}
+	} else if(event.type == SDL_MOUSEMOTION && click_selects_) { 
+
+		const int item = hit(event.motion.x,event.motion.y);
+		if(item != selected_) {
+			selected_ = item;
+			drawn_ = false;
+		}
+	}
+}
+
 int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
                   bool page_up, bool page_down, int select_item)
 {
-	if(items_.size() > size_t(max_menu_items)) {
-		const bool up = uparrow_.process(x,y,button);
-		if(up && first_item_on_screen_ > 0) {
-			itemRects_.clear();
-			--first_item_on_screen_;
-
-			draw();
-		}
-
-		const bool down = downarrow_.process(x,y,button);
-		if(down &&
-		   size_t(first_item_on_screen_+max_menu_items) < items_.size()) {
-			itemRects_.clear();
-			++first_item_on_screen_;
-			draw();
-		}
-	}
-
-	if(select_item >= 0 && size_t(select_item) < items_.size()) {
-		selected_ = select_item;
-		if(selected_ < first_item_on_screen_) {
-			itemRects_.clear();
-			first_item_on_screen_ = selected_;
-		}
-
-		if(size_t(selected_ - first_item_on_screen_) >= max_menu_items) {
-			itemRects_.clear();
-			first_item_on_screen_ = selected_ - max_menu_items - 1;
-		}
-
-		draw();
-	}
-
-	if(up_arrow && !click_selects_ && selected_ > 0) {
-		--selected_;
-		if(selected_ < first_item_on_screen_) {
-			itemRects_.clear();
-			first_item_on_screen_ = selected_;
-		}
-
-		draw();
-	}
-
-	if(down_arrow && !click_selects_ && selected_ < int(items_.size()-1)) {
-		++selected_;
-		if(size_t(selected_ - first_item_on_screen_) == max_menu_items) {
-			itemRects_.clear();
-			++first_item_on_screen_;
-		}
-
-		draw();
-	}
-
-	if(page_up && !click_selects_) {
-		selected_ -= max_menu_items;
-		if(selected_ < 0)
-			selected_ = 0;
-
+	const bool up = uparrow_.process(x,y,button);
+	if(up && first_item_on_screen_ > 0) {
+		--first_item_on_screen_;
 		itemRects_.clear();
-		first_item_on_screen_ = selected_;
-
-		draw();
+		drawn_ = false;
 	}
 
-	if(page_down && !click_selects_) {
-		selected_ += max_menu_items;
-		if(size_t(selected_) >= items_.size())
-			selected_ = items_.size()-1;
-
-		first_item_on_screen_ = selected_ - (max_menu_items-1);
-		if(first_item_on_screen_ < 0)
-			first_item_on_screen_ = 0;
-
+	const bool down = downarrow_.process(x,y,button);
+	if(down && first_item_on_screen_ + max_menu_items < items_.size()) {
+		++first_item_on_screen_;
 		itemRects_.clear();
+		drawn_ = false;
+	}
 
+	if(!drawn_) {
 		draw();
 	}
 
-	const int starting_selected = selected_;
-
-	const int hit_item = hit(x,y);
-
-	if(click_selects_) {
-		selected_ = hit_item;
-		if(button && !previous_button_)
-			return selected_;
-		else {
-			if(!drawn_ || selected_ != starting_selected)
-				draw();
-			previous_button_ = button;
-			return -1;
-		}
+	if(show_result_) {
+		return selected_;
+	} else {
+		return -1;
 	}
-
-	if(button && hit_item != -1){
-		selected_ = hit_item;
-	}
-
-	if(selected_ == -1)
-		selected_ = 0;
-
-	if(selected_ != starting_selected)
-		draw();
-
-	return -1;
 }
 
 const std::vector<int>& menu::column_widths() const
@@ -194,8 +215,7 @@ const std::vector<int>& menu::column_widths() const
 	if(column_widths_.empty()) {
 		for(size_t row = 0; row != items_.size(); ++row) {
 			for(size_t col = 0; col != items_[row].size(); ++col) {
-				static const SDL_Rect area =
-				                {0,0,display_->x(),display_->y()};
+				static const SDL_Rect area = {0,0,display_->x(),display_->y()};
 
 				const SDL_Rect res =
 					font::draw_text(NULL,area,menu_font_size,
@@ -216,8 +236,9 @@ const std::vector<int>& menu::column_widths() const
 void menu::draw_item(int item)
 {
 	SDL_Rect rect = get_item_rect(item);
-	if(rect.w == 0)
+	if(rect.w == 0) {
 		return;
+	}
 
 	if(buffer_.get() != NULL) {
 		const int ypos = items_start()+(item-first_item_on_screen_)*rect.h;

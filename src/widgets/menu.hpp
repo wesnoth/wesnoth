@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../display.hpp"
+#include "../events.hpp"
 #include "../sdl_utils.hpp"
 
 #include "button.hpp"
@@ -13,7 +14,7 @@
 
 namespace gui {
 
-class menu
+class menu : public events::handler
 {
 public:
 	menu(display& disp, const std::vector<std::string>& items,
@@ -30,6 +31,11 @@ public:
 	            bool page_up, bool page_down, int select_item=-1);
 
 private:
+	void calculate_position();
+	void key_press(SDLKey key);
+
+	void handle_event(const SDL_Event& event);
+
 	display* display_;
 	int x_, y_;
 	std::vector<std::vector<std::string> > items_;
@@ -40,6 +46,8 @@ private:
 	bool click_selects_;
 	bool previous_button_;
 	bool drawn_;
+
+	bool show_result_;
 
 	mutable int height_;
 	mutable int width_;
