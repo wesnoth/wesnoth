@@ -4,7 +4,7 @@ then
 echo "slacknoth - Creates a Wesnoth package for Slackware Linux"
 echo "- by Skovbaer (Mark Michelsen)"
 echo ""
-echo "Usage: slacknoth [date in format mm_dd_yy] [architecture e.g. i386 or athlon]"
+echo "Usage: slacknoth [version tag] [architecture e.g. i386 or athlon]"
 echo "                 [wesnoth root e.g. /usr/games/src/wesnoth]"
 echo ""
 exit 0;
@@ -12,7 +12,7 @@ fi
 cd $3
 mkdir -p /wesnothpack/wesnoth-$1
 echo "Configuring..."
-./autogen.sh
+#./autogen.sh
 ./configure --prefix=/usr --enable-server --enable-tools --enable-kde --enable-gnome
 make clean
 echo "Compiling and gathering package contents..."
