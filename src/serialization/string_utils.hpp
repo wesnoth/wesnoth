@@ -22,10 +22,11 @@
 
 //the type we use to represent Unicode strings.
 typedef std::vector<wchar_t> wide_string;
-
 //if we append a 0 to that one we can pass it to SDL_ttf
 //as a const Uint16*
 typedef std::vector<Uint16> ucs2_string;
+typedef std::vector<wchar_t> ucs4_string;
+typedef std::string utf8_string;
 
 namespace utils {
 
