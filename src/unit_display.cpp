@@ -85,7 +85,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	}
 	
 	const unit_animation *teleport_animation_p = u.type().teleport_animation();
-	if (teleport_animation_p && !tiles_adjacent(a, b) && !disp.fogged(a.x, a.y)) { // teleport
+	bool teleport_unit = teleport_animation_p && !tiles_adjacent(a, b);
+	if (teleport_unit && !disp.fogged(a.x, a.y)) { // teleport
 		unit_animation teleport_animation =  *teleport_animation_p;
 		int animation_time;
 		const int begin_at = teleport_animation.get_first_frame_time(unit_animation::UNIT_FRAME);
@@ -146,27 +147,24 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 		//invalidate the source tile and all adjacent tiles,
 		//since the unit can partially overlap adjacent tiles
-		/* FIXME: This code is wrong for short-range teleportation since the teleported unit is not
-		 * near its source location; consequently the unit leaves a ghost trace behind it. It does
-		 * not happen for long-range teleportation since the scrolling has the nice side effect of
-		 * cleaning up the display. -- silene */
-		disp.draw_tile(a.x,a.y);
-		for(int tile = 0; tile != 6; ++tile) {
+		disp.draw_tile(a.x, a.y);
+		for(int tile = 0; tile != 6; ++tile)
 			disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
-		}
-
-		const int height_adjust = src_height_adjust + (dst_height_adjust - src_height_adjust) * i / nsteps;
-		const double submerge = src_submerge + (dst_submerge - src_submerge) * i / nsteps;
-
-		const int xpos = xloc;
-		const int ypos = yloc - height_adjust;
-
 		// disp.invalidate_animations();
 		disp.draw(false);
-		disp.draw_unit(xpos, ypos, image, false, 1.0, 0, 0.0, submerge);
 
-		if(halo_effect != 0)
-			halo::set_location(halo_effect, xpos+disp.hex_size()/2, ypos+disp.hex_size()/2);
+		if (!teleport_unit) {
+			const int height_adjust = src_height_adjust + (dst_height_adjust - src_height_adjust) * i / nsteps;
+			const double submerge = src_submerge + (dst_submerge - src_submerge) * i / nsteps;
+			const int xpos = xloc;
+			const int ypos = yloc - height_adjust;
+			disp.draw_unit(xpos, ypos, image, false, 1.0, 0, 0.0, submerge);
+
+			if (halo_effect != 0) {
+				int d = disp.hex_size() / 2;
+				halo::set_location(halo_effect, xpos + d, ypos + d);
+			}
+		}
 
 		const int new_ticks = SDL_GetTicks();
 		const int wait_time = time_between_frames - (new_ticks - ticks);
@@ -187,7 +185,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	gamemap::location dst_adjacent[6];
 	get_adjacent_tiles(b, dst_adjacent);
 
-	if (teleport_animation_p && !tiles_adjacent(a, b) && !disp.fogged(b.x, b.y)) { // teleport
+	if (teleport_unit && !disp.fogged(b.x, b.y)) { // teleport
 		unit_animation teleport_animation =  *teleport_animation_p;
 		int animation_time;
 		const int end_at = teleport_animation.get_last_frame_time();
