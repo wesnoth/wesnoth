@@ -183,7 +183,10 @@ void find_routes(const gamemap& map, const gamestatus& status,
 
 		//see if the tile is on top of an enemy unit
 		const std::map<gamemap::location,unit>::const_iterator unit_it =
-				units.find(locs[i]);
+				find_visible_unit(units,locs[i],map,
+						status.get_time_of_day().lawful_bonus,
+						teams,current_team);
+
 		if(unit_it != units.end() &&
 		   current_team.is_enemy(unit_it->second.side()))
 			continue;
