@@ -725,7 +725,6 @@ AC_CONFIG_FILES([Makefile
 		 intl/Makefile 
 		 icons/Makefile
 		 src/Makefile
-		 src/zip/Makefile
 		 doc/Makefile
 		 doc/man/Makefile])
 
