@@ -255,6 +255,11 @@ std::string default_map_generator::name() const { return "default"; }
 
 std::string default_map_generator::create_map(const std::vector<std::string>& args)
 {
+	return generate_map(args);
+}
+
+std::string default_map_generator::generate_map(const std::vector<std::string>& args, std::map<gamemap::location,std::string>* labels)
+{
 	size_t iterations = iterations_;
 	size_t island_size = 0;
 	size_t island_off_center = 0;
@@ -280,10 +285,11 @@ std::string default_map_generator::create_map(const std::vector<std::string>& ar
 
 	std::cerr << "generating map with " << nplayers_ << " players\n";
 
-	if(cfg_ != NULL)
-		return default_generate_map(width_,height_,island_size,island_off_center,iterations,hill_size_,max_lakes,(nvillages_*width_*height_)/1000,nplayers_,*cfg_);
-	else
+	if(cfg_ != NULL) {
+		return default_generate_map(width_,height_,island_size,island_off_center,iterations,hill_size_,max_lakes,(nvillages_*width_*height_)/1000,nplayers_,labels,*cfg_);
+	} else {
 		return "";
+	}
 }
 
 config default_map_generator::create_scenario(const std::vector<std::string>& args)
@@ -294,7 +300,14 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 		res = *scenario;
 	}
 
-	res["map_data"] = create_map(args);
+	std::map<gamemap::location,std::string> labels;
+	res["map_data"] = generate_map(args,&labels);
+
+	for(std::map<gamemap::location,std::string>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
+		config& label = res.add_child("label");
+		label["text"] = i->second;
+		i->first.write(label);
+	}
 
 	return res;
 }

@@ -17,6 +17,9 @@ public:
 	config create_scenario(const std::vector<std::string>& args);
 
 private:
+
+	std::string generate_map(const std::vector<std::string>& args, std::map<gamemap::location,std::string>* labels=NULL);
+
 	size_t width_, height_, island_size_, iterations_, hill_size_, max_lakes_, nvillages_, nplayers_;
 	const config* cfg_;
 };

@@ -13,6 +13,7 @@
 #include "mapgen.hpp"
 #include "mapgen_dialog.hpp"
 #include "pathfind.hpp"
+#include "race.hpp"
 #include "scoped_resource.hpp"
 #include "util.hpp"
 
@@ -623,7 +624,7 @@ gamemap::location place_village(const std::vector<std::vector<gamemap::TERRAIN> 
 std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
                                  size_t iterations, size_t hill_size,
 						         size_t max_lakes, size_t nvillages, size_t nplayers,
-						         const config& cfg)
+								 std::map<gamemap::location,std::string>* labels, const config& cfg)
 {
 	//odd widths are nasty, so make them even
 	if(is_odd(width)) {
@@ -869,44 +870,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	std::set<location> villages;
 
-	if(nvillages > 0) {
-		//first we work out the size of the x and y distance between villages
-		const size_t tiles_per_village = ((width*height)/9)/nvillages;
-		size_t village_x = 1, village_y = 1;
-	
-		//alternate between incrementing the x and y value. When they are high enough
-		//to equal or exceed the tiles_per_village, then we have them to the value
-		//we want them at.
-		size_t* village_ptr = &village_x;
-		while(village_x*village_y < tiles_per_village) {
-			(*village_ptr)++;
-			village_ptr = (village_ptr == &village_x ? &village_y : &village_x);
-		}
-	
-		for(size_t vx = 0; vx < width; vx += village_x) {
-			for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
-				const size_t add_x = rand()%3;
-				const size_t add_y = rand()%3;
-				const size_t x = (vx + add_x) - 1;
-				const size_t y = (vy + add_y) - 1;
-	
-				const gamemap::location res = place_village(terrain,x,y,2,cfg);
-	
-				if(res.x >= width/3 && res.x < (width*2)/3 && res.y >= height/3 && res.y < (height*2)/3) {
-					const std::string str(1,terrain[res.x][res.y]);
-					const config* const child = cfg.find_child("village","terrain",str);
-					if(child != NULL) {
-						const std::string& convert_to = (*child)["convert_to"];
-						if(convert_to != "") {
-							terrain[res.x][res.y] = convert_to[0];
-							villages.insert(res);
-						}
-					}
-				}
-			}
-		}
-	}
-
 	std::cerr << "placing castles...\n";
 
 	//try to find configuration for castles.
@@ -1042,7 +1005,57 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			terrain[x+1][y-1] = 'C';
 			terrain[x+1][y+1] = 'C';
 		}
+	}
 
+	if(nvillages > 0) {
+		const config* const naming = cfg.child("village_naming");
+		config naming_cfg;
+		if(naming != NULL) {
+			naming_cfg = *naming;
+		}
+
+		const unit_race village_names_generator(naming_cfg);
+
+		//first we work out the size of the x and y distance between villages
+		const size_t tiles_per_village = ((width*height)/9)/nvillages;
+		size_t village_x = 1, village_y = 1;
+	
+		//alternate between incrementing the x and y value. When they are high enough
+		//to equal or exceed the tiles_per_village, then we have them to the value
+		//we want them at.
+		size_t* village_ptr = &village_x;
+		while(village_x*village_y < tiles_per_village) {
+			(*village_ptr)++;
+			village_ptr = (village_ptr == &village_x ? &village_y : &village_x);
+		}
+	
+		for(size_t vx = 0; vx < width; vx += village_x) {
+			for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
+				const size_t add_x = rand()%3;
+				const size_t add_y = rand()%3;
+				const size_t x = (vx + add_x) - 1;
+				const size_t y = (vy + add_y) - 1;
+	
+				const gamemap::location res = place_village(terrain,x,y,2,cfg);
+	
+				if(res.x >= width/3 && res.x < (width*2)/3 && res.y >= height/3 && res.y < (height*2)/3) {
+					const std::string str(1,terrain[res.x][res.y]);
+					const config* const child = cfg.find_child("village","terrain",str);
+					if(child != NULL) {
+						const std::string& convert_to = (*child)["convert_to"];
+						if(convert_to != "") {
+							terrain[res.x][res.y] = convert_to[0];
+							villages.insert(res);
+
+							if(labels != NULL && naming_cfg.empty() == false) {
+								const gamemap::location loc(res.x-width/3,res.y-height/3);
+								labels->insert(std::pair<gamemap::location,std::string>(loc,village_names_generator.generate_name(unit_race::MALE)));
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	return output_map(terrain);
