@@ -438,7 +438,7 @@ void internal_preprocess_file(const std::string& fname,
 	if(is_directory(fname)) {
 
 		std::vector<std::string> files;
-		get_files_in_dir(fname,&files,&files,ENTIRE_FILE_PATH);
+		get_files_in_dir(fname,&files,NULL,ENTIRE_FILE_PATH);
 
 		for(std::vector<std::string>::const_iterator f = files.begin();
 		    f != files.end(); ++f) {
