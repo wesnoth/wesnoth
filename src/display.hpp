@@ -322,7 +322,7 @@ private:
 
 	void bounds_check_position();
 
-	std::vector<SDL_Surface*> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
+	std::vector<shared_sdl_surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 
 	//this surface must be freed by the caller
 	SDL_Surface* getTerrain(gamemap::TERRAIN, image::TYPE type,

@@ -1229,9 +1229,9 @@ void display::draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_
 
 	clip_rect_setter set_clip_rect(dst,clip_rect);
 	
-	const std::vector<SDL_Surface*>& adj = getAdjacentTerrain(x,y,image_type,type);
+	const std::vector<shared_sdl_surface>& adj = getAdjacentTerrain(x,y,image_type,type);
 
-	for(std::vector<SDL_Surface*>::const_iterator i = adj.begin(); i != adj.end(); ++i) {
+	for(std::vector<shared_sdl_surface>::const_iterator i = adj.begin(); i != adj.end(); ++i) {
 		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 		SDL_BlitSurface(*i,NULL,dst,&dstrect);
 	}
@@ -1452,9 +1452,9 @@ const std::string& get_direction(int n)
 
 }
 
-std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
+std::vector<shared_sdl_surface> display::getAdjacentTerrain(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
 {
-	std::vector<SDL_Surface*> res;
+	std::vector<shared_sdl_surface> res;
 	gamemap::location loc(x,y);
 
 	const gamemap::TERRAIN current_terrain = map_.get_terrain(loc);
@@ -1507,12 +1507,12 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y, image::TYPE 
 		//find all the directions overlap occurs from
 		for(int i = (start+1)%6, n = 0; i != start && n != 6; ++n) {
 			if(tiles[i] == *terrain) {
-				SDL_Surface* surface = NULL;
+				shared_sdl_surface surface(NULL);
 				std::ostringstream stream;
 				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
 
 					stream << get_direction(i);
-					const scoped_sdl_surface new_surface(getTerrain(
+					const shared_sdl_surface new_surface(getTerrain(
 					                    *terrain,image_type,x,y,stream.str()));
 
 					if(new_surface == NULL) {
@@ -1544,9 +1544,12 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 	                           map_.get_terrain_info(terrain).image(x,y) :
 	                           map_.get_terrain_info(terrain).adjacent_image());
 
+	const time_of_day& tod = status_.get_time_of_day();
+	const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
+
 	//see if there is a time-of-day specific version of this image
 	if(direction == "") {
-		const time_of_day& tod = status_.get_time_of_day();
+		
 		const std::string tod_image = image + "-" + tod.id + ".png";
 		SDL_Surface* const im = image::get_image(tod_image,image_type);
 
@@ -1561,6 +1564,21 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 	if(im == NULL && direction.empty()) {
 		im = image::get_image("terrain/" +
 		        map_.get_terrain_info(terrain).default_image() + ".png");
+	}
+
+	//see if this tile is illuminated to a different colour than it'd
+	//normally be displayed as
+	const int radj = tod_at.red - tod.red;
+	const int gadj = tod_at.green - tod.green;
+	const int badj = tod_at.blue - tod.blue;
+
+	if((radj|gadj|badj) != 0 && im != NULL) {
+		const scoped_sdl_surface backup(im);
+		std::cerr << "adjusting surface colour " << radj << "," << gadj << "," << badj << "\n";
+		im = adjust_surface_colour(im,radj,gadj,badj);
+		std::cerr << "done adjust...\n";
+		if(im == NULL)
+			std::cerr << "could not adjust surface..\n";
 	}
 
 	return im;
