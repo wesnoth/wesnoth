@@ -21,6 +21,7 @@
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "unit.hpp"
+#include "unit_types.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"

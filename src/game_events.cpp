@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "ai.hpp"
+#include "display.hpp"
 #include "game_events.hpp"
 #include "image.hpp"
 #include "language.hpp"

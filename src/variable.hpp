@@ -13,7 +13,7 @@
 #ifndef VARIABLE_H_INCLUDED
 #define VARIABLE_H_INCLUDED
 
-#include "config.hpp"
+class config;
 
 namespace game_events {
 std::string& get_variable(const std::string& varname);

@@ -1,7 +1,8 @@
 #ifndef UNIT_DISPLAY_HPP_INCLUDED
 #define UNIT_DISPLAY_HPP_INCLUDED
 
-#include "display.hpp"
+class display;
+
 #include "unit.hpp"
 
 ///the unit_display namespace contains a number of free functions
