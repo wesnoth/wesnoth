@@ -107,7 +107,7 @@ void default_map_generator::user_config(display& disp)
 	hillsize_rect.y = iterations_rect.y + iterations_rect.h + vertical_margin;
 	villages_rect.y = hillsize_rect.y + hillsize_rect.h + vertical_margin;
 
-	const int max_players = 9;
+	const int max_players = 8;
 
 	const int right_space = 100;
 

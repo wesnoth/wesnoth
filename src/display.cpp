@@ -1310,7 +1310,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		}
 
 		const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*(zoom_/DefaultZoom));
-		const double submerge = it->second.is_flying() ? 0.0 : int(map_.get_terrain_info(terrain).unit_submerge());
+		const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
 
 		draw_unit(xpos-xsrc,ypos-ysrc - height_adjust,unit_image,face_left,false,
 		          highlight_ratio,blend_with,submerge);
@@ -2208,7 +2208,6 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
                         bool reverse, bool upside_down,
                         double alpha, Pixel blendto, double submerged)
 {
-	std::cerr << "drawing unit submerged at " << submerged << "\n";
 	//the alpha value to use for submerged units
 	static const double unit_submerged_alpha = 0.2;
 

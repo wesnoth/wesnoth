@@ -34,8 +34,8 @@ namespace {
 	{
 		int positions = 0, liked = 0;
 		const std::string& terrain_liked = side["terrain_liked"];
-		for(int i = pos.x-10; i != pos.x+10; ++i) {
-			for(int j = pos.y-10; j != pos.y+10; ++j) {
+		for(int i = pos.x-8; i != pos.x+8; ++i) {
+			for(int j = pos.y-8; j != pos.y+8; ++j) {
 				const gamemap::location pos(i,j);
 				if(map.on_board(pos)) {
 					++positions;
@@ -47,6 +47,48 @@ namespace {
 		}
 
 		return (100*liked)/positions;
+	}
+
+	struct placing_info {
+		int side, score;
+		gamemap::location pos;
+	};
+
+	bool operator<(const placing_info& a, const placing_info& b) { return a.score > b.score; }
+	bool operator==(const placing_info& a, const placing_info& b) { return a.score == b.score; }
+
+	void place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides)
+	{
+		std::vector<placing_info> placings;
+
+		const int num_pos = map.num_valid_starting_positions();
+
+		for(config::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
+			const int side_num = s - sides.begin() + 1;
+			for(int p = 1; p <= num_pos; ++p) {
+				const gamemap::location& pos = map.starting_position(p);
+				const int score = placing_score(**s,map,pos);
+				placing_info obj;
+				obj.side = side_num;
+				obj.score = score;
+				obj.pos = pos;
+				placings.push_back(obj);
+			}
+		}
+
+		std::sort(placings.begin(),placings.end());
+		std::set<int> placed;
+		std::set<gamemap::location> positions_taken;
+
+		for(std::vector<placing_info>::const_iterator i = placings.begin();
+		    i != placings.end() && placed.size() != sides.size(); ++i) {
+			if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
+				placed.insert(i->side);
+				positions_taken.insert(i->pos);
+				map.set_starting_position(i->side,i->pos);
+				std::cerr << "placing side " << i->side << " at " << i->pos.x << "," << i->pos.y << "\n";
+			}
+		}
 	}
 }
 
@@ -77,11 +119,13 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 
 	int first_human_team = -1;
 
-	const bool modify_placing = (*level)["modify_placing"] == "true";
-	std::set<int> taken_places;
-	std::vector<gamemap::location> starting_locs;
-
 	const config::child_list& unit_cfg = level->get_children("side");
+
+	if((*level)["modify_placing"] == "true") {
+		std::cerr << "modifying placing...\n";
+		place_sides_in_preferred_locations(map,unit_cfg);
+	}
+
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
 
 		if(first_human_team == -1 && (**ui)["controller"] == "human") {
@@ -115,28 +159,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 				}
 			}
 
-			int start = new_unit.side();
-			if(modify_placing) {
-				int best = -1, current = -1;
-				for(int i = 1; i <= unit_cfg.size(); ++i) {
-					if(taken_places.count(i))
-						continue;
-
-					const int res = placing_score(**ui,map,map.starting_position(i));
-					if(current == -1 || res > best) {
-						current = res;
-						best = i;
-					}
-				}
-
-				start = best;
-				taken_places.insert(start);
-			}
-
-			assert(start != -1);
-
-			const gamemap::location& start_pos = map.starting_position(start);
-			starting_locs.push_back(start_pos);
+			const gamemap::location& start_pos = map.starting_position(new_unit.side());
 
 			if(!start_pos.valid() && new_unit.side() == 1) {
 				throw gamestatus::load_game_failed("No starting position for side 1");
@@ -177,10 +200,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 				std::cerr << "inserting unit for side " << new_unit.side() << "\n";
 			}
 		}
-	}
-
-	for(size_t pos = 0; pos != starting_locs.size(); ++pos) {
-		map.set_starting_position(pos+1,starting_locs[pos]);
 	}
 
 	const teams_manager team_manager(teams);
