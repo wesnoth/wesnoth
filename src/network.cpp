@@ -184,8 +184,6 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				throw error("error receiving data",*i);
 			}
 
-			std::cerr << "received: " << buffer << "\n";
-
 			if(buffer[buffer.size()-1] != 0) {
 				received_data[*i] += buffer;
 				const int ticks_taken = SDL_GetTicks() - starting_ticks;
