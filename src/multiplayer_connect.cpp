@@ -46,13 +46,23 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    combos_team_(), combos_color_(), sliders_gold_(),
 	    launch_(gui::button(disp, string_table["im_ready"])),
 	    cancel_(gui::button(disp, string_table["cancel"])),
-	    width_(630), height_(290)
+	    width_(630), height_(290), full_(false)
 {
 	// Send Initial information
 	config response;
 	config& create_game = response.add_child("create_game");
 	create_game["name"] = game_name;
 	network::send_data(response);
+
+}
+
+mp_connect::~mp_connect()
+{
+	if(network::nconnections() > 0) {
+		config cfg;
+		cfg.add_child("leave_game");
+		network::send_data(cfg);
+	}
 }
 
 int mp_connect::load_map(int map, int num_turns, int village_gold,
@@ -196,9 +206,16 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		        possible_sides.front()->values["recruitment_pattern"];
 	}
 
+	(*level_)["objectives"] = "Victory:\n@Defeat enemy leader(s)\n";
+
+
 	lists_init();
 	gui_init();
 	status_ = 0;
+
+	//if we have any connected players when we are created, send them the data
+	network::send_data(*level_);
+
 	return status_;
 }
 
@@ -367,7 +384,15 @@ void mp_connect::gui_update()
 
 		//Player type
 		if (side["controller"] == "network") {
-			combos_type_[n].set_selected(0);
+			if (side["description"] == "") {
+				combos_type_[n].set_selected(0);
+			} else {
+				for (size_t m = 0; m != player_types_.size(); ++m) {
+					if (side["description"] == player_types_[m]) {
+						combos_type_[n].set_selected(m);
+					}
+				}
+			}
 		} else if (side["controller"] == "human") {
 			if (side["description"] == preferences::login()) {
 				combos_type_[n].set_selected(4);
@@ -458,6 +483,7 @@ int mp_connect::gui_do()
 					side["controller"] = "network";
 					side["description"] = "";
 				}
+				network::send_data(*level_);
 			}
 			}
 
@@ -469,6 +495,7 @@ int mp_connect::gui_do()
 					for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
 						side[i->first] = i->second;
 					}
+					network::send_data(*level_);
 				}
 			} else {
 				combos_race_[n].draw();
@@ -480,6 +507,7 @@ int mp_connect::gui_do()
 					std::stringstream str;
 					str << (combos_team_[n].selected()+1);
 					side["team_name"] = str.str();
+					network::send_data(*level_);
 				}
 			} else {
 				combos_team_[n].draw();
@@ -488,6 +516,8 @@ int mp_connect::gui_do()
 			//Player color
 			if(!save_) {
 				if(combos_color_[n].process(mousex, mousey, left_button)) {
+
+					network::send_data(*level_);
 				}
 			} else {
 				combos_color_[n].draw();
@@ -513,6 +543,7 @@ int mp_connect::gui_do()
 					                (*sides.first[n])["gold"],
 							rect.x, rect.y);
 					update_rect(rect);
+					network::send_data(*level_);
 				}
 			}else{
 				sliders_gold_[n].draw();
@@ -524,13 +555,44 @@ int mp_connect::gui_do()
 			return status_;
 		}
 
+		if(full_ == true) {
 		if(launch_.process(mousex,mousey,left_button)) {
-			status_ = 1;
+			//Tell everyone to start
+			config cfg;
+			cfg.add_child("start_game");
+			network::send_data(cfg);
+
+			state_->starting_pos = *level_;
+	
+			recorder.set_save_info(*state_);
+
+			//see if we should show the replay of the game so far
+			if(!recorder.empty()) {
+				if(false) {
+					recorder.set_skip(0);
+				} else {
+					std::cerr << "skipping...\n";
+					recorder.set_skip(-1);
+				}
+			}
+
+			//any replay data isn't meant to hang around under the level,
+			//it was just there to tell clients about the replay data
+			level_->clear_children("replay");
+			std::vector<config*> story;
+			play_level(*data_, *cfg_, level_, disp_->video(), *state_, story);
+			recorder.clear();
+
+			status_ = 0;
 			return status_;
+		}
+		} else {
+			launch_.draw();
 		}
 
 		gui_update();
-
+		update_posions();
+		update_network();
 
 		events::pump();
 		disp_->video().flip();
@@ -540,7 +602,154 @@ int mp_connect::gui_do()
 	return status_;
 }
 
-config &mp_connect::get_level()
+void mp_connect::update_posions()
 {
-	return *level_;
+	const config::child_itors sides = level_->child_range("side");
+	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
+	config::child_iterator sd;
+	for(sd = sides.first; sd != sides.second; ++sd) {
+		if((**sd)["controller"] == "network" &&
+		   (**sd)["description"] == "") {
+			positions_[*sd] = 0;
+		}
+	}
+}
+
+void mp_connect::update_network()
+{
+	for(std::map<config*,network::connection>::const_iterator i = positions_.begin();
+	    i != positions_.end(); ++i) {
+		if(!i->second) {
+			//We are waiting on someone
+			network::connection sock = network::accept_connection();
+			if(sock) {
+				std::cerr << "Received connection\n";
+				network::send_data(*level_,sock);
+			}
+
+			config cfg;
+			const config::child_list& sides = level_->get_children("side");
+
+			try {
+				sock = network::receive_data(cfg);
+			} catch(network::error& e) {
+				std::cerr << "caught networking error. we are " << (network::is_server() ? "" : "NOT") << " a server\n";
+				sock = 0;
+
+				//if the problem isn't related to any specific connection,
+				//it's a general error and we should just re-throw the error
+				//likewise if we are not a server, we cannot afford any connection
+				//to go down, so also re-throw the error
+				if(!e.socket || !network::is_server()) {
+					e.disconnect();
+					throw network::error(e.message);
+				}
+
+				bool changes = false;
+
+				//a socket has disconnected. Remove its positions.
+				for(std::map<config*,network::connection>::iterator i = positions_.begin();
+				    i != positions_.end(); ++i) {
+					if(i->second == e.socket) {
+						changes = true;
+						i->second = 0;
+						i->first->values.erase("taken");
+
+						// Add to combo list
+						std::stringstream str;
+						str << i->first->values["description"];
+						//remove_player(str.str());
+						i->first->values["description"]="";
+					}
+				}
+
+				//now disconnect the socket
+				e.disconnect();
+
+				//if there have been changes to the positions taken,
+				//then notify other players
+				if(changes) {
+					network::send_data(*level_);
+				}
+			}
+
+			//No network errors
+			if(sock) {
+				const int side_drop = atoi(cfg["side_drop"].c_str())-1;
+				if(side_drop >= 0 && side_drop < int(sides.size())) {
+					std::map<config*,network::connection>::iterator pos = positions_.find(sides[side_drop]);
+					if(pos != positions_.end()) {
+						pos->second = 0;
+						pos->first->values.erase("taken");
+						network::send_data(*level_);
+					}
+				}
+
+				const int side_taken = atoi(cfg["side"].c_str())-1;
+				if(side_taken >= 0 && side_taken < int(sides.size())) {
+					std::map<config*,network::connection>::iterator pos = positions_.find(sides[side_taken]);
+					if(pos != positions_.end()) {
+						if(!pos->second) {
+							std::cerr << "client has taken a valid position\n";
+
+							//broadcast to everyone the new game status
+							pos->first->values["taken"] = "yes";
+							pos->first->values["description"] = cfg["description"];
+							pos->first->values["name"] = cfg["name"];
+							pos->first->values["type"] = cfg["type"];
+							pos->first->values["recruit"] = cfg["recruit"];
+							pos->first->values["music"] = cfg["music"];
+							positions_[sides[side_taken]] = sock;
+							network::send_data(*level_);
+
+							std::cerr << "sent player data\n";
+
+							//send a reply telling the client they have secured
+							//the side they asked for
+							std::stringstream side;
+							side << (side_taken+1);
+							config reply;
+							reply.values["side_secured"] = side.str();
+							std::cerr << "going to send data...\n";
+							network::send_data(reply,sock);
+
+							// Add to combo list
+							std::stringstream str;
+							str << cfg["description"];
+							add_player(str.str());
+						} else {
+							config response;
+							response.values["failed"] = "yes";
+							network::send_data(response,sock);
+						}
+					} else {
+						std::cerr << "tried to take illegal side: " << side_taken << "\n";
+					}
+				} else {
+					std::cerr << "tried to take unknown side: " << side_taken << "\n";
+				}
+			}
+		}
+	}
+
+	is_full();
+}
+
+void mp_connect::is_full()
+{
+	//see if all positions are now filled
+	bool unclaimed = false;
+	for(std::map<config*,network::connection>::const_iterator p = positions_.begin();
+	    p != positions_.end(); ++p) {
+		if(!p->second) {
+			unclaimed = true;
+			break;
+		}
+	}
+
+	if(!unclaimed) {
+		full_ = true;
+	} else {
+		full_ = false;
+	}
 }
