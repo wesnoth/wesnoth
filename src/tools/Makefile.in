@@ -183,7 +183,7 @@ merge_translations_SOURCES = merge_translations.cpp \
 
 subdir = src/tools
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 bin_PROGRAMS = make_translation$(EXEEXT) merge_translations$(EXEEXT)
@@ -205,7 +205,7 @@ merge_translations_DEPENDENCIES =
 merge_translations_LDFLAGS =
 
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
-depcomp = $(SHELL) $(top_srcdir)/depcomp
+depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/config.Po ./$(DEPDIR)/filesystem.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_config.Po ./$(DEPDIR)/log.Po \
@@ -231,7 +231,7 @@ all: all-am
 .SUFFIXES: .cpp .o .obj
 $(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  src/tools/Makefile
+	  $(AUTOMAKE) --foreign  src/tools/Makefile
 Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)

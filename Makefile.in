@@ -141,16 +141,19 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-AUTOMAKE_OPTIONS = foreign
 ISUBDIRS = icons
 SUBDIRS = src $(ISUBDIRS)
 
-dist_noinst_DATA = @MANUAL_FILES@ copyright changelog wesnoth.dsp wesnoth.dsw @UTIL_FILES@
-nobase_dist_pkgdata_DATA = @DATA_FILES@ @FONT_FILES@ @IMAGE_FILES@ @MUSIC_FILES@ @SOUND_FILES@
+dist_noinst_DATA = @MANUAL_FILES@ copyright changelog wesnoth.dsp wesnoth.dsw \
+	@UTIL_FILES@
+
+nobase_dist_pkgdata_DATA = @DATA_FILES@ @FONT_FILES@ @IMAGE_FILES@ \
+	@MUSIC_FILES@ @SOUND_FILES@
+
 dist_man6_MANS = doc/man/wesnoth.6 doc/man/wesnothd.6 doc/man/wesnoth_editor.6
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
@@ -168,8 +171,8 @@ RECURSIVE_TARGETS = info-recursive dvi-recursive pdf-recursive \
 DIST_COMMON = README $(dist_man6_MANS) $(dist_noinst_DATA) \
 	$(nobase_dist_pkgdata_DATA) $(srcdir)/Makefile.in \
 	$(srcdir)/configure COPYING INSTALL Makefile.am aclocal.m4 \
-	config.h.in configure configure.ac depcomp install-sh missing \
-	mkinstalldirs
+	config.h.in config/depcomp config/install-sh config/missing \
+	config/mkinstalldirs configure configure.ac
 DIST_SUBDIRS = $(SUBDIRS)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
@@ -415,7 +418,7 @@ distcleancheck_listfiles = find . -type f -print
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
 	mkdir $(distdir)
-	$(mkinstalldirs) $(distdir)/doc/man
+	$(mkinstalldirs) $(distdir)/config $(distdir)/doc/man
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \

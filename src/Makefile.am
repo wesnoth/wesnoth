@@ -1,17 +1,18 @@
+SUBDIRS = .
+
 if SERVER
-SSUBDIRS = server
+SUBDIRS += server
 endif
 
 if TOOLS
-TSUBDIRS = tools
+SUBDIRS += tools
 endif
+
+bin_PROGRAMS = wesnoth
 
 if EDITOR
-EPROGRAMS = wesnoth_editor
+bin_PROGRAMS += wesnoth_editor
 endif
-
-SUBDIRS = . $(SSUBDIRS) $(TSUBDIRS)
-bin_PROGRAMS = wesnoth $(EPROGRAMS)
 
 pkgdatadir=$(datadir)/@DATADIR@
 
@@ -70,6 +71,7 @@ wesnoth_SOURCES = about.cpp \
 		  unit.cpp \
 		  unit_types.cpp \
 		  video.cpp \
+		  z_ai.cpp \
 		  widgets/button.cpp \
 		  widgets/combo.cpp \
 		  widgets/menu.cpp \
@@ -130,6 +132,7 @@ wesnoth_SOURCES = about.cpp \
 		  unit_types.hpp \
 		  util.hpp \
 		  video.hpp \
+		  z_ai.hpp \
 		  widgets/button.hpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
@@ -188,6 +191,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit.cpp \
 			 unit_types.cpp \
 			 video.cpp \
+			 z_ai.cpp \
 			 widgets/button.cpp \
 			 widgets/menu.cpp \
 			 widgets/textbox.cpp \
@@ -239,6 +243,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit.hpp \
 			 unit_types.hpp \
 			 video.hpp \
+			 z_ai.hpp \
 			 widgets/button.hpp \
 			 widgets/menu.hpp \
 			 widgets/textbox.hpp \
@@ -247,4 +252,5 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/widget.hpp
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
-AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ @SDL_TTF_LIBS@ 
+AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ \
+	@SDL_TTF_LIBS@ 

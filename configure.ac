@@ -4,22 +4,13 @@
 # Initial configuration                                               #
 #######################################################################
 
-AC_PREREQ(2.57)
-AC_INIT(wesnoth, 0.13, davidnwhite@optusnet.com.au, Battle for Wesnoth)
+AC_PREREQ([2.57])
+AC_INIT([Battle for Wesnoth], [0.7.2-CVS], [davidnwhite@optusnet.com.au], [wesnoth])
 
-AC_REVISION($Version: 0.13$)
-PACKAGE=wesnoth
-MAJOR_VERSION="0"
-MINOR_VERSION="7"
-MICRO_VERSION="2-CVS"
+AC_REVISION([$Revision$])
 
-if test "x$MICRO_VERSION" = "x"; then
-        VERSION=$MAJOR_VERSION.$MINOR_VERSION
-else
-        VERSION=$MAJOR_VERSION.$MINOR_VERSION.$MICRO_VERSION
-fi
-
-AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+AC_CONFIG_AUX_DIR([config])
+AM_INIT_AUTOMAKE([foreign 1.5])
 AC_CONFIG_SRCDIR([src/actions.cpp])
 AC_CONFIG_HEADER([config.h])
 
@@ -34,7 +25,7 @@ AC_PROG_CC
 
 # SDL_CONFIG
 
-AC_PATH_PROGS(SDL_CONFIG, [sdl-config sdl11-config], none)
+AC_PATH_PROGS([SDL_CONFIG], [sdl-config sdl11-config], [none])
 
 if test "x$SDL_CONFIG" = "xnone"; then
 	
@@ -62,7 +53,7 @@ AC_SUBST([GNOME1_DESKTOP])
 
 # KDE_CONFIG
 
-AC_PATH_PROGS(KDE_CONFIG, kde-config, none)
+AC_PATH_PROGS([KDE_CONFIG], [kde-config], [none])
 
 if test "x$KDE_CONFIG" = "xnone"; then
 	kdefound=no
@@ -201,7 +192,7 @@ CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
 CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS $SDL_IMAGE_LIBS"
 
-AC_TRY_RUN([
+AC_RUN_IFELSE([AC_LANG_SOURCE([
 #include <SDL_image.h>
 #include <stdlib.h>
 
@@ -214,7 +205,7 @@ int main(int argc, char **argv)
 		exit(0);
 	exit(!IMG_isPNG(src));
 }
-	],
+	])],
 	[AC_MSG_RESULT(yes)],
 	[AC_MSG_RESULT(no)] 
 	[AC_MSG_ERROR([*** SDL_image has no PNG support! You need SDL_image with PNG support])],
@@ -239,7 +230,7 @@ CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
 CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS $SDL_MIXER_LIBS"
 
-AC_TRY_RUN([
+AC_RUN_IFELSE([AC_LANG_SOURCE([
 #include <SDL_mixer.h>
 #include <stdlib.h>
 
@@ -252,7 +243,7 @@ int main(int argc, char **argv)
 		exit(1);
 	exit(0);
 }
-	],
+	])],
 	[AC_MSG_RESULT(yes)],
 	[AC_MSG_RESULT(no)]
 	[AC_MSG_ERROR([*** SDL_mixer has no OGG support! You need SDL_mixer with OGG support])],
@@ -268,9 +259,9 @@ LIBS=$OLD_LIBS
 # Configuration options                                               #
 #######################################################################
 
-AC_ARG_ENABLE(debug,
+AC_ARG_ENABLE([debug],
 	      [  --enable-debug        Enable debug in wesnoth],
-	      CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3")
+	      [CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"])
 
 AC_ARG_ENABLE([static],
               [  --enable-static       Enable static building of wesnoth],
@@ -278,7 +269,7 @@ AC_ARG_ENABLE([static],
 	      [LIBS="$LIBS -static"])
 
 DATADIR=$PACKAGE
-AC_ARG_ENABLE(datadir-name,
+AC_ARG_ENABLE([datadir-name],
 	      [  --datadir-name[[=dir]] Change name of data directory. Default with this option: wesnoth-data], 
 	      [case "${enableval}" in
 	       yes)
@@ -291,44 +282,44 @@ AC_ARG_ENABLE(datadir-name,
 			;;
 		esac])
 
-AC_SUBST(DATADIR)
+AC_SUBST([DATADIR])
 		
 # Default behaviour
 server=no 
 editor=no
 tools=no
 
-AC_ARG_ENABLE(server,
+AC_ARG_ENABLE([server],
 	      [  --enable-server       Enable compilation of server],
-	      server=$enableval,
-	      server=no)
+	      [server=$enableval],
+	      [server=no])
 
-AC_ARG_ENABLE(editor,
+AC_ARG_ENABLE([editor],
 	      [  --enable-editor       Enable compilation editor],
-	      editor=$enableval,
-	      editor=no)
+	      [editor=$enableval],
+	      [editor=no])
 
-AC_ARG_ENABLE(tools,
+AC_ARG_ENABLE([tools],
 	      [  --enable-tools        Enable compilation of translation tools],
-	      tools=$enableval,
-	      tools=no)
+	      [tools=$enableval],
+	      [tools=no])
 
-AC_ARG_ENABLE(kde,
+AC_ARG_ENABLE([kde],
 	      [  --enable-kde          Enable installation of icon and KDE menu entry],
-	      kde=$enableval,
-	      kde=no)
+	      [kde=$enableval],
+	      [kde=no])
 
-AC_ARG_ENABLE(gnome,
+AC_ARG_ENABLE([gnome],
 	      [  --enable-gnome        Enable installation of icon and GNOME menu entry],
-	      gnome=$enableval,
-	      gnome=no)
+	      [gnome=$enableval],
+	      [gnome=no])
 
-AM_CONDITIONAL(SERVER, test x$server = xyes)
-AM_CONDITIONAL(EDITOR, test x$editor = xyes)
-AM_CONDITIONAL(TOOLS, test x$tools = xyes)
-AM_CONDITIONAL(KDE, test x$kde = xyes && test x$kdefound = xyes)
-AM_CONDITIONAL(GNOME1, test x$gnome = xyes && test x$gnome1found = xyes)
-AM_CONDITIONAL(GNOME2, test x$gnome = xyes && test x$gnome1found = xno)
+AM_CONDITIONAL([SERVER], [test x$server = xyes])
+AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
+AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
+AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
+AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes])
+AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome1found = xno])
 
 #######################################################################
 # Data file substitution.                                             #
