@@ -317,7 +317,8 @@ msgstr ""
 "angriberen forsvarer sig i det terræn angriberen er i.\n"
 "Der er to undtagelser for denne regel. <ref>dst=magical_attacks "
 "text='Magiske angreb'</ref> og <ref>dst=ability_marksman text=Jagtskytter</"
-"ref>. Magiske angreb har altid en 70% chance for at ramme, uanset terræn, og Jagtskytter har altid mindst en 60% chance for at ramme, uanset terræn.\n"
+"ref>. Magiske angreb har altid en 70% chance for at ramme, uanset terræn, og "
+"Jagtskytter har altid mindst en 60% chance for at ramme, uanset terræn.\n"
 "\n"
 "<header>text=Skade</header>\n"
 "\n"
@@ -355,6 +356,21 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
+"I Wesnoth er der tre skadestyper, der normalt forbindes med fysiske angreb: "
+"Klinge, Går igennem og Slagkraft. Udover det er der tre yderligere "
+"skadestyper: Ild, Kulde og Hellige angreb. Forskellige enheder har måske "
+"modstandskraft mod de forskellige skadestyper, og derved ændrer skaden de "
+"forskellige angreb giver.\n"
+"\n"
+"Modstandskrafter virker meget simpelt. Hvis en enhed har 40% modstandskraft "
+"mod en skadestype, så vil de tage 40% mindre skade når de rammes af denne "
+"type. Det er også muligt for en enhed af have en svaghed, så hvis en enhed "
+"har -100% svaghed mod en skadestype, så vil denne enhed tage 100% mere skade "
+"når enheden rammes af denne type.\n"
+"\n"
+"For eksempel har Skeletter stor modstandskraft med Klinge og Går Igennem, "
+"men er svage over for Slagkraft og Ild, og ekstremt svage overfor Hellige "
+"angreb."
 
 #: data/help.cfg:126
 msgid "Time of Day"
@@ -577,7 +593,8 @@ msgstr "Masser af guld"
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr "Jeg ønsker, at denne enkelte guldmønt vil blive givet tifold tilbage til mig."
+msgstr ""
+"Jeg ønsker, at denne enkelte guldmønt vil blive givet tifold tilbage til mig."
 
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
@@ -677,7 +694,8 @@ msgstr "Storm-Trefork"
 
 #: data/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
-msgstr "Denne trefork giver en merman evnen til at skyde pile efter hans fjender!"
+msgstr ""
+"Denne trefork giver en merman evnen til at skyde pile efter hans fjender!"
 
 #: data/items.cfg:657
 msgid "Only the mermen can use this item!"
@@ -784,7 +802,7 @@ msgstr "&dwarf-warrior.png,Dværge"
 
 #: data/multiplayer.cfg:180
 msgid "&saurian-soothsayer.png,Saurian"
-msgstr "&saurian-soothsayer.png,Saurian"
+msgstr "&saurian-soothsayer.png,Øgler"
 
 #: data/multiplayer.cfg:193
 msgid "Age of Heroes"
@@ -954,7 +972,7 @@ msgstr "Prinsessens Kampplads"
 
 #: data/scenarios/multiplayer/scenarios.cfg:304
 msgid "King of the Hill"
-msgstr ""
+msgstr "King of the Hill"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:47
 msgid ""
@@ -1463,7 +1481,8 @@ msgstr "Karaktertræk og Specialevner"
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr "Nu vil du opleve en sværere test. Du må besejre mig i denne træningskamp."
+msgstr ""
+"Nu vil du opleve en sværere test. Du må besejre mig i denne træningskamp."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
 msgid ""
@@ -1729,7 +1748,8 @@ msgid "What are the different damage types?"
 msgstr "Hvad er de forskellige angrebstyper?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:160
-msgid "Many units have a specialty which changes the rules of play in some way."
+msgid ""
+"Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 "Mange enheder har specielle evner der ændrer spillets regler i en eller "
 "anden form."
@@ -2474,31 +2494,34 @@ msgstr "$name Sø"
 
 #: data/translations/english.cfg:171
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr ""
+msgstr "$name|stad,$name|købing,$name|ton"
 
 #: data/translations/english.cfg:172
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr ""
+msgstr "$name|købing,$name|borg,$name|krydsning,$river|borg,$river|krydsning"
 
 #: data/translations/english.cfg:173
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
+msgstr "$river|bro,$river|bro,$river|bro,$name|købing,$name|bro"
 
 #: data/translations/english.cfg:174
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "$name|købing,$name|ton,$name|mark"
 
 #: data/translations/english.cfg:175
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr ""
+msgstr "$name|købing,$name|ton,$name|lund,$name Skov"
 
 #: data/translations/english.cfg:176
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
+msgstr "$name|købing,$name|stad,$name|ton,$name|høj,$name|top"
 
 #: data/translations/english.cfg:177
-msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid ""
+"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
+"$name|købing,$name|stad,$name|ton,$name|bjerg,$name|bjerg,$name|klint,$name|"
+"klint"
 
 #: data/translations/english.cfg:179
 msgid "Next tip"
@@ -2592,7 +2615,8 @@ msgstr ""
 "chance for at ramme, og jagtskytter har en mindst 60% chance."
 
 #: data/translations/english.cfg:190
-msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid ""
+"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr "Enheder der står i en landsby får 8 HP i starten af hver tur."
 
 #: data/translations/english.cfg:191
@@ -2619,6 +2643,9 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
+"Heste baserede enheder er generelt modstandsdygtige mod Klinge- og "
+"Slagkraftsvåben, men er sårbare over fro Går Igennem våben, der iblandt buer "
+"og spyd."
 
 #: data/translations/english.cfg:194
 msgid ""
@@ -2654,8 +2681,10 @@ msgstr ""
 "undværlige tropper i andre retninger for at forsinke fjenden."
 
 #: data/translations/english.cfg:198
-msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
-msgstr "Vær ikke bange for tilbagetov eller omgrupering, det er ofte nøglen til sejr."
+msgid ""
+"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgstr ""
+"Vær ikke bange for tilbagetov eller omgrupering, det er ofte nøglen til sejr."
 
 #: data/translations/english.cfg:199
 msgid ""
@@ -2664,6 +2693,10 @@ msgid ""
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
+"I de fleste kampagner modtager du guld i bonus for at blive hurtigt færdig. "
+"Hvor meget du får afhænger af hvor mange landsbyer du har og hvor mange ture "
+"du har igen når du afslutter. Du vil altid lettere kunne få guld på denne "
+"måde, end ved at ovetage landsbyer og lade turene løbe ud."
 
 #: data/translations/english.cfg:200
 msgid ""
@@ -2672,12 +2705,18 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
+"Din leder kan rekrutere  eller genindekalde enheder fra ethvert slotstår "
+"inden i en borg, ikke kun fra det slotstårn de starter på. Du kan overtage "
+"et slotstårn fra en fjende og rekrutere derfra. Nogle af dine allierede vil "
+"måske give dig plads i deres slotstårn så du kan rekrutere derfra."
 
 #: data/translations/english.cfg:201
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
+"Skeletter er modstandsdygtige mod går igennem- og klinge angreb, men er "
+"sårbare mod slagkraft, ild og hellige angreb."
 
 #: data/translations/english.cfg:202
 msgid ""
@@ -2693,6 +2732,9 @@ msgid ""
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
+"Undgå generelt at flytte dig hen ved siden af en landsby der ikke står nogen "
+"på. En fjende kan flytte hen på landsbyen og angribe dig, men han nyder godt "
+"af landsbyens forsvar og healing."
 
 #: data/translations/english.cfg:204
 msgid ""
@@ -4110,13 +4152,9 @@ msgid ""
 "distinguished from other fighting forces by their skill with both sword and "
 "bow. The Elves are deft of foot, and fight best in the forest."
 msgstr ""
-"Elviske Soldater udgør størstedelen af\n"
-"Elver-militæret i Wesnoth. De skiller\n"
-"sig ud fra andre kamp-tropper ved deres\n"
-"evner med både sværd og bue.\n"
-"\n"
-"Elverne er hurtige på fødderne og kæmper bedst\n"
-"inde i skoven."
+"Elviske Soldater udgør størstedelen af Elver-militæret i Wesnoth. De skiller "
+"sig ud fra andre kamp-tropper ved deres evner med både sværd og bue. Elverne "
+"er hurtige på fødderne og kæmper bedst inde i skoven."
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
@@ -4146,7 +4184,7 @@ msgstr ""
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "Elvish Lady"
-msgstr "Elviske Kvinde"
+msgstr "Elviske Lady"
 
 #: data/units/Elvish_Lady.cfg:17
 msgid "shove"
@@ -4387,12 +4425,13 @@ msgid "Fireball"
 msgstr "Ildkugle"
 
 #: data/units/Fireball.cfg:16
-msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid ""
+"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr "En Ildkugle. Dette skal ikke bruges til andet end en 'Move_Unit_Fake'!"
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
-msgstr ""
+msgstr "Landevejsrøver"
 
 #: data/units/Footpad.cfg:16
 msgid ""
@@ -5451,7 +5490,8 @@ msgstr "Søuhyre"
 msgid ""
 "Sea Hags are older and more experienced Nagas who have learned to control "
 "the water magic."
-msgstr "Søuhyrer er ældre og mere erfarne Nagaer der har lært at bruge vandmagi."
+msgstr ""
+"Søuhyrer er ældre og mere erfarne Nagaer der har lært at bruge vandmagi."
 
 #: data/units/Sea_Hag.cfg:27
 msgid "water spray"
@@ -5475,7 +5515,8 @@ msgid "Sea Serpent"
 msgstr "Søslange"
 
 #: data/units/Sea_Serpent.cfg:16
-msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgid ""
+"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
 "Søslangen er et gigantisk monster, der ganske egenhændigt kan vende et skib "
 "rundt."
@@ -6457,7 +6498,8 @@ msgid "Remote host disconnected."
 msgstr "Fjern host afbrudt."
 
 #: src/game.cpp:1096
-msgid "There was a problem creating the files necessary to install this campaign."
+msgid ""
+"There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Der var et problem med at lave de filer der skal bruges til at installere "
 "denne kampagne."
@@ -6913,7 +6955,8 @@ msgstr "Krigståge"
 
 #: src/multiplayer.cpp:113
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr "Fjender kan ikke ses medmindre de er inden for dine enheders rækkevidde."
+msgstr ""
+"Fjender kan ikke ses medmindre de er inden for dine enheders rækkevidde."
 
 #: src/multiplayer.cpp:115 src/multiplayer_lobby.cpp:130
 msgid "Shroud"
@@ -7283,14 +7326,16 @@ msgid "Choose weapon"
 msgstr "Vælg våben"
 
 #: src/playturn.cpp:1125
-msgid "You have not started your turn yet.  Do you really want to end your turn?"
+msgid ""
+"You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "Du har ikke startet din tur endnu. Vil du virkelig slutte den før den er "
 "begyndt?"
 
 #: src/playturn.cpp:1134 src/playturn.cpp:1139
 msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr "Nogle enheder kan bevæge sig længere. Vil du virkelig afslutte din tur?"
+msgstr ""
+"Nogle enheder kan bevæge sig længere. Vil du virkelig afslutte din tur?"
 
 #: src/playturn.cpp:1155
 msgid "Auto-Save"
@@ -7506,14 +7551,15 @@ msgid ""
 "1 HP."
 msgstr ""
 "Denne enhede er forgiftet. Den vil miste 8 HP hver tur, idtil den kan finde "
-"en kur i en landsby eller fra en ven der med \"kurere\" evnen.\n"
+"en kur i en landsby eller fra en ven der med 'kurere' evnen.\n"
 "\n"
 "Enheder kan ikke blive dræbt af gift alene. Giften vil skade enheder til "
 "mindre end 1 HP."
 
 #: src/reports.cpp:122
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr "Denne enhed er blevet lavet til sten. Den kan ikke bevæge sig eller angribe."
+msgstr ""
+"Denne enhed er blevet lavet til sten. Den kan ikke bevæge sig eller angribe."
 
 #: src/reports.cpp:131 src/reports.cpp:142
 msgid "_description"
@@ -7658,4 +7704,3 @@ msgstr "Slet fil"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Slettelse af fil mislykkedes"
-
