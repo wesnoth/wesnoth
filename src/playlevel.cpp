@@ -377,7 +377,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 					//if the expense is less than the number of villages owned,
 					//then we don't have to pay anything at all
 					const int expense = team_upkeep(units,player_number) -
-										team_it->towers().size();
+										team_it->villages().size();
 					if(expense > 0) {
 						team_it->spend_gold(expense);
 					}
@@ -573,7 +573,7 @@ redo_turn:
 				}
 
 				const int remaining_gold = teams[0].gold();
-				const int finishing_bonus_per_turn = map.towers().size()*game_config::tower_income + game_config::base_income;
+				const int finishing_bonus_per_turn = map.villages().size()*game_config::village_income + game_config::base_income;
 				const int turns_left = maximum<int>(0,status.number_of_turns() - status.turn());
 				const int finishing_bonus = end_level.gold_bonus ?
 				              (finishing_bonus_per_turn * turns_left) : 0;

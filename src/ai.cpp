@@ -23,6 +23,7 @@
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "statistics.hpp"
+#include "unit_display.hpp"
 
 #include <iostream>
 
@@ -219,14 +220,14 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 			}
 
 			steps.push_back(to); //add the destination to the steps
-			info_.disp.move_unit(steps,current_unit);
+			unit_display::move_unit(info_.disp,info_.map,steps,current_unit);
 		}
 	}
 
 	current_unit.set_movement(0);
 	info_.units.insert(std::pair<location,unit>(to,current_unit));
 	if(info_.map.is_village(to)) {
-		get_tower(to,info_.teams,info_.team_num-1,info_.units);
+		get_village(to,info_.teams,info_.team_num-1,info_.units);
 	}
 
 	info_.disp.draw_tile(to.x,to.y);
@@ -295,7 +296,7 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 			//don't take friendly villages
 			if(!enemy && info_.map.is_village(dst)) {
 				for(size_t n = 0; n != info_.teams.size(); ++n) {
-					if(info_.teams[n].owns_tower(dst)) {
+					if(info_.teams[n].owns_village(dst)) {
 						if(n+1 != info_.team_num && current_team().is_enemy(n+1) == false) {
 							friend_owns = true;
 						}
@@ -508,17 +509,17 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 
 bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
-	//try to acquire towers
+	//try to acquire villages
 	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 		if(map_.is_village(i->first) == false) {
 			continue;
 		}
 
-		bool want_tower = true, owned = false;
+		bool want_village = true, owned = false;
 		for(size_t j = 0; j != teams_.size(); ++j) {
-			owned = teams_[j].owns_tower(i->first);
+			owned = teams_[j].owns_village(i->first);
 			if(owned && !current_team().is_enemy(j+1)) {
-				want_tower = false;
+				want_village = false;
 			}
 			
 			if(owned) {
@@ -526,12 +527,12 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 			}
 		}
 
-		//if it's a neutral tower, and we have no leader, then the village is no use to us,
+		//if it's a neutral village, and we have no leader, then the village is no use to us,
 		//and we don't want it.
 		if(!owned && leader == units_.end())
-			want_tower = false;
+			want_village = false;
 
-		if(want_tower) {
+		if(want_village) {
 			std::cerr << "trying to acquire village: " << i->first.x
 			          << ", " << i->first.y << "\n";
 
@@ -775,13 +776,13 @@ void ai::do_recruitment()
 	//currently just spend all the gold we can!
 	const int min_gold = 0;
 
-	const int towers = map_.towers().size();
-	int taken_towers = 0;
+	const int villages = map_.villages().size();
+	int taken_villages = 0;
 	for(size_t j = 0; j != teams_.size(); ++j) {
-		taken_towers += teams_[j].towers().size();
+		taken_villages += teams_[j].villages().size();
 	}
 
-	const int neutral_towers = towers - taken_towers;
+	const int neutral_villages = villages - taken_villages;
 
 	//the villages per scout parameter is assumed to be based on a 2-side battle.
 	//in a greater than 2 side battle, we want to recruit less scouts, since the villages
@@ -789,7 +790,7 @@ void ai::do_recruitment()
 	const int villages_per_scout = (current_team().villages_per_scout()*teams_.size())/2;
 
 	//get scouts depending on how many neutral villages there are
-	int scouts_wanted = villages_per_scout > 0 ? neutral_towers/villages_per_scout : 0;
+	int scouts_wanted = villages_per_scout > 0 ? neutral_villages/villages_per_scout : 0;
 
 	std::map<std::string,int> unit_types;
 	while(unit_types["scout"] < scouts_wanted) {
@@ -898,7 +899,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 	}
 
 	//search through villages finding one to capture
-	const std::vector<gamemap::location>& villages = map_.towers();
+	const std::vector<gamemap::location>& villages = map_.villages();
 	for(std::vector<gamemap::location>::const_iterator v = villages.begin();
 	    v != villages.end(); ++v) {
 		const paths::routes_map::const_iterator itor = leader_paths.routes.find(*v);
@@ -906,7 +907,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 			continue;
 		}
 
-		const int owner = tower_owner(*v,teams_);
+		const int owner = village_owner(*v,teams_);
 		if(owner == -1 || current_team().is_enemy(owner+1) || leader->second.hitpoints() < leader->second.max_hitpoints()) {
 
 			//check that no enemies can reach the village
@@ -944,11 +945,11 @@ int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 	}
 
 	if(map_.is_village(terrain)) {
-		const int village_owner = tower_owner(loc,teams_);
+		const int owner = village_owner(loc,teams_);
 
-		if(village_owner == team_num_) {
+		if(owner == team_num_) {
 			rating += friendly_village_value;
-		} else if(village_owner == -1) {
+		} else if(owner == -1) {
 			rating += neutral_village_value;
 		} else {
 			rating += enemy_village_value;

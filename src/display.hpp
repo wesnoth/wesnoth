@@ -79,11 +79,15 @@ public:
 	void scroll(double xmov, double ymov);
 
 	//function which zooms the display by the specified amount. Negative
-	//valeus zoom out.
-	void zoom(double amount);
+	//valeus zoom out. Returns the current zoom ratio
+	double zoom(double amount=0.0);
 
 	//function to take the zoom amount to the default.
 	void default_zoom();
+
+	//function which returns the size of a hex in pixels
+	//(from top tip to bottom tip or left edge to right edge)
+	int hex_size() const;
 
 	enum SCROLL_TYPE { SCROLL, WARP };
 
@@ -152,13 +156,8 @@ public:
 	double get_location_x(const gamemap::location& loc) const;
 	double get_location_y(const gamemap::location& loc) const;
 
-	//function to display movement of a unit along the given sequence of tiles
-	void move_unit(const std::vector<gamemap::location>& path, unit& u);
-
-	//function to show one unit taking one attack attempt at another. damage
-	//is the amount of damage inflicted, and 0 if the attack misses.
-	bool unit_attack(const gamemap::location& a, const gamemap::location& b,
-	                 int damage, const attack_type& attack);
+	//function to remove a footstep from a specific location
+	void remove_footstep(const gamemap::location& loc);
 
 	//function to draw the tile at location (x,y). If unit_image is not NULL,
 	//then it will be used, otherwise the unit's default image will be used.
@@ -284,8 +283,6 @@ public:
 
 	const theme::menu* menu_pressed(int mousex, int mousey, bool button_pressed);
 
-	void unit_die(const gamemap::location& loc, SDL_Surface* image=NULL);
-
 	void add_observer(const std::string& name);
 	void remove_observer(const std::string& name);
 
@@ -294,14 +291,6 @@ public:
 
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
 	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type);
-
-private:
-	display(const display&);
-	void operator=(const display&);
-
-	void move_unit_between(const gamemap::location& a,
-					       const gamemap::location& b,
-						   const unit& u);
 
 	//function to draw the image of a unit at a certain location
 	//x,y: pixel location on screen to draw the unit
@@ -314,13 +303,12 @@ private:
 	//submerged: the amount of the unit out of 1.0 that is submerged
 	//           (presumably under water) and thus shouldn't be drawn
 	void draw_unit(int x, int y, SDL_Surface* image,
-	               bool reverse, bool upside_down=false,
-	               double alpha=1.0, Uint32 blendto=0, double submerged=0.0,
+	               bool upside_down=false,double alpha=1.0, Uint32 blendto=0, double submerged=0.0,
 				   SDL_Surface* ellipse_back=NULL, SDL_Surface* ellipse_front=NULL);
 
-	bool unit_attack_ranged(const gamemap::location& a,
-	                        const gamemap::location& b,
-	                        int damage, const attack_type& attack);
+private:
+	display(const display&);
+	void operator=(const display&);
 
 	void draw_sidebar();
 	void draw_minimap(int x, int y, int w, int h);

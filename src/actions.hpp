@@ -98,11 +98,11 @@ void attack(display& gui, const gamemap& map,
 
 //given the location of a village, will return the 0-based index of the team
 //that currently owns it, and -1 if it is unowned.
-int tower_owner(const gamemap::location& loc, std::vector<team>& teams);
+int village_owner(const gamemap::location& loc, std::vector<team>& teams);
 
-//makes it so the tower at the given location is owned by the given
+//makes it so the village at the given location is owned by the given
 //0-based team number
-void get_tower(const gamemap::location& loc, std::vector<team>& teams,
+void get_village(const gamemap::location& loc, std::vector<team>& teams,
                size_t team_num, const unit_map& units);
 
 //given the 1-based side, will find the leader of that side,

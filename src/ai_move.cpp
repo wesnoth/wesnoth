@@ -125,18 +125,18 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 	}
 
 	if(has_leader && current_team().village_value() > 0.0) {
-		const std::vector<location>& towers = map_.towers();
-		for(std::vector<location>::const_iterator t = towers.begin(); t != towers.end(); ++t) {
+		const std::vector<location>& villages = map_.villages();
+		for(std::vector<location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
 			assert(map_.on_board(*t));
-			bool get_tower = true;
+			bool get_village = true;
 			for(size_t i = 0; i != teams_.size(); ++i) {
-				if(!current_team().is_enemy(i+1) && teams_[i].owns_tower(*t)) {
-					get_tower = false;
+				if(!current_team().is_enemy(i+1) && teams_[i].owns_village(*t)) {
+					get_village = false;
 					break;
 				}
 			}
 
-			if(get_tower) {
+			if(get_village) {
 				targets.push_back(target(*t,current_team().village_value()));
 			}
 		}

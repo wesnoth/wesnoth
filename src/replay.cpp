@@ -25,6 +25,7 @@
 #include "show_dialog.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
+#include "unit_display.hpp"
 #include "util.hpp"
 
 #include <cstdio>
@@ -707,16 +708,17 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			rt->second.steps.push_back(dst);
 
-			if(!replayer.skipping())
-				disp.move_unit(rt->second.steps,current_unit);
+			if(!replayer.skipping()) {
+				unit_display::move_unit(disp,map,rt->second.steps,current_unit);
+			}
 
 			current_unit.set_movement(rt->second.move_left);
 			u = units.insert(std::pair<gamemap::location,unit>(dst,current_unit)).first;
 			if(map.is_village(dst)) {
-				const int orig_owner = tower_owner(dst,teams) + 1;
+				const int orig_owner = village_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
 					u->second.set_movement(0);
-					get_tower(dst,teams,team_num-1,units);
+					get_village(dst,teams,team_num-1,units);
 				}
 			}
 

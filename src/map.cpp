@@ -189,7 +189,7 @@ gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 			}
 
 			if(is_village(c)) {
-				towers_.push_back(location(int(x),int(y)));
+				villages_.push_back(location(int(x),int(y)));
 			}
 
 			if(x >= tiles_.size()) {

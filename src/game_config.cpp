@@ -17,7 +17,7 @@
 namespace game_config
 {
 	int base_income = 2;
-	int tower_income = 1;
+	int village_income = 1;
 	int heal_amount = 4;
 	int healer_heals_per_turn = 8;
 	int cure_amount = 8;
@@ -64,7 +64,7 @@ namespace game_config
 		const config& v = *cfg;
 
 		base_income = atoi(v["base_income"].c_str());
-		tower_income = atoi(v["village_income"].c_str());
+		village_income = atoi(v["village_income"].c_str());
 		heal_amount = atoi(v["heal_amount"].c_str());
 		healer_heals_per_turn = atoi(v["healer_heals_per_turn"].c_str());
 		cure_amount = atoi(v["cure_amount"].c_str());

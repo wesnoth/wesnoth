@@ -19,6 +19,7 @@
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "sound.hpp"
+#include "unit_display.hpp"
 #include "util.hpp"
 
 #include <cstdlib>
@@ -434,7 +435,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				                                 atoi(yvals[i].c_str())-1));
 			}
 
-			screen->move_unit(path,dummy_unit);
+			unit_display::move_unit(*screen,*game_map,path,dummy_unit);
 		}
 	}
 
@@ -868,7 +869,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			if(game_events::unit_matches_filter(un,cfg)) {
 				if(cfg["animate"] == "yes") {
 					screen->scroll_to_tile(un->first.x,un->first.y,display::WARP);
-					screen->unit_die(un->first);
+					unit_display::unit_die(*screen,un->first,un->second);
 				}
 
 				units->erase(un++);

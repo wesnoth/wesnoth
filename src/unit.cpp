@@ -405,6 +405,8 @@ bool unit::matches_filter(const config& cfg) const
 	const std::string& side = cfg["side"];
 	const std::string& weapon = cfg["has_weapon"];
 	const std::string& role = cfg["role"];
+	const std::string& race = cfg["race"];
+	const std::string& gender = cfg["gender"];
 
 	if(description.empty() == false && description != this->underlying_description()) {
 		return false;
@@ -436,8 +438,20 @@ bool unit::matches_filter(const config& cfg) const
 		}
 	}
 
-	if(ability.empty() == false && this->type().has_ability(ability) == false)
+	if(ability.empty() == false && this->type().has_ability(ability) == false) {
 		return false;
+	}
+
+	if(race.empty() == false && this->type().race() != race) {
+		return false;
+	}
+
+	if(gender.empty() == false) {
+		const unit_race::GENDER gender_type = gender == "female" ? unit_race::FEMALE : unit_race::MALE;
+		if(gender_type != this->type().gender()) {
+			return false;
+		}
+	}
 
 	if(side.empty() == false && this->side() != atoi(side.c_str()))
 	  {
@@ -1070,7 +1084,7 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 	team_data res;
 	res.units = team_units(units,side);
 	res.upkeep = team_upkeep(units,side);
-	res.villages = tm.towers().size();
+	res.villages = tm.villages().size();
 	res.expenses = maximum<int>(0,res.upkeep - res.villages);
 	res.net_income = tm.income() - res.expenses;
 	res.gold = tm.gold();

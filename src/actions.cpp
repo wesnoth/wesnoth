@@ -25,6 +25,7 @@
 #include "replay.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
+#include "unit_display.hpp"
 #include "util.hpp"
 
 #include <cmath>
@@ -577,7 +578,7 @@ void attack(display& gui, const gamemap& map,
 				}
 			}
 
-			bool dies = gui.unit_attack(attacker,defender,
+			bool dies = unit_display::unit_attack(gui,units,map,attacker,defender,
 				            hits ? stats.damage_defender_takes : 0,
 							a->second.attacks()[attack_with]);
 
@@ -711,7 +712,7 @@ void attack(display& gui, const gamemap& map,
 				}
 			}
 
-			bool dies = gui.unit_attack(defender,attacker,
+			bool dies = unit_display::unit_attack(gui,units,map,defender,attacker,
 			               hits ? stats.damage_attacker_takes : 0,
 						   d->second.attacks()[stats.defend_with]);
 
@@ -828,10 +829,10 @@ void attack(display& gui, const gamemap& map,
 	gui.invalidate_unit();
 }
 
-int tower_owner(const gamemap::location& loc, std::vector<team>& teams)
+int village_owner(const gamemap::location& loc, std::vector<team>& teams)
 {
 	for(size_t i = 0; i != teams.size(); ++i) {
-		if(teams[i].owns_tower(loc))
+		if(teams[i].owns_village(loc))
 			return i;
 	}
 
@@ -839,10 +840,10 @@ int tower_owner(const gamemap::location& loc, std::vector<team>& teams)
 }
 
 
-void get_tower(const gamemap::location& loc, std::vector<team>& teams,
-               size_t team_num, const unit_map& units)
+void get_village(const gamemap::location& loc, std::vector<team>& teams,
+                 size_t team_num, const unit_map& units)
 {
-	if(team_num < teams.size() && teams[team_num].owns_tower(loc)) {
+	if(team_num < teams.size() && teams[team_num].owns_village(loc)) {
 		return;
 	}
 
@@ -853,7 +854,7 @@ void get_tower(const gamemap::location& loc, std::vector<team>& teams,
 	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
 		const int side = i - teams.begin() + 1;
 		if(team_num >= teams.size() || has_leader || teams[team_num].is_enemy(side)) {
-			i->lose_tower(loc);
+			i->lose_village(loc);
 		}
 	}
 
@@ -862,7 +863,7 @@ void get_tower(const gamemap::location& loc, std::vector<team>& teams,
 	}
 
 	if(has_leader) {
-		teams[team_num].get_tower(loc);
+		teams[team_num].get_village(loc);
 	}
 }
 
@@ -951,7 +952,7 @@ void calculate_healing(display& disp, const gamemap& map,
 	for(i = units.begin(); i != units.end(); ++i) {
 		amount_healed = 0;
 
-		//the unit heals if it's on this side, and it's on a tower or
+		//the unit heals if it's on this side, and it's on a village or
 		//it has regeneration, and it is wounded
 		if(i->second.side() == side) {
 			if(i->second.hitpoints() < i->second.max_hitpoints()){
@@ -1191,7 +1192,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	//clear villages for teams that have no leader
 	for(std::vector<team>::iterator tm = teams.begin(); tm != teams.end(); ++tm) {
 		if(std::find(seen_leaders.begin(),seen_leaders.end(),tm-teams.begin() + 1) == seen_leaders.end()) {
-			tm->clear_towers();
+			tm->clear_villages();
 		}
 	}
 
@@ -1526,8 +1527,9 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	}
 
 	units.erase(ui);
-	if(disp != NULL)
-		disp->move_unit(steps,u);
+	if(disp != NULL) {
+		unit_display::move_unit(*disp,map,steps,u);
+	}
 
 	u.set_movement(moves_left);
 
@@ -1537,12 +1539,12 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		disp->invalidate(steps.back());
 	}
 
-	int orig_tower_owner = -1;
+	int orig_village_owner = -1;
 	if(map.is_village(steps.back())) {
-		orig_tower_owner = tower_owner(steps.back(),teams);
+		orig_village_owner = village_owner(steps.back(),teams);
 
-		if(orig_tower_owner != team_num) {
-			get_tower(steps.back(),teams,team_num,units);
+		if(orig_village_owner != team_num) {
+			get_village(steps.back(),teams,team_num,units);
 			ui->second.set_movement(0);
 		}
 	}
@@ -1553,7 +1555,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		if(event_mutated || should_clear_stack) {
 			undo_stack->clear();
 		} else {
-			undo_stack->push_back(undo_action(steps,starting_moves,orig_tower_owner));
+			undo_stack->push_back(undo_action(steps,starting_moves,orig_village_owner));
 		}
 	}
 

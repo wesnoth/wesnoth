@@ -68,11 +68,11 @@ public:
 
 	void write(config& cfg) const;
 
-	void get_tower(const gamemap::location&);
-	void lose_tower(const gamemap::location&);
-	void clear_towers();
-	const std::set<gamemap::location>& towers() const;
-	bool owns_tower(const gamemap::location&) const;
+	void get_village(const gamemap::location&);
+	void lose_village(const gamemap::location&);
+	void clear_villages();
+	const std::set<gamemap::location>& villages() const;
+	bool owns_village(const gamemap::location&) const;
 
 	int gold() const;
 	int income() const;
@@ -126,7 +126,7 @@ public:
 
 private:
 	int gold_;
-	std::set<gamemap::location> towers_;
+	std::set<gamemap::location> villages_;
 
 	typedef std::vector<std::vector<bool> > shroud_map;
 	shroud_map shroud_, fog_;

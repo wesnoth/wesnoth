@@ -28,6 +28,7 @@
 #include "statistics.hpp"
 #include "tooltips.hpp"
 #include "unit.hpp"
+#include "unit_display.hpp"
 #include "util.hpp"
 
 #include <cmath>
@@ -106,9 +107,9 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		std::set<gamemap::location> allowed_teleports;
 		if(u.type().teleports()) {
-			allowed_teleports = vacant_towers(current_team.towers(),units);
+			allowed_teleports = vacant_villages(current_team.villages(),units);
 			teleports = &allowed_teleports;
-			if(current_team.towers().count(ui->first))
+			if(current_team.villages().count(ui->first))
 				allowed_teleports.insert(ui->first);
 		}
 
@@ -373,9 +374,9 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 				std::set<gamemap::location> allowed_teleports;
 				if(can_teleport) {
-					allowed_teleports = vacant_towers(current_team.towers(),units_);
+					allowed_teleports = vacant_villages(current_team.villages(),units_);
 					teleports = &allowed_teleports;
-					if(current_team.towers().count(un->first))
+					if(current_team.villages().count(un->first))
 						allowed_teleports.insert(un->first);
 				}
 
@@ -805,9 +806,9 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 				std::set<gamemap::location> allowed_teleports;
 				if(u.type().teleports()) {
-					allowed_teleports = vacant_towers(current_team.towers(),units_);
+					allowed_teleports = vacant_villages(current_team.villages(),units_);
 					teleports = &allowed_teleports;
-					if(current_team.towers().count(it->first))
+					if(current_team.villages().count(it->first))
 						allowed_teleports.insert(it->first);
 
 				}
@@ -1142,7 +1143,7 @@ void turn_info::undo()
 		}
 	
 		if(map_.is_village(route.front())) {
-			get_tower(route.front(),teams_,action.original_village_owner,units_);
+			get_village(route.front(),teams_,action.original_village_owner,units_);
 		}
 	
 		action.starting_moves = u->second.movement_left();
@@ -1150,7 +1151,7 @@ void turn_info::undo()
 		unit un = u->second;
 		un.set_goto(gamemap::location());
 		units_.erase(u);
-		gui_.move_unit(route,un);
+		unit_display::move_unit(gui_,map_,route,un);
 		un.set_movement(starting_moves);
 		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 		gui_.draw_tile(route.back().x,route.back().y);
@@ -1220,12 +1221,12 @@ void turn_info::redo()
 		unit un = u->second;
 		un.set_goto(gamemap::location());
 		units_.erase(u);
-		gui_.move_unit(route,un);
+		unit_display::move_unit(gui_,map_,route,un);
 		un.set_movement(starting_moves);
 		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 	
 		if(map_.is_village(route.back())) {
-			get_tower(route.back(),teams_,un.side()-1,units_);
+			get_village(route.back(),teams_,un.side()-1,units_);
 		}
 	
 		gui_.draw_tile(route.back().x,route.back().y);

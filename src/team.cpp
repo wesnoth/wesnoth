@@ -57,7 +57,7 @@ team::team_info::team_info(const config& cfg)
 
 	const std::string& village_income = cfg["village_gold"];
 	if(village_income.empty())
-		income_per_village = game_config::tower_income;
+		income_per_village = game_config::village_income;
 	else
 		income_per_village = atoi(village_income.c_str());
 
@@ -226,7 +226,7 @@ team::team(const config& cfg, int gold) : gold_(gold), info_(cfg)
 	//load in the villages the side controls at the start
 	const config::child_list& villages = cfg.get_children("village");
 	for(config::child_list::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-		towers_.insert(gamemap::location(**v));
+		villages_.insert(gamemap::location(**v));
 	}
 
 	const std::string& shroud_data = cfg["shroud_data"];
@@ -252,7 +252,7 @@ void team::write(config& cfg) const
 	cfg["gold"] = buf;
 
 	//write village locations
-	for(std::set<gamemap::location>::const_iterator t = towers_.begin(); t != towers_.end(); ++t) {
+	for(std::set<gamemap::location>::const_iterator t = villages_.begin(); t != villages_.end(); ++t) {
 		t->write(cfg.add_child("village"));
 	}
 
@@ -270,31 +270,31 @@ void team::write(config& cfg) const
 	cfg["shroud_data"] = shroud_str.str();
 }
 
-void team::get_tower(const gamemap::location& loc)
+void team::get_village(const gamemap::location& loc)
 {
-	towers_.insert(loc);
+	villages_.insert(loc);
 }
 
-void team::lose_tower(const gamemap::location& loc)
+void team::lose_village(const gamemap::location& loc)
 {
-	if(owns_tower(loc)) {
-		towers_.erase(towers_.find(loc));
+	if(owns_village(loc)) {
+		villages_.erase(villages_.find(loc));
 	}
 }
 
-void team::clear_towers()
+void team::clear_villages()
 {
-	towers_.clear();
+	villages_.clear();
 }
 
-const std::set<gamemap::location>& team::towers() const
+const std::set<gamemap::location>& team::villages() const
 {
-	return towers_;
+	return villages_;
 }
 
-bool team::owns_tower(const gamemap::location& loc) const
+bool team::owns_village(const gamemap::location& loc) const
 {
-	return towers_.count(loc) > 0;
+	return villages_.count(loc) > 0;
 }
 
 int team::gold() const
@@ -305,7 +305,7 @@ int team::gold() const
 int team::income() const
 {
 	return atoi(info_.income.c_str()) +
-	       towers_.size()*info_.income_per_village+game_config::base_income;
+	       villages_.size()*info_.income_per_village+game_config::base_income;
 }
 
 void team::new_turn()
@@ -561,11 +561,11 @@ int team::nteams()
 	}
 }
 
-const std::set<gamemap::location> vacant_towers(const std::set<gamemap::location>& towers, const unit_map& units)
+const std::set<gamemap::location> vacant_villages(const std::set<gamemap::location>& villages, const unit_map& units)
 {
 	std::set<gamemap::location> res;
 	
-	for(std::set<gamemap::location>::const_iterator i = towers.begin(); i != towers.end(); ++i) {
+	for(std::set<gamemap::location>::const_iterator i = villages.begin(); i != villages.end(); ++i) {
 		if(units.count(*i) == 0) {
 			res.insert(*i);
 		}

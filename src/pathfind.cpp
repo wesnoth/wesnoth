@@ -157,16 +157,16 @@ void find_routes(const gamemap& map, const gamestatus& status,
 	get_adjacent_tiles(loc,&locs[0]);
 
 	//check for teleporting units -- we must be on a vacant (or occupied by this unit)
-	//tower, that is controlled by our team to be able to teleport.
+	//village, that is controlled by our team to be able to teleport.
 	if(allow_teleport && map.is_village(loc) &&
-	   current_team.owns_tower(loc) && (starting_pos || units.count(loc) == 0)) {
-		const std::vector<gamemap::location>& towers = map.towers();
+	   current_team.owns_village(loc) && (starting_pos || units.count(loc) == 0)) {
+		const std::vector<gamemap::location>& villages = map.villages();
 
-		//if we are on a tower, see all friendly towers that we can
+		//if we are on a village, see all friendly villages that we can
 		//teleport to
-		for(std::vector<gamemap::location>::const_iterator t = towers.begin();
-		    t != towers.end(); ++t) {
-			if(!current_team.owns_tower(*t) || units.count(*t))
+		for(std::vector<gamemap::location>::const_iterator t = villages.begin();
+		    t != villages.end(); ++t) {
+			if(!current_team.owns_village(*t) || units.count(*t))
 				continue;
 
 			locs.push_back(*t);

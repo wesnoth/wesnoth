@@ -748,6 +748,16 @@ const std::vector<config*>& unit_type::possible_traits() const
 
 unit_race::GENDER unit_type::gender() const { return gender_; }
 
+const std::string& unit_type::race() const
+{
+	if(race_ == NULL) {
+		static const std::string empty_string;
+		return empty_string;
+	}
+
+	return race_->name();
+}
+
 game_data::game_data(const config& cfg)
 {
 	static const std::vector<config*> dummy_traits;

@@ -218,7 +218,7 @@ private:
         calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
         for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
-            if(get_info().map.is_village(i->first) && current_team().owns_tower(i->first) == false) {
+            if(get_info().map.is_village(i->first) && current_team().owns_village(i->first) == false) {
                 move_unit(i->second,i->first,possible_moves);
                 get_villages();
                 return;

@@ -21,7 +21,7 @@
 namespace game_config
 {
 	extern int base_income;
-	extern int tower_income;
+	extern int village_income;
 	extern int heal_amount;
 	extern int healer_heals_per_turn;
 	extern int cure_amount;

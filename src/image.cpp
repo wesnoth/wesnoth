@@ -20,6 +20,8 @@ mini_terrain_cache_map mini_terrain_cache;
 typedef std::map<std::string,SDL_Surface*> image_map;
 image_map images_,scaledImages_,unmaskedImages_,greyedImages_,brightenedImages_;
 
+std::map<SDL_Surface*,SDL_Surface*> reversedImages_;
+
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
 std::string image_mask;
@@ -74,6 +76,7 @@ void flush_cache()
 	clear_surfaces(greyedImages_);
 	clear_surfaces(brightenedImages_);
 	clear_surfaces(mini_terrain_cache);
+	clear_surfaces(reversedImages_);
 }
 
 }
@@ -111,6 +114,7 @@ void set_colour_adjustment(int r, int g, int b)
 		clear_surfaces(scaledImages_);
 		clear_surfaces(greyedImages_);
 		clear_surfaces(brightenedImages_);
+		clear_surfaces(reversedImages_);
 	}
 }
 
@@ -136,6 +140,7 @@ void set_image_mask(const std::string& image)
 		clear_surfaces(scaledImages_);
 		clear_surfaces(greyedImages_);
 		clear_surfaces(brightenedImages_);
+		clear_surfaces(reversedImages_);
 	}
 
 }
@@ -148,6 +153,7 @@ void set_zoom(double amount)
 		clear_surfaces(greyedImages_);
 		clear_surfaces(brightenedImages_);
 		clear_surfaces(unmaskedImages_);
+		clear_surfaces(reversedImages_);
 	}
 }
 
@@ -284,6 +290,28 @@ SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 	}
 
 	return surf;
+}
+
+SDL_Surface* reverse_image(SDL_Surface* surf)
+{
+	if(surf == NULL) {
+		return NULL;
+	}
+
+	const std::map<SDL_Surface*,SDL_Surface*>::iterator itor = reversedImages_.find(surf);
+	if(itor != reversedImages_.end()) {
+		sdl_add_ref(itor->second);
+		return itor->second;
+	}
+
+	SDL_Surface* const rev = flip_surface(surf);
+	if(rev == NULL) {
+		return NULL;
+	}
+
+	reversedImages_.insert(std::pair<SDL_Surface*,SDL_Surface*>(surf,rev));
+	sdl_add_ref(rev);
+	return rev;
 }
 
 void register_image(const std::string& id, SDL_Surface* surf)

@@ -208,6 +208,8 @@ public:
 
 	unit_race::GENDER gender() const;
 
+	const std::string& race() const;
+
 private:
 	const config& cfg_;
 
