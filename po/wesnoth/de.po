@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-11-25 11:29+0100\n"
-"PO-Revision-Date: 2004-11-26 20:06+0100\n"
+"PO-Revision-Date: 2004-11-28 12:54+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -148,9 +148,9 @@ msgid ""
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
-"While playing, keep in mind that if you mouse-over many items on the menu "
-"bar to the right, a brief description will pop up explaining that item. This "
-"is especially useful when you encounter new abilities for the first time."
+"Wenn Sie während des Spiels die Maus über die Menüleiste rechts bewegen, "
+"bekommen Sie zu den meisten Dingen eine kurze Beschreibung. Das ist vor "
+"allem sinnvoll wenn Sieneue Eigenschaften zum ersten mal sehen."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -169,7 +169,7 @@ msgid ""
 msgstr ""
 "Am Anfang einer Schlacht, und manchmal auch während des Kampfes, müssen Sie "
 "Truppen für Ihre Armee ausbilden. Dafür muss Ihr Anführer (Konrad in der "
-"Kampagne \"Der Thronerbe\") auf dem Burgfried-Feld in einer Burg stehen. Sie "
+"Kampagne »Der Thronerbe«) auf dem Burgfried-Feld in einer Burg stehen. Sie "
 "können dann entweder \"Ausbilden\" im Menü auswählen oder nach einem "
 "Rechtsklick auf ein Hexfeld <italic>text=Ausbilden</italic> auswählen. "
 "Danach erscheint das Ausbildungsmenü, wo alle Einheitenarten, die "
@@ -673,7 +673,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Einheiten mit der <ref>dst=ability_cures text='Kurieren '</ref>-Fähigkeit "
+"Einheiten mit der <ref>dst=ability_cures text='Kurieren '</ref>-Fertigkeit "
 "heilen 8 Lebenspunkte bei benachbarten Einheiten oder heilen eine Einheit "
 "von ihrer Vergiftung."
 
@@ -718,10 +718,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Income is simple. For every village you control, you gain one gold a turn. "
-"Thus, if you have ten villages, you would normally gain ten gold. "
-"Unfortunately, your Upkeep costs are subtracted from this income, as "
-"detailed below."
+"Mit dem Einkommen ist es einfach: Sie bekommen für jedes Dorf, das Sie "
+"kontrollieren, 1 Goldstück pro Zug. Wenn Sie also zehn Dörfer haben, würden "
+"Sie zehn Goldstücke bekommen. Leider werden Ihnen davon die Unterhaltskosten "
+"noch abgezogen."
 
 #: data/help.cfg:189
 msgid ""
@@ -804,11 +804,11 @@ msgid ""
 "\n"
 "The currently available traits are the following."
 msgstr ""
-"Most units have two traits. Traits are attributes of the unit that modify "
-"its attributes slightly. They are assigned to a unit randomly when the unit "
-"is recruited.\n"
+"Die meisten Einheiten haben zwei Charakteristiken, durch die ihre Attribute "
+"leicht modifiziert werden. Eine Einheit bekommt diese zufällig bei der "
+"Ausbildung zugewiesen.\n"
 "\n"
-"The currently available traits are the following."
+"Es gibt im Moment folgende Charakteristiken:"
 
 #: data/help.cfg:219
 msgid ""
@@ -974,7 +974,7 @@ msgstr "Unmengen an Gold"
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr "Ich wünschte, diese Goldmünze würde zehnfach an mich zurückgegeben."
+msgstr "Ich wünschte, das Zehnfach dieser Goldmünze würde zu mir zurückkehren."
 
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
@@ -983,7 +983,7 @@ msgstr "Frieden für ganz Wesnoth."
 #: data/items.cfg:306
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr ""
-"Die einzige Sache, die es wert ist, sich zu wünschen, ist Frieden für das "
+"Die einzige Sache, die es wert ist, gewünscht zu werden, ist Frieden für das "
 "gesamte Land."
 
 #: data/items.cfg:313
@@ -1000,7 +1000,7 @@ msgstr "Ein Gefühl des Wohlergehens durchstömt den Körper des Trinkenden."
 
 #: data/items.cfg:340
 msgid "You are not worthy of healing."
-msgstr "Ihr seid es nicht wert geheilt zu werden."
+msgstr "Ihr seid es nicht wert, geheilt zu werden."
 
 #: data/items.cfg:374
 #, fuzzy
@@ -1047,7 +1047,7 @@ msgstr "Ring der Regeneration"
 
 #: data/items.cfg:536
 msgid "This ring will heal the bearer a little each turn."
-msgstr "Dieser Rin wird den Träger jede Runde ein wenig heilen."
+msgstr "Dieser Ring wird den Träger jede Runde ein wenig heilen."
 
 #: data/items.cfg:556
 msgid "Can't set abilities yet, sorry."
@@ -1097,7 +1097,7 @@ msgstr "Flammenschwert"
 
 #: data/items.cfg:711
 msgid "Only the leader of an army can wield this sword!"
-msgstr "Nur der Anführer einer Armee lann dieses Schwerd handhaben!"
+msgstr "Nur der Anführer einer Armee kann dieses Schwerd handhaben!"
 
 #: data/items.cfg:723
 msgid "flaming sword"
@@ -1113,9 +1113,9 @@ msgid ""
 "Wesnoth, the Sceptre has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
-"Dieses antike Szepter wurde von den Zwergen geschmiedet. Als Symbols der "
-"Herrschaft über Wesnoth, verleiht diese Szepter dem Träger die Macht, "
-"feuerbälle auf seine Feinde zu feuern."
+"Dieses antike Szepter wurde von den Zwergen geschmiedet. Als Symbol der "
+"Herrschaft über Wesnoth, verleiht dieses Szepter dem Träger die Macht, "
+"Feuerbälle auf seine Feinde zu feuern."
 
 #: data/items.cfg:759
 msgid ""
@@ -1245,10 +1245,11 @@ msgid ""
 "East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
 "Mountain dominated area."
 msgstr ""
-"Eine 4-Spieler Karte die sowohl dafür geeignet ist alleine zu spielen, als "
-"auch im Team. Der Sieg hängt davon ab, die zentrale Insel zu beherrschen. "
-"Nordwesten: von Wald beherrschtes gebiet, Nordosten: gemischte "
-"Schneeflächen, Südwesten: gemischte Wüstenflächen, Südosten: bergiger Bereich"
+"Eine 4-Spieler Karte, die sowohl dafür geeignet ist, alleine zu spielen, als "
+"auch im Team. Derjenige wird siegreich sein, dem es gelingt die Heilige "
+"Quelle in Besitz zu nehmen. Nordwesten: von Wald beherrschtes Gebiet, "
+"Nordosten: gemischte Schneeflächen, Südwesten: gemischte Wüstenflächen, "
+"Südosten: gebirgiger Bereich"
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
@@ -1258,8 +1259,8 @@ msgstr "Blitz"
 #: data/scenarios/multiplayer/Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
 msgstr ""
-"Eine Duell-Karte fur superschnelle Spiele. Empfolene Einstellung: 2 "
-"Einheiten Gold pro Dorf."
+"Eine Duellkarte fur superschnelle Spiele. Empfolene Einstellung: 2 Einheiten "
+"Gold pro Dorf."
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
@@ -1271,9 +1272,9 @@ msgid ""
 "fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
 "2,4."
 msgstr ""
-"Eine kleine Karte, für den Kampf 2 gegen 2. Sie spielt um die Ruinen ener "
-"alten Brücke. Perfekt für schnelle, kampflastige Mannschaftsspiele. Spieler "
-"1 und 3, sowie 2 und 4 starten gemeinsam."
+"Eine kleine Karte für den Kampf 2 gegen 2, die um die Ruinen einer alten "
+"Brücke angesiedelt ist. Perfekt für schnelle, kampflastige "
+"Mannschaftsspiele. Spieler 1 und 3 sowie 2 und 4 starten gemeinsam."
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
@@ -1313,9 +1314,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Eine Zufallskarte mit Sand als vorherrschendem Untergrund. Bemerkung: "
-"Zufallskarten sind oft unausgewogen, doch wenn ihr Zeit habt, könnt ihr "
-"sooft neue erstellen, bis ihr eine gute Karte habt."
+"Eine Zufallskarte mit Sand als vorherrschender Landschaft. Bemerkung: "
+"Zufallskarten sind oft unausgewogen, doch wenn Ihr Zeit habt, könnt ihr "
+"sooft neue erstellen, bis Ihr eine gute Karte habt."
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:17
@@ -1328,9 +1329,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Eine Zufallskarte mit Sumpfland als vorherrschendem Untergrund. Bemerkung: "
-"Zufallskarten sind oft unausgewogen, doch wenn ihr Zeit habt, könnt ihr "
-"sooft neue erstellen, bis ihr eine gute Karte habt."
+"Eine Zufallskarte mit Sumpfland als vorherrschender Landschaft. Bemerkung: "
+"Zufallskarten sind oft unausgewogen, doch wenn Ihr Zeit habt, könnt ihr "
+"sooft neue erstellen, bis Ihr eine gute Karte habt"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
@@ -1344,8 +1345,8 @@ msgid ""
 "can regenerate them until you get a good one."
 msgstr ""
 "Eine Zufallskarte, die zwischen Frühling und Winter angesiedelt ist. "
-"Bemerkung: Zufallskarten sind oft unausgewogen, doch wenn ihr Zeit habt, "
-"könnt ihr sooft neue erstellen, bis ihr eine gute Karte habt."
+"Bemerkung: Zufallskarten sind oft unausgewogen, doch wenn Ihr Zeit habt, "
+"könnt ihr sooft neue erstellen, bis Ihr eine gute Kcarte habt"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
@@ -1359,7 +1360,7 @@ msgid ""
 "return to that player's end zone with an injury."
 msgstr ""
 "Auf der Karte Wesbowl muss der Spieler seinen Ball in die Endzone seines "
-"Gegners befördern. Der Gegner kann eure Einheiten nätürlich angreifen. "
+"Gegners befördern. Der Gegner kann Eure Einheiten nätürlich angreifen. "
 "Wesbowl wird mit stumpfen Waffen gespielt und Heiler sind zur Hand, weshalb "
 "getötete Einheiten in der eigenen Endzone mit einer Verletzung "
 "wiederauferstehen."
@@ -1376,10 +1377,10 @@ msgid ""
 msgstr ""
 "\n"
 "Sieg:\n"
-"@Bringt euren Ball öfter in die gegnerische Endzone, als der andere Spieler "
-"seinen in eure Endzone bringt\n"
+"@Bringt Euren Ball öfter in die gegnerische Endzone, als der andere Spieler "
+"seinen in Eure Endzone bringt\n"
 "Niederlage:\n"
-"#Der Gegner bringt seinen Ball öfter in eure Endzone als ihr euren in seine"
+"#Der Gegner bringt seinen Ball öfter in Eure Endzone, als ihr Euren in seine."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:199
 #: data/scenarios/multiplayer/Wesbowl.cfg:476
@@ -1396,7 +1397,7 @@ msgstr ""
 #: data/scenarios/multiplayer/Wesbowl.cfg:337
 #: data/scenarios/multiplayer/Wesbowl.cfg:614
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "Soll ich den ball an $passto.type ($xloc,$yloc) abspielen?"
+msgstr "Soll ich den Ball an $passto.type ($xloc,$yloc) abspielen?"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:339
 #: data/scenarios/multiplayer/Wesbowl.cfg:616
@@ -1433,8 +1434,8 @@ msgid ""
 "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
 msgstr ""
 "Zwei 2er Teams kämpfen um die Kontrolle der Brücke, die über den Weslinfluss "
-"führt. Geeignet für eine etwas längere Partie. Spieler 1 und 3, sowie 2 und "
-"4 sollten verbündet sein."
+"führt. Geeignet für eine etwas längere Partie. Spieler 1 und 3 sowie 2 und 4 "
+"sollten verbündet sein."
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
@@ -1454,10 +1455,10 @@ msgid ""
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
 msgstr ""
-"Diese Karte wird gerne genutzt, um zu testen wie gut zwei Fraktionen "
-"ausbalanciert sind, da beide Seiten etwa gleiche Bedingungen haben. \n"
+"Diese Karte wird gerne genutzt, um zu testen, wie gut zwei Fraktionen "
+"ausbalanciert sind, da beide Seiten etwa gleiche Bedingungen haben.\n"
 "Ihr könnt Computer gegen Computer spielen lassen, um zu sehen, wie sich die "
-"Parteien gegeneinander schlagen."
+"Fraktionen gegeneinander schlagen."
 
 #: data/scenarios/multiplayer/scenarios.cfg:110
 msgid "The Isle of Anduin"
@@ -1604,7 +1605,7 @@ msgid ""
 msgstr ""
 "Da sich Einheiten in dem Zug, in dem sie ausgebildet wurden, nicht bewegen "
 "oder angreifen können, müsst Ihr euren Zug jetzt beenden. Dazu klickt "
-"einfach auf den \"Zug beenden\"-Button ganz unten rechts."
+"einfach auf den »Zug beenden«-Button ganz unten rechts."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:78
 msgid "End your turn"
@@ -1655,7 +1656,7 @@ msgid ""
 "it, then select his destination. In this case, his destination is the forest "
 "next to the Elvish Shaman, Merle."
 msgstr ""
-"Als nächstes müsst Ihr euren Elfen-Kämpfer bewegen. Um eine Einheit zu "
+"Als nächstes müsst Ihr euren Elfenkrieger bewegen. Um eine Einheit zu "
 "bewegen, wählt sie zuerst aus, und klickt dann auf das Zielfeld. In diesem "
 "Fall ist dies der Wald neben dem Elfenschamanen Merle."
 
@@ -1669,14 +1670,14 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
-"Ausgezeichnet! Ihr habt euren Elfen-Kämpfer erfolgreich gezogen. Da er "
+"Ausgezeichnet! Ihr habt euren Elfenkrieger erfolgreich gezogen. Da er "
 "allerdings neben eine gegnerische Einheit gezogen ist, hat er alle "
 "Bewegungspunkte für den Rest des Zuges verloren. Das wird 'Kontrollzone' "
 "genannt."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:122
 msgid "How far can my Elvish Fighter move?"
-msgstr "Wie weit kann sich mein Elfen-Kämpfer bewegen?"
+msgstr "Wie weit kann sich mein Elfenkrieger bewegen?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:122
 msgid ""
@@ -1691,10 +1692,10 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
-"Euer Elfen-Kämpfer hat am Anfang jeden Zuges eine bestimmte Anzahl an "
-"Bewegungspunkten, auch \"Geschwindigkeit\" genannt. Wenn Ihr den Elfen-"
-"Kämpfer einen Pfad entlangbewegt, kostet ihn jedes Hexfeld, das er betritt, "
-"Bewegungspunkte. Wenn Ihr euren Elfen-Kämpfer auswählt, werden alle Felder, "
+"Euer Elfenkrieger hat am Anfang jeden Zuges eine bestimmte Anzahl an "
+"Bewegungspunkten, auch »Geschwindigkeit« genannt. Wenn Ihr den Elfenkrieger "
+"einen Pfad entlangbewegt, kostet ihn jedes Hexfeld, das er betritt, "
+"Bewegungspunkte. Wenn Ihr euren Elfenkrieger auswählt, werden alle Felder, "
 "die er in diesem Zug nicht erreichen kann, verdunkelt. Wenn das Zielfeld "
 "weiter als eine Runde entfernt ist, erscheint eine Zahl, die anzeigt, "
 "wieviele Runden die jeweilige Einheit braucht, um das Feld zu erreichen. "
@@ -1743,8 +1744,8 @@ msgstr ""
 "bewegen können einen roten. Gegnerische Einheiten haben keinen Energiekreis. "
 "Aliierte Einheiten wie ich, die nicht von Euch kontrolliert werden, haben "
 "einen blauen Energiekreis. Weiterhin könnt Ihr in den Einstellungen "
-"\"Teamfarben anzeigen\" auswählen. Dann wird unter jeder Einheit eine "
-"Scheibe in der Farbe der Partei angezeigt."
+"»Teamfarben anzeigen« auswählen. Dann wird unter jeder Einheit eine Scheibe "
+"in der Farbe der Partei angezeigt."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:130
 msgid ""
@@ -1884,7 +1885,7 @@ msgstr ""
 "Möglichkeiten, zu was die Einheit aufsteigen kann. Aufgestiegene Einheiten "
 "sind normalerweise stärker als vorher, und haben eine um 1 höhere Stufe. "
 "Weiterhin wird eine Einheit bei einem Aufstieg komplett von allem Schaden "
-"und Effekten geheilt. Das wird \"Aufstiegs-Heilung\" genannt."
+"und Effekten geheilt. Das wird »Aufstiegsheilung« genannt."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:175
 msgid "Move your fighter onto a village."
@@ -2090,9 +2091,9 @@ msgstr ""
 "Die meisten Szenarios könnt Ihr gewinnen, in dem Ihr alle gegnerischen "
 "Anführer besiegt. Um dieses Szenario zu gewinnen, müsst Ihr mich besiegen. "
 "Euer Kämpfer aus dem vorigen Szenario kann Euch dabei helfen. Um ihn "
-"einzuberufen, müsst Ihr auf ein Burgfeld rechts-klicken, \"Einberufen\" "
-"auswählen, den Kämpfer auswählen und dann \"OK\" drücken. Ihr solltet auch "
-"Elfen-Kämpfer und Elfen-Schützen ausbilden."
+"einzuberufen, müsst Ihr auf ein Burgfeld rechts-klicken, »Einberufen« "
+"auswählen, den Kämpfer auswählen und dann »OK« drücken. Ihr solltet auch "
+"Elfenkrieger und Elfen-Schützen ausbilden."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:64
 msgid ""
@@ -2126,7 +2127,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 msgid "You have successfully recalled your Elvish Fighter."
-msgstr "Ihr habt euren Elfen-Kämpfer erfolgreich einberufen."
+msgstr "Ihr habt euren Elfenkrieger erfolgreich einberufen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:77
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:91
@@ -2216,7 +2217,7 @@ msgstr ""
 "Es gibt fünf verschiedene Charakteristiken, die Effekte wie zum Beispiel dem "
 "Erhöhen der Lebenspunkte oder dem Verringern der zum Aufstieg benötigten EP "
 "haben. Jede Charakteristik verbessert die Eigenschaften einer Einheit, es "
-"gibt keine \"schlechten Charakteristiken\". Die meisten Einheiten haben die "
+"gibt keine »schlechten Charakteristiken«. Die meisten Einheiten haben die "
 "gleiche Chance für jede Charakteristik."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
@@ -2331,7 +2332,6 @@ msgstr ""
 "Eigenschaften verleiht."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2344,7 +2344,7 @@ msgid ""
 "the time."
 msgstr ""
 "Einige Eigenschaften zweier Geländearten wurden schon beschrieben, nämlich "
-"\"Dorf\" und \"Burg\". Es gibt jedoch allgemeine Eigenschaften, die jedes "
+"»Dorf« und »Burg«. Es gibt jedoch allgemeine Eigenschaften, die jedes "
 "Gelände hat. Das ist einmal die Anzahl an Bewegungspunkten, die eine Einheit "
 "verbraucht, wenn sie sich auf ein ein Feld eines Geländetyps bewegt, und zum "
 "Zweiten der Verteidigungswert einer Einheit, wenn sie auf einem Feld eines "
@@ -2479,11 +2479,11 @@ msgid ""
 "while next to a unit of higher level with leadership."
 msgstr ""
 "Es gibt viele Spezialitäten, sie alle kennen zu lernen ist eine interessante "
-"Facette Wesnoths. Die häufigsten Spezialitäten sind \"magisch\" und "
-"\"Anführerschaft\". Magische Attacken haben eine 70%tige "
+"Facette Wesnoths. Die häufigsten Spezialitäten sind »magisch« und "
+"»Führungsqualitäten«. Magische Attacken haben eine 70%tige "
 "Trefferwahrscheinlichkeit, unabhängig vom Gelände, auf dem der Verteidiger "
-"steht. Einheiten machen mehr Schaden, wenn sie neben einer Einheit mit "
-"\"Anführerschaft\" stehen, die eine höhere Stufe hat."
+"steht. Einheiten verursachen mehr Schaden, wenn sie neben einer Einheit mit "
+"»Führungsqualitäten« stehen, die eine höhere Stufe hat."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid "What kinds of specialties can my units get?"
@@ -2502,7 +2502,7 @@ msgid ""
 msgstr ""
 "Um eine Spezialität zu benutzen, müsst Ihr lediglich eure Einheiten so "
 "bewegen oder angreifen lassen, dass die Spezialität aktiviert wird. Um "
-"\"Anführerschaft\" zu benutzen, müsst Ihr mit einer Einheit angreifen, die "
+"»Führungsqualitäten« zu benutzen, müsst Ihr mit einer Einheit angreifen, die "
 "neben einer Einheit mit dieser Spezialität steht."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:184
@@ -2528,7 +2528,7 @@ msgid ""
 "objects in a campaign."
 msgstr ""
 "Die Objekte, die Ihr findet, werden vom jeweiligen Szenario-Designer "
-"gewählt, deshalb variiert das von Kampagne zu Kampagne. In \"Der Thronerbe\" "
+"gewählt, deshalb variiert das von Kampagne zu Kampagne. In »Der Thronerbe« "
 "bekommt der Finder eines Objekts meistens eine neue Waffe. Es gibt meistens "
 "nicht sehr viele Objekte in einer Kampagne."
 
@@ -2579,10 +2579,10 @@ msgid ""
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
-"Um eine Kampagne anzufangen, starte Wesnoth, wähle \"Kampagne\", dann die "
+"Um eine Kampagne zu beginnen, startet Wesnoth, wählt »Kampagne«, dann die "
 "Kampagne, die Ihr spielen wollt, und anschließend den Schwierigkeitsgrad "
-"(leicht, mittel, schwer). Wesnoth-Einsteiger sollten mit der Kampagne \"Der "
-"Thronerbe\" beginnen."
+"(leicht, mittel, schwierig). Wesnoth-Einsteiger sollten mit der Kampagne "
+"»Der Thronerbe« beginnen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:244
 msgid "How do I play multiplayer?"
