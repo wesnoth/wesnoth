@@ -15,6 +15,7 @@
 #define LOG_HPP_INCLUDED
 
 #include <iosfwd>
+#include <ostream>
 #include <string>
 
 namespace lg {
