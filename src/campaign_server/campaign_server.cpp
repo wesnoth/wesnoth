@@ -3,6 +3,8 @@
 #include "../publish_campaign.hpp"
 #include "../util.hpp"
 
+#include "SDL.h"
+
 #include <iostream>
 
 namespace {
@@ -49,7 +51,6 @@ campaign_server::campaign_server(const std::string& cfgfile)
 void campaign_server::run()
 {
 	for(;;) {
-		SDL_Delay(1000);
 		try {
 			network::process_send_queue();
 
@@ -116,6 +117,8 @@ void campaign_server::run()
 		} catch(config::error& e) {
 			std::cerr << "error in receiving data...\n";
 		}
+
+		SDL_Delay(20);
 	}
 }
 
