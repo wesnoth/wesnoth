@@ -281,7 +281,7 @@ void replay::add_recall(int value, const gamemap::location& loc)
 void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
 {
 	add_pos("move",a,b);
-	current_->add_child("verify",make_verify_units());
+	//current_->add_child("verify",make_verify_units());
 	current_ = NULL;
 }
 
@@ -354,7 +354,7 @@ void replay::end_turn()
 {
 	config* const cmd = add_command();
 	cmd->add_child("end_turn");
-	cmd->add_child("verify",make_verify_units());
+	//cmd->add_child("verify",make_verify_units());
 }
 
 void replay::speak(const config& cfg)
