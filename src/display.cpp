@@ -1196,7 +1196,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		short* startdst = dstlock.pixels() + j*dst->w + xdst;
 
 		const Pixel replace_energy =
-		             Pixel(SDL_MapRGB(energy_image->format,0xFF,0xFF,0xFF));
+		       Pixel(SDL_MapRGBA(energy_image->format,0xFF,0xFF,0xFF,0xFF));
 		const short new_energy = yloc >= show_energy_after ?
 		                             energy_colour : energy_loss_colour;
 
