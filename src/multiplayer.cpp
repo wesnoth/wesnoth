@@ -316,9 +316,12 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 	for(std::vector<config*>::iterator sd = sides.begin();
 	    sd != sides.end(); ++sd) {
-		(*sd)->values["name"] = possible_sides.front()->values["name"];
-		(*sd)->values["type"] = possible_sides.front()->values["type"];
-		(*sd)->values["recruit"] = possible_sides.front()->values["recruit"];
+		if((*sd)->values["name"].empty())
+			(*sd)->values["name"] = possible_sides.front()->values["name"];
+		if((*sd)->values["type"].empty())
+			(*sd)->values["type"] = possible_sides.front()->values["type"];
+		if((*sd)->values["recruit"].empty())
+			(*sd)->values["recruit"]=possible_sides.front()->values["recruit"];
 	}
 
 	res = 0;
