@@ -872,18 +872,18 @@ struct terrain_topic_generator: topic_generator
 			}
 			string_map sm;
 			sm["terrains"] = alias_ss.str();
-			ss << config::interpolate_variables_into_string(string_table["terrain_acts_as"], &sm)
-			   << ".";
+			ss << config::interpolate_variables_into_string(
+				_("This terrain acts as $terrains for movement and defense purposes."), &sm);
 			if (aliased_terrains.size() > 1)
-				ss << " " << string_table["best_terrain_chosen"] << ".";
+				ss << " " << _("The terrain with the best modifier is chosen automatically.");
 			ss << "\n\n";
 		}
 		if (type.is_keep())
-			ss << string_table["terrain_is_keep"] << ".\n\n";
+			ss << _("This terrain acts as keep, i.e., you can recruit units when a leader is in a location with this terrain.") << "\n\n";
 		if (type.is_castle())
-			ss << string_table["terrain_is_castle"] << ".\n\n";
+			ss << _("This terrain acts as castle, i.e., you can recruit units onto a location with this terrain.") << "\n\n";
 		if (type.gives_healing())
-			ss << string_table["terrain_gives_healing"] << ".\n\n";
+			ss << _("This terrain gives healing.") << "\n\n";
 		return ss.str();
 	}
 };
