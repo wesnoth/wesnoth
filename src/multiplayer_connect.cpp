@@ -148,7 +148,8 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 	} else {
 		//Load a new map
 		save_ = false;
-		level_ptr = levels[map];
+		loaded_level_ = *levels[map];
+		level_ptr = &loaded_level_;
 
 		//set the number of turns here
 		std::stringstream turns;
@@ -196,12 +197,14 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 
 	bool first = true;
 	for(sd = sides.first; sd != sides.second; ++sd) {
+		config& side = (**sd);
+
 		if(save_ == false)
 		{
 			std::stringstream svillage_gold;
 			svillage_gold << village_gold;
-			(**sd)["village_gold"] = svillage_gold.str();
-			(**sd)["gold"] = "100";
+			side["village_gold"] = svillage_gold.str();
+			side["gold"] = "100";
 			if (first == true) {
 				(**sd)["controller"] = "human";
 				(**sd)["description"] = preferences::login();
@@ -212,27 +215,26 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 			}
 		}
 
-		if((**sd)["fog"].empty())
-			(**sd)["fog"] = fog_game ? "yes" : "no";
+		if(side["fog"].empty())
+			side["fog"] = fog_game ? "yes" : "no";
 
-		if((**sd)["shroud"].empty())
-			(**sd)["shroud"] = shroud_game ? "yes" : "no";
+		if(side["shroud"].empty())
+			side["shroud"] = shroud_game ? "yes" : "no";
 
-		if((**sd)["name"].empty())
-			(**sd)["name"] = (*possible_sides.front())["name"];
+		if(side["name"].empty())
+			side["name"] = (*possible_sides.front())["name"];
 
-		if((**sd)["type"].empty())
-			(**sd)["type"] = (*possible_sides.front())["type"];
+		if(side["type"].empty())
+			side["type"] = (*possible_sides.front())["type"];
 
-		if((**sd)["recruit"].empty())
-			(**sd)["recruit"] = (*possible_sides.front())["recruit"];
+		if(side["recruit"].empty())
+			side["recruit"] = (*possible_sides.front())["recruit"];
 
-		if((**sd)["music"].empty())
-			(**sd)["music"] = (*possible_sides.front())["music"];
+		if(side["music"].empty())
+			side["music"] = (*possible_sides.front())["music"];
 
-		if((**sd)["recruitment_pattern"].empty())
-			(**sd)["recruitment_pattern"] =
-		        possible_sides.front()->values["recruitment_pattern"];
+		if(side["recruitment_pattern"].empty())
+			side["recruitment_pattern"] = possible_sides.front()->values["recruitment_pattern"];
 	}
 
 	if ((*level_)["objectives"] == "")

@@ -1292,7 +1292,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 
 	SDL_Rect clip_rect = map_area();
 
-	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
+	if(xpos >= clip_rect.x + clip_rect.w || ypos >= clip_rect.y + clip_rect.h ||
 	   xpos + static_cast<int>(zoom_) < clip_rect.x || ypos + static_cast<int>(zoom_) < clip_rect.y) {
 		return;
 	}

@@ -111,6 +111,10 @@ SOURCE=.\src\ai_move.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\builder.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\widgets\button.cpp
 # End Source File
 # Begin Source File
@@ -344,6 +348,10 @@ SOURCE=.\src\ai_attack.hpp
 # Begin Source File
 
 SOURCE=.\src\ai_move.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\builder.hpp
 # End Source File
 # Begin Source File
 

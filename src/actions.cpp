@@ -1320,18 +1320,16 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 }
 
 //returns true iff some shroud is cleared
-//returns true/false in seen_unit if new units has/has not been seen
-//if known_units is NULL, seen_unit can be NULL and seen_unit is undefined
+//seen_units will return new units that have been seen by this unit
+//if known_units is NULL, seen_units can be NULL and will not be changed
 bool clear_shroud_unit(const gamemap& map, 
 		                 const gamestatus& status,
 							  const game_data& gamedata,
                        const unit_map& units, const gamemap::location& loc,
                        std::vector<team>& teams, int team,
 					   const std::set<gamemap::location>* known_units,
-						bool* seen_unit)
+					   std::set<gamemap::location>* seen_units)
 {
-	bool res;
-
 	std::vector<gamemap::location> cleared_locations;
 
 	paths p(map,status,gamedata,units,loc,teams,true,false);
@@ -1342,26 +1340,20 @@ bool clear_shroud_unit(const gamemap& map,
 
 	//clear the location the unit is at
 	clear_shroud_loc(map,teams[team],loc,&cleared_locations);
-	
-	res = (cleared_locations.empty() == false);
 
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
 		if(units.count(*it)) {
-			if(seen_unit == NULL) {
+			if(seen_units == NULL || known_units == NULL) {
 				static const std::string sighted("sighted");
 				game_events::fire(sighted,*it,loc);
 			} else if(known_units->count(*it) == 0) {
-				*seen_unit = true;
-				return res;
+				seen_units->insert(*it);
 			}
 		}
 	}
 
-	if(seen_unit != NULL) {
-		*seen_unit = false;
-	}
-	return res;
+	return cleared_locations.empty() == false;
 }
 
 }
@@ -1438,11 +1430,11 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	const bool skirmisher = u.type().is_skirmisher();
 
 	//if we use shroud/fog of war, count out the units we can currently see
-	std::set<gamemap::location> seen_units;
+	std::set<gamemap::location> known_units;
 	if(teams[team_num].uses_shroud() || teams[team_num].uses_fog()) {
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			if(teams[team_num].fogged(u->first.x,u->first.y) == false) {
-				seen_units.insert(u->first);
+				known_units.insert(u->first);
 			}
 		}
 	}
@@ -1450,7 +1442,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	//see how far along the given path we can move
 	const int starting_moves = u.movement_left();
 	int moves_left = starting_moves;
-	bool seen_unit = false;
+	std::set<gamemap::location> seen_units;
 	bool discovered_unit = false;
 	bool should_clear_stack = false;
 	std::vector<gamemap::location>::const_iterator step;
@@ -1460,35 +1452,33 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 			
 		const int mv = u.movement_cost(map,terrain);
-		if(discovered_unit || seen_unit || mv > moves_left || enemy_unit != units.end() &&
+		if(discovered_unit || seen_units.empty() == false || mv > moves_left || enemy_unit != units.end() &&
 		   teams[team_num].is_enemy(enemy_unit->second.side())) {
 			break;
 		} else {
 			moves_left -= mv;
 		}
 
-		if(!skirmisher && enemy_zoc(map,status,units,teams,*step,teams[team_num],
-					u.side())) {
+		if(!skirmisher && enemy_zoc(map,status,units,teams,*step,teams[team_num],u.side())) {
 			moves_left = 0;
 		}
 
 		//if we use fog or shroud, see if we have sighted an enemy unit, in
 		//which case we should stop immediately.
 		if(teams[team_num].uses_shroud() || teams[team_num].uses_fog()) {
+
 			if(units.count(*step) == 0 && !map.is_village(*step)) {
-				units.insert(std::pair<gamemap::location,unit>(*step,ui->second));
-				
-				bool res;
+				std::cerr << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
-				should_clear_stack |= 
-					clear_shroud_unit(map,status,gamedata,units,*step,teams,
-				   	ui->second.side()-1,&seen_units,&res);
-				units.erase(*step);
+				//temporarily reset the unit's moves to full
+				const unit_movement_resetter move_resetter(ui->second);
 
-				//we've seen a new unit. Stop on the next iteration
-				if(res) {
-					seen_unit = true;
-				}
+				//we have to swap out any unit that is already in the hex, so we can put our
+				//unit there, then we'll swap back at the end.
+				const temporary_unit_placer unit_placer(units,*step,ui->second);
+
+				should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
+				                                        ui->second.side()-1,&known_units,&seen_units);
 			}
 		}
 
@@ -1526,7 +1516,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	//if we can't get all the way there and have to set a go-to,
 	//unless we stop early because of sighting a unit
-	if(steps.size() != route.size() && !seen_unit) {
+	if(steps.size() != route.size() && seen_units.empty()) {
 		ui->second.set_goto(route.back());
 		u.set_goto(route.back());
 	}
@@ -1572,6 +1562,67 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	if(disp != NULL) {
 		disp->set_route(NULL);
+
+		//show messages on the screen here
+		if(discovered_unit) {
+			//we've been ambushed, so display an appropriate message
+			font::add_floating_label(string_table["ambushed"],24,font::BAD_COLOUR,
+			                         disp->map_area().w/2,disp->map_area().h/3,
+									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
+		}
+
+		if(seen_units.empty() == false) {
+			//the message depends on how many units have been sighted, and whether
+			//they are allies or enemies, so calculate that out here
+			int nfriends = 0, nenemies = 0;
+			for(std::set<gamemap::location>::const_iterator i = seen_units.begin(); i != seen_units.end(); ++i) {
+				std::cerr << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
+				const unit_map::const_iterator u = units.find(*i);
+				assert(u != units.end());
+				if(teams[team_num].is_enemy(u->second.side())) {
+					++nenemies;
+				} else {
+					++nfriends;
+				}
+
+				std::cerr << "processed...\n";
+			}
+
+			std::string msg_id;
+
+			//the message we display is different depending on whether units sighted
+			//were enemies or friends, and whether there is one or more
+			if(seen_units.size() == 1) {
+				if(nfriends == 1) {
+					msg_id = "friendly_unit_sighted";
+				} else {
+					msg_id = "enemy_unit_sighted";
+				}
+			}
+			else if(nfriends == 0 || nenemies == 0) {
+				if(nfriends > 0) {
+					msg_id = "friendly_units_sighted";
+				} else {
+					msg_id = "enemy_units_sighted";
+				}
+			}
+			else {
+				msg_id = "units_sighted";
+			}
+
+			string_map symbols;
+			symbols["friends"] = lexical_cast<std::string>(nfriends);
+			symbols["enemies"] = lexical_cast<std::string>(nenemies);
+
+			std::cerr << "formatting string...\n";
+			const std::string message = format_string(msg_id,symbols);
+
+			std::cerr << "displaying label...\n";
+			font::add_floating_label(message,24,font::BAD_COLOUR,
+			                         disp->map_area().w/2,disp->map_area().h/3,
+									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
+		}
+
 		disp->draw();
 		disp->recalculate_minimap();
 	}

@@ -67,7 +67,12 @@ struct close_FILE
 
 void read_file_internal(const std::string& fname, std::string& res)
 {
-	res.resize(0);
+	const int size = file_size(fname);
+	if(size == -1) {
+		return;
+	}
+
+	res.resize(size);
 
 	const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"rb"));
 	if(file == NULL) {
@@ -77,12 +82,26 @@ void read_file_internal(const std::string& fname, std::string& res)
 	const int block_size = 4096;
 	char buf[block_size];
 
+	std::string::iterator i = res.begin();
+
 	for(;;) {
-		size_t nbytes = fread(buf,1,block_size,file);
-		res.resize(res.size()+nbytes);
-		std::copy(buf,buf+nbytes,res.end()-nbytes);
+		const size_t nbytes = fread(buf,1,block_size,file);
+
+		//make sure the string is big enough
+		const int size_diff = (res.end() - i) - nbytes;
+		if(size_diff < 0) {
+			res.resize(res.size() - size_diff);
+			i = res.end() - nbytes;
+		}
+		
+		std::copy(buf,buf+nbytes,i);
+		i += nbytes;
 
 		if(nbytes < block_size) {
+			if(i != res.end()) {
+				res.erase(i,res.end());
+			}
+
 			return;
 		}
 	}

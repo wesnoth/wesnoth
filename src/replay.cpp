@@ -568,6 +568,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			advance_unit(gameinfo,units,advancing_units.front(),options[val]);
 
 			advancing_units.pop_front();
+
+			//if there are no more advancing units, then we check for victory,
+			//in case the battle that led to advancement caused the end of scenario
+			if(advancing_units.empty()) {
+				check_victory(units,teams);
+			}
 		}
 
 		//if there is nothing more in the records
@@ -764,7 +770,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			if(u != units.end() && tgt != units.end()) {
 				attack(disp,map,teams,src,dst,weapon_num,units,state,gameinfo,false);
-				check_victory(units,teams);
 			}
 
 			u = units.find(src);
@@ -778,6 +783,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(tgt != units.end() && tgt->second.advances() &&
 			   tgt->second.type().advances_to().empty() == false) {
 				advancing_units.push_back(tgt->first);
+			}
+
+			//check victory now if we don't have any advancements. If we do have advancements,
+			//we don't check until the advancements are processed.
+			if(advancing_units.empty()) {
+				check_victory(units,teams);
 			}
 		} else if((child = cfg->child("speak")) != NULL) {
 			const std::string& team_name = (*child)["team_name"];

@@ -34,6 +34,7 @@
 #include "../unit_types.hpp"
 #include "../unit.hpp"
 #include "../video.hpp"
+#include "../events.hpp"
 
 #include <cctype>
 #include <iostream>
@@ -71,6 +72,83 @@ void drawbar(display& disp);
 bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gamemap map);
 int tileselected(int x, int y, display& disp);
 
+// A handler that intercepts key events.
+class editor_key_handler : public events::handler {
+public:
+	editor_key_handler(display &gui, map_undo_list &undo_stack, map_undo_list &redo_stack, gamemap &map);
+	virtual void handle_event(const SDL_Event &event);
+private:
+	map_undo_list &undo_stack_, &redo_stack_;
+	display &gui_;
+	gamemap &map_;
+	const double zoom_amount_;
+};
+
+editor_key_handler::editor_key_handler(display &gui, map_undo_list &undo_stack, map_undo_list &redo_stack, gamemap &map)
+	: gui_(gui), undo_stack_(undo_stack), redo_stack_(redo_stack), map_(map), zoom_amount_(5.0) {}
+
+void editor_key_handler::handle_event(const SDL_Event &event) {
+	const SDL_KeyboardEvent keyboard_event = event.key;
+	if (keyboard_event.type == SDL_KEYDOWN) {
+		const SDLKey sym = keyboard_event.keysym.sym;
+		if(sym == SDLK_z)
+			gui_.zoom(zoom_amount_);
+
+		if(sym == SDLK_x)
+			gui_.zoom(-zoom_amount_);
+
+		if(sym == SDLK_d)
+			gui_.default_zoom();
+
+		if(sym == SDLK_u) {
+			if(!undo_stack_.empty()) {
+				map_undo_action action = undo_stack_.back();
+				map_.set_terrain(action.location,action.old_terrain);
+				undo_stack_.pop_back();
+				redo_stack_.push_back(action);
+				if(redo_stack_.size() > undo_limit)
+					redo_stack_.pop_front();
+				gamemap::location locs[7];
+				locs[0] = action.location;
+				get_adjacent_tiles(action.location,locs+1);
+				for(int i = 0; i != 7; ++i) {
+					gui_.draw_tile(locs[i].x,locs[i].y);
+				}
+			}
+		}
+		
+		if(sym == SDLK_r) {
+			if(!redo_stack_.empty()) {
+				map_undo_action action = redo_stack_.back();
+				map_.set_terrain(action.location,action.new_terrain);
+				redo_stack_.pop_back();
+				undo_stack_.push_back(action);
+				if(undo_stack_.size() > undo_limit)
+					undo_stack_.pop_front();
+				gamemap::location locs[7];
+				locs[0] = action.location;
+				get_adjacent_tiles(action.location,locs+1);
+				for(int i = 0; i != 7; ++i) {
+					gui_.draw_tile(locs[i].x,locs[i].y);
+				}
+			}
+		}
+		
+		int mousex, mousey;
+		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+		const gamemap::location cur_hex = gui_.hex_clicked_on(mousex,mousey);
+		for(int num_key = SDLK_1; num_key != SDLK_9; ++num_key) {
+			if(sym == num_key) {
+				if(map_.on_board(cur_hex)) {
+					map_.set_terrain(cur_hex,gamemap::CASTLE);
+				}
+				map_.set_starting_position(num_key+1-SDLK_1,cur_hex);
+				gui_.invalidate_all();
+				break;
+			}
+		}
+	}
+}
 
 int main(int argc, char** argv)
 {
@@ -82,7 +160,6 @@ int main(int argc, char** argv)
 	}
 
 	const double scroll_speed = preferences::scroll_speed();
-	const double zoom_amount = 5.0;
 
 	CVideo video;
 
@@ -183,6 +260,8 @@ int main(int argc, char** argv)
 	map_undo_list undo_stack;
 	map_undo_list redo_stack;
 
+	events::event_context ec;
+	editor_key_handler key_handler(gui, undo_stack, redo_stack, map);
 	std::cerr << "starting for(;;)\n";
 	for(;;) {
 		if(key[SDLK_ESCAPE])
@@ -205,61 +284,7 @@ int main(int argc, char** argv)
 		if(key[SDLK_RIGHT] || mousex == gui.x()-1)
 			gui.scroll(scroll_speed,0.0);
 
-		if(key[SDLK_z])
-			gui.zoom(zoom_amount);
-
-		if(key[SDLK_x])
-			gui.zoom(-zoom_amount);
-
-		if(key[SDLK_d])
-			gui.default_zoom();
-
-		if(key[SDLK_u]) {
- 			if(!undo_stack.empty()) {
-				map_undo_action action = undo_stack.back();
-				map.set_terrain(action.location,action.old_terrain);
-				undo_stack.pop_back();
-				redo_stack.push_back(action);
-				if(redo_stack.size() > undo_limit)
-					redo_stack.pop_front();
-				gamemap::location locs[7];
-				locs[0] = action.location;
-				get_adjacent_tiles(action.location,locs+1);
-				for(int i = 0; i != 7; ++i) {
-					gui.draw_tile(locs[i].x,locs[i].y);
-				}
-			}
-		}
-		if(key[SDLK_r]) {
- 			if(!redo_stack.empty()) {
-				map_undo_action action = redo_stack.back();
-				map.set_terrain(action.location,action.new_terrain);
-				redo_stack.pop_back();
-				undo_stack.push_back(action);
-				if(undo_stack.size() > undo_limit)
-					undo_stack.pop_front();
-				gamemap::location locs[7];
-				locs[0] = action.location;
-				get_adjacent_tiles(action.location,locs+1);
-				for(int i = 0; i != 7; ++i) {
-					gui.draw_tile(locs[i].x,locs[i].y);
-				}
-			}
-		}
-
 		const gamemap::location cur_hex = gui.hex_clicked_on(mousex,mousey);
-		for(int num_key = SDLK_1; num_key != SDLK_9; ++num_key) {
-			if(key[num_key]) {
-				if(map.on_board(cur_hex)) {
-					map.set_terrain(cur_hex,gamemap::CASTLE);
-				}
-				map.set_starting_position(num_key+1-SDLK_1,cur_hex);
-
-				gui.invalidate_all();
-				break;
-			}
-		}
-
 		gui.highlight_hex(cur_hex);
 		if(new_left_button) {
 
@@ -399,7 +424,7 @@ int tileselected(int x, int y, display& disp)
 {
 	for(int i = 0; i != nterrains; i++) {
 		const int px = disp.mapx() + palette_x + (i % 2 != 0 ? 0 : terrain_space);
-		const int py = palette_y + i*terrain_space/2;
+		const int py = palette_y + (i/2)*terrain_space;
 		const int pw = terrain_space;
 		const int ph = terrain_space;
 

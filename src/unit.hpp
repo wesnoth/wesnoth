@@ -237,4 +237,18 @@ std::string get_team_name(int side, const unit_map& units);
 
 const std::set<gamemap::location> vacant_towers(const std::set<gamemap::location>& towers, const unit_map& units);
 
+//this object is used to temporary place a unit in the unit map, swapping out any unit
+//that is already there. On destruction, it restores the unit map to its original state.
+struct temporary_unit_placer
+{
+	temporary_unit_placer(unit_map& m, const gamemap::location& loc, const unit& u);
+	~temporary_unit_placer();
+
+private:
+	unit_map& m_;
+	const gamemap::location& loc_;
+	const unit temp_;
+	bool use_temp_;
+};
+
 #endif

@@ -61,10 +61,14 @@ TTF_Font* open_font(const std::string& fname, int size)
 		}
 	}
 
+	std::cerr << "opening font '" << name << "' " << size << "\n";
+
 	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
 	if(font == NULL) {
 		std::cerr << "Could not open font file: " << name << '\n';
 	}
+
+	std::cerr << "opened font okay\n";
 
 	return font;
 }
@@ -178,6 +182,55 @@ SDL_Surface* render_text(TTF_Font* font,const std::string& str,
 	}
 }
 
+//function which will parse the markup tags at the front of a string
+std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
+										 int* font_size, SDL_Color* colour)
+{
+	if(font_size == NULL || colour == NULL) {
+		return i1;
+	}
+
+	while(i1 != i2) {
+		switch(*i1) {
+		case '\\':
+			// this must either be a quoted special character or a
+			// quoted backslash - either way, remove leading backslash
+			break;
+		case BAD_TEXT:
+			*colour = BAD_COLOUR;
+			break;
+		case GOOD_TEXT:
+			*colour = GOOD_COLOUR;
+			break;
+		case NORMAL_TEXT:
+			*colour = NORMAL_COLOUR;
+			break;
+		case BLACK_TEXT:
+			*colour = BLACK_COLOUR;
+			break;
+		case LARGE_TEXT:
+			*font_size += 2;
+			break;
+		case SMALL_TEXT:
+			*font_size -= 2;
+			break;
+		case NULL_MARKUP:
+			return i1+1;
+		default:
+			if(*i1 >= 1 && *i1 <= 9) {
+				*colour = get_side_colour(*i1);
+				break;
+			}
+
+			return i1;
+		}
+
+		++i1;
+	}
+
+	return i1;
+}
+
 }
 
 SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
@@ -247,7 +300,6 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 	return dest;
 }
 
-
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
                    int x, int y, SDL_Surface* bg, bool use_tooltips,
@@ -266,63 +318,25 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 
 	std::string::const_iterator i1 = text.begin();
 	std::string::const_iterator i2 = std::find(i1,text.end(),'\n');
-	SDL_Color col = colour;
-	int sz = size;
 	for(;;) {
+		SDL_Color col = colour;
+		int sz = size;
+
+		i1 = parse_markup(i1,i2,&sz,&col);
+
 		if(i1 != i2) {
-			if(use_markup == USE_MARKUP) {
-				if(*i1 == '\\') {
-					// this must either be a quoted special character or a
-					// quoted backslash - either way, remove leading backslash
-					++i1;
-				} else if(*i1 == BAD_TEXT) {
-					col = BAD_COLOUR;
-					++i1;
-				} else if(*i1 == GOOD_TEXT) {
-					col = GOOD_COLOUR;
-					++i1;
-				} else if(*i1 == NORMAL_TEXT) {
-					col = NORMAL_COLOUR;
-					++i1;
-					continue;
-				} else if(*i1 == BLACK_TEXT) {
-					col = BLACK_COLOUR;
-					++i1;
-					continue;
-				} else if(*i1 == LARGE_TEXT) {
-					sz += 2;
-					++i1;
-					continue;
-				} else if(*i1 == SMALL_TEXT) {
-					sz -= 2;
-					++i1;
-					continue;
-				} else if(*i1 == NULL_MARKUP) {
-					++i1;
-				} else if(*i1 >= 1 && *i1 <= 9) {
-					col = get_side_colour(*i1);
-					++i1;
-					continue;
-				}
+			std::string new_string(i1,i2);
+
+			config::unescape(new_string);
+
+			const SDL_Rect rect = draw_text_line(gui,area,sz,col,new_string,x,y,bg,use_tooltips);
+			if(rect.w > res.w) {
+				res.w = rect.w;
 			}
 
-			if(i1 != i2) {
-				std::string new_string(i1,i2);
-
-				config::unescape(new_string);
-
-				const SDL_Rect rect =
-				    draw_text_line(gui,area,sz,col,new_string,x,y,bg,
-				                   use_tooltips);
-				if(rect.w > res.w)
-					res.w = rect.w;
-				res.h += rect.h;
-				y += rect.h;
-			}
+			res.h += rect.h;
+			y += rect.h;
 		}
-
-		col = colour;
-		sz = size;
 
 		if(i2 == text.end()) {
 			break;
@@ -537,15 +551,20 @@ SDL_Surface* floating_label::create_surface()
 {
 	if(surf_ == NULL) {
 		std::cerr << "creating surface...\n";
-		TTF_Font* const font = get_font(font_size_);
-		if(font == NULL) {
-			return NULL;
-		}
 
 		const std::vector<std::string> lines = config::split(text_,'\n');
 		std::vector<shared_sdl_surface> surfaces;
 		for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
-			surfaces.push_back(shared_sdl_surface(font::render_text(font,*ln,colour_)));
+			SDL_Color colour = colour_;
+			int size = font_size_;
+			const std::string::const_iterator i1 = font::parse_markup(ln->begin(),ln->end(),&size,&colour);
+			const std::string str(i1,ln->end());
+
+			TTF_Font* const font = get_font(size);
+
+			if(str != "" && font != NULL) {
+				surfaces.push_back(shared_sdl_surface(font::render_text(font,str,colour)));
+			}
 		}
 
 		if(surfaces.empty()) {
@@ -659,7 +678,7 @@ void floating_label::undraw(SDL_Surface* screen)
 	move(xmove_,ymove_);
 	if(lifetime_ > 0) {
 		--lifetime_;
-		if(surf_ != NULL && alpha_change_ != 0) {
+		if(surf_ != NULL && alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0)) {
 			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_));
 		}
 	}
@@ -776,9 +795,9 @@ void draw_floating_labels(SDL_Surface* screen)
 		return;
 	}
 
-	//draw the labels in reverse order, so we can clear them in-order
-	//to make sure the draw-undraw order is LIFO
-	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
+	//draw the labels in the order they were added, so later added labels (likely to be tooltips)
+	//are displayed over earlier added labels.
+	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
 		i->second.draw(screen);
 	}
 }
@@ -789,10 +808,14 @@ void undraw_floating_labels(SDL_Surface* screen)
 		return;
 	}
 
-	for(label_map::iterator i = labels.begin(); i != labels.end(); ) {
+	//undraw labels in reverse order, so that a LIFO process occurs, and the screen is restored
+	//into the exact state it started in.
+	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ) {
 		i->second.undraw(screen);
 		if(i->second.expired()) {
-			labels.erase(i++);
+			//we want to erase element i, which is (i+1).base()
+			++i;
+			labels.erase(i.base());
 		} else {
 			++i;
 		}

@@ -44,4 +44,7 @@ bool file_exists(const std::string& name);
 
 time_t file_create_time(const std::string& fname);
 
+//returns the size of a file, or -1 if the file doesn't exist
+int file_size(const std::string& fname);
+
 #endif

@@ -1087,3 +1087,21 @@ std::string get_team_name(int side, const unit_map& units)
 
 	return "-";
 }
+
+temporary_unit_placer::temporary_unit_placer(unit_map& m, const gamemap::location& loc, const unit& u)
+  : m_(m), loc_(loc), temp_(m.count(loc) == 1 ? m.find(loc)->second : u), use_temp_(m.count(loc) == 1)
+{
+	if(use_temp_) {
+		m.erase(loc);
+	}
+
+	m.insert(std::pair<gamemap::location,unit>(loc,u));
+}
+
+temporary_unit_placer::~temporary_unit_placer()
+{
+	m_.erase(loc_);
+	if(use_temp_) {
+		m_.insert(std::pair<gamemap::location,unit>(loc_,temp_));
+	}
+}

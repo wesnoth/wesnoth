@@ -1075,7 +1075,8 @@ void turn_info::end_turn()
 	} catch(gamestatus::save_game_failed& e) {
 		gui::show_dialog(gui_,NULL,"",string_table["auto_save_game_failed"],gui::MESSAGE);
 		//do not bother retrying, since the user can just save the game
-	};
+	}
+
 	recorder.end_turn();
 }
 
