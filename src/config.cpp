@@ -166,13 +166,13 @@ std::vector<std::string> parse_macro_arguments(const std::string& macro)
 			++begin;
 		}
 
+		if(!in_braces) {
+			res.push_back("");
+		}
+
 		if((*i)[i->size()-1] == '}') {
 			in_braces = false;
 			--end;
-		}
-
-		if(!in_braces) {
-			res.push_back("");
 		}
 
 		res.back() += " " + i->substr(begin,end-begin);
