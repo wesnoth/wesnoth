@@ -304,6 +304,9 @@ public:
 
 	const theme::menu* menu_pressed();
 
+	//finds the menu which has a given item in it, and enables or disables it.
+	void enable_menu(const std::string& item, bool enable);
+
 	void add_observer(const std::string& name);
 	void remove_observer(const std::string& name);
 	const std::set<std::string>& observers() const { return observers_; }
@@ -482,7 +485,7 @@ private:
 
 		int speaker_handle;
 		int handle;
-		int created_at;
+		Uint32 created_at;
 	};
 
 	void prune_chat_messages(bool remove_all=false);

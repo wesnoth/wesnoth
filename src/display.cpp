@@ -2147,6 +2147,22 @@ const theme::menu* display::menu_pressed()
 	return NULL;
 }
 
+void display::enable_menu(const std::string& item, bool enable)
+{
+	for(std::vector<theme::menu>::const_iterator menu = theme_.menus().begin();
+			menu != theme_.menus().end(); ++menu) {
+		
+		std::vector<std::string>::const_iterator hasitem = 
+			std::find(menu->items().begin(), menu->items().end(), item);
+
+		if(hasitem != menu->items().end()) {
+			const size_t index = menu - theme_.menus().begin();
+			wassert(index < buttons_.size());
+			buttons_[index].enable(enable);
+		}
+	}
+}
+
 void display::begin_game()
 {
 	in_game_ = true;
@@ -2217,7 +2233,7 @@ void display::remove_observer(const std::string& name)
 }
 
 namespace {
-	const int max_chat_messages = 6;
+	const unsigned int max_chat_messages = 6;
 	const int chat_message_border = 5;
 	const int chat_message_x = 10;
 	const int chat_message_y = 10;
@@ -2288,7 +2304,7 @@ void display::clear_chat_messages()
 
 void display::prune_chat_messages(bool remove_all)
 {
-	const int message_ttl = remove_all ? 0 : 1200000;
+	const unsigned int message_ttl = remove_all ? 0 : 1200000;
 	if(chat_messages_.empty() == false && (chat_messages_.front().created_at+message_ttl < SDL_GetTicks() || chat_messages_.size() > max_chat_messages)) {
 		const int movement = font::get_floating_label_rect(chat_messages_.front().handle).h;
 

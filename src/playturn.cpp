@@ -154,6 +154,8 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
     path_turns_(0), end_turn_(false), start_ncmd_(-1), textbox_(textbox), replay_sender_(replay_sender)
 {
 	enemies_visible_ = enemies_visible();
+
+	gui_.enable_menu("endturn", !browse_);
 }
 
 void turn_info::turn_slice()
@@ -2801,7 +2803,7 @@ void turn_info::tab_textbox()
 			return;
 		}
 
-		if(last_space == -1) {
+		if(last_space == std::string::npos) {
 			beginning = true;
 			semiword = text;	
 		}else{
@@ -2822,7 +2824,7 @@ void turn_info::tab_textbox()
 					if(guess.size() == 0) {
 						guess = name;
 					}else{
-						int i;
+						size_t i;
 						for(i=0; (i < guess.size()) || (i < name.size()); i++) {
 							if(guess[i] != name[i]) {
 								break;
