@@ -1102,9 +1102,6 @@ void flood_fill(gamemap &map, const gamemap::location &start_loc,
 		std::vector<gamemap::location>::iterator end_of_unique =
 			std::unique(to_fill.begin(), to_fill.end());
 		to_fill.erase(end_of_unique, to_fill.end());
-		for (std::vector<gamemap::location>::iterator ii = to_fill.begin();
-			 ii != to_fill.end(); ii++) {
-		}
 	}
 }
 
