@@ -35,7 +35,6 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-@LIBPNG_TRUE@am__append_1 = exploder cutter
 ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
@@ -160,8 +159,11 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 
-bin_PROGRAMS = make_translation merge_translations  $(am__append_1)
+bin_PROGRAMS = make_translation merge_translations 
 
+
+# !! exploder and cutter do not compile
+# bin_PROGRAMS += exploder cutter
 
 #############################################################################
 #    Translation Tools                                                      #
@@ -205,23 +207,9 @@ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
-@LIBPNG_TRUE@bin_PROGRAMS = make_translation$(EXEEXT) \
-@LIBPNG_TRUE@	merge_translations$(EXEEXT) exploder$(EXEEXT) \
-@LIBPNG_TRUE@	cutter$(EXEEXT)
-@LIBPNG_FALSE@bin_PROGRAMS = make_translation$(EXEEXT) \
-@LIBPNG_FALSE@	merge_translations$(EXEEXT)
+bin_PROGRAMS = make_translation$(EXEEXT) merge_translations$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
 
-cutter_SOURCES = cutter.c
-cutter_OBJECTS = cutter.$(OBJEXT)
-cutter_LDADD = $(LDADD)
-cutter_DEPENDENCIES =
-cutter_LDFLAGS =
-exploder_SOURCES = exploder.c
-exploder_OBJECTS = exploder.$(OBJEXT)
-exploder_LDADD = $(LDADD)
-exploder_DEPENDENCIES =
-exploder_LDFLAGS =
 am_make_translation_OBJECTS = make_translation.$(OBJEXT) \
 	config.$(OBJEXT) filesystem.$(OBJEXT) game_config.$(OBJEXT) \
 	log.$(OBJEXT) variable.$(OBJEXT)
@@ -240,30 +228,28 @@ merge_translations_LDFLAGS =
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/config.Po ./$(DEPDIR)/cutter.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/exploder.Po ./$(DEPDIR)/filesystem.Po \
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/config.Po ./$(DEPDIR)/filesystem.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_config.Po ./$(DEPDIR)/log.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/make_translation.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/merge_translations.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/variable.Po
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-CCLD = $(CC)
-LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
-DIST_SOURCES = cutter.c exploder.c $(make_translation_SOURCES) \
-	$(merge_translations_SOURCES)
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+DIST_SOURCES = $(make_translation_SOURCES) $(merge_translations_SOURCES)
 DIST_COMMON = $(srcdir)/Makefile.in Makefile.am
-SOURCES = cutter.c exploder.c $(make_translation_SOURCES) $(merge_translations_SOURCES)
+SOURCES = $(make_translation_SOURCES) $(merge_translations_SOURCES)
 
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .cpp .o .obj
+.SUFFIXES: .cpp .o .obj
 $(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
 	  $(AUTOMAKE) --foreign  src/tools/Makefile
@@ -293,12 +279,6 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-cutter$(EXEEXT): $(cutter_OBJECTS) $(cutter_DEPENDENCIES) 
-	@rm -f cutter$(EXEEXT)
-	$(LINK) $(cutter_LDFLAGS) $(cutter_OBJECTS) $(cutter_LDADD) $(LIBS)
-exploder$(EXEEXT): $(exploder_OBJECTS) $(exploder_DEPENDENCIES) 
-	@rm -f exploder$(EXEEXT)
-	$(LINK) $(exploder_LDFLAGS) $(exploder_OBJECTS) $(exploder_LDADD) $(LIBS)
 make_translation$(EXEEXT): $(make_translation_OBJECTS) $(make_translation_DEPENDENCIES) 
 	@rm -f make_translation$(EXEEXT)
 	$(CXXLINK) $(make_translation_LDFLAGS) $(make_translation_OBJECTS) $(make_translation_LDADD) $(LIBS)
@@ -313,36 +293,12 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/config.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cutter.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exploder.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/filesystem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game_config.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/make_translation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/merge_translations.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/variable.Po@am__quote@
-
-.c.o:
-@am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(COMPILE) -c `test -f '$<' || echo '$(srcdir)/'`$<
-
-.c.obj:
-@am__fastdepCC_TRUE@	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o $@ `if test -f '$<'; then $(CYGPATH_W) '$<'; else $(CYGPATH_W) '$(srcdir)/$<'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/$*.Po' tmpdepfile='$(DEPDIR)/$*.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(COMPILE) -c `if test -f '$<'; then $(CYGPATH_W) '$<'; else $(CYGPATH_W) '$(srcdir)/$<'; fi`
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \

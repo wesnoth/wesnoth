@@ -2,7 +2,8 @@
 bin_PROGRAMS = make_translation merge_translations 
 
 if LIBPNG
-bin_PROGRAMS += exploder cutter
+# !! exploder and cutter do not compile
+# bin_PROGRAMS += exploder cutter
 endif
 
 #############################################################################
