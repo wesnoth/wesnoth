@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-05 19:02+0200\n"
-"PO-Revision-Date: 2004-09-07 17:30+0200\n"
+"PO-Revision-Date: 2004-09-08 17:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team:  none\n"
 "MIME-Version: 1.0\n"
@@ -25,8 +25,8 @@ msgid ""
 "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
 "champion.png,Champion,(hardest)"
 msgstr ""
-"&elvish-fighter.png,Guerrero,(el más fácil);*&elvish-hero.png,Héroe;&elvish-"
-"champion.png,Campeón,(el más difícil)"
+"&elvish-fighter.png,Guerrero,(fácil);*&elvish-hero.png,Héroe;&elvish-"
+"champion.png,Campeón,(difícil)"
 
 #: data/game.cfg:267
 msgid "The Dark Hordes"
@@ -37,8 +37,8 @@ msgid ""
 "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
 "&undead-lich.png,Dark Lord,(hardest)"
 msgstr ""
-"&undead-adept.png,Aprendiz,(el más fácil);*&undead-necromancer.png,Maestro;"
-"&undead-lich.png,Señor Oscuro,(el más difícil)"
+"&undead-adept.png,Aprendiz,(fácil);*&undead-necromancer.png,Maestro;&undead-"
+"lich.png,Señor Oscuro,(difícil)"
 
 #: data/game.cfg:276
 msgid "Son of the Black Eye (chapter I)"
@@ -49,8 +49,8 @@ msgid ""
 "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
 "warlord.png,Warlord,(hardest)"
 msgstr ""
-"&orcish-grunt.png,Campesino,(el más fácil);*&orcish-warrior.png,Guerrero;"
-"&orcish-warlord.png,Señor de la Guerra,(el más difícil)"
+"&orcish-grunt.png,Campesino,(fácil);*&orcish-warrior.png,Guerrero;&orcish-"
+"warlord.png,Señor de la Guerra,(difícil)"
 
 #: data/game.cfg:286
 msgid "The Eastern Invasion"
@@ -61,8 +61,8 @@ msgid ""
 "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
 "royalguard.png,Royal Guard,(hardest)"
 msgstr ""
-"&human-spearman.png,Lancero,(el más fácil);*&human-swordman.png,Espadachín;"
-"&human-royalguard.png,Guardia Real,(el más difícil)"
+"&human-spearman.png,Lancero,(fácil);*&human-swordman.png,Espadachín;&human-"
+"royalguard.png,Guardia Real,(difícil)"
 
 #: data/game.cfg:296
 msgid "The Rise of Wesnoth"
@@ -73,8 +73,8 @@ msgid ""
 "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;&noble-"
 "lord.png,Lord,(hardest)"
 msgstr ""
-"&noble-fighter.png,Soldado(el más fácil);*&noble-commander.png,Comandante;"
-"&noble-lord.png,Señor,(el más difícil)"
+"&noble-fighter.png,Soldado(fácil);*&noble-commander.png,Comandante;&noble-"
+"lord.png,Señor,(difícil)"
 
 #: data/game.cfg:370
 msgid "loyal"
@@ -902,13 +902,15 @@ msgstr "El campo de batalla de la Princesa"
 
 #: data/scenarios/multiplayer/scenarios.cfg:304
 msgid "King of the Hill"
-msgstr ""
+msgstr "El rey de la colina"
 
 #: data/scenarios/tutorial/tutorial1.cfg:67
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me."
 msgstr ""
+"Estoy aquí para aprender cómo luchar en una batalla. Como mago anciano con "
+"experiencia que eres, seguro que me puedes explicar el arte del combate."
 
 #: data/scenarios/tutorial/tutorial1.cfg:71
 msgid ""
@@ -917,6 +919,11 @@ msgid ""
 "select Recruit, and select 'Ok'. You can only recruit units on castle tiles "
 "connected to the keep your leader is on."
 msgstr ""
+"Antes de comenzar cuanquier batalla, necesitas reclutar unidades. Para "
+"reclutar una unidad, pulsa el botón derecho del ratón sobre la casilla de "
+"castillo en la que desees que aparezca la unidad reclutada. Entonces, "
+"selecciona «Reclutar», y «Aceptar». Sólo podrás reclutar unidades en las "
+"casillas de castillo que estén conectadas al torreón en el que esté tu líder."
 
 #: data/scenarios/tutorial/tutorial1.cfg:73
 msgid "Recruit a unit"
@@ -924,7 +931,7 @@ msgstr "Reclutar una unidad"
 
 #: data/scenarios/tutorial/tutorial1.cfg:79
 msgid "Excellent! You have recruited an Elvish Fighter."
-msgstr "Excelente! Has reclutado un "
+msgstr "¡Excelente! Has reclutado un luchador elfo."
 
 #: data/scenarios/tutorial/tutorial1.cfg:81
 #: data/scenarios/tutorial/tutorial1.cfg:101
@@ -1034,7 +1041,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:112
 msgid "Move your Elvish Fighter next to Merle"
-msgstr ""
+msgstr "Mueve tu luchador elfo cerca de Merle."
 
 #: data/scenarios/tutorial/tutorial1.cfg:134
 msgid ""
@@ -3849,63 +3856,58 @@ msgid "thorns"
 msgstr "espinas"
 
 #: data/units/Elvish_Fighter.cfg:3
-#, fuzzy
 msgid "Elvish Fighter"
-msgstr "Luchador Elfo"
+msgstr "Luchador elfo"
 
 #: data/units/Elvish_Fighter.cfg:18
-#, fuzzy
 msgid ""
 "Elvish Fighters make up the bulk of the Elven military in Wesnoth. They are "
 "distinguished from other fighting forces by their skill with both sword and "
 "bow. The Elves are deft of foot, and fight best in the forest."
 msgstr ""
-"Los Luchadores Elfos forman la mayor parte de las milicias de Elfos en "
-"Wesnoth. Se distinguen de otros luchadores por su habilidad tanto con la "
-"espada como con el arco. Los Elfos son hábiles y luchan mejor en el bosque."
+"Los luchadores elfos forman la mayor parte de las unidades militares de "
+"elfos en Wesnoth. Se distinguen de otros luchadores en su habilidad tanto "
+"con la espada como con el arco. Los elfos son ágiles y luchan mejor en el "
+"bosque."
 
 #: data/units/Elvish_Hero.cfg:3
-#, fuzzy
 msgid "Elvish Hero"
-msgstr "Héroe Elfo"
+msgstr "Héroe elfo"
 
 #: data/units/Elvish_Hero.cfg:18
-#, fuzzy
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
 "tweaked their combat skills to the very maximum. Elvish Heroes prefer "
 "fighting at close range with the sword, but are also skilled at the bow."
 msgstr ""
-"El Héroe Elfo se centra en su función individual dentro del campo de "
-"batalla, y entrena sus habilidades de combate al máximo. El Héroe Elfo "
-"prefiere el combate a una distancia corta con su espada, pero también es "
-"hábil con el arco."
+"El héroe elfo se centra en el rendimiento individual dentro del campo de "
+"batalla, y entrena sus habilidades de combate al máximo. El héroe elfo "
+"prefiere el combate a distancia corta con su espada, pero también es hábil "
+"con el arco."
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
 msgstr "Alto Señor elfo"
 
 #: data/units/Elvish_High_Lord.cfg:17
-#, fuzzy
 msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of fire at long range."
 msgstr ""
 "El Señor Elfo es temible en combate, tanto con la espada a corta distancia, "
-"como con sus bolas de fuego desde lejos."
+"como con sus devastadoras bolas de fuego desde lejos."
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
 msgstr "Señor elfo"
 
 #: data/units/Elvish_Lord.cfg:17
-#, fuzzy
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of fire at long range."
 msgstr ""
 "El Señor Elfo es temible en combate, tanto con la espada a corta distancia, "
-"como con sus bolas de fuego desde lejos."
+"como con sus devastadoras bolas de fuego desde lejos."
 
 #: data/units/Elvish_Marksman.cfg:3 data/units/Elvish_Marksman.cfg:80
 msgid "Elvish Marksman"
@@ -4030,7 +4032,7 @@ msgstr ""
 
 #: data/units/Elvish_Shyde.cfg:24
 msgid "faerie touch"
-msgstr ""
+msgstr "toque faérico"
 
 #: data/units/Fencer.cfg:3
 #, fuzzy
@@ -4051,22 +4053,21 @@ msgstr ""
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
-msgstr "Guerrero"
+msgstr "Luchador"
 
 #: data/units/Fighter.cfg:17 data/units/Fighter.cfg:58
-#, fuzzy
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to attack "
 "from enemies. However they have the potential to become great warriors one "
 "day."
 msgstr ""
-"El Guerrero es hábil en el uso de la espada. Joven e inexperto, es "
+"El luchador ha sido entrenado en el uso de la espada. Joven e inexperto, es "
 "vulnerable a los ataques enemigos. Sin embargo, tiene el potencial para "
 "convertirse en un gran guerrero algún día."
 
 #: data/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
-msgstr ""
+msgstr "Dragón de fuego"
 
 #: data/units/Fire_Dragon.cfg:17
 msgid ""
@@ -4076,6 +4077,12 @@ msgid ""
 "its tail. Fire Dragons are cunning and cruel, and often take underlings whom "
 "they help lead to victory."
 msgstr ""
+"Terroríficos y muy longevos, los dragones de fuego son los miembros de la "
+"familia de los dragones que pueden escupir fuego, algo de gran utilidad en "
+"combate. Además, poseen unas poderosas mandíbulas, y pueden aplastar a sus "
+"oponentes con su cola. Los dragones de fuego son astutos y crueles, y a "
+"menudo tienen subordinados a sus órdenes para ayudarlos a conquistar la "
+"victoria."
 
 #: data/units/Fire_Dragon.cfg:21
 msgid "bite"
@@ -4131,11 +4138,11 @@ msgstr "dummy"
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
-msgstr ""
+msgstr "Puerta"
 
 #: data/units/Gate.cfg:21
 msgid "bump"
-msgstr ""
+msgstr "saltar"
 
 #: data/units/General.cfg:3
 msgid "General"
@@ -4165,29 +4172,26 @@ msgid ""
 "physical things it does not too fast nor too deeply."
 msgstr ""
 "Los fantasmas son las almas de guerreros que murieron agónicamente hace "
-"algunos siglos, sin dejarse ningún cuerpo atrás. Al no estar limitados por "
-"un cuerpo, estos no muertos pueden volar rápidamente hacia sus enemigos. "
-"Incluso su forma ectoplásmica les permite atravesar lentamente obstáculos "
-"físicos."
+"siglos, sin dejar su cadáver atrás. Al no estar limitados por un cuerpo, "
+"estos no muertos pueden volar rápidamente hacia sus enemigos. Incluso su "
+"forma ectoplásmica les permite atravesar lentamente obstáculos físicos."
 
 #: data/units/Ghoul.cfg:3
-#, fuzzy
 msgid "Ghoul"
-msgstr "Ghoul"
+msgstr "Necrófago"
 
 #: data/units/Ghoul.cfg:16
-#, fuzzy
 msgid ""
 "Sometimes starved and ravenous humans who are forced to eat human corpses "
 "awake after their deaths to find that they are trapped in a tortured "
 "existence as Ghouls."
 msgstr ""
-"Hombres hambrientos obligados a comer carne humana, a veces despiertan tras "
-"su muerte atrapados en una existencia terrible como Ghouls."
+"A veces los humanos hambrientos obligados a comer carne humana despiertan "
+"tras su muerte atrapados en una existencia terrible como necrófagos."
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Reptador de barro gigante"
 
 #: data/units/Giant_Mudcrawler.cfg:16
 msgid ""
@@ -4195,6 +4199,9 @@ msgid ""
 "constructs of soil and water. They attack by spraying boiling water on their "
 "foes, or with fists of mud."
 msgstr ""
+"Los reptadores de barro gigantes son el tipo más grande de reptadores de "
+"barro que hay, y son construcciones máquinas de tierra y agua. Atacan con "
+"chorros de agua hirviente a sus víctimas, o con sus puños de barro."
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Mudcrawler.cfg:20
 msgid "boiling water"
@@ -4223,33 +4230,29 @@ msgid "pincers"
 msgstr "pinzas"
 
 #: data/units/Goblin_Knight.cfg:3
-#, fuzzy
 msgid "Goblin Knight"
-msgstr "Caballero Goblin"
+msgstr "Caballero goblin"
 
 #: data/units/Goblin_Knight.cfg:15
-#, fuzzy
 msgid ""
 "The Goblin Knights are the elite of the Goblin Wolf Riders. They travel with "
 "great speed, yet can inflict substantial damage in battle."
 msgstr ""
-"Los Caballeros Goblins son la élite de los jinetes de lobos. Son capaces de "
-"ir extremadamente rápido en sus monturas, superando en velocidad a las demás "
-"razas."
+"Los caballeros goblins son la élite de los jinetes de lobos. Son capaces de "
+"ir extremadamente rápido en sus monturas, y aún así hacer mucho daño en "
+"combate."
 
 #: data/units/Goblin_Pillager.cfg:3
-#, fuzzy
 msgid "Goblin Pillager"
-msgstr "Saqueador Goblin"
+msgstr "Saqueador goblin"
 
 #: data/units/Goblin_Pillager.cfg:16
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. These Goblin "
 "Pillagers cause havoc among their enemies by attacking with torches and nets."
 msgstr ""
-"Algunos Goblins entrenan a sus monturas para que éstas superen su miedo al "
-"fuego. Armados con antorchas y redes, los Saqueadores Goblins llevan la "
+"Algunos goblins entrenan a sus monturas para que éstas superen su miedo al "
+"fuego. Armados con antorchas y redes, los saqueadores goblins llevan la "
 "destrucción a sus enemigos."
 
 #: data/units/Goblin_Pillager.cfg:19
