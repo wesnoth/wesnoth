@@ -641,6 +641,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			statistics::recruit_unit(new_unit);
 
 			current_team.spend_gold(u_type->second.cost());
+			if(clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1))
+				disp.recalculate_minimap();
 		}
 
 		else if((child = cfg->child("recall")) != NULL) {
@@ -662,6 +664,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				std::cerr << "illegal recall\n";
 				throw replay::error();
 			}
+			if(clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1))
+				disp.recalculate_minimap();
 		}
 
 		else if((child = cfg->child("move")) != NULL) {
@@ -740,7 +744,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				game_events::fire("sighted",dst);
 			}
 
-			clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1);
+			if(clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1))
+				disp.recalculate_minimap();
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {

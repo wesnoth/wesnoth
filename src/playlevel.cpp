@@ -357,6 +357,11 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				events::raise_draw_event();
 				game_events::fire("start");
 				gui.draw();
+				
+				for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
+					clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
+				}
+				gui.recalculate_minimap();
 			}
 
 			gui.new_turn();
@@ -530,8 +535,6 @@ redo_turn:
 					if(uit->second.side() == player_number)
 						uit->second.end_turn();
 				}
-
-				team_it->get_shared_maps();
 
 				game_events::pump();
 

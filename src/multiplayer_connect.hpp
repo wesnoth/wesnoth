@@ -37,7 +37,7 @@ public:
 	~mp_connect();
 
 	int load_map(const std::string& era, int map, int num_turns, int village_gold, int xpmodifier,
-	             bool fog_game, bool shroud_game, bool allow_observers);
+	             bool fog_game, bool shroud_game, bool allow_observers, bool shared_vision);
 
 	void start_game();
 

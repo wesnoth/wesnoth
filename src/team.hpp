@@ -22,6 +22,8 @@
 #include <string>
 #include <vector>
 
+//This class stores all the data for a single 'side' (in game nomenclature).
+//e.g. there is only one leader unit per team.
 class team
 {
 public:
@@ -59,7 +61,7 @@ public:
 
 		std::vector<target> targets;
 
-		bool use_shroud, use_fog, share_maps;
+		bool use_shroud, use_fog, share_maps, share_vision;
 
 		std::string music;
 	};
@@ -111,12 +113,14 @@ public:
 
 	std::vector<target>& targets();
 
-	bool uses_shroud() const;
+	//Returns true if the hex is shrouded/fogged for this side, or
+	//any other ally with shared vision.
 	bool shrouded(size_t x, size_t y) const;
-	bool clear_shroud(size_t x, size_t y);
-
-	bool uses_fog() const;
 	bool fogged(size_t x, size_t y) const;
+	
+	bool uses_shroud() const;
+	bool clear_shroud(size_t x, size_t y);
+	bool uses_fog() const;
 	bool clear_fog(size_t x, size_t y);
 	void refog();
 
@@ -128,6 +132,11 @@ public:
 	static int nteams();
 
 private:
+	//Return true if the hex is shrouded/fogged for this side only
+	//Ignores allied teams.
+	bool side_shrouded(size_t x, size_t y) const;
+	bool side_fogged(size_t x, size_t y) const;
+	
 	int gold_;
 	std::set<gamemap::location> villages_;
 
