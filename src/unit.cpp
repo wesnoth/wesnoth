@@ -782,6 +782,17 @@ void unit::add_modification(const std::string& type,
 			description << string_table["loyal_description"];
 			if(upkeep_ > UPKEEP_LOYAL)
 				upkeep_ = UPKEEP_LOYAL;
+		} else if(apply_to == "status") {
+			const std::string& add = (**i.first)["add"];
+			const std::string& remove = (**i.first)["remove"];
+
+			if(add.empty() == false) {
+				set_flag(add);
+			}
+			
+			if(remove.empty() == false) {
+				remove_flag(remove);
+			}
 		}
 
 		const std::string desc = description.str();
