@@ -143,6 +143,10 @@ public:
 	//function which returns a list of the frequencies of different terrain
 	//types on the map, with terrain nearer the center getting weighted higher
 	const std::map<TERRAIN,size_t>& get_weighted_terrain_frequencies() const;
+	//remove the cached border terrain at loc. Needed by the editor
+	//to make tiles at the border update correctly when drawing
+	//other tiles.
+	void remove_from_border_cache(const location &loc);
 private:
 	int num_starting_positions() const;
 

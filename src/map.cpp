@@ -394,3 +394,8 @@ const std::map<gamemap::TERRAIN,size_t>& gamemap::get_weighted_terrain_frequenci
 
 	return terrainFrequencyCache_;
 }
+
+void gamemap::remove_from_border_cache(const location &loc) {
+  borderCache_.erase(loc);
+}
+
