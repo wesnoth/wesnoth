@@ -6,6 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-03 11:27+0200\n"
 "PO-Revision-Date: 2004-09-14 13:03+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
@@ -14,10 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/preferences.cpp:144
-#: src/preferences.cpp:190
-msgid "The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."
-msgstr "Video-modusen kunne ikke endres. Vindu-manageren din må settes til 16 bits per pixel for å kjøre dette spillet i vindumodus. Displayet må støtte 1024x768x16 for å kunne kjøres med full skjerm."
+#: src/preferences.cpp:144 src/preferences.cpp:190
+msgid ""
+"The video mode could not be changed. Your window manager must be set to 16 "
+"bits per pixel to run the game in windowed mode. Your display must support "
+"1024x768x16 to run the game full screen."
+msgstr ""
+"Video-modusen kunne ikke endres. Vindu-manageren din må settes til 16 bits "
+"per pixel for å kjøre dette spillet i vindumodus. Displayet må støtte "
+"1024x768x16 for å kunne kjøres med full skjerm."
 
 #: src/preferences.cpp:362
 msgid "player"
@@ -103,8 +109,7 @@ msgstr "Endre musikkvolumet"
 msgid "Change the speed of scrolling around the map"
 msgstr "Endre panoreringsfart"
 
-#: src/preferences.cpp:678
-#: src/preferences.cpp:683
+#: src/preferences.cpp:678 src/preferences.cpp:683
 msgid "Change the brightness of the display"
 msgstr "Endre lysstyrke"
 
@@ -141,7 +146,9 @@ msgid "Play a bell sound at the beginning of your turn"
 msgstr "Pling hver gang det blir din tur"
 
 #: src/preferences.cpp:709
-msgid "Show a colored circle around the base of each unit to show which side it is on"
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
 msgstr "Vis farget oval rundt hver enhet for å vise hvilken side den tilhører"
 
 #: src/preferences.cpp:712
@@ -188,8 +195,7 @@ msgstr "Lukk vindu"
 msgid "Hotkey Settings"
 msgstr "Innstillinger for Hurtigtaster"
 
-#: src/preferences.cpp:1030
-#: src/preferences.cpp:1088
+#: src/preferences.cpp:1030 src/preferences.cpp:1088
 msgid "Press desired HotKey"
 msgstr "Trykk ønsket hurtigtast"
 
@@ -204,4 +210,3 @@ msgstr "Lagre hurtigtaster"
 #: src/preferences.cpp:1121
 msgid "This HotKey is already in use."
 msgstr "Denne hurtigtasten er allerede i bruk."
-
