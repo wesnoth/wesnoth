@@ -417,12 +417,10 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 			cursor::set(cursor::NORMAL);
 		} else {
 			const theme::menu* const m = gui_.get_theme().context_menu();
-			if(m != NULL) {
-				std::cerr << "found context menu\n";
+			if (m != NULL)
 				show_menu(m->items(),event.x,event.y,true);
-			} else {
-				std::cerr << "no context menu found...\n";
-			}
+			else
+				lg::warn(lg::display) << "no context menu found...\n";
 		}
 	} else if(is_middle_click(event) && event.state == SDL_PRESSED) {
 		// clicked on a hex on the minimap? then initiate minimap scrolling
@@ -847,7 +845,7 @@ void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamem
 }
 
 void turn_info::start_interactive_turn() {
-	std::cerr << "done gotos\n";
+	lg::info(lg::engine) << "done gotos\n";
 	start_ncmd_ = recorder.ncommands();
 }
 
@@ -1203,7 +1201,8 @@ void turn_info::undo()
 		player_info* const player = state_of_game_.get_player(teams_[team_num_-1].save_id());
 
 		if(player == NULL) {
-			std::cerr << "WARNING: trying to undo a recall for side " << team_num_ << ", which has no recall list!" << std::endl;
+			lg::err(lg::engine) << "trying to undo a recall for side " << team_num_
+				<< ", which has no recall list!\n";
 		} else {
 			// Undo a recall action
 			team& current_team = teams_[team_num_-1];
@@ -1285,7 +1284,8 @@ void turn_info::redo()
 	if(action.is_recall()) {
 		player_info *player=state_of_game_.get_player(teams_[team_num_-1].save_id());
 		if(!player) {
-			std::cerr << "WARNING: trying to redo a recall for side " << team_num_ << ", which has no recall list!" << std::endl;
+			lg::err(lg::engine) << "trying to redo a recall for side " << team_num_
+				<< ", which has no recall list!\n";
 		} else {
 			// Redo recall
 			std::vector<unit>& recall_list = player->available_units;
@@ -1601,7 +1601,7 @@ void turn_info::recruit()
 		const std::map<std::string,unit_type>::const_iterator
 				u_type = gameinfo_.unit_types.find(*it);
 		if(u_type == gameinfo_.unit_types.end()) {
-			std::cerr << "ERROR: could not find unit '" << *it << "'";
+			lg::err(lg::engine) << "could not find unit '" << *it << "'";
 			return;
 		}
 
@@ -1751,7 +1751,8 @@ void turn_info::recall()
 
 	player_info *player = state_of_game_.get_player(teams_[team_num_-1].save_id());
 	if(!player) {
-		std::cerr << "WARNING: cannot recall a unit for side " << team_num_ << ", which has no recall list!" << std::endl;
+		lg::err(lg::engine) << "cannot recall a unit for side " << team_num_
+			<< ", which has no recall list!\n";
 		return;
 	}
 
@@ -1877,7 +1878,7 @@ void turn_info::do_speak(const std::string& message, bool allies_only)
 		cfg["team_name"] = teams_[gui_.viewing_team()].team_name();
 	}
 
-	std::cerr << "logging speech: '" << cfg.write() << "'\n";
+	lg::info(lg::config) << "logging speech: '" << cfg.write() << "'\n";
 	recorder.speak(cfg);
 	gui_.add_chat_message(cfg["description"],side,message,
 		                  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
@@ -2445,7 +2446,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	if(cfg["side_drop"] != "") {
 		const size_t side = atoi(cfg["side_drop"].c_str())-1;
 		if(side >= teams_.size()) {
-			std::cerr << "unknown side " << side << " is dropping game\n";
+			lg::err(lg::network) << "unknown side " << side << " is dropping game\n";
 			throw network::error("");
 		}
 
@@ -2571,7 +2572,7 @@ void turn_info::enter_textbox()
 		do_command(textbox_.box->text());
 		break;
 	default:
-		std::cerr << "unknown textbox mode\n";
+		lg::err(lg::display) << "unknown textbox mode\n";
 	}
 
 	close_textbox();
@@ -2580,7 +2581,7 @@ void turn_info::enter_textbox()
 const unit_map& turn_info::visible_units() const
 {
 	if(viewing_team().uses_shroud() == false && viewing_team().uses_fog() == false) {
-		std::cerr << "all units are visible...\n";
+		lg::info(lg::engine) << "all units are visible...\n";
 		return units_;
 	}
 
@@ -2591,7 +2592,7 @@ const unit_map& turn_info::visible_units() const
 		}
 	}
 
-	std::cerr << "number of visible units: " << visible_units_.size() << "\n";
+	lg::info(lg::engine) << "number of visible units: " << visible_units_.size() << "\n";
 
 	return visible_units_;
 }
