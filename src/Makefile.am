@@ -146,6 +146,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai_attack.cpp \
 			 ai_move.cpp \
 			 config.cpp \
+			 cursor.cpp \
 			 dialogs.cpp \
 			 display.cpp \
 			 events.cpp \
@@ -193,6 +194,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai_attack.hpp \
 			 ai_move.hpp \
 			 config.hpp \
+			 cursor.hpp \
 			 dialogs.hpp \
 			 display.hpp \
 			 events.hpp \

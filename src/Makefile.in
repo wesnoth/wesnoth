@@ -283,6 +283,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai_attack.cpp \
 			 ai_move.cpp \
 			 config.cpp \
+			 cursor.cpp \
 			 dialogs.cpp \
 			 display.cpp \
 			 events.cpp \
@@ -330,6 +331,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai_attack.hpp \
 			 ai_move.hpp \
 			 config.hpp \
+			 cursor.hpp \
 			 dialogs.hpp \
 			 display.hpp \
 			 events.hpp \
@@ -411,9 +413,9 @@ wesnoth_DEPENDENCIES =
 wesnoth_LDFLAGS =
 am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) actions.$(OBJEXT) \
 	ai.$(OBJEXT) ai_attack.$(OBJEXT) ai_move.$(OBJEXT) \
-	config.$(OBJEXT) dialogs.$(OBJEXT) display.$(OBJEXT) \
-	events.$(OBJEXT) filesystem.$(OBJEXT) font.$(OBJEXT) \
-	game_config.$(OBJEXT) game_events.$(OBJEXT) \
+	config.$(OBJEXT) cursor.$(OBJEXT) dialogs.$(OBJEXT) \
+	display.$(OBJEXT) events.$(OBJEXT) filesystem.$(OBJEXT) \
+	font.$(OBJEXT) game_config.$(OBJEXT) game_events.$(OBJEXT) \
 	gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
 	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
 	map.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
