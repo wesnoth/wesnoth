@@ -331,7 +331,9 @@ AC_CHECK_FUNCS([floor socket strtoul])
 
 AC_ARG_ENABLE([debug],
 	      [  --enable-debug        Enable debug in wesnoth],
-	      [CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"])
+	      [if test "x${enableval}" = "xyes" ; then
+                   CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"
+	       fi])
 
 AC_ARG_ENABLE([static],
               [  --enable-static       Enable static building of wesnoth],
