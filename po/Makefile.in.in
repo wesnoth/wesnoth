@@ -63,8 +63,8 @@ CATALOGS = @CATALOGS@
 
 all: all-@USE_NLS@
 
-$(GMOFILES): %:
-	$(MAKE) $(DOMAIN)/$@
+$(GMOFILES): %.gmo:
+	$(MAKE) $*/$(DOMAIN).gmo
 
 .po.mo:
 	@echo "$(MSGFMT) -c -o $@ $<"; \
@@ -108,7 +108,7 @@ stamp-po: $(srcdir)/*.pot
 # This target rebuilds $(DOMAIN).pot; it is an expensive operation.
 # Note that $(DOMAIN).pot is not touched if it doesn't need to be changed.
 #$(DOMAIN).pot-update: $(DOMAIN).pot $(srcdir)/$(DOMAIN)/POTFILES.in remove-potcdate.sed
-%.pot-update: $(srcdir)/%/POTFILES.in remove-potcdate.sed
+%.pot-update: $(srcdir)/%.POTFILES.in remove-potcdate.sed
 	$(XGETTEXT) --default-domain=$* --directory=$(top_srcdir) \
 	  --add-comments=TRANSLATORS: $(XGETTEXT_OPTIONS) \
 	  `cat $(srcdir)/$*/POTFILES.in` \
