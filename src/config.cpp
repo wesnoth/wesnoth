@@ -31,6 +31,14 @@ bool operator<(const line_source& a, const line_source& b)
 
 namespace {
 
+//make sure that we can use Mac, DOS, or Unix style text files on any system
+//and they will work, by making sure the definition of whitespace is consistent
+bool portable_isspace(char c)
+{
+	return c == '\r' || c == '\n' || isspace(c);
+}
+
+
 line_source get_line_source(const std::vector<line_source>& line_src, int line)
 {
 	line_source res(line,"",0);
@@ -244,11 +252,10 @@ void internal_preprocess_file(const std::string& fname,
 			if(size_t(data.end() - i) > hash_ifdef.size() &&
 			   std::equal(hash_ifdef.begin(),hash_ifdef.end(),i)) {
 				i += hash_ifdef.size();
-				while(i != data.end() && isspace(*i))
+				while(i != data.end() && portable_isspace(*i))
 					++i;
 
-				const std::string::const_iterator end =
-				                    std::find_if(i,data.end(),isspace);
+				const std::string::const_iterator end = std::find_if(i,data.end(),portable_isspace);
 
 				if(end == data.end())
 					break;
@@ -462,7 +469,7 @@ void config::read(const std::string& data,
 				if(c == '[') {
 					state = ELEMENT_NAME;
 					value = "";
-				} else if(!isspace(c)) {
+				} else if(!portable_isspace(c)) {
 					value.resize(1);
 					value[0] = c;
 					state = VARIABLE_NAME;
@@ -661,7 +668,7 @@ std::vector<std::string> config::split(const std::string& val, char c)
 namespace {
 //make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
 //all consider these differently.
-bool notspace(char c) { return c == '\r' || c == '\n' || !isspace(c); }
+bool notspace(char c) { return !portable_isspace(c); }
 }
 
 std::string& config::strip(std::string& str)
