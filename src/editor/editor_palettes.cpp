@@ -150,7 +150,7 @@ void terrain_palette::select_bg_terrain(gamemap::TERRAIN terrain) {
 
 std::string terrain_palette::get_terrain_string(const gamemap::TERRAIN t) {
 	std::stringstream str;
-	const std::string& name = map_.get_terrain_info(t).prout();
+	const std::string& name = map_.get_terrain_info(t).name();
 	const std::string& underlying = map_.underlying_terrain(t);
 	str << translate_string(name);
 	if(underlying.size() != 1 || underlying[0] != t) {
@@ -158,7 +158,7 @@ std::string terrain_palette::get_terrain_string(const gamemap::TERRAIN t) {
 		for(std::string::const_iterator i = underlying.begin();
 			i != underlying.end(); ++i) {
 
-			str << map_.get_terrain_info(*i).prout();
+			str << map_.get_terrain_info(*i).name();
 			if(i+1 != underlying.end()) {
 				str << ",";
 			}
