@@ -491,6 +491,13 @@ const std::string& team::team_name() const
 void team::change_team(const std::string& name)
 {
 	info_.team_name = name;
+
+	//reset the cache of allies for all teams
+	if(teams != NULL) {
+		for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
+			i->enemies_.clear();
+		}	
+	}
 }
 
 const std::string& team::save_id() const
