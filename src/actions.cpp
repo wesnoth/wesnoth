@@ -270,7 +270,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		//don't show backstabbing unless it's actually happening
 		if(attack.special() == backstab_string && !backstab)
-			strings->attack_special.clear();
+			strings->attack_special = "";
 
 		strings->range = gettext(attack.range() == attack_type::SHORT_RANGE ? N_("melee") : N_("ranged"));
 	}
@@ -283,6 +283,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		if(defender_attacks[defend_option].range() == attack.range() &&
 			defender_attacks[defend_option].hexes() >= combat_range) {
 			const double rating = a->second.damage_against(defender_attacks[defend_option])
+			                      *defender_attacks[defend_option].damage()
 			                      *defender_attacks[defend_option].num_attacks()
 				                  *defender_attacks[defend_option].defense_weight();
 			if(defend_with == -1 || rating > best_defend_rating) {
