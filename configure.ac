@@ -72,13 +72,12 @@ AC_ARG_WITH([localedir],
 		esac])
 AC_SUBST([LOCALEDIR])
 
-set -x
 case "`eval echo \"$LOCALEDIR\"`" in
-/*) FULLLOCALEDIR="$LOCALEDIR" ;;
-*)  FULLLOCALEDIR='${datadir}/${DATADIR}/${LOCALEDIR}' ;;
+/*) FULLLOCALEDIR="$LOCALEDIR"; HAS_RELATIVE_LOCALEDIR=0 ;;
+*)  FULLLOCALEDIR='${datadir}/${DATADIR}/${LOCALEDIR}'; HAS_RELATIVE_LOCALEDIR=1 ;;
 esac
-set +x
 AC_SUBST([FULLLOCALEDIR])
+AC_SUBST([HAS_RELATIVE_LOCALEDIR])
 
 AC_ARG_ENABLE([server],
 	      [  --enable-server         enable compilation of server],

@@ -307,7 +307,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 wesconfig.h
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
-	-DLOCALEDIR=\"$(LOCALEDIR)\" -DFULLLOCALEDIR=\"$(FULLLOCALEDIR)\" \
+	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) \
 	-I../intl -I$(top_srcdir)/intl
 
 if X11

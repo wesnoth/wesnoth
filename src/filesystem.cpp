@@ -184,13 +184,10 @@ std::string get_cache_dir()
 std::string get_intl_dir()
 {
 	std::string res;
-#ifdef FULLLOCALEDIR
-	if (strcmp(LOCALEDIR,FULLLOCALEDIR) != 0)
-#endif
-		res = game_config::path + "/" LOCALEDIR;
-#ifdef FULLLOCALEDIR
-	else
-		res = LOCALEDIR;
+#if HAS_RELATIVE_LOCALEDIR
+	res = game_config::path + "/" LOCALEDIR;
+#else
+	res = LOCALEDIR;
 #endif
 
 	return res;
