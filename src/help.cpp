@@ -452,6 +452,43 @@ std::string generate_topic_text(const std::string &generator) {
 	return empty_string;
 }
 
+struct topic_generator
+{
+	topic_generator(): count(1) {}
+	virtual std::string operator()() const = 0;
+	virtual ~topic_generator() {}
+private:
+	unsigned count;
+	friend class topic_text;
+};
+
+topic_text::~topic_text() {
+	if (generator_ && --generator_->count == 0)
+		delete generator_;
+}
+
+topic_text::topic_text(topic_text const &t): text_(t.text_), generator_(t.generator_) {
+	if (generator_)
+		++generator_->count;
+}
+
+topic_text &topic_text::operator=(topic_generator *g) {
+	if (generator_ && --generator_->count == 0)
+		delete generator_;
+	generator_ = g;
+	return *this;
+}
+
+topic_text::operator std::string() const {
+	if (generator_) {
+		text_ = (*generator_)();
+		if (--generator_->count == 0)
+			delete generator_;
+		generator_ = NULL;
+	}
+	return text_;
+}
+
 std::vector<topic> generate_weapon_special_topics() {
 	std::vector<topic> topics;
 	if (game_info == NULL) {
@@ -528,26 +565,12 @@ std::vector<topic> generate_ability_topics() {
 	return topics;
 }
 
-std::vector<topic> generate_unit_topics() {
-	std::vector<topic> topics;
-	if (game_info == NULL) {
-		return topics;
-	}
-	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
-	    i != game_info->unit_types.end(); i++) {
-		const unit_type &type = (*i).second;
-		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
-		if (desc_type == NO_DESCRIPTION) {
-			continue;
-		}
-		const std::string lang_name = type.language_name();
-		const std::string id = type.id();
-		topic unit_topic(lang_name, std::string("unit_") + id, "");
+struct unit_topic_generator: topic_generator
+{
+	unit_topic_generator(unit_type const &t): type(t) {}
+	unit_type type;
+	virtual std::string operator()() const {
 		std::stringstream ss;
-		if (desc_type == NON_REVEALING_DESCRIPTION) {
-			
-		}
-		else if (desc_type == FULL_DESCRIPTION) {
 			const std::string detailed_description = type.unit_description();
 			const unit_type& female_type = type.get_gender_unit_type(unit_race::FEMALE);
 			const unit_type& male_type = type.get_gender_unit_type(unit_race::MALE);
@@ -784,11 +807,31 @@ std::vector<topic> generate_unit_topics() {
 				}
 				ss << generate_table(table);
 			}
+		return ss.str();
+	}
+};
+
+std::vector<topic> generate_unit_topics() {
+	std::vector<topic> topics;
+	if (game_info == NULL) {
+		return topics;
+	}
+	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
+	    i != game_info->unit_types.end(); i++) {
+		const unit_type &type = (*i).second;
+		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
+		if (desc_type == NO_DESCRIPTION) {
+			continue;
 		}
-		else {
+		const std::string lang_name = type.language_name();
+		const std::string id = type.id();
+		topic unit_topic(lang_name, std::string("unit_") + id, "");
+		if (desc_type == NON_REVEALING_DESCRIPTION) {
+		} else if (desc_type == FULL_DESCRIPTION) {
+			unit_topic.text = new unit_topic_generator(type);
+		} else {
 			assert(false);
 		}
-		unit_topic.text = ss.str();
 		topics.push_back(unit_topic);
 	}
 	return topics;
@@ -926,7 +969,7 @@ bool topic::operator<(const topic &t) const {
 }
 
 
-section::section(const std::string _title, const std::string _id, const topic_list &_topics,
+section::section(const std::string &_title, const std::string &_id, const topic_list &_topics,
 		const std::vector<section> &_sections)
 	: title(_title), id(_id), topics(_topics) {
 	std::transform(_sections.begin(), _sections.end(), std::back_inserter(sections),
@@ -1195,7 +1238,7 @@ bool help_menu::visible_item::operator==(const topic &_t) const {
 bool help_menu::visible_item::operator==(const visible_item &vis_item) const {
 	return t == vis_item.t && sec == vis_item.sec;
 }
-	
+
 help_text_area::help_text_area(display &disp, const section &toplevel)
 	: gui::widget(disp), disp_(disp), toplevel_(toplevel), shown_topic_(NULL),
 	  title_spacing_(16), curr_loc_(0, 0),

@@ -44,23 +44,41 @@ struct section;
 
 typedef std::vector<section *> section_list;
 
+struct topic_generator;
+
+class topic_text {
+	mutable std::string text_;
+	mutable topic_generator *generator_;
+public:
+	~topic_text();
+	topic_text(): generator_(NULL) {}
+	topic_text(std::string const &t): text_(t), generator_(NULL) {}
+	explicit topic_text(topic_generator *g): generator_(g) {}
+	topic_text &operator=(topic_generator *g);
+	topic_text(topic_text const &t);
+	operator std::string() const;
+};
+
 /// A topic contains a title, an id and some text.
 struct topic {
-	topic(const std::string _title, const std::string _id, const std::string _text)
+	topic(const std::string &_title, const std::string &_id, const std::string &_text)
 		: title(_title), id(_id), text(_text) {}
+	topic(const std::string &_title, const std::string &_id, topic_generator *g)
+		: title(_title), id(_id), text(g) {}
 	topic() : title(""), id(""), text("") {}
 	/// Two topics are equal if their IDs are equal.
 	bool operator==(const topic &) const;
 	/// Comparison on the ID.
 	bool operator<(const topic &) const;
-	std::string title, id, text;
+	std::string title, id;
+	topic_text text;
 };
 
 typedef std::list<topic> topic_list;
 
 /// A section contains topics and sections along with title and ID.
 struct section {
-	section(const std::string _title, const std::string _id, const topic_list &_topics,
+	section(const std::string &_title, const std::string &_id, const topic_list &_topics,
 			const std::vector<section> &_sections);
 	section() : title(""), id("") {}
 	section(const section&);
