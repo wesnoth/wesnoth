@@ -11,6 +11,12 @@ Version CVS:
    * Dwarven Doors
    * Mountain Pass
    * Valley of Death
+ * multiplayer improvements:
+   * show minimap when selecting map for new game
+   * configurable starting gold per side
+   * configurable 'gold per village'
+   * teaming (alliances)
+	* configurable number of turns
  * new Makefile (debugging is now enabled by default)
  * added Makefile.nodebug 
  * updated docs - INSTALL, MANUAL
@@ -21,11 +27,6 @@ Version CVS:
  * hotkey configuration from GUI
  * confirm overwriting of save games
  * savegames now display and are sorted by date and time
- * multiplayer improvements:
-   * show minimap when selecting map for new game
-   * per side configurable starting gold
-   * configurable 'gold per village'
-   * teaming (alliances)
  * income calculations are now done at the beginning of each player's turn
  * made it so units that can no longer advance have experience needed displayed as '-'
  * allow use of escape to exit out of ok/cancel and yes/no dialogs with negative results
