@@ -228,7 +228,7 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 		// the cursor is not over the widget
 		if (state_ == PRESSED_ACTIVE)
 			state_ = PRESSED;
-		else
+		else if (type_ != TYPE_CHECK || state_ != PRESSED)
 			state_ = NORMAL;
 	}
 }
@@ -250,8 +250,10 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 		pressed_ = true;
 		break;
 	case TYPE_PRESS:
-		state_ = ACTIVE;
-		pressed_ = true;
+		if (state_ == PRESSED) {
+			state_ = ACTIVE;
+			pressed_ = true;
+		}
 		break;
 	case TYPE_TURBO:
 		state_ = ACTIVE;
