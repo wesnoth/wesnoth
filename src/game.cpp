@@ -938,10 +938,10 @@ bool game_controller::new_campaign()
 		const std::string& icon = (**i)["icon"];
 		const std::string desc = (**i)["description"];
 		const std::string image = (**i)["image"];
-		if(icon == "") {
-			str << " ,";
+		if(icon.empty()) {
+			str << COLUMN_SEPARATOR;
 		} else {
-			str << "&" << icon << ",";
+			str << IMAGE_PREFIX << icon << COLUMN_SEPARATOR;
 		}
 
 		str << (**i)["name"];
@@ -950,7 +950,7 @@ bool game_controller::new_campaign()
 		campaign_desc.push_back(std::pair<std::string,std::string>(desc,image));
 	}
 
-	campaign_names.push_back(_(" ,Get More Campaigns..."));
+	campaign_names.push_back(std::string(1, COLUMN_SEPARATOR) + _("Get More Campaigns..."));
 	campaign_desc.push_back(std::pair<std::string,std::string>(_("Download more campaigns from a server on Internet."),game_config::download_campaign_image));
 
 	int res = 0;
@@ -1050,7 +1050,12 @@ void game_controller::download_campaigns()
 		}
 
 		std::vector<std::string> campaigns, options;
-		options.push_back(_(",Name,Version,Author,Downloads,Size"));
+		std::string sep(1, COLUMN_SEPARATOR);
+		options.push_back(sep + _("Name") +
+		                  sep + _("Version") +
+		                  sep + _("Author") +
+		                  sep + _("Downloads") +
+		                  sep + _("Size"));
 		const config::child_list& cmps = campaigns_cfg->get_children("campaign");
 		const std::vector<std::string>& publish_options = available_campaigns();
 
@@ -1083,15 +1088,20 @@ void game_controller::download_campaigns()
 			}
 
 			std::replace(name.begin(),name.end(),'_',' ');
-			options.push_back("&" + (**i)["icon"] + "," + name + "," + (**i)["version"] + "," + (**i)["author"] + "," + (**i)["downloads"] + "," + size_str);
+			options.push_back(IMAGE_PREFIX + (**i)["icon"] + COLUMN_SEPARATOR +
+			                  name + COLUMN_SEPARATOR +
+			                  (**i)["version"] + COLUMN_SEPARATOR +
+			                  (**i)["author"] + COLUMN_SEPARATOR +
+			                  (**i)["downloads"] + COLUMN_SEPARATOR +
+			                  size_str);
 		}
 
 		for(std::vector<std::string>::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
-			options.push_back(std::string(",") + _("Publish campaign: ") + *j);
+			options.push_back(sep + _("Publish campaign: ") + *j);
 		}
 
 		for(std::vector<std::string>::const_iterator d = delete_options.begin(); d != delete_options.end(); ++d) {
-			options.push_back(std::string(",") + _("Delete campaign: ") + *d);
+			options.push_back(sep + _("Delete campaign: ") + *d);
 		}
 
 		if(campaigns.empty() && publish_options.empty()) {
