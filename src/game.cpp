@@ -551,6 +551,8 @@ int play_game(int argc, char** argv)
 
 			std::vector<std::string> langs = get_languages(game_config);
 
+			std::sort(langs.begin(),langs.end());
+
 			const std::vector<std::string>::iterator current = std::find(langs.begin(),langs.end(),get_language());
 			if(current != langs.end())
 				*current = "*" + *current;

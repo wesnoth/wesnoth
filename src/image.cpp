@@ -285,7 +285,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 					assert(surf != NULL);
 					
 					SDL_Rect maprect = {x*scale*0.75,y*scale + (is_odd(x) ? scale/2 : 0),0,0};
-					sdl_safe_blit(surf, NULL, minimap, &maprect);
+					SDL_BlitSurface(surf, NULL, minimap, &maprect);
 				}
 			}
 		}

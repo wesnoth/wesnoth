@@ -1296,7 +1296,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	if(disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate(steps.back());
-		disp->recalculate_minimap();
 	}
 
 	int orig_tower_owner = -1;
@@ -1322,6 +1321,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	if(disp != NULL) {
 		disp->set_route(NULL);
 		disp->draw();
+		disp->recalculate_minimap();
 	}
 
 	assert(steps.size() <= route.size());

@@ -974,7 +974,11 @@ void turn_info::undo()
 
 	const bool shroud_cleared = clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
 
-	gui_.recalculate_minimap();
+	if(shroud_cleared) {
+		gui_.recalculate_minimap();
+	} else {
+		gui_.redraw_minimap();
+	}
 }
 
 void turn_info::redo()
