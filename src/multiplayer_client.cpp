@@ -35,6 +35,8 @@ public:
 		return cfg.child("gamelist");
 	}
 
+	~gamelist_manager() {} // Workaround for IRIX Mips CC
+
 	enum { UPDATED_GAMELIST = -3 };
 
 private:
