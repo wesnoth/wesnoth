@@ -12,10 +12,11 @@
 
 #include "../global.hpp"
 
-#include "../font.hpp"
-#include "../events.hpp"
-#include "../language.hpp"
 #include "../display.hpp"
+#include "../events.hpp"
+#include "../filesystem.hpp"
+#include "../font.hpp"
+#include "../language.hpp"
 #include "../show_dialog.hpp"
 #include "file_chooser.hpp"
 

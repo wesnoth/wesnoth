@@ -13,13 +13,9 @@
 #ifndef FILE_CHOOSER_H_INCLUDED
 #define FILE_CHOOSER_H_INCLUDED
 
-#include "../display.hpp"
-#include "widget.hpp"
 #include "menu.hpp"
 #include "textbox.hpp"
-#include "../filesystem.hpp"
-#include "../language.hpp"
-
+#include "widget.hpp"
 
 namespace gui {
 
