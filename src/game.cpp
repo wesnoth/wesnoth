@@ -171,7 +171,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		//if this isn't the last scenario, then save the game
 		if(scenario != NULL) {
 			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
-			state.starting_pos = *scenario;
+			state.starting_pos = config();
 
 			bool retry = true;
 
@@ -192,6 +192,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 					}
 				}
 			}
+
+			state.starting_pos = *scenario;
 		}
 	}
 

@@ -119,8 +119,7 @@ team::team_info::team_info(const config& cfg)
 	}
 
 	std::vector<std::string> recruits = config::split(cfg["recruit"]);
-	for(std::vector<std::string>::const_iterator i = recruits.begin();
-	    i != recruits.end(); ++i) {
+	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
 		can_recruit.insert(*i);
 	}
 

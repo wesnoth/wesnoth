@@ -71,6 +71,7 @@ bool ai::recruit_usage(const std::string& usage)
 		if(i->second.usage() == usage && recruits.count(name)
 		   && current_team().gold() - i->second.cost() > min_gold
 		   && not_recommended_units_.count(name) == 0) {
+			std::cerr << "recommending '" << name << "'\n";
 			options.push_back(name);
 		}
 	}
@@ -170,6 +171,7 @@ void ai_interface::sync_network()
 
 gamemap::location ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
+	std::cerr << "ai_interface::move_unit " << (from.x+1) << (from.y+1) << " -> " << (to.x+1) << "," << (to.y+1) << "\n";
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands(&info_.disp);
 
@@ -188,6 +190,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	}
 
 	if(from == to) {
+		std::cerr << "moving unit at " << (from.x+1) << "," << (from.y+1) << " on spot. resetting moves\n";
 		u_it->second.set_movement(0);
 		return to;
 	}
@@ -274,6 +277,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 
 gamemap::location ai::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
+	std::cerr << "ai::move_unit " << (from.x+1) << (from.y+1) << " -> " << (to.x+1) << "," << (to.y+1) << "\n";
 	std::map<location,paths> temp_possible_moves;
 	std::map<location,paths>* possible_moves_ptr = &possible_moves;
 
@@ -321,6 +325,7 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 
 					const unit_map::iterator itor = units_.find(from);
 					if(itor != units_.end()) {
+						std::cerr << "setting temp moves of unit to " << move_left << "\n";
 						itor->second.set_movement(move_left);
 					}
 
@@ -335,7 +340,7 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 		do_recruitment();
 	}
 
-	if(units_.count(to) == 0) {
+	if(units_.count(to) == 0 || from == to) {
 		return ai_interface::move_unit(from,to,*possible_moves_ptr);
 	} else {
 		return from;
@@ -416,6 +421,18 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 	}
 }
 
+void ai::remove_unit_from_moves(const gamemap::location& loc, move_map& srcdst, move_map& dstsrc)
+{
+	srcdst.erase(loc);
+	for(move_map::iterator i = dstsrc.begin(); i != dstsrc.end(); ) {
+		if(i->second == loc) {
+			dstsrc.erase(i++);
+		} else {
+			++i;
+		}
+	}
+}
+
 void ai::play_turn()
 {
 	consider_combat_ = true;
@@ -438,7 +455,12 @@ void ai::do_move()
 	calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 	calculate_possible_moves(enemy_possible_moves,enemy_srcdst,enemy_dstsrc,true);
 
+	const bool passive_leader = current_team().ai_parameters()["passive_leader"] == "yes";
+
 	unit_map::iterator leader = find_leader(units_,team_num_);
+	if(leader != units_.end() && passive_leader) {
+		remove_unit_from_moves(leader->first,srcdst,dstsrc);
+	}
 
 	int ticks = SDL_GetTicks();
 
@@ -475,27 +497,26 @@ void ai::do_move()
 	}
 
 	if(leader != units_.end()) {
-		srcdst.erase(leader->first);
-		for(move_map::iterator i = dstsrc.begin(); i != dstsrc.end(); ) {
-			if(i->second == leader->first) {
-				dstsrc.erase(i++);
-			} else {
-				++i;
-			}
-		}
+		remove_unit_from_moves(leader->first,srcdst,dstsrc);
 	}
 
 	const bool met_invisible_unit = move_to_targets(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
 	if(met_invisible_unit) {
+		std::cerr << "met_invisible_unit\n";
 		do_move();
 		return;
 	}
+
+	std::cerr << "done move to targets\n";
 
 	//recruitment phase and leader movement phase
 	if(leader != units_.end()) {
 		move_leader_to_keep(enemy_dstsrc);
 		do_recruitment();
-		move_leader_after_recruit(enemy_dstsrc);
+
+		if(!passive_leader) {
+			move_leader_after_recruit(enemy_dstsrc);
+		}
 	}
 
 	recorder.end_turn();
@@ -877,8 +898,9 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 			assert(map_.on_board(ittg->loc));
 		}
 
-		if(move.first.valid() == false)
+		if(move.first.valid() == false) {
 			break;
+		}
 
 		std::cerr << "move: " << move.first.x << ", " << move.first.y << " - " << move.second.x << ", " << move.second.y << "\n";
 
@@ -909,6 +931,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		//we didn't arrive at our intended destination. We return true, meaning that
 		//the AI algorithm should be recalculated from the start.
 		if(arrived_at != move.second) {
+			std::cerr << "didn't arrive at destination\n";
 			return true;
 		}
 
@@ -921,7 +944,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 
 		//don't allow any other units to move onto the tile our unit
 		//just moved onto
-		typedef std::multimap<location,location>::iterator Itor;
+		typedef move_map::iterator Itor;
 		std::pair<Itor,Itor> del = dstsrc.equal_range(arrived_at);
 		dstsrc.erase(del.first,del.second);
 	}

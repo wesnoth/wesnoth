@@ -279,13 +279,17 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "allow_recruit") {
 		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
 		const size_t index = side-1;
-		if(index > teams->size())
+		if(index >= teams->size())
 			return rval;
 
 		const std::string& type = cfg["type"];
-		(*teams)[index].recruits().insert(type);
-		if(index == 0) {
-			state_of_game->can_recruit.insert(type);
+
+		const std::vector<std::string>& types = config::split(type);
+		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
+			(*teams)[index].recruits().insert(*i);
+			if(index == 0) {
+				state_of_game->can_recruit.insert(*i);
+			}
 		}
 	}
 
@@ -293,20 +297,23 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "disallow_recruit") {
 		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
 		const size_t index = side-1;
-		if(index > teams->size())
+		if(index >= teams->size())
 			return rval;
 
 		const std::string& type = cfg["type"];
-		(*teams)[index].recruits().erase(type);
-		if(index == 0) {
-			state_of_game->can_recruit.erase(type);
+		const std::vector<std::string>& types = config::split(type);
+		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
+			(*teams)[index].recruits().erase(*i);
+			if(index == 0) {
+				state_of_game->can_recruit.erase(*i);
+			}
 		}
 	}
 
 	else if(cmd == "set_recruit") {
 		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
 		const size_t index = side-1;
-		if(index > teams->size())
+		if(index >= teams->size())
 			return rval;
 
 		std::vector<std::string> recruit = config::split(cfg["recruit"]);
@@ -693,7 +700,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		std::vector<unit>& avail = state_of_game->available_units;
 		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			if(u->matches_filter(cfg)) {
-				gamemap::location loc;
+				gamemap::location loc(cfg);
 				recruit_unit(*game_map,1,*units,*u,loc,screen,false,true);
 				avail.erase(u);
 				break;

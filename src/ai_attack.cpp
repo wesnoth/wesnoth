@@ -309,6 +309,7 @@ void ai::attack_analysis::analyze(const gamemap& map,
 	}
 
 	leader_threat = (tile != 6);
+	uses_leader = false;
 
 	target_value = defend_it->second.type().cost();
 	target_value += (double(defend_it->second.experience())/
@@ -358,6 +359,10 @@ void ai::attack_analysis::analyze(const gamemap& map,
 
 			unit_map::const_iterator att = units.find(movements[i].first);
 			double cost = att->second.type().cost();
+
+			if(att->second.can_recruit()) {
+				uses_leader = true;
+			}
 
 			const bool on_village = map.is_village(movements[i].second);
 
@@ -470,6 +475,12 @@ double ai::attack_analysis::rating(double aggression) const
 {
 	if(leader_threat) {
 		aggression = 1.0;
+	}
+
+	//only use the leader if we do a serious amount of damage
+	//compared to how much they do to us.
+	if(uses_leader && aggression > -1.0) {
+		aggression = -1.0;
 	}
 
 	double value = chance_to_kill*target_value - avg_losses;

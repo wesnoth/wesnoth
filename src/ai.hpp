@@ -325,6 +325,8 @@ protected:
 
 	virtual bool recruit_usage(const std::string& usage);
 
+	void remove_unit_from_moves(const gamemap::location& u, move_map& srcdst, move_map& dstsrc);
+
 	//function which will calculate which movements should be made to get an optimal number of villages
 	std::vector<std::pair<gamemap::location,gamemap::location> > get_village_combinations(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc,
 																						  const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader,
@@ -382,6 +384,9 @@ protected:
 
 		//is true if the unit is a threat to our leader
 		bool leader_threat;
+
+		//is true if this attack sequence makes use of the leader
+		bool uses_leader;
 	};
 
 	virtual void do_attack_analysis(

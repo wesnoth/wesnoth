@@ -603,6 +603,7 @@ redo_turn:
 		if((end_level.result == DEFEAT || end_level.result == VICTORY) && is_observer(teams)) {
 			gui::show_dialog(gui,NULL,string_table["observer_endgame_heading"],
 			                          string_table["observer_endgame"], gui::OK_ONLY);
+			return end_level.result;
 		}
 
 		if(end_level.result == QUIT || end_level.result == REPLAY) {
