@@ -221,10 +221,6 @@ std::vector<std::string> get_text() {
 
 void show_about(display& disp)
 {
-	static const std::string woo[] = {
-	_("-   Main Developer"),
-	"- "};
-	std::cerr << woo[0] << std::endl;
 	std::vector<std::string> text = get_text();
 	SDL_Rect rect = {0, 0, disp.x(), disp.y()};
 
