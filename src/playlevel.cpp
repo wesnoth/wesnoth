@@ -16,6 +16,7 @@
 #include "filesystem.hpp"
 #include "game_events.hpp"
 #include "halo.hpp"
+#include "help.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
 #include "language.hpp"
@@ -337,6 +338,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	game_events::manager events_manager(*level,gui,map,units,teams,
 	                                    state_of_game,status,gameinfo);
+	help::help_manager help_manager(game_config.child("help"));
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level->get_children("item");

@@ -192,7 +192,8 @@ SDL_Surface* render_text_internal(TTF_Font* font,const std::string& str,
 
 SDL_Surface* render_text(TTF_Font* font,const std::string& text, const SDL_Color& colour, int style)
 {
-	const std::vector<std::string> lines = config::split(text,'\n');
+	// XXX Changed by erl, to not strip when rendering text. Works everywhere?
+	const std::vector<std::string> lines = config::split(text,'\n', config::REMOVE_EMPTY);
 	std::vector<shared_sdl_surface> surfaces;
 	size_t width = 0, height = 0;
 	for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {

@@ -19,7 +19,7 @@ class menu : public events::handler, public scrollable
 {
 public:
 	menu(display& disp, const std::vector<std::string>& items,
-	     bool click_selects=false, int max_height=-1);
+	     bool click_selects=false, int max_height=-1, int max_width=-1);
 
 	int height() const;
 	int width() const;
@@ -28,6 +28,9 @@ public:
 
 	void set_loc(int x, int y);
 	void set_width(int w);
+	// Get the rect bounding the menu. If the max_height/max_width is
+	// set, use those, otherwise use the current values.
+	SDL_Rect get_rect() const;
 
 	void redraw(); //forced redraw
 	
@@ -36,12 +39,15 @@ public:
 
 	void erase_item(size_t index);
 
-	void set_items(const std::vector<std::string>& items);
+	/// Set new items to show and redraw/recalculate everything. If
+	/// strip_spaces is false, spaces will remain at the item edges.
+	void set_items(const std::vector<std::string>& items, bool strip_spaces=true);
 
 	/// Set a new max height for this menu. Note that this does not take
 	/// effect immideately, only after certain operations that clear
 	/// everything, such as set_items().
 	void set_max_height(const int new_max_height);
+	void set_max_width(const int new_max_width);
 
 	size_t nitems() const { return items_.size(); }
 	
@@ -55,19 +61,23 @@ public:
 	void scroll(int pos);
 
 	void set_dirty() { drawn_ = false; }
-
 	enum { HELP_STRING_SEPERATOR = '|' };
+	enum { IMG_TEXT_SEPERATOR = 1 }; // Re-evaluate if this should be
+									 // something else to be settable
+									 // from WML.
+
+protected:
+	void handle_event(const SDL_Event& event);
 
 private:
 	size_t max_items_onscreen() const;
 
-	int max_height_;
+	int max_height_, max_width_;
 	mutable int max_items_, item_height_;
 
 	void calculate_position();
 	void key_press(SDLKey key);
 
-	void handle_event(const SDL_Event& event);
 
 	bool show_scrollbar() const;
 

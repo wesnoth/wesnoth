@@ -90,6 +90,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("search",HOTKEY_SEARCH));
 		m.insert(val("speaktoally",HOTKEY_SPEAK_ALLY));
 		m.insert(val("speaktoall",HOTKEY_SPEAK_ALL));
+		m.insert(val("help",HOTKEY_HELP));
 	}
 	
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
@@ -453,7 +454,11 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 
 			break;
 		}
-
+		case HOTKEY_HELP:
+			if(executor) {
+				executor->show_help();
+			}
+			break;
 		case HOTKEY_EDIT_SET_TERRAIN:
 			if(executor)
 				executor->edit_set_terrain();

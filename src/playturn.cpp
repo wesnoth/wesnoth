@@ -13,6 +13,7 @@
 
 #include "actions.hpp"
 #include "events.hpp"
+#include "help.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
 #include "language.hpp"
@@ -919,6 +920,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_STATISTICS:
 	case hotkey::HOTKEY_QUIT_GAME:
 	case hotkey::HOTKEY_SEARCH:
+	case hotkey::HOTKEY_HELP:
 		return true;
 
 	case hotkey::HOTKEY_SAVE_GAME:
@@ -2017,6 +2019,11 @@ void turn_info::search()
 	}
 	msg << ':';
 	create_textbox(floating_textbox::TEXTBOX_SEARCH,msg.str());
+}
+
+void turn_info::show_help()
+{
+	help::show_help(gui_);
 }
 
 void turn_info::do_search(const std::string& new_search)

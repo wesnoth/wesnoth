@@ -16,8 +16,8 @@ const size_t menu_cell_padding = 10;
 namespace gui {
 
 menu::menu(display& disp, const std::vector<std::string>& items,
-           bool click_selects, int max_height)
-        : max_height_(max_height), max_items_(-1), item_height_(-1),
+           bool click_selects, int max_height, int max_width)
+        : max_height_(max_height), max_width_(max_width), max_items_(-1), item_height_(-1),
 		  display_(&disp), x_(0), y_(0), cur_help_(-1,-1), help_string_(-1), buffer_(NULL),
           selected_(click_selects ? -1:0), click_selects_(click_selects),
           previous_button_(true), drawn_(false), show_result_(false),
@@ -113,7 +113,6 @@ int menu::width() const
 			width_ += scrollbar_.get_max_width();
 		}
 	}
-
 	return width_;
 }
 
@@ -155,6 +154,13 @@ void menu::set_width(int w)
 	itemRects_.clear();
 }
 
+SDL_Rect menu::get_rect() const
+{
+	SDL_Rect r = {x_, y_, max_width_ < 0 ? width_ : max_width_,
+				  max_height_ < 0 ? height_ : max_height_};
+	return r;
+}
+
 void menu::redraw()
 {
 	if(x_ == 0 && y_ == 0) {
@@ -189,7 +195,7 @@ void menu::erase_item(size_t index)
 	}
 }
 
-void menu::set_items(const std::vector<std::string>& items) {
+void menu::set_items(const std::vector<std::string>& items, bool strip_spaces) {
 	items_.clear();
 	itemRects_.clear();
 	column_widths_.clear();
@@ -197,6 +203,7 @@ void menu::set_items(const std::vector<std::string>& items) {
 	height_ = -1; // Force recalculation of the height.
 	width_ = -1; // Force recalculation of the width.
 	max_items_ = -1; // Force recalculation of the max items.
+	item_height_ = -1; // Force recalculation of the item height.
 	// Scrollbar and buttons will be reanabled if they are needed.
 	scrollbar_.enable(false);
 	uparrow_.hide(true);
@@ -205,7 +212,7 @@ void menu::set_items(const std::vector<std::string>& items) {
 	selected_ = click_selects_ ? -1:0;
 	for (std::vector<std::string>::const_iterator item = items.begin();
 		 item != items.end(); ++item) {
-		items_.push_back(config::quoted_split(*item,',',false));
+		items_.push_back(config::quoted_split(*item,',',!strip_spaces));
 
 		//make sure there is always at least one item
 		if(items_.back().empty())
@@ -226,6 +233,10 @@ void menu::set_items(const std::vector<std::string>& items) {
 
 void menu::set_max_height(const int new_max_height) {
 	max_height_ = new_max_height;
+}
+
+void menu::set_max_width(const int new_max_width) {
+	max_width_ = new_max_width;
 }
 	
 
@@ -527,18 +538,29 @@ namespace {
 
 	SDL_Rect item_size(const std::string& item) {
 		SDL_Rect res = {0,0,0,0};
-		if(item.empty() == false && item[0] == ImagePrefix) {
-			const std::string image_name(item.begin()+1,item.end());
-			SDL_Surface* const img = image::get_image(image_name,image::UNSCALED);
-			if(img != NULL) {
-				res.w = img->w;
-				res.h = img->h;
+		std::vector<std::string> img_text_items = config::split(item, menu::IMG_TEXT_SEPERATOR);
+		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
+			 it != img_text_items.end(); it++) {
+			if (res.w > 0 || res.h > 0) {
+				// Not the first item, add the spacing.
+				res.w += 5;
 			}
-		} else {
-			const SDL_Rect area = {0,0,10000,10000};
-			res = font::draw_text(NULL,area,menu_font_size,font::NORMAL_COLOUR,item,0,0);
+			const std::string str = *it;
+			if(str.empty() == false && str[0] == ImagePrefix) {
+				const std::string image_name(str.begin()+1,str.end());
+				SDL_Surface* const img = image::get_image(image_name,image::UNSCALED);
+				if(img != NULL) {
+					res.w += img->w;
+					res.h = maximum<int>(img->h, res.h);
+				}
+			} else {
+				const SDL_Rect area = {0,0,10000,10000};
+				const SDL_Rect font_size =
+					font::draw_text(NULL,area,menu_font_size,font::NORMAL_COLOUR,str,0,0);
+				res.w += font_size.w;
+				res.h = maximum<int>(font_size.h, res.h);
+			}
 		}
-
 		return res;
 	}
 }
@@ -588,7 +610,6 @@ void menu::draw_item(int item)
 	}
 
 	clear_item(item);
-
 	gui::draw_solid_tinted_rectangle(x_,rect.y,width()-scrollbar_.get_width(),rect.h,
 	                                 item == selected_ ? 150:0,0,0,
 	                                 item == selected_ ? 0.6 : 0.2,
@@ -600,20 +621,35 @@ void menu::draw_item(int item)
 
 	int xpos = rect.x;
 	for(size_t i = 0; i != items_[item].size(); ++i) {
-		const std::string& str = items_[item][i];
-		if(str.empty() == false && str[0] == ImagePrefix) {
-			const std::string image_name(str.begin()+1,str.end());
-			SDL_Surface* const img = image::get_image(image_name,image::UNSCALED);
-			if(img != NULL && xpos+img->w < display_->x() && rect.y+img->h < display_->y()) {
-				display_->blit_surface(xpos,rect.y,img);
+		const int last_x = xpos;
+		std::string str = items_[item][i];
+		std::vector<std::string> img_text_items = config::split(str, IMG_TEXT_SEPERATOR);
+		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
+			 it != img_text_items.end(); it++) {
+			str = *it;
+			if(str.empty() == false && str[0] == ImagePrefix) {
+				const std::string image_name(str.begin()+1,str.end());
+				SDL_Surface* const img = image::get_image(image_name,image::UNSCALED);
+				const int max_width = max_width_ < 0 ? display_->x() :
+					minimum<int>(max_width_, display_->x() - xpos);
+				if(img != NULL && (xpos - rect.x) + img->w < max_width
+				   && rect.y+img->h < display_->y()) {
+					const size_t y = rect.y + (rect.h - img->h)/2;
+					display_->blit_surface(xpos,y,img);
+					xpos += img->w + 5;
+				}
+			} else {
+				const std::string to_show = max_width_ > -1 ? 
+					font::make_text_ellipsis(str, menu_font_size,
+											 max_width_ - (xpos - rect.x)
+											 - scrollbar_.get_width()) : str;
+				const SDL_Rect& text_size = font::text_area(str,menu_font_size);
+				const size_t y = rect.y + (rect.h - text_size.h)/2;
+				font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,to_show,xpos,y);
+				xpos += text_size.w + 5;
 			}
-
-		} else {
-			const SDL_Rect& text_size = font::text_area(str,menu_font_size);
-			const size_t y = rect.y + (rect.h - text_size.h)/2;
-			font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,str,xpos,y);
 		}
-		xpos += widths[i];
+		xpos = last_x + widths[i];
 	}
 }
 

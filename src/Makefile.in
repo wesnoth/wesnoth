@@ -185,6 +185,7 @@ wesnoth_SOURCES = about.cpp \
 		  game_events.cpp \
 		  gamestatus.cpp \
 		  halo.cpp \
+          help.cpp \
 		  hotkeys.cpp \
 		  image.cpp \
 		  intro.cpp \
@@ -250,6 +251,7 @@ wesnoth_SOURCES = about.cpp \
 		  game_events.hpp \
 		  gamestatus.hpp \
 		  halo.hpp \
+          help.hpp \
 		  hotkeys.hpp \
 		  image.hpp \
 		  intro.hpp \
@@ -327,6 +329,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 game_events.cpp \
 			 gamestatus.cpp \
 			 halo.cpp \
+             help.cpp \
 			 hotkeys.cpp \
 			 image.cpp \
 			 intro.cpp \
@@ -390,6 +393,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 game_events.hpp \
 			 gamestatus.hpp \
 			 halo.hpp \
+             help.hpp \
 			 hotkeys.hpp \
 			 image.hpp \
 			 intro.hpp \
@@ -451,8 +455,8 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	dialogs.$(OBJEXT) display.$(OBJEXT) events.$(OBJEXT) \
 	filesystem.$(OBJEXT) font.$(OBJEXT) game.$(OBJEXT) \
 	game_config.$(OBJEXT) game_events.$(OBJEXT) \
-	gamestatus.$(OBJEXT) halo.$(OBJEXT) hotkeys.$(OBJEXT) \
-	image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
+	gamestatus.$(OBJEXT) halo.$(OBJEXT) help.$(OBJEXT) \
+	hotkeys.$(OBJEXT) image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
 	language.$(OBJEXT) log.$(OBJEXT) map.$(OBJEXT) \
 	map_label.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
 	mouse.$(OBJEXT) multiplayer.$(OBJEXT) \
@@ -481,19 +485,19 @@ am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) editor_layout.$(OBJEXT) \
 	dialogs.$(OBJEXT) display.$(OBJEXT) events.$(OBJEXT) \
 	filesystem.$(OBJEXT) font.$(OBJEXT) game_config.$(OBJEXT) \
 	game_events.$(OBJEXT) gamestatus.$(OBJEXT) halo.$(OBJEXT) \
-	hotkeys.$(OBJEXT) image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
-	language.$(OBJEXT) log.$(OBJEXT) map_label.$(OBJEXT) \
-	map.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
-	mouse.$(OBJEXT) network.$(OBJEXT) pathfind.$(OBJEXT) \
-	playlevel.$(OBJEXT) playturn.$(OBJEXT) preferences.$(OBJEXT) \
-	race.$(OBJEXT) replay.$(OBJEXT) reports.$(OBJEXT) \
-	sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) sound.$(OBJEXT) \
-	statistics.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
-	theme.$(OBJEXT) tooltips.$(OBJEXT) unit.$(OBJEXT) \
-	unit_display.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
-	button.$(OBJEXT) file_chooser.$(OBJEXT) menu.$(OBJEXT) \
-	progressbar.$(OBJEXT) textbox.$(OBJEXT) scrollbar.$(OBJEXT) \
-	slider.$(OBJEXT) widget.$(OBJEXT)
+	help.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
+	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
+	map_label.$(OBJEXT) map.$(OBJEXT) mapgen.$(OBJEXT) \
+	mapgen_dialog.$(OBJEXT) mouse.$(OBJEXT) network.$(OBJEXT) \
+	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
+	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
+	reports.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
+	sound.$(OBJEXT) statistics.$(OBJEXT) team.$(OBJEXT) \
+	terrain.$(OBJEXT) theme.$(OBJEXT) tooltips.$(OBJEXT) \
+	unit.$(OBJEXT) unit_display.$(OBJEXT) unit_types.$(OBJEXT) \
+	video.$(OBJEXT) button.$(OBJEXT) file_chooser.$(OBJEXT) \
+	menu.$(OBJEXT) progressbar.$(OBJEXT) textbox.$(OBJEXT) \
+	scrollbar.$(OBJEXT) slider.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_editor_OBJECTS = $(am_wesnoth_editor_OBJECTS)
 wesnoth_editor_LDADD = $(LDADD)
 wesnoth_editor_DEPENDENCIES =
@@ -519,13 +523,14 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/game.Po ./$(DEPDIR)/game_config.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_events.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/gamestatus.Po ./$(DEPDIR)/halo.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/hotkeys.Po ./$(DEPDIR)/image.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/intro.Po ./$(DEPDIR)/key.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/language.Po ./$(DEPDIR)/log.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/map.Po ./$(DEPDIR)/map_label.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/map_manip.Po ./$(DEPDIR)/mapgen.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/mapgen_dialog.Po ./$(DEPDIR)/menu.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/mouse.Po ./$(DEPDIR)/multiplayer.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/help.Po ./$(DEPDIR)/hotkeys.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/image.Po ./$(DEPDIR)/intro.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/key.Po ./$(DEPDIR)/language.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/log.Po ./$(DEPDIR)/map.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/map_label.Po ./$(DEPDIR)/map_manip.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/mapgen.Po ./$(DEPDIR)/mapgen_dialog.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/menu.Po ./$(DEPDIR)/mouse.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/multiplayer.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_client.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_connect.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_lobby.Po \
@@ -637,6 +642,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game_events.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gamestatus.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/halo.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/help.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hotkeys.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/image.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/intro.Po@am__quote@
