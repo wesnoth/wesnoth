@@ -14,10 +14,12 @@
 #include "editor.hpp"
 #include "../config.hpp"
 #include "../game_config.hpp"
+#include "../filesystem.hpp"
 #include "../font.hpp"
 #include "../image.hpp"
 #include "../map.hpp"
 #include "../team.hpp"
+#include "../util.hpp"
 #include "../preferences.hpp"
 #include "../language.hpp"
 #include "../cursor.hpp"
@@ -32,9 +34,33 @@ int main(int argc, char** argv)
 {
 	game_config::editor = true;
 
-	if(argc > 2) {
-		std::cout << "usage: " << argv[0] << " [map-name]" << std::endl;
-		return 0;
+	int arg;
+	for(arg = 1; arg != argc; ++arg) {
+		const std::string val(argv[arg]);
+		if(val.empty()) {
+			continue;
+		}
+
+ 		if(val == "--help" || val == "-h") {
+ 			std::cout << "usage: " << argv[0]
+ 		    << " [options] [map]\n"
+ 			<< "  -f, --fullscreen  Runs the game in full-screen\n"
+ 			<< "  -h, --help        Prints this message and exits\n"
+ 			<< "  --path            Prints the name of the game data directory and exits\n"
+ 			<< "  -w, --windowed    Runs the game in windowed mode\n"
+ 			<< "  -v, --version     Prints the game's version number and exits\n"
+ 			<< "  --resolution      Set the resolution of the window\n"
+   		    << "  --datadir         Select the data directory to use\n";
+ 			return 0;
+ 		} else if(val == "--version" || val == "-v") {
+ 			std::cout << "Battle for Wesnoth " << game_config::version
+ 			          << "\n";
+ 			return 0;
+ 		} else if(val == "--path") {
+ 			std::cout <<  game_config::path
+ 			          << "\n";
+ 			return 0;
+		}
 	}
 
 	CVideo video;
@@ -42,6 +68,56 @@ int main(int argc, char** argv)
 	const font::manager font_manager;
 	const preferences::manager prefs_manager;
 	const image::manager image_manager;
+	std::string filename = "";
+	std::string mapdata;
+
+	for(arg = 1; arg != argc; ++arg) {
+		const std::string val(argv[arg]);
+		if(val.empty()) {
+			continue;
+		}
+		if(val == "--resolution" || val == "-r") {
+			if(arg+1 != argc) {
+				++arg;
+				const std::string val(argv[arg]);
+				const std::vector<std::string> res = config::split(val,'x');
+				if(res.size() == 2) {
+					const int xres = lexical_cast_default<int>(res.front());
+					const int yres = lexical_cast_default<int>(res.back());
+					if(xres > 0 && yres > 0) {
+						const std::pair<int,int> resolution(xres,yres);
+						preferences::set_resolution(resolution);
+					}
+				}
+			}
+		} else if(val == "--windowed" || val == "-w") {
+			preferences::set_fullscreen(false);
+		} else if(val == "--fullscreen" || val == "-f") {
+			preferences::set_fullscreen(true);
+		} else if(val == "--datadir") {
+			if (arg+1 != argc) {
+				arg++;
+				const std::string val(argv[arg]);
+				if (!is_directory(val)) {
+					std::cerr << "Could not find directory '" << val << "'\n";
+					return 1;
+				}
+				game_config::path = val;
+			}
+		} else if(val[0] == '-') {
+			std::cerr << "unknown option: " << val << "\n";
+			return 0;
+		} else {
+			filename = val;
+			try {
+				mapdata = read_file(filename);
+			}
+			catch (io_exception) {
+				std::cerr << "Could not read the map file, sorry." << std::endl;
+				return 1;
+			}
+		}
+	}
 	// Blatant cut and paste from game.cpp
 	image::set_wm_icon();
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
@@ -98,26 +174,16 @@ int main(int argc, char** argv)
 	preproc_map defines_map;
 	defines_map["MEDIUM"] = preproc_define();
 	defines_map["NORMAL"] = preproc_define();
-	config cfg(preprocess_file("data/game.cfg", &defines_map));
+	config cfg;
+	try {
+		cfg.read(preprocess_file("data/game.cfg", &defines_map));
+	}
+	catch (config::error e) {
+		std::cerr << "Error when reading game config: '" << e.message << "'" << std::endl;
+	}
 
 	set_language("English");
 
-	std::string filename;
-	std::string mapdata;
-
-	if(argc == 2) {
-		filename = argv[1];
-		try {
-			mapdata = read_file(filename);
-		}
-		catch (io_exception) {
-			std::cerr << "Could not read the map file, sorry." << std::endl;
-			return 1;
-		}
-	}
-	else {
-		filename = "";
-	}
 	if(mapdata.empty()) {
 		for(int i = 0; i != 20; ++i) {
 			mapdata = mapdata + "gggggggggggggggggggg\n";
