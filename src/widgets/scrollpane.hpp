@@ -20,7 +20,6 @@
 #include "SDL.h"
 #include "../sdl_utils.hpp"
 #include "scrollarea.hpp"
-#include "widget.hpp"
 
 namespace gui {
 

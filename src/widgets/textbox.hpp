@@ -14,8 +14,6 @@
 #ifndef TEXTBOX_HPP_INCLUDED
 #define TEXTBOX_HPP_INCLUDED
 
-#include "../events.hpp"
-#include "../key.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../sdl_utils.hpp"
 

@@ -13,10 +13,9 @@
 
 #include "../global.hpp"
 
+class display;
+
 #include "scrollarea.hpp"
-#include "../display.hpp"
-#include "../image.hpp"
-#include "../video.hpp"
 
 #include <algorithm>
 #include <iostream>

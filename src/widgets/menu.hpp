@@ -4,7 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "../display.hpp"
+class display;
+
 #include "../events.hpp"
 #include "../sdl_utils.hpp"
 

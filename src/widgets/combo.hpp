@@ -16,7 +16,7 @@
 #include "SDL.h"
 
 #include "button.hpp"
-#include "../display.hpp"
+class display;
 
 namespace gui {
 

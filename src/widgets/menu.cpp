@@ -2,6 +2,7 @@
 
 #include "menu.hpp"
 
+#include "../display.hpp"
 #include "../font.hpp"
 #include "../sdl_utils.hpp"
 #include "../show_dialog.hpp"
