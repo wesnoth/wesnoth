@@ -9,6 +9,7 @@
 
    See the COPYING file for more details.
 */
+#include "game_config.hpp"
 #include "gamestatus.hpp"
 #include "language.hpp"
 #include "unit_types.hpp"
@@ -307,6 +308,17 @@ unit_type::unit_type(config& cfg, const movement_type_map& mv_types,
                      std::vector<config*>& traits)
                               : cfg_(cfg), possibleTraits_(traits), alpha_(1.0)
 {
+	if(has_ability("heals")) {
+		heals_ = game_config::healer_heals_per_turn;
+		max_heals_ = game_config::heal_amount;
+	} else if(has_ability("cures")) {
+		heals_ = game_config::curer_heals_per_turn;
+		max_heals_ = game_config::cure_amount;
+	} else {
+		heals_ = 0;
+		max_heals_ = 0;
+	}
+
 	heals_ = has_ability("heals");
 	regenerates_ = has_ability("regenerates");
 	leadership_ = has_ability("leadership");
@@ -495,7 +507,12 @@ const std::string& unit_type::ability() const
 	return cfg_.values["ability"];
 }
 
-bool unit_type::heals() const
+int unit_type::max_unit_healing() const
+{
+	return max_heals_;
+}
+
+int unit_type::heals() const
 {
 	return heals_;
 }

@@ -45,8 +45,6 @@
 LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				       game_data& units_data, CVideo& video)
 {
-	CKey key;
-
 	std::string type = state.campaign_type;
 	if(type.empty())
 		type = "scenario";

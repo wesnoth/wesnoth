@@ -481,46 +481,48 @@ std::map<gamemap::location,unit>::iterator
 void calculate_healing(display& disp, const gamemap& map,
                        std::map<gamemap::location,unit>& units, int side)
 {
-	std::map<gamemap::location,int> healed_units;
+	std::map<gamemap::location,int> healed_units, max_healing;
 
 	std::map<gamemap::location,unit>::iterator i;
 	for(i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() != side)
-			continue;
 
-		bool heals = false;
-		if(map[i->first.x][i->first.y] == gamemap::TOWER) {
-			heals = true;
-		}
-
-		if(i->second.type().regenerates()) {
-			heals = true;
-		}
-
-		gamemap::location adjacent[6];
-		get_adjacent_tiles(i->first,adjacent);
-		for(int j = 0; j != 6; ++j) {
-			const std::map<gamemap::location,unit>::const_iterator adj_unit =
-			                                           units.find(adjacent[j]);
-			if(adj_unit != units.end() && adj_unit->second.type().heals() &&
-			   adj_unit->second.side() == side) {
-				heals = true;
-			}
-		}
-
-		if(heals) {
+		//the unit heals if it's on this side, and if it's on a tower or
+		//it has regeneration
+		if(i->second.side() == side &&
+		   (map[i->first.x][i->first.y] == gamemap::TOWER ||
+		    i->second.type().regenerates())) {
 			healed_units.insert(std::pair<gamemap::location,int>(
-			                            i->first, game_config::heal_amount));
+			                            i->first, game_config::cure_amount));
+			
+		}
+
+		//otherwise find the maximum healing for the unit
+		else {
+			int max_heal = 0;
+			gamemap::location adjacent[6];
+			get_adjacent_tiles(i->first,adjacent);
+			for(int j = 0; j != 6; ++j) {
+				std::map<gamemap::location,unit>::const_iterator healer =
+				                                      units.find(adjacent[j]);
+				if(healer != units.end() && healer->second.side() == side) {
+					max_heal = maximum(max_heal,
+					                 healer->second.type().max_unit_healing());
+				}
+			}
+
+			if(max_heal > 0) {
+				max_healing.insert(std::pair<gamemap::location,int>(i->first,
+				                                                    max_heal));
+			}
 		}
 	}
 
 	//now see about units that can heal other units
 	for(i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() != side)
-			continue;
 
-		if(i->second.type().heals()) {
+		if(i->second.side() == side && i->second.type().heals()) {
 			gamemap::location adjacent[6];
+			bool gets_healed[6];
 			get_adjacent_tiles(i->first,adjacent);
 
 			int nhealed = 0;
@@ -531,41 +533,40 @@ void calculate_healing(display& disp, const gamemap& map,
 				if(adj != units.end() &&
 				   adj->second.hitpoints() < adj->second.max_hitpoints() &&
 				   adj->second.side() == i->second.side() &&
-				   healed_units.count(adj->first) == 0) {
+				   healed_units[adj->first] < max_healing[adj->first]) {
 					++nhealed;
+					gets_healed[j] = true;
+				} else {
+					gets_healed[j] = false;
 				}
 			}
 
 			if(nhealed == 0)
 				continue;
 
-			const int healing_per_unit = game_config::healer_heals_per_turn/
-			                             nhealed;
+			const int healing_per_unit = i->second.type().heals()/nhealed;
 
 			for(j = 0; j != 6; ++j) {
-				const std::map<gamemap::location,unit>::const_iterator adj =
-				                                   units.find(adjacent[j]);
-				if(adj != units.end() &&
-				   adj->second.hitpoints() < adj->second.max_hitpoints() &&
-				   adj->second.side() == i->second.side() &&
-				   healed_units.count(adj->first) == 0) {
-					healed_units.insert(std::pair<gamemap::location,int>(
-					                               i->first,healing_per_unit));
-				}
+				if(!gets_healed[j])
+					continue;
+
+				assert(units.find(adjacent[j]) != units.end());
+				
+				healed_units[adjacent[j]]
+				        = minimum(max_healing[adjacent[j]],
+				                  healed_units[adjacent[j]]+healing_per_unit);
 			}
 		}
 	}
 
 	//poisoned units will take the same amount of damage per turn, as
-	//healing heals until they are reduced to 1 hitpoint. If they are
-	//healed on a turn, they recover 0 hitpoints that turn, but they
+	//curing heals until they are reduced to 1 hitpoint. If they are
+	//cured on a turn, they recover 0 hitpoints that turn, but they
 	//are no longer poisoned
 	for(i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() != side)
-			continue;
 
-		if(i->second.has_flag("poisoned")) {
-			const int damage = minimum<int>(game_config::heal_amount,
+		if(i->second.side() == side && i->second.has_flag("poisoned")) {
+			const int damage = minimum<int>(game_config::cure_amount,
 			                                i->second.hitpoints()-1);
 
 			if(damage > 0) {
@@ -600,17 +601,22 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		const int DelayAmount = 50;
 
-		if(u.has_flag("poisoned")) {
+		if(u.has_flag("poisoned") && h->second > 0) {
 
-			u.remove_flag("poisoned");
-			h->second = 0;
+			//poison is purged only if we are on a village or next to a curer
+			if(h->second >= game_config::cure_amount ||
+			   max_healing[h->first] >= game_config::cure_amount) {
+				u.remove_flag("poisoned");
 
-			if(show_healing) {
-				sound::play_sound("heal.wav");
-				SDL_Delay(DelayAmount);
-				disp.invalidate_unit();
-				disp.update_display();
+				if(show_healing) {
+					sound::play_sound("heal.wav");
+					SDL_Delay(DelayAmount);
+					disp.invalidate_unit();
+					disp.update_display();
+				}
 			}
+
+			h->second = 0;
 		} else if(h->second < 0) {
 			if(show_healing)
 				sound::play_sound("groan.wav");

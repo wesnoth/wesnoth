@@ -733,7 +733,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const int wbox = static_cast<int>(scaling*mapx()/(zoom_*0.75) - scaling);
 	const int hbox = static_cast<int>(scaling*this->y()/zoom_ - scaling);
 
-	const short boxcolour = (short)0xFFFF;
+	const Pixel boxcolour = Pixel(SDL_MapRGB(surface->format,0xFF,0xFF,0xFF));
 	SDL_Surface* const screen = screen_.getSurface();
 	short* const data = reinterpret_cast<short*>(screen->pixels);
 	short* const start_top = data + (y+ybox)*screen->w + (x+xbox);
@@ -1167,13 +1167,13 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		short* startdst =
 			reinterpret_cast<short*>(dst->pixels) + j*dst->w + xdst;
 		
-		const short replace_energy = 0xFFFF;
+		const Pixel replace_energy =
+		             Pixel(SDL_MapRGB(energy_image->format,0xFF,0xFF,0xFF));
 		const short new_energy = yloc >= show_energy_after ?
 		                             energy_colour : energy_loss_colour;
 		
 		const int skip = yloc >= energy_bar_loc.first ? skip_energy_rows:0;
 
-		
 		short* startenergy = NULL;
 		
 		const int energy_w = energy_image->w + ((energy_image->w%2) == 1 ? 1:0);
@@ -2079,7 +2079,7 @@ const std::pair<int,int>& display::calculate_energy_bar()
 	const SDL_Surface* const image = getImage("unmoved-energy.png");
 	const short* const begin = reinterpret_cast<short*>(image->pixels);
 
-	const short colour = 0xFFFF;
+	const Pixel colour = Pixel(SDL_MapRGB(image->format,0xFF,0xFF,0xFF));
 
 	for(int y = 0; y != image->h; ++y) {
 		const short* const i1 = begin + image->w*y;

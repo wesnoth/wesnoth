@@ -146,7 +146,11 @@ public:
 
 	const std::string& ability() const;
 
-	bool heals() const;
+	//max_unit_healing returns the maximum hitpoints a unit next to this
+	//unit can heal per turn. heals returns the total amount of hitpoints
+	//this unit can heal out of all adjacent units
+	int max_unit_healing() const;
+	int heals() const;
 	bool regenerates() const;
 	bool is_leader() const;
 	bool is_lightbringer() const;
@@ -163,7 +167,8 @@ private:
 
 	double alpha_;
 
-	bool heals_;
+	int max_heals_;
+	int heals_;
 	bool regenerates_;
 	bool leadership_;
 	bool lightbringer_;

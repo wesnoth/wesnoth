@@ -21,6 +21,8 @@ namespace game_config
 	extern const int tower_income;
 	extern const int heal_amount;
 	extern const int healer_heals_per_turn;
+	extern const int cure_amount;
+	extern const int curer_heals_per_turn;
 	extern const int recall_cost;
 	extern const std::string version;
 
