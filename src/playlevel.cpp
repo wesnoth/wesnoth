@@ -194,10 +194,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					            player_number,status);
 
 					if(network::nconnections() > 0) {
-							config cfg;
-							cfg.children["turn"].push_back(
-							           new config(recorder.get_last_turn(2)));
-							network::send_data(cfg);
+						config cfg;
+						cfg.children["turn"].push_back(
+						           new config(recorder.get_last_turn(2)));
+						network::send_data(cfg);
 					}
 
 					gui.invalidate_unit();
@@ -213,6 +213,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 							break;
 						}
 
+						game_events::pump();
 						pump_events();
 					}
 
