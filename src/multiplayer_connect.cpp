@@ -152,7 +152,6 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 	if(scenario_data["era"].empty()) {
 		era_ = era;
 	} else { 
-		std::cerr << "Era set to " << scenario_data["era"] << "!";
 		era_ = scenario_data["era"];
 	}
 
@@ -229,17 +228,16 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 		if(side["leader"].empty())
 			side["leader"] = (*possible_sides.front())["leader"];
 
-		if(side["type"].empty() && save_ == false)
+		if(side["type"].empty() && save_ == false) {
+			side["random_faction"] = (*possible_sides.front())["random_faction"];
 			side["type"] = (*possible_sides.front())["type"];
+		}
 
 		if(side["recruit"].empty())
 			side["recruit"] = (*possible_sides.front())["recruit"];
 
 		if(side["music"].empty())
 			side["music"] = (*possible_sides.front())["music"];
-
-		if(side["random_faction"].empty())
-			side["random_faction"] = (*possible_sides.front())["random_faction"];
 
 		if(side["terrain_liked"].empty())
 			side["terrain_liked"] = (*possible_sides.front())["terrain_liked"];
