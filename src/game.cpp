@@ -1043,7 +1043,7 @@ void game_controller::download_campaigns()
 		}
 
 		std::vector<std::string> campaigns, options;
-		options.push_back(_(",Name,Version,Author,Downloads"));
+		options.push_back(_(",Name,Version,Author,Downloads,Size"));
 		const config::child_list& cmps = campaigns_cfg->get_children("campaign");
 		const std::vector<std::string>& publish_options = available_campaigns();
 
@@ -1058,8 +1058,25 @@ void game_controller::download_campaigns()
 				delete_options.push_back(name);
 			}
 
+			size_t size = lexical_cast_default<size_t>((**i)["size"],0);
+			std::string size_str = "";
+
+			if(size > 0) {
+				std::string size_postfix = _("B");
+				if(size > 1024) {
+					size /= 1024;
+					size_postfix = _("KB");
+					if(size > 1024) {
+						size /= 1024;
+						size_postfix = _("MB");
+					}
+				}
+
+				size_str = lexical_cast<std::string>(size) + size_postfix;
+			}
+
 			std::replace(name.begin(),name.end(),'_',' ');
-			options.push_back("&" + (**i)["icon"] + "," + name + "," + (**i)["version"] + "," + (**i)["author"] + "," + (**i)["downloads"]);
+			options.push_back("&" + (**i)["icon"] + "," + name + "," + (**i)["version"] + "," + (**i)["author"] + "," + (**i)["downloads"] + "," + size_str);
 		}
 
 		for(std::vector<std::string>::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
