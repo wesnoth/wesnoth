@@ -461,8 +461,10 @@ const std::vector<attack_type>& unit::attacks() const
 
 int unit::movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const
 {
-	if(type_->level() == 0 && terrain == gamemap::TOWER)
-		return 100;
+//don't allow level 0 units to take villages - removed until AI
+//is smart enough to deal with this.
+//	if(type_->level() == 0 && terrain == gamemap::TOWER)
+//		return 100;
 
 	const int res = type_->movement_type().movement_cost(map,terrain);
 
