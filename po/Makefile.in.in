@@ -295,7 +295,7 @@ uninstall-data-yes:
 	  for lc in LC_MESSAGES $(EXTRA_LOCALE_CATEGORIES); do \
 	   for domain in `cat $(srcdir)/DOMAINS`; do \
 	    rm -f $(DESTDIR)$(localedir)/$$lang/$$lc/$$domain.mo; \
-	   done;
+	   done; \
 	  done; \
 	done
 
