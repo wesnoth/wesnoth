@@ -130,6 +130,8 @@ void server::run()
 					//send other players in the lobby the update that the player has joined
 					lobby_players_.send_data(sync_initial_response(),sock);
 
+					std::cout << "'" << username << "' (" << network::ip_address(sock) << ") has logged on\n";
+
 				} else if(lobby_players_.is_member(sock)) {
 					const config* const create_game = data.child("create_game");
 					if(create_game != NULL) {

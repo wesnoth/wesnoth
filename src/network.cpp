@@ -420,6 +420,24 @@ void send_data_all_except(const config& cfg, connection connection_num, size_t m
 	}
 }
 
+std::string ip_address(connection connection_num)
+{
+	std::stringstream str;
+	const IPaddress* const ip = SDLNet_TCP_GetPeerAddress(connection_num);
+	if(ip != NULL) {
+		const unsigned char* buf = reinterpret_cast<const unsigned char*>(&ip->host);
+		for(int i = 0; i != sizeof(ip->host); ++i) {
+			str << int(buf[i]);
+			if(i+1 != sizeof(ip->host)) {
+				str << '.';
+			}
+		}
+
+	}
+
+	return str.str();
+}
+
 std::pair<int,int> current_transfer_stats()
 {
 	if(current_connection == received_data.end())

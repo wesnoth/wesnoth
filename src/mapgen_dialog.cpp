@@ -10,6 +10,11 @@
 #include "widgets/button.hpp"
 #include "widgets/slider.hpp"
 
+namespace {
+	const size_t max_island = 10;
+	const size_t max_coastal = 5;
+}
+
 default_map_generator::default_map_generator(const config* cfg)
 : width_(40), height_(40), island_size_(0), iterations_(1000), hill_size_(10), max_lakes_(20),
   nvillages_(25), nplayers_(2), cfg_(cfg)
@@ -168,7 +173,7 @@ void default_map_generator::user_config(display& disp)
 	villages_slider.set_value(nvillages_);
 
 	const int min_landform = 0;
-	const int max_landform = 10;
+	const int max_landform = int(max_island);
 	slider_rect.y = landform_rect.y;
 	gui::slider landform_slider(disp,slider_rect);
 	landform_slider.set_min(min_landform);
@@ -218,6 +223,7 @@ void default_map_generator::user_config(display& disp)
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,iterations_label,iterations_rect.x,iterations_rect.y);
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,villages_label,villages_rect.x,villages_rect.y);
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,landform_label,landform_rect.x,landform_rect.y);
 
 		std::stringstream players_str;
 		players_str << nplayers_;
@@ -240,7 +246,7 @@ void default_map_generator::user_config(display& disp)
 		                slider_right+horz_margin,villages_rect.y);
 
 		std::stringstream landform_str;
-		landform_str << string_table[island_size_ == 0 ? "inland" : (island_size_ < 5 ? "coastal" : "island")];
+		landform_str << string_table[island_size_ == 0 ? "inland" : (island_size_ < max_coastal ? "coastal" : "island")];
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,landform_str.str(),
 			            slider_right+horz_margin,landform_rect.y);
 
@@ -258,11 +264,31 @@ std::string default_map_generator::name() const { return "default"; }
 
 std::string default_map_generator::create_map(const std::vector<std::string>& args)
 {
-	//many less iterations for an island, to make the island shaped
-	const size_t iterations = island_size_ > 0 ? iterations_/10 : iterations_;
-	const size_t island_size = island_size_ == 0 ? 0 : 120 - island_size_*10;
+	size_t iterations = iterations_;
+	size_t island_size = 0;
+	size_t island_off_center = 0;
+	size_t max_lakes = max_lakes_;
+
+	if(island_size_ >= max_coastal) {
+
+		//islands look good with much fewer iterations than normal, and fewer lakes
+		iterations /= 10;
+		max_lakes /= 9;
+
+		//the radius of the island should be up to half the width of the map
+		const size_t island_radius = 50 + ((max_island - island_size_)*50)/(max_island - max_coastal);
+		island_size = (island_radius*(width_/2))/100;
+	} else if(island_size_ > 0) {
+		std::cerr << "coastal...\n";
+		//the radius of the island should be up to twice the width of the map
+		const size_t island_radius = 40 + ((max_coastal - island_size_)*40)/max_coastal;
+		island_size = (island_radius*width_*2)/100;
+		island_off_center = minimum<size_t>(width_,height_);
+		std::cerr << "calculated coastal params...\n";
+	}
+
 	if(cfg_ != NULL)
-		return default_generate_map(width_,height_,island_size,iterations,hill_size_,max_lakes_,(nvillages_*width_*height_)/1000,nplayers_,*cfg_);
+		return default_generate_map(width_,height_,island_size,island_off_center,iterations,hill_size_,max_lakes,(nvillages_*width_*height_)/1000,nplayers_,*cfg_);
 	else
 		return "";
 }
