@@ -1,9 +1,9 @@
 CVS HEAD:
  * theme update, scrollbars
  * added new sounds, unit images and attack icons
- * invisibility now "wears off" when enemy unit comes adjacent (#6879)
+ * invisibility "wears off" when enemy unit comes adjacent (#6879)
  * allowed swimming units to move slowly on hills
- * resting now restores 2 hitpoints
+ * resting restores 2 hitpoints
  * scenario balancing for 'Heir to the Throne' campaign:
    * Gryphon Mountain
    * Northern Winter
@@ -24,8 +24,8 @@ CVS HEAD:
  * Elvish Archer and Swordsman made more powerful
  * Elvish Marksman, Elvish Sharpshooter and Orcish Archer ranged attack improved
  * Gryphon, Evil Necromancer and Ancient Lich made weaker
- * Dark Apprentice now advances to Deathmaster
- * Evil Necromancer now advances to Demilich
+ * Dark Apprentice advances to Deathmaster
+ * Evil Necromancer advances to Demilich
  * Lich does not advance to Ancient Lich anymore.
  * language fixes and polishing (english)
  * new translations:
@@ -46,10 +46,12 @@ CVS HEAD:
  * mage of light lights up hexes around him
  * fixed many image transparency glitches (caused by recent alpha channel implementation)
  * fixed teleporting displaying incorrectly where unit can move
+ * fixed Konrad dying in Siege of Elensefar not ending the game immediately
+ * fixed AI bug with skirmishers (#8041)
  * fixed crash when you press escape when a menu is displayed (#7863)
  * fixed unit descriptions leaking thru fog of war (#7843)
  * fixed bug where units would regain hitpoints after reloading the game (#7842)
- * fixed slow down right before a unit arrives at its destination hex, due to redrawing of the minimap                                      
+ * fixed slow down right before a unit arrives at its destination hex, due to redrawing of the minimap
  * fixed ghosted usernames on server (#7655)
  * fixed focus not returning Konrad on new turn (#7188)
  * fixed wrapping of text in opening sequence (#7878)
@@ -61,12 +63,13 @@ CVS HEAD:
  * fixed transparency issues in dwarven doors graphic
  * fixed issue with escape button skipping past messages where the user must make a choice
  * fixed bug where shroud wasn't saved/loaded properly (#7922)
+ * fixed tutorial id
  * added random to set_variable
  * added victory_when_enemies_defeated
  * made it easier for different AI algorithms to be added
  * added Doxygen documentation to ai_interface
- * autotools fix: now 'make uninstall' removes data directories if empty
- * slacknoth script now does a 'make clean' before compiling source and strips binaries
+ * autotools fix: 'make uninstall' removes data directories if they are empty
+ * slacknoth script does a 'make clean' before compiling source, strips binaries and adds package info
  * refactored widget class
  * removed some debug cerrs
  * added VC++6 project files to CVS
