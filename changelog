@@ -1,9 +1,16 @@
 CVS HEAD:
  * added 'continue move' action, hotkey is 't'
  * added 'search' action which goes through labels and unit names, hotkey is '/'
- * new experience gauge, meld with hit point gauge
+ * added experience gauge, meld with hit points gauge
+ * improved village images
  * resized ellipses
  * made game more responsive when AI or another player is playing.
+ * UI cleanups
+ * Elvish Outrider made 3rd level unit, increased hitpoins and ranged attack damage
+ * Elvish Scout village defense decreased
+ * new units:
+   * Rider
+   * Lizardman Warrior
  * translation updates:
    * french
    * spanish
@@ -12,9 +19,11 @@ CVS HEAD:
    * added recruitment_ignore_bad_combat option
  * multiplayer improvements
    * added scrolling and wrapping support for chat in lobby
+   * shared vision option
  * editor improvements:
    * added revert from disk functionality
    * selection of terrain is kep through undo and redo operations
+   * preferences dialog
    * fixed name of the currently selected terrain not being displayed
  * fixed 'show enemy moves' and 'best possible enemy moves' showing in context menu when no enemies visible
  * fixed resizing window in the title screen not working properly
@@ -24,7 +33,10 @@ CVS HEAD:
  * fixed font redrawing for the font used in the slovak and polish translations
  * fixed typos in 'Shan Taum the Smug' that caused scenario to have only two turns
  * fixed crashes when units with invalid sides appear, by rejecting such invalide sides in the unit's constructor
- * Fixed a bug with the validate_side(...) check in unit::unit(...). The symptom was failure of any scenario to load which has a 'move_unit_fake' command in it. The check is now bypassed for "dummy" units.
+ * fixed a bug with the validate_side(...) check in unit::unit(...). The symptom was failure of any scenario to load which has a 'move_unit_fake' command in it. The check is now bypassed for "dummy" units.
+ * fixed bug where 'cancel' button would appear under multiplayer games
+ * fixed preferences widgets disappearing when changing video mode
+ * fixed tooltips from game setup appearing in-game
  * made input of search strings and messages use a textbox that overlays the map, which allows these operations to be performed asynchronously
  * added caching of data files to speed game loading
  * removed old castle images
