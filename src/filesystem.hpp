@@ -59,7 +59,8 @@ void make_directory(const std::string& dirname);
 //basic disk I/O
 bool filesystem_init();
 std::string read_file(const std::string& fname);
-std::istream *stream_file(std::string const &fname);
+std::istream *istream_file(std::string const &fname);
+std::ostream *ostream_file(std::string const &fname);
 //throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data);
 std::string read_stdin();
@@ -148,6 +149,16 @@ public:
 	std::istream &operator*() { return *stream; }
 	std::istream *operator->() { return stream; }
 	~scoped_istream();
+};
+
+class scoped_ostream {
+	std::ostream *stream;
+public:
+	scoped_ostream(std::ostream *s): stream(s) {}
+	void operator=(std::ostream *);
+	std::ostream &operator*() { return *stream; }
+	std::ostream *operator->() { return stream; }
+	~scoped_ostream();
 };
 
 #endif

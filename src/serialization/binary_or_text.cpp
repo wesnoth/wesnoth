@@ -31,14 +31,10 @@ bool detect_format_and_read(config &cfg, std::istream &in)
 	}
 }
 
-void write_possibly_compressed(std::string const &filename, config &cfg, bool compress)
+void write_possibly_compressed(std::ostream &out, config &cfg, bool compress)
 {
-
-	std::string savefile;
-	if (compress) {
-		std::ostringstream stream;
-		write_compressed(stream, cfg);
-		savefile = stream.str();
-	} else savefile = write(cfg);
-	write_file(filename, savefile);
+	if (compress)
+		write_compressed(out, cfg);
+	else
+		write(out, cfg);
 }

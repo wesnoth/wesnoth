@@ -25,6 +25,6 @@ line_source get_line_source(std::vector< line_source > const &line_src, int line
 //read data in, clobbering existing data.
 void read(config &cfg, std::istream &in, std::vector< line_source > const *lines = 0); //throws config::error
 
-std::string write(config const &cfg);
+void write(std::ostream &out, config const &cfg);
 
 #endif

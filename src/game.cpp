@@ -94,7 +94,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		//if the starting state is specified, then use that,
 		//otherwise get the scenario data and start from there.
 		if(state.starting_pos.empty() == false) {
-			std::cerr << "loading starting position: '" << write(state.starting_pos) << "'\n";
+			std::cerr << "loading starting position...\n";
 			starting_pos = state.starting_pos;
 			scenario = &starting_pos;
 		} else {
@@ -257,7 +257,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 					try {
 						if(file_exists(fname_checksum)) {
 							config checksum_cfg;
-							scoped_istream stream = stream_file(fname_checksum);
+							scoped_istream stream = istream_file(fname_checksum);
 							read(checksum_cfg, *stream);
 							dir_checksum = file_tree_checksum(checksum_cfg);
 						}
@@ -272,7 +272,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 					std::cerr << "found valid cache at '" << fname << "' using it\n";
 					log_scope("read cache");
 					try {
-						scoped_istream stream = stream_file(fname);
+						scoped_istream stream = istream_file(fname);
 						read_compressed(cfg, *stream);
 						return;
 					} catch(config::error&) {
@@ -288,14 +288,12 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 				scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
 				read(cfg, *stream, &line_src);
 				try {
-					std::ostringstream cache;
-					write_compressed(cache, cfg);
-					write_file(fname, cache.str());
-
+					scoped_ostream cache = ostream_file(fname);
+					write_compressed(*cache, cfg);
 					config checksum_cfg;
 					data_tree_checksum().write(checksum_cfg);
-					std::cerr << "wrote checksum: '" << write(checksum_cfg) << "'\n";
-					write_file(fname_checksum, write(checksum_cfg));
+					scoped_ostream checksum = ostream_file(fname_checksum);
+					write(*checksum, checksum_cfg);
 				} catch(io_exception&) {
 					std::cerr << "could not write to cache '" << fname << "'\n";
 				}
@@ -1527,7 +1525,7 @@ int play_game(int argc, char** argv)
 			const std::string input(argv[arg+1]);
 			const std::string output(argv[arg+2]);
 
-			scoped_istream stream = stream_file(input);
+			scoped_istream stream = istream_file(input);
 			if (stream->fail()) {
 				std::cerr << "could not read file '" << input << "'\n";
 				return 0;
@@ -1546,7 +1544,8 @@ int play_game(int argc, char** argv)
 					return 0;
 				}
 
-				write_possibly_compressed(output, cfg, compress);
+				scoped_ostream output_stream = ostream_file(output);
+				write_possibly_compressed(*output_stream, cfg, compress);
 			} catch(config::error& e) {
 				std::cerr << input << " is not a valid Wesnoth file: " << e.message << "\n";
 			} catch(io_exception& e) {

@@ -489,9 +489,9 @@ std::string read_file(const std::string& fname)
 	}
 }
 
-std::istream *stream_file(std::string const &fname)
+std::istream *istream_file(std::string const &fname)
 {
-	LOG_G << "Streaming " << fname << "\n";
+	LOG_G << "Streaming " << fname << " for reading.\n";
 #ifdef USE_ZIPIOS
 	if (!fname.empty() && fname[0] != '/') {
 		zipios::ConstEntryPointer p = the_collection->getEntry(fname);
@@ -511,6 +511,12 @@ std::istream *stream_file(std::string const &fname)
 	// FIXME: why do we rely on this even with relative paths ?
 	// still useful with zipios, for things like cache and prefs
 	return new std::ifstream(fname.c_str());
+}
+
+std::ostream *ostream_file(std::string const &fname)
+{
+	LOG_G << "Streaming " << fname << " for writing.\n";
+	return new std::ofstream(fname.c_str(), std::ios_base::binary);
 }
 
 //throws io_exception if an error occurs
@@ -832,6 +838,17 @@ void scoped_istream::operator=(std::istream *s)
 }
 
 scoped_istream::~scoped_istream()
+{
+	delete stream;
+}
+
+void scoped_ostream::operator=(std::ostream *s)
+{
+	delete stream;
+	stream = s;
+}
+
+scoped_ostream::~scoped_ostream()
 {
 	delete stream;
 }

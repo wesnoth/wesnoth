@@ -25,6 +25,6 @@ class config;
 bool detect_format_and_read(config &cfg, std::istream &in); //throws config::error
 
 //function which writes a file, compressed or not depending on a flag
-void write_possibly_compressed(std::string const &filename, config &cfg, bool compress);
+void write_possibly_compressed(std::ostream &out, config &cfg, bool compress);
 
 #endif

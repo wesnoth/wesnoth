@@ -379,7 +379,7 @@ static void internal_preprocess_file(const std::string& fname,
 		lines_src->push_back(line_source(line,fname,1));
 	}
 
-	scoped_istream stream = stream_file(fname);
+	scoped_istream stream = istream_file(fname);
 	internal_preprocess_data(*stream, defines_map, depth, out, lines_src, line, fname, 1);
 }
 

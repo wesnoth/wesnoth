@@ -1733,17 +1733,20 @@ void help_text_area::handle_ref_cfg(const config &cfg) {
 	if (find_topic(toplevel_, dst) == NULL && !force) {
 		show_ref = false;
 		if (game_config::debug) {
-			std::string msg = "Reference to non-existent topic '" + dst +
-				"'. Please submit a bug report if you have not modified the game files yourself. Errornous config: ";
-			msg += write(cfg);
-			throw parse_error(msg);
+			std::stringstream msg;
+			msg << "Reference to non-existent topic '" << dst
+			    << "'. Please submit a bug report if you have not"
+			       "modified the game files yourself. Errornous config: ";
+			write(msg, cfg);
+			throw parse_error(msg.str());
 		}
 	}
 	if (dst == "") {
-		std::string msg = 
-			"Ref markup must have dst attribute. Please submit a bug report if you have not modified the game files yourself. Errornous config: ";
-		msg += write(cfg);
-		throw parse_error(msg);
+		std::stringstream msg;
+		msg << "Ref markup must have dst attribute. Please submit a bug"
+		       " report if you have not modified the game files yourself. Errornous config: ";
+		write(msg, cfg);
+		throw parse_error(msg.str());
 	}
 	if (show_ref) {
 		add_text_item(text, dst);

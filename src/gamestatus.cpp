@@ -419,9 +419,9 @@ void read_save_file(const std::string& name, config& cfg)
 	std::replace(modified_name.begin(),modified_name.end(),' ','_');
 
 	//try reading the file both with and without underscores
-	scoped_istream file_stream = stream_file(get_saves_dir() + "/" + modified_name);
+	scoped_istream file_stream = istream_file(get_saves_dir() + "/" + modified_name);
 	if (file_stream->fail())
-		file_stream = stream_file(get_saves_dir() + "/" + name);
+		file_stream = istream_file(get_saves_dir() + "/" + name);
 
 	cfg.clear();
 	detect_format_and_read(cfg, *file_stream);
@@ -455,7 +455,10 @@ void save_game(const game_state& state)
 		write_game(state,cfg);
 
 		const std::string fname = get_saves_dir() + "/" + name;
-		write_possibly_compressed(fname, cfg, preferences::compress_saves());
+		{
+			scoped_ostream savefile = ostream_file(fname);
+			write_possibly_compressed(*savefile, cfg, preferences::compress_saves());
+		}
 
 		config& summary = save_summary(state.label);
 		extract_summary_data_from_save(state,summary);
@@ -478,7 +481,7 @@ config& save_index()
 {
 	if(save_index_loaded == false) {
 		try {
-			scoped_istream stream = stream_file(get_save_index_file());
+			scoped_istream stream = istream_file(get_save_index_file());
 			detect_format_and_read(save_index_cfg, *stream);
 		} catch(io_exception& e) {
 			std::cerr << "error reading save index: '" << e.what() << "'\n";
@@ -520,9 +523,8 @@ void write_save_index()
 {
 	log_scope("write_save_index()");
 	try {
-		std::ostringstream index;
-		write_compressed(index, save_index());
-		write_file(get_save_index_file(), index.str());
+		scoped_ostream stream = ostream_file(get_save_index_file());
+		write_compressed(*stream, save_index());
 	} catch(io_exception& e) {
 		std::cerr << "error writing to save index file: '" << e.what() << "'\n";
 	}

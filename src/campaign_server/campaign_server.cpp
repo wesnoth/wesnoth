@@ -44,7 +44,7 @@ private:
 
 int campaign_server::load_config()
 {
-	scoped_istream stream = stream_file(file_);
+	scoped_istream stream = istream_file(file_);
 	read(cfg_, *stream);
 	return lexical_cast_default<int>(cfg_["port"], 15002);
 }
@@ -63,7 +63,8 @@ void campaign_server::run()
 		try {
 			//write config to disk every ten minutes
 			if((increment%(60*10*2)) == 0) {
-				write_file(file_, write(cfg_));
+				scoped_ostream cfgfile = ostream_file(file_);
+				write(*cfgfile, cfg_);
 			}
 
 			network::process_send_queue();
@@ -91,7 +92,7 @@ void campaign_server::run()
 						network::send_data(construct_error("Campaign not found."),sock);
 					} else {
 						config cfg;
-						scoped_istream stream = stream_file((*campaign)["filename"]);
+						scoped_istream stream = istream_file((*campaign)["filename"]);
 						read_compressed(cfg, *stream);
 						network::queue_data(cfg,sock);
 
@@ -127,13 +128,17 @@ void campaign_server::run()
 
 						const config* const data = upload->child("data");
 						if(data != NULL) {
-							std::ostringstream filedata;
-							write_compressed(filedata, *data);
-							write_file((*campaign)["filename"], filedata.str());
-							(*campaign)["size"] = lexical_cast<std::string>(filedata.str().size());
+							std::string filename = (*campaign)["filename"];
+							{
+								scoped_ostream campaign_file = ostream_file(filename);
+								write_compressed(*campaign_file, *data);
+							}
+							(*campaign)["size"] = lexical_cast<std::string>(
+								file_size(filename));
 						}
 
-						write_file(file_, write(cfg_));
+						scoped_ostream cfgfile = ostream_file(file_);
+						write(*cfgfile, cfg_);
 						network::send_data(construct_message("Campaign accepted."),sock);
 					}
 				} else if(const config* erase = data.child("delete")) {
@@ -154,7 +159,8 @@ void campaign_server::run()
 					const config::child_list& campaigns_list = campaigns().get_children("campaign");
 					const size_t index = std::find(campaigns_list.begin(),campaigns_list.end(),campaign) - campaigns_list.begin();
 					campaigns().remove_child("campaign",index);
-					write_file(file_, write(cfg_));
+					scoped_ostream cfgfile = ostream_file(file_);
+					write(*cfgfile, cfg_);
 					network::send_data(construct_message("Campaign erased."),sock);
 				}
 			}

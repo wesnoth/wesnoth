@@ -68,7 +68,7 @@ namespace preferences {
 
 manager::manager()
 {
-	scoped_istream stream = stream_file(get_prefs_file());
+	scoped_istream stream = istream_file(get_prefs_file());
 	read(prefs, *stream);
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
@@ -98,7 +98,8 @@ manager::~manager()
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
 	try {
-		write_file(get_prefs_file(), write(prefs));
+		scoped_ostream prefs_file = ostream_file(get_prefs_file());
+		write(*prefs_file, prefs);
 	} catch(io_exception&) {
 		std::cerr << "error writing to preferences file '" << get_prefs_file() << "'\n";
 	}

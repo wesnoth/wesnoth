@@ -26,13 +26,14 @@ void setup_dirs()
 
 void get_campaign_info(const std::string& campaign_name, config& cfg)
 {
-	scoped_istream stream = stream_file(campaign_dir() + "/" + campaign_name + ".pbl");
+	scoped_istream stream = istream_file(campaign_dir() + "/" + campaign_name + ".pbl");
 	read(cfg, *stream);
 }
 
 void set_campaign_info(const std::string& campaign_name, const config& cfg)
 {
-	write_file(campaign_dir() + "/" + campaign_name + ".pbl", write(cfg));
+	scoped_ostream stream = ostream_file(campaign_dir() + "/" + campaign_name + ".pbl");
+	write(*stream, cfg);
 }
 
 std::vector<std::string> available_campaigns()

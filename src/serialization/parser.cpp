@@ -386,9 +386,7 @@ static void write_internal(config const &cfg, std::ostream &out, size_t tab = 0)
 	}
 }
 
-std::string write(config const &cfg)
+void write(std::ostream &out, config const &cfg)
 {
-	std::stringstream res;
-	write_internal(cfg, res);
-	return res.str();
+	write_internal(cfg, out);
 }

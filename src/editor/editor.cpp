@@ -99,7 +99,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 		// Perform some initializations that should only be performed
 		// the first time the editor object is created.
 		try {
-			scoped_istream stream = stream_file(prefs_filename);
+			scoped_istream stream = istream_file(prefs_filename);
 			read(prefs_, *stream);
 		}
 		catch (config::error e) {
@@ -136,7 +136,8 @@ map_editor::~map_editor() {
 	old_bg_terrain_ = palette_.selected_bg_terrain();
 	old_brush_size_ = brush_.selected_brush_size();
 	try {
-		write_file(prefs_filename, write(prefs_));
+		scoped_ostream prefs_file = ostream_file(prefs_filename);
+		write(*prefs_file, prefs_);
 	}
 	catch (io_exception& e) {
 		std::cerr << "Error when writing to " << prefs_filename << ": "
