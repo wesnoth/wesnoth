@@ -97,6 +97,7 @@ wesnoth_SOURCES = about.cpp \
 		  actions.hpp \
 		  ai.hpp \
 		  ai_attack.hpp \
+		  ai_interface.hpp \
 		  ai_move.hpp \
 		  animated.hpp \
 		  array.hpp \
