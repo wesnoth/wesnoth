@@ -110,7 +110,6 @@ team::team_info::team_info(const config& cfg)
 	else
 		controller = AI;
 
-	bool persistent;
 	std::string persist = cfg["persistent"];
 	if (persist.empty()) persistent = controller == HUMAN;
 	else persistent = persist == "1";
