@@ -472,7 +472,8 @@ public:
 	floating_label(const std::string& text, int font_size, const SDL_Color& colour,
 	      int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect)
 		  : surf_(NULL), buf_(NULL), text_(text), font_size_(font_size), colour_(colour), xpos_(xpos), ypos_(ypos),
-		    xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect)
+		    xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
+			alpha_change_(-255/lifetime)
 	{}
 
 	void move(int xmove, int ymove);
@@ -490,6 +491,7 @@ private:
 	int xpos_, ypos_, xmove_, ymove_;
 	int lifetime_;
 	SDL_Rect clip_rect_;
+	int alpha_change_;
 };
 
 typedef std::map<int,floating_label> label_map;
@@ -552,6 +554,9 @@ void floating_label::undraw(SDL_Surface* screen)
 	move(xmove_,ymove_);
 	if(lifetime_ > 0) {
 		--lifetime_;
+		if(surf_ != NULL && alpha_change_ != 0) {
+			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_));
+		}
 	}
 }
 

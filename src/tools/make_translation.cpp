@@ -139,7 +139,7 @@ void process_config(const std::string& element_name, const config& cfg,
 
 int main()
 {
-	config cfg(preprocess_file("data/game.cfg"));
+	config cfg(preprocess_file("data/game.cfg") + "\n" + preprocess_file("data/translations/"));
 
 	map<string,string> table;
 	process_config("",cfg,table);

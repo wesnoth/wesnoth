@@ -758,9 +758,13 @@ void ai::do_recruitment()
 
 	const int neutral_towers = towers - taken_towers;
 
+	//the villages per scout parameter is assumed to be based on a 2-side battle.
+	//in a greater than 2 side battle, we want to recruit less scouts, since the villages
+	//are going to be taken more quickly, and we will need combat units faster.
+	const int villages_per_scout = (current_team().villages_per_scout()*2)/teams_.size();
+
 	//get scouts depending on how many neutral villages there are
-	int scouts_wanted = current_team().villages_per_scout() > 0 ?
-	                neutral_towers/current_team().villages_per_scout() : 0;
+	int scouts_wanted = villages_per_scout > 0 ? neutral_towers/villages_per_scout : 0;
 
 	std::map<std::string,int> unit_types;
 	while(unit_types["scout"] < scouts_wanted) {

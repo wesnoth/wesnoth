@@ -384,6 +384,39 @@ SDL_Surface* adjust_surface_alpha(SDL_Surface* surface, double amount)
 	return clone_surface(surf);
 }
 
+SDL_Surface* adjust_surface_alpha_add(SDL_Surface* surface, int amount)
+{
+	if(surface == NULL) {
+		return NULL;
+	}
+
+	scoped_sdl_surface surf(make_neutral_surface(surface));
+
+	if(surf == NULL) {
+		std::cerr << "could not make neutral surface...\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(surf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + surf->w*surf->h;
+
+		while(beg != end) {
+			Uint8 red, green, blue, alpha;
+			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
+
+			alpha = Uint8(maximum<int>(0,minimum<int>(255,int(alpha) + amount)));
+
+			*beg = SDL_MapRGBA(surf->format,red,green,blue,alpha);
+
+			++beg;
+		}
+	}
+
+	return clone_surface(surf);
+}
+
 SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour)
 {
 	if(surface == NULL) {
