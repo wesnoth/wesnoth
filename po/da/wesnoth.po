@@ -996,6 +996,12 @@ msgid ""
 "current turn is displayed on the status bar next to the image of a flag. "
 "When this number exceeds the maximum number of turns, you lose the game."
 msgstr ""
+"Når du slutter din tur, bliver det en andens tur og kun den side har ret til "
+"at bevæge sig, indtil den side slutter sin tur. Når alle sider har sluttet "
+"ders tur, begynder næste runde. Dette har forskellige effekter, der iblandt "
+"får det alle enheder til at få fuld bevægelses potentiale. Den aktuelle tur "
+"vises i statusbaren ved siden af billedet af et flag. Når antallet af ture "
+"overstiger maksimum numre af ture, tabe du spillet."
 
 #: data/scenarios/tutorial/tutorial1.cfg:110
 msgid ""
@@ -1019,7 +1025,7 @@ msgid ""
 msgstr ""
 "Excellent! Du har successfuldt flyttet den Elviske Kriger. Men, da han "
 "flyttede hen ved siden af en fjendtlig enhed, mistede han al sin bevægelse; "
-"dette kaldes kontrol zonen."
+"dette kaldes kontrolzonen."
 
 #: data/scenarios/tutorial/tutorial1.cfg:138
 msgid "How far can my Elvish Fighter move?"
@@ -1038,6 +1044,16 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
+"Din Elviske Kriger begynder med at bestemt antal bevægelses point hver tur, "
+"dette kaldes hans hastighed. Når din Elviske Kriger bevæger sig i en retning "
+"koster hver felt han går gennem bevægelses point, det gælder også hans "
+"destination. Når du vælger din Elviske Kriger, bliver alle felter, som han "
+"ikke kan bevæge sig til på en tur, mørkere. Hvis destinationen er så langt "
+"væk at han bliver nødt til at bruge flere ture vil der vises et tal hvor der "
+"står hvor mange ture det så vil tage ham. Hvis du klikker på et felt der er "
+"langt væk, vil det føre enheden på en kurs mod dette felt, hvilket betyder "
+"at an vil bevæge sig så langt som mulligt hver tur. Hvis du sætter en kurs "
+"ved en fejl, så vælg enheden to gange for at fjerne dens kurs."
 
 #: data/scenarios/tutorial/tutorial1.cfg:139
 msgid ""
@@ -1047,6 +1063,11 @@ msgid ""
 "movement. Zones of control can be used to block enemies from reaching your "
 "weak and wounded units."
 msgstr ""
+"En enheds kontrolzone er alle felter der grænser op til denne enheds felt. "
+"Enheder kan ikke bevæge sig gennem en modstanders kontrolzone, de kan kun "
+"bevæge sig ind i den. Når de gør det, mister de alle deres resterende "
+"bevægelse. Kontrolzoner kan bruges til at forhindre fjender i at nå dine "
+"svage alle sårede enheder."
 
 #: data/scenarios/tutorial/tutorial1.cfg:139
 msgid "What's the zone of control?"
@@ -1066,6 +1087,13 @@ msgid ""
 "Colors', in Preferences, causes the color of a unit's controller is "
 "displayed as a disc below the unit."
 msgstr ""
+"Enheder du kontrollerer har en grøn, gul eller rød energicirkel over deres "
+"helbredsmåler, den grønne vertikale statusbar ved siden af dem. Enheder der "
+"stadig har fuld bevægelse er grønne, dem med noget bevægelse er gule og dem "
+"der ikke har mere bevægelse er røde. Enheder der styres af fjenden har ikke "
+"en energicirkel. Allierede enheder som du ikke styrer, som mig, har en blå "
+"energicirkel. Vis Hold Farver mulligheden i Indstillinger viser en enheds "
+"hold ved en disk under dem."
 
 #: data/scenarios/tutorial/tutorial1.cfg:146
 msgid ""
@@ -1367,7 +1395,7 @@ msgstr ""
 "Specialer\n"
 "Objekter\n"
 "Sådan spiller man Wesnoth\n"
-"@Scenariets mål\n"
+"@Missioner\n"
 "@Sejr\n"
 "Overvind Delfador"
 
@@ -1971,7 +1999,7 @@ msgid ""
 msgstr ""
 "Hurtigkæmper:\n"
 "Denne enhed er trænet i at bevæge sig hurtigt forbi fjender og ignorerer "
-"alle zoner under fjendtlig kontrol."
+"alle fjendtlige kontrolzonerl."
 
 #: data/translations/english.cfg:52
 msgid "Never more than 1 upkeep"
@@ -2139,6 +2167,9 @@ msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
+"Finskytte:\n"
+"Når dette angreb bruges offensivt, vil det altid have mindst 60% chance for "
+"at ramme."
 
 #: data/translations/english.cfg:111
 msgid ""
@@ -2176,6 +2207,9 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
+"Forstene:\n"
+"Dette angreb laver målet om til sten. Enheder der bliver lavet til sten må "
+"ikke bevæge sig eller angribe."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -2183,6 +2217,9 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
+"Berserk:\n"
+"Når dette angreb bliver brugt offensivt eller deffensivt, presser det "
+"engagementet indtil den ene af kæmperne er døde."
 
 #: data/translations/english.cfg:126
 msgid ""
@@ -2375,6 +2412,10 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
+"Der er seks typer af angreb: går igennem, kniv, slagkraft, ild, kulde og "
+"hellig. Forskellige enheder har svagheder mod forskellige typer angreb. "
+"Højreklik på en enhed og vælg Enhedsbeskrivelse. Nederst på siden står hvor "
+"stor svaghed den har over for de forskellige typer."
 
 #: data/translations/english.cfg:185
 msgid ""
@@ -2383,14 +2424,22 @@ msgid ""
 "in the currently selected terrain is displayed in the top-right corner of "
 "the screen."
 msgstr ""
+"Terrænet dine enheder er på afgør hvor stor en chance din modstander har for "
+"at ramme dem i kamp. Den defensive rating står altid i det øvre højre "
+"hjørne, for den valgte enhed i det aktuelle terræn."
 
 #: data/translations/english.cfg:186
+#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cure' ability."
 msgstr ""
+"Forgiftede enheder mister 8 HP hver tur, men de vil ikke dø af giften: "
+"giften vil ikke reducere dem til under 1 HP. Forgiftede enheder kan blive "
+"kurered ved at flytte dem til en landsby, eller ved at placere dem ved siden "
+"af en enhed med healings evnen."
 
 #: data/translations/english.cfg:187
 msgid ""
@@ -2398,13 +2447,16 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
+"Du kan bruge enheder fra tidligere scenarier ved at vælge 'Geindkald' i spil "
+"menuen. Ved at genindkalde enheder igen og igen kan du opbygge en kraftfuld "
+"og erfaren hær."
 
 #: data/translations/english.cfg:188
 msgid ""
 "All units have a Zone of Control in each of the hexes next to them. If a "
 "unit moves into an enemy's Zone of Control, it may not move any further that "
 "turn."
-msgstr ""
+msgstr "Alle enheder har en Kontrolzone i hver af de omkring liggende felter."
 
 #: data/translations/english.cfg:189
 msgid ""
@@ -2772,8 +2824,8 @@ msgid ""
 "their enemies from long range."
 msgstr ""
 "Lejemordere er nattens herskere. Ligesom en tyv kan de stikke folk i ryggen "
-"og fuldstændig ignorere, at de er i fjendens zone. De kan også kaste knive "
-"med gift mod deres fjender på lang afstand."
+"og fuldstændig ignorere, at de er i fjendens kontrolzone. De kan også kaste "
+"knive med gift mod deres fjender på lang afstand."
 
 #: data/units/Assassin.cfg:20 data/units/Dwarvish_Thunderer.cfg:20
 #: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Mage.cfg:20
@@ -3957,8 +4009,9 @@ msgid ""
 "they may attack. Shamans also possess basic healing abilities."
 msgstr ""
 "Den Elviske Shaman fokuserer knap så meget på voldelige metoder for at "
-"overvinde fjenden. Hendes bindende og omsluttende angreb gør fjenderne "
-"langsommere både til at flytte sig og til at angribe."
+"overvinde fjenden. Deres bindende og omsluttende angreb gør fjenderne "
+"langsommere både til at flytte sig og til at angribe. Shamaner har også "
+"healene evner."
 
 #: data/units/Elvish_Shaman.cfg:43
 msgid "entangle"
@@ -4988,9 +5041,9 @@ msgid ""
 "of an enemy they are attacking."
 msgstr ""
 "De lovløse er smidighedens mestre og kan snildt bevæge sig forbi en fjende, "
-"uanset om de befinder sig på fjendens grund. De har desuden evnen til at "
-"dolke folk i ryggen, hvilket tillader dem at udgyde dobbel skade, hvis en af "
-"deres allierede står på den modsatte side af den fjende, de angriber."
+"uanset om de befinder sig på fjendens kontrolzone. De har desuden evnen til "
+"at dolke folk i ryggen, hvilket tillader dem at udgyde dobbel skade, hvis en "
+"af deres allierede står på den modsatte side af den fjende, de angriber."
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
@@ -5448,7 +5501,7 @@ msgstr ""
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
-msgstr ""
+msgstr "Wose"
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
@@ -5512,7 +5565,7 @@ msgstr "-   Hoved Udviklere"
 
 #: src/about.cpp:49
 msgid "-   Artwork and graphics designer"
-msgstr ""
+msgstr "-   Tegning og grafiske designere"
 
 #: src/about.cpp:53
 msgid "+Developers"
@@ -5520,11 +5573,11 @@ msgstr "+Udviklere"
 
 #: src/about.cpp:67
 msgid "+General Purpose Administrators"
-msgstr ""
+msgstr "+Generalle Administratore"
 
 #: src/about.cpp:72
 msgid "+Artwork and graphics designers"
-msgstr ""
+msgstr "+Tegning og grafiske designere"
 
 #: src/about.cpp:95
 msgid "+Music"
@@ -5544,7 +5597,7 @@ msgstr "+Blandet"
 
 #: src/about.cpp:125
 msgid "+Internationalization Manager"
-msgstr ""
+msgstr "+Internationaliserings Styrer"
 
 #: src/about.cpp:129
 msgid "+Brazilian Translation"
@@ -5692,7 +5745,7 @@ msgstr ""
 
 #: src/actions.cpp:1748
 msgid "Enemy unit sighted!"
-msgstr "Fjendtlig enhed set!"
+msgstr "Fjendtlig enhed opdaget!"
 
 #: src/actions.cpp:1753
 msgid "$friends Friendly units sighted"
@@ -5700,7 +5753,7 @@ msgstr ""
 
 #: src/actions.cpp:1755
 msgid "$enemies Enemy units sighted!"
-msgstr "$enemies Fjendtlige enhed set!"
+msgstr "$enemies Fjendtlige enhed opdaget!"
 
 #: src/actions.cpp:1759
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
@@ -5720,7 +5773,7 @@ msgstr "Hvad skal vores sejrende enhed blive til?"
 
 #: src/dialogs.cpp:157
 msgid "No objectives available"
-msgstr ""
+msgstr "En missioner tilgængelige"
 
 #: src/dialogs.cpp:174
 msgid "Save"
@@ -5748,7 +5801,7 @@ msgstr ""
 
 #: src/dialogs.cpp:360
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Ugyldig)"
 
 #: src/dialogs.cpp:365 src/game.cpp:989
 msgid "Campaign"
@@ -5764,7 +5817,7 @@ msgstr "Tutorial"
 
 #: src/dialogs.cpp:377
 msgid "replay"
-msgstr ""
+msgstr "replay"
 
 #: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1384
 msgid "Turn"
@@ -5816,7 +5869,7 @@ msgstr ""
 
 #: src/dialogs.cpp:509
 msgid "Show replay"
-msgstr ""
+msgstr "Vis replay"
 
 #: src/dialogs.cpp:512 src/hotkeys.cpp:133 src/multiplayer.cpp:85
 msgid "Load Game"
@@ -5875,7 +5928,7 @@ msgstr "Vera.ttf"
 
 #: src/game.cpp:138
 msgid "Do you want to save a replay of this scenario?"
-msgstr ""
+msgstr "Vil du gemme en replay af dette scenarie?"
 
 #: src/game.cpp:139 src/game.cpp:201 src/playturn.cpp:1393
 msgid "Name:"
@@ -6203,7 +6256,7 @@ msgstr "Lav Enhed (Debug!)"
 
 #: src/hotkeys.cpp:143
 msgid "Change Unit Side (Debug!)"
-msgstr ""
+msgstr "Skift Enheds Side (Debug!)"
 
 #: src/hotkeys.cpp:144
 msgid "Preferences"
@@ -6211,7 +6264,7 @@ msgstr "Indstillinger"
 
 #: src/hotkeys.cpp:145
 msgid "Scenario Objectives"
-msgstr "Scenariets Mål"
+msgstr "Scenariets Mission"
 
 #: src/hotkeys.cpp:146 src/playturn.cpp:1998
 msgid "Unit List"
@@ -6219,7 +6272,7 @@ msgstr "Enheds Liste"
 
 #: src/hotkeys.cpp:147 src/playturn.cpp:2086
 msgid "Statistics"
-msgstr "Egenskaber"
+msgstr "Statistikker"
 
 #: src/hotkeys.cpp:148
 msgid "Quit Game"
@@ -6686,7 +6739,7 @@ msgstr "Venter på at netværksspillere tilslutter sig"
 
 #: src/multiplayer_lobby.cpp:141
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: src/multiplayer_lobby.cpp:141
 msgid "Vacant Slot"
@@ -7124,6 +7177,8 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
+"Spil multiplayer (lokalt, over LAN eller over Internettet) eller et enkelt "
+"scenarie mod en Computer"
 
 #: src/titlescreen.cpp:171
 msgid "Load a single player saved game"
@@ -7151,7 +7206,7 @@ msgstr "Mere"
 
 #: src/titlescreen.cpp:205
 msgid "-- The Tome of Wesnoth"
-msgstr ""
+msgstr "-- Bogen om Wesnoth"
 
 #: src/unit_types.cpp:313
 msgid "strikes"
