@@ -94,6 +94,8 @@ void show_about(display& disp)
  	text.push_back("-   Johanna Manninen (lohari)");
 	text.push_back("-   John Muccigrosso (Eponymous Archon)");
  	text.push_back("-   Jonatan Alamà (tin)");
+	text.push_back("-   J.W.C. McNabb (Darth Fool)");
+ 	text.push_back("-   Neorice");
  	text.push_back("-   Slainte");
  	text.push_back("-   Svetac");
  	text.push_back("-   Turin");
