@@ -379,6 +379,8 @@ int play_game(int argc, char** argv)
 
 			config cfg;
 			archive_campaign(campaign,cfg);
+
+			std::cerr << "connecting to server...\n";
 			
 			const network::manager net_manager;
 			network::connection sock = network::connect(host,lexical_cast_default<int>(port,15002));
@@ -386,6 +388,8 @@ int play_game(int argc, char** argv)
 				std::cerr << "Could not connect to server\n";
 				return 0;
 			}
+
+			std::cerr << "connected to server. Building campaign...\n";
 
 			config data;
 			config& upload = data.add_child("upload");
@@ -1072,6 +1076,9 @@ int play_game(int argc, char** argv)
 					continue;
 				} catch(network::error& e) {
 					gui::show_dialog(disp,NULL,_("Error"),_("Remote host disconnected."),gui::OK_ONLY);
+					continue;
+				} catch(io_exception& e) {
+					gui::show_dialog(disp,NULL,_("Error"),_("There was a problem creating the files necessary to install this campaign."),gui::OK_ONLY);
 					continue;
 				}
 			}
