@@ -251,6 +251,10 @@ AC_MSG_CHECKING(for SDL - version >= $min_sdl_version)
     
 SDL_CFLAGS=`$SDL_CONFIG --cflags`
 SDL_LIBS=`$SDL_CONFIG --libs`
+case ${host_os} in
+	darwin*)
+		SDL_LIBS="-framework Carbon $SDL_LIBS"
+esac
 
 sdl_major_version=`$SDL_CONFIG --version | \
     sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
