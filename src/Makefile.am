@@ -70,6 +70,7 @@ wesnoth_SOURCES = about.cpp \
 		  theme.cpp \
 		  tooltips.cpp \
 		  unit.cpp \
+		  unit_display.cpp \
 		  unit_types.cpp \
 		  video.cpp \
 		  widgets/button.cpp \
@@ -130,6 +131,7 @@ wesnoth_SOURCES = about.cpp \
 		  theme.hpp \
 		  tooltips.hpp \
 		  unit.hpp \
+		  unit_display.hpp \
 		  unit_types.hpp \
 		  util.hpp \
 		  video.hpp \

@@ -55,9 +55,9 @@ AWK = @AWK@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
+CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
-CXXCPP = @CXXCPP@
 CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
@@ -210,6 +210,7 @@ wesnoth_SOURCES = about.cpp \
 		  theme.cpp \
 		  tooltips.cpp \
 		  unit.cpp \
+		  unit_display.cpp \
 		  unit_types.cpp \
 		  video.cpp \
 		  widgets/button.cpp \
@@ -270,6 +271,7 @@ wesnoth_SOURCES = about.cpp \
 		  theme.hpp \
 		  tooltips.hpp \
 		  unit.hpp \
+		  unit_display.hpp \
 		  unit_types.hpp \
 		  util.hpp \
 		  video.hpp \
@@ -423,8 +425,8 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	reports.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
 	sound.$(OBJEXT) statistics.$(OBJEXT) team.$(OBJEXT) \
 	terrain.$(OBJEXT) theme.$(OBJEXT) tooltips.$(OBJEXT) \
-	unit.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
-	button.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
+	unit.$(OBJEXT) unit_display.$(OBJEXT) unit_types.$(OBJEXT) \
+	video.$(OBJEXT) button.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
 	scrollbar.$(OBJEXT) slider.$(OBJEXT) textbox.$(OBJEXT) \
 	widget.$(OBJEXT)
 wesnoth_OBJECTS = $(am_wesnoth_OBJECTS)
@@ -488,6 +490,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/team.Po ./$(DEPDIR)/terrain.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/textbox.Po ./$(DEPDIR)/theme.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/tooltips.Po ./$(DEPDIR)/unit.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/unit_display.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/unit_types.Po ./$(DEPDIR)/video.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/widget.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
@@ -613,6 +616,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/theme.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tooltips.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/unit.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/unit_display.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/unit_types.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/video.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widget.Po@am__quote@
