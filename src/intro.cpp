@@ -92,6 +92,7 @@ void show_intro(display& screen, config& data)
 		int xpos = textx, ypos = texty;
 		size_t height = 0;
 		for(;;) {
+			std::string buf;
 			if(j != story.end()) {
 				char c = *j;
 				if(c == ' ' && cur_length >= max_length) {
@@ -99,19 +100,25 @@ void show_intro(display& screen, config& data)
 					ypos += height;
 					cur_length = 0;
 				} else {
-					char buf[2];
-					buf[0] = c;
-					buf[1] = 0;
-					const SDL_Rect rect = font::draw_text(&screen,
-					                       screen.screen_area(),16,
-					                       font::NORMAL_COLOUR,buf,xpos,ypos,
-										   NULL,false,font::NO_MARKUP);
-					if(rect.h > height)
-						height = rect.h;
+					buf.resize(buf.size()+1);
+					buf[buf.size()-1] = c;
 
-					xpos += rect.w;
+					//if this is definitely a non-UTF8 character, output it now
+					if(c < 128 || j+1 == story.end()) {
+						const SDL_Rect rect = font::draw_text(&screen,
+						                       screen.screen_area(),16,
+						                       font::NORMAL_COLOUR,buf,xpos,ypos,
+											   NULL,false,font::NO_MARKUP);
 
-					update_rect(rect);
+						buf = "";
+
+						if(rect.h > height)
+							height = rect.h;
+
+						xpos += rect.w;
+
+						update_rect(rect);
+					}
 
 					++cur_length;
 				}

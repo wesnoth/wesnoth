@@ -149,16 +149,18 @@ void turn_info::turn_slice()
 	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
 
-	if(key_[SDLK_UP] || mousey == 0)
+	const int scroll_threshold = 5;
+
+	if(key_[SDLK_UP] || mousey < scroll_threshold)
 		gui_.scroll(0.0,-preferences::scroll_speed());
 
-	if(key_[SDLK_DOWN] || mousey == gui_.y()-1)
+	if(key_[SDLK_DOWN] || mousey > gui_.y()-scroll_threshold)
 		gui_.scroll(0.0,preferences::scroll_speed());
 
-	if(key_[SDLK_LEFT] || mousex == 0)
+	if(key_[SDLK_LEFT] || mousex < scroll_threshold)
 		gui_.scroll(-preferences::scroll_speed(),0.0);
 
-	if(key_[SDLK_RIGHT] || mousex == gui_.x()-1)
+	if(key_[SDLK_RIGHT] || mousex > gui_.x()-scroll_threshold)
 		gui_.scroll(preferences::scroll_speed(),0.0);
 }
 

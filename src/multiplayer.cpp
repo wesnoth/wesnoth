@@ -372,7 +372,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 		                  key[SDLK_UP],key[SDLK_DOWN],
 		                  key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);
 
-		if(cancel_game.process(mousex,mousey,left_button)) 
+		if(cancel_game.process(mousex,mousey,left_button) || key[SDLK_ESCAPE]) 
 			return -1;
 
 		if(launch_game.process(mousex,mousey,left_button)) {
@@ -779,7 +779,12 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 			if(size_t(maps_menu.selection()) != options.size()-1) {
 				level_ptr = levels[maps_menu.selection()];
 
-				gamemap map(cfg,read_file("data/maps/" + level_ptr->values["map"]));
+				std::string map_data = (*level_ptr)["map_data"];
+				if(map_data == "") {
+					map_data = read_file("data/maps/" + level_ptr->values["map"]);
+				}
+
+				gamemap map(cfg,map_data);
 
 				SDL_Surface* const mini = image::getMinimap(175,175,map);
 

@@ -192,8 +192,8 @@ int play_game(int argc, char** argv)
 		}
 	}
 
-	std::map<std::string,std::string> defines_map;
-	defines_map["NORMAL"] = "";
+	preproc_map defines_map;
+	defines_map["NORMAL"] = preproc_define();
 	std::vector<line_source> line_src;
 
 	std::string game_cfg = preprocess_file("data/game.cfg",&defines_map,
@@ -307,7 +307,7 @@ int play_game(int argc, char** argv)
 				}
 
 				defines_map.clear();
-				defines_map[state.difficulty] = "";
+				defines_map[state.difficulty] = preproc_define();
 			} catch(gamestatus::load_game_failed& e) {
 				std::cerr << "caught load_game_failed\n";
 				gui::show_dialog(disp,NULL,"",
@@ -400,7 +400,7 @@ int play_game(int argc, char** argv)
 
 				state.difficulty = difficulties[res];
 				defines_map.clear();
-				defines_map[difficulties[res]] = "";
+				defines_map[difficulties[res]] = preproc_define();
 			}
 		} else if(res == gui::MULTIPLAYER) {
 			state.campaign_type = "multiplayer";

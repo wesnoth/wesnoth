@@ -44,11 +44,22 @@ bool operator<(const line_source& a, const line_source& b);
 std::string read_file(const std::string& fname);
 void write_file(const std::string& fname, const std::string& data);
 
+struct preproc_define {
+	preproc_define() {}
+	explicit preproc_define(const std::string& val) : value(val) {}
+	preproc_define(const std::string& val, const std::vector<std::string>& args)
+		: value(val), arguments(args) {}
+	std::string value;
+	std::vector<std::string> arguments;
+};
+
+typedef std::map<std::string,preproc_define> preproc_map;
+
 //function to use the WML preprocessor on a file, and returns the resulting
 //preprocessed file data. defines is a map of symbols defined. src is used
 //internally and should be set to NULL
 std::string preprocess_file(const std::string& fname,
-                            const std::map<std::string,std::string>* defines=0,
+                            const preproc_map* defines=0,
                             std::vector<line_source>* src=0);
 
 typedef std::map<std::string,std::string> string_map;
@@ -103,7 +114,7 @@ struct config
 	const config* find_child(const std::string& key, const std::string& name,
 	                         const std::string& value) const;
 
-	static std::vector<std::string> split(const std::string& val);
+	static std::vector<std::string> split(const std::string& val, char c=',');
 	static std::string& strip(std::string& str);
 	static bool has_value(const std::string& values, const std::string& val);
 

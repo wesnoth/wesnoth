@@ -134,8 +134,13 @@ std::string load_game_dialog(display& disp, bool* show_replay)
 		std::string name = i->name;
 		name.resize(minimum<size_t>(name.size(),40));
 
+		char time_buf[256];
+		const size_t res = strftime(time_buf,sizeof(time_buf),string_table["date_format"].c_str(),localtime(&(i->time_modified)));
+		if(res == 0)
+			time_buf[0] = 0;
+
 		std::stringstream str;
-		str << name << "," << ::ctime(&(i->time_modified));
+		str << name << "," << time_buf;
 		items.push_back(str.str());
 	}
 

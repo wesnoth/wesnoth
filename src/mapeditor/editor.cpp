@@ -56,8 +56,8 @@ int main(int argc, char** argv)
 		return 0;
 	}
 
-	std::map<std::string,std::string> defines_map;
-	defines_map["MEDIUM"] = "";
+	preproc_map defines_map;
+	defines_map["MEDIUM"] = preproc_symbol;
 	config cfg(preprocess_file("data/game.cfg",&defines_map));
 
 	set_language("English", cfg);

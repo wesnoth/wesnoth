@@ -34,7 +34,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 	const int num_turns = atoi(level->values["turns"].c_str());
 	gamestatus status(*level,num_turns);
 
-	gamemap map(terrain_config,read_file("data/maps/" + level->values["map"]));
+	std::string map_data = (*level)["map_data"];
+	if(map_data == "") {
+		map_data = read_file("data/maps/" + (*level)["map"]);
+	}
+
+	gamemap map(terrain_config,map_data);
 
 	CKey key;
 	unit_map units;

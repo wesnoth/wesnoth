@@ -92,7 +92,7 @@ void write_file(const std::string& fname, const std::string& data)
 namespace {
 
 void internal_preprocess_file(const std::string& fname,
-                              std::map<std::string,std::string>& defines_map,
+                              preproc_map& defines_map,
                               int depth, std::vector<char>& res,
                               std::vector<line_source>* lines_src, int& line)
 {
@@ -140,13 +140,33 @@ void internal_preprocess_file(const std::string& fname,
 				break;
 
 			const std::string newfilename = newfile.str();
+			const std::vector<std::string> items = config::split(newfilename,' ');
+			const std::string& symbol = items.front();
 
 			//if this is a known pre-processing symbol, then we insert
 			//it, otherwise we assume it's a file name to load
-			if(defines_map.count(newfilename) != 0) {
-				const std::string& val = defines_map[newfilename];
-				res.insert(res.end(),val.begin(),val.end());
-				line += std::count(val.begin(),val.end(),'\n');
+			if(defines_map.count(symbol) != 0) {
+				const preproc_define& val = defines_map[newfilename];
+				if(val.arguments.size() != items.size()-1) {
+					std::cerr << "error: preprocessor symbol '" << symbol << "' has incorrect number of arguments\n";
+				}
+
+				std::string str = val.value;
+
+				//substitute in given arguments
+				for(size_t n = 0; n != val.arguments.size(); ++n) {
+					const std::string item = "{" + val.arguments[n] + "}";
+					std::string::size_type pos = str.find(item);
+					while(pos != std::string::npos) {
+						const size_t index = n+1;
+						const std::string& replace_with = (index < items.size()) ? items[index] : "";
+						str.replace(pos,item.size(),replace_with);
+						pos = str.find(item);
+					}
+				}
+
+				res.insert(res.end(),str.begin(),str.end());
+				line += std::count(str.begin(),str.end(),'\n');
 			} else if(depth < 20) {
 				internal_preprocess_file("data/" + newfilename,
 				                       defines_map, depth+1,res,
@@ -173,16 +193,19 @@ void internal_preprocess_file(const std::string& fname,
 			   std::equal(hash_define.begin(),hash_define.end(),i)) {
 
 				i += hash_define.size();
-				while(i != data.end() && isspace(*i))
-					++i;
 
-				const std::string::const_iterator end =
-				                    std::find_if(i,data.end(),isspace);
+				i = std::find_if(i,data.end(),isgraph);
+
+				const std::string::const_iterator end = std::find(i,data.end(),'\n');
 
 				if(end == data.end())
 					break;
 
-				const std::string symbol(i,end);
+				const std::string items(i,end);
+				std::vector<std::string> args = config::split(items,' ');
+				const std::string symbol = args.front();
+				args.erase(args.begin());
+
 				std::stringstream value;
 				for(i = end+1; i != data.end(); ++i) {
 					static const std::string hash_enddef("#enddef");
@@ -195,8 +218,8 @@ void internal_preprocess_file(const std::string& fname,
 					value << *i;
 				}
 
-				defines_map.insert(std::pair<std::string,std::string>(
-				                               symbol,value.str()));
+				defines_map.insert(std::pair<std::string,preproc_define>(
+				                    symbol,preproc_define(value.str(),args)));
 			}
 
 			//if this is a pre-processing conditional
@@ -276,11 +299,11 @@ void internal_preprocess_file(const std::string& fname,
 } //end anonymous namespace
 
 std::string preprocess_file(const std::string& fname,
-                            const std::map<std::string,std::string>* defines,
+                            const preproc_map* defines,
                             std::vector<line_source>* line_sources)
 {
 	log_scope("preprocessing file...");
-	std::map<std::string,std::string> defines_copy;
+	preproc_map defines_copy;
 	if(defines != NULL)
 		defines_copy = *defines;
 
@@ -593,7 +616,7 @@ const config* config::find_child(const std::string& key,
 		return NULL;
 }
 
-std::vector<std::string> config::split(const std::string& val)
+std::vector<std::string> config::split(const std::string& val, char c)
 {
 	std::vector<std::string> res;
 
@@ -601,7 +624,7 @@ std::vector<std::string> config::split(const std::string& val)
 	std::string::const_iterator i2 = val.begin();
 
 	while(i2 != val.end()) {
-		if(*i2 == ',') {
+		if(*i2 == c) {
 			std::string new_val(i1,i2);
 			if(!new_val.empty())
 				res.push_back(new_val);
