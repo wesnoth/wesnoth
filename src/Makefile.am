@@ -327,7 +327,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/menu.hpp \
 			 widgets/progressbar.hpp \
 			 widgets/textbox.hpp \
-			 widgets/scrollarea.h \
+			 widgets/scrollarea.hpp \
 			 widgets/scrollbar.hpp \
 			 widgets/slider.hpp \
 			 widgets/widget.hpp \
