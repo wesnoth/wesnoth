@@ -1,4 +1,4 @@
-CVS HEAD:
+Version 0.8.3:
  * information about encountered terrain added in the help system
  * removed the unit description dialog in favor of in-game help
  * user interface tweaks
@@ -9,6 +9,7 @@ CVS HEAD:
    * chest, nest
    * portraits and unit animations
    * preferences icons
+ * updates and enhancements to tutorial
  * scenario balancing for 'The Dark Hordes' campaign:
    * The Skull of Agarash
    * Underground Pool
@@ -81,8 +82,9 @@ CVS HEAD:
  * fixed bad victory conditions in 'The Rise of Wesnoth: The Dragon' scenario
  * fixed some units shadows not being semi-transparent
  * fixed crash bug that could occur after undoing
- * changes in #ifdefs to prevent the game from using the X11 clipboard on MacOSX
  * fixed a little bug where a space could disappear near EOL in the help system
+ * changes in #ifdefs to prevent the game from using the X11 clipboard on MacOSX
+ * reverted sound quality improvement as it caused instability on some systems
  * help system shows everything when wesnoth is running in debug mode
  * added support for 2- and 3-sided transitions on the TERRAIN_ADJACENT_NORTH macro
  * added possiblity for terrains to be defined as 2-layered, with a base part and an overlay part
