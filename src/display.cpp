@@ -1241,7 +1241,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		SDL_FillRect(dst,&filled_energy_area,energy_colour);
 
 		if(show_xp) {
-			const bool nearly_advanced = it->second.max_experience() - it->second.experience() <= game_config::kill_experience*it->second.type().level();
+			const bool nearly_advanced = it->second.max_experience() - it->second.experience() <= game_config::kill_experience*maximum<int>(1,it->second.type().level());
 			const Uint16 xp_colour = ::SDL_MapRGB(screen_.getSurface()->format,nearly_advanced ? 255 : 0,0,255);
 			SDL_FillRect(dst,&filled_xp_area,xp_colour);
 		}
