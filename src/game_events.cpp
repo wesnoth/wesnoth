@@ -686,7 +686,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			loc = find_vacant_tile(*game_map,*units,loc);
 			units->insert(std::pair<gamemap::location,unit>(loc,new_unit));
 			if(game_map->is_village(loc)) {
-				get_village(loc,*teams,new_unit.side(),*units);
+				get_village(loc,*teams,new_unit.side()-1,*units);
 			}
 
 			screen->invalidate(loc);
