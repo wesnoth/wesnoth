@@ -868,37 +868,39 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//displaced from their position according to terrain and randomness, to
 	//add some variety.
 
-	//first we work out the size of the x and y distance between villages
-	const size_t tiles_per_village = ((width*height)/9)/nvillages;
-	size_t village_x = 1, village_y = 1;
-
-	//alternate between incrementing the x and y value. When they are high enough
-	//to equal or exceed the tiles_per_village, then we have them to the value
-	//we want them at.
-	size_t* village_ptr = &village_x;
-	while(village_x*village_y < tiles_per_village) {
-		(*village_ptr)++;
-		village_ptr = (village_ptr == &village_x ? &village_y : &village_x);
-	}
-
-	std::set<location> villages;
-	for(size_t vx = 0; vx < width; vx += village_x) {
-		for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
-			const size_t add_x = rand()%3;
-			const size_t add_y = rand()%3;
-			const size_t x = (vx + add_x) - 1;
-			const size_t y = (vy + add_y) - 1;
-
-			const gamemap::location res = place_village(terrain,x,y,2,cfg);
-
-			if(res.x >= width/3 && res.x < (width*2)/3 && res.y >= height/3 && res.y < (height*2)/3) {
-				const std::string str(1,terrain[res.x][res.y]);
-				const config* const child = cfg.find_child("village","terrain",str);
-				if(child != NULL) {
-					const std::string& convert_to = (*child)["convert_to"];
-					if(convert_to != "") {
-						terrain[res.x][res.y] = convert_to[0];
-						villages.insert(res);
+	if(nvillages > 0) {
+		//first we work out the size of the x and y distance between villages
+		const size_t tiles_per_village = ((width*height)/9)/nvillages;
+		size_t village_x = 1, village_y = 1;
+	
+		//alternate between incrementing the x and y value. When they are high enough
+		//to equal or exceed the tiles_per_village, then we have them to the value
+		//we want them at.
+		size_t* village_ptr = &village_x;
+		while(village_x*village_y < tiles_per_village) {
+			(*village_ptr)++;
+			village_ptr = (village_ptr == &village_x ? &village_y : &village_x);
+		}
+	
+		std::set<location> villages;
+		for(size_t vx = 0; vx < width; vx += village_x) {
+			for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
+				const size_t add_x = rand()%3;
+				const size_t add_y = rand()%3;
+				const size_t x = (vx + add_x) - 1;
+				const size_t y = (vy + add_y) - 1;
+	
+				const gamemap::location res = place_village(terrain,x,y,2,cfg);
+	
+				if(res.x >= width/3 && res.x < (width*2)/3 && res.y >= height/3 && res.y < (height*2)/3) {
+					const std::string str(1,terrain[res.x][res.y]);
+					const config* const child = cfg.find_child("village","terrain",str);
+					if(child != NULL) {
+						const std::string& convert_to = (*child)["convert_to"];
+						if(convert_to != "") {
+							terrain[res.x][res.y] = convert_to[0];
+							villages.insert(res);
+						}
 					}
 				}
 			}
