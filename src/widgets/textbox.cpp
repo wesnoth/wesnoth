@@ -13,6 +13,7 @@
 #include "textbox.hpp"
 #include "../font.hpp"
 #include "../show_dialog.hpp"
+#include "../video.hpp"
 #include "SDL.h"
 
 #include <algorithm>
@@ -112,7 +113,7 @@ void textbox::draw() const
 			draw_cursor(pos-1);
 	}
 
-	disp_.video().flip();
+	update_rect(x_,y_,width(),height());
 }
 
 void textbox::handle_event(const SDL_Event& event)

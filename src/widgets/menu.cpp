@@ -2,6 +2,7 @@
 
 #include "../font.hpp"
 #include "../show_dialog.hpp"
+#include "../video.hpp"
 
 #include <numeric>
 
@@ -272,6 +273,8 @@ void menu::draw()
 
 	for(size_t i = 0; i != items_.size(); ++i)
 		draw_item(i);
+
+	update_rect(x_,y_,width(),height());
 }
 
 int menu::hit(int x, int y) const

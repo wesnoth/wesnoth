@@ -10,7 +10,9 @@
 
    See the COPYING file for more details.
 */
+
 #include "slider.hpp"
+#include "../video.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -65,6 +67,8 @@ void slider::draw()
 
 	SDL_Rect slider = slider_area();
 	disp_.blit_surface(slider.x,slider.y,image);
+
+	update_rect(area_);
 }
 
 double slider::process(int mousex, int mousey, bool button)

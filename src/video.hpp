@@ -20,6 +20,10 @@
 #define VIDEO_MEMORY SDL_HWSURFACE
 #define SYSTEM_MEMORY SDL_SWSURFACE
 
+void update_rect(size_t x, size_t y, size_t w, size_t h);
+void update_rect(const SDL_Rect& rect);
+void update_whole_screen();
+
 class CVideo {
      public:
 	CVideo();

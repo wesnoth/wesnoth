@@ -84,6 +84,8 @@ namespace {
 	const size_t Minimap_y = 11;
 	const size_t Minimap_w = 119;
 	const size_t Minimap_h = 146;
+	const size_t TimeOfDay_x = 13;
+	const size_t TimeOfDay_y = 167;
 
 	const std::string RightSideTop = "misc/rightside.png";
 	const std::string RightSideBot = "misc/rightside-bottom.png";
@@ -447,6 +449,8 @@ void display::draw(bool update,bool force)
 		}
 
 		sideBarBgDrawn_ = true;
+
+		update_rect(mapx(),0,this->x()-mapx(),this->y());
 	}
 
 	if(invalidateAll_ && !map_.empty()) {
@@ -545,12 +549,13 @@ void display::draw_game_status(int x, int y)
 
 	if(tod_surface != NULL) {
 		//hardcoded values as to where the time of day image appears
-		blit_surface(mapx() + 13,167,tod_surface);
+		blit_surface(mapx() + TimeOfDay_x,TimeOfDay_y,tod_surface);
+		update_rect(TimeOfDay_x,TimeOfDay_y,tod_surface->w,tod_surface->h);
 	}
 
 	if(gameStatusRect_.w > 0) {
 		SDL_Surface* const screen = screen_.getSurface();
-		SDL_Surface* const background=getImage(RightSideTop,UNSCALED);
+		SDL_Surface* const background = getImage(RightSideTop,UNSCALED);
 
 		if(background == NULL)
 			return;
@@ -558,6 +563,7 @@ void display::draw_game_status(int x, int y)
 		SDL_Rect srcrect = gameStatusRect_;
 		srcrect.x -= mapx();
 		SDL_BlitSurface(background,&srcrect,screen,&gameStatusRect_);
+		update_rect(gameStatusRect_);
 	}
 
 	std::stringstream details;
@@ -636,6 +642,7 @@ void display::draw_game_status(int x, int y)
 
 	gameStatusRect_ = font::draw_text(this,clipRect,13,font::NORMAL_COLOUR,
 	                                  details.str(),x,y);
+	update_rect(gameStatusRect_);
 }
 
 void display::draw_unit_details(int x, int y, const gamemap::location& loc,
@@ -661,6 +668,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		srcrect.x -= mapx();
 
 		SDL_BlitSurface(background_bot,&srcrect,screen,&description_rect);
+		update_rect(description_rect);
 	}
 
 	std::string status = string_table["healthy"];
@@ -722,6 +730,8 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	    font::draw_text(this,clipRect,13,font::NORMAL_COLOUR,
 	                    details.str(),x,y);
 
+	update_rect(description_rect);
+
 	y += description_rect.h;
 
 	SDL_Surface* const profile = getImage(u.type().image(),UNSCALED);
@@ -739,6 +749,8 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		dstrect.x = profilex;
 		dstrect.y = profiley;
 		SDL_BlitSurface(profile,&srcrect,video().getSurface(),&dstrect);
+
+		update_rect(profilex,profiley,profilew,profileh);
 	}
 }
 
@@ -769,6 +781,8 @@ void display::draw_minimap(int x, int y, int w, int h)
 	SDL_Surface* const screen = screen_.getSurface();
 
 	gui::draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
+
+	update_rect(minimap_location);
 }
 
 void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
@@ -811,6 +825,7 @@ void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
 	}
 
 	invalid_rect.h = y - invalid_rect.y;
+	update_rect(invalid_rect);
 }
 
 gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
@@ -936,6 +951,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 	if(xend < xpos || yend < ypos)
 		return;
+
+	update_rect(xpos,ypos,xend-xpos,yend-ypos);
 
 	SDL_Surface* energy_image = NULL;
 
@@ -2368,6 +2385,7 @@ void display::invalidate_all()
 {
 	invalidateAll_ = true;
 	invalidated_.clear();
+	update_rect(0,0,mapx(),y());
 }
 
 void display::invalidate_unit()

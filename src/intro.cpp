@@ -17,6 +17,7 @@
 #include "key.hpp"
 #include "language.hpp"
 #include "show_dialog.hpp"
+#include "video.hpp"
 #include "widgets/button.hpp"
 
 #include <cstdlib>
@@ -98,6 +99,7 @@ void show_intro(display& screen, config& data)
 		                textx,texty);
 		next_button.draw();
 		skip_button.draw();
+		update_whole_screen();
 		screen.video().flip();
 
 		bool last = true;
@@ -168,6 +170,7 @@ void show_map_scene(display& screen, config& data)
 	dstrect.h = image->h;
 
 	SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
+	update_whole_screen();
 
 	const std::string& id = data.values["id"];
 	const std::string& scenario_name = string_table[id];
@@ -210,6 +213,7 @@ void show_map_scene(display& screen, config& data)
 		SDL_BlitSurface(img,NULL,image,&dot_rect);
 
 		SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
+		update_rect(dstrect);
 
 		for(int i = 0; i != 50; ++i) {
 			if(key[KEY_ESCAPE]) {
@@ -241,10 +245,11 @@ void show_map_scene(display& screen, config& data)
 	static const SDL_Rect area = {0,0,screen.x(),screen.y()};
 	const SDL_Rect scenario_size =
 	      font::draw_text(NULL,area,24,font::NORMAL_COLOUR,scenario,0,0);
-	font::draw_text(&screen,area,24,font::NORMAL_COLOUR,scenario,
-		            dstrect.x,dstrect.y - scenario_size.h - 4);
+	update_rect(font::draw_text(&screen,area,24,font::NORMAL_COLOUR,scenario,
+		                        dstrect.x,dstrect.y - scenario_size.h - 4));
 
 	SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
+	update_rect(dstrect);
 	screen.video().flip();
 
 	bool last_state = true;

@@ -12,6 +12,7 @@
 */
 #include <stdio.h>
 #include <iostream>
+#include <vector>
 
 #include "mouse.hpp"
 #include "preferences.hpp"
@@ -22,7 +23,6 @@
 #if (TEST_VIDEO_ON==1)
 
 #include <stdlib.h>
-
 
 //test program takes three args - x-res y-res colour-depth
 int main( int argc, char** argv )
@@ -61,22 +61,72 @@ int main( int argc, char** argv )
 #endif
 
 namespace {
-	bool fullScreen = false;
+bool fullScreen = false;
 
-	unsigned int get_flags(unsigned int flags)
-	{
-		//SDL under Windows doesn't seem to like hardware surfaces for
-		//some reason.
+unsigned int get_flags(unsigned int flags)
+{
+	//SDL under Windows doesn't seem to like hardware surfaces for
+	//some reason.
 #if !(defined(_WIN32) || defined(__APPLE__))
-		flags |= SDL_HWSURFACE | SDL_DOUBLEBUF;
+		flags |= SDL_HWSURFACE;
 #endif
-		if((flags&SDL_FULLSCREEN) == 0)
-			flags |= SDL_RESIZABLE;
+	if((flags&SDL_FULLSCREEN) == 0)
+		flags |= SDL_RESIZABLE;
 
-		return flags;
-	}
+	return flags;
 }
 
+std::vector<SDL_Rect> update_rects;
+bool update_all = false;
+
+bool rect_contains(const SDL_Rect& a, const SDL_Rect& b) {
+	return a.x <= b.x && a.y <= b.y && a.x+a.w >= b.x+b.w && a.y+a.h >= b.y+b.h;
+}
+
+void clear_updates()
+{
+	update_all = false;
+	update_rects.clear();
+}
+
+}
+
+void update_rect(size_t x, size_t y, size_t w, size_t h)
+{
+	const SDL_Rect rect = {x,y,w,h};
+	update_rect(rect);
+}
+
+void update_rect(const SDL_Rect& rect)
+{
+	if(update_all)
+		return;
+
+	for(std::vector<SDL_Rect>::iterator i = update_rects.begin();
+	    i != update_rects.end(); ++i) {
+		if(rect_contains(*i,rect)) {
+			return;
+		}
+
+		if(rect_contains(rect,*i)) {
+			*i = rect;
+			for(++i; i != update_rects.end(); ++i) {
+				if(rect_contains(rect,*i)) {
+					i->w = 0;
+				}
+			}
+
+			return;
+		}
+	}
+
+	update_rects.push_back(rect);
+}
+
+void update_whole_screen()
+{
+	update_all = true;
+}
 CVideo::CVideo() : frameBuffer(NULL)
 {
 	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
@@ -161,7 +211,13 @@ int CVideo::getBlueMask()
 
 void CVideo::flip()
 {
-	::SDL_Flip(frameBuffer);
+	if(update_all) {
+		::SDL_Flip(frameBuffer);
+	} else {
+		SDL_UpdateRects(frameBuffer,update_rects.size(),&update_rects[0]);
+	}
+
+	clear_updates();
 }
 
 void CVideo::lock()

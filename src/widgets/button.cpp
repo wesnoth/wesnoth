@@ -14,6 +14,7 @@
 #include "../game.hpp"
 #include "../font.hpp"
 #include "../util.hpp"
+#include "../video.hpp"
 
 namespace gui {
 
@@ -152,6 +153,8 @@ void button::draw()
 	display_->blit_surface(x_,y_,image);
 	font::draw_text(display_,clipArea,font_size,
 					font::BUTTON_COLOUR,label_,textx,texty);
+
+	update_rect(x_,y_,width(),height());
 }
 
 bool button::hit(int x, int y) const

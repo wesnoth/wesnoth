@@ -34,7 +34,6 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 {
 	draw_dialog_background(x,y,w,h,disp);
 
-
 	SDL_Surface* const top = disp.getImage("misc/menu-border-top.png",
 	                                       display::UNSCALED);
 	SDL_Surface* const bot = disp.getImage("misc/menu-border-bottom.png",
@@ -70,6 +69,8 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 	if(right_image.get() != NULL) {
 		disp.blit_surface(x+w,y,right_image.get());
 	}
+
+	update_rect(x-left->w,y-top->h,w+left->w+right->w,h+top->h+bot->h);
 
 	SDL_Surface* const top_left = disp.getImage("misc/menu-border-topleft.png",
 	                                            display::UNSCALED);
@@ -596,14 +597,15 @@ TITLE_RESULT show_title(display& screen)
 	const size_t versiony = screen.y() - version_area.h;
 
 	if(versiony < size_t(screen.y())) {
-		font::draw_text(&screen,screen.screen_area(),10,font::NORMAL_COLOUR,
-		                version_str,0,versiony);
+		font::draw_text(&screen,screen.screen_area(),
+		                  10,font::NORMAL_COLOUR,version_str,0,versiony);
 	}
 
 	const int x = screen.x()/2 - title_surface->w/2;
 	const int y = 100;
 
 	screen.blit_surface(x,y,title_surface);
+	update_rect(x,y,title_surface->w,title_surface->h);
 
 	button tutorial_button(screen,string_table["tutorial_button"]);
 	button new_button(screen,string_table["campaign_button"]);
@@ -640,6 +642,8 @@ TITLE_RESULT show_title(display& screen)
 	CKey key;
 
 	bool last_escape = key[KEY_ESCAPE];
+
+	update_whole_screen();
 
 	for(;;) {
 		int mousex, mousey;
