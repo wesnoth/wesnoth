@@ -214,12 +214,10 @@ void parser::parse_variable()
 			break;
 		case ',':
 			if(variables.back().empty()) {
-				// FIXME: this error message is not really
-				// appropriate, although a proper one should
-				// wait after string freeze.
-				error(_("Unexpected characters after variable name (expected , or =)"));
+				error(_("Empty variable name"));
+			} else {
+				variables.push_back("");
 			}
-			variables.push_back("");
 			break;
 		default:
 			error(_("Unexpected characters after variable name (expected , or =)"));
@@ -227,6 +225,8 @@ void parser::parse_variable()
 		}
 		tok_.next_token();
 	}
+	if(variables.back().empty()) 
+		error(_("Empty variable name"));
 
 	std::vector<std::string>::const_iterator curvar = variables.begin(); 
 
