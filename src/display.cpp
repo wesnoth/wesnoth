@@ -540,7 +540,7 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 
 void display::draw(bool update,bool force)
 {	
-	if(!panelsDrawn_ && !teams_.empty()) {
+	if(!panelsDrawn_) {
 		SDL_Surface* const screen = screen_.getSurface();
 
 		const std::vector<theme::panel>& panels = theme_.panels();

@@ -362,19 +362,19 @@ public:
 	int choose_weapon(const location& att, const location& def,
 					  battle_stats& cur_stats, gamemap::TERRAIN terrain);
 
-private:
-	std::vector<attack_analysis> analyze_targets(
-	             const move_map& srcdst, const move_map& dstsrc,
-	             const move_map& enemy_srcdst, const move_map& enemy_dstsrc
-            );
-
-
 	struct target {
 		target(const location& pos, double val) : loc(pos), value(val)
 		{}
 		location loc;
 		double value;
 	};
+
+private:
+	std::vector<attack_analysis> analyze_targets(
+	             const move_map& srcdst, const move_map& dstsrc,
+	             const move_map& enemy_srcdst, const move_map& enemy_dstsrc
+            );
+
 
 	std::vector<target> find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 
@@ -392,6 +392,32 @@ private:
 	const gamestatus& state_;
 	bool consider_combat_;
 	std::vector<target> additional_targets_;
+
+	//function which will analyze all the units that this side can recruit and rate
+	//their movement types. Ratings will be placed in 'unit_movement_scores_', with
+	//lower scores being better, and the lowest possible rating being '10'.
+	void analyze_potential_recruit_movements();
+
+	std::map<std::string,int> unit_movement_scores_;
+	std::set<std::string> not_recommended_units_;
+
+	//function which will analyze all the units that this side can recruit and rate
+	//their fighting suitability against enemy units. Ratings will be placed in
+	//'unit_combat_scores_' with a '0' rating indicating that the unit is 'average'
+	//against enemy units, negative ratings meaning they are poorly suited, and
+	//positive ratings meaning they are well suited
+	void analyze_potential_recruit_combat();
+
+	std::map<std::string,int> unit_combat_scores_;
+
+	//function which rates two unit types for their suitability against each other.
+	//returns 0 if the units are equally matched, a positive number if a is suited
+	//against b, and a negative number if b is suited against a.
+	int compare_unit_types(const unit_type& a, const unit_type& b) const;
+
+	//function which calculates the average resistance unit type a has against
+	//the attacks of unit type b.
+	int average_resistance_against(const unit_type& a, const unit_type& b) const;
 };
 
 #endif

@@ -61,10 +61,12 @@ bool ai::recruit_usage(const std::string& usage)
 	for(std::map<std::string,unit_type>::const_iterator i =
 	    gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
 
-		if(i->second.usage() == usage && recruits.count(i->second.name())
-		   && current_team().gold() - i->second.cost() > min_gold) {
+		const std::string& name = i->second.name();
 
-			options.push_back(i->second.name());
+		if(i->second.usage() == usage && recruits.count(name)
+		   && current_team().gold() - i->second.cost() > min_gold
+		   && not_recommended_units_.count(name) == 0) {
+			options.push_back(name);
 		}
 	}
 
@@ -771,23 +773,206 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 	return false;
 }
 
+int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
+{
+	int sum = 0, weight_sum = 0;
+
+	const std::vector<attack_type>& attacks = b.attacks();
+	for(std::vector<attack_type>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
+		const int resistance = a.movement_type().resistance_against(*i);
+		const int weight = i->damage()*i->num_attacks();
+
+		sum += resistance*weight;
+		weight_sum += weight;
+	}
+
+	return sum/weight_sum;
+}
+
+int ai::compare_unit_types(const unit_type& a, const unit_type& b) const
+{
+	const int a_effectiveness_vs_b = average_resistance_against(b,a);
+	const int b_effectiveness_vs_a = average_resistance_against(a,b);
+
+	std::cerr << "comparison of '" << a.name() << " vs " << b.name() << ": "
+	          << a_effectiveness_vs_b << " - " << b_effectiveness_vs_a << " = "
+			  << (a_effectiveness_vs_b - b_effectiveness_vs_a) << "\n";
+	return a_effectiveness_vs_b - b_effectiveness_vs_a;
+}
+
+void ai::analyze_potential_recruit_combat()
+{
+	if(unit_combat_scores_.empty() == false) {
+		return;
+	}
+
+	log_scope("analyze_potential_recruit_combat()");
+
+	const std::set<std::string>& recruits = current_team().recruits();
+	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
+		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
+		if(info == gameinfo_.unit_types.end()) {
+			continue;
+		}
+
+		int score = 0;
+
+		for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
+			if(j->second.can_recruit() || current_team().is_enemy(j->second.side()) == false) {
+				continue;
+			}
+
+			score += compare_unit_types(info->second,j->second.type());
+		}
+
+		std::cerr << "combat score of '" << *i << "': " << score << "\n";
+		unit_combat_scores_[*i] = score;
+	}
+}
+
+namespace {
+
+struct target_comparer_distance {
+	target_comparer_distance(const gamemap::location& loc) : loc_(loc) {}
+
+	bool operator()(const ai::target& a, const ai::target& b) const {
+		return distance_between(a.loc,loc_) < distance_between(b.loc,loc_);
+	}
+
+private:
+	gamemap::location loc_;
+};
+
+}
+
+void ai::analyze_potential_recruit_movements()
+{
+	if(unit_movement_scores_.empty() == false) {
+		return;
+	}
+
+	const location& start = map_.starting_position(team_num_);
+	if(map_.on_board(start) == false) {
+		return;
+	}
+
+	log_scope("analyze_potential_recruit_movements()");
+
+	const unit_map::const_iterator leader = units_.find(start);
+
+	const int max_targets = 5;
+
+	const move_map srcdst, dstsrc;
+	std::vector<target> targets = find_targets(leader,srcdst,dstsrc);
+	if(targets.size() > max_targets) {
+		std::sort(targets.begin(),targets.end(),target_comparer_distance(start));
+		targets.erase(targets.begin()+max_targets,targets.end());
+	}
+
+	const std::set<std::string>& recruits = current_team().recruits();
+
+	std::cerr << "targets: " << targets.size() << "\n";
+
+	int best_score = -1;
+	
+	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
+		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
+		if(info == gameinfo_.unit_types.end()) {
+			continue;
+		}
+
+		const unit temp_unit(&info->second,team_num_);
+		unit_map units;
+		const temporary_unit_placer placer(units,start,temp_unit);
+
+		int cost = 0;
+		int targets_reached = 0;
+		int targets_missed = 0;
+
+		const shortest_path_calculator calc(temp_unit,current_team(),units,teams_,map_,state_);
+		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
+			std::cerr << "analyzing '" << *i << "' getting to target...\n";
+			const paths::route& route = a_star_search(start,t->loc,100.0,calc);
+			if(route.steps.empty() == false) {
+				std::cerr << "made it: " << route.move_left << "\n";
+				cost += route.move_left;
+				++targets_reached;
+			} else {
+				std::cerr << "failed\n";
+				++targets_missed;
+			}
+		}
+
+		if(targets_reached == 0 || targets_missed >= targets_reached*2) {
+			unit_movement_scores_[*i] = 100000;
+			not_recommended_units_.insert(*i);
+		} else {
+			const int average_cost = cost/targets_reached;
+			const int score = (average_cost * (targets_reached+targets_missed))/targets_reached;
+			unit_movement_scores_[*i] = score;
+			if(best_score == -1 || score < best_score) {
+				best_score = score;
+			}
+		}
+	}
+
+	for(std::map<std::string,int>::iterator j = unit_movement_scores_.begin(); j != unit_movement_scores_.end(); ++j) {
+		if(best_score > 0) {
+			j->second = (j->second*10)/best_score;
+			if(j->second > 15) {
+				std::cerr << "recommending against recruiting '" << j->first << "' (score: " << j->second << ")\n";
+				not_recommended_units_.insert(j->first);
+			} else {
+				std::cerr << "recommending recruit of '" << j->first << "' (score: " << j->second << ")\n";
+			}
+		}
+	}
+
+	if(not_recommended_units_.size() == unit_movement_scores_.size()) {
+		not_recommended_units_.clear();
+	}
+}
+
 void ai::do_recruitment()
 {
+	analyze_potential_recruit_movements();
+	analyze_potential_recruit_combat();
+
 	//currently just spend all the gold we can!
 	const int min_gold = 0;
 
-	const int villages = map_.villages().size();
-	int taken_villages = 0;
-	for(size_t j = 0; j != teams_.size(); ++j) {
-		taken_villages += teams_[j].villages().size();
+	size_t neutral_villages = 0;
+
+	//we recruit the initial allocation of scouts based on how many neutral villages
+	//there are that are closer to us than to other keeps.
+	const std::vector<location>& villages = map_.villages();
+	for(std::vector<location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
+		const int owner = village_owner(*v,teams_);
+		if(owner == -1) {
+			const size_t distance = distance_between(map_.starting_position(team_num_),*v);
+
+			bool closest = true;
+			for(std::vector<team>::const_iterator i = teams_.begin(); i != teams_.end(); ++i) {
+				const int index = i - teams_.begin() + 1;
+				if(team_num_ != index) {
+					const gamemap::location& loc = map_.starting_position(index);
+					if(distance_between(loc,*v) < distance) {
+						closest = false;
+						break;
+					}
+				}
+			}
+
+			if(closest) {
+				++neutral_villages;
+			}
+		}
 	}
 
-	const int neutral_villages = villages - taken_villages;
-
-	//the villages per scout parameter is assumed to be based on a 2-side battle.
-	//in a greater than 2 side battle, we want to recruit less scouts, since the villages
-	//are going to be taken more quickly, and we will need combat units faster.
-	const int villages_per_scout = (current_team().villages_per_scout()*teams_.size())/2;
+	//the villages per scout is for a two-side battle, accounting for all neutral villages
+	//on the map. We only look at villages closer to us, so we halve it, making us get
+	//twice as many scouts
+	const int villages_per_scout = current_team().villages_per_scout()/2;
 
 	//get scouts depending on how many neutral villages there are
 	int scouts_wanted = villages_per_scout > 0 ? neutral_villages/villages_per_scout : 0;
@@ -947,7 +1132,7 @@ int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 	if(map_.is_village(terrain)) {
 		const int owner = village_owner(loc,teams_);
 
-		if(owner == team_num_) {
+		if(owner+1 == team_num_) {
 			rating += friendly_village_value;
 		} else if(owner == -1) {
 			rating += neutral_village_value;
