@@ -16,6 +16,7 @@
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "preferences.hpp"
+#include "gettext.hpp"
 
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};

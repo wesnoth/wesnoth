@@ -18,6 +18,11 @@
 #include <sstream>
 
 #include "serialization/string_utils.hpp"
+#include "util.hpp"
+#include "log.hpp"
+#include "SDL_types.h"
+
+#define ERR_GENERAL lg::err(lg::general)
 
 namespace game_events {
 std::string const &get_variable_const(std::string const &varname);
@@ -299,6 +304,181 @@ std::pair< int, int > parse_range(std::string const &str)
 	std::pair<int,int> res(atoi(a.c_str()), atoi(b.c_str()));
 	if (res.second < res.first)
 		res.second = res.first;
+
+	return res;
+}
+
+int byte_size_from_utf8_first(unsigned char ch)
+{
+	int count;
+
+	if ((ch & 0x80) == 0)
+		count = 1;
+	else if ((ch & 0xE0) == 0xC0)
+		count = 2;
+	else if ((ch & 0xF0) == 0xE0)
+		count = 3;
+	else if ((ch & 0xF8) == 0xF0)
+		count = 4;
+	else if ((ch & 0xFC) == 0xF8)
+		count = 5;
+	else if ((ch & 0xFE) == 0xFC)
+		count = 6;
+	else
+		throw invalid_utf8_exception(); /* stop on invalid characters */
+
+	return count;
+}
+
+utf8_iterator::utf8_iterator() :
+	current_char(0)
+{
+}
+utf8_iterator::utf8_iterator(const std::string& str)
+{
+	current_substr.first = str.begin();
+	string_end = str.end();
+	update();
+}
+
+utf8_iterator::utf8_iterator(std::string::const_iterator beg, std::string::const_iterator end) 
+{
+	current_substr.first = beg;
+	string_end = end;
+	update();
+}
+
+utf8_iterator utf8_iterator::end(const std::string& str)
+{
+	utf8_iterator res;
+
+	res.current_char = 0;
+	res.current_substr.first = str.end();
+	res.string_end = str.end();
+
+	return res;
+}
+
+bool utf8_iterator::operator==(const utf8_iterator& a)
+{
+	return current_substr.first == a.current_substr.first;
+}
+
+utf8_iterator& utf8_iterator::operator++()
+{
+	current_substr.first = current_substr.second;
+	update();
+
+	return *this;
+}
+
+wchar_t utf8_iterator::operator*()
+{
+	return current_char;
+}
+
+const std::pair<std::string::const_iterator, std::string::const_iterator>& utf8_iterator::substr()
+{
+	return current_substr;
+}
+
+void utf8_iterator::update()
+{
+	size_t size = byte_size_from_utf8_first(*current_substr.first);
+	current_substr.second = current_substr.first + size;
+
+	current_char = (unsigned char)(*current_substr.first);
+
+	/* Convert the first character */
+	if (size != 1) {
+		current_char &= 0xFF >> (size + 1);
+	}
+
+	/* Convert the continuation bytes */
+	for(std::string::const_iterator c = current_substr.first+1;
+			c != current_substr.second; ++c) {
+		// If the string ends occurs within an UTF8-sequence, this is
+		// bad.
+		if (c == string_end)
+			throw invalid_utf8_exception();
+
+		if ((*c & 0xC0) != 0x80)
+			throw invalid_utf8_exception();
+
+		current_char = (current_char << 6) | ((unsigned char)*c & 0x3F);
+	}
+}
+
+
+std::string wstring_to_string(const wide_string &src)
+{
+	wchar_t ch;
+	wide_string::const_iterator i;
+	int j;
+	Uint32 bitmask;
+	std::string ret;
+
+	try {
+
+		for(i = src.begin(); i != src.end(); ++i) {
+			int count;
+			ch = *i;
+			
+			/* Determine the bytes required */
+			count = 1;
+			if(ch >= 0x80)
+				count++;
+
+			bitmask = 0x800;
+			for(j = 0; j < 5; ++j) {
+				if(ch >= bitmask)
+					count++;
+				bitmask <<= 5;
+			}
+			
+			if(count > 6)
+				throw invalid_utf8_exception();
+
+			if(count == 1) {
+				push_back(ret,ch);
+			} else {
+				for(j = count-1; j >= 0; --j) {
+					unsigned char c = (ch >> (6*j)) & 0x3f;
+					c |= 0x80;
+					if(j == count-1)
+						c |= 0xff << (8 - count);
+					push_back(ret,c);
+				}
+			}
+
+		}
+
+		return ret;
+	}
+	catch(invalid_utf8_exception e) {
+		ERR_GENERAL << "Invalid wide character string\n";
+		return ret;
+	}
+}
+
+std::string wchar_to_string(const wchar_t c) {
+	wide_string s;
+	s.push_back(c);
+	return wstring_to_string(s);
+}
+
+wide_string string_to_wstring(const std::string &src)
+{
+	wide_string res;
+	
+	try {
+		res.insert(res.end(), utf8_iterator(src), utf8_iterator::end(src));
+	}
+
+	catch(invalid_utf8_exception e) {
+		ERR_GENERAL << "Invalid UTF-8 string: \"" << src << "\"\n";
+		return res;
+	}
 
 	return res;
 }

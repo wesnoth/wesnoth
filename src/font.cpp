@@ -83,53 +83,34 @@ std::vector<text_chunk> split_text(const std::string& utf8_text) {
 	std::vector<text_chunk> chunks;
 	
 	try {
-		size_t i = 0;
-		while(i < utf8_text.size()) {
-			wchar_t ch = (unsigned char)utf8_text[i];
-			const int num_bytes = byte_size_from_utf8_first(ch);
-
-			if(i + num_bytes > utf8_text.size()) {
-				throw invalid_utf8_exception();
-			}
-
-			if(num_bytes != 1) {
-				ch &= 0xFF >> (num_bytes + 1);
-			}
-
-			for(size_t j = i + 1; j != i + num_bytes; ++j) {
-				const unsigned char ch2 = utf8_text[j];
-				if((ch2 & 0xC0) != 0x80) {
-					throw invalid_utf8_exception();
-				}
-				ch = (ch << 6) | (ch2 & 0x3F);
-			}
+		//size_t i = 0;
+		for(utils::utf8_iterator ch(utf8_text); ch != utils::utf8_iterator::end(utf8_text); ++ch) {
 			
 			if(first) {
-				if(ch < font_map.size() && font_map[ch] >= 0) {
-					current_font = font_map[ch];
+				if(*ch < font_map.size() && font_map[*ch] >= 0) {
+					current_font = font_map[*ch];
 				} else {
 					current_font = 0;
 				}
 				first = false;
 			}
 			
-			if(ch >= font_map.size() || font_map[ch] < 0) {
-				current_chunk.append(utf8_text, i, num_bytes);
-			} else if(font_map[ch] == current_font) {
-				current_chunk.append(utf8_text, i, num_bytes);
+			if(*ch >= font_map.size() || font_map[*ch] < 0) {
+				current_chunk.append(ch.substr().first, ch.substr().second);
+			} else if(font_map[*ch] == current_font) {
+				current_chunk.append(ch.substr().first, ch.substr().second);
 			} else {
 				chunks.push_back(text_chunk(current_font, current_chunk));
 				current_chunk.clear();
-				current_chunk.append(utf8_text, i, num_bytes);
-				current_font = font_map[ch];
+				current_chunk.append(ch.substr().first, ch.substr().second);
+				current_font = font_map[*ch];
 			}
-			i += num_bytes;
 		}
 		if (!current_chunk.empty()) {
 			chunks.push_back(text_chunk(current_font, current_chunk));
 		}
 	}
-	catch(invalid_utf8_exception e) {
+	catch(utils::invalid_utf8_exception e) {
 		WRN_FT << "Invalid UTF-8 string: \"" << utf8_text << "\"\n";
 	}
 	return chunks;
@@ -801,16 +782,17 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 
 			if (line_width(cur_word, font_size) > (max_width /*/ 2*/)) {
 				// The last word is too big to fit in a nice way, split it on a char basis
-				std::vector<std::string> split_word = split_utf8_string(cur_word);
+				utils::utf8_iterator i(cur_word);
 	
-				for (std::vector<std::string>::iterator i = split_word.begin(); i != split_word.end(); ++i) {
-					if (line_width(cur_line + *i, font_size) > max_width) {
+				for (; i != utils::utf8_iterator::end(cur_word); ++i) {
+					std::string tmp = cur_line;
+					tmp.append(i.substr().first, i.substr().second);
+
+					if (line_width(tmp, font_size) > max_width) {
 						wrapped_text += cur_line + '\n';
-						cur_line = *i;
-					} else {
-						cur_line += *i;
+						cur_line = "";
 					}
-				
+					cur_line.append(i.substr().first, i.substr().second);
 				}
 
 			} else {
@@ -847,15 +829,20 @@ std::string make_text_ellipsis(const std::string &text, int font_size, int max_w
 	if(line_width(ellipsis, font_size) > max_width)
 		return "";
 	
-	std::vector<std::string> characters = split_utf8_string(text);
-	std::string current_substring = "";
+	std::string current_substring;
 
-	for(std::vector<std::string>::const_iterator itor = characters.begin(); itor != characters.end(); ++itor) {
-		if (line_width(current_substring + *itor + ellipsis, font_size ) > max_width) {
+	utils::utf8_iterator itor(text);
+
+	for(; itor != utils::utf8_iterator::end(text); ++itor) {
+		std::string tmp = current_substring;
+		tmp.append(itor.substr().first, itor.substr().second);
+		tmp += ellipsis;
+
+		if (line_width(tmp, font_size) > max_width) {
 			return current_substring + ellipsis;
 		}
 		
-		current_substring += *itor;
+		current_substring.append(itor.substr().first, itor.substr().second);
 	}
 
 	return text; // Should not happen

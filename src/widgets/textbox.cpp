@@ -32,7 +32,7 @@ namespace gui {
 const int font_size = font::SIZE_PLUS;
 
 textbox::textbox(display& d, int width, const std::string& text, bool editable, size_t max_size, double alpha, double alpha_focus)
-	   : scrollarea(d), max_size_(max_size), text_(string_to_wstring(text)),
+	   : scrollarea(d), max_size_(max_size), text_(utils::string_to_wstring(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
@@ -53,14 +53,14 @@ void textbox::set_inner_location(SDL_Rect const &rect)
 
 const std::string textbox::text() const
 {
-	const std::string &ret = wstring_to_string(text_);
+	const std::string &ret = utils::wstring_to_string(text_);
 	return ret;
 }
 
 // set_text does not respect max_size_
 void textbox::set_text(const std::string& text)
 {
-	text_ = string_to_wstring(text);
+	text_ = utils::string_to_wstring(text);
 	cursor_ = text_.size();
 	text_pos_ = 0;
 	selstart_ = -1;
@@ -76,7 +76,7 @@ void textbox::append_text(const std::string& text)
 		return;
 	}
 
-	const wide_string& wtext = string_to_wstring(text);
+	const wide_string& wtext = utils::string_to_wstring(text);
 
 	const surface new_text = add_text_line(wtext);
 	const surface new_surface = create_compatible_surface(text_image_,maximum<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
@@ -255,7 +255,7 @@ surface textbox::add_text_line(const wide_string& text)
 		if(char(*itor) == ' ') {
 			backup_itor = itor;
 		}
-		visible_string.append(wchar_to_string(*itor));
+		visible_string.append(utils::wchar_to_string(*itor));
 
 		if(char(*itor) == '\n') {
 			backup_itor = text.end();
@@ -287,7 +287,7 @@ surface textbox::add_text_line(const wide_string& text)
 		}
 	}
 
-	const std::string s = wstring_to_string(wrapped_text);
+	const std::string s = utils::wstring_to_string(wrapped_text);
 	const surface res(font::get_rendered_text(s, font_size, font::NORMAL_COLOUR));		
 
 	return res;
@@ -473,7 +473,7 @@ void textbox::handle_event(const SDL_Event& event)
 				if(is_selection())
 					erase_selection();
 
-				wide_string s = string_to_wstring(copy_from_clipboard());
+				wide_string s = utils::string_to_wstring(copy_from_clipboard());
 				if(text_.size() < max_size_) {
 					if(s.size() + text_.size() > max_size_) {
 						s.resize(max_size_ - text_.size());
@@ -491,7 +491,7 @@ void textbox::handle_event(const SDL_Event& event)
 				const size_t end = maximum<size_t>(size_t(selstart_),size_t(selend_));
 
 				wide_string ws = wide_string(text_.begin() + beg, text_.begin() + end);
-				std::string s = wstring_to_string(ws);
+				std::string s = utils::wstring_to_string(ws);
 				copy_to_clipboard(s);
 				} 
 				break;

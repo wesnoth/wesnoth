@@ -20,6 +20,7 @@
 #include "util.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
+#include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 
 #define LOG_NW lg::info(lg::network)

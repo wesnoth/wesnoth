@@ -19,6 +19,9 @@
 #include <string>
 #include <vector>
 
+//the type we use to represent Unicode strings.
+typedef std::vector<wchar_t> wide_string;
+
 namespace utils {
 
 bool isnewline(char c);
@@ -44,6 +47,43 @@ typedef std::map< std::string, std::string > string_map;
 // the equivalent symbols in the given symbol table. If 'symbols' is NULL, then game event
 // variables will be used instead
 std::string interpolate_variables_into_string(std::string const &str, string_map const *symbols = NULL);
+
+//functions for converting Unicode wide-char strings to UTF-8 encoded
+//strings, back and forth
+class invalid_utf8_exception : public std::exception {
+};
+
+class utf8_iterator 
+{
+public:
+	typedef std::input_iterator_tag iterator_category;
+	typedef wchar_t value_type;
+	typedef ptrdiff_t difference_type;
+	typedef wchar_t* pointer;
+	typedef wchar_t& reference;
+
+	utf8_iterator();
+	utf8_iterator(const std::string& str);
+	utf8_iterator(std::string::const_iterator begin, std::string::const_iterator end);
+
+	static utf8_iterator end(const std::string& str);
+
+	bool operator==(const utf8_iterator& a);
+	bool operator!=(const utf8_iterator& a) { return ! (*this == a); }
+	utf8_iterator& operator++();
+	wchar_t operator*();
+	const std::pair<std::string::const_iterator, std::string::const_iterator>& substr();
+private:
+	void update();
+
+	wchar_t current_char;
+	std::string::const_iterator string_end;
+	std::pair<std::string::const_iterator, std::string::const_iterator> current_substr;
+};
+
+std::string wstring_to_string(const wide_string &);
+wide_string string_to_wstring(const std::string &);
+std::string wchar_to_string(const wchar_t);
 
 }
 

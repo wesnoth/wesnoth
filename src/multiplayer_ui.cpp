@@ -16,6 +16,7 @@
 #include "network.hpp"
 #include "game_config.hpp"
 #include "sound.hpp"
+#include "gettext.hpp"
 
 #define LOG_NW lg::info(lg::network)
 #define ERR_NW lg::err(lg::network)

@@ -215,11 +215,9 @@ bool show_intro_part(display& screen, const config& part,
 	}
 
 	const std::string& story = part["story"];
-	const std::vector<std::string> story_chars = split_utf8_string(story);
+	utils::utf8_iterator itor(story);
 
 	std::cerr << story << std::endl;
-
-	std::vector<std::string>::const_iterator j = story_chars.begin();
 
 	bool skip = false, last_key = true;
 
@@ -228,20 +226,19 @@ bool show_intro_part(display& screen, const config& part,
 	//the maximum position that text can reach before wrapping
 	const int max_xpos = next_button.location().x - 10;
 	size_t height = 0;
-	//std::string buf;
 	
 	for(;;) {
-		if(j != story_chars.end()) {
-			//unsigned char c = *j;
-			if(*j == " ") {
+		if(itor != utils::utf8_iterator::end(story)) {
+			if(*itor == ' ') {
 				//we're at a space, so find the next space or end-of-text,
 				//to find out if the next word will fit, or if it has to be wrapped
-				std::vector<std::string>::const_iterator end_word = std::find(j+1,story_chars.end()," ");
+				utils::utf8_iterator start_word = itor;
+				++start_word;
+				utils::utf8_iterator end_word = std::find(start_word, utils::utf8_iterator::end(story), ' ');
 
 				std::string word;
-				for(std::vector<std::string>::const_iterator k = j+1;
-						k != end_word; ++k) {
-					word += *k;
+				for(; start_word != end_word; ++start_word) {
+					word.append(start_word.substr().first, start_word.substr().second);
 				}
 				const SDL_Rect rect = font::draw_text(NULL,screen.screen_area(),
 						font::SIZE_PLUS,font::NORMAL_COLOUR,
@@ -250,15 +247,18 @@ bool show_intro_part(display& screen, const config& part,
 				if(xpos + rect.w >= max_xpos) {
 					xpos = textx;
 					ypos += height;
-					++j;
+					++itor;
 					continue;
 				}
 			}
 
 			// output the character
+			// FIXME: this is broken: it does not take kerning into account.
+			std::string tmp;
+			tmp.append(itor.substr().first, itor.substr().second);
 			const SDL_Rect rect = font::draw_text(&screen,
 					screen.screen_area(),font::SIZE_PLUS,
-					font::NORMAL_COLOUR,*j,xpos,ypos,
+					font::NORMAL_COLOUR,tmp,xpos,ypos,
 					false);
 
 			if(rect.h > height)
@@ -266,8 +266,8 @@ bool show_intro_part(display& screen, const config& part,
 			xpos += rect.w; 
 			update_rect(rect);
 
-			++j;
-			if(j == story_chars.end())
+			++itor;
+			if(itor == utils::utf8_iterator::end(story))
 				skip = true;
 
 		}
@@ -275,7 +275,7 @@ bool show_intro_part(display& screen, const config& part,
 		const bool keydown = key[SDLK_SPACE] || key[SDLK_RETURN];
 
 		if(keydown && !last_key || next_button.pressed()) {
-			if(skip == true || j == story_chars.end()) {
+			if(skip == true || itor == utils::utf8_iterator::end(story)) {
 				break;
 			} else {
 				skip = true;
@@ -292,7 +292,7 @@ bool show_intro_part(display& screen, const config& part,
 		events::raise_draw_event();
 		screen.video().flip();
 
-		if(!skip || j == story_chars.end())
+		if(!skip || itor == utils::utf8_iterator::end(story))
 			SDL_Delay(20);
 	}
 	

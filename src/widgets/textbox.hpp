@@ -16,7 +16,7 @@
 
 #include "../events.hpp"
 #include "../key.hpp"
-#include "../language.hpp"
+#include "../serialization/string_utils.hpp"
 #include "../sdl_utils.hpp"
 
 #include "scrollarea.hpp"

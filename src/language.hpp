@@ -19,9 +19,7 @@
 #include <map>
 #include <string>
 #include <vector>
-
-//the type we use to represent Unicode strings.
-typedef std::vector<wchar_t> wide_string;
+#include <iterator>
 
 //this module controls internationalization.
 
@@ -64,15 +62,5 @@ const language_def& get_language();
 
 //function which attempts to query and return the locale on the system
 const language_def& get_locale();
-
-//functions for converting Unicode wide-char strings to UTF-8 encoded
-//strings, back and forth
-class invalid_utf8_exception : public std::exception {
-};
-int byte_size_from_utf8_first(unsigned char ch);
-std::vector<std::string> split_utf8_string(const std::string &src);
-std::string wstring_to_string(const wide_string &);
-wide_string string_to_wstring(const std::string &);
-std::string wchar_to_string(const wchar_t);
 
 #endif

@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "playlevel.hpp"
 #include "network.hpp"
+#include "gettext.hpp"
 
 #define LOG_NW lg::info(lg::network)
 

@@ -25,7 +25,7 @@ markov_prefix_map markov_prefixes(const std::vector<std::string>& items, size_t 
 	markov_prefix_map res;
 
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		add_prefixes(string_to_wstring(*i),length,res);
+		add_prefixes(utils::string_to_wstring(*i),length,res);
 	}
 
 	return res;
@@ -117,7 +117,7 @@ const std::string& unit_race::name() const { return name_; }
 
 std::string unit_race::generate_name(unit_race::GENDER gender) const
 {
-	return wstring_to_string(markov_generate_name(next_[gender],chain_size_,12));
+	return utils::wstring_to_string(markov_generate_name(next_[gender],chain_size_,12));
 }
 
 const config::child_list& unit_race::additional_traits() const

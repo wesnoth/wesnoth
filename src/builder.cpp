@@ -90,10 +90,15 @@ void terrain_builder::tile::rebuild_cache(const std::string &tod) const
 
 	ordered_ri_list::const_iterator itor;
 	for(itor = horizontal_images.begin(); itor != horizontal_images.end(); ++itor) {
-		add_image_to_cache(tod, itor);
+		if (itor->first <= 0) 
+			add_image_to_cache(tod, itor);
 	}
 	for(itor = vertical_images.begin(); itor != vertical_images.end(); ++itor) {
 		add_image_to_cache(tod, itor);
+	}
+	for(itor = horizontal_images.begin(); itor != horizontal_images.end(); ++itor) {
+		if (itor->first > 0) 
+			add_image_to_cache(tod, itor);
 	}
 }
 

@@ -2,6 +2,7 @@
 
 #include "show_dialog.hpp"
 #include "widgets/file_chooser.hpp"
+#include "gettext.hpp"
 #include <vector>
 
 #include <string>
