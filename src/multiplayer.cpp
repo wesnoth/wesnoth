@@ -102,6 +102,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	xp_modifier_slider_->set_min(25);
 	xp_modifier_slider_->set_max(200);
 	xp_modifier_slider_->set_value(100);
+	xp_modifier_slider_->set_increment(10);
 	xp_modifier_slider_->set_help_string(_("The amount of experience a unit needs to advance"));
 
 	fog_game_.assign(new gui::button(disp_,_("Fog Of War"),gui::button::TYPE_CHECK));
