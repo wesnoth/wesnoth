@@ -42,6 +42,7 @@ public:
 		std::vector<int> enemies;
 		bool human;
 
+		int villages_per_scout;
 		double leader_value, village_value;
 
 		std::vector<target> targets;
@@ -69,6 +70,8 @@ public:
 
 	double leader_value() const;
 	double village_value() const;
+
+	int villages_per_scout() const;
 
 	std::vector<target>& targets();
 private:

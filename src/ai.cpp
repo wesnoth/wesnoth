@@ -231,8 +231,6 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		const int min_gold = 10 + (cash_flow < 0 ? -cash_flow*10 : 0);
 
-		//count the number of scouts we have currently
-
 		const int towers = map.towers().size();
 		int taken_towers = 0;
 		for(size_t j = 0; j != teams.size(); ++j) {
@@ -241,10 +239,10 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		const int neutral_towers = towers - taken_towers;
 
-		//we want at least one scout for every eight neutral towers
-		int scouts_wanted = neutral_towers/8;
-		if(scouts_wanted < 1)
-			scouts_wanted = 1;
+		//get scouts depending on how many neutral villages there are
+		int scouts_wanted = current_team.villages_per_scout() > 0 ?
+		                neutral_towers/current_team.villages_per_scout() : 0;
+
 		while(unit_types["scout"] < scouts_wanted) {
 			if(recruit(map,leader,"scout",gameinfo,team_num,current_team,
 			           min_gold,units,disp) == false)

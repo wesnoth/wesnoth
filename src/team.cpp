@@ -44,6 +44,13 @@ team::team_info::team_info(config& cfg)
 	else
 		human = false;
 
+	const std::string& scouts_val = cfg.values["villages_per_scout"];
+	if(scouts_val.empty()) {
+		villages_per_scout = 8;
+	} else {
+		villages_per_scout = atoi(scouts_val.c_str());
+	}
+
 	const std::string& leader_val = cfg.values["leader_value"];
 	if(leader_val.empty()) {
 		leader_value = 3.0;
@@ -170,6 +177,11 @@ double team::leader_value() const
 double team::village_value() const
 {
 	return info_.village_value;
+}
+
+int team::villages_per_scout() const
+{
+	return info_.villages_per_scout;
 }
 
 std::vector<team::target>& team::targets()
