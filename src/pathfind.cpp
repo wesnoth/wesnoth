@@ -507,8 +507,7 @@ double shortest_path_calculator::cost(const gamemap::location& loc, double so_fa
 		}
 	}
 
-	const double base_cost(
-	     unit_.movement_cost(map_,map_[loc.x][loc.y]));
+	int const base_cost = unit_.movement_cost(map_, map_[loc.x][loc.y]);
 
 	//supposing we had 2 movement left, and wanted to move onto a hex which
 	//takes 3 movement, it's going to cost us 5 movement in total, since we
@@ -516,12 +515,13 @@ double shortest_path_calculator::cost(const gamemap::location& loc, double so_fa
 	const int current_cost(static_cast<int>(so_far));
 
 	const int starting_movement = unit_.movement_left();
-	const int remaining_movement = current_cost <= starting_movement ?
-	             starting_movement - current_cost :
-	             (current_cost-starting_movement)%unit_.total_movement();
+	int remaining_movement = starting_movement - current_cost;
+	if (remaining_movement < 0) {
+		int total = unit_.total_movement();
+		remaining_movement = total - (-remaining_movement) % total;
+	}
 
-	const double additional_cost = int(base_cost) > remaining_movement ?
-	                               double(remaining_movement) : double(0);
+	int additional_cost = base_cost > remaining_movement ? remaining_movement : 0;
 
 	return base_cost + additional_cost;
 }
