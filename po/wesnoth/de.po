@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-01-28 22:56+0100\n"
-"PO-Revision-Date: 2005-01-21 00:45+0100\n"
+"PO-Revision-Date: 2005-01-29 01:05+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -8467,9 +8467,10 @@ msgstr "Netzwerkpartie eröffnen"
 msgid "Host a game without using a server"
 msgstr "Eine Mehrspielerpartie ohne Zuhilfenahme eines Servers eröffnen"
 
+# edited by Ivanovic
 #: src/game.cpp:1254
 msgid "Hotseat Game"
-msgstr "Heißer Stuhl"
+msgstr "Hotseat"
 
 #: src/game.cpp:1254
 msgid "Play a multiplayer game sharing the same machine"
@@ -9066,10 +9067,10 @@ msgstr "Sieg"
 msgid "You have emerged victorious!"
 msgstr "Ihr seid siegreich aus der Schlacht hervorgegangen!"
 
+# edited by Ivanovic
 #: src/playlevel.cpp:820
-#, fuzzy
 msgid "Scenario Report"
-msgstr "Szenariobeginn"
+msgstr "Szenario Statistiken"
 
 #: src/playlevel.cpp:841
 msgid ""
@@ -9506,9 +9507,3 @@ msgstr "Datei löschen"
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
 msgstr "Das Löschen der Datei ist fehlgeschlagen."
-
-#~ msgid "Game Over"
-#~ msgstr "Spielende"
-
-#~ msgid "The game is over."
-#~ msgstr "Das Spiel ist vorbei."
