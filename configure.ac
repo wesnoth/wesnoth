@@ -448,7 +448,7 @@ LIBS=$OLD_LIBS
 #######################################################################
 
 if test "x$lite" = "xno"; then
-    if test -e "music/wesnoth-1.ogg" ; then
+    if test -e "music/main_menu.ogg" ; then
         AC_LANG([C])
 	AC_MSG_CHECKING([for OGG support in SDL_mixer])
 
@@ -469,7 +469,7 @@ if test "x$lite" = "xno"; then
         {
 	    char *music;
 
-	    music = (char *) OGG_new("music/wesnoth-1.ogg");
+	    music = (char *) OGG_new("music/main_menu.ogg");
 	    if (music == NULL)
 		exit(1);
 	    exit(0);

@@ -8586,7 +8586,7 @@ LIBS=$OLD_LIBS
 #######################################################################
 
 if test "x$lite" = "xno"; then
-    if test -e "music/wesnoth-1.ogg" ; then
+    if test -e "music/main_menu.ogg" ; then
         ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -8623,7 +8623,7 @@ cat >>conftest.$ac_ext <<_ACEOF
         {
 	    char *music;
 
-	    music = (char *) OGG_new("music/wesnoth-1.ogg");
+	    music = (char *) OGG_new("music/main_menu.ogg");
 	    if (music == NULL)
 		exit(1);
 	    exit(0);
