@@ -43,6 +43,9 @@ namespace {
 	help::section toplevel; 
 	// All sections and topics not referenced from the default toplevel.
 	help::section hidden_sections; 
+
+	int last_num_encountered_units = -1;
+	int last_num_encountered_terrains = -1;
 								   
 	config dummy_cfg;
 	std::vector<std::string> empty_string_vector;
@@ -2369,7 +2372,13 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	gui::draw_dialog(xloc, yloc, width, height, disp, _("The Battle for Wesnoth Help"),
 					 NULL, &buttons_ptr, &restorer);
 
-	generate_contents();
+	if (preferences::encountered_units().size() != last_num_encountered_units
+		|| preferences::encountered_terrains().size() != last_num_encountered_terrains) {
+		// More units or terrains encountered, update the contents.
+		last_num_encountered_units = preferences::encountered_units().size();
+		last_num_encountered_terrains = preferences::encountered_terrains().size();
+		generate_contents();
+	}
 	try {
 		help_browser hb(disp, toplevel_sec);
 		hb.set_location(xloc + left_padding, yloc + top_padding);
