@@ -23,8 +23,6 @@
 #include "halo.hpp"
 #include "image.hpp"
 #include "log.hpp"
-#include "mouse.hpp"
-#include "preferences.hpp"
 #include "video.hpp"
 
 #define LOG_DP lg::info(lg::display)
