@@ -734,9 +734,13 @@ lobby::RESULT mp_connect::process()
 				// Choose a random leader type.  
 				std::vector<std::string> types = 
 					config::split((*real_sides[choice])["leader"]);
-				const int lchoice = rand() % types.size();
+				if (!types.empty()) {
+					const int lchoice = rand() % types.size();
+					(**side)["type"] = types[lchoice];
+				} else {
+					(**side)["type"] = (*real_sides[choice])["type"];
+				}
 
-				(**side)["type"] = types[lchoice];
 				(**side)["recruit"] = (*real_sides[choice])["recruit"];
 				(**side)["music"] = (*real_sides[choice])["music"];
 
