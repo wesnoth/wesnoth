@@ -1697,8 +1697,8 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 				image::locator image(*it);
 				// image.filename = "terrain/" + *it;
 
-				const surface surface(get_terrain(image,image_type,x,y));
-				if(surface != NULL) {
+				const surface surface(image::get_image(image, image_type));
+				if (!surface.null()) {
 					res.push_back(surface);
 				}
 			}
@@ -1723,58 +1723,14 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 			image::locator image = it->get_current_frame();
 			// image.filename = "terrain/" + image.filename;
 
-			const surface surface(get_terrain(image,image_type,x,y));
-			if(surface != NULL) {
+			const surface surface(image::get_image(image, image_type));
+			if (!surface.null()) {
 				res.push_back(surface);
 			}
 		}
 	} 
 
 	return res;
-}
-
-surface display::get_terrain(const image::locator& image, image::TYPE image_type,
-                                 int x, int y)
-{
-
-#if 0
-	//see if there is a time-of-day specific version of this image
-	if(search_tod) {
-		// image::locator tod_image = image;
-		// tod_image.filename = image.filename + "-" + tod.id + ".png";
-		const image::locator& tod_image = image::get_alternative(image, "-" + tod.id);
-		im = image::get_image(tod_image,image_type);
-
-		if(im != NULL) {
-			return im;
-		}
-	}
-#endif
-
-	// image::locator tmp = image;
-	// tmp.filename += ".png";
-
-	const surface im(image::get_image(image, image_type));
-	if(im == NULL) {
-		return im;
-	}
-
-#if 0
-	//see if this tile is illuminated to a different colour than it'd
-	//normally be displayed as
-	const int radj = tod_at.red - tod.red;
-	const int gadj = tod_at.green - tod.green;
-	const int badj = tod_at.blue - tod.blue;
-	
-	if((radj|gadj|badj) != 0 && im != NULL) {
-		const surface backup(im);
-		im = surface(adjust_surface_colour(im,radj,gadj,badj));
-		if(im == NULL)
-			ERR_DP << "could not adjust surface..\n";
-	}
-#endif
-	
-	return im;	
 }
 
 surface display::get_flag(gamemap::TERRAIN terrain, int x, int y)

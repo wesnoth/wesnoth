@@ -384,14 +384,6 @@ private:
 	std::vector<surface> get_terrain_images(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
 
-
-	//this surface must be freed by the caller
-	//surface get_terrain(gamemap::TERRAIN, image::TYPE type,
-	//                        int x, int y, const std::string& dir="");
-	//this surface must be freed by the caller
-	surface get_terrain(const image::locator &image, image::TYPE type,
-	                        int x, int y);
-
 	//this surface must be freed by the caller
 	surface get_flag(gamemap::TERRAIN, int x, int y);
 
