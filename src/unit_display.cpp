@@ -19,12 +19,12 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	const bool face_left = u.facing_left();
 
-	const double side_threshhold = 80.0;
+	const int side_threshhold = 80;
 
-	double xsrc = disp.get_location_x(a);
-	double ysrc = disp.get_location_y(a);
-	double xdst = disp.get_location_x(b);
-	double ydst = disp.get_location_y(b);
+	int xsrc = disp.get_location_x(a);
+	int ysrc = disp.get_location_y(a);
+	int xdst = disp.get_location_x(b);
+	int ydst = disp.get_location_y(b);
 
 	const gamemap::TERRAIN src_terrain = map.get_terrain(a);
 	const gamemap::TERRAIN dst_terrain = map.get_terrain(b);
@@ -35,16 +35,16 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	const double src_submerge = u.is_flying() ? 0 : int(map.get_terrain_info(src_terrain).unit_submerge());
 	const double dst_submerge = u.is_flying() ? 0 : int(map.get_terrain_info(dst_terrain).unit_submerge());
 
-	const double nsteps = disp.turbo() ? 3.0 : 10.0;
-	const double xstep = (xdst - xsrc)/nsteps;
-	const double ystep = (ydst - ysrc)/nsteps;
+	const int nsteps = disp.turbo() ? 3 : 10;
+	const double xstep = double(xdst - xsrc)/double(nsteps);
+	const double ystep = double(ydst - ysrc)/double(nsteps);
 
 	const int time_between_frames = disp.turbo() ? 2 : 10;
 	int ticks = SDL_GetTicks();
 
 	int skips = 0;
 
-	for(double i = 0.0; i < nsteps; i += 1.0) {
+	for(int i = 0; i < nsteps; ++i) {
 		events::pump();
 
 		scoped_sdl_surface image(image::get_image(u.type().image()));
@@ -62,28 +62,26 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		xdst = disp.get_location_x(b);
 		ydst = disp.get_location_y(b);
 
-		double xloc = xsrc + xstep*i;
-		double yloc = ysrc + ystep*i;
+		int xloc = xsrc + int(xstep*double(i));
+		int yloc = ysrc + int(ystep*double(i));
 
 		//we try to scroll the map if the unit is at the edge.
 		//keep track of the old position, and if the map moves at all,
 		//then recenter it on the unit
 		if(xloc < side_threshhold) {
-			disp.scroll(xloc - side_threshhold,0.0);
+			disp.scroll(xloc - side_threshhold,0);
 		}
 
 		if(yloc < side_threshhold) {
-			disp.scroll(0.0,yloc - side_threshhold);
+			disp.scroll(0,yloc - side_threshhold);
 		}
 
 		if(xloc + double(image->w) > disp.mapx() - side_threshhold) {
-			disp.scroll(((xloc + double(image->w)) -
-			        (disp.mapx() - side_threshhold)),0.0);
+			disp.scroll(((xloc + image->w) - (disp.mapx() - side_threshhold)),0);
 		}
 
 		if(yloc + double(image->h) > disp.y() - side_threshhold) {
-			disp.scroll(0.0,((yloc + double(image->h)) -
-			           (disp.y() - side_threshhold)));
+			disp.scroll(0,((yloc + image->h) - (disp.y() - side_threshhold)));
 		}
 
 		if(xsrc != disp.get_location_x(a) || ysrc != disp.get_location_y(a)) {
