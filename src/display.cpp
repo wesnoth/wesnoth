@@ -1302,7 +1302,11 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		draw_footstep(loc,xpos-xsrc,ypos-ysrc);
 	}
 
-	if(unit_image == NULL || energy_image == NULL || fogged(x,y))
+	if(unit_image == NULL || energy_image == NULL || fogged(x,y) ||
+			(teams_[currentTeam_].is_enemy(it->second.side()) && 
+			it->second.invisible(map_.underlying_terrain(map_[x][y]), 
+					status_.get_time_of_day().lawful_bonus,loc,
+					units_,teams_)))
 		return;
 
 	if(loc != hiddenUnit_) {
