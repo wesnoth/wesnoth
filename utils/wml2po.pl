@@ -72,7 +72,9 @@ foreach my $wmlfile (@wmlfiles) {
   my ($str, $key, $value,$strtype);
   while (<WML>) {
 #    print STDERR $_;
-    if (m/id\s*=\s*(.*)/) {
+    if (m/id\s*=\s*"(.*)"/) {
+      $id = $1;
+    } elsif (m/id\s*=\s*(.*)/) {
       $id = $1;
 #      print STDERR "--> $id\n";
 #     } elsif (m,\[/.*\],) {
