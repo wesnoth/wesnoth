@@ -6,7 +6,7 @@ CVS HEAD:
    * Cavalier
    * Drakonian Slave
    * Drakonian Fighter
-   * Grey Mage
+   * Silver Mage
    * Vampire Lady
  * multiplayer improvements:
    * balanced 'King of the Hill' map
@@ -17,7 +17,10 @@ CVS HEAD:
    * fixed mouse wheel and middle-click not working as within the game when used on map area
    * fixed BeOS crash in map editor
    * fixed the problem where the same sequence of random maps was generated
+ * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
  * fixed multiline text box not wrapping lines at word boundaries
+ * fixed loading/saving of multiplayer games that have a double-quote (") in the chat text.
+ * relocated weapon icons to their own hierarchy: images/attacks/
 
 Version 0.7.8:
  * changed experience gauge, it is now shown next to hitpoints bar
