@@ -423,7 +423,9 @@ void connect::side::resolve_random()
 			const int lchoice = rand() % types.size();
 			leader_ = types[lchoice];
 		} else {
-			throw config::error(_("Unable to find a leader type for faction ") + fact["name"]);
+			string_map i18n_symbols;
+			i18n_symbols["faction"] = fact["name"];
+			throw config::error(vgettext("Unable to find a leader type for faction $faction", i18n_symbols));
 		}
 	}
 }
@@ -914,7 +916,9 @@ void connect::load_game()
 	// Initialize the list of sides available for the current era.
 	const config* const era_cfg = game_config().find_child("era","id",era_);
 	if(era_cfg == NULL) {
-		throw config::error(_("Cannot find era ") + era_);
+		string_map i18n_symbols;
+		i18n_symbols["era"] = era_;
+		throw config::error(vgettext("Cannot find era $era", i18n_symbols));
 	}
 	era_sides_ = era_cfg->get_children("multiplayer_side");
 

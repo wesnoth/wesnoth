@@ -79,13 +79,13 @@ void default_map_generator::user_config(display& disp)
 	SDL_Rect dialog_rect = {xpos,ypos,width,height};
 	surface_restorer dialog_restorer(&disp.video(),dialog_rect);
 
-	const std::string& players_label = _("Players") + std::string(":");
-	const std::string& width_label = _("Width") + std::string(":");
-	const std::string& height_label = _("Height") + std::string(":");
-	const std::string& iterations_label = _("Iterations") + std::string(":");
-	const std::string& hillsize_label = _("Bump Size") + std::string(":");
-	const std::string& villages_label = _("Villages") + std::string(":");
-	const std::string& landform_label = _("Landform") + std::string(":");
+	const std::string& players_label = _("Players:");
+	const std::string& width_label = _("Width:");
+	const std::string& height_label = _("Height:");
+	const std::string& iterations_label = _("Iterations:");
+	const std::string& hillsize_label = _("Bump Size:");
+	const std::string& villages_label = _("Villages:");
+	const std::string& landform_label = _("Landform:");
 
 	SDL_Rect players_rect = font::draw_text(NULL,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_label,0,0);
 	SDL_Rect width_rect = font::draw_text(NULL,disp.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_label,0,0);

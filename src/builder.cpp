@@ -687,7 +687,7 @@ void terrain_builder::parse_config(const config &cfg)
 				loc.y = atoi((**tc)["y"].c_str());
 			} 
 			if(!(**tc)["loc"].empty()) {
-				std::vector<std::string> sloc = utils::split((**tc)["pos"]);
+				std::vector<std::string> sloc = utils::split((**tc)["loc"]);
 				if(sloc.size() == 2) {
 					loc.x = atoi(sloc[0].c_str());
 					loc.y = atoi(sloc[1].c_str());

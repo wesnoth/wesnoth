@@ -2008,7 +2008,7 @@ bool turn_info::has_friends() const
 
 void turn_info::speak()
 {
-	create_textbox(floating_textbox::TEXTBOX_MESSAGE,_("Message") + std::string(":"), has_friends() ? _("Send to allies only") : "", preferences::message_private());
+	create_textbox(floating_textbox::TEXTBOX_MESSAGE,_("Message:"), has_friends() ? _("Send to allies only") : "", preferences::message_private());
 }
 
 void turn_info::do_speak(const std::string& message, bool allies_only)
@@ -2458,7 +2458,7 @@ void turn_info::label_terrain()
 
 	std::string label = gui_.labels().get_label(last_hex_);
 	const int res = gui::show_dialog(gui_,NULL,_("Place Label"),"",gui::OK_CANCEL,
-	                                 NULL,NULL,_("Label") + std::string(":"),&label,
+	                                 NULL,NULL,_("Label:"),&label,
 					 map_labels::get_max_chars());
 	if(res == 0) {
 		gui_.labels().set_label(last_hex_,label);

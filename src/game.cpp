@@ -1360,7 +1360,7 @@ bool game_controller::change_language()
 	std::transform(langdefs.begin(),langdefs.end(),std::back_inserter(langs),languagedef_name);
 
 	const int res = gui::show_dialog(disp(),NULL,_("Language"),
-	                         _("Choose your preferred language") + std::string(":"),
+	                         _("Choose your preferred language:"),
 	                         gui::OK_CANCEL,&langs);
 	if(size_t(res) < langs.size()) {
 		::set_language(known_languages[res]);
