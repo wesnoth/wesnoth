@@ -159,7 +159,7 @@ void scrollbar::draw()
 		return;
 	}
 
-	if(grip_height_ >= location().h) {
+	if (grip_height_ > location().h) {
 		std::cerr << "abort draw scrollbar: grip too large\n";
 		return;
 	}

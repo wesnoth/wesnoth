@@ -80,7 +80,7 @@ private:
 	int max_height_, max_width_;
 	mutable int max_items_, item_height_;
 
-	void calculate_position();
+	void adjust_viewport_to_selection();
 	void key_press(SDLKey key);
 
 
@@ -99,7 +99,7 @@ private:
 	mutable std::vector<int> column_widths_;
 
 	surface buffer_;
-	int selected_;
+	size_t selected_;
 	bool click_selects_;
 	bool previous_button_;
 	bool drawn_;
@@ -110,7 +110,7 @@ private:
 	mutable int height_;
 	mutable int width_;
 
-	mutable int first_item_on_screen_;
+	mutable size_t first_item_on_screen_;
 	gui::button uparrow_, downarrow_;
 
 	bool double_clicked_;
@@ -136,13 +136,12 @@ private:
 	/// Set the vertical size of the scroll bar grip. The size should
 	/// vary inversely with the ratio of the number of items to the 
 	/// size of the viewing rect
-	void set_scrollbar_height();
+	void update_scrollbar_grip_height();
 	/// Update the current position of the scrollbar to reflect possible
 	/// changes in the menu. Return the new position of the scrollbar.
-	int set_scrollbar_position();
+	int update_scrollbar_position();
 	gui::scrollbar scrollbar_;
 	int scrollbar_width_;
-	int scrollbar_height_;
 
 	///variable which determines whether a numeric keypress should
 	///select an item on the dialog
@@ -152,6 +151,17 @@ private:
 	// counted as a first click in the "next" double click.
 	bool ignore_next_doubleclick_;
 	bool last_was_doubleclick_;
+
+	/// Set new items to show. If strip_spaces is false, spaces will
+	/// remain at the item edges.
+	void fill_items(const std::vector<std::string>& items, bool strip_spaces);
+
+	void move_selection_up(size_t dep);
+	void move_selection_down(size_t dep);
+	void move_selection(size_t pos);
+	void move_viewport_up(size_t dep);
+	void move_viewport_down(size_t dep);
+	void move_viewport(size_t pos);
 };
 
 }

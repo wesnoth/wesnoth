@@ -23,20 +23,26 @@ namespace gui {
 menu::menu(display& disp, const std::vector<std::string>& items,
            bool click_selects, int max_height, int max_width)
         : max_height_(max_height), max_width_(max_width), max_items_(-1), item_height_(-1),
-		  display_(&disp), x_(0), y_(0), cur_help_(-1,-1), help_string_(-1), buffer_(NULL),
-          selected_(click_selects ? -1:0), click_selects_(click_selects),
-          previous_button_(true), drawn_(false), show_result_(false),
-          height_(-1), width_(-1), first_item_on_screen_(0),
-		  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow-button"),
-          downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow-button"),
-		  scrollbar_(disp,this),  scrollbar_height_(0),
-		  double_clicked_(false), num_selects_(true),
-		  ignore_next_doubleclick_(false),
-		  last_was_doubleclick_(false)
+	  display_(&disp), x_(0), y_(0), cur_help_(-1,-1), help_string_(-1), buffer_(NULL),
+	  selected_(0), click_selects_(click_selects),
+	  previous_button_(true), drawn_(false), show_result_(false),
+	  height_(-1), width_(-1), first_item_on_screen_(0),
+	  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow-button"),
+	  downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow-button"),
+	  double_clicked_(false),
+	  scrollbar_(disp,this),
+	  num_selects_(true),
+	  ignore_next_doubleclick_(false),
+	  last_was_doubleclick_(false)
+{
+	fill_items(items, true);
+}
+
+void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();
 	    item != items.end(); ++item) {
-		items_.push_back(config::quoted_split(*item,',',false));
+		items_.push_back(config::quoted_split(*item, ',', !strip_spaces));
 
 		//make sure there is always at least one item
 		if(items_.back().empty())
@@ -75,39 +81,29 @@ void menu::create_help_strings()
 	}
 }
 
-// The scrollbar height depends on the number of visible items versus
-void menu::set_scrollbar_height()
+void menu::update_scrollbar_grip_height()
 {
-	int buttons_height = downarrow_.height() + uparrow_.height();
-	float pos_percent = (float)max_items_onscreen()/(float)items_.size();
-	scrollbar_height_ = (int)(pos_percent * (height()-buttons_height));
-
+	int h = scrollbar_.height();
+	size_t nb_items = items_.size(), max_items = max_items_onscreen();
+	int new_height = nb_items > max_items  ? h * max_items / nb_items : h;
 	int min_height = scrollbar_.get_minimum_grip_height();
 
-	if (scrollbar_height_ < min_height) 
-		scrollbar_height_ = min_height;
-	if (scrollbar_height_ > height()) {
-		std::cerr << "Strange. For some reason I want my scrollbar" << 
-			      " to be larger than me!\n\n";
-		std::cerr << "pos_percent=" << pos_percent << " height()=" << height()
-				  << std::endl;
-		scrollbar_height_ = height() - buttons_height;
-	}
-	scrollbar_.set_grip_height(scrollbar_height_);
+	if (new_height < min_height) 
+		new_height = min_height;
+	scrollbar_.set_grip_height(new_height);
 }
 
-int menu::set_scrollbar_position() {
-	const int last_top_idx = items_.size() - max_items_onscreen();
-	// note to self :) - scrollbar_height_ is really grip_height.
-	int max_scroll_position = scrollbar_.location().h-scrollbar_height_;
-	int new_scrollpos = 0;
-	if (show_scrollbar() && last_top_idx > 0) {
-		new_scrollpos = (first_item_on_screen_ * max_scroll_position) / last_top_idx;
-		if (new_scrollpos > 0 && new_scrollpos < max_scroll_position) {
-			new_scrollpos++;
-		}
-		scrollbar_.set_grip_position(new_scrollpos);
-	}
+int menu::update_scrollbar_position()
+{
+	size_t nb_items = items_.size(), max_items = max_items_onscreen();
+	int new_scrollpos;
+	if (nb_items > max_items) {
+		int max_scroll_position = scrollbar_.height() - scrollbar_.get_grip_height();
+		size_t last_top_idx = nb_items - max_items;
+		new_scrollpos = (first_item_on_screen_ * max_scroll_position + last_top_idx - 1) / last_top_idx;
+	} else
+		new_scrollpos = 0;
+	scrollbar_.set_grip_position(new_scrollpos);
 	return new_scrollpos;
 }
 
@@ -162,7 +158,7 @@ void menu::set_loc(int x, int y)
 								scr_width, 
 								height()-downarrow_.height()-uparrow_.height()};
 		scrollbar_.set_location(scroll_rect);
-		set_scrollbar_height();
+		update_scrollbar_grip_height();
 
 		uparrow_.set_location(x_ + menu_width,y_);
 		downarrow_.set_location(x_+ menu_width,scrollbar_.location().y + scrollbar_.location().h);
@@ -204,18 +200,20 @@ void menu::change_item(int pos1, int pos2,std::string str)
 
 void menu::erase_item(size_t index)
 {
-	if(index < items_.size()) {
-		clear_item(items_.size()-1);
-		items_.erase(items_.begin() + index);
-		itemRects_.clear();
-		if(size_t(selected_) >= items_.size()) {
-			selected_ = int(items_.size()-1);
-		}
+	size_t nb_items = items_.size();
+	if (index >= nb_items)
+		return;
 
-		calculate_position();
+	clear_item(nb_items - 1);
+	items_.erase(items_.begin() + index);
+	if (selected_ >= nb_items - 1)
+		selected_ = nb_items - 2;
 
-		drawn_ = false;
-	}
+	update_scrollbar_grip_height();
+	adjust_viewport_to_selection();
+	update_scrollbar_position();
+	itemRects_.clear();
+	drawn_ = false;
 }
 
 void menu::set_items(const std::vector<std::string>& items, bool strip_spaces,
@@ -228,38 +226,17 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces,
 	width_ = -1; // Force recalculation of the width.
 	max_items_ = -1; // Force recalculation of the max items.
 	item_height_ = -1; // Force recalculation of the item height.
-	// Scrollbar and buttons will be reanabled if they are needed.
+	// Scrollbar and buttons will be reenabled if they are needed.
 	scrollbar_.enable(false);
 	uparrow_.hide(true);
 	downarrow_.hide(true);
-	selected_ = click_selects_ ? -1:0;
-	for (std::vector<std::string>::const_iterator item = items.begin();
-		 item != items.end(); ++item) {
-		items_.push_back(config::quoted_split(*item,',',!strip_spaces));
-
-		//make sure there is always at least one item
-		if(items_.back().empty())
-			items_.back().push_back(" ");
-
-		//if the first character in an item is an asterisk,
-		//it means this item should be selected by default
-		std::string& first_item = items_.back().front();
-		if(first_item.empty() == false && first_item[0] == '*') {
-			selected_ = items_.size()-1;
-			first_item.erase(first_item.begin());
-		}
-	}
-	if (keep_viewport) {
-		if (first_item_on_screen_ >= items_.size() - max_items_onscreen()) {
-			first_item_on_screen_ = items_.size() - max_items_onscreen();
-		}
-	}
-	else {
+	selected_ = 0;
+	fill_items(items, strip_spaces);
+	if (!keep_viewport)
 		first_item_on_screen_ = 0;
-	}
 	set_loc(x_, y_); // Force some more updating.
-	calculate_position();
-	set_scrollbar_position();
+	adjust_viewport_to_selection();
+	update_scrollbar_position();
 	drawn_ = false;
 }
 
@@ -296,89 +273,94 @@ size_t menu::max_items_onscreen() const
 	return max_items_ = n;
 }
 
-void menu::calculate_position()
+void menu::adjust_viewport_to_selection()
 {
 	if(click_selects_)
 		return;
 
-	if(selected_ < first_item_on_screen_) {
-		first_item_on_screen_ = selected_;
-		itemRects_.clear();
-		drawn_ = false;
-	}
-	
-	if(selected_ >= first_item_on_screen_ + int(max_items_onscreen())) {
-		first_item_on_screen_ = selected_ - (max_items_onscreen() - 1);
-		itemRects_.clear();
-		drawn_ = false;
-	}
+	size_t nb_items = items_.size(), max_items = max_items_onscreen();
+	size_t new_first_item = first_item_on_screen_;
+
+	if (selected_ < first_item_on_screen_)
+		new_first_item = selected_;
+	else if (selected_ >= first_item_on_screen_ + max_items)
+		new_first_item = selected_ - (max_items - 1);
+	if (nb_items <= max_items)
+		new_first_item = 0;
+	else if (new_first_item > nb_items - max_items)
+		new_first_item = nb_items - max_items;
+
+	move_viewport(new_first_item);
+}
+
+void menu::move_selection_up(size_t dep)
+{
+	move_selection(selected_ > dep ? selected_ - dep : 0);
+}
+
+void menu::move_selection_down(size_t dep)
+{
+	size_t nb_items = items_.size();
+	move_selection(selected_ + dep >= nb_items ? nb_items - 1 : selected_ + dep);
+}
+
+void menu::move_selection(size_t new_selected)
+{
+	if (new_selected == selected_ || new_selected >= items_.size())
+		return;
+
+	undrawn_items_.insert(selected_);
+	undrawn_items_.insert(new_selected);
+	selected_ = new_selected;
+	adjust_viewport_to_selection();
+}
+
+void menu::move_viewport_up(size_t dep)
+{
+	move_viewport(first_item_on_screen_ > dep ? first_item_on_screen_ - dep : 0);
+}
+
+void menu::move_viewport_down(size_t dep)
+{
+	size_t nb_items = items_.size(), max_items = max_items_onscreen();
+	if (nb_items <= max_items)
+		return;
+	size_t last_top_idx = nb_items - max_items;
+	move_viewport(first_item_on_screen_ + dep >= last_top_idx ? last_top_idx : first_item_on_screen_ + dep);
+}
+
+void menu::move_viewport(size_t new_first_item)
+{
+	if (new_first_item == first_item_on_screen_)
+		return;
+
+	first_item_on_screen_ = new_first_item;
+	update_scrollbar_position();
+	itemRects_.clear();
+	drawn_ = false;
 }
 
 void menu::key_press(SDLKey key)
 {
-	switch(key) {
-		case SDLK_UP: {
-			if(!click_selects_ && selected_ > 0) {
-				--selected_;
-				calculate_position();
-				undrawn_items_.insert(selected_);
-				undrawn_items_.insert(selected_+1);
-			}
-
+	if (!click_selects_) {
+		switch(key) {
+		case SDLK_UP:
+			move_selection_up(1);
+			break;
+		case SDLK_DOWN:
+			move_selection_down(1);
+			break;
+		case SDLK_PAGEUP:
+			move_selection_up(max_items_onscreen());
+			break;
+		case SDLK_PAGEDOWN:
+			move_selection_down(max_items_onscreen());
 			break;
 		}
-
-		case SDLK_DOWN: {
-			if(!click_selects_ && selected_ < int(items_.size())-1) {
-				++selected_;
-				calculate_position();
-				undrawn_items_.insert(selected_);
-				undrawn_items_.insert(selected_-1);
-			}
-
-			break;
-		}
-
-		case SDLK_PAGEUP: {
-			if(!click_selects_) {
-				selected_ -= max_items_onscreen();
-				if(selected_ < 0)
-					selected_ = 0;
-				
-				calculate_position();
-				drawn_ = false;
-			}
-
-			break;
-		}
-
-		case SDLK_PAGEDOWN: {
-			if(!click_selects_) {
-				selected_ += max_items_onscreen();
-				if(selected_ >= int(items_.size()))
-					selected_ = int(items_.size())-1;
-
-				calculate_position();
-				drawn_ = false;
-			}
-
-			break;
-		}
-
-		default:
-			break;
 	}
 
-	if(key >= SDLK_1 && key <= SDLK_9 && num_selects_) {
-		const int pos = key - SDLK_1;
-		if(size_t(pos) < items_.size()) {
-			undrawn_items_.insert(selected_);
-			selected_ = pos;
-			calculate_position();
-			undrawn_items_.insert(selected_);
-
-		}
-	}
+	if (num_selects_ && key >= SDLK_1 && key <= SDLK_9)
+		move_selection(key - SDLK_1);
 }
 
 void menu::handle_event(const SDL_Event& event)
@@ -400,9 +382,7 @@ void menu::handle_event(const SDL_Event& event)
 
 		const int item = hit(x,y);
 		if(item != -1) {
-			undrawn_items_.insert(selected_);
-			selected_ = item;
-			undrawn_items_.insert(selected_);
+			move_selection(item);
 
 			if(click_selects_) {
 				show_result_ = true;
@@ -431,104 +411,47 @@ void menu::handle_event(const SDL_Event& event)
 			}
 		}
 	} else if(event.type == SDL_MOUSEMOTION && click_selects_) { 
-
 		const int item = hit(event.motion.x,event.motion.y);
-		if(item != selected_) {
-			selected_ = item;
-			drawn_ = false;
-		}	
+		if (item != -1)
+			move_selection(item);
 	} else if(event.type == SDL_MOUSEBUTTONDOWN 
 			&& event.button.button == SDL_BUTTON_WHEELDOWN) {
-			if(first_item_on_screen_+max_items_onscreen()<items_.size()) {
-				++first_item_on_screen_;
-				if (selected_<first_item_on_screen_)
-					selected_=first_item_on_screen_;
-				itemRects_.clear();
-				drawn_ = false;
-			}
-	} else if(event.type ==	SDL_MOUSEBUTTONDOWN
+		move_viewport_down(1);
+	} else if(event.type == SDL_MOUSEBUTTONDOWN
 			&& event.button.button == SDL_BUTTON_WHEELUP) {
-			if(first_item_on_screen_>0) {
-				--first_item_on_screen_;
-				if (selected_>=first_item_on_screen_+int(max_items_onscreen()))
-					selected_=first_item_on_screen_+max_items_onscreen()-1;
-				itemRects_.clear();
-				drawn_ = false;
-			}
+		move_viewport_up(1);
 	}
 }
 
-int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
-                  bool page_up, bool page_down, int select_item)
+int menu::process(int x, int y, bool button, bool, bool, bool, bool, int)
 {
-	static int last_scroll_position = 0;
-	bool scroll_in_use = false;
-	const int last_top_idx = items_.size() - max_items_onscreen();
-	int max_scroll_position = scrollbar_.location().h-scrollbar_height_;
-	if(show_scrollbar()) {
-		const bool up = uparrow_.process(x,y,button);
-		if(up && first_item_on_screen_ > 0) {
-			--first_item_on_screen_;
-			itemRects_.clear();
-			drawn_ = false;
-		}
-		const bool down = downarrow_.process(x,y,button);
-		if(down && first_item_on_screen_ < last_top_idx) {
-			++first_item_on_screen_;
-			itemRects_.clear();
-			drawn_ = false;
-		}
+	int max_scroll_position = scrollbar_.height() - scrollbar_.get_grip_height();
+	size_t nb_items = items_.size(), max_items = max_items_onscreen();
+	if (nb_items > max_items) {
+		if (uparrow_.process(x, y, button))
+			move_viewport_up(1);
+		if (downarrow_.process(x, y, button))
+			move_viewport_down(1);
 
 		scrollbar_.process();
 		int scroll_position = scrollbar_.get_grip_position();
-		int new_first_item; 
-		if (scroll_position != last_scroll_position) {
-			last_scroll_position = scroll_position;
-			if (scroll_position == 0) {
-				
-				new_first_item = 0;
-			}
-			else if (scroll_position > (max_scroll_position)) {
-				new_first_item = last_top_idx;
-			}
-			else {
-				new_first_item = (scroll_position * last_top_idx) /
-									max_scroll_position;
-			}
-			if (new_first_item != first_item_on_screen_) {
-				scroll_in_use = true;
-				first_item_on_screen_ = new_first_item;
-				itemRects_.clear();
-				drawn_ = false;
-			}
-		}
-		else {
-			int groove = scrollbar_.groove_clicked();
-			if (groove == -1) {
-				first_item_on_screen_ -= max_items_onscreen();
-				if (first_item_on_screen_ <= 0) {
-					first_item_on_screen_ = 0;
-				}
-				itemRects_.clear();
-				drawn_ = false;
-			}
-			else if (groove == 1) {
-				first_item_on_screen_ += max_items_onscreen();
-				if (first_item_on_screen_ > last_top_idx) {
-					first_item_on_screen_ = last_top_idx;
-				}
-				itemRects_.clear();
-				drawn_ = false;
-			}
-		}
+		size_t last_top_idx = nb_items - max_items;
+		size_t new_first_item = (scroll_position * last_top_idx) / max_scroll_position;
+		move_viewport(new_first_item >= last_top_idx ? last_top_idx : new_first_item);
+		int groove = scrollbar_.groove_clicked();
+		if (groove == -1)
+			move_viewport_up(max_items);
+		else if (groove == 1)
+			move_viewport_down(max_items);
 	}
 
-	if(!drawn_) {
-		if (!scroll_in_use && show_scrollbar()) {
-			last_scroll_position = set_scrollbar_position();
-		}
+	// update enabled/disabled status for up/down buttons and the scrollbar
+	scrollbar_.enable(nb_items > max_items);
+	uparrow_.hide(first_item_on_screen_ == 0);
+	downarrow_.hide(nb_items <= max_items || first_item_on_screen_ >= nb_items - max_items);
+
+	if (!drawn_)
 		draw();
-	}
 
 	if(show_result_) {
 		show_result_ = false;
@@ -555,7 +478,7 @@ void menu::set_numeric_keypress_selection(bool value)
 	num_selects_ = value;
 }
 
-void menu::scroll(int pos)
+void menu::scroll(int)
 {
 }
 
@@ -596,8 +519,6 @@ const std::vector<int>& menu::column_widths() const
 	if(column_widths_.empty()) {
 		for(size_t row = 0; row != items_.size(); ++row) {
 			for(size_t col = 0; col != items_[row].size(); ++col) {
-				static const SDL_Rect area = {0,0,display_->x(),display_->y()};
-
 				const SDL_Rect res = item_size(items_[row][col]);
 
 				if(col == column_widths_.size()) {
@@ -700,12 +621,6 @@ void menu::draw()
 	undrawn_items_.clear();
 	drawn_ = true;
 
-	// update enabled/disabled status for up/down buttons
-	if(show_scrollbar()) {
-		uparrow_.hide(first_item_on_screen_ == 0);
-		downarrow_.hide(first_item_on_screen_ >= items_.size() - max_items_onscreen());
-	}
-
 	for(size_t i = 0; i != items_.size(); ++i)
 		draw_item(i);
 
@@ -802,7 +717,7 @@ size_t menu::get_item_height_internal(int item) const
 	return res;
 }
 
-size_t menu::get_item_height(int item) const
+size_t menu::get_item_height(int) const
 {
 	if(item_height_ != -1)
 		return size_t(item_height_);
