@@ -74,7 +74,7 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 	current_transfer_stats.second = len;
 
 	while(beg != end) {
-		const int len = SDLNet_TCP_Recv(sock,&buf[0],end - beg);
+		const int len = SDLNet_TCP_Recv(sock,beg,end - beg);
 		if(len <= 0) {
 			return SOCKET_ERROR;
 		}
