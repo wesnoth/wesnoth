@@ -572,17 +572,14 @@ std::vector<topic> generate_unit_topics() {
 				for (std::vector<std::string>::const_iterator advance_it = next_units.begin();
 					 advance_it != next_units.end(); advance_it++) {
 					std::string unit_id = *advance_it;
-					std::string lang_unit = gettext(unit_id.c_str());
-					// Remove the spaces, which will create the ID to
-					// reference to. This relies a bit on that we know
-					// that unit_type::id() does this.
-					unit_id.erase(std::remove(unit_id.begin(), unit_id.end(), ' '),
-								  unit_id.end());
-					std::string ref_id = std::string("unit_") + unit_id;
-					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit)
-					   << "'</ref>";
-					if (advance_it + 1 != next_units.end()) {
-						ss << ", ";
+					std::map<std::string,unit_type>::iterator new_type = game_info->unit_types.find(unit_id);
+				 	if(new_type != game_info->unit_types.end()) {
+						std::string lang_unit = new_type->second.language_name();
+						std::string ref_id = std::string("unit_") + new_type->second.id();
+						ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
+						if (advance_it + 1 != next_units.end()) {
+							ss << ", ";
+						}
 					}
 				}
 				ss << "\n";
