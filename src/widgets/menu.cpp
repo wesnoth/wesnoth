@@ -9,7 +9,6 @@
 #include <numeric>
 
 namespace {
-const size_t max_menu_items = 18;
 const size_t menu_font_size = 16;
 const size_t menu_cell_padding = 10;
 }
@@ -17,8 +16,9 @@ const size_t menu_cell_padding = 10;
 namespace gui {
 
 menu::menu(display& disp, const std::vector<std::string>& items,
-           bool click_selects)
-        : display_(&disp), x_(0), y_(0), buffer_(NULL),
+           bool click_selects, int max_height)
+        : max_height_(max_height), max_items_(-1), item_height_(-1),
+		  display_(&disp), x_(0), y_(0), buffer_(NULL),
           selected_(click_selects ? -1:0), click_selects_(click_selects),
           previous_button_(true), drawn_(false), show_result_(false),
           height_(-1), width_(-1), first_item_on_screen_(0),
@@ -48,11 +48,11 @@ int menu::height() const
 {
 	if(height_ == -1) {
 		height_ = 0;
-		for(size_t i = 0; i != items_.size() && i != max_menu_items; ++i) {
+		for(size_t i = 0; i != items_.size() && i != max_items_onscreen(); ++i) {
 			height_ += get_item_rect(i).h;
 		}
 
-		if(items_.size() > max_menu_items) {
+		if(items_.size() > max_items_onscreen()) {
 			height_ += uparrow_.height() + downarrow_.height();
 		}
 	}
@@ -83,7 +83,7 @@ void menu::set_loc(int x, int y)
 	SDL_Surface* const screen = display_->video().getSurface();
 	buffer_.assign(get_surface_portion(screen, portion));
 
-	if(items_.size() > max_menu_items) {
+	if(items_.size() > max_items_onscreen()) {
 		uparrow_.set_x(x_);
 		uparrow_.set_y(y_);
 		downarrow_.set_x(x_);
@@ -110,6 +110,35 @@ void menu::change_item(int pos1, int pos2,std::string str)
  items_[pos1][pos2] = str;
 }
 
+size_t menu::max_items_onscreen() const
+{
+	std::cerr << "calculating max items on screen...\n";
+	if(max_items_ != -1) {
+		std::cerr << "cached: " << max_items_ << "\n";
+		return size_t(max_items_);
+	}
+
+	const size_t max_height = max_height_ == -1 ? (display_->y()*7)/10 : max_height_;
+	std::vector<int> heights;
+	size_t n;
+	for(n = 0; n != items_.size(); ++n) {
+		heights.push_back(get_item_height(n));
+	}
+
+	std::sort(heights.begin(),heights.end(),std::greater<int>());
+	size_t sum = 0;
+	for(n = 0; n != items_.size() && sum < max_height; ++n) {
+		sum += heights[n];
+	}
+
+	if(sum > max_height && n > 1)
+		--n;
+
+	std::cerr << "returning max items: " << n << " (" << sum << ")\n";
+
+	return max_items_ = n;
+}
+
 void menu::calculate_position()
 {
 	if(click_selects_)
@@ -118,8 +147,8 @@ void menu::calculate_position()
 	if(selected_ < first_item_on_screen_) {
 		first_item_on_screen_ = selected_;
 		itemRects_.clear();
-	} else if(selected_ >= first_item_on_screen_ + int(max_menu_items)) {
-		first_item_on_screen_ = selected_ - (max_menu_items - 1);
+	} else if(selected_ >= first_item_on_screen_ + int(max_items_onscreen())) {
+		first_item_on_screen_ = selected_ - (max_items_onscreen() - 1);
 		itemRects_.clear();
 	}
 }
@@ -149,7 +178,7 @@ void menu::key_press(SDLKey key)
 
 		case SDLK_PAGEUP: {
 			if(!click_selects_) {
-				selected_ -= max_menu_items;
+				selected_ -= max_items_onscreen();
 				if(selected_ < 0)
 					selected_ = 0;
 				
@@ -162,7 +191,7 @@ void menu::key_press(SDLKey key)
 
 		case SDLK_PAGEDOWN: {
 			if(!click_selects_) {
-				selected_ += max_menu_items;
+				selected_ += max_items_onscreen();
 				if(selected_ >= int(items_.size()))
 					selected_ = int(items_.size())-1;
 
@@ -226,7 +255,7 @@ void menu::handle_event(const SDL_Event& event)
 		}	
 	} else if(event.type == SDL_MOUSEBUTTONDOWN 
 			&& event.button.button == SDL_BUTTON_WHEELDOWN) {
-			if(first_item_on_screen_+max_menu_items<items_.size()) {
+			if(first_item_on_screen_+max_items_onscreen()<items_.size()) {
 				++first_item_on_screen_;
 				if (selected_<first_item_on_screen_)
 					selected_=first_item_on_screen_;
@@ -237,8 +266,8 @@ void menu::handle_event(const SDL_Event& event)
 			&& event.button.button == SDL_BUTTON_WHEELUP) {
 			if(first_item_on_screen_>0) {
 				--first_item_on_screen_;
-				if (selected_>=first_item_on_screen_+int(max_menu_items))
-					selected_=first_item_on_screen_+max_menu_items-1;
+				if (selected_>=first_item_on_screen_+int(max_items_onscreen()))
+					selected_=first_item_on_screen_+max_items_onscreen()-1;
 				itemRects_.clear();
 				drawn_ = false;
 			}
@@ -248,7 +277,7 @@ void menu::handle_event(const SDL_Event& event)
 int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
                   bool page_up, bool page_down, int select_item)
 {
-	if(items_.size() > max_menu_items) {
+	if(items_.size() > max_items_onscreen()) {
 		const bool up = uparrow_.process(x,y,button);
 		if(up && first_item_on_screen_ > 0) {
 			--first_item_on_screen_;
@@ -256,7 +285,7 @@ int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 			drawn_ = false;
 		}
 		const bool down = downarrow_.process(x,y,button);
-		if(down && first_item_on_screen_ + max_menu_items < items_.size()) {
+		if(down && first_item_on_screen_ + max_items_onscreen() < items_.size()) {
 			++first_item_on_screen_;
 			itemRects_.clear();
 			drawn_ = false;
@@ -391,7 +420,7 @@ SDL_Rect menu::get_item_rect(int item) const
 {
 	const SDL_Rect empty_rect = {0,0,0,0};
 	if(item < first_item_on_screen_ ||
-	   size_t(item) >= first_item_on_screen_ + max_menu_items) {
+	   size_t(item) >= first_item_on_screen_ + max_items_onscreen()) {
 		return empty_rect;
 	}
 
@@ -407,14 +436,7 @@ SDL_Rect menu::get_item_rect(int item) const
 
 	static const SDL_Rect area = {0,0,display_->x(),display_->y()};
 
-	SDL_Rect res = {x_,y,0,0};
-
-	for(size_t n = 0; n != items_[item].size(); ++n) {
-		SDL_Rect rect = item_size(items_[item][n]);
-		res.h = maximum<int>(rect.h,res.h);
-	}
-
-	res.w = width();
+	SDL_Rect res = {x_,y,width(),get_item_height(item)};
 
 	//only insert into the cache if the menu's co-ordinates have
 	//been initialized
@@ -424,9 +446,33 @@ SDL_Rect menu::get_item_rect(int item) const
 	return res;
 }
 
+size_t menu::get_item_height_internal(int item) const
+{
+	size_t res = 0;
+	for(size_t n = 0; n != items_[item].size(); ++n) {
+		SDL_Rect rect = item_size(items_[item][n]);
+		res = maximum<int>(rect.h,res);
+	}
+
+	return res;
+}
+
+size_t menu::get_item_height(int item) const
+{
+	if(item_height_ != -1)
+		return size_t(item_height_);
+
+	size_t max_height = 0;
+	for(size_t n = 0; n != items_.size(); ++n) {
+		max_height = maximum<int>(max_height,get_item_height_internal(n));
+	}
+
+	return item_height_ = max_height;
+}
+
 int menu::items_start() const
 {
-	if(items_.size() > max_menu_items)
+	if(items_.size() > max_items_onscreen())
 		return uparrow_.height();
 	else
 		return 0;
@@ -434,7 +480,7 @@ int menu::items_start() const
 
 int menu::items_end() const
 {
-	if(items_.size() > max_menu_items)
+	if(items_.size() > max_items_onscreen())
 		return height() - downarrow_.height();
 	else
 		return height();

@@ -18,7 +18,7 @@ class menu : public events::handler
 {
 public:
 	menu(display& disp, const std::vector<std::string>& items,
-	     bool click_selects=false);
+	     bool click_selects=false, int max_height=-1);
 
 	int height() const;
 	int width() const;
@@ -39,6 +39,11 @@ public:
 	bool double_clicked() const;
 
 private:
+	size_t max_items_onscreen() const;
+
+	int max_height_;
+	mutable int max_items_, item_height_;
+
 	void calculate_position();
 	void key_press(SDLKey key);
 
@@ -73,6 +78,8 @@ private:
 	mutable std::map<int,SDL_Rect> itemRects_;
 
 	SDL_Rect get_item_rect(int item) const;
+	size_t get_item_height_internal(int item) const;
+	size_t get_item_height(int item) const;
 	int items_start() const;
 
 	int items_end() const;

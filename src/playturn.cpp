@@ -1152,7 +1152,7 @@ void turn_info::recruit()
 
 		std::stringstream description;
 
-		description << prefix << type.language_name() << ","
+		description << "&" << type.image() << "," << prefix << type.language_name() << ","
 		            << prefix << type.cost() << " gold";
 		items.push_back(description.str());
 		sample_units.push_back(unit(&type,team_num_));
@@ -1252,7 +1252,7 @@ void turn_info::recall()
 		  unit != state_of_game_.available_units.end(); ++unit) {
 			std::stringstream option;
 			const std::string& description = unit->description().empty() ? "-" : unit->description();
-			option << unit->type().language_name() << "," << description << ","
+			option << "&" << unit->type().image() << "," << unit->type().language_name() << "," << description << ","
 			       << string_table["level"] << ": "
 			       << unit->type().level() << ","
 			       << string_table["xp"] << ": "

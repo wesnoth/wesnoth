@@ -43,7 +43,8 @@ void advance_unit(const game_data& info,
 	for(std::vector<std::string>::const_iterator op = options.begin();
 	    op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
-		lang_options.push_back(sample_units.back().type().language_name());
+		const unit_type& type = sample_units.back().type();
+		lang_options.push_back("&" + type.image() + "," + type.language_name());
 	}
 
 	int res = 0;
