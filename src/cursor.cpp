@@ -61,7 +61,7 @@ SDL_Cursor* create_cursor(SDL_Surface* surface)
 SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL };
 
 //this array must have members corresponding to cursor::CURSOR_TYPE enum members
-const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png" };
+const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png" };
 
 cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
 
