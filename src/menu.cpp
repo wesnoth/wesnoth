@@ -51,7 +51,9 @@ void draw_rectangle(int x, int y, int w, int h, short colour,
 		return;
 	}
 
-	short* top_left = reinterpret_cast<short*>(target->pixels) + target->w*y+x;
+	surface_lock dstlock(target);
+
+	short* top_left = dstlock.pixels() + target->w*y+x;
 	short* top_right = top_left + w;
 	short* bot_left = top_left + target->w*h;
 	short* bot_right = bot_left + w;
@@ -76,8 +78,10 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 		return;
 	}
 
+	surface_lock dstlock(target);
+
 	const SDL_PixelFormat* const fmt = target->format;
-	short* p = reinterpret_cast<short*>(target->pixels) + target->w*y + x;
+	short* p = dstlock.pixels() + target->w*y + x;
 	while(h > 0) {
 		short* beg = p;
 		short* const end = p + w;

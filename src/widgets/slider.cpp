@@ -57,8 +57,8 @@ void slider::draw()
 
 	SDL_BlitSurface(buffer_,NULL,screen,&area_);
 
-	display::Pixel* const pixels =
-	                   reinterpret_cast<display::Pixel*>(screen->pixels);
+	surface_lock screen_lock(screen);
+	display::Pixel* const pixels = screen_lock.pixels();
 	display::Pixel* const line_dest = pixels + screen->w*(area_.y+area_.h/3) +
 	                                           area_.x + hpadding;
 	std::fill(line_dest,line_dest+area_.w-hpadding*2,0xFFFF);

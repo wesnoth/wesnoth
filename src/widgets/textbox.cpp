@@ -56,9 +56,8 @@ void textbox::draw_cursor(int pos) const
 	static const short cursor_colour = 0xFFFF;
 
 	if(show_cursor) {
-		short* dst = reinterpret_cast<short*>(
-		               disp_.video().getSurface()->pixels) + y_*disp_.x() +
-					   x_ + pos;
+		surface_lock lock(disp_.video().getSurface());
+		short* dst = lock.pixels() + y_*disp_.x() + x_ + pos;
 
 		for(int i = 0; i != height(); ++i, dst += disp_.x()) {
 			*dst = cursor_colour;

@@ -163,8 +163,10 @@ bool button::hit(int x, int y) const
 		x -= x_;
 		y -= y_;
 		int row_width = image_->w + is_odd(image_->w);
+
+		surface_lock lock(image_);
 	
-		if(*(reinterpret_cast<short*>(image_->pixels)+y*row_width+x) != 0)
+		if(*(lock.pixels()+y*row_width+x) != 0)
 			return true;
 	}
 

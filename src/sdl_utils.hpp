@@ -81,4 +81,28 @@ struct pixel_data
 	int r, g, b;
 };
 
+struct surface_lock
+{
+	surface_lock(SDL_Surface* surface) : surface_(surface), locked_(false)
+	{
+		if(SDL_MUSTLOCK(surface_)) {
+			const int res = SDL_LockSurface(surface_);
+			if(res == 0) {
+				locked_ = true;
+			}
+		}
+	}
+
+	~surface_lock()
+	{
+		if(locked_)
+			SDL_UnlockSurface(surface_);
+	}
+
+	short* pixels() { return reinterpret_cast<short*>(surface_->pixels); }
+private:
+	SDL_Surface* const surface_;
+	bool locked_;
+};
+
 #endif

@@ -93,7 +93,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	SDL_Surface* const disp = screen_.getSurface();
 	const int length = disp->w*disp->h;
 
-	short* const pixels = reinterpret_cast<short*>(disp->pixels);
+	surface_lock lock(disp);
+	short* const pixels = lock.pixels();
 	std::fill(pixels,pixels+length,0);
 }
 
@@ -744,7 +745,9 @@ void display::draw_minimap(int x, int y, int w, int h)
 
 	const Pixel boxcolour = Pixel(SDL_MapRGB(surface->format,0xFF,0xFF,0xFF));
 	SDL_Surface* const screen = screen_.getSurface();
-	short* const data = reinterpret_cast<short*>(screen->pixels);
+
+	surface_lock lock(screen);
+	short* const data = lock.pixels();
 	short* const start_top = data + (y+ybox)*screen->w + (x+xbox);
 	short* const end_top = start_top + wbox;
 
@@ -1048,16 +1051,17 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		}
 
 		const int srcy = minimum<int>(yloc,surface->h-1);
-		short* startsrc = reinterpret_cast<short*>(surface->pixels) +
-			           srcy*(surface->w+xpad) + (xoffset > xsrc ? xoffset:xsrc);
+
+		surface_lock srclock(surface);
+		short* startsrc = srclock.pixels() + srcy*(surface->w+xpad) +
+		                  (xoffset > xsrc ? xoffset:xsrc);
 		short* endsrc = startsrc + len;
 
-		assert(startsrc >= reinterpret_cast<short*>(surface->pixels) &&
-		       endsrc <= reinterpret_cast<short*>(surface->pixels) +
-		       (surface->w+xpad)*surface->h);
+		assert(startsrc >= srclock.pixels() &&
+		       endsrc <= srclock.pixels() + (surface->w+xpad)*surface->h);
 
-		short* startdst =
-			reinterpret_cast<short*>(dst->pixels) + j*dst->w + xdst;
+		surface_lock dstlock(dst);
+		short* startdst = dstlock.pixels() + j*dst->w + xdst;
 		std::copy(startsrc,endsrc,startdst);
 
 		int extra = 0;
@@ -1074,7 +1078,9 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		    ov != overlaps.end(); ++ov) {
 			const int srcy = minimum<int>(yloc,(*ov)->h-1);
 			const int w = (*ov)->w + is_odd((*ov)->w);
-			short* beg = reinterpret_cast<short*>((*ov)->pixels) +
+
+			surface_lock overlap_lock(*ov);
+			short* beg = overlap_lock.pixels() +
 			             srcy*w + (xoffset > xsrc ? xoffset:xsrc);
 			short* end = beg + len;
 			short* dst = startdst;
@@ -1130,6 +1136,9 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 	const bool energy_uses_alpha = highlight_ratio < 1.0 && blend_with == 0;
 
+	surface_lock dstlock(dst);
+	surface_lock energy_lock(energy_image);
+
 	for(j = ypos; j != yend; ++j) {
 		const int yloc = ysrc+j-ypos;
 		const int xoffset = abs(yloc - static_cast<int>(zoom_/2.0))/2;
@@ -1144,8 +1153,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		const int maxlen = static_cast<int>(zoom_) - xoffset*2;
 		int len = ((xend - xdst) > maxlen) ? maxlen : xend - xdst;
 
-		short* startdst =
-			reinterpret_cast<short*>(dst->pixels) + j*dst->w + xdst;
+		short* startdst = dstlock.pixels() + j*dst->w + xdst;
 
 		const Pixel replace_energy =
 		             Pixel(SDL_MapRGB(energy_image->format,0xFF,0xFF,0xFF));
@@ -1158,8 +1166,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 		const int energy_w = energy_image->w + is_odd(energy_image->w);
 		if(yloc + skip < energy_image->h) {
-			startenergy = reinterpret_cast<short*>(energy_image->pixels) +
-			 (yloc+skip)*energy_w + (xoffset > xsrc ? xoffset:xsrc);
+			startenergy = energy_lock.pixels() + (yloc+skip)*energy_w +
+			              maximum(xoffset,xsrc);
 
 			for(int i = 0; i != len; ++i) {
 				if(startenergy != NULL && *startenergy != 0) {
@@ -1326,9 +1334,6 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 	if(srcw <= 0 || srch <= 0 || srcx >= surface->w || srcy >= surface->h)
 		return;
 
-	SDL_LockSurface(surface);
-	SDL_LockSurface(target);
-
 	if(x < 0)
 		x = 0;
 
@@ -1340,9 +1345,11 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 	const int padding = is_odd(surface->w);
 	const int surface_width = surface->w + padding;
 
-	const short* src = reinterpret_cast<short*>(surface->pixels) +
-	                   srcy*surface_width + srcx;
-	short* dst = reinterpret_cast<short*>(target->pixels) + y*target->w + x;
+	surface_lock srclock(surface);
+	surface_lock dstlock(target);
+
+	const short* src = srclock.pixels() + srcy*surface_width + srcx;
+	short* dst = dstlock.pixels() + y*target->w + x;
 
 	static const short transperant = 0;
 
@@ -1359,8 +1366,6 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 			++d;
 		}
 	}
-	SDL_UnlockSurface(surface);
-	SDL_UnlockSurface(target);
 }
 
 SDL_Surface* display::getImage(const std::string& filename,
@@ -1452,9 +1457,11 @@ SDL_Surface* display::getImageTinted(const std::string& filename, TINT tint)
 
 	image_map.insert(std::pair<std::string,SDL_Surface*>(filename,surface));
 
-	short* begin = reinterpret_cast<short*>(base->pixels);
+	surface_lock srclock(base);
+	surface_lock dstlock(surface);
+	short* begin = srclock.pixels();
 	const short* const end = begin + base->h*(base->w + (base->w%2));
-	short* dest = reinterpret_cast<short*>(surface->pixels);
+	short* dest = dstlock.pixels();
 
 	const int rmax = 0xFF;
 	const int gmax = 0xFF;
@@ -1512,7 +1519,8 @@ SDL_Surface* display::getMinimap(int w, int h)
 
 		const int xpad = is_odd(minimap_->w);
 
-		short* data = reinterpret_cast<short*>(minimap_->pixels);
+		surface_lock lock(minimap_);
+		short* data = lock.pixels();
 		for(int y = 0; y != map_.y(); ++y) {
 			for(int x = 0; x != map_.x(); ++x) {
 
@@ -1915,7 +1923,7 @@ void display::move_unit_between(const gamemap::location& a,
 
 		//checking keys may have invalidated all images (if they have
 		//zoomed in or out), so reget the image here
-		const SDL_Surface* const image = getImage(u.type().image());
+		SDL_Surface* const image = getImage(u.type().image());
 		if(image == NULL) {
 			std::cerr << "failed to get image " << u.type().image() << "\n";
 			return;
@@ -1993,7 +2001,7 @@ void display::move_unit_between(const gamemap::location& a,
 	}
 }
 
-void display::draw_unit(int x, int y, const SDL_Surface* image,
+void display::draw_unit(int x, int y, SDL_Surface* image,
                         bool reverse, bool upside_down,
                         double alpha, Pixel blendto)
 {
@@ -2010,7 +2018,8 @@ void display::draw_unit(int x, int y, const SDL_Surface* image,
 
 	SDL_Surface* const screen = screen_.getSurface();
 
-	const Pixel* src = reinterpret_cast<const short*>(image->pixels);
+	surface_lock srclock(image);
+	const Pixel* src = srclock.pixels();
 
 	const int endy = (y + image->h) < h ? (y + image->h) : h;
 	const int endx = (x + image->w) < w ? (x + image->w) : w;
@@ -2046,9 +2055,10 @@ void display::draw_unit(int x, int y, const SDL_Surface* image,
 
 	const int src_increment = image_w * (upside_down ? -1 : 1);
 
+	surface_lock screen_lock(screen);
+
 	for(; y != endy; ++y, src += src_increment) {
-		Pixel* dst =
-				reinterpret_cast<Pixel*>(screen->pixels) + y*screen->w + x;
+		Pixel* dst = screen_lock.pixels() + y*screen->w + x;
 
 		if(alpha == 1.0) {
 			if(reverse) {
@@ -2096,8 +2106,10 @@ const std::pair<int,int>& display::calculate_energy_bar()
 	int first_row = -1;
 	int last_row = -1;
 
-	const SDL_Surface* const image = getImage("unmoved-energy.png");
-	const short* const begin = reinterpret_cast<short*>(image->pixels);
+	SDL_Surface* const image = getImage("unmoved-energy.png");
+
+	surface_lock image_lock(image);
+	const short* const begin = image_lock.pixels();
 
 	const Pixel colour = Pixel(SDL_MapRGB(image->format,0xFF,0xFF,0xFF));
 

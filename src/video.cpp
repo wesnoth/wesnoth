@@ -163,11 +163,6 @@ int CVideo::getBlueMask()
 	return frameBuffer->format->Bmask;
 }
 
-void* CVideo::getAddress()
-{
-	return frameBuffer->pixels;
-}
-
 void CVideo::flip()
 {
 	::SDL_Flip(frameBuffer);

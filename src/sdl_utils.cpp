@@ -38,6 +38,9 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 	const int srcxpad = is_odd(surface->w);
 	const int dstxpad = is_odd(dest->w);
 
+	surface_lock dstlock(dest);
+	surface_lock srclock(surface);
+
 	double ysrc = 0.0;
 	for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
 		double xsrc = 0.0;
@@ -49,9 +52,8 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 
 			const int dstpad = dstxpad*ydst;
 
-			reinterpret_cast<short*>(dest->pixels)[ydst*w + xdst + dstpad] =
-			reinterpret_cast<short*>(surface->pixels)[
-			                           ysrcint*surface->w + xsrcint];
+			srclock.pixels()[ydst*w + xdst + dstpad] =
+			             dstlock.pixels()[ysrcint*surface->w + xsrcint];
 		}
 	}
 

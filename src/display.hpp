@@ -125,7 +125,7 @@ private:
 					       const gamemap::location& b,
 						   const unit& u);
 
-	void draw_unit(int x, int y, const SDL_Surface* image,
+	void draw_unit(int x, int y, SDL_Surface* image,
 	               bool reverse, bool upside_down=false,
 	               double alpha=1.0, short blendto=0);
 

@@ -39,7 +39,6 @@ class CVideo {
 	int getBlueMask();
 
 	//functions to access the screen
-	void* getAddress();
 	void lock();
 	void unlock();
 	int mustLock();
