@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth.cpp.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-19 22:44+0200\n"
+"POT-Creation-Date: 2004-08-20 01:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12291,17 +12291,6 @@ msgstr ""
 msgid "pistol"
 msgstr ""
 
-#: data/units/Cavalry.cfg:5
-msgid "Cavalry"
-msgstr ""
-
-#: data/units/Cavalry.cfg:27
-msgid ""
-"The best riders in Wesnoth are recruited into the military to become members "
-"of the cavalry. This strictly disciplined force is especially suited to "
-"capturing and holding villages."
-msgstr ""
-
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
 msgstr ""
@@ -12528,7 +12517,7 @@ msgid "claws"
 msgstr ""
 
 #: data/units/Dragoon.cfg:3
-msgid "Dragoon "
+msgid "Dragoon"
 msgstr ""
 
 #: data/units/Dragoon.cfg:24
@@ -13196,17 +13185,6 @@ msgstr ""
 msgid "pincers"
 msgstr ""
 
-#: data/units/Goblin_Direwolver.cfg:5
-msgid "Goblin Direwolver"
-msgstr ""
-
-#: data/units/Goblin_Direwolver.cfg:17
-msgid ""
-"Goblin Direwolvers ride the fastest mounts to be found in Wesnoth, dreadful "
-"giant wolves with poisoned claws. Goblin Direwolvers are fearsome and "
-"merciless enemies."
-msgstr ""
-
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
 msgstr ""
@@ -13331,18 +13309,14 @@ msgstr ""
 msgid "firststrike"
 msgstr ""
 
-#: data/units/Heavy_Infantry.cfg:5
-msgid "Heavy Infantry"
+#: data/units/Heavy_Infantryman.cfg:3
+msgid "Heavy Infantryman"
 msgstr ""
 
-#: data/units/Heavy_Infantry.cfg:16 data/units/Heavy_Infantryman.cfg:15
+#: data/units/Heavy_Infantryman.cfg:15
 msgid ""
 "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
 "lack of speed is their only disadvantage."
-msgstr ""
-
-#: data/units/Heavy_Infantryman.cfg:3
-msgid "Heavy Infantryman"
 msgstr ""
 
 #: data/units/Horseman.cfg:3
@@ -13519,17 +13493,6 @@ msgstr ""
 msgid "trident"
 msgstr ""
 
-#: data/units/Merman_Lord.cfg:5
-msgid "Merman Lord"
-msgstr ""
-
-#: data/units/Merman_Lord.cfg:17
-msgid ""
-"Merman Lords are masters of the sea. Skilled in use of the trident, Merman "
-"Lords easily defeat any enemy foolish enough to wander into their preferred "
-"environment."
-msgstr ""
-
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
 msgstr ""
@@ -13658,24 +13621,20 @@ msgstr ""
 msgid "darts"
 msgstr ""
 
-#: data/units/Orcish_Crossbow.cfg:5
-msgid "Orcish Crossbow"
-msgstr ""
-
-#: data/units/Orcish_Crossbow.cfg:17 data/units/Orcish_Crossbowman.cfg:16
-msgid ""
-"Orcish Crossbowmen try to compensate for their lack of skill with the raw "
-"power of their weapon. While they are not as effective as the Elvish "
-"Marksmen in long-range combat, they are sturdier and can handle theselves a "
-"little better than the Elves in close combat."
-msgstr ""
-
 #: data/units/Orcish_Crossbow.cfg:21 data/units/Orcish_Crossbowman.cfg:19
 msgid "short sword"
 msgstr ""
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
+msgstr ""
+
+#: data/units/Orcish_Crossbowman.cfg:16
+msgid ""
+"Orcish Crossbowmen try to compensate for their lack of skill with the raw "
+"power of their weapon. While they are not as effective as the Elvish "
+"Marksmen in long-range combat, they are sturdier and can handle theselves a "
+"little better than the Elves in close combat."
 msgstr ""
 
 #: data/units/Orcish_Grunt.cfg:3
@@ -15149,7 +15108,11 @@ msgid "Name of game"
 msgstr ""
 
 #: src/multiplayer.cpp:175
-msgid "'s game"
+msgid "game name prefix|"
+msgstr ""
+
+#: src/multiplayer.cpp:175
+msgid "game name suffix|'s game"
 msgstr ""
 
 #: src/multiplayer.cpp:186
