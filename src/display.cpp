@@ -449,12 +449,12 @@ void display::redraw_everything()
 
 namespace {
 
-void draw_panel(SDL_Surface* target, const theme::panel& panel)
+void draw_panel(display& disp, const theme::panel& panel)
 {
 	log_scope("draw panel");
 	scoped_sdl_surface surf(image::get_image(panel.image(),image::UNSCALED));
 
-	const SDL_Rect screen = { 0, 0, target->w, target->h };
+	const SDL_Rect screen = disp.screen_area();
 	SDL_Rect& loc = panel.location(screen);
 	if(surf->w != loc.w || surf->h != loc.h) {
 		surf.assign(scale_surface(surf.get(),loc.w,loc.h));
@@ -462,7 +462,7 @@ void draw_panel(SDL_Surface* target, const theme::panel& panel)
 
 	std::cerr << "drawing panel " << loc.x << "," << loc.y << "," << loc.w << "," << loc.h << "\n";
 
-	SDL_BlitSurface(surf.get(),NULL,target,&loc);
+	disp.blit_surface(loc.x,loc.y,surf);
 	update_rect(loc);
 }
 
@@ -499,7 +499,7 @@ void display::draw(bool update,bool force)
 
 		const std::vector<theme::panel>& panels = theme_.panels();
 		for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-			draw_panel(screen,*p);
+			draw_panel(*this,*p);
 		}
 
 		const std::vector<theme::label>& labels = theme_.labels();
@@ -713,7 +713,6 @@ void display::draw_game_status(int x, int y)
 
 void display::draw_report(reports::TYPE report_num)
 {
-	log_scope("draw_report");
 	if(!team_valid())
 		return;
 
@@ -1741,7 +1740,7 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 
 	if(srcw <= 0 || srch <= 0 || srcx >= surface->w || srcy >= surface->h)
 		return;
-/*  //look at why SDL_BlitSurface doesn't always handle transperancy for us.
+/*    //look at why SDL_BlitSurface doesn't always handle transperancy for us.
 	SDL_Rect src_rect = {srcx, srcy, srcw, srch};
 	SDL_Rect dst_rect = {x, y, srcw, srch};
 

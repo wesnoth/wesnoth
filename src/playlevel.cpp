@@ -171,7 +171,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 	                   display::WARP);
 
 	bool replaying = (recorder.at_end() == false);
-	std::cerr << "replaying: ???" << (replaying ? "yes" : "no") << "\n";
 
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one

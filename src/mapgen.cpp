@@ -655,11 +655,11 @@ default_map_generator::default_map_generator(const config& game_config)
 	if(cfg != NULL) {
 		cfg_ = cfg;
 
-		const int width = ::atoi((*cfg)["width"].c_str());
+		const int width = ::atoi((*cfg)["map_width"].c_str());
 		if(width > 0)
 			width_ = width;
 
-		const int height = ::atoi((*cfg)["height"].c_str());
+		const int height = ::atoi((*cfg)["map_height"].c_str());
 		if(height > 0)
 			height_ = height;
 
