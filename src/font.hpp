@@ -43,8 +43,9 @@ enum MARKUP { USE_MARKUP, NO_MARKUP };
 extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, BLACK_TEXT, BOLD_TEXT, IMAGE, NULL_MARKUP;
 
 // font sizes, probably to make theme parameters
-const int SIZE_TITLESCREEN_VERSION = 10,
-  SIZE_TITLESCREEN_TIPOFDAY = 14
+const int SIZE_NORMAL = 14,
+  SIZE_TINY = 10,
+  SIZE_SMALL = 12
   ;  
     
 //function to draw text on the screen. The text will be clipped to area.

@@ -29,12 +29,12 @@ void progress_bar::draw()
 		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,150,0,0));
 
 		const std::string text = str_cast(progress_) + "%";
-		SDL_Rect text_area = font::text_area(text,14);
+		SDL_Rect text_area = font::text_area(text,font::SIZE_NORMAL);
 
 		text_area.x = area.x + area.w/2 - text_area.w/2;
 		text_area.y = area.y + area.h/2 - text_area.h/2;
 
-		font::draw_text(&disp(),location(),14,font::BLACK_COLOUR,text,text_area.x,text_area.y);
+		font::draw_text(&disp(),location(),font::SIZE_NORMAL,font::BLACK_COLOUR,text,text_area.x,text_area.y);
 	}
 
 	update_rect(location());

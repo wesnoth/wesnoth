@@ -146,13 +146,13 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	                                 game_config::version;
 
 	const SDL_Rect version_area = font::draw_text(NULL,screen.screen_area(),
-						      font::SIZE_TITLESCREEN_VERSION,
+						      font::SIZE_TINY,
 	                                    font::NORMAL_COLOUR,version_str,0,0);
 	const size_t versiony = screen.y() - version_area.h;
 
 	if(versiony < size_t(screen.y())) {
 		font::draw_text(&screen,screen.screen_area(),
-				font::SIZE_TITLESCREEN_VERSION,
+				font::SIZE_TINY,
 				font::NORMAL_COLOUR,version_str,0,versiony);
 	}
 
@@ -202,17 +202,17 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 
 	std::string tip_of_day = get_tip_of_day(ntip);
 	if(tip_of_day.empty() == false) {
-		tip_of_day = font::word_wrap_text(tip_of_day,font::SIZE_TITLESCREEN_TIPOFDAY,
+		tip_of_day = font::word_wrap_text(tip_of_day,font::SIZE_NORMAL,
 						  (game_config::title_tip_width*screen.x())/1024);
 
 		const std::string& tome = font::word_wrap_text(_("-- The Tome of Wesnoth"),
-							       font::SIZE_TITLESCREEN_TIPOFDAY,
+							       font::SIZE_NORMAL,
 							       (game_config::title_tip_width*screen.x())/1024);
 
 		const int pad = game_config::title_tip_padding;
 
-		SDL_Rect area = font::text_area(tip_of_day,font::SIZE_TITLESCREEN_TIPOFDAY);
-		SDL_Rect tome_area = font::text_area(tome,font::SIZE_TITLESCREEN_TIPOFDAY,TTF_STYLE_ITALIC);
+		SDL_Rect area = font::text_area(tip_of_day,font::SIZE_NORMAL);
+		SDL_Rect tome_area = font::text_area(tome,font::SIZE_NORMAL,TTF_STYLE_ITALIC);
 		area.w = maximum<size_t>(area.w,tome_area.w) + 2*pad;
 		area.h += tome_area.h + next_tip_button.location().h + 3*pad;
 
@@ -223,8 +223,8 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 
 		draw_dialog_frame(area.x,area.y,area.w,area.h,screen,&style);
 
-		font::draw_text(&screen,area,font::SIZE_TITLESCREEN_TIPOFDAY,font::NORMAL_COLOUR,tip_of_day,area.x+pad,area.y+pad);
-		font::draw_text(&screen,area,font::SIZE_TITLESCREEN_TIPOFDAY,font::NORMAL_COLOUR,tome,area.x+area.w-tome_area.w-pad,next_tip_button.location().y-tome_area.h-pad,NULL,false,font::NO_MARKUP,TTF_STYLE_ITALIC);
+		font::draw_text(&screen,area,font::SIZE_NORMAL,font::NORMAL_COLOUR,tip_of_day,area.x+pad,area.y+pad);
+		font::draw_text(&screen,area,font::SIZE_NORMAL,font::NORMAL_COLOUR,tome,area.x+area.w-tome_area.w-pad,next_tip_button.location().y-tome_area.h-pad,NULL,false,font::NO_MARKUP,TTF_STYLE_ITALIC);
 	}
 
 	events::raise_draw_event();

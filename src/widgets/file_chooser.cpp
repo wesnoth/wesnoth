@@ -122,7 +122,7 @@ void file_chooser::draw() {
 	}
 	display_current_files();
 	display_chosen_file();
-	font::draw_text(&disp_, current_path_rect_, 14, font::NORMAL_COLOUR,
+	font::draw_text(&disp_, current_path_rect_, font::SIZE_NORMAL, font::NORMAL_COLOUR,
 					current_dir_, current_path_rect_.x, current_path_rect_.y,
 					disp_.video().getSurface());
 	set_dirty(false);

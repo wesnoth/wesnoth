@@ -14,8 +14,8 @@
 #include <numeric>
 
 namespace {
-const size_t menu_font_size = 14;
-const size_t menu_cell_padding = 10;
+const size_t menu_font_size = font::SIZE_NORMAL;
+const size_t menu_cell_padding = font::SIZE_NORMAL * 3/5;
 }
 
 namespace gui {

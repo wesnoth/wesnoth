@@ -22,10 +22,10 @@
 
 namespace gui {
 
-const int font_size = 12;
-const int horizontal_padding = 12;
-const int checkbox_horizontal_padding = 6;
-const int vertical_padding = 6;
+const int font_size = font::SIZE_SMALL;
+const int horizontal_padding = font::SIZE_SMALL;
+const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
+const int vertical_padding = font::SIZE_SMALL / 2;
 
 button::button(display& disp, const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing) :
