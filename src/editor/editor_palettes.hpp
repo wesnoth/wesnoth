@@ -105,6 +105,9 @@ public:
 	/// Return the size of currently selected brush.
  	unsigned int selected_brush_size();
 
+	/// Select a brush size.
+	void select_brush_size(int new_size);
+
 	// Draw the palette. If force is true everything will be redrawn
 	// even though it is not dirty.
 	void draw(bool force=false);

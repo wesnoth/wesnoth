@@ -22,6 +22,8 @@
 #include "../language.hpp"
 #include "../util.hpp"
 
+#include <cassert>
+
 
 namespace map_editor {
 
@@ -121,6 +123,7 @@ gamemap::TERRAIN terrain_palette::selected_bg_terrain() const {
 void terrain_palette::select_fg_terrain(gamemap::TERRAIN terrain) {
 	if (selected_fg_terrain_ != terrain) {
 		set_dirty();
+		update_report();
 		selected_fg_terrain_ = terrain;
 	}
 }
@@ -128,6 +131,7 @@ void terrain_palette::select_fg_terrain(gamemap::TERRAIN terrain) {
 void terrain_palette::select_bg_terrain(gamemap::TERRAIN terrain) {
 	if (selected_bg_terrain_ != terrain) {
 		set_dirty();
+		update_report();
 		selected_bg_terrain_ = terrain;
 	}
 }
@@ -156,7 +160,6 @@ void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
 	int tselect = tile_selected(mousex, mousey);
 	if(tselect >= 0) {
 		select_fg_terrain(terrains_[tstart_+tselect]);
-		update_report();
 		gui_.invalidate_game_status();
 	}
 }
@@ -165,7 +168,6 @@ void terrain_palette::right_mouse_click(const int mousex, const int mousey) {
 	int tselect = tile_selected(mousex, mousey);
 	if(tselect >= 0) {
 		select_bg_terrain(terrains_[tstart_+tselect]);
-		update_report();
 		gui_.invalidate_game_status();
 	}
 }
@@ -316,6 +318,11 @@ void brush_bar::adjust_size() {
 unsigned int brush_bar::selected_brush_size() {
 	return selected_ + 1;
 }
+
+void brush_bar::select_brush_size(int new_size) {
+	assert(new_size > 0 && new_size <= total_brush_);
+	selected_ = new_size - 1;
+}
 		
 void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 	int index = selected_index(mousex, mousey);
@@ -326,7 +333,6 @@ void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 		}
 	}
 }
-
 
 void brush_bar::handle_event(const SDL_Event& event) {
 	if (event.type == SDL_MOUSEMOTION) {

@@ -20,6 +20,7 @@
 #include "../events.hpp"
 #include "../hotkeys.hpp"
 #include "../preferences.hpp"
+#include "../theme.hpp"
 
 #include <map>
 #include <queue>
@@ -130,6 +131,14 @@ public:
 	};
 	
 private:
+	/// What to perform while the left button is held down.
+	enum LEFT_BUTTON_HELD_FUNC {DRAW_TERRAIN, ADD_SELECTION, REMOVE_SELECTION,
+								MOVE_SELECTION, NONE};
+
+	/// What to perform on a left button click.
+	enum LEFT_BUTTON_FUNC {DRAW, SELECT_HEXES, FLOOD_FILL,
+						   SET_STARTING_POSITION, PASTE, NUM_L_BUTTON_FUNC};
+
 	/// Called in every iteration when the left mouse button is held
 	/// down. Note that this differs from a click.
 	void left_button_down(const int mousex, const int mousey);
@@ -217,6 +226,11 @@ private:
 	/// highlighted.
 	void highlight_selected_hexes(const bool clear_old=true);
 
+	/// Clear the highlighted hexes in the gui and set a variable to
+	/// indicate this so that the brush size highlighting may be
+	/// refreshed.
+	void clear_highlighted_hexes_in_gui();
+
 	/// Terrain has changed at the specified hex through user drawing
 	/// (not undo/redo or other special things). If the hex was a
 	/// starting position, remove this position. Save additional
@@ -229,7 +243,6 @@ private:
 	void terrain_changed(const std::set<gamemap::location> &hexes,
 						 map_undo_action &undo_action);
 	
-
 	/// Save an action so that it may be undone. Add an operation to the
 	/// number done since save.
 	void save_undo_action(const map_undo_action &action);
@@ -237,7 +250,20 @@ private:
 	/// Call when the left mouse button function has changed. Updated
 	/// the report indicating what will be performed. New_function is
 	/// the hotkey-string describing the action.
-	void left_button_func_changed(const std::string &new_function);
+	void left_button_func_changed(const LEFT_BUTTON_FUNC func);
+
+	/// Draw black squares around the buttons that are used to select
+	/// the left button function and draw a read square around the
+	/// currently selected function.
+	void update_l_button_palette();
+
+	/// Return the hotkey-string representing the left button
+	/// function. The "action_" is left out.
+	std::string get_action_name(const LEFT_BUTTON_FUNC func) const;
+
+	/// Return true if the menu is a button used for setting the left
+	/// mouse button function.
+	bool is_left_button_func_menu(const theme::menu &menu) const;
 
 	/// Draw the terrain on the hexes the mouse is over, taking account
 	/// for brush size.
@@ -256,14 +282,6 @@ private:
 		int starting_side;
 	};
 
-	/// What to perform while the left button is held down.
-	enum LEFT_BUTTON_HELD_FUNC {DRAW_TERRAIN, ADD_SELECTION, REMOVE_SELECTION,
-								MOVE_SELECTION, NONE};
-
-	/// What to perform on a left button click.
-	enum LEFT_BUTTON_FUNC {DRAW, SELECT_HEXES, FLOOD_FILL,
-						   SET_STARTING_POSITION, PASTE};
-
 	display &gui_;
 	gamemap &map_;
 	std::string filename_;
@@ -281,6 +299,7 @@ private:
 	// perform some updates like recalculating labels of starting
 	// positions.
 	bool map_dirty_;
+	bool l_button_palette_dirty_;
 	terrain_palette palette_;
 	brush_bar brush_;
 	std::vector<gamemap::location> starting_positions_;
@@ -293,11 +312,14 @@ private:
 	// mouse_moved_ will be true if the mouse have moved between two
 	// cycles.
 	bool mouse_moved_;
+	bool highlighted_locs_cleared_;
 	const preferences::display_manager prefs_disp_manager_;
 	static config prefs_;
 	static config hotkeys_;
 	static bool first_time_created_;
 	static LEFT_BUTTON_FUNC l_button_func_;
+	static gamemap::TERRAIN old_fg_terrain_, old_bg_terrain_;
+	static int old_brush_size_;
 	bool all_hexes_selected_;
 	
 };

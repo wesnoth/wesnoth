@@ -51,7 +51,7 @@ namespace {
 	const unsigned int sdl_delay = 20;
 	const std::string prefs_filename = get_dir(get_user_data_dir() + "/editor")
 		+ "/preferences";
-	
+
 	// Return the side that has it's starting position at hex, or -1 if
 	// none has.
 	int starting_side_at(const gamemap& map, const gamemap::location hex) {
@@ -80,12 +80,16 @@ int map_editor::num_operations_since_save_ = 0;
 config map_editor::prefs_;
 config map_editor::hotkeys_;
 map_editor::LEFT_BUTTON_FUNC map_editor::l_button_func_ = DRAW;
+gamemap::TERRAIN map_editor::old_fg_terrain_;
+gamemap::TERRAIN map_editor::old_bg_terrain_;
+int map_editor::old_brush_size_;
 
 map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
-	  theme_(theme), game_config_(game_config), map_dirty_(false),
+	  theme_(theme), game_config_(game_config), map_dirty_(false), l_button_palette_dirty_(true),
 	  palette_(gui, size_specs_, map), brush_(gui, size_specs_),
-	  l_button_held_func_(NONE), prefs_disp_manager_(&gui_), all_hexes_selected_(false) {
+	  l_button_held_func_(NONE), highlighted_locs_cleared_(false), prefs_disp_manager_(&gui_),
+	  all_hexes_selected_(false) {
 
 	// Set size specs.
 	adjust_sizes(gui_, size_specs_);
@@ -107,15 +111,17 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 		hotkey::get_hotkeys().clear();
 		hotkey::add_hotkeys(theme_, true);
 		hotkey::add_hotkeys(prefs_, true);
+		left_button_func_changed(DRAW);
 		first_time_created_ = false;
 	}
 	else {
 		hotkey::get_hotkeys().clear();
 		hotkey::add_hotkeys(hotkeys_, true);
+		palette_.select_fg_terrain(old_fg_terrain_);
+		palette_.select_bg_terrain(old_bg_terrain_);
+		brush_.select_brush_size(old_brush_size_);
 	}
 	recalculate_starting_pos_labels();
-	reports::set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
-								translate_string("action_editdraw"));
 	gui_.invalidate_game_status();
 	gui_.begin_game();
 	gui_.invalidate_all();
@@ -126,6 +132,9 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 map_editor::~map_editor() {
 	// Save the hotkeys so that they are remembered if the editor is recreated.
 	hotkey::save_hotkeys(hotkeys_);
+	old_fg_terrain_ = palette_.selected_fg_terrain();
+	old_bg_terrain_ = palette_.selected_bg_terrain();
+	old_brush_size_ = brush_.selected_brush_size();
 	try {
 		write_file(prefs_filename, prefs_.write());
 	}
@@ -260,8 +269,7 @@ void map_editor::left_click(const gamemap::location hex_clicked) {
 		// If hexes are selected, clear them and do not draw
 		// anything.
 		selected_hexes_.clear();
-		gui_.clear_highlighted_locs();
-		update_mouse_over_hexes(hex_clicked);
+		clear_highlighted_hexes_in_gui();
 	}
 	else if (l_button_func_ == DRAW) {
 		l_button_held_func_ = DRAW_TERRAIN;
@@ -329,8 +337,7 @@ void map_editor::perform_set_starting_pos() {
 }
 
 void map_editor::edit_set_start_pos() {
-	l_button_func_ = SET_STARTING_POSITION;
-	left_button_func_changed("action_editsetstartpos");
+	left_button_func_changed(SET_STARTING_POSITION);
 }
 
 void map_editor::perform_flood_fill() {
@@ -348,8 +355,7 @@ void map_editor::perform_flood_fill() {
 }
 
 void map_editor::edit_flood_fill() {
-	l_button_func_ = FLOOD_FILL;
-	left_button_func_changed("action_editfloodfill");
+	left_button_func_changed(FLOOD_FILL);
 }
 
 void map_editor::edit_save_map() {
@@ -424,7 +430,7 @@ void map_editor::perform_paste() {
 	map_undo_action undo_action;
 	std::set<gamemap::location> filled;
 	gamemap::location start_hex = selected_hex_;
-	gui_.clear_highlighted_locs();
+	clear_highlighted_hexes_in_gui();
 	for (std::vector<clipboard_item>::const_iterator it = clipboard_.begin();
 		 it != clipboard_.end(); it++) {
 		gamemap::location l(clipboard_offset_loc_.x + (*it).x_offset,
@@ -452,8 +458,7 @@ void map_editor::perform_paste() {
 }
 
 void map_editor::edit_paste() {
-	l_button_func_ = PASTE;
-	left_button_func_changed("action_editpaste");
+	left_button_func_changed(PASTE);
 }
 
 void map_editor::edit_revert() {
@@ -518,8 +523,7 @@ void map_editor::edit_select_all() {
 }
 
 void map_editor::edit_draw() {
-	l_button_func_ = DRAW;
-	left_button_func_changed("action_editdraw");
+	left_button_func_changed(DRAW);
 }
 
 std::string map_editor::load_map(const std::string filename) {
@@ -706,12 +710,17 @@ void map_editor::redraw_everything() {
 
 void map_editor::highlight_selected_hexes(const bool clear_old) {
 	if (clear_old) {
-		gui_.clear_highlighted_locs();
+		clear_highlighted_hexes_in_gui();
 	}
 	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
 		 it != selected_hexes_.end(); it++) {
 		gui_.add_highlighted_loc(*it);
 	}
+}
+
+void map_editor::clear_highlighted_hexes_in_gui() {
+	gui_.clear_highlighted_locs();
+	highlighted_locs_cleared_ = true;
 }
 
 bool map_editor::changed_since_save() const {
@@ -848,7 +857,7 @@ void map_editor::perform_selection_move() {
 	map_undo_action undo_action;
 	const int x_diff = selected_hex_.x - selection_move_start_.x;
 	const int y_diff = selected_hex_.y - selection_move_start_.y;
-	gui_.clear_highlighted_locs();
+	clear_highlighted_hexes_in_gui();
 	std::set<gamemap::location> new_selection;
 	// Transfer the terrain to the new position.
 	std::set<gamemap::location>::const_iterator it;
@@ -1110,13 +1119,71 @@ void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex)
 	selected_hex_ = mouse_over_hex;
 }
 
-void map_editor::left_button_func_changed(const std::string &new_function) {
-	reports::set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
-								translate_string(new_function));
-	//palette_.set_dirty();
-	//brush_.set_dirty();
-	
-	gui_.invalidate_game_status();
+void map_editor::left_button_func_changed(const LEFT_BUTTON_FUNC func) {
+	if (func != l_button_func_) {
+		l_button_func_ = func;
+		const std::string string_to_translate = std::string("action_") + get_action_name(func);
+		reports::set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
+									translate_string(string_to_translate));
+		gui_.invalidate_game_status();
+		l_button_palette_dirty_ = true;
+	}
+}
+
+void map_editor::update_l_button_palette() {
+	const theme &t = gui_.get_theme();
+	const std::vector<theme::menu> &menus = t.menus();
+	std::vector<theme::menu>::const_iterator it;
+	for (it = menus.begin(); it != menus.end(); it++) {
+		if (is_left_button_func_menu(*it)) {
+			const SDL_Rect &r = (*it).location(gui_.screen_area());
+			const int draw_x = maximum<int>(r.x - 1, gui_.screen_area().x);
+			const int draw_y = maximum<int>(r.y - 1, gui_.screen_area().y);
+			const int draw_w = minimum<int>(r.w + 2, gui_.screen_area().w);
+			const int draw_h = minimum<int>(r.h + 2, gui_.screen_area().h);
+			const SDL_Rect draw_rect = {draw_x, draw_y, draw_w, draw_h};
+			Uint16 color;
+			if ((*it).items().back() == get_action_name(l_button_func_)) {
+				color = 0xF000;
+			}
+			else {
+				color = 0x0000;
+			}
+			gui::draw_rectangle(draw_rect.x, draw_rect.y, draw_rect.w, draw_rect.h,
+								color, gui_.video().getSurface());
+			update_rect(draw_rect);
+		}
+	}
+}
+
+std::string map_editor::get_action_name(const LEFT_BUTTON_FUNC func) const {
+	switch (func) {
+	case DRAW:
+		return "editdraw";
+	case SELECT_HEXES:
+		return ""; // Not implemented yet.
+	case FLOOD_FILL:
+		return "editfloodfill";
+	case SET_STARTING_POSITION:
+		return "editsetstartpos";
+	case PASTE:
+		return "editpaste";
+	default:
+		return "";
+	}
+}
+
+bool map_editor::is_left_button_func_menu(const theme::menu &menu) const {
+	const std::vector<std::string> &menu_items = menu.items();
+	if (menu_items.size() == 1) {
+		const std::string item_name = menu_items.back();
+		for (size_t i = 0; i < NUM_L_BUTTON_FUNC; i++) {
+			if (get_action_name(LEFT_BUTTON_FUNC(i)) == item_name) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 void map_editor::main_loop() {
@@ -1133,9 +1200,11 @@ void map_editor::main_loop() {
 		if (cur_hex != selected_hex_) {
 			mouse_moved_ = true;
 		}
-		if (mouse_moved_ || last_brush_size != brush_.selected_brush_size()) {
+		if (mouse_moved_ || last_brush_size != brush_.selected_brush_size()
+			|| highlighted_locs_cleared_) {
 			// The mouse have moved or the brush size has changed,
 			// adjust the hexes the mouse is over.
+			highlighted_locs_cleared_ = false;
 			update_mouse_over_hexes(cur_hex);
 			last_brush_size = brush_.selected_brush_size();
 		}
@@ -1194,6 +1263,10 @@ void map_editor::main_loop() {
 				recalculate_starting_pos_labels();
 				gui_.recalculate_minimap();
 			}
+		}
+		if (l_button_palette_dirty_) {
+			update_l_button_palette();
+			l_button_palette_dirty_ = false;
 		}
 		gui_.update_display();
 		SDL_Delay(sdl_delay);
