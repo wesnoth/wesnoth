@@ -1276,5 +1276,6 @@ bool load_font_config()
 		return false;
 
 	font::set_font_list(fontlist);
+	return true;
 }
 }
