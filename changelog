@@ -63,7 +63,6 @@ CVS HEAD:
  * fixed font redrawing for the font used in the slovak and polish translations
  * fixed typos in 'Shan Taum the Smug' that caused scenario to have only two turns
  * fixed crashes when units with invalid sides appear, by rejecting such invalide sides in the unit's constructor
- * fixed a bug with the validate_side(...) check in unit::unit(...). The symptom was failure of any scenario to load which has a 'move_unit_fake' command in it. The check is now bypassed for "dummy" units.
  * fixed bug where 'cancel' button would appear under multiplayer games
  * fixed preferences widgets disappearing when changing video mode
  * fixed tooltips from game setup appearing in-game
