@@ -710,15 +710,20 @@ redo_turn:
 		} //end for loop
 
 	} catch(end_level_exception& end_level) {
-
-		//if we're a player, and the result is victory/defeat, then send a message to notify
-		//the server of the reason for the game ending
+		bool obs = is_observer(teams);
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
-			config cfg;
-			config& info = cfg.add_child("info");
-			info["type"] = "termination";
-			info["condition"] = "game over";
-			network::send_data(cfg);
+			// if we're a player, and the result is victory/defeat, then send a message to notify
+			// the server of the reason for the game ending
+			if (!obs) {
+				config cfg;
+				config& info = cfg.add_child("info");
+				info["type"] = "termination";
+				info["condition"] = "game over";
+				network::send_data(cfg);
+			} else
+				gui::show_dialog(gui, NULL, "",
+				                 _("Victory") + std::string(" / ") + _("Defeat"),
+				                 gui::OK_ONLY);
 		}
 
 		if(end_level.result == QUIT) {
@@ -729,12 +734,14 @@ redo_turn:
 			} catch(end_level_exception&) {
 			}
 
-			gui::show_dialog(gui,NULL,
-			                 _("Defeat"),
-			                 _("You have been defeated!"),
-			                 gui::OK_ONLY);
+			if (!obs)
+				gui::show_dialog(gui, NULL,
+				                 _("Defeat"),
+				                 _("You have been defeated!"),
+				                 gui::OK_ONLY);
 			return DEFEAT;
-		} else if(end_level.result == VICTORY || end_level.result == LEVEL_CONTINUE || end_level.result == LEVEL_CONTINUE_NO_SAVE) {
+		} else if (end_level.result == VICTORY || end_level.result == LEVEL_CONTINUE ||
+		           end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 			try {
 				game_events::fire("victory");
 			} catch(end_level_exception&) {
@@ -744,7 +751,8 @@ redo_turn:
 				state_of_game.scenario = (*level)["next_scenario"];
 			}
 
-			const bool has_next_scenario = state_of_game.scenario != "null" && state_of_game.scenario != "";
+			const bool has_next_scenario = !state_of_game.scenario.empty() &&
+			                               state_of_game.scenario != "null";
 
 			//add all the units that survived the scenario
 			for(std::map<gamemap::location,unit>::iterator un = units.begin(); un != units.end(); ++un) {
@@ -774,20 +782,21 @@ redo_turn:
 			std::stringstream report;
 
 			for(std::vector<team>::iterator i=teams.begin(); i!=teams.end(); ++i) {
-				if(i->is_human() == false) {
+				if (!i->is_persistent())
 					continue;
-				}
 
 				player_info *player=state_of_game.get_player(i->save_id());
 
 				const int remaining_gold = i->gold();
-				const int finishing_bonus_per_turn = map.villages().size()*game_config::village_income + game_config::base_income;
+				const int finishing_bonus_per_turn =
+				             map.villages().size() * game_config::village_income +
+				             game_config::base_income;
 				const int turns_left = maximum<int>(0,status.number_of_turns() - status.turn());
 				const int finishing_bonus = end_level.gold_bonus ?
 				             (finishing_bonus_per_turn * turns_left) : 0;
 
 				if(player) {
-					player->gold = ((remaining_gold+finishing_bonus)*80)/100;
+					player->gold = ((remaining_gold + finishing_bonus) * 80) / 100;
 
 					if(state_of_game.players.size()>1) {
 						if(i!=teams.begin()) {
@@ -812,16 +821,18 @@ redo_turn:
 					}
 
 					// xgettext:no-c-format
-					report << "\n" << _("80% of gold is retained for the next scenario") << "\n" << _("Retained Gold") << ": " << player->gold;
+					report << "\n" << _("80% of gold is retained for the next scenario") << "\n"
+					       << _("Retained Gold") << ": " << player->gold;
 				}
 			}
 
-			gui::show_dialog(gui,NULL,_("Victory"),
-			                 _("You have emerged victorious!"),gui::OK_ONLY);
+			if (!obs)
+				gui::show_dialog(gui, NULL, _("Victory"),
+				                 _("You have emerged victorious!"), gui::OK_ONLY);
 
-			if(state_of_game.players.size()>0 && has_next_scenario) {
-				gui::show_dialog(gui,NULL,_("Scenario Report"),report.str(),gui::OK_ONLY);
-			}
+			if (state_of_game.players.size() > 0 && has_next_scenario)
+				gui::show_dialog(gui, NULL, _("Scenario Report"), report.str(), gui::OK_ONLY);
+
 			return VICTORY;
 		}
 	} //end catch
