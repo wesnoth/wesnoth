@@ -384,13 +384,17 @@ const std::pair<std::string::const_iterator, std::string::const_iterator>& utf8_
 
 void utf8_iterator::update()
 {
+	// Do not try to update the current unicode char at end-of-string.
+	if(current_substr.first == string_end)
+		return;
+
 	size_t size = byte_size_from_utf8_first(*current_substr.first);
 	current_substr.second = current_substr.first + size;
 
 	current_char = (unsigned char)(*current_substr.first);
 
 	/* Convert the first character */
-	if (size != 1) {
+	if(size != 1) {
 		current_char &= 0xFF >> (size + 1);
 	}
 
