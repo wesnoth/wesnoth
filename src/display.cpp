@@ -1732,7 +1732,8 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 			const int missile_frame = i + first_missile;
 
 			const std::string* missile_image
-			  = attack.get_frame(missile_frame,attack_type::MISSILE_FRAME,dir);
+			         = attack.get_frame(missile_frame,NULL,
+			                            attack_type::MISSILE_FRAME,dir);
 
 			static const std::string default_missile("missile-n.png");
 			static const std::string default_diag_missile("missile-ne.png");
@@ -1890,7 +1891,13 @@ bool display::unit_attack(const gamemap::location& a,
 
 		draw_tile(b.x,b.y,NULL,defender_alpha,defender_colour);
 
-		const std::string* unit_image = attack.get_frame(i);
+		int xoffset = 0;
+		const std::string* unit_image = attack.get_frame(i,&xoffset);
+		if(!attacker.facing_left())
+			xoffset *= -1;
+
+		xoffset = int(double(xoffset)*(zoom_/DefaultZoom));
+
 		if(unit_image == NULL)
 			unit_image = &attacker.image();
 
@@ -1898,7 +1905,7 @@ bool display::unit_attack(const gamemap::location& a,
 		                                NULL : getImage(*unit_image);
 
 		const double pos = double(i)/double(i < 0 ? begin_at : end_at);
-		const int posx = int(pos*xsrc + (1.0-pos)*xdst);
+		const int posx = int(pos*xsrc + (1.0-pos)*xdst) + xoffset;
 		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
 
 		if(image != NULL && !update_locked())

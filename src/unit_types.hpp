@@ -44,7 +44,8 @@ public:
 	//function which gets an attack animation frame. The argument
 	//is 0 for the frame at the time of impact, and negative for
 	//frames before the time of impact
-	const std::string* get_frame(int milliseconds, FRAME_TYPE type=UNIT_FRAME,
+	const std::string* get_frame(int milliseconds, int* xoffset=NULL,
+	                             FRAME_TYPE type=UNIT_FRAME,
 	                             FRAME_DIRECTION direction=VERTICAL) const;
 
 	struct sfx {
@@ -65,15 +66,19 @@ private:
 	int num_attacks_;
 
 	struct frame {
-		frame(int i1, int i2, const std::string& img)
-		      : start(i1), end(i2), image(&img), image_diagonal(NULL)
+		frame(int i1, int i2, const std::string& img, int offset)
+		      : start(i1), end(i2), xoffset(offset),
+		        image(&img), image_diagonal(NULL)
 		{}
 
-		frame(int i1, int i2, const std::string& img, const std::string& diag)
-		      : start(i1), end(i2), image(&img), image_diagonal(&diag)
+		frame(int i1, int i2, const std::string& img, const std::string& diag,
+		      int offset)
+		      : start(i1), end(i2), xoffset(offset),
+		        image(&img), image_diagonal(&diag)
 		{}
 
 		int start, end;
+		int xoffset;
 		const std::string* image;
 		const std::string* image_diagonal;
 	};

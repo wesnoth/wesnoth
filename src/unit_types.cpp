@@ -42,20 +42,23 @@ attack_type::attack_type(config& cfg)
 	for(i = frames.begin(); i != frames.end(); ++i){
 		const int beg = atoi((*i)->values["begin"].c_str());
 		const int end = atoi((*i)->values["end"].c_str());
+		const int xoff = atoi((*i)->values["xoffset"].c_str());
 		const std::string& img = (*i)->values["image"];
-		frames_[UNIT_FRAME].push_back(frame(beg,end,img));
+		frames_[UNIT_FRAME].push_back(frame(beg,end,img,xoff));
 	}
 
 	std::vector<config*>& missile_frames = cfg.children["missile_frame"];
 	for(i = missile_frames.begin(); i != missile_frames.end(); ++i){
 		const int beg = atoi((*i)->values["begin"].c_str());
 		const int end = atoi((*i)->values["end"].c_str());
+		const int xoff = atoi((*i)->values["xoffset"].c_str());
+		
 		const std::string& img = (*i)->values["image"];
 		const std::string& img_diag = (*i)->values["image_diagonal"];
 		if(img_diag.empty())
-			frames_[MISSILE_FRAME].push_back(frame(beg,end,img));
+			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,xoff));
 		else
-			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,img_diag));
+			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,img_diag,xoff));
 
 	}
 
@@ -121,9 +124,9 @@ int attack_type::get_last_frame(attack_type::FRAME_TYPE type) const
 		return maximum<int>(frames_[type].back().end,0);
 }
 
-const std::string* attack_type::get_frame(int milliseconds,
-                                  attack_type::FRAME_TYPE type,
-								  attack_type::FRAME_DIRECTION dir) const
+const std::string* attack_type::get_frame(int milliseconds, int* xoff,
+                                       attack_type::FRAME_TYPE type,
+								       attack_type::FRAME_DIRECTION dir) const
 {
 	for(std::vector<frame>::const_iterator i = frames_[type].begin();
 	    i != frames_[type].end(); ++i) {
@@ -131,10 +134,15 @@ const std::string* attack_type::get_frame(int milliseconds,
 			return NULL;
 
 		if(i->start <= milliseconds && i->end > milliseconds) {
-			if(dir == DIAGONAL && i->image_diagonal != NULL)
+			if(xoff != NULL) {
+				*xoff = i->xoffset;
+			}
+
+			if(dir == DIAGONAL && i->image_diagonal != NULL) {
 				return i->image_diagonal;
-			else
+			} else {
 				return i->image;
+			}
 		}
 	}
 
