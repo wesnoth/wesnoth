@@ -605,7 +605,7 @@ void leader_list_manager::update_leader_list(int side_index)
 
 	leaders_.clear();
 
-	if(side["type"] == "random") {
+	if(side["random_faction"] == "yes") {
 		if(combo_ != NULL) {
 			std::vector<std::string> dummy;
 			dummy.push_back("-");
@@ -638,7 +638,7 @@ void leader_list_manager::update_leader_list(int side_index)
 	if (default_index == leaders_.size()) {
 		leaders_.push_back(default_leader);
 	}
-	
+
 	std::vector<std::string> leader_strings;
 
 	for(itor = leaders_.begin(); itor != leaders_.end(); ++itor) {
@@ -655,6 +655,10 @@ void leader_list_manager::update_leader_list(int side_index)
 			leader_strings.push_back("?");
 		}
 	}
+
+	leaders_.push_back("random");
+	// FIXME: Maybe this should not code into the code.
+	leader_strings.push_back(_("&random-enemy.png,Random"));
 
 	if(combo_ != NULL) {
 		combo_->set_items(leader_strings);

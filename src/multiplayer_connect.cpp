@@ -726,20 +726,12 @@ lobby::RESULT mp_connect::process()
 
 		for(config::child_iterator side = sides.first; side != sides.second; ++side) {
 			int ntry = 0;
-			while((**side)["type"] == "random" && ntry < 1000) {
+			while((**side)["random_faction"] == "yes" && ntry < 1000) {
 				const int choice = rand()%real_sides.size();
 
 				(**side)["name"] = (*real_sides[choice])["name"];
 
-				// Choose a random leader type.  
-				std::vector<std::string> types = 
-					config::split((*real_sides[choice])["leader"]);
-				if (!types.empty()) {
-					const int lchoice = rand() % types.size();
-					(**side)["type"] = types[lchoice];
-				} else {
-					(**side)["type"] = (*real_sides[choice])["type"];
-				}
+				(**side)["type"] = "random";
 
 				(**side)["recruit"] = (*real_sides[choice])["recruit"];
 				(**side)["music"] = (*real_sides[choice])["music"];
@@ -749,6 +741,18 @@ lobby::RESULT mp_connect::process()
 				level_changed = true;
 
 				++ntry;
+			}
+
+			if ((**side)["type"] == "random" || (**side)["type"].empty()) {
+				// Choose a random leader type.  
+				std::vector<std::string> types = 
+					config::split((**side)["leader"]);
+				if (!types.empty()) {
+					const int lchoice = rand() % types.size();
+					(**side)["type"] = types[lchoice];
+				} else {
+
+				}
 			}
 		}
 

@@ -184,7 +184,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		if(state.scenario == current_scenario)
 			state.scenario = (*scenario)["next_scenario"];
 
-	    scenario = game_config.find_child(type,"id",state.scenario);
+		scenario = game_config.find_child(type,"id",state.scenario);
 
 		//if this isn't the last scenario, then save the game
 		if(scenario != NULL && save_game_after_scenario) {
@@ -707,13 +707,15 @@ bool game_controller::play_multiplayer_mode()
    		const config* side = type == side_types.end() ? era_cfg->child("multiplayer_side") :
    		                                                era_cfg->find_child("multiplayer_side","type",type->second);
 
+#if 0
    		size_t tries = 0;
    		while(side != NULL && (*side)["type"] == "random" && ++tries < 100) {
    			const config::child_list& v = era_cfg->get_children("multiplayer_side");
    			side = v[rand()%v.size()];
    		}
+#endif
 
-   		if(side == NULL || (*side)["type"] == "random") {
+   		if(side == NULL || (*side)["random_faction"] == "yes" || (*side)["type"] == "random") {
    			std::string side_name = (type == side_types.end() ? "default" : type->second);
    			std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";
    			return false;

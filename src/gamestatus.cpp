@@ -194,24 +194,24 @@ bool gamestatus::next_turn()
 
 player_info read_player(const game_data& data, const config* cfg)
 {
-  player_info res;
+	player_info res;
 
-  res.gold = atoi((*cfg)["gold"].c_str());
+	res.gold = atoi((*cfg)["gold"].c_str());
 
-  const config::child_list& units = cfg->get_children("unit");
-  for(config::child_list::const_iterator i = units.begin(); i != units.end(); ++i) {
-	res.available_units.push_back(unit(data,**i));
-  }
+	const config::child_list& units = cfg->get_children("unit");
+	for(config::child_list::const_iterator i = units.begin(); i != units.end(); ++i) {
+		res.available_units.push_back(unit(data,**i));
+	}
 
-  res.can_recruit.clear();
+	res.can_recruit.clear();
 
-  const std::string& can_recruit_str = (*cfg)["can_recruit"];
-  if(can_recruit_str != "") {
-	const std::vector<std::string> can_recruit = config::split(can_recruit_str);
-	std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
-  }
+	const std::string& can_recruit_str = (*cfg)["can_recruit"];
+	if(can_recruit_str != "") {
+		const std::vector<std::string> can_recruit = config::split(can_recruit_str);
+		std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
+	}
 
-  return res;
+	return res;
 }
 
 game_state read_game(const game_data& data, const config* cfg)
