@@ -57,15 +57,30 @@ bool recruit(const gamemap& map, const gamemap::location& leader,
 
 	//from the available options, choose one at random
 	if(options.empty() == false) {
+
+		const gamemap::location loc = gamemap::location::null_location;
 		const int option = rand()%options.size();
-		recorder.add_recruit(option_numbers[option],gamemap::location());
+
+		//add the recruit conditionally. If recruiting fails,
+		//we will undo it.
+		recorder.add_recruit(option_numbers[option],loc);
+		replay_undo replay_guard(recorder);
+
 		const unit_type& u = options[option]->second;
-		tm.spend_gold(u.cost());
 		unit new_unit(&u,team_num,true);
 
-		std::cerr << "recruiting a " << u.name() << " for " << u.cost() << " have " << tm.gold() << " left\n";
-		const gamemap::location loc;
-		return recruit_unit(map,team_num,units,new_unit,loc,&disp).empty();
+		//see if we can actually recruit (i.e. have enough room etc)
+		if(recruit_unit(map,team_num,units,new_unit,loc,&disp).empty()) {
+			std::cerr << "recruiting a " << u.name() << " for " << u.cost() << " have " << tm.gold() << " left\n";
+
+			tm.spend_gold(u.cost());
+
+			//confirm the transaction - i.e. don't undo recruitment
+			replay_guard.confirm_transaction();
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	return false;

@@ -339,8 +339,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			}
 		} //end catch
 		catch(replay::error& e) {
-			gui::show_dialog(gui,NULL,"","The file you loaded is corrupt "
-			        "or from a different version of the game",gui::OK_ONLY);
+			std::cerr << "caught replay::error\n";
+			gui::show_dialog(gui,NULL,"",string_table["bad_save_message"],
+			                 gui::OK_ONLY);
 			return QUIT;
 		}
 

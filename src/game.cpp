@@ -288,10 +288,12 @@ int play_game(int argc, char** argv)
 				defines_map.clear();
 				defines_map[state.difficulty] = "";
 			} catch(gamestatus::load_game_failed& e) {
+				std::cerr << "caught load_game_failed\n";
 				gui::show_dialog(disp,NULL,"",
 				           string_table["bad_save_message"],gui::OK_ONLY);
 				continue;
 			} catch(config::error& e) {
+				std::cerr << "caught config::error\n";
 				gui::show_dialog(disp,NULL,"",
 				    string_table["bad_save_message"] + ": " + e.message + "\n",
 				    gui::OK_ONLY);

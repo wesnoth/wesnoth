@@ -49,6 +49,7 @@ std::string recruit_unit(const gamemap& map, int side,
        std::map<gamemap::location,unit>& units, unit& new_unit,
        gamemap::location recruit_location, display* disp, bool need_castle)
 {
+	std::cerr << "recruiting unit for side " << side << "\n";
 	typedef std::map<gamemap::location,unit> units_map;
 
 	//find the unit that can recruit

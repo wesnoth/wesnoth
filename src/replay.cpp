@@ -259,6 +259,7 @@ config* replay::add_command()
 int replay::get_random()
 {
 	if(current_ == NULL) {
+		std::cerr << "no context to place random number in\n";
 		throw error();
 	}
 

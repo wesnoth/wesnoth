@@ -86,4 +86,16 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			   std::vector<team>& teams, int team_num, const gamestatus& state,
 			   game_state& state_of_game, replay* obj=NULL);
 
+//an object which can be made to undo a recorded move
+//unless the transaction is confirmed
+struct replay_undo
+{
+	replay_undo(replay& obj) : obj_(&obj) {}
+	~replay_undo() { if(obj_) obj_->undo(); }
+	void confirm_transaction() { obj_ = NULL; }
+	
+private:
+	replay* obj_;
+};
+
 #endif
