@@ -755,7 +755,7 @@ const time_of_day& timeofday_at(const gamestatus& status,
 			const std::map<gamemap::location,unit>::const_iterator itor =
 			                                              units.find(locs[i]);
 			if(itor != units.end() &&
-			   itor->second.type().is_lightbringer()) {
+			   itor->second.type().illuminates()) {
 				lighten = true;
 			}
 		}

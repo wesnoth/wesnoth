@@ -329,7 +329,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	regenerates_ = has_ability("regenerates");
 	leadership_ = has_ability("leadership");
-	lightbringer_ = has_ability("lightbringer");
+	illuminates_ = has_ability("illuminates");
 	skirmish_ = has_ability("skirmisher");
 	teleport_ = has_ability("teleport");
 	nightvision_ = has_ability("night vision");
@@ -562,9 +562,9 @@ bool unit_type::is_leader() const
 	return leadership_;
 }
 
-bool unit_type::is_lightbringer() const
+bool unit_type::illuminates() const
 {
-	return lightbringer_;
+	return illuminates_;
 }
 
 bool unit_type::is_skirmisher() const
