@@ -72,7 +72,7 @@ public:
 		// Sets the username of this side
 		void set_id(const std::string& id);
 
-		const std::string& get_original_description() const;
+		const std::string& get_save_id() const;
 
 		// Imports data from the network into this side, and updates
 		// the UI accordingly.
@@ -98,7 +98,7 @@ public:
 		// Configurable variables
 		int index_;
 		std::string id_;
-		std::string original_description_;
+		std::string save_id_;
 		mp::controller controller_;
 		int faction_;
 		int team_;

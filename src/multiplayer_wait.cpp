@@ -61,7 +61,8 @@ void wait::leader_preview_pane::draw_contents()
 
 	if(selection_ < side_list_.size()) {
 		const config& side = *side_list_[selection_];
-		std::string faction = side["name"];
+		std::string faction = side["faction"];
+
 		const std::string recruits = side["recruit"];
 		const std::vector<std::string> recruit_list = utils::split(recruits);
 		std::ostringstream recruit_string;
@@ -180,8 +181,8 @@ void wait::join_game(bool observe)
 		//available side.
 		int side_choice = 0;
 		for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s) {
-			if((**s)["controller"] == "network" && (**s)["id"].empty()) {
-				if((**s)["original_description"] == preferences::login()) {
+			if((**s)["controller"] == "network" && (**s)["description"].empty()) {
+				if((**s)["save_id"] == preferences::login()) {
 					side_choice = s - sides_list.begin();
 				}
 			}
@@ -195,6 +196,7 @@ void wait::join_game(bool observe)
 			throw network::error(_("Era not available"));
 			return;
 		}
+		era_sides_ = *era_cfg;
 
 		const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 		if(possible_sides.empty()) {
@@ -254,7 +256,7 @@ void wait::start_game()
 	const config::child_list& sides_list = level_.get_children("side");
 	for(config::child_list::const_iterator side = sides_list.begin(); 
 			side != sides_list.end(); ++side) {
-		if((**side)["controller"] == "network" && (**side)["id"] == preferences::login()) {
+		if((**side)["controller"] == "network" && (**side)["description"] == preferences::login()) {
 			(**side)["controller"] = preferences::client_type();
 		} else if((**side)["controller"] != "null") {
 			(**side)["controller"] = "network";
@@ -351,11 +353,19 @@ void wait::generate_menu()
 		const config& sd = **s;
 
 		std::string description = sd["description"];
-		std::string side_name = sd["name"];
+		const std::string faction_id = sd["id"];
+		const config* const faction_cfg = 
+			era_sides_.find_child("multiplayer_side", "id", faction_id);
+		std::string side_name;
+		if (faction_cfg != NULL) {
+			side_name = (*faction_cfg)["name"];
+		} else {
+			side_name = sd["name"];
+		}
 		std::string leader_type = sd["type"];
 
-		if(!sd["id"].empty())
-			playerlist.push_back(sd["id"]);
+		if(!sd["description"].empty())
+			playerlist.push_back(sd["description"]);
 
 		std::string leader_name;
 		std::string leader_image;

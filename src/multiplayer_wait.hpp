@@ -74,6 +74,8 @@ private:
 	// int team_;
 	const game_data& game_data_;
 
+	config era_sides_;
+
 	config level_;
 	game_state state_;
 

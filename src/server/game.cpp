@@ -185,7 +185,7 @@ void game::update_side_data()
 
 		config::child_iterator sd;
 		for(sd = level_sides.first; sd != level_sides.second; ++sd) {
-			if ((**sd)["id"] == info->second.name()) {
+			if ((**sd)["description"] == info->second.name()) {
 				break;
 			}
 		}
@@ -271,7 +271,7 @@ size_t game::available_slots() const
 	const config::child_list& sides = level_.get_children("side");
 	for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
 		std::cerr << "side controller: '" << (**i)["controller"] << "'\n";
-		if((**i)["controller"] == "network" && (**i)["id"].empty()) {
+		if((**i)["controller"] == "network" && (**i)["description"].empty()) {
 			++available_slots;
 		}
 	}

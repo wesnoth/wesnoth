@@ -78,7 +78,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_gold_.hide(!enabled_);
 
 	id_ = ""; // Id is reset, and not imported from loading savegames
-	original_description_ = cfg_["description"];
+	save_id_ = cfg_["save_id"];
 	faction_ = lexical_cast_default<int>(cfg_["faction"], 0);
 	std::vector<std::string>::const_iterator itor = std::find(parent_->team_names_.begin(), parent_->team_names_.end(), cfg_["team_name"]);
 	if(itor == parent_->team_names_.end()) {
@@ -104,7 +104,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 connect::side::side(const side& a) :
 	parent_(a.parent_), cfg_(a.cfg_), 
-	index_(a.index_), id_(a.id_), original_description_(a.original_description_),
+	index_(a.index_), id_(a.id_),  save_id_(a.save_id_), 
 	controller_(a.controller_),
 	faction_(a.faction_), team_(a.team_), colour_(a.colour_),
 	gold_(a.gold_), leader_(a.leader_), /* taken_(a.taken_), */
@@ -254,30 +254,27 @@ config connect::side::get_config() const
 	if(cfg_["side"].empty() || cfg_["side"] != lexical_cast<std::string>(index_ + 1)) {
 		res["side"] = lexical_cast<std::string>(index_ + 1);
 	}
-	res["id"] = id_;
 	res["controller"] = controller_names[controller_];
+	res["description"] = id_;
+
 	if (id_.empty()) {
 		switch(controller_) {
 		case CNTR_NETWORK:
-			res["description"] = "(Vacant slot)";
 			res["user_description"] = _("(Vacant slot)");
 			break;
 		case CNTR_LOCAL:
 			if(enabled_ && cfg_["save_id"].empty()) {
 				res["save_id"] = "local" + res["side"];
 			}
-			res["description"] = "Anonymous local player";
 			res["user_description"] =  _("Anonymous local player");
 			break;
 		case CNTR_COMPUTER:
 			if(enabled_ && cfg_["save_id"].empty()) {
 				res["save_id"] = "ai" + res["side"];
 			}
-			res["description"] = "Computer player";
 			res["user_description"] = _("Computer player");
 			break;
 		case CNTR_EMPTY:
-			res["description"] = "(Empty slot)";
 			res["user_description"] = _("(Empty slot)");
 			break;
 		default:
@@ -288,10 +285,8 @@ config connect::side::get_config() const
 			res["save_id"] = id_;
 		}
 
-		res["description"] = id_;
 		res["user_description"] = id_;
 	}
-	res["original_description"] = original_description_;
 
 	if(enabled_) {
 		if (leader_.empty()) {
@@ -369,9 +364,9 @@ void connect::side::set_id(const std::string& id)
 	update_ui();
 }
 
-const std::string& connect::side::get_original_description() const 
+const std::string& connect::side::get_save_id() const 
 {
-	return original_description_;
+	return save_id_;
 }
 
 void connect::side::import_network_user(const config& data)
@@ -476,7 +471,7 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 
 	int side_choice = 0;
 	for(side_list::const_iterator s = sides_.begin(); s != sides_.end(); ++s) {
-		if(s->get_original_description() == preferences::login()) {
+		if(s->get_save_id() == preferences::login()) {
 			side_choice = s - sides_.begin();
 		}
 	}
