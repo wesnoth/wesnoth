@@ -81,24 +81,20 @@ bool gamestatus::next_turn()
 game_state read_game(game_data& data, config* cfg)
 {
 	log_scope("read_game");
-	std::cerr << (int)cfg << "\n";
 	game_state res;
 	res.label = cfg->values["label"];
 	res.version = cfg->values["version"];
 	res.gold = atoi(cfg->values["gold"].c_str());
-	res.scenario = atoi(cfg->values["scenario"].c_str());
-	std::cerr << "a\n";
+	res.scenario = cfg->values["scenario"];
 
 	res.difficulty = cfg->values["difficulty"];
 	if(res.difficulty.empty())
 		res.difficulty = "NORMAL";
 
-	std::cerr << "b\n";
 	res.campaign_type = cfg->values["campaign_type"];
 	if(res.campaign_type.empty())
 		res.campaign_type = "scenario";
 
-	std::cerr << "c\n";
 	std::vector<config*>& units = cfg->children["unit"];
 	for(std::vector<config*>::iterator i = units.begin();
 	    i != units.end(); ++i) {
@@ -111,7 +107,6 @@ game_state read_game(game_data& data, config* cfg)
 		res.variables = vars[0]->values;
 	}
 
-	std::cerr << "d\n";
 	std::vector<config*>& replays = cfg->children["replay"];
 	if(replays.empty() == false) {
 		res.replay_data = *replays[0];
@@ -134,8 +129,7 @@ void write_game(const game_state& game, config& cfg)
 	sprintf(buf,"%d",game.gold);
 	cfg.values["gold"] = buf;
 
-	sprintf(buf,"%d",game.scenario);
-	cfg.values["scenario"] = buf;
+	cfg.values["scenario"] = game.scenario;
 
 	cfg.values["campaign_type"] = game.campaign_type;
 

@@ -777,8 +777,7 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 
 	if(command == HOTKEY_SAVE_GAME) {
 		std::stringstream stream;
-		stream << string_table["scenario"]
-		       << " " << (state_of_game.scenario+1)
+		stream << state_of_game.scenario
 		       << " " << string_table["turn"]
 		       << " " << status.turn();
 		std::string label = stream.str();

@@ -611,12 +611,16 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		                             new_handler.name(),new_handler));
 	}
 
-	std::vector<config*>& end_level = cfg->children["endlevel"];
-	if(end_level.empty() == false) {
-		config* const end_info = end_level[0];
-		const std::string& result = end_info->values["result"];
-		if(result.size() == 0 || result == "victory") {
-			const bool bonus = (end_info->values["bonus"] == "yes");
+	const config* const end_info = cfg->child("endlevel");
+	if(end_info != NULL) {
+		const std::string& next_scenario = (*end_info)["next_scenario"];
+		if(next_scenario.empty() == false) {
+			state_of_game->scenario = next_scenario;
+		}
+
+		const std::string& result = (*end_info)["result"];
+		if(result.empty() || result == "victory") {
+			const bool bonus = (*end_info)["bonus"] == "yes";
 			throw end_level_exception(VICTORY,bonus);
 		} else {
 			throw end_level_exception(DEFEAT);

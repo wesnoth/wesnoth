@@ -52,15 +52,17 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 	std::string type = state.campaign_type;
 	if(type.empty())
 		type = "scenario";
-	const std::vector<config*>& scenarios = game_config.children[type];
 
-	for(size_t i = size_t(state.scenario); i < scenarios.size(); ++i) {
-		std::vector<config*>& story = scenarios[i]->children["story"];
+	config* scenario = game_config.find_child(type,"id",state.scenario);
+	while(scenario != NULL) {
+
+		std::vector<config*>& story = scenario->children["story"];
+		const std::string current_scenario = state.scenario;
 
 		try {
 			LEVEL_RESULT res = REPLAY;
 
-			state.label = scenarios[i]->values["name"];
+			state.label = scenario->values["name"];
 
 			recorder.set_save_info(state);
 
@@ -70,12 +72,15 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 					recorder.start_replay();
 				}
 
-				res = play_level(units_data,game_config,scenarios[i],
+				res = play_level(units_data,game_config,scenario,
 				                 video,state,story);
 			}
 
 			//ask to save a replay of the game
 			if(res == VICTORY || res == DEFEAT) {
+				const std::string orig_scenario = state.scenario;
+				state.scenario = current_scenario;
+
 				std::string label = state.label + " replay";
 				const int should_save = gui::show_dialog(disp,NULL,"",
 				                string_table["save_replay_message"],
@@ -84,6 +89,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				if(should_save == 0) {
 					recorder.save_game(units_data,label);
 				}
+
+				state.scenario = orig_scenario;
 			}
 
 			recorder.clear();
@@ -104,29 +111,15 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 			return QUIT;
 		}
 
-		//skip over any scenarios which should be skipped, because their
-		//conditions aren't met
-		while(i+1 < scenarios.size()) {
-			bool skip = false;
+		//if the scenario hasn't been set in-level, set it now.
+		if(state.scenario == current_scenario)
+			state.scenario = (*scenario)["next_scenario"];
 
-			std::vector<config*>& conditions =
-			                    scenarios[i+1]->children["condition"];
-			for(std::vector<config*>::iterator cond = conditions.begin();
-			    cond != conditions.end(); ++cond) {
-				if(game_events::conditional_passed(state,NULL,**cond) == false)
-					skip = true;
-			}
-
-			if(!skip)
-				break;
-
-			++i;
-		}
+	    scenario = game_config.find_child(type,"id",state.scenario);
 
 		//if this isn't the last scenario, then save the game
-		if(i+1 < scenarios.size()) {
-			state.label = scenarios[i+1]->values["name"];
-			state.scenario = i+1;
+		if(scenario != NULL) {
+			state.label = (*scenario)["name"];
 
 			const int should_save = gui::show_dialog(disp,NULL,"",
 			                    string_table["save_game_message"],
@@ -137,6 +130,11 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				save_game(state);
 			}
 		}
+	}
+
+	if(state.scenario != "" && state.scenario != "null") {
+		gui::show_dialog(disp,NULL,"",
+		                 "Error - Unknown scenario: '" + state.scenario + "'");
 	}
 
 	return VICTORY;
@@ -276,7 +274,7 @@ int play_game(int argc, char** argv)
 
 		if(test_mode) {
 			state.campaign_type = "test";
-			state.scenario = 0;
+			state.scenario = "test";
 
 			play_game(disp,state,game_config,units_data,video);
 			return 0;
@@ -367,10 +365,10 @@ int play_game(int argc, char** argv)
 			}
 		} else if(res == gui::TUTORIAL) {
 			state.campaign_type = "tutorial";
-			state.scenario = 0;
+			state.scenario = "tutorial";
 		} else if(res == gui::NEW_CAMPAIGN) {
 			state.campaign_type = "scenario";
-			state.scenario = 0;
+			state.scenario = "scenario1";
 
 			static const std::string difficulties[] = {"EASY","NORMAL","HARD"};
 			const int ndiff = sizeof(difficulties)/sizeof(*difficulties);
@@ -395,7 +393,7 @@ int play_game(int argc, char** argv)
 			defines_map[difficulties[res]] = "";
 		} else if(res == gui::MULTIPLAYER) {
 			state.campaign_type = "multiplayer";
-			state.scenario = 0;
+			state.scenario = "";
 
 			std::vector<std::string> host_or_join;
 			host_or_join.push_back(string_table["host_game"]);

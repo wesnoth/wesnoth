@@ -554,6 +554,41 @@ const std::string& config::operator[](const std::string& key) const
 	}
 }
 
+config* config::find_child(const std::string& key,
+                           const std::string& name,
+                           const std::string& value)
+{
+	const child_map::iterator i = children.find(key);
+	if(i == children.end())
+		return NULL;
+
+	const child_list::iterator j = std::find_if(i->second.begin(),
+	                                            i->second.end(),
+	                                            config_has_value(name,value));
+	if(j != i->second.end())
+		return *j;
+	else
+		return NULL;
+}
+
+const config* config::find_child(const std::string& key,
+                                 const std::string& name,
+                                 const std::string& value) const
+{
+	const child_map::const_iterator i = children.find(key);
+	if(i == children.end())
+		return NULL;
+
+	const child_list::const_iterator j = std::find_if(
+	                                            i->second.begin(),
+	                                            i->second.end(),
+	                                            config_has_value(name,value));
+	if(j != i->second.end())
+		return *j;
+	else
+		return NULL;
+}
+
 std::vector<std::string> config::split(const std::string& val)
 {
 	std::vector<std::string> res;

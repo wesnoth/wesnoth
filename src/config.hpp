@@ -52,7 +52,8 @@ struct config
 	          const std::vector<line_source>* lines=0); //throws config::error
 	std::string write() const;
 
-	typedef std::map<std::string,std::vector<config*> > child_map;
+	typedef std::vector<config*> child_list;
+	typedef std::map<std::string,child_list> child_map;
 	child_map children;
 	string_map values;
 
@@ -72,6 +73,11 @@ struct config
 	std::string& operator[](const std::string& key);
 	const std::string& operator[](const std::string& key) const;
 
+	config* find_child(const std::string& key, const std::string& name,
+	                   const std::string& value);
+	const config* find_child(const std::string& key, const std::string& name,
+	                         const std::string& value) const;
+
 	static std::vector<std::string> split(const std::string& val);
 	static std::string& strip(std::string& str);
 	static bool has_value(const std::string& values, const std::string& val);
@@ -82,6 +88,17 @@ struct config
 		error(const std::string& msg) : message(msg) {}
 		std::string message;
 	};
+};
+
+struct config_has_value {
+	config_has_value(const std::string& name, const std::string& value)
+	              : name_(name), value_(value)
+	{}
+
+	bool operator()(const config* cfg) const { return (*cfg)[name_] == value_; }
+
+private:
+	const std::string name_, value_;
 };
 
 #endif

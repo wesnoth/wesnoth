@@ -232,12 +232,16 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 	std::vector<std::string> options;
 	std::vector<config*>& levels = cfg.children["multiplayer"];
+	std::map<int,std::string> res_to_id;
 	for(std::vector<config*>::iterator i = levels.begin(); i!=levels.end();++i){
-		const std::string& lang_name = string_table[(*i)->values["id"]];
+		const std::string& id = (**i)["id"];
+		res_to_id[i - levels.begin()] = id;
+
+		const std::string& lang_name = string_table[id];
 		if(lang_name.empty() == false)
 			options.push_back(lang_name);
 		else
-			options.push_back((*i)->values["name"]);
+			options.push_back((**i)["name"]);
 	}
 
 	options.push_back("Load game...");
@@ -308,7 +312,7 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 	config& level = *level_ptr;
 	state.label = level.values["name"];
 
-	state.scenario = res;
+	state.scenario = res_to_id[res];
 
 	std::vector<config*>& sides = level.children["side"];
 	std::vector<config*>& possible_sides = cfg.children["multiplayer_side"];

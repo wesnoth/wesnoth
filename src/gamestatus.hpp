@@ -65,7 +65,7 @@ struct game_state
 	std::string label;
 	std::string version;
 	std::string campaign_type;
-	int scenario;
+	std::string scenario;
 	int gold;
 	std::vector<unit> available_units;
 	std::map<std::string,std::string> variables;
