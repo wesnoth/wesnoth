@@ -32,7 +32,7 @@ public:
 	/// the one the file is in.
 	file_chooser(display &disp, std::string start_file="");
 
-	void draw();
+	void draw_contents();
 	void process();
 
 	void set_dirty(bool dirty=true);

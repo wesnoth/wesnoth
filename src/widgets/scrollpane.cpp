@@ -1,0 +1,189 @@
+/* $Id$ */
+/*
+   Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+#include "scrollpane.hpp"
+
+namespace {
+class widget_finder {
+public:
+	widget_finder(gui::widget* w) : w_(w) {};
+
+	bool operator()(const std::pair<int, gui::scrollpane::scrollpane_widget>& p) 
+	{
+		if(p.second.w == w_)
+			return true;
+		return false;
+	}
+private:
+	gui::widget* w_;
+};
+}
+
+namespace gui {
+
+scrollpane::scrollpane(display& d) : widget(d), border_(5), scrollbar_(d, *this, this)
+{
+	content_pos_.x = 0;
+	content_pos_.y = 0;
+	update_content_size();
+}
+
+void scrollpane::clear()
+{
+	content_.clear();
+	
+	update_content_size();
+}
+
+void scrollpane::add_widget(widget* w, int x, int y, int z_order)
+{
+	if (w == NULL)
+		return;
+
+	widget_map::iterator itor = std::find_if(content_.begin(), content_.end(), widget_finder(w));
+	if (itor != content_.end())
+		return;
+
+	scrollpane_widget spw(w, x, y, z_order);
+
+	w->set_clip_rect(client_area());
+	content_.insert(std::pair<int, scrollpane_widget>(z_order, spw));
+
+	position_widget(spw);
+
+	// Recalculates the whole content size
+	update_content_size();
+}
+
+void scrollpane::remove_widget(widget* w)
+{
+	widget_map::iterator itor = std::find_if(content_.begin(), content_.end(), widget_finder(w));
+
+	if (itor != content_.end())
+		content_.erase(itor);
+
+	update_content_size();
+}
+
+void scrollpane::set_location(const SDL_Rect& rect)
+{
+	widget::set_location(rect);
+	SDL_Rect bar_rect = rect;
+
+	bar_rect.x = rect.x + rect.w - scrollbar_.width();
+	bar_rect.y = rect.y;
+	bar_rect.w = scrollbar_.width();
+	bar_rect.h = rect.h;
+	scrollbar_.set_location(bar_rect);
+
+	for(widget_map::iterator itor = content_.begin(); itor != content_.end(); ++itor) {
+		itor->second.w->set_clip_rect(client_area());
+	}
+}
+
+void scrollpane::hide(bool value)
+{
+	widget::hide(value);
+	scrollbar_.hide(value);
+}
+
+void scrollpane::draw()
+{
+	//draws the scrollpane background
+}
+
+void scrollpane::scroll(int pos)
+{
+	if (pos == content_pos_.y)
+		return;
+
+	content_pos_.y = pos;
+	widget_map::iterator itor; 
+
+	std::vector<bool> hidden(content_.size());
+
+	int i = 0;
+	for(itor = content_.begin(); itor != content_.end(); ++itor) {
+		hidden[i++] = itor->second.w->hidden();
+		itor->second.w->hide();
+	}
+
+	for(itor = content_.begin(); itor != content_.end(); ++itor) {
+		position_widget(itor->second);
+	}
+
+	i = 0;
+	for(itor = content_.begin(); itor != content_.end(); ++itor) {
+		if (!hidden[i++])
+			itor->second.w->hide(false);
+	}
+
+	set_dirty();
+}
+
+void scrollpane::position_widget(scrollpane_widget& spw)
+{
+	spw.w->set_location(spw.x + location().x + border_,
+			spw.y + location().y - content_pos_.y + border_);
+}
+
+SDL_Rect scrollpane::client_area() const
+{
+	SDL_Rect res;
+
+	res.x = location().x + border_;
+	res.y = location().y + border_;
+	res.w = location().w > 2 * border_ ? location().w - 2 * border_ : 0;
+	res.h = location().h > 2 * border_ ? location().h - 2 * border_ : 0;
+
+	return res;
+}
+
+bool scrollpane::show_scrollbar() const
+{
+	if (content_pos_.h > client_area().h)
+		return true;
+
+	return false;
+}
+
+void scrollpane::update_content_size()
+{
+	int maxx = 0;
+	int maxy = 0;
+
+	for(widget_map::iterator itor = content_.begin(); itor != content_.end(); ++itor) {
+		if(itor->second.x + itor->second.w->width() > maxx) {
+			maxx = itor->second.x + itor->second.w->width();
+		}
+		if(itor->second.y + itor->second.w->height() > maxy) {
+			maxy = itor->second.y + itor->second.w->height();
+		}
+	}
+
+	content_pos_.w = maxx;
+	content_pos_.h = maxy;
+
+	if(client_area().h < maxy) {
+		scrollbar_.hide(false);
+	} else {
+		scrollbar_.hide();
+	}
+
+	scrollbar_.set_full_size(maxy);
+	scrollbar_.set_shown_size(client_area().h);
+
+	set_dirty();
+}
+
+}

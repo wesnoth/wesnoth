@@ -287,7 +287,40 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	SDL_Rect minimap_rect = {xpos,ypos,minimap_width,minimap_width};
 	minimap_restorer_ = surface_restorer(&disp_.video(),minimap_rect);
 
+	name_entry_->hide(false);
+	maps_menu_->hide(false);
+	turns_slider_->hide(false);
+	village_gold_slider_->hide(false);
+	xp_modifier_slider_->hide(false);
+	fog_game_->hide(false);
+	shroud_game_->hide(false);
+	observers_game_->hide(false);
+	vision_combo_->hide(false);
+	right_button->hide(false);
+	left_button->hide(false);
+	regenerate_map_->hide(false);
+	generator_settings_->hide(false);
+	era_combo_->hide(false);
+
 	std::cerr << "setup dialog end set_area\n";
+}
+
+void multiplayer_game_setup_dialog::clear_area()
+{
+	name_entry_->hide();
+	maps_menu_->hide();
+	turns_slider_->hide();
+	village_gold_slider_->hide();
+	xp_modifier_slider_->hide();
+	fog_game_->hide();
+	shroud_game_->hide();
+	observers_game_->hide();
+	vision_combo_->hide();
+	launch_game_->hide();
+	cancel_game_->hide();
+	regenerate_map_->hide();
+	generator_settings_->hide();
+	era_combo_->hide();
 }
 
 lobby::RESULT multiplayer_game_setup_dialog::process()

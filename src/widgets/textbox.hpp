@@ -45,7 +45,7 @@ public:
 
 	void set_wrap(bool val);
 
-	void draw();
+	void draw_contents();
 	virtual void set_location(SDL_Rect const &);
 	using widget::set_location;
 

@@ -63,7 +63,7 @@ public:
 protected:
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();
-	virtual void draw();
+	virtual void draw_contents();
 
 private:
 	SDL_Rect grip_area() const;

@@ -12,7 +12,7 @@ public:
 
 	void set_progress_percent(int progress);
 
-	void draw();
+	void draw_contents();
 
 private:
 	int progress_;

@@ -115,13 +115,8 @@ void textbox::draw_cursor(int pos, display &disp) const
 	}
 }
 
-void textbox::draw()
+void textbox::draw_contents()
 {
-	if (hidden() || !dirty())
-		return;
-
-	bg_restore();
-
 	const bool has_scrollbar = show_scrollbar();
 	SDL_Rect loc = location();
 	if (has_scrollbar)
@@ -177,7 +172,6 @@ void textbox::draw()
 
 	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), disp());
 
-	set_dirty(false);
 	update_rect(loc);
 }
 

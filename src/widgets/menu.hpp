@@ -84,7 +84,7 @@ private:
 	size_t selected_;
 	bool click_selects_;
 	bool previous_button_;
-	std::set<size_t> undrawn_items_;
+	//std::set<size_t> undrawn_items_;
 
 	bool show_result_;
 
@@ -93,7 +93,7 @@ private:
 	const std::vector<int>& column_widths() const;
 	void draw_item(int item);
 	void clear_item(int item);
-	void draw();
+	void draw_contents();
 	int hit(int x, int y) const;
 
 	std::pair<int,int> hit_cell(int x, int y) const;

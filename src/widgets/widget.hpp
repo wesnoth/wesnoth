@@ -30,6 +30,8 @@ public:
 	virtual void hide(bool value = true);
 	bool hidden() const;
 
+	void set_clip_rect(const SDL_Rect& rect);
+	
 	//Function to set the widget to draw in 'volatile' mode.
 	//When in 'volatile' mode, instead of using the normal
 	//save-background-redraw-when-dirty procedure, redrawing is done
@@ -62,6 +64,9 @@ protected:
 
 	virtual void handle_event(SDL_Event const &event) {}
 
+	virtual void draw();
+	virtual void draw_contents() {};
+
 private:
 	void volatile_draw();
 	void volatile_undraw();
@@ -76,6 +81,7 @@ private:
 	mutable bool needs_restore_; // Have we drawn ourselves, so that if moved, we need to restore the background?
 
 	enum { UNINIT, HIDDEN, DIRTY, DRAWN } state_;
+	SDL_Rect clip_rect_;
 
 	bool volatile_;
 

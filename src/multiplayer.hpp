@@ -42,7 +42,9 @@ public:
 	multiplayer_game_setup_dialog(display& disp, game_data& units_data,
                       const config& cfg, game_state& state, bool server=false, const std::string& controller="ai");
 
-	void set_area(const SDL_Rect& area);
+	virtual void set_area(const SDL_Rect& area);
+	virtual void clear_area();
+
 	lobby::RESULT process();
 
 	void start_game();

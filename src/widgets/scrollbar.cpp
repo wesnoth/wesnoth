@@ -161,11 +161,8 @@ SDL_Rect scrollbar::grip_area() const
 	return res;
 }
 
-void scrollbar::draw()
+void scrollbar::draw_contents()
 {
-	if (hidden() || !dirty())
-		return;
-
 	const surface mid_img(image::get_image(state_ != NORMAL ? 
 					scrollbar_mid_hl : scrollbar_mid, image::UNSCALED));
 	const surface bottom_img(image::get_image(state_ != NORMAL ? 
@@ -218,8 +215,6 @@ void scrollbar::draw()
 
 	surface const screen = disp().video().getSurface();
 
-	bg_restore();
-
 	// draw scrollbar "groove"
 	disp().blit_surface(groove.x, groove.y, top_grv);
 	disp().blit_surface(groove.x, groove.y + top_grv->h, groove_scaled_);
@@ -230,7 +225,6 @@ void scrollbar::draw()
 	disp().blit_surface(grip.x, grip.y + top_img->h, mid_scaled_);
 	disp().blit_surface(grip.x, grip.y + top_img->h + mid_height, bottom_img);
 
-	set_dirty(false);
 	update_rect(groove);
 }	
 

@@ -43,12 +43,13 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    disp_(&disp), cfg_(&cfg), data_(&data), state_(&state),
 	    show_replay_(false), save_(false), join_(join),
 	    player_types_(), player_races_(), player_teams_(),
-	    player_colors_(), combos_type_(), combos_race_(),
+	    player_colors_(), scroll_pane_(disp), combos_type_(), combos_race_(),
 	    combos_leader_(), combos_team_(), combos_color_(), sliders_gold_(),
-	    ai_(gui::button(disp, _(" Computer vs Computer "))),
-	    launch_(gui::button(disp, _("I'm Ready"))),
-	    cancel_(gui::button(disp, _("Cancel"))),
-		message_full_(true), default_controller_(default_controller)
+	    ai_(disp, _(" Computer vs Computer ")),
+	    launch_(disp, _("I'm Ready")),
+	    cancel_(disp, _("Cancel")),
+	    waiting_label_(disp, ""),
+	    message_full_(true), default_controller_(default_controller)
 {
 	// Send Initial information
 	config response;
@@ -359,7 +360,8 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	right_button->set_location(right - right_button->width() - gui::ButtonHPadding,bottom-right_button->height()-gui::ButtonVPadding);
 	left_button->set_location(right - right_button->width() - left_button->width() - gui::ButtonHPadding*2,bottom-left_button->height()-gui::ButtonVPadding);
 	
-	ai_.set_location(left+30,bottom-60);
+	ai_.set_location(left+30, bottom-left_button->height()-gui::ButtonVPadding);
+	waiting_label_.set_location(ai_.location().x + ai_.location().w + 10, bottom-left_button->height()-gui::ButtonVPadding);
 
 	//Title and labels
 	gui::draw_dialog_title(left,top,disp_,_("Game Lobby"));
@@ -395,44 +397,46 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		return;
 	}
 
-	combos_type_.clear();
-	combos_race_.clear();
-	combos_leader_.clear();
-	combos_team_.clear();
-	combos_color_.clear();
-	sliders_gold_.clear();
+	//Show buttons
+	ai_.hide(false);
+	launch_.hide(false);
+	cancel_.hide(false);
+	waiting_label_.hide(false);
+	scroll_pane_.hide(false);
 
+	SDL_Rect scroll_pane_rect;
+	scroll_pane_rect.x = rect.x;
+	scroll_pane_rect.y = rect.y + 50;
+	scroll_pane_rect.w = rect.w;
+	scroll_pane_rect.h = launch_.location().y - scroll_pane_rect.y - gui::ButtonVPadding;
+
+	scroll_pane_.set_location(scroll_pane_rect);
 	config::child_iterator sd;
 
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		const int side_num = sd - sides.first;
 
 		//Player number
-		font::draw_text(disp_,rect, font::SIZE_XLARGE, font::GOOD_COLOUR,
-		                (*sd)->values["side"], left+10, top+53+(60*side_num));
+		player_numbers_.push_back(gui::label(*disp_, (*sd)->values["side"],
+					font::SIZE_XLARGE, font::GOOD_COLOUR));
 
 		//Player type
 		combos_type_.push_back(gui::combo(*disp_, player_types_));
-		combos_type_.back().set_location(left+30,top+55+(60*side_num));
 
 		//Player race
 		combos_race_.push_back(gui::combo(*disp_, player_races_));
-		combos_race_.back().set_location(left+145,top+55+(60*side_num));
 
 		//Player leader
 		std::vector<std::string> dummy_leaders;
 		dummy_leaders.push_back("-");
 		combos_leader_.push_back(gui::combo(*disp_, dummy_leaders));
-		combos_leader_.back().set_location(left+145,top+85+(60*side_num));
 
 		//Player team
 		combos_team_.push_back(gui::combo(*disp_, player_teams_));
-		combos_team_.back().set_location(left+260,top+55+(60*side_num));
 		combos_team_.back().set_selected(side_num);
 
 		//Player color
 		combos_color_.push_back(gui::combo(*disp_, player_colors_));
-		combos_color_.back().set_location(left+375,top+55+(60*side_num));
 		combos_color_.back().set_selected(side_num);
 
 		SDL_Rect r;
@@ -442,15 +446,15 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		r.y = top+55+(60*side_num);
 		r.w = launch_.width()-5;
 		r.h = launch_.height();
+
 		sliders_gold_.push_back(gui::slider(*disp_));
-		sliders_gold_.back().set_location(r);
 		sliders_gold_.back().set_min(20);
 		sliders_gold_.back().set_max(1000);
 		sliders_gold_.back().set_increment(25);
 		sliders_gold_.back().set_value(lexical_cast_default<int>((**sd)["gold"],100));
-		r.w = 30;
-		r.x = left+603;
-		gold_bg_.push_back(surface_restorer(&disp_->video(),r));
+		sliders_gold_.back().set_location(r);
+
+		labels_gold_.push_back(gui::label(*disp_, "100", font::SIZE_NORMAL, font::GOOD_COLOUR));
 
 		combos_race_.back().enable(!save_);
 		combos_leader_.back().enable(!save_);
@@ -464,6 +468,17 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	if (!save_) {
 		for(sd = sides.first; sd != sides.second; ++sd) {
 			const int side_num = sd - sides.first;
+			const int spos = 60 * side_num;
+
+			scroll_pane_.add_widget(&player_numbers_[side_num], 10, 3 + spos);
+			scroll_pane_.add_widget(&combos_type_[side_num], 30, 5 + spos);
+			scroll_pane_.add_widget(&combos_race_[side_num], 145, 5 + spos);
+			scroll_pane_.add_widget(&combos_leader_[side_num], 145, 35 + spos);
+			scroll_pane_.add_widget(&combos_team_[side_num], 260, 5 + spos);
+			scroll_pane_.add_widget(&combos_color_[side_num], 375, 5 + spos);
+			scroll_pane_.add_widget(&sliders_gold_[side_num], 490, 5 + spos);
+			scroll_pane_.add_widget(&labels_gold_[side_num], 500 + sliders_gold_[side_num].width(), 5 + spos);
+
 			player_leaders_[side_num].set_combo(&combos_leader_[side_num]);
 		}
 	}
@@ -471,6 +486,25 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	std::cerr << "done set_area()\n";
 
 	update_whole_screen();
+}
+
+void mp_connect::clear_area()
+{
+	scroll_pane_.clear();
+
+	combos_type_.clear();
+	combos_race_.clear();
+	combos_leader_.clear();
+	combos_team_.clear();
+	combos_color_.clear();
+	sliders_gold_.clear();
+	labels_gold_.clear();
+
+	ai_.hide();
+	launch_.hide();
+	cancel_.hide();
+	waiting_label_.hide();
+	scroll_pane_.hide();
 }
 
 void mp_connect::gui_update()
@@ -538,30 +572,16 @@ void mp_connect::gui_update()
 			player_leaders_[n].set_leader(side["type"]);
 
 		//Player Gold
-		rect.x = rect_.x + 603;
-		rect.y = rect_.y + 55 + (60 * n);
-		rect.w = 30;
-		rect.h = launch_.height();
-		gold_bg_[n].restore();
-		font::draw_text(disp_, disp_->screen_area(), font::SIZE_SMALL,
-				font::GOOD_COLOUR,
-		                side["gold"],
-				rect.x, rect.y);
-		update_rect(rect);
+		labels_gold_[n].set_text(side["gold"]);
 	}
 
 	const bool full = is_full();
 	if(full != message_full_) {
 		message_full_ = full;
 		if(full) {
-			message_bg_.restore();
-			message_bg_ = surface_restorer();
+			waiting_label_.set_text("");
 		} else {
-			SDL_Rect rect = font::draw_text(NULL,rect_,font::SIZE_SMALL,font::NORMAL_COLOUR,_("Waiting for network players to join"),0,0);
-			rect.x = ai_.location().x + ai_.location().w + 10;
-			rect.y = ai_.location().y;
-			message_bg_ = surface_restorer(&disp_->video(),rect);
-			font::draw_text(disp_,rect,font::SIZE_SMALL,font::NORMAL_COLOUR,_("Waiting for network players to join"),rect.x,rect.y);
+			waiting_label_.set_text(_("Waiting for network players to join"));
 		}
 	}
 }
@@ -680,15 +700,8 @@ lobby::RESULT mp_connect::process()
 			{
 				side["gold"] = playergold.str();
 
-				SDL_Rect rect;
-				rect.x = rect_.x + 603;
-				rect.y = rect_.y + 55 + (60 * n);
-				rect.w = 30;
-				rect.h = launch_.height();
-				gold_bg_[n].restore();
-				font::draw_text(disp_, rect_, font::SIZE_SMALL,font::GOOD_COLOUR,(*sides.first[n])["gold"],
-						        rect.x, rect.y);
-				update_rect(rect);
+				//Player Gold
+				labels_gold_[n].set_text(side["gold"]);
 				level_changed = true;
 			}
 		}
@@ -794,18 +807,7 @@ bool mp_connect::get_network_data(config& cfg)
 
 void mp_connect::start_game()
 {
-	combos_type_.clear();
-	combos_race_.clear();
-	combos_leader_.clear();
-	combos_team_.clear();
-	combos_color_.clear();
-	sliders_gold_.clear();
-
-	ai_.hide();
-	launch_.hide();
-	cancel_.hide();
-	gold_bg_.clear();
-
+	clear_area();
 
 	//Tell everyone to start
 	config cfg;

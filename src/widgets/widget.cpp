@@ -9,7 +9,7 @@ namespace gui {
 
 widget::widget(const widget &o)
 	: events::handler(), disp_(o.disp_), restorer_(o.restorer_), rect_(o.rect_),
-	  focus_(o.focus_), needs_restore_(o.needs_restore_),
+	  clip_rect_(o.clip_rect_), focus_(o.focus_), needs_restore_(o.needs_restore_),
 	  state_(o.state_), volatile_(o.volatile_),
 	  help_text_(o.help_text_), help_string_(o.help_string_)
 {
@@ -19,6 +19,10 @@ widget::widget(display& disp)
 	: disp_(&disp), rect_(EmptyRect), focus_(true), needs_restore_(false),
 	  state_(UNINIT), volatile_(false), help_string_(0)
 {
+	clip_rect_.x = 0;
+	clip_rect_.y = 0;
+	clip_rect_.w = disp.screen_area().w;
+	clip_rect_.h = disp.screen_area().h;
 }
 
 widget::~widget()
@@ -110,6 +114,12 @@ void widget::hide(bool value)
 	}
 }
 
+void widget::set_clip_rect(const SDL_Rect& rect)
+{
+	clip_rect_ = rect;
+	set_dirty(true);
+}
+
 bool widget::hidden() const
 {
 	return state_ == HIDDEN || state_ == UNINIT;
@@ -139,6 +149,8 @@ void widget::bg_update()
 
 void widget::bg_restore() const
 {
+	clip_rect_setter set_clip_rect(disp().video().getSurface(), clip_rect_);
+
 	if (needs_restore_) {
 		for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
 		    i_end = restorer_.end(); i != i_end; ++i)
@@ -153,6 +165,8 @@ void widget::bg_restore() const
 
 void widget::bg_restore(SDL_Rect const &rect) const
 {
+	clip_rect_setter set_clip_rect(disp().video().getSurface(), clip_rect_);
+
 	for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
 	    i_end = restorer_.end(); i != i_end; ++i)
 		i->restore(rect);
@@ -163,6 +177,20 @@ void widget::set_volatile(bool val)
 	volatile_ = val;
 	if (volatile_ && state_ == DIRTY)
 		state_ = DRAWN;
+}
+
+void widget::draw()
+{
+	if (hidden() || !dirty())
+		return;
+
+	bg_restore();
+
+	clip_rect_setter set_clip_rect(disp().video().getSurface(), clip_rect_);
+	draw_contents();
+
+	update_rect(rect_);
+	set_dirty(false);
 }
 
 void widget::volatile_draw()

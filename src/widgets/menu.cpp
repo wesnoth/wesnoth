@@ -125,7 +125,8 @@ void menu::set_location(SDL_Rect const &rect)
 void menu::change_item(int pos1, int pos2,std::string str)
 {
 	items_[pos1][pos2] = str;
-	undrawn_items_.insert(pos1);
+	//undrawn_items_.insert(pos1);
+	set_dirty();
 }
 
 void menu::erase_item(size_t index)
@@ -150,7 +151,8 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	items_.clear();
 	itemRects_.clear();
 	column_widths_.clear();
-	undrawn_items_.clear();
+	//undrawn_items_.clear();
+	set_dirty();
 	max_items_ = -1; // Force recalculation of the max items.
 	item_height_ = -1; // Force recalculation of the item height.
 	// Scrollbar will be reenabled if it is needed.
@@ -221,8 +223,9 @@ void menu::move_selection(size_t new_selected)
 	if (new_selected == selected_ || new_selected >= items_.size())
 		return;
 
-	undrawn_items_.insert(selected_);
-	undrawn_items_.insert(new_selected);
+	//undrawn_items_.insert(selected_);
+	//undrawn_items_.insert(new_selected);
+	set_dirty();
 	selected_ = new_selected;
 	adjust_viewport_to_selection();
 }
@@ -452,9 +455,10 @@ void menu::draw_item(int item)
 	}
 }
 
-void menu::draw()
+void menu::draw_contents()
 {
-	if (hidden() || !dirty() && undrawn_items_.empty())
+#if 0
+	if (undrawn_items_.empty())
 		return;
 
 	if (!dirty()) {
@@ -470,7 +474,7 @@ void menu::draw()
 	}
 
 	undrawn_items_.clear();
-	set_dirty(false);
+#endif
 
 	for(size_t i = 0; i != items_.size(); ++i)
 		draw_item(i);

@@ -41,7 +41,7 @@ public:
 
 protected:
 	virtual void handle_event(const SDL_Event& event);
-	virtual void draw();
+	virtual void draw_contents();
 
 private:
 	void mouse_motion(const SDL_MouseMotionEvent& event);

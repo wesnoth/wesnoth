@@ -136,14 +136,8 @@ bool button::enabled() const
 	return enabled_;
 }
 
-void button::draw()
+void button::draw_contents()
 {
-	if (hidden() || !dirty())
-		return;
-
-	if (type_ == TYPE_CHECK)
-		bg_restore();
-
 	surface image = image_;
 	const int image_w = image_->w;
 	
@@ -182,8 +176,6 @@ void button::draw()
 	font::draw_text(&disp(), clipArea, font_size, font::BUTTON_COLOUR, etext, textx, texty);
 
 	update_rect(loc);
-
-	set_dirty(false);
 }
 
 bool button::hit(int x, int y) const

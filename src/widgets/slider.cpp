@@ -108,11 +108,8 @@ SDL_Rect slider::slider_area() const
 	return res;
 }
 
-void slider::draw()
+void slider::draw_contents()
 {
-	if (!dirty() || hidden())
-		return;
-
 	const surface image(state_ != NORMAL ? highlightedImage_ : image_);
 	if (image == NULL)
 		return;
@@ -123,16 +120,11 @@ void slider::draw()
 
 	surface const screen = disp().video().getSurface();
 
-	bg_restore();
-
 	SDL_Rect line_rect = { loc.x + image->w / 2, loc.y + loc.h / 2, loc.w - image->w, 1 };
 	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format, 255, 255, 255));
 
 	SDL_Rect const &slider = slider_area();
 	disp().blit_surface(slider.x, slider.y, image);
-
-	set_dirty(false);
-	update_rect(loc);
 }
 
 void slider::set_slider_position(int x)

@@ -16,6 +16,7 @@ class dialog
 {
 public:
 	virtual void set_area(const SDL_Rect& area) = 0;
+	virtual void clear_area() {};
 	virtual RESULT process() = 0;
 	virtual bool manages_network() const { return false; }
 	virtual bool get_network_data(config& out) { return false; }

@@ -199,7 +199,7 @@ private:
 
 struct clip_rect_setter
 {
-	clip_rect_setter(surface surf, SDL_Rect& r) : surface_(surf)
+	clip_rect_setter(surface surf, const SDL_Rect& r) : surface_(surf)
 	{
 		SDL_GetClipRect(surface_,&rect);
 		SDL_SetClipRect(surface_,&r);

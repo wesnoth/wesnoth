@@ -94,9 +94,11 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/button.cpp \
 		  widgets/file_chooser.cpp \
 		  widgets/combo.cpp \
+		  widgets/label.cpp \
 		  widgets/menu.cpp \
 		  widgets/progressbar.cpp \
 		  widgets/scrollbar.cpp \
+		  widgets/scrollpane.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
 		  widgets/widget.cpp \
@@ -171,9 +173,11 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/button.hpp \
 		  widgets/file_chooser.hpp \
 		  widgets/combo.hpp \
+		  widgets/label.hpp \
 		  widgets/menu.hpp \
 		  widgets/progressbar.hpp \
 		  widgets/scrollbar.hpp \
+		  widgets/scrollpane.hpp \
 		  widgets/slider.hpp \
 		  widgets/textbox.hpp \
 		  widgets/widget.hpp \

@@ -21,6 +21,8 @@
 #include "widgets/combo.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/slider.hpp"
+#include "widgets/scrollpane.hpp"
+#include "widgets/label.hpp"
 
 #include <deque>
 #include <iostream>
@@ -44,7 +46,9 @@ public:
 	void start_game();
 
 private:
-	void set_area(const SDL_Rect& rect);
+	virtual void set_area(const SDL_Rect& rect);
+	virtual void clear_area();
+
 	lobby::RESULT process();
 	bool manages_network() const { return true; }
 	bool get_network_data(config& cfg);
@@ -86,20 +90,22 @@ private:
 	//std::vector<std::vector<std::string> > player_leaders_;
 	std::vector<leader_list_manager> player_leaders_;
 
+	gui::scrollpane scroll_pane_;
+
+	std::vector<gui::label> player_numbers_;
 	std::vector<gui::combo> combos_type_;
 	std::vector<gui::combo> combos_race_;
 	std::vector<gui::combo> combos_leader_;
 	std::vector<gui::combo> combos_team_;
 	std::vector<gui::combo> combos_color_;
 	std::vector<gui::slider> sliders_gold_;
+	std::vector<gui::label> labels_gold_;
 
 	gui::button ai_;
 	gui::button launch_;
 	gui::button cancel_;
 
-	std::vector<surface_restorer> gold_bg_;
-
-	surface_restorer message_bg_;
+	gui::label waiting_label_;
 	bool message_full_;
 
 	std::deque<config> network_data_;
