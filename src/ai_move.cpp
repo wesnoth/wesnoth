@@ -456,7 +456,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			}
 		}
 
-		std::cerr << tg->value << "/" << cur_route.move_left << " = " << rating << "\n";
+		LOG_AI << tg->value << "/" << cur_route.move_left << " = " << rating << "\n";
 		if(best_target == targets.end() || rating > best_rating) {
 			best_rating = rating;
 			best_target = tg;
@@ -465,7 +465,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		}
 	}
 
-	std::cerr << "chose target...\n";
+	LOG_AI << "chose target...\n";
 
 
 	if(best_target == targets.end()) {

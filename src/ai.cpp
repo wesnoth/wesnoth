@@ -1122,11 +1122,11 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 				if(map_.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->first)) {
 					const double vuln = power_projection(it.first->first,
 					                    enemy_srcdst,enemy_dstsrc);
-					std::cerr << "found village with vulnerability: " << vuln << "\n";
+					LOG_AI << "found village with vulnerability: " << vuln << "\n";
 					if(vuln < best_vulnerability || best_loc == it.second) {
 						best_vulnerability = vuln;
 						best_loc = it.first;
-						std::cerr << "chose village " << (dst.x+1) << "," << (dst.y+1) << "\n";
+						LOG_AI << "chose village " << (dst.x+1) << "," << (dst.y+1) << "\n";
 					}
 				}
 				
@@ -1138,7 +1138,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 				const location& src = best_loc->first;
 				const location& dst = best_loc->second;
 
-				std::cerr << "moving unit to village for healing...\n";
+				LOG_AI << "moving unit to village for healing...\n";
 
 				move_unit(src,dst,possible_moves);
 				return true;
