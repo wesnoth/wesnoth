@@ -688,13 +688,13 @@ namespace {
 	const std::string ConfigPostfix = "\n";
 }
 
-size_t config::write_size() const
+size_t config::write_size(size_t tab) const
 {
 	size_t res = 0;
 	for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
 		if(i->second.empty() == false) {
 			res += i->first.size() + AttributeEquals.size() +
-			       i->second.size() + AttributePostfix.size();
+			       i->second.size() + AttributePostfix.size() + tab;
 		}
 	}
 
@@ -703,7 +703,7 @@ size_t config::write_size() const
 		const std::string& name = *item.first;
 		const config& cfg = *item.second;
 		res += ElementPrefix.size() + name.size() + ElementPostfix.size() +
-		       cfg.write_size() + EndElementPrefix.size() + name.size() + EndElementPostfix.size();
+		       cfg.write_size(tab+1) + EndElementPrefix.size() + name.size() + EndElementPostfix.size() + tab*2;
 		
 	}
 
@@ -712,11 +712,14 @@ size_t config::write_size() const
 	return res;
 }
 
-std::string::iterator config::write_internal(std::string::iterator out) const
+std::string::iterator config::write_internal(std::string::iterator out, size_t tab) const
 {
 	for(std::map<std::string,std::string>::const_iterator i = values.begin();
 					i != values.end(); ++i) {
 		if(i->second.empty() == false) {
+			std::fill(out,out+tab,'\t');
+			out += tab;
+
 			out = std::copy(i->first.begin(),i->first.end(),out);
 			out = std::copy(AttributeEquals.begin(),AttributeEquals.end(),out);
 			out = std::copy(i->second.begin(),i->second.end(),out);
@@ -729,10 +732,17 @@ std::string::iterator config::write_internal(std::string::iterator out) const
 		const std::string& name = *item.first;
 		const config& cfg = *item.second;
 
+		std::fill(out,out+tab,'\t');
+		out += tab;
+
 		out = std::copy(ElementPrefix.begin(),ElementPrefix.end(),out);
 		out = std::copy(name.begin(),name.end(),out);
 		out = std::copy(ElementPostfix.begin(),ElementPostfix.end(),out);
-		out = cfg.write_internal(out);
+		out = cfg.write_internal(out,tab+1);
+
+		std::fill(out,out+tab,'\t');
+		out += tab;
+
 		out = std::copy(EndElementPrefix.begin(),EndElementPrefix.end(),out);
 		out = std::copy(name.begin(),name.end(),out);
 		out = std::copy(EndElementPostfix.begin(),EndElementPostfix.end(),out);

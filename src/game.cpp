@@ -78,6 +78,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		} else {
 			scenario = game_config.find_child(type,"id",state.scenario);
 		}
+
+		statistics::clear_current_scenario();
 	} else {
 		std::cerr << "loading snapshot...\n";
 		//load from a save-snapshot.

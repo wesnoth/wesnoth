@@ -397,6 +397,14 @@ void fresh_stats()
 	mid_scenario = false;
 }
 
+void clear_current_scenario()
+{
+	if(master_stats.empty() == false) {
+		master_stats.pop_back();
+		mid_scenario = false;
+	}
+}
+
 int sum_str_int_map(const stats::str_int_map& m)
 {
 	int res = 0;

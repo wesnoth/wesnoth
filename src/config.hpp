@@ -218,8 +218,8 @@ struct config
 	string_map values;
 
 private:
-	size_t write_size() const;
-	std::string::iterator write_internal(std::string::iterator out) const;
+	size_t write_size(size_t tab=0) const;
+	std::string::iterator write_internal(std::string::iterator out, size_t tab=0) const;
 	std::string::const_iterator read_compressed_internal(std::string::const_iterator i1, std::string::const_iterator i2, compression_schema& schema);
 	void write_compressed_internal(compression_schema& schema, std::vector<char>& res) const;
 

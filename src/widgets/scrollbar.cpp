@@ -110,7 +110,7 @@ void scrollbar::redraw()
 
 void scrollbar::draw()
 {
-	if (!enabled() || !dirty())
+	if(!enabled() || !dirty())
 		return;
 
 	set_dirty(false);

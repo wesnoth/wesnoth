@@ -74,6 +74,7 @@ namespace statistics
 	config write_stats();
 	void read_stats(const config& cfg);
 	void fresh_stats();
+	void clear_current_scenario();
 
 	std::vector<std::string> get_categories();
 	stats calculate_stats(int category, int side);
