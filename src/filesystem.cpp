@@ -573,6 +573,10 @@ bool is_directory(const std::string& fname)
 
 bool file_exists(const std::string& name)
 {
+#ifdef USE_ZIPIOS
+	if (the_collection.getEntry(name))
+		return true;
+#endif
 	std::ifstream file(name.c_str());
 	if (file.rdstate() != 0)
 	        return false;

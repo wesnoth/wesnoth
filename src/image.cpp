@@ -201,6 +201,21 @@ bool locator::value::operator<(const value& a) const
 
 surface locator::load_image_file() const
 {
+#ifdef USE_ZIPIOS
+	std::string s = read_file("images/" + val_.filename_);
+	if (s.empty()) {
+		return surface(NULL);
+	} else {
+		SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
+		const surface res(IMG_Load_RW(ops, 0));
+		if(res == NULL) {
+			ERR_DP << "could not open image '" << val_.filename_ << "'\n";
+		}
+		SDL_FreeRW(ops);
+
+		return res;
+	}
+#else
 	const std::string& location = get_binary_file_location("images", val_.filename_);
 
 	if(location.empty()) {
@@ -213,6 +228,7 @@ surface locator::load_image_file() const
 
 		return res;
 	}
+#endif
 }
 
 surface locator::load_image_sub_file() const
@@ -622,10 +638,14 @@ bool exists(const image::locator& i_locator)
 	if(image_existance_map.find(i_locator) != image_existance_map.end())
 		return image_existance_map[i_locator];
 
+#ifdef USE_ZIPIOS
+	if(file_exists("images/" + i_locator.get_filename()))
+		ret = true;
+#else
 	if(get_binary_file_location("images",i_locator.get_filename()).empty() == false) {
 		ret = true;
 	}
-
+#endif
 	image_existance_map[i_locator] = ret;
 
 	return ret;
