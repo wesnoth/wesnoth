@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-27 20:52+0100\n"
-"PO-Revision-Date: 2005-02-20 15:18+0100\n"
+"PO-Revision-Date: 2005-02-27 23:35+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,10 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
+# edited by Ivanovic
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
@@ -1549,17 +1550,17 @@ msgstr "Das Schlachtfeld der Prinzessin"
 msgid "King of the Hill"
 msgstr "König des Hügels"
 
+# edited by Ivanovic
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
-#, fuzzy
 msgid "Konrad"
-msgstr "Fürst"
+msgstr "Konrad"
 
+# edited by Ivanovic
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
-#, fuzzy
 msgid "Delfador"
-msgstr "Verteidiger"
+msgstr "Delfador"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:49
 msgid ""
@@ -1740,11 +1741,11 @@ msgstr ""
 msgid "Move your Elvish Fighter next to Merle"
 msgstr "Zieht euren Kämpfer auf ein Merle benachbartes Feld"
 
+# edited by Ivanovic
 #: data/scenarios/tutorial/Basic_Training.cfg:106
 #: data/scenarios/tutorial/Basic_Training.cfg:144
-#, fuzzy
 msgid "Merle"
-msgstr "Nächste Seite"
+msgstr "Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid ""
@@ -4854,12 +4855,17 @@ msgstr ""
 msgid "Sky Drake"
 msgstr "Himmelsdrake"
 
+# edited by Ivanovic
 #: data/units/Drake_Sky.cfg:18
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
 "down on prey, and are usually long gone before anyone can stop them."
 msgstr ""
+"Himmelsdraken sind die wahren Herrscher der Lüfte. Mit ihrer Beweglichkeit "
+"und ihrem Feueratem bringen sie vielen Feinden ihr Verderben. Sie können "
+"sich schnell ihre Beute schnappen und sind verschwunden, bevor sie "
+"irgendjemand aufhalten kann."
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -5338,8 +5344,8 @@ msgstr ""
 msgid "Elvish Hero"
 msgstr "Elfenheld"
 
+# edited by Ivanovic
 #: data/units/Elvish_Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
 "honed their combat skills to a frightening level. Elvish Heroes prefer "
@@ -5721,9 +5727,12 @@ msgstr "Platzhalter"
 msgid "Gate"
 msgstr "Tor"
 
+# edited by Ivanovic
+# klingt bescheuert (aber auch im Original)
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
 msgstr ""
+"Diese Tür wird sich für niemanden öffnen, der nicht mit ihr verbündet ist."
 
 #: data/units/Gate.cfg:20
 msgid "bump"
@@ -8022,10 +8031,10 @@ msgstr "+Niederländische Übersetzung"
 msgid "+English (GB) Translation"
 msgstr "+Englische (GB) Übersetzung"
 
+# edited by Ivanovic
 #: src/about.cpp:186
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Russische Übersetzung"
+msgstr "+Estländische Übersetzung"
 
 #: src/about.cpp:190
 msgid "+Finnish Translation"
@@ -8257,14 +8266,12 @@ msgid "Scenario Start"
 msgstr "Szenariobeginn"
 
 #: src/dialogs.cpp:384
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Schwierigkeitsgrad"
+msgstr "Schwierigkeitsgrad:"
 
 #: src/dialogs.cpp:386
-#, fuzzy
 msgid "Version: "
-msgstr "Version"
+msgstr "Version:"
 
 #: src/dialogs.cpp:401
 msgid "No Saved Games"
@@ -8327,20 +8334,17 @@ msgid "level"
 msgstr "Stufe"
 
 #: src/dialogs.cpp:663 src/display.cpp:972 src/help.cpp:1062
-#, fuzzy
 msgid "HP: "
-msgstr "LP"
+msgstr "LP:"
 
 #: src/dialogs.cpp:667 src/dialogs.cpp:675 src/display.cpp:976
 #: src/display.cpp:984 src/playturn.cpp:1942
-#, fuzzy
 msgid "XP: "
-msgstr "EP"
+msgstr "EP:"
 
 #: src/dialogs.cpp:680 src/display.cpp:988 src/help.cpp:1063
-#, fuzzy
 msgid "Moves: "
-msgstr "BP"
+msgstr "BP:"
 
 #: src/display.cpp:935
 msgid "healthy"
@@ -8508,9 +8512,10 @@ msgstr "Kampagnen herunterladen"
 msgid "Downloading campaign..."
 msgstr "Herunterladen der Kampagne..."
 
+# edited by Ivanovic
 #: src/game.cpp:1174
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "Kann das Dateisystem nicht erneut abtasten"
 
 #: src/game.cpp:1185
 msgid "Campaign Installed"
@@ -8593,18 +8598,16 @@ msgid "Play a game against AI opponents"
 msgstr "Eine Partie gegen den Computer eröffnen"
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-#, fuzzy
 msgid "Login: "
-msgstr "Euer Name"
+msgstr "Euer Name:"
 
 #: src/game.cpp:1362
 msgid "Language"
 msgstr "Sprache"
 
 #: src/game.cpp:1363
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Wählt die gewünschte Sprache"
+msgstr "Wählt die gewünschte Sprache:"
 
 #: src/game.cpp:1402
 msgid "Error loading game configuration files: '"
@@ -8616,29 +8619,24 @@ msgstr "' (Das Spiel wird nun beendet)"
 
 # Vielleicht "Der Kampf um Wesnoth"
 #: src/game.cpp:1470
-#, fuzzy
 msgid "Battle for Wesnoth"
-msgstr "The Battle for Wesnoth"
+msgstr "Battle for Wesnoth"
 
 #: src/help.cpp:1024
-#, fuzzy
 msgid "Advances to: "
-msgstr "Nächste Stufe"
+msgstr "Nächste Stufe:"
 
 #: src/help.cpp:1045
-#, fuzzy
 msgid "Abilities: "
-msgstr "Fertigkeiten"
+msgstr "Fertigkeiten:"
 
 #: src/help.cpp:1064
-#, fuzzy
 msgid "Alignment: "
-msgstr "Tag-/Nachteinfluss"
+msgstr "Tag-/Nachteinfluss:"
 
 #: src/help.cpp:1068
-#, fuzzy
 msgid "Required XP: "
-msgstr "Benötigte EP"
+msgstr "Benötigte EP:"
 
 #: src/help.cpp:1079 src/reports.cpp:234
 msgid "attacks"
@@ -8763,39 +8761,32 @@ msgstr "Zufallskartengenerator"
 
 # edited by ivanovic
 #: src/mapgen_dialog.cpp:82
-#, fuzzy
 msgid "Players:"
 msgstr "Spieler:"
 
 #: src/mapgen_dialog.cpp:83
-#, fuzzy
 msgid "Width:"
-msgstr "Breite"
+msgstr "Breite:"
 
 #: src/mapgen_dialog.cpp:84
-#, fuzzy
 msgid "Height:"
-msgstr "Höhe"
+msgstr "Höhe:"
 
 #: src/mapgen_dialog.cpp:85
-#, fuzzy
 msgid "Iterations:"
-msgstr "Iterationen"
+msgstr "Iterationen:"
 
 #: src/mapgen_dialog.cpp:86
-#, fuzzy
 msgid "Bump Size:"
-msgstr "Hügelgrösse"
+msgstr "Hügelgrösse:"
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Villages:"
-msgstr "Dörfer"
+msgstr "Dörfer:"
 
 #: src/mapgen_dialog.cpp:88
-#, fuzzy
 msgid "Landform:"
-msgstr "Landschaft"
+msgstr "Landschaft:"
 
 #: src/mapgen_dialog.cpp:194
 msgid "Roads Between Castles"
@@ -8821,10 +8812,10 @@ msgstr "Insel"
 msgid "Connect to Host"
 msgstr "Mit Gastgeber verbinden"
 
+# edited by Ivanovic
 #: src/multiplayer.cpp:87
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Wählt den Gastgeber, zu dem Ihr euch verbinden wollt"
+msgstr "Wählt den Host, zu dem Ihr euch verbinden wollt:"
 
 #: src/multiplayer.cpp:112
 msgid "Connecting to remote host..."
@@ -8834,31 +8825,34 @@ msgstr "Verbinde zum Server/Gastgeber..."
 msgid "You must log in to this server"
 msgstr "Ihr müsst Euch an diesem Server anmelden"
 
+# edited by Ivanovic
 #: src/multiplayer_connect.cpp:263
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Verfügbarer Platz"
+msgstr "(Verfügbarer Platz)"
 
+# edited by Ivanovic
 #: src/multiplayer_connect.cpp:269
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Annonymer lokaler Spieler"
 
 #: src/multiplayer_connect.cpp:275
-#, fuzzy
 msgid "Computer player"
 msgstr "Computer"
 
+# edited by Ivanovic
 #: src/multiplayer_connect.cpp:278
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(leerer Platz)"
 
+# edited by Ivanovic
 #: src/multiplayer_connect.cpp:412
 msgid "No non-random sides in the current era"
-msgstr ""
+msgstr "Keine nicht zufälligen Anführer in der gewählten Ära"
 
+# edited by Ivanovic
 #: src/multiplayer_connect.cpp:428
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Kann den Anführertyp für die Fraktion $faction nicht finden"
 
 #: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:451
 msgid "Team"
@@ -8873,7 +8867,6 @@ msgid "Faction"
 msgstr "Fraktion"
 
 #: src/multiplayer_connect.cpp:452
-#, fuzzy
 msgid "Colour"
 msgstr "Farbe"
 
@@ -8882,7 +8875,6 @@ msgid "Gold"
 msgstr "Gold"
 
 #: src/multiplayer_connect.cpp:455
-#, fuzzy
 msgid "Computer vs Computer"
 msgstr " Computer gegen Computer "
 
@@ -8895,9 +8887,10 @@ msgstr "Ich bin bereit"
 msgid "Cancel"
 msgstr "Abbrechen"
 
+# edited by Ivanovic
 #: src/multiplayer_connect.cpp:472
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "Dieses Szenario ist ungültig, da es über keine Fractionen verfügt."
 
 #: src/multiplayer_connect.cpp:759
 msgid "Game Lobby"
@@ -8919,10 +8912,10 @@ msgstr "Computer"
 msgid "Empty"
 msgstr "Leer"
 
+# edited by Ivanovic
 #: src/multiplayer_connect.cpp:786
-#, fuzzy
 msgid "Era not available: "
-msgstr "Keine Missionsziele vorhanden"
+msgstr "Ära nicht verfügbar:"
 
 #: src/multiplayer_connect.cpp:821
 msgid "Red"
@@ -8964,9 +8957,10 @@ msgstr "Braun"
 msgid "This is not a multiplayer save"
 msgstr "Dies ist kein Mehrspieler-Spielstand"
 
+# edited by Ivanovic
 #: src/multiplayer_connect.cpp:921
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Kann die Ära $era nicht finden"
 
 #: src/multiplayer_connect.cpp:939
 msgid ""
@@ -8977,25 +8971,21 @@ msgstr ""
 "@Besiegt alle gegnerischen Heerführer"
 
 #: src/multiplayer_connect.cpp:975
-#, fuzzy
 msgid "Waiting for players to join..."
 msgstr "Warte auf weitere Mitspieler..."
 
 # edited by ivanovic
 #: src/multiplayer_create.cpp:39
-#, fuzzy
 msgid "Name of game:"
 msgstr "Name der Partie:"
 
 # edited by ivanovic
 #: src/multiplayer_create.cpp:41
-#, fuzzy
 msgid "Era:"
 msgstr "Ära:"
 
 # edited by ivanovic
 #: src/multiplayer_create.cpp:42
-#, fuzzy
 msgid "Map to play:"
 msgstr "Verfügbare Karten:"
 
@@ -9007,9 +8997,10 @@ msgstr "Nebel des Krieges"
 msgid "Observers"
 msgstr "Beobachter"
 
+# edited by Ivanovic
 #: src/multiplayer_create.cpp:47
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:48
 msgid "Regenerate"
@@ -9064,17 +9055,19 @@ msgstr "Nichts teilen"
 msgid "No multiplayer sides."
 msgstr "Keine Mitspieler gefunden."
 
+# edited by Ivanovic
 #: src/multiplayer_create.cpp:116
 msgid "No eras found"
-msgstr ""
+msgstr "Keine Äras gefunden"
 
 #: src/multiplayer_create.cpp:125
 msgid "$login's game"
 msgstr "$login|s Partie"
 
+# edited by Ivanovic
 #: src/multiplayer_create.cpp:155
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Ungültige Ära gewählt"
 
 #: src/multiplayer_create.cpp:186
 msgid "You must enter a name."
@@ -9087,20 +9080,18 @@ msgstr "Runden:"
 
 # edited by ivanovic
 #: src/multiplayer_create.cpp:197
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "Unbegrenzt"
+msgstr "Unbegrenz"
 
 # edited by ivanovic
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Village Gold: "
 msgstr "Steuereinnahmen pro Dorf:"
 
+# edited by Ivanovic
 #: src/multiplayer_create.cpp:210
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Geländemodifikatoren"
+msgstr "Erfahrungsmodifikator:"
 
 # edited by ivanovic
 #: src/multiplayer_create.cpp:313
@@ -9143,23 +9134,22 @@ msgstr "Warte auf Spielstart..."
 msgid "Getting game data..."
 msgstr "Empfange Spieldaten..."
 
+# edited by Ivanovic
 #: src/multiplayer_wait.cpp:177
-#, fuzzy
 msgid "No multiplayer sides available in this game"
-msgstr "Es sind keine Plätze in dieser Partie verfügbar."
+msgstr "Es sind keine Fraktionen in dieser Partie verfügbar."
 
+# edited by Ivanovic
 #: src/multiplayer_wait.cpp:199
-#, fuzzy
 msgid "Era not available"
-msgstr "Keine Missionsziele vorhanden"
+msgstr "Ära nicht verfügbar"
 
 # Die Übersetzung ist falsch
 # Passt auch noch nicht ganz
 # aber anscheinend kann man diesen Fehler kaum bekommen
 #: src/multiplayer_wait.cpp:207
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "Keine Mitspieler gefunden."
+msgstr "Keine Fraktionen gefunden"
 
 #: src/multiplayer_wait.cpp:227
 msgid "Choose your side:"
@@ -9173,14 +9163,15 @@ msgstr "Gold"
 msgid "The file you have tried to load is corrupt"
 msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt."
 
+# edited by Ivanovic
 #: src/playlevel.cpp:724
 msgid "Game Over"
-msgstr ""
+msgstr "Spielende"
 
+# edited by Ivanovic
 #: src/playlevel.cpp:725
-#, fuzzy
 msgid "The game is over."
-msgstr "Der Spielstand wurde gespeichert"
+msgstr "Das Spiel ist vorbei."
 
 #: src/playlevel.cpp:738
 msgid "Defeat"
@@ -9191,33 +9182,28 @@ msgid "You have been defeated!"
 msgstr "Ihr wurdet vernichtend geschlagen!"
 
 #: src/playlevel.cpp:808
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Restliches Gold"
+msgstr "Restliches Gold:"
 
 #: src/playlevel.cpp:811
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Bonus für frühzeitiges Ende"
+msgstr "Bonus für frühzeitiges Ende:"
 
 #: src/playlevel.cpp:813
 msgid "per turn"
 msgstr "pro Runde"
 
 #: src/playlevel.cpp:814
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Runden früher abgeschlossen"
+msgstr "Runden früher abgeschlossen:"
 
 #: src/playlevel.cpp:816
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bonus"
+msgstr "Bonus:"
 
 #: src/playlevel.cpp:818
-#, fuzzy
 msgid "Gold: "
-msgstr "Gold"
+msgstr "Gold:"
 
 #: src/playlevel.cpp:823
 #, no-c-format
@@ -9225,9 +9211,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "80% des Goldes bleiben für das nächste Szenario erhalten"
 
 #: src/playlevel.cpp:824
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Übernommenes Gold"
+msgstr "Übernommenes Gold:"
 
 #: src/playlevel.cpp:829
 msgid "Victory"
@@ -9274,9 +9259,8 @@ msgid "Attack Enemy"
 msgstr "Gegner angreifen"
 
 #: src/playturn.cpp:651
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Waffe auswählen"
+msgstr "Waffe auswählen:"
 
 #: src/playturn.cpp:1250
 msgid ""
@@ -9350,9 +9334,8 @@ msgid "Recruit"
 msgstr "Ausbilden"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-#, fuzzy
 msgid "Select unit:"
-msgstr "Einheit auswählen"
+msgstr "Einheit auswählen:"
 
 #: src/playturn.cpp:1817
 msgid "You don't have enough gold to recruit that unit"
@@ -9401,9 +9384,8 @@ msgstr ""
 "können."
 
 #: src/playturn.cpp:1941
-#, fuzzy
 msgid "level: "
-msgstr "Stufe"
+msgstr "Stufe:"
 
 #: src/playturn.cpp:1954
 msgid "Dismiss Unit"
@@ -9414,9 +9396,8 @@ msgid "Recall"
 msgstr "Einberufen"
 
 #: src/playturn.cpp:2011
-#, fuzzy
 msgid "Message:"
-msgstr "Nachricht"
+msgstr "Nachricht:"
 
 #: src/playturn.cpp:2011
 msgid "Send to allies only"
@@ -9497,9 +9478,8 @@ msgid "Place Label"
 msgstr "Beschriftung erstellen"
 
 #: src/playturn.cpp:2461
-#, fuzzy
 msgid "Label:"
-msgstr "Beschriftung"
+msgstr "Beschriftung:"
 
 #: src/playturn.cpp:2593
 msgid ""
@@ -9536,9 +9516,8 @@ msgstr ""
 "angegriffen werden."
 
 #: src/reports.cpp:106
-#, fuzzy
 msgid "invisible: "
-msgstr "unsichtbar"
+msgstr "unsichtbar:"
 
 #: src/reports.cpp:111
 msgid ""
@@ -9550,9 +9529,8 @@ msgstr ""
 "Waffe abgezogen."
 
 #: src/reports.cpp:111
-#, fuzzy
 msgid "slowed: "
-msgstr "verlangsamt"
+msgstr "verlangsamt:"
 
 #: src/reports.cpp:116
 msgid ""
@@ -9571,9 +9549,8 @@ msgstr ""
 "wird die LP einer Einheit nicht unter 1 reduzieren."
 
 #: src/reports.cpp:116
-#, fuzzy
 msgid "poisoned: "
-msgstr "vergiftet"
+msgstr "vergiftet:"
 
 #: src/reports.cpp:123
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -9582,28 +9559,24 @@ msgstr ""
 "angreifen."
 
 #: src/reports.cpp:123
-#, fuzzy
 msgid "stone: "
-msgstr "versteinern"
+msgstr "versteinert:"
 
 #: src/reports.cpp:233
 msgid "damage"
 msgstr "Schaden"
 
 #: src/reports.cpp:251
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Redliche Einheiten"
+msgstr "Redliche Einheiten:"
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Neutrale Einheiten"
+msgstr "Neutrale Einheiten:"
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Lichtscheue Einheiten"
+msgstr "Lichtscheue Einheiten:"
 
 #: src/reports.cpp:308
 msgid "Owned village"
@@ -9618,9 +9591,8 @@ msgid "Allied village"
 msgstr "Verbündetes Dorf"
 
 #: src/reports.cpp:372
-#, fuzzy
 msgid "Observers:"
-msgstr "Beobachter"
+msgstr "Beobachter:"
 
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
@@ -9709,58 +9681,3 @@ msgstr "redlich"
 #: src/unit_types.cpp:902
 msgid "neutral"
 msgstr "neutral"
-
-#~ msgid "Players"
-#~ msgstr "Spieler"
-
-#, fuzzy
-#~ msgid "Team "
-#~ msgstr "Team"
-
-#, fuzzy
-#~ msgid "Turns"
-#~ msgstr "Runde"
-
-# edited by ivanovic
-#~ msgid "Load Game..."
-#~ msgstr "Spielstand laden..."
-
-#~ msgid "Ok"
-#~ msgstr "Okay"
-
-# edited by ivanovic
-#~ msgid "Experience Requirements: "
-#~ msgstr "Vorausgesetzte Erfahrungen:"
-
-#~ msgid ""
-#~ "The game was unable to bind to the port needed to host games over the "
-#~ "network. Network players will be unable to connect to this game"
-#~ msgstr ""
-#~ "Das Spiel war nicht fähig, den für geleitete Netzwerkspiele nötigen Port "
-#~ "zu benutzen. Andere Spieler im Netzwerk werden nicht in der Lage sein, "
-#~ "sich zu diesem Spiel zu verbinden."
-
-#~ msgid "Warning"
-#~ msgstr "Warnung"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Partieliste wird empfangen..."
-
-#~ msgid "The game has been cancelled"
-#~ msgstr "Das Spiel wurde vom Spielleiter abgebrochen."
-
-#~ msgid "The side you have chosen is no longer available"
-#~ msgstr ""
-#~ "Die Partei, für die Ihr euch entschieden habt, ist nicht mehr verfügbar."
-
-#~ msgid "Show replay of game up to save point?"
-#~ msgstr "Wiederholung des Spieles bis zum Speicherpunkt anzeigen?"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "<no games open>"
-#~ msgstr "<Keine Partien offen>"
