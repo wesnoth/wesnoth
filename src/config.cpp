@@ -618,6 +618,171 @@ std::string config::write() const
 	return res;
 }
 
+namespace {
+	const unsigned char compress_open_element = 0, compress_close_element = 1,
+	                    compress_schema_item = 2, compress_literal_word = 3,
+						compress_first_word = 4, compress_last_word = 255;
+	const size_t compress_max_words = compress_last_word - compress_first_word + 1;
+
+	void compress_output_literal_word(const std::string& word, std::vector<char>& output)
+	{
+		output.resize(output.size() + word.size());
+		std::copy(word.begin(),word.end(),output.end()-word.size());
+		output.push_back(char(0));
+	}
+
+	compression_schema::word_char_map::const_iterator add_word_to_schema(const std::string& word, compression_schema& schema)
+	{
+		const unsigned char c = compress_first_word + schema.word_to_char.size();
+			
+		std::cerr << "inserting in schema: " << int(c) << " -> '" << word << "'\n";
+
+		schema.char_to_word.insert(std::pair<unsigned char,std::string>(c,word));
+		return schema.word_to_char.insert(std::pair<std::string,unsigned char>(word,c)).first;
+	}
+
+	compression_schema::word_char_map::const_iterator get_word_in_schema(const std::string& word, compression_schema& schema, std::vector<char>& output)
+	{
+		//see if this word is already in the schema
+		const compression_schema::word_char_map::const_iterator w = schema.word_to_char.find(word);
+		if(w != schema.word_to_char.end()) {
+			//in the schema. Return it
+			return w;
+		} else if(schema.word_to_char.size() < compress_max_words) {
+			//we can add the word to the schema
+
+			//we insert the code to add a schema item, followed by the zero-delimited word
+			output.push_back(char(compress_schema_item));
+			compress_output_literal_word(word,output);
+
+			return add_word_to_schema(word,schema);
+		} else {
+			//it's not there, and there's no room to add it
+			std::cerr << "no room for word '" << word << "' in schema\n";
+			return schema.word_to_char.end();
+		}
+	}
+
+	void compress_emit_word(const std::string& word, compression_schema& schema, std::vector<char>& res)
+	{
+		//get the word in the schema
+		const compression_schema::word_char_map::const_iterator w = get_word_in_schema(word,schema,res);
+		if(w != schema.word_to_char.end()) {
+			//the word is in the schema, all we have to do is output the compression code for it.
+			res.push_back(w->second);
+		} else {
+			//the word is not in the schema. Output it as a literal word
+			res.push_back(char(compress_literal_word));
+			compress_output_literal_word(word,res);
+		}
+	}
+
+	std::string::const_iterator compress_read_literal_word(std::string::const_iterator i1, std::string::const_iterator i2, std::string& res)
+	{
+		const std::string::const_iterator end_word = std::find(i1,i2,0);
+		if(end_word == i2) {
+			throw config::error("Unexpected end of data in compressed config read\n");
+		}
+
+		res = std::string(i1,end_word);
+		return end_word;
+	}
+}
+
+void config::write_compressed_internal(compression_schema& schema, std::vector<char>& res) const
+{
+	for(std::map<std::string,std::string>::const_iterator i = values.begin();
+					i != values.end(); ++i) {
+		if(i->second.empty() == false) {
+			
+			//output the name, using compression
+			compress_emit_word(i->first,schema,res);
+
+			//output the value, with no compression
+			compress_output_literal_word(i->second,res);
+		}
+	}
+
+	for(all_children_iterator j = ordered_begin(); j != ordered_end(); ++j) {
+		const std::pair<const std::string*,const config*>& item = *j;
+		const std::string& name = *item.first;
+		const config& cfg = *item.second;
+
+		res.push_back(compress_open_element);
+		compress_emit_word(name,schema,res);
+		cfg.write_compressed_internal(schema,res);
+		res.push_back(compress_close_element);
+	}
+}
+
+std::string config::write_compressed(compression_schema& schema) const
+{
+	std::vector<char> res;
+	write_compressed_internal(schema,res);
+	std::string s;
+	s.resize(res.size());
+	std::copy(res.begin(),res.end(),s.begin());
+	return s;
+}
+
+std::string::const_iterator config::read_compressed_internal(std::string::const_iterator i1, std::string::const_iterator i2, compression_schema& schema)
+{
+	bool in_open_element = false;
+	while(i1 != i2) {
+		switch(*i1) {
+		case compress_open_element:
+			in_open_element = true;
+			break;
+		case compress_close_element:
+			return i1;
+		case compress_schema_item: {
+			std::string word;
+			i1 = compress_read_literal_word(i1+1,i2,word);
+
+			add_word_to_schema(word,schema);
+
+			break;
+		}
+
+		default: {
+			std::string word;
+			if(*i1 == compress_literal_word) {
+				i1 = compress_read_literal_word(i1+1,i2,word);				
+			} else {
+				const compression_schema::char_word_map::const_iterator itor = schema.char_to_word.find(*i1);
+				if(itor == schema.char_to_word.end()) {
+					std::cerr << "illegal char: " << int(*i1) << "\n";
+					throw error("Illegal character in compression input\n");
+				}
+
+				word = itor->second;
+			}
+
+			if(in_open_element) {
+				in_open_element = false;
+				config& cfg = add_child(word);
+				i1 = cfg.read_compressed_internal(i1+1,i2,schema);
+			} else {
+				//we have a name/value pair, the value is always a literal string
+				std::string value;
+				i1 = compress_read_literal_word(i1+1,i2,value);
+				values.insert(std::pair<std::string,std::string>(word,value));
+			}
+		}
+
+		}
+
+		++i1;
+	}
+
+	return i1;
+}
+
+void config::read_compressed(const std::string& data, compression_schema& schema)
+{
+	read_compressed_internal(data.begin(),data.end(),schema);
+}
+
 config::child_itors config::child_range(const std::string& key)
 {
 	child_map::iterator i = children.find(key);

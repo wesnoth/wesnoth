@@ -83,6 +83,16 @@ std::string preprocess_file(const std::string& fname,
 
 typedef std::map<std::string,std::string> string_map;
 
+//this object holds the schema by which config objects can be compressed and decompressed.
+struct compression_schema
+{
+	typedef std::map<unsigned char,std::string> char_word_map;
+	char_word_map char_to_word;
+
+	typedef std::map<std::string,unsigned char> word_char_map;
+	word_char_map word_to_char;
+};
+
 //a config object defines a single node in a WML file, with access to
 //child nodes.
 struct config
@@ -102,6 +112,13 @@ struct config
 	void read(const std::string& data,
 	          const std::vector<line_source>* lines=0); //throws config::error
 	std::string write() const;
+
+	//functions to read and write compressed data. The schema will be created and written
+	//with the data. However if you are making successive writes (e.g. a network connection)
+	//you can re-use the same schema on the sending end, and the receiver can store the schema,
+	//meaning that the entire schema won't have to be transmitted each time.
+	std::string write_compressed(compression_schema& schema) const;
+	void read_compressed(const std::string& data, compression_schema& schema); //throws config::error
 
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
@@ -184,6 +201,8 @@ struct config
 private:
 	size_t write_size() const;
 	std::string::iterator write_internal(std::string::iterator out) const;
+	std::string::const_iterator read_compressed_internal(std::string::const_iterator i1, std::string::const_iterator i2, compression_schema& schema);
+	void write_compressed_internal(compression_schema& schema, std::vector<char>& res) const;
 
 	//a list of all children of this node.
 	child_map children;
