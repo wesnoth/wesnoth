@@ -14,6 +14,7 @@ mkdir -p /wesnothpack/wesnoth-$1
 echo "Configuring..."
 ./autogen.sh
 ./configure --prefix=/usr --enable-server --enable-tools --enable-kde --enable-gnome
+make clean
 echo "Compiling and gathering package contents..."
 make DESTDIR=/wesnothpack/wesnoth-$1 CXXFLAGS="-g -O2 -march=$2" install
 mkdir -p /wesnothpack/wesnoth-$1/usr/doc/wesnoth-$1
