@@ -776,27 +776,29 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//if we should recall units that match a certain description
 	else if(cmd == "recall") {
-          for(int index=0; index<teams->size(); ++index) {
-            player_info* const player = state_of_game->get_player((*teams)[index].save_id());
+		std::cerr << "recalling unit...\n";
+		for(int index = 0; index < int(teams->size()); ++index) {
+			std::cerr << "for side " << index << "...\n";
+			player_info* const player = state_of_game->get_player((*teams)[index].save_id());
 
 			if(player == NULL) {
+				std::cerr << "player not found!\n";
 				continue;
 			}
 
-            std::vector<unit>& avail = player->available_units;
+			std::vector<unit>& avail = player->available_units;
 
-            for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
-              if(game_events::unit_matches_filter(*u,cfg)) {
-                gamemap::location loc(cfg);
-                recruit_unit(*game_map,index+1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
-                avail.erase(u);
-                break;
-              }
-            }
-          }
-	}
-
-	else if(cmd == "object") {
+			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
+				std::cerr << "checking unit against filter...\n";
+				if(game_events::unit_matches_filter(*u,cfg)) {
+					gamemap::location loc(cfg);
+					recruit_unit(*game_map,index+1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
+					avail.erase(u);
+					break;
+				}
+			}
+		}
+	} else if(cmd == "object") {
 		const config* filter = cfg.child("filter");
 
 		const std::string& id = cfg["id"];
@@ -1453,7 +1455,7 @@ bool unit_matches_filter(const unit& u, const config& filter)
 		}
 	}
 
-	return true;
+	return res;
 }
 
 bool unit_matches_filter(unit_map::const_iterator itor, const config& filter)

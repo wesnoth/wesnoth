@@ -1200,9 +1200,9 @@ void turn_info::undo()
 
 	undo_action& action = undo_stack_.back();
 	if(action.is_recall()) {
-		player_info *player=state_of_game_.get_player(teams_[team_num_-1].save_id());
+		player_info* const player = state_of_game_.get_player(teams_[team_num_-1].save_id());
 
-		if(!player) {
+		if(player == NULL) {
 			std::cerr << "WARNING: trying to undo a recall for side " << team_num_ << ", which has no recall list!" << std::endl;
 		} else {
 			// Undo a recall action

@@ -146,7 +146,8 @@ struct game_state
 	std::map<std::string, player_info> players;
 
 	// Return the Nth player, or NULL if no such player exists
-	player_info* get_player(std::string id) {
+	player_info* get_player(const std::string& id) {
+		std::cerr << "get_player('" << id << "')\n";
 	  std::map<std::string, player_info>::iterator found=players.find(id);
 
 	  if(found==players.end()) {

@@ -224,16 +224,30 @@ game_state read_game(const game_data& data, const config* cfg)
 
 	const config::child_list& players = cfg->get_children("player");
 
-	if(players.size()==0) {
-		std::cerr << "WARNING: no players found, old save file?" << std::endl;
+	if(players.empty()) {
+		//backwards compatibility code: assume that there is player data
+		//in the file itself, which corresponds to the leader of side 1
+		const config::child_list& units = cfg->get_children("unit");
+		config::child_list::const_iterator i;
+		for(i = units.begin(); i != units.end(); ++i) {
+			if((**i)["side"] == "1" && (**i)["canrecruit"] == "1") {
+				break;
+			}
+		}
+
+		if(i != units.end()) {
+			std::cerr << "backwards compatibility: loading player '" << (**i)["description"] << "'\n";
+			player_info player = read_player(data,cfg);
+			res.players.insert(std::pair<std::string,player_info>((**i)["description"],player));
+		}
 	} else {
 		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
-			std::string save_id=(**i)["save_id"];
+			std::string save_id = (**i)["save_id"];
 
 			if(save_id.empty()) {
 				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
 			} else {
-				player_info player=read_player(data, *i);
+				player_info player = read_player(data, *i);
 				res.players.insert(std::pair<std::string, player_info>(save_id,player));
 			}
 		}
