@@ -95,7 +95,6 @@ void show_about(display& disp)
 	text.push_back("-   Diego Brea (Cobretti)");
 	text.push_back("-   Gareth Miller (Gafgarion)");
 	text.push_back("-   James Barton (Sangel)");
-	text.push_back("-   Jetryl");
 	text.push_back("-   Jimmy Olsson (Azlan)");
  	text.push_back("-   Johanna Manninen (lohari)");
 	text.push_back("-   John Muccigrosso (Eponymous Archon)");
@@ -103,6 +102,7 @@ void show_about(display& disp)
  	text.push_back("-   Joseph Simmons (Turin)");
 	text.push_back("-   J.W.C. McNabb (Darth Fool)");
  	text.push_back("-   Neorice");
+	text.push_back("-   Richard Kettering (Jetryl)");
  	text.push_back("-   Slainte");
  	text.push_back("-   Svetac");
  	text.push_back("+ ");
