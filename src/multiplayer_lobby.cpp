@@ -215,6 +215,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		// Set GUI locations
 		users_menu.set_loc(xscale(disp,869),yscale(disp,23));
 		users_menu.set_width(xscale(disp,129));
+		users_menu.set_max_width(xscale(disp,129));
+
 		update_rect(xscale(disp,869),yscale(disp,23),xscale(disp,129),yscale(disp,725));
 
 		if(dlg != NULL) {

@@ -562,6 +562,7 @@ surface flop_surface(surface surf)
 	return create_optimized_surface(nsurf);
 }
 
+
 surface create_compatible_surface(surface surf, int width, int height)
 {
 	if(surf == NULL)

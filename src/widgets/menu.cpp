@@ -570,6 +570,7 @@ void menu::draw_item(int item)
 	                                 display_->video().getSurface());
 
 	SDL_Rect area = display_->screen_area();
+	//SDL_Rect area = { 0, 0, rect.w, rect.h };
 
 	const std::vector<int>& widths = column_widths();
 
@@ -595,8 +596,8 @@ void menu::draw_item(int item)
 			} else {
 				const std::string to_show = max_width_ > -1 ? 
 					font::make_text_ellipsis(str, menu_font_size,
-											 max_width_ - (xpos - rect.x)
-											 - scrollbar_.get_width()) : str;
+									 max_width_ - (xpos - rect.x)
+									 - scrollbar_.get_width()) : str;
 				const SDL_Rect& text_size = font::text_area(str,menu_font_size);
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
 				font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,to_show,xpos,y);
