@@ -470,6 +470,12 @@ protected:
 	//function which calculates the average resistance unit type a has against
 	//the attacks of unit type b.
 	virtual int average_resistance_against(const unit_type& a, const unit_type& b) const;
+
+	//functions to deal with keeps
+	const std::set<location>& keeps() const;
+	const location& nearest_keep(const location& loc) const;
+
+	mutable std::set<location> keeps_;
 };
 
 #endif

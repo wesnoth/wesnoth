@@ -328,7 +328,7 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 
 		//if the leader isn't on its keep, and we can move to the keep and still make our planned
 		//movement, then try doing that.
-		const gamemap::location& start_pos = map_.starting_position(i->second.side());
+		const gamemap::location& start_pos = nearest_keep(i->first);
 
 		//if we can make it back to the keep and then to our original destination, do so.
 		if(multistep_move_possible(from,to,start_pos,possible_moves)) {
@@ -672,7 +672,7 @@ std::vector<std::pair<gamemap::location,gamemap::location> > ai::get_village_com
 		int distance = -1;
 
 		if(leader != units_.end() && leader->first == i->second) {
-			const location& start_pos = map_.starting_position(leader->second.side());
+			const location& start_pos = nearest_keep(leader->first);;
 			distance = distance_between(start_pos,i->first);
 		}
 
@@ -706,7 +706,11 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 {
 	std::cerr << "deciding which villages we want...\n";
 
-	const location& start_pos = map_.starting_position(team_num_);
+	location start_pos;
+
+	if(leader != units_.end()) {
+		start_pos = nearest_keep(leader->first);
+	}
 
 	//we want to build up a list of possible moves we can make that will capture villages.
 	//limit the moves to 'max_village_moves' to make sure things don't get out of hand.
@@ -1122,14 +1126,17 @@ void ai::analyze_potential_recruit_movements()
 		return;
 	}
 
-	const location& start = map_.starting_position(team_num_);
+	const unit_map::const_iterator leader = find_leader(units_,team_num_);
+	if(leader == units_.end()) {
+		return;
+	}
+
+	const location& start = nearest_keep(leader->first);
 	if(map_.on_board(start) == false) {
 		return;
 	}
 
 	log_scope("analyze_potential_recruit_movements()");
-
-	const unit_map::const_iterator leader = units_.find(start);
 
 	const int max_targets = 5;
 
@@ -1206,6 +1213,13 @@ void ai::analyze_potential_recruit_movements()
 
 void ai::do_recruitment()
 {
+	const unit_map::const_iterator leader = find_leader(units_,team_num_);
+	if(leader == units_.end()) {
+		return;
+	}
+
+	const location& start_pos = nearest_keep(leader->first);
+
 	analyze_potential_recruit_movements();
 	analyze_potential_recruit_combat();
 
@@ -1220,7 +1234,7 @@ void ai::do_recruitment()
 	for(std::vector<location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
 		const int owner = village_owner(*v,teams_);
 		if(owner == -1) {
-			const size_t distance = distance_between(map_.starting_position(team_num_),*v);
+			const size_t distance = distance_between(start_pos,*v);
 
 			bool closest = true;
 			for(std::vector<team>::const_iterator i = teams_.begin(); i != teams_.end(); ++i) {
@@ -1446,4 +1460,49 @@ const ai::defensive_position& ai::best_defensive_position(const gamemap::locatio
 void ai::invalidate_defensive_position_cache()
 {
 	defensive_position_cache_.clear();
+}
+
+const std::set<gamemap::location>& ai::keeps() const
+{
+	if(keeps_.empty()) {
+		//generate the list of keeps -- iterate over the entire map and find all keeps
+		for(size_t x = 0; x != size_t(map_.x()); ++x) {
+			for(size_t y = 0; y != size_t(map_.y()); ++y) {
+				const gamemap::location loc(x,y);
+				if(map_.is_keep(loc)) {
+					gamemap::location adj[6];
+					get_adjacent_tiles(loc,adj);
+					for(size_t n = 0; n != 6; ++n) {
+						if(map_.is_castle(adj[n])) {
+							keeps_.insert(loc);
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return keeps_;
+}
+
+const gamemap::location& ai::nearest_keep(const gamemap::location& loc) const
+{
+	const std::set<gamemap::location>& keeps = this->keeps();
+	if(keeps.empty()) {
+		static const gamemap::location dummy;
+		return dummy;
+	}
+
+	const gamemap::location* res = NULL;
+	int closest = -1;
+	for(std::set<gamemap::location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
+		const int distance = distance_between(*i,loc);
+		if(res == NULL || distance < closest) {
+			closest = distance;
+			res = &*i;
+		}
+	}
+
+	return *res;
 }
