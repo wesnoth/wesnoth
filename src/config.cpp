@@ -395,7 +395,7 @@ void config::read(const std::string& data,
 	std::string var;
 	std::string value;
 
-	bool in_quotes = false;
+	bool in_quotes = false, has_quotes = false;
 
 	int line = 0;
 
@@ -492,12 +492,14 @@ void config::read(const std::string& data,
 			case VALUE:
 				if(c == '"') {
 					in_quotes = !in_quotes;
+					has_quotes = true;
 				} else if(c == '\n' && !in_quotes) {
 					state = IN_ELEMENT;
-					elements.top()->values[var] = strip(value);
+					elements.top()->values[var] = has_quotes ? value : strip(value);
 					var = "";
 					value = "";
-				} else {
+					has_quotes = false;
+				} else if(in_quotes || !has_quotes) {
 					value.resize(value.size()+1);
 					value[value.size()-1] = c;
 				}
