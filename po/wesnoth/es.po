@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.6-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-11-14 23:50+0100\n"
-"PO-Revision-Date: 2004-11-09 02:00+0200\n"
+"PO-Revision-Date: 2004-11-12 02:00+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -1238,6 +1238,9 @@ msgid ""
 "Teams of 2 fight for control of the central bridge choke-point. Good for "
 "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
 msgstr ""
+"Equipos de 2 jugadores luchan por el control del puente central, que se "
+"convierte así en un cuello de botella. Bueno para juegos de duración media-"
+"larga. Los jugadores 1 y 3 deben ser aliados, así como los 2 y 4."
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
@@ -1257,6 +1260,10 @@ msgid ""
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
 msgstr ""
+"Este mapa es una forma adecuada de hacer pruebas con dos bandos, ya que está "
+"bastante bien equilibrado entre ambos.\n"
+"Puede usarlo con una IA contra otra IA para ver cómo una facción ataca a la "
+"otra."
 
 #: data/scenarios/multiplayer/scenarios.cfg:110
 msgid "The Isle of Anduin"
@@ -1669,7 +1676,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid "What happens when a unit advances?"
-msgstr "¿Qué pasa cuando una unidad gana un nivel?"
+msgstr "¿Qué pasa cuando una unidad avanza en su categoría?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid ""
@@ -1680,6 +1687,14 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps that have "
 "been cast on it are removed. This is known as 'advance-heal'."
 msgstr ""
+"Cuando una unidad avanza en su categoría, se transforma en un tipo de unidad "
+"diferente. El nuevo tipo de unidad dependerá de lo que fuese la unidad "
+"originalmente, pero en algunas ocasiones habrá más de una opción entre las "
+"que escoger. Las unidades que avanzan en sus categorías son normalmente más "
+"poderosas y poseen un nivel más del que tenían anteriormente. Asimismo, "
+"cuando se produce este hecho, la unidad queda completamente recuperada de "
+"sus heridas y desaparecen todos los efectos adversos que pudiese estar "
+"experimentando. A esto se lo conoce como la «curación por avance»."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:175
 msgid "Move your fighter onto a village."
@@ -1708,6 +1723,17 @@ msgid ""
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
 msgstr ""
+"Cuando una unidad se mueve sobre una aldea, la reclama para su bando y "
+"consecuentemente la marca con una bandera de su color. Esta acción consumirá "
+"el resto del movimiento que pudiera tener aún la unidad. Las aldeas que "
+"hayan sido conquistadas y por tanto pertenezcan a un bando le darán a ese "
+"bando varios beneficios, entre los que se incluyen una pieza de oro "
+"adicional por turno, y la reducción del coste de mantenimiento del total de "
+"unidades en un punto. Puedes ver el número total de aldeas que controla en "
+"la barra de estado de la parte superior, al lado de un dibujo de una casa. "
+"Además de sus beneficios económicos, las aldeas también tienen usos en "
+"combate. Las aldeas sanan 8 PV por turno a las unidades que están sobre "
+"ellas."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:193
 msgid "How do I heal when there aren't any villages nearby?"
@@ -1722,6 +1748,13 @@ msgid ""
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
 "all your units are healed fully."
 msgstr ""
+"También hay formas de curarse sin usar aldeas. Si una unidad no mueve ni "
+"ataca durante un turno, recuperará 2 PV por el descanso. Sin embargo, si un "
+"enemigo la ataca, no podrá recuperar puntos de vida por descansar. Asimismo, "
+"hay algunas unidades que sanan a las unidades que están cerca. El chamán "
+"elfo es una de estas unidades: las unidades que estén próximas a él "
+"recuperarán 4 PV por turno. Por último, en el momento en que superes un "
+"nivel de juego, todas tus unidades se recuperarán por completo."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:199
 msgid ""
@@ -1742,6 +1775,10 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
+"¡Vaya! Has movido a tu líder fuera del torreón. Recuerda, no podrás reclutar "
+"a nadie si tu líder no está en un torreón. También recuerda que si tu líder "
+"muere, pierdes. Para que continúes el tutorial, te teleportaré de vuelta al "
+"torreón."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:232
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:222
@@ -1783,6 +1820,14 @@ msgid ""
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the level is over. Hopefully, it was a victory condition that was met."
 msgstr ""
+"A veces no está muy claro cómo ganar en un escenario partiendo de los "
+"diálogos entre personajes. En ese caso, necesitarás echar un ojo a los "
+"objetivos del escenario, que aparecerán después de los diálogos de "
+"introducción. También puedes acceder a ellos seleccionando «Objetivos» "
+"dentro del menú. Los objetivos de escenario se resumen en una lista de "
+"condiciones de victoria y derrota, y cuando una de ellas se cumple, el "
+"escenario se termina (para bien o para mal, aunque espero que sea para bien, "
+"claro)."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:254
 msgid "What happens when I win a scenario?"
@@ -1796,6 +1841,11 @@ msgid ""
 "immediately after you win. However between scenarios, 20% of your gold is "
 "lost."
 msgstr ""
+"Cuando ganas en un escenario, todas tus unidades vivas se recuperan por "
+"completo, y no tienes que pagarlas por los turnos restantes. Asimismo, si tu "
+"ejército se queda en el sitio donde tenía lugar el escenario, se considera "
+"que todas las aldeas se rinden ante ti inmediatamente después de ganr. Sin "
+"embargo, perderás un 20% del oro al pasar de escenario."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:260
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
@@ -2262,7 +2312,7 @@ msgstr "Oculto"
 
 #: data/terrain.cfg:14
 msgid "Fog"
-msgstr ""
+msgstr "Niebla"
 
 #: data/terrain.cfg:21
 msgid "Deep Water"
@@ -2958,12 +3008,15 @@ msgid ""
 "Steadfast:\n"
 "This unit takes half normal damage when it did not initiate the attack."
 msgstr ""
+"Firme:\n"
+"Esta unidad tan sólo sufre la mitad del daño infligido si ella no empezó el "
+"ataque."
 
 #: data/translations/english.cfg:81 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
 #: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:504
 msgid "steadfast"
-msgstr "firmeza"
+msgstr "firme"
 
 #: data/translations/english.cfg:84
 msgid ""
@@ -2995,8 +3048,7 @@ msgid ""
 "until one of the combatants is slain."
 msgstr ""
 "Berserk:\n"
-"Usado tanto en ataque como en defensa. Este ataque alarga la lucha hasta "
-"la \n"
+"Usado tanto en ataque como en defensa, este ataque alarga la lucha hasta la "
 "muerte de uno de los combatientes."
 
 #: data/translations/english.cfg:97
@@ -3006,7 +3058,7 @@ msgid ""
 "take double damage from the target's counterattack."
 msgstr ""
 "Carga:\n"
-"Este ataque causa el doble de daño al enmigo. También hace que los \n"
+"Este ataque causa el doble de daño al enemigo. También hace que los "
 "contraataques enemigos sean el doble de fuertes."
 
 #: data/translations/english.cfg:100
@@ -3016,7 +3068,7 @@ msgid ""
 "amount of damage it deals."
 msgstr ""
 "Drena:\n"
-"Esta unidad drena la vitalidad de unidades vivas, curándose a sí misma la \n"
+"Esta unidad drena la vitalidad de unidades vivas, curándose a sí misma la "
 "mitad del daño que ha infligido."
 
 #: data/translations/english.cfg:103
@@ -3041,8 +3093,7 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Tirador:\n"
-"Cuando se usa, este ataque siempre tiene un 60% de posibilidades de \n"
-"impactar."
+"Cuando se usa, este ataque siempre tiene un 60% de posibilidades de impactar."
 
 #: data/translations/english.cfg:112
 msgid ""
@@ -3051,7 +3102,7 @@ msgid ""
 "village, the dead target's corpse will rise up and fight for you."
 msgstr ""
 "Plaga:\n"
-"Si esta unidad mata a un enemigo vivo, y éste no estaba en una aldea, su \n"
+"Si esta unidad mata a un enemigo vivo, y éste no estaba en una aldea, su "
 "cuerpo se levantará y luchará para ti."
 
 #: data/translations/english.cfg:115
@@ -3061,8 +3112,8 @@ msgid ""
 "they are cured or are reduced to 1 HP."
 msgstr ""
 "Veneno:\n"
-"Este ataque envenena al objetivo. Las unidades envenenadas pierden 8 PV \n"
-"hasta que sean curadas o sólo les quede 1 PV."
+"Este ataque envenena al objetivo. Las unidades envenenadas pierden 8 PV "
+"hasta que se las cure o sólo les quede 1 PV."
 
 #: data/translations/english.cfg:118
 msgid ""
@@ -3082,9 +3133,8 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "Petrifica:\n"
-"Este ataque convierte al objetivo en una estatua... literalmente. No se "
-"podrá \n"
-"mover ni atacar."
+"Este ataque convierte al objetivo en una estatua...literalmente. Alguien "
+"afectado por la petrificación no podrá moverse ni atacar."
 
 #: data/translations/english.cfg:124
 msgid "Elves"
@@ -4215,9 +4265,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Draug.cfg:3
-#, fuzzy
 msgid "Draug"
-msgstr "Dragón"
+msgstr "Draug"
 
 #: data/units/Draug.cfg:16
 msgid ""
@@ -4380,6 +4429,8 @@ msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
 msgstr ""
+"El centinela, armado con su escudo corporal y su gran coraje, no flaquea "
+"jamás incluso ante el más poderoso de los ataques."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
@@ -5643,9 +5694,8 @@ msgstr ""
 "agua. Atacan con chorros de agua hirviente a sus víctimas."
 
 #: data/units/Naga-Fighter.cfg:3
-#, fuzzy
 msgid "Naga Fighter"
-msgstr "Luchador"
+msgstr "Luchador naga"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:48
 msgid ""
@@ -5657,13 +5707,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:34
-#, fuzzy
 msgid "Nagini Fighter"
-msgstr "Luchador sirénido"
+msgstr "Luchador nagini"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "Mirmidón naga"
 
 #: data/units/Naga-Myrmidon.cfg:21
 msgid ""
@@ -5676,7 +5725,7 @@ msgstr ""
 
 #: data/units/Naga-Myrmidon.cfg:38
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "Mirmidón nagini"
 
 #: data/units/Naga-Myrmidon.cfg:56
 msgid ""
@@ -5688,9 +5737,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
-#, fuzzy
 msgid "Naga Warrior"
-msgstr "Guerrero saurio"
+msgstr "Guerrero naga"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:56
 msgid ""
@@ -5703,9 +5751,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:38
-#, fuzzy
 msgid "Nagini Warrior"
-msgstr "Guerrero saurio"
+msgstr "Guerrero nagini"
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
@@ -7025,9 +7072,8 @@ msgid "+Contributors"
 msgstr "+Colaboradores"
 
 #: src/about.cpp:256
-#, fuzzy
 msgid "+Bots"
-msgstr "+ Robots"
+msgstr "+Robots"
 
 #: src/about.cpp:292 src/help.cpp:2564 src/show_dialog.cpp:496
 msgid "Close"
@@ -9420,20 +9466,6 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 
 #~ msgid "We will not join you."
 #~ msgstr "No te ayudaremos."
-
-#~ msgid ""
-#~ "Wait. We may join them. But only if they can prove they are worthy to "
-#~ "have us fight with them."
-#~ msgstr ""
-#~ "Esperad. Le ayudaremos. Pero sólo si demuestra que merece la pena luchar "
-#~ "por él."
-
-#~ msgid ""
-#~ "Yes. We will not join you unless you can prove yourself worthy by "
-#~ "defeating us in battle!"
-#~ msgstr ""
-#~ "Sí. ¡No te ayudaremos a no ser que demuestres tu valía derrotandonos en "
-#~ "combate!"
 
 #~ msgid "Very well."
 #~ msgstr "Muy bien."
