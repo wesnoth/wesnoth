@@ -74,13 +74,6 @@ line_source get_line_source(const std::vector<line_source>& line_src, int line)
 	return res;
 }
 
-#if 0
-struct close_FILE
-{
-	void operator()(FILE* f) const { if(f != NULL) { fclose(f); } }
-};
-#endif
-
 void read_file_internal(const std::string& fname, std::string& res)
 {
 	const int size = file_size(fname);

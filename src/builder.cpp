@@ -135,10 +135,11 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap
 	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
 }
 
-terrain_builder::terrain_builder(const config& cfg, const gamemap& gmap) :
+terrain_builder::terrain_builder(const config& cfg, const config& level, const gamemap& gmap) :
 	map_(gmap), tile_map_(gmap.x(), gmap.y())
 {
 	parse_config(cfg);
+	parse_config(level);
 	build_terrains();
 	//rebuild_terrain(gamemap::location(0,0));
 }
@@ -522,8 +523,10 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 	}
 }
 
-void terrain_builder::add_constraints(std::map<gamemap::location, terrain_builder::terrain_constraint> & constraints, 
-				      const gamemap::location& loc, const std::string& type)
+void terrain_builder::add_constraints(
+		terrain_builder::constraint_set& constraints, 
+		const gamemap::location& loc,
+		const std::string& type, const config& global_images)
 {
 	if(constraints.find(loc) == constraints.end()) {
 		//the terrain at the current location did not exist, so create it
@@ -532,6 +535,12 @@ void terrain_builder::add_constraints(std::map<gamemap::location, terrain_builde
 
 	if(!type.empty())
 		constraints[loc].terrain_types = type;			
+	
+	int x = loc.x * rule_image::TILEWIDTH / 2;
+	int y = loc.y * rule_image::TILEWIDTH + (loc.x % 2) * 
+		rule_image::TILEWIDTH / 2;
+	add_images_from_config(constraints[loc].images, global_images, true, x, y);
+
 }
 
 void terrain_builder::add_constraint_item(std::vector<std::string> &list, const config& cfg, const std::string &item)
@@ -548,7 +557,7 @@ void terrain_builder::add_constraint_item(std::vector<std::string> &list, const 
 
 void terrain_builder::add_constraints(terrain_builder::constraint_set &constraints, const gamemap::location& loc, const config& cfg, const config& global_images)
 {
-	add_constraints(constraints, loc, cfg["type"]);
+	add_constraints(constraints, loc, cfg["type"], global_images);
 
 	terrain_constraint& constraint = constraints[loc];
 	
@@ -556,16 +565,12 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 	add_constraint_item(constraint.has_flag, cfg, "has_flag");
 	add_constraint_item(constraint.no_flag, cfg, "no_flag");
 
-	int x = loc.x * rule_image::TILEWIDTH / 2;
-	int y = loc.y * rule_image::TILEWIDTH + (loc.x % 2) * 
-		rule_image::TILEWIDTH / 2;
-
 	add_images_from_config(constraint.images, cfg, false);
-	add_images_from_config(constraint.images, global_images, true, x, y);
 }
 
 void terrain_builder::parse_mapstring(const std::string &mapstring,
-		struct building_rule &br, anchormap& anchors)
+		struct building_rule &br, anchormap& anchors,
+		const config& global_images)
 {
 	int lineno = 0;
 	int x = 0;
@@ -611,7 +616,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 				anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, lineno / 2)));
 			} else {
 				const gamemap::location loc(x, lineno / 2);
-				add_constraints(br.constraints, loc, types);
+				add_constraints(br.constraints, loc, types, global_images);
 			}
 			lpos += 4;
 			x += 2;
@@ -667,7 +672,7 @@ void terrain_builder::parse_config(const config &cfg)
 		anchormap anchors;
 		
 		// Parse the map= , if there is one (and fill the anchors list)
-		parse_mapstring((**br)["map"], pbr, anchors);
+		parse_mapstring((**br)["map"], pbr, anchors, **br);
 
 		// Parses the terrain constraints (TCs)
 		config::child_list tcs((*br)->get_children("tile"));
@@ -981,6 +986,12 @@ void terrain_builder::build_terrains()
 	building_ruleset::const_iterator rule;
 	
 	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
+
+		if (rule->second.location_constraints.valid()) {
+			apply_rule(rule->second, rule->second.location_constraints);
+			continue;
+		}
+
 		constraint_set::const_iterator constraint;
 
 		//find the constraint that contains the less terrain of all terrain rules.

@@ -538,7 +538,7 @@ int play_game(int argc, char** argv)
 		display::unit_map u_map;
 		config dummy_cfg("");
 		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
-		             std::vector<team>(),dummy_cfg,dummy_cfg);
+		             std::vector<team>(),dummy_cfg,dummy_cfg,dummy_cfg);
 
 		gui::show_dialog(disp,NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)",
 		                 gui::MESSAGE);
@@ -599,7 +599,7 @@ int play_game(int argc, char** argv)
 		display::unit_map u_map;
 		config dummy_cfg("");
 		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
-		             std::vector<team>(),dummy_cfg,dummy_cfg);
+		             std::vector<team>(),dummy_cfg,dummy_cfg,dummy_cfg);
 
 		std::cerr << "initialized display object\n";
 		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";

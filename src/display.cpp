@@ -54,7 +54,7 @@ namespace {
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t, const config& theme_cfg,
-		const config& built_terrains) :
+		const config& config, const config& level) :
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
 	minimap_(NULL), redrawMinimap_(false),
@@ -65,7 +65,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	currentTeam_(0), activeTeam_(0), hideEnergy_(false),
 	deadAmount_(0.0), advancingAmount_(0.0), updatesLocked_(0),
 	turbo_(false), grid_(false), sidebarScaling_(1.0),
-	theme_(theme_cfg,screen_area()), builder_(built_terrains, map),
+	theme_(theme_cfg,screen_area()), builder_(config, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), diagnostic_label_(0),
 	help_string_(0)

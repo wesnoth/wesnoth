@@ -53,9 +53,9 @@ public:
 	typedef std::map<gamemap::location,unit> unit_map;
 
 	display(unit_map& units, CVideo& video,
-	        const gamemap& map, const gamestatus& status,
+			const gamemap& map, const gamestatus& status,
 			const std::vector<team>& t, const config& theme_cfg,
-		const config& built_terrains);
+			const config& config, const config& level);
 	~display();
 
 	Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue);

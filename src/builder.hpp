@@ -40,7 +40,7 @@ public:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND };
 	typedef std::vector<animated<image::locator> > imagelist;
 
-	terrain_builder(const config& cfg, const gamemap& gmap);
+	terrain_builder(const config& cfg, const config &level, const gamemap& gmap);
 
 	//returns a vector of string representing the images to load & blit together to get the
 	//built content for this tile.
@@ -116,7 +116,7 @@ public:
 	typedef std::vector<rule_image> rule_imagelist;
 
 	/**
-	 * Each terrain_graphics rule consists in a set of constraints.
+	 * Each terrain_graphics rule consists in a set of constraints
 	 */
 	struct terrain_constraint
 	{
@@ -210,13 +210,15 @@ private:
 			int dx=0, int dy=0);
 
 	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints,
-			const gamemap::location &loc, const std::string& type);
+			const gamemap::location &loc, const std::string& type,
+			const config& global_images);
 	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints,
-			const gamemap::location &loc, const config &cfg, const config& global_images);
+			const gamemap::location &loc, const config &cfg,
+			const config& global_images);
 	
 	typedef std::multimap<int, gamemap::location> anchormap;
 	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
-			     anchormap& anchors);
+			     anchormap& anchors, const config& global_images);
 	void parse_config(const config &cfg);
 	bool terrain_matches(gamemap::TERRAIN letter, const std::string &terrains);
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc, int rule_index, bool check_loc);

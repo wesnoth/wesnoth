@@ -112,9 +112,9 @@ namespace {
 }
 
 LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
-                        config* level, CVideo& video,
-                        game_state& state_of_game,
-						const std::vector<config*>& story)
+		config* level, CVideo& video,
+		game_state& state_of_game,
+		const std::vector<config*>& story)
 {
 	const int ticks = SDL_GetTicks();
 	std::cerr << "in play_level()...\n";
@@ -339,7 +339,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::cerr << "initializing display... " << (SDL_GetTicks() - ticks) << "\n";
 	const config dummy_cfg;
-	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg, game_config);
+	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg, game_config, *level);
 
 	std::cerr << "done initializing display... " << (SDL_GetTicks() - ticks) << "\n";
 
