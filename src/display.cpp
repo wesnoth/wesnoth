@@ -314,11 +314,9 @@ void display::default_zoom()
 	zoom(DefaultZoom - zoom_);
 }
 
-void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
+void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_fogged)
 {
-// allow to scroll to fogged tiles
-//	if(update_locked() || fogged(x,y))
-	if(update_locked())
+	if(update_locked() || (check_fogged && fogged(x,y)))
 		return;
 
 	if(map_.on_board(gamemap::location(x,y)) == false)
@@ -369,7 +367,7 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 }
 
 void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
-                              SCROLL_TYPE scroll_type)
+                              SCROLL_TYPE scroll_type, bool check_fogged)
 {
 	const double xpos1 = static_cast<double>(x1)*zoom_*0.75 - xpos_;
 	const double ypos1 = static_cast<double>(y1)*zoom_ - ypos_ +
@@ -382,9 +380,9 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	const double diffy = fabs(ypos1 - ypos2);
 
 	if(diffx > map_area().w/(zoom_*0.75) || diffy > map_area().h/zoom_) {
-		scroll_to_tile(x1,y1,scroll_type);
+		scroll_to_tile(x1,y1,scroll_type,check_fogged);
 	} else {
-		scroll_to_tile((x1+x2)/2,(y1+y2)/2,scroll_type);
+		scroll_to_tile((x1+x2)/2,(y1+y2)/2,scroll_type,check_fogged);
 	}
 }
 

@@ -87,13 +87,13 @@ public:
 	enum SCROLL_TYPE { SCROLL, WARP };
 
 	//function which will scroll such that location x,y is on-screen.
-	void scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type=SCROLL);
+	void scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type=SCROLL, bool check_fogged=true);
 
 	//function which will scroll such that location x1,y1 is on-screen.
 	//it will also try to make it such that x2,y2 is on-screen but this
 	//is not guaranteed.
 	void scroll_to_tiles(int x1, int y1, int x2, int y2,
-	                     SCROLL_TYPE scroll_type=SCROLL);
+	                     SCROLL_TYPE scroll_type=SCROLL, bool check_fogged=true);
 
 	//invalidates entire screen, including all tiles and sidebar.
 	void redraw_everything();
