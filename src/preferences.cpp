@@ -472,7 +472,7 @@ void set_show_side_colours(bool value)
 
 bool show_side_colours()
 {
-	return prefs["show_side_colours"] == "yes";
+	return prefs["show_side_colours"] != "no";
 }
 
 void set_ask_delete_saves(bool value)
