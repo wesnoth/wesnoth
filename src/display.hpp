@@ -71,7 +71,6 @@ public:
 
 	//route does not have to remain valid after being set
 	void set_route(const paths::route* route);
-	void set_routes(const std::vector<paths::route>& routes);
 
 	double get_location_x(const gamemap::location& loc) const;
 	double get_location_y(const gamemap::location& loc) const;
@@ -178,7 +177,7 @@ private:
 	SDL_Surface* minimap_;
 
 	const paths* pathsList_;
-	std::vector<paths::route> routes_;
+	paths::route route_;
 
 	const gamestatus& status_;
 

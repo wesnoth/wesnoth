@@ -95,10 +95,8 @@ public:
 	int value() const;
 	bool is_guardian() const;
 
-	const std::vector<gamemap::location>& get_gotos() const;
+	const gamemap::location& get_goto() const;
 	void set_goto(const gamemap::location& new_goto);
-	void add_goto(const gamemap::location& new_goto);
-	void done_goto();
 
 	int upkeep() const;
 
@@ -143,7 +141,7 @@ private:
 
 	bool guardian_;
 
-	std::vector<gamemap::location> gotos_;
+	gamemap::location goto_;
 
 	bool loyal_;
 

@@ -847,8 +847,8 @@ size_t move_unit(display* disp, const gamemap& map,
 
 	//if we can't get all the way there and have to set a go-to
 	if(steps.size() != route.size()) {
-		ui->second.add_goto(route.back());
-		u.add_goto(route.back());
+		ui->second.set_goto(route.back());
+		u.set_goto(route.back());
 	}
 
 	if(steps.size() < 2) {
@@ -890,7 +890,7 @@ size_t move_unit(display* disp, const gamemap& map,
 	}
 
 	if(disp != NULL) {
-		disp->set_routes(std::vector<paths::route>());
+		disp->set_route(NULL);
 		disp->draw();
 	}
 
@@ -975,7 +975,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 
 	//units with goto commands that have already done their gotos this turn
 	//(i.e. don't have full movement left) should be red
-	if(u.movement_left() < u.total_movement() && !u.get_gotos().empty()) {
+	if(u.movement_left() < u.total_movement() && u.get_goto().valid()) {
 		return false;
 	}
 
