@@ -579,14 +579,14 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		damage = 0;
 	}
 
-	def->second.set_standing();
-
 	if(leader_loc.valid()){
 		leader->second.set_leading(false);
 	}
 
 	disp.draw_tile(a.x,a.y);
 	disp.draw_tile(b.x,b.y);
+
+	def->second.set_standing();
 
 	if(leader_loc.valid()){
 		disp.draw_tile(leader_loc.x,leader_loc.y);
@@ -625,8 +625,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	}
 
 	log_scope("unit_attack");
-	disp.invalidate_all();
-	disp.draw(true,true);
 
 	const unit_map::iterator att = units.find(a);
 	assert(att != units.end());
@@ -846,8 +844,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		damage = 0;
 	}
 
-	def->second.set_standing();
-
 	if(leader_loc.valid()){
 		leader->second.set_leading(false);
 	}
@@ -857,6 +853,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	if(leader_loc.valid()) {
 		disp.draw_tile(leader_loc.x,leader_loc.y);
 	}
+
+	def->second.set_standing();
 
 	if(dead) {
 		unit_display::unit_die(disp,def->first,def->second);

@@ -898,15 +898,16 @@ void attack(display& gui, const gamemap& map,
 
 	if(attackerxp) {
 		a->second.get_experience(attackerxp);
-		gui.invalidate(a->first);
 	}
 
 	if(defenderxp) {
 		d->second.get_experience(defenderxp);
-		gui.invalidate(d->first);
 	}
 
 	gui.invalidate_unit();
+	gui.invalidate(attacker);
+	gui.invalidate(defender);
+	gui.draw(true,true);
 }
 
 int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
