@@ -242,7 +242,7 @@ const std::string& network_host()
 {
 	std::string& res = prefs["host"];
 	if(res.empty())
-		res = "devsrv.wesnoth.org"; //"server.wesnoth.org";
+		res = "server.wesnoth.org";
 
 	return res;
 }
