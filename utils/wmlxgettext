@@ -57,7 +57,7 @@ foreach my $file (@ARGV) {
       # part of multi-line
       $str .= $_;
 
-    } elsif (m/(\S+)\s*=\s*(.*)$/) {
+    } elsif (m/(\S+)\s*=\s*(.*?)\s*$/) {
       # single-line non-quoted string
       die "nested string in $file" if defined $str;
 
