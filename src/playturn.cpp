@@ -896,6 +896,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_UNIT_LIST:
 	case hotkey::HOTKEY_STATISTICS:
 	case hotkey::HOTKEY_QUIT_GAME:
+	case hotkey::HOTKEY_SEARCH:
 		return true;
 
 	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:
@@ -912,7 +913,8 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 
 	case hotkey::HOTKEY_CONTINUE_MOVE: {
 		if(browse_) return false;
-		if(current_unit()->second.move_interrupted()) return true;
+		if(current_unit() != units_.end() && current_unit()->second.move_interrupted())
+			return true;
 		const unit_map::const_iterator i = units_.find(selected_hex_);
 		if (i == units_.end()) return false;
 		return i->second.move_interrupted();
@@ -1992,6 +1994,45 @@ void turn_info::show_statistics()
 	if(items.empty() == false) {
 		gui::show_dialog(gui_,NULL,"",title,gui::OK_ONLY,&items);
 		show_statistics();
+	}
+}
+
+void turn_info::search() {
+	std::stringstream prompt;
+	prompt << string_table["search_prompt"];
+	if(last_search_.empty() == false) {
+		prompt << " [" << last_search_ << "]";
+	}
+	prompt << ": ";
+	std::string new_search;
+	const int res = gui::show_dialog(gui_,NULL,"",string_table["search_title"],gui::OK_CANCEL,
+	                                 NULL,NULL,prompt.str(),&new_search);
+	if(new_search.empty() == false)
+		last_search_ = new_search;
+	if(res == 0 && last_search_.empty() == false) {
+		//Search labels
+		const map_labels::label_map& labels = gui_.labels().labels();
+		for(map_labels::label_map::const_iterator i = labels.begin(); i != labels.end(); ++i) {
+			if(gui_.fogged(i->first.x,i->first.y)) continue;
+			std::string label = gui_.labels().get_label(i->second);
+			if(std::search(label.begin(), label.end(), last_search_.begin(), last_search_.end()) != label.end()) {
+				gui_.scroll_to_tile(i->first.x,i->first.y,display::WARP);
+				return;
+			}
+		}
+		//Search unit names
+		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+			if(gui_.fogged(u->first.x,u->first.y)) continue;
+			std::string name = u->second.description();
+			if(std::search(name.begin(), name.end(), last_search_.begin(), last_search_.end()) != name.end()) {
+				gui_.scroll_to_tile(u->first.x,u->first.y,display::WARP);
+				return;
+			}
+		}
+		//Not found, inform the player
+		std::string msg = string_table["search_string_not_found"];
+		msg.replace(msg.find("%s"), 2, last_search_);
+		gui::show_dialog(gui_,NULL,"",msg);
 	}
 }
 

@@ -82,6 +82,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("delayshroud",HOTKEY_DELAY_SHROUD));
 		m.insert(val("updateshroud",HOTKEY_UPDATE_SHROUD));
 		m.insert(val("continue",HOTKEY_CONTINUE_MOVE));
+		m.insert(val("search",HOTKEY_SEARCH));
 	}
 	
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
@@ -393,13 +394,16 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_CONTINUE_MOVE:
 			if(executor)
 				executor->continue_move();
-			break;		
+			break;
+		case HOTKEY_SEARCH:
+			if(executor)
+				executor->search();
+			break;
 		case HOTKEY_QUIT_GAME: {
 			const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);
 			if(res == 0) {
 				throw end_level_exception(QUIT);
 			}
-
 			break;
 		}
 
@@ -457,6 +461,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 				executor->edit_revert();
 			break;
 		default:
+			std::cerr << "command_executor: unknown command number " << command << ", ignoring.\n";
 			break;
 	}
 }

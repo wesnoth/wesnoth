@@ -30,6 +30,10 @@ public:
 
 	void recalculate_shroud();
 
+	typedef std::map<gamemap::location,int> label_map;
+	const label_map& labels() { return labels_; }
+	const std::string& get_label(int index) const;
+
 private:
 	map_labels(const map_labels&);
 	void operator=(const map_labels&);
@@ -38,7 +42,6 @@ private:
 	const team* team_;
 	const gamemap& map_;
 
-	typedef std::map<gamemap::location,int> label_map;
 	label_map labels_;
 };
 

@@ -124,6 +124,7 @@ private:
 	virtual void toggle_shroud_updates();
 	virtual void update_shroud_now();
 	virtual void continue_move();
+	virtual void search();
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 	
 	void do_recruit(const std::string& name);
@@ -179,6 +180,7 @@ private:
 	bool end_turn_;
 
 	std::string last_recruit_;
+	std::string last_search_;
 };
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,

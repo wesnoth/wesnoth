@@ -37,6 +37,10 @@ void map_labels::read(const config& cfg)
 	}
 }
 
+const std::string& map_labels::get_label(int index) const {
+	return font::get_floating_label_text(index);
+}
+
 const std::string& map_labels::get_label(const gamemap::location& loc) const
 {
 	const label_map::const_iterator itor = labels_.find(loc);
