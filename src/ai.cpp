@@ -53,6 +53,8 @@ ai::ai(ai_interface::info& info)
 
 bool ai::recruit_usage(const std::string& usage)
 {
+	user_interact();
+
 	const int min_gold = 0;
 	
 	log_scope("recruiting troops");

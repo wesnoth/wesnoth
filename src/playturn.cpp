@@ -1183,6 +1183,7 @@ void turn_info::end_turn()
 	//force any pending fog updates
 	clear_undo_stack();
 	end_turn_ = true;
+	gui_.set_route(NULL);
 
 	//auto-save
 	config snapshot;
