@@ -450,45 +450,40 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		// random generation works as follows:
 		// random=[comma delimited list]
-		// If the first element of the list looks like a number*, then we
-		// assume that we are supposed to generate an integer in a specified
-		// range, so the second element had better be a number, too. Otherwise,
-		// the elements are treated as strings and one is randomly chosen from
-		// the list. 
-		// * "looks like a number" means first char is a digit or "-".
+		// Each element in the list will be considered a separate choice, 
+		// unless it contains "..". In this case, it must be a numerical
+		// range. (i.e. -1..-10, 0..100, -10..10, etc)
 		const std::string& random = cfg["random"];
 		if(random.empty() == false) {
-			std::string random_value;
-			int pos = random.find(",");
-			if (pos != std::string::npos) {
-				const std::string first = random.substr(0, pos);
-				int tmp;
+			std::string random_value, word;
+			std::vector<std::string> words;
+			std::vector<std::pair<int,int> > ranges;
+			int num_choices = 0;
+			int pos = 0, pos2 = -1, tmp; 
+			std::stringstream ss(std::stringstream::in|std::stringstream::out);
+			while (pos2 != (int)random.length()) {
+				pos = pos2+1;
+				pos2 = random.find(",", pos);
 
-				if (first.length() == 0 || 
-					(first[0] != '-' && isdigit(first[0]) == 0)) { 
-					// choose an element from the list
-					std::cerr << "random: string list provided... ";
-					std::vector<int> commas;
-					commas.push_back(-1);
-					commas.push_back(pos);
-					pos = random.find(",", pos+1);
-					while (pos != std::string::npos) {
-						commas.push_back(pos);
-						pos = random.find(",", pos+1);
-					}
-					commas.push_back(random.size());
-					tmp = rand() % (commas.size() - 1);
-					random_value = random.substr(commas[tmp]+1,
-											commas[tmp+1]-(commas[tmp]+1));
+				if (pos2 == std::string::npos) 
+					pos2 = random.length();
+
+				word = random.substr(pos, pos2-pos);
+				words.push_back(word);
+				tmp = word.find("..");
+				
+				
+				if (tmp == std::string::npos) {
+					// treat this element as a string
+					ranges.push_back(std::pair<int, int>(0,0));
+					num_choices += 1;
 				}
 				else {
-					// looks like we're supplied with a numerical range
-					std::cerr << "random: numerical range provided... ";
-					const std::string second = random.substr(pos+1,
-															 random.length());
+					// treat as a numerical range
+					const std::string first = word.substr(0, tmp);
+					const std::string second = word.substr(tmp+2,
+														random.length());
 
-					std::stringstream ss(std::stringstream::in | 
-										 std::stringstream::out);
 					int low, high;
 					ss << first + " " + second;
 					ss >> low;
@@ -500,23 +495,28 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 						low = high;
 						high = tmp;
 					}
-
-					if (low == high) {
-						ss << low;
-					}
-					else {
-						tmp = rand()%(high-low) + low;
-						ss << tmp;
-					}
-					ss >> random_value;
+					ranges.push_back(std::pair<int, int>(low,high));
+					num_choices += (high - low) + 1;
 				}
 			}
-			else {
-				// no comma found, so just set it to the supplied string
-				std::cerr << "random: only one value provided... ";
-				random_value = random;
+
+			int choice = rand() % num_choices;
+			tmp = 0;	
+			for (int i = 0; i < ranges.size(); i++) {
+				tmp += (ranges[i].second - ranges[i].first) + 1;
+				if (tmp > choice) {
+					if (ranges[i].first == 0 && ranges[i].second == 0) {
+						random_value = words[i];
+					}
+					else {
+						tmp = (ranges[i].second - (tmp - choice)) + 1;
+						ss << tmp;
+						ss >> random_value;
+					}
+					break;
+				}
 			}
-			std::cerr << "value chosen: '" << random_value << "'" << std::endl;
+			std::cerr << "(" << choice << ")" << random_value << " ";
 			state_of_game->variables[name] = random_value;
 		}
 	}
