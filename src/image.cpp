@@ -285,7 +285,9 @@ SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 	return surf;
 }
 
-SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm, const unit_map* units)
+SDL_Surface* getMinimap(int w, int h, const gamemap& map, 
+		int lawful_bonus,
+		const team* tm, const unit_map* units, const std::vector<team>* teams)
 {
 	SDL_Surface* minimap = NULL;
 	if(minimap == NULL) {
@@ -329,13 +331,16 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm, const 
 
 						surf = scale_surface(tile,scale,scale);
 
-						if(units != NULL && !fogged) {
+						if(units != NULL && teams != NULL && tm != NULL && !fogged) {
 							const unit_map::const_iterator u = units->find(loc);
 							if(u != units->end()) {
-								const SDL_Color& colour = font::get_side_colour(u->second.side());								
-								SDL_Rect rect = {0,0,surf->w,surf->h};
-								const short col = SDL_MapRGB(surf->format,colour.r,colour.g,colour.b);
-								SDL_FillRect(surf,&rect,col);
+								if(!tm->is_enemy(u->second.side()) || 
+										!u->second.invisible(terrain,lawful_bonus,loc,*units,*teams)){
+									const SDL_Color& colour = font::get_side_colour(u->second.side());								
+									SDL_Rect rect = {0,0,surf->w,surf->h};
+									const short col = SDL_MapRGB(surf->format,colour.r,colour.g,colour.b);
+									SDL_FillRect(surf,&rect,col);
+								}
 							}
 
 							//we're not caching the surface, so make sure

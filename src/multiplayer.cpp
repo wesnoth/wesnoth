@@ -354,7 +354,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				level_ptr->remove_child("side",level_ptr->get_children("side").size()-1);
 			}
 
-			const scoped_sdl_surface mini(image::getMinimap(145,145,map));
+			const scoped_sdl_surface mini(image::getMinimap(145,145,map,0));
 
 			if(mini != NULL) {
 				rect.x = ((disp.x()-width)/2+10)+35;

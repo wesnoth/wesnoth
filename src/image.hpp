@@ -63,7 +63,8 @@ namespace image {
 	SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y);
 
 	//the surface returned must be freed by the user
-	SDL_Surface* getMinimap(int w, int h, const gamemap& map_, const team* tm=NULL, const unit_map* units=NULL);
+	SDL_Surface* getMinimap(int w, int h, const gamemap& map_, int lawful_bonus,
+			const team* tm=NULL, const unit_map* units=NULL, const std::vector<team>* teams=NULL);
 }
 
 #endif
