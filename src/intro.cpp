@@ -162,8 +162,7 @@ bool show_intro_part(display& screen, const config& part,
 
 		if(image_name == "") continue;
 		surface img(image::get_image(image_name,image::UNSCALED));
-//		if(img.null()) continue;
-		if(img == NULL) continue;
+		if(img.null()) continue;
 
 		SDL_Rect image_rect;
 		image_rect.x = x + dstrect.x;
