@@ -8,19 +8,19 @@ namespace {
 namespace gui {
 
 widget::widget(const widget &o) :
-	disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_), hidden_(false), volatile_(o.volatile_),
+	disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_), needs_restore_(o.needs_restore_), hidden_(false), volatile_(o.volatile_),
 	help_string_(o.help_string_), help_text_(o.help_text_)
 {
 	bg_backup();
 }
 
 widget::widget(display& disp) :
-	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false), volatile_(false), help_string_(0)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), needs_restore_(false), hidden_(false), volatile_(false), help_string_(0)
 {
 }
 
 widget::widget(display& disp, const SDL_Rect& rect) :
-	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false), volatile_(false), help_string_(0)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), needs_restore_(false), hidden_(false), volatile_(false), help_string_(0)
 {
 	set_location(rect);
 	bg_backup();
@@ -132,6 +132,9 @@ void widget::set_dirty(bool dirty)
 	}
 
 	dirty_ = dirty;
+	if(dirty_ == false) {
+		needs_restore_ = true;
+	}
 }
 
 const bool widget::dirty() const
@@ -146,7 +149,14 @@ void widget::bg_backup()
 
 void widget::bg_restore() const
 {
-	restorer_.restore();
+	if(needs_restore_) {
+		restorer_.restore();
+		needs_restore_ = false;
+	} else {
+		//this function should be able to be relied upon to update the rectangle,
+		//so do that even if we don't restore
+		update_rect(location());
+	}
 }
 
 void widget::handle_event(const SDL_Event& event)

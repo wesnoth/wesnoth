@@ -349,8 +349,6 @@ int unit::max_experience() const
 bool unit::get_experience(int xp)
 {
 	experience_ += xp;
-	if(experience_ > max_experience())
-		experience_ = max_experience();
 	return advances();
 }
 

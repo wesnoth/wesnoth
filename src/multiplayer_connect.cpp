@@ -596,10 +596,10 @@ lobby::RESULT mp_connect::process()
 				side["description"] = preferences::login();
 				for(size_t m = 0; m != combos_type_.size(); ++m) {
 					if(m != n) {
-						if(combos_type_[m].selected() == 4){
-							combos_type_[m].set_selected(0);
+						if(combos_type_[m].selected() == 5){
+							combos_type_[m].set_selected(2);
 							config& si = **(sides.first+m);
-							si["controller"] = "network";
+							si["controller"] = "ai";
 							si["description"] = "";
 						}
 					}

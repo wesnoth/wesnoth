@@ -152,6 +152,7 @@ private:
 	virtual void continue_move();
 	virtual void search();
 	virtual void show_help();
+	virtual void show_chat_log();
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 
 	void do_search(const std::string& str);

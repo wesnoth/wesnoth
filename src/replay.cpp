@@ -376,6 +376,30 @@ void replay::speak(const config& cfg)
 	}
 }
 
+std::string replay::build_chat_log(const std::string& team) const
+{
+	std::stringstream str;
+	const config::child_list& cmd = commands();
+	for(config::child_list::const_iterator i = cmd.begin(); i != cmd.end(); ++i) {
+		const config* speak = (**i).child("speak");
+		if(speak != NULL) {
+			const config& cfg = *speak;
+			const std::string& team_name = cfg["team_name"];
+			if(team_name == "" || team_name == team) {
+				if(team_name == "") {
+					str << "<" << cfg["description"] << "> ";
+				} else {
+					str << "*" << cfg["description"] << "* ";
+				}
+
+				str << cfg["message"] << "\n";
+			}
+		}
+	}
+
+	return str.str();
+}
+
 config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 {
 	log_scope("get_data_range\n");

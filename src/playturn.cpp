@@ -936,6 +936,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SPEAK:
 	case hotkey::HOTKEY_SPEAK_ALLY:
 	case hotkey::HOTKEY_SPEAK_ALL:
+	case hotkey::HOTKEY_CHAT_LOG:
 		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
@@ -1787,7 +1788,6 @@ bool turn_info::has_friends() const
 
 void turn_info::speak()
 {
-	
 	create_textbox(floating_textbox::TEXTBOX_MESSAGE,string_table["message"] + ":", has_friends() ? string_table["speak_allies_only"] : "", preferences::message_private());
 }
 
@@ -2025,6 +2025,12 @@ void turn_info::search()
 void turn_info::show_help()
 {
 	help::show_help(gui_);
+}
+
+void turn_info::show_chat_log()
+{
+	std::string text = recorder.build_chat_log(teams_[gui_.viewing_team()].team_name());
+	gui::show_dialog(gui_,NULL,string_table["chat_log"],"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
 }
 
 void turn_info::do_search(const std::string& new_search)

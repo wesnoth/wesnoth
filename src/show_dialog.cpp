@@ -394,18 +394,23 @@ int show_dialog(display& disp, SDL_Surface* image,
 	SDL_Rect clipRect = disp.screen_area();
 
 	const bool use_textbox = text_widget_text != NULL;
+	const bool editable_textbox = use_textbox && std::find(text_widget_text->begin(),text_widget_text->end(),'\n') == text_widget_text->end();
 	static const std::string default_text_string = "";
 	const unsigned int text_box_width = 350;
 	textbox text_widget(disp,text_box_width,
-	                    use_textbox ? *text_widget_text : default_text_string);
+	                    use_textbox ? *text_widget_text : default_text_string, editable_textbox);
 
 	int text_widget_width = 0;
 	int text_widget_height = 0;
 	if(use_textbox) {
-		text_widget_width =
-		 font::draw_text(NULL, clipRect, message_font_size,
-		                 font::NORMAL_COLOUR, text_widget_label, 0, 0, NULL).w +
-		                            text_widget.location().w;
+		
+		text_widget.set_wrap(!editable_textbox);
+
+		const SDL_Rect& area = font::text_area(*text_widget_text,message_font_size);
+
+		text_widget.set_width(minimum<size_t>(disp.x()/2,maximum<size_t>(area.w,text_widget.location().w)));
+		text_widget.set_height(minimum<size_t>(disp.y()/2,maximum<size_t>(area.h,text_widget.location().h)));
+		text_widget_width = font::text_area(text_widget_label,message_font_size).w + text_widget.location().w;;
 		text_widget_height = text_widget.location().h + 16;
 	}
 

@@ -34,7 +34,7 @@ textbox::textbox(display& d, int width, const std::string& text, bool editable)
 			 scrollbar_(d,this),
              uparrow_(d,"",gui::button::TYPE_PRESS,"uparrow-button"),
              downarrow_(d,"",gui::button::TYPE_PRESS,"downarrow-button"),
-			 scroll_bottom_(false), wrap_(false)
+			 scroll_bottom_(false), wrap_(false), line_height_(0), yscroll_(0)
 {
 	static const SDL_Rect area = d.screen_area();
 	const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
@@ -102,22 +102,6 @@ void textbox::draw()
 	
 	SDL_Rect src;
 
-	// Fills the selected area
-	if(is_selection()) {
-		int x = minimum<int>(char_pos_[selstart_], char_pos_[selend_]) - text_pos_ + loc.x;
-		int w = abs(char_pos_[selstart_] - char_pos_[selend_]);
-
-		if(!((x > loc.x + loc.w) || ((x + w) < loc.x))) {
-			src.x = maximum<int>(x, loc.x);
-			src.y = loc.y;
-			src.w = src.x + w > loc.x + loc.w ? loc.x + loc.w - src.x : w;
-			src.h = loc.h;
-
-			Uint32 colour = SDL_MapRGB(disp().video().getSurface()->format, 160, 0, 0);
-			fill_rect_alpha(src,colour,140,disp().video().getSurface());
-		}
-	}
-
 	if(text_image_ != NULL) {
 		src.y = 0;
 		src.w = minimum<size_t>(loc.w,text_image_->w);
@@ -173,6 +157,35 @@ void textbox::draw()
 
 		scroll_bottom_ = false;
 
+		// Fills the selected area
+		if(is_selection()) {
+			const int start = minimum<int>(selstart_,selend_);
+			const int end = maximum<int>(selstart_,selend_);
+			int startx = char_x_[start];
+			int starty = char_y_[start];
+			const int endx = char_x_[end];
+			const int endy = char_y_[end];
+
+			while(starty <= endy) {
+				const size_t right = starty == endy ? endx : text_image_->w;
+				if(right <= size_t(startx)) {
+					break;
+				}
+
+				SDL_Rect rect = {location().x + startx,location().y + starty - src.y,right - startx,line_height_};
+
+				SDL_Rect clip = location();
+				const clip_rect_setter clipper(disp().video().getSurface(),clip);
+
+				Uint32 colour = SDL_MapRGB(disp().video().getSurface()->format, 160, 0, 0);
+				fill_rect_alpha(rect,colour,140,disp().video().getSurface());
+
+				starty += int(line_height_);
+				startx = 0;
+			}
+		}
+
+		yscroll_ = src.y;
 		SDL_BlitSurface(text_image_,&src,disp().video().getSurface(),&dest);
 	}
 
@@ -246,8 +259,10 @@ void textbox::scroll(int pos)
 void textbox::update_text_cache(bool changed)
 {
 	if(changed) {
-		char_pos_.clear();
-		char_pos_.push_back(0);
+		char_x_.clear();
+		char_y_.clear();
+		char_x_.push_back(0);
+		char_y_.push_back(0);
 
 		// Re-calculate the position of each glyph. We approximate this by asking the
 		// width of each substring, but this is a flawed assumption which won't work with
@@ -278,17 +293,20 @@ void textbox::update_text_cache(bool changed)
 					int backup = itor - backup_itor;
 					itor = backup_itor + 1;
 					if(backup > 0) {
-						char_pos_.erase(char_pos_.end()-backup, char_pos_.end());
+						char_x_.erase(char_x_.end()-backup, char_x_.end());
+						char_y_.erase(char_y_.end()-backup, char_y_.end());
 						wrapped_text.erase(wrapped_text.end()-backup, wrapped_text.end());
 					}
 				}
 				backup_itor = text_.end();
 				wrapped_text.push_back(wchar_t('\n'));
-				char_pos_.push_back(0);
+				char_x_.push_back(0);
+				char_y_.push_back(char_y_.back()+1);
 				visible_string = "";
 			} else {
 				wrapped_text.push_back(*itor);
-				char_pos_.push_back(w);
+				char_x_.push_back(w);
+				char_y_.push_back(char_y_.back() + (char(*itor) == '\n' ? 1 : 0));
 				++itor;
 			}
 		}
@@ -300,9 +318,16 @@ void textbox::update_text_cache(bool changed)
 		text_size_.h = location().h;
 
 		text_image_.assign(font::get_rendered_text(s, font_size, font::NORMAL_COLOUR));		
+
+		//so far we've set char_y_ in terms of the line it's on, now set it in terms of proper y
+		//co-ordinates, by calculating the height of a line, and multiplying each member of char_y_ by that height
+		line_height_ = font::get_max_height(font_size);
+		for(std::vector<int>::iterator i = char_y_.begin(); i != char_y_.end(); ++i) {
+			*i = *i * line_height_;
+		}
 	}
 
-	int cursor_x = char_pos_[cursor_];
+	int cursor_x = char_x_[cursor_];
 
 	if(cursor_x - text_pos_ > location().w) {
 		text_pos_ = cursor_x - location().w;
@@ -344,30 +369,6 @@ void textbox::handle_event(const SDL_Event& event)
 		return;
 	}
 
-#if 0
-	//if the user presses ctrl+v to paste text into the textbox
-	if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_v && (event.key.keysym.mod&KMOD_CTRL) != 0 && editable() && focus()) {
-		const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
-		const size_t end = maximum<size_t>(size_t(selstart_),size_t(selend_));
-		if(beg < text_.size() && end <= text_.size() && beg != end) {
-			text_.erase(text_.begin()+beg,text_.begin()+end);
-			selstart_ = selend_ = cursor_ = int(beg);
-		}
-
-		const std::string& str = copy_from_clipboard();
-		wide_string tmp;
-		tmp.resize(str.size());
-		std::copy(str.begin(),str.end(),tmp.begin());
-		text_.insert(text_.begin()+minimum(size_t(cursor_),text_.size()),tmp.begin(),tmp.end());
-		cursor_ += str.size();
-
-		update_text_cache(true);
-		set_dirty();
-
-		return;
-	}
-#endif
-
 	int mousex, mousey;
 	const Uint8 mousebuttons = SDL_GetMouseState(&mousex,&mousey);
 	if(!(mousebuttons & SDL_BUTTON(1))) {
@@ -376,7 +377,7 @@ void textbox::handle_event(const SDL_Event& event)
 
 	if( (grabmouse_ && (event.type == SDL_MOUSEMOTION)) ||  (
 		    event.type == SDL_MOUSEBUTTONDOWN  && (mousebuttons & SDL_BUTTON(1))  && ! 
-		   (mousex < location().x || mousex > location().x + location().w ||
+			(mousex < location().x || mousex > location().x + location().w - (show_scrollbar() ? scrollbar_.get_max_width() : 0) ||
 		    mousey < location().y || mousey > location().y + location().h))) {
 
 		const int x = mousex - location().x + text_pos_;
@@ -384,12 +385,16 @@ void textbox::handle_event(const SDL_Event& event)
 		int pos = 0;
 		int distance = x;
 
-		for(int i = 1; i < char_pos_.size(); ++i) {
+		for(int i = 1; i < int(char_x_.size()); ++i) {
+			if(yscroll_ + y < char_y_[i]) {
+				break;
+			}
+
 			// Check individually each distance (if, one day, we support
-			// RTL languages, char_pos[c] may not be monotonous.)
-			if(abs(x - char_pos_[i]) < distance) {
+			// RTL languages, char_x_[c] may not be monotonous.)
+			if(abs(x - char_x_[i]) < distance && yscroll_ + y < char_y_[i] + line_height_) {
 				pos = i;
-				distance = abs(x - char_pos_[i]);
+				distance = abs(x - char_x_[i]);
 			}
 		}
 

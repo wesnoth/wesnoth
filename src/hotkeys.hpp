@@ -36,6 +36,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
                       HOTKEY_LABEL_TERRAIN, HOTKEY_SHOW_ENEMY_MOVES, HOTKEY_BEST_ENEMY_MOVES,
 					  HOTKEY_DELAY_SHROUD, HOTKEY_UPDATE_SHROUD, HOTKEY_CONTINUE_MOVE,
 					  HOTKEY_SEARCH, HOTKEY_SPEAK_ALLY, HOTKEY_SPEAK_ALL, HOTKEY_HELP,
+					  HOTKEY_CHAT_LOG,
 
 					  //editing specific commands
 					  HOTKEY_EDIT_SET_TERRAIN,
@@ -120,6 +121,7 @@ public:
 	virtual void continue_move() {}
 	virtual void search() {}
 	virtual void show_help() {}
+	virtual void show_chat_log() {}
 
 	// Map editor stuff.
 	virtual void edit_set_terrain() {}
