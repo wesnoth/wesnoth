@@ -242,6 +242,9 @@ void unit::new_level()
 
 	role_ = "";
 
+	//set the goto command to be going to no-where
+	goto_ = gamemap::location();
+
 	//reapply all permanent modifications
 	apply_modifications();
 
