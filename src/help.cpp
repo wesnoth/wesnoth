@@ -383,7 +383,7 @@ void help_menu::display_visible_items() {
 		}
 		menu_items.push_back(to_show);
 	}
-	set_items(menu_items, false);
+	set_items(menu_items, false, true);
 	menu::set_width(internal_width_);
 }
 

@@ -42,8 +42,11 @@ public:
 	void erase_item(size_t index);
 
 	/// Set new items to show and redraw/recalculate everything. If
-	/// strip_spaces is false, spaces will remain at the item edges.
-	void set_items(const std::vector<std::string>& items, bool strip_spaces=true);
+	/// strip_spaces is false, spaces will remain at the item edges. If
+	/// keep_viewport is true, the menu tries to keep the selection at
+	/// the same position as it were before the items were set.
+	void set_items(const std::vector<std::string>& items, bool strip_spaces=true,
+				   bool keep_viewport=false);
 
 	/// Set a new max height for this menu. Note that this does not take
 	/// effect immideately, only after certain operations that clear
@@ -134,6 +137,9 @@ private:
 	/// vary inversely with the ratio of the number of items to the 
 	/// size of the viewing rect
 	void set_scrollbar_height();
+	/// Update the current position of the scrollbar to reflect possible
+	/// changes in the menu. Return the new position of the scrollbar.
+	int set_scrollbar_position();
 	gui::scrollbar scrollbar_;
 	int scrollbar_width_;
 	int scrollbar_height_;

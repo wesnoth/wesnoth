@@ -88,19 +88,33 @@ void menu::set_scrollbar_height()
 				  << std::endl;
 		scrollbar_height_ = height() - buttons_height;
 	}
-					
 	scrollbar_.set_grip_height(scrollbar_height_);
+}
+
+int menu::set_scrollbar_position() {
+	const int last_top_idx = items_.size() - max_items_onscreen();
+	// note to self :) - scrollbar_height_ is really grip_height.
+	int max_scroll_position = scrollbar_.location().h-scrollbar_height_;
+	int new_scrollpos = 0;
+	if (show_scrollbar() && last_top_idx > 0) {
+		new_scrollpos = (first_item_on_screen_ * max_scroll_position) / last_top_idx;
+		if (new_scrollpos > 0 && new_scrollpos < max_scroll_position) {
+			new_scrollpos++;
+		}
+		scrollbar_.set_grip_position(new_scrollpos);
+	}
+	return new_scrollpos;
 }
 
 int menu::height() const
 {
 	if(height_ == -1) {
 		height_ = 0;
-		for(size_t i = 0; i != items_.size() && i != max_items_onscreen(); ++i) {
+		for(size_t i = first_item_on_screen_; i != items_.size()
+				&& i != first_item_on_screen_ + max_items_onscreen(); ++i) {
 			height_ += get_item_rect(i).h;
 		}
 	}
-
 	return height_;
 }
 
@@ -199,7 +213,8 @@ void menu::erase_item(size_t index)
 	}
 }
 
-void menu::set_items(const std::vector<std::string>& items, bool strip_spaces) {
+void menu::set_items(const std::vector<std::string>& items, bool strip_spaces,
+					 bool keep_viewport) {
 	items_.clear();
 	itemRects_.clear();
 	column_widths_.clear();
@@ -212,7 +227,6 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces) {
 	scrollbar_.enable(false);
 	uparrow_.hide(true);
 	downarrow_.hide(true);
-	first_item_on_screen_ = 0;
 	selected_ = click_selects_ ? -1:0;
 	for (std::vector<std::string>::const_iterator item = items.begin();
 		 item != items.end(); ++item) {
@@ -230,8 +244,17 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces) {
 			first_item.erase(first_item.begin());
 		}
 	}
+	if (keep_viewport) {
+		if (first_item_on_screen_ >= items_.size() - max_items_onscreen()) {
+			first_item_on_screen_ = items_.size() - max_items_onscreen();
+		}
+	}
+	else {
+		first_item_on_screen_ = 0;
+	}
 	set_loc(x_, y_); // Force some more updating.
 	calculate_position();
+	set_scrollbar_position();
 	drawn_ = false;
 }
 
@@ -242,8 +265,6 @@ void menu::set_max_height(const int new_max_height) {
 void menu::set_max_width(const int new_max_width) {
 	max_width_ = new_max_width;
 }
-	
-
 
 size_t menu::max_items_onscreen() const
 {
@@ -466,7 +487,7 @@ int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 				new_first_item = last_top_idx;
 			}
 			else {
-				new_first_item = scroll_position * last_top_idx /
+				new_first_item = (scroll_position * last_top_idx) /
 									max_scroll_position;
 			}
 			if (new_first_item != first_item_on_screen_) {
@@ -499,11 +520,7 @@ int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 
 	if(!drawn_) {
 		if (!scroll_in_use && show_scrollbar()) {
-			int new_scrollpos = 
-				(first_item_on_screen_ * max_scroll_position)
-					 / last_top_idx;
-			scrollbar_.set_grip_position(new_scrollpos);
-			last_scroll_position = new_scrollpos;
+			last_scroll_position = set_scrollbar_position();
 		}
 		draw();
 	}
