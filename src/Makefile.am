@@ -14,8 +14,6 @@ SUBDIRS = . $(SSUBDIRS) $(TSUBDIRS)
 bin_PROGRAMS = wesnoth $(EPROGRAMS)
 
 pkgdatadir=$(datadir)/@DATADIR@
-AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
-AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ @SDL_TTF_LIBS@ 
 
 #############################################################################
 #    Wesnoth                                                                #
@@ -71,6 +69,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/button.cpp \
 		  widgets/combo.cpp \
 		  widgets/menu.cpp \
+		  widgets/scrollbar.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
 		  widgets/widget.cpp \
@@ -126,6 +125,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/button.hpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
+		  widgets/scrollbar.hpp \
 		  widgets/slider.hpp \
 		  widgets/textbox.hpp \
 		  widgets/widget.hpp
@@ -179,6 +179,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.cpp \
 			 widgets/menu.cpp \
 			 widgets/textbox.cpp \
+			 widgets/scrollbar.cpp \
 			 widgets/slider.cpp \
 			 widgets/widget.cpp \
 			 actions.hpp \
@@ -225,5 +226,9 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.hpp \
 			 widgets/menu.hpp \
 			 widgets/textbox.hpp \
+			 widgets/scrollbar.hpp \
 			 widgets/slider.hpp \
 			 widgets/widget.hpp
+
+AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
+AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ @SDL_TTF_LIBS@ 

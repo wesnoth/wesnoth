@@ -150,8 +150,6 @@ target_alias = @target_alias@
 
 SUBDIRS = . $(SSUBDIRS) $(TSUBDIRS)
 bin_PROGRAMS = wesnoth $(EPROGRAMS)
-AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
-AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ @SDL_TTF_LIBS@ 
 
 
 #############################################################################
@@ -207,6 +205,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/button.cpp \
 		  widgets/combo.cpp \
 		  widgets/menu.cpp \
+		  widgets/scrollbar.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
 		  widgets/widget.cpp \
@@ -262,6 +261,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/button.hpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
+		  widgets/scrollbar.hpp \
 		  widgets/slider.hpp \
 		  widgets/textbox.hpp \
 		  widgets/widget.hpp
@@ -316,6 +316,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.cpp \
 			 widgets/menu.cpp \
 			 widgets/textbox.cpp \
+			 widgets/scrollbar.cpp \
 			 widgets/slider.cpp \
 			 widgets/widget.cpp \
 			 actions.hpp \
@@ -362,9 +363,13 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.hpp \
 			 widgets/menu.hpp \
 			 widgets/textbox.hpp \
+			 widgets/scrollbar.hpp \
 			 widgets/slider.hpp \
 			 widgets/widget.hpp
 
+
+AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
+AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ @SDL_TTF_LIBS@ 
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
@@ -391,8 +396,8 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	sound.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
 	theme.$(OBJEXT) tooltips.$(OBJEXT) unit.$(OBJEXT) \
 	unit_types.$(OBJEXT) video.$(OBJEXT) button.$(OBJEXT) \
-	combo.$(OBJEXT) menu.$(OBJEXT) slider.$(OBJEXT) \
-	textbox.$(OBJEXT) widget.$(OBJEXT)
+	combo.$(OBJEXT) menu.$(OBJEXT) scrollbar.$(OBJEXT) \
+	slider.$(OBJEXT) textbox.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_OBJECTS = $(am_wesnoth_OBJECTS)
 wesnoth_LDADD = $(LDADD)
 wesnoth_DEPENDENCIES =
@@ -412,7 +417,8 @@ am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) actions.$(OBJEXT) \
 	team.$(OBJEXT) terrain.$(OBJEXT) theme.$(OBJEXT) \
 	tooltips.$(OBJEXT) unit.$(OBJEXT) unit_types.$(OBJEXT) \
 	video.$(OBJEXT) button.$(OBJEXT) menu.$(OBJEXT) \
-	textbox.$(OBJEXT) slider.$(OBJEXT) widget.$(OBJEXT)
+	textbox.$(OBJEXT) scrollbar.$(OBJEXT) slider.$(OBJEXT) \
+	widget.$(OBJEXT)
 wesnoth_editor_OBJECTS = $(am_wesnoth_editor_OBJECTS)
 wesnoth_editor_LDADD = $(LDADD)
 wesnoth_editor_DEPENDENCIES =
@@ -444,13 +450,13 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/playlevel.Po ./$(DEPDIR)/playturn.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/preferences.Po ./$(DEPDIR)/race.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/replay.Po ./$(DEPDIR)/reports.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/sdl_utils.Po ./$(DEPDIR)/show_dialog.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/slider.Po ./$(DEPDIR)/sound.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/team.Po ./$(DEPDIR)/terrain.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/textbox.Po ./$(DEPDIR)/theme.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/tooltips.Po ./$(DEPDIR)/unit.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/unit_types.Po ./$(DEPDIR)/video.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/widget.Po
+@AMDEP_TRUE@	./$(DEPDIR)/scrollbar.Po ./$(DEPDIR)/sdl_utils.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/show_dialog.Po ./$(DEPDIR)/slider.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/sound.Po ./$(DEPDIR)/team.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/terrain.Po ./$(DEPDIR)/textbox.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/theme.Po ./$(DEPDIR)/tooltips.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/unit.Po ./$(DEPDIR)/unit_types.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/video.Po ./$(DEPDIR)/widget.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -558,6 +564,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/race.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/replay.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/reports.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scrollbar.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sdl_utils.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/show_dialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slider.Po@am__quote@
@@ -659,6 +666,28 @@ menu.obj: widgets/menu.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/menu.Po' tmpdepfile='$(DEPDIR)/menu.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o menu.obj `if test -f 'widgets/menu.cpp'; then $(CYGPATH_W) 'widgets/menu.cpp'; else $(CYGPATH_W) '$(srcdir)/widgets/menu.cpp'; fi`
+
+scrollbar.o: widgets/scrollbar.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT scrollbar.o -MD -MP -MF "$(DEPDIR)/scrollbar.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o scrollbar.o `test -f 'widgets/scrollbar.cpp' || echo '$(srcdir)/'`widgets/scrollbar.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/scrollbar.Tpo" "$(DEPDIR)/scrollbar.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/scrollbar.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='widgets/scrollbar.cpp' object='scrollbar.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/scrollbar.Po' tmpdepfile='$(DEPDIR)/scrollbar.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o scrollbar.o `test -f 'widgets/scrollbar.cpp' || echo '$(srcdir)/'`widgets/scrollbar.cpp
+
+scrollbar.obj: widgets/scrollbar.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT scrollbar.obj -MD -MP -MF "$(DEPDIR)/scrollbar.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o scrollbar.obj `if test -f 'widgets/scrollbar.cpp'; then $(CYGPATH_W) 'widgets/scrollbar.cpp'; else $(CYGPATH_W) '$(srcdir)/widgets/scrollbar.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/scrollbar.Tpo" "$(DEPDIR)/scrollbar.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/scrollbar.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='widgets/scrollbar.cpp' object='scrollbar.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/scrollbar.Po' tmpdepfile='$(DEPDIR)/scrollbar.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o scrollbar.obj `if test -f 'widgets/scrollbar.cpp'; then $(CYGPATH_W) 'widgets/scrollbar.cpp'; else $(CYGPATH_W) '$(srcdir)/widgets/scrollbar.cpp'; fi`
 
 slider.o: widgets/slider.cpp
 @am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT slider.o -MD -MP -MF "$(DEPDIR)/slider.Tpo" \
