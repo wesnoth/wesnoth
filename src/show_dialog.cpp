@@ -667,6 +667,9 @@ int show_dialog(display& disp, SDL_Surface* image,
 		SDL_Delay(20);
 	}
 
+	SDL_BlitSurface(original,NULL,disp.video().getSurface(),&dlgr);
+	SDL_FreeSurface(original);
+	update_rect(dlgr);
 	return -1;
 }
 

@@ -55,9 +55,10 @@ void combo::set_selected(int val)
 	const std::string& label = items_[selected_];
 	if(selected_ >= 0)
 		button_.set_label(label);
+	button_.draw();
 }
 
-void combo::process(int x, int y, bool button)
+bool combo::process(int x, int y, bool button)
 {
 	if(button_.process(x,y,button))
 	{
@@ -66,7 +67,10 @@ void combo::process(int x, int y, bool button)
 		const std::string& label = items_[selected_];
 		if(selected_ >= 0)
 			button_.set_label(label);
+		button_.draw();
+		return true;
 	}
+	return false;
 }
 
 }

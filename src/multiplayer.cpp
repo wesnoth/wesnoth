@@ -248,6 +248,8 @@ bool accept_network_connections(display& disp, config& players)
 
 }
 
+// TODO: This function is way to big. It should be split into 2 functions,
+//       one for each dialog.
 int play_multiplayer(display& disp, game_data& units_data, config cfg,
                       game_state& state, bool server)
 {
@@ -325,7 +327,6 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	rect.y = (disp.y()-height)/2+130;
 	rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
 	rect.h = 12;
-	//SDL_Surface* village_bg=get_surface_portion(disp.video().getSurface(), rect);
 	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
 	                "Village Gold: 1",rect.x,rect.y);
 	rect.y = (disp.y()-height)/2+147;
@@ -499,7 +500,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				gui::button launch2_game(disp,"Launch");
 				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
 
-				//Title
+				//Title and labels
 				SDL_Rect labelr;
 				font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
 				                "Game Lobby",-1,(disp.y()-height)/2+5);
@@ -527,10 +528,16 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
 				                "Color",((disp.x()-width)/2+375)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
+				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
+				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
+						string_table["gold"],0,0);
+				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
+				                string_table["gold"],((disp.x()-width)/2+480)+(launch2_game.width()/2)-(labelr.w/2),
+						(disp.y()-height)/2+35);
 
 				//Options
 				std::vector<std::string> player_type;
-				player_type.push_back(string_table["human_controlled"]);
+				player_type.push_back(preferences::login());
 				player_type.push_back(string_table["network_controlled"]);
 				player_type.push_back(string_table["ai_controlled"]);
 				std::vector<std::string> player_race;
@@ -561,6 +568,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				std::vector<gui::combo> combo_race;
 				std::vector<gui::combo> combo_team;
 				std::vector<gui::combo> combo_color;
+				std::vector<gui::slider> slider_gold;
 				counter = 0;
 				for(sd = sides.begin(); sd != sides.end(); ++sd) {
 					font::draw_text(&disp,disp.screen_area(),24,font::GOOD_COLOUR,
@@ -569,6 +577,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					combo_type.push_back(gui::combo(disp,player_type));
 					combo_type[counter].set_xy((disp.x()-width)/2+30,
 							(disp.y()-height)/2+55+(30*counter));
+					if(counter>0)
+						combo_type[counter].set_selected(1);
 					combo_race.push_back(gui::combo(disp,player_race));
 					combo_race[counter].set_xy((disp.x()-width)/2+145,
 							(disp.y()-height)/2+55+(30*counter));
@@ -580,8 +590,18 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					combo_color[counter].set_xy((disp.x()-width)/2+375,
 							(disp.y()-height)/2+55+(30*counter));
 					combo_color[counter].set_selected(counter);
+
+					//Player Gold
+					rect.x = (disp.x()-width)/2+492;
+					rect.y = (disp.y()-height)/2+55+(30*counter);
+					rect.w = launch2_game.width();
+					rect.h = launch2_game.height();
+					slider_gold.push_back(gui::slider(disp,rect,0.1));
+
 					counter++;
 				}
+
+				int total_players = counter--;
 
 				update_whole_screen();
 
@@ -589,14 +609,23 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 					const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-					counter=0;
-					for(std::vector<config*>::iterator sd = sides.begin();
-					    sd != sides.end(); ++sd) {
-						combo_type[counter].process(mousex,mousey,left_button);
+					for(counter=0; counter<=total_players; counter++) {
+						//FIXME: the locals player should not be able to
+						//	 change the combo_type of another network
+						//	 player that has already joined the game.
+						//Make sure only one side is the local player
+						if(combo_type[counter].process(mousex,mousey,left_button))
+							if(combo_type[counter].selected()==0)
+								for(int counterb=0; counterb<=total_players; counterb++)
+									if(combo_type[counterb].selected()==0 &&
+									   counterb != counter)
+										combo_type[counterb].set_selected(1);
+								
 						combo_race[counter].process(mousex,mousey,left_button);
 						combo_team[counter].process(mousex,mousey,left_button);
 						combo_color[counter].process(mousex,mousey,left_button);
-						counter++;
+						int check_playergold=20+int(480*slider_gold[counter].process(mousex,mousey,left_button));
+
 					}
 
 					if(launch2_game.process(mousex,mousey,left_button)) {

@@ -35,7 +35,7 @@ public:
 	int height() const;
 	int selected() const;
 
-	void process(int mousex, int mousey, bool button);
+	bool process(int mousex, int mousey, bool button);
 
 private:
 	std::vector<std::string> items_;
