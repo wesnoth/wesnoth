@@ -599,7 +599,7 @@ fi
 #######################################################################
 
 rm -rf translations
-for domain in `grep SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
+for domain in `grep ^SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
 do
     for lang in `cat $srcdir/po/$domain/LINGUAS`
     do
