@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.7-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-28 23:57+0200\n"
-"PO-Revision-Date: 2004-10-26 12:32+0200\n"
+"POT-Creation-Date: 2004-10-31 02:17+0200\n"
+"PO-Revision-Date: 2004-10-29 10:32+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +17,238 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.9.1\n"
+
+#: src/hotkeys.cpp:120
+msgid "Next unit"
+msgstr "Nästa trupp"
+
+#: src/hotkeys.cpp:121
+msgid "End Unit Turn"
+msgstr "Avsluta truppens drag"
+
+#: src/hotkeys.cpp:122
+msgid "Leader"
+msgstr "Ledare"
+
+#: src/hotkeys.cpp:123
+msgid "Undo"
+msgstr "Ångra"
+
+#: src/hotkeys.cpp:124
+msgid "Redo"
+msgstr "Gör om"
+
+#: src/hotkeys.cpp:125
+msgid "Zoom In"
+msgstr "Zooma in"
+
+#: src/hotkeys.cpp:126
+msgid "Zoom Out"
+msgstr "Zooma ut"
+
+#: src/hotkeys.cpp:127
+msgid "Default Zoom"
+msgstr "Standardinzoomning"
+
+#: src/hotkeys.cpp:128
+msgid "Fullscreen"
+msgstr "Fullskärm"
+
+#: src/hotkeys.cpp:129
+msgid "Accelerated"
+msgstr "Accelererad"
+
+#: src/hotkeys.cpp:130
+msgid "Unit Description"
+msgstr "Truppbeskrivning"
+
+#: src/hotkeys.cpp:131
+msgid "Rename Unit"
+msgstr "Döp om truppen"
+
+#: src/hotkeys.cpp:132
+msgid "Save Game"
+msgstr "Spara spelet"
+
+#: src/hotkeys.cpp:133
+msgid "Load Game"
+msgstr "Öppna spel"
+
+#: src/hotkeys.cpp:134
+msgid "Recruit"
+msgstr "Rekrytera"
+
+#: src/hotkeys.cpp:135
+msgid "Repeat Recruit"
+msgstr "Upprepa rekrytering"
+
+#: src/hotkeys.cpp:136
+msgid "Recall"
+msgstr "Återkalla"
+
+#: src/hotkeys.cpp:137
+msgid "End Turn"
+msgstr "Avsluta draget"
+
+#: src/hotkeys.cpp:138
+msgid "Toggle Grid"
+msgstr "Rutnät av/på"
+
+#: src/hotkeys.cpp:139
+msgid "Status Table"
+msgstr "Statustabell"
+
+#: src/hotkeys.cpp:140
+msgid "Mute"
+msgstr "Tyst"
+
+#: src/hotkeys.cpp:141
+msgid "Speak"
+msgstr "Tala"
+
+#: src/hotkeys.cpp:142
+msgid "Create Unit (Debug!)"
+msgstr "Skapa trupp (debuggning!)"
+
+#: src/hotkeys.cpp:143
+msgid "Change Unit Side (Debug!)"
+msgstr "Byt truppens lojalitet (debuggning!)"
+
+#: src/hotkeys.cpp:144 src/preferences.cpp:941
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: src/hotkeys.cpp:145
+msgid "Scenario Objectives"
+msgstr "Scenariomål"
+
+#: src/hotkeys.cpp:146
+msgid "Unit List"
+msgstr "Trupplista"
+
+#: src/hotkeys.cpp:147
+msgid "Statistics"
+msgstr "Statistik"
+
+#: src/hotkeys.cpp:148
+msgid "Quit Game"
+msgstr "Avsluta spelet"
+
+#: src/hotkeys.cpp:149
+msgid "Set Label"
+msgstr "Namnge"
+
+#: src/hotkeys.cpp:150
+msgid "Show Enemy Moves"
+msgstr "Visa fiendedrag"
+
+#: src/hotkeys.cpp:151
+msgid "Best Possible Enemy Moves"
+msgstr "Bästa möjliga fiendedrag"
+
+#: src/hotkeys.cpp:152
+msgid "Quit Editor"
+msgstr "Avsluta kartritaren"
+
+#: src/hotkeys.cpp:153
+msgid "New Map"
+msgstr "Ny karta"
+
+#: src/hotkeys.cpp:154
+msgid "Load Map"
+msgstr "Öppna karta"
+
+#: src/hotkeys.cpp:155
+msgid "Save Map"
+msgstr "Spara karta"
+
+#: src/hotkeys.cpp:156
+msgid "Save As"
+msgstr "Spara som"
+
+#: src/hotkeys.cpp:157
+msgid "Set Player Start Position"
+msgstr "Ange spelarens startposition"
+
+#: src/hotkeys.cpp:158
+msgid "Flood Fill"
+msgstr "Fyll allt"
+
+#: src/hotkeys.cpp:159
+msgid "Fill Selection"
+msgstr "Fyll markerat"
+
+#: src/hotkeys.cpp:160
+msgid "Cut"
+msgstr "Klipp ut"
+
+#: src/hotkeys.cpp:161
+msgid "Copy"
+msgstr "Kopiera"
+
+#: src/hotkeys.cpp:162
+msgid "Paste"
+msgstr "Klistra in"
+
+#: src/hotkeys.cpp:163
+msgid "Revert from Disk"
+msgstr "Återställ från disk"
+
+#: src/hotkeys.cpp:164
+msgid "Resize Map"
+msgstr "Ändra storlek på karta"
+
+#: src/hotkeys.cpp:165
+msgid "Flip Map"
+msgstr "Flippa kartan"
+
+#: src/hotkeys.cpp:166
+msgid "Select All"
+msgstr "Markera alla"
+
+#: src/hotkeys.cpp:167
+msgid "Draw Terrain"
+msgstr "Rita terräng"
+
+#: src/hotkeys.cpp:168
+msgid "Delay Shroud Updates"
+msgstr "Fördröj slöjuppdateringarna"
+
+#: src/hotkeys.cpp:169
+msgid "Update Shroud Now"
+msgstr "Uppdatera slöjan nu"
+
+#: src/hotkeys.cpp:170
+msgid "Continue Move"
+msgstr "Fortsätt draget"
+
+#: src/hotkeys.cpp:171
+msgid "Find Label or Unit"
+msgstr "Sök efter namn eller trupp"
+
+#: src/hotkeys.cpp:172
+msgid "Speak to Ally"
+msgstr "Tala med allierad"
+
+#: src/hotkeys.cpp:173
+msgid "Speak to All"
+msgstr "Tala med alla"
+
+#: src/hotkeys.cpp:174
+msgid "Help"
+msgstr "Hjälp"
+
+#: src/hotkeys.cpp:175
+msgid "View Chat Log"
+msgstr "Se chattloggen"
+
+#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
+msgid "Do you really want to quit?"
+msgstr "Vill du verkligen sluta?"
+
+#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
+msgid "Quit"
+msgstr "Avsluta"
 
 #: src/preferences.cpp:147 src/preferences.cpp:198
 msgid ""
@@ -180,10 +413,6 @@ msgstr "Skärm"
 #: src/preferences.cpp:931
 msgid "Prefs section^Sound"
 msgstr "Ljud"
-
-#: src/preferences.cpp:941
-msgid "Preferences"
-msgstr "Inställningar"
 
 #: src/preferences.cpp:987
 msgid "There are no alternative video modes available"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-31 01:55+0200\n"
+"POT-Creation-Date: 2004-10-31 02:21+0200\n"
 "PO-Revision-Date: 2004-10-31 00:40+0200\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -2529,7 +2529,7 @@ msgid "Actions"
 msgstr "Actions"
 
 #: data/themes/default.cfg:79 data/themes/default.cfg:415
-#: data/themes/default.cfg:756 src/hotkeys.cpp:137
+#: data/themes/default.cfg:756
 msgid "End Turn"
 msgstr "Fin du tour"
 
@@ -7489,7 +7489,7 @@ msgstr "Que va devenir notre victorieuse unité ?"
 msgid "No objectives available"
 msgstr "Aucun objectif disponible"
 
-#: src/dialogs.cpp:177 src/hotkeys.cpp:132
+#: src/dialogs.cpp:177
 msgid "Save Game"
 msgstr "Sauvegarder le jeu"
 
@@ -7598,7 +7598,7 @@ msgstr ""
 msgid "Show replay"
 msgstr "Revoir les actions passées"
 
-#: src/dialogs.cpp:518 src/hotkeys.cpp:133 src/multiplayer.cpp:81
+#: src/dialogs.cpp:518 src/multiplayer.cpp:81
 msgid "Load Game"
 msgstr "Charger un jeu"
 
@@ -7973,226 +7973,6 @@ msgstr "Suivant >"
 msgid "The Battle for Wesnoth Help"
 msgstr "Aide pour La bataille de Wesnoth"
 
-#: src/hotkeys.cpp:120
-msgid "Next unit"
-msgstr "Unité suivante"
-
-#: src/hotkeys.cpp:121
-msgid "End Unit Turn"
-msgstr "Finir le tour de l'unité"
-
-#: src/hotkeys.cpp:122 src/playturn.cpp:1535
-msgid "Leader"
-msgstr "Chef"
-
-#: src/hotkeys.cpp:123
-msgid "Undo"
-msgstr "Annuler"
-
-#: src/hotkeys.cpp:124
-msgid "Redo"
-msgstr "Refaire"
-
-#: src/hotkeys.cpp:125
-msgid "Zoom In"
-msgstr "Zoom avant"
-
-#: src/hotkeys.cpp:126
-msgid "Zoom Out"
-msgstr "Zoom arrière"
-
-#: src/hotkeys.cpp:127
-msgid "Default Zoom"
-msgstr "Zoom par défaut"
-
-#: src/hotkeys.cpp:128
-msgid "Fullscreen"
-msgstr "Plein écran"
-
-#: src/hotkeys.cpp:129
-msgid "Accelerated"
-msgstr "Accéléré"
-
-#: src/hotkeys.cpp:130
-msgid "Unit Description"
-msgstr "Description de l'unité"
-
-#: src/hotkeys.cpp:131 src/playturn.cpp:1352
-msgid "Rename Unit"
-msgstr "Renommer l'unité"
-
-#: src/hotkeys.cpp:134 src/playturn.cpp:1645
-msgid "Recruit"
-msgstr "Recruter"
-
-#: src/hotkeys.cpp:135
-msgid "Repeat Recruit"
-msgstr "Recruter encore"
-
-#: src/hotkeys.cpp:136 src/playturn.cpp:1824
-msgid "Recall"
-msgstr "Rappeler"
-
-#: src/hotkeys.cpp:138
-msgid "Toggle Grid"
-msgstr "Grille"
-
-#: src/hotkeys.cpp:139
-msgid "Status Table"
-msgstr "Table des états"
-
-#: src/hotkeys.cpp:140
-msgid "Mute"
-msgstr "Rendre silencieux"
-
-#: src/hotkeys.cpp:141
-msgid "Speak"
-msgstr "Parler"
-
-#: src/hotkeys.cpp:142
-msgid "Create Unit (Debug!)"
-msgstr "Créer une unité (débug!)"
-
-#: src/hotkeys.cpp:143
-msgid "Change Unit Side (Debug!)"
-msgstr "Changer le camp de l'unité (débug!)"
-
-#: src/hotkeys.cpp:144
-msgid "Preferences"
-msgstr "Préférences"
-
-#: src/hotkeys.cpp:145
-msgid "Scenario Objectives"
-msgstr "Objectifs du scénario"
-
-#: src/hotkeys.cpp:146 src/playturn.cpp:2011
-msgid "Unit List"
-msgstr "Liste des unités"
-
-#: src/hotkeys.cpp:147 src/playturn.cpp:2100
-msgid "Statistics"
-msgstr "Statistiques"
-
-#: src/hotkeys.cpp:148
-msgid "Quit Game"
-msgstr "Quitter la partie"
-
-#: src/hotkeys.cpp:149
-msgid "Set Label"
-msgstr "Placer une étiquette"
-
-#: src/hotkeys.cpp:150
-msgid "Show Enemy Moves"
-msgstr "Afficher les déplacements ennemis"
-
-#: src/hotkeys.cpp:151
-msgid "Best Possible Enemy Moves"
-msgstr "Meilleurs déplacements possibles de l'ennemi"
-
-#: src/hotkeys.cpp:152
-msgid "Quit Editor"
-msgstr "Quitter l'éditeur"
-
-#: src/hotkeys.cpp:153
-msgid "New Map"
-msgstr "Nouvelle carte"
-
-#: src/hotkeys.cpp:154
-msgid "Load Map"
-msgstr "Charger une carte"
-
-#: src/hotkeys.cpp:155
-msgid "Save Map"
-msgstr "Sauvegarder"
-
-#: src/hotkeys.cpp:156
-msgid "Save As"
-msgstr "Sauvegarder sous"
-
-#: src/hotkeys.cpp:157
-msgid "Set Player Start Position"
-msgstr "Placer la position de départ d'un joueur"
-
-#: src/hotkeys.cpp:158
-msgid "Flood Fill"
-msgstr "Remplir"
-
-#: src/hotkeys.cpp:159
-msgid "Fill Selection"
-msgstr "Remplir la sélection"
-
-#: src/hotkeys.cpp:160
-msgid "Cut"
-msgstr "Couper"
-
-#: src/hotkeys.cpp:161
-msgid "Copy"
-msgstr "Copier"
-
-#: src/hotkeys.cpp:162
-msgid "Paste"
-msgstr "Coller"
-
-#: src/hotkeys.cpp:163
-msgid "Revert from Disk"
-msgstr "Revenir à la version sur disque"
-
-#: src/hotkeys.cpp:164
-msgid "Resize Map"
-msgstr "Redimensionner la carte"
-
-#: src/hotkeys.cpp:165
-msgid "Flip Map"
-msgstr "Inverser la carte"
-
-#: src/hotkeys.cpp:166
-msgid "Select All"
-msgstr "Tout sélectionner"
-
-#: src/hotkeys.cpp:167
-msgid "Draw Terrain"
-msgstr "Afficher le terrain"
-
-#: src/hotkeys.cpp:168
-msgid "Delay Shroud Updates"
-msgstr "Différer les mises-à-jour du voile"
-
-#: src/hotkeys.cpp:169
-msgid "Update Shroud Now"
-msgstr "Mettre-à-jour le voile maintenant"
-
-#: src/hotkeys.cpp:170
-msgid "Continue Move"
-msgstr "Continuer le déplacement"
-
-#: src/hotkeys.cpp:171
-msgid "Find Label or Unit"
-msgstr "Chercher une étiquette ou une unité"
-
-#: src/hotkeys.cpp:172
-msgid "Speak to Ally"
-msgstr "Parler aux alliés"
-
-#: src/hotkeys.cpp:173
-msgid "Speak to All"
-msgstr "Parler à tous"
-
-#: src/hotkeys.cpp:174 src/show_dialog.cpp:629
-msgid "Help"
-msgstr "Aide"
-
-#: src/hotkeys.cpp:175
-msgid "View Chat Log"
-msgstr "Afficher les historiques des discutions"
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
-msgid "Do you really want to quit?"
-msgstr "Voulez-vous réellement quitter ?"
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:163
-msgid "Quit"
-msgstr "Quitter"
-
 #: src/intro.cpp:87
 msgid "Next"
 msgstr "Suite"
@@ -8561,6 +8341,10 @@ msgstr "Places vacantes"
 msgid "Observe Game"
 msgstr "Observer la partie"
 
+#: src/multiplayer_lobby.cpp:163
+msgid "Quit"
+msgstr "Quitter"
+
 #: src/playlevel.cpp:699
 msgid "Game Over"
 msgstr "Fin de la partie"
@@ -8677,6 +8461,10 @@ msgstr ""
 "Impossible de sauver le jeu automatiquement. Vous devez le faire "
 "manuellement."
 
+#: src/playturn.cpp:1352
+msgid "Rename Unit"
+msgstr "Renommer l'unité"
+
 #: src/playturn.cpp:1400
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
@@ -8694,6 +8482,10 @@ msgstr "Sauvé"
 msgid "The game has been saved"
 msgstr "Le jeu a été sauvegardé"
 
+#: src/playturn.cpp:1535
+msgid "Leader"
+msgstr "Chef"
+
 #: src/playturn.cpp:1537
 msgid "Income"
 msgstr "Revenu"
@@ -8705,6 +8497,10 @@ msgstr "Entretien"
 #: src/playturn.cpp:1633
 msgid "You have no units available to recruit."
 msgstr "Vous n'avez pas d'unité disponible pour recruter."
+
+#: src/playturn.cpp:1645
+msgid "Recruit"
+msgstr "Recruter"
 
 #: src/playturn.cpp:1646 src/playturn.cpp:1825
 msgid "Select unit"
@@ -8758,6 +8554,10 @@ msgstr "Vous devez posséder au moins $cost pièces d'or pour rappeler une unit�
 msgid "Dismiss Unit"
 msgstr "Renvoyer l'unité"
 
+#: src/playturn.cpp:1824
+msgid "Recall"
+msgstr "Rappeler"
+
 #: src/playturn.cpp:1869
 msgid "Message"
 msgstr "Message"
@@ -8769,6 +8569,10 @@ msgstr "Parler aux alliés uniquement"
 #: src/playturn.cpp:1963
 msgid "Location"
 msgstr "Localisation"
+
+#: src/playturn.cpp:2011
+msgid "Unit List"
+msgstr "Liste des unités"
 
 #: src/playturn.cpp:2045 src/playturn.cpp:2107
 msgid "Recruits"
@@ -8805,6 +8609,10 @@ msgstr "Dégâts infligés (attendus)"
 #: src/playturn.cpp:2094
 msgid "Damage Taken (EV)"
 msgstr "Dégâts subis (attendus)"
+
+#: src/playturn.cpp:2100
+msgid "Statistics"
+msgstr "Statistiques"
 
 #: src/playturn.cpp:2137
 msgid "Search"
@@ -8927,6 +8735,10 @@ msgstr "Village ennemi"
 msgid "Allied village"
 msgstr "Village allié"
 
+#: src/show_dialog.cpp:629
+msgid "Help"
+msgstr "Aide"
+
 #: src/show_dialog.cpp:954
 msgid "KB"
 msgstr "ko"
@@ -9026,6 +8838,147 @@ msgstr "Supprimer le fichier"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
+
+#~ msgid "Next unit"
+#~ msgstr "Unité suivante"
+
+#~ msgid "End Unit Turn"
+#~ msgstr "Finir le tour de l'unité"
+
+#~ msgid "Undo"
+#~ msgstr "Annuler"
+
+#~ msgid "Redo"
+#~ msgstr "Refaire"
+
+#~ msgid "Zoom In"
+#~ msgstr "Zoom avant"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Zoom arrière"
+
+#~ msgid "Default Zoom"
+#~ msgstr "Zoom par défaut"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Plein écran"
+
+#~ msgid "Accelerated"
+#~ msgstr "Accéléré"
+
+#~ msgid "Unit Description"
+#~ msgstr "Description de l'unité"
+
+#~ msgid "Repeat Recruit"
+#~ msgstr "Recruter encore"
+
+#~ msgid "Toggle Grid"
+#~ msgstr "Grille"
+
+#~ msgid "Status Table"
+#~ msgstr "Table des états"
+
+#~ msgid "Mute"
+#~ msgstr "Rendre silencieux"
+
+#~ msgid "Speak"
+#~ msgstr "Parler"
+
+#~ msgid "Create Unit (Debug!)"
+#~ msgstr "Créer une unité (débug!)"
+
+#~ msgid "Change Unit Side (Debug!)"
+#~ msgstr "Changer le camp de l'unité (débug!)"
+
+#~ msgid "Preferences"
+#~ msgstr "Préférences"
+
+#~ msgid "Scenario Objectives"
+#~ msgstr "Objectifs du scénario"
+
+#~ msgid "Quit Game"
+#~ msgstr "Quitter la partie"
+
+#~ msgid "Set Label"
+#~ msgstr "Placer une étiquette"
+
+#~ msgid "Show Enemy Moves"
+#~ msgstr "Afficher les déplacements ennemis"
+
+#~ msgid "Best Possible Enemy Moves"
+#~ msgstr "Meilleurs déplacements possibles de l'ennemi"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Quitter l'éditeur"
+
+#~ msgid "New Map"
+#~ msgstr "Nouvelle carte"
+
+#~ msgid "Load Map"
+#~ msgstr "Charger une carte"
+
+#~ msgid "Save Map"
+#~ msgstr "Sauvegarder"
+
+#~ msgid "Save As"
+#~ msgstr "Sauvegarder sous"
+
+#~ msgid "Set Player Start Position"
+#~ msgstr "Placer la position de départ d'un joueur"
+
+#~ msgid "Flood Fill"
+#~ msgstr "Remplir"
+
+#~ msgid "Fill Selection"
+#~ msgstr "Remplir la sélection"
+
+#~ msgid "Cut"
+#~ msgstr "Couper"
+
+#~ msgid "Copy"
+#~ msgstr "Copier"
+
+#~ msgid "Paste"
+#~ msgstr "Coller"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "Revenir à la version sur disque"
+
+#~ msgid "Resize Map"
+#~ msgstr "Redimensionner la carte"
+
+#~ msgid "Flip Map"
+#~ msgstr "Inverser la carte"
+
+#~ msgid "Select All"
+#~ msgstr "Tout sélectionner"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "Afficher le terrain"
+
+#~ msgid "Delay Shroud Updates"
+#~ msgstr "Différer les mises-à-jour du voile"
+
+#~ msgid "Update Shroud Now"
+#~ msgstr "Mettre-à-jour le voile maintenant"
+
+#~ msgid "Continue Move"
+#~ msgstr "Continuer le déplacement"
+
+#~ msgid "Find Label or Unit"
+#~ msgstr "Chercher une étiquette ou une unité"
+
+#~ msgid "Speak to Ally"
+#~ msgstr "Parler aux alliés"
+
+#~ msgid "Speak to All"
+#~ msgstr "Parler à tous"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Afficher les historiques des discutions"
+
+#~ msgid "Do you really want to quit?"
+#~ msgstr "Voulez-vous réellement quitter ?"
 
 #~ msgid "minimum damage"
 #~ msgstr "dégâts minimum"

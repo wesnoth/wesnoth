@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-31 01:55+0200\n"
+"POT-Creation-Date: 2004-10-31 02:21+0200\n"
 "PO-Revision-Date: 2004-10-27 21:04+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -1925,7 +1925,7 @@ msgid "Actions"
 msgstr "Действия"
 
 #: data/themes/default.cfg:79 data/themes/default.cfg:415
-#: data/themes/default.cfg:756 src/hotkeys.cpp:137
+#: data/themes/default.cfg:756
 msgid "End Turn"
 msgstr "Закончить ход"
 
@@ -6031,7 +6031,7 @@ msgstr "Кем должно стать Ваше соединение?"
 msgid "No objectives available"
 msgstr "Нет цели"
 
-#: src/dialogs.cpp:177 src/hotkeys.cpp:132
+#: src/dialogs.cpp:177
 msgid "Save Game"
 msgstr "Сохранить игру"
 
@@ -6131,7 +6131,7 @@ msgstr ""
 msgid "Show replay"
 msgstr "Показать повтор"
 
-#: src/dialogs.cpp:518 src/hotkeys.cpp:133 src/multiplayer.cpp:81
+#: src/dialogs.cpp:518 src/multiplayer.cpp:81
 msgid "Load Game"
 msgstr "Загрузить игру"
 
@@ -6492,226 +6492,6 @@ msgstr "Вперёд >"
 #: src/help.cpp:2392
 msgid "The Battle for Wesnoth Help"
 msgstr "Помощь по игре Бой за Веснот"
-
-#: src/hotkeys.cpp:120
-msgid "Next unit"
-msgstr "Следующиее соединение"
-
-#: src/hotkeys.cpp:121
-msgid "End Unit Turn"
-msgstr "Завершить ход соединения"
-
-#: src/hotkeys.cpp:122 src/playturn.cpp:1535
-msgid "Leader"
-msgstr "Лидер"
-
-#: src/hotkeys.cpp:123
-msgid "Undo"
-msgstr "Отменить"
-
-#: src/hotkeys.cpp:124
-msgid "Redo"
-msgstr "Повторить"
-
-#: src/hotkeys.cpp:125
-msgid "Zoom In"
-msgstr "Увеличить"
-
-#: src/hotkeys.cpp:126
-msgid "Zoom Out"
-msgstr "Уменьшить"
-
-#: src/hotkeys.cpp:127
-msgid "Default Zoom"
-msgstr "Увеличение по умолчанию"
-
-#: src/hotkeys.cpp:128
-msgid "Fullscreen"
-msgstr "На весь экран"
-
-#: src/hotkeys.cpp:129
-msgid "Accelerated"
-msgstr "Ускоренный"
-
-#: src/hotkeys.cpp:130
-msgid "Unit Description"
-msgstr "Описание соединения"
-
-#: src/hotkeys.cpp:131 src/playturn.cpp:1352
-msgid "Rename Unit"
-msgstr "Переименовать соединение"
-
-#: src/hotkeys.cpp:134 src/playturn.cpp:1645
-msgid "Recruit"
-msgstr "Призвать новобранца"
-
-#: src/hotkeys.cpp:135
-msgid "Repeat Recruit"
-msgstr "Повторить покупку"
-
-#: src/hotkeys.cpp:136 src/playturn.cpp:1824
-msgid "Recall"
-msgstr "Воскресить"
-
-#: src/hotkeys.cpp:138
-msgid "Toggle Grid"
-msgstr "Показать сетку"
-
-#: src/hotkeys.cpp:139
-msgid "Status Table"
-msgstr "Текущее состояние"
-
-#: src/hotkeys.cpp:140
-msgid "Mute"
-msgstr "Выключить звук"
-
-#: src/hotkeys.cpp:141
-msgid "Speak"
-msgstr "Говорить"
-
-#: src/hotkeys.cpp:142
-msgid "Create Unit (Debug!)"
-msgstr "Создать соединение (Отладка!)"
-
-#: src/hotkeys.cpp:143
-msgid "Change Unit Side (Debug!)"
-msgstr "Сменить сторону соединения (Отладка!)"
-
-#: src/hotkeys.cpp:144
-msgid "Preferences"
-msgstr "Настройки"
-
-#: src/hotkeys.cpp:145
-msgid "Scenario Objectives"
-msgstr "Задача сценария"
-
-#: src/hotkeys.cpp:146 src/playturn.cpp:2011
-msgid "Unit List"
-msgstr "Список соединений"
-
-#: src/hotkeys.cpp:147 src/playturn.cpp:2100
-msgid "Statistics"
-msgstr "Статистика"
-
-#: src/hotkeys.cpp:148
-msgid "Quit Game"
-msgstr "Выйти из игры"
-
-#: src/hotkeys.cpp:149
-msgid "Set Label"
-msgstr "Установить метку"
-
-#: src/hotkeys.cpp:150
-msgid "Show Enemy Moves"
-msgstr "Показывать ходы противника"
-
-#: src/hotkeys.cpp:151
-msgid "Best Possible Enemy Moves"
-msgstr "Вероятные ходы противника"
-
-#: src/hotkeys.cpp:152
-msgid "Quit Editor"
-msgstr "Редактор выхода"
-
-#: src/hotkeys.cpp:153
-msgid "New Map"
-msgstr "Новая карта"
-
-#: src/hotkeys.cpp:154
-msgid "Load Map"
-msgstr "Загрузить карту"
-
-#: src/hotkeys.cpp:155
-msgid "Save Map"
-msgstr "Сохранить карту"
-
-#: src/hotkeys.cpp:156
-msgid "Save As"
-msgstr "Сохранить как"
-
-#: src/hotkeys.cpp:157
-msgid "Set Player Start Position"
-msgstr "Установите стартовые позиции игрока"
-
-#: src/hotkeys.cpp:158
-msgid "Flood Fill"
-msgstr ""
-
-#: src/hotkeys.cpp:159
-msgid "Fill Selection"
-msgstr "Заполнить выделение"
-
-#: src/hotkeys.cpp:160
-msgid "Cut"
-msgstr "Вырезать"
-
-#: src/hotkeys.cpp:161
-msgid "Copy"
-msgstr "Копировать"
-
-#: src/hotkeys.cpp:162
-msgid "Paste"
-msgstr "Вставить"
-
-#: src/hotkeys.cpp:163
-msgid "Revert from Disk"
-msgstr "Вернуть с диска"
-
-#: src/hotkeys.cpp:164
-msgid "Resize Map"
-msgstr "Изменить размер карты"
-
-#: src/hotkeys.cpp:165
-msgid "Flip Map"
-msgstr ""
-
-#: src/hotkeys.cpp:166
-msgid "Select All"
-msgstr "Выбрать всё"
-
-#: src/hotkeys.cpp:167
-msgid "Draw Terrain"
-msgstr "Рисовать местность"
-
-#: src/hotkeys.cpp:168
-msgid "Delay Shroud Updates"
-msgstr ""
-
-#: src/hotkeys.cpp:169
-msgid "Update Shroud Now"
-msgstr ""
-
-#: src/hotkeys.cpp:170
-msgid "Continue Move"
-msgstr "Продолжить движение"
-
-#: src/hotkeys.cpp:171
-msgid "Find Label or Unit"
-msgstr "Найти метку или соединение"
-
-#: src/hotkeys.cpp:172
-msgid "Speak to Ally"
-msgstr "Сказать союзникам"
-
-#: src/hotkeys.cpp:173
-msgid "Speak to All"
-msgstr "Сказать всем"
-
-#: src/hotkeys.cpp:174 src/show_dialog.cpp:629
-msgid "Help"
-msgstr "Помощь"
-
-#: src/hotkeys.cpp:175
-msgid "View Chat Log"
-msgstr "Смотреть лог чата"
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
-msgid "Do you really want to quit?"
-msgstr "Вы действительно хотите выйти?"
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:163
-msgid "Quit"
-msgstr "Выйти"
 
 #: src/intro.cpp:87
 msgid "Next"
@@ -7081,6 +6861,10 @@ msgstr "Свободные слоты"
 msgid "Observe Game"
 msgstr "Наблюдать за игрой"
 
+#: src/multiplayer_lobby.cpp:163
+msgid "Quit"
+msgstr "Выйти"
+
 #: src/playlevel.cpp:699
 msgid "Game Over"
 msgstr "Игра завершена"
@@ -7193,6 +6977,10 @@ msgstr "Авто-Сохранение"
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Авто-сохранение игры невозможно. Сохраните игру вручную."
 
+#: src/playturn.cpp:1352
+msgid "Rename Unit"
+msgstr "Переименовать соединение"
+
 #: src/playturn.cpp:1400
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
@@ -7209,6 +6997,10 @@ msgstr "Сохранено"
 msgid "The game has been saved"
 msgstr "Игра успешно сохранена"
 
+#: src/playturn.cpp:1535
+msgid "Leader"
+msgstr "Лидер"
+
 #: src/playturn.cpp:1537
 msgid "Income"
 msgstr "Доход"
@@ -7220,6 +7012,10 @@ msgstr "Содержание"
 #: src/playturn.cpp:1633
 msgid "You have no units available to recruit."
 msgstr "Нет соединений для покупки."
+
+#: src/playturn.cpp:1645
+msgid "Recruit"
+msgstr "Призвать новобранца"
 
 #: src/playturn.cpp:1646 src/playturn.cpp:1825
 msgid "Select unit"
@@ -7270,6 +7066,10 @@ msgstr ""
 msgid "Dismiss Unit"
 msgstr "Распустить соединение"
 
+#: src/playturn.cpp:1824
+msgid "Recall"
+msgstr "Воскресить"
+
 #: src/playturn.cpp:1869
 msgid "Message"
 msgstr "Сообщение"
@@ -7281,6 +7081,10 @@ msgstr "Отправить только союзникам"
 #: src/playturn.cpp:1963
 msgid "Location"
 msgstr "Позиция"
+
+#: src/playturn.cpp:2011
+msgid "Unit List"
+msgstr "Список соединений"
 
 #: src/playturn.cpp:2045 src/playturn.cpp:2107
 msgid "Recruits"
@@ -7317,6 +7121,10 @@ msgstr "Нанесено урона (В среднем)"
 #: src/playturn.cpp:2094
 msgid "Damage Taken (EV)"
 msgstr "Получено ущерба (В среднем)"
+
+#: src/playturn.cpp:2100
+msgid "Statistics"
+msgstr "Статистика"
 
 #: src/playturn.cpp:2137
 msgid "Search"
@@ -7439,6 +7247,10 @@ msgstr "Деревня врага"
 msgid "Allied village"
 msgstr "Союзническая деревня"
 
+#: src/show_dialog.cpp:629
+msgid "Help"
+msgstr "Помощь"
+
 #: src/show_dialog.cpp:954
 msgid "KB"
 msgstr ""
@@ -7537,6 +7349,135 @@ msgstr "Удалить файл"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Ошибка удаления файла."
+
+#~ msgid "Next unit"
+#~ msgstr "Следующиее соединение"
+
+#~ msgid "End Unit Turn"
+#~ msgstr "Завершить ход соединения"
+
+#~ msgid "Undo"
+#~ msgstr "Отменить"
+
+#~ msgid "Redo"
+#~ msgstr "Повторить"
+
+#~ msgid "Zoom In"
+#~ msgstr "Увеличить"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Уменьшить"
+
+#~ msgid "Default Zoom"
+#~ msgstr "Увеличение по умолчанию"
+
+#~ msgid "Fullscreen"
+#~ msgstr "На весь экран"
+
+#~ msgid "Accelerated"
+#~ msgstr "Ускоренный"
+
+#~ msgid "Unit Description"
+#~ msgstr "Описание соединения"
+
+#~ msgid "Repeat Recruit"
+#~ msgstr "Повторить покупку"
+
+#~ msgid "Toggle Grid"
+#~ msgstr "Показать сетку"
+
+#~ msgid "Status Table"
+#~ msgstr "Текущее состояние"
+
+#~ msgid "Mute"
+#~ msgstr "Выключить звук"
+
+#~ msgid "Speak"
+#~ msgstr "Говорить"
+
+#~ msgid "Create Unit (Debug!)"
+#~ msgstr "Создать соединение (Отладка!)"
+
+#~ msgid "Change Unit Side (Debug!)"
+#~ msgstr "Сменить сторону соединения (Отладка!)"
+
+#~ msgid "Preferences"
+#~ msgstr "Настройки"
+
+#~ msgid "Scenario Objectives"
+#~ msgstr "Задача сценария"
+
+#~ msgid "Quit Game"
+#~ msgstr "Выйти из игры"
+
+#~ msgid "Set Label"
+#~ msgstr "Установить метку"
+
+#~ msgid "Show Enemy Moves"
+#~ msgstr "Показывать ходы противника"
+
+#~ msgid "Best Possible Enemy Moves"
+#~ msgstr "Вероятные ходы противника"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Редактор выхода"
+
+#~ msgid "New Map"
+#~ msgstr "Новая карта"
+
+#~ msgid "Load Map"
+#~ msgstr "Загрузить карту"
+
+#~ msgid "Save Map"
+#~ msgstr "Сохранить карту"
+
+#~ msgid "Save As"
+#~ msgstr "Сохранить как"
+
+#~ msgid "Set Player Start Position"
+#~ msgstr "Установите стартовые позиции игрока"
+
+#~ msgid "Fill Selection"
+#~ msgstr "Заполнить выделение"
+
+#~ msgid "Cut"
+#~ msgstr "Вырезать"
+
+#~ msgid "Copy"
+#~ msgstr "Копировать"
+
+#~ msgid "Paste"
+#~ msgstr "Вставить"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "Вернуть с диска"
+
+#~ msgid "Resize Map"
+#~ msgstr "Изменить размер карты"
+
+#~ msgid "Select All"
+#~ msgstr "Выбрать всё"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "Рисовать местность"
+
+#~ msgid "Continue Move"
+#~ msgstr "Продолжить движение"
+
+#~ msgid "Find Label or Unit"
+#~ msgstr "Найти метку или соединение"
+
+#~ msgid "Speak to Ally"
+#~ msgstr "Сказать союзникам"
+
+#~ msgid "Speak to All"
+#~ msgstr "Сказать всем"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Смотреть лог чата"
+
+#~ msgid "Do you really want to quit?"
+#~ msgstr "Вы действительно хотите выйти?"
 
 #~ msgid "minimum damage"
 #~ msgstr "минимальные повреждения"

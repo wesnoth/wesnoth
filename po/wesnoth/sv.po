@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.7-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-31 01:55+0200\n"
+"POT-Creation-Date: 2004-10-31 02:21+0200\n"
 "PO-Revision-Date: 2004-10-29 10:32+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -2459,7 +2459,7 @@ msgid "Actions"
 msgstr "Handlingar"
 
 #: data/themes/default.cfg:79 data/themes/default.cfg:415
-#: data/themes/default.cfg:756 src/hotkeys.cpp:137
+#: data/themes/default.cfg:756
 msgid "End Turn"
 msgstr "Avsluta draget"
 
@@ -7247,7 +7247,7 @@ msgstr "Vad skall din segrande trupp avancera till?"
 msgid "No objectives available"
 msgstr "Inga mål tillgängliga"
 
-#: src/dialogs.cpp:177 src/hotkeys.cpp:132
+#: src/dialogs.cpp:177
 msgid "Save Game"
 msgstr "Spara spelet"
 
@@ -7351,7 +7351,7 @@ msgstr ""
 msgid "Show replay"
 msgstr "Spela upp repris"
 
-#: src/dialogs.cpp:518 src/hotkeys.cpp:133 src/multiplayer.cpp:81
+#: src/dialogs.cpp:518 src/multiplayer.cpp:81
 msgid "Load Game"
 msgstr "Öppna spel"
 
@@ -7724,226 +7724,6 @@ msgstr "Framåt >"
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjälp om Kampen om Wesnoth"
 
-#: src/hotkeys.cpp:120
-msgid "Next unit"
-msgstr "Nästa trupp"
-
-#: src/hotkeys.cpp:121
-msgid "End Unit Turn"
-msgstr "Avsluta truppens drag"
-
-#: src/hotkeys.cpp:122 src/playturn.cpp:1535
-msgid "Leader"
-msgstr "Ledare"
-
-#: src/hotkeys.cpp:123
-msgid "Undo"
-msgstr "Ångra"
-
-#: src/hotkeys.cpp:124
-msgid "Redo"
-msgstr "Gör om"
-
-#: src/hotkeys.cpp:125
-msgid "Zoom In"
-msgstr "Zooma in"
-
-#: src/hotkeys.cpp:126
-msgid "Zoom Out"
-msgstr "Zooma ut"
-
-#: src/hotkeys.cpp:127
-msgid "Default Zoom"
-msgstr "Standardinzoomning"
-
-#: src/hotkeys.cpp:128
-msgid "Fullscreen"
-msgstr "Fullskärm"
-
-#: src/hotkeys.cpp:129
-msgid "Accelerated"
-msgstr "Accelererad"
-
-#: src/hotkeys.cpp:130
-msgid "Unit Description"
-msgstr "Truppbeskrivning"
-
-#: src/hotkeys.cpp:131 src/playturn.cpp:1352
-msgid "Rename Unit"
-msgstr "Döp om truppen"
-
-#: src/hotkeys.cpp:134 src/playturn.cpp:1645
-msgid "Recruit"
-msgstr "Rekrytera"
-
-#: src/hotkeys.cpp:135
-msgid "Repeat Recruit"
-msgstr "Upprepa rekrytering"
-
-#: src/hotkeys.cpp:136 src/playturn.cpp:1824
-msgid "Recall"
-msgstr "Återkalla"
-
-#: src/hotkeys.cpp:138
-msgid "Toggle Grid"
-msgstr "Rutnät av/på"
-
-#: src/hotkeys.cpp:139
-msgid "Status Table"
-msgstr "Statustabell"
-
-#: src/hotkeys.cpp:140
-msgid "Mute"
-msgstr "Tyst"
-
-#: src/hotkeys.cpp:141
-msgid "Speak"
-msgstr "Tala"
-
-#: src/hotkeys.cpp:142
-msgid "Create Unit (Debug!)"
-msgstr "Skapa trupp (debuggning!)"
-
-#: src/hotkeys.cpp:143
-msgid "Change Unit Side (Debug!)"
-msgstr "Byt truppens lojalitet (debuggning!)"
-
-#: src/hotkeys.cpp:144
-msgid "Preferences"
-msgstr "Inställningar"
-
-#: src/hotkeys.cpp:145
-msgid "Scenario Objectives"
-msgstr "Scenariomål"
-
-#: src/hotkeys.cpp:146 src/playturn.cpp:2011
-msgid "Unit List"
-msgstr "Trupplista"
-
-#: src/hotkeys.cpp:147 src/playturn.cpp:2100
-msgid "Statistics"
-msgstr "Statistik"
-
-#: src/hotkeys.cpp:148
-msgid "Quit Game"
-msgstr "Avsluta spelet"
-
-#: src/hotkeys.cpp:149
-msgid "Set Label"
-msgstr "Namnge"
-
-#: src/hotkeys.cpp:150
-msgid "Show Enemy Moves"
-msgstr "Visa fiendedrag"
-
-#: src/hotkeys.cpp:151
-msgid "Best Possible Enemy Moves"
-msgstr "Bästa möjliga fiendedrag"
-
-#: src/hotkeys.cpp:152
-msgid "Quit Editor"
-msgstr "Avsluta kartritaren"
-
-#: src/hotkeys.cpp:153
-msgid "New Map"
-msgstr "Ny karta"
-
-#: src/hotkeys.cpp:154
-msgid "Load Map"
-msgstr "Öppna karta"
-
-#: src/hotkeys.cpp:155
-msgid "Save Map"
-msgstr "Spara karta"
-
-#: src/hotkeys.cpp:156
-msgid "Save As"
-msgstr "Spara som"
-
-#: src/hotkeys.cpp:157
-msgid "Set Player Start Position"
-msgstr "Ange spelarens startposition"
-
-#: src/hotkeys.cpp:158
-msgid "Flood Fill"
-msgstr "Fyll allt"
-
-#: src/hotkeys.cpp:159
-msgid "Fill Selection"
-msgstr "Fyll markerat"
-
-#: src/hotkeys.cpp:160
-msgid "Cut"
-msgstr "Klipp ut"
-
-#: src/hotkeys.cpp:161
-msgid "Copy"
-msgstr "Kopiera"
-
-#: src/hotkeys.cpp:162
-msgid "Paste"
-msgstr "Klistra in"
-
-#: src/hotkeys.cpp:163
-msgid "Revert from Disk"
-msgstr "Återställ från disk"
-
-#: src/hotkeys.cpp:164
-msgid "Resize Map"
-msgstr "Ändra storlek på karta"
-
-#: src/hotkeys.cpp:165
-msgid "Flip Map"
-msgstr "Flippa kartan"
-
-#: src/hotkeys.cpp:166
-msgid "Select All"
-msgstr "Markera alla"
-
-#: src/hotkeys.cpp:167
-msgid "Draw Terrain"
-msgstr "Rita terräng"
-
-#: src/hotkeys.cpp:168
-msgid "Delay Shroud Updates"
-msgstr "Fördröj slöjuppdateringarna"
-
-#: src/hotkeys.cpp:169
-msgid "Update Shroud Now"
-msgstr "Uppdatera slöjan nu"
-
-#: src/hotkeys.cpp:170
-msgid "Continue Move"
-msgstr "Fortsätt draget"
-
-#: src/hotkeys.cpp:171
-msgid "Find Label or Unit"
-msgstr "Sök efter namn eller trupp"
-
-#: src/hotkeys.cpp:172
-msgid "Speak to Ally"
-msgstr "Tala med allierad"
-
-#: src/hotkeys.cpp:173
-msgid "Speak to All"
-msgstr "Tala med alla"
-
-#: src/hotkeys.cpp:174 src/show_dialog.cpp:629
-msgid "Help"
-msgstr "Hjälp"
-
-#: src/hotkeys.cpp:175
-msgid "View Chat Log"
-msgstr "Se chattloggen"
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
-msgid "Do you really want to quit?"
-msgstr "Vill du verkligen sluta?"
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:163
-msgid "Quit"
-msgstr "Avsluta"
-
 #: src/intro.cpp:87
 msgid "Next"
 msgstr "Nästa"
@@ -8312,6 +8092,10 @@ msgstr "Lediga platser"
 msgid "Observe Game"
 msgstr "Iaktta spel"
 
+#: src/multiplayer_lobby.cpp:163
+msgid "Quit"
+msgstr "Avsluta"
+
 #: src/playlevel.cpp:699
 msgid "Game Over"
 msgstr "Spelet är slut"
@@ -8424,6 +8208,10 @@ msgstr "Automatsparat"
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kunde inte automatspara spelet. Var vänlig och spara spelet manuellt."
 
+#: src/playturn.cpp:1352
+msgid "Rename Unit"
+msgstr "Döp om truppen"
+
 #: src/playturn.cpp:1400
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
@@ -8440,6 +8228,10 @@ msgstr "Sparat"
 msgid "The game has been saved"
 msgstr "Spelet har sparats"
 
+#: src/playturn.cpp:1535
+msgid "Leader"
+msgstr "Ledare"
+
 #: src/playturn.cpp:1537
 msgid "Income"
 msgstr "Inkomst"
@@ -8451,6 +8243,10 @@ msgstr "Underhåll"
 #: src/playturn.cpp:1633
 msgid "You have no units available to recruit."
 msgstr "Det finns inte några trupper tillgängliga att värva till armén."
+
+#: src/playturn.cpp:1645
+msgid "Recruit"
+msgstr "Rekrytera"
 
 #: src/playturn.cpp:1646 src/playturn.cpp:1825
 msgid "Select unit"
@@ -8506,6 +8302,10 @@ msgstr ""
 msgid "Dismiss Unit"
 msgstr "Avskeda trupp"
 
+#: src/playturn.cpp:1824
+msgid "Recall"
+msgstr "Återkalla"
+
 #: src/playturn.cpp:1869
 msgid "Message"
 msgstr "Meddelande"
@@ -8517,6 +8317,10 @@ msgstr "Skicka enbart till allierade"
 #: src/playturn.cpp:1963
 msgid "Location"
 msgstr "Position"
+
+#: src/playturn.cpp:2011
+msgid "Unit List"
+msgstr "Trupplista"
 
 #: src/playturn.cpp:2045 src/playturn.cpp:2107
 msgid "Recruits"
@@ -8553,6 +8357,10 @@ msgstr "Åsamkad skada (VV)"
 #: src/playturn.cpp:2094
 msgid "Damage Taken (EV)"
 msgstr "Mottagen skada (VV)"
+
+#: src/playturn.cpp:2100
+msgid "Statistics"
+msgstr "Statistik"
 
 #: src/playturn.cpp:2137
 msgid "Search"
@@ -8673,6 +8481,10 @@ msgstr "Fientlig by"
 msgid "Allied village"
 msgstr "Allierad by"
 
+#: src/show_dialog.cpp:629
+msgid "Help"
+msgstr "Hjälp"
+
 #: src/show_dialog.cpp:954
 msgid "KB"
 msgstr "KB"
@@ -8772,6 +8584,147 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
+
+#~ msgid "Next unit"
+#~ msgstr "Nästa trupp"
+
+#~ msgid "End Unit Turn"
+#~ msgstr "Avsluta truppens drag"
+
+#~ msgid "Undo"
+#~ msgstr "Ångra"
+
+#~ msgid "Redo"
+#~ msgstr "Gör om"
+
+#~ msgid "Zoom In"
+#~ msgstr "Zooma in"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Zooma ut"
+
+#~ msgid "Default Zoom"
+#~ msgstr "Standardinzoomning"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Fullskärm"
+
+#~ msgid "Accelerated"
+#~ msgstr "Accelererad"
+
+#~ msgid "Unit Description"
+#~ msgstr "Truppbeskrivning"
+
+#~ msgid "Repeat Recruit"
+#~ msgstr "Upprepa rekrytering"
+
+#~ msgid "Toggle Grid"
+#~ msgstr "Rutnät av/på"
+
+#~ msgid "Status Table"
+#~ msgstr "Statustabell"
+
+#~ msgid "Mute"
+#~ msgstr "Tyst"
+
+#~ msgid "Speak"
+#~ msgstr "Tala"
+
+#~ msgid "Create Unit (Debug!)"
+#~ msgstr "Skapa trupp (debuggning!)"
+
+#~ msgid "Change Unit Side (Debug!)"
+#~ msgstr "Byt truppens lojalitet (debuggning!)"
+
+#~ msgid "Preferences"
+#~ msgstr "Inställningar"
+
+#~ msgid "Scenario Objectives"
+#~ msgstr "Scenariomål"
+
+#~ msgid "Quit Game"
+#~ msgstr "Avsluta spelet"
+
+#~ msgid "Set Label"
+#~ msgstr "Namnge"
+
+#~ msgid "Show Enemy Moves"
+#~ msgstr "Visa fiendedrag"
+
+#~ msgid "Best Possible Enemy Moves"
+#~ msgstr "Bästa möjliga fiendedrag"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Avsluta kartritaren"
+
+#~ msgid "New Map"
+#~ msgstr "Ny karta"
+
+#~ msgid "Load Map"
+#~ msgstr "Öppna karta"
+
+#~ msgid "Save Map"
+#~ msgstr "Spara karta"
+
+#~ msgid "Save As"
+#~ msgstr "Spara som"
+
+#~ msgid "Set Player Start Position"
+#~ msgstr "Ange spelarens startposition"
+
+#~ msgid "Flood Fill"
+#~ msgstr "Fyll allt"
+
+#~ msgid "Fill Selection"
+#~ msgstr "Fyll markerat"
+
+#~ msgid "Cut"
+#~ msgstr "Klipp ut"
+
+#~ msgid "Copy"
+#~ msgstr "Kopiera"
+
+#~ msgid "Paste"
+#~ msgstr "Klistra in"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "Återställ från disk"
+
+#~ msgid "Resize Map"
+#~ msgstr "Ändra storlek på karta"
+
+#~ msgid "Flip Map"
+#~ msgstr "Flippa kartan"
+
+#~ msgid "Select All"
+#~ msgstr "Markera alla"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "Rita terräng"
+
+#~ msgid "Delay Shroud Updates"
+#~ msgstr "Fördröj slöjuppdateringarna"
+
+#~ msgid "Update Shroud Now"
+#~ msgstr "Uppdatera slöjan nu"
+
+#~ msgid "Continue Move"
+#~ msgstr "Fortsätt draget"
+
+#~ msgid "Find Label or Unit"
+#~ msgstr "Sök efter namn eller trupp"
+
+#~ msgid "Speak to Ally"
+#~ msgstr "Tala med allierad"
+
+#~ msgid "Speak to All"
+#~ msgstr "Tala med alla"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Se chattloggen"
+
+#~ msgid "Do you really want to quit?"
+#~ msgstr "Vill du verkligen sluta?"
 
 #~ msgid "minimum damage"
 #~ msgstr "minsta möjliga skada"

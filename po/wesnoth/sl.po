@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-31 01:55+0200\n"
+"POT-Creation-Date: 2004-10-31 02:21+0200\n"
 "PO-Revision-Date: 2004-10-17 20:24+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
@@ -1848,7 +1848,7 @@ msgid "Actions"
 msgstr "Dejanja"
 
 #: data/themes/default.cfg:79 data/themes/default.cfg:415
-#: data/themes/default.cfg:756 src/hotkeys.cpp:137
+#: data/themes/default.cfg:756
 msgid "End Turn"
 msgstr "Končaj potezo"
 
@@ -5821,7 +5821,7 @@ msgstr ""
 msgid "No objectives available"
 msgstr ""
 
-#: src/dialogs.cpp:177 src/hotkeys.cpp:132
+#: src/dialogs.cpp:177
 msgid "Save Game"
 msgstr "Shrani igro"
 
@@ -5917,7 +5917,7 @@ msgstr ""
 msgid "Show replay"
 msgstr ""
 
-#: src/dialogs.cpp:518 src/hotkeys.cpp:133 src/multiplayer.cpp:81
+#: src/dialogs.cpp:518 src/multiplayer.cpp:81
 msgid "Load Game"
 msgstr "Naloži igro"
 
@@ -6273,226 +6273,6 @@ msgstr "Naprej >"
 #: src/help.cpp:2392
 msgid "The Battle for Wesnoth Help"
 msgstr "Pomoč za The Battle for Wesnoth "
-
-#: src/hotkeys.cpp:120
-msgid "Next unit"
-msgstr ""
-
-#: src/hotkeys.cpp:121
-msgid "End Unit Turn"
-msgstr ""
-
-#: src/hotkeys.cpp:122 src/playturn.cpp:1535
-msgid "Leader"
-msgstr "Vodja"
-
-#: src/hotkeys.cpp:123
-msgid "Undo"
-msgstr "Razveljavi"
-
-#: src/hotkeys.cpp:124
-msgid "Redo"
-msgstr "Uveljavi"
-
-#: src/hotkeys.cpp:125
-msgid "Zoom In"
-msgstr "Povečaj"
-
-#: src/hotkeys.cpp:126
-msgid "Zoom Out"
-msgstr "Pomanjšaj"
-
-#: src/hotkeys.cpp:127
-msgid "Default Zoom"
-msgstr "Privzeta povečava"
-
-#: src/hotkeys.cpp:128
-msgid "Fullscreen"
-msgstr "Celozaslonski način"
-
-#: src/hotkeys.cpp:129
-msgid "Accelerated"
-msgstr ""
-
-#: src/hotkeys.cpp:130
-msgid "Unit Description"
-msgstr ""
-
-#: src/hotkeys.cpp:131 src/playturn.cpp:1352
-msgid "Rename Unit"
-msgstr ""
-
-#: src/hotkeys.cpp:134 src/playturn.cpp:1645
-msgid "Recruit"
-msgstr ""
-
-#: src/hotkeys.cpp:135
-msgid "Repeat Recruit"
-msgstr ""
-
-#: src/hotkeys.cpp:136 src/playturn.cpp:1824
-msgid "Recall"
-msgstr ""
-
-#: src/hotkeys.cpp:138
-msgid "Toggle Grid"
-msgstr ""
-
-#: src/hotkeys.cpp:139
-msgid "Status Table"
-msgstr ""
-
-#: src/hotkeys.cpp:140
-msgid "Mute"
-msgstr "Utišaj"
-
-#: src/hotkeys.cpp:141
-msgid "Speak"
-msgstr "Govori"
-
-#: src/hotkeys.cpp:142
-msgid "Create Unit (Debug!)"
-msgstr ""
-
-#: src/hotkeys.cpp:143
-msgid "Change Unit Side (Debug!)"
-msgstr ""
-
-#: src/hotkeys.cpp:144
-msgid "Preferences"
-msgstr "Nastavitve"
-
-#: src/hotkeys.cpp:145
-msgid "Scenario Objectives"
-msgstr ""
-
-#: src/hotkeys.cpp:146 src/playturn.cpp:2011
-msgid "Unit List"
-msgstr ""
-
-#: src/hotkeys.cpp:147 src/playturn.cpp:2100
-msgid "Statistics"
-msgstr "Statistika"
-
-#: src/hotkeys.cpp:148
-msgid "Quit Game"
-msgstr "Izhod iz igre"
-
-#: src/hotkeys.cpp:149
-msgid "Set Label"
-msgstr ""
-
-#: src/hotkeys.cpp:150
-msgid "Show Enemy Moves"
-msgstr ""
-
-#: src/hotkeys.cpp:151
-msgid "Best Possible Enemy Moves"
-msgstr ""
-
-#: src/hotkeys.cpp:152
-msgid "Quit Editor"
-msgstr ""
-
-#: src/hotkeys.cpp:153
-msgid "New Map"
-msgstr ""
-
-#: src/hotkeys.cpp:154
-msgid "Load Map"
-msgstr ""
-
-#: src/hotkeys.cpp:155
-msgid "Save Map"
-msgstr ""
-
-#: src/hotkeys.cpp:156
-msgid "Save As"
-msgstr "Shrani kot"
-
-#: src/hotkeys.cpp:157
-msgid "Set Player Start Position"
-msgstr ""
-
-#: src/hotkeys.cpp:158
-msgid "Flood Fill"
-msgstr "Zapolnitev"
-
-#: src/hotkeys.cpp:159
-msgid "Fill Selection"
-msgstr "Zapolni izbor"
-
-#: src/hotkeys.cpp:160
-msgid "Cut"
-msgstr "Izreži"
-
-#: src/hotkeys.cpp:161
-msgid "Copy"
-msgstr "Kopiraj"
-
-#: src/hotkeys.cpp:162
-msgid "Paste"
-msgstr "Prilepi"
-
-#: src/hotkeys.cpp:163
-msgid "Revert from Disk"
-msgstr ""
-
-#: src/hotkeys.cpp:164
-msgid "Resize Map"
-msgstr ""
-
-#: src/hotkeys.cpp:165
-msgid "Flip Map"
-msgstr ""
-
-#: src/hotkeys.cpp:166
-msgid "Select All"
-msgstr "Izberi vse"
-
-#: src/hotkeys.cpp:167
-msgid "Draw Terrain"
-msgstr ""
-
-#: src/hotkeys.cpp:168
-msgid "Delay Shroud Updates"
-msgstr ""
-
-#: src/hotkeys.cpp:169
-msgid "Update Shroud Now"
-msgstr ""
-
-#: src/hotkeys.cpp:170
-msgid "Continue Move"
-msgstr ""
-
-#: src/hotkeys.cpp:171
-msgid "Find Label or Unit"
-msgstr ""
-
-#: src/hotkeys.cpp:172
-msgid "Speak to Ally"
-msgstr ""
-
-#: src/hotkeys.cpp:173
-msgid "Speak to All"
-msgstr ""
-
-#: src/hotkeys.cpp:174 src/show_dialog.cpp:629
-msgid "Help"
-msgstr "Pomoč"
-
-#: src/hotkeys.cpp:175
-msgid "View Chat Log"
-msgstr ""
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
-msgid "Do you really want to quit?"
-msgstr "Ali res želite končati?"
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:163
-msgid "Quit"
-msgstr "Izhod"
 
 #: src/intro.cpp:87
 msgid "Next"
@@ -6856,6 +6636,10 @@ msgstr ""
 msgid "Observe Game"
 msgstr ""
 
+#: src/multiplayer_lobby.cpp:163
+msgid "Quit"
+msgstr "Izhod"
+
 #: src/playlevel.cpp:699
 msgid "Game Over"
 msgstr "Konec igre"
@@ -6964,6 +6748,10 @@ msgstr "Samodejno shranjena pozicija"
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 
+#: src/playturn.cpp:1352
+msgid "Rename Unit"
+msgstr ""
+
 #: src/playturn.cpp:1400
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
@@ -6978,6 +6766,10 @@ msgstr "Shranjeno"
 msgid "The game has been saved"
 msgstr "Igra je bila shranjena"
 
+#: src/playturn.cpp:1535
+msgid "Leader"
+msgstr "Vodja"
+
 #: src/playturn.cpp:1537
 msgid "Income"
 msgstr "Prihodki"
@@ -6989,6 +6781,10 @@ msgstr "Plače"
 #: src/playturn.cpp:1633
 msgid "You have no units available to recruit."
 msgstr "Nikogar ne morete rekrutirati."
+
+#: src/playturn.cpp:1645
+msgid "Recruit"
+msgstr ""
 
 #: src/playturn.cpp:1646 src/playturn.cpp:1825
 msgid "Select unit"
@@ -7042,6 +6838,10 @@ msgstr "Za priklic enote potrebujete vsaj $cost zlata"
 msgid "Dismiss Unit"
 msgstr "Odpravi enoto"
 
+#: src/playturn.cpp:1824
+msgid "Recall"
+msgstr ""
+
 #: src/playturn.cpp:1869
 msgid "Message"
 msgstr "Sporočilo"
@@ -7053,6 +6853,10 @@ msgstr "Pošlji samo zaveznikom"
 #: src/playturn.cpp:1963
 msgid "Location"
 msgstr "Lega"
+
+#: src/playturn.cpp:2011
+msgid "Unit List"
+msgstr ""
 
 #: src/playturn.cpp:2045 src/playturn.cpp:2107
 msgid "Recruits"
@@ -7089,6 +6893,10 @@ msgstr "Storjena škoda (pričakovana)"
 #: src/playturn.cpp:2094
 msgid "Damage Taken (EV)"
 msgstr "Utrpela škoda (pričakovana)"
+
+#: src/playturn.cpp:2100
+msgid "Statistics"
+msgstr "Statistika"
 
 #: src/playturn.cpp:2137
 msgid "Search"
@@ -7205,6 +7013,10 @@ msgstr "Sovražnikova vas"
 msgid "Allied village"
 msgstr ""
 
+#: src/show_dialog.cpp:629
+msgid "Help"
+msgstr "Pomoč"
+
 #: src/show_dialog.cpp:954
 msgid "KB"
 msgstr "KB"
@@ -7304,6 +7116,60 @@ msgstr "Zbriši datoteko"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Izbris datoteke je bil neuspešen."
+
+#~ msgid "Undo"
+#~ msgstr "Razveljavi"
+
+#~ msgid "Redo"
+#~ msgstr "Uveljavi"
+
+#~ msgid "Zoom In"
+#~ msgstr "Povečaj"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Pomanjšaj"
+
+#~ msgid "Default Zoom"
+#~ msgstr "Privzeta povečava"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Celozaslonski način"
+
+#~ msgid "Mute"
+#~ msgstr "Utišaj"
+
+#~ msgid "Speak"
+#~ msgstr "Govori"
+
+#~ msgid "Preferences"
+#~ msgstr "Nastavitve"
+
+#~ msgid "Quit Game"
+#~ msgstr "Izhod iz igre"
+
+#~ msgid "Save As"
+#~ msgstr "Shrani kot"
+
+#~ msgid "Flood Fill"
+#~ msgstr "Zapolnitev"
+
+#~ msgid "Fill Selection"
+#~ msgstr "Zapolni izbor"
+
+#~ msgid "Cut"
+#~ msgstr "Izreži"
+
+#~ msgid "Copy"
+#~ msgstr "Kopiraj"
+
+#~ msgid "Paste"
+#~ msgstr "Prilepi"
+
+#~ msgid "Select All"
+#~ msgstr "Izberi vse"
+
+#~ msgid "Do you really want to quit?"
+#~ msgstr "Ali res želite končati?"
 
 #~ msgid "Game"
 #~ msgstr "Igra"

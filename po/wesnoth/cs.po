@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-31 01:55+0200\n"
+"POT-Creation-Date: 2004-10-31 02:21+0200\n"
 "PO-Revision-Date: 2004-09-30 12:32+0200\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
@@ -2431,7 +2431,7 @@ msgid "Actions"
 msgstr "Akce"
 
 #: data/themes/default.cfg:79 data/themes/default.cfg:415
-#: data/themes/default.cfg:756 src/hotkeys.cpp:137
+#: data/themes/default.cfg:756
 msgid "End Turn"
 msgstr "Ukonči kolo"
 
@@ -7045,7 +7045,7 @@ msgstr "Čím se má stát vítězná jednotka?"
 msgid "No objectives available"
 msgstr "K dispozici nejsou žádné úkoly."
 
-#: src/dialogs.cpp:177 src/hotkeys.cpp:132
+#: src/dialogs.cpp:177
 msgid "Save Game"
 msgstr "Ulož hru"
 
@@ -7149,7 +7149,7 @@ msgstr ""
 msgid "Show replay"
 msgstr "Ukaž záznamy"
 
-#: src/dialogs.cpp:518 src/hotkeys.cpp:133 src/multiplayer.cpp:81
+#: src/dialogs.cpp:518 src/multiplayer.cpp:81
 msgid "Load Game"
 msgstr "Načti hru"
 
@@ -7518,226 +7518,6 @@ msgstr "Dále >"
 msgid "The Battle for Wesnoth Help"
 msgstr "Nápověda Bitvy o Wesnoth"
 
-#: src/hotkeys.cpp:120
-msgid "Next unit"
-msgstr "Další jednotka"
-
-#: src/hotkeys.cpp:121
-msgid "End Unit Turn"
-msgstr "Ukončit kolo jednotky"
-
-#: src/hotkeys.cpp:122 src/playturn.cpp:1535
-msgid "Leader"
-msgstr "Vůdce"
-
-#: src/hotkeys.cpp:123
-msgid "Undo"
-msgstr "Zpět"
-
-#: src/hotkeys.cpp:124
-msgid "Redo"
-msgstr "Znovu"
-
-#: src/hotkeys.cpp:125
-msgid "Zoom In"
-msgstr "Přiblížit"
-
-#: src/hotkeys.cpp:126
-msgid "Zoom Out"
-msgstr "Oddálit"
-
-#: src/hotkeys.cpp:127
-msgid "Default Zoom"
-msgstr "Normální pohled"
-
-#: src/hotkeys.cpp:128
-msgid "Fullscreen"
-msgstr "Celá obrazovka"
-
-#: src/hotkeys.cpp:129
-msgid "Accelerated"
-msgstr "Zrychlit"
-
-#: src/hotkeys.cpp:130
-msgid "Unit Description"
-msgstr "Popis jednotky"
-
-#: src/hotkeys.cpp:131 src/playturn.cpp:1352
-msgid "Rename Unit"
-msgstr "Přejmenuj"
-
-#: src/hotkeys.cpp:134 src/playturn.cpp:1645
-msgid "Recruit"
-msgstr "Naverbuj"
-
-#: src/hotkeys.cpp:135
-msgid "Repeat Recruit"
-msgstr "Zopakuj verbování"
-
-#: src/hotkeys.cpp:136 src/playturn.cpp:1824
-msgid "Recall"
-msgstr "Přivolej"
-
-#: src/hotkeys.cpp:138
-msgid "Toggle Grid"
-msgstr "Zapni/vypni mřížku"
-
-#: src/hotkeys.cpp:139
-msgid "Status Table"
-msgstr "Tabulka stavu"
-
-#: src/hotkeys.cpp:140
-msgid "Mute"
-msgstr "Ztlumit zvuk"
-
-#: src/hotkeys.cpp:141
-msgid "Speak"
-msgstr "Mluv"
-
-#: src/hotkeys.cpp:142
-msgid "Create Unit (Debug!)"
-msgstr "Vytvoř jednotku (Debug!)"
-
-#: src/hotkeys.cpp:143
-msgid "Change Unit Side (Debug!)"
-msgstr "Změň stranu jednotky (Debug!)"
-
-#: src/hotkeys.cpp:144
-msgid "Preferences"
-msgstr "Nastavení"
-
-#: src/hotkeys.cpp:145
-msgid "Scenario Objectives"
-msgstr "Úkoly scénáře"
-
-#: src/hotkeys.cpp:146 src/playturn.cpp:2011
-msgid "Unit List"
-msgstr "Seznam jednotek"
-
-#: src/hotkeys.cpp:147 src/playturn.cpp:2100
-msgid "Statistics"
-msgstr "Statistiky"
-
-#: src/hotkeys.cpp:148
-msgid "Quit Game"
-msgstr "Ukončit hru"
-
-#: src/hotkeys.cpp:149
-msgid "Set Label"
-msgstr "Umísti popisek"
-
-#: src/hotkeys.cpp:150
-msgid "Show Enemy Moves"
-msgstr "Ukaž tahy nepřítele"
-
-#: src/hotkeys.cpp:151
-msgid "Best Possible Enemy Moves"
-msgstr "Nejlepší možné tahy nepřítele"
-
-#: src/hotkeys.cpp:152
-msgid "Quit Editor"
-msgstr "Ukončení editoru"
-
-#: src/hotkeys.cpp:153
-msgid "New Map"
-msgstr "Nová mapa"
-
-#: src/hotkeys.cpp:154
-msgid "Load Map"
-msgstr "Načti mapu"
-
-#: src/hotkeys.cpp:155
-msgid "Save Map"
-msgstr "Ulož mapu"
-
-#: src/hotkeys.cpp:156
-msgid "Save As"
-msgstr "Ulož jako"
-
-#: src/hotkeys.cpp:157
-msgid "Set Player Start Position"
-msgstr "Nastav startovací pozici hráče"
-
-#: src/hotkeys.cpp:158
-msgid "Flood Fill"
-msgstr "Vyplň plochu"
-
-#: src/hotkeys.cpp:159
-msgid "Fill Selection"
-msgstr "Vyplň výběr"
-
-#: src/hotkeys.cpp:160
-msgid "Cut"
-msgstr "Vyřízni"
-
-#: src/hotkeys.cpp:161
-msgid "Copy"
-msgstr "Kopíruj"
-
-#: src/hotkeys.cpp:162
-msgid "Paste"
-msgstr "Vlož"
-
-#: src/hotkeys.cpp:163
-msgid "Revert from Disk"
-msgstr "Obnov z disku"
-
-#: src/hotkeys.cpp:164
-msgid "Resize Map"
-msgstr "Změň velikost"
-
-#: src/hotkeys.cpp:165
-msgid "Flip Map"
-msgstr "Otoč mapu"
-
-#: src/hotkeys.cpp:166
-msgid "Select All"
-msgstr "Vyber vše"
-
-#: src/hotkeys.cpp:167
-msgid "Draw Terrain"
-msgstr "Nakreslit terén"
-
-#: src/hotkeys.cpp:168
-msgid "Delay Shroud Updates"
-msgstr "Pozdrž překreslování mlhy"
-
-#: src/hotkeys.cpp:169
-msgid "Update Shroud Now"
-msgstr "Obnov mlhu"
-
-#: src/hotkeys.cpp:170
-msgid "Continue Move"
-msgstr "Pokračuj v pohybu"
-
-#: src/hotkeys.cpp:171
-msgid "Find Label or Unit"
-msgstr "Najdi popisek nebo jednotku"
-
-#: src/hotkeys.cpp:172
-msgid "Speak to Ally"
-msgstr "Mluv ke spojencům"
-
-#: src/hotkeys.cpp:173
-msgid "Speak to All"
-msgstr "Mluv ke všem"
-
-#: src/hotkeys.cpp:174 src/show_dialog.cpp:629
-msgid "Help"
-msgstr "Nápověda"
-
-#: src/hotkeys.cpp:175
-msgid "View Chat Log"
-msgstr "Ukaž záznam rozhovoru"
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
-msgid "Do you really want to quit?"
-msgstr "Opravdu chceš skončit?"
-
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:163
-msgid "Quit"
-msgstr "Konec"
-
 #: src/intro.cpp:87
 msgid "Next"
 msgstr "Další"
@@ -8105,6 +7885,10 @@ msgstr "Prázdné posice"
 msgid "Observe Game"
 msgstr "Pozoruj hru"
 
+#: src/multiplayer_lobby.cpp:163
+msgid "Quit"
+msgstr "Konec"
+
 #: src/playlevel.cpp:699
 msgid "Game Over"
 msgstr "Konec hry"
@@ -8213,6 +7997,10 @@ msgstr "Automatické uložení"
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Hru se nepodařilo uložit automaticky. Ulož ji, prosím, ručně."
 
+#: src/playturn.cpp:1352
+msgid "Rename Unit"
+msgstr "Přejmenuj"
+
 #: src/playturn.cpp:1400
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
@@ -8229,6 +8017,10 @@ msgstr "Uloženo"
 msgid "The game has been saved"
 msgstr "Hra byla uložena"
 
+#: src/playturn.cpp:1535
+msgid "Leader"
+msgstr "Vůdce"
+
 #: src/playturn.cpp:1537
 msgid "Income"
 msgstr "Příjmy"
@@ -8240,6 +8032,10 @@ msgstr "Výdaje"
 #: src/playturn.cpp:1633
 msgid "You have no units available to recruit."
 msgstr "Nemáš žádné jednotky, které bys mohl naverbovat."
+
+#: src/playturn.cpp:1645
+msgid "Recruit"
+msgstr "Naverbuj"
 
 #: src/playturn.cpp:1646 src/playturn.cpp:1825
 msgid "Select unit"
@@ -8293,6 +8089,10 @@ msgstr "Potřebuje alespoň $cost zlaťáků k přivolání jednotky"
 msgid "Dismiss Unit"
 msgstr "Propusť jednotku"
 
+#: src/playturn.cpp:1824
+msgid "Recall"
+msgstr "Přivolej"
+
 #: src/playturn.cpp:1869
 msgid "Message"
 msgstr "Zpráva"
@@ -8304,6 +8104,10 @@ msgstr "Pošli jen spojencům"
 #: src/playturn.cpp:1963
 msgid "Location"
 msgstr "Umístění"
+
+#: src/playturn.cpp:2011
+msgid "Unit List"
+msgstr "Seznam jednotek"
 
 #: src/playturn.cpp:2045 src/playturn.cpp:2107
 msgid "Recruits"
@@ -8340,6 +8144,10 @@ msgstr "Způsobené poranění (odhad)"
 #: src/playturn.cpp:2094
 msgid "Damage Taken (EV)"
 msgstr "Utržené poranění (odhad)"
+
+#: src/playturn.cpp:2100
+msgid "Statistics"
+msgstr "Statistiky"
 
 #: src/playturn.cpp:2137
 msgid "Search"
@@ -8459,6 +8267,10 @@ msgstr "Nepřátelská vesnice"
 msgid "Allied village"
 msgstr "Spojenecká vesnice"
 
+#: src/show_dialog.cpp:629
+msgid "Help"
+msgstr "Nápověda"
+
 #: src/show_dialog.cpp:954
 msgid "KB"
 msgstr "kB"
@@ -8557,6 +8369,147 @@ msgstr "Smaž soubor"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Smazání souboru se nezdařilo."
+
+#~ msgid "Next unit"
+#~ msgstr "Další jednotka"
+
+#~ msgid "End Unit Turn"
+#~ msgstr "Ukončit kolo jednotky"
+
+#~ msgid "Undo"
+#~ msgstr "Zpět"
+
+#~ msgid "Redo"
+#~ msgstr "Znovu"
+
+#~ msgid "Zoom In"
+#~ msgstr "Přiblížit"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Oddálit"
+
+#~ msgid "Default Zoom"
+#~ msgstr "Normální pohled"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Celá obrazovka"
+
+#~ msgid "Accelerated"
+#~ msgstr "Zrychlit"
+
+#~ msgid "Unit Description"
+#~ msgstr "Popis jednotky"
+
+#~ msgid "Repeat Recruit"
+#~ msgstr "Zopakuj verbování"
+
+#~ msgid "Toggle Grid"
+#~ msgstr "Zapni/vypni mřížku"
+
+#~ msgid "Status Table"
+#~ msgstr "Tabulka stavu"
+
+#~ msgid "Mute"
+#~ msgstr "Ztlumit zvuk"
+
+#~ msgid "Speak"
+#~ msgstr "Mluv"
+
+#~ msgid "Create Unit (Debug!)"
+#~ msgstr "Vytvoř jednotku (Debug!)"
+
+#~ msgid "Change Unit Side (Debug!)"
+#~ msgstr "Změň stranu jednotky (Debug!)"
+
+#~ msgid "Preferences"
+#~ msgstr "Nastavení"
+
+#~ msgid "Scenario Objectives"
+#~ msgstr "Úkoly scénáře"
+
+#~ msgid "Quit Game"
+#~ msgstr "Ukončit hru"
+
+#~ msgid "Set Label"
+#~ msgstr "Umísti popisek"
+
+#~ msgid "Show Enemy Moves"
+#~ msgstr "Ukaž tahy nepřítele"
+
+#~ msgid "Best Possible Enemy Moves"
+#~ msgstr "Nejlepší možné tahy nepřítele"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Ukončení editoru"
+
+#~ msgid "New Map"
+#~ msgstr "Nová mapa"
+
+#~ msgid "Load Map"
+#~ msgstr "Načti mapu"
+
+#~ msgid "Save Map"
+#~ msgstr "Ulož mapu"
+
+#~ msgid "Save As"
+#~ msgstr "Ulož jako"
+
+#~ msgid "Set Player Start Position"
+#~ msgstr "Nastav startovací pozici hráče"
+
+#~ msgid "Flood Fill"
+#~ msgstr "Vyplň plochu"
+
+#~ msgid "Fill Selection"
+#~ msgstr "Vyplň výběr"
+
+#~ msgid "Cut"
+#~ msgstr "Vyřízni"
+
+#~ msgid "Copy"
+#~ msgstr "Kopíruj"
+
+#~ msgid "Paste"
+#~ msgstr "Vlož"
+
+#~ msgid "Revert from Disk"
+#~ msgstr "Obnov z disku"
+
+#~ msgid "Resize Map"
+#~ msgstr "Změň velikost"
+
+#~ msgid "Flip Map"
+#~ msgstr "Otoč mapu"
+
+#~ msgid "Select All"
+#~ msgstr "Vyber vše"
+
+#~ msgid "Draw Terrain"
+#~ msgstr "Nakreslit terén"
+
+#~ msgid "Delay Shroud Updates"
+#~ msgstr "Pozdrž překreslování mlhy"
+
+#~ msgid "Update Shroud Now"
+#~ msgstr "Obnov mlhu"
+
+#~ msgid "Continue Move"
+#~ msgstr "Pokračuj v pohybu"
+
+#~ msgid "Find Label or Unit"
+#~ msgstr "Najdi popisek nebo jednotku"
+
+#~ msgid "Speak to Ally"
+#~ msgstr "Mluv ke spojencům"
+
+#~ msgid "Speak to All"
+#~ msgstr "Mluv ke všem"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Ukaž záznam rozhovoru"
+
+#~ msgid "Do you really want to quit?"
+#~ msgstr "Opravdu chceš skončit?"
 
 #~ msgid "minimum damage"
 #~ msgstr "minimální poškození"

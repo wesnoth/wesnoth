@@ -16,29 +16,29 @@ shift
 
 if [ $# = 0 ]
 then
-    set -- `cat po/LINGUAS`
+    set -- `cat po/$SRCDOMAIN/LINGUAS`
 fi
 
 tmp=`tempfile`
 for LANG in "$@"
 do
     # merge the 2 files
-    msgcat -F po/$LANG/$DSTDOMAIN.po po/$LANG/$SRCDOMAIN.po >$tmp
-    mv po/$LANG/$DSTDOMAIN.po po/$LANG/$DSTDOMAIN.po.bak
-    mv $tmp po/$LANG/$DSTDOMAIN.po
+    msgcat -F po/$DSTDOMAIN/$LANG.po po/$SRCDOMAIN/$LANG.po >$tmp
+    mv po/$DSTDOMAIN/$LANG.po po/$DSTDOMAIN/$LANG.po.bak
+    mv $tmp po/$DSTDOMAIN/$LANG.po
 
     # sync with DST pot
-    touch -d '1970-01-02' po/$LANG/$DSTDOMAIN.po
-    make -C po $LANG/$DSTDOMAIN.po
+    touch -d '1970-01-02' po/$DSTDOMAIN/$LANG.po
+    make -C po/$DSTDOMAIN $LANG.po
 
     # clear those obsolete strings added by SRC, but keep ours if any
-    msgattrib --no-obsolete po/$LANG/$DSTDOMAIN.po >$tmp
-    msgcat --use-first -F $tmp po/$LANG/$DSTDOMAIN.po.bak > po/$LANG/$DSTDOMAIN.po
+    msgattrib --no-obsolete po/$DSTDOMAIN/$LANG.po >$tmp
+    msgcat --use-first -F $tmp po/$DSTDOMAIN/$LANG.po.bak > po/$DSTDOMAIN/$LANG.po
 
-    touch -d '1970-01-02' po/$LANG/$DSTDOMAIN.po
-    make -C po $LANG/$DSTDOMAIN.po
+    touch -d '1970-01-02' po/$DSTDOMAIN/$LANG.po
+    make -C po $DSTDOMAIN/$LANG.po
 
     # make sure the timestamp is fixed or cvs gets confused
-    touch po/$LANG/$DSTDOMAIN.po
+    touch po/$DSTDOMAIN/$LANG.po
 done
 rm $tmp
