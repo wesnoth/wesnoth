@@ -92,6 +92,8 @@ team::team_info::team_info(const config& cfg)
 	}
 
 	use_shroud = (cfg["shroud"] == "yes");
+
+	music = cfg["music"];
 }
 
 team::team(const config& cfg, int gold) : gold_(gold), info_(cfg)
@@ -236,6 +238,11 @@ void team::clear_shroud(size_t x, size_t y)
 		shroud_[x].resize(y+1);
 
 	shroud_[x][y] = true;
+}
+
+const std::string& team::music() const
+{
+	return info_.music;
 }
 
 std::string get_team_name(int side, const unit_map& units)

@@ -178,7 +178,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	const std::string& version = data["version"];
 	if(version.empty() == false && version != game_config::version) {
 		throw network::error("The server requires version '" + version
-		            + "' while you are using version'" + game_config::version);
+		      + "' while you are using version'" + game_config::version + "'");
 	}
 
 	bool logged_in = false;

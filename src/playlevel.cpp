@@ -61,7 +61,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			gold = "100";
 
 		int ngold = ::atoi(gold.c_str());
-		if(ui == unit_cfg.begin() && state_of_game.gold >= 0)
+		if(ui == unit_cfg.begin() && state_of_game.gold >= 0 &&
+		   (*level)["disallow_recall"] != "yes")
 			ngold = state_of_game.gold;
 
 		units.insert(std::pair<gamemap::location,unit>(

@@ -51,6 +51,8 @@ public:
 		std::vector<target> targets;
 
 		bool use_shroud;
+
+		std::string music;
 	};
 
 	team(const config& cfg, int gold=100);
@@ -85,6 +87,8 @@ public:
 	bool uses_shroud() const;
 	bool shrouded(size_t x, size_t y) const;
 	void clear_shroud(size_t x, size_t y);
+
+	const std::string& music() const;
 private:
 	int gold_;
 	std::set<gamemap::location> towers_;
