@@ -1733,7 +1733,7 @@ std::vector<std::string> turn_info::create_unit_table(const statistics::stats::s
 
 void turn_info::show_statistics()
 {
-	const statistics::stats& stats = statistics::calculate_stats(0,gui_.viewing_team());
+	const statistics::stats& stats = statistics::calculate_stats(0,gui_.viewing_team()+1);
 	std::vector<std::string> items;
 	
 	{
