@@ -21,14 +21,14 @@
 
 bool detect_format_and_read(config &cfg, std::istream &in)
 {
-	try {
+	unsigned char c = in.peek();
+	if (c < 5) {
 		read_compressed(cfg, in);
 		return true;
-	} catch (config::error &) {
+	} else {
+		read(cfg, in);
+		return false;
 	}
-
-	read(cfg, in);
-	return false;
 }
 
 void write_possibly_compressed(std::string const &filename, config &cfg, bool compress)
