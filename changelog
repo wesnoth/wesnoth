@@ -32,6 +32,7 @@ CVS HEAD
    * choose your leader
    * new map: An Island
  * added new AI parameter: attack_depth
+ * mde units only die if they have 0 or less hitpoints after the event has been fired
  * fixed 'make clean' not cleaning everything 
  * fixed 'make uninstall' not working because of syntax error
  * fixed 'system default language' selection
@@ -45,6 +46,7 @@ CVS HEAD
  * fixed General crossbow attack graphics glitch
  * fixed "wait for start" lobby dialog
  * fixed units not submerged when moving/fighting
+ * fixed bug where [modify_side] couldn't change a side's team name properly
  * added a way to specify the actual position of multi-hex tiles
  * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
