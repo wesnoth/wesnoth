@@ -255,20 +255,33 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			display::debug_highlight(*ri,0.2);
 		}
 
+		//this is set to 'true' if we are hesitant to proceed because of enemy units,
+		//to rally troops around us.
+		bool is_dangerous = false;
+
 		typedef std::multimap<location,location>::const_iterator Itor;
 		std::pair<Itor,Itor> its = dstsrc.equal_range(*ri);
 		while(its.first != its.second) {
-			if(its.first->second == best->first && !should_retreat(its.first->first,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
-				const double value = best_target->value - best->second.type().cost()/20.0;
-				targets.erase(best_target);
+			if(its.first->second == best->first) {
+				if(!should_retreat(its.first->first,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
+					const double value = best_target->value - best->second.type().cost()/20.0;
 
-				//if this is a sufficiently valuable target, we add this unit as a target -- meaning
-				//that a group of units will rally around it, creating a teaming effect
-				if(best_target->value > 0.0) {
-					targets.push_back(target(its.first->first,value));
-				}
+					if(value > 0.0) {
+						//there are enemies ahead. Rally troops around us to
+						//try to take the target
+						if(is_dangerous) {
+							targets.push_back(target(its.first->first,value*2.0));
+						}
+
+						best_target->value = value;
+					} else {
+						targets.erase(best_target);
+					}
 				
-				return std::pair<location,location>(its.first->second,its.first->first);
+					return std::pair<location,location>(its.first->second,its.first->first);
+				} else {
+					is_dangerous = true;
+				}
 			}
 
 			++its.first;

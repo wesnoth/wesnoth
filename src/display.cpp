@@ -1376,7 +1376,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 			blend_with = it->second.type().alignment() == unit_type::CHAOTIC ?
 			                                        0x0001 : 0xFFFF;
 			highlight_ratio = advancingAmount_;
-		} else if(it->second.poisoned()) {
+		} else if(it->second.poisoned() && highlight_ratio == 1.0) {
 			//the unit is poisoned - draw with a green hue
 			blend_with = SDL_MapRGB(dst->format,0,255,0);
 			highlight_ratio = 0.75;
