@@ -7,7 +7,7 @@ CVS HEAD
  * graphics improvements:
    * forests
    * attack icons
-   * unit images and frames
+   * unit images and animation frames
    * teleportation animations
  * tutorial update
  * scenario balancing for 'Heir to the Throne' campaign
@@ -19,7 +19,7 @@ CVS HEAD
    * Weldyn under Attack
  * drakefoot movetype
  * remade Drakes and removed obsolete ones
- * gave hammer to Dwarvish Lord
+ * added hammer attack to Dwarvish Lord
  * new units:
    * Drake Flare
    * Drake Gladiator
@@ -46,6 +46,7 @@ CVS HEAD
    * finnish
    * french
    * german
+   * italian
    * norwegian
    * polish
    * portuguese
@@ -59,6 +60,7 @@ CVS HEAD
    * new map: An Island
    * gave Goblin Spearman to northeners and removed Saurian from them
    * gave Saurian to Drakes
+   * new maps: Blitz, Castle Hopping Isle
  * added new AI parameter: attack_depth
  * made units only die if they have 0 or less hitpoints after the event has been fired
  * tweaked Drake recruitment patterns (AI)
@@ -85,7 +87,15 @@ CVS HEAD
  * fixed gold and load game problem
  * fixed divide-by-0 error in AI
  * fixed statistics dialog seemingly endless loop
+ * fixed firing events from a kill event possibly causing crash
+ * fixed AI allies updating shroud and fog at the end of their turn
+ * fixed bug in 'show enemy moves'
+ * fixed pressing 'shift' while scrolling to your leader would halt scrolling
+ * fixed many deprecated units in scenarios
+ * fixed statistics not being reset between multiplayer games
  * added a way to specify the actual position of multi-hex tiles
+ * added option to preferences file, 'unit_genders', which determines whether units with different genders should be used
+ * added internationalization parameter for Mac OS X
  * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
  * enabled gamestart speedup by not unnecessarily loading campaigns
