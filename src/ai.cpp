@@ -447,7 +447,7 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 
 		const unit_map::const_iterator defender = info_.units.find(target);
 		if(defender != info_.units.end()) {
-			const size_t defender_team = defender->second.side();
+			const size_t defender_team = size_t(defender->second.side()) - 1;
 			if(defender_team < info_.teams.size()) {
 				dialogs::advance_unit(info_.gameinfo,info_.units,target,info_.disp,!info_.teams[defender_team].is_human());
 			}
