@@ -764,9 +764,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 			screen->invalidate(loc);
 		} else {
-                  player_info *player=state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
+                  player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
 
-                  if(player) {
+                  if(player != NULL) {
                     player->available_units.push_back(new_unit);
                   } else {
                     std::cerr << "Cannot create unit: location is not on the map, and player " << new_unit.side() << " has no recall list." << std::endl;
@@ -777,7 +777,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	//if we should recall units that match a certain description
 	else if(cmd == "recall") {
           for(int index=0; index<teams->size(); ++index) {
-            player_info *player=state_of_game->get_player((*teams)[index].save_id());
+            player_info* const player = state_of_game->get_player((*teams)[index].save_id());
+
+			if(player == NULL) {
+				continue;
+			}
 
             std::vector<unit>& avail = player->available_units;
 
