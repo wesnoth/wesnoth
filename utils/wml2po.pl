@@ -4,9 +4,10 @@
 #  DO NOT commit po-files convverted with this script yet.  There is
 #  still some work to do !
 
+# USAGE:
+#  ./utils/wml2po.pl data/translations/XXXXXXX.cfg po/XX.po
+
 # TODO:
-# - tag as UTF-8
-# - tag converted entries as fuzzy
 # - how to permanently get rid of this supurious c-format keyword ?
 
 use strict;
@@ -57,29 +58,33 @@ if (defined $curid and defined $curmsg) {
 
 sub processentry {
   my ($curid, $curmsg) = @_;
+  my $output;
+  my $touched = 0;
 
   # lookup
-
-  print "msgid $curid";
-  print "msgstr ";
 
   if ($curmsg eq "\"\"\n") {
     my $id = $revenglish{po2rawstring($curid)};
     if (defined $id) {
       my $trans = $lang{$id};
       if (defined $trans) {
-	print raw2postring($trans);
+	$output = raw2postring($trans);
+	$touched = 1;
       } else {
 	# printf STDERR "WARNING: no translation found for $id - setting to empty\n";
-	printf raw2postring("");
+	$output = raw2postring("");
       }
     } else {
       printf STDERR "WARNING: no id found (setting translation to empty) for $curid\n";
-      printf raw2postring("");
+      $output = raw2postring("");
     }
   } else {
-    print $curmsg;
+    $output = $curmsg;
   }
+
+  print "#, fuzzy\n" if $touched;
+  print "msgid $curid";
+  print "msgstr $output";
 
   $curid = undef; $curmsg = undef;
 }
