@@ -1,14 +1,15 @@
+
 Contrôles
 ---------
 
     * flêches de direction: Défilement
-    * Click gauche: Sélectionner une unité/Déplacer une unité
-    * Click droit: Menu principal/Annuler une action
+    * Clic gauche: Sélectionner une unité/Déplacer une unité
+    * Clic droit: Menu principal/Annuler une action
     * Echap: Quitter le jeu
     * z: Zoom avant
     * x: Zoom arrière
     * c: Niveau de zoom par défaut
-    * u: Annuler les derniers mouvement (seuls les mouvement déterministes peuvent être annulés)
+    * u: Annuler les derniers mouvements (seuls les mouvements déterministes peuvent être annulés)
     * r: Refaire les mouvements
     * n: Sélectionner la prochaine unité qui peut encore se déplacer
     * Espace : Finir le tour d'une unité et sauter à la prochaine unité qui peut encore se déplacer
@@ -25,60 +26,59 @@ Contrôles
 Orbs
 ----
 
-Au sommet de la barre d'énergie des unités se trouve une orb. Cette orb est:
+Au sommet de la barre d'énergie des unités se trouve une orbe. Cette orbe est:
 
     * verte si vous controlez cette unité et qu'elle n'a pas encore bougé ce tour ci
-    * jaune si vous controlez cette unité et qu'elle a déja bougé ce tour ci mais qu'il lui reste encore des déplacements possible
+    * jaune si vous controlez cette unité et qu'elle a déja bougé ce tour ci mais qu'il lui reste encore des déplacements possibles
     * rouge si vous controlez cette unité mais qu'elle ne peut plus se déplacer ce tour ci
     * bleue s'il s'agit d'une unité alliée mais que vous ne controlez pas
 
-Les unités ennemies n'ont pas d'orb sur leur barre d'énergie.
-(Dans les version < 0.5.2 il y avait une orb noire sur la barre d'énergie des unités ennemies)
+Les unités ennemies n'ont pas d'orbe sur leur barre d'énergie.
+(Dans les version < 0.5.2 il y avait une orbe noire sur la barre d'énergie des unités ennemies)
 
 Description
 -----------
 
 Le jeu donne lieu à une succession de batailles, ou scénarios. 
-Chaque scénario mettra en jeu vous unités contre des troupes adverses. 
-Chaque camp commençant avec un chef.
+Chaque scénario mettra en jeu vos unités contre des troupes adverses. Chaque camp commençant avec un chef.
 
 Or
 --
 
-Chaque camp débutera avec une certain some d'argent (d'or en réalité ;-) ), et recevra 2 pieces d'or par tour, 
-plus 2 pieces d'or supplémentaires pour chaque village que vous controlerez. 
+Chaque camp débutera avec une certain somme d'argent (d'or en réalité ;-) ), et recevra 2 pieces d'or par tour, 
+plus 2 pieces d'or supplémentaires pour chaque village contrôlé. 
 Chaque camp devra également payer 1 piece d'or par tour pour chaque unité controlée.
 
 Recrutement et Rappel
 ---------------------
 
-Les unités peuvent être recruté pour un certain prix, tant que votre chef se trouve sur sa case de départ, 
+Les unités peuvent être recrutée pour un certain prix, tant que votre chef se trouve sur sa case de départ, 
 et qu'il reste au moins une case adjacente à votre chef de libre. 
-Faites un click-droit et sélectionnez "Recruter" pour recruter des nouvelles unités.
+Faites un click-droit et sélectionnez "Recruter" pour recruter de nouvelles unités.
 
-Après avoir terminé un scénarion, toutes les unités survivantes seront disponible pour votre prochain scénario. 
+Après avoir terminé un scénario, toutes les unités survivantes seront disponibles pour votre prochain scénario. 
 Faites un click-droit et sélectionnez "Rappeler" pour recruter une unité de vos précédents scénarios. 
 Le rappel d'unité coûte 20 pieces d'or.
 
 Pour le recrutement ainsi que le rappel, vous pouvez sélectionner la case sur laquelle vous désirez recruter une unité, 
-et ainsi choisir sur quelle case cette unité apparaitra. Cependant, vous ne pouvez pas déplacer une une unité recruté
-ou rappelé durant le même tour.
+et ainsi choisir sur quelle case cette unité apparaitra. Cependant, vous ne pouvez pas déplacer une unité recrutée
+ou rappelée durant le même tour.
 
 Spécialités des unités
 ----------------------
 
-Les spécialités des unités sont décrite sous la rubrique "Décrire l'unité" dans le menu principal.
+Les spécialités des unités sont décrites sous la rubrique "Décrire l'unité" dans le menu principal.
 
 Déplacement
 -----------
 
 Quand une unité est sélectionnée, toutes les cases sur lesquelles elle peut se déplacer s'éclairciront,
-alors que celle oû elle ne peut pas se déplacer s'obscurciront. 
-Vous pouvez dès lors cliquer sur la case oû vous souhaitez déplacer votre unité. 
+alors que celles oû elle ne peut pas se déplacer s'obscurciront. 
+Vous pouvez dès lors cliquer sur la case où vous souhaitez déplacer votre unité. 
 Se déplacer dans un village neutre ou possédé par l'ennemi vous fera prendre le contrôle de celui ci. 
 Si vous choisissez une destination qui se trouve en dehors de votre zone de déplacement, 
-votre unité se déplacera du maximum possible durant se tour et continuera au tour suivant automatiquement. 
-Vous pouvez facilement annuler ces dôplacement automatique au début de votre tour en tapant la touche "u", 
+votre unité se déplacera du maximum possible durant ce tour et continuera au tour suivant automatiquement. 
+Vous pouvez facilement annuler ces déplacements automatiques au début de votre tour en tapant la touche "u", 
 ainsi qu'en sélectionnant l'unité en cause et en lui réaffectant une nouvelle destination.
 
 Vous ne pouvez pas vous déplacer par les six cases autour d'un ennemi (leur zone de contrôle) sans être obligé de vous arrêter.
@@ -86,18 +86,17 @@ Vous ne pouvez pas vous déplacer par les six cases autour d'un ennemi (leur zone
 Combat
 ------
 
-Si vous déplacez une unité à coté d'une unité ennemie, vous pourrez l'attaquer en cliquant sur l'unité que vous souhaitez attaquer. 
-Chaque unité possède une ou plusieurs armes avec lesquelles attaquer. 
-Certaines armes comme les épées sont des armes de corps à corps, alors que d'autres comme les arcs sont des armes de combat à distance.
+Si vous déplacez une unité à coté d'une unité ennemie, vous pourrez l'attaquer en cliquant dessus.
+Chaque unité possède une ou plusieurs armes avec lesquelles attaquer. Certaines armes comme les épées sont des armes de corps à corps, alors que d'autres comme les arcs sont des armes de combat à distance.
 
 Si vous attaquez avec une arme de corps à corps, l'ennemi sera en mesure de riposter avec une arme de corps à corps. 
-Si vous attaquez avec une arme à distance, L'ennemi pourra risposter avec une arme à distance si il en possède une.
+Si vous attaquez avec une arme à distance, L'ennemi pourra risposter avec une arme à distance s'il en possède une.
 
-Différents types d'attaques génèrent différentes quantité de dommage, et un certain nombre d'attaques est disponible avec chaque arme. 
+Différents types d'attaques génèrent différentes quantités de dommage, et un certain nombre d'attaques est disponible avec chaque arme. 
 Par example, un guerrier Elfe fait 5 points de dégats avec son épée à chaque fois qu'il touche un adversaire, 
 et il peut attaquer 4 fois sa cible durant le tour. Ce qui est noté 5-4 dans la description de l'unité.
 
-Chaque unité a un risque plus ou moins grand de se faire toucher suivant le type de terrain sur lequel il se trouve. 
+Chaque unité a un risque plus ou moins grand de se faire toucher suivant le type de terrain sur lequel elle se trouve. 
 Les unités dans les chateaux ou les villages ont moins de risques de se faire toucher. 
 De même, les Elfes en forêt ont moins de risques de se faire toucher qu'en plaine.
 
@@ -105,8 +104,8 @@ Caractère
 ---------
 
 Chaque unité possède sont propre caractère: juste, neutre, ou chaotique. 
-Leur caractère affecte leur performance durant la pèriode du jour. 
-Le tableau suivant illustre les différentes pèriodes du jour:
+Leur caractère affecte leur performance durant la période du jour. 
+Le tableau suivant illustre les différentes périodes du jour:
 
  | Tour	|  phase du jour |
  -------------------------
@@ -124,13 +123,12 @@ Les unités "neutres" ne sont affectées ni par le jour ni par la nuit.
 Soins
 -----
 
-Les unités bléssés se trouvant dans un village récupereront 8 points de vie par tour. 
-Les unités bléssés se trouvant sur une case adjacente à une unités possèdant la capacité 'guérison' ou 'traitement' récupereront également. 
-Les unités se trouvant sur une case adjacente à une unités possèdant la capacité 'guérison' récupereront  un maximum de 4 points de vie par tour, 
-et 8 points de vie par tour pour celle qui ont la capacité 'traitement'. 
-Cependant, plus il y aura d'unités à soigner moins elles recevront de point de vie chacune.
+Les unités bléssées se trouvant dans un village récupereront 8 points de vie par tour. 
+Les unités bléssées se trouvant sur une case adjacente à une unité possèdant la capacité 'guérison' ou 'traitement' récupereront également. 
+Les unités se trouvant sur une case adjacente à une unité possèdant la capacité 'guérison' récupereront  un maximum de 4 points de vie par tour, 
+et 8 points de vie par tour pour celle qui ont la capacité 'traitement'. Cependant, plus il y aura d'unités à soigner moins elles recevront de point de vie chacune.
 
-Experience
+Expérience
 ----------
 
 Les unités acquièrent de l'expérience lors des combats, et arrivées à un certain seuil, elles accèderont à un autre niveau en devenant plus puissantes.
