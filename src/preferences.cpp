@@ -890,20 +890,22 @@ void show_preferences_dialog(display& disp)
 	}
 }
 
+bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs)
+{
+	return lhs.first*lhs.second < rhs.first*rhs.second;
+}
+
 bool show_video_mode_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
-
-	std::vector<std::pair<int,int> > resolutions;
-	std::vector<std::string> options;
 
 	CVideo& video = disp.video();
 
 	SDL_PixelFormat format = *video.getSurface()->format;
 	format.BitsPerPixel = video.getBpp();
 
-	SDL_Rect** modes = SDL_ListModes(&format,FULL_SCREEN);
+	const SDL_Rect* const * const modes = SDL_ListModes(&format,FULL_SCREEN);
 
 	//the SDL documentation says that a return value of -1 if no dimension
 	//is available.
@@ -916,29 +918,36 @@ bool show_video_mode_dialog(display& disp)
 		return false;
 	}
 
+	std::vector<std::pair<int,int> > resolutions;
+
+	bool added_current = false;
 	for(int i = 0; modes[i] != NULL; ++i) {
 		if(modes[i]->w >= 800 && modes[i]->h >= 600) {
-			const std::pair<int,int> new_res(modes[i]->w,modes[i]->h);
-			if(std::count(resolutions.begin(),resolutions.end(),new_res) > 0)
-				continue;
-
-			resolutions.push_back(new_res);
-
-			std::stringstream option;
-			option << modes[i]->w << "x" << modes[i]->h;
-			options.push_back(option.str());
+			resolutions.push_back(std::pair<int,int>(modes[i]->w,modes[i]->h));
 		}
 	}
 
-	if(resolutions.size() < 2) {
-		gui::show_dialog(disp,NULL,"",string_table["video_mode_unavailable"]);
-		return false;
+	const std::pair<int,int> current_res(video.getSurface()->w,video.getSurface()->h);
+	resolutions.push_back(current_res);
+
+	std::sort(resolutions.begin(),resolutions.end(),compare_resolutions);
+	resolutions.erase(std::unique(resolutions.begin(),resolutions.end()),resolutions.end());
+
+	std::vector<std::string> options;
+	for(std::vector<std::pair<int,int> >::const_iterator j = resolutions.begin(); j != resolutions.end(); ++j) {
+		std::ostringstream option;
+		if(*j == current_res) {
+			option << char(gui::menu::DEFAULT_ITEM);
+		}
+
+		option << j->first << "x" << j->second;
+		options.push_back(option.str());
 	}
 
 	const int result = gui::show_dialog(disp,NULL,"",
 	                                    string_table["choose_resolution"],
-	                                    gui::MESSAGE,&options);
-	if(size_t(result) < resolutions.size()) {
+	                                    gui::OK_CANCEL,&options);
+	if(size_t(result) < resolutions.size() && resolutions[result] != current_res) {
 		set_resolution(resolutions[result]);
 		return true;
 	} else {

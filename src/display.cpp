@@ -2107,7 +2107,7 @@ const theme::menu* display::menu_pressed(int mousex, int mousey, bool button_pre
 {
 
 	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
-		if(i->process(mousex,mousey,button_pressed)) {
+		if(i->pressed()) {
 			const size_t index = i - buttons_.begin();
 			assert(index < theme_.menus().size());
 			return &theme_.menus()[index];

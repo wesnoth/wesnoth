@@ -40,7 +40,7 @@ menu::menu(display& disp, const std::vector<std::string>& items,
 		//if the first character in an item is an asterisk,
 		//it means this item should be selected by default
 		std::string& first_item = items_.back().front();
-		if(first_item.empty() == false && first_item[0] == '*') {
+		if(first_item.empty() == false && first_item[0] == DEFAULT_ITEM) {
 			selected_ = items_.size()-1;
 			first_item.erase(first_item.begin());
 		}
