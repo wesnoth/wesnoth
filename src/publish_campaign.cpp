@@ -21,6 +21,16 @@ void setup_dirs()
 
 }
 
+void get_campaign_info(const std::string& campaign_name, config& cfg)
+{
+	cfg.read(read_file(campaign_dir() + "/" + campaign_name + ".pbl"));
+}
+
+void set_campaign_info(const std::string& campaign_name, const config& cfg)
+{
+	write_file(campaign_dir() + "/" + campaign_name + ".pbl", cfg.write());
+}
+
 std::vector<std::string> available_campaigns()
 {
 	std::vector<std::string> res;
@@ -30,7 +40,9 @@ std::vector<std::string> available_campaigns()
 
 	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
 		const std::string cfg_file = *i + ".cfg";
-		if(std::find(files.begin(),files.end(),cfg_file) != files.end()) {
+		const std::string publish_file = *i + ".pbl";
+		if(std::find(files.begin(),files.end(),cfg_file) != files.end() &&
+		   std::find(files.begin(),files.end(),publish_file) != files.end()) {
 			res.push_back(*i);
 		}
 	}

@@ -72,7 +72,7 @@ void campaign_server::run()
 					response.add_child("campaigns",campaign_list);
 					network::send_data(response,sock);
 				} else if(const config* req = data.child("request_campaign")) {
-					const config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
+					config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
 					if(campaign == NULL) {
 						network::send_data(construct_error("Campaign not found."),sock);
 					} else {
@@ -80,7 +80,13 @@ void campaign_server::run()
 						compression_schema schema;
 						cfg.read_compressed(read_file((*campaign)["filename"]),schema);
 						network::queue_data(cfg,sock);
+
+						const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
+						(*campaign)["downloads"] = lexical_cast<std::string>(downloads);
 					}
+
+				} else if(data.child("request_terms") != NULL) {
+					network::send_data(construct_message("All campaigns uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."),sock);
 				} else if(const config* upload = data.child("upload")) {
 					config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 					if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
@@ -95,6 +101,14 @@ void campaign_server::run()
 						(*campaign)["name"] = (*upload)["name"];
 						(*campaign)["filename"] = (*upload)["name"];
 						(*campaign)["passphrase"] = (*upload)["passphrase"];
+						(*campaign)["author"] = (*upload)["author"];
+						(*campaign)["description"] = (*upload)["description"];
+						(*campaign)["version"] = (*upload)["version"];
+						(*campaign)["icon"] = (*upload)["icon"];
+
+						if((*campaign)["downloads"].empty()) {
+							(*campaign)["downloads"] = "0";
+						}
 
 						const config* const data = upload->child("data");
 						if(data != NULL) {

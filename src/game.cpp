@@ -340,6 +340,7 @@ private:
 	void operator=(const game_controller&);
 
 	void download_campaigns();
+	void upload_campaign(const std::string& campaign, network::connection sock);
 
 	const int argc_;
 	int arg_;
@@ -994,19 +995,34 @@ void game_controller::download_campaigns()
 			return;
 		}
 
-		std::vector<std::string> campaigns;
+		std::vector<std::string> campaigns, options;
+		options.push_back(_(",Name,Version,Author,Downloads"));
 		const config::child_list& cmps = campaigns_cfg->get_children("campaign");
 		for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
 			campaigns.push_back((**i)["name"]);
+			
+			std::string name = (**i)["name"];
+			std::replace(name.begin(),name.end(),'_',' ');
+			options.push_back("&" + (**i)["icon"] + "," + name + "," + (**i)["version"] + "," + (**i)["author"] + "," + (**i)["downloads"]);
 		}
 
-		if(campaigns.empty()) {
+		const std::vector<std::string>& publish_options = available_campaigns();
+		for(std::vector<std::string>::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
+			options.push_back(std::string(",") + _("Publish campaign: ") + *j);
+		}
+
+		if(campaigns.empty() && publish_options.empty()) {
 			gui::show_dialog(disp(),NULL,_("Error"),_("There are no campaigns available for download from this server."),gui::OK_ONLY);
 			return;
 		}
 
-		const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&campaigns);
-		if(index < 0 || index >= int(campaigns.size())) {
+		const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&options) - 1;
+		if(index < 0) {
+			return;
+		}
+
+		if(index >= int(campaigns.size())) {
+			upload_campaign(publish_options[index - int(campaigns.size())],sock);
 			return;
 		}
 
@@ -1039,6 +1055,60 @@ void game_controller::download_campaigns()
 		gui::show_dialog(disp(),NULL,_("Error"),_("Remote host disconnected."),gui::OK_ONLY);
 	} catch(io_exception& e) {
 		gui::show_dialog(disp(),NULL,_("Error"),_("There was a problem creating the files necessary to install this campaign."),gui::OK_ONLY);
+	}
+}
+
+void game_controller::upload_campaign(const std::string& campaign, network::connection sock)
+{
+	config request_terms;
+	request_terms.add_child("request_terms");
+	network::send_data(request_terms,sock);
+	config data;
+	sock = network::receive_data(data,sock,60000);
+	if(!sock) {
+		gui::show_dialog(disp(),NULL,_("Error"),_("Connection timed out"),gui::OK_ONLY);
+		return;
+	} else if(data.child("error")) {
+		gui::show_dialog(disp(),NULL,_("Error"),_("The server responded with an error: \"") + (*data.child("error"))["message"] + "\"",gui::OK_ONLY);
+		return;
+	} else if(data.child("message")) {
+		const int res = gui::show_dialog(disp(),NULL,_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL);
+		if(res != 0) {
+			return;
+		}
+	}
+
+	config cfg;
+	get_campaign_info(campaign,cfg);
+
+	std::string& passphrase = cfg["passphrase"];
+	if(passphrase.empty()) {
+		passphrase.resize(8);
+		for(size_t n = 0; n != 8; ++n) {
+			passphrase[n] = 'a' + (rand()%26);
+		}
+
+		set_campaign_info(campaign,cfg);
+	}
+
+	cfg["name"] = campaign;
+
+	config campaign_data;
+	archive_campaign(campaign,campaign_data);
+
+	data.clear();
+	data.add_child("upload",cfg).add_child("data",campaign_data);
+
+	std::cerr << "uploading campaign...\n";
+	network::send_data(data,sock);
+	
+	sock = network::receive_data(data,sock,60000);
+	if(!sock) {
+		gui::show_dialog(disp(),NULL,_("Error"),_("Connection timed out"),gui::OK_ONLY);
+	} else if(data.child("error")) {
+		gui::show_dialog(disp(),NULL,_("Error"),_("The server responded with an error: \"") + (*data.child("error"))["message"] + "\"",gui::OK_ONLY);
+	} else if(data.child("message")) {
+		gui::show_dialog(disp(),NULL,_("Response"),(*data.child("message"))["message"],gui::OK_ONLY);
 	}
 }
 
@@ -1254,66 +1324,6 @@ int play_game(int argc, char** argv)
 				}
 				p = q;
 			}
-		} else if(val == "--publish-campaign") {
-			if(arg+3 != argc && arg+4 != argc && arg+5 != argc) {
-				std::cerr << "usage: --publish-campaign <campaign> <passphrase> [<server> [<port>]]\n";
-				return 0;
-			}
-
-			const std::string& campaign = argv[++arg];
-			const std::string& passphrase = argv[++arg];
-			std::string host = "campaigns.wesnoth.org", port = "15002";
-			if(++arg != argc) {
-				host = argv[arg];
-				if(++arg != argc) {
-					port = argv[arg];
-				}
-			}
-
-			const std::vector<std::string>& campaigns = available_campaigns();
-			if(std::find(campaigns.begin(),campaigns.end(),campaign) == campaigns.end()) {
-				std::cerr << "Campaign not found. Available campaigns are:\n";
-				std::copy(campaigns.begin(),campaigns.end(),std::ostream_iterator<std::string>(std::cerr,"\n"));
-				return 0;
-			}
-
-			if(campaign_name_legal(campaign) == false) {
-				std::cerr << "Not a legal campaign name.\n";
-			}
-
-			config cfg;
-			archive_campaign(campaign,cfg);
-
-			std::cerr << "connecting to server...\n";
-			
-			const network::manager net_manager;
-			network::connection sock = network::connect(host,lexical_cast_default<int>(port,15002));
-			if(!sock) {
-				std::cerr << "Could not connect to server\n";
-				return 0;
-			}
-
-			std::cerr << "connected to server. Building campaign...\n";
-
-			config data;
-			config& upload = data.add_child("upload");
-			upload["name"] = campaign;
-			upload["passphrase"] = passphrase;
-			upload.add_child("data",cfg);
-
-			std::cerr << "uploading campaign...\n";
-			network::send_data(data,sock);
-			
-			sock = network::receive_data(data,sock,60000);
-			if(!sock) {
-				std::cerr << "Connection timed out\n";
-			} else if(data.child("error")) {
-				std::cerr << "Server responded with an error: '" << (*data.child("error"))["message"] << "'\n";
-			} else if(data.child("message")) {
-				std::cerr << (*data.child("message"))["message"] << "\n";
-			}
-
-			return 0;
 		}
 	}
 
