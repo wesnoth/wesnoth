@@ -1302,8 +1302,10 @@ void turn_info::end_unit_turn()
 		un->second.set_user_end_turn(!un->second.user_end_turn());
 		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
 
+		gui_.set_route(NULL);
 		gui_.set_paths(NULL);
 		current_paths_ = paths();
+		gui_.draw();
 
 		if(un->second.user_end_turn()) {
 			cycle_units();
