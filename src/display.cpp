@@ -288,7 +288,7 @@ void display::default_zoom()
 
 void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 {
-	if(update_locked() || shrouded(x,y))
+	if(update_locked() || fogged(x,y))
 		return;
 
 	if(map_.on_board(gamemap::location(x,y)) == false)
