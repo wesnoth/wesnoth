@@ -97,7 +97,7 @@ std::string recruit_unit(const gamemap& map, int side,
 		return _("You must have your leader on a keep to recruit or recall units.");
 	}
 
-	if(map.on_board(recruit_location)) {
+	if(need_castle && map.on_board(recruit_location)) {
 		const paths::route& rt = a_star_search(u->first,recruit_location,
 		                                   100.0,castle_cost_calculator(map));
 		if(rt.steps.empty() || units.find(recruit_location) != units.end() ||
