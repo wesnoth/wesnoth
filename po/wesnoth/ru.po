@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-15 23:28+0200\n"
-"PO-Revision-Date: 2004-10-15 13:56+0300\n"
+"PO-Revision-Date: 2004-10-15 19:53+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -143,7 +143,7 @@ msgstr ""
 
 #: data/help.cfg:85 src/help.cpp:771 src/help.cpp:772
 msgid "Movement"
-msgstr "Передвижение"
+msgstr "Ходы"
 
 #: data/help.cfg:90
 msgid ""
@@ -284,7 +284,7 @@ msgstr ""
 
 #: data/help.cfg:151
 msgid "Experience and Advancement"
-msgstr ""
+msgstr "Опыт и Улучшения"
 
 #: data/help.cfg:156
 msgid ""
@@ -332,7 +332,7 @@ msgstr ""
 
 #: data/help.cfg:177
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "Доход и Содержание"
 
 #: data/help.cfg:186
 msgid ""
@@ -587,7 +587,7 @@ msgstr "пылающий меч"
 
 #: data/items.cfg:755
 msgid "Sceptre of Fire"
-msgstr ""
+msgstr "Огненный скипетр"
 
 #: data/items.cfg:758
 msgid ""
@@ -617,19 +617,19 @@ msgstr "По умолчанию"
 #: data/multiplayer.cfg:23 data/multiplayer.cfg:104 data/multiplayer.cfg:196
 #: data/multiplayer.cfg:278 src/multiplayer_client.cpp:662
 msgid "&random-enemy.png,Random"
-msgstr ""
+msgstr "&random-enemy.png,Случайные"
 
 #: data/multiplayer.cfg:28
 msgid "&human-lieutenant.png,Loyalists"
-msgstr ""
+msgstr "&human-lieutenant.png,Подданные"
 
 #: data/multiplayer.cfg:40
 msgid "&elvish-captain.png,Rebels"
-msgstr ""
+msgstr "&elvish-captain.png,Мятежники"
 
 #: data/multiplayer.cfg:52
 msgid "&orcish-warrior.png,Northerners"
-msgstr ""
+msgstr "&orcish-warrior.png,Северяне"
 
 #: data/multiplayer.cfg:64 data/multiplayer.cfg:145
 msgid "&undead-necromancer.png,Undead"
@@ -786,19 +786,19 @@ msgstr "Ничья! Финальные очки: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/WeslinBridge.cfg:3
 msgid "Battle for Weslin Bridge"
-msgstr ""
+msgstr "Битва за мост Веслин"
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
-msgstr ""
+msgstr "Мировая битва"
 
 #: data/scenarios/multiplayer/castles.cfg:7
 msgid "Siege Castles"
-msgstr ""
+msgstr "Замок в осаде"
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
 msgid "Across The River"
-msgstr ""
+msgstr "Поперёк реки"
 
 #: data/scenarios/multiplayer/scenarios.cfg:108
 msgid "The Isle of Anduin"
@@ -826,7 +826,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/scenarios.cfg:304
 msgid "King of the Hill"
-msgstr ""
+msgstr "Король холма"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:47
 msgid ""
@@ -844,7 +844,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:53
 msgid "Recruit a unit"
-msgstr "Купить соединение"
+msgstr "Призвать новобранца"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:59
 msgid "Excellent! You have recruited an Elvish Fighter."
@@ -1101,7 +1101,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid "What happens when a unit advances?"
-msgstr ""
+msgstr "Что происходит при улучшении соединения?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid ""
@@ -1115,15 +1115,15 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:175
 msgid "Move your fighter onto a village."
-msgstr ""
+msgstr "Переместите Вашего бойца на деревеню."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:177
 msgid "Move your fighter onto a village"
-msgstr ""
+msgstr "Переместите Вашего бойца на деревеню"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:188
 msgid "Villages heal the units on them."
-msgstr ""
+msgstr "Деревни исцеляют соединения."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid "What happens when a unit moves onto a village?"
@@ -1699,11 +1699,11 @@ msgstr "соединения"
 
 #: data/themes/default.cfg:166 data/themes/default.cfg:502
 msgid "upkeep"
-msgstr ""
+msgstr "содержание"
 
 #: data/themes/default.cfg:174 data/themes/default.cfg:510
 msgid "income"
-msgstr ""
+msgstr "доход"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
@@ -1715,15 +1715,15 @@ msgstr "движение"
 
 #: data/translations/english.cfg:2
 msgid "Easy"
-msgstr "Лёгкий"
+msgstr "Лёгкая"
 
 #: data/translations/english.cfg:3
 msgid "Medium"
-msgstr "Средний"
+msgstr "Средняя"
 
 #: data/translations/english.cfg:4
 msgid "Hard"
-msgstr "Тяжелый"
+msgstr "Тяжелая"
 
 #: data/translations/english.cfg:9
 msgid ""
@@ -1732,12 +1732,17 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
+"Гражданские соединения лучше сражаются днём и хуже ночью.\n"
+"\n"
+"День: +25% ущерба\n"
+"Ночь: -25% ущерба"
 
 #: data/translations/english.cfg:10
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"Нейтральные соединения сражаются как днём, так и ночью с одинаковой силой."
 
 #: data/translations/english.cfg:14
 msgid ""
@@ -1746,6 +1751,10 @@ msgid ""
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
+"Хаотичные соединения лучше сражаются ночью, а днём хуже.\n"
+"\n"
+"День: -25% ущерба\n"
+"Ночь: +25% ущебра"
 
 #: data/translations/english.cfg:23
 msgid ""
@@ -1793,7 +1802,7 @@ msgstr ""
 #: data/translations/english.cfg:40 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:160
 msgid "teleport"
-msgstr ""
+msgstr "телепорт"
 
 #: data/translations/english.cfg:45
 msgid ""
@@ -1833,7 +1842,7 @@ msgstr ""
 #: data/units/Elvish_Avenger.cfg:91 data/units/Elvish_Ranger.cfg:17
 #: data/units/Elvish_Ranger.cfg:94
 msgid "ambush"
-msgstr ""
+msgstr "засада"
 
 #: data/translations/english.cfg:59
 msgid ""
@@ -1862,11 +1871,11 @@ msgstr ""
 #: data/units/Outlaw_Princess.cfg:17 data/units/Rogue.cfg:16
 #: data/units/Saurian.cfg:19 data/units/Saurian_Warrior.cfg:19
 msgid "skirmisher"
-msgstr ""
+msgstr "стрелок"
 
 #: data/translations/english.cfg:68
 msgid "Never more than 1 upkeep"
-msgstr ""
+msgstr "Не больше 1 единицы содержания"
 
 #: data/translations/english.cfg:72
 msgid "This unit takes half normal damage when it did not initiate the attack."
@@ -1876,7 +1885,7 @@ msgstr ""
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
 #: src/actions.cpp:499
 msgid "steadfast"
-msgstr ""
+msgstr "стойкий"
 
 #: data/translations/english.cfg:76
 msgid "minimum damage"
@@ -1920,7 +1929,7 @@ msgstr "Наблюдатель"
 
 #: data/translations/english.cfg:90
 msgid "Describe Unit"
-msgstr ""
+msgstr "Описать соединение"
 
 #: data/translations/english.cfg:92
 msgid "Full Screen or Windowed?"
@@ -1940,7 +1949,7 @@ msgstr "Скорость"
 
 #: data/translations/english.cfg:97
 msgid "Normal"
-msgstr ""
+msgstr "Нормально"
 
 #: data/translations/english.cfg:99
 msgid "Sound Settings..."
@@ -1984,7 +1993,7 @@ msgstr "или"
 
 #: data/translations/english.cfg:110
 msgid "Unit resistance table"
-msgstr ""
+msgstr "Сопротивление соединения"
 
 #: data/translations/english.cfg:112
 msgid "See Also..."
@@ -2015,7 +2024,7 @@ msgstr ""
 #: data/units/Knight.cfg:38 data/units/Lancer.cfg:22 data/units/Paladin.cfg:43
 #: src/actions.cpp:363 src/actions.cpp:481
 msgid "charge"
-msgstr ""
+msgstr "заряд"
 
 #: data/translations/english.cfg:127
 msgid ""
@@ -2033,7 +2042,7 @@ msgstr ""
 #: data/units/Vampire_Lady.cfg:25 data/units/Vampire_Lady.cfg:38
 #: data/units/Wraith.cfg:24
 msgid "drain"
-msgstr ""
+msgstr "осушать"
 
 #: data/translations/english.cfg:132
 msgid ""
@@ -2064,7 +2073,7 @@ msgstr ""
 #: data/units/Silver_Mage.cfg:183 data/units/White_Mage.cfg:47
 #: data/units/White_Mage.cfg:106
 msgid "magical"
-msgstr ""
+msgstr "магический"
 
 #: data/translations/english.cfg:137
 msgid ""
@@ -2119,7 +2128,7 @@ msgstr ""
 #: data/units/Elvish_Sorceress.cfg:67 data/units/Elvish_Sylph.cfg:53
 #: data/units/Goblin_Pillager.cfg:37
 msgid "slow"
-msgstr ""
+msgstr "медленный"
 
 #: data/translations/english.cfg:157
 msgid ""
@@ -2143,7 +2152,7 @@ msgstr ""
 #: data/translations/english.cfg:164 data/units/Dwarvish_Berserker.cfg:29
 #: data/units/Dwarvish_Ulfserker.cfg:29
 msgid "berserk"
-msgstr ""
+msgstr "обезумевший"
 
 #: data/translations/english.cfg:167
 msgid ""
@@ -2531,7 +2540,7 @@ msgstr ""
 #: data/units/Ancient_Lich.cfg:19 data/units/Demilich.cfg:18
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
 msgid "touch"
-msgstr ""
+msgstr "прикосновение"
 
 #: data/units/Ancient_Lich.cfg:20 data/units/Ancient_Lich.cfg:33
 #: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
@@ -2546,13 +2555,13 @@ msgstr ""
 #: data/units/Saurian_Tribalist.cfg:40 data/units/Spectre.cfg:33
 #: data/units/Wraith.cfg:33
 msgid "cold"
-msgstr ""
+msgstr "холод"
 
 #: data/units/Ancient_Lich.cfg:32 data/units/Deathmaster.cfg:35
 #: data/units/Demilich.cfg:31 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 msgid "magic"
-msgstr ""
+msgstr "магия"
 
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
@@ -2617,11 +2626,11 @@ msgstr ""
 #: data/units/Warrior_King.cfg:23 data/units/Wose.cfg:20
 #: data/units/Yeti.cfg:34 data/units/Youth.cfg:22
 msgid "impact"
-msgstr ""
+msgstr "удар"
 
 #: data/units/Arch_Mage.cfg:3 data/units/Arch_Mage.cfg:82
 msgid "Arch Mage"
-msgstr ""
+msgstr "Радужный маг"
 
 #: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:99
 msgid ""
@@ -2638,7 +2647,7 @@ msgstr ""
 #: data/units/Saurian_Soothsayer.cfg:22 data/units/Saurian_Tribalist.cfg:22
 #: data/units/Silver_Mage.cfg:77 data/units/Silver_Mage.cfg:164
 msgid "staff"
-msgstr ""
+msgstr "посох"
 
 #: data/units/Arch_Mage.cfg:39 data/units/Arch_Mage.cfg:118
 #: data/units/Elvish_High_Lord.cfg:36 data/units/Elvish_Lord.cfg:36
@@ -2646,7 +2655,7 @@ msgstr ""
 #: data/units/Red_Mage.cfg:39 data/units/Red_Mage.cfg:108
 #: data/units/Silver_Mage.cfg:93 data/units/Silver_Mage.cfg:180
 msgid "fireball"
-msgstr ""
+msgstr "шаровая молния"
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:119
 #: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:121
@@ -2763,7 +2772,7 @@ msgstr "нож"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
-msgstr ""
+msgstr "Бандит"
 
 #: data/units/Bandit.cfg:16
 msgid ""
@@ -2786,7 +2795,7 @@ msgstr "булава"
 #: data/units/Battle_Princess.cfg:3 data/units/Battle_Princess.cfg:41
 #: data/units/Princess.cfg:3 data/units/Princess.cfg:41
 msgid "Princess"
-msgstr ""
+msgstr "Принцесса"
 
 #: data/units/Battle_Princess.cfg:17 data/units/Battle_Princess.cfg:55
 msgid "leadership,skirmisher"
@@ -2848,11 +2857,11 @@ msgstr ""
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:102
 #: data/units/Princess.cfg:76
 msgid "scepter of fire"
-msgstr ""
+msgstr "огненный скипетр"
 
 #: data/units/Blood_Bat.cfg:3
 msgid "Blood Bat"
-msgstr ""
+msgstr "Кровавая мышь"
 
 #: data/units/Blood_Bat.cfg:16
 msgid ""
@@ -2903,7 +2912,7 @@ msgstr "кулак"
 #: data/units/Skeleton_Archer.cfg:40 data/units/Soul_Shooter.cfg:37
 #: data/units/Trapper.cfg:41
 msgid "bow"
-msgstr ""
+msgstr "лук"
 
 #: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:38
 #: data/units/Cavalier.cfg:49 data/units/Chocobone.cfg:21
@@ -2954,7 +2963,7 @@ msgstr ""
 #: data/units/Triton.cfg:20 data/units/Vampire_Lady.cfg:34
 #: data/units/Wall_Guard.cfg:36 data/units/Watch_Tower.cfg:18
 msgid "pierce"
-msgstr ""
+msgstr "пронзать"
 
 #: data/units/Bowman.cfg:3
 msgid "Bowman"
@@ -3008,7 +3017,7 @@ msgstr ""
 
 #: data/units/Cave_Spider.cfg:28
 msgid "web"
-msgstr ""
+msgstr "паутина"
 
 #: data/units/Chocobone.cfg:3
 msgid "Chocobone"
@@ -3033,7 +3042,7 @@ msgstr ""
 #: data/units/Saurian_Warrior.cfg:38 data/units/Spearman.cfg:19
 #: data/units/Spearman.cfg:32
 msgid "spear"
-msgstr ""
+msgstr "копьё"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -3048,11 +3057,11 @@ msgstr ""
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
-msgstr ""
+msgstr "пристальный взгляд"
 
 #: data/units/Commander.cfg:3 data/units/Commander.cfg:78
 msgid "Commander"
-msgstr ""
+msgstr "Командир"
 
 #: data/units/Commander.cfg:20
 msgid ""
@@ -3074,7 +3083,7 @@ msgstr ""
 
 #: data/units/Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
-msgstr ""
+msgstr "Каракатица"
 
 #: data/units/Cuttle_Fish.cfg:16
 msgid ""
@@ -3085,15 +3094,15 @@ msgstr ""
 
 #: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
 msgid "tentacle"
-msgstr ""
+msgstr "щупальце"
 
 #: data/units/Cuttle_Fish.cfg:26
 msgid "ink"
-msgstr ""
+msgstr "чернила"
 
 #: data/units/Dark_Adept.cfg:3
 msgid "Dark Adept"
-msgstr ""
+msgstr "Тёмный адепт"
 
 #: data/units/Dark_Adept.cfg:19
 msgid ""
@@ -3105,11 +3114,11 @@ msgstr ""
 
 #: data/units/Dark_Adept.cfg:22 data/units/Necromancer.cfg:35
 msgid "chill wave"
-msgstr ""
+msgstr "волна холода"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "Dark Queen"
-msgstr ""
+msgstr "Тёмная королева"
 
 #: data/units/Dark_Queen.cfg:15
 msgid ""
@@ -3120,11 +3129,11 @@ msgstr ""
 
 #: data/units/Dark_Queen.cfg:20
 msgid "scepter"
-msgstr ""
+msgstr "скипетр"
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
-msgstr ""
+msgstr "Тёмный дух"
 
 #: data/units/Dark_Spirit.cfg:16
 msgid ""
@@ -3141,7 +3150,7 @@ msgstr ""
 #: data/units/Dark_Spirit.cfg:32 data/units/Ghost.cfg:31
 #: data/units/Spectre.cfg:32 data/units/Wraith.cfg:32
 msgid "wail"
-msgstr ""
+msgstr "вопль"
 
 #: data/units/Death_Knight.cfg:3
 msgid "Death Knight"
@@ -3158,7 +3167,7 @@ msgstr ""
 #: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:24
 #: data/units/Dwarvish_Steelclad.cfg:24
 msgid "battle axe"
-msgstr ""
+msgstr "боевой топор"
 
 #: data/units/Death_Knight.cfg:36 data/units/Duelist.cfg:36
 #: data/units/General.cfg:44 data/units/Grand_Marshal.cfg:44
@@ -3166,7 +3175,7 @@ msgstr ""
 #: data/units/Orcish_Crossbowman.cfg:38 data/units/Sergeant.cfg:38
 #: data/units/Wall_Guard.cfg:35
 msgid "crossbow"
-msgstr ""
+msgstr "арбалет"
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
@@ -3211,11 +3220,11 @@ msgstr ""
 #: data/units/Nightgaunt.cfg:20 data/units/Shadow.cfg:20
 #: data/units/Skeletal_Dragon.cfg:47 data/units/Sleeping_Gryphon.cfg:18
 msgid "claws"
-msgstr ""
+msgstr "коготь"
 
 #: data/units/Dragoon.cfg:3
 msgid "Dragoon"
-msgstr ""
+msgstr "Драгун"
 
 #: data/units/Dragoon.cfg:24
 msgid ""
@@ -3242,7 +3251,7 @@ msgstr ""
 #: data/units/Drake_Inferno.cfg:42 data/units/Drake_Sky.cfg:49
 #: data/units/Drake_Warrior.cfg:44 data/units/Fire_Dragon.cfg:57
 msgid "fire breath"
-msgstr ""
+msgstr "огненное дыхание"
 
 #: data/units/Drake_Clasher.cfg:4
 msgid "Drake Clasher"
@@ -3271,7 +3280,7 @@ msgstr ""
 
 #: data/units/Drake_Fighter.cfg:21
 msgid "scimitar"
-msgstr ""
+msgstr "ятаган"
 
 #: data/units/Drake_Fire.cfg:4
 msgid "Fire Drake"
@@ -3340,7 +3349,7 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
 msgid "slam"
-msgstr ""
+msgstr "шлем"
 
 #: data/units/Drake_Inferno.cfg:4
 msgid "Inferno Drake"
@@ -3384,7 +3393,7 @@ msgstr ""
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
-msgstr ""
+msgstr "Дуэлист"
 
 #: data/units/Duelist.cfg:17
 msgid ""
@@ -3395,7 +3404,7 @@ msgstr ""
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
-msgstr ""
+msgstr "рапира"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
@@ -3411,7 +3420,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Berserker.cfg:26 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
-msgstr ""
+msgstr "неустрашимый"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
@@ -3449,7 +3458,7 @@ msgstr "топор"
 #: data/units/Dwarvish_Fighter.cfg:36 data/units/Dwarvish_Lord.cfg:41
 #: data/units/Dwarvish_Steelclad.cfg:42
 msgid "hammer"
-msgstr ""
+msgstr "молот"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
@@ -3491,11 +3500,11 @@ msgstr ""
 
 #: data/units/Dwarvish_Runemaster.cfg:20
 msgid "runic hammer"
-msgstr ""
+msgstr "рунический молот"
 
 #: data/units/Dwarvish_Runemaster.cfg:37
 msgid "Lightning bolt"
-msgstr ""
+msgstr "Удар молнии"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
@@ -3577,7 +3586,7 @@ msgstr ""
 
 #: data/units/Elder_Mage.cfg:38
 msgid "lightning"
-msgstr ""
+msgstr "молния"
 
 #: data/units/Elder_Wose.cfg:3
 msgid "Elder Wose"
@@ -3595,7 +3604,7 @@ msgstr ""
 
 #: data/units/Elvish_Archer.cfg:3 data/units/Elvish_Archer.cfg:82
 msgid "Elvish Archer"
-msgstr "Волшебный лучник"
+msgstr "Эльф лучник"
 
 #: data/units/Elvish_Archer.cfg:19 data/units/Elvish_Archer.cfg:98
 msgid ""
@@ -3606,7 +3615,7 @@ msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:3 data/units/Elvish_Avenger.cfg:76
 msgid "Elvish Avenger"
-msgstr "Волшебный мститель"
+msgstr "Эльф мститель"
 
 #: data/units/Elvish_Avenger.cfg:20 data/units/Elvish_Avenger.cfg:93
 msgid ""
@@ -3618,7 +3627,7 @@ msgstr ""
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
-msgstr "Волшебный капитан"
+msgstr "Эльф капитан"
 
 #: data/units/Elvish_Captain.cfg:20
 msgid ""
@@ -3629,7 +3638,7 @@ msgstr ""
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
-msgstr "Волшебный чемпион"
+msgstr "Эльф чемпион"
 
 #: data/units/Elvish_Champion.cfg:18
 msgid ""
@@ -3640,7 +3649,7 @@ msgstr ""
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "Elvish Druid"
-msgstr "Волшебный друид"
+msgstr "Эльф друид"
 
 #: data/units/Elvish_Druid.cfg:20
 msgid ""
@@ -3659,7 +3668,7 @@ msgstr "колючка"
 
 #: data/units/Elvish_Enchantress.cfg:3
 msgid "Elvish Enchantress"
-msgstr "Волшебная колдунья"
+msgstr "Эльф колдун"
 
 #: data/units/Elvish_Enchantress.cfg:21
 msgid ""
@@ -3680,7 +3689,7 @@ msgstr ""
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
-msgstr "Волшебный боец"
+msgstr "Эльф боец"
 
 #: data/units/Elvish_Fighter.cfg:18
 msgid ""
@@ -3691,7 +3700,7 @@ msgstr ""
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
-msgstr "Волшебный герой"
+msgstr "Эльф герой"
 
 #: data/units/Elvish_Hero.cfg:18
 msgid ""
@@ -3702,7 +3711,7 @@ msgstr ""
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
-msgstr "Волшебный великий лорд"
+msgstr "Эльф великий лорд"
 
 #: data/units/Elvish_High_Lord.cfg:17
 msgid ""
@@ -3712,15 +3721,15 @@ msgstr ""
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "Elvish Lady"
-msgstr "Волшебная леди"
+msgstr "Эльф леди"
 
 #: data/units/Elvish_Lady.cfg:17
 msgid "shove"
-msgstr ""
+msgstr "толчок"
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
-msgstr "Волшебный лорд"
+msgstr "Эльф лорд"
 
 #: data/units/Elvish_Lord.cfg:17
 msgid ""
@@ -3730,7 +3739,7 @@ msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:3 data/units/Elvish_Marksman.cfg:80
 msgid "Elvish Marksman"
-msgstr "Волшебный стрелок"
+msgstr "Эльф стрелок"
 
 #: data/units/Elvish_Marksman.cfg:18 data/units/Elvish_Marksman.cfg:95
 msgid ""
@@ -3748,7 +3757,7 @@ msgstr "большой лук"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
-msgstr "Волшебный маршал"
+msgstr "Эльф маршал"
 
 #: data/units/Elvish_Marshal.cfg:21
 msgid ""
@@ -3760,7 +3769,7 @@ msgstr ""
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
-msgstr "Волшебный предвестник"
+msgstr "Эльф предвестник"
 
 #: data/units/Elvish_Outrider.cfg:20
 msgid ""
@@ -3771,7 +3780,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
 msgid "Elvish Ranger"
-msgstr "Волшебный странник"
+msgstr "Эльф странник"
 
 #: data/units/Elvish_Ranger.cfg:18 data/units/Elvish_Ranger.cfg:95
 msgid ""
@@ -3783,7 +3792,7 @@ msgstr ""
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
-msgstr "Волшебный всадник"
+msgstr "Эльф всадник"
 
 #: data/units/Elvish_Rider.cfg:27
 msgid ""
@@ -3793,7 +3802,7 @@ msgstr ""
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
-msgstr "Волшебный разведчик"
+msgstr "Эльф разведчик"
 
 #: data/units/Elvish_Scout.cfg:28
 msgid ""
@@ -3803,7 +3812,7 @@ msgstr ""
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "Elvish Shaman"
-msgstr "Волшебный шаман"
+msgstr "Эльф шаман"
 
 #: data/units/Elvish_Shaman.cfg:20
 msgid ""
@@ -3814,7 +3823,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
 msgid "Elvish Sharpshooter"
-msgstr "Волшебный снайпер"
+msgstr "Эльф снайпер"
 
 #: data/units/Elvish_Sharpshooter.cfg:18 data/units/Elvish_Sharpshooter.cfg:97
 msgid ""
@@ -3841,7 +3850,7 @@ msgstr ""
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "Elvish Sorceress"
-msgstr "Волшебная колдунья"
+msgstr "Эльф колдунья"
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -3853,7 +3862,7 @@ msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "Elvish Sylph"
-msgstr "Волшебный сильф"
+msgstr "Эльф сильф"
 
 #: data/units/Elvish_Sylph.cfg:20
 msgid ""
@@ -3932,13 +3941,13 @@ msgstr ""
 #: data/units/Footpad.cfg:19 data/units/Thug.cfg:19 data/units/Troll.cfg:20
 #: data/units/Troll_Hero.cfg:20
 msgid "club"
-msgstr ""
+msgstr "дубинка"
 
 #: data/units/Footpad.cfg:37 data/units/Outlaw.cfg:38
 #: data/units/Outlaw.cfg:111 data/units/Outlaw_Princess.cfg:41
 #: data/units/Outlaw_Queen.cfg:42 data/units/Troll_Rocklobber.cfg:38
 msgid "sling"
-msgstr ""
+msgstr "праща"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
@@ -3950,7 +3959,7 @@ msgstr "ложный"
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
-msgstr ""
+msgstr "Ворота"
 
 #: data/units/Gate.cfg:21
 msgid "bump"
@@ -4004,7 +4013,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Mudcrawler.cfg:20
 msgid "boiling water"
-msgstr ""
+msgstr "кипящая вода"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
@@ -4019,11 +4028,11 @@ msgstr ""
 
 #: data/units/Giant_Scorpion.cfg:19
 msgid "sting"
-msgstr ""
+msgstr "жало"
 
 #: data/units/Giant_Scorpion.cfg:37
 msgid "pincers"
-msgstr ""
+msgstr "клешни"
 
 #: data/units/Goblin_Impaler.cfg:4
 msgid "Goblin Impaler"
@@ -4064,7 +4073,7 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:19
 msgid "torch"
-msgstr ""
+msgstr "факел"
 
 #: data/units/Goblin_Pillager.cfg:35
 msgid "net"
@@ -4096,11 +4105,11 @@ msgstr ""
 #: data/units/Grand_Knight.cfg:36 data/units/Knight.cfg:36
 #: data/units/Lancer.cfg:20 data/units/Paladin.cfg:41
 msgid "lance"
-msgstr ""
+msgstr "копьё"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr ""
+msgstr "Великий маршал"
 
 #: data/units/Grand_Marshal.cfg:18
 msgid ""
@@ -4130,7 +4139,7 @@ msgstr "Великий тролль"
 #: data/units/Troll_Rocklobber.cfg:7 data/units/Troll_Warrior.cfg:6
 #: data/units/Troll_Whelp.cfg:7
 msgid "regenerates"
-msgstr ""
+msgstr "возрождённый"
 
 #: data/units/Great_Troll.cfg:16
 msgid ""
@@ -4318,7 +4327,7 @@ msgstr "реактивный"
 
 #: data/units/Mage_of_Light.cfg:3 data/units/Mage_of_Light.cfg:66
 msgid "Mage of Light"
-msgstr ""
+msgstr "Мастер света"
 
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
 msgid "illuminates,cures"
@@ -4348,7 +4357,7 @@ msgstr "святой"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
-msgstr ""
+msgstr "Мастер лучник"
 
 #: data/units/Master_Bowman.cfg:17
 msgid ""
@@ -4506,7 +4515,7 @@ msgstr "короткий меч"
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "Орк арбалетчик"
 
 #: data/units/Orcish_Crossbowman.cfg:16
 msgid ""
@@ -4529,7 +4538,7 @@ msgstr ""
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr ""
+msgstr "Орк лидер"
 
 #: data/units/Orcish_Leader.cfg:18 data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -4542,11 +4551,11 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "Орк правитель"
 
 #: data/units/Orcish_Shaman.cfg:3
 msgid "Orcish Shaman"
-msgstr ""
+msgstr "Орк шаман"
 
 #: data/units/Orcish_Shaman.cfg:15
 msgid ""
@@ -4565,7 +4574,7 @@ msgstr "проклятие"
 
 #: data/units/Orcish_Shaman.cfg:46
 msgid "Novice Orcish Shaman"
-msgstr ""
+msgstr "Юный орк шаман"
 
 #: data/units/Orcish_Shaman.cfg:58
 msgid ""
@@ -4580,7 +4589,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:89
 msgid "Old Orcish Shaman"
-msgstr ""
+msgstr "Старый орк шаман"
 
 #: data/units/Orcish_Shaman.cfg:101
 msgid ""
@@ -4595,7 +4604,7 @@ msgstr ""
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "Орк убийца"
 
 #: data/units/Orcish_Slayer.cfg:16
 msgid ""
@@ -4605,7 +4614,7 @@ msgstr ""
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "Орк повелитель"
 
 #: data/units/Orcish_Sovereign.cfg:18
 msgid ""
@@ -4618,7 +4627,7 @@ msgstr ""
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
-msgstr ""
+msgstr "Орк военачальник"
 
 #: data/units/Orcish_Warlord.cfg:15
 msgid ""
@@ -4629,7 +4638,7 @@ msgstr ""
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
-msgstr ""
+msgstr "Орк воин"
 
 #: data/units/Orcish_Warrior.cfg:16
 msgid ""
@@ -4950,7 +4959,7 @@ msgstr ""
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "Скелетный дракон"
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
@@ -5002,7 +5011,7 @@ msgstr "кость"
 
 #: data/units/Soulless.cfg:3
 msgid "Soulless"
-msgstr ""
+msgstr "Бездушный"
 
 #: data/units/Soulless.cfg:16
 msgid ""
@@ -5012,7 +5021,7 @@ msgstr ""
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
-msgstr ""
+msgstr "Копьеносец"
 
 #: data/units/Spearman.cfg:16
 msgid ""
@@ -5036,7 +5045,7 @@ msgstr ""
 
 #: data/units/Swordsman.cfg:3
 msgid "Swordsman"
-msgstr ""
+msgstr "Фехтовальщик"
 
 #: data/units/Swordsman.cfg:16
 msgid ""
@@ -5077,7 +5086,7 @@ msgstr ""
 
 #: data/units/Transport_Galleon.cfg:3
 msgid "Transport Galleon"
-msgstr ""
+msgstr "Транспортный галеон"
 
 #: data/units/Transport_Galleon.cfg:13
 msgid ""
@@ -5236,7 +5245,7 @@ msgstr ""
 
 #: data/units/White_Mage.cfg:3 data/units/White_Mage.cfg:65
 msgid "White Mage"
-msgstr ""
+msgstr "Белый маг"
 
 #: data/units/White_Mage.cfg:25 data/units/White_Mage.cfg:84
 msgid ""
@@ -5509,11 +5518,11 @@ msgstr ""
 
 #: src/actions.cpp:1766
 msgid "Friendly unit sighted"
-msgstr ""
+msgstr "Замечено дружественное соединение!"
 
 #: src/actions.cpp:1768
 msgid "Enemy unit sighted!"
-msgstr ""
+msgstr "Замечено вражеское соединение!"
 
 #: src/actions.cpp:1773
 msgid "$friends Friendly units sighted"
@@ -5533,7 +5542,7 @@ msgstr ""
 
 #: src/dialogs.cpp:90
 msgid "Advance Unit"
-msgstr ""
+msgstr "Улучшить соединение"
 
 #: src/dialogs.cpp:91
 msgid "What should our victorious unit become?"
@@ -5645,7 +5654,7 @@ msgstr "Выберите игру, которую Вы хотите загруз
 
 #: src/dialogs.cpp:553 src/dialogs.cpp:562
 msgid "Profile"
-msgstr "Профиль"
+msgstr "Справка"
 
 #: src/dialogs.cpp:649 src/display.cpp:923 src/help.cpp:567
 #: src/playturn.cpp:1793
@@ -5655,7 +5664,7 @@ msgstr "уровень"
 #: src/dialogs.cpp:687 src/display.cpp:957 src/help.cpp:622
 #: src/playturn.cpp:1958 src/unit.cpp:1070
 msgid "Moves"
-msgstr "Ходов"
+msgstr "Ходы"
 
 #: src/dialogs.cpp:700 src/display.cpp:974 src/help.cpp:698
 #: src/playturn.cpp:597 src/reports.cpp:230
@@ -5665,11 +5674,11 @@ msgstr "схватка"
 #: src/dialogs.cpp:701 src/display.cpp:975 src/help.cpp:698
 #: src/playturn.cpp:597 src/reports.cpp:231
 msgid "ranged"
-msgstr ""
+msgstr "колебание"
 
 #: src/display.cpp:904
 msgid "healthy"
-msgstr ""
+msgstr "здоровый"
 
 #: src/display.cpp:909 src/reports.cpp:105
 msgid "invisible"
@@ -5704,11 +5713,13 @@ msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
+"Данное сохранение из другой версии игры. Вы хотите попробовать загрузить "
+"данное сохранение?"
 
 #: src/game.cpp:807 src/game.cpp:812 src/playlevel.cpp:558
 #: src/playlevel.cpp:800
 msgid "The file you have tried to load is corrupt"
-msgstr ""
+msgstr "Файл, который Вы пытались загрузить, повреждён"
 
 #: src/game.cpp:816
 msgid "File I/O Error while reading the game"
@@ -5851,7 +5862,7 @@ msgstr "Сетевая игра"
 
 #: src/game.cpp:1192
 msgid "Host a game without using a server"
-msgstr ""
+msgstr "Создать локальную игру"
 
 #: src/game.cpp:1193
 #, fuzzy
@@ -5893,7 +5904,7 @@ msgstr ""
 
 #: src/help.cpp:574
 msgid "Advances to"
-msgstr ""
+msgstr "Улучшение"
 
 #: src/help.cpp:623
 msgid "Alignment"
@@ -5905,7 +5916,7 @@ msgstr "Необходимый ОП"
 
 #: src/help.cpp:637 src/reports.cpp:233
 msgid "attacks"
-msgstr "атака"
+msgstr "Атака"
 
 #: src/help.cpp:645 src/help.cpp:646 src/playturn.cpp:1955
 msgid "Name"
@@ -5925,7 +5936,7 @@ msgstr ""
 
 #: src/help.cpp:661 src/help.cpp:662
 msgid "Range"
-msgstr ""
+msgstr "Область"
 
 #: src/help.cpp:665 src/help.cpp:666
 msgid "Special"
@@ -5945,7 +5956,7 @@ msgstr "Сопротивление"
 
 #: src/help.cpp:763
 msgid "Terrain Modifiers"
-msgstr "Модификаторы местности"
+msgstr "Тип местности"
 
 #: src/help.cpp:767 src/help.cpp:768
 msgid "Terrain"
@@ -5957,11 +5968,11 @@ msgstr "Защита"
 
 #: src/help.cpp:1876
 msgid "< Back"
-msgstr "Вернуться"
+msgstr "< Вернуться"
 
 #: src/help.cpp:1877
 msgid "Forward >"
-msgstr "Вперёд"
+msgstr "Вперёд >"
 
 #: src/help.cpp:2375
 msgid "The Battle for Wesnoth Help"
@@ -5981,11 +5992,11 @@ msgstr "Лидер"
 
 #: src/hotkeys.cpp:123
 msgid "Undo"
-msgstr ""
+msgstr "Отменить"
 
 #: src/hotkeys.cpp:124
 msgid "Redo"
-msgstr ""
+msgstr "Повторить"
 
 #: src/hotkeys.cpp:125
 msgid "Zoom In"
@@ -6017,7 +6028,7 @@ msgstr "Переименовать соединение"
 
 #: src/hotkeys.cpp:134 src/playturn.cpp:1641
 msgid "Recruit"
-msgstr "Купить"
+msgstr "Призвать новобранца"
 
 #: src/hotkeys.cpp:135
 msgid "Repeat Recruit"
@@ -6025,7 +6036,7 @@ msgstr "Повторить покупку"
 
 #: src/hotkeys.cpp:136 src/playturn.cpp:1820
 msgid "Recall"
-msgstr ""
+msgstr "Воскресить"
 
 #: src/hotkeys.cpp:138
 msgid "Toggle Grid"
@@ -6073,15 +6084,15 @@ msgstr "Выйти из игры"
 
 #: src/hotkeys.cpp:149
 msgid "Set Label"
-msgstr ""
+msgstr "Установить метку"
 
 #: src/hotkeys.cpp:150
 msgid "Show Enemy Moves"
-msgstr "Показывать ходы врага"
+msgstr "Показывать ходы противника"
 
 #: src/hotkeys.cpp:151
 msgid "Best Possible Enemy Moves"
-msgstr ""
+msgstr "Вероятные ходы противника"
 
 #: src/hotkeys.cpp:152
 msgid "Quit Editor"
@@ -6278,14 +6289,16 @@ msgstr "Дым войны"
 #: src/multiplayer.cpp:113
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
+"Вы не можете видеть соединения противника пока они не окажутся в поле зрения "
+"Ваших соединений"
 
 #: src/multiplayer.cpp:115 src/multiplayer_lobby.cpp:130
 msgid "Shroud"
-msgstr ""
+msgstr "Пелена"
 
 #: src/multiplayer.cpp:117
 msgid "The map is unknown until your units explore it"
-msgstr ""
+msgstr "Карта неизвестна, пока Ваши соединения не исследуют её"
 
 #: src/multiplayer.cpp:119 src/reports.cpp:376
 msgid "Observers"
@@ -6293,7 +6306,7 @@ msgstr "Наблюдатели"
 
 #: src/multiplayer.cpp:121
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "Разрешить наблюдать за игрой"
 
 #: src/multiplayer.cpp:123 src/multiplayer_client.cpp:145
 #: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:460
@@ -6339,7 +6352,7 @@ msgstr "Название игры"
 
 #: src/multiplayer.cpp:181
 msgid "$login's game"
-msgstr ""
+msgstr "Игра $login"
 
 #: src/multiplayer.cpp:192
 msgid "Map to play"
@@ -6359,11 +6372,11 @@ msgstr "Ходы"
 
 #: src/multiplayer.cpp:366
 msgid "Village Gold"
-msgstr ""
+msgstr "Золота в деревнях"
 
 #: src/multiplayer.cpp:378
 msgid "Experience Requirements"
-msgstr ""
+msgstr "Необходимый опыт"
 
 #: src/multiplayer.cpp:503
 msgid ""
@@ -6377,7 +6390,7 @@ msgstr "Внимание"
 
 #: src/multiplayer_client.cpp:59
 msgid "Receiving game list..."
-msgstr ""
+msgstr "Получаем список игр..."
 
 #: src/multiplayer_client.cpp:121 src/multiplayer_connect.cpp:393
 #: src/multiplayer_connect.cpp:395 src/playlevel.cpp:780 src/playturn.cpp:1531
@@ -6459,8 +6472,8 @@ msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
-"Победа\n"
-"@Поражение враждебного лидера(ов)"
+"Условие победы\n"
+"@Поражение лидера(ов) противника(ов)"
 
 #: src/multiplayer_connect.cpp:270
 msgid "Network Player"
@@ -6473,7 +6486,7 @@ msgstr "Локальная игра"
 #: src/multiplayer_connect.cpp:272 src/multiplayer_connect.cpp:505
 #: src/multiplayer_connect.cpp:628 src/multiplayer_connect.cpp:734
 msgid "Computer Player"
-msgstr "Игра с компьютером"
+msgstr "Компьютер"
 
 #: src/multiplayer_connect.cpp:273
 msgid "Empty"
@@ -6530,7 +6543,7 @@ msgstr "Игрок/Тип"
 
 #: src/multiplayer_connect.cpp:378 src/multiplayer_connect.cpp:381
 msgid "Faction"
-msgstr ""
+msgstr "Команда"
 
 #: src/multiplayer_connect.cpp:388 src/multiplayer_connect.cpp:391
 msgid "Color"
@@ -6629,7 +6642,7 @@ msgstr "Защитник"
 
 #: src/playturn.cpp:512 src/playturn.cpp:631
 msgid "Damage Calculations"
-msgstr ""
+msgstr "Вычисление ущерба"
 
 #: src/playturn.cpp:597
 msgid "Melee"
@@ -6641,7 +6654,7 @@ msgstr "против"
 
 #: src/playturn.cpp:643
 msgid "Attack Enemy"
-msgstr "Атаковать врага"
+msgstr "Атаковать противника"
 
 #: src/playturn.cpp:644
 msgid "Choose weapon"
@@ -6680,11 +6693,11 @@ msgstr "Игра успешно сохранена"
 
 #: src/playturn.cpp:1533
 msgid "Income"
-msgstr ""
+msgstr "Доход"
 
 #: src/playturn.cpp:1533
 msgid "Upkeep"
-msgstr ""
+msgstr "Содержание"
 
 #: src/playturn.cpp:1629
 msgid "You have no units available to recruit."
@@ -6750,11 +6763,11 @@ msgstr ""
 
 #: src/playturn.cpp:2041 src/playturn.cpp:2103
 msgid "Recruits"
-msgstr ""
+msgstr "Призванные"
 
 #: src/playturn.cpp:2047 src/playturn.cpp:2107
 msgid "Recalls"
-msgstr ""
+msgstr "Воскрешённые"
 
 #: src/playturn.cpp:2053 src/playturn.cpp:2111
 msgid "Advancements"
@@ -6872,15 +6885,15 @@ msgstr ""
 
 #: src/reports.cpp:254
 msgid "Lawful units"
-msgstr ""
+msgstr "Гражданские соединения"
 
 #: src/reports.cpp:256
 msgid "Neutral units"
-msgstr ""
+msgstr "Нейтральные соединения"
 
 #: src/reports.cpp:257
 msgid "Chaotic units"
-msgstr ""
+msgstr "Хаотичные соединения"
 
 #: src/reports.cpp:312
 msgid "Owned village"
@@ -6979,7 +6992,7 @@ msgstr ""
 
 #: src/unit_types.cpp:891
 msgid "chaotic"
-msgstr "беспорядочный"
+msgstr "хаотичный"
 
 #: src/unit_types.cpp:891
 msgid "lawful"
