@@ -583,7 +583,7 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 }
 
 namespace {
-	static const SDL_Rect unit_preview_size = {-180,-370,180,370};
+	static const SDL_Rect unit_preview_size = {-190,-370,190,370};
 	static const SDL_Rect weaponless_unit_preview_size = {-220,-140,220,140};
 	static const int unit_preview_border = 10;
 }
