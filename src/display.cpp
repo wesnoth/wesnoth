@@ -1213,55 +1213,6 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		draw_bar("enemy-energy.png",xpos+5,ypos,u.max_experience()/(level*2),filled,colour,bar_alpha);
 	}
 
-/*
-
-	const SDL_Rect& energy_bar_loc = calculate_energy_bar();
-	double total_energy = double(energy_bar_loc.h);
-
-	const int skip_energy_rows = int(total_energy*(1.0-energy_size));
-	total_energy -= double(skip_energy_rows);
-
-	const int lost_energy = int((1.0-unit_energy)*total_energy);
-	const int show_energy_after = energy_bar_loc.y + lost_energy;
-
-	if(energy_uses_alpha) {
-		energy_image.assign(adjust_surface_alpha(energy_image,highlight_ratio));
-	}
-
-	SDL_Rect first_energy = {0,0,energy_image->w,energy_bar_loc.y};
-	SDL_Rect second_energy = {0,energy_bar_loc.y+skip_energy_rows,energy_image->w,0};
-	second_energy.h = energy_image->w - second_energy.y;
-
-	blit_surface(xpos,ypos,energy_image,&first_energy,&clip_rect);
-	blit_surface(xpos,ypos+first_energy.h,energy_image,&second_energy,&clip_rect);
-
-	if(skip_energy_rows + lost_energy < energy_bar_loc.h) {
-		SDL_Rect filled_energy_area = { xpos + energy_bar_loc.x, ypos+show_energy_after,
-		          energy_bar_loc.w, energy_bar_loc.h - skip_energy_rows - lost_energy };
-
-		const int xp_percent = (it->second.experience()*100)/it->second.max_experience();
-		const int xp_loss = ((100 - xp_percent)*(energy_bar_loc.h - skip_energy_rows))/100;
-
-		const bool show_xp = xp_percent > 0 && xp_percent < 100 && it->second.type().advances_to().empty() == false;
-
-		SDL_Rect filled_xp_area = { filled_energy_area.x, ypos + energy_bar_loc.y + xp_loss,
-		                            filled_energy_area.w, energy_bar_loc.h - skip_energy_rows - xp_loss };
-
-		if(filled_energy_area.y < filled_xp_area.y && show_xp) {
-			filled_energy_area.h = filled_xp_area.y - filled_energy_area.y;
-		} else {
-			filled_xp_area.h = filled_energy_area.y - filled_xp_area.y;
-		}
-
-		SDL_FillRect(dst,&filled_energy_area,energy_colour);
-
-		if(show_xp) {
-			const bool nearly_advanced = it->second.max_experience() - it->second.experience() <= game_config::kill_experience*maximum<int>(1,it->second.type().level());
-			const Uint16 xp_colour = ::SDL_MapRGB(screen_.getSurface()->format,nearly_advanced ? 255 : 0,0,255);
-			SDL_FillRect(dst,&filled_xp_area,xp_colour);
-		}
-	}
-*/
 	const std::vector<std::string>& overlays = it->second.overlays();
 	for(std::vector<std::string>::const_iterator ov = overlays.begin(); ov != overlays.end(); ++ov) {
 		const scoped_sdl_surface img(image::get_image(*ov));
