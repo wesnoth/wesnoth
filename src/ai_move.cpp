@@ -168,7 +168,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<ai::t
 
 	std::vector<target>::const_iterator ittg;
 	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
-		assert(map.on_board(ittg->loc));
+		assert(map_.on_board(ittg->loc));
 	}
 
 	paths::route best_route;
@@ -200,7 +200,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<ai::t
 
 	//choose the best target for that unit
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
-		assert(map.on_board(tg->loc));
+		assert(map_.on_board(tg->loc));
 		const paths::route cur_route = a_star_search(u->first,tg->loc,
 		                       minimum(tg->value/best_rating,500.0),cost_calc);
 		const double rating = tg->value/cur_route.move_left;
@@ -243,7 +243,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<ai::t
 		targets.erase(best_target);
 
 	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
-		assert(map.on_board(ittg->loc));
+		assert(map_.on_board(ittg->loc));
 	}
 
 	for(std::vector<location>::reverse_iterator ri =
