@@ -8,14 +8,12 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-21 21:58+0200\n"
-"PO-Revision-Date: 2004-09-18 22:36-0000\n"
-"Last-Translator: Grzegorz Borek <grzebo@poczta.onet.pl>\n"
+"PO-Revision-Date: 2004-10-20 22:16+0100\n"
+"Last-Translator: Paweł Stradomski <pstradomski@poczta.gazeta.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
 
 #: data/game.cfg:321 data/translations/english.cfg:61
 msgid "loyal"
@@ -913,62 +911,52 @@ msgid "&random-enemy.png,Random"
 msgstr "&random-enemy.png,Losowa"
 
 #: data/multiplayer.cfg:28
-#, fuzzy
 msgid "&human-lieutenant.png,Loyalists"
-msgstr "&human-general.png,Lojaliści"
+msgstr "&human-lieutenant.png,Lojaliści"
 
 #: data/multiplayer.cfg:40
-#, fuzzy
 msgid "&elvish-captain.png,Rebels"
-msgstr "&elvish-high-lord.png,Buntownicy"
+msgstr "&elvish-captain,Buntownicy"
 
 #: data/multiplayer.cfg:52
-#, fuzzy
 msgid "&orcish-warrior.png,Northerners"
-msgstr "&orcish-warlord.png,Istoty z północy"
+msgstr "&orcish-warrior.png,Mieszkańcy północy"
 
 #: data/multiplayer.cfg:64 data/multiplayer.cfg:145
-#, fuzzy
 msgid "&undead-necromancer.png,Undead"
-msgstr "&undead-lich.png,Nieumarli"
+msgstr "&undead-necromancer.png,Nieumarli"
 
 #: data/multiplayer.cfg:76
-#, fuzzy
 msgid "&dwarf-warrior.png,Knalgan Alliance"
-msgstr "&dwarf-lord.png,Sojusz Knalgański"
+msgstr "&dwarf-warrior.png,Sojusz Knalgański"
 
 #: data/multiplayer.cfg:88 data/multiplayer.cfg:169 data/multiplayer.cfg:261
-#, fuzzy
 msgid "&drake-flare.png,Drakes"
-msgstr "&drake-warrior.png,Smoki"
+msgstr "&drake-flare.png,Smoki"
 
 #: data/multiplayer.cfg:101
 msgid "Classic"
 msgstr "Klasyczna"
 
 #: data/multiplayer.cfg:109
-#, fuzzy
 msgid "&human-lieutenant.png,Humans"
-msgstr "&human-general.png,Ludzie"
+msgstr "&human-lieutenant.png,Ludzie"
 
 #: data/multiplayer.cfg:121
-#, fuzzy
 msgid "&elvish-captain.png,Elves"
-msgstr "&elvish-high-lord.png,Elfy"
+msgstr "&elvish-captain.png,Elfy"
 
 #: data/multiplayer.cfg:133
-#, fuzzy
 msgid "&orcish-warrior.png,Orcs"
-msgstr "&orcish-warlord.png,Orki"
+msgstr "&orcish-warrior.png,Orki"
 
 #: data/multiplayer.cfg:157
-#, fuzzy
 msgid "&dwarf-warrior.png,Dwarves"
-msgstr "&dwarf-lord.png,Krasnoludy"
+msgstr "&dwarf-warrior.png,Krasnoludy"
 
 #: data/multiplayer.cfg:180
 msgid "&saurian-soothsayer.png,Saurian"
-msgstr ""
+msgstr "&saurian-soothsayer.png,Saurian"
 
 #: data/multiplayer.cfg:193
 msgid "Age of Heroes"
@@ -979,9 +967,8 @@ msgid "&human-general.png,Loyalists"
 msgstr "&human-general.png,Lojaliści"
 
 #: data/multiplayer.cfg:213
-#, fuzzy
 msgid "&elvish-marshal.png,Rebels"
-msgstr "&elvish-high-lord.png,Buntownicy"
+msgstr "&elvish-marshal.png,Buntownicy"
 
 #: data/multiplayer.cfg:225
 msgid "&orcish-warlord.png,Northerners"
@@ -1014,7 +1001,6 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/An_Island.cfg:7
-#, fuzzy
 msgid "An Island"
 msgstr "Wyspa"
 
@@ -1526,10 +1512,15 @@ msgid ""
 "experience is gained from defeating an enemy unit. The amount of XP gained "
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
+"Jednostka walcząca z wrogiem zdobywa punkty doświadczenia, oznaczane jako PD "
+"(albo XP). Ilość zdobytych punktów jest równa poziomowi doświadczenia "
+"przeciwnika, który zazwyczaj reprezentuje jego siłę. Jednakże znacznie "
+"więcej punktów doświadczenia jest zdobywane jest po pokonaniu przeciwnika. "
+"Zwycięzca otrzymuje 8 razy tyle punktów, ile wynosi poziom pokonanego."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid "What happens when a unit advances?"
-msgstr ""
+msgstr "Co dzieje się, kiedy jednostka awansuje?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid ""
@@ -1660,7 +1651,7 @@ msgstr ""
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
 #: src/show_dialog.cpp:471
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:264
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
@@ -2221,9 +2212,8 @@ msgid "XP"
 msgstr "PD"
 
 #: data/themes/default.cfg:142 data/themes/default.cfg:478
-#, fuzzy
 msgid "gold"
-msgstr "chłód"
+msgstr "złoto"
 
 #: data/themes/default.cfg:150 data/themes/default.cfg:486
 #, fuzzy
@@ -2247,11 +2237,11 @@ msgstr "Dochód"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
-msgstr "panelstanu^poziom"
+msgstr "poziom"
 
 #: data/themes/default.cfg:317 data/themes/default.cfg:655
 msgid "statuspanel^movement"
-msgstr "panelstanu^ruch"
+msgstr "ruch"
 
 #: data/translations/english.cfg:2
 msgid "Easy"
@@ -2392,9 +2382,8 @@ msgstr ""
 "a wieczorem jakby był dzień."
 
 #: data/translations/english.cfg:49
-#, fuzzy
 msgid "illuminates"
-msgstr "oświetla,uzdrawia"
+msgstr "oświetla"
 
 #: data/translations/english.cfg:54
 msgid ""
@@ -2778,7 +2767,6 @@ msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 
 #: data/translations/english.cfg:178
-#, fuzzy
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|ham,$name|ton,Las $name,Puszcza $name"
 
@@ -4099,9 +4087,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
-#, fuzzy
 msgid "slam"
-msgstr "Wyspa"
+msgstr ""
 
 #: data/units/Drake_Inferno.cfg:4
 #, fuzzy
@@ -6464,20 +6451,18 @@ msgstr ""
 "bitwy."
 
 #: data/units/Troll_Rocklobber.cfg:3
-#, fuzzy
 msgid "Troll Rocklobber"
-msgstr "Trol bohater"
+msgstr "Trol skałomiot"
 
 #: data/units/Troll_Rocklobber.cfg:17
-#, fuzzy
 msgid ""
 "Trolls are humanoid monsters that have the amazing ability to regenerate, "
 "recovering from their wounds during battle. These trolls have armed "
 "themselves with large rocks they hurl at their opponents."
 msgstr ""
 "Trole to silne i brutalne człekopodobne stwory, które ponadto mają niezwykłą "
-"zdolność regeneracji. Choć te Trole to zaledwie szczenięta, ich rasa słynie "
-"z niezwykle szybkiego dojrzewania."
+"zdolność regeneracji. Te trole uzbrojone są w ogromne głazy, którymi miotają "
+"w swoich przeciwników."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -6753,7 +6738,6 @@ msgid "+Internationalization Manager"
 msgstr "+Zarządca internacjonalizacji"
 
 #: src/about.cpp:130
-#, fuzzy
 msgid "+Basque Translation"
 msgstr "+Tłumaczenie duńskie"
 
@@ -6786,7 +6770,6 @@ msgid "+German Translation"
 msgstr "+Tłumaczenie niemieckie"
 
 #: src/about.cpp:184
-#, fuzzy
 msgid "+Greek Translation"
 msgstr "+Tłumaczenie francuskie"
 
@@ -6807,7 +6790,6 @@ msgid "+Polish Translation"
 msgstr "+Tłumaczenie polskie"
 
 #: src/about.cpp:214
-#, fuzzy
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Tłumaczenie portugalskie"
 
@@ -7075,7 +7057,7 @@ msgstr "niewidzialny"
 
 #: src/font.cpp:169
 msgid "Vera.ttf"
-msgstr ""
+msgstr "Bepa-Roman.ttf"
 
 #: src/game.cpp:138
 msgid "Do you want to save a replay of this scenario?"
@@ -7131,9 +7113,8 @@ msgid "Select difficulty level:"
 msgstr "Poziom trudności:"
 
 #: src/game.cpp:985
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Kontynuuj ruch"
+msgstr "Połącz z serwerem."
 
 #: src/game.cpp:986
 msgid "You will now connect to a campaign server to download campaigns."
@@ -7144,7 +7125,6 @@ msgid "Server: "
 msgstr ""
 
 #: src/game.cpp:999
-#, fuzzy
 msgid "Could not connect to host."
 msgstr "Nie mogę się podłączyć do hosta"
 
@@ -7169,52 +7149,44 @@ msgid ",Name,Version,Author,Downloads"
 msgstr ""
 
 #: src/game.cpp:1045
-#, fuzzy
 msgid "Publish campaign: "
-msgstr "Elficki kapitan"
+msgstr "Opublikuj kampanię:"
 
 #: src/game.cpp:1049
-#, fuzzy
 msgid "Delete campaign: "
-msgstr "Kampania"
+msgstr "Usuń kampanię"
 
 #: src/game.cpp:1053
-#, fuzzy
 msgid "There are no campaigns available for download from this server."
 msgstr "Nie ma dostępnych kampanii"
 
 #: src/game.cpp:1057
-#, fuzzy
 msgid "Choose the campaign to download."
-msgstr "Wybór gry do wczytania"
+msgstr "Wybór kampanii do wczytania"
 
 #: src/game.cpp:1057
-#, fuzzy
 msgid "Get Campaign"
-msgstr "Kampania"
+msgstr "Pobierz kampanię"
 
 #: src/game.cpp:1076
 msgid "Downloading campaign..."
 msgstr ""
 
 #: src/game.cpp:1094
-#, fuzzy
 msgid "Campaign Installed"
-msgstr "Kampania"
+msgstr "Kampania zainstalowana"
 
 #: src/game.cpp:1094
-#, fuzzy
 msgid "The campaign has been installed."
-msgstr "Gra została zapisana"
+msgstr "Kampania została zainstalowana."
 
 #: src/game.cpp:1096
 msgid "Network communication error."
 msgstr ""
 
 #: src/game.cpp:1098
-#, fuzzy
 msgid "Remote host disconnected."
-msgstr "Wybierz serwer do połączenia"
+msgstr "Zdalny komputer rozłączył się."
 
 #: src/game.cpp:1100
 msgid ""
@@ -7231,14 +7203,12 @@ msgid "The server responded with an error: \""
 msgstr ""
 
 #: src/game.cpp:1118
-#, fuzzy
 msgid "Terms"
-msgstr "Drużyna"
+msgstr "Warunki"
 
 #: src/game.cpp:1154 src/game.cpp:1178
-#, fuzzy
 msgid "Response"
-msgstr "zamiana w kamień"
+msgstr "Odpowiedź"
 
 #: src/game.cpp:1190
 msgid "Join Official Server"
@@ -7258,27 +7228,24 @@ msgid "Join a server or hosted game"
 msgstr "Dołącz do już założonej gry"
 
 #: src/game.cpp:1192
-#, fuzzy
 msgid "Host Networked Game"
-msgstr "Gracz sieciowy"
+msgstr "Poprowadź grę sieciową"
 
 #: src/game.cpp:1192
 msgid "Host a game without using a server"
 msgstr "Nie łącz się z serwerami, tylko załóż własną grę wieloosobową"
 
 #: src/game.cpp:1193
-#, fuzzy
 msgid "Hotseat Game"
-msgstr "Stwórz grę"
+msgstr "Gra na jednym komputerze"
 
 #: src/game.cpp:1193
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
 #: src/game.cpp:1194
-#, fuzzy
 msgid "Human vs AI"
-msgstr "Ludzie"
+msgstr "Ludzie kontra komputer"
 
 #: src/game.cpp:1194
 msgid "Play a game against AI opponents"
@@ -7807,9 +7774,8 @@ msgid "Waiting for game to start..."
 msgstr "Oczekiwanie na początek gry..."
 
 #: src/multiplayer_client.cpp:253
-#, fuzzy
 msgid "Connect to Host"
-msgstr "Kontynuuj ruch"
+msgstr "Podłącz do serwera"
 
 #: src/multiplayer_client.cpp:255
 msgid "Choose host to connect to"
@@ -7852,14 +7818,12 @@ msgid "?"
 msgstr ""
 
 #: src/multiplayer_client.cpp:782
-#, fuzzy
 msgid "Leader: "
-msgstr "Dowódca"
+msgstr "Dowódca:"
 
 #: src/multiplayer_client.cpp:784
-#, fuzzy
 msgid "Recruits: "
-msgstr "Rekrutacji"
+msgstr "Rekrutacji:"
 
 #: src/multiplayer_connect.cpp:48
 msgid " Computer vs Computer "
@@ -8144,7 +8108,6 @@ msgid "him"
 msgstr "go"
 
 #: src/playturn.cpp:1778
-#, fuzzy
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 "Zostałeś oddzielony(a) od swojej armii i nie możesz przywoływać jednostek"
@@ -8158,9 +8121,8 @@ msgstr ""
 "(Musisz mieć jakieś jednostki pozostałe z poprzednich misji)"
 
 #: src/playturn.cpp:1786
-#, fuzzy
 msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "sztuk złota, żeby przywołać jednostkę"
+msgstr "Musisz mieć $cost sztuk złota, żeby przywołać jednostkę"
 
 #: src/playturn.cpp:1809
 msgid "Dismiss Unit"
@@ -8212,7 +8174,7 @@ msgstr "Zadane obrażenia (EV)"
 
 #: src/playturn.cpp:2091
 msgid "Damage Taken (EV)"
-msgstr "Zadane obrażenia (EV)"
+msgstr "Otrzymane obrażenia (EV)"
 
 #: src/playturn.cpp:2134
 msgid "Search"
@@ -8220,7 +8182,7 @@ msgstr "Szukaj"
 
 #: src/playturn.cpp:2144
 msgid "prompt^Command:"
-msgstr "prompt^Polecenie:"
+msgstr "Polecenie:"
 
 #: src/playturn.cpp:2155
 msgid "Chat Log"
@@ -8325,19 +8287,16 @@ msgid "Chaotic units"
 msgstr "Jednostki chaotyczne"
 
 #: src/reports.cpp:311
-#, fuzzy
 msgid "Owned village"
-msgstr "Wioska"
+msgstr "Twoja wioska"
 
 #: src/reports.cpp:313
-#, fuzzy
 msgid "Enemy village"
-msgstr "Wioska"
+msgstr "Wioska przeciwnika"
 
 #: src/reports.cpp:315
-#, fuzzy
 msgid "Allied village"
-msgstr "Gobliński plądrownik"
+msgstr "Wioska sojusznika"
 
 #: src/show_dialog.cpp:953
 msgid "KB"
@@ -8349,31 +8308,31 @@ msgstr "Wersja"
 
 #: src/titlescreen.cpp:172
 msgid "TitleScreen button^Tutorial"
-msgstr "Główne menu^Ćwiczenia"
+msgstr "Ćwiczenia"
 
 #: src/titlescreen.cpp:173
 msgid "TitleScreen button^Campaign"
-msgstr "Główne menu^Kampania"
+msgstr "Kampania"
 
 #: src/titlescreen.cpp:174
 msgid "TitleScreen button^Multiplayer"
-msgstr "Główne menu^Gra z innymi"
+msgstr "Gra z innymi"
 
 #: src/titlescreen.cpp:175
 msgid "TitleScreen button^Load"
-msgstr "Główne menu^Zapisane gry"
+msgstr "Zapisane gry"
 
 #: src/titlescreen.cpp:176
 msgid "TitleScreen button^Language"
-msgstr "Główne menu^Język"
+msgstr "Język"
 
 #: src/titlescreen.cpp:177
 msgid "TitleScreen button^Preferences"
-msgstr "Główne menu^Ustawienia"
+msgstr "Ustawienia"
 
 #: src/titlescreen.cpp:179
 msgid "TitleScreen button^Quit"
-msgstr "Główne menu^Wyjście"
+msgstr "Wyjście"
 
 #: src/titlescreen.cpp:180
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -8454,82 +8413,3 @@ msgstr "Kasowanie pliku się nie powiodło."
 
 #~ msgid "Naga"
 #~ msgstr "Naga"
-
-#~ msgid "Host Multiplayer Game"
-#~ msgstr "Załóż własną grę"
-
-#~ msgid "TitleScreen button^About"
-#~ msgstr "Główne menu^O grze"
-
-#~ msgid "hp"
-#~ msgstr "pż"
-
-#~ msgid "xp"
-#~ msgstr "pd"
-
-#~ msgid ""
-#~ "Armed with heavy mace, Bandits are adept at robbing and killing at night."
-#~ msgstr "Uzbrojeni w ciężkie buzdygany Bandyci grabią i zabijają nocą."
-
-#~ msgid "Drake Beak"
-#~ msgstr "Smoczy dziób"
-
-#~ msgid ""
-#~ "Smaller than most Drakes, the Beaks are therefore more agile and can "
-#~ "fight even when flying."
-#~ msgstr ""
-#~ "Mniejsze od większości smoków, dzioby są bardziej zwinne i mogą walczyć "
-#~ "nawet w locie."
-
-#~ msgid "beak"
-#~ msgstr "dziób"
-
-#~ msgid "Drake Guard"
-#~ msgstr "Smoczy strażnik"
-
-#~ msgid "Drake Hatchling"
-#~ msgstr "Smocze pisklę"
-
-#~ msgid "Drake Mage"
-#~ msgstr "Smoczy mag"
-
-#~ msgid ""
-#~ "Like all Mages, the Drake Mages are capable of using magic in battle."
-#~ msgstr ""
-#~ "Jak wszyscy Magowie, Smoczy magowie mogą używać magii podczas bitwy."
-
-#~ msgid "ice shot"
-#~ msgstr "lodowy strzał"
-
-#~ msgid "Drake Petit"
-#~ msgstr "Smoczek"
-
-#~ msgid "Drake Slaves are servile members of this reptilian race."
-#~ msgstr "Smoczy niewolnicy to słudzy tej gadziej rasy."
-
-#~ msgid "Drake Worker"
-#~ msgstr "Smoczy robotnik"
-
-#~ msgid "+Brazilian Translation"
-#~ msgstr "+Tłumaczenie brazylijskie"
-
-#~ msgid "Save"
-#~ msgstr "Zapis"
-
-#~ msgid "Quit?"
-#~ msgstr "Wyjść?"
-
-#~ msgid "Recruit unit"
-#~ msgstr "Rekrutuj jednostkę"
-
-#~ msgid "You must have at least"
-#~ msgstr "Musisz mieć co najmniej"
-
-#~ msgid "Owned"
-#~ msgstr "Własna"
-
-#~ msgid "Enemy"
-#~ msgstr "Wroga"
-
-#~ msgid "Allied"
-#~ msgstr "Sprzymierzona"
