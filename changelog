@@ -1,19 +1,44 @@
 CVS HEAD:
+ * various help browser improvements
+ * user interface improvements
+ * improved clipboard functions and support for X11
+ * scenario balancing for 'Heir to the Throne' campaign:
+   * Scepter of Fire 
+   * A Choice Must Be Made
+   * Elven Council
+   * Home North Elves
+   * Swamp of Dread
+   * Valley of Statues
  * multiplayer improvements:
+   * chat log
+   * allowed spaces in usernames
    * new map: Battle for Weslin Bridge
    * new map: Forest of Fear
- * clipboard support for X11
- * new rightside panel
- * improved lite buttons
- * improved clipboard functions
- * various help browser improvements
+   * new map: Castles
+ * translation updates:
+   * hungarian
  * made The Eastern Invasion campaign translatable
  * added icons for preferences and multiplayer dialogs
  * fixed crash when loading an empty map
  * fixed transition problems with forests
- * fixed missing multiplayer map: Castles
  * fixed wesnothd crashes
+ * fixed underlining bug
+ * fixed bugs where some objects were not working properly
+ * fixed human village not fitting within the mask
  * fixed clashing msg ids
+ * fixed isolated keeps having void graphics
+ * fixed tile overlays not displaying in grey if the tile is out of range of the selected unit's movement
+ * fixed bugs with roles not working properly
+ * fixed coherence of usage for elves:
+   * Archer, Marksman, Sharpshooter -> archer
+   * Ranger, Avenger -> mixed fighter
+   * Hero, Captain, Champion, Marshal -> fighter
+ * non-editable multi-line textboxes can have areas of text highlighted (and thus copied and pasted)
+ * support for defensive animations
+ * tweaks to terrain graphic ordering
+ * added the cutter tool
+ * added the exploder tool
+ * added engine support for max-level units advancing further
  * code refactoring
 
 Version 0.7.10:
