@@ -13,7 +13,6 @@ campaignd_SOURCES = campaign_server.cpp \
 		   ../log.cpp \
 		   ../network.cpp \
 		   ../publish_campaign.cpp \
-		   ../server/variable.hpp \
 		   ../game_events.hpp \
 		   ../config.hpp \
 		   ../filesystem.hpp \
