@@ -38,16 +38,24 @@
 #include <set>
 #include <sstream>
 
+#define LOG_NW lg::info(lg::network)
+#define ERR_NW lg::err(lg::network)
+
 //functions to verify that the unit structure on both machines is identical
 namespace {
+	std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
+		s << (l.x + 1) << ',' << (l.y + 1);
+		return s;
+	}
+
 	void verify(const unit_map& units, const config& cfg)
 	{
-		std::cerr << "verifying unit structure...\n";
+		LOG_NW << "verifying unit structure...\n";
 
 		const size_t nunits = atoi(cfg["num_units"].c_str());
 		if(nunits != units.size()) {
-			std::cerr << "SYNC VERIFICATION FAILED: number of units from data source differ: "
-			          << nunits << " according to data source. " << units.size() << " locally\n";
+			ERR_NW << "SYNC VERIFICATION FAILED: number of units from data source differ: "
+			       << nunits << " according to data source. " << units.size() << " locally\n";
 
 			std::set<gamemap::location> locs;
 			const config::child_list& items = cfg.get_children("unit");
@@ -56,13 +64,15 @@ namespace {
 				locs.insert(loc);
 
 				if(units.count(loc) == 0) {
-					std::cerr << "data source says there is a unit at " << (loc.x+1) << "," << (loc.y+1) << " but none found locally\n";
+					ERR_NW << "data source says there is a unit at "
+					       << loc << " but none found locally\n";
 				}
 			}
 
 			for(unit_map::const_iterator j = units.begin(); j != units.end(); ++j) {
 				if(locs.count(j->first) == 0) {
-					std::cerr << "local unit at " << (j->first.x+1) << "," << (j->first.y+1) << " but none in data source\n";
+					ERR_NW << "local unit at " << j->first
+					       << " but none in data source\n";
 				}
 			}
 
@@ -74,9 +84,10 @@ namespace {
 			const gamemap::location loc(**i);
 			const unit_map::const_iterator u = units.find(loc);
 			if(u == units.end()) {
-				std::cerr << "SYNC VERIFICATION FAILED: data source says there is a '"
-				          << (**i)["type"] << "' (side " << (**i)["side"] << ") at " << (**i)["x"] << "," << (**i)["y"]
-						  << " but there is no local record of it\n";
+				ERR_NW << "SYNC VERIFICATION FAILED: data source says there is a '"
+				       << (**i)["type"] << "' (side " << (**i)["side"] << ") at "
+				       << (**i)["x"] << ',' << (**i)["y"]
+				       << " but there is no local record of it\n";
 				throw replay::error();
 			}
 
@@ -87,19 +98,21 @@ namespace {
 			static const std::string fields[] = {"type","hitpoints","experience","side",""};
 			for(const std::string* str = fields; str->empty() == false; ++str) {
 				if(cfg[*str] != (**i)[*str]) {
-					std::cerr << "ERROR IN FIELD '" << *str << "' for unit at " << (**i)["x"] << "," << (**i)["y"]
-						      << " data source: '" << (**i)[*str] << "' local: '" << cfg[*str] << "'\n";
+					ERR_NW << "ERROR IN FIELD '" << *str << "' for unit at "
+					       << (**i)["x"] << ',' << (**i)["y"]
+					       << " data source: '" << (**i)[*str]
+					       << "' local: '" << cfg[*str] << "'\n";
 					is_ok = false;
 				}
 			}
 
 			if(!is_ok) {
-				std::cerr << "(SYNC VERIFICATION FAILED)\n";
+				ERR_NW << "(SYNC VERIFICATION FAILED)\n";
 				throw replay::error();
 			}
 		}
 
-		std::cerr << "verification passed\n";
+		LOG_NW << "verification passed\n";
 	}
 
 	config create_verification(const unit_map& units)
@@ -521,7 +534,7 @@ config* replay::get_next_action()
 	if(pos_ >= commands().size())
 		return NULL;
 
-	std::cerr << "up to replay action " << pos_ << "/" << commands().size() << "\n";
+	LOG_NW << "up to replay action " << pos_ << "/" << commands().size() << "\n";
 
 	random_ = current_ = commands()[pos_];
 	++pos_;
@@ -627,7 +640,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		//if we are expecting promotions here
 		if(advancing_units.empty() == false) {
 			if(cfg == NULL) {
-				std::cerr << "promotion expected, but none found\n";
+				ERR_NW << "promotion expected, but none found\n";
 				throw replay::error();
 			}
 
@@ -698,8 +711,9 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::set<std::string>& recruits = current_team.recruits();
 
 			if(val < 0 || val >= recruits.size()) {
-				std::cerr << "recruitment index is illegal: " << val
-				          << " while this side only has " << recruits.size() << " units available for recruitment\n";
+				ERR_NW << "recruitment index is illegal: " << val
+				       << " while this side only has " << recruits.size()
+				       << " units available for recruitment\n";
 				throw replay::error();
 			}
 
@@ -707,20 +721,20 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			std::advance(itor,val);
 			const std::map<std::string,unit_type>::const_iterator u_type = gameinfo.unit_types.find(*itor);
 			if(u_type == gameinfo.unit_types.end()) {
-				std::cerr << "recruiting illegal unit: '" << *itor << "'\n";
+				ERR_NW << "recruiting illegal unit: '" << *itor << "'\n";
 				throw replay::error();
 			}
 
 			unit new_unit(&(u_type->second),team_num,true);
 			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc);
 			if(!res.empty()) {
-				std::cerr << "cannot recruit unit: " << res << "\n";
+				ERR_NW << "cannot recruit unit: " << res << "\n";
 				throw replay::error();
 			}
 
 			if(u_type->second.cost() > current_team.gold()) {
-				std::cerr << "unit '" << u_type->second.name() << "' is too expensive to recruit: "
-				          << u_type->second.cost() << "/" << current_team.gold() << "\n";
+				ERR_NW << "unit '" << u_type->second.name() << "' is too expensive to recruit: "
+				       << u_type->second.cost() << "/" << current_team.gold() << "\n";
 				throw replay::error();
 			}
 
@@ -733,7 +747,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		else if((child = cfg->child("recall")) != NULL) {
 			player_info* player = state_of_game.get_player(current_team.save_id());
 			if(player == NULL) {
-				std::cerr << "illegal recall\n";
+				ERR_NW << "illegal recall\n";
 				throw replay::error();
 			}
 
@@ -750,7 +764,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				player->available_units.erase(player->available_units.begin()+val);
 				current_team.spend_gold(game_config::recall_cost);
 			} else {
-				std::cerr << "illegal recall\n";
+				ERR_NW << "illegal recall\n";
 				throw replay::error();
 			}
 			fix_shroud = true;
@@ -759,7 +773,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		else if((child = cfg->child("disband")) != NULL) {
 			player_info* const player = state_of_game.get_player(current_team.save_id());
 			if(player == NULL) {
-				std::cerr << "illegal disband\n";
+				ERR_NW << "illegal disband\n";
 				throw replay::error();
 			}
 
@@ -770,7 +784,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(val >= 0 && val < int(player->available_units.size())) {
 				player->available_units.erase(player->available_units.begin()+val);
 			} else {
-				std::cerr << "illegal disband\n";
+				ERR_NW << "illegal disband\n";
 				throw replay::error();
 			}
 		}
@@ -781,7 +795,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const config* const source = child->child("source");
 
 			if(destination == NULL || source == NULL) {
-				std::cerr << "no destination/source found in movement\n";
+				ERR_NW << "no destination/source found in movement\n";
 				throw replay::error();
 			}
 
@@ -790,15 +804,14 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			std::map<gamemap::location,unit>::iterator u = units.find(dst);
 			if(u != units.end()) {
-				std::cerr << "destination already occupied: "
-						  << (dst.x+1) << "," << (dst.y+1) << "\n";
+				ERR_NW << "destination already occupied: "
+				       << dst << '\n';
 				throw replay::error();
 			}
 			u = units.find(src);
 			if(u == units.end()) {
-				std::cerr << "unfound location for source of movement: "
-				          << (src.x+1) << "," << (src.y+1) << "-"
-						  << (dst.x+1) << "," << (dst.y+1) << "\n";
+				ERR_NW << "unfound location for source of movement: "
+				       << src << '-' << dst << '\n';
 				throw replay::error();
 			}
 
@@ -814,13 +827,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(rt == paths_list.routes.end()) {
 
 				for(rt = paths_list.routes.begin(); rt != paths_list.routes.end(); ++rt) {
-					std::cerr << "can get to: " << (rt->first.x+1) << "," << (rt->first.y+1) << "\n";
+					ERR_NW << "can get to: " << rt->first.y << '\n';
 				}
 
-				std::cerr << "src cannot get to dst: " << current_unit.movement_left() << " "
-				          << paths_list.routes.size() << " " << (src.x+1)
-				          << "," << (src.y+1) << "-" << (dst.x+1) << ","
-				          << (dst.y+1) << "\n";
+				ERR_NW << "src cannot get to dst: " << current_unit.movement_left() << ' '
+				       << paths_list.routes.size() << ' ' << src << '-' << dst << '\n';
 				throw replay::error();
 			}
 
@@ -867,7 +878,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const config* const source = child->child("source");
 
 			if(destination == NULL || source == NULL) {
-				std::cerr << "no destination/source found in attack\n";
+				ERR_NW << "no destination/source found in attack\n";
 				throw replay::error();
 			}
 
@@ -879,21 +890,19 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			std::map<gamemap::location,unit>::iterator u = units.find(src);
 			if(u == units.end()) {
-				std::cerr << "unfound location for source of attack\n";
+				ERR_NW << "unfound location for source of attack\n";
 				throw replay::error();
 			}
 
 			if(size_t(weapon_num) >= u->second.attacks().size()) {
-				std::cerr << "illegal weapon type in attack\n";
+				ERR_NW << "illegal weapon type in attack\n";
 				throw replay::error();
 			}
 
 			std::map<gamemap::location,unit>::const_iterator tgt = units.find(dst);
 
 			if(tgt == units.end()) {
-				std::cerr << "unfound defender for attack: "
-				          << (src.x+1) << "," << (src.y+1) << " -> "
-						  << (dst.x+1) << "," << (dst.y+1) << "\n";
+				ERR_NW << "unfound defender for attack: " << src << " -> " << dst << '\n';
 				throw replay::error();
 			}
 
@@ -924,7 +933,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 			fix_shroud = true;
 		} else {
-			std::cerr << "unrecognized action: '" << cfg->write() << "'\n";
+			ERR_NW << "unrecognized action: '" << cfg->write() << "'\n";
 			throw replay::error();
 		}
 
