@@ -1,4 +1,4 @@
-2004-01-08:
+CVS HEAD:
  * extended tutorial
  * two new music tracks
  * new user-interface
@@ -12,6 +12,8 @@
  * healers can heal allies.
  * undeads can not be drained anymore
  * fixed description for 'Wolf Rider'
+ * Mage stats changed: hitpoints increased to 24, ranged attack does now 6-3 (magic), 60 experience needed to advance
+ * reduced movement for Arch Mage and Great Mage to 4
  * scenario balancing for 'Heir to the Throne' campaign:
    * A Choice Must Be Made
  * new scenarios for 'The Dark Hordes' campaign:
@@ -19,8 +21,10 @@
  * scenario balancing for 'Dark Hordes' campaign:
    * Brother Against Brother
    * The Skull of Agarash
- * units will stop moving when they see new units (shroud/fog)
+ * units will stop moving when they see new units (shroud/fow)
+ * moves that do not reveal shroud/fow are undoable
  * when a leader dies all villages for that side become neutral and you can not anymore capture villages, you can still "neutralize" villages of other players
+ * 'show team colours' now uses colored circles to identify units sides
  * added 'show team colours' option to preferences dialog
  * added some explanatory tooltips for some unit attributes on sidebar
  * added in flag to show whose turn it currently is
@@ -72,7 +76,8 @@
  * autotools: 
    * changed AC_ARG_ENABLE in server, editor and tools to fix bug
    * checks for png support in sdl_image and ogg support in sdl_mixer
-   * application icon and menu entries in KDE and GNOME
+   * application icon and menu entries in KDE with --enable-kde
+   * application icon and menu entries in Gnome with --enable-gnome
    * removed autoconf version 2.57 prerequisite
    * adding autogen.sh, so CVS users don't need autotools installed
  * moved network code to mp_connect
