@@ -577,8 +577,10 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 	for(;;) {
 		config* const cfg = replayer.get_next_action();
-
 		config* child;
+		
+		//do we need to recalculate shroud after this action is processed?
+		bool fix_shroud = false;
 
 		//if we are expecting promotions here
 		if(advancing_units.empty() == false) {
@@ -674,8 +676,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			statistics::recruit_unit(new_unit);
 
 			current_team.spend_gold(u_type->second.cost());
-			if(clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1))
-				disp.recalculate_minimap();
+			fix_shroud = true;
 		}
 
 		else if((child = cfg->child("recall")) != NULL) {
@@ -697,8 +698,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				std::cerr << "illegal recall\n";
 				throw replay::error();
 			}
-			if(clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1))
-				disp.recalculate_minimap();
+			fix_shroud = true;
 		}
 
 		else if((child = cfg->child("move")) != NULL) {
@@ -777,8 +777,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				game_events::fire("sighted",dst);
 			}
 
-			if(clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1))
-				disp.recalculate_minimap();
+			fix_shroud = true;
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {
@@ -844,11 +843,17 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(advancing_units.empty()) {
 				check_victory(units,teams);
 			}
-			if(clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1))
-				disp.recalculate_minimap();
+			fix_shroud = true;
 		} else {
 			std::cerr << "unrecognized action: '" << cfg->write() << "'\n";
 			throw replay::error();
+		}
+
+		//Check if we should refresh the shroud, and redraw the minimap/map tiles.
+		//This is needed for shared vision to work properly.
+		if(fix_shroud && clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1)) {
+			disp.recalculate_minimap();
+			disp.invalidate_all();
 		}
 
 		child = cfg->child("verify");
