@@ -87,11 +87,9 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		unit u = ui->second;
 		const shortest_path_calculator calc(u,current_team,units,map);
-		const bool can_teleport = u.type().teleports() &&
-		          map[ui->first.x][ui->first.y] == gamemap::TOWER;
 
 		const std::set<gamemap::location>* const teleports =
-		     can_teleport ? &current_team.towers() : NULL;
+		     u.type().teleports() ? &current_team.towers() : NULL;
 
 		paths::route route = a_star_search(ui->first,ui->second.get_goto(),
 		                                   10000.0,calc,teleports);
@@ -144,8 +142,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				if(un != units.end()) {
 					const shortest_path_calculator calc(un->second,current_team,
 					                                    units,map);
-					const bool can_teleport = un->second.type().teleports() &&
-					   map[selected_hex.x][selected_hex.y] == gamemap::TOWER;
+					const bool can_teleport = un->second.type().teleports();
 
 					const std::set<gamemap::location>* const teleports =
 					     can_teleport ? &current_team.towers() : NULL;

@@ -70,11 +70,39 @@ private:
 
 namespace detail {
 struct node {
+	static double heuristic(const gamemap::location& src,
+	                        const gamemap::location& dst) {
+		return sqrt(pow(abs(dst.x-src.x),2) + pow(abs(dst.y-src.y),2));
+	}
+
+
 	node(const gamemap::location& pos, const gamemap::location& dst,
-	     double cost, node* parent)
-	    : parent(parent), loc(pos), g(cost),
-	      h(sqrt(pow(abs(dst.x-pos.x),2) + pow(abs(dst.y-pos.y),2)))
+	     double cost, node* parent,
+	     const std::set<gamemap::location>* teleports)
+	    : parent(parent), loc(pos), g(cost), h(heuristic(pos,dst))
 	{
+
+		//if there are teleport locations, correct the heuristic to
+		if(teleports != NULL) {
+			double srch = h, dsth = h;
+			std::set<gamemap::location>::const_iterator i;
+			for(i = teleports->begin(); i != teleports->end(); ++i) {
+				const double new_srch = heuristic(pos,*i);
+				const double new_dsth = heuristic(*i,dst);
+				if(new_srch < srch) {
+					srch = new_srch;
+				}
+
+				if(new_dsth < dsth) {
+					dsth = new_dsth;
+				}
+			}
+
+			if(srch + dsth + 1.0 < h) {
+				h = srch + dsth + 1.0;
+			}
+		}
+
 		f = g + h;
 	}
 
@@ -95,7 +123,7 @@ paths::route a_star_search(const gamemap::location& src,
 	typedef gamemap::location location;
 	std::list<node> open_list, closed_list;
 
-	open_list.push_back(node(src,dst,0.0,NULL));
+	open_list.push_back(node(src,dst,0.0,NULL,teleports));
 
 	while(!open_list.empty()) {
 
@@ -144,7 +172,7 @@ paths::route a_star_search(const gamemap::location& src,
 			}
 
 			const node nd(locs[j],dst,lowest->g+obj.cost(locs[j],lowest->g),
-			              &*lowest);
+			              &*lowest,teleports);
 
 			for(i = open_list.begin(); i != open_list.end(); ++i) {
 				if(i->loc == nd.loc && i->f <= nd.f) {
