@@ -448,9 +448,14 @@ int menu::process(int x, int y, bool button, bool, bool, bool, bool, int)
 	}
 
 	// update enabled/disabled status for up/down buttons and the scrollbar
-	scrollbar_.enable(nb_items > max_items);
-	uparrow_.hide(first_item_on_screen_ == 0);
-	downarrow_.hide(nb_items <= max_items || first_item_on_screen_ >= nb_items - max_items);
+	bool enable_scrollbar = nb_items > max_items;
+	scrollbar_.enable(enable_scrollbar);
+	uparrow_.hide(!enable_scrollbar);
+	downarrow_.hide(!enable_scrollbar);
+	if (enable_scrollbar) {
+		uparrow_.enable(first_item_on_screen_ != 0);
+		downarrow_.enable(first_item_on_screen_ < nb_items - max_items);
+	}
 
 	if (!drawn_)
 		draw();
