@@ -2,10 +2,35 @@ CVS HEAD:
  * theme update, scrollbars
  * added new sounds, unit images and attack icons
  * invisibility now "wears off" when enemy unit comes adjacent (#6879)
+ * allowed swimming units to move slowly on hills
  * scenario balancing for 'Heir to the Throne' campaign:
    * Gryphon Mountain
+   * Northern Winter
+ * updated undead campaign and added new scenarios:
+   * Brother Against Brother
+   * The Skull of Agarash
+   * Mages and Elves
+   * Inside the Tower
+   * Crenalu's Book
  * new units:
    * Footpad
+   * Trapper
+   * Spectre
+   * Initiate
+   * Dark Spirit
+   * Deathmaster
+   * Demilich
+ * unit changes:
+   * Elvish Archer:
+   * Elvish Marksman
+   * Elvish Sharpshooter
+   * Orcish Archer
+   * Orcish Crossbow
+   * Swordsman
+   * Gryphon
+   * Dark Apprentice
+   * Evil Necromancer
+   * Ancient Lich
  * language fixes and polishing (english)
  * new translations:
    * finnish
@@ -19,6 +44,7 @@ CVS HEAD:
    * norwegian
    * swedish
    * spanish 
+   * french
  * added ctrl+P as hotkey for 'Preferences'
  * campaigns can customize difficulty level icons
  * mage of light lights up hexes around him
@@ -38,9 +64,13 @@ CVS HEAD:
  * fixed crash in maps with fog of war
  * fixed transparency issues in dwarven doors graphic
  * fixed issue with escape button skipping past messages where the user must make a choice
+ * fixed bug where shroud wasn't saved/loaded properly (#7922)
+ * added random to set_variable
+ * added victory_when_enemies_defeated
  * made it easier for different AI algorithms to be added
  * added Doxygen documentation to ai_interface
  * autotools fix: Now make uninstall removes data directories if empty
+ * slacknoth script now does a 'make clean' before compiling source and strips binaries
  * refactored widget class
  * removed some debug cerrs
  * added VC++6 project files to CVS
