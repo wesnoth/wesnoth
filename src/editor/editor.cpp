@@ -209,6 +209,9 @@ std::string map_editor::new_map_dialog(display& disp)
 		}
 
 		if(new_map_button.process(mousex,mousey,left_button)) {
+			if (!confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
+				return "";
+			}
 			int i;
 			std::stringstream str;
 			std::stringstream map_str;
@@ -228,6 +231,10 @@ std::string map_editor::new_map_dialog(display& disp)
 		}
 
 		if(random_map_button.process(mousex,mousey,left_button)) {
+			if (!confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
+				return "";
+			}
+
 			const std::string map = generator.get()->create_map(std::vector<std::string>());
 			if (map == "") {
 				gui::show_dialog(gui_, NULL, "",
@@ -292,8 +299,7 @@ void map_editor::edit_new_map()
 {
 	const std::string map = new_map_dialog(gui_);
  	if (map != "") {
-		if (confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?"))
-			throw new_map_exception(map);
+		throw new_map_exception(map);
 	}
 }
 
