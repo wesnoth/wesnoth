@@ -48,6 +48,7 @@ TTF_Font* open_font(const std::string& fname, int size)
 	std::string name;
 
 	LOG_FT << "Opening font '" << fname << "' ...\n";
+#if 1 || !defined(USE_ZIPIOS)
 	if(game_config::path.empty() == false) {
 		name = game_config::path + "/fonts/" + fname;
 		LOG_FT << "Trying file '" << name << "' ...\n";
@@ -73,6 +74,15 @@ TTF_Font* open_font(const std::string& fname, int size)
 	LOG_FT << "Opening font file '" << name << "', font size is " << size << "\n";
 
 	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
+#else
+	std::string s = read_file("fonts/" + fname);
+	if (s.empty()) {
+		ERR_FT << "Failed opening font file '" << fname << "'\n";
+		return NULL;
+	}
+	SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
+	TTF_Font* font = TTF_OpenFontRW(ops, 0, size);
+#endif
 	if(font == NULL) {
 		ERR_FT << "Failed opening font file '" << name << "'\n";
 		return NULL;
