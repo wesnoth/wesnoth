@@ -238,6 +238,10 @@ bool button::process(int mousex, int mousey, bool button)
 				return true;
 			}
 			break;
+		case UNINIT:
+			break;
+		case ACTIVE:
+			break;
 		}
 	}
 
