@@ -83,9 +83,6 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		const std::string game = dialogs::load_game_dialog(*disp_, &show_replay);
 		if(game == "")
 		{
-			gui::show_dialog(*disp_, NULL, "", 
-					 "Sae Game Error, game == \"\"",
-					 gui::OK_ONLY);
 			status_ = -1;
 			return status_;
 		}
@@ -174,7 +171,7 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 
 	if(sides.first == sides.second || possible_sides.empty()) {
 		gui::show_dialog(*disp_, NULL, "", 
-				 "No multiplayer sides found.",
+				 string_table["error_no_mp_sides"],
 				 gui::OK_ONLY);
 		std::cerr << "no multiplayer sides found\n";
 		status_ = -1;
@@ -182,6 +179,22 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 	}
 
 	config::child_iterator sd;
+	if(save_ == true) {
+		bool found = false;
+		for(sd = sides.first; sd != sides.second; ++sd) {
+			if ((**sd)["description"] == preferences::login())
+				found = true;
+		}
+		if (found == false) {
+			gui::show_dialog(*disp_, NULL, "", 
+					 string_table["error_no_part_of_game"],
+					 gui::OK_ONLY);
+			status_ = -1;
+			return status_;
+		}
+	}
+
+
 	bool first = true;
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		if(save_ == false)
@@ -417,6 +430,8 @@ void mp_connect::gui_update()
 			if (side["description"] == "") {
 				combos_type_[n].set_selected(0);
 			} else if (side["description"] == "Computer Player") {
+				//When loading a game you did not create AI players are marked
+				//as network players, set back to AI
 				combos_type_[n].set_selected(2);
 			} else {
 				for (size_t m = 0; m != player_types_.size(); ++m) {
@@ -428,6 +443,10 @@ void mp_connect::gui_update()
 		} else if (side["controller"] == "human") {
 			if (side["description"] == preferences::login()) {
 				combos_type_[n].set_selected(4);
+			} else if (side["description"] != "") {
+				//When loading a game and you use a name not originally used during
+				//the initial game, mark that original slot as network
+				combos_type_[n].set_selected(0);
 			} else {
 				combos_type_[n].set_selected(1);
 			}
