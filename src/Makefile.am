@@ -24,6 +24,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai.cpp \
 		  ai_attack.cpp \
 		  ai_move.cpp \
+		  cavegen.cpp \
 		  config.cpp \
 		  dialogs.cpp \
 		  display.cpp \
@@ -59,6 +60,7 @@ wesnoth_SOURCES = about.cpp \
 		  sdl_utils.cpp \
 		  show_dialog.cpp \
 		  sound.cpp \
+		  statistics.cpp \
 		  team.cpp \
 		  terrain.cpp \
 		  theme.cpp \
@@ -78,6 +80,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai.hpp \
 		  ai_attack.hpp \
 		  ai_move.hpp \
+		  cavegen.hpp \
 		  config.hpp \
 		  dialogs.hpp \
 		  display.hpp \
@@ -114,6 +117,7 @@ wesnoth_SOURCES = about.cpp \
 		  sdl_utils.hpp \
 		  show_dialog.hpp \
 		  sound.hpp \
+		  statistics.hpp \
 		  team.hpp \
 		  terrain.hpp \
 		  theme.hpp \

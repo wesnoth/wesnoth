@@ -160,6 +160,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai.cpp \
 		  ai_attack.cpp \
 		  ai_move.cpp \
+		  cavegen.cpp \
 		  config.cpp \
 		  dialogs.cpp \
 		  display.cpp \
@@ -195,6 +196,7 @@ wesnoth_SOURCES = about.cpp \
 		  sdl_utils.cpp \
 		  show_dialog.cpp \
 		  sound.cpp \
+		  statistics.cpp \
 		  team.cpp \
 		  terrain.cpp \
 		  theme.cpp \
@@ -214,6 +216,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai.hpp \
 		  ai_attack.hpp \
 		  ai_move.hpp \
+		  cavegen.hpp \
 		  config.hpp \
 		  dialogs.hpp \
 		  display.hpp \
@@ -250,6 +253,7 @@ wesnoth_SOURCES = about.cpp \
 		  sdl_utils.hpp \
 		  show_dialog.hpp \
 		  sound.hpp \
+		  statistics.hpp \
 		  team.hpp \
 		  terrain.hpp \
 		  theme.hpp \
@@ -380,10 +384,10 @@ CONFIG_CLEAN_FILES =
 PROGRAMS = $(bin_PROGRAMS)
 
 am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
-	ai_attack.$(OBJEXT) ai_move.$(OBJEXT) config.$(OBJEXT) \
-	dialogs.$(OBJEXT) display.$(OBJEXT) events.$(OBJEXT) \
-	filesystem.$(OBJEXT) font.$(OBJEXT) game.$(OBJEXT) \
-	game_config.$(OBJEXT) game_events.$(OBJEXT) \
+	ai_attack.$(OBJEXT) ai_move.$(OBJEXT) cavegen.$(OBJEXT) \
+	config.$(OBJEXT) dialogs.$(OBJEXT) display.$(OBJEXT) \
+	events.$(OBJEXT) filesystem.$(OBJEXT) font.$(OBJEXT) \
+	game.$(OBJEXT) game_config.$(OBJEXT) game_events.$(OBJEXT) \
 	gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
 	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
 	map.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
@@ -393,11 +397,12 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
 	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
 	reports.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
-	sound.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
-	theme.$(OBJEXT) tooltips.$(OBJEXT) unit.$(OBJEXT) \
-	unit_types.$(OBJEXT) video.$(OBJEXT) button.$(OBJEXT) \
-	combo.$(OBJEXT) menu.$(OBJEXT) scrollbar.$(OBJEXT) \
-	slider.$(OBJEXT) textbox.$(OBJEXT) widget.$(OBJEXT)
+	sound.$(OBJEXT) statistics.$(OBJEXT) team.$(OBJEXT) \
+	terrain.$(OBJEXT) theme.$(OBJEXT) tooltips.$(OBJEXT) \
+	unit.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
+	button.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
+	scrollbar.$(OBJEXT) slider.$(OBJEXT) textbox.$(OBJEXT) \
+	widget.$(OBJEXT)
 wesnoth_OBJECTS = $(am_wesnoth_OBJECTS)
 wesnoth_LDADD = $(LDADD)
 wesnoth_DEPENDENCIES =
@@ -430,11 +435,12 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/about.Po ./$(DEPDIR)/actions.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/ai.Po ./$(DEPDIR)/ai_attack.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/ai_move.Po ./$(DEPDIR)/button.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/combo.Po ./$(DEPDIR)/config.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/dialogs.Po ./$(DEPDIR)/display.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/editor.Po ./$(DEPDIR)/events.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/filesystem.Po ./$(DEPDIR)/font.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/game.Po ./$(DEPDIR)/game_config.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/cavegen.Po ./$(DEPDIR)/combo.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/config.Po ./$(DEPDIR)/dialogs.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/display.Po ./$(DEPDIR)/editor.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/events.Po ./$(DEPDIR)/filesystem.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/font.Po ./$(DEPDIR)/game.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/game_config.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_events.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/gamestatus.Po ./$(DEPDIR)/hotkeys.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/image.Po ./$(DEPDIR)/intro.Po \
@@ -452,11 +458,12 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/replay.Po ./$(DEPDIR)/reports.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/scrollbar.Po ./$(DEPDIR)/sdl_utils.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/show_dialog.Po ./$(DEPDIR)/slider.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/sound.Po ./$(DEPDIR)/team.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/terrain.Po ./$(DEPDIR)/textbox.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/theme.Po ./$(DEPDIR)/tooltips.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/unit.Po ./$(DEPDIR)/unit_types.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/video.Po ./$(DEPDIR)/widget.Po
+@AMDEP_TRUE@	./$(DEPDIR)/sound.Po ./$(DEPDIR)/statistics.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/team.Po ./$(DEPDIR)/terrain.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/textbox.Po ./$(DEPDIR)/theme.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/tooltips.Po ./$(DEPDIR)/unit.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/unit_types.Po ./$(DEPDIR)/video.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/widget.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -529,6 +536,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ai_attack.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ai_move.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/button.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cavegen.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/combo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/config.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dialogs.Po@am__quote@
@@ -569,6 +577,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/show_dialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slider.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sound.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/statistics.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/team.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/terrain.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/textbox.Po@am__quote@
