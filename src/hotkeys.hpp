@@ -34,6 +34,9 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
 					  HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_PREFERENCES,
 					  HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_STATISTICS, HOTKEY_QUIT_GAME,
                       HOTKEY_LABEL_TERRAIN, HOTKEY_SHOW_ENEMY_MOVES, HOTKEY_BEST_ENEMY_MOVES,
+
+					  //editing specific commands
+					  HOTKEY_EDIT_SET_TERRAIN,
 					  HOTKEY_NULL };
 
 struct hotkey_item {
@@ -100,6 +103,8 @@ public:
 	virtual void show_statistics() = 0;
 	virtual void label_terrain() = 0;
 	virtual void show_enemy_moves(bool ignore_units) = 0;
+
+	virtual void edit_set_terrain() {}
 
 	virtual bool can_execute_command(HOTKEY_COMMAND command) const = 0;
 };

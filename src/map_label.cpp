@@ -2,10 +2,10 @@
 #include "font.hpp"
 #include "map_label.hpp"
 
-map_labels::map_labels(const display& disp) : disp_(disp)
+map_labels::map_labels(const display& disp, const gamemap& map) : disp_(disp), map_(map)
 {}
 
-map_labels::map_labels(const display& disp, const config& cfg) : disp_(disp)
+map_labels::map_labels(const display& disp, const config& cfg, const gamemap& map) : disp_(disp), map_(map)
 {
 	read(cfg);
 }
@@ -61,6 +61,12 @@ void map_labels::set_label(const gamemap::location& loc, const std::string& text
 	}
 
 	SDL_Color colour = font::NORMAL_COLOUR;
+
+	if(map_.get_terrain_info(map_.get_terrain(loc)).is_light()) {
+		colour.r = 0;
+		colour.g = 0;
+		colour.b = 0;
+	}
 
 	const gamemap::location loc_nextx(loc.x+1,loc.y);
 	const gamemap::location loc_nexty(loc.x,loc.y+1);

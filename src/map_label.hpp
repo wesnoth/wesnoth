@@ -13,8 +13,8 @@ class team;
 class map_labels
 {
 public:
-	map_labels(const display& disp);
-	map_labels(const display& disp, const config& cfg);
+	map_labels(const display& disp, const gamemap& map);
+	map_labels(const display& disp, const config& cfg, const gamemap& map);
 	~map_labels();
 
 	void write(config& res) const;
@@ -36,6 +36,7 @@ private:
 
 	const display& disp_;
 	const team* team_;
+	const gamemap& map_;
 
 	typedef std::map<gamemap::location,int> label_map;
 	label_map labels_;

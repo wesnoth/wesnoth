@@ -377,6 +377,11 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		}
 
+		case HOTKEY_EDIT_SET_TERRAIN:
+			if(executor)
+				executor->edit_set_terrain();
+			break;
+
 		default:
 			break;
 	}

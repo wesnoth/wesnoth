@@ -60,7 +60,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 					   currentTeam_(0), activeTeam_(0), hideEnergy_(false),
 					   deadAmount_(0.0), advancingAmount_(0.0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
-					   theme_(theme_cfg,screen_area()), firstTurn_(true), map_labels_(*this)
+					   theme_(theme_cfg,screen_area()), firstTurn_(true), map_labels_(*this,map)
 {
 	if(non_interactive())
 		updatesLocked_++;
@@ -267,7 +267,7 @@ void display::scroll(double xmove, double ymove)
 
 	//only invalidate if we've actually moved
 	if(orig_x != xpos_ || orig_y != ypos_) {
-		map_labels_.scroll(orig_x - xpos_, orig_y - ypos_);
+		map_labels_.scroll(int(util::round(orig_x - xpos_)), int(util::round(orig_y - ypos_)));
 		invalidate_all();
 	}
 }
@@ -1186,26 +1186,19 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	const bool energy_uses_alpha = highlight_ratio < 1.0 && blend_with == 0;
 
 	if(loc != hiddenUnit_) {
-		//the circle around the base of the unit
-		if(preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
+		scoped_sdl_surface ellipse_front(NULL);
+		scoped_sdl_surface ellipse_back(NULL);
+
+		if(preferences::show_side_colours()) {
 			char buf[50];
 			sprintf(buf,"misc/ellipse-%d-top.png",it->second.side());
-			const scoped_sdl_surface surf(image::get_image(buf));
-
-			if(surf == NULL) {
-				std::cerr << "could not open ellipse: '" << buf << "'\n";
-			}
-
-			if(surf != NULL) {
-				SDL_Surface* const dst = screen_.getSurface();
-				SDL_Rect rect = {xpos,ypos - height_adjust,surf->w,surf->h};
-
-				SDL_BlitSurface(surf,NULL,dst,&rect);
-			}
+			ellipse_back.assign(image::get_image(buf));
+			sprintf(buf,"misc/ellipse-%d-bottom.png",it->second.side());
+			ellipse_front.assign(image::get_image(buf));
 		}
 
 		draw_unit(xpos,ypos - height_adjust,unit_image,face_left,false,
-		          highlight_ratio,blend_with,submerge);
+		          highlight_ratio,blend_with,submerge,ellipse_back,ellipse_front);
 	}
 
 	const SDL_Rect& energy_bar_loc = calculate_energy_bar();
@@ -1232,21 +1225,6 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		SDL_Rect filled_energy_area = { xpos + energy_bar_loc.x, ypos+show_energy_after,
 		          energy_bar_loc.w, energy_bar_loc.h - skip_energy_rows - lost_energy };
 		SDL_FillRect(dst,&filled_energy_area,energy_colour);
-	}
-
-	//the bottom half of the circle around the base of the unit
-	if(loc != hiddenUnit_ && preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
-
-		char buf[50];
-		sprintf(buf,"misc/ellipse-%d-bottom.png",it->second.side());
-		const scoped_sdl_surface surf(image::get_image(buf));
-
-		if(surf != NULL) {
-			SDL_Surface* const dst = screen_.getSurface();
-			SDL_Rect rect = {xpos,ypos - height_adjust,surf->w,surf->h};
-
-			SDL_BlitSurface(surf,NULL,dst,&rect);
-		}
 	}
 }
 
@@ -2304,8 +2282,13 @@ void display::move_unit_between(const gamemap::location& a,
 
 void display::draw_unit(int x, int y, SDL_Surface* image,
                         bool reverse, bool upside_down,
-                        double alpha, Uint32 blendto, double submerged)
+                        double alpha, Uint32 blendto, double submerged,
+						SDL_Surface* ellipse_back, SDL_Surface* ellipse_front)
 {
+	if(ellipse_back != NULL) {
+		draw_unit(x,y,ellipse_back,false,false,blendto == 0 ? alpha : 1.0,0,submerged);
+	}
+
 	sdl_add_ref(image);
 	scoped_sdl_surface surf(image);
 
@@ -2344,6 +2327,10 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 		y += submerge_height;
 
 		blit_surface(x,y,surf,&srcrect,&clip_rect);
+	}
+
+	if(ellipse_front != NULL) {
+		draw_unit(x,y,ellipse_front,false,false,blendto == 0 ? alpha : 1.0,0,submerged);
 	}
 }
 

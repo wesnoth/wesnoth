@@ -312,7 +312,8 @@ private:
 	//           (presumably under water) and thus shouldn't be drawn
 	void draw_unit(int x, int y, SDL_Surface* image,
 	               bool reverse, bool upside_down=false,
-	               double alpha=1.0, Uint32 blendto=0, double submerged=0.0);
+	               double alpha=1.0, Uint32 blendto=0, double submerged=0.0,
+				   SDL_Surface* ellipse_back=NULL, SDL_Surface* ellipse_front=NULL);
 
 	bool unit_attack_ranged(const gamemap::location& a,
 	                        const gamemap::location& b,
