@@ -9,60 +9,64 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-12 16:16+0100\n"
-"PO-Revision-Date: 2004-12-12 16:16+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2004-12-20 19:16+0200\n"
+"Last-Translator: Anton (Atilla) Tsigularov <theatilla@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: и\n"
+"X-Poedit-Language: Bulgarian\n"
+"X-Poedit-Country: BULGARIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
-msgstr ""
+msgstr "лоялен"
 
 #: data/game.cfg:522
 msgid "strong"
-msgstr ""
+msgstr "силен"
 
 #: data/game.cfg:537
 msgid "quick"
-msgstr ""
+msgstr "бърз"
 
 #: data/game.cfg:551
 msgid "intelligent"
-msgstr ""
+msgstr "интелигентен"
 
 #: data/game.cfg:560
 msgid "resilient"
-msgstr ""
+msgstr "издръжлив"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
-msgstr ""
+msgstr "Въведение"
 
 #: data/help.cfg:16
 msgid "Gameplay"
-msgstr ""
+msgstr "Начин на игра"
 
 #: data/help.cfg:22 data/help.cfg:209
 msgid "Traits"
-msgstr ""
+msgstr "Качества"
 
 #: data/help.cfg:28 src/playturn.cpp:1616
 msgid "Units"
-msgstr ""
+msgstr "Еденици"
 
 #: data/help.cfg:34 src/help.cpp:1042
 msgid "Abilities"
-msgstr ""
+msgstr "Умения"
 
 #: data/help.cfg:41
 msgid "Weapon Specials"
-msgstr ""
+msgstr "Специалности с оръжие"
 
 #: data/help.cfg:47
 msgid "Terrains"
-msgstr ""
+msgstr "Терени"
 
 #: data/help.cfg:54
 msgid ""
@@ -70,6 +74,10 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Определени еденици имат умения които или директно имат ефект върху други "
+"еденици или влиаят на това как еденицата взаимодейства с други еденици. Тези "
+"умения ще се попълват под тази точка, когато се сблъскате с еденица която ги "
+"притежава. "
 
 #: data/help.cfg:62
 msgid ""
@@ -85,7 +93,7 @@ msgstr ""
 
 #: data/help.cfg:67
 msgid "Fundamentals of Gameplay"
-msgstr ""
+msgstr "Основи на играта"
 
 #: data/help.cfg:68
 msgid ""
@@ -97,6 +105,13 @@ msgid ""
 "mind that this is just an outline - for special exceptions and situations, "
 "please follow the links included."
 msgstr ""
+"Тази секция съдържа основното, което ви е нужно за да играете Битката за "
+"Уестнот. Тя обхваща основната елементи които движат играта. За повече "
+"информация как да покорите играта, може да се обърнете към "
+"<ref>dst=basic_strategy text='Основни Стратегии'</ref> и "
+"ref>dst=multiplayer_strategy text='Стратегии за игра в мрежа'</ref>. Имайте "
+"в предвид че това са само основни напътствия, за специални ситуации или "
+"изключения, следвайте приложените препратки. "
 
 #: data/help.cfg:70
 msgid ""
@@ -119,7 +134,7 @@ msgstr ""
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "Набиране и Привикване на войски"
 
 #: data/help.cfg:79
 msgid ""
@@ -132,6 +147,14 @@ msgid ""
 "cost. Click on a unit to see its statistics to the left, then press the "
 "recruit button to recruit it."
 msgstr ""
+"В началото на всяка битка и понякога по време на битка, ще се налага да "
+"набирате войски в армията си. За да набирате войски, трябва да имате лидер в "
+"централното квадратче на замъка си. Тогава можете да си вземете нова наборна "
+"еденица или като изберете Набор от манюто или като натиснете с дясното копче "
+"в/у квадратче и изберете <italic>text=Набор</italic>. Това ще покаже "
+"наборното меню, което показва едениците, които можете да наберете във "
+"войската си, заедно с цената им в злато. Натиснете в/у еденица, за да видите "
+"статистика за нея вляво и после в/у бутона за набор, за да я наемете. "
 
 #: data/help.cfg:81
 msgid ""
@@ -172,7 +195,7 @@ msgstr ""
 
 #: data/help.cfg:92 src/help.cpp:1193 src/help.cpp:1194
 msgid "Movement"
-msgstr ""
+msgstr "Движение"
 
 #: data/help.cfg:93
 msgid ""
@@ -183,6 +206,14 @@ msgid ""
 "required to reach it, and clicking will cause the unit to move towards it by "
 "the fastest route over this and subsequent turns."
 msgstr ""
+"Движението в 'Уестнот' е просто: Изберете еденицата която искате да "
+"преместите и след това натиснете върху квадратчето, върху което искате тя да "
+"се премести. Когато изберете еденица, всички квадратчета върху която тя може "
+"да се премести ще се осветят, а тези върху които не може да стъпи, ще бъдат "
+"затъмнени. Ако преметите курсора върху затъмнено квадратче ще видите броя на "
+"ходовете, които са нужни на еденицата за да го достигне. Ако натиснете върху "
+"затъмнено квадратче, еденицата ще се придвижва към него, по най-прекия път "
+"който намери, през текущия и последователните ходове. "
 
 #: data/help.cfg:95
 msgid ""
@@ -198,6 +229,18 @@ msgid ""
 "terrain type by right-clicking on it, selecting Unit Description, and then "
 "look at <italic>text='Terrain Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Всяка еденица има определен брои ходове, които се изразходват, когато тя се "
+"придвижи върху ново квадратче. Колко хода се изразходват се определя от "
+"<ref>dst=terrain text=Terrain</ref> на специфичното квадратче. Например, "
+"равнините винаги струват 1 точка, когато се придвижите върху тях. Точно "
+"колко точи се изхабяват зависи от типа на еденицата, която приджижвате - в "
+"гората, елфите изхабяват 1 точка, повечето хора и орки изхабяват по 2, "
+"докато конниците изхабяват по 3. Можете да разберете колко точки за движение "
+"дадена еденица изисква, като натиснете в/у нея с десния бутон на мишката, "
+"изберете Описание на Еденицата и погледнете <italic>text='Зависимости от "
+"Терена'</italic>."
 
 #: data/help.cfg:97
 msgid ""
@@ -210,10 +253,19 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
+"\n"
+"\n"
+"Друго нещо, което можете да имате в предвид когато се придвижвате са "
+"<ref>dst=zones_of_control text='Зоните на Контрол'</ref>. Всяка еденица има "
+"определена зона на контрол в/у квадратчетата непосредствено до нея. Вражеска "
+"еденица, която навлезе в тези квадратчета, веднага прекратява движението си. "
+"Да се научите как да управлявате зоните на контрол е важно умение в Уестнот, "
+"тъй като само <ref>dst=ability_skirmish text='Разузнавачите'</ref> не се "
+"влиаят от зоните на контрол. "
 
 #: data/help.cfg:102
 msgid "Combat"
-msgstr ""
+msgstr "Битки"
 
 #: data/help.cfg:103
 msgid ""
@@ -224,6 +276,12 @@ msgid ""
 "Combat is relatively straightforward; the attacker and defender alternate "
 "attacks until each has used their allotted number of attacks."
 msgstr ""
+"Има два типа битки в 'Уестнот' - близък и отдалечен бой, но и в двата случая "
+"те заемат място между две еденици, намиращи се в съседни квадратчета. "
+"Близкият бой обикновено включва оръжия като мечове, брадви или лапи, докато "
+"отдалеченият бой се практикува с лъкове, арбалети и огнени топки. Битките са "
+"сравнително прости: атакуващият и защитаващият се си разменят удари докато "
+"всеки изхаби броят си на атаки. "
 
 #: data/help.cfg:105
 msgid ""
@@ -1531,6 +1589,8 @@ msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
 msgstr ""
+"Сега ще направим по-труден тест. Ще трябва да ме победиш в демонстрационна "
+"битка. "
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
 msgid ""
@@ -1560,7 +1620,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 msgid "You have successfully recalled your Elvish Fighter."
-msgstr ""
+msgstr "Успешно привика Елфския Боец."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:77
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:91
@@ -1580,14 +1640,17 @@ msgid ""
 "recruited units, except that instead of a new unit appearing, a unit from a "
 "previous scenario will appear."
 msgstr ""
+"Първо трябва да заплатите 20 златни монети, за всяка еденица която "
+"привиквате. Иначе привиканите еденици са точно като наетите еденици, с "
+"разликата че вместо нова еденица, получавате еденица от предходно ниво. "
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
 msgid "What happens when I recall a unit?"
-msgstr ""
+msgstr "Какво се случва като привикам еденица?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:80
 msgid "How should I decide which units to recall?"
-msgstr ""
+msgstr "Как да реша кои еденици да привикам?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:80
 msgid ""
@@ -1596,6 +1659,11 @@ msgid ""
 "and are thus likely to advance. You should recall units that will be useful "
 "for the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
+"Обикновено ще искаш да привикаш еденици, които вече са повишени в ниво. Също "
+"така е добра идея да привикваш еденици които вече имат опит и съответно имат "
+"възможност да бъдат повишени в ниво скоро. Освен това, привиквай еденици, "
+"които ще са ти полезни на дадената карта. Например - в карта с много гори "
+"привиквай елфи. "
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:89
 msgid ""
@@ -1892,10 +1960,13 @@ msgid ""
 "server, where you can join a game by selecting it, then selecting 'Join "
 "Game'."
 msgstr ""
+"За да играете 'Уестнот' срещу други хора, изберете 'Игра в мрежа'. След това "
+"изберете 'Свързване с централния сървър'. Там можете да се присъедените към "
+"игра, като я изберете и настиснете 'Присъедени се към играта'."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
-msgstr ""
+msgstr "Това беше обяснено добре! Но..."
 
 #: data/scenarios/tutorial/utils.cfg:44
 msgid ""
@@ -1911,165 +1982,169 @@ msgstr ""
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
-msgstr ""
+msgstr "Подземие"
 
 #: data/terrain.cfg:7 src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:133
 msgid "Shroud"
-msgstr ""
+msgstr "Було"
 
 #: data/terrain.cfg:14
 msgid "Fog"
-msgstr ""
+msgstr "Мъгла"
 
 #: data/terrain.cfg:21
 msgid "Deep Water"
-msgstr ""
+msgstr "Дълбока вода"
 
 #: data/terrain.cfg:30
 msgid "Shallow Water"
-msgstr ""
+msgstr "Плитчина"
 
 #: data/terrain.cfg:39 data/terrain.cfg:60 data/terrain.cfg:139
 #: data/terrain.cfg:148 data/terrain.cfg:159 data/terrain.cfg:170
 #: data/terrain.cfg:183 data/terrain.cfg:194 data/terrain.cfg:213
 #: data/terrain.cfg:278 src/reports.cpp:310
 msgid "Village"
-msgstr ""
+msgstr "Селище"
 
 #: data/terrain.cfg:51
 msgid "Swamp"
-msgstr ""
+msgstr "Блато"
 
 #: data/terrain.cfg:70
 msgid "Ice"
-msgstr ""
+msgstr "Лед"
 
 #: data/terrain.cfg:81 data/terrain.cfg:89 data/terrain.cfg:97
 msgid "Bridge"
-msgstr ""
+msgstr "Мост"
 
 #: data/terrain.cfg:105
 msgid "Sand"
-msgstr ""
+msgstr "Пясък"
 
 #: data/terrain.cfg:114
 msgid "Road"
-msgstr ""
+msgstr "Път"
 
 #: data/terrain.cfg:122
 msgid "Dirt"
-msgstr ""
+msgstr "Прахоляк"
 
 #: data/terrain.cfg:132
 msgid "Grassland"
-msgstr ""
+msgstr "Равнина"
 
 #: data/terrain.cfg:205
 msgid "Snow"
-msgstr ""
+msgstr "Сняг"
 
 #: data/terrain.cfg:224 data/terrain.cfg:231
 msgid "Hills"
-msgstr ""
+msgstr "Хълмове"
 
 #: data/terrain.cfg:240
 msgid "Mountains"
-msgstr ""
+msgstr "Планини"
 
 #: data/terrain.cfg:247 data/terrain.cfg:255
 msgid "Forest"
-msgstr ""
+msgstr "Гора"
 
 #: data/terrain.cfg:263
 msgid "Cave wall"
-msgstr ""
+msgstr "Пещерна стена"
 
 #: data/terrain.cfg:271
 msgid "Cave"
-msgstr ""
+msgstr "Пещера"
 
 #: data/terrain.cfg:288 data/terrain.cfg:348
 msgid "Castle"
-msgstr ""
+msgstr "Замък"
 
 #: data/terrain.cfg:297
 msgid "Encampment"
-msgstr ""
+msgstr "Лагер"
 
 #: data/terrain.cfg:307
 msgid "Dwarven castle"
-msgstr ""
+msgstr "Джуджешки замък"
 
 #: data/terrain.cfg:317
 msgid "Keep"
-msgstr ""
+msgstr "Крепост"
 
 #: data/terrain.cfg:337
 msgid "Canyon"
-msgstr ""
+msgstr "Каньон"
 
 #: data/themes/default.cfg:64
 msgid "Menu"
-msgstr ""
+msgstr "Меню"
 
 #: data/themes/default.cfg:75
 msgid "Actions"
-msgstr ""
+msgstr "Действия"
 
 #: data/themes/default.cfg:97
 msgid "End Turn"
-msgstr ""
+msgstr "Прекрати хода"
 
 #: data/themes/default.cfg:152 src/dialogs.cpp:660 src/display.cpp:920
 #: src/help.cpp:1059 src/playturn.cpp:2044 src/unit.cpp:1042
 msgid "HP"
-msgstr ""
+msgstr "Здраве"
 
 #: data/themes/default.cfg:159 src/dialogs.cpp:664 src/dialogs.cpp:672
 #: src/display.cpp:924 src/display.cpp:932 src/playturn.cpp:1884
 #: src/playturn.cpp:2045 src/unit.cpp:1101
 msgid "XP"
-msgstr ""
+msgstr "Опит"
 
 #: data/themes/default.cfg:168
 msgid "gold"
-msgstr ""
+msgstr "злато"
 
 #: data/themes/default.cfg:177
 msgid "villages"
-msgstr ""
+msgstr "селища"
 
 #: data/themes/default.cfg:186
 msgid "units"
-msgstr ""
+msgstr "еденици"
 
 #: data/themes/default.cfg:195
 msgid "upkeep"
-msgstr ""
+msgstr "надници"
 
 #: data/themes/default.cfg:204
 msgid "income"
-msgstr ""
+msgstr "приход"
 
 #: data/themes/default.cfg:328
 msgid "statuspanel^level"
-msgstr ""
+msgstr "statuspanel^Ниво"
 
 #: data/themes/default.cfg:360
 msgid "statuspanel^movement"
-msgstr ""
+msgstr "statuspanel^движение"
 
 #: data/tips.cfg:1
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
+"Праведните еденици се бият по-добре през деня, а хаотичните през нощтта. "
+"Неутралните еденици не се влиаят от цикъла ден/нощ."
 
 #: data/tips.cfg:2
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
+"В кампаниите, можете да използвате еденици-ветерани от предишните битки, "
+"като използвате опцията 'привикване'."
 
 #: data/tips.cfg:3
 msgid ""
@@ -2079,6 +2154,10 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
+"Има 6 вида атаки: прободни, съсичащи, сблъсък, огън, студ и свещени. "
+"Различните еденици имат слбости към различни видове атаки. Като натиснете с "
+"десния бутон върху еденица и изберете 'Описание на еденицата', можете да "
+"видите каква устойчивост има към различните видове атаки. "
 
 #: data/tips.cfg:4
 msgid ""
@@ -2587,7 +2666,7 @@ msgstr ""
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
-msgstr ""
+msgstr "Древен Лич"
 
 #: data/units/Ancient_Lich.cfg:19
 msgid ""
@@ -2597,11 +2676,17 @@ msgid ""
 "where they stand. Should you ever come across one of these, flee fast and "
 "far, for they move faster than most undead."
 msgstr ""
+"Крайната форма, която не-мъртвите магьосници могат да достигнат, Древните "
+"Личове всяват ужас в сърцата на тези, които ги видят. Не само, че тяхното "
+"докосване е това на смъртта, но и техните магии са толкова силни, че могат "
+"да замразят и най-смелите на място. Случи ли се да се засечете с един от "
+"тези, бягайте бързо и надалеч, защото те се движат по-бързо от останалите не-"
+"мъртви. "
 
 #: data/units/Ancient_Lich.cfg:22 data/units/Demilich.cfg:18
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
 msgid "touch"
-msgstr ""
+msgstr "докосване"
 
 #: data/units/Ancient_Lich.cfg:23 data/units/Ancient_Lich.cfg:36
 #: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
@@ -2616,7 +2701,7 @@ msgstr ""
 #: data/units/Saurian_Tribalist.cfg:40 data/units/Spectre.cfg:33
 #: data/units/Wraith.cfg:33
 msgid "cold"
-msgstr ""
+msgstr "студено"
 
 #: data/units/Ancient_Lich.cfg:27 data/units/Blood_Bat.cfg:24
 #: data/units/Dark_Spirit.cfg:24 data/units/Demilich.cfg:23
@@ -2626,13 +2711,13 @@ msgstr ""
 #: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:26
 #: data/units/Vampire_Lady.cfg:39 data/units/Wraith.cfg:24
 msgid "drain"
-msgstr ""
+msgstr "източване"
 
 #: data/units/Ancient_Lich.cfg:35 data/units/Deathmaster.cfg:40
 #: data/units/Demilich.cfg:31 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 msgid "magic"
-msgstr ""
+msgstr "магия"
 
 #: data/units/Ancient_Lich.cfg:37 data/units/Arch_Mage.cfg:42
 #: data/units/Arch_Mage.cfg:121 data/units/Battle_Princess.cfg:80
@@ -2659,7 +2744,7 @@ msgstr ""
 #: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:183
 #: data/units/White_Mage.cfg:47 data/units/White_Mage.cfg:106
 msgid "magical"
-msgstr ""
+msgstr "магическа"
 
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
@@ -2739,13 +2824,15 @@ msgstr ""
 
 #: data/units/Arch_Mage.cfg:3
 msgid "Arch Mage"
-msgstr ""
+msgstr "Архи-магьосник"
 
 #: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:99
 msgid ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
 "enemies."
 msgstr ""
+"Лидери сред магьосниците, Архи-магьосниците изстрелват огромни огнени топки "
+"срещу противиците си. "
 
 #: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:102
 #: data/units/Deathmaster.cfg:19 data/units/Elder_Mage.cfg:22
@@ -2758,7 +2845,7 @@ msgstr ""
 #: data/units/Saurian_Soothsayer.cfg:22 data/units/Saurian_Tribalist.cfg:22
 #: data/units/Silver_Mage.cfg:77 data/units/Silver_Mage.cfg:164
 msgid "staff"
-msgstr ""
+msgstr "пръчка"
 
 #: data/units/Arch_Mage.cfg:39 data/units/Arch_Mage.cfg:118
 #: data/units/Elvish_High_Lord.cfg:36 data/units/Elvish_Lord.cfg:36
@@ -2766,7 +2853,7 @@ msgstr ""
 #: data/units/Red_Mage.cfg:39 data/units/Red_Mage.cfg:108
 #: data/units/Silver_Mage.cfg:93 data/units/Silver_Mage.cfg:180
 msgid "fireball"
-msgstr ""
+msgstr "огнена топка"
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:119
 #: data/units/Battle_Princess.cfg:78 data/units/Commander.cfg:121
@@ -2785,15 +2872,15 @@ msgstr ""
 #: data/units/Red_Mage.cfg:109 data/units/Silver_Mage.cfg:94
 #: data/units/Silver_Mage.cfg:181
 msgid "fire"
-msgstr ""
+msgstr "огън"
 
 #: data/units/Arch_Mage.cfg:82
 msgid "female^Arch Mage"
-msgstr ""
+msgstr "Архи-Магьосница"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
-msgstr ""
+msgstr "Наемен Убиец"
 
 #: data/units/Assassin.cfg:17
 msgid ""
@@ -2801,6 +2888,9 @@ msgid ""
 "opponent and backstab him, doing double damage. They can also throw poison-"
 "tipped knives at their enemies from long range."
 msgstr ""
+"Наемните Убийци са господари на нощтта. Те могат да атакуват опонента си в "
+"гръб, когато е обграден, като му нанасят двойни щети. Освен това могат да "
+"хвърлят отровени ножове срещу противниците си от голямо растояние. "
 
 #: data/units/Assassin.cfg:20 data/units/Dwarvish_Thunderer.cfg:20
 #: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Mage.cfg:20
@@ -2812,7 +2902,7 @@ msgstr ""
 #: data/units/Rogue.cfg:20 data/units/Thief.cfg:19 data/units/Trapper.cfg:24
 #: data/units/White_Mage.cfg:28 data/units/White_Mage.cfg:87
 msgid "dagger"
-msgstr ""
+msgstr "кама"
 
 #: data/units/Assassin.cfg:21 data/units/Assassin.cfg:48
 #: data/units/Battle_Princess.cfg:24 data/units/Battle_Princess.cfg:62
@@ -2885,17 +2975,17 @@ msgstr ""
 #: data/units/Wolf_Rider.cfg:21 data/units/Wraith.cfg:20
 #: data/units/Young_Ogre.cfg:19
 msgid "blade"
-msgstr ""
+msgstr "острие"
 
 #: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
 #: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
 #: src/actions.cpp:492
 msgid "backstab"
-msgstr ""
+msgstr "удар в гръб"
 
 #: data/units/Assassin.cfg:47 data/units/Rogue.cfg:38
 msgid "knife"
-msgstr ""
+msgstr "нож"
 
 #: data/units/Assassin.cfg:50 data/units/Cave_Spider.cfg:24
 #: data/units/Cuttle_Fish.cfg:37 data/units/Direwolf_Rider.cfg:35
@@ -2903,11 +2993,11 @@ msgstr ""
 #: data/units/Necrophage.cfg:24 data/units/Orcish_Assassin.cfg:41
 #: data/units/Orcish_Slayer.cfg:46
 msgid "poison"
-msgstr ""
+msgstr "отрова"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
-msgstr ""
+msgstr "Бандит"
 
 #: data/units/Bandit.cfg:16
 msgid ""
@@ -2915,6 +3005,9 @@ msgid ""
 "Wearing brown cloaks and black hoods, they steal from the peasants who live "
 "near them when not fighting against invaders."
 msgstr ""
+"Въоръжени с тежки боздугани, Бандитите са опитни в ограбване и убиване през "
+"нощтта. Носейки черни наметала и качулки, те крадат от хората или се "
+"сражават срещу нашественици. "
 
 #: data/units/Bandit.cfg:19 data/units/Drake_Gladiator.cfg:57
 #: data/units/Great_Troll.cfg:20 data/units/Heavy_Infantryman.cfg:19
@@ -2924,15 +3017,15 @@ msgstr ""
 #: data/units/Outlaw_Queen.cfg:27 data/units/Shock_Trooper.cfg:19
 #: data/units/Troll_Warrior.cfg:19 data/units/Warrior_King.cfg:25
 msgid "mace"
-msgstr ""
+msgstr "боздуган"
 
 #: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
 msgid "female^Princess"
-msgstr ""
+msgstr "Принцеса"
 
 #: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:56
 msgid "leadership,skirmisher"
-msgstr ""
+msgstr "лидерство, разузнавач"
 
 #: data/units/Battle_Princess.cfg:20
 msgid ""
@@ -2941,6 +3034,10 @@ msgid ""
 "great combatant and leader. Now battle-hardened and strong of will, she can "
 "now aid those around her in the art of combat."
 msgstr ""
+"С благородническа кръв, Принцесата е учила бойно майсторство с най-великите "
+"майстори на меча и бойни тактики с най-големите генерали, като е "
+"едновременно силен боец и лидер. Закалена от битките и със силна воля, тя "
+"подпомага тези около нея в изкуството на битката. "
 
 #: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
@@ -2980,11 +3077,11 @@ msgstr ""
 #: data/units/Sea_Orc.cfg:19 data/units/Sergeant.cfg:21
 #: data/units/Swordsman.cfg:23
 msgid "sword"
-msgstr ""
+msgstr "меч"
 
 #: data/units/Battle_Princess.cfg:42 data/units/Princess.cfg:42
 msgid "Princess"
-msgstr ""
+msgstr "Принцеса"
 
 #: data/units/Battle_Princess.cfg:58
 msgid ""
@@ -2994,16 +3091,21 @@ msgid ""
 "will fight better due to her presence. The Princess is a skilled skirmisher, "
 "and ignores enemy zones of control."
 msgstr ""
+"С благородническа кръв, Принцесата е учила бойно майсторство с най-великите "
+"майстори на меча и бойни тактики с най-големите генерали, като е "
+"едновременно силен боец и лидер. Едениците около Принцесата ще се бият по-"
+"добре заради нейното присъствие. Принцесата е също опитен разузнавач и "
+"избягва вражеските зони на контрол. "
 
 #: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:120
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:102
 #: data/units/Princess.cfg:77
 msgid "scepter of fire"
-msgstr ""
+msgstr "огнен скиптър"
 
 #: data/units/Blood_Bat.cfg:3
 msgid "Blood Bat"
-msgstr ""
+msgstr "Кървав Прилеп"
 
 #: data/units/Blood_Bat.cfg:16
 msgid ""
@@ -3012,17 +3114,21 @@ msgid ""
 "began the battle. Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
+"Кървавите Прилепи са бързи и изсмукват кръвта на противниците си, като по "
+"този начин се лекуват и дори стават по-силни отколкото са били преди "
+"битката. Такава е тяхната ярост, че козината на тези не-мъртви еденици е "
+"опетнена със кръвта на техните жертви. "
 
 #: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
 #: data/units/Direwolf_Rider.cfg:18 data/units/Goblin_Knight.cfg:18
 #: data/units/Sea_Serpent.cfg:19 data/units/Vampire_Bat.cfg:19
 #: data/units/Wolf_Rider.cfg:20
 msgid "fangs"
-msgstr ""
+msgstr "челюсти"
 
 #: data/units/Bone_Shooter.cfg:3
 msgid "Bone Shooter"
-msgstr ""
+msgstr "Костен Стрелец"
 
 #: data/units/Bone_Shooter.cfg:15
 msgid ""
@@ -3032,10 +3138,14 @@ msgid ""
 "Shooters' by their unfortunate enemies, these abominations are a terror to "
 "all who live."
 msgstr ""
+"Тези, чиито господари са по-опитни създатели, са екипирани с наистина зъл "
+"арсенал. Техните колчани са пълни със стрели, направени не от дърво, а от "
+"костите на техните поразени врагове. Наричани просто 'Костни Стрелци' от "
+"техните нещастни врагове, тези чудовища са ужас за всичко което е живо. "
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
 msgid "stab"
-msgstr ""
+msgstr "намушкване"
 
 #: data/units/Bone_Shooter.cfg:26 data/units/Bone_Shooter.cfg:39
 #: data/units/Bowman.cfg:38 data/units/Cavalier.cfg:49
@@ -3097,7 +3207,7 @@ msgstr ""
 #: data/units/Vampire_Lady.cfg:35 data/units/Wall_Guard.cfg:36
 #: data/units/Watch_Tower.cfg:18
 msgid "pierce"
-msgstr ""
+msgstr "пробдоно"
 
 #: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:37
 #: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:39
@@ -3116,11 +3226,11 @@ msgstr ""
 #: data/units/Skeleton_Archer.cfg:40 data/units/Soul_Shooter.cfg:38
 #: data/units/Trapper.cfg:41
 msgid "bow"
-msgstr ""
+msgstr "лък"
 
 #: data/units/Bowman.cfg:3
 msgid "Bowman"
-msgstr ""
+msgstr "Стелец с лък"
 
 #: data/units/Bowman.cfg:17
 msgid ""
@@ -3129,10 +3239,14 @@ msgid ""
 "rigorous a training as the spearman or heavy infantry, because their battle "
 "tactic requires more finess than brute strength."
 msgstr ""
+"Тренирани от малки в стрелба, младите Стрелци с лък са най-често срещаните "
+"бойци на растояние в армиите на Уестнот. Те не преминават през толкова "
+"строги тренировки като пехотинците, защото техните битки изискват повече "
+"финес, отколкото сурова сила."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
-msgstr ""
+msgstr "Елитен Конник"
 
 #: data/units/Cavalier.cfg:24
 msgid ""
@@ -3141,6 +3255,11 @@ msgid ""
 "allows them to strike at many a foe with impunity, and their mettle has "
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
+"Триумфална гледка на бойното поле, Елитните Конници са увладяли до "
+"съвършенство боя с меч и арбалет от гърба на коня. Тяхното владение на "
+"оръжия за отдалечен бой, им позволяват да повалят много от враговете си "
+"безнаказано, а техният кураж е обърнал хода на много велики битки в "
+"историята. "
 
 #: data/units/Cavalier.cfg:48 data/units/Death_Knight.cfg:36
 #: data/units/Dragoon.cfg:48 data/units/Duelist.cfg:36
@@ -3148,11 +3267,11 @@ msgstr ""
 #: data/units/Lieutenant.cfg:38 data/units/Orcish_Crossbowman.cfg:38
 #: data/units/Sergeant.cfg:38 data/units/Wall_Guard.cfg:35
 msgid "crossbow"
-msgstr ""
+msgstr "арбалет"
 
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
-msgstr ""
+msgstr "Кавалерист"
 
 #: data/units/Cavalryman.cfg:25
 msgid ""
@@ -3161,10 +3280,13 @@ msgid ""
 "field of battle like a horseman, but makes more of an effort to hold his "
 "position."
 msgstr ""
+"Най-добрите ездачи в Уестнот са наемани в армията, за да станат Кавалеристи. "
+"Кавалеристите, стриктно дисциплинирани, не се нахвърлят върху враговете си, "
+"както конниците, а полагат повече усилия да удържат позицията си. "
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
-msgstr ""
+msgstr "Гигантски Паяк"
 
 #: data/units/Cave_Spider.cfg:16
 msgid ""
@@ -3172,10 +3294,13 @@ msgid ""
 "They can bite at close range, thereby poisoning their enemies, and also can "
 "attack with a web at long range, slowing their foes down."
 msgstr ""
+"За Гигантските Паяци се казва, че бродят из дълбините на Кналга, поглъщайки "
+"много жертви. В близък бой, тяхното ухапване отравя враговете им, а в "
+"отдалежения бой техните лепкави мрежи забавят враговете им. "
 
 #: data/units/Cave_Spider.cfg:28
 msgid "web"
-msgstr ""
+msgstr "паяжина"
 
 #: data/units/Cave_Spider.cfg:39 data/units/Elvish_Druid.cfg:44
 #: data/units/Elvish_Enchantress.cfg:67 data/units/Elvish_Shaman.cfg:45
@@ -3183,11 +3308,11 @@ msgstr ""
 #: data/units/Elvish_Sylph.cfg:53 data/units/Goblin_Pillager.cfg:37
 #: data/units/Merman_Entangler.cfg:29 data/units/Merman_Netcaster.cfg:29
 msgid "slow"
-msgstr ""
+msgstr "забавя"
 
 #: data/units/Chocobone.cfg:3
 msgid "Chocobone"
-msgstr ""
+msgstr "Чокобоун"
 
 #: data/units/Chocobone.cfg:17
 msgid ""
@@ -3195,6 +3320,9 @@ msgid ""
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
+"Яздейки скелетите на огромни щраусоподобни птици, използвани някога за "
+"яздене от изчезнала цивилизация, Чокобоуните могат да се движат по-бързо от "
+"повечето ездачи. "
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
 #: data/units/Drake_Gladiator.cfg:43 data/units/Drake_Slasher.cfg:39
@@ -3216,18 +3344,18 @@ msgstr ""
 #: data/units/Saurian_Warrior.cfg:40 data/units/Spearman.cfg:19
 #: data/units/Spearman.cfg:33
 msgid "spear"
-msgstr ""
+msgstr "копие"
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
 #: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:366
 #: src/actions.cpp:483
 msgid "charge"
-msgstr ""
+msgstr "щурм"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
-msgstr ""
+msgstr "Базилиск"
 
 #: data/units/Cockatrice.cfg:16
 msgid ""
@@ -3235,19 +3363,22 @@ msgid ""
 "are deceiving. With just a glance at their enemies, Cockatrices can turn "
 "them into stone until the source of their power is destroyed."
 msgstr ""
+"На пръв поглед, тези митични същества изглеждат слаби, но външният им вид е "
+"подвеждащ. Само един поглед отправен към противниците им, ги превръща в "
+"камък, докато източникът на проклятието не бъде унищожен. "
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
-msgstr ""
+msgstr "поглед"
 
 #: data/units/Cockatrice.cfg:26 src/actions.cpp:738 src/actions.cpp:885
 #: src/reports.cpp:123
 msgid "stone"
-msgstr ""
+msgstr "камък"
 
 #: data/units/Commander.cfg:3 data/units/Commander.cfg:78
 msgid "Commander"
-msgstr ""
+msgstr "Главнокомандващ"
 
 #: data/units/Commander.cfg:20
 msgid ""
@@ -3257,6 +3388,10 @@ msgid ""
 "they also carry a bow to use when necessary. If the Commander is lost, so is "
 "the battle."
 msgstr ""
+"Ранкът на Главнокомандващ се държи от тези които водят воиските в битка. "
+"Техните лидерски умения повишават способностите на другите еденици в битка. "
+"Главнокомандващите са най-опитни с меча, но носят и лък, който използват при "
+"необходимост. Ако Главнокомандващият падне, битката е загубена. "
 
 #: data/units/Commander.cfg:95 data/units/Noble_Commander.cfg:22
 msgid ""
@@ -3304,7 +3439,7 @@ msgstr ""
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
-msgstr ""
+msgstr "female^Тъмната Кралица"
 
 #: data/units/Dark_Queen.cfg:17
 msgid ""
@@ -3312,14 +3447,17 @@ msgid ""
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
+"Злата кралица-майка Ашевиере е тероризирала Уестнот много години. Нейните "
+"магически способности я правят достоен съперник в битка, въпреки че нейната "
+"сила зависи най-вече от подчинените и. "
 
 #: data/units/Dark_Queen.cfg:22
 msgid "scepter"
-msgstr ""
+msgstr "скиптър"
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
-msgstr ""
+msgstr "Тъмен Дух"
 
 #: data/units/Dark_Spirit.cfg:16
 msgid ""
@@ -3327,20 +3465,22 @@ msgid ""
 "dead, and a force of dread in this world. Happily, they have rarely been "
 "seen in Wesnoth."
 msgstr ""
+"Тъмните Духове са посланници и носачи на известия от царството на мъртвите и "
+"сила на ужас в този свят. За щастие, те са срещани много рядко в Уестнот. "
 
 #: data/units/Dark_Spirit.cfg:19 data/units/Spectre.cfg:19
 #: data/units/Wraith.cfg:19
 msgid "baneblade"
-msgstr ""
+msgstr "острие на гибелта"
 
 #: data/units/Dark_Spirit.cfg:32 data/units/Ghost.cfg:31
 #: data/units/Spectre.cfg:32 data/units/Wraith.cfg:32
 msgid "wail"
-msgstr ""
+msgstr "ридание"
 
 #: data/units/Death_Knight.cfg:3
 msgid "Death Knight"
-msgstr ""
+msgstr "Рицар на смъртта"
 
 #: data/units/Death_Knight.cfg:16
 msgid ""
@@ -3349,15 +3489,19 @@ msgid ""
 "weapons as they did before, they command the Undead in their quest for "
 "revenge."
 msgstr ""
+"Понякога най-великите войни и генерали, прокълнати от чувства на омраза и "
+"предателство, се връщат на света като Рицари на Смъртта. Служейки си със "
+"същите оръжия, които са използвали преди, те командват не-мъртвите в "
+"собствените си мисии за отмъщение. "
 
 #: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:27
 #: data/units/Dwarvish_Steelclad.cfg:27
 msgid "battle axe"
-msgstr ""
+msgstr "бойна секира"
 
 #: data/units/Deathblade.cfg:4
 msgid "Deathblade"
-msgstr ""
+msgstr "Острие на Смъртта"
 
 #: data/units/Deathblade.cfg:17
 msgid ""
@@ -3365,10 +3509,14 @@ msgid ""
 "They are deadly fighters, ignoring all danger to themselves, and caring only "
 "about killing as many other as possible with their swirling blades."
 msgstr ""
+"Остриетата на смъртта ненавиждат живите и се стремят да унищожат всичко, "
+"което някога са обичали. Те са смъртоносни бойци, които пренебрегват "
+"всякаква опасност за себе си и се интересуват само от унищожението на "
+"колкото се може повече противници с техните въртящи се остриета. "
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
-msgstr ""
+msgstr "Господарят на Смъртта"
 
 #: data/units/Deathmaster.cfg:16
 msgid ""
@@ -3377,10 +3525,14 @@ msgid ""
 "are gradually claiming his mortal shell too, and with time, he will be a "
 "true undead and a terror to all that lives."
 msgstr ""
+"Лутанията на Гуити по тъмната пътека са му донесли сила, която обикновено е "
+"недостъпна за смъртните. Но на ужасна цена - не-мъртвите на които е предал "
+"душата си, бавно отнемат и смъртната му обвивка и с времето той ще бъде не-"
+"мъртъв и заплаха за всичко живо. "
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
-msgstr ""
+msgstr "Полу-Лич"
 
 #: data/units/Demilich.cfg:15
 msgid ""
@@ -3389,10 +3541,14 @@ msgid ""
 "becoming undead themselves. With time, they may become fully undead, and "
 "feared by all alike."
 msgstr ""
+"След твърде дълго занимание със забранените черни изкуства, тези магйосници "
+"са започнали да заплащат тежка дена. Тези Полу-Личове загубват телата си, "
+"като се превръщат в не-мъртви. След време те ще са не-мъртви, всяващи страх "
+"у всички. "
 
 #: data/units/Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
-msgstr ""
+msgstr "Ужасоездач"
 
 #: data/units/Direwolf_Rider.cfg:15
 msgid ""
@@ -3400,6 +3556,9 @@ msgid ""
 "giant wolves with poisoned claws. These Goblins are fearsome and merciless "
 "enemies."
 msgstr ""
+"Ужасоедачите са най-бързите ездачи, които могат да се намерят в Уестнот, "
+"яздейки ужасяваши гиганстки вълци с отровни лапи. Тези гоблини са страшни и "
+"безпощадни противници. "
 
 #: data/units/Direwolf_Rider.cfg:30 data/units/Drake_Burner.cfg:21
 #: data/units/Drake_Fire.cfg:24 data/units/Drake_Inferno.cfg:24
@@ -3409,11 +3568,11 @@ msgstr ""
 #: data/units/Shadow.cfg:20 data/units/Skeletal_Dragon.cfg:47
 #: data/units/Sleeping_Gryphon.cfg:18
 msgid "claws"
-msgstr ""
+msgstr "лапи"
 
 #: data/units/Dragoon.cfg:3
 msgid "Dragoon"
-msgstr ""
+msgstr "Драгун"
 
 #: data/units/Dragoon.cfg:24
 msgid ""
@@ -3423,6 +3582,11 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
+"По-талантливите кавалеристи в армиите на Уестност биват тренирани в "
+"употребата на арбалет и са снабдени с много по-силни коне. Добре защитени и "
+"силни с меча, тези войници могат да настъпват напред и са удържат позициите "
+"които заемат. Тяхната подвижност и жилавост им дават голяма стойност на "
+"бойното поле. "
 
 #: data/units/Drake_Burner.cfg:4
 msgid "Drake Burner"
@@ -3592,7 +3756,7 @@ msgstr ""
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
-msgstr ""
+msgstr "Драуг"
 
 #: data/units/Draug.cfg:16
 msgid ""
@@ -3603,15 +3767,21 @@ msgid ""
 "bought only by strength of arms.  The memory of their enemy, and the purpose "
 "of their struggle have long faded into oblivion."
 msgstr ""
+"Останиките на това, което някога са били легендарни войни, Драузите всяват "
+"страх в сърцата на тези, които им се противопоставят. Те не действат от "
+"злоба, но са завинаги свързани с царството на не-мъртвите, лутайки се сред "
+"най-великите си битки в паметта си и борейки се отчаяно за освобождение. За "
+"спокойствие, коеот могат да закупят само чрез оръжията си. Споменът за "
+"техните врагове и смисълът на тяхната борба отдавна са избледнели в забрава. "
 
 #: data/units/Draug.cfg:24 data/units/Dwarvish_Fighter.cfg:22
 #: data/units/Revenant.cfg:23 data/units/Skeleton.cfg:24
 msgid "axe"
-msgstr ""
+msgstr "секира"
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
-msgstr ""
+msgstr "Дуелист"
 
 #: data/units/Duelist.cfg:17
 msgid ""
@@ -3619,14 +3789,17 @@ msgid ""
 "allows them to attack and parry with only one hand, while they wield a "
 "crossbow in the other to shoot distant foes."
 msgstr ""
+"Дуелистите са господари на изкуството на боя с меча. Техният опит с рапирата "
+"им позволява да атакуват и парират с една ръка, докато боравят с арбалет в "
+"другата, за да се пазят от отдалечени врагове. "
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
-msgstr ""
+msgstr "рапира"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
-msgstr ""
+msgstr "Бесни Джуджета -войни"
 
 #: data/units/Dwarvish_Berserker.cfg:16
 msgid ""
@@ -3635,14 +3808,18 @@ msgid ""
 "battle is entered, Dwarvish Berserkers attack ferociously, continuing to "
 "push the attack until either they or their enemy lies dead."
 msgstr ""
+"Джуджетата са древна раса от силни бойци. Тежните бесни войни забравят всяка "
+"форма на защита, за сметка на огромни шпражения върху противниците им. "
+"Веднъж влезли в битка те атакуват с ярост, като продължават да се бият "
+"докато или те или противникът им падне мъртъв. "
 
 #: data/units/Dwarvish_Berserker.cfg:26 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
-msgstr ""
+msgstr "безумие"
 
 #: data/units/Dwarvish_Berserker.cfg:29 data/units/Dwarvish_Ulfserker.cfg:29
 msgid "berserk"
-msgstr ""
+msgstr "бесен"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
@@ -4157,7 +4334,7 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
-msgstr ""
+msgstr "Огнедишащ Дракон"
 
 #: data/units/Fire_Dragon.cfg:17
 msgid ""
@@ -4167,14 +4344,19 @@ msgid ""
 "its tail. Fire Dragons are cunning and cruel, and often take underlings whom "
 "they help lead to victory."
 msgstr ""
+"Дълголетни и ужасяващи, огнедишащите дракони могат да използват с умение "
+"огнения си дъх в битка. Допълнително, те имат злокобни захапки и могат да "
+"смазхат опонентите си с един замах на опашката си. Огнедишащите Дракони са "
+"хитри и жестоки и често помагат на по-слабите си помощници и ги изгигат до "
+"победа. "
 
 #: data/units/Fire_Dragon.cfg:21
 msgid "bite"
-msgstr ""
+msgstr "захапка"
 
 #: data/units/Fire_Dragon.cfg:39
 msgid "tail"
-msgstr ""
+msgstr "опашка"
 
 #: data/units/Fireball.cfg:4
 msgid "Fireball"
@@ -5412,7 +5594,7 @@ msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr ""
+msgstr "Сауриански Пророк"
 
 #: data/units/Saurian_Soothsayer.cfg:18
 msgid ""
@@ -5420,14 +5602,18 @@ msgid ""
 "aide to their friends regardless of terrain or opposition. In addition to "
 "cure their allies they possess knowledge of cold magic."
 msgstr ""
+"Саурианските племенни магьосници са ценени като лечители, туй като те могат "
+"да подпомагат събратята си в битка без да се интересуват от терена или "
+"опозицията. В допълнение към лечителските им способноти те владеят магии на "
+"студа. "
 
 #: data/units/Saurian_Soothsayer.cfg:20
 msgid "skirmisher,cures"
-msgstr ""
+msgstr "разузнавач, изцелява"
 
 #: data/units/Saurian_Tribalist.cfg:4
 msgid "Saurian Tribalist"
-msgstr ""
+msgstr "Сауриански Племенен Магьосник"
 
 #: data/units/Saurian_Tribalist.cfg:18
 msgid ""
@@ -5436,10 +5622,14 @@ msgid ""
 "their allies regardless of terrain or opposition. In addition to healing "
 "they possess knowledge of cold magic."
 msgstr ""
+"Въпреки тяхното летаргично, студенокръвно наследство, Саурианските племенни "
+"магьосници са ценени като лечители, туй като те могат да подпомагат "
+"събратята си в битка без да се интересуват от терена или опозицията. В "
+"допълнение към лечителските им способноти те владеят магии на студа. "
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
-msgstr ""
+msgstr "Сауриански войн"
 
 #: data/units/Saurian_Warrior.cfg:18
 msgid ""
@@ -5449,20 +5639,26 @@ msgid ""
 "opponents. Saurian Warriors possess the strength to take full advantage of "
 "this fact."
 msgstr ""
+"Саърианските войни са много опитни в употребата на копието. Въпреки тяхното "
+"летаргично, студенокръвно наследство, те са високо ценени разузнавачи, тъй "
+"като могат да се справят с тежки терени и да заобикалят противниците си. "
+"Саурианските войни притежават силата да се възползват напълно от тези факти. "
 
 #: data/units/Sea_Hag.cfg:3
 msgid "female^Sea Hag"
-msgstr ""
+msgstr "Морска Вещица"
 
 #: data/units/Sea_Hag.cfg:17
 msgid ""
 "Sea Hags are older and more experienced Nagas who have learned to control "
 "the water magic."
 msgstr ""
+"Морксите вещици са по-стари и по-опитни Наги, които са увладели водната "
+"магия. "
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr ""
+msgstr "Морски Орк"
 
 #: data/units/Sea_Orc.cfg:16
 msgid ""
@@ -5472,19 +5668,24 @@ msgid ""
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
+"Макар често гледани като по-долни от техните земни аналози, морските орки, "
+"са голям скок за всички гоблиноиди, туй като са се адаптирали към морска "
+"среда. С техните закривени мечове, те са способни бойци, въпреки че липсата "
+"на отдалечена атака и лоша защита на земя са стратегически слабости. "
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
-msgstr ""
+msgstr "Морска Змия"
 
 #: data/units/Sea_Serpent.cfg:16
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
+"Морските змии са гигантски чудовища, способни да потопят цели лодки сами. "
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
-msgstr ""
+msgstr "Сержант"
 
 #: data/units/Sergeant.cfg:18
 msgid ""
@@ -5492,10 +5693,13 @@ msgid ""
 "stronger than other fighters, but he has hopes of advancing to greatness. As "
 "the leader of his unit, he must survive for the battle to be won."
 msgstr ""
+"Сержантът е офицер в кралската армия. Не е по-силен оф другите бойци, но има "
+"надежди да постигне величие. Тъй като е лидерът на неговата група, той "
+"трябва да оцелее, за да бъде спечелена битката. "
 
 #: data/units/Shadow.cfg:3
 msgid "Shadow"
-msgstr ""
+msgstr "Сянка"
 
 #: data/units/Shadow.cfg:17
 msgid ""
@@ -5503,6 +5707,9 @@ msgid ""
 "These incorporeal fiends are able to hide at night, leaving no trace of "
 "their presence."
 msgstr ""
+"Души, очернени от зло, Сенките се скитат през нощтта атакувайки "
+"неподозиращите си врагове. Тези нематериални демони се крият през нощта, "
+"като не оставят и следа от присъствието си. "
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
@@ -5517,7 +5724,7 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
-msgstr ""
+msgstr "Сребърен Магьосник"
 
 #: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:161
 msgid ""
@@ -5525,14 +5732,17 @@ msgid ""
 "teleport from any friendly village to another, translating themselves in an "
 "instant. They are also highly resistant to most forms of magical attack."
 msgstr ""
+"Сребърните магьосници са най-подвижните от всички магове. Те могат да се "
+"телепортират от всяко приятелско селище до друго за един момент. Също така "
+"те са неподатливи на повечето форми на магически атаки. "
 
 #: data/units/Silver_Mage.cfg:142
 msgid "female^Silver Mage"
-msgstr ""
+msgstr "Сребърна Магьосница "
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "Скелетен Дракон"
 
 #: data/units/Skeletal_Dragon.cfg:17
 msgid ""
@@ -5542,14 +5752,19 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"Отдавна едно от най-великите живи същества, драконът се е превърнал само в "
+"кости и тъмни сухожилия. Дълго след смъртта си, той е вдигнат от тъмлите "
+"сили на некроманите, на които сега служи. Скелетният дракон може да не "
+"изглежда нещо повече от камара кости, но малко хора, мислещи по този начн са "
+"доживели да си поправят мниението. "
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
-msgstr ""
+msgstr "челюсти"
 
 #: data/units/Skeleton.cfg:3
 msgid "Skeleton"
-msgstr ""
+msgstr "Скелет"
 
 #: data/units/Skeleton.cfg:16
 msgid ""
@@ -5557,10 +5772,13 @@ msgid ""
 "dark magics. Like all undead, they are especially vulnerable to fire and "
 "holy spells, but resistant to bladed weapons."
 msgstr ""
+"Скелетите са войни, които са били убити в битка и върнати обратно с черни "
+"магии. Както всички не-мъртви, те са особено податливи на огнени и свещени "
+"атаки, но издръжливи на остриета. "
 
 #: data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
-msgstr ""
+msgstr "Скелетен Стрелец "
 
 #: data/units/Skeleton_Archer.cfg:14
 msgid ""
@@ -5568,18 +5786,21 @@ msgid ""
 "to battle. Like all undead, they are especially vulnerable to flames and "
 "holy attacks, but resistant to edged weapons."
 msgstr ""
+"Не-мъртвите стрелци са телата на паднали стрелци, върнати обратно в битка. "
+"Както всички не-мъртви, те са особено податливи на огнени и свещени атаки, "
+"но издръжливи на остриета. "
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
-msgstr ""
+msgstr "Спящ Грифон. "
 
 #: data/units/Sleeping_Gryphon.cfg:15
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr ""
+msgstr "Шшшшшт! Тихо, Грифонът спи. По-добре е да не го събуждате. "
 
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
-msgstr ""
+msgstr "Душегубец"
 
 #: data/units/Soul_Shooter.cfg:15
 msgid ""
@@ -5589,24 +5810,30 @@ msgid ""
 "nor caring what their purpose, or foes be.  They are driven only by a malice "
 "borne of the anguish of their empty and incoherent existence."
 msgstr ""
+"Най-силният стрелец на не-мъртвите стават тези които са били стрелци в "
+"предишният си живот. Те се странстват по бойните полета, движени от "
+"избледняващите спомени за пердходните си умения, без да знаят или да се "
+"интересуват кои са враговете им. Движени от злоба, родена от страданията от "
+"тяхното празно и несвързано същесвувание. "
 
 #: data/units/Soulless.cfg:3
 msgid "Soulless"
-msgstr ""
+msgstr "Бездушен"
 
 #: data/units/Soulless.cfg:16
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
 msgstr ""
+"Тези анимирани ходещи трупове са станали по-силни след битките им с живите. "
 
 #: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:24
 msgid "plague"
-msgstr ""
+msgstr "чума"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
-msgstr ""
+msgstr "Копиеносци "
 
 #: data/units/Spearman.cfg:16
 msgid ""
@@ -5615,10 +5842,14 @@ msgid ""
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
+"Копиеносците са  в сърцевината на човешките армии. Тези млади войници  са "
+"преминали перз основни тренировки и са в предните редици, за да поемат "
+"основата на битката. Заради дължината на копията си те винаги нанасят първия "
+"удар, дори когато се защитават. "
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
-msgstr ""
+msgstr "Привидение"
 
 #: data/units/Spectre.cfg:16
 msgid ""
@@ -5627,30 +5858,39 @@ msgid ""
 "strengthen themselves. They also have a terrible wail that freezes the heart "
 "of the weak."
 msgstr ""
+"Привиденията са най-силните призраци в армията на не-мъртвите. Те изполват "
+"силите си за да призоват призрачен меч, който изсмуква силите на враговете "
+"им, за да подсилят привиденията. Техните писъци смразяват сърцата на "
+"слабите. "
 
 #: data/units/Swordsman.cfg:3
 msgid "Swordsman"
-msgstr ""
+msgstr "Мечоносец"
 
 #: data/units/Swordsman.cfg:20
 msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting."
 msgstr ""
+"Мечоносците са  в сърцевината на човешките армии. Тези млади войници  са "
+"преминали перз основни тренировки и са в предните редици, за да поемат "
+"основата на битката. "
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "Пипала от Дълбините"
 
 #: data/units/Tentacle.cfg:17
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves."
 msgstr ""
+"Пипалата от дълбините са крайниците на на голямо чудовище, което се крие в "
+"дълбините. "
 
 #: data/units/Thief.cfg:3
 msgid "Thief"
-msgstr ""
+msgstr "Крадец"
 
 #: data/units/Thief.cfg:16
 msgid ""
@@ -5659,42 +5899,50 @@ msgid ""
 "opposite side of an enemy they are attacking. Being of chaotic disposition, "
 "Thieves fight better at night than day."
 msgstr ""
+"Крадците са подвижни и лесно изплъзващи се. което ги прави трудни за удряне. "
+"Опитни в ударите в гръб, крадците нанасят двойни щети, ако ударят еденица, "
+"от обратната страна на противника и. Те са хаотични и се бият по-добре пез "
+"нощтта. "
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
-msgstr ""
+msgstr "Бияч"
 
 #: data/units/Thug.cfg:16
 msgid "Thugs are bandits who use large clubs to beat their victims."
-msgstr ""
+msgstr "Биячите пребиват нещастните си жертви със големи пръти. "
 
 #: data/units/Transport_Galleon.cfg:3
 msgid "Transport Galleon"
-msgstr ""
+msgstr "Транспортен Галеон"
 
 #: data/units/Transport_Galleon.cfg:13
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"Транспортните галеони са добре екипирани кораби, които превозват бойци. "
+"Когато достигнат брега, те разтоварват бойците за атака. "
 
 #: data/units/Trapper.cfg:3
 msgid "Trapper"
-msgstr ""
+msgstr "Трапер"
 
 #: data/units/Trapper.cfg:16
 msgid ""
 "Trappers usually work supplying food for bandits and outlaws. Their hunting "
 "experience makes them most valuable at night and in forests and swamps."
 msgstr ""
+"Траперите обикновено снабдяват с храна бандитите и престъпниците. Техният "
+"опит в лова ги прави най-ценни през нощта в блатата и горите. "
 
 #: data/units/Triton.cfg:3
 msgid "Triton"
-msgstr ""
+msgstr "Тритон"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
-msgstr ""
+msgstr "Трол"
 
 #: data/units/Troll.cfg:16
 msgid ""
@@ -5702,10 +5950,12 @@ msgid ""
 "regenerate themselves, so that they recover from wounds on their own, even "
 "during battle."
 msgstr ""
+"Тролите са силни и брутални хуманоиди, които се възстановяват от раните си "
+"сами, дори по време на битка. "
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
-msgstr ""
+msgstr "Тролски Герой"
 
 #: data/units/Troll_Hero.cfg:16
 msgid ""
@@ -5713,10 +5963,12 @@ msgid ""
 "to regenerate themselves, so that they recover from wounds on their own, "
 "even during battle."
 msgstr ""
+"Тролските Герои са силни и брутални хуманоиди, които се възстановяват от "
+"раните си сами, дори по време на битка. "
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "Тролски Каменоломец"
 
 #: data/units/Troll_Rocklobber.cfg:17
 msgid ""
@@ -5724,20 +5976,25 @@ msgid ""
 "recovering from their wounds during battle. These trolls have armed "
 "themselves with large rocks they hurl at their opponents."
 msgstr ""
+"Тролите са хуманоидни чудовища, които имат удивителната способност да се "
+"регенерират по време на битка. Тези троли се въоръжават с огроми скали, "
+"които хвърлят по опнентите си. "
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
-msgstr ""
+msgstr "Тролски Боец"
 
 #: data/units/Troll_Warrior.cfg:16
 msgid ""
 "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, and "
 "are able to regenerate, healing their own wounds during combat."
 msgstr ""
+"Укрепнали от бнитките, тези Троли нанасят смъртоносни удари с боздуганиоте "
+"си и раните им заздравявят по време не битката. "
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
-msgstr ""
+msgstr "Тролче"
 
 #: data/units/Troll_Whelp.cfg:17
 msgid ""
@@ -5745,10 +6002,13 @@ msgid ""
 "recovering from their wounds during battle. Although these Trolls are still "
 "weak whelps, their race is known for developing amazingly fast."
 msgstr ""
+"Тролите са хуманоидни чудовища, които имат удивителната способност да се "
+"регенерират по време на битка. Въпреки че тези трол са още млади, тяхната "
+"раса е известна с това, че се развива много бързо. "
 
 #: data/units/Vampire_Bat.cfg:3
 msgid "Vampire Bat"
-msgstr ""
+msgstr "Прилеп Вампир"
 
 #: data/units/Vampire_Bat.cfg:16
 msgid ""
@@ -5756,24 +6016,29 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"Прилепите Вампири са не-мъртви летящи еденици, които атакуват, като хапят "
+"жертвите си. Докато техните зъби не са особено силни, силата на жертвите "
+"бива изсмукана, задно с тяхната кръв и се прехвърля на прилепите. "
 
 #: data/units/Vampire_Lady.cfg:3
 msgid "female^Vampire Lady"
-msgstr ""
+msgstr "Лейди Вампира "
 
 #: data/units/Vampire_Lady.cfg:17
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appeareance drinking "
 "the blood of the living."
 msgstr ""
+"Студена и красива, тя поддържа нейната вечна младост, като пие кръвта на "
+"живите. "
 
 #: data/units/Vampire_Lady.cfg:20
 msgid "blood kiss"
-msgstr ""
+msgstr "кървава целувка"
 
 #: data/units/Walking_Corpse.cfg:3
 msgid "Walking Corpse"
-msgstr ""
+msgstr "Ходещ Труп"
 
 #: data/units/Walking_Corpse.cfg:16
 msgid ""
@@ -5781,14 +6046,17 @@ msgid ""
 "Although weak in combat, these zombies can spread their curse to those they "
 "kill, increasing the army of undead."
 msgstr ""
+"Ходещите трупове са телата на мъртвите, движени ит тъмни магии. Въпреки че "
+"са слаби в битка, тези зомбита разпространяват тяхното проклятие, върху "
+"тези, които убият, увеличавайки армията от не-мъртви. "
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
-msgstr ""
+msgstr "Стенен Страж"
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "разузнавач, регенериране"
 
 #: data/units/Wall_Guard.cfg:32
 msgid ""
@@ -5798,10 +6066,14 @@ msgid ""
 "are mounted on high walls, they cannot move anywhere except on walls and the "
 "roofs of castles."
 msgstr ""
+"Охраната на столицата Уелдин, Стенните Стражи, патрулират по стените на "
+"града, обстрелвайки техните противници със арбалети, преди опонентите им да "
+"могат да отвърнат дори с отдалечена атака. Тъй като са качени на високите "
+"стени те не могат да се придвижват по други места. "
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
-msgstr ""
+msgstr "Цар Боец"
 
 #: data/units/Warrior_King.cfg:22
 msgid ""
@@ -5809,20 +6081,25 @@ msgid ""
 "protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
 "units, thereby increasing their fighting efficiency."
 msgstr ""
+"Също както лидерите на човешките царства, Царете отговарят за управлението и "
+"защитата на техните подчинени. Те могат да координират атаките на едениците "
+"от 1-во и 2-ро ниво, повишавайки тяхната бойна ефективност. "
 
 #: data/units/Watch_Tower.cfg:3
 msgid "Watch Tower"
-msgstr ""
+msgstr "Стражева Кула"
 
 #: data/units/Watch_Tower.cfg:14
 msgid ""
 "Watch Towers are good places from which to spot enemies and then shoot "
 "miscellaneous items at them with ballistas."
 msgstr ""
+"Стражевите Кули служат за наблюдение за вражески еденици, които биват "
+"обстрелвани с балисити. "
 
 #: data/units/White_Mage.cfg:3
 msgid "White Mage"
-msgstr ""
+msgstr "Бял Магьосник"
 
 #: data/units/White_Mage.cfg:25 data/units/White_Mage.cfg:84
 msgid ""
@@ -5831,14 +6108,18 @@ msgid ""
 "village. White Mages are potent in battle against the undead, which suffer "
 "high damage from their light beam"
 msgstr ""
+"Белите магьосници са слаби в битка, но опитни лечители. Едениците, "
+"разположени до тях ще бъдат излекувани, също както когато се намират в "
+"селище. Белите магьосници са наи-полезни в битките срещу не=мъртвите, които "
+"понасят големи щети от техните светлинни лъчове. "
 
 #: data/units/White_Mage.cfg:65
 msgid "female^White Mage"
-msgstr ""
+msgstr "Бяла Магьосница"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
-msgstr ""
+msgstr "Вълкоездач"
 
 #: data/units/Wolf_Rider.cfg:17
 msgid ""
@@ -5847,6 +6128,11 @@ msgid ""
 "as fast scouts for the goblinoid army. Raised in the orcs' dark caverns, "
 "Wolf Riders can brave even the mountains, unlike most other mounted units."
 msgstr ""
+"По-малки и по-слаби от орките, гоблините са се научили да обучават големи "
+"вълци и да ги яздят, като са създали внушителните Вълкоездачи, които са "
+"разузнавачите на гоблиноидната армия. Отгледани в тъмните пещери на орките, "
+"вълкоездачите могат да покоряват дори планините, за разлика от другите "
+"еденици, които яздят коне. "
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -5877,17 +6163,20 @@ msgstr ""
 
 #: data/units/Yeti.cfg:3
 msgid "Yeti"
-msgstr ""
+msgstr "Йети"
 
 #: data/units/Yeti.cfg:30
 msgid ""
 "Yetis are giant humanoid creatures that live in the mountains. Few have ever "
 "survived an encounter with one, and their existence is doubted by many."
 msgstr ""
+"Йетитата са гигантски хуманоидни създания които живеят в планините. Много "
+"малко са оцелели след срещата си с Йети и затова тяхното съществуване е "
+"оспорвано от много хора. "
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
-msgstr ""
+msgstr "Млад Огър"
 
 #: data/units/Young_Ogre.cfg:15
 msgid ""
@@ -5895,16 +6184,22 @@ msgid ""
 "manage weapons skillfully, so they are given a large blade, in the hope that "
 "they will be smart enough to swing it at their enemies, not their throat."
 msgstr ""
+"Докато са млади, някои Огъри биват взети в армията на обучение. Туй като не "
+"могат да се справят добре с оръжията, им бива връчено огромно острие, с "
+"надеждата да бъдат достатъчно умни да го размахват срещу враговете си, а не "
+"собствените си гърла. "
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
-msgstr ""
+msgstr "Младеж"
 
 #: data/units/Youth.cfg:17
 msgid ""
 "Today almost a boy, by his devotion to the crown he is seeking to become a "
 "Lord -- to join the elite of human fighters."
 msgstr ""
+"Все още почти момче, с отдаването си на короната той се опитва да стане Лорд "
+"- да се присъедени към елита на бойците. "
 
 #: src/about.cpp:46
 msgid "+Core Developers"
@@ -6647,43 +6942,45 @@ msgstr ""
 
 #: src/mapgen_dialog.cpp:87 src/playturn.cpp:1615
 msgid "Villages"
-msgstr ""
+msgstr "Села"
 
 #: src/mapgen_dialog.cpp:88
 msgid "Landform"
-msgstr ""
+msgstr "Формация на земната маса"
 
 #: src/mapgen_dialog.cpp:194
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Пътища между замъците"
 
 #: src/mapgen_dialog.cpp:251
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 квадратчета"
 
 #: src/mapgen_dialog.cpp:256
 msgid "Coastal"
-msgstr ""
+msgstr "Крайбрежна"
 
 #: src/mapgen_dialog.cpp:256
 msgid "Inland"
-msgstr ""
+msgstr "Нормална"
 
 #: src/mapgen_dialog.cpp:256
 msgid "Island"
-msgstr ""
+msgstr "Островна"
 
 #: src/multiplayer.cpp:93
 msgid "The maximum turns the game will go for"
-msgstr ""
+msgstr "Максмалният брой ходове, които играта може да продължи. "
 
 #: src/multiplayer.cpp:99
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "Сумата в злато, която едно село носи всеки ход. "
 
 #: src/multiplayer.cpp:106
 msgid "The amount of experience a unit needs to advance"
 msgstr ""
+"Количеството точки на опитност, които една еденица трябва да натрупа, за да "
+"бъде повишена."
 
 #: src/multiplayer.cpp:108
 msgid "Fog Of War"
@@ -6692,36 +6989,38 @@ msgstr ""
 #: src/multiplayer.cpp:110
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
+"Противниковите еденици не могат да се видят, докато са извън обсега на "
+"вашите еденици"
 
 #: src/multiplayer.cpp:114
 msgid "The map is unknown until your units explore it"
-msgstr ""
+msgstr "Картата не може да се жиди, докато едениците ви не я разкрият. "
 
 #: src/multiplayer.cpp:116 src/reports.cpp:376
 msgid "Observers"
-msgstr ""
+msgstr "Наблюдаващи"
 
 #: src/multiplayer.cpp:118
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "Позволи на хората, които не играят, да наблюдават играта. "
 
 #: src/multiplayer.cpp:120 src/multiplayer_client.cpp:151
 #: src/multiplayer_connect.cpp:52 src/show_dialog.cpp:487
 #: src/show_dialog.cpp:493
 msgid "Cancel"
-msgstr ""
+msgstr "Отказ"
 
 #: src/multiplayer.cpp:121 src/show_dialog.cpp:473 src/show_dialog.cpp:486
 msgid "Ok"
-msgstr ""
+msgstr "Приеми"
 
 #: src/multiplayer.cpp:123
 msgid "Regenerate"
-msgstr ""
+msgstr "Регенериране"
 
 #: src/multiplayer.cpp:125
 msgid "Settings..."
-msgstr ""
+msgstr "Настройки..."
 
 #: src/multiplayer.cpp:129
 msgid "Share View"
@@ -6741,73 +7040,75 @@ msgstr ""
 
 #: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:165
 msgid "Create Game"
-msgstr ""
+msgstr "Направи игра"
 
 #: src/multiplayer.cpp:174
 msgid "Name of game"
-msgstr ""
+msgstr "Име на играта"
 
 #: src/multiplayer.cpp:177
 msgid "$login's game"
-msgstr ""
+msgstr "Игра на $login"
 
 #: src/multiplayer.cpp:188
 msgid "Map to play"
-msgstr ""
+msgstr "Карта за игра"
 
 #: src/multiplayer.cpp:283
 msgid "Era"
-msgstr ""
+msgstr "Ера"
 
 #: src/multiplayer.cpp:359
 msgid "Unlimited"
-msgstr ""
+msgstr "Неограничени"
 
 #: src/multiplayer.cpp:363
 msgid "Turns"
-msgstr ""
+msgstr "Ходове"
 
 #: src/multiplayer.cpp:371
 msgid "Village Gold"
-msgstr ""
+msgstr "Злато от селища"
 
 #: src/multiplayer.cpp:383
 msgid "Experience Requirements"
-msgstr ""
+msgstr "Изисквания към опит"
 
 #: src/multiplayer.cpp:515
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
 msgstr ""
+"Играта не можа да използжа порта който и е нужен за да направи мрежова игра. "
+"Играчи от мрежата няма да могат да се свържат към тази игра. "
 
 #: src/multiplayer.cpp:515
 msgid "Warning"
-msgstr ""
+msgstr "Предупреждение"
 
 #: src/multiplayer_client.cpp:64
 msgid "Receiving game list..."
-msgstr ""
+msgstr "Приемем лист с игрите.... "
 
 #: src/multiplayer_client.cpp:126 src/playturn.cpp:1711
 msgid "unit^Gold"
-msgstr ""
+msgstr "unit^злато"
 
 #: src/multiplayer_client.cpp:145
 msgid "Waiting for game to start..."
-msgstr ""
+msgstr "Изчаквам играта за започне"
 
 #: src/multiplayer_client.cpp:253
 msgid "Connect to Host"
-msgstr ""
+msgstr "Свързване към сървър"
 
 #: src/multiplayer_client.cpp:255
 msgid "Choose host to connect to"
-msgstr ""
+msgstr "Изберете сървър към които да се вържете"
 
 #: src/multiplayer_client.cpp:273
 msgid "Connecting to remote host..."
-msgstr ""
+msgstr "Свързване към отдалечена машина"
 
 #: src/multiplayer_client.cpp:302
 msgid "You must log in to this server"
@@ -6815,468 +7116,492 @@ msgstr ""
 
 #: src/multiplayer_client.cpp:382
 msgid "Getting game data..."
-msgstr ""
+msgstr "Приемам данните за играта..."
 
 #: src/multiplayer_client.cpp:434
 msgid "There are no available sides in this game."
-msgstr ""
+msgstr "Няма свободни страни в играта"
 
 #: src/multiplayer_client.cpp:482
 msgid "Choose your side:"
-msgstr ""
+msgstr "Изберете странта си:"
 
 #: src/multiplayer_client.cpp:513
 msgid "The game has been cancelled"
-msgstr ""
+msgstr "Играта бе отказана"
 
 #: src/multiplayer_client.cpp:517
 msgid "The side you have chosen is no longer available"
-msgstr ""
+msgstr "Страната която сте избрали вече не е свободна. "
 
 #: src/multiplayer_client.cpp:553
 msgid "Show replay of game up to save point?"
-msgstr ""
+msgstr "Да покажа ли запис от играта до момента на запазване?"
 
 #: src/multiplayer_client.cpp:689 src/multiplayer_client.cpp:692
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: src/multiplayer_client.cpp:776
 msgid "Leader: "
-msgstr ""
+msgstr "Лидер:"
 
 #: src/multiplayer_client.cpp:778
 msgid "Recruits: "
-msgstr ""
+msgstr "Наборници:"
 
 #: src/multiplayer_connect.cpp:50
 msgid " Computer vs Computer "
-msgstr ""
+msgstr "Компютър срещу компютър"
 
 #: src/multiplayer_connect.cpp:51
 msgid "I'm Ready"
-msgstr ""
+msgstr "Аз съм готов"
 
 #: src/multiplayer_connect.cpp:96
 msgid "This is not a multiplayer save"
-msgstr ""
+msgstr "Това не е игра за мултиплейър"
 
 #: src/multiplayer_connect.cpp:246
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
+"Условия за победа\n"
+"@Убиийте лидерите на врага/враговете"
 
 #: src/multiplayer_connect.cpp:266
 msgid "Network Player"
-msgstr ""
+msgstr "Играч в мрежата"
 
 #: src/multiplayer_connect.cpp:267
 msgid "Local Player"
-msgstr ""
+msgstr "Локален Играч"
 
 #: src/multiplayer_connect.cpp:268 src/multiplayer_connect.cpp:532
 #: src/multiplayer_connect.cpp:626 src/multiplayer_connect.cpp:727
 msgid "Computer Player"
-msgstr ""
+msgstr "Компютър"
 
 #: src/multiplayer_connect.cpp:269
 msgid "Empty"
-msgstr ""
+msgstr "Празно"
 
 #: src/multiplayer_connect.cpp:296 src/multiplayer_connect.cpp:380
 #: src/multiplayer_connect.cpp:383
 msgid "Team"
-msgstr ""
+msgstr "Отбор"
 
 #: src/multiplayer_connect.cpp:307
 msgid "Red"
-msgstr ""
+msgstr "Червен"
 
 #: src/multiplayer_connect.cpp:309
 msgid "Blue"
-msgstr ""
+msgstr "Син"
 
 #: src/multiplayer_connect.cpp:311
 msgid "Green"
-msgstr ""
+msgstr "Зелен"
 
 #: src/multiplayer_connect.cpp:313
 msgid "Yellow"
-msgstr ""
+msgstr "Жълт"
 
 #: src/multiplayer_connect.cpp:315
 msgid "Purple"
-msgstr ""
+msgstr "Лилав"
 
 #: src/multiplayer_connect.cpp:317
 msgid "Orange"
-msgstr ""
+msgstr "Оранжев"
 
 #: src/multiplayer_connect.cpp:319
 msgid "Grey"
-msgstr ""
+msgstr "Сив"
 
 #: src/multiplayer_connect.cpp:321
 msgid "White"
-msgstr ""
+msgstr "Бял"
 
 #: src/multiplayer_connect.cpp:323
 msgid "Brown"
-msgstr ""
+msgstr "Кафяв"
 
 #: src/multiplayer_connect.cpp:369
 msgid "Game Lobby"
-msgstr ""
+msgstr "Лоби на играта"
 
 #: src/multiplayer_connect.cpp:372 src/multiplayer_connect.cpp:374
 msgid "Player/Type"
-msgstr ""
+msgstr "Играч/Тип"
 
 #: src/multiplayer_connect.cpp:375 src/multiplayer_connect.cpp:378
 msgid "Faction"
-msgstr ""
+msgstr "Фракция"
 
 #: src/multiplayer_connect.cpp:385 src/multiplayer_connect.cpp:388
 msgid "Color"
-msgstr ""
+msgstr "Цвят"
 
 #: src/multiplayer_connect.cpp:390 src/multiplayer_connect.cpp:392
 #: src/playlevel.cpp:792 src/playturn.cpp:1614 src/playturn.cpp:1621
 msgid "Gold"
-msgstr ""
+msgstr "Злато"
 
 #: src/multiplayer_connect.cpp:585
 msgid "Waiting for network players to join"
-msgstr ""
+msgstr "Изчакване за играчи да се присъеденят. "
 
 #: src/multiplayer_lobby.cpp:148
 msgid "1"
-msgstr ""
+msgstr "едно"
 
 #: src/multiplayer_lobby.cpp:148
 msgid "Vacant Slot"
-msgstr ""
+msgstr "Празно място"
 
 #: src/multiplayer_lobby.cpp:148
 msgid "Vacant Slots"
-msgstr ""
+msgstr "Празни места"
 
 #: src/multiplayer_lobby.cpp:163
 msgid "Observe Game"
-msgstr ""
+msgstr "Наблюдавай игра"
 
 #: src/multiplayer_lobby.cpp:166
 msgid "Quit"
-msgstr ""
+msgstr "Изход"
 
 #: src/playlevel.cpp:701
 msgid "Game Over"
-msgstr ""
+msgstr "Край на Играта"
 
 #: src/playlevel.cpp:702
 msgid "The game is over."
-msgstr ""
+msgstr "Играта приключи. "
 
 #: src/playlevel.cpp:725
 msgid "Defeat"
-msgstr ""
+msgstr "Загуба"
 
 #: src/playlevel.cpp:726
 msgid "You have been defeated!"
-msgstr ""
+msgstr "Вие бяхте победени!"
 
 #: src/playlevel.cpp:782
 msgid "Remaining gold"
-msgstr ""
+msgstr "Оставащо злато"
 
 #: src/playlevel.cpp:785
 msgid "Early finish bonus"
-msgstr ""
+msgstr "Бонус за ранно завършване"
 
 #: src/playlevel.cpp:787
 msgid "per turn"
-msgstr ""
+msgstr "за ход"
 
 #: src/playlevel.cpp:788
 msgid "Turns finished early"
-msgstr ""
+msgstr "Ходове, оставащи до края"
 
 #: src/playlevel.cpp:790
 msgid "Bonus"
-msgstr ""
+msgstr "Бонус"
 
 #: src/playlevel.cpp:797
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr ""
+msgstr "80% от златото се запазва за следващата карта"
 
 #: src/playlevel.cpp:797
 msgid "Retained Gold"
-msgstr ""
+msgstr "Запазено злато"
 
 #: src/playlevel.cpp:801
 msgid "Victory"
-msgstr ""
+msgstr "Победа"
 
 #: src/playlevel.cpp:802
 msgid "You have emerged victorious!"
-msgstr ""
+msgstr "Вие сте победител!"
 
 #: src/playlevel.cpp:826
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"Мрежата бе прекъсната и играта не може да продължи. Искате ли да я запазите?"
 
 #: src/playturn.cpp:81
 msgid "It is now your turn"
-msgstr ""
+msgstr "Сега е ваш ход"
 
 #: src/playturn.cpp:504
 msgid "Attacker"
-msgstr ""
+msgstr "Атакуващ"
 
 #: src/playturn.cpp:506
 msgid "Defender"
-msgstr ""
+msgstr "Защитаващ се"
 
 #: src/playturn.cpp:526 src/playturn.cpp:599
 msgid "Damage Calculations"
-msgstr ""
+msgstr "Пресмятания за щетите"
 
 #: src/playturn.cpp:578 src/reports.cpp:209
 msgid "vs"
-msgstr ""
+msgstr "срещу"
 
 #: src/playturn.cpp:611
 msgid "Attack Enemy"
-msgstr ""
+msgstr "Атакувай противника"
 
 #: src/playturn.cpp:612
 msgid "Choose weapon"
-msgstr ""
+msgstr "Избор на оръжие"
 
 #: src/playturn.cpp:1200
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
+"Все още не сте извършили нищо този ход. Наистина ли искате да прекратите?"
 
 #: src/playturn.cpp:1209 src/playturn.cpp:1214
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
+"Някой еденици все още имат точки за движение. Наистина ли искате да "
+"прекратите хода?"
 
 #: src/playturn.cpp:1229
 msgid "Auto-Save"
-msgstr ""
+msgstr "Автоматично запазване"
 
 #: src/playturn.cpp:1231
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
+"Автоматичното запазване на играта не може да бъде направено. Моля запазете "
+"играта ръчно. "
 
 #: src/playturn.cpp:1430
 msgid "Rename Unit"
-msgstr ""
+msgstr "Преименувай еденица"
 
 #: src/playturn.cpp:1478
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Имената на игрите не могат да съдържат специални символи като кавички и "
+"наклонени черти. Моля изберете друго име."
 
 #: src/playturn.cpp:1489
 msgid "Saved"
-msgstr ""
+msgstr "Запазена"
 
 #: src/playturn.cpp:1489
 msgid "The game has been saved"
-msgstr ""
+msgstr "Играта бе запазена"
 
 #: src/playturn.cpp:1613
 msgid "Leader"
-msgstr ""
+msgstr "Лидер"
 
 #: src/playturn.cpp:1617
 msgid "Upkeep"
-msgstr ""
+msgstr "Надници"
 
 #: src/playturn.cpp:1618
 msgid "Income"
-msgstr ""
+msgstr "Приход"
 
 #: src/playturn.cpp:1717
 msgid "You have no units available to recruit."
-msgstr ""
+msgstr "Нямате еденици на разположение за набор"
 
 #: src/playturn.cpp:1729
 msgid "Recruit"
-msgstr ""
+msgstr "Набор"
 
 #: src/playturn.cpp:1730 src/playturn.cpp:1909
 msgid "Select unit"
-msgstr ""
+msgstr "Избор на еденица"
 
 #: src/playturn.cpp:1759
 msgid "You don't have enough gold to recruit that unit"
-msgstr ""
+msgstr "Нямате достатъчно злато за да наемете тази еденица. "
 
 #: src/playturn.cpp:1817
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
+"Господарю, тази еденица е опитна и има повишения. Наистина ли искате да я "
+"разпуснете?"
 
 #: src/playturn.cpp:1819
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
+"Господарю, тази еденица е близко до повишение. Наистина ли искате да я "
+"разпуснете?"
 
 #: src/playturn.cpp:1824
 msgid "her"
-msgstr ""
+msgstr "нея"
 
 #: src/playturn.cpp:1824
 msgid "him"
-msgstr ""
+msgstr "него"
 
 #: src/playturn.cpp:1865
 msgid "You are separated from your soldiers and may not recall them"
-msgstr ""
+msgstr "Разделени сте от вашите войници и не можете да ги привиквате. "
 
 #: src/playturn.cpp:1867
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
+"Няма бойци за привикване. \n"
+"(Трябва да имате оцелели ветерани от предишни битки)"
 
 #: src/playturn.cpp:1873
 msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr ""
+msgstr "Трябва да имате поне $cost златни монети за да привикате еденица"
 
 #: src/playturn.cpp:1896
 msgid "Dismiss Unit"
-msgstr ""
+msgstr "Разпусни еденицата"
 
 #: src/playturn.cpp:1908
 msgid "Recall"
-msgstr ""
+msgstr "Привикване"
 
 #: src/playturn.cpp:1953
 msgid "Message"
-msgstr ""
+msgstr "Съобщение"
 
 #: src/playturn.cpp:1953
 msgid "Send to allies only"
-msgstr ""
+msgstr "Изпращане само на съюзници"
 
 #: src/playturn.cpp:2047
 msgid "Location"
-msgstr ""
+msgstr "Местоположение"
 
 #: src/playturn.cpp:2094
 msgid "Unit List"
-msgstr ""
+msgstr "Лист с еденици"
 
 #: src/playturn.cpp:2129 src/playturn.cpp:2191
 msgid "Recruits"
-msgstr ""
+msgstr "Набори"
 
 #: src/playturn.cpp:2135 src/playturn.cpp:2195
 msgid "Recalls"
-msgstr ""
+msgstr "Привиквания"
 
 #: src/playturn.cpp:2141 src/playturn.cpp:2199
 msgid "Advancements"
-msgstr ""
+msgstr "Повишения"
 
 #: src/playturn.cpp:2147 src/playturn.cpp:2203
 msgid "Losses"
-msgstr ""
+msgstr "Загуби"
 
 #: src/playturn.cpp:2153 src/playturn.cpp:2207
 msgid "Kills"
-msgstr ""
+msgstr "Убиийства"
 
 #: src/playturn.cpp:2159
 msgid "Damage Inflicted"
-msgstr ""
+msgstr "Щети нанесени"
 
 #: src/playturn.cpp:2165
 msgid "Damage Taken"
-msgstr ""
+msgstr "Щети понесени"
 
 #: src/playturn.cpp:2171
 msgid "Damage Inflicted (EV)"
-msgstr ""
+msgstr "Щети нанесени"
 
 #: src/playturn.cpp:2178
 msgid "Damage Taken (EV)"
-msgstr ""
+msgstr "Щети понесени"
 
 #: src/playturn.cpp:2184
 msgid "Statistics"
-msgstr ""
+msgstr "Статистики"
 
 #: src/playturn.cpp:2221
 msgid "Search"
-msgstr ""
+msgstr "Търсене"
 
 #: src/playturn.cpp:2231
 msgid "prompt^Command:"
-msgstr ""
+msgstr "prompt^Команда:"
 
 #: src/playturn.cpp:2242
 msgid "Chat Log"
-msgstr ""
+msgstr "Чат Лог"
 
 #: src/playturn.cpp:2307
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
+msgstr "Не бе открит знак или еденица съдържащ/а текста '$search'."
 
 #: src/playturn.cpp:2388
+#, fuzzy
 msgid "Place Label"
-msgstr ""
+msgstr "Знак"
 
 #: src/playturn.cpp:2389
+#, fuzzy
 msgid "Label"
-msgstr ""
+msgstr "Знак"
 
 #: src/playturn.cpp:2521
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
+"Игрите са разсинхронизирани и ще се наложи да бъдат прекратени. Искате ли да "
+"запазите лог-файл с грешките от играта?"
 
 #: src/playturn.cpp:2573
 msgid "Replace with AI"
-msgstr ""
+msgstr "Замени с компютър"
 
 #: src/playturn.cpp:2574
 msgid "Replace with local player"
-msgstr ""
+msgstr "Замени с локален играч"
 
 #: src/playturn.cpp:2575
 msgid "Abort game"
-msgstr ""
+msgstr "Откажи играта"
 
 #: src/playturn.cpp:2578
 msgid "Replace with "
-msgstr ""
+msgstr "Замени със"
 
 #: src/playturn.cpp:2582
 msgid "has left the game. What do you want to do?"
-msgstr ""
+msgstr "излезе от играта. Какво искате да направите?"
 
 #: src/reports.cpp:106
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
+"Тази еденица е невидима. Не може а бъде видяна или атакувана от вражески "
+"еденици. "
 
 #: src/reports.cpp:111
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
 msgstr ""
+"Тази еденица е забавена. Ще се движи наполовина по-бавно и ще има една атака "
+"по-малко при битка. "
 
 #: src/reports.cpp:116
 msgid ""
@@ -7287,100 +7612,105 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
+"Тази еденица е отровена. Ще губи по 8 точки от живота си, всеки ход, докато "
+"не бъде излекувана от приятелска еденица с умението 'изцеление'.\n"
+"\n"
+"Едениците не могат да умрат само от отрова. Тя не може да свали точките им "
+"на живот под 1. "
 
 #: src/reports.cpp:123
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
+msgstr "Тази еденица е вкаменена. Не може да атакува или да се мести/ "
 
 #: src/reports.cpp:233
 msgid "damage"
-msgstr ""
+msgstr "щети"
 
 #: src/reports.cpp:238
 msgid "hexes"
-msgstr ""
+msgstr "квадратчета"
 
 #: src/reports.cpp:255
 msgid "Lawful units"
-msgstr ""
+msgstr "Праведни еденици"
 
 #: src/reports.cpp:257
 msgid "Neutral units"
-msgstr ""
+msgstr "Неутрални еденици"
 
 #: src/reports.cpp:258
 msgid "Chaotic units"
-msgstr ""
+msgstr "Хаотични еденици"
 
 #: src/reports.cpp:312
 msgid "Owned village"
-msgstr ""
+msgstr "Собствено селище"
 
 #: src/reports.cpp:314
 msgid "Enemy village"
-msgstr ""
+msgstr "Противниково селище"
 
 #: src/reports.cpp:316
 msgid "Allied village"
-msgstr ""
+msgstr "Селище на съюзник"
 
 #: src/show_dialog.cpp:636
 msgid "Help"
-msgstr ""
+msgstr "Помощ"
 
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
-msgstr ""
+msgstr "TitleScreen button^Ръководство"
 
 #: src/titlescreen.cpp:183
 msgid "TitleScreen button^Campaign"
-msgstr ""
+msgstr "TitleScreen button^Кампании"
 
 #: src/titlescreen.cpp:184
 msgid "TitleScreen button^Multiplayer"
-msgstr ""
+msgstr "TitleScreen button^Мултиплейър"
 
 #: src/titlescreen.cpp:185
 msgid "TitleScreen button^Load"
-msgstr ""
+msgstr "TitleScreen button^Зареди игра"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Language"
-msgstr ""
+msgstr "TitleScreen button^Език"
 
 #: src/titlescreen.cpp:187
 msgid "TitleScreen button^Preferences"
-msgstr ""
+msgstr "TitleScreen button^Настройки"
 
 #: src/titlescreen.cpp:189
 msgid "TitleScreen button^Quit"
-msgstr ""
+msgstr "TitleScreen button^Изход"
 
 #: src/titlescreen.cpp:190
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Ръководство (tutorial) за запознаване с играта. "
 
 #: src/titlescreen.cpp:191
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "Нова кампания"
 
 #: src/titlescreen.cpp:192
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
-msgstr ""
+msgstr "Мрежова игра (Hotseat, LAN, Internet) или игра срещу компютъра."
 
 #: src/titlescreen.cpp:193
 msgid "Load a single player saved game"
-msgstr ""
+msgstr "Зареди еденична игра"
 
 #: src/titlescreen.cpp:194
 msgid "Change the language"
-msgstr ""
+msgstr "Смяна на езика"
 
 #: src/titlescreen.cpp:195
 msgid "Configure the game's settings"
-msgstr ""
+msgstr "Настроики за играта"
 
 #: src/titlescreen.cpp:196
 msgid "View the credits"
@@ -7388,36 +7718,36 @@ msgstr ""
 
 #: src/titlescreen.cpp:197
 msgid "Quit the game"
-msgstr ""
+msgstr "Изход от играта"
 
 #: src/titlescreen.cpp:225
 msgid "More"
-msgstr ""
+msgstr "Още"
 
 #: src/titlescreen.cpp:235
 msgid "-- The Tome of Wesnoth"
-msgstr ""
+msgstr "Книгата на Уестнот"
 
 #: src/unit_types.cpp:317
 msgid "strikes"
-msgstr ""
+msgstr "Удари"
 
 #: src/unit_types.cpp:892
 msgid "chaotic"
-msgstr ""
+msgstr "хаотичен/хаотична"
 
 #: src/unit_types.cpp:892
 msgid "lawful"
-msgstr ""
+msgstr "праведен/праведна"
 
 #: src/unit_types.cpp:892
 msgid "neutral"
-msgstr ""
+msgstr "неутрален/неутрална"
 
 #: src/widgets/file_chooser.cpp:33
 msgid "Delete File"
-msgstr ""
+msgstr "Изтрий файла"
 
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
-msgstr ""
+msgstr "Файлът не можа да бъде изтрит"
