@@ -145,13 +145,8 @@ SDL_Surface * load_image_sub_file(image::locator i_locator)
 	if(mask == NULL)
 		return NULL;
 	
-	tmp = SDL_CreateRGBSurface(SDL_SWSURFACE, 72, 72, mother_surface->format->BitsPerPixel, mother_surface->format->Rmask,
-				    mother_surface->format->Gmask, mother_surface->format->Bmask,  mother_surface->format->Amask);
-
 	SDL_Rect srcrect = { 54 * i_locator.loc.x, 72 * i_locator.loc.y + 36 * (i_locator.loc.x % 2), 72, 72 };
-	SDL_Rect destrect = { 0, 0, 72, 72 };
-	SDL_BlitSurface(mother_surface, &srcrect, tmp, &destrect);
-
+	tmp = cut_surface(mother_surface, srcrect);
 	surf = mask_surface(tmp, mask);
 
 	SDL_FreeSurface(tmp);

@@ -424,6 +424,34 @@ SDL_Surface* mask_surface(SDL_Surface* surface, SDL_Surface* mask)
 	return clone_surface(surf);
 }
 
+// Cuts a rectangle from a surface.
+SDL_Surface* cut_surface(SDL_Surface *surface, const SDL_Rect& r)
+{
+	SDL_Surface* res = create_compatible_surface(surface, r.w, r.h);
+
+	size_t sbpp = surface->format->BytesPerPixel;
+	size_t spitch = surface->pitch;
+	size_t rbpp = res->format->BytesPerPixel;
+	size_t rpitch = res->pitch;
+
+	surface_lock slock(surface);
+	surface_lock rlock(res);
+
+	Uint8* src = reinterpret_cast<Uint8 *>(slock.pixels());
+	Uint8* dest = reinterpret_cast<Uint8 *>(rlock.pixels());
+
+	for(int y = 0; y < r.h && (r.y + y) < surface->h; ++y) {
+		Uint8* line_src = src + (r.y + y) * spitch + r.x * sbpp;
+		Uint8* line_dest = dest + y * rpitch;
+		size_t size = r.w + r.x <= surface->w ? r.w : surface->w - r.x; 
+		
+		assert(rpitch >= r.w * rbpp);
+		memcpy(line_dest, line_src, size * rbpp);
+	}
+
+	return res;
+}
+
 SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour)
 {
 	if(surface == NULL) {
