@@ -242,7 +242,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 	if(recorder.skipping() == false) {
 		for(std::vector<config*>::const_iterator story_i = story.begin();
 		    story_i != story.end(); ++story_i) {
-			show_intro(gui,**story_i);
+			show_intro(gui,**story_i, state_of_game);
 		}
 
 		show_map_scene(gui,*level);

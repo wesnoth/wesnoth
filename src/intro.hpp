@@ -16,6 +16,7 @@
 #include "SDL.h"
 #include "config.hpp"
 #include "display.hpp"
+#include "gamestatus.hpp"
 
 #include <string>
 
@@ -31,7 +32,7 @@
 //
 //each part of the sequence will be displayed in turn, with the
 //user able to go to the next part, or skip it entirely.
-void show_intro(display& screen, const config& data);
+void show_intro(display& screen, const config& data, game_state& state_of_game);
 
 //function to show the map before each scenario.
 //data is in a format that looks like,

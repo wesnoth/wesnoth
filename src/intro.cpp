@@ -23,6 +23,7 @@
 #include "util.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
+#include "game_events.hpp"
 
 #include <cstdlib>
 #include <sstream>
@@ -32,12 +33,57 @@ namespace {
 	const int min_room_at_bottom = 150;
 }
 
-void show_intro(display& screen, const config& data)
+bool show_intro_part(display& screen, const config& part, 
+					 game_state& state_of_game);
+
+void show_intro(display& screen, const config& data, 
+				game_state& state_of_game)
 {
 	std::cerr << "showing intro sequence...\n";
-
-	//stop the screen being resized while we're in this function
 	const events::resize_lock stop_resizing;
+
+	const std::string& music = data["music"];
+	if(music != "") {
+		sound::play_music(music);
+	}
+
+	bool showing = true;
+	
+	// it seems the best way to allow "if" tags in the story 
+	// is to use a little nested loop, like so.
+	for (config::all_children_iterator i = data.ordered_begin();
+		 showing && i != data.ordered_end(); ++i) {
+
+		const std::pair<const std::string*, const config*> item = *i;
+		if (*item.first == "if") {
+			const std::string type = game_events::conditional_passed(
+							state_of_game, NULL, *item.second) ? "then":"else";
+				
+			const config::child_list& thens = (*item.second).get_children(type);
+			for (config::child_list::const_iterator t = thens.begin();
+				 showing && t != thens.end(); ++t) {
+
+				const config::child_list& parts = (**t).get_children("part");
+				for (config::child_list::const_iterator p = parts.begin();
+					 showing && p != parts.end(); ++p) {
+					 
+					showing = show_intro_part(screen, **p, state_of_game);
+				}
+			}
+		}
+		else if (*item.first == "part") {
+			showing = show_intro_part(screen, *item.second, state_of_game);
+		}
+	}
+	std::cerr << "intro sequence finished...\n";
+			
+}
+
+bool show_intro_part(display& screen, const config& part, 
+					 game_state& state_of_game)
+{
+	std::cerr << "showing intro part\n";
+	//stop the screen being resized while we're in this function
 
 	CKey key;
 
@@ -49,89 +95,83 @@ void show_intro(display& screen, const config& data)
 	skip_button.set_x(screen.x()-200);
 	skip_button.set_y(screen.y()-100);
 
-	const std::string& music = data["music"];
-	if(music != "") {
-		sound::play_music(music);
+	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,
+			0,0,0,1.0,screen.video().getSurface());
+	const std::string& image_name = part["image"];
+
+	scoped_sdl_surface image(NULL);
+	if(image_name.empty() == false) {
+		image.assign(image::get_image(image_name,image::UNSCALED));
 	}
 
-	const config::child_list& parts = data.get_children("part");
 
-	for(config::child_list::const_iterator i = parts.begin(); i != parts.end(); ++i){
-		gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,
-		                                 0,0,0,1.0,screen.video().getSurface());
-		const std::string& image_name = (**i)["image"];
-		
-		scoped_sdl_surface image(NULL);
-		if(image_name.empty() == false) {
-			image.assign(image::get_image(image_name,image::UNSCALED));
+	int textx = 200;
+	int texty = 400;
+
+	if(image != NULL) {
+		SDL_Rect dstrect;
+		dstrect.x = screen.x()/2 - image->w/2;
+		dstrect.y = screen.y()/2 - image->h/2;
+		dstrect.w = image->w;
+		dstrect.h = image->h;
+
+		if(dstrect.y + dstrect.h > screen.y() - min_room_at_bottom) {
+			dstrect.y = maximum<int>(0,screen.y() - dstrect.h - min_room_at_bottom);
 		}
 
-		int textx = 200;
-		int texty = 400;
+		SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
 
-		if(image != NULL) {
-			SDL_Rect dstrect;
-			dstrect.x = screen.x()/2 - image->w/2;
-			dstrect.y = screen.y()/2 - image->h/2;
-			dstrect.w = image->w;
-			dstrect.h = image->h;
+		textx = dstrect.x;
+		texty = dstrect.y + dstrect.h + 10;
 
-			if(dstrect.y + dstrect.h > screen.y() - min_room_at_bottom) {
-				dstrect.y = maximum<int>(0,screen.y() - dstrect.h - min_room_at_bottom);
-			}
+		next_button.set_x(dstrect.x+dstrect.w-40);
+		next_button.set_y(dstrect.y+dstrect.h+20);
+		skip_button.set_x(dstrect.x+dstrect.w-40);
+		skip_button.set_y(dstrect.y+dstrect.h+70);
+	}
 
-			SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
+	next_button.draw();
+	skip_button.draw();
+	update_whole_screen();
+	screen.video().flip();
 
-			textx = dstrect.x;
-			texty = dstrect.y + dstrect.h + 10;
+	const std::string& id = part["id"];
+	const std::string& lang_story = string_table[id];
+	const std::string& story = lang_story.empty() ? part["story"] : lang_story;
+	std::cerr << story << std::endl;
 
-			next_button.set_x(dstrect.x+dstrect.w-40);
-			next_button.set_y(dstrect.y+dstrect.h+20);
-			skip_button.set_x(dstrect.x+dstrect.w-40);
-			skip_button.set_y(dstrect.y+dstrect.h+70);
-		}
+	std::string::const_iterator j = story.begin();
 
-		next_button.draw();
-		skip_button.draw();
-		update_whole_screen();
-		screen.video().flip();
+	bool skip = false, last_key = true;
 
-		const std::string& id = (**i)["id"];
-		const std::string& lang_story = string_table[id];
-		const std::string& story = lang_story.empty() ? (**i)["story"] : lang_story;
-
-		std::string::const_iterator j = story.begin();
-
-		bool skip = false, last_key = true;
-		
-		int xpos = textx, ypos = texty;
-
+	int xpos = textx, ypos = texty;
+	
 		//the maximum position that text can reach before wrapping
 		const int max_xpos = next_button.location().x - 10;
-		size_t height = 0;
-		std::string buf;
-		for(;;) {
-			if(j != story.end()) {
-				unsigned char c = *j;
-				if(c == ' ') {
-					//we're at a space, so find the next space or end-of-text,
-					//to find out if the next word will fit, or if it has to be wrapped
-					std::string::const_iterator end_word = std::find(j+1,story.end(),' ');
+	size_t height = 0;
+	std::string buf;
+	for(;;) {
+		if(j != story.end()) {
+			unsigned char c = *j;
+			if(c == ' ') {
+				//we're at a space, so find the next space or end-of-text,
+				//to find out if the next word will fit, or if it has to be wrapped
+				std::string::const_iterator end_word = std::find(j+1,story.end(),' ');
 					const SDL_Rect rect = font::draw_text(NULL,screen.screen_area(),16,font::NORMAL_COLOUR,
-						                                  std::string(j,end_word),xpos,ypos,NULL,
-														  false,font::NO_MARKUP);
-
+							std::string(j,end_word),xpos,ypos,NULL,
+							false,font::NO_MARKUP);
+					
 					if(xpos + rect.w >= max_xpos) {
 						xpos = textx;
 						ypos += height;
 						++j;
-						continue;
+							continue;
 					}
-				}
+			}
 
-				//how many bytes does the current utf8 character require?
-				int bytes = 1;
-
+			//how many bytes does the current utf8 character require?
+			int bytes = 1;
+			
 				if(charset() == CHARSET_UTF8) {
 					if(j[bytes-1] >= 0xC0U) 
 						bytes++;
@@ -145,61 +185,60 @@ void show_intro(display& screen, const config& data)
 						bytes++;
 				}
 
-				//copy the character
-				buf.resize(bytes);
-				for(int i = 0; i < bytes && j != story.end(); ++i) {
-					buf[i] = *j;
-					++j;
-				}
-
-				// output the character
-				const SDL_Rect rect = font::draw_text(&screen,
-									screen.screen_area(),16,
-									font::NORMAL_COLOUR,buf,xpos,ypos,
-									NULL,false,font::NO_MARKUP);
-
-				buf = "";
-				if(rect.h > height)
-					height = rect.h;
-				xpos += rect.w; 
-				update_rect(rect);
-
-				if(j == story.end())
-					skip = true;
+			//copy the character
+			buf.resize(bytes);
+			for(int i = 0; i < bytes && j != story.end(); ++i) {
+				buf[i] = *j;
+				++j;
 			}
 
-			int mousex, mousey;
-			const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-			const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+			// output the character
+			const SDL_Rect rect = font::draw_text(&screen,
+					screen.screen_area(),16,
+					font::NORMAL_COLOUR,buf,xpos,ypos,
+					NULL,false,font::NO_MARKUP);
 
-			const bool keydown = key[SDLK_SPACE] || key[SDLK_RETURN];
+			buf = "";
+			if(rect.h > height)
+				height = rect.h;
+			xpos += rect.w; 
+			update_rect(rect);
 
-			if(keydown && !last_key ||
-				next_button.process(mousex,mousey,left_button)) {
-				if(skip == true)
-					break;
-				else
-					skip = true;
-			}
-
-			last_key = keydown;
-
-			if(key[SDLK_ESCAPE] ||
-			   skip_button.process(mousex,mousey,left_button))
-				return;
-
-			events::pump();
-			screen.video().flip();
-
-			if(!skip || j == story.end())
-				SDL_Delay(20);
+			if(j == story.end())
+				skip = true;
 		}
-	}
 
+		int mousex, mousey;
+		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+
+		const bool keydown = key[SDLK_SPACE] || key[SDLK_RETURN];
+
+		if(keydown && !last_key ||
+				next_button.process(mousex,mousey,left_button)) {
+			if(skip == true)
+				break;
+			else
+				skip = true;
+		}
+
+		last_key = keydown;
+
+		if(key[SDLK_ESCAPE] ||
+				skip_button.process(mousex,mousey,left_button))
+			return false;
+
+		events::pump();
+		screen.video().flip();
+
+		if(!skip || j == story.end())
+			SDL_Delay(20);
+	}
+	
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
                                      screen.video().getSurface());
 
-	std::cerr << "intro sequence finished...\n";
+	return true;
 }
 
 void show_map_scene(display& screen, config& data)
