@@ -1,3 +1,44 @@
+CVS HEAD:
+ * improved theme
+ * new scenarios for 'The Eastern Invasion' campaign:
+   * Evacuation
+   * Peasant Revolt
+   * Approaching Weldyn
+   * The Council
+   * Weldyn Besieged
+   * The Duel
+ * scenario balancing for 'The Eastern Invasion' campaign:
+   * Captured
+   * The Crossing
+   * An Elven Alliance
+   * The Escape Tunnel
+   * Northern Post
+   * Training the Ogres
+   * Two Paths
+   * The Undead Border Patrol
+   * Undead Crossing
+   * An Unexpected Appearance
+   * Weldyn Attack
+   * Lake Vrug
+   * Tribal Warfare
+   * The Outpost
+ * return can now be used to navigate through help topics and sections
+ * a box is now drawn around images in the help browser (can be disabled through minor tweaks to help config to handle new borders around images wml)
+ * updated translations:
+   * czech
+ * fixed the bug with multiplying help sections
+ * fixed the problem where the forward and back button was shown brifly when opening the help browser
+ * fixed --disable-debug not working as expected
+ * adding a limit to number of characters in a textbox
+ * adding a maximal line width for text to be drawn, to circumvent a SDL / SDL_ttf bug
+ * changed set_flag rather verbose syntax to set_flag=blah,foo,bar
+ * implemented patch to aid making binary packages
+ * implemented relative directory patch
+ * added exploder and cutter tools
+ * removed an obsolete feature in terrain graphics engine that was never used
+ * removing commented-out obsolete code in display.cpp
+ * cleaned a bit the textbox code
+
 Version 0.8:
  * added Drake flying animations
  * reduced experience needed to advance for Drake Burner and Drake Fighter
@@ -23,12 +64,12 @@ Version 0.7.11:
  * user interface improvements
  * improved clipboard functions and support for X11
  * scenario balancing for 'Heir to the Throne' campaign:
-   * Scepter of Fire 
+   * The Scepter of Fire 
    * A Choice Must Be Made
-   * Elven Council
-   * Home North Elves
+   * The Elven Council
+   * Home of the North Elves
    * Swamp of Dread
-   * Valley of Statues
+   * The Valley of Statues
  * multiplayer improvements:
    * chat log
    * allowed spaces in usernames
