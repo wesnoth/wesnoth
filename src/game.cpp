@@ -141,7 +141,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 							recorder.save_game(label, snapshot, state.starting_pos);
 						} catch(gamestatus::save_game_failed&) {
-							gui::show_dialog(disp,NULL,"",_("The game could not be saved"),gui::MESSAGE);
+							gui::show_error_message(disp, _("The game could not be saved"));
 							retry = true;
 						};
 					}
@@ -163,17 +163,13 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				return res;
 			}
 		} catch(gamestatus::load_game_failed& e) {
-			gui::show_dialog(disp,NULL,"","The game could not be loaded: " + e.message,gui::OK_ONLY);
-			std::cerr << "The game could not be loaded: " << e.message << "\n";
+			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
 			return QUIT;
 		} catch(gamestatus::game_error& e) {
-			gui::show_dialog(disp,NULL,"","An error occurred while playing the game: " + e.message,gui::OK_ONLY);
-			std::cerr << "An error occurred while playing the game: "
-			          << e.message << "\n";
+			gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
 			return QUIT;
 		} catch(gamemap::incorrect_format_exception& e) {
-			gui::show_dialog(disp,NULL,"",e.msg_,gui::OK_ONLY);
-			std::cerr << "The game map could not be loaded: " << e.msg_ << "\n";
+			gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
 			return QUIT;
 		}
 
@@ -202,7 +198,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 					try {
 						save_game(state);
 					} catch(gamestatus::save_game_failed&) {
-						gui::show_dialog(disp,NULL,"",_("The game could not be saved"),gui::MESSAGE);
+						gui::show_error_message(disp, _("The game could not be saved"));
 						retry = true;
 					}
 				}
@@ -214,9 +210,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		recorder.set_save_info(state);
 	}
 
-	if(state.scenario != "" && state.scenario != "null") {
-		gui::show_dialog(disp,NULL,"",
-		                 "Error - Unknown scenario: '" + state.scenario + "'");
+	if (!state.scenario.empty() && state.scenario != "null") {
+		gui::show_error_message(disp, _("Unknown scenario: '") + state.scenario + '\'');
 		return QUIT;
 	}
 
@@ -830,18 +825,13 @@ bool game_controller::load_game()
 		}
 
 	} catch(gamestatus::error& e) {
-		std::cerr << "caught load_game_failed\n";
-		gui::show_dialog(disp(),NULL,"",
-		           _("The file you have tried to load is corrupt") + std::string(": '") + e.message + "'",gui::OK_ONLY);
+		gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		return false;
 	} catch(config::error& e) {
-		std::cerr << "caught config::error\n";
-		gui::show_dialog(disp(),NULL,"",
-		    _("The file you have tried to load is corrupt") + std::string(": '") + e.message + "'",
-		    gui::OK_ONLY);
+		gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		return false;
 	} catch(io_exception&) {
-		gui::show_dialog(disp(),NULL,"",_("File I/O Error while reading the game"),gui::OK_ONLY);
+		gui::show_error_message(disp(), _("File I/O Error while reading the game"));
 		return false;
 	}
 
@@ -895,13 +885,9 @@ bool game_controller::load_game()
 			play_level(units_data_,game_config_,&starting_pos,video_,state_,story);
 			recorder.clear();
 		} catch(gamestatus::load_game_failed& e) {
-			gui::show_dialog(disp(),NULL,"","error loading the game: " + e.message,gui::OK_ONLY);
-			std::cerr << "error loading the game: " << e.message
-			          << "\n";
+			gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);
 		} catch(gamestatus::game_error& e) {
-			gui::show_dialog(disp(),NULL,"","error while playing the game: " + e.message,gui::OK_ONLY);
-			std::cerr << "error while playing the game: "
-			          << e.message << "\n";
+			gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
 		} catch(gamestatus::load_game_exception& e) {
 			//this will make it so next time through the title screen loop, this game is loaded
 			loaded_game_ = e.game;
@@ -1024,7 +1010,7 @@ void game_controller::download_campaigns()
 		const network::manager net_manager;
 		const network::connection sock = network::connect(items.front(),lexical_cast_default<int>(items.back(),15002));
 		if(!sock) {
-			gui::show_dialog(disp(),NULL,_("Error"),_("Could not connect to host."),gui::OK_ONLY);
+			gui::show_error_message(disp(), _("Could not connect to host."));
 			return;
 		}
 
@@ -1039,13 +1025,13 @@ void game_controller::download_campaigns()
 
 		const config* const error = cfg.child("error");
 		if(error != NULL) {
-			gui::show_dialog(disp(),NULL,_("Error"),(*error)["message"],gui::OK_ONLY);
+			gui::show_error_message(disp(), (*error)["message"]);
 			return;
 		}
 
 		const config* const campaigns_cfg = cfg.child("campaigns");
 		if(campaigns_cfg == NULL) {
-			gui::show_dialog(disp(),NULL,_("Error"),_("Error communicating with the server."),gui::OK_ONLY);
+			gui::show_error_message(disp(), _("Error communicating with the server."));
 			return;
 		}
 
@@ -1105,7 +1091,7 @@ void game_controller::download_campaigns()
 		}
 
 		if(campaigns.empty() && publish_options.empty()) {
-			gui::show_dialog(disp(),NULL,_("Error"),_("There are no campaigns available for download from this server."),gui::OK_ONLY);
+			gui::show_error_message(disp(), _("There are no campaigns available for download from this server."));
 			return;
 		}
 
@@ -1134,7 +1120,7 @@ void game_controller::download_campaigns()
 		}
 
 		if(cfg.child("error") != NULL) {
-			gui::show_dialog(disp(),NULL,_("Error"),(*cfg.child("error"))["message"],gui::OK_ONLY);
+			gui::show_error_message(disp(), (*cfg.child("error"))["message"]);
 			return;
 		}
 
@@ -1149,11 +1135,11 @@ void game_controller::download_campaigns()
 
 		gui::show_dialog(disp(),NULL,_("Campaign Installed"),_("The campaign has been installed."),gui::OK_ONLY);
 	} catch(config::error&) {
-		gui::show_dialog(disp(),NULL,_("Error"),_("Network communication error."),gui::OK_ONLY);
+		gui::show_error_message(disp(), _("Network communication error."));
 	} catch(network::error&) {
-		gui::show_dialog(disp(),NULL,_("Error"),_("Remote host disconnected."),gui::OK_ONLY);
+		gui::show_error_message(disp(), _("Remote host disconnected."));
 	} catch(io_exception&) {
-		gui::show_dialog(disp(),NULL,_("Error"),_("There was a problem creating the files necessary to install this campaign."),gui::OK_ONLY);
+		gui::show_error_message(disp(), _("There was a problem creating the files necessary to install this campaign."));
 	}
 }
 
@@ -1165,10 +1151,11 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	config data;
 	sock = network::receive_data(data,sock,60000);
 	if(!sock) {
-		gui::show_dialog(disp(),NULL,_("Error"),_("Connection timed out"),gui::OK_ONLY);
+		gui::show_error_message(disp(), _("Connection timed out"));
 		return;
 	} else if(data.child("error")) {
-		gui::show_dialog(disp(),NULL,_("Error"),_("The server responded with an error: \"") + (*data.child("error"))["message"] + "\"",gui::OK_ONLY);
+		gui::show_error_message(disp(), _("The server responded with an error: \"") +
+		                        (*data.child("error"))["message"] + '"');
 		return;
 	} else if(data.child("message")) {
 		const int res = gui::show_dialog(disp(),NULL,_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL);
@@ -1203,9 +1190,10 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	
 	sock = network::receive_data(data,sock,60000);
 	if(!sock) {
-		gui::show_dialog(disp(),NULL,_("Error"),_("Connection timed out"),gui::OK_ONLY);
+		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {
-		gui::show_dialog(disp(),NULL,_("Error"),_("The server responded with an error: \"") + (*data.child("error"))["message"] + "\"",gui::OK_ONLY);
+		gui::show_error_message(disp(), _("The server responded with an error: \"") +
+		                        (*data.child("error"))["message"] + '"');
 	} else if(data.child("message")) {
 		gui::show_dialog(disp(),NULL,_("Response"),(*data.child("message"))["message"],gui::OK_ONLY);
 	}
@@ -1227,9 +1215,10 @@ void game_controller::delete_campaign(const std::string& campaign, network::conn
 
 	sock = network::receive_data(data,sock,60000);
 	if(!sock) {
-		gui::show_dialog(disp(),NULL,_("Error"),_("Connection timed out"),gui::OK_ONLY);
+		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {
-		gui::show_dialog(disp(),NULL,_("Error"),_("The server responded with an error: \"") + (*data.child("error"))["message"] + "\"",gui::OK_ONLY);
+		gui::show_error_message(disp(), _("The server responded with an error: \"") +
+		                        (*data.child("error"))["message"] + '"');
 	} else if(data.child("message")) {
 		gui::show_dialog(disp(),NULL,_("Response"),(*data.child("message"))["message"],gui::OK_ONLY);
 	}
@@ -1286,12 +1275,9 @@ bool game_controller::play_multiplayer()
 			play_multiplayer_client(disp(),units_data_,game_config_,state_,host);
 		}
 	} catch(gamestatus::load_game_failed& e) {
-		gui::show_dialog(disp(),NULL,"","error loading the game: " + e.message,gui::OK_ONLY);
-		std::cerr << "error loading the game: " << e.message << "\n";
+		gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);
 	} catch(gamestatus::game_error& e) {
-		gui::show_dialog(disp(),NULL,"","error while playing the game: " + e.message,gui::OK_ONLY);
-		std::cerr << "error while playing the game: "
-		          << e.message << "\n";
+		gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
 	} catch(network::error& e) {
 		std::cerr << "caught network error...\n";
 		if(e.message != "") {
@@ -1303,8 +1289,7 @@ bool game_controller::play_multiplayer()
 			gui::show_dialog(disp(),NULL,"",e.message,gui::OK_ONLY);
 		}
 	} catch(gamemap::incorrect_format_exception& e) {
-		gui::show_dialog(disp(),NULL,"",std::string("The game map could not be loaded: ") + e.msg_,gui::OK_ONLY);
-		std::cerr << "The game map could not be loaded: " << e.msg_ << "\n";
+		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 	} catch(gamestatus::load_game_exception& e) {
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
@@ -1368,7 +1353,8 @@ void game_controller::refresh_game_cfg()
 			old_defines_map_ = defines_map_;
 		}
 	} catch(config::error& e) {
-		gui::show_dialog(disp(),NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)", gui::MESSAGE);
+		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
+		                        e.message + _("' (The game will now exit)"));
 		throw e;
 	}
 }

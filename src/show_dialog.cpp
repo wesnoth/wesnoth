@@ -39,6 +39,7 @@
 
 #define ERR_DP lg::err(lg::display)
 #define LOG_DP lg::info(lg::display)
+#define ERR_G  lg::err(lg::general)
 
 namespace {
 bool is_in_dialog = false;
@@ -378,6 +379,12 @@ private:
 	std::string topic_;
 };
 
+}
+
+void show_error_message(display &disp, std::string const &message)
+{
+	ERR_G << message << std::endl;
+	show_dialog(disp, NULL, _("Error"), message, OK_ONLY);
 }
 
 int show_dialog(display& disp, surface image,

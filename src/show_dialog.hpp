@@ -146,6 +146,8 @@ int show_dialog(display& screen, surface image,
 				const std::string& help_topic=""
 			 );
 
+void show_error_message(display &screen, std::string const &message);
+
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 
 void check_quit(display& screen);
