@@ -122,6 +122,8 @@ SDL_Rect get_non_transperant_portion(surface const &surf);
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
+bool operator==(const SDL_Color& a, const SDL_Color& b);
+bool operator!=(const SDL_Color& a, const SDL_Color& b);
 
 class config; // no need to include config.hpp
 

@@ -842,6 +842,14 @@ bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
 	return !operator==(a,b);
 }
 
+bool operator==(const SDL_Color& a, const SDL_Color& b) {
+	return a.r == b.r && a.g == b.g && a.b == b.b;
+}
+
+bool operator!=(const SDL_Color& a, const SDL_Color& b) {
+	return !operator==(a,b);
+}
+
 void pixel_data::read(const config& cfg) {
 	const std::string& red = cfg["red"];
 	const std::string& green = cfg["green"];
