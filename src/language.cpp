@@ -17,10 +17,10 @@
 #include "util.hpp"
 
 #include <cctype>
+#include <cerrno>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
-#include <cerrno>
 
 namespace {
 	language_def current_language;
