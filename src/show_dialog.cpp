@@ -400,7 +400,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	SDL_Rect dlgr = {xloc-10,yloc-10,total_width+20,total_height+20};
 
-	const surface_restorer restorer(disp.video().getSurface(),dlgr);
+	const surface_restorer restorer(&disp.video(),dlgr);
 
 	draw_dialog_frame(xloc,yloc,total_width,total_height,disp);
 

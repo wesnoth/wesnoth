@@ -205,8 +205,15 @@ bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
 	return !operator==(a,b);
 }
 
-surface_restorer::surface_restorer(SDL_Surface* surface, SDL_Rect& rect)
-: target_(surface), rect_(rect), surface_(NULL)
+namespace {
+	const SDL_Rect empty_rect = {0,0,0,0};
+}
+
+surface_restorer::surface_restorer() : target_(NULL), rect_(empty_rect), surface_(NULL)
+{}
+
+surface_restorer::surface_restorer(CVideo* target, const SDL_Rect& rect)
+: target_(target), rect_(rect), surface_(NULL)
 {
 	update();
 }
@@ -219,14 +226,17 @@ surface_restorer::~surface_restorer()
 void surface_restorer::restore()
 {
 	if(surface_ != NULL) {
-		::SDL_BlitSurface(surface_,NULL,target_,&rect_);
+		::SDL_BlitSurface(surface_,NULL,target_->getSurface(),&rect_);
 		update_rect(rect_);
 	}
 }
 
 void surface_restorer::update()
 {
-	surface_.assign(::get_surface_portion(target_,rect_));
+	if(rect_.w == 0 || rect_.h == 0)
+		surface_.assign(NULL);
+	else
+		surface_.assign(::get_surface_portion(target_->getSurface(),rect_));
 }
 
 void surface_restorer::cancel()

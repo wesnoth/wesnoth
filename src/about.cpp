@@ -32,7 +32,7 @@ void show_about(display& disp)
 {
 	SDL_Rect rect = {0, 0, disp.x(), disp.y()};
 
-	const surface_restorer restorer(disp.video().getSurface(), rect);
+	const surface_restorer restorer(&disp.video(), rect);
 
 	// Clear the screen
 	gui::draw_solid_tinted_rectangle(0,0,disp.x()-1,disp.y()-1,

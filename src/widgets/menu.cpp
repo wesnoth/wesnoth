@@ -22,8 +22,8 @@ menu::menu(display& disp, const std::vector<std::string>& items,
           selected_(click_selects ? -1:0), click_selects_(click_selects),
           previous_button_(true), drawn_(false), show_result_(false),
           height_(-1), width_(-1), first_item_on_screen_(0),
-		  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow"),
-          downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow"),
+		  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow-button"),
+          downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow-button"),
 		  double_clicked_(false)
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();

@@ -377,7 +377,7 @@ void show_preferences_dialog(display& disp)
 	//when the dialog closes. Not const, because we might want to cancel
 	//it in the case of video mode changes
 	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
-	surface_restorer restorer(disp.video().getSurface(),dialog_rect);
+	surface_restorer restorer(&disp.video(),dialog_rect);
 
 	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
 	SDL_Rect title_rect = font::draw_text(NULL,clip_rect,16,font::NORMAL_COLOUR,
@@ -463,17 +463,17 @@ void show_preferences_dialog(display& disp)
 	gui::button turn_dialog_button(disp,string_table["turn_dialog_button"],
 	                               gui::button::TYPE_CHECK);
 	turn_dialog_button.set_check(turn_dialog());
-	turn_dialog_button.set_x(slider_left+fullscreen_button.width()+30);
+	turn_dialog_button.set_x(slider_left+fullscreen_button.width()+100);
 	turn_dialog_button.set_y(sound_pos + 80);
 
 	gui::button turn_bell_button(disp,string_table["turn_bell_button"],
 	                             gui::button::TYPE_CHECK);
 	turn_bell_button.set_check(turn_bell());
-	turn_bell_button.set_x(slider_left+fullscreen_button.width()+30);
+	turn_bell_button.set_x(slider_left+fullscreen_button.width()+100);
 	turn_bell_button.set_y(sound_pos + 80 + 50);
 
 	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
-	hotkeys_button.set_x (slider_left + fullscreen_button.width () + 30);
+	hotkeys_button.set_x (slider_left + fullscreen_button.width () + 100);
 	hotkeys_button.set_y (sound_pos + 80 + 100);
 
 	bool redraw_all = true;
@@ -733,7 +733,7 @@ void show_hotkeys_dialog (display & disp)
 								centery-text_size.h/2 - 16,
 									text_size.w+60,
 									text_size.h+32};
-			surface_restorer restorer(disp.video().getSurface(),dlgr);										
+			surface_restorer restorer(&disp.video(),dlgr);										
 		 	gui::draw_dialog_frame (centerx-text_size.w/2 - 20, 
 									centery-text_size.h/2 - 6,
 									text_size.w+40,

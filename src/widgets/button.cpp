@@ -16,6 +16,7 @@
 #include "../game.hpp"
 #include "../font.hpp"
 #include "../image.hpp"
+#include "../log.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 
@@ -26,35 +27,41 @@ const int horizontal_padding = 6;
 const int vertical_padding = 12;
 
 button::button(display& disp, const std::string& label, button::TYPE type,
-               const std::string& button_image_name) :
+               std::string button_image_name) :
                           label_(label), display_(&disp),
-						  image_(NULL), pressedImage_(NULL),
+						  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
                           x_(0), y_(0), button_(true),
                           state_(UNINIT), type_(type)
 {
-	scoped_sdl_surface button_image(image::get_image("buttons/button.png",image::UNSCALED));
-	scoped_sdl_surface pressed_image(image::get_image("buttons/button-pressed.png", image::UNSCALED));
-	scoped_sdl_surface active_image(image::get_image("buttons/button-active.png", image::UNSCALED));
-
-	if(!button_image_name.empty()) {
-		button_image.assign(image::get_image("buttons/" + button_image_name +
-		                             "-button.png", image::UNSCALED));
-		pressed_image.assign(image::get_image("buttons/" + button_image_name +
-		                              "-button-pressed.png",image::UNSCALED));
-		active_image.assign(image::get_image("buttons/" + button_image_name +
-		                              "-button-active.png",image::UNSCALED));
+	log_scope("button constructor");
+	if(button_image_name.empty() && type == TYPE_PRESS) {
+		button_image_name = "button";
+	} else if(button_image_name.empty() && type == TYPE_CHECK) {
+		button_image_name = "checkbox";
 	}
 
+	const std::string button_image_file = "buttons/" + button_image_name + ".png";
+	scoped_sdl_surface button_image(image::get_image(button_image_file,image::UNSCALED));
+	scoped_sdl_surface pressed_image(image::get_image("buttons/" + button_image_name + "-pressed.png", image::UNSCALED));
+	scoped_sdl_surface active_image(image::get_image("buttons/" + button_image_name + "-active.png", image::UNSCALED));
+	scoped_sdl_surface pressed_active_image(image::get_image("buttons/" + button_image_name + "-active-pressed.png", image::UNSCALED));
+
 	if(pressed_image == NULL) {
-		pressed_image.assign(image::get_image("buttons/button.png",image::UNSCALED));
+		pressed_image.assign(image::get_image(button_image_file,image::UNSCALED));
 	}
 
 	if(active_image == NULL) {
-		active_image.assign(image::get_image("buttons/button.png",image::UNSCALED));
+		active_image.assign(image::get_image(button_image_file,image::UNSCALED));
 	}
 
-	if(button_image == NULL)
+	if(pressed_active_image == NULL) {
+		pressed_active_image.assign(image::get_image(button_image_file,image::UNSCALED));
+	}
+
+	if(button_image == NULL) {
+		std::cerr << "could not find button image: '" << button_image_file << "'\n";
 		throw error();
+	}
 
 	textRect_.x = 0;
 	textRect_.y = 0;
@@ -63,62 +70,23 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,label_,0,0);
-	const int width = maximum(textRect_.w+horizontal_padding,button_image->w);
-	const int height = maximum(textRect_.h+horizontal_padding,button_image->h);
 
-	image_ = scale_surface(button_image,width,height);
-	pressedImage_ = scale_surface(pressed_image,width,height);
-	activeImage_ = scale_surface(active_image,width,height);
-}
+	h_ = maximum(textRect_.h+horizontal_padding,button_image->h);
 
-button::button(const button& b) : label_(b.label_), display_(b.display_),
-                                  image_(NULL), pressedImage_(NULL),
-								  x_(b.x_), y_(b.y_), textRect_(b.textRect_),
-								  button_(b.button_), state_(b.state_),
-                                  type_(b.type_)
-{
-	image_ = scale_surface(b.image_,b.image_->w,b.image_->h);
-	pressedImage_ = scale_surface(b.pressedImage_,b.pressedImage_->w,
-	                                              b.pressedImage_->h);
-	activeImage_ = scale_surface(b.activeImage_,b.activeImage_->w,
-	                                            b.activeImage_->h);
-}
+	if(type == TYPE_PRESS) {
+		w_ = maximum(textRect_.w+horizontal_padding,button_image->w);
 
-button& button::operator=(const button& b)
-{
-	if(image_ != NULL)
-		SDL_FreeSurface(image_);
-
-	if(pressedImage_ != NULL)
-		SDL_FreeSurface(pressedImage_);
-
-	label_ = b.label_;
-	display_ = b.display_;
-	image_ = scale_surface(b.image_,b.image_->w,b.image_->h);
-	pressedImage_ = scale_surface(b.pressedImage_,b.pressedImage_->w,
-	                                              b.pressedImage_->h);
-	activeImage_ = scale_surface(b.activeImage_,b.activeImage_->w,
-	                                            b.activeImage_->h);
-	x_ = b.x_;
-	y_ = b.y_;
-	textRect_ = b.textRect_;
-	button_ = b.button_;
-	state_ = b.state_;
-	type_ = b.type_;
-
-	return *this;
-}
-
-button::~button()
-{
-	if(pressedImage_ != NULL)
-		SDL_FreeSurface(pressedImage_);
-
-	if(activeImage_ != NULL)
-		SDL_FreeSurface(activeImage_);
-
-	if(image_ != NULL)
-		SDL_FreeSurface(image_);
+		image_.assign(scale_surface(button_image,w_,h_));
+		pressedImage_.assign(scale_surface(pressed_image,w_,h_));
+		activeImage_.assign(scale_surface(active_image,w_,h_));
+		pressedActiveImage_.assign(scale_surface(pressed_active_image,w_,h_));
+	} else {
+		w_ = horizontal_padding + textRect_.w + button_image->w;
+		image_.assign(scale_surface(button_image,button_image->w,button_image->h));
+		pressedImage_.assign(scale_surface(pressed_image,button_image->w,button_image->h));
+		activeImage_.assign(scale_surface(active_image,button_image->w,button_image->h));
+		pressedActiveImage_.assign(scale_surface(pressed_active_image,button_image->w,button_image->h));
+	}
 }
 
 void button::set_check(bool check)
@@ -129,27 +97,43 @@ void button::set_check(bool check)
 
 bool button::checked() const
 {
-	return state_ == PRESSED;
+	return state_ == PRESSED || state_ == PRESSED_ACTIVE;
 }
 
 void button::draw()
 {
+	if(type_ == TYPE_CHECK) {
+		restorer_.restore();
+		const SDL_Rect area = {x_,y_,w_,h_};
+		restorer_ = surface_restorer(&display_->video(),area);
+	}
+
 	SDL_Surface* image = image_;
+	const int image_w = image_->w;
+	const int image_h = image_->h;
 	int offset = 0;
 	switch(state_) {
 		case ACTIVE: image = activeImage_;
 		             break;
 		case PRESSED: image = pressedImage_;
-		              offset = 1;
-			      break;
+			          if(type_ == TYPE_PRESS) { offset = 1; }
+			          break;
+		case PRESSED_ACTIVE: image = pressedActiveImage_;
+		                     break;
 		case UNINIT:
 		case NORMAL:
 		default: break;
 	}
 
-	const SDL_Rect clipArea = {0,0,display_->x(),display_->y()};
-	const int textx = x_ + image->w/2 - textRect_.w/2 + offset;
-	const int texty = y_ + image->h/2 - textRect_.h/2 + offset;
+	const SDL_Rect clipArea = display_->screen_area();
+	const int texty = y_ + h_/2 - textRect_.h/2 + offset;
+	int textx;
+
+	if(type_ == TYPE_PRESS) {
+		textx = x_ + image->w/2 - textRect_.w/2 + offset;
+	} else {
+		textx = x_ + image_w + horizontal_padding/2;
+	}
 
 	display_->blit_surface(x_,y_,image);
 	font::draw_text(display_,clipArea,font_size,
@@ -160,8 +144,12 @@ void button::draw()
 
 bool button::hit(int x, int y) const
 {
-	if(x > x_ && x < x_ + image_->w &&
-	   y > y_ && y < y_ + image_->h) {
+	if(x > x_ && x < x_ + w_ &&
+	   y > y_ && y < y_ + h_) {
+
+		if(type_ == TYPE_CHECK)
+			return true;
+
 		x -= x_;
 		y -= y_;
 		int row_width = image_->w + is_odd(image_->w);
@@ -181,22 +169,19 @@ void button::set_xy(int valx, int valy) { x_ = valx; y_ = valy; }
 void button::set_label(std::string val)
 {
 	label_ = val;
-	textRect_.x = 0;
-	textRect_.y = 0;
-	textRect_.w = display_->x();
-	textRect_.h = display_->y();
+	textRect_ = display_->screen_area();
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,label_,0,0);
 }
 
 int button::width() const
 {
-	return image_->w;
+	return w_;
 }
 
 int button::height() const
 {
-	return image_->h;
+	return h_;
 }
 
 bool button::process(int mousex, int mousey, bool button)
@@ -241,24 +226,52 @@ bool button::process(int mousex, int mousey, bool button)
 		}
 	} else if(type_ == TYPE_CHECK) {
 
+		const bool is_hit = hit(mousex,mousey);
 		switch(state_) {
 		case NORMAL:
-			if(mouse_state == UP && hit(mousex,mousey)) {
-				state_ = PRESSED;
+			if(is_hit) {
+				state_ = ACTIVE;
 				draw();
 				return true;
 			}
+
 			break;
+
 		case PRESSED:
-			if(mouse_state == UP && hit(mousex,mousey)) {
-				state_ = NORMAL;
+			if(is_hit) {
+				state_ = PRESSED_ACTIVE;
 				draw();
 				return true;
 			}
+
 			break;
+
 		case UNINIT:
 			break;
 		case ACTIVE:
+			if(!is_hit) {
+				state_ = NORMAL;
+				draw();
+				return true;
+			} else if(mouse_state == UP) {
+				state_ = PRESSED_ACTIVE;
+				draw();
+				return true;
+			}
+
+			break;
+
+		case PRESSED_ACTIVE:
+			if(!is_hit) {
+				state_ = PRESSED;
+				draw();
+				return true;
+			} else if(mouse_state == UP) {
+				state_ = ACTIVE;
+				draw();
+				return true;
+			}
+
 			break;
 		}
 	}

@@ -102,11 +102,9 @@ public:
   */
 	resource_type operator->() const { return resource; }
 
-	resource_type& assign(const resource_type& o) {
+	void assign(const resource_type& o) {
 		release(resource);
 		resource = o;
-
-		return resource;
 	}
 };
 

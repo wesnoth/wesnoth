@@ -127,9 +127,39 @@ private:
 	bool locked_;
 };
 
+struct shared_sdl_surface
+{
+	explicit shared_sdl_surface(SDL_Surface* surf) : surface_(surf)
+	{}
+
+	explicit shared_sdl_surface(const shared_sdl_surface& o) : surface_(o.surface_.get())
+	{
+		sdl_add_ref(get());
+	}
+
+	shared_sdl_surface& operator=(const shared_sdl_surface& o)
+	{
+		surface_.assign(o.surface_.get());
+		sdl_add_ref(get());
+		return *this;
+	}
+
+	operator SDL_Surface*() const { return surface_; }
+
+	SDL_Surface* get() const { return surface_.get(); }
+
+	SDL_Surface* operator->() const { return surface_.get(); }
+
+	void assign(SDL_Surface* surf) { surface_.assign(surf); }
+
+private:
+	scoped_sdl_surface surface_;
+};
+
 struct surface_restorer
 {
-	surface_restorer(SDL_Surface* surface, SDL_Rect& rect);
+	surface_restorer();
+	surface_restorer(class CVideo* target, const SDL_Rect& rect);
 	~surface_restorer();
 
 	void restore();
@@ -137,9 +167,9 @@ struct surface_restorer
 	void cancel();
 
 private:
-	SDL_Surface* target_;
+	class CVideo* target_;
 	SDL_Rect rect_;
-	scoped_sdl_surface surface_;
+	shared_sdl_surface surface_;
 };
 
 #endif

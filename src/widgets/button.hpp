@@ -15,6 +15,8 @@
 
 #include "SDL.h"
 
+#include "../sdl_utils.hpp"
+
 #include <string>
 #include <vector>
 
@@ -30,12 +32,7 @@ public:
 	enum TYPE { TYPE_PRESS, TYPE_CHECK };
 
 	button(display& disp, const std::string& label, TYPE type=TYPE_PRESS,
-	       const std::string& button_image="");
-
-	button(const button& b);
-	button& operator=(const button& b);
-
-	~button();
+	       std::string button_image="");
 
 	void set_check(bool check);
 	bool checked() const;
@@ -53,15 +50,16 @@ public:
 	bool process(int mousex, int mousey, bool button);
 
 private:
+	surface_restorer restorer_;
 	std::string label_;
 	display* display_;
-	SDL_Surface* image_, *pressedImage_, *activeImage_;
-	int x_, y_;
+	shared_sdl_surface image_, pressedImage_, activeImage_, pressedActiveImage_;
+	int x_, y_, w_, h_;
 	SDL_Rect textRect_;
 
 	bool button_;
 
-	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED };
+	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE };
 	STATE state_;
 
 	TYPE type_;
