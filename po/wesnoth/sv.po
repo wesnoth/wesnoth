@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-11-14 23:50+0100\n"
+"POT-Creation-Date: 2004-11-24 21:21+0100\n"
 "PO-Revision-Date: 2004-11-15 20:26+0100\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -12,23 +12,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.9.1\n"
 
-#: data/game.cfg:500 data/translations/english.cfg:61
+#: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
 msgstr "lojal"
 
-#: data/game.cfg:508
+#: data/game.cfg:522
 msgid "strong"
 msgstr "stark"
 
-#: data/game.cfg:523
+#: data/game.cfg:537
 msgid "quick"
 msgstr "snabb"
 
-#: data/game.cfg:537
+#: data/game.cfg:551
 msgid "intelligent"
 msgstr "intelligent"
 
-#: data/game.cfg:546
+#: data/game.cfg:560
 msgid "resilient"
 msgstr "stryktålig"
 
@@ -44,11 +44,11 @@ msgstr "Spelteknik"
 msgid "Traits"
 msgstr "Karaktärsdrag"
 
-#: data/help.cfg:28 src/playturn.cpp:1527
+#: data/help.cfg:28 src/playturn.cpp:1528
 msgid "Units"
 msgstr "Trupper"
 
-#: data/help.cfg:34 src/help.cpp:1042
+#: data/help.cfg:34 src/help.cpp:1044
 msgid "Abilities"
 msgstr "Förmågor"
 
@@ -201,7 +201,7 @@ msgstr ""
 "det ger också en kostnad i underhåll. Läs <ref>dst=income_and_upkeep "
 "text='Inkomst och underhåll'</ref> för mer information om detta. "
 
-#: data/help.cfg:91 src/help.cpp:1193 src/help.cpp:1194
+#: data/help.cfg:91 src/help.cpp:1195 src/help.cpp:1196
 msgid "Movement"
 msgstr "Förflyttning"
 
@@ -613,7 +613,7 @@ msgstr ""
 "vet du allt du behöver veta för att spela Tronarvingen. Ha så roligt, och "
 "lycka till! "
 
-#: data/help.cfg:201 src/titlescreen.cpp:186
+#: data/help.cfg:201 src/titlescreen.cpp:188
 msgid "About"
 msgstr "Om"
 
@@ -916,8 +916,8 @@ msgstr "Användarkarta"
 msgid "Default"
 msgstr "Standard"
 
-#: data/multiplayer.cfg:23 data/multiplayer.cfg:104 data/multiplayer.cfg:196
-#: data/multiplayer.cfg:278 src/multiplayer_client.cpp:660
+#: data/multiplayer.cfg:23 data/multiplayer.cfg:105 data/multiplayer.cfg:199
+#: data/multiplayer.cfg:282 src/multiplayer_client.cpp:662
 msgid "&random-enemy.png,Random"
 msgstr "&random-enemy.png,Slumpval"
 
@@ -933,7 +933,7 @@ msgstr "&elvish-captain.png,Rebeller"
 msgid "&orcish-warrior.png,Northerners"
 msgstr "&orcish-warrior.png,Nordbor"
 
-#: data/multiplayer.cfg:64 data/multiplayer.cfg:145
+#: data/multiplayer.cfg:64 data/multiplayer.cfg:146
 msgid "&undead-necromancer.png,Undead"
 msgstr "&undead-necromancer.png,Vandöda"
 
@@ -941,67 +941,67 @@ msgstr "&undead-necromancer.png,Vandöda"
 msgid "&dwarf-warrior.png,Knalgan Alliance"
 msgstr "&dwarf-warrior.png,Knalgas allians"
 
-#: data/multiplayer.cfg:88 data/multiplayer.cfg:169 data/multiplayer.cfg:261
+#: data/multiplayer.cfg:88 data/multiplayer.cfg:170 data/multiplayer.cfg:264
 msgid "&drake-flare.png,Drakes"
 msgstr "&drake-flare.png,Drakfolket"
 
-#: data/multiplayer.cfg:101
+#: data/multiplayer.cfg:102
 msgid "Classic"
 msgstr "Klassisk"
 
-#: data/multiplayer.cfg:109
+#: data/multiplayer.cfg:110
 msgid "&human-lieutenant.png,Humans"
 msgstr "&human-lieutenant.png,Människor"
 
-#: data/multiplayer.cfg:121
+#: data/multiplayer.cfg:122
 msgid "&elvish-captain.png,Elves"
 msgstr "&elvish-captain.png,Alver"
 
-#: data/multiplayer.cfg:133
+#: data/multiplayer.cfg:134
 msgid "&orcish-warrior.png,Orcs"
 msgstr "&orcish-warrior.png,Orcher"
 
-#: data/multiplayer.cfg:157
+#: data/multiplayer.cfg:158
 msgid "&dwarf-warrior.png,Dwarves"
 msgstr "&dwarf-warrior.png,Dvärgar"
 
-#: data/multiplayer.cfg:180
+#: data/multiplayer.cfg:182
 msgid "&saurian-soothsayer.png,Saurian"
 msgstr "&saurian-soothsayer.png,Ödleman"
 
-#: data/multiplayer.cfg:193
+#: data/multiplayer.cfg:196
 msgid "Age of Heroes"
 msgstr "Hjältarnas tid"
 
-#: data/multiplayer.cfg:201
+#: data/multiplayer.cfg:204
 msgid "&human-general.png,Loyalists"
 msgstr "&human-general.png,Lojalister"
 
-#: data/multiplayer.cfg:213
+#: data/multiplayer.cfg:216
 msgid "&elvish-marshal.png,Rebels"
 msgstr "&elvish-marshal.png,Rebeller"
 
-#: data/multiplayer.cfg:225
+#: data/multiplayer.cfg:228
 msgid "&orcish-warlord.png,Northerners"
 msgstr "&orcish-warlord.png,Nordbor"
 
-#: data/multiplayer.cfg:237
+#: data/multiplayer.cfg:240
 msgid "&undead-lich.png,Undead"
 msgstr "&undead-lich.png,Vandöda"
 
-#: data/multiplayer.cfg:249
+#: data/multiplayer.cfg:252
 msgid "&dwarf-lord.png,Knalgan Alliance"
 msgstr "&dwarf-lord.png,Knalgas allians"
 
-#: data/multiplayer.cfg:275
+#: data/multiplayer.cfg:279
 msgid "Great War"
 msgstr "Det stora kriget"
 
-#: data/multiplayer.cfg:283
+#: data/multiplayer.cfg:287
 msgid "&white-mage.png,Alliance of Light"
 msgstr "&elvish-lord.png,Ljusets allians"
 
-#: data/multiplayer.cfg:295
+#: data/multiplayer.cfg:299
 msgid "&undead-necromancer.png,Alliance of Darkness"
 msgstr "&undead-lich.png,Mörkrets allians"
 
@@ -1057,9 +1057,11 @@ msgid "Castle Hopping Isle"
 msgstr "Borghopparön"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
+#, fuzzy
 msgid ""
 "Many closely placed and strategically located castles. Small map for fast "
-"play. Recommended setting of 2 gold per village."
+"play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
+"2, 4 for 2v2."
 msgstr ""
 "Många närliggande och strategiskt placerade borgar. En liten karta för "
 "snabbt spel. Det rekommenderas att byarna ställs in på att ge 2 guld per "
@@ -1181,7 +1183,7 @@ msgstr "Ja!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:477
+#: src/show_dialog.cpp:479
 msgid "No"
 msgstr "Nej"
 
@@ -1806,7 +1808,7 @@ msgstr "Vill du se över de färdigheter du lärde dig på den här nivån?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:476
+#: src/show_dialog.cpp:478
 msgid "Yes"
 msgstr "Ja"
 
@@ -2390,7 +2392,7 @@ msgstr "Andra vakten"
 msgid "Underground"
 msgstr "Underjorden"
 
-#: data/terrain.cfg:7 src/multiplayer.cpp:110 src/multiplayer_lobby.cpp:131
+#: data/terrain.cfg:7 src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:133
 msgid "Shroud"
 msgstr "Slöja"
 
@@ -2407,8 +2409,9 @@ msgid "Shallow Water"
 msgstr "Grunt vatten"
 
 #: data/terrain.cfg:39 data/terrain.cfg:60 data/terrain.cfg:139
-#: data/terrain.cfg:148 data/terrain.cfg:166 data/terrain.cfg:231
-#: src/reports.cpp:309
+#: data/terrain.cfg:148 data/terrain.cfg:159 data/terrain.cfg:170
+#: data/terrain.cfg:183 data/terrain.cfg:194 data/terrain.cfg:213
+#: data/terrain.cfg:278 src/reports.cpp:311
 msgid "Village"
 msgstr "By"
 
@@ -2440,47 +2443,47 @@ msgstr "Jord"
 msgid "Grassland"
 msgstr "Slätt"
 
-#: data/terrain.cfg:158
+#: data/terrain.cfg:205
 msgid "Snow"
 msgstr "Snö"
 
-#: data/terrain.cfg:177 data/terrain.cfg:184
+#: data/terrain.cfg:224 data/terrain.cfg:231
 msgid "Hills"
 msgstr "Kullar"
 
-#: data/terrain.cfg:193
+#: data/terrain.cfg:240
 msgid "Mountains"
 msgstr "Berg"
 
-#: data/terrain.cfg:200 data/terrain.cfg:208
+#: data/terrain.cfg:247 data/terrain.cfg:255
 msgid "Forest"
 msgstr "Skog"
 
-#: data/terrain.cfg:216
+#: data/terrain.cfg:263
 msgid "Cave wall"
 msgstr "Grottvägg"
 
-#: data/terrain.cfg:224
+#: data/terrain.cfg:271
 msgid "Cave"
 msgstr "Grotta"
 
-#: data/terrain.cfg:241 data/terrain.cfg:301
+#: data/terrain.cfg:288 data/terrain.cfg:348
 msgid "Castle"
 msgstr "Borg"
 
-#: data/terrain.cfg:250
+#: data/terrain.cfg:297
 msgid "Encampment"
 msgstr "Läger"
 
-#: data/terrain.cfg:260
+#: data/terrain.cfg:307
 msgid "Dwarven castle"
 msgstr "Dvärgborg"
 
-#: data/terrain.cfg:270
+#: data/terrain.cfg:317
 msgid "Keep"
 msgstr "Kärntorn"
 
-#: data/terrain.cfg:290
+#: data/terrain.cfg:337
 msgid "Canyon"
 msgstr "Ravin"
 
@@ -2500,15 +2503,15 @@ msgid "End Turn"
 msgstr "Avsluta draget"
 
 #: data/themes/default.cfg:126 data/themes/default.cfg:462
-#: data/themes/default.cfg:809 src/dialogs.cpp:658 src/display.cpp:948
-#: src/help.cpp:1059 src/playturn.cpp:1951 src/unit.cpp:1041
+#: data/themes/default.cfg:809 src/dialogs.cpp:660 src/display.cpp:950
+#: src/help.cpp:1061 src/playturn.cpp:1952 src/unit.cpp:1043
 msgid "HP"
 msgstr "HP"
 
 #: data/themes/default.cfg:133 data/themes/default.cfg:469
-#: data/themes/default.cfg:816 src/dialogs.cpp:662 src/dialogs.cpp:670
-#: src/display.cpp:952 src/display.cpp:960 src/playturn.cpp:1790
-#: src/playturn.cpp:1952 src/unit.cpp:1100
+#: data/themes/default.cfg:816 src/dialogs.cpp:664 src/dialogs.cpp:672
+#: src/display.cpp:954 src/display.cpp:962 src/playturn.cpp:1791
+#: src/playturn.cpp:1953 src/unit.cpp:1102
 msgid "XP"
 msgstr "EP"
 
@@ -2621,10 +2624,12 @@ msgstr ""
 "det draget."
 
 #: data/tips.cfg:8
+#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain it is standing in, however magical attacks always have "
-"a 70% chance to hit, and marksman attacks have at least 60% chance to hit."
+"itself in the terrain it is standing in, however magical attacks have a 70% "
+"chance to hit both when attacking and defending, and marksman attacks have "
+"at least 60% chance to hit when attacking."
 msgstr ""
 "Chansen att träffa en annan trupp beror vanligtvis på vilken terräng denna "
 "trupp befinner sig i. Dock har magiska attacker alltid 70% chans att träffa, "
@@ -2992,7 +2997,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:17
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:356 src/actions.cpp:476
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:358 src/actions.cpp:478
 msgid "leadership"
 msgstr "ledarskap"
 
@@ -3061,7 +3066,7 @@ msgstr ""
 
 #: data/translations/english.cfg:81 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:504
+#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:506
 msgid "steadfast"
 msgstr "ståndaktig"
 
@@ -3363,22 +3368,22 @@ msgstr "krossa"
 
 #: data/units/Ancient_Wose.cfg:19 data/units/Arch_Mage.cfg:24
 #: data/units/Arch_Mage.cfg:103 data/units/Bandit.cfg:20
-#: data/units/Bone_Shooter.cfg:25 data/units/Cave_Spider.cfg:29
-#: data/units/Cuttle_Fish.cfg:20 data/units/Dark_Queen.cfg:22
-#: data/units/Deathmaster.cfg:20 data/units/Drake_Gladiator.cfg:58
-#: data/units/Drake_Glider.cfg:23 data/units/Drake_Sky.cfg:27
-#: data/units/Dwarvish_Dragonguard.cfg:21 data/units/Dwarvish_Fighter.cfg:40
-#: data/units/Dwarvish_Lord.cfg:45 data/units/Dwarvish_Runemaster.cfg:21
-#: data/units/Dwarvish_Steelclad.cfg:46 data/units/Elder_Mage.cfg:23
-#: data/units/Elder_Wose.cfg:20 data/units/Elvish_Druid.cfg:24
-#: data/units/Elvish_Druid.cfg:43 data/units/Elvish_Enchantress.cfg:26
-#: data/units/Elvish_Enchantress.cfg:66 data/units/Elvish_Lady.cfg:20
-#: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
-#: data/units/Elvish_Shyde.cfg:25 data/units/Elvish_Shyde.cfg:51
-#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:66
-#: data/units/Elvish_Sylph.cfg:25 data/units/Elvish_Sylph.cfg:52
-#: data/units/Fire_Dragon.cfg:41 data/units/Footpad.cfg:20
-#: data/units/Footpad.cfg:38 data/units/Galleon.cfg:19 data/units/Gate.cfg:24
+#: data/units/Cave_Spider.cfg:29 data/units/Cuttle_Fish.cfg:20
+#: data/units/Dark_Queen.cfg:22 data/units/Deathmaster.cfg:20
+#: data/units/Drake_Gladiator.cfg:58 data/units/Drake_Glider.cfg:23
+#: data/units/Drake_Sky.cfg:27 data/units/Dwarvish_Dragonguard.cfg:21
+#: data/units/Dwarvish_Fighter.cfg:40 data/units/Dwarvish_Lord.cfg:45
+#: data/units/Dwarvish_Runemaster.cfg:21 data/units/Dwarvish_Steelclad.cfg:46
+#: data/units/Elder_Mage.cfg:23 data/units/Elder_Wose.cfg:20
+#: data/units/Elvish_Druid.cfg:24 data/units/Elvish_Druid.cfg:43
+#: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:66
+#: data/units/Elvish_Lady.cfg:20 data/units/Elvish_Shaman.cfg:25
+#: data/units/Elvish_Shaman.cfg:44 data/units/Elvish_Shyde.cfg:25
+#: data/units/Elvish_Shyde.cfg:51 data/units/Elvish_Sorceress.cfg:26
+#: data/units/Elvish_Sorceress.cfg:66 data/units/Elvish_Sylph.cfg:25
+#: data/units/Elvish_Sylph.cfg:52 data/units/Fire_Dragon.cfg:41
+#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:38
+#: data/units/Galleon.cfg:19 data/units/Gate.cfg:24
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:35
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:36
 #: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:100
@@ -3400,13 +3405,13 @@ msgstr "krossa"
 #: data/units/Saurian_Soothsayer.cfg:23 data/units/Saurian_Tribalist.cfg:23
 #: data/units/Sea_Hag.cfg:29 data/units/Shock_Trooper.cfg:20
 #: data/units/Silver_Mage.cfg:78 data/units/Silver_Mage.cfg:165
-#: data/units/Skeleton_Archer.cfg:24 data/units/Soul_Shooter.cfg:25
-#: data/units/Soulless.cfg:20 data/units/Tentacle.cfg:22
-#: data/units/Thug.cfg:20 data/units/Troll.cfg:21 data/units/Troll_Hero.cfg:21
-#: data/units/Troll_Rocklobber.cfg:21 data/units/Troll_Rocklobber.cfg:39
-#: data/units/Troll_Warrior.cfg:20 data/units/Troll_Whelp.cfg:21
-#: data/units/Walking_Corpse.cfg:20 data/units/Warrior_King.cfg:26
-#: data/units/Wose.cfg:20 data/units/Yeti.cfg:34 data/units/Youth.cfg:22
+#: data/units/Skeleton_Archer.cfg:24 data/units/Soulless.cfg:20
+#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:20 data/units/Troll.cfg:21
+#: data/units/Troll_Hero.cfg:21 data/units/Troll_Rocklobber.cfg:21
+#: data/units/Troll_Rocklobber.cfg:39 data/units/Troll_Warrior.cfg:20
+#: data/units/Troll_Whelp.cfg:21 data/units/Walking_Corpse.cfg:20
+#: data/units/Warrior_King.cfg:26 data/units/Wose.cfg:20
+#: data/units/Yeti.cfg:34 data/units/Youth.cfg:22
 msgid "impact"
 msgstr "kross"
 
@@ -3567,7 +3572,7 @@ msgstr "hugg"
 
 #: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
 #: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
-#: src/actions.cpp:495
+#: src/actions.cpp:497
 msgid "backstab"
 msgstr "rygghugg"
 
@@ -3722,48 +3727,29 @@ msgstr "Benskjutare"
 
 #: data/units/Bone_Shooter.cfg:15
 msgid ""
-"These elite undead archers strike terror in the hearts of their foes by "
-"using the bones of the slain as weapons."
+"These, whose masters have found to be more potent creations, have been "
+"outfitted with a truly vile arsenal.  Their quivers are filled with shafts "
+"made not of wood, but of the bones of their victims.  Dubbed simply 'Bone-"
+"Shooters' by their unfortunate enemies, these abominations are a terror to "
+"all who live."
 msgstr ""
-"Dessa vandöda elitbågskyttar ingjuter skräck hos fienden genom att beskjuta "
-"dem med deras dödade kamraters ben."
 
-#: data/units/Bone_Shooter.cfg:24 data/units/Giant_Mudcrawler.cfg:33
-#: data/units/Skeleton_Archer.cfg:23 data/units/Soulless.cfg:19
-#: data/units/Troll_Rocklobber.cfg:20 data/units/Troll_Whelp.cfg:20
-#: data/units/Walking_Corpse.cfg:19 data/units/Yeti.cfg:33
-msgid "fist"
-msgstr "knytnäve"
+#: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
+#, fuzzy
+msgid "stab"
+msgstr "rygghugg"
 
-#: data/units/Bone_Shooter.cfg:37 data/units/Bowman.cfg:37
-#: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:39
-#: data/units/Elvish_Archer.cfg:118 data/units/Elvish_Avenger.cfg:39
-#: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:40
-#: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Fighter.cfg:41
-#: data/units/Elvish_Hero.cfg:41 data/units/Elvish_Marshal.cfg:41
-#: data/units/Elvish_Outrider.cfg:43 data/units/Elvish_Ranger.cfg:38
-#: data/units/Elvish_Ranger.cfg:115 data/units/Elvish_Rider.cfg:52
-#: data/units/Elvish_Scout.cfg:53 data/units/Longbowman.cfg:38
-#: data/units/Lord.cfg:39 data/units/Master_Bowman.cfg:32
-#: data/units/Noble_Commander.cfg:44 data/units/Noble_Lord.cfg:43
-#: data/units/Orcish_Archer.cfg:36 data/units/Orcish_Leader.cfg:37
-#: data/units/Orcish_Ruler.cfg:38 data/units/Orcish_Sovereign.cfg:42
-#: data/units/Orcish_Warlord.cfg:30 data/units/Poacher.cfg:41
-#: data/units/Skeleton_Archer.cfg:40 data/units/Soul_Shooter.cfg:37
-#: data/units/Trapper.cfg:41
-msgid "bow"
-msgstr "båge"
-
-#: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:38
-#: data/units/Cavalier.cfg:49 data/units/Chocobone.cfg:21
-#: data/units/Commander.cfg:46 data/units/Cuttle_Fish.cfg:27
-#: data/units/Death_Knight.cfg:37 data/units/Dragoon.cfg:49
-#: data/units/Drake_Clasher.cfg:40 data/units/Drake_Gladiator.cfg:44
-#: data/units/Drake_Slasher.cfg:40 data/units/Duelist.cfg:37
-#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:26
-#: data/units/Dwarvish_Guardsman.cfg:39 data/units/Dwarvish_Sentinel.cfg:28
-#: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:28
-#: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Bone_Shooter.cfg:26 data/units/Bone_Shooter.cfg:39
+#: data/units/Bowman.cfg:38 data/units/Cavalier.cfg:49
+#: data/units/Chocobone.cfg:21 data/units/Commander.cfg:46
+#: data/units/Cuttle_Fish.cfg:27 data/units/Death_Knight.cfg:37
+#: data/units/Dragoon.cfg:49 data/units/Drake_Clasher.cfg:40
+#: data/units/Drake_Gladiator.cfg:44 data/units/Drake_Slasher.cfg:40
+#: data/units/Duelist.cfg:37 data/units/Dwarvish_Dragonguard.cfg:39
+#: data/units/Dwarvish_Guardsman.cfg:26 data/units/Dwarvish_Guardsman.cfg:39
+#: data/units/Dwarvish_Sentinel.cfg:28 data/units/Dwarvish_Sentinel.cfg:41
+#: data/units/Dwarvish_Stalwart.cfg:28 data/units/Dwarvish_Stalwart.cfg:41
+#: data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:40
 #: data/units/Elvish_Archer.cfg:119 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:41
@@ -3776,8 +3762,8 @@ msgstr "båge"
 #: data/units/Elvish_Sharpshooter.cfg:39
 #: data/units/Elvish_Sharpshooter.cfg:118 data/units/Elvish_Shyde.cfg:71
 #: data/units/General.cfg:49 data/units/Giant_Scorpion.cfg:20
-#: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:39
-#: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:33
+#: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:40
+#: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
 #: data/units/Grand_Knight.cfg:37 data/units/Grand_Marshal.cfg:45
 #: data/units/Halbardier.cfg:19 data/units/Horseman.cfg:21
 #: data/units/Knight.cfg:37 data/units/Lancer.cfg:21
@@ -3803,13 +3789,33 @@ msgstr "båge"
 #: data/units/Saurian.cfg:40 data/units/Saurian_Warrior.cfg:23
 #: data/units/Saurian_Warrior.cfg:40 data/units/Sea_Hag.cfg:21
 #: data/units/Sea_Serpent.cfg:20 data/units/Sergeant.cfg:39
-#: data/units/Skeleton_Archer.cfg:41 data/units/Soul_Shooter.cfg:38
-#: data/units/Spearman.cfg:20 data/units/Spearman.cfg:33
-#: data/units/Transport_Galleon.cfg:17 data/units/Trapper.cfg:42
-#: data/units/Triton.cfg:23 data/units/Vampire_Lady.cfg:35
-#: data/units/Wall_Guard.cfg:36 data/units/Watch_Tower.cfg:18
+#: data/units/Skeleton_Archer.cfg:41 data/units/Soul_Shooter.cfg:26
+#: data/units/Soul_Shooter.cfg:39 data/units/Spearman.cfg:20
+#: data/units/Spearman.cfg:34 data/units/Transport_Galleon.cfg:17
+#: data/units/Trapper.cfg:42 data/units/Triton.cfg:23
+#: data/units/Vampire_Lady.cfg:35 data/units/Wall_Guard.cfg:36
+#: data/units/Watch_Tower.cfg:18
 msgid "pierce"
 msgstr "stick"
+
+#: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:37
+#: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:39
+#: data/units/Elvish_Archer.cfg:118 data/units/Elvish_Avenger.cfg:39
+#: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:40
+#: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Fighter.cfg:41
+#: data/units/Elvish_Hero.cfg:41 data/units/Elvish_Marshal.cfg:41
+#: data/units/Elvish_Outrider.cfg:43 data/units/Elvish_Ranger.cfg:38
+#: data/units/Elvish_Ranger.cfg:115 data/units/Elvish_Rider.cfg:52
+#: data/units/Elvish_Scout.cfg:53 data/units/Longbowman.cfg:38
+#: data/units/Lord.cfg:39 data/units/Master_Bowman.cfg:32
+#: data/units/Noble_Commander.cfg:44 data/units/Noble_Lord.cfg:43
+#: data/units/Orcish_Archer.cfg:36 data/units/Orcish_Leader.cfg:37
+#: data/units/Orcish_Ruler.cfg:38 data/units/Orcish_Sovereign.cfg:42
+#: data/units/Orcish_Warlord.cfg:30 data/units/Poacher.cfg:41
+#: data/units/Skeleton_Archer.cfg:40 data/units/Soul_Shooter.cfg:38
+#: data/units/Trapper.cfg:41
+msgid "bow"
+msgstr "båge"
 
 #: data/units/Bowman.cfg:3
 msgid "Bowman"
@@ -3912,8 +3918,8 @@ msgstr ""
 #: data/units/Dwarvish_Guardsman.cfg:24 data/units/Dwarvish_Guardsman.cfg:38
 #: data/units/Dwarvish_Sentinel.cfg:26 data/units/Dwarvish_Sentinel.cfg:40
 #: data/units/Dwarvish_Stalwart.cfg:26 data/units/Dwarvish_Stalwart.cfg:40
-#: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:38
-#: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:32
+#: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:39
+#: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
 #: data/units/Horseman.cfg:20 data/units/Merman_Entangler.cfg:18
 #: data/units/Merman_Hunter.cfg:18 data/units/Merman_Hunter.cfg:26
 #: data/units/Merman_Javelineer.cfg:18 data/units/Merman_Javelineer.cfg:26
@@ -3921,14 +3927,14 @@ msgstr ""
 #: data/units/Merman_Spearman.cfg:26 data/units/Saurian.cfg:21
 #: data/units/Saurian.cfg:38 data/units/Saurian_Warrior.cfg:21
 #: data/units/Saurian_Warrior.cfg:38 data/units/Spearman.cfg:19
-#: data/units/Spearman.cfg:32
+#: data/units/Spearman.cfg:33
 msgid "spear"
 msgstr "spjut"
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
-#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:366
-#: src/actions.cpp:486
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:368
+#: src/actions.cpp:488
 msgid "charge"
 msgstr "storma"
 
@@ -3950,8 +3956,8 @@ msgstr ""
 msgid "gaze"
 msgstr "blick"
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:739 src/actions.cpp:886
-#: src/reports.cpp:122
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:742 src/actions.cpp:889
+#: src/reports.cpp:124
 msgid "stone"
 msgstr "sten"
 
@@ -4359,9 +4365,9 @@ msgstr ""
 "duktiga hantverkare och kan smida vapen med smaragdkanter, och de bär tunga "
 "rustningar. Veteranerna bär hillebarder som de använder med stor bravur."
 
-#: data/units/Drake_Slasher.cfg:42 data/units/Goblin_Impaler.cfg:25
+#: data/units/Drake_Slasher.cfg:42 data/units/Goblin_Impaler.cfg:26
 #: data/units/Halbardier.cfg:23 data/units/Halbardier.cfg:41
-#: data/units/Pikeman.cfg:24 data/units/Spearman.cfg:24
+#: data/units/Pikeman.cfg:24 data/units/Spearman.cfg:25
 msgid "firststrike"
 msgstr "första slaget"
 
@@ -5217,6 +5223,13 @@ msgstr ""
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Mudcrawler.cfg:20
 msgid "boiling water"
 msgstr "kokande vatten"
+
+#: data/units/Giant_Mudcrawler.cfg:33 data/units/Skeleton_Archer.cfg:23
+#: data/units/Soulless.cfg:19 data/units/Troll_Rocklobber.cfg:20
+#: data/units/Troll_Whelp.cfg:20 data/units/Walking_Corpse.cfg:19
+#: data/units/Yeti.cfg:33
+msgid "fist"
+msgstr "knytnäve"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
@@ -6741,15 +6754,12 @@ msgstr "Själaskytt"
 
 #: data/units/Soul_Shooter.cfg:15
 msgid ""
-"Wrapped in dark cloaks, the soul shooters roam the lands searching targets "
-"for its bone arrows."
+"The most powerful of the undead archers invariably end up being those who "
+"were themselves archers in their previous life.  They wander the fields of "
+"battle, guided by the fading memory of their former skill, neither knowing, "
+"nor caring what their purpose, or foes be.  They are driven only by a malice "
+"borne of the anguish of their empty and incoherent existence."
 msgstr ""
-"I sina mörka kåpor söker själaskjutarna land och rike runt efter offer för "
-"sina benpilar."
-
-#: data/units/Soul_Shooter.cfg:24
-msgid "bone"
-msgstr "ben"
 
 #: data/units/Soulless.cfg:3
 msgid "Soulless"
@@ -7150,300 +7160,305 @@ msgstr ""
 "Idag nästan en pojke, men med sin trohet mot kronan önskar han att bli en "
 "furste, att få tillhöra eliten av de mänskliga krigarna."
 
-#: src/about.cpp:45
+#: src/about.cpp:46
 msgid "+Core Developers"
 msgstr "+Spelutvecklare"
 
-#: src/about.cpp:46
+#: src/about.cpp:47
 msgid "-   Main Developer"
 msgstr "-   Huvudutvecklare"
 
-#: src/about.cpp:49
+#: src/about.cpp:50
 msgid "-   Artwork and graphics designer"
 msgstr "-   Grafikutvecklare"
 
-#: src/about.cpp:53
+#: src/about.cpp:54
 msgid "+Developers"
 msgstr "+Utvecklare"
 
-#: src/about.cpp:68
+#: src/about.cpp:69
 msgid "+General Purpose Administrators"
 msgstr "+Administratörer"
 
-#: src/about.cpp:72
+#: src/about.cpp:73
 msgid "+Artwork and graphics designers"
 msgstr "+Grafik"
 
-#: src/about.cpp:96
+#: src/about.cpp:97
 msgid "+Music"
 msgstr "+Musik"
 
-#: src/about.cpp:103
+#: src/about.cpp:104
 msgid "+Scenario Designers"
 msgstr "+Scenarioförfattare"
 
-#: src/about.cpp:113
+#: src/about.cpp:114
 msgid "+Multiplayer Maps"
 msgstr "+Gruppspelskartor"
 
-#: src/about.cpp:118
+#: src/about.cpp:119
 msgid "+Packagers"
 msgstr "+Paketerare"
 
-#: src/about.cpp:126
+#: src/about.cpp:127
 msgid "+Miscellaneous"
 msgstr "+Diverse"
 
-#: src/about.cpp:131
+#: src/about.cpp:132
 msgid "+Internationalization Manager"
 msgstr "+Översättningsamordnare"
 
-#: src/about.cpp:135
+#: src/about.cpp:136
 msgid "+Basque Translation"
 msgstr "+Baskisk översättning"
 
-#: src/about.cpp:139
+#: src/about.cpp:140
 msgid "+Catalan Translation"
 msgstr "+Katalansk översättning"
 
-#: src/about.cpp:145
+#: src/about.cpp:146
 msgid "+Czech Translation"
 msgstr "+Tjeckisk översättning"
 
-#: src/about.cpp:154
+#: src/about.cpp:155
 msgid "+Danish Translation"
 msgstr "+Dansk översättning"
 
-#: src/about.cpp:159
+#: src/about.cpp:160
 msgid "+Dutch Translation"
 msgstr "+Holländsk översättning"
 
-#: src/about.cpp:164
+#: src/about.cpp:165
 msgid "+Finnish Translation"
 msgstr "+Finsk översättning"
 
-#: src/about.cpp:168
+#: src/about.cpp:169
 msgid "+French Translation"
 msgstr "+Fransk översättning"
 
-#: src/about.cpp:180
+#: src/about.cpp:181
 msgid "+German Translation"
 msgstr "+Tysk översättning"
 
-#: src/about.cpp:190
+#: src/about.cpp:191
 msgid "+Greek Translation"
 msgstr "+Grekisk översättning"
 
-#: src/about.cpp:195
+#: src/about.cpp:196
 msgid "+Hungarian Translation"
 msgstr "+Ungersk översättning"
 
-#: src/about.cpp:200
+#: src/about.cpp:201
 msgid "+Italian Translation"
 msgstr "+Italiensk översättning"
 
-#: src/about.cpp:209
+#: src/about.cpp:210
 msgid "+Norwegian Translation"
 msgstr "+Norsk översättning"
 
-#: src/about.cpp:215
+#: src/about.cpp:216
 msgid "+Polish Translation"
 msgstr "+Polsk översättning"
 
-#: src/about.cpp:221
+#: src/about.cpp:222
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Brasiliansk-portugisisk översättning"
 
-#: src/about.cpp:229
+#: src/about.cpp:230
+#, fuzzy
+msgid "+Russian Translation"
+msgstr "+Ungersk översättning"
+
+#: src/about.cpp:236
 msgid "+Slovak Translation"
 msgstr "+Slovakisk översättning"
 
-#: src/about.cpp:233
+#: src/about.cpp:240
 msgid "+Spanish Translation"
 msgstr "+Spansk översättning"
 
-#: src/about.cpp:241
+#: src/about.cpp:248
 msgid "+Swedish Translation"
 msgstr "+Svensk översättning"
 
-#: src/about.cpp:248
+#: src/about.cpp:255
 msgid "+Contributors"
 msgstr "+Bidrag"
 
-#: src/about.cpp:256
+#: src/about.cpp:263
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:292 src/help.cpp:2564 src/show_dialog.cpp:496
+#: src/about.cpp:299 src/help.cpp:2566 src/show_dialog.cpp:498
 msgid "Close"
 msgstr "Stäng"
 
-#: src/actions.cpp:96
+#: src/actions.cpp:98
 msgid "You don't have a leader to recruit with."
 msgstr "Du har ingen ledare att rekrytera med."
 
-#: src/actions.cpp:100
+#: src/actions.cpp:102
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Du måste ha din ledare i ett kärntorn för att kunna rekrytera eller "
 "återkalla trupper."
 
-#: src/actions.cpp:117
+#: src/actions.cpp:119
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Det finns inga lediga borgrutor för nya trupper."
 
-#: src/actions.cpp:205
+#: src/actions.cpp:207
 msgid "none"
 msgstr "inget"
 
-#: src/actions.cpp:323 src/actions.cpp:442
+#: src/actions.cpp:325 src/actions.cpp:444
 msgid "base damage"
 msgstr "basskada"
 
-#: src/actions.cpp:333
+#: src/actions.cpp:335
 msgid "attacker resistance vs"
 msgstr "anfallarens motståndskraft mot"
 
-#: src/actions.cpp:333
+#: src/actions.cpp:335
 msgid "attacker vulnerability vs"
 msgstr "anfallarens sårbarhet för"
 
-#: src/actions.cpp:366 src/actions.cpp:486 src/actions.cpp:495
+#: src/actions.cpp:368 src/actions.cpp:488 src/actions.cpp:497
 msgid "Doubled"
 msgstr "fördubblad"
 
-#: src/actions.cpp:394 src/actions.cpp:531
+#: src/actions.cpp:396 src/actions.cpp:533
 msgid "total damage"
 msgstr "Total skada"
 
-#: src/actions.cpp:452
+#: src/actions.cpp:454
 msgid "defender resistance vs"
 msgstr "försvararens motståndskraft mot"
 
-#: src/actions.cpp:452
+#: src/actions.cpp:454
 msgid "defender vulnerability vs"
 msgstr "försvararens sårbarhet för"
 
-#: src/actions.cpp:504
+#: src/actions.cpp:506
 msgid "Halved"
 msgstr "Halverad"
 
-#: src/actions.cpp:725 src/actions.cpp:871 src/display.cpp:924
-#: src/reports.cpp:115
+#: src/actions.cpp:728 src/actions.cpp:874 src/display.cpp:926
+#: src/reports.cpp:117
 msgid "poisoned"
 msgstr "förgiftad"
 
-#: src/actions.cpp:730 src/actions.cpp:876 src/display.cpp:920
-#: src/reports.cpp:110
+#: src/actions.cpp:733 src/actions.cpp:879 src/display.cpp:922
+#: src/reports.cpp:112
 msgid "slowed"
 msgstr "långsam"
 
-#: src/actions.cpp:1748
+#: src/actions.cpp:1751
 msgid "Ambushed!"
 msgstr "Bakhåll!"
 
-#: src/actions.cpp:1776
+#: src/actions.cpp:1779
 msgid "Friendly unit sighted"
 msgstr "Allierad trupp inom synhåll"
 
-#: src/actions.cpp:1778
+#: src/actions.cpp:1781
 msgid "Enemy unit sighted!"
 msgstr "Fiendetrupp inom synhåll!"
 
-#: src/actions.cpp:1783
+#: src/actions.cpp:1786
 msgid "$friends Friendly units sighted"
 msgstr "$friends allierade trupper inom synhåll"
 
-#: src/actions.cpp:1785
+#: src/actions.cpp:1788
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies fiendetrupper inom synhåll!"
 
-#: src/actions.cpp:1789
+#: src/actions.cpp:1792
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
 "Trupper inom synhåll! ($friends allierade trupper, $enemies fiendetrupper)"
 
-#: src/actions.cpp:1804
+#: src/actions.cpp:1807
 msgid "(press $hotkey to continue)"
 msgstr "(Tryck på $hotkey för att fortsätta)"
 
-#: src/dialogs.cpp:90
+#: src/dialogs.cpp:92
 msgid "Advance Unit"
 msgstr "Uppgradera trupp"
 
-#: src/dialogs.cpp:91
+#: src/dialogs.cpp:93
 msgid "What should our victorious unit become?"
 msgstr "Vad skall din segrande trupp avancera till?"
 
-#: src/dialogs.cpp:160
+#: src/dialogs.cpp:162
 msgid "No objectives available"
 msgstr "Inga mål tillgängliga"
 
-#: src/dialogs.cpp:177
+#: src/dialogs.cpp:179
 msgid "Save Game"
 msgstr "Spara spelet"
 
-#: src/dialogs.cpp:179
+#: src/dialogs.cpp:181
 msgid "Overwrite?"
 msgstr "Skriva över?"
 
-#: src/dialogs.cpp:180
+#: src/dialogs.cpp:182
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Det sparade spelet finns redan, vill du skriva över det?"
 
-#: src/dialogs.cpp:209 src/dialogs.cpp:441
+#: src/dialogs.cpp:211 src/dialogs.cpp:443
 msgid "Don't ask me again!"
 msgstr "Fråga mig inte en gång till!"
 
-#: src/dialogs.cpp:211
+#: src/dialogs.cpp:213
 msgid "Do you really want to delete this game?"
 msgstr "Vill du verkligen radera detta spel?"
 
-#: src/dialogs.cpp:342
+#: src/dialogs.cpp:344
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/dialogs.cpp:355
+#: src/dialogs.cpp:357
 msgid "#(Invalid)"
 msgstr "#(Ogiltigt)"
 
-#: src/dialogs.cpp:360 src/game.cpp:956
+#: src/dialogs.cpp:362 src/game.cpp:954
 msgid "Campaign"
 msgstr "Kampanj"
 
-#: src/dialogs.cpp:362 src/game.cpp:1235
+#: src/dialogs.cpp:364 src/game.cpp:1233
 msgid "Multiplayer"
 msgstr "Gruppspel"
 
-#: src/dialogs.cpp:364
+#: src/dialogs.cpp:366
 msgid "Tutorial"
 msgstr "Träningsspel"
 
-#: src/dialogs.cpp:372
+#: src/dialogs.cpp:374
 msgid "replay"
 msgstr "repris"
 
-#: src/dialogs.cpp:374 src/multiplayer_lobby.cpp:143 src/playturn.cpp:1379
+#: src/dialogs.cpp:376 src/multiplayer_lobby.cpp:145 src/playturn.cpp:1380
 msgid "Turn"
 msgstr "Drag"
 
-#: src/dialogs.cpp:376
+#: src/dialogs.cpp:378
 msgid "Scenario Start"
 msgstr "Scenariostart"
 
-#: src/dialogs.cpp:379 src/game.cpp:986
+#: src/dialogs.cpp:381 src/game.cpp:984
 msgid "Difficulty"
 msgstr "Svårighetsgrad"
 
-#: src/dialogs.cpp:381 src/titlescreen.cpp:163
+#: src/dialogs.cpp:383 src/titlescreen.cpp:165
 msgid "Version"
 msgstr "Version"
 
-#: src/dialogs.cpp:396
+#: src/dialogs.cpp:398
 msgid "No Saved Games"
 msgstr "Inga sparade spel"
 
-#: src/dialogs.cpp:397
+#: src/dialogs.cpp:399
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -7451,15 +7466,15 @@ msgstr ""
 "Det finns inga sparade spel att öppna.\n"
 "(Spel sparas automatiskt när du klarar ett scenario)"
 
-#: src/dialogs.cpp:416
+#: src/dialogs.cpp:418
 msgid "Delete Save"
 msgstr "Radera sparat spel"
 
-#: src/dialogs.cpp:431
+#: src/dialogs.cpp:433
 msgid "Import Saved Games"
 msgstr "Importera sparade spel"
 
-#: src/dialogs.cpp:432
+#: src/dialogs.cpp:434
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -7469,7 +7484,7 @@ msgstr ""
 "gammal version av Kampen om Wesnoth. Vill du uppdatera dessa till den "
 "senaste versionen? Detta kan ta lite tid."
 
-#: src/dialogs.cpp:437
+#: src/dialogs.cpp:439
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
@@ -7479,75 +7494,75 @@ msgstr ""
 "sparats av denna version av Kampen om Wesnoth. Vill du registrera dessa "
 "filer i spelet?"
 
-#: src/dialogs.cpp:507
+#: src/dialogs.cpp:509
 msgid "Show replay"
 msgstr "Spela upp repris"
 
-#: src/dialogs.cpp:510 src/multiplayer.cpp:81
+#: src/dialogs.cpp:512 src/multiplayer.cpp:83
 msgid "Load Game"
 msgstr "Öppna spel"
 
-#: src/dialogs.cpp:511
+#: src/dialogs.cpp:513
 msgid "Choose the game to load"
 msgstr "Välj spel att öppna"
 
-#: src/dialogs.cpp:546 src/dialogs.cpp:557
+#: src/dialogs.cpp:548 src/dialogs.cpp:559
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:637 src/display.cpp:930 src/help.cpp:1014
-#: src/playturn.cpp:1788
+#: src/dialogs.cpp:639 src/display.cpp:932 src/help.cpp:1016
+#: src/playturn.cpp:1789
 msgid "level"
 msgstr "nivå"
 
-#: src/dialogs.cpp:675 src/display.cpp:964 src/help.cpp:1060
-#: src/playturn.cpp:1953 src/unit.cpp:1077
+#: src/dialogs.cpp:677 src/display.cpp:966 src/help.cpp:1062
+#: src/playturn.cpp:1954 src/unit.cpp:1079
 msgid "Moves"
 msgstr "Förflyttning"
 
-#: src/dialogs.cpp:690 src/display.cpp:981 src/help.cpp:1129
-#: src/playturn.cpp:598 src/reports.cpp:230
+#: src/dialogs.cpp:692 src/display.cpp:983 src/help.cpp:1131
+#: src/playturn.cpp:600 src/reports.cpp:232
 msgid "melee"
 msgstr "närstrid"
 
-#: src/dialogs.cpp:690 src/display.cpp:982 src/help.cpp:1129
-#: src/playturn.cpp:598 src/reports.cpp:231
+#: src/dialogs.cpp:692 src/display.cpp:984 src/help.cpp:1131
+#: src/playturn.cpp:600 src/reports.cpp:233
 msgid "ranged"
 msgstr "distans"
 
-#: src/display.cpp:911
+#: src/display.cpp:913
 msgid "healthy"
 msgstr "bra hälsa"
 
-#: src/display.cpp:916 src/reports.cpp:105
+#: src/display.cpp:918 src/reports.cpp:107
 msgid "invisible"
 msgstr "osynlig"
 
-#: src/font.cpp:171
+#: src/font.cpp:173
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
-#: src/game.cpp:138
+#: src/game.cpp:135
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Vill du spara en repris av detta scenario?"
 
-#: src/game.cpp:139 src/game.cpp:201 src/playturn.cpp:1388
+#: src/game.cpp:136 src/game.cpp:198 src/playturn.cpp:1389
 msgid "Name:"
 msgstr "Namn:"
 
-#: src/game.cpp:147 src/game.cpp:208 src/playturn.cpp:1405
+#: src/game.cpp:144 src/game.cpp:205 src/playturn.cpp:1406
 msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
 
-#: src/game.cpp:200
+#: src/game.cpp:197
 msgid "Do you want to save your game?"
 msgstr "Vill du spara ditt spel?"
 
-#: src/game.cpp:620
+#: src/game.cpp:618
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:816 src/multiplayer_connect.cpp:101
+#: src/game.cpp:814 src/multiplayer_connect.cpp:103
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7555,275 +7570,275 @@ msgstr ""
 "Detta sparade spel är från en annan spelversion. Vill du försöka öppna "
 "spelet ändå?"
 
-#: src/game.cpp:828 src/game.cpp:833 src/playlevel.cpp:558
-#: src/playlevel.cpp:810
+#: src/game.cpp:826 src/game.cpp:831 src/playlevel.cpp:560
+#: src/playlevel.cpp:812
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/game.cpp:837
+#: src/game.cpp:835
 msgid "File I/O Error while reading the game"
 msgstr "I/O-fel vid läsning från fil"
 
-#: src/game.cpp:946
+#: src/game.cpp:944
 msgid " ,Get More Campaigns..."
 msgstr " ,Hämta fler kampanjer..."
 
-#: src/game.cpp:947
+#: src/game.cpp:945
 msgid "Download more campaigns from a server on Internet."
 msgstr "Ladda ner fler kampanjer från en server över internet."
 
-#: src/game.cpp:957
+#: src/game.cpp:955
 msgid "Choose the campaign you want to play:"
 msgstr "Välj kampanj att spela: "
 
-#: src/game.cpp:987
+#: src/game.cpp:985
 msgid "Select difficulty level:"
 msgstr "Välj svårighetsgrad:"
 
-#: src/game.cpp:1006
+#: src/game.cpp:1004
 msgid "Connect to Server"
 msgstr "Anslut till server"
 
-#: src/game.cpp:1007
+#: src/game.cpp:1005
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Du kommer nu att anslutas till en kampanjserver där du kan hämta kampanjer."
 
-#: src/game.cpp:1008
+#: src/game.cpp:1006
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:1020
+#: src/game.cpp:1018
 msgid "Could not connect to host."
 msgstr "Kunde inte ansluta till servern."
 
-#: src/game.cpp:1020 src/game.cpp:1035 src/game.cpp:1041 src/game.cpp:1091
-#: src/game.cpp:1120 src/game.cpp:1134 src/game.cpp:1136 src/game.cpp:1138
-#: src/game.cpp:1150 src/game.cpp:1153 src/game.cpp:1188 src/game.cpp:1190
-#: src/game.cpp:1212 src/game.cpp:1214 src/playturn.cpp:1391
-#: src/playturn.cpp:1405
+#: src/game.cpp:1018 src/game.cpp:1033 src/game.cpp:1039 src/game.cpp:1089
+#: src/game.cpp:1118 src/game.cpp:1132 src/game.cpp:1134 src/game.cpp:1136
+#: src/game.cpp:1148 src/game.cpp:1151 src/game.cpp:1186 src/game.cpp:1188
+#: src/game.cpp:1210 src/game.cpp:1212 src/playturn.cpp:1392
+#: src/playturn.cpp:1406
 msgid "Error"
 msgstr "Fel"
 
-#: src/game.cpp:1028
+#: src/game.cpp:1026
 msgid "Awaiting response from server"
 msgstr "Väntar på svar från servern"
 
-#: src/game.cpp:1041
+#: src/game.cpp:1039
 msgid "Error communicating with the server."
 msgstr "Kunde ej kommunicera med servern."
 
-#: src/game.cpp:1046
+#: src/game.cpp:1044
 msgid ",Name,Version,Author,Downloads,Size"
 msgstr ",Namn,Version,Författare,Hämtningar, Storlek"
 
-#: src/game.cpp:1065
+#: src/game.cpp:1063
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:1068 src/show_dialog.cpp:946
+#: src/game.cpp:1066 src/show_dialog.cpp:948
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1069
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:1083
+#: src/game.cpp:1081
 msgid "Publish campaign: "
 msgstr "Publicera kampanj: "
 
-#: src/game.cpp:1087
+#: src/game.cpp:1085
 msgid "Delete campaign: "
 msgstr "Ta bort kampanj: "
 
-#: src/game.cpp:1091
+#: src/game.cpp:1089
 msgid "There are no campaigns available for download from this server."
 msgstr "Det finns inga kampanjer att hämta på den här servern."
 
-#: src/game.cpp:1095
+#: src/game.cpp:1093
 msgid "Choose the campaign to download."
 msgstr "Välj kampanj att hämta hem:"
 
-#: src/game.cpp:1095
+#: src/game.cpp:1093
 msgid "Get Campaign"
 msgstr "Hämta kampanj"
 
-#: src/game.cpp:1114
+#: src/game.cpp:1112
 msgid "Downloading campaign..."
 msgstr "Hämtar kampanj..."
 
-#: src/game.cpp:1132
+#: src/game.cpp:1130
 msgid "Campaign Installed"
 msgstr "Kampanjen har installerats"
 
-#: src/game.cpp:1132
+#: src/game.cpp:1130
 msgid "The campaign has been installed."
 msgstr "Kampanjen har installerats."
 
-#: src/game.cpp:1134
+#: src/game.cpp:1132
 msgid "Network communication error."
 msgstr "Nätverksfel."
 
-#: src/game.cpp:1136
+#: src/game.cpp:1134
 msgid "Remote host disconnected."
 msgstr "Anslutningen avbruten."
 
-#: src/game.cpp:1138
+#: src/game.cpp:1136
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Problem uppstod i skapandet av de filer som behövs för att installera denna "
 "kampanj."
 
-#: src/game.cpp:1150 src/game.cpp:1188 src/game.cpp:1212
-#: src/multiplayer_client.cpp:45 src/multiplayer_client.cpp:316
+#: src/game.cpp:1148 src/game.cpp:1186 src/game.cpp:1210
+#: src/multiplayer_client.cpp:47 src/multiplayer_client.cpp:318
 msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
-#: src/game.cpp:1153 src/game.cpp:1190 src/game.cpp:1214
+#: src/game.cpp:1151 src/game.cpp:1188 src/game.cpp:1212
 msgid "The server responded with an error: \""
 msgstr "Felmeddelande från servern: \""
 
-#: src/game.cpp:1156
+#: src/game.cpp:1154
 msgid "Terms"
 msgstr "Villkor"
 
-#: src/game.cpp:1192 src/game.cpp:1216
+#: src/game.cpp:1190 src/game.cpp:1214
 msgid "Response"
 msgstr "Svar"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1226
 msgid "Join Official Server"
 msgstr "Anslut till den officiella servern"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1226
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Logga in på Kampen om Wesnoths officiella spelserver"
 
-#: src/game.cpp:1229 src/multiplayer_lobby.cpp:161
+#: src/game.cpp:1227 src/multiplayer_lobby.cpp:163
 msgid "Join Game"
 msgstr "Anslut till spel"
 
-#: src/game.cpp:1229
+#: src/game.cpp:1227
 msgid "Join a server or hosted game"
 msgstr "Anslut till en server eller ett spel som någon annan är värd för"
 
-#: src/game.cpp:1230
+#: src/game.cpp:1228
 msgid "Host Networked Game"
 msgstr "Var värd för nätverksspel"
 
-#: src/game.cpp:1230
+#: src/game.cpp:1228
 msgid "Host a game without using a server"
 msgstr "Var värd för ett spel utan att använda en server"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1229
 msgid "Hotseat Game"
 msgstr "Heta stolen-spel"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1229
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Spela ett gruppspel med en och samma dator"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1230
 msgid "Human vs AI"
 msgstr "Människa mot dator"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1230
 msgid "Play a game against AI opponents"
 msgstr "Spela mot datorn"
 
-#: src/game.cpp:1235 src/multiplayer_client.cpp:300
+#: src/game.cpp:1233 src/multiplayer_client.cpp:302
 msgid "Login"
 msgstr "Logga in"
 
-#: src/game.cpp:1316
+#: src/game.cpp:1314
 msgid "Language"
 msgstr "Språk"
 
-#: src/game.cpp:1317
+#: src/game.cpp:1315
 msgid "Choose your preferred language"
 msgstr "Välj språk"
 
-#: src/help.cpp:1021
+#: src/help.cpp:1023
 msgid "Advances to"
 msgstr "Kan befordras till"
 
-#: src/help.cpp:1061
+#: src/help.cpp:1063
 msgid "Alignment"
 msgstr "Livsåskådning"
 
-#: src/help.cpp:1065
+#: src/help.cpp:1067
 msgid "Required XP"
 msgstr "EP för nästa nivå"
 
-#: src/help.cpp:1076 src/reports.cpp:233
+#: src/help.cpp:1078 src/reports.cpp:235
 msgid "attacks"
 msgstr "attacker"
 
-#: src/help.cpp:1083 src/help.cpp:1084 src/playturn.cpp:1950
+#: src/help.cpp:1085 src/help.cpp:1086 src/playturn.cpp:1951
 msgid "Name"
 msgstr "Namn"
 
-#: src/help.cpp:1087 src/help.cpp:1088 src/playturn.cpp:1949
+#: src/help.cpp:1089 src/help.cpp:1090 src/playturn.cpp:1950
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:1091 src/help.cpp:1092 src/unit_types.cpp:302
+#: src/help.cpp:1093 src/help.cpp:1094 src/unit_types.cpp:305
 msgid "Dmg"
 msgstr "Skada"
 
-#: src/help.cpp:1095 src/help.cpp:1096
+#: src/help.cpp:1097 src/help.cpp:1098
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help.cpp:1099 src/help.cpp:1100
+#: src/help.cpp:1101 src/help.cpp:1102
 msgid "Range"
 msgstr "Räckvidd"
 
-#: src/help.cpp:1103 src/help.cpp:1104
+#: src/help.cpp:1105 src/help.cpp:1106
 msgid "Special"
 msgstr "Specialitet"
 
-#: src/help.cpp:1149
+#: src/help.cpp:1151
 msgid "Resistances"
 msgstr "Motståndskraft mot olika attacker"
 
-#: src/help.cpp:1153 src/help.cpp:1154
+#: src/help.cpp:1155 src/help.cpp:1156
 msgid "Attack Type"
 msgstr "Attacktyp"
 
-#: src/help.cpp:1157 src/help.cpp:1158
+#: src/help.cpp:1159 src/help.cpp:1160
 msgid "Resistance"
 msgstr "Motståndskraft"
 
-#: src/help.cpp:1185
+#: src/help.cpp:1187
 msgid "Terrain Modifiers"
 msgstr "Terrängavdrag"
 
-#: src/help.cpp:1189 src/help.cpp:1190
+#: src/help.cpp:1191 src/help.cpp:1192
 msgid "Terrain"
 msgstr "Terräng"
 
-#: src/help.cpp:1197 src/help.cpp:1198
+#: src/help.cpp:1199 src/help.cpp:1200
 msgid "Defense"
 msgstr "Försvar"
 
-#: src/help.cpp:1296
+#: src/help.cpp:1298
 msgid "or"
 msgstr "eller"
 
-#: src/help.cpp:1303
+#: src/help.cpp:1305
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
 "Den här terrängen betraktas som $terrains ur förflyttnings- och "
 "försvarssynpunkt"
 
-#: src/help.cpp:1305
+#: src/help.cpp:1307
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Den för truppen mest fördelaktiga terrängen används automatiskt"
 
-#: src/help.cpp:1309
+#: src/help.cpp:1311
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -7831,7 +7846,7 @@ msgstr ""
 "Den här terrängen fungerar som ett kärntorn. Du kan alltså rekrytera trupper "
 "när din ledare befinner på den här sortens terräng"
 
-#: src/help.cpp:1311
+#: src/help.cpp:1313
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -7839,198 +7854,198 @@ msgstr ""
 "Den här terrängen fungerar som en borg. Rekryterade trupper kan alltså "
 "placeras på den här sortens terräng"
 
-#: src/help.cpp:1313
+#: src/help.cpp:1315
 msgid "This terrain gives healing."
 msgstr "Den här terrängen läker trupper."
 
-#: src/help.cpp:2105
+#: src/help.cpp:2107
 msgid "< Back"
 msgstr "< Bakåt"
 
-#: src/help.cpp:2106
+#: src/help.cpp:2108
 msgid "Forward >"
 msgstr "Framåt >"
 
-#: src/help.cpp:2567
+#: src/help.cpp:2569
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjälp om Kampen om Wesnoth"
 
-#: src/intro.cpp:87
+#: src/intro.cpp:89
 msgid "Next"
 msgstr "Nästa"
 
-#: src/intro.cpp:88
+#: src/intro.cpp:90
 msgid "Skip"
 msgstr "Hoppa över"
 
-#: src/intro.cpp:312
+#: src/intro.cpp:314
 msgid "The End"
 msgstr "Slut"
 
-#: src/language.cpp:31
+#: src/language.cpp:34
 msgid "System default language"
 msgstr "Systemets standardspråk"
 
-#: src/mapgen_dialog.cpp:72
+#: src/mapgen_dialog.cpp:74
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: src/mapgen_dialog.cpp:75
+#: src/mapgen_dialog.cpp:77
 msgid "Map Generator"
 msgstr "Kartgenerator"
 
-#: src/mapgen_dialog.cpp:80 src/multiplayer.cpp:498
+#: src/mapgen_dialog.cpp:82 src/multiplayer.cpp:499
 msgid "Players"
 msgstr "Spelare"
 
-#: src/mapgen_dialog.cpp:81
+#: src/mapgen_dialog.cpp:83
 msgid "Width"
 msgstr "Bredd"
 
-#: src/mapgen_dialog.cpp:82
+#: src/mapgen_dialog.cpp:84
 msgid "Height"
 msgstr "Höjd"
 
-#: src/mapgen_dialog.cpp:83
+#: src/mapgen_dialog.cpp:85
 msgid "Iterations"
 msgstr "Iterationer"
 
-#: src/mapgen_dialog.cpp:84
+#: src/mapgen_dialog.cpp:86
 msgid "Bump Size"
 msgstr "Kullstorlek"
 
-#: src/mapgen_dialog.cpp:85 src/playturn.cpp:1527
+#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1528
 msgid "Villages"
 msgstr "Byar"
 
-#: src/mapgen_dialog.cpp:86
+#: src/mapgen_dialog.cpp:88
 msgid "Landform"
 msgstr "Landform"
 
-#: src/mapgen_dialog.cpp:192
+#: src/mapgen_dialog.cpp:194
 msgid "Roads Between Castles"
 msgstr "Vägar mellan borgar"
 
-#: src/mapgen_dialog.cpp:249
+#: src/mapgen_dialog.cpp:251
 msgid "/1000 tiles"
 msgstr "/1000 rutor"
 
-#: src/mapgen_dialog.cpp:254
+#: src/mapgen_dialog.cpp:256
 msgid "Coastal"
 msgstr "Kustnära"
 
-#: src/mapgen_dialog.cpp:254
+#: src/mapgen_dialog.cpp:256
 msgid "Inland"
 msgstr "Inland"
 
-#: src/mapgen_dialog.cpp:254
+#: src/mapgen_dialog.cpp:256
 msgid "Island"
 msgstr "Ö"
 
-#: src/multiplayer.cpp:91
+#: src/multiplayer.cpp:93
 msgid "The maximum turns the game will go for"
 msgstr "Maximalt antal speldrag"
 
-#: src/multiplayer.cpp:97
+#: src/multiplayer.cpp:99
 msgid "The amount of income each village yields per turn"
 msgstr "Hur mycket guld som varje by ger per drag"
 
-#: src/multiplayer.cpp:104
+#: src/multiplayer.cpp:106
 msgid "The amount of experience a unit needs to advance"
 msgstr "Hur mycket erfarenhet en trupp behöver för att befordras"
 
-#: src/multiplayer.cpp:106
+#: src/multiplayer.cpp:108
 msgid "Fog Of War"
 msgstr "Stridsdimma"
 
-#: src/multiplayer.cpp:108
+#: src/multiplayer.cpp:110
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Fiendetrupper kan ses endast om de befinner sig inom dina truppers räckvidd"
 
-#: src/multiplayer.cpp:112
+#: src/multiplayer.cpp:114
 msgid "The map is unknown until your units explore it"
 msgstr "Kartan är okänd tills dina trupper utforskar den"
 
-#: src/multiplayer.cpp:114 src/reports.cpp:375
+#: src/multiplayer.cpp:116 src/reports.cpp:377
 msgid "Observers"
 msgstr "Åskådare"
 
-#: src/multiplayer.cpp:116
+#: src/multiplayer.cpp:118
 msgid "Allow users who are not playing to watch the game"
 msgstr "Tillåt användare som inte spelar att beskåda spelet"
 
-#: src/multiplayer.cpp:118 src/multiplayer_client.cpp:148
-#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:484
-#: src/show_dialog.cpp:490
+#: src/multiplayer.cpp:120 src/multiplayer_client.cpp:150
+#: src/multiplayer_connect.cpp:52 src/show_dialog.cpp:486
+#: src/show_dialog.cpp:492
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/multiplayer.cpp:119 src/show_dialog.cpp:470 src/show_dialog.cpp:483
+#: src/multiplayer.cpp:121 src/show_dialog.cpp:472 src/show_dialog.cpp:485
 msgid "Ok"
 msgstr "Ok"
 
-#: src/multiplayer.cpp:121
+#: src/multiplayer.cpp:123
 msgid "Regenerate"
 msgstr "Skapa ny karta"
 
-#: src/multiplayer.cpp:123
+#: src/multiplayer.cpp:125
 msgid "Settings..."
 msgstr "Inställningar..."
 
-#: src/multiplayer.cpp:127
+#: src/multiplayer.cpp:129
 msgid "Share View"
 msgstr "Dela synfält"
 
-#: src/multiplayer.cpp:128
+#: src/multiplayer.cpp:130
 msgid "Share Maps"
 msgstr "Dela kartor"
 
-#: src/multiplayer.cpp:129
+#: src/multiplayer.cpp:131
 msgid "Share None"
 msgstr "Dela ingenting"
 
-#: src/multiplayer.cpp:140 src/multiplayer_connect.cpp:179
+#: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:181
 msgid "No multiplayer sides."
 msgstr "Inga sidor angivna."
 
-#: src/multiplayer.cpp:168 src/multiplayer_lobby.cpp:162
+#: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:164
 msgid "Create Game"
 msgstr "Skapa nytt spel"
 
-#: src/multiplayer.cpp:172
+#: src/multiplayer.cpp:174
 msgid "Name of game"
 msgstr "Spelets namn"
 
-#: src/multiplayer.cpp:176
+#: src/multiplayer.cpp:177
 msgid "$login's game"
 msgstr "$login|s spel"
 
-#: src/multiplayer.cpp:187
+#: src/multiplayer.cpp:188
 msgid "Map to play"
 msgstr "Spelkarta"
 
-#: src/multiplayer.cpp:282
+#: src/multiplayer.cpp:283
 msgid "Era"
 msgstr "Era"
 
-#: src/multiplayer.cpp:358
+#: src/multiplayer.cpp:359
 msgid "Unlimited"
 msgstr "Obegränsat"
 
-#: src/multiplayer.cpp:362
+#: src/multiplayer.cpp:363
 msgid "Turns"
 msgstr "Drag"
 
-#: src/multiplayer.cpp:370
+#: src/multiplayer.cpp:371
 msgid "Village Gold"
 msgstr "Byguld"
 
-#: src/multiplayer.cpp:382
+#: src/multiplayer.cpp:383
 msgid "Experience Requirements"
 msgstr "Erfarenhetskrav"
 
-#: src/multiplayer.cpp:514
+#: src/multiplayer.cpp:515
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
@@ -8039,89 +8054,89 @@ msgstr ""
 "nätverket. Nätverksspelare kommer inte att kunna koppla upp sig mot det här "
 "spelet."
 
-#: src/multiplayer.cpp:514
+#: src/multiplayer.cpp:515
 msgid "Warning"
 msgstr "Varning"
 
-#: src/multiplayer_client.cpp:62
+#: src/multiplayer_client.cpp:64
 msgid "Receiving game list..."
 msgstr "Hämtar spellista..."
 
-#: src/multiplayer_client.cpp:124 src/multiplayer_connect.cpp:388
-#: src/multiplayer_connect.cpp:390 src/playlevel.cpp:790 src/playturn.cpp:1526
-#: src/playturn.cpp:1531 src/playturn.cpp:1618
+#: src/multiplayer_client.cpp:126 src/multiplayer_connect.cpp:390
+#: src/multiplayer_connect.cpp:392 src/playlevel.cpp:792 src/playturn.cpp:1527
+#: src/playturn.cpp:1532 src/playturn.cpp:1619
 msgid "Gold"
 msgstr "Guld"
 
-#: src/multiplayer_client.cpp:142
+#: src/multiplayer_client.cpp:144
 msgid "Waiting for game to start..."
 msgstr "Väntar på att spelet skall starta..."
 
-#: src/multiplayer_client.cpp:250
+#: src/multiplayer_client.cpp:252
 msgid "Connect to Host"
 msgstr "Anslut till server"
 
-#: src/multiplayer_client.cpp:252
+#: src/multiplayer_client.cpp:254
 msgid "Choose host to connect to"
 msgstr "Välj server att ansluta dig till"
 
-#: src/multiplayer_client.cpp:270
+#: src/multiplayer_client.cpp:272
 msgid "Connecting to remote host..."
 msgstr "Ansluter till server"
 
-#: src/multiplayer_client.cpp:299
+#: src/multiplayer_client.cpp:301
 msgid "You must log in to this server"
 msgstr "Du måste logga in på den här servern."
 
-#: src/multiplayer_client.cpp:379
+#: src/multiplayer_client.cpp:381
 msgid "Getting game data..."
 msgstr "Hämtar spelinformation..."
 
-#: src/multiplayer_client.cpp:431
+#: src/multiplayer_client.cpp:433
 msgid "There are no available sides in this game."
 msgstr "Det finns inga tillgängliga sidor."
 
-#: src/multiplayer_client.cpp:479
+#: src/multiplayer_client.cpp:481
 msgid "Choose your side:"
 msgstr "Välj sida:"
 
-#: src/multiplayer_client.cpp:510
+#: src/multiplayer_client.cpp:512
 msgid "The game has been cancelled"
 msgstr "Spelet har blivit avbrutet"
 
-#: src/multiplayer_client.cpp:514
+#: src/multiplayer_client.cpp:516
 msgid "The side you have chosen is no longer available"
 msgstr "Den sida som du har valt är inte längre tillgänglig"
 
-#: src/multiplayer_client.cpp:550
+#: src/multiplayer_client.cpp:552
 msgid "Show replay of game up to save point?"
 msgstr "Visa repris av spelet fram till senaste gången du sparade?"
 
-#: src/multiplayer_client.cpp:685 src/multiplayer_client.cpp:688
+#: src/multiplayer_client.cpp:687 src/multiplayer_client.cpp:690
 msgid "?"
 msgstr "?"
 
-#: src/multiplayer_client.cpp:772
+#: src/multiplayer_client.cpp:774
 msgid "Leader: "
 msgstr "Ledare: "
 
-#: src/multiplayer_client.cpp:774
+#: src/multiplayer_client.cpp:776
 msgid "Recruits: "
 msgstr "Rekryterade: "
 
-#: src/multiplayer_connect.cpp:48
+#: src/multiplayer_connect.cpp:50
 msgid " Computer vs Computer "
 msgstr "Dator mot dator"
 
-#: src/multiplayer_connect.cpp:49
+#: src/multiplayer_connect.cpp:51
 msgid "I'm Ready"
 msgstr "Klar!"
 
-#: src/multiplayer_connect.cpp:94
+#: src/multiplayer_connect.cpp:96
 msgid "This is not a multiplayer save"
 msgstr "Detta är inte ett sparat gruppspel"
 
-#: src/multiplayer_connect.cpp:244
+#: src/multiplayer_connect.cpp:246
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -8129,158 +8144,158 @@ msgstr ""
 "Seger:\n"
 "@Besegra fiendens ledare"
 
-#: src/multiplayer_connect.cpp:264
+#: src/multiplayer_connect.cpp:266
 msgid "Network Player"
 msgstr "Nätverksspelare"
 
-#: src/multiplayer_connect.cpp:265
+#: src/multiplayer_connect.cpp:267
 msgid "Local Player"
 msgstr "Lokal spelare"
 
-#: src/multiplayer_connect.cpp:266 src/multiplayer_connect.cpp:530
-#: src/multiplayer_connect.cpp:624 src/multiplayer_connect.cpp:725
+#: src/multiplayer_connect.cpp:268 src/multiplayer_connect.cpp:532
+#: src/multiplayer_connect.cpp:626 src/multiplayer_connect.cpp:727
 msgid "Computer Player"
 msgstr "Datorspelare"
 
-#: src/multiplayer_connect.cpp:267
+#: src/multiplayer_connect.cpp:269
 msgid "Empty"
 msgstr "Tom"
 
-#: src/multiplayer_connect.cpp:294 src/multiplayer_connect.cpp:378
-#: src/multiplayer_connect.cpp:381
+#: src/multiplayer_connect.cpp:296 src/multiplayer_connect.cpp:380
+#: src/multiplayer_connect.cpp:383
 msgid "Team"
 msgstr "Lag"
 
-#: src/multiplayer_connect.cpp:305
+#: src/multiplayer_connect.cpp:307
 msgid "Red"
 msgstr "Röd"
 
-#: src/multiplayer_connect.cpp:307
+#: src/multiplayer_connect.cpp:309
 msgid "Blue"
 msgstr "Blå"
 
-#: src/multiplayer_connect.cpp:309
+#: src/multiplayer_connect.cpp:311
 msgid "Green"
 msgstr "Grön"
 
-#: src/multiplayer_connect.cpp:311
+#: src/multiplayer_connect.cpp:313
 msgid "Yellow"
 msgstr "Gul"
 
-#: src/multiplayer_connect.cpp:313
+#: src/multiplayer_connect.cpp:315
 msgid "Purple"
 msgstr "Lila"
 
-#: src/multiplayer_connect.cpp:315
+#: src/multiplayer_connect.cpp:317
 msgid "Orange"
 msgstr "Orange"
 
-#: src/multiplayer_connect.cpp:317
+#: src/multiplayer_connect.cpp:319
 msgid "Grey"
 msgstr "Grå"
 
-#: src/multiplayer_connect.cpp:319
+#: src/multiplayer_connect.cpp:321
 msgid "White"
 msgstr "Vit"
 
-#: src/multiplayer_connect.cpp:321
+#: src/multiplayer_connect.cpp:323
 msgid "Brown"
 msgstr "Brun"
 
-#: src/multiplayer_connect.cpp:367
+#: src/multiplayer_connect.cpp:369
 msgid "Game Lobby"
 msgstr "Spellobby"
 
-#: src/multiplayer_connect.cpp:370 src/multiplayer_connect.cpp:372
+#: src/multiplayer_connect.cpp:372 src/multiplayer_connect.cpp:374
 msgid "Player/Type"
 msgstr "Spelare/Typ"
 
-#: src/multiplayer_connect.cpp:373 src/multiplayer_connect.cpp:376
+#: src/multiplayer_connect.cpp:375 src/multiplayer_connect.cpp:378
 msgid "Faction"
 msgstr "Grupp"
 
-#: src/multiplayer_connect.cpp:383 src/multiplayer_connect.cpp:386
+#: src/multiplayer_connect.cpp:385 src/multiplayer_connect.cpp:388
 msgid "Color"
 msgstr "Färg"
 
-#: src/multiplayer_connect.cpp:583
+#: src/multiplayer_connect.cpp:585
 msgid "Waiting for network players to join"
 msgstr "Väntar på att nätverksspelare skall ansluta sig"
 
-#: src/multiplayer_lobby.cpp:145
+#: src/multiplayer_lobby.cpp:147
 msgid "1"
 msgstr "1"
 
-#: src/multiplayer_lobby.cpp:145
+#: src/multiplayer_lobby.cpp:147
 msgid "Vacant Slot"
 msgstr "Ledig plats"
 
-#: src/multiplayer_lobby.cpp:145
+#: src/multiplayer_lobby.cpp:147
 msgid "Vacant Slots"
 msgstr "Lediga platser"
 
-#: src/multiplayer_lobby.cpp:160
+#: src/multiplayer_lobby.cpp:162
 msgid "Observe Game"
 msgstr "Iaktta spel"
 
-#: src/multiplayer_lobby.cpp:163
+#: src/multiplayer_lobby.cpp:165
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/playlevel.cpp:699
+#: src/playlevel.cpp:701
 msgid "Game Over"
 msgstr "Spelet är slut"
 
-#: src/playlevel.cpp:700
+#: src/playlevel.cpp:702
 msgid "The game is over."
 msgstr "Spelet är slut."
 
-#: src/playlevel.cpp:723
+#: src/playlevel.cpp:725
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playlevel.cpp:724
+#: src/playlevel.cpp:726
 msgid "You have been defeated!"
 msgstr "Du har förlorat!"
 
-#: src/playlevel.cpp:780
+#: src/playlevel.cpp:782
 msgid "Remaining gold"
 msgstr "Resterande guld"
 
-#: src/playlevel.cpp:783
+#: src/playlevel.cpp:785
 msgid "Early finish bonus"
 msgstr "Bonus för tidig seger"
 
-#: src/playlevel.cpp:785
+#: src/playlevel.cpp:787
 msgid "per turn"
 msgstr "per drag"
 
-#: src/playlevel.cpp:786
+#: src/playlevel.cpp:788
 msgid "Turns finished early"
 msgstr "Tidigt avklarade drag"
 
-#: src/playlevel.cpp:788
+#: src/playlevel.cpp:790
 msgid "Bonus"
 msgstr "Bonus"
 
-#: src/playlevel.cpp:795
+#: src/playlevel.cpp:797
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% av guldet bibehålls till nästa scenario"
 
-#: src/playlevel.cpp:795
+#: src/playlevel.cpp:797
 msgid "Retained Gold"
 msgstr "Bibehållet guld"
 
-#: src/playlevel.cpp:799
+#: src/playlevel.cpp:801
 msgid "Victory"
 msgstr "Seger"
 
-#: src/playlevel.cpp:800
+#: src/playlevel.cpp:802
 msgid "You have emerged victorious!"
 msgstr "Du har segrat!"
 
-#: src/playlevel.cpp:825
+#: src/playlevel.cpp:827
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8288,62 +8303,62 @@ msgstr ""
 "Nätverket har kopplats ner och spelet kan inte fortsätta. Vill du spara "
 "spelet?"
 
-#: src/playturn.cpp:78
+#: src/playturn.cpp:80
 msgid "It is now your turn"
 msgstr "Nu är det din tur"
 
-#: src/playturn.cpp:487
+#: src/playturn.cpp:489
 msgid "Attacker"
 msgstr "Anfallare"
 
-#: src/playturn.cpp:489
+#: src/playturn.cpp:491
 msgid "Defender"
 msgstr "Försvarare"
 
-#: src/playturn.cpp:513 src/playturn.cpp:632
+#: src/playturn.cpp:515 src/playturn.cpp:634
 msgid "Damage Calculations"
 msgstr "Skadeberäkning"
 
-#: src/playturn.cpp:598
+#: src/playturn.cpp:600
 msgid "Melee"
 msgstr "Närstrid"
 
-#: src/playturn.cpp:611 src/reports.cpp:208
+#: src/playturn.cpp:613 src/reports.cpp:210
 msgid "vs"
 msgstr "mot"
 
-#: src/playturn.cpp:644
+#: src/playturn.cpp:646
 msgid "Attack Enemy"
 msgstr "Anfall fiende"
 
-#: src/playturn.cpp:645
+#: src/playturn.cpp:647
 msgid "Choose weapon"
 msgstr "Välj vapen:"
 
-#: src/playturn.cpp:1117
+#: src/playturn.cpp:1119
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "Du har ännu inte påbörjat ditt drag. Vill du verkligen avsluta ditt drag?"
 
-#: src/playturn.cpp:1126 src/playturn.cpp:1131
+#: src/playturn.cpp:1128 src/playturn.cpp:1133
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Några trupper kan fortfarande flytta. Vill du verkligen avsluta ditt drag?"
 
-#: src/playturn.cpp:1147
+#: src/playturn.cpp:1148
 msgid "Auto-Save"
 msgstr "Automatsparat"
 
-#: src/playturn.cpp:1149
+#: src/playturn.cpp:1150
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kunde inte automatspara spelet. Var vänlig och spara spelet manuellt."
 
-#: src/playturn.cpp:1343
+#: src/playturn.cpp:1344
 msgid "Rename Unit"
 msgstr "Döp om truppen"
 
-#: src/playturn.cpp:1391
+#: src/playturn.cpp:1392
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -8351,43 +8366,43 @@ msgstr ""
 "Du får inte använda kolon eller någon form av snedstreck när du sparar ett "
 "spel. Var vänlig välj ett annat namn."
 
-#: src/playturn.cpp:1402
+#: src/playturn.cpp:1403
 msgid "Saved"
 msgstr "Sparat"
 
-#: src/playturn.cpp:1402
+#: src/playturn.cpp:1403
 msgid "The game has been saved"
 msgstr "Spelet har sparats"
 
-#: src/playturn.cpp:1526
+#: src/playturn.cpp:1527
 msgid "Leader"
 msgstr "Ledare"
 
-#: src/playturn.cpp:1528
+#: src/playturn.cpp:1529
 msgid "Income"
 msgstr "Inkomst"
 
-#: src/playturn.cpp:1528
+#: src/playturn.cpp:1529
 msgid "Upkeep"
 msgstr "Underhåll"
 
-#: src/playturn.cpp:1624
+#: src/playturn.cpp:1625
 msgid "You have no units available to recruit."
 msgstr "Det finns inte några trupper tillgängliga att värva till armén."
 
-#: src/playturn.cpp:1636
+#: src/playturn.cpp:1637
 msgid "Recruit"
 msgstr "Rekrytera"
 
-#: src/playturn.cpp:1637 src/playturn.cpp:1816
+#: src/playturn.cpp:1638 src/playturn.cpp:1817
 msgid "Select unit"
 msgstr "Välj trupp"
 
-#: src/playturn.cpp:1666
+#: src/playturn.cpp:1667
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Du har inte tillräckligt med guld för att rekrytera den truppen"
 
-#: src/playturn.cpp:1724
+#: src/playturn.cpp:1725
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -8395,7 +8410,7 @@ msgstr ""
 "Ers nåd, denna trupp är erfaren och har befordrats. Vill ni verkligen "
 "avskeda $noun?"
 
-#: src/playturn.cpp:1726
+#: src/playturn.cpp:1727
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -8403,20 +8418,20 @@ msgstr ""
 "Ers nåd, denna trupp kommer snart att avancera till en högre nivå. Vill ni "
 "verkligen avskeda $noun?"
 
-#: src/playturn.cpp:1731
+#: src/playturn.cpp:1732
 msgid "her"
 msgstr "henne"
 
-#: src/playturn.cpp:1731
+#: src/playturn.cpp:1732
 msgid "him"
 msgstr "honom"
 
-#: src/playturn.cpp:1772
+#: src/playturn.cpp:1773
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 "Du är inte tillsammans med dina soldater och kan därför inte återkalla dem"
 
-#: src/playturn.cpp:1774
+#: src/playturn.cpp:1775
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8424,100 +8439,100 @@ msgstr ""
 "Det finns inga trupper att återkalla.\n"
 "(Du måste ha överlevande veteraner från ett tidigare scenario)"
 
-#: src/playturn.cpp:1780
+#: src/playturn.cpp:1781
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 "Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
 
-#: src/playturn.cpp:1803
+#: src/playturn.cpp:1804
 msgid "Dismiss Unit"
 msgstr "Avskeda trupp"
 
-#: src/playturn.cpp:1815
+#: src/playturn.cpp:1816
 msgid "Recall"
 msgstr "Återkalla"
 
-#: src/playturn.cpp:1860
+#: src/playturn.cpp:1861
 msgid "Message"
 msgstr "Meddelande"
 
-#: src/playturn.cpp:1860
+#: src/playturn.cpp:1861
 msgid "Send to allies only"
 msgstr "Skicka enbart till allierade"
 
-#: src/playturn.cpp:1954
+#: src/playturn.cpp:1955
 msgid "Location"
 msgstr "Position"
 
-#: src/playturn.cpp:2002
+#: src/playturn.cpp:2003
 msgid "Unit List"
 msgstr "Trupplista"
 
-#: src/playturn.cpp:2036 src/playturn.cpp:2098
+#: src/playturn.cpp:2037 src/playturn.cpp:2099
 msgid "Recruits"
 msgstr "Rekryterade"
 
-#: src/playturn.cpp:2042 src/playturn.cpp:2102
+#: src/playturn.cpp:2043 src/playturn.cpp:2103
 msgid "Recalls"
 msgstr "Återkallade"
 
-#: src/playturn.cpp:2048 src/playturn.cpp:2106
+#: src/playturn.cpp:2049 src/playturn.cpp:2107
 msgid "Advancements"
 msgstr "Befordringar"
 
-#: src/playturn.cpp:2054 src/playturn.cpp:2110
+#: src/playturn.cpp:2055 src/playturn.cpp:2111
 msgid "Losses"
 msgstr "Förluster"
 
-#: src/playturn.cpp:2060 src/playturn.cpp:2114
+#: src/playturn.cpp:2061 src/playturn.cpp:2115
 msgid "Kills"
 msgstr "Dödsfall"
 
-#: src/playturn.cpp:2066
+#: src/playturn.cpp:2067
 msgid "Damage Inflicted"
 msgstr "Åsamkad skada"
 
-#: src/playturn.cpp:2072
+#: src/playturn.cpp:2073
 msgid "Damage Taken"
 msgstr "Mottagen skada"
 
-#: src/playturn.cpp:2078
+#: src/playturn.cpp:2079
 msgid "Damage Inflicted (EV)"
 msgstr "Åsamkad skada (VV)"
 
-#: src/playturn.cpp:2085
+#: src/playturn.cpp:2086
 msgid "Damage Taken (EV)"
 msgstr "Mottagen skada (VV)"
 
-#: src/playturn.cpp:2091
+#: src/playturn.cpp:2092
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/playturn.cpp:2128
+#: src/playturn.cpp:2129
 msgid "Search"
 msgstr "Sök"
 
-#: src/playturn.cpp:2138
+#: src/playturn.cpp:2139
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/playturn.cpp:2149
+#: src/playturn.cpp:2150
 msgid "Chat Log"
 msgstr "Chattlogg"
 
-#: src/playturn.cpp:2214
+#: src/playturn.cpp:2215
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kunde inte finna namn eller trupp som innehöll textsträngen '$search'."
 
-#: src/playturn.cpp:2291
+#: src/playturn.cpp:2292
 msgid "Place Label"
 msgstr "Sätt ut namn"
 
-#: src/playturn.cpp:2292
+#: src/playturn.cpp:2293
 msgid "Label"
 msgstr "Namn"
 
-#: src/playturn.cpp:2424
+#: src/playturn.cpp:2425
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -8525,33 +8540,33 @@ msgstr ""
 "Spelen är osynkroniserade och måste avslutas. Vill du spara en fellogg över "
 "ditt spel?"
 
-#: src/playturn.cpp:2476
+#: src/playturn.cpp:2477
 msgid "Replace with AI"
 msgstr "Ersätt spelare med datorn"
 
-#: src/playturn.cpp:2477
+#: src/playturn.cpp:2478
 msgid "Replace with local player"
 msgstr "Ersätt med lokal spelare"
 
-#: src/playturn.cpp:2478
+#: src/playturn.cpp:2479
 msgid "Abort game"
 msgstr "Avbryt spelet"
 
-#: src/playturn.cpp:2481
+#: src/playturn.cpp:2482
 msgid "Replace with "
 msgstr "Ersätt med"
 
-#: src/playturn.cpp:2485
+#: src/playturn.cpp:2486
 msgid "has left the game. What do you want to do?"
 msgstr "har lämnat spelet. Vad vill du göra?"
 
-#: src/reports.cpp:105
+#: src/reports.cpp:107
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Den här truppen är osynlig. Den kan inte bli sedd eller attackeras av "
 "fiendetrupper"
 
-#: src/reports.cpp:110
+#: src/reports.cpp:112
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
@@ -8559,7 +8574,7 @@ msgstr ""
 "Den här truppen har blivit nedsaktad. Den förflyttar sig med halva sin "
 "nominella hastighet och kan attackera en gång mindre än normalt"
 
-#: src/reports.cpp:115
+#: src/reports.cpp:117
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -8575,84 +8590,84 @@ msgstr ""
 "Trupper kan inte dö av enbart förgiftning, så truppen kommer inte att få "
 "mindre än 1 HP."
 
-#: src/reports.cpp:122
+#: src/reports.cpp:124
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
 "Denna trupp har förstenats. Den kan inte förflytta sig eller attackera."
 
-#: src/reports.cpp:232
+#: src/reports.cpp:234
 msgid "damage"
 msgstr "Skada"
 
-#: src/reports.cpp:237
+#: src/reports.cpp:239
 msgid "hexes"
 msgstr "rutor"
 
-#: src/reports.cpp:254
+#: src/reports.cpp:256
 msgid "Lawful units"
 msgstr "Lagenliga trupper"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:258
 msgid "Neutral units"
 msgstr "Neutrala trupper"
 
-#: src/reports.cpp:257
+#: src/reports.cpp:259
 msgid "Chaotic units"
 msgstr "Kaotiska trupper"
 
-#: src/reports.cpp:311
+#: src/reports.cpp:313
 msgid "Owned village"
 msgstr "Kontrollerad by"
 
-#: src/reports.cpp:313
+#: src/reports.cpp:315
 msgid "Enemy village"
 msgstr "Fientlig by"
 
-#: src/reports.cpp:315
+#: src/reports.cpp:317
 msgid "Allied village"
 msgstr "Allierad by"
 
-#: src/show_dialog.cpp:633
+#: src/show_dialog.cpp:635
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/titlescreen.cpp:180
+#: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Träningsspel"
 
-#: src/titlescreen.cpp:181
+#: src/titlescreen.cpp:183
 msgid "TitleScreen button^Campaign"
 msgstr "Kampanj"
 
-#: src/titlescreen.cpp:182
+#: src/titlescreen.cpp:184
 msgid "TitleScreen button^Multiplayer"
 msgstr "Gruppspel"
 
-#: src/titlescreen.cpp:183
+#: src/titlescreen.cpp:185
 msgid "TitleScreen button^Load"
 msgstr "Öppna"
 
-#: src/titlescreen.cpp:184
+#: src/titlescreen.cpp:186
 msgid "TitleScreen button^Language"
 msgstr "Språk"
 
-#: src/titlescreen.cpp:185
+#: src/titlescreen.cpp:187
 msgid "TitleScreen button^Preferences"
 msgstr "Inställningar"
 
-#: src/titlescreen.cpp:187
+#: src/titlescreen.cpp:189
 msgid "TitleScreen button^Quit"
 msgstr "Avsluta"
 
-#: src/titlescreen.cpp:188
+#: src/titlescreen.cpp:190
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Starta ett träningsspel för att bekanta dig med spelet"
 
-#: src/titlescreen.cpp:189
+#: src/titlescreen.cpp:191
 msgid "Start a new single player campaign"
 msgstr "Starta en ny kampanj för en spelare"
 
-#: src/titlescreen.cpp:190
+#: src/titlescreen.cpp:192
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -8660,54 +8675,71 @@ msgstr ""
 "Starta ett gruppspel (hotseat, LAN eller internet), eller ett separat "
 "scenario mot datorn"
 
-#: src/titlescreen.cpp:191
+#: src/titlescreen.cpp:193
 msgid "Load a single player saved game"
 msgstr "Öppna ett sparat privat spel"
 
-#: src/titlescreen.cpp:192
+#: src/titlescreen.cpp:194
 msgid "Change the language"
 msgstr "Byt språk"
 
-#: src/titlescreen.cpp:193
+#: src/titlescreen.cpp:195
 msgid "Configure the game's settings"
 msgstr "Konfigurera spelet"
 
-#: src/titlescreen.cpp:194
+#: src/titlescreen.cpp:196
 msgid "View the credits"
 msgstr "Medverkande"
 
-#: src/titlescreen.cpp:195
+#: src/titlescreen.cpp:197
 msgid "Quit the game"
 msgstr "Avsluta spelet"
 
-#: src/titlescreen.cpp:223
+#: src/titlescreen.cpp:225
 msgid "More"
 msgstr "Läs mer"
 
-#: src/titlescreen.cpp:233
+#: src/titlescreen.cpp:235
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoths krönika"
 
-#: src/unit_types.cpp:314
+#: src/unit_types.cpp:317
 msgid "strikes"
 msgstr "slag"
 
-#: src/unit_types.cpp:889
+#: src/unit_types.cpp:892
 msgid "chaotic"
 msgstr "kaotisk"
 
-#: src/unit_types.cpp:889
+#: src/unit_types.cpp:892
 msgid "lawful"
 msgstr "lagenlig"
 
-#: src/unit_types.cpp:889
+#: src/unit_types.cpp:892
 msgid "neutral"
 msgstr "neutral"
 
-#: src/widgets/file_chooser.cpp:30
+#: src/widgets/file_chooser.cpp:33
 msgid "Delete File"
 msgstr "Radera fil"
 
-#: src/widgets/file_chooser.cpp:157
+#: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
+
+#~ msgid ""
+#~ "These elite undead archers strike terror in the hearts of their foes by "
+#~ "using the bones of the slain as weapons."
+#~ msgstr ""
+#~ "Dessa vandöda elitbågskyttar ingjuter skräck hos fienden genom att "
+#~ "beskjuta dem med deras dödade kamraters ben."
+
+#~ msgid ""
+#~ "Wrapped in dark cloaks, the soul shooters roam the lands searching "
+#~ "targets for its bone arrows."
+#~ msgstr ""
+#~ "I sina mörka kåpor söker själaskjutarna land och rike runt efter offer "
+#~ "för sina benpilar."
+
+#~ msgid "bone"
+#~ msgstr "ben"
