@@ -114,14 +114,22 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	std::fill(pixels,pixels+length,0);
 }
 
-template<typename Map>
-void clear_surfaces(Map& surfaces)
+//we have to go through all this trickery on clear_surfaces because
+//some compilers don't support 'typename type::iterator'
+template<typename Map,typename FwIt>
+void clear_surfaces_internal(Map& surfaces, FwIt beg, FwIt end)
 {
-	for(typename Map::iterator i = surfaces.begin(); i != surfaces.end(); ++i) {
-		SDL_FreeSurface(i->second);
+	for(; beg != end; ++beg) {
+		SDL_FreeSurface(beg->second);
 	}
 
 	surfaces.clear();
+}
+
+template<typename Map>
+void clear_surfaces(Map& surfaces)
+{
+	clear_surfaces_internal(surfaces,surfaces.begin(),surfaces.end());
 }
 
 display::~display()
