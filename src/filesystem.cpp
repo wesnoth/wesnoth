@@ -75,7 +75,7 @@ BPath be_path;
 #include "zipios++/xcoll.hpp"
 
 namespace {
-	xzipios::XCColl the_collection;
+	xzipios::XCColl* the_collection = NULL;
 
 	void register_zipdir(const std::string directory) {
 		// look for zip files
@@ -88,7 +88,7 @@ namespace {
 				if ((fname.size() > suffix.size()) &&
 				    (0 == fname.compare(fname.size() - suffix.size(), suffix.size(), suffix))) {
 					zipios::ZipFile zip(game_config::path + "/" + fname);
-					the_collection.addCollection(zip);
+					the_collection->addCollection(zip);
 					LOG_G << "zip collection " << fname << 
 						" has " << zip.size() << " elements\n";
 				}
@@ -103,18 +103,25 @@ namespace {
 bool filesystem_init()
 {
 #ifdef USE_ZIPIOS
+	if (the_collection != NULL) {
+		// this is a re-read, cleanup first !
+		free (the_collection);
+	}
+
+	the_collection = new xzipios::XCColl;
+
 	if (!get_user_data_dir().empty()) {
 		LOG_G << "looking at user dir " << get_user_data_dir() << "\n";
 		zipios::DirectoryCollection dir(get_user_data_dir());
 		LOG_G << "user collection has " << dir.size() << " elements\n";
-		the_collection.addCollection(dir);
+		the_collection->addCollection(dir);
 		register_zipdir(get_user_data_dir());
 	}
 	if (!game_config::path.empty()) {
 		LOG_G << "looking at system dir " << game_config::path << "\n";
 		zipios::DirectoryCollection dir(game_config::path);
 		LOG_G << "system collection has " << dir.size() << " elements\n";
-		the_collection.addCollection(dir);
+		the_collection->addCollection(dir);
 		register_zipdir(game_config::path);
 	}
 #endif
@@ -137,8 +144,8 @@ void get_files_in_dir(const std::string& directory,
                       FILE_NAME_MODE mode)
 {
 #ifdef USE_ZIPIOS
-	if (the_collection.hasSubdir(directory)) {
-		the_collection.childrenOf(directory, files, dirs);
+	if (the_collection->hasSubdir(directory)) {
+		the_collection->childrenOf(directory, files, dirs);
 	}
 	else
 #endif
@@ -453,9 +460,9 @@ std::string read_file(const std::string& fname)
 	LOG_G << "Reading " << fname << "\n";
 #ifdef USE_ZIPIOS
 	if(!fname.empty() && fname[0] != '/') {
-		zipios::ConstEntryPointer p = the_collection.getEntry(fname);
+		zipios::ConstEntryPointer p = the_collection->getEntry(fname);
 		if (p != 0) {
-			std::istream* s = the_collection.getInputStream(p);
+			std::istream* s = the_collection->getInputStream(p);
 			if (s != NULL) {
 				std::string contents = read_stream(*s);
 				delete s;
@@ -549,7 +556,7 @@ bool is_directory(const std::string& fname)
 {
 #ifdef USE_ZIPIOS
 	if(!fname.empty() && fname[0] != '/') {
-		return the_collection.hasSubdir(fname);
+		return the_collection->hasSubdir(fname);
 	}
 
 #else
@@ -565,7 +572,7 @@ bool is_directory(const std::string& fname)
 bool file_exists(const std::string& name)
 {
 #ifdef USE_ZIPIOS
-	if (the_collection.getEntry(name))
+	if (the_collection->getEntry(name))
 		return true;
 #endif
 	std::ifstream file(name.c_str());
