@@ -2,11 +2,10 @@ CVS HEAD:
  * added 'search' action which goes through labels and unit names, hotkey is '/'
  * added 'continue move' action, hotkey is 't'
  * made game more responsive when AI or another player is playing.
- * made village placement fairer in random map generation
  * 'end of turn' sanity check
  * added experience gauge, meld with hit points gauge
  * support different resolutions for 'fullscreen' and 'windowed'
- * UI cleanups
+ * various UI cleanups
  * added and improved village images, healing images, hill images
  * resized ellipses
  * renamed Lizardman to Saurian
@@ -15,19 +14,24 @@ CVS HEAD:
  * new units:
    * Elvish Rider
    * Saurian Warrior
+ * new scenarios for 'Son of the Black Eye' campaign:
+   * Saving Inarix
+ * scenario balancing for 'Heir to the Throne' campaign:
+   * Bay of Pearls
+   * Blackwater Port
+   * Isle of Anduin
  * translation updates:
    * french
    * spanish
  * AI improvements
    * added recruitment_ignore_bad_movement option
    * added recruitment_ignore_bad_combat option
-   * tweaks to make AI smarter
- * new scenarios for 'Son of the Black Eye' campaign:
-   * Saving Inarix
+   * various improvements to make AI smarter
  * multiplayer improvements
    * Wesbowl
    * added scrolling and wrapping support for chat in lobby
    * shared vision option
+   * made village placement fairer in random map generation
    * game setup improvements
  * editor improvements:
    * added map resizing
@@ -49,9 +53,11 @@ CVS HEAD:
  * fixed preferences widgets disappearing when changing video mode
  * fixed tooltips from game setup appearing in-game
  * fixed hotkey not updating immidiately in the hotkeys dialog when changed
+ * fixed assertion failure in playturn.cpp
  * made input of search strings and messages use a textbox that overlays the map, which allows these operations to be performed asynchronously
  * added caching of data files to speed game loading
  * added a "fire_event" in [kill] tags that allow die events to be processed if specified
+ * re-ordered attacks: short range attacks are now always before long range attack on all units
  * removed old castle images
  * wesnoth_zip
 
