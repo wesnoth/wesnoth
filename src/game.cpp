@@ -99,10 +99,12 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		const config::child_list& story = scenario->get_children("story");
 		const std::string current_scenario = state.scenario;
 
+		bool save_game_after_scenario = true;
+
 		try {
 			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
 
-			const LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story);
+			LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story);
 
 			state.snapshot = config();
 
@@ -140,6 +142,12 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 			recorder.clear();
 			state.replay_data.clear();
 
+			//continue without saving is like a victory, but the save game dialog isn't displayed
+			if(res == LEVEL_CONTINUE_NO_SAVE) {
+				res = VICTORY;
+				save_game_after_scenario = false;
+			}
+
 			if(res != VICTORY) {
 				return res;
 			}
@@ -165,7 +173,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 	    scenario = game_config.find_child(type,"id",state.scenario);
 
 		//if this isn't the last scenario, then save the game
-		if(scenario != NULL) {
+		if(scenario != NULL && save_game_after_scenario) {
 			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
 			state.starting_pos = config();
 

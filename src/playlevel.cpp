@@ -639,7 +639,7 @@ redo_turn:
 			                 string_table["defeat_message"],
 			                 gui::OK_ONLY);
 			return DEFEAT;
-		} else if(end_level.result == VICTORY || end_level.result == LEVEL_CONTINUE) {
+		} else if(end_level.result == VICTORY || end_level.result == LEVEL_CONTINUE || end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 			try {
 				game_events::fire("victory");
 			} catch(end_level_exception&) {
@@ -656,9 +656,9 @@ redo_turn:
 
 			//'continue' is like a victory, except it doesn't announce victory,
 			//and the player returns 100% of gold.
-			if(end_level.result == LEVEL_CONTINUE) {
+			if(end_level.result == LEVEL_CONTINUE || end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 				state_of_game.gold = teams[0].gold();
-				return VICTORY;
+				return end_level.result == LEVEL_CONTINUE_NO_SAVE ? LEVEL_CONTINUE_NO_SAVE : VICTORY;
 			}
 
 			const int remaining_gold = teams[0].gold();

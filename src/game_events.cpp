@@ -1114,6 +1114,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			throw end_level_exception(VICTORY,bonus);
 		} else if(result == "continue") {
 			throw end_level_exception(LEVEL_CONTINUE);
+		} else if(result == "continue_no_save") {
+			throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
 		} else {
 			std::cerr << "throwing event defeat...\n";
 			throw end_level_exception(DEFEAT);
