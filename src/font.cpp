@@ -211,6 +211,8 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		src.x = 0;
 		src.y = 0;
 		log_scope("blit text");
+		std::cerr << "blitting: " << src.x << "," << src.y << "," << src.w << "," << src.h
+		          << " -> " << dest.x << "," << dest.y << "," << dest.w << "," << dest.h << "\n";
 		SDL_BlitSurface(surface,&src,gui->video().getSurface(),&dest);
 	}
 

@@ -56,10 +56,10 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		break;
 	case TOP_ANCHORED:
 		relative_loc_.x = loc_.x;
-		relative_loc_.w = screen.w - (XDim - loc_.w);
+		relative_loc_.w = screen.w - minimum<size_t>(XDim - loc_.w,screen.w);
 		break;
 	case BOTTOM_ANCHORED:
-		relative_loc_.x = screen.w - (XDim - loc_.x);
+		relative_loc_.x = screen.w - minimum<size_t>(XDim - loc_.x,screen.w);
 		relative_loc_.w = loc_.w;
 		break;
 	case PROPORTIONAL:
@@ -77,10 +77,10 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		break;
 	case TOP_ANCHORED:
 		relative_loc_.y = loc_.y;
-		relative_loc_.h = screen.h - (YDim - loc_.h);
+		relative_loc_.h = screen.h - minimum<size_t>(YDim - loc_.h,screen.h);
 		break;
 	case BOTTOM_ANCHORED:
-		relative_loc_.y = screen.h - (YDim - loc_.y);
+		relative_loc_.y = screen.h - minimum<size_t>(YDim - loc_.y,screen.h);
 		relative_loc_.h = loc_.h;
 		break;
 	case PROPORTIONAL:

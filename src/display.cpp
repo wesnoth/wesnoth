@@ -728,7 +728,7 @@ void display::draw_report(reports::TYPE report_num)
 
 		//report and its location is unchanged since last time. Do nothing.
 		if(rect == new_rect && reports_[report_num] == report) {
-			std::cerr << "report unchanged\n";
+			std::cerr << "report unchanged: '" << report.text << "'\n";
 			return;
 		}
 
