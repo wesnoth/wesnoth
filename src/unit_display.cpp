@@ -302,9 +302,9 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u)
 
 namespace {
   
-bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
-                        const gamemap::location& a, const gamemap::location& b, int damage,
-                        const attack_type& attack)
+bool unit_attack_ranged(display& disp, unit_map& units,
+                        const gamemap::location& a, const gamemap::location& b,
+                        int damage, const attack_type& attack)
 {
 	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
 	                  || preferences::show_combat() == false;
@@ -644,7 +644,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	}
 
 	if(attack.range() == attack_type::LONG_RANGE) {
-		return unit_attack_ranged(disp,units,map,a,b,damage,attack);
+		return unit_attack_ranged(disp, units, a, b, damage, attack);
 	}
 
 	unit_animation attack_anim = attack.animation();
