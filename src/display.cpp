@@ -909,7 +909,6 @@ void display::draw_minimap(int x, int y, int w, int h)
 		SDL_Rect rect = {x + (u->first.x*w)/map_.x(),
 		                 y + (u->first.y*h)/map_.y(),
 						 w/map_.x(), h/map_.y() };
-		std::cerr << "drawing unit " << rect.x << "," << rect.y << "," << rect.w << "," << rect.h << "\n";
 		SDL_FillRect(video().getSurface(),&rect,mapped_col);
 	}
 
@@ -1075,8 +1074,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 			return;
 		}
 
-		unit_energy = double(it->second.hitpoints()) /
-		              double(it->second.max_hitpoints());
+		unit_energy = minimum<double>(1.0,double(it->second.hitpoints()) / double(it->second.max_hitpoints()));
 
 		if(highlight_ratio == 1.0)
 			highlight_ratio = it->second.alpha();

@@ -429,7 +429,10 @@ void attack(display& gui, const gamemap& map,
 
 				gamemap::location loc = d->first;
 				gamemap::location attacker_loc = a->first;
+				const int defender_side = d->second.side();
 				game_events::fire("die",loc,a->first);
+				d = units.end();
+				a = units.end();
 
 				//the handling of the event may have removed the object
 				//so we have to find it again
@@ -440,12 +443,11 @@ void attack(display& gui, const gamemap& map,
 				if(stats.attacker_plague && map.underlying_terrain(map[loc.x][loc.y]) != gamemap::TOWER) {
 					a = units.find(attacker_loc);
 					if(a != units.end()) {
-						units.insert(std::pair<gamemap::location,unit>(
-						                                 loc,a->second));
+						units.insert(std::pair<gamemap::location,unit>(loc,a->second));
 						gui.draw_tile(loc.x,loc.y);
 					}
 				}
-				recalculate_fog(map,state,info,units,teams,d->second.side()-1);
+				recalculate_fog(map,state,info,units,teams,defender_side-1);
 				gui.recalculate_minimap();
 				gui.update_display();
 				break;
@@ -552,7 +554,10 @@ void attack(display& gui, const gamemap& map,
 
 				gamemap::location loc = a->first;
 				gamemap::location defender_loc = d->first;
+				const int attacker_side = a->second.side();
 				game_events::fire("die",loc,d->first);
+				a = units.end();
+				d = units.end();
 
 				//the handling of the event may have removed the object
 				//so we have to find it again
@@ -570,7 +575,7 @@ void attack(display& gui, const gamemap& map,
 				}
 				gui.recalculate_minimap();
 				gui.update_display();
-				recalculate_fog(map,state,info,units,teams,a->second.side()-1);
+				recalculate_fog(map,state,info,units,teams,attacker_side-1);
 				break;
 			} else if(hits) {
 				if(stats.defend_special == poison_string &&

@@ -500,12 +500,6 @@ void unit::read(game_data& data, const config& cfg)
 		upkeep_ = UPKEEP_FREE;
 	}
 
-	const config* const modifications = cfg.child("modifications");
-	if(modifications != NULL) {
-		modifications_ = *modifications;
-		apply_modifications();
-	}
-
 	const std::string& facing = cfg["facing"];
 	if(facing == "reverse")
 		facingLeft_ = false;
@@ -538,7 +532,7 @@ void unit::read(game_data& data, const config& cfg)
 
 	const std::string& hitpoints = cfg["hitpoints"];
 	if(hitpoints.size() == 0)
-		hitpoints_ = type().hitpoints();
+		hitpoints_ = maxHitpoints_;
 	else
 		hitpoints_ = atoi(hitpoints.c_str());
 
@@ -547,6 +541,12 @@ void unit::read(game_data& data, const config& cfg)
 		experience_ = 0;
 	else
 		experience_ = atoi(experience.c_str());
+
+	const config* const modifications = cfg.child("modifications");
+	if(modifications != NULL) {
+		modifications_ = *modifications;
+		apply_modifications();
+	}
 }
 
 void unit::write(config& cfg) const
@@ -762,6 +762,7 @@ void unit::add_modification(const std::string& type,
 				a->apply_modification(**i.first);
 			}
 		} else if(apply_to == "hitpoints") {
+			std::cerr << "applying hitpoint mod...." << hitpoints_ << "/" << maxHitpoints_ << "\n";
 			const std::string& increase_hp = (**i.first)["increase"];
 			const std::string& heal_full = (**i.first)["heal_full"];
 			const std::string& increase_total = (**i.first)["increase_total"];
@@ -793,8 +794,11 @@ void unit::add_modification(const std::string& type,
 				hitpoints_ += increase;
 			}
 
-			if(hitpoints_ > maxHitpoints_ && violate_max.empty())
+			std::cerr << "modded to " << hitpoints_ << "/" << maxHitpoints_ << "\n";
+			if(hitpoints_ > maxHitpoints_ && violate_max.empty()) {
+				std::cerr << "resetting hp to max\n";
 				hitpoints_ = maxHitpoints_;
+			}
 
 			if(hitpoints_ < 1)
 				hitpoints_ = 1;

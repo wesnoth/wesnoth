@@ -33,6 +33,16 @@ bool conditional_passed(game_state& state_of_game,
                         const std::map<gamemap::location,unit>* units,
                         const config& cond)
 {
+	//an 'or' statement means that if the contained statements are true,
+	//then it automatically passes
+	const config::child_list& or_statements = cond.get_children("or");
+	for(config::child_list::const_iterator or_it = or_statements.begin();
+	    or_it != or_statements.end(); ++or_it) {
+		if(conditional_passed(state_of_game,units,**or_it)) {
+			return true;
+		}
+	}
+
 	//if the if statement requires we have a certain unit, then
 	//check for that.
 	const config::child_list& have_unit = cond.get_children("have_unit");
@@ -124,7 +134,7 @@ bool conditional_passed(game_state& state_of_game,
 		}
 	}
 
-	return true;
+	return !have_unit.empty() || !variables.empty();
 }
 
 } //end namespace game_events
