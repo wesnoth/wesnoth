@@ -29,9 +29,6 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 					   const gamemap::location& loc, const gamemap::location& mouseover,
 					   const gamestatus& status, const std::string* format_string)
 {
-	if(type == GOLD)
-		std::cerr << "getting report for gold...\n";
-
 	unit_map::const_iterator u = units.end();
 	
 	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
@@ -247,11 +244,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 	}
 
-	const std::string res = str.str();
-	if(type == GOLD)
-		std::cerr << "gold: " << res << "\n";
-
-	return report(res);
+	return report(str.str());
 }
 
 }

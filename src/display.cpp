@@ -776,6 +776,7 @@ void display::draw_report(reports::TYPE report_num)
 
 			str += report.text.substr(nchop) + item->postfix();
 
+			std::cerr << "draw report text '" << str << "' at " << rect.x << "," << rect.y << "\n";
 			area = font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,str,rect.x,rect.y);
 		}
 
