@@ -1100,9 +1100,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const config::child_list& menu_items = cfg.get_children("option");
 		for(config::child_list::const_iterator mi = menu_items.begin();
 		    mi != menu_items.end(); ++mi) {
-			const std::string& msg = (**mi)["message"];
-			options.push_back(msg);
-			option_events.push_back((*mi)->child_range("command"));
+			config const &cfg_mi = **mi;
+			options.push_back(cfg_mi["message"]);
+			option_events.push_back(cfg_mi.child_range("command"));
 		}
 
 		surface surface(NULL);
