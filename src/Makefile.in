@@ -173,6 +173,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai_move.cpp \
 		  builder.cpp \
 		  cavegen.cpp \
+		  clipboard.cpp \
 		  config.cpp \
 		  cursor.cpp \
 		  dialogs.cpp \
@@ -239,6 +240,7 @@ wesnoth_SOURCES = about.cpp \
 		  array.hpp \
 		  builder.hpp \
 		  cavegen.hpp \
+		  clipboard.hpp \
 		  cursor.hpp \
 		  config.hpp \
 		  dialogs.hpp \
@@ -318,6 +320,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai_move.cpp \
 		         builder.cpp \
 		 	 cavegen.cpp \
+			 clipboard.cpp \
 			 config.cpp \
 			 cursor.cpp \
 			 dialogs.cpp \
@@ -382,6 +385,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 array.hpp \
 		         builder.hpp \
 		 	 cavegen.hpp \
+			 clipboard.hpp \
 			 config.hpp \
 			 cursor.hpp \
 			 dialogs.hpp \
@@ -451,10 +455,10 @@ PROGRAMS = $(bin_PROGRAMS)
 
 am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	ai_attack.$(OBJEXT) ai_move.$(OBJEXT) builder.$(OBJEXT) \
-	cavegen.$(OBJEXT) config.$(OBJEXT) cursor.$(OBJEXT) \
-	dialogs.$(OBJEXT) display.$(OBJEXT) events.$(OBJEXT) \
-	filesystem.$(OBJEXT) font.$(OBJEXT) game.$(OBJEXT) \
-	game_config.$(OBJEXT) game_events.$(OBJEXT) \
+	cavegen.$(OBJEXT) clipboard.$(OBJEXT) config.$(OBJEXT) \
+	cursor.$(OBJEXT) dialogs.$(OBJEXT) display.$(OBJEXT) \
+	events.$(OBJEXT) filesystem.$(OBJEXT) font.$(OBJEXT) \
+	game.$(OBJEXT) game_config.$(OBJEXT) game_events.$(OBJEXT) \
 	gamestatus.$(OBJEXT) halo.$(OBJEXT) help.$(OBJEXT) \
 	hotkeys.$(OBJEXT) image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
 	language.$(OBJEXT) log.$(OBJEXT) map.$(OBJEXT) \
@@ -481,23 +485,24 @@ am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) editor_layout.$(OBJEXT) \
 	editor_main.$(OBJEXT) editor_dialogs.$(OBJEXT) \
 	editor_undo.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	ai_attack.$(OBJEXT) ai_move.$(OBJEXT) builder.$(OBJEXT) \
-	cavegen.$(OBJEXT) config.$(OBJEXT) cursor.$(OBJEXT) \
-	dialogs.$(OBJEXT) display.$(OBJEXT) events.$(OBJEXT) \
-	filesystem.$(OBJEXT) font.$(OBJEXT) game_config.$(OBJEXT) \
-	game_events.$(OBJEXT) gamestatus.$(OBJEXT) halo.$(OBJEXT) \
-	help.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
-	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
-	map_label.$(OBJEXT) map.$(OBJEXT) mapgen.$(OBJEXT) \
-	mapgen_dialog.$(OBJEXT) mouse.$(OBJEXT) network.$(OBJEXT) \
-	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
-	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
-	reports.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
-	sound.$(OBJEXT) statistics.$(OBJEXT) team.$(OBJEXT) \
-	terrain.$(OBJEXT) theme.$(OBJEXT) tooltips.$(OBJEXT) \
-	unit.$(OBJEXT) unit_display.$(OBJEXT) unit_types.$(OBJEXT) \
-	video.$(OBJEXT) button.$(OBJEXT) file_chooser.$(OBJEXT) \
-	menu.$(OBJEXT) progressbar.$(OBJEXT) textbox.$(OBJEXT) \
-	scrollbar.$(OBJEXT) slider.$(OBJEXT) widget.$(OBJEXT)
+	cavegen.$(OBJEXT) clipboard.$(OBJEXT) config.$(OBJEXT) \
+	cursor.$(OBJEXT) dialogs.$(OBJEXT) display.$(OBJEXT) \
+	events.$(OBJEXT) filesystem.$(OBJEXT) font.$(OBJEXT) \
+	game_config.$(OBJEXT) game_events.$(OBJEXT) \
+	gamestatus.$(OBJEXT) halo.$(OBJEXT) help.$(OBJEXT) \
+	hotkeys.$(OBJEXT) image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
+	language.$(OBJEXT) log.$(OBJEXT) map_label.$(OBJEXT) \
+	map.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
+	mouse.$(OBJEXT) network.$(OBJEXT) pathfind.$(OBJEXT) \
+	playlevel.$(OBJEXT) playturn.$(OBJEXT) preferences.$(OBJEXT) \
+	race.$(OBJEXT) replay.$(OBJEXT) reports.$(OBJEXT) \
+	sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) sound.$(OBJEXT) \
+	statistics.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
+	theme.$(OBJEXT) tooltips.$(OBJEXT) unit.$(OBJEXT) \
+	unit_display.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
+	button.$(OBJEXT) file_chooser.$(OBJEXT) menu.$(OBJEXT) \
+	progressbar.$(OBJEXT) textbox.$(OBJEXT) scrollbar.$(OBJEXT) \
+	slider.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_editor_OBJECTS = $(am_wesnoth_editor_OBJECTS)
 wesnoth_editor_LDADD = $(LDADD)
 wesnoth_editor_DEPENDENCIES =
@@ -510,10 +515,10 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/ai.Po ./$(DEPDIR)/ai_attack.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/ai_move.Po ./$(DEPDIR)/builder.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/button.Po ./$(DEPDIR)/cavegen.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/combo.Po ./$(DEPDIR)/config.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/cursor.Po ./$(DEPDIR)/dialogs.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/display.Po ./$(DEPDIR)/editor.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/editor_dialogs.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/clipboard.Po ./$(DEPDIR)/combo.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/config.Po ./$(DEPDIR)/cursor.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/dialogs.Po ./$(DEPDIR)/display.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/editor.Po ./$(DEPDIR)/editor_dialogs.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/editor_layout.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/editor_main.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/editor_palettes.Po \
@@ -622,6 +627,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/builder.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/button.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cavegen.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/clipboard.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/combo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/config.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cursor.Po@am__quote@

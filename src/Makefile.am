@@ -31,6 +31,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai_move.cpp \
 		  builder.cpp \
 		  cavegen.cpp \
+		  clipboard.cpp \
 		  config.cpp \
 		  cursor.cpp \
 		  dialogs.cpp \
@@ -97,6 +98,7 @@ wesnoth_SOURCES = about.cpp \
 		  array.hpp \
 		  builder.hpp \
 		  cavegen.hpp \
+		  clipboard.hpp \
 		  cursor.hpp \
 		  config.hpp \
 		  dialogs.hpp \
@@ -175,6 +177,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai_move.cpp \
 		         builder.cpp \
 		 	 cavegen.cpp \
+			 clipboard.cpp \
 			 config.cpp \
 			 cursor.cpp \
 			 dialogs.cpp \
@@ -239,6 +242,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 array.hpp \
 		         builder.hpp \
 		 	 cavegen.hpp \
+			 clipboard.hpp \
 			 config.hpp \
 			 cursor.hpp \
 			 dialogs.hpp \
