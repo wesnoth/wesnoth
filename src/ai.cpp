@@ -139,8 +139,6 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 		return location();
 	}
 
-	recorder.add_movement(from,to);
-
 	if(from == to) {
 		u_it->second.set_movement(0);
 		return to;
@@ -203,6 +201,8 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 			info_.disp.move_unit(steps,current_unit);
 		}
 	}
+
+	recorder.add_movement(from,to);
 
 	current_unit.set_movement(0);
 	info_.units.insert(std::pair<location,unit>(to,current_unit));
@@ -437,10 +437,10 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 
 void ai_interface::attack_enemy(const location& u, const location& target, int weapon)
 {
-	recorder.add_attack(u,target,weapon);
-
-	game_events::fire("attack",u,target);
 	if(info_.units.count(u) && info_.units.count(target)) {
+		recorder.add_attack(u,target,weapon);
+		game_events::fire("attack",u,target);
+
 		attack(info_.disp,info_.map,info_.teams,u,target,weapon,info_.units,info_.state,info_.gameinfo,false);
 		check_victory(info_.units,info_.teams);
 		dialogs::advance_unit(info_.gameinfo,info_.units,u,info_.disp,true);
