@@ -11,20 +11,22 @@ CVS HEAD:
  * renamed Lizardman to Saurian
  * Elvish Outrider made 3rd level unit, increased hitpoins and ranged attack damage
  * Goblin Pillager melee damage increased
+ * General melee damage increased
  * new units:
    * Elvish Rider
    * Saurian Warrior
    * Necrophage
+ * new scenario for 'Son of the Black Eye' campaign:
+   * Saving Inarix
+ * new scenario for 'The Dark Hordes' campaign:
+   * A New Chance
  * scenario balancing for 'Heir to the Throne' campaign:
    * Bay of Pearls
    * Blackwater Port
    * Isle of Anduin
    * Isle of the Damned
    * Muff Malal's Peninsula
- * new scenario for 'Son of the Black Eye' campaign:
-   * Saving Inarix
- * new scenario for 'The Dark Hordes' campaign:
-   * A New Chance
+   * Princess of Wesnoth
  * scenario balancing for 'Son of the Black Eye' campaign:
    * Towards Mountains of Haag
    * To The Harbour of Tirigaz
@@ -37,9 +39,9 @@ CVS HEAD:
    * french
    * spanish
  * AI improvements
+   * various improvements to make AI smarter
    * added recruitment_ignore_bad_movement option
    * added recruitment_ignore_bad_combat option
-   * various improvements to make AI smarter
  * multiplayer improvements
    * Wesbowl
    * added scrolling and wrapping support for chat in lobby
@@ -55,6 +57,7 @@ CVS HEAD:
    * setting and removal of starting positions are now undoable operations
    * fixed name of the currently selected terrain not being displayed
    * fixed compile problems on some architectures
+   * code cleanups
  * fixed 'show enemy moves' and 'best possible enemy moves' showing in context menu when no enemies visible
  * fixed resizing window in the title screen not working properly
  * fixed basic hotkeys not working in title screen
@@ -68,6 +71,8 @@ CVS HEAD:
  * fixed tooltips from game setup appearing in-game
  * fixed hotkey not updating immidiately in the hotkeys dialog when changed
  * fixed assertion failure in playturn.cpp
+ * fixed deleting units from recall list not updating unit preview pane
+ * changed all WML files to UTF-8, code now assumes all WML files being UTF-8
  * made input of search strings and messages use a textbox that overlays the map, which allows these operations to be performed asynchronously
  * added caching of data files to speed game loading
  * added a "fire_event" in [kill] tags that allow die events to be processed if specified
