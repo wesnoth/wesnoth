@@ -232,7 +232,6 @@ void replay::add_start()
 {
 	config* const cmd = add_command();
 	cmd->add_child("start");
-	random_ = cmd;
 }
 
 void replay::add_recruit(int value, const gamemap::location& loc)
@@ -252,8 +251,6 @@ void replay::add_recruit(int value, const gamemap::location& loc)
 	val["y"] = buf;
 
 	cmd->add_child("recruit",val);
-
-	random_ = cmd;
 }
 
 void replay::add_recall(int value, const gamemap::location& loc)
@@ -291,8 +288,6 @@ void replay::add_disband(int value)
 void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
 {
 	add_pos("move",a,b);
-	//current_->add_child("verify",make_verify_units());
-	random_ = current_;
 }
 
 void replay::add_attack(const gamemap::location& a, const gamemap::location& b, int weapon)
@@ -301,7 +296,6 @@ void replay::add_attack(const gamemap::location& a, const gamemap::location& b, 
 	char buf[100];
 	sprintf(buf,"%d",weapon);
 	current_->child("attack")->values["weapon"] = buf;
-	random_ = current_;
 }
 
 void replay::add_pos(const std::string& type,
@@ -324,8 +318,6 @@ void replay::add_pos(const std::string& type,
 	move.add_child("source",src);
 	move.add_child("destination",dst);
 	cmd->add_child(type,move);
-
-	current_ = cmd;
 }
 
 void replay::add_value(const std::string& type, int value)
