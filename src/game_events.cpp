@@ -403,6 +403,23 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 	}
 
+	//command to store gold into a variable
+	else if(cmd == "store_gold") {
+		const std::string& side = cfg["side"];
+		std::string var_name = cfg["variable"];
+		if(var_name.empty()) {
+			var_name = "gold";
+		}
+
+		const int side_num = side.empty() ? 1 : atoi(side.c_str());
+		const size_t team_index = side_num-1;
+		if(team_index < teams->size()) {
+			char value[50];
+			sprintf(value,"%d",(*teams)[team_index].gold());
+			game_events::set_variable(var_name,value);
+		}
+	}
+
 	//moving a 'unit' - i.e. a dummy unit that is just moving for
 	//the visual effect
 	else if(cmd == "move_unit_fake") {
