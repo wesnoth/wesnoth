@@ -36,61 +36,62 @@ bool point_in_rect(int x, int y, const SDL_Rect& rect);
 
 bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
 
-struct free_sdl_surface {
-	void operator()(SDL_Surface* surface) const; 
-};
-
-
 struct surface
 {
 private:
-	inline int sdl_add_ref(SDL_Surface* surf);
+	static void sdl_add_ref(SDL_Surface *surf)
+	{
+		if (surf != NULL)
+			++surf->refcount;
+	}
+
+	struct free_sdl_surface {
+		void operator()(SDL_Surface *surf) const
+		{
+			if (surf != NULL)
+				 SDL_FreeSurface(surf); 
+		}
+	};
+
 	typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
 public:
 	surface() : surface_(NULL) 
 	{}
 
-	surface(SDL_Surface* surf);
+	surface(SDL_Surface *surf) : surface_(surf)
+	{}
 
 	surface(const surface& o) : surface_(o.surface_.get())
 	{
-		sdl_add_ref(get());
+		sdl_add_ref(surface_.get());
+	}
+
+	void assign(const surface& o)
+	{
+		SDL_Surface *surf = o.surface_.get();
+		sdl_add_ref(surf); // need to be done before assign to avoid corruption on "a=a;"
+		surface_.assign(surf);
 	}
 
 	surface& operator=(const surface& o)
 	{
-		surface_.assign(o.surface_.get());
-		sdl_add_ref(get());
+		assign(o);
 		return *this;
 	}
 
-	operator SDL_Surface*() const { return surface_; }
+	operator SDL_Surface*() const { return surface_.get(); }
 
 	SDL_Surface* get() const { return surface_.get(); }
 
 	SDL_Surface* operator->() const { return surface_.get(); }
 
-	void assign(const surface& o)
-	{
-		operator=(o);
-	}
-
 	void assign(SDL_Surface* surf) { surface_.assign(surf); }
 
-	bool null() const { return get() == NULL; }
+	bool null() const { return surface_.get() == NULL; }
 
 private:
 	scoped_sdl_surface surface_;
 };
-
-int surface::sdl_add_ref(SDL_Surface* surf)
-{
-	if(surf != NULL) {
-		return surf->refcount++;
-	} else {
-		return 0;
-	}
-}
 
 bool operator<(const surface& a, const surface& b);
 

@@ -57,17 +57,6 @@ namespace {
 
 }
 
-void free_sdl_surface::operator()(SDL_Surface* surf) const
-{
-	if(surf != NULL)
-		 SDL_FreeSurface(surf); 
-}
-
-surface::surface(SDL_Surface* surf) : surface_(surf)
-{
-}
-
-
 surface make_neutral_surface(surface surf)
 {
 	if(surf == NULL) {
