@@ -1273,18 +1273,18 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 				SDL_Rect rect = { dstrect.x + len + i, dstrect.y, 1, 1 };
 				SDL_BlitSurface(*ov,&end_srcrect,dst,&rect);
 			}
+		}
 
-			if((grid_ || show_unit_colour) && dstrect.w >= 1) {
-				SDL_Rect rect = dstrect;
-				if(j == ypos || j == yend-1) {
-					SDL_FillRect(dst,&rect,grid_colour);
-				} else {
-					rect.w = 1;
-					rect.h = 1;
-					SDL_FillRect(dst,&rect,grid_colour);
-					rect.x += rect.w-1;
-					SDL_FillRect(dst,&rect,grid_colour);
-				}
+		if((grid_ || show_unit_colour) && srcrect.w >= 1) {
+			SDL_Rect rect = dstrect;
+			if(j == ypos || j == yend-1) {
+				SDL_FillRect(dst,&rect,grid_colour);
+			} else {
+				rect.w = 1;
+				rect.h = 1;
+				SDL_FillRect(dst,&rect,grid_colour);
+				rect.x += srcrect.w+extra-1;
+				SDL_FillRect(dst,&rect,grid_colour);
 			}
 		}
 	}
