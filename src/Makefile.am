@@ -71,7 +71,6 @@ wesnoth_SOURCES = about.cpp \
 		  unit.cpp \
 		  unit_types.cpp \
 		  video.cpp \
-		  z_ai.cpp \
 		  widgets/button.cpp \
 		  widgets/combo.cpp \
 		  widgets/menu.cpp \
@@ -132,7 +131,6 @@ wesnoth_SOURCES = about.cpp \
 		  unit_types.hpp \
 		  util.hpp \
 		  video.hpp \
-		  z_ai.hpp \
 		  widgets/button.hpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
@@ -191,7 +189,6 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit.cpp \
 			 unit_types.cpp \
 			 video.cpp \
-			 z_ai.cpp \
 			 widgets/button.cpp \
 			 widgets/menu.cpp \
 			 widgets/textbox.cpp \
@@ -243,7 +240,6 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit.hpp \
 			 unit_types.hpp \
 			 video.hpp \
-			 z_ai.hpp \
 			 widgets/button.hpp \
 			 widgets/menu.hpp \
 			 widgets/textbox.hpp \

@@ -34,6 +34,9 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
+@SERVER_TRUE@am__append_1 = server
+@TOOLS_TRUE@am__append_2 = tools
+@EDITOR_TRUE@am__append_3 = wesnoth_editor
 
 pkgdatadir = $(datadir)/@DATADIR@
 ACLOCAL = @ACLOCAL@
@@ -142,14 +145,9 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-@SERVER_TRUE@SSUBDIRS = server
+SUBDIRS = . $(am__append_1) $(am__append_2)
 
-@TOOLS_TRUE@TSUBDIRS = tools
-
-@EDITOR_TRUE@EPROGRAMS = wesnoth_editor
-
-SUBDIRS = . $(SSUBDIRS) $(TSUBDIRS)
-bin_PROGRAMS = wesnoth $(EPROGRAMS)
+bin_PROGRAMS = wesnoth $(am__append_3)
 
 
 #############################################################################
@@ -385,10 +383,12 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
-AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ @SDL_TTF_LIBS@ 
+AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ \
+	@SDL_TTF_LIBS@ 
+
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 @EDITOR_TRUE@bin_PROGRAMS = wesnoth$(EXEEXT) wesnoth_editor$(EXEEXT)
@@ -444,7 +444,7 @@ wesnoth_editor_DEPENDENCIES =
 wesnoth_editor_LDFLAGS =
 
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
-depcomp = $(SHELL) $(top_srcdir)/depcomp
+depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/about.Po ./$(DEPDIR)/actions.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/ai.Po ./$(DEPDIR)/ai_attack.Po \
@@ -504,7 +504,7 @@ all: all-recursive
 .SUFFIXES: .cpp .o .obj
 $(srcdir)/Makefile.in:  Makefile.am  $(top_srcdir)/configure.ac $(ACLOCAL_M4)
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu  src/Makefile
+	  $(AUTOMAKE) --foreign  src/Makefile
 Makefile:  $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
