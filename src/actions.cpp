@@ -1446,7 +1446,7 @@ bool clear_shroud(display& disp, const gamestatus& status,
 size_t move_unit(display* disp, const game_data& gamedata, 
                  const gamestatus& status, const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
-                 const std::vector<gamemap::location>& route,
+                 std::vector<gamemap::location> route,
                  replay* move_recorder, undo_list* undo_stack,
                  gamemap::location *next_unit, bool continue_move)
 {

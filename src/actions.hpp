@@ -182,7 +182,7 @@ typedef std::deque<undo_action> undo_list;
 size_t move_unit(display* disp, const game_data& gamedata, 
 				const gamestatus& status, const gamemap& map, 
 				unit_map& units, std::vector<team>& teams,
-				const std::vector<gamemap::location>& steps,
+				std::vector<gamemap::location> steps,
 				replay* move_recorder, undo_list* undos,
 				gamemap::location *next_unit = NULL,
 				bool continue_move = false);
