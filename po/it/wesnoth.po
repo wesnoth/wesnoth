@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-05 23:03+0200\n"
-"PO-Revision-Date: 2004-09-04 15:35+0200\n"
+"PO-Revision-Date: 2004-09-12 13:52+0100\n"
 "Last-Translator: RokStar <lcspra@tin.it>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -184,7 +184,6 @@ msgstr ""
 "informazioni. "
 
 #: data/help.cfg:85 src/help.cpp:772 src/help.cpp:773
-#, fuzzy
 msgid "Movement"
 msgstr "movimento"
 
@@ -732,7 +731,6 @@ msgstr ""
 "trasformare un colpo forte in un colpo mortale."
 
 #: data/items.cfg:264
-#, fuzzy
 msgid ""
 "You have come across a wishing well.\n"
 "What would you like to wish for?"
@@ -741,12 +739,10 @@ msgstr ""
 "Qual e' il tuo desiderio?"
 
 #: data/items.cfg:268
-#, fuzzy
 msgid "A swift victory"
 msgstr "Una semplice vittoria"
 
 #: data/items.cfg:276
-#, fuzzy
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
@@ -755,29 +751,24 @@ msgstr ""
 "vittoria."
 
 #: data/items.cfg:283
-#, fuzzy
 msgid "Lots of gold"
 msgstr "Una montagna d'oro"
 
 #: data/items.cfg:291
-#, fuzzy
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Desidero che questa singola moneta d'oro venga moltiplicata."
 
 #: data/items.cfg:298
-#, fuzzy
 msgid "Peace throughout Wesnoth."
 msgstr "Pace in tutto Wesnoth."
 
 #: data/items.cfg:306
-#, fuzzy
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr ""
 "L'unica cosa per cui vale la pena esprimere un desidero e' la pace in tutto "
 "il regno."
 
 #: data/items.cfg:313
-#, fuzzy
 msgid "Don't make a wish."
 msgstr "Nessun desiderio."
 
@@ -839,7 +830,6 @@ msgid "This ring will heal the bearer a little each turn."
 msgstr "Questo anello guarisce ogni turno colui che lo indossa."
 
 #: data/items.cfg:556
-#, fuzzy
 msgid "Can't set abilities yet, sorry."
 msgstr "Non e' possibile impostare le abilita', spiacenti."
 
@@ -914,7 +904,6 @@ msgstr ""
 "di prenderlo!"
 
 #: data/items.cfg:812
-#, fuzzy
 msgid "Zap~"
 msgstr "Zap~"
 
@@ -986,9 +975,8 @@ msgid "&dwarf-warrior.png,Dwarves"
 msgstr "&dwarf-lord.png,Nani"
 
 #: data/multiplayer.cfg:180
-#, fuzzy
 msgid "&saurian-soothsayer.png,Saurian"
-msgstr "Guerriero Sauro"
+msgstr ""
 
 #: data/multiplayer.cfg:193
 msgid "Age of Heroes"
@@ -1020,14 +1008,12 @@ msgid "Great War"
 msgstr "Grande Guerra"
 
 #: data/multiplayer.cfg:283
-#, fuzzy
 msgid "&white-mage.png,Alliance of Light"
-msgstr "&elvish-high-lord.png,Allenaza della Luce"
+msgstr "&white-mage.png,Allenaza della Luce"
 
 #: data/multiplayer.cfg:295
-#, fuzzy
 msgid "&undead-necromancer.png,Alliance of Darkness"
-msgstr "&undead-lich.png,Alleanza dell'Oscurità"
+msgstr "&undead-necromancer.png,Alleanza dell'Oscurità"
 
 #: data/scenario-test.cfg:38
 msgid ""
@@ -1053,12 +1039,10 @@ msgid "Forest of Fear"
 msgstr "Foresta della Paura"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
-#, fuzzy
 msgid "Random map"
 msgstr "Mappa casuale"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
-#, fuzzy
 msgid "Wesbowl"
 msgstr "Wesbowl"
 
@@ -1139,37 +1123,30 @@ msgid "Across The River"
 msgstr "Across The River"
 
 #: data/scenarios/multiplayer/scenarios.cfg:108
-#, fuzzy
 msgid "The Isle of Anduin"
 msgstr "L'isola di Anduin"
 
 #: data/scenarios/multiplayer/scenarios.cfg:135
-#, fuzzy
 msgid "The Three Rivers"
 msgstr "I tre fiumi"
 
 #: data/scenarios/multiplayer/scenarios.cfg:162
-#, fuzzy
 msgid "The Isles of the Damned"
 msgstr "L'isola dei Dannati"
 
 #: data/scenarios/multiplayer/scenarios.cfg:195
-#, fuzzy
 msgid "The Valley of Death"
 msgstr "La valle della morte"
 
 #: data/scenarios/multiplayer/scenarios.cfg:238
-#, fuzzy
 msgid "Dwarvern Wasteland"
 msgstr "Territori dei nani"
 
 #: data/scenarios/multiplayer/scenarios.cfg:277
-#, fuzzy
 msgid "Princess's Battlefield"
 msgstr "Campo di battaglia della principessa"
 
 #: data/scenarios/multiplayer/scenarios.cfg:304
-#, fuzzy
 msgid "King of the Hill"
 msgstr "Re delle Colline"
 
@@ -1891,6 +1868,8 @@ msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
 msgstr ""
+"Ogni attacco ha un tipo di danno che mofica l'ammontare di ferite inflitte "
+"alle varie unità."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid ""
@@ -1925,6 +1904,8 @@ msgstr ""
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
+"Molte unità hanno una specialità che cambia le regole del gioco in qualche "
+"modo."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid ""
@@ -2017,6 +1998,9 @@ msgid ""
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
+"Ricordati di provare a prevenire la cattura dei villaggi da parte del "
+"nemico, e recupera i villaggi che possiedono. Questo taglierà i loro fondi "
+"economici e impedirà loro di reclutare nuove truppe."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:239
 msgid ""
@@ -2156,26 +2140,23 @@ msgstr "Entrate"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
-msgstr "statuspanel^livello"
+msgstr "livello"
 
 #: data/themes/default.cfg:317 data/themes/default.cfg:655
 msgid "statuspanel^movement"
-msgstr "statuspanel^movimento"
+msgstr "movimento"
 
 #: data/translations/english.cfg:2
-#, fuzzy
 msgid "Easy"
-msgstr "&elvish-fighter.png,Combattente (facile)"
+msgstr "Facile"
 
 #: data/translations/english.cfg:3
-#, fuzzy
 msgid "Medium"
-msgstr "*&elvish-hero.png,Eroe (medio)"
+msgstr "Medio"
 
 #: data/translations/english.cfg:4
-#, fuzzy
 msgid "Hard"
-msgstr "&elvish-champion.png,Campione (difficile)"
+msgstr "Difficile"
 
 #: data/translations/english.cfg:9
 #, fuzzy
@@ -2345,97 +2326,78 @@ msgstr ""
 "l'attacco."
 
 #: data/translations/english.cfg:56
-#, fuzzy
 msgid "minimum damage"
 msgstr "danno minimo"
 
 #: data/translations/english.cfg:58
-#, fuzzy
 msgid "Game"
 msgstr "Partita"
 
 #: data/translations/english.cfg:60
-#, fuzzy
 msgid "Scenario"
 msgstr "Scenario"
 
 #: data/translations/english.cfg:62
-#, fuzzy
 msgid "Configure Sides:"
 msgstr "Configura gli eserciti:"
 
 #: data/translations/english.cfg:63
-#, fuzzy
 msgid "Choose Team Settings:"
 msgstr "Scegli le impostazioni della squadra:"
 
 #: data/translations/english.cfg:64
-#, fuzzy
 msgid "Could not connect to the remote host"
 msgstr "Impossibile connettersi all'host remoto"
 
 #: data/translations/english.cfg:65
-#, fuzzy
 msgid "Waiting for players to connect"
 msgstr "Attendi che i giocatori si connettano"
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid "Filled"
 msgstr "Riempito"
 
 #: data/translations/english.cfg:67
-#, fuzzy
 msgid "Available"
 msgstr "Disponibile"
 
 #: data/translations/english.cfg:68
-#, fuzzy
 msgid "&misc/observer.png,Observer"
 msgstr "&misc/observer.png,Osservatore"
 
 #: data/translations/english.cfg:70
-#, fuzzy
 msgid "Describe Unit"
 msgstr "Descrizione Unita'"
 
 #: data/translations/english.cfg:72
-#, fuzzy
 msgid "Full Screen or Windowed?"
 msgstr "Schermo intero o Finestra?"
 
 #: data/translations/english.cfg:73
-#, fuzzy
 msgid "Display:"
 msgstr "Display:"
 
 #: data/translations/english.cfg:74
-#, fuzzy
 msgid "Windowed"
 msgstr "Finestra"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid "Speed:"
 msgstr "Velocita':"
 
 #: data/translations/english.cfg:77
-#, fuzzy
 msgid "Normal"
 msgstr "Normale"
 
 #: data/translations/english.cfg:79
-#, fuzzy
 msgid "Sound Settings..."
 msgstr "Impostazioni Audio..."
 
 #: data/translations/english.cfg:80
-#, fuzzy
 msgid "Options"
 msgstr "Opzioni"
 
 #: data/translations/english.cfg:82
-#, fuzzy
 msgid "Choose Scenario"
 msgstr "Scegli scenario"
 
@@ -2474,12 +2436,10 @@ msgid "or"
 msgstr "o"
 
 #: data/translations/english.cfg:90
-#, fuzzy
 msgid "Unit resistance table"
 msgstr "Tabella resistenze unita'"
 
 #: data/translations/english.cfg:92
-#, fuzzy
 msgid "See Also..."
 msgstr "Vedi anche..."
 
@@ -2601,27 +2561,22 @@ msgstr ""
 "difendendo."
 
 #: data/translations/english.cfg:128 data/units/Drake_Slasher.cfg:42
-#, fuzzy
 msgid "first strike"
 msgstr "attacco improvviso"
 
 #: data/translations/english.cfg:131
-#, fuzzy
 msgid "Elves"
 msgstr "Elfi"
 
 #: data/translations/english.cfg:132
-#, fuzzy
 msgid "Orcs"
 msgstr "Orchi"
 
 #: data/translations/english.cfg:133
-#, fuzzy
 msgid "Humans"
 msgstr "Umani"
 
 #: data/translations/english.cfg:134
-#, fuzzy
 msgid "Undead"
 msgstr "Non-morti"
 
@@ -2634,7 +2589,6 @@ msgid "Shallow Water"
 msgstr "Acque Basse"
 
 #: data/translations/english.cfg:140
-#, fuzzy
 msgid "Sand"
 msgstr "Sabbia"
 
@@ -2642,73 +2596,59 @@ msgstr "Sabbia"
 #: data/translations/english.cfg:144 data/translations/english.cfg:145
 #: data/translations/english.cfg:146 data/translations/english.cfg:147
 #: src/reports.cpp:310
-#, fuzzy
 msgid "Village"
 msgstr "Villaggio"
 
 #: data/translations/english.cfg:142
-#, fuzzy
 msgid "Swamp"
 msgstr "Palude"
 
 #: data/translations/english.cfg:148
-#, fuzzy
 msgid "Tundra"
 msgstr "Tundra"
 
 #: data/translations/english.cfg:149
-#, fuzzy
 msgid "Ice"
 msgstr "Ghiaccio"
 
 #: data/translations/english.cfg:150
-#, fuzzy
 msgid "Road"
 msgstr "Strada"
 
 #: data/translations/english.cfg:151
-#, fuzzy
 msgid "Dirt"
 msgstr "Terreno arido"
 
 #: data/translations/english.cfg:152
-#, fuzzy
 msgid "Grassland"
 msgstr "Prato"
 
 #: data/translations/english.cfg:153
-#, fuzzy
 msgid "Hills"
 msgstr "Colline"
 
 #: data/translations/english.cfg:154
-#, fuzzy
 msgid "Mountains"
 msgstr "Montagne"
 
 #: data/translations/english.cfg:155
-#, fuzzy
 msgid "Forest"
 msgstr "Foresta"
 
 #: data/translations/english.cfg:156 data/translations/english.cfg:157
 #: data/translations/english.cfg:158
-#, fuzzy
 msgid "Bridge"
 msgstr "Ponte"
 
 #: data/translations/english.cfg:159
-#, fuzzy
 msgid "Castle"
 msgstr "Castello"
 
 #: data/translations/english.cfg:160
-#, fuzzy
 msgid "Keep"
 msgstr "Keep"
 
 #: data/translations/english.cfg:161
-#, fuzzy
 msgid "Cave"
 msgstr "Caverna"
 
@@ -2784,17 +2724,14 @@ msgstr ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 
 #: data/translations/english.cfg:179
-#, fuzzy
 msgid "Next tip"
 msgstr "Prossimo suggerimento"
 
 #: data/translations/english.cfg:180
-#, fuzzy
 msgid "Tip of the Day"
 msgstr "Consiglio del giorno"
 
 #: data/translations/english.cfg:181
-#, fuzzy
 msgid "Do not show tips"
 msgstr "Non mostrare piu' questi consigli"
 
@@ -3135,7 +3072,6 @@ msgstr ""
 
 #: data/units/Ancient_Lich.cfg:19 data/units/Demilich.cfg:18
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
-#, fuzzy
 msgid "touch"
 msgstr "Tocco"
 
@@ -3151,7 +3087,6 @@ msgstr "Tocco"
 #: data/units/Saurian_Icecaster.cfg:41 data/units/Saurian_Soothsayer.cfg:40
 #: data/units/Saurian_Tribalist.cfg:40 data/units/Spectre.cfg:33
 #: data/units/Wraith.cfg:33
-#, fuzzy
 msgid "cold"
 msgstr "freddo"
 
@@ -3162,14 +3097,12 @@ msgstr "freddo"
 #: data/units/Skeletal_Dragon.cfg:31 data/units/Spectre.cfg:24
 #: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:25
 #: data/units/Vampire_Lady.cfg:38 data/units/Wraith.cfg:24
-#, fuzzy
 msgid "drain"
 msgstr "Assorbimento"
 
 #: data/units/Ancient_Lich.cfg:32 data/units/Deathmaster.cfg:35
 #: data/units/Demilich.cfg:31 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
-#, fuzzy
 msgid "magic"
 msgstr "Magia"
 
@@ -3194,7 +3127,6 @@ msgstr "Magia"
 #: data/units/Saurian_Tribalist.cfg:41 data/units/Sea_Hag.cfg:31
 #: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:183
 #: data/units/White_Mage.cfg:47 data/units/White_Mage.cfg:106
-#, fuzzy
 msgid "magical"
 msgstr "Attaco magico"
 
@@ -3218,7 +3150,6 @@ msgstr ""
 
 #: data/units/Ancient_Wose.cfg:18 data/units/Elder_Wose.cfg:19
 #: data/units/Wose.cfg:19
-#, fuzzy
 msgid "crush"
 msgstr "Clava"
 
@@ -3262,12 +3193,10 @@ msgstr "Clava"
 #: data/units/Troll_Whelp.cfg:21 data/units/Walking_Corpse.cfg:20
 #: data/units/Warrior_King.cfg:23 data/units/Wose.cfg:20
 #: data/units/Yeti.cfg:34 data/units/Youth.cfg:22
-#, fuzzy
 msgid "impact"
 msgstr "impatto"
 
 #: data/units/Arch_Mage.cfg:3 data/units/Arch_Mage.cfg:82
-#, fuzzy
 msgid "Arch Mage"
 msgstr "Arcimago"
 
@@ -3288,7 +3217,6 @@ msgstr ""
 #: data/units/Necromancer.cfg:19 data/units/Saurian_Icecaster.cfg:22
 #: data/units/Saurian_Soothsayer.cfg:22 data/units/Saurian_Tribalist.cfg:22
 #: data/units/Silver_Mage.cfg:77 data/units/Silver_Mage.cfg:164
-#, fuzzy
 msgid "staff"
 msgstr "Bastone"
 
@@ -3297,7 +3225,6 @@ msgstr "Bastone"
 #: data/units/Great_Mage.cfg:39 data/units/Great_Mage.cfg:115
 #: data/units/Red_Mage.cfg:39 data/units/Red_Mage.cfg:108
 #: data/units/Silver_Mage.cfg:93 data/units/Silver_Mage.cfg:180
-#, fuzzy
 msgid "fireball"
 msgstr "Palla di fuoco"
 
@@ -3317,12 +3244,10 @@ msgstr "Palla di fuoco"
 #: data/units/Princess.cfg:77 data/units/Red_Mage.cfg:40
 #: data/units/Red_Mage.cfg:109 data/units/Silver_Mage.cfg:94
 #: data/units/Silver_Mage.cfg:181
-#, fuzzy
 msgid "fire"
-msgstr "fire"
+msgstr "fuoco"
 
 #: data/units/Assassin.cfg:3
-#, fuzzy
 msgid "Assassin"
 msgstr "Assassino"
 
@@ -3354,7 +3279,6 @@ msgstr ""
 #: data/units/Red_Mage.cfg:23 data/units/Red_Mage.cfg:92
 #: data/units/Rogue.cfg:20 data/units/Thief.cfg:19 data/units/Trapper.cfg:24
 #: data/units/White_Mage.cfg:28 data/units/White_Mage.cfg:87
-#, fuzzy
 msgid "dagger"
 msgstr "Pugnale"
 
@@ -3422,19 +3346,16 @@ msgstr "Pugnale"
 #: data/units/Vampire_Lady.cfg:20 data/units/White_Mage.cfg:29
 #: data/units/White_Mage.cfg:88 data/units/Wolf_Rider.cfg:21
 #: data/units/Wraith.cfg:20 data/units/Young_Ogre.cfg:19
-#, fuzzy
 msgid "blade"
 msgstr "lama"
 
 #: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
 #: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
 #: src/actions.cpp:490
-#, fuzzy
 msgid "backstab"
 msgstr "Attacco alle spalle"
 
 #: data/units/Assassin.cfg:47 data/units/Rogue.cfg:38
-#, fuzzy
 msgid "knife"
 msgstr "Coltello"
 
@@ -3443,12 +3364,10 @@ msgstr "Coltello"
 #: data/units/Ghoul.cfg:24 data/units/Giant_Scorpion.cfg:22
 #: data/units/Goblin_Direwolver.cfg:38 data/units/Necrophage.cfg:24
 #: data/units/Orcish_Assassin.cfg:41 data/units/Orcish_Slayer.cfg:46
-#, fuzzy
 msgid "poison"
 msgstr "Veleno"
 
 #: data/units/Bandit.cfg:3
-#, fuzzy
 msgid "Bandit"
 msgstr "Bandito"
 
@@ -3467,13 +3386,11 @@ msgstr ""
 #: data/units/Outlaw_Princess.cfg:23 data/units/Outlaw_Queen.cfg:24
 #: data/units/Shock_Trooper.cfg:19 data/units/Troll_Warrior.cfg:19
 #: data/units/Warrior_King.cfg:22
-#, fuzzy
 msgid "mace"
 msgstr "Mazza"
 
 #: data/units/Battle_Princess.cfg:3 data/units/Battle_Princess.cfg:41
 #: data/units/Princess.cfg:3 data/units/Princess.cfg:41
-#, fuzzy
 msgid "Princess"
 msgstr "Principessa"
 
@@ -3527,7 +3444,6 @@ msgstr ""
 #: data/units/Royal_Guard.cfg:19 data/units/Scout.cfg:21
 #: data/units/Sea_Orc.cfg:19 data/units/Sergeant.cfg:21
 #: data/units/Swordsman.cfg:19
-#, fuzzy
 msgid "sword"
 msgstr "Spada"
 
@@ -3549,12 +3465,10 @@ msgstr ""
 #: data/units/Battle_Princess.cfg:76 data/units/Commander.cfg:120
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:102
 #: data/units/Princess.cfg:76
-#, fuzzy
 msgid "scepter of fire"
 msgstr "scettro di fuoco"
 
 #: data/units/Blood_Bat.cfg:3
-#, fuzzy
 msgid "Blood Bat"
 msgstr "Pipistrello Sanguinario"
 
@@ -3575,12 +3489,10 @@ msgstr ""
 #: data/units/Direwolf_Rider.cfg:18 data/units/Goblin_Direwolver.cfg:21
 #: data/units/Goblin_Knight.cfg:18 data/units/Sea_Serpent.cfg:19
 #: data/units/Vampire_Bat.cfg:19 data/units/Wolf_Rider.cfg:20
-#, fuzzy
 msgid "fangs"
 msgstr "Zanne"
 
 #: data/units/Bone_Shooter.cfg:3
-#, fuzzy
 msgid "Bone Shooter"
 msgstr "Lancia Ossa"
 
@@ -3598,7 +3510,6 @@ msgstr ""
 #: data/units/Skeleton_Archer.cfg:23 data/units/Soulless.cfg:19
 #: data/units/Troll_Rocklobber.cfg:20 data/units/Troll_Whelp.cfg:20
 #: data/units/Walking_Corpse.cfg:19 data/units/Yeti.cfg:33
-#, fuzzy
 msgid "fist"
 msgstr "Pugno"
 
@@ -3618,7 +3529,6 @@ msgstr "Pugno"
 #: data/units/Orcish_Warlord.cfg:29 data/units/Poacher.cfg:41
 #: data/units/Skeleton_Archer.cfg:40 data/units/Soul_Shooter.cfg:37
 #: data/units/Trapper.cfg:41
-#, fuzzy
 msgid "bow"
 msgstr "Arco"
 
@@ -3670,12 +3580,10 @@ msgstr "Arco"
 #: data/units/Trapper.cfg:42 data/units/Triton.cfg:20
 #: data/units/Vampire_Lady.cfg:34 data/units/Wall_Guard.cfg:36
 #: data/units/Watch_Tower.cfg:18
-#, fuzzy
 msgid "pierce"
 msgstr "perforazione"
 
 #: data/units/Bowman.cfg:3
-#, fuzzy
 msgid "Bowman"
 msgstr "Arciere"
 
@@ -3691,7 +3599,6 @@ msgstr ""
 "sono le piu' comuni unita' di attacco dalla distanza nelle armate di Wesnoth."
 
 #: data/units/Cavalier.cfg:3
-#, fuzzy
 msgid "Cavalier"
 msgstr "Cavaliere"
 
@@ -3708,12 +3615,10 @@ msgstr ""
 "mondo conosciuto."
 
 #: data/units/Cavalier.cfg:48 data/units/Dragoon.cfg:48
-#, fuzzy
 msgid "pistol"
 msgstr "Pistola"
 
 #: data/units/Cavalryman.cfg:3
-#, fuzzy
 msgid "Cavalryman"
 msgstr "Cavalleria esperta"
 
@@ -3730,7 +3635,6 @@ msgstr ""
 "indicata per la cattura e la difesa dei villaggi."
 
 #: data/units/Cave_Spider.cfg:3
-#, fuzzy
 msgid "Giant Spider"
 msgstr "Ragno Gigante"
 
@@ -3746,7 +3650,6 @@ msgstr ""
 "con ragnatele che riducono i movimenti degli avversari."
 
 #: data/units/Cave_Spider.cfg:28
-#, fuzzy
 msgid "web"
 msgstr "Ragnatela"
 
@@ -3754,7 +3657,6 @@ msgstr "Ragnatela"
 #: data/units/Elvish_Enchantress.cfg:67 data/units/Elvish_Shaman.cfg:45
 #: data/units/Elvish_Shyde.cfg:52 data/units/Elvish_Sorceress.cfg:67
 #: data/units/Elvish_Sylph.cfg:53 data/units/Goblin_Pillager.cfg:37
-#, fuzzy
 msgid "slow"
 msgstr "Rallenta"
 
@@ -3785,7 +3687,6 @@ msgstr ""
 #: data/units/Saurian.cfg:38 data/units/Saurian_Warrior.cfg:21
 #: data/units/Saurian_Warrior.cfg:38 data/units/Spearman.cfg:19
 #: data/units/Spearman.cfg:32
-#, fuzzy
 msgid "spear"
 msgstr "Arpione"
 
@@ -3793,12 +3694,10 @@ msgstr "Arpione"
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
 #: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:363
 #: src/actions.cpp:481
-#, fuzzy
 msgid "charge"
 msgstr "Carica"
 
 #: data/units/Cockatrice.cfg:3
-#, fuzzy
 msgid "Cockatrice"
 msgstr "Basilisco"
 
@@ -3814,18 +3713,15 @@ msgstr ""
 "i basilischi possono tramutarli in pietra!"
 
 #: data/units/Cockatrice.cfg:21
-#, fuzzy
 msgid "gaze"
 msgstr "Bloccare"
 
 #: data/units/Cockatrice.cfg:26 src/actions.cpp:728 src/actions.cpp:876
 #: src/reports.cpp:122
-#, fuzzy
 msgid "stone"
 msgstr "Pietrifica"
 
 #: data/units/Commander.cfg:3 data/units/Commander.cfg:78
-#, fuzzy
 msgid "Commander"
 msgstr "Comandante"
 
@@ -3840,7 +3736,6 @@ msgstr "Comandante"
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:17
 #: data/units/Princess.cfg:55 data/units/Sergeant.cfg:17
 #: data/units/Warrior_King.cfg:17 src/actions.cpp:353 src/actions.cpp:471
-#, fuzzy
 msgid "leadership"
 msgstr "condottiero"
 
@@ -3875,7 +3770,6 @@ msgstr ""
 "lost, so is the battle."
 
 #: data/units/Cuttle_Fish.cfg:3
-#, fuzzy
 msgid "Cuttle Fish"
 msgstr "Mostro Marino"
 
@@ -3892,17 +3786,14 @@ msgstr ""
 "all'asciutto."
 
 #: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
-#, fuzzy
 msgid "tentacle"
 msgstr "tentacolo"
 
 #: data/units/Cuttle_Fish.cfg:26
-#, fuzzy
 msgid "ink"
 msgstr "Inchiostro"
 
 #: data/units/Dark_Adept.cfg:3
-#, fuzzy
 msgid "Dark Adept"
 msgstr "Adepto dell'Oscurita'"
 
@@ -3922,9 +3813,8 @@ msgid "chill wave"
 msgstr "onda di terrore"
 
 #: data/units/Dark_Queen.cfg:3
-#, fuzzy
 msgid "Dark Queen"
-msgstr "Outlaw Queen"
+msgstr "Regina Oscura"
 
 #: data/units/Dark_Queen.cfg:15
 msgid ""
@@ -3934,12 +3824,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Dark_Queen.cfg:20
-#, fuzzy
 msgid "scepter"
-msgstr "Arpione"
+msgstr "scettro"
 
 #: data/units/Dark_Spirit.cfg:3
-#, fuzzy
 msgid "Dark Spirit"
 msgstr "Spirito Oscuro"
 
@@ -3956,18 +3844,15 @@ msgstr ""
 
 #: data/units/Dark_Spirit.cfg:19 data/units/Spectre.cfg:19
 #: data/units/Wraith.cfg:19
-#, fuzzy
 msgid "baneblade"
 msgstr "Lama avvelenata"
 
 #: data/units/Dark_Spirit.cfg:32 data/units/Ghost.cfg:31
 #: data/units/Spectre.cfg:32 data/units/Wraith.cfg:32
-#, fuzzy
 msgid "wail"
 msgstr "Urlo"
 
 #: data/units/Death_Knight.cfg:3
-#, fuzzy
 msgid "Death Knight"
 msgstr "Cavaliere della Morte"
 
@@ -3991,12 +3876,10 @@ msgstr "ascia da battaglia"
 #: data/units/General.cfg:44 data/units/Lieutenant.cfg:38
 #: data/units/Orcish_Crossbow.cfg:40 data/units/Orcish_Crossbowman.cfg:38
 #: data/units/Sergeant.cfg:38 data/units/Wall_Guard.cfg:35
-#, fuzzy
 msgid "crossbow"
 msgstr "Balestra"
 
 #: data/units/Deathmaster.cfg:3
-#, fuzzy
 msgid "Deathmaster"
 msgstr "Signore della Morte"
 
@@ -4015,7 +3898,6 @@ msgstr ""
 "che ancora vivono."
 
 #: data/units/Demilich.cfg:3
-#, fuzzy
 msgid "Demilich"
 msgstr "Semi Lich"
 
@@ -4033,7 +3915,6 @@ msgstr ""
 "potrebbe diventare un non-morto completo, e spaventare tutti i suoi simili."
 
 #: data/units/Direwolf_Rider.cfg:3
-#, fuzzy
 msgid "Direwolf Rider"
 msgstr "Cavalcatore di Lupi Selvaggi"
 
@@ -4055,12 +3936,10 @@ msgstr ""
 #: data/units/Gryphon_Rider.cfg:19 data/units/Necrophage.cfg:19
 #: data/units/Nightgaunt.cfg:20 data/units/Shadow.cfg:20
 #: data/units/Skeletal_Dragon.cfg:47 data/units/Sleeping_Gryphon.cfg:18
-#, fuzzy
 msgid "claws"
 msgstr "Zanne"
 
 #: data/units/Dragoon.cfg:3
-#, fuzzy
 msgid "Dragoon"
 msgstr "Dragone"
 
@@ -4135,7 +4014,6 @@ msgid "scimitar"
 msgstr ""
 
 #: data/units/Drake_Fire.cfg:4
-#, fuzzy
 msgid "Fire Drake"
 msgstr "Drago di fuoco"
 
@@ -4254,7 +4132,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Duelist.cfg:3
-#, fuzzy
 msgid "Duelist"
 msgstr "Duellante"
 
@@ -4270,12 +4147,10 @@ msgstr ""
 "impugnano la pistola per colpire i nemici distanti."
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
-#, fuzzy
 msgid "rapier"
 msgstr "Spadino"
 
 #: data/units/Dwarvish_Berserker.cfg:3
-#, fuzzy
 msgid "Dwarvish Berserker"
 msgstr "Nano Berseker"
 
@@ -4300,12 +4175,10 @@ msgid "berserker frenzy"
 msgstr "furia berserker"
 
 #: data/units/Dwarvish_Berserker.cfg:29 data/units/Dwarvish_Ulfserker.cfg:29
-#, fuzzy
 msgid "berserk"
 msgstr "Furia"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
-#, fuzzy
 msgid "Dwarvish Dragonguard"
 msgstr "Nano guardia del Drago"
 
@@ -4322,12 +4195,10 @@ msgstr ""
 
 #: data/units/Dwarvish_Dragonguard.cfg:20
 #: data/units/Dwarvish_Dragonguard.cfg:38
-#, fuzzy
 msgid "dragonstaff"
 msgstr "bacchetta del drago"
 
 #: data/units/Dwarvish_Fighter.cfg:3
-#, fuzzy
 msgid "Dwarvish Fighter"
 msgstr "Nano Combattente"
 
@@ -4346,7 +4217,6 @@ msgstr ""
 
 #: data/units/Dwarvish_Fighter.cfg:19 data/units/Revenant.cfg:23
 #: data/units/Skeleton.cfg:24
-#, fuzzy
 msgid "axe"
 msgstr "Ascia"
 
@@ -4376,7 +4246,6 @@ msgstr ""
 "nemico."
 
 #: data/units/Dwarvish_Lord.cfg:3
-#, fuzzy
 msgid "Dwarvish Lord"
 msgstr "Signore dei nani"
 
@@ -4393,9 +4262,8 @@ msgstr ""
 "facendoli combattere meglio."
 
 #: data/units/Dwarvish_Lord.cfg:57
-#, fuzzy
 msgid "hatchet"
-msgstr "Ascia"
+msgstr "Accetta"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 #, fuzzy
@@ -4449,7 +4317,6 @@ msgstr ""
 "la loro robustezza e forza."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
-#, fuzzy
 msgid "Dwarvish Steelclad"
 msgstr "Nano d'acciaio"
 
@@ -4463,7 +4330,6 @@ msgstr ""
 "questo sono chiamati nani d'acciaio."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
-#, fuzzy
 msgid "Dwarvish Thunderer"
 msgstr "Nano tuonante"
 
@@ -4482,12 +4348,10 @@ msgstr ""
 "unici."
 
 #: data/units/Dwarvish_Thunderer.cfg:40
-#, fuzzy
 msgid "thunderstick"
 msgstr "Bastone tonante"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
-#, fuzzy
 msgid "Dwarvish Thunderguard"
 msgstr "Nano guardia del Tuono"
 
@@ -4505,7 +4369,6 @@ msgstr ""
 "piu' letali. "
 
 #: data/units/Dwarvish_Thunderguard.cfg:46
-#, fuzzy
 msgid "dragonstick"
 msgstr "legno del drago"
 
@@ -4515,7 +4378,6 @@ msgid "Dwarvish Ulfserker"
 msgstr "Nano Ulfserker"
 
 #: data/units/Elder_Mage.cfg:3
-#, fuzzy
 msgid "Elder Mage"
 msgstr "Mago Anziano"
 
@@ -4531,12 +4393,10 @@ msgstr ""
 "mago anziano e' temuto nel campo di battaglia da tutti i suoi nemici."
 
 #: data/units/Elder_Mage.cfg:38
-#, fuzzy
 msgid "lightning"
 msgstr "Fulmine"
 
 #: data/units/Elder_Wose.cfg:3
-#, fuzzy
 msgid "Elder Wose"
 msgstr "Wose Anziano"
 
@@ -4562,13 +4422,11 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:3 data/units/Elvish_Avenger.cfg:76
-#, fuzzy
 msgid "Elvish Avenger"
 msgstr "Vendicatore Elfico"
 
 #: data/units/Elvish_Avenger.cfg:18 data/units/Elvish_Avenger.cfg:91
 #: data/units/Elvish_Ranger.cfg:17 data/units/Elvish_Ranger.cfg:94
-#, fuzzy
 msgid "ambush"
 msgstr "imboscata"
 
@@ -4581,7 +4439,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Captain.cfg:3
-#, fuzzy
 msgid "Elvish Captain"
 msgstr "Capitano Elfico"
 
@@ -4598,7 +4455,6 @@ msgstr ""
 "distanza."
 
 #: data/units/Elvish_Champion.cfg:3
-#, fuzzy
 msgid "Elvish Champion"
 msgstr "Campione Elfico"
 
@@ -4615,13 +4471,11 @@ msgstr ""
 "nemici nel combattimento corpo a copro e nel combattimento a distanza."
 
 #: data/units/Elvish_Druid.cfg:3
-#, fuzzy
 msgid "Elvish Druid"
 msgstr "Druido Elfico"
 
 #: data/units/Elvish_Druid.cfg:19 data/units/Elvish_Shyde.cfg:19
 #: data/units/White_Mage.cfg:12 data/units/White_Mage.cfg:71
-#, fuzzy
 msgid "cures"
 msgstr "cura"
 
@@ -4638,12 +4492,10 @@ msgstr ""
 "Elfico."
 
 #: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Shyde.cfg:50
-#, fuzzy
 msgid "ensnare"
 msgstr "Irretire"
 
 #: data/units/Elvish_Druid.cfg:62 data/units/Elvish_Shyde.cfg:70
-#, fuzzy
 msgid "thorns"
 msgstr "Spine"
 
@@ -4661,7 +4513,6 @@ msgstr ""
 
 #: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:43
 #: data/units/Elvish_Sorceress.cfg:65
-#, fuzzy
 msgid "entangle"
 msgstr "Intrappolare"
 
@@ -4671,7 +4522,6 @@ msgid "fey gale"
 msgstr ""
 
 #: data/units/Elvish_Fighter.cfg:3
-#, fuzzy
 msgid "Elvish Fighter"
 msgstr "Combattente Elfico"
 
@@ -4689,7 +4539,6 @@ msgstr ""
 "Gli elfi sono veloci e combattono meglio nella foresta."
 
 #: data/units/Elvish_Hero.cfg:3
-#, fuzzy
 msgid "Elvish Hero"
 msgstr "Eroe Elfico"
 
@@ -4729,7 +4578,6 @@ msgid "shove"
 msgstr "Mosse"
 
 #: data/units/Elvish_Lord.cfg:3
-#, fuzzy
 msgid "Elvish Lord"
 msgstr "Signore Elfico"
 
@@ -4757,19 +4605,16 @@ msgstr ""
 #: data/units/Elvish_Marksman.cfg:37 data/units/Elvish_Marksman.cfg:115
 #: data/units/Elvish_Sharpshooter.cfg:38
 #: data/units/Elvish_Sharpshooter.cfg:117
-#, fuzzy
 msgid "longbow"
 msgstr "Arco lungo"
 
 #: data/units/Elvish_Marksman.cfg:39 data/units/Elvish_Marksman.cfg:117
 #: data/units/Elvish_Sharpshooter.cfg:40
 #: data/units/Elvish_Sharpshooter.cfg:119 data/units/Fire_Dragon.cfg:60
-#, fuzzy
 msgid "marksman"
 msgstr "Tiro di precisione"
 
 #: data/units/Elvish_Marshal.cfg:3
-#, fuzzy
 msgid "Elvish Marshal"
 msgstr "Maresciallo Elfico"
 
@@ -4787,7 +4632,6 @@ msgstr ""
 "anche ben addestrato a combattere sia con la spada che con l'arco."
 
 #: data/units/Elvish_Outrider.cfg:3
-#, fuzzy
 msgid "Elvish Outrider"
 msgstr "Battistrada Elfico"
 
@@ -4803,7 +4647,6 @@ msgstr ""
 "nemici."
 
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
-#, fuzzy
 msgid "Elvish Ranger"
 msgstr "Ranger Elfico"
 
@@ -4816,7 +4659,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Rider.cfg:3
-#, fuzzy
 msgid "Elvish Rider"
 msgstr "Cavalcatore Elfico"
 
@@ -4830,7 +4672,6 @@ msgstr ""
 "negli spazi aperti. Possono anche utilizzare l'arco pur stando a cavallo."
 
 #: data/units/Elvish_Scout.cfg:3
-#, fuzzy
 msgid "Elvish Scout"
 msgstr "Esploratore Elfico"
 
@@ -4845,12 +4686,10 @@ msgstr ""
 "scarso potere nei combattimenti."
 
 #: data/units/Elvish_Shaman.cfg:3
-#, fuzzy
 msgid "Elvish Shaman"
 msgstr "Sciamano Elfico"
 
 #: data/units/Elvish_Shaman.cfg:11 data/units/Paladin.cfg:20
-#, fuzzy
 msgid "heals"
 msgstr "guarigione"
 
@@ -4867,7 +4706,6 @@ msgstr ""
 "guarire con le erbe."
 
 #: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
-#, fuzzy
 msgid "Elvish Sharpshooter"
 msgstr "Magnifico tiratore Elfico"
 
@@ -4880,7 +4718,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Shyde.cfg:3
-#, fuzzy
 msgid "Elvish Shyde"
 msgstr "Elvish Shyde"
 
@@ -4930,7 +4767,6 @@ msgid "gossamer"
 msgstr ""
 
 #: data/units/Fencer.cfg:3
-#, fuzzy
 msgid "Fencer"
 msgstr "Schermidore"
 
@@ -4948,7 +4784,6 @@ msgstr ""
 "tutti i tipi di attacchi abbastanza facilmente."
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
-#, fuzzy
 msgid "Fighter"
 msgstr "Combattente"
 
@@ -4964,9 +4799,8 @@ msgstr ""
 "potenziale per divenire un giorno un grande guerriero."
 
 #: data/units/Fire_Dragon.cfg:3
-#, fuzzy
 msgid "Fire Dragon"
-msgstr "Fire Dragon"
+msgstr "Drago di Fuoco"
 
 #: data/units/Fire_Dragon.cfg:17
 #, fuzzy
@@ -4984,7 +4818,6 @@ msgstr ""
 "they help lead to victory."
 
 #: data/units/Fire_Dragon.cfg:21
-#, fuzzy
 msgid "bite"
 msgstr "Morso"
 
@@ -4994,9 +4827,8 @@ msgid "tail"
 msgstr "tail"
 
 #: data/units/Fireball.cfg:4
-#, fuzzy
 msgid "Fireball"
-msgstr "Fireball"
+msgstr "Palla di fuoco"
 
 #: data/units/Fireball.cfg:16
 #, fuzzy
@@ -5021,29 +4853,24 @@ msgstr ""
 
 #: data/units/Footpad.cfg:19 data/units/Thug.cfg:19 data/units/Troll.cfg:20
 #: data/units/Troll_Hero.cfg:20
-#, fuzzy
 msgid "club"
 msgstr "Clava"
 
 #: data/units/Footpad.cfg:37 data/units/Outlaw.cfg:38
 #: data/units/Outlaw.cfg:111 data/units/Outlaw_Princess.cfg:41
 #: data/units/Outlaw_Queen.cfg:42 data/units/Troll_Rocklobber.cfg:38
-#, fuzzy
 msgid "sling"
 msgstr "Fionda"
 
 #: data/units/Galleon.cfg:4
-#, fuzzy
 msgid "Galleon"
 msgstr "Galeone"
 
 #: data/units/Galleon.cfg:17
-#, fuzzy
 msgid "dummy"
 msgstr "Fantoccio"
 
 #: data/units/Gate.cfg:3
-#, fuzzy
 msgid "Gate"
 msgstr "Portone"
 
@@ -5053,7 +4880,6 @@ msgid "bump"
 msgstr "bump"
 
 #: data/units/General.cfg:3
-#, fuzzy
 msgid "General"
 msgstr "Generale"
 
@@ -5071,7 +4897,6 @@ msgstr ""
 "efficienza durante il combattimento."
 
 #: data/units/Ghost.cfg:3
-#, fuzzy
 msgid "Ghost"
 msgstr "Fantasma"
 
@@ -5088,7 +4913,6 @@ msgstr ""
 "morti possono volare verso le loro vittime."
 
 #: data/units/Ghoul.cfg:3
-#, fuzzy
 msgid "Ghoul"
 msgstr "Divoratore di cadaveri"
 
@@ -5140,7 +4964,6 @@ msgstr ""
 "saggio avvicinarsi troppo a questi enormi aracnidi."
 
 #: data/units/Giant_Scorpion.cfg:19
-#, fuzzy
 msgid "sting"
 msgstr "Pungiglione"
 
@@ -5168,7 +4991,6 @@ msgid "firststrike"
 msgstr "attacco improvviso"
 
 #: data/units/Goblin_Knight.cfg:3
-#, fuzzy
 msgid "Goblin Knight"
 msgstr "Cavaliere Goblin"
 
@@ -5182,7 +5004,6 @@ msgstr ""
 "grande velocita', superando i suoi corrispettivi Umani ed Elfici."
 
 #: data/units/Goblin_Pillager.cfg:3
-#, fuzzy
 msgid "Goblin Pillager"
 msgstr "Saccheggiatore Goblin"
 
@@ -5197,7 +5018,6 @@ msgstr ""
 "goblin procurano guai ai loro nemici."
 
 #: data/units/Goblin_Pillager.cfg:19
-#, fuzzy
 msgid "torch"
 msgstr "Torcia"
 
@@ -5221,7 +5041,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Grand_Knight.cfg:3
-#, fuzzy
 msgid "Grand Knight"
 msgstr "Gran Cavaliere"
 
@@ -5236,12 +5055,10 @@ msgstr ""
 
 #: data/units/Grand_Knight.cfg:36 data/units/Knight.cfg:36
 #: data/units/Lancer.cfg:20 data/units/Paladin.cfg:41
-#, fuzzy
 msgid "lance"
 msgstr "Lancia"
 
 #: data/units/Great_Mage.cfg:3 data/units/Great_Mage.cfg:79
-#, fuzzy
 msgid "Great Mage"
 msgstr "Grande Mago"
 
@@ -5264,7 +5081,6 @@ msgstr "Grande Troll"
 #: data/units/Troll.cfg:7 data/units/Troll_Hero.cfg:7
 #: data/units/Troll_Rocklobber.cfg:7 data/units/Troll_Warrior.cfg:6
 #: data/units/Troll_Whelp.cfg:7
-#, fuzzy
 msgid "regenerates"
 msgstr "rigenerazione"
 
@@ -5279,7 +5095,6 @@ msgstr ""
 "loro ferite anche durante la battaglia."
 
 #: data/units/Gryphon.cfg:3
-#, fuzzy
 msgid "Gryphon"
 msgstr "Grifone"
 
@@ -5295,7 +5110,6 @@ msgstr ""
 "disturbati senza una buona ragione."
 
 #: data/units/Gryphon_Master.cfg:3
-#, fuzzy
 msgid "Gryphon Master"
 msgstr "Signore dei Grifoni"
 
@@ -5311,7 +5125,6 @@ msgstr ""
 "queste creature possono sempre colpirli in ogni luogo."
 
 #: data/units/Gryphon_Rider.cfg:3
-#, fuzzy
 msgid "Gryphon Rider"
 msgstr "Cavalcatore di Grifoni"
 
@@ -5327,7 +5140,6 @@ msgstr ""
 "nuovo mondo dei cieli."
 
 #: data/units/Halbardier.cfg:3
-#, fuzzy
 msgid "Halbardier"
 msgstr "Alabardiere"
 
@@ -5344,12 +5156,10 @@ msgstr ""
 "mortali."
 
 #: data/units/Halbardier.cfg:18 data/units/Halbardier.cfg:36
-#, fuzzy
 msgid "halberd"
 msgstr "alabarda"
 
 #: data/units/Heavy_Infantryman.cfg:3
-#, fuzzy
 msgid "Heavy Infantryman"
 msgstr "Fanteria Pesante"
 
@@ -6740,7 +6550,6 @@ msgstr ""
 "delle loro vittime recuperando la vitalita' asportata da costoro."
 
 #: data/units/Vampire_Lady.cfg:3
-#, fuzzy
 msgid "Vampire Lady"
 msgstr "Dama Vampira"
 
@@ -6964,7 +6773,7 @@ msgstr ""
 
 #: src/about.cpp:53
 msgid "+Developers"
-msgstr ""
+msgstr "Sviluppatori"
 
 #: src/about.cpp:67
 msgid "+General Purpose Administrators"
@@ -6972,11 +6781,11 @@ msgstr ""
 
 #: src/about.cpp:72
 msgid "+Artwork and graphics designers"
-msgstr ""
+msgstr "Artisti e disegnatori della grafica"
 
 #: src/about.cpp:95
 msgid "+Music"
-msgstr ""
+msgstr "Musiche"
 
 #: src/about.cpp:102
 #, fuzzy
@@ -6993,79 +6802,81 @@ msgstr ""
 
 #: src/about.cpp:125
 msgid "+Internationalization Manager"
-msgstr ""
+msgstr "+Responsabile per l'internazionalizzazione"
 
 #: src/about.cpp:129
+#, fuzzy
 msgid "+Basque Translation"
-msgstr ""
+msgstr "+Traduzione in Danese"
 
 #: src/about.cpp:133
 msgid "+Catalan Translation"
-msgstr ""
+msgstr "+Traduzione in Catalano"
 
 #: src/about.cpp:138
 msgid "+Czech Translation"
-msgstr ""
+msgstr "+Traduzione in lingua Ceca"
 
 #: src/about.cpp:147
 msgid "+Danish Translation"
-msgstr ""
+msgstr "+Traduzione in Danese"
 
 #: src/about.cpp:152
 msgid "+Dutch Translation"
-msgstr ""
+msgstr "+Traduzione in Olandese"
 
 #: src/about.cpp:157
 msgid "+Finnish Translation"
-msgstr ""
+msgstr "+Traduzione in Finlandese"
 
 #: src/about.cpp:161
 msgid "+French Translation"
-msgstr ""
+msgstr "+Traduzione in Francese"
 
 #: src/about.cpp:173
 msgid "+German Translation"
-msgstr ""
+msgstr "+Traduzione in Tedesco"
 
 #: src/about.cpp:183
 msgid "+Hungarian Translation"
-msgstr ""
+msgstr "+Traduzione in Ungherese"
 
 #: src/about.cpp:188
 msgid "+Italian Translation"
-msgstr ""
+msgstr "+Traduzione in Italiano"
 
 #: src/about.cpp:195
 msgid "+Norwegian Translation"
-msgstr ""
+msgstr "+Traduzione in Norvegese"
 
 #: src/about.cpp:201
 msgid "+Polish Translation"
-msgstr ""
+msgstr "+Traduzione in Polacco"
 
 #: src/about.cpp:207
+#, fuzzy
 msgid "+Portuguese (Brazil) Translation"
-msgstr ""
+msgstr "+Traduzione in Portoghese"
 
 #: src/about.cpp:215
 msgid "+Slovak Translation"
-msgstr ""
+msgstr "+Traduzione in Slovacco"
 
 #: src/about.cpp:219
 msgid "+Spanish Translation"
-msgstr ""
+msgstr "+Traduzione in Spagnolo"
 
 #: src/about.cpp:227
 msgid "+Swedish Translation"
-msgstr ""
+msgstr "+Traduzione in Svedese"
 
 #: src/about.cpp:234
 msgid "+Contributors"
-msgstr ""
+msgstr "+Contributori"
 
 #: src/about.cpp:242
 msgid "+ Bots"
-msgstr ""
+msgstr "+Bots"
 
 #: src/about.cpp:269 src/help.cpp:2373 src/show_dialog.cpp:472
 msgid "Close"
@@ -7102,7 +6913,7 @@ msgstr "vulnerabilità dell'attaccante vs"
 
 #: src/actions.cpp:363 src/actions.cpp:481 src/actions.cpp:490
 msgid "Doubled"
-msgstr ""
+msgstr "Raddoppiato"
 
 #: src/actions.cpp:391 src/actions.cpp:526
 msgid "total damage"
@@ -7177,7 +6988,7 @@ msgstr "Salva Partita"
 
 #: src/dialogs.cpp:176
 msgid "Overwrite?"
-msgstr ""
+msgstr "Sovrascrivo?"
 
 #: src/dialogs.cpp:177
 msgid "Save already exists. Do you want to overwrite it ?"
@@ -7313,7 +7124,7 @@ msgstr "invisibile"
 
 #: src/font.cpp:169
 msgid "Vera.ttf"
-msgstr ""
+msgstr "Vera.ttf"
 
 #: src/game.cpp:138
 msgid "Do you want to save a replay of this scenario?"
@@ -7392,7 +7203,7 @@ msgstr "Impossibile connettersi all'host remoto"
 #: src/game.cpp:1170 src/game.cpp:1172 src/playturn.cpp:1396
 #: src/playturn.cpp:1410
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 #: src/game.cpp:1003
 msgid "Awaiting response from server"
@@ -7412,9 +7223,8 @@ msgid "Publish campaign: "
 msgstr "Capitano Elfico"
 
 #: src/game.cpp:1045
-#, fuzzy
 msgid "Delete campaign: "
-msgstr "Campagna"
+msgstr ""
 
 #: src/game.cpp:1049
 #, fuzzy
@@ -8315,6 +8125,8 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"I nomi dei salvataggi non possono contenere due punti, slashes o "
+"blackslashes. Per favore, scegli un nome differente."
 
 #: src/playturn.cpp:1407
 #, fuzzy
@@ -8449,7 +8261,7 @@ msgstr "Cerca"
 
 #: src/playturn.cpp:2142
 msgid "prompt^Command:"
-msgstr "prompt^Comando:"
+msgstr "Comando:"
 
 #: src/playturn.cpp:2153
 msgid "Chat Log"
@@ -8577,35 +8389,35 @@ msgstr "Versione"
 
 #: src/titlescreen.cpp:162
 msgid "TitleScreen button^Tutorial"
-msgstr "TitleScreen button^Introduzione"
+msgstr "Introduzione"
 
 #: src/titlescreen.cpp:163
 msgid "TitleScreen button^Campaign"
-msgstr "TitleScreen button^Campagna"
+msgstr "Campagna"
 
 #: src/titlescreen.cpp:164
 msgid "TitleScreen button^Multiplayer"
-msgstr "TitleScreen button^Multiplayer"
+msgstr "Multiplayer"
 
 #: src/titlescreen.cpp:165
 msgid "TitleScreen button^Load"
-msgstr "TitleScreen button^Carica"
+msgstr "Carica"
 
 #: src/titlescreen.cpp:166
 msgid "TitleScreen button^Language"
-msgstr "TitleScreen button^Languaggio"
+msgstr "Linguaggio"
 
 #: src/titlescreen.cpp:167
 msgid "TitleScreen button^Preferences"
-msgstr "TitleScreen button^Preferenze"
+msgstr "Preferenze"
 
 #: src/titlescreen.cpp:168
 msgid "TitleScreen button^About"
-msgstr "TitleScreen button^A Proposito"
+msgstr "A Proposito"
 
 #: src/titlescreen.cpp:169
 msgid "TitleScreen button^Quit"
-msgstr "TitleScreen button^Esci"
+msgstr "Esci"
 
 #: src/titlescreen.cpp:170
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -8678,25 +8490,62 @@ msgstr "Cancella File"
 msgid "Deletion of the file failed."
 msgstr "Eliminazione del file non riuscita."
 
-#, fuzzy
-#~ msgid "sword "
-#~ msgstr "Spada"
+#~ msgid "Heir to the Throne"
+#~ msgstr "L'erede al trono"
+
+#~ msgid ""
+#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
+#~ "champion.png,Champion,(hardest)"
+#~ msgstr ""
+#~ "&elvish-fighter.png,Combattente,(facile);*&elvish-hero.png,Eroe;&elvish-"
+#~ "champion.png,Campione,(difficile)"
+
+#~ msgid "The Dark Hordes"
+#~ msgstr "Le orde oscure"
+
+#~ msgid ""
+#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
+#~ "&undead-lich.png,Dark Lord,(hardest)"
+#~ msgstr ""
+#~ "&undead-adept.png,Appredista,(facile);*&undead-necromancer.png,Maestro;"
+#~ "&undead-lich.png,Signore dell'Oscurità,(difficile)"
+
+#~ msgid "Son of the Black Eye (chapter I)"
+#~ msgstr "Il figlio di Black Eye (capitolo I)"
+
+#~ msgid ""
+#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
+#~ "warlord.png,Warlord,(hardest)"
+#~ msgstr ""
+#~ "&orcish-grunt.png,Grunt,(facile);*&orcish-warrior.png,Guerriero;&orcish-"
+#~ "warlord.png,Signore della Guerra,(difficile)"
+
+#~ msgid "The Eastern Invasion"
+#~ msgstr "L'invazione dell'Est"
 
 #, fuzzy
-#~ msgid "blade "
-#~ msgstr "lama"
+#~ msgid ""
+#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
+#~ "&human-royalguard.png,Royal Guard,(hardest)"
+#~ msgstr ""
+#~ "&human-spearman.png,Spearman,(facile);*&human-swordman.png,Swordsman;"
+#~ "&human-royalguard.png,Guardia Reale,(difficile)"
 
-#, fuzzy
-#~ msgid "spear "
-#~ msgstr "Arpione"
+#~ msgid "The Rise of Wesnoth"
+#~ msgstr "L'Ascesa di Wesnoth"
 
-#, fuzzy
-#~ msgid "pierce "
-#~ msgstr "perforazione"
+#~ msgid ""
+#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
+#~ "&noble-lord.png,Lord,(hardest)"
+#~ msgstr ""
+#~ "&noble-fighter.png,Combattente,(facile);*&noble-commander.png,Comandante;"
+#~ "&noble-lord.png,Signore,(difficile)"
 
-#, fuzzy
-#~ msgid "first strike "
-#~ msgstr "attacco improvviso"
+#~ msgid "hp"
+#~ msgstr "ps"
+
+#~ msgid "xp"
+#~ msgstr "pe"
 
 #, fuzzy
 #~ msgid ""
@@ -8751,13 +8600,15 @@ msgstr "Eliminazione del file non riuscita."
 #~ msgid "Drake Warmage"
 #~ msgstr "Drago Mago da Guerra"
 
-#, fuzzy
 #~ msgid "Drake Worker"
 #~ msgstr "Drago Lavoratore"
 
 #, fuzzy
 #~ msgid "More advanced Drakes, the Workers fight with their own sharp claws."
 #~ msgstr "More advanced Drakes, the Workers fight with their own sharp claws."
+
+#~ msgid "+Brazilian Translation"
+#~ msgstr "+Traduzione in Brasiliano"
 
 #, fuzzy
 #~ msgid "Save"
@@ -8766,9 +8617,6 @@ msgstr "Eliminazione del file non riuscita."
 #, fuzzy
 #~ msgid "Quit?"
 #~ msgstr "Esci"
-
-#~ msgid "Recruit unit"
-#~ msgstr "Recluta unità"
 
 #~ msgid "You must have at least"
 #~ msgstr "Devi avere almeno"
@@ -8781,60 +8629,3 @@ msgstr "Eliminazione del file non riuscita."
 
 #~ msgid "Allied"
 #~ msgstr "Alleato"
-
-#~ msgid "Heir to the Throne"
-#~ msgstr "L'erede al trono"
-
-#~ msgid ""
-#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-#~ "champion.png,Champion,(hardest)"
-#~ msgstr ""
-#~ "&elvish-fighter.png,Combattente,(facile);*&elvish-hero.png,Eroe;&elvish-"
-#~ "champion.png,Campione,(difficile)"
-
-#~ msgid "The Dark Hordes"
-#~ msgstr "Le orde oscure"
-
-#, fuzzy
-#~ msgid ""
-#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
-#~ "&undead-lich.png,Dark Lord,(hardest)"
-#~ msgstr ""
-#~ "&undead-adept.png,Appredista,(facile);*&undead-necromancer.png,Maestro;"
-#~ "&undead-lich.png,Signore dell'Oscurita',(difficile)"
-
-#, fuzzy
-#~ msgid "Son of the Black Eye (chapter I)"
-#~ msgstr "Il figlio di Black Eye"
-
-#, fuzzy
-#~ msgid ""
-#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
-#~ "warlord.png,Warlord,(hardest)"
-#~ msgstr ""
-#~ "&orcish-grunt.png,Grunt,(facile);*&orcish-warrior.png,Guerriero;&orcish-"
-#~ "warlord.png,Signore della Guerra,(difficile)"
-
-#, fuzzy
-#~ msgid "The Eastern Invasion"
-#~ msgstr "L'invazione dell'Est (beta release)"
-
-#, fuzzy
-#~ msgid ""
-#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
-#~ "&human-royalguard.png,Royal Guard,(hardest)"
-#~ msgstr ""
-#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
-#~ "&human-royalguard.png,Royal Guard,(hardest)"
-
-#, fuzzy
-#~ msgid "The Rise of Wesnoth"
-#~ msgstr "The Rise of Wesnoth"
-
-#, fuzzy
-#~ msgid ""
-#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
-#~ "&noble-lord.png,Lord,(hardest)"
-#~ msgstr ""
-#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
-#~ "&noble-lord.png,Lord,(hardest)"
