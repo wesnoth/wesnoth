@@ -69,7 +69,7 @@ void show_about(display& disp)
 	text.push_back("David White (Sirp)");
 	text.push_back("-main developer");
 	text.push_back("-scenario designer");
-	text.push_back("Francisco Mu√±oz (fmunoz)");
+	text.push_back("Francisco MuÒoz (fmunoz)");
 	text.push_back("-artwork and graphics designer");
 	text.push_back("- ");
 	text.push_back("- ");
@@ -96,7 +96,7 @@ void show_about(display& disp)
 	text.push_back("-web developer");
 	text.push_back("Johanna Manninen (lohari)");
 	text.push_back("-artwork and graphics designer");
-	text.push_back("Jord√† Polo (ettin)");
+	text.push_back("Jord‡† Polo (ettin)");
 	text.push_back("-web developer");
 	text.push_back("-artwork and graphics designer");
 	text.push_back("Joseph Toscano (zhaymusic.com)");
