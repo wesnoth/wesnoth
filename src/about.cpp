@@ -158,7 +158,7 @@ std::vector<std::string> get_text() {
  
  	text.push_back("+Hungarian Translation");
  	text.push_back("-   Khiraly");
- 	text.push_back("-   Sz�l Tam� (TomJoad)");
+ 	text.push_back("-   Széll Tamás (TomJoad)");
  	text.push_back("+ ");
  
  	text.push_back("+Italian Translation");
@@ -190,7 +190,7 @@ std::vector<std::string> get_text() {
  
  	text.push_back("+Spanish Translation");
  	text.push_back("-   Franciso Muñoz (fmunoz)");
- 	text.push_back("-   Gabriel Rodr�uez (Chewie))");
+ 	text.push_back("-   Gabriel Rodríguez (Chewie))");
  	text.push_back("-   Jose Gordillo (kilder)");
  	text.push_back("-   Jose Manuel Gomez (joseg)");
  	text.push_back("+ ");
