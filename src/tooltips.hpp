@@ -1,9 +1,11 @@
 #ifndef TOOLTIPS_HPP_INCLUDED
 #define TOOLTIPS_HPP_INCLUDED
 
-class CVideo;
-
 #include "SDL.h"
+
+#include <string>
+
+class CVideo;
 
 namespace tooltips {
 

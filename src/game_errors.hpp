@@ -14,6 +14,8 @@
 #ifndef GAME_ERRORS_HPP_INCLUDED
 #define GAME_ERRORS_HPP_INCLUDED
 
+#include <string>
+
 namespace game {
 struct error {
 	error() {}

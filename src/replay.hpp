@@ -13,13 +13,13 @@
 #ifndef REPLAY_H_INCLUDED
 #define REPLAY_H_INCLUDED
 
-class display;
-class gamestatus;
-
 #include "config.hpp"
+#include "gamestatus.hpp"
 #include "map.hpp"
 #include "random.hpp"
 #include "unit.hpp"
+
+class display;
 
 struct verification_manager
 {

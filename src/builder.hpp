@@ -13,14 +13,16 @@
 #ifndef BUILDER_H_INCLUDED
 #define BUILDER_H_INCLUDED
 
-class config;
+#include "animated.hpp"
 #include "image.hpp"
 #include "map.hpp"
-#include "animated.hpp"
 #include "SDL.h"
 
-#include <string>
 #include <map>
+#include <set>
+#include <string>
+
+class config;
 
 /**
  * The class terrain_builder is constructed from a config object, and a gamemap

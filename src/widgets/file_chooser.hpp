@@ -18,6 +18,8 @@
 #include "textbox.hpp"
 #include "widget.hpp"
 
+class display;
+
 namespace gui {
 
 /// A widget where the user may navigate through directories and choose

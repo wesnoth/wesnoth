@@ -2,7 +2,6 @@
 #define IMAGE_HPP_INCLUDED
 
 #include "map.hpp"
-#include "unit.hpp"
 #include "sdl_utils.hpp"
 
 #include "SDL.h"

@@ -13,6 +13,8 @@
 #ifndef VARIABLE_H_INCLUDED
 #define VARIABLE_H_INCLUDED
 
+#include <string>
+
 class config;
 
 namespace game_events {
