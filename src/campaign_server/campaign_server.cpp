@@ -104,6 +104,7 @@ void campaign_server::run()
 							campaign = &campaigns().add_child("campaign");
 						}
 
+						(*campaign)["title"] = (*upload)["title"];
 						(*campaign)["name"] = (*upload)["name"];
 						(*campaign)["filename"] = (*upload)["name"];
 						(*campaign)["passphrase"] = (*upload)["passphrase"];
