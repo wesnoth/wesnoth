@@ -665,7 +665,17 @@ int play_game(int argc, char** argv)
 			std::vector<std::string> campaign_names;
 
 			for(config::const_child_iterator i = campaigns.first; i != campaigns.second; ++i) {
-				campaign_names.push_back(translate_string_default((**i)["id"],(**i)["name"]));
+				std::stringstream str;
+				const std::string& icon = (**i)["icon"];
+				if(icon == "") {
+					str << " ,";
+				} else {
+					str << "&" << icon << ",";
+				}
+
+				str << translate_string_default((**i)["id"],(**i)["name"]);
+
+				campaign_names.push_back(str.str());
 			}
 
 			if(campaign_names.empty()) {

@@ -394,6 +394,8 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 			current_paths_ = paths();
 			current_route_.steps.clear();
 			gui_.set_route(NULL);
+
+			cursor::set(cursor::NORMAL);
 		} else {
 			const theme::menu* const m = gui_.get_theme().context_menu();
 			if(m != NULL) {
