@@ -45,14 +45,13 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 		       bool join, const std::string& default_controller) : 
 	    disp_(&disp), cfg_(&cfg), data_(&data), state_(&state),
 	    show_replay_(false), save_(false), join_(join),
-	    player_types_(), player_races_(), player_teams_(),
-	    player_colors_(), scroll_pane_(disp), combos_type_(), combos_race_(),
-	    combos_leader_(), combos_team_(), combos_color_(), sliders_gold_(),
+	    scroll_pane_(disp),
 	    ai_(disp, _(" Computer vs Computer ")),
 	    launch_(disp, _("I'm Ready")),
 	    cancel_(disp, _("Cancel")),
 	    waiting_label_(disp, ""),
-	    message_full_(true), default_controller_(default_controller)
+	    message_full_(true), default_controller_(default_controller),
+	    team_prefix_(_("Team") + std::string(" "))
 {
 	// Send Initial information
 	config response;
@@ -288,14 +287,24 @@ void mp_connect::lists_init()
 	//Teams
 	config::child_iterator sd;
 	for(sd = sides.first; sd != sides.second; ++sd) {
-		const int team_num = sd - sides.first;
+		const int side_num = (sd - sides.first) + 1;
+		(**sd)["colour"] = lexical_cast_default<std::string>(side_num);
+      
 		std::string& team_name = (**sd)["team_name"];
-		if(team_name.empty()) {
-			team_name = lexical_cast<std::string>(team_num+1);
+		if (team_name.empty())
+			team_name = lexical_cast<std::string>(side_num);
+      
+		const std::vector<std::string>::iterator result = 
+			std::find(player_teams_.begin(), player_teams_.end(),
+			          team_prefix_ + team_name);
+		
+		if (result == player_teams_.end()) {
+			player_teams_.push_back(team_prefix_ + team_name);
+			team_names_.push_back(team_name);
+			team_indices_.push_back(player_teams_.size() - 1);
+		} else {
+			team_indices_.push_back(result - player_teams_.begin());
 		}
-
-		player_teams_.push_back(_("Team") + std::string(" ") + team_name);
-		(**sd)["colour"] = lexical_cast_default<std::string>(team_num+1);
 
 		player_leaders_.push_back(leader_list_manager(possible_sides, data_));
 	}
@@ -438,7 +447,7 @@ void mp_connect::set_area(const SDL_Rect& rect)
 
 		//Player team
 		combos_team_.push_back(gui::combo(*disp_, player_teams_));
-		combos_team_.back().set_selected(combo_index_to_team(side_num));
+		combos_team_.back().set_selected(team_indices_[ side_num ]);
 
 		//Player color
 		combos_color_.push_back(gui::combo(*disp_, player_colors_));
@@ -684,9 +693,7 @@ lobby::RESULT mp_connect::process()
 
 		//Player team
 		if (combos_team_[n].changed()) {
-			std::stringstream str;
-			str << (combo_index_to_team(combos_team_[n].selected())+1);
-			side["team_name"] = str.str();
+			side["team_name"] = team_names_[combos_team_[n].selected()];
 			level_changed = true;
 		}
 
@@ -1038,16 +1045,4 @@ bool mp_connect::is_full()
 	}
 
 	return full;
-}
-
-size_t mp_connect::combo_index_to_team(size_t index) const
-{
-	//in the case of loading a game, we may have the same team repeated multiple times in the list
-	//of team options. This function maps all such indexes to the same number, by using the first
-	//team of that name.
-	if(index >= player_teams_.size()) {
-		return 0;
-	}
-
-	return std::find(player_teams_.begin(),player_teams_.end(),player_teams_[index]) - player_teams_.begin();
 }

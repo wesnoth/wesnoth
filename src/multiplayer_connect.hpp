@@ -92,6 +92,9 @@ private:
 	//std::vector<std::vector<std::string> > player_leaders_;
 	std::vector<leader_list_manager> player_leaders_;
 
+	std::vector<std::string> team_names_;
+	std::vector<int> team_indices_;
+
 	gui::scrollpane scroll_pane_;
 
 	std::vector<gui::label> player_numbers_;
@@ -113,6 +116,7 @@ private:
 	std::deque<config> network_data_;
 
 	const std::string default_controller_;
+	const std::string team_prefix_;
 };
 
 #endif
