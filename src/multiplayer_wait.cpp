@@ -196,27 +196,6 @@ void wait::join_game(bool observe)
 		}
 		const bool allow_changes = (*sides_list[side_choice])["allow_changes"] != "no";
 
-		const std::string& era = level_["era"];
-		const config* const era_cfg = game_config().find_child("era","id",era);
-		if(era_cfg == NULL) {
-			set_result(QUIT);
-			throw network::error(_("Era not available"));
-			return;
-		}
-		era_sides_ = *era_cfg;
-
-		const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
-		if(possible_sides.empty()) {
-			set_result(QUIT);
-			throw network::error(_("No multiplayer sides found"));
-			return;
-		}
-
-		std::vector<std::string> choices;
-		for(config::child_list::const_iterator side =
-				possible_sides.begin(); side != possible_sides.end(); ++side) {
-			choices.push_back((**side)["name"]);
-		}
 
 		//if the client is allowed to choose their team, instead of having
 		//it set by the server, do that here.
@@ -224,17 +203,36 @@ void wait::join_game(bool observe)
 		size_t faction_choice = 0;
 
 		if(allow_changes) {
+			const config* era = level_.child("era");
+			if(era == NULL)
+				throw network::error(_("Era not available"));
+			const config::child_list& possible_sides = 
+				era->get_children("multiplayer_side");
+			if(possible_sides.empty()) {
+				set_result(QUIT);
+				throw network::error(_("No multiplayer sides found"));
+				return;
+			}
+
+			std::vector<std::string> choices;
+			for(config::child_list::const_iterator side =
+					possible_sides.begin(); side != 
+					possible_sides.end(); ++side) {
+				choices.push_back((**side)["name"]);
+			}
+
 			std::vector<gui::preview_pane* > preview_panes;
-			leader_preview_pane leader_selector(disp(), &game_data_, possible_sides);
+			leader_preview_pane leader_selector(disp(), &game_data_, 
+					possible_sides);
 			preview_panes.push_back(&leader_selector);
 
-			faction_choice = size_t(gui::show_dialog(disp(), NULL, "", _("Choose your side:"),
+			faction_choice = size_t(gui::show_dialog(disp(), NULL, "",
+						_("Choose your side:"),
 						gui::OK_ONLY, &choices, &preview_panes));
 			leader_choice = leader_selector.get_selected_leader();
-		}
 
-		wassert(faction_choice < possible_sides.size());
-		//team_ = faction_choice;
+			wassert(faction_choice < possible_sides.size());
+		}
 
 		config response;
 		response["side"] = lexical_cast<std::string>(side_choice + 1);
@@ -270,8 +268,6 @@ void wait::start_game()
 		}
 	}
 
-	// FIXME: To be reviewed
-	
 	//any replay data is only temporary and should be removed from
 	//the level data in case we want to save the game later
 	config* const replay_data = level_.child("replay");
@@ -368,15 +364,8 @@ void wait::generate_menu()
 
 		std::string description = sd["description"];
 		const std::string faction_id = sd["id"];
-		const config* const faction_cfg = 
-			era_sides_.find_child("multiplayer_side", "id", faction_id);
-		std::string side_name;
-		if (faction_cfg != NULL) {
-			side_name = (*faction_cfg)["name"];
-		} else {
-			side_name = sd["name"];
-		}
-		
+
+		t_string side_name = sd["name"];
 		std::string leader_type = sd["type"];
 
 		// Hack: if there is a unit which can recruit, use it as a
@@ -405,10 +394,11 @@ void wait::generate_menu()
 		if (!leader_image.empty()) {
 			// Dumps the "image" part of the faction name, if any,
 			// to replace it by a picture of the actual leader
-			if(side_name[0] == font::IMAGE) {
-				std::string::size_type p = side_name.find_first_of(COLUMN_SEPARATOR);
+			if(side_name.str()[0] == font::IMAGE) {
+				std::string::size_type p = 
+					side_name.str().find_first_of(COLUMN_SEPARATOR);
 				if(p != std::string::npos && p < side_name.size()) {
-					side_name = IMAGE_PREFIX + leader_image + COLUMN_SEPARATOR + side_name.substr(p+1);
+					side_name = IMAGE_PREFIX + leader_image + COLUMN_SEPARATOR + side_name.str().substr(p+1);
 				}
 			}
 		}

@@ -123,8 +123,12 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	}
 	era_combo_.set_items(eras);
 
-	if (size_t(preferences::era()) < eras.size())
+	if (size_t(preferences::era()) < eras.size()) {
 		era_combo_.set_selected(preferences::era());
+	} else {
+		era_combo_.set_selected(0);
+	}
+			
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();

@@ -610,7 +610,18 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const config current_stats = statistics::write_stats();
 			if(current_stats != statistics::replay_verify_stats) {
 				ERR_NW << "replay statistics verification failed\n";
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				//Disabling because it breaks multiplayer.
+				//Apparently, statistics::replay_verify_stats
+				//is only written to in game::load_game() (!)
+				//Re-enable when fixed / if I am wrong.
+				//
+				//By the way, making a "config" object global
+				//is highly objectable IMO.
+				//
+				// --Ayin 30 mar. 2005
+				//
+				//if (!game_config::ignore_replay_errors) 
+				//	throw replay::error();
 			}
 			return false;
 		}

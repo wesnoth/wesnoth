@@ -825,6 +825,7 @@ void connect::lists_init()
 	}
 
 	era_sides_ = era_cfg->get_children("multiplayer_side");
+	level_.add_child("era", *era_cfg);
 
 	for(std::vector<config*>::const_iterator faction = era_sides_.begin(); faction != era_sides_.end(); ++faction) {
 		player_factions_.push_back((**faction)["name"]);

@@ -15,7 +15,6 @@
 #include <map>
 
 #include "tstring.hpp"
-#include "wassert.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
@@ -27,6 +26,7 @@ namespace {
 	const char UNTRANSLATABLE_PART = 0x02;
 	const char TEXTDOMAIN_SEPARATOR = 0x03;
 	const char ID_TRANSLATABLE_PART = 0x04;
+	const char UNTRANSLATABLE_STRING = 0x05;
 
 	std::vector<std::string> id_to_textdomain;
 	std::map<std::string, unsigned int> textdomain_to_id;
