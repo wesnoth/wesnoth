@@ -1,4 +1,4 @@
-CVS HEAD:
+Version 0.7.9:
  * new campaign: The Eastern Invasion (Loyalists, 15 scenarios)
  * compiling requires SDL version >= 1.2.7
  * user interface improvements:
@@ -91,9 +91,7 @@ CVS HEAD:
    * new brush image, file chooser folder image
    * changed menu names to 'file' and 'edit'
    * delete file button in file chooser
-   * changed the color to magenta when the same terrain is selected as both foreground and background
    * two terrains may now be selected in the palette, one is used for filling when moving selections and cutting/pasting and will be used when drawing with the right button
-   * a square is now drawn around the currently selected function for the left mouse button
    * removed context menu, function of the left button is chosen in the right panel and operations that do not need a location to work are chosen from an additional menu
    * added a new level of brightened images
    * support for translations
@@ -114,13 +112,12 @@ CVS HEAD:
  * fixed loading/saving of multiplayer games that have a double-quote (") in the chat text
  * fixed spaces following non-ASCII characters disappearing in intro (#9163)
  * fixed clashing IDs in 'Blackwater Port'
- * fixed missing #endifs in 'Brother Against Brother' and 'Crelanus Book'
  * fixed a bug where alpha disappeared from multi-hex .png files on loading sub-tiles.
  * fixed terrain not updating correctly when dynamicly changed via the WML [terrain] event (#9237)
  * fixed the "random probability" in "terrain-graphics" rules not being random enough
  * fixed builder code failing when asked for hexed outside the map (#9168)
  * fixed crash when undoing moves
- * fixed migration of haloes
+ * fixed incorrect positioning of haloes
  * fixed crash in wesnothd
  * made intro.cpp use the unicode routines in language.cpp to split UTF-8 sequences in character
  * added support for animated on-map items
@@ -136,7 +133,7 @@ CVS HEAD:
  * increased the horizontal padding of button widgets when having a label that is wider than the minimum width
  * added a trigger to the test map, when activated Orc leader can recruit
  * decreased size of saved games by removing some unnecessary information
- * conversed all scenarios to new AI syntax
+ * converted all scenarios to new AI syntax
 
 Version 0.7.8:
  * changed experience gauge, it is now shown next to hitpoints bar

@@ -5,7 +5,7 @@
 #######################################################################
 
 AC_PREREQ([2.57])
-AC_INIT([Battle for Wesnoth], [0.7.9-CVS], [davidnwhite@optusnet.com.au], [wesnoth])
+AC_INIT([Battle for Wesnoth], [0.7.9], [davidnwhite@optusnet.com.au], [wesnoth])
 
 AC_REVISION([$Revision$])
 
