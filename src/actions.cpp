@@ -324,7 +324,7 @@ battle_stats evaluate_battle_stats(
 		if(include_strings && resist != 0) {
 			std::stringstream str_resist;
 
-			str_resist << gettext(resist < 0 ? N_("attacker resistance vs") : N_("attacker vulnerability vs")) << " " << translate_string(defender_attacks[defend].type())
+			str_resist << gettext(resist < 0 ? N_("attacker resistance vs") : N_("attacker vulnerability vs")) << " " << string_table[defender_attacks[defend].type()]
 				<< ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
 			res.defend_calculations.push_back(str_resist.str());
 		}
@@ -441,7 +441,7 @@ battle_stats evaluate_battle_stats(
 	if(include_strings && resist != 0) {
 		std::stringstream str_resist;
 
-		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs")) << " " << translate_string(attack.type())
+		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs")) << " " << string_table[attack.type()]
 			       << ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
 		res.attack_calculations.push_back(str_resist.str());
 	}

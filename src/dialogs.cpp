@@ -65,6 +65,7 @@ void advance_unit(const game_data& info,
 		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type().name()));
 		sample_units.back().add_modification("advance",**mod);
 		const unit_type& type = sample_units.back().type();
+		std::cerr << "YANN DEBUG" << "advance_" + (**mod)["id"] << (**mod)["description"];
 		lang_options.push_back("&" + type.image() + "," + translate_string_default("advance_" + (**mod)["id"],(**mod)["description"]));
 	}
 
@@ -383,7 +384,7 @@ void save_preview_pane::draw()
 			str << _("Scenario Start");
 		}
 
-		str << "\n" << _("Difficulty") << ": " << translate_string(summary["difficulty"]);
+		str << "\n" << _("Difficulty") << ": " << string_table[summary["difficulty"]];
 	}
 
 	font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,str.str(),area.x,ypos,NULL,true);
@@ -714,7 +715,7 @@ void unit_preview_pane::draw()
 	details << font::BOLD_TEXT << u.type().language_name()
 			<< "\n" << font::SMALL_TEXT << "(" << _("level") << " "
 			<< u.type().level() << ")\n"
-			<< translate_string(unit_type::alignment_description(u.type().alignment())) << "\n"
+			<< string_table[unit_type::alignment_description(u.type().alignment())] << "\n"
 			<< u.traits_description() << " \n";
 
 	const std::vector<std::string>& abilities = u.type().abilities();

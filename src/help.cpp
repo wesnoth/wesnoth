@@ -781,14 +781,13 @@ std::vector<topic> generate_unit_topics() {
 					const terrain_type& info = map->get_terrain_info(terrain);
 					if (!info.is_alias()) {
 						std::vector<std::pair<std::string, unsigned> > row;
-						const std::string& name = map->terrain_name(terrain);
-						const std::string& lang_name = translate_string(name);
+						const std::string& name = string_table[map->terrain_name(terrain)];
 						const int moves = movement_type.movement_cost(*map,terrain);
 						std::stringstream str;
-						str << "<ref>text='" << escape(lang_name) << "' dst='"
+						str << "<ref>text='" << escape(name) << "' dst='"
 							<< std::string("terrain_") + terrain << "'</ref>";
 						row.push_back(std::make_pair(str.str(), 
-													 font::line_width(lang_name,
+													 font::line_width(name,
 																	  normal_font_size)));
 						str.str("");
 						if(moves < 100)
@@ -850,8 +849,7 @@ std::vector<topic> generate_terrains_topics() {
 									  gamemap::FOGGED), show_info_about.end());
 	for (std::vector<gamemap::TERRAIN>::const_iterator terrain_it = show_info_about.begin();
 		 terrain_it != show_info_about.end(); terrain_it++) {
-		const std::string& name = map->terrain_name(*terrain_it);
-		const std::string& lang_name = translate_string(name);
+		const std::string& name = string_table[map->terrain_name(*terrain_it)];
 		const terrain_type& info = map->get_terrain_info(*terrain_it);
 		std::stringstream ss;
 		ss << "<img>src='terrain/" << info.default_image() << ".png'</img>\n\n";
@@ -861,12 +859,11 @@ std::vector<topic> generate_terrains_topics() {
 			for (std::string::const_iterator it = aliased_terrains.begin();
 				 it != aliased_terrains.end(); it++) {
 				const gamemap::TERRAIN t = *it;
-				const std::string alias_name = map->terrain_name(t);
-				const std::string alias_lang_name = translate_string(alias_name);
-				alias_ss << "<ref>text='" << escape(alias_lang_name) << "' dst='"
+				const std::string alias_name = string_table[map->terrain_name(t)];
+				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
 						 << std::string("terrain_") + t << "'</ref>";
 				if (it + 2 == aliased_terrains.end()) {
-					alias_ss << " " << translate_string("or") << " ";
+					alias_ss << " " << _("or") << " ";
 				}
 				else if (it + 1 != aliased_terrains.end()) {
 					alias_ss << ", ";
@@ -890,7 +887,7 @@ std::vector<topic> generate_terrains_topics() {
 		if (info.gives_healing()) {
 			ss << string_table["terrain_gives_healing"] << ".\n\n";
 		}
-		topic t(lang_name, std::string("terrain_") + *terrain_it, ss.str());
+		topic t(name, std::string("terrain_") + *terrain_it, ss.str());
 		res.push_back(t);
 	}
 	return res;

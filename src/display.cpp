@@ -884,7 +884,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 			<< "\n" << font::SMALL_TEXT << "(" << _("level") << " "
 			<< u.type().level() << ")\n"
 			<< status << "\n"
-			<< translate_string(unit_type::alignment_description(u.type().alignment()))
+			<< string_table[unit_type::alignment_description(u.type().alignment())]
 			<< "\n"
 			<< u.traits_description() << "\n";
 
