@@ -20,6 +20,7 @@
 #include "multiplayer_connect.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
+#include "statistics.hpp"
 #include "show_dialog.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
@@ -906,6 +907,7 @@ void connect::load_game()
 		}
 
 		level_ = state_.snapshot;
+		level_.add_child("statistics") = statistics::write_stats();
 
 		recorder = replay(state_.replay_data);
 

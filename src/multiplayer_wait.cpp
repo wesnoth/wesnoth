@@ -19,6 +19,7 @@
 #include "multiplayer_wait.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
+#include "statistics.hpp"
 #include "util.hpp"
 #include "video.hpp"
 #include "wassert.hpp"
@@ -284,6 +285,12 @@ void wait::start_game()
 		}
 
 		level_.clear_children("replay");
+	}
+
+	config const * const stats = level_.child("statistics");
+	if(stats != NULL) {
+		statistics::fresh_stats();
+		statistics::read_stats(*stats);
 	}
 
 	LOG_NW << "starting game\n";
