@@ -445,6 +445,8 @@ void ai::do_move()
 {
 	log_scope("doing ai move");
 
+	invalidate_defensive_position_cache();
+
 	user_interact();
 
 	typedef paths::route route;
@@ -791,16 +793,22 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 	return false;
 }
 
-bool ai::should_retreat(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc) const
+bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc) const
 {
 	const double caution = current_team().caution();
 	if(caution <= 0.0) {
 		return false;
 	}
 
+	const double optimal_terrain = best_defensive_position(un->first,dstsrc,srcdst,enemy_dstsrc,enemy_srcdst).chance_to_hit/100.0;
+	const double proposed_terrain = un->second.defense_modifier(map_,map_.get_terrain(loc))/100.0;
+
+	//the 'exposure' is the additional % chance to hit this unit receives from being on a sub-optimal defensive terrain
+	const double exposure = proposed_terrain - optimal_terrain;
+
 	const double our_power = power_projection(loc,srcdst,dstsrc);
 	const double their_power = power_projection(loc,enemy_srcdst,enemy_dstsrc);
-	return caution*their_power > 2.0*our_power + our_power*current_team().aggression();
+	return caution*their_power*(1.0+exposure) > our_power;
 }
 
 bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
@@ -821,7 +829,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 
 			//this unit still has movement left, and is a candidate to retreat. We see the amount
 			//of power of each side on the situation, and decide whether it should retreat.
-			if(should_retreat(i->first,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
+			if(should_retreat(i->first,i,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
 
 				bool can_reach_leader = false;
 
@@ -1269,48 +1277,9 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 	}
 }
 
-void ai::leader_attack()
-{
-	std::cerr << "leader attack analysis...\n";
-	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.stone() || leader->second.can_attack() == false)
-		return;
-
-	gamemap::location choice;
-	double rating = 0.0;
-	int weapon = -1;
-
-	gamemap::location adj[6];
-	get_adjacent_tiles(leader->first,adj);
-	for(size_t n = 0; n != 6; ++n) {
-		const unit_map::const_iterator u = units_.find(adj[n]);
-		if(u != units_.end() && current_team().is_enemy(u->second.side()) && u->second.stone() == false) {
-			attack_analysis analysis;
-			analysis.target = adj[n];
-			analysis.movements.push_back(std::pair<location,location>(leader->first,leader->first));
-			analysis.analyze(map_,units_,state_,gameinfo_,20,*this);
-			const double value = analysis.chance_to_kill*analysis.target_value - analysis.avg_losses*10.0 - analysis.avg_damage_taken;
-			if(value >= rating) {
-				rating = value;
-				choice = adj[n];
-
-				assert(analysis.weapons.size() == 1);
-				weapon = analysis.weapons.front();
-			}
-		}
-	}
-
-	if(choice.valid()) {
-		attack_enemy(leader->first,choice,weapon);
-	}
-
-	std::cerr << "end leader attack analysis...\n";
-}
-
 void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 {
 	std::cerr << "moving leader after recruit...\n";
-	leader_attack();
 
 	const unit_map::iterator leader = find_leader(units_,team_num_);
 	if(leader == units_.end() || leader->second.stone())
@@ -1390,4 +1359,54 @@ int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 	}
 
 	return rating;
+}
+
+const ai::defensive_position& ai::best_defensive_position(const gamemap::location& loc,
+														  const move_map& dstsrc, const move_map& srcdst,
+														  const move_map& enemy_dstsrc, const move_map& enemy_srcdst) const
+{
+	const unit_map::const_iterator itor = units_.find(loc);
+	if(itor == units_.end()) {
+		static defensive_position pos;
+		pos.chance_to_hit = 0;
+		pos.vulnerability = pos.support = 0;
+		return pos;
+	}
+
+	const std::map<location,defensive_position>::const_iterator position = defensive_position_cache_.find(loc);
+	if(position != defensive_position_cache_.end()) {
+		return position->second;
+	}
+
+	defensive_position pos;
+	pos.chance_to_hit = 100;
+	pos.vulnerability = 10000.0;
+	pos.support = 0.0;
+
+	typedef move_map::const_iterator Itor;
+	const std::pair<Itor,Itor> itors = srcdst.equal_range(loc);
+	for(Itor i = itors.first; i != itors.second; ++i) {
+		const int defense = itor->second.defense_modifier(map_,map_.get_terrain(i->second));
+		if(defense > pos.chance_to_hit) {
+			continue;
+		}
+
+		const double vulnerability = power_projection(i->second,enemy_srcdst,enemy_dstsrc);
+		const double support = power_projection(i->second,srcdst,dstsrc);
+
+		if(defense < pos.chance_to_hit || support - vulnerability > pos.support - pos.vulnerability) {
+			pos.loc = i->second;
+			pos.chance_to_hit = defense;
+			pos.vulnerability = vulnerability;
+			pos.support = support;
+		}
+	}
+
+	defensive_position_cache_.insert(std::pair<location,defensive_position>(loc,pos));
+	return defensive_position_cache_[loc];
+}
+
+void ai::invalidate_defensive_position_cache()
+{
+	defensive_position_cache_.clear();
 }

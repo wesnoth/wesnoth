@@ -305,7 +305,19 @@ public:
 		double value;
 	};
 
+	struct defensive_position {
+		location loc;
+		int chance_to_hit;
+		double vulnerability, support;
+	};
+
+	const defensive_position& best_defensive_position(const location& unit, const move_map& dstsrc, const move_map& srcdst,
+	                                                  const move_map& enemy_dstsrc, const move_map& enemy_srcdst) const;
+	void invalidate_defensive_position_cache();
+
 protected:
+
+	mutable std::map<location,defensive_position> defensive_position_cache_;
 
 	virtual void do_move();
 
@@ -315,13 +327,12 @@ protected:
 	virtual bool retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
 	virtual bool move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
 
-	virtual bool should_retreat(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc) const;
+	virtual bool should_retreat(const gamemap::location& loc, unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc) const;
 
 	virtual void do_recruitment();
 
 	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
 	virtual void move_leader_after_recruit(const move_map& enemy_dstsrc);
-	virtual void leader_attack();
 
 	virtual bool recruit_usage(const std::string& usage);
 
@@ -343,7 +354,8 @@ protected:
 	{
 		void analyze(const gamemap& map, std::map<location,unit>& units,
 		             const gamestatus& status, const game_data& info, int sims,
-					 class ai& ai_obj);
+					 class ai& ai_obj, const move_map& dstsrc, const move_map& srcdst,
+					 const move_map& enemy_dstsrc, const move_map& enemy_srcdst);
 
 		double rating(double aggression) const;
 
@@ -373,6 +385,11 @@ protected:
 
 		//the weighted average of the % chance to hit each attacking unit
 		double terrain_quality;
+
+		//the weighted average of the % defense of the best possible terrain
+		//that the attacking units could reach this turn, without attacking
+		//(good for comparison to see just how good/bad 'terrain_quality' is)
+		double alternative_terrain_quality;
 
 		//the ratio of the attacks the unit being attacked will get to
 		//the strength of its most powerful attack

@@ -65,9 +65,9 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 	config* scenario = NULL;
 
 	//'starting_pos' will contain the position we start the game from.
-	//'replay_starting_pos' will contain the position as at the start of the scenario
-	//which is useful for saving replays
-	config starting_pos, replay_starting_pos;
+	config starting_pos;
+
+	recorder.set_save_info(state);
 
 	//see if we load the scenario from the scenario data -- if there is
 	//no snapshot data available from a save, or if the user has selected
@@ -79,7 +79,6 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 			std::cerr << "loading starting position: '" << state.starting_pos.write() << "'\n";
 			starting_pos = state.starting_pos;
 			scenario = &starting_pos;
-			replay_starting_pos = state.starting_pos;
 		} else {
 			scenario = game_config.find_child(type,"id",state.scenario);
 		}
@@ -91,7 +90,6 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		std::cerr << "loading snapshot...\n";
 		//load from a save-snapshot.
 		starting_pos = state.snapshot;
-		replay_starting_pos = state.starting_pos;
 		scenario = &starting_pos;
 		state = read_game(units_data,&state.snapshot);
 	}
@@ -102,18 +100,9 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		const std::string current_scenario = state.scenario;
 
 		try {
-			LEVEL_RESULT res = REPLAY;
-
 			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
 
-			recorder.set_save_info(state);
-
-			while(res == REPLAY) {
-				state = recorder.get_save_info();
-
-				res = play_level(units_data,game_config,scenario,
-				                 video,state,story);
-			}
+			const LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story);
 
 			state.snapshot = config();
 
@@ -137,7 +126,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 						try {
 							config snapshot;
 
-							recorder.save_game(units_data,label,snapshot,replay_starting_pos);
+							recorder.save_game(units_data,label,snapshot,state.starting_pos);
 						} catch(gamestatus::save_game_failed& e) {
 							gui::show_dialog(disp,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
 							retry = true;
@@ -202,6 +191,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 			state.starting_pos = *scenario;
 		}
+
+		recorder.set_save_info(state);
 	}
 
 	if(state.scenario != "" && state.scenario != "null") {

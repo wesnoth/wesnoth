@@ -34,7 +34,7 @@
 #include <sstream>
 #include <string>
 
-enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, REPLAY, CONTINUE };
+enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, CONTINUE };
 
 struct end_level_exception {
 	end_level_exception(LEVEL_RESULT res, bool bonus=true)

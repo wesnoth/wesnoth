@@ -168,7 +168,7 @@ void ai::do_attack_analysis(
 
 			cur_analysis.support += best_support;
 
-			cur_analysis.analyze(map_,units_,state_,gameinfo_,50,*this);
+			cur_analysis.analyze(map_,units_,state_,gameinfo_,50,*this,dstsrc,srcdst,enemy_dstsrc,enemy_srcdst);
 
 			if(cur_analysis.rating(0.0) > rating_to_beat) {
 
@@ -292,7 +292,9 @@ int ai::choose_weapon(const location& att, const location& def,
 void ai::attack_analysis::analyze(const gamemap& map,
                                   unit_map& units,
 						 	      const gamestatus& status,
-							      const game_data& info, int num_sims, ai& ai_obj)
+							      const game_data& info, int num_sims, ai& ai_obj,
+								  const ai::move_map& dstsrc, const ai::move_map& srcdst,
+								  const ai::move_map& enemy_dstsrc, const ai::move_map& enemy_srcdst)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
 	assert(defend_it != units.end());
@@ -463,12 +465,32 @@ void ai::attack_analysis::analyze(const gamemap& map,
 		avg_damage_inflicted += target_hp - defhp;
 	}
 
+	//calculate the 'alternative_terrain_quality' -- the best possible defensive values
+	//the attacking units could hope to achieve if they didn't attack and moved somewhere.
+	//this is could for comparative purposes to see just how vulnerable the AI is
+	//making itself
+
+	alternative_terrain_quality = 0.0;
+	double cost_sum = 0.0;
+	for(size_t i = 0; i != movements.size(); ++i) {
+		const unit_map::const_iterator att = units.find(movements[i].first);
+		const double cost = att->second.type().cost();
+		cost_sum += cost;
+		alternative_terrain_quality += cost*ai_obj.best_defensive_position(att->first,dstsrc,srcdst,enemy_dstsrc,enemy_srcdst).chance_to_hit;
+	}
+
+	alternative_terrain_quality /= cost_sum*100;
+
 	chance_to_kill /= num_sims;
 	avg_damage_inflicted /= num_sims;
 	avg_damage_taken /= num_sims;
 	terrain_quality /= resources_used;
 	resources_used /= num_sims;
 	avg_losses /= num_sims;
+
+	if(uses_leader) {
+		leader_threat = false;
+	}
 }
 
 double ai::attack_analysis::rating(double aggression) const
@@ -479,12 +501,24 @@ double ai::attack_analysis::rating(double aggression) const
 
 	//only use the leader if we do a serious amount of damage
 	//compared to how much they do to us.
-	if(uses_leader && aggression > -1.0) {
-		aggression = -1.0;
+	if(uses_leader && aggression > -4.0) {
+		std::cerr << "uses leader..\n";
+		aggression = -4.0;
 	}
 
 	double value = chance_to_kill*target_value - avg_losses;
 
+	if(terrain_quality > alternative_terrain_quality) {
+		//this situation looks like it might be a bad move: we are moving our attackers out
+		//of their optimal terrain into sub-optimal terrain.
+		//calculate the 'exposure' of our units to risk
+
+		const double exposure = resources_used*(terrain_quality - alternative_terrain_quality);
+		std::cerr << "attack option has base value " << value << " with exposure " << exposure << "\n";
+
+		value -= exposure;
+	}
+	
 	//prefer to attack already damaged targets
 	value += ((target_starting_damage/3 + avg_damage_inflicted)*
 					                     (target_value/resources_used) -
@@ -499,6 +533,8 @@ double ai::attack_analysis::rating(double aggression) const
 	if(leader_threat) {
 		value *= 5.0;
 	}
+
+	std::cerr << "value: " << value << " vulnerability: " << vulnerability << " quality: " << terrain_quality << " alternative quality: " << alternative_terrain_quality << "\n";
 
 	return value;
 }

@@ -606,7 +606,7 @@ redo_turn:
 			return end_level.result;
 		}
 
-		if(end_level.result == QUIT || end_level.result == REPLAY) {
+		if(end_level.result == QUIT) {
 			return end_level.result;
 		} else if(end_level.result == DEFEAT) {
 			try {
