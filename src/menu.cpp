@@ -825,19 +825,19 @@ TITLE_RESULT show_title(display& screen)
 	button quit_button(screen,string_table["quit_button"]);
 	button language_button(screen,string_table["language_button"]);
 
-	tutorial_button.set_x(700);
-	new_button.set_x(700);
-	load_button.set_x(700);
-	multi_button.set_x(700);
-	quit_button.set_x(700);
-	language_button.set_x(700);
+	const int menu_xbase = screen.x() - (x + tutorial_button.width() + 20);
+	const int menu_xincr = 0;
+	const int menu_ybase = 120 + title_surface->h;
+	const int menu_yincr = 50;
+	int bc = 0; //button count
+#define BUTTON_XY() (menu_xbase+(bc)*menu_xincr), (menu_ybase+(bc++)*menu_yincr)
 
-	tutorial_button.set_y(200);
-	new_button.set_y(250);
-	load_button.set_y(300);
-	multi_button.set_y(350);
-	language_button.set_y(400);
-	quit_button.set_y(450);
+	tutorial_button.set_xy(BUTTON_XY());
+	new_button.set_xy(BUTTON_XY());
+	load_button.set_xy(BUTTON_XY());
+	multi_button.set_xy(BUTTON_XY());
+	language_button.set_xy(BUTTON_XY());
+	quit_button.set_xy(BUTTON_XY());
 
 	tutorial_button.draw();
 	new_button.draw();
@@ -866,14 +866,14 @@ TITLE_RESULT show_title(display& screen)
 		if(multi_button.process(mousex,mousey,left_button))
 			return MULTIPLAYER;
 
+		if(language_button.process(mousex,mousey,left_button))
+			return CHANGE_LANGUAGE;
+
 		if(quit_button.process(mousex,mousey,left_button))
 			return QUIT_GAME;
 
 		if(key[KEY_ESCAPE])
 			return QUIT_GAME;
-
-		if(language_button.process(mousex,mousey,left_button))
-			return CHANGE_LANGUAGE;
 
 		SDL_PumpEvents();
 

@@ -173,6 +173,7 @@ bool button::hit(int x, int y) const
 
 void button::set_x(int val) { x_ = val; }
 void button::set_y(int val) { y_ = val; }
+void button::set_xy(int valx, int valy) { x_ = valx; y_ = valy; }
 
 int button::width() const
 {
