@@ -216,7 +216,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		logged_in = true;
 	}
 
-	for(bool first_time = true; logged_in && network::nconnections() > 0;
+	for(bool first_time = true;
+	    (first_time || logged_in) && network::nconnections() > 0;
 	    first_time = false) {
 
 		if(!first_time) {
