@@ -563,9 +563,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 			//if there are less sides in the configuration than there are starting
 			//positions, then generate the additional sides
 			const int map_positions = map.num_valid_starting_positions();
-			std::cerr << "map_positions: " << map_positions << "\n";
+
 			for(int pos = level_ptr->get_children("side").size(); pos < map_positions; ++pos) {
-				std::cerr << "adding side...\n";
 				config& side = level_ptr->add_child("side");
 				side["enemy"] = "1";
 				char buf[50];
@@ -574,6 +573,11 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				side["team_name"] = buf;
 				side["canrecruit"] = "1";
 				side["controller"] = "human";
+			}
+
+			//if there are too many sides, remove some
+			while(level_ptr->get_children("side").size() > map_positions) {
+				level_ptr->remove_child("side",level_ptr->get_children("side").size()-1);
 			}
 
 			const scoped_sdl_surface mini(image::getMinimap(145,145,map));

@@ -223,8 +223,14 @@ void mp_connect::lists_init()
 	config::child_iterator sd;
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		const int team_num = sd - sides.first;
+		const std::string& team_name = (**sd)["team_name"];
 		std::stringstream str;
-		str << string_table["team"] << " " << team_num+1;
+		str << string_table["team"] << " ";
+
+		if(team_name.empty() == false)
+			str << team_name;
+		else
+			str << (team_num+1);
 		player_teams_.push_back(str.str());
 	}
 
@@ -370,28 +376,9 @@ void mp_connect::gui_update()
 			}
 		}
 
-		//Player Team
-		if (side["team_name"] == "Team1") {
-			combos_team_[n].set_selected(0);
-		} else if (side["team_name"] == "Team2") {
-			combos_team_[n].set_selected(1);
-		} else if (side["team_name"] == "Team3") {
-			combos_team_[n].set_selected(2);
-		} else if (side["team_name"] == "Team4") {
-			combos_team_[n].set_selected(3);
-		} else if (side["team_name"] == "Team5") {
-			combos_team_[n].set_selected(4);
-		} else if (side["team_name"] == "Team6") {
-			combos_team_[n].set_selected(5);
-		} else if (side["team_name"] == "Team7") {
-			combos_team_[n].set_selected(6);
-		} else if (side["team_name"] == "Team8") {
-			combos_team_[n].set_selected(7);
-		} else if (side["team_name"] == "Team9") {
-			combos_team_[n].set_selected(8);
-		} else if (side["team_name"] == "Team10") {
-			combos_team_[n].set_selected(9);
-		}
+		const std::string& team_name = side["team_name"];
+		if(team_name != "" && isdigit(team_name[0]))
+			combos_team_[n].set_selected(team_name[0] - '1');
 
 		//Player Color
 
@@ -486,7 +473,7 @@ int mp_connect::gui_do()
 			if(!save_) {
 				if(combos_team_[n].process(mousex, mousey, left_button)) {
 					std::stringstream str;
-					str << "Team" << n;
+					str << (combos_team_[n].selected()+1);
 					side["team_name"] = str.str();
 				}
 			} else {
