@@ -1,4 +1,3 @@
-# #-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#
 # Slovak translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -9,13 +8,12 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-08-08 15:00+0200\n"
-"PO-Revision-Date: 2004-09-14 01:48+0100\n"
+"PO-Revision-Date: 2004-09-20 17:11+0200\n"
 "Last-Translator: Viliam Búr <bur@nod.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: data/campaigns/Eastern_Invasion.cfg:5
@@ -30,7 +28,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:4
 msgid "Approaching Weldyn"
-msgstr ""
+msgstr "Na ceste do Weldynu"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:25
 msgid ""
@@ -43,31 +41,43 @@ msgid ""
 "#Death of Owaec\n"
 "#Death of Sudoc"
 msgstr ""
+"\n"
+"Vyhráš, ak:\n"
+"@Dostaneš Gweddryho do Weldynu\n"
+"Prehráš, ak:\n"
+"#Zomrie Gweddry\n"
+"#Zomrie Dacyn\n"
+"#Zomrie Owaec\n"
+"#Zomrie Sudoc"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:122
 msgid ""
 "We have finally reached Weldyn, but it seems the undead have surrounded it. "
 "We must break through to reach the king!"
 msgstr ""
+"Konečne sme prišli k Weldynu, ale zdá sa, že ho obkľúčili nemŕtvi. Musíme sa "
+"cez nich presekať ku kráľovi!"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:136
 msgid ""
 "We have reached Weldyn. Now we must have a council to decide what to do next."
-msgstr ""
+msgstr "Došli sme do Weldynu. Teraz musíme zvolať radu a rozhodnúť, čo ďalej."
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:141
 msgid "Come, into the castle."
-msgstr ""
+msgstr "Poďme do hradu."
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:146
 msgid ""
 "Wait. First, what was that prophecy the lich talked about? I think you know "
 "of what he spoke."
 msgstr ""
+"Počkajte. V prvom rade, o akom proroctve to hovoril kostej? Myslím, že "
+"viete, o čom hovoril."
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:161
 msgid "Weldyn has been captured, and Wesnoth is no more..."
-msgstr ""
+msgstr "Weldyn bol dobytý a Wesnoth zanikol..."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:4
 msgid "Captured"
@@ -93,31 +103,31 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:39
 msgid "The Cells"
-msgstr ""
+msgstr "Kobky"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:43
 msgid "Guard Room"
-msgstr ""
+msgstr "Strážnica"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:47
 msgid "Prison"
-msgstr ""
+msgstr "Väzenie"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:51
 msgid "Torture Chamber"
-msgstr ""
+msgstr "Mučiareň"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:55
 msgid "Storage Room"
-msgstr ""
+msgstr "Sklad"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:59
 msgid "The City"
-msgstr ""
+msgstr "Mesto"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:63
 msgid "Exit"
-msgstr ""
+msgstr "Východ"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:401
 msgid "Why have you entered my lands?!?"
@@ -281,21 +291,21 @@ msgstr "Argh! Škoda, ale aspoň vás porazia moje obrovské armády!"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:393
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:235
 msgid "Holy Water"
-msgstr ""
+msgstr "Svätená voda"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:813
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:167
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:396
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:238
 msgid "This water will make all of your weapons holy for your whole life!"
-msgstr ""
+msgstr "Táto voda doživotne posvätí všetky tvoje zbrane!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:814
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:168
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:397
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:239
 msgid "I am not suited to using this item! Let another take it."
-msgstr ""
+msgstr "Ja tento predmet nemôžem použiť! Nech si ho vezme niekto iný."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:848
 msgid ""
@@ -307,7 +317,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:853
 msgid "I will come with you and help you on your quest, whatever it is."
-msgstr ""
+msgstr "Pôjdem s vami a pomôžem vám na vašej výprave, nech je to čokoľvek."
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:4
 msgid "The Crossing"
@@ -535,7 +545,7 @@ msgstr "Značka hovorí 'Slepá ulička'"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:133
 msgid "Who goes there?"
-msgstr ""
+msgstr "Kto je tam?"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:138
 msgid ""
@@ -577,7 +587,7 @@ msgstr "Došli sme na koniec tunela. Nad nami vidím denné svetlo."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:4
 msgid "Evacuation"
-msgstr ""
+msgstr "Evakuácia"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:25
 msgid ""
@@ -591,84 +601,102 @@ msgid ""
 "#Death of Dacyn or leaving him on the river's north side\n"
 "#Death of Owaec or leaving him on the river's north side"
 msgstr ""
+"\n"
+"Vyhráš, ak:\n"
+"@Dostaneš všetkých cez rieku\n"
+"@Zničíš most (kto zostane na nesprávnej strane rieky, zomrie, rovnako ako "
+"každý na zozname privolateľných jednotiek)\n"
+"Prehráš, ak:\n"
+"#Zomrie Gweddry alebo zostane na severnej strane rieky\n"
+"#Zomrie Dacyn alebo zostane na severnej strane rieky\n"
+"#Zomrie Owaec alebo zostane na severnej strane rieky"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:110
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...?!? Who are you?"
 msgstr ""
+"Všetko je stratené. Musíme sa dostať do Severnej zeme tak rýchlo, ako sa len "
+"dá. Bežte, ako len... čo to...?!? Kto si?"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:115
 msgid ""
 "I'm a engineer. I s'pect you'll have a need of me services. I bet you're "
 "gonna want me to blow up that bridge ov'r theah."
 msgstr ""
+"Ja som inžinier. Reku, asi potrebujete moje služby. Isto by ste potrebovali "
+"vyhodiť henten most do vzduchu."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:120
 msgid "Why would we want to do that?!?"
-msgstr ""
+msgstr "Prečo by sme to robili?!?"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
 msgid ""
 "Well, i see those arcs are chasin' you, and if I blow up the bridge, they "
 "can't get across. It'll help you escape."
 msgstr ""
+"No, vidím, že vás naháňajú orkovia, a keď ten most vyhodím, nedostanú sa k "
+"vám. Môžete ľahšie ujsť."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:130
 msgid "Gweddry, he's actually right... we have to hire him. How much?"
-msgstr ""
+msgstr "Gweddry, má vážne pravdu... mali by sme ho najať. Čo za to?"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:135
 msgid "Fifty gold pieces."
-msgstr ""
+msgstr "Päťdesiat zlatých."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:140
 msgid "Very well, but you only get it once the bridge is down."
-msgstr ""
+msgstr "Výborne, ale dostaneš ich, až keď bude po moste."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:145
 msgid ""
 "Deal. I c'n blow'er up once i get to that signpost ov'r 'ere. Thats where my "
 "eq'pment is."
 msgstr ""
+"Platí. Môžem ho odpáliť, keď sa dostanem k hentej značke. Tam mám náradie."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:150
 msgid ""
 "All right, now everyone across the bridge! Anyone left on this side when the "
 "bridge is exploded will be left to their own devices!"
 msgstr ""
+"V poriadku, teraz každý cez most! Kto zostane na tejto strane, keď most "
+"vybuchne, bude zanechaný svojmu osudu!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:175
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
-msgstr ""
+msgstr "Tak už mám ten most vyhodiť, šéfe?"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:182
 msgid "I believe you owe me some money first."
-msgstr ""
+msgstr "Myslím, že mi ešte čosi dlžíte."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:187
 msgid "Yeah, here you go. Now blow this thing up."
-msgstr ""
+msgstr "Hej, tu máš. Tak to odpáľ."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:202
 msgid "Alright! Blast'n time!"
-msgstr ""
+msgstr "Jasné. Ohňostroj začína!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:231
 msgid "BOOM!!!"
-msgstr ""
+msgstr "BUM!!!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:247
 msgid "Oops... I'm north of the bridge! That was bad planning on my part."
-msgstr ""
+msgstr "Ejha... zostal som na severnej strane! To som si zle naplánoval."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:266
 msgid "You idiot! You left me north of the bridge!"
-msgstr ""
+msgstr "Ty idiot! Nechal si ma na sever od mosta!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:282
 msgid "I'm still north of the bridge, Gweddry! Why'd you blow it up!?!"
-msgstr ""
+msgstr "Som ešte stále na sever od mosta, Gweddry! Prečo si ho zničil!?!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:296
 msgid ""
@@ -676,24 +704,28 @@ msgid ""
 "undead probably aren't as densely populated this far west, so we won't get "
 "immediately killed, anyway."
 msgstr ""
+"Dobre, unikli sme tým orkom. Teraz musíme ísť na juh. Myslím, že nemŕtvi sa "
+"tu na západe ešte celkom neusídlili, takže nás hneď nepozabíjajú."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:320
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
-msgstr ""
+msgstr "Ne? No dobre, ešte počkám, hej?"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:332
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
-msgstr ""
+msgstr "Nestihli sme včas zničiť most! Orkovia nás všetkých pobijú!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:341
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "go south. Hopefully the Undead are not as populated this far west."
 msgstr ""
+"No, však ten most predsa nemusíme zničiť, len musíme ísť na juh. Dúfajme, že "
+"tu na západe nie je veľa nemŕtvych."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:346
 msgid "What? Y'got no need a me se'vices? I quit!"
-msgstr ""
+msgstr "Čo? Vy nepotrebujete moje služby? Idem preč!"
 
 #: data/scenarios/Eastern_Invasion/Lake_Vrug.cfg:4
 msgid "Lake Vrug"
@@ -815,7 +847,7 @@ msgstr "Títo ľudia sa odvážili zájsť priďaleko do mojej krajiny. Rozdrvte
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:149
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:208
 msgid "You dare to attack ME?!? Go back to your master!"
-msgstr ""
+msgstr "Ty sa ma opovažuješ napadnúť?!? Vráť sa k svojmu pánovi!"
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:226
 msgid ""
@@ -909,73 +941,56 @@ msgstr ""
 "dedinách."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:165
-#, fuzzy
 msgid ""
 "Gweddry, I don't think we should try to regain our outpost. We need to go "
 "directly to the king. We will see if we can get across to where you are "
 "without thieves killing us. Also, we will try to go to the villages and "
 "drive the thieves out. Onward, men!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Uvidíme, či sa dostaneme až k tebe, bez toho aby nás zlodeji pozabíjali. "
-"Pokúsime sa ísť do dedín a vyhnať ich odtiaľ. Vpred, muži!"
+"Gweddry, nemyslím, že by sme sa mali snažiť znovu dobyť hliadku. Musíme ísť "
+"priamo za kráľom. Uvidíme, či sa dokážeme dostať až k tebe, aby nás pritom "
+"zlodeji nepobili. Pokúsime sa ísť aj do dedín a vyhnať ich odtiaľ. Vpred, "
+"muži!"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:210
-#, fuzzy
 msgid "We have defeated these bandits. Dacyn, where should we go now?"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Porazili sme tých banditov. Keď už sme tu, snáď sa Owaecovi muži nebudú báť "
-"vyjsť z hradu."
+msgstr "Porazili sme tých banditov. Dacyn, kam pôjdeme teraz?"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:215
-#, fuzzy
 msgid ""
 "Well, our outpost has been overrun by undead, and we can't go back there "
 "safely. What about yours, Owaec? Have you encountered them?"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Áno, dúfajme. Našu pevnosť prevalcovali nemŕtvi. A čo ty? Už si nejakých "
-"stretol?"
+"Nuž, našu hliadku prevalcovali nemŕtvi, a už sa tam nemôžeme bezpečne "
+"vrátiť. A čo ty, Owaec? Už si nejakých stretol?"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:220
-#, fuzzy
 msgid ""
 "No, I haven't seen any undead yet. However, if you say more undead are "
 "coming, I believe you. I don't think me and my men could fight against them, "
 "so we will come with you."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nie, žiadnych som zatiaľ nestretol. Nemyslím si však, že by som tu ešte so "
-"svojimi mužmi mohol niečo urobiť. Pôjdeme s tebou a uvidíme, či spolu "
-"nenájdeme spôsob, ako na tých nemŕtvych pritlačiť."
+"Nie, zatiaľ som nestretol žiadnych nemŕtvych. Ak však hovoríte, že ďalší "
+"prichádzajú, verím vám. Nemyslím si, že by som so svojimi mužmi mohol proti "
+"nim bojovať, radšej pôjdeme s tebou."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:225
-#, fuzzy
 msgid ""
 "Very well. We are going north right now, because there are too many undead "
 "to the east and they have already passed us in the west and south."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Hahaha! Našiel som vás, otravní ľudia! Pripravte sa na smrť!"
+"Výborne. Teraz pôjdeme na sever, pretože na východe je priveľa nemŕtvych, a "
+"na západe a juhu nás už obišli."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:248
 msgid "Hahaha! I have found you, pesky humans! Prepare to die!"
-msgstr ""
+msgstr "Hahaha! Našiel som vás, biedni ľudia! Pripravte sa na smrť!"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:253
-#, fuzzy
 msgid ""
 "Oh no! The undead have come, and we have not had time to prepare for them! "
 "We will all die now!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Ach nie! Nemŕtvi sú tu a my sme sa na nich nemali čas pripraviť! Teraz "
 "všetci zomrieme!"
 
@@ -985,10 +1000,9 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:4
 msgid "Training the Ogres"
-msgstr ""
+msgstr "Výcvik ohyzdov"
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:27
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -998,8 +1012,6 @@ msgid ""
 "#Death of Dacyn\n"
 "#Death of Owaec"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "\n"
 "Vyhráš, ak:\n"
 "@Zadržíš na lúke aspoň dvoch ohyzdov, kým príde tvoja armáda\n"
@@ -1009,69 +1021,48 @@ msgstr ""
 "#Zomrie Owaec"
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:84
-#, fuzzy
 msgid ""
 "Look, we have found a pack of Ogres. Lets see if we can capture some to "
 "train."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Pozri, našli sme tu zopár ohyzdov. Skúsme niektorých zajať a vycvičiť."
+msgstr "Pozri, našli sme tu zopár ohyzdov. Skúsme niektorých zajať a vycvičiť."
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:89
-#, fuzzy
 msgid ""
 "Alright, we have to keep at least two of these Ogres on the grass until our "
 "troops get here to capture them."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Dobre, potrebujeme aspoň dvoch ohyzdov zadržať na lúke, kým sem prídu "
 "posily, aby ich zajali."
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:94
-#, fuzzy
 msgid ""
 "We should try to surround them. Gweddry, you stay where you are. Dacyn, you "
 "go north-east. I'll go north-west."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Mali by sme ich skúsiť obkľúčiť. Gweddry, zostaň, kde si. Dacyn, choď na "
 "severovýchod. Ja idem na severozápad."
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:128
-#, fuzzy
 msgid "We have let one escape. Lets hope they all don't!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Jeden nám unikol. Dúfam, že sa to nepodarí aj ostatným!"
+msgstr "Jeden nám unikol. Dúfam, že sa to nepodarí aj ostatným!"
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:154
-#, fuzzy
 msgid ""
 "Good! We have managed to capture some Ogres. We can now recruit them into "
 "our army."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Dobre! Podarilo sa nám zajať pár ohyzdov. Teraz z nich môžeme vycvičiť "
 "vojakov."
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:164
-#, fuzzy
 msgid ""
 "We didn't capture enough of the ogres here. We will have to go on without "
 "them."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nezajali sme dosť ohyzdov. Musíme pokračovať bez nich."
+msgstr "Nezajali sme dosť ohyzdov. Musíme pokračovať bez nich."
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:4
 msgid "Weldyn Besieged"
-msgstr ""
+msgstr "Obliehanie Weldynu"
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:26
 msgid ""
@@ -1085,6 +1076,15 @@ msgid ""
 "#Death of Sudoc\n"
 "#Letting any enemy unit onto your keep"
 msgstr ""
+"\n"
+"Vyhráš, ak:\n"
+"@Porazíš Mal-Ravanala\n"
+"Prehráš, ak:\n"
+"#Zomrie Gweddry\n"
+"#Zomrie Dacyn\n"
+"#Zomrie Owaec\n"
+"#Zomrie Sudoc\n"
+"#Nejaká nepriateľská jednotka vojne do tvojej pevnosti"
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:126
 msgid ""
@@ -1094,22 +1094,27 @@ msgid ""
 "find him and kill him! There are seven of us, and only ONE of us is the real "
 "leader! ha ha ha ha! To be fair about it, we will all tell you our names."
 msgstr ""
+"Vy ľudia ste blázni! Rozhodli ste sa odmietnuť súboj s mojím pánom... dobre, "
+"teraz všetci ZOMRIETE! A vedzte, že môj pán je tu a sleduje vašu porážku. "
+"Pretože on sa vás nebojí, a vie, že ho nikdy nedokážete nájsť a zabiť! Je "
+"nás tu sedem, a iba JEDEN z nás je pravý veliteľ! Ha ha ha ha! Aby sme boli "
+"féroví, prezradíme vám naše mená."
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:131
 msgid "Remember, we have to kill Mal-Ravanal. He's here somewhere..."
-msgstr ""
+msgstr "Pamätaj, musíme zabiť Mal-Ravanala. Je niekde tu..."
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:143
 msgid "How did you know...?"
-msgstr ""
+msgstr "Ako si vedel...?"
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:162
 msgid "Kill the king!"
-msgstr ""
+msgstr "Zabite kráľa!"
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:167
 msgid "They killed Konrad... now, even if save Weldyn, Wesnoth has fallen."
-msgstr ""
+msgstr "Zabili Konráda... teraz, aj keby som zachránil Weldyn, Wesnoth padol."
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:4
 msgid "The Drowned Plains"
@@ -1250,15 +1255,10 @@ msgid "And more!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:4
-#, fuzzy
 msgid "The Outpost"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Hliadka"
+msgstr "Hliadka"
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:25
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1266,8 +1266,6 @@ msgid ""
 "Defeat:\n"
 "#Death of Gweddry"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "\n"
 "Vyhráš, ak:\n"
 "@Vydržíš, dokiaľ nedostaneš pokyny od Dacyna.\n"
@@ -1275,63 +1273,44 @@ msgstr ""
 "#Zomrie Gweddry"
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:117
-#, fuzzy
 msgid ""
 "Come, brothers, let us destroy these humans that stop us from entering "
 "Wesnoth!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Poďme, bratia, zničme týchto ľudí, čo nám bránia vo vstupe do Wesnothu!"
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:122
-#, fuzzy
 msgid "Since we have no will of our own, we must agree with you."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Keďže nemáme vlastnú vôľu, musíme s tebou súhlasiť."
+msgstr "Keďže nemáme vlastnú vôľu, musíme s tebou súhlasiť."
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:127
-#, fuzzy
 msgid "No! We must hold this outpost!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nie! Musíme udržať túto hliadku!"
+msgstr "Nie! Musíme udržať túto hliadku!"
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:132
-#, fuzzy
 msgid ""
 "I always give my victims the honor of knowing the magnificent leader of the "
 "enormous hordes that are about to kill them. I am the evil spirit of Ravanal "
 "inhabiting the body of this lich, head of an evil brotherhood of "
 "necromancers! Ha ha ha ha!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Pane, nedokážeme odolávať navždy. Idem preskúmať hrad a pozrieť, či sa dá "
-"nejako uniknúť a varovať kráľa."
+"Moje obete majú vždy tú česť spoznať vznešeného vodcu ohromných hôrd, ktoré "
+"ich pobijú. Som zlý duch z Ravanalu v tele tohoto kosteja, hlava zlého "
+"bratstva černokňažníkov. Ha ha ha ha!"
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:137
-#, fuzzy
 msgid ""
 "What? Mal-Ravanal? I see... Gweddry, this Lich is too powerful for us to "
 "resist. We must try to escape. I think there is a tunnel somewhere in the "
 "castle cellar."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Pane! Teraz môžeme uniknúť! Našiel som tajnú bránu vedľa hradu!"
+"Čože? Mal-Ravanal? Vidím, že... Gweddry, tento kostej je na nás príliš "
+"silný. Musíme ujsť. Myslím, že niekde v pivniciach hradu je tunel."
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:158
-#, fuzzy
 msgid ""
 "Aha! We can escape from here now! I have found a trapdoor next to the castle!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Ty útočíš na MŇA?!? Vráť sa k svojmu pánovi!"
+msgstr "Aha! Teraz môžeme odtiaľto ujsť! Našiel som tajné dvere pri hrade!"
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:177
 msgid "Follow me, men! Through the trapdoor!"
@@ -1479,131 +1458,84 @@ msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:4
-#, fuzzy
 msgid "Tribal Warfare"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Vojna kmeňov"
+msgstr "Vojna kmeňov"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:86
-#, fuzzy
 msgid ""
 "Hail, Dwarves! Will you help us get by these foul Orcs? We need to get "
 "further along this path."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Zdravím vás, trpaslíci! Pomôžete nám poraziť týchto hnusných orkov?"
+"Zdravím vás, trpaslíci! Pomôžete nám prejsť cez týchto hnusných orkov? "
+"Musíme pokračovať touto cestou."
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:91
-#, fuzzy
 msgid "You human! Call us foul, will you?!?!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Ty, človek! Opovažuješ sa nás nazvať hnusnými?!?!"
+msgstr "Ty, človek! Opovažuješ sa nás nazvať hnusnými?!?!"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:96
-#, fuzzy
 msgid "Why should we help you? You're not a dwarf!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Prečo by sme ti mali pomôcť? Ty nie si trpaslík!"
+msgstr "Prečo by sme ti mali pomôcť? Ty nie si trpaslík!"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:101
-#, fuzzy
 msgid ""
 "Your people helped us in the past, in the tunnels in the South. Why won't "
 "you help us now?"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Tvoi ľudia nám pomohli v minulosti, v južných tuneloch. Prečo by si nám "
+"Tvoji ľudia nám pomohli v minulosti, v južných tuneloch. Prečo by si nám "
 "teraz nepomohol ty?"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:106
-#, fuzzy
 msgid ""
 "Impossible! I can't believe any of my comrades would have helped a human!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nemožné! Nemôžem uveriť, že by niekto z našej krvi pomáhal človeku!"
+msgstr "Nemožné! Nemôžem uveriť, že by niekto z našej krvi pomáhal človeku!"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:111
-#, fuzzy
 msgid "Indeed. Why should any of us help those not in our tribe?"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"A vôbec. Prečo by niekto z nás pomáhal tomu, kto medzi nás nepatrí?"
+"A vôbec. Prečo by niekto z nás pomáhal tomu, kto nepatrí do nášho kmeňa?"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:116
-#, fuzzy
 msgid ""
 "Will you then just let us pass, so that we may fight the orcs on our own?"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Necháte nás teda aspoň pokojne prejsť?"
+msgstr "Necháte nás teda aspoň prejsť, aby sme mohli bojovať proti orkom?"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:121
-#, fuzzy
 msgid "I am afraid that is now impossible."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Obávam sa, že to je vylúčené."
+msgstr "Obávam sa, že to je vylúčené."
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:126
-#, fuzzy
 msgid "Orcs, kill'em all! Humans, elves or dwarves, it don't matter!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Orkovia, pobite ich všetkých! Ľudia, elfovia, trpaslíci, všetko jedno!"
+msgstr "Orkovia, pobite ich všetkých! Ľudia, elfovia, trpaslíci, všetko jedno!"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:131
-#, fuzzy
 msgid ""
 "These orcs will die. But so will you, human. You have trespassed on Elvish "
 "land."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Títo orkovia zomrú. A takisto ty, človeče. Prenikol si na elfské územie."
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:136
-#, fuzzy
 msgid "Oh, Elvish land is it now? Die, you elf-dog! And you too, human!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Ale, elfské územie je to zrazu? Skap, ty elfský pes! A ty tiež, človek!"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:141
-#, fuzzy
 msgid ""
 "These people won't listen to reason, they are blinded by their own races "
 "supposed superiority!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Títo ľudkovia na hlas rozumu veľa nedajú, predstavy o ich vlastnej "
 "nadradenosti ich zaslepujú!"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:146
-#, fuzzy
 msgid ""
 "True. As much as I dislike killing anything but orcs and undead, it seems we "
 "will have to kill these elves, and these dwarves, before they kill us."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Veru. A hoci nemám rád boj proti niečomu, čo nie je zlo, asi budeme musieť "
-"zabiť týchto elfov i týchto trpaslíkov, skôr ako oni zabijú nás."
+"Veru. A hoci sa mi protiví zabíjať niečo iné ako orkov a nemŕtvych, asi "
+"budeme musieť zabiť týchto elfov i týchto trpaslíkov, skôr ako oni zabijú "
+"nás."
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:157
 msgid ""
@@ -1617,39 +1549,22 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:167
-#, fuzzy
 msgid "Argh! I'm dead! well, dwarves are still the best!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Argh! Som mŕtvy! No a čo, trpaslíci sú aj tak najlepší!"
+msgstr "Argh! Som mŕtvy! No a čo, trpaslíci sú aj tak najlepší!"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:186
-#, fuzzy
 msgid "I die? Orcs rule all!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Zomieram? Orkovia raz zvíťazia!"
+msgstr "Zomieram? Orkovia raz zvíťazia!"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:205
-#, fuzzy
 msgid "It seems these humans are more powerful than I though. Ugh."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Zdá sa, že tí prekliati ľudia sú mocnejší než som si myslel. Ugh."
+msgstr "Zdá sa, že títo ľudia sú mocnejší než som si myslel. Ugh."
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:4
-#, fuzzy
 msgid "Two Paths"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Dve cesty"
+msgstr "Dve cesty"
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:24
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1660,8 +1575,6 @@ msgid ""
 "#Death of Owaec\n"
 "#Turns run out"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "\n"
 "Vyhráš, ak:\n"
 "@Porazíš jedného z veliteľov nepriateľov\n"
@@ -1672,120 +1585,86 @@ msgstr ""
 "#Vyprší čas"
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:93
-#, fuzzy
 msgid "Look! The road splits here. Which way shall we go?"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Hľa! Tu sa cesta rozdeľuje. Kadiaľ pôjdeme?"
+msgstr "Hľa! Tu sa cesta rozdeľuje. Kadiaľ pôjdeme?"
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:98
-#, fuzzy
 msgid ""
 "I know this area. I was here on an earlier patrol. Just north of here there "
 "is a river that leads to the northlands, where orcs live. To the west there "
 "is a path that stays inside the realm of Wesnoth."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Túto oblasť poznám. Kedysi som tu hliadkoval. Priamo na sever odtiaľto je "
-"rieka, ktorá vedie na sever, kde žijú orkovia. Na východ ležia hory, za nimi "
-"kraj nemŕtvych."
+"rieka, ktorá vedie na sever, kde žijú orkovia. Na západe je cesta, ktorá "
+"vedie vnútrozemím Wesnothu."
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:103
-#, fuzzy
 msgid ""
 "We should probably go north to the orcish lands and try to circle around and "
 "avoid the undead armies. Their hordes are too large for us to defeat, and "
 "staying inside Wesnoth would mean certain death."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Asi by sme mali ísť na sever k orkom, potom sa pokúsiť prekĺznuť okolo a "
-"nečakane prekvapiť nemŕtvych."
+"vyhnúť sa armádam nemŕtvych. Ich hordy sú na nás priveľké, zotrvať vo "
+"Wesnothe by znamenalo istú smrť."
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:108
-#, fuzzy
 msgid ""
 "No, I think we should go straight through and try to get to the king as "
 "quickly as possible. The undead hordes can't be that large, and there are "
 "orcs in the northlands."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nie, myslím, že by sme mali ísť priamo do kraja nemŕtvych. Udrime tvrdo a "
-"rýchlo!"
+"Nie, myslím, že by sme mali ísť priamo cez nich a dostať sa ku kráľovi čo "
+"najrýchlejšie. Hordy nemŕtvych nemôžu byť až také veľké, a na severe sú "
+"orkovia."
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:113
-#, fuzzy
 msgid ""
 "Either way we will have to fight. Look, the orcs and undead are in a "
 "conflict, and block our path!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Tak či onak musíme bojovať. Pozri, orkovia a nemŕtvi bojujú navzájom, a "
 "blokujú nám cestu!"
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:118
-#, fuzzy
 msgid ""
 "Well, orc, we can either continue this fight, or we can crush there pesky "
 "humans and battle later. Your call."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Počul, ork, môžeme pokračovať v našom boji, alebo rozdrvíme týchto otravných "
+"Počuj, ork, môžeme pokračovať v našom boji, alebo rozdrvíme týchto otravných "
 "ľudí a potom pokračujeme v boji. Vyber si."
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:123
-#, fuzzy
 msgid ""
 "Hm... I know. We will make a pact to destroy these humans, and continue our "
 "fight later. (hopefully you will die, for then I will win our battle by "
 "default.)"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Hm... jasné. Spojme sa proti týmto ľuďom a potom pokračuje v našom boji. "
-"(dúfam, že pritom zatrasieš krpcami, lebo vtedy ja vyhrám bez boja)"
+"Hm... jasné. Spojme sa proti týmto ľuďom a potom pokračujme v našom boji "
+"(dúfam, že pritom zatrasieš krpcami, lebo vtedy ja vyhrám bez boja)."
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:128
-#, fuzzy
 msgid "Very well, we are allies, for now. (this foolish orc will surely die)."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Dobre teda, sme spojenci, zatiaľ. (ten hnusný ork pritom isto otrčí kopytá)"
+"Dobre teda, sme spojenci, zatiaľ (ten hnusný ork pritom isto otrčí kopytá)."
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:140
-#, fuzzy
 msgid ""
 "No! These undead has won our battle, and you will be able to enter my "
 "northern homeland!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nie! Nemŕtvi vyhrali našu bitku, a ty môžeš ísť na sever do mojej domoviny!"
+"Nie! Nemŕtvi vyhrali našu bitku, a vy sa dostanete na sever do mojej "
+"domoviny!"
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:157
-#, fuzzy
 msgid "I was supposed to stop you from re-entering Wesnoth! I have failed."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Vstúpil si do krajiny môjho pána! Nebude sa mu to páčiť."
+msgstr "Mal som vám zabrániť vstúpiť do Wesnothu! Zlyhal som."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:4
-#, fuzzy
 msgid "The Undead Border Patrol"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Pohraničná hliadka nemŕtvych"
+msgstr "Pohraničná hliadka nemŕtvych"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:23
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1795,8 +1674,6 @@ msgid ""
 "#Death of Dacyn\n"
 "#Turns run out"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "\n"
 "Vyhráš, ak:\n"
 "@Porazíš černokňažníka alebo kosteja\n"
@@ -1806,65 +1683,45 @@ msgstr ""
 "#Vyprší čas"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:80
-#, fuzzy
 msgid ""
 "We have reached the borders of the undead land. Surely you do not mean to go "
 "forward- we will all die if we do! We should turn North and help Owaec, "
 "captain of the Northern Outpost, hold off the undead."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Došli sme na hranicu krajiny nemŕtvych. Ďalej už iste nepôjdeme... to by sme "
 "všetci pomreli! Mali by sme sa otočiť na sever a pomôcť Owaecovi, veliteľovi "
 "severnej hliadky, odraziť nemŕtvych."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:85
-#, fuzzy
 msgid ""
 "I am not yet sure. Whether we go forward or backward, we will have to fight. "
 "The necromancer Mal-Skraat has chased us."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Nie som si celkom istý. Bojovať budeme, či už pôjdeme dopredu alebo naspäť. "
 "Černokňažník Mal-Skraat ide za nami."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:90
-#, fuzzy
 msgid ""
 "They run from me! Still, it will not help them, the border patrol will "
 "destroy them. I may even be promoted!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Utekajú predo mnou! Ale to im nepomôže, rozdrví ich pohraničná hliadka. "
 "Možno ma potom povýšia!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:102
-#, fuzzy
 msgid "Now I will never get promoted!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Teraz ma už nepovýšia!"
+msgstr "Teraz ma už nepovýšia!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:107
-#, fuzzy
 msgid "Come, let us return to Wesnoth and aid the Northern Outpost."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Poďte, vrátime sa do Wesnothu a podporíme severnú hliadku."
+msgstr "Poďte, vrátime sa do Wesnothu a podporíme severnú hliadku."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:124
-#, fuzzy
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do we want to go "
 "further into these lands now, or do we want to try to turn back and defeat "
 "this necromancer?"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Porazili sme túto hliadku, ale stále sa môžeme vrátiť! Chceme ísť ešte "
 "hlbšie do tejto krajiny, alebo sa skúsime otočiť a poraziť toho "
 "černokňažníka?"
@@ -1875,90 +1732,57 @@ msgid "Hmm..."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:132
-#, fuzzy
 msgid "We do not want to waste time here fighting Mal-Skraat. Onward!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nebudeme tu strácať čas bojom s Mal-Skraatom. Vpred!"
+msgstr "Nebudeme tu strácať čas bojom s Mal-Skraatom. Vpred!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:137
-#, fuzzy
 msgid "I will not say if this is a good decision, but I will follow you."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nepovedal by som, že je to dobré rozhodnutie, ale idem s tebou."
+msgstr "Nepovedal by som, že je to dobré rozhodnutie, ale idem s tebou."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:142
-#, fuzzy
 msgid "Noo!!! I can't be promoted if they run away!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nie!!! Ak mi ujdú, nepovýšia ma!"
+msgstr "Nie!!! Ak mi ujdú, nepovýšia ma!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:153
-#, fuzzy
 msgid ""
 "You are right. It is foolish to go onward- we must defeat Mal-Skraat and "
 "turn back, going to the Northern Outpost."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Máš pravdu. Bola by hlúposť ísť vpred... musíme poraziť Mal-Skraata a vrátiť "
 "sa, ísť do severnej hliadky."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:158
-#, fuzzy
 msgid "Good! if I defeat them, I can become a lich!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Dobre! Ak ich porazím, bude zo mňa kostej!"
+msgstr "Dobre! Ak ich porazím, bude zo mňa kostej!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:175
-#, fuzzy
 msgid ""
 "We failed to defeat either enemy! Now more lichs will come, and we will be "
 "overwhelmed!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Nepodarilo sa nám poraziť nikoho! Teraz prídu ďalší kosteji a prevalcujú nás!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:185
-#, fuzzy
 msgid ""
 "We cannot spend any more time defeating Mal-Skraat. Like it or not, we must "
 "go further into these undead lands."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Nemôžeme strácať čas bojom s Mal-Skraatom. Či sa nám to páči alebo nie, "
 "musíme ísť hlbšie to tejto krajiny nemŕtvych."
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:190
-#, fuzzy
 msgid ""
 "Noo!!! He will reach Mal-Ravanal's capital, and I shall be punished for "
 "letting him escape!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Nie!!! Pôjde do hlavného mesta Mal-Ravanal a mňa potrestajú za to, že mi "
 "ušiel!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:4
-#, fuzzy
 msgid "Undead Crossing"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Križovatka nemŕtvych"
+msgstr "Križovatka nemŕtvych"
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:24
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1968,8 +1792,6 @@ msgid ""
 "#Death of Dacyn\n"
 "#Death of Owaec"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "\n"
 "Vyhráš, ak:\n"
 "@Zabiješ nepriateľského kosteja\n"
@@ -1979,80 +1801,57 @@ msgstr ""
 "#Zomrie Owaec"
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:68
-#, fuzzy
 msgid ""
 "These fens look impassable. I don't think we will be able to continue on "
 "this road."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Pozri... tu je veľká rieka. Máme ju skúsiť prekročiť, alebo sa otočíme späť?"
+"Tieto močiare vyzerajú nepriechodne. Nemyslím, že by sme po tejto ceste "
+"mohli pokračovať."
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:73
-#, fuzzy
 msgid ""
 "We must cross this river. We cannot try to find a way around this swamp, we "
 "will waste too much time. Already Weldyn might be in ruins!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Túto rieku musíme prekročiť. Hovorí sa, že na sever od nej žijú ohyzdi, a my "
-"si musíme získať ich pomoc, ak máme pooraziť nemŕtvych. Nemŕtvi to vedia, a "
-"preto sem poslali kosteja, aby nám prehradil cestu."
+"Musíme prekročiť túto rieku. Cestu okolo močiara nevieme nájsť a strácame "
+"veľa času. Weldyn je už možno zrúcaný!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:78
-#, fuzzy
 msgid ""
 "Across this river lies the Northland. Ogres live there, as do orcs. We "
 "should proceed with caution. I still think we should go straight to the "
 "King, but that is now impossible."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Za touto riekou leží Severná zem. Áno, žijú tam ohyzdi, ale aj orkovia, "
-"ktorí sa nás pokúsia zastaviť. Mali by sme pokračovať opatrne."
+"Za touto riekou leží Severná zem. Áno, žijú tam ohyzdi a orkovia. Mali by "
+"sme pokračovať opatrne. Stále si myslím, že sme mali ísť priamo za kráľom, "
+"ale teraz už sa to nedá."
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:83
-#, fuzzy
 msgid ""
 "I will leave your bodies to rot in the river, then I will raise you up to "
 "serve in my Master's undead hordes!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Nechám vaše telá zhniť v rieke, a potom vás vzkriesim ako služobníkov v "
 "nemŕtvych hordách môjho pána!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:100
-#, fuzzy
 msgid ""
 "I summon from the depths of the river those beasts which will destroy you!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Z hlbín rieky privolám tvory, ktoré vás zničia!"
+msgstr "Z hlbín rieky privolám tvory, ktoré vás zničia!"
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:132
-#, fuzzy
 msgid ""
 "It seems as if in addition to summoning undead this Lich has learned to call "
 "up demons!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Zdá sa, že okrem privolávania nemŕtvych sa tento kostej naučil aj vyvolávať "
 "démonov!"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:4
-#, fuzzy
 msgid "An Unexpected Appearance"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nečakané zjavenie"
+msgstr "Nečakané zjavenie"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:22
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -2061,8 +1860,6 @@ msgid ""
 "#Death of Gweddry\n"
 "#Turns run out"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "\n"
 "Vyhráš, ak:\n"
 "@Porazíš jedného z černokňažníkov\n"
@@ -2071,104 +1868,63 @@ msgstr ""
 "#Vyprší čas"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:104
-#, fuzzy
 msgid "We have escaped from those dark tunnels! But where are we now?"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Unikli sme z tých temných tunelov! Ale kde to sme?"
+msgstr "Unikli sme z tých temných tunelov! Ale kde to sme?"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:109
-#, fuzzy
 msgid "This is bad. We are in the middle of enemy territory!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Ach nie! Sme uprostred nepriateľského územia!"
+msgstr "Ach nie! Sme uprostred nepriateľského územia!"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:114
-#, fuzzy
 msgid "Hahaha! We have you surrounded!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Hahaha! Ste obkľúčení!"
+msgstr "Hahaha! Ste obkľúčení!"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:119
-#, fuzzy
 msgid ""
 "Why don't we see if the new recruit can handle them. After all, there are "
 "only two!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Vyskúšajme, či si s nimi poradí náš nový regrút. Napokon, sú len dvaja!"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:124
-#, fuzzy
 msgid "No!!! They'll kill me!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nie!!! Veď ma zabijú!"
+msgstr "Nie!!! Veď ma zabijú!"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:129
-#, fuzzy
 msgid "So? We don't care- you're only a Dark Adept."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"No a čo? Nám to nevadí... veď si len temný adept."
+msgstr "No a čo? Nám to nevadí... veď si len temný adept."
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:134
-#, fuzzy
 msgid ""
 "It seems Mal-Tar is weak, but his brothers are still surrounding us. I "
 "propose we kill him and use his castle as a base for our attack!"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Zdá sa, že Mal-Tar je slabý, ale jeho bratia sú stále nablízko. Navrhujem, "
 "aby sme ho zabili a použili jeho hrad ako základ pre náš útok!"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:139
-#, fuzzy
 msgid ""
 "If we kill Mal-Skraat, we will have opened a way to enter Wesnoth, but if we "
 "kill Mal-Kallat, we will be able to penetrate further into Undead lands. I "
 "don't know how far we will get, though."
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Ak zabijeme Mal-Skraata, otvorili sme si cestu do Wesnothu, ale ak zabijeme "
-"Mal-Kallata, dostaneme sa hlbšie do krajiny nemŕtvych."
+"Mal-Kallata, dostaneme sa hlbšie do krajiny nemŕtvych. Neviem však, ako "
+"ďaleko sa dostaneme."
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:151
-#, fuzzy
 msgid "No! You have defeated me, and can re-enter Wesnoth!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nie! Porazili ste ma, a teraz máte voľnú cestu do Wesnothu!"
+msgstr "Nie! Porazili ste ma, a teraz máte voľnú cestu do Wesnothu!"
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:168
-#, fuzzy
 msgid "You have defeated my brother, but I will follow you and kill you!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Porazili ste môjho brata, ale ja si vás nájdem a zabijem!"
+msgstr "Porazili ste môjho brata, ale ja si vás nájdem a zabijem!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:4
-#, fuzzy
 msgid "Weldyn under Attack"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Útok na Weldyn"
+msgstr "Útok na Weldyn"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -2180,8 +1936,6 @@ msgid ""
 "#Death of Sudoc\n"
 "#Death of Konrad"
 msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "\n"
 "Vyhráš, ak:\n"
 "@Prežiješ noc\n"
@@ -2189,7 +1943,7 @@ msgstr ""
 "#Zomrie Gweddry\n"
 "#Zomrie Dacyn\n"
 "#Zomrie Owaec\n"
-"#Zomrie Konrad"
+"#Zomrie Konrád"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:236
 msgid ""
@@ -2383,36 +2137,20 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/deaths.cfg:9
-#, fuzzy
 msgid "No! I have failed in my mission to save Wesnoth from destruction!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Nie! Nepodarilo sa mi zachrániť Wesnoth pred zničením!"
+msgstr "Nie! Nepodarilo sa mi zachrániť Wesnoth pred zničením!"
 
 #: data/scenarios/Eastern_Invasion/deaths.cfg:24
-#, fuzzy
 msgid "Wesnoth is doomed! Without me, Gweddry has no hope!"
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Wesnoth je stratený! Bezo mňa si Gweddry neporadí!"
+msgstr "Wesnoth je stratený! Bezo mňa si Gweddry neporadí!"
 
 #: data/scenarios/Eastern_Invasion/deaths.cfg:39
-#, fuzzy
 msgid "My outpost has fallen..."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"Moja hliadka padla..."
+msgstr "Moja hliadka padla..."
 
 #: data/scenarios/Eastern_Invasion/deaths.cfg:44
-#, fuzzy
 msgid "ugh."
-msgstr ""
-"#-#-#-#-#  wesnoth-ei.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"ach."
+msgstr "ach."
 
 #: data/scenarios/Eastern_Invasion/deaths.cfg:59
 msgid "I guess the rebellion has failed."
@@ -2486,3 +2224,14 @@ msgid ""
 "Then, at dawn one day, Gweddry and his men were roused by startled cry of "
 "the night watchmen..."
 msgstr ""
+
+#~ msgid ""
+#~ "I am not sure. There are bandits in this country, and it is they who rule "
+#~ "this land, not the king. My men are afraid of them, and refuse to come "
+#~ "out and fight. As you see, though I have many men, they stay penned up in "
+#~ "the keep. The thieves hide in the villages."
+#~ msgstr ""
+#~ "Nie som si istý. V tomto kraji sú banditi, a v podstate tu vládnu oni, "
+#~ "nie kráľ. Moji muži sa ich boja, a odmietajú vyjsť a bojovať. Ako vidíš, "
+#~ "hoci mám mnohých mužov, sedia tu schovaní v pevnosti. A zlodeji sa "
+#~ "schovávajú v dedinách."
