@@ -1300,6 +1300,9 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	if (u.can_recruit()) {
 		surface crown(image::get_image("misc/leader-crown.png",image::SCALED,image::NO_ADJUST_COLOUR));
 		if(!crown.null()) {
+			if(bar_alpha != ftofxp(1.0))
+				crown = adjust_surface_alpha(crown, bar_alpha);
+
 			SDL_Rect r = {0, 0, crown->w, crown->h};
 			video().blit_surface(xpos,ypos,crown,&r);
 		}
@@ -1838,8 +1841,9 @@ void display::draw_unit(int x, int y, surface image,
 		bool upside_down, fixed_t alpha, Uint32 blendto, double blend_ratio, double submerged,
 		surface ellipse_back, surface ellipse_front)
 {
-	//calculate the y position of the ellipse. It should be the same as the y position of the image, unless
-	//the image is partially submerged, in which case the ellipse should appear to float 'on top of' the water
+	//calculate the y position of the ellipse. It should be the same as the
+	//y position of the image, unless the image is partially submerged, in
+	//which case the ellipse should appear to float 'on top of' the water
 	const int ellipse_ypos = y - (ellipse_back != NULL && submerged > 0.0 ? int(double(ellipse_back->h)*submerged) : 0)/2;
 	if(ellipse_back != NULL) {
 		draw_unit(x,ellipse_ypos,ellipse_back,false,blendto == 0 ? alpha : ftofxp(1.0),0,0.0);

@@ -1176,7 +1176,7 @@ void unit::apply_modifications()
 			log_scope("add mod");
 			add_modification(ModificationTypes[i],**j,true);
 
-			const std::string& name = (**j)["name"];
+			const std::string& name = (**j)["id"];
 			if(name.empty() == false) {
 				descriptions.push_back(name);
 			}
@@ -1192,7 +1192,20 @@ void unit::apply_modifications()
 			traitsDescription_ += ", ";
 		}
 
-		traitsDescription_ += gettext(j->c_str());
+		//traitsDescription_ += gettext(j->c_str());
+		std::vector<config*> possible_traits = type().possible_traits();
+		std::vector<config*>::const_iterator trait;
+
+		for(trait = possible_traits.begin(); trait != possible_traits.end(); ++trait) {
+			if((**trait)["id"] == *j)
+				break;
+		}
+
+		if(trait == possible_traits.end()) {
+			traitsDescription_ += *j;
+		} else {
+			traitsDescription_ += (**trait)["name"];
+		}
 	}
 }
 
