@@ -44,11 +44,11 @@ private:
 };
 
 struct turn_info {
-	turn_info() : left_button(false), right_button(false), enemy_paths(false),
-	              path_turns(0)
+	turn_info() : left_button(false), right_button(false), middle_button(false),
+	              enemy_paths(false), path_turns(0)
 	{}
 
-	bool left_button, right_button;
+	bool left_button, right_button, middle_button;
 	gamemap::location next_unit;
 	paths current_paths;
 	paths::route current_route;

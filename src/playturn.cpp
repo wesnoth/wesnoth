@@ -166,6 +166,7 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 {
 	bool& left_button = turn_data.left_button;
 	bool& right_button = turn_data.right_button;
+	bool& middle_button = turn_data.middle_button;
 	gamemap::location& next_unit = turn_data.next_unit;
 	paths& current_paths = turn_data.current_paths;
 	paths::route& current_route = turn_data.current_route;
@@ -181,6 +182,7 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 	const bool new_left_button = mouse_flags & SDL_BUTTON_LMASK;
 	const bool new_right_button = mouse_flags & SDL_BUTTON_RMASK;
+	const bool new_middle_button = mouse_flags & SDL_BUTTON_MMASK;
 
 	gamemap::location new_hex = gui.hex_clicked_on(mousex,mousey);
 
@@ -607,6 +609,17 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 	if(key[KEY_RIGHT] || mousex == gui.x()-1)
 		gui.scroll(preferences::scroll_speed(),0.0);
 
+	if(new_middle_button && !middle_button &&
+	   mousex < gui.mapx() && mousey < gui.y()) {
+		const int centerx = gui.mapx()/2;
+		const int centery = gui.y()/2;
+		const double movex = double(mousex - centerx);
+		const double movey = double(mousey - centery);
+		gui.scroll(movex,movey);
+	}
+
+	middle_button = new_middle_button;
+
 	// MOUSE WHEEL BOUNDARY CHECK
 
 	if(gui::scrollamount() && (mousex > 50 && mousex < gui.mapx()-50) &&
@@ -990,7 +1003,6 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 		std::vector<std::string> items;
 		std::stringstream heading;
 		heading << string_table["leader"] << ","
-		        << string_table["gold"] << ","
 		        << string_table["villages"] << ","
 		        << string_table["units"] << ","
 		        << string_table["upkeep"] << ","
@@ -1009,12 +1021,6 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 				str << "#";
 
 			str << team_name(n+1,units) << ",";
-
-			//only show gold for player's team and allies
-			if(on_side)
-				str << (data.gold < 0 ? "#":"") << data.gold << ",";
-			else
-				str << "?,";
 
 			str << data.villages << ","
 			    << data.units << ","
