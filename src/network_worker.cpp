@@ -169,6 +169,24 @@ void queue_data(TCPsocket sock, std::vector<char>& buf)
 	cond->notify_one();
 }
 
+namespace
+{
+
+void remove_buffers(TCPsocket sock)
+{
+	buffer_set new_bufs;
+	new_bufs.reserve(bufs.size());
+	for(buffer_set::iterator i = bufs.begin(), i_end = bufs.end(); i != i_end; ++i) {
+		if ((*i)->sock == sock)
+			delete *i;
+		else
+			new_bufs.push_back(*i);
+	}
+	bufs.swap(new_bufs);
+}
+
+}
+
 void close_socket(TCPsocket sock)
 {
 	for(bool first_time = true; ; first_time = false) {
@@ -185,16 +203,7 @@ void close_socket(TCPsocket sock)
 				sockets_locked.erase(lock_it);
 			}
 
-			size_t size = bufs.size();
-			buffer_set new_bufs;
-			new_bufs.reserve(size);
-			for(buffer_set::iterator i = bufs.begin(), i_end = bufs.end(); i != i_end; ++i) {
-				if ((*i)->sock == sock)
-					delete *i;
-				else
-					new_bufs.push_back(*i);
-			}
-			bufs.swap(new_bufs);
+			remove_buffers(sock);
 
 			break;
 		}
@@ -210,6 +219,7 @@ TCPsocket detect_error()
 				--socket_errors;
 				const TCPsocket res = i->first;
 				sockets_locked.erase(i);
+				remove_buffers(res);
 				return res;
 			}
 		}
