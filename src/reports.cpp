@@ -184,14 +184,12 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const std::vector<attack_type>& attacks = u->second.attacks();
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
-			const std::string& lang_weapon = string_table["weapon_name_" + at_it->name()];
-			const std::string& lang_type = string_table["weapon_type_" + at_it->type()];
-			const std::string& lang_special = string_table["weapon_special_" + at_it->special()];
+			const std::string& lang_weapon = gettext(at_it->name().c_str());
+			const std::string& lang_type = gettext(at_it->type().c_str());
 			
-			str << (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
-				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n";
+			str << lang_weapon << " (" << lang_type << ")\n";
 
-			tooltip << (lang_weapon.empty() ? at_it->name():lang_weapon) << "\n";
+			tooltip << lang_weapon << "\n";
 
 			//find all the unit types on the map, and show this weapon's bonus against all the different units
 			std::set<const unit_type*> seen_units;
@@ -221,9 +219,11 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			res.add_text(str,tooltip);
 			
-			str << (lang_special.empty() ? at_it->special():lang_special) << "\n";
-			tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
-			res.add_text(str,tooltip);
+			if (!at_it->special().empty()) {
+				str << gettext(at_it->special().c_str()) << "\n";
+				tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
+				res.add_text(str,tooltip);
+			}
 			
 			str << at_it->damage() << "-" << at_it->num_attacks() << " -- "
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
