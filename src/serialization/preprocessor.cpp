@@ -40,14 +40,12 @@ struct config {
 	};
 };
 
-namespace {
-
-const int max_recursion_levels = 100;
+static int const max_recursion_levels = 100;
 
 //this function takes a macro and parses it into the macro followed by its
 //arguments. Arguments are seperated by spaces, but an argument appearing inside
 //braces is treated as a single argument.
-std::vector<std::string> parse_macro_arguments(const std::string& macro)
+static std::vector<std::string> parse_macro_arguments(const std::string& macro)
 {
 	const std::vector<std::string> args = utils::split(macro, ' ');
 	std::vector<std::string> res;
@@ -85,18 +83,17 @@ std::vector<std::string> parse_macro_arguments(const std::string& macro)
 	return res;
 }
 
-void internal_preprocess_file(const std::string& fname,
-                              preproc_map& defines_map,
-                              int depth, std::vector<char>& res,
-                              std::vector<line_source>* lines_src, int& line);
+static void internal_preprocess_file(const std::string& fname,
+                                     preproc_map& defines_map,
+                                     int depth, std::ostream &out,
+                                     std::vector<line_source>* lines_src, int& line);
 
-void internal_preprocess_data(std::istream &data_in,
-                              preproc_map& defines_map,
-                              int depth, std::vector<char>& res,
-                              std::vector<line_source>* lines_src, int& line,
-			      const std::string& fname, int srcline)
+static void internal_preprocess_data(std::istream &data_in,
+                                     preproc_map& defines_map,
+                                     int depth, std::ostream &out,
+                                     std::vector<line_source>* lines_src, int& line,
+			             const std::string& fname, int srcline)
 {
-	
 	std::string data_str;
 	{
 		//temporary, only here to accomodate the old preprocessor
@@ -174,7 +171,7 @@ void internal_preprocess_data(std::istream &data_in,
 				}
 
 				std::istringstream stream(str);
-				internal_preprocess_data(stream, defines_map, depth, res, NULL, line, fname, srcline);
+				internal_preprocess_data(stream, defines_map, depth, out, NULL, line, fname, srcline);
 			} else if(depth < 20) {
 				std::string prefix;
 				std::string nfname;
@@ -227,12 +224,12 @@ void internal_preprocess_data(std::istream &data_in,
 					}
 
 					internal_preprocess_file(nfname,
-								 defines_map, depth+1,res,
+								 defines_map, depth+1, out,
 								 lines_src,line);
 				}
 			} else {
 				const std::string& str = read_file(newfilename);
-				res.insert(res.end(),str.begin(),str.end());
+				out.write(&*str.begin(), str.length());
 				line += std::count(str.begin(),str.end(),'\n');
 			}
 
@@ -344,22 +341,22 @@ void internal_preprocess_data(std::istream &data_in,
 			srcline += std::count(begin,i,'\n');
 			++line;
 
-			res.push_back('\n');
+			out.put('\n');
 		} else {
 			if(c == '\n') {
 				++line;
 				++srcline;
 			}
 
-			res.push_back(c);
+			out.put(c);
 		}
 	}
 }
 
-void internal_preprocess_file(const std::string& fname,
-                              preproc_map& defines_map,
-                              int depth, std::vector<char>& res,
-                              std::vector<line_source>* lines_src, int& line)
+static void internal_preprocess_file(const std::string& fname,
+                                     preproc_map& defines_map,
+                                     int depth, std::ostream &out,
+                                     std::vector<line_source>* lines_src, int& line)
 {
 	//if it's a directory, we process all files in the directory
 	//that end in .cfg
@@ -371,7 +368,7 @@ void internal_preprocess_file(const std::string& fname,
 		for(std::vector<std::string>::const_iterator f = files.begin();
 		    f != files.end(); ++f) {
 			if(is_directory(*f) || f->size() > 4 && std::equal(f->end()-4,f->end(),".cfg")) {
-				internal_preprocess_file(*f,defines_map,depth,res,lines_src,line);
+				internal_preprocess_file(*f, defines_map, depth, out, lines_src, line);
 			}
 		}
 
@@ -382,12 +379,9 @@ void internal_preprocess_file(const std::string& fname,
 		lines_src->push_back(line_source(line,fname,1));
 	}
 
-	std::istream *s = stream_file(fname);
-	internal_preprocess_data(*s, defines_map, depth, res, lines_src, line, fname, 1);
-	delete s;
+	scoped_istream stream = stream_file(fname);
+	internal_preprocess_data(*stream, defines_map, depth, out, lines_src, line, fname, 1);
 }
-
-} //end anonymous namespace
 
 std::istream *preprocess_file(std::string const &fname,
                             const preproc_map* defines,
@@ -398,8 +392,8 @@ std::istream *preprocess_file(std::string const &fname,
 	if(defines != NULL)
 		defines_copy = *defines;
 
-	std::vector<char> res;
 	int linenum = 0;
-	internal_preprocess_file(fname,defines_copy,0,res,line_sources,linenum);
-	return new std::istringstream(std::string(res.begin(), res.end()));
+	std::stringstream *stream = new std::stringstream;
+	internal_preprocess_file(fname, defines_copy, 0, *stream, line_sources, linenum);
+	return stream;
 }
