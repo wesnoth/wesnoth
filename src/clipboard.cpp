@@ -1,7 +1,7 @@
 #include "global.hpp"
 
 #include "clipboard.hpp"
-#include "serialization/string_utils.hpp"
+
 #if defined(_X11) && !defined(__APPLE__)
 
 #define CLIPBOARD_FUNCS_DEFINED
@@ -230,7 +230,7 @@ void copy_ucs2_to_clipboard(const ucs2_string& text)
 {
 	if(text.empty())
 		return;
-	clipboard_string = ucs2_string_to_utf8_string(text);
+	clipboard_string = utils::ucs2_string_to_utf8_string(text);
 	UseX x11;
 	XSetSelectionOwner(x11->dpy(), XA_PRIMARY, x11->window(), CurrentTime);
 	XSetSelectionOwner(x11->dpy(), x11->XA_CLIPBOARD(), x11->window(), CurrentTime);
@@ -310,21 +310,22 @@ static bool try_grab_target(Atom target, std::string& ret)
 	//Timed out -- return empty string
 	return false;
 }
+
 ucs2_string copy_ucs2_from_clipboard()
 {
-	if(!clipboard_string.empty()) {
-		return utf8_string_to_ucs2_string(clipboard_string);
+	if(!clipboard_string.empty())
+		return utils::utf8_string_to_ucs2_string(clipboard_string);
 	utf8_string text;
 	
 	UseX x11;
 	if(try_grab_target(x11->UTF8_STRING(), text))
-		return utf8_string_to_ucs2_string(text);
+		return utils::utf8_string_to_ucs2_string(text);
 	if(try_grab_target(x11->XA_COMPOUND_TEXT(), text))
-		return utf8_string_to_ucs2_string(text);
+		return utils::utf8_string_to_ucs2_string(text);
 	if(try_grab_target(x11->XA_TEXT(), text))
-		return utf8_string_to_ucs2_string(text);
+		return utils::utf8_string_to_ucs2_string(text);
 	if(try_grab_target(XA_STRING, text))
-		return utf8_string_to_ucs2_string(text);
+		return utils::utf8_string_to_ucs2_string(text);
 	return ucs2_string();
 }
 
