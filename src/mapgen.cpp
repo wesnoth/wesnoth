@@ -313,9 +313,9 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 		v->y *= 1000;
 	}
 
-	const double force_multiplier = 0.1;
+	const double force_multiplier = 0.00001;
 
-	const int niterations = 20;
+	const int niterations = 30;
 	for(int i = 0; i != niterations; ++i) {
 
 		//go through each castle, repelling
@@ -334,7 +334,7 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 			
 				const double force_size = 50000;
 				if(dist < force_size) {
-					const double power = force_multiplier * (force_size - dist);
+					const double power = force_multiplier * (force_size - dist) * (force_size - dist);
 					const double xpower = power * xdist/(xdist+ydist) * (ci->x < i->x ? -1.0 : 1.0);
 					const double ypower = power * ydist/(xdist+ydist) * (ci->y < i->y ? -1.0 : 1.0);
 					xvelocity[index] += xpower;
@@ -356,9 +356,9 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 				if(*ci == *v)
 					ci->x += 1;
 			
-				const double force_size = 20000;
+				const double force_size = 30000;
 				if(dist < force_size) {
-					const double power = force_multiplier * (force_size - dist);
+					const double power = force_multiplier * (force_size - dist) * (force_size - dist);
 					const double xpower = power * xdist/(xdist+ydist) * (ci->x < v->x ? 1.0 : -1.0);
 					const double ypower = power * ydist/(xdist+ydist) * (ci->y < v->y ? 1.0 : -1.0);
 					xvelocity[index] += xpower;
@@ -367,24 +367,28 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 			}
 
 			//repel from the borders
-			const int border_force = 30000;
+			const int border_force = 20000;
 			if(ci->x < min_x*1000 + border_force) {
-				const double power = force_multiplier * (border_force - (ci->x - min_x*1000));
+				const double force = (border_force - (ci->x - min_x*1000));
+				const double power = force_multiplier * force * force;
 				xvelocity[index] += power;
 			}
 
 			if(ci->x > max_x*1000 - border_force) {
-				const double power = force_multiplier * (border_force - (max_x*1000 - ci->x));
+				const double force = (border_force - (max_x*1000 - ci->x));
+				const double power = force_multiplier * force * force;
 				xvelocity[index] -= power;
 			}
 
 			if(ci->y < min_y*1000 + border_force) {
-				const double power = force_multiplier * (border_force - (ci->y - min_y*1000));
+				const double force = (border_force - (ci->y - min_y*1000));
+				const double power = force_multiplier * force * force;
 				yvelocity[index] += power;
 			}
 
 			if(ci->y > max_y*1000 - border_force) {
-				const double power = force_multiplier * (border_force - (max_y*1000 - ci->y));
+				const double force = (border_force - (max_y*1000 - ci->y));
+				const double power = force_multiplier * force * force;
 				yvelocity[index] -= power;
 			}
 
@@ -698,7 +702,7 @@ std::string default_generate_map(size_t width, size_t height,
 	//in 'valid_terrain'.
 	int ntries = 0;
 	bool placing_bad = true;
-	const size_t max_tries = 1; //50000;
+	const size_t max_tries = 4;
 	while(placing_bad && ntries++ < max_tries) {
 
 		std::vector<location> castles;
