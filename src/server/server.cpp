@@ -183,7 +183,7 @@ int main()
 			if(!e.socket) {
 				std::cerr << "fatal network error: " << e.message << "\n";
 			} else {
-				std::cerr << "error with socket: " << e.message << "\n";
+				std::cerr << "socket closed: " << e.message << "\n";
 				
 				lobby_players.remove_player(e.socket);
 				for(std::vector<game>::iterator i = games.begin();
@@ -191,7 +191,13 @@ int main()
 					if(i->is_member(e.socket)) {
 						i->disconnect();
 						games.erase(i);
+						e.socket = 0;
+						break;
 					}
+				}
+
+				if(e.socket) {
+					e.disconnect();
 				}
 			}
 		}

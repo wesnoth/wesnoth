@@ -3,6 +3,7 @@
 #include "multiplayer.hpp"
 #include "multiplayer_client.hpp"
 #include "playlevel.hpp"
+#include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
 
@@ -94,7 +95,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 	const network::manager net_manager;
 
-	std::string host;
+	std::string host = preferences::network_host();
 	const int res = gui::show_dialog(disp,NULL,"","",
 	                                 gui::OK_CANCEL,NULL,NULL,
 	                                 string_table["remote_host"] + ": ",&host);
@@ -111,6 +112,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	if(!data_res) {
 		throw network::error(string_table["connection_timeout"]);
 	}
+
+	preferences::set_network_host(host);
 
 	//if we got a gamelist back - otherwise we have
 	//got a description of the game back

@@ -54,6 +54,9 @@ namespace preferences {
 	bool grid();
 	void set_grid(bool ison);
 
+	const std::string& network_host();
+	void set_network_host(const std::string& host);
+
 	double scroll_speed();
 	double get_scroll_speed();
 	void set_scroll_speed(double scroll);

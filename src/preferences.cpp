@@ -215,6 +215,16 @@ void set_grid(bool ison)
 	}
 }
 
+const std::string& network_host()
+{
+	return prefs["host"];
+}
+
+void set_network_host(const std::string& host)
+{
+	prefs["host"] = host;
+}
+
 namespace {
 	double scroll = 0.2;
 }

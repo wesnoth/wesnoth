@@ -180,8 +180,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 			}
 
 			if(buffer == "") {
-				std::cerr << "error receiving data: " << (int)*i << "\n";
-				throw error("error receiving data",*i);
+				throw error("remote host closed connection",*i);
 			}
 
 			if(buffer[buffer.size()-1] != 0) {
