@@ -13,7 +13,6 @@
 
 #include "global.hpp"
 
-#include "display.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
@@ -39,7 +38,7 @@ namespace {
 bool show_intro_part(CVideo &video, const config& part,
 		const std::string& scenario);
 
-void show_intro(display& screen, const config& data, const config& level)
+void show_intro(CVideo &video, const config& data, const config& level)
 {
 	std::cerr << "showing intro sequence...\n";
 
@@ -56,7 +55,7 @@ void show_intro(display& screen, const config& data, const config& level)
 		std::pair<const std::string*, const config*> item = *i;
 
 		if(*item.first == "part") {
-			showing = show_intro_part(screen.video(), (*item.second), scenario);
+			showing = show_intro_part(video, (*item.second), scenario);
 		} else if(*item.first == "if") {
 			const std::string type = game_events::conditional_passed(
 				NULL, *item.second) ? "then":"else";
@@ -66,7 +65,7 @@ void show_intro(display& screen, const config& data, const config& level)
 				return;
 			}
 			const config& selection = *thens;
-			show_intro(screen, selection, level);
+			show_intro(video, selection, level);
 		}
 	}
 

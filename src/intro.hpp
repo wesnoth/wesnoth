@@ -15,7 +15,6 @@
 
 class config;
 class CVideo;
-class display;
 #include "SDL.h"
 
 #include <string>
@@ -32,7 +31,7 @@ class display;
 //
 //each part of the sequence will be displayed in turn, with the
 //user able to go to the next part, or skip it entirely.
-void show_intro(display& screen, const config& data, const config& level);
+void show_intro(CVideo &video, const config& data, const config& level);
 
 void the_end(CVideo& screen);
 
