@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-17 14:39+0200\n"
+"POT-Creation-Date: 2004-11-25 11:44+0100\n"
 "PO-Revision-Date: 2004-09-11 12:08+0200\n"
 "Last-Translator: Mathias Bundgaard Svensson <freaken@freaken.dk>\n"
 "Language-Team:  <da@li.org>\n"
@@ -42,55 +42,55 @@ msgstr "Lejr"
 msgid "Paste"
 msgstr "Sæt Ind"
 
-#: src/editor/editor.cpp:310 src/editor/editor.cpp:387
+#: src/editor/editor.cpp:306 src/editor/editor.cpp:383
 msgid "Choose a Map to Load"
 msgstr "Vælg en Bane at Hente"
 
-#: src/editor/editor.cpp:314
+#: src/editor/editor.cpp:310
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Banen findes allerede. Vil du overskrive den?"
 
-#: src/editor/editor.cpp:335
+#: src/editor/editor.cpp:331
 msgid "Which Player?"
 msgstr "Hvilken Spiller?"
 
-#: src/editor/editor.cpp:336
+#: src/editor/editor.cpp:332
 msgid "Which player should start here?"
 msgstr "Hvilken spiller skal starte her?"
 
-#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
+#: src/editor/editor.cpp:400 src/editor/editor.cpp:479
 msgid "The file does not contain a valid map."
 msgstr "Filen indholder ikke en gyldig bane."
 
-#: src/editor/editor.cpp:541
+#: src/editor/editor.cpp:537
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' findes ikke eller kan ikke blive læst som en fil."
 
-#: src/editor/editor.cpp:553
+#: src/editor/editor.cpp:549
 msgid "Load failed: "
 msgstr "Hentning fejlede."
 
-#: src/editor/editor.cpp:748
+#: src/editor/editor.cpp:744
 msgid "You must have a hex selected on the board."
 msgstr "Du må vælge et felt på brættet."
 
-#: src/editor/editor.cpp:1000
+#: src/editor/editor.cpp:996
 msgid "Quit Editor"
 msgstr "Afslut Editoren"
 
-#: src/editor/editor.cpp:1005
+#: src/editor/editor.cpp:1001
 msgid "Do you want to save the map before quitting?"
 msgstr "Vil du gemme banen før du afslutter?"
 
-#: src/editor/editor.cpp:1025
+#: src/editor/editor.cpp:1021
 msgid "Map saved."
 msgstr "Bane gemt."
 
-#: src/editor/editor.cpp:1032
+#: src/editor/editor.cpp:1028
 msgid "Could not save the map: $msg"
 msgstr "Kunne ikke gemme bane: $msg"
 
-#: src/editor/editor.cpp:1099
+#: src/editor/editor.cpp:1084
 msgid "Player"
 msgstr "Spiller"
 
@@ -98,15 +98,15 @@ msgstr "Spiller"
 msgid "Your modifications to the map will be lost.  Continue?"
 msgstr "Dine ændringer vil blive tabt. Forsæt?"
 
-#: src/editor/editor_dialogs.cpp:72 src/editor/editor_dialogs.cpp:191
+#: src/editor/editor_dialogs.cpp:72 src/editor/editor_dialogs.cpp:193
 msgid "Create New Map"
 msgstr "Lav en ny bane"
 
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:385
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:388
 msgid "Width:"
 msgstr "Bredde:"
 
-#: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:386
+#: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:389
 msgid "Height:"
 msgstr "Højde:"
 
@@ -122,66 +122,66 @@ msgstr "Generer tilfældig bane"
 msgid "Random Generator Settings"
 msgstr "Banegenerator indstillinger"
 
-#: src/editor/editor_dialogs.cpp:94 src/editor/editor_dialogs.cpp:402
+#: src/editor/editor_dialogs.cpp:94 src/editor/editor_dialogs.cpp:405
 msgid "Cancel"
 msgstr "Annuller"
 
-#: src/editor/editor_dialogs.cpp:177
+#: src/editor/editor_dialogs.cpp:179
 msgid "Map creation failed."
 msgstr "Det lykkedes ikke at lave en bane."
 
-#: src/editor/editor_dialogs.cpp:243
+#: src/editor/editor_dialogs.cpp:245
 msgid "Close Window"
 msgstr "Luk Vindue"
 
-#: src/editor/editor_dialogs.cpp:249 src/editor/editor_dialogs.cpp:315
+#: src/editor/editor_dialogs.cpp:251 src/editor/editor_dialogs.cpp:318
 msgid "Preferences"
 msgstr "Indstillinger"
 
-#: src/editor/editor_dialogs.cpp:251
+#: src/editor/editor_dialogs.cpp:253
 msgid "Scroll Speed:"
 msgstr "Scoll hastighed:"
 
-#: src/editor/editor_dialogs.cpp:277
+#: src/editor/editor_dialogs.cpp:280
 msgid "Full Screen"
 msgstr "Fuldskærmstilstand"
 
-#: src/editor/editor_dialogs.cpp:284
+#: src/editor/editor_dialogs.cpp:287
 msgid "Show Grid"
 msgstr "Vis Net"
 
-#: src/editor/editor_dialogs.cpp:291
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Video Mode"
 
-#: src/editor/editor_dialogs.cpp:294
+#: src/editor/editor_dialogs.cpp:297
 msgid "Hotkeys"
 msgstr "Genvejstaster"
 
-#: src/editor/editor_dialogs.cpp:383 src/editor/editor_dialogs.cpp:441
+#: src/editor/editor_dialogs.cpp:386 src/editor/editor_dialogs.cpp:446
 msgid "Resize Map"
 msgstr "Skift størrelse"
 
-#: src/editor/editor_dialogs.cpp:403
+#: src/editor/editor_dialogs.cpp:406
 msgid "Ok"
 msgstr "Ok"
 
-#: src/editor/editor_dialogs.cpp:484
+#: src/editor/editor_dialogs.cpp:489
 msgid "X-Axis"
 msgstr "X-Aksen"
 
-#: src/editor/editor_dialogs.cpp:485
+#: src/editor/editor_dialogs.cpp:490
 msgid "Y-Axis"
 msgstr "Y-Aksen"
 
-#: src/editor/editor_dialogs.cpp:486
+#: src/editor/editor_dialogs.cpp:491
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Spejl banen (dette ænder måske dimensionerne af banen):"
 
-#: src/editor/editor_palettes.cpp:314
+#: src/editor/editor_palettes.cpp:316
 msgid "FG"
 msgstr "Forgrund"
 
-#: src/editor/editor_palettes.cpp:316
+#: src/editor/editor_palettes.cpp:318
 msgid "BG"
 msgstr "Baggrund"
