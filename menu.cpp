@@ -136,7 +136,8 @@ class menu
 		if(column_widths_.empty()) {
 			for(int row = 0; row != items_.size(); ++row) {
 				for(int col = 0; col != items_[row].size(); ++col) {
-					static const SDL_Rect area = {0,0,1024,768};
+					static const SDL_Rect area =
+					                {0,0,display_->x(),display_->y()};
 
 					const SDL_Rect res =
 						font::draw_text(NULL,area,menu_font_size,
@@ -176,7 +177,7 @@ class menu
 		                                 item == selected_ ? 150:0,0,0,
 		                                 0.7,display_->video().getSurface());
 
-		SDL_Rect area = {0,0,1024,768};
+		SDL_Rect area = {0,0,display_->x(),display_->y()};
 
 		const std::vector<int>& widths = column_widths();
 		
@@ -229,7 +230,7 @@ class menu
 			y = prev.y + prev.h;
 		}
 		
-		static const SDL_Rect area = {0,0,1024,768};
+		static const SDL_Rect area = {0,0,display_->x(),display_->y()};
 
 		SDL_Rect res = font::draw_text(NULL,area,menu_font_size,
 			                   font::NORMAL_COLOUR,items_[item][0],x_,y);
@@ -287,7 +288,7 @@ public:
 
 	int height() const {
 		if(height_ == -1) {
-			const SDL_Rect area = { 0, 0, 1024, 768 };
+			const SDL_Rect area = { 0, 0, display_->x(), display_->y() };
 			height_ = 0;
 			for(int i = 0; i != items_.size() && i != max_menu_items; ++i) {
 				height_ += get_item_rect(i).h;
@@ -451,7 +452,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	CVideo& screen = disp.video();
 	SDL_Surface* const scr = screen.getSurface();
 
-	SDL_Rect clipRect = { 0, 0, 1024, 768 };
+	SDL_Rect clipRect = { 0, 0, disp.x(), disp.y() };
 
 	const bool use_textbox = text_widget_text != NULL;
 	static const std::string default_text_string = "";
@@ -657,7 +658,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	if(!units.empty()) {
 		const int unitw = 200;
-		const int unith = 768/2;
+		const int unith = disp.y()/2;
 		draw_solid_tinted_rectangle(unitx,unity,unitw,unith,
 		                            0,0,0,1.0,scr);
 		draw_rectangle(unitx,unity,unitw,unith,border_colour,scr);
@@ -853,7 +854,7 @@ TITLE_RESULT show_title(display& screen)
 	multi_button.draw();
 	quit_button.draw();
 	language_button.draw();
-	screen.video().update(0,0,1027,768);
+	screen.video().update(0,0,screen.x(),screen.y());
 	
 	CKey key;
 	

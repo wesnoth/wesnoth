@@ -87,7 +87,7 @@ void show_intro(display& screen, config& data)
 			stream << c;
 		}
 
-		static const SDL_Rect area = {0,0,1024,768};
+		static const SDL_Rect area = {0,0,screen.x(),screen.y()};
 		font::draw_text(&screen,area,16,font::NORMAL_COLOUR,stream.str(),
 		                textx,texty);
 		next_button.draw();
@@ -227,7 +227,7 @@ void show_map_scene(display& screen, config& data)
 		SDL_Delay(500);
 	}
 
-	static const SDL_Rect area = {0,0,1024,768};
+	static const SDL_Rect area = {0,0,screen.x(),screen.y()};
 	const SDL_Rect scenario_size =
 	      font::draw_text(NULL,area,24,font::NORMAL_COLOUR,scenario,0,0);
 	font::draw_text(&screen,area,24,font::NORMAL_COLOUR,scenario,

@@ -174,7 +174,7 @@ int play_game(int argc, char** argv)
 		}
 	}
 	
-	const int bpp = video.modePossible(1024,768,16,video_flags);
+	const int bpp = video.modePossible(1152,864,16,video_flags);
 
 	if(bpp == 0) {
 		std::cerr << "The required video mode, 1024x768x16 "
@@ -195,7 +195,7 @@ int play_game(int argc, char** argv)
 		          << "For best results, run the program on a 16 bpp display\n";
 	}
 
-	const int res = video.setMode(1024,768,16,video_flags);
+	const int res = video.setMode(1152,864,16,video_flags);
 	if(res != 16) {
 		std::cerr << "required video mode, 1024x768x16 is not supported\n";
 		return 0;

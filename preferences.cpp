@@ -166,15 +166,15 @@ void set_grid(bool ison)
 void show_preferences_dialog(display& disp)
 {
 	const int border_size = 6;
-	const int xpos = 1024/2 - 300;
-	const int ypos = 768/2 - 200;
+	const int xpos = disp.x()/2 - 300;
+	const int ypos = disp.y()/2 - 200;
 	const int width = 600;
 	const int height = 400;
 
 	disp.invalidate_all();
 	disp.draw();
 	
-	SDL_Rect clip_rect = {0,0,1024,768};
+	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
 	SDL_Rect title_rect = font::draw_text(NULL,clip_rect,16,font::NORMAL_COLOUR,
 	                                      string_table["preferences"],0,0);
 

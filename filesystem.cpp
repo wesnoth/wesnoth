@@ -94,15 +94,17 @@ void get_files_in_dir(const std::string& directory,
 
 	int res = dir;
 	do {
-		const std::string path = (mode == ENTIRE_FILE_PATH ?
-			directory + "/" : std::string("")) + fileinfo.name;
+		if(fileinfo.name[0] != '.') {
+			const std::string path = (mode == ENTIRE_FILE_PATH ?
+				directory + "/" : std::string("")) + fileinfo.name;
 
-		if(fileinfo.attrib&_A_SUBDIR) {
-			if(dirs != NULL)
-				dirs->push_back(path);
-		} else {
-			if(files != NULL)
-				files->push_back(path);
+			if(fileinfo.attrib&_A_SUBDIR) {
+				if(dirs != NULL)
+					dirs->push_back(path);
+			} else {
+				if(files != NULL)
+					files->push_back(path);
+			}
 		}
 
 		res = _findnext(dir,&fileinfo);
@@ -113,6 +115,9 @@ void get_files_in_dir(const std::string& directory,
 #else
 	struct dirent* entry;
 	while((entry = readdir(dir)) != NULL) {
+		if(entry->d_name[0] == '.')
+			continue;
+
 		const std::string name((directory + "/") + entry->d_name);
 
 		//try to open it as a directory to test if it is a directory
