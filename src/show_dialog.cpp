@@ -569,9 +569,9 @@ int show_dialog(display& disp, surface image,
 	int xframe = maximum<int>(0,xloc >= 0 ? xloc : scr->w/2 - (frame_width + left_preview_pane_width + right_preview_pane_width)/2);
 	int yframe = maximum<int>(0,yloc >= 0 ? yloc : scr->h/2 - (frame_height + above_preview_pane_height)/2);
 
-	std::cerr << "above_preview_pane_height: " << above_preview_pane_height << "\n";
-	std::cerr << "yframe: " << scr->h/2 << " - " << (frame_height + above_preview_pane_height)/2 << " = " << yframe << "\n";
-	std::cerr << "frame_height: " << frame_height << "\n";
+	//std::cerr << "above_preview_pane_height: " << above_preview_pane_height << "\n";
+	//std::cerr << "yframe: " << scr->h/2 << " - " << (frame_height + above_preview_pane_height)/2 << " = " << yframe << "\n";
+	//std::cerr << "frame_height: " << frame_height << "\n";
 
 	if(xloc <= -1 || yloc <= -1) {
 		xloc = xframe + left_preview_pane_width;
