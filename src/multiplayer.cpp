@@ -410,6 +410,20 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 	recorder.set_save_info(state);
 
+	if(!recorder.empty()) {
+		const int res = gui::show_dialog(disp,NULL,
+               "", string_table["replay_game_message"],
+			   gui::YES_NO);
+		//if yes, then show the replay, otherwise
+		//skip showing the replay
+		if(res == 0) {
+			recorder.set_skip(0);
+		} else {
+			std::cerr << "skipping...\n";
+			recorder.set_skip(-1);
+		}
+	}
+
 	std::vector<config*> story;
 	play_level(units_data,cfg,&level,disp.video(),state,story);
 	recorder.clear();

@@ -123,8 +123,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 	bool replaying = (recorder.empty() == false);
 
-	const int start_command = recorder.ncommands();
-
 	std::cout << "starting main loop\n";
 	for(bool first_time = true; true; first_time = false) {
 		try {
@@ -168,6 +166,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						dialogs::show_objectives(gui,*level);
 					}
 
+					const int start_command = recorder.ncommands();
+
 					try {
 						play_turn(gameinfo,state_of_game,status,terrain_config,
 						          level, video, key, gui, events_manager, map,
@@ -196,6 +196,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					}
 
 				} else if(!replaying && team_it->is_ai()) {
+					const int start_command = recorder.ncommands();
+
 					ai::do_move(gui,map,gameinfo,units,teams,
 					            player_number,status);
 
@@ -364,6 +366,18 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			std::cerr << "caught replay::error\n";
 			gui::show_dialog(gui,NULL,"",string_table["bad_save_message"],
 			                 gui::OK_ONLY);
+			return QUIT;
+		}
+		catch(network::error& e) {
+			std::string label = string_table["multiplayer_save_name"];
+			const int res = gui::show_dialog(gui,NULL,"",
+			                 string_table["save_game_error"],
+			                 gui::OK_CANCEL,NULL,NULL,
+			                 string_table["save_game_label"],&label);
+			if(res == 0) {
+				recorder.save_game(gameinfo,label);
+			}
+
 			return QUIT;
 		}
 

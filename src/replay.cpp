@@ -437,8 +437,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::map<gamemap::location,unit>::iterator u=units.find(src);
 			if(u == units.end()) {
 				std::cerr << "unfound location for source of movement: "
-				          << src.x << "," << src.y << "-"
-						  << dst.x << "," << dst.y << "\n";
+				          << (src.x+1) << "," << (src.y+1) << "-"
+						  << (dst.x+1) << "," << (dst.y+1) << "\n";
 				throw replay::error();
 			}
 

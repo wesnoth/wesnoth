@@ -217,7 +217,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		 font::draw_text(NULL, clipRect, message_font_size,
 		                 font::NORMAL_COLOUR, text_widget_label, 0, 0, NULL).w +
 		                            text_widget.width();
-		text_widget_height = text_widget.height();
+		text_widget_height = text_widget.height() + 6;
 	}
 
 	menu menu_(disp,menu_items,type == MESSAGE);

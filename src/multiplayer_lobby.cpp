@@ -137,7 +137,8 @@ RESULT enter(display& disp, config& game_data)
 
 			const bool enter = key[KEY_ENTER] && !old_enter;
 			old_enter = key[KEY_ENTER];
-			if(enter || send_message.process(mousex,mousey,left_button)) {
+			if((enter || send_message.process(mousex,mousey,left_button)) &&
+			   message_entry.text().empty() == false) {
 				config msg;
 				config& child = msg.add_child("message");
 				child["message"] = message_entry.text();
