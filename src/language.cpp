@@ -153,6 +153,9 @@ std::string get_locale()
 
 	const std::string& prefs_locale = preferences::locale();
 	if(prefs_locale.empty() == false) {
+		char* setlocaleres = setlocale (LC_MESSAGES, prefs_locale.c_str());
+		if(setlocale == NULL)
+			std::cerr << "call to setlocale() failed for " << prefs_locale.c_str() << "\n";
 		return prefs_locale;
 	}
 
