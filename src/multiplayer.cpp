@@ -26,94 +26,151 @@
 
 namespace {
 
-bool accept_network_connections(config& players)
+class connection_acceptor : public gui::dialog_action
 {
-	log_scope("accept network connections");
-	typedef std::map<config*,network::connection> positions_map;
-	positions_map positions;
+public:
 
+	typedef std::map<config*,network::connection> positions_map;
+
+	connection_acceptor(config& players);
+	int do_action();
+
+	bool is_complete() const;
+
+	std::vector<std::string> get_positions_status() const;
+
+	enum { CONNECTIONS_PART_FILLED=1, CONNECTIONS_FILLED=2 };
+
+private:
+	positions_map positions_;
+	config& players_;
+	std::vector<config*>& sides_;
+};
+
+connection_acceptor::connection_acceptor(config& players)
+                   : players_(players), sides_(players.children["side"])
+{
 	std::vector<config*>& sides = players.children["side"];
 	for(std::vector<config*>::const_iterator i = sides.begin();
 	    i != sides.end(); ++i) {
 		if((*i)->values["controller"] == "network") {
-			positions[*i] = 0;
+			positions_[*i] = 0;
 		}
 	}
+}
 
-	if(positions.empty())
-		return true;
+int connection_acceptor::do_action()
+{
+	network::connection sock = network::accept_connection();
+	if(sock) {
+		std::cerr << "Received connection\n";
+		network::send_data(players_,sock);
+	}
 
-	std::cerr << "waiting for connections...\n";
-	for(;;) {
-		network::connection sock = network::accept_connection();
-		if(sock) {
-			std::cerr << "Received connection\n";
-			network::send_data(players,sock);
-		}
+	config cfg;
+	sock = network::receive_data(cfg);
+	if(sock) {
+		const int side_taken = atoi(cfg.values["side"].c_str())-1;
+		if(side_taken >= 0 && side_taken < int(sides_.size())) {
+			positions_map::iterator pos = positions_.find(sides_[side_taken]);
+			if(pos != positions_.end()) {
+				if(!pos->second) {
+					std::cerr << "client has taken a valid position\n";
 
-		config cfg;
-		sock = network::receive_data(cfg);
-		if(sock) {
-			const int side_taken = atoi(cfg.values["side"].c_str())-1;
-			if(side_taken >= 0 && side_taken < int(sides.size())) {
-				positions_map::iterator pos = positions.find(sides[side_taken]);
-				if(pos != positions.end()) {
-					if(!pos->second) {
-						std::cerr << "client has taken a valid position\n";
+					//broadcast to everyone the new game status
+					pos->first->values["taken"] = "yes";
+					positions_[sides_[side_taken]] = sock;
+					network::send_data(players_);
 
-						//broadcast to everyone the new game status
-						pos->first->values["taken"] = "yes";
-						positions[sides[side_taken]] = sock;
-						network::send_data(players);
+					std::cerr << "sent player data\n";
 
-						std::cerr << "sent player data\n";
+					//send a reply telling the client they have secured
+					//the side they asked for
+					std::stringstream side;
+					side << (side_taken+1);
+					config reply;
+					reply.values["side_secured"] = side.str();
+					std::cerr << "going to send data...\n";
+					network::send_data(reply,sock);
 
-						//send a reply telling the client they have secured
-						//the side they asked for
-						std::stringstream side;
-						side << (side_taken+1);
-						config reply;
-						reply.values["side_secured"] = side.str();
-						std::cerr << "going to send data...\n";
-						network::send_data(reply,sock);
-
-						//see if all positions are now filled
-						bool unclaimed = false;
-						for(positions_map::const_iterator p = positions.begin();
-						    p != positions.end(); ++p) {
-							if(!p->second) {
-								unclaimed = true;
-								break;
-							}
+					//see if all positions are now filled
+					bool unclaimed = false;
+					for(positions_map::const_iterator p = positions_.begin();
+					    p != positions_.end(); ++p) {
+						if(!p->second) {
+							unclaimed = true;
+							break;
 						}
+					}
 
-						if(!unclaimed) {
-							std::cerr << "starting game now...\n";
-							config start_game;
-							start_game.children["start_game"].
-							                         push_back(new config());
-							network::send_data(start_game);
-							return true;
-						}
-					} else {
-						config response;
-						response.values["failed"] = "yes";
-						network::send_data(response,sock);
+					if(!unclaimed) {
+						std::cerr << "starting game now...\n";
+						config start_game;
+						start_game.children["start_game"].
+						                         push_back(new config());
+						network::send_data(start_game);
+						return CONNECTIONS_FILLED;
 					}
 				} else {
-					std::cerr << "tried to take illegal side: " << side_taken
-					          << "\n";
+					config response;
+					response.values["failed"] = "yes";
+					network::send_data(response,sock);
 				}
 			} else {
-				std::cerr << "tried to take unknown side: " << side_taken
+				std::cerr << "tried to take illegal side: " << side_taken
 				          << "\n";
 			}
+		} else {
+			std::cerr << "tried to take unknown side: " << side_taken
+			          << "\n";
 		}
 
-		std::cerr << "pump\n";
-		pump_events();
-		SDL_Delay(50);
+		return CONNECTIONS_PART_FILLED;
 	}
+
+	return CONTINUE_DIALOG;
+}
+
+bool connection_acceptor::is_complete() const
+{
+	for(positions_map::const_iterator i = positions_.begin();
+	    i != positions_.end(); ++i) {
+		if(!i->second) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+std::vector<std::string> connection_acceptor::get_positions_status() const
+{
+	std::vector<std::string> result;
+	for(positions_map::const_iterator i = positions_.begin();
+	    i != positions_.end(); ++i) {
+		result.push_back(i->first->values["name"] + "," +
+		                 (i->second ? ("@" + string_table["position_taken"]) :
+		                              string_table["position_vacant"]));
+	}
+
+	return result;
+}
+
+bool accept_network_connections(display& disp, config& players)
+{
+	connection_acceptor acceptor(players);
+
+	while(acceptor.is_complete() == false) {
+		const std::vector<std::string>& items = acceptor.get_positions_status();
+		const int res = gui::show_dialog(disp,NULL,"",
+		                                 string_table["awaiting_connections"],
+		                       gui::CANCEL_ONLY,&items,NULL,"",NULL,&acceptor);
+		if(res == 0) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 }
@@ -337,7 +394,7 @@ void play_multiplayer(display& disp, game_data& units_data, config& cfg,
 	const network::manager net_manager;
 	const network::server_manager server_man;
 
-	const bool network_state = accept_network_connections(level);
+	const bool network_state = accept_network_connections(disp,level);
 	if(network_state == false)
 		return;
 

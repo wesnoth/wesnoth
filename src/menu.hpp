@@ -32,7 +32,17 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,
 								 double alpha, SDL_Surface* target);
 
-enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL };
+class dialog_action
+{
+public:
+	virtual ~dialog_action() {}
+
+	virtual int do_action() = 0;
+
+	enum { CONTINUE_DIALOG=-2 };
+};
+
+enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY };
 
 //if a menu is given, then returns -1 if the dialog was cancelled, and the
 //index of the selection otherwise. If no menu is given, returns the index
@@ -43,7 +53,8 @@ int show_dialog(display& screen, SDL_Surface* image,
                 const std::vector<std::string>* menu_items=NULL,
                 const std::vector<unit>* units=NULL,
 				const std::string& text_widget_label="",
-				std::string* text_widget_text=NULL
+				std::string* text_widget_text=NULL,
+                dialog_action* action=NULL
 			 );
 
 enum TITLE_RESULT { TUTORIAL, NEW_CAMPAIGN, MULTIPLAYER, LOAD_GAME, QUIT_GAME,

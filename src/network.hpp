@@ -33,8 +33,11 @@ void send_data(config& cfg, connection connection_num=0);
 
 struct error
 {
-	error(const std::string& msg) : message(msg) {}
+	error(const std::string& msg, connection sock=0) : message(msg) {}
 	std::string message;
+	connection socket;
+
+	void disconnect() { if(socket) { network::disconnect(socket); } }
 };
 
 }

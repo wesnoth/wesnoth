@@ -447,7 +447,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 				const std::vector<std::string>* menu_items_ptr,
 				const std::vector<unit>* units_ptr,
 				const std::string& text_widget_label,
-				std::string* text_widget_text)
+				std::string* text_widget_text,
+                dialog_action* action)
 {
 	if(disp.update_locked())
 		return -1;
@@ -544,6 +545,12 @@ int show_dialog(display& disp, SDL_Surface* image,
 		case OK_CANCEL: {
 			static const std::string thebuttons[] = { "ok_button",
 			                                          "cancel_button",""};
+			button_list = thebuttons;
+			break;
+		}
+
+		case CANCEL_ONLY: {
+			static const std::string thebuttons[] = { "cancel_button", "" };
 			button_list = thebuttons;
 			break;
 		}
@@ -826,6 +833,13 @@ int show_dialog(display& disp, SDL_Surface* image,
 				} else {
 					return -1;
 				}
+			}
+		}
+
+		if(action != NULL) {
+			const int act = action->do_action();
+			if(act != dialog_action::CONTINUE_DIALOG) {
+				return act;
 			}
 		}
 

@@ -8,7 +8,7 @@
 
 namespace {
 
-SDLNet_SocketSet socket_set = SDLNet_AllocSocketSet(64);
+SDLNet_SocketSet socket_set = 0;
 typedef std::vector<network::connection> sockets_list;
 sockets_list sockets;
 
@@ -25,6 +25,8 @@ manager::manager()
 	if(SDLNet_Init() == -1) {
 		throw error(SDL_GetError());
 	}
+
+	socket_set = SDLNet_AllocSocketSet(64);
 }
 
 manager::~manager()
@@ -148,9 +150,8 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				if(len == 0) {
 					break;
 				} else if(len < 0) {
-					disconnect(*i);
 					throw error(std::string("error receiving data: ") +
-					            SDLNet_GetError());
+					            SDLNet_GetError(),*i);
 				}
 
 				buffer.resize(buffer.size()+1);
@@ -162,8 +163,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 			}
 
 			if(buffer == "") {
-				disconnect(*i);
-				throw error("error receiving data");
+				throw error("error receiving data",*i);
 			}
 
 			std::cerr << "received: " << buffer << "\n";
@@ -222,8 +222,7 @@ void send_data(config& cfg, connection connection_num)
 
 	if(res < int(value.size()+1)) {
 		std::cerr << "sending data failed: " << res << "/" << value.size() << ": " << SDL_GetError() << "\n";
-		disconnect(connection_num);
-		throw error("Could not send data over socket");
+		throw error("Could not send data over socket",connection_num);
 	}
 }
 
