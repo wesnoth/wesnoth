@@ -1473,15 +1473,14 @@ int play_game(int argc, char** argv)
 		}
 	}
 
+	srand(time(NULL));
+
+	game_controller game(argc,argv,use_sound);
+
 	if (!filesystem_init()) {
 		std::cerr << "cannot init filesystem code\n";
 		return 1;
 	}
-
-
-	srand(time(NULL));
-
-	game_controller game(argc,argv,use_sound);
 
 	// I would prefer to setup locale first so that early error
 	// messages can get localized, but we need the game_controller
