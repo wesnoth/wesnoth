@@ -730,7 +730,13 @@ lobby::RESULT mp_connect::process()
 				const int choice = rand()%real_sides.size();
 
 				(**side)["name"] = (*real_sides[choice])["name"];
-				(**side)["type"] = (*real_sides[choice])["type"];
+
+				// Choose a random leader type.  
+				std::vector<std::string> types = 
+					config::split((*real_sides[choice])["leader"]);
+				const int lchoice = rand() % types.size();
+
+				(**side)["type"] = types[lchoice];
 				(**side)["recruit"] = (*real_sides[choice])["recruit"];
 				(**side)["music"] = (*real_sides[choice])["music"];
 
