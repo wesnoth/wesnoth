@@ -1,10 +1,14 @@
 CVS HEAD:
+ * load game
  * more halo effects
  * improved and added new unit images, attack images, healing images, attack icons
  * language fixes and polishing (english)
  * scenario balancing for 'Heir to the Throne' campaign:
-   * Isle of Anduin
    * Elves Besieged
+   * Isle of Anduin
+   * The Siege of Elensefar
+   * Crossroads
+   * Dwarven Doors
  * new units
    * Cavalier
    * Drakonian Burner
@@ -19,6 +23,8 @@ CVS HEAD:
    * Vampire Lady
  * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
  * Yeti's race changed to monster
+ * Renamed 'Cavalry' to 'Cavalryman'
+ * Renamed 'Golbin Direwolver' to 'Direwolf Rider'
  * unit balancing:
    * Ancient Wose: increased cost
    * Ancient Lich: reduced hitpoints, reduced ranged damage
@@ -34,7 +40,8 @@ CVS HEAD:
    * Elvish Avenger: reduced number of melee attacks
    * Elvish Champion: reduced melee damage
    * Elvish Lord: reduced melee damage
-   * Goblin Direwolver: increased melee damage, reduced number of melee attacks
+   * Elvish Marshal: reduced melee damage, reduced number of ranged attacks
+   * Direwolf Rider: increased melee damage, reduced number of melee attacks
    * Great Mage: reduced melee damage, reduced ranged damage, removed teleport ability
    * Halbardier: reduced melee damages, gave 'first strike' ability
    * Heavy Infantry: reduced melee damage
@@ -46,10 +53,13 @@ CVS HEAD:
    * Orcish Warlord: reduced melee damage
    * Pikeman: reduced melee damage, gave 'first strike' ability
    * Princess: reduced melee damage
+   * Rogue: increased melee damage
    * Royal Guard: reduced melee damage
    * Shock Trooper: reduced melee damage
    * Spearman: reduced ranged damage, gave 'first strike' ability
    * Wose: increased cost
+ * translation updates:
+   * dutch
  * multiplayer improvements:
    * balanced 'King of the Hill' map
    * improved village naming
@@ -75,9 +85,12 @@ CVS HEAD:
    * fixed a problem where the selected terrain and brush size was not remembered through operations that affected the whole map, such as flip and resize
    * fixed a problem where the palettes in the editor would not refresh correctly after the windows was resized
  * added WML feature to append an element to another using [+element] syntax
+ * made userdata/data/utils loaded in early in game.cfg to allow scenario designers to define utility files
  * fixed multiline text box not wrapping lines at word boundaries
  * fixed loading/saving of multiplayer games that have a double-quote (") in the chat text
  * fixed spaces following non-ASCII characters disappearing in intro (#9163)
+ * fixed clashing IDs in 'Blackwater Port'
+ * fixed missing #endifs in 'Brother Against Brother' and 'Crelanus Book'
  * fixed crash in wesnothd
  * made intro.cpp use the unicode routines in language.cpp to split UTF-8 sequences in character
  * added support for different colour depths
