@@ -424,7 +424,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		const paths::route cur_route = a_star_search(u->first,tg->loc,
 		                       minimum(tg->value/best_rating,500.0),cost_calc);
 
-		double rating = tg->value/cur_route.move_left;
+		double rating = tg->value/maximum<int>(1,cur_route.move_left);
 
 		//for 'support' targets, they are rated much higher if we can get there within two turns,
 		//otherwise they are worthless to go for at all.
