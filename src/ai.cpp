@@ -206,7 +206,15 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 			continue;
 		}
 
+		//discount our own leader, and our units that have been turned to stone
 		if(!enemy && (un_it->second.can_recruit() || un_it->second.stone())) {
+			continue;
+		}
+
+		//we can't see where invisible enemy units might move
+		if(enemy &&
+		   un_it->second.invisible(info_.map.underlying_terrain(info_.map.get_terrain(un_it->first)), 
+		   info_.state.get_time_of_day().lawful_bonus,un_it->first,info_.units,info_.teams)) {
 			continue;
 		}
 

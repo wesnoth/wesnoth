@@ -1297,6 +1297,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 			SDL_BlitSurface(flag,NULL,dst,&dstrect);
 		}
 
+		draw_tile_adjacent(x,y,image_type,ADJACENT_TERRAIN);
+
 		typedef std::multimap<gamemap::location,std::string>::const_iterator Itor;
 
 		for(std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
@@ -1311,8 +1313,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(overlay_surface,NULL,dst,&dstrect);
 		}
-
-		draw_tile_adjacent(x,y,image_type,ADJACENT_TERRAIN);
 	}
 
 	if(!is_shrouded) {
