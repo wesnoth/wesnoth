@@ -57,7 +57,7 @@ effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientati
 
 	set_location(xpos,ypos);
 
-	images_.start_animation(0, -1);
+	images_.start_animation(0, lifetime);
 
 	if(!images_.animation_finished()) {
 		images_.update_current_frame();

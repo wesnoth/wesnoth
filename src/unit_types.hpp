@@ -153,6 +153,11 @@ public:
 	//for at least as long as the class instance
 	unit_type(const config& cfg, const movement_type_map& movement_types,
 	          const race_map& races, const std::vector<config*>& traits);
+	unit_type(const unit_type& o);
+
+	~unit_type();
+
+	const unit_type* get_gender_unit_type(unit_race::GENDER gender) const;
 
 	int num_traits() const;
 
@@ -223,13 +228,17 @@ public:
 
 	const std::vector<config*>& possible_traits() const;
 
-	unit_race::GENDER gender() const;
+	const std::vector<unit_race::GENDER>& genders() const;
 
 	const std::string& race() const;
 
 	const unit_animation* defend_animation(bool hits, attack_type::RANGE range) const;
 
 private:
+	void operator=(const unit_type& o);
+
+	unit_type* gender_types_[2];
+
 	const config& cfg_;
 
 	const unit_race* race_;
@@ -252,7 +261,7 @@ private:
 
 	const std::vector<config*>& possibleTraits_;
 
-	unit_race::GENDER gender_;
+	std::vector<unit_race::GENDER> genders_;
 
 	struct defensive_animation
 	{

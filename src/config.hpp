@@ -227,8 +227,8 @@ struct config
 private:
 	size_t write_size(size_t tab=0) const;
 	std::string::iterator write_internal(std::string::iterator out, size_t tab=0) const;
-	std::string::const_iterator read_compressed_internal(std::string::const_iterator i1, std::string::const_iterator i2, compression_schema& schema);
-	void write_compressed_internal(compression_schema& schema, std::vector<char>& res) const;
+	std::string::const_iterator read_compressed_internal(std::string::const_iterator i1, std::string::const_iterator i2, compression_schema& schema, int level);
+	void write_compressed_internal(compression_schema& schema, std::vector<char>& res, int level) const;
 
 	//a list of all children of this node.
 	child_map children;

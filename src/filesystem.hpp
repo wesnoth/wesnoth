@@ -66,6 +66,10 @@ int file_size(const std::string& fname);
 //to a portable basename() function
 std::string file_name(const std::string& file);
 
+//returns the directory name of a file, with filename stripped. Equivalent to a
+//portable dirname()
+std::string directory_name(const std::string& file);
+
 ///the paths manager is responsible for recording the various paths that
 ///binary files may be located at. It should be passed a config object
 ///which holds binary path information. This is in the format

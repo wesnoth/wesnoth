@@ -65,8 +65,7 @@ bool fire(const std::string& event,
           const gamemap::location& loc1=gamemap::location::null_location,
           const gamemap::location& loc2=gamemap::location::null_location);
 
-bool conditional_passed(game_state& state_of_game,
-                        const std::map<gamemap::location,unit>* units,
+bool conditional_passed(const std::map<gamemap::location,unit>* units,
                         const config& cond);
 bool pump();
 

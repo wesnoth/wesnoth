@@ -239,6 +239,7 @@ surface locator::load_from_disk() const
 	assert(false);
 }
 
+#if 0
 template<typename T>
 bool locator::in_cache(const std::vector<cache_item<T> >& cache) const
 {
@@ -264,6 +265,50 @@ void locator::add_to_cache(std::vector<cache_item<T> >& cache, const T& item) co
 		return;
 
 	cache[index_] = cache_item<T>(item);
+}
+#endif
+
+bool locator::in_cache(const std::vector<cache_item<surface> >& cache) const
+{
+	if(index_ == -1)
+		return false;
+
+	return cache[index_].loaded;
+}
+surface locator::locate_in_cache(const std::vector<cache_item<surface> >& cache) const
+{
+	if(index_ == -1)
+		return surface();
+
+	return cache[index_].item;
+}
+void locator::add_to_cache(std::vector<cache_item<surface> >& cache, const surface& item) const
+{
+	if(index_ == -1)
+		return;
+
+	cache[index_] = cache_item<surface>(item);
+}
+bool locator::in_cache(const std::vector<cache_item<locator> >& cache) const
+{
+	if(index_ == -1)
+		return false;
+
+	return cache[index_].loaded;
+}
+locator locator::locate_in_cache(const std::vector<cache_item<locator> >& cache) const
+{
+	if(index_ == -1)
+		return locator();
+
+	return cache[index_].item;
+}
+void locator::add_to_cache(std::vector<cache_item<locator> >& cache, const locator& item) const
+{
+	if(index_ == -1)
+		return;
+
+	cache[index_] = cache_item<locator>(item);
 }
 
 manager::manager() {}

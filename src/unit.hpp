@@ -53,6 +53,7 @@ public:
 	bool get_experience(int xp);
 	bool advances() const;
 	int side() const;
+	unit_race::GENDER gender() const;
 	void set_side(int new_side);
 	double alpha() const;
 	void make_recruiter();
@@ -149,6 +150,9 @@ public:
 	const gamemap::location& get_interrupted_move() const;
 	void set_interrupted_move(const gamemap::location& interrupted_move);
 private:
+	unit_race::GENDER generate_gender(const unit_type& type, bool use_genders);
+	unit_race::GENDER gender_;
+
 	const unit_type* type_;
 
 	enum STATE { STATE_NORMAL, STATE_ATTACKING,

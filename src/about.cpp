@@ -62,13 +62,13 @@ std::vector<std::string> get_text() {
  	text.push_back("-   Zas");
  	text.push_back("+ ");
  
- 	text.push_back("+General Purpose Administrator");
+ 	text.push_back("+General Purpose Administrators");
+	text.push_back("-   Cedric Duval");
  	text.push_back("-   Crossbow/Miyo");
  	text.push_back("+ ");
 
  	text.push_back("+Artwork and graphics designers");
 	text.push_back("-   Andrew James Patterson (Kamahawk)");
-	text.push_back("-   Cedric Duval");
 	text.push_back("-   Christophe Anjard");
 	text.push_back("-   Diego Brea (Cobretti)");
 	text.push_back("-   Eli Dupree (Elvish Pillager)");
@@ -78,8 +78,10 @@ std::vector<std::string> get_text() {
 	text.push_back("-   Jimmy Olsson (Azlan)");
  	text.push_back("-   Johanna Manninen (lohari)");
 	text.push_back("-   John Muccigrosso (Eponymous Archon)");
+	text.push_back("-   John-Robert Funck (XJaPaN)");
  	text.push_back("-   Jonatan Alamà (tin)");
  	text.push_back("-   Joseph Simmons (Turin)");
+	text.push_back("-   J.W. Bjerk (Eleazar)");
 	text.push_back("-   J.W.C. McNabb (Darth Fool)");
  	text.push_back("-   Neorice");
 	text.push_back("-   Richard Kettering (Jetryl)");
@@ -98,6 +100,7 @@ std::vector<std::string> get_text() {
 	text.push_back("-   Benjamin Drieu");
  	text.push_back("-   David White (Sirp)");
  	text.push_back("-   Francisco Muñoz (fmunoz)");
+ 	text.push_back("-   James Spencer (Shade)");
  	text.push_back("-   Joseph Simmons (Turin)");
  	text.push_back("-   Justin Zaun (jzaun)");
  	text.push_back("+ ");
@@ -207,6 +210,11 @@ std::vector<std::string> get_text() {
  	text.push_back("-   Jan Zvánovec (jaz)");
  	text.push_back("-   Maksim Orlovich (SadEagle)");
  	text.push_back("+ ");
+
+ 	text.push_back("+ Bots");
+ 	text.push_back("-   wesbot");
+ 	text.push_back("+ ");
+
 	return text;
 }
 

@@ -65,6 +65,7 @@ team::team_info::team_info(const config& cfg)
 	team_name = cfg["team_name"];
 	if(team_name.empty())
 		team_name = cfg["side"];
+	flag = cfg["flag"];
 
 	description = cfg["description"];
 
@@ -185,6 +186,7 @@ void team::team_info::write(config& cfg) const
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
+	cfg["flag"] = flag;
 	cfg["description"] = description;
 
 	char buf[50];
@@ -475,6 +477,11 @@ void team::change_team(const std::string& name)
 	info_.team_name = name;
 }
 
+const std::string& team::flag() const
+{
+	return info_.flag;
+}
+
 const std::string& team::ai_algorithm() const
 {
 	return info_.ai_algorithm;
@@ -510,22 +517,22 @@ std::vector<team::target>& team::targets()
 	return info_.targets;
 }
 
-bool team::shrouded(size_t x, size_t y) const
+bool team::shrouded(int x, int y) const
 {
 	if(!teams || !share_view())
-		return shroud_.value(x,y);
+		return shroud_.value(x+1,y+1);
 
-	return shroud_.shared_value(ally_shroud(*teams),x,y);
+	return shroud_.shared_value(ally_shroud(*teams),x+1,y+1);
 }
 
-bool team::fogged(size_t x, size_t y) const
+bool team::fogged(int x, int y) const
 {
 	if(shrouded(x,y)) return true;
 	
 	if(!teams || !share_view())
-		return fog_.value(x,y);
+		return fog_.value(x+1,y+1);
 
-	return fog_.shared_value(ally_fog(*teams),x,y);
+	return fog_.shared_value(ally_fog(*teams),x+1,y+1);
 }
 
 std::vector<const team::shroud_map*> team::ally_shroud(const std::vector<team>& teams) const

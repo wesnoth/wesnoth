@@ -31,8 +31,7 @@
 
 namespace game_events {
 
-bool conditional_passed(game_state& state_of_game,
-                        const std::map<gamemap::location,unit>* units,
+bool conditional_passed(const std::map<gamemap::location,unit>* units,
                         const config& cond)
 {
 	//an 'or' statement means that if the contained statements are true,
@@ -40,7 +39,7 @@ bool conditional_passed(game_state& state_of_game,
 	const config::child_list& or_statements = cond.get_children("or");
 	for(config::child_list::const_iterator or_it = or_statements.begin();
 	    or_it != or_statements.end(); ++or_it) {
-		if(conditional_passed(state_of_game,units,**or_it)) {
+		if(conditional_passed(units,**or_it)) {
 			return true;
 		}
 	}
@@ -538,7 +537,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				}
 			}
 
-			int choice = rand() % num_choices;
+			int choice = get_random() % num_choices;
 			tmp = 0;	
 			for (int i = 0; i < ranges.size(); i++) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;
@@ -567,7 +566,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string fail = (cmd == "if" ? "else" : "");
 		for(size_t i = 0; i != max_iterations; ++i) {
 			const std::string type = game_events::conditional_passed(
-			                              *state_of_game,units,cfg) ? pass : fail;
+			                              units,cfg) ? pass : fail;
 
 			if(type == "") {
 				break;
@@ -831,13 +830,16 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				if(game_events::unit_matches_filter(speaker,cfg))
 					break;
 			}
-
-			if(speaker == units->end()) {
-				//no matching unit found, so the dialog can't come up
-				//continue onto the next message
-				return rval;
-			}
 		}
+	
+		if(speaker == units->end()) {
+			//no matching unit found, so the dialog can't come up
+			//continue onto the next message
+			std::cerr << "cannot show message\n";
+			return rval;
+		}
+
+		std::cerr << "set speaker to '" << speaker->second.description() << "'\n";
 
 		const std::string& sfx = cfg["sound"];
 		if(sfx != "") {
@@ -856,6 +858,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			caption = cfg["caption"];
 
 		if(speaker != units->end()) {
+			std::cerr << "scrolling to speaker..\n";
 			screen->highlight_hex(speaker->first);
 			screen->scroll_to_tile(speaker->first.x,speaker->first.y);
 
@@ -870,6 +873,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				}
 			}
 		}
+
+		std::cerr << "done scrolling to speaker...\n";
 
 		std::vector<std::string> options;
 		std::vector<config::const_child_itors> option_events;
@@ -889,6 +894,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		const std::string& lang_message = string_table[id];
 		int option_chosen = -1;
+
+		std::cerr << "showing dialog...\n";
 		
 		//if we're not replaying, or if we are replaying and there is no choice
 		//to be made, show the dialog.
@@ -897,6 +904,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			option_chosen = gui::show_dialog(*screen,surface,caption,msg,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
 		                        options.empty() ? NULL : &options);
+
+			std::cerr << "showed dialog...\n";
 
 			if (option_chosen == gui::ESCAPE_DIALOG){
 				rval = false;
@@ -1238,7 +1247,7 @@ bool filter_loc(const gamemap::location& loc, const config& cfg)
 	//iterate over any [not] tags, and if any match, then the filter does not match
 	const config::child_list& negatives = cfg.get_children("not");
 	for(config::child_list::const_iterator i = negatives.begin(); i != negatives.end(); ++i) {
-		if(filter_loc(loc,**i)) {
+		if((cfg["x"] != "" || cfg["y"] != "") && filter_loc(loc,**i)) {
 			return false;
 		}
 	}

@@ -78,6 +78,8 @@ public:
 
 	void assign(SDL_Surface* surf) { surface_.assign(surf); }
 
+	bool null() const { return get() == NULL; }
+
 private:
 	scoped_sdl_surface surface_;
 };

@@ -783,6 +783,9 @@ int show_dialog(display& disp, surface image,
 			if(preview_panes != NULL) {
 				for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
 					(**i).set_selection(selection);
+					if(first_time) {
+						(**i).set_dirty();
+					}
 				}
 			}
 		}

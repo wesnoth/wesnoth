@@ -162,7 +162,7 @@ void turn_info::turn_slice()
 
 	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
 
-	const int scroll_threshold = 5;
+	const int scroll_threshold = preferences::fullscreen() ? 5 : 0;
 
 	if(key_[SDLK_UP] || mousey < scroll_threshold)
 		gui_.scroll(0,-preferences::scroll_speed());
@@ -979,7 +979,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return !commands_disabled && current_unit() != units_.end() && current_unit()->second.side() == gui_.viewing_team()+1;
 
 	case hotkey::HOTKEY_LABEL_TERRAIN:
-		return !commands_disabled && map_.on_board(last_hex_) && !gui_.shrouded(last_hex_.x,last_hex_.y);
+		return !commands_disabled && map_.on_board(last_hex_) && !gui_.shrouded(last_hex_.x,last_hex_.y) && !is_observer();
 
 	//commands we can only do if in debug mode
 	case hotkey::HOTKEY_CREATE_UNIT:
@@ -1112,6 +1112,7 @@ void turn_info::cycle_units()
 		next_unit_ = it->first;
 		selected_hex_ = next_unit_;
 		gui_.select_hex(selected_hex_);
+		gui_.highlight_hex(selected_hex_);
 		current_route_.steps.clear();
 		gui_.set_route(NULL);
 		show_attack_options(it);
@@ -1672,7 +1673,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 
 		if(message != "") {
 			string_map symbols;
-			symbols["noun"] = string_table[u.type().gender() == unit_race::MALE ? "noun_male" : "noun_female"];
+			symbols["noun"] = string_table[u.gender() == unit_race::MALE ? "noun_male" : "noun_female"];
 			message = config::interpolate_variables_into_string(message,&symbols);
 
 			const int res = gui::show_dialog(disp_,NULL,"",message,gui::YES_NO);
@@ -2158,7 +2159,7 @@ void turn_info::show_enemy_moves(bool ignore_units)
 	
 	// Compute enemy movement positions
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y)) {
+		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && !u->second.stone()) {
 			const bool is_skirmisher = u->second.type().is_skirmisher();
 			const bool teleports = u->second.type().teleports();
 			unit_map units;

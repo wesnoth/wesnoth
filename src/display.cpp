@@ -53,8 +53,8 @@ namespace {
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
-				 const gamestatus& status, const std::vector<team>& t, const config& theme_cfg,
-				 const config& built_terrains) :
+		const gamestatus& status, const std::vector<team>& t, const config& theme_cfg,
+		const config& built_terrains) :
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
 	minimap_(NULL), redrawMinimap_(false),
@@ -80,6 +80,27 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	gameStatusRect_.w = 0;
 	unitDescriptionRect_.w = 0;
 	unitProfileRect_.w = 0;
+
+	//inits the flag list
+	flags_.reserve(teams_.size());
+	for(size_t i = 0; i != teams_.size(); ++i) {
+		std::string flag;
+		if(teams_[i].flag().empty()) {
+			flag = game_config::flag_image;
+			std::string::size_type pos;
+			while((pos = flag.find("%d")) != std::string::npos) {
+				std::ostringstream s;
+				s << int(i+1);
+				flag.replace(pos, 2, s.str());
+			}
+		} else {
+			flag = teams_[i].flag();
+		}
+
+		std::cerr << "Adding flag for team " << i << " from animation " << flag << "\n";
+		flags_.push_back(animated<image::locator>(flag));
+		flags_.back().start_animation(0, animated<image::locator>::INFINITE_CYCLES);
+	}
 
 	//clear the screen contents
 	surface const disp(screen_.getSurface());
@@ -531,6 +552,8 @@ void draw_label(display& disp, surface target, const theme::label& label)
 
 void display::draw(bool update,bool force)
 {	
+	bool changed = false;
+
 	//log_scope("Drawing");
 	invalidate_animations();
 
@@ -551,6 +574,8 @@ void display::draw(bool update,bool force)
 		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
 		invalidateGameStatus_ = true;
 		panelsDrawn_ = true;
+
+		changed = true;
 	}
 
 	if(invalidateAll_ && !map_.empty()) {
@@ -563,7 +588,11 @@ void display::draw(bool update,bool force)
 		invalidateAll_ = false;
 
 		redrawMinimap_ = true;
+		changed = true;
 	} else if(!map_.empty()) {
+		if(!invalidated_.empty())
+			changed = true;
+
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
 			draw_tile(it->x,it->y);
@@ -576,11 +605,13 @@ void display::draw(bool update,bool force)
 		redrawMinimap_ = false;
 		const SDL_Rect area = minimap_area();
 		draw_minimap(area.x,area.y,area.w,area.h);
+		changed = true;
 	}
 
 
 	if(!map_.empty()) {
 		draw_sidebar();
+		changed = true;
 	}
 
 	prune_chat_messages();
@@ -597,10 +628,12 @@ void display::draw(bool update,bool force)
 	if(update) {
 		lastDraw_ = SDL_GetTicks();
 
-		if(wait_time >= 0 || drawSkips_ >= max_skips || force)
-			update_display();
-		else
+		if(wait_time >= 0 || drawSkips_ >= max_skips || force) {
+			if(changed)
+				update_display();
+		} else {
 			drawSkips_++;
+		}
 	}
 }
 
@@ -1177,10 +1210,11 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		surface ellipse_back(NULL);
 
 		if(preferences::show_side_colours()) {
+			const char* const selected = selectedHex_ == loc ? "selected-" : "";
 			char buf[50];
-			sprintf(buf,"misc/ellipse-%d-top.png",team::get_side_colour_index(it->second.side()));
+			sprintf(buf,"misc/%sellipse-%d-top.png",selected,team::get_side_colour_index(it->second.side()));
 			ellipse_back.assign(image::get_image(buf));
-			sprintf(buf,"misc/ellipse-%d-bottom.png",team::get_side_colour_index(it->second.side()));
+			sprintf(buf,"misc/%sellipse-%d-bottom.png",selected,team::get_side_colour_index(it->second.side()));
 			ellipse_front.assign(image::get_image(buf));
 		}
 
@@ -1344,12 +1378,12 @@ void display::draw_tile(int x, int y, surface unit_image, double alpha, Uint32 b
 			SDL_BlitSurface(flag,NULL,dst,&dstrect);
 		}
 
-		typedef std::multimap<gamemap::location,std::string>::const_iterator Itor;
+		typedef overlay_map::const_iterator Itor;
 
 		for(std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
 			overlays.first != overlays.second; ++overlays.first) {
 
-			surface overlay_surface(image::get_image(overlays.first->second,image_type));
+			surface overlay_surface(image::get_image(overlays.first->second.image,image_type));
 			
 			//note that dstrect can be changed by SDL_BlitSurface and so a
 			//new instance should be initialized to pass to each call to
@@ -1373,18 +1407,22 @@ void display::draw_tile(int x, int y, surface unit_image, double alpha, Uint32 b
 		SDL_BlitSurface(surface,NULL,dst,&dstrect);
 	}
 
-	if(fogged(x,y)) {
+	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
+
+	if(!shrouded(x,y)) {
+		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
+	}
+
+	if(fogged(x,y) && shrouded(x,y) == false) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
 		if(fog_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(fog_surface,NULL,dst,&dstrect);
 		}
 	}
-
-	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
-
+	
 	if(!shrouded(x,y)) {
-		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
+		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOGSHROUD);
 	}
 
 	//draw the time-of-day mask on top of the hex
@@ -1546,7 +1584,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	bool transition_done[6];
 	get_adjacent_tiles(loc,adjacent);
 	int tiles[6];
-	static const int terrain_types[] = { gamemap::VOID_TERRAIN, gamemap::FOGGED, 0 };
+	static const int terrain_types[] = { gamemap::FOGGED, gamemap::VOID_TERRAIN, 0 };
 
 	for(int i = 0; i != 6; ++i) {
 		if(shrouded(adjacent[i].x,adjacent[i].y))
@@ -1612,25 +1650,7 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 	std::vector<surface> res;
 	gamemap::location loc(x,y);
 
-	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
-	      (terrain_type == ADJACENT_FOREGROUND ?
-		  terrain_builder::ADJACENT_FOREGROUND : terrain_builder::ADJACENT_BACKGROUND);
-	const std::vector<animated<image::locator> >* const terrains = builder_.get_terrain_at(loc,builder_terrain_type);
-
-	if(terrains != NULL) {
-		for(std::vector<animated<image::locator> >::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
-			// it->update_current_frame();
-			image::locator image = it->get_current_frame();
-			// image.filename = "terrain/" + image.filename;
-
-			const surface surface(get_terrain(image,image_type,x,y,true));
-			if(surface != NULL) {
-				res.push_back(surface);
-			}
-		}
-	}
-
-	if(terrain_type == ADJACENT_FOREGROUND) {
+	if(terrain_type == ADJACENT_FOGSHROUD) {
 		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(gamemap::location(x,y));
 
 		if(!fog_shroud.empty()) {
@@ -1638,26 +1658,47 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 				image::locator image(*it);
 				// image.filename = "terrain/" + *it;
 
-				const surface surface(get_terrain(image,image_type,x,y,true));
+				const surface surface(get_terrain(image,image_type,x,y));
 				if(surface != NULL) {
 					res.push_back(surface);
 				}
 			}
 
 		}
+
+		return res;
 	}
+
+	const time_of_day& tod = status_.get_time_of_day();
+	// const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
+
+	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
+	      (terrain_type == ADJACENT_FOREGROUND ?
+		  terrain_builder::ADJACENT_FOREGROUND : terrain_builder::ADJACENT_BACKGROUND);
+	const terrain_builder::imagelist* const terrains = builder_.get_terrain_at(loc,
+			tod.id, builder_terrain_type);
+
+	if(terrains != NULL) {
+		for(std::vector<animated<image::locator> >::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
+			// it->update_current_frame();
+			image::locator image = it->get_current_frame();
+			// image.filename = "terrain/" + image.filename;
+
+			const surface surface(get_terrain(image,image_type,x,y));
+			if(surface != NULL) {
+				res.push_back(surface);
+			}
+		}
+	} 
 
 	return res;
 }
 
 surface display::get_terrain(const image::locator& image, image::TYPE image_type,
-                                 int x, int y, bool search_tod)
+                                 int x, int y)
 {
-	surface im(NULL);
 
-	const time_of_day& tod = status_.get_time_of_day();
-	const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
-
+#if 0
 	//see if there is a time-of-day specific version of this image
 	if(search_tod) {
 		// image::locator tod_image = image;
@@ -1669,15 +1710,17 @@ surface display::get_terrain(const image::locator& image, image::TYPE image_type
 			return im;
 		}
 	}
+#endif
 
 	// image::locator tmp = image;
 	// tmp.filename += ".png";
 
-	im = image::get_image(image, image_type);
+	const surface im(image::get_image(image, image_type));
 	if(im == NULL) {
 		return im;
 	}
 
+#if 0
 	//see if this tile is illuminated to a different colour than it'd
 	//normally be displayed as
 	const int radj = tod_at.red - tod.red;
@@ -1690,6 +1733,7 @@ surface display::get_terrain(const image::locator& image, image::TYPE image_type
 		if(im == NULL)
 			std::cerr << "could not adjust surface..\n";
 	}
+#endif
 	
 	return im;	
 }
@@ -1704,9 +1748,7 @@ surface display::get_flag(gamemap::TERRAIN terrain, int x, int y)
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		if(teams_[i].owns_village(loc) && (!fogged(x,y) || !shrouded(x,y) && !teams_[currentTeam_].is_enemy(i+1))) {
-			char buf[50];
-			sprintf(buf,"terrain/flag-team%d.png",team::get_side_colour_index(int(i+1)));
-			return image::get_image(buf);
+			return image::get_image(flags_[i].get_current_frame());
 		}
 	}
 
@@ -1900,14 +1942,21 @@ void display::invalidate_unit()
 
 void display::invalidate_animations()
 {
+	bool animate_flags = false;
 	gamemap::location topleft;
 	gamemap::location bottomright;
 	get_visible_hex_bounds(topleft, bottomright);
 
+	for(int i = 0; i < flags_.size(); ++i) {
+		flags_[i].update_current_frame();
+		if(flags_[i].frame_changed()) 
+			animate_flags = true;
+	}
+
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
 			gamemap::location loc(x,y);
-			if(builder_.update_animation(loc))
+			if(builder_.update_animation(loc) || (map_.is_village(loc) && animate_flags))
 				invalidated_.insert(loc);
 		}
 	}
@@ -1934,30 +1983,30 @@ void display::invalidate_game_status()
 
 void display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
 {
-	overlays_.insert(std::pair<gamemap::location,std::string>(loc,img));
-	halo_overlays_.insert(std::pair<gamemap::location,int>(loc,halo::add(get_location_x(loc)+hex_size()/2,get_location_y(loc)+hex_size()/2,halo)));
+	const int halo_handle = halo::add(get_location_x(loc)+hex_size()/2,get_location_y(loc)+hex_size()/2,halo);
+	const overlay item(img,halo,halo_handle);
+	overlays_.insert(overlay_map::value_type(loc,item));
 }
 
 void display::remove_overlay(const gamemap::location& loc)
 {
-	overlays_.erase(loc);
-	typedef std::multimap<gamemap::location,int>::const_iterator Itor;
-	std::pair<Itor,Itor> itors = halo_overlays_.equal_range(loc);
+	typedef overlay_map::const_iterator Itor;
+	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
 	while(itors.first != itors.second) {
-		halo::remove(itors.first->second);
+		halo::remove(itors.first->second.halo_handle);
 		++itors.first;
 	}
 
-	halo_overlays_.erase(loc);
+	overlays_.erase(loc);
 }
 
 void display::write_overlays(config& cfg) const
 {
-	for(std::multimap<gamemap::location,std::string>::const_iterator i = overlays_.begin();
-	    i != overlays_.end(); ++i) {
+	for(overlay_map::const_iterator i = overlays_.begin(); i != overlays_.end(); ++i) {
 		config& item = cfg.add_child("item");
 		i->first.write(item);
-		item["image"] = i->second;
+		item["image"] = i->second.image;
+		item["halo"] = i->second.halo;
 	}
 }
 
@@ -2066,7 +2115,7 @@ const theme::menu* display::menu_pressed(int mousex, int mousey, bool button_pre
 {
 
 	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
-		if(i->process(mousex,mousey,button_pressed)) {
+		if(i->pressed()) {
 			const size_t index = i - buttons_.begin();
 			assert(index < theme_.menus().size());
 			return &theme_.menus()[index];
@@ -2157,11 +2206,11 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	if(type == MESSAGE_PUBLIC) {
 		str << "<" << speaker << ">";
 	} else {
-		str << font::NULL_MARKUP << "*" << speaker << "*";
+		str << "*" << speaker << "*";
 	}
 
 	std::stringstream message_str;
-	message_str << font::NULL_MARKUP << msg;
+	message_str << msg;
 
 	SDL_Color speaker_colour = {255,255,255,255};
 	if(side >= 1) {

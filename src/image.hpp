@@ -79,10 +79,11 @@ namespace image {
 		// loads the image it is pointing to from the disk
 		surface load_from_disk() const;
 		
+#if 0
 		// returns true if the locator already was stored in the given
 		// cache
 		template<typename T>
-		bool locator::in_cache(const std::vector<cache_item<T> >& cache) const;
+		bool in_cache(const std::vector<cache_item<T> >& cache) const;
 		// returns the image it is corresponding to in the given cache
 		template<typename T>
 		T locate_in_cache(const std::vector<cache_item<T> >& cache) const;
@@ -90,6 +91,13 @@ namespace image {
 		// current locator
 		template<typename T>
 		void add_to_cache(std::vector<cache_item<T> >& cache, const T &image) const;
+#endif
+		bool in_cache(const std::vector<cache_item<surface> >& cache) const;
+		surface locate_in_cache(const std::vector<cache_item<surface> >& cache) const;
+		void add_to_cache(std::vector<cache_item<surface> >& cache, const surface &image) const;
+		bool in_cache(const std::vector<cache_item<locator> >& cache) const;
+		locator locate_in_cache(const std::vector<cache_item<locator> >& cache) const;
+		void add_to_cache(std::vector<cache_item<locator> >& cache, const locator &image) const;
 	protected:
 		static int last_index_;
 	private:

@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 #include "game_config.hpp"
+#include "config.h"
 
 #include <cstdlib>
 
@@ -26,7 +27,7 @@ namespace game_config
 	int recall_cost = 20;
 	int kill_experience = 8;
 	int leadership_bonus = 25;
-	const std::string version = "0.8.1-CVS";
+	const std::string version = VERSION;
 	bool debug = false, editor = false;
 
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;
@@ -37,7 +38,7 @@ namespace game_config
 
 	std::string terrain_mask_image = "terrain/alphamask.png";
 
-	std::string map_image = "misc/map.png";
+	std::string map_image = "maps/wesnoth.png";
 	std::string rightside_image = "misc/rightside.png";
 	std::string rightside_image_bot = "misc/rightside-bottom.png";
 
@@ -46,6 +47,7 @@ namespace game_config
 	std::string partmoved_energy_image = "partmoved-energy.png";
 	std::string enemy_energy_image = "enemy-energy.png";
 	std::string ally_energy_image = "ally-energy.png";
+	std::string flag_image = "terrain/flag-team%d-1.png:150,terrain/flag-team%d-2.png:150";
 
 	std::string dot_image = "misc/dot.png";
 	std::string cross_image = "misc/cross.png";
@@ -113,6 +115,7 @@ namespace game_config
 		partmoved_energy_image = v["partmoved_energy_image"];
 		enemy_energy_image = v["enemy_energy_image"];
 		ally_energy_image = v["ally_energy_image"];
+		flag_image = v["flag_image"];
 
 		cross_image = v["cross_image"];
 		dot_image = v["dot_image"];

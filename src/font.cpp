@@ -689,10 +689,9 @@ surface floating_label::create_surface()
 		std::vector<surface> surfaces;
 		for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
 			SDL_Color colour = colour_;
-			int size = font_size_;
-			int style = 0;
-			const std::string::const_iterator i1 = font::parse_markup(ln->begin(),ln->end(),&size,&colour,&style);
-			const std::string str(i1,ln->end());
+			const int size = font_size_;
+			const int style = 0;
+			const std::string& str = *ln;
 
 			TTF_Font* const font = get_font(size);
 

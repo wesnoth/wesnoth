@@ -69,6 +69,8 @@ public:
 		std::vector<int> enemies;
 		std::string team_name;
 
+		std::string flag;
+
 		std::string description;
 
 		enum CONTROLLER { HUMAN, AI, NETWORK, EMPTY };
@@ -128,6 +130,8 @@ public:
 	const std::string& team_name() const;
 	void change_team(const std::string& name);
 
+	const std::string& flag() const;
+
 	const std::string& ai_algorithm() const;
 	const config& ai_parameters() const;
 
@@ -140,15 +144,15 @@ public:
 
 	//Returns true if the hex is shrouded/fogged for this side, or
 	//any other ally with shared vision.
-	bool shrouded(size_t x, size_t y) const;
-	bool fogged(size_t x, size_t y) const;
+	bool shrouded(int x, int y) const;
+	bool fogged(int x, int y) const;
 	
 	bool uses_shroud() const { return shroud_.enabled(); }
 	bool uses_fog() const { return fog_.enabled(); }
 	bool fog_or_shroud() const { return uses_shroud() || uses_fog(); }
-	bool clear_shroud(size_t x, size_t y) { return shroud_.clear(x,y); }
-	void place_shroud(size_t x, size_t y) { shroud_.place(x,y); }
-	bool clear_fog(size_t x, size_t y)  { return fog_.clear(x,y); }
+	bool clear_shroud(int x, int y) { return shroud_.clear(x+1,y+1); }
+	void place_shroud(int x, int y) { shroud_.place(x+1,y+1); }
+	bool clear_fog(int x, int y)  { return fog_.clear(x+1,y+1); }
 	void refog() { fog_.reset(); }
 	
 	bool knows_about_team(size_t index) const;

@@ -178,7 +178,7 @@ public:
 	                 int red, int green, int blue);
 
 private:
-	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND };
+	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
@@ -381,7 +381,7 @@ private:
 	//                        int x, int y, const std::string& dir="");
 	//this surface must be freed by the caller
 	surface get_terrain(const image::locator &image, image::TYPE type,
-	                        int x, int y, bool search_tod);
+	                        int x, int y);
 
 	//this surface must be freed by the caller
 	surface get_flag(gamemap::TERRAIN, int x, int y);
@@ -428,8 +428,18 @@ private:
 	bool invalidateUnit_;
 	bool invalidateGameStatus_;
 
-	std::multimap<gamemap::location,std::string> overlays_;
-	std::multimap<gamemap::location,int> halo_overlays_;
+	struct overlay {
+		overlay(const std::string& img, const std::string& halo_img,
+		        int handle) : image(img), halo(halo_img),
+		                           halo_handle(handle) {}
+		std::string image;
+		std::string halo;
+		int halo_handle;
+	};
+
+	typedef std::multimap<gamemap::location,overlay> overlay_map;
+
+	overlay_map overlays_;
 
 	bool panelsDrawn_;
 
@@ -495,6 +505,9 @@ private:
 
 	//variables for help strings
 	int help_string_;
+
+	//animated flags for each team
+	std::vector<animated<image::locator> > flags_;
 };
 
 //an object which will lock the display for the duration of its lifetime.

@@ -37,7 +37,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	const double src_submerge = u.is_flying() ? 0 : int(map.get_terrain_info(src_terrain).unit_submerge());
 	const double dst_submerge = u.is_flying() ? 0 : int(map.get_terrain_info(dst_terrain).unit_submerge());
 
-	const int nsteps = disp.turbo() ? 3 : 10;
+	const gamemap::TERRAIN terrain = map.get_terrain(b);
+	const int nsteps = disp.turbo() ? 3 : 10*u.movement_cost(map,terrain);
 	const double xstep = double(xdst - xsrc)/double(nsteps);
 	const double ystep = double(ydst - ysrc)/double(nsteps);
 

@@ -6,6 +6,8 @@
 #include "SDL.h"
 
 #include "game.hpp"
+#include "input_stream.hpp"
+#include "metrics.hpp"
 #include "player.hpp"
 
 #include <algorithm>
@@ -19,6 +21,8 @@
 
 #include <signal.h>
 
+namespace {
+
 config construct_error(const std::string& msg)
 {
 	config cfg;
@@ -26,24 +30,40 @@ config construct_error(const std::string& msg)
 	return cfg;
 }
 
-config construct_system_message(const std::string& message)
+config construct_server_message(const std::string& message, const game& g)
 {
 	config turn;
-	config& cmd = turn.add_child("turn");
-	config& cfg = cmd.add_child("command");
-	config& msg = cfg.add_child("speak");
-	msg["description"] = "system";
-	msg["message"] = message;
+	if(g.started()) {
+		config& cmd = turn.add_child("turn");
+		config& cfg = cmd.add_child("command");
+		config& msg = cfg.add_child("speak");
+		msg["description"] = "server";
+		msg["message"] = message;
+	} else {
+		config& msg = turn.add_child("message");
+		msg["sender"] = "server";
+		msg["message"] = message; 
+	}
 
 	return turn;
+}
+
+void truncate_message(std::string& str)
+{
+	const size_t max_message_length = 240;
+	str.resize(minimum<size_t>(str.size(),max_message_length));
+}
+
 }
 
 class server
 {
 public:
-	server(int port);
+	explicit server(int port, input_stream& input);
 	void run();
 private:
+	void process_command(const std::string& cmd);
+
 	void delete_game(std::vector<game>::iterator i);
 
 	void dump_stats();
@@ -65,12 +85,48 @@ private:
 	std::vector<game> games_;
 
 	time_t last_stats_;
+
+	input_stream& input_;
+
+	metrics metrics_;
+
+	bool is_ip_banned(const std::string& ip);
+	std::string ban_ip(const std::string& mask);
+	std::vector<std::string> bans_;
 };
 
-server::server(int port) : net_manager_(), server_(port), not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL))
+server::server(int port, input_stream& input) : net_manager_(), server_(port), not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input)
 {
 	login_response_.add_child("mustlogin");
 	login_response_["version"] = game_config::version;
+}
+
+bool server::is_ip_banned(const std::string& ip)
+{
+	for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
+		std::cerr << "comparing for ban '" << *i << "' vs '" << ip << "'\n";
+		const std::string::const_iterator itor = std::mismatch(i->begin(),i->end(),ip.c_str()).first;
+		if(itor == i->end() && i->size() == ip.size() || itor != i->end() && *itor == '*') {
+			std::cerr << "is banned\n";
+			return true;
+		}
+
+		std::cerr << "not banned\n";
+	}
+
+	return false;
+}
+
+std::string server::ban_ip(const std::string& mask)
+{
+	const std::string::const_iterator asterisk = std::find(mask.begin(),mask.end(),'*');
+	if(asterisk != mask.end() && asterisk != mask.end()-1) {
+		return "'*' may only appear at the end of the mask";
+	}
+
+	bans_.push_back(mask);
+
+	return "";
 }
 
 config server::sync_initial_response()
@@ -97,6 +153,88 @@ void server::dump_stats()
 	std::cout << parent.write() << std::endl;
 }
 
+void server::process_command(const std::string& cmd)
+{
+	const std::string::const_iterator i = std::find(cmd.begin(),cmd.end(),' ');
+	const std::string command(cmd.begin(),i);
+	if(command == "msg") {
+		if(i == cmd.end()) {
+			std::cout << "you must type a message" << std::endl;
+			return;
+		}
+
+		const std::string msg(i+1,cmd.end()); lobby_players_.send_data(construct_server_message(msg,lobby_players_));
+		for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
+			g->send_data(construct_server_message(msg,*g));
+		}
+
+		std::cout << "message '" << msg << "' relayed to players\n";
+	} else if(command == "status") {
+		std::cout << "STATUS REPORT\n---\n";
+		for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+			const network::connection_stats& stats = network::get_connection_stats(i->first);
+			const int time_connected = stats.time_connected/1000;
+			const int seconds = time_connected%60;
+			const int minutes = (time_connected/60)%60;
+			const int hours = time_connected/(60*60);
+			std::cout << "'" << i->second.name() << "' @ " << network::ip_address(i->first) << " connected for " << hours << ":" << minutes << ":" << seconds << " sent " << stats.bytes_sent << " bytes, received " << stats.bytes_received << " bytes\n";
+		}
+
+		std::cout << "---" << std::endl;
+	} else if(command == "metrics") {
+		std::cout << metrics_;
+	} else if(command == "ban") {
+
+		if(i == cmd.end()) {
+			std::cout << "BAN LIST\n---\n";
+			for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
+				std::cout << *i << "\n";
+			}
+			std::cout << "---" << std::endl;
+		} else {
+			const std::string mask(i+1,cmd.end());
+			const std::string& diagnostic = ban_ip(mask);
+			if(diagnostic != "") {
+				std::cout << "Could not ban '" << mask << "': " << diagnostic << std::endl;
+			} else {
+				std::cout << "Set ban on '" << mask << "'\n";
+			}
+		}
+	} else if(command == "unban") {
+		if(i == cmd.end()) {
+			std::cout << "You must enter a mask to unban" << std::endl;
+			return;
+		}
+
+		const std::string mask(i+1,cmd.end());
+
+		const std::vector<std::string>::iterator itor = std::remove(bans_.begin(),bans_.end(),mask);
+		if(itor == bans_.end()) {
+			std::cout << "there is no ban on '" << mask << "'" << std::endl;
+		} else {
+			bans_.erase(itor,bans_.end());
+			std::cout << "ban removed on '" << mask << "'" << std::endl;
+		}
+		
+	} else if(command == "kick") {
+		if(i == cmd.end()) {
+			std::cout << "you must enter a nick to kick\n";
+			return;
+		}
+
+		const std::string nick(i+1,cmd.end());
+
+		for(player_map::const_iterator j = players_.begin(); j != players_.end(); ++j) {
+			if(j->second.name() == nick) {
+				std::cout << "kicking nick '" << j->second.name() << "'\n";
+				throw network::error("",j->first);
+			}
+		}
+	} else {
+		std::cout << "command '" << command << "' is not recognized" << std::endl;
+	}
+}
+
 void server::run()
 {
 	config& gamelist = initial_response_.add_child("gamelist");
@@ -112,6 +250,11 @@ void server::run()
 				sync_scheduled = false;
 			}
 
+			//process admin commands
+			std::string admin_cmd;
+			if(input_.read_line(admin_cmd)) {
+				process_command(admin_cmd);
+			}
 			
 			//make sure we log stats every 5 minutes
 			if((loop%100) == 0 && last_stats_+5*60 < time(NULL)) {
@@ -121,13 +264,19 @@ void server::run()
 			network::process_send_queue();
 
 			network::connection sock = network::accept_connection();
-			if(sock) {
+			if(sock && is_ip_banned(network::ip_address(sock))) {
+				std::cerr << "rejected banned user '" << network::ip_address(sock) << "'\n";
+				network::send_data(construct_error("You are banned."),sock);
+				network::disconnect(sock);
+			} else if(sock) {
 				network::send_data(login_response_,sock);
 				not_logged_in_.add_player(sock);
 			}
 
 			config data;
 			while((sock = network::receive_data(data)) != NULL) {
+
+				metrics_.service_request();
 
 				//if someone who is not yet logged in is sending
 				//login details
@@ -142,11 +291,25 @@ void server::run()
 					}
 
 					//check the username is valid (all alpha-numeric or space)
-					const std::string& username = (*login)["username"];
-					if(std::count_if(username.begin(),username.end(),isalnum) + std::count(username.begin(),username.end(),' ')
-					   != username.size() || username.empty()) {
+					std::string username = (*login)["username"];
+					config::strip(username);
+					const int alnum = std::count_if(username.begin(),username.end(),isalnum);
+					const int spaces = std::count(username.begin(),username.end(),' ');
+					if((alnum + spaces != username.size()) || spaces == username.size() || username.empty()) {
 						network::send_data(construct_error(
 						                   "This username is not valid"),sock);
+						continue;
+					}
+
+					if(username.size() > 32) {
+						network::send_data(construct_error(
+						                   "This username is too long"),sock);
+						continue;
+					}
+
+					if(username == "server") {
+						network::send_data(construct_error(
+						                   "The nick 'server' is reserved and can not be used by players"),sock);
 						continue;
 					}
 
@@ -183,9 +346,8 @@ void server::run()
 
 					std::cerr << "'" << username << "' (" << network::ip_address(sock) << ") has logged on\n";
 
-					const config msg(construct_system_message(username + " has logged into the lobby"));
 					for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
-						g->send_data_observers(msg);
+						g->send_data_observers(construct_server_message(username + " has logged into the lobby",*g));
 					}
 
 				} else if(lobby_players_.is_member(sock)) {
@@ -262,6 +424,9 @@ void server::run()
 						const player_map::const_iterator p = players_.find(sock);
 						assert(p != players_.end());
 						(*message)["sender"] = p->second.name();
+
+						truncate_message((*message)["message"]);
+
 						lobby_players_.send_data(data,sock);
 					}
 				} else {
@@ -455,6 +620,8 @@ void server::run()
 								continue;
 							}
 
+							truncate_message((*speak)["message"]);
+
 							//force the description to be correct to prevent
 							//spoofing of messages
 							const player_map::const_iterator pl = players_.find(sock);
@@ -491,6 +658,8 @@ void server::run()
 					}
 				}
 			}
+
+			metrics_.no_requests();
 			
 		} catch(network::error& e) {
 			if(!e.socket) {
@@ -562,6 +731,8 @@ int main(int argc, char** argv)
 
 	network::set_default_send_size(4096);
 
+	std::string fifo_path = "/var/run/wesnothd/socket";
+
 	for(int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if(val.empty()) {
@@ -582,6 +753,14 @@ int main(int argc, char** argv)
 			std::cout << "Battle for Wesnoth server " << game_config::version
 				<< "\n";
 			return 0;
+		} else if(val == "--fifo") {
+			++arg;
+			if(arg == argc) {
+				std::cerr << "option --fifo requires a path argument\n";
+				return 0;
+			}
+
+			fifo_path = argv[arg];
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
@@ -589,9 +768,11 @@ int main(int argc, char** argv)
 			port = atoi(argv[arg]);
 		}
 	}
-			
+
+	input_stream input(fifo_path);
+	
 	try {
-		server(port).run();
+		server(port,input).run();
 	} catch(network::error& e) {
 		std::cerr << "caught network error while server was running. aborting.: " << e.message << "\n";
 		return -1;

@@ -25,6 +25,7 @@
 #include "widgets/button.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/menu.hpp"
+#include "config.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -84,15 +85,25 @@ display_manager::~display_manager()
 	disp = NULL;
 }
 
+namespace {
+	bool is_fullscreen = false;
+}
+
 bool fullscreen()
 {
-	const string_map::const_iterator fullscreen =
+	static bool first_time = true;
+	if(first_time) {
+		const string_map::const_iterator fullscreen =
 	                                   prefs.values.find("fullscreen");
-	return fullscreen == prefs.values.end() || fullscreen->second == "true";
+		is_fullscreen = fullscreen == prefs.values.end() || fullscreen->second == "true";
+	}
+
+	return is_fullscreen;
 }
 
 void set_fullscreen(bool ison)
 {
+	is_fullscreen = ison;
 	prefs["fullscreen"] = (ison ? "true" : "false");
 
 	if(disp != NULL) {
@@ -297,7 +308,7 @@ void set_grid(bool ison)
 
 const std::string& official_network_host()
 {
-	static const std::string host = "devsrv.wesnoth.org";
+	static const std::string host = WESNOTH_DEFAULT_SERVER;
 	return host;
 }
 
@@ -305,7 +316,7 @@ const std::string& network_host()
 {
 	std::string& res = prefs["host"];
 	if(res.empty())
-		res = "devsrv.wesnoth.org";
+		res = WESNOTH_DEFAULT_SERVER;
 
 	return res;
 }
@@ -343,9 +354,9 @@ namespace {
 
 int scroll_speed()
 {
-	static const int default_value = 100;
+	static const int default_value = 50;
 	int value = 0;
-	string_map::const_iterator i = prefs.values.find("scroll");
+	const string_map::const_iterator i = prefs.values.find("scroll");
 	if(i != prefs.values.end() && i->second.empty() == false) {
 		value = atoi(i->second.c_str());
 	}
@@ -791,7 +802,7 @@ void preferences_dialog::draw()
 			font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,gamma_label_,location().x,ypos);
 		}
 
-		const SDL_Rect gamma_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		const SDL_Rect gamma_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,gamma_slider_.location().h};
 		gamma_slider_.set_location(gamma_rect);
 
 		ypos += 50;
@@ -811,13 +822,13 @@ void preferences_dialog::draw()
 
 	} else if(tab_ == SOUND_TAB) {
 		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,music_label_,location().x,ypos);
-		const SDL_Rect music_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		const SDL_Rect music_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,music_slider_.location().h};
 		music_slider_.set_location(music_rect);
 
 		ypos += 50;
 
 		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,sound_label_,location().x,ypos);
-		const SDL_Rect sound_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		const SDL_Rect sound_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,sound_slider_.location().h};
 		sound_slider_.set_location(sound_rect);
 	}
 
@@ -889,20 +900,22 @@ void show_preferences_dialog(display& disp)
 	}
 }
 
+bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs)
+{
+	return lhs.first*lhs.second < rhs.first*rhs.second;
+}
+
 bool show_video_mode_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
-
-	std::vector<std::pair<int,int> > resolutions;
-	std::vector<std::string> options;
 
 	CVideo& video = disp.video();
 
 	SDL_PixelFormat format = *video.getSurface()->format;
 	format.BitsPerPixel = video.getBpp();
 
-	SDL_Rect** modes = SDL_ListModes(&format,FULL_SCREEN);
+	const SDL_Rect* const * const modes = SDL_ListModes(&format,FULL_SCREEN);
 
 	//the SDL documentation says that a return value of -1 if no dimension
 	//is available.
@@ -915,29 +928,36 @@ bool show_video_mode_dialog(display& disp)
 		return false;
 	}
 
+	std::vector<std::pair<int,int> > resolutions;
+
+	bool added_current = false;
 	for(int i = 0; modes[i] != NULL; ++i) {
 		if(modes[i]->w >= 800 && modes[i]->h >= 600) {
-			const std::pair<int,int> new_res(modes[i]->w,modes[i]->h);
-			if(std::count(resolutions.begin(),resolutions.end(),new_res) > 0)
-				continue;
-
-			resolutions.push_back(new_res);
-
-			std::stringstream option;
-			option << modes[i]->w << "x" << modes[i]->h;
-			options.push_back(option.str());
+			resolutions.push_back(std::pair<int,int>(modes[i]->w,modes[i]->h));
 		}
 	}
 
-	if(resolutions.size() < 2) {
-		gui::show_dialog(disp,NULL,"",_("There are no alternative video modes available"));
-		return false;
+	const std::pair<int,int> current_res(video.getSurface()->w,video.getSurface()->h);
+	resolutions.push_back(current_res);
+
+	std::sort(resolutions.begin(),resolutions.end(),compare_resolutions);
+	resolutions.erase(std::unique(resolutions.begin(),resolutions.end()),resolutions.end());
+
+	std::vector<std::string> options;
+	for(std::vector<std::pair<int,int> >::const_iterator j = resolutions.begin(); j != resolutions.end(); ++j) {
+		std::ostringstream option;
+		if(*j == current_res) {
+			option << char(gui::menu::DEFAULT_ITEM);
+		}
+
+		option << j->first << "x" << j->second;
+		options.push_back(option.str());
 	}
 
 	const int result = gui::show_dialog(disp,NULL,"",
 	                                    _("Choose Resolution"),
-	                                    gui::MESSAGE,&options);
-	if(size_t(result) < resolutions.size()) {
+	                                    gui::OK_CANCEL,&options);
+	if(size_t(result) < resolutions.size() && resolutions[result] != current_res) {
 		set_resolution(resolutions[result]);
 		return true;
 	} else {

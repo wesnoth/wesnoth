@@ -5,7 +5,10 @@
 #######################################################################
 
 AC_PREREQ([2.57])
-AC_INIT([Battle for Wesnoth], [0.8.1-CVS], [davidnwhite@optusnet.com.au], [wesnoth])
+AC_INIT([Battle for Wesnoth], [0.8.2-CVS], [davidnwhite@optusnet.com.au], [wesnoth])
+dnl AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["server.wesnoth.org"], [The default server for this version])
+dnl AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["devsrv.wesnoth.org"], [The default server for this version])
+AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["devsrv.wesnoth.org:14999"], [The default server for this version])
 
 AC_REVISION([$Revision$])
 
@@ -448,7 +451,7 @@ LIBS=$OLD_LIBS
 #######################################################################
 
 if test "x$lite" = "xno"; then
-    if test -e "music/wesnoth-1.ogg" ; then
+    if test -e "music/main_menu.ogg" ; then
         AC_LANG([C])
 	AC_MSG_CHECKING([for OGG support in SDL_mixer])
 
@@ -469,7 +472,7 @@ if test "x$lite" = "xno"; then
         {
 	    char *music;
 
-	    music = (char *) OGG_new("music/wesnoth-1.ogg");
+	    music = (char *) OGG_new("music/main_menu.ogg");
 	    if (music == NULL)
 		exit(1);
 	    exit(0);

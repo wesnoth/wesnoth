@@ -36,6 +36,8 @@ bool operator<(const line_source& a, const line_source& b)
 
 namespace {
 
+int max_recursion_levels = 100;
+
 bool isnewline(char c)
 {
 	return c == '\r' || c == '\n';
@@ -299,15 +301,30 @@ void internal_preprocess_data(const std::string& data,
 				internal_preprocess_data(str,defines_map,depth,res,NULL,line,fname,srcline);
 			} else if(depth < 20) {
 				std::string prefix;
-				std::string fname = newfilename;
+				std::string nfname;
 
-				//if the filename begins with a '~', then look in the user's data directory
-				if(newfilename != "" && fname[0] == '~') {
+				//if the filename begins with a '~', then look
+				//in the user's data directory
+				if(newfilename != "" && newfilename[0] == '~') {
+					nfname = newfilename;
 					prefix = get_user_data_dir() + "/";
-					fname.erase(fname.begin(),fname.begin()+1);
+					nfname.erase(nfname.begin(),nfname.begin()+1);
+					nfname = prefix + "data/" + nfname;
+
+				} else if(newfilename.size() >= 2 && newfilename[0] == '.' &&
+						newfilename[1] == '/' ) {
+					//if the filename begins with a "./", then look
+					//in the same directory as the file currrently
+					//being preprocessed
+					nfname = newfilename;
+					nfname.erase(nfname.begin(),nfname.begin()+2);
+					nfname = directory_name(fname) + nfname;
+					
+				} else {
+					nfname = "data/" + newfilename;
 				}
 
-				internal_preprocess_file(prefix + "data/" + fname,
+				internal_preprocess_file(nfname,
 				                       defines_map, depth+1,res,
 				                       lines_src,line);
 			} else {
@@ -812,6 +829,9 @@ size_t config::write_size(size_t tab) const
 
 std::string::iterator config::write_internal(std::string::iterator out, size_t tab) const
 {
+	if(tab > max_recursion_levels)
+		return out;
+
 	for(std::map<std::string,std::string>::const_iterator i = values.begin();
 					i != values.end(); ++i) {
 		if(i->second.empty() == false) {
@@ -958,8 +978,11 @@ namespace {
 	}
 }
 
-void config::write_compressed_internal(compression_schema& schema, std::vector<char>& res) const
+void config::write_compressed_internal(compression_schema& schema, std::vector<char>& res, int level) const
 {
+	if(level > max_recursion_levels)
+		throw config::error("Too many recursion levels in compressed config write\n");
+
 	for(std::map<std::string,std::string>::const_iterator i = values.begin();
 					i != values.end(); ++i) {
 		if(i->second.empty() == false) {
@@ -979,7 +1002,7 @@ void config::write_compressed_internal(compression_schema& schema, std::vector<c
 
 		res.push_back(compress_open_element);
 		compress_emit_word(name,schema,res);
-		cfg.write_compressed_internal(schema,res);
+		cfg.write_compressed_internal(schema,res, level+1);
 		res.push_back(compress_close_element);
 	}
 }
@@ -987,15 +1010,18 @@ void config::write_compressed_internal(compression_schema& schema, std::vector<c
 std::string config::write_compressed(compression_schema& schema) const
 {
 	std::vector<char> res;
-	write_compressed_internal(schema,res);
+	write_compressed_internal(schema,res,0);
 	std::string s;
 	s.resize(res.size());
 	std::copy(res.begin(),res.end(),s.begin());
 	return s;
 }
 
-std::string::const_iterator config::read_compressed_internal(std::string::const_iterator i1, std::string::const_iterator i2, compression_schema& schema)
+std::string::const_iterator config::read_compressed_internal(std::string::const_iterator i1, std::string::const_iterator i2, compression_schema& schema, int level)
 {
+	if(level >= max_recursion_levels)
+		throw config::error("Too many recursion levels in compressed config read\n");
+	
 	bool in_open_element = false;
 	while(i1 != i2) {
 		switch(*i1) {
@@ -1033,7 +1059,7 @@ std::string::const_iterator config::read_compressed_internal(std::string::const_
 			if(in_open_element) {
 				in_open_element = false;
 				config& cfg = add_child(word);
-				i1 = cfg.read_compressed_internal(i1+1,i2,schema);
+				i1 = cfg.read_compressed_internal(i1+1,i2,schema,level+1);
 			} else {
 				//we have a name/value pair, the value is always a literal string
 				std::string value;
@@ -1042,8 +1068,10 @@ std::string::const_iterator config::read_compressed_internal(std::string::const_
 			}
 		}
 
-		}
+		} //end switch
 
+		if(i1 == i2)
+			return i2;
 		++i1;
 	}
 
@@ -1053,7 +1081,7 @@ std::string::const_iterator config::read_compressed_internal(std::string::const_
 void config::read_compressed(const std::string& data, compression_schema& schema)
 {
 	clear();
-	read_compressed_internal(data.begin(),data.end(),schema);
+	read_compressed_internal(data.begin(),data.end(),schema,0);
 }
 
 config::child_itors config::child_range(const std::string& key)
@@ -1103,7 +1131,12 @@ config* config::child(const std::string& key)
 
 const config* config::child(const std::string& key) const
 {
-	return const_cast<config*>(this)->child(key);
+	const child_map::const_iterator i = children.find(key);
+	if(i != children.end() && i->second.empty() == false) {
+		return i->second.front();
+	} else {
+		return NULL;
+	}
 }
 
 config& config::add_child(const std::string& key)

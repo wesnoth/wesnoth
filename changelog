@@ -1,6 +1,28 @@
-CVS HEAD:
- * improved user interface theme
- * new and improved graphics: signpost, mountains, grassland, attack icons and frames
+Version 0.8.1:
+ * new campaign: The Rise of Wesnoth (17 fully playable scenarios)
+ * user interface improvements:
+   * new ellipses to indicate unit selection
+   * tweaked theme
+   * tweaked change video mode dialog
+   * return can be used to navigate through help topics and sections in help browser
+   * a box is drawn around images in help browser
+ * speed scaling for different types of terrains
+ * new and improved graphics: 
+   * lighthouse
+   * signpost
+   * maps
+   * flags
+   * mountains
+   * grassland
+   * desert
+   * castle
+   * shroud
+   * fog of war
+   * attack icons and frames
+ * new musics: main menu
+ * intro for 'The Dark Hordes'
+ * new scenarios for 'The Dark Hordes' campaign:
+   * Underground Pool
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
    * Peasant Revolt
@@ -24,7 +46,10 @@ CVS HEAD:
    * Tribal Warfare
    * The Outpost
  * gave names to Trolls
+ * gender support for units
+ * increased hitpoints and required XP for Drake Warrior
  * new units
+   * Drake Flameheart
    * Fire Dragon
    * Giant Mudcrawler
    * Haldric
@@ -35,18 +60,33 @@ CVS HEAD:
    * Outlaw Queen
    * Peasant
    * Soul Shooter
+   * Wall Guard
    * Warrior King
- * return can now be used to navigate through help topics and sections
- * a box is now drawn around images in the help browser (can be disabled through minor tweaks to help config to handle new borders around images wml)
- * implemented feature to tell observers when a new player has arrived in the lobby
+ * multiplayer improvements:
+   * implemented feature to tell observers when a new player has arrived in the lobby
+   * disabled observers from setting labels
+   * playername checks, stripping spaces at the end of name
+   * limited maximum lenght of observer messages
+   * added server commands: msg, kick, ban, unban, status, metrics
+ * language fixes and polishing (english)
+ * updated sample translation
  * updated translations:
    * catalan
    * czech
+   * french
    * german
    * slovak
    * spanish
    * swedish
+ * made it so variables can be used to set the number of turns in a game
+ * changed set_flag rather verbose syntax to set_flag=blah,foo,bar
  * added [then] and [else] tags under [object] tags
+ * obsoleted [bigmap] tag, in favor of a unified [story] syntax
+   * display of background image, text, and title
+   * support of [if] [then] [else] functionality (can be nested)
+   * support of images overlay
+ * switched all scenarios to new [story] syntax
+ * added exploder and cutter tools
  * fixed the bug with multiplying help sections
  * fixed the problem where the forward and back button was shown brifly when opening the help browser
  * fixed --disable-debug not working as expected
@@ -61,27 +101,52 @@ CVS HEAD:
  * fixed bug where multiplayer games that disallowed observers didn't work properly
  * fixed items not removed after being picked up
  * fixed victory conditions in 'The Siege of Barag Gor'
+ * fixed attack animation not being complete
+ * fixed absence of animation when units without attack frame perform attack
+ * fixed obsolete Heavy Infantry unit still used in multiplayer
+ * fixed colour cursor not reappearing on some window-managers when the user re-enters a Wesnoth window
+ * fixed duplicate units: Cavalry, Cavalryman, Scout
+ * fixed 'layers' not working as intended in built terrains
+ * fixed terrain glitches, added a default base-terrain
+ * fixed graphic glitches
+ * fixed macro errors
+ * fixed edges of the map not getting cleared of shroud and fog of war
+ * fixed unit description on sidebar not getting updated when cycling units with 'n' (#8798)
+ * fixed segfault in display.hpp
+ * fixed dismissing unit from recall list not refreshing preview
+ * fixed show_enemy_moves showing moves for petrified units (#9290)
+ * fixed [not] tag not working properly
+ * fixed bug where clicking a menu item could generate multiple events
+ * fixed duplicate battleworld.cfg
+ * fixed bug in WML with using value instead of equals in [if] (#9398)
+ * fixed visual glitches caused by copy-paste
+ * fixed bug in intro which segfaulted when no "file" attribute in [image] tag
  * small fixes to unit display in help browser
+ * pngcrushed images
+ * gettext implementation preparations
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
  * moved items to their own hierarchy: images/items/
- * added exploder and cutter tools
  * adding a limit to number of characters in a textbox
  * adding a maximal line width for text to be drawn, to circumvent a SDL / SDL_ttf bug
- * changed set_flag rather verbose syntax to set_flag=blah,foo,bar
- * implemented patch to aid making binary packages
- * implemented relative directory patch
+ * implemented relative directory support
  * cleaned a bit the textbox code
  * refactoring of all animation code in unit_display and halo.
+ * added animated.hpp, and the animated<T> template.
+ * added proper support for animated time-of-day alternative images
+ * added support for animated terrain images
+ * added support for animated flags on villages
+ * cleaned the terrain-graphics.cfg - terrain graphics rule precedence is now depracated, use terrain layers.
+ * reverted castle tiles not being expanded to the border
+ * replacing all SDL_Surface*, and scoped_sdl_surface, with shared_sdl_surface, which was renamed surface.
+ * partial rewrite of image.?pp for speed: looking up images was what was slowing the game
+ * inlining some stuff for performance reasons
+ * optimizing halo movement when unit moves
+ * optimizing invalide_all redraws
+ * concentrate all version and server changes for release-time on top of configure.ac
+ * improved making binary packages
  * removed an obsolete feature in terrain graphics engine that was never used
  * removing commented-out obsolete code in display.cpp
- * optimizing halo movement when unit moves
- * adding animated.hpp, and the animated<T> template.
- * partial rewrite of image.?pp for speed: looking up images was what was slowing the game
- * replacing all SDL_Surface*, and scoped_sdl_surface, with shared_sdl_surface, which was renamed surface.
- * inlining some stuff for performance reasons
- * optimizing invalide_all redraws
- * adding support for animated terrain images
- * ran pngcrush on images
+ * code cleanups
 
 Version 0.8:
  * added Drake flying animations
