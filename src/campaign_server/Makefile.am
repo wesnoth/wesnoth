@@ -1,10 +1,10 @@
 bin_PROGRAMS = campaignd
 
 #############################################################################
-#    Wesnothd Server                                                        #
+#    Campaign Server                                                        #
 #############################################################################
 
-wesnothd_SOURCES = campaign_server.cpp \
+campaignd_SOURCES = campaign_server.cpp \
 		   ../server/variable.cpp \
 		   ../config.cpp \
 		   ../filesystem.cpp \

@@ -4,6 +4,10 @@ if SERVER
 SUBDIRS += server
 endif
 
+if CAMPAIGNSERVER
+SUBDIRS += campaign_server
+endif
+
 if TOOLS
 SUBDIRS += tools
 endif
