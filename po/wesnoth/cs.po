@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-21 21:58+0200\n"
+"POT-Creation-Date: 2004-10-26 00:18+0200\n"
 "PO-Revision-Date: 2004-09-30 12:32+0200\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
@@ -38,7 +38,7 @@ msgstr "chytrý"
 msgid "resilient"
 msgstr "houževnatý"
 
-#: data/help.cfg:10 data/help.cfg:52
+#: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
 msgstr "Úvod"
 
@@ -46,7 +46,7 @@ msgstr "Úvod"
 msgid "Gameplay"
 msgstr "Pravidla hry"
 
-#: data/help.cfg:22 data/help.cfg:200
+#: data/help.cfg:22 data/help.cfg:207
 msgid "Traits"
 msgstr "Vlastnosti"
 
@@ -58,16 +58,23 @@ msgstr "Jednotky"
 msgid "Abilities"
 msgstr "Schopnosti"
 
-#: data/help.cfg:40
+#: data/help.cfg:41
 #, fuzzy
 msgid "Weapon Specials"
 msgstr "Zláštnosti"
 
-#: data/help.cfg:46
+#: data/help.cfg:47
 msgid "Terrains"
 msgstr "Typy terénu"
 
-#: data/help.cfg:55
+#: data/help.cfg:54
+msgid ""
+"Certain units have abilities that either directly affect other units, or "
+"have an impact on how the unit interacts with other units. These abilities "
+"will be listed under this topic as you encounter them."
+msgstr ""
+
+#: data/help.cfg:62
 msgid ""
 "<img>src=misc/logo.png align=middle box=no</img>\n"
 "\n"
@@ -87,11 +94,11 @@ msgstr ""
 "jednoduchých pravidel povstává bohatství strategií, jež znamenají, že je "
 "lehké se hru naučit, avšak obtížné si ji podrobit."
 
-#: data/help.cfg:60
+#: data/help.cfg:67
 msgid "Fundamentals of Gameplay"
 msgstr "Základy pravidel hry"
 
-#: data/help.cfg:65
+#: data/help.cfg:72
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. For more "
@@ -133,11 +140,11 @@ msgstr ""
 "li na ně kursor myši. To je obzvlášť užitečné, když se s novými vlastnostmi "
 "setkáš poprvé."
 
-#: data/help.cfg:70
+#: data/help.cfg:77
 msgid "Recruiting and Recalling"
 msgstr "Verbování a přivolávání"
 
-#: data/help.cfg:79
+#: data/help.cfg:86
 msgid ""
 "<img>src=help/recruit.png align=left float=yes</img>At the start of any "
 "battle, and at times during it, you will need to recruit units into your "
@@ -195,11 +202,11 @@ msgstr ""
 "potřebuješ také peníze na jejich vydržování. Pro více informací viz "
 "<ref>dst=income_and_upkeep text='Příjmy a výdaje'</ref>."
 
-#: data/help.cfg:84 src/help.cpp:747 src/help.cpp:748
+#: data/help.cfg:91 src/help.cpp:747 src/help.cpp:748
 msgid "Movement"
 msgstr "Pohyby"
 
-#: data/help.cfg:89
+#: data/help.cfg:96
 #, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
@@ -253,11 +260,11 @@ msgstr ""
 "Wesnothu, neboť pouze <ref>dst=ability_skirmish text='průbojné'</ref> "
 "jednotky dokáží oblasti kontroly ignorovat."
 
-#: data/help.cfg:94
+#: data/help.cfg:101
 msgid "Combat"
 msgstr "Boj"
 
-#: data/help.cfg:110
+#: data/help.cfg:117
 #, fuzzy
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
@@ -348,11 +355,11 @@ msgstr ""
 "zdvojnásobuje zranění útočníka i obránce, pokud je jednotka s touto "
 "schopností útočníkem."
 
-#: data/help.cfg:115
+#: data/help.cfg:122
 msgid "Damage Types and Resistance"
 msgstr "Typy zranění a odolnost"
 
-#: data/help.cfg:120
+#: data/help.cfg:127
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -385,11 +392,11 @@ msgstr ""
 "snadno zranitelní úderem a ohněm, a neobyčejně snadno zranitelní svatým "
 "útokem."
 
-#: data/help.cfg:125
+#: data/help.cfg:132
 msgid "Time of Day"
 msgstr "Denní doba"
 
-#: data/help.cfg:145
+#: data/help.cfg:152
 msgid ""
 "Wesnoth games usually take place with a regular cycle between day and night. "
 "The current time of day can be observed under the minimap in the upper "
@@ -448,11 +455,11 @@ msgstr ""
 "<img>src=misc/schedule-underground.png align=right float=yes</img>Měj na "
 "paměti, že některé hry se odehrávají pod zemí, kde je noc stále!"
 
-#: data/help.cfg:150
+#: data/help.cfg:157
 msgid "Experience and Advancement"
 msgstr "Zkušenosti a povyšování"
 
-#: data/help.cfg:155
+#: data/help.cfg:162
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -482,11 +489,11 @@ msgstr ""
 "občas některé (jako třeba <ref>dst=unit_mage text=mágové</ref>) mohou mít "
 "čtyři."
 
-#: data/help.cfg:160
+#: data/help.cfg:167
 msgid "Healing"
 msgstr "Uzdravování"
 
-#: data/help.cfg:170
+#: data/help.cfg:177
 msgid ""
 "In combat, your units will inevitably take damage. Wesnoth offers several "
 "ways for your units to heal, all of which take place at the beginning of "
@@ -530,11 +537,11 @@ msgstr ""
 "léčení; vesnice, regenerace a uzdravování/léčení se nesčítají. Jednotky se "
 "také zcela uzdraví mezi scénáři."
 
-#: data/help.cfg:175
+#: data/help.cfg:182
 msgid "Income and Upkeep"
 msgstr "Příjmy a výdaje"
 
-#: data/help.cfg:183
+#: data/help.cfg:190
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -586,11 +593,11 @@ msgstr ""
 "přidají během scénáře (jako jezdec na koni v druhém scénáři Dědice trůnu); "
 "takové tě nikdy nic nestojí."
 
-#: data/help.cfg:188
+#: data/help.cfg:195
 msgid "Wrap Up"
 msgstr "Závěr"
 
-#: data/help.cfg:189
+#: data/help.cfg:196
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -603,12 +610,12 @@ msgstr ""
 "<ref>dst=abilities text=schopnostmi</ref>, ale nyní víš vše, co potřebuješ "
 "ke hře Dědice trůnu. Dobře se bav a mnoho štěstí!"
 
-#: data/help.cfg:194 src/titlescreen.cpp:178
+#: data/help.cfg:201 src/titlescreen.cpp:178
 #, fuzzy
 msgid "About"
 msgstr "Mladík"
 
-#: data/help.cfg:238
+#: data/help.cfg:245
 #, fuzzy
 msgid ""
 "Most units have two traits. Traits are attributes of the unit that modify "
@@ -1016,8 +1023,21 @@ msgstr "Ostrov"
 msgid "Blitz"
 msgstr ""
 
+#: data/scenarios/multiplayer/BrokenBridge.cfg:4
+msgid ""
+"A small two vs. two map across the ruins of a once great bridge. Perfect for "
+"fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
+"2,4."
+msgstr ""
+
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
+msgstr ""
+
+#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
+msgid ""
+"Many close by and strategically located castles. Small map for fast play. "
+"Recommended setting of 2 gold per village."
 msgstr ""
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
@@ -1050,6 +1070,14 @@ msgstr "Náhodná mapa"
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
 msgstr "Wesbowl"
+
+#: data/scenarios/multiplayer/Wesbowl.cfg:6
+msgid ""
+"In Wesbowl, a player must get their ball to the other player's end zone. "
+"However, the other player can attack your units. Wesbowl is played with "
+"blunt weapons, and healers are on hand, so when units are killed, they "
+"return to that player's end zone with an injury."
+msgstr ""
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:11
 msgid ""
@@ -1111,6 +1139,12 @@ msgstr "Remíza!  Konečné skóre: $redscore-$bluescore"
 msgid "Battle for Weslin Bridge"
 msgstr "Bitva o Weslinský most"
 
+#: data/scenarios/multiplayer/WeslinBridge.cfg:5
+msgid ""
+"Teams of 2 fight for control of the central bridge choke-point. Good for "
+"medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
+msgstr ""
+
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
 msgstr "Bitevní svět"
@@ -1123,31 +1157,38 @@ msgstr "Obležené hrady"
 msgid "Across The River"
 msgstr "Za řekou"
 
-#: data/scenarios/multiplayer/scenarios.cfg:108
+#: data/scenarios/multiplayer/scenarios.cfg:5
+msgid ""
+"This map is a convenient way to do some testing with two factions, as it is "
+"pretty well balanced towards both sides.\n"
+"You can use it AI vs AI to see how well a faction fares against another."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:110
 msgid "The Isle of Anduin"
 msgstr "Ostrov Anduin"
 
-#: data/scenarios/multiplayer/scenarios.cfg:135
+#: data/scenarios/multiplayer/scenarios.cfg:137
 msgid "The Three Rivers"
 msgstr "Tři řeky"
 
-#: data/scenarios/multiplayer/scenarios.cfg:162
+#: data/scenarios/multiplayer/scenarios.cfg:164
 msgid "The Isles of the Damned"
 msgstr "Ostrov zatracení"
 
-#: data/scenarios/multiplayer/scenarios.cfg:195
+#: data/scenarios/multiplayer/scenarios.cfg:197
 msgid "The Valley of Death"
 msgstr "Údolí smrti"
 
-#: data/scenarios/multiplayer/scenarios.cfg:238
+#: data/scenarios/multiplayer/scenarios.cfg:240
 msgid "Dwarvern Wasteland"
 msgstr "Trpasličí pustina"
 
-#: data/scenarios/multiplayer/scenarios.cfg:277
+#: data/scenarios/multiplayer/scenarios.cfg:279
 msgid "Princess's Battlefield"
 msgstr "Princeznino bitevní pole"
 
-#: data/scenarios/multiplayer/scenarios.cfg:304
+#: data/scenarios/multiplayer/scenarios.cfg:306
 msgid "King of the Hill"
 msgstr "Král vršku"
 
@@ -2260,7 +2301,7 @@ msgstr "Druhá hlídka"
 msgid "Underground"
 msgstr "Podzemí"
 
-#: data/terrain.cfg:7 src/multiplayer.cpp:111 src/multiplayer_lobby.cpp:130
+#: data/terrain.cfg:7 src/multiplayer.cpp:111 src/multiplayer_lobby.cpp:131
 msgid "Shroud"
 msgstr "Ochrana tmy"
 
@@ -2283,9 +2324,8 @@ msgid "Village"
 msgstr "Vesnice"
 
 #: data/terrain.cfg:51
-#, fuzzy
-msgid "Swamp Water"
-msgstr "Mělká voda"
+msgid "Swamp"
+msgstr "Mokřina"
 
 #: data/terrain.cfg:70
 msgid "Ice"
@@ -2316,25 +2356,17 @@ msgstr "Louka"
 msgid "Snow"
 msgstr "Stín"
 
-#: data/terrain.cfg:177
+#: data/terrain.cfg:177 data/terrain.cfg:184
 msgid "Hills"
 msgstr "Kopce"
-
-#: data/terrain.cfg:184
-msgid "Snow hills"
-msgstr ""
 
 #: data/terrain.cfg:192
 msgid "Mountains"
 msgstr "Hory"
 
-#: data/terrain.cfg:199
+#: data/terrain.cfg:199 data/terrain.cfg:206
 msgid "Forest"
 msgstr "Les"
-
-#: data/terrain.cfg:206
-msgid "Snow forest"
-msgstr ""
 
 #: data/terrain.cfg:214
 #, fuzzy
@@ -2379,15 +2411,15 @@ msgstr "Akce"
 msgid "End Turn"
 msgstr "Ukonči kolo"
 
-#: data/themes/default.cfg:126 data/themes/default.cfg:462 src/dialogs.cpp:670
+#: data/themes/default.cfg:126 data/themes/default.cfg:462 src/dialogs.cpp:673
 #: src/display.cpp:941 src/help.cpp:612 src/playturn.cpp:1957
-#: src/unit.cpp:1034
+#: src/unit.cpp:1029
 msgid "HP"
 msgstr "Životů"
 
-#: data/themes/default.cfg:133 data/themes/default.cfg:469 src/dialogs.cpp:674
-#: src/dialogs.cpp:682 src/display.cpp:945 src/display.cpp:953
-#: src/playturn.cpp:1796 src/playturn.cpp:1958 src/unit.cpp:1093
+#: data/themes/default.cfg:133 data/themes/default.cfg:469 src/dialogs.cpp:677
+#: src/dialogs.cpp:685 src/display.cpp:945 src/display.cpp:953
+#: src/playturn.cpp:1796 src/playturn.cpp:1958 src/unit.cpp:1088
 msgid "XP"
 msgstr "Zkušenost"
 
@@ -3914,7 +3946,7 @@ msgstr ""
 msgid "gaze"
 msgstr "pohled"
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:730 src/actions.cpp:877
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:732 src/actions.cpp:881
 #: src/reports.cpp:122
 #, fuzzy
 msgid "stone"
@@ -5580,12 +5612,13 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
-msgid "female^Siren"
-msgstr ""
+#, fuzzy
+msgid "Siren"
+msgstr "oheň"
 
 #: data/units/Mermaid_Siren.cfg:23
 #, fuzzy
-msgid "naia touch"
+msgid "naiad touch"
 msgstr "dotek víly"
 
 #: data/units/Merman.cfg:3
@@ -6978,41 +7011,41 @@ msgstr "zranitelnost obránce vs."
 msgid "Halved"
 msgstr "Zmenšeno na polovinu"
 
-#: src/actions.cpp:716 src/actions.cpp:862 src/display.cpp:917
+#: src/actions.cpp:718 src/actions.cpp:866 src/display.cpp:917
 #: src/reports.cpp:115
 msgid "poisoned"
 msgstr "otrávený"
 
-#: src/actions.cpp:721 src/actions.cpp:867 src/display.cpp:913
+#: src/actions.cpp:723 src/actions.cpp:871 src/display.cpp:913
 #: src/reports.cpp:110
 msgid "slowed"
 msgstr "zpomalený"
 
-#: src/actions.cpp:1739
+#: src/actions.cpp:1743
 msgid "Ambushed!"
 msgstr "Přepadení!"
 
-#: src/actions.cpp:1767
+#: src/actions.cpp:1771
 msgid "Friendly unit sighted"
 msgstr "Spřátelená jednotka spatřena"
 
-#: src/actions.cpp:1769
+#: src/actions.cpp:1773
 msgid "Enemy unit sighted!"
 msgstr "Nepřátelská jednotka na dohled!"
 
-#: src/actions.cpp:1774
+#: src/actions.cpp:1778
 msgid "$friends Friendly units sighted"
 msgstr "$friends spřátelených jednotek spatřeno"
 
-#: src/actions.cpp:1776
+#: src/actions.cpp:1780
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies nepřátelských jednotek na dohled!"
 
-#: src/actions.cpp:1780
+#: src/actions.cpp:1784
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Jednotky na dohled! ($friends spřátelených, $enemies nepřátelských)"
 
-#: src/actions.cpp:1801
+#: src/actions.cpp:1805
 msgid "(press $hotkey to continue)"
 msgstr "(stiskni $hotkey k pokračování)"
 
@@ -7040,7 +7073,7 @@ msgstr "Přepsat?"
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Tato uložená pozice již existuje. Chceš ji přepsat?"
 
-#: src/dialogs.cpp:209 src/dialogs.cpp:446
+#: src/dialogs.cpp:209 src/dialogs.cpp:449
 msgid "Don't ask me again!"
 msgstr "Už se mě nikdy neptej!"
 
@@ -7056,11 +7089,11 @@ msgstr "%d. %m. %Y %H:%M"
 msgid "#(Invalid)"
 msgstr "#(Neplatné)"
 
-#: src/dialogs.cpp:368 src/game.cpp:935
+#: src/dialogs.cpp:368 src/game.cpp:953
 msgid "Campaign"
 msgstr "Tažení"
 
-#: src/dialogs.cpp:370 src/game.cpp:1197
+#: src/dialogs.cpp:370 src/game.cpp:1215
 msgid "Multiplayer"
 msgstr "Hra více hráčů"
 
@@ -7072,7 +7105,7 @@ msgstr "Výcvik"
 msgid "replay"
 msgstr "záznam"
 
-#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:142 src/playturn.cpp:1385
+#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:143 src/playturn.cpp:1385
 msgid "Turn"
 msgstr "Kolo"
 
@@ -7080,15 +7113,19 @@ msgstr "Kolo"
 msgid "Scenario Start"
 msgstr "Začátek scénáře"
 
-#: src/dialogs.cpp:387 src/game.cpp:965
+#: src/dialogs.cpp:387 src/game.cpp:983
 msgid "Difficulty"
 msgstr "Obtížnost"
 
-#: src/dialogs.cpp:401
+#: src/dialogs.cpp:389 src/titlescreen.cpp:155
+msgid "Version"
+msgstr "Verze"
+
+#: src/dialogs.cpp:404
 msgid "No Saved Games"
 msgstr "Žádné uložené hry"
 
-#: src/dialogs.cpp:402
+#: src/dialogs.cpp:405
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -7096,15 +7133,15 @@ msgstr ""
 "Nemohu nahrát hru, protože není nic uloženo\n"
 "(hra se ukládá automaticky po dokončení scénáře)."
 
-#: src/dialogs.cpp:421
+#: src/dialogs.cpp:424
 msgid "Delete Save"
 msgstr "Smaž pozici"
 
-#: src/dialogs.cpp:436
+#: src/dialogs.cpp:439
 msgid "Import Saved Games"
 msgstr "Načti uložené hry"
 
-#: src/dialogs.cpp:437
+#: src/dialogs.cpp:440
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -7114,7 +7151,7 @@ msgstr ""
 "Wesnoth. Chceš je aktualizovat pro nejnovější verzi hry? Může to chvíli "
 "trvat."
 
-#: src/dialogs.cpp:442
+#: src/dialogs.cpp:445
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
@@ -7124,38 +7161,38 @@ msgstr ""
 "vytvořeny touto verzí Bitvy o Wesnoth. Chceš je přeregistrovat pro tuto "
 "verzi hry?"
 
-#: src/dialogs.cpp:512
+#: src/dialogs.cpp:515
 msgid "Show replay"
 msgstr "Ukaž záznamy"
 
-#: src/dialogs.cpp:515 src/hotkeys.cpp:133 src/multiplayer.cpp:81
+#: src/dialogs.cpp:518 src/hotkeys.cpp:133 src/multiplayer.cpp:81
 msgid "Load Game"
 msgstr "Načti hru"
 
-#: src/dialogs.cpp:516
+#: src/dialogs.cpp:519
 msgid "Choose the game to load"
 msgstr "Vyber si, kterou hru chceš načíst"
 
-#: src/dialogs.cpp:553 src/dialogs.cpp:562
+#: src/dialogs.cpp:556 src/dialogs.cpp:565
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:649 src/display.cpp:923 src/help.cpp:564
+#: src/dialogs.cpp:652 src/display.cpp:923 src/help.cpp:564
 #: src/playturn.cpp:1794
 msgid "level"
 msgstr "úroveň"
 
-#: src/dialogs.cpp:687 src/display.cpp:957 src/help.cpp:613
-#: src/playturn.cpp:1959 src/unit.cpp:1070
+#: src/dialogs.cpp:690 src/display.cpp:957 src/help.cpp:613
+#: src/playturn.cpp:1959 src/unit.cpp:1065
 msgid "Moves"
 msgstr "Kroků"
 
-#: src/dialogs.cpp:700 src/display.cpp:974 src/help.cpp:681
+#: src/dialogs.cpp:705 src/display.cpp:974 src/help.cpp:681
 #: src/playturn.cpp:598 src/reports.cpp:230
 msgid "melee"
 msgstr "zblízka"
 
-#: src/dialogs.cpp:701 src/display.cpp:975 src/help.cpp:681
+#: src/dialogs.cpp:705 src/display.cpp:975 src/help.cpp:681
 #: src/playturn.cpp:598 src/reports.cpp:231
 msgid "ranged"
 msgstr "na dálku"
@@ -7188,201 +7225,201 @@ msgstr "Hru se nepodařlo uložit"
 msgid "Do you want to save your game?"
 msgstr "Chceš uložit hru?"
 
-#: src/game.cpp:594
+#: src/game.cpp:612
 msgid "The Battle for Wesnoth"
 msgstr "Bitva o Wesnoth"
 
-#: src/game.cpp:795 src/multiplayer_connect.cpp:100
+#: src/game.cpp:813 src/multiplayer_connect.cpp:100
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Tato uložená pozice je z jiné verze hry. Chceš se ji opravdu pokusit nahrát?"
 
-#: src/game.cpp:807 src/game.cpp:812 src/playlevel.cpp:558
+#: src/game.cpp:825 src/game.cpp:830 src/playlevel.cpp:558
 #: src/playlevel.cpp:800
 msgid "The file you have tried to load is corrupt"
 msgstr "Soubor, který se snažíš načíst, je poškozený."
 
-#: src/game.cpp:816
+#: src/game.cpp:834
 msgid "File I/O Error while reading the game"
 msgstr "Vstupně výstupní chyba souboru při načítání hry"
 
-#: src/game.cpp:925
+#: src/game.cpp:943
 msgid " ,Get More Campaigns..."
 msgstr " ,Získej další tažení..."
 
-#: src/game.cpp:926
+#: src/game.cpp:944
 msgid "Download more campaigns from a server on Internet."
 msgstr "Stáhni si další tažení z internetového serveru."
 
-#: src/game.cpp:936
+#: src/game.cpp:954
 msgid "Choose the campaign you want to play:"
 msgstr "Vyber si, kterou hru chceš hrát:"
 
-#: src/game.cpp:966
+#: src/game.cpp:984
 msgid "Select difficulty level:"
 msgstr "Vyber si obtížnost:"
 
-#: src/game.cpp:985
+#: src/game.cpp:1003
 msgid "Connect to Server"
 msgstr "Připoj se na server"
 
-#: src/game.cpp:986
+#: src/game.cpp:1004
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Nyní se připojíš na server s taženími, abys nějaké stáhl."
 
-#: src/game.cpp:987
+#: src/game.cpp:1005
 msgid "Server: "
 msgstr "Server:"
 
-#: src/game.cpp:999
+#: src/game.cpp:1017
 msgid "Could not connect to host."
 msgstr "Spojení se hostitelem se nezdařilo."
 
-#: src/game.cpp:999 src/game.cpp:1014 src/game.cpp:1020 src/game.cpp:1053
-#: src/game.cpp:1082 src/game.cpp:1096 src/game.cpp:1098 src/game.cpp:1100
-#: src/game.cpp:1112 src/game.cpp:1115 src/game.cpp:1150 src/game.cpp:1152
-#: src/game.cpp:1174 src/game.cpp:1176 src/playturn.cpp:1397
+#: src/game.cpp:1017 src/game.cpp:1032 src/game.cpp:1038 src/game.cpp:1071
+#: src/game.cpp:1100 src/game.cpp:1114 src/game.cpp:1116 src/game.cpp:1118
+#: src/game.cpp:1130 src/game.cpp:1133 src/game.cpp:1168 src/game.cpp:1170
+#: src/game.cpp:1192 src/game.cpp:1194 src/playturn.cpp:1397
 #: src/playturn.cpp:1411
 msgid "Error"
 msgstr "Chyba"
 
-#: src/game.cpp:1007
+#: src/game.cpp:1025
 msgid "Awaiting response from server"
 msgstr "Čekám na odpověď serveru"
 
-#: src/game.cpp:1020
+#: src/game.cpp:1038
 msgid "Error communicating with the server."
 msgstr "Chyba při komunikaci se serverem."
 
-#: src/game.cpp:1025
+#: src/game.cpp:1043
 msgid ",Name,Version,Author,Downloads"
 msgstr ",Jméno,Verze,Autor,Počet stažení"
 
-#: src/game.cpp:1045
+#: src/game.cpp:1063
 msgid "Publish campaign: "
 msgstr "Zveřejni tažení: "
 
-#: src/game.cpp:1049
+#: src/game.cpp:1067
 #, fuzzy
 msgid "Delete campaign: "
 msgstr "Získej tažení"
 
-#: src/game.cpp:1053
+#: src/game.cpp:1071
 msgid "There are no campaigns available for download from this server."
 msgstr "Na tomto serveru nejsou k dispozici nejsou žádná tažení ke stažení."
 
-#: src/game.cpp:1057
+#: src/game.cpp:1075
 msgid "Choose the campaign to download."
 msgstr "Vyber si, kterou hru chceš stáhnout."
 
-#: src/game.cpp:1057
+#: src/game.cpp:1075
 msgid "Get Campaign"
 msgstr "Získej tažení"
 
-#: src/game.cpp:1076
+#: src/game.cpp:1094
 msgid "Downloading campaign..."
 msgstr "Stahuji taženi..."
 
-#: src/game.cpp:1094
+#: src/game.cpp:1112
 msgid "Campaign Installed"
 msgstr "Tažení nainstalováno"
 
-#: src/game.cpp:1094
+#: src/game.cpp:1112
 msgid "The campaign has been installed."
 msgstr "Tažení bylo nainstalováno."
 
-#: src/game.cpp:1096
+#: src/game.cpp:1114
 msgid "Network communication error."
 msgstr "Chyba při síťové komunikaci."
 
-#: src/game.cpp:1098
+#: src/game.cpp:1116
 msgid "Remote host disconnected."
 msgstr "Vzdálený hostitel se odpojil."
 
-#: src/game.cpp:1100
+#: src/game.cpp:1118
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Vytvoření souborů potřebných k instalaci tažení neproběhlo v pořádku."
 
-#: src/game.cpp:1112 src/game.cpp:1150 src/game.cpp:1174
+#: src/game.cpp:1130 src/game.cpp:1168 src/game.cpp:1192
 #: src/multiplayer_client.cpp:45 src/multiplayer_client.cpp:319
 msgid "Connection timed out"
 msgstr "Časový limit pro připojení vypršel"
 
-#: src/game.cpp:1115 src/game.cpp:1152 src/game.cpp:1176
+#: src/game.cpp:1133 src/game.cpp:1170 src/game.cpp:1194
 msgid "The server responded with an error: \""
 msgstr "Server odpověděl chybou: \""
 
-#: src/game.cpp:1118
+#: src/game.cpp:1136
 msgid "Terms"
 msgstr "Podmínky"
 
-#: src/game.cpp:1154 src/game.cpp:1178
+#: src/game.cpp:1172 src/game.cpp:1196
 msgid "Response"
 msgstr "Odpověď"
 
-#: src/game.cpp:1190
+#: src/game.cpp:1208
 msgid "Join Official Server"
 msgstr "Připoj se na oficiální server"
 
-#: src/game.cpp:1190
+#: src/game.cpp:1208
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Připoj se na oficiální herní server Wesnothu"
 
-#: src/game.cpp:1191 src/multiplayer_lobby.cpp:160
+#: src/game.cpp:1209 src/multiplayer_lobby.cpp:161
 msgid "Join Game"
 msgstr "Přidej se ke hře"
 
-#: src/game.cpp:1191
+#: src/game.cpp:1209
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:1192
+#: src/game.cpp:1210
 #, fuzzy
 msgid "Host Networked Game"
 msgstr "Síťový hráč"
 
-#: src/game.cpp:1192
+#: src/game.cpp:1210
 msgid "Host a game without using a server"
 msgstr "Hostuj hru bez použití serveru"
 
-#: src/game.cpp:1193
+#: src/game.cpp:1211
 #, fuzzy
 msgid "Hotseat Game"
 msgstr "Vytvoř hru"
 
-#: src/game.cpp:1193
+#: src/game.cpp:1211
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
-#: src/game.cpp:1194
+#: src/game.cpp:1212
 #, fuzzy
 msgid "Human vs AI"
 msgstr "Lidé"
 
-#: src/game.cpp:1194
+#: src/game.cpp:1212
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1197 src/multiplayer_client.cpp:303
+#: src/game.cpp:1215 src/multiplayer_client.cpp:303
 msgid "Login"
 msgstr "Jméno"
 
-#: src/game.cpp:1278
+#: src/game.cpp:1296
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/game.cpp:1279
+#: src/game.cpp:1297
 msgid "Choose your preferred language"
 msgstr "Vyber si jazyk"
 
-#: src/game.cpp:1529
+#: src/game.cpp:1547
 msgid "Could not initialize video. Exiting.\n"
 msgstr "Nemohu inicializovat zobrazení. Končím.\n"
 
-#: src/game.cpp:1531
+#: src/game.cpp:1549
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr "Nemohu inicializovat fonty. Končím.\n"
 
@@ -7678,7 +7715,7 @@ msgstr "Ukaž záznam rozhovoru"
 msgid "Do you really want to quit?"
 msgstr "Opravdu chceš skončit?"
 
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:162
+#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:163
 msgid "Quit"
 msgstr "Konec"
 
@@ -7706,7 +7743,7 @@ msgstr "Zavři okno"
 msgid "Map Generator"
 msgstr "Generátor map"
 
-#: src/mapgen_dialog.cpp:80 src/multiplayer.cpp:483
+#: src/mapgen_dialog.cpp:80 src/multiplayer.cpp:490
 msgid "Players"
 msgstr "Hráčů"
 
@@ -7820,7 +7857,7 @@ msgstr "Nesdílej nic"
 msgid "No multiplayer sides."
 msgstr "Hra více hráčů nemá určené strany."
 
-#: src/multiplayer.cpp:169 src/multiplayer_lobby.cpp:161
+#: src/multiplayer.cpp:169 src/multiplayer_lobby.cpp:162
 msgid "Create Game"
 msgstr "Vytvoř hru"
 
@@ -7856,7 +7893,7 @@ msgstr "Zlato/Vesnice"
 msgid "Experience Requirements"
 msgstr "Potřebné zkušenosti"
 
-#: src/multiplayer.cpp:499
+#: src/multiplayer.cpp:506
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
@@ -7864,7 +7901,7 @@ msgstr ""
 "Hře se nepodařilo otevřít port nutný k nabízení hry po síti. Síťoví hráči se "
 "k této hře nebudou moci připojit."
 
-#: src/multiplayer.cpp:499
+#: src/multiplayer.cpp:506
 msgid "Warning"
 msgstr "Varování"
 
@@ -8033,19 +8070,19 @@ msgstr "Barva"
 msgid "Waiting for network players to join"
 msgstr "Čekám, až se připojí další hráči"
 
-#: src/multiplayer_lobby.cpp:144
+#: src/multiplayer_lobby.cpp:145
 msgid "1"
 msgstr "1"
 
-#: src/multiplayer_lobby.cpp:144
+#: src/multiplayer_lobby.cpp:145
 msgid "Vacant Slot"
 msgstr "Prázdná posice"
 
-#: src/multiplayer_lobby.cpp:144
+#: src/multiplayer_lobby.cpp:145
 msgid "Vacant Slots"
 msgstr "Prázdné posice"
 
-#: src/multiplayer_lobby.cpp:159
+#: src/multiplayer_lobby.cpp:160
 msgid "Observe Game"
 msgstr "Pozoruj hru"
 
@@ -8371,10 +8408,6 @@ msgstr ""
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Tato jednotka se změnila v kámen. Nemůže se ani hýbat, ani útočit."
 
-#: src/reports.cpp:131 src/reports.cpp:142
-msgid "_description"
-msgstr ""
-
 #: src/reports.cpp:232
 msgid "damage"
 msgstr "poškození"
@@ -8410,10 +8443,6 @@ msgstr "Spojenecká vesnice"
 #: src/show_dialog.cpp:953
 msgid "KB"
 msgstr "kB"
-
-#: src/titlescreen.cpp:155
-msgid "Version"
-msgstr "Verze"
 
 #: src/titlescreen.cpp:172
 msgid "TitleScreen button^Tutorial"
@@ -8478,11 +8507,11 @@ msgstr "Ukaž zásluhy"
 msgid "Quit the game"
 msgstr "Ukončit hru"
 
-#: src/titlescreen.cpp:211
+#: src/titlescreen.cpp:215
 msgid "More"
 msgstr "Více"
 
-#: src/titlescreen.cpp:218
+#: src/titlescreen.cpp:222
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Kniha Wesnothu"
 
@@ -8510,11 +8539,12 @@ msgstr "Smaž soubor"
 msgid "Deletion of the file failed."
 msgstr "Smazání souboru se nezdařilo."
 
+#, fuzzy
+#~ msgid "Swamp Water"
+#~ msgstr "Mělká voda"
+
 #~ msgid "first strike"
 #~ msgstr "první úder"
-
-#~ msgid "Swamp"
-#~ msgstr "Mokřina"
 
 #~ msgid "Tundra"
 #~ msgstr "Tundra"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-21 21:58+0200\n"
+"POT-Creation-Date: 2004-10-26 00:18+0200\n"
 "PO-Revision-Date: 2004-09-13 17:48+0200\n"
 "Last-Translator: Mathias Bundgaard Svensson <freaken@freaken.dk>\n"
 "Language-Team:  <da@li.org>\n"
@@ -38,7 +38,7 @@ msgstr "intelligent"
 msgid "resilient"
 msgstr "modstandsdygtig"
 
-#: data/help.cfg:10 data/help.cfg:52
+#: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
 msgstr "Introduktion"
 
@@ -46,7 +46,7 @@ msgstr "Introduktion"
 msgid "Gameplay"
 msgstr "Gameplay"
 
-#: data/help.cfg:22 data/help.cfg:200
+#: data/help.cfg:22 data/help.cfg:207
 msgid "Traits"
 msgstr "Karaktertræk"
 
@@ -58,15 +58,22 @@ msgstr "Enheder"
 msgid "Abilities"
 msgstr "Evner"
 
-#: data/help.cfg:40
+#: data/help.cfg:41
 msgid "Weapon Specials"
 msgstr "Våben Specialiteter"
 
-#: data/help.cfg:46
+#: data/help.cfg:47
 msgid "Terrains"
 msgstr "Terrænet"
 
-#: data/help.cfg:55
+#: data/help.cfg:54
+msgid ""
+"Certain units have abilities that either directly affect other units, or "
+"have an impact on how the unit interacts with other units. These abilities "
+"will be listed under this topic as you encounter them."
+msgstr ""
+
+#: data/help.cfg:62
 msgid ""
 "<img>src=misc/logo.png align=middle box=no</img>\n"
 "\n"
@@ -86,11 +93,11 @@ msgstr ""
 "udspringer et væld af strategier, der gør spillet let at lære, men svært at "
 "mestre."
 
-#: data/help.cfg:60
+#: data/help.cfg:67
 msgid "Fundamentals of Gameplay"
 msgstr "Spillets opbygning"
 
-#: data/help.cfg:65
+#: data/help.cfg:72
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. For more "
@@ -133,11 +140,11 @@ msgstr ""
 "forklare denne ting. Dette gælder især når du møder nye evner for første "
 "gang."
 
-#: data/help.cfg:70
+#: data/help.cfg:77
 msgid "Recruiting and Recalling"
 msgstr "Rekrutering og Genindkaldelse"
 
-#: data/help.cfg:79
+#: data/help.cfg:86
 msgid ""
 "<img>src=help/recruit.png align=left float=yes</img>At the start of any "
 "battle, and at times during it, you will need to recruit units into your "
@@ -195,11 +202,11 @@ msgstr ""
 "koster også penge at støtte dem. Se <ref>dst=income_and_upkepp "
 "text=Inkomster og Udgifter</ref> for mere information."
 
-#: data/help.cfg:84 src/help.cpp:747 src/help.cpp:748
+#: data/help.cfg:91 src/help.cpp:747 src/help.cpp:748
 msgid "Movement"
 msgstr "Bevægelse"
 
-#: data/help.cfg:89
+#: data/help.cfg:96
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -252,11 +259,11 @@ msgstr ""
 "fordel er en vigtig del af Wesnoth, da kun <ref>dst=ability_skirmish "
 "text='Hurtigkæmpere'</ref> kan ignorere disse zoner."
 
-#: data/help.cfg:94
+#: data/help.cfg:101
 msgid "Combat"
 msgstr "Kamp"
 
-#: data/help.cfg:110
+#: data/help.cfg:117
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -347,11 +354,11 @@ msgstr ""
 "text=Gallopere</ref>, der giver dobbelt skade både til angriber og forsvarer "
 "når den angribende enhed har denne evne."
 
-#: data/help.cfg:115
+#: data/help.cfg:122
 msgid "Damage Types and Resistance"
 msgstr "Angrebstyper og Modstandskraft"
 
-#: data/help.cfg:120
+#: data/help.cfg:127
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -385,11 +392,11 @@ msgstr ""
 "men er svage over for Slagkraft og Ild, og ekstremt svage overfor Hellige "
 "angreb."
 
-#: data/help.cfg:125
+#: data/help.cfg:132
 msgid "Time of Day"
 msgstr "Tid på døgnet"
 
-#: data/help.cfg:145
+#: data/help.cfg:152
 msgid ""
 "Wesnoth games usually take place with a regular cycle between day and night. "
 "The current time of day can be observed under the minimap in the upper "
@@ -421,11 +428,11 @@ msgid ""
 "night!"
 msgstr ""
 
-#: data/help.cfg:150
+#: data/help.cfg:157
 msgid "Experience and Advancement"
 msgstr "Erfaring og Forfremmelse"
 
-#: data/help.cfg:155
+#: data/help.cfg:162
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -455,11 +462,11 @@ msgstr ""
 "Nogle enheder (f.eks.  <ref>dst=unit_mage text=Troldmænd</ref>) har endda "
 "hele fire levels."
 
-#: data/help.cfg:160
+#: data/help.cfg:167
 msgid "Healing"
 msgstr "Healing"
 
-#: data/help.cfg:170
+#: data/help.cfg:177
 msgid ""
 "In combat, your units will inevitably take damage. Wesnoth offers several "
 "ways for your units to heal, all of which take place at the beginning of "
@@ -483,11 +490,11 @@ msgid ""
 "Also, units heal fully between scenarios."
 msgstr ""
 
-#: data/help.cfg:175
+#: data/help.cfg:182
 msgid "Income and Upkeep"
 msgstr "Inkomst og Udgifter"
 
-#: data/help.cfg:183
+#: data/help.cfg:190
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -515,11 +522,11 @@ msgid ""
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
 
-#: data/help.cfg:188
+#: data/help.cfg:195
 msgid "Wrap Up"
 msgstr "Afslutning"
 
-#: data/help.cfg:189
+#: data/help.cfg:196
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -528,11 +535,11 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 
-#: data/help.cfg:194 src/titlescreen.cpp:178
+#: data/help.cfg:201 src/titlescreen.cpp:178
 msgid "About"
 msgstr "Om"
 
-#: data/help.cfg:238
+#: data/help.cfg:245
 msgid ""
 "Most units have two traits. Traits are attributes of the unit that modify "
 "its attributes slightly. They are assigned to a unit randomly when the unit "
@@ -883,9 +890,22 @@ msgstr "En Ø"
 msgid "Blitz"
 msgstr "Blitz"
 
+#: data/scenarios/multiplayer/BrokenBridge.cfg:4
+msgid ""
+"A small two vs. two map across the ruins of a once great bridge. Perfect for "
+"fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
+"2,4."
+msgstr ""
+
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
 msgstr "Borg-hoppe Ø"
+
+#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
+msgid ""
+"Many close by and strategically located castles. Small map for fast play. "
+"Recommended setting of 2 gold per village."
+msgstr ""
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -917,6 +937,14 @@ msgstr "Tilfældig bane"
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
 msgstr "Wesbowling"
+
+#: data/scenarios/multiplayer/Wesbowl.cfg:6
+msgid ""
+"In Wesbowl, a player must get their ball to the other player's end zone. "
+"However, the other player can attack your units. Wesbowl is played with "
+"blunt weapons, and healers are on hand, so when units are killed, they "
+"return to that player's end zone with an injury."
+msgstr ""
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:11
 msgid ""
@@ -980,6 +1008,12 @@ msgstr "Uafgjodt! Slutscoren er: $redscore-$bluescore"
 msgid "Battle for Weslin Bridge"
 msgstr "Kampen om Weslin Bro"
 
+#: data/scenarios/multiplayer/WeslinBridge.cfg:5
+msgid ""
+"Teams of 2 fight for control of the central bridge choke-point. Good for "
+"medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
+msgstr ""
+
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
 msgstr "Kampverden"
@@ -992,31 +1026,38 @@ msgstr "Belejrede Borge"
 msgid "Across The River"
 msgstr "Over floden"
 
-#: data/scenarios/multiplayer/scenarios.cfg:108
+#: data/scenarios/multiplayer/scenarios.cfg:5
+msgid ""
+"This map is a convenient way to do some testing with two factions, as it is "
+"pretty well balanced towards both sides.\n"
+"You can use it AI vs AI to see how well a faction fares against another."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:110
 msgid "The Isle of Anduin"
 msgstr "Anduinøen"
 
-#: data/scenarios/multiplayer/scenarios.cfg:135
+#: data/scenarios/multiplayer/scenarios.cfg:137
 msgid "The Three Rivers"
 msgstr "De tre floder"
 
-#: data/scenarios/multiplayer/scenarios.cfg:162
+#: data/scenarios/multiplayer/scenarios.cfg:164
 msgid "The Isles of the Damned"
 msgstr "Den Forbandede Ø"
 
-#: data/scenarios/multiplayer/scenarios.cfg:195
+#: data/scenarios/multiplayer/scenarios.cfg:197
 msgid "The Valley of Death"
 msgstr "Dødens Dal"
 
-#: data/scenarios/multiplayer/scenarios.cfg:238
+#: data/scenarios/multiplayer/scenarios.cfg:240
 msgid "Dwarvern Wasteland"
 msgstr "Dværgisk Ødemark"
 
-#: data/scenarios/multiplayer/scenarios.cfg:277
+#: data/scenarios/multiplayer/scenarios.cfg:279
 msgid "Princess's Battlefield"
 msgstr "Prinsessens Kampplads"
 
-#: data/scenarios/multiplayer/scenarios.cfg:304
+#: data/scenarios/multiplayer/scenarios.cfg:306
 msgid "King of the Hill"
 msgstr "King of the Hill"
 
@@ -1978,7 +2019,7 @@ msgstr "Sidste på natten"
 msgid "Underground"
 msgstr "Underjordisk"
 
-#: data/terrain.cfg:7 src/multiplayer.cpp:111 src/multiplayer_lobby.cpp:130
+#: data/terrain.cfg:7 src/multiplayer.cpp:111 src/multiplayer_lobby.cpp:131
 msgid "Shroud"
 msgstr "Tildækket"
 
@@ -2001,9 +2042,8 @@ msgid "Village"
 msgstr "Landsby"
 
 #: data/terrain.cfg:51
-#, fuzzy
-msgid "Swamp Water"
-msgstr "Lav Vand"
+msgid "Swamp"
+msgstr "Sump"
 
 #: data/terrain.cfg:70
 msgid "Ice"
@@ -2034,25 +2074,17 @@ msgstr "Græslandskab"
 msgid "Snow"
 msgstr "Skygge"
 
-#: data/terrain.cfg:177
+#: data/terrain.cfg:177 data/terrain.cfg:184
 msgid "Hills"
 msgstr "Bakker"
-
-#: data/terrain.cfg:184
-msgid "Snow hills"
-msgstr ""
 
 #: data/terrain.cfg:192
 msgid "Mountains"
 msgstr "Bjerge"
 
-#: data/terrain.cfg:199
+#: data/terrain.cfg:199 data/terrain.cfg:206
 msgid "Forest"
 msgstr "Skov"
-
-#: data/terrain.cfg:206
-msgid "Snow forest"
-msgstr ""
 
 #: data/terrain.cfg:214
 #, fuzzy
@@ -2097,15 +2129,15 @@ msgstr "Funktioner"
 msgid "End Turn"
 msgstr "Slut Tur"
 
-#: data/themes/default.cfg:126 data/themes/default.cfg:462 src/dialogs.cpp:670
+#: data/themes/default.cfg:126 data/themes/default.cfg:462 src/dialogs.cpp:673
 #: src/display.cpp:941 src/help.cpp:612 src/playturn.cpp:1957
-#: src/unit.cpp:1034
+#: src/unit.cpp:1029
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:133 data/themes/default.cfg:469 src/dialogs.cpp:674
-#: src/dialogs.cpp:682 src/display.cpp:945 src/display.cpp:953
-#: src/playturn.cpp:1796 src/playturn.cpp:1958 src/unit.cpp:1093
+#: data/themes/default.cfg:133 data/themes/default.cfg:469 src/dialogs.cpp:677
+#: src/dialogs.cpp:685 src/display.cpp:945 src/display.cpp:953
+#: src/playturn.cpp:1796 src/playturn.cpp:1958 src/unit.cpp:1088
 msgid "XP"
 msgstr "XP"
 
@@ -3608,7 +3640,7 @@ msgstr ""
 msgid "gaze"
 msgstr "stirren"
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:730 src/actions.cpp:877
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:732 src/actions.cpp:881
 #: src/reports.cpp:122
 msgid "stone"
 msgstr "sten"
@@ -5200,12 +5232,13 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
-msgid "female^Siren"
-msgstr ""
+#, fuzzy
+msgid "Siren"
+msgstr "ild"
 
 #: data/units/Mermaid_Siren.cfg:23
 #, fuzzy
-msgid "naia touch"
+msgid "naiad touch"
 msgstr "fe-kontakt"
 
 #: data/units/Merman.cfg:3
@@ -6537,41 +6570,41 @@ msgstr "forsvarers svaghed mod"
 msgid "Halved"
 msgstr "Halveret"
 
-#: src/actions.cpp:716 src/actions.cpp:862 src/display.cpp:917
+#: src/actions.cpp:718 src/actions.cpp:866 src/display.cpp:917
 #: src/reports.cpp:115
 msgid "poisoned"
 msgstr "forgiftet"
 
-#: src/actions.cpp:721 src/actions.cpp:867 src/display.cpp:913
+#: src/actions.cpp:723 src/actions.cpp:871 src/display.cpp:913
 #: src/reports.cpp:110
 msgid "slowed"
 msgstr "nedsløvede"
 
-#: src/actions.cpp:1739
+#: src/actions.cpp:1743
 msgid "Ambushed!"
 msgstr "Baghold!"
 
-#: src/actions.cpp:1767
+#: src/actions.cpp:1771
 msgid "Friendly unit sighted"
 msgstr "Allieret enhed opdaget"
 
-#: src/actions.cpp:1769
+#: src/actions.cpp:1773
 msgid "Enemy unit sighted!"
 msgstr "Fjendtlig enhed opdaget!"
 
-#: src/actions.cpp:1774
+#: src/actions.cpp:1778
 msgid "$friends Friendly units sighted"
 msgstr "$friends Allierede enhed opdaget"
 
-#: src/actions.cpp:1776
+#: src/actions.cpp:1780
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Fjendtlige enhed opdaget!"
 
-#: src/actions.cpp:1780
+#: src/actions.cpp:1784
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Enheder opdaget! ($friends allierede, $enemies fjendtlige)"
 
-#: src/actions.cpp:1801
+#: src/actions.cpp:1805
 msgid "(press $hotkey to continue)"
 msgstr "(tryk på $hotkey for at fortsætte)"
 
@@ -6599,7 +6632,7 @@ msgstr "Overskriv?"
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Spillet findes allerede. Vil du overskrive det?"
 
-#: src/dialogs.cpp:209 src/dialogs.cpp:446
+#: src/dialogs.cpp:209 src/dialogs.cpp:449
 msgid "Don't ask me again!"
 msgstr "Spørg mig ikke igen!"
 
@@ -6615,11 +6648,11 @@ msgstr "%a %d %b %Y %H:%M"
 msgid "#(Invalid)"
 msgstr "#(Ugyldig)"
 
-#: src/dialogs.cpp:368 src/game.cpp:935
+#: src/dialogs.cpp:368 src/game.cpp:953
 msgid "Campaign"
 msgstr "Kampagne"
 
-#: src/dialogs.cpp:370 src/game.cpp:1197
+#: src/dialogs.cpp:370 src/game.cpp:1215
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -6631,7 +6664,7 @@ msgstr "Tutorial"
 msgid "replay"
 msgstr "replay"
 
-#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:142 src/playturn.cpp:1385
+#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:143 src/playturn.cpp:1385
 msgid "Turn"
 msgstr "Tur"
 
@@ -6639,15 +6672,19 @@ msgstr "Tur"
 msgid "Scenario Start"
 msgstr "Scenarie Start"
 
-#: src/dialogs.cpp:387 src/game.cpp:965
+#: src/dialogs.cpp:387 src/game.cpp:983
 msgid "Difficulty"
 msgstr "Svært"
 
-#: src/dialogs.cpp:401
+#: src/dialogs.cpp:389 src/titlescreen.cpp:155
+msgid "Version"
+msgstr "Version"
+
+#: src/dialogs.cpp:404
 msgid "No Saved Games"
 msgstr "Ingen Gemte Spil"
 
-#: src/dialogs.cpp:402
+#: src/dialogs.cpp:405
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -6655,15 +6692,15 @@ msgstr ""
 "Der er ingen gemte spil der kan hentes.\n"
 "(Spil gemmes automatisk når du gennemfører et scenarie)"
 
-#: src/dialogs.cpp:421
+#: src/dialogs.cpp:424
 msgid "Delete Save"
 msgstr "Slet Spil"
 
-#: src/dialogs.cpp:436
+#: src/dialogs.cpp:439
 msgid "Import Saved Games"
 msgstr "Hent Gemte Spil"
 
-#: src/dialogs.cpp:437
+#: src/dialogs.cpp:440
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -6673,7 +6710,7 @@ msgstr ""
 "Wesnoth. Vil du prøve at opdatere dem til den nyeste version?Det tager måske "
 "lidt tid."
 
-#: src/dialogs.cpp:442
+#: src/dialogs.cpp:445
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
@@ -6682,38 +6719,38 @@ msgstr ""
 "Dine gemte mapper indeholder filer der ikke ser ud til at være lavet af "
 "denne version af Kampen om Wesnoth.Vil du registrere disse filer med spillet?"
 
-#: src/dialogs.cpp:512
+#: src/dialogs.cpp:515
 msgid "Show replay"
 msgstr "Vis replay"
 
-#: src/dialogs.cpp:515 src/hotkeys.cpp:133 src/multiplayer.cpp:81
+#: src/dialogs.cpp:518 src/hotkeys.cpp:133 src/multiplayer.cpp:81
 msgid "Load Game"
 msgstr "Hent Spil"
 
-#: src/dialogs.cpp:516
+#: src/dialogs.cpp:519
 msgid "Choose the game to load"
 msgstr "Vælg at spil at hente"
 
-#: src/dialogs.cpp:553 src/dialogs.cpp:562
+#: src/dialogs.cpp:556 src/dialogs.cpp:565
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:649 src/display.cpp:923 src/help.cpp:564
+#: src/dialogs.cpp:652 src/display.cpp:923 src/help.cpp:564
 #: src/playturn.cpp:1794
 msgid "level"
 msgstr "niveau"
 
-#: src/dialogs.cpp:687 src/display.cpp:957 src/help.cpp:613
-#: src/playturn.cpp:1959 src/unit.cpp:1070
+#: src/dialogs.cpp:690 src/display.cpp:957 src/help.cpp:613
+#: src/playturn.cpp:1959 src/unit.cpp:1065
 msgid "Moves"
 msgstr "Bevægelser"
 
-#: src/dialogs.cpp:700 src/display.cpp:974 src/help.cpp:681
+#: src/dialogs.cpp:705 src/display.cpp:974 src/help.cpp:681
 #: src/playturn.cpp:598 src/reports.cpp:230
 msgid "melee"
 msgstr "nærkamp"
 
-#: src/dialogs.cpp:701 src/display.cpp:975 src/help.cpp:681
+#: src/dialogs.cpp:705 src/display.cpp:975 src/help.cpp:681
 #: src/playturn.cpp:598 src/reports.cpp:231
 msgid "ranged"
 msgstr "langrækkende"
@@ -6746,11 +6783,11 @@ msgstr "Spillet kunne ikke gemmes"
 msgid "Do you want to save your game?"
 msgstr "Vil du gemme dit spil?"
 
-#: src/game.cpp:594
+#: src/game.cpp:612
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:795 src/multiplayer_connect.cpp:100
+#: src/game.cpp:813 src/multiplayer_connect.cpp:100
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6758,190 +6795,190 @@ msgstr ""
 "Dette gemte spil er fra en anden version af spillet. Vil du prøve at hente "
 "det?"
 
-#: src/game.cpp:807 src/game.cpp:812 src/playlevel.cpp:558
+#: src/game.cpp:825 src/game.cpp:830 src/playlevel.cpp:558
 #: src/playlevel.cpp:800
 msgid "The file you have tried to load is corrupt"
 msgstr "Der var en fejl i filen du prøvede at hente"
 
-#: src/game.cpp:816
+#: src/game.cpp:834
 msgid "File I/O Error while reading the game"
 msgstr "Fil I/O Fejl under læsningen af spillet"
 
-#: src/game.cpp:925
+#: src/game.cpp:943
 msgid " ,Get More Campaigns..."
 msgstr " ,Få flere kampagner..."
 
-#: src/game.cpp:926
+#: src/game.cpp:944
 msgid "Download more campaigns from a server on Internet."
 msgstr "Download flere kampagner fra en server på Internettet."
 
-#: src/game.cpp:936
+#: src/game.cpp:954
 msgid "Choose the campaign you want to play:"
 msgstr "Vælg kampagnen du vil spille:"
 
-#: src/game.cpp:966
+#: src/game.cpp:984
 msgid "Select difficulty level:"
 msgstr "Vælg sværhedsgrad:"
 
-#: src/game.cpp:985
+#: src/game.cpp:1003
 msgid "Connect to Server"
 msgstr "Forbind til Server"
 
-#: src/game.cpp:986
+#: src/game.cpp:1004
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Du vil nu oprette forbindelse med en kampagne server for at downloade "
 "kampagner."
 
-#: src/game.cpp:987
+#: src/game.cpp:1005
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:999
+#: src/game.cpp:1017
 msgid "Could not connect to host."
 msgstr "Kunne ikke forbindes til hosten"
 
-#: src/game.cpp:999 src/game.cpp:1014 src/game.cpp:1020 src/game.cpp:1053
-#: src/game.cpp:1082 src/game.cpp:1096 src/game.cpp:1098 src/game.cpp:1100
-#: src/game.cpp:1112 src/game.cpp:1115 src/game.cpp:1150 src/game.cpp:1152
-#: src/game.cpp:1174 src/game.cpp:1176 src/playturn.cpp:1397
+#: src/game.cpp:1017 src/game.cpp:1032 src/game.cpp:1038 src/game.cpp:1071
+#: src/game.cpp:1100 src/game.cpp:1114 src/game.cpp:1116 src/game.cpp:1118
+#: src/game.cpp:1130 src/game.cpp:1133 src/game.cpp:1168 src/game.cpp:1170
+#: src/game.cpp:1192 src/game.cpp:1194 src/playturn.cpp:1397
 #: src/playturn.cpp:1411
 msgid "Error"
 msgstr "Fejl"
 
-#: src/game.cpp:1007
+#: src/game.cpp:1025
 msgid "Awaiting response from server"
 msgstr "Venter på svar fra server"
 
-#: src/game.cpp:1020
+#: src/game.cpp:1038
 msgid "Error communicating with the server."
 msgstr "Fejl i kommunikationen med serveren."
 
-#: src/game.cpp:1025
+#: src/game.cpp:1043
 msgid ",Name,Version,Author,Downloads"
 msgstr ",Navn,Version,Udgiver,Antal Downloads"
 
-#: src/game.cpp:1045
+#: src/game.cpp:1063
 msgid "Publish campaign: "
 msgstr "Uddgiv kampagne: "
 
-#: src/game.cpp:1049
+#: src/game.cpp:1067
 msgid "Delete campaign: "
 msgstr "Slet kampagne: "
 
-#: src/game.cpp:1053
+#: src/game.cpp:1071
 msgid "There are no campaigns available for download from this server."
 msgstr "Der er ingen kampagner der kan downloades fra denne server."
 
-#: src/game.cpp:1057
+#: src/game.cpp:1075
 msgid "Choose the campaign to download."
 msgstr "Vælg en kampagne at downloade."
 
-#: src/game.cpp:1057
+#: src/game.cpp:1075
 msgid "Get Campaign"
 msgstr "Hent kampagne"
 
-#: src/game.cpp:1076
+#: src/game.cpp:1094
 msgid "Downloading campaign..."
 msgstr "Downloader kampagne..."
 
-#: src/game.cpp:1094
+#: src/game.cpp:1112
 msgid "Campaign Installed"
 msgstr "Kampagne Installeret"
 
-#: src/game.cpp:1094
+#: src/game.cpp:1112
 msgid "The campaign has been installed."
 msgstr "Kampagnen er blevet installeret."
 
-#: src/game.cpp:1096
+#: src/game.cpp:1114
 msgid "Network communication error."
 msgstr "Netværks-kommunikations-fejl."
 
-#: src/game.cpp:1098
+#: src/game.cpp:1116
 msgid "Remote host disconnected."
 msgstr "Fjern host afbrudt."
 
-#: src/game.cpp:1100
+#: src/game.cpp:1118
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Der var et problem med at lave de filer der skal bruges til at installere "
 "denne kampagne."
 
-#: src/game.cpp:1112 src/game.cpp:1150 src/game.cpp:1174
+#: src/game.cpp:1130 src/game.cpp:1168 src/game.cpp:1192
 #: src/multiplayer_client.cpp:45 src/multiplayer_client.cpp:319
 msgid "Connection timed out"
 msgstr "Forbindelsestiden løb ud."
 
-#: src/game.cpp:1115 src/game.cpp:1152 src/game.cpp:1176
+#: src/game.cpp:1133 src/game.cpp:1170 src/game.cpp:1194
 msgid "The server responded with an error: \""
 msgstr "Serveren svarede med en fejl:\""
 
-#: src/game.cpp:1118
+#: src/game.cpp:1136
 msgid "Terms"
 msgstr ""
 
-#: src/game.cpp:1154 src/game.cpp:1178
+#: src/game.cpp:1172 src/game.cpp:1196
 msgid "Response"
 msgstr "Svare"
 
-#: src/game.cpp:1190
+#: src/game.cpp:1208
 msgid "Join Official Server"
 msgstr "Forbind til Officiel Server"
 
-#: src/game.cpp:1190
+#: src/game.cpp:1208
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Log på den officielle Wesnoth multiplayer server"
 
-#: src/game.cpp:1191 src/multiplayer_lobby.cpp:160
+#: src/game.cpp:1209 src/multiplayer_lobby.cpp:161
 msgid "Join Game"
 msgstr "Tilslut Spil"
 
-#: src/game.cpp:1191
+#: src/game.cpp:1209
 msgid "Join a server or hosted game"
 msgstr "Tilslut en server eller et hostet spil"
 
-#: src/game.cpp:1192
+#: src/game.cpp:1210
 msgid "Host Networked Game"
 msgstr "Bevært Netværks Spil"
 
-#: src/game.cpp:1192
+#: src/game.cpp:1210
 msgid "Host a game without using a server"
 msgstr "Bevært et spil uden at bruge en server"
 
-#: src/game.cpp:1193
+#: src/game.cpp:1211
 msgid "Hotseat Game"
 msgstr "'Varm Stol' Spil"
 
-#: src/game.cpp:1193
+#: src/game.cpp:1211
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Spil et multiplayer spil, hvor spillerne deler den samme computer"
 
-#: src/game.cpp:1194
+#: src/game.cpp:1212
 msgid "Human vs AI"
 msgstr "Menneske mod Computer"
 
-#: src/game.cpp:1194
+#: src/game.cpp:1212
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1197 src/multiplayer_client.cpp:303
+#: src/game.cpp:1215 src/multiplayer_client.cpp:303
 msgid "Login"
 msgstr "Login"
 
-#: src/game.cpp:1278
+#: src/game.cpp:1296
 msgid "Language"
 msgstr "Sprog"
 
-#: src/game.cpp:1279
+#: src/game.cpp:1297
 msgid "Choose your preferred language"
 msgstr "Vælg dit foretrukne sprog"
 
-#: src/game.cpp:1529
+#: src/game.cpp:1547
 msgid "Could not initialize video. Exiting.\n"
 msgstr "Kunne ikke indlæse video. Afslutter.\n"
 
-#: src/game.cpp:1531
+#: src/game.cpp:1549
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr "Kunne ikke indlæse skrifttyper. Afslutter.\n"
 
@@ -7237,7 +7274,7 @@ msgstr "Se Chat Log"
 msgid "Do you really want to quit?"
 msgstr "Vil du virkelig slutte?"
 
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:162
+#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:163
 msgid "Quit"
 msgstr "Afslut"
 
@@ -7265,7 +7302,7 @@ msgstr "Luk Vindue"
 msgid "Map Generator"
 msgstr "Bane Generator"
 
-#: src/mapgen_dialog.cpp:80 src/multiplayer.cpp:483
+#: src/mapgen_dialog.cpp:80 src/multiplayer.cpp:490
 msgid "Players"
 msgstr "Spillere"
 
@@ -7380,7 +7417,7 @@ msgstr "Del Intet"
 msgid "No multiplayer sides."
 msgstr "Ingen multiplayer sider."
 
-#: src/multiplayer.cpp:169 src/multiplayer_lobby.cpp:161
+#: src/multiplayer.cpp:169 src/multiplayer_lobby.cpp:162
 msgid "Create Game"
 msgstr "Lav Spil"
 
@@ -7416,7 +7453,7 @@ msgstr "Landsby Guld"
 msgid "Experience Requirements"
 msgstr "Erfaring krævet"
 
-#: src/multiplayer.cpp:499
+#: src/multiplayer.cpp:506
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
@@ -7424,7 +7461,7 @@ msgstr ""
 "Spillet kunne ikke bindes til den port som kræves for at hoste et spil på et "
 "netværk. Netværksspillere kan ikke tilslutte sig spillet"
 
-#: src/multiplayer.cpp:499
+#: src/multiplayer.cpp:506
 msgid "Warning"
 msgstr "Advarsel"
 
@@ -7592,19 +7629,19 @@ msgstr "Farve"
 msgid "Waiting for network players to join"
 msgstr "Venter på at netværksspillere tilslutter sig"
 
-#: src/multiplayer_lobby.cpp:144
+#: src/multiplayer_lobby.cpp:145
 msgid "1"
 msgstr "1"
 
-#: src/multiplayer_lobby.cpp:144
+#: src/multiplayer_lobby.cpp:145
 msgid "Vacant Slot"
 msgstr "Tom Plads"
 
-#: src/multiplayer_lobby.cpp:144
+#: src/multiplayer_lobby.cpp:145
 msgid "Vacant Slots"
 msgstr "Tomme Pladser"
 
-#: src/multiplayer_lobby.cpp:159
+#: src/multiplayer_lobby.cpp:160
 msgid "Observe Game"
 msgstr "Observer Spillet"
 
@@ -7933,10 +7970,6 @@ msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
 "Denne enhed er blevet lavet til sten. Den kan ikke bevæge sig eller angribe."
 
-#: src/reports.cpp:131 src/reports.cpp:142
-msgid "_description"
-msgstr "_beskrivelse"
-
 #: src/reports.cpp:232
 msgid "damage"
 msgstr "skade"
@@ -7972,10 +8005,6 @@ msgstr "Allieret landsby"
 #: src/show_dialog.cpp:953
 msgid "KB"
 msgstr "kB"
-
-#: src/titlescreen.cpp:155
-msgid "Version"
-msgstr "Version"
 
 #: src/titlescreen.cpp:172
 msgid "TitleScreen button^Tutorial"
@@ -8041,11 +8070,11 @@ msgstr "Se credits"
 msgid "Quit the game"
 msgstr "Afslut spillet"
 
-#: src/titlescreen.cpp:211
+#: src/titlescreen.cpp:215
 msgid "More"
 msgstr "Mere"
 
-#: src/titlescreen.cpp:218
+#: src/titlescreen.cpp:222
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Bogen om Wesnoth"
 
@@ -8073,11 +8102,15 @@ msgstr "Slet fil"
 msgid "Deletion of the file failed."
 msgstr "Slettelse af fil mislykkedes"
 
+#, fuzzy
+#~ msgid "Swamp Water"
+#~ msgstr "Lav Vand"
+
+#~ msgid "_description"
+#~ msgstr "_beskrivelse"
+
 #~ msgid "first strike"
 #~ msgstr "slå først"
-
-#~ msgid "Swamp"
-#~ msgstr "Sump"
 
 #~ msgid "Tundra"
 #~ msgstr "Tundra"
