@@ -1074,7 +1074,7 @@ int main(int argc, char** argv)
 	} catch(CVideo::error&) {
 		std::cerr << _("Could not initialize video. Exiting.\n");
 	} catch(font::manager::error&) {
-		std::cerr << "Could not initialize fonts. Exiting\n";
+		std::cerr << _("Could not initialize fonts. Exiting.\n");
 	} catch(config::error& e) {
 		std::cerr << e.message << "\n";
 	} catch(gui::button::error&) {
