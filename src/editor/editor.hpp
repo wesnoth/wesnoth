@@ -105,6 +105,7 @@ public:
 	virtual void edit_paste();
 	virtual void edit_revert();
 	virtual void edit_resize();
+	virtual void edit_flip();
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	
@@ -198,7 +199,8 @@ private:
 	/// highlighted.
 	void highlight_selected_hexes(const bool clear_old=true);
 
-	/// Terrain has changed at the specified hex. If the hex was a
+	/// Terrain has changed at the specified hex through user drawing
+	/// (not undo/redo or other special things). If the hex was a
 	/// starting position, remove this position. Save additional
 	/// information in the undo_action and invalidate the hex and the
 	/// adjacent ones.

@@ -14,6 +14,8 @@
 #include "../config.hpp"
 #include "../map.hpp"
 
+#include "map_manip.hpp"
+
 #include <map>
 
 #ifndef EDITOR_DIALOGS_H_INCLUDED
@@ -50,9 +52,7 @@ void preferences_dialog(display &disp, config &prefs);
 std::pair<unsigned, unsigned>
 resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h);
 
-
-
-
+FLIP_AXIS flip_dialog(display &disp);
 
 
 }

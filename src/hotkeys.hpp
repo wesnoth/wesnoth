@@ -44,6 +44,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
 					  HOTKEY_EDIT_NEW_MAP, HOTKEY_EDIT_LOAD_MAP, HOTKEY_EDIT_FLOOD_FILL,
 					  HOTKEY_EDIT_FILL_SELECTION, HOTKEY_EDIT_CUT, HOTKEY_EDIT_COPY,
 					  HOTKEY_EDIT_PASTE, HOTKEY_EDIT_REVERT, HOTKEY_EDIT_RESIZE,
+					  HOTKEY_EDIT_FLIP,
 					  HOTKEY_NULL };
 
 struct hotkey_item {
@@ -133,6 +134,7 @@ public:
 	virtual void edit_paste() {}
 	virtual void edit_revert() {}
 	virtual void edit_resize() {}
+	virtual void edit_flip() {}
 
 	//Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND command) const { return ""; }

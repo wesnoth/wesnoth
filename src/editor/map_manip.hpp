@@ -47,8 +47,11 @@ get_component(const gamemap &map, const gamemap::location &start_loc);
 /// with the terrain fill_with.
 std::string resize_map(const gamemap &map, const unsigned new_w,
 					   const unsigned new_h, const gamemap::TERRAIN fill_with);
-				
 
+enum FLIP_AXIS {NO_FLIP, FLIP_X, FLIP_Y};
+/// Return the string representation of the map after it has been
+/// flipped around the axis.
+std::string flip_map(const gamemap &map, const FLIP_AXIS axis);
 }
 
 #endif // MAP_MANIP_H_INCLUDED

@@ -313,8 +313,8 @@ void map_editor::edit_fill_selection() {
 			map_.set_terrain(*it, palette_.selected_terrain());
 		}
 	}
+	terrain_changed(selected_hexes_, undo_action);
 	save_undo_action(undo_action);
-	invalidate_all_and_adjacent(selected_hexes_);
 }
 
 void map_editor::edit_cut() {
@@ -375,6 +375,17 @@ void map_editor::edit_resize() {
 			save_undo_action(action);
 			throw new_map_exception(resized_map, filename_);
 		}
+	}
+}
+
+void map_editor::edit_flip() {
+	const FLIP_AXIS flip_axis = flip_dialog(gui_);
+	if (flip_axis != NO_FLIP) {
+		const std::string flipped_map = flip_map(map_, flip_axis);
+		map_undo_action action;
+		action.set_map_data(map_.write(), flipped_map);
+		save_undo_action(action);
+		throw new_map_exception(flipped_map, filename_);
 	}
 }
 
@@ -452,6 +463,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_PASTE:
 	case hotkey::HOTKEY_EDIT_REVERT:
 	case hotkey::HOTKEY_EDIT_RESIZE:
+	case hotkey::HOTKEY_EDIT_FLIP:
 		return true;
 	default:
 		return false;
@@ -1012,8 +1024,7 @@ void map_editor::main_loop() {
 		if (map_dirty_) {
 			if (!l_button_down) {
 				map_dirty_ = false;
-				// XXX Currently this rebuilds the whole map, thus we
-				// only want to perform it at these times.
+				// XXX Currently this rebuilds all terrain, so we only want to do it once.
 				gui_.rebuild_terrain(gamemap::location(1,1));
 				gui_.invalidate_all();
 				recalculate_starting_pos_labels();

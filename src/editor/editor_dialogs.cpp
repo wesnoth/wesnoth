@@ -502,7 +502,23 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 
 }
 
-
+FLIP_AXIS flip_dialog(display &disp) {
+	std::vector<std::string> items;
+	items.push_back("X-Axis");
+	items.push_back("Y-Axis");
+	const int res =
+		gui::show_dialog(disp, NULL, "",
+						 "Flip around\n(this may change the\ndimensions of the map):",
+						 gui::OK_CANCEL, &items);
+	switch (res) {
+	case 0:
+		return FLIP_X;
+	case 1:
+		return FLIP_Y;
+	default:
+		return NO_FLIP;
+	}
+}
 
 }
 
