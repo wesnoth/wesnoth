@@ -398,54 +398,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 	}
 
-	//modifications of some attributes of a side: gold, income, team name
-	else if(cmd == "modify_side") {
-		const std::string& side = cfg["side"];
-		const std::string& income = cfg["income"];
-		const std::string& team_name = cfg["team_name"];
-		const std::string& gold = cfg["gold"];
-		const int side_num = lexical_cast_default<int>(side.c_str(),1);
-		const size_t team_index = side_num-1;
-
-		if(team_index < teams->size()) {
-			if(!team_name.empty()) {
-				(*teams)[team_index].change_team(team_name);
-			}
-
-			if(!income.empty()) {
-				(*teams)[team_index].set_income(lexical_cast_default<int>(income));
-			}
-
-			if(!gold.empty()) {
-				(*teams)[team_index].spend_gold((*teams)[team_index].gold()-lexical_cast_default<int>(gold));
-			}
-		}
-	}
-
-	//modifications of some attributes of a side: gold, income, team name
-	else if(cmd == "modify_side") {
-		const std::string& side = cfg["side"];
-		const std::string& income = cfg["income"];
-		const std::string& team_name = cfg["team_name"];
-		const std::string& gold = cfg["gold"];
-		const int side_num = lexical_cast_default<int>(side.c_str(),1);
-		const size_t team_index = side_num-1;
-
-		if(team_index < teams->size()) {
-			if(!team_name.empty()) {
-				(*teams)[team_index].change_team(team_name);
-			}
-
-			if(!income.empty()) {
-				(*teams)[team_index].set_income(lexical_cast_default<int>(income));
-			}
-
-			if(!gold.empty()) {
-				(*teams)[team_index].spend_gold((*teams)[team_index].gold()-lexical_cast_default<int>(gold));
-			}
-		}
-	}
-
 	//command to store gold into a variable
 	else if(cmd == "store_gold") {
 		const std::string& side = cfg["side"];
