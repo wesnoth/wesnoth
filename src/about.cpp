@@ -57,10 +57,12 @@ std::vector<std::string> get_text() {
 		"-   Cyril Bouthors (CyrilB)",
 		"-   Guillaume Melquiond (silene)",
 		"-   Isaac Clerencia",
+		"-   Jan Zvánovec (jaz)",
 		"-   John B. Messerly",
 		"-   Justin Zaun (jzaun)",
 		"-   J.R. Blain (Cowboy)",
 		"-   Kristoffer Erlandsson (erl)",
+		"-   Maksim Orlovich (SadEagle)",
 		"-   Philippe Plantier (Ayin)",
 		"-   Yann Dirson",
 		"-   Zas",
@@ -68,6 +70,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+General Purpose Administrators"),
 		"-   Crossbow/Miyo",
+		"-   Isaac Clerencia",
 		"+ ",
 
 		"_" N_("+Artwork and graphics designers"),
@@ -89,6 +92,7 @@ std::vector<std::string> get_text() {
 		"-   J.W.C. McNabb (Darth Fool)",
 		"-   Michael Gil de Muro (grp21)",
 		"-   Neorice",
+		"-   Peter Geinitz (Shadow)",
 		"-   Richard Kettering (Jetryl)",
 		"-   Slainte",
 		"-   Svetac",
@@ -117,7 +121,10 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		"_" N_("+Packagers"),
+		"-   Cyril Bouthors (CyrilB)",
 		"-   Darryl Dixon",
+		"-   edge",
+		"-   Isaac Clerencia",
 		"-   Jay Hopping",
 		"-   Marcin Konicki (ahwayakchih)",
 		"-   Marcus Phillips (Sithrandel)",
@@ -130,7 +137,9 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		"_" N_("+Internationalization Manager"),
+		"-   Isaac Clerencia",
 		"-   Mark Michelsen (skovbaer)",
+		"-   Susanna Björverud (sanna)",
 		"+ ",
 
 		"_" N_("+Basque Translation"),
@@ -253,11 +262,7 @@ std::vector<std::string> get_text() {
 		"+ ",
 		
 		"_" N_("+Contributors"),
-		"-   Cyril Bouthors (CyrilB)",
-		"-   edge",
 		"-   Frédéric Wagner",
-		"-   Jan Zvánovec (jaz)",
-		"-   Maksim Orlovich (SadEagle)",
 		"+ ",
 
 		"_" N_("+Bots"),
