@@ -5,6 +5,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
+#include "scoped_resource.hpp"
 #include "sound.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
@@ -314,11 +315,14 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			disp.draw_tile(leader_loc.x,leader_loc.y);
 		}
 
+		util::scoped_resource<int,halo::remover> halo_effect(0);
+
 		if(i >= 0 && i < real_last_missile && !hide) {
 			const int missile_frame = i + first_missile;
 
+			const std::string* halo_image = NULL;
 			const std::string* missile_image = attack.get_frame(missile_frame,NULL,
-			                                                    attack_type::MISSILE_FRAME,dir);
+			                                                    attack_type::MISSILE_FRAME,dir,&halo_image);
 
 			static const std::string default_missile(game_config::missile_n_image);
 			static const std::string default_diag_missile(game_config::missile_ne_image);
@@ -335,21 +339,29 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 				img.assign(image::reverse_image(img));
 			}
 
-			if(img != NULL) {
-				double pos = double(missile_impact - i)/double(missile_impact);
-				if(pos < 0.0) {
-					pos = 0.0;
-				}
-				const int xpos = int(xsrc*pos + xdst*(1.0-pos));
-				const int ypos = int(ysrc*pos + ydst*(1.0-pos));
+			double pos = double(missile_impact - i)/double(missile_impact);
+			if(pos < 0.0) {
+				pos = 0.0;
+			}
 
+			const int xpos = int(xsrc*pos + xdst*(1.0-pos));
+			const int ypos = int(ysrc*pos + ydst*(1.0-pos));
+
+			if(img != NULL) {
 				disp.draw_unit(xpos,ypos,img,vflip);
+			}
+
+			if(halo_image != NULL) {
+				halo_effect.assign(halo::add(xpos+disp.hex_width()/2,ypos+disp.hex_size()/2,*halo_image));
 			}
 		}
 
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();
 		if(wait_time > 0 && !hide) {
 			SDL_Delay(wait_time);
+		} else if(wait_time < 0) {
+			//if we're not keeping up, then skip frames
+			i += minimum<int>(time_resolution*4,-wait_time);
 		}
 
 		ticks = SDL_GetTicks();

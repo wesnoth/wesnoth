@@ -53,7 +53,8 @@ public:
 	//frames before the time of impact
 	const std::string* get_frame(int milliseconds, int* xoffset=NULL,
 	                             FRAME_TYPE type=UNIT_FRAME,
-	                             FRAME_DIRECTION direction=VERTICAL) const;
+								 FRAME_DIRECTION direction=VERTICAL,
+								 const std::string** halo=NULL) const;
 
 	struct sfx {
 		int time;
@@ -81,20 +82,21 @@ private:
 	bool backstab_;
 
 	struct frame {
-		frame(int i1, int i2, const std::string& img, int offset)
-		      : start(i1), end(i2), xoffset(offset), image(img)
+		frame(int i1, int i2, const std::string& img, const std::string& halo, int offset)
+		      : start(i1), end(i2), xoffset(offset), image(img), halo(halo)
 		{}
 
 		frame(int i1, int i2, const std::string& img, const std::string& diag,
-		      int offset)
+		      const std::string& halo, int offset)
 		      : start(i1), end(i2), xoffset(offset),
-		        image(img), image_diagonal(diag)
+		        image(img), image_diagonal(diag), halo(halo)
 		{}
 
 		int start, end;
 		int xoffset;
 		std::string image;
 		std::string image_diagonal;
+		std::string halo;
 	};
 
 	std::vector<frame> frames_[2];

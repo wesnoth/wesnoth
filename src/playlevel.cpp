@@ -15,6 +15,7 @@
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "game_events.hpp"
+#include "halo.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
 #include "language.hpp"
@@ -294,6 +295,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	//object that will make sure that labels are removed at the end of the scenario
 	const font::floating_label_manager labels_manager;
+
+	const halo::manager halo_manager(gui);
 
 	gui.labels().read(*level);
 

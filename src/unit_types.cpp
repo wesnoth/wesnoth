@@ -56,7 +56,8 @@ attack_type::attack_type(const config& cfg)
 		const int end = atoi((**range.first)["end"].c_str());
 		const int xoff = atoi((**range.first)["xoffset"].c_str());
 		const std::string& img = (**range.first)["image"];
-		frames_[UNIT_FRAME].push_back(frame(beg,end,img,xoff));
+		const std::string& halo = (**range.first)["halo"];
+		frames_[UNIT_FRAME].push_back(frame(beg,end,img,halo,xoff));
 	}
 
 	range = cfg.child_range("missile_frame");
@@ -67,10 +68,11 @@ attack_type::attack_type(const config& cfg)
 		
 		const std::string& img = (**range.first)["image"];
 		const std::string& img_diag = (**range.first)["image_diagonal"];
+		const std::string& halo = (**range.first)["halo"];
 		if(img_diag.empty())
-			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,xoff));
+			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,halo,xoff));
 		else
-			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,img_diag,xoff));
+			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,img_diag,halo,xoff));
 
 	}
 
@@ -163,7 +165,7 @@ int attack_type::get_last_frame(attack_type::FRAME_TYPE type) const
 
 const std::string* attack_type::get_frame(int milliseconds, int* xoff,
                                        attack_type::FRAME_TYPE type,
-								       attack_type::FRAME_DIRECTION dir) const
+									   attack_type::FRAME_DIRECTION dir, const std::string** halo) const
 {
 	for(std::vector<frame>::const_iterator i = frames_[type].begin();
 	    i != frames_[type].end(); ++i) {
@@ -173,6 +175,14 @@ const std::string* attack_type::get_frame(int milliseconds, int* xoff,
 		if(i->start <= milliseconds && i->end > milliseconds) {
 			if(xoff != NULL) {
 				*xoff = i->xoffset;
+			}
+
+			if(halo != NULL) {
+				if(i->halo.empty()) {
+					*halo = NULL;
+				} else {
+					*halo = &i->halo;
+				}
 			}
 
 			if(dir == DIAGONAL && i->image_diagonal != "") {

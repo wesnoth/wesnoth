@@ -17,6 +17,7 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "font.hpp"
+#include "halo.hpp"
 #include "image.hpp"
 #include "mouse.hpp"
 #include "preferences.hpp"
@@ -292,6 +293,7 @@ void CVideo::flip()
 	if(fake_screen)
 		return;
 
+	halo::render();
 	events::raise_volatile_draw_event();
 	font::draw_floating_labels(frameBuffer);
 	cursor::draw(frameBuffer);
@@ -306,6 +308,7 @@ void CVideo::flip()
 	cursor::undraw(frameBuffer);
 	font::undraw_floating_labels(frameBuffer);
 	events::raise_volatile_undraw_event();
+	halo::unrender();
 }
 
 void CVideo::lock()
