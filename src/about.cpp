@@ -210,6 +210,11 @@ std::vector<std::string> get_text() {
  	text.push_back("-   Jan Zvánovec (jaz)");
  	text.push_back("-   Maksim Orlovich (SadEagle)");
  	text.push_back("+ ");
+
+ 	text.push_back("+ Bots");
+ 	text.push_back("-   wesbot");
+ 	text.push_back("+ ");
+
 	return text;
 }
 
