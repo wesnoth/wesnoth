@@ -95,6 +95,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai.hpp \
 		  ai_attack.hpp \
 		  ai_move.hpp \
+		  animated.hpp \
 		  array.hpp \
 		  builder.hpp \
 		  cavegen.hpp \
