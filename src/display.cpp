@@ -555,21 +555,16 @@ void display::draw_game_status(int x, int y)
 	std::stringstream details;
 
 	if(team_valid()) {
-		const int nunits = team_units(units_,currentTeam_+1);
-		const int upkeep = team_upkeep(units_,currentTeam_+1);
-
-		const int expenses = upkeep - teams_[currentTeam_].towers().size();
-		const int income = teams_[currentTeam_].income() - maximum<int>(expenses,0);
+		const team_data data = calculate_team_data(teams_[currentTeam_],
+		                                           currentTeam_+1,units_);
 
 		details << char(activeTeam_+1) << string_table["turn"] << ": "
 		        << status_.turn() << "/" << status_.number_of_turns() << "\n"
-		        << string_table["gold"] << ": "
-				<< teams_[currentTeam_].gold() << "\n"
-				<< string_table["villages"] << ": "
-				<< teams_[currentTeam_].towers().size() << "\n"
-				<< string_table["units"] << ": " << nunits << "\n"
-		        << string_table["upkeep"] << ": " << upkeep << "\n"
-				<< string_table["income"] << ": " << income << "\n";
+		        << string_table["gold"] << ": " << data.gold << "\n"
+				<< string_table["villages"] << ": " << data.villages << "\n"
+				<< string_table["units"] << ": " << data.units << "\n"
+		        << string_table["upkeep"] << ": " << data.upkeep << "\n"
+				<< string_table["income"] << ": " << data.net_income << "\n";
 	}
 
 	if(map_.on_board(mouseoverHex_)) {

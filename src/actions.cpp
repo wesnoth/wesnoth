@@ -713,16 +713,17 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	bool found_human = false;
 
 	for(size_t n = 0; n != seen_leaders.size(); ++n) {
-		const size_t side1 = seen_leaders[n]-1;
+		const size_t side = seen_leaders[n]-1;
+
+		assert(side < teams.size());
 
 		for(size_t m = n+1; m != seen_leaders.size(); ++m) {
-			const size_t side2 = seen_leaders[m];
-			if(side1 < teams.size() && teams[side1].is_enemy(side2)) {
+			if(side < teams.size() && teams[side].is_enemy(seen_leaders[m])) {
 				found_enemies = true;
 			}
 		}
 
-		if(side1 < teams.size() && teams[side1].is_human()) {
+		if(side < teams.size() && teams[side].is_human()) {
 			found_human = true;
 		}
 	}
@@ -732,12 +733,14 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	}
 
 	//remove any units which are leaderless
-	for(std::map<gamemap::location,unit>::iterator j = units.begin();
-	    j != units.end(); ++j) {
+	std::map<gamemap::location,unit>::iterator j = units.begin();
+	while(j != units.end()) {
 		if(std::find(seen_leaders.begin(),seen_leaders.end(),j->second.side())
 		   == seen_leaders.end()) {
 			units.erase(j);
 			j = units.begin();
+		} else {
+			++j;
 		}
 	}
 }

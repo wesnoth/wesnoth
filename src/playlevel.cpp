@@ -226,6 +226,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						config cfg;
 	
 						turn_info turn_data;
+						const paths_wiper wiper(gui);
 
 						for(;;) {
 							network::connection res =
@@ -297,7 +298,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				game_events::fire(event_stream.str());
 			}
 
-			std::map<int,int> expenditure;
 			for(unit_map::iterator i = units.begin();
 			    i != units.end(); ++i) {
 				i->second.new_turn();

@@ -248,6 +248,10 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 	//ensure we send a close game message to the server when we are done
 	network_game_manager game_manager;
 
+	//make sure the amount of gold we have for the game is 100
+	//later allow configuration of amount of gold
+	state.gold = 100;
+
 	std::vector<std::string> options;
 	std::vector<config*>& levels = cfg.children["multiplayer"];
 	std::map<int,std::string> res_to_id;
