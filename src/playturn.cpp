@@ -2320,14 +2320,15 @@ void turn_info::show_enemy_moves(bool ignore_units)
 	all_paths_ = paths();
 	
 	// Compute enemy movement positions
-	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+	for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && !u->second.stone()) {
+			const unit_movement_resetter move_reset(u->second);
 			const bool is_skirmisher = u->second.type().is_skirmisher();
 			const bool teleports = u->second.type().teleports();
 			unit_map units;
 			units.insert(*u);
 			const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,
-									  u->first,teams_,is_skirmisher,teleports,1);
+									  u->first,teams_,is_skirmisher,teleports);
 			
 			for (paths::routes_map::const_iterator route = path.routes.begin(); route != path.routes.end(); ++route) {
 				// map<...>::operator[](const key_type& key) inserts key into
