@@ -404,9 +404,10 @@ void display::draw(bool update,bool force)
 	const int time_between_draws = 20;
 	const int current_time = SDL_GetTicks();
 	const int wait_time = lastDraw_ + time_between_draws - current_time;
-	if(wait_time > 0) {
-		SDL_Delay(wait_time);
-	}
+
+	//force a wait for 10 ms every frame.
+	//TODO: review whether this is the correct thing to do
+	SDL_Delay(maximum(10,wait_time));
 
 	if(update) {
 		lastDraw_ = SDL_GetTicks();
