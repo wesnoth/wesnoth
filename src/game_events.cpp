@@ -55,7 +55,7 @@ bool conditional_passed(game_state& state_of_game,
 
 		std::map<gamemap::location,unit>::const_iterator itor;
 		for(itor = units->begin(); itor != units->end(); ++itor) {
-			if(itor->second.hitpoints() > 0 && itor->second.matches_filter(**u)) {
+			if(itor->second.hitpoints() > 0 && game_events::unit_matches_filter(itor, **u)) {
 				break;
 			}
 		}
