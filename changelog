@@ -1,5 +1,9 @@
 CVS HEAD:
  * added testing mode to move units on fog/shroud maps without updating the fog/shroud
+ * multiplayer improvements:
+   * made observers see perspective of active player
+   * game creator can chat while setting up game
+   * players can chat with other game members when waiting for game to start
  * editor improvements:
    * made minimap not update as often
    * allowed setting start pos for player 0
@@ -10,6 +14,7 @@ CVS HEAD:
    * save as functionality added.
    * speed improvements: palette is only redrawn when needed
    * showing coordinates and terrain type of the hex on mouse over
+   * cancel in new map dialog confirmation returns to dialog instead of map
    * fixed tiles on the border of the map updating incorrectly when nearby tiles are drawn
    * fixed a bug where odd number of terrains where not drawn correctly in the palette.
    * fixed dynamically generated terrain not showing correctly
@@ -23,7 +28,8 @@ CVS HEAD:
  * fixed "invalid font characters" for slovak translation by adding 'font=Bepa-Roman.ttf', translators should ensure this line is preserved when upgrading translations
  * fixed support for UTF-8 languages on text-boxes
  * fixed wesnoth.desktop (FreeDesktop shortcut definition file), which did contain invalid UTF-8 sequences
- * 
+ * fix to preprocessor
+ * various improvements to wesnothd
  * relocated 'Heir to the Throne' scenarios to data/scenarios/Heir_To_The_Throne/
  * added ability to remove tiles from the border cache
  * added definitions of new pure virtual methods in hotkey.hpp
