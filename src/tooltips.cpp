@@ -137,7 +137,7 @@ void add_tooltip(const SDL_Rect& rect, const std::string& message)
 	current_tooltip = tips.end();
 }
 
-void process(int mousex, int mousey, bool lbutton)
+void process(int mousex, int mousey)
 {
 	for(std::vector<tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
 		if(mousex > i->rect.x && mousey > i->rect.y &&
@@ -157,9 +157,9 @@ void process(int mousex, int mousey, bool lbutton)
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
-                   int x, int y, surface bg)
+                   int x, int y)
 {
-	return font::draw_text(gui,area,size,colour,text,x,y,bg,true);
+	return font::draw_text(gui, area, size, colour, text, x, y, true);
 }
 
 }

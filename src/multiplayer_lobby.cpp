@@ -265,11 +265,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			}
 
 			int mousex, mousey;
-			const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-
-			const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
-			tooltips::process(mousex,mousey,left_button);
+			SDL_GetMouseState(&mousex,&mousey);
+			tooltips::process(mousex, mousey);
 
 			if(dlg != NULL) {
 				const RESULT res = dlg->process();

@@ -156,8 +156,6 @@ void turn_info::turn_slice()
 	events::raise_process_event();
 	events::raise_draw_event();
 
-	int mousex, mousey;
-	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 	const theme::menu* const m = gui_.menu_pressed();
 	if(m != NULL) {
 		const SDL_Rect& menu_loc = m->location(gui_.screen_area());
@@ -165,7 +163,9 @@ void turn_info::turn_slice()
 		return;
 	}
 
-	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
+	int mousex, mousey;
+	SDL_GetMouseState(&mousex,&mousey);
+	tooltips::process(mousex, mousey);
 
 	const int scroll_threshold = 5;
 
