@@ -31,6 +31,7 @@
 #include "video.hpp"
 
 #define LOG_DP lg::info(lg::display)
+#define ERR_DP lg::err(lg::display)
 
 #define TEST_VIDEO_ON 0
 
@@ -205,7 +206,7 @@ CVideo::CVideo() : bpp(0), fake_screen(false)
 	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 
 	if(res < 0) {
-		LOG_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
+		ERR_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
 		throw CVideo::error();
 	}
 }
@@ -215,13 +216,13 @@ CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
 {
 	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
-		LOG_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
+		ERR_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
 		throw CVideo::error();
 	}
 
 	const int mode_res = setMode( x, y, bits_per_pixel, flags );
 	if (mode_res == 0) {
-		LOG_DP << "Could not set Video Mode\n";
+		ERR_DP << "Could not set Video Mode\n";
 		throw CVideo::error();
 	}
 }

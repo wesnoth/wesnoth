@@ -17,6 +17,7 @@
 #include "SDL_ttf.h"
 
 #define LOG_DP lg::info(lg::display)
+#define ERR_DP lg::info(lg::display)
 
 namespace {
 
@@ -24,7 +25,7 @@ void fade_logo(display& screen, int xpos, int ypos)
 {
 	const surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
 	if(logo == NULL) {
-		LOG_DP << "Could not find game logo\n";
+		ERR_DP << "Could not find game logo\n";
 		return;
 	}
 
@@ -133,7 +134,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	const surface title_surface(scale_surface(title_surface_unscaled,screen.x(),screen.y()));
 
 	if(title_surface == NULL) {
-		LOG_DP << "Could not find title image\n";
+		ERR_DP << "Could not find title image\n";
 	} else {
 		screen.blit_surface(0,0,title_surface);
 		update_rect(screen.screen_area());
