@@ -143,7 +143,6 @@ private:
 	                        int damage, const attack_type& attack);
 
 	void draw_sidebar();
-	SDL_Rect get_minimap_location(int x, int y, int w, int h);
 	void draw_minimap(int x, int y, int w, int h);
 	void draw_game_status(int x, int y);
 

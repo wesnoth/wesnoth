@@ -193,8 +193,7 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 
 gamemap::location display::minimap_location_on(int x, int y)
 {
-	const SDL_Rect rect =
-	    get_minimap_location(mapx()+Minimap_x,Minimap_y,Minimap_w,Minimap_h);
+	const SDL_Rect rect = {mapx()+Minimap_x,Minimap_y,Minimap_w,Minimap_h};
 
 	if(x < rect.x || y < rect.y ||
 	   x >= rect.x + rect.w || y >= rect.y + rect.h) {
@@ -707,21 +706,6 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		dstrect.y = profiley;
 		SDL_BlitSurface(profile,&srcrect,video().getSurface(),&dstrect);
 	}
-/*
-	//hard-coded values for location of unit profile
-	blit_surface(mapx()+8,366,profile);
-
-	profile_rect.x = x;
-	profile_rect.y = y;
-	profile_rect.w = profile->w;
-	profile_rect.h = profile->h;
-*/
-}
-
-SDL_Rect display::get_minimap_location(int x, int y, int w, int h)
-{
-	const SDL_Rect res = {x,y,w,h};
-	return res;
 }
 
 void display::draw_minimap(int x, int y, int w, int h)
@@ -730,7 +714,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	if(surface == NULL)
 		return;
 
-	SDL_Rect minimap_location = get_minimap_location(x,y,w,h);
+	SDL_Rect minimap_location = {x,y,w,h};
 	x = minimap_location.x;
 	y = minimap_location.y;
 	w = minimap_location.w;
