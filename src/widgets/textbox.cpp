@@ -252,30 +252,43 @@ void textbox::update_text_cache(bool changed)
 		// some more complex scripts (that is, RTL languages). This part of the work should
 		// actually be done by the font-rendering system.
 		std::string visible_string;
-
 		wide_string wrapped_text;
+		 
+		wide_string::const_iterator backup_itor;
 		
-		for(wide_string::const_iterator itor = text_.begin(); itor != text_.end(); itor++) {
-			wide_string s;
-			push_back(s,*itor);
-			visible_string.append(wstring_to_string(s));
+		wide_string::const_iterator itor = text_.begin();
+		while(itor != text_.end()) {
+			//If this is a space, save copies of the current state so we can roll back
+			if(char(*itor) == ' ') {
+				backup_itor = itor;
+			}
+			visible_string.append(wchar_to_string(*itor));
 
 			if(char(*itor) == '\n') {
+				backup_itor = text_.end();
 				visible_string = "";
 			}
 
 			int w = font::line_width(visible_string, font_size);
 
 			if(wrap_ && w >= location().w - scrollbar_.get_max_width()) {
-				push_back(wrapped_text,wchar_t('\n'));
+				if(backup_itor != text_.end()) {
+					int backup = itor - backup_itor;
+					itor = backup_itor + 1;
+					if(backup > 0) {
+						char_pos_.erase(char_pos_.end()-backup, char_pos_.end());
+						wrapped_text.erase(wrapped_text.end()-backup, wrapped_text.end());
+					}
+				}
+				backup_itor = text_.end();
+				wrapped_text.push_back(wchar_t('\n'));
 				char_pos_.push_back(0);
-				visible_string = wstring_to_string(s);
-				w = font::line_width(visible_string, font_size);	
+				visible_string = "";
 			} else {
+				wrapped_text.push_back(*itor);
 				char_pos_.push_back(w);
+				++itor;
 			}
-
-			push_back(wrapped_text,*itor);
 		}
 
 		text_size_.x = 0;

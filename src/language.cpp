@@ -318,6 +318,12 @@ std::string wstring_to_string(const wide_string &src)
 	return wstring_to_utf8(src);
 }
 
+std::string wchar_to_string(const wchar_t c) {
+	wide_string s;
+	s.push_back(c);
+	return wstring_to_utf8(s);
+}
+
 wide_string string_to_wstring(const std::string &src)
 {
 	return utf8_to_wstring(src);

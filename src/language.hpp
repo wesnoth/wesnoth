@@ -64,6 +64,7 @@ std::string get_locale();
 std::vector<std::string> split_utf8_string(const std::string &src);
 std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
+std::string wchar_to_string(const wchar_t);
 
 
 #endif
