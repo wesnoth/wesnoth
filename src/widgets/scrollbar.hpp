@@ -106,6 +106,8 @@ private:
 	SDL_Rect scroll_grip_area() const;
 	void draw();
 
+	surface mid_scaled_, groove_scaled_;
+
 	scrollable* callback_;
 
 	int minimum_grip_height_;

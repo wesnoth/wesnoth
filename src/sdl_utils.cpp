@@ -62,7 +62,7 @@ void free_sdl_surface::operator()(SDL_Surface* surf) const
 		 SDL_FreeSurface(surf); 
 }
 
-/*explicit*/ surface::surface(SDL_Surface* surf) : surface_(surf)
+surface::surface(SDL_Surface* surf) : surface_(surf)
 {
 }
 

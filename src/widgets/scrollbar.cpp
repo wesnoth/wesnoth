@@ -37,7 +37,8 @@ namespace {
 namespace gui {
 
 scrollbar::scrollbar(display& d, scrollable* callback)
-	: widget(d), callback_(callback), highlight_(false), clicked_(false), dragging_(false),
+	: mid_scaled_(NULL), groove_scaled_(NULL),
+      widget(d), callback_(callback), highlight_(false), clicked_(false), dragging_(false),
 	  grip_position_(0), grip_height_(0), enabled_(false), width_(0),
 	  minimum_grip_height_(0), groove_click_code_(0)
 {
@@ -144,17 +145,21 @@ void scrollbar::draw()
 		// of a larger problem, I think.
 		mid_height = 1;
 	}
-	const surface mid_scaled(scale_surface_blended(mid_img, 
-										mid_img->w, mid_height));
+
+	if(mid_scaled_.null() || mid_scaled_->h != mid_height) {
+		mid_scaled_.assign(scale_surface_blended(mid_img,mid_img->w,mid_height));
+	}
 
 	int groove_height = location().h - top_grv->h - bottom_grv->h;
 	if (groove_height <= 0) {
 		groove_height = 1;
 	}
-	const surface groove_scaled(scale_surface_blended(mid_grv,
-											 mid_grv->w, groove_height));
 
-	if (mid_scaled == NULL || groove_scaled == NULL) {
+	if(groove_scaled_.null() || groove_scaled_->h != groove_height) {
+		groove_scaled_.assign(scale_surface_blended(mid_grv,mid_grv->w,groove_height));
+	}
+
+	if (mid_scaled_.null() || groove_scaled_.null()) {
 		std::cerr << "Failure during scrollbar image scale.\n";
 		return;
 	}
@@ -172,7 +177,7 @@ void scrollbar::draw()
 
 	// draw scrollbar "groove"
 	disp().blit_surface(xpos, location().y, top_grv);
-	disp().blit_surface(xpos, location().y + top_grv->h, groove_scaled);
+	disp().blit_surface(xpos, location().y + top_grv->h, groove_scaled_);
 	disp().blit_surface(xpos, location().y + top_grv->h + groove_height,
 						bottom_grv);
 
@@ -180,7 +185,7 @@ void scrollbar::draw()
 	SDL_Rect scrollbar = scroll_grip_area();
 	xpos = scrollbar.x;
 	disp().blit_surface(xpos, scrollbar.y, top_img); 
-	disp().blit_surface(xpos, scrollbar.y + top_img->h, mid_scaled);
+	disp().blit_surface(xpos, scrollbar.y + top_img->h, mid_scaled_);
 	disp().blit_surface(xpos, scrollbar.y + top_img->h + mid_height,
 						bottom_img);
 
