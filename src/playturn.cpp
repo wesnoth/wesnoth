@@ -90,7 +90,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		assert(ui != units.end());
 
 		unit u = ui->second;
-		const shortest_path_calculator calc(u,current_team,units,map);
+		const shortest_path_calculator calc(u,current_team,units,teams,map,status);
 
 		const std::set<gamemap::location>* teleports = NULL;
 
@@ -313,7 +313,7 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 			if(un != units_.end()) {
 				const shortest_path_calculator calc(un->second,current_team,
-				                                    units_,map_);
+				                                    units_,teams_,map_,status_);
 				const bool can_teleport = un->second.type().teleports();
 
 				const std::set<gamemap::location>* teleports = NULL;
@@ -426,7 +426,9 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 	gamemap::location hex = gui_.hex_clicked_on(event.x,event.y);
 
-	unit_map::iterator u = units_.find(selected_hex_);
+	unit_map::iterator u = find_visible_unit(units_,
+			selected_hex_, map_,
+			status_.get_time_of_day().lawful_bonus,teams_,current_team);
 
 	//if the unit is selected and then itself clicked on,
 	//any goto command is cancelled
@@ -658,7 +660,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			const gamemap::location go_to = u.get_goto();
 			if(map_.on_board(go_to)) {
 				const shortest_path_calculator calc(u,current_team,
-				                                    units_,map_);
+				                                    units_,teams_,map_,status_);
 
 				const std::set<gamemap::location>* teleports = NULL;
 

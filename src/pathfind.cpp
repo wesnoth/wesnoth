@@ -281,8 +281,11 @@ int route_turns_to_complete(const unit& u, const gamemap& map,
 
 shortest_path_calculator::shortest_path_calculator(const unit& u, const team& t,
                                                    const unit_map& units,
-                                                   const gamemap& map)
-      : unit_(u), team_(t), units_(units), map_(map)
+																	const std::vector<team>& teams,
+                                                   const gamemap& map,
+																	const gamestatus& status)
+      : unit_(u), team_(t), units_(units), teams_(teams), 
+			status_(status), map_(map)
 {
 }
 
@@ -292,7 +295,10 @@ double shortest_path_calculator::cost(const gamemap::location& loc,
 	if(!map_.on_board(loc) || team_.shrouded(loc.x,loc.y))
 		return 100000.0;
 
-	const unit_map::const_iterator enemy_unit = units_.find(loc);
+	const unit_map::const_iterator enemy_unit = find_visible_unit(units_,
+			loc,map_,
+			status_.get_time_of_day().lawful_bonus,teams_,team_);
+
 	if(enemy_unit != units_.end() && team_.is_enemy(enemy_unit->second.side()))
 		return 100000.0;
 
@@ -301,7 +307,10 @@ double shortest_path_calculator::cost(const gamemap::location& loc,
 		get_adjacent_tiles(loc,adj);
 
 		for(size_t i = 0; i != 6; ++i) {
-			const unit_map::const_iterator u = units_.find(adj[i]);
+			const unit_map::const_iterator u = find_visible_unit(units_,
+					adj[i],map_,
+					status_.get_time_of_day().lawful_bonus,teams_,team_);
+
 			if(u != units_.end() && team_.is_enemy(u->second.side()) && !team_.fogged(adj[i].x,adj[i].y)) {
 				return 100000.0;
 			}

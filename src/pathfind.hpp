@@ -94,14 +94,19 @@ int route_turns_to_complete(const unit& u, const gamemap& map,
 struct shortest_path_calculator
 {
 	shortest_path_calculator(const unit& u, const team& t,
-	                         const unit_map& units, const gamemap& map);
+	                         const unit_map& units, 
+									 const std::vector<team>& teams,
+									 const gamemap& map,
+									 const gamestatus& status);
 	double cost(const gamemap::location& loc, double so_far) const;
 
 private:
 	const unit& unit_;
 	const team& team_;
 	const unit_map& units_;
+	const std::vector<team>& teams_;
 	const gamemap& map_;
+	const gamestatus& status_;
 };
 
 namespace detail {
