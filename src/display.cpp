@@ -13,6 +13,7 @@
 
 #include "actions.hpp"
 #include "display.hpp"
+#include "events.hpp"
 #include "font.hpp"
 #include "game.hpp"
 #include "game_config.hpp"
@@ -319,7 +320,7 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 	double xdiff = 0.0, ydiff = 0.0;
 
 	for(int i = 0; i != num_moves; ++i) {
-		check_keys(*this);
+		events::pump();
 		xdiff += xmove/divisor;
 		ydiff += ymove/divisor;
 
@@ -1808,7 +1809,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 	int ticks = SDL_GetTicks();
 
 	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
-		check_keys(*this);
+		events::pump();
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
@@ -2041,7 +2042,7 @@ bool display::unit_attack(const gamemap::location& a,
 	hiddenUnit_ = a;
 
 	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
-		check_keys(*this);
+		events::pump();
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
@@ -2151,7 +2152,7 @@ void display::move_unit_between(const gamemap::location& a,
 	int skips = 0;
 
 	for(double i = 0.0; i < nsteps; i += 1.0) {
-		check_keys(*this);
+		events::pump();
 
 		//checking keys may have invalidated all images (if they have
 		//zoomed in or out), so reget the image here

@@ -18,9 +18,11 @@
 #include "config.hpp"
 #include "dialogs.hpp"
 #include "display.hpp"
+#include "events.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
+#include "hotkeys.hpp"
 #include "key.hpp"
 #include "pathfind.hpp"
 #include "show_dialog.hpp"
@@ -43,21 +45,75 @@ private:
 	display& gui_;
 };
 
-struct turn_info {
-	turn_info() : left_button(false), right_button(false), middle_button(false),
-	              enemy_paths(false), path_turns(0)
-	{}
+class turn_info : public hotkey::command_executor, public events::handler,
+                  private paths_wiper
+{
+public:
+	turn_info(game_data& gameinfo, game_state& state_of_game,
+	          gamestatus& status, config& terrain_config, config* level,
+	          CKey& key, display& gui, gamemap& map,
+	          std::vector<team>& teams, int team_num,
+	          unit_map& units, bool browse_only);
 
-	bool left_button, right_button, middle_button;
-	gamemap::location next_unit;
-	paths current_paths;
-	paths::route current_route;
-	bool enemy_paths;
-	gamemap::location last_hex;
-	gamemap::location selected_hex;
-	undo_list undo_stack;
-	undo_list redo_stack;
-	int path_turns;
+	void turn_slice();
+
+	bool turn_over() const;
+
+	int send_data(int first_command);
+
+	undo_list& undos() { return undo_stack_; }
+
+private:
+
+	void cycle_units();
+	void end_turn();
+	void goto_leader();
+	void end_unit_turn();
+	void undo();
+	void redo();
+	void terrain_table();
+	void attack_resistance();
+	void unit_description();
+	void save_game();
+	void toggle_grid();
+	void status_table();
+	void recruit();
+	void recall();
+
+	void handle_event(const SDL_Event& event);
+	void mouse_motion(const SDL_MouseMotionEvent& event);
+	void mouse_press(const SDL_MouseButtonEvent& event);
+
+	void left_click(const SDL_MouseButtonEvent& event);
+	void show_menu();
+
+	unit_map::const_iterator current_unit();
+
+	game_data& gameinfo_;
+	game_state& state_of_game_;
+	gamestatus& status_;
+	config& terrain_config_;
+	config* level_;
+	CKey key_;
+	display& gui_;
+	gamemap& map_;
+	std::vector<team>& teams_;
+	int team_num_;
+	unit_map& units_;
+	bool browse_;
+
+	bool left_button_, right_button_, middle_button_;
+	gamemap::location next_unit_;
+	paths current_paths_;
+	paths::route current_route_;
+	bool enemy_paths_;
+	gamemap::location last_hex_;
+	gamemap::location selected_hex_;
+	undo_list undo_stack_;
+	undo_list redo_stack_;
+	int path_turns_;
+
+	bool end_turn_;
 };
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,

@@ -20,11 +20,23 @@
 #include "show_dialog.hpp"
 #include "video.hpp"
 
+#include "SDL.h"
+
 #include <algorithm>
 #include <cstdlib>
 #include <map>
 
 namespace {
+
+enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
+                      HOTKEY_UNDO, HOTKEY_REDO,
+                      HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
+                      HOTKEY_FULLSCREEN, HOTKEY_ACCELERATED,
+                      HOTKEY_TERRAIN_TABLE, HOTKEY_ATTACK_RESISTANCE,
+                      HOTKEY_UNIT_DESCRIPTION, HOTKEY_SAVE_GAME,
+                      HOTKEY_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
+                      HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE,
+                      HOTKEY_NULL };
 
 HOTKEY_COMMAND string_to_command(const std::string& str)
 {
@@ -59,8 +71,8 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		return i->second;
 }
 
-struct hotkey {
-	explicit hotkey(config& cfg);
+struct hotkey_item {
+	explicit hotkey_item(config& cfg);
 
 	HOTKEY_COMMAND action;
 	int keycode;
@@ -68,7 +80,7 @@ struct hotkey {
 	mutable bool lastres;
 };
 
-hotkey::hotkey(config& cfg) : lastres(false)
+hotkey_item::hotkey_item(config& cfg) : lastres(false)
 {
 	std::map<std::string,std::string>& m = cfg.values;
 	action = string_to_command(m["command"]);
@@ -79,66 +91,66 @@ hotkey::hotkey(config& cfg) : lastres(false)
 	shift = (m["shift"] == "yes");
 }
 
-bool operator==(const hotkey& a, const hotkey& b)
+bool operator==(const hotkey_item& a, const hotkey_item& b)
 {
 	return a.keycode == b.keycode && a.alt == b.alt &&
 	       a.ctrl == b.ctrl && a.shift == b.shift;
 }
 
-bool operator!=(const hotkey& a, const hotkey& b)
+bool operator!=(const hotkey_item& a, const hotkey_item& b)
 {
 	return !(a == b);
 }
 
-std::vector<hotkey> hotkeys;
+std::vector<hotkey_item> hotkeys;
 
 }
 
 struct hotkey_pressed {
-	hotkey_pressed(CKey& key);
+	hotkey_pressed(const SDL_KeyboardEvent& event);
 
-	bool operator()(const hotkey& hk) const;
+	bool operator()(const hotkey_item& hk) const;
 
 private:
-	const bool shift_, ctrl_, alt_;
-	CKey& key_;
+	int keycode_;
+	bool shift_, ctrl_, alt_;
 };
 
-hotkey_pressed::hotkey_pressed(CKey& key) :
-     shift_(key[SDLK_LSHIFT] || key[SDLK_RSHIFT]),
-     ctrl_(key[SDLK_LCTRL] || key[SDLK_RCTRL]),
-     alt_(key[SDLK_LALT] || key[SDLK_RALT]), key_(key) {}
+hotkey_pressed::hotkey_pressed(const SDL_KeyboardEvent& event)
+       : keycode_(event.keysym.sym), shift_(event.keysym.mod&KMOD_SHIFT),
+         ctrl_(event.keysym.mod&KMOD_CTRL), alt_(event.keysym.mod&KMOD_ALT)
+{}
 
-bool hotkey_pressed::operator()(const hotkey& hk) const
+bool hotkey_pressed::operator()(const hotkey_item& hk) const
 {
-	const bool res = shift_ == hk.shift && ctrl_ == hk.ctrl &&
-                     alt_ == hk.alt && key_[hk.keycode];
-
-	//for zoom in and zoom out, allow it to happen multiple consecutive times
-	if(hk.action == HOTKEY_ZOOM_IN || hk.action == HOTKEY_ZOOM_OUT) {
-		hk.lastres = false;
-		return res;
-	}
-
-	//don't let it return true on multiple consecutive occurrences
-	if(hk.lastres) {
-		hk.lastres = res;
-		return false;
-	} else {
-		hk.lastres = res;
-		return res;
-	}
+	return hk.keycode == keycode_ && shift_ == hk.shift &&
+	       ctrl_ == hk.ctrl && alt_ == hk.alt;
 }
+
+namespace {
 
 void add_hotkey(config& cfg)
 {
-	const hotkey new_hotkey(cfg);
-	const std::vector<hotkey>::iterator i =
+	const hotkey_item new_hotkey(cfg);
+	const std::vector<hotkey_item>::iterator i =
 	               std::find(hotkeys.begin(),hotkeys.end(),new_hotkey);
 	if(i != hotkeys.end()) {
 		*i = new_hotkey;
 	} else {
 		hotkeys.push_back(new_hotkey);
+	}
+}
+
+}
+
+namespace hotkey {
+
+basic_handler::basic_handler(display& disp) : disp_(disp) {}
+
+void basic_handler::handle_event(const SDL_Event& event)
+{
+	if(event.type == SDL_KEYDOWN && !gui::in_dialog()) {
+		key_event(disp_,event.key,NULL);
 	}
 }
 
@@ -151,25 +163,26 @@ void add_hotkeys(config& cfg)
 	}
 }
 
-HOTKEY_COMMAND check_keys(display& disp)
+void key_event(display& disp, const SDL_KeyboardEvent& event,
+               command_executor* executor)
 {
 	const double zoom_amount = 5.0;
 
-	events::pump();
-
-	CKey key;
-	if(key[KEY_ESCAPE]) {
+	if(event.keysym.sym == SDLK_ESCAPE) {
 		const int res = gui::show_dialog(disp,NULL,"",
 		                   string_table["quit_message"],gui::YES_NO);
 		if(res == 0) {
 			throw end_level_exception(QUIT);
+		} else {
+			return;
 		}
 	}
 
-	const std::vector<hotkey>::iterator i =
-	        std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(key));
+	const std::vector<hotkey_item>::iterator i =
+	        std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(event));
+
 	if(i == hotkeys.end())
-		return HOTKEY_NULL;
+		return;
 
 	switch(i->action) {
 		case HOTKEY_ZOOM_IN:
@@ -187,9 +200,65 @@ HOTKEY_COMMAND check_keys(display& disp)
 		case HOTKEY_ACCELERATED:
 			preferences::set_turbo(!preferences::turbo());
 			break;
+		case HOTKEY_CYCLE_UNITS:
+			if(executor)
+				executor->cycle_units();
+			break;
+		case HOTKEY_ENDTURN:
+			if(executor)
+				executor->end_turn();
+			break;
+		case HOTKEY_END_UNIT_TURN:
+			if(executor)
+				executor->end_unit_turn();
+			break;
+		case HOTKEY_LEADER:
+			if(executor)
+				executor->goto_leader();
+			break;
+		case HOTKEY_UNDO:
+			if(executor)
+				executor->undo();
+			break;
+		case HOTKEY_REDO:
+			if(executor)
+				executor->redo();
+			break;
+		case HOTKEY_TERRAIN_TABLE:
+			if(executor)
+				executor->terrain_table();
+			break;
+		case HOTKEY_ATTACK_RESISTANCE:
+			if(executor)
+				executor->attack_resistance();
+			break;
+		case HOTKEY_UNIT_DESCRIPTION:
+			if(executor)
+				executor->unit_description();
+			break;
+		case HOTKEY_SAVE_GAME:
+			if(executor)
+				executor->save_game();
+			break;
+		case HOTKEY_TOGGLE_GRID:
+			if(executor)
+				executor->toggle_grid();
+			break;
+		case HOTKEY_STATUS_TABLE:
+			if(executor)
+				executor->status_table();
+			break;
+		case HOTKEY_RECALL:
+			if(executor)
+				executor->recall();
+			break;
+		case HOTKEY_RECRUIT:
+			if(executor)
+				executor->recruit();
+			break;
 		default:
-			return i->action;
+			break;
 	}
+}
 
-	return HOTKEY_NULL;
 }

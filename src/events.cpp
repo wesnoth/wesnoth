@@ -55,9 +55,11 @@ void pump()
 
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
-		for(std::vector<handler*>::iterator i = event_handlers.begin();
-		    i != event_handlers.end(); ++i) {
-			(*i)->handle_event(event);
+		//events may cause more event handlers to be added and/or removed,
+		//so we must use indexes instead of iterators here.
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2; ++i1) {
+			assert(i1 < event_handlers.size());
+			event_handlers[i1]->handle_event(event);
 		}
 
 		switch(event.type) {

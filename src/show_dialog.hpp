@@ -25,6 +25,16 @@
 namespace gui
 {
 
+bool in_dialog();
+
+struct dialog_manager {
+	dialog_manager();
+	~dialog_manager();
+
+private:
+	bool reset_to;
+};
+
 void draw_dialog_frame(int x, int y, int w, int h, display& disp);
 
 void draw_dialog_background(int x, int y, int w, int h, display& disp);

@@ -213,7 +213,7 @@ void CVideo::flip()
 {
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
-	} else {
+	} else if(update_rects.empty() == false) {
 		SDL_UpdateRects(frameBuffer,update_rects.size(),&update_rects[0]);
 	}
 

@@ -13,6 +13,7 @@
 
 #include "events.hpp"
 #include "game_events.hpp"
+#include "hotkeys.hpp"
 #include "intro.hpp"
 #include "language.hpp"
 #include "network.hpp"
@@ -168,10 +169,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				                   find_leader(units,player_number);
 
 				if(leader != units.end() && !recorder.skipping()) {
+					const hotkey::basic_handler key_events_handler(gui);
 					gui.scroll_to_tile(leader->first.x,leader->first.y);
 				}
 
 				if(replaying) {
+					const hotkey::basic_handler key_events_handler(gui);
 					std::cerr << "doing replay " << player_number << "\n";
 					replaying = do_replay(gui,map,gameinfo,units,teams,
 					                      player_number,status,state_of_game);
@@ -198,6 +201,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						display::clear_debug_highlights();
 
 				} else if(!replaying && team_it->is_ai()) {
+					const hotkey::basic_handler key_events_handler(gui);
+
 					const int start_command = recorder.ncommands();
 
 					ai::do_move(gui,map,gameinfo,units,teams,
@@ -225,8 +230,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 						config cfg;
 	
-						turn_info turn_data;
-						const paths_wiper wiper(gui);
+						turn_info turn_data(gameinfo,state_of_game,status,
+						                    terrain_config,level,key,gui,
+						                    map,teams,player_number,units,true);
 
 						for(;;) {
 							network::connection res =
@@ -239,9 +245,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 								break;
 							}
 
-							turn_slice(gameinfo,state_of_game,status,
-							         terrain_config,level,video,key,gui,map,
-							         teams,player_number,units,turn_data,true);
+							turn_data.turn_slice();
+							gui.draw();
 						}
 
 						std::cerr << "replay: '" << cfg.children["turn"].front()->write() << "'\n";

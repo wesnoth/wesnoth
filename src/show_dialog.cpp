@@ -28,7 +28,16 @@
 #include <iostream>
 #include <numeric>
 
+namespace {
+bool is_in_dialog = false;
+}
+
 namespace gui {
+
+bool in_dialog() { return is_in_dialog; }
+
+dialog_manager::dialog_manager() : reset_to(is_in_dialog) {is_in_dialog = true;}
+dialog_manager::~dialog_manager() { is_in_dialog = reset_to; }
 
 void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 {
@@ -189,6 +198,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 {
 	if(disp.update_locked())
 		return -1;
+
+	const dialog_manager manager;
 
 	const events::resize_lock prevent_resizing;
 

@@ -48,7 +48,7 @@ bool internal_set_language(const std::string& locale, config& cfg)
 				string_table[j->first] = j->second;
 			}
 
-			add_hotkeys(**i);
+			hotkey::add_hotkeys(**i);
 			return true;
 		}
 	}

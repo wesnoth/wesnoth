@@ -55,7 +55,7 @@ display_manager::display_manager(display* d)
 {
 	disp = d;
 
-	add_hotkeys(prefs);
+	hotkey::add_hotkeys(prefs);
 
 	set_grid(grid());
 	set_turbo(turbo());
