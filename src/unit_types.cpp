@@ -900,6 +900,12 @@ const config::child_list& unit_type::modification_advancements() const
 	return cfg_.get_children("advancement");
 }
 
+const std::string& unit_type::undead_variation() const
+{
+        return cfg_["undead_variation"];
+}
+
+
 
 const std::string& unit_type::usage() const
 {

@@ -265,8 +265,15 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	}
 
 	static const std::string plague_string("plague");
-	res.attacker_plague = !d->second.type().not_living() && (res.attacker_special == plague_string)
-	                      && !map.is_village(defender);
+	res.attacker_plague = !d->second.type().not_living() && 
+	  (res.attacker_special.substr(0,6) == plague_string) && 
+	  strcmp(d->second.type().undead_variation().c_str(),"null") && 
+	  !map.is_village(defender);
+	if(res.attacker_special.size()>8){ //plague(type) used
+	  res.attacker_plague_type=res.attacker_special.substr(7,res.attacker_special.size()-8);
+	}else{//plague type is that of attacker
+	  res.attacker_plague_type= a->second.type().id();
+	}
 	res.defender_plague = false;
 
 	static const std::string slow_string("slow");
@@ -403,8 +410,16 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			res.amount_defender_drains = 0;
 		}
 
-		res.defender_plague = !a->second.type().not_living() && (res.defender_special == plague_string)
-		                      && !map.is_village(attacker);
+		res.defender_plague = !a->second.type().not_living() && 
+		  (res.defender_special.substr(0,6) == plague_string) &&
+		  strcmp(a->second.type().undead_variation().c_str(),"null") &&
+		  !map.is_village(attacker);
+		if(res.defender_special.size()>8){ //plague(type) used
+		        res.defender_plague_type=res.defender_special.substr(7,res.defender_special.size()-8);
+		}else{//plague type is that of attacker
+		        res.defender_plague_type= d->second.type().id();
+		}
+
 		res.defender_slows = (defend.special() == slow_string);
 
 		static const std::string first_strike = "firststrike";
@@ -655,7 +670,7 @@ void attack(display& gui, const gamemap& map,
 				}
 			}
 
-			if(dies) {
+			if(dies) {//attacker kills defender
 				attackerxp = game_config::kill_experience*d->second.type().level();
 				if(d->second.type().level() == 0)
 					attackerxp = game_config::kill_experience/2;
@@ -667,6 +682,7 @@ void attack(display& gui, const gamemap& map,
 
 				gamemap::location loc = d->first;
 				gamemap::location attacker_loc = a->first;
+				std::string undead_variation = d->second.type().undead_variation();
 				const int defender_side = d->second.side();
 				LOG_NG << "firing die event\n";
 				game_events::fire("die",loc,a->first);
@@ -678,12 +694,29 @@ void attack(display& gui, const gamemap& map,
 					d = units.end();
 				}
 
-				//plague units make clones of themselves on the target hex
+				//plague units make new units on the target hex
 				if(stats.attacker_plague) {
-					a = units.find(attacker_loc);
-					if(a != units.end()) {
-						units.insert(std::pair<gamemap::location,unit>(loc,a->second));
-						gui.draw_tile(loc.x,loc.y);
+				        a = units.find(attacker_loc); 
+				        game_data::unit_type_map::const_iterator reanimitor;
+				        LOG_NG<<"trying to reanimate "<<stats.attacker_plague_type<<std::endl;
+				        reanimitor = info.unit_types.find(stats.attacker_plague_type);
+				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
+					
+					if(reanimitor != info.unit_types.end()) {
+					       unit newunit=unit(&reanimitor->second,a->second.side(),false,true);
+					       //apply variation					       
+					       if(strcmp(undead_variation.c_str(),"null")){
+						 config mod;
+						 config& variation=mod.add_child("effect");
+						 variation["apply_to"]="variation";
+						 variation["name"]=undead_variation;
+						 newunit.add_modification("variation",mod);
+					       }
+
+					       units.insert(std::pair<gamemap::location,unit>(loc,newunit));
+					       gui.draw_tile(loc.x,loc.y);
+					}else{
+					       LOG_NG<<"unit not reanimated"<<std::endl;
 					}
 				}
 				recalculate_fog(map,state,info,units,teams,defender_side-1);
@@ -801,7 +834,7 @@ void attack(display& gui, const gamemap& map,
 				}
 			}
 				
-			if(dies) {
+			if(dies) {//defender kills attacker
 				defenderxp = game_config::kill_experience*a->second.type().level();
 				if(a->second.type().level() == 0)
 					defenderxp = game_config::kill_experience/2;
@@ -811,6 +844,7 @@ void attack(display& gui, const gamemap& map,
 				defenderxp = 0;
 				attackerxp = 0;
 
+				std::string undead_variation = a->second.type().undead_variation();
 				gamemap::location loc = a->first;
 				gamemap::location defender_loc = d->first;
 				const int attacker_side = a->second.side();
@@ -823,12 +857,29 @@ void attack(display& gui, const gamemap& map,
 					a = units.end();
 				}
 
-				//plague units make clones of themselves on the target hex.
+				//plague units make new units on the target hex.
 				if(stats.defender_plague) {
-					d = units.find(defender_loc);
-					if(d != units.end()) {
-						units.insert(std::pair<gamemap::location,unit>(loc,d->second));
-						gui.draw_tile(loc.x,loc.y);
+				        d = units.find(defender_loc); 
+				        game_data::unit_type_map::const_iterator reanimitor;
+				        LOG_NG<<"trying to reanimate "<<stats.defender_plague_type<<std::endl;
+				        reanimitor = info.unit_types.find(stats.defender_plague_type);
+				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
+					
+					if(reanimitor != info.unit_types.end()) {
+					       unit newunit=unit(&reanimitor->second,d->second.side(),false,true);
+					       //apply variation
+					       if(strcmp(undead_variation.c_str(),"null")){
+						 config mod;
+						 config& variation=mod.add_child("effect");
+						 variation["apply_to"]="variation";
+						 variation["name"]=undead_variation;
+						 newunit.add_modification("variation",mod);
+					       }
+
+					       units.insert(std::pair<gamemap::location,unit>(loc,newunit));
+					       gui.draw_tile(loc.x,loc.y);
+					}else{
+					       LOG_NG<<"unit not reanimated"<<std::endl;
 					}
 				}
 				gui.recalculate_minimap();

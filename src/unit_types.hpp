@@ -165,6 +165,8 @@ public:
 
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
+        //info on the type of unit that the unit reanimates as
+        const std::string& undead_variation() const;
 
 	int num_traits() const;
 

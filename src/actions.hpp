@@ -55,6 +55,7 @@ struct battle_stats
 	int ndefends, nattacks;
 	int attack_with, defend_with;
 	bool attacker_plague, defender_plague;
+        std::string attacker_plague_type, defender_plague_type;
 	bool attacker_slows, defender_slows;
 	bool to_the_death, defender_strikes_first;
 	std::string attacker_special, defender_special;
