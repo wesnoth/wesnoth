@@ -26,7 +26,7 @@ private:
 struct server_manager {
 	//if create_server is false, then the object has no effect.
 	//throws error.
-	server_manager(int port=15000, bool create_server=true);
+	server_manager(int port, bool create_server=true);
 	~server_manager();
 
 private:

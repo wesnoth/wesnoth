@@ -25,7 +25,7 @@ config construct_error(const std::string& msg)
 class server
 {
 public:
-	server();
+	server(int port);
 	void run();
 private:
 	void delete_game(std::vector<game>::iterator i);
@@ -45,7 +45,7 @@ private:
 	std::vector<game> games_;
 };
 
-server::server() : net_manager_(), server_()
+server::server(int port) : net_manager_(), server_(port)
 {
 	login_response_.add_child("mustlogin");
 	login_response_["version"] = game_config::version;
@@ -341,8 +341,35 @@ void server::delete_game(std::vector<game>::iterator i)
 
 int main(int argc, char** argv)
 {
+	int port = 15000;
+
+	for(int arg = 1; arg != argc; ++arg) {
+		const std::string val(argv[arg]);
+		if(val.empty()) {
+			continue;
+		}
+
+		if(val == "--port" || val == "-p") {
+			port = atoi(argv[++arg]);
+		} else if(val == "--help" || val == "-h") {
+			std::cout << "usage: " << argv[0]
+				<< " [options]\n"
+				<< "  -p, --port     Binds the server to the specified port\n";
+			return 0;
+		} else if(val == "--version" || val == "-v") {
+			std::cout << "Battle for Wesnoth server " << game_config::version
+				<< "\n";
+			return 0;
+		} else if(val[0] == '-') {
+			std::cerr << "unknown option: " << val << "\n";
+			return 0;
+		} else {
+			port = atoi(argv[arg]);
+		}
+	}
+			
 	try {
-		server().run();
+		server(port).run();
 	} catch(network::error& e) {
 		std::cerr << "error starting server: " << e.message << "\n";
 		return -1;
