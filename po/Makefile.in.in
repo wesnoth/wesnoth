@@ -118,7 +118,7 @@ $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
 #	  --keyword=_ --language=Shell \
 #	  --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $(DOMAIN).wml.po
 	test ! -f $(DOMAIN).cpp.po -o ! -f $(DOMAIN).wml.po || { \
-	  msgcat $(DOMAIN).cpp.po $(DOMAIN).wml.po -o $(DOMAIN).po && \
+	  msgcat --sort-by-file $(DOMAIN).cpp.po $(DOMAIN).wml.po -o $(DOMAIN).po && \
 	  rm -f $(DOMAIN).cpp.po $(DOMAIN).wml.po; \
 	}
 	test ! -f $(DOMAIN).po || { \
