@@ -301,6 +301,12 @@ void server::run()
 						continue;
 					}
 
+					if(username.size() > 32) {
+						network::send_data(construct_error(
+						                   "This username is too long"),sock);
+						continue;
+					}
+
 					if(username == "server") {
 						network::send_data(construct_error(
 						                   "The nick 'server' is reserved and can not be used by players"),sock);
