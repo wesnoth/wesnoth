@@ -428,8 +428,8 @@ bool enemy_zoc(const gamemap& map, const gamestatus& status,
 			map,
 			status.get_time_of_day().lawful_bonus,
 			teams,current_team);
-		if(it != units.end() && it->second.side() != side &&
-			current_team.is_enemy(it->second.side()) && !it->second.stone()) {
+		if (it != units.end() && it->second.side() != side &&
+		    current_team.is_enemy(it->second.side()) && it->second.emits_zoc()) {
 				return true;
 			}
 	}
@@ -614,7 +614,8 @@ double shortest_path_calculator::cost(const gamemap::location& loc, const double
 		for (size_t i = 0; i != 6; ++i) {
 			const unit_map::const_iterator u = find_visible_unit(units_, adj[i],map_, status_.get_time_of_day().lawful_bonus, teams_, team_);
 
-			if (u != units_.end() && team_.is_enemy(u->second.side()) && !team_.fogged(adj[i].x,adj[i].y) && u->second.stone() == false) {
+			if (u != units_.end() && team_.is_enemy(u->second.side()) &&
+			    !team_.fogged(adj[i].x, adj[i].y) && u->second.emits_zoc()) {
 				return (getNoPathValue());
 			}
 		}
