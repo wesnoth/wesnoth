@@ -449,8 +449,10 @@ ucs2_string copy_ucs2_from_clipboard() {
 	str.reserve(scrapsize);
 	str.resize(scrapsize);
 	err = GetScrapFlavorData(scrap, kScrapFlavorTypeUnicode, &scrapsize, const_cast<Uint16*>(&str.front()));
-	if(err != noErr)
-		return str.clear();
+	if(err != noErr) {
+		str.clear();
+		return str;
+	}
 	for(int i = 0; i < str.size(); ++i) {
 		if(str[i] == '\r')
 			str[i] = '\n';
