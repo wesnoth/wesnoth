@@ -103,6 +103,12 @@ void update_rect(const SDL_Rect& rect)
 	if(update_all)
 		return;
 
+	SDL_Surface* const fb = SDL_GetVideoSurface();
+	if(fb != NULL) {
+		if(rect.x + rect.w > fb->w || rect.y + rect.h > fb->h)
+			return;
+	}
+
 	for(std::vector<SDL_Rect>::iterator i = update_rects.begin();
 	    i != update_rects.end(); ++i) {
 		if(rect_contains(*i,rect)) {
@@ -161,6 +167,8 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags )
 
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
+	update_rects.clear();
+
 	flags = get_flags(flags);
 	const int res = SDL_VideoModeOK( x, y, bits_per_pixel, flags );
 

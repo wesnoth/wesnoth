@@ -98,6 +98,19 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp)
 
 	const scoped_sdl_surface bg(image::get_image(menu_background,image::UNSCALED));
 
+	const SDL_Rect& screen_bounds = disp.screen_area();
+	if(x < 0)
+		x = 0;
+
+	if(y < 0)
+		y = 0;
+
+	if(x + w > screen_bounds.w)
+		w = screen_bounds.w - x;
+
+	if(y + h > screen_bounds.h)
+		h = screen_bounds.h - y;
+
 	for(int i = 0; i < w; i += bg->w) {
 		for(int j = 0; j < h; j += bg->h) {
 			SDL_Rect src = {0,0,0,0};
