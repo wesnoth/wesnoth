@@ -19,9 +19,8 @@ msgstr ""
 "X-Generator: KBabel 1.9\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -86,7 +85,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Osnove igranja"
 
 #: data/help.cfg:68
-#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. Keep in mind "
@@ -94,11 +92,9 @@ msgid ""
 "follow the links included."
 msgstr ""
 "Ta stran vsebuje splošen pregled vsega, kar potrebujete za igranje Battle "
-"for Wesnoth. Pokriva razlago igre in njene osnovne mehanizme. Za več "
-"podatkov kako jo zaobvladati, pa si pomagajte z <ref>dst=basic_strategy "
-"text='Osnovno strategijo'</ref> in <ref>dst=multiplayer_strategy "
-"text='Večigralsko strategijo'</ref>. Ne pozabite, da je to samo izvleček - "
-"za izjeme in posebne situacije, prosimo sledite predlaganim povezavam."
+"for Wesnoth. Pokriva razlago igre in njene osnovne mehanizme. Ne pozabite, "
+"da je to samo izvleček - za izjeme in posebne situacije, prosimo sledite "
+"predlaganim povezavam."
 
 #: data/help.cfg:70
 msgid ""
@@ -234,7 +230,6 @@ msgstr ""
 "po najhitrejši poti."
 
 #: data/help.cfg:95
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -251,16 +246,15 @@ msgstr ""
 "\n"
 "\n"
 "Vsaka enota ima določeno število gibalnih točk, ki se porabljajo ob "
-"premikanju v novo ploščo, odvisno od vrste <ref>dst=terrain text=Terena</"
-"ref> tiste plošče. Na primer, za prehod v stepo je skoraj vedno potrebna "
-"samo ena gibalna točka. Točno število porabljenih točk za določen prehod je "
-"odvisno od tipa enote - v gozdu Vilini porabijo samo eno točko, večina ljudi "
-"in orkov dve, konjeniki celo tri. To točno porabo lahko izveste, če desno-"
-"kliknete na enoto, izberete Opis Enote in si potem pogledate "
-"<italic>text='Terenske Prikrojevalce'</italic>."
+"premikanju v novo ploščo, odvisno od vrste terena tiste plošče. Na primer, "
+"za prehod v stepo je skoraj vedno potrebna samo ena gibalna točka. Točno "
+"število porabljenih točk za določen prehod je odvisno od tipa enote - v "
+"gozdu Vilini porabijo samo eno točko, večina ljudi in orkov dve, konjeniki "
+"celo tri. Točno porabo lahko izveste, če desno-kliknete na enoto, izberete "
+"Opis Enote in si potem pogledate <italic>text='Terenske Prikrojevalce'</"
+"italic>."
 
 #: data/help.cfg:97
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -273,12 +267,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Še ena zadeva, ki je ne smemo pozabiti so <ref>dst=zones_of_control "
-"text='Območja Nadzora'</ref>. Vsaka enota ustvarja območje nadzora v vseh "
-"šest okoliških ploščah in vsak sovražnik, ki v njega vstopi, takoj konča "
-"svoje premikanje. Priučitev, kako območja nadzora uporabiti v svoj prid, je "
-"pomemben del Wesnotha, ker jih lahko kršijo samo <ref>dst=ability_skirmish "
-"text='Izogibalci'</ref>."
+"Še ena zadeva, ki je ne smemo pozabiti so območja nadzora. Vsaka enota "
+"ustvarja območje nadzora v vseh šestih okoliških ploščah in vsak sovražnik, "
+"ki v njega vstopi, takoj konča svoje premikanje. Priučitev, kako območja "
+"nadzora uporabiti v svoj prid, je pomemben del Wesnotha, ker jih lahko "
+"kršijo samo <ref>dst=ability_skirmish text='Izogibalci'</ref>."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -339,7 +332,6 @@ msgstr ""
 "<header>text='Verjetnost zadetka'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -354,15 +346,14 @@ msgstr ""
 "\n"
 "\n"
 "Z dvema izjemama je verjetnost da zadenete enoto odvisna samo od njene "
-"obrambne statistike na <ref>dst=terrain text=Terenu</ref> kjer trenutno je. "
-"To lahko najdete, tako da desno-kliknete na enoto, izberete Opis Enote in "
-"potem pogledate <italic>text='Terenske Prikrojevalce'</italic>. Na primer, "
-"vilini imajo 60% obrambo v gozdu, kar pomeni, da ima enota, ki jih napada, "
-"le 40% možnosti, da jih zadane. Obratno, vilinčeva možnost da zadane "
-"napadalca nazaj, je odvisna na katerem terenu stoji napadalec."
+"obrambne statistike na terenu kjer trenutno je. To lahko ugotovite, tako da "
+"desno-kliknete na enoto, izberete Opis Enote in potem pogledate "
+"<italic>text='Terenske Prikrojevalce'</italic>. Na primer, vilini imajo 60% "
+"obrambo v gozdu, kar pomeni, da ima enota, ki jih napada, le 40% možnosti, "
+"da jih zadene. Obratno, vilinčeva možnost da zadane napadalca nazaj, je "
+"odvisna na katerem terenu stoji napadalec."
 
 #: data/help.cfg:112
-#, fuzzy
 msgid ""
 "\n"
 "There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
@@ -372,11 +363,11 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Obstajata dve izjemi temu pravilu: <ref>dst=magical_attacks text='Čarobni "
-"napadi'</ref> in <ref>dst=ability_marksman text=Ostrostrelci</ref>. Čarobni "
-"napadi imajo vedno 70% možnost  da zadanejo, neglede na teren. Podobno imajo "
-"ostrostrelci, kadar napadajo, vedno vsaj 60% možnost da zadanejo, neglede na "
-"teren."
+"Obstajata dve izjemi temu pravilu: <ref>dst=weaponspecial_magical "
+"text='Čarobni napadi'</ref> in <ref>dst=weaponspecial_marksman "
+"text=Ostrostrelci</ref>. Čarobni napadi imajo vedno 70% možnost  da "
+"zadanejo, neglede na teren. Podobno imajo ostrostrelci, kadar napadajo, "
+"vedno vsaj 60% možnost da zadanejo, neglede na teren."
 
 #: data/help.cfg:114
 msgid ""
@@ -408,7 +399,6 @@ msgstr ""
 "oba razložena v nadaljevanju."
 
 #: data/help.cfg:118
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -420,8 +410,8 @@ msgstr ""
 "\n"
 "\n"
 "Nekatere enote imajo posebne sposobnosti, ki vplivajo na povzročeno škodo. "
-"Najbolj pogosta je <ref>dst=ability_charge text=Naskok</ref>, ki podvoji "
-"povzročeno škodo napadalca in branilca, kadar napadalec naskakuje."
+"Najbolj pogosta je <ref>dst=weaponspecial_charge text=Naskok</ref>, ki "
+"podvoji povzročeno škodo napadalca in branilca, kadar napadalec naskakuje."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -584,7 +574,6 @@ msgstr ""
 "nekaterih primerih boste imeli možnost izbire v kaj naj enota napreduje."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -594,7 +583,7 @@ msgstr ""
 "\n"
 "\n"
 "Ne pozabite, da ima večina enot tri izkušenjske stopnje, a ne vse - nekatere "
-"jih imajo več (npr. <ref>dst=unit_mage text=Čarovniki</ref>), redke pa manj."
+"jih imajo več (npr. <ref>dst=unit_Mage text=Čarovniki</ref>), redke pa manj."
 
 #: data/help.cfg:169
 msgid "Healing"
@@ -631,14 +620,13 @@ msgstr ""
 "Vasi: Enota, ki začne svojo potezo v vasi, se bo pozdravila za 8HP."
 
 #: data/help.cfg:174
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text=Regeneracija</ref>: Določene enote (na "
+"<ref>dst=ability_regenerates text=Regeneracija</ref>: Določene enote (na "
 "primer troli) se bodo vsako potezo samodejno pozdravile za 8HP."
 
 #: data/help.cfg:175
@@ -1418,9 +1406,8 @@ msgid "King of the Hill"
 msgstr "Kralj Hriba"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
-#, fuzzy
 msgid "Basic Training"
-msgstr "+Baskovski prevod"
+msgstr "Osnovna vadba"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:64
 msgid ""
@@ -1431,7 +1418,6 @@ msgstr ""
 "podučiš o tej umetnosti."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:68
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1448,9 +1434,8 @@ msgid "Recruit a unit"
 msgstr "Novači enoto"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:76
-#, fuzzy
 msgid "Excellent! You recruited an Elvish Fighter."
-msgstr "Odlično! Novačili ste Vilinskega Bojevnika."
+msgstr "Odlično! Novačili ste Vilinskega bojevnika."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:78
 #: data/scenarios/tutorial/Basic_Training.cfg:102
@@ -1526,7 +1511,6 @@ msgid "End your turn"
 msgstr "Končaj potezo"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:100
-#, fuzzy
 msgid "You successfully ended your turn."
 msgstr "Uspešno ste končali potezo."
 
@@ -1637,7 +1621,6 @@ msgid "Attack Merle"
 msgstr "Napadi Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:163
-#, fuzzy
 msgid "You successfully attacked Merle."
 msgstr "Uspešno ste napadli Merle."
 
@@ -1714,7 +1697,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:186
 msgid "What happens when a unit advances?"
-msgstr "Kaj  se zgodi, ko enota napreduje?"
+msgstr "Kaj se zgodi, ko enota napreduje?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:186
 msgid ""
@@ -1731,7 +1714,6 @@ msgid "Move your fighter onto a village."
 msgstr "Premaknite svojega bojevnika v vas."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "Move your fighter onto a village"
 msgstr "Premaknite svojega bojevnika v vas."
 
@@ -1789,28 +1771,25 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:249
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "gained wisdom from my teachings anyway."
 msgstr ""
-"Na žalost si izgubil, ker je bi tvoj voditelj poražen. Upam, da si z mojim "
-"poučevanjem vseeno dobil nekaj znanja."
+"Na žalost ste izgubili, ker je bi vaš voditelj poražen. Upam, da ste z mojim "
+"poučevanjem vseeno dobili nekaj znanja."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:256
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:240
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you gained "
 "wisdom from my teachings anyway."
 msgstr ""
-"Na žalost si izgubil, ker ti je zmanjkalo časa. Upam, da si z mojim "
-"poučevanjem vseeno pridobil na izkušenosti."
+"Na žalost ste izgubili, ker vam je zmanjkalo časa. Upam, da ste z mojim "
+"poučevanjem vseeno pridobili na izkušenosti."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
-#, fuzzy
 msgid "You successfully completed the first training scenario."
-msgstr "Uspešno ste opravili prvi del treninga."
+msgstr "Uspešno ste opravili prvo vadbo."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:268
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:287
@@ -1847,9 +1826,8 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:277
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
-#, fuzzy
 msgid "Do you want to review any of the skills learned on this level?"
-msgstr "Ali hočeš pregledati nova spoznanja iz tega scenarija?"
+msgstr "Ali hočete pregledati nova spoznanja iz tega scenarija?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:279
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:256
@@ -1901,24 +1879,22 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:62
-#, fuzzy
 msgid "Defeat Delfador"
-msgstr "Delfador"
+msgstr "Premagaj Delfadora"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:66
 #: data/scenarios/tutorial/utils.cfg:49
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Smrt Konrada"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:70
 #: data/scenarios/tutorial/utils.cfg:57
 msgid "Turns run out"
-msgstr ""
+msgstr "Poteze se iztečejo"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:83
-#, fuzzy
 msgid "You successfully recalled your Elvish Fighter."
-msgstr "Uspešno ste priklicali svojega Vilinskega Bojevnika."
+msgstr "Uspešno ste priklicali svojega Vilinskega bojevnika."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:85
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:99
@@ -1928,7 +1904,6 @@ msgstr "Uspešno ste priklicali svojega Vilinskega Bojevnika."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:159
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:173
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:206
-#, fuzzy
 msgid "En guarde!"
 msgstr "En garde!"
 
@@ -2060,7 +2035,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
-msgstr "Vsaka plošča ima svoj teren, kar ji da značilne lastnosti."
+msgstr "Vsaka plošča ima svoj teren, ki ji da značilne lastnosti."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:147
 msgid ""
@@ -2222,10 +2197,9 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
-#, fuzzy
 msgid ""
 "Congratulations! By defeating me, you complete the second training scenario."
-msgstr "Uspešno ste opravili prvi del treninga."
+msgstr "Čestitam! S tem, da si me premagal, si opravil drugo vadbo."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:285
 msgid "Next, you may want to begin a campaign, or play multiplayer."
@@ -2256,7 +2230,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
-msgstr ""
+msgstr "To je bilo dobro razloženo! Ampak..."
 
 #: data/scenarios/tutorial/utils.cfg:42
 msgid ""
@@ -2270,12 +2244,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:43
 msgid "Current objective:"
-msgstr ""
+msgstr "Trenutni cilj:"
 
 #: data/scenarios/tutorial/utils.cfg:53
-#, fuzzy
 msgid "Death of Delfador"
-msgstr "Delfador"
+msgstr "Smrt Delfadora"
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -3820,7 +3793,7 @@ msgstr "bolščanje"
 
 #: data/units/Cockatrice.cfg:26 src/actions.cpp:708 src/actions.cpp:854
 msgid "stone"
-msgstr "kamen"
+msgstr "okamèni"
 
 #: data/units/Commander.cfg:3 data/units/Commander.cfg:78
 msgid "Commander"
@@ -4368,7 +4341,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Thunderer.cfg:40
 msgid "thunderstick"
-msgstr "gromska gorjača"
+msgstr "gromska palica"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
@@ -4384,7 +4357,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Thunderguard.cfg:46
 msgid "dragonstick"
-msgstr "zmajska gorjača"
+msgstr "zmajska palica"
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
@@ -7154,7 +7127,7 @@ msgstr "Poveži se z uradnim strežnikom"
 
 #: src/game.cpp:1294
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Poveži se z uradnim večigralskim Wesnoth strežnikom"
+msgstr "Poveži se z uradnim večigralskim strežnikom za Wesnoth"
 
 #: src/game.cpp:1295 src/multiplayer_lobby.cpp:28
 msgid "Join Game"
@@ -8071,7 +8044,7 @@ msgstr "Ta enota je nevidna. Sovražniki je ne morejo niti videti niti napasti."
 
 #: src/reports.cpp:107
 msgid "invisible: "
-msgstr "nevidne: "
+msgstr "nevidna: "
 
 #: src/reports.cpp:112
 msgid ""
@@ -8083,7 +8056,7 @@ msgstr ""
 
 #: src/reports.cpp:112
 msgid "slowed: "
-msgstr "upočasnjene:"
+msgstr "upočasnjena: "
 
 #: src/reports.cpp:117
 msgid ""
@@ -8102,7 +8075,7 @@ msgstr ""
 
 #: src/reports.cpp:117
 msgid "poisoned: "
-msgstr "zastrupljene: "
+msgstr "zastrupljena: "
 
 #: src/reports.cpp:124
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -8110,7 +8083,7 @@ msgstr "Ta enota je okamenela. Ne more se ne premikati ne napadati."
 
 #: src/reports.cpp:124
 msgid "stone: "
-msgstr "kamen: "
+msgstr "okamenela: "
 
 #: src/reports.cpp:234
 msgid "damage"
@@ -8174,7 +8147,7 @@ msgstr "Izhod"
 
 #: src/titlescreen.cpp:192
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Začni vodič da se navadiš na igro"
+msgstr "Začni vodič da se navadim na igro"
 
 #: src/titlescreen.cpp:193
 msgid "Start a new single player campaign"
@@ -8231,9 +8204,3 @@ msgstr "zakonit"
 #: src/unit_types.cpp:914
 msgid "neutral"
 msgstr "nevtralen"
-
-#~ msgid "Konrad"
-#~ msgstr "Konrad"
-
-#~ msgid "Merle"
-#~ msgstr "Merle"
