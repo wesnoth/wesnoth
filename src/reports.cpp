@@ -166,10 +166,10 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		
 		tooltip << font::LARGE_TEXT << translate_string_default(tod.id,tod.name) << "\n"
 		        << translate_string("lawful") << " " << string_table["units"] << ": "
-				<< (tod.lawful_bonus > 0 ? font::LARGE_TEXT : font::NULL_MARKUP) << tod.lawful_bonus << "%\n"
+				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
 				<< translate_string("neutral") << " " << string_table["units"] << ": " << "0%\n"
 				<< translate_string("chaotic") << " " << string_table["units"] << ": "
-				<< (tod.lawful_bonus < 0 ? font::LARGE_TEXT : font::NULL_MARKUP) << (tod.lawful_bonus*-1) << "%";
+				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
 		res.tooltip = tooltip.str();
 		return res;
 	}

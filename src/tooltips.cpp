@@ -70,15 +70,20 @@ void draw_tooltip()
 
 	gui::draw_solid_tinted_rectangle(current_rect.x,current_rect.y,
 	                                 current_rect.w,current_rect.h,
+	                                 0,0,0,0.6,screen);
+
+/*
+	gui::draw_solid_tinted_rectangle(current_rect.x,current_rect.y,
+	                                 current_rect.w,current_rect.h,
 	                                 180,180,0,1.0,screen);
 	gui::draw_rectangle(current_rect.x,current_rect.y,
 	                    current_rect.w-1,current_rect.h-1,0,screen);
-
+*/
 	SDL_Rect text_area = get_text_size(current_message);
 	text_area.x = current_rect.x + current_rect.w/2 - text_area.w/2;
 	text_area.y = current_rect.y + current_rect.h/2 - text_area.h/2;
 
-	font::draw_text(display_,text_area,font_size,font::BLACK_COLOUR,
+	font::draw_text(display_,text_area,font_size,font::NORMAL_COLOUR,
 	                current_message,text_area.x,text_area.y);
 
 	update_rect(current_rect);
