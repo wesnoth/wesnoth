@@ -462,7 +462,10 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			std::map<gamemap::location,paths::route>::iterator rt =
 			                             paths_list.routes.find(dst);
 			if(rt == paths_list.routes.end()) {
-				std::cerr << "src cannot get to dst: " << paths_list.routes.size() << "\n";
+				std::cerr << "src cannot get to dst: "
+				          << paths_list.routes.size() << " " << (src.x+1)
+				          << "," << (src.y+1) << "-" << (dst.x+1) << ","
+				          << (dst.y+1) << "\n";
 				throw replay::error();
 			}
 
@@ -473,7 +476,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			current_unit.set_movement(rt->second.move_left);
 			if(map[dst.x][dst.y] == gamemap::TOWER) {
-				const int orig_owner = tower_owner(dst,teams);
+				const int orig_owner = tower_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
 					current_unit.set_movement(0);
 					get_tower(dst,teams,team_num-1);

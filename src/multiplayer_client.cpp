@@ -201,6 +201,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 				return;
 			}
 
+			preferences::set_login(login);
+
 			config response;
 			response.add_child("login")["username"] = login;
 			network::send_data(response);
