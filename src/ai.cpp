@@ -1987,6 +1987,6 @@ int ai::attack_depth() const
 	}
 
 	const config& parms = current_team().ai_parameters();
-	attack_depth_ = maximum<int>(1,lexical_cast_default<int>(parms["attack_depth"],4));
+	attack_depth_ = maximum<int>(1,lexical_cast_default<int>(parms["attack_depth"],5));
 	return attack_depth_;
 }
