@@ -107,7 +107,7 @@ void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& 
 
 	for(;;) {
 		location_set::const_iterator it = not_visited.begin(), it_end = not_visited.end();
-		visited.insert(it, it_end);
+		std::copy(it,it_end,std::inserter(visited,visited.end()));
 		for(; it != it_end; ++it) {
 			gamemap::location adj[6];
 			get_adjacent_tiles(*it, adj);
@@ -123,7 +123,7 @@ void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& 
 		not_visited.swap(must_visit);
 		must_visit.clear();
 	}
-	res.insert(visited.begin(), visited.end());
+	std::copy(visited.begin(),visited.end(),std::inserter(visited,visited.end()));
 }
 
 bool enemy_zoc(const gamemap& map, const gamestatus& status, 

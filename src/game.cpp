@@ -417,9 +417,11 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 			break; //parse the rest of the arguments when we set up the game
 		} else if(val == "--test" || val == "-t") {
 			test_mode_ = true;
-		} else if(val == "--debug" || val == "-d") {
+		} else if(val == "--debug" || val == "-d") {http://www.wesnoth.org/forum/profile.php?mode=viewprofile&u=195
 			game_config::debug = true;
 		} else if (val.substr(0, 6) == "--log-") {
+		} else if(val == "--nosound") {
+			//handled elsewhere
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			throw config::error("unknown option");
@@ -1393,8 +1395,22 @@ int play_game(int argc, char** argv)
 	srand(time(NULL));
 
 	game_controller game(argc,argv,use_sound);
-	bool res = game.init_video();
+
+	bool res = game.init_config();
 	if(res == false) {
+		std::cerr << "could not initialize game config\n";
+		return 0;
+	}
+	
+	res = game.init_video();
+	if(res == false) {
+		std::cerr << "could not initialize display\n";
+		return 0;
+	}
+
+	res = game.init_language();
+	if(res == false) {
+		std::cerr << "could not initialize the language\n";
 		return 0;
 	}
 
@@ -1402,11 +1418,6 @@ int play_game(int argc, char** argv)
 #if defined(_X11) && !defined(__APPLE__)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
-
-	res = game.init_language() && game.init_config();
-	if(res == false) {
-		return 0;
-	}
 
 	for(;;) {
 		statistics::fresh_stats();

@@ -122,6 +122,11 @@ char* wesnoth_setlocale(int category, const char *locale)
 		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
 #endif 
 
+#ifdef _WIN32
+	const std::string env = std::string("LANG=") + locale;
+	putenv(env.c_str());
+#endif
+
 	char* res = setlocale (category, locale);
 	if (res == NULL)
 		std::cerr << "WARNING: setlocale() failed for "

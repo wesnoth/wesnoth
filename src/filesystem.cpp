@@ -185,6 +185,9 @@ std::string get_cache_dir()
 
 std::string get_intl_dir()
 {
+#ifdef _WIN32
+	return get_cwd() + "/po";
+#endif
 
 #ifdef __APPLE__
 	return get_cwd() + "/messages";

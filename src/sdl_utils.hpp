@@ -119,7 +119,7 @@ SDL_Rect get_non_transperant_portion(surface surf);
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 
-struct config; // no need to include config.hpp
+class config; // no need to include config.hpp
 
 struct pixel_data
 {

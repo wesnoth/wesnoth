@@ -81,11 +81,11 @@ surface create_optimized_surface(surface surf)
 	surface const result = display_format_alpha(surf);
 	if(result == surf) {
 		std::cerr << "resulting surface is the same as the source!!!\n";
+	} else if(result == NULL) {
+		return surf;
 	}
 
-	if(result != NULL) {
-		SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
-	}
+	SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
 
 	return result;
 }

@@ -64,11 +64,11 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 {
 	std::cerr << "setup dialog ctor\n";
 
-        for(std::map<std::string, player_info>::iterator i=state_.players.begin();
-            i!=state_.players.end(); ++i) {
-          i->second.available_units.clear();
-          i->second.can_recruit.clear();
-        }
+	for(std::map<std::string, player_info>::iterator i = state_.players.begin();
+	    i != state_.players.end(); ++i) {
+		i->second.available_units.clear();
+		i->second.can_recruit.clear();
+	}
 	state_.variables.clear();
 
 	//build the list of scenarios to play
@@ -77,8 +77,8 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	std::vector<std::string> options = user_maps_;
 
 	const config::child_list& levels = cfg.get_children("multiplayer");
-	for(config::child_list::const_iterator i = levels.begin(); i != levels.end(); ++i){
-		options.push_back((**i)["name"]);
+	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j){
+		options.push_back((**j)["name"]);
 	}
 
 	//add the 'load game' option

@@ -112,11 +112,11 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 		level_ptr = &scenario_data;
 
 		//make all sides untaken
-		for(config::child_itors i = level_ptr->child_range("side"); i.first != i.second; ++i.first) {
-			(**i.first)["taken"] = "";
+		for(config::child_itors j = level_ptr->child_range("side"); j.first != j.second; ++j.first) {
+			(**j.first)["taken"] = "";
 
 			//tell clients not to change their race
-			(**i.first)["allow_changes"] = "no";
+			(**j.first)["allow_changes"] = "no";
 		}
 
 		recorder = replay(state_->replay_data);
