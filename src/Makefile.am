@@ -299,11 +299,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/slider.hpp \
 			 widgets/widget.hpp
 
-AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -DLOCALEDIR=\"$(localedir)\"
-
-if INCLUDEDINTL
-AM_CXXFLAGS += -I../intl -I$(top_srcdir)/intl
-endif
+AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -DLOCALEDIR=\"$(localedir)\" \
+	-I../intl -I$(top_srcdir)/intl
 
 if X11
     CXXFLAGS += -D_X11 @X_CFLAGS@
