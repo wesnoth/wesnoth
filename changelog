@@ -1,7 +1,7 @@
 CVS HEAD:
  * user interface improvements:
    * display savegame version in load dialog
-   * shadows for labels to make they visable on each type of terrain
+   * shadows for labels to make they visible on each type of terrain
  * graphics improvements: 
    * bridge, ice, castle floor, grassland
    * unit images and attack animations
@@ -97,6 +97,8 @@ CVS HEAD:
  * added server facility to record the way games end
  * improved 'Out of Sync' detection
  * help system speed optimizations
+ * Imported SDL_ttf into the Wesnoth source tree, removed the dependency to SDL_ttf, added a dependency to libfreetype2
+ * Fixed memory corruption errors on font rendering in SDL_ttf
  * image and data-file cleanups
  * code cleanups
 
