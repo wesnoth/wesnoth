@@ -1,16 +1,21 @@
 CVS HEAD:
- * new translations: Estonian
- * updated translations:
-  * French
-  * German
-  * Hungarian
-  * Slovenian
- * fixed untranslatable strings
- * language fixes and polishing (English)
+ * language and i18n
+  * new translation: Estonian
+  * updated translations:French, German, Hungarian, Slovenian
+  * fixed untranslatable strings
+  * language fixes and polishing (English)
+ * campaign modifications
+  * dialog improvements in EI
  * unit modifications
   * fixed several image files being referred to by wrong name
   * removed sound of thrown spear from Drake Clasher spear melee attack
   * added get_hit_sound:s to Elder Mage (Delfador) and Elvish Lady (Parandra)
+  * added translatable hero names
+ * WML modifications
+  * made [capture_village] accept a location range
+ * various bug fixes and code clean ups
+ * rewrite of mp lobby code
+ * fixed bug that made the ai recruit badly
  * when using zipios, ignore {~...} clauses, and handle {@...} as if there
    was no '@', fixing the double appearance of user campaigns in the
    campaign listing
