@@ -749,14 +749,7 @@ void turn_info::cycle_units()
 			if(it->second.side() == team_num_ &&
 			   unit_can_move(it->first,units_,map_,teams_) &&
 			   !gui_.fogged(it->first.x,it->first.y)) {
-				if (it->second.movement_left() !=
-				    it->second.total_movement()) {
-					if (yellow_it == units_.end()) {
-						yellow_it = it;
-					}
-				}
-				else
-					break;
+				break;
 			}
 		}
 	}
@@ -765,21 +758,9 @@ void turn_info::cycle_units()
 		for(it = units_.begin(); it != units_.end(); ++it) {
 			if(it->second.side() == team_num_ &&
 			   unit_can_move(it->first,units_,map_,teams_) &&
-			   !gui_.fogged(it->first.x,it->first.y)) {
-				if (it->second.movement_left() !=
-				    it->second.total_movement()) {
-					if (yellow_it == units_.end()) {
-						yellow_it = it;
-					}
-				}
-				else
-					break;
-			}
+			   !gui_.fogged(it->first.x,it->first.y))
+				break;
 		}
-	}
-
-	if (it == units_.end()) {
-		it = yellow_it;
 	}
 
 	if(it != units_.end() && !gui_.fogged(it->first.x,it->first.y)) {
