@@ -1442,7 +1442,7 @@ void turn_info::unit_list()
 	std::vector<gamemap::location> locations_list;
 	std::vector<unit> units_list;
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-		if(i->second.side() != team_num_)
+ 		if(i->second.side() != (gui_.viewing_team()+1))
 			continue;
 
 		std::stringstream row;
