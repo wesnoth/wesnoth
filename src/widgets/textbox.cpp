@@ -13,10 +13,11 @@
 #include "textbox.hpp"
 #include "../clipboard.hpp"
 #include "../font.hpp"
-#include "../show_dialog.hpp"
-#include "../video.hpp"
-#include "../util.hpp"
 #include "../language.hpp"
+#include "../log.hpp"
+#include "../show_dialog.hpp"
+#include "../util.hpp"
+#include "../video.hpp"
 #include "SDL.h"
 
 #include <algorithm>
@@ -143,7 +144,7 @@ void textbox::draw()
 				downarrow_.hide(grip_y == max_grip_y);
 
 				src.y = (max_y*(grip_y*100)/max_grip_y)/100;
-				std::cerr << "set src.y to " << src.y << "/" << max_grip_y << "\n";
+				lg::info(lg::display) << "set src.y to " << src.y << "/" << max_grip_y << "\n";
 			}
 
 			uparrow_.set_dirty(true);
@@ -362,7 +363,7 @@ void textbox::handle_event(const SDL_Event& event)
 	//Sanity check: verify that selection start and end are within text
 	//boundaries
 	if(is_selection() && !(size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size())) {
-		std::cerr << "Warning: out-of-boundary selection\n";
+		lg::warn(lg::display) << "out-of-boundary selection\n";
 		selstart_ = selend_ = -1;
 	}
 
@@ -487,7 +488,7 @@ void textbox::handle_event(const SDL_Event& event)
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
 	   c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME)) {
 		if(character != 0)
-			std::cerr << "Char: " << character << ", c = " << c << "\n";
+			lg::info(lg::display) << "Char: " << character << ", c = " << c << "\n";
 	
 		if(event.key.keysym.mod & KMOD_CTRL) {
 			switch(c) {
