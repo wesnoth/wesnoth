@@ -85,7 +85,9 @@ connection connect(const std::string& host, int port)
 		throw error(SDLNet_GetError());
 	}
 
+	std::cerr << "opening connection\n";
 	TCPsocket sock = SDLNet_TCP_Open(&ip);
+	std::cerr << "opened connection okay\n";
 	if(!sock) {
 		throw error(SDLNet_GetError());
 	}
