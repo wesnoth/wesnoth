@@ -13,7 +13,7 @@
 #ifndef GAME_CONFIG_H_INCLUDED
 #define GAME_CONFIG_H_INCLUDED
 
-#include "config.hpp"
+class config;
 
 #include <string>
 

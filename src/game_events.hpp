@@ -13,13 +13,12 @@
 #ifndef GAME_EVENTS_H_INCLUDED
 #define GAME_EVENTS_H_INCLUDED
 
-#include "config.hpp"
-#include "display.hpp"
+class config;
+class display;
 #include "gamestatus.hpp"
 #include "map.hpp"
 #include "team.hpp"
 #include "unit.hpp"
-#include "unit_types.hpp"
 
 #include <map>
 
