@@ -180,7 +180,9 @@ bool set_language(const language_def& locale)
 	}
 #endif
 
-	return internal_set_language(locale,cfg);
+	current_language = locale;
+	setlocale (LC_MESSAGES, locale.localename.c_str());
+	return true;
 }
 
 const language_def& get_language() { return current_language; }
