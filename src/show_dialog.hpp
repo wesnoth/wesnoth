@@ -71,7 +71,7 @@ SDL_Rect draw_dialog_title(int x, int y, display* disp, const std::string& text)
 //to its original state after the dialog is drawn.
 void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& title,
                  const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
-                 surface_restorer* restorer=NULL);
+                 surface_restorer* restorer=NULL, button* help_button=NULL);
 
 class dialog_action
 {

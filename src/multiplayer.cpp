@@ -168,7 +168,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	int height = int(area.h);
 	const int left = area.x;
 	const int top = area.y;
-	const int border_size = 5;
+	const int border_size = 6;
 	const int right = left + width;
 	const int bottom = top + height;
 
@@ -197,7 +197,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	SDL_Rect rect;
 
 	//the sliders and other options on the right side of the dialog
-	rect.x = xpos + minimap_width + maps_menu_->width() + border_size*2;
+	rect.x = xpos + minimap_width + maps_menu_->width() + border_size;
 	rect.y = ypos;
 	rect.w = maximum<int>(0,right - border_size - rect.x);
 	//a font sized "12" isn't necessarily 12 pixel high.
@@ -205,38 +205,38 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 
 	turns_restorer_ = surface_restorer(&disp_.video(),rect);
 
-	rect.y += rect.h + border_size*2;
+	rect.y += rect.h + border_size + 1;
 
 	turns_slider_->set_location(rect);
 	turns_slider_->set_dirty();
 
 	//Village Gold
-	rect.y += rect.h + border_size*2;
+	rect.y += rect.h + border_size + 1;
 
 	village_gold_restorer_ = surface_restorer(&disp_.video(),rect);
 
-	rect.y += rect.h + border_size*2;
+	rect.y += rect.h + border_size + 1;
 
 	village_gold_slider_->set_location(rect);
 	village_gold_slider_->set_dirty();
 
 	//Experience Modifier
-	rect.y += rect.h + border_size*2;
+	rect.y += rect.h + border_size + 1;
 
 	xp_restorer_ = surface_restorer(&disp_.video(),rect);
 
-	rect.y += rect.h + border_size*2;
+	rect.y += rect.h + border_size + 1;
 
 	xp_modifier_slider_->set_location(rect);
 	xp_modifier_slider_->set_dirty();
 
 	//FOG of war
-	rect.y += rect.h + border_size*2;
+	rect.y += rect.h + border_size + 1;
 
 	fog_game_->set_location(rect.x,rect.y);
 	fog_game_->set_dirty();
 
-	rect.y += fog_game_->location().h + border_size;
+	rect.y += fog_game_->location().h + border_size + 1;
 
 	//Shroud
 	shroud_game_->set_location(rect.x,rect.y);
@@ -256,11 +256,16 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 
 	rect.y += vision_combo_->height() + border_size;
 
+	gui::button* left_button = launch_game_;
+	gui::button* right_button = cancel_game_;
+
+#ifdef OK_BUTTON_ON_RIGHT
+	std::swap(left_button,right_button);
+#endif
+
 	//Buttons
-	cancel_game_->set_location(right - cancel_game_->width() - gui::ButtonHPadding,
-	                     bottom - cancel_game_->height() - gui::ButtonVPadding);
-	launch_game_->set_location(right - cancel_game_->width() - launch_game_->width() - gui::ButtonHPadding*2,
-	                     bottom - launch_game_->height() - gui::ButtonVPadding);
+	right_button->set_location(right - right_button->width() - gui::ButtonHPadding,bottom - right_button->height() - gui::ButtonVPadding);
+	left_button->set_location(right - right_button->width() - left_button->width() - gui::ButtonHPadding*2,bottom - left_button->height() - gui::ButtonVPadding);
 
 	cancel_game_->set_dirty();
 	launch_game_->set_dirty();

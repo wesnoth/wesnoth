@@ -739,7 +739,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		gamemap::location loc;
 		bool remove_overlay = false;
 		if(filter != NULL) {
-			loc = gamemap::location(*filter);
+			for(unit_map::const_iterator u = units->begin(); u != units->end(); ++u) {
+				if(game_events::unit_matches_filter(u,*filter)) {
+					loc = u->first;
+					break;
+				}
+			}
 		}
 
 		if(loc.valid() == false) {

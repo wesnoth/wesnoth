@@ -185,7 +185,7 @@ SDL_Rect draw_dialog_title(int x, int y, display* disp, const std::string& text)
 
 void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& title,
 				 const std::string* style, std::vector<button*>* buttons,
-				 surface_restorer* restorer)
+				 surface_restorer* restorer, button* help_button)
 {
 	int border_size = 10;
 	SDL_Rect title_area = {0,0,0,0};
@@ -209,9 +209,16 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 		buttons_area.w += ButtonHPadding;
 	}
 
+	size_t buttons_width = buttons_area.w;
+
+	if(help_button != NULL) {
+		buttons_width += help_button->width() + ButtonHPadding*2;
+		buttons_area.y = y + h;
+	}
+
 	const int xpos = x;
 	const int ypos = y - int(title_area.h);
-	const int width = maximum<int>(w,maximum<int>(int(title_area.w),int(buttons_area.w)));
+	const int width = maximum<int>(w,maximum<int>(int(title_area.w),int(buttons_width)));
 	const int height = title_area.h + buttons_area.h + h;
 
 	buttons_area.x += xpos + width;
@@ -223,10 +230,18 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 	}
 
 	if(buttons != NULL) {
+#ifdef OK_BUTTON_ON_RIGHT
+		std::reverse(buttons->begin(),buttons->end());
+#endif
+		
 		for(std::vector<button*>::const_iterator b = buttons->begin(); b != buttons->end(); ++b) {
 			(**b).set_location(buttons_area.x,buttons_area.y);
 			buttons_area.x += (**b).width() + ButtonHPadding;
 		}
+	}
+
+	if(help_button != NULL) {
+		help_button->set_location(x+ButtonHPadding,buttons_area.y);
 	}
 }
 
@@ -580,19 +595,15 @@ int show_dialog(display& disp, SDL_Surface* image,
 		buttons_ptr.push_back(&*bt);
 	}
 
-	button help_button(disp,string_table["action_help"]);
-	if(help_topic.empty() == false) {
-		buttons_ptr.push_back(&help_button);
-	}
-
-
 	frame_width += left_preview_pane_width + right_preview_pane_width;
 	frame_height += above_preview_pane_height;
 
 	surface_restorer restorer;
 
+	button help_button(disp,string_table["action_help"]);
+
 	const std::string& title = image == NULL ? caption : "";
-	draw_dialog(xframe,yframe,frame_width,frame_height,disp,title,dialog_style,&buttons_ptr,&restorer);
+	draw_dialog(xframe,yframe,frame_width,frame_height,disp,title,dialog_style,&buttons_ptr,&restorer,help_topic.empty() ? NULL : &help_button);
 
 	//calculate the positions of the preview panes to the sides of the dialog
 	if(preview_panes != NULL) {

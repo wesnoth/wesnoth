@@ -895,6 +895,15 @@ void unit::add_modification(const std::string& type,
 	for(config::const_child_itors i = mod.child_range("effect");
 	    i.first != i.second; ++i.first) {
 
+		//see if the effect only applies to certain unit types
+		const std::string& type_filter = (**i.first)["type"];
+		if(type_filter.empty() == false) {
+			const std::vector<std::string>& types = config::split(type_filter);
+			if(std::find(types.begin(),types.end(),this->type().name()) == types.end()) {
+				continue;
+			}
+		}
+
 		std::stringstream description;
 
 		const std::string& apply_to = (**i.first)["apply_to"];

@@ -343,9 +343,16 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	// Wait to players, Configure players
 	//gui::draw_dialog_background(left, right, width, height, *disp_, "menu");
 
+	gui::button* left_button = &launch_;
+	gui::button* right_button = &cancel_;
+
+#ifdef OK_BUTTON_ON_RIGHT
+	std::swap(left_button,right_button);
+#endif
+
 	//Buttons
-	cancel_.set_location(right - cancel_.width() - gui::ButtonHPadding,bottom-cancel_.height()-gui::ButtonVPadding);
-	launch_.set_location(right - cancel_.width() - launch_.width() - gui::ButtonHPadding*2,bottom-launch_.height()-gui::ButtonVPadding);
+	right_button->set_location(right - right_button->width() - gui::ButtonHPadding,bottom-right_button->height()-gui::ButtonVPadding);
+	left_button->set_location(right - right_button->width() - left_button->width() - gui::ButtonHPadding*2,bottom-left_button->height()-gui::ButtonVPadding);
 	
 	ai_.set_location(left+30,bottom-60);
 
