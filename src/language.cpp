@@ -191,7 +191,6 @@ const language_def& get_locale()
 		}
 		
 		std::cerr << "setlocale succeeded but locale not found in known array; defaulting to system locale\n";
-		// FIXME
 		return known_languages[0];
 	}
 
@@ -209,7 +208,6 @@ const language_def& get_locale()
 #endif
 
 	std::cerr << "locale could not be determined; defaulting to system locale\n";
-	// FIXME
 	return known_languages[0];
 }
 
