@@ -7,7 +7,7 @@ if LIBPNG
 bin_PROGRAMS = exploder cutter
 
 AM_CXXFLAGS = @SDL_CFLAGS@ @PNG_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -I../ \
-	      -DLOCALEDIR=\"$(LOCALEDIR)\" -I$(srcdir)/..
+	      -DLOCALEDIR=\"$(LOCALEDIR)\" -I$(srcdir)/.. -I../sdl_ttf
 
 exploder_SOURCES = exploder.cpp \
 		   exploder_utils.cpp \
