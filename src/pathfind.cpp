@@ -321,7 +321,7 @@ double shortest_path_calculator::cost(const gamemap::location& loc,
 	}
 
 	const double base_cost(
-	     unit_.type().movement_type().movement_cost(map_,map_[loc.x][loc.y]));
+	     unit_.movement_cost(map_,map_[loc.x][loc.y]));
 
 	//supposing we had 2 movement left, and wanted to move onto a hex which
 	//takes 3 movement, it's going to cost us 5 movement in total, since we

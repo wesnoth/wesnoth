@@ -469,7 +469,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			std::map<gamemap::location,paths::route>::iterator rt =
 			                             paths_list.routes.find(dst);
 			if(rt == paths_list.routes.end()) {
-				std::cerr << "src cannot get to dst: "
+				for(rt = paths_list.routes.begin(); rt != paths_list.routes.end(); ++rt) {
+					std::cerr << "can get to: " << (rt->first.x+1) << "," << (rt->first.y+1) << "\n";
+				}
+
+				std::cerr << "src cannot get to dst: " << current_unit.movement_left() << " "
 				          << paths_list.routes.size() << " " << (src.x+1)
 				          << "," << (src.y+1) << "-" << (dst.x+1) << ","
 				          << (dst.y+1) << "\n";

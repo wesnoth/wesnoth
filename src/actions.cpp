@@ -452,6 +452,8 @@ void attack(display& gui, const gamemap& map,
 	if(defenderxp) {
 		d->second.get_experience(defenderxp);
 	}
+
+	gui.invalidate_unit();
 }
 
 int tower_owner(const gamemap::location& loc, std::vector<team>& teams)
@@ -820,7 +822,7 @@ size_t move_unit(display* disp, const gamemap& map,
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 			
-		const int mv = u.type().movement_type().movement_cost(map,terrain);
+		const int mv = u.movement_cost(map,terrain);
 		if(mv > moves_left || enemy_unit != units.end() &&
 		   teams[team_num].is_enemy(enemy_unit->second.side())) {
 			break;
