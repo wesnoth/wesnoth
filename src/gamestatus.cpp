@@ -381,6 +381,7 @@ void load_game(const game_data& data, const std::string& name, game_state& state
 void save_game(const game_state& state)
 {
 	log_scope("save_game");
+
 	std::string name = state.label;
 	std::replace(name.begin(),name.end(),' ','_');
 
@@ -389,7 +390,9 @@ void save_game(const game_state& state)
 		write_game(state,cfg);
 
 		const std::string fname = get_saves_dir() + "/" + name;
+/*
 		write_file(fname,cfg.write());
+
 
 		config& summary = save_summary(state.label);
 		extract_summary_data_from_save(state,summary);
@@ -397,9 +400,10 @@ void save_game(const game_state& state)
 		summary["mod_time"] = str_cast(mod_time);
 
 		write_save_index();
+*/
 	} catch(io_exception& e) {
 		throw gamestatus::save_game_failed(e.what());
-	};
+	}
 }
 
 namespace {
@@ -450,6 +454,7 @@ void delete_save_summary(const std::string& save)
 
 void write_save_index()
 {
+	log_scope("write_save_index()");
 	try {
 		write_file(get_save_index_file(),save_index().write());
 	} catch(io_exception& e) {
