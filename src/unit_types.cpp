@@ -298,7 +298,10 @@ int unit_movement_type::damage_against(const attack_type& attack) const
 
 	const std::string& val = (*resistance)[attack.type()];
 	const double resist = atof(val.c_str());
-	return static_cast<int>(resist * static_cast<double>(attack.damage()));
+	const int res = static_cast<int>(resist * static_cast<double>(attack.damage()));
+	std::cerr << "damage_against: " << resist << "*"
+	          << attack.damage() << "=" << res << "\n";
+	return res;
 }
 
 const string_map& unit_movement_type::damage_table() const
