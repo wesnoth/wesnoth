@@ -278,15 +278,19 @@ namespace {
 int scroll_speed()
 {
 	static const int default_value = 100;
+	int value = 0;
 	string_map::const_iterator i = prefs.values.find("scroll");
-	if(i != prefs.values.end() && i->second.empty() == false)
-	{
-		scroll = atoi(i->second.c_str()) / 100.0;
-		return atoi(i->second.c_str());
-	} else {
-		scroll = default_value / 100.0;
-		return default_value;
+	if(i != prefs.values.end() && i->second.empty() == false) {
+		value = atoi(i->second.c_str());
 	}
+
+	if(value < 1 || value > 100) {
+		value = default_value;
+	}
+
+	scroll = value/100.0;
+
+	return value;
 }
 
 void set_scroll_speed(int new_speed)
