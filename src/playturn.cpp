@@ -190,6 +190,12 @@ void turn_info::turn_slice()
 	
 	if(use_left_right && key_[SDLK_RIGHT] || mousex > gui_.x()-scroll_threshold)
 		gui_.scroll(preferences::scroll_speed(),0);
+
+	if(!browse_ && current_team().objectives_changed()) {
+		dialogs::show_objectives(gui_, level_, current_team().objectives());
+		current_team().reset_objectives_changed();
+	}
+
 }
 
 bool turn_info::turn_over() const { return end_turn_; }
@@ -1170,7 +1176,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 	static const std::string style = "menu2";
 	const int res = gui::show_dialog(gui_,NULL,"","",
 			gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,NULL,xloc,yloc,&style);
-	if(res < 0 || res >= items.size())
+	if(res < 0 || size_t(res) >= items.size())
 		return;
 
 	const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
@@ -2064,7 +2070,7 @@ void turn_info::create_unit()
 		                          gui::OK_CANCEL,&options,&preview_panes);
 	}
 
-	if(choice >= 0 && choice < unit_choices.size()) {
+	if(choice >= 0 && size_t(choice) < unit_choices.size()) {
 		units_.erase(last_hex_);
 		units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit_choices[choice]));
 		gui_.invalidate(last_hex_);
@@ -2096,7 +2102,8 @@ void turn_info::preferences()
 
 void turn_info::objectives()
 {
-	dialogs::show_objectives(gui_,level_);
+	dialogs::show_objectives(gui_, level_, current_team().objectives());
+	current_team().reset_objectives_changed();
 }
 
 void turn_info::unit_list()

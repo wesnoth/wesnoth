@@ -86,6 +86,8 @@ team::team_info::team_info(const config& cfg)
 	flag = cfg["flag"];
 
 	description = cfg["description"];
+	objectives = cfg["objectives"];
+	objectives_changed = (cfg["objectives_changed"] == "yes");
 
 	const std::string& village_income = cfg["village_gold"];
 	if(village_income.empty())
@@ -209,6 +211,8 @@ void team::team_info::write(config& cfg) const
 	cfg["save_id"] = save_id;
 	cfg["flag"] = flag;
 	cfg["description"] = description;
+	cfg["objectives"] = objectives;
+	cfg["objectives_changed"] = objectives_changed ? "yes" : "no";
 
 	char buf[50];
 	sprintf(buf,"%d",income_per_village);
@@ -520,6 +524,27 @@ void team::change_team(const std::string& name)
 const std::string& team::save_id() const
 {
 	return info_.save_id;
+}
+
+void team::set_objectives(const std::string& new_objectives)
+{
+	info_.objectives = new_objectives;
+	info_.objectives_changed = true;
+}
+
+void team::reset_objectives_changed() 
+{
+	info_.objectives_changed = false;
+}
+
+const std::string& team::objectives() const
+{
+	return info_.objectives;
+}
+
+bool team::objectives_changed() const
+{
+	return info_.objectives_changed;
 }
 
 const std::string& team::flag() const

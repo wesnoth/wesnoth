@@ -28,6 +28,7 @@
 #include "util.hpp"
 #include "variable.hpp"
 #include "wassert.hpp"
+#include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cstdlib>
@@ -458,7 +459,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "move_unit_fake") {
 		const std::string& type = cfg["type"];
 		const std::string& side = cfg["side"];
-		int side_num = atoi(side.c_str())-1;
+		size_t side_num = atoi(side.c_str())-1;
 		if(side_num < 0 || side_num >= teams->size()) side_num = 0;
 
 		const unit_race::GENDER gender = cfg["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE;
@@ -494,6 +495,109 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			}
 		}
 	}
+ 
+	//provide a means of specifying win/loss conditions:
+	// [event]
+	// name=prestart
+	// [objectives]
+	//   side=1
+	//   summary="Escape the forest alive"
+	//   victory_string="Victory:"
+	//   defeat_string="Defeat:"
+	//   [objective]
+	//     condition=win
+	//     description="Defeat all enemies"
+	//   [/objective]
+	//   [objective]
+	//     description="Death of Konrad"
+	//     condition=loss
+	//   [/objective]
+	// [/objectives]
+	// [/event]
+	//instead of the current (but still supported):
+	// objectives= _ "
+	// Victory:
+	// @Move Konrad to the signpost in the north-west
+	// Defeat:
+	// #Death of Konrad
+	// #Death of Delfador
+	// #Turns run out"
+	//
+	// If side is set to 0, the new objectives are added to each player.
+	//
+	// The new objectives will be automatically displayed, but only to the
+	// player whose objectives did change, and only when it's this player's
+	// turn.
+	else if(cmd == "objectives") {
+		const std::string win_str = "@";
+		const std::string lose_str = "#";
+		const std::string none_str = _("None specified");
+
+		const std::string& summary = cfg["summary"];
+		const size_t side = lexical_cast_default<size_t>(cfg["side"], 0);
+
+		if(side != 0 && (side - 1) >= teams->size()) {
+			ERR_NG << "Invalid side: " << cfg["side"] << " in objectives event\n";
+			return rval;
+		}
+
+		std::string win_string = cfg["victory_string"];
+		if(win_string.empty()) 
+			win_string = _("Victory:");
+		std::string lose_string = cfg["defeat_string"];
+		if(lose_string.empty())
+			lose_string = _("Defeat:");
+
+		std::string win_objectives;
+		std::string lose_objectives;
+
+		const config::child_list& objectives = cfg.get_children("objective");
+		for(config::child_list::const_iterator obj_it = objectives.begin(); 
+				obj_it != objectives.end(); ++obj_it) {
+
+			const std::string& description = (**obj_it)["description"];
+			const std::string& condition = (**obj_it)["condition"];
+			LOG_NG << condition << " objective: " << description << "\n";
+			if(condition == "win") {
+				win_objectives.append("\n");
+				win_objectives.append(win_str);
+				win_objectives.append(description);
+			} else if(condition == "loss") {
+				lose_objectives.append("\n");
+				lose_objectives.append(lose_str);
+				lose_objectives.append(description);
+			} else {
+				ERR_NG << "unknown condition '" << condition << "', ignoring\n";
+			}
+		}
+
+		std::stringstream objs;
+		if(!summary.empty())
+			objs << "*" << summary << "\n";
+		objs << win_string << "\n";
+		if(win_objectives.empty()) {
+			objs << none_str << "\n";
+		} else {
+			objs << win_objectives << "\n";
+		}
+		objs << lose_string << "\n";
+		if(lose_objectives.empty()) {
+			objs << none_str << "\n";
+		} else {
+			objs << lose_objectives << "\n";
+		}
+
+		if(side == 0) {
+			for(std::vector<team>::iterator itor = teams->begin();
+					itor != teams->end(); ++itor) {
+
+				itor->set_objectives(objs.str());
+			}
+		} else {
+			(*teams)[side - 1].set_objectives(objs.str());
+		}
+	}
+
 
 	//setting a variable
 	else if(cmd == "set_variable") {
@@ -544,11 +648,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		if(random.empty() == false) {
 			std::string random_value, word;
 			std::vector<std::string> words;
-			std::vector<std::pair<int,int> > ranges;
+			std::vector<std::pair<size_t,size_t> > ranges;
 			int num_choices = 0;
-			int pos = 0, pos2 = -1, tmp; 
+			std::string::size_type pos = 0, pos2 = std::string::npos, tmp; 
 			std::stringstream ss(std::stringstream::in|std::stringstream::out);
-			while (pos2 != (int)random.length()) {
+			while (pos2 != random.length()) {
 				pos = pos2+1;
 				pos2 = random.find(",", pos);
 
@@ -569,9 +673,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 					// treat as a numerical range
 					const std::string first = word.substr(0, tmp);
 					const std::string second = word.substr(tmp+2,
-														random.length());
+							random.length());
 
-					int low, high;
+					size_t low, high;
 					ss << first + " " + second;
 					ss >> low;
 					ss >> high;
@@ -587,7 +691,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				}
 			}
 
-			int choice = get_random() % num_choices;
+			size_t choice = get_random() % num_choices;
 			tmp = 0;	
 			for(size_t i = 0; i < ranges.size(); i++) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;

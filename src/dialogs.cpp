@@ -163,14 +163,11 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	return true;
 }
 
-void show_objectives(display& disp, const config& level_info)
+void show_objectives(display& disp, const config& level, const std::string& objectives)
 {
 	static const std::string no_objectives(_("No objectives available"));
-	const std::string& name = level_info["name"];
-	const std::string& lang_objectives = level_info["objectives"];
+	const std::string& name = level["name"];
 
-	const std::string& objectives = lang_objectives.empty() ?
-	        level_info["objectives"] : lang_objectives;
 	gui::show_dialog(disp, NULL, "", font::LARGE_TEXT + name + "\n" +
 	         (objectives.empty() ? no_objectives : objectives), gui::OK_ONLY);
 
@@ -278,7 +275,7 @@ private:
 
 void save_preview_pane::draw_contents()
 {
-	if(index_ < 0 || index_ >= int(summaries_->size()) || info_->size() != summaries_->size()) {
+	if(index_ < 0 || size_t(index_) >= summaries_->size() || info_->size() != summaries_->size()) {
 		return;
 	}
 
@@ -760,7 +757,7 @@ void campaign_preview_pane::set_selection(int index)
 
 void campaign_preview_pane::draw_contents()
 {
-	if(index_ < 0 || index_ >= descriptions_->size()) {
+	if(index_ < 0 || size_t(index_) >= descriptions_->size()) {
 		return;
 	}
 

@@ -75,6 +75,13 @@ public:
 
 		std::string description;
 
+		std::string objectives; /** < Team's objectives for the current level. */
+
+		/** Set to true when the objectives for this time changes.
+		 * Reset to false when the objectives for this team have been
+		 * displayed to the user. */
+		bool objectives_changed;
+
 		enum CONTROLLER { HUMAN, AI, NETWORK, EMPTY };
 		CONTROLLER controller;
 		bool persistent;
@@ -117,6 +124,12 @@ public:
 	const std::vector<std::string>& recruitment_pattern() const;
 	const std::string& name() const;
 	const std::string& save_id() const;
+
+	void set_objectives(const std::string& new_objectives);
+	void reset_objectives_changed();
+
+	const std::string& objectives() const;
+	bool objectives_changed() const;
 
 	bool is_enemy(int n) const {
 		const size_t index = size_t(n-1);

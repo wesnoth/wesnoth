@@ -648,7 +648,7 @@ bool game_controller::play_multiplayer_mode()
    	std::map<int,std::string> side_types, side_controllers, side_algorithms;
    	std::map<int,string_map> side_parameters;
 
-   	int sides_counted = 0;
+   	size_t sides_counted = 0;
 
    	for(++arg_; arg_ < argc_; ++arg_) {
    		const std::string val(argv_[arg_]);
@@ -667,7 +667,7 @@ bool game_controller::play_multiplayer_mode()
    			const std::string name_head = name.substr(0,name.size()-1);
    			const char name_tail = name[name.size()-1];
    			const bool last_digit = isdigit(name_tail) ? true:false;
-   			const int side = name_tail - '0';
+   			const size_t side = name_tail - '0';
 
    			if(last_digit && side > sides_counted) {
    				std::cerr << "counted sides: " << side << "\n";

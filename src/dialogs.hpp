@@ -36,7 +36,7 @@ void advance_unit(const game_data& info, const gamemap& map,unit_map& units, gam
 
 bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice);
 
-void show_objectives(display& disp, const config& level_info);
+void show_objectives(display& disp, const config& level, const std::string& objectives);
 
 // Ask user if I should really save the game and what name I should use
 // returns 0 iff user wants to save the game
@@ -73,6 +73,8 @@ public:
 	void set_selection(int index);
 
 private:
+	display& disp_;
+
 	void draw_contents();
 	void process_event();
 
@@ -83,7 +85,6 @@ private:
 	int index_;
 	bool left_;
 	bool weapons_;
-	display& disp_;
 };
 
 void show_unit_description(display &disp, const unit& u);

@@ -248,6 +248,11 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 
 		teams.push_back(team(**ui,ngold));
 
+		//if this team has no objectives, set its objectives to the
+		//level-global "objectives"
+		if(teams.back().objectives().empty())
+			teams.back().set_objectives((*level)["objectives"]);
+
 		//if this side tag describes the leader of the side
 		if((**ui)["no_leader"] != "yes" && (**ui)["controller"] != "null") {
 			unit new_unit(gameinfo, **ui);
@@ -588,12 +593,6 @@ redo_turn:
 
 				if(!replaying && team_it->is_human()) {
 					LOG_NG << "is human...\n";
-
-					if(first_time && team_it == teams.begin()) {
-						if(lvl["objectives"].empty() == false) {
-							dialogs::show_objectives(gui,*level);
-						}
-					}
 
 					try {
 						play_turn(gameinfo,state_of_game,status,game_config,
