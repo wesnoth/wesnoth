@@ -6,9 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-03 09:21+0200\n"
-"PO-Revision-Date: 2004-09-05 18:22+0100\n"
+"PO-Revision-Date: 2004-09-06 17:55+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -16,169 +15,156 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/themes/editor.cfg:216
-#, fuzzy
 msgid "File"
-msgstr "Opptatt"
+msgstr "Fil"
 
 #: data/themes/editor.cfg:225
 msgid "Edit"
-msgstr ""
+msgstr "Endre"
 
 #: data/themes/editor.cfg:233
-#, fuzzy
 msgid "Draw"
-msgstr "Morgengry"
+msgstr "Tegn"
 
 #: data/themes/editor.cfg:242
 msgid "Flood"
-msgstr ""
+msgstr "Fyll"
 
 #: data/themes/editor.cfg:251
-#, fuzzy
 msgid "Start P"
-msgstr "Start Spill!"
+msgstr "Startplass"
 
 #: data/themes/editor.cfg:260
 msgid "Paste"
 msgstr "Lim inn"
 
-#: src/editor/editor.cpp:310 src/editor/editor.cpp:387
-#, fuzzy
+#: src/editor/editor.cpp:310
+#: src/editor/editor.cpp:387
 msgid "Choose a Map to Load"
-msgstr "Velg spill for innlasting"
+msgstr "Velg kart for innlasting"
 
 #: src/editor/editor.cpp:314
-#, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Lagret spill eksisterer allerede. Vil du overskrive det?"
+msgstr "Lagret kart eksisterer allerede. Vil du overskrive det?"
 
 #: src/editor/editor.cpp:335
-#, fuzzy
 msgid "Which Player?"
-msgstr "Menneske"
+msgstr "Hvilken spiller?"
 
 #: src/editor/editor.cpp:336
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Hvilken spiller skal starte her?"
 
-#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
+#: src/editor/editor.cpp:404
+#: src/editor/editor.cpp:483
 msgid "The file does not contain a valid map."
-msgstr ""
+msgstr "Denne filen inneholder ikke et gyldig kart."
 
 #: src/editor/editor.cpp:541
 msgid "'$filename' does not exist or can not be read as a file."
-msgstr ""
+msgstr "'$filename' eksisterer ikke, eller kan ikke leses som en fil."
 
 #: src/editor/editor.cpp:553
-#, fuzzy
 msgid "Load failed: "
-msgstr "Last inn spill"
+msgstr "Innlasting feilet: "
 
 #: src/editor/editor.cpp:748
 msgid "You must have a hex selected on the board."
-msgstr ""
+msgstr "Du må ha valgt en rute på brettet."
 
 #: src/editor/editor.cpp:1000
 msgid "Quit Editor"
-msgstr ""
+msgstr "Lukk kartbehandler"
 
 #: src/editor/editor.cpp:1005
-#, fuzzy
 msgid "Do you want to save the map before quitting?"
-msgstr "Vil du lagre dette spillet?"
+msgstr "Vil du lagre dette kartet før du lukker?"
 
 #: src/editor/editor.cpp:1025
 msgid "Map saved."
-msgstr ""
+msgstr "Kart lagret."
 
 #: src/editor/editor.cpp:1032
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Klarte ikke å lagre katet: $msg"
 
 #: src/editor/editor.cpp:1099
-#, fuzzy
 msgid "Player"
-msgstr "Spillere"
+msgstr "Spiller"
 
 #: src/editor/editor_dialogs.cpp:45
 msgid "Your modifications to the map will be lost.  Continue?"
-msgstr ""
+msgstr "Forandringene dine på kartet vil bli tapt.  Avslutt?"
 
-#: src/editor/editor_dialogs.cpp:72 src/editor/editor_dialogs.cpp:191
-#, fuzzy
+#: src/editor/editor_dialogs.cpp:72
+#: src/editor/editor_dialogs.cpp:191
 msgid "Create New Map"
-msgstr "Nytt kart"
+msgstr "Lag nytt kart"
 
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:385
-#, fuzzy
+#: src/editor/editor_dialogs.cpp:74
+#: src/editor/editor_dialogs.cpp:385
 msgid "Width:"
 msgstr "Bredde"
 
-#: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:386
-#, fuzzy
+#: src/editor/editor_dialogs.cpp:75
+#: src/editor/editor_dialogs.cpp:386
 msgid "Height:"
 msgstr "Høyde"
 
 #: src/editor/editor_dialogs.cpp:91
-#, fuzzy
 msgid "Generate New Map"
-msgstr "Nytt kart"
+msgstr "Generer nytt kart"
 
 #: src/editor/editor_dialogs.cpp:92
-#, fuzzy
 msgid "Generate Random Map"
 msgstr "Tilfeldig kart"
 
 #: src/editor/editor_dialogs.cpp:93
 msgid "Random Generator Settings"
-msgstr ""
+msgstr "Innstillinger for kartgenerator"
 
-#: src/editor/editor_dialogs.cpp:94 src/editor/editor_dialogs.cpp:402
+#: src/editor/editor_dialogs.cpp:94
+#: src/editor/editor_dialogs.cpp:402
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: src/editor/editor_dialogs.cpp:177
 msgid "Map creation failed."
-msgstr ""
+msgstr "Kartlaging feilet."
 
 #: src/editor/editor_dialogs.cpp:243
-#, fuzzy
 msgid "Close Window"
 msgstr "Lukk vindu"
 
-#: src/editor/editor_dialogs.cpp:249 src/editor/editor_dialogs.cpp:315
-#, fuzzy
+#: src/editor/editor_dialogs.cpp:249
+#: src/editor/editor_dialogs.cpp:315
 msgid "Preferences"
 msgstr "Preferanser"
 
 #: src/editor/editor_dialogs.cpp:251
-#, fuzzy
 msgid "Scroll Speed:"
 msgstr "Panoreringsfart:"
 
 #: src/editor/editor_dialogs.cpp:277
-#, fuzzy
 msgid "Full Screen"
 msgstr "Fullskjerm"
 
 #: src/editor/editor_dialogs.cpp:284
-#, fuzzy
 msgid "Show Grid"
 msgstr "Vis rutenett"
 
 #: src/editor/editor_dialogs.cpp:291
-#, fuzzy
 msgid "Video Mode"
 msgstr "Video-modus"
 
 #: src/editor/editor_dialogs.cpp:294
-#, fuzzy
 msgid "Hotkeys"
 msgstr "Hurtigtaster"
 
-#: src/editor/editor_dialogs.cpp:383 src/editor/editor_dialogs.cpp:441
+#: src/editor/editor_dialogs.cpp:383
+#: src/editor/editor_dialogs.cpp:441
 msgid "Resize Map"
-msgstr ""
+msgstr "Endre størrelse"
 
 #: src/editor/editor_dialogs.cpp:403
 msgid "Ok"
@@ -186,20 +172,21 @@ msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:484
 msgid "X-Axis"
-msgstr ""
+msgstr "X-Akse"
 
 #: src/editor/editor_dialogs.cpp:485
 msgid "Y-Axis"
-msgstr ""
+msgstr "Y-Akse"
 
 #: src/editor/editor_dialogs.cpp:486
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr ""
+msgstr "Speilvend (dette kan komme til å endre kartets dimensjoner):"
 
 #: src/editor/editor_palettes.cpp:313
 msgid "FG"
-msgstr ""
+msgstr "FG"
 
 #: src/editor/editor_palettes.cpp:315
 msgid "BG"
-msgstr ""
+msgstr "BG"
+
