@@ -278,12 +278,10 @@ battle_stats evaluate_battle_stats(
 	if(res.chance_to_hit_defender < 0.6 && attack.special() == marksman_string)
 		res.chance_to_hit_defender = 0.6;
 
-	res.damage_defender_takes = int(
+	res.damage_defender_takes = int(util::round(
 			double(d->second.damage_against(attack))
-		 * combat_modifier(state,units,a->first,a->second.type().alignment()))
+		 * combat_modifier(state,units,a->first,a->second.type().alignment())))
 			 * (charge ? 2 : 1) * (backstab ? 2 : 1);
-
-	std::cerr << "damage defender takes: " << double(d->second.damage_against(attack)) << "*" <<combat_modifier(state,units,a->first,a->second.type().alignment()) << "*" << (charge ? 2:1) << " = " << res.damage_defender_takes << "\n";
 
 	if(under_leadership(units,attacker))
 		res.damage_defender_takes += res.damage_defender_takes/8 + 1;
