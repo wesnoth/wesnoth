@@ -81,9 +81,9 @@ enum server_type {
 	SIMPLE_SERVER
 };
 
-server_type open_connection(display& disp, const std::string& host)
+server_type open_connection(display& disp, const std::string& original_host)
 {
-	std::string h = host;
+	std::string h = original_host;
 
 	if(h.empty()) {
 		h = preferences::network_host();
@@ -99,68 +99,114 @@ server_type open_connection(display& disp, const std::string& host)
 	network::connection sock;
 
 	const int pos = h.find_first_of(":");
+	std::string host;
+	unsigned int port;
  
  	if(pos == -1) {
- 		sock = network::connect(h);
+		host = h;
+		port = 15000;
  	} else {
- 		sock = network::connect(h.substr(0,pos),
-				lexical_cast_default<int>(h.substr(pos+1), 15000));
+		host = h.substr(0, pos);
+		port = lexical_cast_default<unsigned int>(h.substr(pos + 1), 15000);
  	}
 
-	if (!sock) {
-		return ABORT_SERVER;
-	}
+	// shown_hosts is used to prevent the client being locked in a redirect
+	// loop.
+	typedef std::pair<std::string, int> hostpair;
+	std::set<hostpair> shown_hosts;
+	shown_hosts.insert(hostpair(host, port));
 
-	preferences::set_network_host(h);
- 
+	config::child_list redirects;
 	config data;
-	network::connection data_res = gui::network_data_dialog(disp,_("Connecting to remote host..."),data);
-	mp::check_response(data_res, data);
+	sock = network::connect(host, port);
 
-	const std::string& version = data["version"];
-	if(version.empty() == false && version != game_config::version) {
-		throw network::error("The server requires version '" + version
-		      + "' while you are using version '" + game_config::version + "'");
-	}
+	do {
 
-	//if we got a direction to login
-	if(data.child("mustlogin")) {
+		if (!sock) {
+			return ABORT_SERVER;
+		}
 
-		bool first_time = true;
-		config* error = NULL;
+		data.clear();
+		network::connection data_res = gui::network_data_dialog(
+				disp,_("Connecting to remote host..."),data);
+		mp::check_response(data_res, data);
 
-		do {
-			if(error != NULL) {
-				gui::show_dialog(disp,NULL,"",(*error)["message"],gui::OK_ONLY);
+		// Backwards-compatibility "version" attribute
+		const std::string& version = data["version"];
+		if(version.empty() == false && version != game_config::version) {
+			// FIXME: make this string translatable
+			throw network::error("The server requires version '" + version
+					+ "' while you are using version '" + 
+					game_config::version + "'");
+		}
+		
+		// Check for "redirect" messages
+		if(data.child("redirect")) {
+			config* redirect = data.child("redirect");
+
+			host = (*redirect)["host"];
+			port = lexical_cast_default<unsigned int>((*redirect)["port"], 15000);
+
+			if(shown_hosts.find(hostpair(host,port)) != shown_hosts.end()) {
+				// FIXME: make this string translatable
+				throw network::error("Server-side redirect loop");
 			}
+			shown_hosts.insert(hostpair(host, port));
 
-			std::string login = preferences::login();
+			if(network::nconnections() > 0)
+				network::disconnect();
+			sock = network::connect(host, port);
+			continue;
+		}
 
-			if(!first_time) {	
-				const int res = gui::show_dialog(disp, NULL, "",
-						_("You must log in to this server"), gui::OK_CANCEL,
-						NULL, NULL, _("Login: "), &login);
-				if(res != 0 || login.empty()) {
-					return ABORT_SERVER;
+		if(data.child("version")) {
+			config cfg;
+			config res;
+			cfg["version"] = game_config::version;
+			res.add_child("version", cfg);
+			network::send_data(res);
+		}
+
+		//if we got a direction to login
+		if(data.child("mustlogin")) {
+			bool first_time = true;
+			config* error = NULL;
+
+			do {
+				if(error != NULL) {
+					gui::show_dialog(disp,NULL,"",(*error)["message"],gui::OK_ONLY);
 				}
 
-				preferences::set_login(login);
-			}
+				std::string login = preferences::login();
 
-			first_time = false;
+				if(!first_time) {	
+					const int res = gui::show_dialog(disp, NULL, "",
+							_("You must log in to this server"), gui::OK_CANCEL,
+							NULL, NULL, _("Login: "), &login);
+					if(res != 0 || login.empty()) {
+						return ABORT_SERVER;
+					}
 
-			config response;
-			response.add_child("login")["username"] = login;
-			network::send_data(response);
-	
-			data_res = network::receive_data(data, 0, 3000);
-			if(!data_res) {
-				throw network::error(_("Connection timed out"));
-			}
+					preferences::set_login(login);
+				}
 
-			error = data.child("error");
-		} while(error != NULL);
-	}
+				first_time = false;
+
+				config response;
+				response.add_child("login")["username"] = login;
+				network::send_data(response);
+
+				network::connection data_res = network::receive_data(data, 0, 3000);
+				if(!data_res) {
+					throw network::error(_("Connection timed out"));
+				}
+
+				error = data.child("error");
+			} while(error != NULL);
+		}
+	} while(!(data.child("join_lobby") || data.child("join_game")));
+
+	preferences::set_network_host(h);
 
 	if (data.child("join_lobby")) {
 		return WESNOTHD_SERVER;
