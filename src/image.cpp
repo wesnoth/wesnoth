@@ -207,7 +207,7 @@ surface locator::load_image_file() const
 surface locator::load_image_sub_file() const
 {
 	const surface mother_surface(get_image(val_.filename_, UNSCALED, NO_ADJUST_COLOUR));
-	const surface mask(get_image(game_config::terrain_mask_image, UNSCALED, NO_ADJUST_COLOUR));
+	const surface mask(get_image(game_config::terrain_mask_image, UNMASKED, NO_ADJUST_COLOUR));
 	
 	if(mother_surface == NULL)
 		return surface(NULL);
@@ -398,7 +398,16 @@ surface get_unmasked(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
 	surface image(get_image(i_locator, UNSCALED));
 
-	surface res(scale_surface(image, zoom, zoom));
+	// Re-cut scaled tiles according to a mask. Check if the surface we try
+	// to get is not the mask itself, to avoid an infinite loop.
+	surface res;
+	if(i_locator != locator(game_config::terrain_mask_image)) {
+		const surface hex(get_image(game_config::terrain_mask_image,
+					UNMASKED, NO_ADJUST_COLOUR));
+		res = mask_surface(scale_surface(image, zoom, zoom), hex);
+	} else {
+		res = scale_surface(image, zoom, zoom);
+	}
 
 	return res;
 }
