@@ -171,6 +171,16 @@ struct scoped_array : public scoped_resource<T*,delete_array>
 	explicit scoped_array(T* p) : scoped_resource<T*,delete_array>(p) {}
 };
 
+/**
+ * This class specializes the scoped_resource to implement scoped FILEs. Not
+ * sure this is the best place to place such an utility, though.
+ */
+struct close_FILE
+{
+	void operator()(FILE* f) const { if(f != NULL) { fclose(f); } }
+};
+typedef scoped_resource<FILE*,close_FILE> scoped_FILE;
+
 }
 
 #endif

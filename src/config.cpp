@@ -64,10 +64,12 @@ line_source get_line_source(const std::vector<line_source>& line_src, int line)
 	return res;
 }
 
+#if 0
 struct close_FILE
 {
 	void operator()(FILE* f) const { if(f != NULL) { fclose(f); } }
 };
+#endif
 
 void read_file_internal(const std::string& fname, std::string& res)
 {
@@ -79,7 +81,9 @@ void read_file_internal(const std::string& fname, std::string& res)
 	std::vector<char> v;
 	v.reserve(size);
 
-	const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"rb"));
+	//const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"rb"));
+	const util::scoped_FILE file(fopen(fname.c_str(),"rb"));
+
 	if(file == NULL) {
 		return;
 	}
@@ -150,7 +154,8 @@ std::string read_file(const std::string& fname)
 //throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data)
 {
-	const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"wb"));
+	//const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"wb"));
+	const util::scoped_FILE file(fopen(fname.c_str(),"wb"));
 	if(file.get() == NULL) {
 		throw io_exception("Could not open file for writing: '" + fname + "'");
 	}

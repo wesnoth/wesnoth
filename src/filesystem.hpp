@@ -60,6 +60,10 @@ time_t data_tree_modified_time();
 //returns the size of a file, or -1 if the file doesn't exist
 int file_size(const std::string& fname);
 
+//returns the base filename of a file, with directory name stripped. Equivalent
+//to a portable basename() function
+std::string file_name(const std::string& file);
+
 ///the paths manager is responsible for recording the various paths that
 ///binary files may be located at. It should be passed a config object
 ///which holds binary path information. This is in the format

@@ -347,6 +347,24 @@ int file_size(const std::string& fname)
 	return buf.st_size;
 }
 
+std::string file_name(const std::string& file)
+{
+#ifdef _WIN32
+	static const std::string dir_separators = "\\/:";
+#else
+	static const std::string dir_separators = "/";
+#endif
+
+	std::string::size_type pos = file.find_last_of(dir_separators);
+
+	if(pos == std::string::npos)
+		return file;
+	if(pos == file.size())
+		return "";
+
+	return file.substr(pos+1);
+}
+
 namespace {
 
 std::set<std::string> binary_paths;
@@ -423,3 +441,4 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 
 	return "";
 }
+

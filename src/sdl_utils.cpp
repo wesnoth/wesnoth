@@ -269,7 +269,16 @@ SDL_Surface* greyscale_image(SDL_Surface* surface)
 			Uint8 red, green, blue, alpha;
 			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
 
-			const Uint8 avg = (red+green+blue)/3;
+			//const Uint8 avg = (red+green+blue)/3;
+
+			//use the correct formula for RGB to grayscale
+			//conversion. ok, this is no big deal :)
+			//the correct formula being:
+			//gray=0.299red+0.587green+0.114blue
+			const Uint8 avg = (Uint8)((77*(Uint16)red + 
+						   150*(Uint16)green +
+						   29*(Uint16)blue) / 256);
+
 
 			*beg = SDL_MapRGBA(surf->format,avg,avg,avg,alpha);
 
@@ -388,7 +397,7 @@ SDL_Surface* mask_surface(SDL_Surface* surface, SDL_Surface* mask)
 		return NULL;
 	}
 
-	scoped_sdl_surface surf(make_neutral_surface(surface));
+	SDL_Surface* surf(make_neutral_surface(surface));
 	scoped_sdl_surface nmask(make_neutral_surface(mask));
 	
 	if(surf == NULL || nmask == NULL) {
@@ -421,7 +430,8 @@ SDL_Surface* mask_surface(SDL_Surface* surface, SDL_Surface* mask)
 		}
 	}
 
-	return clone_surface(surf);
+	return surf;
+	//return clone_surface(surf);
 }
 
 // Cuts a rectangle from a surface.
