@@ -54,7 +54,7 @@ namespace {
 	const std::string closed_section_img = "help/closed_section.png";
 	const std::string open_section_img = "help/open_section.png";
 	// The topic to open by default when opening the help dialog.
-	const std::string default_show_topic = "introduction"; 
+	const std::string default_show_topic = "introduction_topic"; 
 	
 	/// Return true if the id is valid for user defined topics and
 	/// sections. Some IDs are special, such as toplevel and may not be
@@ -484,12 +484,19 @@ std::vector<topic> generate_unit_topics() {
 				ss << cap(translate_string("advances_to")) << ": ";
 				for (std::vector<std::string>::const_iterator advance_it = next_units.begin();
 					 advance_it != next_units.end(); advance_it++) {
-					std::string ref_id = std::string("unit_") + *advance_it;
+					std::string unit_id = *advance_it;
 					// Remove the spaces, which will create the ID to
 					// reference to. This relies a bit on that we know
 					// that unit_type::id() does this.
-					ref_id.erase(std::remove(ref_id.begin(), ref_id.end(), ' '), ref_id.end());
-					ss << "<ref>dst='" << ref_id << "' text='" << *advance_it << "'</ref>";
+					unit_id.erase(std::remove(unit_id.begin(), unit_id.end(), ' '),
+								  unit_id.end());
+					std::string ref_id = std::string("unit_") + unit_id;
+					std::string lang_unit = string_table[unit_id];
+					if (lang_unit == "") {
+						lang_unit = *advance_it;
+					}
+					ss << "<ref>dst='" << ref_id << "' text='" << lang_unit
+					   << "'</ref>";
 					if (advance_it + 1 != next_units.end()) {
 						ss << ", ";
 					}
