@@ -1076,7 +1076,13 @@ int play_game(int argc, char** argv)
 		//make a new game config item based on the difficulty level
 		std::vector<line_source> line_src;
 		config game_config;
-		read_game_cfg(defines_map,line_src,game_config,use_caching);
+		
+		try {
+			read_game_cfg(defines_map,line_src,game_config,use_caching);
+		} catch(config::error& e) {
+			gui::show_dialog(disp,NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)", gui::MESSAGE);
+			throw e;
+		}
 
 		const binary_paths_manager bin_paths_manager(game_config);
 
