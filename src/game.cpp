@@ -10,6 +10,7 @@
 
    See the COPYING file for more details.
 */
+
 #include "SDL.h"
 
 #include "actions.hpp"
