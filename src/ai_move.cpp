@@ -406,6 +406,10 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	//choose the best target for that unit
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
+		if(avoided_locations().count(tg->loc) > 0) {
+			continue;
+		}
+
 		user_interact();
 
 		assert(map_.on_board(tg->loc));
@@ -452,6 +456,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			best_route = cur_route;
 		}
 	}
+
+	std::cerr << "chose target...\n";
 
 
 	if(best_target == targets.end()) {

@@ -376,7 +376,7 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 	}
 }
 
-void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement)
+void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement, const std::set<gamemap::location>* remove_destinations)
 {
 	for(std::map<gamemap::location,unit>::iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
 		//if we are looking for the movement of enemies, then this unit must be an enemy unit
@@ -388,14 +388,13 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 			continue;
 		}
 
-		//discount our own leader, and our units that have been turned to stone
-		if(/*!enemy && un_it->second.can_recruit() ||*/ un_it->second.stone()) {
+		//discount incapacitated units
+		if(un_it->second.incapacitated()) {
 			continue;
 		}
 
 		//we can't see where invisible enemy units might move
-		if(enemy &&
-		   un_it->second.invisible(info_.map.underlying_terrain(info_.map.get_terrain(un_it->first)), 
+		if(enemy && un_it->second.invisible(info_.map.underlying_terrain(info_.map.get_terrain(un_it->first)), 
 		   info_.state.get_time_of_day().lawful_bonus,un_it->first,info_.units,info_.teams)) {
 			continue;
 		}
@@ -422,6 +421,10 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		    m->second.routes.begin(); rtit != m->second.routes.end(); ++rtit) {
 			const location& src = m->first;
 			const location& dst = rtit->first;
+
+			if(remove_destinations != NULL && remove_destinations->count(dst) != 0) {
+				continue;
+			}
 
 			bool friend_owns = false;
 
@@ -550,7 +553,7 @@ void ai::do_move()
 
 	move_map srcdst, dstsrc, enemy_srcdst, enemy_dstsrc;
 
-	calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
+	calculate_possible_moves(possible_moves,srcdst,dstsrc,false,false,&avoided_locations());
 	calculate_possible_moves(enemy_possible_moves,enemy_srcdst,enemy_dstsrc,true);
 
 	const bool passive_leader = current_team().ai_parameters()["passive_leader"] == "yes";
@@ -575,7 +578,7 @@ void ai::do_move()
 		}
 	}
 
-	move_leader_to_goals(enemy_dstsrc);
+	move_leader_to_goals(enemy_srcdst,enemy_dstsrc);
 
 	AI_DIAGNOSTIC("get villages phase");
 
@@ -981,7 +984,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 	std::map<gamemap::location,paths> dummy_possible_moves;
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;
-	calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
+	calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true,&avoided_locations());
 
 	gamemap::location leader_adj[6];
 	if(leader != units_.end()) {
@@ -1415,7 +1418,7 @@ void ai::do_recruitment()
 	}
 }
 
-void ai::move_leader_to_goals(const move_map& enemy_dstsrc)
+void ai::move_leader_to_goals(const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
 {
 	const config* const goal = current_team().ai_parameters().child("leader_goal");
 
@@ -1446,10 +1449,10 @@ void ai::move_leader_to_goals(const move_map& enemy_dstsrc)
 
 	std::map<gamemap::location,paths> possible_moves;
 	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
-
+	
 	gamemap::location loc;
 	for(std::vector<gamemap::location>::const_iterator itor = route.steps.begin(); itor != route.steps.end(); ++itor) {
-		if(leader_paths.routes.count(*itor) == 1) {
+		if(leader_paths.routes.count(*itor) == 1 && power_projection(*itor,enemy_srcdst,enemy_dstsrc) < double(leader->second.hitpoints()/2)) {
 			loc = *itor;
 		}
 	}
@@ -1733,4 +1736,23 @@ const gamemap::location& ai::nearest_keep(const gamemap::location& loc) const
 	}
 
 	return *res;
+}
+
+const std::set<gamemap::location>& ai::avoided_locations() const
+{
+	if(avoid_.empty()) {
+		const std::string& xrange = current_team().ai_parameters()["avoid_x"];
+		const std::string& yrange = current_team().ai_parameters()["avoid_y"];
+
+		const std::vector<location>& locs = parse_location_range(xrange,yrange);
+		for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+			avoid_.insert(*i);
+		}
+
+		if(avoid_.empty()) {
+			avoid_.insert(location());
+		}
+	}
+
+	return avoid_;
 }

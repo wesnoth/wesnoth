@@ -74,6 +74,8 @@ std::string recruit_unit(const gamemap& map, int side,
        std::map<gamemap::location,unit>& units, unit& new_unit,
        gamemap::location& recruit_location, display* disp, bool need_castle, bool full_movement)
 {
+	const command_disabler disable_commands(disp);
+
 	std::cerr << "recruiting unit for side " << side << "\n";
 	typedef std::map<gamemap::location,unit> units_map;
 
@@ -123,7 +125,6 @@ std::string recruit_unit(const gamemap& map, int side,
 
 	if(disp != NULL && !disp->turbo() &&
 	   !disp->fogged(recruit_location.x,recruit_location.y)) {
-		disp->draw(true,true);
 
 		for(double alpha = 0.0; alpha <= 1.0; alpha += 0.1) {
 			events::pump();

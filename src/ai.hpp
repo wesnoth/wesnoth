@@ -119,7 +119,9 @@ protected:
 	///leader will not be included in this map.
 	///'assume_full_movement': if true, the function will operate on the assumption that all
 	///units can move their full movement allotment.
-	void calculate_possible_moves(std::map<location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false);
+	///'remove_destinations': a pointer to a set of possible destinations to omit
+	void calculate_possible_moves(std::map<location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false,
+	                              const std::set<location>* remove_destinations=NULL);
 
 	///this function is used to recruit a unit. It will recruit the unit with the given name,
 	///at the given location, or at an available location to recruit units if 'loc' is not
@@ -340,7 +342,7 @@ protected:
 
 	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
 	virtual void move_leader_after_recruit(const move_map& enemy_dstsrc);
-	virtual void move_leader_to_goals(const move_map& enemy_dstsrc);
+	virtual void move_leader_to_goals(const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 
 	virtual bool recruit_usage(const std::string& usage);
 
@@ -519,6 +521,11 @@ protected:
 	//get to in two turns, will return all possible positions the unit can
 	//move to, that will make the destination position accessible next turn
 	void access_points(const move_map& srcdst, const location& u, const location& dst, std::vector<location>& out);
+
+	//function which gets the areas of the map that this AI has been instructed to avoid
+	const std::set<location>& avoided_locations() const;
+
+	mutable std::set<location> avoid_;
 };
 
 #endif
