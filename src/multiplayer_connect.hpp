@@ -207,6 +207,10 @@ private:
 	std::vector<std::string> player_teams_;
 	std::vector<std::string> player_colours_;
 
+	// team_name list and "Team" prefix
+	std::vector<std::string> team_names_;
+	const std::string team_prefix_;
+	
 	side_list sides_;
 	connected_user_list users_;
 

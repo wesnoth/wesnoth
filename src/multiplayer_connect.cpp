@@ -79,9 +79,15 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 	id_ = ""; // Id is reset, and not imported from loading savegames
 	original_description_ = cfg_["description"];
-	faction_ = lexical_cast_default<int>(cfg_["team"], 0);
-	team_ = lexical_cast_default<int>(cfg_["team"], index_);
-	colour_ = lexical_cast_default<int>(cfg_["colour"], index_);
+	faction_ = lexical_cast_default<int>(cfg_["faction"], 0);
+	std::vector<std::string>::const_iterator itor = std::find(parent_->team_names_.begin(), parent_->team_names_.end(), cfg_["team_name"]);
+	if(itor == parent_->team_names_.end()) {
+		wassert(!parent_->team_names_.empty());
+		team_ = 0;
+	} else {
+		team_ = itor - parent_->team_names_.begin();
+	}
+	colour_ = lexical_cast_default<int>(cfg_["colour"], index_ + 1) - 1;
 	gold_ = lexical_cast_default<int>(cfg_["gold"], 100);
 
 	// "Faction name" hack
@@ -245,28 +251,45 @@ config connect::side::get_config() const
 		// Merge the faction data to res
 		res.append(*(parent_->era_sides_[faction_]));
 	}
-	
-	res["controller"] = controller_names[controller_];
+	if(cfg_["side"].empty() || cfg_["side"] != lexical_cast<std::string>(index_ + 1)) {
+		res["side"] = lexical_cast<std::string>(index_ + 1);
+	}
 	res["id"] = id_;
+	res["controller"] = controller_names[controller_];
 	if (id_.empty()) {
 		switch(controller_) {
 		case CNTR_NETWORK:
-			res["description"] = _("(Vacant slot)");
+			res["description"] = "(Vacant slot)";
+			res["user_description"] = _("(Vacant slot)");
 			break;
 		case CNTR_LOCAL:
-			res["description"] = _("Anonymous local player");
+			if(enabled_ && cfg_["save_id"].empty()) {
+				res["save_id"] = "local" + res["side"];
+			}
+			res["description"] = "Anonymous local player";
+			res["user_description"] =  _("Anonymous local player");
 			break;
 		case CNTR_COMPUTER:
-			res["description"] = _("Computer player");
+			if(enabled_ && cfg_["save_id"].empty()) {
+				res["save_id"] = "ai" + res["side"];
+			}
+			res["description"] = "Computer player";
+			res["user_description"] = _("Computer player");
 			break;
 		case CNTR_EMPTY:
-			res["description"] = _("(Empty slot)");
+			res["description"] = "(Empty slot)";
+			res["user_description"] = _("(Empty slot)");
 			break;
 		default:
 			break;
 		}
 	} else {
+		if(enabled_ && cfg_["save_id"].empty()) {
+			res["save_id"] = id_;
+		}
+
 		res["description"] = id_;
+		res["user_description"] = id_;
 	}
 	res["original_description"] = original_description_;
 
@@ -277,8 +300,8 @@ config connect::side::get_config() const
 			res["type"] = leader_;
 		}
 		// res["team"] = lexical_cast<std::string>(team_);
-		res["team_name"] = lexical_cast<std::string>(team_ + 1);
-		res["colour"] = lexical_cast<std::string>(colour_);
+		res["team_name"] = parent_->team_names_[team_];
+		res["colour"] = lexical_cast<std::string>(colour_ + 1);
 		res["gold"] = lexical_cast<std::string>(gold_);
 
 		res["fog"] = parent_->params_.fog_game ? "yes" : "no";
@@ -286,7 +309,6 @@ config connect::side::get_config() const
 		res["share_maps"] = parent_->params_.share_maps ? "yes" : "no";
 		res["share_view"] =  parent_->params_.share_view ? "yes" : "no";
 		res["village_gold"] = lexical_cast<std::string>(parent_->params_.village_gold);
-		res["experience_modifier"] = lexical_cast<std::string>(parent_->params_.xp_modifier);
 
 		res["allow_changes"] = "yes";
 	} else {
@@ -433,7 +455,8 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 
 	ai_(disp, _("Computer vs Computer")),
 	launch_(disp, _("I'm Ready")),
-	cancel_(disp, _("Cancel"))
+	cancel_(disp, _("Cancel")),
+	team_prefix_(_("Team "))
 {
 	// Send Initial information
 	config response;
@@ -447,7 +470,7 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	// Adds the current user as default user.
 	users_.push_back(connected_user(preferences::login(), CNTR_LOCAL, 0));
 	update_user_combos();
-	if(sides_.empty()) {
+	if(sides_.empty()) { 
 		throw config::error(_("The scenario is invalid because it has no sides."));
 	}
 
@@ -791,14 +814,19 @@ void connect::lists_init()
 	//Teams
 	config::child_iterator sd;
 	for(sd = sides.first; sd != sides.second; ++sd) {
-		const int team_num = sd - sides.first;
+		const int side_num = sd - sides.first + 1;
 		std::string& team_name = (**sd)["team_name"];
 		if(team_name.empty()) {
-			team_name = lexical_cast<std::string>(team_num+1);
+			team_name = lexical_cast<std::string>(side_num);
 		}
-
-		player_teams_.push_back(_("Team") + std::string(" ") + team_name);
-		(**sd)["colour"] = lexical_cast_default<std::string>(team_num+1);
+		std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), team_names_.end(), team_name);
+		if(itor == team_names_.end()) {
+			team_names_.push_back(team_name);
+			player_teams_.push_back(team_prefix_ + team_name);
+		}
+		
+		//Side color
+		(**sd)["colour"] = lexical_cast_default<std::string>(side_num);
 	}
 
 	std::string prefix;
