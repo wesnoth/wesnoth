@@ -1,3 +1,4 @@
+# translation of hu_wesnoth_backup2.po to hungarian
 # translation of hu_wesnoth.po to hungarian
 # Hungarian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
@@ -8,16 +9,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hu_wesnoth\n"
+"Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-21 09:57+0100\n"
-"PO-Revision-Date: 2005-02-27 14:44+0100\n"
+"PO-Revision-Date: 2005-03-22 12:22+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;X-Generator: KBabel 1.3\n"
+"Plural-Forms: nplurals=1; plural=0;X-Generator: KBabel 1.3X-Generator: "
+"KBabel 1.3\n"
 
 #: data/fonts.cfg:4
 #, fuzzy
@@ -792,7 +794,7 @@ msgstr ""
 
 #: data/help.cfg:197
 msgid "Wrap Up"
-msgstr ""
+msgstr "Utószó"
 
 #: data/help.cfg:198
 msgid ""
@@ -802,10 +804,15 @@ msgid ""
 "everything you need to know to play the Heir to the Throne scenario. Have "
 "fun, and good luck!"
 msgstr ""
+"Ennyit a Wesnoth alapvető szabályairól. Biztosan szeretnél az alap "
+"stratégiáról olvasni, vagy új dolgokat megtudni a <ref>dst=traits "
+"text=Jellemvonásokról</ref> és a <ref>dst=abilities text=Képességekről</"
+"ref>, de most már mindent tudsz, hogy nekivághass A trónörökös hadjáratnak. "
+"Jó szórakozást, és sok szerencsét!"
 
 #: data/help.cfg:203 src/titlescreen.cpp:190
 msgid "About"
-msgstr ""
+msgstr "Készítők"
 
 #: data/help.cfg:212
 msgid ""
@@ -815,6 +822,11 @@ msgid ""
 "\n"
 "The currently available traits are the following."
 msgstr ""
+"A legtöbb egységnek két jellemvonása van. A jellemvonások olyan jellemzők, "
+"amik egy kicsit módosítják az egység tulajdonságait. Minden egység "
+"toborzásakor véletlenszerűen kapja meg ezen két jellemvonását.\n"
+"\n"
+"A jelenleg elérhető jellemvonások a következők."
 
 #: data/help.cfg:219
 msgid ""
@@ -831,6 +843,18 @@ msgid ""
 "units you may find yourself recalling units with more useful ''long-term'' "
 "traits."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Eszes</header>\n"
+"\n"
+"Az eszes egységeknek 20%-kal kevesebb TP-re van szükségük a szintlépéshez.\n"
+"\n"
+"Az eszes egységek nagyon hasznosak lehetnek az első küldetésekben, mivel "
+"gyorsan képesek a hőn áhított szintlépésre. A későbbi küldetések során már "
+"nem annyira hasznosak, és ha már számos magas szintű egységgel rendelkezel, "
+"sokkal inkább a \"hosszútávú\" képességekkel rendelkező egységeket érdemes "
+"visszahívni."
 
 #: data/help.cfg:226
 msgid ""
@@ -846,6 +870,17 @@ msgid ""
 "campaign. Once a unit begins to level up, however, it can save you "
 "considerable gold over the course of the campaign."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Hűséges</header>\n"
+"\n"
+"A hűséges egységek mindig egy első szintű egység visszahívási költségét "
+"kérik, függetlenül attól, hányadik szintűek is valójában.\n"
+"\n"
+"A hűséges jelzőnek nincs hatása az első szintű egységekre, ami miatt a "
+"kezdeti küldetésekben nem sok hasznát lehet venni. Viszont ha az egység "
+"szintet lép, képes sok aranyat spórolni neked az egész hadjárat folyamán."
 
 #: data/help.cfg:233
 msgid ""
@@ -862,6 +897,20 @@ msgid ""
 "forces. Also, remember that Quick units aren't quite as tough as usual, and "
 "so aren't so good for holding positions."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Gyors</header>\n"
+"\n"
+"A gyors egységeknek eggyel több lépési-pontjuk van, viszont 10%-kal kevesebb "
+"életpontjuk.\n"
+"\n"
+"A gyorsaság a legfigyelemreméltőbb képesség, főként a lassú egységeknél, "
+"mint a troll vagy a nehézgyalogság lehet hasznos. A gyors képességgel "
+"rendelkező egységek gyakran fokozottan mozgékonyak még a zord terepeken is, "
+"ezt érdemes toborzáskor is figyelembe venni. De meg kell jegyeznünk, hogy a "
+"gyors egységek nem olyan erősek, mint általában a többi egység, és emiatt "
+"nem olyan jók egy terület megtartására."
 
 #: data/help.cfg:240
 msgid ""
@@ -877,6 +926,17 @@ msgid ""
 "units than others. Resilient units are especially useful for holding ground "
 "against opponents."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Öngyógyító</header>\n"
+"\n"
+"Az öngyógyító egységeknek a megszokottnál 7-tel több életerőpontjuk van.\n"
+"\n"
+"Az öngyógyító egységek a hadjárat egészében jól használhatóak, és minden "
+"egységnek hasznos lehet ez a képesség, de nyilván mindenki más egységeknél "
+"látja nagyobb hasznát. Az ilyen egységek leginkább egy terület megtartásában "
+"tudnak jeleskedni."
 
 #: data/help.cfg:247
 msgid ""
@@ -893,6 +953,17 @@ msgid ""
 "be very useful when a tiny bit of extra damage is all that is needed to turn "
 "a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Erős</header>\n"
+"\n"
+"Az erős egységek eggyel több sebzést okoznak és kettővel több az ÉP-jük.\n"
+"\n"
+"Hasznos minden közelharci egységnél, főleg azoknál, akiknek elég sok "
+"támadásuk van, például a tünde harcosnál. Az erős egységek nagyon hasznosak "
+"lehetnek, ha az a kevés hozzáadott sebzés éppen elengendő ahhoz, hogy egy "
+"egyszerű sebzésből halálos sebzés legyen."
 
 #: data/items.cfg:264
 msgid ""
@@ -1083,7 +1154,7 @@ msgstr "Véletlenszerű"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Hűségesek"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
 msgid "Rebels"
@@ -1432,22 +1503,32 @@ msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me..."
 msgstr ""
+"Azért jöttem, hogy a csatában való helytállásra oktass. Mivel te egy "
+"tapasztalt, korosodó mágus vagy, biztosan el tudod nekem magyarázni a harc "
+"művészetét..."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:68
+#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
 "select Recruit, and select 'Ok'. You can only recruit units on castle tiles "
 "connected to the keep your leader is on."
 msgstr ""
+"Mielőtt csatázni kezdenél, egységeket kell toboroznod. Ehhez kattints jobb "
+"gombbal a vár azon részére, ahova fel szeretnéd venni az új egységet. Ezután "
+"válaszd ki a 'Toborzást', majd nyomj 'Okét'. Csak azokra a helyekre "
+"toborozhatsz, amelyek összeköttetésben vannak azzal a várkastéllyal. amelyen "
+"a fővezéred áll."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:70
 msgid "Recruit a unit"
-msgstr "Egység toborzása"
+msgstr "Toborozz egy egységet"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:76
+#, fuzzy
 msgid "Excellent! You recruited an Elvish Fighter."
-msgstr ""
+msgstr "Kitűnő! Felvettél a seregedbe egy tünde harcost."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:78
 #: data/scenarios/tutorial/Basic_Training.cfg:102
@@ -1456,13 +1537,14 @@ msgstr ""
 #: data/scenarios/tutorial/Basic_Training.cfg:183
 #: data/scenarios/tutorial/Basic_Training.cfg:207
 msgid "What do I do next?"
-msgstr ""
+msgstr "Mitévő legyek ezután?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:80
 msgid "How do I recruit units?"
-msgstr ""
+msgstr "Hogyan toborozhatok egységeket?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:80
+#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1470,6 +1552,12 @@ msgid ""
 "recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
+"Ahhoz, hogy egységeket toborozz, kattints jobb gombbal a vár azon részére, "
+"ahova fel szeretnéd venni őket. Ezután válaszd ki a 'Toborzást', vagy "
+"egyszerűen csak nyomj a hatszöget kijelölve 'Ctrl-R'-t. Ekkor válaszd ki az "
+"egység fajtáját, majd nyomj 'Okét'. Ahhoz, hogy gyorsabban feltöltsd a "
+"seregedet, használhatod a 'Ctrtl-Shift-R' billentyűkombinációt, amellyel a "
+"legutóbb felvettel azonos fajtájú egységet toborozhatsz."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:81
 msgid ""
@@ -1481,25 +1569,37 @@ msgid ""
 "dies, you lose the game. You can win most scenarios by defeating all enemy "
 "leaders."
 msgstr ""
+"A fővezér egy olyan egység amely tud toborozni. Ez azt jelenti, hogy amikor "
+"egy várkastélyban tartózkodik, a környező várrészekbe egységeket vehet fel. "
+"A fővezérek általában erős egységek, amelyekből minden csapatban csak egy "
+"van. Továbbá gyakran a fővezér az első egységed, és a várkastélyban kezd. "
+"'Az 'l' billentyűvel gyorsan kijelölheted a. Ha ő meghal, a játékot is "
+"elvesztetted. A legtöbb pályát az ellenséges fővezérek legyőzésével "
+"nyerheted meg."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:81
 msgid "What's a leader?"
-msgstr ""
+msgstr "Mi az a fővezér?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:82
 msgid "How should I choose what kind of units to recruit?"
-msgstr ""
+msgstr "Hogyan válasszam ki, hogy milyen fajtájú egységet toborozzak?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:82
+#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box, and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
+"Érdemes körültekintően átnézni a tulajdonságaikat, amelyeket az "
+"egységválasztó ablak bal oldalán láthatsz, valamint a költségüket, ami a "
+"nevük után van kiírva. Ezekről a tulajdonságokról többet is meg fogsz tudni "
+"a gyakorlás folyamán."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:83
 msgid "What happens when I recruit a unit?"
-msgstr ""
+msgstr "Mi történik, ha toborzok egy egységet?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:83
 msgid ""
@@ -1507,6 +1607,9 @@ msgid ""
 "choice. It also receives two traits, which will be discussed later. It "
 "cannot move or attack until you end your turn."
 msgstr ""
+"A toborzást követően, az egység teljes életerővel megjelenik a kiválasztott "
+"mezőn a várban. Emellett kap két jellemvonást, amikről majd később "
+"beszélünk. A kör végéig nem fog tudni lépni vagy harcolni."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:93
 msgid ""
@@ -1514,18 +1617,22 @@ msgid ""
 "turn. To do this, simply click the 'End Turn' button in the lower-right hand "
 "corner."
 msgstr ""
+"Mivel az egységek nem tudnak a felvételük körében lépni, be kell fejezned a "
+"köröd. Ehhez egyszerűen kattints a bal alsó sarokban található 'Kör vége' "
+"gombra."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:95
 msgid "End your turn"
-msgstr ""
+msgstr "Fejezd be a köröd"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:100
+#, fuzzy
 msgid "You successfully ended your turn."
-msgstr ""
+msgstr "Sikeresen befejezted a köröd."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:104
 msgid "How do I end my turn?"
-msgstr ""
+msgstr "Hogyan fejezzem be a köröm?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:104
 msgid ""
@@ -1533,10 +1640,13 @@ msgid ""
 "click and select End Turn, or select the End Turn button in the lower-right "
 "hand corner."
 msgstr ""
+"A kör befejezésének egyik módja az 'Alt-E' billentyűkombináció. Ezen kívül "
+"használhatod a jobb egérgombos menü 'Kör vége' parancsát, vagy a képernyő "
+"jobb alsó sarkában található gombot."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:105
 msgid "What happens when I end my turn?"
-msgstr ""
+msgstr "Mi történik, ha befejezem a köröm?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:105
 msgid ""
@@ -1547,6 +1657,12 @@ msgid ""
 "current turn is displayed on the status bar next to the image of a flag. "
 "When this number exceeds the maximum number of turns, you lose the game."
 msgstr ""
+"Ha befejezted a köröd, elkezdődik egy másik csapat köre, mialatt csak az ő "
+"egységei lépnek, egészen az ő körének végéig. Miután minden csapat befejezte "
+"a körét, új kör indul. Ennek különböző hatásai vannak, például minden egység "
+"visszanyeri a teljes lépési pontját. Az aktuális kör sorszáma a fenti "
+"menüsoron a zászló képe mellett olvasható. Amikor ez a szám eléri a körök "
+"maximális számát elveszted a játékot."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:111
 msgid ""
@@ -1554,21 +1670,28 @@ msgid ""
 "it, then select his destination. In this case, his destination is the forest "
 "next to the Elvish Shaman, Merle."
 msgstr ""
+"Következő feladatod a tünde harcos mozgatása lesz. Ehhez először jelöld ki, "
+"majd kattints a végcéljára. Most ez legyen az erdőben Merle, a tünde "
+"sámánnő, mellett."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:113
 msgid "Move your Elvish Fighter next to Merle"
-msgstr ""
+msgstr "Lépj a tünde harcosoddal Merle mellé"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:135
+#, fuzzy
 msgid ""
 "Excellent! You successfully moved your Elvish Fighter. However, when he "
 "moved next to an enemy unit, he lost all his movement for this turn; this is "
 "called the 'zone of control'."
 msgstr ""
+"Tökéletes! Sikeresen léptél a tünde harcosoddal. Most, mivel egy ellenséges "
+"egység mellé lépett, nem léphet tovább ebben a körben, ezt nevezik "
+"'ellenőrzött területnek'."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:139
 msgid "How far can my Elvish Fighter move?"
-msgstr ""
+msgstr "Milyen messzire tud a tünde harcosom lépni?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:139
 msgid ""
@@ -1583,6 +1706,16 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
+"A tünde harcosod egy bizonyos mennyiségű lépési ponttal kezd minden kört, ez "
+"határozza meg a sebességét. Amikor a tünde harcosod halad az útján, minden "
+"hatszög amin áthalad lépési pontokba kerül neki, ebbe a végcélja is "
+"beletartozik. Amikor kijelölöd a tünde harcosod, minden mező, ahova nem "
+"juthat el az adott körben el lesz árnyékolva. Ha a végcél elérése olyan "
+"távol van, hogy egy kör alatt nem érne oda, egy szám fog megjelennni ami a "
+"szükséges körök számát mutatja. Ha egy távoli helyre kattintasz, az egység "
+"el fog indulni abba az irányba, ami azt jelenti, hogy minden körben ameddig "
+"csak tud tovább fog haladni a végcél irányában. Ha véletlenül indítasz el "
+"egy egységet, jelöld ki kétszer, hogy ne lépjen a későbbiekben tovább."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:140
 msgid ""
@@ -1592,14 +1725,19 @@ msgid ""
 "movement. Zones of control can be used to block enemies from reaching your "
 "weak and wounded units."
 msgstr ""
+"Egy egység 'ellenőrzött területe' az a térrész, ami egy egységet körülvesz. "
+"Más egységek nem léphetnek keresztül az ellenséges ellenőrzött területeken, "
+"csak beleléphetnek. Ha így tesznek, nem léphetnek tovább abban a körben. Az "
+"ellenőrzött területeket ügyesen használva feltartóztathatod az ellenséget, "
+"amíg a gyengébb egységek felgyógyulnak."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:140
 msgid "What's the zone of control?"
-msgstr ""
+msgstr "Mi az az ellenőrzött terület?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:141
 msgid "How do I tell who is allied and who is an enemy?"
-msgstr ""
+msgstr "Hogyan állapíthatom meg, hogy ki szövetséges és ki ellenség?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:141
 msgid ""
@@ -1611,6 +1749,14 @@ msgid ""
 "Colors', in Preferences, causes the color of a unit's controller is "
 "displayed as a disc below the unit."
 msgstr ""
+"A te egységeidnek zöld, sárga, vagy vörös energiaköre van az "
+"életerőmutatójuk fölött (függőleges, zöld sáv az egységek mellett). A teljes "
+"lépési pontú egységeknek zöld, a néhány pontúaknak sárga, a lépni nem "
+"tudóknak vörös. Az ellenséges egységeknek nincs energiakörük. A szövetséges "
+"egységeknek, amelyeket nem te irányítasz, mint például nekem, kék "
+"energiakörünk van. Ezen kívül a 'Csapatszínek mutatása' a beállítások közt, "
+"egy színes lemezt mutat minden egység alatt, ami alapján megmondhatod melyik "
+"csapathoz tartoznak."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:147
 msgid ""
@@ -1618,20 +1764,26 @@ msgid ""
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
+"Nos, most támadnod kell a harcosoddal. Ehhez először jelölj ki egy egységet, "
+"aztán a célpontot, akinek a támadó egységgel szomszédos mezőn kell lennie. "
+"Majd láthatod az 'Ellenség megtámadása' ablakot, ahol kiválaszthatod, milyen "
+"módon akarsz támadni."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:149
 msgid "Attack Merle"
-msgstr ""
+msgstr "Támadd meg Merlét."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:163
+#, fuzzy
 msgid "You successfully attacked Merle."
-msgstr ""
+msgstr "Sikeresen megtámadtad Merlét."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:167
 msgid "Can Merle retaliate from my attack?"
-msgstr ""
+msgstr "Visszatámadhat Merle a támadásom után?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:167
+#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1646,6 +1798,20 @@ msgid ""
 "shoot across multiple hexes; this is one of the distinctive features of "
 "Wesnoth."
 msgstr ""
+"Ha egy egységet megtámadnak, az visszatámadhat a saját fegyvereivel. Ez azt "
+"jelenti, hogy ha a támadó támad egy fegyverrel, akkor utána a megtámadott is "
+"támad a sajátjával. Ez addig megy így, amíg az egyik fél ki nem fogy a "
+"támadásokból, amikor is a másik még folytathatja, ha van még további "
+"támadása, egészen addig, amíg el nem fogy. Azonban minden megtámadott egység "
+"csak azonos távolságú fegyverrel támadhat, mint amivel rá támadtak. Ez azt "
+"jelenti, hogy a távolsági támadásoknál csak távolsági fegyverrel lehet "
+"visszatámadni. Közelharci támadás esetén pedig közelharcival. Sok egységnek "
+"jóval erősebb a közelharci támadása, mint a távolsági. Az erős távolsági "
+"fegyverrel rendelkező egységek jól használhatóak a közelharcra építő "
+"egységek elllen. Néhány egység, melyeknek nincs távolsági fegyvere "
+"egyáltalán nem tud visszatámadni ezesetben. Azonban a távolsági harcot "
+"folytató egységek sem képesek átlőni több hatszögön, ez egy a Wesnoth "
+"különleges szabályai közül."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
@@ -1658,10 +1824,18 @@ msgid ""
 "damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
 "combat."
 msgstr ""
+"Minden támadás egy bizonyos mennyiésgű sebzést okoz ütésenként, és csak "
+"megadott alkalommal használható csatánként. Ezek a számok a támadás "
+"úgynevezett sebzési és ütési számai, melyek megjelennek az egység alatt az "
+"állapotpanelen, és mellette a támadási beállításoknál. Hogy gyorsan "
+"kiszámoljuk a legnagyobb okozható sebzést, egyszerűen meg kell szoroznunk a "
+"sebzést a támadások számával. Például az én villámtámadásom 14-et sebez "
+"támadásonként, és négy támadásom lehet harconként, az azt jelenti, hogy "
+"maximum 56 pontnyi sebzést tudok okozni abban a harcban."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid "How can you tell how powerful a unit's attacks are?"
-msgstr ""
+msgstr "Hogyan lehet megállapítani, hog milyen erős egy egység támadása?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid ""
@@ -1669,25 +1843,33 @@ msgid ""
 "based on the defender's skill at defending blows, and is listed on the "
 "attack options menu after the damage and strike numbers for the bow attack."
 msgstr ""
+"Az egységeknek van lehetőségük blokkolni a támadást. A blokkolásra való "
+"esély, hogy a támadó nem találja el az ellenfelét attól függ, milyen "
+"eséllyel védi ki a védő a támadást, és ez ki van írva az 'Ellenség "
+"megtámadása' ablakban a sebzés és az ütések száma után."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid "Will my fighter hit every time when he attacks?"
-msgstr ""
+msgstr "A harcosom minden alkalommal üt, amikor támad?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:175
 msgid "End your turn, and wait for Merle to attack you."
-msgstr ""
+msgstr "Fejezd be a köröd, és várd meg, hogy Merle megtámadjon."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:181
+#, fuzzy
 msgid ""
 "Your fighter survived Merle's attack. Whenever a unit survives a battle, it "
 "gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
+"A harcosod túlélte Merle támadását. Mindig, ha egy egység túléli a csatát, a "
+"harcban tapasztalatot szerez. Ha egy egység elég tapasztalatot szerez, a "
+"következő szintre lép, és sokkal erősebb lesz."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:185
 msgid "What's experience?"
-msgstr ""
+msgstr "Mi az a tapasztalat?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:185
 msgid ""
@@ -1697,12 +1879,19 @@ msgid ""
 "experience is gained from defeating an enemy unit. The amount of XP gained "
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
+"Ha egy egység harcol egy másik egységgel, akkor tapasztalati pontot, úgy "
+"nevezett 'TP'-t kap a harcért. A tapasztalat megegyezik az ellenfél "
+"szintjével, ami általában megmutatja az ellenfél erejét is. Sokkal több "
+"tapasztalati pont jár, ha meg is tudja ölni ellenfelét. Az ellenfél "
+"megöléséért járó TP minden ellenfél esetén a szintjének nyolcszorosával "
+"egyenlő."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:186
 msgid "What happens when a unit advances?"
-msgstr ""
+msgstr "Mi történik, ha egy egység szintet lép?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:186
+#, fuzzy
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1711,24 +1900,32 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps cast on it "
 "are removed. This is known as 'advance-heal'."
 msgstr ""
+"Ha egy egység szintet lép, akkor egy másik egységgé változik. Az új egység "
+"fajtája attól függ, milyen egység volt eredetileg, de alkalmanként több "
+"választási lehetőség is van a továbbfejlődésre. A már szintet lépett "
+"egységek sokkal erősebbek, és magasabbak egy szinttel, mint azelőtt. "
+"Emellett, ha egy egység fejlődik, teljesen meggyógyul, és megszűnik minden "
+"módosítója. Ezt úgy hívják, 'szintlépés-gyógyulás'."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid "Move your fighter onto a village."
-msgstr ""
+msgstr "Irányítsd az egységedet egy faluba."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
+#, fuzzy
 msgid "Move your fighter onto a village"
-msgstr ""
+msgstr "Irányítsd az egységedet egy faluba."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:205
 msgid "Villages heal the units on them."
-msgstr ""
+msgstr "A falvak gyógyítják az ott tartózkodó egységeket."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:209
 msgid "What happens when a unit moves onto a village?"
-msgstr ""
+msgstr "Mi történik, ha egy egység egy faluba ér?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:209
+#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1739,12 +1936,21 @@ msgid ""
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
 msgstr ""
+"Ha egy egység egy falu mezőn tartózkodik, akkor a falu ezentúl ura zászlaja "
+"alá tartozik. Az odalépés azonban felemészti az egység minden maradék lépési "
+"pontját. A falvak bizonyos előnyökhöz juttatják a tulajdonosukat, egy "
+"aranyat adnak minden körben, és eggyel csökkentik a csapat egységfenntartási "
+"költségét. Az összes birtokolt falu száma megjelenik a felső menüsoron, egy "
+"ház képénél. A falvak birtoklásának, a gazdasági szempontok mellett, másik "
+"fontos előnyük, hogy harcban is jól használhatóak. A falvak ugyanis 8 pontot "
+"gyógyítanak az ott lévő egységeken körönként."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:210
 msgid "How do I heal when there aren't any villages nearby?"
-msgstr ""
+msgstr "Hogyan tudok gyógyítani, ha egy falu sincs a közelben?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:210
+#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1753,16 +1959,25 @@ msgid ""
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
 "all your units are healed fully."
 msgstr ""
+"Vannak módszerek gyógyításra falu nélkül is. Ha egy egység egy körben nem "
+"cselekszik semmit, két pontot gyógyul a pihenés miatt. Ha egy ellenség "
+"megtámadja, akkor azonban nem tud pihenni, és így gyógyulni sem. Ezenkívül "
+"vannak olyan egységek is, amelyek képesek az őket körülvevő társaikat "
+"meggyógyítani. A Tünde Sámánnő egy ilyen egység, a közelében lévő "
+"szövetségeseken 4 pontot gyógyít körönként. Végezetül, ha befejezel egy "
+"küldetést, az összes megmaradt egységed teljesen felgyógyul."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:216
 msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
+"Nos, most le kell győznöd Merlét, azzal, hogy 0 ÉP-re vagy még kevesebbre "
+"csökkented életerejét. Csak támadj rendületlenül."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:218
 msgid "Defeat Merle"
-msgstr ""
+msgstr "Pusztítsd el Merlét."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:233
 msgid ""
@@ -1771,35 +1986,48 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
+"Hopp! Kiküldted a vezetődet a vártoronyból. Emlékezz, hogy ha a vezéred "
+"nincs a vártoronyban, nem tudsz toborozni. Tehát ha a vezéred meghal, "
+"veszítettél. Hogy folytathassuk a gyakorlást, vissza kell, hogy "
+"teleportáljalak a toronyba."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:249
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
+#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "gained wisdom from my teachings anyway."
 msgstr ""
+"Sajnos veszítettél, mert a vezetőd halálát lelte. Remélhetőleg azért "
+"tanultál valamennyit a mai leckéből."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:256
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:240
+#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you gained "
 "wisdom from my teachings anyway."
 msgstr ""
+"Sajnos veszítettél, mert kifutottál az időből. Remélhetőleg azért tanultál "
+"valamennyit a mai leckéből."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
+#, fuzzy
 msgid "You successfully completed the first training scenario."
-msgstr ""
+msgstr "Sikeresen befejezted az első gyakorló pályát!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:268
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:287
 msgid "Hooray!"
-msgstr ""
+msgstr "Hurrá!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:270
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr ""
+"Honnan tudhatom meg, hogy hogyan kell megcsinálnom pályát? Mindig elmondják?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:270
+#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -1809,10 +2037,16 @@ msgid ""
 "any of the conditions are met, the level is over. Hopefully, it was a "
 "victory condition that was met."
 msgstr ""
+"Néha nem lesz teljesen egyértelmű, hogy hogyan kell megcsinálni az adott "
+"pályát, az alapján, amit a párbeszédekből ki lehet szűrni. Ilyenkor meg kell "
+"nézni a pálya céljait, ami a nyitó párbeszéd után következik. Később is "
+"elérhető a menüből. A pálya cáljai egy lista a győzelem és az esetleges "
+"vereség feltételeiről, és ha bármelyik ezek közül teljesül, a küldetésnek "
+"vége. Remélhetőleg egy győzelmi feltétel fog teljesülni."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:271
 msgid "What happens when I win a scenario?"
-msgstr ""
+msgstr "Mi történik, ha befejezek egy pályát?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:271
 msgid ""
@@ -1822,6 +2056,10 @@ msgid ""
 "immediately after you win. However between scenarios, 20% of your gold is "
 "lost."
 msgstr ""
+"Ha befejezel egy pályát, minden egységed túléli és teljes életerőre "
+"töltődik, és az hátralevő körökben nem kell fizetned őket. Tehát, ha a "
+"sereged abban a körzetben marad, ahol nyertél, minden falu megadja magát "
+"neked, miután nyertél. Viszont két küldetés között vagyonod 20%-a elvész."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:277
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
@@ -1832,31 +2070,37 @@ msgstr "Szeretnéd a pályán tanultak valamelyikét újra megnézni?"
 #: data/scenarios/tutorial/Basic_Training.cfg:279
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:256
 msgid "Yes"
-msgstr ""
+msgstr "Igen"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:281
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:258
 msgid "I'm done reviewing skills!"
-msgstr ""
+msgstr "Végeztem a tanultak áttekintésével!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:298
+#, fuzzy
 msgid ""
 "Although you completed your first scenario, your training is not yet over. "
 "We will now proceed to the next scenario, in which you will fight me in a "
 "mock battle."
 msgstr ""
+"Nos, végeztél az első pályával, de még nincs vége a képzésednek. Most a "
+"következő pályára lépünk, ahol megküzdesz velem egy szimulált harcban."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:3
 msgid "Traits and Specialties"
-msgstr ""
+msgstr "Jellemvonások és Tulajdonságok"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:39
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
 msgstr ""
+"Most egy sokkal keményebb feladatot kell végrehajtanod. Le kell győznöd "
+"engem egy szimulált harcban."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
+#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -1864,8 +2108,15 @@ msgid ""
 "Recall, select your fighter, then select 'Ok'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
 msgstr ""
+"A legtöbb küldetés megnyerhető az ellenséges vezérek megölésével. Nyerd meg "
+"hát ezt, úgy, hogy legyőzöl engem. A harcosod az előző küldetésből "
+"segítségedre lehet a harcban. Hogy visszahívd őt, kattints jobb gombbal a "
+"várad egyik mezejére, válaszd a 'Visszahívást', majd válaszd ki a harcost, "
+"aztán nyomd meg az 'Oké' gombot. Azonban emellett tünde harcosokra és "
+"íjászokra is szükséged lesz, toboroznod kell őket."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:60
+#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recalling\n"
@@ -1877,11 +2128,24 @@ msgid ""
 "Specialties\n"
 "Objects"
 msgstr ""
+"@Felhasználandó készségek:\n"
+"Visszahívás\n"
+"Jellemvonások\n"
+"Arany\n"
+"Napszakok\n"
+"Terepek\n"
+"Ellenállás\n"
+"Tulajdonságok\n"
+"Tárgyak\n"
+"Wesnoth-ot játszani\n"
+"@Célok\n"
+"@Győzelem\n"
+"Győzd le Delfadort"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:62
 #, fuzzy
 msgid "Defeat Delfador"
-msgstr "Védekező"
+msgstr "Pusztítsd el Merlét."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:66
 #: data/scenarios/tutorial/utils.cfg:49
@@ -1894,8 +2158,9 @@ msgid "Turns run out"
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:83
+#, fuzzy
 msgid "You successfully recalled your Elvish Fighter."
-msgstr ""
+msgstr "Sikeresen visszahívtad a tünde harcosodat."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:85
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:99
@@ -1916,29 +2181,43 @@ msgid ""
 "recruited units, except that instead of a new unit appearing, a unit from a "
 "previous scenario will appear."
 msgstr ""
+"Először húsz aranyat kell fizetned minden egységért, amit visszahívsz, "
+"függetlenül az egység fajtájától. Más szempontból, a visszahívott egységek "
+"ugyanúgy lépnek a pályára, mint a toborzott egységek. Annyi az egész, hogy "
+"ahelyett, hogy egy új egység bukkanna fel, egy egység az előző küldetésből "
+"teszi ezt."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:87
 msgid "What happens when I recall a unit?"
-msgstr ""
+msgstr "Mi történik, ha visszahívok egy egységet?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:88
 msgid "How should I decide which units to recall?"
-msgstr ""
+msgstr "Hogy döntsem el, melyik egységet hívom vissza?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:88
+#, fuzzy
 msgid ""
 "You should usually recall units that are already advanced to the next level. "
 "However, you may also want to recall units that have high experience, and "
 "are thus likely to advance. You should recall units that will be useful for "
 "the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
+"Általában már szintet lépett egységeket érdemes visszahívni. Emellett a sok "
+"tapasztalattal rendelkezőket is visszahívhatod, amelyek nemsoká szintet "
+"lépnek. Olyan egységeket érdemes visszahívni, melyeknek hasznát veszed a "
+"küldetésben, például egy erdei pályán érdemes tündéket visszahívni."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:97
+#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because of their "
 "assigned traits."
 msgstr ""
+"Figyelembe kell venned, hogy az egységeid különböző értékekkel rendelkeznek, "
+"mint amilyenekkel toborzás előtt. Ez azért van, mert megkapják "
+"jellemvonásaikat."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:101
 msgid ""
@@ -1948,10 +2227,15 @@ msgid ""
 "the Status Table, and the function of a specific trait can be found by "
 "putting your cursor over that trait."
 msgstr ""
+"A jellemvonásoknak az a feladatuk, hogy az azonos fajtába tartozó egységeket "
+"különbözővé tegyék egymástól. Ez véletlenszerűen kiválasztott két "
+"jellemvonással történik, toborzáskor. A jellemvonások, amikkel az egység "
+"rendelkezik az állapotpanelről leolvashatóak, ahol különlegességeiket az "
+"egérmutatót föléjük húzva tudhatod meg."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:101
 msgid "What do traits do?"
-msgstr ""
+msgstr "Mit csinálnak a jellemvonások?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:102
 msgid ""
@@ -1961,20 +2245,26 @@ msgid ""
 "'negative' traits. Most units have an equal chance to get any two different "
 "traits when they are recruited."
 msgstr ""
+"Öt különböző jellemvonás van, melyek növelhetik az életerőt, csökkenthetik a "
+"szintlépéshez szükséges TP-t, szóval, minden jellemvonás az egységek erejét "
+"növeli, nincsenek negatív jellemvonások. A legtöbb egységnek egyenlő esélye "
+"van bármelyik képességet megszerezni, és kettőt fog kapni. "
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:102
 msgid "What kind of traits can my units get?"
-msgstr ""
+msgstr "Milyen jellemvonásokat kaphatnak az egységeim?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:115
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
+"Ha egységet toborzol vagy hívsz vissza, aranyat vesztesz, ha ez 0 vagy 0 "
+"alatti arany-értéket eredményezne, nem tudsz se toborozni, se visszahívni."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:119
 msgid "How much gold do my units cost?"
-msgstr ""
+msgstr "Mennyibe kerülnek az egységeim?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:119
 msgid ""
@@ -1987,12 +2277,21 @@ msgid ""
 "displayed on the status bar at the top after a picture of gold and then a "
 "red arrow."
 msgstr ""
+"Fizetned kell minden egységért, amit toborzol vagy visszahívsz. Az egység "
+"toborzási költségét mindig a neve alatt találhatod meg. A visszahívás mindig "
+"20 aranyba kerül. Minden egység pénzbe kerül minden körben, amíg az "
+"irányításod alatt áll. Ez az úgy nevezett 'fenntartási költség' megegyezik "
+"az egység szintjével. Azonban, az egységek, amiket nem toroboztál vagy "
+"hívtál vissza nem kerülnek pénzbe, akárcsak a fővezéred. Az egységeid teljes "
+"fenntartási költségét a képernyő tetején találod, egy arany utáni vörös nyíl "
+"mellett."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid "How do I get gold?"
-msgstr ""
+msgstr "Hogyan szerezhetek aranyat?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
+#, fuzzy
 msgid ""
 "You begin each level with a percentage of gold from the previous level. If "
 "this is less than 100 gold, you begin with 100 gold instead. The amount of "
@@ -2001,12 +2300,19 @@ msgid ""
 "usually need more gold than that, you should flag villages, which give you 1 "
 "gold per turn."
 msgstr ""
+"Minden pályát az előző pályáról maradt aranyad 80%-ával kezdesz. Ha ez "
+"kevesebb, mint 100 arany, akkor 100 arannyal kezdesz. Az aranyaid számáról "
+"az oldal tetején tájékozódhatsz, egy arany képénél. A küldetés kezdetétől "
+"fogva minden körben 2 aranyat kapsz. Ha ennél többet szeretnél, falvakat "
+"kell szerezned, melyek 1 aranyat szolgáltatnak körönként."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:129
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
+"A nap Wesnoth fölé emelkedik. A napszak meghatározza, mekkora sebzést "
+"okoznak az különböző beállítottságú csapatok egymásnak."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:133
 msgid ""
@@ -2016,14 +2322,20 @@ msgid ""
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
+"Három beállítotság létezik: igazságos, semleges és törvénytelen, ahogy 3 "
+"napszak is van: nappal, szürkület és éjjel. Napközben az igazságos egységek, "
+"mint például az emberek 25%-kal több sebzést okoznak, míg a törvényen "
+"kívüliek, mint például az élőholtak, 25%-kal kevesebbet. Éjjel ez fordítva "
+"igaz. Szürkületben mindenki módosítatlanul sebez. A semleges egységek, mint "
+"a tündék értékei nem változnak se nappal, se éjjel."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:133
 msgid "What are the different alignments and times of day?"
-msgstr ""
+msgstr "Mik a különböző beállítottságok, és a napszakok?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
 msgid "How do I know what time of day it is?"
-msgstr ""
+msgstr "Honnan tudhatom meg, hogy milyen napszak van?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
 msgid ""
@@ -2034,12 +2346,21 @@ msgid ""
 "a different sequence, such as underground where it is perpetually night. You "
 "can find out the current time of day by looking at the Status Table."
 msgstr ""
+"A napszakok mind besorolhatóak a három fő napszakba: a hajnal a "
+"szürkülethez, a délelőtt a nappalhoz, a délután a nappalhoz, az alkonyat a "
+"szürkülethez, majd két napszak az éjjelhez, aztán ez ismétlődik. Ez a nap és "
+"a hold járásából adódik, amelyek keleten kelnek és nyugaton nyugszanak. "
+"Néhány küldetésben ez nem így van, például a föld alatt mindig éjszaka van. "
+"Az adott napszakot az állapotpanelen találod. "
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr ""
+"Minden hatszög valamely terepmezőhöz tartozik, amelyek különböző "
+"adottságokat adnak a hatszögnek."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:147
+#, fuzzy
 msgid ""
 "Two terrains have properties which I described earlier: namely villages and "
 "castle. However the properties of most terrains are more subtle, and have to "
@@ -2050,16 +2371,25 @@ msgid ""
 "determines the unit's chance to be hit on that terrain. For example; elves "
 "have 70% defense on grass, and are therefore hit 30% of the time."
 msgstr ""
+"Két olyan terep van, amelyet már elmagyaráztam. A falvak és a vár. A legtöbb "
+"terepfajta tulajdonságai sokkal szövevényesebbek ennél, és előnyökkel, "
+"valamint hátrányokkal járnak, attól függően, milyen egység halad át rajtuk. "
+"Az első dolog az, hogy hány lépési-pontba kerül az egységnek, hogy "
+"áthaladjon a hatszögön. A második dolog, hogy mekkora védettséget nyújt az "
+"egységnek, ami rajta áll. Ez egy százalékos érték, ami csökkenti az egység "
+"eltalálásának esélyét. Például sok tündének 70%-os védelme van erdőben, "
+"tehát ott 30% eséllyel találhatóak el."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:147
 msgid "What are the different properties that terrains have?"
-msgstr ""
+msgstr "Mik a különböző tulajdonságok, amikkel a terepek rendelkezhetnek?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 msgid "How do I find out the properties of a specific terrain?"
-msgstr ""
+msgstr "Honnan tudhatom meg a terepek tulajdonságait?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
+#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then select Terrain "
@@ -2069,12 +2399,21 @@ msgid ""
 "of the hex, then the selected unit's defense, then the number of move points "
 "it will cost the selected unit to move through that hex."
 msgstr ""
+"Hogy megtudd, milyen hatások érvényesülnek az adott terepen egy bizonyos "
+"egységre, kattints jobb gombbal az egységre, válaszd ki az egység leírását, "
+"és menj a Terep-alakítókra. Hogy megtudd, melyik területtípushoz tartozik a "
+"hatszög, amiről információkat szeretnél szerezni, vidd föléje az "
+"egérmutatót, és nézd meg a képernyő jobb-felső sarkát. Itt láthatod a "
+"terület nevét, a koordinátákat, majd a kiválasztott egység védelmét, aztán a "
+"lépési-pontot, amibe kerül az egységnek, ha át akar rajta haladni."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:157
 msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
 msgstr ""
+"Minden támadásnak van sebzéstípusa, ami megmutatja, hogy mekkora sebzést "
+"képes az ellenfél levonni belőle."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:161
 msgid ""
@@ -2086,12 +2425,20 @@ msgid ""
 "bonuses/penalties like time of day, so two -50% penalties would add up to -"
 "100%."
 msgstr ""
+"Minden egységnek minden támadástípus ellen van bizonyos fokú ellenállása. Ez "
+"egy százalékos érték, mely az ellenfél fegyverével szembeni védettségi "
+"osztót ad. Például ha egyTünde felderítőt megtámad egy Tünde íjász, az íjász "
+"20%-kal több sebzést okoz, mint alapesetben, mivel a felderítőnek -20% "
+"ellenállasa van a páncéltörés támadástípus ellen. Ez a bónusz/levonás "
+"összeadódik más bónuszokkal/levonásokkal, például a napszakkal, tehát két -"
+"50%-os levonás egy -100%-ost eredményez."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:161
 msgid "How does resistance affect attack damage?"
-msgstr ""
+msgstr "Hogy csökkenti az ellenállás a támadást?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
+#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2100,15 +2447,24 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then select Resistance."
 msgstr ""
+"Hat különböző támadástípus van: penge, páncéltörés, ütés, tűz, hideg és "
+"szentség. A jól felvértezett egységeknek a fizikai típusúakkal szemben van "
+"nagy ellenállásuk ( penge, páncéltörés, ütés), de alacsony a védettségük a "
+"mágikusakkal szemben (tűz és hideg). Minden élő egységnek van védelme a "
+"szentség támadás ellen, az élőholtak azonban nagyon gyengék ellene. Hogy "
+"megtudd egy bizonyos egység védettségét, kattints jobb gombbal az egységre, "
+"aztán Egység Leírása, és Ellenállások."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 msgid "What are the different damage types?"
-msgstr ""
+msgstr "Mik a különböző sebzéstípusok?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:171
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
+"Sok egységnek van valamilyen tulajdonsága, ami megváltoztatja a játék "
+"szabályait valamilyen módon"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:175
 msgid ""
@@ -2116,10 +2472,12 @@ msgid ""
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
 msgstr ""
+"Minden egyes tulajdonság mást takar. Ha meg akarod tudni egy egység "
+"tulajdonságainak leírását, vidd az egérmutatót a tulajdonság neve fölé."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:175
 msgid "What do specialties do?"
-msgstr ""
+msgstr "Mire jók a tulajdonságok?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:176
 msgid ""
@@ -2128,10 +2486,14 @@ msgid ""
 "abilities, and attack specials. Abilities apply to units while attack "
 "specials only apply to one of the unit's attacks."
 msgstr ""
+"Az egység tulajdonságait az egység típusa dönti el. Például minden "
+"fővezérnek van vezetői képessége. Két fajta tulajdonság létezik: képességek, "
+"és speciális támadások. A képességek az egységhez vannak rendelve, míg a "
+"speciális támadások csak az adott támadáshoz."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:176
 msgid "Which units get specialties?"
-msgstr ""
+msgstr "Mely egységek kapnak tulajdonságokat?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:177
 msgid ""
@@ -2141,14 +2503,20 @@ msgid ""
 "hitting enemies regardless of what terrain they are on. Units do more damage "
 "while next to a unit of higher level with leadership."
 msgstr ""
+"Rengeteg különböző tulajdonság létezik, és megismerni őket az egyik "
+"legérdekesebb része a játéknak. A két legismertebb a mágikus támadás és a "
+"vezetői képesség. A mágikus támadásoknak mindig 70%-os esélyük van a "
+"találatra, függetlenül attól hogy az ellenség milyen terepen tartózkodik. A "
+"vezetői képesség pedig növeli azon egységek sebzését, akiknek szintje a "
+"vezetőnél kisebb és a vezető körüli mezőkön helyezkednek el."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:177
 msgid "What kinds of specialties can my units get?"
-msgstr ""
+msgstr "Milyen tulajdonságokat szerezhetnek az egységeim?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:178
 msgid "How do I use specialties?"
-msgstr ""
+msgstr "Hogyan hasznáhatom a tulajdonságokat?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:178
 msgid ""
@@ -2157,6 +2525,11 @@ msgid ""
 "you must move a unit with leadership next to another unit, then attack with "
 "the other unit."
 msgstr ""
+"Ha használni akarsz egy tulajdonságot, elég ha az egységeddel a megfelelő "
+"támadást választod, vagy arra a helyre mozogsz ahol a képesség képes "
+"működni. Például, ha használni akarod a vezetői képességedet, akkor az ezzel "
+"rendelkező egységet egy másik egység mellé kell vinned, majd ezt követően "
+"támadhatsz a már megemelt sebzésű egységeddel."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 msgid ""
@@ -2164,10 +2537,15 @@ msgid ""
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
+"Egyes tárgyak megváltoztatják az őket megtaláló egységeket. Például "
+"találhatsz varázsitalt, ami megemeli a sebzést. Ha meg akarod nézni a "
+"megváltozott értéket, nézz az állapotpanelre."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:202
 msgid "This potion increases the damage of all the drinker's attacks by four."
 msgstr ""
+"Ez a varászital néggyel megnöveli a sebzését annak az egységnek, aki "
+"megissza."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:208
 msgid ""
@@ -2176,20 +2554,26 @@ msgid ""
 "who picks them up a new weapon. However there are usually not that many "
 "objects in a campaign."
 msgstr ""
+"A tárgyakat, amikkel találkozhatsz, a pálya készítője helyezi el. A "
+"trónörökös hadjáratban a legtöbb tárgy, egy-egy új fegyvert takar. Általában "
+"kevés tárgyat lehet találni a pályákon."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:208
 msgid "What kind of objects am I likely to encounter?"
-msgstr ""
+msgstr "Milyen tárgyakkal találkozhatok?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:209
 msgid "How long do these objects last?"
-msgstr ""
+msgstr "Milyen sokáig maradnak meg a tárgyak?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:209
+#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the remainder of the level."
 msgstr ""
+"A legtöbb tárgy végleges változást okoz az adott egységen, de van pár "
+"kivétel mint például a szentelt víz, ami csak az adott pálya végéig tart."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:223
 msgid ""
@@ -2197,11 +2581,15 @@ msgid ""
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
+"Ne felejsd el megakadályozni az ellenséget a falvak elfoglalásában illetve "
+"visszafoglalásában. Ha így teszel, hamarosan pénz nélkül marad és képtelen "
+"lesz toborozni. "
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
+#, fuzzy
 msgid ""
 "Congratulations! By defeating me, you complete the second training scenario."
-msgstr ""
+msgstr "Sikeresen befejezted az első gyakorló pályát!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:285
 msgid "Next, you may want to begin a campaign, or play multiplayer."
@@ -2209,7 +2597,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:289
 msgid "How do I play a campaign?"
-msgstr ""
+msgstr "Hogyan játszhatok hadjáratot?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:289
 msgid ""
@@ -2217,10 +2605,13 @@ msgid ""
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
+"Egy hadjárat elkezdéséhez indítsd el a Wesnoth-ot, majd válaszd ki a "
+"Hadjárat opciót, illetve ezt követően a kívánt hadjáratot a neked megfelelő "
+"nehézségi fokozattal. Kezdők számára A trónörökös című hadjárat ajánlott."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:290
 msgid "How do I play multiplayer?"
-msgstr ""
+msgstr "Hogyan játszhatok több játékossal együtt?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:290
 msgid ""
@@ -2229,12 +2620,17 @@ msgid ""
 "server, where you can join a game by selecting it, then selecting 'Join "
 "Game'."
 msgstr ""
+"Ha szeretnél Wesnothot játszani más játékosok ellen, válaszd ki a "
+"Többjátékos funkciót, majd kattints a 'Csatlakozás a hivatalos szerverhez' "
+"gombra. Ez automatikusan fellépteti a játékot a hivatalos szerverre, ahol "
+"bizonyíthatod játéktudásodat mások elött."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
-msgstr ""
+msgstr "Ez jól el lett magyarázva! De ..."
 
 #: data/scenarios/tutorial/utils.cfg:42
+#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recruiting units\n"
@@ -2243,15 +2639,22 @@ msgid ""
 "Gaining experience\n"
 "Winning scenarios"
 msgstr ""
+"@Felhasználandó készségek:\n"
+"Egységek toborzása\n"
+"Lépés az egységekkel\n"
+"Ellenséges egységek megtámadása\n"
+"Tapasztalatgyűjtés\n"
+"Pályák lejátszása\n"
+"@Jelenlegi cél\n"
+"{OBJECTIVE}"
 
 #: data/scenarios/tutorial/utils.cfg:43
 msgid "Current objective:"
 msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:53
-#, fuzzy
 msgid "Death of Delfador"
-msgstr "Védekező"
+msgstr ""
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -2931,7 +3334,6 @@ msgid "illuminates"
 msgstr "megvilágítás"
 
 #: data/translations/english.cfg:54
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -2946,7 +3348,9 @@ msgstr ""
 "Ez az egység a csatában a szomszédos egységek élére áll, melyek így jobban "
 "harcolnak.\n"
 "\n"
-"Az alacsonyabb szintű szomszédos egységek sebzése ily módon növekszik."
+"Az alacsonyabb szintű szomszédos szövetségesek sebzése megnövekszik a "
+"csatában. A hadvezető melletti ilyen egységek annyiszor 25%-al többet "
+"sebeznek, ahány szinttel alacsonyabbak."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -2972,7 +3376,6 @@ msgstr ""
 "Soha sem több, mint 1 fenntartási költség."
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -2981,11 +3384,12 @@ msgid ""
 "immediately after this unit has attacked, or if there are enemy units next "
 "to this unit."
 msgstr ""
-"Rajtaütés:\n"
-"Az egység képes elrejtőzni az ellenség elől.\n"
+"Éjszakai lopakodás:\n"
+"Az egység láthatatlanná válik az az éj leszálltával.\n"
 "\n"
-"Erdős terepen az ellenség nem látja és nem is tudja megtámadni, kivéve a "
-"rejtőzködő egység támadása után közvetlenül következő körben."
+"Az ellenséges egységek nem látják és meg se támadhatják ezt az egységet "
+"éjszak, kivéve, ha a megelőző körben harcoltak vele, vagy éppen mellette "
+"állnak."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
@@ -3044,15 +3448,14 @@ msgid "steadfast"
 msgstr "rendíthetetlen"
 
 #: data/translations/english.cfg:86
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
 "Teleportáció:\n"
-"Ez az egység képes bármely két szövetséges település közti azonnali "
-"térugrásos helyváltoztatásra."
+"Ez az egység egy lépésből képes bármely két szövetséges település közti "
+"azonnali térugrásos helyváltoztatásra."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:150
@@ -3060,15 +3463,14 @@ msgid "teleport"
 msgstr "teleportáció"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target. (This doesn't work with allied units.)"
 msgstr ""
 "Orvtámadás:\n"
-"Ez a támadás kétszeres sebzéssel jár, ha a célpont átellenes oldalán "
-"szövetséges egység áll."
+"Ez a támadás kétszeres sebzéssel jár, ha a célpont átellenes oldalán is a "
+"saját csapatának egyik egysége áll."
 
 #: data/translations/english.cfg:96
 #, fuzzy
@@ -3146,7 +3548,6 @@ msgstr ""
 "re nem csökken."
 
 #: data/translations/english.cfg:120
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
@@ -3154,9 +3555,10 @@ msgid ""
 "controllers' turn."
 msgstr ""
 "Lassítás:\n"
-"Ez a támadás lelassítja a célpontot. A lelassított egység csak a normális "
-"sebességének a felével haladhat, ezenkívül az összecsapásokban körönként "
-"eggyel kevesebb támadásra képes, mint rendesen."
+"Ez a támadás lelassítja a célpontot. A lelassított egység a megszokott "
+"sebességének csak a felével haladhat, ezenkívül az összecsapásokban "
+"körönként eggyel kevesebb támadásra képes, mint rendesen, a csapata körének "
+"végéig."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -4184,7 +4586,6 @@ msgid "Drake Burner"
 msgstr "Tűzokádó perzsekény"
 
 #: data/units/Drake_Burner.cfg:18
-#, fuzzy
 msgid ""
 "Not only can a Drake Burner wield its claws with deadly skill, but it still "
 "possesses the fire-breathing abilities of its remote ancestors. Enemies "
@@ -4193,8 +4594,10 @@ msgid ""
 "Drake Flares who aspire to be leaders of their kind."
 msgstr ""
 "A tűzokádó perzsekények nem csak karmaik használatában jártasak, hanem "
-"távoli őseik tűzokádó képességével is rendelkeznek. Az ellenségek jobban "
-"teszik, ha távolságot tartanak."
+"távoli őseik tűzokádó képességével is rendelkeznek. Ellenségeik jobban "
+"teszik, ha megfelelő távolságban maradnak tőlük. A legképzettebb "
+"perzsekények vagy tűzperzsekényekké válhatnak, amelyek belső tűzük mesterei, "
+"vagy pedig perzsekény lobbantóvá, akik a perzsekények nagyon jó vezetői."
 
 #: data/units/Drake_Burner.cfg:40 data/units/Drake_Fighter.cfg:44
 #: data/units/Drake_Fire.cfg:42 data/units/Drake_Flameheart.cfg:52
@@ -4209,6 +4612,7 @@ msgid "Drake Clasher"
 msgstr "Perzsekény szembeszálló"
 
 #: data/units/Drake_Clasher.cfg:18
+#, fuzzy
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
@@ -4217,6 +4621,13 @@ msgid ""
 "weapons of choice are the sword and spear, which they use to great effect. "
 "The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
+"Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
+"használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
+"perzsekények teljesen hasznavehetetlenek. Ezt ellensúlyozza, hogy kiváló "
+"kézművesek, smaragd éllel gyárthatnak fegyvereket, és erős páncéljuk van. A "
+"szembeszálló perzsekények választhatnak a kard és a dárda között, amellyel "
+"igazán hatékonyak. A legkitűnőbb szembeszállókból perzsekény gladiátorok "
+"vagy vagdalkozók lehetnek."
 
 #: data/units/Drake_Fighter.cfg:4
 msgid "Drake Fighter"
@@ -4228,6 +4639,9 @@ msgid ""
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
 "join the ranks of the elite Drake Warriors."
 msgstr ""
+"A perzsekény verekedők görbe élű kardot, handzsárt forgatnak halálos erővel, "
+"és elődeiktől a tűzokádás képességét örökölték. A legkiválóbb verekedők "
+"csatlakozhatnak a perzsekényharcosokhoz."
 
 #: data/units/Drake_Fighter.cfg:21
 msgid "scimitar"
@@ -4245,6 +4659,10 @@ msgid ""
 "most ferocious Fire Drakes become the flying configurations known as Drake "
 "Infernos."
 msgstr ""
+"A nagy tűzperzsekényeket ezüstlemezzel borított páncélzat védi a súlyosabb "
+"sérülésektől. Bár a közelharci technikájuk primitív, belső tűzüknek a "
+"mesterei, és ezért rettegett harcosok. A legkegyetlenebb tűzperzsekényekből "
+"váló teremtményeket úgy ismerik, hogy a pokoli perzsekények."
 
 #: data/units/Drake_Flameheart.cfg:4
 msgid "Drake Flameheart"
@@ -4258,10 +4676,15 @@ msgid ""
 "between their crackling flames and their wicked swords, few who meet them "
 "survive to confirm this saying."
 msgstr ""
+"A régi mondás úgy tartja, hogy 'A perzsekény hadseregben a tábornokok "
+"ereiben tűz csörgedezik vér helyett'. Senki se kételkedne az igazságban, ha "
+"személyesen szembesülne ezeknek a óriási szörnyeknek a pusztításával... "
+"Mindazonáltal a ropogó lángjaik és álságos kardjaik közül megmenekültek "
+"megerősítették ezt az elbeszélést."
 
 #: data/units/Drake_Flare.cfg:4
 msgid "Drake Flare"
-msgstr "Perzsekény lobbanó"
+msgstr "Perzsekény lobbantó"
 
 #: data/units/Drake_Flare.cfg:20
 msgid ""
@@ -4270,10 +4693,13 @@ msgid ""
 "broader aspirations. They are skilled with swords, and they aspire to be the "
 "greatest of their kind."
 msgstr ""
+"A perzsekény lobbantók a fajtájuk vezetői szeretnének lenni. Míg a belső "
+"tűzüknek nem annyira mestereik, mint más rokonaik, meglehetősen nagyok az "
+"ambícióik. Viszont kifejezetten jól kezelik a kardokat."
 
 #: data/units/Drake_Gladiator.cfg:4
 msgid "Drake Gladiator"
-msgstr "Perzsekényharcos"
+msgstr "Perzsekény gladiátor"
 
 #: data/units/Drake_Gladiator.cfg:19
 msgid ""
@@ -4283,6 +4709,11 @@ msgid ""
 "thick brass armour and they arm themselves with as many emerald edged "
 "weapons as possible to fend off whatever opponents may await them."
 msgstr ""
+"Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
+"használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
+"perzsekények teljesen hasznavehetetlenek. A perzsekény gladiátorokat védi "
+"vékony sárgaréz páncéljuk, és smaragd élű fegyverekkel vannak "
+"felfegyverezve, így képesek elhárítani a különböző támadásokat."
 
 #: data/units/Drake_Glider.cfg:4
 msgid "Drake Glider"
@@ -4297,6 +4728,13 @@ msgid ""
 "submission. The best gliders can look forward to being accepted into the "
 "ranks of the high flying Sky Drakes."
 msgstr ""
+"A perzsekény surranók olyan kis páncélt hordanak, hogy így gyorsan "
+"megmenekülhetnek az ellenségeik elől, miután elhagyják barlangjaikat. Ezek a "
+"perzsekények is nagyon képzett harcosok, és úgyanúgy birtokában vannak a "
+"belső tűz használatának, mint többi rokonuk. A surranók hatékonyan képesek "
+"használni a gyorsaságukat, hogy alattomosan lecsaphassanak az ellenségeikre. "
+"A legjobb surranók előléphetnek a ranglétrán magasan szárnyaló "
+"égperzsekényekké."
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
 msgid "slam"
@@ -4304,7 +4742,7 @@ msgstr "becsapódás"
 
 #: data/units/Drake_Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr "Inferno perzsekény"
+msgstr "Pokoli perzsekény"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -4314,6 +4752,11 @@ msgid ""
 "Infernos have utterly mastered their internal fire, and rival their "
 "predecessors the Dragons in their ability to use it."
 msgstr ""
+"A pokoli perzsekényként ismert szárnyaló teremtmények elég masszív arany "
+"páncélt hordanak, ami szinte áthatolhatatlan. Ezek a perzsekények "
+"gyakorlatilag immunisak a tűzre, mivel el tudnak bújni tűzhányószerű "
+"kúpokban. A pokoli perzsekények teljesen a mesterei lettek a belső tűzüknek, "
+"és riválisaik elődjeiknek, a sárkányoknak."
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
@@ -4325,6 +4768,10 @@ msgid ""
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
 "down on prey, and are usually long gone before anyone can stop them."
 msgstr ""
+"Az égperzsekények valóban az ég királyai. Kihasználva a lendületüket és a "
+"tűzokádást, mint fegyvert, ezek a perzsekények sokak pusztulását okozzák. "
+"Gyorsan lecsaphatnak a prédájukra, és általában hosszú időbe telik, mire "
+"valaki meg tudja őket fékezni."
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -4338,6 +4785,12 @@ msgid ""
 "fabricate weapons with emerald edges, and wear heavy armour. The Slashers' "
 "weapon of choice is the halberd, which they use to great effect."
 msgstr ""
+"Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
+"használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
+"perzsekények teljesen hasznavehetetlenek. Ezt ellensúlyozza, hogy kiváló "
+"kézművesek, smaragd éllel gyárthatnak fegyvereket, és erős páncéljuk van. A "
+"vagdalkozók által választott fegyver az alabárd, melyet hatékonyan tudnak "
+"használni."
 
 #: data/units/Drake_Slasher.cfg:42 data/units/Goblin_Impaler.cfg:26
 #: data/units/Halbardier.cfg:26 data/units/Halbardier.cfg:44
@@ -4355,6 +4808,8 @@ msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors."
 msgstr ""
+"A perzsekényharcosok kiválóan forgatják a kardot, és örökölték a tűzokádás "
+"képességét őseiktől."
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
@@ -4398,7 +4853,6 @@ msgid "Dwarvish Berserker"
 msgstr "Megszállott törp"
 
 #: data/units/Dwarvish_Berserker.cfg:16
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies. Once a "
@@ -4410,7 +4864,7 @@ msgstr ""
 "lovallják magukat, kétszeres erővel támadhatnak, viszont megfeledkeznek "
 "minden védelemről. A távolból hajítótőrökkel támadhatnak ellenségeikre. "
 "Jelenlétük a csatában lelkesítő hatással van a körülöttük lévő alacsonyabb "
-"szintű csapatokra, melyek szintén hatásosabban támadnak"
+"szintű csapatokra, melyek szintén hatásosabban támadnak."
 
 #: data/units/Dwarvish_Berserker.cfg:26 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
@@ -4422,7 +4876,7 @@ msgstr "dühöngés"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
-msgstr "Törp sárkányőrző"
+msgstr "Törp sárkányőr"
 
 #: data/units/Dwarvish_Dragonguard.cfg:16
 msgid ""
@@ -4430,6 +4884,9 @@ msgid ""
 "using fire from what are called dragonstaves. They are the chief possessors "
 "of arcane Dwarvish technology."
 msgstr ""
+"A hatalmas törp városok őrzői az ellenfelek közé tüzet lőnek fegyvereikkel, "
+"melyeket sárkánybotnak hívnak. Ők a vezető professzorai a titkos Törp "
+"technológiának."
 
 #: data/units/Dwarvish_Dragonguard.cfg:20
 #: data/units/Dwarvish_Dragonguard.cfg:38
@@ -4441,7 +4898,6 @@ msgid "Dwarvish Fighter"
 msgstr "Törp harcos"
 
 #: data/units/Dwarvish_Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
 "feared opponents in close range combat. They are excellent in mountainous "
@@ -4450,7 +4906,7 @@ msgid ""
 msgstr ""
 "A törp harcosok a föld alatt és a hegyekben érzik otthon magukat. A "
 "közelharcban képzettek, csatabárdjuk puszta ereje is félelmetes ellenséggé "
-"teszi őket. Erejük és kitartásuk ellensúlyozza lassúságukat"
+"teszi őket. Erejük és kitartásuk ellensúlyozza lassúságukat."
 
 #: data/units/Dwarvish_Fighter.cfg:39 data/units/Dwarvish_Lord.cfg:44
 #: data/units/Dwarvish_Steelclad.cfg:45
@@ -4467,6 +4923,9 @@ msgid ""
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
 "lot of damage, and hurling their heavy spears into the enemy."
 msgstr ""
+"A legszívósabb törpök is csatlakoznak néha a törp hadsereghez, őrmesterként. "
+"Lassúak, és támadásuk sem erős, ők védik azonban a sereg szárnyait, mert "
+"nagy sebzéseket fognak fel, és nehéz dárdáikat az ellenfelekre hajítják."
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -4491,7 +4950,6 @@ msgid "Dwarvish Runemaster"
 msgstr "Törp Rúnafaragó"
 
 #: data/units/Dwarvish_Runemaster.cfg:16
-#, fuzzy
 msgid ""
 "The mighty Dwarvish Runemasters are fearsome and sturdy warriors who have "
 "harnessed the secret powers of the Dwarven runes. They can send lightning "
@@ -4520,6 +4978,8 @@ msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
 msgstr ""
+"A törp őrök, nagy pajzsukkal és hatalmas bátorságukkal állják a sarat még a "
+"legerősebb ellenséges támadás során is."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
@@ -4531,6 +4991,9 @@ msgid ""
 "armor from the ruins of their enemies. While slow, they are the feared for "
 "their resilience and strength."
 msgstr ""
+"A stalwartok, sok év háborúskodás után új pajzsokat és erős vértezetet "
+"alkottak maguknak saját és ellenfeleik vértjeiből. Lassúak ugyan, de "
+"félelmetesek is, kitartásuk és erejük miatt."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -4575,10 +5038,14 @@ msgid ""
 "they are no faster than the more common Thunderers, their attack is much "
 "more deadly."
 msgstr ""
+"A híres törp villámőrzők misztikus és félelmetes fegyvereket kezelnek, "
+"melyek a törp fegyverkészítő-mesterek, a titokzatos törp-technológiával "
+"kovácsolnak. Nem gyorsabbak semmilyen téren a mennydörgőknél, de sokkal "
+"halálosabbak támadásaik."
 
 #: data/units/Dwarvish_Thunderguard.cfg:46
 msgid "dragonstick"
-msgstr "sárkánypálca"
+msgstr "sárkányvessző"
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
@@ -4590,6 +5057,10 @@ msgid ""
 "ferocious of these in battle: they attack without stopping fighting until "
 "either their enemy or they are dead, no matter how many wounds they receive."
 msgstr ""
+"A törpök ősi faját rengeteg erős harcos alkotja. A dühöngők a "
+"legvérengzőbbek a harcokban: addig támadnak megállás nélkül, amíg az "
+"ellenfeleik - vagy ők maguk - meg nem halnak, nem számít, hány sérülést kell "
+"elszenvedniük a győzelem érdekében."
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
@@ -5085,6 +5556,10 @@ msgid ""
 "The galleon is perfect for this purpose: it's fast and resilient, but not "
 "prepared to fight, and is able to adapt to many different tasks."
 msgstr ""
+"Még az otthonuk nyugalmát boldogan élvezőknek is szükségük lesz egyszer "
+"tengeri közlekedési eszközre, akkor is ha csak halászni vagy kereskedni "
+"indulnak. A gálya tökéletesen megfelel ehhez: gyors és rugalmas, és bár "
+"nincs felkészülve a harcokra sokféle feladatot elláthat."
 
 #: data/units/Galleon.cfg:18
 msgid "dummy"
@@ -5096,7 +5571,7 @@ msgstr "Kapu"
 
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
-msgstr ""
+msgstr "Az ajtók nem fognak megnyílni a vele szövetségben nem lévők előtt."
 
 #: data/units/Gate.cfg:20
 msgid "bump"
@@ -5107,45 +5582,43 @@ msgid "General"
 msgstr "Tábornok"
 
 #: data/units/General.cfg:25
-#, fuzzy
 msgid ""
 "As the great leaders of the human armies, Generals are responsible for the "
 "protection of large or important areas in the human kingdoms. Generals can "
 "coordinate the attacks of level 1 and 2 units, thereby increasing their "
 "fighting efficiency."
 msgstr ""
-" Az emberi seregek legrangosabb vezérei a királyság nagy és fontos területek "
-"védelméért felelnek. Első és második szintű egységek támadását képesek "
-"összehangolni, így növelik azok hatékonyságát."
+"Az emberi seregek legrangosabb vezérei az emberi királyság nagy és fontos "
+"területeinek védelméért felelnek. Az első és második szintű egységek "
+"támadását képesek összehangolni, így növelik azok hatékonyságát."
 
 #: data/units/Ghost.cfg:3
 msgid "Ghost"
 msgstr "Fantom"
 
 #: data/units/Ghost.cfg:16
-#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
 "leaving a corpse behind. Although their non-corporeal form allows them great "
 "freedom of movement and protection from physical attacks, ghosts cannot "
 "easily cross running water."
 msgstr ""
-"A szellemek régen elesett harcosok testetlen lelkei. Fizikai megjelenés "
-"híján akadálytalanul suhanhatnak áldozataik irányába"
+"A fantomok réges régen kínlódva elesett harcosok testetlen lelkei. Bár "
+"testetlen létük gyorsaságot és a fizikai támadások elleni jó védekezést ad "
+"nekik, a fantomok nehezen szelik át a vízeket."
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
 msgstr "Hullazabáló"
 
 #: data/units/Ghoul.cfg:16
-#, fuzzy
 msgid ""
 "Sometimes starved and ravenous humans who are forced to eat human corpses "
 "awake after their deaths to find that they are trapped in a tortured "
 "existence as Ghouls."
 msgstr ""
-"Éhező, vérszomjas emberek, akik kénytelenek társaik holttesteit felfalni, "
-"néha haláluk után gyötrelmes létállapotban támadnak fel: ők a hullazabálók."
+"Éhező, vérszomjas emberek, akik kénytelenek emberi testeket felfalni, néha "
+"haláluk után egy gyötrelmes létállapotban, hullazabálóként kell feltámadniuk."
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
@@ -5157,6 +5630,9 @@ msgid ""
 "constructs of soil and water. They attack by spraying boiling water on their "
 "foes, or with fists of mud."
 msgstr ""
+"Az óriás sártiprók nagyobb fajta sártiprók, földből és vízből gyúrt mágikus "
+"lények. A harcban vagy forró vizet permeteznek ellenfeleikre, vagy "
+"sáröklükkel támadnak."
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Skeleton_Archer.cfg:24
 #: data/units/Soulless.cfg:19 data/units/Troll_Rocklobber.cfg:20
@@ -5167,21 +5643,20 @@ msgstr "ököl"
 
 #: data/units/Giant_Mudcrawler.cfg:42 data/units/Mudcrawler.cfg:20
 msgid "boiling water"
-msgstr "forrásban lévő víz"
+msgstr "forró víz"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
 msgstr "Óriás skorpió"
 
 #: data/units/Giant_Scorpion.cfg:16
-#, fuzzy
 msgid ""
 "Giant Scorpions are deadly creatures that like to hide while waiting for "
 "their prey. They are merciless and always hungry, so it is wise not to "
 "approach too close to these oversized arachnids."
 msgstr ""
-"Az óriás skorpiók a Halál sivatagának homokjában rejtőző gyilkos "
-"teremtmények. Könyörtelenek és örökké éhesek, emiatt nem ajánlott túl közel "
+"Az óriás skorpiók gyilkos teremtmények, melyek szeretnek lesből támadni "
+"zsákmányukra. Könyörtelenek és örökké éhesek, emiatt nem ajánlott túl közel "
 "merészkedni ezekhez a túlméretezett pókfélékhez."
 
 #: data/units/Giant_Scorpion.cfg:19
@@ -5193,9 +5668,8 @@ msgid "pincers"
 msgstr "ollók"
 
 #: data/units/Goblin_Impaler.cfg:4
-#, fuzzy
 msgid "Goblin Impaler"
-msgstr "Koboldhorda"
+msgstr "Kobold nyársaló"
 
 #: data/units/Goblin_Impaler.cfg:17
 msgid ""
@@ -5205,34 +5679,37 @@ msgid ""
 "invariably equip themselves with a much larger spear than before, enabling "
 "them to deal the first strike in melee."
 msgstr ""
+"A koboldok affelé hajlanak, hogy pusztán számbeli fölényükkel küzdjék le "
+"általános ostobaságukból, gyengeségükből és kifinomulatlan fegyvereikből "
+"eredő hátrányukat. Azok, akik valahogy élve kikerültek a harc zűrzavarából "
+"mindenképp szereznek maguknak egy jóval nagyobb lándzsát mint a régi, amivel "
+"az első ütés jogát mindig megkapják közelharcban."
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
 msgstr "Koboldlovas"
 
 #: data/units/Goblin_Knight.cfg:16
-#, fuzzy
 msgid ""
 "The Goblin Knights are the elite of the Goblin Wolf Riders. They travel with "
 "great speed, yet can inflict substantial damage in battle."
 msgstr ""
 "A farkasokon lovagló koboldok legkiválóbbjai a Koboldlovasok. Rendkívüli "
-"sebességre sarkallják hátasaikat, és képesek lehagyni egyaránt az ember- és "
-"a tündelovasságot"
+"sebességre sarkallják hátasaikat, sőt a csatában értékellhető sebzést is "
+"okoznak."
 
 #: data/units/Goblin_Pillager.cfg:3
-#, fuzzy
 msgid "Goblin Pillager"
-msgstr "Koboldhorda"
+msgstr "Kobold fosztogató"
 
 #: data/units/Goblin_Pillager.cfg:16
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. These Goblin "
 "Pillagers cause havoc among their enemies by attacking with torches and nets."
 msgstr ""
-"A koboldfarkasok egy része le tudja győzni félelmét a tűztől. A koboldhordák "
-"így fáklyákkal és hálókkal felszerelkezve hoznak pusztulást ellenségeikre."
+"A koboldfarkasok egy része le tudja győzni félelmét a tűztől. A kobold "
+"fosztogatók így fáklyákkal és hálókkal felszerelkezve hoznak pusztulást "
+"ellenségeikre."
 
 #: data/units/Goblin_Pillager.cfg:19
 msgid "torch"
@@ -5244,9 +5721,8 @@ msgid "net"
 msgstr "hálóvetés"
 
 #: data/units/Goblin_Spearman.cfg:4
-#, fuzzy
 msgid "Goblin Spearman"
-msgstr "Dárdás"
+msgstr "Kobold dárdás"
 
 #: data/units/Goblin_Spearman.cfg:17
 msgid ""
@@ -5256,6 +5732,11 @@ msgid ""
 "are well-equipped for a war of attrition. The best Goblin Spearman can look "
 "forward to becoming Goblin Impalers."
 msgstr ""
+"A koboldok affelé hajlanak, hogy pusztán számbeli fölényükkel küzdjék le "
+"általános ostobaságukból, gyengeségükből és kifinomulatlan fegyvereikből "
+"eredő hátrányukat. Bár tisztességes vért és fegyverek nem állnak a "
+"rendelkezésükre, ezek a sovány dárdások jól fel vannak készülve egy végső "
+"harcra. A legjobb kobold dárdások a jövőben kobold nyársalókká válhatnak."
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -5286,6 +5767,10 @@ msgid ""
 "facility.  Their presence on the battlefield is of great aid to those "
 "serving beneath them."
 msgstr ""
+"A nagy tábornoki rang a legtiszteletreméltóbbak egyike az emberi seregekben, "
+"és viselőik több tűzpárbajon bizonyították már tekintélyparancsoló "
+"képességeiket mind egyéni harc, mind stratégai rátermettség terén. "
+"Megjelenésük a harctéren minden alattuk szolgálónak támaszt nyújt."
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
@@ -5313,20 +5798,23 @@ msgid ""
 "ability to regenerate themselves, so that they recover from wounds on their "
 "own, even during battle."
 msgstr ""
+"Az óriás trollok erős és kegyetlen emberszerű szörnyek, akik az elképesztő "
+"regenerálódás képességével is bírnak, így saját maguk felgyógyulhatnak "
+"sebeikből, akár a csata közben is."
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
 msgstr "Griffmadár"
 
 #: data/units/Gryphon.cfg:16
-#, fuzzy
 msgid ""
 "Half-lion, half-bird, these majestic creatures dominate the skies of the "
 "world. Since they are wary of other intelligent races, Gryphons should not "
 "be disturbed without a good reason."
 msgstr ""
-"Félig oroszlán és félig madár: ez a fenséges lény uralja a világ egeit. Más "
-"értelmes fajokkal nagyon óvatosak, csak jó okkal érdemes háborgatni őket"
+"Félig oroszlán és félig madár, ezek a fenséges lények uralják a világ egeit. "
+"Mivel más értelmes fajokkal nagyon óvatosak, csak jó okkal érdemes "
+"háborgatni őket"
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
@@ -5338,22 +5826,23 @@ msgid ""
 "an extension of themselves. This special relation makes the heart of the "
 "earth-bound tremble, for these mighty pairs may strike from anywhere."
 msgstr ""
+"A griff uraknak nagy tapasztalatuk van a griffek megülésében, amik szinte "
+"már hozzájuk tartoznak. Ez a különleges kapcsolat miatt reszketnek "
+"világszerte a szívek, mivel ezek a titokzatos párosok bárhonnan lecsaphatnak."
 
 #: data/units/Gryphon_Rider.cfg:3
-#, fuzzy
 msgid "Gryphon Rider"
-msgstr "Griff-hátas"
+msgstr "Griff-lovas"
 
 #: data/units/Gryphon_Rider.cfg:16
-#, fuzzy
 msgid ""
 "Only a few are able to bond with the mighty Gryphons. Those who do may "
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
-"A tündék közül is csak kevesen ismerik annyira a természetet, hogy egy "
-"griffel összebarátkozzanak. Akik erre képesek, meglovagolják a repülő "
-"állatot, így a kék egek új világát fedezik fel"
+"Csak kevesen képesek összebarátkozni a titokzatos griffekkel. Akik erre "
+"képesek, griff-lovasok lesznek, és így a kék egek új világát fedezik fel a "
+"repülő szörnyek hátáról."
 
 #: data/units/Halbardier.cfg:3
 #, fuzzy
@@ -6016,9 +6505,9 @@ msgid ""
 "poisoned darts, and victims of this poison will continually take damage "
 "until they can be cured in town or by a healer."
 msgstr ""
-"Noha a közelharcban nem túl erős, az orgyilkos gyors minden terepen jól "
-"védekezik, és mérgezett dobónyilakat használ. A megmérgezett áldozat idővel "
-"veszíti életerejét, amíg meg nem áll egy városban, hogy meggyógyuljon."
+"Noha a közelharcban nem túl erős, az orgyilkos gyors, minden terepen jól "
+"védekezik és mérgezett dobónyilakat használ. A megmérgezett áldozat idővel "
+"veszít az életerejéből, amíg meg nem áll egy városban, hogy meggyógyuljon."
 
 #: data/units/Orcish_Assassin.cfg:36 data/units/Orcish_Slayer.cfg:41
 msgid "darts"
@@ -6029,7 +6518,6 @@ msgid "Orcish Crossbowman"
 msgstr "Ork számszeríjász"
 
 #: data/units/Orcish_Crossbowman.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
 "power of their weapon. While they are not as effective as the Elvish "
@@ -6071,6 +6559,12 @@ msgid ""
 "powerful fighters.  Their natural leadership skills make them very precious "
 "in the battle: if the Ruler is lost, so is the battle."
 msgstr ""
+"A helytartók uralkodnak az ork törzsek felett. Ők hozzák a fontos döntéseket "
+"és vezetik háborúba népüket. Egy íjat hordanak maguknál, arra az esetre ha "
+"megközelíthetetlen ellenséggel néznek szembe, de sokkal erősebbek a szemtől "
+"szembeni harcban, ahol hatalmas kardjukat használják. A csatamezők retteget "
+"harcosai, és irányítói, így jelenlétük létfontosságú. Ha a helytartó elesik "
+"az ütközetben, a csata is vele vész el. "
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
@@ -6089,6 +6583,13 @@ msgid ""
 "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
 msgstr ""
+"Az ork sámánok őrzik az ősök mágiáját. A törzs megbecsült és mélyen tisztelt "
+"tagjai. Ők alkotják az Ork Tanácsot, aminek a döntései az egész ork "
+"közösséget érintik. Többek között a kirobbanó belső viszályok felett "
+"itélkeznek, amelyek igen gyakoriak egy ilyen lángvérű fajnál. Habár ork "
+"mércével nézve fizikailag igen gyengék, erős varázslataikkal képesek "
+"ellenségeik életerejét megcsapolni. Átkaikkal gyengítik le mindazokat, akik "
+"szembeszegülnek akaratukkal."
 
 #: data/units/Orcish_Shaman.cfg:36 data/units/Orcish_Shaman.cfg:95
 #: data/units/Orcish_Shaman.cfg:154 data/units/Vampire_Lady.cfg:34
@@ -6109,6 +6610,14 @@ msgid ""
 "draining their life. Novice Shamans are still young and vigorous, but their "
 "spell-casting ability still needs improvement."
 msgstr ""
+"Az ork sámánok őrzik az ősök mágiáját. A törzs megbecsült és mélyen tisztelt "
+"tagjai. Ők alkotják az Ork Tanácsot, aminek a döntései az egész ork "
+"közösséget érintik. Többek között a kirobbanó belső viszályok felett "
+"itélkeznek, amelyek igen gyakoriak egy ilyen lángvérű fajnál. Habár ork "
+"mércével nézve fizikailag igen gyengék, erős varázslataikkal képesek "
+"ellenségeik életerejét megcsapolni. Átkaikkal gyengítik le mindazokat, akik "
+"szembeszegülnek akaratukkal. A kezdő sámánok elszántak ugyan, de "
+"varászhasználatuk még nem kiforrott."
 
 #: data/units/Orcish_Shaman.cfg:121
 msgid "Old Orcish Shaman"
@@ -6124,6 +6633,14 @@ msgid ""
 "draining their life. Old Orcish Shamans are shamans that have mastered "
 "magic, although their physical strength has declined with age."
 msgstr ""
+"Az ork sámánok őrzik az ősök mágiáját. A törzs megbecsült és mélyen tisztelt "
+"tagjai. Ők alkotják az Ork Tanácsot, aminek a döntései az egész ork "
+"közösséget érintik. Többek között a kirobbanó belső viszályok felett "
+"itélkeznek, amelyek igen gyakoriak egy ilyen lángvérű fajnál. Habár ork "
+"mércével nézve fizikailag igen gyengék, erős varázslataikkal képesek "
+"ellenségeik életerejét megcsapolni. Átkaikkal gyengítik le mindazokat, akik "
+"szembeszegülnek akaratukkal. Az öreg sámánok mesterei a mágiának, de "
+"előrehaladott koruk miatt testi erejük elenyésző."
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
@@ -6149,6 +6666,12 @@ msgid ""
 "powerful fighters.  Their natural leadership skills make them very precious "
 "in the battle: if the Ruler is lost, so is the battle."
 msgstr ""
+"A felsőbbségek uralkodnak az ork törzsek felett. Ők hozzák a fontos "
+"döntéseket és vezetik háborúba népüket. Egy íjat hordanak maguknál, arra az "
+"esetre ha megközelíthetetlen ellenséggel néznek szembe, de sokkal erősebbek "
+"a szemtől szembeni harcban, ahol hatalmas kardjukat használják. A csatamezők "
+"retteget harcosai, és irányítói, így jelenlétük létfontosságú. Ha a uralkodó "
+"elesik az ütközetben, a csata is vele vész el. "
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
@@ -6392,6 +6915,10 @@ msgid ""
 "scouts as the can navigate through rough terrain and around opponents. The "
 "best Saurians go on to become Saurian Warriors."
 msgstr ""
+"A gyíkok mesterien bánnak a lándzsával. Fásult, hideg vérű örökségük és "
+"viszonylagos törékenységük ellenére sokra értékelik őket felderítőként, "
+"mivel kemény terepen és az ellenség közt is messzire eljutnak. A gyík "
+"harcosok közé a legjobbak kerülnek."
 
 #: data/units/Saurian_Ambusher.cfg:4
 msgid "Saurian Ambusher"
@@ -6405,6 +6932,11 @@ msgid ""
 "opponents. Saurian Ambushers possess the strength to take full advantage of "
 "this fact. The best Ambushers go on to become Saurian Flankers"
 msgstr ""
+"A gyík rajtaütők mesterien bánnak a lándzsával. Fásult, hideg vérű örökségük "
+"és viszonylagos törékenységük ellenére sokra értékelik őket felderítőként, "
+"mivel kemény terepen és az ellenség közt is messzire eljutnak. A gyík "
+"rajtaütők birtokában vannak annak az erőnek, amivel ezt teljes mértékben "
+"kihasznalhatják. A gyík rajtaütők később gyík megkerülőkké válhatnak."
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
@@ -6418,6 +6950,11 @@ msgid ""
 "opponents. Saurian Flankers possess the strength to take full advantage of "
 "this fact."
 msgstr ""
+"A gyík megkerülők mesterien bánnak a lándzsával. Fásult, hideg vérű "
+"örökségük és viszonylagos törékenységük ellenére sokra értékelik őket "
+"felderítőként, mivel kemény terepen és az ellenség közt is messzire "
+"eljutnak. A gyík megkerülők birtokában vannak annak az erőnek, amivel ezt "
+"teljes mértékben kihasznalhatják."
 
 #: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
@@ -6430,6 +6967,10 @@ msgid ""
 "call forth the magic of the cold north, and the do retain their basic "
 "healing ability."
 msgstr ""
+"A gyík jéghajítók lemondtak a csillapítás és a gyógyítás további "
+"tanulmányozásáról, hogy a sötét mágiák felé fordulhassanak. Bár gyengék, a "
+"hüvös északi varázslatokat bármikor segítségül hívhatják, valamint "
+"megtartották alapvető csillapítási képességüket."
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
@@ -6447,6 +6988,10 @@ msgid ""
 "valued as scouts as they can navigate through rough terrain and around "
 "opponents. The best Skirmishers go on to become Saurian Ambushers."
 msgstr ""
+"A gyík menetelők mesterien bánnak a lándzsával. Fásult, hideg vérű örökségük "
+"és viszonylagos törékenységük ellenére sokra értékelik őket felderítőként, "
+"mivel kemény terepen és az ellenség közt is messzire eljutnak. A gyík "
+"menetelők később gyík rajtaütőkké válhatnak."
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
@@ -6458,6 +7003,9 @@ msgid ""
 "aid to their friends regardless of terrain or opposition. In addition to "
 "curing their allies they possess knowledge of cold magic."
 msgstr ""
+"A gyík jövendőmondók nagyra tartott gyógyítók, mert segítséget nyújtanak "
+"minden barátjuknak, nem törődve a tereppel vagy más nehézségekkel. Amellett, "
+"hogy csillapítják szövetségeseik sebeit, a hideg varázslatok ismerői is."
 
 #: data/units/Saurian_Tribalist.cfg:4
 msgid "Saurian Tribalist"
@@ -6470,6 +7018,10 @@ msgid ""
 "their allies regardless of terrain or opposition. In addition to healing "
 "they possess knowledge of cold magic."
 msgstr ""
+"Fásult, hideg vérű örökségük és viszonylagos törékenységük ellenére a gyík "
+"sámánokat, mint gyógyítókat sokra értékelik, mert segítséget nyújtanak "
+"minden barátjuknak, nem törődve a tereppel vagy más nehézségekkel. Amellett, "
+"hogy csillapítják szövetségeseik sebeit, a hideg varázslatok ismerői is."
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
@@ -6483,6 +7035,11 @@ msgid ""
 "opponents. Saurian Warriors possess the strength to take full advantage of "
 "this fact."
 msgstr ""
+"A gyík harcosok mesterien bánnak a lándzsával. Fásult, hideg vérű örökségük "
+"és viszonylagos törékenységük ellenére sokra értékelik őket felderítőként, "
+"mivel kemény terepen és az ellenség közt is messzire eljutnak. A gyík "
+"harcosok birtokában vannak annak az erőnek, amivel ezt teljes mértékben "
+"kihasznalhatják."
 
 #: data/units/Sea_Hag.cfg:6
 msgid "female^Sea Hag"
@@ -6501,7 +7058,6 @@ msgid "Sea Orc"
 msgstr "Tengeri ork"
 
 #: data/units/Sea_Orc.cfg:16
-#, fuzzy
 msgid ""
 "While often viewed as inferior to their land loving counterparts, Sea Orcs "
 "represent a great leap for all goblinoids as they have adapted to aquatic "
@@ -6509,8 +7065,11 @@ msgid ""
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
-"Uralmunk alá hajtjuk a tengert! Kis lépés nekem, nagy lépés az összes "
-"manónak! *Böff!*"
+"Mialatt gyakran lenézik őket a szárazföldet kedvelő társaik, a tengeri orkok "
+"nagy lépést jelentenek minden koboldfajta számára, mivel alkalmazkodtak a "
+"vízi életmódhoz. Íves kardjukkal jó képességű harcosok, bár távolsági "
+"fegyvereik hiánya és szárazföldi haszontalan védekezésük stratégiai "
+"gyengeséget jelentenek."
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
@@ -6532,20 +7091,23 @@ msgid ""
 "stronger than other fighters, but he has hopes of advancing to greatness. As "
 "the leader of his unit, he must survive for the battle to be won."
 msgstr ""
+"Az őrmester a Királyi Hadsereg egyik rangos tisztje. Nem erősebb a többi "
+"harcosnál, de jövőbeni nagysága iránt komoly reményeket táplál. Mivel ő az "
+"egységeinek a fővezére, túl kell élnie a győzelemhez a csatát."
 
 #: data/units/Shadow.cfg:3
 msgid "Shadow"
 msgstr "Árny"
 
 #: data/units/Shadow.cfg:17
-#, fuzzy
 msgid ""
 "Souls blackened by evil, Shadows roam the night attacking unsuspecting foes. "
 "These incorporeal fiends are able to hide at night, leaving no trace of "
 "their presence."
 msgstr ""
-"Az éjszaka leple alatt fekete, gonosz lelkek suhannak gyanútlan áldozataik "
-"felé. Ezek a baljós lények nyomtalanul képesek eltűnni éjjelente."
+"A gonosz átal elfeketített lelkek, az éjszaka leple alatti árnyak suhannak "
+"gyanútlan áldozataik felé. Ezek a baljós lények nyomtalanul képesek eltűnni "
+"éjjelente."
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
@@ -6571,6 +7133,9 @@ msgid ""
 "teleport from any friendly village to another, translating themselves in an "
 "instant. They are also highly resistant to most forms of magical attack."
 msgstr ""
+"Az ezüstmágusok a legfürgébbek, és a legnehezebben utolérhetőek minden mágus "
+"közül. Teleportálni tudnak bármely két barátságos falu közt, egy pillanat "
+"alatt átugorva. Emellett jól ellenállnak minden mágikus támadásnak."
 
 #: data/units/Silver_Mage.cfg:132
 msgid "female^Silver Mage"
@@ -6588,6 +7153,11 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"Réges régen, a legtitokzatosabb élő teremtmények egyike, a rettegett sárkány "
+"csontok és sötét ínak összességévé vált. Hosszú idővel halála után a "
+"holtidézők sötét ereje feltámasztotta, amit most is szolgál. A csontsárkány "
+"lehet, hogy hogy csak egy csonthalmaznak néz ki, de sokan, akik így "
+"gondolták csak addig éltek, amíg megváltoztathatták véleményük."
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
@@ -6641,6 +7211,11 @@ msgid ""
 "nor caring what their purpose, or foes be.  They are driven only by a malice "
 "borne of the anguish of their empty and incoherent existence."
 msgstr ""
+"A legjobb élőholt íjászok kétségtelenül azokból lesznek, akik előző "
+"életükben is íjászok voltak. A harcteret járva régi, foszladozó tudásuk "
+"rányítja őket, nem tudva küldetésüketm és nem is törődve vele, vagy "
+"ellenségeik kilétével. Csak üres és széteső létük gyötremes terhének "
+"rosszindulatú cipelése vezeti őket tovább."
 
 #: data/units/Soulless.cfg:3
 msgid "Soulless"
@@ -6650,7 +7225,7 @@ msgstr "Lelketlen"
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
-msgstr ""
+msgstr "A mozgó eleven testek megedződtek az életükért vívott harcban."
 
 #: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:24
 msgid "plague"
@@ -6661,15 +7236,16 @@ msgid "Spearman"
 msgstr "Dárdás"
 
 #: data/units/Spearman.cfg:16
-#, fuzzy
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
-"A dárdások jelentős részt alkotnak az emberi seregekben. Alapkiképzésben "
-"részesülnek és egyből az arcvonalra kerülnek megtapasztalni a csata sűrűjét"
+"A dárdások jelentős részt képeznek az emberi seregekben. Alapkiképzésben "
+"részesülnek és egyből az arcvonalra kerülnek megtapasztalni a csata sűrűjét. "
+"Lándzsáik hosszúsága lehetővé teszi, hogy még védekezéskor is először "
+"üssenek a közelharcban."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
@@ -6687,18 +7263,16 @@ msgstr ""
 "erősítésére. Iszonyú sikolyuk megfagyasztja a gyengék szívét."
 
 #: data/units/Swordsman.cfg:3
-#, fuzzy
 msgid "Swordsman"
-msgstr "Páncélos"
+msgstr "Kardos"
 
 #: data/units/Swordsman.cfg:20
-#, fuzzy
 msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting."
 msgstr ""
-"A vértesek jelentős részt alkotnak az emberi seregekben. Alapkiképzésben "
-"részesülnek és egyből az arcvonalra kerülnek megtapasztalni a csata sűrűjét"
+"A kardosok jelentős részt alkotnak az emberi seregekben. Alapkiképzésben "
+"részesülnek és egyből az arcvonalra kerülnek megtapasztalni a csata sűrűjét."
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -6791,21 +7365,23 @@ msgid ""
 "to regenerate themselves, so that they recover from wounds on their own, "
 "even during battle."
 msgstr ""
+"A troll hős erős és brutális emberszerű szörny, egy elképesztő gyógyulási "
+"képességgel, ami lehetővé teszi számára, hogy akár a csata kellős közepén "
+"összeforjanak szerzett sebesülései."
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
 msgstr "Troll kőemelő"
 
 #: data/units/Troll_Rocklobber.cfg:17
-#, fuzzy
 msgid ""
 "Trolls are humanoid monsters that have the amazing ability to regenerate, "
 "recovering from their wounds during battle. These trolls have armed "
 "themselves with large rocks they hurl at their opponents."
 msgstr ""
-"A trollok erős, durva emberszerű szörnyek, amelyek csodálatos módon képesek "
-"harc közben visszanyerni életerejüket. Noha ez a troll viszonylag gyengébb, "
-"fajuk meglepően gyors fejlődése közismert."
+"A trollok erős, durva, emberszerű szörnyek, amelyek csodálatos módon képesek "
+"harc közben visszanyerni életerejüket. Ezek a harcosok nagy köveket "
+"hajítanak ellenfeleikre. "
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -6824,7 +7400,6 @@ msgid "Troll Whelp"
 msgstr "Troll suhanc"
 
 #: data/units/Troll_Whelp.cfg:17
-#, fuzzy
 msgid ""
 "Trolls are humanoid monsters that have the amazing ability to regenerate, "
 "recovering from their wounds during battle. Although these Trolls are still "
@@ -7104,9 +7679,8 @@ msgid "+English (GB) Translation"
 msgstr "+Angol (NB) Fordítás"
 
 #: src/about.cpp:188
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Olasz Fordítás"
+msgstr "+Észt Fordítás"
 
 #: src/about.cpp:192
 msgid "+Finnish Translation"
@@ -7196,7 +7770,7 @@ msgstr "Nincs több üres hely a várban, ahova az új egységeket toborozhatná
 
 #: src/actions.cpp:213
 msgid "none"
-msgstr "semellyiket"
+msgstr "semelyik"
 
 #: src/actions.cpp:282 src/dialogs.cpp:697 src/display.cpp:1010
 #: src/help.cpp:1136 src/reports.cpp:232
@@ -7341,14 +7915,12 @@ msgid "Scenario Start"
 msgstr "Pálya Indítás"
 
 #: src/dialogs.cpp:384
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Nehézség"
+msgstr "Nehézség:"
 
 #: src/dialogs.cpp:386
-#, fuzzy
 msgid "Version: "
-msgstr "Verzió"
+msgstr "Verzió:"
 
 #: src/dialogs.cpp:401
 msgid "No Saved Games"
@@ -7403,20 +7975,17 @@ msgid "level"
 msgstr "szintű"
 
 #: src/dialogs.cpp:665 src/display.cpp:977 src/help.cpp:1066
-#, fuzzy
 msgid "HP: "
-msgstr "ÉP"
+msgstr "ÉP:"
 
 #: src/dialogs.cpp:669 src/dialogs.cpp:677 src/display.cpp:981
 #: src/display.cpp:989 src/playturn.cpp:1953
-#, fuzzy
 msgid "XP: "
-msgstr "TP"
+msgstr "TP:"
 
 #: src/dialogs.cpp:682 src/display.cpp:993 src/help.cpp:1067
-#, fuzzy
 msgid "Moves: "
-msgstr "lép"
+msgstr "Lépés:"
 
 #: src/display.cpp:940
 msgid "healthy"
@@ -7584,7 +8153,7 @@ msgstr "Hadjárat letöltése..."
 
 #: src/game.cpp:1183
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "Nem tudtam feltérképezni a fájlrendszert"
 
 #: src/game.cpp:1194
 msgid "Campaign Installed"
@@ -7665,18 +8234,16 @@ msgid "Play a game against AI opponents"
 msgstr "Játék indítása a Mestersége Intelligencia ellen"
 
 #: src/game.cpp:1301 src/multiplayer.cpp:141
-#, fuzzy
 msgid "Login: "
-msgstr "Bejelentkezés"
+msgstr "Bejelentkezés:"
 
 #: src/game.cpp:1371
 msgid "Language"
 msgstr "Nyelv"
 
 #: src/game.cpp:1372
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Leginkább megfelelő nyelv kiválasztása"
+msgstr "Leginkább megfelelő nyelv kiválasztása:"
 
 #: src/game.cpp:1411
 msgid "Error loading game configuration files: '"
@@ -7687,33 +8254,28 @@ msgid "' (The game will now exit)"
 msgstr "' (A játék most ki fog lépni)"
 
 #: src/game.cpp:1479
-#, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Harc Wesnoth-ért"
 
 #: src/help.cpp:1028
-#, fuzzy
 msgid "Advances to: "
-msgstr "Szintlépés után"
+msgstr "Szintlépés után:"
 
 #: src/help.cpp:1049
-#, fuzzy
 msgid "Abilities: "
-msgstr "Képességek"
+msgstr "Képességek:"
 
 #: src/help.cpp:1068
-#, fuzzy
 msgid "Alignment: "
-msgstr "Sorbarendezés"
+msgstr "Beállítottság:"
 
 #: src/help.cpp:1072
-#, fuzzy
 msgid "Required XP: "
-msgstr "TP követelmény"
+msgstr "TP követelmény:"
 
 #: src/help.cpp:1083 src/reports.cpp:235
 msgid "attacks"
-msgstr "megtámadja ezt:"
+msgstr "támadás"
 
 #: src/help.cpp:1094 src/help.cpp:1095 src/playturn.cpp:2111
 msgid "Type"
@@ -7828,39 +8390,32 @@ msgid "Map Generator"
 msgstr "Pályarajzoló"
 
 #: src/mapgen_dialog.cpp:86
-#, fuzzy
 msgid "Players:"
 msgstr "Játékosok:"
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Width:"
-msgstr "Szélesség"
+msgstr "Szélesség:"
 
 #: src/mapgen_dialog.cpp:88
-#, fuzzy
 msgid "Height:"
-msgstr "Magasság"
+msgstr "Magasság:"
 
 #: src/mapgen_dialog.cpp:89
-#, fuzzy
 msgid "Iterations:"
-msgstr "Ismétlések"
+msgstr "Ismétlések:"
 
 #: src/mapgen_dialog.cpp:90
-#, fuzzy
 msgid "Bump Size:"
-msgstr "Kiemelkedés mérete"
+msgstr "Kiemelkedés mérete:"
 
 #: src/mapgen_dialog.cpp:91
-#, fuzzy
 msgid "Villages:"
-msgstr "Falvak"
+msgstr "Falvak:"
 
 #: src/mapgen_dialog.cpp:92
-#, fuzzy
 msgid "Landform:"
-msgstr "Területforma"
+msgstr "Területforma:"
 
 #: src/mapgen_dialog.cpp:198
 msgid "Roads Between Castles"
@@ -7887,9 +8442,8 @@ msgid "Connect to Host"
 msgstr "Csatlakozás a játékszerverhez"
 
 #: src/multiplayer.cpp:91
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Válassz játékszervert a csatlakozáshoz"
+msgstr "Válassz játékszervert a csatlakozáshoz:"
 
 #: src/multiplayer.cpp:116
 msgid "Connecting to remote host..."
@@ -7900,30 +8454,28 @@ msgid "You must log in to this server"
 msgstr "Be kell jelentkezned erre a kiszolgálóra"
 
 #: src/multiplayer_connect.cpp:300
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Üres hely"
+msgstr "(Betölthető hely)"
 
 #: src/multiplayer_connect.cpp:306
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Névtelen helyi játékos"
 
 #: src/multiplayer_connect.cpp:312
-#, fuzzy
 msgid "Computer player"
-msgstr "Számítógép"
+msgstr "Számítógépvezérelte játékos"
 
 #: src/multiplayer_connect.cpp:315
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Üres hely)"
 
 #: src/multiplayer_connect.cpp:449
 msgid "No non-random sides in the current era"
-msgstr ""
+msgstr "Ebben az érában nincsenek meghatározott csapatok"
 
 #: src/multiplayer_connect.cpp:465
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Nem találtam fővezért a $faction néphez"
 
 #: src/multiplayer_connect.cpp:479 src/multiplayer_connect.cpp:488
 msgid "Team"
@@ -7931,7 +8483,7 @@ msgstr "Csapat"
 
 #: src/multiplayer_connect.cpp:486
 msgid "Player/Type"
-msgstr "Játékos/Tpus"
+msgstr "Játékos/Típus"
 
 #: src/multiplayer_connect.cpp:487
 msgid "Faction"
@@ -7947,9 +8499,8 @@ msgid "Gold"
 msgstr "Arany"
 
 #: src/multiplayer_connect.cpp:492
-#, fuzzy
 msgid "Computer vs Computer"
-msgstr " Számítógép kontra Számítógép "
+msgstr " Számítógép kontra számítógép "
 
 #: src/multiplayer_connect.cpp:493
 msgid "I'm Ready"
@@ -7962,7 +8513,7 @@ msgstr "Mégse"
 
 #: src/multiplayer_connect.cpp:509
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "Ez a pálya alkalmatlan, mert nincsenek csapatok benne."
 
 #: src/multiplayer_connect.cpp:799
 msgid "Game Lobby"
@@ -7985,9 +8536,8 @@ msgid "Empty"
 msgstr "Üres"
 
 #: src/multiplayer_connect.cpp:826
-#, fuzzy
 msgid "Era not available: "
-msgstr "Nincs elérhető cél"
+msgstr "Nincs elérhető éra:"
 
 #: src/multiplayer_connect.cpp:892
 msgid "This is not a multiplayer save"
@@ -7995,7 +8545,7 @@ msgstr "Ez nem egy többjátékos mentés"
 
 #: src/multiplayer_connect.cpp:944
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Nem találtam a $era érát"
 
 #: src/multiplayer_connect.cpp:962
 msgid ""
@@ -8006,9 +8556,8 @@ msgstr ""
 "@Legyőződ az (összes) ellenfél vezérét"
 
 #: src/multiplayer_connect.cpp:998
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "Hálózati játékosok kapcsolódására várakozás"
+msgstr "Hálózati játékosok kapcsolódására várakozás..."
 
 #: src/multiplayer_create.cpp:45
 msgid "Name of game:"
@@ -8032,7 +8581,7 @@ msgstr "Megfigyelők"
 
 #: src/multiplayer_create.cpp:53
 msgid "OK"
-msgstr ""
+msgstr "Oké"
 
 #: src/multiplayer_create.cpp:54
 msgid "Regenerate"
@@ -8084,7 +8633,7 @@ msgstr "Nincs többjátékos oldal."
 
 #: src/multiplayer_create.cpp:122
 msgid "No eras found"
-msgstr ""
+msgstr "Nem találtam érát"
 
 #: src/multiplayer_create.cpp:131
 msgid "$login's game"
@@ -8092,7 +8641,7 @@ msgstr "$login játéka"
 
 #: src/multiplayer_create.cpp:161
 msgid "Invalid era selected"
-msgstr ""
+msgstr "A kiválasztott éra érvénytelen"
 
 #: src/multiplayer_create.cpp:192
 msgid "You must enter a name."
@@ -8103,18 +8652,16 @@ msgid "Turns: "
 msgstr "Kör:"
 
 #: src/multiplayer_create.cpp:203
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "korlátlan"
+msgstr "Korlátlan kör"
 
 #: src/multiplayer_create.cpp:210
 msgid "Village Gold: "
 msgstr "Falu arany:"
 
 #: src/multiplayer_create.cpp:216
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Terep-alakítók"
+msgstr "Terep-alakító:"
 
 #: src/multiplayer_create.cpp:319
 msgid "Players: "
@@ -8142,7 +8689,7 @@ msgstr "Üres hely"
 
 #: src/multiplayer_lobby.cpp:126
 msgid "<no games open>"
-msgstr "<nincs nyitott játék>"
+msgstr ""
 
 #: src/multiplayer_ui.cpp:50
 msgid "Red"
@@ -8201,19 +8748,16 @@ msgid "Getting game data..."
 msgstr "Játék paramétereinek letöltése..."
 
 #: src/multiplayer_wait.cpp:180
-#, fuzzy
 msgid "No multiplayer sides available in this game"
-msgstr "Nincs szabad oldal ebben a játékban."
+msgstr "Nincs szabad oldal ebben a játékban"
 
 #: src/multiplayer_wait.cpp:202
-#, fuzzy
 msgid "Era not available"
-msgstr "Nincs elérhető cél"
+msgstr "Az éra nem elérhető"
 
 #: src/multiplayer_wait.cpp:210
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "Nincs többjátékos oldal."
+msgstr "Nincs többjátékos oldal"
 
 #: src/multiplayer_wait.cpp:230
 msgid "Choose your side:"
@@ -8237,12 +8781,11 @@ msgstr "A fájl amit be próbáltál tölteni hibás"
 
 #: src/playlevel.cpp:730
 msgid "Game Over"
-msgstr ""
+msgstr "Játék vége"
 
 #: src/playlevel.cpp:731
-#, fuzzy
 msgid "The game is over."
-msgstr "Az állás el lett mentve"
+msgstr "A játék véget ért."
 
 #: src/playlevel.cpp:744
 msgid "Defeat"
@@ -8253,33 +8796,28 @@ msgid "You have been defeated!"
 msgstr "Kikaptál!"
 
 #: src/playlevel.cpp:814
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Megmaradt arany"
+msgstr "Megmaradt arany: "
 
 #: src/playlevel.cpp:817
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Korai befejezés bónusz"
+msgstr "Korai befejezés bónusz: "
 
 #: src/playlevel.cpp:819
 msgid "per turn"
 msgstr "körönként"
 
 #: src/playlevel.cpp:820
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Kihasználatlan körök"
+msgstr "Kihasználatlan körök: "
 
 #: src/playlevel.cpp:822
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bónusz"
+msgstr "Bónusz: "
 
 #: src/playlevel.cpp:824
-#, fuzzy
 msgid "Gold: "
-msgstr "Arany"
+msgstr "Arany: "
 
 #: src/playlevel.cpp:829
 #, no-c-format
@@ -8287,9 +8825,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "Aranyad 80%-át megőrizzük a következő pályára"
 
 #: src/playlevel.cpp:830
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Megőrzött arany"
+msgstr "Megőrzött arany: "
 
 #: src/playlevel.cpp:835
 msgid "Victory"
@@ -8334,9 +8871,8 @@ msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
 #: src/playturn.cpp:662
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Válassz fegyvert"
+msgstr "Válassz fegyvert:"
 
 #: src/playturn.cpp:1261
 msgid ""
@@ -8405,9 +8941,8 @@ msgid "Recruit"
 msgstr "Toborzás"
 
 #: src/playturn.cpp:1794 src/playturn.cpp:1978
-#, fuzzy
 msgid "Select unit:"
-msgstr "Válassz egységet"
+msgstr "Válassz egységet:"
 
 #: src/playturn.cpp:1828
 msgid "You don't have enough gold to recruit that unit"
@@ -8454,9 +8989,8 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Legalább $cost arannyal kell rendelkezned ahhoz, hogy toborozhass."
 
 #: src/playturn.cpp:1952
-#, fuzzy
 msgid "level: "
-msgstr "szintű"
+msgstr "szint: "
 
 #: src/playturn.cpp:1965
 msgid "Dismiss Unit"
@@ -8467,9 +9001,8 @@ msgid "Recall"
 msgstr "Visszahívás"
 
 #: src/playturn.cpp:2022
-#, fuzzy
 msgid "Message:"
-msgstr "Üzenet"
+msgstr "Üzenet: "
 
 #: src/playturn.cpp:2022
 msgid "Send to allies only"
@@ -8550,9 +9083,8 @@ msgid "Place Label"
 msgstr "Címke elhelyezése"
 
 #: src/playturn.cpp:2489
-#, fuzzy
 msgid "Label:"
-msgstr "Címke"
+msgstr "Címke:"
 
 #: src/playturn.cpp:2621
 msgid ""
@@ -8589,9 +9121,8 @@ msgstr ""
 "támadhatják."
 
 #: src/reports.cpp:107
-#, fuzzy
 msgid "invisible: "
-msgstr "láthatatlan"
+msgstr "láthatatlan: "
 
 #: src/reports.cpp:112
 msgid ""
@@ -8602,9 +9133,8 @@ msgstr ""
 "eggyel kevesebbszer támadhat mint egyébként tenné."
 
 #: src/reports.cpp:112
-#, fuzzy
 msgid "slowed: "
-msgstr "lelassított"
+msgstr "lelassított: "
 
 #: src/reports.cpp:117
 msgid ""
@@ -8623,37 +9153,32 @@ msgstr ""
 "kevesebb az életerőpontjuk."
 
 #: src/reports.cpp:117
-#, fuzzy
 msgid "poisoned: "
-msgstr "megmérgezett"
+msgstr "megmérgezett: "
 
 #: src/reports.cpp:124
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Ezt az egységet kővé változtatták. Sem nem léphet, sem nem harcolhat."
 
 #: src/reports.cpp:124
-#, fuzzy
 msgid "stone: "
-msgstr "kővéváltoztatás"
+msgstr "kővéváltoztatás: "
 
 #: src/reports.cpp:234
 msgid "damage"
 msgstr "sebzés"
 
 #: src/reports.cpp:252
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Igazságos egységek"
+msgstr "Igazságos egységek: "
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Semleges egységek"
+msgstr "Semleges egységek: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Törvénytelen egységek"
+msgstr "Törvénytelen egységek: "
 
 #: src/reports.cpp:309
 msgid "Owned village"
@@ -8668,9 +9193,8 @@ msgid "Allied village"
 msgstr "Szövetséges falu"
 
 #: src/reports.cpp:373
-#, fuzzy
 msgid "Observers:"
-msgstr "Megfigyelők"
+msgstr "Megfigyelők:"
 
 #: src/titlescreen.cpp:184
 msgid "TitleScreen button^Tutorial"
@@ -8759,47 +9283,11 @@ msgstr "igazságos"
 msgid "neutral"
 msgstr "semleges"
 
-#, fuzzy
-#~ msgid "Merle"
-#~ msgstr "Tovább"
-
-#~ msgid "Players"
-#~ msgstr "Játékosok"
-
-#~ msgid "Load Game..."
-#~ msgstr "Játék betöltése..."
-
-#~ msgid "Ok"
-#~ msgstr "Oké"
-
-#~ msgid "Experience Requirements: "
-#~ msgstr "Tapasztalati követelmények:"
-
 #~ msgid ""
-#~ "The game was unable to bind to the port needed to host games over the "
-#~ "network. Network players will be unable to connect to this game"
+#~ "Congratulations! You have defeated me, and completed the second and final "
+#~ "training scenario. Next, you may want to begin a campaign, or play "
+#~ "multiplayer."
 #~ msgstr ""
-#~ "A játék nem tudta használatba venni a portot, amely szükséges a "
-#~ "halózatban a játékok lebonyolításához. Hálózati játékosok ezért nem "
-#~ "fognak csatlakozni tudni ehhez a játékhoz."
-
-#~ msgid "Warning"
-#~ msgstr "Figyelmeztetés"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Játéklista letöltése..."
-
-#~ msgid "The game has been cancelled"
-#~ msgstr "A játék le lett fújva"
-
-#~ msgid "The side you have chosen is no longer available"
-#~ msgstr "Az oldal amit választottál már nem elérhető"
-
-#~ msgid "Show replay of game up to save point?"
-#~ msgstr "Mutassa a visszajátszást a mentett állást megelőzően?"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "1"
-#~ msgstr "1"
+#~ "Gratulálok! Legyőztél engem és ezzel befejezted a második és egyben "
+#~ "utolsó gyakorló küldetést. A következőkben belekezdhetsz egy hadjáratba "
+#~ "vagy kipróbálhatod a többjátékos játékmódot."
