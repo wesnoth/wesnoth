@@ -2084,7 +2084,7 @@ void turn_info::show_statistics()
 		items.push_back(str.str());
 	}
 
-	const int res = gui::show_dialog(gui_,NULL,_("Statistics"),"",gui::MESSAGE,&items);
+	const int res = gui::show_dialog(gui_,NULL,_("Statistics"),"",gui::CLOSE_ONLY,&items);
 	std::string title;
 	items.clear();
 	switch(res) {
