@@ -1232,12 +1232,12 @@ bool game_controller::play_multiplayer()
 
 	std::vector<std::string> host_or_join;
 	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
-	char const sep = COLUMN_SEPARATOR;
-	host_or_join.push_back(pre + "server.png" + sep + _("Join Official Server") + sep + _("Log on to the official Wesnoth multiplayer server"));
-	host_or_join.push_back(pre + "serverother.png" + sep + _("Join Game") + sep + _("Join a server or hosted game"));
-	host_or_join.push_back(pre + "hostgame.png" + sep + _("Host Networked Game") + sep + _("Host a game without using a server"));
-	host_or_join.push_back(pre + "hotseat.png" + sep + _("Hotseat Game") + sep + _("Play a multiplayer game sharing the same machine"));
-	host_or_join.push_back(pre + "ai.png" + sep + _("Human vs AI") + sep + _("Play a game against AI opponents"));
+	char const sep1 = COLUMN_SEPARATOR, sep2 = HELP_STRING_SEPARATOR;
+	host_or_join.push_back(pre + "server.png" + sep1 + _("Join Official Server") + sep2 + _("Log on to the official Wesnoth multiplayer server"));
+	host_or_join.push_back(pre + "serverother.png" + sep1 + _("Join Game") + sep2 + _("Join a server or hosted game"));
+	host_or_join.push_back(pre + "hostgame.png" + sep1 + _("Host Networked Game") + sep2 + _("Host a game without using a server"));
+	host_or_join.push_back(pre + "hotseat.png" + sep1 + _("Hotseat Game") + sep2 + _("Play a multiplayer game sharing the same machine"));
+	host_or_join.push_back(pre + "ai.png" + sep1 + _("Human vs AI") + sep2 + _("Play a game against AI opponents"));
 
 	std::string login = preferences::login();
 	const int res = gui::show_dialog(disp(),NULL,_("Multiplayer"),"",gui::OK_CANCEL,&host_or_join,NULL,_("Login") + std::string(": "),&login);
