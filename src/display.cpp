@@ -934,7 +934,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 			continue;
 
 		const int side = u->second.side();
-		const SDL_Color& col = font::get_side_colour(side);
+		const SDL_Color& col = team::get_side_colour(side);
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		SDL_Rect rect = {x + (u->first.x*w)/map_.x(),
 		                 y + (u->first.y*h)/map_.y(),
@@ -1204,9 +1204,9 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 
 		if(preferences::show_side_colours()) {
 			char buf[50];
-			sprintf(buf,"misc/ellipse-%d-top.png",it->second.side());
+			sprintf(buf,"misc/ellipse-%d-top.png",team::get_side_colour_index(it->second.side()));
 			ellipse_back.assign(image::get_image(buf));
-			sprintf(buf,"misc/ellipse-%d-bottom.png",it->second.side());
+			sprintf(buf,"misc/ellipse-%d-bottom.png",team::get_side_colour_index(it->second.side()));
 			ellipse_front.assign(image::get_image(buf));
 		}
 
@@ -1878,7 +1878,7 @@ SDL_Surface* display::get_flag(gamemap::TERRAIN terrain, int x, int y)
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		if(teams_[i].owns_village(loc) && (!fogged(x,y) || !shrouded(x,y) && !teams_[currentTeam_].is_enemy(i+1))) {
 			char buf[50];
-			sprintf(buf,"terrain/flag-team%d.png",i+1);
+			sprintf(buf,"terrain/flag-team%d.png",team::get_side_colour_index(int(i+1)));
 			return image::get_image(buf);
 		}
 	}
@@ -2322,7 +2322,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 
 	SDL_Color speaker_colour = {255,255,255,255};
 	if(side >= 1) {
-		speaker_colour = font::get_side_colour(side);
+		speaker_colour = team::get_side_colour(side);
 	}
 
 	const SDL_Rect rect = map_area();

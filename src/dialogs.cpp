@@ -255,6 +255,10 @@ void save_preview_pane::draw()
 		return;
 	}
 
+	set_dirty(false);
+
+	static int n = 0;
+
 	const config& summary = *(*summaries_)[index_];
 
 	SDL_Surface* const screen = disp().video().getSurface();
@@ -271,7 +275,7 @@ void save_preview_pane::draw()
 		const scoped_sdl_surface image(image::get_image(leader->second.image(),image::UNSCALED));
 		if(image != NULL) {
 			SDL_Rect image_rect = {area.x,area.y,image->w,image->h};
-			ypos += image_rect.y + image_rect.h + save_preview_border;
+			ypos += image_rect.h + save_preview_border;
 
 			SDL_BlitSurface(image,NULL,screen,&image_rect);
 		}
@@ -424,8 +428,9 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 		}
 	}
 
+	const events::event_context context;
+
 	if(generate_summaries) {
-		const events::event_context context;
 		gui::progress_bar bar(disp);
 		const SDL_Rect bar_area = {disp.x()/2 - 100, disp.y()/2 - 20, 200, 40};
 		bar.set_location(bar_area);
@@ -684,14 +689,18 @@ void unit_preview_pane::draw()
 	details << font::BOLD_TEXT << u.type().language_name()
 			<< "\n" << font::SMALL_TEXT << "(" << string_table["level"] << " "
 			<< u.type().level() << ")\n"
-			<< translate_string(unit_type::alignment_description(u.type().alignment()))
-			<< "\n"
-			<< u.traits_description() << "\n";
+			<< translate_string(unit_type::alignment_description(u.type().alignment())) << "\n"
+			<< u.traits_description() << " \n";
 
 	const std::vector<std::string>& abilities = u.type().abilities();
 	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
-		details << translate_string_default("ability_" + *a, *a) << "\n";
+		details << translate_string_default("ability_" + *a, *a);
+		if(a+1 != abilities.end()) {
+			details << ",";
+		}
 	}
+
+	details << " \n";
 
 	//display in green/white/red depending on hitpoints
 	if(u.hitpoints() <= u.max_hitpoints()/3)

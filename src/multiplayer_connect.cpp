@@ -287,13 +287,27 @@ void mp_connect::lists_init()
 		player_teams_.push_back(string_table["team"] + " " + team_name);
 	}
 
+	std::string prefix;
+	prefix.resize(1);
 	//Colors
-	player_colors_.push_back(string_table["red"]);
-	player_colors_.push_back(string_table["blue"]);
-	player_colors_.push_back(string_table["green"]);
-	player_colors_.push_back(string_table["yellow"]);
-	player_colors_.push_back(string_table["pink"]);
-	player_colors_.push_back(string_table["purple"]);
+	prefix[0] = 1;
+	player_colors_.push_back(prefix + translate_string("red"));
+	prefix[0] = 2;
+	player_colors_.push_back(prefix + translate_string("blue"));
+	prefix[0] = 3;
+	player_colors_.push_back(prefix + translate_string("green"));
+	prefix[0] = 4;
+	player_colors_.push_back(prefix + translate_string("yellow"));
+	prefix[0] = 5;
+	player_colors_.push_back(prefix + translate_string("purple"));
+	prefix[0] = 6;
+	player_colors_.push_back(prefix + translate_string("orange"));
+	prefix[0] = 7;
+	player_colors_.push_back(prefix + translate_string("grey"));
+	prefix[0] = 8;
+	player_colors_.push_back(prefix + translate_string("white"));
+	prefix[0] = 9;
+	player_colors_.push_back(prefix + translate_string("brown"));
 }
 
 void mp_connect::add_player(const std::string& name)
@@ -589,6 +603,10 @@ lobby::RESULT mp_connect::process()
 			}
 
 			level_changed = true;
+		}
+
+		if(combos_color_[n].process(mousex, mousey, left_button)) {
+			side["colour"] = lexical_cast_default<std::string>(combos_color_[n].selected()+1);
 		}
 
 		//Player race

@@ -32,10 +32,6 @@ struct manager {
 //function which sets the name of the font to use
 void set_font(const std::string& name);
 
-//function which, given a 1-based side, will return the colour of
-//that side.
-const SDL_Color& get_side_colour(int side);
-
 //various standard colours
 extern const SDL_Color NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,
                        DARK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR;

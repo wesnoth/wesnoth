@@ -360,7 +360,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 	case SIDE_PLAYING: {
 		char buf[50];
-		sprintf(buf,"terrain/flag-team%d.png",playing_side);
+		sprintf(buf,"terrain/flag-team%d.png",team::get_side_colour_index(playing_side));
 
 		u = find_leader(units,playing_side);
 		return report("",buf,u != units.end() ? u->second.description() : "");

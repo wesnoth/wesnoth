@@ -19,6 +19,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
+#include "team.hpp"
 #include "tooltips.hpp"
 #include "util.hpp"
 
@@ -164,32 +165,6 @@ const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
 const char LARGE_TEXT='*', SMALL_TEXT='`', GOOD_TEXT='@', BAD_TEXT='#',
            NORMAL_TEXT='{', BLACK_TEXT='}', BOLD_TEXT='~', IMAGE='&', NULL_MARKUP='^';
 
-
-const SDL_Color& get_side_colour(int side)
-{
-	side -= 1;
-
-	static const SDL_Color sides[] = { {0xFF,0x00,0x00,0},
-	                                   {0x00,0x00,0xFF,0},
-	                                   {0x00,0xFF,0x00,0},
-	                                   {0xFF,0xFF,0x00,0},
-	                                   {0xFF,0x00,0xFF,0},
-					   {0xFF,0x7F,0x00,0},
-					   {0x89,0x89,0x89,0},
-					   {0xFF,0xFF,0xFF,0},
-					   {0x94,0x50,0x27,0},
-					   {0x02,0xF5,0xE1,0},
-	                                   {0xFF,0x00,0xFF,0} };
-
-	static const size_t nsides = sizeof(sides)/sizeof(*sides);
-
-	if(size_t(side) < nsides) {
-		return sides[side];
-	} else {
-		return BLACK_COLOUR;
-	}
-}
-
 namespace {
 
 SDL_Rect text_size(TTF_Font* font, const std::string& str, const SDL_Color& colour, int style)
@@ -296,7 +271,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 			return i1+1;
 		default:
 			if(*i1 >= 1 && *i1 <= 9) {
-				*colour = get_side_colour(*i1);
+				*colour = team::get_side_colour(*i1);
 				break;
 			}
 

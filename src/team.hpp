@@ -84,6 +84,8 @@ public:
 		bool share_maps, share_view;
 
 		std::string music;
+
+		int colour;
 	};
 
 	team(const config& cfg, int gold=100);
@@ -155,7 +157,13 @@ public:
 	
 	const std::string& music() const;
 
+	int map_colour_to() const;
+
 	static int nteams();
+
+	//function which, when given a 1-based side will return the colour used by that side.
+	static const SDL_Color& get_side_colour(int side);
+	static int get_side_colour_index(int side);
 
 private:
 	//Make these public if you need them, but look at knows_about_team(...) first.
