@@ -491,20 +491,14 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					if((**sd)["description"].empty())
 						(**sd)["description"] = preferences::login();
 				}
-
-				std::cerr << "starting second dialog...\n";
 	
 				// Wait to players, Configure players
 				gui::draw_dialog_frame((disp.x()-width)/2, (disp.y()-height)/2,
 						       width, height, disp);
 
-				std::cerr << "a\n";
-
 				//Buttons
 				gui::button launch2_game(disp,string_table["launch"]);
 				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
-
-				std::cerr << "a\n";
 
 				//Title and labels
 				SDL_Rect labelr;
@@ -516,7 +510,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
 				                string_table["player_type"],((disp.x()-width)/2+30)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
-				std::cerr << "b\n";
+
 				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
 				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
 						string_table["race"],0,0);
@@ -541,8 +535,6 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
 				                string_table["gold"],((disp.x()-width)/2+480)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
-
-				std::cerr << "c\n";
 
 				//Options
 				std::vector<std::string> player_type;

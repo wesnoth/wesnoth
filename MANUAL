@@ -13,18 +13,18 @@ Controls
    u:              Undo last move (only deterministic moves can be undone)
    r:              Redo move
    n:              Cycle through units that have movement left
-   1-3:            Cycle through 1st/2nd/3rd level units
+   1-7:            Show how far currently selected unit can move in that many turns
    space:          End unit turn and cycle to next unit that has movement left
    l:              Move to leader unit
    ctrl-f:         Toggle fullscreen/windowed mode
    ctrl-r:         Recruit unit
+   ctrl-shift-r:   Repeat last recruit
    ctrl-c:         Recall unit
    ctrl-a:         Toggle accelerated game mode
    d:              Describe current unit
    ctrl-d:         View defensive ratings of current unit against attacks
    ctrl-t:         View how the current unit behaves in various terrain
    ctrl-s:         Save game
-   ctrl-shift-r:   Repeat recruit
 
 
 Orbs
@@ -46,7 +46,15 @@ The game takes place over a series of battles, or scenarios. Each scenario pits 
 
 Gold
 
-Each side is given some amount of gold to begin with, and receives 2 gold pieces per turn, plus 2 more gold pieces for every village that side controls. Each side must pay maintenance of 1 gold piece every turn for each unit they have fielded.
+Each side is given some amount of gold to begin with, and receives 2 gold pieces per turn, plus 1 more gold piece for every village that side controls.
+
+Each unit also has a maintenance cost. The maintenance cost is generally equal to the level of the unit (but see the 'Loyal' trait below). Units that are not recalled or recruited - i.e. that lead the side or join the side voluntarily - do not have a maintenance cost associated with them. Maintenance is only paid if the total maintenance of a side's units is greater than the number of villages that side controls. Maintenance paid is the difference between the number of villages and the maintenance cost.
+
+So, the formula for determining the income per turn is,
+
+2 + villages - maximum(0,maintenance - villages)
+
+where maintenance is equal to the sum of the levels of all units that have been recalled and recruited.
 
 
 Recruiting and recalling
@@ -62,8 +70,17 @@ You are not able to move a unit on the turn you recruit or recall that unit.
 
 Unit specialties
 
-Unit specialties are decribed under Unit Description in main menu.
+Unit specialties are decribed under Unit Description in-game.
 
+Traits
+
+Units have traits which reflect aspects of their character. Traits are assigned randomly to units when they are created. Each unit receives two traits. The possible traits are as follows:
+
+Loyal: The unit never has a maintenance above 1.
+Strong: The unit does extra damage in close combat, and has a few more hitpoints.
+Quick: The unit has one extra movement point, but a few less hitpoints.
+Resilient: The unit has more hitpoints.
+Intelligent: The unit requires less experience to advance a level.
 
 Moving
 
