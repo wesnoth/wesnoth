@@ -14,6 +14,7 @@
 #define FONT_HPP_INCLUDED
 
 #include "SDL.h"
+#include "SDL_ttf.h"
 
 #include "display.hpp"
 #include "video.hpp"
@@ -79,7 +80,7 @@ bool is_format_char(char c);
 /// Determine the width of a line of text given a certain font size.
 /// The font type used is the default wesnoth font type.
 ///
-int line_width(const std::string line, int font_size);
+int line_width(const std::string line, int font_size, int style=TTF_STYLE_NORMAL);
 
 ///
 /// If the text exceedes the specified max width, wrap it one a word basis.

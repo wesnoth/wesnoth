@@ -11,8 +11,6 @@
    See the COPYING file for more details.
 */
 
-#include "SDL_ttf.h"
-
 #include "config.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
@@ -493,7 +491,7 @@ std::string remove_first_space(const std::string& text)
 
 namespace font {
 
-	int line_width(const std::string line, int font_size)
+	int line_width(const std::string line, int font_size, int style)
 	{
     
 		TTF_Font* const font = get_font(font_size);
@@ -504,6 +502,7 @@ namespace font {
 		int w = 0;
 		int h = 0;
   
+		font_style_setter style_setter(font, style);
 		TTF_SizeUTF8(font, line.c_str(), &w, &h);
 
 		return w;

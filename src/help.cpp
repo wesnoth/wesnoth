@@ -16,6 +16,7 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "font.hpp"
+#include "image.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
 #include "show_dialog.hpp"
@@ -121,10 +122,16 @@ namespace {
 		bool text_started_;
 	};
 
-	// Small helpers for making generation of topics easier.
+	// Helpers for making generation of topics easier.
 	std::string jump_to(const unsigned pos) {
 		std::stringstream ss;
 		ss << "<jump>to=" << pos << "</jump>";
+		return ss.str();
+	}
+
+	std::string jump(const unsigned amount) {
+		std::stringstream ss;
+		ss << "<jump>amount=" << amount << "</jump>";
 		return ss.str();
 	}
 	
@@ -134,6 +141,65 @@ namespace {
 		return ss.str();
 	}
 
+	typedef std::vector<std::vector<std::pair<std::string, unsigned> > > table_spec;
+	// Create a table using the table specs. Return markup with jumps
+	// that create a table. The table spec contains a vector with
+	// vectors with pairs. The pairs are the markup string that should
+	// be in a cell, and the width of that cell.
+	std::string generate_table(const table_spec &tab, const unsigned spacing=20) {
+		table_spec::const_iterator row_it;
+		std::vector<std::pair<std::string, unsigned> >::const_iterator col_it;
+		unsigned num_cols = 0;
+		for (row_it = tab.begin(); row_it != tab.end(); row_it++) {
+			if (row_it->size() > num_cols) {
+				num_cols = row_it->size();
+			}
+		}
+		std::vector<unsigned> col_widths(num_cols, 0);
+		// Calculate the width of all columns, including spacing.
+		for (row_it = tab.begin(); row_it != tab.end(); row_it++) {
+			unsigned col = 0;
+			for (col_it = row_it->begin(); col_it != row_it->end(); col_it++) {
+				if (col_widths[col] < col_it->second + spacing) {
+					col_widths[col] = col_it->second + spacing;
+				}
+				col++;
+			}
+		}
+		std::vector<unsigned> col_starts(num_cols);
+		// Calculate the starting positions of all columns
+		for (unsigned i = 0; i < num_cols; i++) {
+			unsigned this_col_start = 0;
+			for (unsigned j = 0; j < i; j++) {
+				this_col_start += col_widths[j];
+			}
+			col_starts[i] = this_col_start;
+		}
+		std::stringstream ss;
+		for (row_it = tab.begin(); row_it != tab.end(); row_it++) {
+			unsigned col = 0;
+			for (col_it = row_it->begin(); col_it != row_it->end(); col_it++) {
+				ss << jump_to(col_starts[col]) << col_it->first;
+				col++;
+			}
+			ss << "\n";
+		}
+		return ss.str();
+	}
+
+	// Return the width for the image with filename.
+	unsigned image_width(const std::string &filename) {
+		image::locator loc(filename);
+		surface surf(get_image(loc, image::UNSCALED));
+		if (surf != NULL) {
+			return surf->w;
+		}
+		return 0;
+	}
+
+	void push_tab_pair(std::vector<std::pair<std::string, unsigned> > &v, const std::string &s) {
+		v.push_back(std::make_pair(s, font::line_width(s, normal_font_size)));
+	}
 }
 
 namespace help {
@@ -498,7 +564,7 @@ std::vector<topic> generate_unit_topics() {
 			// to the topics containing information about those units.
 			std::vector<std::string> next_units = type.advances_to();
 			if (next_units.size() > 0) {
-				ss << cap(_("Advances to")) << ": ";
+				ss << _("Advances to") << ": ";
 				for (std::vector<std::string>::const_iterator advance_it = next_units.begin();
 					 advance_it != next_units.end(); advance_it++) {
 					std::string unit_id = *advance_it;
@@ -524,7 +590,7 @@ std::vector<topic> generate_unit_topics() {
 			// Print the abilities the units has, cross-reference them
 			// to their respective topics.
 			if (type.abilities().size() > 0) {
-				ss << cap(_("Abilities")) << ": ";
+				ss << _("Abilities") << ": ";
 				for (std::vector<std::string>::const_iterator ability_it = type.abilities().begin();
 					 ability_it != type.abilities().end(); ability_it++) {
 					const std::string ref_id = std::string("ability_") + *ability_it;
@@ -545,11 +611,11 @@ std::vector<topic> generate_unit_topics() {
 				ss << "\n";
 			}
 			// Print some basic information such as HP and movement points.
-			ss << _("HP") << ": " << type.hitpoints() << jump_to(100)
-			   << _("Moves") << ": " << type.movement() << jump_to(240)
-			   << _("alignment") << ": "
+			ss << _("HP") << ": " << type.hitpoints() << jump(30)
+			   << _("Moves") << ": " << type.movement() << jump(30)
+			   << _("Alignment") << ": "
 			   << type.alignment_description(type.alignment())
-			   << jump_to(390);
+			   << jump(30);
 			if (type.experience_needed() != 500) {
 				// 500 is apparently used when the units cannot advance.
 				ss << _("Required XP") << ": " << type.experience_needed();
@@ -564,13 +630,35 @@ std::vector<topic> generate_unit_topics() {
 				// Print headers for the table.
 				ss << "\n\n<header>text='" << escape(cap(_("attacks")))
 				   << "'</header>\n\n";
-				ss << jump_to(60) << bold(cap(_("Name"))) << jump_to(200)
-				   << bold(cap(_("Type")))
-				   << jump_to(280) << bold(cap(_("Dmg"))) << jump_to(340)
-				   << bold(cap(_("strikes")))
-				   << jump_to(400) << bold(cap(_("Range"))) << jump_to(480)
-				   << bold(cap(_("Special"))) << "\n";
-
+				table_spec table;
+				std::vector<std::pair<std::string, unsigned> > first_row;
+				// Dummy element, icons are below.
+				first_row.push_back(std::make_pair("", 0));
+				first_row.push_back(std::make_pair(bold(_("Name")),
+												   font::line_width(cap(_("Name")),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+				first_row.push_back(std::make_pair(bold(_("Type")),
+												   font::line_width(_("Type"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+				first_row.push_back(std::make_pair(bold(_("Dmg")),
+												   font::line_width(_("Dmg"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+				first_row.push_back(std::make_pair(bold(_("Strikes")),
+												   font::line_width(_("Strikes"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+				first_row.push_back(std::make_pair(bold(_("Range")),
+												   font::line_width(_("Range"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+				first_row.push_back(std::make_pair(bold(_("Special")),
+												   font::line_width(_("Special"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+				table.push_back(first_row);
 				// Print information about every attack.
 				for (std::vector<attack_type>::const_iterator attack_it =attacks.begin();
 					 attack_it != attacks.end(); attack_it++) {
@@ -584,13 +672,22 @@ std::vector<topic> generate_unit_topics() {
 					if (lang_type == "") {
 						lang_type = attack_it->type();
 					}
-					ss << "\n<img>src='" << (*attack_it).icon() << "'</img>" << jump_to(60);
-					ss << lang_weapon << jump_to(200) << lang_type
-					   << jump_to(280) << (*attack_it).damage() << jump_to(340)
-					   << (*attack_it).num_attacks() << jump_to(400)
-					   << ((*attack_it).range() == attack_type::SHORT_RANGE ?
-						   _("melee") : _("ranged"));
-					
+					std::vector<std::pair<std::string, unsigned> > row;
+					std::stringstream attack_ss;
+					attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
+					row.push_back(std::make_pair(attack_ss.str(),
+												 image_width(attack_it->icon())));
+					attack_ss.str("");
+					push_tab_pair(row, lang_weapon);
+					push_tab_pair(row, lang_type);
+					attack_ss << attack_it->damage();
+					push_tab_pair(row, attack_ss.str());
+					attack_ss.str("");
+					attack_ss << attack_it->num_attacks();
+					push_tab_pair(row, attack_ss.str());
+					attack_ss.str("");
+					push_tab_pair(row, (*attack_it).range() == attack_type::SHORT_RANGE ?
+								  _("melee") : _("ranged"));
 					// Show this attack's special, if it has any. Cross
 					// reference it to the section describing the
 					// special.
@@ -602,19 +699,36 @@ std::vector<topic> generate_unit_topics() {
 						if (lang_special == "") {
 							lang_special = attack_it->special();
 						}
-						ss << jump_to(480) << "<ref>dst='" << ref_id << "' text='"
-						   << escape(lang_special) << "'</ref>";
+						attack_ss << "<ref>dst='" << ref_id << "' text='"
+								  << escape(lang_special) << "'</ref>";
+						row.push_back(std::make_pair(attack_ss.str(),
+													 font::line_width(lang_special, normal_font_size)));
+																	  
 					}
+					table.push_back(row);
 				}
+				ss << generate_table(table);
 			}
 
 			// Print the resistance table of the unit.
-			ss << "\n\n<header>text='" << cap(escape(_("Resistances")))
+			ss << "\n\n<header>text='" << escape(_("Resistances"))
 			   << "'</header>\n\n";
+			table_spec resistance_table;
+			std::vector<std::pair<std::string, unsigned> > first_res_row;
+			first_res_row.push_back(std::make_pair(bold(_("Attack Type")),
+												   font::line_width(_("Attack Type"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+			first_res_row.push_back(std::make_pair(bold(_("Resistance")),
+												   font::line_width(_("Resistance"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+			resistance_table.push_back(first_res_row);
 			const unit_movement_type &movement_type = type.movement_type();
 			string_map dam_tab = movement_type.damage_table();
 			for (string_map::const_iterator dam_it = dam_tab.begin();
 				 dam_it != dam_tab.end(); dam_it++) {
+				std::vector<std::pair<std::string, unsigned> > row;
 				int resistance = 100 - atoi((*dam_it).second.c_str());
 				std::string color = "";
 				if (resistance < 0) {
@@ -624,17 +738,36 @@ std::vector<topic> generate_unit_topics() {
 				if (lang_weapon == "") {
 					lang_weapon = (*dam_it).first;
 				}
-				ss << lang_weapon << jump_to(150) << "<format>color=" << color
-				   << " text='"<< resistance << "%'</format>\n";
+				push_tab_pair(row, lang_weapon);
+				std::stringstream str;
+				str << "<format>color=" << color << " text='"<< resistance << "%'</format>";
+				const std::string markup = str.str();
+				str.str("");
+				str << resistance << "%";
+				row.push_back(std::make_pair(markup,
+											 font::line_width(str.str(), normal_font_size)));
+				resistance_table.push_back(row);
 			}
-
+			ss << generate_table(resistance_table);
 			if (map != NULL) {
 				// Print the terrain modifier table of the unit.
-				ss << "\n<header>text='" << escape(cap(translate_string("terrain_info")))
-				   << "'</header>\n\n"
-				   << bold(cap(translate_string("terrain"))) << jump_to(140)
-				   << bold(cap(translate_string("movement"))) << jump_to(280)
-				   << bold(cap(translate_string("defense"))) << "\n";
+				ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
+				   << "'</header>\n\n";
+				std::vector<std::pair<std::string, unsigned> > first_row;
+				table_spec table;
+				first_row.push_back(std::make_pair(bold(_("Terrain")),
+												   font::line_width(_("Terrain"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+				first_row.push_back(std::make_pair(bold(_("Movement")),
+												   font::line_width(_("Movement"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+				first_row.push_back(std::make_pair(bold(_("Defense")),
+												   font::line_width(_("Defense"),
+																	normal_font_size,
+																	TTF_STYLE_BOLD)));
+				table.push_back(first_row);
 				for (std::set<std::string>::const_iterator terrain_it =
 						 preferences::encountered_terrains().begin();
 					 terrain_it != preferences::encountered_terrains().end();
@@ -646,21 +779,31 @@ std::vector<topic> generate_unit_topics() {
 					}
 					const terrain_type& info = map->get_terrain_info(terrain);
 					if (!info.is_alias()) {
+						std::vector<std::pair<std::string, unsigned> > row;
 						const std::string& name = map->terrain_name(terrain);
 						const std::string& lang_name = translate_string(name);
 						const int moves = movement_type.movement_cost(*map,terrain);
 						std::stringstream str;
-						ss << "<ref>text='" << escape(lang_name) << "' dst='"
-						   << std::string("terrain_") + terrain << "'</ref>" << jump_to(140);
+						str << "<ref>text='" << escape(lang_name) << "' dst='"
+							<< std::string("terrain_") + terrain << "'</ref>";
+						row.push_back(std::make_pair(str.str(), 
+													 font::line_width(lang_name,
+																	  normal_font_size)));
+						str.str("");
 						if(moves < 100)
-							ss << moves;
+							str << moves;
 						else
-							ss << "--";
+							str << "--";
+						push_tab_pair(row, str.str());
+						str.str("");
 						const int defense =
 							100 - movement_type.defense_modifier(*map,terrain);
-						ss << jump_to(280) << defense << "%\n";
+						str << defense << "%";
+						push_tab_pair(row, str.str());
+						table.push_back(row);
 					}
 				}
+				ss << generate_table(table);
 			}
 		}
 		else {
@@ -1369,8 +1512,11 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 		return;
 	}
 	const std::string first_word = get_first_word(text);
+	int state = ref_dst == "" ? 0 : TTF_STYLE_UNDERLINE;
+	state |= bold ? TTF_STYLE_BOLD : 0;
+	state |= italic ? TTF_STYLE_ITALIC : 0;
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)
-		&& remaining_width < font::line_width(first_word, font_size)) {
+		&& remaining_width < font::line_width(first_word, font_size, state)) {
 		// The first word does not fit, and we are not at the start of
 		// the line. Move down.
 		down_one_line();
@@ -1379,9 +1525,6 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 	else {
 		std::vector<std::string> parts = split_in_width(text, font_size, remaining_width);
 		std::string first_part = parts.front();
-		int state = ref_dst == "" ? 0 : TTF_STYLE_UNDERLINE;
-		state |= bold ? TTF_STYLE_BOLD : 0;
-		state |= italic ? TTF_STYLE_ITALIC : 0;
 		// Always override the color if we have a cross reference.
 		const SDL_Color color = ref_dst == "" ? text_color : font::YELLOW_COLOUR;
 		surface surf(font::get_rendered_text(first_part, font_size, color, state));
@@ -1401,15 +1544,17 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 			//		  << "before linewidth: " << font::line_width(first_word_before, font_size)
 			//		  << "\nafter linewidth: " << font::line_width(first_word_after, font_size)
 			//		  << "\nremaining width: " << get_remaining_width() << std::endl;
-			if (get_remaining_width() >= font::line_width(first_word_after, font_size)
-				&& get_remaining_width() < font::line_width(first_word_before, font_size)) {
+			if (get_remaining_width() >= font::line_width(first_word_after, font_size, state)
+				&& get_remaining_width()
+				< font::line_width(first_word_before, font_size, state)) {
 				// If the removal of the space made this word fit, we
 				// must move down a line, otherwise it will be drawn
 				// without a space at the end of the line.
 				s = remove_first_space(s);
 				down_one_line();
 			}
-			else if (!(font::line_width(first_word_before, font_size) < get_remaining_width())) {
+			else if (!(font::line_width(first_word_before, font_size, state)
+					   < get_remaining_width())) {
 				s = remove_first_space(s);
 			}
 			add_text_item(s, ref_dst, _font_size, bold, italic, text_color);
