@@ -51,7 +51,20 @@ namespace {
 	// Milliseconds to sleep in every iteration of the main loop.
 	const unsigned int sdl_delay = 20;
 	const size_t default_terrain_size = 35;
-	const unsigned int minimap_redraw_after_iterations = 3000 / sdl_delay;
+
+	void terrain_changed(gamemap &map, const gamemap::location &hex) {
+		// If we painted something else than a keep on a starting position,
+		// unset the starting position.
+		int start_side = -1;
+		for (int i = 0; i < 10; i++) {
+			if (map.starting_position(i) == hex) {
+				start_side = i;
+			}
+		}
+		if (start_side != -1 && map.get_terrain(hex) != gamemap::KEEP) {
+			map.set_starting_position(start_side, gamemap::location());
+		}
+	}
 }
 
 namespace map_editor {
@@ -59,7 +72,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	: gui_(gui), map_(map), tup_(gui, "", gui::button::TYPE_PRESS, "uparrow-button"),
 	  tdown_(gui, "", gui::button::TYPE_PRESS, "downarrow-button"), abort_(DONT_ABORT),
 	  num_operations_since_save_(0), theme_(theme), game_config_(game_config),
-	  draw_terrain_(false), minimap_dirty_(false),
+	  draw_terrain_(false), map_dirty_(false),
 	  palette_(gui, size_specs_, map), brush_(gui, size_specs_) {
 
 
@@ -74,6 +87,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	// to clear these or they will overlap.
 	hotkey::get_hotkeys().clear();
 	hotkey::add_hotkeys(theme_, true);
+	recalculate_starting_pos_labels();
 }
 
 void map_editor::handle_event(const SDL_Event &event) {
@@ -443,12 +457,12 @@ void map_editor::redo() {
 
 void map_editor::set_starting_position(const int player, const gamemap::location loc) {
 	if(map_.on_board(loc)) {
-		map_.set_terrain(loc, gamemap::CASTLE);
+		map_.set_terrain(selected_hex_, gamemap::KEEP);
 		// This operation is currently not undoable, so we need to make sure
 		// that save is always asked for after it is performed.
 		num_operations_since_save_ = undo_limit + 1;
 		map_.set_starting_position(player, loc);
-		gui_.invalidate_all();
+		invalidate_adjacent(loc);
 	}
 	else {
 		gui::show_dialog(gui_, NULL, "",
@@ -514,6 +528,7 @@ void map_editor::draw_terrain(const gamemap::TERRAIN terrain,
 }
 
 void map_editor::invalidate_adjacent(const gamemap::location hex) {
+	terrain_changed(map_, hex);
 	gamemap::location locs[7];
 	locs[0] = hex;
 	get_adjacent_tiles(hex,locs+1);
@@ -531,13 +546,14 @@ void map_editor::invalidate_adjacent(const gamemap::location hex) {
 		gui_.rebuild_terrain(locs[i]);
 		gui_.invalidate(locs[i]);
 	}
-	minimap_dirty_ = true;
+	map_dirty_ = true;
 }
 
 void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes) {
 	std::vector<gamemap::location> to_invalidate;
 	std::vector<gamemap::location>::const_iterator it;
 	for (it = hexes.begin(); it != hexes.end(); it++) {
+		terrain_changed(map_, *it);
 		gamemap::location locs[7];
 		locs[0] = *it;
 		get_adjacent_tiles(*it, locs+1);
@@ -560,7 +576,7 @@ void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location
 		gui_.rebuild_terrain(*it);
 		gui_.invalidate(*it);
 	}
-	minimap_dirty_ = true;
+	map_dirty_ = true;
 }
 
 void map_editor::right_button_down(const int mousex, const int mousey) {
@@ -666,10 +682,28 @@ void map_editor::execute_command(const hotkey::HOTKEY_COMMAND command) {
 		hotkey::execute_command(gui_, command, this);
 	}
 }
+
+void map_editor::recalculate_starting_pos_labels() {
+	// Remove the current labels.
+	for (std::vector<gamemap::location>::const_iterator it = starting_positions_.begin();
+		 it != starting_positions_.end(); it++) {
+		gui_.labels().set_label(*it, "");
+	}
+	starting_positions_.clear();
+	// Set new labels.
+	for (int i = 0; i < 10; i++) {
+		gamemap::location loc = map_.starting_position(i);
+		if (loc.valid()) {
+			std::stringstream ss;
+			ss << "Player " << i;
+			gui_.labels().set_label(loc, ss.str());
+			starting_positions_.push_back(loc);
+		}
+	}
+}
   
 void map_editor::main_loop() {
-	const double scroll_speed = preferences::scroll_speed();
-	unsigned int counter = 0;
+	const int scroll_speed = preferences::scroll_speed();
 	while (abort_ == DONT_ABORT) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
@@ -691,16 +725,16 @@ void map_editor::main_loop() {
 		}
 	
 		if(key_[SDLK_UP] || mousey == 0) {
-			gui_.scroll(0.0,-scroll_speed);
+			gui_.scroll(0,-scroll_speed);
 		}
 		if(key_[SDLK_DOWN] || mousey == gui_.y()-1) {
-			gui_.scroll(0.0,scroll_speed);
+			gui_.scroll(0,scroll_speed);
 		}
 		if(key_[SDLK_LEFT] || mousex == 0) {
-			gui_.scroll(-scroll_speed,0.0);
+			gui_.scroll(-scroll_speed,0);
 		}
 		if(key_[SDLK_RIGHT] || mousex == gui_.x()-1) {
-			gui_.scroll(scroll_speed,0.0);
+			gui_.scroll(scroll_speed,0);
 		}
 	
 		if (l_button_down) {
@@ -725,14 +759,14 @@ void map_editor::main_loop() {
 			palette_.scroll_down();
 		}
 
-		if (minimap_dirty_) {
-			// If the mini map is dirty, start the counter and redraw after
-			// the desired number of iterations.
-			++counter;
-			if (counter >= minimap_redraw_after_iterations) {
-				counter = 0;
+		// When the map has changed, wait until the left mouse button is
+		// not held down and then update the minimap and the starting
+		// position labels.
+		if (map_dirty_) {
+			if (!l_button_down) {
+				map_dirty_ = false;
+				recalculate_starting_pos_labels();
 				gui_.recalculate_minimap();
-				minimap_dirty_ = false;
 			}
 		}
 		gui_.update_display();

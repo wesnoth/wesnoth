@@ -238,6 +238,13 @@ private:
 	void draw_terrain(const gamemap::TERRAIN terrain,
 					  const gamemap::location hex);
 	
+
+	/////////////////////////////////////////////////////////////////////
+	// NOTE: after any terrain has changed, one of the invalidate      //
+	// methods must be called with that location among the arguments.  //
+	/////////////////////////////////////////////////////////////////////
+
+
 	/// Invalidate the given hex and all the adjacent ones. Assume the
 	/// hex has changed, so rebuild the dynamic terrain at the hex and
 	/// the adjacent hexes.
@@ -248,6 +255,7 @@ private:
 	/// the operations only happen once per hex for efficiency purposes.
 	void invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes);
 
+
 	/// Shows dialog to create new map.
 	std::string new_map_dialog(display& disp);
 
@@ -255,7 +263,10 @@ private:
 	/// dispose the modification.
 	bool confirm_modification_disposal(display& disp, const std::string message);
 
-	void draw_terrain_name(display &disp, const gamemap::TERRAIN);
+	/// Re-set the labels for the starting positions of the
+	/// players. Should be called when the terrain has changed, which
+	/// may have changed the starting positions.
+	void recalculate_starting_pos_labels();
 
 	display &gui_;
 	gamemap &map_;
@@ -274,11 +285,13 @@ private:
 	bool draw_terrain_;
 	CKey key_;
 	gamemap::location selected_hex_;
-	// When minimap_dirty_ is true a redraw of the minimap will be
-	// scheduled.
-	bool minimap_dirty_;
+	// When map_dirty_ is true, schedule redraw of the minimap and
+	// perform some updates like recalculating labels of starting
+	// positions.
+	bool map_dirty_;
 	terrain_palette palette_;
 	brush_bar brush_;
+	std::vector<gamemap::location> starting_positions_;
 };
 
 
