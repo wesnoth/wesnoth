@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-12 18:32+0100\n"
-"PO-Revision-Date: 2005-03-12 21:07+0100\n"
+"PO-Revision-Date: 2005-03-14 16:10+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -152,6 +152,7 @@ msgid "Recruiting and Recalling"
 msgstr "Ausbildung und Einberufung"
 
 # Poliert von VeryUhu
+# Button --> Knopf
 #: data/help.cfg:79
 msgid ""
 "At the start of any battle, and at times during it, you will need to recruit "
@@ -172,7 +173,7 @@ msgstr ""
 "ausgebildet werden können, aufgelistet sind. Neben den Einheiten ist "
 "angegeben, wieviel die Ausbildung kostet. Wenn Ihr eine Einheit wählt, "
 "erscheinen ihre Eigenschaften auf der linken Seite. Ihr könnt dann den "
-"»Ausbilden«-Button drücken, um die Einheit auszubilden."
+"»Ausbilden«-Knopf drücken, um die Einheit auszubilden."
 
 # Korrigiert von chrber (& mir) 
 # Korrigiert von VeryUhu
@@ -1742,6 +1743,7 @@ msgstr ""
 "davon erzähle ich Euch später mehr. Eine frisch ausgebildete Einheit kann "
 "sich bis zum Ende des Zuges nicht bewegen oder angreifen."
 
+# Button --> Knopf
 #: data/scenarios/tutorial/Basic_Training.cfg:78
 msgid ""
 "Since units cannot move on the turn they are recruited, you must end your "
@@ -1750,7 +1752,7 @@ msgid ""
 msgstr ""
 "Da sich Einheiten in dem Zug, in dem sie ausgebildet wurden, nicht bewegen "
 "oder angreifen können, müsst Ihr euren Zug jetzt beenden. Dazu klickt "
-"einfach auf den »Zug beenden«-Button ganz unten rechts."
+"einfach auf den »Zug beenden«-Knopf ganz unten rechts."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:80
 msgid "End your turn"
@@ -1764,6 +1766,7 @@ msgstr "Ihr habt euren Zug erfolgreich beendet."
 msgid "How do I end my turn?"
 msgstr "Wie beende ich meinen Zug?"
 
+# Button --> Knopf
 #: data/scenarios/tutorial/Basic_Training.cfg:89
 msgid ""
 "One way to end your turn is to press 'Alt-E'. Alternatively, you can right-"
@@ -1771,7 +1774,7 @@ msgid ""
 "hand corner."
 msgstr ""
 "Es gibt drei Möglichkeiten: Ihr könnt »Alt-E« drücken, oder nach einem "
-"Rechtsklick »Zug beenden« auswählen, oder den »Zug beenden«-Button ganz "
+"Rechtsklick »Zug beenden« auswählen, oder den »Zug beenden«-Knopf ganz "
 "rechts unten drücken."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:90
@@ -2181,12 +2184,13 @@ msgstr "Ihr habt euer erstes Übungszenario erfolgreich abgeschlossen."
 msgid "Hooray!"
 msgstr "Hurra!"
 
-# Querstriche? - VeryUhu
+# Verbessert von Rhonda
+# \\ gelöscht
 #: data/scenarios/tutorial/Basic_Training.cfg:257
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr ""
-"Wie weiß ich\\, was ich tun muss\\, um ein Szenario zu gewinnen? Werdet Ihr "
-"mir das immer sagen?"
+"Wie weiß ich, wie ich ein Szenario abschließen kann? Werdet Ihr mir das "
+"immer mitteilen?"
 
 # Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:257
@@ -2206,9 +2210,10 @@ msgstr ""
 "die erfüllt oder verhindert werden müssen, um das Szenario erfolgreich zu "
 "beenden."
 
+# \\ gelöscht
 #: data/scenarios/tutorial/Basic_Training.cfg:258
 msgid "What happens when I win a scenario?"
-msgstr "Was geschieht\\, wenn ich ein Szenario gewinne?"
+msgstr "Was geschieht, wenn ich ein Szenario gewinne?"
 
 # Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:258
@@ -2225,12 +2230,14 @@ msgstr ""
 "verbleibt, schließen sich euch automatisch alle Dörfer an. Wie sonst auch, "
 "verliert Ihr zwischen den Szenarien allerdings 20% Eures Goldes."
 
-# Korrigiert von VeryUhu
+# Verbessert von Rhonda
+# \\ gelöscht
 #: data/scenarios/tutorial/Basic_Training.cfg:264
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr ""
-"Möchtet Ihr die Kennisse anschauen, die in diesem Szenario vermittelt werden?"
+"Möchtet Ihr die Kenntnisse betrachten, die in diesem Szenario vermittelt "
+"werden?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
@@ -2340,13 +2347,15 @@ msgstr ""
 "ausgebildete Einheiten, außer dass anstelle einer neue Einheiteine erfahrene "
 "aus einem vorigen Szenario erscheint."
 
+# \\ gelöscht
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:81
 msgid "What happens when I recall a unit?"
-msgstr "Was geschieht\\, wenn ich eine Einheit einberufe?"
+msgstr "Was geschieht, wenn ich eine Einheit einberufe?"
 
+# \\ gelöscht
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:82
 msgid "How should I decide which units to recall?"
-msgstr "Wie soll ich entscheiden\\, welche Einheiten ich einberufe?"
+msgstr "Wie soll ich entscheiden, welche Einheiten ich einberufe?"
 
 # Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:82
@@ -2503,9 +2512,10 @@ msgstr ""
 msgid "What are the different alignments and times of day?"
 msgstr "Was sind die verschiedenen Gesinnungen und Tageszeiten?"
 
+# \\ gelöscht
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:125
 msgid "How do I know what time of day it is?"
-msgstr "Wie erkenne ich\\, welche Tageszeit wir gerade haben?"
+msgstr "Wie erkenne ich, welche Tageszeit wir gerade haben?"
 
 # Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:125
@@ -2554,10 +2564,10 @@ msgstr ""
 "haben zum Beispiel in Wäldern einen Verteidigungswert von 70%, und somit "
 "treffen Angreifer nur in 30% aller Fälle."
 
+# \\ gelöscht
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:138
 msgid "What are the different properties that terrains have?"
-msgstr ""
-"Was sind die verschiedenen Eigenschaften\\, die ein Gelände haben kann?"
+msgstr "Was sind die verschiedenen Eigenschaften, die ein Gelände haben kann?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:139
 msgid "How do I find out the properties of a specific terrain?"
@@ -3365,9 +3375,10 @@ msgstr ""
 "senkt ausserdem die Anzahl der gegnerischen Angriffe um einen.Daher ist er "
 "sehr wirkungsvoll gegen Einheiten mit wenigen mächtigen Angriffen."
 
+# Korrigiert von Rhonda
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
-msgstr "Untote sind sehr anfällig gegen geweihte Waffe und heilige Magie."
+msgstr "Untote sind sehr anfällig gegen geweihte Waffen und heilige Magie."
 
 #: data/tips.cfg:31
 msgid ""
@@ -3473,6 +3484,7 @@ msgstr ""
 "Tag: -25% Schaden\n"
 "Nacht: +25% Schaden"
 
+# Korrigiert von Ivanovic
 #: data/translations/english.cfg:21
 msgid ""
 "Ambush:\n"
@@ -3488,8 +3500,8 @@ msgstr ""
 "\n"
 "Feindliche Einheiten können diese Einheit nicht sehen oder angreifen, wenn "
 "sie im Wald ist. Doch gelten folgende Ausnahmen: Direkt nachdem die Einheit "
-"selbst angegriffen hat, oder sich eine feindliche Einheiten auf einem "
-"angrenzenden Feld befindet."
+"selbst angegriffen hat, oder es befindet sich eine feindliche Einheiten auf "
+"einem angrenzenden Feld.."
 
 #: data/translations/english.cfg:23 data/units/Elvish_Avenger.cfg:18
 #: data/units/Elvish_Avenger.cfg:106 data/units/Elvish_Ranger.cfg:19
@@ -3498,6 +3510,7 @@ msgid "ambush"
 msgstr "Hinterhalt"
 
 # Korrigiert von chrber
+# Korrigiert von Ivanovic
 #: data/translations/english.cfg:31
 msgid ""
 "Cures:\n"
@@ -3513,10 +3526,10 @@ msgid ""
 msgstr ""
 "Kurieren:\n"
 "Diese Einheit verbindet kräuterbasiertes Heilen mit der magischen Heilung. "
-"Dadurch ist es ihr möglich Einheiten schneller zu heilen, als es auf dem "
+"Dadurch ist es ihr möglich, Einheiten schneller zu heilen, als es auf dem "
 "Schlachtfeld normalerweise möglich wäre.\n"
 "\n"
-"Die Einheit kömmert sich um alle benachbarten freundlichen Einheiten zum "
+"Die Einheit kümmert sich um alle benachbarten freundlichen Einheiten zum "
 "Rundenbeginn.\n"
 "Eine versorgte Einheit regeneriert bis zu 8 LP pro Runde.\n"
 "Ein Kurierer kann alle Einheiten um die er sich kümmert um insgesamt bis zu "
@@ -3533,6 +3546,7 @@ msgid "cures"
 msgstr "Kurieren"
 
 # Korrigiert von chrber
+# Korrigiert von Ivanovic
 #: data/translations/english.cfg:40
 msgid ""
 "Heals:\n"
@@ -3550,8 +3564,8 @@ msgstr ""
 "Eine Einheit, um die sich ein Heiler kümmert, erhält bis zu vier LP pro "
 "Runde zurück.\n"
 "Ein Heiler kann, bei allen Einheiten um die er sich kümmert, bis zu 8 LP pro "
-"Rundeheilen.\n"
-"Eine vergiftete Einheit, kann nicht von einem Heiler von der vergiftung "
+"Runde heilen.\n"
+"Eine vergiftete Einheit, kann nicht von einem Heiler von der Vergiftung "
 "befreit werden. Dies kann nur durch eine Einheit mit der Fähigkeit kurieren "
 "oder die Pflege durch ein Dorf geschehen."
 
@@ -3581,7 +3595,7 @@ msgstr ""
 msgid "illuminates"
 msgstr "Lichtaura"
 
-# edited by ivanovic
+# Korrigiert von Ivanovic
 #: data/translations/english.cfg:54
 msgid ""
 "Leadership:\n"
@@ -3598,7 +3612,7 @@ msgstr ""
 "Nahestehenden besser kämpfen.\n"
 "\n"
 "Benachbarte Einheiten niedrigerer Stufen richten im Kampf einen höheren "
-"Schaden an. Dabei erhöht sich der Schaden um 25% pro Stufe unterschied."
+"Schaden an. Dabei erhöht sich der Schaden um 25% pro Stufe Unterschied."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -3637,8 +3651,8 @@ msgstr ""
 "Diese Einheit ist des Nachts für ihre Feinde unsichtbar. \n"
 "\n"
 "Feindliche Einheiten können diese Einheit nachts nicht sehen oder angreifen, "
-"Es sei denn diese Einheit hat unmittelbar zuvor selbst angegriffen, oder "
-"sich eine feindliche Einheiten auf einem angrenzenden Feld befindet."
+"Es sei denn diese Einheit hat unmittelbar zuvor selbst angegriffen, oder es "
+"befindet sich eine feindliche Einheiten auf einem angrenzenden Feld."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
@@ -3771,14 +3785,15 @@ msgstr ""
 "Diese Einheit führt, bei Verwendung dieser Waffe, immer den ersten Angriff "
 "durch, selbst wenn sie sich verteidigt. "
 
+# Korrigiert von Ivanovic
 #: data/translations/english.cfg:108
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
 "Magisch:\n"
-"Angriffe, die magischer Natur sind, haben grundsätzlich eine 70% "
-"Trefferwahrscheinlichkeit."
+"Angriffe, die magischer Natur sind, haben grundsätzlich eine "
+"Trefferwahrscheinlichkeit von 70%."
 
 # Korrigiert von chrber
 #: data/translations/english.cfg:111
@@ -3831,6 +3846,7 @@ msgstr ""
 "und ihnen wird pro Waffe eine Attacke abgezogen. Die Verlangsamung hällt für "
 "eine Runde an."
 
+# Korrigiert von Ivanovic
 #: data/translations/english.cfg:123
 msgid ""
 "Stone:\n"
@@ -3838,7 +3854,7 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "Versteinern:\n"
-"Dieser Angriff verwandelt das Ziel zu Stein. Ein versteinerte Einheit kann "
+"Dieser Angriff verwandelt das Ziel zu Stein. Eine versteinerte Einheit kann "
 "sich weder bewegen noch einen Angriff ausführen."
 
 #: data/translations/english.cfg:132
@@ -8230,13 +8246,15 @@ msgstr "+Baskische Übersetzung"
 msgid "+Bulgarian Translation"
 msgstr "+Bulgarische Übersetzung"
 
+# Korrigiert von Rhonda
 #: src/about.cpp:156
 msgid "+Catalan Translation"
-msgstr "+Catalanische Übersetzung"
+msgstr "+Katalanische Übersetzung"
 
+# Korrigiert von Rhonda
 #: src/about.cpp:164
 msgid "+Czech Translation"
-msgstr "+Czechische Übersetzung"
+msgstr "+Tschechische Übersetzung"
 
 #: src/about.cpp:173
 msgid "+Danish Translation"
@@ -8292,9 +8310,10 @@ msgstr "+Norwegische Übersetzung"
 msgid "+Polish Translation"
 msgstr "+Polnische Übersetzung"
 
+# Verbessert von Rhonda
 #: src/about.cpp:261
 msgid "+Portuguese (Brazil) Translation"
-msgstr "+Portugiesische (Brasilianische) Übersetzung"
+msgstr "+(Brasilianisch-) Portugiesische Übersetzung"
 
 #: src/about.cpp:270
 msgid "+Russian Translation"
@@ -8582,9 +8601,10 @@ msgstr "unsichtbar"
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
+# Korrigiert von Rhonda
 #: src/game.cpp:141
 msgid "Do you want to save a replay of this scenario?"
-msgstr "Möchtet Ihr den Spielverlauf dieses Szearios speichern?"
+msgstr "Möchtet Ihr den Spielverlauf dieses Szenarios speichern?"
 
 #: src/game.cpp:142 src/game.cpp:200 src/playturn.cpp:1529
 msgid "Name:"
