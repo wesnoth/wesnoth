@@ -1,18 +1,17 @@
 CVS HEAD:
- * added new help strings
- * new attack dialog
- * new load game dialog
- * made 'end turn for active unit' (pressing <space>) recoverable
- * tip of the day
- * load game
- * gamma correction
- * skip AI moves option
- * show haloing effects option
- * continue no save
- * more halo effects
- * decreased size of saved games
- * improved and added new graphics: units, attacks animations, healing animations, attack icons, encampment, castle
- * language fixes and polishing (english)
+ * new campaign: The Eastern Invasion (Loyalists, 15 scenarios)
+ * compiling requires SDL version >= 1.2.7
+ * user interface improvements:
+   * tip of the day
+   * added new help strings
+   * new attack dialog
+   * new load game dialog
+   * made 'end turn for active unit' (pressing <space>) recoverable
+   * in game load game: menu -> load game
+   * gamma correction
+   * skip AI moves option
+   * show haloing effects option
+ * improved and added new graphics: units, attacks animations, healing animations, attack icons, encampment, castle, haloes
  * scenario balancing for 'Heir to the Throne' campaign:
    * Elves Besieged
    * Isle of Anduin
@@ -39,10 +38,12 @@ CVS HEAD:
    * Silver Mage
    * Vampire Lady
    * Young Ogre
- * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
+ * removed Dark Apprentice, Evil Necromancer and Soldier as they are no longer used (replaced by Initiate, Deathmaster and Spearman)
  * Yeti's race changed to monster
- * Renamed 'Cavalry' to 'Cavalryman'
- * Renamed 'Goblin Direwolver' to 'Direwolf Rider'
+ * nenamed 'Cavalry' to 'Cavalryman'
+ * renamed 'Goblin Direwolver' to 'Direwolf Rider'
+ * renamed 'Heavy Infantry' to 'Heavy Infantryman'
+ * renamed 'Orcish Crossbow' to 'Orcish Crossbowman'
  * unit balancing:
    * Ancient Wose: increased cost
    * Ancient Lich: reduced hitpoints, reduced ranged damage
@@ -76,13 +77,13 @@ CVS HEAD:
    * Shock Trooper: reduced melee damage
    * Spearman: reduced ranged damage, gave 'first strike' ability
    * Wose: increased cost
+ * language fixes and polishing (english)
  * translation updates:
    * dutch
    * french
  * multiplayer improvements:
    * balanced 'King of the Hill' map
    * improved village naming
- * language fixes and polishing (english)
  * AI improvements
    * added new AI parameters
    * various AI improvements
@@ -104,10 +105,11 @@ CVS HEAD:
    * fixed a problem where the selected terrain and brush size was not remembered through operations that affected the whole map, such as flip and resize
    * fixed a problem where the palettes in the editor would not refresh correctly after the windows was resized
    * fixed editor handing different color depths incorrectly
- * names for Nagas
- * item: trapdoor
+ * new item: trapdoor
+ * continue_no_save feature
  * added WML feature to append an element to another using [+element] syntax
  * made userdata/data/utils loaded in early in game.cfg to allow scenario designers to define utility files
+ * names for Nagas
  * fixed multiline text box not wrapping lines at word boundaries
  * fixed loading/saving of multiplayer games that have a double-quote (") in the chat text
  * fixed spaces following non-ASCII characters disappearing in intro (#9163)
@@ -117,8 +119,8 @@ CVS HEAD:
  * fixed terrain not updating correctly when dynamicly changed via the WML [terrain] event (#9237)
  * fixed the "random probability" in "terrain-graphics" rules not being random enough
  * fixed builder code failing when asked for hexed outside the map (#9168)
- * fixed migration of haloes
  * fixed crash when undoing moves
+ * fixed migration of haloes
  * fixed crash in wesnothd
  * made intro.cpp use the unicode routines in language.cpp to split UTF-8 sequences in character
  * added support for animated on-map items
@@ -132,8 +134,9 @@ CVS HEAD:
  * moved weapon icons to their own hierarchy: images/attacks/
  * moved projectiles/missiles to their own hierarchy: images/projectiles/
  * increased the horizontal padding of button widgets when having a label that is wider than the minimum width
- * conversed all scenarios to new AI syntax
  * added a trigger to the test map, when activated Orc leader can recruit
+ * decreased size of saved games by removing some unnecessary information
+ * conversed all scenarios to new AI syntax
 
 Version 0.7.8:
  * changed experience gauge, it is now shown next to hitpoints bar
