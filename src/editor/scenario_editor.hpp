@@ -2,7 +2,9 @@
 #define SCENARIO_EDITOR_HPP_INCLUDED
 
 #include "../config.hpp"
+#include "../display.hpp"
 #include "../events.hpp"
+#include "../gamestatus.hpp"
 #include "../hotkeys.hpp"
 #include "../scoped_resource.hpp"
 #include "../team.hpp"
