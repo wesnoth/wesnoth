@@ -289,7 +289,7 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 		//make all sides untaken
 		for(config::child_itors i = level_ptr->child_range("side");
 		    i.first != i.second; ++i.first) {
-			(**i.first)["taken"].clear();
+			(**i.first)["taken"] = "";
 		}
 
 		recorder = replay(state.replay_data);
