@@ -60,11 +60,10 @@ namespace reports {
 	};
 
 	report generate_report(TYPE type, const gamemap& map, const unit_map& units,
-							const std::vector<team>& teams,
-	                  const team& current_team, int current_side, int active_side,
-						   const gamemap::location& loc, const gamemap::location& mouseover,
-						   const gamestatus& status, const std::set<std::string>& observers,
-						   const std::string* format_string=NULL);
+	                       const std::vector<team>& teams, const team& current_team,
+	                       int current_side, int active_side,
+	                       const gamemap::location& loc, const gamemap::location& mouseover,
+	                       const gamestatus& status, const std::set<std::string>& observers);
 	// Set what will be shown for the report with type
 	// which_report. Note that this only works for some reports,
 	// i.e. reports that can not be deducted from the supplied arguments

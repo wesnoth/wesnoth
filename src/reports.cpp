@@ -54,11 +54,10 @@ void report::add_image(const std::string& image, const std::string& tooltip) {
 }
 
 report generate_report(TYPE type, const gamemap& map, const unit_map& units,
-						const std::vector<team>& teams,
-                  const team& current_team, int current_side, int playing_side,
-					   const gamemap::location& loc, const gamemap::location& mouseover,
-					   const gamestatus& status, const std::set<std::string>& observers,
-					   const std::string* format_string)
+                       const std::vector<team>& teams, const team& current_team,
+                       int current_side, int playing_side,
+                       const gamemap::location& loc, const gamemap::location& mouseover,
+                       const gamestatus& status, const std::set<std::string>& observers)
 {
 	unit_map::const_iterator u = units.end();
 	
