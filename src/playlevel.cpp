@@ -205,6 +205,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 					const int start_command = recorder.ncommands();
 
+					update_locker lock(gui,!preferences::show_ai_moves());
+
 					ai::do_move(gui,map,gameinfo,units,teams,
 					            player_number,status);
 

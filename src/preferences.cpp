@@ -301,6 +301,16 @@ void set_turn_dialog(bool ison)
 	prefs["turn_dialog"] = (ison ? "yes" : "no");
 }
 
+bool show_combat()
+{
+	return prefs["show_combat"] != "no";
+}
+
+bool show_ai_moves()
+{
+	return prefs["show_ai_moves"] != "no";
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;

@@ -269,7 +269,8 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 		const unit_map::iterator un = units_.find(new_hex);
 
-		if(un != units_.end() && un->second.side() != team_num_) {
+		if(un != units_.end() && un->second.side() != team_num_ &&
+		   current_paths_.routes.empty()) {
 			unit_movement_resetter move_reset(un->second);
 
 			const bool ignore_zocs = un->second.type().is_skirmisher();

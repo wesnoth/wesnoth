@@ -70,6 +70,10 @@ namespace preferences {
 	bool turn_dialog();
 	void set_turn_dialog(bool ison);
 
+	bool show_combat();
+
+	bool show_ai_moves();
+
 	void show_preferences_dialog(display& disp);
 	void show_video_mode_dialog(display& disp);
 }

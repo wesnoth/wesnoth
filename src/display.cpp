@@ -1759,7 +1759,8 @@ bool display::unit_attack_ranged(const gamemap::location& a,
                                  const gamemap::location& b, int damage,
                                  const attack_type& attack)
 {
-	const bool hide = update_locked() || shrouded(a.x,a.y) && shrouded(b.x,b.y);
+	const bool hide = update_locked() || shrouded(a.x,a.y) && shrouded(b.x,b.y)
+	                  || preferences::show_combat() == false;
 
 	const unit_map::iterator att = units_.find(a);
 	const unit_map::iterator def = units_.find(b);
@@ -1917,7 +1918,8 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 void display::unit_die(const gamemap::location& loc, SDL_Surface* image)
 {
-	if(update_locked() || shrouded(loc.x,loc.y))
+	if(update_locked() || shrouded(loc.x,loc.y)
+	   || preferences::show_combat() == false)
 		return;
 
 	const unit_map::const_iterator u = units_.find(loc);
@@ -1949,7 +1951,8 @@ bool display::unit_attack(const gamemap::location& a,
                           const gamemap::location& b, int damage,
 						  const attack_type& attack)
 {
-	const bool hide = update_locked() || shrouded(a.x,a.y) && shrouded(b.x,b.y);
+	const bool hide = update_locked() || shrouded(a.x,a.y) && shrouded(b.x,b.y)
+	                  || preferences::show_combat() == false;
 
 	if(!hide) {
 		const double side_threshhold = 80.0;
