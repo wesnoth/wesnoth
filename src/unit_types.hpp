@@ -273,6 +273,7 @@ private:
 	bool nightvision_;
 	bool steadfast_;
 	bool can_advance_;
+	ALIGNMENT alignment_;
 
 	unit_movement_type movementType_;
 

@@ -528,7 +528,7 @@ unit_type::unit_type(const unit_type& o)
       leadership_(o.leadership_), illuminates_(o.illuminates_),
       skirmish_(o.skirmish_), teleport_(o.teleport_),
       nightvision_(o.nightvision_), steadfast_(o.steadfast_),
-      can_advance_(o.can_advance_),
+      can_advance_(o.can_advance_), alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_)
@@ -610,6 +610,18 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	teleport_ = has_ability("teleport");
 	nightvision_ = has_ability("night vision");
 	steadfast_ = has_ability("steadfast");
+	
+	const std::string& align = cfg_["alignment"];
+	if(align == "lawful")
+		alignment_ = LAWFUL;
+	else if(align == "chaotic")
+		alignment_ = CHAOTIC;
+	else if(align == "neutral")
+		alignment_ = NEUTRAL;
+	else {
+		lg::err(lg::config) << "Invalid alignment found for " << name() << ": '" << align << "'\n";
+		alignment_ = NEUTRAL;
+	}
 
 	const std::string& alpha_blend = cfg_["alpha"];
 	if(alpha_blend.empty() == false) {
@@ -882,17 +894,7 @@ int unit_type::movement() const
 
 unit_type::ALIGNMENT unit_type::alignment() const
 {
-	const std::string& align = cfg_["alignment"];
-	if(align == "lawful")
-		return LAWFUL;
-	else if(align == "chaotic")
-		return CHAOTIC;
-	else if(align == "neutral")
-		return NEUTRAL;
-	else {
-		lg::err(lg::config) << "Invalid alignment found for " << name() << ": '" << align << "'\n";
-		return NEUTRAL;
-	}
+	return alignment_;
 }
 
 const char* unit_type::alignment_description(unit_type::ALIGNMENT align)
