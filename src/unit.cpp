@@ -176,6 +176,15 @@ const std::string& unit::underlying_description() const
 	return underlying_description_;
 }
 
+const std::string& unit::unit_description() const
+{
+	if(custom_unit_description_ != "") {
+		return custom_unit_description_;
+	} else {
+		return type().unit_description();
+	}
+}
+
 void unit::rename(const std::string& new_description)
 {
 	description_ = new_description;
@@ -497,6 +506,8 @@ void unit::read(game_data& data, const config& cfg)
 		description_ = underlying_description_;
 	}
 
+	custom_unit_description_ = cfg["unit_description"];
+
 	traitsDescription_ = cfg["traits_description"];
 	const std::map<std::string,std::string>::const_iterator recruit_itor =
 			                                 cfg.values.find("canrecruit");
@@ -591,6 +602,7 @@ void unit::write(config& cfg) const
 
 	cfg["user_description"] = description_;
 	cfg["description"] = underlying_description_;
+	cfg["unit_description"] = custom_unit_description_;
 
 	cfg["traits_description"] = traitsDescription_;
 

@@ -1263,7 +1263,7 @@ void turn_info::unit_description()
 		return;
 	}
 
-	const std::string description = un->second.type().unit_description()
+	const std::string description = un->second.unit_description()
 	                                + "\n\n" + string_table["see_also"];
 
 	std::vector<std::string> options;

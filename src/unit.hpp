@@ -41,6 +41,9 @@ public:
 	const std::string& description() const;
 	const std::string& underlying_description() const;
 
+	//information about the unit -- a detailed description of it
+	const std::string& unit_description() const;
+
 	void rename(const std::string& new_description);
 
 	int hitpoints() const;
@@ -151,6 +154,11 @@ private:
 	bool resting_;
 
 	std::string underlying_description_, description_;
+
+	//this field is used if the scenario creator places a custom unit description
+	//with a certain unit. If this field is empty, then the more general unit description
+	//from the unit's base type will be used
+	std::string custom_unit_description_;
 
 	bool recruit_;
 

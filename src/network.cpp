@@ -279,6 +279,11 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				assert(schema != schemas.end());
 
 				cfg.read_compressed(buffer,schema->second.incoming);
+
+				std::cerr << "--- RECEIVED DATA from " << ((int)*i) << ": '"
+				          << cfg.write() << "'\n--- END RECEIVED DATA\n";
+
+				
 				return *i;
 			}
 		}
@@ -333,6 +338,9 @@ void send_data(const config& cfg, connection connection_num, size_t max_size)
 
 	std::string value(4,'x');
 	value += cfg.write_compressed(schema->second.outgoing);
+
+	std::cerr << "--- SEND DATA to " << ((int)connection_num) << ": '"
+	          << cfg.write() << "'\n--- END SEND DATA\n";
 
 	char buf[4];
 	SDLNet_Write32(value.size()+1-4,buf);

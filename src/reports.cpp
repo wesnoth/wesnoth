@@ -85,7 +85,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	case UNIT_DESCRIPTION:
 		return report(u->second.description());
 	case UNIT_TYPE:
-		return report(u->second.type().language_name(),"",u->second.type().unit_description());
+		return report(u->second.type().language_name(),"",u->second.unit_description());
 	case UNIT_LEVEL:
 		str << u->second.type().level();
 		break;
