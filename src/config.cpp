@@ -33,6 +33,7 @@
 #include "log.hpp"
 #include "scoped_resource.hpp"
 #include "util.hpp"
+#include "wesconfig.h"
 
 bool operator<(const line_source& a, const line_source& b)
 {
@@ -554,6 +555,8 @@ void config::read(const std::string& data,
 	std::stack<int> element_locs;
 	std::stack<config*> elements;
 	std::stack<std::map<std::string,config*> > last_element; //allows [+element] syntax
+	std::stack<std::string> textdomains;
+	std::string current_textdomain = PACKAGE;
 	elements.push(this);
 	element_names.push("");
 	element_locs.push(0);
@@ -635,6 +638,15 @@ void config::read(const std::string& data,
 						}
 
 						last_element.top()[name] = element;
+
+						if (element->values["textdomain"] != "") {
+							std::cerr << "out of " << element
+							     << ", restoring from textdomain "
+							     << current_textdomain;
+							current_textdomain = textdomains.top();
+							textdomains.pop();
+							std::cerr << " to " << current_textdomain << "\n";
+						}
 
 						state = IN_ELEMENT;
 
@@ -734,6 +746,14 @@ void config::read(const std::string& data,
 					} else {
 						vars.push_back(var);
 						values.push_back(value);
+						if (var == "textdomain") {
+							textdomains.push(current_textdomain);
+							current_textdomain = value;
+							bindtextdomain(current_textdomain.c_str(),
+								       get_intl_dir().c_str());
+							std::cerr << "textdomain = " << value << " in "
+								  << element_names.top() << "\n";
+						}
 					}
 
 					//iterate over the names and values, assigning each to its corresponding
@@ -754,7 +774,8 @@ void config::read(const std::string& data,
 							}
 
 							if(translatable) {
-								value = sgettext(value.c_str());
+								value = dsgettext(current_textdomain.c_str(),
+										  value.c_str());
 							}
 
 							if(n < vars.size()) {
