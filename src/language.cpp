@@ -31,6 +31,7 @@ language_def known_languages[] = {
  	{ "", N_("System default language") },
 	{ "es_ES", "Castellano" },
 	{ "ca_ES", "Català" },
+	{ "cs_CZ", "Čeština" },
 	{ "da_DK", "Dansk" },
 	{ "de_DE", "Deutsch" },
  	{ "C", "English" },
