@@ -698,13 +698,16 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 TITLE_RESULT show_title(display& screen)
 {
 	const events::resize_lock prevent_resizing;
-
-	const scoped_sdl_surface title_surface(image::get_image(game_config::game_title,image::UNSCALED));
+	
+	const scoped_sdl_surface title_surface_unscaled(image::get_image(game_config::game_title,image::UNSCALED));
+	const scoped_sdl_surface title_surface(scale_surface(title_surface_unscaled,screen.x(),screen.y()));
 
 	if(title_surface == NULL) {
 		std::cerr << "Could not find title image 'title.png'\n";
 		return QUIT_GAME;
 	}
+
+	screen.blit_surface(0,0,title_surface);
 
 	const std::string& version_str = string_table["version"] + " " +
 	                                 game_config::version;
@@ -718,12 +721,6 @@ TITLE_RESULT show_title(display& screen)
 		                  10,font::NORMAL_COLOUR,version_str,0,versiony);
 	}
 
-	const int x = screen.x()/2 - title_surface->w/2;
-	const int y = 100;
-
-	screen.blit_surface(x,y,title_surface);
-	update_rect(x,y,title_surface->w,title_surface->h);
-
 	button tutorial_button(screen,string_table["tutorial_button"]);
 	button new_button(screen,string_table["campaign_button"]);
 	button load_button(screen,string_table["load_button"]);
@@ -733,10 +730,10 @@ TITLE_RESULT show_title(display& screen)
 	button preferences_button(screen,string_table["preferences"]);
 	button about_button(screen,string_table["about_button"]);
 
-	const int menu_xbase = screen.x() - (x + tutorial_button.width() + 20);
+	const int menu_xbase = (705*screen.x())/1024;
 	const int menu_xincr = 0;
-	const int menu_ybase = 120 + title_surface->h;
-	const int menu_yincr = 44;
+	const int menu_ybase = (230*screen.y())/768;
+	const int menu_yincr = 40;
 	int bc = 0; //button count
 #define BUTTON_XY() (menu_xbase+(bc)*menu_xincr), (menu_ybase+(bc++)*menu_yincr)
 
