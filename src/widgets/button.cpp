@@ -14,7 +14,6 @@
 #include "../global.hpp"
 
 #include "button.hpp"
-#include "menu.hpp"
 #include "../display.hpp"
 #include "../game.hpp"
 #include "../font.hpp"
@@ -22,6 +21,7 @@
 #include "../log.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
+#include "../wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace gui {

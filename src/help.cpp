@@ -25,6 +25,7 @@
 #include "unit.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"

@@ -12,9 +12,6 @@
 
 #include "SDL.h"
 
-char const HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*', COLUMN_SEPARATOR = '=',
-           IMAGE_PREFIX = '&', IMG_TEXT_SEPARATOR = 1;
-
 namespace gui {
 
 class menu : public scrollarea

@@ -31,6 +31,7 @@
 #include "../team.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
+#include "../wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 
 #include "editor.hpp"

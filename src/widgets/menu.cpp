@@ -7,6 +7,7 @@
 #include "../show_dialog.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
+#include "../wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <numeric>

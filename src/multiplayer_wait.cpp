@@ -11,12 +11,13 @@
    See the COPYING file for more details.
 */
 
+#include "log.hpp"
 #include "multiplayer_wait.hpp"
 #include "preferences.hpp"
-#include "log.hpp"
-#include "wassert.hpp"
-#include "util.hpp"
 #include "replay.hpp"
+#include "util.hpp"
+#include "wassert.hpp"
+#include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 
 #define LOG_NW lg::info(lg::network)

@@ -12,6 +12,7 @@
 */
 
 #include "leader_list.hpp"
+#include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 #include "widgets/menu.hpp"
 

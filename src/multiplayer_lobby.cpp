@@ -16,6 +16,7 @@
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "wassert.hpp"
+#include "wml_separators.hpp"
 
 namespace mp {
 
