@@ -498,6 +498,11 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	unit_halo_effect.assign(0);
 	missile_halo_effect.assign(0);
 
+	if(damage > 0 && shown_label == false) {
+		shown_label = true;
+		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+	}
+
 	if(damage > 0 && def->second.gets_hit(damage)) {
 		dead = true;
 		damage = 0;
@@ -779,6 +784,11 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	}
 
 	halo_effect.assign(0);
+
+	if(damage > 0 && shown_label == false) {
+		shown_label = true;
+		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+	}
 
 	disp.hide_unit(gamemap::location());
 
