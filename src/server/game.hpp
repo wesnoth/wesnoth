@@ -82,7 +82,7 @@ private:
 
 	config level_;
 
-	std::vector<config> history_;
+	config history_;
 
 	config* description_;
 

@@ -452,6 +452,7 @@ int play_game(int argc, char** argv)
 		//it is all handled inside this 'if' statement
 		if(multiplayer_mode) {
 
+			std::string era = "era_default";
 			std::string scenario = "multiplayer_test";
 			std::map<int,std::string> side_types, side_controllers, side_algorithms;
 			std::map<int,string_map> side_parameters;
@@ -484,6 +485,8 @@ int play_game(int argc, char** argv)
 
 					if(name == "--scenario") {
 						scenario = value;
+					} else if(name == "--era") {
+						era = value;
 					} else if(last_digit && name_head == "--controller") {
 						side_controllers[side] = value;
 					} else if(last_digit && name_head == "--algorithm") {
@@ -518,9 +521,15 @@ int play_game(int argc, char** argv)
 			config level = *lvl;
 			std::vector<config*> story;
 
-			const config* const side = game_config.child("multiplayer_side");
+			const config* const era_cfg = game_config.find_child("era","id",era);
+			if(era_cfg == NULL) {
+				std::cerr << "Could not find era '" << era << "'\n";
+				return 0;
+			}
+
+			const config* const side = era_cfg->child("multiplayer_side");
 			if(side == NULL) {
-				std::cerr << "Could not find side\n";
+				std::cerr << "Could not find multiplayer side\n";
 				return 0;
 			}
 
@@ -535,8 +544,8 @@ int play_game(int argc, char** argv)
 				                                          controller = side_controllers.find(side_num),
 				                                          algorithm = side_algorithms.find(side_num);
 
-				const config* side = type == side_types.end() ? game_config.child("multiplayer_side") :
-				                                                game_config.find_child("multiplayer_side","type",type->second);
+				const config* side = type == side_types.end() ? era_cfg->child("multiplayer_side") :
+				                                                era_cfg->find_child("multiplayer_side","type",type->second);
 				if(side == NULL) {
 					std::string side_name = (type == side_types.end() ? "default" : type->second);
 					std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";

@@ -301,7 +301,6 @@ void server::run()
 						//g->start_game() will send data that assumes the [start_game]
 						//message has been sent
 						g->send_data(data,sock);
-						g->record_data(data);
 
 						g->start_game();
 						lobby_players_.send_data(sync_initial_response());

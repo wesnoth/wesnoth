@@ -35,6 +35,8 @@ private:
 
 typedef int connection;
 
+extern const connection null_connection;
+
 //the number of peers we are connected to
 size_t nconnections();
 

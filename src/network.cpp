@@ -107,6 +107,8 @@ std::set<network::connection> bad_sockets;
 
 namespace network {
 
+const connection null_connection = 0;
+
 error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
 {
 	if(socket) {

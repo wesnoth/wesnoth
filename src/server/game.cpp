@@ -142,6 +142,11 @@ void game::add_player(network::connection player)
 			observer_join.add_child("observer").values["name"] = info->second.name();
 			send_data(observer_join);
 		}
+
+		//tell this player that the game has started
+		config cfg;
+		cfg.add_child("start_game");
+		network::send_data(cfg,player);
 	}
 
 	//if the player is already in the game, don't add them.
@@ -154,10 +159,7 @@ void game::add_player(network::connection player)
 	send_user_list();
 
 	//send the player the history of the game to-date
-	for(std::vector<config>::const_iterator i = history_.begin();
-	    i != history_.end(); ++i) {
-		network::send_data(*i,player);
-	}
+	network::send_data(history_,player);
 }
 
 void game::remove_player(network::connection player)
@@ -247,7 +249,7 @@ void game::send_data_team(const config& data, const std::string& team, network::
 
 void game::record_data(const config& data)
 {
-	history_.push_back(data);
+	history_.append(data);
 }
 
 bool game::level_init() const

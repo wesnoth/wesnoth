@@ -32,6 +32,7 @@
 #include "unit.hpp"
 #include "video.hpp"
 
+#include <deque>
 #include <map>
 #include <vector>
 
@@ -77,8 +78,14 @@ public:
 
 	enum PROCESS_DATA_RESULT { PROCESS_CONTINUE, PROCESS_RESTART_TURN, PROCESS_END_TURN };
 
-	//function which will process incoming network data, and act on it.
-	PROCESS_DATA_RESULT process_network_data(const config& cfg, network::connection from);
+	//function which will process incoming network data, and act on it. If there is
+	//more data than a single turn's worth, excess data will be placed into 'backlog'.
+	//No more than one turn's worth of data will be placed into a single backlog item,
+	//so it is safe to assume that backlog won't be touched if cfg is a member of a previous
+	//backlog.
+	//data will be forwarded to all peers other than 'from', unless 'from' is null, in
+	//which case data will not be forwarded
+	PROCESS_DATA_RESULT process_network_data(const config& cfg,network::connection from,std::deque<config>& backlog);
 
 private:
 

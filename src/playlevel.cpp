@@ -339,6 +339,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	int player_number = 0;
 
+	std::deque<config> data_backlog;
+
 	try {
 		for(bool first_time = true; true; first_time = false, first_player = 0) {
 			player_number = 0;
@@ -491,15 +493,27 @@ redo_turn:
 
 					for(;;) {
 
+						bool have_data = false;
 						config cfg;
 
-						const network::connection res = network::receive_data(cfg);
+						network::connection from = network::null_connection;
 
-						const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,res);
-						if(result == turn_info::PROCESS_RESTART_TURN) {
-							goto redo_turn;
-						} else if(result == turn_info::PROCESS_END_TURN) {
-							break;
+						if(data_backlog.empty() == false) {
+							have_data = true;
+							cfg = data_backlog.front();
+							data_backlog.pop_front();
+						} else {
+							from = network::receive_data(cfg);
+							have_data = from != network::null_connection;
+						}
+
+						if(have_data) {
+							const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog);
+							if(result == turn_info::PROCESS_RESTART_TURN) {
+								goto redo_turn;
+							} else if(result == turn_info::PROCESS_END_TURN) {
+								break;
+							}
 						}
 
 						const int ncommand = recorder.ncommands();

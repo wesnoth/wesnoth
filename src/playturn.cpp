@@ -134,7 +134,11 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		try {
 			config cfg;
 			const network::connection res = network::receive_data(cfg);
-			turn_data.process_network_data(cfg,res);
+			std::deque<config> backlog;
+
+			if(res != network::null_connection) {
+				turn_data.process_network_data(cfg,res,backlog);
+			}
 
 			turn_data.turn_slice();
 		} catch(end_level_exception& e) {
@@ -2063,12 +2067,8 @@ unit_map::const_iterator turn_info::current_unit() const
 	return i;
 }
 
-turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, network::connection from)
+turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, network::connection from, std::deque<config>& backlog)
 {
-	if(from == 0) {
-		return PROCESS_CONTINUE;
-	}
-
 	if(cfg.child("observer") != NULL) {
 		const config::child_list& observers = cfg.get_children("observer");
 		for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
@@ -2090,26 +2090,34 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	bool turn_end = false;
 
 	const config::child_list& turns = cfg.get_children("turn");
-	if(turns.empty() == false) {
+	if(turns.empty() == false && from != network::null_connection) {
 		//forward the data to other peers
 		network::send_data_all_except(cfg,from);
 	}
 
 	for(config::child_list::const_iterator t = turns.begin(); t != turns.end(); ++t) {
 
-		replay replay_obj(**t);
-		replay_obj.start_replay();
+		if(turn_end == false) {
+			replay replay_obj(**t);
+			replay_obj.start_replay();
 
-		try {
-			turn_end |= do_replay(gui_,map_,gameinfo_,units_,teams_,
-			   team_num_,status_,state_of_game_,&replay_obj);
-		} catch(replay::error& e) {
-			save_game(string_table["network_sync_error"]);
+			try {
+				turn_end = do_replay(gui_,map_,gameinfo_,units_,teams_,
+				team_num_,status_,state_of_game_,&replay_obj);
+			} catch(replay::error& e) {
+				save_game(string_table["network_sync_error"]);
 
-			//throw e;
+				//throw e;
+			}
+
+			recorder.add_config(**t,replay::MARK_AS_SENT);
+		} else {
+
+			//this turn has finished, so push the remaining moves
+			//into the backlog
+			backlog.push_back(config());
+			backlog.back().add_child("turn",**t);
 		}
-
-		recorder.add_config(**t,replay::MARK_AS_SENT);
 	}
 
 	//if a side has dropped out of the game.
