@@ -229,7 +229,7 @@ double get_scroll_speed()
 		first_time = false;
 		const string_map::const_iterator itor = prefs.values.find("scroll");
 		if(itor != prefs.values.end()) {
-			scroll = maximum<double>(1.0,minimum<double>(0.0,
+			scroll = minimum<double>(1.0,maximum<double>(0.0,
 			                             atof(itor->second.c_str())));
 		}
 	}

@@ -691,7 +691,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	y += description_rect.h;
 
-	SDL_Surface* const profile = getImage(u.type().image_profile(),UNSCALED);
+	SDL_Surface* const profile = getImage(u.type().image(),UNSCALED);
 
 	if(profile == NULL)
 		return;
