@@ -4,10 +4,10 @@
 # Initial configuration                                               #
 #######################################################################
 
-AC_PREREQ(2.57)
-AC_INIT(wesnoth, 0.11, davidnwhite@optusnet.com.au, Battle for Wesnoth)
+#AC_PREREQ(2.57)
+AC_INIT(wesnoth, 0.12, davidnwhite@optusnet.com.au, Battle for Wesnoth)
 
-AC_REVISION($Version: 0.11$)
+AC_REVISION($Version: 0.12$)
 PACKAGE=wesnoth
 MAJOR_VERSION="0"
 MINOR_VERSION="6"
@@ -272,15 +272,18 @@ tools=no
 
 AC_ARG_ENABLE(server,
 	      [  --enable-server       Enable compilation of server],
-	      server=yes)
+	      server=$enableval,
+	      server=no)
 
 AC_ARG_ENABLE(editor,
 	      [  --enable-editor       Enable compilation editor],
-	      editor=yes)
+	      editor=$enableval,
+	      editor=no)
 
 AC_ARG_ENABLE(tools,
 	      [  --enable-tools        Enable compilation of translation tools],
-	      tools=yes)
+	      tools=$enableval,
+	      tools=no)
 
 AC_ARG_ENABLE(icons,
 	      [  --disable-icons       Disable installation of icons and menu entries],
