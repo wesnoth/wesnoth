@@ -274,7 +274,6 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 					gotos.clear();
 				}
 
-
 				const shortest_path_calculator calc(un->second,current_team,
 				                                    units_,map_);
 				const bool can_teleport = un->second.type().teleports();
@@ -282,8 +281,9 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 				const std::set<gamemap::location>* const teleports =
 				     can_teleport ? &current_team.towers() : NULL;
 
-				current_route_ = a_star_search(selected_hex_,new_hex,
-				                               10000.0,calc,teleports);
+				current_route_ = a_star_search(
+				            gotos.empty() ? selected_hex_ : gotos.back(),
+					        new_hex,10000.0,calc,teleports);
 
 				current_route_.move_left =
 				      route_turns_to_complete(un->second,map_,current_route_);
@@ -493,7 +493,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		     current_route_.steps.front() == selected_hex_) {
 
 		if(!key_[SDLK_LCTRL] && !key_[SDLK_RCTRL]) {
-			
+			units_.find(selected_hex_)->second.set_goto(gamemap::location());
 		}
 
 		const size_t moves = move_unit(&gui_,map_,units_,teams_,
@@ -757,6 +757,8 @@ void turn_info::undo()
 	if(undo_stack_.empty())
 		return;
 
+	const command_disabler disable_commands;
+
 	const int starting_moves = undo_stack_.back().starting_moves;
 	std::vector<gamemap::location> route = undo_stack_.back().route;
 	std::reverse(route.begin(),route.end());
@@ -798,6 +800,8 @@ void turn_info::redo()
 {
 	if(redo_stack_.empty())
 		return;
+
+	const command_disabler disable_commands;
 
 	//clear routes, selected hex, etc
 	gui_.set_paths(NULL);
@@ -1015,6 +1019,8 @@ void turn_info::recruit()
 	if(browse_)
 		return;
 
+	const command_disabler disable_commands;
+
 	team& current_team = teams_[team_num_-1];
 
 	std::vector<unit> sample_units;
@@ -1079,6 +1085,8 @@ void turn_info::recall()
 {
 	if(browse_)
 		return;
+
+	const command_disabler disable_commands;
 
 	team& current_team = teams_[team_num_-1];
 
