@@ -270,9 +270,9 @@ bool file_exists(const std::string& name)
         return true;
 }
 
-time_t file_last_access(const std::string& fname)
+time_t file_create_time(const std::string& fname)
 {
 	struct stat buf;
 	::stat(fname.c_str(),&buf);
-	return buf.st_atime;
+	return buf.st_mtime;
 }

@@ -171,7 +171,7 @@ std::vector<save_info> get_saves_list()
 
 	std::vector<save_info> res;
 	for(std::vector<std::string>::iterator i = saves.begin(); i != saves.end(); ++i) {
-		const time_t modified = file_last_access(saves_dir + "/" + *i);
+		const time_t modified = file_create_time(saves_dir + "/" + *i);
 
 		std::replace(i->begin(),i->end(),'_',' ');
 		res.push_back(save_info(*i,modified));
