@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
 	}
 
 	try {
-		shared_sdl_surface image = comp.compose(src, dest);
+		surface image = comp.compose(src, dest);
 		save_image(image, dest);
 	} catch(exploder_failure err) {
 		std::cerr << "Failed: " << err.message << "\n";

@@ -50,8 +50,8 @@ struct exploder_rect
 std::string get_mask_dir();
 std::string get_exploder_dir();
 
-void masked_overwrite_surface(SDL_Surface* dest, SDL_Surface* src, SDL_Surface* mask, int x, int y);
-bool image_empty(SDL_Surface* surf);
-void save_image(SDL_Surface *surf, const std::string &filename);
+void masked_overwrite_surface(surface dest, surface src, surface mask, int x, int y);
+bool image_empty(surface surf);
+void save_image(surface surf, const std::string &filename);
 	
 #endif

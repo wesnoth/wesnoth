@@ -14,6 +14,7 @@
 #define VIDEO_HPP_INCLUDED
 
 #include "SDL.h"
+#include "sdl_utils.hpp"
 
 //possible flags when setting video modes
 #define FULL_SCREEN SDL_FULLSCREEN

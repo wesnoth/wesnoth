@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 		const config conf = cut.load_config(src);
 		cut.load_masks(conf);
 		
-		const shared_sdl_surface src_surface(make_neutral_surface(IMG_Load(src.c_str())));
+		const surface src_surface(make_neutral_surface(IMG_Load(src.c_str())));
 		if(src_surface == NULL)
 			throw exploder_failure("Unable to load the source image " + src);
 
@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
 				itor != surfaces.end(); ++itor) {
 			const cutter::mask &mask = itor->second.mask;
 
-			shared_sdl_surface surf = shared_sdl_surface(
+			surface surf = surface(
 					create_compatible_surface(itor->second.image, 
 					mask.cut.w, mask.cut.h));
 
