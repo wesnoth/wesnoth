@@ -46,8 +46,7 @@ struct move_cost_calculator
 			++range.first;
 		}
 
-		const gamemap::TERRAIN terrain =
-		                    map_.underlying_terrain(map_[loc.x][loc.y]);
+		const gamemap::TERRAIN terrain = map_.underlying_terrain(map_[loc.x][loc.y]);
 
 		const double modifier = 1.0;//move_type_.defense_modifier(map_,terrain);
 		const double move_cost = move_type_.movement_cost(map_,terrain);
@@ -69,7 +68,13 @@ struct move_cost_calculator
 			}
 		}
 */
-		const double res = modifier*move_cost + enemies*2.0;
+		double res = modifier*move_cost + enemies*2.0;
+
+		//if there is a unit (even a friendly one) on this tile, we increase the cost
+		//try discourage going through units, to thwart the 'single file effect'
+		if(units_.count(loc))
+			res *= 4.0;
+
 		assert(res > 0);
 		return res;
 	}
