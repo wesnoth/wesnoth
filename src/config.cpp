@@ -544,8 +544,7 @@ namespace {
 size_t config::write_size() const
 {
 	size_t res = 0;
-	for(std::map<std::string,std::string>::const_iterator i = values.begin();
-					i != values.end(); ++i) {
+	for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
 		if(i->second.empty() == false) {
 			res += i->first.size() + AttributeEquals.size() +
 			       i->second.size() + AttributePostfix.size();
@@ -698,6 +697,14 @@ void config::remove_child(const std::string& key, size_t index)
 	//remove from the ordering
 	const child_pos pos(children.find(key),index);
 	ordered_children.erase(std::remove(ordered_children.begin(),ordered_children.end(),pos),ordered_children.end());
+
+	//decrement all indices in the ordering that are above this index, since everything
+	//is getting shifted back by 1.
+	for(std::vector<child_pos>::iterator i = ordered_children.begin(); i != ordered_children.end(); ++i) {
+		if(i->pos->first == key && i->index > index) {
+			i->index--;
+		}
+	}
 
 	//remove from the child map
 	child_list& v = children[key];

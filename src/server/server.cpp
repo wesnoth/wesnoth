@@ -247,8 +247,8 @@ void server::run()
 
 							const config::child_iterator desc = std::find(vg.first,vg.second,g->description());
 							if(desc != vg.second) {
-								delete *desc;
 								gamelist->remove_child("game",desc - vg.first);
+								delete *desc;
 							}
 
 							//put the players back in the lobby and send
