@@ -44,7 +44,7 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    show_replay_(false), save_(false), join_(join),
 	    player_types_(), player_races_(), player_teams_(),
 	    player_colors_(), combos_type_(), combos_race_(),
-	    combos_team_(), combos_color_(), sliders_gold_(),
+	    combos_leader_(), combos_team_(), combos_color_(), sliders_gold_(),
 	    ai_(gui::button(disp, _(" Computer vs Computer "))),
 	    launch_(gui::button(disp, _("I'm Ready"))),
 	    cancel_(gui::button(disp, _("Cancel"))),
@@ -791,6 +791,7 @@ void mp_connect::start_game()
 {
 	combos_type_.clear();
 	combos_race_.clear();
+	combos_leader_.clear();
 	combos_team_.clear();
 	combos_color_.clear();
 	sliders_gold_.clear();
