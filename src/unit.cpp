@@ -166,12 +166,7 @@ void unit::generate_traits()
 		for(std::set<int>::const_iterator itor = chosen_traits.begin();
 		    itor != chosen_traits.end(); ++itor) {
 			const std::string& trait_name = (*traits[*itor])["name"];
-			const std::string& lang_trait = string_table["trait_"+trait_name];
-			if(lang_trait.empty() == false)
-				traitsDescription_ += lang_trait;
-			else
-				traitsDescription_ += trait_name;
-
+			traitsDescription_ += gettext(trait_name.c_str());
 			traitsDescription_ += ",";
 		}
 
