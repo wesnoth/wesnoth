@@ -584,8 +584,6 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 	const std::vector<attack_type>& attacks = attacker->second.attacks();
 	std::vector<std::string> items;
 
-	const int range = distance_between(attacker->first,defender->first);
-
 	int best_weapon_index = -1;
 	simple_attack_rating best_weapon_rating;
 

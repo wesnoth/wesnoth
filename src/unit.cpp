@@ -608,7 +608,6 @@ const std::vector<std::string>& unit::overlays() const
 
 void unit::read(const game_data& data, const config& cfg)
 {
-	const std::string& type = cfg["type"];
 	std::map<std::string,unit_type>::const_iterator i = data.unit_types.find(cfg["type"]);
 	if(i != data.unit_types.end())
 		type_ = &i->second;
@@ -647,7 +646,7 @@ void unit::read(const game_data& data, const config& cfg)
 
 	description_ = cfg["user_description"];
 	underlying_description_ = cfg["description"];
-	if(description_ == "") {
+	if(description_.empty()) {
 		description_ = underlying_description_;
 	}
 
