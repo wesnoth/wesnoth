@@ -198,12 +198,14 @@ private:
 	/// highlighted.
 	void highlight_selected_hexes(const bool clear_old=true);
 
+	/// If a starting position is at the specified hex, unset it if
+	/// something else than a keep is the terrain at the hex. Save the
+	/// starting position change in undo_action.
+	void terrain_changed(const gamemap::location &hex);
+
 	/// Save an action so that it may be undone. Add an operation to the
-	/// number done since save. If keep_selection is true, it indicates
-	/// that the selection has not changed and the currently selected
-	/// terrain should be kept if this action is redone/undone.
-	void save_undo_action(map_undo_action &action,
-						  const bool keep_selection=true);
+	/// number done since save.
+	void save_undo_action(const map_undo_action &action);
 
 	/// An item in the clipboard. Consists of the copied terrain and an
 	/// offset. When pasting stuff, the offset is used to calculate

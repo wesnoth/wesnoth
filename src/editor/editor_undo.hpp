@@ -27,47 +27,58 @@ namespace map_editor {
 /// A saved action that may be undone.
 class map_undo_action {
 public:
-	enum UNDO_TYPE { REGULAR, WHOLE_MAP };
-
 	map_undo_action();
 	
-	map_undo_action(const gamemap::TERRAIN& old_tr,
-					const gamemap::TERRAIN& new_tr,
-					const gamemap::location& lc);
-	
  	const std::map<gamemap::location,gamemap::TERRAIN>& undo_terrains() const;
-	
  	const std::map<gamemap::location,gamemap::TERRAIN>& redo_terrains() const;
 	
 	const std::set<gamemap::location> undo_selection() const;
-
 	const std::set<gamemap::location> redo_selection() const;
-	
-	void add_terrain(const gamemap::TERRAIN& old_tr,
-					 const gamemap::TERRAIN& new_tr,
-					 const gamemap::location& lc);
-	
-	void set_selection(const std::set<gamemap::location> &new_selection,
-					   const std::set<gamemap::location> &old_selection);
-
-	void set_map_data(const std::string &old_data,
-					  const std::string &new_data);
 
 	std::string new_map_data() const;
 	std::string old_map_data() const;
 
-	void set_type(const UNDO_TYPE new_type);
-
-	UNDO_TYPE undo_type() const;
+	const std::map<gamemap::location, int>& undo_starting_locations() const;
+	const std::map<gamemap::location, int>& redo_starting_locations() const;
 	
+	void add_terrain(const gamemap::TERRAIN& old_tr,
+					 const gamemap::TERRAIN& new_tr,
+					 const gamemap::location& lc);
+
+	/// Return true if a terrain change has been saved in this undo
+	/// action.
+	bool terrain_set() const;
+	
+	void set_selection(const std::set<gamemap::location> &old_selection,
+					   const std::set<gamemap::location> &new_selection);
+
+	/// Return true if a selection change has been saved in this undo
+	/// action.
+	bool selection_set() const;
+
+	void set_map_data(const std::string &old_data,
+					  const std::string &new_data);
+
+	/// Return true if a map data change has been saved in this undo
+	/// action.
+	bool map_data_set() const;
+
+	void add_starting_location(const int old_side, const int new_side,
+							   const gamemap::location &loc);
+
 private:
 	std::map<gamemap::location,gamemap::TERRAIN> old_terrain_;
 	std::map<gamemap::location,gamemap::TERRAIN> new_terrain_;
-	std::set<gamemap::location> new_selection_;
+	bool terrain_set_;
 	std::set<gamemap::location> old_selection_;
-	std::string new_map_data_;
+	std::set<gamemap::location> new_selection_;
+	bool selection_set_;
 	std::string old_map_data_;
-	UNDO_TYPE undo_type_;
+	std::string new_map_data_;
+	bool map_data_set_;
+	std::map<gamemap::location,int> old_starting_locations_;
+	std::map<gamemap::location,int> new_starting_locations_;
+	bool starting_locations_set_;
 };
 	
 typedef std::deque<map_undo_action> map_undo_list;
@@ -77,7 +88,7 @@ typedef std::deque<map_undo_action> map_undo_list;
 /// since save. If keep_selection is true, it indicates that the
 /// selection has not changed and the currently selected terrain should
 /// be kept if this action is redone/undone. Also clear the redo stack.
-void add_undo_action(map_undo_action &action);
+void add_undo_action(const map_undo_action &action);
 
 /// Return true if there exist any undo actions in the undo stack.
 bool exist_undo_actions();

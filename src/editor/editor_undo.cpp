@@ -21,15 +21,11 @@ namespace {
 
 namespace map_editor {
 
-map_undo_action::map_undo_action(const gamemap::TERRAIN& old_tr,
-								 const gamemap::TERRAIN& new_tr,
-								 const gamemap::location& lc){
-	add_terrain(old_tr, new_tr, lc);
-	undo_type_ = REGULAR;
-}
-
 map_undo_action::map_undo_action() {
-	undo_type_ = REGULAR;
+	terrain_set_ = false;
+	selection_set_ = false;
+	map_data_set_ = false;
+	starting_locations_set_ = false;
 }
 
 const std::map<gamemap::location,gamemap::TERRAIN>& map_undo_action::undo_terrains() const {
@@ -48,19 +44,6 @@ const std::set<gamemap::location> map_undo_action::redo_selection() const {
 	return new_selection_;
 }
 
-void map_undo_action::add_terrain(const gamemap::TERRAIN& old_tr,
-								  const gamemap::TERRAIN& new_tr,
-								  const gamemap::location& lc) {
-	old_terrain_[lc] = old_tr;
-	new_terrain_[lc] = new_tr;
-}
-
-void map_undo_action::set_selection(const std::set<gamemap::location> &new_selection,
-									const std::set<gamemap::location> &old_selection) {
-	new_selection_ = new_selection;
-	old_selection_ = old_selection;
-}
-
 std::string map_undo_action::old_map_data() const {
 	return old_map_data_;
 }
@@ -69,22 +52,56 @@ std::string map_undo_action::new_map_data() const {
 	return new_map_data_;
 }
 
+const std::map<gamemap::location, int>& map_undo_action::undo_starting_locations() const {
+	return old_starting_locations_;
+}
+
+const std::map<gamemap::location, int>& map_undo_action::redo_starting_locations() const {
+	return new_starting_locations_;
+}
+
+void map_undo_action::add_terrain(const gamemap::TERRAIN& old_tr,
+								  const gamemap::TERRAIN& new_tr,
+								  const gamemap::location& lc) {
+	old_terrain_[lc] = old_tr;
+	new_terrain_[lc] = new_tr;
+	terrain_set_ = true;
+}
+
+bool map_undo_action::terrain_set() const {
+	return terrain_set_;
+}
+
+void map_undo_action::set_selection(const std::set<gamemap::location> &old_selection,
+									const std::set<gamemap::location> &new_selection) {
+	old_selection_ = old_selection;
+	new_selection_ = new_selection;
+	selection_set_ = true;
+}
+
+bool map_undo_action::selection_set() const {
+	return selection_set_;
+}
+
 void map_undo_action::set_map_data(const std::string &old_data,
 								   const std::string &new_data) {
 	old_map_data_ = old_data;
 	new_map_data_ = new_data;
+	map_data_set_ = true;
 }
 
-void map_undo_action::set_type(const UNDO_TYPE new_type) {
-	undo_type_ = new_type;
+bool map_undo_action::map_data_set() const {
+	return map_data_set_;
 }
 
-map_undo_action::UNDO_TYPE map_undo_action::undo_type() const {
-	return undo_type_;
+void map_undo_action::add_starting_location(const int old_side, const int new_side,
+											const gamemap::location &loc) {
+	old_starting_locations_[loc] = old_side;
+	new_starting_locations_[loc] = new_side;
+	starting_locations_set_ = true;
 }
 
-
-void add_undo_action(map_undo_action &action) {
+void add_undo_action(const map_undo_action &action) {
 	undo_stack.push_back(action);
 	if (undo_stack.size() > undo_limit) {
 		undo_stack.pop_front();
