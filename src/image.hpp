@@ -3,6 +3,7 @@
 
 #include "map.hpp"
 #include "unit.hpp"
+#include "sdl_utils.hpp"
 
 #include "SDL.h"
 #include <string>

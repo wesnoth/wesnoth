@@ -22,6 +22,7 @@
 #include "help.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"

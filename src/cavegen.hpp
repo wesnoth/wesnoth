@@ -1,6 +1,7 @@
 #ifndef CAVEGEN_HPP_INCLUDED
 #define CAVEGEN_HPP_INCLUDED
 
+#include "config.hpp"
 #include "mapgen.hpp"
 
 #include <set>

@@ -13,11 +13,12 @@
 #ifndef UNIT_TYPES_H_INCLUDED
 #define UNIT_TYPES_H_INCLUDED
 
+#include "animated.hpp"
 #include "config.hpp"
 #include "map.hpp"
 #include "race.hpp"
 #include "team.hpp"
-#include "animated.hpp"
+#include "util.hpp"
 
 #include <string>
 #include <vector>

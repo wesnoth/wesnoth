@@ -20,6 +20,8 @@
 #include <string>
 #include <vector>
 
+#include "SDL.h"
+
 //This class stores all the data for a single 'side' (in game nomenclature).
 //e.g. there is only one leader unit per team.
 class team

@@ -14,7 +14,8 @@
 #ifndef MAP_H_INCLUDED
 #define MAP_H_INCLUDED
 
-#include "config.hpp"
+class config;
+
 #include "terrain.hpp"
 
 #include <map>
