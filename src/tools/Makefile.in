@@ -159,6 +159,7 @@ make_translation_SOURCES = make_translation.cpp \
 			   ../filesystem.cpp \
 			   ../game_config.cpp \
 			   ../log.cpp \
+			   ../server/variable.cpp \
 			   ../config.hpp \
 			   ../filesystem.hpp \
 			   ../game_config.hpp \
@@ -174,6 +175,7 @@ merge_translations_SOURCES = merge_translations.cpp \
 			     ../filesystem.cpp \
 			     ../game_config.cpp \
 			     ../log.cpp \
+			     ../server/variable.cpp \
 			     ../config.hpp \
 			     ../filesystem.hpp \
 			     ../game_config.hpp \
@@ -189,14 +191,14 @@ PROGRAMS = $(bin_PROGRAMS)
 
 am_make_translation_OBJECTS = make_translation.$(OBJEXT) \
 	config.$(OBJEXT) filesystem.$(OBJEXT) game_config.$(OBJEXT) \
-	log.$(OBJEXT)
+	log.$(OBJEXT) variable.$(OBJEXT)
 make_translation_OBJECTS = $(am_make_translation_OBJECTS)
 make_translation_LDADD = $(LDADD)
 make_translation_DEPENDENCIES =
 make_translation_LDFLAGS =
 am_merge_translations_OBJECTS = merge_translations.$(OBJEXT) \
 	config.$(OBJEXT) filesystem.$(OBJEXT) game_config.$(OBJEXT) \
-	log.$(OBJEXT)
+	log.$(OBJEXT) variable.$(OBJEXT)
 merge_translations_OBJECTS = $(am_merge_translations_OBJECTS)
 merge_translations_LDADD = $(LDADD)
 merge_translations_DEPENDENCIES =
@@ -208,7 +210,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/config.Po ./$(DEPDIR)/filesystem.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_config.Po ./$(DEPDIR)/log.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/make_translation.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/merge_translations.Po
+@AMDEP_TRUE@	./$(DEPDIR)/merge_translations.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/variable.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -274,6 +277,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/make_translation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/merge_translations.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/variable.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
@@ -384,6 +388,28 @@ log.obj: ../log.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/log.Po' tmpdepfile='$(DEPDIR)/log.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o log.obj `if test -f '../log.cpp'; then $(CYGPATH_W) '../log.cpp'; else $(CYGPATH_W) '$(srcdir)/../log.cpp'; fi`
+
+variable.o: ../server/variable.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT variable.o -MD -MP -MF "$(DEPDIR)/variable.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o variable.o `test -f '../server/variable.cpp' || echo '$(srcdir)/'`../server/variable.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/variable.Tpo" "$(DEPDIR)/variable.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/variable.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../server/variable.cpp' object='variable.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/variable.Po' tmpdepfile='$(DEPDIR)/variable.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o variable.o `test -f '../server/variable.cpp' || echo '$(srcdir)/'`../server/variable.cpp
+
+variable.obj: ../server/variable.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT variable.obj -MD -MP -MF "$(DEPDIR)/variable.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o variable.obj `if test -f '../server/variable.cpp'; then $(CYGPATH_W) '../server/variable.cpp'; else $(CYGPATH_W) '$(srcdir)/../server/variable.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/variable.Tpo" "$(DEPDIR)/variable.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/variable.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../server/variable.cpp' object='variable.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/variable.Po' tmpdepfile='$(DEPDIR)/variable.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o variable.obj `if test -f '../server/variable.cpp'; then $(CYGPATH_W) '../server/variable.cpp'; else $(CYGPATH_W) '$(srcdir)/../server/variable.cpp'; fi`
 uninstall-info-am:
 
 ETAGS = etags

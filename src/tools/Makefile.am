@@ -16,6 +16,7 @@ make_translation_SOURCES = make_translation.cpp \
 			   ../filesystem.cpp \
 			   ../game_config.cpp \
 			   ../log.cpp \
+			   ../server/variable.cpp \
 			   ../config.hpp \
 			   ../filesystem.hpp \
 			   ../game_config.hpp \
@@ -31,6 +32,7 @@ merge_translations_SOURCES = merge_translations.cpp \
 			     ../filesystem.cpp \
 			     ../game_config.cpp \
 			     ../log.cpp \
+			     ../server/variable.cpp \
 			     ../config.hpp \
 			     ../filesystem.hpp \
 			     ../game_config.hpp \
