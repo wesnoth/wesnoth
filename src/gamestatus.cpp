@@ -31,9 +31,6 @@ time_of_day::time_of_day(const config& cfg)
                    green(atoi(cfg["green"].c_str())),
                    blue(atoi(cfg["blue"].c_str()))
 {
-	const std::string& lang_name = string_table[cfg["id"]];
-	if(lang_name.empty() == false)
-		name = lang_name;
 }
 
 void time_of_day::write(config& cfg) const
