@@ -114,7 +114,7 @@ void default_map_generator::user_config(display& disp)
 	villages_rect.y = hillsize_rect.y + hillsize_rect.h + vertical_margin;
 	landform_rect.y = villages_rect.y + villages_rect.h + vertical_margin;
 
-	const int max_players = 8;
+	const int max_players = 9;
 
 	const int right_space = 100;
 
@@ -132,7 +132,6 @@ void default_map_generator::user_config(display& disp)
 	const int max_height = 200;
 	const int extra_size_per_player = 2;
 	
-
 	slider_rect.y = width_rect.y;
 	gui::slider width_slider(disp,slider_rect);
 	width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
@@ -286,6 +285,8 @@ std::string default_map_generator::create_map(const std::vector<std::string>& ar
 		island_off_center = minimum<size_t>(width_,height_);
 		std::cerr << "calculated coastal params...\n";
 	}
+
+	std::cerr << "generating map with " << nplayers_ << " players\n";
 
 	if(cfg_ != NULL)
 		return default_generate_map(width_,height_,island_size,island_off_center,iterations,hill_size_,max_lakes,(nvillages_*width_*height_)/1000,nplayers_,*cfg_);

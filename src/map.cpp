@@ -297,7 +297,7 @@ int gamemap::num_valid_starting_positions() const
 {
 	const int res = is_starting_position(gamemap::location());
 	if(res == -1)
-		return num_starting_positions();
+		return num_starting_positions()-1;
 	else
 		return res;
 }

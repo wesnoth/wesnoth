@@ -120,10 +120,8 @@ height_map generate_height_map(size_t width, size_t height,
 
 		int x1 = island_size > 0 ? center_x - island_size + (rand()%(island_size*2)) :
 			                                 int(rand()%width);
-											 std::cerr << "y\n";
 		int y1 = island_size > 0 ? center_y - island_size + (rand()%(island_size*2)) :
 			                                 int(rand()%height);
-											 std::cerr << "z\n";
 
 		//we have to check whether this is actually a valley
 		if(island_size != 0) {
@@ -976,6 +974,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				}
 			}
 		}
+
+		std::cerr << "placing " << castles.size() << " castles\n";
 
 		//plonk down the castles.
 		for(c = castles.begin(); c != castles.end(); ++c) {
