@@ -605,8 +605,7 @@ redo_turn:
 						        map,teams,player_number,units,true);
 
 			turn_data.save_game(string_table["save_game_error"]);
-
-			return QUIT;
+			throw network::error();
 		}
 
 	} //end for(;;)
