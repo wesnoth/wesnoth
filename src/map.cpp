@@ -67,7 +67,7 @@ bool gamemap::is_village(const gamemap::location& loc) const
 
 bool gamemap::gives_healing(const gamemap::location& loc) const
 {
-	return is_village(loc);
+	return on_board(loc) && gives_healing(get_terrain(loc));
 }
 
 bool gamemap::is_castle(const gamemap::location& loc) const
