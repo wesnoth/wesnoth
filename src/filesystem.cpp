@@ -182,12 +182,12 @@ std::string get_saves_dir()
 
 std::string get_user_data_dir()
 {
-	static const char* const current_dir = ".";
-
 #ifdef _WIN32
 	_mkdir("userdata");
 	return "userdata";
 #else
+
+	static const char* const current_dir = ".";
 
 	const char* home_str = getenv("HOME");
 	if(home_str == NULL)
@@ -195,7 +195,11 @@ std::string get_user_data_dir()
 
 	const std::string home(home_str);
 
-	const std::string dir_path = home + "/.wesnoth";
+#ifndef PREFERENCES_DIR
+#define PREFERENCES_DIR ".wesnoth"
+#endif
+
+	const std::string dir_path = home + std::string("/") + PREFERENCES_DIR;
 	DIR* dir = opendir(dir_path.c_str());
 	if(dir == NULL) {
 		const int res = mkdir(dir_path.c_str(),AccessMode);
