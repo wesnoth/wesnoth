@@ -10,6 +10,7 @@ our %langs = (
 	      'es' => 'spanish',
 	      'fi' => 'finnish',
 	      'fr' => 'french',
+	      'el' => 'greek',
 	      'hu' => 'hungarian',
 	      'it' => 'italian',
 	      'nl' => 'dutch',
@@ -30,10 +31,10 @@ if (@ARGV == 0) {
 foreach my $key (@locales) {
   print STDERR " $langs{$key} -> $key:\n";
   system ("./utils/wml2po.pl data/translations/" . $langs{$key} .
-	  ".cfg po/wesnoth/$key.po > out-$key.log 2> err-$key.log")
+	  ".cfg po/$key/wesnoth.po > out-$key.log 2> err-$key.log")
     and print STDERR "translation1 ended in error !\n";
   system ("./utils/wml2po.pl data/translations/" . $langs{$key} .
-	  ".cfg po/wesnoth-editor/$key.po > out-$key-ed.log 2> err-$key-ed.log")
+	  ".cfg po/$key/wesnoth-editor.po > out-$key-ed.log 2> err-$key-ed.log")
     and print STDERR "translation2 ended in error !\n";
   system ("grep FINAL err-$key.log");
 }
