@@ -234,9 +234,16 @@ void display::scroll(double xmove, double ymove)
 	ypos_ += ymove;
 	bounds_check_position();
 
+	if(int(util::round(xpos_)) == int(util::round(orig_x)))
+		xpos_ = orig_x;
+
+	if(int(util::round(ypos_)) == int(util::round(orig_y)))
+		ypos_ = orig_y;
+
 	//only invalidate if we've actually moved
-	if(orig_x != xpos_ || orig_y != ypos_)
+	if(orig_x != xpos_ || orig_y != ypos_) {
 		invalidate_all();
+	}
 }
 
 void display::zoom(double amount)
