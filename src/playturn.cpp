@@ -2146,6 +2146,21 @@ void turn_info::do_command(const std::string& str)
 		game_config::debug = (data != "off") ? true : false;
 	} else if(cmd == "n" && game_config::debug) {
 		throw end_level_exception(VICTORY);
+	} else if(game_config::debug && cmd == "unit") {
+		std::cerr << "processing unit: '" << data << "'\n";
+		const unit_map::iterator i = current_unit();
+		if(i != units_.end()) {
+			const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
+			if(j != data.end()) {
+				const std::string name(data.begin(),j);
+				const std::string value(j+1,data.end());
+				std::cerr << "setting '" << name << "' = '" << value << "\n";
+				config cfg;
+				i->second.write(cfg);
+				cfg[name] = value;
+				i->second = unit(gameinfo_,cfg);
+			}
+		}
 	}
 }
 

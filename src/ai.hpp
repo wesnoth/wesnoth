@@ -17,6 +17,7 @@
 #include "ai_move.hpp"
 #include "display.hpp"
 #include "map.hpp"
+#include "pathfind.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"
 
