@@ -1581,7 +1581,7 @@ config config::get_diff(const config& c) const
 				if(b.size() - bi > a.size() - ai) {
 					config& new_delete = res.add_child("delete_child");
 					char buf[50];
-					sprintf(buf,"%d",bi-ndeletes);
+					sprintf(buf,"%lu",bi-ndeletes);
 					new_delete.values["index"] = buf;
 					new_delete.add_child(*itor);
 
