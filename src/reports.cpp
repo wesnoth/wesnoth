@@ -190,7 +190,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			
 			str << lang_weapon << " (" << lang_type << ")\n";
 
-			tooltip << lang_weapon << "\n";
+			tooltip << lang_weapon << " (" << lang_type << ")\n";
 
 			//find all the unit types on the map, and show this weapon's bonus against all the different units
 			std::set<const unit_type*> seen_units;
