@@ -1743,7 +1743,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			std::stringstream msg;
 			msg << gettext(msg_id);
 			
-			if(u.movement_left() > 0) {
+			if(steps.size() < route.size()) {
 				//see if the "Continue Move" action has an associated hotkey
 				const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
 				std::vector<hotkey::hotkey_item>::const_iterator hk;
