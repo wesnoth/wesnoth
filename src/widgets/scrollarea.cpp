@@ -76,6 +76,11 @@ unsigned scrollarea::get_position() const
 	return scrollbar_.get_position();
 }
 
+unsigned scrollarea::get_max_position() const
+{
+	return scrollbar_.get_max_position();
+}
+
 void scrollarea::set_position(unsigned pos)
 {
 	scrollbar_.set_position(pos);

@@ -42,6 +42,7 @@ protected:
 	unsigned scrollbar_width() const;
 
 	unsigned get_position() const;
+	unsigned get_max_position() const;
 	void set_position(unsigned pos);
 	void adjust_position(unsigned pos);
 	void move_position(int dep);

@@ -40,6 +40,8 @@ public:
 	///  is at the top, and (full_size - shown_size) if it is at the bottom.
 	unsigned get_position() const;
 
+	unsigned get_max_position() const;
+
 	/// Used to manually update the scrollbar.
 	void set_position(unsigned pos);
 

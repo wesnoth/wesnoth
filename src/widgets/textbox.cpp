@@ -202,7 +202,7 @@ bool textbox::editable() const
 
 void textbox::scroll_to_bottom()
 {
-	set_position((unsigned)-1);
+	set_position(get_max_position());
 }
 
 void textbox::set_wrap(bool val)
