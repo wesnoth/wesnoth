@@ -2409,7 +2409,7 @@ const std::pair<int,int>& display::calculate_energy_bar()
 	int first_row = -1;
 	int last_row = -1;
 
-	const scoped_sdl_surface image(image::get_image(game_config::unmoved_energy_image,image::UNSCALED,image::NO_ADJUST_COLOUR));
+	const scoped_sdl_surface image(image::get_image(game_config::unmoved_energy_image,image::SCALED,image::NO_ADJUST_COLOUR));
 
 	surface_lock image_lock(image);
 	const short* const begin = image_lock.pixels();
