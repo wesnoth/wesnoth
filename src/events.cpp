@@ -1,6 +1,7 @@
 #include "events.hpp"
 #include "mouse.hpp"
 #include "preferences.hpp"
+#include "video.hpp"
 
 #include "SDL.h"
 
@@ -100,6 +101,11 @@ void pump()
 		}
 
 		switch(event.type) {
+			case SDL_VIDEOEXPOSE: {
+				update_whole_screen();
+				break;
+			}
+
 			case SDL_VIDEORESIZE: {
 				const SDL_ResizeEvent* const resize = reinterpret_cast<SDL_ResizeEvent*>(&event);
 

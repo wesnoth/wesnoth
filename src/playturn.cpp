@@ -1154,13 +1154,13 @@ void turn_info::redo()
 	gui_.invalidate_unit();
 	gui_.invalidate_game_status();
 
-	recorder.add_movement(route.front(),route.back());
-
 	if(map_.underlying_terrain(map_[route.back().x][route.back().y]) == gamemap::TOWER) {
 		get_tower(route.back(),teams_,un.side()-1,units_);
 	}
 
 	gui_.draw_tile(route.back().x,route.back().y);
+
+	recorder.add_movement(route.front(),route.back());
 
 	undo_stack_.push_back(redo_stack_.back());
 	redo_stack_.pop_back();
@@ -2026,7 +2026,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		} catch(replay::error& e) {
 			save_game(string_table["network_sync_error"]);
 
-			throw e;
+			//throw e;
 		}
 
 		recorder.add_config(*cfg.child("turn"));

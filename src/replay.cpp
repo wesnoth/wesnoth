@@ -28,6 +28,7 @@
 #include <cstdlib>
 #include <deque>
 #include <iostream>
+#include <set>
 #include <sstream>
 
 //functions to verify that the unit structure on both machines is identical
@@ -40,6 +41,24 @@ namespace {
 		if(nunits != units.size()) {
 			std::cerr << "SYNC VERIFICATION FAILED: number of units from data source differ: "
 			          << nunits << " according to data source. " << units.size() << " locally\n";
+
+			std::set<gamemap::location> locs;
+			const config::child_list& items = cfg.get_children("unit");
+			for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
+				const gamemap::location loc(**i);
+				locs.insert(loc);
+
+				if(units.count(loc) == 0) {
+					std::cerr << "data source says there is a unit at " << (loc.x+1) << "," << (loc.y+1) << " but none found locally\n";
+				}
+			}
+
+			for(unit_map::const_iterator j = units.begin(); j != units.end(); ++j) {
+				if(locs.count(j->first) == 0) {
+					std::cerr << "local unit at " << (j->first.x+1) << "," << (j->first.y+1) << " but none in data source\n";
+				}
+			}
+
 			throw replay::error();
 		}
 
@@ -58,10 +77,10 @@ namespace {
 			u->second.write(cfg);
 
 			bool is_ok = true;
-			static const std::string fields[] = {"type","hitpoints","experience","side","moves",""};
+			static const std::string fields[] = {"type","hitpoints","experience","side",""};
 			for(const std::string* str = fields; str->empty() == false; ++str) {
 				if(cfg[*str] != (**i)[*str]) {
-					std::cerr << "ERROR IN FIELD FOR UNIT at " << (**i)["x"] << "," << (**i)["y"]
+					std::cerr << "ERROR IN FIELD '" << *str << "' for unit at " << (**i)["x"] << "," << (**i)["y"]
 						      << " data source: '" << (**i)[*str] << "' local: '" << cfg[*str] << "'\n";
 					is_ok = false;
 				}
@@ -256,6 +275,7 @@ void replay::add_recall(int value, const gamemap::location& loc)
 void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
 {
 	add_pos("move",a,b);
+	current_->add_child("verify",make_verify_units());
 	current_ = NULL;
 }
 

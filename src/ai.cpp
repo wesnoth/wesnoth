@@ -223,8 +223,6 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 		}
 	}
 
-	recorder.add_movement(from,to);
-
 	current_unit.set_movement(0);
 	info_.units.insert(std::pair<location,unit>(to,current_unit));
 	if(info_.map.underlying_terrain(info_.map[to.x][to.y]) == gamemap::TOWER)
@@ -238,6 +236,8 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	if((info_.teams.front().uses_fog() || info_.teams.front().uses_shroud()) && !info_.teams.front().fogged(to.x,to.y)) {
 		game_events::fire("sighted",to);
 	}
+
+	recorder.add_movement(from,to);
 
 	return to;
 }

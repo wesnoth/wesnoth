@@ -1523,9 +1523,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	if(disp != NULL)
 		disp->move_unit(steps,u);
 
-	if(move_recorder != NULL)
-		move_recorder->add_movement(steps.front(),steps.back());
-
 	u.set_movement(moves_left);
 
 	ui = units.insert(std::pair<gamemap::location,unit>(steps.back(),u)).first;
@@ -1553,6 +1550,9 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			undo_stack->push_back(undo_action(steps,starting_moves,orig_tower_owner));
 		}
 	}
+
+	if(move_recorder != NULL)
+		move_recorder->add_movement(steps.front(),steps.back());
 
 	if(disp != NULL) {
 		disp->set_route(NULL);
