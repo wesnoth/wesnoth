@@ -67,7 +67,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 		std::cerr << "No terrain found.\n";
 		abort_ = ABORT_HARD;
 	}
-	selected_terrain_ = terrains_[1];
+	selected_terrain_ = terrains_[0];
 
 	// Set size specs.
 	adjust_sizes(gui_);
@@ -517,11 +517,19 @@ void map_editor::scroll_palette_down() {
 	if(tstart_ + size_specs_.nterrains + 2 <= terrains_.size()) {
 		tstart_ += 2;
 	}
+	else if (tstart_ + size_specs_.nterrains + 1 <= terrains_.size()) {
+		tstart_ += 1;
+	}
 }
 
 void map_editor::scroll_palette_up() {
-	if(tstart_ >= 2) {
-		tstart_ -= 2;
+	int decrement = 2;
+	if (tstart_ + size_specs_.nterrains == terrains_.size()
+		&& terrains_.size() % 2 != 0) {
+		decrement = 1;
+	}
+	if(tstart_ >= decrement) {
+		tstart_ -= decrement;
 	}
 }
 
@@ -779,7 +787,7 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 	unsigned int ending = starting+specs.nterrains;
 
 	bool status = true;
-
+	disp.redraw_everything();
 	SDL_Rect invalid_rect;
 	invalid_rect.x = x;
 	invalid_rect.y = y;
@@ -792,8 +800,6 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 				   terrains.end());
 	if(ending > terrains.size()){
 		ending = terrains.size();
-		starting = ending - specs.nterrains;
-		status = false;
 	}
 
 	for(unsigned int counter = starting; counter < ending; counter++){
@@ -810,9 +816,9 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 			std::cerr << "image for terrain '" << counter << "' not found\n";
 			return status;
 		}
-
+		const int counter_from_zero = counter - starting;
 		SDL_Rect dstrect;
-		dstrect.x = x + (counter % 2 != 0 ?	 0 : specs.terrain_space);
+		dstrect.x = x + (counter_from_zero % 2 != 0 ? specs.terrain_space : 0);
 		dstrect.y = y;
 		dstrect.w = image->w;
 		dstrect.h = image->h;
@@ -821,11 +827,11 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h,
 							terrain == selected ? 0xF000:0 , screen);
 	
-		if (counter % 2 != 0)
+		if (counter_from_zero % 2 != 0)
 			y += specs.terrain_space;
 	}
 	invalid_rect.w = specs.terrain_space * 2;
-  
+	
 	invalid_rect.h = y - invalid_rect.y;
 	update_rect(invalid_rect);
 	return status;
@@ -836,7 +842,7 @@ int tile_selected(const unsigned int x, const unsigned int y,
 {
 	for(unsigned int i = 0; i != specs.nterrains; i++) {
 		const unsigned int px = disp.mapx() + specs.palette_x +
-			(i % 2 != 0 ? 0 : specs.terrain_space);
+			(i % 2 != 0 ? specs.terrain_space : 0);
 		const unsigned int py = specs.palette_y + (i / 2) * specs.terrain_space;
 		const unsigned int pw = specs.terrain_space;
 		const unsigned int ph = specs.terrain_space;
@@ -903,7 +909,6 @@ int main(int argc, char** argv)
 			mapdata = mapdata + "gggggggggggggggggggg\n";
 		}
 	}
-
 	bool done = false;
 	gamestatus status(cfg, 0);
 	std::vector<team> teams;
