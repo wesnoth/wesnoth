@@ -145,7 +145,7 @@ struct shared_sdl_surface
 	explicit shared_sdl_surface(SDL_Surface* surf) : surface_(surf)
 	{}
 
-	explicit shared_sdl_surface(const shared_sdl_surface& o) : surface_(o.surface_.get())
+	shared_sdl_surface(const shared_sdl_surface& o) : surface_(o.surface_.get())
 	{
 		sdl_add_ref(get());
 	}
