@@ -1,5 +1,7 @@
 #include "game.hpp"
 
+#include <cassert>
+
 int game::id_num = 1;
 
 game::game() : id_(id_num++), started_(false), description_(NULL)
