@@ -282,7 +282,7 @@ void generate_river(const height_map& heights, terrain_map& terrain, int x, int 
 
 //function to return a random tile at one of the borders of a map that is
 //of the given dimensions.
-location point_at_side(size_t width, size_t height)
+location random_point_at_side(size_t width, size_t height)
 {
 	const int side = rand()%4;
 	if(side < 2) {
@@ -579,6 +579,45 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 	}
 }
 
+gamemap::location place_village(const std::vector<std::vector<gamemap::TERRAIN> >& map,
+								size_t x, size_t y, size_t radius, const config& cfg)
+{
+	const gamemap::location loc(x,y);
+	std::set<gamemap::location> locs;
+	get_tiles_radius(loc,radius,locs);
+	gamemap::location best_loc;
+	size_t best_rating = 0;
+	for(std::set<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+		if(i->x < 0 || i->y < 0 || i->x >= map.size() || i->y >= map[i->x].size()) {
+			continue;
+		}
+
+		const std::string str(1,map[i->x][i->y]);
+		const config* const child = cfg.find_child("village","terrain",str);
+		if(child != NULL) {
+			size_t rating = atoi((*child)["rating"].c_str());
+			gamemap::location adj[6];
+			get_adjacent_tiles(gamemap::location(i->x,i->y),adj);
+			for(size_t n = 0; n != 6; ++n) {
+				if(adj[n].x < 0 || adj[n].y < 0 || adj[n].x >= map.size() || adj[n].y >= map[adj[n].x].size()) {
+					continue;
+				}
+
+				const gamemap::TERRAIN t = map[adj[n].x][adj[n].y];
+				const std::string& adjacent_liked = (*child)["adjacent_liked"];
+				rating += std::count(adjacent_liked.begin(),adjacent_liked.end(),t);
+			}
+
+			if(rating > best_rating) {
+				best_loc = gamemap::location(i->x,i->y);
+				best_rating = rating;
+			}
+		}
+	}
+
+	return best_loc;
+}
+
 }
 
 //function to generate the map.
@@ -736,8 +775,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		//we want the locations to be on the portion of the map we're actually going
 		//to use, since roads on other parts of the map won't have any influence,
 		//and doing it like this will be quicker.
-		location src = point_at_side(width/3 + 2,height/3 + 2);
-		location dst = point_at_side(width/3 + 2,height/3 + 2);
+		location src = random_point_at_side(width/3 + 2,height/3 + 2);
+		location dst = random_point_at_side(width/3 + 2,height/3 + 2);
 		src.x += width/3 - 1;
 		src.y += height/3 - 1;
 		dst.x += width/3 - 1;
@@ -825,34 +864,43 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	}
 
 	std::cerr << "placing villages...\n";
-	std::cerr << "villages: ";
-	std::cerr << nvillages;
-	std::cerr << "...\n";
-	//place villages. We attempt to place nvillages, all at random locations.
-	//After a location is chosen, we can through [village] tags to see
-	//what kind of village we should place on that type of terrain. If no
-	//[village] tag is found for the terrain type (e.g. deep water) no village
-	//will be placed.
+	//place villages in a 'grid', to make placing fair, but with villages
+	//displaced from their position according to terrain and randomness, to
+	//add some variety.
+
+	//first we work out the size of the x and y distance between villages
+	const size_t tiles_per_village = ((width*height)/9)/nvillages;
+	size_t village_x = 1, village_y = 1;
+
+	//alternate between incrementing the x and y value. When they are high enough
+	//to equal or exceed the tiles_per_village, then we have them to the value
+	//we want them at.
+	size_t* village_ptr = &village_x;
+	while(village_x*village_y < tiles_per_village) {
+		(*village_ptr)++;
+		village_ptr = (village_ptr == &village_x ? &village_y : &village_x);
+	}
+
 	std::set<location> villages;
+	for(size_t vx = 0; vx < width; vx += village_x) {
+		for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
+			const size_t add_x = rand()%3;
+			const size_t add_y = rand()%3;
+			const size_t x = (vx + add_x) - 1;
+			const size_t y = (vy + add_y) - 1;
 
-	size_t village = 0, village_tries = 0;
-	while(village != nvillages && village_tries != nvillages*3) {
-		++village_tries;
+			const gamemap::location res = place_village(terrain,x,y,2,cfg);
 
-		const int x = rand()%width/3+width/3;
-		const int y = rand()%height/3+height/3;
-		const std::string str(1,terrain[x][y]);
-		const config* const child = cfg.find_child("village","terrain",str);
-		if(child != NULL) {
-			if((*child)["chance"] != "" && (rand()%100) >= atoi((*child)["chance"].c_str())) {
-				continue;
-			}
-
-			const std::string& convert_to = (*child)["convert_to"];
-			if(convert_to.empty() == false) {
-				terrain[x][y] = convert_to[0];
-				villages.insert(gamemap::location(x,y));
-				++village;
+			if(res.x >= width/3 && res.x < (width*2)/3 && res.y >= height/3 && res.y < (height*2)/3) {
+				const std::string str(1,terrain[res.x][res.y]);
+				const config* const child = cfg.find_child("village","terrain",str);
+				if(child != NULL) {
+					const std::string& convert_to = (*child)["convert_to"];
+					if(convert_to != "") {
+						terrain[res.x][res.y] = convert_to[0];
+						villages.insert(res);
+					}
+				}
 			}
 		}
 	}
