@@ -180,7 +180,7 @@ SDL_Rect draw_dialog_title(int x, int y, display* disp, const std::string& text)
 		rect = disp->screen_area();
 	}
 
-	return font::draw_text(disp,rect,24,font::NORMAL_COLOUR,text,x+5,y+5,NULL,false,font::USE_MARKUP,TTF_STYLE_BOLD);
+	return font::draw_text(disp,rect,18,font::TITLE_COLOUR,text,x+5,y+5,NULL,false,font::USE_MARKUP,TTF_STYLE_BOLD);
 }
 
 void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& title,

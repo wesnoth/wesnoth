@@ -35,7 +35,7 @@ void set_font(const std::string& name);
 
 //various standard colours
 extern const SDL_Color NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,
-                       DARK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR;
+                       DARK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR, TITLE_COLOUR;
 
 enum MARKUP { USE_MARKUP, NO_MARKUP };
 
