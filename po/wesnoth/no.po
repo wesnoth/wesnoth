@@ -3,12 +3,13 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: no\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-03-16 18:10+0100\n"
+"PO-Revision-Date: 2005-03-29 20:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmål <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +18,8 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -345,6 +345,7 @@ msgstr ""
 "<header>text=’Sjangs for å treffe’</header>"
 
 #: data/help.cfg:111
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -356,8 +357,19 @@ msgid ""
 "30% chance of hitting them. Conversely, the elf's chance of hitting the "
 "attacker in return depends on what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"Med to unntak så er sjangsen for å treffe en enhet bare bestemt av "
+"forsvarsegenskapen til enheten i <ref>dst terrain text=terrenget</ref> den "
+"står i. Dette kan du finne ut ved å høgreklikke på en enhet, velge "
+"enhetsbeskrivelse og så se på <italic>text=’Terreng Modifkatorer’</italic>. "
+"Alver har for eksempel en forsvarsegenskap på 70% i skog, det betyr at en "
+"enhet som angriper dem bare har 30% sjangse for å treffe dem. På samme måte "
+"er alvens sjangse for å treffe angriperen i returslaget avhengig av hvilket "
+"terreng angriperen står i."
 
 #: data/help.cfg:112
+#, fuzzy
 msgid ""
 "\n"
 "There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
@@ -366,6 +378,11 @@ msgid ""
 "regardless of terrain, and, when used offensively, Marksmen always have at "
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"Det er to unntak til denne regelen: <ref>dst=magical_attacks text=’Magiske "
+"angrep’</ref> og <ref>dst=ability_marksman text=jegere<ref>. Magiske angrep "
+"har alltid 70% sjangse for å treffe, uansett terreng, og jegere har minst "
+"60% sjangse til å treffe viss de blir brukt offensivt."
 
 #: data/help.cfg:114
 msgid ""
@@ -373,6 +390,9 @@ msgid ""
 "\n"
 "<header>text=Damage</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=Skade</header>"
 
 #: data/help.cfg:116
 msgid ""
@@ -385,8 +405,17 @@ msgid ""
 "<ref>dst=time_of_day text='Time of Day'</ref>, both of which are explained "
 "below."
 msgstr ""
+"\n"
+"\n"
+"Hvert slag som treffer fører til en grunnskade som er avhengig av "
+"angrepstypen. En alvisk kriger for eksempel med 5-4 sverdangrep fører til en "
+"grunnskade på 5 livspoeng (LP). Dette kan endres på to måter: "
+"<ref>dst=damage_types_and_resistance text=Motstand</ref> og "
+"<ref>dst=time_of_day text=’når på døgnet’</ref>, begge blir forklart "
+"nedenfor."
 
 #: data/help.cfg:118
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -395,6 +424,12 @@ msgid ""
 "which doubles the damage dealt by both attacker and defender when the unit "
 "with Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Noen få enheter har spesielle evner som påvirker skaden som blir utdelt i "
+"kamp. Den mest vanlige av disse er <ref>dst=ability_charge "
+"text=stormangrep<ref>, som dobler skaden som blir påført av både angriper og "
+"forsvarer når enheten med stormangrep angriper."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -408,6 +443,11 @@ msgid ""
 "and Holy attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
+"I Wesnoth er det tre typer skade som vanligvis sees i sammenheng med fysiske "
+"angrep. Klinge, spidde og slagskade. I tillegg er det tre typer skade som "
+"vanligvis sees i sammenheng med magiske angrep. Ild, kulde og hellige "
+"angrep. Forskellige enheter kan ha ulike motstander som endrer skaden som de "
+"mottar fra ulike skadetyper."
 
 #: data/help.cfg:126
 msgid ""
@@ -1321,7 +1361,6 @@ msgstr ""
 "sikkert lære meg kunsten å kjempe i kamp."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:75
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1338,7 +1377,6 @@ msgid "Recruit a unit"
 msgstr "Rekrutter enhet"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
-#, fuzzy
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Utmerket! Du har rekruttert en Alvisk Kriger."
 
@@ -1356,7 +1394,6 @@ msgid "How do I recruit units?"
 msgstr "Hvordan rekrutterer jeg enheter?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:91
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1397,7 +1434,6 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "Hvilke enheter bør jeg rekruttere?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:93
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box,  and cost, which is displayed after the name of "
@@ -1436,7 +1472,6 @@ msgid "End your turn"
 msgstr "Avslutt runden din"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:116
-#, fuzzy
 msgid "You have successfully ended your turn."
 msgstr "Du har fullført den første runden din."
 
@@ -1491,7 +1526,6 @@ msgid "Move your Elvish Fighter next to Merle"
 msgstr "Flytt den Alviske Krigeren din frem til Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:159
-#, fuzzy
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
@@ -1578,7 +1612,6 @@ msgid "Attack Merle"
 msgstr "Angrip Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "You have successfully attacked Merle."
 msgstr "Du har angrepet Merle."
 
@@ -1587,7 +1620,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Kan Merle gjøre motangrep etter mitt angrep?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:199
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1660,7 +1692,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Avslutt runden din og vent på at Merle skal angripe deg."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:216
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
@@ -1693,7 +1724,6 @@ msgid "What happens when a unit advances?"
 msgstr "Hva hender når en enhet avanserer?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:222
-#, fuzzy
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1723,7 +1753,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Hva skjer når en enhet flyttes inn i en landsby?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:251
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1748,7 +1777,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Hvordan bli helbredet når det ikke er noen landsbyer i nærheten?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:252
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1837,7 +1865,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:333
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr ""
 "Vil du gå gjennom noko av det du har lært i dette scenariet en gang til?"
@@ -1907,7 +1934,6 @@ msgid "Turns run out"
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
-#, fuzzy
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Du har greid å tilbakekalle din Alviske Kriger."
 
@@ -5792,7 +5818,7 @@ msgstr "Saurianerkriger"
 
 #: data/units/Naga.cfg:6
 msgid "female^Naga"
-msgstr ""
+msgstr "Naga"
 
 #: data/units/Naga.cfg:20
 msgid ""
@@ -6114,7 +6140,6 @@ msgid "Outlaws fight better at night."
 msgstr "Fredløse kjemper bedre om natten."
 
 #: data/units/Outlaw.cfg:75
-#, fuzzy
 msgid "female^Outlaw"
 msgstr "Fredløs"
 
@@ -6125,7 +6150,6 @@ msgstr ""
 "de gjør det."
 
 #: data/units/Outlaw_Princess.cfg:4
-#, fuzzy
 msgid "female^Outlaw Princess"
 msgstr "Fredløs Prinsesse"
 
@@ -6142,7 +6166,6 @@ msgstr ""
 "med det hun har plyndret."
 
 #: data/units/Outlaw_Queen.cfg:3
-#, fuzzy
 msgid "female^Outlaw Queen"
 msgstr "Fredløs Dronning"
 
@@ -6197,7 +6220,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
 msgid "pitchfork"
-msgstr "Høygaffel"
+msgstr "høygaffel"
 
 #: data/units/Pikeman.cfg:3
 msgid "Pikeman"
@@ -6276,7 +6299,6 @@ msgstr ""
 "er verdifull i så godt som alle situasjoner."
 
 #: data/units/Red_Mage.cfg:96
-#, fuzzy
 msgid "female^Red Mage"
 msgstr "Rød Trollmann"
 
@@ -6380,9 +6402,8 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
-#, fuzzy
 msgid "frost blast"
-msgstr "første slag"
+msgstr "kuldestøt"
 
 #: data/units/Saurian_Skirmisher.cfg:4
 #, fuzzy
@@ -6436,7 +6457,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Sea_Hag.cfg:6
-#, fuzzy
 msgid "female^Sea Hag"
 msgstr "Sjøheks"
 
@@ -6527,7 +6547,6 @@ msgstr ""
 "motstandsdyktige overfor de fleste former for magiske angrep."
 
 #: data/units/Silver_Mage.cfg:132
-#, fuzzy
 msgid "female^Silver Mage"
 msgstr "Sølvtrollmann"
 
@@ -6543,6 +6562,11 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"En gang i tiden var de blant de mektigste levende vesener, nå er den "
+"fryktede dragen blitt til bare bein og sener. Lenge etter sin død ble den "
+"vekket opp fra de døde gjennom nekromaniens mørke krefter, som den nå tjener "
+"under. Skjelettdragen ser kanskje ut som en beinhaug, men få er de som har "
+"levd lenge nok til å komme på bedre tanker."
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
@@ -6587,7 +6611,7 @@ msgstr "Hysjjjj! Griffen sover! Du bør nok ikke vekke den!"
 
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
-msgstr "Sjeleskyter"
+msgstr "Sjeleskytter"
 
 #: data/units/Soul_Shooter.cfg:15
 msgid ""
@@ -6597,6 +6621,10 @@ msgid ""
 "nor caring what their purpose, or foes be.  They are driven only by a malice "
 "borne of the anguish of their empty and incoherent existence."
 msgstr ""
+"De mektigste av de vandøde bueskytterne er de som var bueskyttere i deres "
+"tidligere liv. De subber omkring på slagmarken uten mål og mening. De er "
+"styrt av et vagt minne om deres tidligere evner. De drives bare av ondskap "
+"som har rot i den angsten som deres tomme ekistens inneholder."
 
 #: data/units/Soulless.cfg:3
 msgid "Soulless"
@@ -6619,21 +6647,20 @@ msgid "Spearman"
 msgstr "Spydkaster"
 
 #: data/units/Spearman.cfg:16
-#, fuzzy
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
-"Spydkasteren utgjr kjernen i de menneskelige hærene. Disse unge soldatene "
+"Spydkasteren utgør kjernen i de menneskelige hærene. Disse unge soldatene "
 "gis enkel trening og settes på fremste rad for å motta kampens hovedstøt. "
 "Pga. deres lange våpen, får de inn første slag i en kamp, selv når de "
 "forsvarer seg."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
-msgstr ""
+msgstr "Ond ånd"
 
 #: data/units/Spectre.cfg:21
 msgid ""
@@ -6642,6 +6669,10 @@ msgid ""
 "strengthen themselves. They also have a terrible wail that freezes the heart "
 "of the weak."
 msgstr ""
+"Onde ånder er blant de mektigste av spøkelsene og kan bruke sine krefter til "
+"å fremmane et spektralsverd som suger livskraften ut av sine motstandere og "
+"forbedrer deres egen. De har også et frykteleg hyl som får hjertet til å "
+"fryse blant de svake."
 
 #: data/units/Swordsman.cfg:3
 msgid "Swordsman"
@@ -6685,9 +6716,8 @@ msgstr ""
 "har et kaotisk gemytt, og slåss derfor bedre om natten enn om dagen."
 
 #: data/units/Thief.cfg:104
-#, fuzzy
 msgid "female^Thief"
-msgstr "Hvit Trollmann"
+msgstr "Tyv"
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
@@ -6699,27 +6729,31 @@ msgstr "Røvere er banditter som bruker store klubber til å slå sine ofre."
 
 #: data/units/Transport_Galleon.cfg:3
 msgid "Transport Galleon"
-msgstr ""
+msgstr "Transportgalleon"
 
 #: data/units/Transport_Galleon.cfg:13
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"Transportgalleoner er velutrustede skip som blir brukt til å transportere "
+"tropper. Viss de kommer til land kan de landsette tropper som kan angripe."
 
 #: data/units/Trapper.cfg:3
 msgid "Trapper"
-msgstr ""
+msgstr "Pelsjeger"
 
 #: data/units/Trapper.cfg:16
 msgid ""
 "Trappers usually work supplying food for bandits and outlaws. Their hunting "
 "experience makes them most valuable at night and in forests and swamps."
 msgstr ""
+"Pelsjegere ordner vanligvis mat til banditter og fredløse. Jaktferdighetene "
+"deres gjør dem mest verdifulle om natten og i skoger og sumper."
 
 #: data/units/Triton.cfg:6
 msgid "Triton"
-msgstr ""
+msgstr "Triton"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -6749,21 +6783,19 @@ msgstr ""
 "kampens hete."
 
 #: data/units/Troll_Rocklobber.cfg:3
-#, fuzzy
 msgid "Troll Rocklobber"
-msgstr "Trollhelt"
+msgstr "Steinkasttroll"
 
 #: data/units/Troll_Rocklobber.cfg:17
-#, fuzzy
 msgid ""
 "Trolls are humanoid monsters that have the amazing ability to regenerate, "
 "recovering from their wounds during battle. These trolls have armed "
 "themselves with large rocks they hurl at their opponents."
 msgstr ""
 "Troll er sterke, brutale menneskeliknende monstre som har en fantastisk evne "
-"til å regenerere, slik at sårene deres heles selv midt i kampens hete.Selv "
-"om trollet fremdeles bare er en svak Trollyngel, er rasen deres kjent for å "
-"utvikle seg utrolig raskt."
+"til å regenerere, slik at sårene deres heles selv midt i kampens hete. Disse "
+"trollene har armert seg selv med store stener som de kaster på motstanderene "
+"sine."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -6807,12 +6839,10 @@ msgstr ""
 "blodet til offeret, noe som gir mer liv til monsteret."
 
 #: data/units/Vampire_Lady.cfg:3
-#, fuzzy
 msgid "female^Vampire Lady"
-msgstr "Vampyrinne"
+msgstr "Vampyrdronning"
 
 #: data/units/Vampire_Lady.cfg:17
-#, fuzzy
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
@@ -6904,7 +6934,6 @@ msgstr ""
 "fra lysstrålene hans."
 
 #: data/units/White_Mage.cfg:77
-#, fuzzy
 msgid "female^White Mage"
 msgstr "Hvit Trollmann"
 
@@ -6938,6 +6967,12 @@ msgid ""
 "drawing nutrients from the ground and energy from the sun, Woses can regrow "
 "missing limbs after a fight."
 msgstr ""
+"Vosene er treliknende skapninger fra legendene. De kommer fra skogene og når "
+"de er i en skog kan man ikke skille dem fra andre trær. De er veldig stive "
+"og langsomme, så de er dårlige på å unnvike slag. Den seige barken deres er "
+"tøff og motstår godt kulde, knusende slag og piler. Hugg skærer likevel lett "
+"gjennom og de er svært sårbare for ild. ved å hente næring fra bakken og "
+"energi fra solen kan Voser reparere sine skader lett etter en kamp."
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
@@ -7126,9 +7161,8 @@ msgid "+Slovak Translation"
 msgstr "+Slovakisk oversettelse"
 
 #: src/about.cpp:284
-#, fuzzy
 msgid "+Slovenian Translation"
-msgstr "+Slovakisk oversettelse"
+msgstr "+Slovensk oversettelse"
 
 #: src/about.cpp:288
 msgid "+Spanish Translation"
@@ -7920,7 +7954,6 @@ msgid "Faction"
 msgstr "Parti"
 
 #: src/multiplayer_connect.cpp:487
-#, fuzzy
 msgid "Color"
 msgstr "Farge"
 
@@ -8116,7 +8149,7 @@ msgstr "Tomme rubrikker"
 
 #: src/multiplayer_lobby.cpp:128
 msgid "<no games open>"
-msgstr ""
+msgstr "<ingen åpne spill>"
 
 #: src/multiplayer_ui.cpp:50
 msgid "Red"
@@ -8679,9 +8712,8 @@ msgid "Found invalid closing tag for tag $tag (line $line)"
 msgstr ""
 
 #: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
-#, fuzzy
 msgid "Empty variable name"
-msgstr "Ugyldig epoke valgt"
+msgstr ""
 
 #: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
@@ -8786,146 +8818,6 @@ msgstr "lovlydig"
 #: src/unit_types.cpp:926
 msgid "neutral"
 msgstr "nøytral"
-
-#, fuzzy
-#~ msgid "Next unit"
-#~ msgstr "Nøytrale enheter: "
-
-#, fuzzy
-#~ msgid "End Unit Turn"
-#~ msgstr "Avslutt runde"
-
-#, fuzzy
-#~ msgid "Undo"
-#~ msgstr "Vandøde"
-
-#, fuzzy
-#~ msgid "Redo"
-#~ msgstr "Rød"
-
-#, fuzzy
-#~ msgid "Default Zoom"
-#~ msgstr "Standard"
-
-#, fuzzy
-#~ msgid "Unit Description"
-#~ msgstr "Kjempeskorpion"
-
-#, fuzzy
-#~ msgid "Repeat Recruit"
-#~ msgstr "Rekrutter"
-
-#, fuzzy
-#~ msgid "Speak"
-#~ msgstr "Spesial"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Prinsesse"
-
-#, fuzzy
-#~ msgid "Scenario Objectives"
-#~ msgstr "+Scenarieutviklere"
-
-#, fuzzy
-#~ msgid "Quit Game"
-#~ msgstr "Avslutt spillet"
-
-#, fuzzy
-#~ msgid "Set Label"
-#~ msgstr "Sett ut navn"
-
-#, fuzzy
-#~ msgid "Set Terrain"
-#~ msgstr "Terreng"
-
-#, fuzzy
-#~ msgid "New Map"
-#~ msgstr "Eget kart"
-
-#, fuzzy
-#~ msgid "Load Map"
-#~ msgstr "Last inn spill"
-
-#, fuzzy
-#~ msgid "Save Map"
-#~ msgstr "Utveksle kart"
-
-#, fuzzy
-#~ msgid "Save As"
-#~ msgstr "Lagret"
-
-#, fuzzy
-#~ msgid "Flood Fill"
-#~ msgstr "Blodkyss"
-
-#, fuzzy
-#~ msgid "Fill Selection"
-#~ msgstr "Skjelett"
-
-#, fuzzy
-#~ msgid "Paste"
-#~ msgstr "Borg"
-
-#, fuzzy
-#~ msgid "Resize Map"
-#~ msgstr "Eget kart"
-
-#, fuzzy
-#~ msgid "Select All"
-#~ msgstr "Velg enhet:"
-
-#, fuzzy
-#~ msgid "Draw Terrain"
-#~ msgstr "Terreng"
-
-#, fuzzy
-#~ msgid "Continue Move"
-#~ msgstr "Koble til tjener"
-
-#, fuzzy
-#~ msgid "View Chat Log"
-#~ msgstr "Pratelogg"
-
-#, fuzzy
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Vil du virkelig slette dette spillet?"
-
-#, fuzzy
-#~ msgid "player"
-#~ msgstr "Spillere:"
-
-#, fuzzy
-#~ msgid "Show Grid"
-#~ msgstr "Vis reprise"
-
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Opplæring"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Runder: "
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Velg språk"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Velg våpen:"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Innstillinger..."
-
-#, fuzzy
-#~ msgid "Delete File"
-#~ msgstr "Slett lagret spill"
-
-#, fuzzy
-#~ msgid "Move your fighter onto a village"
-#~ msgstr "Flytt krigeren din til en landsby."
 
 #~ msgid "Konrad"
 #~ msgstr "Konrad"
