@@ -1,4 +1,5 @@
 /* $Id$ */
+/* vim:set encoding=utf-8: */
 /*
    Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
    Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
@@ -879,9 +880,47 @@ void cut_word(std::string& line, std::string& word, int size, int max_width)
 	}
 }
 
+
+/*
+ * According to Kinsoku-Shori, Japanese rules about line-breaking:
+ *
+ * * the following characters cannot begin a line (so we will never break before them):
+ * 、。，．）〕］｝〉》」』】’”ゝゞヽヾ々？！：；ぁぃぅぇぉゃゅょゎァィゥェォャュョヮっヵッヶ・…ー
+ *
+ * * the following characters cannot end a line (so we will never break after them):
+ * （〔［｛〈《「『【‘“
+ */
+inline bool no_break_after(wchar_t ch)
+{
+	return
+		ch == 0x2018 || ch == 0x201c || ch == 0x3008 || ch == 0x300a || ch == 0x300c ||
+		ch == 0x300e || ch == 0x3010 || ch == 0x3014 || ch == 0xff08 || ch == 0xff3b ||
+		ch == 0xff5b;
+
+}
+
+inline bool no_break_before(wchar_t ch)
+{
+	return
+		ch == 0x2019 || ch == 0x201d || ch == 0x2026 || ch == 0x3001 || ch == 0x3002 ||
+		ch == 0x3005 || ch == 0x3009 || ch == 0x300b || ch == 0x300d || ch == 0x300f ||
+		ch == 0x3011 || ch == 0x3015 || ch == 0x3041 || ch == 0x3043 || ch == 0x3045 ||
+		ch == 0x3047 || ch == 0x3049 || ch == 0x3063 || ch == 0x3083 || ch == 0x3085 ||
+		ch == 0x3087 || ch == 0x308e || ch == 0x309d || ch == 0x309e || ch == 0x30a1 ||
+		ch == 0x30a3 || ch == 0x30a5 || ch == 0x30a7 || ch == 0x30a9 || ch == 0x30c3 ||
+		ch == 0x30e3 || ch == 0x30e5 || ch == 0x30e7 || ch == 0x30ee || ch == 0x30f5 ||
+		ch == 0x30f6 || ch == 0x30fb || ch == 0x30fc || ch == 0x30fd || ch == 0x30fe ||
+		ch == 0xff01 || ch == 0xff09 || ch == 0xff0c || ch == 0xff0e || ch == 0xff1a ||
+		ch == 0xff1b || ch == 0xff1f || ch == 0xff3d || ch == 0xff5d; 
+}
+
 inline bool break_before(wchar_t ch)
 {
-	return ch == ' ' ||
+	if(no_break_before(ch))
+		return false;
+
+	return ch == ' ' || 
+		// CKJ characters
 		(ch >= 0x3000 && ch < 0xa000) ||
 		(ch >= 0xf900 && ch < 0xfb00) ||
 		(ch >= 0xff00 && ch < 0xfff0);
@@ -889,12 +928,15 @@ inline bool break_before(wchar_t ch)
 
 inline bool break_after(wchar_t ch)
 {
-	return ch == ' ' ||
+	if(no_break_after(ch))
+		return false;
+
+	return ch == ' ' || 
+		// CKJ characters
 		(ch >= 0x3000 && ch < 0xa000) ||
 		(ch >= 0xf900 && ch < 0xfb00) ||
 		(ch >= 0xff00 && ch < 0xfff0);
 }
-
 }
 
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height)
@@ -916,16 +958,23 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 				current_word = *ch;
 				++ch;
 			} else {
+				wchar_t previous;
 				for(;ch != utils::utf8_iterator::end(unwrapped_text) &&
 						*ch != ' ' && *ch != '\n'; ++ch) {
 
-					if(!current_word.empty() && break_before(*ch))
+					if(!current_word.empty() &&
+							break_before(*ch) && 
+							!no_break_after(previous))
 						break;
+
+					if(!current_word.empty() &&
+							break_after(previous) &&
+							!no_break_before(*ch))
+						break;
+
 					current_word.append(ch.substr().first, ch.substr().second);
-					if(break_after(*ch)) {
-						++ch;
-						break;
-					}
+
+					previous = *ch;
 				}
 			}
 		}
