@@ -70,6 +70,7 @@ public:
 	bool operator!=(const t_string&) const;
 	bool operator!=(const std::string&) const;
 	bool operator!=(const char*) const;
+	bool operator<(const t_string&) const;
 
 	bool empty() const;
 	std::string::size_type size() const;

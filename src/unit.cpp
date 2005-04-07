@@ -924,7 +924,7 @@ void unit::set_facing_left(bool newval)
 	facingLeft_ = newval;
 }
 
-const std::string& unit::traits_description() const
+const t_string& unit::traits_description() const
 {
 	return traitsDescription_;
 }
@@ -987,7 +987,7 @@ void unit::add_modification(const std::string& type,
 		modifications_.add_child(type,mod);
 	}
 
-	std::vector<std::string> effects_description;
+	std::vector<t_string> effects_description;
 
 	for(config::const_child_itors i = mod.child_range("effect");
 	    i.first != i.second; ++i.first) {
@@ -1001,7 +1001,7 @@ void unit::add_modification(const std::string& type,
 			}
 		}
 
-		std::stringstream description;
+		t_string description;
 
 		const std::string& apply_to = (**i.first)["apply_to"];
 
@@ -1026,14 +1026,14 @@ void unit::add_modification(const std::string& type,
 					if(first_attack) {
 						first_attack = false;
 					} else {
-						description << "; ";
+						description += "; ";
 					}
 					
-					description << gettext(a->name().c_str()) << " " << desc;
+					description += a->name() + " " + desc;
 				}
 			}
 		} else if(apply_to == "hitpoints") {
-			LOG_UT << "applying hitpoint mod...." << hitpoints_ << "/" << maxHitpoints_ << "\n";
+			LOG_UT << "applying hitpoint mod..." << hitpoints_ << "/" << maxHitpoints_ << "\n";
 			const std::string& increase_hp = (**i.first)["increase"];
 			const std::string& heal_full = (**i.first)["heal_full"];
 			const std::string& increase_total = (**i.first)["increase_total"];
@@ -1042,7 +1042,8 @@ void unit::add_modification(const std::string& type,
 			const std::string& violate_max = (**i.first)["violate_maximum"];
 
 			if(increase_total.empty() == false) {
-				description << (increase_total[0] != '-' ? "+" : "") << increase_total << _("HP");
+				description += (increase_total[0] != '-' ? "+" : "") + increase_total +
+					t_string(N_("HP"), "wesnoth");
 
 				//a percentage on the end means increase by that many percent
 				if(increase_total[increase_total.size()-1] == '%') {
@@ -1078,7 +1079,8 @@ void unit::add_modification(const std::string& type,
 			const std::string& set_to = (**i.first)["set"];
 
 			if(increase.empty() == false) {
-				description << (increase[0] != '-' ? "+" : "") << increase << _("Moves");
+				description += (increase[0] != '-' ? "+" : "") + increase + 
+					t_string(N_("Moves"), "wesnoth");
 
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
@@ -1101,7 +1103,9 @@ void unit::add_modification(const std::string& type,
 			const std::string& increase = (**i.first)["increase"];
 
 			if(increase.empty() == false) {
-				description << (increase[0] != '-' ? "+" : "") << increase << _("XP");
+				description += (increase[0] != '-' ? "+" : "") +
+					increase + t_string(N_("XP"), "wesnoth");
+
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
 					maxExperience_ += (maxExperience_*atoi(inc.c_str()))/100;
@@ -1129,30 +1133,31 @@ void unit::add_modification(const std::string& type,
 			}
 		}
 
-		const std::string desc = description.str();
-		if(!desc.empty())
-			effects_description.push_back(desc);
+		if(!description.empty())
+			effects_description.push_back(description);
 	}
 
-	std::stringstream description;
-	description << mod["name"] << ": ";
-	if(mod["id"].empty() == false) {
-		description << mod["description"] << " ";
+	t_string& description = modificationDescriptions_[type];
+
+	// FIXME: the colon must be translatable.
+	description += mod["name"] + ": ";
+	if(!mod["description"].empty()) {
+		description += mod["description"];
+		description += " ";
 	}
 
 	if(effects_description.empty() == false) {
-		description << "(";
-		for(std::vector<std::string>::const_iterator i = effects_description.begin(); i != effects_description.end(); ++i) {
-			description << *i;
+		description += "(";
+		for(std::vector<t_string>::const_iterator i = effects_description.begin(); 
+				i != effects_description.end(); ++i) {
+			description += *i;
 			if(i+1 != effects_description.end())
-				description << "; ";
+				description += "; ";
 		}
-		description << ")";
+		description += ")";
 	}
 
-	description << "\n";
-
-	modificationDescriptions_[type] = modificationDescriptions_[type].str() + description.str();
+	description += "\n";
 }
 
 void unit::reset_modifications()
@@ -1172,7 +1177,7 @@ void unit::apply_modifications()
 	log_scope("apply mods");
 	modificationDescriptions_.clear();
 
-	std::vector<std::string> descriptions;
+	std::vector<t_string> descriptions;
 
 	for(size_t i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
@@ -1181,7 +1186,7 @@ void unit::apply_modifications()
 			log_scope("add mod");
 			add_modification(ModificationTypes[i],**j,true);
 
-			const std::string& name = (**j)["id"];
+			const t_string& name = (**j)["name"];
 			if(name.empty() == false) {
 				descriptions.push_back(name);
 			}
@@ -1192,25 +1197,12 @@ void unit::apply_modifications()
 
 	//we want to make sure the description always has a consistent ordering
 	std::sort(descriptions.begin(),descriptions.end());
-	for(std::vector<std::string>::const_iterator j = descriptions.begin(); j != descriptions.end(); ++j) {
+	for(std::vector<t_string>::const_iterator j = descriptions.begin(); j != descriptions.end(); ++j) {
 		if(j != descriptions.begin()) {
 			traitsDescription_ += ", ";
 		}
 
-		//traitsDescription_ += gettext(j->c_str());
-		std::vector<config*> possible_traits = type().possible_traits();
-		std::vector<config*>::const_iterator trait;
-
-		for(trait = possible_traits.begin(); trait != possible_traits.end(); ++trait) {
-			if((**trait)["id"] == *j)
-				break;
-		}
-
-		if(trait == possible_traits.end()) {
-			traitsDescription_ += *j;
-		} else {
-			traitsDescription_ += (**trait)["name"];
-		}
+		traitsDescription_ += *j;
 	}
 }
 
@@ -1228,11 +1220,11 @@ void unit::remove_temporary_modifications()
 	}
 }
 
-const std::string& unit::modification_description(const std::string& type) const
+const t_string& unit::modification_description(const std::string& type) const
 {
 	const string_map::const_iterator i = modificationDescriptions_.find(type);
 	if(i == modificationDescriptions_.end()) {
-		static const std::string empty_string;
+		static const t_string empty_string;
 		return empty_string;
 	} else {
 		return i->second;

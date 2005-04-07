@@ -431,6 +431,11 @@ bool t_string::operator!=(const t_string& string) const { return !(*this == stri
 bool t_string::operator!=(const std::string& string) const { return !(*this == string); }
 bool t_string::operator!=(const char* string) const { return !(*this == string); }
 
+bool t_string::operator<(const t_string& string) const 
+{
+	return value_ < string.value_;
+}
+
 bool t_string::empty() const 
 {
 	return value_.empty();

@@ -133,7 +133,7 @@ public:
 	bool facing_left() const;
 	void set_facing_left(bool newval);
 
-	const std::string& traits_description() const;
+	const t_string& traits_description() const;
 
 	int value() const;
 	bool is_guardian() const;
@@ -153,7 +153,7 @@ public:
 	void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
 
-	const std::string& modification_description(const std::string& type) const;
+	const t_string& modification_description(const std::string& type) const;
 
 	bool move_interrupted() const;
 	const gamemap::location& get_interrupted_move() const;
@@ -211,7 +211,7 @@ private:
 
 	config modifications_;
 
-	std::string traitsDescription_;
+	t_string traitsDescription_;
 
 	string_map modificationDescriptions_;
 
