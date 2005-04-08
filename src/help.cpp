@@ -1805,7 +1805,7 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 			std::stringstream msg;
 			msg << "Reference to non-existent topic '" << dst
 			    << "'. Please submit a bug report if you have not"
-			       "modified the game files yourself. Errornous config: ";
+			       "modified the game files yourself. Erroneous config: ";
 			write(msg, cfg);
 			throw parse_error(msg.str());
 		}
@@ -1813,7 +1813,7 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 	if (dst == "") {
 		std::stringstream msg;
 		msg << "Ref markup must have dst attribute. Please submit a bug"
-		       " report if you have not modified the game files yourself. Errornous config: ";
+		       " report if you have not modified the game files yourself. Erroneous config: ";
 		write(msg, cfg);
 		throw parse_error(msg.str());
 	}
