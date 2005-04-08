@@ -730,6 +730,15 @@ fi
 # Tune gettext stuff for our needs                                    #
 #######################################################################
 
+for domain in `grep ^SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
+do
+    # Symlinks to the single copy of Makefile.in.in
+    echo "creating po/$domain/Makefile.in.in"
+    mkdir -p po/$domain
+    rm -f po/$domain/Makefile.in.in
+    ln -s $topdir/po/Makefile.in.in po/$domain/Makefile.in.in
+done
+
 AC_CONFIG_COMMANDS([translations],
 [rm -rf translations
 case $srcdir in
@@ -738,12 +747,6 @@ case $srcdir in
 esac
 for domain in `grep ^SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
 do
-    # Symlinks to the single copy of Makefile.in.in
-    echo "creating po/$domain/Makefile.in.in"
-    mkdir -p po/$domain
-    rm -f po/$domain/Makefile.in.in
-    ln -s $topdir/po/Makefile.in.in po/$domain/Makefile.in.in
-
     # Symlinks that allow message catalogs to be used from build tree
     if test -w $srcdir; then
 	for lang in `cat $srcdir/po/$domain/LINGUAS`
