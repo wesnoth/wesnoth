@@ -2448,7 +2448,7 @@ std::vector<std::string> parse_text(const std::string &text)
 			}
 			else if (state == ELEMENT_NAME) {
 				if (c == '/') {
-					std::string msg = "Errornous / in element name.";
+					std::string msg = "Erroneous / in element name.";
 					throw parse_error(msg);
 				}
 				else if (c == '>') {
