@@ -730,6 +730,10 @@ fi
 # Tune gettext stuff for our needs                                    #
 #######################################################################
 
+case $srcdir in
+/*) topdir=$srcdir ;;
+*)  topdir=`pwd`/$srcdir ;;
+esac
 for domain in `grep ^SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
 do
     # Symlinks to the single copy of Makefile.in.in
