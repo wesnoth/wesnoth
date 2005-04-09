@@ -1691,7 +1691,11 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	std::vector<gamemap::location>::const_iterator begin = route.begin();
 
 	std::vector<gamemap::location> steps(begin,step);
-	while(!steps.empty() && units.count(steps.back()) != 0) {
+	while (!steps.empty()) {
+		gamemap::location const &loc = steps.back();
+		if (units.count(loc) == 0)
+			break;
+		moves_left += u.movement_cost(map, map[loc.x][loc.y]);
 		steps.pop_back();
 	}
 
