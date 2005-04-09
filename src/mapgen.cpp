@@ -406,7 +406,7 @@ int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, in
 
 		if(distance < min_distance) {
 			avg_distance = 0;
-			break;
+			return -1;
 		}
 
 		avg_distance += distance;
@@ -832,7 +832,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		const size_t min_distance = atoi((*castle_config)["min_distance"].c_str());
 
 		location best_loc;
-		int best_ranking = -1;
+		int best_ranking = 0;
 		for(int x = min_x; x != max_x; ++x) {
 			for(int y = min_y; y != max_y; ++y) {
 				const location loc(x,y);
