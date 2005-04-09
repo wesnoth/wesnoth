@@ -23,6 +23,7 @@
 #include "../language.hpp"
 #include "../map.hpp"
 #include "../preferences.hpp"
+#include "../random.hpp"
 #include "../team.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
@@ -40,6 +41,8 @@
 int main(int argc, char** argv)
 {
 	game_config::editor = true;
+	rng generator;
+	const set_random_generator generator_setter(&generator);
 
 	int arg;
 	for(arg = 1; arg != argc; ++arg) {
