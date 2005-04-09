@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTH 6 "January 29th, 2005" "Wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "April 9th, 2005" "Wesnoth" "Battle for Wesnoth"
 
 .SH NAME
 battle for wesnoth \- fantasy turn-based strategy game
@@ -39,12 +39,16 @@ Build a Hero, and lead your army.  Different races, with distinctive abilities, 
 sets BitsPerPixel value. Example: --bpp 32
 
 .TP
+.BR --compress \ <infile> \ <outfile>
+compresses a savefile (infile) that is a normal WML-textfile into a WML-Binary file (outfile).
+
+.TP
 .BR -d , \ --debug
 shows some extra debugging informations and options in-game.
 
 .TP
-.BR --decompress <infile> <outfile>
-decompresses a savefile (infile) that is a WML-Binary into a normal textfile (outfile).
+.BR --decompress \ <infile> \ <outfile>
+decompresses a savefile (infile) that is a WML-Binary into a normal WML-textfile (outfile).
 
 .TP
 .BR -f , \ --fullscreen

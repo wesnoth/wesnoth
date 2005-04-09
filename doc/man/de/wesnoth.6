@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTH 6 "5. Februar 2005" "Wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "9. April 2005" "Wesnoth" "Battle for Wesnoth"
 
 .SH NAME
 Battle for Wesnoth \- rundebasiertes Strategiespiel
@@ -28,9 +28,7 @@ Battle for
 .B Wesnoth
 ist ein rundenbasiertes Strategiespiel in einem Fantasy Szeanrio.
 
-Schlüpft in die Rolle eines Herrführers und führt Eure Armee zum Sieg.
-Wählt aus verschiedenen Rassen, mit unterschiedlichen Fertigkeiten,
-Waffen und Sprüchen, aus und zerschmettert Euren Gegner.
+Schlüpft in die Rolle eines Herrführers und führt Eure Armee zum Sieg. Wählt aus verschiedenen Rassen, mit unterschiedlichen Fertigkeiten, Waffen und Sprüchen, aus und zerschmettert Euren Gegner.
 
 .SH KOMMANDOZEILENOPTIONEN
 
@@ -39,12 +37,16 @@ Waffen und Sprüchen, aus und zerschmettert Euren Gegner.
 Gibt einem die Möglichkeit die Farbtiefe zu bestimmen, in der das Spiel gestartet wird. Bsp: --bpp32 
 
 .TP
+.BR --compress <entpackte_datei> <komprimierte_datei>
+Wandelt eine normale WML-Textdatei (entpackte_datei) um in einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei).
+
+.TP
 .BR -d , \ --debug
 Zeigt Eintwicklerinformationen im Spiel an.
 
 .TP
-.BR --decompress <komprimierte_datei> <entpackte_datei>
-Wandelt einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei) um in eine normale Textdatei (entpackte_datei).
+.BR --decompress \ <komprimierte_datei> \ <entpackte_datei>
+Wandelt einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei) um in eine normale WML-Textdatei (entpackte_datei).
 
 .TP
 .BR -f , \ --fullscreen
