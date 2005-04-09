@@ -789,8 +789,7 @@ bool game_controller::load_game()
 	} catch(io_exception&) {
 		gui::show_error_message(disp(), _("File I/O Error while reading the game"));
 		return false;
-	}
-
+	} 
 	recorder = replay(state_.replay_data);
 	recorder.start_replay();
 	recorder.set_skip(0);
@@ -856,6 +855,8 @@ bool game_controller::load_game()
 			//this will make it so next time through the title screen loop, this game is loaded
 			loaded_game_ = e.game;
 			loaded_game_show_replay_ = e.show_replay;
+		} catch(gamemap::incorrect_format_exception& e) {
+			gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 		}
 
 		return false;
