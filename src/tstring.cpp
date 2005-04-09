@@ -269,6 +269,7 @@ t_string& t_string::operator=(const t_string& string)
 {
 	value_ = string.value_;
 	translatable_ = string.translatable_;
+	translated_value_ = string.translated_value_;
 
 	return *this;
 }
