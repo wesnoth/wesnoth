@@ -2,6 +2,7 @@ CVS HEAD:
  * user interface improvements:
    * added alternative theme: DFool
    * added theme dialog, launched with ":theme"	
+   * made help use single click instead of double click
  * campaign modifications
    * tutorial polishing
    * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to use the new ford terrain (Heir to the Throne & The Rise of Wesnoth).
@@ -10,6 +11,16 @@ CVS HEAD:
    * dialog improvements in Eastern Invasion
    * new map for Drowned Plains (Eastern Invasion)
    * changed the Wesfolk Leader's guards to poachers in 'The Fall' (The Rise of Wesnoth)
+ * multiplayer improvements
+   * rewrote multiplayer lobby code
+   * changed Broken_Bridge to use new ruined castles
+   * added new multiplayer maps: Icy Waters, Clash
+   * changed King_of_the_Hill to use a Dwarvish Castle
+   * chat messages are now displayed in the user's colour when prefixed with /me
+   * split the map and scenario file for 'An Island'
+   * disabled debug mode for multiplayer games
+   * made it possible to join games using eras which only are on the host-side
+   * made it possible for the server to redirect the clients to another host (client-side support only for now)
  * terrain improvements
    * improved transitions:
      * swamp
@@ -21,7 +32,7 @@ CVS HEAD:
      * river ford
      * lava
  * unit graphics and sound improvements 
-   * updated images for several units: Cave Spider, Haldric, Lady Jessica, Mermaid Priestess, Mermaid Diviner, Merman Hunter, Merman Javelineer, Merman Spearman,Walking Corpse
+   * updated images for several units: Cave Spider, Haldric, Lady Jessica, Mermaid Priestess, Mermaid Diviner, Merman Hunter, Merman Javelineer, Merman Spearman,Walking Corpse, Elvish Fighter, Captain, Marshal, Hero, Champion, Archer, Marksman, Sharpshooter, Ranger, Avenger, Shyde, Orcish Archer, Orcish Crossbowman, Human Spearman
    * added drake, mounted, saurian, swimmer, troll, and wose variations to Walking Corpse 
    * updated Haldric's portrait in The Rise of Wesnoth
    * added graphics for generic Lich-Lords, the Archmages in 'The Sewer of Southbay', and the Lady Outlaw (The Rise of Wesnoth)
@@ -29,10 +40,6 @@ CVS HEAD:
    * fixed several image files being referred to by wrong name
    * removed sound of thrown spear from Drake Clasher spear melee attack
    * added get_hit_sounds to Elder Mage (Delfador) and Elvish Lady (Parandra)
- * new or overhauled graphics for:
-   * Elvish Fighter, Captain, Marshal, Hero, Champion, Archer, Marksman, Sharpshooter, Ranger, Avenger, Shyde
-   * Orcish Archer, Crossbowman
-   * Human Spearman
  * unit balancing:
    * Soulless: dropped cost to 11, increased  HP to 28
    * Merfolk: defense on water and swamp reduced by 10%. 
@@ -70,6 +77,7 @@ CVS HEAD:
   * fixed hero names not being translatable
   * made text strings automatically choose an appropriate font
   * fixed untranslatable strings
+  * support to display Chinese and Japanese translations
   * new translations: 
     * Afrikaans
     * Chinese
@@ -88,34 +96,23 @@ CVS HEAD:
     * Italian
     * Latin,
     * Norwegian
+    * Polish
     * Portuguese (Brazilian)
     * Russian
     * Slovak
     * Slovenian
     * Spanish
     * Swedish (100%)
- * support to display correctly Chinese and Japanese texts.
  * WML modifications
+   * rewrote WML parser with stricter grammar and better error handling
    * changed the [movement costs] WML tag into [movement_costs]
    * added generate_description to [unit], to allow automatic generation of user_description
    * made [capture_village] accept a location range
    * added support for [objectives] event actions, to set objectives.
    * added the ability for sides to have different objectives.
- * multiplayer improvements
-   * rewrote multiplayer lobby code
-   * changed Broken_Bridge to use new ruined castles
-   * added new multiplayer maps: Icy Waters, Clash
-   * changed King_of_the_Hill to use a Dwarvish Castle
-   * chat messages are now displayed in the user's colour when prefixed with /me
-   * split the map and scenario file for 'An Island'
-   * disabled debug mode for multiplayer games
-   * made it possible to join games using eras which only are on the host-side
-   * made it possible for the server to redirect the clients to another host
-   (client-side support only for now)
+   * added UNIT, UNDEAD_UNIT, and PLACE_IMAGE macros to utils.cfg
  * changed plague to allow plague(unit_type) as well as undead_variation
  * more progress towards a completely-usable 320x240 PDA port (campaigns should now be playable)
- * rewrote WML parser with stricter grammar and better error handling
- * added UNIT, UNDEAD_UNIT, and PLACE_IMAGE macros to utils.cfg
  * fixed bug that made the ai recruit badly
  * added debug command to give gold to current side
  * fixed user campaigns appearing twice with zipios enabled
