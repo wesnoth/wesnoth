@@ -18,6 +18,7 @@
 #include "race.hpp"
 #include "scoped_resource.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
@@ -606,10 +607,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 {
 	log_scope("map generation");
 
-	//odd widths are nasty, so make them even
-	if(is_odd(width)) {
-		++width;
-	}
+	//odd widths are nasty
+	wassert(is_even(width));
 
 	int ticks = SDL_GetTicks();
 

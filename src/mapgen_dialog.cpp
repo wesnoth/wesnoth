@@ -280,6 +280,10 @@ std::string default_map_generator::create_map(const std::vector<std::string>& ar
 
 std::string default_map_generator::generate_map(const std::vector<std::string>& args, std::map<gamemap::location,std::string>* labels)
 {
+	// the random generator thinks odd widths are nasty, so make them even
+	if (is_odd(width_))
+		++width_;
+
 	size_t iterations = (iterations_*width_*height_)/(default_width_*default_height_);
 	size_t island_size = 0;
 	size_t island_off_center = 0;
