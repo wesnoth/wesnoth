@@ -1611,6 +1611,9 @@ int play_game(int argc, char** argv)
 
 	bool res;
 
+	// do initialize fonts before reading the game config, to have game
+	// config error messages displayed. fonts will be re-initialized later
+	// when the language is read from the game config.
 	res = font::load_font_config();
 	if(res == false) {
 		std::cerr << "could not initialize fonts\n";
@@ -1634,6 +1637,12 @@ int play_game(int argc, char** argv)
 	res = game.init_language();
 	if(res == false) {
 		std::cerr << "could not initialize the language\n";
+		return 0;
+	}
+
+	res = font::load_font_config();
+	if(res == false) {
+		std::cerr << "could not re-initialize fonts for the current language\n";
 		return 0;
 	}
 

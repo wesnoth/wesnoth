@@ -1801,6 +1801,18 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 	bool show_ref = true;
 	if (find_topic(toplevel_, dst) == NULL && !force) {
 		show_ref = false;
+		// FIXME: workaround: if different campaigns define different
+		// terrains, some terrains available in one campaign will
+		// appear in the list of seen terrains, and be displayed in the
+		// help, even if the current campaign does not handle such
+		// terrains. This will lead to the unit page generator creating
+		// invalid references.
+		//
+		// Disabling this is a kludgy workaround until the
+		// encountered_terrains system is fixed
+		//
+		// -- Ayin apr 8 2005
+#if 0
 		if (game_config::debug) {
 			std::stringstream msg;
 			msg << "Reference to non-existent topic '" << dst
@@ -1809,6 +1821,7 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 			write(msg, cfg);
 			throw parse_error(msg.str());
 		}
+#endif
 	}
 	if (dst == "") {
 		std::stringstream msg;
