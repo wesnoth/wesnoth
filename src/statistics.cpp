@@ -2,6 +2,9 @@
 
 #include "statistics.hpp"
 #include "util.hpp"
+#include "log.hpp"
+
+#define ERR_NG lg::err(lg::engine)
 
 namespace {
 
@@ -263,8 +266,11 @@ attack_context::~attack_context()
 	if(stats_disabled > 0)
 		return;
 
-	attacker_stats().attacks[bat_stats.chance_to_hit_defender][attacker_res]++;
-	defender_stats().defends[bat_stats.chance_to_hit_attacker][defender_res]++;
+	std::string attacker_key = "s" + attacker_res;
+	std::string defender_key = "s" + defender_res;
+
+	attacker_stats().attacks[bat_stats.chance_to_hit_defender][attacker_key]++;
+	defender_stats().defends[bat_stats.chance_to_hit_attacker][defender_key]++;
 }
 
 stats& attack_context::attacker_stats()
