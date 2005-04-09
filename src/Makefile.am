@@ -143,6 +143,7 @@ wesnoth_SOURCES = \
 	filesystem.hpp \
 	font.hpp \
 	game_config.hpp \
+	game_errors.hpp \
 	game_events.hpp \
 	gamestatus.hpp \
 	gettext.hpp \
@@ -199,6 +200,7 @@ wesnoth_SOURCES = \
 	variable.hpp \
 	video.hpp \
 	wassert.hpp \
+	wml_separators.hpp \
 	serialization/binary_or_text.hpp \
 	serialization/binary_wml.hpp \
 	serialization/parser.hpp \
