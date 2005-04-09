@@ -1765,7 +1765,7 @@ void turn_info::recruit()
 		const std::map<std::string,unit_type>::const_iterator
 				u_type = gameinfo_.unit_types.find(*it);
 		if(u_type == gameinfo_.unit_types.end()) {
-			LOG_STREAM(err, engine) << "could not find unit '" << *it << "'";
+			LOG_STREAM(err, engine) << "could not find unit '" << *it << "'\n";
 			return;
 		}
 
