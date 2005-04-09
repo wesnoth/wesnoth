@@ -575,9 +575,10 @@ namespace {
 						ss << "<header>text='" << help::escape(res) << "'</header>";
 						res = ss.str();
 					}
+					text_started_ = false;
 				}
 				else {
-					res = "";
+					res = " ";
 				}
 			}
 			return res;
