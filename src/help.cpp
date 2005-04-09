@@ -1500,7 +1500,7 @@ void section::clear()
 }
 
 help_menu::help_menu(CVideo &video, section const &toplevel, int max_height)
-	: gui::menu(video, empty_string_vector, false, max_height),
+	: gui::menu(video, empty_string_vector, true, max_height),
 	  toplevel_(toplevel), chosen_topic_(NULL), selected_item_(&toplevel, "") 
 {
 	update_visible_items(toplevel_);
@@ -1615,8 +1615,6 @@ void help_menu::select_topic(const topic &t)
 int help_menu::process()
 {
 	int res = menu::process();
-	if (double_clicked())
-		res = selection();
 	if (!visible_items_.empty() && (unsigned)res < visible_items_.size()) {
 		selected_item_ = visible_items_[res];
 		if (selected_item_.sec != NULL) {
