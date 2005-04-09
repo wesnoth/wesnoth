@@ -253,11 +253,13 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 		area.x = main_dialog_area.x - (game_config::title_tip_x*screen.x())/1024 - area.w;
 		area.y = main_dialog_area.y + main_dialog_area.h - area.h;
 
-		next_tip_button.set_location(area.x+area.w-next_tip_button.location().w - pad,area.y+area.h - pad - next_tip_button.location().h);
-
 		draw_dialog_frame(area.x,area.y,area.w,area.h,screen.video(),&style);
 
-		font::draw_text(&screen.video(),area,font::SIZE_NORMAL,font::NORMAL_COLOUR,tip_of_day,area.x+pad,area.y+pad);
+		next_tip_button.set_location(area.x + area.w - next_tip_button.location().w - pad,
+		                             area.y + area.h - pad - next_tip_button.location().h);
+
+		font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
+		                tip_of_day, area.x + pad, area.y + pad);
 		font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
 		                tome, area.x + area.w - tome_area.w - pad,
 		                next_tip_button.location().y - tome_area.h - pad, false, TTF_STYLE_ITALIC);
