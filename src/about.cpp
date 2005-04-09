@@ -194,6 +194,7 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		"_" N_("+Finnish Translation"),
+		"-   Ankka",
 		"-   paxed",
 		"+ ",
 
@@ -219,6 +220,7 @@ std::vector<std::string> get_text() {
 		"-   Jan Heiner Laberenz (jan-heiner)",
 		"-   Kai Ensenbach (Pingu)",
 		"-   Nils Kneuper (Ivanovic)",
+		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
 		"-   Stephan Grochtmann (Schattenstephan)",
 		"+ ",
 
@@ -257,6 +259,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Norwegian Translation"),
 		"-   Hallvard Norheim Bø (Lysander)",
+		"-   Håvard Korsvoll",
 		"-   Erik J. Mesoy (Circon)",
 		"-   Susanne Mesoy (Rarlgland)",
 		"+ ",
@@ -264,7 +267,7 @@ std::vector<std::string> get_text() {
 		"_" N_("+Polish Translation"),
 		"-   Artur R. Czechowski",
 		"-   BOrsuk",
-                "_   Karol Nowak (grzywacz)",
+                "-   Karol Nowak (grzywacz)",
 		"-   methinks",
 		"-   Michał Jedynak (Artanis)",
 		"-   Paweł Stradomski",
@@ -296,6 +299,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Spanish Translation"),
 		"-   David Martínez",
+		"-   Flamma",
 		"-   Franciso Muñoz (fmunoz)",
 		"-   Gabriel Rodríguez (Chewie)",
 		"-   Jose Gordillo (kilder)",
