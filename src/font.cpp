@@ -958,7 +958,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 				current_word = *ch;
 				++ch;
 			} else {
-				wchar_t previous;
+				wchar_t previous = 0;
 				for(;ch != utils::utf8_iterator::end(unwrapped_text) &&
 						*ch != ' ' && *ch != '\n'; ++ch) {
 
