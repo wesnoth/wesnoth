@@ -233,8 +233,11 @@ std::vector<std::string> get_text() {
 		"-   adson",
 		"-   dentro",
 		"-   Kékkői László (BlackEvil)",
+		"-   Kertész Csaba",
 		"-   Khiraly",
+		"-   Kovács Dániel",
 		"-   krix",
+		"-   ott",
 		"-   Széll Tamás (TomJoad)",
 		"+ ",
 
