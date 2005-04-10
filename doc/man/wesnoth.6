@@ -13,10 +13,10 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTH 6 "April 9th, 2005" "Wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "April 2005" "Wesnoth" "Battle for Wesnoth"
 
 .SH NAME
-battle for wesnoth \- fantasy turn-based strategy game
+Battle for Wesnoth \- fantasy turn-based strategy game
 
 .SH SYNOPSIS
 .B wesnoth
@@ -26,49 +26,69 @@ battle for wesnoth \- fantasy turn-based strategy game
 .SH DESCRIPTION
 Battle for
 .B Wesnoth
-is a fantasy turn-based strategy game.
+is a turn-based fantasy strategy game.
 
-Battle for control of villages, using variety of units which have advantages and disadvantages in different types of terrains and against different types of attacks. Units gain experience, advance levels and can be carried over from one scenario to the next.
-
-Build a Hero, and lead your army.  Different races, with distinctive abilities, weapons and spells.
+Defeat all enemy leaders using a well-chosen cadre of troops, taking
+care to husband your resources of gold and villages. All units have
+their own strengths and weaknesses; to win, you must deploy your forces
+to their best advantage while denying your foes the chance to do the
+same. As units gain experience, they acquire new abilities and become
+more powerful. You can play in your own language, and even create your
+own custom units, scenarios or campaigns. Test your skill against a
+smart computer opponent, or join Wesnoth's large community of on-line
+players.
 
 .SH OPTIONS
 
 .TP
-.BR --bpp
+.B --bpp
 sets BitsPerPixel value. Example: --bpp 32
 
 .TP
-.BR --compress \ <infile> \ <outfile>
-compresses a savefile (infile) that is a normal WML-textfile into a WML-Binary file (outfile).
+.B --compress \ <infile> \ <outfile>
+compresses a savefile (infile) that is in text WML format into binary WML format (outfile).
 
 .TP
 .BR -d , \ --debug
-shows some extra debugging informations and options in-game.
+shows extra debugging information and enables additional command mode
+options in-game (see the Wiki at http://www.wesnoth.org/ for more
+information about command mode).
 
 .TP
-.BR --decompress \ <infile> \ <outfile>
-decompresses a savefile (infile) that is a WML-Binary into a normal WML-textfile (outfile).
+.B --decompress \ <infile> \ <outfile>
+decompresses a savefile (infile) that is in binary WML format into text
+WML format (outfile).
 
 .TP
 .BR -f , \ --fullscreen
 runs the game in full screen mode.
 
 .TP
-.BR --fps
-displays the number of frames per second the game is currently running at, in a corner of the screen.
+.B --fps
+displays the number of frames per second the game is currently running
+at, in a corner of the screen.
 
 .TP
 .BR -h , \ --help
-tells you what the command line options do.
+displays a summary of command line options to standard output, and exits.
 
 .TP
 .BR --log-error="domain1,domain2,..." , \ --log-warning=... , \ --log-info=...
-sets the severity level of the debug domains. "all" can be used to match any debug domain.
+sets the severity level of the debug domains. "all" can be used to match
+any debug domain.
+.B --log-info
+shows all messages,
+.B --log-warning
+only warnings and errors, and
+.B --log-error
+just errors.
 
 .TP
-.BR --multiplayer
-runs a multiplayer game. There are more extra options that can be used together with --multiplayer. They are explained below.
+.B --multiplayer
+runs a multiplayer game. There are additional options that can be used
+together with
+.B --multiplayer
+. They are explained below.
 
 .TP
 .BR --nocache
@@ -100,14 +120,18 @@ runs the game in windowed mode.
 
 .SH Options for --multiplayer
 
-The side-specific multiplayer options are marked with <number>. <number> has to be replaced by a side number. It usually is 1 or 2 but depends on the number of players possible in the choosen scenario.
+The side-specific multiplayer options are marked with <number>. <number>
+has to be replaced by a side number. It usually is 1 or 2 but depends on
+the number of players possible in the chosen scenario.
 
 .TP
 .BR --era=value
-use this option to play in the selected era instead of the "Default" era. The era is choosen by an id. Eras and factions are described in the data/multiplayer.cfg file.
+use this option to play in the selected era instead of the "Default"
+era. The era is chosen by an id. Eras are described in the
+data/multiplayer.cfg file.
 
 .TP
-.BR --nogui
+.B --nogui
 runs the game without the GUI.
 
 .TP
@@ -116,7 +140,8 @@ selects a multiplayer scenario. The default scenario is "multiplayer_test".
 
 .TP
 .BR --algorithm<number>=value
-selects a non-standard algorithm to be used by the AI controller for this side. Available values: "idle_ai" and "sample_ai".
+selects a non-standard algorithm to be used by the AI controller for
+this side. Available values: "idle_ai" and "sample_ai".
 
 .TP
 .BR --controller<number>=value
@@ -124,20 +149,24 @@ selects the controller for this side. Available values: "human" and "ai".
 
 .TP
 .BR --parm<number>=name:value
-sets additional parameters for this side. This parameter depends on the options used with
+sets additional parameters for this side. This parameter depends on the
+options used with
 .B --controller 
 and
 .B --algorithm.
-It should only be useful for people designing their own AI. (not yet documented completely)
+It should only be useful for people designing their own AI. (not yet
+documented completely)
 
 .TP
 .BR --side<number>=value
-selects a faction of the current era for this side. The faction is choosen by an id. Eras and factions are described in the data/multiplayer.cfg file.
+selects a faction of the current era for this side. The faction is
+chosen by an id. Factions are described in the data/multiplayer.cfg
+file.
 
 .SH AUTHOR
 Written by David White <davidnwhite@optusnet.com.au>.
 .br
-Edited by Nils Kneuper <crazy-ivanovic@gmx.net>.
+Edited by Nils Kneuper <crazy-ivanovic@gmx.net> and ott <ott@gaon.net>.
 .br
 This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
 .br
