@@ -599,11 +599,11 @@ endif
 
 if SERVER
 install-exec-hook:
-	mkdir -p -m 0700 $(fifodir)
-	chown $(serveruid):$(servergid) $(fifodir)
+	mkdir -p -m 0700 $(DESTDIR)$(fifodir)
+	chown $(serveruid):$(servergid) $(DESTDIR)$(fifodir)
 
 uninstall-hook:
-	rm -rf $(localstatedir)/wesnothd/
+	rm -rf $(DESTDIR)$(fifodir)
 else
 install-exec-hook:
 uninstall-hook:
