@@ -114,6 +114,10 @@ Version 0.9.0:
  * changed plague to allow plague(unit_type) as well as undead_variation
  * more progress towards a completely-usable 320x240 PDA port (campaigns should now be playable)
  * fixed bug that made the ai recruit badly
+ * fixed auto-move using up all of the remaining moves when there are no empty hexes on the unit's path (#9649)
+ * fixed merged castles in random maps (#8848)
+ * fixed villages in the rightmost column not getting a name (#11152)
+ * fixed drawing error in the titlescreen (#12534)
  * added debug command to give gold to current side
  * fixed user campaigns appearing twice with zipios enabled
  * slight cleanup of the terrain graphics code
