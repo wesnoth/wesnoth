@@ -1391,7 +1391,7 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 				read(cfg, *stream, &error_log);
 				if(!error_log.empty()) {
 					gui::show_error_message(disp(), 
-							_("Warning: Errors occured while loading game configuration files: '") +
+							_("Warning: Errors occurred while loading game configuration files: '") +
 							error_log);
 
 				}
