@@ -143,6 +143,11 @@ std::vector<std::string> get_text() {
 		"-   Susanna Björverud (sanna)",
 		"+ ",
 
+		"_" N_("+Afrikaans Translation"),
+		"-   Nico Oliver",
+		"-   ott",
+		"+ ",
+
 		"_" N_("+Basque Translation"),
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   Julen Landa (genars)",
