@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTH 6 "9. April 2005" "Wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "11. April 2005" "Wesnoth" "Battle for Wesnoth"
 
 .SH NAME
 Battle for Wesnoth \- rundebasiertes Strategiespiel
@@ -33,11 +33,11 @@ Schlüpft in die Rolle eines Herrführers und führt Eure Armee zum Sieg. Wählt aus
 .SH KOMMANDOZEILENOPTIONEN
 
 .TP
-.BR --bpp
+.B --bpp
 Gibt einem die Möglichkeit die Farbtiefe zu bestimmen, in der das Spiel gestartet wird. Bsp: --bpp32 
 
 .TP
-.BR --compress \ <entpackte_datei> \ <komprimierte_datei>
+.B --compress \ <entpackte_datei> \ <komprimierte_datei>
 Wandelt eine normale WML-Textdatei (entpackte_datei) um in einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei).
 
 .TP
@@ -45,7 +45,7 @@ Wandelt eine normale WML-Textdatei (entpackte_datei) um in einen als WML-Binärda
 Zeigt Eintwicklerinformationen im Spiel an.
 
 .TP
-.BR --decompress \ <komprimierte_datei> \ <entpackte_datei>
+.B --decompress \ <komprimierte_datei> \ <entpackte_datei>
 Wandelt einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei) um in eine normale WML-Textdatei (entpackte_datei).
 
 .TP
@@ -53,7 +53,7 @@ Wandelt einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei) u
 Startet das Programm im Vollbildmodus.
 
 .TP
-.BR --fps
+.B --fps
 Hiermit kann man sich die Anzahl der Bilder pro Sekunde anzeigen lassen.
 
 .TP
@@ -63,10 +63,19 @@ Gibt die möglichen Kommandozeilenoptionen aus.
 .TP
 .BR --log-error="domain1,domain2,..." , \ --log-warning=... , \ --log-info=...
 Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche Meldungen auszugeben.
+.B --log-info
+zeigt alle Meldungen,
+.B --log-warning
+zeigt nur Warnungen und Fehler, und
+.B --log-error
+nur Fehler.
+
 
 .TP
-.BR --multiplayer
-Starte das Spiel im Mehrerspieler-Modus. Es gibt noch zusätzliche Optionen die zusammen mit "--multiplayer" verwendet werden können. Diese werden weiter unten näher erklärt.
+.Bb --multiplayer
+Starte das Spiel im Mehrerspieler-Modus. Es gibt noch zusätzliche Optionen die zusammen mit 
+.B --multiplayer
+ verwendet werden können. Diese werden weiter unten näher erklärt.
 
 .TP
 .BR --nocache
@@ -96,7 +105,7 @@ Zeigt die Versionsnummer an und beendet das Programm.
 .BR -w , \ --windowed
 Startet das Programm im Fenstermodus.
 
-.SH Zusätzliche Optionen für „ --multiplayer“
+.SH Zusätzliche Optionen für --multiplayer
 
 Die seitenspezifischen Einstellungen sind mit <NUMMER> markiert. <NUMMER> muss dabei durch die Nummer der jeweiligen Seite ersetzt werden. Meistens ist diese Nummer 1 oder 2, doch hängt es letztendlich von der Anzahl der möglichen Spieler in dem gewählten Scenario ab.
 
@@ -135,7 +144,7 @@ Dies bestimmt die Rasse für die festegelegte Seite abhängig vom gewählten Zeital
 .SH AUTOR
 Geschrieben von David White <davidnwhite@optusnet.com.au>.
 .br
-Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net>.
+Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net> und ott <ott@gaon.net>.
 .br
 Übersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de>.
 .br
