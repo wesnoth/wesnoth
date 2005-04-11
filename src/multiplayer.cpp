@@ -134,10 +134,11 @@ server_type open_connection(display& disp, const std::string& original_host)
 		// Backwards-compatibility "version" attribute
 		const std::string& version = data["version"];
 		if(version.empty() == false && version != game_config::version) {
-			// FIXME: make this string translatable
-			throw network::error("The server requires version '" + version
-					+ "' while you are using version '" + 
-					game_config::version + "'");
+			utils::string_map i18n_symbols;
+			i18n_symbols["version1"] = version;
+			i18n_symbols["version2"] = game_config::version;
+			const std::string errorstring = vgettext("The server requires version '$version1' while you are using version '$version2'", i18n_symbols);
+			throw network::error(errorstring);
 		}
 		
 		// Check for "redirect" messages
@@ -148,8 +149,7 @@ server_type open_connection(display& disp, const std::string& original_host)
 			port = lexical_cast_default<unsigned int>((*redirect)["port"], 15000);
 
 			if(shown_hosts.find(hostpair(host,port)) != shown_hosts.end()) {
-				// FIXME: make this string translatable
-				throw network::error("Server-side redirect loop");
+				throw network::error(_("Server-side redirect loop"));
 			}
 			shown_hosts.insert(hostpair(host, port));
 

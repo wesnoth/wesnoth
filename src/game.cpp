@@ -748,10 +748,8 @@ bool game_controller::load_game()
 		std::string error_log;
 		read_save_file(game,cfg,&error_log);
 		if(!error_log.empty()) {
-			// FIXME: fix this string after the string-freeze is
-			// over, to clearly state this is a warning.
 			gui::show_error_message(disp(), 
-					_("The file you have tried to load is corrupt: '") +
+					_("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
 					error_log);
 		}
 
@@ -1392,10 +1390,8 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 				std::string error_log;
 				read(cfg, *stream, &error_log);
 				if(!error_log.empty()) {
-					// FIXME: fix this string after the string-freeze is
-					// over, to clearly state this is a warning.
 					gui::show_error_message(disp(), 
-							_("Error loading game configuration files: '") +
+							_("Warning: Errors occured while loading game configuration files: '") +
 							error_log);
 
 				}

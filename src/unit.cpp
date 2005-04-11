@@ -1139,22 +1139,23 @@ void unit::add_modification(const std::string& type,
 
 	t_string& description = modificationDescriptions_[type];
 
-	// FIXME: the colon must be translatable.
-	description += mod["name"] + ": ";
+	// Punctuation should be translatable: not all languages use latin punctuation.
+	// (however, there maybe is a better way to do it)
+	description += mod["name"] + t_string(N_(": "), "wesnoth");
 	if(!mod["description"].empty()) {
 		description += mod["description"];
 		description += " ";
 	}
 
 	if(effects_description.empty() == false) {
-		description += "(";
+		description += t_string(N_("("), "wesnoth");
 		for(std::vector<t_string>::const_iterator i = effects_description.begin(); 
 				i != effects_description.end(); ++i) {
 			description += *i;
 			if(i+1 != effects_description.end())
-				description += "; ";
+				description += t_string(N_("; "), "wesnoth");
 		}
-		description += ")";
+		description += t_string(N_(")"), "wesnoth");
 	}
 
 	description += "\n";
