@@ -86,13 +86,14 @@ static std::vector<std::string> parse_macro_arguments(const std::string& macro)
 static void internal_preprocess_file(const std::string& fname,
                                      preproc_map& defines_map,
                                      int depth, std::ostream &out,
-                                     std::vector<line_source>* lines_src, int& line);
+                                     std::string const &included_from);
 
 static void internal_preprocess_data(std::istream &data_in,
                                      preproc_map& defines_map,
                                      int depth, std::ostream &out,
-                                     std::vector<line_source>* lines_src, int& line,
-			             const std::string& fname, int srcline)
+                                     std::string const &included_from,
+                                     bool need_linenum,
+                                     std::string const &current_directory)
 {
 	std::string data_str;
 	{
@@ -104,6 +105,8 @@ static void internal_preprocess_data(std::istream &data_in,
 	std::string const &data = data_str;
 
 	bool in_quotes = false;
+	int current_line = 1;
+	bool previous_was_newline = !included_from.empty();
 
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		const char c = *i;
@@ -170,8 +173,15 @@ static void internal_preprocess_data(std::istream &data_in,
 					}
 				}
 
+				std::ostringstream from;
+				if (!in_quotes && !included_from.empty()) {
+					from << " {" << symbol << "} " << current_line << included_from;
+					if (previous_was_newline)
+						out << "#line 0" << from.str();
+				}
 				std::istringstream stream(str);
-				internal_preprocess_data(stream, defines_map, depth, out, NULL, line, fname, srcline);
+				internal_preprocess_data(stream, defines_map, depth, out, from.str(),
+				                         !previous_was_newline, "");
 			} else if(depth < 20) {
 				std::string prefix;
 				std::string nfname;
@@ -209,7 +219,7 @@ static void internal_preprocess_data(std::istream &data_in,
 						//being preprocessed
 						nfname = newfilename;
 						nfname.erase(nfname.begin(),nfname.begin()+2);
-						nfname = directory_name(fname) + nfname;
+						nfname = current_directory + nfname;
 					
 					} else {
 #ifdef USE_ZIPIOS
@@ -223,19 +233,18 @@ static void internal_preprocess_data(std::istream &data_in,
 							nfname = "data/" + newfilename;
 					}
 
-					internal_preprocess_file(nfname,
-								 defines_map, depth+1, out,
-								 lines_src,line);
+					std::ostringstream from;
+					if (!in_quotes && !included_from.empty())
+						from << ' ' << current_line << included_from;
+					internal_preprocess_file(nfname, defines_map, depth + 1, out, from.str());
 				}
 			} else {
-				const std::string& str = read_file(newfilename);
-				out.write(&*str.begin(), str.length());
-				line += std::count(str.begin(),str.end(),'\n');
+				scoped_istream stream = istream_file(newfilename);
+				out << stream->rdbuf();
 			}
 
-			if(lines_src != NULL) {
-				lines_src->push_back(line_source(line,fname,srcline));
-			}
+			previous_was_newline = false;
+			need_linenum = true;
 		} else if(c == '#' && !in_quotes) {
 			//we are about to skip some things, so keep track of
 			//the start of where we're skipping, so we can count
@@ -273,7 +282,8 @@ static void internal_preprocess_data(std::istream &data_in,
 				}
 
 				if(i > data.end() - hash_enddef.size()) {
-					throw config::error("pre-processing condition unterminated in '" + fname + "': '" + items + "'");
+					throw config::error("pre-processing condition unterminated " +
+					                    included_from + ": '" + items + "'");
 				}
 
 				i += hash_enddef.size();
@@ -356,17 +366,25 @@ static void internal_preprocess_data(std::istream &data_in,
 			if(i == data.end())
 				break;
 
-			srcline += std::count(begin,i,'\n');
-			++line;
-
 			out.put('\n');
+			current_line += std::count(begin, i, '\n');
+			need_linenum = true;
+			goto linenum_output;
 		} else {
-			if(c == '\n') {
-				++line;
-				++srcline;
+			if (c == '\n') {
+				linenum_output:
+				if (need_linenum && !in_quotes && !included_from.empty()) {
+					out << "#line " << current_line << included_from;
+					need_linenum = false;
+				} else
+					out.put('\n');
+				++current_line;
+				previous_was_newline = true;
+			} else {
+				out.put(c);
+				if ((unsigned)c > 32)
+					previous_was_newline = false;
 			}
-
-			out.put(c);
 		}
 	}
 }
@@ -374,7 +392,7 @@ static void internal_preprocess_data(std::istream &data_in,
 static void internal_preprocess_file(const std::string& fname,
                                      preproc_map& defines_map,
                                      int depth, std::ostream &out,
-                                     std::vector<line_source>* lines_src, int& line)
+                                     std::string const &included_from)
 {
 	//if it's a directory, we process all files in the directory
 	//that end in .cfg
@@ -386,32 +404,31 @@ static void internal_preprocess_file(const std::string& fname,
 		for(std::vector<std::string>::const_iterator f = files.begin();
 		    f != files.end(); ++f) {
 			if(is_directory(*f) || f->size() > 4 && std::equal(f->end()-4,f->end(),".cfg")) {
-				internal_preprocess_file(*f, defines_map, depth, out, lines_src, line);
+				internal_preprocess_file(*f, defines_map, depth, out, included_from);
 			}
 		}
 
 		return;
 	}
 
-	if(lines_src != NULL) {
-		lines_src->push_back(line_source(line,fname,1));
+	std::string from;
+	if (!included_from.empty()) {
+		from = " " + fname + included_from;
+		out << "#line 0" << from;
 	}
-
 	scoped_istream stream = istream_file(fname);
-	internal_preprocess_data(*stream, defines_map, depth, out, lines_src, line, fname, 1);
+	internal_preprocess_data(*stream, defines_map, depth, out, from, false, directory_name(fname));
 }
 
 std::istream *preprocess_file(std::string const &fname,
-                            const preproc_map* defines,
-                            std::vector<line_source>* line_sources)
+                              preproc_map const *defines)
 {
 	log_scope("preprocessing file...");
 	preproc_map defines_copy;
 	if(defines != NULL)
 		defines_copy = *defines;
 
-	int linenum = 0;
 	std::stringstream *stream = new std::stringstream;
-	internal_preprocess_file(fname, defines_copy, 0, *stream, line_sources, linenum);
+	internal_preprocess_file(fname, defines_copy, 0, *stream, "\n");
 	return stream;
 }

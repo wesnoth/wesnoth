@@ -259,7 +259,7 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
-	void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, config& cfg, bool use_cache);
+	void read_game_cfg(preproc_map& defines, config& cfg, bool use_cache);
 	void refresh_game_cfg();
 
 	void download_campaigns();
@@ -1328,7 +1328,7 @@ bool game_controller::change_language()
 }
 
 //this function reads the game configuration, searching for valid cached copies first
-void game_controller::read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, config& cfg, bool use_cache)
+void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_cache)
 {
 	log_scope("read_game_cfg");
 
@@ -1387,10 +1387,10 @@ void game_controller::read_game_cfg(preproc_map& defines, std::vector<line_sourc
 				std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
 				
 				//read the file and then write to the cache
-				scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
+				scoped_istream stream = preprocess_file("data/game.cfg", &defines);
 
 				std::string error_log;
-				read(cfg, *stream, &line_src, &error_log);
+				read(cfg, *stream, &error_log);
 				if(!error_log.empty()) {
 					// FIXME: fix this string after the string-freeze is
 					// over, to clearly state this is a warning.
@@ -1416,8 +1416,8 @@ void game_controller::read_game_cfg(preproc_map& defines, std::vector<line_sourc
 	}
 
 	std::cerr << "caching cannot be done. Reading file\n";
-	scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
-	read(cfg, *stream, &line_src);
+	scoped_istream stream = preprocess_file("data/game.cfg", &defines);
+	read(cfg, *stream);
 }
 
 void game_controller::refresh_game_cfg()
@@ -1428,8 +1428,7 @@ void game_controller::refresh_game_cfg()
 			units_data_.clear();
 			game_config_.clear();
 
-			std::vector<line_source> line_src;
-			read_game_cfg(defines_map_,line_src,game_config_,use_caching_);
+			read_game_cfg(defines_map_, game_config_, use_caching_);
 
 			const config* const units = game_config_.child("units");
 			if(units != NULL) {

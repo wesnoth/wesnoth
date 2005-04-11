@@ -19,19 +19,6 @@
 #include <string>
 #include <vector>
 
-//an object which defines the location an error occurred at when
-//parsing WML files
-struct line_source
-{
-	line_source(int ln, std::string const &fname, int line)
-		: linenum(ln), file(fname), fileline(line) {}
-
-	int linenum;
-	std::string file;
-	int fileline;
-	bool operator<(line_source const &v) const { return linenum < v.linenum; }
-};
-
 struct preproc_define
 {
 	preproc_define() {}
@@ -47,10 +34,8 @@ struct preproc_define
 typedef std::map< std::string, preproc_define > preproc_map;
 
 //function to use the WML preprocessor on a file, and returns the resulting
-//preprocessed file data. defines is a map of symbols defined. src is used
-//internally and should be set to NULL
+//preprocessed file data. defines is a map of symbols defined.
 std::istream *preprocess_file(std::string const &fname,
-                              preproc_map const *defines = NULL,
-                              std::vector< line_source > *src = NULL);
+                              preproc_map const *defines = NULL);
 
 #endif
