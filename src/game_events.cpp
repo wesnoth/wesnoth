@@ -943,12 +943,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 
 			screen->invalidate(loc);
-			// need to redraw here because unit might be in a prestart event
-			for(std::vector<team>::iterator t = teams->begin(); t != teams->end(); ++t) {
-				clear_shroud(*screen, *status_ptr, *game_map, *game_data_ptr, *units, *teams, (t - teams->begin()));
-			}
-			screen->draw();
-			screen->recalculate_minimap();
 		} else {
 			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
 

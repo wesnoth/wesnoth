@@ -467,16 +467,13 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		gui.begin_game();
 		gui.adjust_colours(0,0,0);
 		
-
 		LOG_NG << "scrolling... " << (SDL_GetTicks() - ticks) << "\n";
 		if(first_human_team != -1) {
-			clear_shroud(gui,status,map,gameinfo,units,teams,first_human_team);
 			LOG_NG << "b " << (SDL_GetTicks() - ticks) << "\n";
 			gui.scroll_to_tile(map.starting_position(first_human_team + 1).x,
 			                   map.starting_position(first_human_team + 1).y, display::WARP);
 			LOG_NG << "c " << (SDL_GetTicks() - ticks) << "\n";
 		}
-	
 		gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,display::WARP);
 		LOG_NG << "done scrolling... " << (SDL_GetTicks() - ticks) << "\n";
 
@@ -487,23 +484,12 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 			first_player = 0;
 		}
 		
-		events::raise_draw_event();
+		if(!loading_game) {
+			game_events::fire("prestart");
+		}
 		for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
 			clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
 		}
-		gui.recalculate_minimap();
-		gui.draw();
-		
-		if(!loading_game) {
-			game_events::fire("prestart");
-			events::raise_draw_event();
-			gui.draw();
-			for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
-				clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
-			}
-			gui.recalculate_minimap();
-		}
-		
 
 		std::deque<config> data_backlog;
 		
