@@ -21,7 +21,7 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "log.hpp"
-#include "gamestatus.hpp"
+#include "string_utils.hpp"
 #include "SDL_types.h"
 
 #define ERR_GENERAL LOG_STREAM(err, general)

@@ -18,9 +18,10 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "SDL_types.h"
 
-class t_string;
+#include "SDL_types.h"
+#include "tstring.hpp"
+
 
 class variable_set
 {
