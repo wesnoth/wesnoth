@@ -18,7 +18,6 @@
 #include <sstream>
 #include "config.hpp"
 #include "log.hpp"
-#include "variable.hpp"
 #include "wassert.hpp"
 #include "gettext.hpp"
 #include "util.hpp"
