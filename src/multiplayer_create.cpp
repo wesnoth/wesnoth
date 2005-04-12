@@ -22,6 +22,7 @@
 #include "filesystem.hpp"
 #include "preferences.hpp"
 #include "video.hpp"
+#include "serialization/string_utils.hpp"
 
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};

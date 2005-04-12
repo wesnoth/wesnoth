@@ -107,4 +107,7 @@ utf8_string ucs2_string_to_utf8_string(const ucs2_string& src);
 
 }
 
+// handy wrapper around interpolate_variables_into_string and gettext
+std::string vgettext(const char*, const utils::string_map&);
+
 #endif

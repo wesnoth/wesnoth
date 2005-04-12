@@ -28,6 +28,7 @@
 #include "random.hpp"
 #include "replay.hpp"
 #include "video.hpp"
+#include "serialization/string_utils.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 
