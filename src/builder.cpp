@@ -371,6 +371,9 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 
 		itor->basex = int(rx + rule_image::TILEWIDTH/2);
 		itor->basey = int(ry + rule_image::TILEWIDTH/2);
+
+		//std::cerr << "Rotation: from " << vx << ", " << vy << " to " << itor->basex <<
+		//	", " << itor->basey << "\n";
 	}
 
 	return ret;
@@ -544,7 +547,7 @@ void terrain_builder::add_constraints(
 	if(!type.empty())
 		constraints[loc].terrain_types = type;			
 	
-	int x = loc.x * rule_image::TILEWIDTH / 2;
+	int x = loc.x * rule_image::TILEWIDTH * 3 / 4;
 	int y = loc.y * rule_image::TILEWIDTH + (loc.x % 2) * 
 		rule_image::TILEWIDTH / 2;
 	add_images_from_config(constraints[loc].images, global_images, true, x, y);
