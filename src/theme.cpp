@@ -434,7 +434,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	const config::child_list& resolutions = cfg_.get_children("resolution");
 	int current_rating = 1000000;
-	config::child_list::const_iterator i, current = resolutions.end();
+	config::child_list::const_iterator i;
+	config::child_list::const_iterator current = resolutions.end();
 	for(i = resolutions.begin(); i != resolutions.end(); ++i) {
 		const int width = atoi((**i)["width"].c_str());
 		const int height = atoi((**i)["height"].c_str());

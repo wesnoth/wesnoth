@@ -968,6 +968,7 @@ void display::draw_report(reports::TYPE report_num)
 	}
 }
 
+#if 0
 void display::draw_unit_details(int x, int y, const gamemap::location& loc,
          const unit& u, SDL_Rect& description_rect, int profilex, int profiley,
          SDL_Rect* clip_rect)
@@ -1102,6 +1103,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		update_rect(profilex,profiley,profilew,profileh);
 	}
 }
+#endif
 
 void display::draw_minimap(int x, int y, int w, int h)
 {

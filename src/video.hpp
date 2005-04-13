@@ -23,7 +23,7 @@
 
 surface display_format_alpha(surface surf);
 surface get_video_surface();
-const SDL_Rect& screen_area();
+SDL_Rect screen_area();
 
 bool non_interactive();
 
