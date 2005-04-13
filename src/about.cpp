@@ -321,6 +321,10 @@ std::vector<std::string> get_text() {
 		"-   wint3r",
 		"+ ",
 		
+		"_" N_("+Turkish Translation"),
+		"-   ???",
+		"+ ",
+		
 		"_" N_("+Contributors"),
 		"-   Frédéric Wagner",
 		"+ ",
