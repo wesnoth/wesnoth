@@ -138,7 +138,6 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Internationalization Managers"),
 		"-   Cédric Duval",
-		"-   Isaac Clerencia",
 		"-   Mark Michelsen (skovbaer)",
 		"-   Nils Kneuper (Ivanovic)",
 		"-   Susanna Björverud (sanna)",
