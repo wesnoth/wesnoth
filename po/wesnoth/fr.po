@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-04-05 17:16+0100\n"
+"PO-Revision-Date: 2005-04-12 23:17+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -1306,7 +1306,7 @@ msgstr "La forêt de la peur"
 
 #: data/scenarios/multiplayer/Hexcake.cfg:3
 msgid "Hexcake"
-msgstr ""
+msgstr "Mauvaise forme hexadécimale"
 
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
@@ -9579,19 +9579,22 @@ msgstr "Observateurs : "
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "Caractères non attendus en début de ligne"
 
 #: src/serialization/parser.cpp:133
 msgid "Missing closing tag for tag $tag (file $file, line $line)"
 msgstr ""
+"Etiquette de Fermeture manquant pour l'étiquette $tag(Dans le fichier $file, "
+"A la ligne $line)"
 
 #: src/serialization/parser.cpp:134
 msgid "Missing closing tag for tag $tag (line $line)"
 msgstr ""
+"Étiquette de fermeture manquante pour l'étiquette $tag (à la ligne $line)"
 
 #: src/serialization/parser.cpp:149
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Etiquette [element] non terminée"
 
 #: src/serialization/parser.cpp:160 src/serialization/parser.cpp:198
 msgid "Invalid tag name"
@@ -9599,27 +9602,30 @@ msgstr "Nom d'étiquette incorrect"
 
 #: src/serialization/parser.cpp:163
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Etiquette [+element] non terminée"
 
 #: src/serialization/parser.cpp:180
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Nom d'étiquette de fermeture invalide"
 
 #: src/serialization/parser.cpp:183
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Étiquette de fermeture non terminée"
 
 #: src/serialization/parser.cpp:185
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Étiquette de fermeture non attendue à cet endroit"
 
 #: src/serialization/parser.cpp:190
 msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
 msgstr ""
+"Étiquette de fermeture invalide pour l'étiquette $tag (dans le fichier "
+"$file, à la ligne $line)"
 
 #: src/serialization/parser.cpp:191
 msgid "Found invalid closing tag for tag $tag (line $line)"
 msgstr ""
+"Étiquette de fermeture invalide pour l'étiquette $tag (à la ligne $line)"
 
 #: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
 msgid "Empty variable name"
@@ -9627,11 +9633,11 @@ msgstr "Nom de variable vide"
 
 #: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Caractères non attendus après le nom de variable (attendus , ou =)"
 
 #: src/serialization/parser.cpp:251 src/serialization/parser.cpp:275
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Chaîne de caractères entre guillemets non terminée"
 
 #: src/serialization/parser.cpp:320
 msgid "$error in file $file (line $line, column $column)"
