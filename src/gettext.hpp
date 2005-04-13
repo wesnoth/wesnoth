@@ -4,7 +4,6 @@
 // gettext-related declarations
 
 #include <libintl.h>
-#include <string>
 
 const char* egettext(const char*);
 const char* sgettext(const char*);

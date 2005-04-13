@@ -19,6 +19,7 @@
 #include <sstream>
 
 #include "serialization/string_utils.hpp"
+#include "gettext.hpp"
 #include "util.hpp"
 #include "log.hpp"
 #include "string_utils.hpp"
@@ -557,7 +558,7 @@ utf8_string ucs2_string_to_utf8_string(const ucs2_string& src)
 
 std::string vgettext (const char *msgid, const utils::string_map& symbols)
 {
-	const std::string orig(gettext(msgid));
+	const std::string orig(_(msgid));
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }
