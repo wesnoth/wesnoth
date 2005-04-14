@@ -44,7 +44,7 @@ namespace map_editor {
 
 bool confirm_modification_disposal(display& disp) {
 	const int res = gui::show_dialog(disp, NULL, "",
-					 _("Your modifications to the map will be lost.  Continue?"),
+					 _("Your modifications to the map will be lost. Continue?"),
 					 gui::OK_CANCEL);
 	return res == 0;
 }
