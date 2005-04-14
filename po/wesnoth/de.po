@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-14 09:37+0200\n"
-"PO-Revision-Date: 2005-04-11 21:02+0100\n"
+"PO-Revision-Date: 2005-04-14 11:40+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -883,6 +883,7 @@ msgstr ""
 msgid "About"
 msgstr "Das Team"
 
+# edited by Ivanovic
 #: data/help.cfg:210
 msgid ""
 "Most units have two traits, with the exception of Undead units who are "
@@ -890,13 +891,22 @@ msgid ""
 "attributes slightly. They are usually randomly assigned to a unit when it is "
 "recruited."
 msgstr ""
+"Die meisten Einheiten verfügen über zwei Charakteristika. Die Untoten "
+"stellen hierbei eine Ausnahme dar. Sie haben die Charakteristik »Untot«. "
+"DCharakteristika sind Modifikatoren, die Attribute der Einheiten leicht "
+"verändern. Normalerweise werden sie zufällig zugewiesen, wenn eine Einheit "
+"ausgebildet wird."
 
+# edited by Ivanovic
 #: data/help.cfg:212
 msgid ""
 "\n"
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"Für alle nicht untoten Einheiten sind diese Charakteristika verfügbar: "
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
@@ -1017,6 +1027,7 @@ msgstr ""
 "Einheiten können sehr nützlich sein, wenn es darum geht, Einheiten in einer "
 "Kampfhandlung niederzustrecken."
 
+# edited by Ivanovic
 #: data/help.cfg:243
 msgid ""
 "\n"
@@ -1024,7 +1035,13 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"Andere spezielle Charakteristika, die einzelnen Einheiten zugewiesen sein "
+"können, sind:"
 
+# edited by Ivanovic
 #: data/help.cfg:251
 msgid ""
 "\n"
@@ -1044,7 +1061,25 @@ msgid ""
 "supply. This trait is never given to recruited units, so it may be unwise to "
 "dismiss them or send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Loyal</header>\n"
+"\n"
+"Loyale Einheiten kosten keinen Unterhalt. Die meisten Einheiten verursachen "
+"Unterhaltskosten in der Höhe, die ihrer Stufe entspricht. Loyale Einheiten "
+"verursachen diese Kosten nicht.\n"
+"\n"
+"\n"
+"In Kampagnen schließen sich euch manchmal Einheiten aus freihen Stücken an. "
+"Diese Einheiten sind als Loyal markiert. Auch wenn es eine Bezahlung "
+"erfordern mag, sie wieder einzuberufen, so fordern sie doch niemals eine "
+"Entlohnung ihrer Dienste. Dies kann sie in langen Kampagnen gsehr wertvoll "
+"machen , wo die Goldvorräte knapp sind. Diese Charakteristika wird nicht an "
+"rekrutierte Einheiten vergeben, weshalb es unklug sein mag sie abzuweisen, "
+"oder unsinnigerweise in den sicheren Tod zu schicken."
 
+# edited by Ivanovic
 #: data/help.cfg:258
 msgid ""
 "\n"
@@ -1059,7 +1094,19 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Untot</header>\n"
+"\n"
+"Untote Einheiten sind immun gegen Gift.\n"
+"\n"
+"Untote Einheiten haben für gewöhnlich »Untot« als einzige Charakteristika. "
+"Da untote Einheiten die Körper von Toten sind, die wiedererweckt wurden, um "
+"ein weiteres mal zu kämpfen, sind sie immun gegen Gift. Dies macht sie sehr "
+"wertvoll im Kampf gegen Feinde, die mit vergifteten Waffen angreifen."
 
+# edited by Ivanovic
 #: data/help.cfg:265
 msgid ""
 "\n"
@@ -1074,6 +1121,20 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren.  These elves "
 "inflict an additional point of damage with each arrow to reflect this skill."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Treffsicher</header>\n"
+"\n"
+"Treffsichere Einheiten richten einen Punkt mehr Schaden an, wenn sie mit dem "
+"Bogen angreifen.\n"
+"\n"
+"Treffsicherheit ist eine den Elfen vorbehaltene Fähigkeit. Das Volk der "
+"Elfen ist bekannt für ihre geradezu unheilmliche Anmut sowie ihre "
+"Fähigkeiten im Umgang mit dem Bogen. Doch auch unter ihnen gibt es einige, "
+"die mit einem besonderen Talent für den Umgang mit dieser Waffe gesegnet "
+"sind. Diese Elfen richten einen zusätzlichen Punkt Schaden mit jedem Pfeil "
+"an."
 
 #: data/items.cfg:264
 msgid ""
@@ -2548,8 +2609,8 @@ msgid "What do traits do?"
 msgstr "Was bewirken Charakteristika?"
 
 # Korrigiert von VeryUhu
+# edited by Ivanovic
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -2558,11 +2619,13 @@ msgid ""
 "traits when they are recruited. Also, some races and units may have traits "
 "that are unique to them."
 msgstr ""
-"Es gibt fünf verschiedene Charakteristika, deren Effekte von der Erhöhung "
+"Es gibt vier verschiedene Charakteristika, deren Effekte von der Erhöhung "
 "der Lebenspunkte einer Einheit bis zum Verringern der zum Aufstieg "
 "benötigten EP reichen. Jede Charakteristik verbessert die Eigenschaften "
 "einer Einheit. Es gibt keine »schlechten Charakteristika«. Die meisten "
-"Einheiten haben die gleichen Chancen für jede Charakteristik."
+"Einheiten haben die gleichen Chancen für jede Charakteristik. Doch mag es "
+"auch einige Rassen und Einheiten geben, die Charakteristika haben, über die "
+"niemand sonst verfügt."
 
 # Korrigiert von VeryUhu
 #: data/scenarios/tutorial/utils.cfg:111
@@ -3051,19 +3114,16 @@ msgstr "Schlucht"
 
 # edited by ivanovic
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "Ruin"
 msgstr "Ruine"
 
 # edited by ivanovic
 #: data/terrain.cfg:448
-#, fuzzy
 msgid "Sunken Ruin"
 msgstr "versunkene Ruine"
 
 # edited by ivanovic
 #: data/terrain.cfg:459
-#, fuzzy
 msgid "Swamp Ruin"
 msgstr "Sumpfruine"
 
@@ -8362,10 +8422,10 @@ msgstr "+Verschiedenes"
 msgid "+Internationalization Managers"
 msgstr "+Internationalisierungsleitung"
 
+# edited by Ivanovic
 #: src/about.cpp:146
-#, fuzzy
 msgid "+Afrikaans Translation"
-msgstr "+Dänische Übersetzung"
+msgstr "+Afrikaans Übersetzung"
 
 #: src/about.cpp:151
 msgid "+Basque Translation"
@@ -8430,10 +8490,10 @@ msgstr "+Ungarische Übersetzung"
 msgid "+Italian Translation"
 msgstr "+Italienische Übersetzung"
 
+# edited by Ivanovic
 #: src/about.cpp:258
-#, fuzzy
 msgid "+Japanese Translation"
-msgstr "+Chinesische Übersetzung"
+msgstr "+Japanische Übersetzung"
 
 # edited by ivanovic
 #: src/about.cpp:264
@@ -8474,10 +8534,10 @@ msgstr "+Spanische Übersetzung"
 msgid "+Swedish Translation"
 msgstr "+Schwedische Übersetzung"
 
+# edited by Ivanovic
 #: src/about.cpp:324
-#, fuzzy
 msgid "+Turkish Translation"
-msgstr "+Dänische Übersetzung"
+msgstr "+Türkische Übersetzung"
 
 #: src/about.cpp:328
 msgid "+Contributors"
@@ -8792,10 +8852,12 @@ msgstr "Unbekanntes Szenario: '"
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
+# edited by Ivanovic
 #: src/game.cpp:752
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt."
+msgstr ""
+"Warnung: Die Datei, die Ihr laden wolltet, ist beschädigt. Wird trotzdem "
+"geladen.\n"
 
 #: src/game.cpp:774 src/multiplayer_connect.cpp:899
 msgid ""
@@ -9010,10 +9072,10 @@ msgstr "Sprache"
 msgid "Choose your preferred language:"
 msgstr "Wählt die gewünschte Sprache:"
 
+# edited by Ivanovic
 #: src/game.cpp:1394
-#, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "Fehler beim Laden der Konfigurationsdateien: '"
+msgstr "Warnung: Fehler beim Laden der Konfigurationsdateien: '"
 
 #: src/game.cpp:1438
 msgid "Error loading game configuration files: '"
@@ -9239,15 +9301,19 @@ msgstr "Wählt den Host, zu dem Ihr euch verbinden wollt:"
 msgid "Connecting to remote host..."
 msgstr "Verbinde zum Server/Gastgeber..."
 
+# edited by Ivanovic
 #: src/multiplayer.cpp:141
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"Dieser Server benötigt die Version »$version1«. Ihr verwendet Version "
+"»$version2«"
 
+# edited by Ivanovic
 #: src/multiplayer.cpp:153
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Serverseitige Umleitung"
 
 #: src/multiplayer.cpp:185
 msgid "You must log in to this server"
@@ -9698,8 +9764,8 @@ msgstr "Gegner angreifen"
 msgid "Choose weapon:"
 msgstr "Waffe auswählen:"
 
+# edited by Ivanovic
 #: src/playturn.cpp:1269
-#, fuzzy
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
@@ -10181,14 +10247,15 @@ msgstr "Nächste Seite"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Das Buch von Wesnoth"
 
+# edited by Ivanovic
 #: src/unit.cpp:1144
-#, fuzzy
 msgid ": "
-msgstr "LP:"
+msgstr ":"
 
+# edited by Ivanovic
 #: src/unit.cpp:1156
 msgid "; "
-msgstr ""
+msgstr ";"
 
 #: src/unit_types.cpp:324
 msgid "strikes"
@@ -10205,48 +10272,3 @@ msgstr "redlich"
 #: src/unit_types.cpp:932
 msgid "neutral"
 msgstr "neutral"
-
-# Korrigiert von VeryUhu
-#~ msgid ""
-#~ "Most units have two traits. Traits are attributes of the unit that modify "
-#~ "its attributes slightly. They are assigned to a unit randomly when the "
-#~ "unit is recruited.\n"
-#~ "\n"
-#~ "The currently available traits are the following."
-#~ msgstr ""
-#~ "Die meisten Einheiten haben zwei Charakteristika, durch die ihre "
-#~ "Attribute leicht modifiziert werden. Eine Einheit bekommt diese zufällig "
-#~ "bei der Ausbildung zugewiesen.\n"
-#~ "\n"
-#~ "Es gibt derzeit folgende Charakteristika:"
-
-# Korrigiert von chrber
-# Korrigiert von VeryUhu
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Loyal</header>\n"
-#~ "\n"
-#~ "Loyal units only ever require an upkeep of one, no matter what level they "
-#~ "are.\n"
-#~ "\n"
-#~ "Loyal has no effect on a level one unit, which makes it useless in the "
-#~ "early campaign. Once a unit begins to level up, however, it can save you "
-#~ "considerable gold over the course of the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Loyal</header>\n"
-#~ "\n"
-#~ "Die Unterhaltskosten loyaler Einheiten betragen immer nur 1 Goldstück, "
-#~ "egal auf welcher Stufe sie sich befinden.\n"
-#~ "\n"
-#~ "Bei einer Einheit der Stufe Eins hat Loyalitiät keinerlei Auswirkungen, "
-#~ "was diese Charakteristik am Anfang der Kampagne recht nutzlos macht. "
-#~ "Später könnt Ihr mit loyalen Einheiten aber viel Geld sparen."
-
-# edited by Ivanovic
-#~ msgid "Era not available: "
-#~ msgstr "Ära nicht verfügbar:"
