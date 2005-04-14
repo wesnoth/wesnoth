@@ -95,8 +95,8 @@ void chat::init_textbox(gui::textbox& textbox)
 	}
 	
 	textbox.set_text(s);
-
 	last_update_ = message_history_.size();
+	textbox.scroll_to_bottom();
 }
 
 void chat::update_textbox(gui::textbox& textbox)
@@ -122,6 +122,7 @@ std::string chat::format_message(const msg& message)
 ui::ui(display& disp, const config& cfg, chat& c, config& gamelist) :
 	gui::widget(disp.video()),
 	disp_(disp),
+	initialized_(false),
 
 	hotkey_handler_(&disp),
 	disp_manager_(&disp),
@@ -136,7 +137,6 @@ ui::ui(display& disp, const config& cfg, chat& c, config& gamelist) :
 
 	result_(CONTINUE)
 {
-	chat_.init_textbox(chat_textbox_);
 }
 
 void ui::process_network()
@@ -220,6 +220,11 @@ void ui::set_location(const SDL_Rect& rect)
 	hide_children();
 	widget::set_location(rect);
 	layout_children(rect);
+	if(!initialized_) {
+		chat_textbox_.set_wrap(true);
+		chat_.init_textbox(chat_textbox_);
+		initialized_ = true;
+	}
 	hide_children(false);
 }
 
