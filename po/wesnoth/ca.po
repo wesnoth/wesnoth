@@ -1,4 +1,3 @@
-# translation of ca.po to Català
 # Catalan translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -10,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-14 09:37+0200\n"
-"PO-Revision-Date: 2005-03-29 22:15+0200\n"
+"PO-Revision-Date: 2005-04-15 18:26+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -798,7 +797,7 @@ msgid ""
 "assigned the trait 'Undead'. Traits are modifications that change a unit's "
 "attributes slightly. They are usually randomly assigned to a unit when it is "
 "recruited."
-msgstr ""
+msgstr "La majoria d'unitats tenen dos trets, amb l'excepció dels no morts, als que només se'ls assigna el tret 'no mort'. Els trets són modificacions que canvien lleugerament els atributs de les unitats. Normalment s'assignen aleatòriament en el moment de reclutar."
 
 #: data/help.cfg:212
 msgid ""
@@ -806,6 +805,9 @@ msgid ""
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"Els trets disponibles (excepte per a no morts) són:"
 
 #: data/help.cfg:219
 msgid ""
@@ -831,7 +833,7 @@ msgstr ""
 "de nivell.\n"
 "\n"
 "Les unitats intel·ligents són molt útils al principi de les campanyes, ja "
-"que poden avançar més ràpidament i convertir-se en unitats de nivells "
+"que poden avançar més ràpidament i convertir-se així en unitats de nivells "
 "superiors. En etapes posteriors, no són tan útils, i si teniu moltes unitats "
 "de nivells alts, us trobareu reclutant unitats amb trets més útils a llarga "
 "distància."
@@ -924,6 +926,10 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"També hi ha altres trets especials:"
 
 #: data/help.cfg:251
 msgid ""
@@ -944,6 +950,15 @@ msgid ""
 "supply. This trait is never given to recruited units, so it may be unwise to "
 "dismiss them or send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Lleial</header>\n"
+"\n"
+"Les unitats lleials no costen manteniment. A diferència de la majoria d'unitats, que necessiten un mínim de diners al final de cada torn, no s'ha de pagar res per aquestes unitats.\n"
+"\n"
+"\n"
+"Durant les campanyes, certes unitats poden optar per unir-se a vos per decisió propia. Aquestes unitats són marcades amb el tret 'lleial'. Encara que pot ser necessari pagar per tal de reincorporar-les, no caldrà mai pagar el seu cost de manteniment. Aquest fet les converteix en unitats amb un valor incalculable en campanyes llargues, en els moments en que anem més escassos de recursos. No s'assigna mai a unitats reclutades, així que val la pena conservar bé les unitats lleials."
 
 #: data/help.cfg:258
 msgid ""
@@ -959,6 +974,14 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=No mort</header>\n"
+"\n"
+"Les unitats no mortes són immunes al verí.\n"
+"\n"
+"En general, els no morts tenen únicament aquest tret. Com que aquestes unitats estan formades pels cossos dels morts, el verí no té cap efecte sobre elles. Aquest fet converteix els no morts en el pitjor enemic d'aquells que usen algun tipus de verí en els seus atacs."
 
 #: data/help.cfg:265
 msgid ""
@@ -974,6 +997,17 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren.  These elves "
 "inflict an additional point of damage with each arrow to reflect this skill."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Destre</header>\n"
+"\n"
+"Dexterous units do +1 damage for every successful strike with a bow.\n"
+"\n"
+"Dexterous is a trait possessed only by Elves. The Elven people are known for "
+"their uncanny grace, and their great facility with the bow.  Some, however, "
+"are gifted with natural talent that exceeds their brethren.  These elves "
+"inflict an additional point of damage with each arrow to reflect this skill."
 
 #: data/items.cfg:264
 msgid ""
@@ -1259,8 +1293,7 @@ msgstr "Blitz"
 #: data/scenarios/multiplayer/Blitz.cfg:9
 #: data/scenarios/multiplayer/Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr ""
-"Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
+msgstr "Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
@@ -1323,8 +1356,7 @@ msgid "Icy Waters"
 msgstr "Aigües gelades"
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:5
-msgid ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+msgid "Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 msgstr ""
 "Combat en aquesta badia d'aigües gelades del nord de Wesnoth i pels seus "
 "voltants."
@@ -1694,8 +1726,7 @@ msgstr "Visca!"
 #: data/scenarios/tutorial/Basic_Training.cfg:299
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:249
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr ""
-"Voleu revisar alguna de les habilitats que heu après en aquest escenari?"
+msgstr "Voleu revisar alguna de les habilitats que heu après en aquest escenari?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:302
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
@@ -1725,8 +1756,7 @@ msgstr "Trets i especialitats"
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr ""
-"Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
+msgstr "Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
 msgid ""
@@ -1831,8 +1861,7 @@ msgstr ""
 "les unitats."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
-msgid ""
-"Many units have a specialty which changes the rules of play in some way."
+msgid "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 "Moltes unitats tenen alguna característica que canvia les regles del joc "
 "d'alguna manera."
@@ -1863,8 +1892,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
 msgid "Next, you may want to begin a campaign, or play multiplayer."
-msgstr ""
-"Ara potser voldreu començar una campanya, o fer una partida multijugador."
+msgstr "Ara potser voldreu començar una campanya, o fer una partida multijugador."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -2301,7 +2329,6 @@ msgid "What do traits do?"
 msgstr "Què fan els trets?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -2310,11 +2337,11 @@ msgid ""
 "traits when they are recruited. Also, some races and units may have traits "
 "that are unique to them."
 msgstr ""
-"Hi ha cinc tipus diferents de trets que tenen diferents efectes, des de "
+"Hi ha cinc tipus de trets que tenen diferents efectes, des de "
 "incrementar els punts de vida fins a reduir l'experiència necessària per "
-"avançar. En qualsevol cas, els trets estan dissenyats per millorar les "
-"unitats; no hi ha trets negatius. La majoria de les unitats tenen la mateixa "
-"possibilitat de tenir dos trets diferents quan són reclutades."
+"avançar de nivell. En qualsevol cas, els trets estan dissenyats per millorar les "
+"unitats, no hi ha trets negatius. La majoria de les unitats tenen la mateixa "
+"possibilitat de tenir dos trets diferents quan són reclutades. A més, certes races i unitats poden tenir trets que únicament estan disponibles per a elles."
 
 #: data/scenarios/tutorial/utils.cfg:111
 msgid "What kind of traits can my units get?"
@@ -2753,19 +2780,16 @@ msgid "Canyon"
 msgstr "Gorja"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "Ruin"
-msgstr "ruïnes"
+msgstr "Ruïna"
 
 #: data/terrain.cfg:448
-#, fuzzy
 msgid "Sunken Ruin"
-msgstr "ruïnes submergides"
+msgstr "Ruïnes submergides"
 
 #: data/terrain.cfg:459
-#, fuzzy
 msgid "Swamp Ruin"
-msgstr "ruïnes pantanoses"
+msgstr "Ruïnes pantanoses"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
@@ -2920,8 +2944,7 @@ msgstr ""
 "tiradors, que tenen un 60%."
 
 #: data/tips.cfg:9
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "Les unitats que descansen als llogarets recuperen 8 punts de vida al "
 "començament del seu torn."
@@ -2988,8 +3011,7 @@ msgstr ""
 "tropes prescindibles per retrasar l'atac."
 
 #: data/tips.cfg:17
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 "No tingueu por de retirar-vos i tornar-vos a agrupar, aquesta pot ser la "
 "clau de la victòria."
@@ -3557,8 +3579,7 @@ msgstr "$name|a,El gual de $name,El creuament de $name,$river|ós,$river"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
-"Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
+msgstr "Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
@@ -3573,8 +3594,7 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name de mar,$name de dalt,$name,$name,$name"
 
 #: data/translations/english.cfg:144
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr "$name,$name,$name,$name,$name,$name,$name"
 
 #: data/units/Ancient_Lich.cfg:3
@@ -5499,8 +5519,7 @@ msgid "Fireball"
 msgstr "Bola de foc"
 
 #: data/units/Fireball.cfg:16
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr "Una bola de foc. Només usat per 'Move_Unit_Fake'."
 
 #: data/units/Footpad.cfg:3
@@ -6763,8 +6782,7 @@ msgstr "Proscrita"
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
-msgstr ""
-"Els proscrits lluiten millor de nit. Les proscrites, a més, ho fan amb estil."
+msgstr "Els proscrits lluiten millor de nit. Les proscrites, a més, ho fan amb estil."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
@@ -7143,10 +7161,8 @@ msgid "Sea Serpent"
 msgstr "Serp marina"
 
 #: data/units/Sea_Serpent.cfg:16
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"La serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
+msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr "La serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -7743,9 +7759,8 @@ msgid "+Internationalization Managers"
 msgstr "+Coordinació traduccions"
 
 #: src/about.cpp:146
-#, fuzzy
 msgid "+Afrikaans Translation"
-msgstr "+Traducció danesa"
+msgstr "+Traducció afrikaans"
 
 #: src/about.cpp:151
 msgid "+Basque Translation"
@@ -7808,9 +7823,8 @@ msgid "+Italian Translation"
 msgstr "+Traducció italiana"
 
 #: src/about.cpp:258
-#, fuzzy
 msgid "+Japanese Translation"
-msgstr "+Traducció xinesa"
+msgstr "+Traducció japonesa"
 
 #: src/about.cpp:264
 msgid "+Latin Translation"
@@ -7849,9 +7863,8 @@ msgid "+Swedish Translation"
 msgstr "+Traducció sueca"
 
 #: src/about.cpp:324
-#, fuzzy
 msgid "+Turkish Translation"
-msgstr "+Traducció danesa"
+msgstr "+Traducció turca"
 
 #: src/about.cpp:328
 msgid "+Contributors"
@@ -7871,8 +7884,7 @@ msgstr "No teniu un líder amb el que reclutar."
 
 #: src/actions.cpp:109
 msgid "You must have your leader on a keep to recruit or recall units."
-msgstr ""
-"El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
+msgstr "El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
 
 #: src/actions.cpp:126
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -8163,9 +8175,8 @@ msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
 
 #: src/game.cpp:752
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "El fitxer que heu intentat carregar està corromprés."
+msgstr "Avís: el fitxer que heu intentat carregar està corromput. S'intentarà carregar de totes maneres.\n"
 
 #: src/game.cpp:774 src/multiplayer_connect.cpp:899
 msgid ""
@@ -8177,7 +8188,7 @@ msgstr ""
 
 #: src/game.cpp:782 src/game.cpp:785 src/multiplayer_connect.cpp:886
 msgid "The file you have tried to load is corrupt: '"
-msgstr "El fitxer que heu intentat carregar està corromprès."
+msgstr "El fitxer que heu intentat carregar està corromput: '"
 
 #: src/game.cpp:788
 msgid "File I/O Error while reading the game"
@@ -8304,8 +8315,7 @@ msgid "Remote host disconnected."
 msgstr "Servidor remot desconnectat."
 
 #: src/game.cpp:1136
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
+msgid "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "S'ha produit un error creant els fitxers necessaris per instal·lar aquesta "
 "campanya."
@@ -8380,9 +8390,8 @@ msgid "Choose your preferred language:"
 msgstr "Trieu el vostre idioma:"
 
 #: src/game.cpp:1394
-#, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "Error carregant els fitxers de configuració del joc: '"
+msgstr "Avís: s'ha produit un error en carregar els fitxers de configuració del joc: '"
 
 #: src/game.cpp:1438
 msgid "Error loading game configuration files: '"
@@ -8474,8 +8483,7 @@ msgstr "o"
 
 #: src/help.cpp:1347
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
-"Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
+msgstr "Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
 
 #: src/help.cpp:1349
 msgid "The terrain with the best modifier is chosen automatically."
@@ -8603,11 +8611,11 @@ msgstr "Connectant al servidor remot..."
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
-msgstr ""
+msgstr "El servidor requereix la versió '$version1', però esteu fent servir la versió '$version2'."
 
 #: src/multiplayer.cpp:153
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Redirecció del servidor"
 
 #: src/multiplayer.cpp:185
 msgid "You must log in to this server"
@@ -8927,7 +8935,7 @@ msgstr "Or"
 
 #: src/playlevel.cpp:592 src/playlevel.cpp:858
 msgid "The file you have tried to load is corrupt"
-msgstr "El fitxer que heu intentat carregar està corromprés."
+msgstr "El fitxer que heu intentat carregar està corromput."
 
 #: src/playlevel.cpp:743
 msgid "Game Over"
@@ -9027,10 +9035,8 @@ msgid "Choose weapon:"
 msgstr "Trieu l'arma:"
 
 #: src/playturn.cpp:1269
-#, fuzzy
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
-msgstr "No heu començat a moure. Segur de que voleu finalitzar el vostre torn?"
+msgid "You have not started your turn yet.  Do you really want to end your turn?"
+msgstr "No heu començat a moure les unitats. Segur de que voleu finalitzar el vostre torn?"
 
 #: src/playturn.cpp:1278 src/playturn.cpp:1283
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -9060,8 +9066,7 @@ msgstr "Error"
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
-msgstr ""
-"Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
+msgstr "Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
 
 #: src/playturn.cpp:1560
 msgid "Saved"
@@ -9107,8 +9112,7 @@ msgstr "No teniu prou diners per reclutar aquesta unitat."
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
-msgstr ""
-"Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
+msgstr "Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
 
 #: src/playturn.cpp:1896
 msgid ""
@@ -9236,8 +9240,7 @@ msgstr "Tria el tema: "
 
 #: src/playturn.cpp:2423
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
-"Els canvis de tema tenen efecte en carregar o iniciar una nova partida."
+msgstr "Els canvis de tema tenen efecte en carregar o iniciar una nova partida."
 
 #: src/playturn.cpp:2508
 msgid "Place Label"
@@ -9319,8 +9322,7 @@ msgstr "enverinat: "
 
 #: src/reports.cpp:125
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-"Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
+msgstr "Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
 
 #: src/reports.cpp:125
 msgid "stone: "
@@ -9493,13 +9495,12 @@ msgid "-- The Tome of Wesnoth"
 msgstr "-- Guerra i virtut"
 
 #: src/unit.cpp:1144
-#, fuzzy
 msgid ": "
-msgstr "HP:"
+msgstr ": "
 
 #: src/unit.cpp:1156
 msgid "; "
-msgstr ""
+msgstr "; "
 
 #: src/unit_types.cpp:324
 msgid "strikes"
@@ -9517,56 +9518,3 @@ msgstr "legal"
 msgid "neutral"
 msgstr "neutral"
 
-#~ msgid ""
-#~ "Most units have two traits. Traits are attributes of the unit that modify "
-#~ "its attributes slightly. They are assigned to a unit randomly when the "
-#~ "unit is recruited.\n"
-#~ "\n"
-#~ "The currently available traits are the following."
-#~ msgstr ""
-#~ "La majoria d'unitats tenen dos trets. Els trets són atributs que "
-#~ "modifiquen les característiques de la unitat lleugerament. S'assignen "
-#~ "aleatoriament quan es recluta una unitat.\n"
-#~ "\n"
-#~ "Els trets disponibles són els següents."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Loyal</header>\n"
-#~ "\n"
-#~ "Loyal units only ever require an upkeep of one, no matter what level they "
-#~ "are.\n"
-#~ "\n"
-#~ "Loyal has no effect on a level one unit, which makes it useless in the "
-#~ "early campaign. Once a unit begins to level up, however, it can save you "
-#~ "considerable gold over the course of the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Lleial</header>\n"
-#~ "\n"
-#~ "Les unitats lleials només requereixen el manteniment equivalent a una "
-#~ "unitat de nivell 1, sigui quin sigui el seu nivell.\n"
-#~ "\n"
-#~ "El tret lleial no afecta les unitats de nivell 1, cosa que el fa inútil "
-#~ "al principi de les campanyes. Però una vegada comença es comença a pujar "
-#~ "de nivell, pot fer-vos estalviar una considerable quantitat de diners."
-
-#~ msgid "Era not available: "
-#~ msgstr "Era no disponible:"
-
-#~ msgid "Winged Corpse"
-#~ msgstr "Cadàver ambulant"
-
-#~ msgid ""
-#~ "Winged Corpses are the bodies of dead drakes, re-animated by dark magic. "
-#~ "Although weak in combat, these zombies can spread their curse to those "
-#~ "they kill, increasing the army of undead."
-#~ msgstr ""
-#~ "Aquests cadàvers, animats per màgies obscures, són febles en el cos a "
-#~ "cos, però ull, doncs són capaços de maleir aquells qui maten, fent que "
-#~ "torni a viure de nou com a cadàvers per tal de servir l'exèrcit de no "
-#~ "morts."
