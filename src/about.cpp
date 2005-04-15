@@ -185,9 +185,11 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		"_" N_("+Dutch Translation"),
+		"-   Arne Deprez",
 		"-   Lala",
 		"-   Maarten Albrecht",
 		"-   Pieter Vermeylen (Onne)",
+		"-   Tobe Deprez",
 		"+ ",
 
 		"_" N_("+English (GB) Translation"),
@@ -322,7 +324,8 @@ std::vector<std::string> get_text() {
 		"+ ",
 		
 		"_" N_("+Turkish Translation"),
-		"-   ???",
+		"-   İhsan Akın",
+		"-   Selim Farsakoğlu",
 		"+ ",
 		
 		"_" N_("+Contributors"),
