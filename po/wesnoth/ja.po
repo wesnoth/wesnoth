@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-14 09:37+0200\n"
-"PO-Revision-Date: 2005-04-11 12:58+0900\n"
+"PO-Revision-Date: 2005-04-16 02:31+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -773,6 +773,9 @@ msgid ""
 "attributes slightly. They are usually randomly assigned to a unit when it is "
 "recruited."
 msgstr ""
+"ほとんどのユニットは2つの特性を持っていますが、アンデッドは例外的に'アンデッ"
+"ド'の特性が割り当てられます。特性とは、少しばかりユニットの属性を変更する修正"
+"です。それらは通常はユニットが雇われた時にランダムに割り振られます。"
 
 #: data/help.cfg:212
 msgid ""
@@ -780,6 +783,9 @@ msgid ""
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"アンデッドでない全てのユニットに対して有効な特性:"
 
 #: data/help.cfg:219
 msgid ""
@@ -896,6 +902,10 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"ユニットに対して割り振られるかもしれない、その他の特別な特性:"
 
 #: data/help.cfg:251
 msgid ""
@@ -916,6 +926,22 @@ msgid ""
 "supply. This trait is never given to recruited units, so it may be unwise to "
 "dismiss them or send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=忠義</header>\n"
+"\n"
+"「忠義」ユニットには維持費がかからない。ほとんどのユニットは、各ターンの終了"
+"時に、そのレベルと同じだけの維持費がかかるが、忠義ユニットはこの費用がかから"
+"ない。\n"
+"\n"
+"\n"
+"During campaigns, certain units may opt join the player's forces of their "
+"own volition.  These units are marked with the Loyal trait.  Although they "
+"may require payment to be recalled, they never incur any upkeep costs. This "
+"can make them invaluable during a long campaign, when gold is in short "
+"supply. This trait is never given to recruited units, so it may be unwise to "
+"dismiss them or send them to a foolish death."
 
 #: data/help.cfg:258
 msgid ""
@@ -2243,7 +2269,6 @@ msgid "What do traits do?"
 msgstr "特性とは何をするものか？"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -2252,11 +2277,11 @@ msgid ""
 "traits when they are recruited. Also, some races and units may have traits "
 "that are unique to them."
 msgstr ""
-"ヒットポイントを 増加させるものから、 レベルアップに 必要な 経験値を 減らすも"
-"のまで、 幅広い効果のある 5つの異なる特性がある。 しかしながら、 全ての特性"
-"は ユニットのパワーを 良くすることを 意図しており、 「否定的」な 特性は 存在"
-"しない。 ほとんどのユニットは 雇われた時に、 2つの異なる特性を 得る機会が 平"
-"等にある。"
+"ヒットポイントを増加させるものから、レベルアップに必要な経験値を減らすものま"
+"で、幅広い効果のある 4つの異なる特性がある。 しかしながら、全ての特性はユニッ"
+"トのパワーを良くすることを意図しており、「否定的」な特性は存在しない。ほとん"
+"どのユニットは雇われた時に、2つの異なる特性を得る機会が平等にある。また、いく"
+"つかの種族やユニットについては、それら独自の特性をもつ場合がある。"
 
 #: data/scenarios/tutorial/utils.cfg:111
 msgid "What kind of traits can my units get?"
@@ -2688,17 +2713,14 @@ msgid "Canyon"
 msgstr "渓谷"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "Ruin"
 msgstr "廃墟"
 
 #: data/terrain.cfg:448
-#, fuzzy
 msgid "Sunken Ruin"
 msgstr "水中の廃墟"
 
 #: data/terrain.cfg:459
-#, fuzzy
 msgid "Swamp Ruin"
 msgstr "沼の廃墟"
 
@@ -2760,7 +2782,7 @@ msgstr "移動"
 
 #: data/themes/default.cfg:513
 msgid "Act."
-msgstr ""
+msgstr "Act."
 
 #: data/themes/default.cfg:546
 msgid "short end-turn^End"
@@ -7214,9 +7236,8 @@ msgid "+Internationalization Managers"
 msgstr "+国際化責任者"
 
 #: src/about.cpp:146
-#, fuzzy
 msgid "+Afrikaans Translation"
-msgstr "+デンマーク語翻訳"
+msgstr "+アフリカーンス語翻訳"
 
 #: src/about.cpp:151
 msgid "+Basque Translation"
@@ -7279,9 +7300,8 @@ msgid "+Italian Translation"
 msgstr "+イタリア語翻訳"
 
 #: src/about.cpp:258
-#, fuzzy
 msgid "+Japanese Translation"
-msgstr "+中国語翻訳"
+msgstr "+日本語翻訳"
 
 #: src/about.cpp:264
 msgid "+Latin Translation"
@@ -7320,9 +7340,8 @@ msgid "+Swedish Translation"
 msgstr "+スウェーデン語翻訳"
 
 #: src/about.cpp:324
-#, fuzzy
 msgid "+Turkish Translation"
-msgstr "+デンマーク語翻訳"
+msgstr "+トルコ語翻訳"
 
 #: src/about.cpp:328
 msgid "+Contributors"
@@ -7634,9 +7653,8 @@ msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
 #: src/game.cpp:752
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "読み込もうとしたファイルは 壊れています。"
+msgstr "警告: 読み込もうとしたファイルは壊れています。とにかく読み込みます。\n"
 
 #: src/game.cpp:774 src/multiplayer_connect.cpp:899
 msgid ""
@@ -7849,9 +7867,8 @@ msgid "Choose your preferred language:"
 msgstr "お好みの言語を選んで下さい:"
 
 #: src/game.cpp:1394
-#, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "ゲーム設定ファイルの読み込みエラー: '"
+msgstr "警告: ゲームの設定ファイル読み込み中にエラー発生: '"
 
 #: src/game.cpp:1438
 msgid "Error loading game configuration files: '"
@@ -8027,7 +8044,7 @@ msgstr "繰り返し回数:"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Bump Size:"
-msgstr ""
+msgstr "バンプサイズ:"
 
 #: src/mapgen_dialog.cpp:91
 msgid "Villages:"
@@ -8074,10 +8091,12 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"サーバではバージョン'$version1'を要求していますが、あなたのお使いのバージョン"
+"は'$version2'です。"
 
 #: src/multiplayer.cpp:153
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "サーバ側のリダイレクトループ"
 
 #: src/multiplayer.cpp:185
 msgid "You must log in to this server"
@@ -8497,10 +8516,9 @@ msgid "Choose weapon:"
 msgstr "武器の選択:"
 
 #: src/playturn.cpp:1269
-#, fuzzy
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
-msgstr "ターンをまだ開始していません。 本当に終了しますか？"
+msgstr "このターンではまだ行動が行われていません。 本当に終了しますか？"
 
 #: src/playturn.cpp:1278 src/playturn.cpp:1283
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -8961,13 +8979,12 @@ msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnothの書"
 
 #: src/unit.cpp:1144
-#, fuzzy
 msgid ": "
-msgstr "HP: "
+msgstr ": "
 
 #: src/unit.cpp:1156
 msgid "; "
-msgstr ""
+msgstr "; "
 
 #: src/unit_types.cpp:324
 msgid "strikes"
