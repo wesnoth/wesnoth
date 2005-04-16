@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-14 09:37+0200\n"
-"PO-Revision-Date: 2005-04-01 18:40+0200\n"
+"PO-Revision-Date: 2005-04-16 23:20+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -807,6 +807,10 @@ msgid ""
 "attributes slightly. They are usually randomly assigned to a unit when it is "
 "recruited."
 msgstr ""
+"A legtöbb egység két jellemvonással rendelkezik, kivéve az élőholtakat, akik "
+"az 'élőholt' jellemvonást kapják meg. A jellemvonások apró változtatások az "
+"egység tulajdonságain. Alapvetően véletlenszerűen kapják meg az egységek "
+"őket toborzáskor."
 
 #: data/help.cfg:212
 msgid ""
@@ -814,6 +818,9 @@ msgid ""
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"A jellemvonások amelyek minden nem élőholt egység számára elérhetőek:"
 
 #: data/help.cfg:219
 msgid ""
@@ -933,6 +940,10 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"Más különleges jellemvonások, amelyeket egységek kaphatnak:"
 
 #: data/help.cfg:251
 msgid ""
@@ -953,6 +964,23 @@ msgid ""
 "supply. This trait is never given to recruited units, so it may be unwise to "
 "dismiss them or send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Hűséges</header>\n"
+"\n"
+"A hűséges egységeknek nincs fenntartási költségük. A legtöbb egység a "
+"szintjével azonos számú arany kifizetését, mint fenntartási költséget von "
+"maga után a körök végén. A hűséges egységek után nem kell ezt fizetni.\n"
+"\n"
+"\n"
+"A hadjáratok folyamán bizonyos egységek önként csatlakoznak a játékos erői "
+"kötelékébe. Ezek az egységek kapják meg a hűséges jellemvonást. Bár pénzbe "
+"kerül visszahívni őket, sohasem kell fenntartási költséget fizetni utánnuk. "
+"Ez felbecsülhetetlenné teszi a szerepük a hosszú hadjáratokban, ahol "
+"nélkülözni kell az aranyat. Ezt a jellemvonást toborzáskor nem lehet "
+"megszerezni, ezért felelőtlen dolog elbocsátani, vagy a biztos halálba "
+"küldeni őket."
 
 #: data/help.cfg:258
 msgid ""
@@ -968,6 +996,17 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Élőholt</header>\n"
+"\n"
+"Az élőholt egységek immunisak a méregre.\n"
+"\n"
+"Az élőholtaknak általában egyetlen jellemvonasuk az élőholt. Mivel ezek a "
+"lények holt testek, a harcra felemelkedve, semmilyen méreg nem hat rájuk. Ez "
+"felbecsülhetetlenné teszi őket olyan ellenfelek elleni küzdelemben, akik "
+"mérget is használnak támadásukban."
 
 #: data/help.cfg:265
 msgid ""
@@ -983,6 +1022,18 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren.  These elves "
 "inflict an additional point of damage with each arrow to reflect this skill."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Ügyeskezű</header>\n"
+"\n"
+"Az ügyeskezű egységek +1 sebzést okoznak minden nyilas találat esetén.\n"
+"\n"
+"Az ügyeskezű jellemvonás csak a tündék közt ismert. A tündéknek ismeretes a "
+"rejtélyes kecsességük, valamint a nyíl használatában való jártasságuk. "
+"Néhányan mindemellett különleges tehetséggel vannak megajándékozva, amely "
+"felebarátaikén is túltesz. Ezek a tündék eggyel többet sebeznek minden célba "
+"talált nyilvesszővel, ami mutatja képességüket."
 
 #: data/items.cfg:264
 msgid ""
@@ -2332,7 +2383,6 @@ msgid "What do traits do?"
 msgstr "Mit csinálnak a jellemvonások?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -2341,10 +2391,12 @@ msgid ""
 "traits when they are recruited. Also, some races and units may have traits "
 "that are unique to them."
 msgstr ""
-"Öt különböző jellemvonás van, melyek növelhetik az életerőt, csökkenthetik a "
-"szintlépéshez szükséges TP-t, szóval, minden jellemvonás az egységek erejét "
-"növeli, nincsenek negatív jellemvonások. A legtöbb egységnek egyenlő esélye "
-"van bármelyik képességet megszerezni, és kettőt fog kapni. "
+"Négy különböző jellemvonás létezik, melyek például növelhetik az életerőt, "
+"vagy csökkenthetik a szintlépéshez szükséges TP-t, szóval minden jellemvonás "
+"az egységek erejét növeli, nincsenek 'negatív' jellemvonások. A legtöbb "
+"egységnek egyenlő esélye van bármelyik képességet megszerezni, és kettőt fog "
+"kapni. Emellett bizonyos fajoknak vagy egységeknek lehetnek sajátos "
+"jellemvonásaik."
 
 #: data/scenarios/tutorial/utils.cfg:111
 msgid "What kind of traits can my units get?"
@@ -2784,19 +2836,16 @@ msgid "Canyon"
 msgstr "Kanyon"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "Ruin"
-msgstr "rom"
+msgstr "Rom"
 
 #: data/terrain.cfg:448
-#, fuzzy
 msgid "Sunken Ruin"
-msgstr "elsüllyedt rom"
+msgstr "Elsüllyedt rom"
 
 #: data/terrain.cfg:459
-#, fuzzy
 msgid "Swamp Ruin"
-msgstr "lápos rom"
+msgstr "Lápos rom"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
@@ -3171,7 +3220,7 @@ msgstr "erős"
 
 #: data/traits.cfg:44
 msgid "dextrous"
-msgstr "ügyes kezű"
+msgstr "ügyeskezű"
 
 #: data/traits.cfg:57
 msgid "quick"
@@ -7772,9 +7821,8 @@ msgid "+Internationalization Managers"
 msgstr "+Honosítási Vezetők"
 
 #: src/about.cpp:146
-#, fuzzy
 msgid "+Afrikaans Translation"
-msgstr "+Dán Fordítás"
+msgstr "+Dél-Afrikai Holland Fordítás"
 
 #: src/about.cpp:151
 msgid "+Basque Translation"
@@ -7837,9 +7885,8 @@ msgid "+Italian Translation"
 msgstr "+Olasz Fordítás"
 
 #: src/about.cpp:258
-#, fuzzy
 msgid "+Japanese Translation"
-msgstr "+Kínai Fordítás"
+msgstr "+Japán Fordítás"
 
 #: src/about.cpp:264
 msgid "+Latin Translation"
@@ -7878,9 +7925,8 @@ msgid "+Swedish Translation"
 msgstr "+Svéd Fordítás"
 
 #: src/about.cpp:324
-#, fuzzy
 msgid "+Turkish Translation"
-msgstr "+Dán Fordítás"
+msgstr "+Török Fordítás"
 
 #: src/about.cpp:328
 msgid "+Contributors"
@@ -8192,9 +8238,9 @@ msgid "The Battle for Wesnoth"
 msgstr "Harc Wesnoth-ért"
 
 #: src/game.cpp:752
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "A fájl amit be próbáltál tölteni hibás"
+msgstr ""
+"Figyelem: A fájl amit be próbáltál tölteni hibás. Ezzel szemben betöltöm.\n"
 
 #: src/game.cpp:774 src/multiplayer_connect.cpp:899
 msgid ""
@@ -8407,9 +8453,8 @@ msgid "Choose your preferred language:"
 msgstr "Leginkább megfelelő nyelv kiválasztása:"
 
 #: src/game.cpp:1394
-#, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "Hiba a konfigurációs fájlok betöoltésekor: '"
+msgstr "Figyelem: Hiba a konfigurációs fájlok betöltésekor: '"
 
 #: src/game.cpp:1438
 msgid "Error loading game configuration files: '"
@@ -8632,10 +8677,12 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"A szerveren a(z) '$version1' verzió használt, de neked a(z) '$version2' "
+"verzió van meg."
 
 #: src/multiplayer.cpp:153
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Szerveroldali átirányító hurok"
 
 #: src/multiplayer.cpp:185
 msgid "You must log in to this server"
@@ -9053,10 +9100,9 @@ msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
 #: src/playturn.cpp:1269
-#, fuzzy
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
-msgstr "Még nem tettél semmit ebben a körben. Mégis befejezed?"
+msgstr "Még nem tettél semmit ebben a körben.  Mégis befejezed a köröd?"
 
 #: src/playturn.cpp:1278 src/playturn.cpp:1283
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -9522,13 +9568,12 @@ msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth kódexe "
 
 #: src/unit.cpp:1144
-#, fuzzy
 msgid ": "
-msgstr "ÉP:"
+msgstr ": "
 
 #: src/unit.cpp:1156
 msgid "; "
-msgstr ""
+msgstr "; "
 
 #: src/unit_types.cpp:324
 msgid "strikes"
