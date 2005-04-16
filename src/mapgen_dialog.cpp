@@ -86,8 +86,8 @@ void default_map_generator::user_config(display& disp)
 	const std::string& players_label = _("Players:");
 	const std::string& width_label = _("Width:");
 	const std::string& height_label = _("Height:");
-	const std::string& iterations_label = _("Iterations:");
-	const std::string& hillsize_label = _("Bump Size:");
+	const std::string& iterations_label = _("Number of Hills:");
+	const std::string& hillsize_label = _("Max Hill Size:");
 	const std::string& villages_label = _("Villages:");
 	const std::string& landform_label = _("Landform:");
 
