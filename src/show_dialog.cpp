@@ -406,7 +406,7 @@ int show_dialog(display& disp, surface image,
 			break;
 
 		case OK_ONLY: {
-			static const char* thebuttons[] = { N_("Ok"), "" };
+			static const char* thebuttons[] = { N_("OK"), "" };
 			button_list = thebuttons;
 			break;
 		}
@@ -419,7 +419,7 @@ int show_dialog(display& disp, surface image,
 		}
 
 		case OK_CANCEL: {
-			static const char* thebuttons[] = { N_("Ok"),
+			static const char* thebuttons[] = { N_("OK"),
 							    N_("Cancel"),""};
 			button_list = thebuttons;
 			break;

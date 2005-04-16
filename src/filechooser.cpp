@@ -35,7 +35,7 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 		yloc = scr->h / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
-	gui::button ok_button_(disp.video(), _("Ok"));
+	gui::button ok_button_(disp.video(), _("OK"));
 	gui::button cancel_button_(disp.video(), _("Cancel"));
 	buttons_ptr.push_back(&ok_button_);
 	buttons_ptr.push_back(&cancel_button_);

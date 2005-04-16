@@ -1392,7 +1392,7 @@ std::vector<topic> generate_terrains_topics()
 
 std::string generate_traits_text()
 {
-	// Ok, this didn't go as well as I thought since the information
+	// OK, this didn't go as well as I thought since the information
 	// generated from this is rather short and not suitable for the help
 	// system. Hence, this method is not used currently :).
 	std::stringstream ss;
