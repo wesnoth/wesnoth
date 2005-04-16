@@ -167,7 +167,7 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		"_" N_("+Chinese Translation"),
-		"-   Lim Choon Kiat",
+		"-   林俊杰 - Lim Choon Kiat",
 		"+ ",
 
 		"_" N_("+Czech Translation"),
