@@ -279,7 +279,7 @@ void preferences_dialog(display &disp, config &prefs) {
 	scroll_slider.set_max(100);
 	scroll_slider.set_value(preferences::scroll_speed());
 
-	gui::button fullscreen_button(disp.video(),_("Toggle Fullscreen"),
+	gui::button fullscreen_button(disp.video(),_("Toggle Full Screen"),
 	                              gui::button::TYPE_CHECK);
 
 	fullscreen_button.set_check(preferences::fullscreen());

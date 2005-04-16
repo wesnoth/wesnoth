@@ -828,7 +828,7 @@ preferences_dialog::preferences_dialog(display& disp)
 	: gui::preview_pane(disp.video()),
 	  music_slider_(disp.video()), sound_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()),
-	  fullscreen_button_(disp.video(), _("Full Screen"), gui::button::TYPE_CHECK),
+	  fullscreen_button_(disp.video(), _("Toggle Full Screen"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
