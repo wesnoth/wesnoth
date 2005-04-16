@@ -104,14 +104,6 @@ const struct {
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false },
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
 
-	{ hotkey::HOTKEY_TITLE_TUTORIAL, "titletutorial", N_("Play the Tutorial (title screen)"), false },
-	{ hotkey::HOTKEY_TITLE_CAMPAIGN, "titlecampaign", N_("Play a Campaign (title screen)"), false },
-	{ hotkey::HOTKEY_TITLE_MULTIPLAYER, "titlemultiplayer", N_("Play Multiplayer (title screen)"), false },
-	{ hotkey::HOTKEY_TITLE_LOAD, "titleload", N_("Load (title screen)"), false },
-	{ hotkey::HOTKEY_TITLE_LANGUAGE, "titlelanguage", N_("Language (title screen)"), false },
-	{ hotkey::HOTKEY_TITLE_PREFERENCES, "titlepreferences", N_("Preferences (title screen)"), false },
-	{ hotkey::HOTKEY_TITLE_ABOUT, "titleabout", N_("About (title screen)"), false },
-
 	{ hotkey::HOTKEY_NULL, NULL, NULL, true }
 };
 
