@@ -219,3 +219,20 @@ const language_def& get_locale()
 	return known_languages[0];
 }
 
+void init_textdomains(const config& cfg)
+{
+	config::const_child_itors t = cfg.child_range("textdomain");
+
+	for(;t.first != t.second; ++t.first) {
+		const std::string name = (**t.first)["name"];
+		const std::string path = (**t.first)["path"];
+
+		if(path.empty()) {
+			t_string::add_textdomain(name, get_intl_dir());
+		} else {
+			const std::string& location = get_binary_file_location(path, ".");
+			t_string::add_textdomain(name, location);
+		}
+	}
+}
+

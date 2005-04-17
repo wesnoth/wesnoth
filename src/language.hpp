@@ -21,6 +21,7 @@
 //this module controls internationalization.
 
 class t_string;
+class config;
 
 struct language_def
 {
@@ -61,5 +62,8 @@ const language_def& get_language();
 
 //function which attempts to query and return the locale on the system
 const language_def& get_locale();
+
+/** Initializes the list of textdomains from a configuration object */
+void init_textdomains(const config& cfg);
 
 #endif

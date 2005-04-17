@@ -19,6 +19,7 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 
+#define LOG_CF lg::info(lg::config)
 #define ERR_CF lg::err(lg::config)
 
 namespace {
@@ -194,10 +195,6 @@ t_string::t_string(const std::string& string, const std::string& textdomain) :
 		textdomain_to_id[textdomain] = id_to_textdomain.size();
 		id = id_to_textdomain.size();
 		id_to_textdomain.push_back(textdomain);
-
-		// Register and bind this textdomain
-		bindtextdomain(textdomain.c_str(), get_intl_dir().c_str());
-		bind_textdomain_codeset(textdomain.c_str(), "UTF-8");
 	} else {
 		id = idi->second;
 	}
@@ -481,6 +478,15 @@ const char* t_string::c_str() const
 const std::string& t_string::value() const
 {
 	return value_;
+}
+
+void t_string::add_textdomain(const std::string& name, const std::string& path)
+{
+	LOG_CF << "Binding textdomain " << name << " to path " << path << "\n";
+
+	// Register and (re-)bind this textdomain
+	bindtextdomain(name.c_str(), path.c_str());
+	bind_textdomain_codeset(name.c_str(), "UTF-8");
 }
 
 std::ostream& operator<<(std::ostream& stream, const t_string& string)

@@ -237,10 +237,11 @@ int main(int argc, char** argv)
 		std::cerr << "Error when reading game config: '" << e.message << "'" << std::endl;
 	}
 	font::load_font_config();
+	::init_textdomains(cfg);
 
 	if(mapdata.empty()) {
 		for(int i = 0; i != 20; ++i) {
-			mapdata = mapdata + "gggggggggggggggggggg\n";
+			mapdata += "gggggggggggggggggggg\n";
 		}
 	}
 	
