@@ -340,7 +340,7 @@ void replay::choose_option(int index)
 
 void replay::add_label(const std::string& text, const gamemap::location& loc)
 {
-	config* const cmd = add_command();
+	config* const cmd = add_command(false);
 
 	(*cmd)["undo"] = "no";
 
@@ -350,6 +350,16 @@ void replay::add_label(const std::string& text, const gamemap::location& loc)
 	val["text"] = text;
 
 	cmd->add_child("label",val);
+}
+
+void replay::add_rename(const std::string& name, const gamemap::location& loc)
+{
+	config* const cmd = add_command(false);
+	(*cmd)["undo"] = "no";
+	config val;
+	loc.write(val);
+	val["name"] = name;
+	cmd->add_child("rename", val);
 }
 
 void replay::end_turn()
@@ -633,6 +643,20 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			disp.labels().set_label(loc,text);
 		} 
 
+		else if((child = cfg->child("rename")) != NULL) {
+			const gamemap::location loc(*child);
+			const std::string& name = (*child)["name"];
+			
+			std::map<gamemap::location,unit>::iterator u = units.find(loc);
+
+			if(u->second.unrenamable()) {
+				ERR_NW << "renaming unrenamable unit " << u->second.name() << "\n";
+				if (!game_config::ignore_replay_errors) throw replay::error();
+			}
+
+			u->second.rename(name);
+		}
+
 		//if there is an end turn directive
 		else if(cfg->child("end_turn") != NULL) {
 			replayer.next_skip();
@@ -808,6 +832,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			game_events::fire("moveto",dst);
+			//FIXME: what's special about team 1?
 			if(team_num != 1 && (teams.front().uses_shroud() || teams.front().uses_fog()) && !teams.front().fogged(dst.x,dst.y)) {
 				game_events::fire("sighted",dst);
 			}

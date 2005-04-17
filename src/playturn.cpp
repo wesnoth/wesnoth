@@ -1496,10 +1496,13 @@ void turn_info::rename_unit()
 	const unit_map::iterator un = current_unit();
 	if(un == units_.end() || gui_.viewing_team()+1 != un->second.side())
 		return;
+	if(un->second.unrenamable())
+		return;
 
 	std::string name = un->second.description();
 	const int res = gui::show_dialog(gui_,NULL,_("Rename Unit"),"", gui::OK_CANCEL,NULL,NULL,"",&name);
 	if(res == 0) {
+		recorder.add_rename(name, un->first);
 		un->second.rename(name);
 		gui_.invalidate_unit();
 	}

@@ -797,7 +797,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			lobby_players_.send_data(sync_initial_response());
 		}
 
-		//any private 'speak' commands must be repackaged seperate
+		//any private 'speak' commands must be repackaged separate
 		//to other commands, and re-sent, since they should only go
 		//to some clients.
 		const config::child_itors speaks = turn->child_range("command");
