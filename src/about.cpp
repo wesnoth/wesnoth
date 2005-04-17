@@ -95,6 +95,7 @@ std::vector<std::string> get_text() {
 		"-   Peter Geinitz (Shadow)",
 		"-   Richard Kettering (Jetryl)",
 		"-   Slainte",
+		"-   Stephen Stone (Disto)",
 		"-   Svetac",
 		"+ ",
 
@@ -134,6 +135,7 @@ std::vector<std::string> get_text() {
 		"_" N_("+Miscellaneous"),
 		"-   Francesco Gigli (Jaramir)",
 		"-   Jordà Polo (ettin)",
+		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
 		"+ ",
 
 		"_" N_("+Internationalization Managers"),
