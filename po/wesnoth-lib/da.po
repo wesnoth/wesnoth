@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2004-11-15 22:21+0100\n"
 "Last-Translator: Mathias Bundgaard Svensson <freaken@freaken.dk>\n"
 "Language-Team:  <da@li.org>\n"
@@ -50,9 +50,10 @@ msgstr "Zoom Ud"
 msgid "Default Zoom"
 msgstr "Standard Zoom"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
-msgstr "Fuldskærm"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
+msgstr "Fuld Skærm"
 
 #: src/hotkeys.cpp:54
 msgid "Accelerated"
@@ -277,10 +278,6 @@ msgstr ""
 msgid "player"
 msgstr "spiller"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Fuld Skærm"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Turbo"
@@ -470,8 +467,8 @@ msgid "Error"
 msgstr "Fejl"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -492,3 +489,9 @@ msgstr "Luk"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "kB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Fuldskærm"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"

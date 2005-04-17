@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2005-03-15 12:50+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
@@ -48,8 +48,9 @@ msgstr "Alejar"
 msgid "Default Zoom"
 msgstr "Escala predeterminada"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
 msgstr "Pantalla completa"
 
 #: src/hotkeys.cpp:54
@@ -274,10 +275,6 @@ msgstr ""
 msgid "player"
 msgstr "jugador"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Pantalla completa"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Velocidad acelerada"
@@ -470,8 +467,8 @@ msgid "Error"
 msgstr "Error"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "Aceptar"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -492,3 +489,9 @@ msgstr "Cerrar"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Pantalla completa"
+
+#~ msgid "Ok"
+#~ msgstr "Aceptar"

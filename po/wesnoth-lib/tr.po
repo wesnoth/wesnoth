@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2005-04-15 14:33+0200\n"
 "Last-Translator: Selim Farsakoglu <farsakoglu@web.de>\n"
 "Language-Team: Turkish <farsakoglu@web.de>\n"
@@ -50,9 +50,10 @@ msgstr "Uzaklaş"
 msgid "Default Zoom"
 msgstr "Varsayılan yakınlık"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
-msgstr "Tam ekran"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
+msgstr "Tam Ekran"
 
 #: src/hotkeys.cpp:54
 msgid "Accelerated"
@@ -276,10 +277,6 @@ msgstr ""
 msgid "player"
 msgstr "oyuncu"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Tam Ekran"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Arttırılmış Hız"
@@ -470,8 +467,8 @@ msgid "Error"
 msgstr "Hata"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "Tamam"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -492,3 +489,9 @@ msgstr "Kapat"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Tam ekran"
+
+#~ msgid "Ok"
+#~ msgstr "Tamam"

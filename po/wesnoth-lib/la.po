@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 0.8.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2005-04-01 16:04+0200\n"
 "Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
 "Language-Team: Latin\n"
@@ -49,8 +49,9 @@ msgstr "Minuere"
 msgid "Default Zoom"
 msgstr "Conspectus Solitus"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
 msgstr "Scrinium Totum"
 
 #: src/hotkeys.cpp:54
@@ -276,10 +277,6 @@ msgstr ""
 msgid "player"
 msgstr "lusor"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Scrinium Totum"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Celerius"
@@ -471,8 +468,8 @@ msgid "Error"
 msgstr "Mendum"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "Bene"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -493,3 +490,9 @@ msgstr "Claudere"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Scrinium Totum"
+
+#~ msgid "Ok"
+#~ msgstr "Bene"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2004-11-15 22:20+0100\n"
 "Last-Translator: Pasi Kallinen <paxed@alt.org>\n"
 "Language-Team: none\n"
@@ -48,8 +48,9 @@ msgstr "Zoomaa ulos"
 msgid "Default Zoom"
 msgstr "Normaali zoomaus"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
 msgstr "Ruudun kokoinen"
 
 #: src/hotkeys.cpp:54
@@ -275,10 +276,6 @@ msgstr ""
 msgid "player"
 msgstr "pelaaja"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Ruudun kokoinen"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Kiihdytetty nopeus"
@@ -467,8 +464,8 @@ msgid "Error"
 msgstr "Virhe"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "Hyväksy"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -489,3 +486,9 @@ msgstr "Sulje"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Ruudun kokoinen"
+
+#~ msgid "Ok"
+#~ msgstr "Hyväksy"

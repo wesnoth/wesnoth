@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2005-04-14 00:47+0100\n"
 "Last-Translator: americo iacovizzi <americo_iacovizzi@libero.it>\n"
 "Language-Team: none\n"
@@ -48,8 +48,9 @@ msgstr "Zoom Out"
 msgid "Default Zoom"
 msgstr "Zoom Normale"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
 msgstr "Schermo intero"
 
 #: src/hotkeys.cpp:54
@@ -275,10 +276,6 @@ msgstr ""
 msgid "player"
 msgstr "giocatore"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Schermo intero"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Accellerato"
@@ -470,8 +467,8 @@ msgid "Error"
 msgstr "Errore"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -492,3 +489,9 @@ msgstr "Chiudi"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Schermo intero"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"

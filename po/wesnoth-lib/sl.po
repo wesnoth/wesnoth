@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2004-11-15 22:20+0100\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <en@li.org>\n"
@@ -48,8 +48,9 @@ msgstr "Pomanjšaj"
 msgid "Default Zoom"
 msgstr "Privzeta povečava"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
 msgstr "Celozaslonski način"
 
 #: src/hotkeys.cpp:54
@@ -275,10 +276,6 @@ msgstr ""
 msgid "player"
 msgstr "igralec"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Celozaslonski način"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Višja hitrost"
@@ -466,8 +463,8 @@ msgid "Error"
 msgstr "Napaka"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "V redu"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -488,3 +485,9 @@ msgstr "Zapri"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Celozaslonski način"
+
+#~ msgid "Ok"
+#~ msgstr "V redu"

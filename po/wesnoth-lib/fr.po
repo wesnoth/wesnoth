@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2005-04-11 11:57+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
@@ -49,8 +49,9 @@ msgstr "Zoom arrière"
 msgid "Default Zoom"
 msgstr "Zoom par défaut"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
 msgstr "Plein écran"
 
 #: src/hotkeys.cpp:54
@@ -276,10 +277,6 @@ msgstr ""
 msgid "player"
 msgstr "joueur"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Plein écran"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Turbo"
@@ -468,8 +465,8 @@ msgid "Error"
 msgstr "Erreur"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -490,3 +487,9 @@ msgstr "Fermer"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "Ko"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Plein écran"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"

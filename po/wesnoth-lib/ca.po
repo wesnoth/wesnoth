@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2004-12-08 16:20+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team:  <ca@li.org>\n"
@@ -51,8 +51,9 @@ msgstr "Allunyar"
 msgid "Default Zoom"
 msgstr "Escala per defecte"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
 msgstr "Pantalla completa"
 
 #: src/hotkeys.cpp:54
@@ -277,10 +278,6 @@ msgstr ""
 msgid "player"
 msgstr "jugador"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Pantalla completa"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Velocitat accelerada"
@@ -468,8 +465,8 @@ msgid "Error"
 msgstr "Error"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "D'acord"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -490,3 +487,9 @@ msgstr "Tanca"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "kB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Pantalla completa"
+
+#~ msgid "Ok"
+#~ msgstr "D'acord"

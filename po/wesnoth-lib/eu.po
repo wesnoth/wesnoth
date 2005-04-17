@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2005-03-25 15:59+0100\n"
 "Last-Translator:  Alfredo Beaumont Sainz <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque\n"
@@ -47,9 +47,10 @@ msgstr "Txikiagotu"
 msgid "Default Zoom"
 msgstr "Lehenetsitako zooma"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
-msgstr "Pantailaosoa"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
+msgstr "Pantaila osoa"
 
 #: src/hotkeys.cpp:54
 msgid "Accelerated"
@@ -273,10 +274,6 @@ msgstr ""
 msgid "player"
 msgstr "jokalaria"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Pantaila osoa"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Abiadura azeleratua"
@@ -470,8 +467,8 @@ msgid "Error"
 msgstr "Okerra"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "Ados"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -492,3 +489,9 @@ msgstr "Itxi"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Pantailaosoa"
+
+#~ msgid "Ok"
+#~ msgstr "Ados"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2004-11-15 22:20+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -48,9 +48,10 @@ msgstr "Afastar"
 msgid "Default Zoom"
 msgstr "distância padrão"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
-msgstr "Tela cheia"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
+msgstr "Tela Cheia"
 
 #: src/hotkeys.cpp:54
 msgid "Accelerated"
@@ -276,10 +277,6 @@ msgstr ""
 msgid "player"
 msgstr "jogador"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Tela Cheia"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Velocidade acelerada"
@@ -469,8 +466,8 @@ msgid "Error"
 msgstr "Erro"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -491,3 +488,9 @@ msgstr "Fechar"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Tela cheia"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2005-04-10 10:20+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -51,8 +51,9 @@ msgstr "ズームアウト"
 msgid "Default Zoom"
 msgstr "デフォルトズーム"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
 msgstr "フルスクリーン"
 
 #: src/hotkeys.cpp:54
@@ -277,10 +278,6 @@ msgstr ""
 msgid "player"
 msgstr "プレイヤー"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "フルスクリーン"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "高速化"
@@ -468,8 +465,8 @@ msgid "Error"
 msgstr "エラー"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "OK"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -490,3 +487,9 @@ msgstr "閉じる"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
+
+#~ msgid "Fullscreen"
+#~ msgstr "フルスクリーン"
+
+#~ msgid "Ok"
+#~ msgstr "OK"

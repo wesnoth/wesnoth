@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:46+0200\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2005-03-16 22:47+0000\n"
 "Last-Translator: Konstantinos Karasavvas <ceekk@macs.hw.ac.uk>\n"
 "Language-Team: Greek <ceekk@macs.hw.ac.uk>\n"
@@ -49,9 +49,10 @@ msgstr "Σμίκρυνση"
 msgid "Default Zoom"
 msgstr "Προεπιλεγμένο Ζουμ"
 
-#: src/hotkeys.cpp:53
-msgid "Fullscreen"
-msgstr "Πλήρης οθόνη"
+#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#, fuzzy
+msgid "Toggle Full Screen"
+msgstr "Πλήρης Οθόνη"
 
 #: src/hotkeys.cpp:54
 msgid "Accelerated"
@@ -276,10 +277,6 @@ msgstr ""
 msgid "player"
 msgstr "παίκτης"
 
-#: src/preferences.cpp:831
-msgid "Full Screen"
-msgstr "Πλήρης Οθόνη"
-
 #: src/preferences.cpp:832
 msgid "Accelerated Speed"
 msgstr "Αυξημένη Ταχύτητα"
@@ -469,8 +466,8 @@ msgid "Error"
 msgstr "Σφάλμα"
 
 #: src/show_dialog.cpp:409 src/show_dialog.cpp:422
-msgid "Ok"
-msgstr "ΟΚ"
+msgid "OK"
+msgstr ""
 
 #: src/show_dialog.cpp:415
 msgid "Yes"
@@ -491,3 +488,9 @@ msgstr "Κλείσιμο"
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "ΚΒ"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Πλήρης οθόνη"
+
+#~ msgid "Ok"
+#~ msgstr "ΟΚ"

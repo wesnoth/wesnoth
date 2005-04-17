@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
-"POT-Creation-Date: 2005-04-14 10:13+0200\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2005-04-17 08:24+0200\n"
 "PO-Revision-Date: 2005-04-15 17:30+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:5
@@ -16,24 +16,24 @@ msgid "Son of the Black Eye (chapter I)"
 msgstr "Seun van die Swart-Oog (hoofstuk I)"
 
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:9
-msgid "(easiest)"
-msgstr "(maklikste)"
-
-#: data/campaigns/Son_Of_The_Black_Eye.cfg:9
 msgid "Grunt"
 msgstr "Troep"
+
+#: data/campaigns/Son_Of_The_Black_Eye.cfg:9
+msgid "(easiest)"
+msgstr "(maklikste)"
 
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:10
 msgid "Warrior"
 msgstr "Kryger"
 
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:11
-msgid "Warlord"
-msgstr "Meesterkryger"
-
-#: data/campaigns/Son_Of_The_Black_Eye.cfg:11
 msgid "(hardest)"
 msgstr "(moelikste)"
+
+#: data/campaigns/Son_Of_The_Black_Eye.cfg:11
+msgid "Warlord"
+msgstr "Meesterkryger"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:7
 msgid "Black Flag"
@@ -46,7 +46,6 @@ msgstr "Oorwin Slowhand"
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:30
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/Desert_Of_Death.cfg:32
-#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:31
 #: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:99
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:31
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:32
@@ -54,6 +53,7 @@ msgstr "Oorwin Slowhand"
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:46
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:31
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:202
+#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:31
 msgid "Death of Kapou'e"
 msgstr "Dood van Kapoue`e"
 
@@ -70,25 +70,25 @@ msgid "Death of Grüü"
 msgstr "Dood van Grüü"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:38
-#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:44
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:47
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:58
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:210
+#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:35
 msgid "Turns run out"
 msgstr "Beurte raak op"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:47
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:52
 #: data/scenarios/Son_Of_The_Black_Eye/Desert_Of_Death.cfg:49
-#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:56
 #: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:120
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:48
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:53
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:55
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:66
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:65
+#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:56
 msgid "Kapou'e"
 msgstr "Kapou'e"
 
@@ -267,14 +267,16 @@ msgid "So here we are, they are preparing to assault."
 msgstr "So hier is ons, hulle maak reg om aan te val."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:222
-msgid "Prestim's walls are rock hard, they' ll break clean off on them."
+#, fuzzy
+msgid "Prestim's walls are rock hard, they'll break clean off on them."
 msgstr "Prestim se mure is rotsvas, dit sal afbreek op hulle."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:227
+#, fuzzy
 msgid ""
-"I'm not that sure. Every fortress has its own weakness. Prestim's wall are "
+"I'm not that sure. Every fortress has its own weakness. Prestim's walls are "
 "built on three towers. If one of them is destroyed, a breach will allow "
-"humans to enter Prestim ... needless to say, this would be the end for us."
+"humans to enter Prestim... needless to say, this would be the end for us."
 msgstr ""
 "Ek is nie so seker nie. Elke fort het 'n swakpunt. Prestim se mure is op "
 "drie torings gebou. As een van die torings vernietig word, sal die Mense kan "
@@ -306,9 +308,10 @@ msgid "Which one?"
 msgstr "Watter een?"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:257
+#, fuzzy
 msgid ""
-"Most of forces will cross the river by the ford where the bridge where "
-"previously. If we manage to defend it, we might still have a chance."
+"Most forces will cross the river by the ford where the bridge previously "
+"stood. If we manage to defend it, we might still have a chance."
 msgstr ""
 "Meeste van die magte sal die rivier deurwaad by die drif waar die brug "
 "voorheen was. As ons dit kan verdedig, dan staan ons nog 'n kans."
@@ -318,9 +321,10 @@ msgid "And if we fail?"
 msgstr "En as ons val?"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:267
+#, fuzzy
 msgid ""
 "Then they will assault Prestim at five versus one. We'll just have to pray "
-"to Mother earth."
+"to Mother Earth."
 msgstr ""
 "Dan sal hulle Prestin aanval met 'n oormag van vyf teen een. Ons sal bid dat "
 "Moeder Aarde ons help."
@@ -342,7 +346,8 @@ msgid "Here we are! Hold on Prestim, we arrive to push them to the river!"
 msgstr "Hier is ons! Wag net Prestim, ons sal hulle tot in die rivier druk!"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:395
-msgid "They are too numerous now, RETREAT !"
+#, fuzzy
+msgid "They are too numerous now, RETREAT!"
 msgstr "Daar is nou te veel van hulle - VAL TERUG!"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:417
@@ -352,19 +357,21 @@ msgstr ""
 "Die Groot Horde uiteindelik! Ek het begin dink hulle sal nooit kom nie."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:422
+#, fuzzy
 msgid ""
-"The defense of Prestim you've done is heroic, facing such opposition surely "
-"undermined morale of humans. Now they are retreating to their fortresses and "
-"won't get out of them."
+"Your defense of Prestim was heroic, facing such opposition surely undermined "
+"the morale of humans. Now they are retreating to their fortresses and will "
+"not venture out anytime soon."
 msgstr ""
 "Jou heldhaftige verdediging van Prestim en die oormag wat jy verslaan het "
 "sal die moreel van die Mense tot 'n laagtepunt bring. Hulle hardloop nou "
 "druipstert terug na hulle forte en sal nie weer uitkom nie."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:427
+#, fuzzy
 msgid ""
-"It is now time to show them who we are and to lead the Great Horde to their "
-"tails! They won't have a rest until we'll destitute Earl Lanbec'h!"
+"It is now time to show them who we are and to lead the Great Horde in "
+"pursuit! We will not rest until we destitute Earl Lanbec'h!"
 msgstr ""
 "Dit is nou tyd on vir hulle te wys wie ons is en om die Groot Horde aan "
 "hulle hakskene te laat byt. Ons sal nie rus voordat Graaf Lanbec'h haweloos "
@@ -1191,8 +1198,8 @@ msgstr ""
 "Jy is reg my seun, ons sal liewer ons Orkse vriende help. Pas jouself goed "
 "op. As iets met jou gebeur sal ek 'n gebroke man wees."
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:222
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:78
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:222
 msgid "Argh! I'm done. My people is doomed!"
 msgstr "Argh! Ek is verslaan. My mense is verdoem."
 
@@ -1204,8 +1211,8 @@ msgstr "Pa! Ag Nee!"
 msgid "Filthy dwarves! Now I'm to kill you to the last!"
 msgstr "Dwerg gespuis! Nou sal ek jou laaste doodmaak!"
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:251
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:90
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:251
 msgid "Oh no, I'm defeated."
 msgstr "Ag Nee, Ek is verslaan."
 

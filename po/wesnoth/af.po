@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-14 09:37+0200\n"
+"POT-Creation-Date: 2005-04-17 08:15+0200\n"
 "PO-Revision-Date: 2005-03-21 09:57+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -562,11 +562,11 @@ msgid ""
 "\n"
 "Intelligent units require 20% less experience than usual to advance.\n"
 "\n"
-"Intelligent units are very useful at the beginning of a campaign, as they "
-"can be quickly advanced into much needed higher level units. Later in the "
-"campaign, they are not quite so useful, and if you have plenty of high level "
-"units you may find yourself recalling units with more useful ''long-term'' "
-"traits."
+"Intelligent units are very useful at the beginning of a campaign as they can "
+"advance to higher levels more quickly. Later in campaigns Intelligent is not "
+"quite as useful because units no longer require experience points after "
+"reaching their maximum level. If you have many 'maximum level' units you may "
+"with to recall units with more desirable traits."
 msgstr ""
 
 #: data/help.cfg:226
@@ -578,11 +578,12 @@ msgid ""
 "\n"
 "Quick units have 1 extra movement point, but 10% less HP than usual.\n"
 "\n"
-"Quick is the most noticeable trait, particularly in slower units such as "
-"trolls or heavy infantry. Units with the Quick trait can often have greatly "
-"increased mobility in rough terrain, so consider that when deploying your "
-"forces. Also, remember that Quick units aren't quite as tough as usual, and "
-"so aren't so good for holding positions."
+"Quick is the most noticeable trait, particularly in slower moving units such "
+"as trolls or heavy infantry. Units with the Quick trait often have greatly "
+"increased mobility in rough terrain, so you should consider that when "
+"deploying your forces. Also, Quick units aren't quite as tough as units "
+"without this trait and are subsequently less good at holding contested "
+"positions."
 msgstr ""
 
 #: data/help.cfg:233
@@ -594,10 +595,11 @@ msgid ""
 "\n"
 "Resilient units have 7 more HP than usual.\n"
 "\n"
-"Resilient units can be useful at all stages in the campaign, and is a useful "
-"trait for all units, though you'll find yourself noticing it more in some "
-"units than others. Resilient units are especially useful for holding ground "
-"against opponents."
+"Resilient units can be useful at all stages of a campaign, and this is a "
+"useful trait for all units. Resilient is often most helpful as a trait when "
+"it occurs in a unit that has some combination of low hitpoints, good "
+"defence, or high resistances. Resilient units are especially useful for "
+"holding strategic positions against opponents."
 msgstr ""
 
 #: data/help.cfg:240
@@ -610,10 +612,10 @@ msgid ""
 "Strong units do 1 more damage per swing in melee combat, and have 2 more "
 "HP.\n"
 "\n"
-"Useful for any close-combat unit, Strong is most effective for units who "
-"have a high number of swings, such as the Elvish Fighter. Strong units can "
-"be very useful when a tiny bit of extra damage is all that is needed to turn "
-"a damaging stroke into a killing blow."
+"While useful for any close-combat unit, Strong is most effective for units "
+"who have a high number of swings such as the Elvish Fighter. Strong units "
+"can be very useful when a tiny bit of extra damage is all that is needed to "
+"turn a damaging stroke into a killing blow."
 msgstr ""
 
 #: data/help.cfg:243
@@ -637,11 +639,11 @@ msgid ""
 "\n"
 "\n"
 "During campaigns, certain units may opt join the player's forces of their "
-"own volition.  These units are marked with the Loyal trait.  Although they "
-"may require payment to be recalled, they never incur any upkeep costs. This "
-"can make them invaluable during a long campaign, when gold is in short "
-"supply. This trait is never given to recruited units, so it may be unwise to "
-"dismiss them or send them to a foolish death."
+"own volition. These units are marked with the Loyal trait. Although they may "
+"require payment to be recalled, they never incur any upkeep costs. This can "
+"make them invaluable during a long campaign, when gold is in short supply. "
+"This trait is never given to recruited units, so it may be unwise to dismiss "
+"them or send them to a foolish death."
 msgstr ""
 
 #: data/help.cfg:258
@@ -653,7 +655,7 @@ msgid ""
 "\n"
 "Undead units are immune to poison.\n"
 "\n"
-"Undead units generally have Undead as their only trait. Since Undead units "
+"Undead units generally have 'Undead' as their only trait. Since Undead units "
 "are the bodies of the dead, risen to fight again, poison has no effect upon "
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
@@ -669,9 +671,9 @@ msgid ""
 "Dexterous units do +1 damage for every successful strike with a bow.\n"
 "\n"
 "Dexterous is a trait possessed only by Elves. The Elven people are known for "
-"their uncanny grace, and their great facility with the bow.  Some, however, "
-"are gifted with natural talent that exceeds their brethren.  These elves "
-"inflict an additional point of damage with each arrow to reflect this skill."
+"their uncanny grace, and their great facility with the bow. Some, however, "
+"are gifted with natural talent that exceeds their brethren. These elves "
+"inflict an additional point of damage with each arrow."
 msgstr ""
 
 #: data/items.cfg:264
@@ -2919,10 +2921,10 @@ msgstr ""
 #: data/units/Sea_Hag.cfg:32 data/units/Shock_Trooper.cfg:20
 #: data/units/Silver_Mage.cfg:78 data/units/Silver_Mage.cfg:207
 #: data/units/Skeleton_Archer.cfg:25 data/units/Soulless.cfg:20
-#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:20 data/units/Troll.cfg:22
-#: data/units/Troll_Hero.cfg:22 data/units/Troll_Rocklobber.cfg:22
-#: data/units/Troll_Rocklobber.cfg:40 data/units/Troll_Warrior.cfg:22
-#: data/units/Troll_Whelp.cfg:22 data/units/Walking_Corpse.cfg:40
+#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:20 data/units/Troll.cfg:25
+#: data/units/Troll_Hero.cfg:22 data/units/Troll_Rocklobber.cfg:25
+#: data/units/Troll_Rocklobber.cfg:43 data/units/Troll_Warrior.cfg:25
+#: data/units/Troll_Whelp.cfg:25 data/units/Walking_Corpse.cfg:40
 #: data/units/Walking_Corpse.cfg:115 data/units/Walking_Corpse.cfg:191
 #: data/units/Walking_Corpse.cfg:268 data/units/Walking_Corpse.cfg:345
 #: data/units/Walking_Corpse.cfg:421 data/units/Walking_Corpse.cfg:497
@@ -3122,7 +3124,7 @@ msgstr ""
 #: data/units/Iron_Mauler.cfg:19 data/units/Mage_of_Light.cfg:30
 #: data/units/Mage_of_Light.cfg:102 data/units/Outlaw.cfg:20
 #: data/units/Outlaw.cfg:93 data/units/Shock_Trooper.cfg:19
-#: data/units/Troll_Warrior.cfg:21 data/units/Warrior_King.cfg:25
+#: data/units/Warrior_King.cfg:25
 msgid "mace"
 msgstr ""
 
@@ -3884,7 +3886,7 @@ msgid ""
 msgstr ""
 
 #: data/units/Dwarvish_Fighter.cfg:39 data/units/Dwarvish_Lord.cfg:44
-#: data/units/Dwarvish_Steelclad.cfg:45
+#: data/units/Dwarvish_Steelclad.cfg:45 data/units/Troll_Warrior.cfg:24
 msgid "hammer"
 msgstr ""
 
@@ -4410,14 +4412,14 @@ msgid ""
 msgstr ""
 
 #: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:19
-#: data/units/Troll.cfg:21 data/units/Troll_Hero.cfg:21
+#: data/units/Troll.cfg:24 data/units/Troll_Hero.cfg:21
 msgid "club"
 msgstr ""
 
 #: data/units/Footpad.cfg:38 data/units/Footpad.cfg:104
 #: data/units/Outlaw.cfg:38 data/units/Outlaw.cfg:111
 #: data/units/Outlaw_Princess.cfg:77 data/units/Outlaw_Queen.cfg:77
-#: data/units/Troll_Rocklobber.cfg:39
+#: data/units/Troll_Rocklobber.cfg:42
 msgid "sling"
 msgstr ""
 
@@ -4500,8 +4502,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Skeleton_Archer.cfg:24
-#: data/units/Soulless.cfg:19 data/units/Troll_Rocklobber.cfg:21
-#: data/units/Troll_Whelp.cfg:21 data/units/Walking_Corpse.cfg:39
+#: data/units/Soulless.cfg:19 data/units/Troll_Rocklobber.cfg:24
+#: data/units/Troll_Whelp.cfg:24 data/units/Walking_Corpse.cfg:39
 #: data/units/Walking_Corpse.cfg:114 data/units/Walking_Corpse.cfg:190
 #: data/units/Walking_Corpse.cfg:267 data/units/Walking_Corpse.cfg:344
 #: data/units/Walking_Corpse.cfg:420 data/units/Walking_Corpse.cfg:496
@@ -5926,11 +5928,27 @@ msgstr ""
 msgid "Troll"
 msgstr ""
 
-#: data/units/Troll.cfg:17
+#: data/units/Troll.cfg:20
 msgid ""
-"Trolls are strong and brutal humanoid monsters with the amazing ability to "
-"regenerate themselves, so that they recover from wounds on their own, even "
-"during battle."
+"Trolls, grown to adulthood, are possessed of a fearsome strength.  Their "
+"stone-like bodies have grown to a size much taller than a man, and their "
+"terrifying ability to recover from wounds make them a formidable foe even "
+"far from the mountainous ground they prefer to fight in.  An adult troll is "
+"smarter, faster, stronger, and though one would dare not say it to their "
+"face, uglier than any of their children.  Their wield heavy clubs with "
+"brutal proficiency, and form a bulwark of strength in any battle they "
+"participate in - the only weakness they have, if such can be said, is their "
+"inability to fight at a distance.\n"
+"\n"
+"Usage:\n"
+"Trolls fight well on rough, rocky terrain, especially at night.  They are "
+"vulnerable to archers, especially in open terrain, and should always have a "
+"healthy fear of spellcasters in all terrain.  They are quite powerful "
+"against brittle foes, like skeletons, and quite weak against well armored or "
+"naturally resilient enemies, such as their woodland counterpart, the wose.  "
+"Their regeneration allows them to cure poison and heal wounds without the "
+"aid of a nearby village.  Their relatively slow speed is a liability, as is "
+"their weakness during daylight hours."
 msgstr ""
 
 #: data/units/Troll_Hero.cfg:3
@@ -5948,32 +5966,89 @@ msgstr ""
 msgid "Troll Rocklobber"
 msgstr ""
 
-#: data/units/Troll_Rocklobber.cfg:18
+#: data/units/Troll_Rocklobber.cfg:21
 msgid ""
-"Trolls are humanoid monsters that have the amazing ability to regenerate, "
-"recovering from their wounds during battle. These trolls have armed "
-"themselves with large rocks they hurl at their opponents."
+"Given the monstrous strength of their race, trolls can turn rather mundane "
+"weapons into implements of deadly force.  Some trolls piece together crude "
+"slings, little different from what a child would use, save for the fact they "
+"hurl boulders instead of pebbles.  Though not especially accurate, a rock "
+"thrown by one of these monsters can cripple a man if it hits him.  Despite "
+"being burdened by their heavy ammunition, and lacking in any sort of melee "
+"weaponry, a troll rocklobber is still bigger, stronger, and perhaps even "
+"uglier than the whelp it once was, and a troll's fist serves as well as a "
+"man's hammer in combat.  Furthermore, their ability to strike back at an "
+"enemy archer makes fighting them a dicey proposition at any range, unless "
+"one can attack under heavy cover of terrain.\n"
+"\n"
+"Usage:\n"
+"Troll whelps fight well on rough, rocky terrain, especially at night.  "
+"Unlike most others of their race, a Troll Rocklobber will make many archers "
+"think twice about attacking, and is quite dangerous for an enemy spellcaster "
+"to attack.  They are quite powerful against brittle foes, like skeletons, "
+"and quite weak against well armored or naturally resilient enemies, such as "
+"their woodland counterpart, the wose.  Their regeneration allows them to "
+"cure poison and heal wounds without the aid of a nearby village.  Their "
+"relatively slow speed is a liability, as is their weakness during daylight "
+"hours.  The greatest danger to a Troll Rocklobber is a powerful melee unit "
+"attacking them in open terrain during the day, when they are weakest."
 msgstr ""
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr ""
 
-#: data/units/Troll_Warrior.cfg:18
+#: data/units/Troll_Warrior.cfg:21
 msgid ""
-"Hardened by battle, Troll Warriors can deliver deadly blows with a mace, and "
-"are able to regenerate, healing their own wounds during combat."
+"A terrifying, monstrous bastion of strength, a Troll Warrior brings to fore "
+"all the tales that have been told of their race's terrifying power.  "
+"Wielding massive hammers that could knock a house off its foundation, and "
+"able to absorb a seemingly endless rash of punishment, Troll Warriors are "
+"capable of singlehandedly changing the strategies of an enemy commander they "
+"face.  A troll warrior is not something brought down by one man, but by a "
+"whole group of them, fighting desperately against this hideous strength "
+"borne before them.  That which causes the most terror about a troll warrior, "
+"is not their appearance, or their power, but the fact that one brought even "
+"within an inch of its life will shortly return to its full strength if it is "
+"not truly sent to death.\n"
+"\n"
+"Usage:\n"
+"Troll Warriors fight well on rough, rocky terrain, especially at night.  "
+"Though vulnerable to archers and spellcasters, especially in open terrain, "
+"the raw power of a Troll Warrior makes them a foe that generally must be "
+"brought down by several enemies.  There are few enemies which can engage "
+"them in one-on-one combat without a great danger of being killed on the same "
+"turn.  Their regeneration allows them to cure poison, and heal wounds "
+"without the aid of a nearby village.  Their relative weakness during "
+"daylight hours is a liability, though a Troll Warrior is still very powerful "
+"during the day."
 msgstr ""
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr ""
 
-#: data/units/Troll_Whelp.cfg:18
+#: data/units/Troll_Whelp.cfg:21
 msgid ""
-"Trolls are humanoid monsters that have the amazing ability to regenerate, "
-"recovering from their wounds during battle. Although these Trolls are still "
-"weak whelps, their race is known for developing amazingly fast."
+"The word 'whelp,' applied even to fearsome animals like wolves and lions, "
+"brings to mind images of frail, helpless, and even 'cute' creatures, so "
+"young they can hardly stand on their own feet.  Given the nature of Trolls, "
+"however, a Troll 'whelp' already possesses the terrifying strength native to "
+"their race.  Troll whelps stumble about with bodies bigger than grown men, "
+"and with strength to match.  Their uncanny regeneration, and stone-like "
+"skin, make them monstrous opponents, especially on their favored ground in "
+"the mountains and hills from whence they came.  The only reassurance one has "
+"in fighting a troll whelp is their slow speed, and the fact that they have "
+"not grown to their full strength ... yet.\n"
+"\n"
+"Usage:\n"
+"Troll Whelps fight well on rough, rocky terrain, especially at night.  They "
+"are vulnerable to archers, especially in open terrain, and should always "
+"have a healthy fear of spellcasters in all terrain.  They are quite powerful "
+"against brittle foes, like skeletons, and quite weak against well armored or "
+"naturally resilient enemies, such as their woodland counterpart, the wose.  "
+"Their regeneration allows them to cure poison and heal wounds without the "
+"aid of a nearby village.  Their relatively slow speed is a liability, as is "
+"their weakness during daylight hours."
 msgstr ""
 
 #: data/units/Vampire_Bat.cfg:3
@@ -6222,91 +6297,91 @@ msgstr ""
 msgid "+Dutch Translation"
 msgstr ""
 
-#: src/about.cpp:193
+#: src/about.cpp:195
 msgid "+English (GB) Translation"
 msgstr ""
 
-#: src/about.cpp:197
+#: src/about.cpp:199
 msgid "+Estonian Translation"
 msgstr ""
 
-#: src/about.cpp:201
+#: src/about.cpp:203
 msgid "+Finnish Translation"
 msgstr ""
 
-#: src/about.cpp:206
+#: src/about.cpp:208
 msgid "+French Translation"
 msgstr ""
 
-#: src/about.cpp:220
+#: src/about.cpp:222
 msgid "+German Translation"
 msgstr ""
 
-#: src/about.cpp:232
+#: src/about.cpp:234
 msgid "+Greek Translation"
 msgstr ""
 
-#: src/about.cpp:237
+#: src/about.cpp:239
 msgid "+Hungarian Translation"
 msgstr ""
 
-#: src/about.cpp:249
+#: src/about.cpp:251
 msgid "+Italian Translation"
 msgstr ""
 
-#: src/about.cpp:258
+#: src/about.cpp:260
 msgid "+Japanese Translation"
 msgstr ""
 
-#: src/about.cpp:264
+#: src/about.cpp:266
 msgid "+Latin Translation"
 msgstr ""
 
-#: src/about.cpp:268
+#: src/about.cpp:270
 msgid "+Norwegian Translation"
 msgstr ""
 
-#: src/about.cpp:275
+#: src/about.cpp:277
 msgid "+Polish Translation"
 msgstr ""
 
-#: src/about.cpp:285
+#: src/about.cpp:287
 msgid "+Portuguese (Brazil) Translation"
 msgstr ""
 
-#: src/about.cpp:294
+#: src/about.cpp:296
 msgid "+Russian Translation"
 msgstr ""
 
-#: src/about.cpp:300
+#: src/about.cpp:302
 msgid "+Slovak Translation"
 msgstr ""
 
-#: src/about.cpp:304
+#: src/about.cpp:306
 msgid "+Slovenian Translation"
 msgstr ""
 
-#: src/about.cpp:308
+#: src/about.cpp:310
 msgid "+Spanish Translation"
 msgstr ""
 
-#: src/about.cpp:317
+#: src/about.cpp:319
 msgid "+Swedish Translation"
 msgstr ""
 
-#: src/about.cpp:324
+#: src/about.cpp:326
 msgid "+Turkish Translation"
 msgstr ""
 
-#: src/about.cpp:328
+#: src/about.cpp:331
 msgid "+Contributors"
 msgstr ""
 
-#: src/about.cpp:332
+#: src/about.cpp:335
 msgid "+Bots"
 msgstr ""
 
-#: src/about.cpp:369 src/help.cpp:2713
+#: src/about.cpp:372 src/help.cpp:2713
 msgid "Close"
 msgstr ""
 
@@ -6549,8 +6624,8 @@ msgstr ""
 msgid "invisible"
 msgstr ""
 
-#: src/filechooser.cpp:38
-msgid "Ok"
+#: src/filechooser.cpp:38 src/multiplayer_create.cpp:54
+msgid "OK"
 msgstr ""
 
 #: src/filechooser.cpp:39 src/multiplayer_connect.cpp:495
@@ -6979,11 +7054,11 @@ msgid "Height:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:89
-msgid "Iterations:"
+msgid "Number of Hills:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:90
-msgid "Bump Size:"
+msgid "Max Hill Size:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:91
@@ -7152,10 +7227,6 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:52
 msgid "Observers"
-msgstr ""
-
-#: src/multiplayer_create.cpp:54
-msgid "OK"
 msgstr ""
 
 #: src/multiplayer_create.cpp:55
