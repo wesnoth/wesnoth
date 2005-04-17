@@ -960,7 +960,6 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 				++ch;
 			}
 			current_line = format_string;
-			std::cerr << "Format string is " << format_string << "\n";
 			start_of_line = false;
 		}
 
