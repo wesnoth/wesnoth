@@ -85,6 +85,9 @@ public:
 	//function to take the zoom amount to the default.
 	void default_zoom();
 
+	//function to make a screenshot and save it in a default location
+	void screenshot();
+
 	//function which returns the size of a hex in pixels
 	//(from top tip to bottom tip or left edge to right edge)
 	int hex_size() const;

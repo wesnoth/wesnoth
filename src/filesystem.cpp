@@ -276,6 +276,12 @@ std::string get_intl_dir()
 	return res;
 }
 
+std::string get_screenshot_dir()
+{
+	const std::string dir_path = get_user_data_dir() + "/screenshots";
+	return get_dir(dir_path);
+}
+
 std::string get_dir(const std::string& dir_path)
 {
 #ifdef _WIN32

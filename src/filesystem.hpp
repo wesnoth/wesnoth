@@ -50,6 +50,7 @@ std::string get_save_index_file();
 std::string get_saves_dir();
 std::string get_cache_dir();
 std::string get_intl_dir();
+std::string get_screenshot_dir();
 std::string get_user_data_dir();
 
 std::string get_cwd();

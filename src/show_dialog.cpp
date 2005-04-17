@@ -294,7 +294,7 @@ private:
 
 	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd) const
 	{
-		return topic_.empty() == false && cmd == hotkey::HOTKEY_HELP;
+		return (topic_.empty() == false && cmd == hotkey::HOTKEY_HELP) || cmd == hotkey::HOTKEY_SCREENSHOT;
 	}
 
 	display& disp_;
