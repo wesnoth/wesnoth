@@ -99,7 +99,18 @@ private:
 	void add_value(const std::string& type, int value);
 
 	const config::child_list& commands() const;
-	config* add_command();
+	/** Adds a new empty command to the command list.
+	 *
+	 * @param update_random_context  If set to false, do not update the
+	 *           random context variables: all random generation will take
+	 *           place in the previous random context. Used for commands
+	 *           for which "random context" is pointless, and which can be
+	 *           issued while some other commands are still taking place,
+	 *           like, for example, messages during combats.
+	 *
+	 * @return a pointer to the added command
+	 */
+	config* add_command(bool update_random_context=true);
 	config cfg_;
 	unsigned int pos_;
 

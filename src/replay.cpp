@@ -361,7 +361,7 @@ void replay::end_turn()
 
 void replay::speak(const config& cfg)
 {
-	config* const cmd = add_command();
+	config* const cmd = add_command(false);
 	if(cmd != NULL) {
 		cmd->add_child("speak",cfg);
 		(*cmd)["undo"] = "no";
@@ -442,11 +442,12 @@ void replay::mark_current()
 	}
 }
 
-config* replay::add_command()
+config* replay::add_command(bool update_random_context)
 {
 	pos_ = ncommands()+1;
 	current_ = &cfg_.add_child("command");
-	random_ = current_;
+	if(update_random_context)
+		random_ = current_;
 
 	return current_;
 }
