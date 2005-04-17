@@ -278,8 +278,9 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Polish Translation"),
 		"-   Artur R. Czechowski",
+		"-   Bartek Waresiak (Dragonking)",
 		"-   BOrsuk",
-                "-   Karol Nowak (grzywacz)",
+		"-   Karol Nowak (grzywacz)",
 		"-   methinks",
 		"-   Michał Jedynak (Artanis)",
 		"-   Paweł Stradomski",
