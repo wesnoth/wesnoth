@@ -807,9 +807,6 @@ bool game_controller::load_game()
 	} else {
 		// We have a snapshot. But does the user want to see a replay?
 		if(show_replay) {
-			// clear the stats for the current level
-			// they will be regenerated during the replay
-			statistics::replay_verify_stats = statistics::write_stats();
 			statistics::clear_current_scenario();
 			std::cerr << "replaying (snapshot)\n";
 		} else {
