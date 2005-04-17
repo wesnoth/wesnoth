@@ -241,3 +241,4 @@ bool is_observer();
 void validate_side(int side); //throw game::game_error
 
 #endif
+

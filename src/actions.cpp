@@ -947,7 +947,6 @@ int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
 	return -1;
 }
 
-
 void get_village(const gamemap::location& loc, std::vector<team>& teams,
                  size_t team_num, const unit_map& units)
 {

@@ -848,7 +848,8 @@ redo_turn:
 				gui::show_dialog(gui, NULL, _("Victory"),
 				                 _("You have emerged victorious!"), gui::OK_ONLY);
 
-			if (state_of_game.players.size() > 0 && has_next_scenario)
+			if (state_of_game.players.size() > 0 && has_next_scenario || 
+					state_of_game.campaign_type == "test")
 				gui::show_dialog(gui, NULL, _("Scenario Report"), report.str(), gui::OK_ONLY);
 
 			return VICTORY;

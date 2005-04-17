@@ -877,3 +877,4 @@ int team::get_side_colour_index(int side)
 
 	return side;
 }
+

@@ -895,6 +895,16 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			const std::string& terrain_type = cfg["letter"];
 			preferences::encountered_terrains().insert(terrain_type);
 			if(terrain_type.size() > 0) {
+				const bool old_village = game_map->is_village(*loc);
+				const bool new_village = game_map->is_village(terrain_type[0]);
+
+				if(old_village && !new_village) {
+					int owner = village_owner(*loc, *teams);
+					if(owner != -1) {
+						(*teams)[owner].lose_village(*loc);
+					}
+				}
+
 				game_map->set_terrain(*loc,terrain_type[0]);
 			}
 		}
