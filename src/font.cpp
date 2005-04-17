@@ -947,11 +947,25 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 	size_t current_height = 0;
 	bool line_break = false;
 	bool first = true;
+	bool start_of_line = true;
 	std::string wrapped_text;
-	
+	std::string format_string;
+	utils::utf8_iterator end = utils::utf8_iterator::end(unwrapped_text);
+
 	while(1) {
+		if(start_of_line) {
+			format_string = "";
+			while(ch != end && *ch < 0x100 && is_format_char(*ch)) {
+				format_string.append(ch.substr().first, ch.substr().second);
+				++ch;
+			}
+			current_line = format_string;
+			std::cerr << "Format string is " << format_string << "\n";
+			start_of_line = false;
+		}
+
 		// If there is no current word, get one
-		if(current_word.empty() && ch == utils::utf8_iterator::end(unwrapped_text)) {
+		if(current_word.empty() && ch == end) {
 			break;
 		} else if(current_word.empty()) {
 			if(*ch == ' ' || *ch == '\n') {
@@ -982,6 +996,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 		if(current_word == "\n") {
 			line_break = true;
 			current_word = "";
+			start_of_line = true;
 		} else {
 			SDL_Rect size = line_size(current_line + current_word, font_size);
 
@@ -999,7 +1014,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 			}
 		}
 
-		if(line_break || current_word.empty() && ch == utils::utf8_iterator::end(unwrapped_text)) {
+		if(line_break || current_word.empty() && ch == end) {
 			SDL_Rect size = line_size(current_line, font_size);
 			if(max_height > 0 && current_height + size.h >= size_t(max_height))
 				return wrapped_text;
@@ -1007,7 +1022,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 			if(!first)
 				wrapped_text += '\n';
 			wrapped_text += current_line;
-			current_line = "";
+			current_line = format_string;
 			current_height += size.h;
 			line_break = false;
 			first = false;
