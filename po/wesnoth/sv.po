@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-17 08:15+0200\n"
-"PO-Revision-Date: 2005-04-14 13:33+0200\n"
+"PO-Revision-Date: 2005-04-17 15:28+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -806,10 +806,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"De karaktärsdrag som är tillgängliga för icke-vandöda är:"
+"De karaktärsdrag som är tillgängliga för icke-vandöda är följande."
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -833,13 +832,12 @@ msgstr ""
 "befordras.\n"
 "\n"
 "Intelligenta trupper är mycket användbara i början av en kampanj, eftersom "
-"de snabbt befordras till de välbehövliga trupper som finns på högre nivåer. "
-"Senare i kampanjen är de inte lika viktiga, och om du har många trupper på "
-"högre nivåer kan det vara bättre att återkalla trupper som har andra "
-"karaktärsdrag."
+"de snabbt befordras till högre nivåer. Senare är de inte lika viktiga "
+"eftersom trupper inte behöver mer EP efter att de nått sin toppnivå. Om du "
+"har många trupper på högre nivåer så kan det vara bättre att återkalla "
+"trupper som har andra karaktärsdrag."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -864,13 +862,12 @@ msgstr ""
 "vanligt.\n"
 "\n"
 "Detta är det karaktärsdrag som märks mest, speciellt hos långsamma trupper "
-"som troll eller tungt infanteri. Dessa trupper rör sig ofta mycket snabbare "
+"som troll eller tungt infanteri. Snabba trupper rör sig ofta mycket snabbare "
 "över oländig terräng, vilket är något att tänka på när man skickar ut sina "
-"trupper. Eftersom dessa trupper inte är så starka är de inte så lämpade för "
-"att hålla positioner."
+"trupper. Eftersom snabba trupper inte är så starka så är de mindre lämpade "
+"för att hålla positioner."
 
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -892,12 +889,13 @@ msgstr ""
 "\n"
 "Stryktåliga trupper har 7 hälsopoäng mer än vanligt.\n"
 "\n"
-"Stryktåliga trupper är användbara i alla lägen under en kampanj. Det är ett "
-"nyttigt karaktärsdrag för alla trupper, även om det märks mer hos vissa. "
-"Stryktåliga trupper är speciellt lämpade att hålla positioner."
+"Stryktåliga trupper är användbara i alla lägen under en kampanj, och detta "
+"karaktärsdrag är dessutom nyttigt för alla trupper. Stryktålighet är ofta "
+"som mest nyttigt för trupper som kombinerar lite HP, bra försvarsegenskaper "
+"eller starka motståndskrafter. Stryktåliga trupper är speciellt lämpade att "
+"hålla positioner."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -935,10 +933,9 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"Andra speciella karaktärsdrag som kan tilldelas trupper:"
+"Andra speciella karaktärsdrag trupper kan tilldelas:"
 
 #: data/help.cfg:251
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -966,7 +963,6 @@ msgstr ""
 "underhållskostnad vid slutet av varje drag; denna kostnad är lika med deras "
 "erfarenhetsnivå. Lojala trupper utkräver inte denna kostnad.\n"
 "\n"
-"\n"
 "Under en kampanj kan vissa trupper välja att ansluta sig till spelarens "
 "armé. Dessa trupper utmärks med karaktärsdraget Lojal. Även om de kräver "
 "betalning för att återkallas, så kostar de aldrig något underhåll. Detta gör "
@@ -975,7 +971,6 @@ msgstr ""
 "att avskeda eller skicka dina lojala trupper i döden i onödan."
 
 #: data/help.cfg:258
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -998,11 +993,10 @@ msgstr ""
 "\n"
 "Vandöda trupper har i allmänhet Vandöd som sitt enda karaktärsdrag. Eftersom "
 "vandöda trupper är de dödas återuppväckta kroppar, så har gift ingen effekt "
-"mot dem. Detta kan göra dem mycket användbara i strid mot fiender som "
+"på dem. Detta kan göra dem mycket användbara i strid mot fiender som "
 "använder gift i sina attacker."
 
 #: data/help.cfg:265
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1025,9 +1019,8 @@ msgstr ""
 "\n"
 "Alver är de enda som kan ha karaktärsdraget Träffsäker. Alverna är kända för "
 "sin förunderliga grace och sin stora skicklighet med pilbåge. Vissa alver är "
-"dock begåvade med en naturlig fallenhet för bågskyttet som överträffar sina "
-"släktingars. För att reflektera denna skicklighet så åsamkar dessa alver "
-"ytterligare en poäng i skada med varje pil."
+"dock begåvade med en naturlig fallenhet för bågskytte som överträffar sina "
+"släktingars. Dessa alver åsamkar ytterligare en poäng i skada med varje pil."
 
 #: data/items.cfg:264
 msgid ""
@@ -7475,6 +7468,24 @@ msgid ""
 "aid of a nearby village.  Their relatively slow speed is a liability, as is "
 "their weakness during daylight hours."
 msgstr ""
+"De vuxna trollen besitter en skrämmande styrka. Deras stenlika kroppar har "
+"vuxit sig mycket resligare än en människa, och deras förmåga att återhämta "
+"sig från skador gör dem till formidabla fiender även utanför de berg de "
+"föredrar att strida i. Ett vuxet troll är smartare, snabbare, starkare, och, "
+"även om ingen skulle våga säga det till dem, fulare än deras barn. De "
+"nyttjar sina stora klubbor med stor effektivitet och bildar en mur av "
+"råstyrka i striderna de deltar i. Den enda svaghet de har är att de inte kan "
+"strida på distans.\n"
+"\n"
+"Användning:\n"
+"Troll strider bra på oländig, stenig terräng, särskilt nattetid. De är "
+"sårbara för bågskyttar, speciellt i öppen terräng, och de borde alltid ha en "
+"hälsosam rädsla för besvärjare i alla sorters terräng. De är mäktiga "
+"motståndare mot bräckliga fiender, såsom skelett, men har det svårt mot "
+"välbepansrade eller naturligt stryktåliga fiender, såsom deras "
+"skogsmotsvarighet, wosen. Deras regenerering låter dem hela sig från gift "
+"och sina skador utan hjälp från en by. Deras relativa långsamhet är en "
+"svaghet, än värre så under dagtid."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
@@ -8635,31 +8646,31 @@ msgstr "Kartgenerator"
 
 #: src/mapgen_dialog.cpp:86
 msgid "Players:"
-msgstr "Spelare: "
+msgstr "Spelare:"
 
 #: src/mapgen_dialog.cpp:87
 msgid "Width:"
-msgstr "Bredd: "
+msgstr "Bredd:"
 
 #: src/mapgen_dialog.cpp:88
 msgid "Height:"
-msgstr "Höjd: "
+msgstr "Höjd:"
 
 #: src/mapgen_dialog.cpp:89
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Antal kullar:"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Max kullstorlek:"
 
 #: src/mapgen_dialog.cpp:91
 msgid "Villages:"
-msgstr "Byar: "
+msgstr "Byar:"
 
 #: src/mapgen_dialog.cpp:92
 msgid "Landform:"
-msgstr "Landform: "
+msgstr "Landform:"
 
 #: src/mapgen_dialog.cpp:198
 msgid "Roads Between Castles"
@@ -9610,48 +9621,3 @@ msgstr "redbar"
 #: src/unit_types.cpp:932
 msgid "neutral"
 msgstr "neutral"
-
-#~ msgid ""
-#~ "Trolls are strong and brutal humanoid monsters with the amazing ability "
-#~ "to regenerate themselves, so that they recover from wounds on their own, "
-#~ "even during battle."
-#~ msgstr ""
-#~ "Troll är starka, brutala humanoida monster som, liksom trollvalparna, har "
-#~ "den fantastiska förmågan att regenerera, dvs att läka sina skador medan "
-#~ "de fortfarande slåss."
-
-#~ msgid ""
-#~ "Trolls are humanoid monsters that have the amazing ability to regenerate, "
-#~ "recovering from their wounds during battle. These trolls have armed "
-#~ "themselves with large rocks they hurl at their opponents."
-#~ msgstr ""
-#~ "Troll är humanoida monster som har den den fantastiska förmågan att "
-#~ "regenerera, att läka sina skador medan de fortfarande slåss. Stenkastarna "
-#~ "har försett sig med stora stenar som de kastar på sina fiender."
-
-#~ msgid ""
-#~ "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, "
-#~ "and are able to regenerate, healing their own wounds during combat."
-#~ msgstr ""
-#~ "Härdade av strid kan trollkrigarna dela ut dödliga slag med sin "
-#~ "spikklubba. De kan dessutom regenerera, så att deras skador läks under "
-#~ "stridens gång."
-
-#~ msgid ""
-#~ "Trolls are humanoid monsters that have the amazing ability to regenerate, "
-#~ "recovering from their wounds during battle. Although these Trolls are "
-#~ "still weak whelps, their race is known for developing amazingly fast."
-#~ msgstr ""
-#~ "Troll är starka, brutala humanoida monster som har den den fantastiska "
-#~ "förmågan att regenerera, att läka sina skador medan de fortfarande slåss. "
-#~ "Fastän detta troll fortfarande är en valp så är trollen kända för att "
-#~ "utvecklas mycket snabbt."
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Iterations:"
-#~ msgstr "Iterationer: "
-
-#~ msgid "Bump Size:"
-#~ msgstr "Kullstorlek: "
