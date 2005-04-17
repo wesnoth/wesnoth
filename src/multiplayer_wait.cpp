@@ -362,7 +362,7 @@ void wait::generate_menu()
 	for(config::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		const config& sd = **s;
 
-		std::string description = sd["description"];
+		std::string description = sd["user_description"];
 		const std::string faction_id = sd["id"];
 
 		t_string side_name = sd["name"];
