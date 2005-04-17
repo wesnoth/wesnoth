@@ -456,7 +456,7 @@ void display::default_zoom()
 void display::screenshot()
 {
 	std::string datadir = get_screenshot_dir();
-	unsigned int counter = 0;
+	static unsigned int counter = 0;
 	std::string name;
 
 	do {
