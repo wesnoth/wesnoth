@@ -511,6 +511,20 @@ void config::apply_diff(const config& diff)
 	}
 }
 
+void config::reset_translation() const
+{
+	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
+		val->second.reset_translation();
+	}
+
+	for(child_map::const_iterator list = children.begin(); list != children.end(); ++list) {
+		for(child_list::const_iterator child = list->second.begin(); 
+				child != list->second.end(); ++child) {
+			(*child)->reset_translation();
+		}
+	}
+}
+
 bool operator==(const config& a, const config& b)
 {
 	if (a.values != b.values)

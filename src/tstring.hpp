@@ -80,6 +80,8 @@ public:
 	const char* c_str() const;
 	const std::string& value() const;
 
+	void reset_translation() const;
+
 	static void add_textdomain(const std::string& name, const std::string& path);
 private:
 	bool translatable_;

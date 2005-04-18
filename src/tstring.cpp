@@ -480,6 +480,11 @@ const std::string& t_string::value() const
 	return value_;
 }
 
+void t_string::reset_translation() const
+{
+	translated_value_ = "";
+}
+
 void t_string::add_textdomain(const std::string& name, const std::string& path)
 {
 	LOG_CF << "Binding textdomain " << name << " to path " << path << "\n";

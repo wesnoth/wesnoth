@@ -124,6 +124,9 @@ public:
 	//latter config object will clobber attributes in this one.
 	void append(const config& cfg);
 
+	//resets the translated values of all strings contained in this object
+	void reset_translation() const;
+
 	//all the attributes of this node.
 	string_map values;
 

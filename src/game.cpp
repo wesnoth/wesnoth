@@ -260,7 +260,7 @@ private:
 	void operator=(const game_controller&);
 
 	void read_game_cfg(preproc_map& defines, config& cfg, bool use_cache);
-	void refresh_game_cfg();
+	void refresh_game_cfg(bool reset_translations=false);
 
 	void download_campaigns();
 	void upload_campaign(const std::string& campaign, network::connection sock);
@@ -865,6 +865,7 @@ void game_controller::set_tutorial()
 	state_ = game_state();
 	state_.campaign_type = "tutorial";
 	state_.scenario = "tutorial";
+	defines_map_.clear();
 	defines_map_["TUTORIAL"] = preproc_define();
 }
 
@@ -1239,6 +1240,7 @@ bool game_controller::play_multiplayer()
 	}
 	
 	try {
+		defines_map_.clear();
 		defines_map_[state_.campaign_define] = preproc_define();
 		refresh_game_cfg();
 		
@@ -1309,11 +1311,7 @@ bool game_controller::change_language()
 		::set_language(known_languages[res]);
 		preferences::set_language(known_languages[res].localename);
 
-		//force a reload of configuration information
-		const bool old_cache = use_caching_;
-		use_caching_ = false;
-		init_config();
-		use_caching_ = old_cache;
+		refresh_game_cfg(true);
 	}
 
 	font::load_font_config();
@@ -1339,8 +1337,8 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 
 			str << "-" << i->first;
 		}
-		std::string localename = get_locale().localename;
-		str << "-lang_" << (localename.empty() ? "default" : localename);
+		//std::string localename = get_locale().localename;
+		//str << "-lang_" << (localename.empty() ? "default" : localename);
 
 		if(is_valid) {
 			const std::string& cache = get_cache_dir();
@@ -1413,15 +1411,19 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 	read(cfg, *stream);
 }
 
-void game_controller::refresh_game_cfg()
+void game_controller::refresh_game_cfg(bool reset_translations)
 {
 	try {
-		if(old_defines_map_.empty() || defines_map_ != old_defines_map_) {
+		if(old_defines_map_.empty() || defines_map_ != old_defines_map_ || reset_translations) {
 
 			units_data_.clear();
-			game_config_.clear();
 
-			read_game_cfg(defines_map_, game_config_, use_caching_);
+			if(!reset_translations) {
+				game_config_.clear();
+				read_game_cfg(defines_map_, game_config_, use_caching_);
+			} else {
+				game_config_.reset_translation();
+			}
 
 			const config* const units = game_config_.child("units");
 			if(units != NULL) {

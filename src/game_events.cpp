@@ -571,10 +571,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		t_string win_string = cfg["victory_string"];
 		if(win_string.empty()) 
-			win_string = _("Victory:");
+			win_string = t_string(N_("Victory:"), "wesnoth");
 		t_string lose_string = cfg["defeat_string"];
 		if(lose_string.empty())
-			lose_string = _("Defeat:");
+			lose_string = t_string(N_("Defeat:"), "wesnoth");
 
 		t_string win_objectives;
 		t_string lose_objectives;
