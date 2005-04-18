@@ -26,7 +26,7 @@ bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_lo
 		read_compressed(cfg, in);
 		return true;
 	} else {
-		read(cfg, in, error_log);
+		read(cfg, in, NULL, error_log);
 		return false;
 	}
 }

@@ -38,12 +38,26 @@
 
 static const size_t max_recursion_levels = 100;
 
+line_source get_line_source(std::vector< line_source > const &line_src, int line)
+{
+	line_source res(line, "", 0);
+	std::vector< line_source >::const_iterator it =
+		std::upper_bound(line_src.begin(), line_src.end(), res);
+	if (it != line_src.begin()) {
+		--it;
+		res.file = it->file;
+		res.fileline = it->fileline + (line - it->linenum);
+	}
+
+	return res;
+}
+
 namespace {
 
 class parser
 {
 public:
-	parser(config& cfg, std::istream& in);
+	parser(config& cfg, std::istream& in, std::vector<line_source> const* line_sources);
 	void operator() (std::string* error_log=NULL);
 
 private:
@@ -56,6 +70,7 @@ private:
 
 	config& cfg_;
 	tokenizer tok_;
+	std::vector<line_source> const* line_sources;
 
 	struct element {
 		element(config* cfg, const std::string& name, size_t start_line, const std::string& textdomain) :
@@ -74,9 +89,10 @@ private:
 	std::string current_textdomain_location;
 };
 
-parser::parser(config &cfg, std::istream &in) :
+parser::parser(config &cfg, std::istream &in, std::vector<line_source> const *line_sources) :
 	cfg_(cfg),
 	tok_(in),
+	line_sources(line_sources),
 	current_textdomain_location("")
 {
 }
@@ -292,7 +308,6 @@ std::string parser::lineno_string(utils::string_map& i18n_symbols, size_t lineno
 {
 	std::string res;
 
-	/*
 	if(line_sources != NULL) {
 		const line_source src = get_line_source(*line_sources, lineno);
 		i18n_symbols["file"] = lexical_cast<std::string>(src.file);
@@ -306,7 +321,6 @@ std::string parser::lineno_string(utils::string_map& i18n_symbols, size_t lineno
 
 		res = vgettext(string2.c_str(), i18n_symbols);
 	}
-	*/
 	return res;
 }
 
@@ -322,9 +336,10 @@ void parser::error(const std::string& error_type)
 
 } // end anon namespace
 
-void read(config &cfg, std::istream &data_in, std::string* error_log)
+void read(config &cfg, std::istream &data_in, std::vector< line_source > const *line_sources,
+		std::string* error_log)
 {
-	parser(cfg, data_in)(error_log);
+	parser(cfg, data_in, line_sources)(error_log);
 }
 
 static char const *AttributeEquals = "=";

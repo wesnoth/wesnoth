@@ -18,9 +18,13 @@
 #include <vector>
 
 class config;
+struct line_source;
+
+line_source get_line_source(std::vector< line_source > const &line_src, int line);
 
 //read data in, clobbering existing data.
-void read(config &cfg, std::istream &in, std::string* error_log = NULL); //throws config::error
+void read(config &cfg, std::istream &in, std::vector< line_source > const *lines = 0, 
+		std::string* error_log=NULL); //throws config::error
 
 void write(std::ostream &out, config const &cfg);
 

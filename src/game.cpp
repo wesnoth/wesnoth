@@ -1383,7 +1383,7 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 				scoped_istream stream = preprocess_file("data/game.cfg", &defines);
 
 				std::string error_log;
-				read(cfg, *stream, &error_log);
+				read(cfg, *stream, NULL, &error_log);
 				if(!error_log.empty()) {
 					gui::show_error_message(disp(), 
 							_("Warning: Errors occurred while loading game configuration files: '") +
