@@ -501,15 +501,16 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 				LOG_NG << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui.video(),recorder.skipping());
 				events::raise_draw_event();
+				gui.draw();
+				for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
+					clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
+				}
+
 				if(!loading_game) {
 					game_events::fire("start");
 					state_of_game.set_variable("turn_number", "1");
 				}
-				gui.draw();
 
-				for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
-					clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
-				}
 				gui.recalculate_minimap();
 			}
 			player_number = 0;
