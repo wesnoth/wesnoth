@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-17 08:24+0200\n"
+"POT-Creation-Date: 2005-04-18 09:23+0200\n"
 "PO-Revision-Date: 2005-04-05 15:54+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -61,210 +61,214 @@ msgid "Toggle Full Screen"
 msgstr "На весь экран"
 
 #: src/hotkeys.cpp:54
+msgid "Screenshot"
+msgstr ""
+
+#: src/hotkeys.cpp:55
 msgid "Accelerated"
 msgstr "Ускоренный"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Unit Description"
 msgstr "Описание соединения"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Rename Unit"
 msgstr "Переименовать соединение"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "Save Game"
 msgstr "Сохранить игру"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Load Game"
 msgstr "Загрузить игру"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Recruit"
 msgstr "Призвать новобранца"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Repeat Recruit"
 msgstr "Повторить покупку"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Recall"
 msgstr "Воскресить"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "End Turn"
 msgstr "Закончить ход"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Toggle Grid"
 msgstr "Показать сетку"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Status Table"
 msgstr "Текущее состояние"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 msgid "Mute"
 msgstr "Выключить звук"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Speak"
 msgstr "Говорить"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Create Unit (Debug!)"
 msgstr "Создать соединение (Отладка!)"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Change Unit Side (Debug!)"
 msgstr "Сменить сторону соединения (Отладка!)"
 
-#: src/hotkeys.cpp:69 src/preferences.cpp:1074
+#: src/hotkeys.cpp:70 src/preferences.cpp:1074
 msgid "Preferences"
 msgstr "Настройки"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Scenario Objectives"
 msgstr "Задача сценария"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Unit List"
 msgstr "Список соединений"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Quit Game"
 msgstr "Выйти из игры"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Set Label"
 msgstr "Установить метку"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Show Enemy Moves"
 msgstr "Показывать ходы противника"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Best Possible Enemy Moves"
 msgstr "Вероятные ходы противника"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Set Terrain"
 msgstr "Установить местность"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Quit Editor"
 msgstr "Редактор выхода"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "New Map"
 msgstr "Новая карта"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Load Map"
 msgstr "Загрузить карту"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Save Map"
 msgstr "Сохранить карту"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Save As"
 msgstr "Сохранить как"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Set Player Start Position"
 msgstr "Установите стартовые позиции игрока"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Flood Fill"
 msgstr "Заполнить поле"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Fill Selection"
 msgstr "Заполнить выделение"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Cut"
 msgstr "Вырезать"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Paste"
 msgstr "Вставить"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Revert from Disk"
 msgstr "Вернуть с диска"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Resize Map"
 msgstr "Изменить размер карты"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Flip Map"
 msgstr "Перевернуть карту"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Select All"
 msgstr "Выбрать всё"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Draw Terrain"
 msgstr "Рисовать местность"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Refresh Image Cache"
 msgstr "Обновить кэш картинок"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Delay Shroud Updates"
 msgstr ""
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Update Shroud Now"
 msgstr ""
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Continue Move"
 msgstr "Продолжить движение"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Find Label or Unit"
 msgstr "Найти метку или соединение"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Speak to Ally"
 msgstr "Сказать союзникам"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Speak to All"
 msgstr "Сказать всем"
 
-#: src/hotkeys.cpp:103 src/show_dialog.cpp:570
+#: src/hotkeys.cpp:104 src/show_dialog.cpp:570
 msgid "Help"
 msgstr "Помощь"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "View Chat Log"
 msgstr "Смотреть лог чата"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Enter user command"
 msgstr "Ввести команду пользователя"
 
-#: src/hotkeys.cpp:351 src/hotkeys.cpp:534
+#: src/hotkeys.cpp:352 src/hotkeys.cpp:538
 msgid "Do you really want to quit?"
 msgstr "Вы действительно хотите выйти?"
 
-#: src/hotkeys.cpp:351 src/hotkeys.cpp:534
+#: src/hotkeys.cpp:352 src/hotkeys.cpp:538
 msgid "Quit"
 msgstr "Выйти"
 
