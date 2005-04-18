@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-17 08:24+0200\n"
-"PO-Revision-Date: 2005-04-18 02:04+0200\n"
+"PO-Revision-Date: 2005-04-18 02:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -54,6 +54,7 @@ msgstr "Vernietig al die monsters"
 msgid "Death of Gwiti Ha'atel"
 msgstr "Gwiti Ha'atel sterf"
 
+# "loop uit" != "raak minder", we need "run out" ie. "are finished"
 #: data/scenarios/The_Dark_Hordes/A_New_Chance.cfg:38
 #: data/scenarios/The_Dark_Hordes/Brother_Against_Brother.cfg:39
 #: data/scenarios/The_Dark_Hordes/Confrontation.cfg:33
@@ -61,6 +62,7 @@ msgstr "Gwiti Ha'atel sterf"
 #: data/scenarios/The_Dark_Hordes/Crelanus_Book.cfg:33
 #: data/scenarios/The_Dark_Hordes/Mages_And_Elves.cfg:37
 #: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:61
+#, fuzzy
 msgid "Turns run out"
 msgstr "Beurte loop uit"
 
@@ -99,7 +101,7 @@ msgstr "Neeee! Nie nou nie! Nie wanneer ek al ontsnap het nie!"
 
 #: data/scenarios/The_Dark_Hordes/A_New_Chance.cfg:165
 msgid "Argh! I die!"
-msgstr "Aaah! Ek sterf!"
+msgstr "Aaah! Ek het gesterf!"
 
 #: data/scenarios/The_Dark_Hordes/A_New_Chance.cfg:174
 msgid "The Wesnothians have discovered my escape! This is not good..."
@@ -107,7 +109,7 @@ msgstr "Die Wesnoths het agtergekom ek het ontsnap! Dit blyk nie goed nie..."
 
 #: data/scenarios/The_Dark_Hordes/Brother_Against_Brother.cfg:4
 msgid "Brother Against Brother"
-msgstr "Broer Teen Broer"
+msgstr "Bloed Teen Bloed"
 
 #: data/scenarios/The_Dark_Hordes/Brother_Against_Brother.cfg:31
 msgid "Defeat your brother Nati Ha'atel"
@@ -123,7 +125,7 @@ msgid ""
 "already ensconced himself nearby."
 msgstr ""
 
-# veragtilike is not in any dictionary?
+# "veragtilike" is not in any dictionary?
 #: data/scenarios/The_Dark_Hordes/Brother_Against_Brother.cfg:86
 #, fuzzy
 msgid ""
@@ -190,8 +192,9 @@ msgid "And by my own hands you died!"
 msgstr "En aan my eie hande het jy gesterf!"
 
 #: data/scenarios/The_Dark_Hordes/Brother_Against_Brother.cfg:193
+#, fuzzy
 msgid "I am Gwiti the Mighty, prepare to die!"
-msgstr ""
+msgstr "Ek is Gwiti die Magtige, maak gereed om te sterf!"
 
 #: data/scenarios/The_Dark_Hordes/Brother_Against_Brother.cfg:205
 msgid "Now you shall die!"
@@ -265,7 +268,6 @@ msgid "No! This cannot be true! My king, I have failed..."
 msgstr "Nee! Dit kan nie waar wees nie! My Koning, ek het gefaal..."
 
 #: data/scenarios/The_Dark_Hordes/Confrontation.cfg:143
-#, fuzzy
 msgid "Lord Aretu"
 msgstr "Heer Aretu"
 
@@ -287,8 +289,9 @@ msgid "After the death of Leonard, Gwiti must now achieve a new objective"
 msgstr ""
 
 #: data/scenarios/The_Dark_Hordes/Confrontation.cfg:162
+#, fuzzy
 msgid "Move Gwiti to the end of the mountain pass"
-msgstr ""
+msgstr "Beweeg Gwiti na die einde van die bergpas"
 
 #: data/scenarios/The_Dark_Hordes/Confrontation.cfg:188
 msgid "Return to your master, dark fiend!"
@@ -475,8 +478,9 @@ msgid "Twenty pieces of gold is a welcome gift."
 msgstr ""
 
 #: data/scenarios/The_Dark_Hordes/Inside_The_Tower.cfg:336
+#, fuzzy
 msgid "I suppose thirty copper coins should not be scorned..."
-msgstr ""
+msgstr "Dertig kopermunte is nie te sleg nie..."
 
 #: data/scenarios/The_Dark_Hordes/Inside_The_Tower.cfg:362
 msgid ""
@@ -484,8 +488,9 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/The_Dark_Hordes/Inside_The_Tower.cfg:388
+#, fuzzy
 msgid "Gack! This chest contains holy water!"
-msgstr ""
+msgstr "Gack! Hierdie kis is vol heilige water!"
 
 #: data/scenarios/The_Dark_Hordes/Inside_The_Tower.cfg:410
 msgid "Look at what the mages were guarding!"
@@ -620,16 +625,18 @@ msgid "A curse upon that foul necromancer!"
 msgstr ""
 
 #: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:4
+#, fuzzy
 msgid "The Skull of Agarash"
-msgstr ""
+msgstr "Die Skedel van Agarash"
 
 #: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:11
 msgid "Still fleeing from Wesnoth, Gwiti entered the lands of the Orcs."
 msgstr ""
 
 #: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:53
+#, fuzzy
 msgid "Take the Skull of Agarash"
-msgstr ""
+msgstr "Kry die Skedel van Agarash"
 
 #: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:81
 msgid "Karz Gholum"
@@ -699,26 +706,26 @@ msgid "Let us trample his banner into the ground! *smash*"
 msgstr ""
 
 #: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:236
+#, fuzzy
 msgid "That skull is powerless!"
-msgstr ""
+msgstr "Die skedel is waardeloos!"
 
 #: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:248
+#, fuzzy
 msgid "That is not the skull of Agarash!"
-msgstr ""
+msgstr "Dis nie die skedel van Agarash nie!"
 
 #: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:260
 msgid "It's been a long time since I fought anything myself!"
 msgstr ""
 
 #: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:4
-#, fuzzy
 msgid "Underground Pool"
 msgstr "Ondergrondse Poel"
 
 #: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:19
-#, fuzzy
 msgid "Move Gwiti or Tanar into the water"
-msgstr "Skuif Gwiti of Tanar in die water in"
+msgstr "Beweeg Gwiti of Tanar in die water in"
 
 #: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:27
 msgid "Death of Tanar"
@@ -773,9 +780,8 @@ msgid "The Hoard of the Dwarves! Three hundred gold at least!"
 msgstr "Die Buit van die Dwerge! Ten minste drie honderd Goue Stukke."
 
 #: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:266
-#, fuzzy
 msgid "You swore you would protect me!"
-msgstr "Jy het gesweer jy sou my beskerm!"
+msgstr "Jy het onder eed verklaar dat jy my sou beskerm!"
 
 #: data/scenarios/The_Dark_Hordes/intro.cfg:5
 msgid ""
