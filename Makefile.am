@@ -104,7 +104,7 @@ EXTRA_DIST = config/config.rpath
 
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
 wesnoth-deps.dot:
-	(cd $(top_srcdir) && graph-includes --verbose --class wesnoth --group 1-1 \
-	  --prefixstrip src/ `find src -name '*.[ch]pp'`) > $@
+	(cd $(top_srcdir) && graph-includes -v --class wesnoth --group 1-1 \
+	  --prefixstrip src/ -I src `find src -name '*.[ch]pp'`) > $@
 %.ps: %.dot
 	dot -Tps $< > $@

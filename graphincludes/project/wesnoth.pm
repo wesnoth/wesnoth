@@ -4,61 +4,74 @@
 # Distributed under version 2 of the GNU GPL.
 
 package graphincludes::project::wesnoth;
-use graphincludes::project::default;
-our @ISA = qw(graphincludes::project::default);
+use strict;
+use warnings;
+
+use base qw(graphincludes::project::default);
 
 sub filelabel {
   my $self = shift;
   my ($file,$level) = @_;
   $level = $main::minshow unless defined $level;
 
+  # 0: file
+
   $file =~ s/^$self->{PFXSTRIP}// if defined $self->{PFXSTRIP};
 
-  if ($level == 0) {
-    return $file;
-  } elsif ($level == 1) {
-    $file =~ s/\.[^.]*$//;
-    return 'ai' if $file =~ m/^ai_(move|attack)$/;
-    return $file;
-  } elsif ($level == 2) {
-    if ($file =~ m!^(variable|server/variable|game_events)\.! ) {
-      return 'variable';
-    } elsif ($file =~ m!^(multiplayer|ai).*!) {
-      return $1;
-    } elsif ($file =~ m!^(mapgen|mapgen_dialog|cavegen|map_create)\..*!) {
-      return 'mapcreator';
-    } elsif ($file =~ m!^(array|astarnode|config|filesystem|game_config|gettext|global|language|log|map|pathfind|pathutils|race|random|scoped_resource|terrain|thread|tstring|unit|unit_types|util|variable|wassert|(.*/xcoll))\..*!) {
-      return 'core';
-    } elsif ($file =~ m!^(clipboard|cursor|font|image|sdl_utils|tooltips|video)\..*!) {
-      return 'graphics';
-    } elsif ($file =~ m!^(about|builder|display|events|preferences|show_dialog|sound|theme)\..*!) {
-      return 'uicore';
-    } elsif ($file =~ m!^(game|help|titlescreen)\..*!) {
-      return 'gameclient';
-    } elsif ($file =~ m!^(editor|server|serialization|widgets)/.*!) {
-      return $1;
-    } else {
-      return '<' . $self->filelabel($file, $level - 1) . '>';
-    }
+  return $file if $level == 0;
+
+  # 1: compilation unit
+
+  $file =~ s/\.[^.]*$//;
+  $file='ai' if $file =~ m/^ai_(move|attack)$/;
+
+  return $file if $level == 1;
+
+  # 2: small groups
+
+  if ($file =~ m!^(variable|server/variable)\.! ) {
+    $file='variable';
+  } elsif ($file =~ m!^(multiplayer|ai).*!) {
+    $file=$1;
+  } elsif ($file =~ m!^(mapgen|mapgen_dialog|cavegen|map_create)\..*!) {
+    $file='mapcreator';
+  } elsif ($file =~ m!^(serialization|widgets)/.*!) {
+    $file=$1;
   }
-  return undef;
+
+  return $file if $level == 2;
+
+  # 3: big groups
+
+  if ($file =~ m!^(array|astarnode|config|filesystem|game_config|game_errors|gettext|global|language|log|map|pathfind|pathutils|race|random|serialization|scoped_resource|terrain|thread|tstring|unit|unit_types|util|variable|wassert|wml_separators|(.*/xcoll))$!) {
+    $file='core';
+  } elsif ($file =~ m!^(clipboard|cursor|font|image|sdl_utils|tooltips|video)$!) {
+    $file='graphics';
+  } elsif ($file =~ m!^(about|builder|display|events|preferences|show_dialog|sound|theme|widgets)$!) {
+    $file='uicore';
+  } elsif ($file =~ m!^(ai|game|help|multiplayer|titlescreen)$!) {
+    $file='gameclient';
+  } elsif ($file =~ m!^(campaign_server|editor|server|tools)/.*!) {
+    $file=$1;
+  }
+
+  return $file;
 }
 
 sub defaultcolors {
   my @colors;
   $colors[2] = {
-		core          => 'steelblue3',
 		serialization => 'steelblue1',
-		variable      => 'slateblue1',
-
 		mapcreator    => 'gold',
-
-		graphics      => 'peachpuff',
 		widgets       => 'linen',
-		uicore       => 'lavenderblush',
-
 		multiplayer   => 'palegreen',
+	       };
+  $colors[3] = {
+		core          => 'steelblue3',
+		graphics      => 'peachpuff',
+		uicore        => 'lavenderblush',
 
+		gameclient    => 'yellow',
 		editor        => 'cyan',
 		server        => 'pink',
 	       };
