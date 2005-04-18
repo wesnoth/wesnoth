@@ -70,6 +70,7 @@ void advance_unit(const game_data& info,
 		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
 		const unit_type& type = sample_units.back().type();
 		lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + type.language_name());
+		preferences::encountered_units().insert(*op);
 	}
 
 	const config::child_list& mod_options = u->second.get_modification_advances();
