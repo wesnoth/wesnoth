@@ -61,7 +61,6 @@ msgstr ""
 "nadaljevanju."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -119,7 +118,6 @@ msgstr ""
 "italic> težavnostni stopnji."
 
 #: data/help.cfg:73
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining each item. This "
@@ -216,7 +214,6 @@ msgid "Movement"
 msgstr "Premikanje"
 
 #: data/help.cfg:93
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When a unit is "
@@ -230,7 +227,7 @@ msgstr ""
 "izbrana, bodo vse plošče, kamor lahko gre, osvetljene, vsi ostale pa motne. "
 "Če miško premaknete na motno ploščo, se bo prikazalo število potrebnih "
 "potez, da jo enota doseže. Ob kliku se bo enota začela premikati proti njej "
-"po najhitrejši poti."
+"po najhitrejši poti in tako tudi nadaljevala v naslednji(h) potezah."
 
 #: data/help.cfg:95
 msgid ""
@@ -307,7 +304,6 @@ msgstr ""
 "<header>text='Vrstni red in števlo napadov'</header>"
 
 #: data/help.cfg:107
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -336,7 +332,6 @@ msgstr ""
 "<header>text='Verjetnost zadetka'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -356,7 +351,7 @@ msgstr ""
 "<italic>text='Terenske Prikrojevalce'</italic>. Na primer, vilini imajo 60% "
 "obrambo v gozdu, kar pomeni, da ima enota, ki jih napada, le 40% možnosti, "
 "da jih zadene. Obratno, vilinčeva možnost da zadane napadalca nazaj, je "
-"odvisna na katerem terenu stoji napadalec."
+"odvisna od terena na katerem ta stoji."
 
 #: data/help.cfg:112
 msgid ""
@@ -643,7 +638,7 @@ msgid ""
 "damage."
 msgstr ""
 "\n"
-"Ranocelniki: Enote s sposobnostjo <ref>dst=ability_heals text=Celi rane </"
+"Ranocelniki: Enote s sposobnostjo <ref>dst=ability_heals text='Celi rane' </"
 "ref>  bo vsako potezo pozdravila vse prijateljske enote v svoji neposredni "
 "bližini (6 plošč) za 4HP (skupaj največ 8HP), ali preprečila, da jim škodi "
 "strup."
@@ -663,7 +658,6 @@ msgstr ""
 "plošč) za 8HP (skupaj največ 18HP), ali pa jih ozdravila strupa."
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -693,7 +687,6 @@ msgstr ""
 "scenariji. Glede tega sta pomembni dve stvari; prihodki in plače."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -709,7 +702,6 @@ msgstr ""
 "nadaljevanju."
 
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -727,10 +719,9 @@ msgstr ""
 "<italic>text=stopenj</italic> enot, kolikor vasi imate. Toda, za vsako "
 "stopnjo čez to mejo, morate plačati en kos zlata na potezo. Na primer, če "
 "imate dvanajst prvo-stopenjskih enot in deset vasi, boste morali plačati dva "
-"kosa zlata, za plače, na potezo."
+"kosa zlata za plače, na potezo."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -743,7 +734,6 @@ msgstr ""
 "prejšnjem primeru 8 kosov zlata na potezo (10-[12-10])."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -756,7 +746,7 @@ msgstr ""
 "nikoli zahtevale plače. Podobno, enote s katerimi začnete scenarij (kot "
 "recimo Konrad ali Delfador) in enote ki se vam pridružijo med njim (kot "
 "recimo Konjenik v drugem scenariju Prestolonaslednika) skoraj nikoli ne bodo "
-"zahtevale plače."
+"zahtevale plače - imele bodo značilnost zvest."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -787,6 +777,9 @@ msgid ""
 "attributes slightly. They are usually randomly assigned to a unit when it is "
 "recruited."
 msgstr ""
+"Večina enot ima dve značilnosti, razen nemrtvih, ki so 'nemrtvi'. "
+"Značilnosti rahlo spremenijo enotine lastnosti. Ponavadi jih pridobijo "
+"naključno, ob nastanku."
 
 #: data/help.cfg:212
 msgid ""
@@ -796,7 +789,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -821,10 +813,11 @@ msgstr ""
 "\n"
 "Pametne enote so zelo koristne na začetku kampanje, saj hitro napredujejo v "
 "boljše višjenivojske enote. Kasneje pa ne več, saj jih večina enot dohiti in "
-"dobi prednost s svojimi \"trajnimi\" značilnostmi."
+"dobi prednost s svojimi 'trajnimi' značilnostmi. Če imate dosti dokončno "
+"razvitih enot, rajši prikličite kako na nižjem nivoju z boljšimi "
+"značilnostmi."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -850,12 +843,11 @@ msgstr ""
 "\n"
 "Značilnost hiter je med bolj opaznimi, še posebno med počasnimi enotami, kot "
 "so troli in težka pehota. Hitre enote pridejo do izraza tudi na bolj "
-"razgibanem terenu - mislite na to, ko boste priklicovali enote. Seveda pa ne "
+"razgibanem terenu - mislite na to, ko boste priklicevali enote. Seveda pa ne "
 "smemo pozabiti, da te enote niso tako vzdržljive kot ostale in zato niso "
 "tako dobre za držanje položajev."
 
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -878,10 +870,10 @@ msgstr ""
 "Odporne enote imajo 7 HP več kot ponavadi.\n"
 "\n"
 "Uporabne so v vseh delih kampanij in značilnost odporen je dobra za vse "
-"enote. Te so zelo primerne za držanje položajev."
+"enote, še posebno za take, ki jih imajo malo. Enote s to značilnostjo so "
+"zelo primerne za držanje pomembnih položajev."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -900,7 +892,9 @@ msgstr ""
 "\n"
 "\n"
 "<header>text=Močan</header>\n"
+"\n"
 "Močne enote naredijo v boju na blizu 1 točko škode več in imajo 2 HP več.\n"
+"\n"
 "\n"
 "Ta značilnost je dobra za vse bojevnike na blizu, še posebej za tiste, ki "
 "imajo veliko število napadov, kot npr. Vilinski Bojevnik. Izkažejo se za "
@@ -933,6 +927,18 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Zvest</header>\n"
+"\n"
+"Zveste enote ne potrebujejo plače, za razliko od večine, ki jo zahtevajo ob "
+"koncu vsake poteze, v višini njihovega nivoja. \n"
+"\n"
+"Značilnost zvest imajo enote, ki se vam pridružijo med kampanjo po lastni "
+"volji. Ne potrebujejo plače, zato so lahko zelo pomembne v dolgih kampanjah, "
+"ko zmankuje denarja. Te značilnosti se ne da pridobiti, zato enot z njo "
+"rajši ne odpravite in jih poskušajte ohraniti pri življenju."
 
 #: data/help.cfg:258
 msgid ""
@@ -2443,27 +2449,24 @@ msgid "Canyon"
 msgstr "Kanjon"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "Ruin"
-msgstr "razvalina"
+msgstr "Razvalina"
 
 #: data/terrain.cfg:448
-#, fuzzy
 msgid "Sunken Ruin"
-msgstr "potopljena razvalina"
+msgstr "Potopljena razvalina"
 
 #: data/terrain.cfg:459
-#, fuzzy
 msgid "Swamp Ruin"
-msgstr "močvirska razvalina"
+msgstr "Močvirska razvalina"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
-msgstr ""
+msgstr "Fjord"
 
 #: data/terrain.cfg:480
 msgid "Lava"
-msgstr ""
+msgstr "Lava"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -3931,7 +3934,7 @@ msgstr "žezlo"
 
 #: data/units/Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Temni čarodej"
 
 #: data/units/Dark_Sorcerer.cfg:16
 msgid ""
@@ -6712,9 +6715,8 @@ msgid "+Internationalization Managers"
 msgstr "+Upravitelji internacionalizacije"
 
 #: src/about.cpp:148
-#, fuzzy
 msgid "+Afrikaans Translation"
-msgstr "+Danski prevod"
+msgstr "+Afrikaanski prevod"
 
 #: src/about.cpp:153
 msgid "+Basque Translation"
@@ -6777,9 +6779,8 @@ msgid "+Italian Translation"
 msgstr "+Italjanski prevod"
 
 #: src/about.cpp:262
-#, fuzzy
 msgid "+Japanese Translation"
-msgstr "+Kitajski prevod"
+msgstr "+Japonski prevod"
 
 #: src/about.cpp:268
 msgid "+Latin Translation"
@@ -6818,9 +6819,8 @@ msgid "+Swedish Translation"
 msgstr "+Švedski prevod"
 
 #: src/about.cpp:329
-#, fuzzy
 msgid "+Turkish Translation"
-msgstr "+Danski prevod"
+msgstr "+Turški prevod"
 
 #: src/about.cpp:334
 msgid "+Contributors"
@@ -7076,7 +7076,7 @@ msgstr "Premiki: "
 
 #: src/display.cpp:465
 msgid "Screenshot"
-msgstr ""
+msgstr "Posnetek zaslona"
 
 #: src/display.cpp:1024
 msgid "healthy"
@@ -7136,9 +7136,9 @@ msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
 #: src/game.cpp:752
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
+msgstr ""
+"Datoteka, ki ste jo poskušali naložiti, je pokvarjena. Vseeno bo naložena.\n"
 
 #: src/game.cpp:774 src/multiplayer_connect.cpp:899
 msgid ""
@@ -7353,13 +7353,12 @@ msgid "Choose your preferred language:"
 msgstr "Izberite jezik"
 
 #: src/game.cpp:1391
-#, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "Napaka pri nalaganju nastavtivenih datotek: '"
+msgstr "Opozorilo: Prišlo je do napake pri nalaganju nastavtivenih datotek: '"
 
 #: src/game.cpp:1435
 msgid "Error loading game configuration files: '"
-msgstr "Napaka pri nalaganju nastavtivenih datotek: '"
+msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
 
 #: src/game.cpp:1436
 msgid "' (The game will now exit)"
@@ -7525,11 +7524,11 @@ msgstr "Višina: "
 
 #: src/mapgen_dialog.cpp:89
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Število hribov;"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Največja velikost hribov:"
 
 #: src/mapgen_dialog.cpp:91
 msgid "Villages:"
@@ -7576,10 +7575,12 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"Strežnik zahteva različico '$version1' vi pa uporabljate različico "
+"'$version2'"
 
 #: src/multiplayer.cpp:153
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Preusmeritve na strani strežnika"
 
 #: src/multiplayer.cpp:185
 msgid "You must log in to this server"
@@ -7995,7 +7996,6 @@ msgid "Choose weapon:"
 msgstr "Izberite orožje:"
 
 #: src/playturn.cpp:1270
-#, fuzzy
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr "Niste še začeli svoje poteze. Ali jo res želite končati?"
@@ -8464,13 +8464,12 @@ msgid " XP to advance"
 msgstr ""
 
 #: src/unit.cpp:1144
-#, fuzzy
 msgid ": "
-msgstr "HP: "
+msgstr ": "
 
 #: src/unit.cpp:1156
 msgid "; "
-msgstr ""
+msgstr "; "
 
 #: src/unit_types.cpp:324
 msgid "strikes"
@@ -8487,57 +8486,3 @@ msgstr "zakonit"
 #: src/unit_types.cpp:932
 msgid "neutral"
 msgstr "nevtralen"
-
-#~ msgid ""
-#~ "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, "
-#~ "and are able to regenerate, healing their own wounds during combat."
-#~ msgstr ""
-#~ "Utrjeni od bojev, Troli bojevniki lahko s svojim buzdovanom zadanejo "
-#~ "smrtne udarce, povrhu se pa še regenerirajo, zdravijo lastne rane."
-
-#~ msgid "Ok"
-#~ msgstr "Vredu"
-
-#~ msgid "Iterations:"
-#~ msgstr "Ponovitve:"
-
-#~ msgid "Bump Size:"
-#~ msgstr "Velikost čopiča:"
-
-#~ msgid ""
-#~ "Most units have two traits. Traits are attributes of the unit that modify "
-#~ "its attributes slightly. They are assigned to a unit randomly when the "
-#~ "unit is recruited.\n"
-#~ "\n"
-#~ "The currently available traits are the following."
-#~ msgstr ""
-#~ "Večina enot ima dve značilnosti, ki rahlo spremenita njihove lastnosti. "
-#~ "Pridobijo jih naključno, ob nastanku.\n"
-#~ "\n"
-#~ "Trenutno so na voljo sledeče značilnosti:"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Loyal</header>\n"
-#~ "\n"
-#~ "Loyal units only ever require an upkeep of one, no matter what level they "
-#~ "are.\n"
-#~ "\n"
-#~ "Loyal has no effect on a level one unit, which makes it useless in the "
-#~ "early campaign. Once a unit begins to level up, however, it can save you "
-#~ "considerable gold over the course of the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Zvest</header>\n"
-#~ "\n"
-#~ "Zveste enote ne potrebujejo plače.\n"
-#~ "\n"
-#~ "Značilnost zvest nima veliko učinka na začetku kampanje. Kasneje, ko "
-#~ "enota napreduje, pa vam lahko prihrani precej denarja."
-
-#~ msgid "Era not available: "
-#~ msgstr "Era ni na voljo: "
