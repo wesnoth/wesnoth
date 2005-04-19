@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-18 17:52+0200\n"
-"PO-Revision-Date: 2005-04-17 11:31+0100\n"
-"Last-Translator: The Very Uhu <the15thfeuergnu and then AT yahoo.de>\n"
+"PO-Revision-Date: 2005-04-19 16:40+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,9 +74,9 @@ msgstr ""
 "verändern. Diese Fertigkeiten werden nach und nach unter dieser Kategorie "
 "erscheinen, sobald Ihr auf sie gestoßen seid."
 
+# de-fuzzied von VeryUhu
 # edited by VeryUhu
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -138,16 +138,16 @@ msgstr ""
 "schwierig werden kann, ist es vielleicht sinnvoll, erst einmal den "
 "Schwierigkeitsgrad <italic>text=leicht</italic> zu wählen."
 
+# de-fuzzied von VeryUhu
 # Korrigiert von VeryUhu
 #: data/help.cfg:73
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining each item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
 "Wenn Ihr während des Spiels die Maus über die Menüleiste zur Rechten bewegt, "
-"bekommt Ihr zu den meisten Dingen eine kurze Beschreibung. Das ist vor allem "
+"bekommt Ihr zumeist eine kurze Beschreibung angezeigt. Das ist vor allem "
 "dann sinnvoll, wenn neue Eigenschaften zum ersten Mal auftauchen."
 
 #: data/help.cfg:78
@@ -155,7 +155,7 @@ msgid "Recruiting and Recalling"
 msgstr "Ausbildung und Einberufung"
 
 # Poliert von VeryUhu
-# Button --> Knopf
+# Anm. Button --> Knopf
 #: data/help.cfg:79
 msgid ""
 "At the start of any battle, and at times during it, you will need to recruit "
@@ -248,8 +248,8 @@ msgstr "Bewegungskosten"
 
 # Korrigiert von chrber 
 # Korrigiert von VeryUhu
+# de-fuzzied by VeryUhu
 #: data/help.cfg:93
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When a unit is "
@@ -263,8 +263,8 @@ msgstr ""
 "eine Einheit ausgewählt ist, werden alle erreichbaren Felder hervorgehoben "
 "und alle anderen abgedunkelt. Wenn Ihr mit der Maus über ein zu weit "
 "entferntes Feld fahrt, wird angezeigt, wieviele Züge die Einheit bis dahin "
-"benötigt. Wenn Ihr das Feld anklickt, wird sich die Einheit schnellst "
-"möglich dort hin bewegen."
+"benötigt. Wenn Ihr das Feld anklickt, wird sich die Einheit auf dem "
+"schnellsten Wege dort hin bewegen."
 
 # Korrigiert von VeryUhu
 # Korrigiert von chrber
@@ -349,8 +349,8 @@ msgstr ""
 "<header>text='Reihenfolge und Anzahl von Angriffen'</header>"
 
 # Korrigiert von VeryUhu
+# de-fuzzied by VeryUhu
 #: data/help.cfg:107
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -362,12 +362,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Der Angreifer führt den ersten Angriff aus, danach der Verteidiger. Das geht "
-"solange weiter, bis beide ihre Angriffe verbraucht haben. Die Anzahl der "
-"Angriffe, die einer Einheit zur Verfügung stehen, variiert: Ein Elfenkrieger "
-"mit einer 5-4 Schwertattacke kann viermal angreifen und dem Gegner jeweils 5 "
-"Schadenspunkte zufügen. Ein Orkgrunzer mit einer 9-2 Attacke kann nur "
-"zweimal angreifen, teilt dafür aber 9 Schadenspunkte aus."
+"Der Angreifer führt den ersten Angriff aus, danach schlägt der Verteidiger "
+"zurück. Das geht solange weiter, bis beide ihre Angriffszahl verbraucht "
+"haben. Die Anzahl der Angriffe, die einer Einheit zur Verfügung stehen, "
+"variiert: Ein Elfenkrieger mit einer 5-4 Schwertattacke kann viermal "
+"angreifen und dem Gegner jeweils 5 Schadenspunkte zufügen. Ein Orkgrunzer "
+"mit einer 9-2 Attacke kann dagegen nur zweimal angreifen, teilt dafür aber "
+"jeweils 9 Schadenspunkte aus."
 
 #: data/help.cfg:109
 msgid ""
@@ -381,8 +382,8 @@ msgstr ""
 
 # Korrigiert von chrber (&SG)
 # Korrigiert von VeryUhu
+# de-fuzzied by VeryUhu
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -759,8 +760,8 @@ msgstr ""
 "kurieren sie eine vergiftete Einheit, heilen diese aber nicht zusätzlich. "
 
 # Korrigiert von chrber
+# de-fuzzied by VeryUhu
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -771,8 +772,9 @@ msgstr ""
 "\n"
 "\n"
 "Ihr solltet beherzigen, dass nur Rasten mit anderen Heilungsformen "
-"kombiniert werden kann. Zudem werden alle Einheiten zwischen zwei Szenarios "
-"vollständig geheilt."
+"kombiniert werden kann. Dörfer und Heiler beispielsweise ergänzen sich "
+"nicht. Zudem werden alle Einheiten zwischen zwei Szenarios vollständig "
+"geheilt."
 
 #: data/help.cfg:184
 msgid "Income and Upkeep"
@@ -793,8 +795,8 @@ msgstr ""
 "zwei Dinge zu beachten: Einkommen und Unterhalt."
 
 # Korrigiert von chrber
+# de-fuzzied by VeryUhu
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -804,15 +806,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mit dem Einkommen ist es einfach: Ihr bekommt für jedes Dorf, das Ihr "
-"kontrolliert, 1 Goldstück pro Zug. Wenn Ihr also zehn Dörfer habt, würdet "
-"Ihr zehn Goldstücke erhalten. Leider werden Ihnen davon die Unterhaltskosten "
+"Mit dem Einkommen verhält es sich einfach: Ihr bekommt für jedes Dorf, das "
+"Ihr kontrolliert, 1 Goldstück pro Zug. Wenn Ihr also 10 Dörfer habt, würdet "
+"Ihr 10 Goldstücke erhalten. Leider werden Ihnen davon die Unterhaltskosten "
 "noch abgezogen."
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
+# de-fuzzied by VeryUhu
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -828,14 +830,14 @@ msgstr ""
 "Jede Einheit braucht zum Unterhalt einen Betrag an Goldstücken gleich ihrer "
 "Stufe. Ihr könnt allerdings so viele Stufen an Einheiten, wie Ihr Dörfer "
 "Euer Eigen nennt, ohne Kosten unterhalten. Für jede Einheitenstufe darüber "
-"hinaus müsst Ihr ein Goldstück zahlen. Wenn Ihr zum Beispiel über zwölf "
-"erststufige Einheiten verfügt und zehn Dörfer kontrolliert, müsset ihr zwei "
+"hinaus müsst Ihr ein Goldstück zahlen. Wenn Ihr zum Beispiel über 12 "
+"erststufige Einheiten verfügt und 10 Dörfer kontrolliert, müsset ihr 2 "
 "Stücke Gold pro Zug bezahlen."
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
+# de-fuzzied by VeryUhu
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -849,8 +851,8 @@ msgstr ""
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
+# de-fuzzied by VeryUhu
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -859,12 +861,11 @@ msgid ""
 "the second level of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"Es gibt zwei Ausnahmen für die Berechnung der Unterhaltskosten. Erstens "
-"zählen Einheiten mit der Charakteristik »loyal« immer nur als Stufe-1-"
-"Einheiten, gleich, welche Stufe sie tatsächlich haben. Zweitens kosten alle "
-"Einheiten, mit denen Ihr ein Szenario beginnt (z.B. Konrad oder Delfador) "
-"und Einheiten, die sich Ihnen während eines Szenarios anschließen (wie z.B. "
-"der Reiter im zweiten Szenario von »Der Thronerbe«) niemals Unterhalt."
+"Es gibt eine Ausnahme für die Berechnung der Unterhaltskosten.Einheiten mit "
+"der Charakteristik »loyal« kosten niemals Unterhalt. Einheiten, mit denen "
+"Ihr ein Szenario beginnt (z.B. Konrad oder Delfador) und Einheiten, die sich "
+"Ihnen während eines Szenarios anschließen (wie z.B. der Reiter im zweiten "
+"Szenario von »Der Thronerbe«) sind üblicherweise »loyal«."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -892,8 +893,8 @@ msgid "About"
 msgstr "Das Team"
 
 # edited by Ivanovic
+# de-fuzzied by VeryUhu
 #: data/help.cfg:210
-#, fuzzy
 msgid ""
 "Most units have two traits, with the exception of Undead units which are "
 "assigned the trait 'Undead'. Traits are modifications that change a unit's "
@@ -902,7 +903,7 @@ msgid ""
 msgstr ""
 "Die meisten Einheiten verfügen über zwei Charakteristika. Die Untoten "
 "stellen hierbei eine Ausnahme dar. Sie haben die Charakteristik »Untot«. "
-"DCharakteristika sind Modifikatoren, die Attribute der Einheiten leicht "
+"Charakteristika sind Modifikatoren, die Attribute der Einheiten leicht "
 "verändern. Normalerweise werden sie zufällig zugewiesen, wenn eine Einheit "
 "ausgebildet wird."
 
@@ -919,8 +920,8 @@ msgstr ""
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
+# de-fuzzied by VeryUhu
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -946,8 +947,9 @@ msgstr ""
 "Intelligente Einheiten sind vor allem zu Beginn einer Kampagne nützlich, "
 "weil sie rasch eine neue Stufe erreichen können und somit schneller "
 "hochstufige Einheiten verfügbar sind. Später ist diese Charakteristik nicht "
-"mehr so nützlich, weil Ihr dann über genug hochstufige Einheiten verfügen "
-"werdet und andere, langfristiger wirksame Charakteristika nützlicher sind."
+"mehr so nützlich, weil eine Einheit, die ihre höchste Stufe erreicht hat, "
+"keine Erfahrung mehr benötigt. Besitzt man erst einmal mehrere höchststufige "
+"Einheiten, würde "
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
@@ -982,8 +984,8 @@ msgstr ""
 "eignen sie sich aufgrund ihrer verminderten LP allerdings weniger gut."
 
 # Korrigiert von VeryUhu
+# de-fuzzied by VeryUhu
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1005,10 +1007,11 @@ msgstr ""
 "\n"
 "Robuste Einheiten erhalten einen Bonus von 7 LP.\n"
 "\n"
-"Robuste Einheiten sind in allen Phasen des Spiels nützlich. Auch wenn alle "
-"Einheiten hiervon profitieren, werdet Ihr schnell feststellen, dass dies bei "
-"bestimmten Einheiten nützlicher ist, als bei anderen. Robuste Einheiten sind "
-"besonders gut geeignet, um Stellungen zu halten."
+"Robuste Einheiten sind in allen Phasen des Spiels nützlich. Diese "
+"Charakteristik ist für alle Arten von Einheiten sinnvoll. Am wirksamsten ist "
+"allerdings die Kombination dieser Eigenschaft mit hoher Widerstandskraft, "
+"geringen Trefferpunkten oder guten Verteidigungswerten. Robuste Einheiten "
+"sind besonders gut geeignet, um Stellungen zu halten."
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
@@ -1055,8 +1058,8 @@ msgstr ""
 "können, sind:"
 
 # edited by Ivanovic
+# de-fuzzied by VeryUhu
 #: data/help.cfg:251
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1086,12 +1089,12 @@ msgstr ""
 "\n"
 "\n"
 "In Kampagnen schließen sich euch manchmal Einheiten aus freihen Stücken an. "
-"Diese Einheiten sind als Loyal markiert. Auch wenn es eine Bezahlung "
-"erfordern mag, sie wieder einzuberufen, so fordern sie doch niemals eine "
-"Entlohnung ihrer Dienste. Dies kann sie in langen Kampagnen gsehr wertvoll "
-"machen , wo die Goldvorräte knapp sind. Diese Charakteristika wird nicht an "
-"rekrutierte Einheiten vergeben, weshalb es unklug sein mag sie abzuweisen, "
-"oder unsinnigerweise in den sicheren Tod zu schicken."
+"Diese Einheiten sind als loyal. Auch wenn es eine Bezahlung erfordern mag, "
+"sie wieder einzuberufen, so fordern sie doch niemals eine Entlohnung ihrer "
+"Dienste. Daher können sie in langen Kampagnen von großem Wert sein, wenn die "
+"Goldvorräte knapp sind. Diese Charakteristik wird nicht an rekrutierte "
+"Einheiten vergeben, weshalb es unklug sein mag, Freiwillige abzuweisen oder "
+"unsinnigerweise in den sicheren Tod zu schicken."
 
 # edited by Ivanovic
 #: data/help.cfg:258
@@ -1121,8 +1124,8 @@ msgstr ""
 "wertvoll im Kampf gegen Feinde, die mit vergifteten Waffen angreifen."
 
 # edited by Ivanovic
+# de-fuzzied by VeryUhu
 #: data/help.cfg:265
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1145,11 +1148,10 @@ msgstr ""
 "Bogen angreifen.\n"
 "\n"
 "Treffsicherheit ist eine den Elfen vorbehaltene Fähigkeit. Das Volk der "
-"Elfen ist bekannt für ihre geradezu unheilmliche Anmut sowie ihre "
-"Fähigkeiten im Umgang mit dem Bogen. Doch auch unter ihnen gibt es einige, "
-"die mit einem besonderen Talent für den Umgang mit dieser Waffe gesegnet "
-"sind. Diese Elfen richten einen zusätzlichen Punkt Schaden mit jedem Pfeil "
-"an."
+"Elfen ist bekannt für ihre respektgebietende Anmut sowie ihre Fähigkeiten im "
+"Umgang mit dem Bogen. Doch auch unter ihnen gibt es einige, die mit einem "
+"besonderen Talent für den Umgang mit dieser Waffe gesegnet sind. Diese Elfen "
+"richten mit jedem Pfeil einen zusätzlichen Punkt Schaden  an."
 
 #: data/items.cfg:264
 msgid ""
@@ -8146,16 +8148,16 @@ msgstr ""
 msgid "Troll Hero"
 msgstr "Trollheld"
 
+# de-fuzzied by VeryUhu. Currently under revision.
 #: data/units/Troll_Hero.cfg:17
-#, fuzzy
 msgid ""
 "Troll heroes are strong and brutal humanoid monsters with the amazing "
 "ability to regenerate themselves, so that they recover from wounds on their "
 "own, even during battle."
 msgstr ""
-"Trollhelden sind starke und brutale menschliche Monster mit der "
-"erstaunlichen Fähigkeit, sich zu regenerieren, wodurch sie sich selbst "
-"mitten in der Schlacht von ihren Wunden erholen."
+"Trollhelden haben wegen ihrer brachialen Gewalt einen schauerlichen Ruf "
+"erlangt.Sie besitzen die erstaunliche Fähigkeit, sich zu regenerieren, "
+"wodurch sie sich selbst mitten in der Schlacht von ihren Wunden erholen."
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
@@ -8219,6 +8221,7 @@ msgid "Troll Warrior"
 msgstr "Kriegstroll"
 
 # edited by The Very Uhu 
+# edited by VeryUhu
 #: data/units/Troll_Warrior.cfg:21
 msgid ""
 "A terrifying, monstrous bastion of strength, a Troll Warrior brings to fore "
@@ -8246,15 +8249,15 @@ msgstr ""
 "Der Kriegstroll ist eine furchteinflößende Inkarnation brachialer Gewalt, "
 "die alle Gerüchte über seine Art bestätigt. Durch den riesigen "
 "Vorschlaghammer, den er in den Händen schwingt, vermag er ganze Häuser mit "
-"einem Schlag in sich zusammenfallen zu lassen. Sein Körper erträgt eine "
-"schier unendliche Zahl an Schlägen. Häufig ändert ein feindlicher Anführer "
-"daher allein durch sein Erscheinen hastig die Strategie.Ein Kriegstroll kann "
-"nicht von einem Kämpfer allein bezwungen werden, allenfalls durch eine ganze "
-"Truppe, die sich mit aller Kraft gegen seine unbändigen Kräfte stemmt. Was "
-"aber das Schrecklichste an einem Kriegstroll ist, ist weder seine "
-"Hässlichkeit, noch seine Kraft, sondern der Umstand, dass er selbst schwer "
-"verwundet binnen kürzester Zeit ganz wiederhergestellt ist, wenn er nicht "
-"sofort getötet wird. \n"
+"einem Schlag hinwegzufegen. Sein Körper erträgt eine schier unendliche Zahl "
+"an Schlägen. Häufig ändert ein feindlicher Anführer daher allein durch sein "
+"Erscheinen hastig die Strategie.Ein Kriegstroll kann nicht von einem Kämpfer "
+"allein bezwungen werden, allenfalls durch eine ganze Truppe, die sich mit "
+"aller Kraft gegen seine unbändigen Kräfte stemmt. Was aber das "
+"Schrecklichste an einem Kriegstroll ist, ist weder seine Hässlichkeit, noch "
+"seine Kraft, sondern der Umstand, dass er selbst schwer verwundet binnen "
+"kürzester Zeit ganz wiederhergestellt ist, wenn er nicht sofort getötet "
+"wird. \n"
 "\n"
 "Kampfeigenschaften:\n"
 "Kriegstrolls bewähren sich insbesondere bei Nacht in rauhen, bergigen "
@@ -8961,7 +8964,7 @@ msgstr "BP:"
 
 #: src/display.cpp:465
 msgid "Screenshot"
-msgstr ""
+msgstr "Screenshot"
 
 #: src/display.cpp:1024
 msgid "healthy"
@@ -9117,7 +9120,7 @@ msgstr "Autor"
 
 #: src/game.cpp:1041
 msgid "Downloads"
-msgstr "Heruntergeladen"
+msgstr "Geladen"
 
 #: src/game.cpp:1042
 msgid "Size"
@@ -10416,7 +10419,7 @@ msgstr "-- Das Buch von Wesnoth"
 
 #: src/unit.cpp:1107
 msgid " XP to advance"
-msgstr ""
+msgstr "EP pro Stufenanstieg"
 
 # edited by Ivanovic
 #: src/unit.cpp:1144
