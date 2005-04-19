@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
+"Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-18 17:52+0200\n"
-"PO-Revision-Date: 2005-04-17 15:28+0200\n"
+"PO-Revision-Date: 2005-04-19 14:18+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,6 @@ msgstr ""
 "dem."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -71,7 +70,7 @@ msgstr ""
 "\n"
 "Kampen om Wesnoth är ett dragbaserat strategispel i fantasymiljö som är lite "
 "annorlunda jämfört med andra moderna strategispel. Medan andra spel strävar "
-"efter komplexitet, både vad gäller regler och spelteknik, är Kampen om "
+"efter komplexitet, både vad gäller regler och spelteknik, så är Kampen om "
 "Wesnoth uppbyggt kring enkla regler och enkel spelteknik. Tro nu inte att "
 "detta gör spelet i sig lätt - dessa enkla regler ger ett mycket rikt "
 "strategispel, som är lätt att lära sig men en rejäl utmaning att bemästra. "
@@ -113,16 +112,14 @@ msgstr ""
 "börja med en <italic>text=Lätt</italic> kampanj."
 
 #: data/help.cfg:73
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining each item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
-"<img>src=help/tooltip.png align=right float=yes</img>Under tiden du spelar "
-"kan du hålla muspekaren över informationen i fältet till höger, vilket ger "
-"dig en ruta som förklarar det du pekar på lite närmare. Detta är särskilt "
-"användbart när du stöter på en ny egenskap första gången."
+"När du spelar kan du hålla muspekaren över informationen i fältet till "
+"höger, vilket ger dig en ruta som förklarar det du pekar på lite närmare. "
+"Detta är särskilt användbart när du stöter på en ny egenskap första gången."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -214,7 +211,6 @@ msgid "Movement"
 msgstr "Förflyttning"
 
 #: data/help.cfg:93
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When a unit is "
@@ -227,9 +223,9 @@ msgstr ""
 "truppen du vill flytta, och sen på rutan du vill flytta truppen till. När "
 "truppen är vald, visas rutorna som den kan flytta till genom att de rutor "
 "som truppen inte kan nå på ett enda drag skuggas. Om muspekaren hålls över "
-"en ruta som truppen inte kan nå fram till på ett drag, så visas antalet drag "
-"som krävs. Om en sådan ruta väljs, kommer truppen att flyttas dit den "
-"snabbaste vägen under kommande drag."
+"skuggad ruta, så visas antalet drag som krävs för att nå den. Om en sådan "
+"ruta väljs, kommer truppen att flyttas dit den snabbaste vägen under "
+"kommande drag."
 
 #: data/help.cfg:95
 msgid ""
@@ -309,7 +305,6 @@ msgstr ""
 "<header>text='Turordning och antal attacker'</header>"
 
 #: data/help.cfg:107
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -325,7 +320,7 @@ msgstr ""
 "växelvis tills båda trupperna har använt sina givna antal attacker. Antalet "
 "attacker en trupp har varierar, till exempel har en alvkrigare med ett 5-4-"
 "svärd 4 utfall som vardera ger 5 i skada, medan en orchfotsoldat med 9-2 "
-"bara har två utfall, men som vardera ger 9 i skada."
+"bara har två utfall (men som ger 9 i skada vardera)."
 
 #: data/help.cfg:109
 msgid ""
@@ -338,7 +333,6 @@ msgstr ""
 "<header>text='Chans för träff'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -355,10 +349,10 @@ msgstr ""
 "Chansen att en trupp träffar en annan under ett anfall beror i princip bara "
 "på vilken terräng försvararen står på. Chansen att träffa kan man se genom "
 "att högerklicka på en trupp, välja Truppbeskrivning, och sedan "
-"<italic>text=Terrängavdrag</italic>. Till exempel har en alv en försvarsnivå "
-"på minst 60% i skog, vilket innebär att en attackerande trupp bara har som "
-"mest 40% chans att träffa. Precis på samma sätt avgörs träffmöjligheten för "
-"alven av terrängen som den andra truppen står på."
+"<italic>text='Terrängavdrag'</italic>. Till exempel har många alver en "
+"försvarsnivå på 70% i skog, vilket innebär att en attackerande trupp bara "
+"bara har 30% chans att träffa dem. Precis på samma sätt avgörs "
+"träffmöjligheten för alven av terrängen som den andra truppen står på."
 
 #: data/help.cfg:112
 msgid ""
@@ -676,7 +670,6 @@ msgstr ""
 "förgiftning."
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -686,9 +679,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kom ihåg att vila kombineras med andra sorters helande, medan byar, "
-"regenerering och vårda/hela inte kan kombineras med varandra. Alla trupper "
-"återfår sin styrka mellan scenarier."
+"Vila kan kombineras med andra sorters helande, men byar, regenerering och "
+"vårda/hela kan inte kombineras med varandra. Vidare, alla trupper återfår "
+"sin styrka mellan scenarier."
 
 #: data/help.cfg:184
 msgid "Income and Upkeep"
@@ -707,7 +700,6 @@ msgstr ""
 "underhåll."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -722,7 +714,6 @@ msgstr ""
 "din kostnad för underhåll från denna inkomst, såsom beskrivs nedan."
 
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -744,7 +735,6 @@ msgstr ""
 "per drag i underhåll."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -758,7 +748,6 @@ msgstr ""
 "guldstycken per drag."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -767,11 +756,11 @@ msgid ""
 "the second level of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"Det finns två undantag. För det första kostar dina lojala trupper alltid som "
-"en trupp på nivå ett, oavsett deras faktiska nivå. För det andra kostar det "
-"inget underhåll för trupper som du startar ett scenario med (som Konrad "
-"eller Delfador), eller för trupper som förenar sig med dig under ett "
-"scenarios gång (som ryttaren i det andra scenariot i Tronarvingen)."
+"Det finns ett viktigt undantag för underhåll: Lojala trupper utkräver aldrig "
+"något underhåll. Trupper som du startar ett scenario med (som Konrad eller "
+"Delfador), eller för trupper som förenar sig med dig under ett scenarios "
+"gång (som ryttaren i det andra scenariot i Tronarvingen), är vanligtvis "
+"lojala."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -796,7 +785,6 @@ msgid "About"
 msgstr "Om"
 
 #: data/help.cfg:210
-#, fuzzy
 msgid ""
 "Most units have two traits, with the exception of Undead units which are "
 "assigned the trait 'Undead'. Traits are modifications that change a unit's "
@@ -818,7 +806,6 @@ msgstr ""
 "De karaktärsdrag som är tillgängliga för icke-vandöda är följande."
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -842,10 +829,10 @@ msgstr ""
 "befordras.\n"
 "\n"
 "Intelligenta trupper är mycket användbara i början av en kampanj, eftersom "
-"de snabbt befordras till högre nivåer. Senare är de inte lika viktiga "
-"eftersom trupper inte behöver mer EP efter att de nått sin toppnivå. Om du "
-"har många trupper på högre nivåer så kan det vara bättre att återkalla "
-"trupper som har andra karaktärsdrag."
+"de snabbare befordras till högre nivåer. Senare är de inte lika viktiga "
+"eftersom trupper inte har någon nytta av mer EP efter att de nått sin "
+"toppnivå. Om du har många trupper på högre nivåer så kan det vara bättre att "
+"återkalla trupper som har andra karaktärsdrag."
 
 #: data/help.cfg:226
 msgid ""
@@ -878,7 +865,6 @@ msgstr ""
 "för att hålla positioner."
 
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -947,7 +933,6 @@ msgstr ""
 "Andra speciella karaktärsdrag trupper kan tilldelas:"
 
 #: data/help.cfg:251
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -972,7 +957,7 @@ msgstr ""
 "<header>text=Lojal</header>\n"
 "\n"
 "Lojala trupper kräver inget underhåll. De flesta trupper utkräver en "
-"underhållskostnad vid slutet av varje drag; denna kostnad är lika med deras "
+"underhållskostnad vid slutet av varje drag, som är lika med deras "
 "erfarenhetsnivå. Lojala trupper utkräver inte denna kostnad.\n"
 "\n"
 "Under en kampanj kan vissa trupper välja att ansluta sig till spelarens "
@@ -1009,7 +994,6 @@ msgstr ""
 "använder gift i sina attacker."
 
 #: data/help.cfg:265
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -7460,7 +7444,6 @@ msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:20
-#, fuzzy
 msgid ""
 "Trolls, grown to adulthood, are possessed of a fearsome strength. Their "
 "stone-like bodies have grown to a size much taller than a man, and their "
@@ -7496,23 +7479,22 @@ msgstr ""
 "sårbara för bågskyttar, speciellt i öppen terräng, och de borde alltid ha en "
 "hälsosam rädsla för besvärjare i alla sorters terräng. De är mäktiga "
 "motståndare mot bräckliga fiender, såsom skelett, men har det svårt mot "
-"välbepansrade eller naturligt stryktåliga fiender, såsom deras "
-"skogsmotsvarighet, wosen. Deras regenerering låter dem hela sig från gift "
-"och sina skador utan hjälp från en by. Deras relativa långsamhet är en "
-"svaghet, än värre så under dagtid."
+"välbepansrade eller naturligt stryktåliga fiender, såsom deras skogslevande "
+"motsvarighet, wosen. Deras regenererande förmåga låter dem motstå gift och "
+"att hela sina skador utan undsättning från en by. Deras relativa långsamhet "
+"är en svaghet, än värre så under dagtid."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Trollhjälte"
 
 #: data/units/Troll_Hero.cfg:17
-#, fuzzy
 msgid ""
 "Troll heroes are strong and brutal humanoid monsters with the amazing "
 "ability to regenerate themselves, so that they recover from wounds on their "
 "own, even during battle."
 msgstr ""
-"Trollhjältar är starka, brutala humanoida monster som har den fantastiska "
+"Trollhjältar är starka och brutala humanoida monster som har den fantastiska "
 "förmågan att regenerera, så att de läker sina skador medan de fortfarande "
 "slåss."
 
@@ -7546,6 +7528,29 @@ msgid ""
 "greatest danger to a Troll Rocklobber is a powerful melee unit attacking "
 "them in open terrain during the day, when they are weakest."
 msgstr ""
+"Tack vare trollens monstruösa styrka blir nästan vilket föremål som helst "
+"ett dödligt vapen i deras händer. Vissa troll tillverkar enkla slungor, inte "
+"så olika de ett barn skulle kunna använda, förutom det faktum att de slungar "
+"stenblock istället för småsten. De är inte särskilt träffsäkra men gör stor "
+"skada om de träffar. Trots att deras tunga ammunition sinkar dem och "
+"förhindrar dem från att bära med sig något som helst närstridsvapen, så är "
+"ett stenkastartroll likväl större, starkare och kanske till och med fulare "
+"än den valp den en gång var, och i strid är en trollnäve lika bra som en "
+"stridshammare. Dessutom så gör deras förmåga att återgälda bågskyttars eld "
+"det till ett våghalsigt äventyr att ge sig in i strid med dem, såvida man "
+"inte kan anfalla från ett skyddat läge.\n"
+"Användning:\n"
+"Stenkastartroll slåss bra på svårframkomlig, stenig mark, i synnerhet om "
+"natten. I motsats till de flesta andra troll, så får stenkastartrollet många "
+"bågskyttar att tänka sig för mer än en gång innan de anfaller, och det är "
+"mycket farligt för besvärjare att ge sig på dem. De är ganska kraftfulla mot "
+"sköra fiender, såsom skelett, men svaga mot fiender med goda rustningar "
+"eller naturligt stryktåliga fiender, såsom deras skogslevande motsvarighet, "
+"wosen. Deras regenererande förmåga gör att de kan läka sår och motstå "
+"förgiftning utan att söka hjälp i en by. De är relativt långsamma, vilket "
+"tillsammans med deras sämre stridsförmåga i dagsljus talar emot dem. Den "
+"största faran för ett stenkastartroll är att bli indragen i närstrid i öppen "
+"terräng under dagen då de är som svagast."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -7575,13 +7580,31 @@ msgid ""
 "the aid of a nearby village. Their relative weakness during daylight hours "
 "is a liability, though a Troll Warrior is still very powerful during the day."
 msgstr ""
+"En trollkrigare är en monstruöst stark fästning till varelse och påminner "
+"genast om alla sägner om deras ras skräckinjagande styrka. Med sina massiva "
+"hammare kan de krossa stenblock i ett slag, och de kan stå emot de mest "
+"våldsamma attacker. En ensam trollkrigare kan tvinga en fientlig befälhavare "
+"att helt lägga om sin strategi. En trollkrigare nedgörs inte av en ensam "
+"krigare, utan det krävs en hel grupp för att ens komma i närheten av att "
+"betvinga deras oerhörda styrka. Det är inte deras utseende eller kraft som "
+"injagar mest skräck i deras motståndare, utan deras förmåga att snabbt "
+"återhämta sig till full styrka efter att nästan ha dukat under av sina "
+"skador.\n"
+"\n"
+"Användning:\n"
+"Trollkrigare strider väl på oländig, stenig terräng, i synnerhet nattetid. "
+"Även om de är sårbara mot bågskyttar och besvärjare, särskilt på öppen "
+"terräng, så krävs det flera motståndare för att kuva deras styrka. Det finns "
+"några få truppslag som klarar av att ensamma gå i närstrid med dem utan att "
+"bli dödade i samma drag. Deras regenererande förmåga låter dem motstå gift "
+"och att hela skador utan att få undsättning i en by. Deras relativa svaghet "
+"under dagtid är en belastning, men de är ofta kraftfulla nog ändå."
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Trollvalp"
 
 #: data/units/Troll_Whelp.cfg:21
-#, fuzzy
 msgid ""
 "The word 'whelp,' applied even to fearsome animals like wolves and lions, "
 "brings to mind images of frail, helpless, and even 'cute' creatures, so "
@@ -7604,24 +7627,24 @@ msgid ""
 "aid of a nearby village. Their relatively slow speed is a liability, as is "
 "their weakness during daylight hours."
 msgstr ""
-"De vuxna trollen besitter en skrämmande styrka. Deras stenlika kroppar har "
-"vuxit sig mycket resligare än en människa, och deras förmåga att återhämta "
-"sig från skador gör dem till formidabla fiender även utanför de berg de "
-"föredrar att strida i. Ett vuxet troll är smartare, snabbare, starkare, och, "
-"även om ingen skulle våga säga det till dem, fulare än deras barn. De "
-"nyttjar sina stora klubbor med stor effektivitet och bildar en mur av "
-"råstyrka i striderna de deltar i. Den enda svaghet de har är att de inte kan "
-"strida på distans.\n"
+"Ordet 'valp' för tankarna till bräckliga, hjälplösa, 'gulliga' och unga "
+"varelser, så unga att de knappt kan stå själva. När det gäller troll så "
+"besitter trollvalparna redan deras ras skräckinjagande styrka. Trollvalpar "
+"snubblar omkring med kroppar som är större än vuxna karlar, och med en "
+"styrka som är proportionerligt större. Deras regenerering och stenlika "
+"kroppar gör dem till monstruösa motståndare, särskilt i kullarna och bergen "
+"varifrån de kom. Den enda tröst man har när man slåss mot en trollvalp är "
+"deras långsamhet och det faktum att de inte nått sin fulla styrka...än.\n"
 "\n"
 "Användning:\n"
-"Troll strider bra på oländig, stenig terräng, särskilt nattetid. De är "
+"Trollvalpar strider bra på oländig, stenig terräng, särskilt nattetid. De är "
 "sårbara för bågskyttar, speciellt i öppen terräng, och de borde alltid ha en "
 "hälsosam rädsla för besvärjare i alla sorters terräng. De är mäktiga "
 "motståndare mot bräckliga fiender, såsom skelett, men har det svårt mot "
-"välbepansrade eller naturligt stryktåliga fiender, såsom deras "
-"skogsmotsvarighet, wosen. Deras regenerering låter dem hela sig från gift "
-"och sina skador utan hjälp från en by. Deras relativa långsamhet är en "
-"svaghet, än värre så under dagtid."
+"välbepansrade eller naturligt stryktåliga fiender, såsom deras skogslevande "
+"motsvarighet, wosen. Deras regenererande förmåga låter dem stå emot gift och "
+"att hela sina skador utan att söka hjälp i en by. Deras relativa långsamhet "
+"är en svaghet, än värre så under dagtid."
 
 #: data/units/Vampire_Bat.cfg:3
 msgid "Vampire Bat"
@@ -8243,7 +8266,7 @@ msgstr "Förflyttning: "
 
 #: src/display.cpp:465
 msgid "Screenshot"
-msgstr ""
+msgstr "Skärmdump"
 
 #: src/display.cpp:1024
 msgid "healthy"
@@ -9637,7 +9660,7 @@ msgstr "-- Wesnoths krönika"
 
 #: src/unit.cpp:1107
 msgid " XP to advance"
-msgstr ""
+msgstr " EP till befordran"
 
 #: src/unit.cpp:1144
 msgid ": "
