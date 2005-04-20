@@ -1059,11 +1059,26 @@ void game_controller::download_campaigns()
 				title = name;
 				std::replace(title.begin(),title.end(),'_',' ');
 			}
+
+			std::string version   = (**i)["version"],
+			            author    = (**i)["author"];
+
+			if(title.size() > 20) {
+				title.resize(20);
+			}
+
+			if(version.size() > 12) {
+				version.resize(12);
+			}
+
+			if(author.size() > 16) {
+				author.resize(16);
+			}
 			
 			options.push_back(IMAGE_PREFIX + (**i)["icon"].str() + COLUMN_SEPARATOR +
 			                  title + COLUMN_SEPARATOR +
-			                  (**i)["version"].str() + COLUMN_SEPARATOR +
-			                  (**i)["author"].str() + COLUMN_SEPARATOR +
+			                  version + COLUMN_SEPARATOR +
+			                  author + COLUMN_SEPARATOR +
 			                  (**i)["downloads"].str() + COLUMN_SEPARATOR +
 			                  format_file_size((**i)["size"]));
 		}
