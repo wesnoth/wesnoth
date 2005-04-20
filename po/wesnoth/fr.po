@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-18 17:52+0200\n"
-"PO-Revision-Date: 2005-04-17 15:41+0200\n"
+"PO-Revision-Date: 2005-04-20 16:32+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,6 @@ msgstr ""
 "rencontrerez."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -121,7 +120,6 @@ msgstr ""
 "ardu, vous pourriez commencer en mode <italic>text=Facile</italic>."
 
 #: data/help.cfg:73
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining each item. This "
@@ -222,7 +220,6 @@ msgid "Movement"
 msgstr "Mouvement"
 
 #: data/help.cfg:93
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When a unit is "
@@ -320,7 +317,6 @@ msgstr ""
 "<header>text='Ordre et nombre d\\'attaques'</header>"
 
 #: data/help.cfg:107
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -350,7 +346,6 @@ msgstr ""
 "<header>text='Probabilité de toucher'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -694,7 +689,6 @@ msgstr ""
 "l'empoisonnement."
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -726,7 +720,6 @@ msgstr ""
 "deux aspects à cela ; Le revenu et l'entretien."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -742,7 +735,6 @@ msgstr ""
 "soustraits de ce revenu, comme détaillé ci-dessous."
 
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -763,7 +755,6 @@ msgstr ""
 "devrez payer deux pièces d'or par tour en entretien."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -777,7 +768,6 @@ msgstr ""
 "par tour."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -786,13 +776,11 @@ msgid ""
 "the second level of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"Il y a deux exceptions principales à l'entretien. Premièrement, des unités "
-"avec le trait loyal ne compteront toujours que comme unité de niveau un pour "
-"l'entretien, quel que soit leur niveau actuel. Deuxièmement, les unités avec "
-"lesquelles vous débutez le scénario (telles Konrad ou Delfador), ou les "
-"unités qui vous rejoignent au cours d'un scénario (tel l'écuyer dans le "
-"second niveau de L'héritier du trône) ne vous coûteront jamais rien en "
-"entretien."
+"Il y a une exception importante à l'entretien : les unités avec le trait "
+"loyal ne générent jamais d'entretien. Les unités avec lesquelles vous "
+"débutez le scénario (telles Konrad ou Delfador), ou les unités qui vous "
+"rejoignent au cours d'un scénario (tel l'écuyer dans le second niveau de "
+"L'héritier du trône) auront habituellement le trait loyal."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -823,6 +811,11 @@ msgid ""
 "attributes slightly. They are usually randomly assigned to a unit when it is "
 "recruited."
 msgstr ""
+"La plupart des unités ont deux traits de caractère, avec pour exception les "
+"unités mort-vivantes qui n'en possèdent qu'un seul : « Mort-Vivant ». Les "
+"traits de caractère sont des modifications qui changent légèrement les "
+"caractéristiques des unités concernées. Ils sont habituellement attribués "
+"aléatoirement à une unité lorsqu'elle est recrutée."
 
 #: data/help.cfg:212
 msgid ""
@@ -830,9 +823,12 @@ msgid ""
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"Les traits de caractère disponibles pour toutes les unités n'étant pas mort-"
+"vivantes sont :"
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -863,7 +859,6 @@ msgstr ""
 "terme''."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -895,7 +890,6 @@ msgstr ""
 "que la normale, et ainsi ne sont pas adéquates pour tenir des positions."
 
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -923,7 +917,6 @@ msgstr ""
 "particulièrement adéquates pour tenir une position contre des opposants."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -959,6 +952,10 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"Les autres traits de caractère qui peuvent être assignés aux unités sont :"
 
 #: data/help.cfg:251
 msgid ""
@@ -979,6 +976,23 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Loyal</header>\n"
+"Les unités Loyales n'ont pas de coût d'entretien. La plupart des unités ont "
+"un coût d'entretien à la fin de chaque tour, égal à leur niveau. Les unités "
+"Loyales ne sont pas concernées.\n"
+"\n"
+"\n"
+"Durant une campagne, certaines unités peuvent décider de rejoindre le joueur "
+"de leur propre initiative. Ces unités obtiennent alors le trait de caractère "
+"'Loyal'. bien qu'elles puissent avoir un coût de rappel à chaque scénario, "
+"elles n'ont pas de coût d'entretien. Cela peut les rendre plus "
+"qu'indispensables pendant une longue campagne, lorsque l'or se fait rare. ce "
+"trait de caractère n'est jamais donné à une unité recrutée, il est donc "
+"fortement déconseillé de renvoyer de telles unités ou de les laisser tuer "
+"bêtement."
 
 #: data/help.cfg:258
 msgid ""
@@ -994,6 +1008,18 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Mort-Vivant</header>\n"
+"\n"
+"Les untés mort-vivantes sont insensibles au poison.\n"
+"\n"
+"Les unités mort-vivantes n'ont généralement que ce trait de caractère. "
+"Puisque ces unités sont constituées des corps d'unités mortes, relevées pour "
+"combattre par-delà la mort, le poison n'a aucun effet sur elles. Cela les "
+"rend sans égal contre les ennemis utilisant le poison en conjonction avec "
+"leurs attaques."
 
 #: data/help.cfg:265
 msgid ""
@@ -1009,6 +1035,19 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Habile</header>\n"
+"\n"
+"Les unités habiles ont +1 aux dégâts causés chaque fois qu'ils touchent un "
+"ennemi grâce à leurs arcs.\n"
+"Habile est un trait de caractère que seuls les Elfes peuvent posséder. Cette "
+"race est bien connue pour sa grâce sans pareil, ainsi que pour ses facilités "
+"au tir à l'arc. Certains de ses individus, cependant, dépassent leurs "
+"confrères et possèdent un talent naturel encore supérieur. Ces Elfes "
+"infligent donc un point de dégâts supplémentaire pour chaque flèche touchant "
+"au but."
 
 #: data/items.cfg:264
 msgid ""
@@ -2379,7 +2418,6 @@ msgid "What do traits do?"
 msgstr "Quelle influence ont les caractéristiques ?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -2394,7 +2432,8 @@ msgstr ""
 "caractéristiques sont conçues pour améliorer la puissance d'une unité ; il "
 "n'y a pas de caractéristiques « négatives ». La plupart des unités ont la "
 "même probabilité de recevoir deux caractéristiques distinctes lors de leur "
-"recrutement."
+"recrutement. Cependant, certaines races et unités peuvent avoir des "
+"caractéristiques qui leur sont propres."
 
 #: data/scenarios/tutorial/utils.cfg:111
 msgid "What kind of traits can my units get?"
@@ -2844,17 +2883,14 @@ msgid "Canyon"
 msgstr "Canyon"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "Ruin"
 msgstr "ruine"
 
 #: data/terrain.cfg:448
-#, fuzzy
 msgid "Sunken Ruin"
 msgstr "ruine submergée"
 
 #: data/terrain.cfg:459
-#, fuzzy
 msgid "Swamp Ruin"
 msgstr "ruine marécageuse"
 
@@ -7716,13 +7752,34 @@ msgid ""
 "aid of a nearby village. Their relatively slow speed is a liability, as is "
 "their weakness during daylight hours."
 msgstr ""
+"Les Trolls possèdent, une fois à l'âge adulte, une force terrifiante. Leurs "
+"corps semblables à la pierre sont devenus bien plus grands que celui d'un "
+"homme, et leur habilité effrayante à se régénérer font d'eux une formidable "
+"ennemi, même loin des montagnes où ils préfèrent combattre. Un Troll adulte "
+"est plus vif, plus rapide, plus fort, et bien plus moche que n'importe "
+"lequel de ses enfants, même si personne ne trouverait le courage de lui dire "
+"en face. Ils agitent leurs lourdes masses avec une brutale efficacité, et "
+"forment un point de force dans n'importe quel combat. La seule faiblesse que "
+"l'on pourrait leur attribuer, si l'on peut dire, serait leur incapacité à "
+"combattre à distance.\n"
+"\n"
+"Description :\n"
+"Les Trolls combattent mieux sur les terrains rocheux, spécialement la nuit. "
+"Ils sont vulnérables face aux archers, particulièrement en terrain "
+"découvert, et devraient toujours éviter les Mages et autres lanceurs de "
+"sorts quelque soit le type de terrain. Ils sont particulièrement efficaces "
+"contre des troupes fragiles, comme les squelettes, et faibles contre les "
+"ennemis possédant une bonne défense, ou naturellement résistants, comme leur "
+"alter-ego de bois, les Ents. Leur pouvoir de régénération leur permet de se "
+"soigner face au poison et de faire disparaître leurs blessures sans aucune "
+"aide extérieure. Leur principal défaut reste leur vitesse plutôt lente, "
+"ainsi que leur faiblesse durant le jour."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Héros Troll"
 
 #: data/units/Troll_Hero.cfg:17
-#, fuzzy
 msgid ""
 "Troll heroes are strong and brutal humanoid monsters with the amazing "
 "ability to regenerate themselves, so that they recover from wounds on their "
@@ -7762,6 +7819,32 @@ msgid ""
 "greatest danger to a Troll Rocklobber is a powerful melee unit attacking "
 "them in open terrain during the day, when they are weakest."
 msgstr ""
+"Etant donné la monstrueuse force de leur race, les trolls transforment de "
+"simples armes en instuments de dégâts mortels. Certains trolls utilisent de "
+"simples lanières de cuir comme frondes, un peu comme celle d'un enfant, en "
+"remplaçant les cailloux au bout de celles-ci par des rochers. Bien que peu "
+"précis, un rocher lancé par l'un de ces monstres peut estropier un homme "
+"s'il est touché. Bien que chargé par ses lourdes munitions, et ne possédant "
+"aucune arme de mêlée, un troll lanceur de pierre est cependant plus grand, "
+"plus fort, et peut-être même encore plus laid que le morveux qu'il était "
+"auparavant, et un poing de Troll est aussi puissant qu'un marteau humain en "
+"combat. De plus, sa capacité à contre-attaquer un archer fait de lui une "
+"menace à n'importe quelle distance, tant que son ennemi ne trouve pas une "
+"solution pour attaquer d'un terrain bien couvert.\n"
+"\n"
+"Description :\n"
+"Les Trolls lanceurs de pierre combattent mieux en terrain rocheux ou "
+"difficile, surtout de nuit. A l'instar de leurs congénères, ils feront "
+"hésiter les troupes d'archers, et seront une menace pour les lanceurs de "
+"sorts. Ils sont particulièrement efficaces contre les ennemis fragiles, tels "
+"que les squelettes, et plutôt faibles contre les ennemis possédant une bonne "
+"armure ou encore une bonne résistance naturelle, comme leur alter-ego de "
+"bois, les Ents. Leur pouvoir de régénération leur permet de se guérir des "
+"empoisonnements, ainsi que de leurs blessures sans aucune aide exterieure. "
+"Leur principal inconvénient est bien sûr leur lenteur, et leur faiblesses "
+"durant le jour. La plus grande menace pour un Troll lanceur de pierre est "
+"donc une puissante mêlée les attaquant alors qu'ils sont de jour, en terrain "
+"découvert."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -8093,9 +8176,8 @@ msgid "+Internationalization Managers"
 msgstr "+Coordinateurs des traductions"
 
 #: src/about.cpp:148
-#, fuzzy
 msgid "+Afrikaans Translation"
-msgstr "+Traduction danoise"
+msgstr "+Traduction africaine"
 
 #: src/about.cpp:153
 msgid "+Basque Translation"
@@ -8158,9 +8240,8 @@ msgid "+Italian Translation"
 msgstr "+Traduction italienne"
 
 #: src/about.cpp:262
-#, fuzzy
 msgid "+Japanese Translation"
-msgstr "+Traduction chinoise"
+msgstr "+Traduction japonaise"
 
 #: src/about.cpp:268
 msgid "+Latin Translation"
@@ -8199,9 +8280,8 @@ msgid "+Swedish Translation"
 msgstr "+Traduction suédoise"
 
 #: src/about.cpp:329
-#, fuzzy
 msgid "+Turkish Translation"
-msgstr "+Traduction danoise"
+msgstr "+Traduction turque"
 
 #: src/about.cpp:334
 msgid "+Contributors"
@@ -8465,7 +8545,7 @@ msgstr "Déplacements : "
 
 #: src/display.cpp:465
 msgid "Screenshot"
-msgstr ""
+msgstr "Capture d'écran"
 
 #: src/display.cpp:1024
 msgid "healthy"
@@ -8525,9 +8605,10 @@ msgid "The Battle for Wesnoth"
 msgstr "La Bataille pour Wesnoth"
 
 #: src/game.cpp:752
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Le fichier sauvegardé est corrompu"
+msgstr ""
+"Attention : Le fichier que vous avez d'ouvrir est corrompu. Le chargement "
+"continue.\n"
 
 #: src/game.cpp:774 src/multiplayer_connect.cpp:899
 msgid ""
@@ -8747,9 +8828,10 @@ msgid "Choose your preferred language:"
 msgstr "Choisissez votre langue préférée : "
 
 #: src/game.cpp:1391
-#, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "Erreur lors du chargement des fichiers de configuration du jeu : « "
+msgstr ""
+"Attention : Erreur lors du chargement des fichiers de configuration du jeu : "
+"« "
 
 #: src/game.cpp:1435
 msgid "Error loading game configuration files: '"
@@ -8923,11 +9005,11 @@ msgstr "Hauteur : "
 
 #: src/mapgen_dialog.cpp:89
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Nombre de collines :"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Taille maximum d'une colline :"
 
 #: src/mapgen_dialog.cpp:91
 msgid "Villages:"
@@ -8974,10 +9056,12 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"Vous avez besoin de la version '$version1' pour accéder au serveur alors que "
+"votre version actuelle est la '$version2'."
 
 #: src/multiplayer.cpp:153
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Boucle de redirection du serveur"
 
 #: src/multiplayer.cpp:185
 msgid "You must log in to this server"
@@ -9397,7 +9481,6 @@ msgid "Choose weapon:"
 msgstr "Choisissez une arme : "
 
 #: src/playturn.cpp:1270
-#, fuzzy
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
@@ -9879,16 +9962,15 @@ msgstr "-- Le livre de Wesnoth"
 
 #: src/unit.cpp:1107
 msgid " XP to advance"
-msgstr ""
+msgstr "XP pour évoluer"
 
 #: src/unit.cpp:1144
-#, fuzzy
 msgid ": "
-msgstr "PV : "
+msgstr " : "
 
 #: src/unit.cpp:1156
 msgid "; "
-msgstr ""
+msgstr " ; "
 
 #: src/unit_types.cpp:324
 msgid "strikes"
