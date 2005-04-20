@@ -1053,10 +1053,8 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SEARCH:
 	case hotkey::HOTKEY_HELP:
 	case hotkey::HOTKEY_USER_CMD:
-		return true;
-
 	case hotkey::HOTKEY_SAVE_GAME:
-		return !commands_disabled;
+		return true;
 
 	case hotkey::HOTKEY_LOAD_GAME:
 		return network::nconnections() == 0; //can only load games if not in a network game
@@ -1385,9 +1383,11 @@ void turn_info::undo()
 	
 		unit un = u->second;
 		un.set_goto(gamemap::location());
-		units_.erase(u);
+		
+		gui_.hide_unit(u->first,true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
 
+		units_.erase(u);
 		un.set_movement(starting_moves);
 		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 		gui_.draw_tile(route.back().x,route.back().y);
@@ -1464,8 +1464,11 @@ void turn_info::redo()
 	
 		unit un = u->second;
 		un.set_goto(gamemap::location());
-		units_.erase(u);
+		
+		gui_.hide_unit(u->first,true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
+
+		units_.erase(u);
 		un.set_movement(starting_moves);
 		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 	

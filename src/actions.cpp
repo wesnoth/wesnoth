@@ -1718,13 +1718,17 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		return 0;
 	}
 
-	units.erase(ui);
+	//move the unit on the screen. Hide the unit in its current location, but don't actually
+	//remove it until the move is done, so that while the unit is moving status etc will
+	//still display the correct number of units.
 	if(disp != NULL) {
+		disp->hide_unit(ui->first,true);
 		unit_display::move_unit(*disp,map,steps,u,status.get_time_of_day(),units,teams);
 	}
 
 	u.set_movement(moves_left);
 
+	units.erase(ui);
 	ui = units.insert(std::pair<gamemap::location,unit>(steps.back(),u)).first;
 	if(disp != NULL) {
 		disp->invalidate_unit();
