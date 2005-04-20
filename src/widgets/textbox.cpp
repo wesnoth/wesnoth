@@ -421,10 +421,10 @@ void textbox::handle_event(const SDL_Event& event)
 	if(c == SDLK_RIGHT && cursor_ < text_.size())
 		++cursor_;
 
-	if(c == SDLK_END)
+	if(c == SDLK_END || (c == SDLK_e && (modifiers & KMOD_CTRL)))
 		cursor_ = text_.size();
 	
-	if(c == SDLK_HOME)
+	if(c == SDLK_HOME || (c == SDLK_a && (modifiers & KMOD_CTRL)))
 		cursor_ = 0;
 
 	if((old_cursor != cursor_) && (modifiers & KMOD_SHIFT)) {
@@ -441,6 +441,12 @@ void textbox::handle_event(const SDL_Event& event)
 			--cursor_;
 			text_.erase(text_.begin()+cursor_);
 		}
+	}
+
+	if(c == SDLK_u && (modifiers & KMOD_CTRL)) {
+		changed = true;
+		cursor_ = 0;
+		text_.resize(0);
 	}
 
 	if(c == SDLK_DELETE && !text_.empty()) {
@@ -461,7 +467,8 @@ void textbox::handle_event(const SDL_Event& event)
 
 	//movement characters may have a "Unicode" field on some platforms, so ignore it.
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
-	   c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME)) {
+	   c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME ||
+	   c == SDLK_PAGEUP || c == SDLK_PAGEDOWN)) {
 		if(character != 0)
 			LOG_STREAM(info, display) << "Char: " << character << ", c = " << c << "\n";
 	

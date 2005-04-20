@@ -235,6 +235,12 @@ void menu::key_press(SDLKey key)
 		case SDLK_PAGEDOWN:
 			move_selection_down(max_items_onscreen());
 			break;
+		case SDLK_HOME:
+			move_selection(0);
+			break;
+		case SDLK_END:
+			move_selection(items_.size() - 1);
+			break;
 		//case SDLK_RETURN:
 		//	double_clicked_ = true;
 		//	break;
