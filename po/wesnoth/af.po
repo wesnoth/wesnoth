@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-18 17:52+0200\n"
-"PO-Revision-Date: 2005-03-21 09:57+0100\n"
+"PO-Revision-Date: 2005-04-20 23:13+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -337,12 +337,12 @@ msgstr ""
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
 msgid "Morning"
-msgstr ""
+msgstr "Oggend"
 
 #: data/help.cfg:140 data/schedules.cfg:42 data/schedules.cfg:49
 #: data/schedules.cfg:67
 msgid "Afternoon"
-msgstr ""
+msgstr "Namiddag"
 
 #: data/help.cfg:141 data/schedules.cfg:59 data/schedules.cfg:89
 #: data/schedules.cfg:111
@@ -731,8 +731,9 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr ""
 
 #: data/items.cfg:412
+#, fuzzy
 msgid "Holy Water"
-msgstr ""
+msgstr "Heilige Water"
 
 #: data/items.cfg:415
 msgid "This water will make melee weapons holy."
@@ -887,19 +888,19 @@ msgstr ""
 
 #: data/multiplayer.cfg:132 data/translations/english.cfg:126
 msgid "Elves"
-msgstr ""
+msgstr "Elwe"
 
 #: data/multiplayer.cfg:145 data/translations/english.cfg:128
 msgid "Orcs"
-msgstr ""
+msgstr "Orke"
 
 #: data/multiplayer.cfg:171
 msgid "Dwarves"
-msgstr ""
+msgstr "Dwerge"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
-msgstr ""
+msgstr "Sauriaan"
 
 #: data/multiplayer.cfg:211
 msgid "Age of Heroes"
@@ -6240,7 +6241,7 @@ msgstr ""
 
 #: src/about.cpp:102
 msgid "+Music"
-msgstr ""
+msgstr "+Musiek"
 
 #: src/about.cpp:109
 msgid "+Scenario Designers"
@@ -6627,16 +6628,16 @@ msgstr ""
 
 #: src/filechooser.cpp:38 src/multiplayer_create.cpp:54
 msgid "OK"
-msgstr ""
+msgstr "Goed"
 
 #: src/filechooser.cpp:39 src/multiplayer_connect.cpp:495
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:148
 msgid "Cancel"
-msgstr ""
+msgstr "Kanselleer"
 
 #: src/font.cpp:285
 msgid "Vera.ttf"
-msgstr ""
+msgstr "Vera.ttf"
 
 #: src/game.cpp:140
 msgid "Do you want to save a replay of this scenario?"
@@ -6714,15 +6715,15 @@ msgstr ""
 
 #: src/game.cpp:965
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: src/game.cpp:968
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: src/game.cpp:971
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: src/game.cpp:996
 msgid "Connect to Server"
@@ -6750,7 +6751,7 @@ msgstr ""
 
 #: src/game.cpp:1038 src/help.cpp:1125 src/help.cpp:1126 src/playturn.cpp:2124
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: src/game.cpp:1039 src/titlescreen.cpp:169
 msgid "Version"
@@ -6880,7 +6881,7 @@ msgstr ""
 
 #: src/game.cpp:1305
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 #: src/game.cpp:1306
 msgid "Choose your preferred language:"
@@ -6976,7 +6977,7 @@ msgstr ""
 
 #: src/help.cpp:1340
 msgid "or"
-msgstr ""
+msgstr "of"
 
 #: src/help.cpp:1347
 msgid "This terrain acts as $terrains for movement and defense purposes."
@@ -7004,7 +7005,7 @@ msgstr ""
 
 #: src/help.cpp:2228
 msgid "< Back"
-msgstr ""
+msgstr "< Terug"
 
 #: src/help.cpp:2229
 msgid "Forward >"
@@ -7024,7 +7025,7 @@ msgstr ""
 
 #: src/intro.cpp:314
 msgid "The End"
-msgstr ""
+msgstr "Die Einde"
 
 #: src/language.cpp:39 src/language.cpp:160
 msgid "System default language"
@@ -7032,11 +7033,11 @@ msgstr ""
 
 #: src/leader_list.cpp:124 src/leader_list.cpp:130
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: src/mapgen_dialog.cpp:78
 msgid "Close Window"
-msgstr ""
+msgstr "Sluit Venster"
 
 #: src/mapgen_dialog.cpp:81
 msgid "Map Generator"
@@ -7048,11 +7049,11 @@ msgstr ""
 
 #: src/mapgen_dialog.cpp:87
 msgid "Width:"
-msgstr ""
+msgstr "Breedte:"
 
 #: src/mapgen_dialog.cpp:88
 msgid "Height:"
-msgstr ""
+msgstr "Hoogte:"
 
 #: src/mapgen_dialog.cpp:89
 msgid "Number of Hills:"
@@ -7154,11 +7155,11 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:490
 msgid "Color"
-msgstr ""
+msgstr "Kleur"
 
 #: src/multiplayer_connect.cpp:491 src/playturn.cpp:1690 src/playturn.cpp:1697
 msgid "Gold"
-msgstr ""
+msgstr "Goud"
 
 #: src/multiplayer_connect.cpp:493
 msgid "Computer vs Computer"
@@ -7166,7 +7167,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:494
 msgid "I'm Ready"
-msgstr ""
+msgstr "Ek is Gereed"
 
 #: src/multiplayer_connect.cpp:510
 msgid "The scenario is invalid because it has no sides."
@@ -7190,7 +7191,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:823
 msgid "Empty"
-msgstr ""
+msgstr "Leeg"
 
 #: src/multiplayer_connect.cpp:891
 msgid "This is not a multiplayer save"
@@ -7340,39 +7341,40 @@ msgstr ""
 
 #: src/multiplayer_ui.cpp:50
 msgid "Red"
-msgstr ""
+msgstr "Rooi"
 
 #: src/multiplayer_ui.cpp:52
 msgid "Blue"
-msgstr ""
+msgstr "Blou"
 
 #: src/multiplayer_ui.cpp:54
 msgid "Green"
-msgstr ""
+msgstr "Groen"
 
 #: src/multiplayer_ui.cpp:56
 msgid "Yellow"
-msgstr ""
+msgstr "Geel"
 
+# pers?
 #: src/multiplayer_ui.cpp:58
 msgid "Purple"
-msgstr ""
+msgstr "Purper"
 
 #: src/multiplayer_ui.cpp:60
 msgid "Orange"
-msgstr ""
+msgstr "Oranje"
 
 #: src/multiplayer_ui.cpp:62
 msgid "Grey"
-msgstr ""
+msgstr "Grys"
 
 #: src/multiplayer_ui.cpp:64
 msgid "White"
-msgstr ""
+msgstr "Wit"
 
 #: src/multiplayer_ui.cpp:66
 msgid "Brown"
-msgstr ""
+msgstr "Bruin"
 
 #: src/multiplayer_ui.cpp:68
 msgid "Invalid colour"
@@ -7412,15 +7414,15 @@ msgstr ""
 
 #: src/multiplayer_wait.cpp:411 src/unit.cpp:1151
 msgid "("
-msgstr ""
+msgstr "("
 
 #: src/multiplayer_wait.cpp:411 src/unit.cpp:1158
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/multiplayer_wait.cpp:412 src/playturn.cpp:1787
 msgid "unit^Gold"
-msgstr ""
+msgstr "Goud"
 
 #: src/playlevel.cpp:592 src/playlevel.cpp:859
 msgid "The file you have tried to load is corrupt"
@@ -7460,11 +7462,11 @@ msgstr ""
 
 #: src/playlevel.cpp:835
 msgid "Bonus: "
-msgstr ""
+msgstr "Bonus: "
 
 #: src/playlevel.cpp:837
 msgid "Gold: "
-msgstr ""
+msgstr "Goud: "
 
 #: src/playlevel.cpp:842
 #, no-c-format
@@ -7511,7 +7513,7 @@ msgstr ""
 
 #: src/playturn.cpp:628 src/reports.cpp:211
 msgid "vs"
-msgstr ""
+msgstr "teen"
 
 #: src/playturn.cpp:661
 msgid "Attack Enemy"
@@ -7562,7 +7564,7 @@ msgstr ""
 
 #: src/playturn.cpp:1689
 msgid "Leader"
-msgstr ""
+msgstr "Leier"
 
 #: src/playturn.cpp:1691
 msgid "Villages"
@@ -7606,11 +7608,11 @@ msgstr ""
 
 #: src/playturn.cpp:1905
 msgid "her"
-msgstr ""
+msgstr "haar"
 
 #: src/playturn.cpp:1905
 msgid "him"
-msgstr ""
+msgstr "hom"
 
 #: src/playturn.cpp:1946
 msgid "You are separated from your soldiers and may not recall them"
@@ -7672,7 +7674,7 @@ msgstr ""
 
 #: src/playturn.cpp:2230 src/playturn.cpp:2286
 msgid "Losses"
-msgstr ""
+msgstr "Verliese"
 
 #: src/playturn.cpp:2236 src/playturn.cpp:2290
 msgid "Kills"
@@ -7910,7 +7912,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:190
 msgid "TitleScreen button^Language"
-msgstr ""
+msgstr "Taal"
 
 #: src/titlescreen.cpp:191
 msgid "TitleScreen button^Preferences"
@@ -7940,7 +7942,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:198
 msgid "Change the language"
-msgstr ""
+msgstr "Verander die taal"
 
 #: src/titlescreen.cpp:199
 msgid "Configure the game's settings"
@@ -7968,11 +7970,11 @@ msgstr ""
 
 #: src/unit.cpp:1144
 msgid ": "
-msgstr ""
+msgstr ": "
 
 #: src/unit.cpp:1156
 msgid "; "
-msgstr ""
+msgstr "; "
 
 #: src/unit_types.cpp:324
 msgid "strikes"
