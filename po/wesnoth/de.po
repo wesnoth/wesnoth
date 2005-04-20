@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-18 17:52+0200\n"
-"PO-Revision-Date: 2005-04-19 16:40+0100\n"
+"PO-Revision-Date: 2005-04-20 16:49+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -5294,7 +5294,7 @@ msgstr ""
 msgid "Drake Slasher"
 msgstr "Drake Schlitzer"
 
-# hmm
+# Anm. hmm
 # edited by ivanovic
 #: data/units/Drake_Slasher.cfg:19
 msgid ""
@@ -5934,7 +5934,7 @@ msgid ""
 msgstr ""
 "Elfenspäher bewegen sich schnell im Wald und im offenen Gelände. Ihre "
 "Fertigkeiten beim Reiten sind so gut wie unerreicht, aber im Kampf mangelt "
-"es ihnen an Durschlagskraft."
+"es ihnen an Durchschlagskraft."
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
@@ -8989,9 +8989,10 @@ msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
 # Korrigiert von Rhonda
+# Korrigiert von VeryUhu 
 #: src/game.cpp:140
 msgid "Do you want to save a replay of this scenario?"
-msgstr "Möchtet Ihr den Spielverlauf dieses Szenarios speichern?"
+msgstr "Möchtet Ihr eine Aufzeichnung dieses Szenarios speichern?"
 
 #: src/game.cpp:141 src/game.cpp:199 src/playturn.cpp:1550
 msgid "Name:"
@@ -9005,10 +9006,10 @@ msgstr "Der Spielstand konnte nicht gespeichert werden"
 msgid "The game could not be loaded: "
 msgstr "Der Spielstand konnte nicht geladen werden:"
 
-# klingt doof
+# Korrigiert von VeryUhu 
 #: src/game.cpp:174 src/game.cpp:848 src/game.cpp:1267
 msgid "Error while playing the game: "
-msgstr "Fehler beim spielen des Spieles:"
+msgstr "Fehler beim spielen: "
 
 #: src/game.cpp:177 src/game.cpp:854 src/game.cpp:1279
 msgid "The game map could not be loaded: "
@@ -9028,11 +9029,10 @@ msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
 # edited by Ivanovic
+# Korrigiert von VeryUhu 
 #: src/game.cpp:752
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr ""
-"Warnung: Die Datei, die Ihr laden wolltet, ist beschädigt. Wird trotzdem "
-"geladen.\n"
+msgstr "Warnung: Die Datei ist beschädigt. Sie wird trotzdem geladen.\n"
 
 #: src/game.cpp:774 src/multiplayer_connect.cpp:899
 msgid ""
@@ -9054,9 +9054,10 @@ msgstr "Dateifehler beim Einlesen des Spieles."
 msgid "Get More Campaigns..."
 msgstr "Weitere Kampagnen..."
 
+# Korrigiert von VeryUhu 
 #: src/game.cpp:900
 msgid "Download more campaigns from a server on Internet."
-msgstr "Ladet weitere Kampagnen von einem Server aus dem Internet herunter."
+msgstr "Wählt weitere Kampagnen auf den Kampagnenservern aus."
 
 #: src/game.cpp:910
 msgid "Choose the campaign you want to play:"
@@ -9086,17 +9087,19 @@ msgstr "MB"
 msgid "Connect to Server"
 msgstr "Mit Kampagnenserver verbinden"
 
+# Korrigiert von VeryUhu 
 #: src/game.cpp:997
 msgid "You will now connect to a campaign server to download campaigns."
-msgstr "Gebt einen Server an, von dem Ihr Kampagnen herunterladen wollt."
+msgstr "Gebt einen Server an, von dem Ihr Kampagnen holen wollt."
 
 #: src/game.cpp:998
 msgid "Server: "
 msgstr "Server: "
 
+# Korrigiert von VeryUhu 
 #: src/game.cpp:1011
 msgid "Could not connect to host."
-msgstr "Es konnte keine Verbindung zum Gastgeber aufgebaut werden."
+msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
 
 #: src/game.cpp:1019
 msgid "Awaiting response from server"
@@ -9134,21 +9137,25 @@ msgstr "Kampagne veröffentlichen:"
 msgid "Delete campaign: "
 msgstr "Kampagne löschen:"
 
+# Korrigiert von VeryUhu 
 #: src/game.cpp:1079
 msgid "There are no campaigns available for download from this server."
-msgstr "Auf diesem Server sind keine Kampagnen zum Herunterladen verfügabr"
+msgstr "Auf diesem Server sind keine Kampagnen verfügbar."
 
+# Korrigiert von VeryUhu 
 #: src/game.cpp:1083
 msgid "Choose the campaign to download."
-msgstr "Wählt die Kampagne, die Ihr herunterladen wollt."
+msgstr "Wählt eine Kampagne zum Speichern aus."
 
+# Korrigiert von VeryUhu 
 #: src/game.cpp:1083
 msgid "Get Campaign"
-msgstr "Kampagnen herunterladen"
+msgstr "Kampagne holen"
 
+# Korrigiert von VeryUhu 
 #: src/game.cpp:1102
 msgid "Downloading campaign..."
-msgstr "Herunterladen der Kampagne..."
+msgstr "Kampagne wird geladen ..."
 
 # edited by Ivanovic
 #: src/game.cpp:1116
@@ -9167,16 +9174,18 @@ msgstr "Die Kampagne wurde erfolgreich installiert."
 msgid "Network communication error."
 msgstr "Netzwerkverbindungsfehler"
 
+# Korrigiert von VeryUhu 
 #: src/game.cpp:1131
 msgid "Remote host disconnected."
-msgstr "Der Gastgeber hat die Verbindung unterbrochen."
+msgstr "Der Server hat die Verbindung unterbrochen."
 
+# Korrigiert von VeryUhu 
 #: src/game.cpp:1133
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Es gab ein Problem beim Erstellen der für die Installation der Kampagne "
-"nötigen Dateien."
+"benötigten Dateien."
 
 #: src/game.cpp:1145 src/game.cpp:1185 src/game.cpp:1210
 #: src/multiplayer.cpp:202 src/multiplayer_ui.cpp:34
@@ -9463,18 +9472,20 @@ msgstr "Inland"
 msgid "Island"
 msgstr "Insel"
 
+# Korrigiert von VeryUhu 
 #: src/multiplayer.cpp:91
 msgid "Connect to Host"
-msgstr "Mit Gastgeber verbinden"
+msgstr "Mit Server verbinden"
 
 # edited by Ivanovic
 #: src/multiplayer.cpp:93
 msgid "Choose host to connect to: "
 msgstr "Wählt den Host, zu dem Ihr euch verbinden wollt:"
 
+# Korrigiert von VeryUhu 
 #: src/multiplayer.cpp:132
 msgid "Connecting to remote host..."
-msgstr "Verbinde zum Server/Gastgeber..."
+msgstr "Verbinde zum Server ..."
 
 # edited by Ivanovic
 #: src/multiplayer.cpp:141
@@ -9553,9 +9564,10 @@ msgid "I'm Ready"
 msgstr "Ich bin bereit"
 
 # edited by Ivanovic
+# Korrigiert von VeryUhu 
 #: src/multiplayer_connect.cpp:510
 msgid "The scenario is invalid because it has no sides."
-msgstr "Dieses Szenario ist ungültig, da es über keine Fractionen verfügt."
+msgstr "Dieses Szenario ist ungültig, da es über keine Parfteien verfügt."
 
 #: src/multiplayer_connect.cpp:800
 msgid "Game Lobby"
@@ -9613,9 +9625,10 @@ msgstr "Ära:"
 msgid "Map to play:"
 msgstr "Verfügbare Karten:"
 
+# Korrigiert von VeryUhu 
 #: src/multiplayer_create.cpp:50
 msgid "Fog Of War"
-msgstr "Nebel des Krieges"
+msgstr "Kriegsnebel"
 
 #: src/multiplayer_create.cpp:52
 msgid "Observers"
@@ -9670,9 +9683,10 @@ msgstr "Nichts teilen"
 # Die Übersetzung ist falsch
 # Passt auch noch nicht ganz
 # aber anscheinend kann man diesen Fehler kaum bekommen
+# Clawed by VeryUhu
 #: src/multiplayer_create.cpp:121
 msgid "No multiplayer sides."
-msgstr "Keine Mitspieler gefunden."
+msgstr "Keine gegnerischen Mitspieler gefunden."
 
 # edited by Ivanovic
 #: src/multiplayer_create.cpp:123
@@ -9684,9 +9698,10 @@ msgid "$login's game"
 msgstr "$login|s Partie"
 
 # edited by Ivanovic
+# Korrigiert von VeryUhu 
 #: src/multiplayer_create.cpp:166
 msgid "Invalid era selected"
-msgstr "Ungültige Ära gewählt"
+msgstr "Ungültige Ära ausgewählt"
 
 #: src/multiplayer_create.cpp:197
 msgid "You must enter a name."
@@ -9811,9 +9826,10 @@ msgstr "Ära nicht verfügbar"
 # Die Übersetzung ist falsch
 # Passt auch noch nicht ganz
 # aber anscheinend kann man diesen Fehler kaum bekommen
+# Clawed by VeryUhu
 #: src/multiplayer_wait.cpp:213
 msgid "No multiplayer sides found"
-msgstr "Keine Fraktionen gefunden"
+msgstr "Keine gegnerischen Mitspieler gefunden."
 
 #: src/multiplayer_wait.cpp:230
 msgid "Choose your side:"
@@ -9877,6 +9893,7 @@ msgstr "Bonus:"
 msgid "Gold: "
 msgstr "Gold:"
 
+# Anm. Was ist denn das für ne Meldung - no-c-format? - VeryUhu
 #: src/playlevel.cpp:842
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
