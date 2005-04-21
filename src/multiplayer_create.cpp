@@ -151,6 +151,7 @@ create::~create()
 	preferences::set_xp_modifier(parameters_.xp_modifier);
 	preferences::set_era(era_combo_.selected()); // FIXME: may be broken if new eras are added
 	preferences::set_map(map_selection_);
+	preferences::set_turns(turns_slider_.value());
 }
 
 create::parameters& create::get_parameters() 
