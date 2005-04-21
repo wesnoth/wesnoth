@@ -88,7 +88,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	       user_end_turn_(false), facingLeft_(side != 1),
 	       maxMovement_(type_->movement()),
 	       backupMaxMovement_(type_->movement()),
-	       recruit_(false), attacks_(type_->attacks()),
+	       resting_(false), recruit_(false), attacks_(type_->attacks()),
 	       backupAttacks_(type_->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE),
                unrenamable_(false)
@@ -120,6 +120,7 @@ unit::unit(const unit_type* t, const unit& u) :
 	user_end_turn_(false), facingLeft_(u.facingLeft_),
 	maxMovement_(type_->movement()),
 	backupMaxMovement_(type_->movement()),
+	resting_(u.resting_),
 	underlying_description_(u.underlying_description_),
 	description_(u.description_), recruit_(u.recruit_),
 	role_(u.role_), statusFlags_(u.statusFlags_),
@@ -1043,7 +1044,7 @@ void unit::add_modification(const std::string& type,
 
 			if(increase_total.empty() == false) {
 				description += (increase_total[0] != '-' ? "+" : "") + increase_total +
-					t_string(N_("HP"), "wesnoth");
+					" " + t_string(N_("HP"), "wesnoth");
 
 				//a percentage on the end means increase by that many percent
 				if(increase_total[increase_total.size()-1] == '%') {
@@ -1080,7 +1081,7 @@ void unit::add_modification(const std::string& type,
 
 			if(increase.empty() == false) {
 				description += (increase[0] != '-' ? "+" : "") + increase + 
-					t_string(N_("Moves"), "wesnoth");
+					" " + t_string(N_("Moves"), "wesnoth");
 
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
@@ -1104,7 +1105,9 @@ void unit::add_modification(const std::string& type,
 
 			if(increase.empty() == false) {
 				description += (increase[0] != '-' ? "+" : "") +
-					increase + t_string(N_(" XP to advance"), "wesnoth");
+					increase + /* " " + */
+					// FIXME: the space should not be there
+					t_string(N_(" XP to advance"), "wesnoth");
 
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
