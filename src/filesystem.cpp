@@ -499,7 +499,7 @@ std::istream *istream_file(std::string const &fname)
 {
 	LOG_G << "Streaming " << fname << " for reading.\n";
 #ifdef USE_ZIPIOS
-	if (!fname.empty() && fname[0] != '/') {
+	if (!fname.empty() && fname[0] != '/' && the_collection) {
 		zipios::ConstEntryPointer p = the_collection->getEntry(fname);
 		if (p != 0)
 			if (std::istream *s = the_collection->getInputStream(p))
