@@ -11,6 +11,9 @@ const char* dsgettext(const char * domainname, const char *msgid);
 
 #ifdef GETTEXT_DOMAIN
 # define _(String) dgettext(GETTEXT_DOMAIN,String)
+# ifdef gettext
+#  undef gettext
+# endif
 # define gettext(String) dgettext(GETTEXT_DOMAIN,String)
 #else
 # define _(String) gettext(String)
