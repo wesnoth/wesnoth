@@ -9,10 +9,12 @@ use warnings;
 
 use base qw(graphincludes::project::default);
 
+use graphincludes::params;
+
 sub filelabel {
   my $self = shift;
   my ($file,$level) = @_;
-  $level = $main::minshow unless defined $level;
+  $level = $graphincludes::params::minshow unless defined $level;
 
   # 0: file
 

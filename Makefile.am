@@ -105,6 +105,7 @@ EXTRA_DIST = config/config.rpath
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
 wesnoth-deps.dot:
 	(cd $(top_srcdir) && graph-includes -v --class wesnoth --group 1-1 \
+	  -sysI /usr/include/c++/3.3 -sysI /usr/include -sysI /usr/include/SDL \
 	  --prefixstrip src/ -I src `find src -name '*.[ch]pp'`) > $@
 %.ps: %.dot
 	dot -Tps $< > $@
