@@ -1728,6 +1728,10 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	u.set_movement(moves_left);
 
+	if(disp != NULL) {
+		disp->hide_unit(gamemap::location());
+	}
+
 	units.erase(ui);
 	ui = units.insert(std::pair<gamemap::location,unit>(steps.back(),u)).first;
 	if(disp != NULL) {

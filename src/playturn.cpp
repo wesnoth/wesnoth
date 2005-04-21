@@ -1386,6 +1386,7 @@ void turn_info::undo()
 		
 		gui_.hide_unit(u->first,true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
+		gui_.hide_unit(gamemap::location());
 
 		units_.erase(u);
 		un.set_movement(starting_moves);
@@ -1467,6 +1468,7 @@ void turn_info::redo()
 		
 		gui_.hide_unit(u->first,true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
+		gui_.hide_unit(gamemap::location());
 
 		units_.erase(u);
 		un.set_movement(starting_moves);
