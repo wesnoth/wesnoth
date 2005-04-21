@@ -409,44 +409,6 @@ std::string get_user_data_dir()
 #endif
 }
 
-namespace {
-void read_file_internal(const std::string& fname, std::string& res)
-{
-	const int size = file_size(fname);
-	if(size < 0) {
-		return;
-	}
-
-	std::vector<char> v;
-	v.reserve(size);
-
-	//const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"rb"));
-	const util::scoped_FILE file(fopen(fname.c_str(),"rb"));
-
-	if(file == NULL) {
-		return;
-	}
-
-	const int block_size = 65536;
-
-	while(v.size() < size) {
-		const size_t expected = minimum<size_t>(block_size,size - v.size());
-
-		if(expected > 0) {
-			v.resize(v.size() + expected);
-			const size_t nbytes = fread(&v[v.size() - expected],1,expected,file);
-			if(nbytes < expected) {
-				v.resize(v.size() - (expected - nbytes));
-				break;
-			}
-		}
-	}
-
-	res.resize(v.size());
-	std::copy(v.begin(),v.end(),res.begin());
-}
-} //end anon namespace
-
 std::string read_stream(std::istream& s)
 {
 	std::stringstream ss;
@@ -457,42 +419,6 @@ std::string read_stream(std::istream& s)
 std::string read_stdin()
 {
 	return read_stream(std::cin);
-}
-
-std::string read_file(const std::string& fname)
-{
-	//if we have a path to the data,
-	//convert any filepath which is relative
-	LOG_G << "Reading " << fname << "\n";
-#ifdef USE_ZIPIOS
-	if(!fname.empty() && fname[0] != '/') {
-		zipios::ConstEntryPointer p = the_collection->getEntry(fname);
-		if (p != 0) {
-			std::istream* s = the_collection->getInputStream(p);
-			if (s != NULL) {
-				std::string contents = read_stream(*s);
-				delete s;
-				return contents;
-			}
-		}
-	}
-#else
-	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
-		std::string res;
-		read_file_internal(game_config::path + "/" + fname,res);
-		if(!res.empty()) {
-			return res;
-		}
-	}
-#endif
-
-	// FIXME: why do we rely on this even with relative paths ?
-	{
-		// still useful with zipios, for things like cache and prefs
-		std::string res;
-		read_file_internal(fname,res);
-		return res;
-	}
 }
 
 std::istream *istream_file(std::string const &fname)
@@ -517,6 +443,12 @@ std::istream *istream_file(std::string const &fname)
 	// FIXME: why do we rely on this even with relative paths ?
 	// still useful with zipios, for things like cache and prefs
 	return new std::ifstream(fname.c_str(),std::ios_base::binary);
+}
+
+std::string read_file(std::string const &fname)
+{
+	scoped_istream s = istream_file(fname);
+	return read_stream(*s);
 }
 
 std::ostream *ostream_file(std::string const &fname)
