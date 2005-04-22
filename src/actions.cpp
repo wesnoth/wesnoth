@@ -1782,7 +1782,13 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			for(std::set<gamemap::location>::const_iterator i = seen_units.begin(); i != seen_units.end(); ++i) {
 				LOG_NG << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
 				const unit_map::const_iterator u = units.find(*i);
-				wassert(u != units.end());
+
+				//unit may have been removed by an event.
+				if(u == units.end()) {
+					LOG_NG << "was removed\n";
+					continue;
+				}
+
 				if(team.is_enemy(u->second.side())) {
 					++nenemies;
 				} else {
@@ -1838,10 +1844,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 		disp->draw();
 		disp->recalculate_minimap();
-	}
-
-	for(std::set<gamemap::location>::const_iterator seen = seen_units.begin(); seen != seen_units.end(); ++seen) {
-		game_events::fire("sighted",*seen,steps.back());
 	}
 
 	wassert(steps.size() <= route.size());
