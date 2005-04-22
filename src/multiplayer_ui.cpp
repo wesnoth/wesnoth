@@ -244,16 +244,33 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 	//On enter, adds the current chat message to the chat textbox.
 	if(event.keysym.sym == SDLK_RETURN && !entry_textbox_.text().empty()) {
 
-		// Sends the message to the network
-		config msg;
-		msg["message"] = entry_textbox_.text();
-		msg["sender"] = preferences::login();
-		config data;
-		data.add_child("message", msg);
-		network::send_data(data);
+		const std::string& text = entry_textbox_.text();
 
-		chat_.add_message(preferences::login(), entry_textbox_.text());
-		chat_.update_textbox(chat_textbox_);
+		//if the text starts with '/query' it's a query to the server.
+		//otherwise it's just a chat message
+		static const std::string query = "/query ";
+
+		config data;
+
+		if(text.size() >= query.size() && std::equal(query.begin(),query.end(),text.begin())) {
+			const std::string args = text.substr(query.size());
+
+			data.add_child("query")["type"] = args;
+
+		} else {
+
+			// Sends the message to the network
+			config msg;
+			msg["message"] = text;
+			msg["sender"] = preferences::login();
+			data.add_child("message", msg);
+
+			chat_.add_message(preferences::login(), entry_textbox_.text());
+			chat_.update_textbox(chat_textbox_);
+
+		}
+			
+		network::send_data(data);
 		entry_textbox_.clear();
 	}
 }
