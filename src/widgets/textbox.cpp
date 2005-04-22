@@ -336,6 +336,8 @@ void textbox::erase_selection()
 
 void textbox::handle_event(const SDL_Event& event)
 {
+	scrollarea::handle_event(event);
+
 	bool changed = false;
 	
 	//Sanity check: verify that selection start and end are within text
