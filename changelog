@@ -1,22 +1,34 @@
 CVS HEAD:
- * reduced resistance of Ulfserker and Berserker
- * campaign modifications
+ * user interface improvements:
+   * added a shortcut for making screenshots
+   * added support for Home/End in menus, ctrl-a/e/u in textboxes
+   * fixed the formatting of wrapped text lines being lost
+   * fixed the screen being incorrectly redrawn when resizing
+   * fixed bug #12654 causing prestart events to be shown to the player
+   * fixed bug #12758: gendered unit types repeated in attack type tooltip
+   * fixed bug #12612: no description in help for units at first encounter as upgrade
+ * campaign improvements:
    * fixed bug in Northern Winter (HttT) where the Orcs attack each other
    * fixed the 'knockback' for WML Plague in TRoW
    * fixed missing music in the Crossroads (HttT)
- * multiplayer improvements
+ * multiplayer improvements:
    * fixed the lobby chat window not wrapping text
    * fixed the lobby chat staying at top when changing lobby screens
    * fixed the multiplayer "wait" lobby screen not correctly displaying empty and vacant slots.
    * made renaming units visible on replays and on multiplayer games
- * documentation:
-   * updated manpages (English)
-   * updated German manpages
- * terrain improvements     
-   * New forest tiles
+   * fixed bug #12759: "number of turns" not being remembered when creating multiplayer games
+ * terrain improvements:
+   * new forest tiles
+ * unit balancing:
+     * reduced resistance of Ulfserker and Berserker
+     * Elvish Rider: increase melee to 6-4, increase ranged to 7-3
+     * Elvish Outrider: increase melee to 8-4, increase ranged to 7-4
  * language and i18n:
+   * updated English and German manpages
    * language fixes and polishing (English)
    * fixed the description of traits in the help & tutorial
+   * fixed user-campaigns not being translatable anymore
+   * fixed some untranslatable strings
    * new translations:
      * Turkish
    * updated translations: 
@@ -31,23 +43,12 @@ CVS HEAD:
      * Japanese
      * Slovenian
      * Swedish
-   * fixed some untranslatable strings
- * unit balancing:
-     * Elvish Rider: increase melee to 6-4, increase ranged to 7-3
-     * Elvish Outrider: increase melee to 8-4, increase ranged to 7-4
- * added a shortcut for making screenshots
- * fixed the screen being incorrectly redrawn when resizing
- * fixed bug #12654 causing prestart events to be shown to the player
  * fixed the missing 'elder-mage-halo7.png' in the Elder Mage
  * fixed some OoS errors when chatting while a fight is taking place
  * fixed the spurious "statistics verification failed" messages
  * fixed bug #12611: modifying villages with [terrain] interacting badly with capturing them.
- * fixed user-campaigns not being translatable anymore
- * fixed the formatting of wrapped text lines being lost
- * added support for Home/End in menus, ctrl-a/e/u in textboxes
- * fixed bug #12758: gendered unit types repeated in attack type tooltip
  * fixed bug #12698: segfault with --decompress on relative path
- * fixed bug #12759: "number of turns" not being remembered when creating multiplayer games
+ * various bug fixes and code cleanups
 
 Version 0.9.0:
  * user interface improvements:
