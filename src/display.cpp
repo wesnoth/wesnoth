@@ -2295,22 +2295,23 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	SDL_Color message_colour = chat_message_colour;
 	std::stringstream str;
 	std::stringstream message_str;
-	message_str << msg;
 	if(type == MESSAGE_PUBLIC) {
 		if(action) {
-			str << "<" << speaker;
-			message_str << ">";
+			str << "<" << speaker << " " << msg << ">";
 			message_colour = speaker_colour;
+			message_str << " ";
 		} else {
 			str << "<" << speaker << ">";
+			message_str << msg;
 		}
 	} else {
 		if(action) {
-			str << "*" << speaker;
-			message_str << "*";
+			str << "*" << speaker << " " << msg << "*";
 			message_colour = speaker_colour;
+			message_str << " ";
 		} else {
 			str << "*" << speaker << "*";
+			message_str << msg;
 		}
 	}
 
