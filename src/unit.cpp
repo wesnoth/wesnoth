@@ -1049,7 +1049,15 @@ void unit::add_modification(const std::string& type,
 				//a percentage on the end means increase by that many percent
 				if(increase_total[increase_total.size()-1] == '%') {
 					const std::string inc(increase_total.begin(),increase_total.end()-1);
-					maxHitpoints_ += (maxHitpoints_*atoi(inc.c_str()))/100;
+					//work around implementation-defined integer division
+					//involving negative numbers
+					int increment = atoi(inc.c_str());
+					int sign = 1;
+					if (increment < 0) {
+						increment = -increment;
+						sign = -1;
+					}
+					maxHitpoints_ += ((maxHitpoints_*increment)/100) * sign;
 				} else {
 					maxHitpoints_ += atoi(increase_total.c_str());
 				}
