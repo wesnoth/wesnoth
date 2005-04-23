@@ -827,6 +827,12 @@ bool game_controller::load_game()
 			if((**sides.first)["controller"] == "network")
 				(**sides.first)["controller"] = "human";
 		}
+		//make all network players local, even in the replay starting pos, if any
+		for(config::child_itors sides = state_.starting_pos.child_range("side");
+		    sides.first != sides.second; ++sides.first) {
+			if((**sides.first)["controller"] == "network")
+				(**sides.first)["controller"] = "human";
+		}
 	
 		recorder.set_save_info(state_);
 		std::vector<config*> story;
