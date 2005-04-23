@@ -974,14 +974,16 @@ std::string format_file_size(const std::string& size_str)
 		}
 
 		std::ostringstream stream;
+#ifdef _MSC_VER
 		//Visual C++ makes 'precision' set the number of decimal places. Other platforms
 		//make it set the number of significant figures
-#ifdef _MSC_VER
 		stream.precision(1);
-#else
-		stream.precision(3);
-#endif
 		stream << std::fixed << size << size_postfix;
+#else
+		if (size < 100) stream.precision(3);
+		else size = (int)size;
+		stream << size << size_postfix;
+#endif
 		return stream.str();
 	} else {
 		return "";
