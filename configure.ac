@@ -217,6 +217,11 @@ AC_ARG_ENABLE([wzip],
 	      [wzip=$enableval],
 	      [wzip=no])
 
+AC_ARG_ENABLE([dummy-locales],
+              AS_HELP_STRING([--enable-dummy-locales], [enable installation of Wesnoth own provate locales]),
+              [dummylocales=$enableval],
+              [dummylocales=no])
+
 AM_CONDITIONAL([STATIC], [test x$static = xyes])
 AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
@@ -227,6 +232,11 @@ AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes])
+AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
+
+if test x$dummylocales = xyes; then
+  AC_DEFINE([USE_DUMMYLOCALES],,[Define if the game should not use system locales])
+fi
 
 #######################################################################
 # Checks for programs.                                                #

@@ -16,12 +16,14 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
+#include "game_config.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
 #include "util.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "wesconfig.h"
 
 #include <algorithm>
 #include <cctype>
@@ -118,8 +120,9 @@ std::vector<language_def> get_languages()
 	return res;
 }
 
-char* wesnoth_setlocale(int category, const char *locale)
+static void wesnoth_setlocale(int category, std::string const &slocale)
 {
+	char const *locale = slocale.c_str();
 #ifdef __BEOS__
 	if(setenv ("LANG", locale, 1) == -1)
 		std::cerr << "setenv LANG failed: " << strerror(errno);
@@ -134,15 +137,29 @@ char* wesnoth_setlocale(int category, const char *locale)
 #endif 
 
 #ifdef _WIN32
-	const std::string env = std::string("LANG=") + locale;
+	const std::string env = "LANG=" + slocale;
 	putenv(env.c_str());
 #endif
 
+#ifdef USE_DUMMYLOCALES
+	static enum { UNINIT, NONE, PRESENT } status = UNINIT;
+	static std::string locpath;
+	if (status == UNINIT)
+		if (char const *p = getenv("LOCPATH")) {
+			locpath = p;
+			status = PRESENT;
+		} else status = NONE;
+	if (slocale.empty())
+		if (status == NONE)
+			unsetenv("LOCPATH");
+		else
+			setenv("LOCPATH", locpath.c_str(), 1);
+	else setenv("LOCPATH", (game_config::path + "/locales").c_str(), 1);
+#endif
 	char* res = setlocale (category, locale);
 	if (res == NULL)
 		std::cerr << "WARNING: setlocale() failed for "
 			  << locale << ".\n";
-	return res;
 }
 
 bool set_language(const language_def& locale)
@@ -156,7 +173,7 @@ bool set_language(const language_def& locale)
 	config cfg;
 
 	current_language = locale;
-	wesnoth_setlocale (LC_MESSAGES, locale.localename.c_str());
+	wesnoth_setlocale(LC_MESSAGES, locale.localename);
 	known_languages[0].language = gettext("System default language");
 
 	// fill string_table (should be moved somwhere else some day)
@@ -190,15 +207,12 @@ const language_def& get_locale()
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
-		char* setlocaleres = wesnoth_setlocale (LC_MESSAGES, prefs_locale.c_str());
-		if(setlocaleres == NULL)
-			std::cerr << "call to setlocale() failed for " << prefs_locale.c_str() << "\n";
+		wesnoth_setlocale(LC_MESSAGES, prefs_locale);
 		for(int i = 0; known_languages[i].language[0] != '\0'; i++) {
 		  	if (prefs_locale == known_languages[i].localename)
 			  	return known_languages[i];
 		}
-		
-		std::cerr << "setlocale succeeded but locale not found in known array; defaulting to system locale\n";
+		std::cerr << "locale not found in known array; defaulting to system locale\n";
 		return known_languages[0];
 	}
 

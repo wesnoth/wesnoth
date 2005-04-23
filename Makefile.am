@@ -32,6 +32,13 @@ if INSTALLDATA
 	  echo " $(install_sh_DATA) '$$d$$p' '$(DESTDIR)$(pkgdatadir)/$$f'"; \
 	  $(install_sh_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
+if DUMMYLOCALES
+	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"; \
+	echo | localedef --force "$(DESTDIR)$(pkgdatadir)/locales/C" 2> /dev/null; \
+	for loc in `sed -n 's/^.*language_def..\(.._..\).*$$/\1/p' "$(srcdir)/src/language.cpp"`; do \
+	  ln -s C "$(DESTDIR)$(pkgdatadir)/locales/$$loc"; done; \
+	true
+endif
 if TINYGUI
 	(cd $(top_srcdir) && find images images/terrain \( $(findfilterflags) -o -name '*.png' -print \) ) | while read p; do \
 	  $(w_preparefileinstall) \

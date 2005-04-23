@@ -44,6 +44,9 @@ CVS HEAD:
      * Japanese
      * Slovenian
      * Swedish
+   * added a ./configure --with-dummy-locales option for Wesnoth to generate
+     its own set of i18n locale files and use them instead of the potentially
+     missing system files (highly experimental)
  * fixed the missing 'elder-mage-halo7.png' in the Elder Mage
  * fixed some OoS errors when chatting while a fight is taking place
  * fixed the spurious "statistics verification failed" messages
