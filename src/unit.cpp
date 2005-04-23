@@ -1049,15 +1049,7 @@ void unit::add_modification(const std::string& type,
 				//a percentage on the end means increase by that many percent
 				if(increase_total[increase_total.size()-1] == '%') {
 					const std::string inc(increase_total.begin(),increase_total.end()-1);
-					//work around implementation-defined integer division
-					//involving negative numbers
-					int increment = atoi(inc.c_str());
-					int sign = 1;
-					if (increment < 0) {
-						increment = -increment;
-						sign = -1;
-					}
-					maxHitpoints_ += ((maxHitpoints_*increment)/100) * sign;
+					maxHitpoints_ += div100(maxHitpoints_ * atoi(inc.c_str()));
 				} else {
 					maxHitpoints_ += atoi(increase_total.c_str());
 				}
@@ -1093,7 +1085,7 @@ void unit::add_modification(const std::string& type,
 
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
-					maxMovement_ += (maxMovement_*atoi(inc.c_str()))/100;
+					maxMovement_ += div100(maxMovement_ * atoi(inc.c_str()));
 				} else {
 					maxMovement_ += atoi(increase.c_str());
 				}
@@ -1119,7 +1111,7 @@ void unit::add_modification(const std::string& type,
 
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
-					maxExperience_ += (maxExperience_*atoi(inc.c_str()))/100;
+					maxExperience_ += div100(maxExperience_ * atoi(inc.c_str()));
 				} else {
 					maxExperience_ += atoi(increase.c_str());
 				}

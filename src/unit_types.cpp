@@ -297,8 +297,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 		
 		if(increase_damage[increase_damage.size()-1] == '%') {
 			const std::string inc(increase_damage.begin(),increase_damage.end()-1);
-			const int percent = atoi(inc.c_str());
-			increase = (damage_*percent)/100;
+			increase = div100(damage_ * atoi(inc.c_str()));
 		} else {
 			increase = atoi(increase_damage.c_str());
 		}

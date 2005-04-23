@@ -40,6 +40,11 @@ inline bool is_odd(T num) {
 template<typename T>
 inline bool is_even(T num) { return !is_odd(num); }
 
+// guarantees portable results for division by 100
+inline int div100(int num) {
+  return num < 0 ? -((-num) / 100) : num / 100;
+}
+
 struct bad_lexical_cast {};
 
 template<typename To, typename From>
