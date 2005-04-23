@@ -15,13 +15,15 @@
 #include "random.hpp"
 #include "wassert.hpp"
 
-rng::rng() : random_(NULL)
+rng::rng() : random_(NULL), separator_(false)
 {}
 
-int rng::get_random()
+int rng::get_random(int value)
 {
+	separator_ = false;
+
 	if(random_ == NULL) {
-		return rand();
+		return value >= 0 ? value : rand();
 	}
 
 	//random numbers are in a 'list' meaning that each random
@@ -31,7 +33,9 @@ int rng::get_random()
 	//the current node the new node
 	config* const random = random_->child("random");
 	if(random == NULL) {
-		const int res = rand();
+		int res = value;
+		if(value < 0) 
+			res = rand();
 		random_ = &random_->add_child("random");
 
 		char buf[100];
@@ -46,17 +50,43 @@ int rng::get_random()
 	}
 }
 
-const config* rng::get_random_results() const
+const config* rng::get_random_results() 
 {
 	wassert(random_ != NULL);
+
+	if(separator_) {
+		get_random(0);
+	}
 	return random_->child("results");
 }
 
 void rng::set_random_results(const config& cfg)
 {
 	wassert(random_ != NULL);
+
+	if(separator_) {
+		get_random(0);
+	}
 	random_->clear_children("results");
 	random_->add_child("results",cfg);
+}
+
+void rng::add_random_separator()
+{
+	separator_ = true;
+}
+
+config* rng::random()
+{
+	return random_;
+}
+
+config* rng::set_random(config* random)
+{
+	config* old = random_;
+	random_ = random;
+	separator_ = false;
+	return old;
 }
 
 namespace {
@@ -90,3 +120,10 @@ void set_random_results(const config& cfg)
 	wassert(random_generator!=NULL);
 	random_generator->set_random_results(cfg);
 }
+
+void add_random_separator()
+{
+	wassert(random_generator!=NULL);
+	random_generator->add_random_separator();
+}
+

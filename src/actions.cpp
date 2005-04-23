@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
+#include "checksum.hpp"
 #include "display.hpp"
 #include "events.hpp"
 #include "game_config.hpp"
@@ -38,6 +39,8 @@
 #include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/binary_wml.hpp"
+#include "serialization/parser.hpp"
 #include "widgets/menu.hpp"
 
 #include <cmath>
@@ -155,7 +158,37 @@ std::string recruit_unit(const gamemap& map, int side,
 		}
 	}
 
+	checksumstream cs;
+	config cfg_unit;
+	new_unit.write(cfg_unit);
+	::write_compressed(cs,cfg_unit);
+
+	const config* ran_results = get_random_results();
+	if(ran_results != NULL) {
+		unsigned long rc = lexical_cast_default<unsigned long>
+			((*ran_results)["checksum"], 0);
+		if((*ran_results)["checksum"].empty() || rc != cs.checksum()) {
+			ERR_NW << "SYNC: In recruit " << new_unit.type().id() <<
+				": has checksum " << cs.checksum() << 
+				" while datasource has checksum " <<
+				rc << "\n";
+			// FIXME: this was not playtested, so I will disable it
+			// for release.
+			//if (!game_config::ignore_replay_errors) throw replay::error();
+		}
+
+	} else {
+		config cfg;
+		cfg["checksum"] = lexical_cast<std::string>(cs.checksum());
+		set_random_results(cfg);
+	}
+
 	return std::string();
+}
+
+void validate_recruit_unit()
+{
+
 }
 
 gamemap::location under_leadership(const std::map<gamemap::location,unit>& units,

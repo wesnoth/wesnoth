@@ -42,6 +42,7 @@ wesnoth_SOURCES = \
 	astarnode.cpp \
 	builder.cpp \
 	cavegen.cpp \
+	checksum.cpp \
 	clipboard.cpp \
 	config.cpp \
 	cursor.cpp \
@@ -134,6 +135,7 @@ wesnoth_SOURCES = \
 	astarnode.hpp \
 	builder.hpp \
 	cavegen.hpp \
+	checksum.hpp \
 	clipboard.hpp \
 	cursor.hpp \
 	config.hpp \
@@ -240,6 +242,7 @@ wesnoth_editor_SOURCES = \
 	astarnode.cpp \
 	builder.cpp \
 	cavegen.cpp \
+	checksum.cpp \
 	clipboard.cpp \
 	config.cpp \
 	cursor.cpp \
@@ -323,6 +326,7 @@ wesnoth_editor_SOURCES = \
 	astarnode.hpp \
 	builder.hpp \
 	cavegen.hpp \
+	checksum.hpp \
 	clipboard.hpp \
 	config.hpp \
 	cursor.hpp \

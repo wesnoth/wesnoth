@@ -366,7 +366,6 @@ void replay::end_turn()
 {
 	config* const cmd = add_command();
 	cmd->add_child("end_turn");
-	random_ = current_;
 }
 
 void replay::speak(const config& cfg)
@@ -431,7 +430,8 @@ void replay::undo()
 
 	if(cmd.first != cmd.second) {
 		cfg_.remove_child("command",cmd.second - cmd.first - 1);
-		current_ = random_ = NULL;
+		current_ = NULL;
+		set_random(NULL);
 	}
 }
 
@@ -457,7 +457,7 @@ config* replay::add_command(bool update_random_context)
 	pos_ = ncommands()+1;
 	current_ = &cfg_.add_child("command");
 	if(update_random_context)
-		random_ = current_;
+		set_random(current_);
 
 	return current_;
 }
@@ -474,18 +474,15 @@ config* replay::get_next_action()
 
 	LOG_NW << "up to replay action " << pos_ << "/" << commands().size() << "\n";
 
-	random_ = current_ = commands()[pos_];
+	current_ = commands()[pos_];
+	set_random(current_);
 	++pos_;
 	return current_;
 }
 
 void replay::pre_replay()
 {
-
-	if(pos_ >= commands().size())
-		return;
-
-	while(commands()[pos_]->child("start") != NULL) {
+	while(pos_ < commands().size() && commands()[pos_]->child("start") != NULL) {
 		if(get_next_action() == NULL)
 			return;
 	}
@@ -500,7 +497,7 @@ void replay::set_to_end()
 {
 	pos_ = commands().size();
 	current_ = NULL;
-	random_ = NULL;
+	set_random(NULL);
 }
 
 void replay::clear()
@@ -508,7 +505,7 @@ void replay::clear()
 	cfg_ = config();
 	pos_ = 0;
 	current_ = NULL;
-	random_ = NULL;
+	set_random(NULL);
 	skip_ = 0;
 }
 
@@ -704,6 +701,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				       << u_type->second.cost() << "/" << current_team.gold() << "\n";
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
+
 
 			statistics::recruit_unit(new_unit);
 

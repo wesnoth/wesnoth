@@ -19,17 +19,29 @@ class config;
 int get_random();
 const config* get_random_results();
 void set_random_results(const config& cfg);
+/** Ensures that the next "random results" operations will not happen on the
+ * current random context, eventually adding a dummy random context if
+ * necessary.
+ */
+void add_random_separator();
 
 class rng
 {
 public:
 	rng();
-	int get_random();
-	const config* get_random_results() const;
+	int get_random(int value=-1);
+
+	const config* get_random_results();
 	void set_random_results(const config& cfg);
 
+	void add_random_separator();
 protected:
+	config* random();
+	config* set_random(config*);
+
+private:
 	config* random_;
+	bool separator_;
 };
 
 struct set_random_generator {

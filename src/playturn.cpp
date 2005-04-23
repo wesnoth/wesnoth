@@ -1442,12 +1442,13 @@ void turn_info::redo()
 			// Redo recall
 			std::vector<unit>& recall_list = player->available_units;
 			unit& un = recall_list[action.recall_pos];
+
+			recorder.add_recall(action.recall_pos,action.recall_loc);
 			recruit_unit(map_,team_num_,units_,un,action.recall_loc,&gui_);
 			statistics::recall_unit(un);
 			team& current_team = teams_[team_num_-1];
 			current_team.spend_gold(game_config::recall_cost);
 			recall_list.erase(recall_list.begin()+action.recall_pos);
-			recorder.add_recall(action.recall_pos,action.recall_loc);
 
 			gui_.draw_tile(action.recall_loc.x,action.recall_loc.y);
 		}
@@ -2001,13 +2002,14 @@ void turn_info::recall()
 		if(res >= 0) {
 			unit& un = recall_list[res];
 			gamemap::location loc = last_hex_;
+			recorder.add_recall(res,loc);
 			const std::string err = recruit_unit(map_,team_num_,units_,un,loc,&gui_);
 			if(!err.empty()) {
+				recorder.undo();
 				gui::show_dialog(gui_,NULL,"",err,gui::OK_ONLY);
 			} else {
 				statistics::recall_unit(un);
 				current_team.spend_gold(game_config::recall_cost);
-				recorder.add_recall(res,loc);
 
 				undo_stack_.push_back(undo_action(un,loc,res));
 				redo_stack_.clear();
