@@ -172,6 +172,8 @@ std::string recruit_unit(const gamemap& map, int side,
 				": has checksum " << cs.checksum() << 
 				" while datasource has checksum " <<
 				rc << "\n";
+
+			::write(std::cerr, cfg_unit);
 			// FIXME: this was not playtested, so I will disable it
 			// for release.
 			//if (!game_config::ignore_replay_errors) throw replay::error();
