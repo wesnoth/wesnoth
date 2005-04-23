@@ -174,7 +174,8 @@ t_string::t_string() :
 
 t_string::t_string(const t_string& string) :
 	translatable_(string.translatable_),
-	value_(string.value_)
+	value_(string.value_),
+	translated_value_(string.translated_value_)
 {
 }
 
@@ -192,8 +193,8 @@ t_string::t_string(const std::string& string, const std::string& textdomain) :
 	unsigned int id;
 
 	if(idi == textdomain_to_id.end()) {
-		textdomain_to_id[textdomain] = id_to_textdomain.size();
 		id = id_to_textdomain.size();
+		textdomain_to_id[textdomain] = id;
 		id_to_textdomain.push_back(textdomain);
 	} else {
 		id = idi->second;
@@ -327,7 +328,6 @@ t_string t_string::operator+(const t_string& string) const
 			}
 		}
 	} else {
-		res.translatable_ = false;
 		res.value_ = value_ + string.value_;
 	}
 
@@ -346,7 +346,6 @@ t_string t_string::operator+(const std::string& string) const
 			res.value_ += string;
 		}
 	} else {
-		res.translatable_ = false;
 		res.value_ = value_ + string;
 	}
 
@@ -365,7 +364,6 @@ t_string t_string::operator+(const char* string) const
 			res.value_ += string;
 		}
 	} else {
-		res.translatable_ = false;
 		res.value_ = value_ + string;
 	}
 
@@ -379,7 +377,9 @@ t_string& t_string::operator+=(const t_string& string)
 			if (!value_.empty()) {
 				value_ = UNTRANSLATABLE_PART + value_;
 			}
-		}
+			translatable_ = true;
+		} else
+			translated_value_ = "";
 		if(string.translatable_) {
 			value_ += string.value_;
 		} else {
@@ -388,9 +388,7 @@ t_string& t_string::operator+=(const t_string& string)
 				value_ += string.value_;
 			}
 		}
-		translatable_ = true;
 	} else {
-		translatable_ = false;
 		value_ += string.value_;
 	}
 
@@ -403,7 +401,8 @@ t_string& t_string::operator+=(const std::string& string)
 		if (!string.empty()) {
 			value_ += UNTRANSLATABLE_PART;
 			value_ += string;
-		}
+		} else
+			translated_value_ = "";
 	} else {
 		value_ += string;
 	}
@@ -417,7 +416,8 @@ t_string& t_string::operator+=(const char* string)
 		if (string[0] != 0) {
 			value_ += UNTRANSLATABLE_PART;
 			value_ += string;
-		}
+		} else
+			translated_value_ = "";
 	} else {
 		value_ += string;
 	}
