@@ -1027,7 +1027,7 @@ void unit::add_modification(const std::string& type,
 					if(first_attack) {
 						first_attack = false;
 					} else {
-						description += "; ";
+						description += t_string(N_("; "), "wesnoth");
 					}
 					
 					description += t_string(a->name(), "wesnoth") + " " + desc;
@@ -1144,11 +1144,10 @@ void unit::add_modification(const std::string& type,
 
 	// Punctuation should be translatable: not all languages use latin punctuation.
 	// (however, there maybe is a better way to do it)
-	description += mod["name"] + t_string(N_(": "), "wesnoth");
-	if(!mod["description"].empty()) {
-		description += mod["description"];
-		description += " ";
-	}
+	description += mod["name"];
+	if (!mod["description"].empty())
+		description += t_string(N_(": "), "wesnoth") + mod["description"];
+	description += " ";
 
 	if(effects_description.empty() == false) {
 		description += t_string(N_("("), "wesnoth");
