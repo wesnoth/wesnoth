@@ -174,7 +174,7 @@ attack_type::attack_type(const config& cfg)
 	  defense_weight_ = 1.0;
 }
 
-const t_string& attack_type::name() const
+const std::string& attack_type::name() const
 {
 	return name_;
 }

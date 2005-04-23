@@ -1030,7 +1030,7 @@ void unit::add_modification(const std::string& type,
 						description += "; ";
 					}
 					
-					description += a->name() + " " + desc;
+					description += t_string(a->name(), "wesnoth") + " " + desc;
 				}
 			}
 		} else if(apply_to == "hitpoints") {
