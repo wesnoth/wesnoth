@@ -30,26 +30,12 @@ namespace about
 
 std::vector<std::string> get_text() {
 	static const char *credits[] = {
-		" ",
-		"- ",
-		" ",
-		"- ",
-		" ",
-		"- ",
-		" ",
-		"- ",
-		" ",
-		"- ",
-		" ",
-		"- ",
-
 		"_" N_("+Core Developers"),
 		"_" N_("-   Main Developer"),
 		"   David White (Sirp)",
 		"- ",
 		"_" N_("-   Artwork and graphics designer"),
 		"   Francisco Muñoz (fmunoz)",
-		"+ ",
 
 		"_" N_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
@@ -66,12 +52,10 @@ std::vector<std::string> get_text() {
 		"-   Philippe Plantier (Ayin)",
 		"-   Yann Dirson",
 		"-   Zas",
-		"+ ",
 
 		"_" N_("+General Purpose Administrators"),
 		"-   Crossbow/Miyo",
 		"-   Isaac Clerencia",
-		"+ ",
 
 		"_" N_("+Artwork and graphics designers"),
 		"-   Andrew James Patterson (Kamahawk)",
@@ -97,14 +81,12 @@ std::vector<std::string> get_text() {
 		"-   Slainte",
 		"-   Stephen Stone (Disto)",
 		"-   Svetac",
-		"+ ",
 
 		"_" N_("+Music"),
 		"-   Aleksi",
 		"-   Fredrik Lindroth",
 		"-   Joseph Toscano (zhaymusic.com)",
 		"-   Pau Congost",
-		"+ ",
 
 		"_" N_("+Scenario Designers"),
 		"-   Benjamin Drieu",
@@ -114,12 +96,10 @@ std::vector<std::string> get_text() {
 		"-   James Spencer (Shade)",
 		"-   Joseph Simmons (Turin)",
 		"-   Justin Zaun (jzaun)",
-		"+ ",
 
 		"_" N_("+Multiplayer Maps"),
 		"-   Peter Groen (pg)",
 		"-   Tom Chance (telex4)",
-		"+ ",
 
 		"_" N_("+Packagers"),
 		"-   Cyril Bouthors (CyrilB)",
@@ -130,35 +110,29 @@ std::vector<std::string> get_text() {
 		"-   Marcin Konicki (ahwayakchih)",
 		"-   Marcus Phillips (Sithrandel)",
 		"-   Mark Michelsen (skovbaer)",
-		"+ ",
 
 		"_" N_("+Miscellaneous"),
 		"-   Francesco Gigli (Jaramir)",
 		"-   Jordà Polo (ettin)",
 		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
-		"+ ",
 
 		"_" N_("+Internationalization Managers"),
 		"-   Cédric Duval",
 		"-   Mark Michelsen (skovbaer)",
 		"-   Nils Kneuper (Ivanovic)",
 		"-   Susanna Björverud (sanna)",
-		"+ ",
 
 		"_" N_("+Afrikaans Translation"),
 		"-   Nico Oliver",
 		"-   ott",
-		"+ ",
 
 		"_" N_("+Basque Translation"),
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   Julen Landa (genars)",
 		"-   Mikel Olasagasti (Hey_neken)",
-		"+ ",
 
 		"_" N_("+Bulgarian Translation"),
 		"-   Anton Tsigularov (Atilla)",
-		"+ ",
 
 		"_" N_("+Catalan Translation"),
 		"-   Carles Company (brrr)",
@@ -166,11 +140,9 @@ std::vector<std::string> get_text() {
 		"-   Jordà Polo (ettin)",
 		"-   Mark Recasens",
 		"-   Pau Rul·lan Ferragut",
-		"+ ",
 
 		"_" N_("+Chinese Translation"),
 		"-   林俊杰 - Lim Choon Kiat",
-		"+ ",
 
 		"_" N_("+Czech Translation"),
 		"-   David Nečas (Yeti)",
@@ -179,12 +151,10 @@ std::vector<std::string> get_text() {
 		"-   Petr Kovár (Juans)",
 		"-   Sofronius",
 		"-   Vít Krčál",
-		"+ ",
 
 		"_" N_("+Danish Translation"),
 		"-   Mark Michelsen (skovbaer)",
 		"-   Mathias Bundgaard Svensson (freaken)",
-		"+ ",
 
 		"_" N_("+Dutch Translation"),
 		"-   Arne Deprez",
@@ -192,20 +162,16 @@ std::vector<std::string> get_text() {
 		"-   Maarten Albrecht",
 		"-   Pieter Vermeylen (Onne)",
 		"-   Tobe Deprez",
-		"+ ",
 
 		"_" N_("+English (GB) Translation"),
 		"-   ott",
-		"+ ",
 		
 		"_" N_("+Estonian Translation"),
 		"-   Mart Tõnso",
-		"+ ",
 
 		"_" N_("+Finnish Translation"),
 		"-   Ankka",
 		"-   paxed",
-		"+ ",
 
 		"_" N_("+French Translation"),
 		"-   Benoit Astruc",
@@ -219,7 +185,6 @@ std::vector<std::string> get_text() {
 		"-   Tout",
 		"-   Yann Dirson",
 		"-   Zas",
-		"+ ",
 
 		"_" N_("+German Translation"),
 		"-   Andre Schmidt (schmidta)",
@@ -231,12 +196,10 @@ std::vector<std::string> get_text() {
 		"-   Nils Kneuper (Ivanovic)",
 		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
 		"-   Stephan Grochtmann (Schattenstephan)",
-		"+ ",
 
 		"_" N_("+Greek Translation"),
 		"-   Katerina Sykioti",
 		"-   Konstantinos Karasavvas",
-		"+ ",
 
 		"_" N_("+Hungarian Translation"),
 		"-   adson",
@@ -248,7 +211,6 @@ std::vector<std::string> get_text() {
 		"-   krix",
 		"-   ott",
 		"-   Széll Tamás (TomJoad)",
-		"+ ",
 
 		"_" N_("+Italian Translation"),
 		"-   Alessio D'Ascanio (otaku)",
@@ -258,24 +220,20 @@ std::vector<std::string> get_text() {
 		"-   Federico Tomassetti",
 		"-   isazi",
 		"-   RokStar",
-		"+ ",
 		
 		"_" N_("+Japanese Translation"),
 		"-   Naoki Iimura",
 		"-   Nobuhito Okada",
 		"-   Yuji Matsumoto",
-		"+ ",
 
 		"_" N_("+Latin Translation"),
 		"-   Mark Polo (mpolo)",
-		"+ ",
 
 		"_" N_("+Norwegian Translation"),
 		"-   Hallvard Norheim Bø (Lysander)",
 		"-   Håvard Korsvoll",
 		"-   Erik J. Mesoy (Circon)",
 		"-   Susanne Mesoy (Rarlgland)",
-		"+ ",
 
 		"_" N_("+Polish Translation"),
 		"-   Artur R. Czechowski",
@@ -286,7 +244,6 @@ std::vector<std::string> get_text() {
 		"-   Michał Jedynak (Artanis)",
 		"-   Paweł Stradomski",
 		"-   Paweł Tomak",
-		"+ ",
 
 		"_" N_("+Portuguese (Brazil) Translation"),
 		"-   Ambra Viviani Loos",
@@ -295,21 +252,17 @@ std::vector<std::string> get_text() {
 		"-   Michel Loos",
 		"-   Renato Cunha",
 		"-   Sérgio de Miranda Costa",
-		"+ ",
 
 		"_" N_("+Russian Translation"),
 		"-   Alexandr Menovchicov",
 		"-   Azamat Hackimov",
 		"-   Roman Tuchin (Sankt)",
-		"+ ",
 
 		"_" N_("+Slovak Translation"),
 		"-   Viliam Bur",
-		"+ ",
 		
 		"_" N_("+Slovenian Translation"),
 		"-   Jaka Kranjc (lynx)",
-		"+ ",
 
 		"_" N_("+Spanish Translation"),
 		"-   David Martínez",
@@ -318,27 +271,22 @@ std::vector<std::string> get_text() {
 		"-   Gabriel Rodríguez (Chewie)",
 		"-   Jose Gordillo (kilder)",
 		"-   Jose Manuel Gomez (joseg)",
-		"+ ",
 
 		"_" N_("+Swedish Translation"),
 		"-   Alexander Kjäll (capitol)",
 		"-   Stefan Bergström (tephlon)",
 		"-   Susanna Björverud (sanna)",
 		"-   wint3r",
-		"+ ",
 		
 		"_" N_("+Turkish Translation"),
 		"-   İhsan Akın",
 		"-   Selim Farsakoğlu",
-		"+ ",
 		
 		"_" N_("+Contributors"),
 		"-   Frédéric Wagner",
-		"+ ",
 
 		"_" N_("+Bots"),
 		"-   wesbot",
-		"+ "
 	};
 
 	std::vector< std::string > res;
@@ -378,15 +326,21 @@ void show_about(display &disp)
 
 
 	//substitute in the correct control characters for '+' and '-'
-	for(std::vector<std::string>::iterator itor = text.begin(); itor != text.end(); ++itor) {
-		if(itor->empty() == false) {
-			if((*itor)[0] == '-') {
-				(*itor)[0] = font::SMALL_TEXT;
-			} else if((*itor)[0] == '+') {
-				(*itor)[0] = font::LARGE_TEXT;
-			}
+	std::string before_header(2, ' ');
+	before_header[0] = font::LARGE_TEXT;
+	for(unsigned i = 0; i < text.size(); ++i) {
+		std::string &s = text[i];
+		if (s.empty()) continue;
+		char &first = s[0];
+		if (first == '-')
+			first = font::SMALL_TEXT;
+		else if (first == '+') {
+			first = font::LARGE_TEXT;
+			text.insert(text.begin() + i, before_header);
+			++i;
 		}
 	}
+	text.insert(text.begin(), 10, before_header);
 
 	int startline = 0;
 

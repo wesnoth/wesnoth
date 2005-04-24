@@ -546,42 +546,15 @@ namespace {
 	/// for the help dialog.
 	class about_text_formatter {
 	public:
-		about_text_formatter() : text_started_(false) {}
 		std::string operator()(const std::string &s) {
-			std::string res = s;
-			if (res.size() > 0) {
-				bool header = false;
-				// Format + as headers, and the rest as normal text.
-				if (res[0] == '+') {
-					header = true;
-					res.erase(res.begin());
-				}
-				else if (res[0] == '-') {
-					res.erase(res.begin());
-				}
-				// There is a bunch of empty rows in the start in about.cpp,
-				// we do not want to show these here. Thus, if we still
-				// encounter one of those, return an empty string that will
-				// be removed totally at a later stage.
-				if (!text_started_ && res.find_first_not_of(' ') != std::string::npos) {
-					text_started_ = true;
-				}
-				if (text_started_) {
-					std::stringstream ss;
-					if (header) {
-						ss << "<header>text='" << help::escape(res) << "'</header>";
-						res = ss.str();
-					}
-					text_started_ = false;
-				}
-				else {
-					res = " ";
-				}
-			}
-			return res;
+			if (s.empty()) return s;
+			// Format + as headers, and the rest as normal text.
+			if (s[0] == '+')
+				return " \n<header>text='" + help::escape(s.substr(1)) + "'</header>";
+			if (s[0] == '-')
+				return s.substr(1);
+			return s;
 		}
-	private:
-		bool text_started_;
 	};
 
 	// Helpers for making generation of topics easier.
@@ -1426,10 +1399,8 @@ std::string generate_about_text()
 	std::vector<std::string> res_lines;
 	std::transform(about_lines.begin(), about_lines.end(), std::back_inserter(res_lines),
 				   about_text_formatter());
-	std::vector<std::string>::iterator it =
-		std::remove(res_lines.begin(), res_lines.end(), "");
-	std::vector<std::string> res_lines_rem(res_lines.begin(), it);
-	std::string text = utils::join(res_lines_rem, '\n');
+	res_lines.erase(std::remove(res_lines.begin(), res_lines.end(), ""), res_lines.end());
+	std::string text = utils::join(res_lines, '\n');
 	return text;
 }
 
