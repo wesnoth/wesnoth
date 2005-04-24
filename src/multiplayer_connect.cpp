@@ -78,7 +78,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_gold_.set_max(1000);
 	slider_gold_.set_increment(25);
 	slider_gold_.set_value(lexical_cast_default<int>(cfg_["gold"], 100));
-	slider_gold_.set_measurements(120, 16);
+	slider_gold_.set_measurements(100, 16);
 
 	combo_faction_.enable(enabled_);
 	combo_leader_.enable(enabled_);
