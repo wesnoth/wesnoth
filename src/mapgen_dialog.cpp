@@ -99,7 +99,7 @@ void default_map_generator::user_config(display& disp)
 	SDL_Rect villages_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_label,0,0);
 	SDL_Rect landform_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,0,0);
 
-	const int horz_margin = 5;
+	const int horz_margin = 15;
 	const int text_right = xpos + horz_margin +
 	        maximum<int>(maximum<int>(maximum<int>(maximum<int>(maximum<int>(
 		         players_rect.w,width_rect.w),height_rect.w),iterations_rect.w),hillsize_rect.w),villages_rect.w);
@@ -123,7 +123,7 @@ void default_map_generator::user_config(display& disp)
 
 	const int max_players = 9;
 
-	const int right_space = 100;
+	const int right_space = 150;
 
 	const int slider_left = text_right + 10;
 	const int slider_right = xpos + width - horz_margin - right_space;
