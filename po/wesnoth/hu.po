@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-18 17:52+0200\n"
-"PO-Revision-Date: 2005-04-16 23:20+0200\n"
+"PO-Revision-Date: 2005-04-23 19:23+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -113,11 +113,12 @@ msgstr ""
 "\n"
 "\n"
 "Kezdésképpen, legjobb a főmenü <italic>text=Gyakorlás</italic> pontjára "
-"kattintani. Ez az interaktív hadgyakorlatot indít el, amelyben megtanulhatod "
-"a Wesnoth alapjait. Ezután ajánlatos A Trónörökös hadjárattal kezdeni - "
-"kattints a <italic>text=Hadjárat</italic>ra·majd·<italic>text='A "
-"Trónörökös'</italic>re. Mivel a Harc Wesnoth-ért játszása nagy kihívást "
-"jelenthet, érdemes lesz <italic>text=könnyű</italic> fokozaton kezdened."
+"kattintani. Ez egy interaktív hadgyakorlatot indít el, amelyben "
+"megtanulhatod a Wesnoth alapjait. Ezután ajánlatos A Trónörökös hadjárattal "
+"kezdeni - kattints a főmenüben a <italic>text=Hadjárat</"
+"italic>ra·majd·<italic>text='A Trónörökös'</italic>re. Mivel a Harc Wesnoth-"
+"ért játék művelése komoly kihívást jelenthet, érdemes lesz "
+"<italic>text=legkönnyebb</italic> fokozaton kezdened."
 
 #: data/help.cfg:73
 #, fuzzy
@@ -856,12 +857,12 @@ msgstr ""
 "\n"
 "Az eszes egységek nagyon hasznosak lehetnek az első küldetésekben, mivel "
 "gyorsan képesek a hőn áhított szintlépésre. A későbbi küldetések során már "
-"nem annyira hasznosak, és ha már számos magas szintű egységgel rendelkezel, "
-"sokkal inkább a \"hosszútávú\" képességekkel rendelkező egységeket érdemes "
-"visszahívni."
+"nem annyira hasznosak, mert a legmagasabb szint elérése után nem számítanak "
+"a tapasztalati pontok. Ha már számos magas szintű egységgel rendelkezel, "
+"sokkal inkább a hasznosabb jellemvonásokkal rendelkező egységeket érdemes "
+"visszahívnod."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -882,7 +883,7 @@ msgstr ""
 "\n"
 "<header>text=Gyors</header>\n"
 "\n"
-"A gyors egységeknek eggyel több lépési-pontjuk van, viszont 10%-kal kevesebb "
+"A gyors egységeknek eggyel több lépési pontjuk van, viszont 10%-kal kevesebb "
 "életpontjuk.\n"
 "\n"
 "A gyorsaság a legfigyelemreméltőbb képesség, főként a lassú egységeknél, "
@@ -916,12 +917,12 @@ msgstr ""
 "Az öngyógyító egységeknek a megszokottnál 7-tel több életerőpontjuk van.\n"
 "\n"
 "Az öngyógyító egységek a hadjárat egészében jól használhatóak, és minden "
-"egységnek hasznos lehet ez a képesség, de nyilván mindenki más egységeknél "
-"látja nagyobb hasznát. Az ilyen egységek leginkább egy terület megtartásában "
-"tudnak jeleskedni."
+"egységnek hasznos lehet ez a képesség. Az öngyógyítás jellemvonása akkor a "
+"leghasznosabb, amikor egy egységnek kevés életerőpontja, jó "
+"védekezőképessége vagy magas mértékű ellenállásai vannak. Az ilyen egységek "
+"leginkább egy terület megtartásában tudnak jeleskedni."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -943,10 +944,10 @@ msgstr ""
 "\n"
 "Az erős egységek eggyel több sebzést okoznak és kettővel több az ÉP-jük.\n"
 "\n"
-"Hasznos minden közelharci egységnél, főleg azoknál, akiknek elég sok "
-"támadásuk van, például a tünde harcosnál. Az erős egységek nagyon hasznosak "
-"lehetnek, ha az a kevés hozzáadott sebzés éppen elengendő ahhoz, hogy egy "
-"egyszerű sebzésből halálos sebzés legyen."
+"Bár hasznos minden közelharci egységnél, leginkább azoknál, akiknek elég sok "
+"támadásuk van, mint például a tünde harcosnál. Az erős egységek kifejezetten "
+"hasznosak lehetnek, ha az a kevés hozzáadott sebzés éppen elengendő ahhoz, "
+"hogy egy egyszerű sebzésből halálos sebzés váljon."
 
 #: data/help.cfg:243
 msgid ""
@@ -999,7 +1000,6 @@ msgstr ""
 "küldeni őket."
 
 #: data/help.cfg:258
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1020,10 +1020,10 @@ msgstr ""
 "\n"
 "Az élőholt egységek immunisak a méregre.\n"
 "\n"
-"Az élőholtaknak általában egyetlen jellemvonasuk az élőholt. Mivel ezek a "
-"lények holt testek, a harcra felemelkedve, semmilyen méreg nem hat rájuk. Ez "
-"felbecsülhetetlenné teszi őket olyan ellenfelek elleni küzdelemben, akik "
-"mérget is használnak támadásukban."
+"Az élőholt egységeknek általában egyetlen jellemvonasuk az élőholt. Mivel "
+"ezek a lények a harcra újra felemelkedett elhullott testek, semmilyen méreg "
+"nem hat rájuk. Ez felbecsülhetetlenné teszi őket olyan ellenfelek elleni "
+"küzdelemben, akik mérget is használnak támadásukban."
 
 #: data/help.cfg:265
 #, fuzzy
@@ -1516,7 +1516,7 @@ msgstr "Igen!"
 #: data/scenarios/tutorial/Basic_Training.cfg:318
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
 msgid "No"
-msgstr "Ne!"
+msgstr "Nem"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:661
 msgid "Blue team wins! Final score: $redscore-$bluescore"
@@ -2968,7 +2968,7 @@ msgid ""
 msgstr ""
 "A terület fajtája amin egységeid állnak meghatározza, hogy milyen "
 "valószínűséggel fogják megütni egy csatában. Az éppen kijelölt egység "
-"védekezési értéke a kurzor alatti területfajtán a képernyő jobb-felső "
+"védekezési értéke az egérmutató alatti területfajtán a képernyő jobb-felső "
 "sarkában jelenik meg."
 
 #: data/tips.cfg:5
@@ -3147,9 +3147,8 @@ msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
-"Ha az egér kurzorát egy képesség vagy jellemvonás fölé viszed a képernyő "
-"jobb oldalán, elolvashatod az adott képesség vagy jellemvonás részletes "
-"leírását."
+"Ha az egérmutatót egy képesség vagy jellemvonás fölé viszed a képernyő jobb "
+"oldalán, elolvashatod az adott képesség vagy jellemvonás részletes leírását."
 
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
@@ -3174,8 +3173,8 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
-"Ha a kurzort egy egység fölé viszed, láthatod milyen messzire tud lépni egy "
-"kör alatt."
+"Ha az egérmutatót egy egység fölé viszed, láthatod milyen messzire tud lépni "
+"egy kör alatt."
 
 #: data/tips.cfg:28
 msgid ""
@@ -3658,7 +3657,7 @@ msgstr "$name-tó"
 
 #: data/translations/english.cfg:137
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr "$name városa,$name faluja,$name|-vár"
+msgstr "$name|város,$name|falva,$name|vár"
 
 #: data/translations/english.cfg:138
 msgid "$name|harbor,$name|port"
@@ -3666,30 +3665,30 @@ msgstr "$name öböl,$name öble"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr "$name faluja,Új|$name,Ó|$name,$river|újváros,$river|falva"
+msgstr "$name|falva,Új|$name,Ó|$name,$river|újváros,$river|újfalu"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr "$river hídja,$river hídja,$river hídja,$name| faluja,$name hídja"
+msgstr "$river hídja,$river hídja,$river hídja,$name|falva,$name hídja"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "$name faluja,$name|-vár,$name tanyája"
+msgstr "$name|falva,$name|vár,$name-tanya"
 
 #: data/translations/english.cfg:142
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr "$name faluja,$name|-vár,$name|-tanya,$name erdő"
+msgstr "$name|falva,$name|vár,$name|-tanya,$name erdő"
 
 #: data/translations/english.cfg:143
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name faluja, $name városa, $name|-vár, $name|völgye,$name|tető"
+msgstr "$name|falva, $name|város, $name|vár, $name|völgye,$name|tető"
 
 #: data/translations/english.cfg:144
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"$name faluja,$name városa,$name|-vár,$name hegye,$name hegye,$name|tető,"
-"$name|tető"
+"$name|falva,$name|város,$name|vár,$name hegye,$name hegye,$name|tető,$name|"
+"tető"
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
@@ -5579,8 +5578,8 @@ msgid ""
 "from enemies. However they have the potential to become great warriors one "
 "day."
 msgstr ""
-"Fiatalok és vakmerőek, a csatlósok karddal harcolnak, ám az ellenség "
-"támadása könnyen túljárhat az eszükön - de egy napon nagy harcos válhat "
+"Fiatalok és vakmerőek, a csatlósok kardjukkal harcolnak. Az ellenség "
+"támadása könnyen túljárhat az eszükön, ám egy napon nagy harcos válhat "
 "belőlük."
 
 #: data/units/Fire_Dragon.cfg:3
@@ -7519,6 +7518,7 @@ msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:20
+#, fuzzy
 msgid ""
 "Trolls, grown to adulthood, are possessed of a fearsome strength. Their "
 "stone-like bodies have grown to a size much taller than a man, and their "
@@ -7540,6 +7540,25 @@ msgid ""
 "aid of a nearby village. Their relatively slow speed is a liability, as is "
 "their weakness during daylight hours."
 msgstr ""
+"A trolloknak, a felnőtt kort elérve, rettenetes erő jut a birtokukba. Kőhöz "
+"hasonlatos testük az emberénél sokkal nagyobbra nőtt, és az a rémísztő "
+"képességük, hogy gyorsan felépülnek sebeikből, még az általuk kedvelt hegyi "
+"területektől távol is, félelmetessé teszi őket ellenségeik számára. A "
+"felnőtt trollok értelmesebbek, gyorsabbak, erősebbek, és bár senki nem merné "
+"ezt egyenesen a szemükbe mondani, de rondábbak is gyermekeiknél. Óriás "
+"fütyköseikkel kegyetlen jártassággal vagdalkoznak, és minden csatában, "
+"amiben részt vesznek erejükkel bástyaként állnak ki - egyetlen gyengeségük "
+"mondhatni, hogy nincs távolsági fegyverük.\n"
+"\n"
+"Használat:\n"
+"A trollok jól harcolnak kemény, sziklás talajon, főleg éjszaka. Ugyanakkor, "
+"főleg nyílt terepen, ki vannak téve az íjászok támadásainak, és érdemes "
+"mindig óvakodniuk a varázslatoktól is. Nagyon hatásosak a törékeny "
+"ellenfelekkel, mint például a csontvázakkal szemben, de kevésbé a páncélos, "
+"illetve a természetszerűleg jó ellenállóképességű egységekkel szemben, mint "
+"erdei megfelelőjük, a fapásztorok. Regenerációs képességük segítségével "
+"kigyógyulnak a méregből és felépülnek sebeikből segítség nélkül. Viszonylag "
+"lassú mozgásuk hátrány, csakúgy mint gyengeségük nappal."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
@@ -7561,6 +7580,7 @@ msgid "Troll Rocklobber"
 msgstr "Troll kőemelő"
 
 #: data/units/Troll_Rocklobber.cfg:21
+#, fuzzy
 msgid ""
 "Given the monstrous strength of their race, trolls can turn rather mundane "
 "weapons into implements of deadly force. Some trolls piece together crude "
@@ -7586,12 +7606,37 @@ msgid ""
 "greatest danger to a Troll Rocklobber is a powerful melee unit attacking "
 "them in open terrain during the day, when they are weakest."
 msgstr ""
+"Megadatván számukra fajtájuk ereje, a trollok kifejezetten otromba "
+"fegyverekkel is hálálos csapásokat mérhetnek ellenfeleikre. Néhányuk durva "
+"parittyaszíjakat használ, ami kicsit különbözik azoktól, amit a gyermekek "
+"használnak, tekintve hogy kavicsok helyett egész szikladarabokat hajítanak "
+"velük. Bár nem túl pontosak, egy ilyen szörnyeteg által útjára indított "
+"szikla egyben szétroppanthat egy embert. Bár nehéz lőszerükkel vannak "
+"megrakodva, és nincs is közelharci fegyverük, a troll kőemelők még mindig "
+"termetesebbek, erősebbek, és talán még rondábbak is a suhancoknál akik régen "
+"voltak, és hát egy troll-ököl felér egy kalapáccsal a harcban. Továbbá, "
+"azzal hogy visszalőhetnek az íjászok támadására, kockázatossá teszi "
+"bármilyen módon történő megtámadásukat, hacsak nem kedvezőek a "
+"terepviszonyok.\n"
+"\n"
+"Használat:\n"
+"A troll kőemelők jól harcolnak kemény, sziklás talajon, főleg éjszaka. "
+"Fajtájuk más tagjaival szemben, a troll kőemelők nem jelentenek könnyű "
+"prédát sem az íjászoknak, sem a mágikus támadást használóknak. Nagyon "
+"hatásosak a törékeny ellenfelekkel, mint például a csontvázakkal szemben, de "
+"kevésbé a páncélos, illetve a természetszerűleg jó ellenállóképességű "
+"egységekkel szemben, mint erdei megfelelőjük, a fapásztorok. Regenerációs "
+"képességük segítségével kigyógyulnak a méregből és felépülnek sebeikből "
+"segítség nélkül. Viszonylag lassú mozgásuk hátrány, csakúgy mint gyengeségük "
+"nappal. Egy troll kőemelő számára a legveszélyesebb egy közelharcban erős "
+"ellenfél támadása nyílt terepen és nappal, amikor is a leggyengébbek."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Troll harcos"
 
 #: data/units/Troll_Warrior.cfg:21
+#, fuzzy
 msgid ""
 "A terrifying, monstrous bastion of strength, a Troll Warrior brings to fore "
 "all the tales that have been told of their race's terrifying power. Wielding "
@@ -7615,12 +7660,20 @@ msgid ""
 "the aid of a nearby village. Their relative weakness during daylight hours "
 "is a liability, though a Troll Warrior is still very powerful during the day."
 msgstr ""
+"Az erő vérfagyasztó monstruma, a troll harcos feleleveníti az összes mesét, "
+"ami fajtája rémísztőségéről szór. Tömör kalapácsokat forgatnak, amelyek akár "
+"egy házat is kiforgatnának alapjaiból és úgy tűnhet az örökkévalóságig "
+"büntetnek. A troll harcosok képesek egyedül megzavarni az ellenséges "
+"parancsnok stratégiáját. Egy troll harcost egy ember nem képes leteríteni, "
+"csak egy egész csapat, reménytelenül küzdve az előttük felvonuló förtelmes "
+"erővel. "
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Troll suhanc"
 
 #: data/units/Troll_Whelp.cfg:21
+#, fuzzy
 msgid ""
 "The word 'whelp,' applied even to fearsome animals like wolves and lions, "
 "brings to mind images of frail, helpless, and even 'cute' creatures, so "
@@ -7643,6 +7696,25 @@ msgid ""
 "aid of a nearby village. Their relatively slow speed is a liability, as is "
 "their weakness during daylight hours."
 msgstr ""
+"A trolloknak, a felnőtt kort elérve, rettenetes erő jut a birtokukba. Kőhöz "
+"hasonlatos testük az emberénél sokkal nagyobbra nőtt, és az a rémísztő "
+"képességük, hogy gyorsan felépülnek sebeikből, még az általuk kedvelt hegyi "
+"területektől távol is, félelmetessé teszi őket ellenségeik számára. A "
+"felnőtt trollok értelmesebbek, gyorsabbak, erősebbek, és bár senki nem merné "
+"ezt egyenesen a szemükbe mondani, de rondábbak is gyermekeiknél. Óriás "
+"fütyköseikkel kegyetlen jártassággal vagdalkoznak, és minden csatában, "
+"amiben részt vesznek erejükkel bástyaként állnak ki - egyetlen gyengeségük "
+"mondhatni, hogy nincs távolsági fegyverük.\n"
+"\n"
+"Használat:\n"
+"A trollok jól harcolnak kemény, sziklás talajon, főleg éjszaka. Ugyanakkor, "
+"főleg nyílt terepen, ki vannak téve az íjászok támadásainak, és érdemes "
+"mindig óvakodniuk a varázslatoktól is. Nagyon hatásosak a törékeny "
+"ellenfelekkel, mint például a csontvázakkal szemben, de kevésbé a páncélos, "
+"illetve a természetszerűleg jó ellenállóképességű egységekkel szemben, mint "
+"erdei megfelelőjük, a fapásztorok. Regenerációs képességük segítségével "
+"kigyógyulnak a méregből és felépülnek sebeikből segítség nélkül. Viszonylag "
+"lassú mozgásuk hátrány, csakúgy mint gyengeségük nappal."
 
 #: data/units/Vampire_Bat.cfg:3
 msgid "Vampire Bat"
@@ -8711,11 +8783,11 @@ msgstr "Magasság:"
 
 #: src/mapgen_dialog.cpp:89
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Dombok száma:"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Dombok maximális magassága:"
 
 #: src/mapgen_dialog.cpp:91
 msgid "Villages:"
@@ -8791,7 +8863,7 @@ msgstr "(Üres hely)"
 
 #: src/multiplayer_connect.cpp:450
 msgid "No non-random sides in the current era"
-msgstr "Ebben az érában nincsenek meghatározott csapatok"
+msgstr "Ebben a korszakban nincsenek meghatározott csapatok"
 
 #: src/multiplayer_connect.cpp:466
 msgid "Unable to find a leader type for faction $faction"
@@ -8855,7 +8927,7 @@ msgstr "Ez nem egy többjátékos mentés"
 
 #: src/multiplayer_connect.cpp:937
 msgid "Cannot find era $era"
-msgstr "Nem találtam a $era érát"
+msgstr "Nem találtam a $era korszakot"
 
 #: src/multiplayer_connect.cpp:957
 msgid ""
@@ -8875,7 +8947,7 @@ msgstr "Játék neve:"
 
 #: src/multiplayer_create.cpp:48
 msgid "Era:"
-msgstr "Éra:"
+msgstr "Korszak:"
 
 #: src/multiplayer_create.cpp:49
 msgid "Map to play:"
@@ -8939,7 +9011,7 @@ msgstr "Nincs többjátékos oldal."
 
 #: src/multiplayer_create.cpp:123
 msgid "No eras found"
-msgstr "Nem találtam érát"
+msgstr "Nem találtam korszakot"
 
 #: src/multiplayer_create.cpp:136
 msgid "$login's game"
@@ -8947,7 +9019,7 @@ msgstr "$login játéka"
 
 #: src/multiplayer_create.cpp:166
 msgid "Invalid era selected"
-msgstr "A kiválasztott éra érvénytelen"
+msgstr "A kiválasztott korszak érvénytelen"
 
 #: src/multiplayer_create.cpp:197
 msgid "You must enter a name."
@@ -9059,7 +9131,7 @@ msgstr "Nincs szabad oldal ebben a játékban"
 
 #: src/multiplayer_wait.cpp:208
 msgid "Era not available"
-msgstr "Az éra nem elérhető"
+msgstr "A korszak nem elérhető"
 
 #: src/multiplayer_wait.cpp:213
 msgid "No multiplayer sides found"
@@ -9675,86 +9747,3 @@ msgstr "igazságos"
 #: src/unit_types.cpp:932
 msgid "neutral"
 msgstr "semleges"
-
-#~ msgid ""
-#~ "Trolls are strong and brutal humanoid monsters with the amazing ability "
-#~ "to regenerate themselves, so that they recover from wounds on their own, "
-#~ "even during battle."
-#~ msgstr ""
-#~ "A trollok erős, durva emberszerű szörnyek, amelyek csodálatos módon "
-#~ "képesek harc közben visszanyerni életerejüket."
-
-#~ msgid ""
-#~ "Trolls are humanoid monsters that have the amazing ability to regenerate, "
-#~ "recovering from their wounds during battle. These trolls have armed "
-#~ "themselves with large rocks they hurl at their opponents."
-#~ msgstr ""
-#~ "A trollok erős, durva, emberszerű szörnyek, amelyek csodálatos módon "
-#~ "képesek harc közben visszanyerni életerejüket. Ezek a harcosok nagy "
-#~ "köveket hajítanak ellenfeleikre. "
-
-#~ msgid ""
-#~ "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, "
-#~ "and are able to regenerate, healing their own wounds during combat."
-#~ msgstr ""
-#~ "A harcedzett troll gyilkos erejű csapásokat mér ellenségére, emellett "
-#~ "harc közben is gyorsan gyógyulnak sebei."
-
-#~ msgid ""
-#~ "Trolls are humanoid monsters that have the amazing ability to regenerate, "
-#~ "recovering from their wounds during battle. Although these Trolls are "
-#~ "still weak whelps, their race is known for developing amazingly fast."
-#~ msgstr ""
-#~ "A trollok erős, durva emberszerű szörnyek, amelyek csodálatos módon "
-#~ "képesek harc közben visszanyerni életerejüket. Noha ez a troll viszonylag "
-#~ "gyengébb, fajuk meglepően gyors fejlődése közismert."
-
-#~ msgid "Ok"
-#~ msgstr "Oké"
-
-#~ msgid "Iterations:"
-#~ msgstr "Ismétlések:"
-
-#~ msgid "Bump Size:"
-#~ msgstr "Kiemelkedés mérete:"
-
-#~ msgid ""
-#~ "Most units have two traits. Traits are attributes of the unit that modify "
-#~ "its attributes slightly. They are assigned to a unit randomly when the "
-#~ "unit is recruited.\n"
-#~ "\n"
-#~ "The currently available traits are the following."
-#~ msgstr ""
-#~ "A legtöbb egységnek két jellemvonása van. A jellemvonások olyan "
-#~ "jellemzők, amik egy kicsit módosítják az egység tulajdonságait. Minden "
-#~ "egység toborzásakor véletlenszerűen kapja meg ezen két jellemvonását.\n"
-#~ "\n"
-#~ "A jelenleg elérhető jellemvonások a következők."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Loyal</header>\n"
-#~ "\n"
-#~ "Loyal units only ever require an upkeep of one, no matter what level they "
-#~ "are.\n"
-#~ "\n"
-#~ "Loyal has no effect on a level one unit, which makes it useless in the "
-#~ "early campaign. Once a unit begins to level up, however, it can save you "
-#~ "considerable gold over the course of the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Hűséges</header>\n"
-#~ "\n"
-#~ "A hűséges egységek mindig egy első szintű egység visszahívási költségét "
-#~ "kérik, függetlenül attól, hányadik szintűek is valójában.\n"
-#~ "\n"
-#~ "A hűséges jelzőnek nincs hatása az első szintű egységekre, ami miatt a "
-#~ "kezdeti küldetésekben nem sok hasznát lehet venni. Viszont ha az egység "
-#~ "szintet lép, képes sok aranyat spórolni neked az egész hadjárat folyamán."
-
-#~ msgid "Era not available: "
-#~ msgstr "Nincs elérhető éra:"
