@@ -21,6 +21,10 @@ CVS HEAD:
  * terrain improvements:
    * new forest tiles
  * unit balancing:
+     * Dwarvish Guardsmen line removed as leaders in multiplayer	
+     * Dwarvish Guardsmen line only get 1 trait instead of 2 	
+     * revert Drakes pierce resistance to 110%
+     * revert Orcish Assassin to 3-3 ranged attack	
      * reduced resistance of Ulfserker and Berserker
      * Elvish Rider: increase melee to 6-4, increase ranged to 7-3
      * Elvish Outrider: increase melee to 8-4, increase ranged to 7-4
@@ -47,6 +51,7 @@ CVS HEAD:
    * added a ./configure --enable-dummy-locales option for Wesnoth to generate
      its own set of i18n locale files and use them instead of the potentially
      missing system files (highly experimental)
+ * added support for num_traits in individual unit_types overriding race num_traits
  * fixed the missing 'elder-mage-halo7.png' in the Elder Mage
  * fixed some OoS errors when chatting while a fight is taking place
  * fixed the spurious "statistics verification failed" messages

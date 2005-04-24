@@ -693,7 +693,9 @@ const unit_type& unit_type::get_variation(const std::string& name) const
 	}
 }
 
-int unit_type::num_traits() const { return race_->num_traits(); }
+int unit_type::num_traits() const { 
+  return (cfg_["num_traits"].size() ? atoi(cfg_["num_traits"].c_str()) : race_->num_traits());
+}
 
 std::string unit_type::generate_description() const
 {
