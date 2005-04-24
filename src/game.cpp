@@ -546,14 +546,28 @@ bool game_controller::init_language()
 
 bool game_controller::play_test()
 {
+	static bool first_time = true;
+
 	if(test_mode_ == false) {
 		return true;
 	}
+	if(!first_time)
+		return false;
+
+	first_time = false;
 
 	state_.campaign_type = "test";
 	state_.scenario = "test";
 
-	::play_game(disp(),state_,game_config_,units_data_,video_);
+	try {
+		::play_game(disp(),state_,game_config_,units_data_,video_);
+	} catch(game::load_game_exception& e) {
+		loaded_game_ = e.game;
+		loaded_game_show_replay_ = e.show_replay;
+
+		return true;
+	}
+
 	return false;
 }
 

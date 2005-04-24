@@ -1666,6 +1666,14 @@ void turn_info::write_game_snapshot(config& start) const
 	status_.write(start);
 	game_events::write_events(start);
 
+	// Write terrain_graphics data in snapshot, too
+	const config::child_list& terrains = level_.get_children("terrain_graphics");
+	for(config::child_list::const_iterator tg = terrains.begin();
+			tg != terrains.end(); ++tg) {
+
+		start.add_child("terrain_graphics", **tg);
+	}
+
 	write_game(state_of_game_,start,WRITE_SNAPSHOT_ONLY);
 
 	// Clobber gold values to make sure the snapshot uses the values
