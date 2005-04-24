@@ -483,7 +483,8 @@ std::string wstring_to_string(const wide_string &src)
 	}
 }
 
-std::string wchar_to_string(const wchar_t c) {
+std::string wchar_to_string(const wchar_t c) 
+{
 	wide_string s;
 	s.push_back(c);
 	return wstring_to_string(s);
@@ -553,9 +554,75 @@ utf8_string ucs2_string_to_utf8_string(const ucs2_string& src)
 	return dst;
 }
 
+utf8_string capitalize(const utf8_string& s)
+{
+	if(s.size() > 0) {
+		utf8_iterator itor(s);
+#ifdef __APPLE__
+		// FIXME: Should we support towupper on recent OSX platforms?
+		wchar_t uchar = *itor;
+		if(uchar < 256)
+			uchar = toupper(uchar);
+		std::string res = utils::wchar_to_string(uchar);
+#else
+		std::string res = utils::wchar_to_string(towupper(*itor));
+#endif
+		res.append(itor.substr().second, s.end());
+		return res;
+	}
+	return s;
 }
 
-std::string vgettext (const char *msgid, const utils::string_map& symbols)
+utf8_string uppercase(const utf8_string& s)
+{
+	if(s.size() > 0) {
+		utf8_iterator itor(s);
+		std::string res;
+
+		for(;itor != utf8_iterator::end(s); ++itor) {
+#ifdef __APPLE__
+			// FIXME: Should we support towupper on recent OSX platforms?
+			wchar_t uchar = *itor;
+			if(uchar < 256)
+				uchar = toupper(uchar);
+			res += utils::wchar_to_string(uchar);
+#else
+			res += utils::wchar_to_string(towupper(*itor));
+#endif
+		}
+
+		return res;
+	}
+	return s;
+}
+
+utf8_string lowercase(const utf8_string& s)
+{
+	if(s.size() > 0) {
+		utf8_iterator itor(s);
+		std::string res;
+
+		for(;itor != utf8_iterator::end(s); ++itor) {
+#ifdef __APPLE__
+			// FIXME: Should we support towupper on recent OSX platforms?
+			wchar_t uchar = *itor;
+			if(uchar < 256)
+				uchar = tolower(uchar);
+			res += utils::wchar_to_string(uchar);
+#else
+			res += utils::wchar_to_string(towlower(*itor));
+#endif
+		}
+
+		res.append(itor.substr().second, s.end());
+		return res;
+	}
+	return s;
+}
+
+}
+
+std::string vgettext(const char *msgid, const utils::string_map& symbols)
 {
 	const std::string orig(_(msgid));
 	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);

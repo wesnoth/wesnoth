@@ -105,6 +105,13 @@ std::string wchar_to_string(const wchar_t);
 ucs2_string utf8_string_to_ucs2_string(const utf8_string& src);
 utf8_string ucs2_string_to_utf8_string(const ucs2_string& src);
 
+/** Returns a version of the string with the first letter capitalized */
+utf8_string capitalize(const utf8_string&);
+/** Returns an uppercased version of the string */
+utf8_string uppercase(const utf8_string&);
+/** Returns a lowercased version of the string */
+utf8_string lowercase(const utf8_string&);
+
 }
 
 // handy wrapper around interpolate_variables_into_string and gettext

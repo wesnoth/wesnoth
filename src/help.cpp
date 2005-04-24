@@ -483,9 +483,6 @@ std::string remove_first_space(const std::string& text);
 /// Return a lowercase copy of s.
 std::string to_lower(const std::string &s);
 
-/// Return a copy of s with the first letter capitalized.
-std::string cap(const std::string &s);
-
 /// Prepend all chars with meaning inside attributes with a backslash.
 std::string escape(const std::string &s);
 
@@ -980,7 +977,7 @@ std::vector<topic> generate_weapon_special_topics()
 				if (special != "") {
 					if (checked_specials.find(special) == checked_specials.end()) {
 						std::string lang_special = gettext(special.c_str());
-						lang_special = cap(lang_special);
+						lang_special = utils::capitalize(lang_special);
 						std::string description
 							= string_table["weapon_special_" + special + "_description"];
 						const size_t colon_pos = description.find(':');
@@ -1018,7 +1015,7 @@ std::vector<topic> generate_ability_topics()
 				 it != type.abilities().end(); it++) {
 				if (checked_abilities.find(*it) == checked_abilities.end()) {
 					const std::string id = "ability_" + *it;
-					std::string lang_ability = cap(string_table[id]);
+					std::string lang_ability = utils::capitalize(string_table[id]);
 					std::string description = string_table[*it + "_description"];
 					const size_t colon_pos = description.find(':');
 					if (colon_pos != std::string::npos) {
@@ -1115,7 +1112,7 @@ public:
 		std::vector<attack_type> attacks = type_.attacks();
 		if (!attacks.empty()) {
 			// Print headers for the table.
-			ss << "\n\n<header>text='" << escape(cap(_("attacks")))
+			ss << "\n\n<header>text='" << escape(utils::capitalize(_("attacks")))
 			   << "'</header>\n\n";
 			table_spec table;
 
@@ -1123,7 +1120,7 @@ public:
 			// Dummy element, icons are below.
 			first_row.push_back(item("", 0));
 			first_row.push_back(item(bold(_("Name")),
-						 font::line_width(cap(_("Name")),
+						 font::line_width(utils::capitalize(_("Name")),
 								  normal_font_size,
 								  TTF_STYLE_BOLD)));
 			first_row.push_back(item(bold(_("Type")),
@@ -2603,17 +2600,6 @@ std::string to_lower(const std::string &s)
 	return lower_string;
 }
 
-std::string cap(const std::string &s)
-{
-	if (s.size() > 0) {
-		utils::utf8_iterator itor(s);
-		std::string res = utils::wchar_to_string(towupper(*itor));
-		res.append(itor.substr().second, s.end());
-		return res;
-	}
-	return s;
-}
-	
 std::string escape(const std::string &s)
 {
 	std::string res = s;
