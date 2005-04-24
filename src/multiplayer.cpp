@@ -28,6 +28,7 @@
 #include "random.hpp"
 #include "replay.hpp"
 #include "video.hpp"
+#include "statistics.hpp"
 #include "serialization/string_utils.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
@@ -238,6 +239,7 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 	network_game_manager m;
 
 	gamelist.clear();
+	statistics::fresh_stats();
 
 	{
 		mp::wait ui(disp, game_config, data, chat, gamelist);
@@ -280,6 +282,7 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 	network_game_manager m;
 
 	gamelist.clear();
+	statistics::fresh_stats();
 
 	{
 		mp::connect ui(disp, game_config, data, chat, gamelist, params, default_controller);
