@@ -218,7 +218,7 @@ AC_ARG_ENABLE([wzip],
 	      [wzip=no])
 
 AC_ARG_ENABLE([dummy-locales],
-              AS_HELP_STRING([--enable-dummy-locales], [enable installation of Wesnoth own provate locales]),
+              AS_HELP_STRING([--enable-dummy-locales], [enable installation of Wesnoth own private locales]),
               [dummylocales=$enableval],
               [dummylocales=no])
 
