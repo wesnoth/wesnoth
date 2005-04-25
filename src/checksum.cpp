@@ -51,8 +51,8 @@ void checksumstreambuf::sum(unsigned char* begin, unsigned char* end)
 			x = (unsigned short)(*p) + ((unsigned short)(*(p+1)) << 8);
 		}
 
-		sa += sb;
-		sb += x;
+		sa = 0xffff & ((unsigned long)(sa) + (unsigned long)(sb));
+		sb = 0xffff & ((unsigned long)(x) + (unsigned long)(sb));
 	}
 }
 
