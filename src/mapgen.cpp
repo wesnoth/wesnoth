@@ -425,7 +425,7 @@ int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, in
 	}
 
 	const int x_from_border = minimum<int>(x - min_x,max_x - x);
-	const int y_from_border = minimum<int>(y = min_y,max_y - y);
+	const int y_from_border = minimum<int>(y - min_y,max_y - y);
 
 	const int border_ranking = min_distance - minimum<int>(x_from_border,y_from_border) +
 	                           min_distance - x_from_border - y_from_border;
