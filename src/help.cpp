@@ -1100,8 +1100,8 @@ public:
 						 font::line_width(_("Type"),
 								  normal_font_size,
 								  TTF_STYLE_BOLD)));
-			first_row.push_back(item(bold(_("Dmg")),
-						 font::line_width(_("Dmg"),
+			first_row.push_back(item(bold(_("Damage")),
+						 font::line_width(_("Damage"),
 								  normal_font_size,
 								  TTF_STYLE_BOLD)));
 			first_row.push_back(item(bold(_("Strikes")),
