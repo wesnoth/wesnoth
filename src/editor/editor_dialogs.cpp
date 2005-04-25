@@ -405,7 +405,7 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 
 	gui::button cancel_button(disp.video(), _("Cancel"));
-	gui::button ok_button(disp.video(), _("Ok"));
+	gui::button ok_button(disp.video(), _("OK"));
 
 	cancel_button.set_location(xpos + width - cancel_button.width() - horz_margin,
 	                           ypos + height - cancel_button.height()-14);
