@@ -22,6 +22,7 @@
 #include "help.hpp"
 #include "image.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "show_dialog.hpp"
@@ -1979,15 +1980,11 @@ void help_text_area::add_img_item(const std::string path, const std::string alig
 								  const bool floating, const bool box)
 {
 	surface surf(image::get_image(path, image::UNSCALED));
-	if (surf == NULL) {
-		std::stringstream msg;
-		msg << "Image " << path << " could not be loaded.";
-		std::cerr << msg.str();
+	if (surf.null())
 		return;
-	}
 	ALIGNMENT align = str_to_align(alignment);
 	if (align == HERE && floating) {
-		std::cerr << "Floating image with align HERE, aligning left." << std::endl;
+		LOG_STREAM(warn, display) << "Floating image with align HERE, aligning left.\n";
 		align = LEFT;
 	}
 	const int width = surf->w + (box ? box_width * 2 : 0);
@@ -2488,6 +2485,7 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 		}
 		else {
 			if (c == '\'' && !last_char_escape) {
+				ss << '"';
 				in_quotes = !in_quotes;
 			}
 			else if ((c == ' ' || c == '\n') && !last_char_escape && !in_quotes) {
