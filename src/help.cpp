@@ -1010,6 +1010,10 @@ std::vector<topic> generate_ability_topics()
 class unit_topic_generator: public topic_generator
 {
 	unit_type type_;
+	typedef std::pair< std::string, unsigned > item;
+	void push_header(std::vector< item > &row, char const *name) const {
+		row.push_back(item(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD)));
+	}
 public:
 	unit_topic_generator(unit_type const &t): type_(t) {}
 	virtual std::string operator()() const {
@@ -1080,8 +1084,6 @@ public:
 		// Print the detailed description about the unit.
 		ss << "\n\n" << detailed_description;
 
-		typedef std::pair<std::string,unsigned int> item;
-
 		// Print the different attacks a unit has, if it has any.
 		std::vector<attack_type> attacks = type_.attacks();
 		if (!attacks.empty()) {
@@ -1093,30 +1095,11 @@ public:
 			std::vector<item> first_row;
 			// Dummy element, icons are below.
 			first_row.push_back(item("", 0));
-			first_row.push_back(item(bold(_("Name")),
-						 font::line_width(utils::capitalize(_("Name")),
-								  normal_font_size,
-								  TTF_STYLE_BOLD)));
-			first_row.push_back(item(bold(_("Type")),
-						 font::line_width(_("Type"),
-								  normal_font_size,
-								  TTF_STYLE_BOLD)));
-			first_row.push_back(item(bold(_("Damage")),
-						 font::line_width(_("Damage"),
-								  normal_font_size,
-								  TTF_STYLE_BOLD)));
-			first_row.push_back(item(bold(_("Strikes")),
-						 font::line_width(_("Strikes"),
-								  normal_font_size,
-								  TTF_STYLE_BOLD)));
-			first_row.push_back(item(bold(_("Range")),
-						 font::line_width(_("Range"),
-								  normal_font_size,
-								  TTF_STYLE_BOLD)));
-			first_row.push_back(item(bold(_("Special")),
-						 font::line_width(_("Special"),
-								  normal_font_size,
-								  TTF_STYLE_BOLD)));
+			push_header(first_row, _("Name"));
+			push_header(first_row, _("Type"));
+			push_header(first_row, _("Strikes"));
+			push_header(first_row, _("Range"));
+			push_header(first_row, _("Special"));
 			table.push_back(first_row);
 			// Print information about every attack.
 			for(std::vector<attack_type>::const_iterator attack_it = attacks.begin(),
@@ -1129,13 +1112,10 @@ public:
 				attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
 				row.push_back(std::make_pair(attack_ss.str(),
 							     image_width(attack_it->icon())));
-				attack_ss.str(clear_stringstream);
 				push_tab_pair(row, lang_weapon);
 				push_tab_pair(row, lang_type);
-				attack_ss << attack_it->damage();
-				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
-				attack_ss << attack_it->num_attacks();
+				attack_ss << attack_it->damage() << '-' << attack_it->num_attacks();
 				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
 				push_tab_pair(row, (*attack_it).range() == attack_type::SHORT_RANGE ?
@@ -1163,14 +1143,8 @@ public:
 		   << "'</header>\n\n";
 		table_spec resistance_table;
 		std::vector<item> first_res_row;
-		first_res_row.push_back(std::make_pair(bold(_("Attack Type")),
-						       font::line_width(_("Attack Type"),
-									normal_font_size,
-									TTF_STYLE_BOLD)));
-		first_res_row.push_back(std::make_pair(bold(_("Resistance")),
-						       font::line_width(_("Resistance"),
-									normal_font_size,
-									TTF_STYLE_BOLD)));
+		push_header(first_res_row, _("Attack Type"));
+		push_header(first_res_row, _("Resistance"));
 		resistance_table.push_back(first_res_row);
 		const unit_movement_type &movement_type = type_.movement_type();
 		string_map dam_tab = movement_type.damage_table();
@@ -1199,18 +1173,9 @@ public:
 			   << "'</header>\n\n";
 			std::vector<item> first_row;
 			table_spec table;
-			first_row.push_back(std::make_pair(bold(_("Terrain")),
-								   font::line_width(_("Terrain"),
-										    normal_font_size,
-										    TTF_STYLE_BOLD)));
-			first_row.push_back(std::make_pair(bold(_("Movement")),
-							   font::line_width(_("Movement"),
-									    normal_font_size,
-									    TTF_STYLE_BOLD)));
-			first_row.push_back(std::make_pair(bold(_("Defense")),
-							   font::line_width(_("Defense"),
-									    normal_font_size,
-									    TTF_STYLE_BOLD)));
+			push_header(first_row, _("Terrain"));
+			push_header(first_row, _("Movement"));
+			push_header(first_row, _("Defense"));
 			table.push_back(first_row);
 			for (std::set<std::string>::const_iterator terrain_it =
 					 preferences::encountered_terrains().begin(),
