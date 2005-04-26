@@ -45,6 +45,7 @@ std::vector<std::string> get_text() {
 		"-   Isaac Clerencia",
 		"-   Jan Zvánovec (jaz)",
 		"-   John B. Messerly",
+		"-   Jon Daniel (forcemstr)",
 		"-   Justin Zaun (jzaun)",
 		"-   J.R. Blain (Cowboy)",
 		"-   Kristoffer Erlandsson (erl)",
