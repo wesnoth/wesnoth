@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C) 2005 
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 #include "network.hpp"
 #include "sound.hpp"
 #include "video.hpp"
+#include "replay.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
@@ -38,6 +39,33 @@ void check_response(network::connection res, const config& data)
 	if(err != NULL) {
 		throw network::error((*err)["message"]);
 	}
+}
+
+void level_to_gamestate(config& level, game_state& state)
+{
+	//any replay data is only temporary and should be removed from
+	//the level data in case we want to save the game later
+	config * const replay_data = level.child("replay");
+	config replay_data_store;
+	if(replay_data != NULL) {
+		replay_data_store = *replay_data;
+		LOG_NW << "setting replay\n";
+		recorder = replay(replay_data_store);
+		if(!recorder.empty()) {
+			recorder.set_skip(-1);
+		}
+
+		level.clear_children("replay");
+	}
+
+	//adds the starting pos to the level
+	if(level.child("replay_start") == NULL)
+		level.add_child("replay_start") = level;
+
+	level["campaign_type"] = "multiplayer";
+	state.campaign_type = "multiplayer";
+	state.snapshot = level;
+
 }
 
 std::string get_colour_string(int id)

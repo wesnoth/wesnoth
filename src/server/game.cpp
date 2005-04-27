@@ -535,6 +535,11 @@ void game::record_data(const config& data)
 	history_.append(data);
 }
 
+void game::reset_history()
+{
+	history_.clear();
+}
+
 bool game::level_init() const
 {
 	return level_.child("side") != NULL;

@@ -35,7 +35,6 @@ public:
 	void join_game(bool observe);
 
 	const game_state& get_state();
-	const config& get_level();
 
 	void start_game();
 

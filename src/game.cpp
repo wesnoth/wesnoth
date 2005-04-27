@@ -39,7 +39,7 @@
 #include "multiplayer.hpp"
 #include "network.hpp"
 #include "pathfind.hpp"
-#include "playlevel.hpp"
+#include "playcampaign.hpp"
 #include "preferences.hpp"
 #include "publish_campaign.hpp"
 #include "replay.hpp"
@@ -72,156 +72,6 @@
 #include <iterator>
 #include <sstream>
 #include <string>
-
-LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
-				       game_data& units_data, CVideo& video)
-{
-	std::string type = state.campaign_type;
-	if(type.empty())
-		type = "scenario";
-
-	config* scenario = NULL;
-
-	//'starting_pos' will contain the position we start the game from.
-	config starting_pos;
-
-	recorder.set_save_info(state);
-
-	//see if we load the scenario from the scenario data -- if there is
-	//no snapshot data available from a save, or if the user has selected
-	//to view the replay from scratch
-	if(state.snapshot.child("side") == NULL || !recorder.at_end()) {
-		//if the starting state is specified, then use that,
-		//otherwise get the scenario data and start from there.
-		if(state.starting_pos.empty() == false) {
-			std::cerr << "loading starting position...\n";
-			starting_pos = state.starting_pos;
-			scenario = &starting_pos;
-		} else {
-			std::cerr << "loading scenario: '" << state.scenario << "'\n";
-			scenario = game_config.find_child(type,"id",state.scenario);
-			std::cerr << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
-		}
-	} else {
-		std::cerr << "loading snapshot...\n";
-		//load from a save-snapshot.
-		starting_pos = state.snapshot;
-		scenario = &starting_pos;
-		state = read_game(units_data,&state.snapshot);
-	}
-
-	while(scenario != NULL) {
-
-		const config::child_list& story = scenario->get_children("story");
-		const std::string current_scenario = state.scenario;
-
-		bool save_game_after_scenario = true;
-
-		try {
-			state.label = (*scenario)["name"];
-
-			LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story);
-
-			state.snapshot = config();
-
-			//ask to save a replay of the game
-			if(res == VICTORY || res == DEFEAT) {
-				const std::string orig_scenario = state.scenario;
-				state.scenario = current_scenario;
-
-				std::string label = state.label + " replay";
-
-				bool retry = true;
-
-				while(retry) {
-					retry = false;
-
-					const int should_save = dialogs::get_save_name(disp,
-												_("Do you want to save a replay of this scenario?"),
-												_("Name:"),
-												&label);
-					if(should_save == 0) {
-						try {
-							config snapshot;
-
-							recorder.save_game(label, snapshot, state.starting_pos);
-						} catch(game::save_game_failed&) {
-							gui::show_error_message(disp, _("The game could not be saved"));
-							retry = true;
-						};
-					}
-				}
-
-				state.scenario = orig_scenario;
-			}
-
-			recorder.clear();
-			state.replay_data.clear();
-
-			//continue without saving is like a victory, but the save game dialog isn't displayed
-			if(res == LEVEL_CONTINUE_NO_SAVE) {
-				res = VICTORY;
-				save_game_after_scenario = false;
-			}
-
-			if(res != VICTORY) {
-				return res;
-			}
-		} catch(game::load_game_failed& e) {
-			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
-			return QUIT;
-		} catch(game::game_error& e) {
-			gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
-			return QUIT;
-		} catch(gamemap::incorrect_format_exception& e) {
-			gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
-			return QUIT;
-		}
-
-		//if the scenario hasn't been set in-level, set it now.
-		if(state.scenario == current_scenario)
-			state.scenario = (*scenario)["next_scenario"];
-
-		scenario = game_config.find_child(type,"id",state.scenario);
-
-		//if this isn't the last scenario, then save the game
-		if(scenario != NULL && save_game_after_scenario) {
-			state.label = (*scenario)["name"];
-			state.starting_pos = config();
-
-			bool retry = true;
-
-			while(retry) {
-				retry = false;
-
-				const int should_save = dialogs::get_save_name(disp,
-													_("Do you want to save your game?"),
-													_("Name:"),
-													&state.label);
-
-				if(should_save == 0) {
-					try {
-						save_game(state);
-					} catch(game::save_game_failed&) {
-						gui::show_error_message(disp, _("The game could not be saved"));
-						retry = true;
-					}
-				}
-			}
-
-			state.starting_pos = *scenario;
-		}
-
-		recorder.set_save_info(state);
-	}
-
-	if (!state.scenario.empty() && state.scenario != "null") {
-		gui::show_error_message(disp, _("Unknown scenario: '") + state.scenario + '\'');
-		return QUIT;
-	}
-
-	return VICTORY;
-}
 
 namespace {
 
@@ -719,7 +569,8 @@ bool game_controller::play_multiplayer_mode()
    	}
 
    	try {
-   		play_level(units_data_,game_config_,&level,video_,state_,story);
+		::play_game(disp(),state_,game_config_,units_data_,video_);
+   		//play_level(units_data_,game_config_,&level,video_,state_,story);
    	} catch(game::error& e) {
    		std::cerr << "caught error: '" << e.message << "'\n";
    	} catch(game::load_game_exception& e) {
@@ -835,46 +686,11 @@ bool game_controller::load_game()
 	if(state_.campaign_type == "tutorial") {
 		defines_map_["TUTORIAL"] = preproc_define();
 	} else if(state_.campaign_type == "multiplayer") {
-		//make all network players local
 		for(config::child_itors sides = state_.snapshot.child_range("side");
 		    sides.first != sides.second; ++sides.first) {
 			if((**sides.first)["controller"] == "network")
 				(**sides.first)["controller"] = "human";
 		}
-		//make all network players local, even in the replay starting pos, if any
-		for(config::child_itors sides = state_.starting_pos.child_range("side");
-		    sides.first != sides.second; ++sides.first) {
-			if((**sides.first)["controller"] == "network")
-				(**sides.first)["controller"] = "human";
-		}
-	
-		recorder.set_save_info(state_);
-		std::vector<config*> story;
-
-		config starting_pos;
-		if(recorder.at_end()) {
-			starting_pos = state_.snapshot;
-                                // state.gold = -100000;
-		} else {
-			starting_pos = state_.starting_pos;
-		}
-
-		try {
-			play_level(units_data_,game_config_,&starting_pos,video_,state_,story);
-			recorder.clear();
-		} catch(game::load_game_failed& e) {
-			gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);
-		} catch(game::game_error& e) {
-			gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
-		} catch(game::load_game_exception& e) {
-			//this will make it so next time through the title screen loop, this game is loaded
-			loaded_game_ = e.game;
-			loaded_game_show_replay_ = e.show_replay;
-		} catch(gamemap::incorrect_format_exception& e) {
-			gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
-		}
-
-		return false;
 	}
 
 	return true;

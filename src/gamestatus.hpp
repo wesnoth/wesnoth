@@ -49,7 +49,7 @@ struct time_of_day
 class gamestatus
 {
 public:
-	gamestatus(config& time_cfg, int num_turns);
+	gamestatus(const config& time_cfg, int num_turns);
 	void write(config& cfg) const;
 
 	const time_of_day& get_time_of_day() const;
@@ -79,15 +79,15 @@ private:
 	int numTurns_;
 };
 
-// Information on a particular player of the game.
+/** Information on a particular player of the game. */
 struct player_info
 {
 	player_info():gold(-1) {}
 
-	int gold; //amount of gold the player has saved
-	std::vector<unit> available_units; //units the player may recall
+	int gold; /** < amount of gold the player has saved */
+	std::vector<unit> available_units; /** < units the player may recall */
 
-	std::set<std::string> can_recruit; //units the player has the ability to recruit
+	std::set<std::string> can_recruit; /** < units the player has the ability to recruit */
 };
 
 //object which holds all the data needed to start a scenario.
@@ -131,10 +131,6 @@ struct game_state : public variable_set
 	//for multiplayer games, the position the game started in may be different to
 	//the scenario, so we save the starting state of the game here.
 	config starting_pos;
-
-	//information about the starting conditions of the scenario. Used in
-	//multiplayer games, when the starting position isn't just literally
-	//read from a file, since there is game setup information.
 
 	//the snapshot of the game's current contents. i.e. unless the player selects
 	//to view a replay, the game's settings are read in from this object

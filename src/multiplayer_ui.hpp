@@ -13,8 +13,6 @@
 #ifndef MULTIPLAYER_UI_HPP_INCLUDED
 #define MULTIPLAYER_UI_HPP_INCLUDED
 
-class display;
-
 #include "config.hpp"
 #include "hotkeys.hpp"
 #include "network.hpp"
@@ -26,9 +24,16 @@ class display;
 #include <deque>
 #include <string>
 
+class display;
+struct game_state;
+
 namespace mp {
 
+enum controller { CNTR_NETWORK = 0, CNTR_LOCAL, CNTR_COMPUTER, CNTR_EMPTY, CNTR_LAST };
+
 void check_response(network::connection res, const config& data);
+
+void level_to_gamestate(config& level, game_state& state);
 
 std::string get_colour_string(int id);
 

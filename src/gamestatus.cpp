@@ -97,7 +97,7 @@ void parse_times(const config& cfg, std::vector<time_of_day>& normal_times, std:
 
 }
 
-gamestatus::gamestatus(config& time_cfg, int num_turns) :
+gamestatus::gamestatus(const config& time_cfg, int num_turns) :
                  turn_(1),numTurns_(num_turns)
 {
 	const std::string& turn_at = time_cfg["turn_at"];

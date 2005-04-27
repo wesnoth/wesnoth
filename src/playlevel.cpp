@@ -122,7 +122,7 @@ namespace {
 }
 
 LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
-		config* level, CVideo& video,
+		config const* level, CVideo& video,
 		game_state& state_of_game,
 		const std::vector<config*>& story)
 {
@@ -262,6 +262,15 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 
 		teams.push_back(team(**ui,ngold));
 
+		//update/fix the recall list for this side, by setting the
+		//"side" of each unit in it to be the "side" of the player.
+		int side = lexical_cast_default<int>((**ui)["side"], 1);
+		if(player != NULL) {
+			for(std::vector<unit>::iterator it = player->available_units.begin(); it != player->available_units.end(); ++it) {
+				it->set_side(side);
+			}
+		}
+
 		//if this team has no objectives, set its objectives to the
 		//level-global "objectives"
 		if(teams.back().objectives().empty())
@@ -289,7 +298,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 			gamemap::location start_pos(**ui);
 
 			if(has_loc.empty()) {
-				start_pos = map.starting_position(new_unit.side());
+				start_pos = map.starting_position(side);
 				LOG_NG << "initializing side '" << (**ui)["side"] << "' at "
 				       << start_pos.x << "," << start_pos.y << "\n";
 			}
@@ -324,7 +333,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
 			unit new_unit(gameinfo,**su);
 
-			new_unit.set_side(lexical_cast_default<int>((**ui)["side"],1));
+			new_unit.set_side(side);
 
 			const std::string& x = (**su)["x"];
 			const std::string& y = (**su)["y"];

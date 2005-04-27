@@ -23,7 +23,7 @@
 #include "multiplayer_lobby.hpp"
 #include "multiplayer_create.hpp"
 #include "network.hpp"
-#include "playlevel.hpp"
+#include "playcampaign.hpp"
 #include "preferences.hpp"
 #include "random.hpp"
 #include "replay.hpp"
@@ -234,7 +234,6 @@ server_type open_connection(display& disp, const std::string& original_host)
 void enter_wait_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist, bool observe)
 {
 	mp::ui::result res;
-	config level;
 	game_state state;
 	network_game_manager m;
 
@@ -251,14 +250,14 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
-			level = ui.get_level();
+
 			state = ui.get_state();
 		}
 	}
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_level(data, game_config, &level, disp.video(), state, std::vector<config*>());
+		play_game(disp, state, game_config, data, disp.video(), IO_CLIENT);
 		recorder.clear();
 
 		break;
@@ -273,7 +272,6 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 		mp::controller default_controller, bool is_server)
 {
 	mp::ui::result res;
-	config level;
 	game_state state;
 	const network::manager net_manager;
 	const network::server_manager serv_manager(15000, is_server ? 
@@ -294,14 +292,13 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 		// so it must be called before get_level() 
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
-			level = ui.get_level();
 			state = ui.get_state();
 		}
 	}
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_level(data, game_config, &level, disp.video(), state, std::vector<config*>());
+		play_game(disp, state, game_config, data, disp.video(), IO_SERVER);
 		recorder.clear();
 
 		break;

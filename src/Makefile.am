@@ -81,6 +81,7 @@ wesnoth_SOURCES = \
 	network_worker.cpp \
 	pathfind.cpp \
 	pathutils.cpp \
+	playcampaign.cpp \
 	playlevel.cpp \
 	playturn.cpp \
 	preferences.cpp \
@@ -175,6 +176,7 @@ wesnoth_SOURCES = \
 	network_worker.hpp \
 	pathfind.hpp \
 	pathutils.hpp \
+	playcampaign.hpp \
 	playlevel.hpp \
 	playturn.hpp \
 	preferences.hpp \

@@ -18,7 +18,6 @@
 #include "log.hpp"
 #include "multiplayer_wait.hpp"
 #include "preferences.hpp"
-#include "replay.hpp"
 #include "statistics.hpp"
 #include "util.hpp"
 #include "video.hpp"
@@ -251,53 +250,17 @@ const game_state& wait::get_state()
 	return state_;
 }
 
-const config& wait::get_level()
-{
-	return level_;
-}
-
 void wait::start_game() 
 {
-	const config::child_list& sides_list = level_.get_children("side");
-	for(config::child_list::const_iterator side = sides_list.begin(); 
-			side != sides_list.end(); ++side) {
-		if((**side)["controller"] == "network" && (**side)["description"] == preferences::login()) {
-			(**side)["controller"] = preferences::client_type();
-		} else if((**side)["controller"] != "null") {
-			(**side)["controller"] = "network";
-		}
-	}
-
-	//any replay data is only temporary and should be removed from
-	//the level data in case we want to save the game later
-	config* const replay_data = level_.child("replay");
-	config replay_data_store;
-	if(replay_data != NULL) {
-		replay_data_store = *replay_data;
-		LOG_NW << "setting replay\n";
-		recorder = replay(replay_data_store);
-		if(!recorder.empty()) {
-			recorder.set_skip(-1);
-		}
-
-		level_.clear_children("replay");
-	}
-
 	config const * const stats = level_.child("statistics");
 	if(stats != NULL) {
 		statistics::fresh_stats();
 		statistics::read_stats(*stats);
 	}
 
-	LOG_NW << "starting game\n";
+	level_to_gamestate(level_, state_);
 
-	state_.campaign_type = "multiplayer";
-	state_.label = level_["name"];
-	state_.scenario = level_["id"];
-	state_.starting_pos = level_;
-	state_.snapshot = level_;
-	state_.players.clear();
-	recorder.set_save_info(state_);
+	LOG_NW << "starting game\n";
 }
 
 void wait::layout_children(const SDL_Rect& rect)

@@ -26,6 +26,10 @@
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 
+//DEBUG
+#include <iostream>
+#include <serialization/parser.hpp>
+
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
@@ -600,10 +604,13 @@ const std::vector<std::string>& unit::overlays() const
 void unit::read(const game_data& data, const config& cfg)
 {
 	std::map<std::string,unit_type>::const_iterator i = data.unit_types.find(cfg["type"]);
-	if(i != data.unit_types.end())
+	if(i != data.unit_types.end()) {
 		type_ = &i->second;
-	else
+	} else {
+		//DEBUG
+		::write(std::cerr, cfg);
 		throw game::load_game_failed("Unit not found: '" + cfg["type"] + "'");
+	}
 
 	wassert(type_ != NULL);
 

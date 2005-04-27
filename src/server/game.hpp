@@ -58,6 +58,7 @@ public:
 	void send_data_observers(const config& data);
 
 	void record_data(const config& data);
+	void reset_history();
 
 	//the full scenario data
 	bool level_init() const;

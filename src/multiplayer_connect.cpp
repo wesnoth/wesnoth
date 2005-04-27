@@ -20,7 +20,6 @@
 #include "log.hpp"
 #include "multiplayer_connect.hpp"
 #include "preferences.hpp"
-#include "replay.hpp"
 #include "statistics.hpp"
 #include "show_dialog.hpp"
 #include "wassert.hpp"
@@ -501,6 +500,8 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	network::send_data(response);
 
 	load_game();
+	if(get_result() == QUIT)
+		return;
 	lists_init();
 
 	// Adds the current user as default user.
@@ -571,11 +572,6 @@ void connect::process_event()
 	}
 }
 
-const config& connect::get_level()
-{
-	return level_;
-}
-
 const game_state& connect::get_state()
 {
 	return state_;
@@ -594,23 +590,15 @@ void connect::start_game()
 	lock.add_child("stop_updates");
 	network::send_data(lock);
 
-	// Replays the level
-	recorder.set_save_info(state_);
-	recorder.set_skip(-1);
-	level_.clear_children("replay");
-
 	// Re-sends the whole level
 	update_and_send_diff();
 
-	// This must be done after updating level_
-	state_.snapshot = level_;
-	state_.starting_pos = level_;
-	state_.players.clear();
+	// Build the gamestate object after updating the level
+	level_to_gamestate(level_, state_);
 
 	config cfg;
 	cfg.add_child("start_game");
 	network::send_data(cfg);
-
 }
 
 void connect::hide_children(bool hide)
@@ -878,13 +866,14 @@ void connect::load_game()
 			return;
 		}
 		
-		//state_.players.clear();
 		std::string error_log;
 		::load_game(game_data_, game, state_, &error_log);
 		if(!error_log.empty()) {
 			gui::show_error_message(disp(), 
 					_("The file you have tried to load is corrupt: '") +
 					error_log);
+			set_result(QUIT);
+			return;
 		}
 
 		if(state_.campaign_type != "multiplayer") {
@@ -905,23 +894,15 @@ void connect::load_game()
 		}
 
 		level_ = state_.snapshot;
+
+		// Adds the replay data, and the replay start, to the level, so
+		// clients can receive it.
+		level_.add_child("replay") = state_.replay_data;
+		if(!state_.starting_pos.empty())
+			level_.add_child("replay_start") = state_.starting_pos;
+
 		level_.add_child("statistics") = statistics::write_stats();
 
-		recorder = replay(state_.replay_data);
-
-		//if this is a snapshot save, we don't want to use the replay data
-		if(level_["snapshot"] == "yes") {
-			config* const start = level_.child("start");
-			if(start != NULL)
-				start->clear_children("replay");
-			level_.clear_children("replay");
-			recorder.set_to_end();
-		} else {
-			//add the replay data under the level data so clients can
-			//receive it
-			level_.clear_children("replay");
-			level_.add_child("replay") = state_.replay_data;
-		}
 	} else {
 		level_ = params_.scenario_data;
 		level_["turns"] = lexical_cast_default<std::string>(params_.num_turns, "20");
@@ -937,16 +918,12 @@ void connect::load_game()
 			throw config::error(vgettext("Cannot find era $era", i18n_symbols));
 		}
 		era_sides_ = era_cfg->get_children("multiplayer_side");
+		level_["scenario"] = params_.name;
 		level_.add_child("era", *era_cfg);
 	}
 
 	//this will force connecting clients to be using the same version number as us.
 	level_["version"] = game_config::version;
-
-	state_.label = level_["name"];
-	state_.players.clear();
-	level_["scenario"] = state_.scenario = params_.name;
-	state_.campaign_type = "multiplayer";
 
 	if(!params_.saved_game) 
 		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
