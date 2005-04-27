@@ -38,42 +38,28 @@
 
 static const size_t max_recursion_levels = 100;
 
-line_source get_line_source(std::vector< line_source > const &line_src, int line)
-{
-	line_source res(line, "", 0);
-	std::vector< line_source >::const_iterator it =
-		std::upper_bound(line_src.begin(), line_src.end(), res);
-	if (it != line_src.begin()) {
-		--it;
-		res.file = it->file;
-		res.fileline = it->fileline + (line - it->linenum);
-	}
-
-	return res;
-}
-
 namespace {
 
 class parser
 {
 public:
-	parser(config& cfg, std::istream& in, std::vector<line_source> const* line_sources);
+	parser(config& cfg, std::istream& in);
 	void operator() (std::string* error_log=NULL);
 
 private:
 	void parse_element();
 	void parse_variable();
 	void parse_directive();
-	std::string lineno_string(utils::string_map& map, size_t lineno,
-			const std::string& string1, const std::string& string2);
+	std::string lineno_string(utils::string_map &map, std::string const &lineno,
+			          std::string const &error_string);
 	void error(const std::string& message);
 
 	config& cfg_;
 	tokenizer tok_;
-	std::vector<line_source> const* line_sources;
 
 	struct element {
-		element(config* cfg, const std::string& name, size_t start_line, const std::string& textdomain) :
+		element(config *cfg, std::string const &name, std::string const &start_line,
+		        std::string const &textdomain) :
 			cfg(cfg), name(name), textdomain(textdomain), start_line(start_line){};
 
 		config* cfg;
@@ -81,7 +67,7 @@ private:
 
 		std::map<std::string, config*> last_element_map;
 		std::string textdomain;
-		size_t start_line;
+		std::string start_line;
 	};
 
 	std::stack<element> elements;
@@ -89,10 +75,9 @@ private:
 	std::string current_textdomain_location;
 };
 
-parser::parser(config &cfg, std::istream &in, std::vector<line_source> const *line_sources) :
+parser::parser(config &cfg, std::istream &in) :
 	cfg_(cfg),
 	tok_(in),
-	line_sources(line_sources),
 	current_textdomain_location("")
 {
 }
@@ -100,7 +85,7 @@ parser::parser(config &cfg, std::istream &in, std::vector<line_source> const *li
 void parser::operator()(std::string* error_log)
 {
 	cfg_.clear();
-	elements.push(element(&cfg_, "", 0, PACKAGE));
+	elements.push(element(&cfg_, "", "", PACKAGE));
 	tok_.textdomain() = PACKAGE;
 
 	do {
@@ -143,8 +128,7 @@ void parser::operator()(std::string* error_log)
 		utils::string_map i18n_symbols;
 		i18n_symbols["tag"] = elements.top().name;
 		error(lineno_string(i18n_symbols, elements.top().start_line,
-				N_("Missing closing tag for tag $tag (file $file, line $line)"),
-				N_("Missing closing tag for tag $tag (line $line)")));
+				N_("Missing closing tag for tag $tag at $pos")));
 	}
 }
 
@@ -200,8 +184,7 @@ void parser::parse_element()
 			utils::string_map i18n_symbols;
 			i18n_symbols["tag"] = elements.top().name;
 			error(lineno_string(i18n_symbols, elements.top().start_line,
-					N_("Found invalid closing tag for tag $tag (file $file, line $line)"),
-					N_("Found invalid closing tag for tag $tag (line $line)")));
+					N_("Found invalid closing tag for tag $tag at $pos")));
 		}
 
 		elements.pop();
@@ -303,25 +286,23 @@ void parser::parse_variable()
 	}
 }
 
-std::string parser::lineno_string(utils::string_map& i18n_symbols, size_t lineno,
-			const std::string& string1, const std::string& string2)
+std::string parser::lineno_string(utils::string_map &i18n_symbols, std::string const &lineno,
+			          std::string const &error_string)
 {
+	std::vector< std::string > pos = utils::split(lineno, ' ');
+	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
+	std::string included_from = _(" included from ");
 	std::string res;
-
-	if(line_sources != NULL) {
-		const line_source src = get_line_source(*line_sources, lineno);
-		i18n_symbols["file"] = lexical_cast<std::string>(src.file);
-		i18n_symbols["line"] = lexical_cast<std::string>(src.fileline);
-		i18n_symbols["column"] = lexical_cast<std::string>(tok_.get_column());
-
-		res = vgettext(string1.c_str(), i18n_symbols);
-	} else {
-		i18n_symbols["line"] = lexical_cast<std::string>(lineno);
-		i18n_symbols["column"] = lexical_cast<std::string>(tok_.get_column());
-
-		res = vgettext(string2.c_str(), i18n_symbols);
+	while (i != end) {
+		std::string const &line = *(i++);
+		std::string const &file = i != end ? *(i++) : "<unknown>";
+		if (!res.empty())
+			res += included_from;
+		res += file + ':' + line;
 	}
-	return res;
+	if (res.empty()) res = "???";
+	i18n_symbols["pos"] = res;
+	return vgettext(error_string.c_str(), i18n_symbols);
 }
 
 void parser::error(const std::string& error_type)
@@ -329,17 +310,16 @@ void parser::error(const std::string& error_type)
 	utils::string_map i18n_symbols;
 	i18n_symbols["error"] = error_type;
 
-	throw config::error(lineno_string(i18n_symbols, tok_.get_line(), 
-				N_("$error in file $file (line $line, column $column)"),
-				N_("$error (line $line, column $column)")));
+	throw config::error(
+		lineno_string(i18n_symbols, tok_.get_line(), 
+		              N_("$error at $pos")));
 }
 
 } // end anon namespace
 
-void read(config &cfg, std::istream &data_in, std::vector< line_source > const *line_sources,
-		std::string* error_log)
+void read(config &cfg, std::istream &data_in, std::string* error_log)
 {
-	parser(cfg, data_in, line_sources)(error_log);
+	parser(cfg, data_in)(error_log);
 }
 
 static char const *AttributeEquals = "=";

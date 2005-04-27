@@ -49,8 +49,7 @@ public:
 
 	const token& next_token();
 	const token& current_token();
-	const size_t get_line();
-	const size_t get_column();
+	std::string get_line();
 	std::string& textdomain();
 private:
 	void next_char();
@@ -58,16 +57,14 @@ private:
 	int peek_char();
 	bool is_space(int c);
 	bool is_alnum(int c);
-//	void textdomain_init(const std::string& domain, const std::string& path);
 
 	std::istream& in_;
 	int current_;
 
 	std::string textdomain_;
+	std::string file_;
 	size_t tokenstart_lineno_;
-	size_t tokenstart_colno_;
 	size_t lineno_;
-	size_t colno_;
 	token token_;
 };
 

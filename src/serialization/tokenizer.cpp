@@ -21,8 +21,7 @@
 
 tokenizer::tokenizer(std::istream& in) :
 	in_(in),
-	lineno_(0),
-	colno_(0)
+	lineno_(1)
 {
 	if(in_.good()) {
 		current_ = in_.get();
@@ -52,20 +51,16 @@ const token& tokenizer::next_token()
 
 		// Identifies and processes tokenizer directives
 		std::vector<std::string> comment_line = utils::split(comment, ' ');
-		if ((comment_line.size() == 2 || comment_line.size() == 3)
-				&& comment_line[0] == "#textdomain") {
+		if (comment_line.size() == 2 && comment_line[0] == "#textdomain")
 			textdomain_ = comment_line[1];
-#if 0
-			std::string path;
-			if (comment_line.size() == 3)
-				path = comment_line[2];
-			textdomain_init(textdomain_, path);
-#endif
+		else if (comment_line.size() > 3 && comment_line[0] == "#line") {
+			lineno_ = atoi(comment_line[1].c_str());
+			comment_line.erase(comment_line.begin(), comment_line.begin() + 2);
+			file_ = ' ' + utils::join(comment_line, ' ');
 		}
 	} 
 
 	tokenstart_lineno_ = lineno_;
-	tokenstart_colno_ = colno_;
 
 	switch(current_) {
 	case EOF:
@@ -121,12 +116,8 @@ const token& tokenizer::current_token()
 
 void tokenizer::next_char()
 {
-	if(current_ == '\n') {
-		colno_ = 0;
+	if (current_ == '\n')
 		lineno_++;
-	} else {
-		colno_++;
-	}
 
 	do {
 		if(in_.good()) {
@@ -152,18 +143,14 @@ bool tokenizer::is_alnum(int c)
 	return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_';
 }
 
-const size_t tokenizer::get_line()
+std::string tokenizer::get_line()
 {
-	return tokenstart_lineno_ + 1;
-}
-
-const size_t tokenizer::get_column()
-{
-	return tokenstart_colno_ + 1;
+	std::ostringstream s;
+	s << tokenstart_lineno_ << file_;
+	return s.str();
 }
 
 std::string& tokenizer::textdomain()
 {
 	return textdomain_;
 }
-
