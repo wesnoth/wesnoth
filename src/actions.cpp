@@ -615,8 +615,8 @@ void attack(display& gui, const gamemap& map,
 
 	statistics::attack_context attack_stats(a->second,d->second,stats);
 
-	const int orig_attacks = stats.nattacks;
-	const int orig_defends = stats.ndefends;
+	int orig_attacks = stats.nattacks;
+	int orig_defends = stats.ndefends;
 	int to_the_death = stats.to_the_death ? 30 : 0;
 
 	static const std::string poison_string("poison");
@@ -769,8 +769,10 @@ void attack(display& gui, const gamemap& map,
 				if(stats.attacker_slows && d->second.has_flag("slowed") == false) {
 					gui.float_label(d->first,_("slowed"),255,0,0);
 					d->second.set_flag("slowed");
-					if(stats.ndefends > 1)
-						--stats.ndefends;
+					if (orig_defends > 1) {
+						if (stats.ndefends > 0) --stats.ndefends;
+						--orig_defends;
+					}
 				}
 
 				//if the defender is turned to stone, the fight stops immediately
@@ -932,8 +934,10 @@ void attack(display& gui, const gamemap& map,
 				if(stats.defender_slows && a->second.has_flag("slowed") == false) {
 					gui.float_label(a->first,_("slowed"),255,0,0);
 					a->second.set_flag("slowed");
-					if(stats.nattacks > 1)
-						--stats.nattacks;
+					if (orig_attacks > 1) {
+						if (stats.nattacks > 0) --stats.nattacks;
+						--orig_attacks;
+					}
 				}
 
 
@@ -951,6 +955,8 @@ void attack(display& gui, const gamemap& map,
 			--stats.ndefends;
 		}
 
+		// continue the fight to death; if one of the units got stoned,
+		// either nattacks or ndefends is -1
 		if(to_the_death > 0 && stats.ndefends == 0 && stats.nattacks == 0) {
 			stats.nattacks = orig_attacks;
 			stats.ndefends = orig_defends;
