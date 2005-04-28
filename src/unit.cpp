@@ -1112,9 +1112,8 @@ void unit::add_modification(const std::string& type,
 
 			if(increase.empty() == false) {
 				description += (increase[0] != '-' ? "+" : "") +
-					increase + /* " " + */
-					// FIXME: the space should not be there
-					t_string(N_(" XP to advance"), "wesnoth");
+					increase + " " +
+					t_string(N_("XP to advance"), "wesnoth");
 
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
