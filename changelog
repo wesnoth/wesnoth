@@ -1,12 +1,30 @@
 CVS HEAD:
+ * user interface improvements:
+   * fixed female units not appearing in help (broken since 0.9.0)
+   * reduced required width of weapon area in help
+   * better diagnostics on parsing: line numbers
+ * campaign improvements:
+   * fix Dacyn not being [recall]-ed in Unexpected Appearance (EI) (#10619)
+   * shamans are no longer recallable in SotBE (#11932)
+   * killing enemy leader in Siege of Barag Gor (SotBE) is no longer a win
+ * multiplayer improvements:
+   * next_scenario: tentative start of MP campaign support
+ * unit graphics and sound improvements 
+   * new death animations for: Ancient Lich, Ancient Wose, Arch Mage,
+     Assassin, Bandit, Battle Princess, Blood Bat, Bone Shooter, Bowman,
+     Cavalier, Cavalryman, Cave Spider, Chocobone, Cockatrice,
+     Commander, Cuttle Fish, Dark Adept, Dark Queen, Dark Spirit,
+     Deathblade, Death Knight, Deathmaster, Demilich
+   * fixed several image files being referred to by wrong name
  * language and i18n:
    * language fixes and polishing (English)
    * updated translations:
      * Afrikaans
      * Hungarian
      * Slovenian
- * new death animations for:
-   * Ancient_Lich.cfg, Ancient_Wose.cfg, Arch_Mage.cfg, Assassin.cfg, Bandit.cfg, Battle_Princess.cfg, Blood_Bat.cfg, Bone_Shooter.cfg, Bowman.cfg, Cavalier.cfg, Cavalryman.cfg, Cave_Spider.cfg, Chocobone.cfg, Cockatrice.cfg, Commander.cfg, Cuttle_Fish.cfg, Dark_Adept.cfg, Dark_Queen.cfg, Dark_Spirit.cfg, Deathblade.cfg, Death_Knight.cfg, Deathmaster.cfg, Demilich.cfg
+ * slow now affects units with 2 or more attacks (not just 1 remaining)
+ * slow now works with berserk and is cumulative within berserk rounds
+ * various bug fixes and code cleanups
 
 Version 0.9.1:
  * user interface improvements:
