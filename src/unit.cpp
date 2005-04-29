@@ -1186,32 +1186,34 @@ void unit::apply_modifications()
 	log_scope("apply mods");
 	modificationDescriptions_.clear();
 
-	std::vector<t_string> descriptions;
-
 	for(size_t i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
 		const config::child_list& mods = modifications_.get_children(mod);
 		for(config::child_list::const_iterator j = mods.begin(); j != mods.end(); ++j) {
 			log_scope("add mod");
 			add_modification(ModificationTypes[i],**j,true);
-
-			const t_string& name = (**j)["name"];
-			if(name.empty() == false) {
-				descriptions.push_back(name);
-			}
 		}
 	}
 
 	traitsDescription_ = "";
 
-	//we want to make sure the description always has a consistent ordering
-	std::sort(descriptions.begin(),descriptions.end());
-	for(std::vector<t_string>::const_iterator j = descriptions.begin(); j != descriptions.end(); ++j) {
-		if(j != descriptions.begin()) {
+	std::vector< t_string > traits;
+	config::child_list const &mods = modifications_.get_children("trait");
+	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) {
+		t_string const &name = (**j)["name"];
+		if (!name.empty())
+			traits.push_back(name);
+	}
+
+	std::vector< t_string >::iterator k = traits.begin(), k_end = traits.end();
+	if (k != k_end) {
+		// we want to make sure the traits always have a consistent ordering
+		std::sort(k, k_end);
+		for(;;) {
+			traitsDescription_ += *(k++);
+			if (k == k_end) break;
 			traitsDescription_ += ", ";
 		}
-
-		traitsDescription_ += *j;
 	}
 }
 
