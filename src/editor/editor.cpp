@@ -326,15 +326,17 @@ void map_editor::edit_save_as() {
 
 void map_editor::perform_set_starting_pos() {
 	std::vector<std::string> players;
-	for (int i = 1; i < num_players; i++) {
+	for (int i = 0; i < num_players; i++) {
 		std::stringstream str;
-		str << "Player " << i;
+		str << "Player " << i + 1;
 		players.push_back(str.str());
 	}
-	const int res = gui::show_dialog(gui_, NULL, _("Which Player?"),
+	int res = gui::show_dialog(gui_, NULL, _("Which Player?"),
 	                                 _("Which player should start here?"),
 	                                 gui::OK_CANCEL, &players);
 	if (res >= 0) {
+	    	res++;
+	    	if (res == num_players) res = 0;
 		set_starting_position(res, selected_hex_);
 	}
 }
