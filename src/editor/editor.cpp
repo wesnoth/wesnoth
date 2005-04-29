@@ -326,7 +326,7 @@ void map_editor::edit_save_as() {
 
 void map_editor::perform_set_starting_pos() {
 	std::vector<std::string> players;
-	for (int i = 0; i < num_players; i++) {
+	for (int i = 1; i < num_players; i++) {
 		std::stringstream str;
 		str << "Player " << i;
 		players.push_back(str.str());
