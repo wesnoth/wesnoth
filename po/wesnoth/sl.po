@@ -10,7 +10,7 @@ msgstr ""
 "POT-Creation-Date: 2005-04-18 17:52+0200\n"
 "PO-Revision-Date: 2004-10-17 20:24+0200\n"
 "Last-Translator: lynx\n"
-"Language-Team:  <en@li.org>\n"
+"Language-Team:  <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -787,6 +787,9 @@ msgid ""
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"Značilnosti, ki so na voljo vsem, razen Nemrtvim, enotam so:"
 
 #: data/help.cfg:219
 msgid ""
@@ -907,6 +910,10 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"Druge posebne značilnosti, ki jih enota lahko ima so:"
 
 #: data/help.cfg:251
 msgid ""
@@ -954,6 +961,16 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Nemrtev</header>\n"
+"\n"
+"Nemrtve enote so imune na strup.\n"
+"\n"
+"Nemrtve enote imajo ponavadi samo značilnost 'nemrtev'. Ker so nemrtvi "
+"oživela trupla, na njih strup nima nobenega učinka. To jih lahko naredi "
+"neprecenljive v boju s sovražniki, ki uporabljajo zastrupljena orožja."
 
 #: data/help.cfg:265
 msgid ""
@@ -969,6 +986,17 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Spreten</header>\n"
+"\n"
+"Spretne enote naredijo z vsakim zadetkom na daleč 1 točko škode več.\n"
+"\n"
+"Spreten je značilnost, ki jo posedujejo samo Vilini. Znani so po svoji "
+"skrivnostni milini in svoji veliki lokostrelski spretnosti. Toda nekateri so "
+"že po naravi nadarjeni in prekašajo druge. Ti Vilini z vsakim strelom "
+"napravijo dodatno točko škode."
 
 #: data/items.cfg:264
 msgid ""
@@ -3868,7 +3896,7 @@ msgstr "okamèni"
 
 #: data/units/Commander.cfg:3 data/units/Commander.cfg:78
 msgid "Commander"
-msgstr "Komandir"
+msgstr "Poveljnik"
 
 #: data/units/Commander.cfg:20 data/units/Commander.cfg:95
 #: data/units/Noble_Commander.cfg:24
@@ -5492,7 +5520,7 @@ msgstr ""
 
 #: data/units/Mounted_Commander.cfg:6
 msgid "Mounted Commander"
-msgstr "Konjeniški komandir"
+msgstr "Konjeniški poveljnik"
 
 #: data/units/Mounted_Commander.cfg:21
 msgid ""
@@ -5633,7 +5661,7 @@ msgstr ""
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr "Plemiški komandir"
+msgstr "Plemiški poveljnik"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
@@ -7326,7 +7354,7 @@ msgstr "Gostuj igro brez uporabe strežnika"
 
 #: src/game.cpp:1231
 msgid "Hotseat Game"
-msgstr "\"Vroči stol\" igra"
+msgstr "»Vroči stol« igra"
 
 #: src/game.cpp:1231
 msgid "Play a multiplayer game sharing the same machine"
