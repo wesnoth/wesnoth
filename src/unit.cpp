@@ -43,7 +43,7 @@ namespace {
 	                                    sizeof(*ModificationTypes);
 }
 
-bool compare_unit_values::operator()(const unit& a, const unit& b) const
+static bool compare_unit_values(unit const &a, unit const &b)
 {
 	const int lvla = a.type().level();
 	const int lvlb = b.type().level();
@@ -56,6 +56,11 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 
 	return lvla > lvlb || lvla == lvlb && namea < nameb ||
 	                      lvla == lvlb && namea == nameb && xpa < xpb;
+}
+
+void sort_units(std::vector< unit > &units)
+{
+	std::sort(units.begin(), units.end(), compare_unit_values);
 }
 
 //constructor for reading a unit

@@ -255,10 +255,7 @@ private:
 	int moves_;
 };
 
-struct compare_unit_values
-{
-	bool operator()(const unit& a, const unit& b) const;
-};
+void sort_units(std::vector< unit > &);
 
 int team_units(const unit_map& units, int team_num);
 int team_upkeep(const unit_map& units, int team_num);

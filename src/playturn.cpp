@@ -1952,7 +1952,7 @@ void turn_info::recall()
 
 	//sort the available units into order by value
 	//so that the most valuable units are shown first
-	std::sort(recall_list.begin(),recall_list.end(),compare_unit_values());
+	sort_units(recall_list);
 
 	gui_.draw(); //clear the old menu
 

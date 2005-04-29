@@ -716,7 +716,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
-			std::sort(player->available_units.begin(),player->available_units.end(),compare_unit_values());
+			sort_units(player->available_units);
 
 			const std::string& recall_num = (*child)["value"];
 			const int val = atoi(recall_num.c_str());
@@ -742,7 +742,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
-			std::sort(player->available_units.begin(),player->available_units.end(),compare_unit_values());
+			sort_units(player->available_units);
 			const std::string& unit_num = (*child)["value"];
 			const int val = atoi(unit_num.c_str());
 
