@@ -35,7 +35,7 @@ int rng::get_random(int value)
 	if(random == NULL) {
 		int res = value;
 		if(value < 0) 
-			res = rand();
+			res = rand() & 0x7FFFFFFF;
 		random_ = &random_->add_child("random");
 
 		char buf[100];
@@ -44,7 +44,7 @@ int rng::get_random(int value)
 
 		return res;
 	} else {
-		const int res = atol((*random)["value"].c_str());
+		const int res = atoi((*random)["value"].c_str());
 		random_ = random;
 		return res;
 	}
