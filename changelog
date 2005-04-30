@@ -7,11 +7,14 @@ CVS HEAD:
    * fixed items appearing in traits description (#12603)
    * preserve order of unit traits so no more quick,resilient but 33 vs 34 HP
  * campaign improvements:
-   * fix Dacyn not being [recall]-ed in Unexpected Appearance (Eastern Invasion) (#10619)
-   * new map and scenario modification for Drowned Plains (Eastern Invasion)
-   * fix thieves not appearing in Siege of Elensefar (Heir to the Throne) (forum thread 5719)
-   * shamans are no longer recallable in Son of the Black Eye (#11932)
-   * killing enemy leader in Siege of Barag Gor (Son of the Black Eye) is no longer a win
+   * Eastern Invasion:
+     * fix Dacyn not being [recall]-ed in Unexpected Appearance (#10619)
+     * new map and scenario modification for Drowned Plains
+   * Heir to the Throne:
+     * fix thieves not appearing in Siege of Elensefar (forum thread 5719)
+   * Son of the Black Eye:
+     * shamans are no longer recallable in (#11932)
+     * killing enemy leader in Siege of Barag Gor is no longer a win
  * multiplayer improvements:
    * next_scenario: tentative start of MP campaign support
  * unit graphics and sound improvements 
@@ -26,8 +29,10 @@ CVS HEAD:
    * fixed several image files being referred to by wrong name
  * language and i18n:
    * language fixes and polishing (English)
+   * updated MANUAL
    * updated translations:
      * Afrikaans
+     * French
      * Hungarian
      * Slovenian
      * Turkish
