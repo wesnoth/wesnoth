@@ -35,6 +35,8 @@
 #include <iostream>
 
 #define LOG_AI LOG_STREAM(info, ai)
+#define WRN_AI LOG_STREAM(warn, ai)
+#define ERR_AI LOG_STREAM(err, ai)
 
 ///a trivial ai that sits around doing absolutely nothing
 class idle_ai : public ai_interface {
@@ -1670,10 +1672,14 @@ void ai::move_leader_to_goals(const move_map& enemy_srcdst, const move_map& enem
 	}
 
 	const gamemap::location dst(*goal);
+	if (!dst.valid()) {
+		ERR_AI << "Invalid goal\n";
+		return;
+	}
 
 	const unit_map::iterator leader = find_leader(units_,team_num_);
 	if(leader == units_.end() || leader->second.incapacitated()) {
-		LOG_AI << "leader not found\n";
+		WRN_AI << "Leader not found\n";
 		return;
 	}
 
