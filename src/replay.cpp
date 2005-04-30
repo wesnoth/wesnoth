@@ -701,11 +701,13 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				       << u_type->second.cost() << "/" << current_team.gold() << "\n";
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
+			LOG_NW << "recruit: team=" << team_num << " '" << u_type->second.id() << "' at (" << (1+loc.x) << ',' << (1+loc.y) << ") cost=" << (u_type->second.cost()) << " from gold=" << (current_team.gold()) << ' ';
 
 
 			statistics::recruit_unit(new_unit);
 
 			current_team.spend_gold(u_type->second.cost());
+			LOG_NW << "-> " << (current_team.gold()) << "\n";
 			fix_shroud = true;
 		}
 

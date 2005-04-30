@@ -275,6 +275,12 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	if(current_team().gold() < u->second.cost()) {
 		return false;
 	}
+	LOG_AI << "trying recruit: team=" << (info_.team_num) <<
+	    " type=" << unit_name <<
+	    " cost=" << u->second.cost() <<
+	    " loc=(" << (1+loc.x) << ',' << (1+loc.y) << ')' <<
+	    " gold=" << (current_team().gold()) <<
+	    " (-> " << (current_team().gold()-u->second.cost()) << ")\n";
 
 	unit new_unit(&u->second,info_.team_num,true);
 
@@ -287,8 +293,22 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		replay_guard.confirm_transaction();
 
 		sync_network();
+		const team_data data = calculate_team_data(current_team(),info_.team_num,info_.units);
+		LOG_AI <<
+		"recruit confirmed: team=" << (info_.team_num) <<
+		" units=" << data.units <<
+		" gold=" << data.gold <<
+		((data.net_income < 0) ? "" : "+") <<
+		data.net_income << "\n";
 		return true;
 	} else {
+		const team_data data = calculate_team_data(current_team(),info_.team_num,info_.units);
+	    	LOG_AI <<
+		"recruit UNconfirmed: team=" << (info_.team_num) <<
+		" units=" << data.units <<
+		" gold=" << data.gold <<
+		((data.net_income < 0) ? "" : "+") <<
+		data.net_income << "\n";
 		return false;
 	}
 }
