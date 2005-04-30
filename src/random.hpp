@@ -29,7 +29,7 @@ class rng
 {
 public:
 	rng();
-	int get_random(int value=-1);
+	int get_random();
 
 	const config* get_random_results();
 	void set_random_results(const config& cfg);
@@ -41,7 +41,8 @@ protected:
 
 private:
 	config* random_;
-	bool separator_;
+	bool separator_, started_;
+	std::string remaining_values_;
 };
 
 struct set_random_generator {

@@ -14,49 +14,66 @@
 #include "config.hpp"
 #include "random.hpp"
 #include "wassert.hpp"
+#include <sstream>
 
-rng::rng() : random_(NULL), separator_(false)
+rng::rng() : random_(NULL)
 {}
 
-int rng::get_random(int value)
+int rng::get_random()
 {
-	separator_ = false;
+	if (!random_)
+		return rand();
 
-	if(random_ == NULL) {
-		return value >= 0 ? value : rand();
-	}
-
-	//random numbers are in a 'list' meaning that each random
-	//number contains another random numbers unless it's at
-	//the end of the list. Generating a new random number means
-	//nesting a new node inside the current node, and making
-	//the current node the new node
-	config* const random = random_->child("random");
-	if(random == NULL) {
-		int res = value;
-		if(value < 0) 
-			res = rand() & 0x7FFFFFFF;
-		random_ = &random_->add_child("random");
-
-		char buf[100];
-		sprintf(buf,"%d",res);
-		(*random_)["value"] = buf;
-
-		return res;
-	} else {
-		const int res = atoi((*random)["value"].c_str());
+	config *random;
+	if (!started_ || separator_) {
+		// setup the first [random] or find a nested [random]
+		started_ = true;
+		separator_ = false;
+		random = random_->child("random");
+		if (random == NULL) {
+			random_ = &random_->add_child("random");
+			remaining_values_ = "";
+			goto new_value;
+		}
 		random_ = random;
-		return res;
+		remaining_values_ = (*random_)["value"];
 	}
+
+	// find some remaining value
+	while (remaining_values_.empty()) {
+		random = random_->child("random");
+		if (random == NULL) {
+			// no remaining value nor child
+			// create a new value and store it, then return it
+			new_value:
+			int res = rand() & 0x7FFFFFFF;
+			std::ostringstream tmp;
+			if (!(*random_)["value"].empty())
+				tmp << ',';
+			tmp << res;
+			(*random_)["value"] += tmp.str();
+			return res;
+		}
+		random_ = random;
+		remaining_values_ = (*random_)["value"];
+	}
+
+	// read the first remaining value and erase it
+	int res = atoi(remaining_values_.c_str()); // atoi stops at the comma
+	std::string::size_type pos = remaining_values_.find(',');
+	if (pos != std::string::npos)
+		remaining_values_.erase(0, pos + 1);
+	else
+		remaining_values_ = "";
+	return res;
 }
 
 const config* rng::get_random_results() 
 {
 	wassert(random_ != NULL);
 
-	if(separator_) {
-		get_random(0);
-	}
+	if (separator_)
+		get_random();
 	return random_->child("results");
 }
 
@@ -64,9 +81,8 @@ void rng::set_random_results(const config& cfg)
 {
 	wassert(random_ != NULL);
 
-	if(separator_) {
-		get_random(0);
-	}
+	if (separator_)
+		get_random();
 	random_->clear_children("results");
 	random_->add_child("results",cfg);
 }
@@ -85,6 +101,7 @@ config* rng::set_random(config* random)
 {
 	config* old = random_;
 	random_ = random;
+	started_ = false;
 	separator_ = false;
 	return old;
 }
