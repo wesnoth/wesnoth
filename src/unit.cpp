@@ -1213,7 +1213,9 @@ void unit::apply_modifications()
 	std::vector< t_string >::iterator k = traits.begin(), k_end = traits.end();
 	if (k != k_end) {
 		// we want to make sure the traits always have a consistent ordering
-		std::sort(k, k_end);
+	        // try out not sorting, since quick,resilient can give
+		// different HP to resilient,quick so rather preserve order
+		// std::sort(k, k_end);
 		for(;;) {
 			traitsDescription_ += *(k++);
 			if (k == k_end) break;
