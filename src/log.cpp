@@ -92,7 +92,9 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names) cons
 	else {
 		if (timestamp) {
 			time_t t = time(NULL);
-			std::cerr << ctime(&t) << ' ';
+			char buf[100];
+			strftime(buf, 100, "%b %d %H:%M:%S ", localtime(&t));
+			std::cerr << buf;
 		}
 		if (show_names)
 			std::cerr << name_ << ' ' << d.name_ << ": ";
