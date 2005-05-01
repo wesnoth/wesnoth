@@ -1,108 +1,113 @@
+DAS BATTLE FOR WESNOTH HANDBUCH
+
+Wenn Sie ein Neuling in Sachen Battle for Wesnoth sein sollten, könnte folgende Einführung (in Englisch) für Sie von Interesse sein. (http://wesnoth.slack.it/?GettingStarted)
+
+
 Steuerung
 
     * Cursortasten:   Scrollen
-    * Linksklick:     Einheit wÃ¤hlen/bewegen
-    * Rechtsklick:    HauptmenÃ¼, Aktion abbrechen
+    * Linksklick:     Einheit wählen/bewegen
+    * Rechtsklick:    Hauptmenü, Aktion abbrechen
     * Mittelklick:    Auf Cursorposition zentrieren
-    * Esc:            Spiel verlassen, Men verlassen
+    * Esc:            Spiel verlassen, Menü verlassen
     * z:              hineinzoomen
     * x:              herauszoomen
-    * c:              Zoom auf StandardgrÃ¶Ãe
-    * u:              Letzten Zug rÃ¼ckgÃ¤ngig machen (nur deterministische ZÃ¼ge kÃ¶nnen zurÃ¼ckgenommen werden)
+    * c:              Zoom auf Standardgröße
+    * u:              Letzten Zug rückgängig machen (nur deterministische Züge können zurückgenommen werden)
     * r:              Zug wiederherstellen
-    * n:              nÃ¤chste Einheit, die noch bewegt werden kann, auswÃ¤hlen
-    * 1-7:            Zeigen, wie weit die gewÃ¤hlte Einheit in  entsprechend vielen ZÃ¼gen bewegt werden kann
-    * space:          Zug der Einheit beenden und nÃ¤chste Einheit auswÃ¤hlen, die noch bewegt werden kann
-    * l:              Zum AnfÃ¼hrer bewegen
-    * ctrl-f:         Umschalten zwischen Vollbild und Fenstermodus
-    * ctrl-r:         Einheit ausbilden
-    * ctrl-shift-r:   Letzte Einheiten-Ausbildung wiederholen
-    * ctrl-c:         Einheit einberufen
-    * ctrl-a:         Beschleunigten Spiel-Modus ein/ausschalten
-    * d:              GewÃ¤hlte Einheit beschreiben
-    * ctrl-d:         Verteidigungswerte der gewÃ¤hlten Einheit anzeigen
-    * ctrl-t:         GelÃ¤ndeeinfluss auf die gewÃ¤hlte Einheit anzeigen
-    * ctrl-s:         Spiel speichern
+    * n:              nächste Einheit, die noch bewegt werden kann, auswählen
+    * 1-7:            Zeigen, wie weit die gewählte Einheit in  entsprechend vielen Zügen bewegt werden kann
+    * Leertaste:      Zug der Einheit beenden und nächste Einheit auswählen, die noch bewegt werden kann
+    * l:              Zum Anführer bewegen
+    * Strg-f:         Umschalten zwischen Vollbild und Fenstermodus
+    * Strg-r:         Einheit ausbilden
+    * Strg-Shift-r:   Letzte Einheiten-Ausbildung wiederholen
+    * Alt-r:          Einheit einberufen
+    * Strg-a:         Beschleunigten Spiel-Modus ein/ausschalten
+    * d:              Gewählte Einheit beschreiben
+    * Strg-d:         Verteidigungswerte der gewählten Einheit anzeigen
+    * Strg-t:         Geländeeinfluss auf die gewählte Einheit anzeigen
+    * Strg-s:         Spiel speichern
 
 
-SphÃ¤ren
+Sphären
 
-An der Spitze des Energiebalkens neben jeder Einheit befindet sich eine SphÃ¤re. Diese SphÃ¤re ist:
+An der Spitze des Energiebalkens neben jeder Einheit befindet sich eine Sphäre. Diese Sphäre ist:
 
-   * grÃ¼n, wenn du die Einheit steuerst und sie in dieser Runde noch nicht bewegt wurde
-   * gelb, wenn du die Einheit steuerst und sie in dieser Runde bereits bewegt wurde, aber noch weiter bewegt werden kÃ¶nnte
-   * rot, wenn du die Einheit steuerst, sie aber bereits alle Bewegungspunkte dieser Runde aufgebraucht hat
-   * blau, wenn die Einheit ein VerbÃ¼ndeter ist, den du nicht steuern kannst
+   * Grün, bei einer Einheit unter Ihrer Kontrolle, die diese Runde nicht bewegt wurde.
+   * Gelb, bei einer Einheit unter Ihrer Kontrolle, die diese Runde bereits bewegt wurde, aber noch weiter bewegt werden oder angreifen könnte.
+   * Rot, bei einer Einheit unter Ihrer Kontrolle, die diese Runde alle ihre Bewegungspunkte aufgebraucht hat.
+   * Blau, wenn die Einheit ein Verbündeter ist, den du nicht steuern kannst
 
-Feindliche Einheiten haben keine SphÃ¤ren auf ihrem Energiebalken (in alten Versionen < 0.5.2 war eine schwarze SphÃ¤re auf der Spitze des Energiebalkens feindlicher Einheiten)
+Feindliche Einheiten haben keine Sphären auf ihrem Energiebalken (in alten Versionen < 0.5.2 war eine schwarze Sphäre auf der Spitze des Energiebalkens feindlicher Einheiten)
 
 
 Beschreibung
 
-Dieses Spiel findet auf einer Reihe von Schlachtfeldern, Szenarios genannt, statt. In jedem Szenario kÃ¤mpfen Ihre Truppen gegen die Truppen des Gegners. Jede Seite beginnt mit einem AnfÃ¼hrer in ihrem Burgfried.
+Das Spiel besteht aus einer Abfolge von Schlachten oder Szenarios. In jedem Szenario kämpfen Ihre Truppen gegen die Truppen des Gegners. Jede Seite beginnt mit einem Anführer in Ihrem Bergfried.
 
 
 Gold
 
-Jede Seite startet mit einer bestimmten Menge Gold, und erhÃ¤lt zwei GoldstÃ¼cke pro Zug, sowie ein weiteres GoldstÃ¼ck fÃ¼r jedes Dorf, das unter ihrer Kontrolle steht.
+Jede Seite startet mit einer bestimmten Menge Gold und erhält zwei Goldstücke pro Zug, sowie ein weiteres Goldstück für jedes Dorf, das unter ihrer Kontrolle steht.
 
-Jede Einheit verursacht Erhaltungskosten. Die Erhaltungskosten entsprechen im Allgemeinen der Stufe der Einheit (ausgenommen loyale Truppen, siehe unten). Einheiten, die nicht ausgebildet oder einberufen werden - d.h. die sich freiwillig einer Seite anschlieÃen - verursachen keine Erhaltungskosten. Gold wird nur abgezogen, wenn die Summe der Erhaltungskosten grÃ¶Ãer ist als die Anzahl der kontrollierten DÃ¶rfer. Bezahlt wird die Differenz zwischen der Anzahl der DÃ¶rfer und den Erhaltungskosten.
+Jede Einheit verursacht Erhaltungskosten. Die Erhaltungskosten entsprechen im Allgemeinen der Stufe der Einheit (ausgenommen loyale Truppen, siehe unten). Einheiten, die nicht ausgebildet oder einberufen werden - d.h. die sich freiwillig einer Seite anschließen, verursachen keine Erhaltungskosten. Gold wird nur abgezogen, wenn die Summe der Erhaltungskosten größer ist als die Anzahl der kontrollierten Dörfer. Bezahlt wird die Differenz zwischen der Anzahl der Dörfer und den Erhaltungskosten.
 
-Daher ist die Formel fÃ¼r das Einkommen per Runde:
+Daher ist die Formel für das Einkommen pro Runde:
 
-2 + DÃ¶rfer - Maximum(0,Erhaltungskosten - DÃ¶rfer)
+2 + Dörfer - Maximum(0, Erhaltungskosten - Dörfer)
 
-wobei die Erhaltungskosten der Summe der Stufen aller ausgebildeten und einberufenen Einheiten entsprechen.
+Die Erhaltungskosten entsprechen der Summe der Stufen aller ausgebildeten und einberufenen Einheiten.
 
 
-Ausbilden and Einberufen
+Ausbilden und Einberufen
 
-Einheiten kÃ¶nnen zu einem bestimmten Preis ausgebildet werden, sofern der AnfÃ¼hrer im Burgfried steht und noch ein Feld in der Burg frei ist. Das Ausbilden geschieht durch Rechtsklick und die Auswahl von 'Ausbilden'.
+Einheiten können zu einem bestimmten Preis ausgebildet werden, solange der Anführer im Bergfried steht und noch ein Feld in der Burg frei ist. Das Ausbilden geschieht durch Rechtsklick und die Auswahl von »Ausbilden«.
 
-Wenn ein Szenario durchgespielt wurde, stehen alle Ã¼berlebenden Einheiten im nÃ¤chsten Szenario zur VerfÃ¼gung. Durch Rechtsklick und die Auswahl von 'Einberufen' kÃ¶nnen Einheiten aus frÃ¼heren Szenarien reaktiviert werden. Das Einberufen kostet 20 GoldstÃ¼cke.
+Wenn ein Szenario durchgespielt wurde, stehen alle überlebenden Einheiten im nächsten Szenario wieder zur Verfügung. Durch Rechtsklick und die Auswahl von »Einberufen« können Einheiten aus früheren Szenarios reaktiviert werden. Das Einberufen kostet immer 20 Goldstücke, egal welche Einheit Sie einberufen wollen.
 
-Sie kÃ¶nnen ein freies Feld der Burg markieren und danach eine Einheit rekrutieren oder einberufen; auf diese Weise legen Sie das Feld fest auf dem die Einheit erscheint.
+Sie können ein freies Feld der Burg markieren und danach eine Einheit rekrutieren oder einberufen. Auf diese Weise bestimmen Sie das Feld, auf dem die Einheit erscheint.
 
 Eine gerade ausgebildete oder einberufene Einheit kann in der gleichen Runde nicht bewegt werden.
 
 
 Besondere Eigenschaften der Einheiten
 
-Die besonderen Eigenschaften der Einheiten kÃ¶nnen mit dem MenÃ¼punkt 'Einheitenbeschreibung' eingesehen werden.
+Die besonderen Eigenschaften der Einheiten können mit dem Menüpunkt »Einheitenbeschreibung« eingesehen werden.
 
 
-Merkmale
+Charakteristika
 
-Einheiten haben Merkmale, die Aspekte ihres Charakters reflektieren. Die Merkmale werden bei der Erschaffung der Einheiten zufÃ¤llig vergeben. Jede Einheit erhÃ¤lt zwei Merkmale. Folgende Merkmale sind mÃ¶glich:
+Einheiten haben Merkmale, die Aspekte ihres Charakters reflektieren. Diese Charakteristika werden bei der Erschaffung der Einheiten zufällig vergeben. Im Regelfall erhält jede Einheit zwei Charakteristika. Folgende Charakteristika sind möglich:
 
-   Loyal:         Die Erhaltungskosten der Einheit sind niemals hÃ¶her als 1.
+   Loyal:         Die Erhaltungskosten der Einheit sind niemals höher als 1.
    Stark:         Die Einheit verursacht mehr Schaden im Nahkampf und hat etwas mehr Lebenspunkte.
-   Schnell:       Die Einheit hat einen zusÃ¤tzlichen Bewegungspunkt, dafÃ¼r etwas weniger Lebenspunkte.
-   UnverwÃ¼stlich:  Die Einheit hat mehr Lebenspunkte.
-   Intelligent:   Die Einheit braucht weniger Erfahrungspunkte, um im Rang aufzusteigen.
+   Schnell:       Die Einheit hat einen zusätzlichen Bewegungspunkt, dafür etwas weniger Lebenspunkte.
+   Unverwüstlich: Die Einheit hat mehr Lebenspunkte.
+   Intelligent:   Die Einheit braucht weniger Erfahrungspunkte, um eine Stufe aufzusteigen.
 
 
 Bewegung
 
-Wenn Sie eine Einheit per Mausklick anwÃ¤hlen , werden alle Felder beleuchtet, die sie in dieser Runde erreichen kann. Andere Felder erscheinen grau. Sie kÃ¶nnen anschliessen das Feld anklicken, auf das sich Ihre Einheit bewegen soll. Wenn eine Einheit auf ein Dorf bewegt wird, das neutral ist oder vom Gegner kontrolliert wird, Ã¼bernimmt der Besitzer die Kontrolle Ã¼ber das Dorf. Wird ein Ziel markiert, das ausserhalb des in dieser Runde erreichbaren Gebietes liegt, begibt sich diese Einheit zu Beginn der nÃ¤chsten Runde(n) selbststÃ¤ndig dorthin .SelbststÃ¤ndige Bewegungen kÃ¶nnen am Anfang einer Runde aufgehoben werden in dem der betreffenden Einheit ein neuer Befehl gegeben wird.
+Wenn Sie eine Einheit per Mausklick anwählen , werden alle Felder beleuchtet, die sie in dieser Runde erreichen kann. Andere Felder erscheinen grau. Sie können anschließend das Feld anklicken, auf das sich Ihre Einheit bewegen soll. Wenn eine Einheit auf ein Dorf bewegt wird, das neutral ist oder vom Gegner kontrolliert wird, übernimmt der Besetzer die Kontrolle über das Dorf. Wird ein Ziel markiert, das außerhalb des in dieser Runde erreichbaren Gebietes liegt, begibt sich diese Einheit zu Beginn der nächsten Runde(n) selbstständig dorthin. Selbstständige Bewegungen können am Anfang einer Runde aufgehoben werden in dem der betreffenden Einheit ein neuer Befehl gegeben wird.
 
 Das Ziehen in die Kontrollzone einer feindlichen Einheit (die sie umgebenden 6 Felder), verhindert eine weitere Bewegung der betroffenen Einheit.
 
 
 Kampf
 
-Eine Einheit die auf ein an eine feindliche Einheit angrenzendes Feld gezogen wird kann diese angreifen. Klicken Sie auf die eigene Einheit,und anschlieÃend auf die feindliche, die angegriffen werden soll. Jede Einheit hat eine oder mehrere Waffen, mit denen sie angreifen kann. Manche Waffen sind Nahkampfwaffen, wie z.B. Schwerter, , wÃ¤hrend andere Waffen, wie z.B. BÃ¶gen, Fernkampfwaffen sind.
+Eine Einheit die auf ein, an eine feindliche Einheit angrenzendes Feld gezogen wird, kann diese angreifen. Klicken Sie auf die eigene Einheit und anschließend auf die feindliche Einheit, die angegriffen werden soll. Jede Einheit hat eine oder mehrere Waffen, mit denen sie angreifen kann. Manche Waffen sind Nahkampfwaffen, wie z.B. Schwerter, während andere Waffen, wie z.B. Bögen, Fernkampfwaffen sind.
 
 Mit Nahkampfwaffen angegriffene Einheiten verteidigen sich mit Nahkampfwaffen. Entprechend verteidigen sie sich mit Fernkampfwaffen gegen einen Angriff mit Fernkampfwaffen.
 
-Jeder Waffe ist eine Anzahl von Angriffen und ein Schaden pro Treffer zugeordnet. Zum Beispiel verursacht ein Kampfelf 5 Schaden bei jedem Treffer, und er kann bei jedem Kampf 4 mal zuschlagen. Dies wird allgemein als 5-4 geschrieben.
+Jeder Waffe ist eine Anzahl von Angriffen und ein Schaden pro Treffer zugeordnet. Zum Beispiel verursacht ein Elfenkrieger 5 Schadenspunkte bei jedem Treffer und er kann bei jeder Kampfhandlung 4 mal zuschlagen. Dies wird allgemein als 5-4 geschrieben.
 
-Die Wahrscheinlichkeit einer Einheit, getroffen zu werden, ist vom GelÃ¤nde abhÃ¤ngig. Einheiten in DÃ¶rfern und Burgen,oder Elfen in WÃ¤lder, haben zum Beispiel eine verringerte Wahrscheinlichkeit getroffen zu werden.
+Die Wahrscheinlichkeit einer Einheit, getroffen zu werden, ist vom Gelände abhängig. Einheiten in Dörfern und Burgen oder Elfen in Wälder, werden beispielsweise weniger häufig getroffen.
 
 
-Gesinnung
+Tag-/Nachteinfluss
 
-Jede Einheit hat eine Gesinnung: rechtschaffen, neutral oder chaotisch. Diese  bestimmt, wie gut die Einheit zu bestimmten Tageszeiten kÃ¤mpft. Die folgende Tabelle illustriert die verschiedenen Tageszeiten:
+Jede Einheit wird von den vorherrschenden Lichtverhältnissen unterschiedlich beeinflusst. Es gibt drei Lichtverhältniskategorien: redlich, neutral oder lichtscheu. Die folgende Tabelle illustriert die verschiedenen Tageszeiten:
 
  |  Zug  | Tageszeit |
  ---------------------
@@ -112,40 +117,52 @@ Jede Einheit hat eine Gesinnung: rechtschaffen, neutral oder chaotisch. Diese  b
  |   4   | Abend     |
  |   5   | Nacht     |
  |   6   | Nacht     |
-	  
-Rechtschaffene Einheiten verursachen bei Tag 25% mehr, bei Nacht 25% weniger Schaden . Chaotische Einheiten verursachen 25% mehr Schaden bei Nacht, und 25% weniger Schaden bei Tag. Neutrale Einheiten werden von der Tageszeit nicht beeinflusst.
+
+Redliche Einheiten verursachen bei Tag 25% mehr, bei Nacht 25% weniger Schaden. Lichtscheue Einheiten verursachen 25% mehr Schaden bei Nacht, und 25% weniger Schaden bei Tag. Neutrale Einheiten werden von der Tageszeit nicht beeinflusst.
 
 
 Heilung
 
-Verwundete Einheiten in DÃ¶rfern erholen sich pro Runde um 8 Lebenspunkte. Verwundete Einheiten, die neben Einheiten stehen, die Ã¼ber die FÃ¤higkeit "Heilung" oder "Behandlung" verfÃ¼gt, werden ebenfalls geheilt. Einheiten neben einer Einheit mit der FÃ¤higkeit "Heilung" werden um maximal 4 Lebenspunkte pro Runde geheilt, Einheiten neben einer Einheit mit der FÃ¤higkeit "Behandlung" werden um maximal 8 Lebenspunkte pro Runde geheilt. Allerdings nimmt die Heilwirkung pro Einheit mit zunehmender Anzahl verwundeter Einheiten die an eine heilende Einheit angrenzen ab.
+In Dörfern postierte, verwundete Einheiten regenerieren pro Runde 8 Lebenspunkte. Verwundete Einheiten, die neben Einheiten stehen, die über die Fähigkeit »Heilen« oder »Kurieren« verfügen, werden ebenfalls geheilt. Eine Einheit, um die sich ein Heiler bis zu 4 Lebenspunkte pro Runde zurück. Eine, mit der Fähigkeit »Kurieren« behandelte Einheiten regenerieren bis zu 8 Lebenspunkte. Die Heilwirkung nimmt jedoch mit zunehmender Anzahl verwundeter Einheiten ab.
 
-'Heilung' verhindert die schÃ¤dliche Wirkung einer Vergiftung, durch 'Behandlung' wird die Vergiftung aufgehoben. Wenn eine Vergiftung behandelt wird, erhÃ¤lt die Einheit in dieser Runde keine Lebenspunkte.
+»Heilen« verhindert zwar, dass die Einheit weiteren Schaden durch eine Vergiftung erleidet, kann diese jedoch nicht heilen. Erst durch die »Kurieren« Fertigkeit wird die Vergiftung aufgehoben. Wenn eine Vergiftung behandelt wird, erhält die Einheit in dieser Runde keine Lebenspunkte zurück.
 
 
 Erfahrung
 
-Einheiten erhalten Erfahrungspunkte im Kampf. Wenn sie genug gesammelt haben steigen sie eine Stufe auf und werden mÃ¤chtiger.
+Einheiten erhalten Erfahrungspunkte im Kampf. Wenn sie genug gesammelt haben, steigen sie eine Stufe auf und werden stärker. Die Anzahl der gewonnenen Erfahrungspunkte hängt von der Stufe der gegnerischen Einheit und vom Ausgang des Kampfes ab: Eine Einheit die eine feindliche Einheit tötet, erhält 8 Erfahrungspunkte pro Stufe des Gegners (4 bei Gegnern der Stufe 0).
+Eine Einheit die einen Kampf überlebt ohne den Gegner zu töten, erhält einen Erfahrungspunkt pro Stufe des Gegners. Mit anderen Worten:
 
-Multiplayer
+| Feind Stufe | Vern.-Bonus| Kampf-Bonus    |
+---------------------------------------------
+| 0           | 4          | 0              |
+| 1           | 8          | 1              |
+| 2           | 16         | 2              |
+| 3           | 24         | 3              |
+| 4           | 32         | 4              |
+| 5           | 40         | 5              |
+| 6           | 48         | 6              |
 
-Sie kÃ¶nnen ein eigenes Multiplayerspiel starten in dem Sie Ihren PC als Spielserver benutzen ,oder sich mit dem Wesnoth-Spielserver verbinden und ihr Spiel dort starten. Falls Sie Ihren PC benutzen benÃ¶tigen Mitspieler die MÃ¶glichkeit sich mit Ihrem Port 15000 zu verbinden. 
+
+Mehrspieler
+
+Sie können ein eigene Mehrspielerpartie starten, in dem Sie Ihren PC als Spielserver benutzen oder sich mit dem Wesnoth-Spielserver verbinden und Ihr Spiel dort starten. Falls Sie Ihren PC benutzen benötigen Mitspieler die Möglichkeit sich mit Ihrem Port 15000 zu verbinden.
 
 
-Ãffentlich Server:
+Öffentliche Server:
 
- server.wesnoth.org        fÃ¼r stabile Versionen des Spiels
- devsrv.wesnoth.org        fÃ¼r Testversionen
- devsrv.wesnoth.org:14999  fÃ¼r CVS-Versionen des Spiels
+ server.wesnoth.org        für stabile Versionen des Spiels
+ devsrv.wesnoth.org        für Testversionen
+ devsrv.wesnoth.org:14999  für CVS-Versionen des Spiels
 
 
-Starten einen Multiplayerspiels
+Starten einer Mehrspielerpartie
 
-Schritt 1: WÃ¤hlen Sie Multiplayer vom Startbildschirm,anschlieÃend ob sie das Spiel auf ihrem PC oder dem Wesnoth-Server ausrichten wollen,und erstellen Sie ein Spiel.
+Schritt 1: Wählen Sie Mehrspieler im Hauptmenü, anschließend entweder »Offiziellen Server betreten« oder »Netzwerkpartie eröffnen« und eröffnen Sie eine neue Partie.
 
-Schritt 2: WÃ¤hlen sie eine Karte und legen Sie die Spieleinstellungen fest (Nebel des Krieges, shroud, Gold pro Dorf)
+Schritt 2: Wählen sie eine Karte und legen Sie die Spieleinstellungen fest (Nebel des Krieges, Schleier der Finsternis, Steuereinnahmen pro Dorf)
 
-Schritt 3: Konfigurieren Sie die Spieler (Teams/Allianzen, Startgold,Rassen) und warten Sie anschlieÃend darauf das alle anderen Spieler dem Spiel beitreten.  Teilnehmende Spieler werden mit ihren Nicknames aufgefÃ¼hrt.
+Schritt 3: Konfigurieren Sie die Spieler (Teams/Allianzen, Startgold, Rassen) und warten Sie anschließend darauf, das alle anderen Spieler dem Spiel beitreten.  Teilnehmende Spieler werden mit ihren Nicknames aufgeführt.
 
-Schritt 4: Klicken sie [Bereit] an 
+Schritt 4: Klicken Sie »Ich bin bereit« an, um die Partie zu starten
 
