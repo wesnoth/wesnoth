@@ -19,6 +19,7 @@
 #include "log.hpp"
 
 #include <algorithm>
+#include <ctime>
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -42,8 +43,11 @@ public:
 static std::vector< logd > log_domains;
 static std::ostream null_ostream(new null_streambuf);
 static int indent = 0;
+static bool timestamp = false;
 
 namespace lg {
+
+void timestamps(bool t) { timestamp = t; }
 
 logger err("error", 0), warn("warning", 1), info("info", 2);
 log_domain general("general"), ai("ai"), config("config"), display("display"), engine("engine"),
@@ -86,8 +90,12 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names) cons
 	if (severity_ > d.severity_)
 		return null_ostream;
 	else {
+		if (timestamp) {
+			time_t t = time(NULL);
+			std::cerr << ctime(&t) << ' ';
+		}
 		if (show_names)
-			std::cerr << name_ << " " << d.name_ << ": ";
+			std::cerr << name_ << ' ' << d.name_ << ": ";
 		return std::cerr;
 	}
 }

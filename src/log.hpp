@@ -39,6 +39,8 @@ public:
 	bool dont_log(log_domain const &domain) const;
 };
 
+void timestamps(bool);
+
 extern logger err, warn, info;
 extern log_domain general, ai, config, display, engine, network, filesystem;
 

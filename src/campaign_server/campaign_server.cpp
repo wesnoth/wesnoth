@@ -1,5 +1,6 @@
 #include "config.hpp"
 #include "filesystem.hpp"
+#include "log.hpp"
 #include "network.hpp"
 #include "publish_campaign.hpp"
 #include "util.hpp"
@@ -9,6 +10,8 @@
 #include "SDL.h"
 
 #include <iostream>
+
+#define LOG_CS lg::err(lg::network, false)
 
 namespace {
 
@@ -71,7 +74,7 @@ void campaign_server::run()
 
 			network::connection sock = network::accept_connection();
 			if(sock) {
-				std::cerr << "received connection from " << network::ip_address(sock) << "\n";
+				LOG_CS << "received connection from " << network::ip_address(sock) << "\n";
 			}
 
 			config data;
@@ -166,13 +169,13 @@ void campaign_server::run()
 			}
 		} catch(network::error& e) {
 			if(!e.socket) {
-				std::cerr << "fatal network error\n";
+				LOG_CS << "fatal network error\n";
 				break;
 			} else {
 				e.disconnect();
 			}
 		} catch(config::error& e) {
-			std::cerr << "error in receiving data...\n";
+			LOG_CS << "error in receiving data...\n";
 		}
 
 		SDL_Delay(500);
@@ -183,6 +186,7 @@ void campaign_server::run()
 
 int main(int argc, char** argv)
 {
+	lg::timestamps(true);
 	try {
 		campaign_server("server.cfg").run();
 	} catch(config::error& e) {
