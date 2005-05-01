@@ -217,7 +217,7 @@ std::vector<std::string> get_text() {
 		"-   Alessio D'Ascanio (otaku)",
 		"-   Americo Iacovizzi (DarkAmex)",
 		"-   crys0000",
-		"-   Eugenio Favalli",
+		"-   Eugenio Favalli (ElvenProgrammer)",
 		"-   Federico Tomassetti",
 		"-   isazi",
 		"-   RokStar",
