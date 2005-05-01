@@ -1,4 +1,9 @@
 CVS HEAD:
+<<<<<<< changelog
+ * campaign improvements:
+   * fixed bug in Unexpected Appearance (EI) where Dacyn is not recalled
+   * Updates to Drowned Plains (EI) that will make it more balanced
+=======
  * user interface improvements:
    * starting position in editor now starts at player 1 (#10625)
    * fixed female units not appearing in help (broken since 0.9.0)
@@ -9,7 +14,10 @@ CVS HEAD:
  * campaign improvements:
    * Eastern Invasion:
      * fix Dacyn not being [recall]-ed in Unexpected Appearance (#10619)
+     * Fix killing enemies in wrong order not resulting in a victory in
+     Northern Outpost (#12922)
      * new map and scenario modification for Drowned Plains
+     * Changes to Skeletal Dragon resistances for Drowned Plains
    * Heir to the Throne:
      * fix thieves not appearing in Siege of Elensefar (forum thread 5719)
    * Son of the Black Eye:
@@ -27,6 +35,7 @@ CVS HEAD:
      Drake Fire
    * new attack animations for Halberdier
    * fixed several image files being referred to by wrong name
+>>>>>>> 1.627
  * language and i18n:
    * language fixes and polishing (English)
    * clarified Necrophage self-leveling in unit description (#10714)
