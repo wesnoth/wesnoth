@@ -629,7 +629,7 @@ std::string ip_address(connection connection_num)
 
 std::pair<int,int> current_transfer_stats()
 {
-	return std::pair<int,int>(-1,-1);
+	return network_worker_pool::get_current_transfer_stats();
 }
 
 } //end namespace network
