@@ -565,6 +565,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string lose_str = "#";
 
 		const t_string& summary = cfg["summary"];
+		const t_string& note = cfg["note"];
 		const size_t side = lexical_cast_default<size_t>(cfg["side"], 0);
 		bool silent = cfg["silent"] == "yes";
 
@@ -614,6 +615,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			objs += lose_string + "\n";
 			objs += lose_objectives + "\n";
 		}
+		if(!note.empty())
+			objs += note + "\n";
 
 		if(side == 0) {
 			for(std::vector<team>::iterator itor = teams->begin();
