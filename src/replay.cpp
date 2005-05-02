@@ -565,7 +565,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		if(advancing_units.empty() == false) {
 			if(cfg == NULL) {
 				ERR_NW << "promotion expected, but none found\n";
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				throw replay::error();
 			}
 
 			//if there is a promotion, we process it and go onto the next command
@@ -655,7 +655,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				ERR_NW << "recruitment index is illegal: " << val
 				       << " while this side only has " << recruits.size()
 				       << " units available for recruitment\n";
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				throw replay::error();
 			}
 
 			std::set<std::string>::const_iterator itor = recruits.begin();
@@ -663,7 +663,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::map<std::string,unit_type>::const_iterator u_type = gameinfo.unit_types.find(*itor);
 			if(u_type == gameinfo.unit_types.end()) {
 				ERR_NW << "recruiting illegal unit: '" << *itor << "'\n";
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				throw replay::error();
 			}
 
 			unit new_unit(&(u_type->second),team_num,true);
@@ -693,7 +693,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			player_info* player = state_of_game.get_player(current_team.save_id());
 			if(player == NULL) {
 				ERR_NW << "illegal recall\n";
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				throw replay::error();
 			}
 
 			sort_units(player->available_units);
@@ -719,7 +719,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			player_info* const player = state_of_game.get_player(current_team.save_id());
 			if(player == NULL) {
 				ERR_NW << "illegal disband\n";
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				throw replay::error();
 			}
 
 			sort_units(player->available_units);
@@ -741,7 +741,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			if(destination == NULL || source == NULL) {
 				ERR_NW << "no destination/source found in movement\n";
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				throw replay::error();
 			}
 
 			const gamemap::location src(*source);
@@ -757,7 +757,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(u == units.end()) {
 				ERR_NW << "unfound location for source of movement: "
 				       << src << " -> " << dst << '\n';
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				throw replay::error();
 			}
 
 			const bool ignore_zocs = u->second.type().is_skirmisher();
@@ -825,7 +825,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			if(destination == NULL || source == NULL) {
 				ERR_NW << "no destination/source found in attack\n";
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				throw replay::error();
 			}
 
 			const gamemap::location src(*source);
@@ -837,7 +837,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			std::map<gamemap::location,unit>::iterator u = units.find(src);
 			if(u == units.end()) {
 				ERR_NW << "unfound location for source of attack\n";
-				if (!game_config::ignore_replay_errors) throw replay::error();
+				throw replay::error();
 			}
 
 			if(size_t(weapon_num) >= u->second.attacks().size()) {
