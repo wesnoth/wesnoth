@@ -104,7 +104,7 @@ namespace {
 				placed.insert(i->side);
 				positions_taken.insert(i->pos);
 				map.set_starting_position(i->side,i->pos);
-				LOG_NG << "placing side " << i->side << " at " << i->pos.x << "," << i->pos.y << "\n";
+				LOG_NG << "placing side " << i->side << " at " << i->pos << '\n';
 			}
 		}
 	}
@@ -300,7 +300,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 			if(has_loc.empty()) {
 				start_pos = map.starting_position(side);
 				LOG_NG << "initializing side '" << (**ui)["side"] << "' at "
-				       << start_pos.x << "," << start_pos.y << "\n";
+				       << start_pos << '\n';
 			}
 
 			if(map.empty()) {

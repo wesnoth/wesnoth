@@ -240,7 +240,7 @@ paths::route a_star_search( gamemap::location const &src, gamemap::location cons
 	wassert(aStarGameWorld.empty());
 	assertParanoAstar(aStarGameWorld.reallyEmpty());	
 	
-	LOG_PF << "A* search: " << src.x << ", " << src.y << " -> " << dst.x << ", " << dst.y << "\n";
+	LOG_PF << "A* search: " << src << " -> " << dst << '\n';
 
 	if ( (src.valid(int(parWidth), int(parHeight)) == false) ||
 			 (dst.valid(int(parWidth), int(parHeight)) == false) ||

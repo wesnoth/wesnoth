@@ -2167,7 +2167,7 @@ void turn_info::unit_list()
 		    << i->second.traits_description() << COLUMN_SEPARATOR
 		    << i->second.movement_left() << "/"
 		    << i->second.total_movement() << COLUMN_SEPARATOR
-		    << (i->first.x + 1) << "-" << (i->first.y + 1);
+		    << i->first;
 
 		items.push_back(row.str());
 

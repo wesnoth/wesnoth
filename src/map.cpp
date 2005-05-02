@@ -30,6 +30,11 @@
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
 
+std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
+	s << (l.x + 1) << ',' << (l.y + 1);
+	return s;
+}
+
 gamemap::location gamemap::location::null_location;
 
 const std::string& gamemap::underlying_terrain(TERRAIN terrain) const

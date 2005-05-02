@@ -339,7 +339,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			break;
 		}
 
-		str << (mouseover.x+1) << ", " << (mouseover.y+1);
+		str << mouseover;
 
 		if(u == units.end() || current_team.shrouded(mouseover.x,mouseover.y))
 			break;

@@ -108,7 +108,7 @@ std::string recruit_unit(const gamemap& map, int side,
 		return _("You don't have a leader to recruit with.");
 
 	if(map.is_keep(u->first) == false) {
-		LOG_NG << "Leader not on start: leader is on " << (u->first.x+1) << "," << (u->first.y+1) << "\n";
+		LOG_NG << "Leader not on start: leader is on " << u->first << '\n';
 		return _("You must have your leader on a keep to recruit or recall units.");
 	}
 

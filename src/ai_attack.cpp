@@ -592,7 +592,7 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		value *= 5.0;
 	}
 
-	LOG_AI << "attack on " << (target.x+1) << "," << (target.y+1) << ": attackers: " << movements.size()
+	LOG_AI << "attack on " << target << ": attackers: " << movements.size()
 		<< " value: " << value << " chance to kill: " << chance_to_kill << " damage inflicted: "
 		<< avg_damage_inflicted << " damage taken: " << avg_damage_taken << " vulnerability: "
 		<< vulnerability << " support: " << support << " quality: " << terrain_quality

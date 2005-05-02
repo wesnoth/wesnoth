@@ -44,11 +44,6 @@
 
 //functions to verify that the unit structure on both machines is identical
 namespace {
-	std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
-		s << (l.x + 1) << ',' << (l.y + 1);
-		return s;
-	}
-
 	void verify(const unit_map& units, const config& cfg)
 	{
 		LOG_NW << "verifying unit structure...\n";
@@ -87,8 +82,7 @@ namespace {
 			if(u == units.end()) {
 				ERR_NW << "SYNC VERIFICATION FAILED: data source says there is a '"
 				       << (**i)["type"] << "' (side " << (**i)["side"] << ") at "
-				       << (**i)["x"] << ',' << (**i)["y"]
-				       << " but there is no local record of it\n";
+				       << loc << " but there is no local record of it\n";
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
@@ -100,8 +94,7 @@ namespace {
 			for(const std::string* str = fields; str->empty() == false; ++str) {
 				if(cfg[*str] != (**i)[*str]) {
 					ERR_NW << "ERROR IN FIELD '" << *str << "' for unit at "
-					       << (**i)["x"] << ',' << (**i)["y"]
-					       << " data source: '" << (**i)[*str]
+					       << loc << " data source: '" << (**i)[*str]
 					       << "' local: '" << cfg[*str] << "'\n";
 					is_ok = false;
 				}
@@ -244,11 +237,7 @@ void replay::add_recruit(int value, const gamemap::location& loc)
 	sprintf(buf,"%d",value);
 	val["value"] = buf;
 
-	sprintf(buf,"%d",loc.x+1);
-	val["x"] = buf;
-
-	sprintf(buf,"%d",loc.y+1);
-	val["y"] = buf;
+	loc.write(val);
 
 	cmd->add_child("recruit",val);
 }
@@ -263,11 +252,7 @@ void replay::add_recall(int value, const gamemap::location& loc)
 	sprintf(buf,"%d",value);
 	val["value"] = buf;
 
-	sprintf(buf,"%d",loc.x+1);
-	val["x"] = buf;
-
-	sprintf(buf,"%d",loc.y+1);
-	val["y"] = buf;
+	loc.write(val);
 
 	cmd->add_child("recall",val);
 }
@@ -304,16 +289,8 @@ void replay::add_pos(const std::string& type,
 	config* const cmd = add_command();
 
 	config move, src, dst;
-
-	char buf[100];
-	sprintf(buf,"%d",a.x+1);
-	src["x"] = buf;
-	sprintf(buf,"%d",a.y+1);
-	src["y"] = buf;
-	sprintf(buf,"%d",b.x+1);
-	dst["x"] = buf;
-	sprintf(buf,"%d",b.y+1);
-	dst["y"] = buf;
+	a.write(src);
+	b.write(dst);
 
 	move.add_child("source",src);
 	move.add_child("destination",dst);
@@ -701,7 +678,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				       << u_type->second.cost() << "/" << current_team.gold() << "\n";
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
-			LOG_NW << "recruit: team=" << team_num << " '" << u_type->second.id() << "' at (" << (1+loc.x) << ',' << (1+loc.y) << ") cost=" << (u_type->second.cost()) << " from gold=" << (current_team.gold()) << ' ';
+			LOG_NW << "recruit: team=" << team_num << " '" << u_type->second.id() << "' at (" << loc
+			       << ") cost=" << u_type->second.cost() << " from gold=" << current_team.gold() << ' ';
 
 
 			statistics::recruit_unit(new_unit);
@@ -778,7 +756,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			u = units.find(src);
 			if(u == units.end()) {
 				ERR_NW << "unfound location for source of movement: "
-				       << src << '-' << dst << '\n';
+				       << src << " -> " << dst << '\n';
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
@@ -794,11 +772,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(rt == paths_list.routes.end()) {
 
 				for(rt = paths_list.routes.begin(); rt != paths_list.routes.end(); ++rt) {
-					ERR_NW << "can get to: " << rt->first.y << '\n';
+					ERR_NW << "can get to: " << rt->first << '\n';
 				}
 
 				ERR_NW << "src cannot get to dst: " << current_unit.movement_left() << ' '
-				       << paths_list.routes.size() << ' ' << src << '-' << dst << '\n';
+				       << paths_list.routes.size() << ' ' << src << " -> " << dst << '\n';
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 

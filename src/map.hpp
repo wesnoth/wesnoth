@@ -18,6 +18,7 @@ class config;
 
 #include "terrain.hpp"
 
+#include <iostream>
 #include <map>
 #include <string>
 #include <vector>
@@ -190,5 +191,7 @@ private:
 //into a vector of locations
 std::vector<gamemap::location> parse_location_range(const std::string& xvals, const std::string& yvals);
 
+//dump a position on a stream for debug purposes
+std::ostream &operator<<(std::ostream &s, gamemap::location const &l);
 
 #endif

@@ -558,7 +558,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		u = units_.end();
 	}
 
-	LOG_AI << "best unit: " << (best->first.x+1) << "," << (best->first.y+1) << "\n";
+	LOG_AI << "best unit: " << best->first << '\n';
 
 	wassert(best_target >= targets.begin() && best_target < targets.end());
 

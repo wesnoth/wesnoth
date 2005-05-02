@@ -278,7 +278,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	LOG_AI << "trying recruit: team=" << (info_.team_num) <<
 	    " type=" << unit_name <<
 	    " cost=" << u->second.cost() <<
-	    " loc=(" << (1+loc.x) << ',' << (1+loc.y) << ')' <<
+	    " loc=(" << loc << ')' <<
 	    " gold=" << (current_team().gold()) <<
 	    " (-> " << (current_team().gold()-u->second.cost()) << ")\n";
 
@@ -383,8 +383,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 
 gamemap::location ai_interface::move_unit_partial(location from, location to, std::map<location,paths>& possible_moves)
 {
-	LOG_AI << "ai_interface::move_unit " << (from.x + 1) << "," << (from.y + 1)
-		<< " -> " << (to.x + 1) << "," << (to.y + 1) << "\n";
+	LOG_AI << "ai_interface::move_unit " << from << " -> " << to << '\n';
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands;
 
@@ -396,13 +395,13 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 	log_scope2(ai, "move_unit");
 	unit_map::iterator u_it = info_.units.find(from);
 	if(u_it == info_.units.end()) {
-		LOG_STREAM(err, ai) << "Could not find unit at " << from.x << ", " << from.y << "\n";
+		LOG_STREAM(err, ai) << "Could not find unit at " << from << '\n';
 		wassert(false);
 		return location();
 	}
 
 	if(from == to) {
-		LOG_AI << "moving unit at " << (from.x+1) << "," << (from.y+1) << " on spot. resetting moves\n";
+		LOG_AI << "moving unit at " << from << " on spot. resetting moves\n";
 		return to;
 	}
 
@@ -507,8 +506,8 @@ bool ai::multistep_move_possible(location from, location to, location via, std::
 	if(i != units_.end()) {
 		if(from != via && to != via && units_.count(via) == 0) {
 			LOG_AI << "when seeing if leader can move from "
-				<< (from.x + 1) << "," << (from.y + 1) << " -> " << (to.x + 1) << "," << (to.y + 1)
-				<< " seeing if can detour to keep at " << (via.x + 1) << "," << (via.y + 1) << "\n";
+				<< from << " -> " << to
+				<< " seeing if can detour to keep at " << via << '\n';
 			const std::map<location,paths>::const_iterator moves = possible_moves.find(from);
 			if(moves != possible_moves.end()) {
 
@@ -934,9 +933,8 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		const location arrived_at = move_unit(from,to,possible_moves);
 		if(arrived_at != to) {
 			LOG_STREAM(warn, ai) << "unit moving to attack has ended up unexpectedly at "
-				<< (arrived_at.x + 1) << "," << (arrived_at.y + 1) << " when moving to "
-				<< (to.x + 1) << "," << (to.y + 1) << " moved from "
-				<< (from.x + 1) << "," << (from.y + 1) << "\n";
+			                     << arrived_at << " when moving to " << to << " moved from "
+			                     << from << '\n';
 			return true;
 		}
 
@@ -1178,7 +1176,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 					if(vuln < best_vulnerability || best_loc == it.second) {
 						best_vulnerability = vuln;
 						best_loc = it.first;
-						LOG_AI << "chose village " << (dst.x+1) << "," << (dst.y+1) << "\n";
+						LOG_AI << "chose village " << dst << '\n';
 					}
 				}
 				
@@ -1291,8 +1289,8 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 				}
 
 				if(best_pos.valid()) {
-					LOG_AI << "retreating '" << i->second.type().id() << "' " << i->first.x << ","
-						<< i->first.y << " -> " << best_pos.x << "," << best_pos.y << "\n";
+					LOG_AI << "retreating '" << i->second.type().id() << "' " << i->first
+					       << " -> " << best_pos << '\n';
 					move_unit(i->first,best_pos,possible_moves);
 					return true;
 				}
@@ -1331,7 +1329,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 			return true;
 		}
 
-		LOG_AI << "move: " << move.first.x << ", " << move.first.y << " - " << move.second.x << ", " << move.second.y << "\n";
+		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
 
 		//search to see if there are any enemy units next
 		//to the tile which really should be attacked once the move is done.

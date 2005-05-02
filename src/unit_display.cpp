@@ -685,7 +685,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()){
-		LOG_DP << "found leader at " << (leader_loc.x+1) << "," << (leader_loc.y+1) << "\n";
+		LOG_DP << "found leader at " << leader_loc << '\n';
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
 		leader->second.set_leading(true);

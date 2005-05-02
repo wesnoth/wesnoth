@@ -757,7 +757,8 @@ void terrain_builder::parse_config(const config &cfg)
 		for(constraint_set::const_iterator constraint = rule->second.constraints.begin();
 		    constraint != rule->second.constraints.end(); ++constraint) {
 
-			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc.x << ", " << constraint->second.loc.y << "), terrain types = " << constraint->second.terrain_types << "\n";
+			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc
+			          << "), terrain types = " << constraint->second.terrain_types << "\n";
 
 			std::vector<std::string>::const_iterator flag;
 			
