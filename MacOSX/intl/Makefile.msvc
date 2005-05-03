@@ -1,0 +1,251 @@
+# -*- Makefile -*- for gettext-runtime/intl
+
+#### Start of system configuration section. ####
+
+# Flags that can be set on the nmake command line:
+#   DLL=1     for compiling a .dll with a stub .lib (default is a static .lib)
+#             Note that this works only with MFLAGS=-MD.
+#   MFLAGS={-ML|-MT|-MD} for defining the compilation model
+#     MFLAGS=-ML (the default)  Single-threaded, statically linked - libc.lib
+#     MFLAGS=-MT                Multi-threaded, statically linked  - libcmt.lib
+#     MFLAGS=-MD                Multi-threaded, dynamically linked - msvcrt.lib
+#   DEBUG=1   for compiling with debugging information
+#   PREFIX=Some\Directory       Base directory for installation
+#   IIPREFIX=Some\\Directory    Same thing with doubled backslashes
+!if !defined(DLL)
+DLL=0
+!endif
+!if !defined(DEBUG)
+DEBUG=0
+!endif
+!if !defined(MFLAGS)
+!if !$(DLL)
+MFLAGS=
+!else
+MFLAGS=-MD
+!endif
+!endif
+!if !defined(PREFIX)
+PREFIX = c:\usr
+!endif
+!if !defined(IIPREFIX)
+IIPREFIX = c:\\usr
+!endif
+
+# Directories used by "make":
+srcdir = .
+
+# Directories used by "make install":
+prefix = $(PREFIX)
+exec_prefix = $(prefix)
+bindir = $(exec_prefix)\bin
+libdir = $(exec_prefix)\lib
+includedir = $(prefix)\include
+datadir = $(prefix)\share
+localedir = $(datadir)\locale
+aliaspath =
+IIprefix = $(IIPREFIX)
+IIexec_prefix = $(IIprefix)
+IIbindir = $(IIexec_prefix)\\bin
+IIlibdir = $(IIexec_prefix)\\lib
+IIincludedir = $(IIprefix)\\include
+IIdatadir = $(IIprefix)\\share
+IIlocaledir = $(IIdatadir)\\locale
+IIaliaspath =
+
+# Programs used by "make":
+
+CC = cl
+
+# Set to -W3 if you want to see maximum amount of warnings, including stupid
+# ones. Set to -W1 to avoid warnings about signed/unsigned combinations.
+WARN_CFLAGS = -W1
+
+!if !$(DLL)
+PICFLAGS =
+!else
+# "-GD" (msvc5) optimizes for DLL.
+# mscv4 doesn't know about this flag and ignores it.
+# -DBUILDING_LIBINTL: Change expansion of LIBINTL_DLL_EXPORTED macro.
+# -DBUILDING_DLL: Change expansion of RELOCATABLE_DLL_EXPORTED macro.
+PICFLAGS = -GD -DBUILDING_LIBINTL -DBUILDING_DLL
+!endif
+
+!if $(DEBUG)
+OPTIMFLAGS = -Od -Z7
+DEBUGFLAGS = -Z7
+!else
+# Some people prefer -O2 -G6 instead of -O1, but -O2 is not reliable in MSVC5.
+OPTIMFLAGS = -D_NDEBUG -O1
+DEBUGFLAGS =
+!endif
+
+CFLAGS = $(MFLAGS) $(WARN_CFLAGS) $(OPTIMFLAGS) -DHAVE_CONFIG_H -DLOCALEDIR=\"$(IIlocaledir)\" -DLOCALE_ALIAS_PATH=\"$(IIaliaspath)\" -DIN_LIBINTL -DENABLE_RELOCATABLE=1 -DIN_LIBRARY -DINSTALLDIR=\"$(IIbindir)\" -DNO_XMALLOC -Dset_relocation_prefix=libintl_set_relocation_prefix -Drelocate=libintl_relocate -DDEPENDS_ON_LIBICONV=1
+
+INCLUDES = -I. -I.. -I$(includedir)
+
+AR = lib
+AR_FLAGS = /out:
+
+LN = copy
+RM = -del
+
+# Programs used by "make install":
+INSTALL = copy
+INSTALL_PROGRAM = copy
+INSTALL_DATA = copy
+
+#### End of system configuration section. ####
+
+SHELL = /bin/sh
+
+OBJECTS = bindtextdom.obj dcgettext.obj dgettext.obj gettext.obj finddomain.obj loadmsgcat.obj localealias.obj textdomain.obj l10nflist.obj explodename.obj dcigettext.obj dcngettext.obj dngettext.obj ngettext.obj plural.obj plural-exp.obj localcharset.obj relocatable.obj localename.obj log.obj printf.obj osdep.obj intl-compat.obj
+
+RESOURCES = intl.res
+
+all : intl.lib libintl.h
+
+libgnuintl.h :
+!if !$(DLL)
+	$(LN) $(srcdir)\libgnuintl.h.msvc-static libgnuintl.h
+!else
+	$(LN) $(srcdir)\libgnuintl.h.msvc-shared libgnuintl.h
+!endif
+
+bindtextdom.obj : $(srcdir)\bindtextdom.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\bindtextdom.c
+
+dcgettext.obj : $(srcdir)\dcgettext.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\dcgettext.c
+
+dgettext.obj : $(srcdir)\dgettext.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\dgettext.c
+
+gettext.obj : $(srcdir)\gettext.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\gettext.c
+
+finddomain.obj : $(srcdir)\finddomain.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\finddomain.c
+
+loadmsgcat.obj : $(srcdir)\loadmsgcat.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h $(srcdir)\hash-string.h $(srcdir)\plural-exp.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\loadmsgcat.c
+
+localealias.obj : $(srcdir)\localealias.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h $(srcdir)\relocatable.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\localealias.c
+
+textdomain.obj : $(srcdir)\textdomain.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\textdomain.c
+
+l10nflist.obj : $(srcdir)\l10nflist.c libgnuintl.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\l10nflist.c
+
+explodename.obj : $(srcdir)\explodename.c libgnuintl.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\explodename.c
+
+dcigettext.obj : $(srcdir)\dcigettext.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h $(srcdir)\hash-string.h $(srcdir)\plural-exp.h $(srcdir)\eval-plural.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\dcigettext.c
+
+dcngettext.obj : $(srcdir)\dcngettext.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\dcngettext.c
+
+dngettext.obj : $(srcdir)\dngettext.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\dngettext.c
+
+ngettext.obj : $(srcdir)\ngettext.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\ngettext.c
+
+plural.obj : $(srcdir)\plural.c libgnuintl.h $(srcdir)\plural-exp.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\plural.c
+
+plural-exp.obj : $(srcdir)\plural-exp.c libgnuintl.h $(srcdir)\plural-exp.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\plural-exp.c
+
+localcharset.obj : $(srcdir)\localcharset.c libgnuintl.h $(srcdir)\localcharset.h $(srcdir)\relocatable.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\localcharset.c
+
+relocatable.obj : $(srcdir)\relocatable.c libgnuintl.h $(srcdir)\relocatable.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\relocatable.c
+
+localename.obj : $(srcdir)\localename.c libgnuintl.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\localename.c
+
+log.obj : $(srcdir)\log.c libgnuintl.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\log.c
+
+printf.obj : $(srcdir)\printf.c libgnuintl.h $(srcdir)\printf-args.h $(srcdir)\printf-args.c $(srcdir)\printf-parse.h $(srcdir)\wprintf-parse.h $(srcdir)\printf-parse.c $(srcdir)\vasnprintf.h $(srcdir)\vasnwprintf.h $(srcdir)\vasnprintf.c
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\printf.c
+
+osdep.obj : $(srcdir)\osdep.c libgnuintl.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\osdep.c
+
+intl-compat.obj : $(srcdir)\intl-compat.c libgnuintl.h $(srcdir)\gettextP.h $(srcdir)\gmo.h $(srcdir)\loadinfo.h
+	$(CC) $(INCLUDES) $(CFLAGS) $(PICFLAGS) -c $(srcdir)\intl-compat.c
+
+!if !$(DLL)
+
+intl.lib : $(OBJECTS)
+	-$(RM) intl.lib
+	$(AR) $(AR_FLAGS)intl.lib $(OBJECTS)
+
+!else
+
+# intl.dll and intl.lib are created together.
+intl.lib : $(OBJECTS) $(RESOURCES)
+	$(CC) $(MFLAGS) $(DEBUGFLAGS) -LD $(OBJECTS) $(libdir)\iconv.lib $(RESOURCES) -Feintl.dll
+
+intl.res : $(srcdir)\..\windows\intl.rc
+	rc -Fo intl.res $(srcdir)\..\windows\intl.rc
+
+!endif
+
+libintl.h : libgnuintl.h
+	$(LN) libgnuintl.h libintl.h
+
+install : all force
+	-mkdir $(prefix)
+	-mkdir $(includedir)
+	$(INSTALL_DATA) libintl.h $(includedir)\libintl.h
+	-mkdir $(exec_prefix)
+!if $(DLL)
+	-mkdir $(bindir)
+	$(INSTALL_DATA) intl.dll $(bindir)\intl.dll
+!endif
+	-mkdir $(libdir)
+	$(INSTALL_DATA) intl.lib $(libdir)\intl.lib
+
+installdirs : force
+	-mkdir $(prefix)
+	-mkdir $(includedir)
+	-mkdir $(exec_prefix)
+!if $(DLL)
+	-mkdir $(bindir)
+!endif
+	-mkdir $(libdir)
+
+uninstall : force
+	$(RM) $(includedir)\libintl.h
+!if $(DLL)
+	$(RM) $(bindir)\intl.dll
+!endif
+	$(RM) $(libdir)\intl.lib
+
+check : all
+
+mostlyclean : clean
+
+clean : force
+	$(RM) libgnuintl.h
+	$(RM) libintl.h
+	$(RM) *.obj
+	$(RM) *.lib
+	$(RM) *.exp
+	$(RM) *.dll
+	$(RM) intl.res
+	$(RM) core
+
+distclean : clean
+
+maintainer-clean : distclean
+
+force :
+

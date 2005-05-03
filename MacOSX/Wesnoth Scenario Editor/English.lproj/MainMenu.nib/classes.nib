@@ -1,0 +1,212 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {myAction = id; }; 
+            CLASS = NSWindow; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSResponder; 
+        }, 
+        {
+            ACTIONS = {
+                aggressionSelect = id; 
+                campaignNameSet = id; 
+                campaignPrefixSet = id; 
+                canRecruit = id; 
+                defeatAdd = id; 
+                defeatRemove = id; 
+                defeatSelect = id; 
+                difficultyDescChange = id; 
+                difficultyEasyCheck = id; 
+                difficultyHardCheck = id; 
+                difficultyMediumCheck = id; 
+                doNothing = id; 
+                goldSet = id; 
+                keepCancel = id; 
+                keepChoose = id; 
+                leaderSelect = id; 
+                mapCharacterSelect = id; 
+                mapExport = id; 
+                mapHeightSet = id; 
+                mapImport = id; 
+                mapUnitSide = id; 
+                mapViewSliderSet = id; 
+                mapWidthSet = id; 
+                mapZoomSet = id; 
+                nextScenarioContinueSelect = id; 
+                nextScenarioVictorySelect = id; 
+                noTurnsSet = id; 
+                recruitSelect = id; 
+                scenarioDelete = id; 
+                scenarioNew = id; 
+                scenarioSelect = id; 
+                showConditionsForDifficulty = id; 
+                sidesAdd = id; 
+                sidesAdvancedInfoSet = id; 
+                sidesRemove = id; 
+                sidesSelect = id; 
+                sidesShowDetailFor = id; 
+                teamAdd = id; 
+                teamRemove = id; 
+                teamSelect = id; 
+                terrainSelect = id; 
+                typeAI = id; 
+                typeHuman = id; 
+                unitPlacementSetEasy = id; 
+                unitPlacementSetHard = id; 
+                unitPlacementSetNormal = id; 
+                unitSelect = id; 
+                victoryAdd = id; 
+                victoryRemove = id; 
+                victorySelect = id; 
+            }; 
+            CLASS = WNCampaign; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                UnitPlacementHard = id; 
+                agressionLevel = NSSlider; 
+                campaignIcon = id; 
+                campaignName = id; 
+                campaignPrefix = id; 
+                canRecruit = id; 
+                defeatList = id; 
+                difficultyDescEasy = NSTextField; 
+                difficultyDescHard = NSTextField; 
+                difficultyDescNormal = NSTextField; 
+                difficultyEasy = id; 
+                difficultyHard = id; 
+                difficultyIconEasy = id; 
+                difficultyIconHard = id; 
+                difficultyIconNormal = id; 
+                difficultyMedium = id; 
+                goldAmount = id; 
+                keepSide = id; 
+                keepX = id; 
+                keepY = id; 
+                leaderList = id; 
+                loadSave = WNLoadSave; 
+                mainTabView = id; 
+                mapHeight = id; 
+                mapInfoCharacterList = NSTextView; 
+                mapInfoTerrain = NSTextField; 
+                mapInfoUnitList = NSTextView; 
+                mapUnitSideMenu = id; 
+                mapWidth = id; 
+                mapZoom = id; 
+                nextScenarioContinue = id; 
+                nextScenarioVictory = id; 
+                noTurns = id; 
+                recruitList = id; 
+                scenarioAdvancedInfo = NSTextView; 
+                scenarioList = id; 
+                showConditionsForDifficulty = id; 
+                sidesAdvancedInfo = NSTextView; 
+                sidesList = id; 
+                sidesShowDetailForDifficulty = id; 
+                teamList = id; 
+                terrainList = id; 
+                typeAI = id; 
+                typeHuman = id; 
+                unitList = id; 
+                unitPlacementEasy = id; 
+                unitPlacementNormal = id; 
+                victoryList = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = WNCampaignIconView; LANGUAGE = ObjC; SUPERCLASS = NSImageView; }, 
+        {
+            ACTIONS = {
+                CharacterAISelect = id; 
+                CharacterDeathActionSelect = id; 
+                CharacterDeathMessageUpdate = id; 
+                CharacterDialogImageSelect = id; 
+                CharacterHitpointsSelect = id; 
+                CharacterNew = id; 
+                CharacterRemove = id; 
+                CharacterSelect = id; 
+                CharacterTrait1Select = id; 
+                CharacterTrait2Select = id; 
+                CharacterUnitSelect = id; 
+                CharacterUseDialogImageSelect = id; 
+            }; 
+            CLASS = WNCharacterEditor; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                CharacterAI = NSPopUpButton; 
+                CharacterDeathAction = NSPopUpButton; 
+                CharacterDeathMessage = NSTextField; 
+                CharacterDialogImage = NSImageView; 
+                CharacterDialogImageSwitch = NSButton; 
+                CharacterHP = NSSlider; 
+                CharacterList = NSTableView; 
+                CharacterTrait1 = NSPopUpButton; 
+                CharacterTrait2 = NSPopUpButton; 
+                CharacterUnitList = NSTableView; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = WNCharacterList; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = WNCharacterListView; LANGUAGE = ObjC; SUPERCLASS = WNIconListView; }, 
+        {CLASS = WNCustomDialogView; LANGUAGE = ObjC; SUPERCLASS = NSImageView; }, 
+        {CLASS = WNDefeatList; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = WNEventDataSource; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                actionAdd = id; 
+                actionTypeSelect = id; 
+                eventAdd = id; 
+                eventCharacterSelect = id; 
+                eventRemove = id; 
+                eventSelect = id; 
+                eventSideSelect = id; 
+                eventTriggerSelect = id; 
+                eventUnitSelect = id; 
+                filterAdd = id; 
+                turnNoSet = id; 
+            }; 
+            CLASS = WNEventEditor; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                actionType = NSPopUpButton; 
+                eventCharacterList = WNCharacterListView; 
+                eventInfoTabs = NSTabView; 
+                eventList = NSOutlineView; 
+                eventSideList = NSTableView; 
+                eventTrigger = NSPopUpButton; 
+                eventUnitList = WNIconListView; 
+                turnNo = NSTextField; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = WNEventMapView; LANGUAGE = ObjC; SUPERCLASS = WNMapView; }, 
+        {CLASS = WNIconListView; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }, 
+        {CLASS = WNLeaderListView; LANGUAGE = ObjC; SUPERCLASS = WNIconListView; }, 
+        {
+            ACTIONS = {export = id; load = id; revert = id; save = id; saveAs = id; }; 
+            CLASS = WNLoadSave; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {loadProgress = NSProgressIndicator; saveProgress = NSProgressIndicator; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = WNMainTabViewDelegate; LANGUAGE = ObjC; SUPERCLASS = NSTabView; }, 
+        {CLASS = WNMapTabViewDelegate; LANGUAGE = ObjC; SUPERCLASS = NSTabView; }, 
+        {CLASS = WNMapView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {CLASS = WNRecruitListView; LANGUAGE = ObjC; SUPERCLASS = WNIconListView; }, 
+        {
+            ACTIONS = {windowDidBecomeKey = id; windowDidResignKey = id; }; 
+            CLASS = WNScenarioDesignDelegate; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = WNScenarioList; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = WNSideList; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = WNTeamList; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = WNTerrainList; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = WNTerrainMapView; LANGUAGE = ObjC; SUPERCLASS = WNIconListView; }, 
+        {CLASS = WNUnitList; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = WNUnitMapView; LANGUAGE = ObjC; SUPERCLASS = WNIconListView; }, 
+        {CLASS = WNVictoryList; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

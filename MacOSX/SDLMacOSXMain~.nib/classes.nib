@@ -1,0 +1,34 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                installCampaignsAskAgain = id; 
+                installCampaignsNever = id; 
+                installCampaignsNow = id; 
+                installCampaignsOverwrite = id; 
+                installUserCampaigns = id; 
+                installUserCampaignsSkip = id; 
+                installUserOverwrite = id; 
+                launchConsole = id; 
+                launchEditor = id; 
+                prefs = id; 
+                revealDataFolder = id; 
+                revealFontsFolder = id; 
+                revealImagesFolder = id; 
+                revealMapsFolder = id; 
+                revealMusicFolder = id; 
+                revealPrefsFolder = id; 
+                revealSaveFolder = id; 
+                revealSoundsFolder = id; 
+                webDownloads = id; 
+                webForum = id; 
+                webMainSite = id; 
+            }; 
+            CLASS = SDLMain; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}
