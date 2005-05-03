@@ -47,8 +47,11 @@ file_chooser::file_chooser(display &disp, std::string start_file)
 		current_dir_ = path_delim_;
 		chosen_file_ = current_dir_;
 	}
-	// Set sizes to some default values.
-	set_measurements(400, 500);
+	// FIXME: quick hack
+	// on a high-res screen the initial max_items_onscreen is based
+	// on .66 of y dimension, eg. 17 menu items, exceeding the
+	// starting box which can only take 13 or so: force it to be smaller
+	set_measurements(400, 384);
 	update_file_lists();
 	display_chosen_file();
 }
