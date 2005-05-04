@@ -9,7 +9,13 @@ use POSIX qw(strftime);
 use Getopt::Long;
 
 our $toplevel = '.';
-GetOptions ('directory=s' => \$toplevel);
+our $initialdomain = 'wesnoth';
+our $domain = undef;
+GetOptions ('directory=s' => \$toplevel,
+	    'initialdomain=s' => \$initialdomain,
+	    'domain=s' => \$domain);
+
+$domain = $initialdomain unless defined $domain;
 
 our $module = dirname ($0) . "/wmltrans.pm";
 eval "require \"$module\";";
@@ -21,10 +27,18 @@ chdir $toplevel;
 foreach my $file (@ARGV) {
   open (FILE, "<$file") or die "cannot read from $file";
   my $readingattack = 0;
-
+  my @domainstack = ($initialdomain);
  LINE: while (<FILE>) {
-    # skip comments
+    # change the current textdomain when hitting the directive
+    if (m/\s*\#textdomain\s+(\S+)/) {
+      unshift @domainstack, $1;
+      next LINE;
+    }
+
+    # skip other # lines as comments
     next LINE if m/^\s*\#/ and !defined $str;
+
+    next LINE unless $domainstack[0] eq $domain;
 
     if (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*)\"(.*)/) {
       # single-line quoted string
