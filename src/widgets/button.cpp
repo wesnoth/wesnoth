@@ -33,7 +33,8 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing)
 	: widget(video), label_(label),
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
-	  button_(true), state_(NORMAL), type_(type), enabled_(true), pressed_(false)
+	  button_(true), state_(NORMAL), type_(type), enabled_(true), pressed_(false),
+	  spacing_(spacing), base_height_(0), base_width_(0)
 {
 	set_label(label);
 
@@ -65,10 +66,27 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	if (button_image.null())
 		throw error();
 
-	textRect_.x = 0;
-	textRect_.y = 0;
-	textRect_.w = video.getx();
-	textRect_.h = video.gety();
+	base_height_ = button_image->h;
+	base_width_ = button_image->w;
+
+	calculate_size();
+
+	if(type == TYPE_PRESS) {
+		image_.assign(scale_surface(button_image,location().w,location().h));
+		pressedImage_.assign(scale_surface(pressed_image,location().w,location().h));
+		activeImage_.assign(scale_surface(active_image,location().w,location().h));
+	} else {
+		image_.assign(scale_surface(button_image,button_image->w,button_image->h));
+		pressedImage_.assign(scale_surface(pressed_image,button_image->w,button_image->h));
+		activeImage_.assign(scale_surface(active_image,button_image->w,button_image->h));
+		if (type == TYPE_CHECK)
+			pressedActiveImage_.assign(scale_surface(pressed_active_image, button_image->w, button_image->h));
+	}
+}
+
+void button::calculate_size()
+{
+	textRect_ = screen_area();
 
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,label_,0,0);
@@ -76,28 +94,20 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 #ifdef USE_TINY_GUI
 	set_height(textRect_.h+vertical_padding);
 #else
-	set_height(maximum(textRect_.h+vertical_padding,button_image->h));
+	set_height(maximum(textRect_.h+vertical_padding,base_height_));
 #endif
-	if(type == TYPE_PRESS) {
+	if(type_ == TYPE_PRESS) {
 #ifdef USE_TINY_GUI
 		set_width(textRect_.w + horizontal_padding);
 #else
-		if(spacing == MINIMUM_SPACE) {
+		if(spacing_ == MINIMUM_SPACE) {
 			set_width(textRect_.w + horizontal_padding);
 		} else {
-			set_width(maximum(textRect_.w+horizontal_padding,button_image->w));
+			set_width(maximum(textRect_.w+horizontal_padding,base_width_));
 		}
 #endif
-		image_.assign(scale_surface(button_image,location().w,location().h));
-		pressedImage_.assign(scale_surface(pressed_image,location().w,location().h));
-		activeImage_.assign(scale_surface(active_image,location().w,location().h));
 	} else {
-		set_width(checkbox_horizontal_padding + textRect_.w + button_image->w);
-		image_.assign(scale_surface(button_image,button_image->w,button_image->h));
-		pressedImage_.assign(scale_surface(pressed_image,button_image->w,button_image->h));
-		activeImage_.assign(scale_surface(active_image,button_image->w,button_image->h));
-		if (type == TYPE_CHECK)
-			pressedActiveImage_.assign(scale_surface(pressed_active_image, button_image->w, button_image->h));
+		set_width(checkbox_horizontal_padding + textRect_.w + base_width_);
 	}
 }
 
@@ -185,6 +195,7 @@ namespace {
 
 void button::set_label(const std::string& val)
 {
+	bg_restore();
 	label_ = val;
 
 	//if we have a list of items, use the first one that isn't an image
@@ -196,10 +207,7 @@ void button::set_label(const std::string& val)
 		}
 	}
 
-	textRect_ = screen_area();
-	const std::string etext = font::make_text_ellipsis(label_, font_size, width());
-	textRect_ = font::draw_text(NULL,textRect_,font_size,
-	                            font::BUTTON_COLOUR,etext,0,0);
+	calculate_size();
 
 	set_dirty(true);
 }

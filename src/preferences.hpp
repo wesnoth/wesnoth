@@ -169,7 +169,7 @@ namespace preferences {
 	void set_theme(const std::string& theme);
 	const std::string& theme();
 
-	void show_preferences_dialog(display& disp);
+	void show_preferences_dialog(display& disp, const config& game_cfg);
 	bool show_video_mode_dialog(display& disp);
 	// If prefs is non-null, save the hotkeys in that config instead of
 	// the default.

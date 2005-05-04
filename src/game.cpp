@@ -102,6 +102,8 @@ public:
 	bool play_multiplayer();
 	bool change_language();
 
+	void show_preferences();
+
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 
@@ -1173,6 +1175,14 @@ bool game_controller::change_language()
 	return false;
 }
 
+void game_controller::show_preferences()
+{
+	const preferences::display_manager disp_manager(&disp());
+	preferences::show_preferences_dialog(disp(),game_config_);
+
+	disp().redraw_everything();
+}
+
 //this function reads the game configuration, searching for valid cached copies first
 void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_cache)
 {
@@ -1564,10 +1574,7 @@ int play_game(int argc, char** argv)
 				continue;
 			}
 		} else if(res == gui::EDIT_PREFERENCES) {
-			const preferences::display_manager disp_manager(&game.disp());
-			preferences::show_preferences_dialog(game.disp());
-
-			game.disp().redraw_everything();
+			game.show_preferences();
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
 			about::show_about(game.disp());

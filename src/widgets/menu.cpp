@@ -147,7 +147,11 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	//undrawn_items_.clear();
 	max_items_ = -1; // Force recalculation of the max items.
 	item_height_ = -1; // Force recalculation of the item height.
-	selected_ = 0;
+
+	if(keep_viewport == false || selected_ >= int(items.size())) {
+		selected_ = 0;
+	}
+
 	fill_items(items, strip_spaces);
 	if (!keep_viewport)
 		set_position(0);

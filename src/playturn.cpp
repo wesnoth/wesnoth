@@ -2123,7 +2123,7 @@ void turn_info::change_unit_side()
 
 void turn_info::preferences()
 {
-	preferences::show_preferences_dialog(gui_);
+	preferences::show_preferences_dialog(gui_,terrain_config_);
 	gui_.redraw_everything();
 }
 

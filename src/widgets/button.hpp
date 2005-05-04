@@ -57,6 +57,8 @@ protected:
 
 private:
 
+	void calculate_size();
+
 	std::string label_;
 	surface image_, pressedImage_, activeImage_, pressedActiveImage_;
 	SDL_Rect textRect_;
@@ -71,6 +73,10 @@ private:
 	bool enabled_;
 
 	bool pressed_;
+
+	SPACE_CONSUMPTION spacing_;
+
+	int base_height_, base_width_;
 
 	bool hit(int x, int y) const;
 }; //end class button

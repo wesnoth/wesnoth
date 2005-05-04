@@ -791,7 +791,7 @@ namespace {
 class preferences_dialog : public gui::preview_pane
 {
 public:
-	preferences_dialog(display& disp);
+	preferences_dialog(display& disp, const config& game_cfg);
 
 	struct video_mode_change_exception
 	{
@@ -809,22 +809,28 @@ private:
 	bool left_side() const { return false; }
 	void set_selection(int index);
 	void update_location(SDL_Rect const &rect);
+	const config* get_advanced_pref() const;
+	void set_advanced_menu();
 
 	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
 	            show_grid_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 	            show_haloing_button_, video_mode_button_, hotkeys_button_, gamma_button_,
-				flip_time_button_;
+				flip_time_button_, advanced_button_;
 	gui::label music_label_, sound_label_, scroll_label_, gamma_label_;
 	unsigned slider_label_width_;
 
-	enum TAB { GENERAL_TAB, DISPLAY_TAB, SOUND_TAB };
+	gui::menu advanced_;
+	int advanced_selection_;
+
+	enum TAB { GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, ADVANCED_TAB };
 	TAB tab_;
 	display &disp_;
+	const config& game_cfg_;
 };
 
-preferences_dialog::preferences_dialog(display& disp)
+preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
 	  music_slider_(disp.video()), sound_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()),
@@ -842,9 +848,11 @@ preferences_dialog::preferences_dialog(display& disp)
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
 	  gamma_button_(disp.video(), _("Adjust Gamma"), gui::button::TYPE_CHECK),
 	  flip_time_button_(disp.video(), _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
+	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")),
-	  slider_label_width_(0), tab_(GENERAL_TAB), disp_(disp)
+	  slider_label_width_(0), advanced_(disp.video(),std::vector<std::string>()), advanced_selection_(-1),
+	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
 {
 	// FIXME: this box should be vertically centered on the screen, but is not
 #if USE_TINY_GUI
@@ -917,6 +925,8 @@ preferences_dialog::preferences_dialog(display& disp)
 	show_haloing_button_.set_help_string(_("Use graphical special effects (may be slower)"));
 
 	hotkeys_button_.set_help_string(_("View and configure keyboard shortcuts"));
+
+	set_advanced_menu();
 }
 
 void preferences_dialog::update_location(SDL_Rect const &rect)
@@ -971,6 +981,15 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 				rect.w - slider_label_width_ - border, 0 };
 	sound_slider_.set_location(sound_rect);
 
+	//Advanced tab
+	ypos = rect.y;
+	advanced_.set_location(rect.x,ypos);
+	advanced_.set_max_height(height()-100);
+
+	ypos += advanced_.height() + border;
+
+	advanced_button_.set_location(rect.x,ypos);
+
 	set_selection(tab_);
 }
 
@@ -1014,6 +1033,64 @@ void preferences_dialog::process_event()
 	set_music_volume(music_slider_.value());
 	set_scroll_speed(scroll_slider_.value());
 	set_gamma(gamma_slider_.value());
+
+	if(advanced_.selection() != advanced_selection_) {
+		advanced_selection_ = advanced_.selection();
+		const config* const adv = get_advanced_pref();
+		if(adv != NULL) {
+			const config& pref = *adv;
+			advanced_button_.set_label(pref["name"]);
+			std::string value = prefs[pref["field"]];
+			if(value.empty()) {
+				value = pref["default"];
+			}
+
+			advanced_button_.set_check(value == "yes");
+		}
+	}
+
+	if(advanced_button_.pressed()) {
+		const config* const adv = get_advanced_pref();
+		if(adv != NULL) {
+			const config& pref = *adv;
+			prefs[pref["field"]] = advanced_button_.checked() ? "yes" : "no";
+			set_advanced_menu();
+		}
+	}
+}
+
+const config* preferences_dialog::get_advanced_pref() const
+{
+	const config::child_list& adv = game_cfg_.get_children("advanced_preference");
+	if(advanced_selection_ >= 0 && advanced_selection_ < int(adv.size())) {
+		return adv[advanced_selection_];
+	} else {
+		return NULL;
+	}
+}
+
+void preferences_dialog::set_advanced_menu()
+{
+	std::vector<std::string> advanced_items;
+	const config::child_list& adv = game_cfg_.get_children("advanced_preference");
+	for(config::child_list::const_iterator i = adv.begin(); i != adv.end(); ++i) {
+		std::ostringstream str;
+		std::string field = prefs[(**i)["field"]];
+		if(field.empty()) {
+			field = (**i)["default"];
+		}
+
+		if(field == "yes") {
+			field = _("yes");
+		} else if(field == "no") {
+			field = _("no");
+		}
+
+		str << (**i)["name"] << COLUMN_SEPARATOR << field;
+		advanced_items.push_back(str.str());
+	}
+
+	advanced_.set_items(advanced_items,true,true);
 }
 
 void preferences_dialog::set_selection(int index)
@@ -1022,7 +1099,7 @@ void preferences_dialog::set_selection(int index)
 	set_dirty();
 	bg_restore();
 
-	bool hide_general = tab_ != GENERAL_TAB;
+	const bool hide_general = tab_ != GENERAL_TAB;
 	scroll_label_.hide(hide_general);
 	scroll_slider_.hide(hide_general);
 	turbo_button_.hide(hide_general);
@@ -1033,7 +1110,7 @@ void preferences_dialog::set_selection(int index)
 	show_team_colours_button_.hide(hide_general);
 	show_grid_button_.hide(hide_general);
 
-	bool hide_display = tab_ != DISPLAY_TAB, hide_gamma = hide_display || !adjust_gamma();
+	const bool hide_display = tab_ != DISPLAY_TAB, hide_gamma = hide_display || !adjust_gamma();
 	gamma_label_.hide(hide_gamma);
 	gamma_slider_.hide(hide_gamma);
 	gamma_button_.hide(hide_display);
@@ -1044,16 +1121,20 @@ void preferences_dialog::set_selection(int index)
 	video_mode_button_.hide(hide_display);
 	flip_time_button_.hide(hide_display);
 
-	bool hide_sound = tab_ != SOUND_TAB;
+	const bool hide_sound = tab_ != SOUND_TAB;
 	music_label_.hide(hide_sound);
 	music_slider_.hide(hide_sound);
 	sound_label_.hide(hide_sound);
 	sound_slider_.hide(hide_sound);
+
+	const bool hide_advanced = tab_ != ADVANCED_TAB;
+	advanced_.hide(hide_advanced);
+	advanced_button_.hide(hide_advanced);
 }
 
 }
 
-void show_preferences_dialog(display& disp)
+void show_preferences_dialog(display& disp, const config& game_cfg)
 {
 	std::vector<std::string> items;
 
@@ -1062,12 +1143,13 @@ void show_preferences_dialog(display& disp)
 	items.push_back(pre + "general.png" + sep + dsgettext(GETTEXT_DOMAIN,"Prefs section^General"));
 	items.push_back(pre + "display.png" + sep + dsgettext(GETTEXT_DOMAIN,"Prefs section^Display"));
 	items.push_back(pre + "music.png" + sep + dsgettext(GETTEXT_DOMAIN,"Prefs section^Sound"));
+	items.push_back(pre + "advanced.png" + sep + dsgettext(GETTEXT_DOMAIN,"Advanced section^Advanced"));
 	
 	for(;;) {
 		try {
 			const events::event_context dialog_events_context;
 
-			preferences_dialog dialog(disp);
+			preferences_dialog dialog(disp,game_cfg);
 			std::vector<gui::preview_pane*> panes;
 			panes.push_back(&dialog);
 
