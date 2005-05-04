@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-18 17:52+0200\n"
-"PO-Revision-Date: 2005-04-18 16:54+0200\n"
+"PO-Revision-Date: 2005-05-04 22:56+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,6 @@ msgstr ""
 "Aquestes habilitats es mostren a continuació."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -117,7 +116,6 @@ msgstr ""
 "italic>."
 
 #: data/help.cfg:73
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining each item. This "
@@ -219,7 +217,6 @@ msgid "Movement"
 msgstr "Moviment"
 
 #: data/help.cfg:93
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When a unit is "
@@ -232,7 +229,7 @@ msgstr ""
 "que desitgeu moure i aleshores feu clic al hexàgon de destí. Quan una unitat "
 "està seleccionada, tots els hexàgons on pot desplaçar-se en el torn actual "
 "queden il·luminats. Movent el ratolí sobre un hexàgon fora de la zona "
-"il·luminada mostrarà els nombre de torns necessaris per arribar-hi."
+"il·luminada se us mostrarà els nombre de torns necessaris per arribar-hi."
 
 #: data/help.cfg:95
 msgid ""
@@ -311,7 +308,6 @@ msgstr ""
 "<header>text='Ordre i nombre dels atacs'</header>"
 
 #: data/help.cfg:107
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -341,7 +337,6 @@ msgstr ""
 "<header>text='Possibilitat de colpejar'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -356,9 +351,9 @@ msgstr ""
 "\n"
 "\n"
 "La possibilitat de colpejar una unitat està basada únicament en el seu grau "
-"de defensa en el <ref>dst=terrain text=terreny</ref> en el que es troba. "
+"de defensa en el terreny en el que es troba. "
 "Podeu veure el seu grau fent clic amb el botó dret sobre una unitat i "
-"seleccionant la opció <italic>text='Descriu unitat'</italic>. Per exemple, "
+"seleccionant la opció 'Descriu unitat'. Per exemple, "
 "els elfs tenen un grau de defensa del 70% als boscos, que vol dir que si una "
 "unitat els ataca només tindrà un 30% de possibilitats d'encertar. De la "
 "mateixa manera, les possibilitats dels elfs de colpejar l'enemic dependran "
@@ -679,7 +674,6 @@ msgstr ""
 "curar unitats enverinades."
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -689,8 +683,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Recordeu que mentre que és possible combinar el repòs amb altres mètodes per "
-"curar,  no passa el mateix amb els llogarets, la regeneració o les unitats "
+"El repòs es pot combinar amb altres mètodes per "
+"curar, però no passa el mateix amb els llogarets, la regeneració o les unitats "
 "guaridores/curadores. A més, les unitats recuperen tota la seva vida entre "
 "els escenaris d'una campanya."
 
@@ -711,7 +705,6 @@ msgstr ""
 "aquest tema: els guanys i el manteniment."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -727,7 +720,6 @@ msgstr ""
 "mostra a continuació."
 
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -748,7 +740,6 @@ msgstr ""
 "pagar dos monedes d'or de manteniment cada torn."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -762,7 +753,6 @@ msgstr ""
 "d'or per torn."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -771,11 +761,8 @@ msgid ""
 "the second level of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"Hi ha dues excepcions al manteniment. En primer lloc, les unitats amb el "
-"tret lleial, que equivaldran a unitats de nivell 1, sigui quin sigui el seu "
-"nivell. En segon lloc, les unitats amb les que comenceu l'escenari (com ara "
-"Konrad i Delfador) o les unitats que s'uneixin durant aquest, mai tindran "
-"cap cost de manteniment."
+"Hi ha una excepció important que afecta el manteniment: les unitats amb el "
+"tret lleial no tenen mai cap cost de manteniment. Les unitats amb les que comenceu un escenari (com ara Konrad i Delfador) o les unitats que s'uneixin durant el seu transcurs (com els genets del segon nivell de Hereu al Tron), tindran normalment el tret lleial."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -800,7 +787,6 @@ msgid "About"
 msgstr "Quant a"
 
 #: data/help.cfg:210
-#, fuzzy
 msgid ""
 "Most units have two traits, with the exception of Undead units which are "
 "assigned the trait 'Undead'. Traits are modifications that change a unit's "
@@ -823,7 +809,6 @@ msgstr ""
 "Els trets disponibles (excepte per a no morts) són:"
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -849,8 +834,7 @@ msgstr ""
 "Les unitats intel·ligents són molt útils al principi de les campanyes, ja "
 "que poden avançar més ràpidament i convertir-se així en unitats de nivells "
 "superiors. En etapes posteriors, no són tan útils, i si teniu moltes unitats "
-"de nivells alts, us trobareu reclutant unitats amb trets més útils a llarga "
-"distància."
+"de nivells alts, us trobareu reclutant unitats amb trets més útils a la llarga."
 
 #: data/help.cfg:226
 msgid ""
@@ -883,7 +867,6 @@ msgstr ""
 "per mantenir posicions."
 
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -951,7 +934,6 @@ msgstr ""
 "També hi ha altres trets especials:"
 
 #: data/help.cfg:251
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1015,7 +997,6 @@ msgstr ""
 "d'aquells que usen algun tipus de verí en els seus atacs."
 
 #: data/help.cfg:265
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1326,8 +1307,7 @@ msgstr "Blitz"
 #: data/scenarios/multiplayer/Blitz.cfg:9
 #: data/scenarios/multiplayer/Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr ""
-"Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
+msgstr "Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
@@ -1390,8 +1370,7 @@ msgid "Icy Waters"
 msgstr "Aigües gelades"
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:5
-msgid ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+msgid "Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 msgstr ""
 "Combat en aquesta badia d'aigües gelades del nord de Wesnoth i pels seus "
 "voltants."
@@ -1761,8 +1740,7 @@ msgstr "Visca!"
 #: data/scenarios/tutorial/Basic_Training.cfg:299
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:249
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr ""
-"Voleu revisar alguna de les habilitats que heu après en aquest escenari?"
+msgstr "Voleu revisar alguna de les habilitats que heu après en aquest escenari?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:302
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
@@ -1792,8 +1770,7 @@ msgstr "Trets i especialitats"
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr ""
-"Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
+msgstr "Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
 msgid ""
@@ -1898,8 +1875,7 @@ msgstr ""
 "les unitats."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
-msgid ""
-"Many units have a specialty which changes the rules of play in some way."
+msgid "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 "Moltes unitats tenen alguna característica que canvia les regles del joc "
 "d'alguna manera."
@@ -1930,8 +1906,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
 msgid "Next, you may want to begin a campaign, or play multiplayer."
-msgstr ""
-"Ara potser voldreu començar una campanya, o fer una partida multijugador."
+msgstr "Ara potser voldreu començar una campanya, o fer una partida multijugador."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -2985,8 +2960,7 @@ msgstr ""
 "tiradors, que tenen un 60%."
 
 #: data/tips.cfg:9
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "Les unitats que descansen als llogarets recuperen 8 punts de vida al "
 "començament del seu torn."
@@ -3053,8 +3027,7 @@ msgstr ""
 "tropes prescindibles per retrasar l'atac."
 
 #: data/tips.cfg:17
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 "No tingueu por de retirar-vos i tornar-vos a agrupar, aquesta pot ser la "
 "clau de la victòria."
@@ -3622,8 +3595,7 @@ msgstr "$name|a,El gual de $name,El creuament de $name,$river|ós,$river"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
-"Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
+msgstr "Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
@@ -3638,8 +3610,7 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name de mar,$name de dalt,$name,$name,$name"
 
 #: data/translations/english.cfg:144
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr "$name,$name,$name,$name,$name,$name,$name"
 
 #: data/units/Ancient_Lich.cfg:3
@@ -5564,8 +5535,7 @@ msgid "Fireball"
 msgstr "Bola de foc"
 
 #: data/units/Fireball.cfg:16
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr "Una bola de foc. Només usat per 'Move_Unit_Fake'."
 
 #: data/units/Footpad.cfg:3
@@ -6828,8 +6798,7 @@ msgstr "Proscrita"
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
-msgstr ""
-"Els proscrits lluiten millor de nit. Les proscrites, a més, ho fan amb estil."
+msgstr "Els proscrits lluiten millor de nit. Les proscrites, a més, ho fan amb estil."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
@@ -7208,10 +7177,8 @@ msgid "Sea Serpent"
 msgstr "Serp marina"
 
 #: data/units/Sea_Serpent.cfg:16
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"La serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
+msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr "La serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -7511,13 +7478,16 @@ msgid ""
 "aid of a nearby village. Their relatively slow speed is a liability, as is "
 "their weakness during daylight hours."
 msgstr ""
+"Els trolls, quan arriben a la majoria d'edat, posseeixen una força temuda arreu. Els seus cossos, que semblen ben bé fets de pedra, han crescut molt més que els dels homes. La seva habilitat per recuperar-se de les ferides els fa formidables fins i tot lluny de les muntanyes, el seu terreny preferit per lluitar. Un troll adult és més llest, més ràpid, més fort, i encara que ningú gosaria dir-li a la cara, més lleig que qualsevol dels seus fills. Maneguen els seus grans garrots hàbilment, i formen el baluard de la força en qualsevol batalla en que participen. L'únic punt feble que tenen, si es que se li pot dir així, és que no poden lluitar des de la distància.\n"
+"\n"
+"Ús:\n"
+"Els trolls lluiten bé en terrenys abruptes i rocosos, sobretot per la nit. Són vulnerables als arquers, especialment en terrenys oberts, i tenen por de qualsevol tipus d'unitat amb poders màgics. Són poderosos contra unitats fràgils, com els esquelets, i força dèbils contra enemics ben armats o resistents, com els woses. La regeneració els permet recuperar-se del verí i les ferides sense necessitat d'acudir al llogaret més proper. La seva relativa lentitud, així com la seva feblesa durant les hores de dia, són les contrapartides d'aquesta unitat."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Heroi troll"
 
 #: data/units/Troll_Hero.cfg:17
-#, fuzzy
 msgid ""
 "Troll heroes are strong and brutal humanoid monsters with the amazing "
 "ability to regenerate themselves, so that they recover from wounds on their "
@@ -7557,6 +7527,10 @@ msgid ""
 "greatest danger to a Troll Rocklobber is a powerful melee unit attacking "
 "them in open terrain during the day, when they are weakest."
 msgstr ""
+"Donada la monstruosa força de la seva raça, els trolls poden convertir les armes més mundanes en instruments mortífers. Alguns trolls es fabriquen les seves propies fones, no gaire diferents de les de qualsevol nen, excepte pel fet que utilitzen autèntiques roques en comptes de petites pedres. Tot i que no són especialment acurades, una roca llançada per una d'aquestes criatures pot destrossar un home si l'arriba a tocar. Tot i anar carregat amb una pesada munició i no dur cap tipus d'arma de cos a cos, un llança pedres és encara més gran, més fort, i potser fins i tot més lleig que la cria que va ser una vegada... i els seus cops de puny ja pot defensar-se prou bé. A més, la seva habilitat per respondre als atacs dels arquers fa que lluitar contra ells sigui una proposta arriscada, des de qualsevol distància.\n"
+"\n"
+"Ús:\n"
+"Les llança pedres trolls lluiten bé en terrenys abruptes i rocosos, sobretot per la nit. A diferència de la majoria dels de la seva raça, els llança pedres faran que més d'un arquer o mag s'ho pensi dues vegades abans d'atacar. Són poderosos contra unitats fràgils, com els esquelets, i força dèbils contra enemics ben armats o resistents, com els woses. La regeneració els permet recuperar-se del verí i les ferides sense necessitat d'acudir al llogaret més proper. La seva relativa lentitud, així com la seva feblesa durant les hores de dia, són les contrapartides d'aquesta unitat. El perill més important per a un llança pedres és una unitat de combat cos a cos atacant durant el dia i en terreny obert."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -7586,6 +7560,11 @@ msgid ""
 "the aid of a nearby village. Their relative weakness during daylight hours "
 "is a liability, though a Troll Warrior is still very powerful during the day."
 msgstr ""
+"Tot un aterrador bastió de força, el guerrer troll deixa curts tots els contes que han estat explicats sobre el poder dels de la seva raça. Manegant grans martells que poden estabornir a qualsevol, i capaços d'absorbir un nombre gairebé infinit de cops, aquests guerrers són capaços de canviar les estratègies dels comandants que s'enfronten a ells. Un guerrer troll no és un enemic que pot ser derrotat per un sol home, sinó que cal tot un grup de combatents lluitant desesperadament contra ell. El que causa més terror d'aquestes criatures no és la seva aparença ni el seu poder, sinó el fet que encara després de ser colpejat durament, tornarà a recuperar-se lentament de les seves ferides.\n"
+"\n"
+"Ús:\n"
+"Els guerrers troll lluiten bé en terrenys abruptes i rocosos, sobretot per la nit. Tot i que són vulnerables als arquers i mags, especialment en terrenys oberts, la seva força bruta fa que generalment calgui tot un grup d'enemics per derrotar-lo. "
+"Hi ha pocs que puguin encarar-s'hi en combat directe sense córrer un gran perill de morir al mateix torn. La regeneració els permet recuperar-se del verí i les ferides sense necessitat d'acudir al llogaret més proper. La seva relativa lentitud durant les hores de dia és el seu punt feble, tot i que un guerrer troll és, amb tot, molt poderós fins i tot durant el dia."
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
@@ -7614,6 +7593,10 @@ msgid ""
 "aid of a nearby village. Their relatively slow speed is a liability, as is "
 "their weakness during daylight hours."
 msgstr ""
+"La paraula 'cria', aplicada fins i tot a animals temibles com llops i lleons, fa pensar en criatures fràgils, inofensives, i fins i tot maques... tan petites que difícilment poden mantenir-se en peu. Però donada la natura dels trolls, una de les seves cries ja posseeix l'aterradora força pròpia de la seva raça. Les cries de troll, més grans que un home adult, i amb una força similar, difícilment poden controlar els seus cossos. La seva misteriosa regeneració, i una pell que sembla de pedra, els converteix en adversaris monstruosos, especialment en el terreny del que provenen, les muntanyes i els turons. L'únic consol que queda quan algú s'ha d'enfrontar a una cria de troll, és la seva lentitud i el fet que encara no han desenvolupat tota la seva força... encara.\n"
+"\n"
+"Ús:\n"
+"Les cries de troll lluiten bé en terrenys abruptes i rocosos, sobretot per la nit. Són vulnerables als arquers, especialment en terrenys oberts, i tenen por de qualsevol tipus d'unitat amb poders màgics. Són poderosos contra unitats fràgils, com els esquelets, i força dèbils contra enemics ben armats o resistents, com els woses. La regeneració els permet recuperar-se del verí i les ferides sense necessitat d'acudir al llogaret més proper. La seva relativa lentitud, així com la seva feblesa durant les hores de dia, són les contrapartides d'aquesta unitat."
 
 #: data/units/Vampire_Bat.cfg:3
 msgid "Vampire Bat"
@@ -7995,8 +7978,7 @@ msgstr "No teniu un líder amb el que reclutar."
 
 #: src/actions.cpp:109
 msgid "You must have your leader on a keep to recruit or recall units."
-msgstr ""
-"El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
+msgstr "El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
 
 #: src/actions.cpp:126
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -8218,16 +8200,16 @@ msgstr "nivell"
 
 #: src/dialogs.cpp:667 src/display.cpp:1061 src/help.cpp:1101
 msgid "HP: "
-msgstr "HP:"
+msgstr "HP: "
 
 #: src/dialogs.cpp:671 src/dialogs.cpp:679 src/display.cpp:1065
 #: src/display.cpp:1073 src/playturn.cpp:1965
 msgid "XP: "
-msgstr "XP:"
+msgstr "XP: "
 
 #: src/dialogs.cpp:684 src/display.cpp:1077 src/help.cpp:1102
 msgid "Moves: "
-msgstr "Moviments:"
+msgstr "Moviments: "
 
 #: src/display.cpp:465
 msgid "Screenshot"
@@ -8433,8 +8415,7 @@ msgid "Remote host disconnected."
 msgstr "Servidor remot desconnectat."
 
 #: src/game.cpp:1133
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
+msgid "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "S'ha produit un error creant els fitxers necessaris per instal·lar aquesta "
 "campanya."
@@ -8536,19 +8517,19 @@ msgstr "Derrota:"
 
 #: src/help.cpp:1063
 msgid "Advances to: "
-msgstr "Avança a:"
+msgstr "Avança a: "
 
 #: src/help.cpp:1084
 msgid "Abilities: "
-msgstr "Habilitats:"
+msgstr "Habilitats: "
 
 #: src/help.cpp:1103
 msgid "Alignment: "
-msgstr "Alineació:"
+msgstr "Alineació: "
 
 #: src/help.cpp:1107
 msgid "Required XP: "
-msgstr "Experiència requerida:"
+msgstr "Experiència requerida: "
 
 #: src/help.cpp:1118 src/reports.cpp:236
 msgid "attacks"
@@ -8604,8 +8585,7 @@ msgstr "o"
 
 #: src/help.cpp:1347
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
-"Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
+msgstr "Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
 
 #: src/help.cpp:1349
 msgid "The terrain with the best modifier is chosen automatically."
@@ -9155,8 +9135,7 @@ msgid "Choose weapon:"
 msgstr "Trieu l'arma:"
 
 #: src/playturn.cpp:1270
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
+msgid "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "No heu començat a moure les unitats. Segur de que voleu finalitzar el vostre "
 "torn?"
@@ -9189,8 +9168,7 @@ msgstr "Error"
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
-msgstr ""
-"Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
+msgstr "Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
 
 #: src/playturn.cpp:1564
 msgid "Saved"
@@ -9236,8 +9214,7 @@ msgstr "No teniu prou diners per reclutar aquesta unitat."
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
-msgstr ""
-"Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
+msgstr "Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
 
 #: src/playturn.cpp:1900
 msgid ""
@@ -9365,8 +9342,7 @@ msgstr "Tria el tema: "
 
 #: src/playturn.cpp:2427
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
-"Els canvis de tema tenen efecte en carregar o iniciar una nova partida."
+msgstr "Els canvis de tema tenen efecte en carregar o iniciar una nova partida."
 
 #: src/playturn.cpp:2512
 msgid "Place Label"
@@ -9448,8 +9424,7 @@ msgstr "enverinat: "
 
 #: src/reports.cpp:125
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-"Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
+msgstr "Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
 
 #: src/reports.cpp:125
 msgid "stone: "
@@ -9623,7 +9598,7 @@ msgstr "-- Guerra i virtut"
 
 #: src/unit.cpp:1107
 msgid " XP to advance"
-msgstr ""
+msgstr " experiència per avançar"
 
 #: src/unit.cpp:1144
 msgid ": "
@@ -9648,3 +9623,4 @@ msgstr "legal"
 #: src/unit_types.cpp:932
 msgid "neutral"
 msgstr "neutral"
+
