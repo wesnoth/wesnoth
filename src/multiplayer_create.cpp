@@ -394,15 +394,18 @@ void create::layout_children(const SDL_Rect& rect)
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;
 
-	// First column: minimap & era choice
+	// First column: minimap & random map options
 	const int minimap_width = 200;
 	SDL_Rect mmrect = { xpos, ypos, minimap_width, minimap_width };
 	minimap_rect_ = mmrect;
 	ypos += minimap_width + border_size;
+
 	num_players_label_.set_location(xpos, ypos); 
 	ypos += num_players_label_.height() + border_size;
-	era_label_.set_location(xpos, ypos + (era_combo_.height() - era_label_.height()) / 2);
-	era_combo_.set_location(xpos + era_label_.width() + border_size, ypos);
+
+	regenerate_map_.set_location(xpos, ypos);
+	ypos += regenerate_map_.height() + border_size;
+	generator_settings_.set_location(xpos, ypos);
 
 	// Second column: map menu
 	ypos = ypos_columntop + border_size;
@@ -439,6 +442,10 @@ void create::layout_children(const SDL_Rect& rect)
 	xp_modifier_slider_.set_location(xpos, ypos);
 	ypos += xp_modifier_slider_.height() + border_size;
 
+	era_label_.set_location(xpos, ypos + (era_combo_.height() - era_label_.height()) / 2);
+	era_combo_.set_location(xpos + era_label_.width() + border_size, ypos);
+	ypos += era_combo_.height() + border_size;
+
 	fog_game_.set_location(xpos, ypos);
 	ypos += fog_game_.height() + border_size;
 
@@ -450,10 +457,6 @@ void create::layout_children(const SDL_Rect& rect)
 
 	vision_combo_.set_location(xpos, ypos);
 	ypos += vision_combo_.height() + border_size;
-
-	regenerate_map_.set_location(xpos, ypos);
-	ypos += regenerate_map_.height() + border_size;
-	generator_settings_.set_location(xpos, ypos);
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
