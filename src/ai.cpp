@@ -877,9 +877,6 @@ void ai::do_move()
 			move_leader_after_recruit(enemy_dstsrc);
 		}
 	}
-
-	recorder.end_turn();
-	sync_network();
 }
 
 bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)

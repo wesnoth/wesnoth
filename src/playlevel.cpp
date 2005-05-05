@@ -645,6 +645,8 @@ redo_turn:
 					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status,turn_data);
 					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
 					ai_obj->play_turn();
+					recorder.end_turn();
+					ai_obj->sync_network();
 
 					gui.recalculate_minimap();
 					clear_shroud(gui,status,map,gameinfo,units,teams,player_number-1);
