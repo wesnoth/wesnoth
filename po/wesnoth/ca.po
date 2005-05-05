@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-04-18 17:52+0200\n"
-"PO-Revision-Date: 2005-05-04 22:56+0200\n"
+"PO-Revision-Date: 2005-05-05 17:56+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgid ""
 "that this is just an outline - for special exceptions and situations, please "
 "follow the links included."
 msgstr ""
-"Aquesta pàgina resumeix tot el que necessites saber per jugar a Batalla per "
+"Aquesta pàgina resumeix tot el que necessiteu saber per jugar a Batalla per "
 "Wesnoth. Explica com jugar i els mecanismes bàsics que hi ha darrera del "
 "joc. Recordeu que això és només un resum. Per a situacions especials o "
 "excepcions, seguiu els enllaços que s'inclouen."
@@ -107,8 +107,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Per començar, el millor és fer clic sobre el botó <italic>text=Tutoria</"
-"italic> al menú principal. Això us portarà a fer una tutoria interactiva, "
+"Per començar, el millor és fer clic sobre el botó <italic>text=Tutorial</"
+"italic> al menú principal. Això us portarà a fer una campanya d'aprenentatge "
 "que us ensenyarà els conceptes bàsics de Wesnoth. Després d'això, és "
 "recomanable jugar la campanya Hereu al Tron: clic a <italic>text=Campanya</"
 "italic>, i després <italic>text='Hereu al Tron'</italic>. Wesnoth és un joc "
@@ -147,9 +147,7 @@ msgstr ""
 "del menú o fent clic amb el botó dret sobre un hexàgon i seleccionant "
 "<italic>text=Recluta</italic>. Això mostrarà el diàleg de reclutament, que "
 "llistarà les unitats disponibles i el seu cost en monedes d'or. Si feu clic "
-"sobre una unitat veureu les seves estadístiques a l'esquerra. Si aleshores "
-"feu clic sobre el botó <italic>text=D\\'acord</italic>, reclutareu la unitat "
-"seleccionada."
+"sobre una unitat veureu les seves estadístiques a l'esquerra. Fent clic sobre el botó <italic>text=D\\'acord</italic>, reclutareu la unitat seleccionada."
 
 #: data/help.cfg:81
 msgid ""
@@ -228,7 +226,7 @@ msgstr ""
 "El moviment a Batalla per Wesnoth és simple: primer feu un clic a la unitat "
 "que desitgeu moure i aleshores feu clic al hexàgon de destí. Quan una unitat "
 "està seleccionada, tots els hexàgons on pot desplaçar-se en el torn actual "
-"queden il·luminats. Movent el ratolí sobre un hexàgon fora de la zona "
+"queden il·luminats. Si situeu el ratolí sobre un hexàgon fora de la zona "
 "il·luminada se us mostrarà els nombre de torns necessaris per arribar-hi."
 
 #: data/help.cfg:95
@@ -248,13 +246,13 @@ msgstr ""
 "\n"
 "\n"
 "Cada unitat té un cert nombre de punts de moviment que es gasten cada vegada "
-"que la unitat es mou, depenent del <ref>dst=terrain text=terreny</ref>. Per "
+"que la unitat es mou, depenent del terreny. Per "
 "exemple, entrar a una zona de herba casi sempre costa un punt de moviment. "
-"El nombre exacte de punts de moviment que que es gasten depèn també de la "
+"El nombre exacte de punts de moviment que es gasten depèn també de la "
 "unitat. Als boscos, els elfs només gasten 1 punt, la majoria d'humans i orcs "
 "2, i els genets 3. Podeu veure quants punts necessita una unitat per entrar "
 "en un determinat tipus de terreny fent clic sobre ella amb el botó dret i "
-"seleccionant 'Descriu unitat'."
+"seleccionant <italic>Descriu unitat</italic>."
 
 #: data/help.cfg:97
 msgid ""
@@ -321,7 +319,7 @@ msgstr ""
 "\n"
 "L'atacant realitza el primer atac i després ho fa el defensor. Això continua "
 "fins que cadascuna de les unitats ha fet tots els seus atacs. El nombre dels "
-"atacs de cada unitat pot variar. Per exemple, un Lluitador elf amb un atac "
+"atacs de cada unitat pot variar. Per exemple, un lluitador elf amb un atac "
 "d'espasa de 5-4 podrà realitzar 4 atacs fent 5 punts de mal en cada intent. "
 "En canvi un Recluta orc amb 9-2 només tindrà la possibilitat d'atacar 2 "
 "vegades, però infligint 9 punts de mal."
@@ -352,8 +350,8 @@ msgstr ""
 "\n"
 "La possibilitat de colpejar una unitat està basada únicament en el seu grau "
 "de defensa en el terreny en el que es troba. "
-"Podeu veure el seu grau fent clic amb el botó dret sobre una unitat i "
-"seleccionant la opció 'Descriu unitat'. Per exemple, "
+"Podeu veure la seva defensa fent clic amb el botó dret sobre una unitat i "
+"seleccionant la opció <italic>Descriu unitat</italic>. Per exemple, "
 "els elfs tenen un grau de defensa del 70% als boscos, que vol dir que si una "
 "unitat els ataca només tindrà un 30% de possibilitats d'encertar. De la "
 "mateixa manera, les possibilitats dels elfs de colpejar l'enemic dependran "
@@ -369,8 +367,8 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Hi ha dos excepcions a aquesta regla: <ref>dst=magical_attacks text='els "
-"atacs màgics'</ref>, i l'habilitat de <ref>dst=ability_marksman "
+"Hi ha dos excepcions a aquesta regla: <ref>dst=weaponspecial_magical text='els "
+"atacs màgics'</ref>, i l'habilitat de <ref>dst=weaponspecial_marksman "
 "text='tirador'</ref>. Els atacs màgics sempre tenen un 70% de possibilitats "
 "de colpejar, sigui quin sigui el terreny, mentre que amb l'habilitat de "
 "tirador, les possibilitats són del 60%."
@@ -399,7 +397,7 @@ msgstr ""
 "\n"
 "\n"
 "Cada vegada que es colpeja, es causa un mal base depenent de l'atac. Per "
-"exemple, un Lluitador elf amb un atac d'espasa de 5-4 causa un mal base de 5 "
+"exemple, un lluitador elf amb un atac d'espasa de 5-4 causa un mal base de 5 "
 "punts. Això es veu modificat per dos factors: "
 "<ref>dst=damage_type_and_resistance text='resistència'</ref> i "
 "<ref>dst=time_of_day text='hora del dia'</ref>."
@@ -522,7 +520,7 @@ msgid ""
 "Morning and Afternoon count as day, First and Second Watch count as night."
 msgstr ""
 "\n"
-"Matí i migdia compten com si fos de dia, mentre que tant nit i matinada "
+"Matí i migdia compten com si fos de dia, mentre que tant nit com matinada "
 "representen la nit."
 
 #: data/help.cfg:151
@@ -595,7 +593,7 @@ msgstr ""
 "\n"
 "\n"
 "Recordeu que mentre la majoria d'unitats tenen tres nivells, no totes hi "
-"arriven, i n'hi ha d'altres (com els <ref>dst=unit_mage text=mags</ref>) que "
+"arriben, i n'hi ha d'altres (com els <ref>dst=unit_Mage text=mags</ref>) que "
 "en poden tindre quatre."
 
 #: data/help.cfg:169
@@ -609,7 +607,7 @@ msgid ""
 "your turn, before you take action."
 msgstr ""
 "En combat, les unitats inevitablement prendran mal. Wesnoth ofereix "
-"diferents maneres de curar les vostres unitats, i totes tenen lloc al "
+"diferents maneres de curar les unitats, i totes tenen lloc al "
 "començament del vostre torn, abans de passar a l'acció."
 
 #: data/help.cfg:172
@@ -630,7 +628,7 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Llogarets: una unitat que comença el torn en un llogaret es curarà 8 punts "
+"Llogarets: una unitat que comença el torn en un llogaret curarà 8 punts "
 "de vida."
 
 #: data/help.cfg:174
@@ -640,7 +638,7 @@ msgid ""
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text=Regeneració</ref>: certes unitats amb "
+"<ref>dst=ability_regenerates text=Regeneració</ref>: certes unitats amb "
 "aquesta habilitat (com els trolls) recuperen automàticament 8 punts de vida "
 "cada torn."
 
@@ -887,6 +885,7 @@ msgstr ""
 "<header>text=Resistent</header>\n"
 "\n"
 "Les unitats resistents tenen 7 punts de vida més del que és habitual. \n"
+"\n"
 "Les unitats resistents poden ser molt útils en totes les etapes de la "
 "campanya, i és un tret vàlid per a totes les unitats. Aquest tret ajuda molt "
 "a unitats que, o bé tenen pocs punts de vida, o bé tenen ja una bona "
@@ -1101,7 +1100,7 @@ msgstr "Poció de força"
 
 #: data/items.cfg:454
 msgid "Strength is given to the drinker."
-msgstr "Dona una força extraordinària al qui la beu."
+msgstr "Dona una força extraordinària a qui la beu."
 
 #: data/items.cfg:495
 msgid "Potion of Decay"
@@ -1150,7 +1149,7 @@ msgstr "Trident de la tormenta"
 #: data/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"Aquest trident permet als sirènids disparar míssils elèctrics als seus "
+"Aquest trident permet als sirènids disparar míssils elèctrics contra els seus "
 "enemics."
 
 #: data/items.cfg:657
@@ -1238,7 +1237,7 @@ msgstr "Dracs"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
-msgstr "Clàssic"
+msgstr "Clàssica"
 
 #: data/multiplayer.cfg:119 data/translations/english.cfg:127
 msgid "Humans"
@@ -1296,7 +1295,7 @@ msgid ""
 "Mountain dominated area."
 msgstr ""
 "Un mapa de 4 jugadors convenient per partides individuals o per equips. La "
-"victòria passa per dominar el centre de la illa. Nord-oest: àrea dominada "
+"victòria passa per dominar el centre de l'illa. Nord-oest: àrea dominada "
 "per bosc; nord-est: plana nevada; sud-oest: plana desèrtica; sud-est: "
 "muntanyes."
 
@@ -1311,7 +1310,7 @@ msgstr "Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogar
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
-msgstr "El pont destruit"
+msgstr "El pont destruït"
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
@@ -1339,7 +1338,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Charge.cfg:7
 msgid "Charge"
-msgstr "Cárrega"
+msgstr "Càrrega"
 
 #: data/scenarios/multiplayer/Clash.cfg:3
 msgid "Clash"
@@ -1461,12 +1460,12 @@ msgstr ""
 #: data/scenarios/multiplayer/Wesbowl.cfg:199
 #: data/scenarios/multiplayer/Wesbowl.cfg:476
 msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr "Els vermells anoten! La puntuació actual és $redscore-$bluescore"
+msgstr "Els vermells anoten! La puntuació actual és $redscore-$bluescore."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:247
 #: data/scenarios/multiplayer/Wesbowl.cfg:524
 msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr "Els blaus anoten! La puntuació actual és $redscore-$bluescore"
+msgstr "Els blaus anoten! La puntuació actual és $redscore-$bluescore."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:337
 #: data/scenarios/multiplayer/Wesbowl.cfg:614
@@ -1476,7 +1475,7 @@ msgstr "Hauria de passar la pilota a $passto.type ($xloc,$yloc)?"
 #: data/scenarios/multiplayer/Wesbowl.cfg:339
 #: data/scenarios/multiplayer/Wesbowl.cfg:616
 msgid "Yes!"
-msgstr "Si!"
+msgstr "Sí!"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
@@ -1487,15 +1486,15 @@ msgstr "No"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:661
 msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr "L'equip blau guanya! La puntuació final és $redscore-$bluescore "
+msgstr "L'equip blau guanya! La puntuació final és $redscore-$bluescore."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:673
 msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr "L'equip vermell guanya! La puntuació final és $redscore-$bluescore "
+msgstr "L'equip vermell guanya! La puntuació final és $redscore-$bluescore."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:685
 msgid "Draw! Final score: $redscore-$bluescore"
-msgstr "Empat! La puntuació final és $redscore-$bluescore"
+msgstr "Empat! La puntuació final és $redscore-$bluescore."
 
 #: data/scenarios/multiplayer/WeslinBridge.cfg:3
 msgid "Battle for Weslin Bridge"
@@ -1534,7 +1533,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/scenarios.cfg:110
 msgid "The Isle of Anduin"
-msgstr "L'Illa d'Anduin"
+msgstr "L'illa d'Anduin"
 
 #: data/scenarios/multiplayer/scenarios.cfg:137
 msgid "The Three Rivers"
@@ -1554,7 +1553,7 @@ msgstr "Terra de nans"
 
 #: data/scenarios/multiplayer/scenarios.cfg:279
 msgid "Princess's Battlefield"
-msgstr "El camp de batalla de la Princesa"
+msgstr "El camp de batalla de la princesa"
 
 #: data/scenarios/multiplayer/scenarios.cfg:306
 msgid "King of the Hill"
@@ -1590,7 +1589,7 @@ msgstr "Recluta una unitat"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
 msgid "Excellent! You have recruited an Elvish Fighter."
-msgstr "Excel·lent! Heu reclutat un Lluitador elf."
+msgstr "Excel·lent! Heu reclutat un lluitador elf."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:88
 #: data/scenarios/tutorial/Basic_Training.cfg:112
@@ -1613,7 +1612,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:102
 msgid "End your turn"
-msgstr "Finalitzeu el vostre torn."
+msgstr "Finalitzeu el vostre torn"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:109
 msgid "You have successfully ended your turn."
@@ -1627,11 +1626,11 @@ msgid ""
 msgstr ""
 "La vostra propera tasca consistirà en moure el vostre lluitador. Per moure "
 "una unitat, primer seleccioneu-la, i després seleccioneu la seva destinació. "
-"En aquest cas, la seva destinació serà el bosc proper a Merle, la Xaman elfa."
+"En aquest cas, la seva destinació serà el bosc proper a Merle, la xaman elfa."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "Moveu el vostre lluitador a prop de Merle."
+msgstr "Moveu el vostre lluitador a prop de Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:147
 msgid ""
@@ -1639,7 +1638,7 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
-"Excel·lent! Heu mogut correctament al Lluitador elf. Tot i així, com que "
+"Excel·lent! Heu mogut correctament al lluitador elf. Tot i així, com que "
 "l'heu posat a prop d'una unitat enemiga, ha perdut el seu moviment restant "
 "per aquest torn. Això s'anomena 'zona de control'."
 
@@ -1652,11 +1651,11 @@ msgstr ""
 "Ara, heu d'atacar amb el vostre lluitador. Per atacar, primer seleccioneu "
 "una unitat, i seguidament seleccioneu el seu objectiu, que ha de ser una "
 "unitat enemiga propera. Veureu aleshores el diàleg d'atac, on haureu de "
-"seleccionar l'atac realitzar."
+"seleccionar l'atac a realitzar."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:159
 msgid "Attack Merle"
-msgstr "Ataqueu Merle."
+msgstr "Ataqueu Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:177
 msgid "You have successfully attacked Merle."
@@ -1664,7 +1663,7 @@ msgstr "Heu atacat Merle correctament."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:186
 msgid "End your turn, and wait for Merle to attack you."
-msgstr "Finalitzar el teu torn i espera que Merle t'ataqui."
+msgstr "Finalitzeu el vostre torn i espereu que Merle us ataqui."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
 msgid ""
@@ -1672,7 +1671,7 @@ msgid ""
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
-"El teu lluitador ha sobreviscut a l'atac de Merle. Sempre que una unitat "
+"El lluitador ha sobreviscut a l'atac de Merle. Sempre que una unitat "
 "sobreviu després d'una batalla, guanya experiència del combat. Una vegada "
 "que té suficient experiència, avança al següent nivell i es converteix en "
 "una unitat més poderosa."
@@ -1680,11 +1679,11 @@ msgstr ""
 #: data/scenarios/tutorial/Basic_Training.cfg:203
 #: data/scenarios/tutorial/Basic_Training.cfg:206
 msgid "Move your fighter onto a village."
-msgstr "Mou el teu lluitador a un llogaret."
+msgstr "Mou el lluitador a un llogaret."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:220
 msgid "Villages heal the units on them."
-msgstr "Les viles curen les unitats."
+msgstr "Els llogarets curen les unitats."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:229
 msgid ""
@@ -1692,7 +1691,7 @@ msgid ""
 "repeatedly."
 msgstr ""
 "Ara, heu de derrotar Merle reduint els seus punts de vida a 0. Simplement "
-"ataca fins aconseguir-ho."
+"ataqueu fins aconseguir-ho."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:232
 msgid "Defeat Merle"
@@ -1707,7 +1706,7 @@ msgid ""
 msgstr ""
 "Oups! Heu mogut el vostre líder fora de la torre. Recordeu, quan el vostre "
 "líder no està en una torre, no podeu reclutar. També heu de recordar que si "
-"el vostre líder mor, perdreu. Per tal de continuar la tutoria, sereu "
+"el vostre líder mor, perdreu. Per tal de continuar el tutorial, sereu "
 "teletransportat a la torre."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:270
@@ -1745,7 +1744,7 @@ msgstr "Voleu revisar alguna de les habilitats que heu après en aquest escenari
 #: data/scenarios/tutorial/Basic_Training.cfg:302
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
 msgid "Yes"
-msgstr "Si"
+msgstr "Sí"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:304
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
@@ -1758,7 +1757,7 @@ msgid ""
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
 msgstr ""
-" Tot i que has completat el primer escenari, el teu entrenament no ha "
+"Tot i que heu completat el primer escenari, el vostre l'entrenament no ha "
 "acabat. Ara procedirem al següent escenari, en el que lluitareu contra mi en "
 "una batalla de prova."
 
@@ -1782,8 +1781,8 @@ msgid ""
 msgstr ""
 "Podeu guanyar la majoria dels escenaris simplement derrotant tots els líders "
 "enemics. Guanyeu aquest escenari derrotant-me a mi. Podeu reincorporar el "
-"vostre Lluitador elf de l'escenari anterior amb l'opció 'Reincorpora'. També "
-"haureu de reclutar més Lluitadors i Arquers elfs."
+"vostre lluitador elf de l'escenari anterior amb l'opció 'Reincorpora'. També "
+"haureu de reclutar més lluitadors i arquers elfs."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:69
 msgid ""
@@ -1823,7 +1822,7 @@ msgstr "Fi dels torns"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
 msgid "You have successfully recalled your Elvish Fighter."
-msgstr "Heu reincorporat satisfactòriament el vostre Lluitador elf."
+msgstr "Heu reincorporat satisfactòriament el vostre lluitador elf."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:97
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
@@ -1888,7 +1887,7 @@ msgid ""
 msgstr ""
 "Alguns objectes poden canviar les estadístiques de les unitats. Una de les "
 "vostres unitats ha trobat una poció que la farà més efectiva en aquest atac. "
-"Per veure les seves noves estadístiques, observa la barra d'estat lateral."
+"Per veure les seves noves estadístiques, observeu la barra d'estat lateral."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
 msgid "This potion increases the damage of all the drinker's attacks by four."
@@ -1969,8 +1968,8 @@ msgstr ""
 "sobre una torre, pot reclutar unitats en la zona de castell que l'envolta. "
 "Els líders normalment són unitats poderoses, cada bàndol en sol tenir només "
 "un. A més, el vostre líder es normalment la primera unitat que el vostre "
-"bàndol controla. Podeu seleccionar el vostre líder ràpidament prement la "
-"tecla 'l'. Si el vostre líder mor, perdeu la partida. De la mateixa manera, "
+"bàndol controla. Podeu seleccionar el líder ràpidament prement la "
+"tecla 'l'. Si el vostre líder mor, perdreu la partida. De la mateixa manera, "
 "podeu guanyar la majoria dels escenaris derrotant tots els líders enemics."
 
 #: data/scenarios/tutorial/utils.cfg:67
@@ -2057,10 +2056,10 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
-"El vostre Lluitador elf comença amb un nombre determinat de punts de "
-"moviment cada torn. Aquesta és la seva velocitat. Quan el vostre Lluitador "
+"El vostre lluitador elf comença cada torn amb un nombre determinat de punts de "
+"moviment. Aquesta és la seva velocitat. Quan el vostre lluitador "
 "elf es mou per una ruta, cada hexàgon que travessa li costa punts de "
-"moviment. Quan seleccioneu el vostre Lluitador elf, els hexàgons als que no "
+"moviment. Quan el seleccioneu, els hexàgons als que no "
 "pot arribar en un sol torn quedaran enfosquits. Si la destinació està més "
 "lluny d'un torn, es mostraran el nombre de torns necessaris per arribar-hi. "
 "Si accidentalment us equivoqueu, podeu cancel·lar la destinació seleccionant "
@@ -2247,9 +2246,9 @@ msgid ""
 "scenario all of your units are fully healed."
 msgstr ""
 "Hi ha diferents maneres de fer-ho fins i tot sense llogarets. Si una unitat "
-"no es mou ni ataca durant un torn, cura 2 punts de vida per descansar. A "
+"no es mou ni ataca durant un torn, recuperarà 2 punts de vida per descansar. A "
 "més, hi ha certes unitats que són capaces de guarir les unitats properes. La "
-"Xaman elfa és una d'aquestes unitats; les unitats ferides que estiguin al "
+"xaman elfa és una d'aquestes unitats; les unitats ferides que estiguin al "
 "seu voltant recuperaran 4 punts de vida cada torn. Finalment, sempre que una "
 "unitat guanyi un nivell, recuperarà tots els seus punts de vida. "
 
@@ -2400,7 +2399,7 @@ msgid ""
 "you 1 gold per turn."
 msgstr ""
 "Cada escenari comença amb un percentatge dels diners del nivell anterior, "
-"però mai seran inferiors a 100 monedes. La quantitat de monedes que teniu "
+"però mai serà inferior a 100 monedes. La quantitat de monedes que teniu "
 "apareix a la barra d'estat superior al costat d'un dibuix d'unes monedes. "
 "Després de començar l'escenari, rebreu 2 monedes cada torn. Com que "
 "normalment necessitareu més diners, haureu de capturar llogarets, que us "
@@ -2456,7 +2455,7 @@ msgid ""
 "For example; many elves have 70% defense in woods, and are therefore hit 30% "
 "of the time."
 msgstr ""
-" Dos terrenys tenen propietats que ja han estat descrites: els llogarets i "
+"Dos terrenys tenen propietats que ja han estat descrites: els llogarets i "
 "els castells. Tanmateix, les propietats de la majoria dels terrenys són més "
 "subtils, i tenen més a veure amb els avantatges i desavantatges que les "
 "diferents unitats tenen sobre aquests. La primera propietat d'un terreny és "
@@ -2489,7 +2488,7 @@ msgstr ""
 "hi trobareu un llistat dels modificadors de terreny. D'altra banda, a la "
 "barra d'estat superior, a la part dreta, hi podeu veure el nom del terreny i "
 "les coordenades, i si hi ha alguna unitat, la seva defensa i el nombre de "
-"punts de moviment que necessaris per passar per aquell terreny."
+"punts de moviment que són necessaris per passar per aquell terreny."
 
 #: data/scenarios/tutorial/utils.cfg:130
 msgid ""
@@ -2503,7 +2502,7 @@ msgid ""
 msgstr ""
 "Cada unitat té una certa resistència contra cada tipus de mal. Aquesta "
 "resistència és un percentatge que es resta al mal de les armes del mateix "
-"tipus de l'adversari. Per exemple, si un Escorta elf és atacat per un Arquer "
+"tipus de l'adversari. Per exemple, si un escorta elf és atacat per un arquer "
 "elf, l'arquer farà un 20% més de mal del normal, ja que els escortes tenen "
 "una resistència de -20% contra les armes perforadores. Aquesta bonificació/"
 "penalització es calcula a més a més de les altres bonficacions/"
@@ -8116,7 +8115,7 @@ msgstr "Multijugador"
 
 #: src/dialogs.cpp:370
 msgid "Tutorial"
-msgstr "Tutoria"
+msgstr "Tutorial"
 
 #: src/dialogs.cpp:378
 msgid "replay"
@@ -9528,7 +9527,7 @@ msgstr "$error (línia $line, columna $column)"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
-msgstr "Tutoria"
+msgstr "Tutorial"
 
 #: src/titlescreen.cpp:187
 msgid "TitleScreen button^Campaign"
@@ -9556,7 +9555,7 @@ msgstr "Surt"
 
 #: src/titlescreen.cpp:194
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Comença la tutoria per familiaritzar-te amb el joc"
+msgstr "Comença el tutorial per familiaritzar-te amb el joc"
 
 #: src/titlescreen.cpp:195
 msgid "Start a new single player campaign"
