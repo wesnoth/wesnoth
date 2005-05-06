@@ -608,11 +608,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(!summary.empty())
 			objs += "*" + summary + "\n";
 		if(!win_objectives.empty()) {
-			objs += win_string + "\n";
+			objs += "*" + win_string + "\n";
 			objs += win_objectives + "\n";
 		}
 		if(!lose_objectives.empty()) {
-			objs += lose_string + "\n";
+			objs += "*" + lose_string + "\n";
 			objs += lose_objectives + "\n";
 		}
 		if(!note.empty())
