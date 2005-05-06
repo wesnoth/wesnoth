@@ -1647,26 +1647,37 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		}
 	}
 
-	static const std::string left_nw(game_config::foot_left_nw);
-	static const std::string left_n(game_config::foot_left_n);
-	static const std::string right_nw(game_config::foot_right_nw);
-	static const std::string right_n(game_config::foot_right_n);
+	const std::vector<std::string>* image_category = NULL;
 
-	const std::string* image_str = &left_nw;
 
 	if(left_foot) {
 		if(direction == gamemap::location::NORTH ||
 		   direction == gamemap::location::SOUTH) {
-			image_str = &left_n;
+			image_category = &game_config::foot_left_n;
 		} else {
-			image_str = &left_nw;
+			image_category = &game_config::foot_left_nw;
 		}
 	} else {
 		if(direction == gamemap::location::NORTH ||
 		   direction == gamemap::location::SOUTH) {
-			image_str = &right_n;
+			image_category = &game_config::foot_right_n;
 		} else {
-			image_str = &right_nw;
+			image_category = &game_config::foot_right_nw;
+		}
+	}
+
+	if(image_category == NULL || image_category->empty()) {
+		return;
+	}
+
+	const std::string* image_str = &image_category->front();
+	const unit_map::const_iterator un = units_.find(route_.steps.front());
+	if(un != units_.end()) {
+		const int move_cost = un->second.movement_cost(map_,map_.get_terrain(loc)) - 1;
+		if(move_cost >= int(image_category->size())) {
+			image_str = &image_category->back();
+		} else if(move_cost > 0) {
+			image_str = &(*image_category)[move_cost];
 		}
 	}
 
@@ -1687,24 +1698,42 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 
 	draw_unit(xloc,yloc,image,vflip,ftofxp(0.5));
 
-	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
+	if(show_time == false) {
+		return;
+	}
+
+	std::stringstream text;
+
+#ifndef USE_TINY_GUI
+	if(un != units_.end() && zoom_ >= DefaultZoom) {
+		text << (100-un->second.defense_modifier(map_,map_.get_terrain(loc))) << "%";
+	}
+#endif
+
+	if(route_.move_left > 0 && route_.move_left < 10) {
+
+		text << " (" << char('1' + route_.move_left) << ")";
+	}
+
+	const std::string& str = text.str();
+		
+	if(str.empty() == false) {
 		const SDL_Rect& rect = map_area();
-		std::string str(1,'x');
-		str[0] = '1' + route_.move_left;
-		const SDL_Rect& text_area = font::text_area(str,font::SIZE_LARGE);
+
+		const SDL_Rect& text_area = font::text_area(str,font::SIZE_PLUS);
 		const int x = xloc + zoom_/2 - text_area.w/2;
 		const int y = yloc + zoom_/2 - text_area.h/2;
 
 		//draw the text with a black outline
-		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y-1);
-		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y);
-		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y+1);
-		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y-1);
-		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y-1);
-		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y);
-		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y+1);
-		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y+1);
-		font::draw_text(&screen_,rect,font::SIZE_LARGE,font::YELLOW_COLOUR,str,x,y);
+		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x-1,y-1);
+		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x-1,y);
+		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x-1,y+1);
+		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x,y-1);
+		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x+1,y-1);
+		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x+1,y);
+		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x+1,y+1);
+		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::DARK_COLOUR,str,x,y+1);
+		font::draw_text(&screen_,rect,font::SIZE_PLUS,font::YELLOW_COLOUR,str,x,y);
 	}
 }
 

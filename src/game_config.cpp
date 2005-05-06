@@ -11,11 +11,12 @@
    See the COPYING file for more details.
 */
 
-#include "config.hpp"
 #include "global.hpp"
 
+#include "config.hpp"
 #include "game_config.hpp"
 #include "wesconfig.h"
+#include "serialization/string_utils.hpp"
 
 #include <cstdlib>
 
@@ -56,7 +57,7 @@ namespace game_config
 	std::string dot_image = "misc/dot.png";
 	std::string cross_image = "misc/cross.png";
 	
-	std::string foot_left_nw, foot_left_n, foot_right_nw, foot_right_n;
+	std::vector<std::string> foot_left_nw, foot_left_n, foot_right_nw, foot_right_n;
 
 	std::string observer_image;
 	
@@ -126,10 +127,10 @@ namespace game_config
 		cross_image = v["cross_image"];
 		dot_image = v["dot_image"];
 
-		foot_left_nw = v["footprint_left_nw"];
-		foot_left_n = v["footprint_left_n"];
-		foot_right_nw = v["footprint_right_nw"];
-		foot_right_n = v["footprint_right_n"];
+		foot_left_nw = utils::split(v["footprint_left_nw"]);
+		foot_left_n = utils::split(v["footprint_left_n"]);
+		foot_right_nw = utils::split(v["footprint_right_nw"]);
+		foot_right_n = utils::split(v["footprint_right_n"]);
 
 		missile_n_image = v["missile_n_image"];
 		missile_ne_image = v["missile_ne_image"];
