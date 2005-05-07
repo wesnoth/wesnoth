@@ -1447,8 +1447,9 @@ bool load_font_config()
 	try {
 		scoped_istream stream = preprocess_file("data/fonts.cfg");
 		read(cfg, *stream);
-	} catch(config::error&) {
-		std::cerr << "Could not read fonts.cfg\n";
+	} catch(config::error &e) {
+		ERR_FT << "could not read fonts.cfg:\n"
+		       << e.message << '\n';
 		return false;
 	}
 
