@@ -33,9 +33,11 @@ if INSTALLDATA
 	  $(install_sh_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
 if DUMMYLOCALES
-	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"; \
+	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"
+	if test -d "$(DESTDIR)$(pkgdatadir)/locales/C" ; then rm -r "$(DESTDIR)$(pkgdatadir)/locales/C" ; fi
 	echo | localedef --force "$(DESTDIR)$(pkgdatadir)/locales/C" 2> /dev/null; \
 	for loc in `sed -n 's/^.*language_def..\(.._..\).*$$/\1/p' "$(srcdir)/src/language.cpp"`; do \
+	  if test -L "$(DESTDIR)$(pkgdatadir)/locales/$$loc" ; then rm "$(DESTDIR)$(pkgdatadir)/locales/$$loc" ; fi; \
 	  ln -s C "$(DESTDIR)$(pkgdatadir)/locales/$$loc"; done; \
 	true
 endif
