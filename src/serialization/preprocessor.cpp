@@ -397,11 +397,11 @@ bool preprocessor_data::get_chunk()
 		strings_.push_back(std::string());
 	} else if (c == '#' && !target_.quoted_) {
 		std::string command = read_word();
+		bool comment = false;
 		if (command == "define") {
 			skip_spaces();
 			int linenum = linenum_;
 			std::string s = read_line();
-			put('\n');
 			std::vector< std::string > items = utils::split(s, ' ');
 			if (items.empty()) {
 				std::ostringstream error;
@@ -494,8 +494,11 @@ bool preprocessor_data::get_chunk()
 			      << linenum_ << ' ' << target_.location_;
 			ERR_CF << error.str() << '\n';
 			throw config::error(error.str());
-		}
+		} else
+			comment = true;
 		skip_eol();
+		if (comment)
+			put('\n');
 	} else if (token.type == '{' || token.type == '[') {
 		if (c == '(') {
 			if (token.type == '[')
