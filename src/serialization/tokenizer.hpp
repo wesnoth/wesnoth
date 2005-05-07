@@ -57,6 +57,7 @@ private:
 	int peek_char();
 	bool is_space(int c);
 	bool is_alnum(int c);
+	void skip_comment();
 
 	std::istream& in_;
 	int current_;

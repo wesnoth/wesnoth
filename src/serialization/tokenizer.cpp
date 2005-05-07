@@ -30,35 +30,47 @@ tokenizer::tokenizer(std::istream& in) :
 	}
 }
 
+void tokenizer::skip_comment()
+{
+	// Dump comments up to \n
+	std::string comment;
+	next_char();
+	while (current_ != EOF && current_ != '\n') {
+		comment += current_;
+		next_char();
+	}
+
+	// Identifies and processes tokenizer directives
+	std::vector<std::string> comment_line = utils::split(comment, ' ');
+	if (comment_line.size() == 2 && comment_line[0] == "textdomain")
+		textdomain_ = comment_line[1];
+	else if (comment_line.size() > 3 && comment_line[0] == "line") {
+		lineno_ = atoi(comment_line[1].c_str());
+		comment_line.erase(comment_line.begin(), comment_line.begin() + 2);
+		file_ = ' ' + utils::join(comment_line, ' ');
+	}
+}
+
 const token& tokenizer::next_token()
 {
 	token_.value = "";
 	token_.leading_spaces = "";
 
-	// Dump spaces
-	while(is_space(current_)) {
-		token_.leading_spaces += current_;
+	// Dump spaces and inlined comments
+	for(;;) {
+		while (is_space(current_)) {
+			token_.leading_spaces += current_;
+			next_char();
+		}
+		if (current_ != 254)
+			break;
+		skip_comment();
+		--lineno_;
 		next_char();
 	}
 
-	// Dump comments up to \n
-	if(current_ == '#') {
-		std::string comment;
-		do {
-			comment += current_;
-			next_char();
-		} while(current_ != EOF && current_ != '\n');
-
-		// Identifies and processes tokenizer directives
-		std::vector<std::string> comment_line = utils::split(comment, ' ');
-		if (comment_line.size() == 2 && comment_line[0] == "#textdomain")
-			textdomain_ = comment_line[1];
-		else if (comment_line.size() > 3 && comment_line[0] == "#line") {
-			lineno_ = atoi(comment_line[1].c_str());
-			comment_line.erase(comment_line.begin(), comment_line.begin() + 2);
-			file_ = ' ' + utils::join(comment_line, ' ');
-		}
-	} 
+	if (current_ == '#')
+		skip_comment();
 
 	tokenstart_lineno_ = lineno_;
 
@@ -79,6 +91,10 @@ const token& tokenizer::next_token()
 				break;
 			if(current_ == '"' && peek_char() == '"')
 				next_char();
+			if (current_ == 254) {
+				skip_comment();
+				continue;
+			}
 
 			token_.value += current_;
 		};
