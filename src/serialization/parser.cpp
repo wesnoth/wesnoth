@@ -183,8 +183,9 @@ void parser::parse_element()
 		if(elname != elements.top().name) {
 			utils::string_map i18n_symbols;
 			i18n_symbols["tag"] = elements.top().name;
+			i18n_symbols["tag2"] = elname;
 			error(lineno_string(i18n_symbols, elements.top().start_line,
-					N_("Found invalid closing tag for tag $tag at $pos")));
+					N_("Found invalid closing tag $tag2 for tag $tag (opened at $pos)")));
 		}
 
 		elements.pop();
