@@ -58,35 +58,28 @@ private:
 	tokenizer tok_;
 
 	struct element {
-		element(config *cfg, std::string const &name, std::string const &start_line,
-		        std::string const &textdomain) :
-			cfg(cfg), name(name), textdomain(textdomain), start_line(start_line){};
+		element(config *cfg, std::string const &name, std::string const &start_line)
+			: cfg(cfg), name(name), start_line(start_line) {}
 
 		config* cfg;
 		std::string name;
 
 		std::map<std::string, config*> last_element_map;
-		std::string textdomain;
 		std::string start_line;
 	};
 
 	std::stack<element> elements;
-
-	std::string current_textdomain_location;
 };
 
-parser::parser(config &cfg, std::istream &in) :
-	cfg_(cfg),
-	tok_(in),
-	current_textdomain_location("")
+parser::parser(config &cfg, std::istream &in)
+	: cfg_(cfg), tok_(in)
 {
 }
 
 void parser::operator()(std::string* error_log)
 {
 	cfg_.clear();
-	elements.push(element(&cfg_, "", "", PACKAGE));
-	tok_.textdomain() = PACKAGE;
+	elements.push(element(&cfg_, "", ""));
 
 	do {
 		try {
@@ -148,8 +141,7 @@ void parser::parse_element()
 		// Add the element
 		current_element = &(elements.top().cfg->add_child(elname));
 		elements.top().last_element_map[elname] = current_element;
-		elements.top().textdomain = tok_.textdomain();
-		elements.push(element(current_element, elname, tok_.get_line(), elements.top().textdomain));
+		elements.push(element(current_element, elname, tok_.get_line()));
 		break;
 
 	case '+': // [+element]
@@ -168,8 +160,7 @@ void parser::parse_element()
 			current_element = last_element_itor->second;
 		}
 		elements.top().last_element_map[elname] = current_element;
-		elements.top().textdomain = tok_.textdomain();
-		elements.push(element(current_element, elname, tok_.get_line(), elements.top().textdomain));
+		elements.push(element(current_element, elname, tok_.get_line()));
 		break;
 
 	case '/': // [/element]
@@ -189,7 +180,6 @@ void parser::parse_element()
 		}
 
 		elements.pop();
-		tok_.textdomain() = elements.top().textdomain;
 		break;
 	default:
 		error(_("Invalid tag name"));
