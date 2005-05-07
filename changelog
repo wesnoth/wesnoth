@@ -55,6 +55,8 @@ CVS HEAD:
  * slow now affects units with 2 or more attacks (not just 1 remaining)
  * slow now works with berserk and is cumulative across berserk rounds
  * fix replays with idle_ai, as seen in user scenario Rebellion (#12943)
+ * new WML preprocessor, allows for nested parentheses in macros (#10995)
+ * new [random] representation, fixes error with saving complex scenarios (forum thread 5659)
  * various bug fixes and code cleanups
 
 Version 0.9.1:
