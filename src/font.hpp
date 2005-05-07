@@ -44,8 +44,9 @@ struct subset_descriptor
 void set_font_list(const std::vector<subset_descriptor>& fontlist);
 
 //various standard colours
-extern const SDL_Color NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,
-                       DARK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR, TITLE_COLOUR;
+extern const SDL_Color NORMAL_COLOUR, LOBBY_COLOUR, GOOD_COLOUR, BAD_COLOUR,
+                       BLACK_COLOUR, DARK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR,
+                       STONED_COLOUR, TITLE_COLOUR;
 
 //standard markups
 extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, BLACK_TEXT, BOLD_TEXT, IMAGE, NULL_MARKUP;

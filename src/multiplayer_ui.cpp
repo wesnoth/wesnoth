@@ -216,10 +216,10 @@ SDL_Rect ui::client_area() const
 {
 	SDL_Rect res;
 
-	res.x = xscale(11) + 6;
-	res.y = yscale(40) + 6;
-	res.w = xscale(833) > 12 ? xscale(833) - 12 : 0;
-	res.h = yscale(524) > 12 ? yscale(524) - 12 : 0;
+	res.x = xscale(10) + 10;
+	res.y = yscale(38) + 10;
+	res.w = xscale(828) > 12 ? xscale(828) - 12 : 0;
+	res.h = yscale(520) > 12 ? yscale(520) - 12 : 0;
 
 	return res;
 }

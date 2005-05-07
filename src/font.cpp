@@ -312,12 +312,14 @@ void set_font_list(const std::vector<subset_descriptor>& fontlist)
 }
 
 const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
+                LOBBY_COLOUR  = {0xBB,0xBB,0xBB,0},
                 GOOD_COLOUR   = {0x00,0xFF,0x00,0},
                 BAD_COLOUR    = {0xFF,0x00,0x00,0},
                 BLACK_COLOUR  = {0x00,0x00,0x00,0},
                 DARK_COLOUR   = {0x00,0x00,0x66,0},
                 YELLOW_COLOUR = {0xFF,0xFF,0x00,0},
                 BUTTON_COLOUR = {0xBC,0xB0,0x88,0},
+                STONED_COLOUR = {0xA0,0xA0,0xA0,0},
                 TITLE_COLOUR  = {0xBC,0xB0,0x88,0};
 
 const char LARGE_TEXT='*', SMALL_TEXT='`', GOOD_TEXT='@', BAD_TEXT='#',

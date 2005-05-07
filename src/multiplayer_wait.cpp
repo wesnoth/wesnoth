@@ -145,7 +145,7 @@ wait::wait(display& disp, const config& cfg, const game_data& data, mp::chat& c,
 	ui(disp, cfg, c, gamelist),
 
 	cancel_button_(disp.video(), _("Cancel")),
-	start_label_(disp.video(), _("Waiting for game to start...")),
+	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	game_menu_(disp.video(), std::vector<std::string>()),
 
 	game_data_(data),
@@ -268,12 +268,12 @@ void wait::layout_children(const SDL_Rect& rect)
 	ui::layout_children(rect);
 
 	const SDL_Rect ca = client_area();
-	int y = ca.y + ca.h - cancel_button_.height() - gui::ButtonVPadding;
+	int y = ca.y + ca.h - cancel_button_.height();
 
 	game_menu_.set_location(ca.x, ca.y);
-	game_menu_.set_measurements(ca.x + ca.w, y - ca.y - gui::ButtonVPadding);
-	cancel_button_.set_location(ca.x + ca.w - cancel_button_.width() - gui::ButtonHPadding, y);
-	start_label_.set_location(ca.x + gui::ButtonHPadding, y + 4);
+	game_menu_.set_measurements(ca.w, y - ca.y - gui::ButtonVPadding);
+	cancel_button_.set_location(ca.x + ca.w - cancel_button_.width(), y);
+	start_label_.set_location(ca.x, y + 4);
 }
 
 void wait::hide_children(bool hide)

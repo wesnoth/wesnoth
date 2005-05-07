@@ -49,7 +49,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	index_(index),
 
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
-			font::SIZE_XLARGE, font::GOOD_COLOUR),
+	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(parent.disp(), parent.player_types_),
 	orig_controller_(parent.video(), cfg["description"], font::SIZE_SMALL), 
 	combo_faction_(parent.disp(), parent.player_factions_),
@@ -57,7 +57,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	combo_team_(parent.disp(), parent.player_teams_),
 	combo_colour_(parent.disp(), parent.player_colours_),
 	slider_gold_(parent.video()),
-	label_gold_(parent.video(), "100", font::SIZE_NORMAL, font::GOOD_COLOUR),
+	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	enabled_(!parent_->params_.saved_game),
 	changed_(false),
 	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL)
@@ -154,15 +154,15 @@ connect::side::side(const side& a) :
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 { 
-	pane.add_widget(&player_number_, 10, 3 + pos);
-	pane.add_widget(&combo_controller_, 30, 5 + pos);
-	pane.add_widget(&orig_controller_, 30 + (combo_controller_.width() - orig_controller_.width()) / 2, 35 + pos + (combo_leader_.height() - orig_controller_.height()) / 2);
-	pane.add_widget(&combo_faction_, 145, 5 + pos);
-	pane.add_widget(&combo_leader_, 145, 35 + pos);
-	pane.add_widget(&combo_team_, 260, 5 + pos);
-	pane.add_widget(&combo_colour_, 375, 5 + pos);
-	pane.add_widget(&slider_gold_, 490, 5 + pos);
-	pane.add_widget(&label_gold_, 500 + slider_gold_.width(), 5 + pos);
+	pane.add_widget(&player_number_, 0, 5 + pos);
+	pane.add_widget(&combo_controller_, 20, 5 + pos);
+	pane.add_widget(&orig_controller_, 20 + (combo_controller_.width() - orig_controller_.width()) / 2, 35 + pos + (combo_leader_.height() - orig_controller_.height()) / 2);
+	pane.add_widget(&combo_faction_, 135, 5 + pos);
+	pane.add_widget(&combo_leader_, 135, 35 + pos);
+	pane.add_widget(&combo_team_, 250, 5 + pos);
+	pane.add_widget(&combo_colour_, 365, 5 + pos);
+	pane.add_widget(&slider_gold_, 480, 5 + pos);
+	pane.add_widget(&label_gold_, 490 + slider_gold_.width(), 8 + pos);
 }
 
 void connect::side::process_event()
@@ -478,16 +478,16 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 
 	team_prefix_(std::string(_("Team")) + " "),
 
-	waiting_label_(video(), ""),
+	waiting_label_(video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	message_full_(false),
 	default_controller_(default_controller),
 
 	scroll_pane_(video()),
-	type_title_label_(video(), _("Player/Type"), font::SIZE_NORMAL, font::GOOD_COLOUR),
-	faction_title_label_(video(), _("Faction"), font::SIZE_NORMAL, font::GOOD_COLOUR),
-	team_title_label_(video(), _("Team"), font::SIZE_NORMAL, font::GOOD_COLOUR),
-	colour_title_label_(video(), _("Color"), font::SIZE_NORMAL, font::GOOD_COLOUR),
-	gold_title_label_(video(), _("Gold"), font::SIZE_NORMAL, font::GOOD_COLOUR),
+	type_title_label_(video(), _("Player/Type"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	faction_title_label_(video(), _("Faction"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	team_title_label_(video(), _("Team"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	colour_title_label_(video(), _("Color"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	gold_title_label_(video(), _("Gold"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 
 	ai_(video(), _("Computer vs Computer")),
 	launch_(video(), _("I'm Ready")),
@@ -775,23 +775,23 @@ void connect::layout_children(const SDL_Rect& rect)
 	size_t bottom = ca.y + ca.h;
 
 	//Buttons
-	right_button->set_location(right - right_button->width() - gui::ButtonHPadding,
-			bottom - right_button->height() - gui::ButtonVPadding);
-	left_button->set_location(right - right_button->width() - left_button->width() - gui::ButtonHPadding*2,
-			bottom - left_button->height()-gui::ButtonVPadding);
+	right_button->set_location(right - right_button->width(),
+	                           bottom - right_button->height());
+	left_button->set_location(right - right_button->width() - left_button->width() - gui::ButtonHPadding,
+	                          bottom - left_button->height());
 
-	ai_.set_location(left+30, bottom-left_button->height()-gui::ButtonVPadding);
-	waiting_label_.set_location(ai_.location().x + ai_.location().w + 10,
-			bottom-left_button->height()-gui::ButtonVPadding);
+	ai_.set_location(left, bottom-left_button->height());
+	waiting_label_.set_location(ai_.location().x + ai_.location().w + 8,
+	                            bottom-left_button->height() + 4);
 
 	// Title and labels
 	gui::draw_dialog_title(left,top,&video(),_("Game Lobby"));
 
-	type_title_label_.set_location((left+30)+(launch_.width()/2)-(type_title_label_.width()/2),top+35);
-	faction_title_label_.set_location((left+145)+(launch_.width()/2)-(faction_title_label_.width()/2),top+35);
-	team_title_label_.set_location((left+260)+(launch_.width()/2)-(team_title_label_.width()/2),top+35);
-	colour_title_label_.set_location((left+375)+(launch_.width()/2)-(colour_title_label_.width()/2),top+35);
-	gold_title_label_.set_location((left+480)+(launch_.width()/2)-(gold_title_label_.width()/2),top+35);
+	type_title_label_.set_location(left+30, top+35);
+	faction_title_label_.set_location((left+145), top+35);
+	team_title_label_.set_location((left+260), top+35);
+	colour_title_label_.set_location((left+375), top+35);
+	gold_title_label_.set_location((left+493), top+35);
 
 	SDL_Rect scroll_pane_rect;
 	scroll_pane_rect.x = ca.x;

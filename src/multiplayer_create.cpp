@@ -38,15 +38,15 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 
 	maps_menu_(disp.video(), std::vector<std::string>()),
 	turns_slider_(disp.video()),
-	turns_label_(disp.video(), "", font::SIZE_SMALL, font::GOOD_COLOUR),
+	turns_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	village_gold_slider_(disp.video()),
-	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::GOOD_COLOUR),
+	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	xp_modifier_slider_(disp.video()),
-	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::GOOD_COLOUR),
-	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_SMALL, font::GOOD_COLOUR),
-	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::GOOD_COLOUR),
-	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::GOOD_COLOUR),
-	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::GOOD_COLOUR),
+	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
+	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
+	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	fog_game_(disp.video(), _("Fog Of War"), gui::button::TYPE_CHECK),
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
@@ -378,6 +378,7 @@ void create::layout_children(const SDL_Rect& rect)
 	SDL_Rect ca = client_area();
 
 	const int border_size = 6;
+	const int column_border_size = 10;
 	int xpos = ca.x;
 	int ypos = ca.y;
 
@@ -408,12 +409,12 @@ void create::layout_children(const SDL_Rect& rect)
 	generator_settings_.set_location(xpos, ypos);
 
 	// Second column: map menu
-	ypos = ypos_columntop + border_size;
-	xpos += minimap_width + border_size;
+	ypos = ypos_columntop;
+	xpos += minimap_width + column_border_size;
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;
 	maps_menu_.set_max_width(200);
-	maps_menu_.set_max_height(ca.x + ca.h - ypos);
+	maps_menu_.set_max_height(ca.h + ca.x - ypos - border_size);
 	maps_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int mapsel_save = maps_menu_.selection();
@@ -421,8 +422,8 @@ void create::layout_children(const SDL_Rect& rect)
 	maps_menu_.move_selection(mapsel_save);
 
 	// Third column: big buch of options
-	ypos = ypos_columntop + border_size;
-	xpos += 200 + border_size;
+	ypos = ypos_columntop;
+	xpos += 200 + column_border_size;
 
 	turns_label_.set_location(xpos, ypos);
 	ypos += turns_label_.height() + border_size;
@@ -467,11 +468,10 @@ void create::layout_children(const SDL_Rect& rect)
 #endif
 
 	// Buttons
-	right_button->set_location(ca.x + ca.w - right_button->width() - gui::ButtonHPadding, 
-			ca.y + ca.h - right_button->height() - gui::ButtonVPadding);
+	right_button->set_location(ca.x + ca.w - right_button->width(), 
+	                           ca.y + ca.h - right_button->height());
 	left_button->set_location(right_button->location().x - left_button->width() -
-			gui::ButtonHPadding,
-			ca.y + ca.h - left_button->height() - gui::ButtonVPadding);
+	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());
 }
 
 }

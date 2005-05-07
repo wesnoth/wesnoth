@@ -174,12 +174,16 @@ void button::draw_contents()
 	else
 		textx = loc.x + image_w + checkbox_horizontal_padding / 2;
   
-	if (!enabled_)
+	SDL_Color button_colour = font::BUTTON_COLOUR;
+
+	if (!enabled_) {
 		image = greyscale_image(image);
+		button_colour = font::STONED_COLOUR;
+	}
 
 	video().blit_surface(loc.x, loc.y, image);
 	const std::string etext = font::make_text_ellipsis(label_, font_size, loc.w);
-	font::draw_text(&video(), clipArea, font_size, font::BUTTON_COLOUR, etext, textx, texty);
+	font::draw_text(&video(), clipArea, font_size, button_colour, etext, textx, texty);
 
 	update_rect(loc);
 }

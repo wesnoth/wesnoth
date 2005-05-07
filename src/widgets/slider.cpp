@@ -122,7 +122,7 @@ void slider::draw_contents()
 	surface const screen = video().getSurface();
 
 	SDL_Rect line_rect = { loc.x + image->w / 2, loc.y + loc.h / 2, loc.w - image->w, 1 };
-	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format, 255, 255, 255));
+	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format, 221, 221, 221));
 
 	SDL_Rect const &slider = slider_area();
 	video().blit_surface(slider.x, slider.y, image);
