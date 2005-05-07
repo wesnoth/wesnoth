@@ -23,10 +23,14 @@ struct preproc_define
 {
 	preproc_define() {}
 	explicit preproc_define(std::string const &val) : value(val) {}
-	preproc_define(std::string const &val, std::vector< std::string > const &args)
-		: value(val), arguments(args) {}
+	preproc_define(std::string const &val, std::vector< std::string > const &args,
+	               std::string const &domain, int line, std::string const &loc)
+		: value(val), arguments(args), textdomain(domain), linenum(line), location(loc) {}
 	std::string value;
 	std::vector< std::string > arguments;
+	std::string textdomain;
+	int linenum;
+	std::string location;
 	bool operator==(preproc_define const &) const;
 	bool operator!=(preproc_define const &v) const { return !operator==(v); }
 };
