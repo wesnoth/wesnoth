@@ -63,7 +63,8 @@ BPath be_path;
 #include "scoped_resource.hpp"
 #include "util.hpp"
 
-#define LOG_G LOG_STREAM(info, general)
+#define LOG_FS LOG_STREAM(info, filesystem)
+#define ERR_FS LOG_STREAM(err, filesystem)
 
 #ifdef USE_ZIPIOS
 #include <sstream>
@@ -89,11 +90,11 @@ namespace {
 				    (0 == fname.compare(fname.size() - suffix.size(), suffix.size(), suffix))) {
 					zipios::ZipFile zip(game_config::path + "/" + fname);
 					the_collection->addCollection(zip);
-					LOG_G << "zip collection " << fname << 
-						" has " << zip.size() << " elements\n";
+					LOG_FS << "zip collection " << fname
+					       << " has " << zip.size() << " elements\n";
 				}
 			}
-			else LOG_G << "skipping invalid entry\n";
+			else LOG_FS << "skipping invalid entry\n";
 		}
 		
 	}
@@ -111,16 +112,16 @@ bool filesystem_init()
 	the_collection = new xzipios::XCColl;
 
 	if (!get_user_data_dir().empty()) {
-		LOG_G << "looking at user dir " << get_user_data_dir() << "\n";
+		LOG_FS << "looking at user dir " << get_user_data_dir() << '\n';
 		zipios::DirectoryCollection dir(get_user_data_dir());
-		LOG_G << "user collection has " << dir.size() << " elements\n";
+		LOG_FS << "user collection has " << dir.size() << " elements\n";
 		the_collection->addCollection(dir);
 		register_zipdir(get_user_data_dir());
 	}
 	if (!game_config::path.empty()) {
-		LOG_G << "looking at system dir " << game_config::path << "\n";
+		LOG_FS << "looking at system dir " << game_config::path << '\n';
 		zipios::DirectoryCollection dir(game_config::path);
-		LOG_G << "system collection has " << dir.size() << " elements\n";
+		LOG_FS << "system collection has " << dir.size() << " elements\n";
 		the_collection->addCollection(dir);
 		register_zipdir(game_config::path);
 	}
@@ -294,8 +295,7 @@ std::string get_dir(const std::string& dir_path)
 		if(res == 0) {
 			dir = opendir(dir_path.c_str());
 		} else {
-			std::cerr << "Could not open or create directory: '" << dir_path
-			          << "'\n";
+			ERR_FS << "could not open or create directory: " << dir_path << '\n';
 		}
 	}
 
@@ -395,8 +395,7 @@ std::string get_user_data_dir()
 		if(res == 0) {
 			dir = opendir(dir_path.c_str());
 		} else {
-			std::cerr << "Could not open or create directory: '" << dir_path
-			          << "'\n";
+			ERR_FS << "could not open or create directory: " << dir_path << '\n';
 		}
 	}
 
@@ -423,7 +422,7 @@ std::string read_stdin()
 
 std::istream *istream_file(std::string const &fname)
 {
-	LOG_G << "Streaming " << fname << " for reading.\n";
+	LOG_FS << "streaming " << fname << " for reading.\n";
 #ifdef USE_ZIPIOS
 	if (!fname.empty() && fname[0] != '/' && the_collection) {
 		zipios::ConstEntryPointer p = the_collection->getEntry(fname);
@@ -453,7 +452,7 @@ std::string read_file(std::string const &fname)
 
 std::ostream *ostream_file(std::string const &fname)
 {
-	LOG_G << "Streaming " << fname << " for writing.\n";
+	LOG_FS << "streaming " << fname << " for writing.\n";
 	return new std::ofstream(fname.c_str(), std::ios_base::binary);
 }
 
@@ -628,9 +627,9 @@ const file_tree_checksum& data_tree_checksum()
 	if(checksum.nfiles == 0) {
 		get_file_tree_checksum_internal("data/",checksum);
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
-		LOG_G << "calculated data tree checksum: "
-		      << checksum.nfiles << " files; "
-		      << checksum.sum_size << " bytes\n";
+		LOG_FS << "calculated data tree checksum: "
+		       << checksum.nfiles << " files; "
+		       << checksum.sum_size << " bytes\n";
 	}
 
 	return checksum;
