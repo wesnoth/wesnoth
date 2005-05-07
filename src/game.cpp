@@ -1252,16 +1252,17 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 							_("Warning: Errors occurred while loading game configuration files: '") +
 							error_log);
 
-				}
-				try {
-					scoped_ostream cache = ostream_file(fname);
-					write_compressed(*cache, cfg);
-					config checksum_cfg;
-					data_tree_checksum().write(checksum_cfg);
-					scoped_ostream checksum = ostream_file(fname_checksum);
-					write(*checksum, checksum_cfg);
-				} catch(io_exception&) {
-					std::cerr << "could not write to cache '" << fname << "'\n";
+				} else {
+					try {
+						scoped_ostream cache = ostream_file(fname);
+						write_compressed(*cache, cfg);
+						config checksum_cfg;
+						data_tree_checksum().write(checksum_cfg);
+						scoped_ostream checksum = ostream_file(fname_checksum);
+						write(*checksum, checksum_cfg);
+					} catch(io_exception&) {
+						std::cerr << "could not write to cache '" << fname << "'\n";
+					}
 				}
 
 				return;
