@@ -128,7 +128,8 @@ void lobby::gamelist_updated(bool silent)
 		game_strings.push_back(_("<no games open>"));
 	}
 
-	games_menu_.set_items(game_strings);
+	//set the items, retaining the menu positioning if possible
+	games_menu_.set_items(game_strings,true,true);
 
 	if(games_menu_.selection() >= 0 && games_menu_.selection() < int(game_vacant_slots_.size())) {
 		wassert(game_vacant_slots_.size() == game_observers_.size());
