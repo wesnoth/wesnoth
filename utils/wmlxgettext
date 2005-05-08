@@ -27,18 +27,18 @@ chdir $toplevel;
 foreach my $file (@ARGV) {
   open (FILE, "<$file") or die "cannot read from $file";
   my $readingattack = 0;
-  my $currentdomain = $initialdomain;
+  my @domainstack = ($initialdomain);
  LINE: while (<FILE>) {
     # change the current textdomain when hitting the directive
     if (m/\s*\#textdomain\s+(\S+)/) {
-      $currentdomain = $1;
+      unshift @domainstack, $1;
       next LINE;
     }
 
     # skip other # lines as comments
     next LINE if m/^\s*\#/ and !defined $str;
 
-    next LINE unless $currentdomain eq $domain;
+    next LINE unless $domainstack[0] eq $domain;
 
     if (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*)\"(.*)/) {
       # single-line quoted string
