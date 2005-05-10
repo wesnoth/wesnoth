@@ -234,6 +234,52 @@ static int compute_damage(int base_damage, int bonus, int divisor)
 	return maximum<int>(1, (base_damage * bonus + rounding) / divisor);
 }
 
+double pr_atleast(int m, double p, int n, int d)
+{
+	// calculate Pr[A does damage in [m,...)], where
+	// p probability to hit, n swings, d damage/swing
+	double P = 0;
+	for(int k = (m + d - 1)/d; k <= n; ++k) {
+		double r = 1.0;
+		const int k2 = (k > n - k) ? (n - k) : k;
+		for(int i = 0; i < k2; ++i) { r *= (n-i); r /= (k2-i); }
+		P += ((int)r) * pow(p, k) * pow(1-p, n-k);
+	}
+	return P;
+}
+
+double pr_between(int mn, int mx, double p, int n, int d)
+{
+	// calculate Pr[A does damage in [mn,mx)], where
+	// p probability to hit, n swings, d damage/swing
+	return pr_atleast(mn, p, n, d) - pr_atleast(mx, p, n, d);
+}
+
+int reduce(int i, int u, int v)
+{
+	// i-th swingpair, but reduce since u < v
+	if(i == 0)
+	    return i;
+	else
+	    return ((i-1) / v)*u + minimum<int>(u, ((i-1) % v) + 1);
+}
+
+double pr_kills_during(const int hpa, const int dmga, const double pa,
+	const int swa, const int hpb, const int dmgb, const double pb,
+	const int swb, const int n, const bool second)
+{
+	if ((swa < swb) and (swa < (n-1) % swb + 1)) // not our move
+		return 0.0;
+	// A kills B during swing n, and is it second?
+	// take into account where one unit doesn't get all n swings
+	const double t1 = pr_between(hpb - dmga, hpb, pa,
+		(swa<swb) ? reduce(n-1, swa, swb) : (n-1), dmga);
+	const int n2 = second ? n : (n - 1);
+	const double t2 = 1 - pr_atleast(hpa, pb,
+		(swa>swb) ? reduce(n2, swb, swa) : n2, dmgb);
+	return t1 * pa * t2;
+}
+
 battle_stats evaluate_battle_stats(const gamemap& map,
                                    const gamemap::location& attacker,
                                    const gamemap::location& defender,
@@ -568,6 +614,42 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	if(d->second.has_flag(slowed_string) && res.ndefends > 1)
 		--res.ndefends;
+
+	// FIXME: doesn't take into account berserk+slow, drain or firststrike
+	if (strings && res.amount_attacker_drains == 0 &&
+		res.amount_defender_drains == 0 &&
+		(!res.defender_strikes_first) && !(res.to_the_death &&
+			(res.attacker_slows || res.defender_slows)))
+	{
+		const int maxrounds = (res.to_the_death ? 30 : 1);
+		const int hpa = a->second.hitpoints();
+		const int hpb = d->second.hitpoints();
+		const int dmga = res.damage_defender_takes;
+		const int dmgb = res.damage_attacker_takes;
+		const double pa = res.chance_to_hit_defender/100.0;
+		const double pb = res.chance_to_hit_attacker/100.0;
+		const int swa = res.nattacks;
+		const int swb = res.ndefends;
+		double P1 = 0;  double P2 = 0;
+
+		for(int n = 1; n <= maxrounds*maximum<int>(swa,swb); ++n) {
+			P1 += pr_kills_during(hpa, dmga, pa, swa,
+				hpb, dmgb, pb, swb, n, FALSE);
+			P2 += pr_kills_during(hpb, dmgb, pb, swb,
+				hpa, dmga, pa, swa, n, TRUE);
+		}
+
+		std::stringstream str;
+		if (P1 < 0.005 && P2 < 0.005) {
+			str << _("(both should survive)");
+		} else {
+			str << _("% Pr[kills/killed by/both survive]")
+			    << EMPTY_COLUMN << (int)(P1*100+0.5)
+			    << '/' << (int)(P2*100+0.5)
+			    << '/' << (int)((1-P1-P2)*100+0.5);
+		}
+		strings->attack_calculations.push_back(str.str());
+	}
 
 	return res;
 }
