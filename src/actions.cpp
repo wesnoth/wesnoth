@@ -634,9 +634,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		for(int n = 1; n <= maxrounds*maximum<int>(swa,swb); ++n) {
 			P1 += pr_kills_during(hpa, dmga, pa, swa,
-				hpb, dmgb, pb, swb, n, FALSE);
+				hpb, dmgb, pb, swb, n, false);
 			P2 += pr_kills_during(hpb, dmgb, pb, swb,
-				hpa, dmga, pa, swa, n, TRUE);
+				hpa, dmga, pa, swa, n, true);
 		}
 
 		std::stringstream str;
