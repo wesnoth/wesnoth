@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-17 08:24+0200\n"
+"POT-Creation-Date: 2005-05-10 19:36+0200\n"
 "PO-Revision-Date: 2005-05-07 12:50+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: none\n"
@@ -57,43 +57,43 @@ msgstr "Milline mängija?"
 msgid "Which player should start here?"
 msgstr "Milline mängija siit alustama peaks?"
 
-#: src/editor/editor.cpp:385
+#: src/editor/editor.cpp:387
 msgid "Choose a Map to Load"
 msgstr "Vali milline kaart laadida"
 
-#: src/editor/editor.cpp:402 src/editor/editor.cpp:481
+#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
 msgid "The file does not contain a valid map."
 msgstr "Fail ei sisalda korralikku kaarti."
 
-#: src/editor/editor.cpp:543
+#: src/editor/editor.cpp:545
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' ei ole olemas või seda ei õnnestu failina lugeda."
 
-#: src/editor/editor.cpp:555
+#: src/editor/editor.cpp:557
 msgid "Load failed: "
 msgstr "Laadimine ebaõnnestus:"
 
-#: src/editor/editor.cpp:751
+#: src/editor/editor.cpp:753
 msgid "You must have a hex selected on the board."
 msgstr "Sul peab olema kaardil mõni väli valitud."
 
-#: src/editor/editor.cpp:1000
+#: src/editor/editor.cpp:1002
 msgid "Quit Editor"
 msgstr "Välju redaktorist"
 
-#: src/editor/editor.cpp:1005
+#: src/editor/editor.cpp:1007
 msgid "Do you want to save the map before quitting?"
 msgstr "Kas sa tahad kaardi enne väljumist salvestada?"
 
-#: src/editor/editor.cpp:1029
+#: src/editor/editor.cpp:1031
 msgid "Map saved."
 msgstr "Kaart salvestatud"
 
-#: src/editor/editor.cpp:1036
+#: src/editor/editor.cpp:1038
 msgid "Could not save the map: $msg"
 msgstr "Ei saa kaarti salvestada: $msg"
 
-#: src/editor/editor.cpp:1092
+#: src/editor/editor.cpp:1094
 msgid "Player"
 msgstr "Mängija"
 
@@ -166,8 +166,8 @@ msgid "Resize Map"
 msgstr "Muuda kaardi mõõtmeid"
 
 #: src/editor/editor_dialogs.cpp:408
-msgid "Ok"
-msgstr "Nõus"
+msgid "OK"
+msgstr ""
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -193,6 +193,9 @@ msgstr "BG"
 msgid "Delete File"
 msgstr "Kustuta fail"
 
-#: src/widgets/file_chooser.cpp:131
+#: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Faili kustutamine ebaõnnestus."
+
+#~ msgid "Ok"
+#~ msgstr "Nõus"

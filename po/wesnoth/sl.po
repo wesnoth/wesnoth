@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-18 17:52+0200\n"
+"POT-Creation-Date: 2005-05-10 19:30+0200\n"
 "PO-Revision-Date: 2004-10-17 20:24+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -22,6 +22,15 @@ msgstr ""
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
+#: data/game.cfg:36
+msgid "Binary Saves"
+msgstr ""
+
+#: data/game.cfg:43
+#, fuzzy
+msgid "Show Combat"
+msgstr "Boj"
+
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
 msgstr "Uvod"
@@ -30,11 +39,11 @@ msgstr "Uvod"
 msgid "Gameplay"
 msgstr "Igra"
 
-#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2127
+#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2142
 msgid "Traits"
 msgstr "Značilnosti"
 
-#: data/help.cfg:28 src/playturn.cpp:1692
+#: data/help.cfg:28 src/playturn.cpp:1706
 msgid "Units"
 msgstr "Enote"
 
@@ -209,7 +218,7 @@ msgstr ""
 "njihovo novačenje ali priklic, ampak potrebujejo tudi plače. Za več podatkov "
 "si poglejte <ref>dst=income_and_upkeep text='Prihodki in Plače'</ref>."
 
-#: data/help.cfg:92 src/help.cpp:1235 src/help.cpp:1236
+#: data/help.cfg:92 src/help.cpp:1177
 msgid "Movement"
 msgstr "Premikanje"
 
@@ -792,6 +801,7 @@ msgstr ""
 "Značilnosti, ki so na voljo vsem, razen Nemrtvim, enotam so:"
 
 #: data/help.cfg:219
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -804,7 +814,7 @@ msgid ""
 "advance to higher levels more quickly. Later in campaigns Intelligent is not "
 "quite as useful because units no longer have any use for experience points "
 "after reaching their maximum level. If you have many 'maximum level' units "
-"you may with to recall units with more desirable traits."
+"you may wish to recall units with more desirable traits."
 msgstr ""
 "\n"
 "\n"
@@ -2508,11 +2518,11 @@ msgstr "Dejanja"
 msgid "End Turn"
 msgstr "Končaj potezo"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2125 src/unit.cpp:1046
+#: data/themes/default.cfg:167 src/playturn.cpp:2140 src/unit.cpp:1059
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2126
+#: data/themes/default.cfg:176 src/playturn.cpp:2141
 msgid "XP"
 msgstr "XP"
 
@@ -2952,17 +2962,17 @@ msgstr ""
 "škode za vsak izkustveni nivo razlike."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
-#: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
+#: data/units/Commander.cfg:98 data/units/Death_Knight.cfg:16
 #: data/units/Drake_Flameheart.cfg:15 data/units/Drake_Flare.cfg:10
 #: data/units/Elvish_Captain.cfg:11 data/units/Elvish_Marshal.cfg:12
 #: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:23
 #: data/units/Grand_Marshal.cfg:19 data/units/Lieutenant.cfg:19
 #: data/units/Lord.cfg:10 data/units/Lord.cfg:85
-#: data/units/Noble_Commander.cfg:15 data/units/Noble_Lord.cfg:13
+#: data/units/Noble_Commander.cfg:15 data/units/Noble_Lord.cfg:15
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:358 src/actions.cpp:467
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:439 src/actions.cpp:548
 msgid "leadership"
 msgstr "vodenje"
 
@@ -3022,7 +3032,7 @@ msgstr ""
 "sovražnikova območja nadzora."
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:17
-#: data/units/Assassin.cfg:96 data/units/Duelist.cfg:16
+#: data/units/Assassin.cfg:109 data/units/Duelist.cfg:16
 #: data/units/Fencer.cfg:16 data/units/Outlaw_Princess.cfg:20
 #: data/units/Rogue.cfg:17 data/units/Rogue.cfg:77 data/units/Saurian.cfg:22
 #: data/units/Saurian_Ambusher.cfg:20 data/units/Saurian_Flanker.cfg:21
@@ -3038,9 +3048,9 @@ msgstr ""
 "Neomajen:\n"
 "Ta enota prejme samo polovico škode, kadar ni sama začela napada."
 
-#: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:15
-#: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:494
+#: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
+#: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
+#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:575
 msgid "steadfast"
 msgstr "neomajen"
 
@@ -3232,17 +3242,18 @@ msgid ""
 "far, for they move faster than most undead."
 msgstr ""
 
-#: data/units/Ancient_Lich.cfg:22 data/units/Demilich.cfg:19
+#: data/units/Ancient_Lich.cfg:41 data/units/Demilich.cfg:31
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
 msgid "touch"
 msgstr "dotik"
 
-#: data/units/Ancient_Lich.cfg:23 data/units/Ancient_Lich.cfg:36
-#: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
-#: data/units/Dark_Queen.cfg:33 data/units/Dark_Queen.cfg:34
-#: data/units/Dark_Sorcerer.cfg:41 data/units/Dark_Spirit.cfg:37
-#: data/units/Deathmaster.cfg:41 data/units/Demilich.cfg:20
-#: data/units/Demilich.cfg:33 data/units/Elvish_Enchantress.cfg:118
+#: data/units/Ancient_Lich.cfg:42 data/units/Ancient_Lich.cfg:55
+#: data/units/Cockatrice.cfg:34 data/units/Dark_Adept.cfg:35
+#: data/units/Dark_Queen.cfg:45 data/units/Dark_Queen.cfg:46
+#: data/units/Dark_Sorcerer.cfg:41 data/units/Dark_Spirit.cfg:49
+#: data/units/Deathmaster.cfg:53 data/units/Demilich.cfg:32
+#: data/units/Demilich.cfg:45 data/units/Elvish_Enchantress.cfg:118
+#: data/units/Elvish_High_Lord.cfg:43 data/units/Elvish_Lord.cfg:39
 #: data/units/Elvish_Sorceress.cfg:118 data/units/Elvish_Sylph.cfg:84
 #: data/units/Ghost.cfg:20 data/units/Ghost.cfg:32 data/units/Initiate.cfg:20
 #: data/units/Lich.cfg:20 data/units/Lich.cfg:33 data/units/Necromancer.cfg:36
@@ -3252,30 +3263,30 @@ msgstr "dotik"
 msgid "cold"
 msgstr "mrzel"
 
-#: data/units/Ancient_Lich.cfg:27 data/units/Blood_Bat.cfg:24
-#: data/units/Dark_Spirit.cfg:24 data/units/Demilich.cfg:24
+#: data/units/Ancient_Lich.cfg:46 data/units/Blood_Bat.cfg:37
+#: data/units/Dark_Spirit.cfg:36 data/units/Demilich.cfg:36
 #: data/units/Lich.cfg:24 data/units/Orcish_Shaman.cfg:41
 #: data/units/Orcish_Shaman.cfg:100 data/units/Orcish_Shaman.cfg:159
-#: data/units/Skeletal_Dragon.cfg:31 data/units/Spectre.cfg:29
+#: data/units/Skeletal_Dragon.cfg:33 data/units/Spectre.cfg:29
 #: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:26
 #: data/units/Vampire_Lady.cfg:39 data/units/Wraith.cfg:29
 msgid "drain"
 msgstr "črpa"
 
-#: data/units/Ancient_Lich.cfg:35 data/units/Deathmaster.cfg:40
-#: data/units/Demilich.cfg:32 data/units/Initiate.cfg:19
+#: data/units/Ancient_Lich.cfg:54 data/units/Deathmaster.cfg:52
+#: data/units/Demilich.cfg:44 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 msgid "magic"
 msgstr "čarovnija"
 
-#: data/units/Ancient_Lich.cfg:37 data/units/Arch_Mage.cfg:47
-#: data/units/Arch_Mage.cfg:140 data/units/Battle_Princess.cfg:80
-#: data/units/Commander.cfg:123 data/units/Dark_Adept.cfg:24
-#: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:42
-#: data/units/Deathmaster.cfg:42 data/units/Demilich.cfg:34
+#: data/units/Ancient_Lich.cfg:56 data/units/Arch_Mage.cfg:60
+#: data/units/Arch_Mage.cfg:168 data/units/Battle_Princess.cfg:92
+#: data/units/Commander.cfg:135 data/units/Dark_Adept.cfg:36
+#: data/units/Dark_Queen.cfg:47 data/units/Dark_Sorcerer.cfg:42
+#: data/units/Deathmaster.cfg:54 data/units/Demilich.cfg:46
 #: data/units/Dwarvish_Runemaster.cfg:47 data/units/Elder_Mage.cfg:42
 #: data/units/Elvish_Druid.cfg:65 data/units/Elvish_Enchantress.cfg:122
-#: data/units/Elvish_High_Lord.cfg:44 data/units/Elvish_Lord.cfg:38
+#: data/units/Elvish_High_Lord.cfg:45 data/units/Elvish_Lord.cfg:41
 #: data/units/Elvish_Shyde.cfg:27 data/units/Elvish_Shyde.cfg:74
 #: data/units/Elvish_Sorceress.cfg:122 data/units/Elvish_Sylph.cfg:26
 #: data/units/Elvish_Sylph.cfg:85 data/units/Fighter.cfg:86
@@ -3318,16 +3329,16 @@ msgid ""
 "kind and curious beings."
 msgstr ""
 
-#: data/units/Ancient_Wose.cfg:20 data/units/Elder_Wose.cfg:20
+#: data/units/Ancient_Wose.cfg:38 data/units/Elder_Wose.cfg:20
 #: data/units/Wose.cfg:20
 msgid "crush"
 msgstr "top"
 
-#: data/units/Ancient_Wose.cfg:21 data/units/Arch_Mage.cfg:24
-#: data/units/Arch_Mage.cfg:117 data/units/Bandit.cfg:20
-#: data/units/Cave_Spider.cfg:34 data/units/Cuttle_Fish.cfg:20
-#: data/units/Dark_Queen.cfg:23 data/units/Dark_Sorcerer.cfg:20
-#: data/units/Deathmaster.cfg:20 data/units/Drake_Gladiator.cfg:63
+#: data/units/Ancient_Wose.cfg:39 data/units/Arch_Mage.cfg:37
+#: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:33
+#: data/units/Cave_Spider.cfg:47 data/units/Cuttle_Fish.cfg:33
+#: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:20
+#: data/units/Deathmaster.cfg:32 data/units/Drake_Gladiator.cfg:63
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:28
 #: data/units/Dwarvish_Dragonguard.cfg:21 data/units/Dwarvish_Fighter.cfg:40
 #: data/units/Dwarvish_Lord.cfg:45 data/units/Dwarvish_Runemaster.cfg:21
@@ -3385,7 +3396,7 @@ msgstr "top"
 msgid "Arch Mage"
 msgstr "Nadčarovnik"
 
-#: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:113
+#: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:126
 msgid ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
 "enemies."
@@ -3393,8 +3404,8 @@ msgstr ""
 "Voditelji me čarovniki, Nadčarovniki mečejo ogromne ognjene krogle na svoje "
 "sovražnike."
 
-#: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:116
-#: data/units/Dark_Sorcerer.cfg:19 data/units/Deathmaster.cfg:19
+#: data/units/Arch_Mage.cfg:36 data/units/Arch_Mage.cfg:144
+#: data/units/Dark_Sorcerer.cfg:19 data/units/Deathmaster.cfg:31
 #: data/units/Elder_Mage.cfg:23 data/units/Elvish_Druid.cfg:23
 #: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:24
 #: data/units/Elvish_Sorceress.cfg:25 data/units/Great_Mage.cfg:23
@@ -3412,22 +3423,20 @@ msgstr ""
 msgid "staff"
 msgstr "palica"
 
-#: data/units/Arch_Mage.cfg:44 data/units/Arch_Mage.cfg:137
-#: data/units/Elvish_High_Lord.cfg:42 data/units/Elvish_Lord.cfg:36
+#: data/units/Arch_Mage.cfg:57 data/units/Arch_Mage.cfg:165
 #: data/units/Great_Mage.cfg:44 data/units/Great_Mage.cfg:137
 #: data/units/Red_Mage.cfg:44 data/units/Red_Mage.cfg:137
 msgid "fireball"
 msgstr "ognjena krogla"
 
-#: data/units/Arch_Mage.cfg:45 data/units/Arch_Mage.cfg:138
-#: data/units/Battle_Princess.cfg:78 data/units/Commander.cfg:121
-#: data/units/Drake_Burner.cfg:42 data/units/Drake_Fighter.cfg:46
-#: data/units/Drake_Fire.cfg:44 data/units/Drake_Flameheart.cfg:54
+#: data/units/Arch_Mage.cfg:58 data/units/Arch_Mage.cfg:166
+#: data/units/Battle_Princess.cfg:90 data/units/Commander.cfg:133
+#: data/units/Drake_Burner.cfg:55 data/units/Drake_Fighter.cfg:58
+#: data/units/Drake_Fire.cfg:56 data/units/Drake_Flameheart.cfg:54
 #: data/units/Drake_Flare.cfg:44 data/units/Drake_Glider.cfg:46
 #: data/units/Drake_Inferno.cfg:44 data/units/Drake_Sky.cfg:52
 #: data/units/Drake_Warrior.cfg:47 data/units/Dwarvish_Runemaster.cfg:42
-#: data/units/Elder_Mage.cfg:40 data/units/Elvish_High_Lord.cfg:43
-#: data/units/Elvish_Lord.cfg:37 data/units/Fighter.cfg:84
+#: data/units/Elder_Mage.cfg:40 data/units/Fighter.cfg:84
 #: data/units/Fire_Dragon.cfg:60 data/units/Fireball.cfg:18
 #: data/units/Fireball.cfg:19 data/units/Goblin_Pillager.cfg:21
 #: data/units/Great_Mage.cfg:45 data/units/Great_Mage.cfg:138
@@ -3438,7 +3447,7 @@ msgstr "ognjena krogla"
 msgid "fire"
 msgstr "ognjen"
 
-#: data/units/Arch_Mage.cfg:96
+#: data/units/Arch_Mage.cfg:109
 msgid "female^Arch Mage"
 msgstr "Nadčarovnica"
 
@@ -3446,14 +3455,14 @@ msgstr "Nadčarovnica"
 msgid "Assassin"
 msgstr "Atentator"
 
-#: data/units/Assassin.cfg:18 data/units/Assassin.cfg:97
+#: data/units/Assassin.cfg:18 data/units/Assassin.cfg:110
 msgid ""
 "Assassins are masters of the night. Like Rogues, they can surround an "
 "opponent and backstab him, doing double damage. They can also throw poison-"
 "tipped knives at their enemies from long range."
 msgstr ""
 
-#: data/units/Assassin.cfg:21 data/units/Assassin.cfg:100
+#: data/units/Assassin.cfg:34 data/units/Assassin.cfg:113
 #: data/units/Dwarvish_Thunderer.cfg:20
 #: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Orcish_Archer.cfg:21
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Slayer.cfg:19
@@ -3462,32 +3471,32 @@ msgstr ""
 msgid "dagger"
 msgstr "bodalo"
 
-#: data/units/Assassin.cfg:22 data/units/Assassin.cfg:53
-#: data/units/Assassin.cfg:101 data/units/Assassin.cfg:132
-#: data/units/Battle_Princess.cfg:24 data/units/Battle_Princess.cfg:62
-#: data/units/Blood_Bat.cfg:20 data/units/Bone_Shooter.cfg:26
-#: data/units/Bowman.cfg:22 data/units/Cavalier.cfg:29
-#: data/units/Cavalryman.cfg:30 data/units/Cave_Spider.cfg:20
-#: data/units/Commander.cfg:24 data/units/Commander.cfg:99
-#: data/units/Dark_Spirit.cfg:20 data/units/Death_Knight.cfg:22
-#: data/units/Deathblade.cfg:29 data/units/Direwolf_Rider.cfg:21
-#: data/units/Direwolf_Rider.cfg:33 data/units/Dragoon.cfg:29
-#: data/units/Drake_Burner.cfg:22 data/units/Drake_Clasher.cfg:22
-#: data/units/Drake_Fighter.cfg:22 data/units/Drake_Fire.cfg:25
+#: data/units/Assassin.cfg:35 data/units/Assassin.cfg:66
+#: data/units/Assassin.cfg:114 data/units/Assassin.cfg:145
+#: data/units/Battle_Princess.cfg:36 data/units/Battle_Princess.cfg:74
+#: data/units/Blood_Bat.cfg:33 data/units/Bone_Shooter.cfg:38
+#: data/units/Bowman.cfg:34 data/units/Cavalier.cfg:41
+#: data/units/Cavalryman.cfg:42 data/units/Cave_Spider.cfg:33
+#: data/units/Commander.cfg:36 data/units/Commander.cfg:111
+#: data/units/Dark_Spirit.cfg:32 data/units/Death_Knight.cfg:34
+#: data/units/Deathblade.cfg:40 data/units/Direwolf_Rider.cfg:38
+#: data/units/Direwolf_Rider.cfg:50 data/units/Dragoon.cfg:46
+#: data/units/Drake_Burner.cfg:35 data/units/Drake_Clasher.cfg:34
+#: data/units/Drake_Fighter.cfg:34 data/units/Drake_Fire.cfg:37
 #: data/units/Drake_Flameheart.cfg:24 data/units/Drake_Flare.cfg:24
 #: data/units/Drake_Gladiator.cfg:26 data/units/Drake_Inferno.cfg:25
 #: data/units/Drake_Slasher.cfg:23 data/units/Drake_Warrior.cfg:23
-#: data/units/Draug.cfg:25 data/units/Duelist.cfg:21
-#: data/units/Dwarvish_Berserker.cfg:28 data/units/Dwarvish_Fighter.cfg:23
+#: data/units/Draug.cfg:37 data/units/Duelist.cfg:34
+#: data/units/Dwarvish_Berserker.cfg:34 data/units/Dwarvish_Fighter.cfg:23
 #: data/units/Dwarvish_Lord.cfg:28 data/units/Dwarvish_Lord.cfg:61
 #: data/units/Dwarvish_Steelclad.cfg:29 data/units/Dwarvish_Thunderer.cfg:21
 #: data/units/Dwarvish_Thunderguard.cfg:21
-#: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:24
+#: data/units/Dwarvish_Ulfserker.cfg:34 data/units/Elvish_Archer.cfg:24
 #: data/units/Elvish_Archer.cfg:103 data/units/Elvish_Avenger.cfg:25
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:25
 #: data/units/Elvish_Champion.cfg:23 data/units/Elvish_Fighter.cfg:25
 #: data/units/Elvish_Hero.cfg:23 data/units/Elvish_High_Lord.cfg:22
-#: data/units/Elvish_Lord.cfg:21 data/units/Elvish_Marksman.cfg:24
+#: data/units/Elvish_Lord.cfg:23 data/units/Elvish_Marksman.cfg:24
 #: data/units/Elvish_Marksman.cfg:117 data/units/Elvish_Marshal.cfg:26
 #: data/units/Elvish_Outrider.cfg:28 data/units/Elvish_Ranger.cfg:25
 #: data/units/Elvish_Ranger.cfg:115 data/units/Elvish_Rider.cfg:32
@@ -3498,7 +3507,7 @@ msgstr "bodalo"
 #: data/units/Ghoul.cfg:20 data/units/Goblin_Knight.cfg:21
 #: data/units/Grand_Knight.cfg:22 data/units/Grand_Marshal.cfg:25
 #: data/units/Gryphon.cfg:23 data/units/Gryphon_Master.cfg:25
-#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:40
+#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:65
 #: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:22
 #: data/units/Lieutenant.cfg:25 data/units/Longbowman.cfg:23
 #: data/units/Lord.cfg:23 data/units/Lord.cfg:98
@@ -3510,7 +3519,7 @@ msgstr "bodalo"
 #: data/units/Naga-Warrior.cfg:26 data/units/Naga-Warrior.cfg:65
 #: data/units/Necrophage.cfg:20 data/units/Nightgaunt.cfg:21
 #: data/units/Noble_Commander.cfg:29 data/units/Noble_Fighter.cfg:24
-#: data/units/Noble_Lord.cfg:26 data/units/Ogre.cfg:20
+#: data/units/Noble_Lord.cfg:28 data/units/Ogre.cfg:20
 #: data/units/Orcish_Archer.cfg:22 data/units/Orcish_Assassin.cfg:20
 #: data/units/Orcish_Assassin.cfg:37 data/units/Orcish_Crossbowman.cfg:21
 #: data/units/Orcish_Grunt.cfg:20 data/units/Orcish_Leader.cfg:22
@@ -3522,8 +3531,8 @@ msgstr "bodalo"
 #: data/units/Rogue.cfg:22 data/units/Rogue.cfg:40 data/units/Rogue.cfg:82
 #: data/units/Rogue.cfg:100 data/units/Royal_Guard.cfg:24
 #: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:25
-#: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:29
-#: data/units/Skeletal_Dragon.cfg:48 data/units/Skeleton.cfg:38
+#: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:31
+#: data/units/Skeletal_Dragon.cfg:50 data/units/Skeleton.cfg:38
 #: data/units/Sleeping_Gryphon.cfg:19 data/units/Spectre.cfg:25
 #: data/units/Swordsman.cfg:24 data/units/Thief.cfg:85
 #: data/units/Thief.cfg:186 data/units/Trapper.cfg:26
@@ -3533,27 +3542,27 @@ msgstr "bodalo"
 msgid "blade"
 msgstr "oster"
 
-#: data/units/Assassin.cfg:26 data/units/Assassin.cfg:105
+#: data/units/Assassin.cfg:39 data/units/Assassin.cfg:118
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:190 src/actions.cpp:485
+#: data/units/Thief.cfg:190 src/actions.cpp:566
 msgid "backstab"
 msgstr "vbod v hrbet"
 
-#: data/units/Assassin.cfg:52 data/units/Assassin.cfg:131
+#: data/units/Assassin.cfg:65 data/units/Assassin.cfg:144
 #: data/units/Rogue.cfg:39 data/units/Rogue.cfg:99
 msgid "knife"
 msgstr "nož"
 
-#: data/units/Assassin.cfg:55 data/units/Assassin.cfg:134
-#: data/units/Cave_Spider.cfg:24 data/units/Cuttle_Fish.cfg:60
-#: data/units/Direwolf_Rider.cfg:37 data/units/Ghoul.cfg:24
+#: data/units/Assassin.cfg:68 data/units/Assassin.cfg:147
+#: data/units/Cave_Spider.cfg:37 data/units/Cuttle_Fish.cfg:73
+#: data/units/Direwolf_Rider.cfg:54 data/units/Ghoul.cfg:24
 #: data/units/Giant_Scorpion.cfg:22 data/units/Necrophage.cfg:24
 #: data/units/Orcish_Assassin.cfg:41 data/units/Orcish_Slayer.cfg:46
 msgid "poison"
 msgstr "strup"
 
-#: data/units/Assassin.cfg:82
+#: data/units/Assassin.cfg:95
 msgid "female^Assassin"
 msgstr "Atentatorka"
 
@@ -3568,7 +3577,7 @@ msgid ""
 "near them when not fighting against invaders."
 msgstr ""
 
-#: data/units/Bandit.cfg:19 data/units/Drake_Gladiator.cfg:62
+#: data/units/Bandit.cfg:32 data/units/Drake_Gladiator.cfg:62
 #: data/units/Great_Troll.cfg:21 data/units/Heavy_Infantryman.cfg:19
 #: data/units/Iron_Mauler.cfg:19 data/units/Mage_of_Light.cfg:30
 #: data/units/Mage_of_Light.cfg:102 data/units/Outlaw.cfg:20
@@ -3581,7 +3590,7 @@ msgstr "buzdovan"
 msgid "female^Princess"
 msgstr "Princesa"
 
-#: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:56
+#: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:68
 msgid "leadership,skirmisher"
 msgstr "vodenje,izogibalec"
 
@@ -3593,11 +3602,11 @@ msgid ""
 "now aid those around her in the art of combat."
 msgstr ""
 
-#: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
-#: data/units/Bowman.cfg:21 data/units/Cavalier.cfg:28
-#: data/units/Cavalryman.cfg:29 data/units/Commander.cfg:23
-#: data/units/Commander.cfg:98 data/units/Deathblade.cfg:28
-#: data/units/Dragoon.cfg:28 data/units/Drake_Clasher.cfg:21
+#: data/units/Battle_Princess.cfg:35 data/units/Battle_Princess.cfg:73
+#: data/units/Bowman.cfg:33 data/units/Cavalier.cfg:40
+#: data/units/Cavalryman.cfg:41 data/units/Commander.cfg:35
+#: data/units/Commander.cfg:110 data/units/Deathblade.cfg:39
+#: data/units/Dragoon.cfg:45 data/units/Drake_Clasher.cfg:33
 #: data/units/Drake_Flameheart.cfg:23 data/units/Drake_Flare.cfg:23
 #: data/units/Drake_Gladiator.cfg:25 data/units/Drake_Slasher.cfg:22
 #: data/units/Drake_Warrior.cfg:22 data/units/Elvish_Archer.cfg:23
@@ -3605,7 +3614,7 @@ msgstr ""
 #: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:24
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
 #: data/units/Elvish_Hero.cfg:22 data/units/Elvish_High_Lord.cfg:21
-#: data/units/Elvish_Lord.cfg:20 data/units/Elvish_Marksman.cfg:23
+#: data/units/Elvish_Lord.cfg:22 data/units/Elvish_Marksman.cfg:23
 #: data/units/Elvish_Marksman.cfg:116 data/units/Elvish_Marshal.cfg:25
 #: data/units/Elvish_Outrider.cfg:27 data/units/Elvish_Ranger.cfg:24
 #: data/units/Elvish_Ranger.cfg:114 data/units/Elvish_Rider.cfg:31
@@ -3622,7 +3631,7 @@ msgstr ""
 #: data/units/Naga-Fighter.cfg:56 data/units/Naga-Myrmidon.cfg:25
 #: data/units/Naga-Myrmidon.cfg:64 data/units/Naga-Warrior.cfg:25
 #: data/units/Naga-Warrior.cfg:64 data/units/Noble_Commander.cfg:28
-#: data/units/Noble_Fighter.cfg:23 data/units/Noble_Lord.cfg:25
+#: data/units/Noble_Fighter.cfg:23 data/units/Noble_Lord.cfg:27
 #: data/units/Orcish_Grunt.cfg:19 data/units/Orcish_Leader.cfg:21
 #: data/units/Orcish_Ruler.cfg:21 data/units/Orcish_Sovereign.cfg:21
 #: data/units/Orcish_Warlord.cfg:19 data/units/Orcish_Warrior.cfg:19
@@ -3633,11 +3642,11 @@ msgstr ""
 msgid "sword"
 msgstr "meč"
 
-#: data/units/Battle_Princess.cfg:42 data/units/Princess.cfg:42
+#: data/units/Battle_Princess.cfg:54 data/units/Princess.cfg:42
 msgid "Princess"
 msgstr "Princesa"
 
-#: data/units/Battle_Princess.cfg:58
+#: data/units/Battle_Princess.cfg:70
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3646,7 +3655,7 @@ msgid ""
 "and ignores enemy zones of control."
 msgstr ""
 
-#: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:120
+#: data/units/Battle_Princess.cfg:89 data/units/Commander.cfg:132
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:114
 #: data/units/Princess.cfg:77
 msgid "scepter of fire"
@@ -3664,8 +3673,8 @@ msgid ""
 "beasts is tainted red with the blood of their victims."
 msgstr ""
 
-#: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
-#: data/units/Direwolf_Rider.cfg:20 data/units/Goblin_Knight.cfg:20
+#: data/units/Blood_Bat.cfg:32 data/units/Cave_Spider.cfg:32
+#: data/units/Direwolf_Rider.cfg:37 data/units/Goblin_Knight.cfg:20
 #: data/units/Sea_Serpent.cfg:19 data/units/Vampire_Bat.cfg:19
 #: data/units/Wolf_Rider.cfg:21
 msgid "fangs"
@@ -3684,12 +3693,12 @@ msgid ""
 "all who live."
 msgstr ""
 
-#: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
+#: data/units/Bone_Shooter.cfg:36 data/units/Soul_Shooter.cfg:24
 msgid "stab"
 msgstr "vbod"
 
-#: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:38
-#: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:40
+#: data/units/Bone_Shooter.cfg:50 data/units/Bowman.cfg:50
+#: data/units/Commander.cfg:57 data/units/Elvish_Archer.cfg:40
 #: data/units/Elvish_Archer.cfg:119 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:128 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Fighter.cfg:41
@@ -3698,7 +3707,7 @@ msgstr "vbod"
 #: data/units/Elvish_Ranger.cfg:131 data/units/Elvish_Rider.cfg:52
 #: data/units/Elvish_Scout.cfg:53 data/units/Longbowman.cfg:39
 #: data/units/Lord.cfg:39 data/units/Master_Bowman.cfg:33
-#: data/units/Noble_Commander.cfg:46 data/units/Noble_Lord.cfg:43
+#: data/units/Noble_Commander.cfg:46 data/units/Noble_Lord.cfg:45
 #: data/units/Orcish_Archer.cfg:37 data/units/Orcish_Leader.cfg:37
 #: data/units/Orcish_Ruler.cfg:38 data/units/Orcish_Sovereign.cfg:42
 #: data/units/Orcish_Warlord.cfg:30 data/units/Poacher.cfg:42
@@ -3707,16 +3716,16 @@ msgstr "vbod"
 msgid "bow"
 msgstr "lok"
 
-#: data/units/Bone_Shooter.cfg:39 data/units/Bowman.cfg:39
-#: data/units/Cavalier.cfg:50 data/units/Chocobone.cfg:21
-#: data/units/Commander.cfg:46 data/units/Cuttle_Fish.cfg:56
-#: data/units/Death_Knight.cfg:39 data/units/Dragoon.cfg:50
-#: data/units/Drake_Clasher.cfg:40 data/units/Drake_Gladiator.cfg:44
-#: data/units/Drake_Slasher.cfg:41 data/units/Duelist.cfg:37
-#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:26
-#: data/units/Dwarvish_Guardsman.cfg:39 data/units/Dwarvish_Sentinel.cfg:28
-#: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:28
-#: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Bone_Shooter.cfg:51 data/units/Bowman.cfg:51
+#: data/units/Cavalier.cfg:62 data/units/Chocobone.cfg:33
+#: data/units/Commander.cfg:58 data/units/Cuttle_Fish.cfg:69
+#: data/units/Death_Knight.cfg:51 data/units/Dragoon.cfg:67
+#: data/units/Drake_Clasher.cfg:52 data/units/Drake_Gladiator.cfg:44
+#: data/units/Drake_Slasher.cfg:41 data/units/Duelist.cfg:50
+#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:27
+#: data/units/Dwarvish_Guardsman.cfg:40 data/units/Dwarvish_Sentinel.cfg:29
+#: data/units/Dwarvish_Sentinel.cfg:42 data/units/Dwarvish_Stalwart.cfg:29
+#: data/units/Dwarvish_Stalwart.cfg:42 data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:41
 #: data/units/Elvish_Archer.cfg:120 data/units/Elvish_Avenger.cfg:41
 #: data/units/Elvish_Avenger.cfg:129 data/units/Elvish_Captain.cfg:41
@@ -3732,7 +3741,7 @@ msgstr "lok"
 #: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:40
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
 #: data/units/Grand_Knight.cfg:38 data/units/Grand_Marshal.cfg:48
-#: data/units/Halbardier.cfg:22 data/units/Horseman.cfg:22
+#: data/units/Halbardier.cfg:24 data/units/Horseman.cfg:22
 #: data/units/Javelineer.cfg:20 data/units/Javelineer.cfg:48
 #: data/units/Knight.cfg:38 data/units/Lancer.cfg:22
 #: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:40
@@ -3744,7 +3753,7 @@ msgstr "lok"
 #: data/units/Merman_Netcaster.cfg:20 data/units/Merman_Spearman.cfg:21
 #: data/units/Merman_Spearman.cfg:61 data/units/Merman_Triton.cfg:24
 #: data/units/Merman_Warrior.cfg:24 data/units/Naga.cfg:25
-#: data/units/Noble_Commander.cfg:47 data/units/Noble_Lord.cfg:44
+#: data/units/Noble_Commander.cfg:47 data/units/Noble_Lord.cfg:46
 #: data/units/Orcish_Archer.cfg:38 data/units/Orcish_Crossbowman.cfg:40
 #: data/units/Orcish_Leader.cfg:38 data/units/Orcish_Ruler.cfg:39
 #: data/units/Orcish_Shaman.cfg:37 data/units/Orcish_Shaman.cfg:96
@@ -3792,8 +3801,8 @@ msgid ""
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
 
-#: data/units/Cavalier.cfg:49 data/units/Death_Knight.cfg:38
-#: data/units/Dragoon.cfg:49 data/units/Duelist.cfg:36
+#: data/units/Cavalier.cfg:61 data/units/Death_Knight.cfg:50
+#: data/units/Dragoon.cfg:66 data/units/Duelist.cfg:49
 #: data/units/General.cfg:51 data/units/Grand_Marshal.cfg:47
 #: data/units/Lieutenant.cfg:41 data/units/Orcish_Crossbowman.cfg:39
 #: data/units/Sergeant.cfg:41 data/units/Wall_Guard.cfg:36
@@ -3823,11 +3832,11 @@ msgid ""
 "attack with a web at long range, slowing their foes down."
 msgstr ""
 
-#: data/units/Cave_Spider.cfg:33
+#: data/units/Cave_Spider.cfg:46
 msgid "web"
 msgstr "pajčevina"
 
-#: data/units/Cave_Spider.cfg:49 data/units/Elvish_Druid.cfg:44
+#: data/units/Cave_Spider.cfg:62 data/units/Elvish_Druid.cfg:44
 #: data/units/Elvish_Enchantress.cfg:67 data/units/Elvish_Shaman.cfg:45
 #: data/units/Elvish_Shyde.cfg:53 data/units/Elvish_Sorceress.cfg:67
 #: data/units/Elvish_Sylph.cfg:53 data/units/Goblin_Pillager.cfg:38
@@ -3846,11 +3855,11 @@ msgid ""
 "units."
 msgstr ""
 
-#: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
+#: data/units/Chocobone.cfg:32 data/units/Drake_Clasher.cfg:51
 #: data/units/Drake_Gladiator.cfg:43 data/units/Drake_Slasher.cfg:40
-#: data/units/Dwarvish_Guardsman.cfg:24 data/units/Dwarvish_Guardsman.cfg:38
-#: data/units/Dwarvish_Sentinel.cfg:26 data/units/Dwarvish_Sentinel.cfg:40
-#: data/units/Dwarvish_Stalwart.cfg:26 data/units/Dwarvish_Stalwart.cfg:40
+#: data/units/Dwarvish_Guardsman.cfg:25 data/units/Dwarvish_Guardsman.cfg:39
+#: data/units/Dwarvish_Sentinel.cfg:27 data/units/Dwarvish_Sentinel.cfg:41
+#: data/units/Dwarvish_Stalwart.cfg:27 data/units/Dwarvish_Stalwart.cfg:41
 #: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:39
 #: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
 #: data/units/Horseman.cfg:21 data/units/Javelineer.cfg:19
@@ -3868,10 +3877,10 @@ msgstr ""
 msgid "spear"
 msgstr "kopje"
 
-#: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:39
+#: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:39
 #: data/units/Horseman.cfg:23 data/units/Knight.cfg:39
-#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:368
-#: src/actions.cpp:476
+#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:449
+#: src/actions.cpp:557
 msgid "charge"
 msgstr "naskok"
 
@@ -3886,19 +3895,19 @@ msgid ""
 "them into stone until the source of their power is destroyed."
 msgstr ""
 
-#: data/units/Cockatrice.cfg:21
+#: data/units/Cockatrice.cfg:33
 msgid "gaze"
 msgstr "bolščanje"
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:744 src/actions.cpp:908
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:864 src/actions.cpp:1031
 msgid "stone"
 msgstr "okamèni"
 
-#: data/units/Commander.cfg:3 data/units/Commander.cfg:78
+#: data/units/Commander.cfg:3 data/units/Commander.cfg:90
 msgid "Commander"
 msgstr "Poveljnik"
 
-#: data/units/Commander.cfg:20 data/units/Commander.cfg:95
+#: data/units/Commander.cfg:20 data/units/Commander.cfg:107
 #: data/units/Noble_Commander.cfg:24
 msgid ""
 "The rank of Commander is held by those who lead battle groups into combat. "
@@ -3920,11 +3929,11 @@ msgid ""
 "remain ashore."
 msgstr ""
 
-#: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
+#: data/units/Cuttle_Fish.cfg:32 data/units/Tentacle.cfg:20
 msgid "tentacle"
 msgstr "lovka"
 
-#: data/units/Cuttle_Fish.cfg:55
+#: data/units/Cuttle_Fish.cfg:68
 msgid "ink"
 msgstr "črnilo"
 
@@ -3940,7 +3949,7 @@ msgid ""
 "close combat."
 msgstr ""
 
-#: data/units/Dark_Adept.cfg:22 data/units/Dark_Sorcerer.cfg:40
+#: data/units/Dark_Adept.cfg:34 data/units/Dark_Sorcerer.cfg:40
 #: data/units/Necromancer.cfg:35
 msgid "chill wave"
 msgstr "val mrazu"
@@ -3956,7 +3965,7 @@ msgid ""
 "mostly derived from those she commands."
 msgstr ""
 
-#: data/units/Dark_Queen.cfg:22
+#: data/units/Dark_Queen.cfg:34
 msgid "scepter"
 msgstr "žezlo"
 
@@ -3983,12 +3992,12 @@ msgid ""
 "seen in Wesnoth."
 msgstr ""
 
-#: data/units/Dark_Spirit.cfg:19 data/units/Spectre.cfg:24
+#: data/units/Dark_Spirit.cfg:31 data/units/Spectre.cfg:24
 #: data/units/Wraith.cfg:24
 msgid "baneblade"
 msgstr "pogubni meč"
 
-#: data/units/Dark_Spirit.cfg:36 data/units/Ghost.cfg:31
+#: data/units/Dark_Spirit.cfg:48 data/units/Ghost.cfg:31
 #: data/units/Spectre.cfg:41 data/units/Wraith.cfg:41
 msgid "wail"
 msgstr "tuljenje"
@@ -4005,16 +4014,16 @@ msgid ""
 "revenge."
 msgstr ""
 
-#: data/units/Death_Knight.cfg:21 data/units/Dwarvish_Lord.cfg:27
+#: data/units/Death_Knight.cfg:33 data/units/Dwarvish_Lord.cfg:27
 #: data/units/Dwarvish_Steelclad.cfg:27
 msgid "battle axe"
 msgstr "bojna sekira"
 
-#: data/units/Deathblade.cfg:4
+#: data/units/Deathblade.cfg:3
 msgid "Deathblade"
 msgstr "Kosec"
 
-#: data/units/Deathblade.cfg:17
+#: data/units/Deathblade.cfg:16
 msgid ""
 "Deathblades abhor the living and seek to destroy all that they once loved. "
 "They are deadly fighters, ignoring all danger to themselves, and caring only "
@@ -4056,12 +4065,12 @@ msgid ""
 "enemies."
 msgstr ""
 
-#: data/units/Direwolf_Rider.cfg:32 data/units/Drake_Burner.cfg:21
-#: data/units/Drake_Fire.cfg:24 data/units/Drake_Inferno.cfg:24
+#: data/units/Direwolf_Rider.cfg:49 data/units/Drake_Burner.cfg:34
+#: data/units/Drake_Fire.cfg:36 data/units/Drake_Inferno.cfg:24
 #: data/units/Ghoul.cfg:19 data/units/Gryphon.cfg:22
 #: data/units/Gryphon_Master.cfg:24 data/units/Gryphon_Rider.cfg:23
 #: data/units/Necrophage.cfg:19 data/units/Nightgaunt.cfg:20
-#: data/units/Shadow.cfg:20 data/units/Skeletal_Dragon.cfg:47
+#: data/units/Shadow.cfg:20 data/units/Skeletal_Dragon.cfg:49
 #: data/units/Sleeping_Gryphon.cfg:18
 msgid "claws"
 msgstr "kremplji"
@@ -4092,8 +4101,8 @@ msgid ""
 "Drake Flares who aspire to be leaders of their kind."
 msgstr ""
 
-#: data/units/Drake_Burner.cfg:40 data/units/Drake_Fighter.cfg:44
-#: data/units/Drake_Fire.cfg:42 data/units/Drake_Flameheart.cfg:52
+#: data/units/Drake_Burner.cfg:53 data/units/Drake_Fighter.cfg:56
+#: data/units/Drake_Fire.cfg:54 data/units/Drake_Flameheart.cfg:52
 #: data/units/Drake_Flare.cfg:42 data/units/Drake_Glider.cfg:44
 #: data/units/Drake_Inferno.cfg:42 data/units/Drake_Sky.cfg:50
 #: data/units/Drake_Warrior.cfg:45 data/units/Fire_Dragon.cfg:58
@@ -4125,7 +4134,7 @@ msgid ""
 "join the ranks of the elite Drake Warriors."
 msgstr ""
 
-#: data/units/Drake_Fighter.cfg:21
+#: data/units/Drake_Fighter.cfg:33
 msgid "scimitar"
 msgstr "handžar"
 
@@ -4236,7 +4245,7 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Slasher.cfg:43 data/units/Goblin_Impaler.cfg:26
-#: data/units/Halbardier.cfg:26 data/units/Halbardier.cfg:44
+#: data/units/Halbardier.cfg:28 data/units/Halbardier.cfg:69
 #: data/units/Javelineer.cfg:24 data/units/Pikeman.cfg:27
 #: data/units/Spearman.cfg:42
 msgid "firststrike"
@@ -4266,7 +4275,7 @@ msgid ""
 "of their struggle have long faded into oblivion."
 msgstr ""
 
-#: data/units/Draug.cfg:24 data/units/Dwarvish_Fighter.cfg:22
+#: data/units/Draug.cfg:36 data/units/Dwarvish_Fighter.cfg:22
 #: data/units/Revenant.cfg:36 data/units/Skeleton.cfg:37
 msgid "axe"
 msgstr "sekira"
@@ -4282,7 +4291,7 @@ msgid ""
 "crossbow in the other to shoot distant foes."
 msgstr ""
 
-#: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
+#: data/units/Duelist.cfg:33 data/units/Fencer.cfg:20
 msgid "rapier"
 msgstr "rapir"
 
@@ -4298,11 +4307,11 @@ msgid ""
 "push the attack until either they or their enemy lies dead."
 msgstr ""
 
-#: data/units/Dwarvish_Berserker.cfg:26 data/units/Dwarvish_Ulfserker.cfg:26
+#: data/units/Dwarvish_Berserker.cfg:32 data/units/Dwarvish_Ulfserker.cfg:32
 msgid "berserker frenzy"
 msgstr "berserkerova besnost"
 
-#: data/units/Dwarvish_Berserker.cfg:29 data/units/Dwarvish_Ulfserker.cfg:29
+#: data/units/Dwarvish_Berserker.cfg:35 data/units/Dwarvish_Ulfserker.cfg:35
 msgid "berserk"
 msgstr "berserk"
 
@@ -4343,7 +4352,7 @@ msgstr "kladivo"
 msgid "Dwarvish Guardsman"
 msgstr "Škratji stražar"
 
-#: data/units/Dwarvish_Guardsman.cfg:21
+#: data/units/Dwarvish_Guardsman.cfg:22
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsman. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -4389,7 +4398,7 @@ msgstr "Strela"
 msgid "Dwarvish Sentinel"
 msgstr "Škratji čuvaj"
 
-#: data/units/Dwarvish_Sentinel.cfg:23
+#: data/units/Dwarvish_Sentinel.cfg:24
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
@@ -4399,7 +4408,7 @@ msgstr ""
 msgid "Dwarvish Stalwart"
 msgstr "Škratji korenjak"
 
-#: data/units/Dwarvish_Stalwart.cfg:23
+#: data/units/Dwarvish_Stalwart.cfg:24
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are the feared for "
@@ -4578,10 +4587,12 @@ msgstr ""
 msgid "entangle"
 msgstr "zavozlanje"
 
-#: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_Sorceress.cfg:117
+#: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:42
+#: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
-msgid "fey gale"
-msgstr "smrtna sapa"
+#, fuzzy
+msgid "faerie fire"
+msgstr "vilin dotik"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -4610,9 +4621,10 @@ msgid "Elvish High Lord"
 msgstr "Vilinski Višji mogočnik"
 
 #: data/units/Elvish_High_Lord.cfg:18
+#, fuzzy
 msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
-"devastating balls of fire at long range."
+"devastating balls of frost at long range."
 msgstr ""
 "Vilinski Višji mogočniki so strahoviti bojevniki. Na blizu uporabljajo meč, "
 "na daleč pa uničujoče ognjene krogle."
@@ -4638,10 +4650,11 @@ msgstr "sunek"
 msgid "Elvish Lord"
 msgstr "Vilinski mogočnik"
 
-#: data/units/Elvish_Lord.cfg:17
+#: data/units/Elvish_Lord.cfg:19
+#, fuzzy
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
-"devastating balls of fire at long range."
+"devastating balls of frost at long range."
 msgstr ""
 "Vilinski mogočniki so strahoviti bojevniki. Na blizu uporabljajo meč, na "
 "daleč pa uničujoče ognjene krogle."
@@ -5153,7 +5166,7 @@ msgstr ""
 msgid "Halberdier"
 msgstr "Helebardist"
 
-#: data/units/Halbardier.cfg:18
+#: data/units/Halbardier.cfg:19
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -5162,10 +5175,6 @@ msgid ""
 "can keep further than the end of their weapons, but find some difficulty in "
 "very close combat."
 msgstr ""
-
-#: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
-msgid "halberd"
-msgstr "helebarda"
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -5301,7 +5310,7 @@ msgstr ""
 msgid "Lord"
 msgstr "Mogočnik"
 
-#: data/units/Lord.cfg:19 data/units/Lord.cfg:94 data/units/Noble_Lord.cfg:22
+#: data/units/Lord.cfg:19 data/units/Lord.cfg:94
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
@@ -5645,7 +5654,9 @@ msgstr "Nekrofag"
 #: data/units/Necrophage.cfg:16
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
-"hoped-for food with poisonous claws."
+"hoped-for food with poisonous claws. When they are sated with the flesh of "
+"their victims, they simply shrug off all damage sustained as if they had "
+"been freshly summoned, to begin their search for flesh again."
 msgstr ""
 
 #: data/units/Nightgaunt.cfg:3
@@ -5677,6 +5688,14 @@ msgstr ""
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
 msgstr "Plemiški mogočnik"
+
+#: data/units/Noble_Lord.cfg:24
+msgid ""
+"The noble leaders of many troops, Lords are especially strong in melee "
+"combat, and also possess skill with the bow. Like lords, Lords possess "
+"leadership skills, and improve the fighting ability of all adjacent lower-"
+"level units."
+msgstr ""
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
@@ -6242,7 +6261,7 @@ msgid ""
 "lived long enough to change their minds."
 msgstr ""
 
-#: data/units/Skeletal_Dragon.cfg:27
+#: data/units/Skeletal_Dragon.cfg:29
 msgid "jaw"
 msgstr "čeljust"
 
@@ -6410,7 +6429,7 @@ msgid ""
 "terrifying ability to recover from wounds make them a formidable foe even "
 "far from the mountainous ground they prefer to fight in. An adult troll is "
 "smarter, faster, stronger, and though one would dare not say it to their "
-"face, uglier than any of their children. Their wield heavy clubs with brutal "
+"face, uglier than any of their children. They wield heavy clubs with brutal "
 "proficiency, and form a bulwark of strength in any battle they participate "
 "in - the only weakness they have, if such can be said, is their inability to "
 "fight at a distance.\n"
@@ -6444,7 +6463,7 @@ msgstr "Trol skalometalec"
 #: data/units/Troll_Rocklobber.cfg:21
 msgid ""
 "Given the monstrous strength of their race, trolls can turn rather mundane "
-"weapons into implements of deadly force. Some trolls piece together crude "
+"implements into weapons of deadly force. Some trolls piece together crude "
 "slings, little different from what a child would use, save for the fact they "
 "hurl boulders instead of pebbles. Though not especially accurate, a rock "
 "thrown by one of these monsters can cripple a man if it hits him. Despite "
@@ -6489,7 +6508,7 @@ msgid ""
 "Usage:\n"
 "Troll Warriors fight well on rough, rocky terrain, especially at night. "
 "Though vulnerable to archers and spellcasters, especially in open terrain, "
-"the raw power of a Troll Warrior makes them a foe that generally must be "
+"the raw power of a Troll Warrior makes it a foe that generally must be "
 "brought down by several enemies. There are few enemies which can engage them "
 "in one-on-one combat without a great danger of being killed on the same "
 "turn. Their regeneration allows them to cure poison, and heal wounds without "
@@ -6694,346 +6713,354 @@ msgstr ""
 "Danes skoraj še deček, s svojo predanostjo kroni pa želi postati Mogočnik -- "
 "se pridružiti eliti človeških borcev."
 
-#: src/about.cpp:46
+#: src/about.cpp:33
 msgid "+Core Developers"
 msgstr "+Poglavitni razvijalci"
 
-#: src/about.cpp:47
+#: src/about.cpp:34
 msgid "-   Main Developer"
 msgstr "-   Glavni razvijalec"
 
-#: src/about.cpp:50
+#: src/about.cpp:37
 msgid "-   Artwork and graphics designer"
 msgstr "-   Glavni grafični oblikovalec"
 
-#: src/about.cpp:54
+#: src/about.cpp:40
 msgid "+Developers"
 msgstr "+Razvijalci"
 
-#: src/about.cpp:71
+#: src/about.cpp:57
 msgid "+General Purpose Administrators"
 msgstr "+Punčke za vse"
 
-#: src/about.cpp:76
+#: src/about.cpp:61
 msgid "+Artwork and graphics designers"
 msgstr "+Grafični oblikovalci"
 
-#: src/about.cpp:102
+#: src/about.cpp:86
 msgid "+Music"
 msgstr "+Glasba"
 
-#: src/about.cpp:109
+#: src/about.cpp:92
 msgid "+Scenario Designers"
 msgstr "+Oblikovalci scenarijev"
 
-#: src/about.cpp:119
+#: src/about.cpp:101
 msgid "+Multiplayer Maps"
 msgstr "+Večigralske karte"
 
-#: src/about.cpp:124
+#: src/about.cpp:105
 msgid "+Packagers"
 msgstr "+Paketarji"
 
-#: src/about.cpp:135
+#: src/about.cpp:115
 msgid "+Miscellaneous"
 msgstr "+Razno"
 
-#: src/about.cpp:141
+#: src/about.cpp:120
 msgid "+Internationalization Managers"
 msgstr "+Upravitelji internacionalizacije"
 
-#: src/about.cpp:148
+#: src/about.cpp:126
 msgid "+Afrikaans Translation"
 msgstr "+Afrikaanski prevod"
 
-#: src/about.cpp:153
+#: src/about.cpp:130
 msgid "+Basque Translation"
 msgstr "+Baskovski prevod"
 
-#: src/about.cpp:159
+#: src/about.cpp:135
 msgid "+Bulgarian Translation"
 msgstr "+Bolgarski prevod"
 
-#: src/about.cpp:163
+#: src/about.cpp:138
 msgid "+Catalan Translation"
 msgstr "+Katalonski prevod"
 
-#: src/about.cpp:171
+#: src/about.cpp:145
 msgid "+Chinese Translation"
 msgstr "+Kitajski prevod"
 
-#: src/about.cpp:175
+#: src/about.cpp:148
 msgid "+Czech Translation"
 msgstr "+Češki prevod"
 
-#: src/about.cpp:184
+#: src/about.cpp:156
 msgid "+Danish Translation"
 msgstr "+Danski prevod"
 
-#: src/about.cpp:189
+#: src/about.cpp:160
 msgid "+Dutch Translation"
 msgstr "+Nizozemski prevod"
 
-#: src/about.cpp:197
+#: src/about.cpp:167
 msgid "+English (GB) Translation"
 msgstr "+Angleški (GB) prevod"
 
-#: src/about.cpp:201
+#: src/about.cpp:170
 msgid "+Estonian Translation"
 msgstr "+Estonski prevod"
 
-#: src/about.cpp:205
+#: src/about.cpp:173
 msgid "+Finnish Translation"
 msgstr "+Finski prevod"
 
-#: src/about.cpp:210
+#: src/about.cpp:177
 msgid "+French Translation"
 msgstr "+Francoski prevod"
 
-#: src/about.cpp:224
+#: src/about.cpp:190
 msgid "+German Translation"
 msgstr "+Nemški prevod"
 
-#: src/about.cpp:236
+#: src/about.cpp:201
 msgid "+Greek Translation"
 msgstr "+Grški prevod"
 
-#: src/about.cpp:241
+#: src/about.cpp:205
 msgid "+Hungarian Translation"
 msgstr "+Madžarski prevod"
 
-#: src/about.cpp:253
+#: src/about.cpp:216
 msgid "+Italian Translation"
 msgstr "+Italjanski prevod"
 
-#: src/about.cpp:262
+#: src/about.cpp:225
 msgid "+Japanese Translation"
 msgstr "+Japonski prevod"
 
-#: src/about.cpp:268
+#: src/about.cpp:230
 msgid "+Latin Translation"
 msgstr "+Latinski prevod"
 
-#: src/about.cpp:272
+#: src/about.cpp:233
 msgid "+Norwegian Translation"
 msgstr "+Norveški prevod"
 
-#: src/about.cpp:279
+#: src/about.cpp:239
 msgid "+Polish Translation"
 msgstr "+Poljski prevod"
 
-#: src/about.cpp:290
+#: src/about.cpp:249
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugalski prevod"
 
-#: src/about.cpp:299
+#: src/about.cpp:257
 msgid "+Russian Translation"
 msgstr "+Ruski prevod"
 
-#: src/about.cpp:305
+#: src/about.cpp:262
 msgid "+Slovak Translation"
 msgstr "+Slovaški prevod"
 
-#: src/about.cpp:309
+#: src/about.cpp:265
 msgid "+Slovenian Translation"
 msgstr "+Slovenski prevod"
 
-#: src/about.cpp:313
+#: src/about.cpp:268
 msgid "+Spanish Translation"
 msgstr "+Španski prevod"
 
-#: src/about.cpp:322
+#: src/about.cpp:276
 msgid "+Swedish Translation"
 msgstr "+Švedski prevod"
 
-#: src/about.cpp:329
+#: src/about.cpp:282
 msgid "+Turkish Translation"
 msgstr "+Turški prevod"
 
-#: src/about.cpp:334
+#: src/about.cpp:286
 msgid "+Contributors"
 msgstr "+Sodelavci"
 
-#: src/about.cpp:338
+#: src/about.cpp:289
 msgid "+Bots"
 msgstr "+IRC roboti"
 
-#: src/about.cpp:375 src/help.cpp:2713
+#: src/about.cpp:325 src/help.cpp:2633
 msgid "Close"
 msgstr "Zapri"
 
-#: src/actions.cpp:105
+#: src/actions.cpp:108
 msgid "You don't have a leader to recruit with."
 msgstr "Nimate voditelja, s katerim bi lahko novačili."
 
-#: src/actions.cpp:109
+#: src/actions.cpp:112
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Če hočete novačiti ali priklicati enote, mora biti vaš voditelj v trdnjavi."
 
-#: src/actions.cpp:126
+#: src/actions.cpp:129
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Na voljo ni nič prostih gradov, kjer bi lahko novačili."
 
-#: src/actions.cpp:216
+#: src/actions.cpp:297
 msgid "none"
 msgstr "brez"
 
-#: src/actions.cpp:292 src/dialogs.cpp:699 src/display.cpp:1094
-#: src/help.cpp:1171 src/reports.cpp:233
+#: src/actions.cpp:373 src/dialogs.cpp:700 src/display.cpp:1094
+#: src/help.cpp:1122 src/reports.cpp:233
 msgid "melee"
 msgstr "na blizu"
 
-#: src/actions.cpp:292 src/dialogs.cpp:699 src/display.cpp:1095
-#: src/help.cpp:1171 src/reports.cpp:234
+#: src/actions.cpp:373 src/dialogs.cpp:700 src/display.cpp:1095
+#: src/help.cpp:1122 src/reports.cpp:234
 msgid "ranged"
 msgstr "na daleč"
 
-#: src/actions.cpp:338 src/actions.cpp:446
+#: src/actions.cpp:419 src/actions.cpp:527
 msgid "base damage"
 msgstr "osnovna škoda"
 
-#: src/actions.cpp:368 src/actions.cpp:476 src/actions.cpp:485
+#: src/actions.cpp:449 src/actions.cpp:557 src/actions.cpp:566
 msgid "Doubled"
 msgstr "Podvojena"
 
-#: src/actions.cpp:376
+#: src/actions.cpp:457
 msgid "attacker resistance vs"
 msgstr "napadalčeva odpornost proti"
 
-#: src/actions.cpp:376
+#: src/actions.cpp:457
 msgid "attacker vulnerability vs"
 msgstr "napadalčeva šibkost proti"
 
-#: src/actions.cpp:390 src/actions.cpp:516
+#: src/actions.cpp:471 src/actions.cpp:597
 msgid "total damage"
 msgstr "skupna škoda"
 
-#: src/actions.cpp:494
+#: src/actions.cpp:575
 msgid "Halved"
 msgstr "Prepolovljena"
 
-#: src/actions.cpp:502
+#: src/actions.cpp:583
 msgid "defender resistance vs"
 msgstr "braniteljeva odpornost proti"
 
-#: src/actions.cpp:502
+#: src/actions.cpp:583
 msgid "defender vulnerability vs"
 msgstr "braniteljeva šibkost proti"
 
-#: src/actions.cpp:730 src/actions.cpp:893 src/display.cpp:1037
+#: src/actions.cpp:644
+msgid "(both should survive)"
+msgstr ""
+
+#: src/actions.cpp:646
+msgid "% Pr[kills/killed by/both survive]"
+msgstr ""
+
+#: src/actions.cpp:848 src/actions.cpp:1014 src/display.cpp:1037
 msgid "poisoned"
 msgstr "zastrupljen"
 
-#: src/actions.cpp:735 src/actions.cpp:898 src/display.cpp:1033
+#: src/actions.cpp:853 src/actions.cpp:1019 src/display.cpp:1033
 msgid "slowed"
 msgstr "upočasnjen"
 
-#: src/actions.cpp:1765
+#: src/actions.cpp:1898
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions.cpp:1793
+#: src/actions.cpp:1932
 msgid "Friendly unit sighted"
 msgstr "Zavezniške enote opažene!"
 
-#: src/actions.cpp:1795
+#: src/actions.cpp:1934
 msgid "Enemy unit sighted!"
 msgstr "Sovražne enote opažene!"
 
-#: src/actions.cpp:1800
+#: src/actions.cpp:1939
 msgid "$friends Friendly units sighted"
 msgstr "Opaženih $friends zavezniških enot!"
 
-#: src/actions.cpp:1802
+#: src/actions.cpp:1941
 msgid "$enemies Enemy units sighted!"
 msgstr "Opaženih $enemies sovražnih enot!"
 
-#: src/actions.cpp:1806
+#: src/actions.cpp:1945
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 
-#: src/actions.cpp:1821
+#: src/actions.cpp:1960
 msgid "(press $hotkey to continue)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
 
-#: src/dialogs.cpp:99
+#: src/dialogs.cpp:100
 msgid "Advance Unit"
 msgstr "Napredovanje"
 
-#: src/dialogs.cpp:100
+#: src/dialogs.cpp:101
 msgid "What should our victorious unit become?"
 msgstr "Kaj naj postane ta zmagoslavna enota?"
 
-#: src/dialogs.cpp:169
+#: src/dialogs.cpp:170
 msgid "No objectives available"
 msgstr "Na voljo ni nobenih ciljev"
 
-#: src/dialogs.cpp:183
+#: src/dialogs.cpp:184
 msgid "Save Game"
 msgstr "Shrani igro"
 
-#: src/dialogs.cpp:185
+#: src/dialogs.cpp:186
 msgid "Overwrite?"
 msgstr "Prepiši?"
 
-#: src/dialogs.cpp:186
+#: src/dialogs.cpp:187
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Shranjeni položaj že obstaja. Ali ga želite prepisati?"
 
-#: src/dialogs.cpp:215 src/dialogs.cpp:447
+#: src/dialogs.cpp:216 src/dialogs.cpp:448
 msgid "Don't ask me again!"
 msgstr "Ne sprašuj me več!"
 
-#: src/dialogs.cpp:217
+#: src/dialogs.cpp:218
 msgid "Do you really want to delete this game?"
 msgstr "Ali zares želite izbrisati ta shranjeni položaj?"
 
-#: src/dialogs.cpp:348
+#: src/dialogs.cpp:349
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:361
+#: src/dialogs.cpp:362
 msgid "#(Invalid)"
 msgstr "#(Neveljaven)"
 
-#: src/dialogs.cpp:366 src/game.cpp:909
+#: src/dialogs.cpp:367 src/game.cpp:748
 msgid "Campaign"
 msgstr "Kampanja"
 
-#: src/dialogs.cpp:368 src/game.cpp:1235
+#: src/dialogs.cpp:369 src/game.cpp:1103
 msgid "Multiplayer"
 msgstr "Večigralnost"
 
-#: src/dialogs.cpp:370
+#: src/dialogs.cpp:371
 msgid "Tutorial"
 msgstr "Vodič"
 
-#: src/dialogs.cpp:378
+#: src/dialogs.cpp:379
 msgid "replay"
 msgstr "vnovično predvajanje"
 
-#: src/dialogs.cpp:380 src/multiplayer_lobby.cpp:115 src/playturn.cpp:1541
+#: src/dialogs.cpp:381 src/multiplayer_lobby.cpp:115 src/playturn.cpp:1547
 msgid "Turn"
 msgstr "Poteza"
 
-#: src/dialogs.cpp:382
+#: src/dialogs.cpp:383
 msgid "Scenario Start"
 msgstr "Začetek scenarija"
 
-#: src/dialogs.cpp:385
+#: src/dialogs.cpp:386
 msgid "Difficulty: "
 msgstr "Težavnost: "
 
-#: src/dialogs.cpp:387
+#: src/dialogs.cpp:388
 msgid "Version: "
 msgstr "Različica: "
 
-#: src/dialogs.cpp:402
+#: src/dialogs.cpp:403
 msgid "No Saved Games"
 msgstr "Ni shranjenih položajev"
 
-#: src/dialogs.cpp:403
+#: src/dialogs.cpp:404
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -7041,15 +7068,15 @@ msgstr ""
 "Za nalaganje ni na voljo nobenega shranjenega položaja.\n"
 "(Igre so avtomatsko shranjene, ko končate scenarij)"
 
-#: src/dialogs.cpp:422
+#: src/dialogs.cpp:423
 msgid "Delete Save"
 msgstr "Izbriši shranjen položaj"
 
-#: src/dialogs.cpp:437
+#: src/dialogs.cpp:438
 msgid "Import Saved Games"
 msgstr "Uvozi shranjene položaje"
 
-#: src/dialogs.cpp:438
+#: src/dialogs.cpp:439
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -7059,7 +7086,7 @@ msgstr ""
 "Battle for Wesnoth. Ali jih želite posodobiti za trenutno različico? To "
 "lahko traja."
 
-#: src/dialogs.cpp:443
+#: src/dialogs.cpp:444
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
@@ -7069,36 +7096,36 @@ msgstr ""
 "ustvarjene s to različico Battle for Wesnoth. Ali jih želite vpisati kot del "
 "te različice?"
 
-#: src/dialogs.cpp:514
+#: src/dialogs.cpp:515
 msgid "Show replay"
 msgstr "Pokaži posnetek igre"
 
-#: src/dialogs.cpp:517 src/multiplayer_create.cpp:74
+#: src/dialogs.cpp:518 src/multiplayer_create.cpp:74
 msgid "Load Game"
 msgstr "Naloži igro"
 
-#: src/dialogs.cpp:518
+#: src/dialogs.cpp:519
 msgid "Choose the game to load"
 msgstr "Izberite igro, ki jo želite naložiti"
 
-#: src/dialogs.cpp:554 src/dialogs.cpp:566
+#: src/dialogs.cpp:555 src/dialogs.cpp:567
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:646 src/display.cpp:1043 src/help.cpp:1056
+#: src/dialogs.cpp:647 src/display.cpp:1043 src/help.cpp:1031
 msgid "level"
 msgstr "stopnja"
 
-#: src/dialogs.cpp:667 src/display.cpp:1061 src/help.cpp:1101
+#: src/dialogs.cpp:668 src/display.cpp:1061 src/help.cpp:1076
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:671 src/dialogs.cpp:679 src/display.cpp:1065
-#: src/display.cpp:1073 src/playturn.cpp:1965
+#: src/dialogs.cpp:672 src/dialogs.cpp:680 src/display.cpp:1065
+#: src/display.cpp:1073 src/playturn.cpp:1979
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:684 src/display.cpp:1077 src/help.cpp:1102
+#: src/dialogs.cpp:685 src/display.cpp:1077 src/help.cpp:1077
 msgid "Moves: "
 msgstr "Premiki: "
 
@@ -7118,8 +7145,8 @@ msgstr "neviden"
 msgid "OK"
 msgstr "OK"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:495
-#: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:148
+#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:494
+#: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Prekliči"
 
@@ -7127,48 +7154,16 @@ msgstr "Prekliči"
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
-#: src/game.cpp:140
-msgid "Do you want to save a replay of this scenario?"
-msgstr "Ali želite shraniti posnetek igranja scenarija?"
-
-#: src/game.cpp:141 src/game.cpp:199 src/playturn.cpp:1550
-msgid "Name:"
-msgstr "Ime:"
-
-#: src/game.cpp:149 src/game.cpp:206 src/playturn.cpp:1567
-msgid "The game could not be saved"
-msgstr "Igre ni bilo možno shraniti"
-
-#: src/game.cpp:171 src/game.cpp:846 src/game.cpp:1265
-msgid "The game could not be loaded: "
-msgstr "Igre ni bilo možno naložiti: "
-
-#: src/game.cpp:174 src/game.cpp:848 src/game.cpp:1267
-msgid "Error while playing the game: "
-msgstr "Napaka med igranjem: "
-
-#: src/game.cpp:177 src/game.cpp:854 src/game.cpp:1279
-msgid "The game map could not be loaded: "
-msgstr "Karte ni bilo možno naložiti: "
-
-#: src/game.cpp:198
-msgid "Do you want to save your game?"
-msgstr "Ali želite shraniti igro?"
-
-#: src/game.cpp:219
-msgid "Unknown scenario: '"
-msgstr "Neznan scenarij: '"
-
-#: src/game.cpp:539
+#: src/game.cpp:391
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:752
+#: src/game.cpp:619
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Datoteka, ki ste jo poskušali naložiti, je pokvarjena. Vseeno bo naložena.\n"
 
-#: src/game.cpp:774 src/multiplayer_connect.cpp:899
+#: src/game.cpp:641 src/multiplayer_connect.cpp:888
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7176,311 +7171,319 @@ msgstr ""
 "Ta shranjen položaj je iz druge različice igre. Ali ga želite poskusiti "
 "naložiti?"
 
-#: src/game.cpp:782 src/game.cpp:785 src/multiplayer_connect.cpp:886
+#: src/game.cpp:649 src/game.cpp:652 src/multiplayer_connect.cpp:873
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka, ki ste jo poskusili naložiti, je pokvarjena: '"
 
-#: src/game.cpp:788
+#: src/game.cpp:655
 msgid "File I/O Error while reading the game"
 msgstr "I/O Napaka pri branju igre"
 
-#: src/game.cpp:899
+#: src/game.cpp:738
 msgid "Get More Campaigns..."
 msgstr "Dobi več kampanj..."
 
-#: src/game.cpp:900
+#: src/game.cpp:739
 msgid "Download more campaigns from a server on Internet."
 msgstr "Prenesi več kampanj s kampanjskega strežnika."
 
-#: src/game.cpp:910
+#: src/game.cpp:749
 msgid "Choose the campaign you want to play:"
 msgstr "Izberite kampanjo, ki jo želite igrati:"
 
-#: src/game.cpp:939
+#: src/game.cpp:778
 msgid "Difficulty"
 msgstr "Težavnost"
 
-#: src/game.cpp:940
+#: src/game.cpp:779
 msgid "Select difficulty level:"
 msgstr "Izberite težavnost:"
 
-#: src/game.cpp:965
+#: src/game.cpp:804
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:968
+#: src/game.cpp:807
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:971
+#: src/game.cpp:810
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:996
+#: src/game.cpp:837
 msgid "Connect to Server"
 msgstr "Poveži se s strežnikom"
 
-#: src/game.cpp:997
+#: src/game.cpp:838
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Zdaj se boste povezali s kampanjskim strežnikom, da lahko prenesete kakšno "
 "kampanjo."
 
-#: src/game.cpp:998
+#: src/game.cpp:839
 msgid "Server: "
 msgstr "Strežnik: "
 
-#: src/game.cpp:1011
+#: src/game.cpp:852
 msgid "Could not connect to host."
 msgstr "Ni se možno povezati z gostiteljem."
 
-#: src/game.cpp:1019
+#: src/game.cpp:860
 msgid "Awaiting response from server"
 msgstr "Čakanje na odziv strežnika"
 
-#: src/game.cpp:1032
+#: src/game.cpp:873
 msgid "Error communicating with the server."
 msgstr "Napaka pri komunikaciji s strežnikom."
 
-#: src/game.cpp:1038 src/help.cpp:1125 src/help.cpp:1126 src/playturn.cpp:2124
+#: src/game.cpp:879 src/help.cpp:1098 src/playturn.cpp:2139
 msgid "Name"
 msgstr "Ime"
 
-#: src/game.cpp:1039 src/titlescreen.cpp:169
+#: src/game.cpp:880 src/titlescreen.cpp:169
 msgid "Version"
 msgstr "Različica"
 
-#: src/game.cpp:1040
+#: src/game.cpp:881
 msgid "Author"
 msgstr "Avtor"
 
-#: src/game.cpp:1041
+#: src/game.cpp:882
 msgid "Downloads"
 msgstr "Prenosov"
 
-#: src/game.cpp:1042
+#: src/game.cpp:883
 msgid "Size"
 msgstr "Velikost"
 
-#: src/game.cpp:1071
+#: src/game.cpp:927
 msgid "Publish campaign: "
 msgstr "Objavi kampanjo: "
 
-#: src/game.cpp:1075
+#: src/game.cpp:931
 msgid "Delete campaign: "
 msgstr "Izbriši kampanjo: "
 
-#: src/game.cpp:1079
+#: src/game.cpp:935
 msgid "There are no campaigns available for download from this server."
 msgstr "Na tem strežniku ni na voljo nobene kampanje za prenos."
 
-#: src/game.cpp:1083
+#: src/game.cpp:939
 msgid "Choose the campaign to download."
 msgstr "Izberite kampanjo za prenos"
 
-#: src/game.cpp:1083
+#: src/game.cpp:939
 msgid "Get Campaign"
 msgstr "Dobi kampanje"
 
-#: src/game.cpp:1102
+#: src/game.cpp:958
 msgid "Downloading campaign..."
 msgstr "Prenašam kampanjo..."
 
-#: src/game.cpp:1116
+#: src/game.cpp:972
 msgid "Cannot rescan the filesystem"
 msgstr "Ni mogoče ponovno pregledati datotečnega sistema"
 
-#: src/game.cpp:1127
+#: src/game.cpp:983
 msgid "Campaign Installed"
 msgstr "Kampanja nameščena"
 
-#: src/game.cpp:1127
+#: src/game.cpp:983
 msgid "The campaign has been installed."
 msgstr "Kampanja je bila nameščena."
 
-#: src/game.cpp:1129
+#: src/game.cpp:985
 msgid "Network communication error."
 msgstr "Napaka v mrežni komunikaciji."
 
-#: src/game.cpp:1131
+#: src/game.cpp:987
 msgid "Remote host disconnected."
 msgstr "Oddaljeni gostitelj je prekinil povezavo."
 
-#: src/game.cpp:1133
+#: src/game.cpp:989
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Namestitev kampanje ni uspela; nekaj datotek ni bilo mogoče ustvariti."
 
-#: src/game.cpp:1145 src/game.cpp:1185 src/game.cpp:1210
-#: src/multiplayer.cpp:202 src/multiplayer_ui.cpp:34
+#: src/game.cpp:1001 src/game.cpp:1041 src/game.cpp:1066
+#: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
-#: src/game.cpp:1148 src/game.cpp:1187 src/game.cpp:1212
+#: src/game.cpp:1004 src/game.cpp:1043 src/game.cpp:1068
 msgid "The server responded with an error: \""
 msgstr "Strežnik se je odzval z napako: \""
 
-#: src/game.cpp:1152
+#: src/game.cpp:1008
 msgid "Terms"
 msgstr "Pogoji"
 
-#: src/game.cpp:1190 src/game.cpp:1215
+#: src/game.cpp:1046 src/game.cpp:1071
 msgid "Response"
 msgstr "Odziv"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1086
 msgid "Join Official Server"
 msgstr "Poveži se z uradnim strežnikom"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1087
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Poveži se z uradnim večigralskim strežnikom za Wesnoth"
 
-#: src/game.cpp:1229 src/multiplayer_lobby.cpp:29
+#: src/game.cpp:1089 src/multiplayer_lobby.cpp:29
 msgid "Join Game"
 msgstr "Pridruži se igri"
 
-#: src/game.cpp:1229
+#: src/game.cpp:1090
 msgid "Join a server or hosted game"
 msgstr "Pridruži se strežniku ali gostovani igri"
 
-#: src/game.cpp:1230
+#: src/game.cpp:1092
 msgid "Host Networked Game"
 msgstr "Gostuj mrežno igro"
 
-#: src/game.cpp:1230
+#: src/game.cpp:1093
 msgid "Host a game without using a server"
 msgstr "Gostuj igro brez uporabe strežnika"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1095
 msgid "Hotseat Game"
 msgstr "»Vroči stol« igra"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1096
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Večigralska igra na istem računalniku"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1098
 msgid "Human vs AI"
 msgstr "Človek proti UI"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1099
 msgid "Play a game against AI opponents"
 msgstr "Igra proti UI"
 
-#: src/game.cpp:1235 src/multiplayer.cpp:186
+#: src/game.cpp:1105 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Prijava: "
 
-#: src/game.cpp:1305
+#: src/game.cpp:1136
+msgid "The game could not be loaded: "
+msgstr "Igre ni bilo možno naložiti: "
+
+#: src/game.cpp:1138
+msgid "Error while playing the game: "
+msgstr "Napaka med igranjem: "
+
+#: src/game.cpp:1150
+msgid "The game map could not be loaded: "
+msgstr "Karte ni bilo možno naložiti: "
+
+#: src/game.cpp:1177
 msgid "Language"
 msgstr "Jezik"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1178
 msgid "Choose your preferred language:"
 msgstr "Izberite jezik"
 
-#: src/game.cpp:1391
+#: src/game.cpp:1267
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Opozorilo: Prišlo je do napake pri nalaganju nastavtivenih datotek: '"
 
-#: src/game.cpp:1435
+#: src/game.cpp:1316
 msgid "Error loading game configuration files: '"
 msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
 
-#: src/game.cpp:1436
+#: src/game.cpp:1317
 msgid "' (The game will now exit)"
 msgstr "' (Igra se bo zaključila)"
 
-#: src/game.cpp:1509
+#: src/game.cpp:1390
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game_events.cpp:574
+#: src/game_events.cpp:579
 msgid "Victory:"
 msgstr "Zmaga:"
 
-#: src/game_events.cpp:577
+#: src/game_events.cpp:582
 msgid "Defeat:"
 msgstr "Poraz:"
 
-#: src/help.cpp:1063
+#: src/help.cpp:1038
 msgid "Advances to: "
 msgstr "Napreduje v: "
 
-#: src/help.cpp:1084
+#: src/help.cpp:1059
 msgid "Abilities: "
 msgstr "Sposobnosti: "
 
-#: src/help.cpp:1103
+#: src/help.cpp:1078
 msgid "Alignment: "
 msgstr "Poravnava: "
 
-#: src/help.cpp:1107
+#: src/help.cpp:1082
 msgid "Required XP: "
 msgstr "Potrebni XP: "
 
-#: src/help.cpp:1118 src/reports.cpp:236
+#: src/help.cpp:1091 src/reports.cpp:236
 msgid "attacks"
 msgstr "napadi"
 
-#: src/help.cpp:1129 src/help.cpp:1130 src/playturn.cpp:2123
+#: src/help.cpp:1099 src/playturn.cpp:2138
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/help.cpp:1133 src/help.cpp:1134 src/unit_types.cpp:312
-msgid "Dmg"
-msgstr "Škode"
-
-#: src/help.cpp:1137 src/help.cpp:1138
+#: src/help.cpp:1100
 msgid "Strikes"
 msgstr "Udarci"
 
-#: src/help.cpp:1141 src/help.cpp:1142
+#: src/help.cpp:1101
 msgid "Range"
 msgstr "Doseg"
 
-#: src/help.cpp:1145 src/help.cpp:1146
+#: src/help.cpp:1102
 msgid "Special"
 msgstr "Posebnosti orožja"
 
-#: src/help.cpp:1191
+#: src/help.cpp:1142
 msgid "Resistances"
 msgstr "Odpornosti"
 
-#: src/help.cpp:1195 src/help.cpp:1196
+#: src/help.cpp:1146
 msgid "Attack Type"
 msgstr "Tip napada"
 
-#: src/help.cpp:1199 src/help.cpp:1200
+#: src/help.cpp:1147
 msgid "Resistance"
 msgstr "Odpornost"
 
-#: src/help.cpp:1227
+#: src/help.cpp:1172
 msgid "Terrain Modifiers"
 msgstr "Terenski prikrojevalci"
 
-#: src/help.cpp:1231 src/help.cpp:1232
+#: src/help.cpp:1176
 msgid "Terrain"
 msgstr "Teren"
 
-#: src/help.cpp:1239 src/help.cpp:1240
+#: src/help.cpp:1178
 msgid "Defense"
 msgstr "Obramba"
 
-#: src/help.cpp:1340
+#: src/help.cpp:1276
 msgid "or"
 msgstr "ali"
 
-#: src/help.cpp:1347
+#: src/help.cpp:1283
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr "Ta teren deluje kot $terrains, v smislu premikanja in obrambe."
 
-#: src/help.cpp:1349
+#: src/help.cpp:1285
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Avtomatsko bo izbran teren z najboljšimi prikrojevalci."
 
-#: src/help.cpp:1353
+#: src/help.cpp:1289
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -7488,25 +7491,25 @@ msgstr ""
 "Ta teren deluje kot trdnjava, če je na njem voditelj, potem lahko novačite "
 "enote."
 
-#: src/help.cpp:1355
+#: src/help.cpp:1291
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr "Ta teren deluje kot grad, na njega lahko novačite enote."
 
-#: src/help.cpp:1357
+#: src/help.cpp:1293
 msgid "This terrain gives healing."
 msgstr "Ta teren zdravi."
 
-#: src/help.cpp:2228
+#: src/help.cpp:2158
 msgid "< Back"
 msgstr "< Nazaj"
 
-#: src/help.cpp:2229
+#: src/help.cpp:2159
 msgid "Forward >"
 msgstr "Naprej >"
 
-#: src/help.cpp:2716
+#: src/help.cpp:2636
 msgid "The Battle for Wesnoth Help"
 msgstr "Pomoč za The Battle for Wesnoth "
 
@@ -7522,7 +7525,7 @@ msgstr "Preskoči"
 msgid "The End"
 msgstr "Konec"
 
-#: src/language.cpp:39 src/language.cpp:160
+#: src/language.cpp:41 src/language.cpp:177
 msgid "System default language"
 msgstr "Privzeti sistemski jezik"
 
@@ -7586,19 +7589,19 @@ msgstr "Kopno"
 msgid "Island"
 msgstr "Otok"
 
-#: src/multiplayer.cpp:91
+#: src/multiplayer.cpp:92
 msgid "Connect to Host"
 msgstr "Poveži se z gostiteljem"
 
-#: src/multiplayer.cpp:93
+#: src/multiplayer.cpp:94
 msgid "Choose host to connect to: "
 msgstr "Izberite gostitelja (za povezavo): "
 
-#: src/multiplayer.cpp:132
+#: src/multiplayer.cpp:133
 msgid "Connecting to remote host..."
 msgstr "Povezovanje z oddaljenim gostiteljem..."
 
-#: src/multiplayer.cpp:141
+#: src/multiplayer.cpp:142
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
@@ -7606,99 +7609,99 @@ msgstr ""
 "Strežnik zahteva različico '$version1' vi pa uporabljate različico "
 "'$version2'"
 
-#: src/multiplayer.cpp:153
+#: src/multiplayer.cpp:154
 msgid "Server-side redirect loop"
 msgstr "Preusmeritve na strani strežnika"
 
-#: src/multiplayer.cpp:185
+#: src/multiplayer.cpp:186
 msgid "You must log in to this server"
 msgstr "Prijaviti se morate na ta strežnik"
 
-#: src/multiplayer_connect.cpp:298
+#: src/multiplayer_connect.cpp:297
 msgid "(Vacant slot)"
 msgstr "(Prosto mesto)"
 
-#: src/multiplayer_connect.cpp:304
+#: src/multiplayer_connect.cpp:303
 msgid "Anonymous local player"
 msgstr "Anonimen lokalni igralec"
 
-#: src/multiplayer_connect.cpp:310
+#: src/multiplayer_connect.cpp:309
 msgid "Computer player"
 msgstr "Računalniški igralec"
 
-#: src/multiplayer_connect.cpp:313
+#: src/multiplayer_connect.cpp:312
 msgid "(Empty slot)"
 msgstr "(Prazno mesto)"
 
-#: src/multiplayer_connect.cpp:450
+#: src/multiplayer_connect.cpp:449
 msgid "No non-random sides in the current era"
 msgstr "Brez nenakjljučnih strani v trenutni eri"
 
-#: src/multiplayer_connect.cpp:466
+#: src/multiplayer_connect.cpp:465
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Ni bilo mogoče najti voditeljske enote za $faction"
 
-#: src/multiplayer_connect.cpp:480 src/multiplayer_connect.cpp:489
+#: src/multiplayer_connect.cpp:479 src/multiplayer_connect.cpp:488
 msgid "Team"
 msgstr "Ekipa"
 
-#: src/multiplayer_connect.cpp:487
+#: src/multiplayer_connect.cpp:486
 msgid "Player/Type"
 msgstr "Igralec/Vrsta"
 
-#: src/multiplayer_connect.cpp:488
+#: src/multiplayer_connect.cpp:487
 msgid "Faction"
 msgstr "Stran"
 
-#: src/multiplayer_connect.cpp:490
+#: src/multiplayer_connect.cpp:489
 msgid "Color"
 msgstr "Barva"
 
-#: src/multiplayer_connect.cpp:491 src/playturn.cpp:1690 src/playturn.cpp:1697
+#: src/multiplayer_connect.cpp:490 src/playturn.cpp:1704 src/playturn.cpp:1711
 msgid "Gold"
 msgstr "Zlato"
 
-#: src/multiplayer_connect.cpp:493
+#: src/multiplayer_connect.cpp:492
 msgid "Computer vs Computer"
 msgstr "Računalnik proti računalniku"
 
-#: src/multiplayer_connect.cpp:494
+#: src/multiplayer_connect.cpp:493
 msgid "I'm Ready"
 msgstr "Pripravljen sem"
 
-#: src/multiplayer_connect.cpp:510
+#: src/multiplayer_connect.cpp:511
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenarij je neveljaven, ker nima nobenih strani."
 
-#: src/multiplayer_connect.cpp:800
+#: src/multiplayer_connect.cpp:788
 msgid "Game Lobby"
 msgstr "Čakalnica"
 
-#: src/multiplayer_connect.cpp:820
+#: src/multiplayer_connect.cpp:808
 msgid "Network Player"
 msgstr "Mrežni igralec"
 
-#: src/multiplayer_connect.cpp:821
+#: src/multiplayer_connect.cpp:809
 msgid "Local Player"
 msgstr "Lokalni igralec"
 
-#: src/multiplayer_connect.cpp:822
+#: src/multiplayer_connect.cpp:810
 msgid "Computer Player"
 msgstr "Računalniški igralec"
 
-#: src/multiplayer_connect.cpp:823
+#: src/multiplayer_connect.cpp:811
 msgid "Empty"
 msgstr "Prazno"
 
-#: src/multiplayer_connect.cpp:891
+#: src/multiplayer_connect.cpp:880
 msgid "This is not a multiplayer save"
 msgstr "To ni večigralski shranjen položaj"
 
-#: src/multiplayer_connect.cpp:937
+#: src/multiplayer_connect.cpp:918
 msgid "Cannot find era $era"
 msgstr "Ni mogoče najti ere $era"
 
-#: src/multiplayer_connect.cpp:957
+#: src/multiplayer_connect.cpp:934
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -7706,7 +7709,7 @@ msgstr ""
 "Zmaga\n"
 "@Premagaj sovražne voditelje"
 
-#: src/multiplayer_connect.cpp:993
+#: src/multiplayer_connect.cpp:970
 msgid "Waiting for players to join..."
 msgstr "Čakanje na igralce..."
 
@@ -7786,35 +7789,35 @@ msgstr "Najdene ni bilo nobene ere"
 msgid "$login's game"
 msgstr "Gostitelj: $login"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:167
 msgid "Invalid era selected"
 msgstr "Izbrana je bila neveljavna era"
 
-#: src/multiplayer_create.cpp:197
+#: src/multiplayer_create.cpp:198
 msgid "You must enter a name."
 msgstr "Vnesti morate ime."
 
-#: src/multiplayer_create.cpp:206
+#: src/multiplayer_create.cpp:207
 msgid "Turns: "
 msgstr "Potez: "
 
-#: src/multiplayer_create.cpp:208
+#: src/multiplayer_create.cpp:209
 msgid "Unlimited Turns"
 msgstr "Časovno neomejena igra"
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:216
 msgid "Village Gold: "
 msgstr "Prihodki vasi: "
 
-#: src/multiplayer_create.cpp:221
+#: src/multiplayer_create.cpp:222
 msgid "Experience Modifier: "
 msgstr "Izkustveni prikrojevalec: "
 
-#: src/multiplayer_create.cpp:324
+#: src/multiplayer_create.cpp:325
 msgid "Players: "
 msgstr "Igralci: "
 
-#: src/multiplayer_create.cpp:384 src/multiplayer_lobby.cpp:30
+#: src/multiplayer_create.cpp:386 src/multiplayer_lobby.cpp:30
 msgid "Create Game"
 msgstr "Ustvari igro"
 
@@ -7838,156 +7841,156 @@ msgstr "Praznih mest"
 msgid "<no games open>"
 msgstr "<nobena igra ne poteka>"
 
-#: src/multiplayer_ui.cpp:50
+#: src/multiplayer_ui.cpp:78
 msgid "Red"
 msgstr "Rdeča"
 
-#: src/multiplayer_ui.cpp:52
+#: src/multiplayer_ui.cpp:80
 msgid "Blue"
 msgstr "Modra"
 
-#: src/multiplayer_ui.cpp:54
+#: src/multiplayer_ui.cpp:82
 msgid "Green"
 msgstr "Zelena"
 
-#: src/multiplayer_ui.cpp:56
+#: src/multiplayer_ui.cpp:84
 msgid "Yellow"
 msgstr "Rumena"
 
-#: src/multiplayer_ui.cpp:58
+#: src/multiplayer_ui.cpp:86
 msgid "Purple"
 msgstr "Vijolična"
 
-#: src/multiplayer_ui.cpp:60
+#: src/multiplayer_ui.cpp:88
 msgid "Orange"
 msgstr "Oranžna"
 
-#: src/multiplayer_ui.cpp:62
+#: src/multiplayer_ui.cpp:90
 msgid "Grey"
 msgstr "Siva"
 
-#: src/multiplayer_ui.cpp:64
+#: src/multiplayer_ui.cpp:92
 msgid "White"
 msgstr "Bela"
 
-#: src/multiplayer_ui.cpp:66
+#: src/multiplayer_ui.cpp:94
 msgid "Brown"
 msgstr "Rjava"
 
-#: src/multiplayer_ui.cpp:68
+#: src/multiplayer_ui.cpp:96
 msgid "Invalid colour"
 msgstr "Neveljavna barva"
 
-#: src/multiplayer_wait.cpp:114
+#: src/multiplayer_wait.cpp:113
 msgid "Leader: "
 msgstr "Vodja: "
 
-#: src/multiplayer_wait.cpp:116
+#: src/multiplayer_wait.cpp:115
 msgid "Recruits: "
 msgstr "Novaki: "
 
-#: src/multiplayer_wait.cpp:149
+#: src/multiplayer_wait.cpp:148
 msgid "Waiting for game to start..."
 msgstr "Čakanje na začetek igre..."
 
-#: src/multiplayer_wait.cpp:168
+#: src/multiplayer_wait.cpp:167
 msgid "Getting game data..."
 msgstr "Pridobivanje podatkov o igri..."
 
-#: src/multiplayer_wait.cpp:181
+#: src/multiplayer_wait.cpp:180
 msgid "No multiplayer sides available in this game"
 msgstr "Na voljo ni več nobene strani"
 
-#: src/multiplayer_wait.cpp:208
+#: src/multiplayer_wait.cpp:207
 msgid "Era not available"
 msgstr "Era ni na voljo"
 
-#: src/multiplayer_wait.cpp:213
+#: src/multiplayer_wait.cpp:212
 msgid "No multiplayer sides found"
 msgstr "Najdenih ni bilo nič strani"
 
-#: src/multiplayer_wait.cpp:230
+#: src/multiplayer_wait.cpp:229
 msgid "Choose your side:"
 msgstr "Izberite stran:"
 
-#: src/multiplayer_wait.cpp:411 src/unit.cpp:1151
+#: src/multiplayer_wait.cpp:374 src/unit.cpp:1164
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:411 src/unit.cpp:1158
+#: src/multiplayer_wait.cpp:374 src/unit.cpp:1171
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:412 src/playturn.cpp:1787
+#: src/multiplayer_wait.cpp:375 src/playturn.cpp:1801
 msgid "unit^Gold"
 msgstr "Zlata"
 
-#: src/playlevel.cpp:592 src/playlevel.cpp:859
+#: src/playlevel.cpp:602 src/playlevel.cpp:871
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
-#: src/playlevel.cpp:743
+#: src/playlevel.cpp:755
 msgid "Game Over"
 msgstr "Konec igre"
 
-#: src/playlevel.cpp:744
+#: src/playlevel.cpp:756
 msgid "The game is over."
 msgstr "Igra je končana"
 
-#: src/playlevel.cpp:757
+#: src/playlevel.cpp:769
 msgid "Defeat"
 msgstr "Poraz"
 
-#: src/playlevel.cpp:758
+#: src/playlevel.cpp:770
 msgid "You have been defeated!"
 msgstr "Bili ste poraženi!"
 
-#: src/playlevel.cpp:827
+#: src/playlevel.cpp:839
 msgid "Remaining gold: "
 msgstr "Preostalo zlato: "
 
-#: src/playlevel.cpp:830
+#: src/playlevel.cpp:842
 msgid "Early finish bonus: "
 msgstr "Bonus za zgodnji konec: "
 
-#: src/playlevel.cpp:832
+#: src/playlevel.cpp:844
 msgid "per turn"
 msgstr "na potezo"
 
-#: src/playlevel.cpp:833
+#: src/playlevel.cpp:845
 msgid "Turns finished early: "
 msgstr "Preostalih potez: "
 
-#: src/playlevel.cpp:835
+#: src/playlevel.cpp:847
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playlevel.cpp:837
+#: src/playlevel.cpp:849
 msgid "Gold: "
 msgstr "Zlato: "
 
-#: src/playlevel.cpp:842
+#: src/playlevel.cpp:854
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% zlata se bo ohranilo za naslednji scenarij"
 
-#: src/playlevel.cpp:843
+#: src/playlevel.cpp:855
 msgid "Retained Gold: "
 msgstr "Ohranjeno zlato: "
 
-#: src/playlevel.cpp:848
+#: src/playlevel.cpp:860
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playlevel.cpp:849
+#: src/playlevel.cpp:861
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
-#: src/playlevel.cpp:853
+#: src/playlevel.cpp:865
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playlevel.cpp:874
+#: src/playlevel.cpp:886
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8023,32 +8026,36 @@ msgstr "Napadi"
 msgid "Choose weapon:"
 msgstr "Izberite orožje:"
 
-#: src/playturn.cpp:1270
+#: src/playturn.cpp:1268
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr "Niste še začeli svoje poteze. Ali jo res želite končati?"
 
-#: src/playturn.cpp:1279 src/playturn.cpp:1284
+#: src/playturn.cpp:1277 src/playturn.cpp:1282
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Nekatere enote se še lahko premaknejo. Ali res želite končati potezo?"
 
-#: src/playturn.cpp:1299
+#: src/playturn.cpp:1297
 msgid "Auto-Save"
 msgstr "Samodejno shranjen položaj"
 
-#: src/playturn.cpp:1301
+#: src/playturn.cpp:1299
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ni bilo mogoče samodejno shraniti igre. Shranite jo ročno."
 
-#: src/playturn.cpp:1504
+#: src/playturn.cpp:1510
 msgid "Rename Unit"
 msgstr "Preimenuj enoto"
 
-#: src/playturn.cpp:1553 src/playturn.cpp:1567
+#: src/playturn.cpp:1556
+msgid "Name:"
+msgstr "Ime:"
+
+#: src/playturn.cpp:1559 src/playturn.cpp:1573
 msgid "Error"
 msgstr "Napaka"
 
-#: src/playturn.cpp:1553
+#: src/playturn.cpp:1559
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -8056,47 +8063,51 @@ msgstr ""
 "Imena shranjenih položajev ne smejo vsebovati dvopičij, vezajev ali "
 "poševnic. Prosim izberite drugačno ime."
 
-#: src/playturn.cpp:1564
+#: src/playturn.cpp:1570
 msgid "Saved"
 msgstr "Shranjeno"
 
-#: src/playturn.cpp:1564
+#: src/playturn.cpp:1570
 msgid "The game has been saved"
 msgstr "Igra je bila shranjena"
 
-#: src/playturn.cpp:1689
+#: src/playturn.cpp:1573
+msgid "The game could not be saved"
+msgstr "Igre ni bilo možno shraniti"
+
+#: src/playturn.cpp:1703
 msgid "Leader"
 msgstr "Vodja"
 
-#: src/playturn.cpp:1691
+#: src/playturn.cpp:1705
 msgid "Villages"
 msgstr "Vasi"
 
-#: src/playturn.cpp:1693
+#: src/playturn.cpp:1707
 msgid "Upkeep"
 msgstr "Plače"
 
-#: src/playturn.cpp:1694
+#: src/playturn.cpp:1708
 msgid "Income"
 msgstr "Prihodki"
 
-#: src/playturn.cpp:1793
+#: src/playturn.cpp:1807
 msgid "You have no units available to recruit."
 msgstr "Nikogar ne morete novačiti."
 
-#: src/playturn.cpp:1805
+#: src/playturn.cpp:1819
 msgid "Recruit"
 msgstr "Novači"
 
-#: src/playturn.cpp:1806 src/playturn.cpp:1990
+#: src/playturn.cpp:1820 src/playturn.cpp:2004
 msgid "Select unit:"
 msgstr "Izberite enoto:"
 
-#: src/playturn.cpp:1840
+#: src/playturn.cpp:1854
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Za novačenje te enote nimate dovolj zlata"
 
-#: src/playturn.cpp:1898
+#: src/playturn.cpp:1912
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -8104,7 +8115,7 @@ msgstr ""
 "Moj gospod, ta enota je izkušena, na višji izkustveni stopnji! Ali res "
 "hočete odpraviti $noun?"
 
-#: src/playturn.cpp:1900
+#: src/playturn.cpp:1914
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -8112,19 +8123,19 @@ msgstr ""
 "Moj gospod, ta enota je blizu višji izkustveni stopnji! Ali res hočete "
 "odpraviti $noun?"
 
-#: src/playturn.cpp:1905
+#: src/playturn.cpp:1919
 msgid "her"
 msgstr "njo"
 
-#: src/playturn.cpp:1905
+#: src/playturn.cpp:1919
 msgid "him"
 msgstr "njega"
 
-#: src/playturn.cpp:1946
+#: src/playturn.cpp:1960
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Od svojih enot ste ločeni in jih ne morete priklicati"
 
-#: src/playturn.cpp:1948
+#: src/playturn.cpp:1962
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8132,115 +8143,115 @@ msgstr ""
 "Nobenih enot ne morete priklicati\n"
 " (imeti morate preživele veterane iz prejšnjih scenarijev)"
 
-#: src/playturn.cpp:1954
+#: src/playturn.cpp:1968
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Za priklic enote potrebujete vsaj $cost zlata"
 
-#: src/playturn.cpp:1964
+#: src/playturn.cpp:1978
 msgid "level: "
 msgstr "stopnja: "
 
-#: src/playturn.cpp:1977
+#: src/playturn.cpp:1991
 msgid "Dismiss Unit"
 msgstr "Odpravi enoto"
 
-#: src/playturn.cpp:1989
+#: src/playturn.cpp:2003
 msgid "Recall"
 msgstr "Prikliči"
 
-#: src/playturn.cpp:2034
+#: src/playturn.cpp:2049
 msgid "Message:"
 msgstr "Sporočilo:"
 
-#: src/playturn.cpp:2034
+#: src/playturn.cpp:2049
 msgid "Send to allies only"
 msgstr "Pošlji samo zaveznikom"
 
-#: src/playturn.cpp:2128 src/unit.cpp:1083
+#: src/playturn.cpp:2143 src/unit.cpp:1096
 msgid "Moves"
 msgstr "Premiki"
 
-#: src/playturn.cpp:2129
+#: src/playturn.cpp:2144
 msgid "Location"
 msgstr "Lega"
 
-#: src/playturn.cpp:2177
+#: src/playturn.cpp:2192
 msgid "Unit List"
 msgstr "Seznam enot"
 
-#: src/playturn.cpp:2212 src/playturn.cpp:2274
+#: src/playturn.cpp:2227 src/playturn.cpp:2289
 msgid "Recruits"
 msgstr "Novaki"
 
-#: src/playturn.cpp:2218 src/playturn.cpp:2278
+#: src/playturn.cpp:2233 src/playturn.cpp:2293
 msgid "Recalls"
 msgstr "Priklicane enote"
 
-#: src/playturn.cpp:2224 src/playturn.cpp:2282
+#: src/playturn.cpp:2239 src/playturn.cpp:2297
 msgid "Advancements"
 msgstr "Napredovanja"
 
-#: src/playturn.cpp:2230 src/playturn.cpp:2286
+#: src/playturn.cpp:2245 src/playturn.cpp:2301
 msgid "Losses"
 msgstr "Izgube"
 
-#: src/playturn.cpp:2236 src/playturn.cpp:2290
+#: src/playturn.cpp:2251 src/playturn.cpp:2305
 msgid "Kills"
 msgstr "Sovražnikove izgube"
 
-#: src/playturn.cpp:2242
+#: src/playturn.cpp:2257
 msgid "Damage Inflicted"
 msgstr "Storjena škoda"
 
-#: src/playturn.cpp:2248
+#: src/playturn.cpp:2263
 msgid "Damage Taken"
 msgstr "Utrpela škoda"
 
-#: src/playturn.cpp:2254
+#: src/playturn.cpp:2269
 msgid "Damage Inflicted (EV)"
 msgstr "Storjena škoda (pričakovana)"
 
-#: src/playturn.cpp:2261
+#: src/playturn.cpp:2276
 msgid "Damage Taken (EV)"
 msgstr "Utrpela škoda (pričakovana)"
 
-#: src/playturn.cpp:2267
+#: src/playturn.cpp:2282
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/playturn.cpp:2304
+#: src/playturn.cpp:2319
 msgid "Search"
 msgstr "Iskanje"
 
-#: src/playturn.cpp:2314
+#: src/playturn.cpp:2329
 msgid "prompt^Command:"
 msgstr "Ukaz:"
 
-#: src/playturn.cpp:2325
+#: src/playturn.cpp:2340
 msgid "Chat Log"
 msgstr "Dnevnik pogovorov"
 
-#: src/playturn.cpp:2390
+#: src/playturn.cpp:2405
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nisem našel oznake ali enote z '$search' v imenu."
 
-#: src/playturn.cpp:2421
+#: src/playturn.cpp:2436
 msgid "Saved Theme Preference: "
 msgstr "Shranjena izbira teme: "
 
-#: src/playturn.cpp:2427
+#: src/playturn.cpp:2442
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nova tema se bo poznala na naslednji začeti ali naloženi igri."
 
-#: src/playturn.cpp:2512
+#: src/playturn.cpp:2527
 msgid "Place Label"
 msgstr "Postavi oznako"
 
-#: src/playturn.cpp:2513
+#: src/playturn.cpp:2528
 msgid "Label:"
 msgstr "Oznaka:"
 
-#: src/playturn.cpp:2645
+#: src/playturn.cpp:2660
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -8248,23 +8259,23 @@ msgstr ""
 "Igre niso več sinhronizirane in se bodo morale končati. Ali naj shranim "
 "dnevnik napak iz igre?"
 
-#: src/playturn.cpp:2698
+#: src/playturn.cpp:2713
 msgid "Replace with AI"
 msgstr "Zamenjaj z UI"
 
-#: src/playturn.cpp:2699
+#: src/playturn.cpp:2714
 msgid "Replace with local player"
 msgstr "Zamenjaj z lokalnim igralcem"
 
-#: src/playturn.cpp:2700
+#: src/playturn.cpp:2715
 msgid "Abort game"
 msgstr "Prekini igro"
 
-#: src/playturn.cpp:2703
+#: src/playturn.cpp:2718
 msgid "Replace with "
 msgstr "Zamenjaj z "
 
-#: src/playturn.cpp:2707
+#: src/playturn.cpp:2722
 msgid "has left the game. What do you want to do?"
 msgstr "je zapustil igro. Kaj boste storili?"
 
@@ -8315,7 +8326,7 @@ msgstr "Ta enota je okamenela. Ne more se ne premikati ne napadati."
 msgid "stone: "
 msgstr "okamenela: "
 
-#: src/reports.cpp:235
+#: src/reports.cpp:235 src/unit_types.cpp:311
 msgid "damage"
 msgstr "škoda"
 
@@ -8347,73 +8358,65 @@ msgstr "Zavezniška vas"
 msgid "Observers:"
 msgstr "Opazovalci:"
 
-#: src/serialization/parser.cpp:104
+#: src/serialization/parser.cpp:98
 msgid "Unexpected characters at line start"
 msgstr "Nepričakovani znaki na začetku vrstice"
 
-#: src/serialization/parser.cpp:130
-msgid "Missing closing tag for tag $tag (file $file, line $line)"
-msgstr "Manjka zaključna oznaka oznake $tag (datoteka $file, vrstica $line)"
-
-#: src/serialization/parser.cpp:131
-msgid "Missing closing tag for tag $tag (line $line)"
+#: src/serialization/parser.cpp:124
+#, fuzzy
+msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Manjka zaključna oznaka oznake $tag (vrstica $line)"
 
-#: src/serialization/parser.cpp:146
+#: src/serialization/parser.cpp:139
 msgid "Unterminated [element] tag"
 msgstr "Nezaključena oznaka [element]"
 
-#: src/serialization/parser.cpp:157 src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:149 src/serialization/parser.cpp:185
 msgid "Invalid tag name"
 msgstr "Neveljavno ime oznake"
 
-#: src/serialization/parser.cpp:160
+#: src/serialization/parser.cpp:152
 msgid "Unterminated [+element] tag"
 msgstr "Nezaključena oznaka [+element]"
 
-#: src/serialization/parser.cpp:177
+#: src/serialization/parser.cpp:168
 msgid "Invalid closing tag name"
 msgstr "Neveljavno ime zaključne oznake"
 
-#: src/serialization/parser.cpp:180
+#: src/serialization/parser.cpp:171
 msgid "Unterminated closing tag"
 msgstr "Nezaključena zaključna oznaka"
 
-#: src/serialization/parser.cpp:182
+#: src/serialization/parser.cpp:173
 msgid "Unexpected closing tag"
 msgstr "Nepričakovana zaključna oznaka"
 
-#: src/serialization/parser.cpp:187
-msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
-msgstr ""
-"Najdena je bila neveljavna zaključna oznaka oznake $tag (datoteka $file, "
-"vrstica $line)"
-
-#: src/serialization/parser.cpp:188
-msgid "Found invalid closing tag for tag $tag (line $line)"
+#: src/serialization/parser.cpp:179
+#, fuzzy
+msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
 "Najdena je bila neveljavna zaključna oznaka oznake $tag (vrstica $line)"
 
-#: src/serialization/parser.cpp:214 src/serialization/parser.cpp:226
+#: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 msgid "Empty variable name"
 msgstr "Prazna spremenljivka"
 
-#: src/serialization/parser.cpp:220
+#: src/serialization/parser.cpp:210
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 "Nepričakovani znaki za imenom spremenljivke (pričakovana sta ',' ali '=')"
 
-#: src/serialization/parser.cpp:248 src/serialization/parser.cpp:272
+#: src/serialization/parser.cpp:238 src/serialization/parser.cpp:262
 msgid "Unterminated quoted string"
 msgstr "Nezaključen niz z navedkom"
 
-#: src/serialization/parser.cpp:319
-msgid "$error in file $file (line $line, column $column)"
-msgstr "$error v datoteki $file (vrstica $line, stolpec $column)"
+#: src/serialization/parser.cpp:285
+msgid " included from "
+msgstr ""
 
-#: src/serialization/parser.cpp:320
-msgid "$error (line $line, column $column)"
-msgstr "$error (vrstica $line, stolpec $column)"
+#: src/serialization/parser.cpp:306
+msgid "$error at $pos"
+msgstr ""
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
@@ -8487,30 +8490,62 @@ msgstr "Več"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Knjiga modrosti Wesnotha"
 
-#: src/unit.cpp:1107
-msgid " XP to advance"
-msgstr ""
-
-#: src/unit.cpp:1144
-msgid ": "
-msgstr ": "
-
-#: src/unit.cpp:1156
+#: src/unit.cpp:1042 src/unit.cpp:1169
 msgid "; "
 msgstr "; "
 
-#: src/unit_types.cpp:324
+#: src/unit.cpp:1121
+msgid "XP to advance"
+msgstr ""
+
+#: src/unit.cpp:1160
+msgid ": "
+msgstr ": "
+
+#: src/unit_types.cpp:323
 msgid "strikes"
 msgstr "udarci"
 
-#: src/unit_types.cpp:932
+#: src/unit_types.cpp:933
 msgid "chaotic"
 msgstr "kaotičen"
 
-#: src/unit_types.cpp:932
+#: src/unit_types.cpp:933
 msgid "lawful"
 msgstr "zakonit"
 
-#: src/unit_types.cpp:932
+#: src/unit_types.cpp:933
 msgid "neutral"
 msgstr "nevtralen"
+
+#~ msgid "fey gale"
+#~ msgstr "smrtna sapa"
+
+#~ msgid "halberd"
+#~ msgstr "helebarda"
+
+#~ msgid "Do you want to save a replay of this scenario?"
+#~ msgstr "Ali želite shraniti posnetek igranja scenarija?"
+
+#~ msgid "Do you want to save your game?"
+#~ msgstr "Ali želite shraniti igro?"
+
+#~ msgid "Unknown scenario: '"
+#~ msgstr "Neznan scenarij: '"
+
+#~ msgid "Dmg"
+#~ msgstr "Škode"
+
+#~ msgid "Missing closing tag for tag $tag (file $file, line $line)"
+#~ msgstr "Manjka zaključna oznaka oznake $tag (datoteka $file, vrstica $line)"
+
+#~ msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
+#~ msgstr ""
+#~ "Najdena je bila neveljavna zaključna oznaka oznake $tag (datoteka $file, "
+#~ "vrstica $line)"
+
+#~ msgid "$error in file $file (line $line, column $column)"
+#~ msgstr "$error v datoteki $file (vrstica $line, stolpec $column)"
+
+#~ msgid "$error (line $line, column $column)"
+#~ msgstr "$error (vrstica $line, stolpec $column)"

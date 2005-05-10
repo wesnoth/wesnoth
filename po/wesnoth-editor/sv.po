@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-17 08:24+0200\n"
+"POT-Creation-Date: 2005-05-10 19:36+0200\n"
 "PO-Revision-Date: 2005-04-19 14:13+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -57,43 +57,43 @@ msgstr "Vilken spelare?"
 msgid "Which player should start here?"
 msgstr "Vilken spelare skall börja här?"
 
-#: src/editor/editor.cpp:385
+#: src/editor/editor.cpp:387
 msgid "Choose a Map to Load"
 msgstr "Välj en karta att öppna"
 
-#: src/editor/editor.cpp:402 src/editor/editor.cpp:481
+#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
 msgid "The file does not contain a valid map."
 msgstr "Filen innehåller inte en giltig karta."
 
-#: src/editor/editor.cpp:543
+#: src/editor/editor.cpp:545
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' finns inte, eller kan inte läsas som en fil."
 
-#: src/editor/editor.cpp:555
+#: src/editor/editor.cpp:557
 msgid "Load failed: "
 msgstr "Kunde inte öppna filen: "
 
-#: src/editor/editor.cpp:751
+#: src/editor/editor.cpp:753
 msgid "You must have a hex selected on the board."
 msgstr "Du måste välja en ruta."
 
-#: src/editor/editor.cpp:1000
+#: src/editor/editor.cpp:1002
 msgid "Quit Editor"
 msgstr "Avsluta editorn"
 
-#: src/editor/editor.cpp:1005
+#: src/editor/editor.cpp:1007
 msgid "Do you want to save the map before quitting?"
 msgstr "Vill du spara kartan innan du slutar?"
 
-#: src/editor/editor.cpp:1029
+#: src/editor/editor.cpp:1031
 msgid "Map saved."
 msgstr "Kartan har sparats."
 
-#: src/editor/editor.cpp:1036
+#: src/editor/editor.cpp:1038
 msgid "Could not save the map: $msg"
 msgstr "Kunde inte spara kartan: $msg"
 
-#: src/editor/editor.cpp:1092
+#: src/editor/editor.cpp:1094
 msgid "Player"
 msgstr "Spelare"
 
@@ -166,8 +166,8 @@ msgid "Resize Map"
 msgstr "Ändra kartans storlek"
 
 #: src/editor/editor_dialogs.cpp:408
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr ""
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -193,6 +193,9 @@ msgstr "BG"
 msgid "Delete File"
 msgstr "Radera fil"
 
-#: src/widgets/file_chooser.cpp:131
+#: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
+
+#~ msgid "Ok"
+#~ msgstr "Ok"

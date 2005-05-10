@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth HEAD\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-18 17:52+0200\n"
+"POT-Creation-Date: 2005-05-10 19:30+0200\n"
 "PO-Revision-Date: 2005-03-28 18:07+0200\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque\n"
@@ -23,6 +23,15 @@ msgstr ""
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
+#: data/game.cfg:36
+msgid "Binary Saves"
+msgstr ""
+
+#: data/game.cfg:43
+#, fuzzy
+msgid "Show Combat"
+msgstr "Borrokak"
+
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
 msgstr "Sarrera"
@@ -31,11 +40,11 @@ msgstr "Sarrera"
 msgid "Gameplay"
 msgstr "Jokua"
 
-#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2127
+#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2142
 msgid "Traits"
 msgstr "Berezitasunak"
 
-#: data/help.cfg:28 src/playturn.cpp:1692
+#: data/help.cfg:28 src/playturn.cpp:1706
 msgid "Units"
 msgstr "Unitateak"
 
@@ -158,7 +167,7 @@ msgid ""
 "Upkeep'</ref> for more information."
 msgstr ""
 
-#: data/help.cfg:92 src/help.cpp:1235 src/help.cpp:1236
+#: data/help.cfg:92 src/help.cpp:1177
 msgid "Movement"
 msgstr "Mugimendua"
 
@@ -627,7 +636,7 @@ msgid ""
 "advance to higher levels more quickly. Later in campaigns Intelligent is not "
 "quite as useful because units no longer have any use for experience points "
 "after reaching their maximum level. If you have many 'maximum level' units "
-"you may with to recall units with more desirable traits."
+"you may wish to recall units with more desirable traits."
 msgstr ""
 
 #: data/help.cfg:226
@@ -2287,11 +2296,11 @@ msgstr "Ekintzak"
 msgid "End Turn"
 msgstr "Txanda Amaitu"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2125 src/unit.cpp:1046
+#: data/themes/default.cfg:167 src/playturn.cpp:2140 src/unit.cpp:1059
 msgid "HP"
 msgstr "BP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2126
+#: data/themes/default.cfg:176 src/playturn.cpp:2141
 msgid "XP"
 msgstr "EP"
 
@@ -2700,17 +2709,17 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
-#: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
+#: data/units/Commander.cfg:98 data/units/Death_Knight.cfg:16
 #: data/units/Drake_Flameheart.cfg:15 data/units/Drake_Flare.cfg:10
 #: data/units/Elvish_Captain.cfg:11 data/units/Elvish_Marshal.cfg:12
 #: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:23
 #: data/units/Grand_Marshal.cfg:19 data/units/Lieutenant.cfg:19
 #: data/units/Lord.cfg:10 data/units/Lord.cfg:85
-#: data/units/Noble_Commander.cfg:15 data/units/Noble_Lord.cfg:13
+#: data/units/Noble_Commander.cfg:15 data/units/Noble_Lord.cfg:15
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:358 src/actions.cpp:467
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:439 src/actions.cpp:548
 msgid "leadership"
 msgstr "buruzagia"
 
@@ -2757,7 +2766,7 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:17
-#: data/units/Assassin.cfg:96 data/units/Duelist.cfg:16
+#: data/units/Assassin.cfg:109 data/units/Duelist.cfg:16
 #: data/units/Fencer.cfg:16 data/units/Outlaw_Princess.cfg:20
 #: data/units/Rogue.cfg:17 data/units/Rogue.cfg:77 data/units/Saurian.cfg:22
 #: data/units/Saurian_Ambusher.cfg:20 data/units/Saurian_Flanker.cfg:21
@@ -2771,9 +2780,9 @@ msgid ""
 "This unit takes half normal damage when it did not initiate the attack."
 msgstr ""
 
-#: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:15
-#: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:494
+#: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
+#: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
+#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:575
 msgid "steadfast"
 msgstr ""
 
@@ -2936,17 +2945,18 @@ msgid ""
 "far, for they move faster than most undead."
 msgstr ""
 
-#: data/units/Ancient_Lich.cfg:22 data/units/Demilich.cfg:19
+#: data/units/Ancient_Lich.cfg:41 data/units/Demilich.cfg:31
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
 msgid "touch"
 msgstr "ukipen"
 
-#: data/units/Ancient_Lich.cfg:23 data/units/Ancient_Lich.cfg:36
-#: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
-#: data/units/Dark_Queen.cfg:33 data/units/Dark_Queen.cfg:34
-#: data/units/Dark_Sorcerer.cfg:41 data/units/Dark_Spirit.cfg:37
-#: data/units/Deathmaster.cfg:41 data/units/Demilich.cfg:20
-#: data/units/Demilich.cfg:33 data/units/Elvish_Enchantress.cfg:118
+#: data/units/Ancient_Lich.cfg:42 data/units/Ancient_Lich.cfg:55
+#: data/units/Cockatrice.cfg:34 data/units/Dark_Adept.cfg:35
+#: data/units/Dark_Queen.cfg:45 data/units/Dark_Queen.cfg:46
+#: data/units/Dark_Sorcerer.cfg:41 data/units/Dark_Spirit.cfg:49
+#: data/units/Deathmaster.cfg:53 data/units/Demilich.cfg:32
+#: data/units/Demilich.cfg:45 data/units/Elvish_Enchantress.cfg:118
+#: data/units/Elvish_High_Lord.cfg:43 data/units/Elvish_Lord.cfg:39
 #: data/units/Elvish_Sorceress.cfg:118 data/units/Elvish_Sylph.cfg:84
 #: data/units/Ghost.cfg:20 data/units/Ghost.cfg:32 data/units/Initiate.cfg:20
 #: data/units/Lich.cfg:20 data/units/Lich.cfg:33 data/units/Necromancer.cfg:36
@@ -2956,30 +2966,30 @@ msgstr "ukipen"
 msgid "cold"
 msgstr "hotz"
 
-#: data/units/Ancient_Lich.cfg:27 data/units/Blood_Bat.cfg:24
-#: data/units/Dark_Spirit.cfg:24 data/units/Demilich.cfg:24
+#: data/units/Ancient_Lich.cfg:46 data/units/Blood_Bat.cfg:37
+#: data/units/Dark_Spirit.cfg:36 data/units/Demilich.cfg:36
 #: data/units/Lich.cfg:24 data/units/Orcish_Shaman.cfg:41
 #: data/units/Orcish_Shaman.cfg:100 data/units/Orcish_Shaman.cfg:159
-#: data/units/Skeletal_Dragon.cfg:31 data/units/Spectre.cfg:29
+#: data/units/Skeletal_Dragon.cfg:33 data/units/Spectre.cfg:29
 #: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:26
 #: data/units/Vampire_Lady.cfg:39 data/units/Wraith.cfg:29
 msgid "drain"
 msgstr "odolxurgapena"
 
-#: data/units/Ancient_Lich.cfg:35 data/units/Deathmaster.cfg:40
-#: data/units/Demilich.cfg:32 data/units/Initiate.cfg:19
+#: data/units/Ancient_Lich.cfg:54 data/units/Deathmaster.cfg:52
+#: data/units/Demilich.cfg:44 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 msgid "magic"
 msgstr "magia"
 
-#: data/units/Ancient_Lich.cfg:37 data/units/Arch_Mage.cfg:47
-#: data/units/Arch_Mage.cfg:140 data/units/Battle_Princess.cfg:80
-#: data/units/Commander.cfg:123 data/units/Dark_Adept.cfg:24
-#: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:42
-#: data/units/Deathmaster.cfg:42 data/units/Demilich.cfg:34
+#: data/units/Ancient_Lich.cfg:56 data/units/Arch_Mage.cfg:60
+#: data/units/Arch_Mage.cfg:168 data/units/Battle_Princess.cfg:92
+#: data/units/Commander.cfg:135 data/units/Dark_Adept.cfg:36
+#: data/units/Dark_Queen.cfg:47 data/units/Dark_Sorcerer.cfg:42
+#: data/units/Deathmaster.cfg:54 data/units/Demilich.cfg:46
 #: data/units/Dwarvish_Runemaster.cfg:47 data/units/Elder_Mage.cfg:42
 #: data/units/Elvish_Druid.cfg:65 data/units/Elvish_Enchantress.cfg:122
-#: data/units/Elvish_High_Lord.cfg:44 data/units/Elvish_Lord.cfg:38
+#: data/units/Elvish_High_Lord.cfg:45 data/units/Elvish_Lord.cfg:41
 #: data/units/Elvish_Shyde.cfg:27 data/units/Elvish_Shyde.cfg:74
 #: data/units/Elvish_Sorceress.cfg:122 data/units/Elvish_Sylph.cfg:26
 #: data/units/Elvish_Sylph.cfg:85 data/units/Fighter.cfg:86
@@ -3022,16 +3032,16 @@ msgid ""
 "kind and curious beings."
 msgstr ""
 
-#: data/units/Ancient_Wose.cfg:20 data/units/Elder_Wose.cfg:20
+#: data/units/Ancient_Wose.cfg:38 data/units/Elder_Wose.cfg:20
 #: data/units/Wose.cfg:20
 msgid "crush"
 msgstr "triskilpen"
 
-#: data/units/Ancient_Wose.cfg:21 data/units/Arch_Mage.cfg:24
-#: data/units/Arch_Mage.cfg:117 data/units/Bandit.cfg:20
-#: data/units/Cave_Spider.cfg:34 data/units/Cuttle_Fish.cfg:20
-#: data/units/Dark_Queen.cfg:23 data/units/Dark_Sorcerer.cfg:20
-#: data/units/Deathmaster.cfg:20 data/units/Drake_Gladiator.cfg:63
+#: data/units/Ancient_Wose.cfg:39 data/units/Arch_Mage.cfg:37
+#: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:33
+#: data/units/Cave_Spider.cfg:47 data/units/Cuttle_Fish.cfg:33
+#: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:20
+#: data/units/Deathmaster.cfg:32 data/units/Drake_Gladiator.cfg:63
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:28
 #: data/units/Dwarvish_Dragonguard.cfg:21 data/units/Dwarvish_Fighter.cfg:40
 #: data/units/Dwarvish_Lord.cfg:45 data/units/Dwarvish_Runemaster.cfg:21
@@ -3089,14 +3099,14 @@ msgstr "kolpea"
 msgid "Arch Mage"
 msgstr ""
 
-#: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:113
+#: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:126
 msgid ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
 "enemies."
 msgstr ""
 
-#: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:116
-#: data/units/Dark_Sorcerer.cfg:19 data/units/Deathmaster.cfg:19
+#: data/units/Arch_Mage.cfg:36 data/units/Arch_Mage.cfg:144
+#: data/units/Dark_Sorcerer.cfg:19 data/units/Deathmaster.cfg:31
 #: data/units/Elder_Mage.cfg:23 data/units/Elvish_Druid.cfg:23
 #: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:24
 #: data/units/Elvish_Sorceress.cfg:25 data/units/Great_Mage.cfg:23
@@ -3114,22 +3124,20 @@ msgstr ""
 msgid "staff"
 msgstr "Makulu"
 
-#: data/units/Arch_Mage.cfg:44 data/units/Arch_Mage.cfg:137
-#: data/units/Elvish_High_Lord.cfg:42 data/units/Elvish_Lord.cfg:36
+#: data/units/Arch_Mage.cfg:57 data/units/Arch_Mage.cfg:165
 #: data/units/Great_Mage.cfg:44 data/units/Great_Mage.cfg:137
 #: data/units/Red_Mage.cfg:44 data/units/Red_Mage.cfg:137
 msgid "fireball"
 msgstr "subola"
 
-#: data/units/Arch_Mage.cfg:45 data/units/Arch_Mage.cfg:138
-#: data/units/Battle_Princess.cfg:78 data/units/Commander.cfg:121
-#: data/units/Drake_Burner.cfg:42 data/units/Drake_Fighter.cfg:46
-#: data/units/Drake_Fire.cfg:44 data/units/Drake_Flameheart.cfg:54
+#: data/units/Arch_Mage.cfg:58 data/units/Arch_Mage.cfg:166
+#: data/units/Battle_Princess.cfg:90 data/units/Commander.cfg:133
+#: data/units/Drake_Burner.cfg:55 data/units/Drake_Fighter.cfg:58
+#: data/units/Drake_Fire.cfg:56 data/units/Drake_Flameheart.cfg:54
 #: data/units/Drake_Flare.cfg:44 data/units/Drake_Glider.cfg:46
 #: data/units/Drake_Inferno.cfg:44 data/units/Drake_Sky.cfg:52
 #: data/units/Drake_Warrior.cfg:47 data/units/Dwarvish_Runemaster.cfg:42
-#: data/units/Elder_Mage.cfg:40 data/units/Elvish_High_Lord.cfg:43
-#: data/units/Elvish_Lord.cfg:37 data/units/Fighter.cfg:84
+#: data/units/Elder_Mage.cfg:40 data/units/Fighter.cfg:84
 #: data/units/Fire_Dragon.cfg:60 data/units/Fireball.cfg:18
 #: data/units/Fireball.cfg:19 data/units/Goblin_Pillager.cfg:21
 #: data/units/Great_Mage.cfg:45 data/units/Great_Mage.cfg:138
@@ -3140,7 +3148,7 @@ msgstr "subola"
 msgid "fire"
 msgstr "su"
 
-#: data/units/Arch_Mage.cfg:96
+#: data/units/Arch_Mage.cfg:109
 msgid "female^Arch Mage"
 msgstr ""
 
@@ -3148,14 +3156,14 @@ msgstr ""
 msgid "Assassin"
 msgstr "Hiltzailea"
 
-#: data/units/Assassin.cfg:18 data/units/Assassin.cfg:97
+#: data/units/Assassin.cfg:18 data/units/Assassin.cfg:110
 msgid ""
 "Assassins are masters of the night. Like Rogues, they can surround an "
 "opponent and backstab him, doing double damage. They can also throw poison-"
 "tipped knives at their enemies from long range."
 msgstr ""
 
-#: data/units/Assassin.cfg:21 data/units/Assassin.cfg:100
+#: data/units/Assassin.cfg:34 data/units/Assassin.cfg:113
 #: data/units/Dwarvish_Thunderer.cfg:20
 #: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Orcish_Archer.cfg:21
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Slayer.cfg:19
@@ -3164,32 +3172,32 @@ msgstr ""
 msgid "dagger"
 msgstr "daga"
 
-#: data/units/Assassin.cfg:22 data/units/Assassin.cfg:53
-#: data/units/Assassin.cfg:101 data/units/Assassin.cfg:132
-#: data/units/Battle_Princess.cfg:24 data/units/Battle_Princess.cfg:62
-#: data/units/Blood_Bat.cfg:20 data/units/Bone_Shooter.cfg:26
-#: data/units/Bowman.cfg:22 data/units/Cavalier.cfg:29
-#: data/units/Cavalryman.cfg:30 data/units/Cave_Spider.cfg:20
-#: data/units/Commander.cfg:24 data/units/Commander.cfg:99
-#: data/units/Dark_Spirit.cfg:20 data/units/Death_Knight.cfg:22
-#: data/units/Deathblade.cfg:29 data/units/Direwolf_Rider.cfg:21
-#: data/units/Direwolf_Rider.cfg:33 data/units/Dragoon.cfg:29
-#: data/units/Drake_Burner.cfg:22 data/units/Drake_Clasher.cfg:22
-#: data/units/Drake_Fighter.cfg:22 data/units/Drake_Fire.cfg:25
+#: data/units/Assassin.cfg:35 data/units/Assassin.cfg:66
+#: data/units/Assassin.cfg:114 data/units/Assassin.cfg:145
+#: data/units/Battle_Princess.cfg:36 data/units/Battle_Princess.cfg:74
+#: data/units/Blood_Bat.cfg:33 data/units/Bone_Shooter.cfg:38
+#: data/units/Bowman.cfg:34 data/units/Cavalier.cfg:41
+#: data/units/Cavalryman.cfg:42 data/units/Cave_Spider.cfg:33
+#: data/units/Commander.cfg:36 data/units/Commander.cfg:111
+#: data/units/Dark_Spirit.cfg:32 data/units/Death_Knight.cfg:34
+#: data/units/Deathblade.cfg:40 data/units/Direwolf_Rider.cfg:38
+#: data/units/Direwolf_Rider.cfg:50 data/units/Dragoon.cfg:46
+#: data/units/Drake_Burner.cfg:35 data/units/Drake_Clasher.cfg:34
+#: data/units/Drake_Fighter.cfg:34 data/units/Drake_Fire.cfg:37
 #: data/units/Drake_Flameheart.cfg:24 data/units/Drake_Flare.cfg:24
 #: data/units/Drake_Gladiator.cfg:26 data/units/Drake_Inferno.cfg:25
 #: data/units/Drake_Slasher.cfg:23 data/units/Drake_Warrior.cfg:23
-#: data/units/Draug.cfg:25 data/units/Duelist.cfg:21
-#: data/units/Dwarvish_Berserker.cfg:28 data/units/Dwarvish_Fighter.cfg:23
+#: data/units/Draug.cfg:37 data/units/Duelist.cfg:34
+#: data/units/Dwarvish_Berserker.cfg:34 data/units/Dwarvish_Fighter.cfg:23
 #: data/units/Dwarvish_Lord.cfg:28 data/units/Dwarvish_Lord.cfg:61
 #: data/units/Dwarvish_Steelclad.cfg:29 data/units/Dwarvish_Thunderer.cfg:21
 #: data/units/Dwarvish_Thunderguard.cfg:21
-#: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:24
+#: data/units/Dwarvish_Ulfserker.cfg:34 data/units/Elvish_Archer.cfg:24
 #: data/units/Elvish_Archer.cfg:103 data/units/Elvish_Avenger.cfg:25
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:25
 #: data/units/Elvish_Champion.cfg:23 data/units/Elvish_Fighter.cfg:25
 #: data/units/Elvish_Hero.cfg:23 data/units/Elvish_High_Lord.cfg:22
-#: data/units/Elvish_Lord.cfg:21 data/units/Elvish_Marksman.cfg:24
+#: data/units/Elvish_Lord.cfg:23 data/units/Elvish_Marksman.cfg:24
 #: data/units/Elvish_Marksman.cfg:117 data/units/Elvish_Marshal.cfg:26
 #: data/units/Elvish_Outrider.cfg:28 data/units/Elvish_Ranger.cfg:25
 #: data/units/Elvish_Ranger.cfg:115 data/units/Elvish_Rider.cfg:32
@@ -3200,7 +3208,7 @@ msgstr "daga"
 #: data/units/Ghoul.cfg:20 data/units/Goblin_Knight.cfg:21
 #: data/units/Grand_Knight.cfg:22 data/units/Grand_Marshal.cfg:25
 #: data/units/Gryphon.cfg:23 data/units/Gryphon_Master.cfg:25
-#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:40
+#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:65
 #: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:22
 #: data/units/Lieutenant.cfg:25 data/units/Longbowman.cfg:23
 #: data/units/Lord.cfg:23 data/units/Lord.cfg:98
@@ -3212,7 +3220,7 @@ msgstr "daga"
 #: data/units/Naga-Warrior.cfg:26 data/units/Naga-Warrior.cfg:65
 #: data/units/Necrophage.cfg:20 data/units/Nightgaunt.cfg:21
 #: data/units/Noble_Commander.cfg:29 data/units/Noble_Fighter.cfg:24
-#: data/units/Noble_Lord.cfg:26 data/units/Ogre.cfg:20
+#: data/units/Noble_Lord.cfg:28 data/units/Ogre.cfg:20
 #: data/units/Orcish_Archer.cfg:22 data/units/Orcish_Assassin.cfg:20
 #: data/units/Orcish_Assassin.cfg:37 data/units/Orcish_Crossbowman.cfg:21
 #: data/units/Orcish_Grunt.cfg:20 data/units/Orcish_Leader.cfg:22
@@ -3224,8 +3232,8 @@ msgstr "daga"
 #: data/units/Rogue.cfg:22 data/units/Rogue.cfg:40 data/units/Rogue.cfg:82
 #: data/units/Rogue.cfg:100 data/units/Royal_Guard.cfg:24
 #: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:25
-#: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:29
-#: data/units/Skeletal_Dragon.cfg:48 data/units/Skeleton.cfg:38
+#: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:31
+#: data/units/Skeletal_Dragon.cfg:50 data/units/Skeleton.cfg:38
 #: data/units/Sleeping_Gryphon.cfg:19 data/units/Spectre.cfg:25
 #: data/units/Swordsman.cfg:24 data/units/Thief.cfg:85
 #: data/units/Thief.cfg:186 data/units/Trapper.cfg:26
@@ -3235,27 +3243,27 @@ msgstr "daga"
 msgid "blade"
 msgstr ""
 
-#: data/units/Assassin.cfg:26 data/units/Assassin.cfg:105
+#: data/units/Assassin.cfg:39 data/units/Assassin.cfg:118
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:190 src/actions.cpp:485
+#: data/units/Thief.cfg:190 src/actions.cpp:566
 msgid "backstab"
 msgstr ""
 
-#: data/units/Assassin.cfg:52 data/units/Assassin.cfg:131
+#: data/units/Assassin.cfg:65 data/units/Assassin.cfg:144
 #: data/units/Rogue.cfg:39 data/units/Rogue.cfg:99
 msgid "knife"
 msgstr "aizto"
 
-#: data/units/Assassin.cfg:55 data/units/Assassin.cfg:134
-#: data/units/Cave_Spider.cfg:24 data/units/Cuttle_Fish.cfg:60
-#: data/units/Direwolf_Rider.cfg:37 data/units/Ghoul.cfg:24
+#: data/units/Assassin.cfg:68 data/units/Assassin.cfg:147
+#: data/units/Cave_Spider.cfg:37 data/units/Cuttle_Fish.cfg:73
+#: data/units/Direwolf_Rider.cfg:54 data/units/Ghoul.cfg:24
 #: data/units/Giant_Scorpion.cfg:22 data/units/Necrophage.cfg:24
 #: data/units/Orcish_Assassin.cfg:41 data/units/Orcish_Slayer.cfg:46
 msgid "poison"
 msgstr "pozoia"
 
-#: data/units/Assassin.cfg:82
+#: data/units/Assassin.cfg:95
 msgid "female^Assassin"
 msgstr "Hiltzailea"
 
@@ -3270,7 +3278,7 @@ msgid ""
 "near them when not fighting against invaders."
 msgstr ""
 
-#: data/units/Bandit.cfg:19 data/units/Drake_Gladiator.cfg:62
+#: data/units/Bandit.cfg:32 data/units/Drake_Gladiator.cfg:62
 #: data/units/Great_Troll.cfg:21 data/units/Heavy_Infantryman.cfg:19
 #: data/units/Iron_Mauler.cfg:19 data/units/Mage_of_Light.cfg:30
 #: data/units/Mage_of_Light.cfg:102 data/units/Outlaw.cfg:20
@@ -3283,7 +3291,7 @@ msgstr "matrailu"
 msgid "female^Princess"
 msgstr "Printzesa"
 
-#: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:56
+#: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:68
 msgid "leadership,skirmisher"
 msgstr ""
 
@@ -3295,11 +3303,11 @@ msgid ""
 "now aid those around her in the art of combat."
 msgstr ""
 
-#: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
-#: data/units/Bowman.cfg:21 data/units/Cavalier.cfg:28
-#: data/units/Cavalryman.cfg:29 data/units/Commander.cfg:23
-#: data/units/Commander.cfg:98 data/units/Deathblade.cfg:28
-#: data/units/Dragoon.cfg:28 data/units/Drake_Clasher.cfg:21
+#: data/units/Battle_Princess.cfg:35 data/units/Battle_Princess.cfg:73
+#: data/units/Bowman.cfg:33 data/units/Cavalier.cfg:40
+#: data/units/Cavalryman.cfg:41 data/units/Commander.cfg:35
+#: data/units/Commander.cfg:110 data/units/Deathblade.cfg:39
+#: data/units/Dragoon.cfg:45 data/units/Drake_Clasher.cfg:33
 #: data/units/Drake_Flameheart.cfg:23 data/units/Drake_Flare.cfg:23
 #: data/units/Drake_Gladiator.cfg:25 data/units/Drake_Slasher.cfg:22
 #: data/units/Drake_Warrior.cfg:22 data/units/Elvish_Archer.cfg:23
@@ -3307,7 +3315,7 @@ msgstr ""
 #: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:24
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
 #: data/units/Elvish_Hero.cfg:22 data/units/Elvish_High_Lord.cfg:21
-#: data/units/Elvish_Lord.cfg:20 data/units/Elvish_Marksman.cfg:23
+#: data/units/Elvish_Lord.cfg:22 data/units/Elvish_Marksman.cfg:23
 #: data/units/Elvish_Marksman.cfg:116 data/units/Elvish_Marshal.cfg:25
 #: data/units/Elvish_Outrider.cfg:27 data/units/Elvish_Ranger.cfg:24
 #: data/units/Elvish_Ranger.cfg:114 data/units/Elvish_Rider.cfg:31
@@ -3324,7 +3332,7 @@ msgstr ""
 #: data/units/Naga-Fighter.cfg:56 data/units/Naga-Myrmidon.cfg:25
 #: data/units/Naga-Myrmidon.cfg:64 data/units/Naga-Warrior.cfg:25
 #: data/units/Naga-Warrior.cfg:64 data/units/Noble_Commander.cfg:28
-#: data/units/Noble_Fighter.cfg:23 data/units/Noble_Lord.cfg:25
+#: data/units/Noble_Fighter.cfg:23 data/units/Noble_Lord.cfg:27
 #: data/units/Orcish_Grunt.cfg:19 data/units/Orcish_Leader.cfg:21
 #: data/units/Orcish_Ruler.cfg:21 data/units/Orcish_Sovereign.cfg:21
 #: data/units/Orcish_Warlord.cfg:19 data/units/Orcish_Warrior.cfg:19
@@ -3335,11 +3343,11 @@ msgstr ""
 msgid "sword"
 msgstr "ezpata"
 
-#: data/units/Battle_Princess.cfg:42 data/units/Princess.cfg:42
+#: data/units/Battle_Princess.cfg:54 data/units/Princess.cfg:42
 msgid "Princess"
 msgstr "Printzesa"
 
-#: data/units/Battle_Princess.cfg:58
+#: data/units/Battle_Princess.cfg:70
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3348,7 +3356,7 @@ msgid ""
 "and ignores enemy zones of control."
 msgstr ""
 
-#: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:120
+#: data/units/Battle_Princess.cfg:89 data/units/Commander.cfg:132
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:114
 #: data/units/Princess.cfg:77
 msgid "scepter of fire"
@@ -3366,8 +3374,8 @@ msgid ""
 "beasts is tainted red with the blood of their victims."
 msgstr ""
 
-#: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
-#: data/units/Direwolf_Rider.cfg:20 data/units/Goblin_Knight.cfg:20
+#: data/units/Blood_Bat.cfg:32 data/units/Cave_Spider.cfg:32
+#: data/units/Direwolf_Rider.cfg:37 data/units/Goblin_Knight.cfg:20
 #: data/units/Sea_Serpent.cfg:19 data/units/Vampire_Bat.cfg:19
 #: data/units/Wolf_Rider.cfg:21
 msgid "fangs"
@@ -3386,12 +3394,12 @@ msgid ""
 "all who live."
 msgstr ""
 
-#: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
+#: data/units/Bone_Shooter.cfg:36 data/units/Soul_Shooter.cfg:24
 msgid "stab"
 msgstr "makulu"
 
-#: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:38
-#: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:40
+#: data/units/Bone_Shooter.cfg:50 data/units/Bowman.cfg:50
+#: data/units/Commander.cfg:57 data/units/Elvish_Archer.cfg:40
 #: data/units/Elvish_Archer.cfg:119 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:128 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Fighter.cfg:41
@@ -3400,7 +3408,7 @@ msgstr "makulu"
 #: data/units/Elvish_Ranger.cfg:131 data/units/Elvish_Rider.cfg:52
 #: data/units/Elvish_Scout.cfg:53 data/units/Longbowman.cfg:39
 #: data/units/Lord.cfg:39 data/units/Master_Bowman.cfg:33
-#: data/units/Noble_Commander.cfg:46 data/units/Noble_Lord.cfg:43
+#: data/units/Noble_Commander.cfg:46 data/units/Noble_Lord.cfg:45
 #: data/units/Orcish_Archer.cfg:37 data/units/Orcish_Leader.cfg:37
 #: data/units/Orcish_Ruler.cfg:38 data/units/Orcish_Sovereign.cfg:42
 #: data/units/Orcish_Warlord.cfg:30 data/units/Poacher.cfg:42
@@ -3409,16 +3417,16 @@ msgstr "makulu"
 msgid "bow"
 msgstr "bailesta"
 
-#: data/units/Bone_Shooter.cfg:39 data/units/Bowman.cfg:39
-#: data/units/Cavalier.cfg:50 data/units/Chocobone.cfg:21
-#: data/units/Commander.cfg:46 data/units/Cuttle_Fish.cfg:56
-#: data/units/Death_Knight.cfg:39 data/units/Dragoon.cfg:50
-#: data/units/Drake_Clasher.cfg:40 data/units/Drake_Gladiator.cfg:44
-#: data/units/Drake_Slasher.cfg:41 data/units/Duelist.cfg:37
-#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:26
-#: data/units/Dwarvish_Guardsman.cfg:39 data/units/Dwarvish_Sentinel.cfg:28
-#: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:28
-#: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Bone_Shooter.cfg:51 data/units/Bowman.cfg:51
+#: data/units/Cavalier.cfg:62 data/units/Chocobone.cfg:33
+#: data/units/Commander.cfg:58 data/units/Cuttle_Fish.cfg:69
+#: data/units/Death_Knight.cfg:51 data/units/Dragoon.cfg:67
+#: data/units/Drake_Clasher.cfg:52 data/units/Drake_Gladiator.cfg:44
+#: data/units/Drake_Slasher.cfg:41 data/units/Duelist.cfg:50
+#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:27
+#: data/units/Dwarvish_Guardsman.cfg:40 data/units/Dwarvish_Sentinel.cfg:29
+#: data/units/Dwarvish_Sentinel.cfg:42 data/units/Dwarvish_Stalwart.cfg:29
+#: data/units/Dwarvish_Stalwart.cfg:42 data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:41
 #: data/units/Elvish_Archer.cfg:120 data/units/Elvish_Avenger.cfg:41
 #: data/units/Elvish_Avenger.cfg:129 data/units/Elvish_Captain.cfg:41
@@ -3434,7 +3442,7 @@ msgstr "bailesta"
 #: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:40
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
 #: data/units/Grand_Knight.cfg:38 data/units/Grand_Marshal.cfg:48
-#: data/units/Halbardier.cfg:22 data/units/Horseman.cfg:22
+#: data/units/Halbardier.cfg:24 data/units/Horseman.cfg:22
 #: data/units/Javelineer.cfg:20 data/units/Javelineer.cfg:48
 #: data/units/Knight.cfg:38 data/units/Lancer.cfg:22
 #: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:40
@@ -3446,7 +3454,7 @@ msgstr "bailesta"
 #: data/units/Merman_Netcaster.cfg:20 data/units/Merman_Spearman.cfg:21
 #: data/units/Merman_Spearman.cfg:61 data/units/Merman_Triton.cfg:24
 #: data/units/Merman_Warrior.cfg:24 data/units/Naga.cfg:25
-#: data/units/Noble_Commander.cfg:47 data/units/Noble_Lord.cfg:44
+#: data/units/Noble_Commander.cfg:47 data/units/Noble_Lord.cfg:46
 #: data/units/Orcish_Archer.cfg:38 data/units/Orcish_Crossbowman.cfg:40
 #: data/units/Orcish_Leader.cfg:38 data/units/Orcish_Ruler.cfg:39
 #: data/units/Orcish_Shaman.cfg:37 data/units/Orcish_Shaman.cfg:96
@@ -3494,8 +3502,8 @@ msgid ""
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
 
-#: data/units/Cavalier.cfg:49 data/units/Death_Knight.cfg:38
-#: data/units/Dragoon.cfg:49 data/units/Duelist.cfg:36
+#: data/units/Cavalier.cfg:61 data/units/Death_Knight.cfg:50
+#: data/units/Dragoon.cfg:66 data/units/Duelist.cfg:49
 #: data/units/General.cfg:51 data/units/Grand_Marshal.cfg:47
 #: data/units/Lieutenant.cfg:41 data/units/Orcish_Crossbowman.cfg:39
 #: data/units/Sergeant.cfg:41 data/units/Wall_Guard.cfg:36
@@ -3525,11 +3533,11 @@ msgid ""
 "attack with a web at long range, slowing their foes down."
 msgstr ""
 
-#: data/units/Cave_Spider.cfg:33
+#: data/units/Cave_Spider.cfg:46
 msgid "web"
 msgstr "armiarma sarea"
 
-#: data/units/Cave_Spider.cfg:49 data/units/Elvish_Druid.cfg:44
+#: data/units/Cave_Spider.cfg:62 data/units/Elvish_Druid.cfg:44
 #: data/units/Elvish_Enchantress.cfg:67 data/units/Elvish_Shaman.cfg:45
 #: data/units/Elvish_Shyde.cfg:53 data/units/Elvish_Sorceress.cfg:67
 #: data/units/Elvish_Sylph.cfg:53 data/units/Goblin_Pillager.cfg:38
@@ -3548,11 +3556,11 @@ msgid ""
 "units."
 msgstr ""
 
-#: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
+#: data/units/Chocobone.cfg:32 data/units/Drake_Clasher.cfg:51
 #: data/units/Drake_Gladiator.cfg:43 data/units/Drake_Slasher.cfg:40
-#: data/units/Dwarvish_Guardsman.cfg:24 data/units/Dwarvish_Guardsman.cfg:38
-#: data/units/Dwarvish_Sentinel.cfg:26 data/units/Dwarvish_Sentinel.cfg:40
-#: data/units/Dwarvish_Stalwart.cfg:26 data/units/Dwarvish_Stalwart.cfg:40
+#: data/units/Dwarvish_Guardsman.cfg:25 data/units/Dwarvish_Guardsman.cfg:39
+#: data/units/Dwarvish_Sentinel.cfg:27 data/units/Dwarvish_Sentinel.cfg:41
+#: data/units/Dwarvish_Stalwart.cfg:27 data/units/Dwarvish_Stalwart.cfg:41
 #: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:39
 #: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
 #: data/units/Horseman.cfg:21 data/units/Javelineer.cfg:19
@@ -3570,10 +3578,10 @@ msgstr ""
 msgid "spear"
 msgstr "lantza"
 
-#: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:39
+#: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:39
 #: data/units/Horseman.cfg:23 data/units/Knight.cfg:39
-#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:368
-#: src/actions.cpp:476
+#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:449
+#: src/actions.cpp:557
 msgid "charge"
 msgstr "kargatu"
 
@@ -3588,19 +3596,19 @@ msgid ""
 "them into stone until the source of their power is destroyed."
 msgstr ""
 
-#: data/units/Cockatrice.cfg:21
+#: data/units/Cockatrice.cfg:33
 msgid "gaze"
 msgstr ""
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:744 src/actions.cpp:908
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:864 src/actions.cpp:1031
 msgid "stone"
 msgstr "harria"
 
-#: data/units/Commander.cfg:3 data/units/Commander.cfg:78
+#: data/units/Commander.cfg:3 data/units/Commander.cfg:90
 msgid "Commander"
 msgstr "Komandantea"
 
-#: data/units/Commander.cfg:20 data/units/Commander.cfg:95
+#: data/units/Commander.cfg:20 data/units/Commander.cfg:107
 #: data/units/Noble_Commander.cfg:24
 msgid ""
 "The rank of Commander is held by those who lead battle groups into combat. "
@@ -3622,11 +3630,11 @@ msgid ""
 "remain ashore."
 msgstr ""
 
-#: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
+#: data/units/Cuttle_Fish.cfg:32 data/units/Tentacle.cfg:20
 msgid "tentacle"
 msgstr "tentakulu"
 
-#: data/units/Cuttle_Fish.cfg:55
+#: data/units/Cuttle_Fish.cfg:68
 msgid "ink"
 msgstr "tinta"
 
@@ -3642,7 +3650,7 @@ msgid ""
 "close combat."
 msgstr ""
 
-#: data/units/Dark_Adept.cfg:22 data/units/Dark_Sorcerer.cfg:40
+#: data/units/Dark_Adept.cfg:34 data/units/Dark_Sorcerer.cfg:40
 #: data/units/Necromancer.cfg:35
 msgid "chill wave"
 msgstr ""
@@ -3658,7 +3666,7 @@ msgid ""
 "mostly derived from those she commands."
 msgstr ""
 
-#: data/units/Dark_Queen.cfg:22
+#: data/units/Dark_Queen.cfg:34
 msgid "scepter"
 msgstr "espektroa"
 
@@ -3685,12 +3693,12 @@ msgid ""
 "seen in Wesnoth."
 msgstr ""
 
-#: data/units/Dark_Spirit.cfg:19 data/units/Spectre.cfg:24
+#: data/units/Dark_Spirit.cfg:31 data/units/Spectre.cfg:24
 #: data/units/Wraith.cfg:24
 msgid "baneblade"
 msgstr ""
 
-#: data/units/Dark_Spirit.cfg:36 data/units/Ghost.cfg:31
+#: data/units/Dark_Spirit.cfg:48 data/units/Ghost.cfg:31
 #: data/units/Spectre.cfg:41 data/units/Wraith.cfg:41
 msgid "wail"
 msgstr ""
@@ -3707,16 +3715,16 @@ msgid ""
 "revenge."
 msgstr ""
 
-#: data/units/Death_Knight.cfg:21 data/units/Dwarvish_Lord.cfg:27
+#: data/units/Death_Knight.cfg:33 data/units/Dwarvish_Lord.cfg:27
 #: data/units/Dwarvish_Steelclad.cfg:27
 msgid "battle axe"
 msgstr "gerla aizkora"
 
-#: data/units/Deathblade.cfg:4
+#: data/units/Deathblade.cfg:3
 msgid "Deathblade"
 msgstr ""
 
-#: data/units/Deathblade.cfg:17
+#: data/units/Deathblade.cfg:16
 msgid ""
 "Deathblades abhor the living and seek to destroy all that they once loved. "
 "They are deadly fighters, ignoring all danger to themselves, and caring only "
@@ -3758,12 +3766,12 @@ msgid ""
 "enemies."
 msgstr ""
 
-#: data/units/Direwolf_Rider.cfg:32 data/units/Drake_Burner.cfg:21
-#: data/units/Drake_Fire.cfg:24 data/units/Drake_Inferno.cfg:24
+#: data/units/Direwolf_Rider.cfg:49 data/units/Drake_Burner.cfg:34
+#: data/units/Drake_Fire.cfg:36 data/units/Drake_Inferno.cfg:24
 #: data/units/Ghoul.cfg:19 data/units/Gryphon.cfg:22
 #: data/units/Gryphon_Master.cfg:24 data/units/Gryphon_Rider.cfg:23
 #: data/units/Necrophage.cfg:19 data/units/Nightgaunt.cfg:20
-#: data/units/Shadow.cfg:20 data/units/Skeletal_Dragon.cfg:47
+#: data/units/Shadow.cfg:20 data/units/Skeletal_Dragon.cfg:49
 #: data/units/Sleeping_Gryphon.cfg:18
 msgid "claws"
 msgstr ""
@@ -3794,8 +3802,8 @@ msgid ""
 "Drake Flares who aspire to be leaders of their kind."
 msgstr ""
 
-#: data/units/Drake_Burner.cfg:40 data/units/Drake_Fighter.cfg:44
-#: data/units/Drake_Fire.cfg:42 data/units/Drake_Flameheart.cfg:52
+#: data/units/Drake_Burner.cfg:53 data/units/Drake_Fighter.cfg:56
+#: data/units/Drake_Fire.cfg:54 data/units/Drake_Flameheart.cfg:52
 #: data/units/Drake_Flare.cfg:42 data/units/Drake_Glider.cfg:44
 #: data/units/Drake_Inferno.cfg:42 data/units/Drake_Sky.cfg:50
 #: data/units/Drake_Warrior.cfg:45 data/units/Fire_Dragon.cfg:58
@@ -3827,7 +3835,7 @@ msgid ""
 "join the ranks of the elite Drake Warriors."
 msgstr ""
 
-#: data/units/Drake_Fighter.cfg:21
+#: data/units/Drake_Fighter.cfg:33
 msgid "scimitar"
 msgstr ""
 
@@ -3938,7 +3946,7 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Slasher.cfg:43 data/units/Goblin_Impaler.cfg:26
-#: data/units/Halbardier.cfg:26 data/units/Halbardier.cfg:44
+#: data/units/Halbardier.cfg:28 data/units/Halbardier.cfg:69
 #: data/units/Javelineer.cfg:24 data/units/Pikeman.cfg:27
 #: data/units/Spearman.cfg:42
 msgid "firststrike"
@@ -3968,7 +3976,7 @@ msgid ""
 "of their struggle have long faded into oblivion."
 msgstr ""
 
-#: data/units/Draug.cfg:24 data/units/Dwarvish_Fighter.cfg:22
+#: data/units/Draug.cfg:36 data/units/Dwarvish_Fighter.cfg:22
 #: data/units/Revenant.cfg:36 data/units/Skeleton.cfg:37
 msgid "axe"
 msgstr "aizkora"
@@ -3984,7 +3992,7 @@ msgid ""
 "crossbow in the other to shoot distant foes."
 msgstr ""
 
-#: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
+#: data/units/Duelist.cfg:33 data/units/Fencer.cfg:20
 msgid "rapier"
 msgstr ""
 
@@ -4000,11 +4008,11 @@ msgid ""
 "push the attack until either they or their enemy lies dead."
 msgstr ""
 
-#: data/units/Dwarvish_Berserker.cfg:26 data/units/Dwarvish_Ulfserker.cfg:26
+#: data/units/Dwarvish_Berserker.cfg:32 data/units/Dwarvish_Ulfserker.cfg:32
 msgid "berserker frenzy"
 msgstr ""
 
-#: data/units/Dwarvish_Berserker.cfg:29 data/units/Dwarvish_Ulfserker.cfg:29
+#: data/units/Dwarvish_Berserker.cfg:35 data/units/Dwarvish_Ulfserker.cfg:35
 msgid "berserk"
 msgstr ""
 
@@ -4045,7 +4053,7 @@ msgstr "mailua"
 msgid "Dwarvish Guardsman"
 msgstr ""
 
-#: data/units/Dwarvish_Guardsman.cfg:21
+#: data/units/Dwarvish_Guardsman.cfg:22
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsman. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -4091,7 +4099,7 @@ msgstr ""
 msgid "Dwarvish Sentinel"
 msgstr "Nano Zaindaria"
 
-#: data/units/Dwarvish_Sentinel.cfg:23
+#: data/units/Dwarvish_Sentinel.cfg:24
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
@@ -4101,7 +4109,7 @@ msgstr ""
 msgid "Dwarvish Stalwart"
 msgstr ""
 
-#: data/units/Dwarvish_Stalwart.cfg:23
+#: data/units/Dwarvish_Stalwart.cfg:24
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are the feared for "
@@ -4281,9 +4289,10 @@ msgstr ""
 msgid "entangle"
 msgstr "nahaspilatu"
 
-#: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_Sorceress.cfg:117
+#: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:42
+#: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
-msgid "fey gale"
+msgid "faerie fire"
 msgstr ""
 
 #: data/units/Elvish_Fighter.cfg:3
@@ -4315,7 +4324,7 @@ msgstr "Elfo Jaun Gorena"
 #: data/units/Elvish_High_Lord.cfg:18
 msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
-"devastating balls of fire at long range."
+"devastating balls of frost at long range."
 msgstr ""
 
 #: data/units/Elvish_Lady.cfg:4
@@ -4339,10 +4348,10 @@ msgstr "pala"
 msgid "Elvish Lord"
 msgstr "Elfo Jauna"
 
-#: data/units/Elvish_Lord.cfg:17
+#: data/units/Elvish_Lord.cfg:19
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
-"devastating balls of fire at long range."
+"devastating balls of frost at long range."
 msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:3
@@ -4846,7 +4855,7 @@ msgstr ""
 msgid "Halberdier"
 msgstr ""
 
-#: data/units/Halbardier.cfg:18
+#: data/units/Halbardier.cfg:19
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -4854,10 +4863,6 @@ msgid ""
 "when defending. Halberdiers have great facility at dealing with troops they "
 "can keep further than the end of their weapons, but find some difficulty in "
 "very close combat."
-msgstr ""
-
-#: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
-msgid "halberd"
 msgstr ""
 
 #: data/units/Heavy_Infantryman.cfg:3
@@ -4996,7 +5001,7 @@ msgstr ""
 msgid "Lord"
 msgstr "Jauna"
 
-#: data/units/Lord.cfg:19 data/units/Lord.cfg:94 data/units/Noble_Lord.cfg:22
+#: data/units/Lord.cfg:19 data/units/Lord.cfg:94
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
@@ -5340,7 +5345,9 @@ msgstr ""
 #: data/units/Necrophage.cfg:16
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
-"hoped-for food with poisonous claws."
+"hoped-for food with poisonous claws. When they are sated with the flesh of "
+"their victims, they simply shrug off all damage sustained as if they had "
+"been freshly summoned, to begin their search for flesh again."
 msgstr ""
 
 #: data/units/Nightgaunt.cfg:3
@@ -5371,6 +5378,14 @@ msgstr ""
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
+msgstr ""
+
+#: data/units/Noble_Lord.cfg:24
+msgid ""
+"The noble leaders of many troops, Lords are especially strong in melee "
+"combat, and also possess skill with the bow. Like lords, Lords possess "
+"leadership skills, and improve the fighting ability of all adjacent lower-"
+"level units."
 msgstr ""
 
 #: data/units/Noble_Youth.cfg:3
@@ -5937,7 +5952,7 @@ msgid ""
 "lived long enough to change their minds."
 msgstr ""
 
-#: data/units/Skeletal_Dragon.cfg:27
+#: data/units/Skeletal_Dragon.cfg:29
 msgid "jaw"
 msgstr "matraila"
 
@@ -6104,7 +6119,7 @@ msgid ""
 "terrifying ability to recover from wounds make them a formidable foe even "
 "far from the mountainous ground they prefer to fight in. An adult troll is "
 "smarter, faster, stronger, and though one would dare not say it to their "
-"face, uglier than any of their children. Their wield heavy clubs with brutal "
+"face, uglier than any of their children. They wield heavy clubs with brutal "
 "proficiency, and form a bulwark of strength in any battle they participate "
 "in - the only weakness they have, if such can be said, is their inability to "
 "fight at a distance.\n"
@@ -6142,7 +6157,7 @@ msgstr ""
 #: data/units/Troll_Rocklobber.cfg:21
 msgid ""
 "Given the monstrous strength of their race, trolls can turn rather mundane "
-"weapons into implements of deadly force. Some trolls piece together crude "
+"implements into weapons of deadly force. Some trolls piece together crude "
 "slings, little different from what a child would use, save for the fact they "
 "hurl boulders instead of pebbles. Though not especially accurate, a rock "
 "thrown by one of these monsters can cripple a man if it hits him. Despite "
@@ -6187,7 +6202,7 @@ msgid ""
 "Usage:\n"
 "Troll Warriors fight well on rough, rocky terrain, especially at night. "
 "Though vulnerable to archers and spellcasters, especially in open terrain, "
-"the raw power of a Troll Warrior makes them a foe that generally must be "
+"the raw power of a Troll Warrior makes it a foe that generally must be "
 "brought down by several enemies. There are few enemies which can engage them "
 "in one-on-one combat without a great danger of being killed on the same "
 "turn. Their regeneration allows them to cure poison, and heal wounds without "
@@ -6391,349 +6406,357 @@ msgstr ""
 "Oraindik ia haur bat, baina koroari dion debozioagatik Jaun bat izatekotan "
 "dago -- eta gizaki borrokalarien elitean sartzeko"
 
-#: src/about.cpp:46
+#: src/about.cpp:33
 msgid "+Core Developers"
 msgstr "+Garatzaile nagusiak"
 
-#: src/about.cpp:47
+#: src/about.cpp:34
 msgid "-   Main Developer"
 msgstr "-   Garatzaile Nagusia"
 
-#: src/about.cpp:50
+#: src/about.cpp:37
 msgid "-   Artwork and graphics designer"
 msgstr "-   Artelan eta grafiko diseinatzailea"
 
-#: src/about.cpp:54
+#: src/about.cpp:40
 msgid "+Developers"
 msgstr "+Garatzaileak"
 
-#: src/about.cpp:71
+#: src/about.cpp:57
 msgid "+General Purpose Administrators"
 msgstr "+Administratzaile orokorrak"
 
-#: src/about.cpp:76
+#: src/about.cpp:61
 msgid "+Artwork and graphics designers"
 msgstr "+Artelan eta grafiko diseinatzaileak"
 
-#: src/about.cpp:102
+#: src/about.cpp:86
 msgid "+Music"
 msgstr "+Musika"
 
-#: src/about.cpp:109
+#: src/about.cpp:92
 msgid "+Scenario Designers"
 msgstr "+Gudaguneko diseinatzaileak"
 
-#: src/about.cpp:119
+#: src/about.cpp:101
 msgid "+Multiplayer Maps"
 msgstr "+Jokalari anitzeko mapak"
 
-#: src/about.cpp:124
+#: src/about.cpp:105
 msgid "+Packagers"
 msgstr "+Paketelariak"
 
-#: src/about.cpp:135
+#: src/about.cpp:115
 msgid "+Miscellaneous"
 msgstr "+Hainbat"
 
-#: src/about.cpp:141
+#: src/about.cpp:120
 msgid "+Internationalization Managers"
 msgstr "+Internazionalizazio Zuzendariak"
 
-#: src/about.cpp:148
+#: src/about.cpp:126
 #, fuzzy
 msgid "+Afrikaans Translation"
 msgstr "+Daniera Itzulpena"
 
-#: src/about.cpp:153
+#: src/about.cpp:130
 msgid "+Basque Translation"
 msgstr "+Euskara Itzulpena"
 
-#: src/about.cpp:159
+#: src/about.cpp:135
 msgid "+Bulgarian Translation"
 msgstr "+Bulgariera Itzulpena"
 
-#: src/about.cpp:163
+#: src/about.cpp:138
 msgid "+Catalan Translation"
 msgstr "+Katalan Itzulpena"
 
-#: src/about.cpp:171
+#: src/about.cpp:145
 msgid "+Chinese Translation"
 msgstr "+Txinera Itzulpena"
 
-#: src/about.cpp:175
+#: src/about.cpp:148
 msgid "+Czech Translation"
 msgstr "+Txekiera Itzulpena"
 
-#: src/about.cpp:184
+#: src/about.cpp:156
 msgid "+Danish Translation"
 msgstr "+Daniera Itzulpena"
 
-#: src/about.cpp:189
+#: src/about.cpp:160
 msgid "+Dutch Translation"
 msgstr "+Nederlandera Itzulpena"
 
-#: src/about.cpp:197
+#: src/about.cpp:167
 msgid "+English (GB) Translation"
 msgstr "+Ingeles (Erresuma Batua) Itzulpena"
 
-#: src/about.cpp:201
+#: src/about.cpp:170
 msgid "+Estonian Translation"
 msgstr "+Estoniera itzulpena"
 
-#: src/about.cpp:205
+#: src/about.cpp:173
 msgid "+Finnish Translation"
 msgstr "+Finlandiera Itzulpena"
 
-#: src/about.cpp:210
+#: src/about.cpp:177
 msgid "+French Translation"
 msgstr "+Frantses Itzulpena"
 
-#: src/about.cpp:224
+#: src/about.cpp:190
 msgid "+German Translation"
 msgstr "+Aleman Itzulpena"
 
-#: src/about.cpp:236
+#: src/about.cpp:201
 msgid "+Greek Translation"
 msgstr "+Greko Itzulpena"
 
-#: src/about.cpp:241
+#: src/about.cpp:205
 msgid "+Hungarian Translation"
 msgstr "+Hungariera Itzulpena"
 
-#: src/about.cpp:253
+#: src/about.cpp:216
 msgid "+Italian Translation"
 msgstr "+Italiera Itzulpena"
 
-#: src/about.cpp:262
+#: src/about.cpp:225
 #, fuzzy
 msgid "+Japanese Translation"
 msgstr "+Txinera Itzulpena"
 
-#: src/about.cpp:268
+#: src/about.cpp:230
 msgid "+Latin Translation"
 msgstr "+Latin Itzulpena"
 
-#: src/about.cpp:272
+#: src/about.cpp:233
 msgid "+Norwegian Translation"
 msgstr "+Norvegiera Itzulpena"
 
-#: src/about.cpp:279
+#: src/about.cpp:239
 msgid "+Polish Translation"
 msgstr "+Poloniera Itzulpena"
 
-#: src/about.cpp:290
+#: src/about.cpp:249
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portuges (Brazil) Itzulpena"
 
-#: src/about.cpp:299
+#: src/about.cpp:257
 msgid "+Russian Translation"
 msgstr "+Errusiera Itzulpena"
 
-#: src/about.cpp:305
+#: src/about.cpp:262
 msgid "+Slovak Translation"
 msgstr "+Eslovakiera Itzulpena"
 
-#: src/about.cpp:309
+#: src/about.cpp:265
 msgid "+Slovenian Translation"
 msgstr "+Eslobeniera Itzulpena"
 
-#: src/about.cpp:313
+#: src/about.cpp:268
 msgid "+Spanish Translation"
 msgstr "+Gaztelania Itzulpena"
 
-#: src/about.cpp:322
+#: src/about.cpp:276
 msgid "+Swedish Translation"
 msgstr "+Suediera Itzulpena"
 
-#: src/about.cpp:329
+#: src/about.cpp:282
 #, fuzzy
 msgid "+Turkish Translation"
 msgstr "+Daniera Itzulpena"
 
-#: src/about.cpp:334
+#: src/about.cpp:286
 msgid "+Contributors"
 msgstr "+Laguntzaileak"
 
-#: src/about.cpp:338
+#: src/about.cpp:289
 msgid "+Bots"
 msgstr "+Errobotak"
 
-#: src/about.cpp:375 src/help.cpp:2713
+#: src/about.cpp:325 src/help.cpp:2633
 msgid "Close"
 msgstr "Itxi"
 
-#: src/actions.cpp:105
+#: src/actions.cpp:108
 msgid "You don't have a leader to recruit with."
 msgstr "Ez duzu buruzagirik bilketak egiteko"
 
-#: src/actions.cpp:109
+#: src/actions.cpp:112
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Zure buruzagia gotorlekuan eduki behar duzu unitateak bildu ahal izateko"
 
-#: src/actions.cpp:126
+#: src/actions.cpp:129
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Ez dago gaztelu gelaxka librerik unitateak biltzeko."
 
-#: src/actions.cpp:216
+#: src/actions.cpp:297
 msgid "none"
 msgstr "bat ere ez"
 
-#: src/actions.cpp:292 src/dialogs.cpp:699 src/display.cpp:1094
-#: src/help.cpp:1171 src/reports.cpp:233
+#: src/actions.cpp:373 src/dialogs.cpp:700 src/display.cpp:1094
+#: src/help.cpp:1122 src/reports.cpp:233
 msgid "melee"
 msgstr "buruz buru"
 
-#: src/actions.cpp:292 src/dialogs.cpp:699 src/display.cpp:1095
-#: src/help.cpp:1171 src/reports.cpp:234
+#: src/actions.cpp:373 src/dialogs.cpp:700 src/display.cpp:1095
+#: src/help.cpp:1122 src/reports.cpp:234
 msgid "ranged"
 msgstr "urrutira"
 
-#: src/actions.cpp:338 src/actions.cpp:446
+#: src/actions.cpp:419 src/actions.cpp:527
 msgid "base damage"
 msgstr "oinarrizko kalteak"
 
-#: src/actions.cpp:368 src/actions.cpp:476 src/actions.cpp:485
+#: src/actions.cpp:449 src/actions.cpp:557 src/actions.cpp:566
 msgid "Doubled"
 msgstr "Bikoiztua"
 
-#: src/actions.cpp:376
+#: src/actions.cpp:457
 msgid "attacker resistance vs"
 msgstr ""
 
-#: src/actions.cpp:376
+#: src/actions.cpp:457
 msgid "attacker vulnerability vs"
 msgstr ""
 
-#: src/actions.cpp:390 src/actions.cpp:516
+#: src/actions.cpp:471 src/actions.cpp:597
 msgid "total damage"
 msgstr "guztira kalteak"
 
-#: src/actions.cpp:494
+#: src/actions.cpp:575
 msgid "Halved"
 msgstr "Erdituta"
 
-#: src/actions.cpp:502
+#: src/actions.cpp:583
 msgid "defender resistance vs"
 msgstr ""
 
-#: src/actions.cpp:502
+#: src/actions.cpp:583
 msgid "defender vulnerability vs"
 msgstr ""
 
-#: src/actions.cpp:730 src/actions.cpp:893 src/display.cpp:1037
+#: src/actions.cpp:644
+msgid "(both should survive)"
+msgstr ""
+
+#: src/actions.cpp:646
+msgid "% Pr[kills/killed by/both survive]"
+msgstr ""
+
+#: src/actions.cpp:848 src/actions.cpp:1014 src/display.cpp:1037
 msgid "poisoned"
 msgstr "pozoindua"
 
-#: src/actions.cpp:735 src/actions.cpp:898 src/display.cpp:1033
+#: src/actions.cpp:853 src/actions.cpp:1019 src/display.cpp:1033
 msgid "slowed"
 msgstr "mantsotua"
 
-#: src/actions.cpp:1765
+#: src/actions.cpp:1898
 msgid "Ambushed!"
 msgstr "Segada batean harrapatuta!"
 
-#: src/actions.cpp:1793
+#: src/actions.cpp:1932
 msgid "Friendly unit sighted"
 msgstr "Unitate lagun bat ikustatua"
 
-#: src/actions.cpp:1795
+#: src/actions.cpp:1934
 msgid "Enemy unit sighted!"
 msgstr "Unitate etsai bat ikustatua!"
 
-#: src/actions.cpp:1800
+#: src/actions.cpp:1939
 msgid "$friends Friendly units sighted"
 msgstr "$friends Lagun-unitateak ikustatuta!"
 
-#: src/actions.cpp:1802
+#: src/actions.cpp:1941
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Etsai-unitateak ikustatuta!"
 
-#: src/actions.cpp:1806
+#: src/actions.cpp:1945
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unitateak ikustatuta! ($friends lagun, $enemies etsai)"
 
-#: src/actions.cpp:1821
+#: src/actions.cpp:1960
 msgid "(press $hotkey to continue)"
 msgstr "(sakatu $hotkey jarraitzeko)"
 
-#: src/dialogs.cpp:99
+#: src/dialogs.cpp:100
 msgid "Advance Unit"
 msgstr "Unitatea mailaz igo"
 
-#: src/dialogs.cpp:100
+#: src/dialogs.cpp:101
 msgid "What should our victorious unit become?"
 msgstr ""
 
-#: src/dialogs.cpp:169
+#: src/dialogs.cpp:170
 msgid "No objectives available"
 msgstr "Ez dago objetiborik eskuragarri"
 
-#: src/dialogs.cpp:183
+#: src/dialogs.cpp:184
 msgid "Save Game"
 msgstr "Jokua gorde"
 
-#: src/dialogs.cpp:185
+#: src/dialogs.cpp:186
 msgid "Overwrite?"
 msgstr "Gainidatzi?"
 
-#: src/dialogs.cpp:186
+#: src/dialogs.cpp:187
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Gordeketa existitzen da dagoeneko. Gainidatzi nahi duzu?"
 
-#: src/dialogs.cpp:215 src/dialogs.cpp:447
+#: src/dialogs.cpp:216 src/dialogs.cpp:448
 msgid "Don't ask me again!"
 msgstr "Ez galdetu berriz!"
 
-#: src/dialogs.cpp:217
+#: src/dialogs.cpp:218
 msgid "Do you really want to delete this game?"
 msgstr "Ziur al zaude joku hau ezabatu nahi duzula?"
 
-#: src/dialogs.cpp:348
+#: src/dialogs.cpp:349
 msgid "%a %b %d %H:%M %Y"
 msgstr ""
 
-#: src/dialogs.cpp:361
+#: src/dialogs.cpp:362
 msgid "#(Invalid)"
 msgstr "#(baliogabea)"
 
-#: src/dialogs.cpp:366 src/game.cpp:909
+#: src/dialogs.cpp:367 src/game.cpp:748
 msgid "Campaign"
 msgstr "Kanpaina"
 
-#: src/dialogs.cpp:368 src/game.cpp:1235
+#: src/dialogs.cpp:369 src/game.cpp:1103
 msgid "Multiplayer"
 msgstr "Jokalari anitzeko jokua"
 
-#: src/dialogs.cpp:370
+#: src/dialogs.cpp:371
 msgid "Tutorial"
 msgstr "Tutoriala"
 
-#: src/dialogs.cpp:378
+#: src/dialogs.cpp:379
 msgid "replay"
 msgstr "errepikatu"
 
-#: src/dialogs.cpp:380 src/multiplayer_lobby.cpp:115 src/playturn.cpp:1541
+#: src/dialogs.cpp:381 src/multiplayer_lobby.cpp:115 src/playturn.cpp:1547
 msgid "Turn"
 msgstr "Txanda"
 
-#: src/dialogs.cpp:382
+#: src/dialogs.cpp:383
 msgid "Scenario Start"
 msgstr "Gudagunea hasi"
 
-#: src/dialogs.cpp:385
+#: src/dialogs.cpp:386
 msgid "Difficulty: "
 msgstr "Zailtasuna:"
 
-#: src/dialogs.cpp:387
+#: src/dialogs.cpp:388
 msgid "Version: "
 msgstr "Bertsioa:"
 
-#: src/dialogs.cpp:402
+#: src/dialogs.cpp:403
 msgid "No Saved Games"
 msgstr "Gordetako jokurik ez"
 
-#: src/dialogs.cpp:403
+#: src/dialogs.cpp:404
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -6741,15 +6764,15 @@ msgstr ""
 "Ez dago joku gorderik kargatzeko.\n"
 "(Gudagunea amaitzean automatikoki gordetzen dira jokuak)"
 
-#: src/dialogs.cpp:422
+#: src/dialogs.cpp:423
 msgid "Delete Save"
 msgstr "Ezabatu Gordetako jokoa"
 
-#: src/dialogs.cpp:437
+#: src/dialogs.cpp:438
 msgid "Import Saved Games"
 msgstr "Gordetako jokoak inportatu"
 
-#: src/dialogs.cpp:438
+#: src/dialogs.cpp:439
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -6759,43 +6782,43 @@ msgstr ""
 "batetako gordetako jokoak ditu. Azken bertsiora eguneratu nahi al dituzu? "
 "Honek denbora pixkat beharko du."
 
-#: src/dialogs.cpp:443
+#: src/dialogs.cpp:444
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
 "these files with the game?"
 msgstr ""
 
-#: src/dialogs.cpp:514
+#: src/dialogs.cpp:515
 msgid "Show replay"
 msgstr "Errepikapena erakutsi"
 
-#: src/dialogs.cpp:517 src/multiplayer_create.cpp:74
+#: src/dialogs.cpp:518 src/multiplayer_create.cpp:74
 msgid "Load Game"
 msgstr "Jokua kargatu"
 
-#: src/dialogs.cpp:518
+#: src/dialogs.cpp:519
 msgid "Choose the game to load"
 msgstr "Aukeratu kargatu beharreko partida"
 
-#: src/dialogs.cpp:554 src/dialogs.cpp:566
+#: src/dialogs.cpp:555 src/dialogs.cpp:567
 msgid "Profile"
 msgstr "Profila"
 
-#: src/dialogs.cpp:646 src/display.cpp:1043 src/help.cpp:1056
+#: src/dialogs.cpp:647 src/display.cpp:1043 src/help.cpp:1031
 msgid "level"
 msgstr "maila"
 
-#: src/dialogs.cpp:667 src/display.cpp:1061 src/help.cpp:1101
+#: src/dialogs.cpp:668 src/display.cpp:1061 src/help.cpp:1076
 msgid "HP: "
 msgstr "BP: "
 
-#: src/dialogs.cpp:671 src/dialogs.cpp:679 src/display.cpp:1065
-#: src/display.cpp:1073 src/playturn.cpp:1965
+#: src/dialogs.cpp:672 src/dialogs.cpp:680 src/display.cpp:1065
+#: src/display.cpp:1073 src/playturn.cpp:1979
 msgid "XP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:684 src/display.cpp:1077 src/help.cpp:1102
+#: src/dialogs.cpp:685 src/display.cpp:1077 src/help.cpp:1077
 msgid "Moves: "
 msgstr "Mugimenduak:"
 
@@ -6815,8 +6838,8 @@ msgstr "ikustezina"
 msgid "OK"
 msgstr "ADOS"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:495
-#: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:148
+#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:494
+#: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -6824,48 +6847,16 @@ msgstr "Utzi"
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
-#: src/game.cpp:140
-msgid "Do you want to save a replay of this scenario?"
-msgstr "Gudagune honen errepikapena gorde nahi al duzu?"
-
-#: src/game.cpp:141 src/game.cpp:199 src/playturn.cpp:1550
-msgid "Name:"
-msgstr "Izena:"
-
-#: src/game.cpp:149 src/game.cpp:206 src/playturn.cpp:1567
-msgid "The game could not be saved"
-msgstr "Ezin izan da jokua gorde"
-
-#: src/game.cpp:171 src/game.cpp:846 src/game.cpp:1265
-msgid "The game could not be loaded: "
-msgstr "Ezin izan da jokua kargatu: "
-
-#: src/game.cpp:174 src/game.cpp:848 src/game.cpp:1267
-msgid "Error while playing the game: "
-msgstr "Errorea jokuan jolasterakoan:"
-
-#: src/game.cpp:177 src/game.cpp:854 src/game.cpp:1279
-msgid "The game map could not be loaded: "
-msgstr "Ezin izan da joku mapa kargatu: "
-
-#: src/game.cpp:198
-msgid "Do you want to save your game?"
-msgstr "Zure jokua gorde nahi duzu?"
-
-#: src/game.cpp:219
-msgid "Unknown scenario: '"
-msgstr "Guda leku ezezaguna: '"
-
-#: src/game.cpp:539
+#: src/game.cpp:391
 msgid "The Battle for Wesnoth"
 msgstr "Wesnoth-eko guda"
 
-#: src/game.cpp:752
+#: src/game.cpp:619
 #, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Kargatu nahi zenuen fitxategia ondatuta dago: '"
 
-#: src/game.cpp:774 src/multiplayer_connect.cpp:899
+#: src/game.cpp:641 src/multiplayer_connect.cpp:888
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6873,335 +6864,343 @@ msgstr ""
 "Gordeketa hau jokuaren bertsio ezberdin batekoa da. Kargatzen saiatu nahi "
 "duzu?"
 
-#: src/game.cpp:782 src/game.cpp:785 src/multiplayer_connect.cpp:886
+#: src/game.cpp:649 src/game.cpp:652 src/multiplayer_connect.cpp:873
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Kargatu nahi zenuen fitxategia ondatuta dago: '"
 
-#: src/game.cpp:788
+#: src/game.cpp:655
 msgid "File I/O Error while reading the game"
 msgstr "I/O fitxategi errorea jokua irakurtzerakoan"
 
-#: src/game.cpp:899
+#: src/game.cpp:738
 msgid "Get More Campaigns..."
 msgstr "Lortu kanpaina gehiago..."
 
-#: src/game.cpp:900
+#: src/game.cpp:739
 msgid "Download more campaigns from a server on Internet."
 msgstr "Jaitsi kanpaina gehiago Internetko zerbitzari batetik."
 
-#: src/game.cpp:910
+#: src/game.cpp:749
 msgid "Choose the campaign you want to play:"
 msgstr "Aukeratu jolastu nahi duzun kanpaina:"
 
-#: src/game.cpp:939
+#: src/game.cpp:778
 msgid "Difficulty"
 msgstr "Zailtasuna"
 
-#: src/game.cpp:940
+#: src/game.cpp:779
 msgid "Select difficulty level:"
 msgstr "Hautatu zailtasun maila:"
 
-#: src/game.cpp:965
+#: src/game.cpp:804
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:968
+#: src/game.cpp:807
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:971
+#: src/game.cpp:810
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:996
+#: src/game.cpp:837
 msgid "Connect to Server"
 msgstr "Zerbitzarira konektatu"
 
-#: src/game.cpp:997
+#: src/game.cpp:838
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Orain kanpaina zerbitzari batera konektatuko zara kanpaina gehiago jaisteko."
 
-#: src/game.cpp:998
+#: src/game.cpp:839
 msgid "Server: "
 msgstr "Zerbitzaria:"
 
-#: src/game.cpp:1011
+#: src/game.cpp:852
 msgid "Could not connect to host."
 msgstr "Ezin izan da ostalariari konektatu."
 
-#: src/game.cpp:1019
+#: src/game.cpp:860
 msgid "Awaiting response from server"
 msgstr "Zerbitzaritik erantzuna itxaroten"
 
-#: src/game.cpp:1032
+#: src/game.cpp:873
 msgid "Error communicating with the server."
 msgstr "Errorea zerbitzariarekin komunikatzen."
 
-#: src/game.cpp:1038 src/help.cpp:1125 src/help.cpp:1126 src/playturn.cpp:2124
+#: src/game.cpp:879 src/help.cpp:1098 src/playturn.cpp:2139
 msgid "Name"
 msgstr "Izena"
 
-#: src/game.cpp:1039 src/titlescreen.cpp:169
+#: src/game.cpp:880 src/titlescreen.cpp:169
 msgid "Version"
 msgstr "Bertsioa"
 
-#: src/game.cpp:1040
+#: src/game.cpp:881
 msgid "Author"
 msgstr "Egilea"
 
-#: src/game.cpp:1041
+#: src/game.cpp:882
 msgid "Downloads"
 msgstr "Deskargak"
 
-#: src/game.cpp:1042
+#: src/game.cpp:883
 msgid "Size"
 msgstr "Tamaina"
 
-#: src/game.cpp:1071
+#: src/game.cpp:927
 msgid "Publish campaign: "
 msgstr "Kanpaina argitaratu: "
 
-#: src/game.cpp:1075
+#: src/game.cpp:931
 msgid "Delete campaign: "
 msgstr "Kanpaina ezabatu: "
 
-#: src/game.cpp:1079
+#: src/game.cpp:935
 msgid "There are no campaigns available for download from this server."
 msgstr "Ez dago jeisteko kanpainarik zerbitzari honetan."
 
-#: src/game.cpp:1083
+#: src/game.cpp:939
 msgid "Choose the campaign to download."
 msgstr "Hautatu jeitsi nahi duzun kanpaina"
 
-#: src/game.cpp:1083
+#: src/game.cpp:939
 msgid "Get Campaign"
 msgstr "Kanpaina jeitsi"
 
-#: src/game.cpp:1102
+#: src/game.cpp:958
 msgid "Downloading campaign..."
 msgstr "Kanpaina jeisten..."
 
-#: src/game.cpp:1116
+#: src/game.cpp:972
 msgid "Cannot rescan the filesystem"
 msgstr "Ezin da berriz eskaneatu fitxategi sistema"
 
-#: src/game.cpp:1127
+#: src/game.cpp:983
 msgid "Campaign Installed"
 msgstr "Kanpaina instalatua"
 
-#: src/game.cpp:1127
+#: src/game.cpp:983
 msgid "The campaign has been installed."
 msgstr "Kanpaina instalatua izan da"
 
-#: src/game.cpp:1129
+#: src/game.cpp:985
 msgid "Network communication error."
 msgstr "Sare komunikazio errorea."
 
-#: src/game.cpp:1131
+#: src/game.cpp:987
 msgid "Remote host disconnected."
 msgstr "Urruneko ostalariak deskonektatu egin du."
 
-#: src/game.cpp:1133
+#: src/game.cpp:989
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Arazo bat egon da kanpaina instalatzeko behar den fitxategia sortzen."
 
-#: src/game.cpp:1145 src/game.cpp:1185 src/game.cpp:1210
-#: src/multiplayer.cpp:202 src/multiplayer_ui.cpp:34
+#: src/game.cpp:1001 src/game.cpp:1041 src/game.cpp:1066
+#: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
 msgid "Connection timed out"
 msgstr "Konexioa denboraz kanpo"
 
-#: src/game.cpp:1148 src/game.cpp:1187 src/game.cpp:1212
+#: src/game.cpp:1004 src/game.cpp:1043 src/game.cpp:1068
 msgid "The server responded with an error: \""
 msgstr "Zerbitzariak errore batekin erantzun du: \""
 
-#: src/game.cpp:1152
+#: src/game.cpp:1008
 msgid "Terms"
 msgstr "Terminoak"
 
-#: src/game.cpp:1190 src/game.cpp:1215
+#: src/game.cpp:1046 src/game.cpp:1071
 msgid "Response"
 msgstr "Erantzuna"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1086
 msgid "Join Official Server"
 msgstr "Sartu zerbitzari ofizialera"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1087
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Saioa hasi Wesnoth-eko jokalari-anitzeko zerbitzari ofizialean"
 
-#: src/game.cpp:1229 src/multiplayer_lobby.cpp:29
+#: src/game.cpp:1089 src/multiplayer_lobby.cpp:29
 msgid "Join Game"
 msgstr "Sartu jokura"
 
-#: src/game.cpp:1229
+#: src/game.cpp:1090
 msgid "Join a server or hosted game"
 msgstr "Sartu zerbitzari batera edo ostatutako joku batera"
 
-#: src/game.cpp:1230
+#: src/game.cpp:1092
 msgid "Host Networked Game"
 msgstr "Ostatu sare jokua"
 
-#: src/game.cpp:1230
+#: src/game.cpp:1093
 msgid "Host a game without using a server"
 msgstr "Ostatu joku bat zerbitzaria erabili gabe"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1095
 msgid "Hotseat Game"
 msgstr ""
 
-#: src/game.cpp:1231
+#: src/game.cpp:1096
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Jokatu jokalari-anitzeko jokua makina berdina banatzen"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1098
 msgid "Human vs AI"
 msgstr "Gizakia vs AA"
 
-#: src/game.cpp:1232
+#: src/game.cpp:1099
 msgid "Play a game against AI opponents"
 msgstr "Jokatu AA aurkarien kontra"
 
-#: src/game.cpp:1235 src/multiplayer.cpp:186
+#: src/game.cpp:1105 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Saioa hasi"
 
-#: src/game.cpp:1305
+#: src/game.cpp:1136
+msgid "The game could not be loaded: "
+msgstr "Ezin izan da jokua kargatu: "
+
+#: src/game.cpp:1138
+msgid "Error while playing the game: "
+msgstr "Errorea jokuan jolasterakoan:"
+
+#: src/game.cpp:1150
+msgid "The game map could not be loaded: "
+msgstr "Ezin izan da joku mapa kargatu: "
+
+#: src/game.cpp:1177
 msgid "Language"
 msgstr "Hizkuntza"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1178
 msgid "Choose your preferred language:"
 msgstr "Aukeratu zure lehentasunezko hizkuntza:"
 
-#: src/game.cpp:1391
+#: src/game.cpp:1267
 #, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 
-#: src/game.cpp:1435
+#: src/game.cpp:1316
 msgid "Error loading game configuration files: '"
 msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 
-#: src/game.cpp:1436
+#: src/game.cpp:1317
 msgid "' (The game will now exit)"
 msgstr "' (Jokua orain irten egingo da)"
 
-#: src/game.cpp:1509
+#: src/game.cpp:1390
 msgid "Battle for Wesnoth"
 msgstr "Wesnoth-eko Guda"
 
-#: src/game_events.cpp:574
+#: src/game_events.cpp:579
 msgid "Victory:"
 msgstr "Garaipena:"
 
-#: src/game_events.cpp:577
+#: src/game_events.cpp:582
 msgid "Defeat:"
 msgstr "Gainditu:"
 
-#: src/help.cpp:1063
+#: src/help.cpp:1038
 msgid "Advances to: "
 msgstr "Hurrengo unitatea: "
 
-#: src/help.cpp:1084
+#: src/help.cpp:1059
 msgid "Abilities: "
 msgstr "Trebetasunak:"
 
-#: src/help.cpp:1103
+#: src/help.cpp:1078
 msgid "Alignment: "
 msgstr ""
 
-#: src/help.cpp:1107
+#: src/help.cpp:1082
 msgid "Required XP: "
 msgstr "Beharrezko EP: "
 
-#: src/help.cpp:1118 src/reports.cpp:236
+#: src/help.cpp:1091 src/reports.cpp:236
 msgid "attacks"
 msgstr "erasotzen du"
 
-#: src/help.cpp:1129 src/help.cpp:1130 src/playturn.cpp:2123
+#: src/help.cpp:1099 src/playturn.cpp:2138
 msgid "Type"
 msgstr "Mota"
 
-#: src/help.cpp:1133 src/help.cpp:1134 src/unit_types.cpp:312
-msgid "Dmg"
-msgstr "Kalte"
-
-#: src/help.cpp:1137 src/help.cpp:1138
+#: src/help.cpp:1100
 msgid "Strikes"
 msgstr "Atakatu"
 
-#: src/help.cpp:1141 src/help.cpp:1142
+#: src/help.cpp:1101
 msgid "Range"
 msgstr "Distantzia"
 
-#: src/help.cpp:1145 src/help.cpp:1146
+#: src/help.cpp:1102
 msgid "Special"
 msgstr "Berezia"
 
-#: src/help.cpp:1191
+#: src/help.cpp:1142
 msgid "Resistances"
 msgstr "Erresistentzia"
 
-#: src/help.cpp:1195 src/help.cpp:1196
+#: src/help.cpp:1146
 msgid "Attack Type"
 msgstr "Atake moeta"
 
-#: src/help.cpp:1199 src/help.cpp:1200
+#: src/help.cpp:1147
 msgid "Resistance"
 msgstr "Erresistentzia"
 
-#: src/help.cpp:1227
+#: src/help.cpp:1172
 msgid "Terrain Modifiers"
 msgstr "Lursail modifikatzaileak"
 
-#: src/help.cpp:1231 src/help.cpp:1232
+#: src/help.cpp:1176
 msgid "Terrain"
 msgstr "Lursaila"
 
-#: src/help.cpp:1239 src/help.cpp:1240
+#: src/help.cpp:1178
 msgid "Defense"
 msgstr "Defentsa"
 
-#: src/help.cpp:1340
+#: src/help.cpp:1276
 msgid "or"
 msgstr "edo"
 
-#: src/help.cpp:1347
+#: src/help.cpp:1283
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
 
-#: src/help.cpp:1349
+#: src/help.cpp:1285
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr ""
 
-#: src/help.cpp:1353
+#: src/help.cpp:1289
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
 
-#: src/help.cpp:1355
+#: src/help.cpp:1291
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
 
-#: src/help.cpp:1357
+#: src/help.cpp:1293
 msgid "This terrain gives healing."
 msgstr ""
 
-#: src/help.cpp:2228
+#: src/help.cpp:2158
 msgid "< Back"
 msgstr "< Atzera"
 
-#: src/help.cpp:2229
+#: src/help.cpp:2159
 msgid "Forward >"
 msgstr "Aurrera >"
 
-#: src/help.cpp:2716
+#: src/help.cpp:2636
 msgid "The Battle for Wesnoth Help"
 msgstr "Wesnoth-eko Gudaren Laguntza"
 
@@ -7217,7 +7216,7 @@ msgstr "Utzi"
 msgid "The End"
 msgstr "Amaiera"
 
-#: src/language.cpp:39 src/language.cpp:160
+#: src/language.cpp:41 src/language.cpp:177
 msgid "System default language"
 msgstr "Sistemako lehenetsitako hizkuntza"
 
@@ -7282,123 +7281,123 @@ msgstr "Barnealdea"
 msgid "Island"
 msgstr "Irla"
 
-#: src/multiplayer.cpp:91
+#: src/multiplayer.cpp:92
 msgid "Connect to Host"
 msgstr "Ostalariari konektatu"
 
-#: src/multiplayer.cpp:93
+#: src/multiplayer.cpp:94
 msgid "Choose host to connect to: "
 msgstr "Aukeratu konektatu nahi duzun ostalaria:"
 
-#: src/multiplayer.cpp:132
+#: src/multiplayer.cpp:133
 msgid "Connecting to remote host..."
 msgstr ""
 
-#: src/multiplayer.cpp:141
+#: src/multiplayer.cpp:142
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 
-#: src/multiplayer.cpp:153
+#: src/multiplayer.cpp:154
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/multiplayer.cpp:185
+#: src/multiplayer.cpp:186
 msgid "You must log in to this server"
 msgstr "Zerbitzarian saioa hasi behar duzu"
 
-#: src/multiplayer_connect.cpp:298
+#: src/multiplayer_connect.cpp:297
 msgid "(Vacant slot)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:304
+#: src/multiplayer_connect.cpp:303
 msgid "Anonymous local player"
 msgstr "Jokalari lokal anonimoa"
 
-#: src/multiplayer_connect.cpp:310
+#: src/multiplayer_connect.cpp:309
 msgid "Computer player"
 msgstr "Ordenagailuko jokalaria"
 
-#: src/multiplayer_connect.cpp:313
+#: src/multiplayer_connect.cpp:312
 msgid "(Empty slot)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:450
+#: src/multiplayer_connect.cpp:449
 msgid "No non-random sides in the current era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:466
+#: src/multiplayer_connect.cpp:465
 msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:480 src/multiplayer_connect.cpp:489
+#: src/multiplayer_connect.cpp:479 src/multiplayer_connect.cpp:488
 msgid "Team"
 msgstr "Taldea"
 
-#: src/multiplayer_connect.cpp:487
+#: src/multiplayer_connect.cpp:486
 msgid "Player/Type"
 msgstr "Jokalaria/Moeta"
 
-#: src/multiplayer_connect.cpp:488
+#: src/multiplayer_connect.cpp:487
 msgid "Faction"
 msgstr "Fakzio"
 
-#: src/multiplayer_connect.cpp:490
+#: src/multiplayer_connect.cpp:489
 msgid "Color"
 msgstr "Kolorea"
 
-#: src/multiplayer_connect.cpp:491 src/playturn.cpp:1690 src/playturn.cpp:1697
+#: src/multiplayer_connect.cpp:490 src/playturn.cpp:1704 src/playturn.cpp:1711
 msgid "Gold"
 msgstr "Urrea"
 
-#: src/multiplayer_connect.cpp:493
+#: src/multiplayer_connect.cpp:492
 msgid "Computer vs Computer"
 msgstr "Ordenagailua vs Ordenagailua"
 
-#: src/multiplayer_connect.cpp:494
+#: src/multiplayer_connect.cpp:493
 msgid "I'm Ready"
 msgstr "Prest Nago"
 
-#: src/multiplayer_connect.cpp:510
+#: src/multiplayer_connect.cpp:511
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:800
+#: src/multiplayer_connect.cpp:788
 msgid "Game Lobby"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:820
+#: src/multiplayer_connect.cpp:808
 msgid "Network Player"
 msgstr "Sareko jokalaria"
 
-#: src/multiplayer_connect.cpp:821
+#: src/multiplayer_connect.cpp:809
 msgid "Local Player"
 msgstr "Jokalari lokala"
 
-#: src/multiplayer_connect.cpp:822
+#: src/multiplayer_connect.cpp:810
 msgid "Computer Player"
 msgstr "Ordenagailuko jokalaria"
 
-#: src/multiplayer_connect.cpp:823
+#: src/multiplayer_connect.cpp:811
 msgid "Empty"
 msgstr "Hutsa"
 
-#: src/multiplayer_connect.cpp:891
+#: src/multiplayer_connect.cpp:880
 msgid "This is not a multiplayer save"
 msgstr "Hau ez da jokalari-anitzeko gordeketa"
 
-#: src/multiplayer_connect.cpp:937
+#: src/multiplayer_connect.cpp:918
 msgid "Cannot find era $era"
 msgstr "Ezin izan da $era garaia aurkitu"
 
-#: src/multiplayer_connect.cpp:957
+#: src/multiplayer_connect.cpp:934
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:993
+#: src/multiplayer_connect.cpp:970
 msgid "Waiting for players to join..."
 msgstr "Jokalariak sartu zai..."
 
@@ -7480,35 +7479,35 @@ msgstr "Ez da garairik aurkitu"
 msgid "$login's game"
 msgstr "$login-(e)n jokua"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:167
 msgid "Invalid era selected"
 msgstr "Baliogabeko garaia aukeratuta"
 
-#: src/multiplayer_create.cpp:197
+#: src/multiplayer_create.cpp:198
 msgid "You must enter a name."
 msgstr "Izen bat sartu behar duzu."
 
-#: src/multiplayer_create.cpp:206
+#: src/multiplayer_create.cpp:207
 msgid "Turns: "
 msgstr "Txandak: "
 
-#: src/multiplayer_create.cpp:208
+#: src/multiplayer_create.cpp:209
 msgid "Unlimited Turns"
 msgstr "Txanda mugagabeak"
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:216
 msgid "Village Gold: "
 msgstr "Herrixkaren urrea: "
 
-#: src/multiplayer_create.cpp:221
+#: src/multiplayer_create.cpp:222
 msgid "Experience Modifier: "
 msgstr "Esperientzi modifikatzaileak: "
 
-#: src/multiplayer_create.cpp:324
+#: src/multiplayer_create.cpp:325
 msgid "Players: "
 msgstr "Jokalariak: "
 
-#: src/multiplayer_create.cpp:384 src/multiplayer_lobby.cpp:30
+#: src/multiplayer_create.cpp:386 src/multiplayer_lobby.cpp:30
 msgid "Create Game"
 msgstr "Jokua sortu"
 
@@ -7532,156 +7531,156 @@ msgstr ""
 msgid "<no games open>"
 msgstr "<ez dago joku irekirik>"
 
-#: src/multiplayer_ui.cpp:50
+#: src/multiplayer_ui.cpp:78
 msgid "Red"
 msgstr "Gorria"
 
-#: src/multiplayer_ui.cpp:52
+#: src/multiplayer_ui.cpp:80
 msgid "Blue"
 msgstr "Urdina"
 
-#: src/multiplayer_ui.cpp:54
+#: src/multiplayer_ui.cpp:82
 msgid "Green"
 msgstr "Berdea"
 
-#: src/multiplayer_ui.cpp:56
+#: src/multiplayer_ui.cpp:84
 msgid "Yellow"
 msgstr "Horia"
 
-#: src/multiplayer_ui.cpp:58
+#: src/multiplayer_ui.cpp:86
 msgid "Purple"
 msgstr "Morea"
 
-#: src/multiplayer_ui.cpp:60
+#: src/multiplayer_ui.cpp:88
 msgid "Orange"
 msgstr "Laranja"
 
-#: src/multiplayer_ui.cpp:62
+#: src/multiplayer_ui.cpp:90
 msgid "Grey"
 msgstr "Grisa"
 
-#: src/multiplayer_ui.cpp:64
+#: src/multiplayer_ui.cpp:92
 msgid "White"
 msgstr "Zuria"
 
-#: src/multiplayer_ui.cpp:66
+#: src/multiplayer_ui.cpp:94
 msgid "Brown"
 msgstr "Marroia"
 
-#: src/multiplayer_ui.cpp:68
+#: src/multiplayer_ui.cpp:96
 msgid "Invalid colour"
 msgstr "Baliogabeko kolorea"
 
-#: src/multiplayer_wait.cpp:114
+#: src/multiplayer_wait.cpp:113
 msgid "Leader: "
 msgstr "Burua: "
 
-#: src/multiplayer_wait.cpp:116
+#: src/multiplayer_wait.cpp:115
 msgid "Recruits: "
 msgstr "Bilketak: "
 
-#: src/multiplayer_wait.cpp:149
+#: src/multiplayer_wait.cpp:148
 msgid "Waiting for game to start..."
 msgstr "Jokua hastear dago..."
 
-#: src/multiplayer_wait.cpp:168
+#: src/multiplayer_wait.cpp:167
 msgid "Getting game data..."
 msgstr "Jokuaren datuak lortzen..."
 
-#: src/multiplayer_wait.cpp:181
+#: src/multiplayer_wait.cpp:180
 msgid "No multiplayer sides available in this game"
 msgstr ""
 
-#: src/multiplayer_wait.cpp:208
+#: src/multiplayer_wait.cpp:207
 msgid "Era not available"
 msgstr "Garaia ez dao eskuragarri"
 
-#: src/multiplayer_wait.cpp:213
+#: src/multiplayer_wait.cpp:212
 msgid "No multiplayer sides found"
 msgstr "Ez da jokalari anitzeko alderik aurkitu"
 
-#: src/multiplayer_wait.cpp:230
+#: src/multiplayer_wait.cpp:229
 msgid "Choose your side:"
 msgstr "Aukeratu zure aldea:"
 
-#: src/multiplayer_wait.cpp:411 src/unit.cpp:1151
+#: src/multiplayer_wait.cpp:374 src/unit.cpp:1164
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:411 src/unit.cpp:1158
+#: src/multiplayer_wait.cpp:374 src/unit.cpp:1171
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:412 src/playturn.cpp:1787
+#: src/multiplayer_wait.cpp:375 src/playturn.cpp:1801
 msgid "unit^Gold"
 msgstr "Urrea"
 
-#: src/playlevel.cpp:592 src/playlevel.cpp:859
+#: src/playlevel.cpp:602 src/playlevel.cpp:871
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/playlevel.cpp:743
+#: src/playlevel.cpp:755
 msgid "Game Over"
 msgstr "Jokua bukatu da"
 
-#: src/playlevel.cpp:744
+#: src/playlevel.cpp:756
 msgid "The game is over."
 msgstr "Jokua bukatu da."
 
-#: src/playlevel.cpp:757
+#: src/playlevel.cpp:769
 msgid "Defeat"
 msgstr "Gainditu"
 
-#: src/playlevel.cpp:758
+#: src/playlevel.cpp:770
 msgid "You have been defeated!"
 msgstr "Gainditua izan zara!"
 
-#: src/playlevel.cpp:827
+#: src/playlevel.cpp:839
 msgid "Remaining gold: "
 msgstr "Gelditzen den urrea:"
 
-#: src/playlevel.cpp:830
+#: src/playlevel.cpp:842
 msgid "Early finish bonus: "
 msgstr ""
 
-#: src/playlevel.cpp:832
+#: src/playlevel.cpp:844
 msgid "per turn"
 msgstr "txandako"
 
-#: src/playlevel.cpp:833
+#: src/playlevel.cpp:845
 msgid "Turns finished early: "
 msgstr "Txanda azkarregi amaitu da: "
 
-#: src/playlevel.cpp:835
+#: src/playlevel.cpp:847
 msgid "Bonus: "
 msgstr "Bonusa: "
 
-#: src/playlevel.cpp:837
+#: src/playlevel.cpp:849
 msgid "Gold: "
 msgstr "Urrea:"
 
-#: src/playlevel.cpp:842
+#: src/playlevel.cpp:854
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "Urrearen %80a hurrengo gudagunerako gorde da"
 
-#: src/playlevel.cpp:843
+#: src/playlevel.cpp:855
 msgid "Retained Gold: "
 msgstr "Lortutako Urrea:"
 
-#: src/playlevel.cpp:848
+#: src/playlevel.cpp:860
 msgid "Victory"
 msgstr "Garaipena!"
 
-#: src/playlevel.cpp:849
+#: src/playlevel.cpp:861
 msgid "You have emerged victorious!"
 msgstr "Garaile irten zara gudatik!"
 
-#: src/playlevel.cpp:853
+#: src/playlevel.cpp:865
 msgid "Scenario Report"
 msgstr "Gudagunearen txostena"
 
-#: src/playlevel.cpp:874
+#: src/playlevel.cpp:886
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7717,106 +7716,114 @@ msgstr "Etsaia Eraso"
 msgid "Choose weapon:"
 msgstr "Arma aukeratu:"
 
-#: src/playturn.cpp:1270
+#: src/playturn.cpp:1268
 #, fuzzy
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "Oraindik ez duzu zure txanda hasi. Benetan bukatu nahi duzu zure txanda?"
 
-#: src/playturn.cpp:1279 src/playturn.cpp:1284
+#: src/playturn.cpp:1277 src/playturn.cpp:1282
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Zenbait unitatek mugitu daitezke oraindik. Benetan bukatu nahi duzu zure "
 "txanda?"
 
-#: src/playturn.cpp:1299
+#: src/playturn.cpp:1297
 msgid "Auto-Save"
 msgstr "Auto-Gorde"
 
-#: src/playturn.cpp:1301
+#: src/playturn.cpp:1299
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ezin izan da jokua automatikoki gorde. Mesedez gorde ezazu eskuz"
 
-#: src/playturn.cpp:1504
+#: src/playturn.cpp:1510
 msgid "Rename Unit"
 msgstr "Unitatea berrizendatu"
 
-#: src/playturn.cpp:1553 src/playturn.cpp:1567
+#: src/playturn.cpp:1556
+msgid "Name:"
+msgstr "Izena:"
+
+#: src/playturn.cpp:1559 src/playturn.cpp:1573
 msgid "Error"
 msgstr "Okerra"
 
-#: src/playturn.cpp:1553
+#: src/playturn.cpp:1559
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
 
-#: src/playturn.cpp:1564
+#: src/playturn.cpp:1570
 msgid "Saved"
 msgstr "Gordeta"
 
-#: src/playturn.cpp:1564
+#: src/playturn.cpp:1570
 msgid "The game has been saved"
 msgstr "Jokua gordeta"
 
-#: src/playturn.cpp:1689
+#: src/playturn.cpp:1573
+msgid "The game could not be saved"
+msgstr "Ezin izan da jokua gorde"
+
+#: src/playturn.cpp:1703
 msgid "Leader"
 msgstr "Burua"
 
-#: src/playturn.cpp:1691
+#: src/playturn.cpp:1705
 msgid "Villages"
 msgstr "Herrixkak"
 
-#: src/playturn.cpp:1693
+#: src/playturn.cpp:1707
 msgid "Upkeep"
 msgstr "Gastuak"
 
-#: src/playturn.cpp:1694
+#: src/playturn.cpp:1708
 msgid "Income"
 msgstr "Irabaziak"
 
-#: src/playturn.cpp:1793
+#: src/playturn.cpp:1807
 msgid "You have no units available to recruit."
 msgstr "Ez duzu biltzeko unitaterik."
 
-#: src/playturn.cpp:1805
+#: src/playturn.cpp:1819
 msgid "Recruit"
 msgstr "Bildu"
 
-#: src/playturn.cpp:1806 src/playturn.cpp:1990
+#: src/playturn.cpp:1820 src/playturn.cpp:2004
 msgid "Select unit:"
 msgstr "Unitatea Aukeratu:"
 
-#: src/playturn.cpp:1840
+#: src/playturn.cpp:1854
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Ez duzu unitate hori biltzeko adina diru"
 
-#: src/playturn.cpp:1898
+#: src/playturn.cpp:1912
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1900
+#: src/playturn.cpp:1914
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1905
+#: src/playturn.cpp:1919
 msgid "her"
 msgstr "bera"
 
-#: src/playturn.cpp:1905
+#: src/playturn.cpp:1919
 msgid "him"
 msgstr "bera"
 
-#: src/playturn.cpp:1946
+#: src/playturn.cpp:1960
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Zure gudarietatik aldendua izan zara eta ezin dituzu deitu"
 
-#: src/playturn.cpp:1948
+#: src/playturn.cpp:1962
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7824,115 +7831,115 @@ msgstr ""
 "Ez dago deitzeko unitaterik\n"
 "(aurreko guda-guneko bizirik irtendako unitaterik izan behar duzu)"
 
-#: src/playturn.cpp:1954
+#: src/playturn.cpp:1968
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Gutxienez $cost urre izan behar duzu unitateak deidu ahal izateko"
 
-#: src/playturn.cpp:1964
+#: src/playturn.cpp:1978
 msgid "level: "
 msgstr "maila:"
 
-#: src/playturn.cpp:1977
+#: src/playturn.cpp:1991
 msgid "Dismiss Unit"
 msgstr "Unitatea lizentziatu"
 
-#: src/playturn.cpp:1989
+#: src/playturn.cpp:2003
 msgid "Recall"
 msgstr "Deitu"
 
-#: src/playturn.cpp:2034
+#: src/playturn.cpp:2049
 msgid "Message:"
 msgstr "Mezua:"
 
-#: src/playturn.cpp:2034
+#: src/playturn.cpp:2049
 msgid "Send to allies only"
 msgstr "Lagunei soilik bidali"
 
-#: src/playturn.cpp:2128 src/unit.cpp:1083
+#: src/playturn.cpp:2143 src/unit.cpp:1096
 msgid "Moves"
 msgstr "Mugimenduak"
 
-#: src/playturn.cpp:2129
+#: src/playturn.cpp:2144
 msgid "Location"
 msgstr "Kokapena"
 
-#: src/playturn.cpp:2177
+#: src/playturn.cpp:2192
 msgid "Unit List"
 msgstr "Unitate Zerrenda"
 
-#: src/playturn.cpp:2212 src/playturn.cpp:2274
+#: src/playturn.cpp:2227 src/playturn.cpp:2289
 msgid "Recruits"
 msgstr "Bilketak"
 
-#: src/playturn.cpp:2218 src/playturn.cpp:2278
+#: src/playturn.cpp:2233 src/playturn.cpp:2293
 msgid "Recalls"
 msgstr "Deiak"
 
-#: src/playturn.cpp:2224 src/playturn.cpp:2282
+#: src/playturn.cpp:2239 src/playturn.cpp:2297
 msgid "Advancements"
 msgstr "Aurrerapenak"
 
-#: src/playturn.cpp:2230 src/playturn.cpp:2286
+#: src/playturn.cpp:2245 src/playturn.cpp:2301
 msgid "Losses"
 msgstr "Galdutakoak"
 
-#: src/playturn.cpp:2236 src/playturn.cpp:2290
+#: src/playturn.cpp:2251 src/playturn.cpp:2305
 msgid "Kills"
 msgstr "Hildakoak"
 
-#: src/playturn.cpp:2242
+#: src/playturn.cpp:2257
 msgid "Damage Inflicted"
 msgstr "Egindako kaltea"
 
-#: src/playturn.cpp:2248
+#: src/playturn.cpp:2263
 msgid "Damage Taken"
 msgstr "Hartutako kaltea"
 
-#: src/playturn.cpp:2254
+#: src/playturn.cpp:2269
 msgid "Damage Inflicted (EV)"
 msgstr "Egindako kaltea (BE)"
 
-#: src/playturn.cpp:2261
+#: src/playturn.cpp:2276
 msgid "Damage Taken (EV)"
 msgstr "Hartutako kaltea (BE)"
 
-#: src/playturn.cpp:2267
+#: src/playturn.cpp:2282
 msgid "Statistics"
 msgstr "Estatistikak"
 
-#: src/playturn.cpp:2304
+#: src/playturn.cpp:2319
 msgid "Search"
 msgstr "Bilatu"
 
-#: src/playturn.cpp:2314
+#: src/playturn.cpp:2329
 msgid "prompt^Command:"
 msgstr "Komandoa:"
 
-#: src/playturn.cpp:2325
+#: src/playturn.cpp:2340
 msgid "Chat Log"
 msgstr "Berriketa historikoa"
 
-#: src/playturn.cpp:2390
+#: src/playturn.cpp:2405
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Ezin izan da '$search' katea duen etiketa edo unitaterik aurkitu."
 
-#: src/playturn.cpp:2421
+#: src/playturn.cpp:2436
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/playturn.cpp:2427
+#: src/playturn.cpp:2442
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/playturn.cpp:2512
+#: src/playturn.cpp:2527
 msgid "Place Label"
 msgstr "Etiketa ezarri"
 
-#: src/playturn.cpp:2513
+#: src/playturn.cpp:2528
 msgid "Label:"
 msgstr "Etiketa:"
 
-#: src/playturn.cpp:2645
+#: src/playturn.cpp:2660
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -7940,23 +7947,23 @@ msgstr ""
 "Jokuek sinkronizazioa galdu dute eta irten beharko dute. Zure jokuaren "
 "akatsen historikoa gorde nahi duzu?"
 
-#: src/playturn.cpp:2698
+#: src/playturn.cpp:2713
 msgid "Replace with AI"
 msgstr "AA-rekin ordeztu"
 
-#: src/playturn.cpp:2699
+#: src/playturn.cpp:2714
 msgid "Replace with local player"
 msgstr "Jokalari lokalarekin ordezkatu"
 
-#: src/playturn.cpp:2700
+#: src/playturn.cpp:2715
 msgid "Abort game"
 msgstr "Jokoa bertan behera utzi"
 
-#: src/playturn.cpp:2703
+#: src/playturn.cpp:2718
 msgid "Replace with "
 msgstr "Ordeztu "
 
-#: src/playturn.cpp:2707
+#: src/playturn.cpp:2722
 msgid "has left the game. What do you want to do?"
 msgstr "jokoa utzi du. Zer egin nahi duzu?"
 
@@ -8008,7 +8015,7 @@ msgstr "Unitate hau harkaitz bihurtu da. Ezin du mugitu edo eraso."
 msgid "stone: "
 msgstr "harria:"
 
-#: src/reports.cpp:235
+#: src/reports.cpp:235 src/unit_types.cpp:311
 msgid "damage"
 msgstr "kaltea"
 
@@ -8040,70 +8047,62 @@ msgstr "Herrixka lagun"
 msgid "Observers:"
 msgstr "Ikusleak:"
 
-#: src/serialization/parser.cpp:104
+#: src/serialization/parser.cpp:98
 msgid "Unexpected characters at line start"
 msgstr ""
 
-#: src/serialization/parser.cpp:130
-msgid "Missing closing tag for tag $tag (file $file, line $line)"
+#: src/serialization/parser.cpp:124
+msgid "Missing closing tag for tag $tag at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:131
-msgid "Missing closing tag for tag $tag (line $line)"
-msgstr ""
-
-#: src/serialization/parser.cpp:146
+#: src/serialization/parser.cpp:139
 msgid "Unterminated [element] tag"
 msgstr ""
 
-#: src/serialization/parser.cpp:157 src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:149 src/serialization/parser.cpp:185
 #, fuzzy
 msgid "Invalid tag name"
 msgstr "Baliogabeko garaia aukeratuta"
 
-#: src/serialization/parser.cpp:160
+#: src/serialization/parser.cpp:152
 msgid "Unterminated [+element] tag"
 msgstr ""
 
-#: src/serialization/parser.cpp:177
+#: src/serialization/parser.cpp:168
 msgid "Invalid closing tag name"
 msgstr ""
 
-#: src/serialization/parser.cpp:180
+#: src/serialization/parser.cpp:171
 msgid "Unterminated closing tag"
 msgstr ""
 
-#: src/serialization/parser.cpp:182
+#: src/serialization/parser.cpp:173
 msgid "Unexpected closing tag"
 msgstr ""
 
-#: src/serialization/parser.cpp:187
-msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
+#: src/serialization/parser.cpp:179
+msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
 
-#: src/serialization/parser.cpp:188
-msgid "Found invalid closing tag for tag $tag (line $line)"
-msgstr ""
-
-#: src/serialization/parser.cpp:214 src/serialization/parser.cpp:226
+#: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 #, fuzzy
 msgid "Empty variable name"
 msgstr "Baliogabeko garaia aukeratuta"
 
-#: src/serialization/parser.cpp:220
+#: src/serialization/parser.cpp:210
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 
-#: src/serialization/parser.cpp:248 src/serialization/parser.cpp:272
+#: src/serialization/parser.cpp:238 src/serialization/parser.cpp:262
 msgid "Unterminated quoted string"
 msgstr ""
 
-#: src/serialization/parser.cpp:319
-msgid "$error in file $file (line $line, column $column)"
+#: src/serialization/parser.cpp:285
+msgid " included from "
 msgstr ""
 
-#: src/serialization/parser.cpp:320
-msgid "$error (line $line, column $column)"
+#: src/serialization/parser.cpp:306
+msgid "$error at $pos"
 msgstr ""
 
 #: src/titlescreen.cpp:186
@@ -8176,34 +8175,46 @@ msgstr "Gehiago"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth-eko liburukotea"
 
-#: src/unit.cpp:1107
-msgid " XP to advance"
+#: src/unit.cpp:1042 src/unit.cpp:1169
+msgid "; "
 msgstr ""
 
-#: src/unit.cpp:1144
+#: src/unit.cpp:1121
+msgid "XP to advance"
+msgstr ""
+
+#: src/unit.cpp:1160
 #, fuzzy
 msgid ": "
 msgstr "BP: "
 
-#: src/unit.cpp:1156
-msgid "; "
-msgstr ""
-
-#: src/unit_types.cpp:324
+#: src/unit_types.cpp:323
 msgid "strikes"
 msgstr "erasoak"
 
-#: src/unit_types.cpp:932
+#: src/unit_types.cpp:933
 msgid "chaotic"
 msgstr "kaotikoa"
 
-#: src/unit_types.cpp:932
+#: src/unit_types.cpp:933
 msgid "lawful"
 msgstr "bidezkoa"
 
-#: src/unit_types.cpp:932
+#: src/unit_types.cpp:933
 msgid "neutral"
 msgstr "neutrala"
+
+#~ msgid "Do you want to save a replay of this scenario?"
+#~ msgstr "Gudagune honen errepikapena gorde nahi al duzu?"
+
+#~ msgid "Do you want to save your game?"
+#~ msgstr "Zure jokua gorde nahi duzu?"
+
+#~ msgid "Unknown scenario: '"
+#~ msgstr "Guda leku ezezaguna: '"
+
+#~ msgid "Dmg"
+#~ msgstr "Kalte"
 
 #~ msgid "Iterations:"
 #~ msgstr "Iterazioak:"

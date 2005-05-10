@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-18 09:23+0200\n"
+"POT-Creation-Date: 2005-05-10 19:36+0200\n"
 "PO-Revision-Date: 2004-11-15 22:20+0100\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <en@li.org>\n"
@@ -48,7 +48,7 @@ msgstr "Pomanjšaj"
 msgid "Default Zoom"
 msgstr "Privzeta povečava"
 
-#: src/hotkeys.cpp:53 src/preferences.cpp:831
+#: src/hotkeys.cpp:53 src/preferences.cpp:837
 msgid "Toggle Full Screen"
 msgstr "Celozaslonski način"
 
@@ -116,7 +116,7 @@ msgstr "Ustvari enoto (Debug!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Spremeni enotino stran (Debug!)"
 
-#: src/hotkeys.cpp:70 src/preferences.cpp:1074
+#: src/hotkeys.cpp:70 src/preferences.cpp:1156
 msgid "Preferences"
 msgstr "Nastavitve"
 
@@ -279,185 +279,199 @@ msgstr ""
 msgid "player"
 msgstr "igralec"
 
-#: src/preferences.cpp:832
+#: src/preferences.cpp:838
 msgid "Accelerated Speed"
 msgstr "Višja hitrost"
 
-#: src/preferences.cpp:833
+#: src/preferences.cpp:839
 msgid "Skip AI Moves"
 msgstr "Preskoči poteze UI"
 
-#: src/preferences.cpp:834
+#: src/preferences.cpp:840
 msgid "Show Grid"
 msgstr "Prikaži mrežo"
 
-#: src/preferences.cpp:835
+#: src/preferences.cpp:841
 msgid "Show Floating Labels"
 msgstr "Prikaži lebdeče oznake"
 
-#: src/preferences.cpp:836
+#: src/preferences.cpp:842
 msgid "Turn Dialog"
 msgstr "Pogovorno okno ob začetku vaše poteze"
 
-#: src/preferences.cpp:837
+#: src/preferences.cpp:843
 msgid "Turn Bell"
 msgstr "Zvonenje ob začetku vaše poteze"
 
-#: src/preferences.cpp:838
+#: src/preferences.cpp:844
 msgid "Show Team Colors"
 msgstr "Prikaži ekipne barve"
 
-#: src/preferences.cpp:839
+#: src/preferences.cpp:845
 msgid "Show Color Cursors"
 msgstr "Prikaži barvne kazalce"
 
-#: src/preferences.cpp:840
+#: src/preferences.cpp:846
 msgid "Show Haloing Effects"
 msgstr "Prikaži halo učinke"
 
-#: src/preferences.cpp:841
+#: src/preferences.cpp:847
 msgid "Video Mode"
 msgstr "Video način"
 
-#: src/preferences.cpp:842
+#: src/preferences.cpp:848
 msgid "Hotkeys"
 msgstr "Tipke za bližnjice"
 
-#: src/preferences.cpp:843
+#: src/preferences.cpp:849
 msgid "Adjust Gamma"
 msgstr "Uravnaj gammo"
 
-#: src/preferences.cpp:844
+#: src/preferences.cpp:850
 msgid "Reverse Time Graphics"
 msgstr "Obrni slike časov dneva"
 
-#: src/preferences.cpp:845
+#: src/preferences.cpp:852
 msgid "Music Volume:"
 msgstr "Glasnost glasbe:"
 
-#: src/preferences.cpp:845
+#: src/preferences.cpp:852
 msgid "SFX Volume:"
 msgstr "Glasnost učinkov:"
 
-#: src/preferences.cpp:846
+#: src/preferences.cpp:853
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences.cpp:846
+#: src/preferences.cpp:853
 msgid "Scroll Speed:"
 msgstr "Hitrost drsenja:"
 
-#: src/preferences.cpp:864
+#: src/preferences.cpp:872
 msgid "Change the sound effects volume"
 msgstr "Spremeni glasnost učinkov"
 
-#: src/preferences.cpp:869
+#: src/preferences.cpp:877
 msgid "Change the music volume"
 msgstr "Spremeni glasnost glasbe"
 
-#: src/preferences.cpp:874
+#: src/preferences.cpp:882
 msgid "Change the speed of scrolling around the map"
 msgstr "Spremeni hitrost drsenja po karti"
 
-#: src/preferences.cpp:877 src/preferences.cpp:882
+#: src/preferences.cpp:885 src/preferences.cpp:890
 msgid "Change the brightness of the display"
 msgstr "Spremeni svetlost prikaza"
 
-#: src/preferences.cpp:885
+#: src/preferences.cpp:893
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Izberite ali naj igra teče v oknu ali v celozaslonskem načinu"
 
-#: src/preferences.cpp:888
+#: src/preferences.cpp:896
 msgid "Make units move and fight faster"
 msgstr "Enote naj se premikajo in bojujejo hitreje"
 
-#: src/preferences.cpp:891
+#: src/preferences.cpp:899
 msgid "Do not animate AI units moving"
 msgstr "Ne animiraj potez UI"
 
-#: src/preferences.cpp:894
+#: src/preferences.cpp:902
 msgid "Overlay a grid onto the map"
 msgstr "Čez karto položi mrežo"
 
-#: src/preferences.cpp:897
+#: src/preferences.cpp:905
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Nad enotami prikaži v napadu utrpelo škodo"
 
-#: src/preferences.cpp:899
+#: src/preferences.cpp:907
 msgid "Change the resolution the game runs at"
 msgstr "Spremeni resolucijo igre"
 
-#: src/preferences.cpp:902
+#: src/preferences.cpp:910
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Prikaži pogovorno okno ob začetku moje poteze"
 
-#: src/preferences.cpp:905
+#: src/preferences.cpp:913
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Pozvoni ob začetku moje poteze"
 
-#: src/preferences.cpp:908
+#: src/preferences.cpp:916
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Pod vsako enoto prikaži obarvan krog, ki kaže kateri ekipi pripada"
 
-#: src/preferences.cpp:911
+#: src/preferences.cpp:919
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Izberite ali naj se sonce premika iz leve proti desni ali obratno"
 
-#: src/preferences.cpp:914
+#: src/preferences.cpp:922
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Uporabljaj barvne miškine kazalce (lahko upočasni igro)"
 
-#: src/preferences.cpp:917
+#: src/preferences.cpp:925
 msgid "Use graphical special effects (may be slower)"
 msgstr "Uporabljaj posebne slikovne učinke (lahko upočasni igro)"
 
-#: src/preferences.cpp:919
+#: src/preferences.cpp:927
 msgid "View and configure keyboard shortcuts"
 msgstr "Poglej in nastavi hitre tipke"
 
-#: src/preferences.cpp:1062
+#: src/preferences.cpp:1084
+#, fuzzy
+msgid "yes"
+msgstr "Da"
+
+#: src/preferences.cpp:1086
+#, fuzzy
+msgid "no"
+msgstr "Razveljavi"
+
+#: src/preferences.cpp:1143
 msgid "Prefs section^General"
 msgstr "Splošno"
 
-#: src/preferences.cpp:1063
+#: src/preferences.cpp:1144
 msgid "Prefs section^Display"
 msgstr "Prikaz"
 
-#: src/preferences.cpp:1064
+#: src/preferences.cpp:1145
 msgid "Prefs section^Sound"
 msgstr "Zvok"
 
-#: src/preferences.cpp:1120
+#: src/preferences.cpp:1146
+msgid "Advanced section^Advanced"
+msgstr ""
+
+#: src/preferences.cpp:1202
 msgid "There are no alternative video modes available"
 msgstr "Na voljo ni nobenega drugega video načina"
 
-#: src/preferences.cpp:1149
+#: src/preferences.cpp:1231
 msgid "Choose Resolution"
 msgstr "Izberite resolucijo"
 
-#: src/preferences.cpp:1177
+#: src/preferences.cpp:1259
 msgid "Close Window"
 msgstr "Zapri okno"
 
-#: src/preferences.cpp:1182
+#: src/preferences.cpp:1264
 msgid "Hotkey Settings"
 msgstr "Nastavitve hitrih tipk"
 
-#: src/preferences.cpp:1186 src/preferences.cpp:1230
+#: src/preferences.cpp:1268 src/preferences.cpp:1312
 msgid "Press desired HotKey"
 msgstr "Pritisnite željeno tipko"
 
-#: src/preferences.cpp:1207
+#: src/preferences.cpp:1289
 msgid "Change Hotkey"
 msgstr "Spremeni hitro tipko"
 
-#: src/preferences.cpp:1210
+#: src/preferences.cpp:1292
 msgid "Save Hotkeys"
 msgstr "Shrani hitro tipko"
 
-#: src/preferences.cpp:1256
+#: src/preferences.cpp:1338
 msgid "This HotKey is already in use."
 msgstr "Ta hitra tipka je že v rabi."
 

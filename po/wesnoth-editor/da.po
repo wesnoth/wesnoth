@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-17 08:24+0200\n"
+"POT-Creation-Date: 2005-05-10 19:36+0200\n"
 "PO-Revision-Date: 2004-09-11 12:08+0200\n"
 "Last-Translator: Mathias Bundgaard Svensson <freaken@freaken.dk>\n"
 "Language-Team:  <da@li.org>\n"
@@ -58,43 +58,43 @@ msgstr "Hvilken Spiller?"
 msgid "Which player should start here?"
 msgstr "Hvilken spiller skal starte her?"
 
-#: src/editor/editor.cpp:385
+#: src/editor/editor.cpp:387
 msgid "Choose a Map to Load"
 msgstr "Vælg en Bane at Hente"
 
-#: src/editor/editor.cpp:402 src/editor/editor.cpp:481
+#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
 msgid "The file does not contain a valid map."
 msgstr "Filen indholder ikke en gyldig bane."
 
-#: src/editor/editor.cpp:543
+#: src/editor/editor.cpp:545
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' findes ikke eller kan ikke blive læst som en fil."
 
-#: src/editor/editor.cpp:555
+#: src/editor/editor.cpp:557
 msgid "Load failed: "
 msgstr "Hentning fejlede."
 
-#: src/editor/editor.cpp:751
+#: src/editor/editor.cpp:753
 msgid "You must have a hex selected on the board."
 msgstr "Du må vælge et felt på brættet."
 
-#: src/editor/editor.cpp:1000
+#: src/editor/editor.cpp:1002
 msgid "Quit Editor"
 msgstr "Afslut Editoren"
 
-#: src/editor/editor.cpp:1005
+#: src/editor/editor.cpp:1007
 msgid "Do you want to save the map before quitting?"
 msgstr "Vil du gemme banen før du afslutter?"
 
-#: src/editor/editor.cpp:1029
+#: src/editor/editor.cpp:1031
 msgid "Map saved."
 msgstr "Bane gemt."
 
-#: src/editor/editor.cpp:1036
+#: src/editor/editor.cpp:1038
 msgid "Could not save the map: $msg"
 msgstr "Kunne ikke gemme bane: $msg"
 
-#: src/editor/editor.cpp:1092
+#: src/editor/editor.cpp:1094
 msgid "Player"
 msgstr "Spiller"
 
@@ -169,8 +169,8 @@ msgid "Resize Map"
 msgstr "Skift størrelse"
 
 #: src/editor/editor_dialogs.cpp:408
-msgid "Ok"
-msgstr "Ok"
+msgid "OK"
+msgstr ""
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -196,6 +196,9 @@ msgstr "Baggrund"
 msgid "Delete File"
 msgstr "Slet fil"
 
-#: src/widgets/file_chooser.cpp:131
+#: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Slettelse af fil mislykkedes"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"

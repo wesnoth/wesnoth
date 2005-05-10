@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-04-17 08:24+0200\n"
+"POT-Creation-Date: 2005-05-10 19:36+0200\n"
 "PO-Revision-Date: 2005-04-18 19:35+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -52,43 +52,43 @@ msgstr "Melyik játékos?"
 msgid "Which player should start here?"
 msgstr "Melyik játékos kezdjen itt?"
 
-#: src/editor/editor.cpp:385
+#: src/editor/editor.cpp:387
 msgid "Choose a Map to Load"
 msgstr "Válaszd ki a betöltendő pályát"
 
-#: src/editor/editor.cpp:402 src/editor/editor.cpp:481
+#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
 msgid "The file does not contain a valid map."
 msgstr "A fájl nem tartalmaz érvényes pályát"
 
-#: src/editor/editor.cpp:543
+#: src/editor/editor.cpp:545
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' nem létezik, vagy nem olvasható."
 
-#: src/editor/editor.cpp:555
+#: src/editor/editor.cpp:557
 msgid "Load failed: "
 msgstr "Betöltés sikertelen:"
 
-#: src/editor/editor.cpp:751
+#: src/editor/editor.cpp:753
 msgid "You must have a hex selected on the board."
 msgstr "Ki kell jelölnöd egy hatszöget a táblán"
 
-#: src/editor/editor.cpp:1000
+#: src/editor/editor.cpp:1002
 msgid "Quit Editor"
 msgstr "Kilépés a szerkesztőből"
 
-#: src/editor/editor.cpp:1005
+#: src/editor/editor.cpp:1007
 msgid "Do you want to save the map before quitting?"
 msgstr "El akarod menteni a pályát kilépés előtt?"
 
-#: src/editor/editor.cpp:1029
+#: src/editor/editor.cpp:1031
 msgid "Map saved."
 msgstr "Pálya elmentve."
 
-#: src/editor/editor.cpp:1036
+#: src/editor/editor.cpp:1038
 msgid "Could not save the map: $msg"
 msgstr "A pályát nem lehet elmenteni: $msg"
 
-#: src/editor/editor.cpp:1092
+#: src/editor/editor.cpp:1094
 msgid "Player"
 msgstr "Játékos"
 
@@ -161,8 +161,8 @@ msgid "Resize Map"
 msgstr "Pálya átméretezése"
 
 #: src/editor/editor_dialogs.cpp:408
-msgid "Ok"
-msgstr "Oké"
+msgid "OK"
+msgstr ""
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -188,6 +188,9 @@ msgstr "Jobb gomb"
 msgid "Delete File"
 msgstr "Fájl törlése"
 
-#: src/widgets/file_chooser.cpp:131
+#: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "A fájl törlése sikertelen"
+
+#~ msgid "Ok"
+#~ msgstr "Oké"
