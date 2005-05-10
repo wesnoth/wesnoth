@@ -24,6 +24,7 @@ class CVideo;
 #include "tooltips.hpp"
 
 #include "widgets/button.hpp"
+#include "widgets/menu.hpp"
 
 #include "SDL.h"
 
@@ -133,7 +134,8 @@ int show_dialog(display &screen, surface image,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
 				const std::string* dialog_style=NULL,
 				std::vector<dialog_button>* buttons=NULL,
-				const std::string& help_topic=""
+				const std::string& help_topic="",
+				const menu::sorter* sorter=NULL
 			 );
 
 void show_error_message(display &disp, std::string const &message);

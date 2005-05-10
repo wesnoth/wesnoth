@@ -10,6 +10,8 @@
 #include "../wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <algorithm>
+#include <cassert>
 #include <numeric>
 
 namespace {
@@ -19,59 +21,240 @@ const size_t menu_cell_padding = font::SIZE_NORMAL * 3/5;
 
 namespace gui {
 
+menu::basic_sorter& menu::basic_sorter::set_alpha_sort(int column)
+{
+	alpha_sort_.insert(column);
+	return *this;
+}
+
+menu::basic_sorter& menu::basic_sorter::set_numeric_sort(int column)
+{
+	numeric_sort_.insert(column);
+	return *this;
+}
+
+menu::basic_sorter& menu::basic_sorter::set_id_sort(int column)
+{
+	id_sort_.insert(column);
+	return *this;
+}
+
+menu::basic_sorter& menu::basic_sorter::set_redirect_sort(int column, int to)
+{
+	if(column != to) {
+		redirect_sort_.insert(std::pair<int,int>(column,to));
+	}
+
+	return *this;
+}
+
+menu::basic_sorter& menu::basic_sorter::set_position_sort(int column, const std::vector<int>& pos)
+{
+	pos_sort_[column] = pos;
+	return *this;
+}
+
+bool menu::basic_sorter::column_sortable(int column) const
+{
+	const std::map<int,int>::const_iterator redirect = redirect_sort_.find(column);
+	if(redirect != redirect_sort_.end()) {
+		return column_sortable(redirect->second);
+	}
+
+	return alpha_sort_.count(column) == 1 || numeric_sort_.count(column) == 1 ||
+		   pos_sort_.count(column) == 1 || id_sort_.count(column) == 1;
+}
+
+bool menu::basic_sorter::less(int column, const item& row1, const item& row2) const
+{
+	const std::map<int,int>::const_iterator redirect = redirect_sort_.find(column);
+	if(redirect != redirect_sort_.end()) {
+		return less(redirect->second,row1,row2);
+	}
+
+	if(column < 0 || column >= int(row2.fields.size())) {
+		return false;
+	}
+
+	if(column >= int(row1.fields.size())) {
+		return true;
+	}
+
+	const std::string& item1 = row1.fields[column];
+	const std::string& item2 = row2.fields[column];
+	if(alpha_sort_.count(column) == 1) {
+		std::string::const_iterator begin1 = item1.begin(), end1 = item1.end(),
+		                            begin2 = item2.begin(), end2 = item2.end();
+		while(begin1 != end1 && (font::is_format_char(*begin1) || is_wml_separator(*begin1))) {
+			++begin1;
+		}
+
+		while(begin2 != end2 && (font::is_format_char(*begin2) || is_wml_separator(*begin2))) {
+			++begin2;
+		}
+
+		return std::lexicographical_compare(begin1,end1,begin2,end2,chars_less_insensitive);
+	} else if(numeric_sort_.count(column) == 1) {
+		const char* a = item1.c_str();
+		const char* b = item2.c_str();
+
+		while(*a != 0 && !isdigit(*a)) {
+			++a;
+		}
+
+		while(*b != 0 && !isdigit(*b)) {
+			++b;
+		}
+
+		return atoi(a) > atoi(b);
+	} else if(id_sort_.count(column) == 1) {
+		return row1.id < row2.id;
+	}
+
+	const std::map<int,std::vector<int> >::const_iterator itor = pos_sort_.find(column);
+	if(itor != pos_sort_.end()) {
+		const std::vector<int>& pos = itor->second;
+		if(row1.id >= pos.size()) {
+			return false;
+		}
+
+		if(row2.id >= pos.size()) {
+			return true;
+		}
+
+		return pos[row1.id] < pos[row2.id];
+	}
+
+	return false;
+}
+
 menu::menu(CVideo& video, const std::vector<std::string>& items,
-           bool click_selects, int max_height, int max_width)
+           bool click_selects, int max_height, int max_width,
+		   const sorter* sorter_obj)
         : scrollarea(video),
           max_height_(max_height), max_width_(max_width), max_items_(-1), item_height_(-1),
+		  heading_height_(-1),
 	  cur_help_(-1,-1), help_string_(-1),
 	  selected_(0), click_selects_(click_selects),
 	  previous_button_(true), show_result_(false),
 	  double_clicked_(false),
 	  num_selects_(true),
 	  ignore_next_doubleclick_(false),
-	  last_was_doubleclick_(false)
+	  last_was_doubleclick_(false),
+	  sorter_(sorter_obj), sortby_(-1), highlight_heading_(-1)
 {
 	fill_items(items, true);
 }
 
 void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 {
-	for(std::vector<std::string>::const_iterator item = items.begin();
-	    item != items.end(); ++item) {
-		items_.push_back(utils::quoted_split(*item, COLUMN_SEPARATOR, !strip_spaces));
+	for(std::vector<std::string>::const_iterator itor = items.begin();
+	    itor != items.end(); ++itor) {
+
+		if(itor->empty() == false && (*itor)[0] == HEADING_PREFIX) {
+			heading_ = utils::quoted_split(itor->substr(1),COLUMN_SEPARATOR, !strip_spaces);
+			continue;
+		}
+
+		const size_t id = items_.size();
+		item_pos_.push_back(id);
+		const item new_item(utils::quoted_split(*itor, COLUMN_SEPARATOR, !strip_spaces),id);
+		items_.push_back(new_item);
 
 		//make sure there is always at least one item
-		if(items_.back().empty())
-			items_.back().push_back(" ");
+		if(items_.back().fields.empty()) {
+			items_.back().fields.push_back(" ");
+		}
 
 		//if the first character in an item is an asterisk,
 		//it means this item should be selected by default
-		std::string& first_item = items_.back().front();
+		std::string& first_item = items_.back().fields.front();
 		if(first_item.empty() == false && first_item[0] == DEFAULT_ITEM) {
-			selected_ = items_.size()-1;
+			selected_ = id;
 			first_item.erase(first_item.begin());
 		}
 	}
 
 	create_help_strings();
+	do_sort();
 	update_size();
+}
+
+namespace {
+
+class sort_func
+{
+public:
+	sort_func(const menu::sorter& pred, int column) : pred_(&pred), column_(column)
+	{}
+
+	bool operator()(const menu::item& a, const menu::item& b) const
+	{
+		return pred_->less(column_,a,b);
+	}
+
+private:
+	const menu::sorter* pred_;
+	int column_;
+};
+
+}
+
+void menu::do_sort(SORT_TYPE type)
+{
+	if(sortby_ < 0 || sorter_ == NULL || sorter_->column_sortable(sortby_) == false) {
+		return;
+	}
+
+	const int selectid = selection();
+
+	if(type == NORMAL_SORT) {
+		std::stable_sort(items_.begin(),items_.end(),sort_func(*sorter_,sortby_));
+	} else if(type == INVERT_SORT) {
+		std::reverse(items_.begin(),items_.end());
+	}
+
+	recalculate_pos();
+
+	if(selectid >= 0 && selectid < int(item_pos_.size())) {
+		move_selection(selectid,NO_MOVE_VIEWPORT);
+	}
+
+	set_dirty();
+}
+
+void menu::recalculate_pos()
+{
+	item_pos_.resize(items_.size());
+	for(std::vector<item>::const_iterator i = items_.begin(); i != items_.end(); ++i) {
+		item_pos_[i->id] = i - items_.begin();
+	}
+
+	assert_pos();
+}
+
+void menu::assert_pos()
+{
+	assert(item_pos_.size() == items_.size());
+	for(size_t n = 0; n != item_pos_.size(); ++n) {
+		assert(n == items_[item_pos_[n]].id);
+	}
 }
 
 void menu::create_help_strings()
 {
-	help_.clear();
-	for(std::vector<std::vector<std::string> >::iterator i = items_.begin(); i != items_.end(); ++i) {
-		help_.resize(help_.size()+1);
-		for(std::vector<std::string>::iterator j = i->begin(); j != i->end(); ++j) {
+	for(std::vector<item>::iterator i = items_.begin(); i != items_.end(); ++i) {
+		i->help.clear();
+		for(std::vector<std::string>::iterator j = i->fields.begin(); j != i->fields.end(); ++j) {
 			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPARATOR)) == j->end()) {
-				help_.back().push_back("");
+				i->help.push_back("");
 			} else {
 				const std::vector<std::string>& items = utils::split(*j, HELP_STRING_SEPARATOR, 0);
 				if(items.size() >= 2) {
 					*j = items.front();
-					help_.back().push_back(items.back());
+					i->help.push_back(items.back());
 				} else {
-					help_.back().push_back("");
+					i->help.push_back("");
 				}
 			}
 		}
@@ -84,8 +267,9 @@ void menu::update_scrollbar_grip_height()
 	set_shown_size(max_items_onscreen());
 }
 
-void menu::update_size() {
-	unsigned h = 0;
+void menu::update_size()
+{
+	unsigned int h = heading_height();
 	for(size_t i = get_position(),
 	    i_end = minimum(items_.size(), i + max_items_onscreen());
 	    i != i_end; ++i)
@@ -106,7 +290,14 @@ void menu::update_size() {
 	set_measurements(w, h);
 }
 
-int menu::selection() const { return selected_; }
+int menu::selection() const
+{
+	if(selected_ < 0 || selected_ >= int(items_.size())) {
+		return -1;
+	}
+
+	return items_[selected_].id;
+}
 
 void menu::set_inner_location(SDL_Rect const &rect)
 {
@@ -115,10 +306,14 @@ void menu::set_inner_location(SDL_Rect const &rect)
 	bg_register(rect);
 }
 
-void menu::change_item(int pos1, int pos2,std::string str)
+void menu::change_item(int pos1, int pos2,const std::string& str)
 {
-	items_[pos1][pos2] = str;
-	//undrawn_items_.insert(pos1);
+	if(pos1 < 0 || pos1 >= int(item_pos_.size()) ||
+		pos2 < 0 || pos2 >= int(items_[item_pos_[pos1]].fields.size())) {
+		return;
+	}
+
+	items_[item_pos_[pos1]].fields[pos2] = str;
 	set_dirty();
 }
 
@@ -129,7 +324,17 @@ void menu::erase_item(size_t index)
 		return;
 
 	clear_item(nb_items - 1);
-	items_.erase(items_.begin() + index);
+
+	const size_t pos = item_pos_[index];
+
+	item_pos_.erase(item_pos_.begin() + index);
+	for(std::vector<size_t>::iterator i = item_pos_.begin(); i != item_pos_.end(); ++i) {
+		if(*i > pos) {
+			*i = *i-1;
+		}
+	}
+
+	items_.erase(items_.begin() + pos);
 	if (selected_ >= nb_items - 1)
 		selected_ = nb_items - 2;
 
@@ -139,9 +344,21 @@ void menu::erase_item(size_t index)
 	set_dirty();
 }
 
+void menu::set_heading(const std::vector<std::string>& heading)
+{
+	itemRects_.clear();
+	column_widths_.clear();
+
+	heading_ = heading;
+	max_items_ = -1;
+
+	set_dirty();
+}
+
 void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, bool keep_viewport)
 {
 	items_.clear();
+	item_pos_.clear();
 	itemRects_.clear();
 	column_widths_.clear();
 	//undrawn_items_.clear();
@@ -153,10 +370,15 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	}
 
 	fill_items(items, strip_spaces);
-	if (!keep_viewport)
+	if(!keep_viewport) {
 		set_position(0);
+	}
+
 	update_scrollbar_grip_height();
-	adjust_viewport_to_selection();
+
+	if(!keep_viewport) {
+		adjust_viewport_to_selection();
+	}
 	set_dirty();
 }
 
@@ -174,7 +396,7 @@ size_t menu::max_items_onscreen() const
 		return size_t(max_items_);
 	}
 
-	const size_t max_height = max_height_ == -1 ? (video().gety()*66)/100 : max_height_;
+	const size_t max_height = (max_height_ == -1 ? (video().gety()*66)/100 : max_height_) - heading_height();
 	std::vector<int> heights;
 	size_t n;
 	for(n = 0; n != items_.size(); ++n) {
@@ -202,25 +424,39 @@ void menu::adjust_viewport_to_selection()
 
 void menu::move_selection_up(size_t dep)
 {
-	move_selection(selected_ > dep ? selected_ - dep : 0);
+	set_selection_pos(selected_ > dep ? selected_ - dep : 0);
+}
+
+void menu::reset_selection()
+{
+	set_selection_pos(0);
 }
 
 void menu::move_selection_down(size_t dep)
 {
 	size_t nb_items = items_.size();
-	move_selection(selected_ + dep >= nb_items ? nb_items - 1 : selected_ + dep);
+	set_selection_pos(selected_ + dep >= nb_items ? nb_items - 1 : selected_ + dep);
 }
 
-void menu::move_selection(size_t new_selected)
+void menu::set_selection_pos(size_t new_selected, SELECTION_MOVE_VIEWPORT move_viewport)
 {
 	if (new_selected == selected_ || new_selected >= items_.size())
 		return;
 
-	//undrawn_items_.insert(selected_);
-	//undrawn_items_.insert(new_selected);
-	set_dirty();
+	invalidate_row_pos(selected_);
+	invalidate_row_pos(new_selected);
 	selected_ = new_selected;
-	adjust_viewport_to_selection();
+
+	if(move_viewport == MOVE_VIEWPORT) {
+		adjust_viewport_to_selection();
+	}
+}
+
+void menu::move_selection(size_t id, SELECTION_MOVE_VIEWPORT move_viewport)
+{
+	if(id < item_pos_.size()) {
+		set_selection_pos(item_pos_[id],move_viewport);
+	}
 }
 
 void menu::key_press(SDLKey key)
@@ -240,10 +476,10 @@ void menu::key_press(SDLKey key)
 			move_selection_down(max_items_onscreen());
 			break;
 		case SDLK_HOME:
-			move_selection(0);
+			set_selection_pos(0);
 			break;
 		case SDLK_END:
-			move_selection(items_.size() - 1);
+			set_selection_pos(items_.size() - 1);
 			break;
 		//case SDLK_RETURN:
 		//	double_clicked_ = true;
@@ -254,7 +490,7 @@ void menu::key_press(SDLKey key)
 	}
 
 	if (num_selects_ && key >= SDLK_1 && key <= SDLK_9)
-		move_selection(key - SDLK_1);
+		set_selection_pos(key - SDLK_1);
 }
 
 void menu::handle_event(const SDL_Event& event)
@@ -303,10 +539,26 @@ void menu::handle_event(const SDL_Event& event)
 				last_was_doubleclick_ = false;
 			}
 		}
-	} else if(event.type == SDL_MOUSEMOTION && click_selects_) { 
-		const int item = hit(event.motion.x,event.motion.y);
-		if (item != -1)
-			move_selection(item);
+
+
+		if(sorter_ != NULL) {
+			const int heading = hit_heading(x,y);
+			if(heading >= 0 && sorter_->column_sortable(heading)) {
+				sort_by(heading);
+			}
+		}
+	} else if(event.type == SDL_MOUSEMOTION) { 
+		if(click_selects_) {
+			const int item = hit(event.motion.x,event.motion.y);
+			if (item != -1)
+				move_selection(item);
+		}
+
+		const int heading_item = hit_heading(event.motion.x,event.motion.y);
+		if(heading_item != highlight_heading_) {
+			highlight_heading_ = heading_item;
+			invalidate_heading();
+		}
 	}
 }
 
@@ -327,6 +579,11 @@ bool menu::double_clicked()
 	return old;
 }
 
+void menu::set_click_selects(bool value)
+{
+	click_selects_ = value;
+}
+
 void menu::set_numeric_keypress_selection(bool value)
 {
 	num_selects_ = value;
@@ -334,6 +591,15 @@ void menu::set_numeric_keypress_selection(bool value)
 
 void menu::scroll(int)
 {
+	itemRects_.clear();
+	set_dirty();
+}
+
+void menu::sort_by(int column)
+{
+	const bool already_sorted = (column == sortby_);
+	sortby_ = column;
+	do_sort(already_sorted ? INVERT_SORT : NORMAL_SORT);
 	itemRects_.clear();
 	set_dirty();
 }
@@ -368,19 +634,25 @@ namespace {
 	}
 }
 
+void menu::column_widths_item(const std::vector<std::string>& row, std::vector<int>& widths) const
+{
+	for(size_t col = 0; col != row.size(); ++col) {
+		const SDL_Rect res = item_size(row[col]);
+
+		if(col == widths.size()) {
+			widths.push_back(res.w + menu_cell_padding);
+		} else if(res.w > widths[col] - menu_cell_padding) {
+			widths[col] = res.w + menu_cell_padding;
+		}
+	}
+}
+
 const std::vector<int>& menu::column_widths() const
 {
 	if(column_widths_.empty()) {
+		column_widths_item(heading_,column_widths_);
 		for(size_t row = 0; row != items_.size(); ++row) {
-			for(size_t col = 0; col != items_[row].size(); ++col) {
-				const SDL_Rect res = item_size(items_[row][col]);
-
-				if(col == column_widths_.size()) {
-					column_widths_.push_back(res.w + menu_cell_padding);
-				} else if(res.w > column_widths_[col] - menu_cell_padding) {
-					column_widths_[col] = res.w + menu_cell_padding;
-				}
-			}
+			column_widths_item(items_[row].fields,column_widths_);
 		}
 	}
 
@@ -395,29 +667,50 @@ void menu::clear_item(int item)
 	bg_restore(rect);
 }
 
-void menu::draw_item(int item)
+void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
 {
-	SDL_Rect rect = get_item_rect(item);
-	if(rect.w == 0) {
+	if(rect.w == 0 || rect.h == 0) {
 		return;
 	}
 
-	clear_item(item);
+	bg_restore(rect);
+
+	int rgb = 0;
+	double alpha = 0.0;
+
+	switch(type) {
+	case NORMAL_ROW:
+		rgb = 0x000000;
+		alpha = 0.2;
+		break;
+	case SELECTED_ROW:
+		rgb = 0x990000;
+		alpha = 0.6;
+		break;
+	case HEADING_ROW:
+		rgb = 0x333333;
+		alpha = 0.3;
+		break;
+	}
+
 	draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
-				    item == selected_ ? 150:0,0,0,
-				    item == selected_ ? 0.6 : 0.2,
+				    (rgb&0xff0000) >> 16,(rgb&0xff00) >> 8,rgb&0xff,alpha,
 				    video().getSurface());
 
 	SDL_Rect const &area = screen_area();
-	//SDL_Rect area = { 0, 0, rect.w, rect.h };
 	SDL_Rect const &loc = inner_location();
 
 	const std::vector<int>& widths = column_widths();
 
 	int xpos = rect.x;
-	for(size_t i = 0; i != items_[item].size(); ++i) {
+	for(size_t i = 0; i != row.size(); ++i) {
+
+		if(type == HEADING_ROW && highlight_heading_ == int(i)) {
+			draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
+		}
+
 		const int last_x = xpos;
-		std::string str = items_[item][i];
+		std::string str = row[i];
 		std::vector<std::string> img_text_items = utils::split(str, IMG_TEXT_SEPARATOR);
 		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 			 it != img_text_items.end(); it++) {
@@ -448,27 +741,55 @@ void menu::draw_item(int item)
 
 void menu::draw_contents()
 {
-#if 0
-	if (undrawn_items_.empty())
-		return;
+	SDL_Rect heading_rect = inner_location();
+	heading_rect.h = heading_height();
+	draw_row(heading_,heading_rect,HEADING_ROW);
 
-	if (!dirty()) {
-		for(std::set<size_t>::const_iterator i = undrawn_items_.begin(); i != undrawn_items_.end(); ++i) {
-			if(*i < items_.size()) {
-				draw_item(*i);
-				update_rect(get_item_rect(*i));
+	for(size_t i = 0; i != item_pos_.size(); ++i) {
+		draw_row(items_[item_pos_[i]].fields,get_item_rect(i),item_pos_[i] == selected_ ? SELECTED_ROW : NORMAL_ROW);
+	}
+}
+
+void menu::draw()
+{
+	if(hidden()) {
+		return;
+	}
+	
+	if(!dirty()) {
+
+		for(std::set<int>::const_iterator i = invalid_.begin(); i != invalid_.end(); ++i) {
+			if(*i == -1) {
+				SDL_Rect heading_rect = inner_location();
+				heading_rect.h = heading_height();
+				bg_restore(heading_rect);
+				draw_row(heading_,heading_rect,HEADING_ROW);
+				update_rect(heading_rect);
+			} else if(*i >= 0 && *i < int(item_pos_.size())) {
+				const int pos = item_pos_[*i];
+				const SDL_Rect& rect = get_item_rect(*i);
+				bg_restore(rect);
+				draw_row(items_[pos].fields,rect,pos == selected_ ? SELECTED_ROW : NORMAL_ROW);
+				update_rect(rect);
 			}
 		}
 
-		undrawn_items_.clear();
+		invalid_.clear();
 		return;
 	}
 
-	undrawn_items_.clear();
-#endif
+	invalid_.clear();
 
-	for(size_t i = 0; i != items_.size(); ++i)
-		draw_item(i);
+	bg_restore();
+
+	util::scoped_ptr<clip_rect_setter> clipper(NULL);
+	if(clip_rect())
+		clipper.assign(new clip_rect_setter(video().getSurface(), *clip_rect()));
+
+	draw_contents();
+
+	update_rect(location());
+	set_dirty(false);
 }
 
 int menu::hit(int x, int y) const
@@ -485,24 +806,52 @@ int menu::hit(int x, int y) const
 	return -1;
 }
 
-std::pair<int,int> menu::hit_cell(int x, int y) const
+int menu::hit_column(int x, int y) const
 {
-	int i = hit(x, y);
-	if (i < 0)
-		return std::pair<int,int>(-1, -1);
-
 	std::vector<int> const &widths = column_widths();
 	x -= location().x;
 	for(int j = 0, j_end = widths.size(); j != j_end; ++j) {
 		x -= widths[j];
-		if (x < 0)
-			return std::pair<int,int>(i, j);
+		if (x < 0) {
+			return j;
+		}
 	}
 
-	return std::pair<int,int>(-1, -1);
+	return -1;
+}
+
+std::pair<int,int> menu::hit_cell(int x, int y) const
+{
+	const int row = hit(x, y);
+	if(row < 0) {
+		return std::pair<int,int>(-1, -1);
+	}
+
+	const int col = hit_column(x,y);
+	if(col < 0) {
+		return std::pair<int,int>(-1, -1);
+	}
+
+	return std::pair<int,int>(x,y);
+}
+
+int menu::hit_heading(int x, int y) const
+{
+	const size_t height = heading_height();
+	const SDL_Rect& loc = inner_location();
+	if(y >= loc.y && y < loc.y + height) {
+		return hit_column(x,y);
+	} else {
+		return -1;
+	}
 }
 
 SDL_Rect menu::get_item_rect(int item) const
+{
+	return get_item_rect_internal(item_pos_[item]);
+}
+
+SDL_Rect menu::get_item_rect_internal(size_t item) const
 {
 	const SDL_Rect empty_rect = {0,0,0,0};
 	int first_item_on_screen = get_position();
@@ -517,9 +866,9 @@ SDL_Rect menu::get_item_rect(int item) const
 
 	SDL_Rect const &loc = inner_location();
 
-	int y = loc.y;
+	int y = loc.y + heading_height();
 	if (item != first_item_on_screen) {
-		const SDL_Rect& prev = get_item_rect(item-1);
+		const SDL_Rect& prev = get_item_rect_internal(item-1);
 		y = prev.y + prev.h;
 	}
 
@@ -547,15 +896,24 @@ SDL_Rect menu::get_item_rect(int item) const
 	return res;
 }
 
-size_t menu::get_item_height_internal(int item) const
+size_t menu::get_item_height_internal(const std::vector<std::string>& item) const
 {
 	size_t res = 0;
-	for(size_t n = 0; n != items_[item].size(); ++n) {
-		SDL_Rect rect = item_size(items_[item][n]);
+	for(std::vector<std::string>::const_iterator i = item.begin(); i != item.end(); ++i) {
+		SDL_Rect rect = item_size(*i);
 		res = maximum<int>(rect.h,res);
 	}
 
 	return res;
+}
+
+size_t menu::heading_height() const
+{
+	if(heading_height_ == -1) {
+		heading_height_ = int(get_item_height_internal(heading_));
+	}
+
+	return minimum<unsigned int>(heading_height_,max_height_);
 }
 
 size_t menu::get_item_height(int) const
@@ -565,7 +923,7 @@ size_t menu::get_item_height(int) const
 
 	size_t max_height = 0;
 	for(size_t n = 0; n != items_.size(); ++n) {
-		max_height = maximum<int>(max_height,get_item_height_internal(n));
+		max_height = maximum<int>(max_height,get_item_height_internal(items_[n].fields));
 	}
 
 	return item_height_ = max_height;
@@ -585,8 +943,8 @@ void menu::process_help_string(int mousex, int mousey)
 			help_string_ = -1;
 		}
 
-		if(size_t(loc.first) < help_.size()) {
-			const std::vector<std::string>& row = help_[loc.first];
+		if(size_t(loc.first) < items_.size()) {
+			const std::vector<std::string>& row = items_[loc.first].help;
 			if(size_t(loc.second) < row.size()) {
 				const std::string& help = row[loc.second];
 				if(help.empty() == false) {
@@ -598,6 +956,29 @@ void menu::process_help_string(int mousex, int mousey)
 	}
 
 	cur_help_ = loc;
+}
+
+void menu::invalidate_row(size_t id)
+{
+	if(id >= items_.size()) {
+		return;
+	}
+
+	invalid_.insert(int(id));
+}
+
+void menu::invalidate_row_pos(size_t pos)
+{
+	if(pos >= items_.size()) {
+		return;
+	}
+
+	invalidate_row(items_[pos].id);
+}
+
+void menu::invalidate_heading()
+{
+	invalid_.insert(-1);
 }
 
 }

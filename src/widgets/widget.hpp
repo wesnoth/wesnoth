@@ -72,6 +72,8 @@ protected:
 	virtual void draw_contents() {};
 	virtual void update_location(SDL_Rect const &rect);
 
+	const SDL_Rect* clip_rect() const;
+
 private:
 	void volatile_draw();
 	void volatile_undraw();

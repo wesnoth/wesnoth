@@ -163,8 +163,6 @@ void unit::generate_traits()
 		traits.push_back(candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin()+num);
 	}
-
-	std::vector<std::string> description;
 	
 	for(std::vector<config*>::const_iterator j = traits.begin(); j != traits.end(); ++j) {
 		modifications_.add_child("trait",**j);

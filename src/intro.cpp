@@ -234,7 +234,13 @@ bool show_intro_part(display &disp, const config& part,
 				//to find out if the next word will fit, or if it has to be wrapped
 				utils::utf8_iterator start_word = itor;
 				++start_word;
-				utils::utf8_iterator end_word = std::find(start_word, utils::utf8_iterator::end(story), ' ');
+				utils::utf8_iterator end_word = start_word;
+				const utils::utf8_iterator end_story = utils::utf8_iterator::end(story);
+				for(; end_word != end_story; ++end_word) {
+					if(*end_word == ' ') {
+						break;
+					}
+				}
 
 				std::string word;
 				for(; start_word != end_word; ++start_word) {

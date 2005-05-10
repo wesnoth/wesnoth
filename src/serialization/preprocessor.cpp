@@ -89,7 +89,7 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
 }
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: std::streambuf(), current_(NULL), defines_(t.defines_),
+	: current_(NULL), defines_(t.defines_),
 	  textdomain_(PACKAGE), depth_(t.depth_), quoted_(t.quoted_)
 {
 }
@@ -676,10 +676,10 @@ bool preprocessor_data::get_chunk()
 	return true;
 }
 
-struct preprocessor_deleter: std::istream
+struct preprocessor_deleter: std::basic_istream<char>
 {
 	preprocessor_streambuf *buf_;
-	preprocessor_deleter(preprocessor_streambuf *buf): std::istream(buf), buf_(buf) {}
+	preprocessor_deleter(preprocessor_streambuf *buf) : std::basic_istream<char>(buf), buf_(buf) {}
 	~preprocessor_deleter() { rdbuf(NULL); delete buf_->defines_; delete buf_; }
 };
 

@@ -492,6 +492,8 @@ text_surface &text_cache::find(text_surface const &t)
 	return cache_.front();
 }
 
+}
+
 surface render_text(const std::string& text, int fontsize, const SDL_Color& colour, int style)
 {
 	const std::vector<std::string> lines = utils::split(text, '\n', utils::REMOVE_EMPTY);
@@ -546,6 +548,8 @@ surface render_text(const std::string& text, int fontsize, const SDL_Color& colo
 		return res;
 	}
 }
+
+namespace {
 
 //function which will parse the markup tags at the front of a string
 std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
@@ -816,9 +820,20 @@ int get_max_height(int size)
 
 bool is_format_char(char c)
 {
+	//side coloring
+	if(c > 0 && c <= 10) {
+		return true;
+	}
+
 	switch(c) {
+	case LARGE_TEXT:
+	case SMALL_TEXT:
 	case GOOD_TEXT:
 	case BAD_TEXT:
+	case NORMAL_TEXT:
+	case BLACK_TEXT:
+	case BOLD_TEXT:
+	case NULL_MARKUP:
 		return true;
 	default:
 		return false;

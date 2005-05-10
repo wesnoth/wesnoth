@@ -1277,12 +1277,21 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 		std::stringstream str,name;
 		name << i->get_description();
 		str << name.str();
-		str << COLUMN_SEPARATOR << "  :  " << COLUMN_SEPARATOR;
+		str << COLUMN_SEPARATOR;
 		str << i->get_name();
-		menu_items.push_back (str.str ());
+		menu_items.push_back(str.str());
 	}
 
-	gui::menu menu_(disp.video(), menu_items, false, height);
+	std::ostringstream heading;
+	heading << HEADING_PREFIX << _("Action") << COLUMN_SEPARATOR << _("Binding");
+	menu_items.push_back(heading.str());
+
+	gui::menu::basic_sorter sorter;
+	sorter.set_alpha_sort(0).set_alpha_sort(1);
+
+	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter);
+	menu_.sort_by(0);
+	menu_.reset_selection();
 	menu_.set_width(font::relative_size(400));	
 	menu_.set_location(xpos + font::relative_size(20), ypos);
 	
@@ -1340,7 +1349,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				newhk.set_key(key, (mod & KMOD_SHIFT) != 0, 
 						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
-				menu_.change_item(menu_.selection(), 2, newhk.get_name());
+				menu_.change_item(menu_.selection(), 1, newhk.get_name());
 			};
 		}
 		if (save_button.pressed()) {

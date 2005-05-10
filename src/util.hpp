@@ -80,6 +80,7 @@ std::string str_cast(From a)
 }
 
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
+inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
 //a definition of 'push_back' for strings, since some implementations
 //don't support string::push_back

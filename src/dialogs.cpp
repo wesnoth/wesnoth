@@ -392,6 +392,51 @@ void save_preview_pane::draw_contents()
 	font::draw_text(&video(), area, font::SIZE_SMALL, font::NORMAL_COLOUR, str.str(), area.x, ypos, true);
 }
 
+std::string format_time_summary(time_t t)
+{
+	time_t curtime = time(NULL);
+	const struct tm* timeptr = localtime(&curtime);
+	if(timeptr == NULL) {
+		return "";
+	}
+
+	const struct tm current_time = *timeptr;
+
+	timeptr = localtime(&t);
+	if(timeptr == NULL) {
+		return "";
+	}
+
+	const struct tm save_time = *timeptr;
+
+	const char* format_string = _("%b %d %y");
+
+	if(current_time.tm_year == save_time.tm_year) {
+		const int days_apart = current_time.tm_yday - save_time.tm_yday;
+		if(days_apart == 0) {
+			//save is from today
+			format_string = _("%H:%M");
+		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
+			//save is from this week
+			format_string = _("%A, %H:%M");
+		} else {
+			//save is from current year
+			format_string = _("%b %d");
+		}
+	} else {
+		//save is from a different year
+		format_string = _("%b %d %y");
+	}
+	
+	char buf[40];
+	const size_t res = strftime(buf,sizeof(buf),format_string,&save_time);
+	if(res == 0) {
+		buf[0] = 0;
+	}
+
+	return buf;
+}
+
 } //end anon namespace
 
 std::string load_game_dialog(display& disp, const config& game_config, const game_data& data, bool* show_replay)
@@ -495,12 +540,22 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	}
 
 	std::vector<std::string> items;
+	std::ostringstream heading;
+	heading << HEADING_PREFIX << _("Name") << COLUMN_SEPARATOR << _("Date");
+	items.push_back(heading.str());
+
 	for(i = games.begin(); i != games.end(); ++i) {
 		std::string name = i->name;
 		name.resize(minimum<size_t>(name.size(),40));
 
-		items.push_back(name);
+		std::ostringstream str;
+		str << name << COLUMN_SEPARATOR << format_time_summary(i->time_modified);
+
+		items.push_back(str.str());
 	}
+
+	gui::menu::basic_sorter sorter;
+	sorter.set_alpha_sort(0).set_id_sort(1);
 
 	gamemap map_obj(game_config,"");
 
@@ -517,7 +572,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	const int res = gui::show_dialog(disp,NULL,
 					 _("Load Game"),
 					 _("Choose the game to load"),
-			         gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,&options,-1,-1,NULL,&buttons);
+			         gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,&options,-1,-1,NULL,&buttons,"",&sorter);
 
 	if(res == -1)
 		return "";

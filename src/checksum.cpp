@@ -57,7 +57,7 @@ void checksumstreambuf::sum(unsigned char* begin, unsigned char* end)
 }
 
 
-checksumstream::checksumstream() : std::ostream(&sbuf)
+checksumstream::checksumstream() : std::basic_ostream<char>(this), sbuf(*this)
 {
 }
 

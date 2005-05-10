@@ -13,6 +13,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "variable.hpp"
 #include "gamestatus.hpp"
 #include "config.hpp"
@@ -78,7 +80,8 @@ const config vconfig::get_parsed_config() const
 vconfig::child_list vconfig::get_children(const std::string& key) const
 {
 	const config::child_list& list = cfg_->get_children(key);
-	vconfig::child_list res(list.begin(), list.end());
+	vconfig::child_list res(list.size());
+	std::copy(list.begin(), list.end(),res.begin());
 	return res;
 }
 

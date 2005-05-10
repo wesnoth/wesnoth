@@ -11,6 +11,11 @@
 
    See the COPYING file for more details.
 */
+
+#include "global.hpp"
+
+#include <cstdio>
+
 #include "config.hpp"
 #include "random.hpp"
 #include "wassert.hpp"

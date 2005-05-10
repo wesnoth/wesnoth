@@ -20,7 +20,85 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 
+namespace {
+
+std::string games_menu_heading()
+{
+	std::ostringstream str;
+	str << HEADING_PREFIX << _("Map") << COLUMN_SEPARATOR << _("Name")
+		<< COLUMN_SEPARATOR << _("Status");
+	return str.str();
+}
+
+}
+
 namespace mp {
+
+lobby::lobby_sorter::lobby_sorter(const config& cfg) : cfg_(cfg)
+{
+	set_alpha_sort(1);
+}
+
+bool lobby::lobby_sorter::column_sortable(int column) const
+{
+	switch(column)
+	{
+	case MAP_COLUMN:
+	case STATUS_COLUMN:
+		return true;
+	default:
+		return basic_sorter::column_sortable(column);
+	}
+}
+
+bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gui::menu::item& row2) const
+{
+	const config* const list = cfg_.child("gamelist");
+	if(list == NULL) {
+		return false;
+	}
+
+	const config::child_list& games = list->get_children("game");
+	if(row1.id >= games.size() || row2.id >= games.size()) {
+		return false;
+	}
+
+	const config& game1 = *games[row1.id];
+	const config& game2 = *games[row2.id];
+
+	if(column == MAP_COLUMN) {
+		size_t mapsize1 = game1["map_data"].size();
+		if(mapsize1 == 0) {
+			mapsize1 = game1["map"].size();
+		}
+
+		size_t mapsize2 = game2["map_data"].size();
+		if(mapsize2 == 0) {
+			mapsize2 = game2["map"].size();
+		}
+
+		return mapsize1 < mapsize2;
+		
+	} else if(column == STATUS_COLUMN) {
+		const int nslots1 = atoi(game1["slots"].c_str());
+		const int nslots2 = atoi(game2["slots"].c_str());
+
+		const int turn1 = atoi(game1["turn"].c_str());
+		const int turn2 = atoi(game2["turn"].c_str());
+
+		if(nslots1 > nslots2) {
+			return true;
+		} else if(nslots1 < nslots2) {
+			return false;
+		} else {
+			return turn1 < turn2;
+		}
+	} else {
+		return basic_sorter::less(column,row1,row2);
+	}
+
+	return false;
+}
 
 lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	mp::ui(disp, cfg, c, gamelist),
@@ -29,7 +107,8 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	join_game_(disp.video(), _("Join Game")),
 	create_game_(disp.video(), _("Create Game")),
 	quit_game_(disp.video(), _("Quit")),
-	games_menu_(disp.video(), std::vector<std::string>()),
+	sorter_(gamelist),
+	games_menu_(disp.video(), std::vector<std::string>(1,games_menu_heading()),false,-1,-1,&sorter_),
 	current_game_(0)
 {
 	game_config::debug = false;

@@ -39,13 +39,13 @@ private:
 	unsigned short csumb;
 };
 
-class checksumstream : public std::basic_ostream<char>
+class checksumstream : private checksumstreambuf, public std::basic_ostream<char>
 {
 public:
 	checksumstream();
 	unsigned long checksum();
 private:
-	checksumstreambuf sbuf;
+	checksumstreambuf& sbuf;
 };
 
 #endif // CHECKSUM_HPP_INCLUDED

@@ -20,7 +20,7 @@
 
 class config;
 class t_string;
-class game_state;
+struct game_state;
 
 /**
  * A variable-expanding proxy for the config class. This class roughly behaves

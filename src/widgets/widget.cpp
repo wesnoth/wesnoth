@@ -54,6 +54,11 @@ void widget::update_location(SDL_Rect const &rect)
 	bg_register(rect);
 }
 
+const SDL_Rect* widget::clip_rect() const
+{
+	return clip_ ? &clip_rect_ : NULL;
+}
+
 void widget::bg_register(SDL_Rect const &rect)
 {
 	restorer_.push_back(surface_restorer(&video(), rect));

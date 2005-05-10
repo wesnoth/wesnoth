@@ -875,16 +875,19 @@ void game_controller::download_campaigns()
 		}
 
 		std::vector<std::string> campaigns, options;
+
 		std::string sep(1, COLUMN_SEPARATOR);
-		options.push_back(sep + _("Name") +
-		                  sep + _("Version") +
-		                  sep + _("Author") +
-		                  sep + _("Downloads") +
-		                  sep + _("Size"));
+
+		std::stringstream heading;
+		heading << HEADING_PREFIX << sep << _("Name") << sep << _("Version") << sep
+				<< _("Author") << sep << _("Downloads") << sep << _("Size");
+
 		const config::child_list& cmps = campaigns_cfg->get_children("campaign");
 		const std::vector<std::string>& publish_options = available_campaigns();
 
 		std::vector<std::string> delete_options;
+
+		std::vector<int> sizes;
 
 		for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
 			const std::string& name = (**i)["name"];
@@ -914,6 +917,9 @@ void game_controller::download_campaigns()
 			if(author.size() > 16) {
 				author.resize(16);
 			}
+
+			//add negative sizes to reverse the sort order
+			sizes.push_back(-atoi((**i)["size"].c_str()));
 			
 			options.push_back(IMAGE_PREFIX + (**i)["icon"].str() + COLUMN_SEPARATOR +
 			                  title + COLUMN_SEPARATOR +
@@ -922,6 +928,8 @@ void game_controller::download_campaigns()
 			                  (**i)["downloads"].str() + COLUMN_SEPARATOR +
 			                  format_file_size((**i)["size"]));
 		}
+		
+		options.push_back(heading.str());
 
 		for(std::vector<std::string>::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
 			options.push_back(sep + _("Publish campaign: ") + *j);
@@ -936,7 +944,11 @@ void game_controller::download_campaigns()
 			return;
 		}
 
-		const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&options) - 1;
+		gui::menu::basic_sorter sorter;
+		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
+
+		const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&options,
+			                               NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter) - 1;
 		if(index < 0) {
 			return;
 		}

@@ -42,6 +42,8 @@ public:
 		bool translatable_;
 	};
 
+	friend class walker;
+
 	t_string();
 	t_string(const t_string&);
 	t_string(const std::string& string);

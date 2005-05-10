@@ -1700,12 +1700,16 @@ void turn_info::status_table()
 {
 	std::vector<std::string> items;
 	std::stringstream heading;
-	heading << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
+	heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
 	        << _("Gold") << COLUMN_SEPARATOR
 	        << _("Villages") << COLUMN_SEPARATOR
 	        << _("Units") << COLUMN_SEPARATOR
 	        << _("Upkeep") << COLUMN_SEPARATOR
 	        << _("Income");
+
+	gui::menu::basic_sorter sorter;
+	sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_numeric_sort(2).set_numeric_sort(3)
+	      .set_numeric_sort(4).set_numeric_sort(5).set_numeric_sort(6).set_numeric_sort(7);
 
 	if(game_config::debug)
 		heading << COLUMN_SEPARATOR << _("Gold");
@@ -1763,7 +1767,8 @@ void turn_info::status_table()
 		items.push_back(IMAGE_PREFIX + std::string("random-enemy.png") + COLUMN_SEPARATOR +
 		                IMAGE_PREFIX + "random-enemy.png");
 
-	gui::show_dialog(gui_,NULL,"","",gui::CLOSE_ONLY,&items);
+	gui::show_dialog(gui_,NULL,"","",gui::CLOSE_ONLY,&items,
+	                 NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
 }
 
 void turn_info::recruit()
@@ -1969,14 +1974,26 @@ void turn_info::recall()
 		gui::show_dialog(gui_,NULL,"",msg.str());
 	} else {
 		std::vector<std::string> options;
+
+		std::ostringstream heading;
+		heading << HEADING_PREFIX << COLUMN_SEPARATOR << _("Type")
+			    << COLUMN_SEPARATOR << _("Name")
+				<< COLUMN_SEPARATOR << _("Level")
+				<< COLUMN_SEPARATOR << _("XP");
+
+		gui::menu::basic_sorter sorter;
+		sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_numeric_sort(4);
+
+		options.push_back(heading.str());
+
 		for(std::vector<unit>::const_iterator u = recall_list.begin(); u != recall_list.end(); ++u) {
 			std::stringstream option;
 			const std::string& description = u->description().empty() ? "-" : u->description();
 			option << IMAGE_PREFIX << u->type().image() << COLUMN_SEPARATOR
 			       << u->type().language_name() << COLUMN_SEPARATOR
 			       << description << COLUMN_SEPARATOR
-			       << _("level: ") << u->type().level() << COLUMN_SEPARATOR
-			       << _("XP: ") << u->experience() << "/";
+			       << u->type().level() << COLUMN_SEPARATOR
+			       << u->experience() << "/";
 
 			if(u->can_advance() == false) {
 				option << "-";
@@ -2004,7 +2021,7 @@ void turn_info::recall()
 					_("Select unit:") + std::string("\n"),
 					gui::OK_CANCEL,&options,
 					&preview_panes,"",NULL,-1,
-					NULL,NULL,-1,-1,NULL,&buttons);
+					NULL,NULL,-1,-1,NULL,&buttons,"",&sorter);
 		}
 
 		if(res >= 0) {
@@ -2135,13 +2152,18 @@ void turn_info::objectives()
 
 void turn_info::unit_list()
 {
-	const std::string heading = _("Type") + std::string(1, COLUMN_SEPARATOR) +
+	const std::string heading = std::string(1,HEADING_PREFIX) +
+	                            _("Type") + std::string(1, COLUMN_SEPARATOR) +
 	                            _("Name") + COLUMN_SEPARATOR +
 	                            _("HP") + COLUMN_SEPARATOR +
 	                            _("XP") + COLUMN_SEPARATOR +
 	                            _("Traits") + COLUMN_SEPARATOR +
 	                            _("Moves") + COLUMN_SEPARATOR +
 	                            _("Location");
+
+	gui::menu::basic_sorter sorter;
+	sorter.set_alpha_sort(0).set_alpha_sort(1).set_numeric_sort(2).set_numeric_sort(3)
+		  .set_alpha_sort(4).set_numeric_sort(5).set_numeric_sort(6);
 
 	std::vector<std::string> items;
 	items.push_back(heading);
@@ -2190,7 +2212,8 @@ void turn_info::unit_list()
 		preview_panes.push_back(&unit_preview);
 
 		selected = gui::show_dialog(gui_,NULL,_("Unit List"),"",
-		                            gui::OK_ONLY,&items,&preview_panes);
+		                            gui::OK_ONLY,&items,&preview_panes,
+									"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
 	}
 
 	if(selected > 0 && selected < int(locations_list.size())) {

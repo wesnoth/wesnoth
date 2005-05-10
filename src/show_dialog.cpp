@@ -322,7 +322,7 @@ int show_dialog(display& disp, surface image,
 				int text_widget_max_chars,
 				dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
 				const std::string* dialog_style, std::vector<dialog_button>* action_buttons,
-				const std::string& help_topic)
+				const std::string& help_topic, const menu::sorter* sorter)
 {
 	if(disp.update_locked())
 		return -1;
@@ -372,7 +372,7 @@ int show_dialog(display& disp, surface image,
 		text_widget_height = text_widget.location().h + message_font_size;
 	}
 
-	menu menu_(screen,menu_items,type == MESSAGE);
+	menu menu_(screen,menu_items,type == MESSAGE,-1,-1,sorter);
 
 	menu_.set_numeric_keypress_selection(use_textbox == false);
 

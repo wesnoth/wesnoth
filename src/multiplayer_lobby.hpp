@@ -39,6 +39,18 @@ protected:
 	virtual void gamelist_updated(bool silent=true);
 private:
 
+	class lobby_sorter : public gui::menu::basic_sorter
+	{
+		const config& cfg_;
+
+		bool column_sortable(int column) const;
+		bool less(int column, const gui::menu::item& row1, const gui::menu::item& row2) const;
+
+		enum { MAP_COLUMN = 0, STATUS_COLUMN = 2};
+	public:
+		lobby_sorter(const config& cfg);
+	};
+
 	std::vector<bool> game_vacant_slots_;
 	std::vector<bool> game_observers_;
 
@@ -47,6 +59,7 @@ private:
 	gui::button create_game_;
 	gui::button quit_game_;
 
+	lobby_sorter sorter_;
 	gui::menu games_menu_;
 	int current_game_;
 };
