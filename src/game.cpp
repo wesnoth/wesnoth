@@ -948,7 +948,7 @@ void game_controller::download_campaigns()
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
 
 		const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&options,
-			                               NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter) - 1;
+			                               NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
 		if(index < 0) {
 			return;
 		}
