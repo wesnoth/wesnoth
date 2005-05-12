@@ -851,8 +851,13 @@ redo_turn:
 					}
 
 					// xgettext:no-c-format
-					report << "\n" << _("80% of gold is retained for the next scenario") << "\n"
-					       << _("Retained Gold: ") << player->gold;
+					// 125 == 100 / 80%
+					if (player->gold >= 125) {
+						report << "\n" << _("80% of gold is retained for the next scenario") << "\n"
+							<< _("Retained Gold: ") << player->gold;
+					} else {
+						report << "\n" << _("100 gold will be available for the next scenario") << "\n" << _("Retained Gold: ") << player->gold;
+					}
 				}
 			}
 
