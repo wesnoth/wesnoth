@@ -299,8 +299,10 @@ hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, bool mods)
 			(event.keysym.mod & KMOD_CTRL) != 0,
 			(event.keysym.mod & KMOD_ALT) != 0,
 			(event.keysym.mod & KMOD_LMETA) != 0
-			|| (event.keysym.mod & KMOD_RMETA) != 0,
-			mods);
+#ifdef __APPLE__
+			|| (event.keysym.mod & KMOD_RMETA) != 0
+#endif
+			, mods);
 }
 
 hotkey_item& get_visible_hotkey(int index)
