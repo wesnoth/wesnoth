@@ -294,11 +294,12 @@ hotkey_item& get_hotkey(int keycode, bool shift, bool ctrl, bool alt, bool cmd, 
 
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, bool mods)
 {
-	return get_hotkey(event.keysym.sym, 
-			(event.keysym.mod & KMOD_SHIFT) != 0, 
-			(event.keysym.mod & KMOD_CTRL) != 0, 
-			(event.keysym.mod & KMOD_ALT) != 0, 
-			(event.keysym.mod & KMOD_LMETA) != 0, 
+	return get_hotkey(event.keysym.sym,
+			(event.keysym.mod & KMOD_SHIFT) != 0,
+			(event.keysym.mod & KMOD_CTRL) != 0,
+			(event.keysym.mod & KMOD_ALT) != 0,
+			(event.keysym.mod & KMOD_LMETA) != 0
+			|| (event.keysym.mod & KMOD_RMETA) != 0,
 			mods);
 }
 
