@@ -313,14 +313,22 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 	}
 
 	if(increase_attacks.empty() == false) {
-		const int increase = atoi(increase_attacks.c_str());
+		int increase = 0;
+		
+		if(increase_attacks[increase_attacks.size()-1] == '%') {
+			const std::string inc(increase_attacks.begin(),increase_attacks.end()-1);
+			increase = div100(num_attacks_ * atoi(inc.c_str()));
+		} else {
+			increase = atoi(increase_attacks.c_str());
+		}
+
 		num_attacks_ += increase;
 		if(num_attacks_ < 1) {
 			num_attacks_ = 1;
 		}
 
 		if(description != NULL) {
-			desc << (increase > 0 ? "+" : "") << increase << " " << _("strikes");
+			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks << " " << _("strikes");
 		}
 	}
 
