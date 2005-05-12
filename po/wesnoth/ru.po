@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-10 19:30+0200\n"
-"PO-Revision-Date: 2005-04-05 15:51+0300\n"
+"PO-Revision-Date: 2005-05-12 18:58+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -30,12 +30,11 @@ msgstr "Bepa-Roman.ttf,Vera.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:36
 msgid "Binary Saves"
-msgstr ""
+msgstr "Бинарные сохранения"
 
 #: data/game.cfg:43
-#, fuzzy
 msgid "Show Combat"
-msgstr "Битва"
+msgstr "Показать битву"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -76,7 +75,6 @@ msgstr ""
 "другими. Эти способности перечислены здесь."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -131,7 +129,6 @@ msgstr ""
 "Вы можете выбрать уровень сложности <italic>text=Легко</italic>."
 
 #: data/help.cfg:73
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining each item. This "
@@ -139,7 +136,7 @@ msgid ""
 msgstr ""
 "Играя, помните, что если Вы наведёте на любой объект указателем, то в меню "
 "справа, в описании появится информация об этом объекте. Это особенно "
-"полезно, пока Вы изучаете новые особенности в первое время."
+"полезно, пока Вы изучаете новые особенности в первый раз."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -229,7 +226,6 @@ msgid "Movement"
 msgstr "Ходы"
 
 #: data/help.cfg:93
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When a unit is "
@@ -323,7 +319,6 @@ msgstr ""
 "<header>text='Порядок и число атак'</header>"
 
 #: data/help.cfg:107
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -339,7 +334,8 @@ msgstr ""
 "пор, пока кто-нибудь не использует все свои атаки. Число атак у разных "
 "соединений различно; например, Эльф Боец имеет 5-4 атаку мечом. Это "
 "означает, что он может нанести 4 удара, нанося при этом по 5 единиц урона. А "
-"Орк Ворчун с атакой 9-2 может нанести всего лишь 2 удара (но с уроном 9)."
+"Орк Ворчун с атакой 9-2 может нанести всего лишь 2 удара (но с уроном 9 за "
+"каждый удар)."
 
 #: data/help.cfg:109
 msgid ""
@@ -352,7 +348,6 @@ msgstr ""
 "<header>text='Шанс попадания'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -369,7 +364,7 @@ msgstr ""
 "За двумя исключениями, шанс нанести удар по соединению вычисляется на основе "
 "рейтинга защищенности на Местности, на которой оно стоит. Это может быть "
 "выяснено при нажатии правой кнопки мыши, выборе Описание Соединения и "
-"просмотре <italic>text='Типа местности'</italic>. Например, эльфы в лесу "
+"просмотре <italic>text='Типы местности'</italic>. Например, эльфы в лесу "
 "имеют рейтинг защищенности, равный 70%, значит, противник имеет шанс попасть "
 "по нему равный 30%. Шанс Эльфа попасть по атакующему зависит от типа "
 "местности, на которой стоит атакующий."
@@ -681,7 +676,6 @@ msgstr ""
 "их от отравления Ядом."
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -691,9 +685,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Помните, что Отдых может сочетаться с другими формами восстановления, "
-"регенерации и деревень, но Восстановление/Лечение не может сочетаться с "
-"другими. Также, соединения полностью восстанавливаются между сценариями. "
+"Помните, что Отдых может сочетаться с другими формами восстановления, но "
+"деревни, регенерация и  Восстановление/Лечение не может сочетаться с "
+"другими. Также, соединения полностью восстанавливаются между сценариями."
 
 #: data/help.cfg:184
 msgid "Income and Upkeep"
@@ -712,7 +706,6 @@ msgstr ""
 "аспекта: Доход и Содержание."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -725,10 +718,9 @@ msgstr ""
 "С доходом всё просто. C каждой деревни, контролируемой Вами, Вы получаете "
 "одну единицу золота за ход. Если у Вас десять деревень, то Вы должны "
 "получать десять единиц золота. К несчастью, Содержание Ваших соединений "
-"вычитает из Вашего дохода определённую сумму."
+"вычитает из Вашего дохода определённую сумму, подробнее об этом ниже."
 
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -742,15 +734,14 @@ msgstr ""
 "\n"
 "\n"
 "Содержание также действует просто. Каждое соединение требует Содержания, "
-"равного его уровню. Вы можете бесплатно поддерживать столько уровней "
-"<italic>text=всех</italic> соединений, сколько у вас деревень. Итак, за "
-"каждый уровень соединения свыше количества деревень вы должны платить один "
-"золотой за ход. Например, у Вас есть двенадцать соединений первого уровня и "
-"десять деревень, значит, Вы будете платить две единиц золота за ход в "
-"качестве содержания."
+"равного его уровню. Вы можете поддерживать столько уровней "
+"<italic>text=ценных</italic> соединений, сколько у вас деревень не платя за "
+"содержание. Итак, за каждый уровень соединения свыше количества деревень вы "
+"должны платить один золотой за ход. Например, у Вас есть двенадцать "
+"соединений первого уровня и десять деревень, значит, Вы будете платить две "
+"единиц золота за ход в качестве содержания."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -760,11 +751,10 @@ msgstr ""
 "\n"
 "\n"
 "Эта сумма и будет вычитаться из Вашего Дохода, значит, в случае двенадцати "
-"уровней и десяти деревень у Ваш Доход будет составлять восемь единиц золота "
+"уровней и десяти деревень, Ваш Доход будет составлять восемь единиц золота "
 "за ход."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -773,12 +763,13 @@ msgid ""
 "the second level of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"В содержании есть два исключения. Во-первых, соединения с особенностью "
-"Преданный всегда будут требовать содержания как соединения первого уровня, "
-"независимо от настоящего уровня. Во-вторых, соединения, с которыми Вы "
-"начинаете сценарий (например, Конрад или Делфадор), и соединения, которые "
-"присоединяются к Вам по ходу сценария (например, Всадник во втором сценарии "
-"'Наследника Престола') никогда не будут требовать содержания."
+"В содержании есть два важных исключения. Во-первых, соединения с "
+"особенностью Преданный всегда будут требовать содержания как соединения "
+"первого уровня, независимо от настоящего уровня. Во-вторых, соединения, с "
+"которыми Вы начинаете сценарий (например, Конрад или Делфадор), и "
+"соединения, которые присоединяются к Вам по ходу сценария (например, Всадник "
+"во втором сценарии Наследника Престола) никогда не будут требовать "
+"содержания."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -818,7 +809,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -843,11 +833,10 @@ msgstr ""
 "Умные соединения очень полезны в начале кампании, так как могут быстро "
 "получить повышение, когда нужны соединения высших уровней. После, в конце "
 "компании, они не очень востребованы, и если Вы нуждаетесь в соединениях "
-"высших уровней, Вы можете призвать соединения с 'долговременными' "
+"высших уровней, Вы можете призвать соединения с наиболее подходящими "
 "особенностями."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -871,14 +860,13 @@ msgstr ""
 "Быстрые соединения имеют дополнительно 1 очко движения, но имеют на 10% "
 "меньше здоровья.\n"
 "\n"
-"Быстрый полезная особенность для медлительных соединений таких как тролли "
+"Быстрый - полезная особенность для медлительных соединений таких как тролли "
 "или тяжёлая пехота. Соединения с особенностью Быстрый могут иметь огромную "
 "подвижность на равнинах, поддерживая Ваши силы в развёртывании. Также "
 "помните, что Быстрые соединения в остальном бесполезны и не могут быть "
 "использованы в оборонительных позициях."
 
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -898,7 +886,7 @@ msgstr ""
 "\n"
 "<header>text=Неунывающий</header>\n"
 "\n"
-"Неунывающие соединения имеют на 7 ЗД больше обычного.\n"
+"Неунывающие соединения имеют на 7 единиц здоровья больше обычного.\n"
 "\n"
 "Особенность Неунывающий полезна на всех стадиях кампании и для всех типов "
 "соединений, хотя некоторые соединения получают её чаще, чем другие. "
@@ -906,7 +894,6 @@ msgstr ""
 "соперников."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -927,7 +914,7 @@ msgstr ""
 "<header>text=Сильный</header>\n"
 "\n"
 "Сильные соединения наносят на 1 единицу урона больше за удар в ближнем бою и "
-"имеют 2 ЗД дополнительно.\n"
+"имеют 2 единицы здоровья дополнительно.\n"
 "\n"
 "Полезная для любого соединения ближнего боя, особенность Сильный наиболее "
 "эффективна для тех, кто имеет большое число наносимых ударов, например для "
@@ -2327,7 +2314,6 @@ msgid "What do traits do?"
 msgstr "Что дают особенности?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -2336,9 +2322,9 @@ msgid ""
 "traits when they are recruited. Also, some races and units may have traits "
 "that are unique to them."
 msgstr ""
-"Всего пять особенностей, которые оказывают различное влияние - от количества "
-"здоровья до количество опыта, необходимого для повышения. Также все "
-"особенности направлены на изменение силы соединения; это не 'негативные' "
+"Всего четыре особенности, которые оказывают различное влияние - от "
+"количества здоровья до количество опыта, необходимого для повышения. Также "
+"все особенности направлены на изменение силы соединения; это не 'негативные' "
 "особенности. Все соединения имеют равные шансы получить две разные "
 "особенности, когда будут завербованы."
 
@@ -2778,19 +2764,16 @@ msgid "Canyon"
 msgstr "Каньон"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "Ruin"
-msgstr "руины"
+msgstr "Руины"
 
 #: data/terrain.cfg:448
-#, fuzzy
 msgid "Sunken Ruin"
-msgstr "затопленные руины"
+msgstr "Затопленные руины"
 
 #: data/terrain.cfg:459
-#, fuzzy
 msgid "Swamp Ruin"
-msgstr "болотные руины"
+msgstr "Болотные руины"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
@@ -5156,9 +5139,8 @@ msgstr "запутывать"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:42
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
-#, fuzzy
 msgid "faerie fire"
-msgstr "прикосновение феи"
+msgstr "фееричный огонь"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -5193,13 +5175,12 @@ msgid "Elvish High Lord"
 msgstr "Эльф Великий Лорд"
 
 #: data/units/Elvish_High_Lord.cfg:18
-#, fuzzy
 msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
 msgstr ""
 "Эльфы Великие Лорды, страшные в бою, используют меч в рукопашной и "
-"опустошающие огненные шары на расстоянии."
+"опустошающие морозящие шары на расстоянии."
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
@@ -5227,13 +5208,12 @@ msgid "Elvish Lord"
 msgstr "Эльф Лорд"
 
 #: data/units/Elvish_Lord.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
 msgstr ""
 "Эльфы Лорды, страшные в бою, используют меч в рукопашной и опустошающие "
-"огненные шары на расстоянии."
+"морозящие шары на расстоянии."
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
@@ -6438,7 +6418,6 @@ msgid "Noble Lord"
 msgstr "Благородный Лорд"
 
 #: data/units/Noble_Lord.cfg:24
-#, fuzzy
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like lords, Lords possess "
@@ -7380,7 +7359,6 @@ msgid "Troll Hero"
 msgstr "Тролль Герой"
 
 #: data/units/Troll_Hero.cfg:17
-#, fuzzy
 msgid ""
 "Troll heroes are strong and brutal humanoid monsters with the amazing "
 "ability to regenerate themselves, so that they recover from wounds on their "
@@ -7737,9 +7715,8 @@ msgid "+Internationalization Managers"
 msgstr "+Менеджеры по локализации"
 
 #: src/about.cpp:126
-#, fuzzy
 msgid "+Afrikaans Translation"
-msgstr "+Датский перевод"
+msgstr "+Африканский перевод"
 
 #: src/about.cpp:130
 msgid "+Basque Translation"
@@ -7802,9 +7779,8 @@ msgid "+Italian Translation"
 msgstr "+Итальянский перевод"
 
 #: src/about.cpp:225
-#, fuzzy
 msgid "+Japanese Translation"
-msgstr "+Китайский перевод"
+msgstr "+Японский перевод"
 
 #: src/about.cpp:230
 msgid "+Latin Translation"
@@ -7843,9 +7819,8 @@ msgid "+Swedish Translation"
 msgstr "+Шведский перевод"
 
 #: src/about.cpp:282
-#, fuzzy
 msgid "+Turkish Translation"
-msgstr "+Датский перевод"
+msgstr "+Турецкий перевод"
 
 #: src/about.cpp:286
 msgid "+Contributors"
@@ -7923,7 +7898,7 @@ msgstr "защитник уязвим против"
 
 #: src/actions.cpp:644
 msgid "(both should survive)"
-msgstr ""
+msgstr "(оба должны выжить)"
 
 #: src/actions.cpp:646
 msgid "% Pr[kills/killed by/both survive]"
@@ -8110,7 +8085,7 @@ msgstr "Ходов:"
 
 #: src/display.cpp:465
 msgid "Screenshot"
-msgstr ""
+msgstr "Скриншот"
 
 #: src/display.cpp:1024
 msgid "healthy"
@@ -8138,9 +8113,10 @@ msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
 #: src/game.cpp:619
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Файл, который Вы пытались загрузить, повреждён"
+msgstr ""
+"Внимание: Файл, который Вы пытались загрузить, повреждён. Пробуем "
+"загрузить.\n"
 
 #: src/game.cpp:641 src/multiplayer_connect.cpp:888
 msgid ""
@@ -8367,9 +8343,8 @@ msgid "Choose your preferred language:"
 msgstr "Выберите предпочтительный язык:"
 
 #: src/game.cpp:1267
-#, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "Ошибка при загрузке файлов с настройками игры: '"
+msgstr "Внимание: Ошибка при загрузке файлов с настройками игры: '"
 
 #: src/game.cpp:1316
 msgid "Error loading game configuration files: '"
@@ -8537,11 +8512,11 @@ msgstr "Высота:"
 
 #: src/mapgen_dialog.cpp:89
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Количество холмов:"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Максимальный размер холма:"
 
 #: src/mapgen_dialog.cpp:91
 msgid "Villages:"
@@ -8588,6 +8563,8 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"Серверу необходима версия '$version1' тогда как Вы используете версию "
+"'$version2'"
 
 #: src/multiplayer.cpp:154
 msgid "Server-side redirect loop"
@@ -9008,7 +8985,6 @@ msgid "Choose weapon:"
 msgstr "Выберите оружие:"
 
 #: src/playturn.cpp:1268
-#, fuzzy
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
@@ -9355,9 +9331,8 @@ msgid "Unexpected characters at line start"
 msgstr "Неожиданные символы в стартовой строке"
 
 #: src/serialization/parser.cpp:124
-#, fuzzy
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr "Отсутствует закрывающейся тэг для тэга $tag (строка $line)"
+msgstr "Отсутствует закрывающейся тэг для тэга $tag в $pos"
 
 #: src/serialization/parser.cpp:139
 msgid "Unterminated [element] tag"
@@ -9384,9 +9359,8 @@ msgid "Unexpected closing tag"
 msgstr "Неожиданный закрывающий тэг"
 
 #: src/serialization/parser.cpp:179
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
-msgstr "Найден неверный закрывающий тэг для тэга $tag (строка $line)"
+msgstr "Найден неверный закрывающий тэг $tag2 для тэга $tag (открытый в $pos)"
 
 #: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 msgid "Empty variable name"
@@ -9402,11 +9376,11 @@ msgstr "Незавершённая ссылаемая строка"
 
 #: src/serialization/parser.cpp:285
 msgid " included from "
-msgstr ""
+msgstr "подключена из"
 
 #: src/serialization/parser.cpp:306
 msgid "$error at $pos"
-msgstr ""
+msgstr "$error в $pos"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
@@ -9482,16 +9456,15 @@ msgstr "-- Великая книга Веснота"
 
 #: src/unit.cpp:1042 src/unit.cpp:1169
 msgid "; "
-msgstr ""
+msgstr ";"
 
 #: src/unit.cpp:1121
 msgid "XP to advance"
-msgstr ""
+msgstr "ОП для улучшения"
 
 #: src/unit.cpp:1160
-#, fuzzy
 msgid ": "
-msgstr "ЗД:"
+msgstr ":"
 
 #: src/unit_types.cpp:323
 msgid "strikes"
@@ -9508,130 +9481,3 @@ msgstr "порядочный"
 #: src/unit_types.cpp:933
 msgid "neutral"
 msgstr "нейтральный"
-
-#~ msgid "fey gale"
-#~ msgstr "обречённый шторм"
-
-#~ msgid "halberd"
-#~ msgstr "алебарда"
-
-#~ msgid ""
-#~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
-#~ "their hoped-for food with poisonous claws."
-#~ msgstr ""
-#~ "Управляемые лишь своим желанием насытиться мясом убитых, Пожиратели "
-#~ "Мёртвых атакуют в надежде отхватить кусок своими отравленными трупным "
-#~ "ядом когтями."
-
-#~ msgid "Do you want to save a replay of this scenario?"
-#~ msgstr "Вы действительно хотите сохранить повтор сценария?"
-
-#~ msgid "Do you want to save your game?"
-#~ msgstr "Вы действительно хотите сохранить игру?"
-
-#~ msgid "Unknown scenario: '"
-#~ msgstr "Неизвестный сценарий: '"
-
-#~ msgid "Dmg"
-#~ msgstr "Урон"
-
-#~ msgid "Missing closing tag for tag $tag (file $file, line $line)"
-#~ msgstr ""
-#~ "Отсутствует закрывающейся тэг для тэга $tag (файл $file, строка $line)"
-
-#~ msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
-#~ msgstr ""
-#~ "Найден неверный закрывающий тэг для тэга $tag (файл $file, строка $line)"
-
-#~ msgid "$error in file $file (line $line, column $column)"
-#~ msgstr "$error в файле $file (строка $line, колонка $column)"
-
-#~ msgid "$error (line $line, column $column)"
-#~ msgstr "$error (строка $line, колонка $column)"
-
-#~ msgid ""
-#~ "Trolls are strong and brutal humanoid monsters with the amazing ability "
-#~ "to regenerate themselves, so that they recover from wounds on their own, "
-#~ "even during battle."
-#~ msgstr ""
-#~ "Тролли - сильные и грубые человекообразные монстры с удивительной "
-#~ "способностью регенерироваться, так что их раны залечиваются сами, даже во "
-#~ "время битвы."
-
-#~ msgid ""
-#~ "Trolls are humanoid monsters that have the amazing ability to regenerate, "
-#~ "recovering from their wounds during battle. These trolls have armed "
-#~ "themselves with large rocks they hurl at their opponents."
-#~ msgstr ""
-#~ "Тролли - человекообразные монстры с удивительной способностью "
-#~ "регенерироваться, так что их раны залечиваются сами, даже во время битвы. "
-#~ "Эти Тролли вооружены большими булыжниками, которые они метают во врагов."
-
-#~ msgid ""
-#~ "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, "
-#~ "and are able to regenerate, healing their own wounds during combat."
-#~ msgstr ""
-#~ "Закалённые в битве, Тролли Воины могут раздавать убийственные удары "
-#~ "булавой и обладают способностью регенерироваться, залечивая свои раны "
-#~ "даже во время битвы."
-
-#~ msgid ""
-#~ "Trolls are humanoid monsters that have the amazing ability to regenerate, "
-#~ "recovering from their wounds during battle. Although these Trolls are "
-#~ "still weak whelps, their race is known for developing amazingly fast."
-#~ msgstr ""
-#~ "Тролли - человекообразные монстры с удивительной способностью "
-#~ "регенерироваться, так что их раны залечиваются сами, даже во время битвы. "
-#~ "Не смотря на то, что эти Тролли - ещё детёныши, их раса известна своим "
-#~ "удивительно быстрым ростом."
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Iterations:"
-#~ msgstr "Повторения:"
-
-#~ msgid "Bump Size:"
-#~ msgstr "Размер холмов:"
-
-#~ msgid ""
-#~ "Most units have two traits. Traits are attributes of the unit that modify "
-#~ "its attributes slightly. They are assigned to a unit randomly when the "
-#~ "unit is recruited.\n"
-#~ "\n"
-#~ "The currently available traits are the following."
-#~ msgstr ""
-#~ "Большинство соединений имеют две особенности. Особенности - это атрибуты "
-#~ "соединения, слегка изменяющие его параметры. Особенности выбираются "
-#~ "случайно, когда соединение вербуется.\n"
-#~ "\n"
-#~ "Возможные особенности перечислены ниже."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Loyal</header>\n"
-#~ "\n"
-#~ "Loyal units only ever require an upkeep of one, no matter what level they "
-#~ "are.\n"
-#~ "\n"
-#~ "Loyal has no effect on a level one unit, which makes it useless in the "
-#~ "early campaign. Once a unit begins to level up, however, it can save you "
-#~ "considerable gold over the course of the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Преданный</header>\n"
-#~ "\n"
-#~ "Лояльные соединения требуют только единицу золота на содержание, "
-#~ "независимо от их уровня.\n"
-#~ "\n"
-#~ "Лояльность  не оказывает влияния соединение первого уровня, что делает "
-#~ "эту возможность бесполезной на ранних стадиях кампании. Но как только "
-#~ "соединение начнет повышать уровень, это поможет сохранить Вам много "
-#~ "золота на протяжении всей кампании"
-
-#~ msgid "Era not available: "
-#~ msgstr "Эра недоступна:"

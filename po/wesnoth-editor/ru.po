@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-10 19:36+0200\n"
-"PO-Revision-Date: 2005-02-26 15:49+0300\n"
+"PO-Revision-Date: 2005-05-12 18:44+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -103,9 +103,8 @@ msgid "Player"
 msgstr "Игрок"
 
 #: src/editor/editor_dialogs.cpp:47
-#, fuzzy
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Ваши изменения карты не будут сохранены. Продолжить?"
+msgstr "Ваши изменения карты будут потеряны. Продолжить?"
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
 msgid "Create New Map"
@@ -152,7 +151,6 @@ msgid "Scroll Speed:"
 msgstr "Скорость перемещения:"
 
 #: src/editor/editor_dialogs.cpp:282
-#, fuzzy
 msgid "Toggle Full Screen"
 msgstr "На весь экран"
 
@@ -174,7 +172,7 @@ msgstr "Изменить размер карты"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -203,6 +201,3 @@ msgstr "Удалить файл"
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Ошибка удаления файла."
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
