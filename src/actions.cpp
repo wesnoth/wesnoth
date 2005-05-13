@@ -821,7 +821,7 @@ void attack(display& gui, const gamemap& map,
 				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
 					
 					if(reanimitor != info.unit_types.end()) {
-					       unit newunit=unit(&reanimitor->second,a->second.side(),false,true);
+					       unit newunit=unit(&reanimitor->second,a->second.side(),true,true);
 					       //apply variation					       
 					       if(strcmp(undead_variation.c_str(),"null")){
 						 config mod;
@@ -987,7 +987,7 @@ void attack(display& gui, const gamemap& map,
 				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
 					
 					if(reanimitor != info.unit_types.end()) {
-					       unit newunit=unit(&reanimitor->second,d->second.side(),false,true);
+					       unit newunit=unit(&reanimitor->second,d->second.side(),true,true);
 					       //apply variation
 					       if(strcmp(undead_variation.c_str(),"null")){
 						 config mod;
