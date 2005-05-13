@@ -292,7 +292,7 @@ void menu::update_size()
 
 int menu::selection() const
 {
-	if(selected_ < 0 || selected_ >= int(items_.size())) {
+	if (selected_ >= items_.size()) {
 		return -1;
 	}
 
@@ -365,7 +365,7 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	max_items_ = -1; // Force recalculation of the max items.
 	item_height_ = -1; // Force recalculation of the item height.
 
-	if(keep_viewport == false || selected_ >= int(items.size())) {
+	if (!keep_viewport || selected_ >= items.size()) {
 		selected_ = 0;
 	}
 
