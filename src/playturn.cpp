@@ -1698,7 +1698,6 @@ void turn_info::toggle_grid()
 
 void turn_info::status_table()
 {
-	std::vector<std::string> items;
 	std::stringstream heading;
 	heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
 	        << _("Gold") << COLUMN_SEPARATOR
@@ -1714,6 +1713,7 @@ void turn_info::status_table()
 	if(game_config::debug)
 		heading << COLUMN_SEPARATOR << _("Gold");
 
+	std::vector<std::string> items;
 	items.push_back(heading.str());
 
 	const team& viewing_team = teams_[gui_.viewing_team()];
@@ -1739,11 +1739,13 @@ void turn_info::status_table()
 		std::stringstream str;
 
 		const unit_map::const_iterator leader = team_leader(n+1,units_);
+		//output the number of the side first, and this will
+		//cause it to be displayed in the correct colour
 		if(leader != units_.end()) {
 			str << IMAGE_PREFIX << leader->second.type().image() << COLUMN_SEPARATOR
 			    << char(n+1) << leader->second.description() << COLUMN_SEPARATOR;
 		} else {
-			str << char(n+1) << '-' << COLUMN_SEPARATOR << char(n+1) << '-' << COLUMN_SEPARATOR;
+			str << ' ' << COLUMN_SEPARATOR << char(n+1) << '-' << COLUMN_SEPARATOR;
 		}
 
 		if(enemy) {
@@ -1751,11 +1753,9 @@ void turn_info::status_table()
 		} else {
 			str << data.gold << COLUMN_SEPARATOR;
 		}
-		//output the number of the side first, and this will
-		//cause it to be displayed in the correct colour
 		str << data.villages << COLUMN_SEPARATOR
 		    << data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
-			<< (data.net_income < 0 ? font::BAD_TEXT:font::NULL_MARKUP) << data.net_income;
+		    << (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << data.net_income;
 
 		if(game_config::debug)
 			str << COLUMN_SEPARATOR << teams_[n].gold();
@@ -2153,7 +2153,7 @@ void turn_info::objectives()
 void turn_info::unit_list()
 {
 	const std::string heading = std::string(1,HEADING_PREFIX) +
-	                            _("Type") + std::string(1, COLUMN_SEPARATOR) +
+	                            _("Type") + COLUMN_SEPARATOR +
 	                            _("Name") + COLUMN_SEPARATOR +
 	                            _("HP") + COLUMN_SEPARATOR +
 	                            _("XP") + COLUMN_SEPARATOR +
