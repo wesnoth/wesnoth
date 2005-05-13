@@ -1,14 +1,14 @@
 CVS HEAD:
- * balancing change: reduced cost of dwarvish fighter by 1 gold; made Lieutenant more powerful
+ * balancing: reduced Dwarvish Fighter cost by 1; made Lieutenant more powerful
  * user interface improvements:
-   * recognize right Command (META) key, not just left
+   * recognize right Command key on Mac OS X, not just left
    * explicitly mention 100 gold minimum next scenario (#12987)
    * made menu widgets sortable
    * added %-to-kill to Damage Calculations
    * unit defense in a terrain is displayed over the terrain when choosing move
    * added 'Advanced' preferences: 'binary save files', 'show combat' initially
    * fix editor file chooser when starting directory has many files (#11698)
-   * made it so network dialogs show progress of data transfers again
+   * network dialogs show progress of data transfers again
    * starting position in editor now starts at player 1 (#10625)
    * fixed female units not appearing in help (broken since 0.9.0)
    * reduced required width of weapon area in help
@@ -71,7 +71,7 @@ CVS HEAD:
  * slow now works with berserk and is cumulative across berserk rounds
  * fix replays with idle_ai, as seen in user scenario Rebellion (#12943)
  * new WML preprocessor, allows for nested parentheses in macros (#10995)
- * new [random] representation, fixes error saving complex scenarios (forum thread 5659)
+ * new [random] representation allows complex scenario saves (forum thread 5659)
  * increase_attacks= attribute of [effect] now allows percentages (#13033)
  * various bug fixes and code cleanups
 
