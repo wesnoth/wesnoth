@@ -238,7 +238,13 @@ double pr_atleast(int m, double p, int n, int d)
 {
 	// calculate Pr[A does damage in [m,...)], where
 	// p probability to hit, n swings, d damage/swing
-	double P = 0;
+	double P = 0.0;
+	// 0 damage can happen when unit has no attack of this type
+	if(d == 0) {
+		if(m <= 0)
+			P = 1.0;
+		return P;
+	}
 	for(int k = (m + d - 1)/d; k <= n; ++k) {
 		double r = 1.0;
 		const int k2 = (k > n - k) ? (n - k) : k;
