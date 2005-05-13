@@ -293,9 +293,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
                                    std::map<gamemap::location,unit>& units,
                                    const gamestatus& state,
                                    gamemap::TERRAIN attacker_terrain_override,
-                                   battle_stats_strings *strings = NULL)
-// strings != NULL if we want the Damage Calculations to be shown
-// it should otherwise be NULL to avoid diagnostics being constructed!
+                                   battle_stats_strings *strings)
 {
 	battle_stats res;
 
