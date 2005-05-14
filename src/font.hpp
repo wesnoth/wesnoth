@@ -124,7 +124,7 @@ SDL_Rect line_size(const std::string& line, int font_size, int style=TTF_STYLE_N
 /// If the is not possible, e.g. the word is too big to fit, wrap it on a
 /// char basis.
 ///
-std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height=-1);
+std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height=-1, int max_lines=-1);
 
 ///
 /// If the text excedes the specified max width, end it with an ellipsis (...)

@@ -1908,20 +1908,11 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 		if (!surf.null())
 			add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
 		if (parts.size() > 1) {
-			// Parts remain, remove the first part from the string and
-			// add the remaining parts.
-			std::string s = text;
-			s.erase(0, first_part.size());
-			if (s.length() < 1) {
-				return;
-			}
+
+			std::string& s = parts.back();
+
 			const std::string first_word_before = get_first_word(s);
 			const std::string first_word_after = get_first_word(remove_first_space(s));
-			//std::cout << "before: '" << first_word_before << "'\n"
-			//		  << "after: '" << first_word_after << "'\n"
-			//		  << "before linewidth: " << font::line_width(first_word_before, font_size)
-			//		  << "\nafter linewidth: " << font::line_width(first_word_after, font_size)
-			//		  << "\nremaining width: " << get_remaining_width() << std::endl;
 			if (get_remaining_width() >= font::line_width(first_word_after, font_size, state)
 				&& get_remaining_width()
 				< font::line_width(first_word_before, font_size, state)) {
@@ -2513,9 +2504,14 @@ SDL_Color string_to_color(const std::string &s)
 std::vector<std::string> split_in_width(const std::string &s, const int font_size,
 		const unsigned width)
 {
-	std::string wrapped = font::word_wrap_text(s, font_size, width);
-	std::vector<std::string> parts = utils::split(wrapped, '\n', 0);
-	return parts;
+	std::vector<std::string> res;
+	const std::string& first_line = font::word_wrap_text(s, font_size, width, -1, 1);
+	res.push_back(first_line);
+	if(s.size() > first_line.size()) {
+		res.push_back(s.substr(first_line.size()));
+	}
+
+	return res;
 }
 
 std::string remove_first_space(const std::string& text)

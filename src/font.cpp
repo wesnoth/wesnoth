@@ -95,6 +95,12 @@ struct text_chunk
 
 std::vector<subset_id> font_map;
 
+//cache sizes of small text
+typedef std::map<std::string,SDL_Rect> line_size_cache_map;
+
+//map of styles -> sizes -> cache
+std::map<int,std::map<int,line_size_cache_map> > line_size_cache;
+
 //Splits the UTF-8 text into text_chunks using the same font.
 std::vector<text_chunk> split_text(std::string const & utf8_text) {
 	text_chunk current_chunk(0);
@@ -214,6 +220,7 @@ void clear_fonts()
 	font_table.clear();
 	font_names.clear();
 	font_map.clear();
+	line_size_cache.clear();
 }
 
 struct font_style_setter
@@ -852,14 +859,21 @@ std::string remove_first_space(const std::string& text)
 
 int line_width(const std::string& line, int font_size, int style)
 {
-	const SDL_Color col = { 0, 0, 0, 0 };
-	text_surface s(line, font_size, col, style);
-
-	return s.width();
+	return line_size(line,font_size,style).w;
 }
 
 SDL_Rect line_size(const std::string& line, int font_size, int style)
 {
+	const size_t max_cache_size = 12;
+	line_size_cache_map& cache = line_size_cache[style][font_size];
+
+	if(line.size() < max_cache_size) {
+		const line_size_cache_map::const_iterator i = cache.find(line);
+		if(i != cache.end()) {
+			return i->second;
+		}
+	}
+
 	SDL_Rect res;
 
 	const SDL_Color col = { 0, 0, 0, 0 };
@@ -867,6 +881,10 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 
 	res.w = s.width();
 	res.h = s.height();
+
+	if(line.size() < max_cache_size) {
+		cache.insert(std::pair<std::string,SDL_Rect>(line,res));
+	}
 
 	return res;
 }
@@ -956,11 +974,14 @@ inline bool break_after(wchar_t ch)
 }
 }
 
-std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height)
+std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height, int max_lines)
 {
+	assert(max_width > 0);
+
 	utils::utf8_iterator ch(unwrapped_text);
 	std::string current_word;
 	std::string current_line;
+	size_t line_width = 0;
 	size_t current_height = 0;
 	bool line_break = false;
 	bool first = true;
@@ -971,6 +992,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 
 	while(1) {
 		if(start_of_line) {
+			line_width = 0;
 			format_string = "";
 			while(ch != end && *ch < 0x100U && is_format_char(*ch)) {
 				format_string.append(ch.substr().first, ch.substr().second);
@@ -1014,11 +1036,15 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 			current_word = "";
 			start_of_line = true;
 		} else {
-			SDL_Rect size = line_size(current_line + current_word, font_size);
 
-			if(size.w > max_width) {
-				SDL_Rect wsize = line_size(current_word, font_size);
-				if(wsize.w > max_width) {
+			const std::string word = format_string + current_word;
+
+			const size_t word_width = line_size(word,font_size).w;
+
+			line_width += word_width;
+
+			if(line_width > max_width) {
+				if(word_width > max_width) {
 					cut_word(current_line, current_word, font_size, max_width);
 				}
 				if(current_word == " ")
@@ -1032,16 +1058,24 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 
 		if(line_break || current_word.empty() && ch == end) {
 			SDL_Rect size = line_size(current_line, font_size);
-			if(max_height > 0 && current_height + size.h >= size_t(max_height))
+			if(max_height > 0 && current_height + size.h >= size_t(max_height)) {
 				return wrapped_text;
+			}
 
-			if(!first)
+			if(!first) {
 				wrapped_text += '\n';
+			}
+
 			wrapped_text += current_line;
 			current_line = format_string;
+			line_width = 0;
 			current_height += size.h;
 			line_break = false;
 			first = false;
+
+			if(--max_lines == 0) {
+				return wrapped_text;
+			}
 		}
 	}
 	return wrapped_text;
