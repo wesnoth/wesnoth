@@ -234,7 +234,7 @@ void preprocessor_data::push_token(char t)
 	token_desc token = { t, strings_.size(), linenum_ };
 	tokens_.push_back(token);
 	std::ostringstream s;
-	if (!skipping_) {
+	if (!skipping_ && slowpath_) {
 		s << "\376line " << linenum_ << ' ' << target_.location_
 		  << "\n\376textdomain " << target_.textdomain_ << '\n';
 	}
@@ -372,15 +372,20 @@ bool preprocessor_data::get_chunk()
 	} else if (c == '"') {
 		if (token.type == '"') {
 			target_.quoted_ = false;
-			std::string tmp = strings_.back();
-			pop_token();
-			put(tmp);
+			put(c);
+			if (!skipping_ && slowpath_) {
+				std::string tmp = strings_.back();
+				pop_token();
+				strings_.back() += tmp;
+			} else
+				pop_token();
 			char &t = tokens_.back().type;
 			if (t == '{')
 				t = '[';
 		} else if (!target_.quoted_) {
 			target_.quoted_ = true;
 			push_token('"');
+			put(c);
 		} else {
 			std::ostringstream error;
 			error << "nested quoted string started at "
@@ -388,7 +393,6 @@ bool preprocessor_data::get_chunk()
 			ERR_CF << error.str() << '\n';
 			throw config::error(error.str());
 		}
-		put(c);
 	} else if (c == '{') {
 		push_token('{');
 		++slowpath_;
@@ -488,6 +492,7 @@ bool preprocessor_data::get_chunk()
 			put("#textdomain ");
 			put(s);
 			target_.textdomain_ = s;
+			comment = true;
 		} else if (command == "enddef") {
 			std::ostringstream error;
 			error << "unexpected #enddef at "
