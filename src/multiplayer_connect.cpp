@@ -408,7 +408,7 @@ void connect::side::import_network_user(const config& data)
 	id_ = data["name"];
 	controller_ = CNTR_NETWORK;
 
-	if (enabled_) {
+	if (enabled_ && !parent_->era_sides_.empty()) {
 		faction_ = lexical_cast_default<int>(data["faction"], 0);
 		if (faction_ > int(parent_->era_sides_.size()))
 			faction_ = 0;
@@ -422,10 +422,13 @@ void connect::side::import_network_user(const config& data)
 void connect::side::reset(mp::controller controller)
 {
 	id_ = "";
-	faction_ = 0;
 	controller_ = controller;
 
-	llm_.update_leader_list(0);
+	if(enabled_ && !parent_->era_sides_.empty()) {
+		faction_ = 0;
+		llm_.update_leader_list(0);
+	}
+
 	update_ui();
 }
 
@@ -907,7 +910,6 @@ void connect::load_game()
 		level_ = params_.scenario_data;
 		level_["turns"] = lexical_cast_default<std::string>(params_.num_turns, "20");
 
-		// Gets the era from the era of the savegame
 		const std::string& era = params_.era;
 
 		// Initialize the list of sides available for the current era.
@@ -920,13 +922,11 @@ void connect::load_game()
 		era_sides_ = era_cfg->get_children("multiplayer_side");
 		level_["scenario"] = params_.name;
 		level_.add_child("era", *era_cfg);
+		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
 	}
 
 	//this will force connecting clients to be using the same version number as us.
 	level_["version"] = game_config::version;
-
-	if(!params_.saved_game) 
-		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
 
 	level_["observers"] = params_.allow_observers ? "yes" : "no";
 
