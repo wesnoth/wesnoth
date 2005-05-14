@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-10 19:30+0200\n"
-"PO-Revision-Date: 2005-05-05 19:27+0100\n"
+"PO-Revision-Date: 2005-05-13 17:26+0100\n"
 "Last-Translator: americo iacovizzi <americo_iacovizzi@libero.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,12 +27,11 @@ msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:36
 msgid "Binary Saves"
-msgstr ""
+msgstr "Salvataggi Binari"
 
 #: data/game.cfg:43
-#, fuzzy
 msgid "Show Combat"
-msgstr "Combattimento"
+msgstr "Mostra il Combattimento"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -590,7 +589,7 @@ msgid ""
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
 "Se ambedue le unità sopravvivono al combattimento, guadagnano un numero di "
-"punti esperienza pari al livello dell'unità con cui stanno combattendo. Se "
+"Punti Esperienza pari al livello dell'unità con cui stanno combattendo. Se "
 "un unità uccide un'altra durante lo scontro guadagna molta più esperienza - "
 "4 per le unità di livello 0, 8 per quelle di livello 1, 16 per il livello 2, "
 "24 per il livello 3, e così via."
@@ -606,11 +605,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le unità hanno bisogno di una certa esperienza per avanzare di livello (alle "
-"unità con la caratteristica intelligenza ne serve il 20% in meno). Quando "
-"raggiungono questa soglia avanzano immediatamente al livello successivo, "
-"riguadagnando tutta la loro energia. In alcuni casi viene data la "
-"possibilità di scegliere il tipo di avanzamento."
+"Le unità hanno bisogno di un certo numero di Punti Esperienza per avanzare "
+"di livello (alle unità con la caratteristica intelligenza ne serve il 20% in "
+"meno). Quando raggiungono questa soglia avanzano immediatamente al livello "
+"successivo, riguadagnando tutta la loro energia. In alcuni casi viene data "
+"la possibilità di scegliere il tipo di avanzamento."
 
 #: data/help.cfg:164
 msgid ""
@@ -766,7 +765,6 @@ msgstr ""
 "d'oro a turno."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -824,6 +822,11 @@ msgid ""
 "attributes slightly. They are usually randomly assigned to a unit when it is "
 "recruited."
 msgstr ""
+"La maggior parte delle unità hanno due caratteristiche, con l'eccezione dei "
+"Non Morti ai quali viene assegnata la sola caratteristica 'Non Morto'. Le "
+"Caratteristiche sono delle modifiche che cambiano gli attributi ad un'unità. "
+"Generalmente vengono assegnate all'unità in maniera casuale quando viene "
+"reclutata."
 
 #: data/help.cfg:212
 msgid ""
@@ -831,9 +834,11 @@ msgid ""
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"Le caratteristiche disponibili per tutte le unità, eccetto i Non Morti, sono:"
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -853,8 +858,8 @@ msgstr ""
 "\n"
 "<header>text=Intelligente</header>\n"
 "\n"
-"Le unità Intelligenti hanno bisogno del 20% in meno di esperienza delle "
-"altre per avanzare di livello.\n"
+"Le unità Intelligenti hanno bisogno del 20% di punti esperienza in meno "
+"rispetto alle altre unità per avanzare di livello.\n"
 "\n"
 "Le unità intelligenti sono molto utili all'inizio di una campagna, dato che "
 "possono avanzare più velocemente ad un livello più alto. Successivamente, "
@@ -863,7 +868,6 @@ msgstr ""
 "termine."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -889,13 +893,12 @@ msgstr ""
 "\n"
 "La caratteristica Veloce è quella più notevole, soprattutto nelle unità "
 "lente come i Troll o la Fanteria Pesante. Le unità con la caratteristica "
-"'Veloce' possono avere una mobilità maggiore sul terreno, quindi è da tenere "
-"presente quando vengono schierate le forze. Bisogna ricordare anche che le "
-"unità veloci sono meno forti del normale e non sono utili per mantenere la "
-"posizione."
+"'Veloce' possono avere una mobilità maggiore sul terreno, quindi sono da "
+"tenere presenti quando vengono schierate le forze. Bisogna ricordare anche "
+"che le unità veloci sono meno forti del normale e non sono utili per "
+"mantenere la posizione."
 
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -917,13 +920,12 @@ msgstr ""
 "\n"
 "Le unità resistenti hanno 7HP in più delle altre.\n"
 "\n"
-"Le unità Resistenti possono essere utili in tutti i livelli delle campagne, "
-"è un utile caratteristica per tutte le unità, benché lo si noterà di più in "
-"alcune unità che in altre. Le unità resistenti sono importanti per mantenere "
-"il terreno durante un attacco."
+"Le unità Resistenti possono essere utili in tutti i livelli delle campagne "
+"ed è un utile caratteristica per tutte le unità, benché lo si noterà di più "
+"in alcune unità che in altre. Le unità resistenti sono importanti per "
+"mantenere delle posizioni strategiche contro il nemico."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -958,6 +960,10 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"Altre caratteristiche speciali che possono essere assegnate alle unità sono:"
 
 #: data/help.cfg:251
 msgid ""
@@ -993,6 +999,18 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Non Morto</header>\n"
+"\n"
+"Le unità non morte sono immuni al veleno\n"
+"\n"
+"Le unità non morte hanno generalmente la caratteristica 'Non Morto'. Dato "
+"che le unità non morte non sono altro che dei cadaveri, risorti per tornare "
+"a combattere, il veleno non ha alcun effetto su di loro. Questo li rende "
+"molto validi nel combattere con i nemici che usano il veleno per indebolire "
+"l'avversario."
 
 #: data/help.cfg:265
 msgid ""
@@ -1008,6 +1026,16 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Abili</header>\n"
+"\n"
+"Le unità Abili causano +1 danno per ogni colpo inferto con successo con "
+"l'arco.\n"
+"\n"
+"Abile è una Caratteristica posseduta soltanto dagli elfi. Il popolo Elfico è "
+"conosciuto per la loro "
 
 #: data/items.cfg:264
 msgid ""
@@ -1357,7 +1385,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "Partita in squadre a 2 contro 2 o 3 conto 3."
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:3
 msgid "Icy Waters"
@@ -1671,7 +1699,7 @@ msgid ""
 "advances to the next level, and becomes more powerful."
 msgstr ""
 "Il tuo combattente è sopravvissuto all'attacco di Merle. Ogni volta che "
-"un'unità sopravvive ad una battaglia, acquisisce esperienza dal "
+"un'unità sopravvive ad una battaglia, acquisisce dei Punti Esperienza dal "
 "combattimento. Una volta raggiunti i punti esperienza necessari, l'unità "
 "avanza al livello successivo e diventa più forte."
 
@@ -1775,7 +1803,6 @@ msgstr ""
 "battaglia."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
-#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -1829,7 +1856,7 @@ msgstr "Morte di Konrad"
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
 #: data/scenarios/tutorial/utils.cfg:59
 msgid "Turns run out"
-msgstr ""
+msgstr "Turni Terminati"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
 msgid "You have successfully recalled your Elvish Fighter."
@@ -1939,12 +1966,12 @@ msgstr ""
 "Reclutare unità\n"
 "Muovere le unità\n"
 "Attaccare unità nemiche\n"
-"Guadagnare esperienza\n"
+"Guadagnare Punti Esperienza\n"
 "Vincere uno scenario"
 
 #: data/scenarios/tutorial/utils.cfg:45
 msgid "Current objective:"
-msgstr ""
+msgstr "Attuale obiettivo:"
 
 #: data/scenarios/tutorial/utils.cfg:55
 msgid "Death of Delfador"
@@ -2201,7 +2228,7 @@ msgstr "Il mio combattente colpirà ogni volta che attacca?"
 
 #: data/scenarios/tutorial/utils.cfg:90
 msgid "What's experience?"
-msgstr "Cos'è l'esperienza?"
+msgstr "Cosa sono i Punti Esperienza?"
 
 #: data/scenarios/tutorial/utils.cfg:90
 msgid ""
@@ -2785,7 +2812,7 @@ msgstr "HP"
 
 #: data/themes/default.cfg:176 src/playturn.cpp:2141
 msgid "XP"
-msgstr "XP"
+msgstr "PE"
 
 #: data/themes/default.cfg:186
 msgid "gold"
@@ -2956,8 +2983,8 @@ msgid ""
 "the unit they kill."
 msgstr ""
 "Infliggere il colpo mortale ad un nemico è il migliore modo per guadagnare "
-"esperienza. Le unità che uccidono un nemico guadagnano 8 punti esperienza "
-"per ogni livello dell'unità uccisa."
+"dei Punti Esperienza. Le unità che uccidono un nemico guadagnano 8 punti "
+"esperienza per ogni livello dell'unità uccisa."
 
 #: data/tips.cfg:14
 msgid ""
@@ -3128,7 +3155,7 @@ msgstr "non-morto"
 
 #: data/traits.cfg:18
 msgid "Immune to poison"
-msgstr ""
+msgstr "Immune al veleno"
 
 #: data/traits.cfg:26
 msgid "strong"
@@ -3136,7 +3163,7 @@ msgstr "forte"
 
 #: data/traits.cfg:44
 msgid "dextrous"
-msgstr "agile"
+msgstr "abile"
 
 #: data/traits.cfg:57
 msgid "quick"
@@ -5084,9 +5111,8 @@ msgstr "Intrappolare"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:42
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
-#, fuzzy
 msgid "faerie fire"
-msgstr "tocco fatato"
+msgstr "Fuoco Fatato"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -6757,7 +6783,7 @@ msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
 msgstr ""
-"I bracconieri fanno affidamento alla lora esperienza nella caccia e sono "
+"I bracconieri fanno affidamento alla loro esperienza nella caccia e sono "
 "molto utili di notte e nelle foreste e paludi."
 
 #: data/units/Princess.cfg:20 data/units/Princess.cfg:58
@@ -7228,7 +7254,7 @@ msgid ""
 msgstr ""
 "I Cacciatori lavorano solitamente per fornire cibo ai banditi e i "
 "fuorilegge. La loro esperienza nella caccia li rende particolarmente utili "
-"durante la notte, nelle forste e paludi."
+"durante la notte, nelle foreste e paludi."
 
 #: data/units/Triton.cfg:6
 msgid "Triton"
@@ -7803,7 +7829,7 @@ msgstr "vulnerabilità del difensore vs"
 
 #: src/actions.cpp:644
 msgid "(both should survive)"
-msgstr ""
+msgstr "(ambedue dovrebbero sopravvivere)"
 
 #: src/actions.cpp:646
 msgid "% Pr[kills/killed by/both survive]"
@@ -7984,7 +8010,7 @@ msgstr "HP:"
 #: src/dialogs.cpp:672 src/dialogs.cpp:680 src/display.cpp:1065
 #: src/display.cpp:1073 src/playturn.cpp:1979
 msgid "XP: "
-msgstr "XP:"
+msgstr "PE:"
 
 #: src/dialogs.cpp:685 src/display.cpp:1077 src/help.cpp:1077
 msgid "Moves: "
@@ -8287,7 +8313,7 @@ msgstr "Allineamento:"
 
 #: src/help.cpp:1082
 msgid "Required XP: "
-msgstr "XP Richiesta:"
+msgstr "PE Richiesti:"
 
 #: src/help.cpp:1091 src/reports.cpp:236
 msgid "attacks"
@@ -8424,7 +8450,7 @@ msgstr "Numero di Colline:"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Dimenzione massima delle colline"
 
 #: src/mapgen_dialog.cpp:91
 msgid "Villages:"
@@ -9107,11 +9133,13 @@ msgstr "Non ho trovato nessuna etichetta contente '$search'."
 
 #: src/playturn.cpp:2436
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Temi Salvati:"
 
 #: src/playturn.cpp:2442
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
+"Il nuovo tema avrà effetto sulla prossima nuova partita o sul prossimo "
+"caricamento."
 
 #: src/playturn.cpp:2527
 msgid "Place Label"
@@ -9279,11 +9307,11 @@ msgstr ""
 
 #: src/serialization/parser.cpp:285
 msgid " included from "
-msgstr ""
+msgstr "incluso da"
 
 #: src/serialization/parser.cpp:306
 msgid "$error at $pos"
-msgstr ""
+msgstr "$error su $pos"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
@@ -9363,7 +9391,7 @@ msgstr ";"
 
 #: src/unit.cpp:1121
 msgid "XP to advance"
-msgstr ""
+msgstr "PE per avanzare"
 
 #: src/unit.cpp:1160
 msgid ": "
