@@ -647,7 +647,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		std::stringstream str;
 		if (P1 < 0.005 && P2 < 0.005) {
-			str << _("(both should survive)");
+			str << _("(both should survive)") << EMPTY_COLUMN;
 		} else {
 			str << _("% Pr[kills/killed by/both survive]")
 			    << EMPTY_COLUMN << (int)(P1*100+0.5)
