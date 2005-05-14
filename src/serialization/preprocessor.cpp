@@ -96,17 +96,20 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
 
 int preprocessor_streambuf::underflow()
 {
-	if (gptr() < egptr())
-		return *gptr();
-	// the buffer has been completely read; fill it again
-	// keep part of the previous buffer, to ensure putback capabilities
-	unsigned sz = out_buffer_.size();
-	if (sz > 3) {
-		out_buffer_ = out_buffer_.substr(sz - 3);
-		sz = 3;
+	unsigned sz = 0;
+	if (char *gp = gptr()) {
+		if (gp < egptr())
+			return *gp;
+		// the buffer has been completely read; fill it again
+		// keep part of the previous buffer, to ensure putback capabilities
+		sz = out_buffer_.size();
+		if (sz > 3) {
+			out_buffer_ = out_buffer_.substr(sz - 3);
+			sz = 3;
+		}
+		buffer_.str(std::string());
+		buffer_ << out_buffer_;
 	}
-	buffer_.str(std::string());
-	buffer_ << out_buffer_;
 	while (current_) {
 		if (current_->get_chunk()) {
 			if (buffer_.str().size() >= 2000)
