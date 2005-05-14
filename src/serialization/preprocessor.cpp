@@ -89,7 +89,7 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
 }
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: current_(NULL), defines_(t.defines_),
+	: std::streambuf(), current_(NULL), defines_(t.defines_),
 	  textdomain_(PACKAGE), depth_(t.depth_), quoted_(t.quoted_)
 {
 }
@@ -546,30 +546,56 @@ bool preprocessor_data::get_chunk()
 					throw config::error(error.str());
 				}
 
-				std::string str = val.value;
-
-				//substitute in given arguments
-				for(size_t n = 0; n < nb_arg; ++n) {
-					std::string const &replace_with = strings_[token.stack_pos + n + 1];
-					std::string item = '{' + val.arguments[n] + '}';
-					std::string::size_type pos = str.find(item), old_pos = 0;
-					int num = 0;
-					while (pos != std::string::npos) {
-						num += std::count(str.begin() + old_pos, str.begin() + pos, '\n');
-						num -= std::count(str.begin() + old_pos, str.begin() + pos, '\376');
-						std::ostringstream s;
-						s << "\376line " << val.linenum + num << ' ' << val.location
-						  << "\n\376textdomain " << val.textdomain << '\n';
-						std::string replace = replace_with + s.str();
-						str.replace(pos, item.size(), replace);
-						old_pos = pos + replace.size();
-						pos = str.find(item);
-						if (pos < old_pos) {
-							ERR_CF << "macro substitution in symbol '" << symbol
-							       << "' could lead to infinite recursion at "
-							       << linenum_ << ' ' << target_.location_
-							       << ". Aborting.\n";
+				std::stringstream *buffer = new std::stringstream;
+				std::string::const_iterator i_bra = val.value.end();
+				int macro_num = val.linenum;
+				std::string macro_textdomain = val.textdomain;
+				for(std::string::const_iterator i = val.value.begin(),
+				    i_end = val.value.end(); i != i_end; ++i) {
+					char c = *i;
+					if (c == '\n')
+						++macro_num;
+					if (c == '{') {
+						if (i_bra != i_end)
+							buffer->write(&*i_bra - 1, i - i_bra + 1);
+						i_bra = i + 1;
+					} else if (i_bra == i_end) {
+						if (c == '#') {
+							// keep track of textdomain changes in the body of the
+							// macro so they can be restored after each substitution
+							// of a macro argument
+							std::string::const_iterator i_beg = i + 1;
+							if (i_end - i_beg >= 13 &&
+							    std::equal(i_beg, i_beg + 10, "textdomain")) {
+								i_beg += 10;
+								i = std::find(i_beg, i_end, '\n');
+								if (i_beg != i)
+									++i_beg;
+								macro_textdomain = std::string(i_beg, i);
+								*buffer << "#textdomain " << macro_textdomain;
+								++macro_num;
+								c = '\n';
+							}
+						}
+						buffer->put(c);
+					} else if (c == '}') {
+						size_t sz = i - i_bra;
+						for(size_t n = 0; n < nb_arg; ++n) {
+							std::string const &arg = val.arguments[n];
+							if (arg.size() != sz ||
+							    !std::equal(i_bra, i, arg.begin()))
+								continue;
+							*buffer << strings_[token.stack_pos + n + 1]
+							        << "\376line " << macro_num
+							        << ' ' << val.location << "\n\376textdomain "
+							        << macro_textdomain << '\n';
+							i_bra = i_end;
 							break;
+						}
+						if (i_bra != i_end) {
+							// the bracketed text was no macro argument
+							buffer->write(&*i_bra - 1, sz + 2);
+							i_bra = i_end;
 						}
 					}
 				}
@@ -579,7 +605,6 @@ bool preprocessor_data::get_chunk()
 				std::string::size_type pos = val.location.find(' ');
 				if (pos != std::string::npos)
 					dir = val.location.substr(0, pos);
-				std::istream *buffer = new std::istringstream(str);
 				if (!slowpath_) {
 					LOG_CF << "substituting macro " << symbol << '\n';
 					new preprocessor_data(target_, buffer, val.location,
