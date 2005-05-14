@@ -359,6 +359,7 @@ bool preprocessor_data::get_chunk()
 		error << s << " not terminated, started at "
 		      << token.linenum << ' ' << target_.location_;
 		ERR_CF << error.str() << '\n';
+		pop_token();
 		throw config::error(error.str());
 	}
 
