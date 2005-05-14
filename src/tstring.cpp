@@ -1,6 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -177,6 +178,7 @@ t_string::t_string() :
 
 t_string::t_string(const t_string& string) :
 	translatable_(string.translatable_),
+	last_untranslatable_(string.last_untranslatable_),
 	value_(string.value_),
 	translated_value_(string.translated_value_)
 {
@@ -190,6 +192,7 @@ t_string::t_string(const std::string& string) :
 
 t_string::t_string(const std::string& string, const std::string& textdomain) :
 	translatable_(true),
+	last_untranslatable_(false),
 	value_(1, ID_TRANSLATABLE_PART)
 {
 	std::map<std::string, unsigned int>::const_iterator idi = textdomain_to_id.find(textdomain);
@@ -211,10 +214,6 @@ t_string::t_string(const std::string& string, const std::string& textdomain) :
 t_string::t_string(const char* string) :
 	translatable_(false),
 	value_(string)
-{
-}
-
-t_string::~t_string()
 {
 }
 
@@ -270,6 +269,7 @@ t_string& t_string::operator=(const t_string& string)
 {
 	value_ = string.value_;
 	translatable_ = string.translatable_;
+	last_untranslatable_ = string.last_untranslatable_;
 	translated_value_ = string.translated_value_;
 
 	return *this;
@@ -310,86 +310,53 @@ bool t_string::operator==(const char* string) const
 
 t_string t_string::operator+(const t_string& string) const
 {
-	t_string res;
-
-	if(translatable_ || string.translatable_) {
-		res.translatable_ = true;
-		if(translatable_) {
-			res.value_ += value_;
-		} else {
-			if (!value_.empty()) {
-				res.value_ += UNTRANSLATABLE_PART;
-				res.value_ += value_;
-			}
-		}
-		if(string.translatable_) {
-			res.value_ += string.value_;
-		} else {
-			if (!string.empty()) {
-				res.value_ += UNTRANSLATABLE_PART;
-				res.value_ += string.value_;
-			}
-		}
-	} else {
-		res.value_ = value_ + string.value_;
-	}
-
+	t_string res(*this);
+	res += string;
 	return res;
 }
 
 t_string t_string::operator+(const std::string& string) const
 {
-	t_string res;
-
-	if(translatable_) {
-		res.translatable_ = true;
-		res.value_ = value_;
-		if (!string.empty()) {
-			res.value_ += UNTRANSLATABLE_PART;
-			res.value_ += string;
-		}
-	} else {
-		res.value_ = value_ + string;
-	}
-
+	t_string res(*this);
+	res += string;
 	return res;
 }
 
 t_string t_string::operator+(const char* string) const
 {
-	t_string res;
-
-	if(translatable_) {
-		res.translatable_ = true;
-		res.value_ = value_;
-		if (string[0] != 0) {
-			res.value_ += UNTRANSLATABLE_PART;
-			res.value_ += string;
-		}
-	} else {
-		res.value_ = value_ + string;
-	}
-
+	t_string res(*this);
+	res += string;
 	return res;
 }
 
 t_string& t_string::operator+=(const t_string& string)
 {
+	if (string.value_.empty())
+		return *this;
+	if (value_.empty()) {
+		*this = string;
+		return *this;
+	}
+
 	if(translatable_ || string.translatable_) {
 		if(!translatable_) {
-			if (!value_.empty()) {
-				value_ = UNTRANSLATABLE_PART + value_;
-			}
+			value_ = UNTRANSLATABLE_PART + value_;
 			translatable_ = true;
+			last_untranslatable_ = true;
 		} else
 			translated_value_ = "";
 		if(string.translatable_) {
-			value_ += string.value_;
-		} else {
-			if (!string.value_.empty()) {
-				value_ += UNTRANSLATABLE_PART;
+			if (last_untranslatable_ && string.value_[0] == UNTRANSLATABLE_PART)
+				value_.append(string.value_, 1, string.value_.size() - 1);
+			else
 				value_ += string.value_;
+			last_untranslatable_ = string.last_untranslatable_;
+		} else {
+			if (!last_untranslatable_) {
+				value_ += UNTRANSLATABLE_PART;
+				last_untranslatable_ = true;
 			}
+			value_ += string.value_;
 		}
 	} else {
 		value_ += string.value_;
@@ -400,12 +367,20 @@ t_string& t_string::operator+=(const t_string& string)
 
 t_string& t_string::operator+=(const std::string& string)
 {
+	if (string.empty())
+		return *this;
+	if (value_.empty()) {
+		*this = string;
+		return *this;
+	}
+
 	if(translatable_) {
-		if (!string.empty()) {
+		if (!last_untranslatable_) {
 			value_ += UNTRANSLATABLE_PART;
-			value_ += string;
-		} else
-			translated_value_ = "";
+			last_untranslatable_ = true;
+		}
+		value_ += string;
+		translated_value_ = "";
 	} else {
 		value_ += string;
 	}
@@ -415,12 +390,20 @@ t_string& t_string::operator+=(const std::string& string)
 
 t_string& t_string::operator+=(const char* string) 
 {
+	if (string[0] == 0)
+		return *this;
+	if (value_.empty()) {
+		*this = string;
+		return *this;
+	}
+
 	if(translatable_) {
-		if (string[0] != 0) {
+		if (!last_untranslatable_) {
 			value_ += UNTRANSLATABLE_PART;
-			value_ += string;
-		} else
-			translated_value_ = "";
+			last_untranslatable_ = true;
+		}
+		value_ += string;
+		translated_value_ = "";
 	} else {
 		value_ += string;
 	}

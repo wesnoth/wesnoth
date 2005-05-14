@@ -49,7 +49,6 @@ public:
 	t_string(const std::string& string);
 	t_string(const std::string& string, const std::string& textdomain);
 	t_string(const char* string);
-	~t_string();
 
 	static t_string from_serialized(const std::string& string);
 	std::string to_serialized() const;
@@ -86,7 +85,7 @@ public:
 
 	static void add_textdomain(const std::string& name, const std::string& path);
 private:
-	bool translatable_;
+	bool translatable_, last_untranslatable_;
 	std::string value_;
 	mutable std::string translated_value_;
 };
