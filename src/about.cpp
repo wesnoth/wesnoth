@@ -259,6 +259,9 @@ std::vector<std::string> get_text() {
 		"-   Azamat Hackimov",
 		"-   Roman Tuchin (Sankt)",
 
+		"_" N_("+Serbian Translation"),
+		"-   Srecko Toroman (FreeCraft)",
+		
 		"_" N_("+Slovak Translation"),
 		"-   Viliam Bur",
 		
