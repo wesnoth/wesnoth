@@ -348,7 +348,7 @@ t_string& t_string::operator+=(const t_string& string)
 			translated_value_ = "";
 		if(string.translatable_) {
 			if (last_untranslatable_ && string.value_[0] == UNTRANSLATABLE_PART)
-				value_.append(string.value_, 1, string.value_.size() - 1);
+				value_.append(string.value_.begin() + 1, string.value_.end());
 			else
 				value_ += string.value_;
 			last_untranslatable_ = string.last_untranslatable_;
