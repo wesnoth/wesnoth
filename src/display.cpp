@@ -682,7 +682,6 @@ void draw_label(CVideo& video, surface target, const theme::label& label)
 void display::draw(bool update,bool force)
 {	
 	bool changed = false;
-
 	//log_scope("Drawing");
 	invalidate_animations();
 
@@ -802,6 +801,8 @@ void display::update_display()
 
 void display::draw_sidebar()
 {
+        draw_report(reports::REPORT_CLOCK);
+
 	if(teams_.empty())
 		return;
 

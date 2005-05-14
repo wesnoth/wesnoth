@@ -166,6 +166,8 @@ namespace preferences {
 
 	std::string client_type();
 
+        std::string clock_format();
+  
 	void set_theme(const std::string& theme);
 	const std::string& theme();
 

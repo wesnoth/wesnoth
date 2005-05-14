@@ -8,7 +8,9 @@
 #include "language.hpp"
 #include "reports.hpp"
 #include "wassert.hpp"
+#include "preferences.hpp"
 
+#include <ctime>
 #include <map>
 #include <set>
 #include <sstream>
@@ -18,8 +20,9 @@ namespace {
 		"unit_traits","unit_status","unit_alignment","unit_abilities","unit_hp","unit_xp",
 		"unit_moves","unit_weapons","unit_image","unit_profile","time_of_day",
 		"turn","gold","villages","num_units","upkeep", "expenses",
-		 "income", "terrain", "position", "side_playing", "observers", "selected_terrain",
-		 "edit_left_button_function"};
+		 "income", "terrain", "position", "side_playing", "observers",
+		 "report_clock",
+		 "selected_terrain","edit_left_button_function"};
 	std::map<reports::TYPE, std::string> report_contents;
 }
 
@@ -399,6 +402,18 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			return report();
 		}
 	}
+	case REPORT_CLOCK: {
+	  time_t t=time(NULL);
+	  struct tm *lt=localtime(&t);
+	  char temp[10];
+	  size_t s=strftime(temp,10,preferences::clock_format().c_str(),lt);
+	  if(s>0){
+	    return report(temp);
+	  }else{
+	    return report();
+	  }
+	}
+
 	default:
 		wassert(false);
 		break;
