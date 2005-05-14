@@ -29,8 +29,8 @@ if INSTALLDATA
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	( $(finddata) ) | while read p; do \
 	  $(w_preparefileinstall) \
-	  echo " $(install_sh_DATA) '$$d$$p' '$(DESTDIR)$(pkgdatadir)/$$f'"; \
-	  $(install_sh_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	  echo $(INSTALL_DATA) -D "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	  $(INSTALL_DATA) -D "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
 if DUMMYLOCALES
 	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"
