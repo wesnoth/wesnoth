@@ -2335,6 +2335,7 @@ void help_browser::show_topic(const std::string &topic_id)
 
 void help_browser::show_topic(const topic &t, bool save_in_history)
 {
+	log_scope("show_topic");
 	if (save_in_history) {
 		forward_topics_.clear();
 		if (shown_topic_ != NULL) {
