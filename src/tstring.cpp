@@ -252,6 +252,7 @@ std::string t_string::to_serialized() const
 		std::string substr(w.begin(), w.end());
 		if(w.translatable()) {
 			chunk.translatable_ = true;
+			chunk.last_untranslatable_ = false;
 			chunk.value_ = TRANSLATABLE_PART + w.textdomain() + 
 				TEXTDOMAIN_SEPARATOR + substr;
 		} else {
