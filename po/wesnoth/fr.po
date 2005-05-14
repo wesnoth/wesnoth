@@ -1630,7 +1630,7 @@ msgid ""
 msgstr ""
 "Avant d'entrer dans une bataille, vous devez recruter des unités. Pour "
 "recruter une unité, cliquez avec le bouton gauche sur la case du château où "
-"vous désirez recruter. Puis sélectionnez « Recruter », puis « Ok ». Vous ne "
+"vous désirez recruter. Puis sélectionnez « Recruter », puis « OK ». Vous ne "
 "pouvez recruter que dans un château et seulement si le chef est dans le "
 "donjon."
 
@@ -1837,7 +1837,7 @@ msgstr ""
 "ennemis. Gagnez ce scénario en me vainquant. Votre guerrier du précédent "
 "scénario peut vous aider dans cette bataille. Pour le rappeler, cliquez avec "
 "le bouton droit sur une case du château, sélectionnez « rappeler », "
-"sélectionnez votre guerrier, puis sélectionnez « Ok ». Vous devriez "
+"sélectionnez votre guerrier, puis sélectionnez « OK ». Vous devriez "
 "également recruter des guerriers et des archers elfes."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:69
@@ -2015,7 +2015,7 @@ msgstr ""
 "Pour recruter une unité, faites un clic droit sur la case du château où vous "
 "voulez enrôler cette unité. Puis choisissez « Recruter », ou maintenez le "
 "curseur sur la case et appuyez sur « Ctrl-R ». Ensuite, choisissez le type "
-"d'unité à enrôler et appuyez sur « Ok ». Pour recruter plus vite, vous "
+"d'unité à enrôler et appuyez sur « OK ». Pour recruter plus vite, vous "
 "pouvez appuyer sur « Ctrl-Shift-R » pour enrôler une unité du même type que "
 "la précédente unité enrôlée."
 
@@ -6823,7 +6823,7 @@ msgid ""
 "While they can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Les Ogres sont des géants stupides qui vivent généralement seuls. Bien "
+"Les ogres sont des géants stupides qui vivent généralement seuls. Bien "
 "qu'ils puissent facilement être semés ou surpassés, leur force ne doit pas "
 "être sous-estimée."
 
@@ -8170,7 +8170,7 @@ msgstr ""
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
-msgstr "Jeune Ogre"
+msgstr "Jeune ogre"
 
 #: data/units/Young_Ogre.cfg:16
 msgid ""
@@ -8179,7 +8179,7 @@ msgid ""
 "they will be smart enough to swing it at their enemies, not their throat."
 msgstr ""
 "Encore jeunes, les ogres sont enrôlés dans l'armée pour être entraînés. "
-"Comme ils ne sont pas assez habiles pour manier une arme, on leur a donné un "
+"Comme ils ne sont pas assez habiles pour manier une arme, on les équipe d'un "
 "grand couteau avec l'espoir qu'ils seront assez intelligents pour l'utiliser "
 "contre les ennemis plutôt que contre eux-mêmes."
 
@@ -8915,7 +8915,7 @@ msgstr "Défaite : "
 # Piou2fois : Je préfère "evolue" à "avance"
 #: src/help.cpp:1038
 msgid "Advances to: "
-msgstr "Evolue en : "
+msgstr "Évolue en : "
 
 #: src/help.cpp:1059
 msgid "Abilities: "
@@ -9895,14 +9895,13 @@ msgid "Unexpected characters at line start"
 msgstr "Caractères non attendus en début de ligne"
 
 #: src/serialization/parser.cpp:124
-#, fuzzy
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr ""
-"Étiquette de fermeture manquante pour l'étiquette $tag (à la ligne $line)"
+"Étiquette de fermeture manquante pour l'étiquette $tag en $pos"
 
 #: src/serialization/parser.cpp:139
 msgid "Unterminated [element] tag"
-msgstr "Etiquette [element] non terminée"
+msgstr "Étiquette [element] non terminée"
 
 #: src/serialization/parser.cpp:149 src/serialization/parser.cpp:185
 msgid "Invalid tag name"
@@ -9925,10 +9924,9 @@ msgid "Unexpected closing tag"
 msgstr "Étiquette de fermeture non attendue à cet endroit"
 
 #: src/serialization/parser.cpp:179
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
-"Étiquette de fermeture invalide pour l'étiquette $tag (à la ligne $line)"
+"Étiquette de fermeture $tag2 invalide pour l'étiquette $tag (ouvert en $pos)"
 
 #: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 msgid "Empty variable name"
@@ -9944,11 +9942,11 @@ msgstr "Chaîne de caractères entre guillemets non terminée"
 
 #: src/serialization/parser.cpp:285
 msgid " included from "
-msgstr ""
+msgstr " inclus par "
 
 #: src/serialization/parser.cpp:306
 msgid "$error at $pos"
-msgstr ""
+msgstr "$error en $pos"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
@@ -10027,7 +10025,6 @@ msgid "; "
 msgstr " ; "
 
 #: src/unit.cpp:1121
-#, fuzzy
 msgid "XP to advance"
 msgstr "XP pour évoluer"
 
@@ -10075,22 +10072,6 @@ msgstr "neutre"
 
 #~ msgid "Dmg"
 #~ msgstr "Dmg"
-
-#~ msgid "Missing closing tag for tag $tag (file $file, line $line)"
-#~ msgstr ""
-#~ "Etiquette de Fermeture manquant pour l'étiquette $tag(Dans le fichier "
-#~ "$file, A la ligne $line)"
-
-#~ msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
-#~ msgstr ""
-#~ "Étiquette de fermeture invalide pour l'étiquette $tag (dans le fichier "
-#~ "$file, à la ligne $line)"
-
-#~ msgid "$error in file $file (line $line, column $column)"
-#~ msgstr "$error dans le fichier $file (ligne $line, colonne $column)"
-
-#~ msgid "$error (line $line, column $column)"
-#~ msgstr "$error (ligne $line, colonne $column)"
 
 #~ msgid ""
 #~ "Trolls are strong and brutal humanoid monsters with the amazing ability "
