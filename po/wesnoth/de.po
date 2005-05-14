@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-10 19:30+0200\n"
-"PO-Revision-Date: 2005-05-10 21:13+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
+"PO-Revision-Date: 2005-05-11 13:46+0200\n"
+"Last-Translator: Hendrik Richter <hendi@gnome-de.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,6 +84,7 @@ msgstr ""
 "verändern. Diese Fertigkeiten werden nach und nach unter dieser Kategorie "
 "erscheinen, sobald Ihr auf sie gestoßen seid."
 
+# Korrigiert von hendi
 # de-fuzzied von VeryUhu
 # edited by VeryUhu
 #: data/help.cfg:62
@@ -102,7 +103,7 @@ msgstr ""
 "Battle for Wesnoth ist im Vergleich zu anderen modernen Spielen dieser Art "
 "ein etwas ungewöhnliches, rundenbasiertes Fantasy-Strategiespiel. Im "
 "Gegensatz zu anderen Spielen, die hauptsächlich auf komplexe Regeln setzen, "
-"versucht Battle for Wesnoth diese einfach zu halten. Das heisst allerdings "
+"versucht Battle for Wesnoth diese einfach zu halten. Das heißt allerdings "
 "nicht, dass das Spiel simpel wäre. Die Grundlagen für Battle for Wesnoth "
 "sind zwar schnell zu erlernen, aber durch die enormen strategischen "
 "Möglichkeiten ist der Weg zur Meisterschaft eine Herausforderung."
@@ -236,6 +237,7 @@ msgstr ""
 "Goldstücke. Im Auswahlmenü werden alle überlebenden Einheiten der "
 "vergangenen Szenarien angezeigt."
 
+# Korrigiert von hendi
 # Korrigiert von chrber - polished by VeryUhu
 #: data/help.cfg:87
 msgid ""
@@ -247,7 +249,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ihr solltet beachten, das Einheiten nicht nur bei der Ausbildung und "
+"Ihr solltet beachten, dass Einheiten nicht nur bei der Ausbildung und "
 "Einberufung Gold kosten, sondern auch Unterhaltskosten haben. Geht zu "
 "<ref>dst=inkome_and_upkeep text='Einkommen und Unterhaltskosten'</ref>, um "
 "mehr darüber zu erfahren."
@@ -505,6 +507,7 @@ msgstr ""
 "Resistenzen gegen manche Schadensarten haben, was ihren Schaden entsprechend "
 "verändert."
 
+# Korrigiert von hendi
 # Korrigiert von chrber 
 # Korrigiert von VeryUhu
 #: data/help.cfg:126
@@ -517,6 +520,7 @@ msgid ""
 "resistance against a damage type, it will suffer 100% more damage when hit "
 "by that type."
 msgstr ""
+"\n"
 "\n"
 "Resistenzen funktionieren sehr einfach: Wenn eine Einheit über eine 40%tige "
 "Resistenz gegen eine Schadensart verfügt, erleidet sie bei einer Attacke "
@@ -547,6 +551,7 @@ msgstr "Tageszeit"
 msgid "Dawn"
 msgstr "Morgengrauen"
 
+# Korrigiert von hendi
 # Korrigiert von chrber
 #: data/help.cfg:138
 msgid ""
@@ -562,6 +567,7 @@ msgstr ""
 "rechten Ecke angezeigt.\n"
 "\n"
 "Der normale Tag/Nacht-Zyklus sieht folgendermaßen aus:\n"
+"\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -619,6 +625,7 @@ msgstr ""
 "25% mehr.\n"
 "Neutrale Einheiten werden von den Tageszeiten nicht beeinflusst."
 
+# Korrigiert von hendi
 # Korrigiert von chrber 
 # Korrigiert von VeryUhu
 #: data/help.cfg:154
@@ -626,8 +633,8 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
-"Vergesset nicht, das manche Szenarios unter der Erdoberfläche stattfinden. "
-"Und dort ist es immer Nacht."
+"Vergesset nicht, dass manche Szenarios unter der Erdoberfläche stattfinden, "
+"wo es immer Nacht ist."
 
 #: data/help.cfg:159
 msgid "Experience and Advancement"
@@ -732,6 +739,7 @@ msgstr ""
 "<ref>dst=ability_regeneration text=Regeneration</ref>: Manche Einheiten (z."
 "B. Trolle) heilen sich in jedem Zug automatisch um 8 Lebenspunkte selbst."
 
+# Korrigiert von hendi
 # edited by ivanovic
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
@@ -747,7 +755,7 @@ msgstr ""
 "Heilkundige Einheiten: Einheiten, die über die Fertigkeit "
 "<ref>dst=ability_heals text='Heilen'</ref> verfügen, heilen bei allen "
 "eigenen, in angrenzenden Feldern stehenden Einheiten 4 Lebenspunkte in jeder "
-"Runde, oder verhindern einen möglichen Schaden durch Gift. Durch 'Heilen' "
+"Runde, oder verhindern einen möglichen Schaden durch Gift. Durch »Heilen« "
 "kann eine Einheit höchstens 8 Lebenspunkte zurück gewinnen."
 
 # edited by ivanovic
@@ -804,6 +812,7 @@ msgstr ""
 "einen Teil Eures Goldes ins nächste Szenario mitnehmen könnt. Es gibt dabei "
 "zwei Dinge zu beachten: Einkommen und Unterhalt."
 
+# Korrigiert von hendi
 # Korrigiert von chrber
 # de-fuzzied by VeryUhu
 #: data/help.cfg:187
@@ -818,7 +827,7 @@ msgstr ""
 "\n"
 "Mit dem Einkommen verhält es sich einfach: Ihr bekommt für jedes Dorf, das "
 "Ihr kontrolliert, 1 Goldstück pro Zug. Wenn Ihr also 10 Dörfer habt, würdet "
-"Ihr 10 Goldstücke erhalten. Leider werden Ihnen davon die Unterhaltskosten "
+"Ihr 10 Goldstücke erhalten. Leider werden Euch davon die Unterhaltskosten "
 "noch abgezogen."
 
 # Korrigiert von chrber
@@ -859,6 +868,7 @@ msgstr ""
 "Diese Kosten werden von Eurem Einkommen abgezogen. Bei insgesamt zwölf "
 "Einheitenstufen und zehn Dörfern betrüge Euer Einkommen 8 Gold pro Zug."
 
+# Korrigiert von hendi
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
 # de-fuzzied by VeryUhu
@@ -871,10 +881,10 @@ msgid ""
 "the second level of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"Es gibt eine Ausnahme für die Berechnung der Unterhaltskosten.Einheiten mit "
+"Es gibt eine Ausnahme für die Berechnung der Unterhaltskosten. Einheiten mit "
 "der Charakteristik »loyal« kosten niemals Unterhalt. Einheiten, mit denen "
 "Ihr ein Szenario beginnt (z.B. Konrad oder Delfador) und Einheiten, die sich "
-"Ihnen während eines Szenarios anschließen (wie z.B. der Reiter im zweiten "
+"Euch während eines Szenarios anschließen (wie z.B. der Reiter im zweiten "
 "Szenario von »Der Thronerbe«) sind üblicherweise »loyal«."
 
 #: data/help.cfg:197
@@ -1826,6 +1836,7 @@ msgstr ""
 msgid "Move your Elvish Fighter next to Merle"
 msgstr "Zieht euren Kämpfer auf ein Merle benachbartes Feld"
 
+# Korrigiert von hendi
 # Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:147
 msgid ""
@@ -1836,7 +1847,7 @@ msgstr ""
 "Ausgezeichnet! Ihr habt euren Elfenkrieger erfolgreich gezogen. Da er "
 "allerdings neben eine gegnerische Einheit gezogen ist, hat er alle "
 "Bewegungspunkte für den Rest des Zuges verloren. Die Ursache dafür liegt in "
-"den sogenannten 'Kontrollzonen'."
+"den sogenannten »Kontrollzonen«."
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
@@ -3702,6 +3713,7 @@ msgstr ""
 msgid "cures"
 msgstr "Kurieren"
 
+# Korrigiert von hendi
 # Korrigiert von chrber
 # Korrigiert von Ivanovic
 # Korrigiert von VeryUhu
@@ -3724,7 +3736,7 @@ msgstr ""
 "Ein Heiler kann bei allen Einheiten, um die er sich kümmert, bis zu 8 LP pro "
 "Runde heilen.\n"
 "Vergiftungen kann ein Heiler aber nicht aufheben.Dies kann nur durch eine "
-"Einheit mit der Fähigkeit 'kurieren' oder durch den Aufenthalt in einem Dorf "
+"Einheit mit der Fähigkeit »kurieren« oder durch den Aufenthalt in einem Dorf "
 "geschehen."
 
 # Korrigiert von chrber
@@ -3985,9 +3997,9 @@ msgid ""
 "doesn't work on Undead or units in villages.)"
 msgstr ""
 "Untote Plage:\n"
-"Wird ein Gegner durch eine Einheit mit der Fähigkeit 'untote Plage' "
+"Wird ein Gegner durch eine Einheit mit der Fähigkeit »untote Plage« "
 "vernichtet, so wird er durch eine eigene Einheit ersetzt, die jener mit der "
-"Fähigkeit 'untote Plage' identisch ist. Dies funktioniert nicht gegen Untote "
+"Fähigkeit »untote Plage« identisch ist. Dies funktioniert nicht gegen Untote "
 "oder Einheiten in Dörfern."
 
 # Korrigiert von VeryUhu
@@ -4739,6 +4751,7 @@ msgstr "Armbrust"
 msgid "Cavalryman"
 msgstr "Kavallerist"
 
+# Korrigiert von hendi
 # Korrigiert von VeryUhu
 #: data/units/Cavalryman.cfg:26
 msgid ""
@@ -4749,13 +4762,14 @@ msgid ""
 msgstr ""
 "Nur die besten Reiter von Wesnoth werden in die Kavallerie aufgenommen. Die "
 "hochdisziplinierten Einheiten stürmen nicht wild und ungestüm über das "
-"Schlachtfeld wie andere Berittene, sondern legen mehr Wert auf daß Halten "
+"Schlachtfeld wie andere Berittene, sondern legen mehr Wert auf das Halten "
 "ihrer Stellung. "
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
 msgstr "Riesenspinne"
 
+# Korrigiert von hendi
 # Korrigiert von VeryUhu 
 #: data/units/Cave_Spider.cfg:16
 msgid ""
@@ -4763,7 +4777,7 @@ msgid ""
 "They can bite at close range, thereby poisoning their enemies, and also can "
 "attack with a web at long range, slowing their foes down."
 msgstr ""
-"Man erzählt sich, das in den Tiefen von Knalga Riesenspinnen hausen, die "
+"Man erzählt sich, dass in den Tiefen von Knalga Riesenspinnen hausen, die "
 "schon viele Opfer verschlungen haben. Im Nahkampf kann ihr Biss ihre Opfer "
 "vergiften. Außerdem können sie ein Spinnennetz auf ihre Feinde werfen. Diese "
 "werden dadurch verlangsamt."
@@ -4984,7 +4998,7 @@ msgid ""
 "weapons as they did before, they command the Undead in their quest for "
 "revenge."
 msgstr ""
-"Von Zeit zu Zeit geschieht es, das die mächtigsten Krieger und Generäle auf "
+"Von Zeit zu Zeit geschieht es, dass die mächtigsten Krieger und Generäle auf "
 "so grausame Art sterben, dass sie von Furcht und Hass erfüllt ins Reich der "
 "Lebenden als Todesritter zurückkehren. Sie streiten mit denselben Waffen, "
 "mit denen sie zu Lebzeiten kämpften, und führen die Untoten in die Schlacht, "
@@ -5243,6 +5257,7 @@ msgstr ""
 msgid "Drake Glider"
 msgstr "Drake Gleiter"
 
+# Korrigiert von hendi
 # edited by ivanovic
 #: data/units/Drake_Glider.cfg:18
 msgid ""
@@ -5253,7 +5268,7 @@ msgid ""
 "submission. The best gliders can look forward to being accepted into the "
 "ranks of the high flying Sky Drakes."
 msgstr ""
-"Draken Gleiter tragen so wenig Rüstung, wie nur irgend möglich, so dass sie "
+"Draken Gleiter tragen so wenig Rüstung wie nur irgend möglich, sodass sie "
 "ihren Feinden schnell entfliehen können, wenn sie ihre Höhle verlassen. "
 "Diese Draken sind kompetente Kämpfer in der Schlacht, da sie sich ihr "
 "inneres Feuer im Kampf zunutze machen können. Ihre Geschwindigkeit ist ihnen "
@@ -5268,6 +5283,7 @@ msgstr "Sturzflug"
 msgid "Inferno Drake"
 msgstr "Infernodrake"
 
+# Korrigiert von hendi
 # edited by ivanovic
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -5281,7 +5297,7 @@ msgstr ""
 "massive, fast undurchdringliche Goldpanzerung. Sie sind noch dazu teilweise "
 "immun gegen durch Feuer ausgelösten Schaden, da sie für gewöhnlich in den "
 "Kratern noch aktiver Vulkane hausen. Ihr inneres Feuer haben sie gemeistert, "
-"so dass sie wohl problemlos dem Vergleich mit ihren Ahnen, den Drachen, "
+"sodass sie wohl problemlos dem Vergleich mit ihren Ahnen, den Drachen, "
 "standhalten können."
 
 #: data/units/Drake_Sky.cfg:3
@@ -6296,6 +6312,7 @@ msgstr ""
 msgid "Goblin Knight"
 msgstr "Kobold Raubritter"
 
+# Korrigiert von hendi
 #: data/units/Goblin_Knight.cfg:17
 msgid ""
 "The Goblin Knights are the elite of the Goblin Wolf Riders. They travel with "
@@ -6305,7 +6322,7 @@ msgstr ""
 "herausragende Leistungen auf dem Schlachtfeld ausgezeichnet oder tollkühne "
 "Überfälle mit großer Beute  verübt haben. Die Wölfe, die diese Kobolde mit "
 "ihrem Titel erhalten, zeichnen sich unter den Bergwölfen durch besondere "
-"Schnelligkeit aus, so dass sie selbst die Kundschafter der elfischen und "
+"Schnelligkeit aus, sodass sie selbst die Kundschafter der elfischen und "
 "menschlichen Armeen in den Schatten stellen."
 
 #: data/units/Goblin_Pillager.cfg:3
@@ -6355,6 +6372,7 @@ msgstr ""
 msgid "Grand Knight"
 msgstr "Templer"
 
+# Korrigiert von hendi
 #: data/units/Grand_Knight.cfg:17
 msgid ""
 "The most powerful mounted warriors of any race, Grand Knights have reached "
@@ -6363,7 +6381,7 @@ msgstr ""
 "Die am besten ausgerüstete Einheit aller Rassen sind die Templer. Ihre "
 "Fertigkeiten im Kampf mit dem Schwert und der Lanze sind unerreicht. Nur "
 "wenige wagen es, sich einem Templer in den den Weg zu stellen, wenn er auf "
-"seinem stolzen Roß dahergeritten kommt, und die es wagen haben nur selten "
+"seinem stolzen Ross dahergeritten kommt, und die es wagen haben nur selten "
 "Gelegenheit dazu diesen Fehler zu bereuen."
 
 #: data/units/Grand_Knight.cfg:37 data/units/Knight.cfg:37
@@ -6410,6 +6428,7 @@ msgstr "Großmagierin"
 msgid "Great Troll"
 msgstr "Mächtiger Troll"
 
+# Korrigiert von hendi
 #: data/units/Great_Troll.cfg:17
 msgid ""
 "Great Trolls are strong and brutal humanoid monsters with the amazing "
@@ -6417,7 +6436,7 @@ msgid ""
 "own, even during battle."
 msgstr ""
 "Mächtige Trolle sind starke und brutale menschenähnliche Monster mit der "
-"erstaunlichen Fähigkeit sich zu regenerieren, so dass sie sich selbst im "
+"erstaunlichen Fähigkeit sich zu regenerieren, sodass sie sich selbst im "
 "Kampf von ihren Wunden erholen."
 
 #: data/units/Gryphon.cfg:3
@@ -6438,6 +6457,7 @@ msgstr ""
 msgid "Gryphon Master"
 msgstr "Greifenmeister"
 
+# Korrigiert von hendi
 #: data/units/Gryphon_Master.cfg:18
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
@@ -6446,7 +6466,7 @@ msgid ""
 msgstr ""
 "Greifenmeister haben soviel Erfahrung darin mit ihren Greifen zu fliegen, "
 "dass diese inzwischen zu einem Teil von ihnen selbst geworden sind. Diese "
-"besondere Beziehung läßt die Herzen derer die auf der Erdoberfläche wandeln "
+"besondere Beziehung lässt die Herzen derer die auf der Erdoberfläche wandeln "
 "vor Furcht erzittern."
 
 #: data/units/Gryphon_Rider.cfg:3
@@ -6537,14 +6557,15 @@ msgstr ""
 msgid "Initiate"
 msgstr "Eingeweihter"
 
+# Korrigiert von hendi
 #: data/units/Initiate.cfg:16
 msgid ""
 "Dabbling in the Death Magic, this young Ha'atel's lust for power has "
 "weakened him to the point where he is too weak to attack in regular combat."
 msgstr ""
-"Nach ersten Erfahrungen in der Totenmagie hat diese jungen Ha'atels ihre "
-"Gier nach Macht hat sie soweit geschwächt, das sie an einem Punkt angekommen "
-"sind wo sie nicht mehr auf reguläre Weise in einem Kampf bestehen können."
+"Nach ersten Erfahrungen in der Totenmagie hat seine Gier nach Macht diesen "
+"jungen Ha'atel soweit geschwächt, dass er an einem Punkt angekommen ist von "
+"dem an er nicht mehr auf reguläre Weise in einem Kampf bestehen kann."
 
 #: data/units/Iron_Mauler.cfg:3
 msgid "Iron Mauler"
@@ -7206,6 +7227,7 @@ msgstr ""
 msgid "Orcish Assassin"
 msgstr "Orkmeuchler"
 
+# Korrigert von hendi
 #: data/units/Orcish_Assassin.cfg:16
 msgid ""
 "While not so strong in combat, Orcish Assassins are fast and can defend "
@@ -7216,10 +7238,10 @@ msgstr ""
 "Ein Orkmeuchler versucht den direkten Kampf zu vermeiden, kann sich aber "
 "notgedrungen mit seinem Dolch zur Wehr setzen. Meist kommt es dazu aber erst "
 "gar nicht, da es ihnen ihre Ausbildung ermöglicht, sich auf fast jedem "
-"Gelände hervorragend fortzubewegen, so dass sie den Gegner schnell "
-"erreichen, ihn mit ihren Wurfpfeilen vergiften und sich ebenso schnell "
-"wieder zurückziehen können. Das Gift trägt dann meist zum baldigen Ableben "
-"des Unglücklichen bei."
+"Gelände hervorragend fortzubewegen, sodass sie den Gegner schnell erreichen, "
+"ihn mit ihren Wurfpfeilen vergiften und sich ebenso schnell wieder "
+"zurückziehen können. Das Gift trägt dann meist zum baldigen Ableben des "
+"Unglücklichen bei."
 
 #: data/units/Orcish_Assassin.cfg:36 data/units/Orcish_Slayer.cfg:41
 msgid "darts"
@@ -7229,6 +7251,7 @@ msgstr "Wurfpfeile"
 msgid "Orcish Crossbowman"
 msgstr "Orkarmbruster"
 
+# Korrigiert von hendi
 #: data/units/Orcish_Crossbowman.cfg:17
 msgid ""
 "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
@@ -7240,7 +7263,7 @@ msgstr ""
 "vielen anderen Dingen eine Kiste mit Armbrüsten. Da sie damit nichts "
 "anfangen konnten, wurde diese Kiste achtlos eingelagert. Schließlich "
 "entdeckte einer der Orkschützen die darin enhaltenen Armbrüste und erprobte "
-"diese Schußwaffe. Er stellte fest, dass diese Waffe durchschlagskräftiger "
+"diese Schusswaffe. Er stellte fest, dass diese Waffe durchschlagskräftiger "
 "war, als ein einfacher Bogen. Jedem Orkschützen, der die Kunst des "
 "Bogenschießens gemeistert hat, wird seither eine Armbrust verliehen."
 
@@ -7252,6 +7275,7 @@ msgstr "Kurzschwert"
 msgid "Orcish Grunt"
 msgstr "Orkgrunzer"
 
+# Korrigiert von hendi
 #: data/units/Orcish_Grunt.cfg:16
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
@@ -7263,7 +7287,7 @@ msgstr ""
 "genannten Truppen bilden das Rückgrat der orkischen Armee. Orks werden von "
 "Kindesbeinen mit dem Kriegshandwerk vertraut gemacht und können dadurch "
 "stärkere Hiebe austeilen, als ihre elfischen oder menschlichen Gegenstücke. "
-"Zu allem Überfluß bedarf es mehrer Treffer, um einen Grunzer in die Knie zu "
+"Zu allem Überfluss bedarf es mehrer Treffer, um einen Grunzer in die Knie zu "
 "zwingen. Da Grunzer aber nur in der Nähe ihrer Stämme ausgebildet wurden, "
 "sind sie hügeliges Gelände gewohnt und kommen auf weiten Ebenen oder in  "
 "dichten Wäldern nicht so gut voran."
@@ -7298,6 +7322,7 @@ msgstr "Orkkriegshäuptling"
 msgid "Orcish Shaman"
 msgstr "Orkschamane"
 
+# Korrigiert von hendi
 #: data/units/Orcish_Shaman.cfg:16
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
@@ -7309,7 +7334,7 @@ msgid ""
 msgstr ""
 "Schamanen haben als einzige Angehörige der orkischen Rasse die Fähigkeit, "
 "Magie zu wirken. Deshalb genießen sie eine besondere Stellung innerhalb der "
-"Stämme, so dass in jedem Stamm mindestens ein Schamane zu finden ist. "
+"Stämme, sodass in jedem Stamm mindestens ein Schamane zu finden ist. "
 "Zusammengenommen bilden sie den Großen Rat, der Entscheidungen, die das "
 "gesamte orkische Volk betreffen, fällt sowie Konflikte, die zwischen den "
 "orkischen Stämmen auftreten, löst. Obwohl sie körperlich eher gebrechlich "
@@ -7327,6 +7352,7 @@ msgstr "Fluch"
 msgid "Novice Orcish Shaman"
 msgstr "Junger Orkschamane"
 
+# Korrigiert von hendi
 #: data/units/Orcish_Shaman.cfg:75
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
@@ -7337,8 +7363,8 @@ msgid ""
 "draining their life. Novice Shamans are still young and vigorous, but their "
 "spell-casting ability still needs improvement."
 msgstr ""
-"Die Lehrlinge der schamanischen Künste sind immer noch wild und ungestüm, so "
-"dass sie ihre Zauberkraft noch nicht so gut kontrollieren können."
+"Die Lehrlinge der schamanischen Künste sind immer noch wild und ungestüm, "
+"sodass sie ihre Zauberkraft noch nicht so gut kontrollieren können."
 
 #: data/units/Orcish_Shaman.cfg:121
 msgid "Old Orcish Shaman"
@@ -7811,6 +7837,7 @@ msgstr ""
 msgid "Sea Orc"
 msgstr "Seeork"
 
+# Korrigiert von hendi
 #: data/units/Sea_Orc.cfg:16
 msgid ""
 "While often viewed as inferior to their land loving counterparts, Sea Orcs "
@@ -7823,7 +7850,7 @@ msgstr ""
 "vermuten, dass es das Werk eines Schamanen war, andere jedoch, dass ein "
 "seltsamer Trank bei der Verwandlung eine Rolle gespielt hat. "
 "Augenzeugenberichten zu Folge weisen diese Orks Merkmale einer Amphibie auf, "
-"so dass sie auf dem Land so wie im Wasser gleichsam beweglich sind. Sie "
+"sodass sie auf dem Land so wie im Wasser gleichsam beweglich sind. Sie "
 "greifen ihre Feide mit Krummschwerten an, sind aber nicht in der Lage, eine "
 "Fernkampfwaffe zu benutzen."
 
@@ -8026,6 +8053,7 @@ msgstr ""
 msgid "Spectre"
 msgstr "Schreckgespenst"
 
+# Korrigiert von hendi
 #: data/units/Spectre.cfg:21
 msgid ""
 "Spectres, the most powerful ghosts in the undead ranks, can use their powers "
@@ -8193,6 +8221,7 @@ msgstr ""
 msgid "Troll Rocklobber"
 msgstr "Troll-Felsenschleuderer"
 
+# Korrigiert von hendi
 # edited by The Very Uhu 
 # Anm. ("Mans hammer": Inkorrekte Beschreibung - kein Nahkampf! - , daher nicht übersetzt)
 # de-fuzzied by Ivanovic
@@ -8228,7 +8257,7 @@ msgstr ""
 "- außer in der Tatsache, dass sie mit Felsbrocken anstelle von Steinchen "
 "schießen. Zwar sind diese Waffen alles andere als akkurat, aber wenn sie ihr "
 "Ziel treffen, dann vermögen sie es ohne Weiteres zu verstümmeln. Abgesehen "
-"davon, daß ein Felsenschleuderer schwer an seinem Munitionsvorrat zu tragen "
+"davon, dass ein Felsenschleuderer schwer an seinem Munitionsvorrat zu tragen "
 "hat und über keine Nahkampfwaffen verfügt, ist er größer, stärker und "
 "allemal hässlicher als die Trollwelpe, die er einst gewesen ist. Solange man "
 "sich nicht einer guten Deckung oder dem Schutz der Umgebung sicher ist, ist "
@@ -8330,7 +8359,7 @@ msgid ""
 "aid of a nearby village. Their relatively slow speed is a liability, as is "
 "their weakness during daylight hours."
 msgstr ""
-"Mit dem Begriff 'Welpe' wird üblicherweise das Bild von niedlichen, tapsigen "
+"Mit dem Begriff »Welpe« wird üblicherweise das Bild von niedlichen, tapsigen "
 "Tierchen verbunden, die sich gerade so auf ihren Beinen halten können - "
 "selbst dann, wenn man über Löwen oder Wölfe spricht. Trollweplen hingegen "
 "wollen nicht im Geringsten diesem Klischee entsprechen: Sie verfügen bereits "
@@ -8373,12 +8402,13 @@ msgstr ""
 msgid "female^Vampire Lady"
 msgstr "Vampirin"
 
+# Korrigiert von hendi
 #: data/units/Vampire_Lady.cfg:17
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
 msgstr ""
-"Wunderschön aber kalt, erhält sie ihr jugendliches Angesicht dadurch, daß "
+"Wunderschön aber kalt, erhält sie ihr jugendliches Angesicht dadurch, dass "
 "sie das Blut der Lebenden trinkt."
 
 #: data/units/Vampire_Lady.cfg:20
@@ -8522,6 +8552,7 @@ msgstr ""
 msgid "Wraith"
 msgstr "Gespenst"
 
+# Korrigiert von hendi
 #: data/units/Wraith.cfg:21
 msgid ""
 "Wraiths are some of the most powerful ghosts in the undead ranks. They can "
@@ -8531,7 +8562,7 @@ msgid ""
 msgstr ""
 "Gespenster gehören zu den mächtigsten Geistern im Heer der Untoten. Sie "
 "können ihre Kräfte dazu benutzen, um ein Gespensterschwert herbeizurufen, "
-"daß ihren Gegnern Leben absaugt und ihre eigenen Lebenspunkte auffüllt. "
+"das ihren Gegnern Leben absaugt und ihre eigenen Lebenspunkte auffüllt. "
 "Außerdem können sie einen schrecklichen Schrei ausstoßen, der ihren Feinden "
 "das Mark in den Knochen gefrieren lässt."
 
@@ -8552,6 +8583,7 @@ msgstr ""
 msgid "Young Ogre"
 msgstr "Junger Oger"
 
+# Korrigiert von hendi
 #: data/units/Young_Ogre.cfg:16
 msgid ""
 "When still young, Ogres are taken into the army to be trained. They cannot "
@@ -8560,7 +8592,7 @@ msgid ""
 msgstr ""
 "Solange sie jung sind, werden Oger in einer Armee ausgebildet. Sie können "
 "nicht besonders gut mit Waffen umgehen, deswegen werden sie mit einem "
-"riesigem Fleischerbeil ausgestattet in der Hoffnung, daß sie intelligent "
+"riesigem Fleischerbeil ausgestattet in der Hoffnung, dass sie intelligent "
 "genug sind, damit ihre Gegner zu treffen und nicht ihre eigene Kehle."
 
 #: data/units/Youth.cfg:3
