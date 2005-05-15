@@ -240,16 +240,13 @@ double pr_atleast(int m, double p, int n, int d)
 	// p probability to hit, n swings, d damage/swing
 	double P = 0.0;
 	// 0 damage can happen when unit has no attack of this type
-	if(d == 0) {
-		if(m <= 0)
-			P = 1.0;
-		return P;
-	}
+	if(d == 0)
+		return (m <= 0) ? 1.0 : P;
 	for(int k = (m + d - 1)/d; k <= n; ++k) {
 		double r = 1.0;
 		const int k2 = (k > n - k) ? (n - k) : k;
 		for(int i = 0; i < k2; ++i) { r *= (n-i); r /= (k2-i); }
-		P += ((int)r) * pow(p, k) * pow(1-p, n-k);
+		P += r * pow(p, k) * pow(1-p, n-k);
 	}
 	return P;
 }
@@ -281,7 +278,7 @@ double pr_kills_during(const int hpa, const int dmga, const double pa,
 	const double t1 = pr_between(hpb - dmga, hpb, pa,
 		(swa<swb) ? reduce(n-1, swa, swb) : (n-1), dmga);
 	const int n2 = second ? n : (n - 1);
-	const double t2 = 1 - pr_atleast(hpa, pb,
+	const double t2 = 1.0 - pr_atleast(hpa, pb,
 		(swa>swb) ? reduce(n2, swb, swa) : n2, dmgb);
 	return t1 * pa * t2;
 }
@@ -621,10 +618,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	if(d->second.has_flag(slowed_string) && res.ndefends > 1)
 		--res.ndefends;
 
-	// FIXME: doesn't take into account berserk+slow, drain or firststrike
+	// FIXME: doesn't take into account berserk+slow or drain
 	if (strings && res.amount_attacker_drains == 0 &&
 		res.amount_defender_drains == 0 &&
-		(!res.defender_strikes_first) && !(res.to_the_death &&
+		!(res.to_the_death &&
 			(res.attacker_slows || res.defender_slows)))
 	{
 		const int maxrounds = (res.to_the_death ? 30 : 1);
@@ -636,23 +633,21 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		const double pb = res.chance_to_hit_attacker/100.0;
 		const int swa = res.nattacks;
 		const int swb = res.ndefends;
-		double P1 = 0;  double P2 = 0;
+		double P1 = 0;
 
-		for(int n = 1; n <= maxrounds*maximum<int>(swa,swb); ++n) {
+		for(int n = 1; n <= maxrounds*maximum<int>(swa,swb); ++n)
 			P1 += pr_kills_during(hpa, dmga, pa, swa,
-				hpb, dmgb, pb, swb, n, false);
-			P2 += pr_kills_during(hpb, dmgb, pb, swb,
-				hpa, dmga, pa, swa, n, true);
-		}
-
+			hpb, dmgb, pb, swb, n, res.defender_strikes_first);
+		const double P3 = (1.0 - pr_atleast(hpb,pa,maxrounds*swa,dmga))
+			* (1.0 - pr_atleast(hpa,pb,maxrounds*swb,dmgb));
 		std::stringstream str;
-		if (P1 < 0.005 && P2 < 0.005) {
+		if (P3 > 0.99) {
 			str << _("(both should survive)") << EMPTY_COLUMN;
 		} else {
 			str << _("% Pr[kills/killed by/both survive]")
 			    << EMPTY_COLUMN << (int)(P1*100+0.5)
-			    << '/' << (int)(P2*100+0.5)
-			    << '/' << (int)((1-P1-P2)*100+0.5);
+			    << '/' << (int)((1-P1-P3)*100+0.5)
+			    << '/' << (int)(P3*100+0.5);
 		}
 		strings->attack_calculations.push_back(str.str());
 	}
