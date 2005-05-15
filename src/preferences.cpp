@@ -534,7 +534,7 @@ void set_turns(int value)
 
 int village_gold()
 {	
-	static const int default_value = 1;
+	static const int default_value = 2;
 	int value = 0;
 	const string_map::const_iterator i = prefs.values.find("mp_village_gold");
 	if(i != prefs.values.end() && i->second.empty() == false) {
@@ -557,7 +557,7 @@ void set_village_gold(int value)
 
 int xp_modifier()
 {	
-	static const int default_value = 100;
+	static const int default_value = 70;
 	int value = 0;
 	const string_map::const_iterator i = prefs.values.find("mp_xp_modifier");
 	if(i != prefs.values.end() && i->second.empty() == false) {
