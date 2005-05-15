@@ -491,7 +491,7 @@ void set_allow_observers(bool value)
 
 bool fog()
 {	
-	return prefs["mp_fog"] != "no";
+	return prefs["mp_fog"] == "yes";
 }
 
 void set_fog(bool value)
@@ -501,7 +501,7 @@ void set_fog(bool value)
 
 bool shroud()
 {	
-	return prefs["mp_shroud"] != "no";
+	return prefs["mp_shroud"] == "yes";
 }
 
 void set_shroud(bool value)
