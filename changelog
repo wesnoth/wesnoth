@@ -1,31 +1,24 @@
 CVS HEAD:
- * unit balancing: 
-   * reduced Dwarvish Fighter cost by 1
-   * changed Lieutenant attack from 6-3 to 9-3
-   * changed Soulless attack from 7-2 to 7-3
-   * changed Soulless attack from plague to plague(Walking Corpse)
  * user interface improvements:
-   * recognize right Command key on Mac OS X, not just left
-   * explicitly mention 100 gold minimum next scenario (#12987)
+   * made the right Command key on Mac OS X work similarly to the left one
+   * made the 100 gold minimum for next scenario explicitly mentioned (#12987)
    * made menu widgets sortable
    * added %-to-kill to Damage Calculations
-   * unit defense in a terrain is displayed over the terrain when choosing move
-   * added 'Advanced' preferences: 'binary save files', 'show combat' initially
-   * fix editor file chooser when starting directory has many files (#11698)
-   * network dialogs show progress of data transfers again
-   * starting position in editor now starts at player 1 (#10625)
+   * added display of unit defense in a terrain over the terrain when choosing move
+   * added visual cue for movement in specific terrain when choosing move
+   * added 'Advanced' preferences: 'binary save files', 'show combat'
+   * made network dialogs show progress of data transfers again
+   * speeded up help
    * fixed female units not appearing in help (broken since 0.9.0)
    * reduced required width of weapon area in help
-   * better diagnostics on parsing: file inclusion sequence
    * fixed items appearing in traits description (#12603)
-   * preserve order of unit traits so no more quick,resilient but 33 vs 34 HP
-   * note= attribute for [objectives], shown as footer, eg. for hints (#12927)
-   * tweaked multiplayer lobby
-   * more distinguishable objectives dialog
-   * slider is now less bright
-   * the text of disabled buttons is now grayed out
-   * made room for observers in DFool theme.
-   * added clock to DFool theme.	
+   * preserve trait ordering to distinguish quick,resilient and resilient,quick
+   * improved layout of objectives dialog
+   * made the text of disabled buttons grayed out
+   * made room for observers in DFool theme
+   * added clock to DFool theme
+   * fixed editor file chooser when starting directory has many files (#11698)
+   * made the starting position in editor start at player 1 (#10625)
  * campaign improvements:
    * Eastern Invasion:
      * fixed Dacyn not being [recall]-ed in Unexpected Appearance (#10619)
@@ -33,24 +26,35 @@ CVS HEAD:
        Northern Outpost (#12922)
      * fixed several bugs with Captured
      * new map and scenario modification for Drowned Plains
-     * changed Skeletal Dragon resistances for Drowned Plains
    * Heir to the Throne:
      * fixed thieves not appearing in Siege of Elensefar (forum thread 5719)
    * Son of the Black Eye:
-     * shamans are no longer recallable (#11932)
+     * prevented the shamans from being recallable (#11932)
      * killing enemy leader in Siege of Barag Gor is no longer a win
-     * End of Peace turn limit increased 24 -> 26 due to Lieutenant upgrade
+     * increased turn limit in End of Peace 24 -> 26 due to Lieutenant upgrade
  * multiplayer improvements:
    * next_scenario: tentative start of MP campaign support
- * unit graphics and sound improvements 
+   * tweaked multiplayer lobby
+ * unit balancing and modifications: 
+   * reduced Dwarvish Fighter cost by 1
+   * changed Lieutenant attack from 6-3 to 9-3
+   * changed Soulless attack from 7-2 to 7-3
+   * changed Soulless attack from plague to plague(Walking Corpse)
+   * changed Skeletal Dragon resistances (only used in Eastern Invasion: Drowned Plains)
+   * slow now affects units with 2 or more attacks (not just 1 remaining)
+   * slow now works with berserk and is cumulative across berserk rounds
+   * Elvish Shaman can no longer level up to Elvish Sorceress
+   * changed Elvish Lord and Elvish High Lord's ranged attack from fire to cold
+* unit graphics and sound improvements 
    * new death animations for: Ancient Lich, Ancient Wose, Arch Mage,
      Assassin, Bandit, Battle Princess, Blood Bat, Bone Shooter, Bowman,
      Cavalier, Cavalryman, Cave Spider, Chocobone, Cockatrice,
      Commander, Cuttle Fish, Dark Adept, Dark Queen, Dark Spirit,
-     Deathblade, Death Knight, Deathmaster, Demilich, Direwolf_Rider, 
-     Dragoon, Duelist, Draug, Drake_Burner, Drake_Clasher, Drake Fighter,
-     Drake Fire
-   * new attack animations for Halberdier
+     Deathblade, Death Knight, Deathmaster, Demilich, Direwolf Rider, 
+     Dragoon, Duelist, Draug, Drake Burner, Drake Clasher, Drake Fighter,
+     Fire Drake
+   * new or modified graphics for Dragoon, Dwarvish Dragonguard, Elvish High Lord, Elvish Lord, Halberdier, Lady Parandra, Noble Lord, 
+     Royal Guard, Soulshooter, Swordsman
    * fixed several image files being referred to by wrong name
    * new Soulless variation images
  * language and i18n:
@@ -74,12 +78,14 @@ CVS HEAD:
      * Slovenian
      * Swedish
      * Turkish
- * slow now affects units with 2 or more attacks (not just 1 remaining)
- * slow now works with berserk and is cumulative across berserk rounds
+  * WML modifications
+    * new WML preprocessor, allows for nested parentheses in macros (#10995)
+    * note= attribute for [objectives], shown as footer, eg. for hints (#12927)
+    * increase_attacks= attribute of [effect] now allows percentages (#13033)
+    * new [random] representation allows complex scenario saves (forum thread 5659)
+ * better diagnostics on parsing: file inclusion sequence
+ * improvements and bug fixes of the logging system
  * fix replays with idle_ai, as seen in user scenario Rebellion (#12943)
- * new WML preprocessor, allows for nested parentheses in macros (#10995)
- * new [random] representation allows complex scenario saves (forum thread 5659)
- * increase_attacks= attribute of [effect] now allows percentages (#13033)
  * various bug fixes and code cleanups
 
 Version 0.9.1:
