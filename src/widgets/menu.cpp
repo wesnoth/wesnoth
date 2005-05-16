@@ -21,6 +21,11 @@ const size_t menu_cell_padding = font::SIZE_NORMAL * 3/5;
 
 namespace gui {
 
+menu::basic_sorter::basic_sorter()
+{
+	set_id_sort(-1);
+}
+
 menu::basic_sorter& menu::basic_sorter::set_alpha_sort(int column)
 {
 	alpha_sort_.insert(column);
@@ -72,6 +77,10 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		return less(redirect->second,row1,row2);
 	}
 
+	if(id_sort_.count(column) == 1) {
+		return row1.id < row2.id;
+	}
+
 	if(column < 0 || column >= int(row2.fields.size())) {
 		return false;
 	}
@@ -107,8 +116,6 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		}
 
 		return atoi(a) > atoi(b);
-	} else if(id_sort_.count(column) == 1) {
-		return row1.id < row2.id;
 	}
 
 	const std::map<int,std::vector<int> >::const_iterator itor = pos_sort_.find(column);
@@ -141,7 +148,7 @@ menu::menu(CVideo& video, const std::vector<std::string>& items,
 	  num_selects_(true),
 	  ignore_next_doubleclick_(false),
 	  last_was_doubleclick_(false),
-	  sorter_(sorter_obj), sortby_(-1), highlight_heading_(-1)
+	  sorter_(sorter_obj), sortby_(-1), sortreversed_(false), highlight_heading_(-1)
 {
 	fill_items(items, true);
 }
@@ -176,7 +183,10 @@ void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 	}
 
 	create_help_strings();
-	do_sort();
+
+	if(sortby_ >= 0) {
+		do_sort();
+	}
 	update_size();
 }
 
@@ -200,17 +210,17 @@ private:
 
 }
 
-void menu::do_sort(SORT_TYPE type)
+void menu::do_sort()
 {
-	if(sortby_ < 0 || sorter_ == NULL || sorter_->column_sortable(sortby_) == false) {
+	if(sorter_ == NULL || sorter_->column_sortable(sortby_) == false) {
 		return;
 	}
 
 	const int selectid = selection();
 
-	if(type == NORMAL_SORT) {
+	if(sortreversed_ == false) {
 		std::stable_sort(items_.begin(),items_.end(),sort_func(*sorter_,sortby_));
-	} else if(type == INVERT_SORT) {
+	} else {
 		std::reverse(items_.begin(),items_.end());
 	}
 
@@ -598,8 +608,20 @@ void menu::scroll(int)
 void menu::sort_by(int column)
 {
 	const bool already_sorted = (column == sortby_);
-	sortby_ = column;
-	do_sort(already_sorted ? INVERT_SORT : NORMAL_SORT);
+
+	if(already_sorted) {
+		if(sortreversed_ == false) {
+			sortreversed_ = true;
+		} else {
+			sortreversed_ = false;
+			sortby_ = -1;
+		}
+	} else {
+		sortby_ = column;
+		sortreversed_ = false;
+	}
+
+	do_sort();
 	itemRects_.clear();
 	set_dirty();
 }
@@ -717,7 +739,7 @@ void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, R
 			str = *it;
 			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
-				surface const img = image::get_image(image_name,image::UNSCALED);
+				const surface img = image::get_image(image_name,image::UNSCALED);
 				const int max_width = max_width_ < 0 ? area.w :
 					minimum<int>(max_width_, area.w - xpos);
 				if(img != NULL && (xpos - rect.x) + img->w < max_width
@@ -732,6 +754,17 @@ void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, R
 				const SDL_Rect& text_size = font::text_area(str,menu_font_size);
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
 				font::draw_text(&video(),area,menu_font_size,font::NORMAL_COLOUR,to_show,xpos,y);
+
+				if(type == HEADING_ROW && sortby_ == int(i)) {
+					const surface sort_img = image::get_image(sortreversed_ ? "misc/sort-arrow.png" :
+					                                   "misc/sort-arrow-reverse.png", image::UNSCALED);
+					if(sort_img != NULL && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
+						const size_t sort_x = xpos + widths[i] - sort_img->w;
+						const size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
+						video().blit_surface(sort_x,sort_y,sort_img);
+					}
+				}
+
 				xpos += text_size.w + 5;
 			}
 		}

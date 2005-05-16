@@ -45,6 +45,7 @@ public:
 	class basic_sorter : public sorter
 	{
 	public:
+		basic_sorter();
 		virtual ~basic_sorter() {}
 
 		basic_sorter& set_alpha_sort(int column);
@@ -182,14 +183,14 @@ private:
 
 	const sorter* sorter_;
 	int sortby_;
+	bool sortreversed_;
 	int highlight_heading_;
 
 	/// Set new items to show. If strip_spaces is false, spaces will
 	/// remain at the item edges.
 	void fill_items(const std::vector<std::string>& items, bool strip_spaces);
 
-	enum SORT_TYPE { NORMAL_SORT, INVERT_SORT };
-	void do_sort(SORT_TYPE type=NORMAL_SORT);
+	void do_sort();
 	void recalculate_pos();
 	void assert_pos();
 
