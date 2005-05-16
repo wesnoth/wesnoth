@@ -4,7 +4,7 @@ CVS HEAD:
    * made the 100 gold minimum for next scenario explicitly mentioned (#12987)
    * made menu widgets sortable
    * added %-to-kill to Damage Calculations
-   * added display of unit defense in a terrain over the terrain when choosing move
+   * added display of unit defense over the terrain when choosing move
    * added visual cue for movement in specific terrain when choosing move
    * added 'Advanced' preferences: 'binary save files', 'show combat'
    * made network dialogs show progress of data transfers again
@@ -36,11 +36,13 @@ CVS HEAD:
    * changed Lieutenant attack from 6-3 to 9-3
    * changed Soulless attack from 7-2 to 7-3
    * changed Soulless attack from plague to plague(Walking Corpse)
-   * changed Skeletal Dragon resistances (only used in Eastern Invasion: Drowned Plains)
+   * changed Skeletal Dragon resistances (only used in Eastern Invasion:
+     scenario Drowned Plains)
    * slow now affects units with 2 or more attacks (not just 1 remaining)
    * slow now works with berserk and is persistent across berserk rounds
    * Elvish Shaman can no longer level up to Elvish Sorceress
    * changed Elvish Lord and Elvish High Lord's ranged attack from fire to cold
+   * Goblin Knight -> Direwolf Rider upgrade reduced to 65 XP
  * unit graphics and sound improvements:
    * new death animations for: Ancient Lich, Ancient Wose, Arch Mage,
      Assassin, Bandit, Battle Princess, Blood Bat, Bone Shooter, Bowman,
@@ -49,9 +51,9 @@ CVS HEAD:
      Deathblade, Death Knight, Deathmaster, Demilich, Direwolf Rider,
      Dragoon, Duelist, Draug, Drake Burner, Drake Clasher, Drake Fighter,
      Fire Drake
-   * new or modified graphics for Dragoon, Dwarvish Dragonguard, Elvish High Lord,
-     Elvish Lord, Halberdier, Lady Parandra, Noble Lord, Royal Guard, Soulshooter,
-     Swordsman
+   * new or modified graphics for Dragoon, Dwarvish Dragonguard,
+     Elvish High Lord, Elvish Lord, Halberdier, Lady Parandra, Noble Lord,
+     Royal Guard, Soulshooter, Swordsman
    * fixed several image files being referred to by wrong name
    * new Soulless variation images
  * language and i18n:
@@ -67,7 +69,8 @@ CVS HEAD:
    * new WML preprocessor, allows for nested parentheses in macros (#10995)
    * note= attribute for [objectives], shown as footer, eg. for hints (#12927)
    * increase_attacks= attribute of [effect] now allows percentages (#13033)
-   * new [random] representation allows complex scenario saves (forum thread 5659)
+   * new [random] representation as list allows complex scenarios to be saved
+     (forum thread 5659)
    * better diagnostics on parsing: file inclusion sequence
  * editor improvements:
    * fixed editor file chooser when starting directory has many files (#11698)
