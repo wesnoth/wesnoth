@@ -254,7 +254,8 @@ public:
 	                  const std::vector<save_info>& info, const std::vector<config*>& summaries)
 		: gui::preview_pane(video), game_config_(&game_config), map_(map), data_(&data), info_(&info), summaries_(&summaries), index_(0)
 	{
-		set_measurements(200, 400);
+		set_measurements(minimum<int>(200,video.getx()/4),
+				 minimum<int>(400,video.gety() * 4/5));
 	}
 
 	void draw_contents();
@@ -328,9 +329,14 @@ void save_preview_pane::draw_contents()
 			map_surf = itor->second;
 		} else if(map_ != NULL) {
 			try {
+#ifdef USE_TINY_GUI
+				const int minimap_size = 60;
+#else
+				const int minimap_size = 100;
+#endif
 				map_->read(map_data);
 
-				map_surf = image::getMinimap(100, 100, *map_);
+				map_surf = image::getMinimap(minimap_size, minimap_size, *map_);
 				if(map_surf != NULL) {
 					map_cache_.insert(std::pair<std::string,surface>(map_data,surface(map_surf)));
 				}
