@@ -44,7 +44,7 @@ void show_help(display &disp, const section &toplevel, const std::string show_to
 
 /// Open the help browser. The help browser will have the topic with id
 /// show_topic open if it is not the empty string. The default topic
-/// will be shown if show_topic sis the empty string.
+/// will be shown if show_topic is the empty string.
 void show_help(display &disp, const std::string show_topic="", int xloc=-1, int yloc=-1);
 
 } // End namespace help.
