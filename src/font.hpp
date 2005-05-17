@@ -54,7 +54,7 @@ extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, BLAC
 // font sizes, to be made theme parameters
 #ifdef USE_TINY_GUI
 // this is not meant for normal play, just for checking other dimensions get adapted accordingly
-const int SIZE_NORMAL = 8;
+const int SIZE_NORMAL = 10;
 #else
 const int SIZE_NORMAL = 14;
 #endif

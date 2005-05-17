@@ -373,7 +373,12 @@ int show_dialog(display& disp, surface image,
 		text_widget_height = text_widget.location().h + message_font_size;
 	}
 
-	menu menu_(screen,menu_items,type == MESSAGE,-1,-1,sorter);
+#ifdef USE_TINY_GUI
+	const int max_menu_width = 150;
+#else
+	const int max_menu_width = -1;
+#endif
+	menu menu_(screen,menu_items,type == MESSAGE,-1,max_menu_width,sorter);
 
 	menu_.set_numeric_keypress_selection(use_textbox == false);
 

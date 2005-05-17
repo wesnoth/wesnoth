@@ -804,7 +804,11 @@ namespace {
 
 campaign_preview_pane::campaign_preview_pane(CVideo &video,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(video),descriptions_(desc),index_(0)
 {
-	set_measurements(font::relative_size(350), font::relative_size(400));
+#ifdef USE_TINY_GUI
+	set_measurements(160, 200);
+#else
+	set_measurements(350, 400);
+#endif
 }
 
 bool campaign_preview_pane::show_above() const { return false; }
