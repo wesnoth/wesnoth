@@ -408,7 +408,7 @@ namespace {
 bool command_active()
 {
 #ifdef __APPLE__
-	return (SDL_GetModState()&KMOD_LMETA) != 0;
+	return (SDL_GetModState()&KMOD_META) != 0;
 #else
 	return false;
 #endif
