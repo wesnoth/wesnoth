@@ -402,7 +402,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 	def->second.set_defending(hits, attack_type::LONG_RANGE, animation_time, acceleration);
 
-	while(animation_time < end_at) {
+	while(animation_time < end_at && !hide) {
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
@@ -733,7 +733,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	def->second.set_defending(hits, attack_type::SHORT_RANGE, animation_time, acceleration);
 
-	while(animation_time < end_at) {
+	while(animation_time < end_at && !hide) {
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
