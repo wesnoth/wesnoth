@@ -69,7 +69,8 @@ unit::unit(const game_data& data, const config& cfg) :
 	moves_(0), user_end_turn_(false), facingLeft_(true),
 	resting_(false),
 	recruit_(false),
-	guardian_(false), upkeep_(UPKEEP_FREE)
+	guardian_(false), upkeep_(UPKEEP_FREE),
+	hold_position_(false)
 {
 	read(data,cfg);
 }
@@ -98,6 +99,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	       maxMovement_(type_->movement()),
 	       backupMaxMovement_(type_->movement()),
 	       resting_(false), recruit_(false), attacks_(type_->attacks()),
+	       hold_position_(false),
 	       backupAttacks_(type_->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE),
                unrenamable_(false)
@@ -125,6 +127,7 @@ unit::unit(const unit_type* t, const unit& u) :
 	experience_(0),
 	maxExperience_(type_->experience_needed()),
 	backupMaxExperience_(type_->experience_needed()),
+	hold_position_(u.hold_position_),
 	side_(u.side()), moves_(u.moves_),
 	user_end_turn_(false), facingLeft_(u.facingLeft_),
 	maxMovement_(type_->movement()),
@@ -262,8 +265,20 @@ bool unit::can_attack() const
 
 void unit::set_movement(int moves)
 {
+	hold_position_ = false;
 	user_end_turn_ = false;
 	moves_ = moves;
+}
+
+//This does not mark the unit's turn as being done even if value is true. To do that, either call void unit_hold_position(), or set_user_end_turn(value).
+void unit::set_hold_position(bool value)
+{
+	hold_position_ = value;
+}
+
+bool unit::hold_position() const
+{
+	return hold_position_;
 }
 
 void unit::set_user_end_turn(bool value)
@@ -279,6 +294,13 @@ bool unit::user_end_turn() const
 void unit::set_attacked()
 {
 	moves_ = ATTACKED; 
+	set_hold_position(false);
+}
+
+void unit::unit_hold_position()
+{
+	hold_position_ = true;
+	user_end_turn_ = true;
 }
 
 void unit::end_unit_turn()
@@ -300,6 +322,9 @@ void unit::new_turn()
 		set_flag("nightstalk");
 	if(stone())
 		set_attacked();
+	if (hold_position_) {
+		user_end_turn_ = true;
+	}
 }
 
 bool unit::move_interrupted() const {

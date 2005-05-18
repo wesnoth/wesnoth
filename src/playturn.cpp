@@ -1036,6 +1036,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	//commands we can always do
 	case hotkey::HOTKEY_LEADER:
 	case hotkey::HOTKEY_CYCLE_UNITS:
+	case hotkey::HOTKEY_CYCLE_BACK_UNITS:
 	case hotkey::HOTKEY_ZOOM_IN:
 	case hotkey::HOTKEY_ZOOM_OUT:
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
@@ -1091,6 +1092,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return !browse_ && !commands_disabled && current_team().auto_shroud_updates() == false;
 
 	//commands we can only do if we are actually playing, not just viewing
+	case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 	case hotkey::HOTKEY_END_UNIT_TURN:
 	case hotkey::HOTKEY_RECRUIT:
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
@@ -1203,9 +1205,7 @@ bool turn_info::unit_in_cycle(unit_map::const_iterator it) const
 
 void turn_info::cycle_units()
 {
-
 	unit_map::const_iterator it = units_.find(next_unit_);
-	unit_map::const_iterator yellow_it = units_.end();
 	if(it != units_.end()) {
 		for(++it; it != units_.end(); ++it) {
 			if(unit_in_cycle(it)) {
@@ -1232,6 +1232,47 @@ void turn_info::cycle_units()
 	}
 
 	if(it != units_.end()) {
+		next_unit_ = it->first;
+		selected_hex_ = next_unit_;
+		gui_.select_hex(selected_hex_);
+		gui_.highlight_hex(selected_hex_);
+		current_route_.steps.clear();
+		gui_.set_route(NULL);
+		show_attack_options(it);
+	} else {
+		next_unit_ = gamemap::location();
+	}
+}
+
+void turn_info::cycle_back_units()
+{
+	unit_map::const_iterator it = units_.find(next_unit_);
+	if(it != units_.begin()) {
+		for(--it; it != units_.begin(); --it) {
+			if(unit_in_cycle(it)) {
+				break;
+			}
+		}
+	}
+
+	if(it == units_.begin()) {
+		for(it = units_.end(); it != units_.begin(); --it) {
+			if(unit_in_cycle(it)) {
+				break;
+			}
+		}
+	}
+
+	if(it != units_.begin() && !gui_.fogged(it->first.x,it->first.y)) {
+		const bool ignore_zocs = it->second.type().is_skirmisher();
+		const bool teleport = it->second.type().teleports();
+		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,path_turns_);
+		gui_.set_paths(&current_paths_);
+
+		gui_.scroll_to_tile(it->first.x,it->first.y,display::WARP);
+	}
+
+	if(it != units_.begin()) {
 		next_unit_ = it->first;
 		selected_hex_ = next_unit_;
 		gui_.select_hex(selected_hex_);
@@ -1312,6 +1353,28 @@ void turn_info::goto_leader()
 	}
 }
 
+void turn_info::unit_hold_position()
+{
+	if(browse_)
+		return;
+
+	const unit_map::iterator un = units_.find(selected_hex_);
+	if(un != units_.end() && un->second.side() == team_num_ && un->second.movement_left() >= 0) {
+		un->second.set_hold_position(!un->second.hold_position());
+		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
+
+		gui_.set_route(NULL);
+		gui_.set_paths(NULL);
+		current_paths_ = paths();
+		gui_.draw();
+
+		if(un->second.hold_position()) {
+			un->second.set_user_end_turn(true);
+			cycle_units();
+		}
+	}	
+}
+
 void turn_info::end_unit_turn()
 {
 	if(browse_)
@@ -1320,6 +1383,9 @@ void turn_info::end_unit_turn()
 	const unit_map::iterator un = units_.find(selected_hex_);
 	if(un != units_.end() && un->second.side() == team_num_ && un->second.movement_left() >= 0) {
 		un->second.set_user_end_turn(!un->second.user_end_turn());
+		if(un->second.hold_position() && !un->second.user_end_turn()){
+		  un->second.set_hold_position(false);
+		}
 		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
 
 		gui_.set_route(NULL);

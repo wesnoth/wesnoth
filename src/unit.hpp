@@ -62,11 +62,14 @@ public:
 	bool can_recruit() const;
 	int total_movement() const;
 	int movement_left() const;
+	void set_hold_position(bool value);
+	bool hold_position() const;
 	void set_user_end_turn(bool value=true);
 	bool user_end_turn() const;
 	bool can_attack() const;
 	void set_movement(int moves);
 	void set_attacked();
+	void unit_hold_position();
 	void end_unit_turn();
 	void new_turn();
 	void end_turn();
@@ -188,6 +191,7 @@ private:
 	bool facingLeft_;
 	int maxMovement_, backupMaxMovement_;
 	bool resting_;
+	bool hold_position_;
 
 	std::string underlying_description_, description_;
 

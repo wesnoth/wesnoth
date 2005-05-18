@@ -43,6 +43,8 @@ const struct {
 	bool hidden;
 } hotkey_list_[] = {
 	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next unit"), false },
+	{ hotkey::HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous unit"), false },
+	{ hotkey::HOTKEY_UNIT_HOLD_POSITION, "holdposition", N_("Hold Position"), false},
 	{ hotkey::HOTKEY_END_UNIT_TURN, "endunitturn", N_("End Unit Turn"), false },
 	{ hotkey::HOTKEY_LEADER, "leader", N_("Leader"), false },
 	{ hotkey::HOTKEY_UNDO, "undo", N_("Undo"), false },
@@ -411,9 +413,17 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			if(executor)
 				executor->cycle_units();
 			break;
+		case HOTKEY_CYCLE_BACK_UNITS:
+			if(executor)
+				executor->cycle_back_units();
+			break;
 		case HOTKEY_ENDTURN:
 			if(executor)
 				executor->end_turn();
+			break;
+		case HOTKEY_UNIT_HOLD_POSITION:
+			if(executor)
+                executor->unit_hold_position();
 			break;
 		case HOTKEY_END_UNIT_TURN:
 			if(executor)
