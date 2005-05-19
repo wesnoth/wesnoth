@@ -218,11 +218,9 @@ void menu::do_sort()
 
 	const int selectid = selection();
 
-	if(sortreversed_ == false) {
-		std::stable_sort(items_.begin(),items_.end(),sort_func(*sorter_,sortby_));
-	} else {
-		std::reverse(items_.begin(),items_.end());
-	}
+	std::stable_sort(items_.begin(), items_.end(), sort_func(*sorter_, sortby_));
+	if (sortreversed_)
+		std::reverse(items_.begin(), items_.end());
 
 	recalculate_pos();
 
@@ -235,19 +233,20 @@ void menu::do_sort()
 
 void menu::recalculate_pos()
 {
-	item_pos_.resize(items_.size());
-	for(std::vector<item>::const_iterator i = items_.begin(); i != items_.end(); ++i) {
-		item_pos_[i->id] = i - items_.begin();
-	}
-
+	size_t sz = items_.size();
+	item_pos_.resize(sz);
+	for(size_t i = 0; i != sz; ++i)
+		item_pos_[items_[i].id] = i;
 	assert_pos();
 }
 
 void menu::assert_pos()
 {
-	assert(item_pos_.size() == items_.size());
-	for(size_t n = 0; n != item_pos_.size(); ++n) {
-		assert(n == items_[item_pos_[n]].id);
+	size_t sz = items_.size();
+	assert(item_pos_.size() == sz);
+	for(size_t n = 0; n != sz; ++n) {
+		size_t i = item_pos_[n];
+		assert(i < sz && n == items_[i].id);
 	}
 }
 
@@ -332,21 +331,23 @@ void menu::erase_item(size_t index)
 	size_t nb_items = items_.size();
 	if (index >= nb_items)
 		return;
+	--nb_items;
 
-	clear_item(nb_items - 1);
+	clear_item(nb_items);
 
-	const size_t pos = item_pos_[index];
-
+	// fix ordered positions of items
+	size_t pos = item_pos_[index];
 	item_pos_.erase(item_pos_.begin() + index);
-	for(std::vector<size_t>::iterator i = item_pos_.begin(); i != item_pos_.end(); ++i) {
-		if(*i > pos) {
-			*i = *i-1;
-		}
-	}
-
 	items_.erase(items_.begin() + pos);
-	if (selected_ >= nb_items - 1)
-		selected_ = nb_items - 2;
+	for(size_t i = 0; i != nb_items; ++i) {
+		size_t &n1 = item_pos_[i], &n2 = items_[i].id;
+		if (n1 > pos) --n1;
+		if (n2 > index) --n2;
+	}
+	assert_pos();
+
+	if (selected_ >= nb_items)
+		selected_ = nb_items - 1;
 
 	update_scrollbar_grip_height();
 	adjust_viewport_to_selection();
