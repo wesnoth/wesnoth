@@ -67,10 +67,8 @@ void sort_units(std::vector< unit > &units)
 unit::unit(const game_data& data, const config& cfg) : 
 	state_(STATE_NORMAL),
 	moves_(0), user_end_turn_(false), facingLeft_(true),
-	resting_(false),
-	recruit_(false),
-	guardian_(false), upkeep_(UPKEEP_FREE),
-	hold_position_(false)
+	resting_(false), hold_position_(false), recruit_(false),
+	guardian_(false), upkeep_(UPKEEP_FREE)
 {
 	read(data,cfg);
 }
@@ -98,8 +96,8 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	       user_end_turn_(false), facingLeft_(side != 1),
 	       maxMovement_(type_->movement()),
 	       backupMaxMovement_(type_->movement()),
-	       resting_(false), recruit_(false), attacks_(type_->attacks()),
-	       hold_position_(false),
+	       resting_(false), hold_position_(false), recruit_(false),
+	       attacks_(type_->attacks()),
 	       backupAttacks_(type_->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE),
                unrenamable_(false)
@@ -127,12 +125,11 @@ unit::unit(const unit_type* t, const unit& u) :
 	experience_(0),
 	maxExperience_(type_->experience_needed()),
 	backupMaxExperience_(type_->experience_needed()),
-	hold_position_(u.hold_position_),
 	side_(u.side()), moves_(u.moves_),
 	user_end_turn_(false), facingLeft_(u.facingLeft_),
 	maxMovement_(type_->movement()),
 	backupMaxMovement_(type_->movement()),
-	resting_(u.resting_),
+	resting_(u.resting_), hold_position_(u.hold_position_),
 	underlying_description_(u.underlying_description_),
 	description_(u.description_), recruit_(u.recruit_),
 	role_(u.role_), statusFlags_(u.statusFlags_),
