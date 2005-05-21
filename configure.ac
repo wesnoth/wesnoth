@@ -521,13 +521,10 @@ AC_SUBST([SDL_MIXER_LIBS])
 AC_SUBST([SDL_NET_LIBS])
 #AC_SUBST([SDL_TTF_LIBS])
 
-# Cheching for the freetype library. This was directly copied from the config script
-# of SDL_ttf, and I do not really understand how this works.
+# Checking for the freetype library. This was copied from the
+# config script of SDL_ttf, modified for CPPFLAGS
 
-dnl Check for the FreeType 2 library
-dnl
 dnl Get the cflags and libraries from the freetype-config script
-dnl
 
 AC_ARG_WITH([freetype-prefix],
             AS_HELP_STRING([--with-freetype-prefix=PFX], [Prefix where FREETYPE is installed (optional)]),
@@ -558,7 +555,7 @@ if test "$FREETYPE_CONFIG" = "no" ; then
 *** Unable to find FreeType2 library (http://www.freetype.org/)
 ])
 else
-    CFLAGS="$CFLAGS `$FREETYPE_CONFIG $freetypeconf_args --cflags`"
+    CPPFLAGS="$CPPFLAGS `$FREETYPE_CONFIG $freetypeconf_args --cflags`"
     FREETYPE_LIBS=`$FREETYPE_CONFIG $freetypeconf_args --libs`
 fi
 
