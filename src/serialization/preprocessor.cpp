@@ -383,11 +383,10 @@ bool preprocessor_data::get_chunk()
 				strings_.back() += tmp;
 			} else
 				pop_token();
-			char &t = tokens_.back().type;
-			if (t == '{')
-				t = '[';
 		} else if (!target_.quoted_) {
 			target_.quoted_ = true;
+			if (token.type == '{')
+				token.type = '[';
 			push_token('"');
 			put(c);
 		} else {
@@ -398,6 +397,8 @@ bool preprocessor_data::get_chunk()
 			throw config::error(error.str());
 		}
 	} else if (c == '{') {
+		if (token.type == '{')
+			token.type = '[';
 		push_token('{');
 		++slowpath_;
 	} else if (c == ')' && token.type == '(') {
@@ -454,7 +455,7 @@ bool preprocessor_data::get_chunk()
 			}
 		} else if (command == "ifdef") {
 			skip_spaces();
-			std::string symbol = read_word();
+			std::string const &symbol = read_word();
 			bool skip = target_.defines_->count(symbol) == 0;
 			LOG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
 			if (skip)
@@ -492,7 +493,7 @@ bool preprocessor_data::get_chunk()
 			pop_token();
 		} else if (command == "textdomain") {
 			skip_spaces();
-			std::string s = read_word();
+			std::string const &s = read_word();
 			put("#textdomain ");
 			put(s);
 			target_.textdomain_ = s;
@@ -532,11 +533,10 @@ bool preprocessor_data::get_chunk()
 			}
 
 			std::string symbol = strings_[token.stack_pos];
-			std::string::size_type pos = symbol.find('\376');
-			while (pos != std::string::npos) {
-				std::string::iterator b = symbol.begin();
+			std::string::size_type pos;
+			while ((pos = symbol.find('\376')) != std::string::npos) {
+				std::string::iterator b = symbol.begin(); // invalidated at each iteration
 				symbol.erase(b + pos, b + symbol.find('\n', pos + 1) + 1);
-				pos = symbol.find('\376', pos);
 			}
 			//if this is a known pre-processing symbol, then we insert
 			//it, otherwise we assume it's a file name to load
@@ -610,10 +610,7 @@ bool preprocessor_data::get_chunk()
 				}
 
 				pop_token();
-				std::string dir;
-				std::string::size_type pos = val.location.find(' ');
-				if (pos != std::string::npos)
-					dir = val.location.substr(0, pos);
+				std::string const &dir = directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
 					LOG_CF << "substituting macro " << symbol << '\n';
 					new preprocessor_data(target_, buffer, val.location,
