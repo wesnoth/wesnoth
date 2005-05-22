@@ -1,5 +1,5 @@
 ISUBDIRS = icons
-SUBDIRS = intl po m4 src doc $(ISUBDIRS)
+SUBDIRS = po m4 src doc $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
 
 bin_SCRIPTS = utils/wmlxgettext

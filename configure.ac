@@ -47,7 +47,7 @@ AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([foreign 1.5])
 AM_MAINTAINER_MODE
-AM_GNU_GETTEXT
+AM_GNU_GETTEXT([external])
 
 #######################################################################
 # Configuration options                                               #
@@ -795,7 +795,6 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth-ei/Makefile.in
 		 po/wesnoth-trow/Makefile.in
 		 m4/Makefile
-		 intl/Makefile 
 		 icons/Makefile
 		 src/Makefile
 		 doc/Makefile

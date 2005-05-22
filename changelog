@@ -67,6 +67,9 @@ CVS HEAD:
    * updated translations:
      Afrikaans, Catalan, Chinese, Estonian, French, German, Greek, Hungarian,
      Italian, Japanese, Russian, Slovenian, Swedish, Turkish
+   * Updated gettext support to GNU gettext 0.14.4.
+   * Removed the intl/ directory, since libintl is now widespread enough
+     for gettextize to default to not installing it.
  * WML improvements:
    * new WML preprocessor, allows for nested parentheses in macros (#10995)
    * note= attribute for [objectives], shown as footer, eg. for hints (#12927)
