@@ -1028,8 +1028,22 @@ public:
 
 		if (&female_type != &male_type)
 			ss << "<img>src='" << female_type.image() << "'</img> ";
+
 		ss << "<format>font_size=" << font::relative_size(11) << " text=' " << escape(_("level"))
-		   << " " << type_.level() << "'</format>\n";
+		   << " " << type_.level() << "'</format>";
+
+		const std::string& male_portrait = male_type.image_profile();
+		const std::string& female_portrait = female_type.image_profile();
+
+		if (male_portrait.empty() == false) {
+			ss << "<img>src='" << male_portrait << "' align='right'</img> ";
+		}
+
+		if (female_portrait.empty() == false && female_portrait != male_portrait) {
+			ss << "<img>src='" << female_portrait << "' align='right'</img> ";
+		}
+
+		ss << "\n";
 
 		// Print the units this unit can advance to. Cross reference
 		// to the topics containing information about those units.
