@@ -8,12 +8,15 @@ findfilterflags=-name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d
 
 if LITE
 findmoredata=;find images $(findfilterflags) -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" -o -print
+findmoredatadirs=find images -type d -not \( -name CVS -prune -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" \) -print
 else
 findmoredata=;find images music $(findfilterflags) -o -print
+findmoredatadirs=find images music -type d -not \( -name CVS -prune \) -print
 endif
 
 finddata=(cd $(top_srcdir) && find data fonts sounds $(findfilterflags) -o -print \
 	 $(findmoredata) )
+finddatadirs=(cd $(top_srcdir) && find data fonts sounds -type d -not \( -name CVS -prune \) -print; $(findmoredatadirs) )
 findnoinst=(cd $(top_srcdir) && find utils -name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d -o -print && find MANUAL*)
 
 w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
@@ -27,10 +30,13 @@ install-data-local:
 if INSTALLDATA
 	test -z "$(pkgdatadir)" || $(mkdir_p) "$(DESTDIR)$(pkgdatadir)"
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
+	( $(finddatadirs) ) | while read p; do \
+	  $(mkdir_p) "$$p"; \
+	done
 	( $(finddata) ) | while read p; do \
 	  $(w_preparefileinstall) \
-	  echo $(INSTALL_DATA) -D "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
-	  $(INSTALL_DATA) -D "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	  echo $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	  $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
 if DUMMYLOCALES
 	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"
