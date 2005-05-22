@@ -1,21 +1,20 @@
 # German translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2004, 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.9.0+CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.9.1-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-10 19:36+0200\n"
-"PO-Revision-Date: 2005-05-10 20:36+0100\n"
+"PO-Revision-Date: 2005-05-22 13:29+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/themes/editor.cfg:225
 msgid "File"
@@ -41,7 +40,6 @@ msgstr "Startp."
 msgid "Paste"
 msgstr "Einfügen"
 
-# edited by Ivanovic
 #: src/editor/editor.cpp:309
 msgid "Save the Map As"
 msgstr "Karte speichern unter"
@@ -69,8 +67,8 @@ msgstr "Diese Datei enthält keine Karte oder sie ist beschädigt."
 #: src/editor/editor.cpp:545
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr ""
-"Die Datei »$filename« existiert  nicht, ihr seid nicht berechtigtet sie zu "
-"lesen,oder sie kann nicht gelesen werden."
+"Die Datei »$filename« existiert nicht, ihr seid nicht berechtigtet sie zu "
+"lesen oder sie kann nicht gelesen werden."
 
 #: src/editor/editor.cpp:557
 msgid "Load failed: "
@@ -78,7 +76,7 @@ msgstr "Laden ist leider fehlgeschlagen"
 
 #: src/editor/editor.cpp:753
 msgid "You must have a hex selected on the board."
-msgstr "Ihr musst ein Hex-Feld auf der Karte ausgewählt haben."
+msgstr "Ihr müsst ein Hexfeld auf der Karte ausgewählt haben."
 
 #: src/editor/editor.cpp:1002
 msgid "Quit Editor"
@@ -146,7 +144,7 @@ msgstr "Einstellungen"
 
 #: src/editor/editor_dialogs.cpp:255
 msgid "Scroll Speed:"
-msgstr "Scroll Geschwindigkeit:"
+msgstr "Scroll-Geschwindigkeit:"
 
 #: src/editor/editor_dialogs.cpp:282
 msgid "Toggle Full Screen"

@@ -1,27 +1,25 @@
 # German translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2004, 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.9.0+CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-10 19:30+0200\n"
-"PO-Revision-Date: 2005-05-11 13:46+0200\n"
-"Last-Translator: Hendrik Richter <hendi@gnome-de.org>\n"
+"PO-Revision-Date: 2005-05-22 13:07-0000\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
 
 # -- Anmerkungen --
 # KENNZEICHNUNG: Vorschlag: Inhaltliche Anmerkungen mit 'Anm.' beginnen, dann lassen sie sich leicht durch die Suchfunktion finden. Beispiel:
 # - Statt:
 # Klingt komisch. Umformulieren
-# - besser so: 
+# - besser so:
 # Anm. Klingt komisch. Umformulieren
 # Zahlen innerhalb eines Abschnittes ausschreiben oder in Ziffern stellen - VeryUhu
 # Wir sollten vielleicht ein anderes Wort für 'Spezialitäten' verwenden. Vorschlag: Besonderheiten - VeryUhu
@@ -185,11 +183,11 @@ msgstr ""
 "Rechtsklick auf ein Hexfeld <italic>text=Ausbilden</italic> auswählen. "
 "Danach erscheint das Ausbildungsmenü, wo alle Einheitentypen, die "
 "ausgebildet werden können, aufgelistet sind. Neben den Einheiten ist "
-"angegeben, wieviel die Ausbildung kostet. Wenn Ihr eine Einheit wählt, "
+"angegeben, wie viel die Ausbildung kostet. Wenn Ihr eine Einheit wählt, "
 "erscheinen ihre Eigenschaften auf der linken Seite. Ihr könnt dann den "
 "»Ausbilden«-Knopf drücken, um die Einheit auszubilden."
 
-# Korrigiert von chrber (& mir) 
+# Korrigiert von chrber (& mir)
 # Korrigiert von VeryUhu
 #: data/help.cfg:81
 msgid ""
@@ -202,7 +200,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Wenn Ihr über einen Rechtsklick auf ein Hexfeld eures Burgfrieds ins "
+"Wenn Ihr über einen Rechtsklick auf ein Hexfeld Eures Burgfrieds ins "
 "Ausbildungsmenü gelangt seid, wird die neue Einheit dort erscheinen. Sonst "
 "wird sie auf einem freien Feld in der Burg eingesetzt. Ihr könnt nur solange "
 "Einheiten ausbilden, solange es freie Hexfelder in der Burg gibt und solange "
@@ -251,14 +249,14 @@ msgstr ""
 "\n"
 "Ihr solltet beachten, dass Einheiten nicht nur bei der Ausbildung und "
 "Einberufung Gold kosten, sondern auch Unterhaltskosten haben. Geht zu "
-"<ref>dst=inkome_and_upkeep text='Einkommen und Unterhaltskosten'</ref>, um "
+"<ref>dst=income_and_upkeep text='Einkommen und Unterhaltskosten'</ref>, um "
 "mehr darüber zu erfahren."
 
 #: data/help.cfg:92 src/help.cpp:1177
 msgid "Movement"
 msgstr "Bewegungskosten"
 
-# Korrigiert von chrber 
+# Korrigiert von chrber
 # Korrigiert von VeryUhu
 # de-fuzzied by VeryUhu
 #: data/help.cfg:93
@@ -274,7 +272,7 @@ msgstr ""
 "auf die zu bewegende Einheit und danach auf das gewünschte Zielfeld. Wenn "
 "eine Einheit ausgewählt ist, werden alle erreichbaren Felder hervorgehoben "
 "und alle anderen abgedunkelt. Wenn Ihr mit der Maus über ein zu weit "
-"entferntes Feld fahrt, wird angezeigt, wieviele Züge die Einheit bis dahin "
+"entferntes Feld fahrt, wird angezeigt, wie viele Züge die Einheit bis dahin "
 "benötigt. Wenn Ihr das Feld anklickt, wird sich die Einheit auf dem "
 "schnellsten Wege dort hin bewegen."
 
@@ -296,7 +294,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jede Einheit hat eine bestimmte Anzahl an Bewegungspunkten (Abgek. BP), die "
+"Jede Einheit hat eine bestimmte Anzahl an Bewegungspunkten (Abk. BP), die "
 "verbraucht werden, wenn die Einheit ein neues Feld betritt. Das Betreten von "
 "Grasland kostet fast immer einen Bewegungspunkt. Die genauen Kosten hängen "
 "von der Art der Einheit ab: Elfen verbrauchen im Wald nur jeweils einen "
@@ -325,7 +323,7 @@ msgstr ""
 "den sie umgebenden Hexfeldern besteht. Wenn eine Einheit die Kontrollzone "
 "einer gegnerischen Einheit betritt, verliert sie sofort alle "
 "Bewegungspunkte. Ihr solltet lernen, Kontrollzonen zu Eurem Vorteil zu "
-"nutzen. Lediglich <ref>dst=ability_skirmish text='Plänkler'</ref> können "
+"nutzen. Lediglich <ref>dst=ability_skirmisher text='Plänkler'</ref> können "
 "Kontrollzonen ignorieren."
 
 #: data/help.cfg:102
@@ -430,12 +428,12 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Es gibt es zwei Ausnahmen von dieser Regel: <ref>dst=magical_attacks "
+"Es gibt es zwei Ausnahmen von dieser Regel: <ref>dst=weaponspecial_magical "
 "text='Magische Angriffe'</ref> und Angriffe unter Verwendung der Fertigkeit "
-"<ref>dst=ability_marksman text='Schießkunst'</ref>. Magische Angriffe haben "
-"grundsätzlich eine 70%-Trefferwahrscheinlichkeit. Scharfschützen haben stets "
-"eine Trefferwahrscheinlichkeit von mindestens 60%, unabhängig vom jeweiligen "
-"Gelände."
+"<ref>dst=weaponspecial_marksman text='Schießkunst'</ref>. Magische Angriffe "
+"haben grundsätzlich eine 70%-Trefferwahrscheinlichkeit. Scharfschützen haben "
+"stets eine Trefferwahrscheinlichkeit von mindestens 60%, unabhängig vom "
+"jeweiligen Gelände."
 
 #: data/help.cfg:114
 msgid ""
@@ -447,7 +445,7 @@ msgstr ""
 "\n"
 "<header>text=Schaden</header>"
 
-# Korrigiert von chrber 
+# Korrigiert von chrber
 # Korrigiert von VeryUhu
 #: data/help.cfg:116
 msgid ""
@@ -466,7 +464,7 @@ msgstr ""
 "Menge an Schaden zu. Ein Elfenkrieger mit einer 5-4 Schwertattacke "
 "verursacht beispielsweise einen Grundschaden von 5 Punkten. Dieser Wert wird "
 "normalerweise von zwei Faktoren beeinflusst: "
-"<ref>dst=damage_type_and_resistance text='Resistenzen'</ref> und "
+"<ref>dst=damage_types_and_resistance text='Resistenzen'</ref> und "
 "<ref>dst=time_of_day text='der Tageszeit'</ref>, die nachfolgend erklärt "
 "werden."
 
@@ -484,9 +482,9 @@ msgstr ""
 "\n"
 "Manche Einheiten verfügen in Kombination mit ihrem Angriff über spezielle "
 "Fertigkeiten, die den ausgeteilten Schaden beeinflussen. Die am meisten "
-"verbreitete ist der <ref>dst=ability_charge text=Sturmangriff</ref>, welcher "
-"den ausgeteilten Schaden von Angreifer und Verteidiger verdoppelt, wenn eine "
-"Einheit mit dieser Fertigkeit angreift."
+"verbreitete ist der <ref>dst=weaponspecial_charge text=Sturmangriff</ref>, "
+"welcher den ausgeteilten Schaden von Angreifer und Verteidiger verdoppelt, "
+"wenn eine Einheit mit dieser Fertigkeit angreift."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -508,7 +506,7 @@ msgstr ""
 "verändert."
 
 # Korrigiert von hendi
-# Korrigiert von chrber 
+# Korrigiert von chrber
 # Korrigiert von VeryUhu
 #: data/help.cfg:126
 msgid ""
@@ -522,7 +520,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Resistenzen funktionieren sehr einfach: Wenn eine Einheit über eine 40%tige "
+"Resistenzen funktionieren sehr einfach: Wenn eine Einheit über eine 40%ige "
 "Resistenz gegen eine Schadensart verfügt, erleidet sie bei einer Attacke "
 "dieses Typs 40% weniger Schaden. Eine Einheit kann auch besonders verwundbar "
 "für eine Schadensart sein. Bei einer Resistenz von -100% erleidet die "
@@ -582,7 +580,7 @@ msgstr "Nachmittag"
 #: data/help.cfg:141 data/schedules.cfg:59 data/schedules.cfg:89
 #: data/schedules.cfg:111
 msgid "Dusk"
-msgstr "Abendämmerung"
+msgstr "Abenddämmerung"
 
 #: data/help.cfg:142 data/schedules.cfg:79
 msgid "First Watch"
@@ -626,21 +624,21 @@ msgstr ""
 "Neutrale Einheiten werden von den Tageszeiten nicht beeinflusst."
 
 # Korrigiert von hendi
-# Korrigiert von chrber 
+# Korrigiert von chrber
 # Korrigiert von VeryUhu
 #: data/help.cfg:154
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
-"Vergesset nicht, dass manche Szenarios unter der Erdoberfläche stattfinden, "
+"Vergesst nicht, dass manche Szenarios unter der Erdoberfläche stattfinden, "
 "wo es immer Nacht ist."
 
 #: data/help.cfg:159
 msgid "Experience and Advancement"
 msgstr "Erfahrung und Stufenanstieg"
 
-# Korrigiert von chrber 
+# Korrigiert von chrber
 # Korrigiert von VeryUhu
 #: data/help.cfg:160
 msgid ""
@@ -650,9 +648,9 @@ msgid ""
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
 "Wenn beide Einheiten einen Kampf überleben, bekommen sie die "
-"Erfahrungspunkte (Abgek. EP) in Höhe der Stufe des Gegners. Wenn eine "
-"Einheit eine andere tötet, bekommt sie wesentlich mehr Erfahrung: 4 für eine "
-"Stufe-0-Einheit, 8 für Stufe 1, 16 für Stufe 2, 24 für Stufe 3 usw."
+"Erfahrungspunkte (Abk. EP) in Höhe der Stufe des Gegners. Wenn eine Einheit "
+"eine andere tötet, bekommt sie wesentlich mehr Erfahrung: 4 für eine Stufe-0-"
+"Einheit, 8 für Stufe 1, 16 für Stufe 2, 24 für Stufe 3 usw."
 
 # Korrigiert von chrber (&VeryUhu)
 #: data/help.cfg:162
@@ -685,13 +683,13 @@ msgstr ""
 "\n"
 "Die meisten Einheiten können bis zur dritten Stufe aufsteigen. Manche können "
 "dagegen nur bis zur zweiten, andere sogar bis auf die vierte Stufe "
-"aufsteigen (z.B. <ref>dst=unit_mage text='Magier'</ref>)."
+"aufsteigen (z.B. <ref>dst=unit_Mage text='Magier'</ref>)."
 
 #: data/help.cfg:169
 msgid "Healing"
 msgstr "Heilung"
 
-# Korrigiert von chrber 
+# Korrigiert von chrber
 # Korrigiert von VeryUhu
 #: data/help.cfg:170
 msgid ""
@@ -736,8 +734,8 @@ msgid ""
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text=Regeneration</ref>: Manche Einheiten (z."
-"B. Trolle) heilen sich in jedem Zug automatisch um 8 Lebenspunkte selbst."
+"<ref>dst=ability_regenerates text=Regeneration</ref>: Manche Einheiten (z.B. "
+"Trolle) heilen sich in jedem Zug automatisch um 8 Lebenspunkte selbst."
 
 # Korrigiert von hendi
 # edited by ivanovic
@@ -774,8 +772,8 @@ msgstr ""
 "Kurierende Einheiten: Einheiten, die über die Fertigkeit "
 "<ref>dst=ability_cures text='Kurieren'</ref> verfügen, heilen bei allen "
 "direkt angrenzenden eigenen oder verbündeten Einheiten jeweils bis zu 8 "
-"Lebenspunkte, bis maxmimal insgesamt 18 Lebenspunkte pro Runde. Auch "
-"kurieren sie eine vergiftete Einheit, heilen diese aber nicht zusätzlich. "
+"Lebenspunkte, bis maximal insgesamt 18 Lebenspunkte pro Runde. Auch kurieren "
+"sie eine vergiftete Einheit, heilen diese aber nicht zusätzlich. "
 
 # Korrigiert von chrber
 # de-fuzzied by VeryUhu
@@ -850,8 +848,8 @@ msgstr ""
 "Stufe. Ihr könnt allerdings so viele Stufen an Einheiten, wie Ihr Dörfer "
 "Euer Eigen nennt, ohne Kosten unterhalten. Für jede Einheitenstufe darüber "
 "hinaus müsst Ihr ein Goldstück zahlen. Wenn Ihr zum Beispiel über 12 "
-"erststufige Einheiten verfügt und 10 Dörfer kontrolliert, müsset ihr 2 "
-"Stücke Gold pro Zug bezahlen."
+"erststufige Einheiten verfügt und 10 Dörfer kontrolliert, müsst Ihr 2 Stücke "
+"Gold pro Zug bezahlen."
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
@@ -999,7 +997,7 @@ msgstr ""
 "über 10% weniger LP.\n"
 "\n"
 "Schnelligkeit ist vor allem bei langsamen Einheiten wie Trollen oder "
-"Schwerer Infantrie eine sinnvolle Charakteristik. In unwegsamem Gelände "
+"Schwerer Infanterie eine sinnvolle Charakteristik. In unwegsamem Gelände "
 "haben schnelle Einheiten oft eine viel größere Mobilität, was Ihr beim "
 "Einsatz Eurer Truppen berücksichtigen solltet. Um Stellungen zu halten, "
 "eignen sie sich aufgrund ihrer verminderten LP allerdings weniger gut."
@@ -1109,7 +1107,7 @@ msgstr ""
 "verursachen diese Kosten nicht.\n"
 "\n"
 "\n"
-"In Kampagnen schließen sich euch manchmal Einheiten aus freihen Stücken an. "
+"In Kampagnen schließen sich euch manchmal Einheiten aus freien Stücken an. "
 "Diese Einheiten sind als loyal. Auch wenn es eine Bezahlung erfordern mag, "
 "sie wieder einzuberufen, so fordern sie doch niemals eine Entlohnung ihrer "
 "Dienste. Daher können sie in langen Kampagnen von großem Wert sein, wenn die "
@@ -1226,7 +1224,7 @@ msgstr "Trank der Heilung"
 
 #: data/items.cfg:339
 msgid "A feeling of well-being overwhelms the drinker."
-msgstr "Ein Gefühl des Wohlergehens durchstömt den Körper des Trinkenden."
+msgstr "Ein Gefühl des Wohlergehens durchströmt den Körper des Trinkenden."
 
 #: data/items.cfg:340
 msgid "You are not worthy of healing."
@@ -1350,7 +1348,7 @@ msgid ""
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
-"Dieses antike Szepter wurde von den Zwergen geschmiedet. Als Symbol der "
+"Dieses antike Zepter wurde von den Zwergen geschmiedet. Als Symbol der "
 "Herrschaft über Wesnoth verleiht es dem Träger die Macht, Feuerbälle auf "
 "seine Feinde zu schleudern."
 
@@ -1359,9 +1357,10 @@ msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
-"Dies ist das Szepter des Feuers. Nur ein wahrer Anwärter auf den Thron von "
-"Wesnoth kann dieses Szepter führen."
+"Dies ist das Zepter des Feuers. Nur ein wahrer Anwärter auf den Thron von "
+"Wesnoth kann dieses Zepter führen."
 
+# FIXME?
 #: data/items.cfg:812
 msgid "Zap~"
 msgstr "~Zap"
@@ -1481,7 +1480,7 @@ msgstr "Blitz"
 #: data/scenarios/multiplayer/Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
 msgstr ""
-"Eine Duellkarte fur superschnelle Spiele. Empfohlene Einstellung: 2 "
+"Eine Duellkarte für superschnelle Spiele. Empfohlene Einstellung: 2 "
 "Einheiten Gold pro Dorf."
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
@@ -1511,7 +1510,7 @@ msgid ""
 "2, 4 for 2v2."
 msgstr ""
 "Viele eng beieinander gelegene Burgen. Eine kleine Karte für ein schnelles "
-"Spiel. Empfolene Einstellung: 2 Einheiten Gold pro Dorf und die Spieler 1 "
+"Spiel. Empfohlene Einstellung: 2 Einheiten Gold pro Dorf und die Spieler 1 "
 "und 3 gegen die Spieler 2 und 4 für ein Spiel 2 gegen 2."
 
 #: data/scenarios/multiplayer/Charge.cfg:7
@@ -1629,7 +1628,7 @@ msgid ""
 "return to that player's end zone with an injury."
 msgstr ""
 "Auf der Karte Wesbowl muss der Spieler seinen Ball in die Endzone seines "
-"Gegners befördern. Der Gegner kann Eure Einheiten nätürlich angreifen. "
+"Gegners befördern. Der Gegner kann Eure Einheiten natürlich angreifen. "
 "Wesbowl wird mit stumpfen Waffen gespielt und Heiler sind zur Hand, weshalb "
 "getötete Einheiten in der eigenen Endzone mit einer Verletzung "
 "wiederauferstehen."
@@ -1809,7 +1808,7 @@ msgid ""
 "corner."
 msgstr ""
 "Da sich Einheiten in dem Zug, in dem sie ausgebildet wurden, nicht bewegen "
-"oder angreifen können, müsst Ihr euren Zug jetzt beenden. Dazu klickt "
+"oder angreifen können, müsst Ihr Euren Zug jetzt beenden. Dazu klickt "
 "einfach auf den »Zug beenden«-Knopf ganz unten rechts."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:102
@@ -1818,7 +1817,7 @@ msgstr "Beendet Euren Zug"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:109
 msgid "You have successfully ended your turn."
-msgstr "Ihr habt euren Zug erfolgreich beendet."
+msgstr "Ihr habt Euren Zug erfolgreich beendet."
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
@@ -1828,13 +1827,13 @@ msgid ""
 "it, then select his destination. In this case, his destination is the forest "
 "next to the Elvish Shaman, Merle."
 msgstr ""
-"Als nächstes müsst Ihr euren Elfenkrieger bewegen. Um eine Einheit zu "
+"Als nächstes müsst Ihr Euren Elfenkrieger bewegen. Um eine Einheit zu "
 "bewegen, wählt Ihr sie zuerst aus und klickt dann auf das Zielfeld. In "
 "diesem Fall ist dies der Wald neben der Elfenschamanin Merle."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "Zieht euren Kämpfer auf ein Merle benachbartes Feld"
+msgstr "Zieht Euren Kämpfer auf ein Merle benachbartes Feld"
 
 # Korrigiert von hendi
 # Korrigiert von VeryUhu
@@ -1844,10 +1843,10 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
-"Ausgezeichnet! Ihr habt euren Elfenkrieger erfolgreich gezogen. Da er "
+"Ausgezeichnet! Ihr habt Euren Elfenkrieger erfolgreich gezogen. Da er "
 "allerdings neben eine gegnerische Einheit gezogen ist, hat er alle "
 "Bewegungspunkte für den Rest des Zuges verloren. Die Ursache dafür liegt in "
-"den sogenannten »Kontrollzonen«."
+"den so genannten »Kontrollzonen«."
 
 # Korrigiert von chrber
 # Korrigiert von VeryUhu
@@ -1946,7 +1945,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:290
 msgid "You have successfully completed the first training scenario."
-msgstr "Ihr habt euer erstes Übungszenario erfolgreich abgeschlossen."
+msgstr "Ihr habt Euer erstes Übungsszenario erfolgreich abgeschlossen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:293
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:287
@@ -2005,7 +2004,7 @@ msgid ""
 "Recall, select your fighter, then select 'OK'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
 msgstr ""
-"Die meisten Szenarien könnt Ihr gewinnen, in dem Ihr alle gegnerischen "
+"Die meisten Szenarien könnt Ihr gewinnen, indem Ihr alle gegnerischen "
 "Anführer besiegt. Jetzt müsst Ihr mich besiegen! Euer Kämpfer aus dem "
 "vorigen Szenario kann Euch dabei helfen. Um ihn einzuberufen, müsst Ihr auf "
 "ein Burgfeld rechts-klicken, »Einberufen« auswählen, den Kämpfer auswählen "
@@ -2166,7 +2165,7 @@ msgstr ""
 "Behandelte Kenntnisse:\n"
 "Einheiten ausbilden\n"
 "Einheiten bewegen\n"
-"Gegenerische Einheiten angreifen\n"
+"Gegnerische Einheiten angreifen\n"
 "Erfahrungspunkte sammeln\n"
 "Szenarien gewinnen"
 
@@ -2216,8 +2215,8 @@ msgstr ""
 "einem Bergfried, so vermag er sie in den umliegenden Burgfeldern "
 "auszubilden. Jede Seite verfügt üblicherweise über einen solchen "
 "Befehlshaber. Normalerweise ist Euer Anführer auch die erste Einheit auf "
-"Euerer Seite. Sie erscheint auf einem Burgfeld. Ihr könnt Euren Anführer "
-"schnell auswählen, in dem Ihr »l« drückt. Stirbt Euer Anführer, so habt Ihr "
+"Eurer Seite. Sie erscheint auf einem Burgfeld. Ihr könnt Euren Anführer "
+"schnell auswählen, indem Ihr »l« drückt. Stirbt Euer Anführer, so habt Ihr "
 "das Spiel verloren. Umgekehrt könnt Ihr die meisten Szenarien gewinnen, in "
 "dem Ihr alle gegnerischen Anführer besiegt."
 
@@ -2364,7 +2363,7 @@ msgstr ""
 "verbraucht haben, besitzen einen grünen Kreis. Einheiten mit einem Rest an "
 "Bewegungspunkten haben einen gelben. Bei Einheiten, die sich nicht mehr "
 "bewegen können, ist er rot. Gegnerische Einheiten haben keinen Energiekreis. "
-"Aliierte Einheiten wie ich, die nicht von Euch kontrolliert werden, haben "
+"Alliierte Einheiten wie ich, die nicht von Euch kontrolliert werden, haben "
 "immer einen blauen Energiekreis. Weiterhin könnt Ihr in den Einstellungen "
 "»Teamfarben anzeigen« auswählen. Dann wird unter jeder Einheit eine Scheibe "
 "in der Farbe der Partei angezeigt."
@@ -2419,7 +2418,7 @@ msgstr ""
 "einer bestimmten Anzahl durchgeführt werden. Diese Werte heißen Schaden und "
 "Schlaganzahl. Sie werden in dieser Reihenfolge unter dem Namen der Attacke "
 "in der Statustabelle der Einheit und neben dem Namen im Angriffsmenü "
-"gezeigt. Um herauszufinden, wieviel Schaden eine Angriff maximal anrichten "
+"gezeigt. Um herauszufinden, wie viel Schaden eine Angriff maximal anrichten "
 "kann, multipliziert Ihr einfach die zwei Zahlen. Mein Blitzschlag-Angriff "
 "zum Beispiel verursacht 14 Schadenspunkte und hat 4 Schläge, so dass ich "
 "maximal 56 Schadenspunkte in einem Kampf anrichten kann."
@@ -2458,9 +2457,9 @@ msgid ""
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
 "Wenn eine Einheit gegen eine andere kämpft, erhält sie Erfahrungspunkte "
-"(Abgek. EP). Die Menge an EP korrespondiert mit der Stufe des Gegners, "
-"welche für gewöhnlich die Stärke repräsentiert. Wenn der Gegner getötet "
-"wird, erhält die Einheit das 8-fache der Stufe des Gegners in EP."
+"(Abk. EP). Die Menge an EP korrespondiert mit der Stufe des Gegners, welche "
+"für gewöhnlich die Stärke repräsentiert. Wenn der Gegner getötet wird, "
+"erhält die Einheit das 8-fache der Stufe des Gegners in EP."
 
 #: data/scenarios/tutorial/utils.cfg:91
 msgid "What happens when a unit advances?"
@@ -2582,7 +2581,7 @@ msgid ""
 msgstr ""
 "Wenn Ihr ein Szenario gewinnt, werden automatisch all Eure Einheiten "
 "vollständig geheilt. Für die theoretisch verbleibenden Züge müsst Ihr keinen "
-"Unterhalt mehr zahlen. Wenn eure Armee nach eurem Sieg in dem Gebiet "
+"Unterhalt mehr zahlen. Wenn Eure Armee nach Eurem Sieg in dem Gebiet "
 "verbleibt, schließen sich euch automatisch alle Dörfer an. Wie sonst auch, "
 "verliert Ihr zwischen den Szenarien allerdings 20% Eures Goldes."
 
@@ -2673,7 +2672,7 @@ msgstr "Welche verschiedenen Charakteristika kann meine Einheit besitzen?"
 
 #: data/scenarios/tutorial/utils.cfg:115
 msgid "How much gold do my units cost?"
-msgstr "Wieviel Gold kosten meine Einheiten?"
+msgstr "Wie viel Gold kosten meine Einheiten?"
 
 # Korrigiert von VeryUhu
 #: data/scenarios/tutorial/utils.cfg:115
@@ -2712,10 +2711,10 @@ msgid ""
 msgstr ""
 "Jedes Szenario beginnt Ihr mit einem gewissen Prozentsatz des Goldes, mit "
 "dem Ihr das vorige Szenario abgeschlossen habt. Ihr beginnt mit mindestens "
-"100 Gold. Wieviel Gold Ihr besitzt, wird neben dem Gold-Icon in der "
+"100 Gold. Wie viel Gold Ihr besitzt, wird neben dem Gold-Icon in der "
 "Statusleiste angezeigt. Am Anfang eines Szenarios bekommt Ihr zwei "
 "Goldstücke pro Zug. Da Ihr gewöhnlich mehr Gold benötigt, solltet ihr Dörfer "
-"unter eure Kontrolle bringen. Jedes Dorf bringt euch ein weiteres Goldstück "
+"unter Eure Kontrolle bringen. Jedes Dorf bringt euch ein weiteres Goldstück "
 "pro Zug."
 
 # Korrigiert von VeryUhu
@@ -2806,15 +2805,17 @@ msgid ""
 msgstr ""
 "Um die Eigenschaften eines Geländes für eine bestimmte Einheit "
 "herauszufinden, klickt Ihr mit der rechten Maustaste auf die Einheit, wählt "
-"»Einheitenbeschreibung« und seht Euch dann den Abschnitt »Gelände-"
-"Modifikatoren« an. Wenn Ihr wissen wollt, welches Gelände ein bestimmtes "
-"Feld besitzt, bewegt den Cursor dorthin und schaut in die obere linke "
-"Bildschirmecke. Dort steht (in dieser Reihenfolge): Die Art des Geländes, "
-"die Koordinaten des Feldes, der Verteidigungswert der ausgewählten Einheit "
-"und die Anzahl der Bewegungspunkte, die es kostet, um dorthin zu gelangen."
+"»Einheitenbeschreibung« und seht Euch dann den Abschnitt "
+"»Geländemodifikatoren« an. Wenn Ihr wissen wollt, welches Gelände ein "
+"bestimmtes Feld besitzt, bewegt den Cursor dorthin und schaut in die obere "
+"linke Bildschirmecke. Dort steht (in dieser Reihenfolge): Die Art des "
+"Geländes, die Koordinaten des Feldes, der Verteidigungswert der ausgewählten "
+"Einheit und die Anzahl der Bewegungspunkte, die es kostet, um dorthin zu "
+"gelangen."
 
 # hmm...
 # Clawing it! :) - Poliert von VeryUhu
+# Einheitennamen angepasst - chrber
 #: data/scenarios/tutorial/utils.cfg:130
 msgid ""
 "Each unit has a certain resistance against each attack type. This resistance "
@@ -2827,12 +2828,12 @@ msgid ""
 msgstr ""
 "Die Resistenz einer Einheit gegen eine Schadensart wird in Form einer "
 "Prozentzahl angezeigt. Dieser Prozentsatz wird vom Schaden der betreffenden "
-"Waffe abgezogen. Wenn zum Beispiel ein Elfen-Aufklärer von einem Elfen-"
-"Bogenschützen angegriffen wird, ist der Schaden um 20% höher als gewöhnlich, "
-"da Elfen-Aufklärer gegen Stich eine um 20% verringerteResistenz ('-20%') "
-"haben. Der Resistenzbonus bzw. -malus addiert sich zu anderen Boni oder "
-"Mali, wie sie durch Tageszeiten zustande kommen. Zwei Mali von jeweils -50% "
-"ergeben also einen Gesamtmalus von -100%."
+"Waffe abgezogen. Wenn zum Beispiel ein Elfenspäher von einem "
+"Elfenbogenschützen angegriffen wird, ist der Schaden um 20% höher als "
+"gewöhnlich, da Elfenspäher gegen Stich eine um 20% verringerte Resistenz ('-"
+"20%') haben. Der Resistenzbonus bzw. die Resistenzstrafe addiert sich zu "
+"anderen Boni oder Strafen, wie sie durch Tageszeiten zustande kommen. Zwei "
+"Strafen von jeweils -50% ergeben also eine Gesamtstrafe von -100%."
 
 #: data/scenarios/tutorial/utils.cfg:130
 msgid "How does resistance affect attack damage?"
@@ -2872,7 +2873,7 @@ msgid ""
 "the name of the specialty."
 msgstr ""
 "Jede Besonderheit hat eine andere Auswirkung, das ist schließlich ihr Zweck. "
-"Bewegt euren Cursor auf den Namen einer Besonderheit, um eine Beschreibung "
+"Bewegt Euren Cursor auf den Namen einer Besonderheit, um eine Beschreibung "
 "zu bekommen."
 
 # Korrigiert von VeryUhu
@@ -2909,8 +2910,8 @@ msgid ""
 "while next to a unit of higher level with leadership."
 msgstr ""
 "Es gibt viele Besonderheiten. Sie alle kennen zu lernen, ist das Salz in der "
-"Suppe. Die verbreitesten Besonderheiten sind »magisch« und "
-"»Führungsqualitäten«. Magische Attacken haben eine 70%tige "
+"Suppe. Die verbreitetsten Besonderheiten sind »magisch« und "
+"»Führungsqualitäten«. Magische Attacken haben eine 70%ige "
 "Trefferwahrscheinlichkeit, unabhängig von dem Gelände, auf dem der "
 "Verteidiger steht. Einheiten, die neben einer höherstufigen Einheit mit "
 "Führungsqualitäten stehen, verursachen mehr Schaden."
@@ -3463,7 +3464,7 @@ msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
-"Niedrig stufige Truppen genießen Vorteile im Kampf, wenn sie an der Seite "
+"Niedrigstufige Truppen genießen Vorteile im Kampf, wenn sie an der Seite "
 "einer Einheit mit Führungsqualitäten kämpfen."
 
 # Korrigiert von VeryUhu
@@ -3495,7 +3496,7 @@ msgstr ""
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
-msgstr "Leset die Liste der Tastenkombinationen im Einstellungsmenü."
+msgstr "Lest die Liste der Tastenkombinationen im Einstellungsmenü."
 
 # Korrigiert von VeryUhu
 #: data/tips.cfg:26
@@ -3523,7 +3524,7 @@ msgid ""
 "needing to attack anything themselves."
 msgstr ""
 "Unterstützt Eure angreifenden Einheiten durch Heiler - diese können den "
-"Kampf zu Eueren Gunsten wenden, ohne selbst anzugreifen."
+"Kampf zu Euren Gunsten wenden, ohne selbst anzugreifen."
 
 # Korrigiert von VeryUhu
 #: data/tips.cfg:29
@@ -3532,8 +3533,8 @@ msgid ""
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
-"Der »Verlangsamungs«-Angriff veringert die Anzahl gegnerischer BP und senkt "
-"ausserdem die Anzahl der gegnerischen Angriffe um 1.Daher ist er gegen "
+"Der »Verlangsamungs«-Angriff verringert die Anzahl gegnerischer BP und senkt "
+"außerdem die Anzahl der gegnerischen Angriffe um 1. Daher ist er gegen "
 "Einheiten mit wenigen, aber mächtigen Angriffen sehr wirkungsvoll."
 
 # Korrigiert von Rhonda
@@ -3735,7 +3736,7 @@ msgstr ""
 "zurück.\n"
 "Ein Heiler kann bei allen Einheiten, um die er sich kümmert, bis zu 8 LP pro "
 "Runde heilen.\n"
-"Vergiftungen kann ein Heiler aber nicht aufheben.Dies kann nur durch eine "
+"Vergiftungen kann ein Heiler aber nicht aufheben. Dies kann nur durch eine "
 "Einheit mit der Fähigkeit »kurieren« oder durch den Aufenthalt in einem Dorf "
 "geschehen."
 
@@ -3917,7 +3918,7 @@ msgstr ""
 "Hinterlistiger Angriff:\n"
 "Hinterlistig schleicht sich diese Einheit in den Rücken des Gegners, um ihm "
 "bei einem Angriff den doppelten Schaden zuzufügen. Dies gelingt nur, wenn "
-"der Feind von einer weiteren, auf der entgegengesetzen Seite stehenden "
+"der Feind von einer weiteren, auf der entgegengesetzten Seite stehenden "
 "Einheit abgelenkt wird. Alliierte Einheiten zählen hierbei nicht. "
 
 # edited by ivanovic
@@ -4011,7 +4012,7 @@ msgid ""
 msgstr ""
 "Vergiften:\n"
 "Mit Gift bestrichene Waffen können bei einem Treffer das Ziel dauerhaft "
-"vergiften. Dadurch veliert das Opfer pro Runde 8 LP, bis es geheilt wird "
+"vergiften. Dadurch verliert das Opfer pro Runde 8 LP, bis es geheilt wird "
 "oder seine LP auf 1 reduziert wurden."
 
 # edited by ivanovic
@@ -4192,7 +4193,7 @@ msgstr "Alter Waldschrat"
 #: data/units/Ancient_Wose.cfg:7 data/units/Elder_Wose.cfg:7
 #: data/units/Wose.cfg:7
 msgid "ambush,regenerates"
-msgstr "Hinterhalt, Regeneration"
+msgstr "Hinterhalt,Regeneration"
 
 # Poliert von VeryUhu
 #: data/units/Ancient_Wose.cfg:17
@@ -4613,7 +4614,7 @@ msgid ""
 "Shooters' by their unfortunate enemies, these abominations are a terror to "
 "all who live."
 msgstr ""
-"Diese wandelnden Knochenhaufem wurden von ihren Herren mit einem wahrhaft "
+"Diese wandelnden Knochenhaufen wurden von ihren Herren mit einem wahrhaft "
 "makaberen Arsenal an Waffen ausgestattet. Anstelle normaler Pfeile tragen "
 "sie Knochen in ihren Köchern. Sie werden deshalb von ihren "
 "bemitleidenswerten Feinden auch als Knochenbogenschützen bezeichnet. Für die "
@@ -4770,7 +4771,7 @@ msgid "Giant Spider"
 msgstr "Riesenspinne"
 
 # Korrigiert von hendi
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: data/units/Cave_Spider.cfg:16
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
@@ -4863,7 +4864,7 @@ msgstr "versteinern"
 msgid "Commander"
 msgstr "Feldherr"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: data/units/Commander.cfg:20 data/units/Commander.cfg:107
 #: data/units/Noble_Commander.cfg:24
 msgid ""
@@ -4884,7 +4885,7 @@ msgstr ""
 msgid "Cuttle Fish"
 msgstr "Tintenfisch"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: data/units/Cuttle_Fish.cfg:16
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
@@ -4930,7 +4931,7 @@ msgstr "Frostwelle"
 msgid "female^Dark Queen"
 msgstr "Dunkle Königin"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: data/units/Dark_Queen.cfg:17
 msgid ""
 "The evil queen mother Asheviere has terrorized Wesnoth for many years. Her "
@@ -4958,7 +4959,7 @@ msgid ""
 "Liches. Because they retain their humanity, they do not fear holy magic. "
 msgstr ""
 "Schwarze Magier sind dem Pfad der Dunkelheit nicht so weit gefolgt, um in "
-"ein unotetes Dasein überzugehen. Stattdessen haben sie ihre fortgeführten "
+"ein untotes Dasein überzugehen. Stattdessen haben sie ihre fortgeführten "
 "Studien der dunklen Künste stärker gemacht, aber sie sind nicht so mächtig "
 "wie ein Lich. Da sie ihre menschliche Seite behalten haben, fürchten sie "
 "keinerlei heilige Magie."
@@ -5038,9 +5039,9 @@ msgid ""
 msgstr ""
 "Gwitis Wanderungen auf dem dunklen Pfad gaben ihm Kräfte über die "
 "normalerweise kein Sterblicher verfügt. Aber gegen einen furchtbaren Preis: "
-"Die untoten, denen er seine Seele gab beanspruchen nun auch seine sterbliche "
-"Hülle für sich. Es ist nur eine Frage der Zeit, bis er selbst ein Untoter "
-"ist und Angst und Schrecken unter allen Lebenden verbreiten wird."
+"Die Untoten, denen er seine Seele gab, beanspruchen nun auch seine "
+"sterbliche Hülle für sich. Es ist nur eine Frage der Zeit, bis er selbst ein "
+"Untoter ist und Angst und Schrecken unter allen Lebenden verbreiten wird."
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
@@ -5053,10 +5054,10 @@ msgid ""
 "becoming undead themselves. With time, they may become fully undead, and "
 "feared by all alike."
 msgstr ""
-"Nachdem sie zuviel Zeit mit dem Herumspielen mit verbotener Magie und "
-"dunkelen Künsten verbracht haben, beginnen diese Magier einen furchtbaren "
-"Preis zu zahlen: Demi-Lichs verlieren ihren menschlichen Körper.Mit der Zeit "
-"kann es passieren, dass sie selbst zu Untoten werden, Gefürchtet selbst "
+"Nachdem sie zu viel Zeit mit dem Herumspielen mit verbotener Magie und "
+"dunklen Künsten verbracht haben, beginnen diese Magier einen furchtbaren "
+"Preis zu zahlen: Demi-Lichs verlieren ihren menschlichen Körper. Mit der "
+"Zeit kann es passieren, dass sie selbst zu Untoten werden, Gefürchtet selbst "
 "unter Ihresgleichen."
 
 #: data/units/Direwolf_Rider.cfg:3
@@ -5069,7 +5070,7 @@ msgid ""
 "giant wolves with poisoned claws. These Goblins are fearsome and merciless "
 "enemies."
 msgstr ""
-"Neben den Bergwölfen leben in den Bergen noch die sogenannten "
+"Neben den Bergwölfen leben in den Bergen noch die so genannten "
 "Schreckenswölfe. Diese Wölfe zählen zu den gefährlichsten Raubtieren von "
 "Wesnoth, da sie zu ihrer ungezähmten Wildheit noch über giftige Klauen "
 "verfügen. Man muss wohl nicht nur geschickt sondern auch verrückt genug "
@@ -5103,8 +5104,7 @@ msgstr ""
 "mit der Armbrust ausgebildet, und mit kräftigeren Pferden ausgestattet. Gut "
 "gepanzert und geschickt im Umgang mit ihren Schwertern können diese Krieger "
 "vorwärtsstürmen und den Boden den sie erobern verteidigen. Ihre Mobilität "
-"und Unverwüstlichbarkeit machen sie zu wertvollen Einheiten auf dem "
-"Schlachtfeld."
+"und Unverwüstbarkeit machen sie zu wertvollen Einheiten auf dem Schlachtfeld."
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
@@ -5216,7 +5216,7 @@ msgstr ""
 "Adern der Generäle der Armee der Draken fließt. Niemand wird dies ernsthaft "
 "anzweifeln, wenn er die schiere Verwüstung, die diesen Wesen hinterlassen, "
 "gesehen hat... Doch gibt es kaum jemanden, der eine Begegnung mit diesen "
-"feuerspeiend und schwertschwingenden Draken überlebt hat."
+"feuerspeienden und schwertschwingenden Draken überlebt hat."
 
 # edited by ivanovic
 #: data/units/Drake_Flare.cfg:3
@@ -5232,7 +5232,7 @@ msgid ""
 "greatest of their kind."
 msgstr ""
 "Die Lodernden Draken beanspruchen für sich, die Anführer ihrer Art zu sein. "
-"Auch wenn sie die Beherschung ihrer inneren Flamme nie zur Meisterschaft "
+"Auch wenn sie die Beherrschung ihrer inneren Flamme nie zur Meisterschaft "
 "bringen werden, so liegen ihre Begabungen eher im Bereiche des "
 "Schwertkampfes, wo sie immerhin zu den Besten ihrer Rasse gehören."
 
@@ -5393,7 +5393,7 @@ msgid ""
 "allows them to attack and parry with only one hand, while they wield a "
 "crossbow in the other to shoot distant foes."
 msgstr ""
-"Duellanten sind Meister des Schwertkampfs. Ihr gutes Können mit dem Rapier "
+"Duellanten sind Meister des Schwertkampfes. Ihr Können mit dem Rapier "
 "erlaubt es ihnen, mit einer Hand anzugreifen und abzuwehren, während sie in "
 "der anderen Hand eine Armbrust halten, mit der sie auf entfernte Gegner "
 "schießen können."
@@ -5478,9 +5478,9 @@ msgid ""
 "lot of damage, and hurling their heavy spears into the enemy."
 msgstr ""
 "Die widerstandsfähigsten Zwerge treten dem Zwergenheer als Gardisten bei. "
-"Langsam sind und ohne starken Angriff , bewachen sie die Flanken des Heeres, "
+"Langsam sind und ohne starken Angriff, bewachen sie die Flanken des Heeres, "
 "da sie durch ihre Widerstandskraft sehr vielen Angriffen standhalten können. "
-"Ausserdem schleudern sie ihre schweren Speere in die Reihen der Gegner."
+"Außerdem schleudern sie ihre schweren Speere in die Reihen der Gegner."
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -5598,7 +5598,7 @@ msgid ""
 "more deadly."
 msgstr ""
 "Die berühmten Zwergen Donnerwächter tragen geheimnisvolle und gefürchtete "
-"Waffen,geschmiedet von  den Zwergenwaffenmeistern, Meistern der geheimen "
+"Waffen, geschmiedet von den Zwergenwaffenmeistern, Meistern der geheimen "
 "arkanen Technologie. Obwohl sie nicht schneller als die gewöhnlichen "
 "Donnerer sind, ist ihr Angriff viel tödlicher."
 
@@ -5653,7 +5653,7 @@ msgid ""
 "can quickly heal themselves in the face of tremendous injuries."
 msgstr ""
 "Ältere Waldschrate sind enorm gewachsen, sie überragen die meisten ihrer "
-"Gegner und können diese mit ihren Hieben zermalmen.Es ist ein "
+"Gegner und können diese mit ihren Hieben zermalmen. Es ist ein "
 "furchteinflößender Anblick wenn sie aus dem Wald auf einen zukommen. Sie "
 "sind noch immer sehr langsam und ungelenkig, aber inzwischen so gut wie "
 "immun gegen Angriffe mit Pfeilen - doch noch immer leicht entflammbar. Weil "
@@ -5723,9 +5723,9 @@ msgid ""
 "amounts of damage in close combat. Master fighters, they are also adept with "
 "the bow, able to inflict damage on their enemies from both near and far."
 msgstr ""
-"Elfenschwertmeister sind Meister des Schwertkampfs. Als meisterhafte Kämpfer "
-"sind sie auch kundig Umgang mit Pfeil und Bogen, fähig ihren Gegnern auf "
-"jede Distanz ernsthaft zu verletzen. "
+"Elfenschwertmeister sind Meister des Schwertkampfes. Als meisterhafte "
+"Kämpfer sind sie auch kundig Umgang mit Pfeil und Bogen, fähig ihren Gegnern "
+"auf jede Distanz ernsthaft zu verletzen. "
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
@@ -5996,7 +5996,7 @@ msgid ""
 msgstr ""
 "Elfenscharfschützen sind die besten aller Bogenschützen in ganz Wesnoth. Sie "
 "sind unglaublich zielgenau und haben immer eine Trefferwahrscheinlichkeit "
-"von mindestens 60% , selbst wenn sie sehr schnell hintereinander schießen. "
+"von mindestens 60%, selbst wenn sie sehr schnell hintereinander schießen. "
 "Sie sind bestens geeignet, Gegner auszulöschen die sich verschanzt haben."
 
 #: data/units/Elvish_Sharpshooter.cfg:98
@@ -6034,7 +6034,7 @@ msgid ""
 "upon bursts of chilling ethereal wind to smite those who oppose them."
 msgstr ""
 "Sie haben das Studium der Heilkunst vernachlässigt um sich mehr der "
-"verbesserung ihrer offensiven Kräfte zu widmen. Elfenzauberinnen sind sehr "
+"Verbesserung ihrer offensiven Kräfte zu widmen. Elfenzauberinnen sind sehr "
 "gut im Fernkampf, ihr Verstrickungszauber ist merklich effektiver als vorher "
 "und sie sind in der Lage eisige Winde herbeirufen um die niederzuschlagen, "
 "die es wagen sich ihnen in den Weg zu stellen."
@@ -6086,7 +6086,7 @@ msgid ""
 "day."
 msgstr ""
 "Jung und stürmisch stürzen sich die Kämpfer mit ihrem Schwert in die "
-"Schlacht. Obwohl sie leicht verletzbar sind, haben sie das Potential eines "
+"Schlacht. Obwohl sie leicht verletzbar sind, haben sie das Potenzial eines "
 "Tages große Krieger zu werden."
 
 #: data/units/Fire_Dragon.cfg:3
@@ -6106,7 +6106,7 @@ msgstr ""
 "Feueratem des Drachens ist sehr nützlich im Kampf, außerdem kann er durch "
 "seinen Biss furchtbare Wunden reißen oder seine Gegner mit seinem Schwanz "
 "zerquetschen. Feuerdrachen sind listig und grausam. Oft suchen sie sich "
-"Diener-Kreaturen , denen sie mit ihrer Führungsstärke zum Sieg verhelfen."
+"Diener-Kreaturen, denen sie mit ihrer Führungsstärke zum Sieg verhelfen."
 
 #: data/units/Fire_Dragon.cfg:21
 msgid "bite"
@@ -6251,7 +6251,7 @@ msgid ""
 msgstr ""
 "Riesenschlammkriecher sind ausgewachsene Schlammkriecher, sie sind magische "
 "Wesen die aus Erde und Wasser bestehen. Sie greifen an indem sie siedendes "
-"Wasser auf ihre Feinde spritzen oder in dem sie mit ihren Schlammfäusten auf "
+"Wasser auf ihre Feinde spritzen oder indem sie mit ihren Schlammfäusten auf "
 "sie losgehen."
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Skeleton_Archer.cfg:24
@@ -6527,7 +6527,7 @@ msgid ""
 msgstr ""
 "Die besten unter den Männer der Steppe, die berittenen Fürsten sind die "
 "Köpfe ihrer Sippen und werden von allen respektiert, egal ob Freund oder "
-"Feind. Ihr Schwert kann so gut wie jeden gewöhnlichen Gegener töten und ihr "
+"Feind. Ihr Schwert kann so gut wie jeden gewöhnlichen Gegner töten und ihr "
 "Morgenstern zerschmettert jene, die übrig bleiben."
 
 #: data/units/Horse_Lord.cfg:44 data/units/Mounted_Captain.cfg:47
@@ -6824,7 +6824,7 @@ msgid ""
 msgstr ""
 "Junge Meerjungfrauen werden sehr früh schon in die Wasserzauber ihres Volkes "
 "eingeweiht, ungeachtet ihres zarten Körpers macht sie dies zu "
-"furchteregenden Gegnern. Sie können riesige Wassermassen auf ihre Feinde "
+"furchterregenden Gegnern. Sie können riesige Wassermassen auf ihre Feinde "
 "niederprasseln lassen um sie davon zu spülen."
 
 #: data/units/Mermaid_Priestess.cfg:3
@@ -6837,7 +6837,7 @@ msgid ""
 "leaves them quite capable of ministering to the wounds of their comrades, as "
 "well as being a potent defense against the unworldly."
 msgstr ""
-"Die erfahreren Meerjungfrauen begeben sich oft auf den Pfad des heiligen "
+"Die erfahreneren Meerjungfrauen begeben sich oft auf den Pfad des heiligen "
 "Studiums. Dabei lernen sie die Wunden ihrer Kampfgefährten zu heilen und "
 "werden zu einer starken Verteidigung gegen Untote."
 
@@ -7004,12 +7004,12 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
-"Die Schlangenartigen Nagas sind eine der wenigen Rassen die über eine hohe "
-"Moblität im Wasser verfügen. Das erlaubt es ihnen in ihrer eigenen Welt, "
+"Die schlangenartigen Nagas sind eine der wenigen Rassen die über eine hohe "
+"Mobilität im Wasser verfügen. Das erlaubt es ihnen, in ihrer eigenen Welt, "
 "fernab von den Landbewohnern zu leben. Trotzdem sind sie keine wahren "
 "Meereswesen und ihre Unfähigkeit unter Wasser zu atmen lässt sie mit bangen "
 "Blick in Richtung  Meeresgrund schauen. Sie sind klein und etwas "
-"gebrechlich , aber flinker und geschickter als die meisten ihrer Feinde."
+"gebrechlich, aber flinker und geschickter als die meisten ihrer Feinde."
 
 #: data/units/Naga-Fighter.cfg:39
 msgid "Nagini Fighter"
@@ -7148,7 +7148,7 @@ msgid ""
 "Commanders one day."
 msgstr ""
 "Jung und stürmisch stürzen sich die Kämpfer mit ihrem Schwert in die "
-"Schlacht. Obwohl sie leicht verletzbar sind, haben sie das Potential eines "
+"Schlacht. Obwohl sie leicht verletzbar sind, haben sie das Potenzial eines "
 "Tages große Krieger zu werden."
 
 #: data/units/Noble_Lord.cfg:3
@@ -7220,7 +7220,7 @@ msgstr ""
 "nur mit Herablassung behandelt. In ist es verwehrt in eine höhere "
 "Kriegerkaste aufzusteigen. Trotz allem sind die Orkschützen ein wichtiger "
 "Bestandteil der orkischen Armee, da das Verwenden eines Bogens "
-"Geschicklichkeit vorraussetzt, über die viele der orkischen Krieger nicht "
+"Geschicklichkeit voraussetzt, über die viele der orkischen Krieger nicht "
 "verfügen."
 
 #: data/units/Orcish_Assassin.cfg:3
@@ -7262,7 +7262,7 @@ msgstr ""
 "Als eine Meute Orks ein Dorf der Menschen überfiel, erbeuteten sie neben "
 "vielen anderen Dingen eine Kiste mit Armbrüsten. Da sie damit nichts "
 "anfangen konnten, wurde diese Kiste achtlos eingelagert. Schließlich "
-"entdeckte einer der Orkschützen die darin enhaltenen Armbrüste und erprobte "
+"entdeckte einer der Orkschützen die darin enthaltenen Armbrüste und erprobte "
 "diese Schusswaffe. Er stellte fest, dass diese Waffe durchschlagskräftiger "
 "war, als ein einfacher Bogen. Jedem Orkschützen, der die Kunst des "
 "Bogenschießens gemeistert hat, wird seither eine Armbrust verliehen."
@@ -7287,8 +7287,8 @@ msgstr ""
 "genannten Truppen bilden das Rückgrat der orkischen Armee. Orks werden von "
 "Kindesbeinen mit dem Kriegshandwerk vertraut gemacht und können dadurch "
 "stärkere Hiebe austeilen, als ihre elfischen oder menschlichen Gegenstücke. "
-"Zu allem Überfluss bedarf es mehrer Treffer, um einen Grunzer in die Knie zu "
-"zwingen. Da Grunzer aber nur in der Nähe ihrer Stämme ausgebildet wurden, "
+"Zu allem Überfluss bedarf es mehrerer Treffer, um einen Grunzer in die Knie "
+"zu zwingen. Da Grunzer aber nur in der Nähe ihrer Stämme ausgebildet wurden, "
 "sind sie hügeliges Gelände gewohnt und kommen auf weiten Ebenen oder in  "
 "dichten Wäldern nicht so gut voran."
 
@@ -7304,12 +7304,12 @@ msgid ""
 "powerful fighters. Their natural leadership skills make them very precious "
 "in the battle: if the Ruler is lost, so is the battle."
 msgstr ""
-"Orkhäuptlinge genießen neben dem Schamanen das höchte Ansehen in einem "
+"Orkhäuptlinge genießen neben dem Schamanen das höchste Ansehen in einem "
 "Orkstamm. Sie teilen den einzelnen Orks ihre Aufgaben zu, handeln mit "
 "anderen Stämmen die Jagdgebiete aus oder führen, wenn es nötig werden "
 "sollte, ihre Untergebenen in den Krieg. Die Position des Häuptlings erlangt "
-"ein herausfordender Ork meist durch einen rituellen Zweikampf, seltener "
-"durch den natürlichen Tod des alten Häuptlings. Da sich Häutplinge recht oft "
+"ein herausfordernder Ork meist durch einen rituellen Zweikampf, seltener "
+"durch den natürlichen Tod des alten Häuptlings. Da sich Häuptlinge recht oft "
 "einer Herausforderung stellen müssen, beherrschen sie den Umgang mit dem "
 "Schwert wie kein anderer. Sie tragen zusätzlich einen Bogen bei sich, dies "
 "aber mehr aus Notwendigkeit als ihn zum Angriff einzusetzen."
@@ -7389,13 +7389,14 @@ msgstr ""
 msgid "Orcish Slayer"
 msgstr "Orkschlächter"
 
+# FIXME: falsche Uebersetzung
 #: data/units/Orcish_Slayer.cfg:16
 msgid ""
 "Orcish Slayers are fast and nimble, competent in short- and long-ranged "
 "combat, and use a poison attack. They make formidable opponents."
 msgstr ""
 "Sobald ein Orkmeuchler eine genügend große Zahl an Opfern auf dem Gewissen "
-"hat, wird ihm von der Gilde der Meuchler der Titel eines Schlächers "
+"hat, wird ihm von der Gilde der Meuchler der Titel eines Schlächters "
 "verliehen. Auf dem Schlachtfeld ziehen Schlächter eine unübersehbare Spur "
 "des Leides durch die Reihen ihrer Gegner, indem sie sie hinterrücks mit "
 "ihrem Dolch niederstrecken oder aus der Ferne mit ihren vergifteten Dolchen "
@@ -7405,6 +7406,7 @@ msgstr ""
 msgid "Orcish Sovereign"
 msgstr "Orkheerführer"
 
+# FIXME: falsche Uebersetzung
 #: data/units/Orcish_Sovereign.cfg:18
 msgid ""
 "Orcish Sovereign are the chiefs of their tribe. They make the important "
@@ -7413,13 +7415,13 @@ msgid ""
 "powerful fighters. Their natural leadership skills make them very precious "
 "in the battle: if the Ruler is lost, so is the battle."
 msgstr ""
-"Diesem Ork wurde vom Grossen Rat die Ehre und die Aufgabe übertragen, die "
-"Grosse Horde anzuführen. Alle übrigen Orkhäuptlinge und damit ihre Stämme "
+"Diesem Ork wurde vom Großen Rat die Ehre und die Aufgabe übertragen, die "
+"Große Horde anzuführen. Alle übrigen Orkhäuptlinge und damit ihre Stämme "
 "beugen sich den Befehlen des Heerführers und folgen ihm in die Schlacht. "
 "Wenn sich blutrot über dem Schlachtfeld das Banner der Schwarzaugen erhebt, "
 "geraten die orkischen Krieger schnell in einen euphorischen Kampfrausch und "
 "wehe denen, die sich diesen Orks gegenübersehen. Bisher hat nur Karun "
-"Schwarzauge alle Stämme unter seinem Banner vereint, doch der Grosse Rat hat "
+"Schwarzauge alle Stämme unter seinem Banner vereint, doch der Große Rat hat "
 "einen weiteren Ork ins Auge gefasst, der sein Nachfolger werden könnte..."
 
 #: data/units/Orcish_Warlord.cfg:3
@@ -7693,8 +7695,8 @@ msgid ""
 "scouts as the can navigate through rough terrain and around opponents. The "
 "best Saurians go on to become Saurian Warriors."
 msgstr ""
-"Saurianer sind gut im Umgang mit ihren Speeren. Trotz ihre letargischen "
-"Kaltblütigen Herkunft und ihrer relativen Schwäche sind sie sehr wertvoll "
+"Saurianer sind gut im Umgang mit ihren Speeren. Trotz ihre lethargischen "
+"kaltblütigen Abstammung und ihrer relativen Schwäche sind sie sehr wertvoll "
 "als Aufklärer, da sie sich in schwerem Gelände und an Feinden vorbei bewegen "
 "können. Die besten Saurianer werden Saurianische Krieger."
 
@@ -7711,8 +7713,8 @@ msgid ""
 "this fact. The best Ambushers go on to become Saurian Flankers"
 msgstr ""
 "Saurianische Hinterlistlinge sind sehr gut im Umgang mit ihren Speeren "
-"vertraut. Trotz ihrer letargischen kaltblütigen Abstammung und ihrer "
-"relativen Schwäche sind sie sehr wervoll als Aufklärer, da sie sich in "
+"vertraut. Trotz ihrer lethargischen kaltblütigen Abstammung und ihrer "
+"relativen Schwäche sind sie sehr wertvoll als Aufklärer, da sie sich in "
 "schwerem Gelände und an Feinden vorbei bewegen können. Saurianische "
 "Hinterlistlinge nutzen diese Stärke aus um effektiv kämpfen zu können. Die "
 "besten von ihnen werden zu Saurianischen Flänklern."
@@ -7730,8 +7732,8 @@ msgid ""
 "this fact."
 msgstr ""
 "Saurianische Flänkler sind bestens im Umgang mit dem Speer vertraut. Trotz "
-"ihrer letargischen Kaltblütigen Abstammung und ihrer relativen Schwäche sind "
-"sie sehr wertvoll als Aufklärer, da sie sich in schwerem Gelände und an "
+"ihrer lethargischen kaltblütigen Abstammung und ihrer relativen Schwäche "
+"sind sie sehr wertvoll als Aufklärer, da sie sich in schwerem Gelände und an "
 "Feinden vorbei bewegen können. Saurianische Flänkler nutzen diese Stärke aus "
 "um effektiv kämpfen zu können."
 
@@ -7768,10 +7770,10 @@ msgid ""
 "opponents. The best Skirmishers go on to become Saurian Ambushers."
 msgstr ""
 "Saurianische Plänkler sind gut im Umgang mit ihrem Speer. Trotz ihrer "
-"letargischen Abstammung von den Kaltblütern und ihrer relativen Schwäche "
-"sind sie sehr wertvoll als Aufklärer, da sie sich auch in schwerem Gelände "
-"und an Feinden vorbei bewegen können. Die besten Plänkler werden eines Tages "
-"zu Sarianischen Hinterlistlingen."
+"lethargischen kaltblütigen Abstammung und ihrer relativen Schwäche sind sie "
+"sehr wertvoll als Aufklärer, da sie sich auch in schwerem Gelände und an "
+"Feinden vorbei bewegen können. Die besten Plänkler werden eines Tages zu "
+"Saurianischen Hinterlistlingen."
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
@@ -7798,10 +7800,10 @@ msgid ""
 "their allies regardless of terrain or opposition. In addition to healing "
 "they possess knowledge of cold magic."
 msgstr ""
-"Trotz ihrer letargischen Kaltblütigen Herkunft und ihrer relativen Schwäche "
-"sind Sauriansiche Tribalisten wertvoll als Heiler, da sie die Wunden ihrer "
-"Verbündeten heilen können unabhängig auf welchen Gelände sie sich befinden. "
-"Außerdem verfügen sie über die Kräfte der Kältemagie."
+"Trotz ihrer lethargischen kaltblütigen Abstammung und ihrer relativen "
+"Schwäche sind Saurianische Tribalisten wertvoll als Heiler, da sie die "
+"Wunden ihrer Verbündeten heilen können unabhängig auf welchen Gelände sie "
+"sich befinden. Außerdem verfügen sie über die Kräfte der Kältemagie."
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
@@ -7816,8 +7818,8 @@ msgid ""
 "this fact."
 msgstr ""
 "Saurianische Krieger sind gut im Umgang mit dem Speer ausgebildet. Trotz "
-"ihrer letargischen Kaltblütigen Abstammung und ihrer relativen Schwäche sind "
-"sie sehr wertvoll als Aufklärer, da sie sich in schwerem Gelände und an "
+"ihrer lethargischen kaltblütigen Abstammung und ihrer relativen Schwäche "
+"sind sie sehr wertvoll als Aufklärer, da sie sich in schwerem Gelände und an "
 "Feinden vorbei bewegen können. Saurianische Krieger nutzen diese Stärke um "
 "effektiv kämpfen zu können."
 
@@ -7851,8 +7853,8 @@ msgstr ""
 "seltsamer Trank bei der Verwandlung eine Rolle gespielt hat. "
 "Augenzeugenberichten zu Folge weisen diese Orks Merkmale einer Amphibie auf, "
 "sodass sie auf dem Land so wie im Wasser gleichsam beweglich sind. Sie "
-"greifen ihre Feide mit Krummschwerten an, sind aber nicht in der Lage, eine "
-"Fernkampfwaffe zu benutzen."
+"greifen ihre Feinde mit Krummschwertern an, sind aber nicht in der Lage, "
+"eine Fernkampfwaffe zu benutzen."
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
@@ -7931,6 +7933,7 @@ msgid "Skeletal Dragon"
 msgstr "Skelettdrache"
 
 # edited by ivanovic
+# FIXME: �ersetzung passt nicht
 #: data/units/Skeletal_Dragon.cfg:17
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
@@ -7943,10 +7946,10 @@ msgstr ""
 "Erdenrund. Doch ist dieser von allen gefürchtete Drache gestorben und nun "
 "sind einzig die Knochen und einige dunkle, beinahe schwarze Sehnen von ihm "
 "übrig. Jahrzehnte, wenn nicht gar Jahrhunderte nach seinem Ableben ist er "
-"durch die finsteren Mächte der Nekromatie wieder zum (Un)leben erweckt "
+"durch die finsteren Mächte der Nekromantie wieder zum (Un)leben erweckt "
 "worden. Genau diesen bösen Mächten, die ihn einst zurückholten aus dem Reich "
 "der Toten dient er nun und auch wenn er nun nur noch wie ein Haufen alter, "
-"trockener Knochen aussehen mag, so ist er immernoch sehr gefährlich, auch "
+"trockener Knochen aussehen mag, so ist er immer noch sehr gefährlich, auch "
 "wenn davon nur wenige auserwählte berichten können. Zwar haben schon viele "
 "versucht ihn wieder zurück in das Reich der toten zu schicken, doch keiner "
 "war dazu erwählt, diesen Versuch zu überleben..."
@@ -8185,16 +8188,16 @@ msgstr ""
 "Berge, ihrem bevorzugten Kampfgebiet, sind sie furchterregende Gegner. Ein "
 "erwachsener Troll übertrifft seine Kinder an Verschlagenheit, Beweglichkeit "
 "und Stärke - und, wenngleich man es ihm nicht ins Gesicht sagen möge, auch "
-"an Hässlichkeit.In einer Schlacht können Trolle sich auf die zerschmetternde "
-"Macht ihrer Keulen verlassen und brechen wie eine Welle aus purer Gewalt "
-"durch die Reihen ihrer Feinde. Ihre einzige, kaum nennenswerte Schwäche "
-"besteht in ihrer Unfähigkeit, mit Fernwaffen umzugehen.\n"
+"an Hässlichkeit. In einer Schlacht können Trolle sich auf die "
+"zerschmetternde Macht ihrer Keulen verlassen und brechen wie eine Welle aus "
+"purer Gewalt durch die Reihen ihrer Feinde. Ihre einzige, kaum nennenswerte "
+"Schwäche besteht in ihrer Unfähigkeit, mit Fernwaffen umzugehen.\n"
 " \n"
 "Kampfeigenschaften:\n"
-"Trolls bewähren sich insbesondere bei Nacht in rauhen, bergigen Gegenden. "
-"Sie sind vor allem in flachem Gelände gegen Bogenschützen verletzlich; zudem "
+"Trolls bewähren sich insbesondere bei Nacht in rauen, bergigen Gegenden. Sie "
+"sind vor allem in flachem Gelände gegen Bogenschützen verletzlich; zudem "
 "sind sie gut beraten, einen gesunden Respekt vor Zauberkundigen zu zeigen. "
-"Ihre Stärke zahlt sich gegen morsche Gegner besonders aus - beispielweise "
+"Ihre Stärke zahlt sich gegen morsche Gegner besonders aus - beispielsweise "
 "gegen Skelette -, wohingegen sie weniger effizient gegen wohlgerüstete oder "
 "robuste Gegner vorgehen können, wie gegen den Waldschrat, ihrem Gegenstück "
 "aus dem Waldland. Ihre Regeneration befähigt sie zur eigenständigen "
@@ -8214,7 +8217,7 @@ msgid ""
 "own, even during battle."
 msgstr ""
 "Trollhelden haben wegen ihrer brachialen Gewalt einen schauerlichen Ruf "
-"erlangt.Sie besitzen die erstaunliche Fähigkeit, sich zu regenerieren, "
+"erlangt. Sie besitzen die erstaunliche Fähigkeit, sich zu regenerieren, "
 "wodurch sie sich selbst mitten in der Schlacht von ihren Wunden erholen."
 
 #: data/units/Troll_Rocklobber.cfg:3
@@ -8222,7 +8225,7 @@ msgid "Troll Rocklobber"
 msgstr "Troll-Felsenschleuderer"
 
 # Korrigiert von hendi
-# edited by The Very Uhu 
+# edited by The Very Uhu
 # Anm. ("Mans hammer": Inkorrekte Beschreibung - kein Nahkampf! - , daher nicht übersetzt)
 # de-fuzzied by Ivanovic
 #: data/units/Troll_Rocklobber.cfg:21
@@ -8264,23 +8267,23 @@ msgstr ""
 "der Angriff auf einen Felsenschleuderer ein Wagnis.\n"
 "\n"
 "Kampfeigenschaften:\n"
-"Trolls bewähren sich insbesondere bei Nacht in rauhen, bergigen Gegenden. Im "
+"Trolls bewähren sich insbesondere bei Nacht in rauen, bergigen Gegenden. Im "
 "Gegensatz zu seinen Verwandten sorgt der Felsenschleuderer unter "
 "Bogenschützen für besorgte Gesichter, und ein feindlicher Zauberkundiger "
 "sollte es sich zweimal überlegen, ob er einen Angriff wagt. Seine Stärke "
-"zahlt sich gegen morsche Gegner besonders aus - beispielweise gegen Skelette "
-"-, wohingegen er weniger wirkungsvoll gegen wohlgerüstete oder robuste "
-"Gegner vorgehen kann, wie gegen den Waldschrat, seinem Gegenstück aus dem "
-"Waldland. Seine Regeneration befähigt ihn zur eigenständigen Wundheilung und "
-"Neutralisierung von Giften ohne die Hilfe eines Dorfes. Am gefährlichsten "
-"ist für den Felsenschleuderer der Angriff durch eine starke Nahkampfeinheit "
-"in offenem Gelände bei Tageslicht. "
+"zahlt sich gegen morsche Gegner besonders aus - beispielsweise gegen "
+"Skelette -, wohingegen er weniger wirkungsvoll gegen wohlgerüstete oder "
+"robuste Gegner vorgehen kann, wie gegen den Waldschrat, seinem Gegenstück "
+"aus dem Waldland. Seine Regeneration befähigt ihn zur eigenständigen "
+"Wundheilung und Neutralisierung von Giften ohne die Hilfe eines Dorfes. Am "
+"gefährlichsten ist für den Felsenschleuderer der Angriff durch eine starke "
+"Nahkampfeinheit in offenem Gelände bei Tageslicht. "
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Kriegstroll"
 
-# edited by The Very Uhu 
+# edited by The Very Uhu
 # edited by VeryUhu
 # de-fuzzied by Ivanovic
 #: data/units/Troll_Warrior.cfg:21
@@ -8312,16 +8315,16 @@ msgstr ""
 "Vorschlaghammer, den er in den Händen schwingt, vermag er ganze Häuser mit "
 "einem Schlag hinwegzufegen. Sein Körper erträgt eine schier unendliche Zahl "
 "an Schlägen. Häufig ändert ein feindlicher Anführer daher allein durch sein "
-"Erscheinen hastig die Strategie.Ein Kriegstroll kann nicht von einem Kämpfer "
-"allein bezwungen werden, allenfalls durch eine ganze Truppe, die sich mit "
-"aller Kraft gegen seine unbändigen Kräfte stemmt. Was aber das "
+"Erscheinen hastig die Strategie. Ein Kriegstroll kann nicht von einem "
+"Kämpfer allein bezwungen werden, allenfalls durch eine ganze Truppe, die "
+"sich mit aller Kraft gegen seine unbändigen Kräfte stemmt. Was aber das "
 "Schrecklichste an einem Kriegstroll ist, ist weder seine Hässlichkeit, noch "
 "seine Kraft, sondern der Umstand, dass er selbst schwer verwundet binnen "
 "kürzester Zeit ganz wiederhergestellt ist, wenn er nicht sofort getötet "
 "wird. \n"
 "\n"
 "Kampfeigenschaften:\n"
-"Kriegstrolls bewähren sich insbesondere bei Nacht in rauhen, bergigen "
+"Kriegstrolls bewähren sich insbesondere bei Nacht in rauen, bergigen "
 "Gegenden. Obwohl sie vor allem in flachem Gelände gegen Bogenschützen und "
 "Zauberkundige verletzlich sind, benötigt es viele Angreifer, um einen "
 "Kriegstroll in die Knie zu zwingen. Nur wenige können es wagen, sich einem "
@@ -8335,7 +8338,7 @@ msgstr ""
 msgid "Troll Whelp"
 msgstr "Trollwelpe"
 
-# edited by The Very Uhu 
+# edited by The Very Uhu
 #: data/units/Troll_Whelp.cfg:21
 msgid ""
 "The word 'whelp,' applied even to fearsome animals like wolves and lions, "
@@ -8361,11 +8364,11 @@ msgid ""
 msgstr ""
 "Mit dem Begriff »Welpe« wird üblicherweise das Bild von niedlichen, tapsigen "
 "Tierchen verbunden, die sich gerade so auf ihren Beinen halten können - "
-"selbst dann, wenn man über Löwen oder Wölfe spricht. Trollweplen hingegen "
+"selbst dann, wenn man über Löwen oder Wölfe spricht. Trollwelpen hingegen "
 "wollen nicht im Geringsten diesem Klischee entsprechen: Sie verfügen bereits "
 "über die ihrer Art angeborene, gewalttätige Kraft. Mit einem Körper von der "
 "Größe eines ausgewachsenen Mannes tapsen sie umher und besitzen eine Stärke, "
-"die ihresgleichen sucht. Neben ihrer steinharften Haut macht die Fähigkeit "
+"die ihresgleichen sucht. Neben ihrer steinharten Haut macht die Fähigkeit "
 "zur Regeneration sie zu zähen Gegnern, insbesondere, wenn sie sich in den "
 "Bergen und Hügeln aufhalten, aus denen sie einst gekommen sind. Der einzige "
 "Trost im Kampf gegen eine Trollwelpe ist ihre Langsamkeit, und die Tatsache, "
@@ -8373,11 +8376,11 @@ msgstr ""
 "nicht ...\n"
 "\n"
 "Kampfeigenschaften:\n"
-"Trollwelpen bewähren sich insbesondere bei Nacht in rauhen, bergigen "
+"Trollwelpen bewähren sich insbesondere bei Nacht in rauen, bergigen "
 "Gegenden. Sie sind vor allem in flachem Gelände gegen Bogenschützen "
 "verletzlich; zudem sind sie gut beraten, einen gesunden Respekt vor "
 "Zauberkundigen zu haben. Ihre Stärke zahlt sich gegen morsche Gegner "
-"besonders aus - beispielweise gegen Skelette -, wohingegen sie weniger "
+"besonders aus - beispielsweise gegen Skelette -, wohingegen sie weniger "
 "effizient gegen wohlgerüstete oder robuste Gegner vorgehen können, wie gegen "
 "den Waldschrat, ihrem Gegenstück aus dem Waldland. Ihre Regeneration "
 "befähigt sie zur eigenständigen Wundheilung und Neutralisierung von Giften "
@@ -8487,7 +8490,7 @@ msgstr ""
 
 #: data/units/White_Mage.cfg:3
 msgid "White Mage"
-msgstr "Weisser Magier"
+msgstr "Weißer Magier"
 
 #: data/units/White_Mage.cfg:26 data/units/White_Mage.cfg:97
 msgid ""
@@ -8504,11 +8507,11 @@ msgstr ""
 
 #: data/units/White_Mage.cfg:77
 msgid "female^White Mage"
-msgstr "Weisse Magierin"
+msgstr "Weiße Magierin"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
-msgstr "Wolfreiter"
+msgstr "Wolfsreiter"
 
 #: data/units/Wolf_Rider.cfg:18
 msgid ""
@@ -8913,7 +8916,7 @@ msgstr "Überschreiben?"
 
 #: src/dialogs.cpp:187
 msgid "Save already exists. Do you want to overwrite it ?"
-msgstr "Der Spielstand exisitiert bereits. Möchtet Ihr ihn überschreiben?"
+msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 
 #: src/dialogs.cpp:216 src/dialogs.cpp:448
 msgid "Don't ask me again!"
@@ -8989,8 +8992,8 @@ msgid ""
 "Wesnoth. Would you like to update these to the latest version? This may take "
 "some time."
 msgstr ""
-"Das Verzeichnis mit euren gespeicherten Dateien enthält Spielstände von "
-"einer älteren Version des Spieles. Wollt Ihr sie auf die neueste Version "
+"Das Verzeichnis mit Euren gespeicherten Dateien enthält Spielstände einer "
+"älteren Version des Spieles. Wollt Ihr sie auf die neueste Version "
 "aktualisieren? Dies kann einige Zeit in Anspruch nehmen."
 
 #: src/dialogs.cpp:444
@@ -9068,7 +9071,7 @@ msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
 # edited by Ivanovic
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:619
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Warnung: Die Datei ist beschädigt. Sie wird trotzdem geladen.\n"
@@ -9093,7 +9096,7 @@ msgstr "Dateifehler beim Einlesen des Spieles."
 msgid "Get More Campaigns..."
 msgstr "Weitere Kampagnen..."
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:739
 msgid "Download more campaigns from a server on Internet."
 msgstr "Wählt weitere Kampagnen auf den Kampagnenservern aus."
@@ -9126,7 +9129,7 @@ msgstr "MB"
 msgid "Connect to Server"
 msgstr "Mit Kampagnenserver verbinden"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:838
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Gebt einen Server an, von dem Ihr Kampagnen holen wollt."
@@ -9135,7 +9138,7 @@ msgstr "Gebt einen Server an, von dem Ihr Kampagnen holen wollt."
 msgid "Server: "
 msgstr "Server: "
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:852
 msgid "Could not connect to host."
 msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
@@ -9176,22 +9179,22 @@ msgstr "Kampagne veröffentlichen:"
 msgid "Delete campaign: "
 msgstr "Kampagne löschen:"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:935
 msgid "There are no campaigns available for download from this server."
 msgstr "Auf diesem Server sind keine Kampagnen verfügbar."
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:939
 msgid "Choose the campaign to download."
 msgstr "Wählt eine Kampagne zum Speichern aus."
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:939
 msgid "Get Campaign"
 msgstr "Kampagne holen"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:958
 msgid "Downloading campaign..."
 msgstr "Kampagne wird geladen ..."
@@ -9213,12 +9216,12 @@ msgstr "Die Kampagne wurde erfolgreich installiert."
 msgid "Network communication error."
 msgstr "Netzwerkverbindungsfehler"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:987
 msgid "Remote host disconnected."
 msgstr "Der Server hat die Verbindung unterbrochen."
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:989
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
@@ -9291,7 +9294,7 @@ msgstr "Euer Name:"
 msgid "The game could not be loaded: "
 msgstr "Der Spielstand konnte nicht geladen werden:"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/game.cpp:1138
 msgid "Error while playing the game: "
 msgstr "Fehler beim spielen: "
@@ -9520,7 +9523,7 @@ msgstr "Inland"
 msgid "Island"
 msgstr "Insel"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/multiplayer.cpp:92
 msgid "Connect to Host"
 msgstr "Mit Server verbinden"
@@ -9530,7 +9533,7 @@ msgstr "Mit Server verbinden"
 msgid "Choose host to connect to: "
 msgstr "Wählt den Host, zu dem Ihr euch verbinden wollt:"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/multiplayer.cpp:133
 msgid "Connecting to remote host..."
 msgstr "Verbinde zum Server ..."
@@ -9561,7 +9564,7 @@ msgstr "(Verfügbarer Platz)"
 # edited by Ivanovic
 #: src/multiplayer_connect.cpp:303
 msgid "Anonymous local player"
-msgstr "Annonymer lokaler Spieler"
+msgstr "Anonymer lokaler Spieler"
 
 #: src/multiplayer_connect.cpp:309
 msgid "Computer player"
@@ -9612,10 +9615,10 @@ msgid "I'm Ready"
 msgstr "Ich bin bereit"
 
 # edited by Ivanovic
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/multiplayer_connect.cpp:511
 msgid "The scenario is invalid because it has no sides."
-msgstr "Dieses Szenario ist ungültig, da es über keine Parfteien verfügt."
+msgstr "Dieses Szenario ist ungültig, da es über keine Parteien verfügt."
 
 #: src/multiplayer_connect.cpp:788
 msgid "Game Lobby"
@@ -9673,7 +9676,7 @@ msgstr "Ära:"
 msgid "Map to play:"
 msgstr "Verfügbare Karten:"
 
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/multiplayer_create.cpp:50
 msgid "Fog Of War"
 msgstr "Kriegsnebel"
@@ -9746,7 +9749,7 @@ msgid "$login's game"
 msgstr "$login|s Partie"
 
 # edited by Ivanovic
-# Korrigiert von VeryUhu 
+# Korrigiert von VeryUhu
 #: src/multiplayer_create.cpp:167
 msgid "Invalid era selected"
 msgstr "Ungültige Ära ausgewählt"
@@ -10241,7 +10244,7 @@ msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
-"Das Spiel läuft nicht mehr syncron und muss beendet werden. Möchtet Ihr "
+"Das Spiel läuft nicht mehr synchron und muss beendet werden. Möchtet Ihr "
 "einen Fehlerbericht dieses Spiels abspeichern?"
 
 #: src/playturn.cpp:2713
@@ -10280,7 +10283,7 @@ msgid ""
 "less attack than normal in combat."
 msgstr ""
 "Diese Einheit wurde verlangsamt. Sie kann sich nur mit der Hälfte ihrer "
-"sonst üblichen BP bewegen. Ausserdem wird ihr zusätzlich eine Attacke pro "
+"sonst üblichen BP bewegen. Außerdem wird ihr zusätzlich eine Attacke pro "
 "Waffe abgezogen."
 
 #: src/reports.cpp:113
@@ -10398,7 +10401,7 @@ msgstr "Leerer Variablenname"
 #: src/serialization/parser.cpp:210
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
-"Unerwartete Zeichen nach einem Variablenname (Erwartet werden , oder =)"
+"Unerwartete Zeichen nach einem Variablennamen (erwartet werden , oder =)"
 
 #: src/serialization/parser.cpp:238 src/serialization/parser.cpp:262
 msgid "Unterminated quoted string"
