@@ -1,5 +1,5 @@
 # Makefile for PO directory in any package using GNU gettext.
-# Copyright (C) 1995-1997, 2000-2004 by Ulrich Drepper <drepper@gnu.ai.mit.edu>
+# Copyright (C) 1995-1997, 2000-2005 by Ulrich Drepper <drepper@gnu.ai.mit.edu>
 #
 # This file can be copied and used freely without restrictions.  It can
 # be used in projects which are not available under the GNU General Public
@@ -8,10 +8,11 @@
 # Please note that the actual code of GNU gettext is covered by the GNU
 # General Public License and is *not* in the public domain.
 #
-# Origin: gettext-0.14
+# Origin: gettext-0.14.4
 
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
+PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 
 SHELL = /bin/sh
 @SET_MAKE@
@@ -46,7 +47,7 @@ UPDATEPOFILES = @UPDATEPOFILES@
 DUMMYPOFILES = @DUMMYPOFILES@
 DISTFILES.common = Makefile.in.in remove-potcdate.sin \
 $(DISTFILES.common.extra1) $(DISTFILES.common.extra2) $(DISTFILES.common.extra3)
-DISTFILES = $(DISTFILES.common) Makevars POTFILES.in $(DOMAIN).pot stamp-po \
+DISTFILES = $(DISTFILES.common) Makevars POTFILES.in \
 $(POFILES) $(GMOFILES) \
 $(DISTFILES.extra1) $(DISTFILES.extra2) $(DISTFILES.extra3)
 
@@ -79,6 +80,12 @@ all: all-@USE_NLS@
 all-yes: stamp-po
 all-no:
 
+# $(srcdir)/$(DOMAIN).pot is only created when needed. When xgettext finds no
+# internationalized messages, no $(srcdir)/$(DOMAIN).pot is created (because
+# we don't want to bother translators with empty POT files). We assume that
+# LINGUAS is empty in this case, i.e. $(POFILES) and $(GMOFILES) are empty.
+# In this case, stamp-po is a nop (i.e. a phony target).
+
 # stamp-po is a timestamp denoting the last time at which the CATALOGS have
 # been loosely updated. Its purpose is that when a developer or translator
 # checks out the package via CVS, and the $(DOMAIN).pot file is not in CVS,
@@ -88,10 +95,13 @@ all-no:
 # $(POFILES) has been designed to not touch files that don't need to be
 # changed.
 stamp-po: $(srcdir)/$(DOMAIN).pot
-	test -z "$(GMOFILES)" || $(MAKE) $(GMOFILES)
-	@echo "touch stamp-po"
-	@echo timestamp > stamp-poT
-	@mv stamp-poT stamp-po
+	test ! -f $(srcdir)/$(DOMAIN).pot || \
+	  test -z "$(GMOFILES)" || $(MAKE) $(GMOFILES)
+	@test ! -f $(srcdir)/$(DOMAIN).pot || { \
+	  echo "touch stamp-po" && \
+	  echo timestamp > stamp-poT && \
+	  mv stamp-poT stamp-po; \
+	}
 
 # Note: Target 'all' must not depend on target '$(DOMAIN).pot-update',
 # otherwise packages like GCC can not be built if only parts of the source
@@ -100,11 +110,16 @@ stamp-po: $(srcdir)/$(DOMAIN).pot
 # This target rebuilds $(DOMAIN).pot; it is an expensive operation.
 # Note that $(DOMAIN).pot is not touched if it doesn't need to be changed.
 $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
+	if test -n '$(MSGID_BUGS_ADDRESS)' || test '$(PACKAGE_BUGREPORT)' = '@'PACKAGE_BUGREPORT'@'; then \
+	  msgid_bugs_address='$(MSGID_BUGS_ADDRESS)'; \
+	else \
+	  msgid_bugs_address='$(PACKAGE_BUGREPORT)'; \
+	fi; \
 	$(XGETTEXT) --default-domain=$(DOMAIN) --directory=$(top_srcdir) \
 	  --add-comments=TRANSLATORS: $(XGETTEXT_OPTIONS) \
 	  --files-from=$(srcdir)/POTFILES.in \
 	  --copyright-holder='$(COPYRIGHT_HOLDER)' \
-	  --msgid-bugs-address='$(MSGID_BUGS_ADDRESS)'
+	  --msgid-bugs-address="$$msgid_bugs_address"
 	test ! -f $(DOMAIN).po || { \
 	  if test -f $(srcdir)/$(DOMAIN).pot; then \
 	    sed -f remove-potcdate.sed < $(srcdir)/$(DOMAIN).pot > $(DOMAIN).1po && \
@@ -289,10 +304,13 @@ dist distdir:
 	$(MAKE) update-po
 	@$(MAKE) dist2
 # This is a separate target because 'update-po' must be executed before.
-dist2: $(DISTFILES)
+dist2: stamp-po $(DISTFILES)
 	dists="$(DISTFILES)"; \
 	if test "$(PACKAGE)" = "gettext-tools"; then \
 	  dists="$$dists Makevars.template"; \
+	fi; \
+	if test -f $(srcdir)/$(DOMAIN).pot; then \
+	  dists="$$dists $(DOMAIN).pot stamp-po"; \
 	fi; \
 	if test -f $(srcdir)/ChangeLog; then \
 	  dists="$$dists ChangeLog"; \
@@ -305,9 +323,9 @@ dist2: $(DISTFILES)
 	if test -f $(srcdir)/LINGUAS; then dists="$$dists LINGUAS"; fi; \
 	for file in $$dists; do \
 	  if test -f $$file; then \
-	    cp -p $$file $(distdir); \
+	    cp -p $$file $(distdir) || exit 1; \
 	  else \
-	    cp -p $(srcdir)/$$file $(distdir); \
+	    cp -p $(srcdir)/$$file $(distdir) || exit 1; \
 	  fi; \
 	done
 
@@ -354,7 +372,7 @@ $(DUMMYPOFILES):
 update-gmo: Makefile $(GMOFILES)
 	@:
 
-Makefile: Makefile.in.in $(top_builddir)/config.status @POMAKEFILEDEPS@
+Makefile: Makefile.in.in Makevars $(top_builddir)/config.status @POMAKEFILEDEPS@
 	cd $(top_builddir) \
 	  && CONFIG_FILES=$(subdir)/$@.in CONFIG_HEADERS= \
 	       $(SHELL) ./config.status
