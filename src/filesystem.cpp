@@ -263,15 +263,14 @@ std::string get_intl_dir()
 	return get_cwd() + "/po";
 #endif
 
-#ifdef __APPLE__
-	return get_cwd() + "/messages";
+#ifdef USE_INTERNAL_DATA
+	return get_cwd() + "/" LOCALEDIR;
 #endif
 
-	std::string res;
 #if HAS_RELATIVE_LOCALEDIR
-	res = game_config::path + "/" LOCALEDIR;
+	std::string res = game_config::path + "/" LOCALEDIR;
 #else
-	res = LOCALEDIR;
+	std::string res = LOCALEDIR;
 #endif
 
 	return res;

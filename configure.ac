@@ -222,6 +222,12 @@ AC_ARG_ENABLE([dummy-locales],
               [dummylocales=$enableval],
               [dummylocales=no])
 
+AC_ARG_ENABLE([internal-data],
+		AS_HELP_STRING([--enable-internal-data],
+			[put data inside application: Mac OS X only]),
+		[internaldata=$enableval],
+		[internaldata=no])
+
 AM_CONDITIONAL([STATIC], [test x$static = xyes])
 AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
@@ -236,6 +242,10 @@ AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
 
 if test x$dummylocales = xyes; then
   AC_DEFINE([USE_DUMMYLOCALES],,[Define if the game should not use system locales])
+fi
+
+if test x$internaldata = xyes; then
+  AC_DEFINE([USE_INTERNAL_DATA],[],[Define if translations should be placed inside app, for Mac OS X])
 fi
 
 #######################################################################
