@@ -31,7 +31,7 @@ if INSTALLDATA
 	test -z "$(pkgdatadir)" || $(mkdir_p) "$(DESTDIR)$(pkgdatadir)"
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	( $(finddatadirs) ) | while read p; do \
-	  $(mkdir_p) "$$p"; \
+	  test -d "$$p" || $(mkdir_p) "$$p"; \
 	done
 	( $(finddata) ) | while read p; do \
 	  $(w_preparefileinstall) \
