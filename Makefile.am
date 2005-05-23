@@ -25,6 +25,13 @@ w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	    *) f=$$p;; \
 	  esac;
 
+bundle_contents = "@PACKAGE_NAME@.app/Contents"
+@PACKAGE@_bundle: src/@PACKAGE@
+	mkdir -p $(bundle_contents)/MacOS
+	mkdir -p $(bundle_contents)/Resources
+	echo "APPL????" > $(bundle_contents)/PkgInfo
+	$(INSTALL_PROGRAM) $< "$(bundle_contents)/MacOS/@PACKAGE_NAME@"
+
 install-data-local:
 	@$(NORMAL_INSTALL)
 if INSTALLDATA
