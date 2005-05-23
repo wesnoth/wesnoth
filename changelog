@@ -21,14 +21,14 @@ CVS HEAD:
    * added clock to DFool theme
    * tweaked multiplayer lobby
    * better checking for 'control' command arguments (#13086)
+   * added support for unit portraits in help (forum thread 6017)
    * added Experimental theme
  * campaign improvements:
    * Eastern Invasion:
-     * fixed Dacyn not being [recall]-ed in Unexpected Appearance (#10619)
-     * fixed killing enemies in wrong order not resulting in a victory in
-       Northern Outpost (#12922)
-     * fixed several bugs with Captured
-     * new map and scenario modification for Drowned Plains
+     * Unexpected Appearance: fixed Dacyn not being [recall]-ed (#10619)
+     * Northern Outpost: killing enemies in "wrong" order is now a win (#12922)
+     * Captured: fixed several bugs (#10512)
+     * Drowned Plains: new map and scenario modification, bug fixed (#13013)
    * Heir to the Throne:
      * fixed thieves not appearing in Siege of Elensefar (forum thread 5719)
    * Son of the Black Eye:
@@ -69,9 +69,9 @@ CVS HEAD:
    * updated translations:
      Afrikaans, Catalan, Chinese, Estonian, French, German, Greek, Hungarian,
      Italian, Japanese, Russian, Slovenian, Swedish, Turkish
-   * Updated gettext support to GNU gettext 0.14.4.
-   * Removed the intl/ directory, since libintl is now widespread enough
-     for gettextize to default to not installing it.
+   * updated gettext support to GNU gettext 0.14.4
+   * removed the intl/ directory, since libintl is now widespread enough
+     for gettextize to default to not installing it
  * WML improvements:
    * new WML preprocessor, allows for nested parentheses in macros (#10995)
    * note= attribute for [objectives], shown as footer, eg. for hints (#12927)
