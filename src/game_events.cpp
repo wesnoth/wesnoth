@@ -417,6 +417,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		screen->draw(true,true);
 	}
 
+	else if(cmd == "scroll_to") {
+		const int xpos = atoi(cfg["x"].c_str());
+		const int ypos = atoi(cfg["y"].c_str());
+		screen->scroll_to_tile(xpos,ypos);
+	}
+
 	else if(cmd == "scroll_to_unit") {
 		unit_map::const_iterator u;
 		for(u = units->begin(); u != units->end(); ++u){
