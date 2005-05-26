@@ -8,34 +8,52 @@ GettingStarted (http://wesnoth.slack.it/?GettingStarted) guide first.
 
 CONTROLS
 
-F1:     	The Battle for Wesnoth Help
-Arrow keys:     Scroll
-Left click:     Select unit, move unit
-Right click:    Main menu, cancel action
-Middle click:   Center on pointer location
-Escape:         Exit game, exit menu, cancel message
-z:              Zoom in
-x:              Zoom out
-c:              Reset zoom to default
-u:              Undo last move (only deterministic moves can be undone)
-r:              Redo move
-m:              Message another player (in multiplayer)
-n:              Cycle through units that have movement left
-1-7:            Show how far currently selected unit can move in that many turns
-ctrl-v:         Show enemy moves (where the enemy can move next turn)
-space:          End unit turn and cycle to next unit that has movement left
-l:              Move to leader unit
-ctrl-f:         Toggle full screen/windowed mode
-ctrl-r:         Recruit unit
-ctrl-shift-r:   Repeat last recruit
-alt-r:          Recall unit
-ctrl-a:         Toggle accelerated game mode
-d:              Describe current unit
-ctrl-d:         View defensive ratings of current unit against attacks
-ctrl-s:         Save game
-ctrl-l:         Load game
+F1             The Battle for Wesnoth Help
+Arrow keys     Scroll
+Left click     Select unit, move unit
+Right click    Main menu, cancel action
+Middle click   Center on pointer location
+Escape         Exit game, exit menu, cancel message
+ctrl-r         Recruit unit
+ctrl-shift-r   Repeat last recruit
+alt-r          Recall unit
+u              Undo last move (only deterministic moves can be undone)
+r              Redo move
+m              Message another player (in multiplayer)
+M              Message your allies (in multiplayer)
+alt-m          Message everyone in the game (in multiplayer)
+n              Cycle through units that have movement left
+N              Cycle through units that have movement left, in reverse order
+space          End unit turn and cycle to next unit that has movement left
+alt-e          End this player's turn
+ctrl-space     Hold unit position; skip this unit when cycling through units
+ctrl-v         Show enemy moves (where the enemy can move next turn)
+ctrl-f         Toggle full screen/windowed mode
+ctrl-a         Toggle accelerated game mode
+ctrl-s         Save game
+ctrl-l         Load game
 
-	  
+/              Search
+t              Continue interrupted unit move
+z              Zoom in
+x              Zoom out
+c              Reset zoom to default
+ctrl-n         Rename unit
+1-7            Show how far currently selected unit can move in that many turns
+l              Move to leader unit
+d              Describe current unit
+ctrl-b         Show best enemy moves
+ctrl-d         View defensive ratings of current unit against attacks
+ctrl-g         Toggle grid
+alt-k          Toggle shroud
+ctrl-k         Update shroud
+alt-l          Attach a text label to a terrain hex
+alt-s          Show status table
+ctrl-t         Show terrain table
+ctrl-m         Toggle muting of game sounds
+:              Command mode, see http://wesnoth.slack.it/?CommandMode
+
+
 ORBS
 
 On the top of the energy bar shown next to each unit of yours is an orb.
@@ -43,14 +61,12 @@ This orb is:
 
   * green if you control the unit and it hasn't moved this turn
   * yellow if you control the unit and it has moved this turn, but could
-    still move further or attack.
+    still move further or attack,
   * red if you control this unit, but it has already used all its
-    movement this turn
-  * blue if the unit is an ally you do not control 
+    movement this turn, or
+  * blue if the unit is an ally you do not control.
 
-Enemy units have no orb on the top of their energy bar. (In older
-versions < 0.5.2 there was a black orb on the top of energy bar of enemy
-units)
+Enemy units have no orb on the top of their energy bar.
 
 
 DESCRIPTION
@@ -66,10 +82,10 @@ Each side is given some amount of gold to begin with, and receives 2
 gold pieces per turn, plus 1 more gold piece for every village that side
 controls.
 
-Each unit also has a upkeep cost. The upkeep cost is generally equal to
-the level of the unit (but see the 'Loyal' trait below). Units that are
-not recalled or recruited - i.e. that lead the side or join the side
-voluntarily - do not have a upkeep cost associated with them. Upkeep is
+Each unit also has an upkeep cost. The upkeep cost is generally equal to
+the level of the unit, unless the unit has the Loyal trait (see below).
+Units that are not recalled or recruited - ie. that lead the side or
+join the side voluntarily - usually have the Loyal trait.  Upkeep is
 only paid if the total upkeep of a side's units is greater than the
 number of villages that side controls. Upkeep paid is the difference
 between the number of villages and the upkeep cost.
@@ -86,8 +102,8 @@ RECRUITING AND RECALLING
 
 Units may be recruited with gold, as long as the leader is on a keep,
 and there is at least one vacant castle hex in the castle the leader is
-in. Right-click and select Recruit to recruit new troops. After you
-complete a scenario, all surviving will be available to you next
+in. Right-click and select Recruit to recruit new units. After you
+complete a scenario, all surviving units will be available to you next
 scenario. Right-click and select Recall to re-recruit units from
 previous scenarios. Recalling costs 20 pieces of gold. You can first
 highlight free castle tile and then proceed with recruit, this way you
@@ -105,7 +121,7 @@ Unit specialties are described under Unit Description in-game.
 TRAITS
 
 Units have traits which reflect aspects of their character. Traits are
-assigned randomly to units when they are created. Each unit receives two
+assigned randomly to units when they are created. Most units receive two
 traits. The possible traits are as follows:
 
   Loyal:         has zero upkeep cost
@@ -118,22 +134,24 @@ traits. The possible traits are as follows:
 MOVING
 
 When a unit is clicked on, all the places it can move to on the current
-turn become lit up, while everywhere it can't move is greyed. You can
-then click on the hex you want it to move to. Moving onto a village that
-is neutral or owned by an enemy will take ownership of it. If you select
-destination which beyond reach in the current turn, the unit will enter
-'goto-mode' and continue moving towards destination in subsequent turns.
-You can easily undo goto movements in the beginning of your turn; goto
-can be broken by selecting unit and choosing new destination.
+turn are lit up, while everywhere it can't move is marked in grey. You
+can then click on the hex you want it to move to. Moving onto a village
+that is neutral or owned by an enemy will take ownership of it. If you
+select a destination which is beyond reach in the current turn, the unit
+will enter 'goto-mode' and continue moving towards that destination in
+subsequent turns.  You can easily undo goto movements in the beginning
+of your turn; goto can be broken by selecting the unit and choosing a
+new destination.
 
 You may not move through hexes adjacent to enemy units (their Zone of
-Control) without stopping.
+Control) without stopping.  However, level 0 units do not have a Zone of
+Control.
 
 
 FIGHTING
 
-If you move next to an enemy unit, you may attack them. Click on your
-unit that is next to an enemy unit, and click on the enemy you want to
+If you move next to an enemy unit, you may attack it. Click on your unit
+that is next to an enemy unit, and click on the enemy you want to
 attack. Every unit has one or more weapons they can attack with. Some
 weapons, such as swords, are melee weapons, and some weapons, such as
 bows, are ranged weapons.
@@ -145,23 +163,24 @@ it has one.
 
 Different types of attacks do different amounts of damage, and a certain
 number of strikes may be made with each weapon. For instance, an Elvish
-Fighter does 5 points of damage with his sword every time it hits, and
-he can strike 4 blows with it in one exchange. This is generally written
-as 5-4.
+Fighter does 5 points of damage with its sword every time it hits, and
+can strike 4 blows with the sword in one exchange. This is generally
+written as 5-4, meaning 5 damage per hit, and 4 strikes.
 
-Every unit has a chance of being hit based on the terrain they are on. F
-ex, units in castles and villages have a lower chance of being hit,
-Elves in forest have a low chance of being hit, etc. To see a unit's
-defense rating (i.e. chance not to be hit) in terrain, click on the
-unit, and then mouse over the terrain you're interested in, and the
-defense rating will be displayed as a % in the top right corner.
+Every unit has a chance of being hit based on the terrain it is on.  For
+instance, units in castles and villages have a lower chance of being
+hit, and Elves in forest have a low chance of being hit. To see a unit's
+defense rating (ie. chance not to be hit) in terrain, click on the unit,
+and then mouse over the terrain you're interested in, and the defense
+rating will be displayed as a % in the top right corner of the status
+pane, as well as shown over the terrain hex.
 
 
 ALIGNMENT
 
-Every unit has an alignment: lawful, neutral, or chaotic. Their
-alignment affects how they perform at different times of day. The
-following table illustrates the different times of the day:
+Every unit has an alignment: lawful, neutral, or chaotic.  Alignment
+affects how units perform at different times of day. The following table
+illustrates the different times of the day:
 
 | turn |  day-phase |
 ---------------------
@@ -172,12 +191,13 @@ following table illustrates the different times of the day:
 |  5   |    night   |
 |  6   |    night   |
 
-Units that are Lawful deal 25% more damage at day, and 25% less damage
-at night. Units that are Chaotic deal 25% more damage at night, and 25%
-less damage at day. Neutral units have their fighting unaffected by the
-day/night cycle. Note also that in-game, the two "day" and "night"
-phases are differentiated as Morning, Afternoon and First Watch, Second
-Watch, by the positions of the sun and moon in the graphic.
+Units that are Lawful deal 25% more damage during the day, and 25% less
+damage at night. Units that are Chaotic deal 25% more damage at night,
+and 25% less damage during the day. Neutral units have their fighting
+unaffected by the day/night cycle. Note also that in-game, the two "day"
+and "night" phases are differentiated as Morning, Afternoon and First
+Watch, Second Watch, by the positions of the sun and moon in the time of
+day graphic.
 
 
 HEALING
@@ -186,7 +206,7 @@ Injured units in villages will recover 8 hitpoints every turn. Injured
 units that are adjacent to units with the 'heal' or 'cure' abilities
 will also heal. A unit that does not move or fight during a turn is
 'resting' and will recover 2 hitpoints. Hitpoints recovered through
-'resting' is added on top of hitpoints recovered through healing or
+'resting' are added on top of hitpoints recovered through healing or
 regenerating.
 
 A unit with the 'heals' ability may heal up to 8 hitpoints total per
@@ -242,28 +262,33 @@ awarded 1 experience point per level of the enemy. In other words:
 
 MULTIPLAYER
 
-You can host multiplayer game with your client or connect to wesnoth
-game server and setup your game there. If you host game with your client
-other players need to be able to connect your port 15000 (TCP).
+You can host a multiplayer game with your client or connect to the
+wesnoth game server and setup your game there. If you host a game with
+your client other players need to be able to connect to port 15000 of
+your computer using TCP.  If you are behind a firewall and want to host
+a game, you will probably need to change your firewall settings to allow
+incoming connections to port 15000, and to tell your firewall to forward
+such traffic to the machine hosting the game.  If you join a game hosted
+on a public server or by someone else, you will need to ensure you can
+make outgoing TCP connections to port 15000 (this is usually the case).
 
 Public servers:
 
-  server.wesnoth.org        for stable releases of the game
-  devsrv.wesnoth.org        for testing releases of the game
-  devsrv.wesnoth.org:14999  for CVS versions of the game
+  server.wesnoth.org        for official releases of the game
+  devsrv.wesnoth.org        for CVS versions of the game
 
 
-Setting up multiplayer game
+Setting up a multiplayer game
 
   Step 1: select multiplayer from main screen and choose to either:
     a) join official server and create game,
     b) join any other server or game hosted by another player,
     c) select to host game on your client,
-    d) create a multiplayer game on your own computer as a hotseat game or
-    e) to play against the computer.
+    d) create a multiplayer game on your own computer as a hotseat game, or
+    e) play against the computer.
 
   Step 2: select map and configure game settings (fog of war, shroud,
-  gold per village)
+  gold per village).
 
   Step 3: configure players (teams/alliances, starting gold, faction)
   and then wait for all players set to 'network player' to join the
@@ -271,3 +296,4 @@ Setting up multiplayer game
   they join.
 
   Step 4: click [I'm Ready].
+
