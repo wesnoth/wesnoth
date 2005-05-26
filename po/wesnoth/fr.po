@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-10 19:30+0200\n"
-"PO-Revision-Date: 2005-04-21 10:33+0100\n"
+"PO-Revision-Date: 2005-05-25 18:50+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -23,13 +23,13 @@ msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:36
+#, fuzzy
 msgid "Binary Saves"
-msgstr ""
+msgstr "Sauvegardes binaires"
 
 #: data/game.cfg:43
-#, fuzzy
 msgid "Show Combat"
-msgstr "Combat"
+msgstr "Montrer le Combat"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -862,11 +862,12 @@ msgstr ""
 "normale pour progresser de niveau.\n"
 "\n"
 "Les unités intelligentes sont très utiles au début d'une campagne parce "
-"qu'elles progressent rapidement vers des unités de plus haut niveau bien "
-"plus utiles. Plus tard dans la campagne, elles ne sont plus aussi utiles, et "
-"si vous disposez de nombreuses unités de haut niveau il est possible que "
-"vous préfériez rappeler des unités avec des traits plus utiles sur le ''long "
-"terme''."
+"qu'elles progressent rapidement vers des unités de plus haut niveau. Plus "
+"tard dans les campagnes, le caractères Intelligent n'est plus aussi utile "
+"car les unités n'ont que faire de points d'expérience après avoir atteint "
+"leur level maximum. Si vous avez plusieurs unités de niveau maximum vous "
+"aimeriez peut être rappeler les unités avec des traits de caractères plus "
+"intéressants."
 
 #: data/help.cfg:226
 msgid ""
@@ -5413,9 +5414,8 @@ msgstr "enchevêtrement"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:42
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
-#, fuzzy
 msgid "faerie fire"
-msgstr "doigt de fée"
+msgstr "feu féérique"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -5453,7 +5453,6 @@ msgid "Elvish High Lord"
 msgstr "Haut seigneur elfe"
 
 #: data/units/Elvish_High_Lord.cfg:18
-#, fuzzy
 msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
@@ -5488,7 +5487,6 @@ msgid "Elvish Lord"
 msgstr "Seigneur elfe"
 
 #: data/units/Elvish_Lord.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
@@ -6747,6 +6745,12 @@ msgid ""
 "their victims, they simply shrug off all damage sustained as if they had "
 "been freshly summoned, to begin their search for flesh again."
 msgstr ""
+"Devenus voraces par une faim démoniaque pour les chairs mortes, les "
+"Necrophages attaquent ce qu'ils considèrent comme leur future nourriture "
+"grâce à leurs griffes empoisonnées. Lorsqu'ils se repaîtrent de leurs "
+"victimes, ils récupèrent naturellement de leurs blessures comme s'ils "
+"venaient d'être invoqués par leur maître, pour ensuite recommencer leur "
+"recherche incessante de nouvelles proies."
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
@@ -6785,7 +6789,6 @@ msgid "Noble Lord"
 msgstr "Noble seigneur"
 
 #: data/units/Noble_Lord.cfg:24
-#, fuzzy
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like lords, Lords possess "
@@ -7752,7 +7755,6 @@ msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:20
-#, fuzzy
 msgid ""
 "Trolls, grown to adulthood, are possessed of a fearsome strength. Their "
 "stone-like bodies have grown to a size much taller than a man, and their "
@@ -7816,7 +7818,6 @@ msgid "Troll Rocklobber"
 msgstr "Troll lanceur de pierres"
 
 #: data/units/Troll_Rocklobber.cfg:21
-#, fuzzy
 msgid ""
 "Given the monstrous strength of their race, trolls can turn rather mundane "
 "implements into weapons of deadly force. Some trolls piece together crude "
@@ -7874,7 +7875,6 @@ msgid "Troll Warrior"
 msgstr "Guerrier troll"
 
 #: data/units/Troll_Warrior.cfg:21
-#, fuzzy
 msgid ""
 "A terrifying, monstrous bastion of strength, a Troll Warrior brings to fore "
 "all the tales that have been told of their race's terrifying power. Wielding "
@@ -8426,11 +8426,12 @@ msgstr "défenseur faible contre"
 
 #: src/actions.cpp:644
 msgid "(both should survive)"
-msgstr ""
+msgstr "(Les deux devraient survivre)"
 
 #: src/actions.cpp:646
 msgid "% Pr[kills/killed by/both survive]"
 msgstr ""
+"% probabilité [Coup mortel/Contre-attaque mortelle/Survie des deux camps]"
 
 #: src/actions.cpp:848 src/actions.cpp:1014 src/display.cpp:1037
 msgid "poisoned"
@@ -9896,8 +9897,7 @@ msgstr "Caractères non attendus en début de ligne"
 
 #: src/serialization/parser.cpp:124
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr ""
-"Étiquette de fermeture manquante pour l'étiquette $tag en $pos"
+msgstr "Étiquette de fermeture manquante pour l'étiquette $tag en $pos"
 
 #: src/serialization/parser.cpp:139
 msgid "Unterminated [element] tag"
