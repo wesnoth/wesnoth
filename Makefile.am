@@ -32,6 +32,13 @@ bundle_contents=@PACKAGE_NAME@.app/Contents
 	echo "APPL????" > "$(bundle_contents)/PkgInfo"
 	$(INSTALL_PROGRAM) $< "$(bundle_contents)/MacOS/@PACKAGE_NAME@"
 
+bundle_editor_contents=@PACKAGE_NAME@ Editor.app/Contents
+@PACKAGE@_editor_bundle: src/@PACKAGE@_editor
+	mkdir -p "$(bundle_editor_contents)/MacOS"
+	mkdir -p "$(bundle_editor_contents)/Resources"
+	echo "APPL????" > "$(bundle_editor_contents)/PkgInfo"
+	$(INSTALL_PROGRAM) $< "$(bundle_editor_contents)/MacOS/@PACKAGE_NAME@ Editor"
+
 install-data-local:
 	@$(NORMAL_INSTALL)
 if INSTALLDATA
