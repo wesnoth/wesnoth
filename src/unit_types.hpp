@@ -163,6 +163,11 @@ public:
 
 	~unit_type();
 
+        // adds an additional advancement path to a unit type
+        // this is used to implement the [advancefrom] tag
+        void add_advancement(const unit_type &advance_to,int experience);
+
+
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
         //info on the type of unit that the unit reanimates as
@@ -278,7 +283,9 @@ private:
 	bool teleport_;
 	bool nightvision_;
 	bool steadfast_;
-	bool can_advance_;
+        std::vector<std::string> advances_to_;
+        int experience_needed_;
+
 	ALIGNMENT alignment_;
 
 	unit_movement_type movementType_;

@@ -534,7 +534,8 @@ unit_type::unit_type(const unit_type& o)
       leadership_(o.leadership_), illuminates_(o.illuminates_),
       skirmish_(o.skirmish_), teleport_(o.teleport_),
       nightvision_(o.nightvision_), steadfast_(o.steadfast_),
-      can_advance_(o.can_advance_), alignment_(o.alignment_),
+      advances_to_(o.advances_to_), experience_needed_(o.experience_needed_),
+      alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), death_animations_(o.death_animations_)
@@ -654,7 +655,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		movementType_.set_parent(&(it->second));
 	}
 
-	can_advance_ = advances_to().empty() == false;
+	const std::string& advance_to_val = cfg_["advanceto"];
+	if(advance_to_val != "null" && advance_to_val != "")
+		advances_to_ = utils::split(advance_to_val);
+
+	experience_needed_=lexical_cast_default<int>(cfg_["experience"],500);
 
 	const config::child_list& defends = cfg_.get_children("defend");
 	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
@@ -892,16 +897,12 @@ unit_type::experience_accelerator::~experience_accelerator()
 
 int unit_type::experience_needed() const
 {
-	return (lexical_cast_default<int>(cfg_["experience"],500)*experience_modifier)/100;
+       return (experience_needed_ * experience_modifier) /100;
 }
 
 std::vector<std::string> unit_type::advances_to() const
 {
-	const std::string& val = cfg_["advanceto"];
-	if(val == "null" || val == "")
-		return std::vector<std::string>();
-	else
-		return utils::split(val);
+    return advances_to_;
 }
 
 const config::child_list& unit_type::modification_advancements() const
@@ -1010,7 +1011,7 @@ bool unit_type::not_living() const
 
 bool unit_type::can_advance() const
 {
-	return can_advance_;
+	return !advances_to_.empty();
 }
 
 bool unit_type::has_zoc() const
@@ -1146,6 +1147,38 @@ const unit_animation* unit_type::die_animation(const attack_type* attack) const
 	}
 }
 
+void unit_type::add_advancement(const unit_type &to_unit,int xp)
+{
+	const std::string &to_id =  to_unit.cfg_["id"];
+	const std::string &from_id =  cfg_["id"];
+
+	// add extra advancement path to this unit type
+	lg::info(lg::config) << "adding advancement from " << from_id << " to " << to_id << "\n";
+	advances_to_.push_back(to_id);
+	if(xp>0 && experience_needed_>xp) experience_needed_=xp;
+
+	// add advancements to gendered subtypes, if supported by to_unit
+	for(int gender=0; gender<=1; ++gender) {
+		if(gender_types_[gender] == NULL) continue;
+		if(to_unit.gender_types_[gender] == NULL) {
+			lg::warn(lg::config) << to_id << " does not support gender " << gender << "\n";
+			continue;
+		}			
+		lg::info(lg::config) << "gendered advancement " << gender << ": ";
+		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]),xp);
+	}
+
+	// add advancements to variation subtypes
+	// since these are still a rare and special-purpose feature,
+	// we assume that the unit designer knows what they're doing,
+	// and don't block advancements that would remove a variation
+	for(variations_map::iterator v=variations_.begin(); 
+	    v!=variations_.end(); ++v) {
+		lg::info(lg::config) << "variation advancement: ";
+		v->second->add_advancement(to_unit,xp);
+	}
+}
+
 game_data::game_data()
 {}
 
@@ -1179,6 +1212,27 @@ void game_data::set_config(const config& cfg)
 		const unit_type u_type(**j.first,movement_types,races,unit_traits);
 		unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
 	}
+
+        // fix up advance_from references
+        for(config::const_child_itors k = cfg.child_range("unit");
+            k.first != k.second; ++k.first)
+          for(config::const_child_itors af = (*k.first)->child_range("advancefrom");
+            af.first != af.second; ++af.first) {
+                const std::string &to = (**k.first)["id"];
+                const std::string &from = (**af.first)["unit"];
+                const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
+ 
+                unit_type_map::iterator from_unit = unit_types.find(from);
+                unit_type_map::iterator to_unit = unit_types.find(to);
+                if(from_unit==unit_types.end()) {
+                  lg::warn(lg::config) << "unknown unit " << from << " in advancefrom\n";
+                        continue;
+                }
+                wassert(to_unit!=unit_types.end());
+ 
+                from_unit->second.add_advancement(to_unit->second,xp);
+        }
+
 }
 
 void game_data::clear()
