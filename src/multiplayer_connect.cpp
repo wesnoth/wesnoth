@@ -900,9 +900,13 @@ void connect::load_game()
 
 		// Adds the replay data, and the replay start, to the level, so
 		// clients can receive it.
-		level_.add_child("replay") = state_.replay_data;
-		if(!state_.starting_pos.empty())
-			level_.add_child("replay_start") = state_.starting_pos;
+
+		//TO-DO: this should be done only if the player has selected for the replay to be viewed
+		if(false) {
+			level_.add_child("replay") = state_.replay_data;
+			if(!state_.starting_pos.empty())
+				level_.add_child("replay_start") = state_.starting_pos;
+		}
 
 		level_.add_child("statistics") = statistics::write_stats();
 
