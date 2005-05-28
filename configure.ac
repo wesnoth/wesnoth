@@ -211,11 +211,6 @@ AC_ARG_ENABLE([gnome2],
               AS_HELP_STRING([--disable-gnome2], [disable installation of icon and menu entry in GNOME2]),
 		  [gnome2=$enableval],
 		  [gnome2=yes])
-			
-AC_ARG_ENABLE([wzip],
-              AS_HELP_STRING([--enable-wzip], [enable compilation of wesnoth_zip program]),
-	      [wzip=$enableval],
-	      [wzip=no])
 
 AC_ARG_ENABLE([dummy-locales],
               AS_HELP_STRING([--enable-dummy-locales], [enable installation of Wesnoth own private locales]),
@@ -235,7 +230,6 @@ AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
-AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes])
 AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])

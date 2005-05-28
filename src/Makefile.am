@@ -22,10 +22,6 @@ if EDITOR
 bin_PROGRAMS += wesnoth_editor
 endif
 
-if WZIP
-bin_PROGRAMS += wesnoth_zip
-endif
-
 pkgdatadir=$(datadir)/@DATADIR@
 
 #############################################################################
@@ -543,30 +539,6 @@ cutter_SOURCES = \
 
 exploder_LDADD = @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
 cutter_LDADD = @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
-
-#############################################################################
-#    Wesnoth Zip                                                            #
-#############################################################################
-
-wesnoth_zip_SOURCES = \
-	zip/zip.cpp \
-	config.cpp \
-	filesystem.cpp \
-	game_config.cpp \
-	gettext.cpp \
-	log.cpp \
-	network.cpp \
-	tstring.cpp \
-	config.hpp \
-	gettext.hpp \
-	filesystem.hpp \
-	game_config.hpp \
-	log.hpp \
-	network.hpp \
-	tstring.hpp \
-	wesconfig.h
-
-wesnoth_zip_LDADD = @SDL_LIBS@ @SDL_NET_LIBS@
 
 AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"
