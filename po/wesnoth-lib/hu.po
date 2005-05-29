@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-10 19:36+0200\n"
+"POT-Creation-Date: 2005-05-29 20:34+0200\n"
 "PO-Revision-Date: 2005-04-18 19:34+0200\n"
 "Last-Translator: Automatically generated <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -23,246 +23,254 @@ msgid "Next unit"
 msgstr "Következő egység"
 
 #: src/hotkeys.cpp:46
+msgid "Previous unit"
+msgstr ""
+
+#: src/hotkeys.cpp:47
+msgid "Hold Position"
+msgstr ""
+
+#: src/hotkeys.cpp:48
 msgid "End Unit Turn"
 msgstr "Egység körének vége"
 
-#: src/hotkeys.cpp:47
+#: src/hotkeys.cpp:49
 msgid "Leader"
 msgstr "Vezér"
 
-#: src/hotkeys.cpp:48
+#: src/hotkeys.cpp:50
 msgid "Undo"
 msgstr "Visszalépés"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:51
 msgid "Redo"
 msgstr "Újralépés"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:52
 msgid "Zoom In"
 msgstr "Ráközelítés"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:53
 msgid "Zoom Out"
 msgstr "Kiközelítés"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Alap ráközelítés"
 
-#: src/hotkeys.cpp:53 src/preferences.cpp:837
+#: src/hotkeys.cpp:55 src/preferences.cpp:846
 msgid "Toggle Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:56
 msgid "Screenshot"
 msgstr ""
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:57
 msgid "Accelerated"
 msgstr "Felgyorsítva"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:58
 msgid "Unit Description"
 msgstr "Egység leírása"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:59
 msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:60
 msgid "Save Game"
 msgstr "Állás mentése"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:61
 msgid "Load Game"
 msgstr "Játék betöltése"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:62
 msgid "Recruit"
 msgstr "Toborzás"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:63
 msgid "Repeat Recruit"
 msgstr "Toborzás megismétlése"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:64
 msgid "Recall"
 msgstr "Visszahívás"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:65
 msgid "End Turn"
 msgstr "Kör vége"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:66
 msgid "Toggle Grid"
 msgstr "Rács átkapcsolása"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:67
 msgid "Status Table"
 msgstr "Helyezések"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:68
 msgid "Mute"
 msgstr "Elnémítás"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:69
 msgid "Speak"
 msgstr "Beszélés"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:70
 msgid "Create Unit (Debug!)"
 msgstr "Egység létrehozása (hibajavítás!)"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Egység átállítása (hibajavítás!)"
 
-#: src/hotkeys.cpp:70 src/preferences.cpp:1156
+#: src/hotkeys.cpp:72 src/preferences.cpp:1165
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
 msgstr "Pálya céljai"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:74
 msgid "Unit List"
 msgstr "Egységlista"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:75
 msgid "Statistics"
 msgstr "Statisztikák"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:76
 msgid "Quit Game"
 msgstr "Kilépés a játékból"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:77
 msgid "Set Label"
 msgstr "Címke megadása"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:78
 msgid "Show Enemy Moves"
 msgstr "Ellenséges lépések mutatása"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:79
 msgid "Best Possible Enemy Moves"
 msgstr "Legjobb lehetséges ellenséges lépések"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:81
 msgid "Set Terrain"
 msgstr "Terep megadása"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:82
 msgid "Quit Editor"
 msgstr "Kilépés a szerksztőből"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:83
 msgid "New Map"
 msgstr "Új pálya"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:84
 msgid "Load Map"
 msgstr "Pálya betöltése"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:85
 msgid "Save Map"
 msgstr "Pálya mentése"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:86
 msgid "Save As"
 msgstr "Mentés másként"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:87
 msgid "Set Player Start Position"
 msgstr "Játékos kezdőhely megadása"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:88
 msgid "Flood Fill"
 msgstr "Kitöltés"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:89
 msgid "Fill Selection"
 msgstr "Feltöltés"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:90
 msgid "Cut"
 msgstr "Kivágás"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:91
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:92
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:93
 msgid "Revert from Disk"
 msgstr "Visszatérés"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "Pálya átméretezése"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Pálya tükrözése"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:96
 msgid "Select All"
 msgstr "Mind kijelölése"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:97
 msgid "Draw Terrain"
 msgstr "Terület megrajzolása"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:98
 msgid "Refresh Image Cache"
 msgstr "Képek átmeneti tárolójának frissítése"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:100
 msgid "Delay Shroud Updates"
 msgstr "Eltakarás frissítésének késleltetése"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:101
 msgid "Update Shroud Now"
 msgstr "Eltakarás frissítése most"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:102
 msgid "Continue Move"
 msgstr "Lépés folytatása"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:103
 msgid "Find Label or Unit"
 msgstr "Címke vagy egység keresése"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:104
 msgid "Speak to Ally"
 msgstr "Szólás a szövetségesekhez"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:105
 msgid "Speak to All"
 msgstr "Szólás mindenkihez"
 
-#: src/hotkeys.cpp:104 src/show_dialog.cpp:570
+#: src/hotkeys.cpp:106 src/show_dialog.cpp:576
 msgid "Help"
 msgstr "Segítség"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:107
 msgid "View Chat Log"
 msgstr "Csevegésnapló megtekintése"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:108
 msgid "Enter user command"
 msgstr "Felhasználói parancs megadása"
 
-#: src/hotkeys.cpp:352 src/hotkeys.cpp:538
+#: src/hotkeys.cpp:357 src/hotkeys.cpp:551
 msgid "Do you really want to quit?"
 msgstr "Biztos ki akarsz lépni?"
 
-#: src/hotkeys.cpp:352 src/hotkeys.cpp:538
+#: src/hotkeys.cpp:357 src/hotkeys.cpp:551
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -281,125 +289,125 @@ msgstr ""
 msgid "player"
 msgstr "játékos"
 
-#: src/preferences.cpp:838
+#: src/preferences.cpp:847
 msgid "Accelerated Speed"
 msgstr "Megnövelt sebesség"
 
-#: src/preferences.cpp:839
+#: src/preferences.cpp:848
 msgid "Skip AI Moves"
 msgstr "AI lépések átugrása"
 
-#: src/preferences.cpp:840
+#: src/preferences.cpp:849
 msgid "Show Grid"
 msgstr "Rács megjelenítése"
 
-#: src/preferences.cpp:841
+#: src/preferences.cpp:850
 msgid "Show Floating Labels"
 msgstr "Szálló címkék megjelenítése"
 
-#: src/preferences.cpp:842
+#: src/preferences.cpp:851
 msgid "Turn Dialog"
 msgstr "Párbeszédablak be"
 
-#: src/preferences.cpp:843
+#: src/preferences.cpp:852
 msgid "Turn Bell"
 msgstr "Csengő be"
 
-#: src/preferences.cpp:844
+#: src/preferences.cpp:853
 msgid "Show Team Colors"
 msgstr "Csapatszínek megjelenítése"
 
-#: src/preferences.cpp:845
+#: src/preferences.cpp:854
 msgid "Show Color Cursors"
 msgstr "Színes kurzor megjelenítése"
 
-#: src/preferences.cpp:846
+#: src/preferences.cpp:855
 msgid "Show Haloing Effects"
 msgstr "Haloing effektusok mutatása"
 
-#: src/preferences.cpp:847
+#: src/preferences.cpp:856
 msgid "Video Mode"
 msgstr "Videó mód"
 
-#: src/preferences.cpp:848
+#: src/preferences.cpp:857
 msgid "Hotkeys"
 msgstr "Gyorsbillentyűk"
 
-#: src/preferences.cpp:849
+#: src/preferences.cpp:858
 msgid "Adjust Gamma"
 msgstr "Gamma kezelés"
 
-#: src/preferences.cpp:850
+#: src/preferences.cpp:859
 msgid "Reverse Time Graphics"
 msgstr "Napszakmegjelenítés megfordítása"
 
-#: src/preferences.cpp:852
+#: src/preferences.cpp:861
 msgid "Music Volume:"
 msgstr "Zene hangereje"
 
-#: src/preferences.cpp:852
+#: src/preferences.cpp:861
 msgid "SFX Volume:"
 msgstr "Hanghatások ereje"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:862
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:862
 msgid "Scroll Speed:"
 msgstr "Görgetés sebessége:"
 
-#: src/preferences.cpp:872
+#: src/preferences.cpp:881
 msgid "Change the sound effects volume"
 msgstr "A hanghatások erejének megváltoztatása"
 
-#: src/preferences.cpp:877
+#: src/preferences.cpp:886
 msgid "Change the music volume"
 msgstr "A zene hangerejének megváltoztatása"
 
-#: src/preferences.cpp:882
+#: src/preferences.cpp:891
 msgid "Change the speed of scrolling around the map"
 msgstr "A térképen való görgetés sebességének megváltoztatása"
 
-#: src/preferences.cpp:885 src/preferences.cpp:890
+#: src/preferences.cpp:894 src/preferences.cpp:899
 msgid "Change the brightness of the display"
 msgstr "A képernyő fényesség megváltoztatása"
 
-#: src/preferences.cpp:893
+#: src/preferences.cpp:902
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "A játék teljes képernyőben vagy ablakban fusson-e"
 
-#: src/preferences.cpp:896
+#: src/preferences.cpp:905
 msgid "Make units move and fight faster"
 msgstr "Az egységek gyorsabban mozognak és harcolnak"
 
-#: src/preferences.cpp:899
+#: src/preferences.cpp:908
 msgid "Do not animate AI units moving"
 msgstr "Ne animálja a számítógép lépéseit"
 
-#: src/preferences.cpp:902
+#: src/preferences.cpp:911
 msgid "Overlay a grid onto the map"
 msgstr "Fektessen egy rácsot a térképre"
 
-#: src/preferences.cpp:905
+#: src/preferences.cpp:914
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Szöveg megjelenítése az egység fölött, amikor megsebesül, hog\"kiírja a "
 "veszteséget"
 
-#: src/preferences.cpp:907
+#: src/preferences.cpp:916
 msgid "Change the resolution the game runs at"
 msgstr "A játék felbontásának megváltoztatása"
 
-#: src/preferences.cpp:910
+#: src/preferences.cpp:919
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Egy párbeszédablakot dob fel, amikor a te köröd következik"
 
-#: src/preferences.cpp:913
+#: src/preferences.cpp:922
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Egy hangjelzést ad le a köröd kezdetekor"
 
-#: src/preferences.cpp:916
+#: src/preferences.cpp:925
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -407,104 +415,116 @@ msgstr ""
 "Egy színes kört rajzol minden egység körül amely azt jelzi melyik csapatban "
 "van az adott egység"
 
-#: src/preferences.cpp:919
+#: src/preferences.cpp:928
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Add meg, hogy a nap balról jobbra, vagy jobbról balra mozogjon"
 
-#: src/preferences.cpp:922
+#: src/preferences.cpp:931
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Színes egérkurzor használata (lassíthat)"
 
-#: src/preferences.cpp:925
+#: src/preferences.cpp:934
 msgid "Use graphical special effects (may be slower)"
 msgstr "Speciális megjelenítési hatások használata (lassíthat)"
 
-#: src/preferences.cpp:927
+#: src/preferences.cpp:936
 msgid "View and configure keyboard shortcuts"
 msgstr "A gyorsbillentyűk megtekintése és beállítása"
 
-#: src/preferences.cpp:1084
+#: src/preferences.cpp:1093
 #, fuzzy
 msgid "yes"
 msgstr "Igen"
 
-#: src/preferences.cpp:1086
+#: src/preferences.cpp:1095
 #, fuzzy
 msgid "no"
 msgstr "Visszalépés"
 
-#: src/preferences.cpp:1143
+#: src/preferences.cpp:1152
 msgid "Prefs section^General"
 msgstr "Általános"
 
-#: src/preferences.cpp:1144
+#: src/preferences.cpp:1153
 msgid "Prefs section^Display"
 msgstr "Képernyő"
 
-#: src/preferences.cpp:1145
+#: src/preferences.cpp:1154
 msgid "Prefs section^Sound"
 msgstr "Hang"
 
-#: src/preferences.cpp:1146
+#: src/preferences.cpp:1155
 msgid "Advanced section^Advanced"
 msgstr ""
 
-#: src/preferences.cpp:1202
+#: src/preferences.cpp:1211
 msgid "There are no alternative video modes available"
 msgstr "Nincsennek más megjelenítési módók"
 
-#: src/preferences.cpp:1231
+#: src/preferences.cpp:1240
 msgid "Choose Resolution"
 msgstr "Felbontás kiválasztása"
 
-#: src/preferences.cpp:1259
+#: src/preferences.cpp:1268
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
-#: src/preferences.cpp:1264
+#: src/preferences.cpp:1273
 msgid "Hotkey Settings"
 msgstr "Gyorsbillentyűk beállításai"
 
-#: src/preferences.cpp:1268 src/preferences.cpp:1312
+#: src/preferences.cpp:1277 src/preferences.cpp:1330
 msgid "Press desired HotKey"
 msgstr "Nyomd meg a kívánt gyorsbillentyűt"
 
-#: src/preferences.cpp:1289
+#: src/preferences.cpp:1295
+msgid "Action"
+msgstr ""
+
+#: src/preferences.cpp:1295
+msgid "Binding"
+msgstr ""
+
+#: src/preferences.cpp:1307
 msgid "Change Hotkey"
 msgstr "Gyorsbillentyű megváltoztatása"
 
-#: src/preferences.cpp:1292
+#: src/preferences.cpp:1310
 msgid "Save Hotkeys"
 msgstr "Gyorsbillentyűk mentése"
 
-#: src/preferences.cpp:1338
+#: src/preferences.cpp:1356
 msgid "This HotKey is already in use."
 msgstr "Ez a gyorsbillentyű már használatban van"
 
-#: src/show_dialog.cpp:312
+#: src/show_dialog.cpp:313
 msgid "Error"
 msgstr "Hiba"
 
-#: src/show_dialog.cpp:409 src/show_dialog.cpp:422
+#: src/show_dialog.cpp:415 src/show_dialog.cpp:428
 msgid "OK"
 msgstr "Oké"
 
-#: src/show_dialog.cpp:415
+#: src/show_dialog.cpp:421
 msgid "Yes"
 msgstr "Igen"
 
-#: src/show_dialog.cpp:416
+#: src/show_dialog.cpp:422
 msgid "No"
 msgstr "Ne!"
 
-#: src/show_dialog.cpp:423 src/show_dialog.cpp:429
+#: src/show_dialog.cpp:429 src/show_dialog.cpp:435 src/show_dialog.cpp:851
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/show_dialog.cpp:435
+#: src/show_dialog.cpp:441
 msgid "Close"
 msgstr "Bezár"
 
-#: src/show_dialog.cpp:883
+#: src/show_dialog.cpp:843
+msgid "Downloading..."
+msgstr ""
+
+#: src/show_dialog.cpp:875
 msgid "KB"
 msgstr "KB"

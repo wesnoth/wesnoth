@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-10 19:58+0200\n"
+"POT-Creation-Date: 2005-05-29 20:35+0200\n"
 "PO-Revision-Date: 2005-05-10 20:54+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: Nils Kneuper <crazy-ivanovic AT gmx DOT net>\n"
@@ -23,12 +23,12 @@ msgid "The Eastern Invasion"
 msgstr "Invasion der Finsternis"
 
 #: data/campaigns/Eastern_Invasion.cfg:10
-msgid "Spearman"
-msgstr "Speerträger"
-
-#: data/campaigns/Eastern_Invasion.cfg:10
 msgid "(easiest)"
 msgstr "(leicht)"
+
+#: data/campaigns/Eastern_Invasion.cfg:10
+msgid "Spearman"
+msgstr "Speerträger"
 
 #: data/campaigns/Eastern_Invasion.cfg:11
 msgid "Swordsman"
@@ -65,7 +65,7 @@ msgstr "Ankunft in Weldyn"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:34
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:34
 #: data/scenarios/Eastern_Invasion/Reject.cfg:32
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:40
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:39
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:30
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:42
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:77
@@ -408,18 +408,21 @@ msgstr "Argh! Zumindest meine übermächtigen Untergebenen werden euch besiegen.
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:798
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:181
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:372
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:236
 msgid "Holy Water"
 msgstr "Weihwasser"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:801
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:184
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:375
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:239
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr "Dieses Wasser weiht all eure Waffen ein Leben lang!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:802
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:185
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:376
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:240
 msgid "I am not suited to using this item! Let another take it."
 msgstr ""
@@ -1359,7 +1362,7 @@ msgstr ""
 msgid "The Drowned Plains"
 msgstr "Die überfluteten Ebenen"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:26
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:25
 msgid ""
 "\n"
 "Victory:\n"
@@ -1379,17 +1382,31 @@ msgstr ""
 "#Owaec fällt in der Schlacht\n"
 "#Rundenlimit überschritten"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:132
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:131
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:170
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:160
+msgid "There are still humans in this village! They can help us."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:167
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:174
+msgid "Villager"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:193
+msgid ""
+"The undead have killed all the villagers here, but they left their valuables."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:235
 msgid "What the... swamps? These were fertile plains when I was here last!"
 msgstr ""
 "Was zum... Sümpfe? Als ich zum letzten mal hier war, waren dies noch "
 "fruchtbare Ebenen!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:174
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:239
 msgid ""
 "The lich-lord Mal-Ravanal must have flooded the valley. The undead like the "
 "swamp. It is death, decay, everything that they are themselves."
@@ -1397,7 +1414,7 @@ msgstr ""
 "Der Fürst der Dunkelheit Mal-Ravanal muss das Tal geflutet haben. Die "
 "Untoten lieben Sümpfe. Sie sind tot, verfallen, eben genau wie sie selbst."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:178
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:243
 msgid ""
 "I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
 "swamp, we can't e'en see any 'nemies."
@@ -1405,15 +1422,15 @@ msgstr ""
 "Da werden wir wohl durchwaten müssen... Uhh. Und mit den ganzen "
 "Nebelschwaden im Gesicht können wir noch nichtmal unsere Feinde sehen."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:182
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:247
 msgid "Findshhhh... dyhhhh... slayhhhh..."
 msgstr "Sie finnnndennnn... sterrrrrrrbennnnn... nieederrrrmähennnn..."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:186
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:251
 msgid "What is that?!?"
 msgstr "Was ist das?!?"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:190
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:255
 msgid ""
 "I do not know, but it sounded like the dragon Khrakrahs. When it was alive, "
 "it was the most powerful creature ever, living in the Eastern Mountains. It "
@@ -1423,7 +1440,7 @@ msgstr ""
 "lebendig war, wer er das mächtigste Wesen, das je in den östlichen Gebirgen "
 "gelebt hat. Er muss geflohen sein, als die Untoten kamen."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:239
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:320
 msgid "Undead, undead are rising out of the ground!"
 msgstr "Untote erheben sich aus dem Boden!"
 
@@ -1469,8 +1486,9 @@ msgid "Foul! He's not allowed to do that!"
 msgstr "Heh, das darf er nicht machen. Das ist verboten."
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:167
+#, fuzzy
 msgid ""
-"Actually he is. The rules say he can only bring six of his minions,they "
+"Actually he is. The rules say he can only bring six of his minions, they "
 "didn't say he couldn't summon more after the duel started. However, Gweddry "
 "is still not allowed to bring more troops, because that would be bringing, "
 "not summoning."

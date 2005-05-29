@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-10 19:36+0200\n"
+"POT-Creation-Date: 2005-05-29 20:34+0200\n"
 "PO-Revision-Date: 2004-11-15 22:21+0100\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
@@ -23,248 +23,256 @@ msgid "Next unit"
 msgstr "Další jednotka"
 
 #: src/hotkeys.cpp:46
+msgid "Previous unit"
+msgstr ""
+
+#: src/hotkeys.cpp:47
+msgid "Hold Position"
+msgstr ""
+
+#: src/hotkeys.cpp:48
 msgid "End Unit Turn"
 msgstr "Ukončit kolo jednotky"
 
-#: src/hotkeys.cpp:47
+#: src/hotkeys.cpp:49
 msgid "Leader"
 msgstr "Vůdce"
 
-#: src/hotkeys.cpp:48
+#: src/hotkeys.cpp:50
 msgid "Undo"
 msgstr "Zpět"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:51
 msgid "Redo"
 msgstr "Znovu"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:52
 msgid "Zoom In"
 msgstr "Přiblížit"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:53
 msgid "Zoom Out"
 msgstr "Oddálit"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Normální pohled"
 
-#: src/hotkeys.cpp:53 src/preferences.cpp:837
+#: src/hotkeys.cpp:55 src/preferences.cpp:846
 #, fuzzy
 msgid "Toggle Full Screen"
 msgstr "Celá obrazovka"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:56
 msgid "Screenshot"
 msgstr ""
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:57
 msgid "Accelerated"
 msgstr "Zrychlit"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:58
 msgid "Unit Description"
 msgstr "Popis jednotky"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:59
 msgid "Rename Unit"
 msgstr "Přejmenuj"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:60
 msgid "Save Game"
 msgstr "Ulož hru"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:61
 msgid "Load Game"
 msgstr "Načti hru"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:62
 msgid "Recruit"
 msgstr "Naverbuj"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:63
 msgid "Repeat Recruit"
 msgstr "Zopakuj verbování"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:64
 msgid "Recall"
 msgstr "Přivolej"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:65
 msgid "End Turn"
 msgstr "Ukonči kolo"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:66
 msgid "Toggle Grid"
 msgstr "Zapni/vypni mřížku"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:67
 msgid "Status Table"
 msgstr "Tabulka stavu"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:68
 msgid "Mute"
 msgstr "Ztlumit zvuk"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:69
 msgid "Speak"
 msgstr "Mluv"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:70
 msgid "Create Unit (Debug!)"
 msgstr "Vytvoř jednotku (Debug!)"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Změň stranu jednotky (Debug!)"
 
-#: src/hotkeys.cpp:70 src/preferences.cpp:1156
+#: src/hotkeys.cpp:72 src/preferences.cpp:1165
 msgid "Preferences"
 msgstr "Nastavení"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
 msgstr "Úkoly scénáře"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:74
 msgid "Unit List"
 msgstr "Seznam jednotek"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:75
 msgid "Statistics"
 msgstr "Statistiky"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:76
 msgid "Quit Game"
 msgstr "Ukončit hru"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:77
 msgid "Set Label"
 msgstr "Umísti popisek"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:78
 msgid "Show Enemy Moves"
 msgstr "Ukaž tahy nepřítele"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:79
 msgid "Best Possible Enemy Moves"
 msgstr "Nejlepší možné tahy nepřítele"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:81
 #, fuzzy
 msgid "Set Terrain"
 msgstr "Nakreslit terén"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:82
 msgid "Quit Editor"
 msgstr "Ukončení editoru"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:83
 msgid "New Map"
 msgstr "Nová mapa"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:84
 msgid "Load Map"
 msgstr "Načti mapu"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:85
 msgid "Save Map"
 msgstr "Ulož mapu"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:86
 msgid "Save As"
 msgstr "Ulož jako"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:87
 msgid "Set Player Start Position"
 msgstr "Nastav startovací pozici hráče"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:88
 msgid "Flood Fill"
 msgstr "Vyplň plochu"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:89
 msgid "Fill Selection"
 msgstr "Vyplň výběr"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:90
 msgid "Cut"
 msgstr "Vyřízni"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:91
 msgid "Copy"
 msgstr "Kopíruj"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:92
 msgid "Paste"
 msgstr "Vlož"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:93
 msgid "Revert from Disk"
 msgstr "Obnov z disku"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "Změň velikost"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Otoč mapu"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:96
 msgid "Select All"
 msgstr "Vyber vše"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:97
 msgid "Draw Terrain"
 msgstr "Nakreslit terén"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:98
 msgid "Refresh Image Cache"
 msgstr ""
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:100
 msgid "Delay Shroud Updates"
 msgstr "Pozdrž překreslování mlhy"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:101
 msgid "Update Shroud Now"
 msgstr "Obnov mlhu"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:102
 msgid "Continue Move"
 msgstr "Pokračuj v pohybu"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:103
 msgid "Find Label or Unit"
 msgstr "Najdi popisek nebo jednotku"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:104
 msgid "Speak to Ally"
 msgstr "Mluv ke spojencům"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:105
 msgid "Speak to All"
 msgstr "Mluv ke všem"
 
-#: src/hotkeys.cpp:104 src/show_dialog.cpp:570
+#: src/hotkeys.cpp:106 src/show_dialog.cpp:576
 msgid "Help"
 msgstr "Nápověda"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:107
 msgid "View Chat Log"
 msgstr "Ukaž záznam rozhovoru"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:108
 msgid "Enter user command"
 msgstr ""
 
-#: src/hotkeys.cpp:352 src/hotkeys.cpp:538
+#: src/hotkeys.cpp:357 src/hotkeys.cpp:551
 msgid "Do you really want to quit?"
 msgstr "Opravdu chceš skončit?"
 
-#: src/hotkeys.cpp:352 src/hotkeys.cpp:538
+#: src/hotkeys.cpp:357 src/hotkeys.cpp:551
 msgid "Quit"
 msgstr "Konec"
 
@@ -283,123 +291,123 @@ msgstr ""
 msgid "player"
 msgstr "hráč"
 
-#: src/preferences.cpp:838
+#: src/preferences.cpp:847
 msgid "Accelerated Speed"
 msgstr "Zrychleno"
 
-#: src/preferences.cpp:839
+#: src/preferences.cpp:848
 msgid "Skip AI Moves"
 msgstr "Přeskakuj tahy počítače"
 
-#: src/preferences.cpp:840
+#: src/preferences.cpp:849
 msgid "Show Grid"
 msgstr "Zobrazuj mřížku"
 
-#: src/preferences.cpp:841
+#: src/preferences.cpp:850
 msgid "Show Floating Labels"
 msgstr "Zobrazuj plovoucí popisky"
 
-#: src/preferences.cpp:842
+#: src/preferences.cpp:851
 msgid "Turn Dialog"
 msgstr "Dialog na konci kola"
 
-#: src/preferences.cpp:843
+#: src/preferences.cpp:852
 msgid "Turn Bell"
 msgstr "Zvonek na konci kola"
 
-#: src/preferences.cpp:844
+#: src/preferences.cpp:853
 msgid "Show Team Colors"
 msgstr "Zobrazuj barvy týmů"
 
-#: src/preferences.cpp:845
+#: src/preferences.cpp:854
 msgid "Show Color Cursors"
 msgstr "Zobrazuj barevné kurzory"
 
-#: src/preferences.cpp:846
+#: src/preferences.cpp:855
 msgid "Show Haloing Effects"
 msgstr "Zobrazuj halo efekty"
 
-#: src/preferences.cpp:847
+#: src/preferences.cpp:856
 msgid "Video Mode"
 msgstr "Grafický mód"
 
-#: src/preferences.cpp:848
+#: src/preferences.cpp:857
 msgid "Hotkeys"
 msgstr "Klávesové zkratky"
 
-#: src/preferences.cpp:849
+#: src/preferences.cpp:858
 msgid "Adjust Gamma"
 msgstr "Gama korekce"
 
-#: src/preferences.cpp:850
+#: src/preferences.cpp:859
 msgid "Reverse Time Graphics"
 msgstr ""
 
-#: src/preferences.cpp:852
+#: src/preferences.cpp:861
 msgid "Music Volume:"
 msgstr "Hlasitost hudby:"
 
-#: src/preferences.cpp:852
+#: src/preferences.cpp:861
 msgid "SFX Volume:"
 msgstr "Hlasitost zvuků:"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:862
 msgid "Gamma:"
 msgstr "Gama:"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:862
 msgid "Scroll Speed:"
 msgstr "Rychlost posouvání:"
 
-#: src/preferences.cpp:872
+#: src/preferences.cpp:881
 msgid "Change the sound effects volume"
 msgstr "Změna hlasitosti zvukových efektů"
 
-#: src/preferences.cpp:877
+#: src/preferences.cpp:886
 msgid "Change the music volume"
 msgstr "Změna hlasitosti hudebního doprovodu"
 
-#: src/preferences.cpp:882
+#: src/preferences.cpp:891
 msgid "Change the speed of scrolling around the map"
 msgstr "Změna rychlosti posouvání mapy"
 
-#: src/preferences.cpp:885 src/preferences.cpp:890
+#: src/preferences.cpp:894 src/preferences.cpp:899
 msgid "Change the brightness of the display"
 msgstr "Změna nastavení jasu"
 
-#: src/preferences.cpp:893
+#: src/preferences.cpp:902
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Má-li hra běžet v okně, nebo přes celou obrazovku"
 
-#: src/preferences.cpp:896
+#: src/preferences.cpp:905
 msgid "Make units move and fight faster"
 msgstr "Jednotky se pohybují a bojují rychleji"
 
-#: src/preferences.cpp:899
+#: src/preferences.cpp:908
 msgid "Do not animate AI units moving"
 msgstr "Neanimuj jednotky ovládané počítačem"
 
-#: src/preferences.cpp:902
+#: src/preferences.cpp:911
 msgid "Overlay a grid onto the map"
 msgstr "Nakresli přes mapu mřížku"
 
-#: src/preferences.cpp:905
+#: src/preferences.cpp:914
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Ukazuj při zásahu nad jednotkou, jak velké zranění utrpěla"
 
-#: src/preferences.cpp:907
+#: src/preferences.cpp:916
 msgid "Change the resolution the game runs at"
 msgstr "Změna rozlišení, ve kterém hra běží"
 
-#: src/preferences.cpp:910
+#: src/preferences.cpp:919
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Zobraz dialog na začátku každého kola"
 
-#: src/preferences.cpp:913
+#: src/preferences.cpp:922
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Zvonek na začátku každého kola"
 
-#: src/preferences.cpp:916
+#: src/preferences.cpp:925
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -407,105 +415,117 @@ msgstr ""
 "Zobrazuj pod jednotkou barevnou kružnici kolem ukazující, za kterou stranu "
 "hraje"
 
-#: src/preferences.cpp:919
+#: src/preferences.cpp:928
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 
-#: src/preferences.cpp:922
+#: src/preferences.cpp:931
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Používej barevné kursory myši (může zpomalovat)"
 
-#: src/preferences.cpp:925
+#: src/preferences.cpp:934
 msgid "Use graphical special effects (may be slower)"
 msgstr "Používej speciální grafické efekty (může zpomalovat)"
 
-#: src/preferences.cpp:927
+#: src/preferences.cpp:936
 msgid "View and configure keyboard shortcuts"
 msgstr "Zobraz a nastav klávesové zkratky"
 
-#: src/preferences.cpp:1084
+#: src/preferences.cpp:1093
 #, fuzzy
 msgid "yes"
 msgstr "Ano"
 
-#: src/preferences.cpp:1086
+#: src/preferences.cpp:1095
 #, fuzzy
 msgid "no"
 msgstr "Zpět"
 
-#: src/preferences.cpp:1143
+#: src/preferences.cpp:1152
 msgid "Prefs section^General"
 msgstr "Obecné"
 
-#: src/preferences.cpp:1144
+#: src/preferences.cpp:1153
 msgid "Prefs section^Display"
 msgstr "Zobrazení"
 
-#: src/preferences.cpp:1145
+#: src/preferences.cpp:1154
 msgid "Prefs section^Sound"
 msgstr "Zvuky"
 
-#: src/preferences.cpp:1146
+#: src/preferences.cpp:1155
 msgid "Advanced section^Advanced"
 msgstr ""
 
-#: src/preferences.cpp:1202
+#: src/preferences.cpp:1211
 msgid "There are no alternative video modes available"
 msgstr "Žádné jiné grafické módy nejsou k dispozici."
 
-#: src/preferences.cpp:1231
+#: src/preferences.cpp:1240
 msgid "Choose Resolution"
 msgstr "Vyber si rozlišení"
 
-#: src/preferences.cpp:1259
+#: src/preferences.cpp:1268
 msgid "Close Window"
 msgstr "Zavři okno"
 
-#: src/preferences.cpp:1264
+#: src/preferences.cpp:1273
 msgid "Hotkey Settings"
 msgstr "Nastavení klávesových zkratek"
 
-#: src/preferences.cpp:1268 src/preferences.cpp:1312
+#: src/preferences.cpp:1277 src/preferences.cpp:1330
 msgid "Press desired HotKey"
 msgstr "Stiskni klávesovou zkratku"
 
-#: src/preferences.cpp:1289
+#: src/preferences.cpp:1295
+msgid "Action"
+msgstr ""
+
+#: src/preferences.cpp:1295
+msgid "Binding"
+msgstr ""
+
+#: src/preferences.cpp:1307
 msgid "Change Hotkey"
 msgstr "Změň klávesovou zkratku"
 
-#: src/preferences.cpp:1292
+#: src/preferences.cpp:1310
 msgid "Save Hotkeys"
 msgstr "Ulož klávesové zkratky"
 
-#: src/preferences.cpp:1338
+#: src/preferences.cpp:1356
 msgid "This HotKey is already in use."
 msgstr "Tato zkratka je již použita pro jinou akci."
 
-#: src/show_dialog.cpp:312
+#: src/show_dialog.cpp:313
 msgid "Error"
 msgstr "Chyba"
 
-#: src/show_dialog.cpp:409 src/show_dialog.cpp:422
+#: src/show_dialog.cpp:415 src/show_dialog.cpp:428
 msgid "OK"
 msgstr ""
 
-#: src/show_dialog.cpp:415
+#: src/show_dialog.cpp:421
 msgid "Yes"
 msgstr "Ano"
 
-#: src/show_dialog.cpp:416
+#: src/show_dialog.cpp:422
 msgid "No"
 msgstr "Ne"
 
-#: src/show_dialog.cpp:423 src/show_dialog.cpp:429
+#: src/show_dialog.cpp:429 src/show_dialog.cpp:435 src/show_dialog.cpp:851
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/show_dialog.cpp:435
+#: src/show_dialog.cpp:441
 msgid "Close"
 msgstr "Zavřít"
 
-#: src/show_dialog.cpp:883
+#: src/show_dialog.cpp:843
+msgid "Downloading..."
+msgstr ""
+
+#: src/show_dialog.cpp:875
 msgid "KB"
 msgstr "kB"
 

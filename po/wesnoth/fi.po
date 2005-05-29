@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-10 19:30+0200\n"
+"POT-Creation-Date: 2005-05-29 20:33+0200\n"
 "PO-Revision-Date: 2005-05-29 15:57+0200\n"
 "Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
 "Language-Team: none\n"
@@ -36,11 +36,11 @@ msgstr "Esittely"
 msgid "Gameplay"
 msgstr "Pelaaminen"
 
-#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2142
+#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2226
 msgid "Traits"
 msgstr "Kyvyt"
 
-#: data/help.cfg:28 src/playturn.cpp:1706
+#: data/help.cfg:28 src/playturn.cpp:1771
 msgid "Units"
 msgstr "Yksiköt"
 
@@ -214,7 +214,7 @@ msgstr ""
 "vaativat ylläpitoa. Katso <ref>dst=income_and_upkeep text='Tulot ja Menot'</"
 "ref> saadaksesi lisätietoja."
 
-#: data/help.cfg:92 src/help.cpp:1177
+#: data/help.cfg:92 src/help.cpp:1191
 msgid "Movement"
 msgstr "Liikkuminen"
 
@@ -2657,7 +2657,7 @@ msgid "Underground"
 msgstr "Maan alla"
 
 #: data/terrain.cfg:7 src/multiplayer_create.cpp:51
-#: src/multiplayer_lobby.cpp:103
+#: src/multiplayer_lobby.cpp:182
 msgid "Shroud"
 msgstr "Huntu"
 
@@ -2675,7 +2675,7 @@ msgstr "Matala vesi"
 
 #: data/terrain.cfg:39 data/terrain.cfg:60 data/terrain.cfg:164
 #: data/terrain.cfg:173 data/terrain.cfg:184 data/terrain.cfg:195
-#: data/terrain.cfg:208 data/terrain.cfg:359 src/reports.cpp:308
+#: data/terrain.cfg:208 data/terrain.cfg:359 src/reports.cpp:311
 msgid "Village"
 msgstr "Kylä"
 
@@ -2823,11 +2823,11 @@ msgstr "Toiminnot"
 msgid "End Turn"
 msgstr "Lopeta vuoro"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2140 src/unit.cpp:1059
+#: data/themes/default.cfg:167 src/playturn.cpp:2224 src/unit.cpp:1079
 msgid "HP"
 msgstr "Kesto (HP)"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2141
+#: data/themes/default.cfg:176 src/playturn.cpp:2048 src/playturn.cpp:2225
 msgid "XP"
 msgstr "Kokemus (XP)"
 
@@ -3350,7 +3350,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:439 src/actions.cpp:548
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:442 src/actions.cpp:551
 msgid "leadership"
 msgstr "johtaminen"
 
@@ -3427,7 +3427,7 @@ msgstr ""
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:575
+#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:578
 msgid "steadfast"
 msgstr "vankkumaton"
 
@@ -3730,20 +3730,21 @@ msgstr "murskaus"
 #: data/units/Cave_Spider.cfg:47 data/units/Cuttle_Fish.cfg:33
 #: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:20
 #: data/units/Deathmaster.cfg:32 data/units/Drake_Gladiator.cfg:63
-#: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:28
-#: data/units/Dwarvish_Dragonguard.cfg:21 data/units/Dwarvish_Fighter.cfg:40
-#: data/units/Dwarvish_Lord.cfg:45 data/units/Dwarvish_Runemaster.cfg:21
-#: data/units/Dwarvish_Steelclad.cfg:46 data/units/Elder_Mage.cfg:24
-#: data/units/Elder_Wose.cfg:21 data/units/Elvish_Druid.cfg:24
-#: data/units/Elvish_Druid.cfg:43 data/units/Elvish_Enchantress.cfg:26
-#: data/units/Elvish_Enchantress.cfg:66 data/units/Elvish_Lady.cfg:21
-#: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
-#: data/units/Elvish_Shyde.cfg:26 data/units/Elvish_Shyde.cfg:52
-#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:66
-#: data/units/Elvish_Sylph.cfg:25 data/units/Elvish_Sylph.cfg:52
-#: data/units/Fire_Dragon.cfg:42 data/units/Footpad.cfg:21
-#: data/units/Footpad.cfg:39 data/units/Footpad.cfg:87
-#: data/units/Footpad.cfg:105 data/units/Galleon.cfg:19 data/units/Gate.cfg:23
+#: data/units/Drake_Glider.cfg:22 data/units/Drake_Hurricane.cfg:27
+#: data/units/Drake_Sky.cfg:27 data/units/Dwarvish_Dragonguard.cfg:21
+#: data/units/Dwarvish_Fighter.cfg:40 data/units/Dwarvish_Lord.cfg:45
+#: data/units/Dwarvish_Runemaster.cfg:21 data/units/Dwarvish_Steelclad.cfg:46
+#: data/units/Elder_Mage.cfg:24 data/units/Elder_Wose.cfg:21
+#: data/units/Elvish_Druid.cfg:24 data/units/Elvish_Druid.cfg:43
+#: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:66
+#: data/units/Elvish_Lady.cfg:21 data/units/Elvish_Shaman.cfg:25
+#: data/units/Elvish_Shaman.cfg:44 data/units/Elvish_Shyde.cfg:26
+#: data/units/Elvish_Shyde.cfg:52 data/units/Elvish_Sorceress.cfg:26
+#: data/units/Elvish_Sorceress.cfg:66 data/units/Elvish_Sylph.cfg:25
+#: data/units/Elvish_Sylph.cfg:52 data/units/Fire_Dragon.cfg:42
+#: data/units/Footpad.cfg:21 data/units/Footpad.cfg:39
+#: data/units/Footpad.cfg:87 data/units/Footpad.cfg:105
+#: data/units/Galleon.cfg:19 data/units/Gate.cfg:23
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:44
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:37
 #: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:117
@@ -3769,14 +3770,17 @@ msgstr "murskaus"
 #: data/units/Saurian_Soothsayer.cfg:24 data/units/Saurian_Tribalist.cfg:24
 #: data/units/Sea_Hag.cfg:32 data/units/Shock_Trooper.cfg:20
 #: data/units/Silver_Mage.cfg:78 data/units/Silver_Mage.cfg:207
-#: data/units/Skeleton_Archer.cfg:25 data/units/Soulless.cfg:20
+#: data/units/Skeleton_Archer.cfg:25 data/units/Soulless.cfg:37
+#: data/units/Soulless.cfg:111 data/units/Soulless.cfg:186
+#: data/units/Soulless.cfg:262 data/units/Soulless.cfg:337
+#: data/units/Soulless.cfg:412 data/units/Soulless.cfg:487
 #: data/units/Tentacle.cfg:22 data/units/Thug.cfg:20 data/units/Troll.cfg:25
 #: data/units/Troll_Hero.cfg:22 data/units/Troll_Rocklobber.cfg:25
 #: data/units/Troll_Rocklobber.cfg:43 data/units/Troll_Warrior.cfg:25
 #: data/units/Troll_Whelp.cfg:25 data/units/Walking_Corpse.cfg:40
-#: data/units/Walking_Corpse.cfg:115 data/units/Walking_Corpse.cfg:191
-#: data/units/Walking_Corpse.cfg:268 data/units/Walking_Corpse.cfg:345
-#: data/units/Walking_Corpse.cfg:421 data/units/Walking_Corpse.cfg:497
+#: data/units/Walking_Corpse.cfg:114 data/units/Walking_Corpse.cfg:189
+#: data/units/Walking_Corpse.cfg:265 data/units/Walking_Corpse.cfg:341
+#: data/units/Walking_Corpse.cfg:416 data/units/Walking_Corpse.cfg:491
 #: data/units/Warrior_King.cfg:26 data/units/White_Mage.cfg:30
 #: data/units/White_Mage.cfg:101 data/units/Wose.cfg:21 data/units/Yeti.cfg:34
 #: data/units/Youth.cfg:22
@@ -3824,16 +3828,16 @@ msgstr "tulipallo"
 #: data/units/Drake_Burner.cfg:55 data/units/Drake_Fighter.cfg:58
 #: data/units/Drake_Fire.cfg:56 data/units/Drake_Flameheart.cfg:54
 #: data/units/Drake_Flare.cfg:44 data/units/Drake_Glider.cfg:46
-#: data/units/Drake_Inferno.cfg:44 data/units/Drake_Sky.cfg:52
-#: data/units/Drake_Warrior.cfg:47 data/units/Dwarvish_Runemaster.cfg:42
-#: data/units/Elder_Mage.cfg:40 data/units/Fighter.cfg:84
-#: data/units/Fire_Dragon.cfg:60 data/units/Fireball.cfg:18
-#: data/units/Fireball.cfg:19 data/units/Goblin_Pillager.cfg:21
-#: data/units/Great_Mage.cfg:45 data/units/Great_Mage.cfg:138
-#: data/units/Lord.cfg:115 data/units/Mage.cfg:42 data/units/Mage.cfg:119
-#: data/units/Princess.cfg:78 data/units/Red_Mage.cfg:45
-#: data/units/Red_Mage.cfg:138 data/units/Silver_Mage.cfg:94
-#: data/units/Silver_Mage.cfg:223
+#: data/units/Drake_Hurricane.cfg:51 data/units/Drake_Inferno.cfg:44
+#: data/units/Drake_Sky.cfg:51 data/units/Drake_Warrior.cfg:47
+#: data/units/Dwarvish_Runemaster.cfg:42 data/units/Elder_Mage.cfg:40
+#: data/units/Fighter.cfg:84 data/units/Fire_Dragon.cfg:60
+#: data/units/Fireball.cfg:18 data/units/Fireball.cfg:19
+#: data/units/Goblin_Pillager.cfg:21 data/units/Great_Mage.cfg:45
+#: data/units/Great_Mage.cfg:138 data/units/Lord.cfg:115
+#: data/units/Mage.cfg:42 data/units/Mage.cfg:119 data/units/Princess.cfg:78
+#: data/units/Red_Mage.cfg:45 data/units/Red_Mage.cfg:138
+#: data/units/Silver_Mage.cfg:94 data/units/Silver_Mage.cfg:223
 msgid "fire"
 msgstr "tuli"
 
@@ -3938,7 +3942,7 @@ msgstr "teräase"
 #: data/units/Assassin.cfg:39 data/units/Assassin.cfg:118
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:190 src/actions.cpp:566
+#: data/units/Thief.cfg:190 src/actions.cpp:569
 msgid "backstab"
 msgstr "selkäänpuukotus"
 
@@ -4106,7 +4110,7 @@ msgstr ""
 "luusta, tehdyillä nuolilla. Heidän epäonniset vihollisensa kutsuvat heitä "
 "yksikinkertaisesti 'Luuampujiksi', nämä hylkiöt ovat kauhu kaikelle elävälle."
 
-#: data/units/Bone_Shooter.cfg:36 data/units/Soul_Shooter.cfg:24
+#: data/units/Bone_Shooter.cfg:36 data/units/Soul_Shooter.cfg:26
 msgid "stab"
 msgstr "pisto"
 
@@ -4124,7 +4128,7 @@ msgstr "pisto"
 #: data/units/Orcish_Archer.cfg:37 data/units/Orcish_Leader.cfg:37
 #: data/units/Orcish_Ruler.cfg:38 data/units/Orcish_Sovereign.cfg:42
 #: data/units/Orcish_Warlord.cfg:30 data/units/Poacher.cfg:42
-#: data/units/Skeleton_Archer.cfg:41 data/units/Soul_Shooter.cfg:38
+#: data/units/Skeleton_Archer.cfg:41 data/units/Soul_Shooter.cfg:40
 #: data/units/Trapper.cfg:42
 msgid "bow"
 msgstr "jousi"
@@ -4181,9 +4185,9 @@ msgstr "jousi"
 #: data/units/Saurian_Skirmisher.cfg:42 data/units/Saurian_Warrior.cfg:26
 #: data/units/Saurian_Warrior.cfg:44 data/units/Sea_Hag.cfg:24
 #: data/units/Sea_Serpent.cfg:20 data/units/Sergeant.cfg:42
-#: data/units/Skeleton_Archer.cfg:42 data/units/Soul_Shooter.cfg:26
-#: data/units/Soul_Shooter.cfg:39 data/units/Spearman.cfg:37
-#: data/units/Spearman.cfg:88 data/units/Transport_Galleon.cfg:18
+#: data/units/Skeleton_Archer.cfg:42 data/units/Soul_Shooter.cfg:28
+#: data/units/Soul_Shooter.cfg:41 data/units/Spearman.cfg:38
+#: data/units/Spearman.cfg:89 data/units/Transport_Galleon.cfg:18
 #: data/units/Trapper.cfg:43 data/units/Triton.cfg:26
 #: data/units/Vampire_Lady.cfg:35 data/units/Wall_Guard.cfg:37
 #: data/units/Watch_Tower.cfg:19
@@ -4302,15 +4306,15 @@ msgstr ""
 #: data/units/Saurian_Ambusher.cfg:40 data/units/Saurian_Flanker.cfg:23
 #: data/units/Saurian_Flanker.cfg:41 data/units/Saurian_Skirmisher.cfg:22
 #: data/units/Saurian_Skirmisher.cfg:40 data/units/Saurian_Warrior.cfg:24
-#: data/units/Saurian_Warrior.cfg:42 data/units/Spearman.cfg:36
-#: data/units/Spearman.cfg:87
+#: data/units/Saurian_Warrior.cfg:42 data/units/Spearman.cfg:37
+#: data/units/Spearman.cfg:88
 msgid "spear"
 msgstr "keihäs"
 
 #: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:39
 #: data/units/Horseman.cfg:23 data/units/Knight.cfg:39
-#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:449
-#: src/actions.cpp:557
+#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:452
+#: src/actions.cpp:560
 msgid "charge"
 msgstr "rynnäkkö"
 
@@ -4332,7 +4336,7 @@ msgstr ""
 msgid "gaze"
 msgstr "katse"
 
-#: data/units/Cockatrice.cfg:38 src/actions.cpp:864 src/actions.cpp:1031
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:865 src/actions.cpp:1032
 msgid "stone"
 msgstr "kivetys"
 
@@ -4585,8 +4589,9 @@ msgstr ""
 #: data/units/Drake_Burner.cfg:53 data/units/Drake_Fighter.cfg:56
 #: data/units/Drake_Fire.cfg:54 data/units/Drake_Flameheart.cfg:52
 #: data/units/Drake_Flare.cfg:42 data/units/Drake_Glider.cfg:44
-#: data/units/Drake_Inferno.cfg:42 data/units/Drake_Sky.cfg:50
-#: data/units/Drake_Warrior.cfg:45 data/units/Fire_Dragon.cfg:58
+#: data/units/Drake_Hurricane.cfg:49 data/units/Drake_Inferno.cfg:42
+#: data/units/Drake_Sky.cfg:49 data/units/Drake_Warrior.cfg:45
+#: data/units/Fire_Dragon.cfg:58
 msgid "fire breath"
 msgstr "tulihenkäys"
 
@@ -4699,13 +4704,16 @@ msgid "Drake Glider"
 msgstr "Draakkiliitäjä"
 
 #: data/units/Drake_Glider.cfg:18
+#, fuzzy
 msgid ""
 "Drake Gliders wear as little armour as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
 "possessing the internal fire common to many of their kin. Gliders can also "
 "effectively use their speed to viciously slam their opponents into "
 "submission. The best gliders can look forward to being accepted into the "
-"ranks of the high flying Sky Drakes."
+"ranks of the high flying Sky Drakes.  From their aerial vantage point, these "
+"drakes can see past most defensive cover.  Their skill at flying allows them "
+"the precision to target enemies under such cover"
 msgstr ""
 "Liitäjät pitävät vähän panssaria jotta he voivat helposti paeta vihollisia "
 "kun he hylkäävät luolansa. Nämä Draakit ovat taidokkaita taistejoita, "
@@ -4713,9 +4721,29 @@ msgstr ""
 "nopeuttaan myös taklatakseen vihollisensa tuhoon. Parhaat liitäjät toivovat "
 "että heidät hyväksytään korkealla lentävien Taivasdraakkien riveihin."
 
-#: data/units/Drake_Glider.cfg:21 data/units/Drake_Sky.cfg:27
+#: data/units/Drake_Glider.cfg:21 data/units/Drake_Hurricane.cfg:26
+#: data/units/Drake_Sky.cfg:26
 msgid "slam"
 msgstr "lämäytys"
+
+#: data/units/Drake_Glider.cfg:47 data/units/Drake_Hurricane.cfg:52
+#: data/units/Drake_Sky.cfg:52 data/units/Elvish_Marksman.cfg:41
+#: data/units/Elvish_Marksman.cfg:134 data/units/Elvish_Sharpshooter.cfg:42
+#: data/units/Elvish_Sharpshooter.cfg:136 data/units/Fire_Dragon.cfg:61
+msgid "marksman"
+msgstr "tarkka-ampuja"
+
+#: data/units/Drake_Hurricane.cfg:3
+#, fuzzy
+msgid "Hurricane Drake"
+msgstr "Tulidraakki"
+
+#: data/units/Drake_Hurricane.cfg:18
+msgid ""
+"Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
+"those drakes which are gifted with flight.  Soaring high in the air, they "
+"can see past most defensive cover and spit fire at their foes with impunity."
+msgstr ""
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -4739,11 +4767,15 @@ msgstr ""
 msgid "Sky Drake"
 msgstr "Taivasdraakki"
 
-#: data/units/Drake_Sky.cfg:19
+#: data/units/Drake_Sky.cfg:18
+#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
-"down on prey, and are usually long gone before anyone can stop them."
+"down on prey, and are usually long gone before anyone can stop them.  By "
+"attacking from the air, they can spit fire with great precision into "
+"positions which would otherwise afford a great defensive advantage to their "
+"foes."
 msgstr ""
 "Taivasdraakit ovat taivaan kuninkaita. Käyttäen liikettään ja "
 "tulihenkäystään aseina, nämä draakit ovat monen kauhu. He voivat nopeasti "
@@ -4770,7 +4802,7 @@ msgstr ""
 #: data/units/Drake_Slasher.cfg:43 data/units/Goblin_Impaler.cfg:26
 #: data/units/Halbardier.cfg:28 data/units/Halbardier.cfg:69
 #: data/units/Javelineer.cfg:24 data/units/Pikeman.cfg:27
-#: data/units/Spearman.cfg:42
+#: data/units/Spearman.cfg:43
 msgid "firststrike"
 msgstr "ensi-isku"
 
@@ -5286,12 +5318,6 @@ msgstr ""
 msgid "longbow"
 msgstr "pitkäjousi"
 
-#: data/units/Elvish_Marksman.cfg:41 data/units/Elvish_Marksman.cfg:134
-#: data/units/Elvish_Sharpshooter.cfg:42
-#: data/units/Elvish_Sharpshooter.cfg:136 data/units/Fire_Dragon.cfg:61
-msgid "marksman"
-msgstr "tarkka-ampuja"
-
 #: data/units/Elvish_Marksman.cfg:97
 msgid "female^Elvish Marksman"
 msgstr "Haltiatarkka-ampuja"
@@ -5643,11 +5669,14 @@ msgstr ""
 "vedellä ja mutanyrkeille."
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Skeleton_Archer.cfg:24
-#: data/units/Soulless.cfg:19 data/units/Troll_Rocklobber.cfg:24
+#: data/units/Soulless.cfg:36 data/units/Soulless.cfg:110
+#: data/units/Soulless.cfg:185 data/units/Soulless.cfg:261
+#: data/units/Soulless.cfg:336 data/units/Soulless.cfg:411
+#: data/units/Soulless.cfg:486 data/units/Troll_Rocklobber.cfg:24
 #: data/units/Troll_Whelp.cfg:24 data/units/Walking_Corpse.cfg:39
-#: data/units/Walking_Corpse.cfg:114 data/units/Walking_Corpse.cfg:190
-#: data/units/Walking_Corpse.cfg:267 data/units/Walking_Corpse.cfg:344
-#: data/units/Walking_Corpse.cfg:420 data/units/Walking_Corpse.cfg:496
+#: data/units/Walking_Corpse.cfg:113 data/units/Walking_Corpse.cfg:188
+#: data/units/Walking_Corpse.cfg:264 data/units/Walking_Corpse.cfg:340
+#: data/units/Walking_Corpse.cfg:415 data/units/Walking_Corpse.cfg:490
 #: data/units/Yeti.cfg:33
 msgid "fist"
 msgstr "nyrkki"
@@ -7279,7 +7308,7 @@ msgstr "Shhhh! Aarnikotka nukkuu! Parempi jos et herätä sitä!"
 msgid "Soul Shooter"
 msgstr "Sieluampuja"
 
-#: data/units/Soul_Shooter.cfg:15
+#: data/units/Soul_Shooter.cfg:17
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -7293,11 +7322,17 @@ msgstr ""
 "vihollisistaan. Heitä ajaa vain viha joka syntyy heidän tyhjän ja hajanaisen "
 "elämänsä tuskasta."
 
-#: data/units/Soulless.cfg:3
+#: data/units/Soulless.cfg:3 data/units/Soulless.cfg:75
+#: data/units/Soulless.cfg:150 data/units/Soulless.cfg:226
+#: data/units/Soulless.cfg:301 data/units/Soulless.cfg:376
+#: data/units/Soulless.cfg:451
 msgid "Soulless"
 msgstr "Sieluton"
 
-#: data/units/Soulless.cfg:16
+#: data/units/Soulless.cfg:16 data/units/Soulless.cfg:88
+#: data/units/Soulless.cfg:163 data/units/Soulless.cfg:239
+#: data/units/Soulless.cfg:314 data/units/Soulless.cfg:389
+#: data/units/Soulless.cfg:464
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
@@ -7305,18 +7340,19 @@ msgstr ""
 "Nämä animoidut ruumit ovat tulleet vahvoiksi taisteltuaan kauan eläviä "
 "vastaan."
 
-#: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:44
-#: data/units/Walking_Corpse.cfg:119 data/units/Walking_Corpse.cfg:195
-#: data/units/Walking_Corpse.cfg:272 data/units/Walking_Corpse.cfg:349
-#: data/units/Walking_Corpse.cfg:425 data/units/Walking_Corpse.cfg:501
-msgid "plague"
-msgstr "rutto"
+#: data/units/Soulless.cfg:41 data/units/Soulless.cfg:115
+#: data/units/Soulless.cfg:190 data/units/Soulless.cfg:266
+#: data/units/Soulless.cfg:341 data/units/Soulless.cfg:416
+#: data/units/Soulless.cfg:491
+#, fuzzy
+msgid "plague(Walking Corpse)"
+msgstr "Kävelevä ruumis"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
 msgstr "Keihäsmies"
 
-#: data/units/Spearman.cfg:16
+#: data/units/Spearman.cfg:17
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
@@ -7655,16 +7691,16 @@ msgid "blood kiss"
 msgstr "verisuudelma"
 
 #: data/units/Walking_Corpse.cfg:3 data/units/Walking_Corpse.cfg:78
-#: data/units/Walking_Corpse.cfg:154 data/units/Walking_Corpse.cfg:231
-#: data/units/Walking_Corpse.cfg:308 data/units/Walking_Corpse.cfg:384
-#: data/units/Walking_Corpse.cfg:460
+#: data/units/Walking_Corpse.cfg:153 data/units/Walking_Corpse.cfg:229
+#: data/units/Walking_Corpse.cfg:305 data/units/Walking_Corpse.cfg:380
+#: data/units/Walking_Corpse.cfg:455
 msgid "Walking Corpse"
 msgstr "Kävelevä ruumis"
 
-#: data/units/Walking_Corpse.cfg:16 data/units/Walking_Corpse.cfg:92
-#: data/units/Walking_Corpse.cfg:168 data/units/Walking_Corpse.cfg:245
-#: data/units/Walking_Corpse.cfg:322 data/units/Walking_Corpse.cfg:398
-#: data/units/Walking_Corpse.cfg:474
+#: data/units/Walking_Corpse.cfg:16 data/units/Walking_Corpse.cfg:91
+#: data/units/Walking_Corpse.cfg:166 data/units/Walking_Corpse.cfg:242
+#: data/units/Walking_Corpse.cfg:318 data/units/Walking_Corpse.cfg:393
+#: data/units/Walking_Corpse.cfg:468
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
@@ -7673,6 +7709,13 @@ msgstr ""
 "Kävelevät ruumiit ovat kuolleiden ruumita jotka on animoitu pimeällä "
 "taikuudella. He ovat heikkoja taistelussa mutta voivat levittää kirouksensa "
 "niihin jotka tappavat, kasvattaen epäkuollutta armeijaa."
+
+#: data/units/Walking_Corpse.cfg:44 data/units/Walking_Corpse.cfg:118
+#: data/units/Walking_Corpse.cfg:193 data/units/Walking_Corpse.cfg:269
+#: data/units/Walking_Corpse.cfg:345 data/units/Walking_Corpse.cfg:420
+#: data/units/Walking_Corpse.cfg:495
+msgid "plague"
+msgstr "rutto"
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
@@ -7972,34 +8015,39 @@ msgid "+Russian Translation"
 msgstr "+Venäjäksi kääntänyt"
 
 #: src/about.cpp:262
+#, fuzzy
+msgid "+Serbian Translation"
+msgstr "+Saksaksi kääntänyt"
+
+#: src/about.cpp:265
 msgid "+Slovak Translation"
 msgstr "+Slovakiaksi kääntänyt"
 
-#: src/about.cpp:265
+#: src/about.cpp:268
 msgid "+Slovenian Translation"
 msgstr "+Sloveniaksi kääntänyt"
 
-#: src/about.cpp:268
+#: src/about.cpp:271
 msgid "+Spanish Translation"
 msgstr "+Espanjaksi kääntänyt"
 
-#: src/about.cpp:276
+#: src/about.cpp:279
 msgid "+Swedish Translation"
 msgstr "+Ruotsiksi kääntänyt"
 
-#: src/about.cpp:282
+#: src/about.cpp:285
 msgid "+Turkish Translation"
 msgstr "+Turkiksi kääntänyt"
 
-#: src/about.cpp:286
+#: src/about.cpp:289
 msgid "+Contributors"
 msgstr "+Avustajat"
 
-#: src/about.cpp:289
+#: src/about.cpp:292
 msgid "+Bots"
 msgstr "+Botit"
 
-#: src/about.cpp:325 src/help.cpp:2633
+#: src/about.cpp:328 src/help.cpp:2648
 msgid "Close"
 msgstr "Sulje"
 
@@ -8017,93 +8065,93 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Linnassa ei ole tyhjää tilaa johon värvätä."
 
-#: src/actions.cpp:297
+#: src/actions.cpp:300
 msgid "none"
 msgstr "ei mitään"
 
-#: src/actions.cpp:373 src/dialogs.cpp:700 src/display.cpp:1094
-#: src/help.cpp:1122 src/reports.cpp:233
+#: src/actions.cpp:376 src/dialogs.cpp:761 src/display.cpp:1095
+#: src/help.cpp:1136 src/reports.cpp:236
 msgid "melee"
 msgstr "lähitaistelu"
 
-#: src/actions.cpp:373 src/dialogs.cpp:700 src/display.cpp:1095
-#: src/help.cpp:1122 src/reports.cpp:234
+#: src/actions.cpp:376 src/dialogs.cpp:761 src/display.cpp:1096
+#: src/help.cpp:1136 src/reports.cpp:237
 msgid "ranged"
 msgstr "kaukotaistelu"
 
-#: src/actions.cpp:419 src/actions.cpp:527
+#: src/actions.cpp:422 src/actions.cpp:530
 msgid "base damage"
 msgstr "perusvahinko"
 
-#: src/actions.cpp:449 src/actions.cpp:557 src/actions.cpp:566
+#: src/actions.cpp:452 src/actions.cpp:560 src/actions.cpp:569
 msgid "Doubled"
 msgstr "Kaksinkertaistettu"
 
-#: src/actions.cpp:457
+#: src/actions.cpp:460
 msgid "attacker resistance vs"
 msgstr "hyökkääjä vastustaa"
 
-#: src/actions.cpp:457
+#: src/actions.cpp:460
 msgid "attacker vulnerability vs"
 msgstr "hyökkääjä on haavoittuva"
 
-#: src/actions.cpp:471 src/actions.cpp:597
+#: src/actions.cpp:474 src/actions.cpp:600
 msgid "total damage"
 msgstr "kokonaisvahinko"
 
-#: src/actions.cpp:575
+#: src/actions.cpp:578
 msgid "Halved"
 msgstr "Puolitettu"
 
-#: src/actions.cpp:583
+#: src/actions.cpp:586
 msgid "defender resistance vs"
 msgstr "puolustaja vastustaa"
 
-#: src/actions.cpp:583
+#: src/actions.cpp:586
 msgid "defender vulnerability vs"
 msgstr "puolustaja on haavoittuva"
 
-#: src/actions.cpp:644
+#: src/actions.cpp:645
 msgid "(both should survive)"
 msgstr "(molempien pitäisi selvitä)"
 
-#: src/actions.cpp:646
+#: src/actions.cpp:647
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Pr(tapot/tappaja/molemmat selviävät)"
 
-#: src/actions.cpp:848 src/actions.cpp:1014 src/display.cpp:1037
+#: src/actions.cpp:849 src/actions.cpp:1015 src/display.cpp:1038
 msgid "poisoned"
 msgstr "myrkytetty"
 
-#: src/actions.cpp:853 src/actions.cpp:1019 src/display.cpp:1033
+#: src/actions.cpp:854 src/actions.cpp:1020 src/display.cpp:1034
 msgid "slowed"
 msgstr "hidastettu"
 
-#: src/actions.cpp:1898
+#: src/actions.cpp:1899
 msgid "Ambushed!"
 msgstr "Väijytys!"
 
-#: src/actions.cpp:1932
+#: src/actions.cpp:1933
 msgid "Friendly unit sighted"
 msgstr "Ystävä havaittu"
 
-#: src/actions.cpp:1934
+#: src/actions.cpp:1935
 msgid "Enemy unit sighted!"
 msgstr "Vihollinen havaittu!"
 
-#: src/actions.cpp:1939
+#: src/actions.cpp:1940
 msgid "$friends Friendly units sighted"
 msgstr "$friends ystävää näköpiirissä"
 
-#: src/actions.cpp:1941
+#: src/actions.cpp:1942
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies vihollista havaittu!"
 
-#: src/actions.cpp:1945
+#: src/actions.cpp:1946
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Yksiköitä näköpiirissä! ($friends ystävää, $enemies vihollista)"
 
-#: src/actions.cpp:1960
+#: src/actions.cpp:1961
 msgid "(press $hotkey to continue)"
 msgstr "(paina $hotkey jatkaaksesi)"
 
@@ -8131,7 +8179,7 @@ msgstr "Kirjoita päälle?"
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Tallenne on jo olemassa. Haluatko kirjoittaa sen päälle ?"
 
-#: src/dialogs.cpp:216 src/dialogs.cpp:448
+#: src/dialogs.cpp:216 src/dialogs.cpp:499
 msgid "Don't ask me again!"
 msgstr "Älä kysy uudelleen!"
 
@@ -8139,51 +8187,67 @@ msgstr "Älä kysy uudelleen!"
 msgid "Do you really want to delete this game?"
 msgstr "Haluatko todellakin tuhota tämän tallennuksen?"
 
-#: src/dialogs.cpp:349
+#: src/dialogs.cpp:355
 msgid "%a %b %d %H:%M %Y"
 msgstr "%d.%m.%Y %H:%M"
 
-#: src/dialogs.cpp:362
+#: src/dialogs.cpp:368
 msgid "#(Invalid)"
 msgstr "#(Kelpaamaton)"
 
-#: src/dialogs.cpp:367 src/game.cpp:748
+#: src/dialogs.cpp:373 src/game.cpp:748
 msgid "Campaign"
 msgstr "Kampanja"
 
-#: src/dialogs.cpp:369 src/game.cpp:1103
+#: src/dialogs.cpp:375 src/game.cpp:1115
 msgid "Multiplayer"
 msgstr "Moninpeli"
 
-#: src/dialogs.cpp:371
+#: src/dialogs.cpp:377
 msgid "Tutorial"
 msgstr "Harjoitus"
 
-#: src/dialogs.cpp:379
+#: src/dialogs.cpp:385
 msgid "replay"
 msgstr "uusinta"
 
-#: src/dialogs.cpp:381 src/multiplayer_lobby.cpp:115 src/playturn.cpp:1547
+#: src/dialogs.cpp:387 src/multiplayer_lobby.cpp:194 src/playturn.cpp:1613
 msgid "Turn"
 msgstr "Vuoro"
 
-#: src/dialogs.cpp:383
+#: src/dialogs.cpp:389
 msgid "Scenario Start"
 msgstr "Skenaarion alku"
 
-#: src/dialogs.cpp:386
+#: src/dialogs.cpp:392
 msgid "Difficulty: "
 msgstr "Vaikeustaso:"
 
-#: src/dialogs.cpp:388
+#: src/dialogs.cpp:394
 msgid "Version: "
 msgstr "Versio:"
 
-#: src/dialogs.cpp:403
+#: src/dialogs.cpp:418 src/dialogs.cpp:434
+msgid "%b %d %y"
+msgstr ""
+
+#: src/dialogs.cpp:424
+msgid "%H:%M"
+msgstr ""
+
+#: src/dialogs.cpp:427
+msgid "%A, %H:%M"
+msgstr ""
+
+#: src/dialogs.cpp:430
+msgid "%b %d"
+msgstr ""
+
+#: src/dialogs.cpp:454
 msgid "No Saved Games"
 msgstr "Ei tallenettuja pelejä"
 
-#: src/dialogs.cpp:404
+#: src/dialogs.cpp:455
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -8191,15 +8255,15 @@ msgstr ""
 "Yhtäkään tallennettua peliä ei löytynyt.\n"
 "(Peli tallennetaan automaattisesti kun olet suorittanut skenaarion loppuun)"
 
-#: src/dialogs.cpp:423
+#: src/dialogs.cpp:474
 msgid "Delete Save"
 msgstr "Tuhoa tallenne"
 
-#: src/dialogs.cpp:438
+#: src/dialogs.cpp:489
 msgid "Import Saved Games"
 msgstr "Tuo tallennetut pelit"
 
-#: src/dialogs.cpp:439
+#: src/dialogs.cpp:490
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -8209,7 +8273,7 @@ msgstr ""
 "pelin vanhemmalla versiolla. Haluatko päivittää nämä uusimpaan versioon? "
 "Tämä saattaa kestää jonkun aikaa."
 
-#: src/dialogs.cpp:444
+#: src/dialogs.cpp:495
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
@@ -8218,36 +8282,46 @@ msgstr ""
 "Tallennushakemisto sisältää tiedostoja jotka eivät ilmeisesti ole tämän "
 "Wesnothin version luomia. Haluatko rekisteröidä nämä tiedostot tällä pelillä?"
 
-#: src/dialogs.cpp:515
+#: src/dialogs.cpp:550
+#, fuzzy
+msgid "Date"
+msgstr "Portti"
+
+#: src/dialogs.cpp:550 src/game.cpp:882 src/help.cpp:1112
+#: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
+msgid "Name"
+msgstr "Nimi"
+
+#: src/dialogs.cpp:576
 msgid "Show replay"
 msgstr "Näytä uusinta"
 
-#: src/dialogs.cpp:518 src/multiplayer_create.cpp:74
+#: src/dialogs.cpp:579 src/multiplayer_create.cpp:74
 msgid "Load Game"
 msgstr "Lataa peli"
 
-#: src/dialogs.cpp:519
+#: src/dialogs.cpp:580
 msgid "Choose the game to load"
 msgstr "Valitse ladattava peli"
 
-#: src/dialogs.cpp:555 src/dialogs.cpp:567
+#: src/dialogs.cpp:616 src/dialogs.cpp:628
 msgid "Profile"
 msgstr "Profiili"
 
-#: src/dialogs.cpp:647 src/display.cpp:1043 src/help.cpp:1031
+#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1032
 msgid "level"
 msgstr "taso"
 
-#: src/dialogs.cpp:668 src/display.cpp:1061 src/help.cpp:1076
+#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1090
 msgid "HP: "
 msgstr "Osumapisteet:"
 
-#: src/dialogs.cpp:672 src/dialogs.cpp:680 src/display.cpp:1065
-#: src/display.cpp:1073 src/playturn.cpp:1979
+#: src/dialogs.cpp:733 src/dialogs.cpp:741 src/display.cpp:1066
+#: src/display.cpp:1074
 msgid "XP: "
 msgstr "Kokemus (XP):"
 
-#: src/dialogs.cpp:685 src/display.cpp:1077 src/help.cpp:1077
+#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1091
 msgid "Moves: "
 msgstr "Liikkuminen:"
 
@@ -8255,11 +8329,11 @@ msgstr "Liikkuminen:"
 msgid "Screenshot"
 msgstr "Kuvakaappaus"
 
-#: src/display.cpp:1024
+#: src/display.cpp:1025
 msgid "healthy"
 msgstr "terve"
 
-#: src/display.cpp:1029
+#: src/display.cpp:1030
 msgid "invisible"
 msgstr "näkymätön"
 
@@ -8267,12 +8341,12 @@ msgstr "näkymätön"
 msgid "OK"
 msgstr "OK"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:494
+#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:497
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/font.cpp:285
+#: src/font.cpp:292
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
@@ -8284,14 +8358,14 @@ msgstr "The Battle for Wesnoth"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Tiedosto jonka yritit avata on korruptoitunut. Ladataan kuitenkin. \n"
 
-#: src/game.cpp:641 src/multiplayer_connect.cpp:888
+#: src/game.cpp:641 src/multiplayer_connect.cpp:891
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Tämä tallenne on pelin toisesta versiosta. Haluatko yrittää ladata sen?"
 
-#: src/game.cpp:649 src/game.cpp:652 src/multiplayer_connect.cpp:873
+#: src/game.cpp:649 src/game.cpp:652 src/multiplayer_connect.cpp:876
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tiedosto jonka yritit avata on korruptoitunut: '"
 
@@ -8355,19 +8429,15 @@ msgstr "Odotetaan palvelimen vastausta"
 msgid "Error communicating with the server."
 msgstr "Virhe kommunikoinnissa serverin kanssa."
 
-#: src/game.cpp:879 src/help.cpp:1098 src/playturn.cpp:2139
-msgid "Name"
-msgstr "Nimi"
-
-#: src/game.cpp:880 src/titlescreen.cpp:169
+#: src/game.cpp:882 src/titlescreen.cpp:169
 msgid "Version"
 msgstr "Versio"
 
-#: src/game.cpp:881
+#: src/game.cpp:883
 msgid "Author"
 msgstr "Tekijä"
 
-#: src/game.cpp:882
+#: src/game.cpp:883
 msgid "Downloads"
 msgstr "Latauskset"
 
@@ -8375,233 +8445,233 @@ msgstr "Latauskset"
 msgid "Size"
 msgstr "Koko"
 
-#: src/game.cpp:927
+#: src/game.cpp:935
 msgid "Publish campaign: "
 msgstr "Julkaise kampanja: "
 
-#: src/game.cpp:931
+#: src/game.cpp:939
 msgid "Delete campaign: "
 msgstr "Poista kampanja:"
 
-#: src/game.cpp:935
+#: src/game.cpp:943
 msgid "There are no campaigns available for download from this server."
 msgstr "Yhtäkään kampanjaa ei ole haettavissa tältä palvelimelta."
 
-#: src/game.cpp:939
+#: src/game.cpp:950
 msgid "Choose the campaign to download."
 msgstr "Valitse haettava kampanja."
 
-#: src/game.cpp:939
+#: src/game.cpp:950
 msgid "Get Campaign"
 msgstr "Hae kampanja"
 
-#: src/game.cpp:958
+#: src/game.cpp:970
 msgid "Downloading campaign..."
 msgstr "Haetaan kampanjaa..."
 
-#: src/game.cpp:972
+#: src/game.cpp:984
 msgid "Cannot rescan the filesystem"
 msgstr "Ei voi uudelleenskannata tiedostojärjestelmää"
 
-#: src/game.cpp:983
+#: src/game.cpp:995
 msgid "Campaign Installed"
 msgstr "Kampanja on asennettu"
 
-#: src/game.cpp:983
+#: src/game.cpp:995
 msgid "The campaign has been installed."
 msgstr "Kampanja on asennettu."
 
-#: src/game.cpp:985
+#: src/game.cpp:997
 msgid "Network communication error."
 msgstr "Verkkokommunikointivirhe."
 
-#: src/game.cpp:987
+#: src/game.cpp:999
 msgid "Remote host disconnected."
 msgstr "Isäntäkone katkaisi yhteyden."
 
-#: src/game.cpp:989
+#: src/game.cpp:1001
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Tämän kampanjan asennustiedostoja luodessa tapahtui virhe."
 
-#: src/game.cpp:1001 src/game.cpp:1041 src/game.cpp:1066
+#: src/game.cpp:1013 src/game.cpp:1053 src/game.cpp:1078
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
 msgid "Connection timed out"
 msgstr "Yhteys aikakatkaistiin"
 
-#: src/game.cpp:1004 src/game.cpp:1043 src/game.cpp:1068
+#: src/game.cpp:1016 src/game.cpp:1055 src/game.cpp:1080
 msgid "The server responded with an error: \""
 msgstr "Serveri vastasi virheellä: "
 
-#: src/game.cpp:1008
+#: src/game.cpp:1020
 msgid "Terms"
 msgstr "Termit"
 
-#: src/game.cpp:1046 src/game.cpp:1071
+#: src/game.cpp:1058 src/game.cpp:1083
 msgid "Response"
 msgstr "Vastaus"
 
-#: src/game.cpp:1086
+#: src/game.cpp:1098
 msgid "Join Official Server"
 msgstr "Ota yhteys viralliseen palvelimeen"
 
-#: src/game.cpp:1087
+#: src/game.cpp:1099
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Kirjaudu Wesnothin viralliselle palvelimelle"
 
-#: src/game.cpp:1089 src/multiplayer_lobby.cpp:29
+#: src/game.cpp:1101 src/multiplayer_lobby.cpp:107
 msgid "Join Game"
 msgstr "Liity peliin"
 
-#: src/game.cpp:1090
+#: src/game.cpp:1102
 msgid "Join a server or hosted game"
 msgstr "Ota yhteys palvelimelle tai isännöityyn peliin"
 
-#: src/game.cpp:1092
+#: src/game.cpp:1104
 msgid "Host Networked Game"
 msgstr "Isännöi verkkopeliä"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1105
 msgid "Host a game without using a server"
 msgstr "Isännöi peli ilman palvelinta"
 
-#: src/game.cpp:1095
+#: src/game.cpp:1107
 msgid "Hotseat Game"
 msgstr "Hotseat-peli"
 
-#: src/game.cpp:1096
+#: src/game.cpp:1108
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Pelaa moninpeli samalla koneella"
 
-#: src/game.cpp:1098
+#: src/game.cpp:1110
 msgid "Human vs AI"
 msgstr "Ihminen vastaan tekoäly"
 
-#: src/game.cpp:1099
+#: src/game.cpp:1111
 msgid "Play a game against AI opponents"
 msgstr "Pelaa tekoälyjä vastaan"
 
-#: src/game.cpp:1105 src/multiplayer.cpp:187
+#: src/game.cpp:1117 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Sisäänkirjautuminen:"
 
-#: src/game.cpp:1136
+#: src/game.cpp:1148
 msgid "The game could not be loaded: "
 msgstr "Peliä ei voitu ladata:"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1150
 msgid "Error while playing the game: "
 msgstr "Virhe pelatessa:"
 
-#: src/game.cpp:1150
+#: src/game.cpp:1162
 msgid "The game map could not be loaded: "
 msgstr "Karttaa ei voitu ladata:"
 
-#: src/game.cpp:1177
+#: src/game.cpp:1188
 msgid "Language"
 msgstr "Kieli"
 
-#: src/game.cpp:1178
+#: src/game.cpp:1189
 msgid "Choose your preferred language:"
 msgstr "Valitse haluamasi kieli:"
 
-#: src/game.cpp:1267
+#: src/game.cpp:1278
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Varoitus: Ladatessa asetustiedosja tapahtui virhe: '"
 
-#: src/game.cpp:1316
+#: src/game.cpp:1327
 msgid "Error loading game configuration files: '"
 msgstr "Virhe ladatessa asetustiedostoja: '"
 
-#: src/game.cpp:1317
+#: src/game.cpp:1328
 msgid "' (The game will now exit)"
 msgstr "'(Peli sulkeutuu nyt)"
 
-#: src/game.cpp:1390
+#: src/game.cpp:1401
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game_events.cpp:579
+#: src/game_events.cpp:585
 msgid "Victory:"
 msgstr "Voitto:"
 
-#: src/game_events.cpp:582
+#: src/game_events.cpp:588
 msgid "Defeat:"
 msgstr "Tappio:"
 
-#: src/help.cpp:1038
+#: src/help.cpp:1052
 msgid "Advances to: "
 msgstr "Kehittyy:"
 
-#: src/help.cpp:1059
+#: src/help.cpp:1073
 msgid "Abilities: "
 msgstr "Taidot:"
 
-#: src/help.cpp:1078
+#: src/help.cpp:1092
 msgid "Alignment: "
 msgstr "Ryhmittymä:"
 
-#: src/help.cpp:1082
+#: src/help.cpp:1096
 msgid "Required XP: "
 msgstr "Vaadittu kokemus:"
 
-#: src/help.cpp:1091 src/reports.cpp:236
+#: src/help.cpp:1105 src/reports.cpp:239
 msgid "attacks"
 msgstr "hyökkäykset"
 
-#: src/help.cpp:1099 src/playturn.cpp:2138
+#: src/help.cpp:1113 src/playturn.cpp:2045 src/playturn.cpp:2222
 msgid "Type"
 msgstr "Tyyppi"
 
-#: src/help.cpp:1100
+#: src/help.cpp:1114
 msgid "Strikes"
 msgstr "Iskut"
 
-#: src/help.cpp:1101
+#: src/help.cpp:1115
 msgid "Range"
 msgstr "Etäisyys"
 
-#: src/help.cpp:1102
+#: src/help.cpp:1116
 msgid "Special"
 msgstr "Erikois"
 
-#: src/help.cpp:1142
+#: src/help.cpp:1156
 msgid "Resistances"
 msgstr "Vastustukset"
 
-#: src/help.cpp:1146
+#: src/help.cpp:1160
 msgid "Attack Type"
 msgstr "Hyökkäystyyppi"
 
-#: src/help.cpp:1147
+#: src/help.cpp:1161
 msgid "Resistance"
 msgstr "Vastustus"
 
-#: src/help.cpp:1172
+#: src/help.cpp:1186
 msgid "Terrain Modifiers"
 msgstr "Maaston vaikutus"
 
-#: src/help.cpp:1176
+#: src/help.cpp:1190
 msgid "Terrain"
 msgstr "Maasto"
 
-#: src/help.cpp:1178
+#: src/help.cpp:1192
 msgid "Defense"
 msgstr "Puolustus"
 
-#: src/help.cpp:1276
+#: src/help.cpp:1290
 msgid "or"
 msgstr "tai"
 
-#: src/help.cpp:1283
+#: src/help.cpp:1297
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr "Liikkumisen ja puolustamisen suhteen tämä maasta on kuin $terrains|."
 
-#: src/help.cpp:1285
+#: src/help.cpp:1299
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Maasto jolla on paras vaikutus valitaan automaattisesti"
 
-#: src/help.cpp:1289
+#: src/help.cpp:1303
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -8609,26 +8679,26 @@ msgstr ""
 "Tämä maasto käyttäytyy kuten linnoitus eli voit värvätä yksiköitä kun "
 "johtajasi on tässä maastossa"
 
-#: src/help.cpp:1291
+#: src/help.cpp:1305
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
 "Tämä maasto käyttäytyy kuten linna eli voit värvätä yksiköitä tähän maastoon"
 
-#: src/help.cpp:1293
+#: src/help.cpp:1307
 msgid "This terrain gives healing."
 msgstr "Tämä maasto parantaa yksiköitä"
 
-#: src/help.cpp:2158
+#: src/help.cpp:2163
 msgid "< Back"
 msgstr "< Taaksepäin"
 
-#: src/help.cpp:2159
+#: src/help.cpp:2164
 msgid "Forward >"
 msgstr "Eteenpäin >"
 
-#: src/help.cpp:2636
+#: src/help.cpp:2651
 msgid "The Battle for Wesnoth Help"
 msgstr "Apua Battle for Wesnothiin"
 
@@ -8640,11 +8710,11 @@ msgstr "Seuraava"
 msgid "Skip"
 msgstr "Ohita"
 
-#: src/intro.cpp:314
+#: src/intro.cpp:320
 msgid "The End"
 msgstr "Loppu"
 
-#: src/language.cpp:41 src/language.cpp:177
+#: src/language.cpp:41 src/language.cpp:178
 msgid "System default language"
 msgstr "Järjestelmän oletuskieli"
 
@@ -8750,75 +8820,75 @@ msgstr "Tietokonepelaaja"
 msgid "(Empty slot)"
 msgstr "(Tyhjä paikka)"
 
-#: src/multiplayer_connect.cpp:449
+#: src/multiplayer_connect.cpp:452
 msgid "No non-random sides in the current era"
 msgstr "Ei epäsatunnaisia puolueita tämänhetkisessä ajassa"
 
-#: src/multiplayer_connect.cpp:465
+#: src/multiplayer_connect.cpp:468
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Kykenemätön löytämään johtajatyyppiä puolueelle $faction"
 
-#: src/multiplayer_connect.cpp:479 src/multiplayer_connect.cpp:488
+#: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:491
 msgid "Team"
 msgstr "Joukkue"
 
-#: src/multiplayer_connect.cpp:486
+#: src/multiplayer_connect.cpp:489
 msgid "Player/Type"
 msgstr "Pelaaja/Tyyppi"
 
-#: src/multiplayer_connect.cpp:487
+#: src/multiplayer_connect.cpp:490
 msgid "Faction"
 msgstr "Puolue"
 
-#: src/multiplayer_connect.cpp:489
+#: src/multiplayer_connect.cpp:492
 msgid "Color"
 msgstr "Väri"
 
-#: src/multiplayer_connect.cpp:490 src/playturn.cpp:1704 src/playturn.cpp:1711
+#: src/multiplayer_connect.cpp:493 src/playturn.cpp:1769 src/playturn.cpp:1780
 msgid "Gold"
 msgstr "Kultaa"
 
-#: src/multiplayer_connect.cpp:492
+#: src/multiplayer_connect.cpp:495
 msgid "Computer vs Computer"
 msgstr " Tietokone vastaan Tietokone "
 
-#: src/multiplayer_connect.cpp:493
+#: src/multiplayer_connect.cpp:496
 msgid "I'm Ready"
 msgstr "Olen valmis"
 
-#: src/multiplayer_connect.cpp:511
+#: src/multiplayer_connect.cpp:514
 msgid "The scenario is invalid because it has no sides."
 msgstr "Skenaario on sopimaton koska siinä ei ole osapuolia."
 
-#: src/multiplayer_connect.cpp:788
+#: src/multiplayer_connect.cpp:791
 msgid "Game Lobby"
 msgstr "Pelin aula"
 
-#: src/multiplayer_connect.cpp:808
+#: src/multiplayer_connect.cpp:811
 msgid "Network Player"
 msgstr "Verkkopelaaja"
 
-#: src/multiplayer_connect.cpp:809
+#: src/multiplayer_connect.cpp:812
 msgid "Local Player"
 msgstr "Paikallinen pelaaja"
 
-#: src/multiplayer_connect.cpp:810
+#: src/multiplayer_connect.cpp:813
 msgid "Computer Player"
 msgstr "Tietokonepelaaja"
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:814
 msgid "Empty"
 msgstr "Tyhjä"
 
-#: src/multiplayer_connect.cpp:880
+#: src/multiplayer_connect.cpp:883
 msgid "This is not a multiplayer save"
 msgstr "Tämä ei ole moninpelin tallenne"
 
-#: src/multiplayer_connect.cpp:918
+#: src/multiplayer_connect.cpp:924
 msgid "Cannot find era $era"
 msgstr "Ei löydä aikakautta $era"
 
-#: src/multiplayer_connect.cpp:934
+#: src/multiplayer_connect.cpp:938
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -8826,7 +8896,7 @@ msgstr ""
 "Voitto\n"
 "@Lyö vihollisjohtaja(t)"
 
-#: src/multiplayer_connect.cpp:970
+#: src/multiplayer_connect.cpp:974
 msgid "Waiting for players to join..."
 msgstr "Odotetaan pelaajien mukaantuloa"
 
@@ -8936,27 +9006,37 @@ msgstr "Kokemusmuuttuja:"
 msgid "Players: "
 msgstr "Pelaajat:"
 
-#: src/multiplayer_create.cpp:386 src/multiplayer_lobby.cpp:30
+#: src/multiplayer_create.cpp:386 src/multiplayer_lobby.cpp:108
 msgid "Create Game"
 msgstr "Luo peli"
 
 #: src/multiplayer_lobby.cpp:28
+#, fuzzy
+msgid "Map"
+msgstr "Uusi kartta"
+
+#: src/multiplayer_lobby.cpp:29
+#, fuzzy
+msgid "Status"
+msgstr "Tilannetaulukko"
+
+#: src/multiplayer_lobby.cpp:106
 msgid "Observe Game"
 msgstr "Tarkkaile peliä"
 
-#: src/multiplayer_lobby.cpp:31
+#: src/multiplayer_lobby.cpp:109
 msgid "Quit"
 msgstr "Poistu"
 
-#: src/multiplayer_lobby.cpp:118
+#: src/multiplayer_lobby.cpp:197
 msgid "Vacant Slot"
 msgstr "Tyhjä paikka"
 
-#: src/multiplayer_lobby.cpp:118
+#: src/multiplayer_lobby.cpp:197
 msgid "Vacant Slots"
 msgstr "Tyhjiä paikkoja"
 
-#: src/multiplayer_lobby.cpp:128
+#: src/multiplayer_lobby.cpp:207
 msgid "<no games open>"
 msgstr "<ei pelejä auki>"
 
@@ -9032,19 +9112,19 @@ msgstr "Moninpelipuolia ei löytynyt."
 msgid "Choose your side:"
 msgstr "Valitse puolesi:"
 
-#: src/multiplayer_wait.cpp:374 src/unit.cpp:1164
+#: src/multiplayer_wait.cpp:374 src/unit.cpp:1184
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:374 src/unit.cpp:1171
+#: src/multiplayer_wait.cpp:374 src/unit.cpp:1191
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:375 src/playturn.cpp:1801
+#: src/multiplayer_wait.cpp:375 src/playturn.cpp:1872
 msgid "unit^Gold"
 msgstr "Kulta"
 
-#: src/playlevel.cpp:602 src/playlevel.cpp:871
+#: src/playlevel.cpp:602 src/playlevel.cpp:876
 msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto jonka yritit avata on korruptoitunut"
 
@@ -9088,28 +9168,33 @@ msgstr "Palkinto:"
 msgid "Gold: "
 msgstr "Kultaa:"
 
-#: src/playlevel.cpp:854
-#, no-c-format
+#: src/playlevel.cpp:856
+#, fuzzy, c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% kullasta säilyy seuraavaan skenaarioon"
 
-#: src/playlevel.cpp:855
+#: src/playlevel.cpp:857 src/playlevel.cpp:859
 msgid "Retained Gold: "
 msgstr "Säilyvä kulta:"
 
-#: src/playlevel.cpp:860
+#: src/playlevel.cpp:859
+#, fuzzy
+msgid "100 gold will be available for the next scenario"
+msgstr "80% kullasta säilyy seuraavaan skenaarioon"
+
+#: src/playlevel.cpp:865
 msgid "Victory"
 msgstr "Voitto"
 
-#: src/playlevel.cpp:861
+#: src/playlevel.cpp:866
 msgid "You have emerged victorious!"
 msgstr "Olet voittaja!"
 
-#: src/playlevel.cpp:865
+#: src/playlevel.cpp:870
 msgid "Scenario Report"
 msgstr "Skenaarionraportti:"
 
-#: src/playlevel.cpp:886
+#: src/playlevel.cpp:891
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -9132,7 +9217,7 @@ msgstr "Puolustaja"
 msgid "Damage Calculations"
 msgstr "Vahinkolaskelmat"
 
-#: src/playturn.cpp:628 src/reports.cpp:211
+#: src/playturn.cpp:628 src/reports.cpp:214
 msgid "vs"
 msgstr "vastaan"
 
@@ -9144,89 +9229,89 @@ msgstr "Hyökkää vihollista"
 msgid "Choose weapon:"
 msgstr "Valitse ase:"
 
-#: src/playturn.cpp:1268
+#: src/playturn.cpp:1309
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "Et ole vielä aloittanut vuoroasi.  Haluatko todellakin lopettaa vuorosi?"
 
-#: src/playturn.cpp:1277 src/playturn.cpp:1282
+#: src/playturn.cpp:1318 src/playturn.cpp:1323
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Jokin yksiköistäsi voi vielä liikkua. Haluatko todellakin lopettaa vuorosi?"
 
-#: src/playturn.cpp:1297
+#: src/playturn.cpp:1338
 msgid "Auto-Save"
 msgstr "Automaattinen tallennus"
 
-#: src/playturn.cpp:1299
+#: src/playturn.cpp:1340
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Automaattinen tallennus epäonnistui. Yritä tallentaa peli manuaalisesti."
 
-#: src/playturn.cpp:1510
+#: src/playturn.cpp:1576
 msgid "Rename Unit"
 msgstr "Uudelleennimeä yksikkö"
 
-#: src/playturn.cpp:1556
+#: src/playturn.cpp:1622
 msgid "Name:"
 msgstr "Nimi:"
 
-#: src/playturn.cpp:1559 src/playturn.cpp:1573
+#: src/playturn.cpp:1625 src/playturn.cpp:1639
 msgid "Error"
 msgstr "Virhe"
 
-#: src/playturn.cpp:1559
+#: src/playturn.cpp:1625
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr "Tallenteen nimessä ei saa olla puolipistettä, kautta- tai kenoviivaa."
 
-#: src/playturn.cpp:1570
+#: src/playturn.cpp:1636
 msgid "Saved"
 msgstr "Tallennettu"
 
-#: src/playturn.cpp:1570
+#: src/playturn.cpp:1636
 msgid "The game has been saved"
 msgstr "Peli on tallennettu"
 
-#: src/playturn.cpp:1573
+#: src/playturn.cpp:1639
 msgid "The game could not be saved"
 msgstr "Peliä ei voitu tallentaa"
 
-#: src/playturn.cpp:1703
+#: src/playturn.cpp:1768
 msgid "Leader"
 msgstr "Johtaja"
 
-#: src/playturn.cpp:1705
+#: src/playturn.cpp:1770
 msgid "Villages"
 msgstr "Kyliä"
 
-#: src/playturn.cpp:1707
+#: src/playturn.cpp:1772
 msgid "Upkeep"
 msgstr "Ylläpito"
 
-#: src/playturn.cpp:1708
+#: src/playturn.cpp:1773
 msgid "Income"
 msgstr "Tulot"
 
-#: src/playturn.cpp:1807
+#: src/playturn.cpp:1878
 msgid "You have no units available to recruit."
 msgstr "Sinulla ei ole yksiköitä joita värvätä."
 
-#: src/playturn.cpp:1819
+#: src/playturn.cpp:1890
 msgid "Recruit"
 msgstr "Värvää"
 
-#: src/playturn.cpp:1820 src/playturn.cpp:2004
+#: src/playturn.cpp:1891 src/playturn.cpp:2087
 msgid "Select unit:"
 msgstr "Valitse yksikkö:"
 
-#: src/playturn.cpp:1854
+#: src/playturn.cpp:1925
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Sinulla ei ole tarpeeksi kultaa sen yksikön värväämiseen"
 
-#: src/playturn.cpp:1912
+#: src/playturn.cpp:1983
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -9234,7 +9319,7 @@ msgstr ""
 "Herrani, tämä yksikkö on veteraani! Haluatko todellakin vapauttaa sen "
 "palveluksesta?"
 
-#: src/playturn.cpp:1914
+#: src/playturn.cpp:1985
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -9242,19 +9327,19 @@ msgstr ""
 "Herrani, tämä yksikkö nousee kohta kokemustason! Haluatko todellakin "
 "vapauttaa sen palveluksesta?"
 
-#: src/playturn.cpp:1919
+#: src/playturn.cpp:1990
 msgid "her"
 msgstr "hänet"
 
-#: src/playturn.cpp:1919
+#: src/playturn.cpp:1990
 msgid "him"
 msgstr "hänet"
 
-#: src/playturn.cpp:1960
+#: src/playturn.cpp:2031
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Olet erossa sotilaistasi etkä voi kutsua heitä"
 
-#: src/playturn.cpp:1962
+#: src/playturn.cpp:2033
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -9262,117 +9347,118 @@ msgstr ""
 "Sinulla ei ole veteraaneja edellisistä skenaariosta jotka voisit kutsua "
 "palvelukseen."
 
-#: src/playturn.cpp:1968
+#: src/playturn.cpp:2039
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 "Sinulla täytyy olla vähintään $cost kultapalaa voidaksesi kutsua yksikön "
 "takaisin"
 
-#: src/playturn.cpp:1978
-msgid "level: "
-msgstr "taso:"
+#: src/playturn.cpp:2047
+#, fuzzy
+msgid "Level"
+msgstr "taso"
 
-#: src/playturn.cpp:1991
+#: src/playturn.cpp:2074
 msgid "Dismiss Unit"
 msgstr "Vapauta yksikkö palveluksesta"
 
-#: src/playturn.cpp:2003
+#: src/playturn.cpp:2086
 msgid "Recall"
 msgstr "Kutsu veteraaniyksikkö"
 
-#: src/playturn.cpp:2049
+#: src/playturn.cpp:2132
 msgid "Message:"
 msgstr "Viesti:"
 
-#: src/playturn.cpp:2049
+#: src/playturn.cpp:2132
 msgid "Send to allies only"
 msgstr "Lähetä vain ystäville"
 
-#: src/playturn.cpp:2143 src/unit.cpp:1096
+#: src/playturn.cpp:2227 src/unit.cpp:1116
 msgid "Moves"
 msgstr "Liikkuminen"
 
-#: src/playturn.cpp:2144
+#: src/playturn.cpp:2228
 msgid "Location"
 msgstr "Kohde"
 
-#: src/playturn.cpp:2192
+#: src/playturn.cpp:2280
 msgid "Unit List"
 msgstr "Yksikkölista"
 
-#: src/playturn.cpp:2227 src/playturn.cpp:2289
+#: src/playturn.cpp:2316 src/playturn.cpp:2378
 msgid "Recruits"
 msgstr "Värväyksiä"
 
-#: src/playturn.cpp:2233 src/playturn.cpp:2293
+#: src/playturn.cpp:2322 src/playturn.cpp:2382
 msgid "Recalls"
 msgstr "Kutsuntoja"
 
-#: src/playturn.cpp:2239 src/playturn.cpp:2297
+#: src/playturn.cpp:2328 src/playturn.cpp:2386
 msgid "Advancements"
 msgstr "Ylennyksiä"
 
-#: src/playturn.cpp:2245 src/playturn.cpp:2301
+#: src/playturn.cpp:2334 src/playturn.cpp:2390
 msgid "Losses"
 msgstr "Häviöitä"
 
-#: src/playturn.cpp:2251 src/playturn.cpp:2305
+#: src/playturn.cpp:2340 src/playturn.cpp:2394
 msgid "Kills"
 msgstr "Tappoja"
 
-#: src/playturn.cpp:2257
+#: src/playturn.cpp:2346
 msgid "Damage Inflicted"
 msgstr "Tehty vahinko"
 
-#: src/playturn.cpp:2263
+#: src/playturn.cpp:2352
 msgid "Damage Taken"
 msgstr "Otettu vahinko"
 
-#: src/playturn.cpp:2269
+#: src/playturn.cpp:2358
 msgid "Damage Inflicted (EV)"
 msgstr "Tehty vahinko (Keskiarvo)"
 
-#: src/playturn.cpp:2276
+#: src/playturn.cpp:2365
 msgid "Damage Taken (EV)"
 msgstr "Otettu vahinko (Keskiarvo)"
 
-#: src/playturn.cpp:2282
+#: src/playturn.cpp:2371
 msgid "Statistics"
 msgstr "Tilastot"
 
-#: src/playturn.cpp:2319
+#: src/playturn.cpp:2408
 msgid "Search"
 msgstr "Etsi"
 
-#: src/playturn.cpp:2329
+#: src/playturn.cpp:2418
 msgid "prompt^Command:"
 msgstr "Komento:"
 
-#: src/playturn.cpp:2340
+#: src/playturn.cpp:2429
 msgid "Chat Log"
 msgstr "Keskusteluloki"
 
-#: src/playturn.cpp:2405
+#: src/playturn.cpp:2494
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Säiettä '$search' sisältäväät yksikköä tai muistilappua ei löytynyt."
 
-#: src/playturn.cpp:2436
+#: src/playturn.cpp:2525
 msgid "Saved Theme Preference: "
 msgstr "Teemavalinta tallennettu:"
 
-#: src/playturn.cpp:2442
+#: src/playturn.cpp:2531
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Uusi teema tulee käyttöön seurravassa uudessa tai ladatussa pelissä."
 
-#: src/playturn.cpp:2527
+#: src/playturn.cpp:2616
 msgid "Place Label"
 msgstr "Aseta muistilappu"
 
-#: src/playturn.cpp:2528
+#: src/playturn.cpp:2617
 msgid "Label:"
 msgstr "Muistilappu:"
 
-#: src/playturn.cpp:2660
+#: src/playturn.cpp:2749
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -9380,37 +9466,37 @@ msgstr ""
 "Pelit eivät ole synkronoitu, ja ne lopetetaan. Haluatko tallentaa virhelokin "
 "pelistäsi?"
 
-#: src/playturn.cpp:2713
+#: src/playturn.cpp:2802
 msgid "Replace with AI"
 msgstr "Korvaa tietokoneella"
 
-#: src/playturn.cpp:2714
+#: src/playturn.cpp:2803
 msgid "Replace with local player"
 msgstr "Korvaa paikallisella pelaajalla"
 
-#: src/playturn.cpp:2715
+#: src/playturn.cpp:2804
 msgid "Abort game"
 msgstr "Keskeytä peli"
 
-#: src/playturn.cpp:2718
+#: src/playturn.cpp:2807
 msgid "Replace with "
 msgstr "Korvaa pelaajalla "
 
-#: src/playturn.cpp:2722
+#: src/playturn.cpp:2811
 msgid "has left the game. What do you want to do?"
 msgstr "on poistunut pelistä. Mitä haluat tehdä?"
 
-#: src/reports.cpp:108
+#: src/reports.cpp:111
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Tämä yksikkö on näkymätön. Vihollisyksiköt eivät näe sitä eivätkä voi "
 "hyökätä sitä kohti."
 
-#: src/reports.cpp:108
+#: src/reports.cpp:111
 msgid "invisible: "
 msgstr "näkymätön:"
 
-#: src/reports.cpp:113
+#: src/reports.cpp:116
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
@@ -9418,11 +9504,11 @@ msgstr ""
 "Tämä yksikkö on hidastettu. Se liikkuu puolella nopeudella ja hyökkää "
 "taistelussa kerran tavallista vähemmän."
 
-#: src/reports.cpp:113
+#: src/reports.cpp:116
 msgid "slowed: "
 msgstr "hidastettu:"
 
-#: src/reports.cpp:118
+#: src/reports.cpp:121
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -9435,47 +9521,47 @@ msgstr ""
 "parannusta kylästä tai ystävälliseltä yksiköltä jolla on hoitotaito. \n"
 "Myrkky ei tapa yksikköä, vaan jättää jäljelle vähintään 1 HP."
 
-#: src/reports.cpp:118
+#: src/reports.cpp:121
 msgid "poisoned: "
 msgstr "myrkytetty:"
 
-#: src/reports.cpp:125
+#: src/reports.cpp:128
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Tämä yksikkö on kivetetty. Se ei voi liikkua eikä hyökätä."
 
-#: src/reports.cpp:125
+#: src/reports.cpp:128
 msgid "stone: "
 msgstr "kivetetty:"
 
-#: src/reports.cpp:235 src/unit_types.cpp:311
+#: src/reports.cpp:238 src/unit_types.cpp:311
 msgid "damage"
 msgstr "vahinkoa"
 
-#: src/reports.cpp:253
+#: src/reports.cpp:256
 msgid "Lawful units: "
 msgstr "Lainkuuliaiset yksiköt"
 
-#: src/reports.cpp:255
+#: src/reports.cpp:258
 msgid "Neutral units: "
 msgstr "Neutraalit yksiköt"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:259
 msgid "Chaotic units: "
 msgstr "Kaoottiset yksiköt"
 
-#: src/reports.cpp:310
+#: src/reports.cpp:313
 msgid "Owned village"
 msgstr "Omistamasi kylä"
 
-#: src/reports.cpp:312
+#: src/reports.cpp:315
 msgid "Enemy village"
 msgstr "Viholliskylä"
 
-#: src/reports.cpp:314
+#: src/reports.cpp:317
 msgid "Allied village"
 msgstr "Ystävällinen kylä"
 
-#: src/reports.cpp:374
+#: src/reports.cpp:377
 msgid "Observers:"
 msgstr "Tarkkailijat"
 
@@ -9608,33 +9694,36 @@ msgstr "Lisää"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnothin tietopankki"
 
-#: src/unit.cpp:1042 src/unit.cpp:1169
+#: src/unit.cpp:1062 src/unit.cpp:1189
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:1121
+#: src/unit.cpp:1141
 msgid "XP to advance"
 msgstr "Kokemusta kehitykseen:"
 
-#: src/unit.cpp:1160
+#: src/unit.cpp:1180
 msgid ": "
 msgstr ":"
 
-#: src/unit_types.cpp:323
+#: src/unit_types.cpp:331
 msgid "strikes"
 msgstr "iskua"
 
-#: src/unit_types.cpp:933
+#: src/unit_types.cpp:942
 msgid "chaotic"
 msgstr "kaoottinen"
 
-#: src/unit_types.cpp:933
+#: src/unit_types.cpp:942
 msgid "lawful"
 msgstr "lainkuuliainen"
 
-#: src/unit_types.cpp:933
+#: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutraali"
+
+#~ msgid "level: "
+#~ msgstr "taso:"
 
 #~ msgid "halberd"
 #~ msgstr "hilpari"
@@ -9924,9 +10013,6 @@ msgstr "neutraali"
 #~ msgid "Toggle Grid"
 #~ msgstr "Ruudukon näyttö"
 
-#~ msgid "Status Table"
-#~ msgstr "Tilannetaulukko"
-
 #~ msgid "Mute"
 #~ msgstr "Hiljennä äänet"
 
@@ -9959,9 +10045,6 @@ msgstr "neutraali"
 
 #~ msgid "Quit Editor"
 #~ msgstr "Poistu"
-
-#~ msgid "New Map"
-#~ msgstr "Uusi kartta"
 
 #~ msgid "Load Map"
 #~ msgstr "Avaa kartta"
