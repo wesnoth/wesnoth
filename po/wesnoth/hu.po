@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-29 20:33+0200\n"
-"PO-Revision-Date: 2005-05-23 14:19+0100\n"
+"PO-Revision-Date: 2005-05-29 12:36+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,12 +26,11 @@ msgstr "Bepa-Roman.ttf,Vera.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:36
 msgid "Binary Saves"
-msgstr ""
+msgstr "Futtatható mentések"
 
 #: data/game.cfg:43
-#, fuzzy
 msgid "Show Combat"
-msgstr "Küzdelem"
+msgstr "Küzdelem mutatása"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -821,7 +820,6 @@ msgstr ""
 "A jellemvonások amelyek minden nem élőholt egység számára elérhetőek:"
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -5302,9 +5300,8 @@ msgstr "behálózás"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:42
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
-#, fuzzy
 msgid "faerie fire"
-msgstr "mesebeli érintés"
+msgstr "mesebeli tűz"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -5339,13 +5336,12 @@ msgid "Elvish High Lord"
 msgstr "Tünde nagyúr"
 
 #: data/units/Elvish_High_Lord.cfg:18
-#, fuzzy
 msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
 msgstr ""
-"A tünde nagyurak félelmetes harcosok, kardjaikat használva a közelharcban, "
-"és tűzlabdákat távolsági harc esetén."
+"A tünde nagyurak vívótudásáról sokat regélnek, azonban távolra pusztító "
+"erejű fagyos labdákat is képesek vetni."
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
@@ -5373,13 +5369,12 @@ msgid "Elvish Lord"
 msgstr "Tünde-úr"
 
 #: data/units/Elvish_Lord.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
 msgstr ""
-"A tünde-urak vívótudásáról sokat regélnek, azonban távolra tűzlabdákat is "
-"képesek vetni."
+"A tünde-urak vívótudásáról sokat regélnek, azonban távolra pusztító erejű "
+"fagyos labdákat is képesek vetni."
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
@@ -6572,6 +6567,10 @@ msgid ""
 "their victims, they simply shrug off all damage sustained as if they had "
 "been freshly summoned, to begin their search for flesh again."
 msgstr ""
+"A halvajárók mérgező karmaikkal támadják meg remélt áldozataikat, a halott "
+"hús iránti szentségtelen éhségük által indíttatva. Amikor már jóllaktak "
+"áldozataik húsával, egyszerűen elvesztik elszenvedett sebeiket, mintha csak "
+"most idézték volna őket, és újra hús keresésére indulnak."
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
@@ -6610,7 +6609,6 @@ msgid "Noble Lord"
 msgstr "Nemesúr"
 
 #: data/units/Noble_Lord.cfg:24
-#, fuzzy
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like lords, Lords possess "
@@ -6619,7 +6617,8 @@ msgid ""
 msgstr ""
 "Csapatai büszke vezéreként a nemesúr különösen képzett a közelharcban, de "
 "ért az íjászathoz is. Akárcsak a parancsnokok, rendelkeznek hadvezetési "
-"tehetséggel, és az összes közeli gyengébb csapat harcértékét növeli"
+"tehetséggel, így az összes mellettük álló gyengébb csapat harcértékét "
+"növelik."
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
@@ -8197,11 +8196,11 @@ msgstr "védekező sebezhetőség kontra"
 
 #: src/actions.cpp:645
 msgid "(both should survive)"
-msgstr ""
+msgstr "(mindkettő túlélheti)"
 
 #: src/actions.cpp:647
 msgid "% Pr[kills/killed by/both survive]"
-msgstr ""
+msgstr "% Pr[legyőzi/legyőzik/mindkettő túléli]"
 
 #: src/actions.cpp:849 src/actions.cpp:1015 src/display.cpp:1038
 msgid "poisoned"
@@ -9660,9 +9659,8 @@ msgid "Unexpected characters at line start"
 msgstr "Nem várt karakterek a sor kezdetén"
 
 #: src/serialization/parser.cpp:124
-#, fuzzy
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr "Hiányzik a befejező tag a $tag tag-hez ($line sor)"
+msgstr "Hiányzik a befejező tag a $tag tag-hez itt: $pos"
 
 #: src/serialization/parser.cpp:139
 msgid "Unterminated [element] tag"
@@ -9689,9 +9687,10 @@ msgid "Unexpected closing tag"
 msgstr "Nem várt lezáró tag"
 
 #: src/serialization/parser.cpp:179
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
-msgstr "Érvénytelen lezáró tag-et találtam a $tag tag-hez ($line sor)"
+msgstr ""
+"Érvénytelen lezáró tag-et ($tag2) találtam a $tag tag-hez ($pos helyen "
+"megnyitva)"
 
 #: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 msgid "Empty variable name"
@@ -9707,11 +9706,11 @@ msgstr "Befejezetlen meghívott string"
 
 #: src/serialization/parser.cpp:285
 msgid " included from "
-msgstr ""
+msgstr ", ami innen származik:"
 
 #: src/serialization/parser.cpp:306
 msgid "$error at $pos"
-msgstr ""
+msgstr "$error $pos helyen"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
@@ -9789,9 +9788,8 @@ msgid "; "
 msgstr "; "
 
 #: src/unit.cpp:1141
-#, fuzzy
 msgid "XP to advance"
-msgstr " TP a szintlépésig"
+msgstr "TP a szintlépésig"
 
 #: src/unit.cpp:1180
 msgid ": "
@@ -9813,43 +9811,43 @@ msgstr "igazságos"
 msgid "neutral"
 msgstr "semleges"
 
-#~ msgid "level: "
-#~ msgstr "szint: "
+msgid "level: "
+msgstr "szint: "
 
-#~ msgid "fey gale"
-#~ msgstr "végső vihar"
+msgid "fey gale"
+msgstr "végső vihar"
 
-#~ msgid "halberd"
-#~ msgstr "alabárd"
+msgid "halberd"
+msgstr "alabárd"
 
-#~ msgid ""
-#~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
-#~ "their hoped-for food with poisonous claws."
-#~ msgstr ""
-#~ "A halvajárók mohón kívánják a halott húst, mérgező karmaikkal ölnek, hogy "
-#~ "szentségtelen módon a remélt táplálékhoz jussanak."
+msgid ""
+"Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
+"hoped-for food with poisonous claws."
+msgstr ""
+"A halvajárók mohón kívánják a halott húst, mérgező karmaikkal ölnek, hogy "
+"szentségtelen módon a remélt táplálékhoz jussanak."
 
-#~ msgid "Do you want to save a replay of this scenario?"
-#~ msgstr "El kívánod menteni a pálya visszajátszását?"
+msgid "Do you want to save a replay of this scenario?"
+msgstr "El kívánod menteni a pálya visszajátszását?"
 
-#~ msgid "Do you want to save your game?"
-#~ msgstr "El kívánod menteni a játékot?"
+msgid "Do you want to save your game?"
+msgstr "El kívánod menteni a játékot?"
 
-#~ msgid "Unknown scenario: '"
-#~ msgstr "Ismeretlen pálya: '"
+msgid "Unknown scenario: '"
+msgstr "Ismeretlen pálya: '"
 
-#~ msgid "Dmg"
-#~ msgstr "Sbz"
+msgid "Dmg"
+msgstr "Sbz"
 
-#~ msgid "Missing closing tag for tag $tag (file $file, line $line)"
-#~ msgstr "Hiányzik a befejező tag a $tag tag-hez ($file fájl, $line sora)"
+msgid "Missing closing tag for tag $tag (file $file, line $line)"
+msgstr "Hiányzik a befejező tag a $tag tag-hez ($file fájl, $line sora)"
 
-#~ msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
-#~ msgstr ""
-#~ "Érvénytelen lezáró tag-et találtam a $tag tag-hez ($file fájl, $line sora)"
+msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
+msgstr ""
+"Érvénytelen lezáró tag-et találtam a $tag tag-hez ($file fájl, $line sora)"
 
-#~ msgid "$error in file $file (line $line, column $column)"
-#~ msgstr "$error a fájlban $file ($line sor, $column oszlop)"
+msgid "$error in file $file (line $line, column $column)"
+msgstr "$error a fájlban $file ($line sor, $column oszlop)"
 
-#~ msgid "$error (line $line, column $column)"
-#~ msgstr "$error ($line sor, $column oszlop)"
+msgid "$error (line $line, column $column)"
+msgstr "$error ($line sor, $column oszlop)"
