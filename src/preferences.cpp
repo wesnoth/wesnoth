@@ -1048,6 +1048,7 @@ void preferences_dialog::process_event()
 		const config* const adv = get_advanced_pref();
 		if(adv != NULL) {
 			const config& pref = *adv;
+			advanced_button_.set_width(0);
 			advanced_button_.set_label(pref["name"]);
 			std::string value = prefs[pref["field"]];
 			if(value.empty()) {

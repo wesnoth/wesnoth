@@ -36,8 +36,6 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	  button_(true), state_(NORMAL), type_(type), enabled_(true), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0)
 {
-	set_label(label);
-
 	if(button_image_name.empty() && type == TYPE_PRESS) {
 		button_image_name = "button";
 	} else if(button_image_name.empty() && type == TYPE_CHECK) {
@@ -69,7 +67,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	base_height_ = button_image->h;
 	base_width_ = button_image->w;
 
-	calculate_size();
+	set_label(label);
 
 	if(type == TYPE_PRESS) {
 		image_.assign(scale_surface(button_image,location().w,location().h));
@@ -86,10 +84,20 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 
 void button::calculate_size()
 {
-	textRect_ = screen_area();
+	SDL_Rect const &loc = location();
+	bool change_size = loc.h == 0 || loc.w == 0;
 
-	textRect_ = font::draw_text(NULL,textRect_,font_size,
-	                            font::BUTTON_COLOUR,label_,0,0);
+	if (!change_size) {
+		unsigned w = loc.w - (type_ == TYPE_PRESS ? horizontal_padding :
+		                                            checkbox_horizontal_padding + base_width_);
+		label_ = font::make_text_ellipsis(label_, font_size, w);
+	}
+
+	textRect_ = font::draw_text(NULL, screen_area(), font_size,
+	                            font::BUTTON_COLOUR, label_, 0, 0);
+
+	if (!change_size)
+		return;
 
 #ifdef USE_TINY_GUI
 	set_height(textRect_.h+vertical_padding);
@@ -182,8 +190,7 @@ void button::draw_contents()
 	}
 
 	video().blit_surface(loc.x, loc.y, image);
-	const std::string etext = font::make_text_ellipsis(label_, font_size, loc.w);
-	font::draw_text(&video(), clipArea, font_size, button_colour, etext, textx, texty);
+	font::draw_text(&video(), clipArea, font_size, button_colour, label_, textx, texty);
 
 	update_rect(loc);
 }
@@ -199,7 +206,6 @@ namespace {
 
 void button::set_label(const std::string& val)
 {
-	bg_restore();
 	label_ = val;
 
 	//if we have a list of items, use the first one that isn't an image
