@@ -1035,11 +1035,11 @@ public:
 		const std::string& male_portrait = male_type.image_profile();
 		const std::string& female_portrait = female_type.image_profile();
 
-		if (male_portrait.empty() == false) {
+		if (male_portrait.empty() == false && male_portrait != male_type.image()) {
 			ss << "<img>src='" << male_portrait << "' align='right'</img> ";
 		}
 
-		if (female_portrait.empty() == false && female_portrait != male_portrait) {
+		if (female_portrait.empty() == false && female_portrait != male_portrait && female_portrait != female_type.image()) {
 			ss << "<img>src='" << female_portrait << "' align='right'</img> ";
 		}
 
