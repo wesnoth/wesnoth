@@ -6,7 +6,17 @@
 #include "map_label.hpp"
 
 namespace {
-	const size_t max_label_size = 32;
+const size_t max_label_size = 32;
+
+//our definition of map labels being obscured is if the tile is obscured,
+//or the tile below is obscured. This is because in the case where the tile
+//itself is visible, but the tile below is obscured, the bottom half of the
+//tile will still be shrouded, and the label being drawn looks weird
+bool is_shrouded(const display& disp, const gamemap::location& loc)
+{
+	return disp.shrouded(loc.x,loc.y) || disp.shrouded(loc.x,loc.y+1);
+}
+
 }
 
 map_labels::map_labels(const display& disp, const gamemap& map) : disp_(disp), map_(map)
@@ -98,7 +108,7 @@ void map_labels::set_label(const gamemap::location& loc, const std::string& str)
 
 	labels_.insert(std::pair<gamemap::location,int>(loc,handle));
 
-	if(disp_.shrouded(loc.x,loc.y)) {
+	if(is_shrouded(disp_,loc)) {
 		font::show_floating_label(handle,false);
 	}
 }
@@ -133,6 +143,6 @@ void map_labels::recalculate_labels()
 void map_labels::recalculate_shroud()
 {
 	for(label_map::const_iterator i = labels_.begin(); i != labels_.end(); ++i) {
-		font::show_floating_label(i->second,!disp_.shrouded(i->first.x,i->first.y));
+		font::show_floating_label(i->second,!is_shrouded(disp_,i->first));
 	}
 }
