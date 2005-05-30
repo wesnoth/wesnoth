@@ -207,9 +207,11 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				starting_pos = (*cfg.child("next_scenario"));
 				scenario = &starting_pos;
 				state = read_game(units_data, scenario);
-			} else  {
+			} else if(scenario->child("end_scenarios")) {
 				scenario = NULL;
 				state.scenario = "null";
+			} else {
+				return QUIT;
 			}
 
 		} else {
