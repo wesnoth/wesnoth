@@ -271,7 +271,7 @@ double pr_kills_during(const int hpa, const int dmga, const double pa,
 	const int swa, const int hpb, const int dmgb, const double pb,
 	const int swb, const int n, const bool second)
 {
-	if ((swa < swb) and (swa < (n-1) % swb + 1)) // not our move
+	if ((swa < swb) && (swa < (n-1) % swb + 1)) // not our move
 		return 0.0;
 	// A kills B during swing n, and is it second?
 	// take into account where one unit doesn't get all n swings
@@ -405,6 +405,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	if (counterattack) {
 		const attack_type& defend = defender_attacks[defend_with];
 		res.defender_special = defend.special();
+
+		if(res.defender_special == to_the_death_string) {
+			res.to_the_death = true;
+		}
 
 		//magical attacks always have a 70% chance to hit
 		if (res.defender_special == magical_string) {
