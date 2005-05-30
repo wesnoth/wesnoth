@@ -96,7 +96,7 @@ std::string recruit_unit(const gamemap& map, int side,
 	typedef std::map<gamemap::location,unit> units_map;
 
 	//find the unit that can recruit
-	units_map::const_iterator u;
+	units_map::const_iterator u = units.end();
 
 	for(u = units.begin(); u != units.end(); ++u) {
 		if(u->second.can_recruit() && u->second.side() == side) {
@@ -104,10 +104,13 @@ std::string recruit_unit(const gamemap& map, int side,
 		}
 	}
 
-	if(u == units.end())
+	if(u == units.end() && (need_castle || !map.on_board(recruit_location))) {
 		return _("You don't have a leader to recruit with.");
+	}
 
-	if(map.is_keep(u->first) == false) {
+	wassert(u != units.end() || !need_castle);
+
+	if(need_castle && map.is_keep(u->first) == false) {
 		LOG_NG << "Leader not on start: leader is on " << u->first << '\n';
 		return _("You must have your leader on a keep to recruit or recall units.");
 	}
@@ -116,13 +119,16 @@ std::string recruit_unit(const gamemap& map, int side,
 		castle_cost_calculator calc(map);
 		const paths::route& rt = a_star_search(u->first, recruit_location, 100.0, &calc, map.x(), map.y());		
 		if(rt.steps.empty() || units.find(recruit_location) != units.end() ||
-		   !map.is_castle(recruit_location))
+		   !map.is_castle(recruit_location)) {
 			recruit_location = gamemap::location();
+		}
 	}
 
 	if(!map.on_board(recruit_location)) {
 		recruit_location = find_vacant_tile(map,units,u->first,
 		                                    need_castle ? VACANT_CASTLE : VACANT_ANY);
+	} else if(units.count(recruit_location) == 1) {
+		recruit_location = find_vacant_tile(map,units,recruit_location,VACANT_ANY);
 	}
 
 	if(!map.on_board(recruit_location)) {
