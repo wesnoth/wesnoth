@@ -350,7 +350,10 @@ void textbox::handle_event(const SDL_Event& event)
 	scrollarea::handle_event(event);
 
 	bool changed = false;
-	
+
+	const int old_selstart = selstart_;
+	const int old_selend = selend_;
+
 	//Sanity check: verify that selection start and end are within text
 	//boundaries
 	if(is_selection() && !(size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size())) {
@@ -426,7 +429,7 @@ void textbox::handle_event(const SDL_Event& event)
 	const SDLMod modifiers = SDL_GetModState();
 	
 	const int c = key.sym;
-	int old_cursor = cursor_;
+	const int old_cursor = cursor_;
 	
 	if(c == SDLK_LEFT && cursor_ > 0) 
 		--cursor_;
@@ -545,7 +548,7 @@ void textbox::handle_event(const SDL_Event& event)
 	show_cursor_ = true;
 	show_cursor_at_ = SDL_GetTicks();
 
-	if(changed) {
+	if(changed || old_cursor != cursor_ || old_selstart != selstart_ || old_selend != selend_) {
 		text_image_ = NULL;
 	}
 
