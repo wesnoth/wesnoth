@@ -1188,8 +1188,9 @@ public:
 			std::vector<item> first_row;
 			table_spec table;
 			push_header(first_row, _("Terrain"));
-			push_header(first_row, _("Movement"));
 			push_header(first_row, _("Defense"));
+			push_header(first_row, _("Movement"));
+
 			table.push_back(first_row);
 			for (std::set<std::string>::const_iterator terrain_it =
 					 preferences::encountered_terrains().begin(),
@@ -1210,17 +1211,22 @@ public:
 					row.push_back(std::make_pair(str.str(), 
 								     font::line_width(name,
 										      normal_font_size)));
+
+					//defense
+					str.str(clear_stringstream);
+					const int defense =
+						100 - movement_type.defense_modifier(*map,terrain);
+					str << defense << "%";
+					push_tab_pair(row, str.str());
+
+					//movement
 					str.str(clear_stringstream);
 					if(moves < 100)
 						str << moves;
 					else
 						str << "--";
 					push_tab_pair(row, str.str());
-					str.str(clear_stringstream);
-					const int defense =
-						100 - movement_type.defense_modifier(*map,terrain);
-					str << defense << "%";
-					push_tab_pair(row, str.str());
+
 					table.push_back(row);
 				}
 			}
