@@ -466,9 +466,12 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 				}
 
 				info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
+
+				info_.disp.hide_unit(u_it->first);
+				unit_display::move_unit(info_.disp,info_.map,steps,current_unit,info_.state.get_time_of_day(),info_.units,info_.teams);
+				info_.disp.hide_unit(gamemap::location());
 				info_.units.erase(u_it);
 				u_it = info_.units.end();
-				unit_display::move_unit(info_.disp,info_.map,steps,current_unit,info_.state.get_time_of_day(),info_.units,info_.teams);
 			}
 		}
 	}
