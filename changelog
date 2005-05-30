@@ -3,7 +3,7 @@ CVS HEAD:
    * added hotkey for cycle to previous unit (shift-N) (part of #10703)
    * added hotkey for hold position (shift-space) (patch 3994)
    * made the right Command key on Mac OS X work like the left one
-   * made the 100 gold minimum for next scenario explicitly mentioned (#12987)
+   * explicitly mention the 100 gold minimum for next scenario (#12987)
    * made menu widgets sortable
    * added %-to-kill to Damage Calculations
    * added display of unit defense over the terrain when choosing move
@@ -95,6 +95,7 @@ CVS HEAD:
    * added [advancefrom] (patch #3625, forum thread 4186)
    * [recall] now can work if recruiter is not in a keep (#12974)
    * next_scenario: tentative start of MP campaign support
+   * tidied up game.cfg and traits.cfg; game startup should now be faster
  * editor improvements:
    * fixed editor file chooser when starting directory has many files (#11698)
    * made the starting position in editor start at player 1 (#10625)
