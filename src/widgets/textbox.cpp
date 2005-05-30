@@ -135,6 +135,10 @@ void textbox::draw_contents()
 	
 	SDL_Rect src;
 
+	if(text_image_ == NULL) {
+		update_text_cache(true);
+	}
+
 	if(text_image_ != NULL) {
 		src.y = yscroll_;
 		src.w = minimum<size_t>(loc.w,text_image_->w);
@@ -541,9 +545,11 @@ void textbox::handle_event(const SDL_Event& event)
 	show_cursor_ = true;
 	show_cursor_at_ = SDL_GetTicks();
 
-	update_text_cache(changed);
+	if(changed) {
+		text_image_ = NULL;
+	}
+
 	set_dirty(true);
-	draw();
 }
 
 } //end namespace gui
