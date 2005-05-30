@@ -23,6 +23,8 @@ CVS HEAD:
    * better checking for 'control' command arguments (#13086)
    * added support for unit portraits in help (forum thread 6017)
    * added Experimental theme
+   * typing a chat message quickly no longer lags the game (#12097)
+   * pasting multiline text now discards lines after the first (#12282)
  * campaign improvements:
    * Eastern Invasion:
      * Unexpected Appearance: fixed Dacyn not being [recall]-ed (#10619)
@@ -39,7 +41,7 @@ CVS HEAD:
      * Desert of Death: fixed invalid type=RogueAssassin on Hard
      * removed duplicate file inclusion
      * more accurate difficulty labels
-     * Toward Mountains of Haag: fix enemy making "never pushed so far" speech
+     * Toward Mountains of Haag: fixed enemy making "never pushed so far" speech
  * unit balancing and modifications: 
    * reduced Dwarvish Fighter cost from 17 to 16
    * changed Lieutenant attack from 6-3 to 9-3
@@ -54,7 +56,7 @@ CVS HEAD:
    * Goblin Knight -> Direwolf Rider upgrade reduced to 65 XP
    * tweaked Watch Tower, Pirate Galleon and Transport Galleon and removed
      their multihex attacks (only used as real units in Son of the Black Eye)
-   * Added flaming arrow to orcish archer line as a new attack
+   * added flaming arrow to orcish archer line as a new attack
  * unit graphics and sound improvements:
    * new death animations for: Ancient Lich, Ancient Wose, Arch Mage,
      Assassin, Bandit, Battle Princess, Blood Bat, Bone Shooter, Bowman,
@@ -68,7 +70,7 @@ CVS HEAD:
      Royal Guard, Soulshooter, Swordsman
    * fixed several image files being referred to by wrong name
    * new Soulless variation images
-   * Added flaming arrow pictures
+   * added flaming arrow images
  * language and i18n:
    * language fixes and polishing (English)
    * clarified Necrophage self-leveling in unit description (#10714)
@@ -76,8 +78,9 @@ CVS HEAD:
    * new translations:
      * Serbian
    * updated translations:
-     Afrikaans, Catalan, Chinese, Estonian, Finnish, French, German, Greek, 
-     Hungarian, Italian, Japanese, Russian, Slovenian, Swedish, Turkish
+     Afrikaans, British English, Catalan, Chinese, Estonian, Finnish,
+     French, German, Greek, Hungarian, Italian, Japanese, Russian,
+     Slovenian, Swedish, Turkish
    * updated gettext support to GNU gettext 0.14.4
    * removed the intl/ directory, since libintl is now widespread enough
      for gettextize to default to not installing it
@@ -90,12 +93,13 @@ CVS HEAD:
    * better diagnostics on parsing: file inclusion sequence
    * added [scroll_to] (patch #3388, forum thread 3235)
    * added [advancefrom] (patch #3625, forum thread 4186)
+   * [recall] now can work if recruiter is not in a keep (#12974)
+   * next_scenario: tentative start of MP campaign support
  * editor improvements:
    * fixed editor file chooser when starting directory has many files (#11698)
    * made the starting position in editor start at player 1 (#10625)
  * improvements and bug fixes of the logging system
- * next_scenario: tentative start of MP campaign support
- * fix replays with idle_ai, as seen in user scenario Rebellion (#12943)
+ * fixed replays with idle_ai, as seen in user scenario Rebellion (#12943)
  * various bug fixes and code cleanups
 
 Version 0.9.1:
