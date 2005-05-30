@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-29 20:33+0200\n"
-"PO-Revision-Date: 2005-05-26 19:05+0200\n"
+"PO-Revision-Date: 2005-05-30 12:55+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -4740,7 +4740,6 @@ msgid "Drake Glider"
 msgstr "Drakseglare"
 
 #: data/units/Drake_Glider.cfg:18
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armour as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -4756,7 +4755,9 @@ msgstr ""
 "den inre eld som är så vanlig bland drakfolket. Drakseglarna använder "
 "effektivt sin hastighet för att brutalt slå ner på sina fiender och tvinga "
 "dem till marken. De bästa bland drakseglarna kan se fram emot att bli "
-"upptagna bland de högtflygande molndrakarna."
+"upptagna bland de högtflygande molndrakarna. Från sina höjder kan de se "
+"förbi fiendens försvar. Deras flygskicklighet ger dem tillräckligt precision "
+"för att anfalla skyddade fiender."
 
 #: data/units/Drake_Glider.cfg:21 data/units/Drake_Hurricane.cfg:26
 #: data/units/Drake_Sky.cfg:26
@@ -4771,9 +4772,8 @@ msgid "marksman"
 msgstr "prickskytt"
 
 #: data/units/Drake_Hurricane.cfg:3
-#, fuzzy
 msgid "Hurricane Drake"
-msgstr "Eldmanare"
+msgstr "Orkandrake"
 
 #: data/units/Drake_Hurricane.cfg:18
 msgid ""
@@ -4781,6 +4781,9 @@ msgid ""
 "those drakes which are gifted with flight.  Soaring high in the air, they "
 "can see past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
+"Orkandrakarna, skyarnas mästare, är eliten bland de drakar som har "
+"flygandets gåva. Från sina höjder kan de se förbi fiendens skyddade "
+"positioner och spruta eld mot dem utan risk."
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -4804,7 +4807,6 @@ msgid "Sky Drake"
 msgstr "Molndrake"
 
 #: data/units/Drake_Sky.cfg:18
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
@@ -4815,7 +4817,9 @@ msgid ""
 msgstr ""
 "Molndrakarna är molnens sanna herrar. Med sin fart och sin förmåga att "
 "spruta eld förintar de otaliga fiender. De kan snabbt slå ner på sitt byte, "
-"och är sedan länge borta igen innan någon kan stoppa dem."
+"och är sedan länge borta igen innan någon kan stoppa dem. Genom att anfalla "
+"från luften kan de spruta eld med sådan precision att även de bästa "
+"försvarspositioner blir utsatta."
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -7380,9 +7384,8 @@ msgstr ""
 #: data/units/Soulless.cfg:190 data/units/Soulless.cfg:266
 #: data/units/Soulless.cfg:341 data/units/Soulless.cfg:416
 #: data/units/Soulless.cfg:491
-#, fuzzy
 msgid "plague(Walking Corpse)"
-msgstr "Vandrande död"
+msgstr "pest (Vandrande död)"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -8054,9 +8057,8 @@ msgid "+Russian Translation"
 msgstr "+Rysk översättning"
 
 #: src/about.cpp:262
-#, fuzzy
 msgid "+Serbian Translation"
-msgstr "+Tysk översättning"
+msgstr "+Serbisk översättning"
 
 #: src/about.cpp:265
 msgid "+Slovak Translation"
@@ -8269,19 +8271,19 @@ msgstr "Version: "
 
 #: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
-msgstr ""
+msgstr "%F"
 
 #: src/dialogs.cpp:424
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:427
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A %H:%M"
 
 #: src/dialogs.cpp:430
 msgid "%b %d"
-msgstr ""
+msgstr "%e %b"
 
 #: src/dialogs.cpp:454
 msgid "No Saved Games"
@@ -8324,9 +8326,8 @@ msgstr ""
 "filer i spelet?"
 
 #: src/dialogs.cpp:550
-#, fuzzy
 msgid "Date"
-msgstr "Port"
+msgstr "Datum"
 
 #: src/dialogs.cpp:550 src/game.cpp:882 src/help.cpp:1112
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
@@ -9061,12 +9062,11 @@ msgstr "Skapa nytt spel"
 
 #: src/multiplayer_lobby.cpp:28
 msgid "Map"
-msgstr ""
+msgstr "Karta"
 
 #: src/multiplayer_lobby.cpp:29
-#, fuzzy
 msgid "Status"
-msgstr "Statistik"
+msgstr "Status"
 
 #: src/multiplayer_lobby.cpp:106
 msgid "Observe Game"
@@ -9226,9 +9226,8 @@ msgid "Retained Gold: "
 msgstr "Bibehållet guld: "
 
 #: src/playlevel.cpp:859
-#, fuzzy
 msgid "100 gold will be available for the next scenario"
-msgstr "80% av guldet bibehålls till nästa scenario"
+msgstr "100 guld tillhandahålls till nästa scenario"
 
 #: src/playlevel.cpp:865
 msgid "Victory"
@@ -9403,9 +9402,8 @@ msgstr ""
 "Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
 
 #: src/playturn.cpp:2047
-#, fuzzy
 msgid "Level"
-msgstr "nivå"
+msgstr "Nivå"
 
 #: src/playturn.cpp:2074
 msgid "Dismiss Unit"
@@ -9773,6 +9771,3 @@ msgstr "redbar"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutral"
-
-#~ msgid "level: "
-#~ msgstr "nivå: "
