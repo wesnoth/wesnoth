@@ -93,14 +93,15 @@ CVS HEAD:
    * better diagnostics on parsing: file inclusion sequence
    * added [scroll_to] (patch #3388, forum thread 3235)
    * added [advancefrom] (patch #3625, forum thread 4186)
-   * [recall] now can work if recruiter is not in a keep (#12974)
+   * [recall] now can work if recruiter is not in a keep (#11735, #12974)
    * next_scenario: tentative start of MP campaign support
    * tidied up game.cfg and traits.cfg; game startup should now be faster
  * editor improvements:
    * fixed editor file chooser when starting directory has many files (#11698)
-   * made the starting position in editor start at player 1 (#10625)
+   * the starting position in the editor now starts counting from 1 (#10625)
  * improvements and bug fixes of the logging system
  * fixed replays with idle_ai, as seen in user scenario Rebellion (#12943)
+ * saving during an AI unit's turn no longer makes that unit disappear (#13023)
  * various bug fixes and code cleanups
 
 Version 0.9.1:
