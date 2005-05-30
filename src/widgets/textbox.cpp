@@ -19,8 +19,10 @@
 #include "../language.hpp"
 #include "../log.hpp"
 #include "../sdl_utils.hpp"
+#include "../serialization/string_utils.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
+
 #include "SDL.h"
 
 #include <algorithm>
@@ -73,6 +75,11 @@ void textbox::append_text(const std::string& text)
 {
 	if(text_image_.get() == NULL) {
 		set_text(text);
+		return;
+	}
+
+	//disallow adding multi-line text to a single-line text box
+	if(wrap_ == false && std::find_if(text.begin(),text.end(),utils::isnewline) != text.end()) {
 		return;
 	}
 
@@ -482,7 +489,13 @@ void textbox::handle_event(const SDL_Event& event)
 				if(is_selection())
 					erase_selection();
 
-				wide_string s = utils::string_to_wstring(copy_from_clipboard());
+				std::string str = copy_from_clipboard();
+
+				//cut off anything after the first newline
+				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
+
+				wide_string s = utils::string_to_wstring(str);
+
 				if(text_.size() < max_size_) {
 					if(s.size() + text_.size() > max_size_) {
 						s.resize(max_size_ - text_.size());
@@ -490,6 +503,7 @@ void textbox::handle_event(const SDL_Event& event)
 					text_.insert(text_.begin()+cursor_, s.begin(), s.end());
 					cursor_ += s.size();
 				}
+
 				}
 
 				break;
