@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-29 20:33+0200\n"
+"POT-Creation-Date: 2005-05-31 21:42+0200\n"
 "PO-Revision-Date: 2004-10-17 20:24+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
-#: data/game.cfg:36
+#: data/game.cfg:31
 msgid "Binary Saves"
 msgstr ""
 
-#: data/game.cfg:43
+#: data/game.cfg:38
 #, fuzzy
 msgid "Show Combat"
 msgstr "Boj"
@@ -218,7 +218,7 @@ msgstr ""
 "njihovo novačenje ali priklic, ampak potrebujejo tudi plače. Za več podatkov "
 "si poglejte <ref>dst=income_and_upkeep text='Prihodki in Plače'</ref>."
 
-#: data/help.cfg:92 src/help.cpp:1191
+#: data/help.cfg:92 src/help.cpp:1192
 msgid "Movement"
 msgstr "Premikanje"
 
@@ -2767,11 +2767,11 @@ msgid ""
 "blow."
 msgstr ""
 
-#: data/traits.cfg:5 data/translations/english.cfg:61
+#: data/traits.cfg:6 data/translations/english.cfg:61
 msgid "loyal"
 msgstr "zvest"
 
-#: data/traits.cfg:6
+#: data/traits.cfg:7
 msgid "Zero upkeep"
 msgstr "Brez plače"
 
@@ -2783,23 +2783,23 @@ msgstr "nemrtev"
 msgid "Immune to poison"
 msgstr "Imun na strup"
 
-#: data/traits.cfg:26
+#: data/traits.cfg:25
 msgid "strong"
 msgstr "močan"
 
-#: data/traits.cfg:44
+#: data/traits.cfg:42
 msgid "dextrous"
 msgstr "spreten"
 
-#: data/traits.cfg:57
+#: data/traits.cfg:54
 msgid "quick"
 msgstr "hiter"
 
-#: data/traits.cfg:74
+#: data/traits.cfg:70
 msgid "intelligent"
 msgstr "pameten"
 
-#: data/traits.cfg:86
+#: data/traits.cfg:81
 msgid "resilient"
 msgstr "odporen"
 
@@ -2919,7 +2919,7 @@ msgstr ""
 "ali pri zdravniku."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
-#: data/units/Paladin.cfg:21 data/units/Saurian_Icecaster.cfg:20
+#: data/units/Paladin.cfg:21 data/units/Saurian_Icecaster.cfg:21
 #: data/units/Saurian_Tribalist.cfg:21
 msgid "heals"
 msgstr "celi rane"
@@ -2972,7 +2972,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:442 src/actions.cpp:551
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:452 src/actions.cpp:561
 msgid "leadership"
 msgstr "vodenje"
 
@@ -3050,7 +3050,7 @@ msgstr ""
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:578
+#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:588
 msgid "steadfast"
 msgstr "neomajen"
 
@@ -3257,7 +3257,7 @@ msgstr "dotik"
 #: data/units/Elvish_Sorceress.cfg:118 data/units/Elvish_Sylph.cfg:84
 #: data/units/Ghost.cfg:20 data/units/Ghost.cfg:32 data/units/Initiate.cfg:20
 #: data/units/Lich.cfg:20 data/units/Lich.cfg:33 data/units/Necromancer.cfg:36
-#: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
+#: data/units/Saurian_Icecaster.cfg:43 data/units/Saurian_Soothsayer.cfg:41
 #: data/units/Saurian_Tribalist.cfg:41 data/units/Spectre.cfg:42
 #: data/units/Wraith.cfg:42
 msgid "cold"
@@ -3267,9 +3267,11 @@ msgstr "mrzel"
 #: data/units/Dark_Spirit.cfg:36 data/units/Demilich.cfg:36
 #: data/units/Lich.cfg:24 data/units/Orcish_Shaman.cfg:41
 #: data/units/Orcish_Shaman.cfg:100 data/units/Orcish_Shaman.cfg:159
-#: data/units/Skeletal_Dragon.cfg:33 data/units/Spectre.cfg:29
-#: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:26
-#: data/units/Vampire_Lady.cfg:39 data/units/Wraith.cfg:29
+#: data/units/Saurian_Icecaster.cfg:44 data/units/Saurian_Soothsayer.cfg:42
+#: data/units/Saurian_Tribalist.cfg:42 data/units/Skeletal_Dragon.cfg:33
+#: data/units/Spectre.cfg:29 data/units/Vampire_Bat.cfg:24
+#: data/units/Vampire_Lady.cfg:26 data/units/Vampire_Lady.cfg:39
+#: data/units/Wraith.cfg:29
 msgid "drain"
 msgstr "črpa"
 
@@ -3299,11 +3301,9 @@ msgstr "čarovnija"
 #: data/units/Mermaid_Priestess.cfg:48 data/units/Mermaid_Siren.cfg:29
 #: data/units/Mermaid_Siren.cfg:72 data/units/Necromancer.cfg:37
 #: data/units/Princess.cfg:80 data/units/Red_Mage.cfg:47
-#: data/units/Red_Mage.cfg:140 data/units/Saurian_Icecaster.cfg:43
-#: data/units/Saurian_Soothsayer.cfg:42 data/units/Saurian_Tribalist.cfg:42
-#: data/units/Sea_Hag.cfg:34 data/units/Silver_Mage.cfg:96
-#: data/units/Silver_Mage.cfg:225 data/units/White_Mage.cfg:48
-#: data/units/White_Mage.cfg:119
+#: data/units/Red_Mage.cfg:140 data/units/Sea_Hag.cfg:34
+#: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:225
+#: data/units/White_Mage.cfg:48 data/units/White_Mage.cfg:119
 msgid "magical"
 msgstr "čaroben"
 
@@ -3338,7 +3338,8 @@ msgstr "top"
 #: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:33
 #: data/units/Cave_Spider.cfg:47 data/units/Cuttle_Fish.cfg:33
 #: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:20
-#: data/units/Deathmaster.cfg:32 data/units/Drake_Gladiator.cfg:63
+#: data/units/Deathmaster.cfg:32 data/units/Drake_Clasher.cfg:52
+#: data/units/Drake_Enforcer.cfg:43 data/units/Drake_Gladiator.cfg:43
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Hurricane.cfg:27
 #: data/units/Drake_Sky.cfg:27 data/units/Dwarvish_Dragonguard.cfg:21
 #: data/units/Dwarvish_Fighter.cfg:40 data/units/Dwarvish_Lord.cfg:45
@@ -3375,7 +3376,7 @@ msgstr "top"
 #: data/units/Outlaw.cfg:112 data/units/Outlaw_Princess.cfg:54
 #: data/units/Outlaw_Princess.cfg:78 data/units/Outlaw_Queen.cfg:55
 #: data/units/Outlaw_Queen.cfg:78 data/units/Red_Mage.cfg:24
-#: data/units/Red_Mage.cfg:117 data/units/Saurian_Icecaster.cfg:24
+#: data/units/Red_Mage.cfg:117 data/units/Saurian_Icecaster.cfg:25
 #: data/units/Saurian_Soothsayer.cfg:24 data/units/Saurian_Tribalist.cfg:24
 #: data/units/Sea_Hag.cfg:32 data/units/Shock_Trooper.cfg:20
 #: data/units/Silver_Mage.cfg:78 data/units/Silver_Mage.cfg:207
@@ -3420,7 +3421,7 @@ msgstr ""
 #: data/units/Orcish_Shaman.cfg:78 data/units/Orcish_Shaman.cfg:137
 #: data/units/Outlaw_Princess.cfg:53 data/units/Outlaw_Queen.cfg:54
 #: data/units/Red_Mage.cfg:23 data/units/Red_Mage.cfg:116
-#: data/units/Saurian_Icecaster.cfg:23 data/units/Saurian_Soothsayer.cfg:23
+#: data/units/Saurian_Icecaster.cfg:24 data/units/Saurian_Soothsayer.cfg:23
 #: data/units/Saurian_Tribalist.cfg:23 data/units/Silver_Mage.cfg:77
 #: data/units/Silver_Mage.cfg:206 data/units/White_Mage.cfg:29
 #: data/units/White_Mage.cfg:100
@@ -3445,9 +3446,11 @@ msgstr "ognjena krogla"
 #: data/units/Fireball.cfg:18 data/units/Fireball.cfg:19
 #: data/units/Goblin_Pillager.cfg:21 data/units/Great_Mage.cfg:45
 #: data/units/Great_Mage.cfg:138 data/units/Lord.cfg:115
-#: data/units/Mage.cfg:42 data/units/Mage.cfg:119 data/units/Princess.cfg:78
-#: data/units/Red_Mage.cfg:45 data/units/Red_Mage.cfg:138
-#: data/units/Silver_Mage.cfg:94 data/units/Silver_Mage.cfg:223
+#: data/units/Mage.cfg:42 data/units/Mage.cfg:119
+#: data/units/Orcish_Archer.cfg:68 data/units/Orcish_Crossbowman.cfg:67
+#: data/units/Princess.cfg:78 data/units/Red_Mage.cfg:45
+#: data/units/Red_Mage.cfg:138 data/units/Silver_Mage.cfg:94
+#: data/units/Silver_Mage.cfg:223
 msgid "fire"
 msgstr "ognjen"
 
@@ -3486,10 +3489,11 @@ msgstr "bodalo"
 #: data/units/Deathblade.cfg:40 data/units/Direwolf_Rider.cfg:38
 #: data/units/Direwolf_Rider.cfg:50 data/units/Dragoon.cfg:46
 #: data/units/Drake_Burner.cfg:35 data/units/Drake_Clasher.cfg:34
-#: data/units/Drake_Fighter.cfg:34 data/units/Drake_Fire.cfg:37
-#: data/units/Drake_Flameheart.cfg:24 data/units/Drake_Flare.cfg:24
-#: data/units/Drake_Gladiator.cfg:26 data/units/Drake_Inferno.cfg:25
-#: data/units/Drake_Slasher.cfg:23 data/units/Drake_Warrior.cfg:23
+#: data/units/Drake_Enforcer.cfg:25 data/units/Drake_Fighter.cfg:34
+#: data/units/Drake_Fire.cfg:37 data/units/Drake_Flameheart.cfg:24
+#: data/units/Drake_Flare.cfg:24 data/units/Drake_Gladiator.cfg:25
+#: data/units/Drake_Inferno.cfg:25 data/units/Drake_Slasher.cfg:26
+#: data/units/Drake_Warden.cfg:26 data/units/Drake_Warrior.cfg:23
 #: data/units/Draug.cfg:37 data/units/Duelist.cfg:34
 #: data/units/Dwarvish_Berserker.cfg:34 data/units/Dwarvish_Fighter.cfg:23
 #: data/units/Dwarvish_Lord.cfg:28 data/units/Dwarvish_Lord.cfg:61
@@ -3549,7 +3553,7 @@ msgstr "oster"
 #: data/units/Assassin.cfg:39 data/units/Assassin.cfg:118
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:190 src/actions.cpp:569
+#: data/units/Thief.cfg:190 src/actions.cpp:579
 msgid "backstab"
 msgstr "vbod v hrbet"
 
@@ -3581,7 +3585,8 @@ msgid ""
 "near them when not fighting against invaders."
 msgstr ""
 
-#: data/units/Bandit.cfg:32 data/units/Drake_Gladiator.cfg:62
+#: data/units/Bandit.cfg:32 data/units/Drake_Clasher.cfg:51
+#: data/units/Drake_Enforcer.cfg:42 data/units/Drake_Gladiator.cfg:42
 #: data/units/Great_Troll.cfg:21 data/units/Heavy_Infantryman.cfg:19
 #: data/units/Iron_Mauler.cfg:19 data/units/Mage_of_Light.cfg:30
 #: data/units/Mage_of_Light.cfg:102 data/units/Outlaw.cfg:20
@@ -3611,8 +3616,8 @@ msgstr ""
 #: data/units/Cavalryman.cfg:41 data/units/Commander.cfg:35
 #: data/units/Commander.cfg:110 data/units/Deathblade.cfg:39
 #: data/units/Dragoon.cfg:45 data/units/Drake_Clasher.cfg:33
-#: data/units/Drake_Flameheart.cfg:23 data/units/Drake_Flare.cfg:23
-#: data/units/Drake_Gladiator.cfg:25 data/units/Drake_Slasher.cfg:22
+#: data/units/Drake_Enforcer.cfg:24 data/units/Drake_Flameheart.cfg:23
+#: data/units/Drake_Flare.cfg:23 data/units/Drake_Gladiator.cfg:24
 #: data/units/Drake_Warrior.cfg:22 data/units/Elvish_Archer.cfg:23
 #: data/units/Elvish_Archer.cfg:102 data/units/Elvish_Avenger.cfg:24
 #: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:24
@@ -3712,11 +3717,11 @@ msgstr "vbod"
 #: data/units/Elvish_Scout.cfg:53 data/units/Longbowman.cfg:39
 #: data/units/Lord.cfg:39 data/units/Master_Bowman.cfg:33
 #: data/units/Noble_Commander.cfg:46 data/units/Noble_Lord.cfg:45
-#: data/units/Orcish_Archer.cfg:37 data/units/Orcish_Leader.cfg:37
-#: data/units/Orcish_Ruler.cfg:38 data/units/Orcish_Sovereign.cfg:42
-#: data/units/Orcish_Warlord.cfg:30 data/units/Poacher.cfg:42
-#: data/units/Skeleton_Archer.cfg:41 data/units/Soul_Shooter.cfg:40
-#: data/units/Trapper.cfg:42
+#: data/units/Orcish_Archer.cfg:37 data/units/Orcish_Archer.cfg:67
+#: data/units/Orcish_Leader.cfg:37 data/units/Orcish_Ruler.cfg:38
+#: data/units/Orcish_Sovereign.cfg:42 data/units/Orcish_Warlord.cfg:30
+#: data/units/Poacher.cfg:42 data/units/Skeleton_Archer.cfg:41
+#: data/units/Soul_Shooter.cfg:40 data/units/Trapper.cfg:42
 msgid "bow"
 msgstr "lok"
 
@@ -3724,12 +3729,12 @@ msgstr "lok"
 #: data/units/Cavalier.cfg:62 data/units/Chocobone.cfg:33
 #: data/units/Commander.cfg:58 data/units/Cuttle_Fish.cfg:69
 #: data/units/Death_Knight.cfg:51 data/units/Dragoon.cfg:67
-#: data/units/Drake_Clasher.cfg:52 data/units/Drake_Gladiator.cfg:44
-#: data/units/Drake_Slasher.cfg:41 data/units/Duelist.cfg:50
-#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:27
-#: data/units/Dwarvish_Guardsman.cfg:40 data/units/Dwarvish_Sentinel.cfg:29
-#: data/units/Dwarvish_Sentinel.cfg:42 data/units/Dwarvish_Stalwart.cfg:29
-#: data/units/Dwarvish_Stalwart.cfg:42 data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Drake_Slasher.cfg:44 data/units/Drake_Warden.cfg:44
+#: data/units/Duelist.cfg:50 data/units/Dwarvish_Dragonguard.cfg:39
+#: data/units/Dwarvish_Guardsman.cfg:27 data/units/Dwarvish_Guardsman.cfg:40
+#: data/units/Dwarvish_Sentinel.cfg:29 data/units/Dwarvish_Sentinel.cfg:42
+#: data/units/Dwarvish_Stalwart.cfg:29 data/units/Dwarvish_Stalwart.cfg:42
+#: data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:41
 #: data/units/Elvish_Archer.cfg:120 data/units/Elvish_Avenger.cfg:41
 #: data/units/Elvish_Avenger.cfg:129 data/units/Elvish_Captain.cfg:41
@@ -3809,7 +3814,8 @@ msgstr ""
 #: data/units/Dragoon.cfg:66 data/units/Duelist.cfg:49
 #: data/units/General.cfg:51 data/units/Grand_Marshal.cfg:47
 #: data/units/Lieutenant.cfg:41 data/units/Orcish_Crossbowman.cfg:39
-#: data/units/Sergeant.cfg:41 data/units/Wall_Guard.cfg:36
+#: data/units/Orcish_Crossbowman.cfg:66 data/units/Sergeant.cfg:41
+#: data/units/Wall_Guard.cfg:36
 msgid "crossbow"
 msgstr "samostrel"
 
@@ -3859,32 +3865,30 @@ msgid ""
 "units."
 msgstr ""
 
-#: data/units/Chocobone.cfg:32 data/units/Drake_Clasher.cfg:51
-#: data/units/Drake_Gladiator.cfg:43 data/units/Drake_Slasher.cfg:40
-#: data/units/Dwarvish_Guardsman.cfg:25 data/units/Dwarvish_Guardsman.cfg:39
-#: data/units/Dwarvish_Sentinel.cfg:27 data/units/Dwarvish_Sentinel.cfg:41
-#: data/units/Dwarvish_Stalwart.cfg:27 data/units/Dwarvish_Stalwart.cfg:41
-#: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:39
-#: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
-#: data/units/Horseman.cfg:21 data/units/Javelineer.cfg:19
-#: data/units/Javelineer.cfg:47 data/units/Merman_Entangler.cfg:19
-#: data/units/Merman_Hunter.cfg:20 data/units/Merman_Hunter.cfg:60
-#: data/units/Merman_Javelineer.cfg:20 data/units/Merman_Javelineer.cfg:60
-#: data/units/Merman_Netcaster.cfg:19 data/units/Merman_Spearman.cfg:20
-#: data/units/Merman_Spearman.cfg:60 data/units/Saurian.cfg:24
-#: data/units/Saurian.cfg:42 data/units/Saurian_Ambusher.cfg:22
-#: data/units/Saurian_Ambusher.cfg:40 data/units/Saurian_Flanker.cfg:23
-#: data/units/Saurian_Flanker.cfg:41 data/units/Saurian_Skirmisher.cfg:22
-#: data/units/Saurian_Skirmisher.cfg:40 data/units/Saurian_Warrior.cfg:24
-#: data/units/Saurian_Warrior.cfg:42 data/units/Spearman.cfg:37
-#: data/units/Spearman.cfg:88
+#: data/units/Chocobone.cfg:32 data/units/Dwarvish_Guardsman.cfg:25
+#: data/units/Dwarvish_Guardsman.cfg:39 data/units/Dwarvish_Sentinel.cfg:27
+#: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:27
+#: data/units/Dwarvish_Stalwart.cfg:41 data/units/Goblin_Impaler.cfg:20
+#: data/units/Goblin_Impaler.cfg:39 data/units/Goblin_Spearman.cfg:20
+#: data/units/Goblin_Spearman.cfg:33 data/units/Horseman.cfg:21
+#: data/units/Javelineer.cfg:19 data/units/Javelineer.cfg:47
+#: data/units/Merman_Entangler.cfg:19 data/units/Merman_Hunter.cfg:20
+#: data/units/Merman_Hunter.cfg:60 data/units/Merman_Javelineer.cfg:20
+#: data/units/Merman_Javelineer.cfg:60 data/units/Merman_Netcaster.cfg:19
+#: data/units/Merman_Spearman.cfg:20 data/units/Merman_Spearman.cfg:60
+#: data/units/Saurian.cfg:24 data/units/Saurian.cfg:42
+#: data/units/Saurian_Ambusher.cfg:22 data/units/Saurian_Ambusher.cfg:40
+#: data/units/Saurian_Flanker.cfg:23 data/units/Saurian_Flanker.cfg:41
+#: data/units/Saurian_Skirmisher.cfg:22 data/units/Saurian_Skirmisher.cfg:40
+#: data/units/Saurian_Warrior.cfg:24 data/units/Saurian_Warrior.cfg:42
+#: data/units/Spearman.cfg:37 data/units/Spearman.cfg:88
 msgid "spear"
 msgstr "kopje"
 
 #: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:39
 #: data/units/Horseman.cfg:23 data/units/Knight.cfg:39
-#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:452
-#: src/actions.cpp:560
+#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:462
+#: src/actions.cpp:570
 msgid "charge"
 msgstr "naskok"
 
@@ -3903,7 +3907,7 @@ msgstr ""
 msgid "gaze"
 msgstr "bolščanje"
 
-#: data/units/Cockatrice.cfg:38 src/actions.cpp:865 src/actions.cpp:1032
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:875 src/actions.cpp:1042
 msgid "stone"
 msgstr "okamèni"
 
@@ -4123,9 +4127,23 @@ msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
 "would be mistaken. To compensate they have become great craftsmen that can "
-"fabricate weapons with emerald edges, and wear heavy armour. The Clashers' "
-"weapons of choice are the sword and spear, which they use to great effect. "
+"fabricate weapons with emerald edges, and wear heavy armor. The Clashers' "
+"weapons of choice are the sword and mace, which they use to great effect. "
 "The greatest Clashers can become Drake Gladiators or Slashers."
+msgstr ""
+
+#: data/units/Drake_Enforcer.cfg:3
+#, fuzzy
+msgid "Drake Enforcer"
+msgstr "Temni čarodej"
+
+#: data/units/Drake_Enforcer.cfg:18
+msgid ""
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged, they "
+"would be mistaken. Drakes Enforcers protect their vulnerable hides with "
+"thick brass armor and they arm themselves with as many emerald edged weapons "
+"as possible to fend off whatever opponents may await them."
 msgstr ""
 
 #: data/units/Drake_Fighter.cfg:3
@@ -4149,7 +4167,7 @@ msgstr ""
 
 #: data/units/Drake_Fire.cfg:18
 msgid ""
-"The great fire drakes equip themselves with silver plated armour to defend "
+"The great fire drakes equip themselves with silver plated armor to defend "
 "themselves from serious injuries. Although their melee technique is "
 "primitive, they have mastered their internal fire and are to be feared. The "
 "most ferocious Fire Drakes become the flying configurations known as Drake "
@@ -4176,7 +4194,7 @@ msgstr ""
 #: data/units/Drake_Flare.cfg:20
 msgid ""
 "Drake Flares aspire to be leaders of their kind. While their mastery of "
-"their internal fire is not as great as some of their kin these Drakes have "
+"their internal fire is not as great as some of their kin, these Drakes have "
 "broader aspirations. They are skilled with swords, and they aspire to be the "
 "greatest of their kind."
 msgstr ""
@@ -4185,13 +4203,13 @@ msgstr ""
 msgid "Drake Gladiator"
 msgstr ""
 
-#: data/units/Drake_Gladiator.cfg:19
+#: data/units/Drake_Gladiator.cfg:18
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged, they "
 "would be mistaken. Drakes Gladiators protect their vulnerable hides with "
-"thick brass armour and they arm themselves with as many emerald edged "
-"weapons as possible to fend off whatever opponents may await them."
+"thick brass armor and they arm themselves with as many emerald edged weapons "
+"as possible to fend off whatever opponents may await them."
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:3
@@ -4200,27 +4218,20 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:18
 msgid ""
-"Drake Gliders wear as little armour as possible so they can quickly escape "
+"Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
 "possessing the internal fire common to many of their kin. Gliders can also "
 "effectively use their speed to viciously slam their opponents into "
 "submission. The best gliders can look forward to being accepted into the "
-"ranks of the high flying Sky Drakes.  From their aerial vantage point, these "
-"drakes can see past most defensive cover.  Their skill at flying allows them "
-"the precision to target enemies under such cover"
+"ranks of the high flying Sky Drakes. From their aerial vantage point, these "
+"drakes can see past most defensive cover. Their skill at flying allows them "
+"the precision to target enemies under such cover."
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:21 data/units/Drake_Hurricane.cfg:26
 #: data/units/Drake_Sky.cfg:26
 msgid "slam"
 msgstr "trk"
-
-#: data/units/Drake_Glider.cfg:47 data/units/Drake_Hurricane.cfg:52
-#: data/units/Drake_Sky.cfg:52 data/units/Elvish_Marksman.cfg:41
-#: data/units/Elvish_Marksman.cfg:134 data/units/Elvish_Sharpshooter.cfg:42
-#: data/units/Elvish_Sharpshooter.cfg:136 data/units/Fire_Dragon.cfg:61
-msgid "marksman"
-msgstr "ostrostrelec"
 
 #: data/units/Drake_Hurricane.cfg:3
 #, fuzzy
@@ -4230,8 +4241,8 @@ msgstr "Saurijski bočni napadalec"
 #: data/units/Drake_Hurricane.cfg:18
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
-"those drakes which are gifted with flight.  Soaring high in the air, they "
-"can see past most defensive cover and spit fire at their foes with impunity."
+"those drakes which are gifted with flight. Soaring high in the air, they can "
+"see past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
 
 #: data/units/Drake_Inferno.cfg:3
@@ -4240,7 +4251,7 @@ msgstr ""
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
-"The flying configurations known as Drake Infernos wear massive gold armour "
+"The flying configurations known as Drake Infernos wear massive gold armor "
 "that is almost impenetrable. These drakes are also practically immune to "
 "fire as they have adjusted to hiding in the cones of volcanoes. Drake "
 "Infernos have utterly mastered their internal fire, and rival their "
@@ -4255,7 +4266,7 @@ msgstr ""
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
-"down on prey, and are usually long gone before anyone can stop them.  By "
+"down on prey, and are usually long gone before anyone can stop them. By "
 "attacking from the air, they can spit fire with great precision into "
 "positions which would otherwise afford a great defensive advantage to their "
 "foes."
@@ -4268,18 +4279,31 @@ msgstr ""
 #: data/units/Drake_Slasher.cfg:19
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
-"fire as a weapon some may think that these Drakes are disadvantaged, they "
-"would be mistaken. To compensate they have become great craftsmen that can "
-"fabricate weapons with emerald edges, and wear heavy armour. The Slashers' "
-"weapon of choice is the halberd, which they use to great effect."
+"fire as a weapon some may think that these Drakes are disadvantaged, but "
+"they would be mistaken. To compensate they have become great craftsmen that "
+"can fabricate weapons with emerald edges, and wear heavy armor. The "
+"Slashers' weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 
-#: data/units/Drake_Slasher.cfg:43 data/units/Goblin_Impaler.cfg:26
-#: data/units/Halbardier.cfg:28 data/units/Halbardier.cfg:69
-#: data/units/Javelineer.cfg:24 data/units/Pikeman.cfg:27
-#: data/units/Spearman.cfg:43
+#: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:46
+#: data/units/Goblin_Impaler.cfg:26 data/units/Halbardier.cfg:28
+#: data/units/Halbardier.cfg:69 data/units/Javelineer.cfg:24
+#: data/units/Pikeman.cfg:27 data/units/Spearman.cfg:43
 msgid "firststrike"
 msgstr "prvi napad"
+
+#: data/units/Drake_Warden.cfg:4
+msgid "Drake Warden"
+msgstr ""
+
+#: data/units/Drake_Warden.cfg:19
+msgid ""
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged, but "
+"they would be mistaken. To compensate they have become great craftsmen that "
+"can fabricate weapons with emerald edges, and wear heavy armor. The Wardens' "
+"weapon of choice is the halberd, which they use to great effect."
+msgstr ""
 
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
@@ -4707,6 +4731,12 @@ msgstr ""
 msgid "longbow"
 msgstr "dolgi lok"
 
+#: data/units/Elvish_Marksman.cfg:41 data/units/Elvish_Marksman.cfg:134
+#: data/units/Elvish_Sharpshooter.cfg:42
+#: data/units/Elvish_Sharpshooter.cfg:136 data/units/Fire_Dragon.cfg:61
+msgid "marksman"
+msgstr "ostrostrelec"
+
 #: data/units/Elvish_Marksman.cfg:97
 msgid "female^Elvish Marksman"
 msgstr "Vilinska strelka"
@@ -5094,7 +5124,7 @@ msgstr "Goblinski kopjenosec"
 msgid ""
 "Goblins tend to try and make up for their general idiocy, frailty, and lack "
 "of sophisticated weaponry by attempting to overwhelm their foes by sheer "
-"numbers. Though lacking in decent armour or weapons, these meagre spearmen "
+"numbers. Though lacking in decent armor or weapons, these meagre spearmen "
 "are well-equipped for a war of attrition. The best Goblin Spearman can look "
 "forward to becoming Goblin Impalers."
 msgstr ""
@@ -5337,7 +5367,7 @@ msgstr ""
 msgid "Lord"
 msgstr "Mogočnik"
 
-#: data/units/Lord.cfg:19 data/units/Lord.cfg:94
+#: data/units/Lord.cfg:19 data/units/Lord.cfg:94 data/units/Noble_Lord.cfg:24
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
@@ -5715,14 +5745,6 @@ msgstr ""
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
 msgstr "Plemiški mogočnik"
-
-#: data/units/Noble_Lord.cfg:24
-msgid ""
-"The noble leaders of many troops, Lords are especially strong in melee "
-"combat, and also possess skill with the bow. Like lords, Lords possess "
-"leadership skills, and improve the fighting ability of all adjacent lower-"
-"level units."
-msgstr ""
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
@@ -6114,7 +6136,7 @@ msgid ""
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
 "valued as scouts as they can navigate through rough terrain and around "
 "opponents. Saurian Ambushers possess the strength to take full advantage of "
-"this fact. The best Ambushers go on to become Saurian Flankers"
+"this fact. The best Ambushers go on to become Saurian Flankers."
 msgstr ""
 
 #: data/units/Saurian_Flanker.cfg:4
@@ -6130,11 +6152,11 @@ msgid ""
 "this fact."
 msgstr ""
 
-#: data/units/Saurian_Icecaster.cfg:4
+#: data/units/Saurian_Icecaster.cfg:5
 msgid "Saurian Icecaster"
 msgstr "Saurijski metalec ledu"
 
-#: data/units/Saurian_Icecaster.cfg:18
+#: data/units/Saurian_Icecaster.cfg:19
 msgid ""
 "Saurian Icecasters have eschewed any further training in healing and curing "
 "in order to refine their skills with the dark arts. While frail, they can "
@@ -6142,7 +6164,7 @@ msgid ""
 "healing ability."
 msgstr ""
 
-#: data/units/Saurian_Icecaster.cfg:41 data/units/Saurian_Soothsayer.cfg:40
+#: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:40
 #: data/units/Saurian_Tribalist.cfg:40
 msgid "frost blast"
 msgstr "udar zmrzali"
@@ -6675,7 +6697,7 @@ msgid ""
 "White Mages are weak in combat, but expert in the ways of healing. Units "
 "placed adjacent to a White Mage will heal as though they were resting in a "
 "village. White Mages are potent in battle against the undead, which suffer "
-"high damage from their light beam"
+"high damage from their light beam."
 msgstr ""
 
 #: data/units/White_Mage.cfg:77
@@ -6923,7 +6945,7 @@ msgstr "+Sodelavci"
 msgid "+Bots"
 msgstr "+IRC roboti"
 
-#: src/about.cpp:328 src/help.cpp:2648
+#: src/about.cpp:328 src/help.cpp:2654
 msgid "Close"
 msgstr "Zapri"
 
@@ -6931,102 +6953,102 @@ msgstr "Zapri"
 msgid "You don't have a leader to recruit with."
 msgstr "Nimate voditelja, s katerim bi lahko novačili."
 
-#: src/actions.cpp:112
+#: src/actions.cpp:115
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Če hočete novačiti ali priklicati enote, mora biti vaš voditelj v trdnjavi."
 
-#: src/actions.cpp:129
+#: src/actions.cpp:135
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Na voljo ni nič prostih gradov, kjer bi lahko novačili."
 
-#: src/actions.cpp:300
+#: src/actions.cpp:306
 msgid "none"
 msgstr "brez"
 
-#: src/actions.cpp:376 src/dialogs.cpp:761 src/display.cpp:1095
+#: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
 #: src/help.cpp:1136 src/reports.cpp:236
 msgid "melee"
 msgstr "na blizu"
 
-#: src/actions.cpp:376 src/dialogs.cpp:761 src/display.cpp:1096
+#: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
 #: src/help.cpp:1136 src/reports.cpp:237
 msgid "ranged"
 msgstr "na daleč"
 
-#: src/actions.cpp:422 src/actions.cpp:530
+#: src/actions.cpp:432 src/actions.cpp:540
 msgid "base damage"
 msgstr "osnovna škoda"
 
-#: src/actions.cpp:452 src/actions.cpp:560 src/actions.cpp:569
+#: src/actions.cpp:462 src/actions.cpp:570 src/actions.cpp:579
 msgid "Doubled"
 msgstr "Podvojena"
 
-#: src/actions.cpp:460
+#: src/actions.cpp:470
 msgid "attacker resistance vs"
 msgstr "napadalčeva odpornost proti"
 
-#: src/actions.cpp:460
+#: src/actions.cpp:470
 msgid "attacker vulnerability vs"
 msgstr "napadalčeva šibkost proti"
 
-#: src/actions.cpp:474 src/actions.cpp:600
+#: src/actions.cpp:484 src/actions.cpp:610
 msgid "total damage"
 msgstr "skupna škoda"
 
-#: src/actions.cpp:578
+#: src/actions.cpp:588
 msgid "Halved"
 msgstr "Prepolovljena"
 
-#: src/actions.cpp:586
+#: src/actions.cpp:596
 msgid "defender resistance vs"
 msgstr "braniteljeva odpornost proti"
 
-#: src/actions.cpp:586
+#: src/actions.cpp:596
 msgid "defender vulnerability vs"
 msgstr "braniteljeva šibkost proti"
 
-#: src/actions.cpp:645
+#: src/actions.cpp:655
 msgid "(both should survive)"
 msgstr ""
 
-#: src/actions.cpp:647
+#: src/actions.cpp:657
 msgid "% Pr[kills/killed by/both survive]"
 msgstr ""
 
-#: src/actions.cpp:849 src/actions.cpp:1015 src/display.cpp:1038
+#: src/actions.cpp:859 src/actions.cpp:1025 src/display.cpp:1038
 msgid "poisoned"
 msgstr "zastrupljen"
 
-#: src/actions.cpp:854 src/actions.cpp:1020 src/display.cpp:1034
+#: src/actions.cpp:864 src/actions.cpp:1030 src/display.cpp:1034
 msgid "slowed"
 msgstr "upočasnjen"
 
-#: src/actions.cpp:1899
+#: src/actions.cpp:1909
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions.cpp:1933
+#: src/actions.cpp:1943
 msgid "Friendly unit sighted"
 msgstr "Zavezniške enote opažene!"
 
-#: src/actions.cpp:1935
+#: src/actions.cpp:1945
 msgid "Enemy unit sighted!"
 msgstr "Sovražne enote opažene!"
 
-#: src/actions.cpp:1940
+#: src/actions.cpp:1950
 msgid "$friends Friendly units sighted"
 msgstr "Opaženih $friends zavezniških enot!"
 
-#: src/actions.cpp:1942
+#: src/actions.cpp:1952
 msgid "$enemies Enemy units sighted!"
 msgstr "Opaženih $enemies sovražnih enot!"
 
-#: src/actions.cpp:1946
+#: src/actions.cpp:1956
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 
-#: src/actions.cpp:1961
+#: src/actions.cpp:1971
 msgid "(press $hotkey to continue)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
 
@@ -7535,23 +7557,23 @@ msgstr "Terenski prikrojevalci"
 msgid "Terrain"
 msgstr "Teren"
 
-#: src/help.cpp:1192
+#: src/help.cpp:1191
 msgid "Defense"
 msgstr "Obramba"
 
-#: src/help.cpp:1290
+#: src/help.cpp:1296
 msgid "or"
 msgstr "ali"
 
-#: src/help.cpp:1297
+#: src/help.cpp:1303
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr "Ta teren deluje kot $terrains, v smislu premikanja in obrambe."
 
-#: src/help.cpp:1299
+#: src/help.cpp:1305
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Avtomatsko bo izbran teren z najboljšimi prikrojevalci."
 
-#: src/help.cpp:1303
+#: src/help.cpp:1309
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -7559,25 +7581,25 @@ msgstr ""
 "Ta teren deluje kot trdnjava, če je na njem voditelj, potem lahko novačite "
 "enote."
 
-#: src/help.cpp:1305
+#: src/help.cpp:1311
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr "Ta teren deluje kot grad, na njega lahko novačite enote."
 
-#: src/help.cpp:1307
+#: src/help.cpp:1313
 msgid "This terrain gives healing."
 msgstr "Ta teren zdravi."
 
-#: src/help.cpp:2163
+#: src/help.cpp:2169
 msgid "< Back"
 msgstr "< Nazaj"
 
-#: src/help.cpp:2164
+#: src/help.cpp:2170
 msgid "Forward >"
 msgstr "Naprej >"
 
-#: src/help.cpp:2651
+#: src/help.cpp:2657
 msgid "The Battle for Wesnoth Help"
 msgstr "Pomoč za The Battle for Wesnoth "
 
@@ -8002,7 +8024,7 @@ msgstr ")"
 msgid "unit^Gold"
 msgstr "Zlata"
 
-#: src/playlevel.cpp:602 src/playlevel.cpp:876
+#: src/playlevel.cpp:602 src/playlevel.cpp:871
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
@@ -8046,33 +8068,28 @@ msgstr "Bonus: "
 msgid "Gold: "
 msgstr "Zlato: "
 
-#: src/playlevel.cpp:856
-#, fuzzy, c-format
+#: src/playlevel.cpp:854
+#, fuzzy, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% zlata se bo ohranilo za naslednji scenarij"
 
-#: src/playlevel.cpp:857 src/playlevel.cpp:859
+#: src/playlevel.cpp:855
 msgid "Retained Gold: "
 msgstr "Ohranjeno zlato: "
 
-#: src/playlevel.cpp:859
-#, fuzzy
-msgid "100 gold will be available for the next scenario"
-msgstr "80% zlata se bo ohranilo za naslednji scenarij"
-
-#: src/playlevel.cpp:865
+#: src/playlevel.cpp:860
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playlevel.cpp:866
+#: src/playlevel.cpp:861
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
-#: src/playlevel.cpp:870
+#: src/playlevel.cpp:865
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playlevel.cpp:891
+#: src/playlevel.cpp:886
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8600,6 +8617,10 @@ msgstr "zakonit"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "nevtralen"
+
+#, fuzzy
+#~ msgid "100 gold will be available for the next scenario"
+#~ msgstr "80% zlata se bo ohranilo za naslednji scenarij"
 
 #~ msgid "level: "
 #~ msgstr "stopnja: "
