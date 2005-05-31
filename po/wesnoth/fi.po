@@ -1,4 +1,3 @@
-# Finnish translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
@@ -8,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-29 20:33+0200\n"
-"PO-Revision-Date: 2005-05-29 15:57+0200\n"
+"PO-Revision-Date: 2005-05-31 19:40+0200\n"
 "Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -98,10 +97,9 @@ msgid ""
 "that this is just an outline - for special exceptions and situations, please "
 "follow the links included."
 msgstr ""
-"Tällä sivulla kerrotaan kaikki mitä sinun tulee tietää pelataksesi Battle "
-"for Wesnothia. Pelaaminen ja pelimekaniikka käsitellään. Muista kuitenkin "
-"että tämä on vain pikakatsaus - erikoisia poikkeuksia ja tilanteita "
-"käsittellään linkkien takana."
+"Näillä sivuilla käsitellään Battle for Wesnothin pelaamista ja "
+"pelimekaniikkaa. Muista kuitenkin että tämä on vain pikakatsaus - erikoisia "
+"poikkeuksia ja tilanteita käsittellään linkkien takana."
 
 #: data/help.cfg:70
 msgid ""
@@ -129,9 +127,9 @@ msgid ""
 "bar to the right, a brief description will pop up explaining each item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
-"Kun pelaat, muista että pitäessäsi hiirtä liikkumattomana jonkin asian "
-"päällä esiin nousee nopea yhteenveto tuosta asiasta. Tämä on erityisen "
-"hyödyllistä kohdattaessa uusia asioita ensimmäistä kertaa."
+"Pelatessasi saat monista oikealla olevan palkin käsitteistä lyhyen kuvauksen "
+"pitämällä kursoria niiden päällä. Tämä on erityisen hyödyllistä kohdatessasi "
+"uusia taitoja ensimmäistä kertaa."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -154,8 +152,8 @@ msgstr ""
 "värvätä joko valitsemalla värvää valikostata tai klikkaamalla  linnaheksaa "
 "oikealla hiirennäppäimellä ja valitsemalla <italic>text=värvää</italic>.Tämä "
 "aukaisee värväysvalikon, joka listaa mahdolliset värvättävät yksiköt ja "
-"niiden hinnat. Klikkaa yksikköä nähdäksesi sen tiedot vasemmalla, sitten "
-"paina värväysnappia värvätäksesi sen."
+"niiden hinnat. Klikkaa yksikköä nähdäksesi sen tiedot vasemmalla ja paina "
+"värväysnappia värvätäksesi sen."
 
 #: data/help.cfg:81
 msgid ""
@@ -229,11 +227,11 @@ msgid ""
 msgstr ""
 "Liikkuminen Battle for Wesnothissa on helppoa: yksinkertaisesti klikkaa "
 "yksikköä jonka haluat siirtää ja sitten heksaa, johon haluat sen siirtyvän. "
-"Kun valittuna, kaikki heksat joihin kyseinen yksikkö sillä vuorolla pystyy "
-"liikkumaan ovat valaistuina, ja kaikki joihin se ei pääse ovat "
-"varjostettuja. Liikuttamalla hiirtä varjostetun heksan päällä näet kuinka "
-"kauan yksiköltä menee sinne pääsemiseen ja sen klikkaaminen saa yksikön "
-"yrittämään nopeinta reittiä sinne tällä ja seuraavilla vuoroilla."
+"Kun yksikkö on valittuna, kaikki heksat joihin kyseinen yksikkö sillä "
+"vuorolla pystyy liikkumaan ovat valaistuina, ja kaikki joihin se ei pääse "
+"ovat varjostettuja. Liikuttamalla hiirtä varjostetun heksan päällä näet "
+"kuinka kauan yksiköltä menee sinne pääsemiseen ja sen klikkaaminen saa "
+"yksikön yrittämään nopeinta reittiä sinne tällä ja seuraavilla vuoroilla."
 
 #: data/help.cfg:95
 msgid ""
@@ -252,14 +250,14 @@ msgstr ""
 "\n"
 "\n"
 "Jokaisella yksiköllä on tietty määrä liikkumispisteitä joita käytetään "
-"uuteen heksan siirryttäessä, riippuen sen heksan maastosta. Esimerkiksi "
+"uuteen heksan siirryttäessä, riippuen kyseisen heksan maastosta. Esimerkiksi "
 "ruohotasanko vie lähes aina yhden liikkumispisteen. Kuinka monta "
 "liikkumispistettä siirryttäessä heksaan riippuu yksikön tyypistä - metsässä "
 "haltiat käyttävät vain yhden pisteen, kun taas useimmat ihmis- ja "
 "örkkiyksiköt käyttävät kaksi ja hevosmiehet kolme. Voit tarkistaa kuinka "
 "paljon tiettyyn heksaan siirtyminen vie pisteitä tietyllä yksiköllä "
 "klikkaamalla sitä hiiren oikealla napilla, valitsemalla Yksikön ominaisuudet "
-"ja katsomalla Maastovan Vaikutukset."
+"ja katsomalla Maaston Vaikutukset."
 
 #: data/help.cfg:97
 msgid ""
@@ -274,12 +272,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Toinen liikkumisessa huomiotava asia on yksikköjen hallitsemat aluuet. Kukin "
-"yksikkö hallitsee viereisiä heksojaan; jos vihollisyksikkö siirtyy "
-"tälläiseen heksaan se ei voi liikkue enempään vuoronsa aikana. Yksiköiden "
-"hallitsemien aluiden hyötykäytön opettelu on tärkeä osa Wesnothia, sillä "
-"vain <ref>dst_ablity_skirmisher text='kahakoitsijat'</ref> voivat jättää "
-"halitut alueet huomiotta."
+"Toinen käsite joka liikkuessa tulee muistaa on 'yksikköjen hallitsemat "
+"alueet'. Kukin yksikkö hallitsee viereisiä heksojaan; jos vihollisyksikkö "
+"siirtyy tälläiseen heksaan se ei voi liikkua enempää vuoronsa aikana. "
+"Yksiköiden hallitsemien aluiden hyötykäytön opettelu on tärkeä osa "
+"Wesnothia, sillä vain <ref>dst_ablity_skirmisher text='kahakoitsijat'</ref> "
+"voivat jättää hallitut alueet huomiotta."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -295,7 +293,7 @@ msgid ""
 "attacks until each has used their allotted number of attacks."
 msgstr ""
 "Battle for Wesnothissa on kahdenlaisia taistelutapoja: lyhyen ja pitkän "
-"kantaman, mutta molemmat tapahtuvat yleensä vierekkäisissä heksoissa olevien "
+"kantaman joista molemmat tapahtuvat vierekkäisissä heksoissa olevien "
 "yksiköiden välillä. Lyhyen matkan taistelu käydään yleensä esim. miekoin, "
 "kirvein ja torahampain, pitkän kantaman taistelu vaikka jousin, keihäin tai "
 "tulipalloin. Taistelu on melko yksinkertaista: hyökkääjä ja puolustaja "
@@ -1241,7 +1239,7 @@ msgstr "Haltiat"
 
 #: data/multiplayer.cfg:145 data/translations/english.cfg:128
 msgid "Orcs"
-msgstr "írkit"
+msgstr "Örkit"
 
 #: data/multiplayer.cfg:171
 msgid "Dwarves"
@@ -3098,8 +3096,8 @@ msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
-"Voit peruuttaa yksikön liikkeen painamalla 'u', jos et hyökännyt tai "
-"löytänyt mitään lisäinformaatiota."
+"Voit peruuttaa yksikön liikkeen painamalla 'u' jos et hyökännyt etkä saanut "
+"lisätietoja."
 
 #: data/tips.cfg:27
 msgid ""
@@ -3554,31 +3552,31 @@ msgstr ""
 
 #: data/translations/english.cfg:132
 msgid "$name's Bridge,$name's Crossing"
-msgstr "$name -silta,$name -ylityspaikka"
+msgstr "$name|:n silta,$name|.n ylityspaikka"
 
 #: data/translations/english.cfg:133
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr "$name -tie,$name -läpikulku,$name -polku"
+msgstr "$name|:ntie,$name|:n läpikulku,$name|:n polku"
 
 #: data/translations/english.cfg:134
 msgid "$name River,River $name"
-msgstr "$name -joki,$name -joki"
+msgstr "$name|joki,$name -joki"
 
 #: data/translations/english.cfg:135
 msgid "$name Forest,$name's Forest"
-msgstr "$name -metsä,$name -metsä"
+msgstr "$name metsä,$name|:n metsä"
 
 #: data/translations/english.cfg:136
 msgid "$name Lake"
-msgstr "$name -järvi"
+msgstr "$name|järvi"
 
 #: data/translations/english.cfg:137
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr "$name|kylä,$name|kaupunki,$name|pitäjä"
+msgstr "$name|kylä,$name|:n kirkonkylä,$name|pitäjä"
 
 #: data/translations/english.cfg:138
 msgid "$name|harbor,$name|port"
-msgstr "$name -satama,$name -satama"
+msgstr "$name|:n satama,$name|:n satama"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
@@ -3586,7 +3584,7 @@ msgstr "$name|kylä,$name|kahlaamo,$name|risteys,$river|kahlaamo,$river|haara"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr "$river|silta,$river|silta,€river|silta,$name|kylä,$name|silta"
+msgstr "$river|silta,$river|silta,$river|silta,$name|kylä,$name|silta"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
@@ -3594,7 +3592,7 @@ msgstr "$name|kylä,$name|pitäjä,$name|pelto"
 
 #: data/translations/english.cfg:142
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr "$name|kylä,$name|pitäjä,$name|metsä,$name -metsä"
+msgstr "$name|kylä,$name|pitäjä,$name|metsä,$name metsä"
 
 #: data/translations/english.cfg:143
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
@@ -3604,8 +3602,8 @@ msgstr "$name|kylä,$name|kylä,$name|pitäjä,$name|kukkula,$name|kukkula"
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"$name|kylä,$name|kylä,$name|pitäjä,$name|vuori,$name|vuori,$name -jyrkänne,"
-"$name -jyrkänne"
+"$name|kylä,$name|kylä,$name|pitäjä,$name|vuori,$name|vuori,$name|jyrkänne,"
+"$name|jyrkänne"
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
@@ -4704,7 +4702,6 @@ msgid "Drake Glider"
 msgstr "Draakkiliitäjä"
 
 #: data/units/Drake_Glider.cfg:18
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armour as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -4719,7 +4716,9 @@ msgstr ""
 "kun he hylkäävät luolansa. Nämä Draakit ovat taidokkaita taistejoita, "
 "omistaen sisäisen tulen kuten monet sukulaisensa. Liitäjät käyttävät "
 "nopeuttaan myös taklatakseen vihollisensa tuhoon. Parhaat liitäjät toivovat "
-"että heidät hyväksytään korkealla lentävien Taivasdraakkien riveihin."
+"että heidät hyväksytään korkealla lentävien Taivasdraakkien riveihin. Heidän "
+"lentotaitonsa antaa heille tarkkuuden osua suojassa oleviin vihollisiin "
+"tulellaan."
 
 #: data/units/Drake_Glider.cfg:21 data/units/Drake_Hurricane.cfg:26
 #: data/units/Drake_Sky.cfg:26
@@ -4734,9 +4733,8 @@ msgid "marksman"
 msgstr "tarkka-ampuja"
 
 #: data/units/Drake_Hurricane.cfg:3
-#, fuzzy
 msgid "Hurricane Drake"
-msgstr "Tulidraakki"
+msgstr "Hurrikaanidraakki"
 
 #: data/units/Drake_Hurricane.cfg:18
 msgid ""
@@ -4744,6 +4742,9 @@ msgid ""
 "those drakes which are gifted with flight.  Soaring high in the air, they "
 "can see past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
+"Hurrikaanidraakit ovat ilmojen herroja, lentävien draakkien eliittiä. "
+"Lentäen korkealla ilmassa, he näkevät maaston yli ja ampuvat estoitta tulta "
+"viholliinsa."
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -4768,7 +4769,6 @@ msgid "Sky Drake"
 msgstr "Taivasdraakki"
 
 #: data/units/Drake_Sky.cfg:18
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
@@ -4780,7 +4780,8 @@ msgstr ""
 "Taivasdraakit ovat taivaan kuninkaita. Käyttäen liikettään ja "
 "tulihenkäystään aseina, nämä draakit ovat monen kauhu. He voivat nopeasti "
 "laskeutua vihollisen niskaan ja ovat yleensä kauan sitten häipyneet kun apu "
-"saapuu paikalle."
+"saapuu paikalle. Ampumalla tulta ilmasta heidän on helppo tähdätä "
+"vihollisiin jotka muuten olisivat hyvin suojautuneita."
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -5432,7 +5433,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:98
 msgid "female^Elvish Sharpshooter"
-msgstr "Haltiamestariampuja"
+msgstr "Haltiamestariampujatar"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
@@ -5553,7 +5554,7 @@ msgstr "Tulipallo. Tätä ei tule käyttää muuhun kuin 'Move_Unit_Fake':en!"
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
-msgstr "Rosvo"
+msgstr "Maantierosvo"
 
 #: data/units/Footpad.cfg:17 data/units/Footpad.cfg:83
 msgid ""
@@ -5576,7 +5577,7 @@ msgstr "linko"
 
 #: data/units/Footpad.cfg:69
 msgid "female^Footpad"
-msgstr "Rosvo"
+msgstr "Maantierosvo"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
@@ -6579,7 +6580,7 @@ msgstr "lihakirves"
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
-msgstr "örkkijousimies"
+msgstr "Örkkijousimies"
 
 #: data/units/Orcish_Archer.cfg:17
 msgid ""
@@ -6594,7 +6595,7 @@ msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
-msgstr "örkkisalamurhaaja"
+msgstr "Örkkisalamurhaaja"
 
 #: data/units/Orcish_Assassin.cfg:16
 msgid ""
@@ -6614,7 +6615,7 @@ msgstr "tikat"
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
-msgstr "örkkivarsijousimies"
+msgstr "Örkkivarsijousimies"
 
 #: data/units/Orcish_Crossbowman.cfg:17
 msgid ""
@@ -6634,7 +6635,7 @@ msgstr "lyhytmiekka"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr "örkkisotilas"
+msgstr "Örkkisotilas"
 
 #: data/units/Orcish_Grunt.cfg:16
 msgid ""
@@ -6648,7 +6649,7 @@ msgstr ""
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr "örkkijohtaja"
+msgstr "Örkkijohtaja"
 
 #: data/units/Orcish_Leader.cfg:18 data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -6666,11 +6667,11 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
-msgstr "örkkipäällikkö"
+msgstr "Örkkipäällikkö"
 
 #: data/units/Orcish_Shaman.cfg:3
 msgid "Orcish Shaman"
-msgstr "örkkishamaani"
+msgstr "Örkkishamaani"
 
 #: data/units/Orcish_Shaman.cfg:16
 msgid ""
@@ -6739,7 +6740,7 @@ msgstr ""
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
-msgstr "örkkitappaja"
+msgstr "Örkkitappaja"
 
 #: data/units/Orcish_Slayer.cfg:16
 msgid ""
@@ -6769,7 +6770,7 @@ msgstr ""
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
-msgstr "örkkisotaherra"
+msgstr "Örkkisotaherra"
 
 #: data/units/Orcish_Warlord.cfg:16
 msgid ""
@@ -6783,7 +6784,7 @@ msgstr ""
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
-msgstr "örkkisoturi"
+msgstr "Örkkisoturi"
 
 #: data/units/Orcish_Warrior.cfg:16
 msgid ""
@@ -6983,7 +6984,7 @@ msgstr ""
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
-msgstr "Maantierosvo"
+msgstr "Rosvo"
 
 #: data/units/Rogue.cfg:18 data/units/Rogue.cfg:78
 msgid ""
@@ -6992,14 +6993,14 @@ msgid ""
 "allows them to do double damage if an ally of theirs is on the opposite side "
 "of an enemy they are attacking."
 msgstr ""
-"Maantierosvot ovat ketteryyden mestareita ja liikkuvat suoraan vihollisten "
-"ohi, vähät välittäen hallituista alueista. Mestarivarkaita, heilläkin on "
+"Varkaat ovat ketteryyden mestareita ja liikkuvat suoraan vihollisten ohi, "
+"vähät välittäen niiden hallitsemista alueista. Mestarivarkaina heilläkin on "
 "selkäänpuukotus -hyökkäys mikä sallii heidän tehdä kaksinkertaisen vaurion "
 "jos heidän liittolaisensa on kohdeyksikön päinvastaisella puolella."
 
 #: data/units/Rogue.cfg:63
 msgid "female^Rogue"
-msgstr "Maantierosvo"
+msgstr "Rosvo"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
@@ -7344,9 +7345,8 @@ msgstr ""
 #: data/units/Soulless.cfg:190 data/units/Soulless.cfg:266
 #: data/units/Soulless.cfg:341 data/units/Soulless.cfg:416
 #: data/units/Soulless.cfg:491
-#, fuzzy
 msgid "plague(Walking Corpse)"
-msgstr "Kävelevä ruumis"
+msgstr "rutto(kävelevä ruumis)"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -7424,12 +7424,12 @@ msgstr "Varas"
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
-msgstr "Gorilla"
+msgstr "Rikollinen"
 
 #: data/units/Thug.cfg:16
 msgid "Thugs are bandits who use large clubs to beat their victims."
 msgstr ""
-"Gorillat ovat isoja lainsuojattomia jotka käyttävät nuijia uhriensa "
+"Rikolliset ovat isoja lainsuojattomia jotka käyttävät nuijia uhriensa "
 "mukiloimiseen."
 
 #: data/units/Transport_Galleon.cfg:3
@@ -8015,9 +8015,8 @@ msgid "+Russian Translation"
 msgstr "+Venäjäksi kääntänyt"
 
 #: src/about.cpp:262
-#, fuzzy
 msgid "+Serbian Translation"
-msgstr "+Saksaksi kääntänyt"
+msgstr "+Serbiaksi kääntänyt"
 
 #: src/about.cpp:265
 msgid "+Slovak Translation"
@@ -8041,7 +8040,7 @@ msgstr "+Turkiksi kääntänyt"
 
 #: src/about.cpp:289
 msgid "+Contributors"
-msgstr "+Avustajat"
+msgstr "+Lahjoittajat"
 
 #: src/about.cpp:292
 msgid "+Bots"
@@ -8229,19 +8228,19 @@ msgstr "Versio:"
 
 #: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
-msgstr ""
+msgstr "%b %d %y"
 
 #: src/dialogs.cpp:424
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:427
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:430
 msgid "%b %d"
-msgstr ""
+msgstr "%b %d"
 
 #: src/dialogs.cpp:454
 msgid "No Saved Games"
@@ -8283,9 +8282,8 @@ msgstr ""
 "Wesnothin version luomia. Haluatko rekisteröidä nämä tiedostot tällä pelillä?"
 
 #: src/dialogs.cpp:550
-#, fuzzy
 msgid "Date"
-msgstr "Portti"
+msgstr "Päivämäärä"
 
 #: src/dialogs.cpp:550 src/game.cpp:882 src/help.cpp:1112
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
@@ -9011,14 +9009,12 @@ msgid "Create Game"
 msgstr "Luo peli"
 
 #: src/multiplayer_lobby.cpp:28
-#, fuzzy
 msgid "Map"
-msgstr "Uusi kartta"
+msgstr "Kartta"
 
 #: src/multiplayer_lobby.cpp:29
-#, fuzzy
 msgid "Status"
-msgstr "Tilannetaulukko"
+msgstr "Tilanne"
 
 #: src/multiplayer_lobby.cpp:106
 msgid "Observe Game"
@@ -9169,18 +9165,17 @@ msgid "Gold: "
 msgstr "Kultaa:"
 
 #: src/playlevel.cpp:856
-#, fuzzy, c-format
+#, c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr "80% kullasta säilyy seuraavaan skenaarioon"
+msgstr "80% omistamastasi kullasta säilyy seuraavaan skenaarioon"
 
 #: src/playlevel.cpp:857 src/playlevel.cpp:859
 msgid "Retained Gold: "
 msgstr "Säilyvä kulta:"
 
 #: src/playlevel.cpp:859
-#, fuzzy
 msgid "100 gold will be available for the next scenario"
-msgstr "80% kullasta säilyy seuraavaan skenaarioon"
+msgstr "100 kultapalaa on käytössä seuraavassa skenaariossa"
 
 #: src/playlevel.cpp:865
 msgid "Victory"
@@ -9354,9 +9349,8 @@ msgstr ""
 "takaisin"
 
 #: src/playturn.cpp:2047
-#, fuzzy
 msgid "Level"
-msgstr "taso"
+msgstr "Taso"
 
 #: src/playturn.cpp:2074
 msgid "Dismiss Unit"
