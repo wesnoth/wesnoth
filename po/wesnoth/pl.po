@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-31 21:42+0200\n"
-"PO-Revision-Date: 2005-05-31 03:52+0100\n"
+"PO-Revision-Date: 2005-06-01 20:57+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,11 @@ msgstr "Bepa-Roman.ttf,FreeSans.ttf,Vera.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:31
 msgid "Binary Saves"
-msgstr ""
+msgstr "Zapis gry w formacie binarnym"
 
 #: data/game.cfg:38
-#, fuzzy
 msgid "Show Combat"
-msgstr "Walka"
+msgstr "Pokaż walkę"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -67,7 +66,6 @@ msgstr ""
 "pojawiania się w grze.."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -85,7 +83,7 @@ msgstr ""
 "komplikują zasady i samą rozgrywkę, Bitwa o Wesnoth stawia na prostotę tych "
 "elementów. To jednak wcale nie czyni gry prostą - z przejrzystych zasad "
 "wyłania się bogactwo możliwych strategii. By zacząć grać trzeba niewiele, "
-"lecz by osiągnąć mistrzostwo trzeba niezwykłych umiejętności."
+"lecz by osiągnąć mistrzostwo, trzeba niezwykłych umiejętności."
 
 #: data/help.cfg:67
 msgid "Fundamentals of Gameplay"
@@ -125,16 +123,15 @@ msgstr ""
 "zacząć od poziomu trudności<italic>text=Łatwy</italic>."
 
 #: data/help.cfg:73
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining each item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
 "Pamiętaj, że w czasie gry możesz korzystać z krótkiej pomocy wyskakującej po "
-"najechaniu na większość elementów znajdujących się w menu po prawej stronie "
-"ekranu. Pomoc ta jest szczególnie użyteczna, gdy spotkasz się z "
-"umiejętnościami jednostki po raz pierwszy."
+"najechaniu myszą na większość elementów znajdujących się w menu po prawej "
+"stronie ekranu. Pomoc ta jest szczególnie użyteczna, gdy spotkasz się po raz "
+"pierwszy z nowymi umiejętnościami."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -226,7 +223,6 @@ msgid "Movement"
 msgstr "Ruchy"
 
 #: data/help.cfg:93
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When a unit is "
@@ -236,14 +232,13 @@ msgid ""
 "move towards it by the fastest route over this and subsequent turns."
 msgstr ""
 "Przemieszczanie jednostek w Bitwie o Wesnoth jest bardzo proste. Kliknij na "
-"jednostkę, którą chcesz przemiescić, a nastepnie na pole, na które chcesz ją "
-"przenieść. Kiedy zaznaczysz jednostkę, zostaną podświetlone wszystkie "
-"możliwe pola, na które dana jednostka może sie przemieścić w danej turze. "
-"Przesuwając kursor nad pola niedostępne dla jednostki w tej turze, pokaże "
-"się liczba tur potrzebnych, aby osiągnać to pole, a klikniecie na to pole "
-"spowoduje przemieszczenie się jednostki mozliwie najkrótsza drogą w kierunku "
-"wyznaczonego miejsca, aż do momentu wyczerpania sie ruchów jednostki w tej "
-"turze."
+"jednostkę, którą chcesz przemiescić, a nastepnie na pole, na które chcesz, "
+"by się udała. Kiedy zaznaczysz jednostkę, zostaną podświetlone wszystkie "
+"możliwe pola, do których dana jednostka może dojść w tej turze, a pozostałe "
+"będą wyszarzone.  Przesuwając kursor nad pola niedostępne dla jednostki w "
+"tej turze, pokaże się liczba tur potrzebnych, aby osiągnać to pole, a "
+"klikniecie na to pole spowoduje, że jednostka zacznie się przemieszczać w "
+"jego kierunku możliwie najkrótsza drogą w tej i kolejnych turach."
 
 #: data/help.cfg:95
 msgid ""
@@ -321,7 +316,6 @@ msgstr ""
 "<header>text='Kolejność i liczba ataków'</header>"
 
 #: data/help.cfg:107
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -335,10 +329,10 @@ msgstr ""
 "\n"
 "Atakujący pierwszy zadaje cios, następnie broniący się. Sekwencja ta "
 "powtarza się do momentu, gdy obie jednostki zużyją wszystkie swoje ataki. "
-"Liczba ciosów, jakie może wykonać jednostka, bardzo się różni. Na przykład "
-"Elficki Wojownik wykonujący mieczem atak 5-4 może zadać 4 cięcia po 5 "
-"obrażeń, podczas gdy Orkowy Rębacz z atakiem 9-2 wykona tylko 2 ataki, ale "
-"po 9 obrażeń.."
+"Liczba ciosów, jakie może wykonać jednostka bardzo się różni. Na przykład "
+"elficki wojownik wykonujący mieczem atak 5-4 może zadać 4 cięcia po 5 "
+"obrażeń, podczas gdy ork rębacz z atakiem 9-2 zada tylko 2 ciosy, ale po 9 "
+"obrażeń."
 
 #: data/help.cfg:109
 msgid ""
@@ -351,7 +345,6 @@ msgstr ""
 "<header>text='Szansa trafienia'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -368,10 +361,10 @@ msgstr ""
 "Z dwoma wyjątkami, szansa trafienia jednostki zależy wyłącznie od jej "
 "umiejętności obrony w terenie, na którym się znajduje. Sprawdzić ją można w "
 "<italic>text='Modyfikatorach terenu'</italic>, widocznych po kliknięciu "
-"prawym przyciskiem myszy na jednosce i wybieraniu Opis jednostki. Na "
+"prawym przyciskiem myszy na jednosce i wybieraniu 'Opis jednostki'. Na "
 "przykład współczynnik obrony elfów w lasach wynosi 70%, co oznacza, że "
-"jednostka je atakująca ma tylko 30% szans trafienia. Z drugiej strony "
-"szansa, że elf trafi wtedy przeciwnika, zależy wyłącznie od typu terenu, na "
+"jednostka je atakująca ma tylko 30% szans na trafienie. Z drugiej strony "
+"szansa, że elf trafi wtedy atakującego, zależy wyłącznie od typu terenu, na "
 "którym się on znajduje."
 
 #: data/help.cfg:112
@@ -685,7 +678,6 @@ msgstr ""
 "18 uleczonych punktów, lub uzdrowią jednostkę z Trucizny."
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -716,7 +708,6 @@ msgstr ""
 "tym dwa pojęcia: Dochód i Utrzymanie."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -726,13 +717,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dochód jest prosty. Za każdą wioskę, którą kontrolujesz, otrzymujesz każdej "
-"tury jedną sztukę złota. Zatem jeśli posiadasz dziesięć wiosek, otrzymałbyś "
-"10 sztuk złota. Niestety Twoje koszty Utrzymania są odejmowane od dochodu, "
-"jak wyjaśniono niżej."
+"Idea dochodu jest prosta. Za każdą wioskę, którą kontrolujesz, otrzymujesz "
+"każdej tury jedną sztukę złota. Zatem jeśli posiadasz dziesięć wiosek, "
+"otrzymałbyś 10 sztuk złota. Niestety od dochodu odejmowane są twoje koszty "
+"Utrzymania, co wyjaśniono niżej."
 
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -745,16 +735,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Utrzymanie jest także dość proste. Utrzymanie każdej jednostki kosztuje w "
-"zależności od jej poziomu. Każda wioska umożliwia utrzymanie za darmo jednej "
-"pierwszo poziomowej jednostki, drugo poziomowa wymaga dwóch wiosek, i tak "
-"dalej. Dla każdego poziomu powyżej liczby wiosek, które kontrolujesz, musisz "
-"co turę zapłacić jedną sztukę złota. Na przykład jeśli miałbyś dwanaście "
+"Utrzymanie jest także dość prostą koncepcją. Każda jednostka wymaga każdej "
+"tury ilości złota równej jej poziomowi. Możesz utrzymać tyle jednostek (w "
+"przeliczeniu na poziomu), ile masz wiosek, bez płacenia za ich utrzymanie. "
+"Dla każdego poziomu powyżej liczby wiosek kontrolowanych wiosek, musisz co "
+"turę zapłacić jedną sztukę złota. Na przykład jeśli miałbyś dwanaście "
 "pierwszo poziomowych jednostek i dziesięć wiosek, to musiałbyś płacić dwie "
 "sztuki złota każdej tury."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -763,12 +752,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Koszty te są odejmowane od Twojego dochodu, więc w przypadku dwunastu "
-"jednostek i dziesięciu wiosek, Twój końcowy dochód wyniósłby 8 sztuk złota "
+"Koszty te są odejmowane od twojego dochodu, więc w przypadku dwunastu "
+"jednostek i dziesięciu wiosek, twój końcowy dochód wyniósłby 8 sztuk złota "
 "na turę."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -777,12 +765,11 @@ msgid ""
 "the second level of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"Od zwykłych reguł dotyczących Utrzymania są dwa wyjątki. Po pierwsze, "
-"jednostki z cechą Lojalny zawsze traktowane są jak pierwszo poziomowe, bez "
-"względu na ich prawdziwy poziom. Po drugie, jednostki, z którymi zaczynasz "
-"scenariusz (takie jak Konrad lub Delfador), lub jednostki, które dołączają "
-"się do ciebie w jego trakcie (jak Jeźdźcy na drugiej mapie w Dziedzicu "
-"Tronu), nigdy nie wymagają utrzymania."
+"Od zwykłych reguł dotyczących Utrzymania jest jeden ważny wyjątek: jednostki "
+"z cechą Lojalna nigdy nie wymagają utrzymania. Jednostki, z którymi "
+"zaczynasz scenariusz (takie jak Konrad lub Delfador), lub jednostki, które "
+"dołączają do ciebie w jego trakcie (jak Jeźdźcy w drugim scenariuszu w "
+"Dziedzicu Tronu), będą zazwyczaj lojalne."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -812,6 +799,9 @@ msgid ""
 "attributes slightly. They are usually randomly assigned to a unit when it is "
 "recruited."
 msgstr ""
+"Większość jednostek posiada dwie cechy, z wyjątkiem jednostek Nieumarłych, "
+"do których przypisana jest cecha \"Nieumarły\". Cechy delikatnie modyfikują "
+"atrybuty jednostki i są zazwyczaj przydzialane losowo podczas rekrutacji."
 
 #: data/help.cfg:212
 msgid ""
@@ -819,9 +809,11 @@ msgid ""
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"Cechy dostępne dla jednostek Nieumarłych to:"
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -841,14 +833,14 @@ msgstr ""
 "\n"
 "<header>text=Inteligencja</header>\n"
 "\n"
-"Inteligentne jednostki wymagają 20% mniej doświadczenia, by awansować, niż "
-"inne.\n"
+"Inteligentne jednostki wymagają 20% mniej doświadczenia niż zwykle, by "
+"awansować.\n"
 "\n"
 "Inteligentne jednostki są bardzo użyteczne na początku kampanii, ponieważ "
 "mogą szybko awansować na dużo bardziej potrzebne wysokopoziomowe jednostki. "
-"W dalszej części kampanii nie są już tak użyteczne i jeśli masz sporo "
-"wysokopoziomowych jednostek, będziesz raczej przywoływał jednostki z "
-"bardziej użytecznymi, \"długoterminowymi\" cechami."
+"W dalszej części kampanii nie są już tak użyteczne, bo nie mają czego robić "
+"ze zdobywanymi punktami doświadczenia. Jeśli masz sporo wysokopoziomowych "
+"jednostek, będziesz raczej przywoływał te z bardziej użytecznymi cechami."
 
 #: data/help.cfg:226
 #, fuzzy
@@ -945,6 +937,10 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"Inne specialne cechy, które mogą być przypisane jednostkom to:"
 
 #: data/help.cfg:251
 msgid ""
@@ -980,6 +976,17 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Nieumarła</header>\n"
+"\n"
+"Nieumarłe jednostki są odporne na truciznę.\n"
+"\n"
+"'Nieumarły' jest jedyną cechą nieumarłych jednostek. Są to ciała umarłych, "
+"wskrzeszone, by walczyć ponownie, więc trucizna nie wywiera na nich żadnego "
+"efektu. Czyni to je nieocenionymi w starciach z przeciwnikami, którzy "
+"używają w swoich atakach trucizny."
 
 #: data/help.cfg:265
 msgid ""
@@ -1180,7 +1187,7 @@ msgstr "Domyślna"
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/leader_list.cpp:99
 msgid "Random"
-msgstr "Losowa mapa"
+msgstr "Losowa"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
@@ -1192,7 +1199,7 @@ msgstr "Buntownicy"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
-msgstr "Istoty Północy"
+msgstr "Ludy północy"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:129
@@ -2785,19 +2792,16 @@ msgid "Canyon"
 msgstr "Wąwóz"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "Ruin"
-msgstr "ruina"
+msgstr "Ruina"
 
 #: data/terrain.cfg:448
-#, fuzzy
 msgid "Sunken Ruin"
-msgstr "podtopiona ruina"
+msgstr "Podtopiona ruina"
 
 #: data/terrain.cfg:459
-#, fuzzy
 msgid "Swamp Ruin"
-msgstr "zabagniona ruina"
+msgstr "Bagienna ruina"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
@@ -2813,7 +2817,7 @@ msgstr "Menu"
 
 #: data/themes/default.cfg:89
 msgid "Actions"
-msgstr "Działania"
+msgstr "Akcje"
 
 #: data/themes/default.cfg:111
 msgid "End Turn"
@@ -3014,8 +3018,8 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
-"Jeśli jesteś atakowany(a) z kilku stron równocześnie, dobrze jest wysłać "
-"trochę zbędnych jednostek w kilka kierunków, aby opóźnić marsz wroga."
+"Jeśli jesteś atakowany z kilku stron równocześnie, dobrze jest wysłać trochę "
+"zbędnych jednostek w kilka kierunków, aby opóźnić marsz wroga."
 
 #: data/tips.cfg:17
 msgid ""
@@ -4295,9 +4299,8 @@ msgid "slow"
 msgstr "spowolnienie"
 
 #: data/units/Chocobone.cfg:3
-#, fuzzy
 msgid "Chocobone"
-msgstr "Kościostruś"
+msgstr ""
 
 #: data/units/Chocobone.cfg:17
 #, fuzzy
@@ -5208,9 +5211,8 @@ msgstr "oplątanie"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:42
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
-#, fuzzy
 msgid "faerie fire"
-msgstr "dotyk wróżki"
+msgstr "płomień wróżek"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -6582,7 +6584,6 @@ msgid "short sword"
 msgstr "krótki miecz"
 
 #: data/units/Orcish_Grunt.cfg:3
-#, fuzzy
 msgid "Orcish Grunt"
 msgstr "Ork rębacz"
 
@@ -6667,7 +6668,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:121
 msgid "Old Orcish Shaman"
-msgstr "Stary  szaman orków"
+msgstr "Stary szaman orków"
 
 #: data/units/Orcish_Shaman.cfg:134
 msgid ""
@@ -6719,25 +6720,22 @@ msgstr ""
 "bardzo cennymi podczas bitwy. Gdy zginie Suweren, bitwa jest przegrana."
 
 #: data/units/Orcish_Warlord.cfg:3
-#, fuzzy
 msgid "Orcish Warlord"
 msgstr "Ork pogromca"
 
 #: data/units/Orcish_Warlord.cfg:16
-#, fuzzy
 msgid ""
 "Only Orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Skilled with both the sword and the bow, these beast-warriors lead "
 "the orcish fighting groups."
 msgstr ""
 "Tylko najsilniejsi i najbardziej przebiegli orkowie zostają pogromcami. Te "
-"uzdolniene zarówno w walce mieczem, jak i łukiem bestie-wojownicy prowadzą "
-"do boju hordy swoich pobratymców."
+"uzdolnione zarówno w walce mieczem jak i łukiem bestie-wojownicy prowadzą do "
+"boju inne oddziały."
 
 #: data/units/Orcish_Warrior.cfg:3
-#, fuzzy
 msgid "Orcish Warrior"
-msgstr "Wojownik orków"
+msgstr "Ork żołnierz"
 
 #: data/units/Orcish_Warrior.cfg:16
 #, fuzzy
@@ -6828,16 +6826,15 @@ msgid "Peasant"
 msgstr "Wieśniak"
 
 #: data/units/Peasant.cfg:17
-#, fuzzy
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not fearsome by nature, they will stubbornly defend their "
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
-"Wieśniacy są podstawą wiejskiej gospodarki, lecz w ostateczności mogą też "
-"chwycić za broń. Choć z natury spokojni, wytrwale bronią swoich zagród. "
-"Jeśli musisz używać wieśniaków do walki jasne jest, że brakuje ci lepszych "
+"Wieśniacy są podstawą wiejskiej gospodarki, ale w ostateczności mogą chwycić "
+"za broń. Choć z natury spokojni, będą wytrwale bronić swych domów. Jeśli "
+"musisz rzucić wieśniaków do walki jasne jest, że brakuje ci lepszych "
 "jednostek."
 
 #: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
@@ -6849,7 +6846,6 @@ msgid "Pikeman"
 msgstr "Pikinier"
 
 #: data/units/Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Pikemen are more experienced soldiers who have changed their spears for long "
 "pikes. Because of the length of their weapons, they always strike first in "
@@ -6857,9 +6853,10 @@ msgid ""
 "cavalry, though they find some difficulty in fighting in extremely close "
 "quarters."
 msgstr ""
-"Pikinierzy są doświadczonymi żołnierzami, którzy wymienili swe włócznie na "
-"długie piki. Z powodu długości swej broni zawsze pierwsi atakują, nawet, gdy "
-"się bronią. Są szczególnie skuteczni w zwalczaniu kawalerii."
+"Pikinierzy są bardziej doświadczonymi żołnierzami, którzy wymienili swe "
+"włócznie na długie piki. Z powodu długości swej broni zawsze pierwsi "
+"atakują, nawet podczas obrony. Są szczególnie skuteczni w zwalczaniu "
+"kawalerii, choć walka w zwarciu sprawia pewne trudności."
 
 #: data/units/Pikeman.cfg:22
 msgid "pike"
@@ -6889,13 +6886,12 @@ msgid "Poacher"
 msgstr "Kłusownik"
 
 #: data/units/Poacher.cfg:17
-#, fuzzy
 msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
 msgstr ""
 "Kłusownicy polegają na swoim doświadczeniu wyniesionym z polowań i są "
-"szczególnie użyteczni nocą, w lasach i na bagnach."
+"najbardziej użyteczni nocą w lasach i na bagnach."
 
 #: data/units/Princess.cfg:20 data/units/Princess.cfg:58
 #, fuzzy
@@ -6917,15 +6913,14 @@ msgid "Red Mage"
 msgstr "Czerwony mag"
 
 #: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:113
-#, fuzzy
 msgid ""
 "Red Mages attack with powerful magic fireballs that are guaranteed a good "
 "chance of hitting. Deft of foot, and skilled fighters both day and night, "
 "Red Mages are therefore valuable in almost all situations."
 msgstr ""
-"Czerwoni magowie atakują potężnymi kulami ognia, które mają zawsze dużą "
-"celność. Są to zwinni i zdolni wojownicy zarówno w dzień jak i w nocy. "
-"Czerwoni magowie są przydatni we wszystkich sytuacjach."
+"Czerwoni magowie atakują potężnymi magicznymi kulami ognia, które zawsze "
+"mają wysoką celność. Zarówno w dzień jak i w nocy są zwinnymi i zdolnymi "
+"wojownikami, co czyni ich przydatnymi we wszystkich sytuacjach."
 
 #: data/units/Red_Mage.cfg:96
 msgid "female^Red Mage"
@@ -6936,15 +6931,14 @@ msgid "Revenant"
 msgstr "Powracający"
 
 #: data/units/Revenant.cfg:16
-#, fuzzy
 msgid ""
 "Revenants are undead creatures raised from once mighty warriors. While the "
 "warriors' will and soul are all but lost, their fighting skills certainly "
 "remain with the Revenant."
 msgstr ""
 "Powracający to nieumarłe stwory, które niegdyś były potężnymi wojownikami. "
-"Choć ich wola i dusza już zginęły, umiejętności walki z pewnością odrodziły "
-"się w Porwacającym."
+"Choć ich wola i dusza uległy prawie całkowitemu zatraceniu, to umiejętności "
+"walki z pewnością pozostały w Porwacającym."
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
@@ -6972,13 +6966,12 @@ msgid "Royal Guard"
 msgstr "Królewski gwardzista"
 
 #: data/units/Royal_Guard.cfg:20
-#, fuzzy
 msgid ""
 "Members of the Royal Guard are hand picked from the strongest and sturdiest "
 "of the army. They are deployed only in critical situations and, so far, have "
 "always succeeded in their assigned tasks."
 msgstr ""
-"Członkowie Gwardii królewskiej są indywidualnie wybierani spośród "
+"Członkowie gwardii królewskiej są indywidualnie wybierani spośród "
 "najsilniejszych i najtwardszych żołnierzy. Używa się ich tylko w misjach "
 "najwyższej wagi i, jak na razie, nigdy jeszcze nie zawiedli."
 
@@ -7218,15 +7211,14 @@ msgid "Skeleton"
 msgstr "Szkielet"
 
 #: data/units/Skeleton.cfg:16
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Like all undead, they are especially vulnerable to fire and "
 "holy spells, but resistant to bladed weapons."
 msgstr ""
 "Szkielety to wojownicy, którzy polegli w bitwach i zostali wskrzeszeni "
-"poprzez czarną magię. Jak wszyscy nieumarli są czułe na ogień i świętą broń, "
-"ale odporne na broń sieczną."
+"poprzez czarną magię. Jak wszyscy nieumarli są szczególnie czułe na ogień i "
+"święte zaklęcia, ale odporne na broń sieczną."
 
 #: data/units/Skeleton.cfg:61 data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -7293,9 +7285,8 @@ msgstr ""
 #: data/units/Soulless.cfg:190 data/units/Soulless.cfg:266
 #: data/units/Soulless.cfg:341 data/units/Soulless.cfg:416
 #: data/units/Soulless.cfg:491
-#, fuzzy
 msgid "plague(Walking Corpse)"
-msgstr "Chodzący Trup"
+msgstr "plaga(chodzący trup)"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -7520,6 +7511,7 @@ msgid ""
 msgstr ""
 
 #: data/units/Troll_Whelp.cfg:3
+#, fuzzy
 msgid "Troll Whelp"
 msgstr "Młody troll"
 
@@ -7816,9 +7808,8 @@ msgid "+Internationalization Managers"
 msgstr "+Zarządcy internacjonalizacji"
 
 #: src/about.cpp:126
-#, fuzzy
 msgid "+Afrikaans Translation"
-msgstr "+Tłumaczenie duńskie"
+msgstr "+Tłumaczenie Afrikaans"
 
 #: src/about.cpp:130
 msgid "+Basque Translation"
@@ -7881,9 +7872,8 @@ msgid "+Italian Translation"
 msgstr "+Tłumaczenie włoskie"
 
 #: src/about.cpp:225
-#, fuzzy
 msgid "+Japanese Translation"
-msgstr "+Tłumaczenie chińskie"
+msgstr "+Tłumaczenie Japońskie"
 
 #: src/about.cpp:230
 msgid "+Latin Translation"
@@ -7906,9 +7896,8 @@ msgid "+Russian Translation"
 msgstr "+Tłumaczenie rosyjskie"
 
 #: src/about.cpp:262
-#, fuzzy
 msgid "+Serbian Translation"
-msgstr "+Tłumaczenie niemieckie"
+msgstr "+Tłumaczenie Serbskie"
 
 #: src/about.cpp:265
 msgid "+Slovak Translation"
@@ -7927,9 +7916,8 @@ msgid "+Swedish Translation"
 msgstr "+Tłumaczenie szwedzkie"
 
 #: src/about.cpp:285
-#, fuzzy
 msgid "+Turkish Translation"
-msgstr "+Tłumaczenie duńskie"
+msgstr "+Tłumaczenie Tureckie"
 
 #: src/about.cpp:289
 msgid "+Contributors"
@@ -8005,7 +7993,7 @@ msgstr "czułość obrońcy na"
 
 #: src/actions.cpp:655
 msgid "(both should survive)"
-msgstr ""
+msgstr "(obie powinny przetrwać)"
 
 #: src/actions.cpp:657
 msgid "% Pr[kills/killed by/both survive]"
@@ -8121,19 +8109,19 @@ msgstr "Wersja: "
 
 #: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
-msgstr ""
+msgstr "%d %b %y"
 
 #: src/dialogs.cpp:424
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:427
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:430
 msgid "%b %d"
-msgstr ""
+msgstr "%b %d"
 
 #: src/dialogs.cpp:454
 msgid "No Saved Games"
@@ -8174,9 +8162,8 @@ msgstr ""
 "tę wersję Bitwy o Wesnoth. Czy zarejestrować je w grze?"
 
 #: src/dialogs.cpp:550
-#, fuzzy
 msgid "Date"
-msgstr "Brama"
+msgstr "Data"
 
 #: src/dialogs.cpp:550 src/game.cpp:882 src/help.cpp:1112
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
@@ -8218,7 +8205,7 @@ msgstr "Ruchy:"
 
 #: src/display.cpp:465
 msgid "Screenshot"
-msgstr ""
+msgstr "Zrzut ekranu"
 
 #: src/display.cpp:1025
 msgid "healthy"
@@ -8639,11 +8626,11 @@ msgstr "Wysokość:"
 
 #: src/mapgen_dialog.cpp:89
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Ilość wzgórz:"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Maksymalny rozmiar wzgórza:"
 
 #: src/mapgen_dialog.cpp:91
 msgid "Villages:"
@@ -8689,11 +8676,11 @@ msgstr "Łączenie z serwerem..."
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
-msgstr ""
+msgstr "Serwer wymaga wersji '$version1', a twoja to '$version2'"
 
 #: src/multiplayer.cpp:154
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Pętla przekierowania po stronie serwera"
 
 #: src/multiplayer.cpp:186
 msgid "You must log in to this server"
@@ -8907,12 +8894,11 @@ msgstr "Stwórz grę"
 
 #: src/multiplayer_lobby.cpp:28
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #: src/multiplayer_lobby.cpp:29
-#, fuzzy
 msgid "Status"
-msgstr "Statystyki"
+msgstr "Stan"
 
 #: src/multiplayer_lobby.cpp:106
 msgid "Observe Game"
@@ -9036,7 +9022,7 @@ msgstr "Porażka"
 
 #: src/playlevel.cpp:770
 msgid "You have been defeated!"
-msgstr "Zostałeś(aś) pokonany(a)!"
+msgstr "Zostałeś pokonany!"
 
 #: src/playlevel.cpp:839
 msgid "Remaining gold: "
@@ -9063,9 +9049,9 @@ msgid "Gold: "
 msgstr "Złoto:"
 
 #: src/playlevel.cpp:854
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr "80% złota zostaje zachowane do następnego scenariusza"
+msgstr ""
 
 #: src/playlevel.cpp:855
 msgid "Retained Gold: "
@@ -9077,7 +9063,7 @@ msgstr "Zwycięstwo"
 
 #: src/playlevel.cpp:861
 msgid "You have emerged victorious!"
-msgstr "Zwyciężyłeś(aś)!"
+msgstr "Zwyciężyłeś!"
 
 #: src/playlevel.cpp:865
 msgid "Scenario Report"
@@ -9121,7 +9107,7 @@ msgstr "Wybierz broń:"
 #: src/playturn.cpp:1309
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
-msgstr "Jeszcze nie rozpocząłeś(aś) jeszcze tury. Czy chcesz ją zakończyć?"
+msgstr "Nie rozpocząłeś jeszcze tury. Czy chcesz ją zakończyć?"
 
 #: src/playturn.cpp:1318 src/playturn.cpp:1323
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -9223,8 +9209,7 @@ msgstr "go"
 
 #: src/playturn.cpp:2031
 msgid "You are separated from your soldiers and may not recall them"
-msgstr ""
-"Zostałeś oddzielony(a) od swojej armii i nie możesz przywoływać jednostek"
+msgstr "Zostałeś oddzielony od swoich żołnierzy i nie możesz ich przywoływać"
 
 #: src/playturn.cpp:2033
 msgid ""
@@ -9239,9 +9224,8 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Musisz mieć $cost sztuk złota, żeby przywołać jednostkę"
 
 #: src/playturn.cpp:2047
-#, fuzzy
 msgid "Level"
-msgstr "poziom"
+msgstr "Poziom"
 
 #: src/playturn.cpp:2074
 msgid "Dismiss Unit"
@@ -9370,7 +9354,7 @@ msgstr "Zastąp przez"
 
 #: src/playturn.cpp:2811
 msgid "has left the game. What do you want to do?"
-msgstr "opuścił(a) grę. Co teraz?"
+msgstr "opuścił grę. Co teraz?"
 
 #: src/reports.cpp:111
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -9459,9 +9443,8 @@ msgid "Unexpected characters at line start"
 msgstr "Nieoczekiwane znaki na początku linii"
 
 #: src/serialization/parser.cpp:124
-#, fuzzy
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr "Brakujący zamykający znacznik dla znacznika $tag (linia $line)"
+msgstr "Brakujący zamykający znacznik dla znacznika $tag w $pos"
 
 #: src/serialization/parser.cpp:139
 msgid "Unterminated [element] tag"
@@ -9488,9 +9471,10 @@ msgid "Unexpected closing tag"
 msgstr "Nieoczekiwany znacznik zamykający"
 
 #: src/serialization/parser.cpp:179
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
-msgstr "Znaleziono niewłaściwy znacznik zamykający dla znacznika (linia $line)"
+msgstr ""
+"Znaleziono niewłaściwy znacznik zamykający $tag2 dla znacznika $tag (otwarty "
+"w $pos)"
 
 #: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 msgid "Empty variable name"
@@ -9506,11 +9490,11 @@ msgstr "Niezakończony cytowany napis"
 
 #: src/serialization/parser.cpp:285
 msgid " included from "
-msgstr ""
+msgstr " załączone z "
 
 #: src/serialization/parser.cpp:306
 msgid "$error at $pos"
-msgstr ""
+msgstr "$error w $pos"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
@@ -9586,16 +9570,15 @@ msgstr "-- Księga Wesnoth"
 
 #: src/unit.cpp:1062 src/unit.cpp:1189
 msgid "; "
-msgstr ""
+msgstr ";"
 
 #: src/unit.cpp:1141
 msgid "XP to advance"
-msgstr ""
+msgstr "PD do awansu"
 
 #: src/unit.cpp:1180
-#, fuzzy
 msgid ": "
-msgstr "HP:"
+msgstr ":"
 
 #: src/unit_types.cpp:331
 msgid "strikes"
@@ -9624,9 +9607,8 @@ msgstr "neutralny"
 #~ "wręcz, choć posiadają i łuk. Tak jak Dowódcy, Władcy mają zdolności "
 #~ "przywódcze i zwiększają możliwości sąsiednich jednostek niższego poziomu."
 
-#, fuzzy
 #~ msgid "100 gold will be available for the next scenario"
-#~ msgstr "80% złota zostaje zachowane do następnego scenariusza"
+#~ msgstr "100 sztuk złota będzie dostępnych w następnym scenariuszu"
 
 #~ msgid ""
 #~ "Most units have two traits. Traits are attributes of the unit that modify "
