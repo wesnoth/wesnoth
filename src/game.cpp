@@ -155,7 +155,7 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
    : argc_(argc), arg_(1), argv_(argv),
      sound_manager_(use_sound), test_mode_(false), multiplayer_mode_(false),
      no_gui_(false), use_caching_(true), force_bpp_(-1), disp_(NULL),
-     loaded_game_show_replay_(false)
+     loaded_game_show_replay_(false), thread_manager()
 {
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
