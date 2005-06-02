@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-31 21:42+0200\n"
-"PO-Revision-Date: 2005-05-13 17:26+0100\n"
+"PO-Revision-Date: 2005-05-17 00:22+0100\n"
 "Last-Translator: americo iacovizzi <americo_iacovizzi@libero.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -744,7 +744,6 @@ msgstr ""
 "saranno sottratti da questi guadagni, come verrà spiegato in seguito."
 
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -759,10 +758,10 @@ msgstr ""
 "\n"
 "Il Mantenimento è altrettanto facile da capire. Ogni unità necessita di una "
 "certa quantità di oro pari al suo livello. Puoi mantenere tanti livelli "
-"complessivi quanti villaggi possiedi. Per ogni livello non mantenibile da un "
-"villaggio dovrai pagare un pezzo d'oro a turno. Per esempio, se hai dodici "
-"unità di livello uno e dieci villaggi, il Mantenimento ti costerà due pezzi "
-"d'oro a turno."
+"<italic>text=totali</italic> quanti villaggi possiedi. Comunque, per ogni "
+"livello non mantenibile da un villaggio dovrai pagare un pezzo d'oro per "
+"turno. Per esempio, se hai dodici unità di livello uno e dieci villaggi, il "
+"Mantenimento ti costerà due pezzi d'oro a turno."
 
 #: data/help.cfg:191
 msgid ""
@@ -966,6 +965,7 @@ msgstr ""
 "Altre caratteristiche speciali che possono essere assegnate alle unità sono:"
 
 #: data/help.cfg:251
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -984,6 +984,22 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Legale</header>\n"
+"\n"
+"Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
+"of every turn, which is equal to their level. Loyal units do not incur this "
+"cost.\n"
+"\n"
+"\n"
+"During campaigns, certain units may opt to join the player's forces of their "
+"own volition. These units are marked with the Loyal trait. Although they may "
+"require payment to be recalled, they never incur any upkeep costs. This can "
+"make them invaluable during a long campaign, when gold is in short supply. "
+"This trait is never given to recruited units, so it may be unwise to dismiss "
+"such units or to send them to a foolish death."
 
 #: data/help.cfg:258
 msgid ""
@@ -1362,9 +1378,8 @@ msgid "Charge"
 msgstr "Carica"
 
 #: data/scenarios/multiplayer/Clash.cfg:3
-#, fuzzy
 msgid "Clash"
-msgstr "Classico"
+msgstr "Cozzata"
 
 #: data/scenarios/multiplayer/Clash.cfg:5
 msgid ""
@@ -1381,7 +1396,7 @@ msgstr "Foresta della Paura"
 
 #: data/scenarios/multiplayer/Hexcake.cfg:3
 msgid "Hexcake"
-msgstr ""
+msgstr "Hexcake"
 
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
@@ -1395,6 +1410,8 @@ msgstr "Acqua Gelida"
 msgid ""
 "Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 msgstr ""
+"Una battaglia dentro ed intorno le acque ghiacciate di questo porto cruciale "
+"a Nord di Wesnoth"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1818,7 +1835,6 @@ msgstr ""
 "Combattenti Elfici ed Arcieri Elfici."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:69
-#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recalling\n"
@@ -1830,7 +1846,7 @@ msgid ""
 "Specialties\n"
 "Objects"
 msgstr ""
-"@Abilità Trattate:\n"
+"Abilità Trattate:\n"
 "Richiamare\n"
 "Caratteristiche\n"
 "Oro\n"
@@ -1838,11 +1854,7 @@ msgstr ""
 "Terreni\n"
 "Resistenza\n"
 "Abilità Speciali\n"
-"Oggetti\n"
-"Giocare a Wesnoth\n"
-"@Obbiettivi\n"
-"@Vittoria\n"
-"Sconfiggi Delfador"
+"Oggetti"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:71
 msgid "Defeat Delfador"
@@ -1947,7 +1959,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
 msgid "Next, you may want to begin a campaign, or play multiplayer."
-msgstr ""
+msgstr "Dopo, potresti voler iniziare una campagna o giocare in multigiocatore"
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -2025,7 +2037,6 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "Come dovrei scegliere il tipo di unità da reclutare?"
 
 #: data/scenarios/tutorial/utils.cfg:68
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box, and cost, which is displayed after the name of "
@@ -2033,8 +2044,8 @@ msgid ""
 msgstr ""
 "Devi valutare attentamente le loro abilità, visualizzate sulla sinistra "
 "nella finestra delle unità reclutabili), il loro costo, visualizzato dopo il "
-"nome dell'unità. Puoi imparare altro sulle statistiche nel resto del "
-"tutorial."
+"nome dell'unità. Puoi imparare altro sulle statistiche seguendo il resto "
+"dell'Addestramento."
 
 #: data/scenarios/tutorial/utils.cfg:69
 msgid "What happens when I recruit a unit?"
@@ -2162,7 +2173,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Merle può rispondere al mio attacco?"
 
 #: data/scenarios/tutorial/utils.cfg:84
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -2182,18 +2192,18 @@ msgstr ""
 "risponderà con un altro attacco. Questo alternarsi continuerà finché una "
 "delle due terminerà gli attacchi a disposizione, in questo caso, l'altra "
 "unità continuerà ad attaccare finché non terminerà anch'essa gli attacchi a "
-"disposizione. Tuttavia un unità può contrattaccare solo con un arma di "
+"disposizione. Tuttavia un'unità può contrattaccare solo con un arma di "
 "uguale raggio di quella usata per l'attacco. Questo vuol dire che un attacco "
 "a distanza può essere contrastato solo con un altro attacco a distanza, così "
 "come un attacco da mischia può essere contrastato con un altro attacco da "
-"mischia. Il più delle unità hanno attacchi da mischia molto più potenti di "
-"quelli a distanza. Le unità con un attacco a distanza più potente sono utili "
-"nelle rappresaglie contro le unità orientate agli attacchi di mischia. "
-"Alcune di queste unità non possiedono armi a lungo raggio, quindi non sono "
-"in grado di rispondere agli attacchi. Tuttavia le unità dotate di attacco a "
-"lungo raggio non possono attaccare attraverso più esagoni, questa è una "
-"delle caratteristiche che distinguono Wesnoth dai classici giochi di "
-"strategia."
+"mischia. La maggior parte delle unità hanno attacchi da mischia molto più "
+"potenti di quelli a distanza. Le unità con un attacco a distanza più potente "
+"sono utili nelle rappresaglie contro le unità orientate agli attacchi di "
+"mischia. Alcune di queste unità non possiedono armi a lungo raggio, quindi "
+"non sono in grado di rispondere agli attacchi. Si rammenta che le unità "
+"dotate di attacco a lungo raggio non possono attaccare attraverso più "
+"esagoni, questa è una delle caratteristiche che distinguono Wesnoth dagli "
+"altri giochi di strategia."
 
 #: data/scenarios/tutorial/utils.cfg:85
 msgid ""
@@ -2289,7 +2299,6 @@ msgstr ""
 "Come faccia a sapere come completare uno scenario? Mi verrà sempre detto?"
 
 #: data/scenarios/tutorial/utils.cfg:100
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -2299,11 +2308,11 @@ msgid ""
 "the scenario is over. Hopefully, it was a victory condition that was met."
 msgstr ""
 "Alcune volte non è chiaro come vincere uno scenario semplicemente seguendo i "
-"dialoghi. In questo caso è sufficente guardare gli obbiettivi dello "
+"dialoghi. In questo caso è sufficiente guardare gli obbiettivi dello "
 "scenario , che appaiono dopo il dialogo di apertura. Si può anche trovare "
 "facendo clic su 'Obiettivi' nel menù. Gli obbiettivi dello scenario sono un "
 "elenco delle condizioni di vittoria e di sconfitta e quando una delle due "
-"viene raggiunta, finisce il livello. Ovviamente solo vincedo si può andare "
+"viene raggiunta, finisce il livello. Ovviamente solo vincendo si può andare "
 "avanti."
 
 #: data/scenarios/tutorial/utils.cfg:101
@@ -2487,7 +2496,6 @@ msgid "How does resistance affect attack damage?"
 msgstr "La resistenza come influsce sul danno di un attacco?"
 
 #: data/scenarios/tutorial/utils.cfg:131
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2497,12 +2505,13 @@ msgid ""
 "unit, select Unit Description, then look at Resistances."
 msgstr ""
 "Ci sono 6 diversi tipi di danno: da lama, da dardo, da impatto, da fuoco, da "
-"freddo, e dal sacro. Le unità fortemente corazzate hanno  un'alta resistenza "
-"ai danni fisici come lama, dardo ed impatto ma bassa resistenza ai tipi "
-"magici: fuoco e freddo. Tutte le unità viventi hanno una buona resistenza al "
-"sacro mentre i non-morti sono estremamente deboli ad esso. Per sapere la "
-"resistenza dell'unità specifica, il premere col destro sull'unità, scegliere "
-"la Descrizione di tale Unità, poi dare uno sguardo a Resistenze. "
+"freddo e dal sacro. Le unità pesantemente corazzate hanno  un'alta "
+"resistenza ai danni fisici come lama, dardo ed impatto ma bassa resistenza a "
+"quelli magici: fuoco e freddo. Tutte le unità viventi hanno una buona "
+"resistenza al sacro mentre i non-morti sono estremamente vulnerabili ad "
+"esso. Per sapere la resistenza dell'unità specifica, il premere col destro "
+"sull'unità, scegliere la Descrizione di tale Unità, poi dare uno sguardo a "
+"Resistenze. "
 
 #: data/scenarios/tutorial/utils.cfg:131
 msgid "What are the different damage types?"
@@ -2595,7 +2604,6 @@ msgid "How long do these objects last?"
 msgstr "Quanto dureranno questi oggetti? "
 
 #: data/scenarios/tutorial/utils.cfg:143
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
@@ -2788,7 +2796,7 @@ msgstr "Rovine di Palude"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
-msgstr ""
+msgstr "Guado sul Fiume"
 
 #: data/terrain.cfg:480
 msgid "Lava"
@@ -3145,9 +3153,8 @@ msgid "loyal"
 msgstr "leale"
 
 #: data/traits.cfg:7
-#, fuzzy
 msgid "Zero upkeep"
-msgstr "mantenimento"
+msgstr "Mantenimento Zero"
 
 #: data/traits.cfg:17
 msgid "undead"
@@ -3584,8 +3591,9 @@ msgid "$name Lake"
 msgstr "Lago $name"
 
 #: data/translations/english.cfg:137
+#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr ""
+msgstr "$name|fossa,$name|ham,$name|ton"
 
 #: data/translations/english.cfg:138
 msgid "$name|harbor,$name|port"
@@ -5189,7 +5197,6 @@ msgid "Elvish Hero"
 msgstr "Eroe Elfico"
 
 #: data/units/Elvish_Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
 "honed their combat skills to a frightening level. Elvish Heroes prefer "
@@ -5198,20 +5205,19 @@ msgstr ""
 "Gli Eroi Elfici concentrano le proprie capacità individuali sul campo di "
 "battaglia, avendo affinato le proprie abilità nel combattimento al limite "
 "estremo. Gli eroi elfici preferiscono il combattimento corpo a corpo con la "
-"spada ma è anche capace nell'utilizzo dell'arco."
+"spada ma è anche abile nell'utilizzo dell'arco."
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
 msgstr "Gran Signore Elfico"
 
 #: data/units/Elvish_High_Lord.cfg:18
-#, fuzzy
 msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
 msgstr ""
 "Il Gran Signore Elfico è spaventoso in combattimento. Utilizza la spada nel "
-"combattimento ravvicinato e lancia devestanti palle di fuoco nel "
+"combattimento ravvicinato e lancia devastanti sfere di gelo nel "
 "combattimento a distanza."
 
 #: data/units/Elvish_Lady.cfg:4
@@ -5241,13 +5247,12 @@ msgid "Elvish Lord"
 msgstr "Signore Elfico"
 
 #: data/units/Elvish_Lord.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
 msgstr ""
 "I Signori Elfici sono terribili nei combattimenti, utilizzando la spada a "
-"nel corpo a copro e delle devastastanti palle di fuoco nel combattimento a "
+"nel corpo a copro e delle devastanti sfere di gelo nel combattimento a "
 "distanza."
 
 #: data/units/Elvish_Marksman.cfg:3
@@ -5546,7 +5551,7 @@ msgstr "Portone"
 
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
-msgstr ""
+msgstr "La porta non si aprirà per nessuno che non un sia suo alleato."
 
 #: data/units/Gate.cfg:20
 msgid "bump"
@@ -7514,6 +7519,11 @@ msgid ""
 "are mounted on high walls, they cannot move anywhere except on walls and the "
 "roofs of castles."
 msgstr ""
+"I Guardiani della città di Weldyn, le Guardie delle Mura, controllano le "
+"difese della città, colpendo e abbattendo i nemici con le loro balestre "
+"prima che i loro nemici possano rispondere con un attacco a corto raggio. "
+"Visto che si trovano sempre su delle alte mura, esse non possono muoversi in "
+"altri posti oltre le mura e i tetti dei castelli."
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
@@ -8255,7 +8265,7 @@ msgstr "Scaricamento campagna in corso..."
 
 #: src/game.cpp:984
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "Impossibile riverificare il filesystem"
 
 #: src/game.cpp:995
 msgid "Campaign Installed"
@@ -8544,7 +8554,7 @@ msgstr "Villaggi:"
 
 #: src/mapgen_dialog.cpp:92
 msgid "Landform:"
-msgstr ""
+msgstr "Tipo di terreno"
 
 #: src/mapgen_dialog.cpp:198
 msgid "Roads Between Castles"
@@ -8583,10 +8593,12 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"Il server necessita la versione '$version1' mentre tu utilizzi la versione "
+"'$version2'"
 
 #: src/multiplayer.cpp:154
 msgid "Server-side redirect loop"
-msgstr ""
+msgstr "Reindirizzamento ridondante da parte del server"
 
 #: src/multiplayer.cpp:186
 msgid "You must log in to this server"
@@ -8610,11 +8622,11 @@ msgstr "(Casella Vuota)"
 
 #: src/multiplayer_connect.cpp:452
 msgid "No non-random sides in the current era"
-msgstr ""
+msgstr "Nessuno schieramento Non- casuale nell'Era corrente"
 
 #: src/multiplayer_connect.cpp:468
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Impossibile trovare un tipo di condotiero per la fazione $faction"
 
 #: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:491
 msgid "Team"
@@ -8800,9 +8812,8 @@ msgid "Create Game"
 msgstr "Crea Partita"
 
 #: src/multiplayer_lobby.cpp:28
-#, fuzzy
 msgid "Map"
-msgstr "Mappa Utente"
+msgstr ""
 
 #: src/multiplayer_lobby.cpp:29
 #, fuzzy
@@ -8958,7 +8969,7 @@ msgid "Gold: "
 msgstr "Oro:"
 
 #: src/playlevel.cpp:854
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% dell'oro è trattenuto per il prossimo scenario"
 
@@ -9356,39 +9367,41 @@ msgstr "Osservatori:"
 
 #: src/serialization/parser.cpp:98
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "Carattere non atteso sulla linea di avvio"
 
 #: src/serialization/parser.cpp:124
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr ""
+msgstr "Manca l'etichetta di chiusura per $tag su $pos"
 
 #: src/serialization/parser.cpp:139
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Etichetta di [element] non Terminata"
 
 #: src/serialization/parser.cpp:149 src/serialization/parser.cpp:185
 msgid "Invalid tag name"
-msgstr ""
+msgstr "Nome di Etichetta non valido"
 
 #: src/serialization/parser.cpp:152
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Etichetta di [+element] non Terminata"
 
 #: src/serialization/parser.cpp:168
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Nome dell'etichetta di chiusura non valido"
 
 #: src/serialization/parser.cpp:171
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Etichetta di chiusura non terminata"
 
 #: src/serialization/parser.cpp:173
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Etichetta di chiusura non attesa"
 
 #: src/serialization/parser.cpp:179
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
+"L'etichetta di chiusura $tag2 sembra essere invalido per l'etichetta $tag "
+"(aperta alla posizione $pos) "
 
 #: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 msgid "Empty variable name"
@@ -9396,11 +9409,11 @@ msgstr "Nome di variabile vuoto"
 
 #: src/serialization/parser.cpp:210
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Carattere non atteso dopo il nome di variabile (si attendeva , o =)"
 
 #: src/serialization/parser.cpp:238 src/serialization/parser.cpp:262
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Riportata una stringa non terminata"
 
 #: src/serialization/parser.cpp:285
 msgid " included from "
@@ -9510,22 +9523,17 @@ msgstr "legale"
 msgid "neutral"
 msgstr "neutrale"
 
-#, fuzzy
 #~ msgid ""
 #~ "The noble leaders of many troops, Lords are especially strong in melee "
 #~ "combat, and also possess skill with the bow. Like lords, Lords possess "
 #~ "leadership skills, and improve the fighting ability of all adjacent lower-"
 #~ "level units."
 #~ msgstr ""
-#~ "Nobili condottieri di diverse truppe, I signori sono particolarmente "
+#~ "Nobili condottieri di diverse truppe, I Signori sono particolarmente "
 #~ "forti negli attacchi ravvicinati ma possiedono anche una certa abilità "
-#~ "con gli archi. Come i comandanti, i signori possiedono l'abilità di "
-#~ "comando e forniscono un incremento negli attacchi di tutte le unità di "
-#~ "livello inferiore posizionate negli esagoni adiacenti."
-
-#, fuzzy
-#~ msgid "100 gold will be available for the next scenario"
-#~ msgstr "80% dell'oro è trattenuto per il prossimo scenario"
+#~ "con gli archi. Come i comandanti, i Signori possiedono l'abilità di "
+#~ "comando e provocano un incremento nell'abilità di attacco di tutte le "
+#~ "unità di livello inferiore posizionate negli esagoni adiacenti."
 
 #~ msgid "level: "
 #~ msgstr "Livello:"
@@ -9686,6 +9694,10 @@ msgstr "neutrale"
 #, fuzzy
 #~ msgid "Set Terrain"
 #~ msgstr "Terreno"
+
+#, fuzzy
+#~ msgid "New Map"
+#~ msgstr "Mappa Utente"
 
 #, fuzzy
 #~ msgid "Load Map"
