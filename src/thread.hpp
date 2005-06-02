@@ -168,6 +168,7 @@ private:
 	SDL_cond* const cond_;
 };
 
+//class which defines an interface for waiting on an asynchronous operation
 class waiter {
 public:
 	enum ACTION { WAIT, ABORT };
@@ -176,6 +177,15 @@ public:
 	virtual ACTION process() = 0;
 };
 
+//class which defines an asynchronous operation. Objects of this class are accessed from
+//both the worker thread and the calling thread, and so it has 'strange' allocation semantics.
+//It is allocated by the caller, and generally deleted by the caller. However, in some cases
+//the asynchronous operation is aborted, and the caller abandons it. The caller cannot still
+//delete the operation, since the worker thread might still access it, so in the case when the
+//operation is aborted, the worker thread will delete it.
+//
+//The caller should hold these objects using the async_operation_holder class below, which will
+//handle the delete semantics
 class async_operation
 {
 public:
@@ -197,15 +207,35 @@ public:
 	//will be called in any case after the operation returns
 	void notify_finished();
 
-protected:
-
-	//must hold the mutex before calling this function
+	//must hold the mutex before calling this function from the worker thread
 	bool is_aborted() const { return aborted_; }
 
 private:
 	bool aborted_;
 	condition finished_;
 	mutex mutex_;
+};
+
+//T should be a type derived from async_operation
+template<typename T>
+class async_operation_holder
+{
+public:
+	explicit async_operation_holder(T* op) : op_(op)
+	{}
+
+	~async_operation_holder() {
+		//it's okay to call is_aborted() without the mutex here,
+		//because we are in the calling thread, not the worker thread
+		if(op_->is_aborted() == false) {
+			delete op_;
+		}
+	}
+
+	T& operation() const { return *op_; }
+
+private:
+	T* const op_;
 };
 
 }

@@ -334,14 +334,14 @@ connection connect(const std::string& host, int port)
 
 connection connect(const std::string& host, int port, threading::waiter& waiter)
 {
-	connect_operation op(host,port);
-	const connect_operation::RESULT res = op.execute(waiter);
+	const threading::async_operation_holder<connect_operation> op(new connect_operation(host,port));
+	const connect_operation::RESULT res = op.operation().execute(waiter);
 	if(res == connect_operation::ABORTED) {
 		return 0;
 	}
 
-	op.check_error();
-	return op.result();
+	op.operation().check_error();
+	return op.operation().result();
 }
 
 connection accept_connection()
