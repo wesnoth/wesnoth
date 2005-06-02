@@ -7,6 +7,11 @@ class config;
 
 #include <string>
 
+namespace threading
+{
+	class waiter;
+}
+
 //this module wraps the network interface.
 
 namespace network {
@@ -58,6 +63,8 @@ bool is_server();
 //the new connection on success, or 0 on failure.
 //throws error.
 connection connect(const std::string& host, int port=15000);
+
+connection connect(const std::string& host, int port, threading::waiter& waiter);
 
 //function to accept a connection from a remote host. If no
 //host is attempting to connect, it will return 0 immediately.

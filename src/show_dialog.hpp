@@ -141,6 +141,7 @@ int show_dialog(display &screen, surface image,
 void show_error_message(display &disp, std::string const &message);
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
+network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port);
 
 void check_quit(CVideo &video);
 

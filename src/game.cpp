@@ -47,6 +47,7 @@
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "team.hpp"
+#include "thread.hpp"
 #include "titlescreen.hpp"
 #include "util.hpp"
 #include "unit_types.hpp"
@@ -124,6 +125,7 @@ private:
 
 	CVideo video_;
 
+	const threading::manager thread_manager;
 	const font::manager font_manager_;
 	const sound::manager sound_manager_;
 	const preferences::manager prefs_manager_;
@@ -1008,7 +1010,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	request_terms.add_child("request_terms");
 	network::send_data(request_terms,sock);
 	config data;
-	sock = network::receive_data(data,sock,60000);
+	sock = network::receive_data(data,sock,5000);
 	if(!sock) {
 		gui::show_error_message(disp(), _("Connection timed out"));
 		return;
@@ -1048,7 +1050,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	std::cerr << "uploading campaign...\n";
 	network::send_data(data,sock);
 	
-	sock = network::receive_data(data,sock,60000);
+	sock = network::receive_data(data,sock,5000);
 	if(!sock) {
 		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {
@@ -1073,7 +1075,7 @@ void game_controller::delete_campaign(const std::string& campaign, network::conn
 
 	network::send_data(data,sock);
 
-	sock = network::receive_data(data,sock,60000);
+	sock = network::receive_data(data,sock,5000);
 	if(!sock) {
 		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {

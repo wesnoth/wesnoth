@@ -120,7 +120,7 @@ server_type open_connection(display& disp, const std::string& original_host)
 
 	config::child_list redirects;
 	config data;
-	sock = network::connect(host, port);
+	sock = gui::network_connect_dialog(disp,_("Connecting to Server..."),host,port);
 
 	do {
 
@@ -157,7 +157,7 @@ server_type open_connection(display& disp, const std::string& original_host)
 
 			if(network::nconnections() > 0)
 				network::disconnect();
-			sock = network::connect(host, port);
+			sock = gui::network_connect_dialog(disp,_("Connecting to Server..."),host,port);
 			continue;
 		}
 

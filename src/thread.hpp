@@ -11,6 +11,11 @@
 namespace threading
 {
 
+struct manager
+{
+	~manager();
+};
+
 // Threading object.
 //
 // This class defines threading objects. One such object represents a 
@@ -43,6 +48,8 @@ public:
 	// the function will return. calling wait() on an already killed
 	// thread is a no-op.
 	void join();
+
+	void detach();
 private:
 	thread(const thread&);
 	void operator=(const thread&);
@@ -126,19 +133,18 @@ public:
 	// \pre You have already aquired a lock on mutex m
 	// 
 	bool wait(const mutex& m);
+
+	enum WAIT_TIMEOUT_RESULT { WAIT_OK, WAIT_TIMEOUT, WAIT_ERROR };
+
 	// wait on the condition with a timeout. Basically the same as the
 	// wait() function, but if the lock is not aquired before the 
 	// timeout, the function returns with an error.
 	//
 	// \param m the mutex you wish free the lock for. 
 	// \param timeout the allowed timeout in milliseconds (ms)
-	// \returns true: success, false: an error occurred
-	//
-	// \todo This function cannot check for timeout, which is to
-	// check on the SDL constant SDL_MUTEX_TIMEDOUT. Thus this 
-	// function cannot check if the error was due to something malformed
-	// or if the time ran out.
-	bool wait_timeout(const mutex& m, unsigned int timeout);
+	// \returns result based on whether condition was met, it timed out,
+	// or there was an error
+	WAIT_TIMEOUT_RESULT wait_timeout(const mutex& m, unsigned int timeout);
 	// signal the condition and wake up one thread waiting on the 
 	// condition. If no thread is waiting, notify_one() is a no-op.
 	// Does not unlock the mutex.
@@ -160,6 +166,46 @@ private:
 	void operator=(const condition&);
 
 	SDL_cond* const cond_;
+};
+
+class waiter {
+public:
+	enum ACTION { WAIT, ABORT };
+
+	virtual ~waiter() {}
+	virtual ACTION process() = 0;
+};
+
+class async_operation
+{
+public:
+
+	enum RESULT { COMPLETED, ABORTED };
+
+	async_operation() : aborted_(false) {}
+	virtual ~async_operation() {}
+
+	RESULT execute(waiter& wait);
+
+	mutex& get_mutex() { return mutex_; }
+
+	virtual void run() = 0;
+
+	//notify that the operation is finished. Can be called from within the thread
+	//while holding the mutex and after checking is_aborted()
+	//if we want to be sure that if the operation is completed, the caller is notified.
+	//will be called in any case after the operation returns
+	void notify_finished();
+
+protected:
+
+	//must hold the mutex before calling this function
+	bool is_aborted() const { return aborted_; }
+
+private:
+	bool aborted_;
+	condition finished_;
+	mutex mutex_;
 };
 
 }

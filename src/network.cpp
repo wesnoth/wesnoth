@@ -5,6 +5,7 @@
 #include "log.hpp"
 #include "network.hpp"
 #include "network_worker.hpp"
+#include "thread.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
 
@@ -231,54 +232,116 @@ bool is_server()
 	return server_socket != 0;
 }
 
-connection connect(const std::string& host, int port)
+namespace {
+
+class connect_operation : public threading::async_operation
 {
-	char* const hostname = host.empty() ? NULL:const_cast<char*>(host.c_str());
+public:
+	connect_operation(const std::string& host, int port) : host_(host), port_(port), error_(NULL), connect_(0)
+	{}
+
+	void check_error();
+	void run();
+
+	network::connection result() const { return connect_; }
+
+private:
+	std::string host_;
+	int port_;
+	const char* error_;
+	network::connection connect_;
+};
+
+void connect_operation::check_error()
+{
+	if(error_ != NULL) {
+		throw error(error_);
+	}
+}
+
+void connect_operation::run()
+{
+	char* const hostname = host_.empty() ? NULL : const_cast<char*>(host_.c_str());
 	IPaddress ip;
-	if(SDLNet_ResolveHost(&ip,hostname,port) == -1) {
-		throw error("Could not connect to host");
+	if(SDLNet_ResolveHost(&ip,hostname,port_) == -1) {
+		error_ = "Could not connect to host";
+		return;
 	}
 
 	TCPsocket sock = SDLNet_TCP_Open(&ip);
 	if(!sock) {
-		throw error(hostname == NULL ? "Could not bind to port" :
-		                               "Could not connect to host");
-	} else {
-		//TODO: add code in here which sets the socket to non-blocking
+		error_ = hostname == NULL ? "Could not bind to port" :
+		                            "Could not connect to host";
+		return;
 	}
 
 	//if this is a server socket
 	if(hostname == NULL) {
-		return create_connection(sock,"",port);
+		const threading::lock l(get_mutex());
+		connect_ = create_connection(sock,"",port_);
+		return;
 	}
 
-	LOG_NW << "sending handshake...\n";
 	//send data telling the remote host that this is a new connection
 	char buf[4];
 	SDLNet_Write32(0,buf);
 	const int nbytes = SDLNet_TCP_Send(sock,buf,4);
 	if(nbytes != 4) {
 		SDLNet_TCP_Close(sock);
-		throw network::error("Could not send initial handshake");
+
+		error_ = "Could not send initial handshake";
+		return;
 	}
+
+	//no blocking operations from here on
+	const threading::lock l(get_mutex());
 	LOG_NW << "sent handshake...\n";
 
+	if(is_aborted()) {
+		LOG_NW << "connect operation aborted by calling thread\n";
+		SDLNet_TCP_Close(sock);
+		return;
+	}
+
 	//allocate this connection a connection handle
-	const network::connection connect = create_connection(sock,host,port);
+	connect_ = create_connection(sock,host_,port_);
 
 	const int res = SDLNet_TCP_AddSocket(socket_set,sock);
 	if(res == -1) {
 		SDLNet_TCP_Close(sock);
-		throw network::error("Could not add socket to socket set");
+		error_ = "Could not add socket to socket set";
+		return;
 	}
 
-	waiting_sockets.insert(connect);
+	waiting_sockets.insert(connect_);
 
-	sockets.push_back(connect);
-	wassert(schemas.count(connect) == 0);
-	schemas.insert(std::pair<network::connection,schema_pair>(connect,schema_pair()));
+	sockets.push_back(connect_);
+	wassert(schemas.count(connect_) == 0);
+	schemas.insert(std::pair<network::connection,schema_pair>(connect_,schema_pair()));
 
-	return connect;
+	notify_finished();
+}
+
+}
+
+connection connect(const std::string& host, int port)
+{
+	connect_operation op(host,port);
+	op.run();
+	op.check_error();
+	return op.result();
+}
+
+connection connect(const std::string& host, int port, threading::waiter& waiter)
+{
+	connect_operation op(host,port);
+	const connect_operation::RESULT res = op.execute(waiter);
+	if(res == connect_operation::ABORTED) {
+		return 0;
+	}
+
+	op.check_error();
+	return op.result();
 }
 
 connection accept_connection()

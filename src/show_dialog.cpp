@@ -28,6 +28,7 @@
 #include "log.hpp"
 #include "playlevel.hpp"
 #include "show_dialog.hpp"
+#include "thread.hpp"
 #include "language.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
@@ -888,6 +889,55 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 			return res;
 		}
 	}
+}
+
+namespace {
+
+class connect_waiter : public threading::waiter
+{
+public:
+	connect_waiter(display& disp, gui::button& button) : disp_(disp), button_(button)
+	{}
+	ACTION process();
+
+private:
+	display& disp_;
+	gui::button& button_;
+};
+
+connect_waiter::ACTION connect_waiter::process()
+{
+	events::raise_draw_event();
+	disp_.flip();
+	events::pump();
+	if(button_.pressed()) {
+		return ABORT;
+	} else {
+		return WAIT;
+	}
+}
+
+}
+
+network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port)
+{
+	const size_t width = 250;
+	const size_t height = 20;
+	const size_t border = 20;
+	const int left = disp.x()/2 - width/2;
+	const int top = disp.y()/2 - height/2;
+
+	gui::button cancel_button(disp.video(),_("Cancel"));
+	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
+
+	surface_restorer restorer;
+	gui::draw_dialog(left,top,width,height,disp.video(),msg,NULL,&buttons_ptr,&restorer);
+
+	events::raise_draw_event();
+	disp.flip();
+
+	connect_waiter waiter(disp,cancel_button);
+	return network::connect(hostname,port,waiter);
 }
 
 } //end namespace gui
