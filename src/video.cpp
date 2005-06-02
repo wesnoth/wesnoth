@@ -269,7 +269,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		return 0;
 
 	fullScreen = (flags & FULL_SCREEN) != 0;
-	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
+	frameBuffer = SDL_SetVideoMode( x, y, 0, flags );
 
 	if( frameBuffer != NULL ) {
 		image::set_pixel_format(frameBuffer->format);
@@ -334,7 +334,18 @@ void CVideo::flip()
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
 	} else if(update_rects.empty() == false) {
-		SDL_UpdateRects(frameBuffer,update_rects.size(),&update_rects[0]);
+		size_t sum = 0;
+		for(size_t n = 0; n != update_rects.size(); ++n) {
+			sum += update_rects[n].w*update_rects[n].h;
+		}
+
+		const int t = SDL_GetTicks();
+		const size_t redraw_whole_screen_threshold = 80;
+		if(sum > ((getx()*gety())*redraw_whole_screen_threshold)/100) {
+			::SDL_Flip(frameBuffer);
+		} else {
+			SDL_UpdateRects(frameBuffer,update_rects.size(),&update_rects[0]);
+		}
 	}
 
 	clear_updates();
