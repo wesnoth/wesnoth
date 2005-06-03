@@ -2,6 +2,7 @@
 
 #include "thread.hpp"
 
+#include <new>
 #include <iostream>
 #include <vector>
 
@@ -24,6 +25,7 @@ int run_async_operation(void* data)
 	if(should_delete) {
 		delete op;
 	}
+
 
 	return 0;
 }
@@ -130,21 +132,37 @@ void async_operation::notify_finished()
 
 async_operation::RESULT async_operation::execute(waiter& wait)
 {
-	const lock l(get_mutex());
-	thread t(run_async_operation,this);
+	//the thread must be created after the lock, and also destroyed after it.
+	//this is because during the thread's execution, we must always hold the mutex
+	//unless we are waiting on notification that the thread is finished, or we have
+	//already received that notification.
+	//
+	//we cannot hold the mutex while waiting for the thread to join though, because
+	//the thread needs access to the mutex before it terminates
+	std::auto_ptr<thread> t(NULL);
+	{
+		const lock l(get_mutex());
+		t = std::auto_ptr<thread>(new thread(run_async_operation,this));
 
-	while(wait.process() == waiter::WAIT) {
-		const condition::WAIT_TIMEOUT_RESULT res = finished_.wait_timeout(get_mutex(),20);
-		if(res == condition::WAIT_OK) {
-			return COMPLETED;
-		} else if(res == condition::WAIT_ERROR) {
-			break;
+		bool completed = false;
+		while(wait.process() == waiter::WAIT) {
+			const condition::WAIT_TIMEOUT_RESULT res = finished_.wait_timeout(get_mutex(),20);
+			if(res == condition::WAIT_OK) {
+				completed = true;
+				break;
+			} else if(res == condition::WAIT_ERROR) {
+				break;
+			}
+		}
+
+		if(!completed) {
+			aborted_ = true;
+			t->detach();
+			return ABORTED;
 		}
 	}
 
-	aborted_ = true;
-	t.detach();
-	return ABORTED;
+	return COMPLETED;
 }
 
 
