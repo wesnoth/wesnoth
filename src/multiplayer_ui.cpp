@@ -70,8 +70,8 @@ void level_to_gamestate(config& level, game_state& state)
 
 std::string get_colour_string(int id)
 {
-	std::string prefix(" ");
-	prefix[0] = id + 1;
+	std::string prefix("\027[3 m");
+	prefix[3] = lexical_cast<char, int>(id + 1);
 
 	switch(id) {
 	case 0:

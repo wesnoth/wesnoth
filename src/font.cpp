@@ -595,12 +595,25 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 			break;
 		case NULL_MARKUP:
 			return i1+1;
-		default:
-			if(*i1 >= 1 && *i1 <= 9) {
-				*colour = team::get_side_colour(*i1);
-				break;
+		// semi ANSI colour escape sequences at the start of the line for now only
+		case '\027':
+			if(i2 - i1 >= 4) {
+				++i1;
+				if(*i1 == '[') {
+					++i1;
+					if(*i1 == '3') {
+						++i1;
+						if(*i1 >= '0' && *i1 <= '9' && *(i1 + 1) == 'm')
+						{
+							if(*i1 != '0')
+								*colour = team::get_side_colour(lexical_cast<int, char>(*i1));
+							++i1;
+						}
+					}
+				}
 			}
-
+			break;
+		default:
 			return i1;
 		}
 

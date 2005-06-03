@@ -2,7 +2,7 @@
 #define WIDGET_DEFINES_HPP_INCLUDED
 
 char const HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*', COLUMN_SEPARATOR = '=',
-           IMAGE_PREFIX = '&', IMG_TEXT_SEPARATOR = 17, HEADING_PREFIX = 18;
+           IMAGE_PREFIX = '&', IMG_TEXT_SEPARATOR = 1, HEADING_PREFIX = 2;
 
 inline bool is_wml_separator(char c)
 {
