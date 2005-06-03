@@ -2542,7 +2542,12 @@ void turn_info::do_command(const std::string& str)
 		if(j != data.end()) {
 			const std::string side(data.begin(),j);
 			const std::string player(j+1,data.end());
-			const int side_num = lexical_cast<int, std::string>(side);
+			int side_num;
+			try {
+				side_num = lexical_cast<int, std::string>(side);
+			} catch(bad_lexical_cast& bad_lexical) {
+				return;
+			}
 			if(side_num > 0 && side_num <= teams_.size()) {
 				if(teams_[static_cast<size_t>(side_num - 1)].is_human()) {
 					change_side_controller(side,player,true);
