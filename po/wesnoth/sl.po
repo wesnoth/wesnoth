@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-31 21:42+0200\n"
+"POT-Creation-Date: 2005-06-03 22:49+0200\n"
 "PO-Revision-Date: 2004-10-17 20:24+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -775,7 +775,7 @@ msgstr ""
 "Vedite pa, da že dovolj veste za igranje kampanje Prestolonaslednik. "
 "Zabavajte se in vso srečo!"
 
-#: data/help.cfg:203 src/titlescreen.cpp:192
+#: data/help.cfg:203 src/titlescreen.cpp:193
 msgid "About"
 msgstr "O programu"
 
@@ -1482,32 +1482,139 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/scenarios.cfg:110
-msgid "The Isle of Anduin"
-msgstr "Otok Anduin"
-
-#: data/scenarios/multiplayer/scenarios.cfg:137
-msgid "The Three Rivers"
-msgstr "Tri Reke"
-
-#: data/scenarios/multiplayer/scenarios.cfg:164
-msgid "The Isles of the Damned"
-msgstr "Otoki Prekletih"
-
-#: data/scenarios/multiplayer/scenarios.cfg:197
 msgid "The Valley of Death"
 msgstr "Dolina Smrti"
 
-#: data/scenarios/multiplayer/scenarios.cfg:240
-msgid "Dwarven Wasteland"
-msgstr "Škratja Pustina"
+#: data/scenarios/multiplayer/scenarios.cfg:111
+#, fuzzy
+msgid " "
+msgstr "; "
 
-#: data/scenarios/multiplayer/scenarios.cfg:279
-msgid "Princess's Battlefield"
-msgstr "Princesino Bojišče"
-
-#: data/scenarios/multiplayer/scenarios.cfg:306
+#: data/scenarios/multiplayer/scenarios.cfg:156
 msgid "King of the Hill"
 msgstr "Kralj Hriba"
+
+#: data/scenarios/multiplayer/scenarios.cfg:195
+msgid "2p - Divide and Conquer"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:196
+msgid ""
+"This small duel map divides the field of battle into three segments. "
+"Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:226
+msgid "2p - Silverhead Crossing"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:227
+msgid ""
+"Players must traverse all manner of terrain in pursuit of victory on this "
+"multi-fronted duel map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:256
+msgid "2p - Meteor Lake"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:257
+msgid ""
+"Long ago, a great meteor fell from the heavens, leaving its mark on this "
+"coniferous region. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:286
+msgid "2p - Den of Onis"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:287
+msgid ""
+"Danger lurks around every corner in this underground battlefield, a duel map "
+"where force and subterfuge meet. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:316
+msgid "2p - Hamlets"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:317
+msgid ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:346
+msgid "2p - Hornshark Island"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:347
+msgid ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:376
+msgid "2p - Sullas Ruins"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:377
+msgid ""
+"Flooded by the seas and battered by the winter elements, only ruins, water "
+"and ice now remain in the shadow of this once mighty empire. Recommended "
+"settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:406
+msgid "3p - 1v1v1Hex"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:407
+msgid ""
+"Three players do battle in this small, enclosed region. Recommended settings "
+"of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:443
+msgid "4p - Lagoon"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:444
+msgid ""
+"Four factions contend for dominance over this watery settlement. Recommended "
+"settings of 1G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:487
+msgid "4p - The Wilderlands"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:488
+msgid ""
+"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
+"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
+"1G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:531
+msgid "3p - Morituri"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:532
+msgid ""
+"Only one faction will emerge victorious from this tightly bordered three-"
+"player map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:568
+msgid "3p - Triple Blitz"
+msgstr ""
+
+#: data/scenarios/multiplayer/scenarios.cfg:569
+msgid ""
+"Three players come head to head on this water-cut battlefield. Recommended "
+"settings of 2G per village."
+msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
 msgid "Basic Training"
@@ -2919,7 +3026,7 @@ msgstr ""
 "ali pri zdravniku."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
-#: data/units/Paladin.cfg:21 data/units/Saurian_Icecaster.cfg:21
+#: data/units/Paladin.cfg:21 data/units/Saurian_Icecaster.cfg:20
 #: data/units/Saurian_Tribalist.cfg:21
 msgid "heals"
 msgstr "celi rane"
@@ -3257,7 +3364,7 @@ msgstr "dotik"
 #: data/units/Elvish_Sorceress.cfg:118 data/units/Elvish_Sylph.cfg:84
 #: data/units/Ghost.cfg:20 data/units/Ghost.cfg:32 data/units/Initiate.cfg:20
 #: data/units/Lich.cfg:20 data/units/Lich.cfg:33 data/units/Necromancer.cfg:36
-#: data/units/Saurian_Icecaster.cfg:43 data/units/Saurian_Soothsayer.cfg:41
+#: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
 #: data/units/Saurian_Tribalist.cfg:41 data/units/Spectre.cfg:42
 #: data/units/Wraith.cfg:42
 msgid "cold"
@@ -3267,11 +3374,9 @@ msgstr "mrzel"
 #: data/units/Dark_Spirit.cfg:36 data/units/Demilich.cfg:36
 #: data/units/Lich.cfg:24 data/units/Orcish_Shaman.cfg:41
 #: data/units/Orcish_Shaman.cfg:100 data/units/Orcish_Shaman.cfg:159
-#: data/units/Saurian_Icecaster.cfg:44 data/units/Saurian_Soothsayer.cfg:42
-#: data/units/Saurian_Tribalist.cfg:42 data/units/Skeletal_Dragon.cfg:33
-#: data/units/Spectre.cfg:29 data/units/Vampire_Bat.cfg:24
-#: data/units/Vampire_Lady.cfg:26 data/units/Vampire_Lady.cfg:39
-#: data/units/Wraith.cfg:29
+#: data/units/Skeletal_Dragon.cfg:33 data/units/Spectre.cfg:29
+#: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:26
+#: data/units/Vampire_Lady.cfg:39 data/units/Wraith.cfg:29
 msgid "drain"
 msgstr "črpa"
 
@@ -3301,9 +3406,11 @@ msgstr "čarovnija"
 #: data/units/Mermaid_Priestess.cfg:48 data/units/Mermaid_Siren.cfg:29
 #: data/units/Mermaid_Siren.cfg:72 data/units/Necromancer.cfg:37
 #: data/units/Princess.cfg:80 data/units/Red_Mage.cfg:47
-#: data/units/Red_Mage.cfg:140 data/units/Sea_Hag.cfg:34
-#: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:225
-#: data/units/White_Mage.cfg:48 data/units/White_Mage.cfg:119
+#: data/units/Red_Mage.cfg:140 data/units/Saurian_Icecaster.cfg:43
+#: data/units/Saurian_Soothsayer.cfg:42 data/units/Saurian_Tribalist.cfg:42
+#: data/units/Sea_Hag.cfg:34 data/units/Silver_Mage.cfg:96
+#: data/units/Silver_Mage.cfg:225 data/units/White_Mage.cfg:48
+#: data/units/White_Mage.cfg:119
 msgid "magical"
 msgstr "čaroben"
 
@@ -3338,23 +3445,22 @@ msgstr "top"
 #: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:33
 #: data/units/Cave_Spider.cfg:47 data/units/Cuttle_Fish.cfg:33
 #: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:20
-#: data/units/Deathmaster.cfg:32 data/units/Drake_Clasher.cfg:52
-#: data/units/Drake_Enforcer.cfg:43 data/units/Drake_Gladiator.cfg:43
-#: data/units/Drake_Glider.cfg:22 data/units/Drake_Hurricane.cfg:27
-#: data/units/Drake_Sky.cfg:27 data/units/Dwarvish_Dragonguard.cfg:21
-#: data/units/Dwarvish_Fighter.cfg:40 data/units/Dwarvish_Lord.cfg:45
-#: data/units/Dwarvish_Runemaster.cfg:21 data/units/Dwarvish_Steelclad.cfg:46
-#: data/units/Elder_Mage.cfg:24 data/units/Elder_Wose.cfg:21
-#: data/units/Elvish_Druid.cfg:24 data/units/Elvish_Druid.cfg:43
-#: data/units/Elvish_Enchantress.cfg:26 data/units/Elvish_Enchantress.cfg:66
-#: data/units/Elvish_Lady.cfg:21 data/units/Elvish_Shaman.cfg:25
-#: data/units/Elvish_Shaman.cfg:44 data/units/Elvish_Shyde.cfg:26
-#: data/units/Elvish_Shyde.cfg:52 data/units/Elvish_Sorceress.cfg:26
-#: data/units/Elvish_Sorceress.cfg:66 data/units/Elvish_Sylph.cfg:25
-#: data/units/Elvish_Sylph.cfg:52 data/units/Fire_Dragon.cfg:42
-#: data/units/Footpad.cfg:21 data/units/Footpad.cfg:39
-#: data/units/Footpad.cfg:87 data/units/Footpad.cfg:105
-#: data/units/Galleon.cfg:19 data/units/Gate.cfg:23
+#: data/units/Deathmaster.cfg:32 data/units/Drake_Enforcer.cfg:43
+#: data/units/Drake_Gladiator.cfg:63 data/units/Drake_Glider.cfg:24
+#: data/units/Drake_Hurricane.cfg:27 data/units/Drake_Sky.cfg:29
+#: data/units/Dwarvish_Dragonguard.cfg:21 data/units/Dwarvish_Fighter.cfg:40
+#: data/units/Dwarvish_Lord.cfg:45 data/units/Dwarvish_Runemaster.cfg:21
+#: data/units/Dwarvish_Steelclad.cfg:46 data/units/Elder_Mage.cfg:24
+#: data/units/Elder_Wose.cfg:21 data/units/Elvish_Druid.cfg:24
+#: data/units/Elvish_Druid.cfg:43 data/units/Elvish_Enchantress.cfg:26
+#: data/units/Elvish_Enchantress.cfg:66 data/units/Elvish_Lady.cfg:21
+#: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
+#: data/units/Elvish_Shyde.cfg:26 data/units/Elvish_Shyde.cfg:52
+#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:66
+#: data/units/Elvish_Sylph.cfg:25 data/units/Elvish_Sylph.cfg:52
+#: data/units/Fire_Dragon.cfg:42 data/units/Footpad.cfg:21
+#: data/units/Footpad.cfg:39 data/units/Footpad.cfg:87
+#: data/units/Footpad.cfg:105 data/units/Galleon.cfg:19 data/units/Gate.cfg:23
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:44
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:37
 #: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:117
@@ -3376,7 +3482,7 @@ msgstr "top"
 #: data/units/Outlaw.cfg:112 data/units/Outlaw_Princess.cfg:54
 #: data/units/Outlaw_Princess.cfg:78 data/units/Outlaw_Queen.cfg:55
 #: data/units/Outlaw_Queen.cfg:78 data/units/Red_Mage.cfg:24
-#: data/units/Red_Mage.cfg:117 data/units/Saurian_Icecaster.cfg:25
+#: data/units/Red_Mage.cfg:117 data/units/Saurian_Icecaster.cfg:24
 #: data/units/Saurian_Soothsayer.cfg:24 data/units/Saurian_Tribalist.cfg:24
 #: data/units/Sea_Hag.cfg:32 data/units/Shock_Trooper.cfg:20
 #: data/units/Silver_Mage.cfg:78 data/units/Silver_Mage.cfg:207
@@ -3421,7 +3527,7 @@ msgstr ""
 #: data/units/Orcish_Shaman.cfg:78 data/units/Orcish_Shaman.cfg:137
 #: data/units/Outlaw_Princess.cfg:53 data/units/Outlaw_Queen.cfg:54
 #: data/units/Red_Mage.cfg:23 data/units/Red_Mage.cfg:116
-#: data/units/Saurian_Icecaster.cfg:24 data/units/Saurian_Soothsayer.cfg:23
+#: data/units/Saurian_Icecaster.cfg:23 data/units/Saurian_Soothsayer.cfg:23
 #: data/units/Saurian_Tribalist.cfg:23 data/units/Silver_Mage.cfg:77
 #: data/units/Silver_Mage.cfg:206 data/units/White_Mage.cfg:29
 #: data/units/White_Mage.cfg:100
@@ -3436,17 +3542,17 @@ msgstr "ognjena krogla"
 
 #: data/units/Arch_Mage.cfg:58 data/units/Arch_Mage.cfg:166
 #: data/units/Battle_Princess.cfg:90 data/units/Commander.cfg:133
-#: data/units/Drake_Burner.cfg:55 data/units/Drake_Fighter.cfg:58
-#: data/units/Drake_Fire.cfg:56 data/units/Drake_Flameheart.cfg:54
-#: data/units/Drake_Flare.cfg:44 data/units/Drake_Glider.cfg:46
-#: data/units/Drake_Hurricane.cfg:51 data/units/Drake_Inferno.cfg:44
-#: data/units/Drake_Sky.cfg:51 data/units/Drake_Warrior.cfg:47
-#: data/units/Dwarvish_Runemaster.cfg:42 data/units/Elder_Mage.cfg:40
-#: data/units/Fighter.cfg:84 data/units/Fire_Dragon.cfg:60
-#: data/units/Fireball.cfg:18 data/units/Fireball.cfg:19
-#: data/units/Goblin_Pillager.cfg:21 data/units/Great_Mage.cfg:45
-#: data/units/Great_Mage.cfg:138 data/units/Lord.cfg:115
-#: data/units/Mage.cfg:42 data/units/Mage.cfg:119
+#: data/units/Drake_Blademaster.cfg:47 data/units/Drake_Burner.cfg:55
+#: data/units/Drake_Fighter.cfg:58 data/units/Drake_Fire.cfg:56
+#: data/units/Drake_Flameheart.cfg:54 data/units/Drake_Flare.cfg:44
+#: data/units/Drake_Glider.cfg:48 data/units/Drake_Hurricane.cfg:51
+#: data/units/Drake_Inferno.cfg:44 data/units/Drake_Sky.cfg:53
+#: data/units/Drake_Warrior.cfg:47 data/units/Dwarvish_Runemaster.cfg:42
+#: data/units/Elder_Mage.cfg:40 data/units/Fighter.cfg:84
+#: data/units/Fire_Dragon.cfg:60 data/units/Fireball.cfg:18
+#: data/units/Fireball.cfg:19 data/units/Goblin_Pillager.cfg:21
+#: data/units/Great_Mage.cfg:45 data/units/Great_Mage.cfg:138
+#: data/units/Lord.cfg:115 data/units/Mage.cfg:42 data/units/Mage.cfg:119
 #: data/units/Orcish_Archer.cfg:68 data/units/Orcish_Crossbowman.cfg:67
 #: data/units/Princess.cfg:78 data/units/Red_Mage.cfg:45
 #: data/units/Red_Mage.cfg:138 data/units/Silver_Mage.cfg:94
@@ -3488,18 +3594,19 @@ msgstr "bodalo"
 #: data/units/Dark_Spirit.cfg:32 data/units/Death_Knight.cfg:34
 #: data/units/Deathblade.cfg:40 data/units/Direwolf_Rider.cfg:38
 #: data/units/Direwolf_Rider.cfg:50 data/units/Dragoon.cfg:46
-#: data/units/Drake_Burner.cfg:35 data/units/Drake_Clasher.cfg:34
-#: data/units/Drake_Enforcer.cfg:25 data/units/Drake_Fighter.cfg:34
-#: data/units/Drake_Fire.cfg:37 data/units/Drake_Flameheart.cfg:24
-#: data/units/Drake_Flare.cfg:24 data/units/Drake_Gladiator.cfg:25
-#: data/units/Drake_Inferno.cfg:25 data/units/Drake_Slasher.cfg:26
-#: data/units/Drake_Warden.cfg:26 data/units/Drake_Warrior.cfg:23
-#: data/units/Draug.cfg:37 data/units/Duelist.cfg:34
-#: data/units/Dwarvish_Berserker.cfg:34 data/units/Dwarvish_Fighter.cfg:23
-#: data/units/Dwarvish_Lord.cfg:28 data/units/Dwarvish_Lord.cfg:61
-#: data/units/Dwarvish_Steelclad.cfg:29 data/units/Dwarvish_Thunderer.cfg:21
+#: data/units/Drake_Blademaster.cfg:23 data/units/Drake_Burner.cfg:35
+#: data/units/Drake_Clasher.cfg:34 data/units/Drake_Enforcer.cfg:25
+#: data/units/Drake_Fighter.cfg:34 data/units/Drake_Fire.cfg:37
+#: data/units/Drake_Flameheart.cfg:24 data/units/Drake_Flare.cfg:24
+#: data/units/Drake_Gladiator.cfg:26 data/units/Drake_Inferno.cfg:25
+#: data/units/Drake_Slasher.cfg:26 data/units/Drake_Warden.cfg:26
+#: data/units/Drake_Warrior.cfg:23 data/units/Draug.cfg:37
+#: data/units/Duelist.cfg:34 data/units/Dwarvish_Berserker.cfg:34
+#: data/units/Dwarvish_Fighter.cfg:23 data/units/Dwarvish_Lord.cfg:28
+#: data/units/Dwarvish_Lord.cfg:61 data/units/Dwarvish_Steelclad.cfg:29
+#: data/units/Dwarvish_Thunderer.cfg:21
 #: data/units/Dwarvish_Thunderguard.cfg:21
-#: data/units/Dwarvish_Ulfserker.cfg:34 data/units/Elvish_Archer.cfg:24
+#: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:24
 #: data/units/Elvish_Archer.cfg:103 data/units/Elvish_Avenger.cfg:25
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:25
 #: data/units/Elvish_Champion.cfg:23 data/units/Elvish_Fighter.cfg:25
@@ -3585,13 +3692,12 @@ msgid ""
 "near them when not fighting against invaders."
 msgstr ""
 
-#: data/units/Bandit.cfg:32 data/units/Drake_Clasher.cfg:51
-#: data/units/Drake_Enforcer.cfg:42 data/units/Drake_Gladiator.cfg:42
-#: data/units/Great_Troll.cfg:21 data/units/Heavy_Infantryman.cfg:19
-#: data/units/Iron_Mauler.cfg:19 data/units/Mage_of_Light.cfg:30
-#: data/units/Mage_of_Light.cfg:102 data/units/Outlaw.cfg:20
-#: data/units/Outlaw.cfg:93 data/units/Shock_Trooper.cfg:19
-#: data/units/Warrior_King.cfg:25
+#: data/units/Bandit.cfg:32 data/units/Drake_Enforcer.cfg:42
+#: data/units/Drake_Gladiator.cfg:62 data/units/Great_Troll.cfg:21
+#: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:19
+#: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:102
+#: data/units/Outlaw.cfg:20 data/units/Outlaw.cfg:93
+#: data/units/Shock_Trooper.cfg:19 data/units/Warrior_King.cfg:25
 msgid "mace"
 msgstr "buzdovan"
 
@@ -3615,19 +3721,20 @@ msgstr ""
 #: data/units/Bowman.cfg:33 data/units/Cavalier.cfg:40
 #: data/units/Cavalryman.cfg:41 data/units/Commander.cfg:35
 #: data/units/Commander.cfg:110 data/units/Deathblade.cfg:39
-#: data/units/Dragoon.cfg:45 data/units/Drake_Clasher.cfg:33
-#: data/units/Drake_Enforcer.cfg:24 data/units/Drake_Flameheart.cfg:23
-#: data/units/Drake_Flare.cfg:23 data/units/Drake_Gladiator.cfg:24
-#: data/units/Drake_Warrior.cfg:22 data/units/Elvish_Archer.cfg:23
-#: data/units/Elvish_Archer.cfg:102 data/units/Elvish_Avenger.cfg:24
-#: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:24
-#: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:22 data/units/Elvish_High_Lord.cfg:21
-#: data/units/Elvish_Lord.cfg:22 data/units/Elvish_Marksman.cfg:23
-#: data/units/Elvish_Marksman.cfg:116 data/units/Elvish_Marshal.cfg:25
-#: data/units/Elvish_Outrider.cfg:27 data/units/Elvish_Ranger.cfg:24
-#: data/units/Elvish_Ranger.cfg:114 data/units/Elvish_Rider.cfg:31
-#: data/units/Elvish_Scout.cfg:32 data/units/Elvish_Sharpshooter.cfg:23
+#: data/units/Dragoon.cfg:45 data/units/Drake_Blademaster.cfg:22
+#: data/units/Drake_Clasher.cfg:33 data/units/Drake_Enforcer.cfg:24
+#: data/units/Drake_Flameheart.cfg:23 data/units/Drake_Flare.cfg:23
+#: data/units/Drake_Gladiator.cfg:25 data/units/Drake_Warrior.cfg:22
+#: data/units/Elvish_Archer.cfg:23 data/units/Elvish_Archer.cfg:102
+#: data/units/Elvish_Avenger.cfg:24 data/units/Elvish_Avenger.cfg:112
+#: data/units/Elvish_Captain.cfg:24 data/units/Elvish_Champion.cfg:22
+#: data/units/Elvish_Fighter.cfg:24 data/units/Elvish_Hero.cfg:22
+#: data/units/Elvish_High_Lord.cfg:21 data/units/Elvish_Lord.cfg:22
+#: data/units/Elvish_Marksman.cfg:23 data/units/Elvish_Marksman.cfg:116
+#: data/units/Elvish_Marshal.cfg:25 data/units/Elvish_Outrider.cfg:27
+#: data/units/Elvish_Ranger.cfg:24 data/units/Elvish_Ranger.cfg:114
+#: data/units/Elvish_Rider.cfg:31 data/units/Elvish_Scout.cfg:32
+#: data/units/Elvish_Sharpshooter.cfg:23
 #: data/units/Elvish_Sharpshooter.cfg:117 data/units/Fighter.cfg:20
 #: data/units/Fighter.cfg:61 data/units/General.cfg:28
 #: data/units/Grand_Knight.cfg:20 data/units/Grand_Marshal.cfg:24
@@ -3729,12 +3836,13 @@ msgstr "lok"
 #: data/units/Cavalier.cfg:62 data/units/Chocobone.cfg:33
 #: data/units/Commander.cfg:58 data/units/Cuttle_Fish.cfg:69
 #: data/units/Death_Knight.cfg:51 data/units/Dragoon.cfg:67
-#: data/units/Drake_Slasher.cfg:44 data/units/Drake_Warden.cfg:44
-#: data/units/Duelist.cfg:50 data/units/Dwarvish_Dragonguard.cfg:39
-#: data/units/Dwarvish_Guardsman.cfg:27 data/units/Dwarvish_Guardsman.cfg:40
-#: data/units/Dwarvish_Sentinel.cfg:29 data/units/Dwarvish_Sentinel.cfg:42
-#: data/units/Dwarvish_Stalwart.cfg:29 data/units/Dwarvish_Stalwart.cfg:42
-#: data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Drake_Clasher.cfg:52 data/units/Drake_Enforcer.cfg:61
+#: data/units/Drake_Gladiator.cfg:44 data/units/Drake_Slasher.cfg:44
+#: data/units/Drake_Warden.cfg:44 data/units/Duelist.cfg:50
+#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:27
+#: data/units/Dwarvish_Guardsman.cfg:40 data/units/Dwarvish_Sentinel.cfg:29
+#: data/units/Dwarvish_Sentinel.cfg:42 data/units/Dwarvish_Stalwart.cfg:29
+#: data/units/Dwarvish_Stalwart.cfg:42 data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:41
 #: data/units/Elvish_Archer.cfg:120 data/units/Elvish_Avenger.cfg:41
 #: data/units/Elvish_Avenger.cfg:129 data/units/Elvish_Captain.cfg:41
@@ -3865,23 +3973,25 @@ msgid ""
 "units."
 msgstr ""
 
-#: data/units/Chocobone.cfg:32 data/units/Dwarvish_Guardsman.cfg:25
-#: data/units/Dwarvish_Guardsman.cfg:39 data/units/Dwarvish_Sentinel.cfg:27
-#: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:27
-#: data/units/Dwarvish_Stalwart.cfg:41 data/units/Goblin_Impaler.cfg:20
-#: data/units/Goblin_Impaler.cfg:39 data/units/Goblin_Spearman.cfg:20
-#: data/units/Goblin_Spearman.cfg:33 data/units/Horseman.cfg:21
-#: data/units/Javelineer.cfg:19 data/units/Javelineer.cfg:47
-#: data/units/Merman_Entangler.cfg:19 data/units/Merman_Hunter.cfg:20
-#: data/units/Merman_Hunter.cfg:60 data/units/Merman_Javelineer.cfg:20
-#: data/units/Merman_Javelineer.cfg:60 data/units/Merman_Netcaster.cfg:19
-#: data/units/Merman_Spearman.cfg:20 data/units/Merman_Spearman.cfg:60
-#: data/units/Saurian.cfg:24 data/units/Saurian.cfg:42
-#: data/units/Saurian_Ambusher.cfg:22 data/units/Saurian_Ambusher.cfg:40
-#: data/units/Saurian_Flanker.cfg:23 data/units/Saurian_Flanker.cfg:41
-#: data/units/Saurian_Skirmisher.cfg:22 data/units/Saurian_Skirmisher.cfg:40
-#: data/units/Saurian_Warrior.cfg:24 data/units/Saurian_Warrior.cfg:42
-#: data/units/Spearman.cfg:37 data/units/Spearman.cfg:88
+#: data/units/Chocobone.cfg:32 data/units/Drake_Clasher.cfg:51
+#: data/units/Drake_Enforcer.cfg:60 data/units/Drake_Gladiator.cfg:43
+#: data/units/Dwarvish_Guardsman.cfg:25 data/units/Dwarvish_Guardsman.cfg:39
+#: data/units/Dwarvish_Sentinel.cfg:27 data/units/Dwarvish_Sentinel.cfg:41
+#: data/units/Dwarvish_Stalwart.cfg:27 data/units/Dwarvish_Stalwart.cfg:41
+#: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:39
+#: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
+#: data/units/Horseman.cfg:21 data/units/Javelineer.cfg:19
+#: data/units/Javelineer.cfg:47 data/units/Merman_Entangler.cfg:19
+#: data/units/Merman_Hunter.cfg:20 data/units/Merman_Hunter.cfg:60
+#: data/units/Merman_Javelineer.cfg:20 data/units/Merman_Javelineer.cfg:60
+#: data/units/Merman_Netcaster.cfg:19 data/units/Merman_Spearman.cfg:20
+#: data/units/Merman_Spearman.cfg:60 data/units/Saurian.cfg:24
+#: data/units/Saurian.cfg:42 data/units/Saurian_Ambusher.cfg:22
+#: data/units/Saurian_Ambusher.cfg:40 data/units/Saurian_Flanker.cfg:23
+#: data/units/Saurian_Flanker.cfg:41 data/units/Saurian_Skirmisher.cfg:22
+#: data/units/Saurian_Skirmisher.cfg:40 data/units/Saurian_Warrior.cfg:24
+#: data/units/Saurian_Warrior.cfg:42 data/units/Spearman.cfg:37
+#: data/units/Spearman.cfg:88
 msgid "spear"
 msgstr "kopje"
 
@@ -4096,6 +4206,26 @@ msgid ""
 "value on the battlefield."
 msgstr ""
 
+#: data/units/Drake_Blademaster.cfg:4
+#, fuzzy
+msgid "Drake Blademaster"
+msgstr "Mojster smrti"
+
+#: data/units/Drake_Blademaster.cfg:19
+msgid ""
+"Drake Blademasters wield swords with great skill, and possess the fire "
+"breathing skills of their ancestors."
+msgstr ""
+
+#: data/units/Drake_Blademaster.cfg:45 data/units/Drake_Burner.cfg:53
+#: data/units/Drake_Fighter.cfg:56 data/units/Drake_Fire.cfg:54
+#: data/units/Drake_Flameheart.cfg:52 data/units/Drake_Flare.cfg:42
+#: data/units/Drake_Glider.cfg:46 data/units/Drake_Hurricane.cfg:49
+#: data/units/Drake_Inferno.cfg:42 data/units/Drake_Sky.cfg:51
+#: data/units/Drake_Warrior.cfg:45 data/units/Fire_Dragon.cfg:58
+msgid "fire breath"
+msgstr "ognjeni dih"
+
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
 msgstr ""
@@ -4109,42 +4239,31 @@ msgid ""
 "Drake Flares who aspire to be leaders of their kind."
 msgstr ""
 
-#: data/units/Drake_Burner.cfg:53 data/units/Drake_Fighter.cfg:56
-#: data/units/Drake_Fire.cfg:54 data/units/Drake_Flameheart.cfg:52
-#: data/units/Drake_Flare.cfg:42 data/units/Drake_Glider.cfg:44
-#: data/units/Drake_Hurricane.cfg:49 data/units/Drake_Inferno.cfg:42
-#: data/units/Drake_Sky.cfg:49 data/units/Drake_Warrior.cfg:45
-#: data/units/Fire_Dragon.cfg:58
-msgid "fire breath"
-msgstr "ognjeni dih"
-
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
 msgstr ""
 
 #: data/units/Drake_Clasher.cfg:18
 msgid ""
+" To compensate they have become great craftsmen that can fabricate weapons "
+"with emerald edges, and wear heavy armor. The Clashers' weapons of choice "
+"are the sword and spear, which they use to great effect. The greatest "
+"Clashers can become Drake Gladiators or Slashers."
+msgstr ""
+
+#: data/units/Drake_Clasher.cfg:18 data/units/Drake_Enforcer.cfg:18
+#: data/units/Drake_Gladiator.cfg:19 data/units/Drake_Slasher.cfg:19
+#: data/units/Drake_Warden.cfg:19
+msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
-"would be mistaken. To compensate they have become great craftsmen that can "
-"fabricate weapons with emerald edges, and wear heavy armor. The Clashers' "
-"weapons of choice are the sword and mace, which they use to great effect. "
-"The greatest Clashers can become Drake Gladiators or Slashers."
+"would be mistaken."
 msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:3
 #, fuzzy
 msgid "Drake Enforcer"
 msgstr "Temni čarodej"
-
-#: data/units/Drake_Enforcer.cfg:18
-msgid ""
-"With their stumpy vestigial wings and inability to use their great internal "
-"fire as a weapon some may think that these Drakes are disadvantaged, they "
-"would be mistaken. Drakes Enforcers protect their vulnerable hides with "
-"thick brass armor and they arm themselves with as many emerald edged weapons "
-"as possible to fend off whatever opponents may await them."
-msgstr ""
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -4203,33 +4322,29 @@ msgstr ""
 msgid "Drake Gladiator"
 msgstr ""
 
-#: data/units/Drake_Gladiator.cfg:18
+#: data/units/Drake_Gladiator.cfg:19
 msgid ""
-"With their stumpy vestigial wings and inability to use their great internal "
-"fire as a weapon some may think that these Drakes are disadvantaged, they "
-"would be mistaken. Drakes Gladiators protect their vulnerable hides with "
-"thick brass armor and they arm themselves with as many emerald edged weapons "
-"as possible to fend off whatever opponents may await them."
+" Drake Gladiators protect their vulnerable hides with thick brass armor and "
+"they arm themselves with as many emerald edged weapons as possible to fend "
+"off whatever opponents may await them."
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
 msgstr ""
 
-#: data/units/Drake_Glider.cfg:18
+#: data/units/Drake_Glider.cfg:20
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
 "possessing the internal fire common to many of their kin. Gliders can also "
 "effectively use their speed to viciously slam their opponents into "
 "submission. The best gliders can look forward to being accepted into the "
-"ranks of the high flying Sky Drakes. From their aerial vantage point, these "
-"drakes can see past most defensive cover. Their skill at flying allows them "
-"the precision to target enemies under such cover."
+"ranks of the high flying Sky Drakes."
 msgstr ""
 
-#: data/units/Drake_Glider.cfg:21 data/units/Drake_Hurricane.cfg:26
-#: data/units/Drake_Sky.cfg:26
+#: data/units/Drake_Glider.cfg:23 data/units/Drake_Hurricane.cfg:26
+#: data/units/Drake_Sky.cfg:28
 msgid "slam"
 msgstr "trk"
 
@@ -4262,14 +4377,11 @@ msgstr ""
 msgid "Sky Drake"
 msgstr ""
 
-#: data/units/Drake_Sky.cfg:18
+#: data/units/Drake_Sky.cfg:20
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
-"down on prey, and are usually long gone before anyone can stop them. By "
-"attacking from the air, they can spit fire with great precision into "
-"positions which would otherwise afford a great defensive advantage to their "
-"foes."
+"down on prey, and are usually long gone before anyone can stop them."
 msgstr ""
 
 #: data/units/Drake_Slasher.cfg:4
@@ -4278,11 +4390,9 @@ msgstr ""
 
 #: data/units/Drake_Slasher.cfg:19
 msgid ""
-"With their stumpy vestigial wings and inability to use their great internal "
-"fire as a weapon some may think that these Drakes are disadvantaged, but "
-"they would be mistaken. To compensate they have become great craftsmen that "
-"can fabricate weapons with emerald edges, and wear heavy armor. The "
-"Slashers' weapon of choice is the halberd, which they use to great effect."
+" To compensate they have become great craftsmen that can fabricate weapons "
+"with emerald edges, and wear heavy armor. The Slashers' weapon of choice is "
+"the halberd, which they use to great effect."
 msgstr ""
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:46
@@ -4298,11 +4408,9 @@ msgstr ""
 
 #: data/units/Drake_Warden.cfg:19
 msgid ""
-"With their stumpy vestigial wings and inability to use their great internal "
-"fire as a weapon some may think that these Drakes are disadvantaged, but "
-"they would be mistaken. To compensate they have become great craftsmen that "
-"can fabricate weapons with emerald edges, and wear heavy armor. The Wardens' "
-"weapon of choice is the halberd, which they use to great effect."
+" To compensate they have become great craftsmen that can fabricate weapons "
+"with emerald edges, and wear heavy armor. The Wardens' weapon of choice is "
+"the halberd, which they use to great effect."
 msgstr ""
 
 #: data/units/Drake_Warrior.cfg:4
@@ -4361,11 +4469,11 @@ msgid ""
 "push the attack until either they or their enemy lies dead."
 msgstr ""
 
-#: data/units/Dwarvish_Berserker.cfg:32 data/units/Dwarvish_Ulfserker.cfg:32
+#: data/units/Dwarvish_Berserker.cfg:32 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
 msgstr "berserkerova besnost"
 
-#: data/units/Dwarvish_Berserker.cfg:35 data/units/Dwarvish_Ulfserker.cfg:35
+#: data/units/Dwarvish_Berserker.cfg:35 data/units/Dwarvish_Ulfserker.cfg:29
 msgid "berserk"
 msgstr "berserk"
 
@@ -6152,11 +6260,11 @@ msgid ""
 "this fact."
 msgstr ""
 
-#: data/units/Saurian_Icecaster.cfg:5
+#: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
 msgstr "Saurijski metalec ledu"
 
-#: data/units/Saurian_Icecaster.cfg:19
+#: data/units/Saurian_Icecaster.cfg:18
 msgid ""
 "Saurian Icecasters have eschewed any further training in healing and curing "
 "in order to refine their skills with the dark arts. While frail, they can "
@@ -6164,7 +6272,7 @@ msgid ""
 "healing ability."
 msgstr ""
 
-#: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:40
+#: data/units/Saurian_Icecaster.cfg:41 data/units/Saurian_Soothsayer.cfg:40
 #: data/units/Saurian_Tribalist.cfg:40
 msgid "frost blast"
 msgstr "udar zmrzali"
@@ -7092,11 +7200,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Neveljaven)"
 
-#: src/dialogs.cpp:373 src/game.cpp:748
+#: src/dialogs.cpp:373 src/game.cpp:753
 msgid "Campaign"
 msgstr "Kampanja"
 
-#: src/dialogs.cpp:375 src/game.cpp:1115
+#: src/dialogs.cpp:375 src/game.cpp:1120
 msgid "Multiplayer"
 msgstr "Večigralnost"
 
@@ -7185,7 +7293,7 @@ msgstr ""
 msgid "Date"
 msgstr "Vrata"
 
-#: src/dialogs.cpp:550 src/game.cpp:882 src/help.cpp:1112
+#: src/dialogs.cpp:550 src/game.cpp:887 src/help.cpp:1112
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
 msgid "Name"
 msgstr "Ime"
@@ -7248,16 +7356,16 @@ msgstr "Prekliči"
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
-#: src/game.cpp:391
+#: src/game.cpp:396
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:619
+#: src/game.cpp:624
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Datoteka, ki ste jo poskušali naložiti, je pokvarjena. Vseeno bo naložena.\n"
 
-#: src/game.cpp:641 src/multiplayer_connect.cpp:891
+#: src/game.cpp:646 src/multiplayer_connect.cpp:888
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7265,231 +7373,231 @@ msgstr ""
 "Ta shranjen položaj je iz druge različice igre. Ali ga želite poskusiti "
 "naložiti?"
 
-#: src/game.cpp:649 src/game.cpp:652 src/multiplayer_connect.cpp:876
+#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:873
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka, ki ste jo poskusili naložiti, je pokvarjena: '"
 
-#: src/game.cpp:655
+#: src/game.cpp:660
 msgid "File I/O Error while reading the game"
 msgstr "I/O Napaka pri branju igre"
 
-#: src/game.cpp:738
+#: src/game.cpp:743
 msgid "Get More Campaigns..."
 msgstr "Dobi več kampanj..."
 
-#: src/game.cpp:739
+#: src/game.cpp:744
 msgid "Download more campaigns from a server on Internet."
 msgstr "Prenesi več kampanj s kampanjskega strežnika."
 
-#: src/game.cpp:749
+#: src/game.cpp:754
 msgid "Choose the campaign you want to play:"
 msgstr "Izberite kampanjo, ki jo želite igrati:"
 
-#: src/game.cpp:778
+#: src/game.cpp:783
 msgid "Difficulty"
 msgstr "Težavnost"
 
-#: src/game.cpp:779
+#: src/game.cpp:784
 msgid "Select difficulty level:"
 msgstr "Izberite težavnost:"
 
-#: src/game.cpp:804
+#: src/game.cpp:809
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:807
+#: src/game.cpp:812
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:810
+#: src/game.cpp:815
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:837
+#: src/game.cpp:842
 msgid "Connect to Server"
 msgstr "Poveži se s strežnikom"
 
-#: src/game.cpp:838
+#: src/game.cpp:843
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Zdaj se boste povezali s kampanjskim strežnikom, da lahko prenesete kakšno "
 "kampanjo."
 
-#: src/game.cpp:839
+#: src/game.cpp:844
 msgid "Server: "
 msgstr "Strežnik: "
 
-#: src/game.cpp:852
+#: src/game.cpp:857
 msgid "Could not connect to host."
 msgstr "Ni se možno povezati z gostiteljem."
 
-#: src/game.cpp:860
+#: src/game.cpp:865
 msgid "Awaiting response from server"
 msgstr "Čakanje na odziv strežnika"
 
-#: src/game.cpp:873
+#: src/game.cpp:878
 msgid "Error communicating with the server."
 msgstr "Napaka pri komunikaciji s strežnikom."
 
-#: src/game.cpp:882 src/titlescreen.cpp:169
+#: src/game.cpp:887 src/titlescreen.cpp:170
 msgid "Version"
 msgstr "Različica"
 
-#: src/game.cpp:883
+#: src/game.cpp:888
 msgid "Author"
 msgstr "Avtor"
 
-#: src/game.cpp:883
+#: src/game.cpp:888
 msgid "Downloads"
 msgstr "Prenosov"
 
-#: src/game.cpp:883
+#: src/game.cpp:888
 msgid "Size"
 msgstr "Velikost"
 
-#: src/game.cpp:935
+#: src/game.cpp:940
 msgid "Publish campaign: "
 msgstr "Objavi kampanjo: "
 
-#: src/game.cpp:939
+#: src/game.cpp:944
 msgid "Delete campaign: "
 msgstr "Izbriši kampanjo: "
 
-#: src/game.cpp:943
+#: src/game.cpp:948
 msgid "There are no campaigns available for download from this server."
 msgstr "Na tem strežniku ni na voljo nobene kampanje za prenos."
 
-#: src/game.cpp:950
+#: src/game.cpp:955
 msgid "Choose the campaign to download."
 msgstr "Izberite kampanjo za prenos"
 
-#: src/game.cpp:950
+#: src/game.cpp:955
 msgid "Get Campaign"
 msgstr "Dobi kampanje"
 
-#: src/game.cpp:970
+#: src/game.cpp:975
 msgid "Downloading campaign..."
 msgstr "Prenašam kampanjo..."
 
-#: src/game.cpp:984
+#: src/game.cpp:989
 msgid "Cannot rescan the filesystem"
 msgstr "Ni mogoče ponovno pregledati datotečnega sistema"
 
-#: src/game.cpp:995
+#: src/game.cpp:1000
 msgid "Campaign Installed"
 msgstr "Kampanja nameščena"
 
-#: src/game.cpp:995
+#: src/game.cpp:1000
 msgid "The campaign has been installed."
 msgstr "Kampanja je bila nameščena."
 
-#: src/game.cpp:997
+#: src/game.cpp:1002
 msgid "Network communication error."
 msgstr "Napaka v mrežni komunikaciji."
 
-#: src/game.cpp:999
+#: src/game.cpp:1004
 msgid "Remote host disconnected."
 msgstr "Oddaljeni gostitelj je prekinil povezavo."
 
-#: src/game.cpp:1001
+#: src/game.cpp:1006
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Namestitev kampanje ni uspela; nekaj datotek ni bilo mogoče ustvariti."
 
-#: src/game.cpp:1013 src/game.cpp:1053 src/game.cpp:1078
+#: src/game.cpp:1018 src/game.cpp:1058 src/game.cpp:1083
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
-#: src/game.cpp:1016 src/game.cpp:1055 src/game.cpp:1080
+#: src/game.cpp:1021 src/game.cpp:1060 src/game.cpp:1085
 msgid "The server responded with an error: \""
 msgstr "Strežnik se je odzval z napako: \""
 
-#: src/game.cpp:1020
+#: src/game.cpp:1025
 msgid "Terms"
 msgstr "Pogoji"
 
-#: src/game.cpp:1058 src/game.cpp:1083
+#: src/game.cpp:1063 src/game.cpp:1088
 msgid "Response"
 msgstr "Odziv"
 
-#: src/game.cpp:1098
+#: src/game.cpp:1103
 msgid "Join Official Server"
 msgstr "Poveži se z uradnim strežnikom"
 
-#: src/game.cpp:1099
+#: src/game.cpp:1104
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Poveži se z uradnim večigralskim strežnikom za Wesnoth"
 
-#: src/game.cpp:1101 src/multiplayer_lobby.cpp:107
+#: src/game.cpp:1106 src/multiplayer_lobby.cpp:107
 msgid "Join Game"
 msgstr "Pridruži se igri"
 
-#: src/game.cpp:1102
+#: src/game.cpp:1107
 msgid "Join a server or hosted game"
 msgstr "Pridruži se strežniku ali gostovani igri"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1109
 msgid "Host Networked Game"
 msgstr "Gostuj mrežno igro"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1110
 msgid "Host a game without using a server"
 msgstr "Gostuj igro brez uporabe strežnika"
 
-#: src/game.cpp:1107
+#: src/game.cpp:1112
 msgid "Hotseat Game"
 msgstr "»Vroči stol« igra"
 
-#: src/game.cpp:1108
+#: src/game.cpp:1113
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Večigralska igra na istem računalniku"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1115
 msgid "Human vs AI"
 msgstr "Človek proti UI"
 
-#: src/game.cpp:1111
+#: src/game.cpp:1116
 msgid "Play a game against AI opponents"
 msgstr "Igra proti UI"
 
-#: src/game.cpp:1117 src/multiplayer.cpp:187
+#: src/game.cpp:1122 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Prijava: "
 
-#: src/game.cpp:1148
+#: src/game.cpp:1153
 msgid "The game could not be loaded: "
 msgstr "Igre ni bilo možno naložiti: "
 
-#: src/game.cpp:1150
+#: src/game.cpp:1155
 msgid "Error while playing the game: "
 msgstr "Napaka med igranjem: "
 
-#: src/game.cpp:1162
+#: src/game.cpp:1167
 msgid "The game map could not be loaded: "
 msgstr "Karte ni bilo možno naložiti: "
 
-#: src/game.cpp:1188
+#: src/game.cpp:1193
 msgid "Language"
 msgstr "Jezik"
 
-#: src/game.cpp:1189
+#: src/game.cpp:1194
 msgid "Choose your preferred language:"
 msgstr "Izberite jezik"
 
-#: src/game.cpp:1278
+#: src/game.cpp:1283
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Opozorilo: Prišlo je do napake pri nalaganju nastavtivenih datotek: '"
 
-#: src/game.cpp:1327
+#: src/game.cpp:1332
 msgid "Error loading game configuration files: '"
 msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
 
-#: src/game.cpp:1328
+#: src/game.cpp:1333
 msgid "' (The game will now exit)"
 msgstr "' (Igra se bo zaključila)"
 
-#: src/game.cpp:1401
+#: src/game.cpp:1406
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
@@ -7615,7 +7723,7 @@ msgstr "Preskoči"
 msgid "The End"
 msgstr "Konec"
 
-#: src/language.cpp:41 src/language.cpp:178
+#: src/language.cpp:41 src/language.cpp:184
 msgid "System default language"
 msgstr "Privzeti sistemski jezik"
 
@@ -7686,6 +7794,11 @@ msgstr "Poveži se z gostiteljem"
 #: src/multiplayer.cpp:94
 msgid "Choose host to connect to: "
 msgstr "Izberite gostitelja (za povezavo): "
+
+#: src/multiplayer.cpp:123 src/multiplayer.cpp:160
+#, fuzzy
+msgid "Connecting to Server..."
+msgstr "Poveži se s strežnikom"
 
 #: src/multiplayer.cpp:133
 msgid "Connecting to remote host..."
@@ -7783,15 +7896,15 @@ msgstr "Računalniški igralec"
 msgid "Empty"
 msgstr "Prazno"
 
-#: src/multiplayer_connect.cpp:883
+#: src/multiplayer_connect.cpp:880
 msgid "This is not a multiplayer save"
 msgstr "To ni večigralski shranjen položaj"
 
-#: src/multiplayer_connect.cpp:924
+#: src/multiplayer_connect.cpp:921
 msgid "Cannot find era $era"
 msgstr "Ni mogoče najti ere $era"
 
-#: src/multiplayer_connect.cpp:938
+#: src/multiplayer_connect.cpp:935
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -7799,7 +7912,7 @@ msgstr ""
 "Zmaga\n"
 "@Premagaj sovražne voditelje"
 
-#: src/multiplayer_connect.cpp:974
+#: src/multiplayer_connect.cpp:971
 msgid "Waiting for players to join..."
 msgstr "Čakanje na igralce..."
 
@@ -8343,15 +8456,15 @@ msgstr "Shranjena izbira teme: "
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nova tema se bo poznala na naslednji začeti ali naloženi igri."
 
-#: src/playturn.cpp:2616
+#: src/playturn.cpp:2632
 msgid "Place Label"
 msgstr "Postavi oznako"
 
-#: src/playturn.cpp:2617
+#: src/playturn.cpp:2633
 msgid "Label:"
 msgstr "Oznaka:"
 
-#: src/playturn.cpp:2749
+#: src/playturn.cpp:2765
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -8359,23 +8472,23 @@ msgstr ""
 "Igre niso več sinhronizirane in se bodo morale končati. Ali naj shranim "
 "dnevnik napak iz igre?"
 
-#: src/playturn.cpp:2802
+#: src/playturn.cpp:2818
 msgid "Replace with AI"
 msgstr "Zamenjaj z UI"
 
-#: src/playturn.cpp:2803
+#: src/playturn.cpp:2819
 msgid "Replace with local player"
 msgstr "Zamenjaj z lokalnim igralcem"
 
-#: src/playturn.cpp:2804
+#: src/playturn.cpp:2820
 msgid "Abort game"
 msgstr "Prekini igro"
 
-#: src/playturn.cpp:2807
+#: src/playturn.cpp:2823
 msgid "Replace with "
 msgstr "Zamenjaj z "
 
-#: src/playturn.cpp:2811
+#: src/playturn.cpp:2827
 msgid "has left the game. What do you want to do?"
 msgstr "je zapustil igro. Kaj boste storili?"
 
@@ -8518,43 +8631,43 @@ msgstr ""
 msgid "$error at $pos"
 msgstr ""
 
-#: src/titlescreen.cpp:186
+#: src/titlescreen.cpp:187
 msgid "TitleScreen button^Tutorial"
 msgstr "Vodič"
 
-#: src/titlescreen.cpp:187
+#: src/titlescreen.cpp:188
 msgid "TitleScreen button^Campaign"
 msgstr "Kampanje"
 
-#: src/titlescreen.cpp:188
+#: src/titlescreen.cpp:189
 msgid "TitleScreen button^Multiplayer"
 msgstr "Večigralstvo"
 
-#: src/titlescreen.cpp:189
+#: src/titlescreen.cpp:190
 msgid "TitleScreen button^Load"
 msgstr "Naloži"
 
-#: src/titlescreen.cpp:190
+#: src/titlescreen.cpp:191
 msgid "TitleScreen button^Language"
 msgstr "Jezik"
 
-#: src/titlescreen.cpp:191
+#: src/titlescreen.cpp:192
 msgid "TitleScreen button^Preferences"
 msgstr "Nastavitve"
 
-#: src/titlescreen.cpp:193
+#: src/titlescreen.cpp:194
 msgid "TitleScreen button^Quit"
 msgstr "Izhod"
 
-#: src/titlescreen.cpp:194
+#: src/titlescreen.cpp:195
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Začni vodič da se navadim na igro"
 
-#: src/titlescreen.cpp:195
+#: src/titlescreen.cpp:196
 msgid "Start a new single player campaign"
 msgstr "Začni novo enoigralsko kampanjo"
 
-#: src/titlescreen.cpp:196
+#: src/titlescreen.cpp:197
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -8562,31 +8675,31 @@ msgstr ""
 "Večigralstvo (vroči stol, LAN ali preko interneta) ali enoigralski spopad z "
 "umetno inteligenco"
 
-#: src/titlescreen.cpp:197
+#: src/titlescreen.cpp:198
 msgid "Load a single player saved game"
 msgstr "Naloži enoigralski shranjen položaj"
 
-#: src/titlescreen.cpp:198
+#: src/titlescreen.cpp:199
 msgid "Change the language"
 msgstr "Spremeni jezik (prevod)"
 
-#: src/titlescreen.cpp:199
+#: src/titlescreen.cpp:200
 msgid "Configure the game's settings"
 msgstr "Uredi nastavitve igre"
 
-#: src/titlescreen.cpp:200
+#: src/titlescreen.cpp:201
 msgid "View the credits"
 msgstr "Poglej zasluge"
 
-#: src/titlescreen.cpp:201
+#: src/titlescreen.cpp:202
 msgid "Quit the game"
 msgstr "Izhod iz igre"
 
-#: src/titlescreen.cpp:232
+#: src/titlescreen.cpp:233
 msgid "More"
 msgstr "Več"
 
-#: src/titlescreen.cpp:242
+#: src/titlescreen.cpp:243
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Knjiga modrosti Wesnotha"
 
@@ -8617,6 +8730,21 @@ msgstr "zakonit"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "nevtralen"
+
+#~ msgid "The Isle of Anduin"
+#~ msgstr "Otok Anduin"
+
+#~ msgid "The Three Rivers"
+#~ msgstr "Tri Reke"
+
+#~ msgid "The Isles of the Damned"
+#~ msgstr "Otoki Prekletih"
+
+#~ msgid "Dwarven Wasteland"
+#~ msgstr "Škratja Pustina"
+
+#~ msgid "Princess's Battlefield"
+#~ msgstr "Princesino Bojišče"
 
 #, fuzzy
 #~ msgid "100 gold will be available for the next scenario"
