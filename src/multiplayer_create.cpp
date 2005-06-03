@@ -88,7 +88,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	village_gold_slider_.set_max(5);
 	village_gold_slider_.set_value(preferences::village_gold());
 	village_gold_slider_.set_help_string(_("The amount of income each village yields per turn"));
-	xp_modifier_slider_.set_min(25);
+	xp_modifier_slider_.set_min(30);
 	xp_modifier_slider_.set_max(200);
 	xp_modifier_slider_.set_value(preferences::xp_modifier());
 	xp_modifier_slider_.set_increment(10);
