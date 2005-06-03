@@ -1809,9 +1809,9 @@ void turn_info::status_table()
 		//cause it to be displayed in the correct colour
 		if(leader != units_.end()) {
 			str << IMAGE_PREFIX << leader->second.type().image() << COLUMN_SEPARATOR
-			    << char(n+1) << leader->second.description() << COLUMN_SEPARATOR;
+			    << "\027[3" << lexical_cast<char, int>(n+1) << 'm' << leader->second.description() << COLUMN_SEPARATOR;
 		} else {
-			str << ' ' << COLUMN_SEPARATOR << char(n+1) << '-' << COLUMN_SEPARATOR;
+			str << ' ' << COLUMN_SEPARATOR << "\027[3" << lexical_cast<char, int>(n+1) << "m-" << COLUMN_SEPARATOR;
 		}
 
 		if(enemy) {
