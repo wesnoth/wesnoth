@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-03 22:49+0200\n"
-"PO-Revision-Date: 2005-05-17 00:22+0100\n"
+"PO-Revision-Date: 2005-06-04 01:07+0100\n"
 "Last-Translator: americo iacovizzi <americo_iacovizzi@libero.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -987,7 +987,7 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"<header>text=Legale</header>\n"
+"<header>text=Leale</header>\n"
 "\n"
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -2113,7 +2113,6 @@ msgid "How do I recruit units?"
 msgstr "Come recluto un unità?"
 
 #: data/scenarios/tutorial/utils.cfg:66
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -2122,11 +2121,10 @@ msgid ""
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
 "Per reclutare un'unità, premi col tasto destro sulla casella del castello "
-"sulla quale vuoi reclutarla. Quindi seleziona 'Recluta', o porta "
-"semplicemente il cursore sull'esagono e premi 'Ctrl-R'. Seleziona il tipo di "
-"unità che vuoi reclutare, e seleziona 'OK'. Per poter reclutare più "
-"velocemente premi 'Ctrl-Shift-R' per reclutare nuovamente l'ultimo tipo di "
-"unità reclutata."
+"sulla quale vuoi reclutarla. Quindi seleziona Recluta, o porta semplicemente "
+"il cursore sull'esagono e premi 'Ctrl-R'. Seleziona il tipo di unità che "
+"vuoi reclutare, e seleziona 'OK'. Per poter reclutare più velocemente premi "
+"'Ctrl-Shift-R' per reclutare nuovamente l'ultimo tipo di unità reclutata."
 
 #: data/scenarios/tutorial/utils.cfg:67
 msgid ""
@@ -2459,6 +2457,11 @@ msgid ""
 "recruited units, except that instead of a new unit appearing, a unit from a "
 "previous scenario will appear."
 msgstr ""
+"Per prima cosa, devi pagare 20 pezzi d'oro per ogni unità che richiami, "
+"indipendentemente dal tipo di unità che viene richiamata. A parte questo, le "
+"unità richiamate sono fondamentalmente uguali alle unità reclutate, solo che "
+"al posto di apparire una nuova unità ne apparirà una dello scenario "
+"precedente."
 
 #: data/scenarios/tutorial/utils.cfg:105
 msgid "What happens when I recall a unit?"
@@ -4740,9 +4743,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:3
-#, fuzzy
 msgid "Drake Enforcer"
-msgstr "Drago Bruciatore"
+msgstr "Drago di Supporto"
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -4831,9 +4833,8 @@ msgid "slam"
 msgstr "Colpo"
 
 #: data/units/Drake_Hurricane.cfg:3
-#, fuzzy
 msgid "Hurricane Drake"
-msgstr "Drago di fuoco"
+msgstr "Drago degli Uragani"
 
 #: data/units/Drake_Hurricane.cfg:18
 msgid ""
@@ -4841,6 +4842,9 @@ msgid ""
 "those drakes which are gifted with flight. Soaring high in the air, they can "
 "see past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
+"Signori del reame aereo, i Draghi degli Uragani sono i migliori tra i draghi "
+"con la capacità di volare. Elevandosi in alto nell'aria , possono "
+"oltrepassare gran parte delle difese nemiche e colpire col fuoco impunemente."
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -4885,9 +4889,8 @@ msgid "firststrike"
 msgstr "attacco improvviso"
 
 #: data/units/Drake_Warden.cfg:4
-#, fuzzy
 msgid "Drake Warden"
-msgstr "Drago Splendente"
+msgstr "Drago Guardiano"
 
 #: data/units/Drake_Warden.cfg:19
 msgid ""
@@ -7320,9 +7323,8 @@ msgstr ""
 #: data/units/Soulless.cfg:190 data/units/Soulless.cfg:266
 #: data/units/Soulless.cfg:341 data/units/Soulless.cfg:416
 #: data/units/Soulless.cfg:491
-#, fuzzy
 msgid "plague(Walking Corpse)"
-msgstr "Morto vivente"
+msgstr "piaga(Morto vivente)"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -7679,16 +7681,15 @@ msgid "White Mage"
 msgstr "Mago Bianco"
 
 #: data/units/White_Mage.cfg:26 data/units/White_Mage.cfg:97
-#, fuzzy
 msgid ""
 "White Mages are weak in combat, but expert in the ways of healing. Units "
 "placed adjacent to a White Mage will heal as though they were resting in a "
 "village. White Mages are potent in battle against the undead, which suffer "
 "high damage from their light beam."
 msgstr ""
-"I maghi bianchi sono deboli nel combattimento ma sono degli esperti "
-"guaritori. Le unità adiacenti a maghi bianchi saranno curate come se "
-"stessero dormendo in un villaggio. I maghi bianchi sono potenti contro i non-"
+"I Maghi Bianchi sono deboli nel combattimento, ma sono degli esperti "
+"guaritori. Le unità adiacenti ai Maghi Bianchi verranno curate come se "
+"stessero dormendo in un villaggio. I Maghi Bianchi sono potenti contro i non-"
 "morti che subiscono grossi danni dai raggi di luce"
 
 #: data/units/White_Mage.cfg:77
@@ -7929,9 +7930,8 @@ msgid "+Russian Translation"
 msgstr "+Traduzione in Russo"
 
 #: src/about.cpp:262
-#, fuzzy
 msgid "+Serbian Translation"
-msgstr "+Traduzione in Tedesco"
+msgstr "+Traduzione in Serbo"
 
 #: src/about.cpp:265
 msgid "+Slovak Translation"
@@ -8142,19 +8142,19 @@ msgstr "Versione:"
 
 #: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
-msgstr ""
+msgstr "%b %d %y"
 
 #: src/dialogs.cpp:424
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:427
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:430
 msgid "%b %d"
-msgstr ""
+msgstr "%b %d"
 
 #: src/dialogs.cpp:454
 msgid "No Saved Games"
@@ -8197,9 +8197,8 @@ msgstr ""
 "registrare questi salvataggi con la versione del gioco?"
 
 #: src/dialogs.cpp:550
-#, fuzzy
 msgid "Date"
-msgstr "Portone"
+msgstr "Data"
 
 #: src/dialogs.cpp:550 src/game.cpp:887 src/help.cpp:1112
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
@@ -8669,7 +8668,7 @@ msgstr "Numero di Colline:"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
-msgstr "Dimenzione massima delle colline"
+msgstr "Dimensione massima delle colline"
 
 #: src/mapgen_dialog.cpp:91
 msgid "Villages:"
@@ -8677,7 +8676,7 @@ msgstr "Villaggi:"
 
 #: src/mapgen_dialog.cpp:92
 msgid "Landform:"
-msgstr "Tipo di terreno"
+msgstr "Tipo di terreno:"
 
 #: src/mapgen_dialog.cpp:198
 msgid "Roads Between Castles"
@@ -8941,12 +8940,11 @@ msgstr "Crea Partita"
 
 #: src/multiplayer_lobby.cpp:28
 msgid "Map"
-msgstr ""
+msgstr "Mappa"
 
 #: src/multiplayer_lobby.cpp:29
-#, fuzzy
 msgid "Status"
-msgstr "Statistiche"
+msgstr "Status"
 
 #: src/multiplayer_lobby.cpp:106
 msgid "Observe Game"
@@ -9279,7 +9277,6 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Devi avere almeno $cost oro per richiamare un unità"
 
 #: src/playturn.cpp:2047
-#, fuzzy
 msgid "Level"
 msgstr "Livello"
 
