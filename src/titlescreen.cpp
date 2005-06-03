@@ -27,18 +27,18 @@
 
 namespace {
 
-void fade_logo(display& screen, int xpos, int ypos)
+bool fade_logo(display& screen, int xpos, int ypos)
 {
 	const surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
 	if(logo == NULL) {
 		ERR_DP << "Could not find game logo\n";
-		return;
+		return true;
 	}
 
 	surface const fb = screen.video().getSurface();
 
 	if(fb == NULL || xpos < 0 || ypos < 0 || xpos + logo->w > fb->w || ypos + logo->h > fb->h) {
-		return;
+		return true;
 	}
 
 	//only once, when the game is first started, the logo fades in
@@ -75,8 +75,7 @@ void fade_logo(display& screen, int xpos, int ypos)
 			events::pump();
 			if(screen.video().modeChanged()) {
 				faded_in = true;
-				fade_logo(screen,xpos,ypos);
-				return;
+				return false;
 			}
 		}
 
@@ -85,6 +84,7 @@ void fade_logo(display& screen, int xpos, int ypos)
 	LOG_DP << "logo faded in\n";
 
 	faded_in = true;
+	return true;
 }
 
 const std::string& get_tip_of_day(const config& tips,int* ntip)
@@ -148,22 +148,23 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	const hotkey::basic_handler key_handler(&screen);
 
 	const font::floating_label_context label_manager;
-	
-	const surface title_surface_unscaled(image::get_image(game_config::game_title,image::UNSCALED));
-	const surface title_surface(scale_surface(title_surface_unscaled,screen.x(),screen.y()));
+
+	// Display Wesnoth logo
+	surface const title_surface(scale_surface(
+		image::get_image(game_config::game_title,image::UNSCALED),
+		screen.x(), screen.y()));
 	screen.video().modeChanged(); // resets modeChanged value
-
-	if(title_surface == NULL) {
-		ERR_DP << "Could not find title image\n";
-	} else {
-		screen.video().blit_surface(0,0,title_surface);
-		update_rect(screen_area());
-
-		LOG_DP << "displayed title image\n";
-	}
-
-	fade_logo(screen,(game_config::title_logo_x*screen.x())/1024,(game_config::title_logo_y*screen.y())/768);
-
+	int logo_x = game_config::title_logo_x * screen.x() / 1024,
+	    logo_y = game_config::title_logo_y * screen.y() / 768;
+	do {
+		if (title_surface.null()) {
+			ERR_DP << "Could not find title image\n";
+		} else {
+			screen.video().blit_surface(0, 0, title_surface);
+			update_rect(screen_area());
+			LOG_DP << "displayed title image\n";
+		}
+	} while (!fade_logo(screen, logo_x, logo_y));
 	LOG_DP << "faded logo\n";
 
 	const std::string& version_str = _("Version") + std::string(" ") +
