@@ -123,9 +123,12 @@ private:
 	int arg_;
 	const char* const * const argv_;
 
+	//this should get destroyed *after* the video, since we want to clean up threads
+	//after the display disappears.
+	const threading::manager thread_manager;
+
 	CVideo video_;
 
-	const threading::manager thread_manager;
 	const font::manager font_manager_;
 	const sound::manager sound_manager_;
 	const preferences::manager prefs_manager_;
