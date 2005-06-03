@@ -596,7 +596,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		case NULL_MARKUP:
 			return i1+1;
 		// semi ANSI colour escape sequences at the start of the line for now only
-		case '\027':
+		case '\033':
 			if(i2 - i1 >= 4) {
 				++i1;
 				if(*i1 == '[') {
