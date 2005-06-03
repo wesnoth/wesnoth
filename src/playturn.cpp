@@ -2544,11 +2544,15 @@ void turn_info::do_command(const std::string& str)
 			const std::string player(j+1,data.end());
 			const int side_num = lexical_cast<int, std::string>(side);
 			if(side_num > 0 && side_num <= teams_.size()) {
-				teams_[static_cast<size_t>(side_num - 1)].make_network();
-				change_side_controller(side,player);
-				close_textbox();
-				if(team_num_ == side_num) {
-					throw end_turn_exception(side_num);
+				if(teams_[static_cast<size_t>(side_num - 1)].is_human()) {
+					change_side_controller(side,player,true);
+					if(team_num_ == side_num) {
+						teams_[static_cast<size_t>(side_num - 1)].make_network();
+						close_textbox();
+						throw end_turn_exception(side_num);
+					}
+				} else {
+					change_side_controller(side,player);
 				}
 			}
 		}
