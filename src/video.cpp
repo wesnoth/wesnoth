@@ -339,7 +339,6 @@ void CVideo::flip()
 			sum += update_rects[n].w*update_rects[n].h;
 		}
 
-		const int t = SDL_GetTicks();
 		const size_t redraw_whole_screen_threshold = 80;
 		if(sum > ((getx()*gety())*redraw_whole_screen_threshold)/100) {
 			::SDL_Flip(frameBuffer);

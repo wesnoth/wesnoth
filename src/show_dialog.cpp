@@ -923,7 +923,6 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 {
 	const size_t width = 250;
 	const size_t height = 20;
-	const size_t border = 20;
 	const int left = disp.x()/2 - width/2;
 	const int top = disp.y()/2 - height/2;
 
