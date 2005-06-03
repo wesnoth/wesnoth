@@ -156,6 +156,12 @@ static void wesnoth_setlocale(int category, std::string const &slocale)
 		else
 			setenv("LOCPATH", locpath.c_str(), 1);
 	else setenv("LOCPATH", (game_config::path + "/locales").c_str(), 1);
+	std::string xlocale;
+	if (!slocale.empty()) {
+		// dummy suffix to prevent locale aliasing from kicking in
+		xlocale = slocale + "@wesnoth";
+		locale = xlocale.c_str();
+	}
 #endif
 	char* res = setlocale (category, locale);
 	if (res == NULL)
