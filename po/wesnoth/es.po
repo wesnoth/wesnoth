@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
 # David Martínez Moreno <ender@debian.org>, 2004-2005.
+# Pío Sierra <pio@piosierra.com>, 2005.
+# Terpor <terpor@gmail.com>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-05-31 21:42+0200\n"
-"PO-Revision-Date: 2005-04-07 11:30+0200\n"
+"PO-Revision-Date: 2005-06-02 02:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,12 +25,11 @@ msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:31
 msgid "Binary Saves"
-msgstr ""
+msgstr "Comprimir partidas"
 
 #: data/game.cfg:38
-#, fuzzy
 msgid "Show Combat"
-msgstr "Combate"
+msgstr "Mostrar combate"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -69,7 +70,6 @@ msgstr ""
 "estarán siempre bajo este apartado."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -130,7 +130,6 @@ msgstr ""
 "<italic>text=Fácil</italic>."
 
 #: data/help.cfg:73
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining each item. This "
@@ -232,7 +231,6 @@ msgid "Movement"
 msgstr "Movimiento"
 
 #: data/help.cfg:93
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When a unit is "
@@ -329,7 +327,6 @@ msgstr ""
 "<header>text='Orden y número de ataques'</header>"
 
 #: data/help.cfg:107
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -359,7 +356,6 @@ msgstr ""
 "<header>text='Probabilidad de acierto'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -377,11 +373,11 @@ msgstr ""
 "está basada de forma única en el valor de defensa del terreno en el que "
 "está. Puede hallarse este valor si se pincha con el botón derecho una "
 "unidad, se selecciona «Descripción de unidad» y allí se mira en "
-"<italic>text='Modificadores por terreno'</italic>. Por ejemplo, los elfos "
-"tienen un valor de defensa en bosques de un 70%, lo cual significa que una "
-"unidad que los ataque sólo tiene una probabilidad de un 30% de acertar. "
-"Asimismo, la probabilidad del elfo de acertar vendrá dada por el tipo de "
-"terreno en el que esté su atacante."
+"<italic>text='Modificadores por terreno'</italic>. Por ejemplo, la mayoría "
+"de los elfos tienen un valor de defensa en bosques de un 70%, lo cual "
+"significa que una unidad que los ataque sólo tiene una probabilidad de un "
+"30% de acertar. Asimismo, la probabilidad del elfo de acertar vendrá dada "
+"por el tipo de terreno en el que esté su atacante."
 
 #: data/help.cfg:112
 msgid ""
@@ -703,7 +699,6 @@ msgstr ""
 "total, o eliminarán el veneno de una unidad afectada por él."
 
 #: data/help.cfg:179
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -713,10 +708,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Tenga en cuenta que mientras que el descanso puede combinarse con otras "
-"formas de curación, los efectos de las aldeas, la regeneración, y la "
-"curación o sanación no se combinan entre ellos. Asimismo, las unidades se "
-"recuperan completamente entre un escenario y otro."
+"El descanso puede combinarse con otras formas de curación, pero los efectos "
+"de las aldeas, la regeneración, y la curación o sanación no se combinan "
+"entre ellos. Asimismo, las unidades se recuperan completamente entre un "
+"escenario y otro."
 
 #: data/help.cfg:184
 msgid "Income and Upkeep"
@@ -735,7 +730,6 @@ msgstr ""
 "a saber: los ingresos y el coste de mantenimiento."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -745,13 +739,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"El de ingresos es simple. Pora cada aldea que controle, ingresará una pieza "
-"de oro por turno. Así, si tiene diez aldeas, ganará diez piezas de oro. Por "
-"desgracia, tampoco es tan simple: los costes de mantenimiento de su ejército "
-"se compensan con sus ingresos, como se explica a continuación."
+"El de ingresos es simple. Por cada aldea que controle, ingresará una pieza "
+"de oro por turno. Así, si tiene diez aldeas, ganará diez piezas de oro. A su "
+"vez, los costes de mantenimiento de su ejército se deducen de sus ingresos, "
+"como se explica a continuación."
 
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -767,13 +760,13 @@ msgstr ""
 "El mantenimiento también es bastante sencillo. Cada unidad requiere de una "
 "cantidad de piezas de oro en concepto de mantenimiento igual a su nivel. "
 "Puede mantener tantos <italic>text=niveles</italic> de unidades como aldeas "
-"tenga, sin coste alguno. Sin embargo, tendrá que pagar una pieza de oro por "
-"turno por cada nivel que exceda el número de aldeas que posee. Por ejemplo, "
-"si tuviese doce unidades de nivel uno y diez aldeas, tendría que pagar dos "
-"piezas de oro cada turno en concepto de mantenimiento."
+"tenga, sin coste de mantenimiento alguno. Sin embargo, tendrá que pagar una "
+"pieza de oro por turno por cada nivel de unidad que exceda el número de "
+"aldeas que posee. Por ejemplo, si tuviese doce unidades de nivel uno y diez "
+"aldeas, tendría que pagar dos piezas de oro cada turno en concepto de "
+"mantenimiento."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -782,12 +775,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Estos costes se deducen de su nivel de ingresos, así que en el caso anterior "
-"de doce niveles en unidades y diez aldeas, sus ingresos por turno serían 8 "
-"piezas."
+"Estos costes se deducen de sus ingresos, así que en el caso anterior de doce "
+"niveles en unidades y diez aldeas, sus ingresos por turno serían 8 piezas de "
+"oro."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -796,13 +788,11 @@ msgid ""
 "the second level of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"Hay dos excepciones importantes a esta regla. La primera es que las unidades "
-"con el rasgo «leal» sólo contarán como si fuesen de nivel uno a todos los "
-"efectos del cálculo del mantenimiento, independientemente del nivel que "
-"tengan. La segunda es que las unidades con las que comience a jugar en el "
-"escenario (como Konrad o Delfador), o que se le unan durante un escenario "
-"(como los jinetes en el segundo nivel de la campaña «Heredero al trono») "
-"nunca le supondrán un coste de mantenimiento."
+"Hay una excepción importante a esta regla: las unidades con el rasgo «leal» "
+"no tienen coste alguno de mantenimiento. Las unidades con las que comience a "
+"jugar en el escenario (como Konrad o Delfador), o que se le unan durante un "
+"escenario (como los jinetes en el segundo nivel de la campaña «Heredero al "
+"trono») normalmente tendrán el rasgo «leal»."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -833,6 +823,10 @@ msgid ""
 "attributes slightly. They are usually randomly assigned to a unit when it is "
 "recruited."
 msgstr ""
+"Muchas unidades tienen dos rasgos, con la excepción de los no muertos, que "
+"poseen el rasgo «no muerto». Los rasgos son propiedades de cada unidad que "
+"modifican ligeramente sus atributos. Normalmente se asignan aleatoriamente a "
+"cada unidad cuando se la recluta."
 
 #: data/help.cfg:212
 msgid ""
@@ -840,9 +834,12 @@ msgid ""
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"Los rasgos disponibles para todas las unidades que no sean no muertos son "
+"los siguientes:"
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -866,13 +863,13 @@ msgstr ""
 "puntos de experiencia para subir de nivel.\n"
 "\n"
 "Las unidades inteligentes son muy útiles al principio de una campaña, dado "
-"que pueden convertirse mucho antes en las tan deseadas unidades de nivel "
-"alto. Más tarde, no son tan útiles, y si tiene muchas unidades de nivel alto "
-"puede que prefiera reincorporar unidades con rasgos más adecuados a largo "
-"plazo."
+"que pueden subir de nivel más rápidamente. Más tarde, no son tan útiles, "
+"dado que las unidades no ganan nada por tener muchos puntos de experiencia "
+"después de alcanzar su nivel máximo. Si tiene muchas unidades en su máximo "
+"nivel, puede que prefiera reincorporar otras unidades con rasgos más "
+"adecuados."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -899,12 +896,11 @@ msgstr ""
 "La rapidez es el rasgo más notable, particularmente en unidades lentas como "
 "trolls o infantería pesada. Las unidades con el rasgo «rápido» tienen a "
 "menudo movilidad adicional en terrenos difíciles, así que téngalo en cuenta "
-"a la hora de desplegar sus fuerzas. Asimismo, recuerde que las unidades "
-"rápidas no son tan duras como acostumbran, así que no son demasiado buenas "
-"para defender una posición."
+"a la hora de desplegar sus fuerzas. Asimismo, las unidades rápidas no son "
+"tan duras como las unidades que no poseen este rasgo, así que no son "
+"demasiado buenas para defender una posición."
 
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -927,12 +923,12 @@ msgstr ""
 "Las unidades resistentes tienen 7 pv más de lo normal.\n"
 "\n"
 "Las unidades resistentes pueden ser útiles en cualquier parte de una "
-"campaña, y es un rasgo útil para cualquier unidad, sea la que sea, aunque lo "
-"notará más en unas unidades que en otras. Las unidades resistentes son "
-"especialmente útiles para consolidar una posición ante sus enemigos."
+"campaña, y es un rasgo útil para cualquier unidad. A menudo será más útil en "
+"unidades que combinen pocos puntos de vida, buenas capacidades defensivas, o "
+"gran resistencia. Las unidades resistentes son especialmente útiles para "
+"consolidar una posición ante sus enemigos."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -955,11 +951,11 @@ msgstr ""
 "Las unidades fuertes hacen 1 punto más de daño en cada ataque de combate "
 "cuerpo a cuerpo, y tienen 2 pv más.\n"
 "\n"
-"Este rasgo es más efectivo en unidades que tienen muchos ataques de cuerpo a "
-"cuerpo, como el luchador elfo. Las unidades fuertes pueden ser muy útiles en "
-"esos momentos en los que se necesita un poco más de daño adicional por "
-"ataque y convertir lo que de otra forma sería un ataque sin más en un golpe "
-"mortal."
+"Aunque es útil para cualquier unidad de ataque directo, este rasgo es más "
+"efectivo en unidades que tienen muchos ataques, como el luchador elfo. Las "
+"unidades fuertes pueden ser muy útiles en esos momentos en los que se "
+"necesita un poco más de daño adicional por ataque y convertir lo que de otra "
+"forma sería un ataque sin más en un golpe mortal."
 
 #: data/help.cfg:243
 msgid ""
@@ -968,6 +964,11 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"Hay otros rasgos especiales que pueden haber sido asignados a algunas "
+"unidades::"
 
 #: data/help.cfg:251
 msgid ""
@@ -988,6 +989,22 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Leal</header>\n"
+"\n"
+"Las unidades leales no exigen que las mantengan. La mayoría de las unidades "
+"requieren un coste de mantenimiento al final de cada turno igual a su nivel. "
+"Las unidades leales no tienen este coste.\n"
+"\n"
+"Durante las campañas, habrá unidades que opten por unirse a las fuerzas del "
+"jugador por propia voluntad. A estas unidades se las marca con el rasgo "
+"«leal». Aunque requieren un pago por reincorporarlas, nunca supondrán ningún "
+"coste de mantenimiento. Ello puede ser muy valioso durante el curso de una "
+"campaña larga, donde el oro no sobra. Este rasgo nunca aparece en las "
+"unidades recién reclutadas, por lo que licenciarlas o enviarlas a una muerte "
+"segura puede ser una pésima idea."
 
 #: data/help.cfg:258
 msgid ""
@@ -1003,6 +1020,18 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=No muerto</header>\n"
+"\n"
+"Las unidades no muertas son inmunes al veneno.\n"
+"\n"
+"Las unidades no muertas generalmente tienen como único rasgo «No muerto». "
+"Dado que las unidades no muertas están compuestas por los cuerpos sin vida "
+"de personas fallecidas, insuflados con energía sobrenatural para luchar de "
+"nuevo, el veneno no tiene efecto en ellos. Esto puede hacerlos muy valiosos "
+"al enfrentarse a enemigos que usen veneno en conjunción con sus ataques."
 
 #: data/help.cfg:265
 msgid ""
@@ -1018,6 +1047,18 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Diestro</header>\n"
+"\n"
+"Las unidades diestras tienen un +1 en el daño de cada ataque hecho con "
+"arco.\n"
+"\n"
+"El rasgo «diestro» tan sólo lo poseen los elfos. Estas gentes son conocidas "
+"por su gracia natural, así como su gran pericia con el arco. Algunos, sin "
+"embargo, han sido bendecidos con un talento natural que excede la de sus "
+"hermanos. Estos elfos infligen un punto adicional de daño con cada flecha."
 
 #: data/items.cfg:264
 msgid ""
@@ -1025,7 +1066,7 @@ msgid ""
 "What would you like to wish for?"
 msgstr ""
 "Has llegado a través de un pozo de deseos.\n"
-"¿Qué deseas?"
+"¿Qué deseo quieres?"
 
 #: data/items.cfg:268
 msgid "A swift victory"
@@ -2383,7 +2424,6 @@ msgid "What do traits do?"
 msgstr "¿Qué hacen los diferentes rasgos?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -2392,12 +2432,13 @@ msgid ""
 "traits when they are recruited. Also, some races and units may have traits "
 "that are unique to them."
 msgstr ""
-"Hay cinco rasgos diferentes, que tienen distintos efectos que van desde "
+"Hay cuatro rasgos diferentes, que tienen distintos efectos que van desde "
 "incrementar los puntos de vida de una unidad a reducir la cantidad de px que "
 "necesita para subir de nivel. Sin embargo, todos los rasgos están diseñados "
 "para que la unidad sea mejor; es decir, no hay rasgos «negativos». La "
 "mayoría de las unidades tienen la misma probabilidad de conseguir dos rasgos "
-"cualesquiera que sean cuando son reclutados."
+"cualesquiera que sean cuando son reclutados. Asimismo, algunas razas y "
+"unidades pueden tener rasgos que les sean únicos."
 
 #: data/scenarios/tutorial/utils.cfg:111
 msgid "What kind of traits can my units get?"
@@ -2852,19 +2893,16 @@ msgid "Canyon"
 msgstr "Cañón"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "Ruin"
-msgstr "ruinas"
+msgstr "Ruinas"
 
 #: data/terrain.cfg:448
-#, fuzzy
 msgid "Sunken Ruin"
-msgstr "ruinas hundidas"
+msgstr "Ruinas hundidas"
 
 #: data/terrain.cfg:459
-#, fuzzy
 msgid "Swamp Ruin"
-msgstr "ruinas pantanosas"
+msgstr "Ruinas pantanosas"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
@@ -4882,9 +4920,8 @@ msgid "slam"
 msgstr "caída"
 
 #: data/units/Drake_Hurricane.cfg:3
-#, fuzzy
 msgid "Hurricane Drake"
-msgstr "Draco de fuego"
+msgstr "Draco huracán"
 
 #: data/units/Drake_Hurricane.cfg:18
 msgid ""
@@ -4898,7 +4935,6 @@ msgid "Inferno Drake"
 msgstr "Draco infernal"
 
 #: data/units/Drake_Inferno.cfg:18
-#, fuzzy
 msgid ""
 "The flying configurations known as Drake Infernos wear massive gold armor "
 "that is almost impenetrable. These drakes are also practically immune to "
@@ -4937,7 +4973,6 @@ msgid "Drake Slasher"
 msgstr "Carnicero draco"
 
 #: data/units/Drake_Slasher.cfg:19
-#, fuzzy
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged, but "
@@ -5389,9 +5424,8 @@ msgstr "enredar"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:42
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
-#, fuzzy
 msgid "faerie fire"
-msgstr "toque faérico"
+msgstr "fuego faérico"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -5428,13 +5462,12 @@ msgid "Elvish High Lord"
 msgstr "Alto Señor elfo"
 
 #: data/units/Elvish_High_Lord.cfg:18
-#, fuzzy
 msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
 msgstr ""
 "El Alto Señor elfo es temible en combate, tanto con la espada a corta "
-"distancia, como con sus devastadoras bolas de fuego desde lejos."
+"distancia, como con sus devastadoras bolas de escarcha desde lejos."
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
@@ -5458,13 +5491,12 @@ msgid "Elvish Lord"
 msgstr "Señor elfo"
 
 #: data/units/Elvish_Lord.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of frost at long range."
 msgstr ""
 "El Señor elfo es temible en combate, tanto con la espada a corta distancia, "
-"como con sus devastadoras bolas de fuego desde lejos."
+"como con sus devastadoras bolas de escarcha desde lejos."
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
@@ -7172,7 +7204,6 @@ msgid "Saurian Ambusher"
 msgstr "Emboscador saurio"
 
 #: data/units/Saurian_Ambusher.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -7497,9 +7528,8 @@ msgstr ""
 #: data/units/Soulless.cfg:190 data/units/Soulless.cfg:266
 #: data/units/Soulless.cfg:341 data/units/Soulless.cfg:416
 #: data/units/Soulless.cfg:491
-#, fuzzy
 msgid "plague(Walking Corpse)"
-msgstr "Muerto andante"
+msgstr "plaga (Muerto andante)"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -7650,15 +7680,14 @@ msgid "Troll Hero"
 msgstr "Troll héroe"
 
 #: data/units/Troll_Hero.cfg:17
-#, fuzzy
 msgid ""
 "Troll heroes are strong and brutal humanoid monsters with the amazing "
 "ability to regenerate themselves, so that they recover from wounds on their "
 "own, even during battle."
 msgstr ""
 "Los trolls héroes son unos humanoides brutales y fuertes, capaces de "
-"regenerarse increíblemente rápido, recobrándose de las heridas en el fragor "
-"de la lucha."
+"regenerarse increíblemente rápido, recobrándose de las heridas ellos solos, "
+"incluso en el fragor de la lucha."
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
@@ -7859,7 +7888,6 @@ msgid "White Mage"
 msgstr "Mago Blanco"
 
 #: data/units/White_Mage.cfg:26 data/units/White_Mage.cfg:97
-#, fuzzy
 msgid ""
 "White Mages are weak in combat, but expert in the ways of healing. Units "
 "placed adjacent to a White Mage will heal as though they were resting in a "
