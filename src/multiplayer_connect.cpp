@@ -835,9 +835,6 @@ void connect::lists_init()
 		}
 	}
 
-	std::string prefix;
-	prefix.resize(1);
-
 	// Colours
 	for(int i = 0; i < 9; ++i) {
 		player_colours_.push_back(get_colour_string(i));
