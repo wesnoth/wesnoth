@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C)
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -92,7 +92,7 @@ public:
 
 		// The mp::connect widget owning this mp::connect::side. Used
 		// in the constructor, must be first.
-		connect* parent_; 
+		connect* parent_;
 
 		config cfg_;
 
@@ -129,8 +129,8 @@ public:
 	typedef std::vector<side> side_list;
 
 
-	connect(display& disp, const config& game_config, const game_data& data, 
-			chat& c, config& gamelist, const create::parameters& params, 
+	connect(display& disp, const config& game_config, const game_data& data,
+			chat& c, config& gamelist, const create::parameters& params,
 			mp::controller default_controller);
 
 	virtual void process_event();
@@ -164,13 +164,13 @@ private:
 
 	// Updates the level_ variable to reflect the sides in the sides_ vector
 	void update_level();
-	
+
 	// Updates the level, and send a diff to the clients
 	void update_and_send_diff();
 
 	// Returns true if there still are sides available for this game
 	bool sides_available();
-	
+
 	// Updates the state of the player list, the launch button and of the
 	// start game label, to reflect the actual state.
 	void update_playerlist_state(bool silent=true);
@@ -209,7 +209,7 @@ private:
 	// team_name list and "Team" prefix
 	std::vector<std::string> team_names_;
 	const std::string team_prefix_;
-	
+
 	side_list sides_;
 	connected_user_list users_;
 

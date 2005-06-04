@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -117,7 +117,7 @@ hotkey::hotkey_item null_hotkey_;
 
 namespace hotkey {
 
-hotkey_item::hotkey_item(HOTKEY_COMMAND id, const std::string& command, const std::string& description, bool hidden) 
+hotkey_item::hotkey_item(HOTKEY_COMMAND id, const std::string& command, const std::string& description, bool hidden)
 	: id_(id), command_(command), description_(description), keycode_(0),
 	  shift_(false), ctrl_(false), alt_(false), cmd_(false), hidden_(hidden)
 {
@@ -146,10 +146,10 @@ void hotkey_item::load_from_config(const config& cfg)
 	cmd_ = (cfg["cmd"] == "yes");
 }
 
-std::string hotkey_item::get_name() const 
+std::string hotkey_item::get_name() const
 {
 	if (keycode_ != 0) {
-		std::stringstream str;			
+		std::stringstream str;
 		if (alt_)
 			str << "alt+";
 		if (ctrl_)
@@ -180,10 +180,10 @@ void hotkey_item::set_key(int keycode, bool shift, bool ctrl, bool alt, bool cmd
 	cmd_ = cmd;
 }
 
-manager::manager() 
+manager::manager()
 {
 	for (int i = 0; hotkey_list_[i].command; ++i) {
-		hotkeys_.push_back(hotkey_item(hotkey_list_[i].id, hotkey_list_[i].command, 
+		hotkeys_.push_back(hotkey_item(hotkey_list_[i].id, hotkey_list_[i].command,
 				"", hotkey_list_[i].hidden));
 	}
 }
@@ -235,7 +235,7 @@ void save_hotkeys(config& cfg)
 	}
 }
 
-hotkey_item& get_hotkey(HOTKEY_COMMAND id) 
+hotkey_item& get_hotkey(HOTKEY_COMMAND id)
 {
 	std::vector<hotkey_item>::iterator itor;
 
@@ -250,7 +250,7 @@ hotkey_item& get_hotkey(HOTKEY_COMMAND id)
 	return *itor;
 }
 
-hotkey_item& get_hotkey(const std::string& command) 
+hotkey_item& get_hotkey(const std::string& command)
 {
 	std::vector<hotkey_item>::iterator itor;
 
@@ -272,17 +272,17 @@ hotkey_item& get_hotkey(int keycode, bool shift, bool ctrl, bool alt, bool cmd, 
 
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
 		if(mods) {
-			if(itor->get_keycode() == keycode 
+			if(itor->get_keycode() == keycode
 					&& (shift == itor->get_shift() || shift == true)
 					&& (ctrl == itor->get_ctrl() || ctrl == true)
 					&& (alt == itor->get_alt() || alt == true)
 					&& (cmd == itor->get_cmd() || cmd == true))
 				break;
 		} else {
-			if(itor->get_keycode() == keycode 
-					&& shift == itor->get_shift() 
-					&& ctrl == itor->get_ctrl() 
-					&& alt == itor->get_alt() 
+			if(itor->get_keycode() == keycode
+					&& shift == itor->get_shift()
+					&& ctrl == itor->get_ctrl()
+					&& alt == itor->get_alt()
 					&& cmd == itor->get_cmd())
 				break;
 		}

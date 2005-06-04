@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2005 
+   Copyright (C) 2005
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -104,7 +104,7 @@ chat::chat()
 void chat::add_message(const std::string& user, const std::string& message)
 {
 	message_history_.push_back(msg(user, message));
-	
+
 	while (message_history_.size() > 1024) {
 		message_history_.pop_front();
 
@@ -117,11 +117,11 @@ void chat::init_textbox(gui::textbox& textbox)
 {
 	std::string s;
 
-	for(msg_hist::const_iterator itor = message_history_.begin(); 
+	for(msg_hist::const_iterator itor = message_history_.begin();
 			itor != message_history_.end(); ++itor) {
 		s.append(format_message(*itor));
 	}
-	
+
 	textbox.set_text(s);
 	last_update_ = message_history_.size();
 	textbox.scroll_to_bottom();
@@ -131,7 +131,7 @@ void chat::update_textbox(gui::textbox& textbox)
 {
 	std::string s;
 
-	for(msg_hist::const_iterator itor = message_history_.begin() + last_update_; 
+	for(msg_hist::const_iterator itor = message_history_.begin() + last_update_;
 			itor != message_history_.end(); ++itor) {
 		s.append(format_message(*itor));
 	}
@@ -176,7 +176,7 @@ void ui::process_network()
 
 		if(sock) {
 			process_network_data(data, sock);
-		} 
+		}
 	} catch(network::error& e) {
 		process_network_error(e);
 	}
@@ -235,7 +235,7 @@ void ui::draw_contents()
 
 	surface background(image::get_image("misc/lobby.png",image::UNSCALED));
 	background = scale_surface(background, video().getx(), video().gety());
-	if(background == NULL) 
+	if(background == NULL)
 		return;
 	SDL_BlitSurface(background, NULL, video().getSurface(), NULL);
 	update_whole_screen();
@@ -297,7 +297,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 			chat_.update_textbox(chat_textbox_);
 
 		}
-			
+
 		network::send_data(data);
 		entry_textbox_.clear();
 	}

@@ -94,7 +94,7 @@ public:
 	void set_max_width(const int new_max_width);
 
 	size_t nitems() const { return items_.size(); }
-	
+
 	int process();
 
 	bool double_clicked();

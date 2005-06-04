@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -81,7 +81,7 @@ config map_editor::prefs_;
 config map_editor::hotkeys_;
 // Do not init the l_button_func_ to DRAW, since it should be changed in
 // the constructor to update the report the first time.
-map_editor::LEFT_BUTTON_FUNC map_editor::l_button_func_ = PASTE; 
+map_editor::LEFT_BUTTON_FUNC map_editor::l_button_func_ = PASTE;
 gamemap::TERRAIN map_editor::old_fg_terrain_;
 gamemap::TERRAIN map_editor::old_bg_terrain_;
 int map_editor::old_brush_size_;
@@ -214,7 +214,7 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 			const SDL_Rect& rect = gui_.map_area();
 			const int centerx = (rect.x + rect.w) / 2;
 			const int centery = (rect.y + rect.h) / 2;
-			
+
 			const int xdisp = mousex - centerx;
 			const int ydisp = mousey - centery;
 			gui_.scroll(xdisp, ydisp);
@@ -224,13 +224,13 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 			if (point_in_rect(mousex, mousey, gui_.map_area())) {
 				const int speed = preferences::scroll_speed() *
 					(button == SDL_BUTTON_WHEELUP ? -1 : 1);
-				
+
 				const int centerx = gui_.mapx() / 2;
 				const int centery = gui_.y() / 2;
-				
+
 				const int xdisp = abs(centerx - mousex);
 				const int ydisp = abs(centery - mousey);
-				
+
 				if(xdisp > ydisp)
 					gui_.scroll(speed,0);
 				else
@@ -297,7 +297,7 @@ void map_editor::right_click(const gamemap::location hex_clicked ) {
 		}
 	}
 }
-	
+
 
 void map_editor::edit_save_as() {
 	const std::string default_dir =
@@ -335,8 +335,8 @@ void map_editor::perform_set_starting_pos() {
 	                                 _("Which player should start here?"),
 	                                 gui::OK_CANCEL, &players);
 	if (res >= 0) {
-	    	res++;
-	    	if (res == num_players) res = 0;
+		res++;
+		if (res == num_players) res = 0;
 		set_starting_position(res, selected_hex_);
 	}
 }
@@ -374,7 +374,7 @@ void map_editor::edit_quit() {
 void map_editor::edit_new_map() {
 	const std::string map = new_map_dialog(gui_, palette_.selected_bg_terrain(),
 	                                       changed_since_save(), game_config_);
- 	if (map != "") {
+	if (map != "") {
 		num_operations_since_save_ = 0;
 		clear_undo_actions();
 		throw new_map_exception(map);
@@ -988,7 +988,7 @@ void map_editor::right_button_down(const int mousex, const int mousey) {
 	// TODO evaluate if this is what is the smartest thing to do.
 	draw_on_mouseover_hexes(palette_.selected_bg_terrain());
 }
- 
+
 void map_editor::middle_button_down(const int mousex, const int mousey) {
 	const gamemap::location& minimap_loc = gui_.minimap_location_on(mousex,mousey);
 	const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
@@ -1218,7 +1218,7 @@ void map_editor::main_loop() {
 			const int y = menu_loc.y + menu_loc.h + 1;
 			show_menu(m->items(), x, y, false);
 		}
-	
+
 		if(key_[SDLK_UP] || mousey == 0) {
 			gui_.scroll(0,-scroll_speed);
 		}
@@ -1231,7 +1231,7 @@ void map_editor::main_loop() {
 		if(key_[SDLK_RIGHT] || mousex == gui_.x()-1) {
 			gui_.scroll(scroll_speed,0);
 		}
-	
+
 		if (l_button_down) {
 			left_button_down(mousex, mousey);
 		}

@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -28,7 +28,7 @@ struct move_cost_calculator : cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
 	                     const game_data& data,
-					 	 const unit_map& units,
+						 const unit_map& units,
 	                     const gamemap::location& loc,
 						 const ai::move_map& dstsrc,
 						 const ai::move_map& enemy_dstsrc)
@@ -502,13 +502,13 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			   u->second.movement_left() <= 0 || u->second.is_guardian() || u->second.incapacitated()) {
 				continue;
 			}
-	
+
 			user_interact();
-	
+
 			const move_cost_calculator calc(u->second, map_, gameinfo_, units_, u->first, dstsrc, enemy_dstsrc);
 			const double locStopValue = minimum(best_target->value / best_rating, 100.0);
 			paths::route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.x(), map_.y());
-			
+
 			if (cur_route.move_left < locStopValue)
 			{
 				// if this unit can move to that location this turn, it has a very very low cost
@@ -521,7 +521,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 					++locRange.first;
 				}
 			}
-			
+
 			double rating = best_target->value/maximum<int>(1,cur_route.move_left);
 
 			//for 'support' targets, they are rated much higher if we can get there within two turns,
@@ -585,7 +585,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				const int distance = distance_between(*i,best_target->loc);
 				const int defense = best->second.defense_modifier(map_,map_.get_terrain(*i));
 				const double vulnerability = power_projection(*i,enemy_srcdst,enemy_dstsrc);
-				
+
 				if(best_loc.valid() == false || defense < best_defense || defense == best_defense && vulnerability < best_vulnerability) {
 					best_loc = *i;
 					best_defense = defense;
@@ -617,7 +617,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		//target is dangerous, and whether we need to group some units to move in unison toward the target
 		//if any point along the path is too dangerous for our single unit, then we hold back
 		for(std::vector<location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end() && movement > 0; ++i) {
-			
+
 			const double threat = power_projection(*i,enemy_srcdst,enemy_dstsrc);
 			if(threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_srcdst,fullmove_dstsrc) ||
 			   i >= best_route.steps.end()-2 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side())) {
@@ -695,7 +695,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 					targets.push_back(target(*j,value*4.0,target::MASS));
 				}
 			}
-			
+
 			return std::pair<location,location>(loc,best_loc);
 		}
 	}
@@ -731,7 +731,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 					}
 
 					LOG_AI << "Moving to " << its.first->first.x + 1 << "," << its.first->first.y + 1 << "\n";
-				
+
 					return std::pair<location,location>(its.first->second,its.first->first);
 				} else {
 					LOG_AI << "dangerous!\n";

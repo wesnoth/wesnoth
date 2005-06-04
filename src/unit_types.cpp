@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -27,7 +27,7 @@
 
 unit_animation::frame::frame(const config& cfg)
 {
-	xoffset = atoi(cfg["xoffset"].c_str()); 
+	xoffset = atoi(cfg["xoffset"].c_str());
 	image = cfg["image"];
 	image_diagonal = cfg["image_diagonal"];
 	halo = cfg["halo"];
@@ -38,10 +38,10 @@ unit_animation::frame::frame(const config& cfg)
 unit_animation::unit_animation()
 {}
 
-unit_animation::unit_animation(const config& cfg) 
+unit_animation::unit_animation(const config& cfg)
 {
 	config::const_child_itors range = cfg.child_range("frame");
-	
+
 	int last_end = INT_MIN;
 	for(; range.first != range.second; ++range.first) {
 		unit_frames_.add_frame(atoi((**range.first)["begin"].c_str()), frame(**range.first));
@@ -294,7 +294,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 
 	if(increase_damage.empty() == false) {
 		int increase = 0;
-		
+
 		if(increase_damage[increase_damage.size()-1] == '%') {
 			const std::string inc(increase_damage.begin(),increase_damage.end()-1);
 			increase = div100(damage_ * atoi(inc.c_str()));
@@ -314,7 +314,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 
 	if(increase_attacks.empty() == false) {
 		int increase = 0;
-		
+
 		if(increase_attacks[increase_attacks.size()-1] == '%') {
 			const std::string inc(increase_attacks.begin(),increase_attacks.end()-1);
 			increase = div100(num_attacks_ * atoi(inc.c_str()));
@@ -629,7 +629,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	teleport_ = has_ability("teleport");
 	nightvision_ = has_ability("night vision");
 	steadfast_ = has_ability("steadfast");
-	
+
 	const std::string& align = cfg_["alignment"];
 	if(align == "lawful")
 		alignment_ = LAWFUL;
@@ -706,7 +706,7 @@ const unit_type& unit_type::get_variation(const std::string& name) const
 	}
 }
 
-int unit_type::num_traits() const { 
+int unit_type::num_traits() const {
   return (cfg_["num_traits"].size() ? atoi(cfg_["num_traits"].c_str()) : race_->num_traits());
 }
 
@@ -1163,7 +1163,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		if(to_unit.gender_types_[gender] == NULL) {
 			lg::warn(lg::config) << to_id << " does not support gender " << gender << "\n";
 			continue;
-		}			
+		}
 		lg::info(lg::config) << "gendered advancement " << gender << ": ";
 		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]),xp);
 	}
@@ -1172,7 +1172,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	// since these are still a rare and special-purpose feature,
 	// we assume that the unit designer knows what they're doing,
 	// and don't block advancements that would remove a variation
-	for(variations_map::iterator v=variations_.begin(); 
+	for(variations_map::iterator v=variations_.begin();
 	    v!=variations_.end(); ++v) {
 		lg::info(lg::config) << "variation advancement: ";
 		v->second->add_advancement(to_unit,xp);
@@ -1190,7 +1190,7 @@ game_data::game_data(const config& cfg)
 void game_data::set_config(const config& cfg)
 {
 	static const std::vector<config*> dummy_traits;
-	
+
 	const config::child_list& unit_traits = cfg.get_children("trait");
 
 	for(config::const_child_itors i = cfg.child_range("movetype");
@@ -1221,7 +1221,7 @@ void game_data::set_config(const config& cfg)
                 const std::string &to = (**k.first)["id"];
                 const std::string &from = (**af.first)["unit"];
                 const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
- 
+
                 unit_type_map::iterator from_unit = unit_types.find(from);
                 unit_type_map::iterator to_unit = unit_types.find(to);
                 if(from_unit==unit_types.end()) {
@@ -1229,7 +1229,7 @@ void game_data::set_config(const config& cfg)
                         continue;
                 }
                 wassert(to_unit!=unit_types.end());
- 
+
                 from_unit->second.add_advancement(to_unit->second,xp);
         }
 

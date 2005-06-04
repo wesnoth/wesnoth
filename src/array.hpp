@@ -44,7 +44,7 @@ public:
 
 	T* data() { return a; }
 	const T* data() const { return a; }
-	
+
 private:
 	T a[N];
 };

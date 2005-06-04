@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License.
@@ -29,16 +29,16 @@ See the COPYING file for more details.
 struct a_star_node
 {
 public:
-	double g, h;  // g: already traveled time, h: estimated time still to travel		
+	double g, h;  // g: already traveled time, h: estimated time still to travel
 	gamemap::location loc;
 	a_star_node* nodeParent;
 	bool isInCloseList;
-	
+
 	void initNode( const gamemap::location& pos, const gamemap::location& dst,
 								 double cost, a_star_node* parent,
-								 const std::set<gamemap::location>* teleports);	
+								 const std::set<gamemap::location>* teleports);
 
-	inline double heuristic(const gamemap::location& src, const gamemap::location& dst) 
+	inline double heuristic(const gamemap::location& src, const gamemap::location& dst)
 	{
 		return distance_between(src, dst);
 	}
@@ -58,7 +58,7 @@ public:
 	poss_a_star_node(void);
 	void addPage(void);
 	a_star_node* getAStarNode(void);
-	void reduce(void);	
+	void reduce(void);
 };
 
 class a_star_world
@@ -66,7 +66,7 @@ class a_star_world
 protected:
 	typedef std::vector<a_star_node*> vect_a_star_node;
 
-	vect_a_star_node		_vectAStarNode;		
+	vect_a_star_node		_vectAStarNode;
 	size_t						_width;
 
 public:
@@ -75,10 +75,10 @@ public:
 	void resize_IFN(const size_t parWidth, const size_t parHeight);
 	void clear(void);
 	void erase(gamemap::location const &loc);
-	a_star_node* getNodeFromLocation(gamemap::location const &loc, bool& isCreated);	
+	a_star_node* getNodeFromLocation(gamemap::location const &loc, bool& isCreated);
 	bool empty(void);
 	bool reallyEmpty(void);
-	a_star_world(void) : _width(0), _nbNode(0) {};	
+	a_star_world(void) : _width(0), _nbNode(0) {};
 };
 
 /*

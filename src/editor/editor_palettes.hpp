@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -47,8 +47,8 @@ public:
 	gamemap::TERRAIN selected_fg_terrain() const;
 	/// Return the currently selected background terrain.
 	gamemap::TERRAIN selected_bg_terrain() const;
-	
-	
+
+
 	/// Select a foreground terrain.
 	void select_fg_terrain(gamemap::TERRAIN);
 	void select_bg_terrain(gamemap::TERRAIN);
@@ -59,7 +59,7 @@ public:
 	virtual void draw();
 	virtual void handle_event(const SDL_Event& event);
 	void set_dirty(bool dirty=true);
-	
+
 
 	/// Return the number of terrains in the palette.
 	size_t num_terrains() const;
@@ -104,7 +104,7 @@ public:
 	brush_bar(display &gui, const size_specs &sizes);
 
 	/// Return the size of currently selected brush.
- 	unsigned int selected_brush_size();
+	unsigned int selected_brush_size();
 
 	/// Select a brush size.
 	void select_brush_size(int new_size);
@@ -123,12 +123,12 @@ private:
 	/// To be called when a mouse click occurs. Check if the coordinates
 	/// is a terrain that may be chosen, select the terrain if that is
 	/// the case.
- 	void left_mouse_click(const int mousex, const int mousey);
+	void left_mouse_click(const int mousex, const int mousey);
 
 	/// Return the index of the brush that is at coordinates (x, y) in the
 	/// panel.
 	int selected_index(const int x, const int y) const;
-					  
+
 	const size_specs &size_specs_;
 	display &gui_;
 	unsigned int selected_;

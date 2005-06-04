@@ -19,14 +19,14 @@
 
 class config;
 
-struct token 
+struct token
 {
 	enum token_type {
 		STRING,
 		QSTRING,
 		UNTERMINATED_QSTRING,
 		MISC,
-		
+
 		LF = '\n',
 		EQUALS = '=',
 		COMMA = ',',
@@ -42,7 +42,7 @@ struct token
 	std::string value;
 };
 
-class tokenizer 
+class tokenizer
 {
 public:
 	tokenizer(std::istream& in);

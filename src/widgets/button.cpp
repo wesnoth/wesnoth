@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -154,7 +154,7 @@ void button::draw_contents()
 {
 	surface image = image_;
 	const int image_w = image_->w;
-	
+
 	int offset = 0;
 	switch(state_) {
 	case ACTIVE:
@@ -181,7 +181,7 @@ void button::draw_contents()
 		textx = loc.x + image->w / 2 - textRect_.w / 2 + offset;
 	else
 		textx = loc.x + image_w + checkbox_horizontal_padding / 2;
-  
+
 	SDL_Color button_colour = font::BUTTON_COLOUR;
 
 	if (!enabled_) {

@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -39,7 +39,7 @@ const std::map<gamemap::location,gamemap::TERRAIN>& map_undo_action::redo_terrai
 const std::set<gamemap::location> map_undo_action::undo_selection() const {
 	return old_selection_;
 }
-	
+
 const std::set<gamemap::location> map_undo_action::redo_selection() const {
 	return new_selection_;
 }

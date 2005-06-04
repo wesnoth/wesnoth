@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -111,7 +111,7 @@ void advance_unit(const game_data& info,
 bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice)
 {
 	const command_disabler cmd_disabler;
-	
+
 	std::map<gamemap::location,unit>::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false) {
 		return false;
@@ -123,10 +123,10 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	if(choice >= options.size() + mod_options.size()) {
 		return false;
 	}
-	
+
 	//when the unit advances, it fades to white, and then switches to the
 	//new unit, then fades back to the normal colour
-	
+
 	if(!gui.update_locked()) {
 		for(double intensity = 1.0; intensity >= 0.0; intensity -= 0.05) {
 			gui.set_advancing_unit(loc,intensity);
@@ -368,7 +368,7 @@ void save_preview_pane::draw_contents()
 		str << "\n" << _("#(Invalid)");
 	} else if (!campaign_type.empty()) {
 		str << "\n";
-			
+
 		if(campaign_type == "scenario") {
 			str << _("Campaign");
 		} else if(campaign_type == "multiplayer") {
@@ -380,7 +380,7 @@ void save_preview_pane::draw_contents()
 		}
 
 		str << "\n";
-			
+
 		if(summary["snapshot"] == "no" && summary["replay"] == "yes") {
 			str << _("replay");
 		} else if (!summary["turn"].empty()) {
@@ -433,7 +433,7 @@ std::string format_time_summary(time_t t)
 		//save is from a different year
 		format_string = _("%b %d %y");
 	}
-	
+
 	char buf[40];
 	const size_t res = strftime(buf,sizeof(buf),format_string,&save_time);
 	if(res == 0) {
@@ -728,7 +728,7 @@ void unit_preview_pane::draw_contents()
 
 	details << _("HP: ") << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n";
-	
+
 	if(u.can_advance() == false) {
 		details << _("XP: ") << u.experience() << "/-";
 	} else {
@@ -740,7 +740,7 @@ void unit_preview_pane::draw_contents()
 
 		details << _("XP: ") << u.experience() << "/" << u.max_experience();
 	}
-	
+
 	if(weapons_) {
 		details << "\n"
 				<< _("Moves: ") << u.movement_left() << "/"
@@ -761,9 +761,9 @@ void unit_preview_pane::draw_contents()
 			        << (at_it->range() == attack_type::SHORT_RANGE ? _("melee") : _("ranged"));
 		}
 	}
-	
+
 	const std::string text = details.str();
-	
+
 	const std::vector<std::string> lines = utils::split(text, '\n');
 
 	SDL_Rect cur_area = area;

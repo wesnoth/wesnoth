@@ -32,7 +32,7 @@ surface composer::compose(const std::string &src, const std::string &dest)
 	}
 	cut.load_masks(src_conf);
 	cut.load_masks(dest_conf);
-	
+
 	if(verbose_) {
 		std::cerr << "Loading images...\n";
 	}
@@ -50,14 +50,14 @@ surface composer::compose(const std::string &src, const std::string &dest)
 	const cutter::surface_map src_surfaces = cut.cut_surface(src_surface, src_conf);
 	const cutter::surface_map dest_surfaces = cut.cut_surface(dest_surface, dest_conf);
 
-	for(cutter::surface_map::const_iterator itor = dest_surfaces.begin(); 
+	for(cutter::surface_map::const_iterator itor = dest_surfaces.begin();
 			itor != dest_surfaces.end(); ++itor) {
 
 		const std::string& name = itor->second.name;
-		
-		if(src_surfaces.find(name) == src_surfaces.end()) 
+
+		if(src_surfaces.find(name) == src_surfaces.end())
 			continue;
-		
+
 		const cutter::positioned_surface& src_ps = src_surfaces.find(name)->second;
 		const cutter::positioned_surface& dest_ps = itor->second;
 
@@ -75,7 +75,7 @@ surface composer::compose(const std::string &src, const std::string &dest)
 		}
 		masked_overwrite_surface(dest_surface, src_ps.image,
 				src_ps.mask.image,
-				dest_ps.pos.x, dest_ps.pos.y); 
+				dest_ps.pos.x, dest_ps.pos.y);
 	}
 
 	return dest_surface;

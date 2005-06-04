@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C)
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -51,7 +51,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(parent.disp(), parent.player_types_),
-	orig_controller_(parent.video(), cfg["description"], font::SIZE_SMALL), 
+	orig_controller_(parent.video(), cfg["description"], font::SIZE_SMALL),
 	combo_faction_(parent.disp(), parent.player_factions_),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
 	combo_team_(parent.disp(), parent.player_teams_),
@@ -72,7 +72,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			}
 		}
 	}
-	
+
 	slider_gold_.set_min(20);
 	slider_gold_.set_max(1000);
 	slider_gold_.set_increment(25);
@@ -121,7 +121,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		if(leader_type.empty()) {
 			leader_name_pseudolist.push_back("-");
 		} else {
-			game_data::unit_type_map::const_iterator leader_name = 
+			game_data::unit_type_map::const_iterator leader_name =
 				parent_->game_data_.unit_types.find(leader_type);
 			if(leader_name == parent_->game_data_.unit_types.end()) {
 				leader_name_pseudolist.push_back("-");
@@ -137,8 +137,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 }
 
 connect::side::side(const side& a) :
-	parent_(a.parent_), cfg_(a.cfg_), 
-	index_(a.index_), id_(a.id_),  save_id_(a.save_id_), 
+	parent_(a.parent_), cfg_(a.cfg_),
+	index_(a.index_), id_(a.id_),  save_id_(a.save_id_),
 	controller_(a.controller_),
 	faction_(a.faction_), team_(a.team_), colour_(a.colour_),
 	gold_(a.gold_), leader_(a.leader_), /* taken_(a.taken_), */
@@ -146,14 +146,14 @@ connect::side::side(const side& a) :
 	orig_controller_(a.orig_controller_),
 	combo_faction_(a.combo_faction_), combo_leader_(a.combo_leader_),
 	combo_team_(a.combo_team_), combo_colour_(a.combo_colour_),
-	slider_gold_(a.slider_gold_), label_gold_(a.label_gold_), 
+	slider_gold_(a.slider_gold_), label_gold_(a.label_gold_),
 	enabled_(a.enabled_), changed_(a.changed_), llm_(a.llm_)
 {
 	llm_.set_combo(enabled_ ? &combo_leader_ : NULL);
 }
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
-{ 
+{
 	pane.add_widget(&player_number_, 0, 5 + pos);
 	pane.add_widget(&combo_controller_, 20, 5 + pos);
 	pane.add_widget(&orig_controller_, 20 + (combo_controller_.width() - orig_controller_.width()) / 2, 35 + pos + (combo_leader_.height() - orig_controller_.height()) / 2);
@@ -173,7 +173,7 @@ void connect::side::process_event()
 		} else if (combo_controller_.selected() < CNTR_LAST) {
 			// If the current side corresponds to an existing user,
 			// we must kick it!
-			
+
 			if(id_ == preferences::login()) {
 				update_controller_ui(); // Cannot kick game creator
 			} else {
@@ -208,7 +208,7 @@ void connect::side::process_event()
 	}
 
 	if(!enabled_)
-		return; 
+		return;
 
 	if (combo_faction_.changed() && combo_faction_.selected() >= 0) {
 		faction_ = combo_faction_.selected();
@@ -383,12 +383,12 @@ void connect::side::update_user_list()
 	update_controller_ui();
 }
 
-const std::string& connect::side::get_id() const 
+const std::string& connect::side::get_id() const
 {
 	return id_;
 }
 
-void connect::side::set_id(const std::string& id) 
+void connect::side::set_id(const std::string& id)
 {
 	connected_user_list::iterator i = parent_->find_player(id);
 	if (i != parent_->users_.end()) {
@@ -398,7 +398,7 @@ void connect::side::set_id(const std::string& id)
 	update_ui();
 }
 
-const std::string& connect::side::get_save_id() const 
+const std::string& connect::side::get_save_id() const
 {
 	return save_id_;
 }
@@ -415,7 +415,7 @@ void connect::side::import_network_user(const config& data)
 		llm_.update_leader_list(faction_);
 		llm_.set_leader(data["leader"]);
 	}
-	
+
 	update_ui();
 }
 
@@ -441,7 +441,7 @@ void connect::side::resolve_random()
 
 		// Builds the list of sides which aren't random
 		std::vector<int> nonrandom_sides;
-		for(config::child_iterator itor = parent_->era_sides_.begin(); 
+		for(config::child_iterator itor = parent_->era_sides_.begin();
 				itor != parent_->era_sides_.end(); ++itor) {
 			if((**itor)["random_faction"] != "yes") {
 				nonrandom_sides.push_back(itor - parent_->era_sides_.begin());
@@ -456,7 +456,7 @@ void connect::side::resolve_random()
 	}
 
 	if (llm_.get_leader() == "random") {
-		// Choose a random leader type.  
+		// Choose a random leader type.
 		const config& fact = *parent_->era_sides_[faction_];
 		std::vector<std::string> types = utils::split(fact["leader"]);
 		if (!types.empty()) {
@@ -471,7 +471,7 @@ void connect::side::resolve_random()
 }
 
 connect::connect(display& disp, const config& game_config, const game_data& data,
-		chat& c, config& gamelist, const create::parameters& params, 
+		chat& c, config& gamelist, const create::parameters& params,
 		mp::controller default_controller) :
 	mp::ui(disp, game_config, c, gamelist),
 
@@ -510,7 +510,7 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	// Adds the current user as default user.
 	users_.push_back(connected_user(preferences::login(), CNTR_LOCAL, 0));
 	update_user_combos();
-	if(sides_.empty()) { 
+	if(sides_.empty()) {
 		throw config::error(_("The scenario is invalid because it has no sides."));
 	}
 
@@ -583,7 +583,7 @@ const game_state& connect::get_state()
 void connect::start_game()
 {
 	// Resolves the "random faction" and "random message"
-	for (side_list::iterator itor = sides_.begin(); itor != sides_.end(); 
+	for (side_list::iterator itor = sides_.begin(); itor != sides_.end();
 			++itor) {
 
 		itor->resolve_random();
@@ -865,11 +865,11 @@ void connect::load_game()
 			set_result(QUIT);
 			return;
 		}
-		
+
 		std::string error_log;
 		::load_game(game_data_, game, state_, &error_log);
 		if(!error_log.empty()) {
-			gui::show_error_message(disp(), 
+			gui::show_error_message(disp(),
 					_("The file you have tried to load is corrupt: '") +
 					error_log);
 			set_result(QUIT);
@@ -941,7 +941,7 @@ void connect::update_level()
 {
 	// Import all sides into the level
 	level_.clear_children("side");
-	for(side_list::const_iterator itor = sides_.begin(); itor != sides_.end(); 
+	for(side_list::const_iterator itor = sides_.begin(); itor != sides_.end();
 			++itor) {
 
 		level_.add_child("side", itor->get_config());

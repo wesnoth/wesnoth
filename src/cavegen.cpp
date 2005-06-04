@@ -131,7 +131,7 @@ void cave_map_generator::generate_chambers()
 		if(chance != "" && (rand()%100) < atoi(chance.c_str())) {
 			continue;
 		}
-		
+
 		const std::string& xpos = (**i)["x"];
 		const std::string& ypos = (**i)["y"];
 
@@ -269,7 +269,7 @@ struct passage_path_calculator : cost_calculator
 	passage_path_calculator(const std::vector<std::vector<gamemap::TERRAIN> >& mapdata, gamemap::TERRAIN wall, double laziness, size_t windiness)
 		        : map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
 	{}
-	
+
 	virtual double cost(const gamemap::location& loc, const double so_far, const bool is_dest) const;
 private:
 	const std::vector<std::vector<gamemap::TERRAIN> >& map_;
@@ -305,15 +305,15 @@ void cave_map_generator::place_passage(const passage& p)
 
 	const size_t windiness = atoi(p.cfg["windiness"].c_str());
 	const double laziness = maximum<double>(1.0,atof(p.cfg["laziness"].c_str()));
-	
+
 	passage_path_calculator calc(map_,wall_,laziness,windiness);
-	
+
 	const paths::route rt = a_star_search(p.src, p.dst, 10000.0, &calc, width_, height_);
 
 	const size_t width = maximum<size_t>(1,atoi(p.cfg["width"].c_str()));
 
 	const size_t jagged = atoi(p.cfg["jagged"].c_str());
-	
+
 	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin(); i != rt.steps.end(); ++i) {
 		std::set<gamemap::location> locs;
 		build_chamber(*i,locs,width,jagged);

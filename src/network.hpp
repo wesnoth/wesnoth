@@ -24,7 +24,7 @@ struct manager {
 
 private:
 	bool free_;
-	
+
 	manager(const manager&);
 	void operator=(const manager&);
 };
@@ -34,7 +34,7 @@ private:
 struct server_manager {
 
 	//parameter to pass to the constructor.
-	
+
 	enum CREATE_SERVER { MUST_CREATE_SERVER, //will throw exception on failure
 	                     TRY_CREATE_SERVER, //will swallow failure
 	                     NO_SERVER }; //won't try to create a server at all

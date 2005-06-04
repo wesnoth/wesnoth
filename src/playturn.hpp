@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -64,7 +64,7 @@ public:
 	{
 		util::scoped_ptr<gui::textbox> box;
 		util::scoped_ptr<gui::button> check;
-	
+
 		enum MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE,
 		            TEXTBOX_COMMAND };
 		MODE mode;
@@ -78,7 +78,7 @@ public:
 	};
 
 	enum TURN_MODE { PLAY_TURN, BROWSE_NETWORKED, BROWSE_AI };
-	
+
 	turn_info(const game_data& gameinfo, game_state& state_of_game,
 	          const gamestatus& status, const config& terrain_config,
 		  const config& level, CKey& key, display& gui, gamemap& map,
@@ -96,7 +96,7 @@ public:
 
 	bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
-	
+
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move);
 	void start_interactive_turn();
 
@@ -133,7 +133,7 @@ private:
 	void write_game_snapshot(config& cfg) const;
 
 	bool unit_in_cycle(unit_map::const_iterator it) const;
-	
+
 	//overridden from command_executor
 	virtual void cycle_units();
 	virtual void cycle_back_units();
@@ -174,7 +174,7 @@ private:
 	void do_command(const std::string& str);
 	void do_speak(const std::string& str, bool allies_only);
 	bool has_friends() const;
-	
+
 	void do_recruit(const std::string& name);
 
 	void handle_event(const SDL_Event& event);
@@ -197,9 +197,9 @@ private:
 
 	bool clear_shroud();
 	void clear_undo_stack();
-	
+
 	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m);
-	
+
 	bool enemies_visible() const;
 
 	void change_side_controller(const std::string& side, const std::string& player, bool orphan_side=false);
@@ -237,12 +237,12 @@ private:
 	//cached value indicating whether any enemy units are visible.
 	//computed with enemies_visible()
 	bool enemies_visible_;
-	
+
 	bool end_turn_;
 	int start_ncmd_;
 
 	std::string last_recruit_;
-	
+
 	std::string last_search_;
 	gamemap::location last_search_hit_;
 

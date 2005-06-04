@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -40,7 +40,7 @@ void show_objectives(display& disp, const config& level, const std::string& obje
 
 // Ask user if I should really save the game and what name I should use
 // returns 0 iff user wants to save the game
-int get_save_name(display & disp, const std::string& caption, 
+int get_save_name(display & disp, const std::string& caption,
 				const std::string& message, std::string* name,
 				gui::DIALOG_TYPE dialog_type=gui::YES_NO);
 

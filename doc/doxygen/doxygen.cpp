@@ -301,7 +301,7 @@ One way to contribute is to find an unassigned bug in the
 and fix the bug.
 If you wish to work on something else, you should probably
 explain on the
-<a href="http://wesnoth.whitevine.net/forum/phpBB2/">forum</a>
+<a href="http://www.wesnoth.org/forum/phpBB2/">forum</a>
 what you wish to do before doing any actual development.
 Do make sure you have read the projects
 <a href="http://wesnoth.slack.it/?CodingStandards">coding standards</a>.

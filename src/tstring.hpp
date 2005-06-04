@@ -64,7 +64,7 @@ public:
 	t_string& operator+=(const t_string&);
 	t_string& operator+=(const std::string&);
 	t_string& operator+=(const char*);
-	
+
 	bool operator==(const t_string&) const;
 	bool operator==(const std::string&) const;
 	bool operator==(const char*) const;

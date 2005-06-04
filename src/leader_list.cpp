@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C)
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -60,7 +60,7 @@ void leader_list_manager::update_leader_list(int side_index)
 	if(!side["leader"].empty()) {
 		leaders_ = utils::split(side["leader"]);
 	}
-	
+
 	const std::string default_leader = side["type"];
 	size_t default_index = 0;
 
@@ -80,7 +80,7 @@ void leader_list_manager::update_leader_list(int side_index)
 	std::vector<std::string> leader_strings;
 
 	for(itor = leaders_.begin(); itor != leaders_.end(); ++itor) {
-		
+
 		const game_data::unit_type_map& utypes = data_->unit_types;
 
 		//const std::string name = data_->unit_types->find(*itor).language_name();
@@ -112,7 +112,7 @@ void leader_list_manager::set_leader(const std::string& leader)
 	int leader_index = 0;
 	for(std::vector<std::string>::const_iterator itor = leaders_.begin();
 			itor != leaders_.end(); ++itor) {
-		if (leader == *itor) 
+		if (leader == *itor)
 			combo_->set_selected(leader_index);
 		++leader_index;
 	}

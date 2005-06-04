@@ -480,7 +480,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	} else {
 		mini_map_ = object();
 	}
-	
+
 	const config* const status_cfg = cfg.child("status");
 	if(status_cfg != NULL) {
 		for(config::child_map::const_iterator i = status_cfg->all_children().begin(); i != status_cfg->all_children().end(); ++i) {
@@ -561,7 +561,7 @@ void theme::set_known_themes(const config* cfg){
 	       return;
 	const config& v = *cfg;
 	const config::child_list& known_themes_cfg = v.get_children("theme");
-	
+
 	for(config::child_list::const_iterator thm = known_themes_cfg.begin(); thm != known_themes_cfg.end(); ++thm) {
 	       std::string thm_name=(**thm)["name"];
 	       if(thm_name!="null" && thm_name!="editor"){
@@ -572,7 +572,7 @@ void theme::set_known_themes(const config* cfg){
 
 std::vector<std::string> theme::get_known_themes(){
         std::vector<std::string> names;
- 
+
 
         for(std::map<std::string, config>::iterator p_thm=known_themes.begin();p_thm!=known_themes.end();p_thm++){
 	  names.push_back(p_thm->first);

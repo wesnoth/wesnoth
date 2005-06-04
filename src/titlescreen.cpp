@@ -69,7 +69,7 @@ bool fade_logo(display& screen, int xpos, int ypos)
 			last_button = new_button;
 
 			screen.update_display();
-			
+
 			SDL_Delay(10);
 
 			events::pump();
@@ -212,7 +212,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	const int menu_yincr = 40;
 #endif
 	const int padding = game_config::title_buttons_padding;
-	
+
 	std::vector<button> buttons;
 	size_t b, max_width = 0;
 	for(b = 0; b != nbuttons; ++b) {

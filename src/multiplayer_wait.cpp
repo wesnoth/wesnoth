@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C)
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -39,7 +39,7 @@ wait::leader_preview_pane::leader_preview_pane(display& disp, const game_data* d
 		const config::child_list& side_list) :
 	gui::preview_pane(disp.video()),
 	side_list_(side_list),
-	leader_combo_(disp, std::vector<std::string>()), 
+	leader_combo_(disp, std::vector<std::string>()),
 	leaders_(side_list, data, &leader_combo_),
 	selection_(0), data_(data)
 {
@@ -101,7 +101,7 @@ void wait::leader_preview_pane::draw_contents()
 		SDL_Rect image_rect = {area.x,area.y,0,0};
 
 		surface unit_image(image::get_image(image, image::UNSCALED));
-	
+
 		if(!unit_image.null()) {
 			image_rect.w = unit_image->w;
 			image_rect.h = unit_image->h;
@@ -163,12 +163,12 @@ void wait::process_event()
 void wait::join_game(bool observe)
 {
 	for(;;) {
-		network::connection data_res = gui::network_data_dialog(disp(), 
+		network::connection data_res = gui::network_data_dialog(disp(),
 				_("Getting game data..."), level_);
 		check_response(data_res, level_);
 
 		//if we have got valid side data
-		if(level_.child("gamelist") == NULL) 
+		if(level_.child("gamelist") == NULL)
 			break;
 	}
 
@@ -205,7 +205,7 @@ void wait::join_game(bool observe)
 			const config* era = level_.child("era");
 			if(era == NULL)
 				throw network::error(_("Era not available"));
-			const config::child_list& possible_sides = 
+			const config::child_list& possible_sides =
 				era->get_children("multiplayer_side");
 			if(possible_sides.empty()) {
 				set_result(QUIT);
@@ -215,13 +215,13 @@ void wait::join_game(bool observe)
 
 			std::vector<std::string> choices;
 			for(config::child_list::const_iterator side =
-					possible_sides.begin(); side != 
+					possible_sides.begin(); side !=
 					possible_sides.end(); ++side) {
 				choices.push_back((**side)["name"]);
 			}
 
 			std::vector<gui::preview_pane* > preview_panes;
-			leader_preview_pane leader_selector(disp(), &game_data_, 
+			leader_preview_pane leader_selector(disp(), &game_data_,
 					possible_sides);
 			preview_panes.push_back(&leader_selector);
 
@@ -250,7 +250,7 @@ const game_state& wait::get_state()
 	return state_;
 }
 
-void wait::start_game() 
+void wait::start_game()
 {
 	config const * const stats = level_.child("statistics");
 	if(stats != NULL) {
@@ -310,7 +310,7 @@ void wait::process_network_data(const config& data, const network::connection so
 			<< level_.get_children("side").size() << ","
 			<< data.get_children("side").size() << "\n";
 		generate_menu();
-	} 
+	}
 }
 
 void wait::generate_menu()
@@ -358,7 +358,7 @@ void wait::generate_menu()
 			// Dumps the "image" part of the faction name, if any,
 			// to replace it by a picture of the actual leader
 			if(side_name.str()[0] == font::IMAGE) {
-				std::string::size_type p = 
+				std::string::size_type p =
 					side_name.str().find_first_of(COLUMN_SEPARATOR);
 				if(p != std::string::npos && p < side_name.size()) {
 					side_name = IMAGE_PREFIX + leader_image + COLUMN_SEPARATOR + side_name.str().substr(p+1);

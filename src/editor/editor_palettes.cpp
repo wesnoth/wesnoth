@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -321,11 +321,11 @@ void terrain_palette::update_report() {
 }
 
 // void terrain_palette::bg_backup() {
-// 	restorer_ = surface_restorer(&gui_.video(), get_rect());
+//	restorer_ = surface_restorer(&gui_.video(), get_rect());
 // }
 
 // void terrain_palette::bg_restore() {
-// 	restorer_.restore();
+//	restorer_.restore();
 // }
 
 brush_bar::brush_bar(display &gui, const size_specs &sizes)
@@ -348,7 +348,7 @@ void brush_bar::select_brush_size(int new_size) {
 	assert(new_size > 0 && new_size <= total_brush_);
 	selected_ = new_size - 1;
 }
-		
+
 void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 	int index = selected_index(mousex, mousey);
 	if(index >= 0) {
@@ -418,7 +418,7 @@ void brush_bar::draw(bool force) {
 		dstrect.w = image->w;
 		dstrect.h = image->h;
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
-		const Uint32 color = (unsigned)i == selected_brush_size() ? 
+		const Uint32 color = (unsigned)i == selected_brush_size() ?
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
 			SDL_MapRGB(screen->format,0x00,0x00,0x00);
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);

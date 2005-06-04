@@ -23,7 +23,7 @@ namespace gui {
 class label : public widget
 {
 public:
-	label(CVideo& video, const std::string& text, int size=font::SIZE_NORMAL, 
+	label(CVideo& video, const std::string& text, int size=font::SIZE_NORMAL,
 			const SDL_Color& colour=font::NORMAL_COLOUR);
 	const std::string& set_text(const std::string& text);
 	const std::string& get_text() const;

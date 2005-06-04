@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Copyright (C) 2005 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -43,22 +43,22 @@ void do_interpolation(std::string &res, variable_set& set)
 		//Going in a backwards order allows nested variable-retrieval, e.g. in arrays.
 		//For example, "I am $creatures[$i].user_description!"
 		const std::string::size_type var_begin_loc = res.rfind('$', rfind_dollars_sign_from);
-		
+
 		//If there are no '$' left then we're done.
 		if(var_begin_loc == std::string::npos) {
 			break;
 		}
-		
+
 		//For the next iteration of the loop, search for more '$'
 		//(not from the same place because sometimes the '$' is not replaced)
 		rfind_dollars_sign_from = int(var_begin_loc) - 1;
-		
-		
+
+
 		const std::string::iterator var_begin = res.begin() + var_begin_loc;
-		
+
 		//The '$' is not part of the variable name.
 		const std::string::iterator var_name_begin = var_begin + 1;
-		
+
 		//Find the maximum extent of the variable name (it may be shortened later).
 		std::string::iterator var_end = var_name_begin;
 		for(int bracket_nesting_level = 0; var_end != res.end(); ++var_end) {
@@ -75,14 +75,14 @@ void do_interpolation(std::string &res, variable_set& set)
 				break;
 			}
 		}
-		
+
 		//Two dots in a row cannot be part of a valid variable name.
 		//That matters for random=, e.g. $x..$y
 		var_end = std::adjacent_find(var_name_begin, var_end, two_dots);
-		
+
 		//If the last character is '.', then it can't be a sub-variable.
 		//It's probably meant to be a period instead. Don't include it.
-		//Would need to do it repetitively if there are multiple '.'s at the end, 
+		//Would need to do it repetitively if there are multiple '.'s at the end,
 		//but don't actually need to do so because the previous check for adjacent '.'s would catch that.
 		//For example, "My score is $score." or "My score is $score..."
 		if(*(var_end-1) == '.'
@@ -95,7 +95,7 @@ void do_interpolation(std::string &res, variable_set& set)
 		&& *(var_end-2) != ']') {
 			--var_end;
 		}
-		
+
 		if(*var_end == '|') {
 			//It's been used to end this variable name; now it has no more effect.
 			//This can allow use of things like "$$composite_var_name|.x"
@@ -104,16 +104,16 @@ void do_interpolation(std::string &res, variable_set& set)
 			//just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
 			res.erase(var_end);
 		}
-		
+
 		const std::string var_name(var_name_begin, var_end);
-		
+
 		//The variable is replaced with its value.
 		//Replace = remove original, and then insert new value, if any.
 		res.erase(var_begin, var_end);
 
 		res.insert(var_begin_loc, set.get_variable_const(var_name));
 	}
-	
+
 	//Remove any remaining '|', which are used to separate variable names,
 	//so that the WML writer doesn't need to worry about whether they're really necessary.
 	//It is also occasionally useful to intentionally put them elsewhere.
@@ -199,7 +199,7 @@ class string_map_variable_set : public variable_set
 {
 public:
 	string_map_variable_set(const string_map& map) : map_(map) {};
-	
+
 	virtual const t_string& get_variable_const(const std::string& key)
 	{
 		static const t_string empty_string = "";
@@ -445,7 +445,7 @@ std::string wstring_to_string(const wide_string &src)
 		for(i = src.begin(); i != src.end(); ++i) {
 			int count;
 			ch = *i;
-			
+
 			/* Determine the bytes required */
 			count = 1;
 			if(ch >= 0x80)
@@ -457,7 +457,7 @@ std::string wstring_to_string(const wide_string &src)
 					count++;
 				bitmask <<= 5;
 			}
-			
+
 			if(count > 6)
 				throw invalid_utf8_exception();
 
@@ -483,7 +483,7 @@ std::string wstring_to_string(const wide_string &src)
 	}
 }
 
-std::string wchar_to_string(const wchar_t c) 
+std::string wchar_to_string(const wchar_t c)
 {
 	wide_string s;
 	s.push_back(c);
@@ -493,7 +493,7 @@ std::string wchar_to_string(const wchar_t c)
 wide_string string_to_wstring(const std::string &src)
 {
 	wide_string res;
-	
+
 	try {
 		utf8_iterator i1(src);
 		const utf8_iterator i2(utf8_iterator::end(src));

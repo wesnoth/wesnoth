@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -132,7 +132,7 @@ void textbox::draw_contents()
 	surface surf = video().getSurface();
 	draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
 				    focus() ? alpha_focus_ : alpha_, surf);
-	
+
 	SDL_Rect src;
 
 	if(text_image_ == NULL) {
@@ -250,16 +250,16 @@ surface textbox::add_text_line(const wide_string& text)
 	}
 
 	char_x_.push_back(0);
-	
+
 	// Re-calculate the position of each glyph. We approximate this by asking the
 	// width of each substring, but this is a flawed assumption which won't work with
 	// some more complex scripts (that is, RTL languages). This part of the work should
 	// actually be done by the font-rendering system.
 	std::string visible_string;
 	wide_string wrapped_text;
-	 
+
 	wide_string::const_iterator backup_itor = text.end();
-	
+
 	wide_string::const_iterator itor = text.begin();
 	while(itor != text.end()) {
 		//If this is a space, save copies of the current state so we can roll back
@@ -299,7 +299,7 @@ surface textbox::add_text_line(const wide_string& text)
 	}
 
 	const std::string s = utils::wstring_to_string(wrapped_text);
-	const surface res(font::get_rendered_text(s, font_size, font::NORMAL_COLOUR));		
+	const surface res(font::get_rendered_text(s, font_size, font::NORMAL_COLOUR));
 
 	return res;
 }
@@ -329,7 +329,7 @@ void textbox::update_text_cache(bool changed)
 	}
 }
 
-bool textbox::is_selection() 
+bool textbox::is_selection()
 {
 	return (selstart_ != -1) && (selend_ != -1) && (selstart_ != selend_);
 }
@@ -338,7 +338,7 @@ void textbox::erase_selection()
 {
 	if(!is_selection())
 		return;
-	
+
 	wide_string::iterator itor = text_.begin() + minimum(selstart_, selend_);
 	text_.erase(itor, itor + abs(selend_ - selstart_));
 	cursor_ = minimum(selstart_, selend_);
@@ -394,7 +394,7 @@ void textbox::handle_event(const SDL_Event& event)
 
 		if(grabmouse_)
 			selend_ = cursor_;
-		
+
 		update_text_cache(false);
 
 		if(!grabmouse_ && mousebuttons & SDL_BUTTON(1)) {
@@ -416,7 +416,7 @@ void textbox::handle_event(const SDL_Event& event)
 	if(focus() == false) {
 		if (event.type == SDL_MOUSEMOTION && point_in_rect(mousex, mousey, loc))
 			events::focus_handler(this);
-		   
+
 		return;
 	}
 
@@ -427,11 +427,11 @@ void textbox::handle_event(const SDL_Event& event)
 
 	const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 	const SDLMod modifiers = SDL_GetModState();
-	
+
 	const int c = key.sym;
 	const int old_cursor = cursor_;
-	
-	if(c == SDLK_LEFT && cursor_ > 0) 
+
+	if(c == SDLK_LEFT && cursor_ > 0)
 		--cursor_;
 
 	if(c == SDLK_RIGHT && cursor_ < text_.size())
@@ -439,16 +439,16 @@ void textbox::handle_event(const SDL_Event& event)
 
 	if(c == SDLK_END || (c == SDLK_e && (modifiers & KMOD_CTRL)))
 		cursor_ = text_.size();
-	
+
 	if(c == SDLK_HOME || (c == SDLK_a && (modifiers & KMOD_CTRL)))
 		cursor_ = 0;
 
 	if((old_cursor != cursor_) && (modifiers & KMOD_SHIFT)) {
-		if(selstart_ == -1) 
+		if(selstart_ == -1)
 			selstart_ = old_cursor;
 		selend_ = cursor_;
-	} 
-	
+	}
+
 	if(c == SDLK_BACKSPACE) {
 		changed = true;
 		if(is_selection()) {
@@ -487,7 +487,7 @@ void textbox::handle_event(const SDL_Event& event)
 	   c == SDLK_PAGEUP || c == SDLK_PAGEDOWN)) {
 		if(character != 0)
 			LOG_STREAM(info, display) << "Char: " << character << ", c = " << c << "\n";
-	
+
 		if(event.key.keysym.mod & KMOD_CTRL) {
 			switch(c) {
 			case SDLK_v:
@@ -523,18 +523,18 @@ void textbox::handle_event(const SDL_Event& event)
 				wide_string ws = wide_string(text_.begin() + beg, text_.begin() + end);
 				std::string s = utils::wstring_to_string(ws);
 				copy_to_clipboard(s);
-				} 
+				}
 				break;
 			}
 		} else {
 			if(character >= 32 && character != 127) {
 				changed = true;
-				if(is_selection()) 
+				if(is_selection())
 					erase_selection();
 
 				if(text_.size() + 1 <= max_size_) {
 					text_.insert(text_.begin()+cursor_,character);
-					++cursor_;		
+					++cursor_;
 				}
 			}
 		}

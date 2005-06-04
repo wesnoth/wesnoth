@@ -109,7 +109,7 @@ void locator::init_index()
 	}
 }
 
-locator::locator() : 
+locator::locator() :
 	index_(-1)
 {
 }
@@ -119,7 +119,7 @@ locator::locator(const locator &a):
 {
 }
 
-locator::locator(const char *filename) : 
+locator::locator(const char *filename) :
 	val_(filename)
 {
 	init_index();
@@ -169,7 +169,7 @@ locator::value::value(const std::string& filename, const gamemap::location& loc)
 {
 }
 
-bool locator::value::operator==(const value& a) const 
+bool locator::value::operator==(const value& a) const
 {
 	if(a.type_ != type_) {
 		return false;
@@ -226,18 +226,18 @@ surface locator::load_image_sub_file() const
 {
 	const surface mother_surface(get_image(val_.filename_, UNSCALED, NO_ADJUST_COLOUR));
 	const surface mask(get_image(game_config::terrain_mask_image, UNSCALED, NO_ADJUST_COLOUR));
-	
+
 	if(mother_surface == NULL)
 		return surface(NULL);
 	if(mask == NULL)
 		return surface(NULL);
-	
-	SDL_Rect srcrect = { 
+
+	SDL_Rect srcrect = {
 		((tile_size*3) / 4) * val_.loc_.x,
-	       	tile_size * val_.loc_.y + (tile_size/2) * (val_.loc_.x % 2),
-	       	tile_size, tile_size
+		tile_size * val_.loc_.y + (tile_size/2) * (val_.loc_.x % 2),
+		tile_size, tile_size
 	};
-       
+
 	surface tmp(cut_surface(mother_surface, srcrect));
 	surface surf(mask_surface(tmp, mask));
 
@@ -435,11 +435,11 @@ surface get_scaled(const locator i_locator, COLOUR_ADJUSTMENT adj)
 	surface res(get_image(i_locator, UNMASKED, adj));
 
 	// Adjusts colour if necessary.
-	if(adj == ADJUST_COLOUR && (red_adjust != 0 || 
+	if(adj == ADJUST_COLOUR && (red_adjust != 0 ||
 				green_adjust != 0 || blue_adjust != 0)) {
 		res = surface(adjust_surface_colour(res,
 					red_adjust, green_adjust, blue_adjust));
-	} 
+	}
 
 	const surface mask(get_image(image_mask,UNMASKED,NO_ADJUST_COLOUR));
 	if(mask != NULL) {
@@ -455,7 +455,7 @@ surface get_scaled(const locator i_locator, COLOUR_ADJUSTMENT adj)
 surface get_greyed(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
 	surface image(get_image(i_locator, SCALED, adj));
-	
+
 	return surface(greyscale_image(image));
 }
 
@@ -501,7 +501,7 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 	default:
 		return surface(NULL);
 	}
-	
+
 	if(i_locator.in_cache(*imap))
 		return i_locator.locate_in_cache(*imap);
 
@@ -605,7 +605,7 @@ locator get_alternative(const image::locator &i_locator, const std::string &alt)
 	default:
 		wassert(false);
 	}
-	
+
 	i_locator.add_to_cache(alternative_images_, res);
 
 	return res;
@@ -622,7 +622,7 @@ bool exists(const image::locator& i_locator)
 {
 	typedef image::locator loc;
 	loc::type type = i_locator.get_type();
-	if (type != loc::FILE && type != loc::SUB_FILE) 
+	if (type != loc::FILE && type != loc::SUB_FILE)
 		return false;
 
 	// the insertion will fail if there is already an element in the cache
@@ -663,7 +663,7 @@ surface getMinimap(int w, int h, const gamemap& map, const team* tm)
 		for(int x = 0; x != map.x(); ++x) {
 
 			surface surf(NULL);
-			
+
 			const gamemap::location loc(x,y);
 			if(map.on_board(loc)) {
 				const bool shrouded = tm != NULL && tm->shrouded(x,y);
@@ -696,7 +696,7 @@ surface getMinimap(int w, int h, const gamemap& map, const team* tm)
 				}
 
 				wassert(surf != NULL);
-				
+
 				SDL_Rect maprect = {x*scale*3/4,y*scale + (is_odd(x) ? scale/2 : 0),0,0};
 				SDL_BlitSurface(surf, NULL, minimap, &maprect);
 			}

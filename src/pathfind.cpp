@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License.
@@ -29,14 +29,14 @@ class gamestatus;
 
 typedef std::vector<gamemap::location> vector_location;
 typedef std::vector<a_star_node*> vector_a_star_node;
-typedef std::set<gamemap::location>	set_location;	
+typedef std::set<gamemap::location>	set_location;
 
 bool compare_strict_sup_a_star_node(const a_star_node* node1, const a_star_node* node2) {
-	return node1->g + node1->h > node2->g + node2->h;		
+	return node1->g + node1->h > node2->g + node2->h;
 }
 
 bool compare_sup_equal_a_star_node(const a_star_node* node1, const a_star_node* node2) {
-	return node1->g + node1->h >= node2->g + node2->h;		
+	return node1->g + node1->h >= node2->g + node2->h;
 }
 
 void a_star_init(gamemap::location const &src, gamemap::location const &dst,
@@ -47,12 +47,12 @@ void a_star_init(gamemap::location const &src, gamemap::location const &dst,
 {
 	a_star_node*		locStartNode = NULL;
 	bool						locIsCreated = false;
-	
+
 	aStarGameWorld.resize_IFN(parWidth, parHeight);
 	wassert(aStarGameWorld.empty());
 	locStartNode = aStarGameWorld.getNodeFromLocation(src, locIsCreated);
 	wassert(locIsCreated);
-	locStartNode->initNode(src, dst, 0.0, NULL, teleports);	
+	locStartNode->initNode(src, dst, 0.0, NULL, teleports);
 
 	const size_t locValueH = size_t(locStartNode->h);
 	size_t locAllocSize;
@@ -62,9 +62,9 @@ void a_star_init(gamemap::location const &src, gamemap::location const &dst,
 	else if (locValueH > 128)
 		locAllocSize = 128;
 	else
-		locAllocSize = locValueH;	
+		locAllocSize = locValueH;
 	openList.reserve(locAllocSize);
-	openList.push_back(locStartNode);	
+	openList.push_back(locStartNode);
 
 	if (locValueH < 32)
 		locAllocSize = 32;
@@ -72,16 +72,16 @@ void a_star_init(gamemap::location const &src, gamemap::location const &dst,
 		locAllocSize = 256;
 	else
 		locAllocSize = locValueH;
-	
-	if (teleports != NULL) 
+
+	if (teleports != NULL)
 		parNbTeleport = teleports->size();
 	else
 		parNbTeleport = 0;
 
 	vectLocation.reserve(parNbTeleport + 6);
-	vectLocation.resize(parNbTeleport + 6);	
+	vectLocation.resize(parNbTeleport + 6);
 
-	if (parNbTeleport > 0) 
+	if (parNbTeleport > 0)
 	{
 		gamemap::location* locLocation;
 
@@ -90,7 +90,7 @@ void a_star_init(gamemap::location const &src, gamemap::location const &dst,
 			locLocation->x = (*it).x;
 			locLocation->y = (*it).y;
 			++locLocation;
-		}		
+		}
 	}
 }
 
@@ -100,18 +100,18 @@ void a_star_sort_and_merge(vector_a_star_node& openList, const size_t locNbAdded
 
 #ifdef _PARANO_ASTAR_
 	for (vector_a_star_node::iterator iter = openList.begin(); iter != openList.end(); ++iter)
-		wassert((*iter)->isInCloseList == false);		
+		wassert((*iter)->isInCloseList == false);
 	if (openList.size() > locNbAdded) {
 		for (vector_a_star_node::iterator iter = openList.begin() + 1; iter != openList.end() - locNbAdded; ++iter)
 		{
-			vector_a_star_node::iterator iterPrev = iter - 1;			
+			vector_a_star_node::iterator iterPrev = iter - 1;
 			wassert(compare_sup_equal_a_star_node(*iterPrev, *iter));
 		}
 	}
 	if (locNbAdded > 0) {
 		for (vector_a_star_node::iterator iter = openList.end() - locNbAdded + 1; iter != openList.end(); ++iter)
 		{
-			vector_a_star_node::iterator iterPrev = iter - 1;			
+			vector_a_star_node::iterator iterPrev = iter - 1;
 			wassert(compare_sup_equal_a_star_node(*iterPrev, *iter));
 		}
 	}
@@ -124,8 +124,8 @@ void a_star_sort_and_merge(vector_a_star_node& openList, const size_t locNbAdded
 		vector_a_star_node::iterator iter;
 		for (iter = openList.begin() + 1; iter != openList.end(); ++iter)
 		{
-			vector_a_star_node::iterator iterPrev = iter - 1;			
-			wassert(compare_sup_equal_a_star_node(*iterPrev, *iter));				
+			vector_a_star_node::iterator iterPrev = iter - 1;
+			wassert(compare_sup_equal_a_star_node(*iterPrev, *iter));
 		}
 		for (iter = openList.begin(); iter != openList.end(); ++iter)
 			wassert((*iter)->isInCloseList == false);
@@ -142,9 +142,9 @@ void a_star_explore_neighbours(gamemap::location const &dst, const double stop_a
 															 a_star_node*	parCurNode, const size_t parNbTeleport)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	wassert(parCurNode != NULL);	
+	wassert(parCurNode != NULL);
 	//---------------------------------------------------
-	
+
 	typedef std::pair<vector_a_star_node::iterator, vector_a_star_node::iterator> pair_node_iter;
 
 	a_star_node*	 locNextNode;
@@ -154,7 +154,7 @@ void a_star_explore_neighbours(gamemap::location const &dst, const double stop_a
 	bool					 locIsCreated = false;
 	const double	 locCostFather = parCurNode->g;
 
-	get_adjacent_tiles(parCurNode->loc, &vectLocation[0]);		
+	get_adjacent_tiles(parCurNode->loc, &vectLocation[0]);
 
 	if ((parNbTeleport > 0) && (teleports->count(parCurNode->loc) > 0))
 	{
@@ -167,7 +167,7 @@ void a_star_explore_neighbours(gamemap::location const &dst, const double stop_a
 	{
 		wassert(vectLocation.size() >= 6);
 		locSize = 6;
-	}	
+	}
 
 	for (size_t i = 0; i != locSize; ++i)
 	{
@@ -180,9 +180,9 @@ void a_star_explore_neighbours(gamemap::location const &dst, const double stop_a
 		if (locIsCreated)
 		{
 			locNextNode->initNode(locLocation, dst, locCost, parCurNode, teleports);
-			if (locNextNode->g + locNextNode->h < stop_at) {					
+			if (locNextNode->g + locNextNode->h < stop_at) {
 				openList.push_back(locNextNode);
-				++locNbAdded;					
+				++locNbAdded;
 			}
 			else
 			{
@@ -194,12 +194,12 @@ void a_star_explore_neighbours(gamemap::location const &dst, const double stop_a
 		{
 			// If this path is better that the previous for this node
 			if (locCost < locNextNode->g)
-			{										
+			{
 				if (locNextNode->isInCloseList) {
 					locNextNode->isInCloseList = false;
 				}
 				else
-				{					
+				{
 					locPlace = std::equal_range(openList.begin(), openList.end() - locNbAdded, locNextNode, compare_strict_sup_a_star_node);
 					assertParanoAstar(*(std::find(locPlace.first, locPlace.second, locNextNode)) == locNextNode);
 					openList.erase(std::find(locPlace.first, locPlace.second, locNextNode));
@@ -207,14 +207,14 @@ void a_star_explore_neighbours(gamemap::location const &dst, const double stop_a
 				openList.push_back(locNextNode);
 				++locNbAdded;
 				locNextNode->g = locCost;
-				locNextNode->nodeParent = parCurNode;					
+				locNextNode->nodeParent = parCurNode;
 			}
-		}												
+		}
 	}
 }
 
 paths::route a_star_search( gamemap::location const &src, gamemap::location const &dst,
-													  double stop_at, cost_calculator const *costCalculator, const size_t parWidth, 
+													  double stop_at, cost_calculator const *costCalculator, const size_t parWidth,
 														const size_t parHeight, std::set<gamemap::location> const *teleports)
 {
 	//----------------- PRE_CONDITIONS ------------------
@@ -224,22 +224,22 @@ paths::route a_star_search( gamemap::location const &src, gamemap::location cons
 	wassert(dst.valid());
 	wassert(costCalculator != NULL);
 	wassert(stop_at <= costCalculator->getNoPathValue());
-	//---------------------------------------------------			
-	static a_star_world				aStarGameWorld;	
+	//---------------------------------------------------
+	static a_star_world				aStarGameWorld;
 	static poss_a_star_node	  POSS_AStarNode;
-	
-	vector_a_star_node			openList;	
+
+	vector_a_star_node			openList;
 	vector_location					vectLocation;
 	paths::route						locRoute;
-	size_t									locNbTeleport;	
-	size_t									locNbAdded;	
+	size_t									locNbTeleport;
+	size_t									locNbAdded;
 	a_star_node*						locDestNode = NULL;
 	a_star_node*						locCurNode = NULL;
-	
-	wassert(openList.empty());	
+
+	wassert(openList.empty());
 	wassert(aStarGameWorld.empty());
-	assertParanoAstar(aStarGameWorld.reallyEmpty());	
-	
+	assertParanoAstar(aStarGameWorld.reallyEmpty());
+
 	LOG_PF << "A* search: " << src << " -> " << dst << '\n';
 
 	if ( (src.valid(int(parWidth), int(parHeight)) == false) ||
@@ -249,26 +249,26 @@ paths::route a_star_search( gamemap::location const &src, gamemap::location cons
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
 		locRoute.move_left = int(costCalculator->getNoPathValue());
 		return (locRoute);
-	}	
+	}
 
 	a_star_init(src, dst, openList, aStarGameWorld, parWidth, parHeight, vectLocation, teleports, locNbTeleport);
 
-	while (!openList.empty()) 
+	while (!openList.empty())
 	{
 		locCurNode = openList.back();
-		wassert(locCurNode != NULL);		
-		
+		wassert(locCurNode != NULL);
+
 		//if we have found a solution
 		if (locCurNode->loc == dst)
 		{
-			locDestNode = locCurNode;			
-			
+			locDestNode = locCurNode;
+
 			LOG_PF << "found solution; calculating it...\n";
 			while (locCurNode != NULL)
 			{
 				locRoute.steps.push_back(locCurNode->loc);
 				locCurNode = locCurNode->nodeParent;
-			}	
+			}
 			std::reverse(locRoute.steps.begin(), locRoute.steps.end());
 			locRoute.move_left = int(locDestNode->g);
 
@@ -282,18 +282,18 @@ paths::route a_star_search( gamemap::location const &src, gamemap::location cons
 		openList.pop_back();
 
 		wassert(locCurNode->isInCloseList == false);
-		locCurNode->isInCloseList = true ;		
-		
+		locCurNode->isInCloseList = true ;
+
 		locNbAdded = 0;
 		a_star_explore_neighbours(dst, stop_at, costCalculator, parWidth, parHeight, teleports, vectLocation,
 															openList, aStarGameWorld, locNbAdded, locCurNode, locNbTeleport);
 
 		a_star_sort_and_merge(openList, locNbAdded);
 	}
-	
+
 	LOG_PF << "aborted a* search\n";
 	locRoute.move_left = int(costCalculator->getNoPathValue());
-	
+
 label_AStarSearch_end:
 	openList.clear();
 	POSS_AStarNode.reduce();
@@ -302,7 +302,7 @@ label_AStarSearch_end:
 	//----------------- POST_CONDITIONS -----------------
 	wassert(openList.empty());
 	wassert(aStarGameWorld.empty());
-	assertParanoAstar(aStarGameWorld.reallyEmpty());	
+	assertParanoAstar(aStarGameWorld.reallyEmpty());
 	//---------------------------------------------------
 	return (locRoute);
 }
@@ -417,7 +417,7 @@ void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& 
 	}
 }
 
-bool enemy_zoc(const gamemap& map, const gamestatus& status, 
+bool enemy_zoc(const gamemap& map, const gamestatus& status,
 							 const std::map<gamemap::location,unit>& units,
 							 const std::vector<team>& teams,
 							 const gamemap::location& loc, const team& current_team, int side)
@@ -589,7 +589,7 @@ shortest_path_calculator::shortest_path_calculator(const unit& u, const team& t,
 																									 const std::vector<team>& teams,
 																									 const gamemap& map,
 																									 const gamestatus& status)
-																									 : unit_(u), team_(t), units_(units), teams_(teams), 
+																									 : unit_(u), team_(t), units_(units), teams_(teams),
 																									 map_(map), status_(status)
 {
 }
@@ -606,7 +606,7 @@ double shortest_path_calculator::cost(const gamemap::location& loc, const double
 	if (enemy_unit != units_.end() && team_.is_enemy(enemy_unit->second.side()))
 		return (getNoPathValue());
 
-	if ((isDst == false) && (unit_.type().is_skirmisher() == false)) 
+	if ((isDst == false) && (unit_.type().is_skirmisher() == false))
 	{
 		gamemap::location adj[6];
 		get_adjacent_tiles(loc,adj);

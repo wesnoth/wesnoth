@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2005 by Isaac Clerencia <isaac@sindominio.net>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.

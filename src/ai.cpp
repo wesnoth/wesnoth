@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -105,7 +105,7 @@ protected:
 	int choose_weapon(const location& attacker, const location& defender) {
 		const unit_map::const_iterator att = get_info().units.find(attacker);
         wassert(att != get_info().units.end());
-        
+
         const std::vector<attack_type>& attacks = att->second.attacks();
 
         int best_attack_rating = -1;
@@ -214,7 +214,7 @@ bool ai::recruit_usage(const std::string& usage)
 	user_interact();
 
 	const int min_gold = 0;
-	
+
 	log_scope2(ai, "recruiting troops");
 	LOG_AI << "recruiting " << usage << "\n";
 
@@ -303,7 +303,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		return true;
 	} else {
 		const team_data data = calculate_team_data(current_team(),info_.team_num,info_.units);
-	    	LOG_AI <<
+		LOG_AI <<
 		"recruit UNconfirmed: team=" << (info_.team_num) <<
 		" units=" << data.units <<
 		" gold=" << data.gold <<
@@ -530,7 +530,7 @@ bool ai::multistep_move_possible(location from, location to, location via, std::
 					const paths unit_paths(map_,state_,gameinfo_,units_,via,teams_,false,false);
 
 					LOG_AI << "found " << unit_paths.routes.size() << " moves for temp leader\n";
-					
+
 					//see if this leader could make it back to the keep
 					if(unit_paths.routes.count(to) != 0) {
 						LOG_AI << "can make it back to the keep\n";
@@ -609,7 +609,7 @@ bool ai::attack_close(const gamemap::location& loc) const
 			return true;
 		}
 	}
-	
+
 	return false;
 }
 
@@ -637,7 +637,7 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		}
 
 		//we can't see where invisible enemy units might move
-		if(enemy && un_it->second.invisible(info_.map.underlying_terrain(info_.map.get_terrain(un_it->first)), 
+		if(enemy && un_it->second.invisible(info_.map.underlying_terrain(info_.map.get_terrain(un_it->first)),
 		   info_.state.get_time_of_day().lawful_bonus,un_it->first,info_.units,info_.teams)) {
 			continue;
 		}
@@ -1059,7 +1059,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 			if(owned && !current_team().is_enemy(n+1)) {
 				want_village = false;
 			}
-			
+
 			if(owned) {
 				break;
 			}
@@ -1179,7 +1179,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 						LOG_AI << "chose village " << dst << '\n';
 					}
 				}
-				
+
 				++it.first;
 			}
 
@@ -1358,7 +1358,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 				}
 			}
 		}
-		
+
 
 		const location arrived_at = move_unit(move.first,move.second,possible_moves);
 
@@ -1373,7 +1373,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 
 		//if we're going to attack someone
 		if(u_it != units_.end() && u_it->second.stone() == false && weapon != -1) {
-			attack_enemy(move.second,target,weapon);			
+			attack_enemy(move.second,target,weapon);
 		}
 
 		//don't allow any other units to move onto the tile our unit
@@ -1536,7 +1536,7 @@ void ai::analyze_potential_recruit_movements()
 	LOG_AI << "targets: " << targets.size() << "\n";
 
 	std::map<std::string,int> best_scores;
-	
+
 	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
 		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
 		if(info == gameinfo_.unit_types.end()) {
@@ -1702,7 +1702,7 @@ void ai::move_leader_to_goals(const move_map& enemy_srcdst, const move_map& enem
 	}
 
 	LOG_AI << "Doing recruitment before goals\n";
-	
+
 	do_recruitment();
 
 	shortest_path_calculator calc(leader->second, current_team(), units_, teams_, map_, state_);
@@ -1716,7 +1716,7 @@ void ai::move_leader_to_goals(const move_map& enemy_srcdst, const move_map& enem
 
 	std::map<gamemap::location,paths> possible_moves;
 	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
-	
+
 	gamemap::location loc;
 	for(std::vector<gamemap::location>::const_iterator itor = route.steps.begin(); itor != route.steps.end(); ++itor) {
 		if(leader_paths.routes.count(*itor) == 1 && power_projection(*itor,enemy_srcdst,enemy_dstsrc) < double(leader->second.hitpoints()/2)) {
@@ -1799,7 +1799,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 			//which we might be able to reach in two turns.
 			if(map_.is_village(i->first) && current_team().owns_village(i->first) &&
 				int(distance_between(i->first,leader->first)) <= leader->second.total_movement()*2) {
-				
+
 				int current_distance = distance_between(i->first,leader->first);
 				location current_loc;
 
@@ -1885,7 +1885,7 @@ bool ai::leader_can_reach_keep() const
 
 	//find where the leader can move
 	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
-	
+
 
 	return leader_paths.routes.count(start_pos) > 0;
 }

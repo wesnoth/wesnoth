@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C)
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify

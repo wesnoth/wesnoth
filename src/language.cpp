@@ -1,8 +1,8 @@
 /* $Id$ */
 /* vim:set encoding=utf-8: */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -135,7 +135,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale)
 		std::cerr << "setenv LANGUAGE failed: " << strerror(errno);
 	if(setenv ("LC_ALL", locale, 1) == -1)
 		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
-#endif 
+#endif
 
 #ifdef _WIN32
 	const std::string env = "LANG=" + slocale;
@@ -194,7 +194,7 @@ bool set_language(const language_def& locale)
 
 	config* langp = cfg.child("language");
 	if (langp == NULL) {
-	 	std::cerr << "No [language] block found in english.cfg\n";	
+		std::cerr << "No [language] block found in english.cfg\n";
 		return false;
 	}
 
@@ -216,8 +216,8 @@ const language_def& get_locale()
 	if(prefs_locale.empty() == false) {
 		wesnoth_setlocale(LC_MESSAGES, prefs_locale);
 		for(int i = 0; known_languages[i].language[0] != '\0'; i++) {
-		  	if (prefs_locale == known_languages[i].localename)
-			  	return known_languages[i];
+			if (prefs_locale == known_languages[i].localename)
+				return known_languages[i];
 		}
 		std::cerr << "locale not found in known array; defaulting to system locale\n";
 		return known_languages[0];

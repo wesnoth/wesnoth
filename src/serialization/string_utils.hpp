@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -71,7 +71,7 @@ std::string interpolate_variables_into_string(std::string const &str, variable_s
 class invalid_utf8_exception : public std::exception {
 };
 
-class utf8_iterator 
+class utf8_iterator
 {
 public:
 	typedef std::input_iterator_tag iterator_category;

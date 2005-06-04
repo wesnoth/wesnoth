@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -156,7 +156,7 @@ static void read_compressed_internal(config &cfg, std::istream &in, compression_
 {
 	if (level >= max_recursion_levels)
 		throw config::error("Too many recursion levels in compressed config read");
-	
+
 	bool in_open_element = false;
 	for(;;) {
 		unsigned char const c = in.get();

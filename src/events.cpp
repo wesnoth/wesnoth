@@ -94,7 +94,7 @@ bool context::remove_handler(handler* ptr)
 	} else {
 		focused_handler = -1;
 	}
-	
+
 	return true;
 }
 
@@ -191,7 +191,7 @@ bool has_focus(const handler* ptr)
 	}
 
 	const int index = event_contexts.back().focused_handler;
-	
+
 	//if no-one has focus at the moment, this handler obviously wants
 	//focus, so give it to it.
 	if(index == -1) {
@@ -244,7 +244,7 @@ void pump()
 
 				break;
 			}
-		
+
 			case SDL_MOUSEMOTION: {
 				//always make sure a cursor is displayed if the
 				//mouse moves or if the user clicks
@@ -287,7 +287,7 @@ void pump()
 
 				break;
 			}
-                        
+
 #if defined(_X11) && !defined(__APPLE__)
 			case SDL_SYSWMEVENT: {
 				//clipboard support for X11

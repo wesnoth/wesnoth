@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -168,7 +168,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+English (GB) Translation"),
 		"-   ott",
-		
+
 		"_" N_("+Estonian Translation"),
 		"-   Mart Tõnso",
 
@@ -224,7 +224,7 @@ std::vector<std::string> get_text() {
 		"-   Federico Tomassetti",
 		"-   isazi",
 		"-   RokStar",
-		
+
 		"_" N_("+Japanese Translation"),
 		"-   Naoki Iimura",
 		"-   Nobuhito Okada",
@@ -264,10 +264,10 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Serbian Translation"),
 		"-   Srecko Toroman (FreeCraft)",
-		
+
 		"_" N_("+Slovak Translation"),
 		"-   Viliam Bur",
-		
+
 		"_" N_("+Slovenian Translation"),
 		"-   Jaka Kranjc (lynx)",
 
@@ -284,11 +284,11 @@ std::vector<std::string> get_text() {
 		"-   Stefan Bergström (tephlon)",
 		"-   Susanna Björverud (sanna)",
 		"-   wint3r",
-		
+
 		"_" N_("+Turkish Translation"),
 		"-   İhsan Akın",
 		"-   Selim Farsakoğlu",
-		
+
 		"_" N_("+Contributors"),
 		"-   Frédéric Wagner",
 

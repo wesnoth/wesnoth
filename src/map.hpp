@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -65,9 +65,9 @@ public:
 		void write(config& cfg) const;
 
 		inline bool valid() const { return x >= 0 && y >= 0; }
-		
+
 		inline bool valid(const int parWidth, const int parHeight) const
-		{ 
+		{
 			return ((x >= 0) && (y >= 0) && (x < parWidth) && (y < parHeight));
 		}
 
@@ -156,7 +156,7 @@ public:
 
 	//shortcut to get_terrain_info(get_terrain(loc))
 	const terrain_type& get_terrain_info(const location &loc) const;
-	
+
 	//gets the list of terrains
 	const std::vector<TERRAIN>& get_terrain_list() const;
 

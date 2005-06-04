@@ -1,9 +1,9 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Philippe Plantier <ayin@anathas.org>
- 
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -63,7 +63,7 @@ const config vconfig::get_parsed_config() const
 {
 	config res;
 
-	for(string_map::const_iterator itor = cfg_->values.begin(); 
+	for(string_map::const_iterator itor = cfg_->values.begin();
 			itor != cfg_->values.end(); ++itor) {
 
 		res[itor->first] = expand(itor->first);
@@ -113,7 +113,7 @@ const t_string& vconfig::get_attribute(const std::string& key) const
 
 namespace variable
 {
-	manager::manager(game_state* repository) 
+	manager::manager(game_state* repository)
 	{
 		repos = repository;
 	}

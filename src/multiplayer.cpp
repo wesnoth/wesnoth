@@ -103,14 +103,14 @@ server_type open_connection(display& disp, const std::string& original_host)
 	const int pos = h.find_first_of(":");
 	std::string host;
 	unsigned int port;
- 
- 	if(pos == -1) {
+
+	if(pos == -1) {
 		host = h;
 		port = 15000;
- 	} else {
+	} else {
 		host = h.substr(0, pos);
 		port = lexical_cast_default<unsigned int>(h.substr(pos + 1), 15000);
- 	}
+	}
 
 	// shown_hosts is used to prevent the client being locked in a redirect
 	// loop.
@@ -142,7 +142,7 @@ server_type open_connection(display& disp, const std::string& original_host)
 			const std::string errorstring = vgettext("The server requires version '$version1' while you are using version '$version2'", i18n_symbols);
 			throw network::error(errorstring);
 		}
-		
+
 		// Check for "redirect" messages
 		if(data.child("redirect")) {
 			config* redirect = data.child("redirect");
@@ -181,7 +181,7 @@ server_type open_connection(display& disp, const std::string& original_host)
 
 				std::string login = preferences::login();
 
-				if(!first_time) {	
+				if(!first_time) {
 					const int res = gui::show_dialog(disp, NULL, "",
 							_("You must log in to this server"), gui::OK_CANCEL,
 							NULL, NULL, _("Login: "), &login);
@@ -242,7 +242,7 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 
 	{
 		mp::wait ui(disp, game_config, data, chat, gamelist);
-		
+
 		ui.join_game(observe);
 
 		run_lobby_loop(disp, ui);
@@ -267,14 +267,14 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 	}
 }
 
-void enter_connect_mode(display& disp, const config& game_config, game_data& data, 
+void enter_connect_mode(display& disp, const config& game_config, game_data& data,
 		mp::chat& chat, config& gamelist, const mp::create::parameters& params,
 		mp::controller default_controller, bool is_server)
 {
 	mp::ui::result res;
 	game_state state;
 	const network::manager net_manager;
-	const network::server_manager serv_manager(15000, is_server ? 
+	const network::server_manager serv_manager(15000, is_server ?
 			network::server_manager::TRY_CREATE_SERVER :
 			network::server_manager::NO_SERVER);
 	network_game_manager m;
@@ -289,7 +289,7 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 		res = ui.get_result();
 
 		// start_game() updates the parameters to reflect game start,
-		// so it must be called before get_level() 
+		// so it must be called before get_level()
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
 			state = ui.get_state();
@@ -330,7 +330,7 @@ void enter_create_mode(display& disp, const config& game_config, game_data& data
 	}
 }
 
-void enter_lobby_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist) 
+void enter_lobby_mode(display& disp, const config& game_config, game_data& data, mp::chat& chat, config& gamelist)
 {
 	mp::ui::result res;
 
@@ -364,7 +364,7 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 		}
 	}
 }
- 
+
 }
 
 namespace mp {

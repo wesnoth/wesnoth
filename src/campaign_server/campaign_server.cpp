@@ -158,7 +158,7 @@ void campaign_server::run()
 
 					//erase the campaign
 					write_file((*campaign)["filename"],"");
-					
+
 					const config::child_list& campaigns_list = campaigns().get_children("campaign");
 					const size_t index = std::find(campaigns_list.begin(),campaigns_list.end(),campaign) - campaigns_list.begin();
 					campaigns().remove_child("campaign",index);

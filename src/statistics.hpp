@@ -41,7 +41,7 @@ namespace statistics
 		disabler();
 		~disabler();
 	};
-	
+
 	struct scenario_context
 	{
 		scenario_context(const std::string& name);

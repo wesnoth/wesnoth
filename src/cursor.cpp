@@ -47,7 +47,7 @@ SDL_Cursor* create_cursor(surface surf)
 			SDL_GetRGBA(pixels[y*nsurf->w + x],nsurf->format,&r,&g,&b,&a);
 
 			const size_t index = y*cursor_width + x;
-			
+
 			const size_t shift = 7 - (index%8);
 
 			const Uint8 trans = (a < 128 ? 0 : 1) << shift;
@@ -208,7 +208,7 @@ void undraw(surface screen)
 	if(use_colour_cursors() == false) {
 		return;
 	}
-	
+
 	if(cursor_buf == NULL) {
 		return;
 	}

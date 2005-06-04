@@ -53,5 +53,5 @@ std::string get_exploder_dir();
 void masked_overwrite_surface(surface dest, surface src, surface mask, int x, int y);
 bool image_empty(surface surf);
 void save_image(surface surf, const std::string &filename);
-	
+
 #endif

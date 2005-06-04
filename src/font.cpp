@@ -1,8 +1,8 @@
 /* $Id$ */
 /* vim:set encoding=utf-8: */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -83,10 +83,10 @@ struct text_chunk
 	text_chunk(subset_id subset, std::string const & text) : subset(subset), text(text) {}
 	text_chunk(subset_id subset, ucs2_string const & ucs2_text) : subset(subset), ucs2_text(ucs2_text) {}
 	text_chunk(subset_id subset, std::string const & text, ucs2_string const & ucs2_text) : subset(subset), text(text), ucs2_text(ucs2_text) {}
-	
+
 	bool operator==(text_chunk const & t) const { return subset == t.subset && ucs2_text == t.ucs2_text; }
 	bool operator!=(text_chunk const & t) const { return !operator==(t); }
-	
+
 	subset_id subset;
 	//FIXME if we don't need the utf8 here remove it
 	std::string text;
@@ -115,8 +115,8 @@ std::vector<text_chunk> split_text(std::string const & utf8_text) {
 			current_chunk.subset = font_map[size_t(*ch)];
 		}
 		for(utils::utf8_iterator end = utils::utf8_iterator::end(utf8_text); ch != end; ++ch) {
-			if(size_t(*ch) < font_map.size() && 
-					font_map[size_t(*ch)] >= 0 && 
+			if(size_t(*ch) < font_map.size() &&
+					font_map[size_t(*ch)] >= 0 &&
 					font_map[size_t(*ch)] != current_chunk.subset) {
 				//null-terminate ucs2_text so we can pass it to SDL_ttf later
 				current_chunk.ucs2_text.push_back(0);
@@ -240,7 +240,7 @@ struct font_style_setter
 		//according to the SDL_ttf documentation, combinations of
 		//styles may cause SDL_ttf to segfault. We work around this
 		//here by disallowing combinations of styles
-		
+
 		if((style&TTF_STYLE_UNDERLINE) != 0) {
 			//style = TTF_STYLE_NORMAL; //TTF_STYLE_UNDERLINE;
 			style = TTF_STYLE_UNDERLINE;
@@ -249,7 +249,7 @@ struct font_style_setter
 		} else if((style&TTF_STYLE_ITALIC) != 0) {
 			//style = TTF_STYLE_NORMAL; //TTF_STYLE_ITALIC;
 			style = TTF_STYLE_ITALIC;
-		} 
+		}
 #endif
 
 		TTF_SetFontStyle(font_, style);
@@ -303,7 +303,7 @@ void set_font_list(const std::vector<subset_descriptor>& fontlist)
 		font_names.push_back(itor->name);
 
 		std::vector<std::pair<size_t,size_t> >::const_iterator cp_range;
-		for(cp_range = itor->present_codepoints.begin(); 
+		for(cp_range = itor->present_codepoints.begin();
 				cp_range != itor->present_codepoints.end(); ++cp_range) {
 
 			size_t cp_max = maximum<size_t>(cp_range->first, cp_range->second);
@@ -311,7 +311,7 @@ void set_font_list(const std::vector<subset_descriptor>& fontlist)
 				font_map.resize(cp_max+1, -1);
 			}
 			for(size_t cp = cp_range->first; cp <= cp_range->second; ++cp) {
-				if(font_map[cp] < 0) 
+				if(font_map[cp] < 0)
 					font_map[cp] = subset;
 			}
 		}
@@ -349,7 +349,7 @@ public:
 	std::vector<surface> const & get_surfaces() const;
 
 	bool operator==(text_surface const &t) const {
-		return hash_ == t.hash_ && font_size_ == t.font_size_ 
+		return hash_ == t.hash_ && font_size_ == t.font_size_
 			&& color_ == t.color_ && style_ == t.style_ && str_ == t.str_;
 	}
 	bool operator!=(text_surface const &t) const { return !operator==(t); }
@@ -399,8 +399,8 @@ void text_surface::measure() const
 {
 	w_ = 0;
 	h_ = 0;
-	
-	for(std::vector<text_chunk>::iterator itor = chunks_.begin(); 
+
+	for(std::vector<text_chunk>::iterator itor = chunks_.begin();
 			itor != chunks_.end(); ++itor) {
 
 		TTF_Font* ttfont = get_font(font_id(itor->subset, font_size_));
@@ -414,7 +414,7 @@ void text_surface::measure() const
 		if(itor->ucs2_text.back() != 0) {
 			itor->ucs2_text.push_back(0);
 		}
-		
+
 		TTF_SizeUNICODE(ttfont, (Uint16 const *)&(itor->ucs2_text.front()), &w, &h);
 		w_ += w;
 		h_ = maximum<int>(h_, h);
@@ -434,7 +434,7 @@ size_t text_surface::width() const
 size_t text_surface::height() const
 {
 	if (h_ == -1) {
-		if(chunks_.empty()) 
+		if(chunks_.empty())
 			chunks_ = split_text(str_);
 		measure();
 	}
@@ -453,13 +453,13 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	if(width() > max_text_line_width)
 		return surfs_;
 
-	for(std::vector<text_chunk>::const_iterator itor = chunks_.begin(); 
+	for(std::vector<text_chunk>::const_iterator itor = chunks_.begin();
 			itor != chunks_.end(); ++itor) {
 		TTF_Font* ttfont = get_font(font_id(itor->subset, font_size_));
 		if (ttfont == NULL)
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
-		
+
 		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, (Uint16 const *)&(itor->ucs2_text.front()), color_));
 		if(!s.null())
 			surfs_.push_back(s);
@@ -639,7 +639,7 @@ surface get_rendered_text(const std::string& str, int size, const SDL_Color& col
 //length restriction and small font size.
 SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::const_iterator last, int font_size, int style) {
 	wassert(last - first >= 0);
-	
+
 	SDL_Rect rect;
 	rect.w = 0;
 	rect.h = 0;
@@ -654,7 +654,7 @@ SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::
 	if(*first < font_map.size() && font_map[*first] >= 0) {
 		current_font = font_map[*first];
 	}
-	
+
 	for(;first != last; ++first) {
 		if(*first < font_map.size() && font_map[*first] >= 0 && font_map[*first] != current_font) {
 			TTF_Font* ttfont = get_font(font_id(current_font, font_size));
@@ -665,16 +665,16 @@ SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::
 				continue;
 			}
 			*(chunk_itor++) = 0;
-			
+
 			font_style_setter const style_setter(ttfont, style);
 
 			TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), (int*)&rect.x, (int*)&rect.y);
 
 			rect.w += rect.x;
 			rect.h = maximum<Sint16>(rect.h, rect.y);
-			
+
 			chunk_itor = chunk.begin();
-			
+
 			current_font = font_map[*first];
 		}
 		*(chunk_itor++) = *first;
@@ -736,7 +736,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 	if(line_width(text, size) > area.w) {
 		tooltips::add_tooltip(dest,text);
 	}
-	
+
 	if(dest.x + dest.w > area.x + area.w) {
 		dest.w = area.x + area.w - dest.x;
 	}
@@ -764,13 +764,13 @@ SDL_Rect draw_text_line(CVideo* gui, const SDL_Rect& area, int size,
                         int x, int y, bool use_tooltips, int style)
 {
 	surface surface;
-	
+
 	if(gui == NULL) {
 		surface = NULL;
 	} else {
 		surface = gui->getSurface();
 	}
-	
+
 	return draw_text_line(surface, area, size, colour, text, x, y, use_tooltips, style);
 }
 
@@ -866,7 +866,7 @@ std::string remove_first_space(const std::string& text)
   if (text.length() > 0 && text[0] == ' ') {
     return text.substr(1);
   }
-  
+
   return text;
 }
 
@@ -959,7 +959,7 @@ inline bool no_break_before(wchar_t ch)
 		ch == 0x30e3 || ch == 0x30e5 || ch == 0x30e7 || ch == 0x30ee || ch == 0x30f5 ||
 		ch == 0x30f6 || ch == 0x30fb || ch == 0x30fc || ch == 0x30fd || ch == 0x30fe ||
 		ch == 0xff01 || ch == 0xff09 || ch == 0xff0c || ch == 0xff0e || ch == 0xff1a ||
-		ch == 0xff1b || ch == 0xff1f || ch == 0xff3d || ch == 0xff5d; 
+		ch == 0xff1b || ch == 0xff1f || ch == 0xff3d || ch == 0xff5d;
 }
 
 inline bool break_before(wchar_t ch)
@@ -967,7 +967,7 @@ inline bool break_before(wchar_t ch)
 	if(no_break_before(ch))
 		return false;
 
-	return ch == ' ' || 
+	return ch == ' ' ||
 		// CKJ characters
 		(ch >= 0x3000 && ch < 0xa000) ||
 		(ch >= 0xf900 && ch < 0xfb00) ||
@@ -979,7 +979,7 @@ inline bool break_after(wchar_t ch)
 	if(no_break_after(ch))
 		return false;
 
-	return ch == ' ' || 
+	return ch == ' ' ||
 		// CKJ characters
 		(ch >= 0x3000 && ch < 0xa000) ||
 		(ch >= 0xf900 && ch < 0xfb00) ||
@@ -1028,7 +1028,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 						*ch != ' ' && *ch != '\n'; ++ch) {
 
 					if(!current_word.empty() &&
-							break_before(*ch) && 
+							break_before(*ch) &&
 							!no_break_after(previous))
 						break;
 
@@ -1097,12 +1097,12 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 std::string make_text_ellipsis(const std::string &text, int font_size, int max_width)
 {
 	static const std::string ellipsis = "...";
-	
+
 	if(line_width(text, font_size) <= max_width)
 		return text;
 	if(line_width(ellipsis, font_size) > max_width)
 		return "";
-	
+
 	std::string current_substring;
 
 	utils::utf8_iterator itor(text);
@@ -1115,7 +1115,7 @@ std::string make_text_ellipsis(const std::string &text, int font_size, int max_w
 		if (line_width(tmp, font_size) > max_width) {
 			return current_substring + ellipsis;
 		}
-		
+
 		current_substring.append(itor.substr().first, itor.substr().second);
 	}
 
@@ -1472,12 +1472,12 @@ void undraw_floating_labels(surface screen)
 }
 
 namespace {
-	bool add_font_to_fontlist(config* fonts_config, std::vector<font::subset_descriptor>& fontlist, const std::string& name) 
+	bool add_font_to_fontlist(config* fonts_config, std::vector<font::subset_descriptor>& fontlist, const std::string& name)
 	{
 		config* font = fonts_config->find_child("font", "name", name);
 		if(font == NULL)
 			return false;
-		
+
 		fontlist.push_back(font::subset_descriptor());
 		fontlist.back().name = name;
 		std::vector<std::string> ranges = utils::split((*font)["codepoints"]);

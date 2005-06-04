@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -148,10 +148,10 @@ gamemap::location gamemap::location::operator+(const gamemap::location& a) const
 	return ret;
 }
 
-gamemap::location& gamemap::location::operator+=(const gamemap::location &a) 
+gamemap::location& gamemap::location::operator+=(const gamemap::location &a)
 {
 	bool parity = (x & 1) != 0;
-	
+
 	x += a.x;
 	y += a.y;
 
@@ -343,7 +343,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 			startingPositions_[pos - m.startingPositions_] = *pos;
 		}
 	}
-	
+
 }
 
 int gamemap::x() const { return tiles_.size(); }
@@ -366,7 +366,7 @@ gamemap::TERRAIN gamemap::get_terrain(const gamemap::location& loc) const
 	//if not on the board, decide based on what surrounding terrain is
 	TERRAIN items[6];
 	int nitems = 0;
-	
+
 	location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(int n = 0; n != 6; ++n) {
@@ -482,7 +482,7 @@ void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)
 	location adj[6];
 	get_adjacent_tiles(loc,adj);
 
-	for(int n = 0; n < 6; ++n) 
+	for(int n = 0; n < 6; ++n)
 		remove_from_border_cache(adj[n]);
 }
 

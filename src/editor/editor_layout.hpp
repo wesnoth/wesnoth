@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -36,7 +36,7 @@ struct size_specs {
 
 /// Adjust the internal size specifications to fit the display.
 void adjust_sizes(const display &disp, size_specs &sizes);
-	
+
 
 }
 

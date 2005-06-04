@@ -16,7 +16,7 @@ bool rectangles_overlap(const SDL_Rect& a, const SDL_Rect& b)
 
 	const bool yoverlap = a.y >= b.y && a.y < b.y + b.h ||
 	                      b.y >= a.y && b.y < a.y + a.h;
-	
+
 	return xoverlap && yoverlap;
 }
 

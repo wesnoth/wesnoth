@@ -1,8 +1,8 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Yann Dirson <ydirson@altern.org>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -73,7 +73,7 @@ int rng::get_random()
 	return res;
 }
 
-const config* rng::get_random_results() 
+const config* rng::get_random_results()
 {
 	wassert(random_ != NULL);
 

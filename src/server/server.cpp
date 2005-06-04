@@ -50,7 +50,7 @@ config construct_server_message(const std::string& message, const game& g)
 	} else {
 		config& msg = turn.add_child("message");
 		msg["sender"] = "server";
-		msg["message"] = message; 
+		msg["message"] = message;
 	}
 
 	return turn;
@@ -161,7 +161,7 @@ void server::dump_stats()
 {
 	time_t old_stats = last_stats_;
 	last_stats_ = time(NULL);
-	
+
 	std::cout <<
 		"Statistics\n"
 		"\tnum_players = " << players_.size() << "\n"
@@ -232,7 +232,7 @@ void server::process_command(const std::string& cmd)
 			bans_.erase(itor,bans_.end());
 			std::cout << "ban removed on '" << mask << "'" << std::endl;
 		}
-		
+
 	} else if(command == "kick") {
 		if(i == cmd.end()) {
 			std::cout << "you must enter a nick to kick\n";
@@ -272,7 +272,7 @@ void server::run()
 			if(input_.read_line(admin_cmd)) {
 				process_command(admin_cmd);
 			}
-			
+
 			//make sure we log stats every 5 minutes
 			if((loop%100) == 0 && last_stats_+5*60 < time(NULL)) {
 				dump_stats();
@@ -297,7 +297,7 @@ void server::run()
 			}
 
 			metrics_.no_requests();
-			
+
 		} catch(network::error& e) {
 			if(!e.socket) {
 				std::cerr << "fatal network error: " << e.message << "\n";
@@ -314,7 +314,7 @@ void server::run()
 
 					players_.erase(pl_it);
 				}
-				
+
 				not_logged_in_.remove_player(e.socket);
 				lobby_players_.remove_player(e.socket);
 				for(std::vector<game>::iterator i = games_.begin(); i != games_.end(); ++i) {
@@ -408,7 +408,7 @@ void server::process_login(const network::connection sock, const config& data, c
 		              "This username is already taken"),sock);
 		return;
 	}
-	
+
 	network::send_data(join_lobby_response_, sock);
 
 	config* const player_cfg = &initial_response_.add_child("user");
@@ -441,11 +441,11 @@ void server::process_query(const network::connection sock, const config& query, 
 	std::ostringstream response;
 	if(query["type"] == "metrics") {
 		//a query for server data from a player
-		response << metrics_;	
+		response << metrics_;
 	} else {
 		response << "Error: unrecognized query";
 	}
-		
+
 	network::send_data(construct_server_message(response.str(),lobby_players_),sock);
 }
 
@@ -585,7 +585,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			name = u["username"];
 			ban = false;
 		}
-	
+
 		player_map::iterator pl;
 		for(pl = players_.begin(); pl != players_.end(); ++pl) {
 			if(pl->second.name() == name) {
@@ -657,7 +657,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				g->level().values["map_data"] = data["map_data"];
 				g->level().values["map"] = data["map"];
 			}
-			
+
 			//update our config object which describes the
 			//open games, and notifies the game of where its description
 			//is located at
@@ -877,7 +877,7 @@ void server::delete_game(std::vector<game>::iterator i)
 		const size_t index = g - vg.first;
 		gamelist->remove_child("game",index);
 	}
-	
+
 	i->disconnect();
 	games_.erase(i);
 }
@@ -908,7 +908,7 @@ int main(int argc, char** argv)
 			std::cout << "usage: " << argv[0]
 				<< " [options]\n"
 				<< "  -d  --daemon               Runs wesnothd as a daemon\n"
-				<< "  -m, --max_packet_size n    Sets the maximal packet size to n\n" 
+				<< "  -m, --max_packet_size n    Sets the maximal packet size to n\n"
 				<< "  -p, --port                 Binds the server to the specified port\n"
 				<< "  -v, --version              Returns the server version\n";
 			return 0;
@@ -941,7 +941,7 @@ int main(int argc, char** argv)
 	}
 
 	input_stream input(fifo_path);
-	
+
 	try {
 		server(port,input).run();
 	} catch(network::error& e) {

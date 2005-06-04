@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -187,8 +187,8 @@ typedef std::deque<undo_action> undo_list;
 //steps. If the unit cannot make it completely along the path this turn,
 //a goto order will be set. If move_recorder is not NULL, the move will
 //be recorded in it. If undos is not NULL, undo information will be added.
-size_t move_unit(display* disp, const game_data& gamedata, 
-				const gamestatus& status, const gamemap& map, 
+size_t move_unit(display* disp, const game_data& gamedata,
+				const gamestatus& status, const gamemap& map,
 				unit_map& units, std::vector<team>& teams,
 				std::vector<gamemap::location> steps,
 				replay* move_recorder, undo_list* undos,
@@ -217,7 +217,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
                    const gamemap& map, const std::vector<team>& teams);
 
 
-namespace victory_conditions { 
+namespace victory_conditions {
 	void set_victory_when_enemies_defeated(bool on);
 	bool victory_when_enemies_defeated();
 }

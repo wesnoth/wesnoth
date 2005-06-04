@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -71,7 +71,7 @@ const int
 	SIZE_PLUS       = relative_size(16),
 	SIZE_LARGE      = relative_size(18),
 	SIZE_XLARGE     = relative_size(24)
-  ;  
+  ;
 //function to draw text on the screen. The text will be clipped to area.
 //If the text runs outside of area horizontally, an ellipsis will be displayed
 //at the end of it. If use_tooltips is true, then text with an ellipsis will
@@ -104,7 +104,7 @@ SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::
 
 // Returns the maximum height of a font, in pixels
 int get_max_height(int size);
-	
+
 bool is_format_char(char c);
 
 ///
@@ -130,7 +130,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 /// If the text excedes the specified max width, end it with an ellipsis (...)
 ///
 std::string make_text_ellipsis(const std::string& text, int font_size, int max_width);
-	
+
 
 ///
 /// Draw text on the screen. This method makes sure that the text
@@ -140,7 +140,7 @@ std::string make_text_ellipsis(const std::string& text, int font_size, int max_w
 /// but it doesn't support special markup or tooltips.
 ///
 /// @return a bounding rectangle of the text.
-/// 
+///
 SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 			     const SDL_Color& colour, const std::string& text,
 			     int x, int y, int max_width);
@@ -171,7 +171,7 @@ enum LABEL_SCROLL_MODE { ANCHOR_LABEL_SCREEN, ANCHOR_LABEL_MAP };
 int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
 		double xpos, double ypos, double xmove, double ymove, int lifetime,
 		const SDL_Rect& clip_rect, ALIGN alignment=CENTER_ALIGN,
-		const SDL_Color* bg_colour=NULL, int border_size=0, 
+		const SDL_Color* bg_colour=NULL, int border_size=0,
 		LABEL_SCROLL_MODE scroll_mode=ANCHOR_LABEL_SCREEN);
 
 /// moves the floating label given by 'handle' by (xmove,ymove)

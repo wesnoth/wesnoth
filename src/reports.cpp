@@ -65,7 +65,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
                        const gamestatus& status, const std::set<std::string>& observers)
 {
 	unit_map::const_iterator u = units.end();
-	
+
 	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
 
 		if(!current_team.fogged(mouseover.x,mouseover.y)) {
@@ -180,7 +180,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_WEAPONS: {
 		report res;
 		std::stringstream tooltip;
-		
+
 		const size_t team_index = u->second.side()-1;
 		if(team_index >= teams.size()) {
 			std::cerr << "illegal team index in reporting: " << team_index << "\n";
@@ -192,7 +192,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		    at_it != attacks.end(); ++at_it) {
 			const std::string& lang_weapon = gettext(at_it->name().c_str());
 			const std::string& lang_type = gettext(at_it->type().c_str());
-			
+
 			str << lang_weapon << " (" << lang_type << ")\n";
 
 			tooltip << lang_weapon << " (" << lang_type << ")\n";
@@ -224,20 +224,20 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			}
 
 			res.add_text(str,tooltip);
-			
+
 			if (!at_it->special().empty()) {
 				str << gettext(at_it->special().c_str()) << "\n";
 				tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
 				res.add_text(str,tooltip);
 			}
-			
+
 			str << at_it->damage() << "-" << at_it->num_attacks() << " -- "
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
 		            _("melee") :
 					_("ranged"));
 			tooltip << at_it->damage() << " " << _("damage") << ", "
 					<< at_it->num_attacks() << " " << _("attacks");
-			
+
 			str << "\n";
 			res.add_text(str,tooltip);
 		}
@@ -251,14 +251,14 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case TIME_OF_DAY: {
 		const time_of_day& tod = timeofday_at(status,units,mouseover);
 		std::stringstream tooltip;
-		
+
 		tooltip << tod.name << "\n"
 		        << _("Lawful units: ")
 				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
 				<< _("Neutral units: ") << "0%\n"
 				<< _("Chaotic units: ")
 				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
-		
+
 		return report("",tod.image,tooltip.str());
 	}
 	case TURN:
@@ -324,7 +324,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		if(underlying.size() != 1 || underlying[0] != terrain) {
 			str << " (";
-			
+
 			for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
 				str << map.get_terrain_info(*i).name();
 				if(i+1 != underlying.end()) {
@@ -358,7 +358,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str << " (" << defense << "%," << move_cost << ")";
 		}
 
-		break;	
+		break;
 	}
 
 	case SIDE_PLAYING: {
@@ -420,11 +420,11 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	return report(str.str());
 }
-	
-	
+
+
 void set_report_content(const TYPE which_report, const std::string &content) {
 	report_contents[which_report] = content;
 }
-	
+
 
 }

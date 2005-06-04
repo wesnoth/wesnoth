@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -52,7 +52,7 @@ To lexical_cast(From a)
 {
 	To res;
 	std::stringstream str;
-	
+
 	if(!(str << a && str >> res)) {
 		throw bad_lexical_cast();
 	} else {
@@ -65,7 +65,7 @@ To lexical_cast_default(From a, To def=To())
 {
 	To res;
 	std::stringstream str;
-	
+
 	if(!(str << a && str >> res)) {
 		return def;
 	} else {

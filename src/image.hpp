@@ -45,7 +45,7 @@ namespace image {
 			value(const char *filename);
 			value(const std::string& filename);
 			value(const std::string& filename, const gamemap::location& loc);
-			
+
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
 
@@ -75,11 +75,11 @@ namespace image {
 		// const int get_index() const { return index_; };
 
 		// returns true if the locator does not correspond to any
-		// actual image 
+		// actual image
 		bool is_void() const { return val_.type_ == NONE; }
 		// loads the image it is pointing to from the disk
 		surface load_from_disk() const;
-		
+
 #if 0
 		// returns true if the locator already was stored in the given
 		// cache
@@ -118,7 +118,7 @@ namespace image {
 
 	///the image manager is responsible for setting up images, and destroying
 	///all images when the program exits. It should probably
-	///be created once for the life of the program 
+	///be created once for the life of the program
 	struct manager
 	{
 		manager();

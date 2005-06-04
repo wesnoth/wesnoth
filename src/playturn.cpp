@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -110,7 +110,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 		unit_map::const_iterator ui = units.find(*g);
 		turn_data.move_unit_to_loc(ui,ui->second.get_goto(),false);
 	}
-	
+
 	turn_data.start_interactive_turn();
 
 	while(!turn_data.turn_over()) {
@@ -141,7 +141,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 }
 
 turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
-                     const gamestatus& status, const config& terrain_config, 
+                     const gamestatus& status, const config& terrain_config,
 		     const config& level, CKey& key, display& gui, gamemap& map,
 		     std::vector<team>& teams, int team_num, unit_map& units,
 		     TURN_MODE mode, floating_textbox& textbox,
@@ -188,7 +188,7 @@ void turn_info::turn_slice()
 	const bool use_left_right = (textbox_.active() == false);
 	if(use_left_right && key_[SDLK_LEFT] || mousex < scroll_threshold)
 		gui_.scroll(-preferences::scroll_speed(),0);
-	
+
 	if(use_left_right && key_[SDLK_RIGHT] || mousex > gui_.x()-scroll_threshold)
 		gui_.scroll(preferences::scroll_speed(),0);
 
@@ -347,7 +347,7 @@ void turn_info::mouse_motion(int x, int y)
 			current_paths_ = paths();
 			gui_.set_paths(NULL);
 		}
-		
+
 		const gamemap::location& dest = attack_from.valid() ? attack_from : new_hex;
 		const unit_map::const_iterator dest_un = find_unit(dest);
 		if(dest == selected_hex_ || dest_un != units_.end()) {
@@ -355,9 +355,9 @@ void turn_info::mouse_motion(int x, int y)
 			gui_.set_route(NULL);
 		} else if(!current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
-			
+
 			unit_map::const_iterator un = find_unit(selected_hex_);
-			
+
 			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !un->second.stone()) {
 				const shortest_path_calculator calc(un->second,current_team,
 				                                    visible_units(),teams_,map_,status_);
@@ -436,7 +436,7 @@ class simple_attack_rating
 public:
 	simple_attack_rating() : attacker_weapon_rating_(0), defender_weapon_rating_(0) {}
 
-	simple_attack_rating(const battle_stats& stats) : 
+	simple_attack_rating(const battle_stats& stats) :
 		attacker_weapon_rating_(stats.chance_to_hit_defender *
 				stats.damage_defender_takes * stats.nattacks),
 		defender_weapon_rating_(stats.chance_to_hit_attacker *
@@ -448,7 +448,7 @@ public:
 		if(attacker_weapon_rating_ < a.attacker_weapon_rating_)
 			return true;
 
-		//if both weapons are the same but 
+		//if both weapons are the same but
 		//ours makes the enemy retaliate for more damage, it's worse
 		else if(attacker_weapon_rating_ == a.attacker_weapon_rating_ &&
 		   defender_weapon_rating_ > a.defender_weapon_rating_)
@@ -737,7 +737,7 @@ bool turn_info::move_unit_along_current_route(bool check_shroud)
 
 	selected_hex_ = gamemap::location();
 	gui_.select_hex(gamemap::location());
-	
+
 	gui_.set_route(NULL);
 	gui_.set_paths(NULL);
 	current_paths_ = paths();
@@ -758,10 +758,10 @@ bool turn_info::move_unit_along_current_route(bool check_shroud)
 			selected_hex_ = dst;
 			gui_.select_hex(dst);
 		}
-		
+
 		current_route_.steps.clear();
 		show_attack_options(u);
-		
+
 		if(current_paths_.routes.empty() == false) {
 			current_paths_.routes[dst] = paths::route();
 			selected_hex_ = dst;
@@ -1085,7 +1085,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		if (i == units_.end()) return false;
 		return i->second.move_interrupted();
 	}
-	
+
 	case hotkey::HOTKEY_DELAY_SHROUD:
 		return !browse_ && (current_team().uses_fog() || current_team().uses_shroud());
 	case hotkey::HOTKEY_UPDATE_SHROUD:
@@ -1133,7 +1133,7 @@ namespace {
 	private:
 		const turn_info& info_;
 	};
-	
+
 	struct not_in_context_menu {
 		not_in_context_menu(const turn_info& info) : info_(info) {}
 		bool operator()(const std::string& str) const {
@@ -1171,7 +1171,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 			has_image = true;
 			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
 		}
-		
+
 		str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
 
 		menu.push_back(str.str());
@@ -1200,7 +1200,7 @@ bool turn_info::unit_in_cycle(unit_map::const_iterator it) const
 	}
 
 	return false;
-	
+
 }
 
 void turn_info::cycle_units()
@@ -1312,7 +1312,7 @@ void turn_info::end_turn()
 			}
 		}
 	}
-	
+
 	// Ask for confirmation if units still have movement left
 	if(preferences::yellow_confirm() && partmoved_units) {
 		const int res = gui::show_dialog(gui_,NULL,"",_("Some units have movement left. Do you really want to end your turn?"),gui::YES_NO);
@@ -1372,7 +1372,7 @@ void turn_info::unit_hold_position()
 			un->second.set_user_end_turn(true);
 			cycle_units();
 		}
-	}	
+	}
 }
 
 void turn_info::end_unit_turn()
@@ -1440,16 +1440,16 @@ void turn_info::undo()
 			LOG_STREAM(err, engine) << "Illegal 'undo' found. Possible abuse of [allow_undo]?\n";
 			return;
 		}
-	
+
 		if(map_.is_village(route.front())) {
 			get_village(route.front(),teams_,action.original_village_owner,units_);
 		}
-	
+
 		action.starting_moves = u->second.movement_left();
-	
+
 		unit un = u->second;
 		un.set_goto(gamemap::location());
-		
+
 		gui_.hide_unit(u->first,true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
 		gui_.hide_unit(gamemap::location());
@@ -1527,12 +1527,12 @@ void turn_info::redo()
 			wassert(false);
 			return;
 		}
-	
+
 		action.starting_moves = u->second.movement_left();
-	
+
 		unit un = u->second;
 		un.set_goto(gamemap::location());
-		
+
 		gui_.hide_unit(u->first,true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
 		gui_.hide_unit(gamemap::location());
@@ -1540,13 +1540,13 @@ void turn_info::redo()
 		units_.erase(u);
 		un.set_movement(starting_moves);
 		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
-	
+
 		if(map_.is_village(route.back())) {
 			get_village(route.back(),teams_,un.side()-1,units_);
 		}
-	
+
 		gui_.draw_tile(route.back().x,route.back().y);
-	
+
 		recorder.add_movement(route.front(),route.back());
 	}
 	gui_.invalidate_unit();
@@ -1608,7 +1608,7 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 {
 	std::stringstream stream;
 
-	const std::string ellipsed_name = font::make_text_ellipsis(state_of_game_.label, 
+	const std::string ellipsed_name = font::make_text_ellipsis(state_of_game_.label,
 			font::SIZE_NORMAL, 200);
 	stream << ellipsed_name << " " << _("Turn")
 	       << " " << status_.turn();
@@ -2104,7 +2104,7 @@ void turn_info::recall()
 
 				undo_stack_.push_back(undo_action(un,loc,res));
 				redo_stack_.clear();
-				
+
 				recall_list.erase(recall_list.begin()+res);
 				gui_.invalidate_game_status();
 			}
@@ -2237,7 +2237,7 @@ void turn_info::unit_list()
 	std::vector<gamemap::location> locations_list;
 	std::vector<unit> units_list;
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
- 		if(i->second.side() != (gui_.viewing_team()+1))
+		if(i->second.side() != (gui_.viewing_team()+1))
 			continue;
 
 		std::stringstream row;
@@ -2433,9 +2433,9 @@ void turn_info::do_search(const std::string& new_search)
 {
 	if(new_search.empty() == false && new_search != last_search_)
 		last_search_ = new_search;
-	
+
 	if(last_search_.empty()) return;
-	
+
 	bool found = false;
 	gamemap::location loc = last_search_hit_;
 	//If this is a location search, just center on that location.
@@ -2458,7 +2458,7 @@ void turn_info::do_search(const std::string& new_search)
 		loc.x = (loc.x + 1) % map_.x();
 		if(loc.x == 0)
 			loc.y = (loc.y + 1) % map_.y();
-		
+
 		//Search label
 		const std::string label = gui_.labels().get_label(loc);
 		if(label.empty() == false) {
@@ -2518,7 +2518,7 @@ void turn_info::do_command(const std::string& str)
 			}
 		} else if (teams_[index].is_ai()) {
 			teams_[index].make_human();
-		}       
+		}
 	} else if (cmd == "theme") {
 	        int action = 0;
 		std::vector<std::string> options=theme::get_known_themes();
@@ -2526,7 +2526,7 @@ void turn_info::do_command(const std::string& str)
 		action = gui::show_dialog(gui_,NULL,"",current_theme,gui::OK_CANCEL,&options);
 		if(action >-1){
 		  preferences::set_theme(options[action]);
-		//it would be preferable for the new theme to take effect 
+		//it would be preferable for the new theme to take effect
 		//immediately, however, this will have to do for now.
 		  gui::show_dialog(gui_,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
 		}
@@ -2644,12 +2644,12 @@ bool turn_info::enemies_visible() const
 	// If we aren't using fog/shroud, this is easy :)
 	if(current_team().uses_fog() == false && current_team().uses_shroud() == false)
 		return true;
-	
+
 	//See if any enemies are visible
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u)
 		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y))
 			return true;
-		
+
 	return false;
 }
 
@@ -2657,7 +2657,7 @@ bool turn_info::enemies_visible() const
 void turn_info::show_enemy_moves(bool ignore_units)
 {
 	all_paths_ = paths();
-	
+
 	// Compute enemy movement positions
 	for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && !u->second.stone()) {
@@ -2668,7 +2668,7 @@ void turn_info::show_enemy_moves(bool ignore_units)
 			units.insert(*u);
 			const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,
 									  u->first,teams_,is_skirmisher,teleports);
-			
+
 			for (paths::routes_map::const_iterator route = path.routes.begin(); route != path.routes.end(); ++route) {
 				// map<...>::operator[](const key_type& key) inserts key into
 				// the map with a default instance of value_type
@@ -2676,7 +2676,7 @@ void turn_info::show_enemy_moves(bool ignore_units)
 			}
 		}
 	}
-	
+
 	gui_.set_paths(&all_paths_);
 }
 
@@ -2689,7 +2689,7 @@ void turn_info::toggle_shroud_updates() {
 
 bool turn_info::clear_shroud()
 {
-	bool cleared = current_team().auto_shroud_updates() && 
+	bool cleared = current_team().auto_shroud_updates() &&
 		::clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
 	enemies_visible_ = enemies_visible();
 	return cleared;
@@ -2959,7 +2959,7 @@ void turn_info::tab_textbox()
 
 		if(last_space == std::string::npos) {
 			beginning = true;
-			semiword = text;	
+			semiword = text;
 		}else{
 			beginning = false;
 			semiword.assign(text,last_space+1,text.size());

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Copyright (C) 2005 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -103,7 +103,7 @@ void parser::operator()(std::string* error_log)
 		} catch(config::error& e) {
 			if(error_log == NULL)
 				throw;
-			
+
 			// On error, dump tokens to the next LF
 			while(tok_.current_token().type != token::LF &&
 					tok_.current_token().type != token::END) {
@@ -125,7 +125,7 @@ void parser::operator()(std::string* error_log)
 	}
 }
 
-void parser::parse_element() 
+void parser::parse_element()
 {
 	tok_.next_token();
 	std::string elname;
@@ -212,10 +212,10 @@ void parser::parse_variable()
 		}
 		tok_.next_token();
 	}
-	if(variables.back().empty()) 
+	if(variables.back().empty())
 		error(_("Empty variable name"));
 
-	std::vector<std::string>::const_iterator curvar = variables.begin(); 
+	std::vector<std::string>::const_iterator curvar = variables.begin();
 
 	bool ignore_next_newlines = false;
 	while(1) {
@@ -302,7 +302,7 @@ void parser::error(const std::string& error_type)
 	i18n_symbols["error"] = error_type;
 
 	throw config::error(
-		lineno_string(i18n_symbols, tok_.get_line(), 
+		lineno_string(i18n_symbols, tok_.get_line(),
 		              N_("$error at $pos")));
 }
 
@@ -354,30 +354,30 @@ static void write_internal(config const &cfg, std::ostream &out, std::string tex
 
 				if(w.translatable()) {
 					if(w.textdomain() != textdomain) {
-						out << TextdomainPrefix 
-							<< w.textdomain() 
+						out << TextdomainPrefix
+							<< w.textdomain()
 							<< TextdomainPostfix;
 						textdomain = w.textdomain();
 					}
 
 					if(first) {
-						out << std::string(tab, '\t') 
-							<< i->first 
+						out << std::string(tab, '\t')
+							<< i->first
 							<< AttributeEquals;
 					}
 
-					out << TranslatableAttributePrefix 
+					out << TranslatableAttributePrefix
 						<< escaped_string(part)
 						<< AttributePostfix;
 
 				} else {
 					if(first) {
-						out << std::string(tab, '\t') 
-							<< i->first 
+						out << std::string(tab, '\t')
+							<< i->first
 							<< AttributeEquals;
 					}
 
-					out << AttributePrefix 
+					out << AttributePrefix
 						<< escaped_string(part)
 						<< AttributePostfix;
 				}
@@ -388,7 +388,7 @@ static void write_internal(config const &cfg, std::ostream &out, std::string tex
 					out << AttributeContPostfix;
 					out << std::string(tab+1, '\t');
 				}
-				
+
 				first = false;
 			}
 		}

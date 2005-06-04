@@ -69,7 +69,7 @@ public:
 		explicit status_item(const config& cfg);
 
 		using object::location;
-		
+
 		const std::string& prefix() const;
 		const std::string& postfix() const;
 

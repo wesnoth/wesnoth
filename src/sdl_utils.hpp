@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -52,13 +52,13 @@ private:
 		void operator()(SDL_Surface *surf) const
 		{
 			if (surf != NULL)
-				 SDL_FreeSurface(surf); 
+				 SDL_FreeSurface(surf);
 		}
 	};
 
 	typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
 public:
-	surface() : surface_(NULL) 
+	surface() : surface_(NULL)
 	{}
 
 	surface(SDL_Surface *surf) : surface_(surf)

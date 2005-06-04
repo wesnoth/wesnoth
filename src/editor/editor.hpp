@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -35,22 +35,22 @@ class map_editor : public events::handler,
 public:
 	map_editor(display &gui, gamemap &map, config &theme, config &game_config);
 	virtual ~map_editor();
-	
+
 	/// Enter the main loop. The loop runs until set_abort() is called
 	/// to set an abort mode which makes the loop exit.
 	void main_loop();
-	
-	/// Set the filename that map should be saved as. 
+
+	/// Set the filename that map should be saved as.
 	void set_file_to_save_as(const std::string);
 
 	/// How to abort the map editor.
 	/// DONT_ABORT is set during normal operation.
 	/// When ABORT_NORMALLY is set, the editor asks for confirmation and
-	/// if save is desired before it exits. 
+	/// if save is desired before it exits.
 	/// When ABORT_HARD is set, the editor exists without asking any
 	/// questions or saving.
 	enum ABORT_MODE {DONT_ABORT, ABORT_NORMALLY, ABORT_HARD};
-	
+
 	/// Set the abort flag, which indicates if the editor should exit in
 	/// some way after the current iteration of the main loop.
 	void set_abort(const ABORT_MODE abort=ABORT_NORMALLY);
@@ -69,14 +69,14 @@ public:
 	/// the map. Show a message if the load failed. Throw
 	/// load_map_exception if the file could not be loaded.
 	std::string load_map(const std::string filename);
-	
+
 	virtual void handle_event(const SDL_Event &event);
-	
+
 	/// Handle a keyboard event. mousex and mousey is the current
 	/// position of the mouse.
 	void handle_keyboard_event(const SDL_KeyboardEvent &event,
 							   const int mousex, const int mousey);
-	
+
 	/// Handle a mouse button event. mousex and mousey is the current
 	/// position of the mouse.
 	void handle_mouse_button_event(const SDL_MouseButtonEvent &event,
@@ -85,10 +85,10 @@ public:
 	/// Return true if the map has changed since the last time it was
 	/// saved.
 	bool changed_since_save() const;
-	
+
 	/// Recalculate layout and redraw everything.
 	void redraw_everything();
-	
+
 	// Methods inherited from command_executor. Used to perform
 	// operations on menu/hotkey commands.
 	virtual void toggle_grid();
@@ -122,7 +122,7 @@ public:
 	void perform_set_starting_pos();
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
-	
+
 	/// Exception thrown when new map is to be loaded.
 	struct new_map_exception {
 		new_map_exception(const std::string &map, const std::string filename="")
@@ -130,7 +130,7 @@ public:
 		const std::string new_map;
 		const std::string new_filename;
 	};
-	
+
 private:
 	/// What to perform while the left button is held down.
 	enum LEFT_BUTTON_HELD_FUNC {DRAW_TERRAIN, ADD_SELECTION, REMOVE_SELECTION,
@@ -146,42 +146,42 @@ private:
 
 	/// Handle a left click on the location.
 	void left_click(const gamemap::location loc);
-	
+
 	/// Called in every iteration when the right mouse button is held
 	/// down. Note that this differs from a click.
 	void right_button_down(const int mousex, const int mousey);
 
 	/// Handle a right click on the location.
 	void right_click(const gamemap::location loc);
-	
+
 	/// Called in every iteration when the middle mouse button is held
 	/// down. Note that this differs from a click.
 	void middle_button_down(const int mousex, const int mousey);
-	
+
 	/// Confirm that exiting is desired and ask for saving of the map.
 	/// Return true if exit is confirmed and the save is successful or not
 	/// wanted. Return false if exit is cancelled or the requested save
 	/// failed.
 	bool confirm_exit_and_save();
-	
+
 	/// Set the starting position for the given player to the location
 	/// given.
 	void set_starting_position(const int player, const gamemap::location loc);
-	
+
 	/// Display a menu with given items and at the given location.
 	void show_menu(const std::vector<std::string>& items_arg, const int xloc,
 				   const int yloc, const bool context_menu=false);
-	
+
 	/// Pass the command onto the hotkey handling system. Quit requests
 	/// are intercepted because the editor does not want the default
 	/// behavior of those.
 	void execute_command(const hotkey::HOTKEY_COMMAND command);
-	
+
 	/// Draw terrain at a location. The operation is saved in the undo
 	/// stack. Update the map to reflect the change.
 	void draw_terrain(const gamemap::TERRAIN terrain,
 					  const gamemap::location hex);
-	
+
 
 	/////////////////////////////////////////////////////////////////////
 	// NOTE: after any terrain has changed, one of the invalidate      //
@@ -243,7 +243,7 @@ private:
 						 map_undo_action &undo_action);
 	void terrain_changed(const std::set<gamemap::location> &hexes,
 						 map_undo_action &undo_action);
-	
+
 	/// Save an action so that it may be undone. Add an operation to the
 	/// number done since save.
 	void save_undo_action(const map_undo_action &action);
@@ -324,7 +324,7 @@ private:
 	static gamemap::TERRAIN old_fg_terrain_, old_bg_terrain_;
 	static int old_brush_size_;
 	bool all_hexes_selected_;
-	
+
 };
 
 }

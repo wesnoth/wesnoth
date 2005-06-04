@@ -22,7 +22,7 @@ class widget_finder {
 public:
 	widget_finder(gui::widget* w) : w_(w) {};
 
-	bool operator()(const std::pair<int, gui::scrollpane::scrollpane_widget>& p) 
+	bool operator()(const std::pair<int, gui::scrollpane::scrollpane_widget>& p)
 	{
 		if(p.second.w == w_)
 			return true;
@@ -117,7 +117,7 @@ void scrollpane::scroll(int pos)
 void scrollpane::update_widget_positions()
 {
 
-	widget_map::iterator itor; 
+	widget_map::iterator itor;
 	std::vector<bool> hidden(content_.size());
 	int i = 0;
 	for(itor = content_.begin(); itor != content_.end(); ++itor) {

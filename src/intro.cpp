@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -222,11 +222,11 @@ bool show_intro_part(display &disp, const config& part,
 	bool skip = false, last_key = true;
 
 	int xpos = textx, ypos = texty;
-	
+
 	//the maximum position that text can reach before wrapping
 	const int max_xpos = next_button.location().x - 10;
 	size_t height = 0;
-	
+
 	for(;;) {
 		if(itor != utils::utf8_iterator::end(story)) {
 			if(*itor == ' ') {
@@ -269,7 +269,7 @@ bool show_intro_part(display &disp, const config& part,
 
 			if(rect.h > height)
 				height = rect.h;
-			xpos += rect.w; 
+			xpos += rect.w;
 			update_rect(rect);
 
 			++itor;
@@ -301,7 +301,7 @@ bool show_intro_part(display &disp, const config& part,
 		if(!skip || itor == utils::utf8_iterator::end(story))
 			SDL_Delay(20);
 	}
-	
+
 	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,0,0,0,1.0,
                                      video.getSurface());
 
@@ -319,7 +319,7 @@ void the_end(display &disp)
 
 	const std::string text = _("The End");
 	const size_t font_size = font::SIZE_XLARGE;
-	
+
 	area = font::text_area(text,font_size);
 	area.x = screen_area().w/2 - area.w/2;
 	area.y = screen_area().h/2 - area.h/2;

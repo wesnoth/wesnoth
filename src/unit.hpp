@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -83,7 +83,7 @@ public:
 	void heal(int amount);
 	void heal_all();
 
-	bool invisible(const std::string& terrain, int lawful_bonus, 
+	bool invisible(const std::string& terrain, int lawful_bonus,
 			const gamemap::location& loc,
 			const unit_map& units,const std::vector<team>& teams) const;
 	bool poisoned() const;
@@ -182,7 +182,7 @@ private:
 
 	int side_;
 
-	//is set to the number of moves left, ATTACKED if attacked, 
+	//is set to the number of moves left, ATTACKED if attacked,
 	// MOVED if moved and then pressed "end turn"
 	// NOT_MOVED if not moved and pressed "end turn"
 	enum MOVES { ATTACKED=-1, MOVED=-2, NOT_MOVED=-3 };
@@ -267,11 +267,11 @@ unit_map::const_iterator team_leader(int side, const unit_map& units);
 std::string team_name(int side, const unit_map& units);
 unit_map::iterator find_visible_unit(unit_map& units,
 		const gamemap::location loc,
-		const gamemap& map, int lawful_bonus, 
+		const gamemap& map, int lawful_bonus,
 		const std::vector<team>& teams, const team& current_team);
 unit_map::const_iterator find_visible_unit(const unit_map& units,
 		const gamemap::location loc,
-		const gamemap& map, int lawful_bonus, 
+		const gamemap& map, int lawful_bonus,
 		const std::vector<team>& teams, const team& current_team);
 
 struct team_data

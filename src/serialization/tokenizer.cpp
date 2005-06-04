@@ -78,7 +78,7 @@ const token& tokenizer::next_token()
 	case EOF:
 		token_.type = token::END;
 		break;
-	case '"': 
+	case '"':
 		token_.type = token::QSTRING;
 		while (1) {
 			next_char();
@@ -98,8 +98,8 @@ const token& tokenizer::next_token()
 
 			token_.value += current_;
 		};
-		break;	
-	case '[': case ']': case '/': case '\n': case '=': case ',': case '+': 
+		break;
+	case '[': case ']': case '/': case '\n': case '=': case ',': case '+':
 		token_.type = token::token_type(current_);
 		token_.value = current_;
 		break;

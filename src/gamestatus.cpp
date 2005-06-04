@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -374,7 +374,7 @@ void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode)
 		if(game.replay_data.child("replay") == NULL) {
 			cfg.add_child("replay",game.replay_data);
 		}
-		
+
 		cfg.add_child("snapshot",game.snapshot);
 		cfg.add_child("replay_start",game.starting_pos);
 		cfg.add_child("statistics",statistics::write_stats());
@@ -414,7 +414,7 @@ bool save_game_exists(const std::string& name)
 {
 	std::string fname = name;
 	std::replace(fname.begin(),fname.end(),' ','_');
-	
+
 	return file_exists(get_saves_dir() + "/" + fname);
 }
 
@@ -452,7 +452,7 @@ void load_game(const game_data& data, const std::string& name, game_state& state
 
 	config cfg;
 	read_save_file(name,cfg,error_log);
-	
+
 	state = read_game(data,&cfg);
 }
 
@@ -554,7 +554,7 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 
 	out["replay"] = has_replay ? "yes" : "no";
 	out["snapshot"] = has_snapshot ? "yes" : "no";
-	
+
 	out["campaign_type"] = state.campaign_type;
 	out["scenario"] = state.scenario;
 	out["difficulty"] = state.difficulty;
@@ -632,7 +632,7 @@ void game_state::get_variable_internal(const std::string& key, config& cfg,
 		t_string** varout, config** cfgout)
 {
 	//we get the variable from the [variables] section of the game state. Variables may
-	//be in the format 
+	//be in the format
 	const std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
 	if(itor != key.end()) {
 		std::string element(key.begin(),itor);
@@ -675,7 +675,7 @@ void game_state::get_variable_internal(const std::string& key, config& cfg,
 
 			return;
 		}
-		
+
 		while(cfg.get_children(element).size() <= index) {
 			cfg.add_child(element);
 		}
@@ -683,7 +683,7 @@ void game_state::get_variable_internal(const std::string& key, config& cfg,
 		if(cfgout != NULL) {
 			*cfgout = cfg.get_children(element)[index];
 		}
-		
+
 		get_variable_internal(sub_key,*cfg.get_children(element)[index],varout,cfgout);
 	} else {
 		if(varout != NULL) {
@@ -699,7 +699,7 @@ t_string& game_state::get_variable(const std::string& key)
 	if(res != NULL) {
 		return *res;
 	}
-	
+
 	static t_string empty_string;
 	return empty_string;
 }

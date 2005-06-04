@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -557,7 +557,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 	for(;;) {
 		config* const cfg = replayer.get_next_action();
 		config* child;
-		
+
 		//do we need to recalculate shroud after this action is processed?
 		bool fix_shroud = false;
 
@@ -615,12 +615,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string& text = (*child)["text"];
 
 			disp.labels().set_label(loc,text);
-		} 
+		}
 
 		else if((child = cfg->child("rename")) != NULL) {
 			const gamemap::location loc(*child);
 			const std::string& name = (*child)["name"];
-			
+
 			std::map<gamemap::location,unit>::iterator u = units.find(loc);
 
 			if(u->second.unrenamable()) {

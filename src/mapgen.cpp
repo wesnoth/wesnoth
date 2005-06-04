@@ -214,7 +214,7 @@ bool generate_river_internal(const height_map& heights, terrain_map& terrain, in
 	if(on_map && !river.empty() && heights[x][y] > heights[river.back().x][river.back().y] + river_uphill) {
 		return false;
 	}
-	
+
 	//if we're at the end of the river
 	if(!on_map || terrain[x][y] == 'c' || terrain[x][y] == 's') {
 		LOG_NG << "generating river...\n";
@@ -229,7 +229,7 @@ bool generate_river_internal(const height_map& heights, terrain_map& terrain, in
 
 		return true;
 	}
-	
+
 	location current_loc(x,y);
 	location adj[6];
 	get_adjacent_tiles(current_loc,adj);
@@ -440,7 +440,7 @@ int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, in
 	}
 
 	int surrounding_ranking = 0;
-	
+
 	for(int xpos = x-5; xpos <= x+5; ++xpos) {
 		for(int ypos = y-5; ypos <= y+5; ++ypos) {
 			if(valid_terrain(xpos,ypos)) {
@@ -491,7 +491,7 @@ gamemap::location place_village(const std::vector<std::vector<gamemap::TERRAIN> 
 	return best_loc;
 }
 
-std::string generate_name(const unit_race& name_generator, const std::string& id, 
+std::string generate_name(const unit_race& name_generator, const std::string& id,
 		std::string* base_name=NULL,
 		utils::string_map* additional_symbols=NULL)
 {
@@ -627,7 +627,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//the map, same for roads, etc etc)
 	width *= 3;
 	height *= 3;
-	
+
 	LOG_NG << "generating height map...\n";
 	//generate the height of everything.
 	const height_map heights = generate_height_map(width,height,iterations,hill_size,island_size,island_off_center);
@@ -687,7 +687,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			const int y = rand()%height;
 			if(heights[x][y] > atoi(cfg["min_lake_height"].c_str())) {
 				const std::vector<location> river = generate_river(heights,terrain,x,y,atoi(cfg["river_frequency"].c_str()));
-				
+
 				if(river.empty() == false && labels != NULL) {
 					std::string base_name;
 					LOG_NG << "generating name for river...\n";
@@ -952,12 +952,12 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					if(last == adj[0] && next == adj[3] || last == adj[3] && next == adj[0]) {
 						direction = 0;
 					}
-					
+
 					//if we are going south west-north east
 					else if(last == adj[1] && next == adj[4] || last == adj[4] && next == adj[1]) {
 						direction = 1;
 					}
-					
+
 					//if we are going south east-north west
 					else if(last == adj[2] && next == adj[5] || last == adj[5] && next == adj[2]) {
 						direction = 2;
@@ -1048,7 +1048,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		//first we work out the size of the x and y distance between villages
 		const size_t tiles_per_village = ((width*height)/9)/nvillages;
 		size_t village_x = 1, village_y = 1;
-	
+
 		//alternate between incrementing the x and y value. When they are high enough
 		//to equal or exceed the tiles_per_village, then we have them to the value
 		//we want them at.
@@ -1061,18 +1061,18 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 
 		std::set<std::string> used_names;
-	
+
 		for(size_t vx = 0; vx < width; vx += village_x) {
 			LOG_NG << "village at " << vx << "\n";
 			for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
-				
+
 				const size_t add_x = rand()%3;
 				const size_t add_y = rand()%3;
 				const size_t x = (vx + add_x) - 1;
 				const size_t y = (vy + add_y) - 1;
-	
+
 				const gamemap::location res = place_village(terrain,x,y,2,cfg);
-	
+
 				if(res.x >= width/3 && res.x < (width*2)/3 && res.y >= height/3 && res.y < (height*2)/3) {
 					const std::string str(1,terrain[res.x][res.y]);
 					const config* const child = cfg.find_child("village","terrain",str);
@@ -1116,7 +1116,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 										name_type = "village_name_lake";
 										break;
 									}
-									
+
 									const gamemap::TERRAIN terr = terrain[adj[n].x+width/3][adj[n].y+height/3];
 
 									if(std::count(field.begin(),field.end(),terr) > 0) {

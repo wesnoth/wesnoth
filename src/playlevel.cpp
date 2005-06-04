@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -146,14 +146,14 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	if((*level)["scenario_generation"] != "") {
 		LOG_NG << "randomly generating scenario...\n";
 		const cursor::setter cursor_setter(cursor::WAIT);
-	
+
 		static config scenario;
 		scenario = random_generate_scenario((*level)["scenario_generation"],level->child("generator"));
 		level = &scenario;
 
 		state_of_game.starting_pos = scenario;
 	}
-	
+
 	std::string map_data = (*level)["map_data"];
 	if(map_data == "" && (*level)["map"] != "") {
 		map_data = read_map((*level)["map"]);
@@ -323,11 +323,11 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 			std::copy(player->can_recruit.begin(),player->can_recruit.end(),
 					std::inserter(teams.back().recruits(),teams.back().recruits().end()));
 		}
-		
+
 		if(player != NULL) {
 			player->can_recruit = teams.back().recruits();
 		}
-		
+
 		//if there are additional starting units on this side
 		const config::child_list& starting_units = (*ui)->get_children("unit");
 		for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
@@ -364,10 +364,10 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 			LOG_NG << *it << std::endl;
 		}
 		LOG_NG << "Added all recruitable units\n";
-		std::copy(recruitable.begin(), recruitable.end(), 
+		std::copy(recruitable.begin(), recruitable.end(),
 				  std::inserter(enc_units, enc_units.begin()));
 	}
-		
+
 	// Add all units that exist at the start to the encountered units so
 	// that information about them are displayed to the user in the help
 	// system.
@@ -423,7 +423,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	LOG_NG << "b... " << (SDL_GetTicks() - ticks) << "\n";
 
 	//this *needs* to be created before the show_intro and show_map_scene
-	//as that functions use the manager state_of_game 
+	//as that functions use the manager state_of_game
 	game_events::manager events_manager(*level,gui,map,units,teams,
 	                                    state_of_game,status,gameinfo);
 
@@ -472,10 +472,10 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		//if a team is specified whose turn it is, it means we're loading a game
 		//instead of starting a fresh one
 		const bool loading_game = lvl["playing_team"].empty() == false;
-		
+
 		gui.begin_game();
 		gui.adjust_colours(0,0,0);
-		
+
 		LOG_NG << "scrolling... " << (SDL_GetTicks() - ticks) << "\n";
 		if(first_human_team != -1) {
 			LOG_NG << "b " << (SDL_GetTicks() - ticks) << "\n";
@@ -487,12 +487,12 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		LOG_NG << "done scrolling... " << (SDL_GetTicks() - ticks) << "\n";
 
 		bool replaying = (recorder.at_end() == false);
-	
+
 		int first_player = atoi(lvl["playing_team"].c_str());
 		if(first_player < 0 || first_player >= int(teams.size())) {
 			first_player = 0;
 		}
-		
+
 		if(!loading_game) {
 			game_events::fire("prestart");
 		}
@@ -501,7 +501,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		}
 
 		std::deque<config> data_backlog;
-		
+
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks) << "\n";
 		for(bool first_time = true; true; first_time = false, first_player = 0) {
 			if(first_time) {
@@ -707,7 +707,7 @@ redo_turn:
 					gui.recalculate_minimap();
 					gui.invalidate_all();
 				}
-				
+
 				game_events::pump();
 
 				check_victory(units,teams);
@@ -715,7 +715,7 @@ redo_turn:
 
 			//time has run out
 			if(!status.next_turn()) {
-			
+
 				if(non_interactive()) {
 					std::cout << "time over (draw)\n";
 				}
@@ -860,7 +860,7 @@ redo_turn:
 				gui::show_dialog(gui, NULL, _("Victory"),
 				                 _("You have emerged victorious!"), gui::OK_ONLY);
 
-			if (state_of_game.players.size() > 0 && has_next_scenario || 
+			if (state_of_game.players.size() > 0 && has_next_scenario ||
 					state_of_game.campaign_type == "test")
 				gui::show_dialog(gui, NULL, _("Scenario Report"), report.str(), gui::OK_ONLY);
 

@@ -119,7 +119,7 @@ bool game::take_side(network::connection player, const config& cfg)
 	wassert(is_member(player));
 
 	const std::string& side = cfg["side"];
-	
+
 	//if the player is already on a side
 	if(sides_.count(player))
 		return false;
@@ -168,7 +168,7 @@ void game::update_side_data()
 {
 	sides_taken_.clear();
 	sides_.clear();
-	
+
 	const config::child_itors level_sides = level_.child_range("side");
 
 	//for each player:
@@ -267,7 +267,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 	}
 
 	sides_taken_.insert(side);
-	
+
 	//send everyone a message saying that the observer who is taking the side has quit
 	config observer_quit;
 	observer_quit.add_child("observer_quit").values["name"] = player;
@@ -399,7 +399,7 @@ void game::add_player(network::connection player)
 		config cfg;
 		cfg.add_child("start_game");
 		network::queue_data(cfg, player);
-		
+
 		//send observer join of all the observers in the game to player
 		for(std::vector<network::connection>::const_iterator pl = players_.begin()+1; pl != players_.end(); ++pl) {
 			if(sides_.count(*pl) == 0 && *pl != player) {
@@ -470,7 +470,7 @@ void game::send_user_list()
 		config cfg;
 		cfg.add_child("gamelist");
 		for(std::vector<network::connection>::const_iterator p = players_.begin(); p != players_.end(); ++p) {
-			
+
 			const player_map::const_iterator info = player_info_->find(*p);
 			if(info != player_info_->end()) {
 				config& user = cfg.add_child("user");

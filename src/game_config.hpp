@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -40,7 +40,7 @@ namespace game_config
 	extern std::string game_icon, game_title, game_logo, title_music, map_image, rightside_image, rightside_image_bot,
 		               moved_energy_image, unmoved_energy_image, partmoved_energy_image,
 					   enemy_energy_image,ally_energy_image,flag_image,
-					   dot_image,cross_image,			   
+					   dot_image,cross_image,
 					   missile_n_image,missile_ne_image,terrain_mask_image,observer_image,download_campaign_image,
 					   checked_menu_image,unchecked_menu_image;
 

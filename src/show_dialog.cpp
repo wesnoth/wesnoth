@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -265,7 +265,7 @@ void draw_dialog(int x, int y, int w, int h, CVideo &video, const std::string& t
 #ifdef OK_BUTTON_ON_RIGHT
 		std::reverse(buttons->begin(),buttons->end());
 #endif
-		
+
 		for(std::vector<button*>::const_iterator b = buttons->begin(); b != buttons->end(); ++b) {
 			(**b).set_location(buttons_area.x,buttons_area.y);
 			buttons_area.x += (**b).width() + ButtonHPadding;
@@ -363,7 +363,7 @@ int show_dialog(display& disp, surface image,
 	int text_widget_width = 0;
 	int text_widget_height = 0;
 	if(use_textbox) {
-		
+
 		text_widget.set_wrap(!editable_textbox);
 
 		const SDL_Rect& area = font::text_area(*text_widget_text,message_font_size);
@@ -562,7 +562,7 @@ int show_dialog(display& disp, surface image,
 		if(yloc < yframe) {
 			yframe = yloc;
 		}
-	}	
+	}
 
 	std::vector<button*> buttons_ptr;
 	for(std::vector<button>::iterator bt = buttons.begin(); bt != buttons.end(); ++bt) {
@@ -581,7 +581,7 @@ int show_dialog(display& disp, surface image,
 
 	//calculate the positions of the preview panes to the sides of the dialog
 	if(preview_panes != NULL) {
-		
+
 		int left_preview_pane = xframe;
 		int right_preview_pane = xframe + total_width + left_preview_pane_width;
 		int above_left_preview_pane = xframe + frame_width/2;
@@ -751,7 +751,7 @@ int show_dialog(display& disp, surface image,
 			const int res = menu_.process();
 			if(res != -1)
 			{
-				return res;	
+				return res;
 			}
 		}
 
@@ -772,7 +772,7 @@ int show_dialog(display& disp, surface image,
 
 		left_button = new_left_button;
 		right_button = new_right_button;
-		key_down = new_key_down;	
+		key_down = new_key_down;
 
 		for(std::vector<button>::iterator button_it = buttons.begin();
 		    button_it != buttons.end(); ++button_it) {

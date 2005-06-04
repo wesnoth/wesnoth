@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -193,7 +193,7 @@ team::team_info::team_info(const config& cfg)
 
 	LOG_NG << "team_info::team_info(...): team_name: " << team_name
 	       << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
-	
+
 	music = cfg["music"];
 }
 
@@ -282,11 +282,11 @@ team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true
 {
 	fog_.set_enabled(cfg["fog"] == "yes");
 	shroud_.set_enabled(cfg["shroud"] == "yes");
-	shroud_.read(cfg["shroud_data"]);	
-	
+	shroud_.read(cfg["shroud_data"]);
+
 	LOG_NG << "team::team(...): team_name: " << info_.team_name
 	       << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
-	
+
 	//gold is the maximum of 'gold' and what is given in the config file
 	if(info_.gold.empty() == false)
 		gold_ = maximum(gold,::atoi(info_.gold.c_str()));
@@ -516,7 +516,7 @@ void team::change_team(const std::string& name)
 	if(teams != NULL) {
 		for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
 			i->enemies_.clear();
-		}	
+		}
 	}
 }
 
@@ -532,7 +532,7 @@ void team::set_objectives(const t_string& new_objectives, bool silently)
 		info_.objectives_changed = true;
 }
 
-void team::reset_objectives_changed() 
+void team::reset_objectives_changed()
 {
 	info_.objectives_changed = false;
 }
@@ -598,7 +598,7 @@ bool team::shrouded(int x, int y) const
 bool team::fogged(int x, int y) const
 {
 	if(shrouded(x,y)) return true;
-	
+
 	if(!teams || !share_view())
 		return fog_.value(x+1,y+1);
 
@@ -634,25 +634,25 @@ const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<tea
 bool team::knows_about_team(size_t index) const
 {
 	const team& t = (*teams)[index];
-	
+
 	//We know about our own team
 	if(this == &t) return true;
-	
+
 	//If we aren't using shroud or fog, then we know about everyone
 	if(!uses_shroud() && !uses_fog()) return true;
-	
+
 	//We don't know about enemies
 	if(is_enemy(index+1)) return false;
-	
+
 	//We know our allies in multiplayer
 	if(network::nconnections() > 0) return true;
-	
+
 	//We know about allies we're sharing maps with
 	if(share_maps() && t.uses_shroud()) return true;
-	
+
 	//We know about allies we're sharing view with
 	if(share_view() && (t.uses_fog() || t.uses_shroud())) return true;
-	
+
 	return false;
 }
 
@@ -686,7 +686,7 @@ int team::nteams()
 const std::set<gamemap::location> vacant_villages(const std::set<gamemap::location>& villages, const unit_map& units)
 {
 	std::set<gamemap::location> res;
-	
+
 	for(std::set<gamemap::location>::const_iterator i = villages.begin(); i != villages.end(); ++i) {
 		if(units.count(*i) == 0) {
 			res.insert(*i);
@@ -779,7 +779,7 @@ bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, 
 {
 	if(enabled_ == false)
 		return false;
-	
+
 	for(std::vector<const shroud_map*>::const_iterator i = maps.begin(); i != maps.end(); ++i) {
 		if((*i)->enabled_ == true && (*i)->value(x,y) == false)
 			return false;
@@ -822,7 +822,7 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 {
 	if(enabled_ == false)
 		return false;
-	
+
 	bool cleared = false;
 	for(std::vector<const shroud_map*>::const_iterator i = maps.begin(); i != maps.end(); ++i) {
 		if((*i)->enabled_ == false)

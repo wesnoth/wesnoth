@@ -19,7 +19,7 @@
 namespace {
 
 	void print_usage(std::string name)
-       	{
+	{
 		std::cerr << "usage: " << name << " [source] [destination]\n";
 	}
 }
@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
 			continue;
 		}
 
- 		if(val == "--help" || val == "-h") {
+		if(val == "--help" || val == "-h") {
 			print_usage(argv[0]);
 			return 0;
 		} else if(val == "--interactive" || val == "-i") {

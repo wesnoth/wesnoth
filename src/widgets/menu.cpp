@@ -560,7 +560,7 @@ void menu::handle_event(const SDL_Event& event)
 				sort_by(heading);
 			}
 		}
-	} else if(event.type == SDL_MOUSEMOTION) { 
+	} else if(event.type == SDL_MOUSEMOTION) {
 		if(click_selects_) {
 			const int item = hit(event.motion.x,event.motion.y);
 			if (item != -1)
@@ -752,7 +752,7 @@ void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, R
 					xpos += img->w + 5;
 				}
 			} else {
-				const std::string to_show = max_width_ > -1 ? 
+				const std::string to_show = max_width_ > -1 ?
 					font::make_text_ellipsis(str, menu_font_size, loc.w - (xpos - rect.x)) : str;
 				const SDL_Rect& text_size = font::text_area(str,menu_font_size);
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
@@ -791,7 +791,7 @@ void menu::draw()
 	if(hidden()) {
 		return;
 	}
-	
+
 	if(!dirty()) {
 
 		for(std::set<int>::const_iterator i = invalid_.begin(); i != invalid_.end(); ++i) {

@@ -19,7 +19,7 @@ bool xzipios::XCColl::hasSubdir(const std::string path) const {
 	return false;
 }
 
-void xzipios::XCColl::childrenOf(std::string path, 
+void xzipios::XCColl::childrenOf(std::string path,
 				 std::vector<std::string>* files,
 				 std::vector<std::string>* dirs) const {
 	// be sure the dirname ends with a slash

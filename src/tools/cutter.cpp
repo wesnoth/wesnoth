@@ -21,7 +21,7 @@
 namespace {
 
 	void print_usage(std::string name)
-       	{
+	{
 		std::cerr << "usage: " << name << " [source] [dest_directory]\n";
 	}
 }
@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 			continue;
 		}
 
- 		if(val == "--help" || val == "-h") {
+		if(val == "--help" || val == "-h") {
 			print_usage(argv[0]);
 			return 0;
 		} else if(val == "--verbose" || val == "-v") {
@@ -67,19 +67,19 @@ int main(int argc, char* argv[])
 	try {
 		const config conf = cut.load_config(src);
 		cut.load_masks(conf);
-		
+
 		const surface src_surface(make_neutral_surface(IMG_Load(src.c_str())));
 		if(src_surface == NULL)
 			throw exploder_failure("Unable to load the source image " + src);
 
 		const cutter::surface_map surfaces = cut.cut_surface(src_surface, conf);
 
-		for(cutter::surface_map::const_iterator itor = surfaces.begin(); 
+		for(cutter::surface_map::const_iterator itor = surfaces.begin();
 				itor != surfaces.end(); ++itor) {
 			const cutter::mask &mask = itor->second.mask;
 
 			surface surf = surface(
-					create_compatible_surface(itor->second.image, 
+					create_compatible_surface(itor->second.image,
 					mask.cut.w, mask.cut.h));
 
 			masked_overwrite_surface(surf, itor->second.image, mask.image,

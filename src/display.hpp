@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -144,12 +144,12 @@ public:
 	//location of the hex that this pixel corresponds to. Returns an
 	//invalid location is the mouse isn't over any valid location.
 	gamemap::location hex_clicked_on(int x, int y, gamemap::location::DIRECTION* nearest_hex=NULL, gamemap::location::DIRECTION* second_nearest_hex=NULL);
-	
+
 	//given x,y co-ordinates of a pixel on the map, will return the
 	//location of the hex that this pixel corresponds to. Returns an
 	//invalid location is the mouse isn't over any valid location.
 	gamemap::location pixel_position_to_hex(int x, int y, gamemap::location::DIRECTION* nearest_hex=NULL, gamemap::location::DIRECTION* second_nearest_hex=NULL);
-	
+
 	//given x,y co-ordinates of the mouse, will return the location of the
 	//hex in the minimap that the mouse is currently over, or an invalid
 	//location if the mouse isn't over the minimap.
@@ -331,7 +331,7 @@ public:
 	//submerged: the amount of the unit out of 1.0 that is submerged
 	//           (presumably under water) and thus shouldn't be drawn
 	void draw_unit(int x, int y, surface image,
-		        bool upside_down=false,fixed_t alpha=ftofxp(1.0), 
+		        bool upside_down=false,fixed_t alpha=ftofxp(1.0),
 			Uint32 blendto=0, double blend_ratio=0,
 			double submerged=0.0,
 			surface ellipse_back=surface(NULL),
@@ -341,7 +341,7 @@ public:
 	void rebuild_terrain(const gamemap::location &location);
 	//rebuild all dynamic terrain.
 	void rebuild_all();
-	
+
 	//Add a location to highlight. Note that this has nothing to do with
 	//selecting hexes, it is pure highlighting. These hexes will be
 	//highlighted slightly darker than the currently selected hex.
@@ -459,7 +459,7 @@ private:
 
 	theme theme_;
 	terrain_builder builder_;
-	
+
 	void create_buttons();
 	std::vector<gui::button> buttons_;
 

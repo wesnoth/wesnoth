@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -28,7 +28,7 @@ class display;
 namespace hotkey {
 
 enum HOTKEY_COMMAND {
-	HOTKEY_CYCLE_UNITS,HOTKEY_CYCLE_BACK_UNITS, HOTKEY_UNIT_HOLD_POSITION, 
+	HOTKEY_CYCLE_UNITS,HOTKEY_CYCLE_BACK_UNITS, HOTKEY_UNIT_HOLD_POSITION,
 	HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
 	HOTKEY_UNDO, HOTKEY_REDO,
 	HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
@@ -45,7 +45,7 @@ enum HOTKEY_COMMAND {
 
 	//editing specific commands
 	HOTKEY_EDIT_SET_TERRAIN,
-	HOTKEY_EDIT_QUIT, HOTKEY_EDIT_SAVE_MAP, 
+	HOTKEY_EDIT_QUIT, HOTKEY_EDIT_SAVE_MAP,
 	HOTKEY_EDIT_SAVE_AS, HOTKEY_EDIT_SET_START_POS,
 	HOTKEY_EDIT_NEW_MAP, HOTKEY_EDIT_LOAD_MAP, HOTKEY_EDIT_FLOOD_FILL,
 	HOTKEY_EDIT_FILL_SELECTION, HOTKEY_EDIT_CUT, HOTKEY_EDIT_COPY,
@@ -53,7 +53,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDIT_FLIP, HOTKEY_EDIT_SELECT_ALL, HOTKEY_EDIT_DRAW,
 	HOTKEY_EDIT_REFRESH,
 	HOTKEY_USER_CMD,
-	HOTKEY_NULL 
+	HOTKEY_NULL
 };
 
 class hotkey_item {
@@ -76,7 +76,7 @@ public:
 	bool get_ctrl() const { return ctrl_; };
 	bool get_shift() const { return shift_; };
 	bool get_cmd() const { return cmd_; };
-	
+
 	// Return "name" of hotkey for example :"ctrl+alt+g"
 	std::string get_name() const;
 
@@ -189,7 +189,7 @@ public:
 	virtual ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const { return ACTION_STATELESS; }
 	//Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
 	std::string get_menu_image(hotkey::HOTKEY_COMMAND command) const;
-	
+
 	virtual bool can_execute_command(HOTKEY_COMMAND command) const = 0;
 };
 

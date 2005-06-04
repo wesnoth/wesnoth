@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003-2005 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003-2005 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
@@ -32,9 +32,9 @@
 
 namespace {
 
-struct player_controller 
+struct player_controller
 {
-	player_controller() 
+	player_controller()
 	{}
 
 	player_controller(const std::string& controller, const std::string& description) :
@@ -50,7 +50,7 @@ typedef std::map<std::string, player_controller> controller_map;
 }
 
 LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_config,
-		const game_data& units_data, CVideo& video, 
+		const game_data& units_data, CVideo& video,
 		io_type_t io_type)
 {
 	std::string type = state.campaign_type;
@@ -91,7 +91,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 	if(io_type == IO_SERVER) {
 		const config::child_list& sides_list = scenario->get_children("side");
-		for(config::child_list::const_iterator side = sides_list.begin(); 
+		for(config::child_list::const_iterator side = sides_list.begin();
 				side != sides_list.end(); ++side) {
 			std::string id = (**side)["save_id"];
 			if(id.empty())
@@ -110,7 +110,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			}
 
 			const config::child_list& sides_list = starting_pos.get_children("side");
-			for(config::child_list::const_iterator side = sides_list.begin(); 
+			for(config::child_list::const_iterator side = sides_list.begin();
 					side != sides_list.end(); ++side) {
 				if((**side)["controller"] == "network" &&
 						(**side)["description"] == preferences::login()) {
@@ -196,7 +196,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			config cfg;
 			do {
 				cfg.clear();
-				network::connection data_res = gui::network_data_dialog(disp, 
+				network::connection data_res = gui::network_data_dialog(disp,
 						_("Downloading next level..."), cfg);
 				if(!data_res)
 					throw network::error(_("Connection timed out"));
@@ -223,14 +223,14 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 				// Tweaks sides to adapt controllers and descriptions.
 				const config::child_list& sides_list = starting_pos.get_children("side");
-				for(config::child_list::const_iterator side = sides_list.begin(); 
+				for(config::child_list::const_iterator side = sides_list.begin();
 						side != sides_list.end(); ++side) {
-					
+
 					std::string id = (**side)["save_id"];
 					if(id.empty()) {
 						continue;
 					}
-					
+
 					controller_map::const_iterator ctr = controllers.find(id);
 					if(ctr != controllers.end()) {
 						(**side)["description"] = ctr->second.description;
@@ -270,7 +270,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 						_("Name:"),
 						&state.label);
 
-				
+
 				if(should_save == 0) {
 					try {
 						save_game(state);

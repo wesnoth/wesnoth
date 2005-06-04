@@ -1,9 +1,9 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Philippe Plantier <ayin@anathas.org>
- 
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -26,12 +26,12 @@ struct game_state;
  * A variable-expanding proxy for the config class. This class roughly behaves
  * as a constant config object, but automatically expands variables.
  */
-class vconfig 
+class vconfig
 {
 public:
 	vconfig();
 	vconfig(const config* cfg);
-	
+
 	vconfig& operator=(const vconfig cfg);
 	vconfig& operator=(const config* cfg);
 
@@ -46,7 +46,7 @@ public:
 	const t_string& operator[](const std::string&) const;
 	const t_string& expand(const std::string&) const; /** < Synonym for operator[] */
 	const t_string& get_attribute(const std::string&) const;
-	
+
 private:
 	const config* cfg_;
 };

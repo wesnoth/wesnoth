@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C)
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -50,7 +50,7 @@ public:
 
 private:
 	struct msg {
-		msg(const std::string& user, const std::string& message) : 
+		msg(const std::string& user, const std::string& message) :
 			user(user), message(message) {};
 		std::string user;
 		std::string message;

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C)
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -129,7 +129,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	} else {
 		era_combo_.set_selected(0);
 	}
-			
+
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
@@ -154,7 +154,7 @@ create::~create()
 	preferences::set_turns(turns_slider_.value());
 }
 
-create::parameters& create::get_parameters() 
+create::parameters& create::get_parameters()
 {
 	const config::child_list& era_list = game_config().get_children("era");
 	const int turns = turns_slider_.value() < turns_slider_.max_value() ?
@@ -371,9 +371,9 @@ void create::hide_children(bool hide)
 		}
 	}
 }
-		
+
 void create::layout_children(const SDL_Rect& rect)
-{	
+{
 	ui::layout_children(rect);
 	SDL_Rect ca = client_area();
 
@@ -401,7 +401,7 @@ void create::layout_children(const SDL_Rect& rect)
 	minimap_rect_ = mmrect;
 	ypos += minimap_width + border_size;
 
-	num_players_label_.set_location(xpos, ypos); 
+	num_players_label_.set_location(xpos, ypos);
 	ypos += num_players_label_.height() + border_size;
 
 	regenerate_map_.set_location(xpos, ypos);
@@ -468,7 +468,7 @@ void create::layout_children(const SDL_Rect& rect)
 #endif
 
 	// Buttons
-	right_button->set_location(ca.x + ca.w - right_button->width(), 
+	right_button->set_location(ca.x + ca.w - right_button->width(),
 	                           ca.y + ca.h - right_button->height());
 	left_button->set_location(right_button->location().x - left_button->width() -
 	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());

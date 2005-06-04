@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -51,7 +51,7 @@ gamemap::location find_vacant_tile(const gamemap& map,
                                    VACANT_TILE_TYPE vacancy=VACANT_ANY);
 
 //function which determines if a given location is an enemy zone of control
-bool enemy_zoc(const gamemap& map,const gamestatus& status, 
+bool enemy_zoc(const gamemap& map,const gamestatus& status,
 		         const std::map<gamemap::location,unit>& units,
 		         const std::vector<team>& teams,
                const gamemap::location& loc,const team& current_team,int side);
@@ -66,7 +66,7 @@ struct cost_calculator
 //object which contains all the possible locations a unit can move to, with
 //associated best routes to those locations.
 struct paths
-{	
+{
 	paths() {}
 
 	//construct a list of paths for the unit at loc.
@@ -75,7 +75,7 @@ struct paths
 	//additional_turns: if 0, paths for how far the unit can move this turn
 	//will be calculated. If 1, paths for how far the unit can move by the
 	//end of next turn will be calculated, and so forth.
-	paths(const gamemap& map, const gamestatus& status, 
+	paths(const gamemap& map, const gamestatus& status,
 			const game_data& gamedata,
 	      const std::map<gamemap::location,unit>& units,
 	      const gamemap::location& loc, std::vector<team>& teams,
@@ -90,7 +90,7 @@ struct paths
 	};
 
 	typedef std::map<gamemap::location,route> routes_map;
-	routes_map routes;		
+	routes_map routes;
 };
 
 paths::route a_star_search(gamemap::location const &src, gamemap::location const &dst,

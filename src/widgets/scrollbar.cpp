@@ -1,6 +1,6 @@
 /* $Id$*/
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
                  2004 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -29,7 +29,7 @@ namespace {
 	const std::string scrollbar_top_hl = "buttons/scrolltop-active.png";
 	const std::string scrollbar_bottom_hl = "buttons/scrollbottom-active.png";
 	const std::string scrollbar_mid_hl = "buttons/scrollmid-active.png";
-	
+
 	const std::string groove_top = "buttons/scrollgroove-top.png";
 	const std::string groove_mid = "buttons/scrollgroove-mid.png";
 	const std::string groove_bottom = "buttons/scrollgroove-bottom.png";
@@ -46,7 +46,7 @@ scrollbar::scrollbar(CVideo &video)
 	  grip_position_(0), grip_height_(0), full_height_(0), scroll_rate_(1)
 {
 	static const surface img(image::get_image(scrollbar_mid, image::UNSCALED));
-	
+
 	if (img != NULL) {
 		set_width(img->w);
 		// this is a bit rough maybe
@@ -185,9 +185,9 @@ SDL_Rect scrollbar::grip_area() const
 
 void scrollbar::draw_contents()
 {
-	const surface mid_img(image::get_image(state_ != NORMAL ? 
+	const surface mid_img(image::get_image(state_ != NORMAL ?
 					scrollbar_mid_hl : scrollbar_mid, image::UNSCALED));
-	const surface bottom_img(image::get_image(state_ != NORMAL ? 
+	const surface bottom_img(image::get_image(state_ != NORMAL ?
 					scrollbar_bottom_hl : scrollbar_bottom, image::UNSCALED));
 	const surface top_img(image::get_image(state_ != NORMAL ?
 					scrollbar_top_hl : scrollbar_top, image::UNSCALED));

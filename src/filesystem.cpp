@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -96,7 +96,7 @@ namespace {
 			}
 			else LOG_FS << "skipping invalid entry\n";
 		}
-		
+
 	}
 }
 #endif
@@ -151,7 +151,7 @@ void get_files_in_dir(const std::string& directory,
 	else
 #endif
 	{
-		
+
 		//if we have a path to find directories in, then convert relative
 		//pathnames to be rooted on the wesnoth path
 		if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
@@ -738,12 +738,12 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 	}
 
 	std::vector<std::string>& res = binary_paths_cache[type];
-	
+
 	init_binary_paths();
 
 	for(std::set<std::string>::const_iterator i = binary_paths.begin(); i != binary_paths.end(); ++i) {
 		res.push_back(get_user_data_dir() + "/" + *i + type + "/");
-		
+
 		if(!game_config::path.empty()) {
 			res.push_back(game_config::path + "/" + *i + type + "/");
 		}

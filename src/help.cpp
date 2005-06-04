@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -58,7 +58,7 @@ struct section;
 typedef std::vector<section *> section_list;
 
 /// Generate a topic text on the fly.
-class topic_generator 
+class topic_generator
 {
 	unsigned count;
 	friend class topic_text;
@@ -77,7 +77,7 @@ public:
 
 /// The text displayed in a topic. It is generated on the fly with the information
 /// contained in generator_.
-class topic_text 
+class topic_text
 {
 	mutable std::vector< std::string > parsed_text_;
 	mutable topic_generator *generator_;
@@ -124,10 +124,10 @@ struct section {
 	bool operator==(const section &) const;
 	/// Comparison on the ID.
 	bool operator<(const section &) const;
-	
+
 	/// Allocate memory for and add the section.
 	void add_section(const section &s);
-	
+
 	void clear();
 	std::string title, id;
 	topic_list topics;
@@ -137,7 +137,7 @@ struct section {
 
 /// To be used as a function object to locate sections and topics
 /// with a specified ID.
-class has_id 
+class has_id
 {
 public:
 	has_id(const std::string &id) : id_(id) {}
@@ -149,26 +149,26 @@ private:
 };
 
 /// To be used as a function object when sorting topic lists on the title.
-class title_less 
+class title_less
 {
 public:
 	bool operator()(const topic &t1, const topic &t2) { return t1.title < t2.title; }
 };
 
-struct delete_section 
+struct delete_section
 {
 	void operator()(section *s) { delete s; }
 };
 
-struct create_section 
+struct create_section
 {
 	section *operator()(const section *s) { return new section(*s); }
 	section *operator()(const section &s) { return new section(s); }
 };
-		
+
 /// The menu to the left in the help browser, where topics can be
 /// navigated through and chosen.
-class help_menu : public gui::menu 
+class help_menu : public gui::menu
 {
 public:
 	help_menu(CVideo &video, const section &toplevel, int max_height=-1);
@@ -201,7 +201,7 @@ private:
 	/// Regenerate what items are visible by checking what sections are
 	/// expanded.
 	void update_visible_items(const section &top_level, unsigned starting_level=0);
-	
+
 	/// Return true if the section is expanded.
 	bool expanded(const section &sec);
 
@@ -222,14 +222,14 @@ private:
 
 	/// Draw the currently visible items.
 	void display_visible_items();
-	
+
 	/// Internal recursive thingie. did_expand will be true if any
 	/// section was expanded, otherwise untouched.
 	bool select_topic_internal(const topic &t, const section &sec);
 
 	std::vector<visible_item> visible_items_;
 	const section &toplevel_;
-	std::set<const section*> expanded_; 
+	std::set<const section*> expanded_;
 	surface_restorer restorer_;
 	SDL_Rect rect_;
 	topic const *chosen_topic_;
@@ -237,14 +237,14 @@ private:
 };
 
 /// Thrown when the help system fails to parse something.
-struct parse_error 
+struct parse_error
 {
 	parse_error(const std::string& msg) : message(msg) {}
 	std::string message;
 };
 
 /// The area where the content is shown in the help browser.
-class help_text_area : public gui::scrollarea 
+class help_text_area : public gui::scrollarea
 {
 public:
 	help_text_area(CVideo &video, const section &toplevel);
@@ -283,11 +283,11 @@ private:
 		surface surf;
 
 		// If this item contains text, this will contain that text.
-		std::string text; 
+		std::string text;
 
 		// If this item contains a cross-reference, this is the id
 		// of the referenced topic.
-		std::string ref_to; 
+		std::string ref_to;
 
 		// If this item is floating, that is, if things should be filled
 		// around it.
@@ -295,7 +295,7 @@ private:
 		bool box;
 		ALIGNMENT align;
 	};
-	
+
 	/// Function object to find an item at the specified coordinates.
 	class item_at {
 	public:
@@ -344,7 +344,7 @@ private:
 
 	/// Return the width that remain on the line the current input point is at.
 	int get_remaining_width();
-	
+
 	/// Return the least x coordinate at which something of the
 	/// specified height can be drawn at the specified y coordinate
 	/// without interfering with floating images.
@@ -437,7 +437,7 @@ std::vector<topic> generate_terrains_topics();
 
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
-section parse_config(const config *cfg); 
+section parse_config(const config *cfg);
 /// Recursive function used by parse_config.
 void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level=0);
@@ -498,13 +498,13 @@ namespace {
 	const game_data *game_info = NULL;
 	gamemap *map = NULL;
 	// The default toplevel.
-	help::section toplevel; 
+	help::section toplevel;
 	// All sections and topics not referenced from the default toplevel.
-	help::section hidden_sections; 
+	help::section hidden_sections;
 
 	int last_num_encountered_units = -1;
 	int last_num_encountered_terrains = -1;
-								   
+
 	config dummy_cfg;
 	std::vector<std::string> empty_string_vector;
 	const int max_section_level = 15;
@@ -518,8 +518,8 @@ namespace {
 	const std::string closed_section_img = "help/closed_section.png";
 	const std::string open_section_img = "help/open_section.png";
 	// The topic to open by default when opening the help dialog.
-	const std::string default_show_topic = "introduction_topic"; 
-	
+	const std::string default_show_topic = "introduction_topic";
+
 	/// Return true if the id is valid for user defined topics and
 	/// sections. Some IDs are special, such as toplevel and may not be
 	/// be defined in the config.
@@ -572,7 +572,7 @@ namespace {
 		ss << "<jump>amount=" << amount << "</jump>";
 		return ss.str();
 	}
-	
+
 	std::string bold(const std::string &s)
 	{
 		std::stringstream ss;
@@ -585,7 +585,7 @@ namespace {
 	// that create a table. The table spec contains a vector with
 	// vectors with pairs. The pairs are the markup string that should
 	// be in a cell, and the width of that cell.
-  std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20)) 
+  std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20))
   {
 		table_spec::const_iterator row_it;
 		std::vector<std::pair<std::string, unsigned> >::const_iterator col_it;
@@ -628,7 +628,7 @@ namespace {
 	}
 
 	// Return the width for the image with filename.
-	unsigned image_width(const std::string &filename) 
+	unsigned image_width(const std::string &filename)
 	{
 		image::locator loc(filename);
 		surface surf(image::get_image(loc, image::UNSCALED));
@@ -775,7 +775,7 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 	}
 	return false;
 }
-	
+
 void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level)
 {
@@ -843,9 +843,9 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		std::copy(generated_topics.begin(), generated_topics.end(),
 				  std::back_inserter(sec.topics));
 	}
-}	
+}
 
-section parse_config(const config *cfg) 
+section parse_config(const config *cfg)
 {
 	section sec;
 	if (cfg != NULL) {
@@ -856,7 +856,7 @@ section parse_config(const config *cfg)
 }
 
 
-std::vector<section> generate_sections(const std::string &generator) 
+std::vector<section> generate_sections(const std::string &generator)
 {
 	std::vector<section> empty_vec;
 	if (generator == "") {
@@ -900,7 +900,7 @@ std::string generate_topic_text(const std::string &generator)
 	return empty_string;
 }
 
-topic_text::~topic_text() 
+topic_text::~topic_text()
 {
 	if (generator_ && --generator_->count == 0)
 		delete generator_;
@@ -920,7 +920,7 @@ topic_text &topic_text::operator=(topic_generator *g)
 	return *this;
 }
 
-topic_text::operator std::vector< std::string > const &() const 
+topic_text::operator std::vector< std::string > const &() const
 {
 	if (generator_) {
 		parsed_text_ = parse_text((*generator_)());
@@ -961,7 +961,7 @@ std::vector<topic> generate_weapon_special_topics()
 						const size_t colon_pos = description.find(':');
 						if (colon_pos != std::string::npos) {
 							// Remove the first colon and the following newline.
-							description.erase(0, colon_pos + 2); 
+							description.erase(0, colon_pos + 2);
 						}
 						topic t(lang_special, "weaponspecial_" + special, description);
 						topics.push_back(t);
@@ -998,7 +998,7 @@ std::vector<topic> generate_ability_topics()
 					const size_t colon_pos = description.find(':');
 					if (colon_pos != std::string::npos) {
 						// Remove the first colon and the following newline.
-						description.erase(0, colon_pos + 2); 
+						description.erase(0, colon_pos + 2);
 					}
 					topic t(lang_ability, id, description);
 					topics.push_back(t);
@@ -1006,7 +1006,7 @@ std::vector<topic> generate_ability_topics()
 				}
 			}
 		}
-		
+
 	}
 	return topics;
 }
@@ -1059,7 +1059,7 @@ public:
 				 advance_it != advance_end; ++advance_it) {
 				std::string unit_id = *advance_it;
 				std::map<std::string,unit_type>::const_iterator new_type = game_info->unit_types.find(unit_id);
-			 	if(new_type != game_info->unit_types.end()) {
+				if(new_type != game_info->unit_types.end()) {
 					std::string lang_unit = new_type->second.language_name();
 					std::string ref_id = std::string("unit_") + new_type->second.id();
 					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit)
@@ -1212,7 +1212,7 @@ public:
 					std::stringstream str;
 					str << "<ref>text='" << escape(name) << "' dst='"
 					    << escape(std::string("terrain_") + terrain) << "'</ref>";
-					row.push_back(std::make_pair(str.str(), 
+					row.push_back(std::make_pair(str.str(),
 								     font::line_width(name,
 										      normal_font_size)));
 
@@ -1319,7 +1319,7 @@ struct terrain_topic_generator: topic_generator
 	}
 };
 
-std::vector<topic> generate_terrains_topics() 
+std::vector<topic> generate_terrains_topics()
 {
 	std::vector<topic> res;
 	std::vector<gamemap::TERRAIN> show_info_about;
@@ -1418,8 +1418,8 @@ section::~section()
 	std::for_each(sections.begin(), sections.end(), delete_section());
 }
 
-section::section(const section &sec) 
-	: title(sec.title), id(sec.id), topics(sec.topics) 
+section::section(const section &sec)
+	: title(sec.title), id(sec.id), topics(sec.topics)
 {
 	std::transform(sec.sections.begin(), sec.sections.end(),
 				   std::back_inserter(sections), create_section());
@@ -1434,7 +1434,7 @@ section& section::operator=(const section &sec)
 				   std::back_inserter(sections), create_section());
 	return *this;
 }
-	
+
 
 bool section::operator==(const section &sec) const
 {
@@ -1446,7 +1446,7 @@ bool section::operator<(const section &sec) const
 	return id < sec.id;
 }
 
-void section::add_section(const section &s) 
+void section::add_section(const section &s)
 {
 	sections.push_back(new section(s));
 }
@@ -1460,7 +1460,7 @@ void section::clear()
 
 help_menu::help_menu(CVideo &video, section const &toplevel, int max_height)
 	: gui::menu(video, empty_string_vector, true, max_height),
-	  toplevel_(toplevel), chosen_topic_(NULL), selected_item_(&toplevel, "") 
+	  toplevel_(toplevel), chosen_topic_(NULL), selected_item_(&toplevel, "")
 {
 	update_visible_items(toplevel_);
 	display_visible_items();
@@ -1473,19 +1473,19 @@ bool help_menu::expanded(const section &sec)
 	return expanded_.find(&sec) != expanded_.end();
 }
 
-void help_menu::expand(const section &sec) 
+void help_menu::expand(const section &sec)
 {
 	if (sec.id != "toplevel") {
 		expanded_.insert(&sec);
 	}
 }
 
-void help_menu::contract(const section &sec) 
+void help_menu::contract(const section &sec)
 {
 	expanded_.erase(&sec);
 }
 
-void help_menu::update_visible_items(const section &sec, unsigned level) 
+void help_menu::update_visible_items(const section &sec, unsigned level)
 {
 	if (level == 0) {
 		// Clear if this is the top level, otherwise append items.
@@ -1507,7 +1507,7 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 }
 
 
-std::string help_menu::get_string_to_show(const section &sec, const unsigned level) 
+std::string help_menu::get_string_to_show(const section &sec, const unsigned level)
 {
 	std::stringstream to_show;
 	std::string pad_string;
@@ -1595,7 +1595,7 @@ const topic *help_menu::chosen_topic()
 	chosen_topic_ = NULL;
 	return ret;
 }
-	
+
 void help_menu::display_visible_items()
 {
 	std::vector<std::string> menu_items;
@@ -1620,7 +1620,7 @@ bool help_menu::visible_item::operator==(const section &_sec) const
 	return sec != NULL && *sec == _sec;
 }
 
-bool help_menu::visible_item::operator==(const topic &_t) const 
+bool help_menu::visible_item::operator==(const topic &_t) const
 {
 	return t != NULL && *t == _t;
 }
@@ -1646,14 +1646,14 @@ void help_text_area::set_inner_location(SDL_Rect const &rect)
 		set_items();
 }
 
-void help_text_area::show_topic(const topic &t) 
+void help_text_area::show_topic(const topic &t)
 {
 	shown_topic_ = &t;
 	set_items();
 	set_dirty(true);
 }
 
-	
+
 help_text_area::item::item(surface surface, int x, int y, const std::string _text,
 						   const std::string reference_to, bool _floating,
 						   bool _box, ALIGNMENT alignment)
@@ -1895,7 +1895,7 @@ void help_text_area::handle_format_cfg(const config &cfg)
 
 void help_text_area::add_text_item(const std::string text, const std::string ref_dst,
 								   int _font_size, bool bold, bool italic,
-								   SDL_Color text_color) 
+								   SDL_Color text_color)
 {
 	const int font_size = _font_size < 0 ? normal_font_size : _font_size;
 	if (text.empty())
@@ -1951,7 +1951,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 				s = remove_first_space(s);
 			}
 			add_text_item(s, ref_dst, _font_size, bold, italic, text_color);
-				
+
 		}
 	}
 }
@@ -2066,8 +2066,8 @@ void help_text_area::add_item(const item &itm)
 		contents_height_ = maximum<int>(contents_height_, itm.rect.y + itm.rect.h);
 	}
 }
-	
-	
+
+
 help_text_area::ALIGNMENT help_text_area::str_to_align(const std::string &s)
 {
 	const std::string cmp_str = to_lower(s);
@@ -2084,7 +2084,7 @@ help_text_area::ALIGNMENT help_text_area::str_to_align(const std::string &s)
 	msg << "Invalid alignment string: '" << s << "'";
 	throw parse_error(msg.str());
 }
-	
+
 void help_text_area::down_one_line()
 {
 	adjust_last_row();
@@ -2172,7 +2172,7 @@ help_browser::help_browser(display &disp, const section &toplevel)
 	  text_area_(disp.video(), toplevel), toplevel_(toplevel), ref_cursor_(false),
 	  back_button_(disp.video(), _("< Back"), gui::button::TYPE_PRESS),
 	  forward_button_(disp.video(), _("Forward >"), gui::button::TYPE_PRESS),
-	  shown_topic_(NULL) 
+	  shown_topic_(NULL)
 {
 	// Hide the buttons at first since we do not have any forward or
 	// back topics at this point. They will be unhidden when history
@@ -2183,7 +2183,7 @@ help_browser::help_browser(display &disp, const section &toplevel)
 	set_measurements(font::relative_size(400), font::relative_size(500));
 }
 
-void help_browser::adjust_layout() 
+void help_browser::adjust_layout()
 {
   const int menu_buttons_padding = font::relative_size(10);
 	const int menu_y = location().y;
@@ -2194,7 +2194,7 @@ void help_browser::adjust_layout()
 	const int menu_w = 250;
 #endif
 	const int menu_h = height() - back_button_.height() - menu_buttons_padding;
-	
+
 	const int menu_text_area_padding = font::relative_size(10);
 	const int text_area_y = location().y;
 	const int text_area_x = menu_x + menu_w + menu_text_area_padding;
@@ -2254,7 +2254,7 @@ void help_browser::process_event()
 }
 
 void help_browser::move_in_history(std::deque<const topic *> &from,
-		std::deque<const topic *> &to) 
+		std::deque<const topic *> &to)
 {
 	if (!from.empty()) {
 		const topic *to_show = from.back();
@@ -2293,7 +2293,7 @@ void help_browser::handle_event(const SDL_Event &event)
 				}
 			}
 		}
-	}	
+	}
 	else if (event.type == SDL_MOUSEMOTION) {
 		update_cursor();
 	}
@@ -2332,7 +2332,7 @@ const topic *find_topic(const section &sec, const std::string &id)
 	return NULL;
 }
 
-const section *find_section(const section &sec, const std::string &id) 
+const section *find_section(const section &sec, const std::string &id)
 {
 	section_list::const_iterator sit =
 		std::find_if(sec.sections.begin(), sec.sections.end(), has_id(id));
@@ -2512,7 +2512,7 @@ bool get_bool(const std::string &s)
 	return false;
 }
 
-SDL_Color string_to_color(const std::string &s) 
+SDL_Color string_to_color(const std::string &s)
 {
 	const std::string cmp_str = to_lower(s);
 	if (cmp_str == "green") {
@@ -2574,8 +2574,8 @@ std::string escape(const std::string &s)
 	}
 	return res;
 }
-		
-std::string get_first_word(const std::string &s) 
+
+std::string get_first_word(const std::string &s)
 {
 	if (s == "") {
 		return s;
@@ -2652,7 +2652,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	// of the screen.
 	if (yloc <= -1 || xloc <= -1) {
 		xloc = scr->w / 2 - width / 2;
-		yloc = scr->h / 2 - height / 2; 
+		yloc = scr->h / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
 	gui::button close_button_(disp.video(), _("Close"));

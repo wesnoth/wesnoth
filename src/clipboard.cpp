@@ -7,13 +7,13 @@
 #define CLIPBOARD_FUNCS_DEFINED
 
 #include <X11/Xlib.h>
-#include <unistd.h> 
+#include <unistd.h>
 #include <iostream>
 
 #include "SDL_syswm.h"
 
 /**
- The following are two classes which wrap the SDL's interface to X, including 
+ The following are two classes which wrap the SDL's interface to X, including
  locking/unlocking, and which manage the atom internment. They exist mainly to make
  the actual clipboard code somewhat readable
 */
@@ -24,7 +24,7 @@ private:
 	{
 		acquireCount_ = 0;
 		acquire();
-		
+
 		//Intern some atoms;
 		const char* atoms[] = {
 			"CLIPBOARD",
@@ -34,17 +34,17 @@ private:
 			"WESNOTH_PASTE",
 			"TARGETS"
 		};
-		
+
 		XInternAtoms(dpy(), (char**)atoms, 6, false, atomTable_);
-		
+
 		release();
 	}
-	
+
 	static XHelper* s_instance_;
-	
+
 	SDL_SysWMinfo wmInf_;
-	
-	Atom          atomTable_[6];	
+
+	Atom          atomTable_[6];
 	int           acquireCount_;
 public:
 	static XHelper* instance()
@@ -59,53 +59,53 @@ public:
 	{
 		return atomTable_[0];
 	}
-	
+
 	Atom XA_TEXT()
 	{
 		return atomTable_[1];
 	}
-	
+
 	Atom XA_COMPOUND_TEXT()
 	{
 		return atomTable_[2];
 	}
-	
+
 	Atom UTF8_STRING()
 	{
 		return atomTable_[3];
 	}
-	
+
 	Atom WES_PASTE()
 	{
 		return atomTable_[4];
 	}
-	
+
 	Atom XA_TARGETS()
 	{
 		return atomTable_[5];
 	}
-	
+
 	Display* dpy()
 	{
 		return wmInf_.info.x11.display;
 	}
-	
+
 	Window window()
 	{
 		return wmInf_.info.x11.window;
 	}
-	
+
 	void acquire(void)
 	{
 		++acquireCount_;
 		if (acquireCount_ == 1) {
 			SDL_VERSION  (&wmInf_.version);
 			SDL_GetWMInfo(&wmInf_);
-		
+
 			wmInf_.info.x11.lock_func();
 		}
 	}
-	
+
 	void release(void)
 	{
 		--acquireCount_;
@@ -123,7 +123,7 @@ public:
 	{
 		XHelper::instance()->acquire();
 	}
-	
+
 	~UseX()
 	{
 		XHelper::instance()->release();
@@ -137,23 +137,23 @@ public:
 
 /**
  Note: unfortunately, SDL does not keep track of event timestamps.
- This means we are forced to use CurrentTime in many spots and are 
- unable to perform many safety checks. Hence, the code below is 
+ This means we are forced to use CurrentTime in many spots and are
+ unable to perform many safety checks. Hence, the code below is
  not compliant to the ICCCM, and may ocassionally suffer from
- race conditions if an X client is connected to the server over 
- a slow/high-latency link. This implementation is also very minimal. 
- The text is assumed to be reasonably small as INCR transactions are not 
+ race conditions if an X client is connected to the server over
+ a slow/high-latency link. This implementation is also very minimal.
+ The text is assumed to be reasonably small as INCR transactions are not
  supported. MULTIPLE is not supported either.
- 
- We provide UTF8_STRING, COMPOUND_TEXT, and TEXT, and 
+
+ We provide UTF8_STRING, COMPOUND_TEXT, and TEXT, and
  try to grab all of them, plus STRING (which is latin1).
 */
 
 
 /**
- We primarily. keep a copy of the string to response to data requests, 
+ We primarily. keep a copy of the string to response to data requests,
  but it also has an another function: in case we're both the source
- and destination, we just copy it accross; this is so that we 
+ and destination, we just copy it accross; this is so that we
  don't have to handle SelectionRequest events while waiting for SelectionNotify.
  To make this work, however, this gets cleared when we loose CLIPBOARD
 */
@@ -165,11 +165,11 @@ void handle_system_event(const SDL_Event& event)
 	XEvent& xev = event.syswm.msg->event.xevent;
 	if (xev.type == SelectionRequest) {
 		UseX x11;
-		
+
 		//Since wesnoth does not notify us of selections,
 		//we set both selection + clipboard when copying.
 		if ((xev.xselectionrequest.owner     == x11->window()) &&
-		    ((xev.xselectionrequest.selection == XA_PRIMARY) || 
+		    ((xev.xselectionrequest.selection == XA_PRIMARY) ||
 		     (xev.xselectionrequest.selection == x11->XA_CLIPBOARD()))) {
 			XEvent responseEvent;
 			responseEvent.xselection.type      = SelectionNotify;
@@ -179,48 +179,48 @@ void handle_system_event(const SDL_Event& event)
 			responseEvent.xselection.target    = xev.xselectionrequest.target;
 			responseEvent.xselection.property  = None; //nothing available, by default
 			responseEvent.xselection.time      = xev.xselectionrequest.time;
-			
+
 			//std::cout<<"Request for target:"<<XGetAtomName(x11->dpy(), xev.xselectionrequest.target)<<"\n";
-			
+
 			//### presently don't handle XA_STRING as it must be latin1
-			
+
 			if (xev.xselectionrequest.target == x11->XA_TARGETS()) {
 				responseEvent.xselection.property = xev.xselectionrequest.property;
-				
+
 				Atom supported[] = {
 					x11->XA_TEXT(),
 					x11->XA_COMPOUND_TEXT(),
 					x11->UTF8_STRING(),
 					x11->XA_TARGETS()
 				};
-				
+
 				XChangeProperty(x11->dpy(), responseEvent.xselection.requestor,
 					xev.xselectionrequest.property, XA_ATOM, 32, PropModeReplace,
 					(unsigned char*)supported, 4);
 			}
-			
+
 			//The encoding of XA_TEXT and XA_COMPOUND_TEXT is not specified
 			//by the ICCCM... So we assume wesnoth native/utf-8 for simplicity.
 			//modern apps are going to use UTF8_STRING anyway
 			if (xev.xselectionrequest.target == x11->XA_TEXT() ||
-			    xev.xselectionrequest.target == x11->XA_COMPOUND_TEXT() || 
+			    xev.xselectionrequest.target == x11->XA_COMPOUND_TEXT() ||
 			    xev.xselectionrequest.target == x11->UTF8_STRING()) {
 				responseEvent.xselection.property = xev.xselectionrequest.property;
-				
+
 				XChangeProperty(x11->dpy(), responseEvent.xselection.requestor,
 					xev.xselectionrequest.property,
-					xev.xselectionrequest.target, 8, PropModeReplace, 
+					xev.xselectionrequest.target, 8, PropModeReplace,
 					(const unsigned char*) clipboard_string.c_str(), clipboard_string.length());
 			}
-			
+
 			XSendEvent(x11->dpy(), xev.xselectionrequest.requestor, False, NoEventMask,
 			   &responseEvent);
 		}
-	} 
-	
+	}
+
 	if (xev.type == SelectionClear) {
 		UseX x11;
-		
+
 		if (xev.xselectionclear.selection == x11->XA_CLIPBOARD())
 			clipboard_string = ""; //We no longer own the clipboard, don't try in-process C&P
 	}
@@ -245,7 +245,7 @@ void copy_to_clipboard(const std::string& text)
 	clipboard_string = text;
 
 	UseX x11;
-	
+
 	XSetSelectionOwner(x11->dpy(), XA_PRIMARY, x11->window(), CurrentTime);
 	XSetSelectionOwner(x11->dpy(), x11->XA_CLIPBOARD(), x11->window(), CurrentTime);
 }
@@ -255,17 +255,17 @@ void copy_to_clipboard(const std::string& text)
 static bool try_grab_target(Atom target, std::string& ret)
 {
 	UseX x11;
-	
+
 	//Cleanup previous data
 	XDeleteProperty(x11->dpy(), x11->window(), x11->WES_PASTE());
 	XSync          (x11->dpy(), False);
-	
+
 	//std::cout<<"We request target:"<<XGetAtomName(x11->dpy(), target)<<"\n";
-	
+
 	//Request information
-	XConvertSelection(x11->dpy(), x11->XA_CLIPBOARD(), target, 
+	XConvertSelection(x11->dpy(), x11->XA_CLIPBOARD(), target,
 	                  x11->WES_PASTE(), x11->window(), CurrentTime);
-			  
+
 	//Wait (with timeout) for a response SelectionNotify
 	for (int attempt = 0; attempt < 15; attempt++) {
 		if (XPending(x11->dpy())) {
@@ -279,20 +279,20 @@ static bool try_grab_target(Atom target, std::string& ret)
 					//The size
 					unsigned long length = 0;
 					unsigned char* data;
-					
+
 					//these 3 XGetWindowProperty returns but we don't use
 					Atom         typeRet;
 					int          formatRet;
 					unsigned long remaining;
-					
+
 //					std::cout<<"Grab:"<<XGetAtomName(x11->dpy(), target)<<"\n";
-					
+
 					//Grab the text out of the property
 					XGetWindowProperty(x11->dpy(), x11->window(),
 					                   selectNotify.xselection.property,
-					                   0, 65535/4, True, target, 
+					                   0, 65535/4, True, target,
 					                   &typeRet, &formatRet, &length, &remaining, &data);
-							   
+
 					if (data && length) {
 						ret = (char*)data;
 						XFree(data);
@@ -303,10 +303,10 @@ static bool try_grab_target(Atom target, std::string& ret)
 				}
 			}
 		}
-		
+
 		usleep(10000);
 	}
-	
+
 	//Timed out -- return empty string
 	return false;
 }
@@ -316,7 +316,7 @@ ucs2_string copy_ucs2_from_clipboard()
 	if(!clipboard_string.empty())
 		return utils::utf8_string_to_ucs2_string(clipboard_string);
 	utf8_string text;
-	
+
 	UseX x11;
 	if(try_grab_target(x11->UTF8_STRING(), text))
 		return utils::utf8_string_to_ucs2_string(text);
@@ -335,22 +335,22 @@ std::string copy_from_clipboard()
 		return clipboard_string; //in-wesnoth copy-paste
 
 	std::string ret;
-	
+
 	UseX x11;
-	
+
 	if (try_grab_target(x11->UTF8_STRING(), ret))
 		return ret;
-		
+
 	if (try_grab_target(x11->XA_COMPOUND_TEXT(), ret))
 		return ret;
-		
+
 	if (try_grab_target(x11->XA_TEXT(), ret))
 		return ret;
-		
+
 	if (try_grab_target(XA_STRING, ret)) //acroread only provides this
 		return ret;
 
-	
+
 	return "";
 }
 
@@ -387,7 +387,7 @@ void copy_ucs2_to_clipboard(const ucs2_string& text)
 		first = ++last;
 	} while(last != text.end());
 	str.push_back('\0');
-	
+
 	HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, str.size() * sizeof(Uint16));
 	if(hglb == NULL) {
 		CloseClipboard();
@@ -422,7 +422,7 @@ void copy_to_clipboard(const std::string& text)
 		str.append("\r\n");
 		first = ++last;
 	} while(last != text.end());
-	
+
 	const HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, (str.size() + 1) * sizeof(TCHAR));
 	if(hglb == NULL) {
 		CloseClipboard();
@@ -452,7 +452,7 @@ ucs2_string copy_ucs2_from_clipboard()
 		CloseClipboard();
 		return ucs2_string();
 	}
-	
+
 	//convert newlines
 	ucs2_string str;
 	while(*buffer != '\0') {
@@ -471,7 +471,7 @@ std::string copy_from_clipboard()
 		return "";
 	if(!OpenClipboard(NULL))
 		return "";
-	
+
 	HGLOBAL hglb = GetClipboardData(CF_TEXT);
 	if(hglb == NULL) {
 		CloseClipboard();
@@ -482,11 +482,11 @@ std::string copy_from_clipboard()
 		CloseClipboard();
 		return "";
 	}
-	
+
 	//convert newlines
 	std::string str(buffer);
 	str.erase(std::remove(str.begin(),str.end(),'\r'),str.end());
-	
+
 	GlobalUnlock(hglb);
 	CloseClipboard();
 	return str;

@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -56,11 +56,11 @@ namespace game_config
 
 	std::string dot_image = "misc/dot.png";
 	std::string cross_image = "misc/cross.png";
-	
+
 	std::vector<std::string> foot_left_nw, foot_left_n, foot_right_nw, foot_right_n;
 
 	std::string observer_image;
-	
+
 	std::string unchecked_menu_image = "buttons/checkbox.png";
 	std::string checked_menu_image = "buttons/checkbox-pressed.png";
 
@@ -136,7 +136,7 @@ namespace game_config
 		missile_ne_image = v["missile_ne_image"];
 
 		terrain_mask_image = v["terrain_mask_image"];
-		
+
 		observer_image = v["observer_image"];
 
 		download_campaign_image = v["download_campaign_image"];

@@ -10,7 +10,7 @@ namespace xzipios {
 	public:
 		// explicit XCColl
 		bool hasSubdir(const std::string) const ;
-		void childrenOf(std::string path, 
+		void childrenOf(std::string path,
 		                std::vector<std::string>* files,
 		                std::vector<std::string>* dirs) const;
 	};

@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -72,15 +72,15 @@ private:
 // check_victory, but shouldn't be passed to that function as parameters,
 // since it is called from a variety of places.
 namespace victory_conditions
-{ 
+{
 	bool when_enemies_defeated = true;
 
-	void set_victory_when_enemies_defeated(bool on) 
+	void set_victory_when_enemies_defeated(bool on)
 	{
 		when_enemies_defeated = on;
 	}
 
-	bool victory_when_enemies_defeated() 
+	bool victory_when_enemies_defeated()
 	{
 		return when_enemies_defeated;
 	}
@@ -117,7 +117,7 @@ std::string recruit_unit(const gamemap& map, int side,
 
 	if(need_castle && map.on_board(recruit_location)) {
 		castle_cost_calculator calc(map);
-		const paths::route& rt = a_star_search(u->first, recruit_location, 100.0, &calc, map.x(), map.y());		
+		const paths::route& rt = a_star_search(u->first, recruit_location, 100.0, &calc, map.x(), map.y());
 		if(rt.steps.empty() || units.find(recruit_location) != units.end() ||
 		   !map.is_castle(recruit_location)) {
 			recruit_location = gamemap::location();
@@ -175,7 +175,7 @@ std::string recruit_unit(const gamemap& map, int side,
 			((*ran_results)["checksum"], 0);
 		if((*ran_results)["checksum"].empty() || rc != cs.checksum()) {
 			ERR_NW << "SYNC: In recruit " << new_unit.type().id() <<
-				": has checksum " << cs.checksum() << 
+				": has checksum " << cs.checksum() <<
 				" while datasource has checksum " <<
 				rc << "\n";
 
@@ -355,9 +355,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	}
 
 	static const std::string plague_string("plague");
-	res.attacker_plague = !d->second.type().not_living() && 
-	  (res.attacker_special.substr(0,6) == plague_string) && 
-	  strcmp(d->second.type().undead_variation().c_str(),"null") && 
+	res.attacker_plague = !d->second.type().not_living() &&
+	  (res.attacker_special.substr(0,6) == plague_string) &&
+	  strcmp(d->second.type().undead_variation().c_str(),"null") &&
 	  !map.is_village(defender);
 	if(res.attacker_special.size()>8){ //plague(type) used
 	  res.attacker_plague_type=res.attacker_special.substr(7,res.attacker_special.size()-8);
@@ -426,7 +426,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		const int base_damage = defend.damage();
 		const int resistance_modifier = a->second.damage_against(defend);
-		
+
 		if (strings) {
 			std::stringstream str_base;
 			str_base << _("base damage") << COLUMN_SEPARATOR << base_damage;
@@ -504,7 +504,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			res.amount_defender_drains = 0;
 		}
 
-		res.defender_plague = !a->second.type().not_living() && 
+		res.defender_plague = !a->second.type().not_living() &&
 		  (res.defender_special.substr(0,6) == plague_string) &&
 		  strcmp(a->second.type().undead_variation().c_str(),"null") &&
 		  !map.is_village(attacker);
@@ -555,7 +555,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	int leader_bonus = 0;
 	if (under_leadership(units,attacker,&leader_bonus).valid()) {
 		bonus += leader_bonus;
-		
+
 		if (strings) {
 			std::stringstream str;
 			str << _("leadership") << EMPTY_COLUMN << '+' << leader_bonus << '%';
@@ -672,7 +672,7 @@ static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 	return s.str();
 }
 
-void attack(display& gui, const gamemap& map, 
+void attack(display& gui, const gamemap& map,
             std::vector<team>& teams,
             gamemap::location attacker,
             gamemap::location defender,
@@ -825,15 +825,15 @@ void attack(display& gui, const gamemap& map,
 
 				//plague units make new units on the target hex
 				if(stats.attacker_plague) {
-				        a = units.find(attacker_loc); 
+				        a = units.find(attacker_loc);
 				        game_data::unit_type_map::const_iterator reanimitor;
 				        LOG_NG<<"trying to reanimate "<<stats.attacker_plague_type<<std::endl;
 				        reanimitor = info.unit_types.find(stats.attacker_plague_type);
 				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
-					
+
 					if(reanimitor != info.unit_types.end()) {
 					       unit newunit=unit(&reanimitor->second,a->second.side(),true,true);
-					       //apply variation					       
+					       //apply variation
 					       if(strcmp(undead_variation.c_str(),"null")){
 						 config mod;
 						 config& variation=mod.add_child("effect");
@@ -965,7 +965,7 @@ void attack(display& gui, const gamemap& map,
 					d->second.heal(stats.amount_defender_drains);
 				}
 			}
-				
+
 			if(dies) {//defender kills attacker
 				defenderxp = game_config::kill_experience*a->second.type().level();
 				if(a->second.type().level() == 0)
@@ -991,12 +991,12 @@ void attack(display& gui, const gamemap& map,
 
 				//plague units make new units on the target hex.
 				if(stats.defender_plague) {
-				        d = units.find(defender_loc); 
+				        d = units.find(defender_loc);
 				        game_data::unit_type_map::const_iterator reanimitor;
 				        LOG_NG<<"trying to reanimate "<<stats.defender_plague_type<<std::endl;
 				        reanimitor = info.unit_types.find(stats.defender_plague_type);
 				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
-					
+
 					if(reanimitor != info.unit_types.end()) {
 					       unit newunit=unit(&reanimitor->second,d->second.side(),true,true);
 					       //apply variation
@@ -1296,7 +1296,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 	for(i = units.begin(); i != units.end(); ++i) {
 		if(i->second.side() == side) {
-			if(i->second.hitpoints() < i->second.max_hitpoints() || 
+			if(i->second.hitpoints() < i->second.max_hitpoints() ||
 					i->second.poisoned()){
 				if(i->second.is_resting()) {
 					const std::map<gamemap::location,int>::iterator u =
@@ -1394,7 +1394,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				if(h->second <= 0)
 					continue;
 			}
-			
+
 			if(h->second < 0) {
 				if(show_healing) {
 					sound::play_sound("groan.wav");
@@ -1455,7 +1455,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 				disp.draw_tile(i->second.x,i->second.y);
 			}
-			
+
 			disp.draw_tile(loc.x,loc.y);
 			disp.update_display();
 		}
@@ -1627,7 +1627,7 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 //returns true iff some shroud is cleared
 //seen_units will return new units that have been seen by this unit
 //if known_units is NULL, seen_units can be NULL and will not be changed
-bool clear_shroud_unit(const gamemap& map, 
+bool clear_shroud_unit(const gamemap& map,
 		                 const gamestatus& status,
 							  const game_data& gamedata,
                        const unit_map& units, const gamemap::location& loc,
@@ -1676,7 +1676,7 @@ bool clear_shroud_unit(const gamemap& map,
 }
 
 void recalculate_fog(const gamemap& map, const gamestatus& status,
-		const game_data& gamedata, const unit_map& units, 
+		const game_data& gamedata, const unit_map& units,
 		std::vector<team>& teams, int team) {
 
 	teams[team].refog();
@@ -1694,7 +1694,7 @@ void recalculate_fog(const gamemap& map, const gamestatus& status,
 	}
 }
 
-bool clear_shroud(display& disp, const gamestatus& status, 
+bool clear_shroud(display& disp, const gamestatus& status,
 		            const gamemap& map, const game_data& gamedata,
                   const unit_map& units, std::vector<team>& teams, int team)
 {
@@ -1723,7 +1723,7 @@ bool clear_shroud(display& disp, const gamestatus& status,
 	return result;
 }
 
-size_t move_unit(display* disp, const game_data& gamedata, 
+size_t move_unit(display* disp, const game_data& gamedata,
                  const gamestatus& status, const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
                  std::vector<gamemap::location> route,
@@ -1750,7 +1750,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	team& team = teams[team_num];
 	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
 		(team.uses_shroud() || team.uses_fog());
-	
+
 	//if we use shroud/fog of war, count out the units we can currently see
 	std::set<gamemap::location> known_units;
 	if(check_shroud) {
@@ -1772,7 +1772,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		const gamemap::TERRAIN terrain = map[step->x][step->y];
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
-			
+
 		const int mv = u.movement_cost(map,terrain);
 		if(discovered_unit || continue_move == false && seen_units.empty() == false ||
 		   mv > moves_left || enemy_unit != units.end() && team.is_enemy(enemy_unit->second.side())) {
@@ -1855,7 +1855,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	} else {
 		u.set_interrupted_move(gamemap::location());
 	}
-	
+
 	if(steps.size() < 2) {
 		return 0;
 	}
@@ -1968,7 +1968,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 			std::stringstream msg;
 			msg << gettext(msg_id);
-			
+
 			if(steps.size() < route.size()) {
 				//see if the "Continue Move" action has an associated hotkey
 				const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
@@ -1998,7 +1998,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 {
 	const unit_map::const_iterator u_it = units.find(loc);
 	wassert(u_it != units.end());
-	
+
 	const unit& u = u_it->second;
 	const team& current_team = teams[u.side()-1];
 
@@ -2021,7 +2021,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 					return true;
 				}
 			}
-			
+
 			if(u.movement_cost(map,map[locs[n].x][locs[n].y]) <= u.movement_left()) {
 				return true;
 			}
@@ -2051,7 +2051,7 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 		//we're not really going to mutate the unit, just temporarily
 		//set its moves to maximum, but then switch them back
 		const unit_movement_resetter move_resetter(const_cast<unit&>(un->affected_unit));
-		
+
 		std::vector<gamemap::location>::const_iterator step;
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
 			//we have to swap out any unit that is already in the hex, so we can put our

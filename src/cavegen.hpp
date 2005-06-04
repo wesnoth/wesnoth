@@ -42,7 +42,7 @@ private:
 	void place_items(const chamber& c, config::all_children_iterator i1, config::all_children_iterator i2);
 
 	void place_passage(const passage& p);
-	
+
 	bool on_board(const gamemap::location& loc) const;
 	void set_terrain(gamemap::location loc, gamemap::TERRAIN t);
 	void place_castle(const std::string& side, gamemap::location loc);

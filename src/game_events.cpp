@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -64,7 +64,7 @@ bool conditional_passed(const std::map<gamemap::location,unit>* units,
 	//an 'or' statement means that if the contained statements are true,
 	//then it automatically passes
 	const vconfig::child_list& or_statements = cond.get_children("or");
-	for(vconfig::child_list::const_iterator or_it = or_statements.begin(); 
+	for(vconfig::child_list::const_iterator or_it = or_statements.begin();
 			or_it != or_statements.end(); ++or_it) {
 		if(conditional_passed(units,*or_it)) {
 			return true;
@@ -173,7 +173,7 @@ std::deque<queued_event> events_queue;
 class event_handler
 {
 public:
-	event_handler(const config& cfg) : 
+	event_handler(const config& cfg) :
 		name_(cfg["name"]),
 		first_time_only_(cfg["first_time_only"] != "no"),
 		disabled_(false),
@@ -200,12 +200,12 @@ public:
 		return cfg_.get_children("filter");
 	}
 
-	const vconfig::child_list second_arg_filters() 
+	const vconfig::child_list second_arg_filters()
 	{
 		return cfg_.get_children("filter_second");
 	}
 
-	bool handle_event(const queued_event& event_info, 
+	bool handle_event(const queued_event& event_info,
 			const vconfig cfg = vconfig());
 
 private:
@@ -234,7 +234,7 @@ std::multimap<std::string,event_handler> events_map;
 
 //this function handles all the different types of actions that can be triggered
 //by an event.
-bool event_handler::handle_event_command(const queued_event& event_info, 
+bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string& cmd, const vconfig cfg, bool& mutated)
 {
 	log_scope2(engine, "handle_event_command");
@@ -269,19 +269,19 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				}
 			}
 		}
-		
+
 		screen->invalidate_all();
 	}
 
 
 	//teleport a unit from one location to another
 	else if(cmd == "teleport") {
-		
+
 		unit_map::iterator u = units->find(event_info.loc1);
 
 		//search for a valid unit filter, and if we have one, look for the matching unit
 		const vconfig filter = cfg.child("filter");
-		if(!filter.null()) {	
+		if(!filter.null()) {
 			for(u = units->begin(); u != units->end(); ++u){
 				if(game_events::unit_matches_filter(u, filter))
 					break;
@@ -533,7 +533,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 	}
- 
+
 	//provide a means of specifying win/loss conditions:
 	// [event]
 	// name=prestart
@@ -581,7 +581,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 
 		t_string win_string = cfg["victory_string"];
-		if(win_string.empty()) 
+		if(win_string.empty())
 			win_string = t_string(N_("Victory:"), "wesnoth");
 		t_string lose_string = cfg["defeat_string"];
 		if(lose_string.empty())
@@ -591,7 +591,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		t_string lose_objectives;
 
 		const vconfig::child_list objectives = cfg.get_children("objective");
-		for(vconfig::child_list::const_iterator obj_it = objectives.begin(); 
+		for(vconfig::child_list::const_iterator obj_it = objectives.begin();
 				obj_it != objectives.end(); ++obj_it) {
 
 			const t_string description = (*obj_it)["description"];
@@ -681,7 +681,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		// random generation works as follows:
 		// random=[comma delimited list]
-		// Each element in the list will be considered a separate choice, 
+		// Each element in the list will be considered a separate choice,
 		// unless it contains "..". In this case, it must be a numerical
 		// range. (i.e. -1..-10, 0..100, -10..10, etc)
 		const std::string& random = cfg["random"];
@@ -690,20 +690,20 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			std::vector<std::string> words;
 			std::vector<std::pair<size_t,size_t> > ranges;
 			int num_choices = 0;
-			std::string::size_type pos = 0, pos2 = std::string::npos, tmp; 
+			std::string::size_type pos = 0, pos2 = std::string::npos, tmp;
 			std::stringstream ss(std::stringstream::in|std::stringstream::out);
 			while (pos2 != random.length()) {
 				pos = pos2+1;
 				pos2 = random.find(",", pos);
 
-				if (pos2 == std::string::npos) 
+				if (pos2 == std::string::npos)
 					pos2 = random.length();
 
 				word = random.substr(pos, pos2-pos);
 				words.push_back(word);
 				tmp = word.find("..");
-				
-				
+
+
 				if (tmp == std::string::npos) {
 					// treat this element as a string
 					ranges.push_back(std::pair<int, int>(0,0));
@@ -732,7 +732,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 
 			size_t choice = get_random() % num_choices;
-			tmp = 0;	
+			tmp = 0;
 			for(size_t i = 0; i < ranges.size(); i++) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;
 				if (tmp > choice) {
@@ -1102,7 +1102,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					break;
 			}
 		}
-	
+
 		if(speaker == units->end() && cfg["speaker"] != "narrator") {
 			//no matching unit found, so the dialog can't come up
 			//continue onto the next message
@@ -1161,7 +1161,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		int option_chosen = -1;
 
 		LOG_DP << "showing dialog...\n";
-		
+
 		//if we're not replaying, or if we are replaying and there is no choice
 		//to be made, show the dialog.
 		if(get_replay_source().at_end() || options.empty()) {
@@ -1200,7 +1200,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		//implement the consequences of the choice
 		if(options.empty() == false) {
 			wassert(size_t(option_chosen) < menu_items.size());
-			
+
 			vconfig::child_list events = option_events[option_chosen];
 			for(vconfig::child_list::const_iterator itor = events.begin();
 					itor != events.end(); ++itor) {
@@ -1459,7 +1459,7 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 
 		const std::pair<const std::string*,const config*> item = *i;
 
-		// If the user pressed escape, we skip any message that doesn't 
+		// If the user pressed escape, we skip any message that doesn't
 		// require them to make a choice.
 		if ((skip_messages) && (*item.first == "message")) {
 			if ((item.second)->get_children("option").size() == 0) {
@@ -1470,7 +1470,7 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 		if (!handle_event_command(event_info, *item.first, vconfig(item.second), mutated)) {
 			skip_messages = true;
 		}
-		else { 
+		else {
 			skip_messages = false;
 		}
 	}

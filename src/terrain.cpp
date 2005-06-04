@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -20,7 +20,7 @@
 #include <iostream>
 
 terrain_type::terrain_type() : symbol_image_("void"), letter_(' '), type_(" "),
-                               height_adjust_(0), submerge_(0.0), 
+                               height_adjust_(0), submerge_(0.0),
                                heals_(false), village_(false), castle_(false), keep_(false)
 {}
 
@@ -31,7 +31,7 @@ terrain_type::terrain_type(const config& cfg)
 	name_ = cfg["name"];
 	id_ = cfg["id"];
 	const std::string& letter = cfg["char"];
-	
+
 	if(letter == "") {
 		letter_ = 0;
 	} else {

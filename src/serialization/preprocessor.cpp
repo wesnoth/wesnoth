@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -666,7 +666,7 @@ bool preprocessor_data::get_chunk()
 						nfname = newfilename;
 						nfname.erase(nfname.begin(),nfname.begin()+2);
 						nfname = directory_ + nfname;
-					
+
 					} else {
 #ifdef USE_ZIPIOS
 						if(newfilename != "" && newfilename[0] == '@') {

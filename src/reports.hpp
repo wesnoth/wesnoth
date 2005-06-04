@@ -20,7 +20,7 @@ namespace reports {
 				UNIT_IMAGE, UNIT_PROFILE, TIME_OF_DAY,
 				TURN, GOLD, VILLAGES, NUM_UNITS, UPKEEP, EXPENSES, INCOME, TERRAIN, POSITION,
 		    SIDE_PLAYING, OBSERVERS, REPORT_CLOCK,
-		    SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION, 
+		    SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION,
 				NUM_REPORTS};
 
 	enum { UNIT_REPORTS_BEGIN=UNIT_DESCRIPTION, UNIT_REPORTS_END=UNIT_PROFILE+1 };
@@ -34,14 +34,14 @@ namespace reports {
 		// invariant so I left it like the original report class.
 		std::string image;
 		std::string text;
-		
+
 		std::string tooltip;
-		
+
 		element() {}
 		explicit element(const std::string& text) : text(text) {}
 		element(const std::string& text, const std::string& image, const std::string& tooltip) :
 			image(image), text(text), tooltip(tooltip) {}
-		
+
 		bool operator==(const element& o) const {
 			return o.text == text && o.image == image && o.tooltip == tooltip;
 		}
@@ -53,7 +53,7 @@ namespace reports {
 		report(const std::string& text, const std::string& image, const std::string& tooltip) {
 			this->push_back(element(text, image, tooltip));
 		}
-		
+
 		// Convenience functions
 		void add_text(std::stringstream& text, std::stringstream& tooltip);
 		void add_text(const std::string& text, const std::string& tooltip);
@@ -69,7 +69,7 @@ namespace reports {
 	// Set what will be shown for the report with type
 	// which_report. Note that this only works for some reports,
 	// i.e. reports that can not be deducted from the supplied arguments
-	// to generate_report. 
+	// to generate_report.
 	// Currently: SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION
 	void set_report_content(const TYPE which_report, const std::string &content);
 }

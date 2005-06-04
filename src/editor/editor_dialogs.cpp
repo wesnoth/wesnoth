@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -86,7 +86,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 
 	width_rect.x = text_right - width_rect.w;
 	height_rect.x = text_right - height_rect.w;
-	
+
 	width_rect.y = ypos + title_rect.h + vertical_margin*2;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 
@@ -98,7 +98,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	new_map_button.set_location(xpos + horz_margin,height_rect.y + height_rect.h + vertical_margin);
 	random_map_button.set_location(xpos + horz_margin,ypos + height - random_map_button.height()-14*2-vertical_margin);
 	random_map_setting_button.set_location(random_map_button.location().x + random_map_button.width() + horz_margin,
-	                                       ypos + height - random_map_setting_button.height() 
+	                                       ypos + height - random_map_setting_button.height()
 									       - 14*2 - vertical_margin);
 	cancel_button.set_location(xpos + width - cancel_button.width() - horz_margin,
 	                           ypos + height - cancel_button.height()-14);
@@ -123,7 +123,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	height_slider.set_max(map_max_height);
 	height_slider.set_value(map_height);
 
- 	static util::scoped_ptr<map_generator> random_map_generator(NULL);
+	static util::scoped_ptr<map_generator> random_map_generator(NULL);
 	if (random_map_generator == NULL) {
 		// Initialize the map generator if this is the first call,
 		// otherwise keep the settings and such.
@@ -173,7 +173,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 			if ((confirmation_needed
 				 && confirm_modification_disposal(disp))
 				|| !confirmation_needed) {
-				
+
 				const std::string map =
 					random_map_generator.get()->create_map(std::vector<std::string>());
 				if (map == "") {
@@ -199,17 +199,17 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 							width_label,width_rect.x,width_rect.y);
 			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,
 							height_label,height_rect.x,height_rect.y);
-			
+
 			std::stringstream width_str;
 			width_str << map_width;
 			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
 							slider_right+horz_margin,width_rect.y);
-			
+
 			std::stringstream height_str;
 			height_str << map_height;
 			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
 							slider_right+horz_margin,height_rect.y);
-			
+
 		}
 
 		new_map_button.set_dirty();
@@ -236,7 +236,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 void preferences_dialog(display &disp, config &prefs) {
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager dialog_mgr;
-	
+
 	const int width = 600;
 	const int height = 200;
 	const int xpos = disp.x()/2 - width/2;
@@ -326,7 +326,7 @@ void preferences_dialog(display &disp, config &prefs) {
 			scroll_slider.set_dirty();
 
 			font::draw_text(&disp.video(),clip_rect,14,font::NORMAL_COLOUR,scroll_label,
-	    	                scroll_rect.x,scroll_rect.y);
+		                scroll_rect.x,scroll_rect.y);
 
 			update_rect(screen_area());
 
@@ -400,7 +400,7 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 
 	width_rect.x = text_right - width_rect.w;
 	height_rect.x = text_right - height_rect.w;
-	
+
 	width_rect.y = ypos + title_rect.h + vertical_margin*2;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 
@@ -409,7 +409,7 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 
 	cancel_button.set_location(xpos + width - cancel_button.width() - horz_margin,
 	                           ypos + height - cancel_button.height()-14);
-						  
+
 	ok_button.set_location(xpos + width - cancel_button.width() - horz_margin
 						   - ok_button.width() - button_padding,
 						   ypos + height - ok_button.height()-14);
@@ -452,17 +452,17 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 							width_label,width_rect.x,width_rect.y);
 			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,
 							height_label,height_rect.x,height_rect.y);
-			
+
 			std::stringstream width_str;
 			width_str << map_width;
 			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
 							slider_right+horz_margin,width_rect.y);
-			
+
 			std::stringstream height_str;
 			height_str << map_height;
 			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
 							slider_right+horz_margin,height_rect.y);
-			
+
 		}
 		if (ok_button.pressed()) {
 			return std::make_pair((unsigned)map_width, (unsigned)map_height);

@@ -27,7 +27,7 @@ namespace mp {
 
 /** Starts a multiplayer game in server mode, or in single-user mode.
  *
- * @param disp        The global display 
+ * @param disp        The global display
  * @param game_config The global, top-level WML configuration for the game
  * @param data        The global game data (unit types, etc)
  * @param default_controller The default controller type
@@ -38,12 +38,12 @@ void start_server(display& disp, const config& game_config, game_data& data,
 
 /** Starts a multiplayer game in client mode.
  *
- * @param disp        The global display 
+ * @param disp        The global display
  * @param game_config The global, top-level WML configuration for the game
  * @param data        The global game data (unit types, etc)
  * @param host        The host to connect to.
  */
-void start_client(display& disp, const config& game_config, game_data& data, 
+void start_client(display& disp, const config& game_config, game_data& data,
 		const std::string host);
 
 }

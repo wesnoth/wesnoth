@@ -27,7 +27,7 @@ class scrollpane : public scrollarea
 {
 public:
 	struct scrollpane_widget {
-		scrollpane_widget(widget* w, int x=0, int y=0, int z_order=0) 
+		scrollpane_widget(widget* w, int x=0, int y=0, int z_order=0)
 			: w(w), x(x), y(y), z_order(z_order) {};
 
 		widget* w;

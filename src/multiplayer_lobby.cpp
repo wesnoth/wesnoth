@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C)
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -78,7 +78,7 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 		}
 
 		return mapsize1 < mapsize2;
-		
+
 	} else if(column == STATUS_COLUMN) {
 		const int nslots1 = atoi(game1["slots"].c_str());
 		const int nslots2 = atoi(game2["slots"].c_str());
@@ -193,7 +193,7 @@ void lobby::gamelist_updated(bool silent)
 		if(turn != "") {
 			str << COLUMN_SEPARATOR << _("Turn") << " " << turn;
 		} else if(slots != "") {
-			str << COLUMN_SEPARATOR << slots << " " << 
+			str << COLUMN_SEPARATOR << slots << " " <<
 				ngettext(_("Vacant Slot"), _("Vacant Slots"), nslots);
 		}
 
@@ -262,7 +262,7 @@ void lobby::process_event()
 		}
 		return;
 	}
-			
+
 	if(create_game_.pressed()) {
 		set_result(CREATE);
 		return;

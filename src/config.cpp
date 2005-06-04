@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -198,7 +198,7 @@ void config::remove_child(const std::string& key, size_t index)
 	child_list& v = children[key];
 	//wassert(index < v.size());
 	if(index >= v.size()) {
-		ERR_CF << "Error: attempting to delete non-existing child: " 
+		ERR_CF << "Error: attempting to delete non-existing child: "
 			<< key << "[" << index << "]\n";
 		return;
 	}
@@ -400,7 +400,7 @@ config config::get_diff(const config& c) const
 		//get the two child lists. 'b' has to be modified to look like 'a'
 		const child_list& a = itor_a != children.end() ? itor_a->second : dummy;
 		const child_list& b = itor_b != c.children.end() ? itor_b->second : dummy;
-		
+
 		size_t ndeletes = 0;
 		size_t ai = 0, bi = 0;
 		while(ai != a.size() || bi != b.size()) {
@@ -423,7 +423,7 @@ config config::get_diff(const config& c) const
 
 					++ndeletes;
 					++bi;
-				} 
+				}
 
 				//if b has less elements than a, then we assume this element is an
 				//element that needs inserting
@@ -481,7 +481,7 @@ void config::apply_diff(const config& diff)
 			if(item.first->empty()) {
 				continue;
 			}
-			
+
 			const child_map::iterator itor = children.find(*item.first);
 			if(itor == children.end() || index >= itor->second.size()) {
 				throw error("error in diff: could not find element '" + *item.first + "'");
@@ -518,7 +518,7 @@ void config::reset_translation() const
 	}
 
 	for(child_map::const_iterator list = children.begin(); list != children.end(); ++list) {
-		for(child_list::const_iterator child = list->second.begin(); 
+		for(child_list::const_iterator child = list->second.begin();
 				child != list->second.end(); ++child) {
 			(*child)->reset_translation();
 		}

@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -87,7 +87,7 @@ manager::manager()
 
 manager::~manager()
 {
-	
+
 	std::vector<std::string> v;
 	std::copy(encountered_units_set.begin(), encountered_units_set.end(), std::back_inserter(v));
 	prefs["encountered_units"] = utils::join(v);
@@ -185,7 +185,7 @@ void set_resolution(const std::pair<int,int>& resolution)
 {
 	std::pair<int,int> res = resolution;
 
-	// - Ayin: disabled the following code. Why would one want to enforce that? 
+	// - Ayin: disabled the following code. Why would one want to enforce that?
 	// Some 16:9, or laptop screens, may have resolutions which do not
 	// comply to this rule (see bug 10630). I'm commenting this until it
 	// proves absolutely necessary.
@@ -480,37 +480,37 @@ bool show_combat()
 }
 
 bool allow_observers()
-{	
+{
 	return prefs["allow_observers"] != "no";
 }
 
 void set_allow_observers(bool value)
-{	
+{
 	prefs["allow_observers"] = value ? "yes" : "no";
 }
 
 bool fog()
-{	
+{
 	return prefs["mp_fog"] == "yes";
 }
 
 void set_fog(bool value)
-{	
+{
 	prefs["mp_fog"] = value ? "yes" : "no";
 }
 
 bool shroud()
-{	
+{
 	return prefs["mp_shroud"] == "yes";
 }
 
 void set_shroud(bool value)
-{	
+{
 	prefs["mp_shroud"] = value ? "yes" : "no";
 }
 
 int turns()
-{	
+{
 	static const int default_value = 50;
 	int value = 0;
 	const string_map::const_iterator i = prefs.values.find("mp_turns");
@@ -526,14 +526,14 @@ int turns()
 }
 
 void set_turns(int value)
-{	
+{
 	std::stringstream stream;
 	stream << value;
 	prefs["mp_turns"] = stream.str();
 }
 
 int village_gold()
-{	
+{
 	static const int default_value = 2;
 	int value = 0;
 	const string_map::const_iterator i = prefs.values.find("mp_village_gold");
@@ -549,14 +549,14 @@ int village_gold()
 }
 
 void set_village_gold(int value)
-{	
+{
 	std::stringstream stream;
 	stream << value;
 	prefs["mp_village_gold"] = stream.str();
 }
 
 int xp_modifier()
-{	
+{
 	static const int default_value = 70;
 	int value = 0;
 	const string_map::const_iterator i = prefs.values.find("mp_xp_modifier");
@@ -572,14 +572,14 @@ int xp_modifier()
 }
 
 void set_xp_modifier(int value)
-{	
+{
 	std::stringstream stream;
 	stream << value;
 	prefs["mp_xp_modifier"] = stream.str();
 }
 
 int era()
-{	
+{
 	int value = 0;
 	const string_map::const_iterator i = prefs.values.find("mp_era");
 	if(i != prefs.values.end() && i->second.empty() == false) {
@@ -590,14 +590,14 @@ int era()
 }
 
 void set_era(int value)
-{	
+{
 	std::stringstream stream;
 	stream << value;
 	prefs["mp_era"] = stream.str();
 }
 
 int map()
-{	
+{
 	int value = 0;
 	const string_map::const_iterator i = prefs.values.find("mp_map");
 	if(i != prefs.values.end() && i->second.empty() == false) {
@@ -607,14 +607,14 @@ int map()
 }
 
 void set_map(int value)
-{	
+{
 	std::stringstream stream;
 	stream << value;
 	prefs["mp_map"] = stream.str();
 }
 
 bool show_ai_moves()
-{	
+{
 	return prefs["show_ai_moves"] != "no";
 }
 
@@ -1154,7 +1154,7 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 	items.push_back(pre + "display.png" + sep + dsgettext(GETTEXT_DOMAIN,"Prefs section^Display"));
 	items.push_back(pre + "music.png" + sep + dsgettext(GETTEXT_DOMAIN,"Prefs section^Sound"));
 	items.push_back(pre + "advanced.png" + sep + dsgettext(GETTEXT_DOMAIN,"Advanced section^Advanced"));
-	
+
 	for(;;) {
 		try {
 			const events::event_context dialog_events_context;
@@ -1270,9 +1270,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	std::vector<gui::button*> buttons;
 	buttons.push_back(&close_button);
 
-	surface_restorer restorer;	
+	surface_restorer restorer;
 	gui::draw_dialog(xpos,ypos,width,height,disp.video(),_("Hotkey Settings"),NULL,&buttons,&restorer);
-	
+
 	SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_PLUS,
 					     font::NORMAL_COLOUR,_("Press desired HotKey"),
@@ -1302,9 +1302,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter);
 	menu_.sort_by(0);
 	menu_.reset_selection();
-	menu_.set_width(font::relative_size(400));	
+	menu_.set_width(font::relative_size(400));
 	menu_.set_location(xpos + font::relative_size(20), ypos);
-	
+
 	gui::button change_button (disp.video(), _("Change Hotkey"));
 	change_button.set_location(xpos + width - change_button.width () - font::relative_size(30),ypos + font::relative_size(80));
 
@@ -1322,8 +1322,8 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 								centery-text_size.h/2 - 16,
 									text_size.w+60,
 									text_size.h+32};
-			surface_restorer restorer(&disp.video(),dlgr);										
-		 	gui::draw_dialog_frame (centerx-text_size.w/2 - 20, 
+			surface_restorer restorer(&disp.video(),dlgr);
+			gui::draw_dialog_frame (centerx-text_size.w/2 - 20,
 									centery-text_size.h/2 - 6,
 									text_size.w+40,
 									text_size.h+12,disp.video());
@@ -1339,9 +1339,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			do {
 				if (event.type==SDL_KEYDOWN)
 				{
-				 	key=event.key.keysym.sym;
-				 	mod=event.key.keysym.mod;
-				};			
+					key=event.key.keysym.sym;
+					mod=event.key.keysym.mod;
+				};
 				SDL_PollEvent(&event);
 				disp.flip();
 				SDL_Delay(10);
@@ -1349,14 +1349,14 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			restorer.restore();
 			disp.update_display();
 
-			const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(key, (mod & KMOD_SHIFT) != 0, 
+			const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(key, (mod & KMOD_SHIFT) != 0,
 					(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
 
 			if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
 				gui::show_dialog(disp,NULL,"",_("This HotKey is already in use."),gui::MESSAGE);
 			} else {
-				newhk.set_key(key, (mod & KMOD_SHIFT) != 0, 
+				newhk.set_key(key, (mod & KMOD_SHIFT) != 0,
 						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
 				menu_.change_item(menu_.selection(), 1, newhk.get_name());
@@ -1375,7 +1375,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();
-		
+
 		disp.update_display();
 
 		SDL_Delay(10);

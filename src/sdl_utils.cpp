@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -213,14 +213,14 @@ surface scale_surface_blended(surface const &surf, int w, int h)
 						const int xsrcint = maximum<int>(0,minimum<int>(src->w-1,static_cast<int>(xsrc)));
 						const int ysrcint = maximum<int>(0,minimum<int>(src->h-1,static_cast<int>(ysrc)));
 
-						const double ysize = minimum<double>(std::floor(yloc+1.0)-yloc,ysrc+yratio-yloc);		
+						const double ysize = minimum<double>(std::floor(yloc+1.0)-yloc,ysrc+yratio-yloc);
 
 						Uint8 r,g,b,a;
 
 						SDL_GetRGBA(src_pixels[ysrcint*src->w + xsrcint],src->format,&r,&g,&b,&a);
 						const double value = xsize*ysize*double(a)/255.0;
 						summation += value;
-						
+
 						red += r*value;
 						green += g*value;
 						blue += b*value;
@@ -304,7 +304,7 @@ surface greyscale_image(surface const &surf)
 			//conversion. ok, this is no big deal :)
 			//the correct formula being:
 			//gray=0.299red+0.587green+0.114blue
-			const Uint8 avg = (Uint8)((77*(Uint16)red + 
+			const Uint8 avg = (Uint8)((77*(Uint16)red +
 						   150*(Uint16)green +
 						   29*(Uint16)blue) / 256);
 
@@ -430,7 +430,7 @@ surface mask_surface(surface const &surf, surface const &mask)
 
 	surface nsurf = make_neutral_surface(surf);
 	surface nmask(make_neutral_surface(mask));
-	
+
 	if(nsurf == NULL || nmask == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
@@ -439,7 +439,7 @@ surface mask_surface(surface const &surf, surface const &mask)
 	{
 		surface_lock lock(nsurf);
 		surface_lock mlock(nmask);
-		
+
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*surf->h;
 		Uint32* mbeg = mlock.pixels();
@@ -474,7 +474,7 @@ surface blur_surface(surface const &surf, int depth)
 
 	surface nsurf = make_neutral_surface(surf);
 	surface res = create_compatible_surface(nsurf, surf->w, surf->h);
-	
+
 	if(nsurf == NULL || res == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
@@ -571,8 +571,8 @@ surface cut_surface(surface const &surf, SDL_Rect const &r)
 	for(int y = 0; y < r.h && (r.y + y) < surf->h; ++y) {
 		Uint8* line_src = src + (r.y + y) * spitch + r.x * sbpp;
 		Uint8* line_dest = dest + y * rpitch;
-		size_t size = r.w + r.x <= surf->w ? r.w : surf->w - r.x; 
-		
+		size_t size = r.w + r.x <= surf->w ? r.w : surf->w - r.x;
+
 		wassert(rpitch >= r.w * rbpp);
 		memcpy(line_dest, line_src, size * rbpp);
 	}
@@ -676,7 +676,7 @@ surface flop_surface(surface const &surf)
 				const size_t index2 = (nsurf->h-y-1)*surf->w + x;
 				std::swap(pixels[index1],pixels[index2]);
 			}
-		}		
+		}
 	}
 
 	return create_optimized_surface(nsurf);

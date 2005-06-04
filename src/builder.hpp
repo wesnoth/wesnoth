@@ -28,7 +28,7 @@ class config;
  * The class terrain_builder is constructed from a config object, and a gamemap
  * object. On construction, it parses the configuration and extracts the list
  * of [terrain_graphics] rules. Each terrain_graphics rule attachs one or more
- * images to a specific terrain pattern. 
+ * images to a specific terrain pattern.
  * It then applies the rules loaded from the configuration to the current map,
  * and calculates the list of images that must be associated to each hex of the
  * map.
@@ -83,7 +83,7 @@ public:
 	 * changed, and must be redrawn.
 	 *
 	 * @param loc   the location to update
-	 * 
+	 *
 	 * @return      true: this tile must be redrawn.
 	 */
 	bool update_animation(const gamemap::location &loc);
@@ -205,9 +205,9 @@ public:
 	struct terrain_constraint
 	{
 		terrain_constraint() : loc() {};
-		
+
 		terrain_constraint(gamemap::location loc) : loc(loc) {};
-		
+
 		gamemap::location loc;
 		std::string terrain_types;
 		std::vector<std::string> set_flag;
@@ -229,7 +229,7 @@ public:
 		typedef std::multimap<int, const rule_image*> ordered_ri_list;
 
 		/** Contructor for the tile() structure */
-		tile(); 
+		tile();
 
 		/** Adds an image, extracted from an ordered rule_image list,
 		 * to the background or foreground image cache.
@@ -252,7 +252,7 @@ public:
 
 		/** Clears all data in this tile, and resets the cache */
 		void clear();
- 
+
 		/** The list of flags present in this tile */
 		std::set<std::string> flags;
 
@@ -277,7 +277,7 @@ public:
 		 */
 		mutable imagelist images_background;
 		/**
-		 * The time-of-day to which the image caches correspond. 
+		 * The time-of-day to which the image caches correspond.
 		 */
 		mutable std::string last_tod;
 
@@ -286,7 +286,7 @@ public:
 		 * this tile.
 		 */
 		gamemap::TERRAIN adjacents[7];
-		
+
 	};
 
 private:
@@ -327,7 +327,7 @@ private:
 		 */
 		int precedence;
 	};
-	
+
 	/**
 	 * The map of "tile" structures corresponding to the level map.
 	 */
@@ -352,7 +352,7 @@ private:
 		 * a const variant of operator[]
 		 */
 		const tile &operator[] (const gamemap::location &loc) const;
-		
+
 		/**
 		 * Tests if a location is on the map
 		 *
@@ -361,7 +361,7 @@ private:
 		 * @return true if loc is on the map, false otherwise.
 		 */
 		bool on_map(const gamemap::location &loc) const;
-		
+
 		/**
 		 * Resets the whole tile map
 		 */
@@ -380,7 +380,7 @@ private:
 	 * of [terrain_graphics] rules.
 	 */
 	typedef std::multimap<int, building_rule> building_ruleset;
-	
+
 	/**
 	 * Tests for validity of a rule. A rule is considered valid if all its
 	 * images are present. This method is used, when building the ruleset,
@@ -392,7 +392,7 @@ private:
 	 */
 	bool rule_valid(const building_rule &rule);
 
-	/** 
+	/**
 	 * Starts the animation on a rule.
 	 *
 	 * @param rule    The rule on which ot start animations
@@ -427,7 +427,7 @@ private:
 	 * @param token  The token to substitute
 	 * @param replacement The replacement string
 	 */
-	void replace_token(std::string &s, const std::string &token, 
+	void replace_token(std::string &s, const std::string &token,
 			const std::string& replacement);
 
 	/**
@@ -439,7 +439,7 @@ private:
 	 * @param token  The token to substitute
 	 * @param replacement The replacement string
 	 */
-	void replace_token(rule_image_variant &variant, const std::string &token, 
+	void replace_token(rule_image_variant &variant, const std::string &token,
 			const std::string& replacement);
 
 	/**
@@ -450,10 +450,10 @@ private:
 	 * @param token  The token to substitute
 	 * @param replacement The replacement string
 	 */
-	void replace_token(rule_image &image, const std::string &token, 
+	void replace_token(rule_image &image, const std::string &token,
 			const std::string& replacement);
 
-	/** 
+	/**
 	 * Replaces, in a given rule_imagelist, a token with its value. The
 	 * actual substitution is done in all rule_images contained in the
 	 * rule_imagelist.
@@ -465,7 +465,7 @@ private:
 	void replace_token(rule_imagelist &, const std::string &token,
 			const std::string& replacement);
 
-	/** 
+	/**
 	 * Replaces, in a given building_rule, a token with its value. The
 	 * actual substitution is done in the rule_imagelists contained in all
 	 * constraints of the building_rule, and in the flags (has_flag,
@@ -479,7 +479,7 @@ private:
 	void replace_token(building_rule &s, const std::string &token,
 			const std::string& replacement);
 
-	/** 
+	/**
 	 * Rotates a template rule to a given angle, and returns the rotated
 	 * rule.
 	 *
@@ -488,7 +488,7 @@ private:
 	 * <code>@Rn</code>, n being a number from 0 to 5.
 	 * * The rule contains the rotations=r0,r1,r2,r3,r4,r5, with r0 to r5
 	 * being strings describing the 6 different positions, typically, n,
-	 * ne, se, s, sw, and nw (buy may be anything else.) 
+	 * ne, se, s, sw, and nw (buy may be anything else.)
 	 *
 	 * A template rule will generate 6 rules, which are similar to the
 	 * template, except that:
@@ -506,7 +506,7 @@ private:
 	 *
 	 * * On the rule rotated 2pi/3, those will be replaced by r2, r3, r4,
 	 * r5, r0, r1 and so on.
-	 * 
+	 *
 	 */
 	building_rule rotate_rule(const building_rule &rule, int angle, const
 			std::vector<std::string>& angle_name);
@@ -560,7 +560,7 @@ private:
 	void add_constraints(constraint_set& constraints,
 			const gamemap::location &loc, const config &cfg,
 			const config& global_images);
-	
+
 	typedef std::multimap<int, gamemap::location> anchormap;
 
 	/**
@@ -634,7 +634,7 @@ private:
 	 *                  already checked, only flags and probability will be
 	 *                  checked.
 	 */
-	bool rule_matches(const building_rule &rule, const gamemap::location &loc, 
+	bool rule_matches(const building_rule &rule, const gamemap::location &loc,
 			int rule_index, bool check_loc);
 
 	/**
@@ -682,7 +682,7 @@ private:
 	 *         constraint may match. INT_MAX means "all of them" or "unable
 	 *         to determine"
 	 */
-	int get_constraint_size(const building_rule& rule, const terrain_constraint& constraint, 
+	int get_constraint_size(const building_rule& rule, const terrain_constraint& constraint,
 			bool& border);
 
 	/**
@@ -690,7 +690,7 @@ private:
 	 * from the gamemap and the building_rules_.
 	 */
 	void build_terrains();
-	
+
 	/**
 	 * A reference to the gamemap class used in the current level.
 	 */

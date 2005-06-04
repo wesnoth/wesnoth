@@ -86,7 +86,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
 		halo_effect.assign(halo::add(0,0,halo));
 	}
-	
+
 	const unit_animation *teleport_animation_p = u.type().teleport_animation();
 	bool teleport_unit = teleport_animation_p && !tiles_adjacent(a, b);
 	if (teleport_unit && !disp.fogged(a.x, a.y)) { // teleport
@@ -291,7 +291,7 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 		while(!anim.animation_finished()) {
 
 			const unit_animation::frame& frame = anim.get_current_frame();
-			
+
 			const surface surf(image::get_image(frame.image));
 			if(surf.get() != NULL) {
 				unit_image = surf;
@@ -326,7 +326,7 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 }
 
 namespace {
-  
+
 bool unit_attack_ranged(display& disp, unit_map& units,
                         const gamemap::location& a, const gamemap::location& b,
                         int damage, const attack_type& attack)
@@ -393,7 +393,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	const std::string* missile_halo_image = NULL;
 	const std::string* unit_halo_image = NULL;
 	int missile_halo_x = -1, missile_halo_y = -1, unit_halo_x = -1, unit_halo_y = -1;
-	
+
 	attack_anim.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
 	attack_anim.start_animation(begin_at + first_missile, unit_animation::MISSILE_FRAME, acceleration);
 
@@ -431,10 +431,10 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			new_halo_x *= -1;
 		}
 
-		if(unit_halo_image != &unit_frame.halo || 
+		if(unit_halo_image != &unit_frame.halo ||
 				unit_halo_x != new_halo_x ||
 				unit_halo_y != new_halo_y) {
-			
+
 			unit_halo_image = &unit_frame.halo;
 			unit_halo_x = new_halo_x;
 			unit_halo_y = new_halo_y;
@@ -820,7 +820,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			halo_x = new_halo_x;
 			halo_y = new_halo_y;
 
-			if(!unit_frame.halo.empty() && 
+			if(!unit_frame.halo.empty() &&
 					(!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
 				halo_effect.assign(halo::add(halo_xpos,halo_ypos,*halo_image));
 			} else {

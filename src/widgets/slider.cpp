@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -30,7 +30,7 @@ namespace gui {
 slider::slider(CVideo &video)
 	: widget(video), image_(image::get_image(slider_image, image::UNSCALED)),
 	  highlightedImage_(image::get_image(selected_image, image::UNSCALED)),
-	  min_(-100000), max_(100000), value_(0), 
+	  min_(-100000), max_(100000), value_(0),
 	  increment_(1), state_(NORMAL)
 {
 }

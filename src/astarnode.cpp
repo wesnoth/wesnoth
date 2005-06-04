@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License.
@@ -20,7 +20,7 @@ poss_a_star_node* SingletonPOSS_AStarNode = NULL;
 void a_star_node::initNode(const gamemap::location& pos, const gamemap::location& dst,
 													double cost, a_star_node* parent,
 													const std::set<gamemap::location>* teleports)
-{	
+{
 	isInCloseList = false;
 	loc = pos;
 	nodeParent = parent;
@@ -43,17 +43,17 @@ void a_star_node::initNode(const gamemap::location& pos, const gamemap::location
 		if(srch + dsth + 1.0 < h) {
 			h = srch + dsth + 1.0;
 		}
-	}		
+	}
 }
 
 poss_a_star_node::poss_a_star_node(void) :
 capacity(0), curIndex(0)
 {
-	nbElemByPage = size_t((4096 - 24) / sizeof(a_star_node));		
+	nbElemByPage = size_t((4096 - 24) / sizeof(a_star_node));
 	wassert(nbElemByPage > 0);
-	addPage(); 
-	SingletonPOSS_AStarNode = this;	
-} 
+	addPage();
+	SingletonPOSS_AStarNode = this;
+}
 
 void poss_a_star_node::addPage(void)
 {
@@ -62,7 +62,7 @@ void poss_a_star_node::addPage(void)
 	locPageAStarNode = new a_star_node[nbElemByPage];
 	vectPageAStarNode.push_back(locPageAStarNode);
 	capacity += nbElemByPage;
-}	
+}
 
 a_star_node* poss_a_star_node::getAStarNode(void)
 {
@@ -71,16 +71,16 @@ a_star_node* poss_a_star_node::getAStarNode(void)
 	wassert(curIndex <= capacity);
 	//---------------------------------------------------
 	a_star_node* locPageAStarNode;
-	
+
 	if (curIndex == capacity)
 		addPage();
 
-	const size_t locIndexPage = curIndex / nbElemByPage; 
-	const size_t locIndexInsidePage = curIndex % nbElemByPage; 
+	const size_t locIndexPage = curIndex / nbElemByPage;
+	const size_t locIndexInsidePage = curIndex % nbElemByPage;
 	++curIndex;
 
 	assertParanoAstar(locIndexPage < vectPageAStarNode.size());
-	locPageAStarNode = vectPageAStarNode[locIndexPage];	
+	locPageAStarNode = vectPageAStarNode[locIndexPage];
 	assertParanoAstar(locIndexInsidePage < nbElemByPage);
 	return (&(locPageAStarNode[locIndexInsidePage]));
 }
@@ -93,13 +93,13 @@ void poss_a_star_node::reduce(void)
 			delete[] (*iter);
 		vectPageAStarNode.resize(1);
 		capacity = nbElemByPage;
-	}	
-	curIndex = 0;	
+	}
+	curIndex = 0;
 	//----------------- POST_CONDITIONS -----------------
 	wassert(capacity == nbElemByPage);
 	wassert(vectPageAStarNode.size() == 1);
 	//---------------------------------------------------
-} 
+}
 
 void a_star_world::resize_IFN(const size_t parWidth, const size_t parHeight)
 {
@@ -121,23 +121,23 @@ void a_star_world::clear(void)
 		a_star_node* locNode = NULL;
 		std::fill(_vectAStarNode.begin(), _vectAStarNode.end(), locNode);
 		_nbNode = 0;
-	}		
+	}
 }
 
 bool a_star_world::empty(void)
-{	
+{
 	return (_nbNode == 0);
 }
 
 bool a_star_world::reallyEmpty(void)
-{	
-	for (vect_a_star_node::iterator iter = _vectAStarNode.begin(); iter != _vectAStarNode.end(); ++iter) 
+{
+	for (vect_a_star_node::iterator iter = _vectAStarNode.begin(); iter != _vectAStarNode.end(); ++iter)
 	{
 		if (*iter != NULL)
 			return (false);
 	}
 	return (true);
-}	
+}
 
 void a_star_world::erase(gamemap::location const &loc)
 {
@@ -149,7 +149,7 @@ void a_star_world::erase(gamemap::location const &loc)
 }
 
 a_star_node* a_star_world::getNodeFromLocation(gamemap::location const &loc, bool& isCreated)
-{	
+{
 	//----------------- PRE_CONDITIONS ------------------
 	wassert(loc.valid());
 	//---------------------------------------------------
@@ -164,7 +164,7 @@ a_star_node* a_star_world::getNodeFromLocation(gamemap::location const &loc, boo
 		isCreated = true;
 		wassert(SingletonPOSS_AStarNode != NULL);
 		node = SingletonPOSS_AStarNode->getAStarNode();
-		_vectAStarNode[index] = node;	
+		_vectAStarNode[index] = node;
 		++_nbNode;
 	}
 	else

@@ -48,7 +48,7 @@ int label::set_size(int size)
 	return size_;
 }
 
-int label::get_size() const 
+int label::get_size() const
 {
 	return size_;
 }

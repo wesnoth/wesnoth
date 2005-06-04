@@ -24,7 +24,7 @@ input_stream::input_stream(const std::string& path) : fd_(-1), path_(path)
 	if(res != 0) {
 		std::cerr << "could not make fifo at '" << path << "'\n";
 	}
-	
+
 	fd_ = open(path.c_str(),O_RDONLY|O_NONBLOCK);
 
 	if(fd_ == -1) {

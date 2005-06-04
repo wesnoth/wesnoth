@@ -25,7 +25,7 @@ template<typename T, typename T_void_value>
 const T animated<T,T_void_value>::void_value_ = T_void_value()();
 
 template<typename T, typename T_void_value>
-animated<T,T_void_value>::animated() : 
+animated<T,T_void_value>::animated() :
 	starting_frame_time_(INT_MAX),
 	ending_frame_time_(INT_MIN),
 	started_(false),
@@ -37,7 +37,7 @@ animated<T,T_void_value>::animated() :
 {}
 
 template<typename T,  typename T_void_value>
-animated<T,T_void_value>::animated(const std::string &cfg, const string_initializer& init): 
+animated<T,T_void_value>::animated(const std::string &cfg, const string_initializer& init):
 	starting_frame_time_(INT_MAX),
 	started_(false),
 	no_current_frame_(true),
@@ -67,7 +67,7 @@ animated<T,T_void_value>::animated(const std::string &cfg, const string_initiali
 		frames_.push_back(frame(current_time, init(str)));
 		current_time += time;
 	}
-	
+
 	starting_frame_time_ = 0;
 	ending_frame_time_ = current_time;
 }
@@ -115,11 +115,11 @@ void animated<T,T_void_value>::update_current_frame_internal()
 	// std::cerr << "--- updating frame ---\n";
 	if(does_not_change_)
 		return;
-	
+
 	frame_changed_ = false;
 	// Always update current_time_, for the animation_time functions to work.
 	current_time_ = SDL_GetTicks() * acceleration_;
-	if(!started_) 
+	if(!started_)
 		return;
 
 	if(frames_.empty()) {

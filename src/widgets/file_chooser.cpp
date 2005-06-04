@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -33,7 +33,7 @@ namespace {
 
 namespace gui {
 
-file_chooser::file_chooser(display &disp, std::string start_file) 
+file_chooser::file_chooser(display &disp, std::string start_file)
 	: widget(disp.video()), delete_button_(disp.video(), _("Delete File")),
 	  path_delim_('/'), current_dir_(get_path(start_file)),
 	  chosen_file_(start_file), file_list_(disp.video(), files_in_current_dir_, false),
@@ -100,12 +100,12 @@ void file_chooser::process_event() {
 	CKey key;
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
-	
+
 	// The menu does not implement focus functionality, so we fake
 	// it. We give the file list focus whenever the filename textbox
 	// does not have focus. Inflexible but easy solution.
 	SDL_Rect const &loc = location();
-	if (!(mousex > loc.x && (unsigned)mousex < loc.x + loc.w && mousey > loc.y 
+	if (!(mousex > loc.x && (unsigned)mousex < loc.x + loc.w && mousey > loc.y
 		&& (unsigned)mousey < loc.y + loc.h - filename_textbox_.height())) {
 		// Hmm, as I understand it this should happen automatically when
 		// the mouse is in the textbox again. However this is not the
@@ -206,7 +206,7 @@ std::string file_chooser::get_current_file() const {
 	}
 	return chosen_file_;
 }
-	
+
 
 bool file_chooser::choice_made() const {
 	return choice_made_;

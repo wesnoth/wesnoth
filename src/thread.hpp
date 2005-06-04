@@ -18,20 +18,20 @@ struct manager
 
 // Threading object.
 //
-// This class defines threading objects. One such object represents a 
+// This class defines threading objects. One such object represents a
 // thread and admits killing and joining on threads. Intended to be
 // used for manipulating threads instead of poking around with SDL_Thread
 // calls.
 class thread
 {
 public:
-	// Construct a new thread to start executing the function 
-     	// pointed to by f. The void* data will be passed to f, to
-   	// facilitate passing of parameters to f.
+	// Construct a new thread to start executing the function
+	// pointed to by f. The void* data will be passed to f, to
+	// facilitate passing of parameters to f.
 	//
 	// \param f the function at which the thread should start executing
 	// \param data passed to f
-	// 
+	//
 	// \pre f != NULL
 	explicit thread(int (*f)(void*), void* data=NULL);
 
@@ -89,9 +89,9 @@ class lock
 public:
 	// Create a lock object on the mutex given as a parameter to
 	// the constructor. The lock will be held for the duration
-	// of the object existence. 
-	// If the mutex is already locked, the constructor will 
-	// block until the mutex lock can be acquired. 
+	// of the object existence.
+	// If the mutex is already locked, the constructor will
+	// block until the mutex lock can be acquired.
 	//
 	// \param m the mutex on which we should try to lock.
 	explicit lock(mutex& m);
@@ -122,30 +122,30 @@ public:
 	// section. When the condition is not met, wait blocks until
 	// the condition is met and atomically frees up the lock on
 	// the mutex. One will automatically regain the lock when the
-	// thread unblocks. 
+	// thread unblocks.
 	//
 	// If wait returns false we have an error. In this case one cannot
-	// assume that he has a lock on the mutex anymore. 
-	// 
+	// assume that he has a lock on the mutex anymore.
+	//
 	// \param m the mutex you wish to free the lock for
 	// \returns true: the wait was successful, false: an error occurred
 	//
 	// \pre You have already aquired a lock on mutex m
-	// 
+	//
 	bool wait(const mutex& m);
 
 	enum WAIT_TIMEOUT_RESULT { WAIT_OK, WAIT_TIMEOUT, WAIT_ERROR };
 
 	// wait on the condition with a timeout. Basically the same as the
-	// wait() function, but if the lock is not aquired before the 
+	// wait() function, but if the lock is not aquired before the
 	// timeout, the function returns with an error.
 	//
-	// \param m the mutex you wish free the lock for. 
+	// \param m the mutex you wish free the lock for.
 	// \param timeout the allowed timeout in milliseconds (ms)
 	// \returns result based on whether condition was met, it timed out,
 	// or there was an error
 	WAIT_TIMEOUT_RESULT wait_timeout(const mutex& m, unsigned int timeout);
-	// signal the condition and wake up one thread waiting on the 
+	// signal the condition and wake up one thread waiting on the
 	// condition. If no thread is waiting, notify_one() is a no-op.
 	// Does not unlock the mutex.
 	//
@@ -157,7 +157,7 @@ public:
 	// involved and you do not know how many processes might continue.
 	// The function should be used with care, especially if many threads are
 	// waiting on the condition variable.
-	//	
+	//
 	// \todo SDL_CondBroadcast can return an error. This is never checked
 	void notify_all();
 

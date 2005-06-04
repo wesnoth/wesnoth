@@ -29,7 +29,7 @@ const config cutter::load_config(const std::string &filename)
 	const std::string conf_string = find_configuration(filename);
 
 	config res;
-	
+
 	try {
 		scoped_istream stream = preprocess_file(conf_string);
 		read(res, *stream);
@@ -62,7 +62,7 @@ void cutter::load_masks(const config& conf)
 		const exploder_rect cut((**itor)["cut"]);
 
 		if(masks_.find(name) != masks_.end() && masks_[name].filename != image) {
-			throw exploder_failure("Mask " + name + 
+			throw exploder_failure("Mask " + name +
 					" correspond to two different files: " +
 					name + " and " +
 					masks_.find(name)->second.filename);
@@ -105,7 +105,7 @@ cutter::surface_map cutter::cut_surface(surface surf, const config& conf)
 
 std::string cutter::find_configuration(const std::string &file)
 {
-	//finds the file prefix. 
+	//finds the file prefix.
 	const std::string fname = file_name(file);
 	const std::string::size_type dotpos = fname.rfind('.');
 
@@ -120,19 +120,19 @@ std::string cutter::find_configuration(const std::string &file)
 }
 
 
-void cutter::add_sub_image(const surface &surf, surface_map &map, const config* config) 
+void cutter::add_sub_image(const surface &surf, surface_map &map, const config* config)
 {
 	const std::string name = (*config)["name"];
 	if(name.empty())
 		throw exploder_failure("Un-named sub-image");
 
-	if(masks_.find(name) == masks_.end()) 
+	if(masks_.find(name) == masks_.end())
 		throw exploder_failure("Unable to find mask corresponding to " + name);
 
 	const cutter::mask& mask = masks_[name];
 
 	std::vector<std::string> pos = utils::split((*config)["pos"]);
-	if(pos.size() != 2) 
+	if(pos.size() != 2)
 		throw exploder_failure("Invalid position " + (*config)["pos"]);
 
 	int x = atoi(pos[0].c_str());

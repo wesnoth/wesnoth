@@ -325,7 +325,7 @@ void close_socket(TCPsocket sock)
 		}
 
 		const socket_state_map::iterator lock_it = sockets_locked.find(sock);
-		
+
 		if(lock_it == sockets_locked.end() || lock_it->second != SOCKET_LOCKED) {
 			if(lock_it != sockets_locked.end()) {
 				sockets_locked.erase(lock_it);

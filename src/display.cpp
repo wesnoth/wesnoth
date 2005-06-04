@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -173,7 +173,7 @@ void display::new_turn()
 				if(cur_ticks < wanted_ticks) {
 					SDL_Delay(wanted_ticks - cur_ticks);
 				}
-			}	
+			}
 		}
 
 		tod_hex_mask1.assign(NULL);
@@ -267,10 +267,10 @@ gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location
 	const int x_mod = x % tesselation_x_size;
 	const int y_base = y / tesselation_y_size;
 	const int y_mod = y % tesselation_y_size;
-	
+
 	int x_modifier = 0;
 	int y_modifier = 0;
-	
+
 	if (y_mod < tesselation_y_size / 2) {
 		if ((x_mod * 2 + y_mod) < (s / 2)) {
 			x_modifier = -1;
@@ -282,7 +282,7 @@ gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location
 			x_modifier = 1;
 			y_modifier = -1;
 		}
-		
+
 	} else {
 		if ((x_mod * 2 - (y_mod - s / 2)) < 0) {
 			x_modifier = -1;
@@ -297,7 +297,7 @@ gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location
 	}
 
 	const gamemap::location res(x_base + x_modifier, y_base + y_modifier);
-	
+
 	if(nearest_hex != NULL) {
 		const int centerx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/2;
 		const int centery = (get_location_y(res) - map_area().y + ypos_) + hex_size()/2;
@@ -370,10 +370,10 @@ void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::locati
 	const int tile_width = hex_width();
 
 	topleft.x  = xpos_ / tile_width;
-	topleft.y  = (ypos_ - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_; 
+	topleft.y  = (ypos_ - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
 
 	bottomright.x  = (xpos_ + rect.w) / tile_width;
-	bottomright.y  = ((ypos_ + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_; 
+	bottomright.y  = ((ypos_ + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
 
 	if(topleft.x > -1)
 		topleft.x--;
@@ -655,7 +655,7 @@ void draw_label(CVideo& video, surface target, const theme::label& label)
 	const std::string& text = label.text();
 	const std::string& icon = label.icon();
 	SDL_Rect& loc = label.location(screen_area());
-	
+
 	if(icon.empty() == false) {
 		surface surf(image::get_image(icon,image::UNSCALED));
 		if(!surf.null()) {
@@ -680,7 +680,7 @@ void draw_label(CVideo& video, surface target, const theme::label& label)
 }
 
 void display::draw(bool update,bool force)
-{	
+{
 	bool changed = false;
 	//log_scope("Drawing");
 	invalidate_animations();
@@ -697,7 +697,7 @@ void display::draw(bool update,bool force)
 		for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
 			draw_label(video(),screen,*i);
 		}
-		
+
 		//invalidate the reports so they are redrawn
 		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
 		invalidateGameStatus_ = true;
@@ -711,7 +711,7 @@ void display::draw(bool update,bool force)
 		gamemap::location bottomright;
 		get_visible_hex_bounds(topleft, bottomright);
 		for(int x = topleft.x; x <= bottomright.x; ++x)
-			for(int y = topleft.y; y <= bottomright.y; ++y) 
+			for(int y = topleft.y; y <= bottomright.y; ++y)
 				draw_tile(x,y);
 		invalidateAll_ = false;
 
@@ -809,7 +809,7 @@ void display::draw_sidebar()
 	if(invalidateUnit_) {
 		//we display the unit the mouse is over if it is over a unit
 		//otherwise we display the unit that is selected
-		std::map<gamemap::location,unit>::const_iterator i = 
+		std::map<gamemap::location,unit>::const_iterator i =
 			find_visible_unit(units_,mouseoverHex_,
 					map_,
 					status_.get_time_of_day().lawful_bonus,
@@ -842,7 +842,7 @@ void display::draw_game_status()
 
 	for(size_t r = reports::STATUS_REPORTS_BEGIN; r != reports::STATUS_REPORTS_END; ++r) {
 		draw_report(reports::TYPE(r));
-	}	
+	}
 }
 
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
@@ -1024,7 +1024,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	std::string status = _("healthy");
 	if(map_.on_board(loc) &&
-	   u.invisible(map_.underlying_terrain(map_[loc.x][loc.y]), 
+	   u.invisible(map_.underlying_terrain(map_[loc.x][loc.y]),
 			status_.get_time_of_day().lawful_bonus,loc,
 			units_,teams_)) {
 		status = font::GOOD_TEXT + _("invisible");
@@ -1061,7 +1061,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	details << _("HP: ") << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n";
-	
+
 	if(u.can_advance() == false) {
 		details << _("XP: ") << u.experience() << "/-";
 	} else {
@@ -1073,7 +1073,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 		details << _("XP: ") << u.experience() << "/" << u.max_experience();
 	}
-	
+
 	details << "\n"
 			<< _("Moves: ") << u.movement_left() << "/"
 			<< u.total_movement()
@@ -1094,7 +1094,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
 		            _("melee") :
 					_("ranged"));
-						
+
 		details << "\n\n";
 	}
 
@@ -1146,9 +1146,9 @@ void display::draw_minimap(int x, int y, int w, int h)
 	int map_w = map_.x(), map_h = map_.y();
 
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-		if(fogged(u->first.x,u->first.y) || 
+		if(fogged(u->first.x,u->first.y) ||
 				(teams_[currentTeam_].is_enemy(u->second.side()) &&
-				u->second.invisible(map_.underlying_terrain(map_[u->first.x][u->first.y]), 
+				u->second.invisible(map_.underlying_terrain(map_[u->first.x][u->first.y]),
 				status_.get_time_of_day().lawful_bonus,u->first,
 				units_,teams_)))
 			continue;
@@ -1217,7 +1217,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	if(it == units_.end()) {
 		return;
 	}
-	
+
 	SDL_Rect clip_rect = map_area();
 
 	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
@@ -1277,7 +1277,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		if(highlight_ratio == ftofxp(1.0))
 			highlight_ratio = it->second.alpha();
 
-		if(u.invisible(map_.underlying_terrain(map_[x][y]), 
+		if(u.invisible(map_.underlying_terrain(map_[x][y]),
 					status_.get_time_of_day().lawful_bonus,loc,
 					units_,teams_) &&
 		   highlight_ratio > ftofxp(0.5)) {
@@ -1325,8 +1325,8 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	}
 
 	if(unit_image == NULL || fogged(x,y) ||
-			(teams_[currentTeam_].is_enemy(it->second.side()) && 
-			it->second.invisible(map_.underlying_terrain(map_[x][y]), 
+			(teams_[currentTeam_].is_enemy(it->second.side()) &&
+			it->second.invisible(map_.underlying_terrain(map_[x][y]),
 					status_.get_time_of_day().lawful_bonus,loc,
 					units_,teams_))) {
 		return;
@@ -1476,7 +1476,7 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 		return;
 
 	draw_halo_on_tile(x,y);
-	
+
 	const gamemap::location loc(x,y);
 	int xpos = int(get_location_x(loc));
 	int ypos = int(get_location_y(loc));
@@ -1541,7 +1541,7 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 			overlays.first != overlays.second; ++overlays.first) {
 
 			surface overlay_surface(image::get_image(overlays.first->second.image,image_type));
-			
+
 			//note that dstrect can be changed by SDL_BlitSurface and so a
 			//new instance should be initialized to pass to each call to
 			//SDL_BlitSurface
@@ -1577,7 +1577,7 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 			SDL_BlitSurface(fog_surface,NULL,dst,&dstrect);
 		}
 	}
-	
+
 	if(!shrouded(x,y)) {
 		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOGSHROUD);
 	}
@@ -1717,7 +1717,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	}
 
 	const std::string& str = text.str();
-		
+
 	if(str.empty() == false) {
 		const SDL_Rect& rect = map_area();
 
@@ -1762,8 +1762,8 @@ const std::string& get_angle_direction(size_t n)
 std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc)
 {
 	std::vector<std::string> res;
-  
-	gamemap::location adjacent[6];   
+
+	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	int tiles[6];
 	static const int terrain_types[] = { gamemap::FOGGED, gamemap::VOID_TERRAIN, 0 };
@@ -1871,7 +1871,7 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 				res.push_back(surface);
 			}
 		}
-	} 
+	}
 
 	return res;
 }
@@ -1994,7 +1994,7 @@ void display::draw_unit(int x, int y, surface image,
 
 	if(submerge_height != surf->h) {
 		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2)));
-		
+
 		srcrect.y = submerge_height;
 		srcrect.h = surf->h-submerge_height;
 		y += submerge_height;
@@ -2077,7 +2077,7 @@ void display::invalidate_animations()
 
 	for(size_t i = 0; i < flags_.size(); ++i) {
 		flags_[i].update_current_frame();
-		if(flags_[i].frame_changed()) 
+		if(flags_[i].frame_changed())
 			animate_flags = true;
 	}
 
@@ -2244,8 +2244,8 @@ void display::enable_menu(const std::string& item, bool enable)
 {
 	for(std::vector<theme::menu>::const_iterator menu = theme_.menus().begin();
 			menu != theme_.menus().end(); ++menu) {
-		
-		std::vector<std::string>::const_iterator hasitem = 
+
+		std::vector<std::string>::const_iterator hasitem =
 			std::find(menu->items().begin(), menu->items().end(), item);
 
 		if(hasitem != menu->items().end()) {
@@ -2321,7 +2321,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	if(side >= 1) {
 		speaker_colour = team::get_side_colour(side);
 	}
-	
+
 	SDL_Color message_colour = chat_message_colour;
 	std::stringstream str;
 	std::stringstream message_str;

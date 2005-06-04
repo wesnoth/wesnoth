@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -172,7 +172,7 @@ void ai::do_attack_analysis(
 			best_vulnerability = vulnerability/surround_bonus;
 			best_support = support*surround_bonus;
 		}
-			
+
 		if(cur_position != -1) {
 			units.erase(units.begin() + i);
 
@@ -280,7 +280,7 @@ int ai::choose_weapon(const location& att, const location& def,
 	const unit_map::const_iterator d_itor = units_.find(def);
 	int d_hitpoints = d_itor->second.hitpoints();
 	int a_hitpoints = itor->second.hitpoints();
-	
+
 	for(size_t a = 0; a != attacks.size(); ++a) {
 		const battle_stats stats = evaluate_battle_stats(map_, att, def, a, units_,
 		                                                 state_, terrain);
@@ -479,7 +479,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 			} else if(atthp == 0) {
 				avg_losses += cost;
 			}
-			
+
 			//if the attacker moved onto a village, reward it for doing so
 			else if(on_village) {
 				atthp += game_config::cure_amount*2; //double reward to emphasize getting onto villages
@@ -572,7 +572,7 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 	if(uses_leader && ai_obj.leader_can_reach_keep() && ai_obj.current_team().gold() > 20) {
 		value -= double(ai_obj.current_team().gold())*0.5;
 	}
-	
+
 	//prefer to attack already damaged targets
 	value += ((target_starting_damage/3 + avg_damage_inflicted) - (1.0-aggression)*avg_damage_taken)/10.0;
 
@@ -630,7 +630,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 
 		//attack anyone who is on the enemy side, and who is not invisible or turned to stone
 		if(current_team().is_enemy(j->second.side()) && j->second.stone() == false &&
-		   j->second.invisible(map_.underlying_terrain(map_[j->first.x][j->first.y]), 
+		   j->second.invisible(map_.underlying_terrain(map_[j->first.x][j->first.y]),
 				state_.get_time_of_day().lawful_bonus,j->first,
 				units_,teams_) == false) {
 			location adjacent[6];
@@ -678,7 +678,7 @@ double ai::power_projection(const gamemap::location& loc, const move_map& srcdst
 		typedef move_map::const_iterator Itor;
 		typedef std::pair<Itor,Itor> Range;
 		Range its = dstsrc.equal_range(locs[i]);
-		
+
 		gamemap::location* const beg_used = used_locs;
 		gamemap::location* end_used = used_locs + num_used_locs;
 
@@ -706,7 +706,7 @@ double ai::power_projection(const gamemap::location& loc, const move_map& srcdst
 				} else if(un.type().alignment() == unit_type::CHAOTIC) {
 					tod_modifier = -lawful_bonus;
 				}
-	
+
 				const double hp = double(un.hitpoints())/
 				                  double(un.max_hitpoints());
 				int most_damage = 0;

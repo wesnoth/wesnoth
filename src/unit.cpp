@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -64,7 +64,7 @@ void sort_units(std::vector< unit > &units)
 }
 
 //constructor for reading a unit
-unit::unit(const game_data& data, const config& cfg) : 
+unit::unit(const game_data& data, const config& cfg) :
 	state_(STATE_NORMAL),
 	moves_(0), user_end_turn_(false), facingLeft_(true),
 	resting_(false), hold_position_(false), recruit_(false),
@@ -163,7 +163,7 @@ void unit::generate_traits()
 		traits.push_back(candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin()+num);
 	}
-	
+
 	for(std::vector<config*>::const_iterator j = traits.begin(); j != traits.end(); ++j) {
 		modifications_.add_child("trait",**j);
 	}
@@ -290,7 +290,7 @@ bool unit::user_end_turn() const
 
 void unit::set_attacked()
 {
-	moves_ = ATTACKED; 
+	moves_ = ATTACKED;
 	set_hold_position(false);
 }
 
@@ -368,7 +368,7 @@ void unit::new_level()
 
 void unit::set_resting(bool resting)
 {
-	resting_ = resting;	
+	resting_ = resting;
 }
 
 bool unit::is_resting() const
@@ -437,8 +437,8 @@ static bool is_terrain(std::string const &terrain, gamemap::TERRAIN type) {
 	return std::count(terrain.begin(), terrain.end(), static_cast<gamemap::TERRAIN>(type)) != 0;
 }
 
-bool unit::invisible(const std::string& terrain, int lawful_bonus, 
-		const gamemap::location& loc, 
+bool unit::invisible(const std::string& terrain, int lawful_bonus,
+		const gamemap::location& loc,
 		const unit_map& units,const std::vector<team>& teams) const
 {
 	bool is_inv = false;
@@ -458,7 +458,7 @@ bool unit::invisible(const std::string& terrain, int lawful_bonus,
 	if(is_inv){
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			if(teams[side_-1].is_enemy(u->second.side())) {
-				if(tiles_adjacent(loc,u->first)) 
+				if(tiles_adjacent(loc,u->first))
 					return false;
 			}
 		}
@@ -821,7 +821,7 @@ void unit::write(config& cfg) const
 	sprintf(buf,"%d",moves_);
 	cfg["moves"] = buf;
 
-	cfg["resting"] = resting_ ? "yes" : "no"; 
+	cfg["resting"] = resting_ ? "yes" : "no";
 	cfg["unrenamable"] = unrenamable_ ? "yes" : "no";
 }
 
@@ -915,7 +915,7 @@ void unit::set_defending(bool hits, attack_type::RANGE range, int start_frame, i
 {
 	state_ = range == attack_type::LONG_RANGE ? STATE_DEFENDING_LONG : STATE_DEFENDING_SHORT;
 	getsHit_ = hits;
-					   
+
 	const unit_animation* const anim = get_animation();
 	if(anim != NULL) {
 		anim_ = *anim;
@@ -1061,7 +1061,7 @@ void unit::add_modification(const std::string& type,
 					} else {
 						description += t_string(N_("; "), "wesnoth");
 					}
-					
+
 					description += t_string(a->name(), "wesnoth") + " " + desc;
 				}
 			}
@@ -1112,7 +1112,7 @@ void unit::add_modification(const std::string& type,
 			const std::string& set_to = (**i.first)["set"];
 
 			if(increase.empty() == false) {
-				description += (increase[0] != '-' ? "+" : "") + increase + 
+				description += (increase[0] != '-' ? "+" : "") + increase +
 					" " + t_string(N_("Moves"), "wesnoth");
 
 				if(increase[increase.size()-1] == '%') {
@@ -1161,7 +1161,7 @@ void unit::add_modification(const std::string& type,
 			if(add.empty() == false) {
 				set_flag(add);
 			}
-			
+
 			if(remove.empty() == false) {
 				remove_flag(remove);
 			}
@@ -1182,7 +1182,7 @@ void unit::add_modification(const std::string& type,
 
 	if(effects_description.empty() == false) {
 		description += t_string(N_("("), "wesnoth");
-		for(std::vector<t_string>::const_iterator i = effects_description.begin(); 
+		for(std::vector<t_string>::const_iterator i = effects_description.begin();
 				i != effects_description.end(); ++i) {
 			description += *i;
 			if(i+1 != effects_description.end())
@@ -1329,8 +1329,8 @@ std::string team_name(int side, const unit_map& units)
 }
 
 unit_map::iterator find_visible_unit(unit_map& units,
-		const gamemap::location loc, 
-		const gamemap& map, int lawful_bonus, 
+		const gamemap::location loc,
+		const gamemap& map, int lawful_bonus,
 		const std::vector<team>& teams, const team& current_team)
 {
 	unit_map::iterator u = units.find(loc);
@@ -1348,8 +1348,8 @@ unit_map::iterator find_visible_unit(unit_map& units,
 }
 
 unit_map::const_iterator find_visible_unit(const unit_map& units,
-		const gamemap::location loc, 
-		const gamemap& map, int lawful_bonus, 
+		const gamemap::location loc,
+		const gamemap& map, int lawful_bonus,
 		const std::vector<team>& teams, const team& current_team)
 {
 	unit_map::const_iterator u = units.find(loc);

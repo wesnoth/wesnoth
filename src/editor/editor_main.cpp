@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -51,25 +51,25 @@ int main(int argc, char** argv)
 			continue;
 		}
 
- 		if(val == "--help" || val == "-h") {
- 			std::cout << "usage: " << argv[0]
- 		    << " [options] [map]\n"
- 			<< "  -f, --fullscreen  Runs the game in full-screen\n"
- 			<< "  -h, --help        Prints this message and exits\n"
- 			<< "  --path            Prints the name of the game data directory and exits\n"
- 			<< "  -w, --windowed    Runs the game in windowed mode\n"
- 			<< "  -v, --version     Prints the game's version number and exits\n"
- 			<< "  --resolution      Set the resolution of the window\n"
-   		    << "  --datadir         Select the data directory to use\n";
- 			return 0;
- 		} else if(val == "--version" || val == "-v") {
- 			std::cout << "Battle for Wesnoth " << game_config::version
- 			          << "\n";
- 			return 0;
- 		} else if(val == "--path") {
- 			std::cout <<  game_config::path
- 			          << "\n";
- 			return 0;
+		if(val == "--help" || val == "-h") {
+			std::cout << "usage: " << argv[0]
+		    << " [options] [map]\n"
+			<< "  -f, --fullscreen  Runs the game in full-screen\n"
+			<< "  -h, --help        Prints this message and exits\n"
+			<< "  --path            Prints the name of the game data directory and exits\n"
+			<< "  -w, --windowed    Runs the game in windowed mode\n"
+			<< "  -v, --version     Prints the game's version number and exits\n"
+			<< "  --resolution      Set the resolution of the window\n"
+		    << "  --datadir         Select the data directory to use\n";
+			return 0;
+		} else if(val == "--version" || val == "-v") {
+			std::cout << "Battle for Wesnoth " << game_config::version
+			          << "\n";
+			return 0;
+		} else if(val == "--path") {
+			std::cout <<  game_config::path
+			          << "\n";
+			return 0;
 		}
 	}
 
@@ -156,47 +156,47 @@ int main(int argc, char** argv)
 	image::set_wm_icon();
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 	std::pair<int,int> resolution = preferences::resolution();
-	
+
 	std::cerr << "checking mode possible...\n";
 	const int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
-	
+
 	std::cerr << bpp << "\n";
-	
+
 	if(bpp == 0) {
 		//Video mode not supported, maybe from bad prefs.
 		std::cerr << "The video mode, " << resolution.first
 				  << "x" << resolution.second << "x16 "
 				  << "is not supported\nAttempting 1024x768x16...\n";
-		
+
 		//Attempt 1024x768.
 		resolution.first = 1024;
 		resolution.second = 768;
-		
+
 		int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
-	
+
 		if(bpp == 0) {
 				 //Attempt 1024x768.
 			resolution.first = 1024;
 			resolution.second = 768;
 			std::cerr << "1024x768x16 is not possible.\nAttempting 800x600x16...\n";
-			
+
 			resolution.first = 800;
 			resolution.second = 600;
-			
+
 			bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
 		}
-		
+
 		if(bpp == 0) {
 			//couldn't do 1024x768 or 800x600
-			
+
 			std::cerr << "The required video mode, " << resolution.first
 					  << "x" << resolution.second << "x16 "
 					  << "is not supported\n";
-			
+
 			return 0;
 		}
 	}
-	
+
 	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
 	const int res = video.setMode(resolution.first,resolution.second,bpp,video_flags);
 	video.setBpp(bpp);
@@ -244,7 +244,7 @@ int main(int argc, char** argv)
 			mapdata += "gggggggggggggggggggg\n";
 		}
 	}
-	
+
 	srand(time(NULL));
 	bool done = false;
 	gamestatus status(cfg, 0);
@@ -269,7 +269,7 @@ int main(int argc, char** argv)
 			const config dummy_cfg;
 			display gui(units, video, map, status, teams,
 				    *theme_cfg, cfg, dummy_cfg);
-	
+
 			map_editor::map_editor editor(gui, map, *theme_cfg, cfg);
 			editor.set_file_to_save_as(filename);
 			editor.main_loop();

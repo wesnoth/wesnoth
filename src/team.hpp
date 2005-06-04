@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License.
@@ -31,21 +31,21 @@ class team
 	class shroud_map {
 	public:
 		shroud_map() : enabled_(false) {}
-		
+
 		void place(size_t x, size_t y);
 		bool clear(size_t x, size_t y);
 		void reset();
-		
+
 		bool value(size_t x, size_t y) const;
 		bool shared_value(const std::vector<const shroud_map*>& maps, size_t x, size_t y) const;
-		
+
 		bool copy_from(const std::vector<const shroud_map*>& maps);
-		
+
 		std::string write() const;
 		void read(const std::string& shroud_data);
-		
+
 		bool enabled() const { return enabled_; }
-		void set_enabled(bool enabled) { enabled_ = enabled; }	
+		void set_enabled(bool enabled) { enabled_ = enabled; }
 	private:
 		bool enabled_;
 		std::vector<std::vector<bool> > data_;
@@ -175,7 +175,7 @@ public:
 	//any other ally with shared vision.
 	bool shrouded(int x, int y) const;
 	bool fogged(int x, int y) const;
-	
+
 	bool uses_shroud() const { return shroud_.enabled(); }
 	bool uses_fog() const { return fog_.enabled(); }
 	bool fog_or_shroud() const { return uses_shroud() || uses_fog(); }
@@ -183,13 +183,13 @@ public:
 	void place_shroud(int x, int y) { shroud_.place(x+1,y+1); }
 	bool clear_fog(int x, int y) { return fog_.clear(x+1,y+1); }
 	void refog() { fog_.reset(); }
-	
+
 	bool knows_about_team(size_t index) const;
 	bool copy_ally_shroud();
-	
+
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
-	
+
 	const std::string& music() const;
 
 	int map_colour_to() const;
@@ -204,10 +204,10 @@ private:
 	//Make these public if you need them, but look at knows_about_team(...) first.
 	bool share_maps() const { return info_.share_maps; }
 	bool share_view() const { return info_.share_view; }
-	
+
 	const std::vector<const shroud_map*>& ally_shroud(const std::vector<team>& teams) const;
 	const std::vector<const shroud_map*>& ally_fog(const std::vector<team>& teams) const;
-	
+
 	int gold_;
 	std::set<gamemap::location> villages_;
 

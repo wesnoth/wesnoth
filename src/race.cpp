@@ -43,7 +43,7 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 		if(i == prefixes.end() || i->second.empty()) {
 			return res;
 		}
-	
+
 		const wchar_t c = i->second[get_random()%i->second.size()];
 		if(c == 0) {
 			return res;
@@ -78,8 +78,8 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 			return res;
 		}
 		if (std::find(i->second.begin(), i->second.end(), 0)
-				!= i->second.end()) { 
-			// This ending is valid. 
+				!= i->second.end()) {
+			// This ending is valid.
 			return res;
 		}
 		// The current ending is invalid, remove the last character

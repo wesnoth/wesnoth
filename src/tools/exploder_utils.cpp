@@ -134,7 +134,7 @@ bool image_empty(surface surf)
 	//an image is considered empty if
 	// * all its pixels have 0 alpha, OR
 	// * all of its pixels have the same color (and the same alpha)
-	
+
 	surface_lock lock(surf);
 
 	Uint32* beg = lock.pixels();
@@ -150,7 +150,7 @@ bool image_empty(surface surf)
 	}
 	return true;
 }
-			
+
 
 namespace {
 	struct rgba {
@@ -169,7 +169,7 @@ void save_image(surface surf, const std::string &filename)
 
 	//initializes PNG write structures
 	//TODO: review whether providing NULL error handlers is something
-	//sensible 
+	//sensible
 	png_struct* png_ptr = png_create_write_struct
 		(PNG_LIBPNG_VER_STRING, (png_voidp)png_voidp_NULL,
 		 png_error_ptr_NULL, png_error_ptr_NULL);
@@ -198,7 +198,7 @@ void save_image(surface surf, const std::string &filename)
 	//puts the actual image data in the row_pointers array
 	png_byte **row_pointers = new png_byte *[surf->h];
 	surface_lock lock(surf);
-	
+
 	//converts the data to the RGBA format. We cannot pass SDL data
 	//directly to the png lib, even if we know its pixel format, because of
 	//endianness problems.

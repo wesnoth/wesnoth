@@ -47,7 +47,7 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 	fc.set_width(width - left_padding - right_padding);
 	fc.set_height(height - top_padding - bot_padding);
 	fc.set_dirty(true);
-	
+
 	events::raise_draw_event();
 	disp.flip();
 	disp.invalidate_all();

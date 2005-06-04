@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 
+   Copyright (C)
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -46,7 +46,7 @@ private:
 	class leader_preview_pane : public gui::preview_pane
 	{
 	public:
-		leader_preview_pane(display& disp, const game_data* data, 
+		leader_preview_pane(display& disp, const game_data* data,
 				const config::child_list& side_list);
 
 		bool show_above() const;

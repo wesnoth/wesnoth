@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -23,7 +23,7 @@
 #include <set>
 
 namespace {
-	
+
 	// Grow the map, represented by lines, one step. If grow_height is
 	// true, the height is increased and every other column is shifted
 	// one step downwards. Otherwise the map is increased in width one
@@ -268,6 +268,6 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 	}
 	return res;
 }
-	
+
 
 }

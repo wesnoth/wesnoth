@@ -40,7 +40,7 @@ private:
 	std::string current_image_;
 
 	bool reverse_;
-	
+
 	int origx_, origy_, x_, y_;
 	double origzoom_, zoom_;
 	surface surf_, buffer_;

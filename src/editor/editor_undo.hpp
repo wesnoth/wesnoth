@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
-  Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+  Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License.
@@ -28,10 +28,10 @@ namespace map_editor {
 class map_undo_action {
 public:
 	map_undo_action();
-	
- 	const std::map<gamemap::location,gamemap::TERRAIN>& undo_terrains() const;
- 	const std::map<gamemap::location,gamemap::TERRAIN>& redo_terrains() const;
-	
+
+	const std::map<gamemap::location,gamemap::TERRAIN>& undo_terrains() const;
+	const std::map<gamemap::location,gamemap::TERRAIN>& redo_terrains() const;
+
 	const std::set<gamemap::location> undo_selection() const;
 	const std::set<gamemap::location> redo_selection() const;
 
@@ -40,7 +40,7 @@ public:
 
 	const std::map<gamemap::location, int>& undo_starting_locations() const;
 	const std::map<gamemap::location, int>& redo_starting_locations() const;
-	
+
 	void add_terrain(const gamemap::TERRAIN& old_tr,
 					 const gamemap::TERRAIN& new_tr,
 					 const gamemap::location& lc);
@@ -48,7 +48,7 @@ public:
 	/// Return true if a terrain change has been saved in this undo
 	/// action.
 	bool terrain_set() const;
-	
+
 	void set_selection(const std::set<gamemap::location> &old_selection,
 					   const std::set<gamemap::location> &new_selection);
 
@@ -66,7 +66,7 @@ public:
 	void add_starting_location(const int old_side, const int new_side,
 							   const gamemap::location &old_loc,
 							   const gamemap::location &new_loc);
-	
+
 	/// Return true if starting locations have been saved in this undo
 	/// action.
 	bool starting_location_set() const;
@@ -85,9 +85,9 @@ private:
 	std::map<gamemap::location,int> new_starting_locations_;
 	bool starting_locations_set_;
 };
-	
+
 typedef std::deque<map_undo_action> map_undo_list;
-	
+
 /// Add an undo action to the undo stack. Resize the stack if it gets
 /// larger than the maximum size. Add an operation to the number done
 /// since save. If keep_selection is true, it indicates that the
@@ -111,7 +111,7 @@ map_undo_action pop_redo_action();
 
 /// Clear all stored information about performed actions.
 void clear_undo_actions();
-	
+
 }
 
 

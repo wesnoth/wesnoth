@@ -105,7 +105,7 @@ void t_string::walker::update()
 
 	switch(string_[begin_]) {
 	case TRANSLATABLE_PART: {
-		std::string::size_type textdomain_end = 
+		std::string::size_type textdomain_end =
 			string_.find(TEXTDOMAIN_SEPARATOR, begin_ + 1);
 
 		if(textdomain_end == std::string::npos || textdomain_end >= string_.size() - 1) {
@@ -220,13 +220,13 @@ t_string::t_string(const char* string) :
 t_string t_string::from_serialized(const std::string& string)
 {
 	t_string orig(string);
-	
+
 	if(!string.empty() && (string[0] == TRANSLATABLE_PART || string[0] == UNTRANSLATABLE_PART)) {
 		orig.translatable_ = true;
 	} else {
 		orig.translatable_ = false;
 	}
-	
+
 	t_string res;
 
 	for(walker w(orig); !w.eos(); w.next()) {
@@ -253,7 +253,7 @@ std::string t_string::to_serialized() const
 		if(w.translatable()) {
 			chunk.translatable_ = true;
 			chunk.last_untranslatable_ = false;
-			chunk.value_ = TRANSLATABLE_PART + w.textdomain() + 
+			chunk.value_ = TRANSLATABLE_PART + w.textdomain() +
 				TEXTDOMAIN_SEPARATOR + substr;
 		} else {
 			chunk.translatable_ = false;
@@ -389,7 +389,7 @@ t_string& t_string::operator+=(const std::string& string)
 	return *this;
 }
 
-t_string& t_string::operator+=(const char* string) 
+t_string& t_string::operator+=(const char* string)
 {
 	if (string[0] == 0)
 		return *this;
@@ -416,12 +416,12 @@ bool t_string::operator!=(const t_string& string) const { return !(*this == stri
 bool t_string::operator!=(const std::string& string) const { return !(*this == string); }
 bool t_string::operator!=(const char* string) const { return !(*this == string); }
 
-bool t_string::operator<(const t_string& string) const 
+bool t_string::operator<(const t_string& string) const
 {
 	return value_ < string.value_;
 }
 
-bool t_string::empty() const 
+bool t_string::empty() const
 {
 	return value_.empty();
 }
@@ -453,7 +453,7 @@ const std::string& t_string::str() const
 			translated_value_ += part;
 		}
 	}
-	
+
 	return translated_value_;
 }
 
@@ -487,24 +487,24 @@ std::ostream& operator<<(std::ostream& stream, const t_string& string)
 	return stream;
 }
 
-bool operator==(const std::string& a, const t_string& b) 
-{ 
-	return b == a; 
+bool operator==(const std::string& a, const t_string& b)
+{
+	return b == a;
 }
 
-bool operator==(const char* a, const t_string& b) 
-{ 
-	return b == a; 
+bool operator==(const char* a, const t_string& b)
+{
+	return b == a;
 }
 
-bool operator!=(const std::string& a, const t_string& b) 
-{ 
-	return b != a; 
+bool operator!=(const std::string& a, const t_string& b)
+{
+	return b != a;
 }
 
-bool operator!=(const char* a, const t_string& b) 
-{ 
-	return b != a; 
+bool operator!=(const char* a, const t_string& b)
+{
+	return b != a;
 }
 
 t_string operator+(const std::string& a, const t_string& b)

@@ -111,7 +111,7 @@ void default_map_generator::user_config(display& disp)
 	hillsize_rect.x = text_right - hillsize_rect.w;
 	villages_rect.x = text_right - villages_rect.w;
 	landform_rect.x = text_right - landform_rect.w;
-	
+
 	const int vertical_margin = 20;
 	players_rect.y = ypos + vertical_margin*2;
 	width_rect.y = players_rect.y + players_rect.h + vertical_margin;
@@ -138,7 +138,7 @@ void default_map_generator::user_config(display& disp)
 	const int max_width = 100;
 	const int max_height = 100;
 	const int extra_size_per_player = 2;
-	
+
 	slider_rect.y = width_rect.y;
 	gui::slider width_slider(screen);
 	width_slider.set_location(slider_rect);
@@ -250,7 +250,7 @@ void default_map_generator::user_config(display& disp)
 		height_str << height_;
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_str.str(),
 		                slider_right+horz_margin,height_rect.y);
-		
+
 		std::stringstream villages_str;
 		villages_str << nvillages_ << _("/1000 tiles");
 		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_str.str(),

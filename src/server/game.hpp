@@ -38,7 +38,7 @@ public:
 	void update_side_data();
 
 	const std::string& transfer_side_control(const config& cfg);
-	
+
 	size_t available_slots() const;
 
 	//function to set the description to the number of slots
