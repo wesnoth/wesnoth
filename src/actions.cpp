@@ -1348,6 +1348,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 					healer.set_healing(true);
 
 					if(halo_image.empty() == false) {
+						const int height_adjust = healer.is_flying() ? 0 : int(map.get_terrain_info(map.get_terrain(i->second)).unit_height_adjust()*disp.zoom());
 						halo::add(disp.get_location_x(i->second)+disp.hex_size()/2,disp.get_location_y(i->second)+disp.hex_size()/2,
 								halo_image,healer.facing_left() ? halo::NORMAL : halo::REVERSE,1);
 					}
