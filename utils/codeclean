@@ -1,0 +1,23 @@
+#!/usr/bin/perl -pi
+
+#   Copyright (C) 2005 by ott
+#   Part of the Battle for Wesnoth Project http://wesnoth.org/
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License.
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY.
+#
+#   See the COPYING file for more details.
+
+# codeclean: clean up source code
+# feed this a list of files to update as arguments, eg. from fgrep -r
+# or find . -name '*.[ch]pp' -print
+
+$changes += s/\r$// # de-DOS-ify
++ s/ +\t/\t/g # remove spaces hidden by tabs
++ s/[\t ]+$// # remove trailing whitespace
++ s#wesnoth\.whitevine\.net/?#www.wesnoth.org/#g
++ s#davidnwhite\@optusnet\.com\.au#davidnwhite\@comcast.net#g;
+
+END { print "$changes made\n"; }
