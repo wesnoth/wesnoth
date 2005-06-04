@@ -348,8 +348,10 @@ void ui::hide_children(bool hide)
 
 void ui::layout_children(const SDL_Rect& rect)
 {
-	users_menu_.set_width(xscale(156));
+	users_menu_.set_width(xscale(159));
 	users_menu_.set_location(xscale(856), yscale(42));
+	users_menu_.set_height(yscale(715));
+	users_menu_.set_max_height(yscale(715));
 	chat_textbox_.set_location(xscale(11) + 4, yscale(573) + 4);
 	chat_textbox_.set_measurements(xscale(833) - 8, yscale(143) - 8);
 	entry_textbox_.set_location(xscale(11) + 4, yscale(732));
