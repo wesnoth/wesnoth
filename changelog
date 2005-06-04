@@ -1,19 +1,19 @@
 CVS HEAD:
  * user interface improvements:
-   * sped up frame rate when scrolling the map (also fixed #12021)
+   * sped up frame rate when scrolling the map
    * connecting to a server now shows dialog that allows the user to cancel
      the connection rather than blocking (#12614)
+   * sped up help
    * added hotkey for cycle to previous unit (shift-N) (part of #10703)
    * added hotkey for hold position (shift-space) (patch 3994)
    * made the right Command key on Mac OS X work like the left one
    * made menu widgets sortable
-   * added %-to-kill to Damage Calculations
+   * made network dialogs show progress of data transfers again
    * added display of unit defense over the terrain when choosing move
    * added visual cue for movement in specific terrain when choosing move
-   * added 'Advanced' preferences: 'binary save files', 'show combat'
-   * made network dialogs show progress of data transfers again
-   * sped up help
+   * added %-to-kill to Damage Calculations
    * fixed female units not appearing in help (broken since 0.9.0)
+   * added support for unit portraits in help (forum thread 6017)
    * reduced required width of weapon area in help
    * fixed items appearing in traits description (#12603)
    * preserve trait ordering to distinguish quick,resilient and resilient,quick
@@ -21,20 +21,20 @@ CVS HEAD:
    * made the text of disabled buttons grayed out
    * made room for observers in DFool theme (#13027)
    * added clock to DFool theme (#10650)
-   * tweaked multiplayer lobby
-   * better checking for 'control' command arguments (#13086)
-   * added support for unit portraits in help (forum thread 6017)
    * added Experimental theme
+   * tweaked multiplayer lobby
+   * improved position and size of 'users' menu in multiplayer lobby (#13120)
+   * selecting colors for multiplayer sides now works correctly (#13255)
    * typing a chat message quickly no longer lags the game (#12097)
    * pasting multiline text now discards lines after the first (#12282)
+   * better checking for 'control' command arguments in multiplayer (#13086)
+   * added 'Advanced' preferences: 'binary save files', 'show combat'
    * fixed village name being shown over shroud (#10690)
    * made ordering of terrain data consistent (#10665)
    * display error if save cannot be completed (eg. disk full) (#13232)
-   * selecting color for multiplayer sides now works correctly (#13255)
-   * improved position and size of 'users' menu in multiplayer lobby (#13120)
    * fixed halo position when unit is in water (#12493)
    * fixed titlescreen background disappearing on switch to fullscreen (#11863)
-   * tutorial start and end scenario savegames can now be loaded (#10332)
+   * disabled mousewheel scrolling during combat and unit movement (#12021)
  * campaign improvements:
    * Eastern Invasion:
      * Unexpected Appearance: fixed Dacyn not being [recall]-ed (#12830)
@@ -50,63 +50,50 @@ CVS HEAD:
      * Siege of Barag Gor: killing enemy leader is no longer a win
      * End of Peace: increased turn limit 24 -> 26 due to Lieutenant upgrade
      * Desert of Death: fixed invalid type=RogueAssassin on Hard
-     * removed duplicate file inclusion
+     * removed duplicate file inclusion - campaign should now start faster
      * more accurate difficulty labels
      * Toward Mountains of Haag: fixed enemy making "never pushed so far" speech
  * new units
    * added Drake Warden and Drake Blademaster
  * unit balancing and modifications: 
-   * reduced Dwarvish Fighter cost from 17 to 16
+   * slow now affects units with 2 or more attacks (not just 1 remaining)
+   * slow now works with berserk and is persistent across berserk rounds
    * changed Lieutenant attack from 6-3 to 9-3
+   * reduced Fencer cost from 18 to 16
    * changed Soulless attack from 7-2 to 7-3
    * changed Soulless attack from plague to plague(Walking Corpse)
    * Walking Corpse created by plague can advance to Soulless again (#13056)
-   * changed Skeletal Dragon resistances (only used in Eastern Invasion:
-     scenario Drowned Plains)
-   * slow now affects units with 2 or more attacks (not just 1 remaining)
-   * slow now works with berserk and is persistent across berserk rounds
-   * changed Elvish Lord and Elvish High Lord's ranged attack from fire to cold
-   * Goblin Knight -> Direwolf Rider upgrade reduced to 65 XP
+   * reduced Skeleton Archer cost from 15 to 14
+   * changed Skeletal Dragon resistances (only used in Eastern Invasion)
    * tweaked Watch Tower, Pirate Galleon and Transport Galleon and removed
      their multihex attacks (only used as real units in Son of the Black Eye)
-   * added flaming arrow to orcish archer line as a new attack
+   * reduced Dwarvish Fighter cost from 17 to 16
    * reduced Dwarvish Thunderer cost from 19 to 17
-   * reduced Fencer cost from 18 to 16
+   * reduced Gryphon Rider cost from 25 to 24
+   * Dwarvish Ulfserker stats reverted to those from version 0.8.11
+   * changed Elvish Lord and Elvish High Lord's ranged attack from fire to cold
    * changed Elvish Ranger meele attack from 7-4 to 7-3
    * changed Elvish Avenger meele attack from 10-4 to 9-4
-   * reduced Saurian Skirmisher movement to 6, increased its cost from 14 to 15
-   * Dwarvish Ulfserker stats reverted to those from version 0.8.11
    * increased Walking Corpse cost from 5 to 6
-   * reduced Gryphon Rider cost from 25 to 24
-   * increased Troll Whelp experience needed to advance from 32 to 33 xp
-   * Troll Whelp line can no longer get "intelligent" trait
-   * increased Troll experience needed to advance from 52 to 60 xp
-   * changed Drake Gladiator hp from 65 to 59
+   * trolls can no longer get "intelligent" random trait
+   * increased Troll Whelp experience needed to advance from 32 to 33 XP
+   * increased Troll experience needed to advance from 52 to 60 XP
+   * Goblin Knight -> Direwolf Rider upgrade reduced from 150 to 65 XP
+   * added flaming arrow to orcish archer line as a new attack
+   * reduced Saurian Skirmisher movement to 6, increased its cost from 14 to 15
+   * changed Drake Gladiator from 65 to 59 HP
    * changed Drake Gladiator pierce resistance from 10% to -10%
-   * changed Drake Slasher hp from 59 to 65
+   * changed Drake Slasher from 59 to 65 HP
    * changed Drake Slasher pierce resistance from -10% to 10%
    * changed Drake Slasher halberd (pierce) damage from 16-2 to 17-2
-   * reduced Skeleton Archer cost from 15 to 14
  * Doc Paterson's modifications to the MP map catalogue
-   * added "Divide and Conquer"
-   * added "Silverhead Crossing"
-   * added "Meteor Lake"
-   * added "Den of Onis"
-   * added "Hamlets"
-   * added "Hornshark Island"
-   * added "Sulla's Ruins"
-   * added "1v1v1Hex" (3p)
-   * added "Lagoon" (4p)
-   * added "The Wilderlands" (4p)
-   * added "3-player Morituri"
-   * added "3-player Blitz (Triple Blitz)"
-   * removed "Broken Bridge"
-   * removed "Battle For Weslin Bridge"
-   * removed "Princess's Battlefield"
-   * removed "Three Rivers"
-   * removed "The Isles of the Damned"
-   * removed "The Isle of Anduin"
-   * removed "Dwarven Wasteland" 
+   * added "Divide and Conquer", "Silverhead Crossing", "Meteor Lake",
+     "Den of Onis", "Hamlets", "Hornshark Island", "Sulla's Ruins",
+     "1v1v1Hex" (3p), "Lagoon" (4p), "The Wilderlands" (4p),
+     "3-player Morituri", "3-player Blitz (Triple Blitz)"
+   * removed "Broken Bridge", "Battle For Weslin Bridge",
+     "Princess's Battlefield", "Three Rivers", "The Isles of the Damned",
+     "The Isle of Anduin", "Dwarven Wasteland" 
  * unit graphics and sound improvements:
    * new death animations for: Ancient Lich, Ancient Wose, Arch Mage,
      Assassin, Bandit, Battle Princess, Blood Bat, Bone Shooter, Bowman,
@@ -124,13 +111,11 @@ CVS HEAD:
  * language and i18n:
    * language fixes and polishing (English) (also fixed #12613, #10714)
    * updated MANUAL
-   * new translations:
-     * Serbian
-   * updated translations:
-     Afrikaans, British English, Catalan, Chinese, Czech (#12864),
-     Estonian, Finnish, French, German (also fixed #13147), Greek,
-     Hungarian, Italian, Japanese, Polish, Russian, Slovenian, Spanish,
-     Swedish, Turkish
+   * new translations: Serbian
+   * updated translations: Afrikaans, British English, Catalan, Chinese,
+     Czech (#12864), Estonian, Finnish, French, German (also fixed
+     #13147), Greek, Hungarian, Italian, Japanese, Polish, Russian,
+     Slovenian, Spanish, Swedish, Turkish
    * updated gettext support to GNU gettext 0.14.4
    * removed the intl/ directory, since libintl is now widespread enough
      for gettextize to default to not installing it
@@ -140,7 +125,7 @@ CVS HEAD:
    * increase_attacks= attribute of [effect] now allows percentages (#13033)
    * new [random] representation as list allows complex scenarios to be saved
      (forum thread 5659)
-   * better diagnostics on parsing: file inclusion sequence
+   * better diagnostics on parsing: show file inclusion sequence
    * added [scroll_to] (patch #3388, forum thread 3235)
    * added [advancefrom] (patch #3625, forum thread 4186)
    * [recall] tag can now work even if the recruiter is not in a keep
@@ -154,6 +139,7 @@ CVS HEAD:
  * fixed replays with idle_ai, as seen in user scenario Rebellion (#12943)
  * saving during an AI unit's turn no longer makes that unit disappear (#13023)
  * fixed Windows build crashing when trying to recruit units (#12926)
+ * tutorial start and end scenario savegames can now be loaded (#10332)
  * various bug fixes and code cleanups (including #13264, #12954, #12734)
 
 Version 0.9.1:
