@@ -947,7 +947,11 @@ std::vector<topic> generate_weapon_special_topics()
 			std::vector<attack_type> attacks = type.attacks();
 			for (std::vector<attack_type>::const_iterator it = attacks.begin();
 				 it != attacks.end(); it++) {
-				const std::string special = (*it).special();
+				std::string special = (*it).special();
+
+				//some abilities like plague can be in the form ability(argument)
+				//make sure we cut off the argument
+				special.erase(std::find(special.begin(),special.end(),'('),special.end());
 				if (special != "") {
 					if (checked_specials.find(special) == checked_specials.end()) {
 						std::string lang_special = gettext(special.c_str());
