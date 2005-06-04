@@ -708,6 +708,7 @@ void game_controller::set_tutorial()
 	state_ = game_state();
 	state_.campaign_type = "tutorial";
 	state_.scenario = "tutorial";
+	state_.campaign_define = "TUTORIAL";
 	defines_map_.clear();
 	defines_map_["TUTORIAL"] = preproc_define();
 }
