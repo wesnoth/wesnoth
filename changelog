@@ -1,6 +1,6 @@
 CVS HEAD:
  * user interface improvements:
-   * sped up frame rate when scrolling the map
+   * sped up frame rate when scrolling the map (also fixed #12021)
    * connecting to a server now shows dialog that allows the user to cancel
      the connection rather than blocking (#12614)
    * added hotkey for cycle to previous unit (shift-N) (part of #10703)
@@ -19,7 +19,7 @@ CVS HEAD:
    * preserve trait ordering to distinguish quick,resilient and resilient,quick
    * improved layout of objectives dialog
    * made the text of disabled buttons grayed out
-   * made room for observers in DFool theme
+   * made room for observers in DFool theme (#13027)
    * added clock to DFool theme (#10650)
    * tweaked multiplayer lobby
    * better checking for 'control' command arguments (#13086)
@@ -27,12 +27,21 @@ CVS HEAD:
    * added Experimental theme
    * typing a chat message quickly no longer lags the game (#12097)
    * pasting multiline text now discards lines after the first (#12282)
+   * fixed village name being shown over shroud (#10690)
+   * made ordering of terrain data consistent (#10665)
+   * display error if save cannot be completed (eg. disk full) (#13232)
+   * selecting color for multiplayer sides now works correctly (#13255)
+   * improved position and size of 'users' menu in multiplayer lobby (#13120)
+   * fixed halo position when unit is in water (#12493)
+   * fixed titlescreen background disappearing on switch to fullscreen (#11863)
+   * tutorial start and end scenario savegames can now be loaded (#10332)
  * campaign improvements:
    * Eastern Invasion:
-     * Unexpected Appearance: fixed Dacyn not being [recall]-ed (#10619)
+     * Unexpected Appearance: fixed Dacyn not being [recall]-ed (#12830)
+     * Evacuation: units left on the wrong side of river now really die (#10619)
      * Northern Outpost: killing enemies in "wrong" order is now a win (#12922)
      * Northern Outpost: added a Holy Water bottle
-     * Captured: fixed several bugs (#10512), but replaced scenario anyway
+     * Captured: fixed bugs (#10512, #12998), but replaced scenario anyway
      * Drowned Plains: new map and scenario modification, bug fixed (#13013)
    * Heir to the Throne:
      * Siege of Elensefar: fixed thieves not appearing (forum thread 5719)
@@ -51,6 +60,7 @@ CVS HEAD:
    * changed Lieutenant attack from 6-3 to 9-3
    * changed Soulless attack from 7-2 to 7-3
    * changed Soulless attack from plague to plague(Walking Corpse)
+   * Walking Corpse created by plague can advance to Soulless again (#13056)
    * changed Skeletal Dragon resistances (only used in Eastern Invasion:
      scenario Drowned Plains)
    * slow now affects units with 2 or more attacks (not just 1 remaining)
@@ -112,15 +122,15 @@ CVS HEAD:
    * new Soulless variation images
    * added flaming arrow images
  * language and i18n:
-   * language fixes and polishing (English)
-   * clarified Necrophage self-leveling in unit description (#10714)
+   * language fixes and polishing (English) (also fixed #12613, #10714)
    * updated MANUAL
    * new translations:
      * Serbian
    * updated translations:
-     Afrikaans, British English, Catalan, Chinese, Estonian, Finnish,
-     French, German, Greek, Hungarian, Italian, Japanese, Polish, Russian,
-     Slovenian, Spanish, Swedish, Turkish
+     Afrikaans, British English, Catalan, Chinese, Czech (#12864),
+     Estonian, Finnish, French, German (also fixed #13147), Greek,
+     Hungarian, Italian, Japanese, Polish, Russian, Slovenian, Spanish,
+     Swedish, Turkish
    * updated gettext support to GNU gettext 0.14.4
    * removed the intl/ directory, since libintl is now widespread enough
      for gettextize to default to not installing it
@@ -133,7 +143,8 @@ CVS HEAD:
    * better diagnostics on parsing: file inclusion sequence
    * added [scroll_to] (patch #3388, forum thread 3235)
    * added [advancefrom] (patch #3625, forum thread 4186)
-   * [recall] now can work if recruiter is not in a keep (#11735, #12974)
+   * [recall] tag can now work even if the recruiter is not in a keep
+     (#10543, #11735, #12974)
    * next_scenario: tentative start of MP campaign support
    * tidied up game.cfg and traits.cfg; game startup should now be faster
  * editor improvements:
@@ -142,7 +153,8 @@ CVS HEAD:
  * improvements and bug fixes of the logging system
  * fixed replays with idle_ai, as seen in user scenario Rebellion (#12943)
  * saving during an AI unit's turn no longer makes that unit disappear (#13023)
- * various bug fixes and code cleanups
+ * fixed Windows build crashing when trying to recruit units (#12926)
+ * various bug fixes and code cleanups (including #13264, #12954, #12734)
 
 Version 0.9.1:
  * user interface improvements:
