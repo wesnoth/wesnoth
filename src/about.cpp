@@ -67,6 +67,7 @@ std::vector<std::string> get_text() {
 		"-   Gareth Miller (Gafgarion)",
 		"-   Hogne Håskjold (frame)",
 		"-   James Barton (Sangel)",
+		"-   Jason Lutes",
 		"-   Jimmy Olsson (Azlan)",
 		"-   Johanna Manninen (lohari)",
 		"-   John Muccigrosso (Eponymous Archon)",
@@ -119,6 +120,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Internationalization Managers"),
 		"-   Cédric Duval",
+		"-   David Philippi (Torangan)",
 		"-   Mark Michelsen (skovbaer)",
 		"-   Nils Kneuper (Ivanovic)",
 		"-   Susanna Björverud (sanna)",
@@ -172,6 +174,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Finnish Translation"),
 		"-   Ankka",
+		"-   Matias Parmala",
 		"-   paxed",
 
 		"_" N_("+French Translation"),
