@@ -510,8 +510,8 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 
 		gui_.scroll(xdisp,ydisp);
 		}
-	} else if(event.button == SDL_BUTTON_WHEELUP ||
-	          event.button == SDL_BUTTON_WHEELDOWN) {
+	} else if((event.button == SDL_BUTTON_WHEELUP ||
+	          event.button == SDL_BUTTON_WHEELDOWN) && !commands_disabled) {
 		const int speed = preferences::scroll_speed() *
 			(event.button == SDL_BUTTON_WHEELUP ? -1:1);
 
