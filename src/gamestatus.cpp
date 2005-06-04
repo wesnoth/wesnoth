@@ -17,6 +17,7 @@
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "gamestatus.hpp"
+#include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
@@ -471,6 +472,9 @@ void save_game(const game_state& state)
 		{
 			scoped_ostream savefile = ostream_file(fname);
 			write_possibly_compressed(*savefile, cfg, preferences::compress_saves());
+			if(savefile->good() == false) {
+				throw game::save_game_failed(_("Could not write to file"));
+			}
 		}
 
 		config& summary = save_summary(state.label);
