@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-03 22:49+0200\n"
-"PO-Revision-Date: 2005-05-06 18:01+0200\n"
+"PO-Revision-Date: 2005-06-04 12:35+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,12 +22,11 @@ msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:31
 msgid "Binary Saves"
-msgstr ""
+msgstr "Comprimeix les partides desades"
 
 #: data/game.cfg:38
-#, fuzzy
 msgid "Show Combat"
-msgstr "Combat"
+msgstr "Mostra els combats"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -821,7 +820,6 @@ msgstr ""
 "Els trets disponibles (excepte per a no morts) són:"
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -846,9 +844,9 @@ msgstr ""
 "\n"
 "Les unitats intel·ligents són molt útils al principi de les campanyes, ja "
 "que poden avançar més ràpidament i convertir-se així en unitats de nivells "
-"superiors. En etapes posteriors, no són tan útils, i si teniu moltes unitats "
-"de nivells alts, us trobareu reclutant unitats amb trets més útils a la "
-"llarga."
+"superiors. En etapes posteriors, no són tan útils. Si teniu moltes unitats "
+"de nivell màxim, podeu mirar de reincorporar unitats amb trets més útils a "
+"llarg termini."
 
 #: data/help.cfg:226
 msgid ""
@@ -1321,8 +1319,7 @@ msgstr "Blitz"
 #: data/scenarios/multiplayer/Blitz.cfg:9
 #: data/scenarios/multiplayer/Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr ""
-"Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
+msgstr "Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
@@ -1385,8 +1382,7 @@ msgid "Icy Waters"
 msgstr "Aigües gelades"
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:5
-msgid ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+msgid "Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 msgstr ""
 "Combat en aquesta badia d'aigües gelades del nord de Wesnoth i pels seus "
 "voltants."
@@ -1553,9 +1549,8 @@ msgid "The Valley of Death"
 msgstr "La vall de la mort"
 
 #: data/scenarios/multiplayer/scenarios.cfg:111
-#, fuzzy
 msgid " "
-msgstr "; "
+msgstr " "
 
 #: data/scenarios/multiplayer/scenarios.cfg:156
 msgid "King of the Hill"
@@ -1566,12 +1561,10 @@ msgid "2p - Divide and Conquer"
 msgstr ""
 
 #: data/scenarios/multiplayer/scenarios.cfg:196
-#, fuzzy
 msgid ""
 "This small duel map divides the field of battle into three segments. "
 "Recommended settings of 2G per village."
-msgstr ""
-"Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
+msgstr "Aquest petit mapa està pensat per fer duels i divideix el camp de batalla en tres segments. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/scenarios.cfg:226
 msgid "2p - Silverhead Crossing"
@@ -1581,7 +1574,7 @@ msgstr ""
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map. Recommended settings of 2G per village."
-msgstr ""
+msgstr "Els jugadors hauran de travessar tot tipus de terreny per tal d'aconseguir la victòria en aquest mapa de duels amb múltiples fronts. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/scenarios.cfg:256
 msgid "2p - Meteor Lake"
@@ -1591,7 +1584,7 @@ msgstr ""
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended settings of 2G per village."
-msgstr ""
+msgstr "Fa molt de temps, un gran meteorit caigué del cel deixant la seva marca en aquesta regió. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/scenarios.cfg:286
 msgid "2p - Den of Onis"
@@ -1639,24 +1632,20 @@ msgid "3p - 1v1v1Hex"
 msgstr ""
 
 #: data/scenarios/multiplayer/scenarios.cfg:407
-#, fuzzy
 msgid ""
 "Three players do battle in this small, enclosed region. Recommended settings "
 "of 2G per village."
 msgstr ""
-"Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/scenarios.cfg:443
 msgid "4p - Lagoon"
 msgstr ""
 
 #: data/scenarios/multiplayer/scenarios.cfg:444
-#, fuzzy
 msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "settings of 1G per village."
 msgstr ""
-"Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/scenarios.cfg:487
 msgid "4p - The Wilderlands"
@@ -1684,12 +1673,10 @@ msgid "3p - Triple Blitz"
 msgstr ""
 
 #: data/scenarios/multiplayer/scenarios.cfg:569
-#, fuzzy
 msgid ""
 "Three players come head to head on this water-cut battlefield. Recommended "
 "settings of 2G per village."
 msgstr ""
-"Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
 msgid "Basic Training"
@@ -1871,8 +1858,7 @@ msgstr "Visca!"
 #: data/scenarios/tutorial/Basic_Training.cfg:299
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:249
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr ""
-"Voleu revisar alguna de les habilitats que heu après en aquest escenari?"
+msgstr "Voleu revisar alguna de les habilitats que heu après en aquest escenari?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:302
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
@@ -1902,8 +1888,7 @@ msgstr "Trets i especialitats"
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr ""
-"Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
+msgstr "Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
 msgid ""
@@ -2008,8 +1993,7 @@ msgstr ""
 "les unitats."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
-msgid ""
-"Many units have a specialty which changes the rules of play in some way."
+msgid "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 "Moltes unitats tenen alguna característica que canvia les regles del joc "
 "d'alguna manera."
@@ -2040,8 +2024,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
 msgid "Next, you may want to begin a campaign, or play multiplayer."
-msgstr ""
-"Ara potser voldreu començar una campanya, o fer una partida multijugador."
+msgstr "Ara potser voldreu començar una campanya, o fer una partida multijugador."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -3094,8 +3077,7 @@ msgstr ""
 "tiradors, que tenen un 60%."
 
 #: data/tips.cfg:9
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "Les unitats que descansen als llogarets recuperen 8 punts de vida al "
 "començament del seu torn."
@@ -3163,8 +3145,7 @@ msgstr ""
 "tropes prescindibles per retrasar l'atac."
 
 #: data/tips.cfg:17
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 "No tingueu por de retirar-vos i tornar-vos a agrupar, aquesta pot ser la "
 "clau de la victòria."
@@ -3732,8 +3713,7 @@ msgstr "$name|a,El gual de $name,El creuament de $name,$river|ós,$river"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
-"Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
+msgstr "Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
@@ -3748,8 +3728,7 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name de mar,$name de dalt,$name,$name,$name"
 
 #: data/translations/english.cfg:144
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr "$name,$name,$name,$name,$name,$name,$name"
 
 #: data/units/Ancient_Lich.cfg:3
@@ -4723,9 +4702,8 @@ msgstr ""
 "camp de batalla."
 
 #: data/units/Drake_Blademaster.cfg:4
-#, fuzzy
 msgid "Drake Blademaster"
-msgstr "Gladiador drac"
+msgstr ""
 
 #: data/units/Drake_Blademaster.cfg:19
 #, fuzzy
@@ -5420,9 +5398,8 @@ msgstr "enredar"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:42
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
-#, fuzzy
 msgid "faerie fire"
-msgstr "toc de fada"
+msgstr "foc de fada"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -5756,8 +5733,7 @@ msgid "Fireball"
 msgstr "Bola de foc"
 
 #: data/units/Fireball.cfg:16
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr "Una bola de foc. Només usat per 'Move_Unit_Fake'."
 
 #: data/units/Footpad.cfg:3
@@ -5974,7 +5950,6 @@ msgid "Goblin Spearman"
 msgstr "Llancer goblin"
 
 #: data/units/Goblin_Spearman.cfg:17
-#, fuzzy
 msgid ""
 "Goblins tend to try and make up for their general idiocy, frailty, and lack "
 "of sophisticated weaponry by attempting to overwhelm their foes by sheer "
@@ -7019,8 +6994,7 @@ msgstr "Proscrita"
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
-msgstr ""
-"Els proscrits lluiten millor de nit. Les proscrites, a més, ho fan amb estil."
+msgstr "Els proscrits lluiten millor de nit. Les proscrites, a més, ho fan amb estil."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
@@ -7247,7 +7221,6 @@ msgid "Saurian Ambusher"
 msgstr "Emboscador sauri"
 
 #: data/units/Saurian_Ambusher.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -7400,10 +7373,8 @@ msgid "Sea Serpent"
 msgstr "Serp marina"
 
 #: data/units/Sea_Serpent.cfg:16
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"La serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
+msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr "La serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -7564,9 +7535,8 @@ msgstr ""
 #: data/units/Soulless.cfg:190 data/units/Soulless.cfg:266
 #: data/units/Soulless.cfg:341 data/units/Soulless.cfg:416
 #: data/units/Soulless.cfg:491
-#, fuzzy
 msgid "plague(Walking Corpse)"
-msgstr "Cadàver ambulant"
+msgstr "Plaga (cadàver ambulant)"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -7689,7 +7659,6 @@ msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:20
-#, fuzzy
 msgid ""
 "Trolls, grown to adulthood, are possessed of a fearsome strength. Their "
 "stone-like bodies have grown to a size much taller than a man, and their "
@@ -7750,7 +7719,6 @@ msgid "Troll Rocklobber"
 msgstr "Llança pedres troll"
 
 #: data/units/Troll_Rocklobber.cfg:21
-#, fuzzy
 msgid ""
 "Given the monstrous strength of their race, trolls can turn rather mundane "
 "implements into weapons of deadly force. Some trolls piece together crude "
@@ -7781,10 +7749,10 @@ msgstr ""
 "seves propies fones, no gaire diferents de les de qualsevol nen, excepte pel "
 "fet que utilitzen autèntiques roques en comptes de petites pedres. Tot i que "
 "no són especialment acurades, una roca llançada per una d'aquestes criatures "
-"pot destrossar un home si l'arriba a tocar. Tot i anar carregat amb una "
-"pesada munició i no dur cap tipus d'arma de cos a cos, un llança pedres és "
+"pot destrossar un home si l'arriba a tocar. Carregat amb una "
+"pesada munició i sense cap tipus d'arma de cos a cos, un llança pedres és "
 "encara més gran, més fort, i potser fins i tot més lleig que la cria que va "
-"ser una vegada... i els seus cops de puny ja pot defensar-se prou bé. A més, "
+"ser una vegada... i amb els seus cops de puny ja pot defensar-se prou bé. A més, "
 "la seva habilitat per respondre als atacs dels arquers fa que lluitar contra "
 "ells sigui una proposta arriscada, des de qualsevol distància.\n"
 "\n"
@@ -7805,7 +7773,6 @@ msgid "Troll Warrior"
 msgstr "Guerrer troll"
 
 #: data/units/Troll_Warrior.cfg:21
-#, fuzzy
 msgid ""
 "A terrifying, monstrous bastion of strength, a Troll Warrior brings to fore "
 "all the tales that have been told of their race's terrifying power. Wielding "
@@ -8009,7 +7976,6 @@ msgid "White Mage"
 msgstr "Mag blanc"
 
 #: data/units/White_Mage.cfg:26 data/units/White_Mage.cfg:97
-#, fuzzy
 msgid ""
 "White Mages are weak in combat, but expert in the ways of healing. Units "
 "placed adjacent to a White Mage will heal as though they were resting in a "
@@ -8164,116 +8130,115 @@ msgstr "+Coordinació traduccions"
 
 #: src/about.cpp:126
 msgid "+Afrikaans Translation"
-msgstr "+Traducció afrikaans"
+msgstr "+Traducció a l'afrikaans"
 
 #: src/about.cpp:130
 msgid "+Basque Translation"
-msgstr "+Traducció basca"
+msgstr "+Traducció al basc"
 
 #: src/about.cpp:135
 msgid "+Bulgarian Translation"
-msgstr "+Traducció búlgara "
+msgstr "+Traducció al búlgar"
 
 #: src/about.cpp:138
 msgid "+Catalan Translation"
-msgstr "+Traducció catalana"
+msgstr "+Traducció al català"
 
 #: src/about.cpp:145
 msgid "+Chinese Translation"
-msgstr "+Traducció xinesa"
+msgstr "+Traducció al xinès"
 
 #: src/about.cpp:148
 msgid "+Czech Translation"
-msgstr "+Traducció txeca"
+msgstr "+Traducció al txec"
 
 #: src/about.cpp:156
 msgid "+Danish Translation"
-msgstr "+Traducció danesa"
+msgstr "+Traducció al danès"
 
 #: src/about.cpp:160
 msgid "+Dutch Translation"
-msgstr "+Traducció holandesa"
+msgstr "+Traducció a l'holandès"
 
 #: src/about.cpp:167
 msgid "+English (GB) Translation"
-msgstr "+Traducció anglesa (Gran Bretanya)"
+msgstr "+Traducció a l'anglès (Gran Bretanya)"
 
 #: src/about.cpp:170
 msgid "+Estonian Translation"
-msgstr "+Traducció estònia"
+msgstr "+Traducció a l'estonià"
 
 #: src/about.cpp:173
 msgid "+Finnish Translation"
-msgstr "+Traducció finesa"
+msgstr "+Traducció al finès"
 
 #: src/about.cpp:177
 msgid "+French Translation"
-msgstr "+Traducció francesa"
+msgstr "+Traducció al francès"
 
 #: src/about.cpp:190
 msgid "+German Translation"
-msgstr "+Traducció alemanya"
+msgstr "+Traducció a l'alemany"
 
 #: src/about.cpp:201
 msgid "+Greek Translation"
-msgstr "+Traducció grega"
+msgstr "+Traducció al grec"
 
 #: src/about.cpp:205
 msgid "+Hungarian Translation"
-msgstr "+Traducció hongaresa"
+msgstr "+Traducció a l'hongarès"
 
 #: src/about.cpp:216
 msgid "+Italian Translation"
-msgstr "+Traducció italiana"
+msgstr "+Traducció a l'italià"
 
 #: src/about.cpp:225
 msgid "+Japanese Translation"
-msgstr "+Traducció japonesa"
+msgstr "+Traducció al japonès"
 
 #: src/about.cpp:230
 msgid "+Latin Translation"
-msgstr "+Traducció llatina"
+msgstr "+Traducció al llatí"
 
 #: src/about.cpp:233
 msgid "+Norwegian Translation"
-msgstr "+Traducció noruega"
+msgstr "+Traducció al noruec"
 
 #: src/about.cpp:239
 msgid "+Polish Translation"
-msgstr "+Traducció polonesa"
+msgstr "+Traducció al polonès"
 
 #: src/about.cpp:249
 msgid "+Portuguese (Brazil) Translation"
-msgstr "+Traducció portuguesa (brasil)"
+msgstr "+Traducció portuguès (brasil)"
 
 #: src/about.cpp:257
 msgid "+Russian Translation"
-msgstr "+Traducció russa"
+msgstr "+Traducció al rus"
 
 #: src/about.cpp:262
-#, fuzzy
 msgid "+Serbian Translation"
-msgstr "+Traducció alemanya"
+msgstr "+Traducció al serbi"
 
 #: src/about.cpp:265
 msgid "+Slovak Translation"
-msgstr "+Traducció eslovaca"
+msgstr "+Traducció a l'eslovac"
 
 #: src/about.cpp:268
 msgid "+Slovenian Translation"
-msgstr "+Traducció eslovena"
+msgstr "+Traducció a l'eslovè"
 
 #: src/about.cpp:271
 msgid "+Spanish Translation"
-msgstr "+Traducció espanyola"
+msgstr "+Traducció al castellà"
 
 #: src/about.cpp:279
 msgid "+Swedish Translation"
-msgstr "+Traducció sueca"
+msgstr "+Traducció al suec"
 
 #: src/about.cpp:285
 msgid "+Turkish Translation"
-msgstr "+Traducció turca"
+msgstr "+Traducció al turc"
 
 #: src/about.cpp:289
 msgid "+Contributors"
@@ -8293,8 +8258,7 @@ msgstr "No teniu un líder amb el que reclutar."
 
 #: src/actions.cpp:115
 msgid "You must have your leader on a keep to recruit or recall units."
-msgstr ""
-"El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
+msgstr "El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
 
 #: src/actions.cpp:135
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -8519,9 +8483,8 @@ msgstr ""
 "fitxers amb el joc?"
 
 #: src/dialogs.cpp:550
-#, fuzzy
 msgid "Date"
-msgstr "Portal"
+msgstr "Data"
 
 #: src/dialogs.cpp:550 src/game.cpp:887 src/help.cpp:1112
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
@@ -8534,7 +8497,7 @@ msgstr "Mostra repetició"
 
 #: src/dialogs.cpp:579 src/multiplayer_create.cpp:74
 msgid "Load Game"
-msgstr "Carrega partida"
+msgstr "Carrega una partida"
 
 #: src/dialogs.cpp:580
 msgid "Choose the game to load"
@@ -8646,7 +8609,7 @@ msgstr "MB"
 
 #: src/game.cpp:842
 msgid "Connect to Server"
-msgstr "Connexió amb el servidor"
+msgstr "Connecta amb el servidor"
 
 #: src/game.cpp:843
 msgid "You will now connect to a campaign server to download campaigns."
@@ -8706,7 +8669,7 @@ msgstr "Obtenir campanya"
 
 #: src/game.cpp:975
 msgid "Downloading campaign..."
-msgstr "Descarregant campanya..."
+msgstr "S'està descarregant la campanya..."
 
 #: src/game.cpp:989
 msgid "Cannot rescan the filesystem"
@@ -8729,8 +8692,7 @@ msgid "Remote host disconnected."
 msgstr "Servidor remot desconnectat."
 
 #: src/game.cpp:1006
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
+msgid "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "S'ha produit un error creant els fitxers necessaris per instal·lar aquesta "
 "campanya."
@@ -8908,8 +8870,7 @@ msgstr "o"
 
 #: src/help.cpp:1303
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
-"Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
+msgstr "Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
 
 #: src/help.cpp:1305
 msgid "The terrain with the best modifier is chosen automatically."
@@ -9023,20 +8984,19 @@ msgstr "Illa"
 
 #: src/multiplayer.cpp:92
 msgid "Connect to Host"
-msgstr "Connectar amb el servidor"
+msgstr "Connecta amb el servidor"
 
 #: src/multiplayer.cpp:94
 msgid "Choose host to connect to: "
 msgstr "Trieu el servidor: "
 
 #: src/multiplayer.cpp:123 src/multiplayer.cpp:160
-#, fuzzy
 msgid "Connecting to Server..."
-msgstr "Connexió amb el servidor"
+msgstr "Connectant amb el servidor..."
 
 #: src/multiplayer.cpp:133
 msgid "Connecting to remote host..."
-msgstr "Connectant al servidor remot..."
+msgstr "Connectant amb el servidor remot..."
 
 #: src/multiplayer.cpp:142
 msgid ""
@@ -9260,12 +9220,11 @@ msgstr "Crea partida"
 
 #: src/multiplayer_lobby.cpp:28
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #: src/multiplayer_lobby.cpp:29
-#, fuzzy
 msgid "Status"
-msgstr "Estadístiques"
+msgstr "Estat"
 
 #: src/multiplayer_lobby.cpp:106
 msgid "Observe Game"
@@ -9416,7 +9375,7 @@ msgid "Gold: "
 msgstr "Or: "
 
 #: src/playlevel.cpp:854
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "El 80% de l'or es manté pel proper escenari."
 
@@ -9473,8 +9432,7 @@ msgid "Choose weapon:"
 msgstr "Trieu l'arma:"
 
 #: src/playturn.cpp:1309
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
+msgid "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "No heu començat a moure les unitats. Segur de que voleu finalitzar el vostre "
 "torn?"
@@ -9511,8 +9469,7 @@ msgstr "Error"
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
-msgstr ""
-"Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
+msgstr "Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
 
 #: src/playturn.cpp:1636
 msgid "Saved"
@@ -9562,8 +9519,7 @@ msgstr "No teniu prou diners per reclutar aquesta unitat."
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
-msgstr ""
-"Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
+msgstr "Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
 
 #: src/playturn.cpp:1985
 msgid ""
@@ -9598,9 +9554,8 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Necessiteu al menys $cost monedes d'or per reincorporar una unitat."
 
 #: src/playturn.cpp:2047
-#, fuzzy
 msgid "Level"
-msgstr "nivell"
+msgstr "Nivell"
 
 #: src/playturn.cpp:2074
 msgid "Dismiss Unit"
@@ -9692,8 +9647,7 @@ msgstr "Tria el tema: "
 
 #: src/playturn.cpp:2531
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
-"Els canvis de tema tenen efecte en carregar o iniciar una nova partida."
+msgstr "Els canvis de tema tenen efecte en carregar o iniciar una nova partida."
 
 #: src/playturn.cpp:2632
 msgid "Place Label"
@@ -9775,8 +9729,7 @@ msgstr "enverinat: "
 
 #: src/reports.cpp:128
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-"Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
+msgstr "Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
 
 #: src/reports.cpp:128
 msgid "stone: "
@@ -9866,11 +9819,11 @@ msgstr "Cadena entre cometes sense finalitzar"
 
 #: src/serialization/parser.cpp:285
 msgid " included from "
-msgstr ""
+msgstr " inclòs des de "
 
 #: src/serialization/parser.cpp:306
 msgid "$error at $pos"
-msgstr ""
+msgstr "$error a $pos"
 
 #: src/titlescreen.cpp:187
 msgid "TitleScreen button^Tutorial"
@@ -9947,9 +9900,8 @@ msgid "; "
 msgstr "; "
 
 #: src/unit.cpp:1141
-#, fuzzy
 msgid "XP to advance"
-msgstr " experiència per avançar"
+msgstr "punt d'experiència per avançar"
 
 #: src/unit.cpp:1180
 msgid ": "
@@ -9971,74 +9923,3 @@ msgstr "legal"
 msgid "neutral"
 msgstr "neutral"
 
-#~ msgid "The Isle of Anduin"
-#~ msgstr "L'illa d'Anduin"
-
-#~ msgid "The Three Rivers"
-#~ msgstr "Els tres rius"
-
-#~ msgid "The Isles of the Damned"
-#~ msgstr "L'illa dels condemnats"
-
-#~ msgid "Dwarven Wasteland"
-#~ msgstr "Terra de nans"
-
-#~ msgid "Princess's Battlefield"
-#~ msgstr "El camp de batalla de la princesa"
-
-#, fuzzy
-#~ msgid ""
-#~ "The noble leaders of many troops, Lords are especially strong in melee "
-#~ "combat, and also possess skill with the bow. Like lords, Lords possess "
-#~ "leadership skills, and improve the fighting ability of all adjacent lower-"
-#~ "level units."
-#~ msgstr ""
-#~ "Un noble líder de tropes, el senyor és especialment fort en la lluita cos "
-#~ "a cos, però també poseeix l'habilitat de tir amb arc. Com els comandants, "
-#~ "el lideratge dels senyors milloren les habilitats de les unitats de "
-#~ "nivell inferior que l'envolten."
-
-#, fuzzy
-#~ msgid "100 gold will be available for the next scenario"
-#~ msgstr "El 80% de l'or es manté pel proper escenari."
-
-#~ msgid "level: "
-#~ msgstr "nivell: "
-
-#~ msgid "fey gale"
-#~ msgstr "ventada mortal"
-
-#~ msgid "halberd"
-#~ msgstr "alabarda"
-
-#~ msgid ""
-#~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
-#~ "their hoped-for food with poisonous claws."
-#~ msgstr ""
-#~ "Els necròfags són éssers conduits voraçment per una gana diabòlica de "
-#~ "carn morta. Ataquen sense miraments qualsevol presa possible amb les "
-#~ "seves garres verinoses."
-
-#~ msgid "Do you want to save a replay of this scenario?"
-#~ msgstr "Voleu desar la repetició d'aquest escenari?"
-
-#~ msgid "Do you want to save your game?"
-#~ msgstr "Voleu desar la vostra partida?"
-
-#~ msgid "Unknown scenario: '"
-#~ msgstr "Escenari desconegut: '"
-
-#~ msgid "Dmg"
-#~ msgstr "Mal"
-
-#~ msgid "Missing closing tag for tag $tag (file $file, line $line)"
-#~ msgstr "Falta l'etiqueta de tancament $tag (fitxer $file, línia $line)"
-
-#~ msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
-#~ msgstr "Etiqueta de tancament $tag (fitxer $file, línia $line) invàlida"
-
-#~ msgid "$error in file $file (line $line, column $column)"
-#~ msgstr "$error al fitxer $file (línia $line, columna $column)"
-
-#~ msgid "$error (line $line, column $column)"
-#~ msgstr "$error (línia $line, columna $column)"
