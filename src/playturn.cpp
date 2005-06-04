@@ -2937,6 +2937,15 @@ void turn_info::enter_textbox()
 	close_textbox();
 }
 
+namespace {
+
+bool tab_complete(const std::string& partword, const std::string& name)
+{
+	return name.size() >= partword.size() && std::equal(partword.begin(),partword.end(),name.begin(),chars_equal_insensitive);
+}
+
+}
+
 void turn_info::tab_textbox()
 {
 	if(textbox_.active() == false) {
@@ -2973,24 +2982,24 @@ void turn_info::tab_textbox()
 			}
 			const unit_map::const_iterator leader = team_leader(n+1,units_);
 			if(leader != units_.end()) {
-				const std::string name = leader->second.description();
-				if(name.find(semiword) == 0) {
-					if(guess.size() == 0) {
-						guess = name;
-					}else{
-						size_t i;
-						for(i=0; (i < guess.size()) || (i < name.size()); i++) {
-							if(guess[i] != name[i]) {
-								break;
-							}
-						}
-						guess.assign(guess,0,i);
-					}
+				const std::string& name = leader->second.description();
+				if(tab_complete(semiword,name)) {
+					guess = name;
 				}
 			}
 		}
 
-		if(guess.size() != 0) {
+		if(guess.empty()) {
+			const std::set<std::string>& observers = gui_.observers();
+			for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
+				if(tab_complete(semiword,*i)) {
+					guess = *i;
+					break;
+				}
+			}
+		}
+
+		if(guess.empty() == false) {
 			std::string add = beginning ? ": " : " ";
 			text.replace(last_space+1, semiword.size(), guess + add);
 			textbox_.box->set_text(text);
