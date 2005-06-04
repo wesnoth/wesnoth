@@ -269,7 +269,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		return 0;
 
 	fullScreen = (flags & FULL_SCREEN) != 0;
-	frameBuffer = SDL_SetVideoMode( x, y, 0, flags );
+	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
 
 	if( frameBuffer != NULL ) {
 		image::set_pixel_format(frameBuffer->format);
