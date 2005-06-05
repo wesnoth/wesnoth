@@ -51,10 +51,10 @@ gamemap::location find_vacant_tile(const gamemap& map,
                                    VACANT_TILE_TYPE vacancy=VACANT_ANY);
 
 //function which determines if a given location is an enemy zone of control
-bool enemy_zoc(const gamemap& map,const gamestatus& status,
-		         const std::map<gamemap::location,unit>& units,
-		         const std::vector<team>& teams,
-               const gamemap::location& loc,const team& current_team,int side);
+bool enemy_zoc(gamemap const &map, gamestatus const &status,
+               std::map<gamemap::location, unit> const &units,
+               std::vector<team> const &teams, gamemap::location const &loc,
+               team const &current_team, int side);
 
 struct cost_calculator
 {
@@ -75,11 +75,11 @@ struct paths
 	//additional_turns: if 0, paths for how far the unit can move this turn
 	//will be calculated. If 1, paths for how far the unit can move by the
 	//end of next turn will be calculated, and so forth.
-	paths(const gamemap& map, const gamestatus& status,
-			const game_data& gamedata,
-	      const std::map<gamemap::location,unit>& units,
-	      const gamemap::location& loc, std::vector<team>& teams,
-		  bool ignore_zocs, bool allow_teleport, int additional_turns=0);
+	paths(gamemap const &map, gamestatus const &status,
+	      game_data const &gamedata,
+	      std::map<gamemap::location, unit> const &units,
+	      gamemap::location const &loc, std::vector<team> const &teams,
+	      bool ignore_zocs, bool allow_teleport, int additional_turns = 0);
 
 	//structure which holds a single route between one location and another.
 	struct route
@@ -94,9 +94,9 @@ struct paths
 };
 
 paths::route a_star_search(gamemap::location const &src, gamemap::location const &dst,
-													 double stop_at, cost_calculator const *costCalculator,
-													 const size_t parWidth, const size_t parHeight,
-													 std::set<gamemap::location> const *teleports = NULL);
+                           double stop_at, cost_calculator const *costCalculator,
+                           const size_t parWidth, const size_t parHeight,
+                           std::set<gamemap::location> const *teleports = NULL);
 
 //function which, given a unit and a route the unit can move on, will
 //return the number of turns it will take the unit to traverse the route.
@@ -111,12 +111,15 @@ struct shortest_path_calculator : cost_calculator
 	virtual double cost(const gamemap::location& loc, const double so_far, const bool isDst) const;
 
 private:
-	const unit& unit_;
-	const team& team_;
-	const unit_map& units_;
-	const std::vector<team>& teams_;
-	const gamemap& map_;
-	const gamestatus& status_;
+	unit const &unit_;
+	team const &team_;
+	unit_map const &units_;
+	std::vector<team> const &teams_;
+	gamemap const &map_;
+	int const lawful_bonus_;
+	bool const unit_is_skirmisher_;
+	int const movement_left_;
+	int const total_movement_;
 };
 
 #endif

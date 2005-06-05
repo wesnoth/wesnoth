@@ -403,14 +403,14 @@ namespace {
 		const gamemap::location& loc,
 		int move_left,
 		std::map<gamemap::location,paths::route>& routes,
-		std::vector<team>& teams,
+		std::vector<team> const &teams,
 		bool ignore_zocs, bool allow_teleport, int turns_left, bool starting_pos)
 	{
 		if(size_t(u.side()-1) >= teams.size()) {
 			return;
 		}
 
-		team& current_team = teams[u.side()-1];
+		team const &current_team = teams[u.side()-1];
 
 		//find adjacent tiles
 		std::vector<gamemap::location> locs(6);
@@ -499,7 +499,7 @@ paths::paths(gamemap const &map, gamestatus const &status,
              game_data const &gamedata,
              std::map<gamemap::location, unit> const &units,
              gamemap::location const &loc,
-             std::vector<team> &teams,
+             std::vector<team> const &teams,
              bool ignore_zocs, bool allow_teleport, int additional_turns)
 {
 	const std::map<gamemap::location,unit>::const_iterator i = units.find(loc);
@@ -541,8 +541,11 @@ int route_turns_to_complete(unit const &u, gamemap const &map, paths::route cons
 shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t, unit_map const &units,
                                                    std::vector<team> const &teams, gamemap const &map,
                                                    gamestatus const &status)
-	: unit_(u), team_(t), units_(units), teams_(teams),
-	  map_(map), status_(status)
+	: unit_(u), team_(t), units_(units), teams_(teams), map_(map),
+	  lawful_bonus_(status.get_time_of_day().lawful_bonus),
+	  unit_is_skirmisher_(unit_.type().is_skirmisher()),
+	  movement_left_(unit_.movement_left()),
+	  total_movement_(unit_.total_movement())
 {
 }
 
@@ -550,46 +553,51 @@ double shortest_path_calculator::cost(const gamemap::location& loc, const double
 {
 	wassert(map_.on_board(loc));
 
+	//the location is not valid
+	//1. if the loc is shrouded, or
+	//2. if moving in it costs more than the total movement of the unit, or
+	//3. if there is a visible enemy on the hex, or
+	//4. if the unit is not a skirmisher and there is a visible enemy with
+	//   a ZoC on an adjacent hex in the middle of the route
+
 	if (team_.shrouded(loc.x, loc.y))
-		return (getNoPathValue());
+		return getNoPathValue();
 
-	const unit_map::const_iterator enemy_unit = find_visible_unit(units_, loc, map_, status_.get_time_of_day().lawful_bonus, teams_, team_);
+	int const base_cost = unit_.movement_cost(map_, map_[loc.x][loc.y]);
+	wassert(base_cost >= 1); // pathfinding heuristic: the cost must be at least 1
+	if (total_movement_ < base_cost)
+		return getNoPathValue();
 
-	if (enemy_unit != units_.end() && team_.is_enemy(enemy_unit->second.side()))
-		return (getNoPathValue());
+	unit_map::const_iterator
+		enemy_unit = find_visible_unit(units_, loc, map_, lawful_bonus_, teams_, team_),
+		units_end = units_.end();
 
-	if ((isDst == false) && (unit_.type().is_skirmisher() == false))
-	{
+	if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()))
+		return getNoPathValue();
+
+	if (!isDst && !unit_is_skirmisher_) {
 		gamemap::location adj[6];
-		get_adjacent_tiles(loc,adj);
+		get_adjacent_tiles(loc, adj);
 
 		for (size_t i = 0; i != 6; ++i) {
-			const unit_map::const_iterator u = find_visible_unit(units_, adj[i],map_, status_.get_time_of_day().lawful_bonus, teams_, team_);
+			enemy_unit = find_visible_unit(units_, adj[i], map_, lawful_bonus_, teams_, team_);
 
-			if (u != units_.end() && team_.is_enemy(u->second.side()) &&
-			    !team_.fogged(adj[i].x, adj[i].y) && u->second.emits_zoc()) {
-				return (getNoPathValue());
-			}
+			if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
+			    !team_.fogged(adj[i].x, adj[i].y) && enemy_unit->second.emits_zoc())
+				return getNoPathValue();
 		}
 	}
 
-	int const base_cost = unit_.movement_cost(map_, map_[loc.x][loc.y]);
+	//compute how many movement points are left in the game turn needed to
+	//reach the previous hex
+	//total_movement_ is not zero, thanks to the pathfinding heuristic
+	int remaining_movement = movement_left_ - static_cast<int>(so_far);
+	if (remaining_movement < 0)
+		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
 
 	//supposing we had 2 movement left, and wanted to move onto a hex which
 	//takes 3 movement, it's going to cost us 5 movement in total, since we
 	//sacrifice this turn's movement. Take that into account here.
-	const int current_cost(static_cast<int>(so_far));
-
-	const int starting_movement = unit_.movement_left();
-	int remaining_movement = starting_movement - current_cost;
-	if (remaining_movement < 0) {
-		const int total = unit_.total_movement();
-		if (total != 0) {
-			remaining_movement = total - (-remaining_movement) % total;
-		}
-	}
-
 	int additional_cost = base_cost > remaining_movement ? remaining_movement : 0;
-
 	return base_cost + additional_cost;
 }
