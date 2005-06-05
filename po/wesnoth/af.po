@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-05 17:14+0200\n"
-"PO-Revision-Date: 2005-05-30 15:17+0200\n"
+"PO-Revision-Date: 2005-06-05 19:25+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
@@ -241,6 +241,9 @@ msgid ""
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Kans om te tref'</header>"
 
 #: data/help.cfg:111
 msgid ""
@@ -329,10 +332,9 @@ msgstr ""
 
 #: data/help.cfg:133
 msgid "Time of Day"
-msgstr ""
+msgstr "Tyd"
 
 #: data/help.cfg:138 data/schedules.cfg:5
-#, fuzzy
 msgid "Dawn"
 msgstr "Dagbreek"
 
@@ -358,23 +360,24 @@ msgstr "Namiddag"
 
 #: data/help.cfg:141 data/schedules.cfg:59 data/schedules.cfg:89
 #: data/schedules.cfg:111
-#, fuzzy
 msgid "Dusk"
 msgstr "Skemer"
 
 #: data/help.cfg:142 data/schedules.cfg:79
 msgid "First Watch"
-msgstr ""
+msgstr "Eerste Wag"
 
 #: data/help.cfg:143 data/schedules.cfg:101
 msgid "Second Watch"
-msgstr ""
+msgstr "Tweede Wag"
 
 #: data/help.cfg:145
 msgid ""
 "\n"
 "Morning and Afternoon count as day, First and Second Watch count as night."
 msgstr ""
+"\n"
+"Oggend en Namiddag word as dag getel, Eerste en Tweede Wag word as nag getel."
 
 #: data/help.cfg:151
 msgid ""
@@ -425,7 +428,7 @@ msgstr ""
 
 #: data/help.cfg:169
 msgid "Healing"
-msgstr ""
+msgstr "Geneeskrag"
 
 #: data/help.cfg:170
 msgid ""
@@ -997,9 +1000,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_IcyWaters.cfg:3
-#, fuzzy
 msgid "2p - Icy Waters"
-msgstr "Ysige Waters"
+msgstr "2s - Ysige Waters"
 
 #: data/scenarios/multiplayer/2p_IcyWaters.cfg:5
 msgid ""
@@ -1008,7 +1010,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
-msgstr ""
+msgstr "2s - Meteoor Meer"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
 msgid ""
@@ -1018,7 +1020,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
-msgstr ""
+msgstr "2s - Silwerkop Kruising"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
 msgid ""
@@ -1028,7 +1030,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
 msgid "2p - Sullas Ruins"
-msgstr ""
+msgstr "2s - Sulla se Ruïnes"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
 msgid ""
@@ -1039,7 +1041,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
-msgstr ""
+msgstr "2s - Wesbowl"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
 msgid ""
@@ -2812,6 +2814,8 @@ msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
+"Magies:\n"
+"Hierdie aanvaltipe kry altyd 'n 70% kans om te tref."
 
 #: data/translations/english.cfg:111
 msgid ""
@@ -5073,7 +5077,7 @@ msgstr ""
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
-msgstr ""
+msgstr "Magiër van Lig"
 
 #: data/units/Mage_of_Light.cfg:14 data/units/Mage_of_Light.cfg:86
 #: data/units/Mermaid_Diviner.cfg:11
@@ -5095,22 +5099,22 @@ msgstr ""
 #: data/units/Mermaid_Diviner.cfg:47 data/units/Mermaid_Priestess.cfg:45
 #: data/units/White_Mage.cfg:45 data/units/White_Mage.cfg:116
 msgid "lightbeam"
-msgstr ""
+msgstr "ligbundel"
 
 #: data/units/Mage_of_Light.cfg:47 data/units/Mage_of_Light.cfg:119
 #: data/units/Mermaid_Diviner.cfg:48 data/units/Mermaid_Priestess.cfg:46
 #: data/units/Paladin.cfg:27 data/units/White_Mage.cfg:46
 #: data/units/White_Mage.cfg:117
 msgid "holy"
-msgstr ""
+msgstr "heilig"
 
 #: data/units/Mage_of_Light.cfg:78
 msgid "female^Mage of Light"
-msgstr ""
+msgstr "Magiër van Lig"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
-msgstr ""
+msgstr "Meister Boogskutter"
 
 #: data/units/Master_Bowman.cfg:18
 msgid ""
@@ -5745,7 +5749,7 @@ msgstr ""
 
 #: data/units/Red_Mage.cfg:3
 msgid "Red Mage"
-msgstr ""
+msgstr "Rooi Magiër"
 
 #: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:113
 msgid ""
@@ -5756,7 +5760,7 @@ msgstr ""
 
 #: data/units/Red_Mage.cfg:96
 msgid "female^Red Mage"
-msgstr ""
+msgstr "Rooi Magiër"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
@@ -6366,7 +6370,7 @@ msgstr ""
 
 #: data/units/White_Mage.cfg:3
 msgid "White Mage"
-msgstr ""
+msgstr "Wit Magiër"
 
 #: data/units/White_Mage.cfg:26 data/units/White_Mage.cfg:97
 msgid ""
@@ -6378,7 +6382,7 @@ msgstr ""
 
 #: data/units/White_Mage.cfg:77
 msgid "female^White Mage"
-msgstr ""
+msgstr "Wit Magiër"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
@@ -7271,7 +7275,7 @@ msgstr "< Terug"
 
 #: src/help.cpp:2174
 msgid "Forward >"
-msgstr ""
+msgstr "Vorentoe >"
 
 #: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
@@ -7386,7 +7390,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:298
 msgid "(Vacant slot)"
-msgstr ""
+msgstr "(Vakante gleuf)"
 
 #: src/multiplayer_connect.cpp:304
 msgid "Anonymous local player"
@@ -7398,7 +7402,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Leë gleuf)"
 
 #: src/multiplayer_connect.cpp:455
 msgid "No non-random sides in the current era"
@@ -7619,11 +7623,11 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:197
 msgid "Vacant Slot"
-msgstr ""
+msgstr "Vakante Gleuf"
 
 #: src/multiplayer_lobby.cpp:197
 msgid "Vacant Slots"
-msgstr ""
+msgstr "Vakante Gleuwe"
 
 #: src/multiplayer_lobby.cpp:207
 msgid "<no games open>"
@@ -7801,7 +7805,7 @@ msgstr ""
 
 #: src/playturn.cpp:563
 msgid "Defender"
-msgstr ""
+msgstr "Verdediger"
 
 #: src/playturn.cpp:583 src/playturn.cpp:649
 msgid "Damage Calculations"
@@ -8311,18 +8315,3 @@ msgstr "wettige"
 #, fuzzy
 msgid "neutral"
 msgstr "neutrale"
-
-#, fuzzy
-#~ msgid " "
-#~ msgstr "; "
-
-#, fuzzy
-#~ msgid "The Isle of Anduin"
-#~ msgstr "Die Eiland van Anduin"
-
-#~ msgid "The Three Rivers"
-#~ msgstr "Die Drie Riviere"
-
-#, fuzzy
-#~ msgid "The Isles of the Damned"
-#~ msgstr "Die Eilande van die Verdoemdes"
