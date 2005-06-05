@@ -833,6 +833,8 @@ void attack(display& gui, const gamemap& map,
 
 					if(reanimitor != info.unit_types.end()) {
 					       unit newunit=unit(&reanimitor->second,a->second.side(),true,true);
+					       newunit.set_attacked();
+
 					       //apply variation
 					       if(strcmp(undead_variation.c_str(),"null")){
 						 config mod;
