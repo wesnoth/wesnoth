@@ -19,7 +19,6 @@ See the COPYING file for more details.
 #include <set>
 #include <vector>
 
-#define _PARANO_ASTAR_
 #ifdef _PARANO_ASTAR_
 # define assertParanoAstar(param) assert(param)
 #else
@@ -34,9 +33,8 @@ public:
 	a_star_node* nodeParent;
 	bool isInCloseList;
 
-	void initNode( const gamemap::location& pos, const gamemap::location& dst,
-								 double cost, a_star_node* parent,
-								 const std::set<gamemap::location>* teleports);
+	void initNode(gamemap::location const &pos, gamemap::location const &dst,
+	              double cost, a_star_node *parent, std::set<gamemap::location> const *teleports);
 
 	inline double heuristic(const gamemap::location& src, const gamemap::location& dst)
 	{
@@ -66,11 +64,11 @@ class a_star_world
 protected:
 	typedef std::vector<a_star_node*> vect_a_star_node;
 
-	vect_a_star_node		_vectAStarNode;
-	size_t						_width;
+	vect_a_star_node _vectAStarNode;
+	size_t _width;
 
 public:
-	size_t						_nbNode;
+	size_t _nbNode;
 
 	void resize_IFN(const size_t parWidth, const size_t parHeight);
 	void clear(void);
@@ -80,21 +78,6 @@ public:
 	bool reallyEmpty(void);
 	a_star_world(void) : _width(0), _nbNode(0) {};
 };
-
-/*
-namespace std
-{
-	template<class _Ty,
-	class _Container = vector<_Ty>,
-	class _Pr = less<typename _Container::value_type> >
-	class priority_queue_extended : public std::priority_queue<_Ty, _Container, _Pr>
-	{
-	public:
-		inline void clear(void) { c.clear(); }
-		inline void reserve(size_type _Count) { c.reserve(_Count); }
-	};
-};
-*/
 
 #endif
 
