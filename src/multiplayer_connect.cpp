@@ -292,28 +292,31 @@ config connect::side::get_config() const
 	res["description"] = id_;
 
 	if (id_.empty()) {
+		char const *description;
 		switch(controller_) {
 		case CNTR_NETWORK:
-			res["user_description"] = _("(Vacant slot)");
+			description = N_("(Vacant slot)");
 			break;
 		case CNTR_LOCAL:
 			if(enabled_ && cfg_["save_id"].empty()) {
 				res["save_id"] = "local" + res["side"].str();
 			}
-			res["user_description"] =  _("Anonymous local player");
+			description = N_("Anonymous local player");
 			break;
 		case CNTR_COMPUTER:
 			if(enabled_ && cfg_["save_id"].empty()) {
 				res["save_id"] = "ai" + res["side"].str();
 			}
-			res["user_description"] = _("Computer player");
+			description = N_("Computer player");
 			break;
 		case CNTR_EMPTY:
-			res["user_description"] = _("(Empty slot)");
+			description = N_("(Empty slot)");
 			break;
 		default:
+			wassert(false);
 			break;
 		}
+		res["user_description"] = t_string(description, "wesnoth");
 	} else {
 		if(enabled_ && cfg_["save_id"].empty()) {
 			res["save_id"] = id_;
