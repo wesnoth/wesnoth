@@ -1,6 +1,7 @@
 /* $Id$ */
 /*
 Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
@@ -46,7 +47,6 @@ static void a_star_init(gamemap::location const &src, gamemap::location const &d
 	bool locIsCreated;
 
 	aStarGameWorld.resize_IFN(parWidth, parHeight);
-	wassert(aStarGameWorld.empty());
 	a_star_node *locStartNode = aStarGameWorld.getNodeFromLocation(src, locIsCreated);
 	wassert(locIsCreated);
 	locStartNode->initNode(src, dst, 0.0, NULL, teleports);
@@ -152,7 +152,6 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 	wassert(stop_at <= costCalculator->getNoPathValue());
 	//---------------------------------------------------
 	static a_star_world aStarGameWorld;
-	static poss_a_star_node POSS_AStarNode;
 
 	vector_a_star_node openList;
 	vector_location vectLocation;
@@ -213,7 +212,6 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 
 label_AStarSearch_end:
 	openList.clear();
-	POSS_AStarNode.reduce();
 	aStarGameWorld.clear();
 	return locRoute;
 }

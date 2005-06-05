@@ -1,6 +1,7 @@
 /* $Id$ */
 /*
 Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
@@ -19,12 +20,6 @@ See the COPYING file for more details.
 #include <set>
 #include <vector>
 
-#ifdef _PARANO_ASTAR_
-# define assertParanoAstar(param) assert(param)
-#else
-# define assertParanoAstar(param) {}
-#endif
-
 struct a_star_node
 {
 public:
@@ -42,41 +37,20 @@ public:
 	}
 };
 
-class poss_a_star_node
-{
-private:
-	typedef std::vector<a_star_node*> vect_page_a_star_node;
-
-	vect_page_a_star_node vectPageAStarNode;
-	size_t nbElemByPage;
-	size_t capacity;
-	size_t curIndex;
-
-public:
-	poss_a_star_node(void);
-	void addPage(void);
-	a_star_node* getAStarNode(void);
-	void reduce(void);
-};
-
 class a_star_world
 {
-protected:
+	class poss_a_star_node;
+	poss_a_star_node *pool_;
 	typedef std::vector<a_star_node*> vect_a_star_node;
-
-	vect_a_star_node _vectAStarNode;
-	size_t _width;
+	vect_a_star_node vectAStarNode_;
+	size_t width_, nbNode_;
 
 public:
-	size_t _nbNode;
-
-	void resize_IFN(const size_t parWidth, const size_t parHeight);
-	void clear(void);
-	void erase(gamemap::location const &loc);
+	void resize_IFN(size_t parWidth, size_t parHeight);
+	void clear();
 	a_star_node* getNodeFromLocation(gamemap::location const &loc, bool& isCreated);
-	bool empty(void);
-	bool reallyEmpty(void);
-	a_star_world(void) : _width(0), _nbNode(0) {};
+	a_star_world();
+	~a_star_world();
 };
 
 #endif

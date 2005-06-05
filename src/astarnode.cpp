@@ -1,6 +1,7 @@
 /* $Id$ */
 /*
 Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
 This program is free software; you can redistribute it and/or modify
@@ -15,11 +16,8 @@ See the COPYING file for more details.
 #include "astarnode.hpp"
 #include "wassert.hpp"
 
-poss_a_star_node* SingletonPOSS_AStarNode = NULL;
-
-void a_star_node::initNode(const gamemap::location& pos, const gamemap::location& dst,
-													double cost, a_star_node* parent,
-													const std::set<gamemap::location>* teleports)
+void a_star_node::initNode(gamemap::location const &pos, gamemap::location const &dst,
+                           double cost, a_star_node *parent, std::set<gamemap::location> const *teleports)
 {
 	isInCloseList = false;
 	loc = pos;
@@ -46,128 +44,116 @@ void a_star_node::initNode(const gamemap::location& pos, const gamemap::location
 	}
 }
 
-poss_a_star_node::poss_a_star_node(void) :
-capacity(0), curIndex(0)
+class a_star_world::poss_a_star_node
 {
-	nbElemByPage = size_t((4096 - 24) / sizeof(a_star_node));
-	wassert(nbElemByPage > 0);
+private:
+	typedef std::vector<a_star_node*> vect_page_a_star_node;
+	vect_page_a_star_node vectPageAStarNode_;
+	size_t nbElemByPage_;
+	size_t capacity_;
+	size_t curIndex_;
+	void addPage();
+
+public:
+	poss_a_star_node();
+	~poss_a_star_node();
+	a_star_node *getAStarNode();
+	void clear();
+};
+
+void a_star_world::poss_a_star_node::addPage()
+{
+	vectPageAStarNode_.push_back(new a_star_node[nbElemByPage_]);
+	capacity_ += nbElemByPage_;
+}
+
+a_star_world::poss_a_star_node::poss_a_star_node()
+	: capacity_(0), curIndex_(0)
+{
+	nbElemByPage_ = size_t((4096 - 24) / sizeof(a_star_node));
+	wassert(nbElemByPage_ > 0);
 	addPage();
-	SingletonPOSS_AStarNode = this;
 }
 
-void poss_a_star_node::addPage(void)
+a_star_world::poss_a_star_node::~poss_a_star_node()
 {
-	a_star_node* locPageAStarNode;
-
-	locPageAStarNode = new a_star_node[nbElemByPage];
-	vectPageAStarNode.push_back(locPageAStarNode);
-	capacity += nbElemByPage;
+	for(vect_page_a_star_node::iterator iter = vectPageAStarNode_.begin(),
+	                                    iend = vectPageAStarNode_.end();
+	    iter != iend; ++iter)
+		delete[] *iter;
 }
 
-a_star_node* poss_a_star_node::getAStarNode(void)
+a_star_node *a_star_world::poss_a_star_node::getAStarNode()
 {
 	//----------------- PRE_CONDITIONS ------------------
-	wassert(capacity > 0);
-	wassert(curIndex <= capacity);
+	wassert(capacity_ > 0);
+	wassert(curIndex_ <= capacity_);
 	//---------------------------------------------------
-	a_star_node* locPageAStarNode;
-
-	if (curIndex == capacity)
+	if (curIndex_ == capacity_)
 		addPage();
-
-	const size_t locIndexPage = curIndex / nbElemByPage;
-	const size_t locIndexInsidePage = curIndex % nbElemByPage;
-	++curIndex;
-
-	assertParanoAstar(locIndexPage < vectPageAStarNode.size());
-	locPageAStarNode = vectPageAStarNode[locIndexPage];
-	assertParanoAstar(locIndexInsidePage < nbElemByPage);
-	return (&(locPageAStarNode[locIndexInsidePage]));
+	size_t i = curIndex_++;
+	return &vectPageAStarNode_[i / nbElemByPage_][i % nbElemByPage_];
 }
 
-void poss_a_star_node::reduce(void)
+void a_star_world::poss_a_star_node::clear()
 {
-	if (capacity > nbElemByPage)
-	{
-		for (vect_page_a_star_node::iterator iter = vectPageAStarNode.begin() + 1; iter != vectPageAStarNode.end(); ++iter)
-			delete[] (*iter);
-		vectPageAStarNode.resize(1);
-		capacity = nbElemByPage;
+	if (capacity_ > nbElemByPage_) {
+		for(vect_page_a_star_node::iterator iter = vectPageAStarNode_.begin() + 1,
+		                                    iend = vectPageAStarNode_.end();
+		    iter != iend; ++iter)
+			delete[] *iter;
+		vectPageAStarNode_.resize(1);
+		capacity_ = nbElemByPage_;
 	}
-	curIndex = 0;
+	curIndex_ = 0;
 	//----------------- POST_CONDITIONS -----------------
-	wassert(capacity == nbElemByPage);
-	wassert(vectPageAStarNode.size() == 1);
+	wassert(capacity_ == nbElemByPage_);
+	wassert(vectPageAStarNode_.size() == 1);
 	//---------------------------------------------------
 }
 
-void a_star_world::resize_IFN(const size_t parWidth, const size_t parHeight)
+a_star_world::a_star_world()
+	: pool_(new poss_a_star_node), width_(0), nbNode_(0)
+{
+}
+
+a_star_world::~a_star_world()
+{
+	delete pool_;
+}
+
+void a_star_world::resize_IFN(size_t parWidth, size_t parHeight)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	wassert(_nbNode == 0);
+	wassert(nbNode_ == 0);
 	//---------------------------------------------------
-	_width = parWidth;
-	if (_vectAStarNode.size() != parWidth * parHeight)
-	{
-		_vectAStarNode.reserve(parWidth * parHeight);
-		_vectAStarNode.resize(parWidth * parHeight);
-	}
+	width_ = parWidth;
+	size_t sz = parWidth * parHeight;
+	if (vectAStarNode_.size() == sz)
+		return;
+	vectAStarNode_.reserve(sz);
+	vectAStarNode_.resize(sz);
 }
 
 void a_star_world::clear(void)
 {
-	if (_nbNode > 0)
-	{
-		a_star_node* locNode = NULL;
-		std::fill(_vectAStarNode.begin(), _vectAStarNode.end(), locNode);
-		_nbNode = 0;
-	}
+	a_star_node *locNode = NULL;
+	std::fill(vectAStarNode_.begin(), vectAStarNode_.end(), locNode);
+	nbNode_ = 0;
+	pool_->clear();
 }
 
-bool a_star_world::empty(void)
-{
-	return (_nbNode == 0);
-}
-
-bool a_star_world::reallyEmpty(void)
-{
-	for (vect_a_star_node::iterator iter = _vectAStarNode.begin(); iter != _vectAStarNode.end(); ++iter)
-	{
-		if (*iter != NULL)
-			return (false);
-	}
-	return (true);
-}
-
-void a_star_world::erase(gamemap::location const &loc)
+a_star_node *a_star_world::getNodeFromLocation(gamemap::location const &loc, bool &isCreated)
 {
 	//----------------- PRE_CONDITIONS ------------------
 	wassert(loc.valid());
-	wassert(loc.x + (loc.y * _width) < _vectAStarNode.size());
+	wassert(loc.x + loc.y * width_ < vectAStarNode_.size());
 	//---------------------------------------------------
-	_vectAStarNode[loc.x + (loc.y * _width)] = NULL;
-}
 
-a_star_node* a_star_world::getNodeFromLocation(gamemap::location const &loc, bool& isCreated)
-{
-	//----------------- PRE_CONDITIONS ------------------
-	wassert(loc.valid());
-	//---------------------------------------------------
-	a_star_node*		node;
-	size_t				index;
-
-	index = size_t(loc.x + (loc.y * _width));
-	assertParanoAstar(index < _vectAStarNode.size());
-	node = _vectAStarNode[index];
-	if (node == NULL)
-	{
-		isCreated = true;
-		wassert(SingletonPOSS_AStarNode != NULL);
-		node = SingletonPOSS_AStarNode->getAStarNode();
-		_vectAStarNode[index] = node;
-		++_nbNode;
+	a_star_node *&node = vectAStarNode_[loc.x + loc.y * width_];
+	if ((isCreated = (node == NULL))) {
+		node = pool_->getAStarNode();
+		++nbNode_;
 	}
-	else
-		isCreated = false;
-	return (node);
+	return node;
 }
