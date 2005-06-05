@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-05 17:14+0200\n"
-"PO-Revision-Date: 2005-06-02 00:11+0100\n"
+"PO-Revision-Date: 2005-06-05 21:11+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -831,7 +831,7 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"<header>text=Inteligencja</header>\n"
+"<header>text=Inteligentna</header>\n"
 "\n"
 "Inteligentne jednostki wymagają 20% mniej doświadczenia niż zwykle, by "
 "awansować.\n"
@@ -843,7 +843,6 @@ msgstr ""
 "jednostek, będziesz raczej przywoływał te z bardziej użytecznymi cechami."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -862,19 +861,18 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"<header>text=Szybki</header>\n"
+"<header>text=Szybka</header>\n"
 "\n"
 "Szybkie jednostki mają 1 dodatkowy punkt ruchu, ale o 10% mniej PŻ niż "
 "normalnie.\n"
 "\n"
-"Szybkość jest najbardziej cenioną cechą, szczególnie w przypadku powolnych "
-"jednostek, takich jak trolle lub ciężkiej piechoty. Miej na uwadze, że "
-"jednostki z cechą Szybki często mają znacznie zwiększoną mobilność w trudnym "
-"terenie. Pamiętaj również, że Szybkie jednostki nie są tak wytrzymałe jak "
-"zwykle, więc nie są tak dobre w utrzymywaniu pozycji."
+"Szybkość jest najbardziej zauważalną cechą, szczególnie w przypadku "
+"powolnych jednostek, takich jak trolle lub ciężka piechota. Miej na uwadze, "
+"że jednostki z cechą Szybka często mają znacznie zwiększoną mobilność w "
+"trudnym terenie. Pamiętaj również, że Szybkie jednostki nie są tak "
+"wytrzymałe jak zwykle, więc gorzej nadają się do utrzymywania pozycji."
 
 #: data/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -892,17 +890,17 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"<header>text=Żywotność</header>\n"
+"<header>text=Żywotna</header>\n"
 "\n"
-"Żytowne jednostki mająo 7PŻ więcej niż zwykle.\n"
+"Żytowne jednostki mają o 7 PŻ więcej niż zwykle.\n"
 "\n"
 "Cecha ta jest zawsze użyteczna, a żywotne jednostki sprawdzają się na każdym "
-"etapie kampanii. Choć w przypadku niektórych trudniej daje się zauważyć "
-"wpływ Żywotności, to zawsze pozostają one wartościowe, gdy trzeba bronić "
-"pozycji przed nieprzyjacielem."
+"etapie kampanii. Żywotność jest szczególnie użyteczną cechą, gdy posiądzie "
+"ją jednostka, która łączy w sobie małą liczbę PŻ z dobrą zdolnością obrony "
+"lub wysokimi odpornościami. Żywotne jednostki są bardzo przydatne, gdy "
+"trzeba bronić ważnej strategicznie pozycji przed nieprzyjacielem."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -920,15 +918,15 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"<header>text=Siła</header>\n"
+"<header>text=Silna</header>\n"
 "\n"
 "Silne jednostki zadają o 1 punkt obrażeń więcej w walce wręcz i mają o 2 PŻ "
 "więcej.\n"
 "\n"
 "Użyteczna dla każdej jednostki walczącej wręcz, Siła najlepiej sprawdza się "
-"w przypadku jednostek, które zadają dużo ciosów, takich jak Elficki "
-"Wojownik. Silne jednostki mogą być bardzo wartościowe, gdy niewielki wzrost "
-"obrażeń decyduje o zadaniu śmiertelnego ciosu."
+"w przypadku tych, które zadają dużo ciosów, takich jak elficki wojownik. "
+"Silne jednostki mogą być bardzo wartościowe, gdy niewielki wzrost obrażeń "
+"decyduje o zadaniu śmiertelnego ciosu."
 
 #: data/help.cfg:243
 msgid ""
@@ -961,6 +959,21 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Lojalna</header>\n"
+"\n"
+"Lojalne jednostki nie wymagają utrzymania. Większość jednostek wymaga "
+"zapłacenia pod koniec tury tylu sztuk złota, ile wynosi ich poziom.\n"
+"\n"
+"\n"
+"Podczas kampanii, pewne jednostki mogą z własnej woli zechcieć przyłączyć "
+"się do armii gracza. Jednostki te posiadają cechę \"Lojalna\". Choć wymagają "
+"zapłaty, by zostać przywołane, to nie trzeba ich utrzymywać i mogą okazać "
+"się nieocenione podczas długich kampanii, w których brakuje złota. Cechy ta "
+"nigdy nie jest przydzielana rekrutowanym jednostkom, więc odesłanie takiej "
+"jednostki lub wysłanie na pewną śmierć może nie być dobrym pomysłem."
 
 #: data/help.cfg:258
 msgid ""
@@ -1002,6 +1015,17 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Zręczna</header>\n"
+"\n"
+"Zręczne jednostki zadają +1 punkt obrażeń za każdy udany atak łukiem.\n"
+"\n"
+"Zręczność jest cechą posiadaną tylko przez Elfy, które znane są z "
+"niesamowitej gracji i wspaniałych umiejętności posługiwania się łukiem. "
+"Niektóre jednak posiadają talent jeszcze większy, niż ich bracia. Elfy te "
+"zadają każdą strzałą dodatkowy punkt pobrażeń."
 
 #: data/items.cfg:264
 msgid ""
@@ -1025,7 +1049,7 @@ msgstr ""
 
 #: data/items.cfg:283
 msgid "Lots of gold"
-msgstr "O mnóstwo złota"
+msgstr "Mnóstwo złota"
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
@@ -1263,67 +1287,72 @@ msgstr ""
 "wyłącznie rozmową Baldrasem."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
-#, fuzzy
 msgid "2p - Blitz"
-msgstr "Błyskawica"
+msgstr "2g - Błyskawica"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
 msgstr ""
-"Mapa do bardzo szybkich pojedynków. Rekomendowane ustawienie 2zł za wioskę."
+"Mapa do bardzo szybkich pojedynków. Rekomendowane ustawienie 2 sztuk złota / "
+"wioskę."
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
-#, fuzzy
 msgid "2p - Charge"
-msgstr "Szarża"
+msgstr "2g - Szarża"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
-msgstr ""
+msgstr "2p - Kryjówka Onisa"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet. Recommended settings of 2G per village."
 msgstr ""
+"Niebezpieczeństwo czai się za każdym rogiem tego podziemnego pola bitwy, "
+"mapie, na której siła spotyka się ze sprytem. Rekomendowane ustawienie 2 "
+"sztuk złota / wioskę."
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
 msgid "2p - Divide and Conquer"
-msgstr ""
+msgstr "2g - Dziel i rządź"
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
-#, fuzzy
 msgid ""
 "This small duel map divides the field of battle into three segments. "
 "Recommended settings of 2G per village."
 msgstr ""
-"Mapa do bardzo szybkich pojedynków. Rekomendowane ustawienie 2zł za wioskę."
+"Mapa do pojedynków, która dzieli pole bitwy na trzy oddzielne fragmenty. "
+"Rekomendowane ustawienie 2 sztuk złota / wioskę."
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
-msgstr ""
+msgstr "2g - Wioski"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Recommended settings of 2G per village."
 msgstr ""
+"Woja zmienia zwyczajne farmy i wioski tego spokojnego regionu w subtelnie "
+"podzielone pole bitwy. Rekomendowanie ustawienia 2 sztuk złota / wioskę."
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
-msgstr ""
+msgstr "2g - Wyspa rekinów"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island. Recommended settings of 2G per village."
 msgstr ""
+"Gracze muszą nawigować w skomplikowanym terenie pokrytej depresjami wyspy. "
+"Rekomendowane ustawienie 2 sztuk złota / wioskę."
 
 #: data/scenarios/multiplayer/2p_IcyWaters.cfg:3
-#, fuzzy
 msgid "2p - Icy Waters"
-msgstr "Lodowate Wody"
+msgstr "2g - Lodowate Wody"
 
 #: data/scenarios/multiplayer/2p_IcyWaters.cfg:5
 msgid ""
@@ -1332,27 +1361,32 @@ msgstr "Bitwa wokół mroźnych wód tego ważnego portu Północnego Wesnoth."
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
-msgstr ""
+msgstr "2g - Meteorytowe jezioro"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended settings of 2G per village."
 msgstr ""
+"Dawno temu wielki meteoryt runął z niebios, zostawiając swój ślad w tym "
+"lesistym regionie. Rekomendowane ustawienie 2 sztuk złota / wioskę."
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
-msgstr ""
+msgstr "2g - Srebrnogłowa przeprawa"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map. Recommended settings of 2G per village."
 msgstr ""
+"Aby osiągnąć zwycięstwo na tej mapie stworzonej do pojedynków na wielu "
+"frontach, gracze muszą przemierzyć wiele różnych typów terenu. Rekomendowane "
+"ustawienie 2 sztuk złota / wioskę."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
 msgid "2p - Sullas Ruins"
-msgstr ""
+msgstr "2g - Ruiny Sullas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
 msgid ""
@@ -1360,11 +1394,13 @@ msgid ""
 "and ice now remain in the shadow of this once mighty empire. Recommended "
 "settings of 2G per village."
 msgstr ""
+"Zalane przez morskie wody i skute lodem ruiny to jedynie cień potężnego "
+"imperium, które się tu niegdyś znajdowało. Rekomendowane ustawienie 2 sztuk "
+"złota / wioskę."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
-#, fuzzy
 msgid "2p - Wesbowl"
-msgstr "Wesbowl"
+msgstr "2g - Wesbowl"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
 msgid ""
@@ -1437,29 +1473,31 @@ msgstr "Remis! Wynik końcowy: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
 msgid "3p - 1v1v1Hex"
-msgstr ""
+msgstr "3g - 1vs1vs1Hex"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
-#, fuzzy
 msgid ""
 "Three players do battle in this small, enclosed region. Recommended settings "
 "of 2G per village."
 msgstr ""
-"Mapa do bardzo szybkich pojedynków. Rekomendowane ustawienie 2zł za wioskę."
+"Trzech graczy walczy w małej, zamkniętrzej przestrzeni. Rekomendowane "
+"ustawienie 2 sztuk złota / wioskę."
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
-msgstr ""
+msgstr "3g - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map. Recommended settings of 2G per village."
 msgstr ""
+"Tylko jedna ze stron osiągnie zwycięstwo na tej mocno ograniczonej mapie dla "
+"trzech graczy. Rekomendowane ustawienie 2 sztuk złota / wioskę."
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
-msgstr ""
+msgstr "3g - Potrójna błyskawica"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
 #, fuzzy
@@ -1470,9 +1508,8 @@ msgstr ""
 "Mapa do bardzo szybkich pojedynków. Rekomendowane ustawienie 2zł za wioskę."
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:7
-#, fuzzy
 msgid "4p - An Island"
-msgstr "Wyspa"
+msgstr "4g - Wyspa"
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:10
 msgid ""
@@ -1501,9 +1538,8 @@ msgstr ""
 "między graczami 1 i 3 przeciwko 2 i 4 dla gry 2vs2."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
-#, fuzzy
 msgid "4p - Clash"
-msgstr "Starcie"
+msgstr "4g - Starcie"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 #, fuzzy
@@ -1515,13 +1551,12 @@ msgstr ""
 "Rekomendowane ustawienie 2 sztuk złota za wioskę."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
-#, fuzzy
 msgid "4p - King of the Hill"
-msgstr "Król Wzgórza"
+msgstr "4g - Król Wzgórza"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
-msgstr ""
+msgstr "4g - Laguna"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
 #, fuzzy
@@ -1532,18 +1567,16 @@ msgstr ""
 "Mapa do bardzo szybkich pojedynków. Rekomendowane ustawienie 2zł za wioskę."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid "4p - Siege Castles"
-msgstr "Oblężone Zamki"
+msgstr "4g - Oblężone Zamki"
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
-#, fuzzy
 msgid "4p - The Valley of Death"
-msgstr "Dolina Śmierci"
+msgstr "4g - Dolina Śmierci"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
-msgstr ""
+msgstr "4g - Pustkowia"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
 msgid ""
@@ -1551,25 +1584,25 @@ msgid ""
 "caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
 "1G per village."
 msgstr ""
+"Obszerne regiony dzikich pustkowi, z terenem usianym lasami, jaskiniami, "
+"rzekami i ruinami starożytnych fortec. Rekomendowane ustawienie 1 sztuki "
+"złota / wioskę."
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
-#, fuzzy
 msgid "5p - Forest of Fear"
-msgstr "Las Strachu"
+msgstr "5g - Las Strachu"
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
-#, fuzzy
 msgid "6p - Hexcake"
-msgstr "Hexcake"
+msgstr "6g - Hexciastko"
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Gra drużynowa: 2 vs 2 lub 3 vs 3."
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
-#, fuzzy
 msgid "7p - Battle World"
-msgstr "Świat Bitew"
+msgstr "7g - Świat Bitew"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1624,9 +1657,8 @@ msgstr ""
 "momentu uzyskania dobrej."
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
-#, fuzzy
 msgid "2p - Across The River"
-msgstr "Przez Rzekę"
+msgstr "2g - Przez rzekę"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
 msgid ""
@@ -3496,7 +3528,7 @@ msgid ""
 "the poison instead of healing."
 msgstr ""
 "Regeneruje się:\n"
-"Jednostka odzyskuje 8 PŻ na turę. Jeśli jest zatruta, usunie trucizną "
+"Jednostka odzyskuje 8 PŻ na turę. Jeśli jest zatruta, usunie truciznę "
 "zamiast się leczyć."
 
 #: data/translations/english.cfg:73 data/units/Great_Troll.cfg:7
@@ -7635,9 +7667,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Troll_Whelp.cfg:3
-#, fuzzy
 msgid "Troll Whelp"
-msgstr "Młody troll"
+msgstr "Troll szczenię"
 
 #: data/units/Troll_Whelp.cfg:21
 msgid ""
@@ -7662,21 +7693,41 @@ msgid ""
 "aid of a nearby village. Their relatively slow speed is a liability, as is "
 "their weakness during daylight hours."
 msgstr ""
+"Słowo \"szczenię\", użyte w odniesieniu do groźnych zwierząt takich jak "
+"wilki i lwy, przynosi na myśl obrazy delikatnych, bezradnych, a nawet "
+"\"uroczych\" stworzeń, które są tak młode, że ledwie potrafią stać na "
+"nogach. Biorąc jednak pod uwagę naturę trolli, ich \"szczenię\" posiada "
+"potężną siłę typową dla tej rasy. Szczenięta trolli poruszają się niezdarnie "
+"w ciałach większych niż dorosłych ludzi i dorównujących im siłą, zaś "
+"niesamowite zdolności regeneracji i podobna do kamienia skóra czynią z nich "
+"niebezpiecznych przeciwników, szczególnie w górach i na wzgórzach, z których "
+"się wywodzą. Pomocna w walce ze szczenięciem trolli jest jedynie ich mała "
+"szybkość oraz fakt, że nie osiągnęły swojej pełnej siły... jeszcze.\n"
+"\n"
+"Sposób użycia:\n"
+"Szczenięta trolli walczą dobrze na nierównym, kamienistym terenie, "
+"szczególnie w nocy, ale są podatne na ataki łuczników, zwłaszcza na otwartej "
+"przestrzeni i dla własnego dobra zawsze powinny unikać użytkowników magii. "
+"Sprawdzają się całkiem dobrze przeciwko wrogom o kruchej budowie, takim jak "
+"szkielety, ale słabo sobie radzą z dobrze opancerzonymi lub naturalnie "
+"wytrzymałymi przeciwnikami, takimi jak ich leśny odpowiednik - drzewiec. "
+"Regeneracja pozwala im niwelować działanie trucizy i leczyć rany bez pomocy "
+"pobliskich wiosek. Należy także pamiętać, że poruszają się powoli i słabną "
+"za dnia."
 
 #: data/units/Vampire_Bat.cfg:3
 msgid "Vampire Bat"
 msgstr "Nietoperz wampir"
 
 #: data/units/Vampire_Bat.cfg:16
-#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"Nietoperze wampiry to nieumarłe potwory, które kąsają swych wrogów. Choć ich "
-"ugryzienia nie są zbyt mocne, życie ich ofiar jest odsysane wraz z krwią, co "
-"wzmacnia nietoperze."
+"Nietoperze wampiry to nieumarłe bestie, które gryzą swoje ofiary. Choć ich "
+"kły nie są zbyt silne, to nietoperze te wzmacniają się wysysając wraz z "
+"krwią życie swych ofiar."
 
 #: data/units/Vampire_Lady.cfg:3
 msgid "female^Vampire Lady"
@@ -8121,7 +8172,7 @@ msgstr "(obie powinny przetrwać)"
 
 #: src/actions.cpp:657
 msgid "% Pr[kills/killed by/both survive]"
-msgstr ""
+msgstr "% Pr[zabija/zabity przez/obie przetrwają]"
 
 #: src/actions.cpp:859 src/actions.cpp:1025 src/display.cpp:1038
 msgid "poisoned"
@@ -8357,9 +8408,10 @@ msgid "The Battle for Wesnoth"
 msgstr "Bitwa o Wesnoth"
 
 #: src/game.cpp:624
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Plik nie może zostać wczytany - jest uszkodzony"
+msgstr ""
+"Ostrzeżenie: Plik, który próbowałeś wczytać jest uszkodzony. Ładowanie mimo "
+"tego.\n"
 
 #: src/game.cpp:646 src/multiplayer_connect.cpp:891
 msgid ""
@@ -8582,9 +8634,8 @@ msgid "Choose your preferred language:"
 msgstr "Wybierz twój preferowany język:"
 
 #: src/game.cpp:1284
-#, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "Błąd podczas ładowania plików konfiguracyjnych gry: '"
+msgstr "Ostrzeżenie: Błąd podczas ładowania plików konfiguracyjnych gry: '"
 
 #: src/game.cpp:1333
 msgid "Error loading game configuration files: '"
@@ -8793,9 +8844,8 @@ msgid "Choose host to connect to: "
 msgstr "Wybierz serwer do połączenia: "
 
 #: src/multiplayer.cpp:123 src/multiplayer.cpp:160
-#, fuzzy
 msgid "Connecting to Server..."
-msgstr "Połącz z serwerem"
+msgstr "Łączenie z serwerem..."
 
 #: src/multiplayer.cpp:133
 msgid "Connecting to remote host..."
@@ -9051,39 +9101,39 @@ msgstr "<brak otwartych gier>"
 
 #: src/multiplayer_ui.cpp:78
 msgid "Red"
-msgstr "Czerwona"
+msgstr "Czerwony"
 
 #: src/multiplayer_ui.cpp:80
 msgid "Blue"
-msgstr "Niebieska"
+msgstr "Niebieski"
 
 #: src/multiplayer_ui.cpp:82
 msgid "Green"
-msgstr "Zielona"
+msgstr "Zielony"
 
 #: src/multiplayer_ui.cpp:84
 msgid "Yellow"
-msgstr "Żółta"
+msgstr "Żółty"
 
 #: src/multiplayer_ui.cpp:86
 msgid "Purple"
-msgstr "Fioletowa"
+msgstr "Purpurowy"
 
 #: src/multiplayer_ui.cpp:88
 msgid "Orange"
-msgstr "Pomarańczowa"
+msgstr "Pomarańczowy"
 
 #: src/multiplayer_ui.cpp:90
 msgid "Grey"
-msgstr "Szara"
+msgstr "Szary"
 
 #: src/multiplayer_ui.cpp:92
 msgid "White"
-msgstr "Biała"
+msgstr "Biały"
 
 #: src/multiplayer_ui.cpp:94
 msgid "Brown"
-msgstr "Brązowa"
+msgstr "Brązowy"
 
 #: src/multiplayer_ui.cpp:96
 msgid "Invalid colour"
@@ -9131,7 +9181,7 @@ msgstr ")"
 
 #: src/multiplayer_wait.cpp:375 src/playturn.cpp:1872
 msgid "unit^Gold"
-msgstr "sztuk złota"
+msgstr "złota"
 
 #: src/playlevel.cpp:602 src/playlevel.cpp:871
 msgid "The file you have tried to load is corrupt"
@@ -9180,7 +9230,7 @@ msgstr "Złoto:"
 #: src/playlevel.cpp:854
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr ""
+msgstr "80% złota zotaje zachowane do następnego scenariusza"
 
 #: src/playlevel.cpp:855
 msgid "Retained Gold: "
