@@ -29,7 +29,7 @@ class gamestatus;
 
 typedef std::vector<gamemap::location> vector_location;
 typedef std::vector<a_star_node*> vector_a_star_node;
-typedef std::set<gamemap::location>	set_location;
+typedef std::set<gamemap::location> set_location;
 
 // heaps give the biggest element for free, so we want the biggest element to
 // have the smallest cost
@@ -43,12 +43,11 @@ static void a_star_init(gamemap::location const &src, gamemap::location const &d
                         vector_location &vectLocation, std::set<gamemap::location> const *teleports,
                         size_t &parNbTeleport)
 {
-	a_star_node *locStartNode = NULL;
-	bool locIsCreated = false;
+	bool locIsCreated;
 
 	aStarGameWorld.resize_IFN(parWidth, parHeight);
 	wassert(aStarGameWorld.empty());
-	locStartNode = aStarGameWorld.getNodeFromLocation(src, locIsCreated);
+	a_star_node *locStartNode = aStarGameWorld.getNodeFromLocation(src, locIsCreated);
 	wassert(locIsCreated);
 	locStartNode->initNode(src, dst, 0.0, NULL, teleports);
 
@@ -64,13 +63,6 @@ static void a_star_init(gamemap::location const &src, gamemap::location const &d
 	openList.reserve(locAllocSize);
 	openList.push_back(locStartNode);
 
-	if (locValueH < 32)
-		locAllocSize = 32;
-	else if (locValueH > 256)
-		locAllocSize = 256;
-	else
-		locAllocSize = locValueH;
-
 	if (teleports != NULL)
 		parNbTeleport = teleports->size();
 	else
@@ -80,16 +72,7 @@ static void a_star_init(gamemap::location const &src, gamemap::location const &d
 	vectLocation.resize(parNbTeleport + 6);
 
 	if (parNbTeleport > 0)
-	{
-		gamemap::location* locLocation;
-
-		locLocation = &vectLocation[6];
-		for (set_location::const_iterator it = teleports->begin(); it != teleports->end(); ++it) {
-			locLocation->x = (*it).x;
-			locLocation->y = (*it).y;
-			++locLocation;
-		}
-	}
+		std::copy(teleports->begin(), teleports->end(), &vectLocation[6]);
 }
 
 static void a_star_explore_neighbours(gamemap::location const &dst, const double stop_at,
@@ -100,10 +83,6 @@ static void a_star_explore_neighbours(gamemap::location const &dst, const double
                                       a_star_world &aStarGameWorld,
                                       a_star_node *parCurNode, const size_t parNbTeleport)
 {
-	//----------------- PRE_CONDITIONS ------------------
-	wassert(parCurNode != NULL);
-	//---------------------------------------------------
-
 	typedef std::pair<vector_a_star_node::iterator, vector_a_star_node::iterator> pair_node_iter;
 
 	a_star_node *locNextNode;
@@ -115,18 +94,10 @@ static void a_star_explore_neighbours(gamemap::location const &dst, const double
 
 	get_adjacent_tiles(parCurNode->loc, &vectLocation[0]);
 
-	if ((parNbTeleport > 0) && (teleports->count(parCurNode->loc) > 0))
-	{
-		wassert(teleports != NULL);
-		wassert(teleports->size() == parNbTeleport);
-		wassert(vectLocation.size() == parNbTeleport + 6);
+	if (parNbTeleport > 0 && teleports->count(parCurNode->loc) > 0)
 		locSize = parNbTeleport + 6;
-	}
 	else
-	{
-		wassert(vectLocation.size() >= 6);
 		locSize = 6;
-	}
 
 	bool broken_heap = false;
 	int locNbAdded = 0;
@@ -175,10 +146,8 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
                            const size_t parHeight, std::set<gamemap::location> const *teleports)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	wassert(parWidth > 0);
-	wassert(parHeight > 0);
-	wassert(src.valid());
-	wassert(dst.valid());
+	wassert(src.valid(parWidth, parHeight));
+	wassert(dst.valid(parWidth, parHeight));
 	wassert(costCalculator != NULL);
 	wassert(stop_at <= costCalculator->getNoPathValue());
 	//---------------------------------------------------
@@ -192,19 +161,12 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 	a_star_node *locDestNode = NULL;
 	a_star_node *locCurNode = NULL;
 
-	wassert(openList.empty());
-	wassert(aStarGameWorld.empty());
-	assertParanoAstar(aStarGameWorld.reallyEmpty());
-
 	LOG_PF << "A* search: " << src << " -> " << dst << '\n';
 
-	if ( (src.valid(int(parWidth), int(parHeight)) == false) ||
-			 (dst.valid(int(parWidth), int(parHeight)) == false) ||
-			 (costCalculator->cost(dst, 0, true) >= stop_at))
-	{
+	if (costCalculator->cost(dst, 0, true) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
 		locRoute.move_left = int(costCalculator->getNoPathValue());
-		return (locRoute);
+		return locRoute;
 	}
 
 	a_star_init(src, dst, openList, aStarGameWorld, parWidth, parHeight, vectLocation, teleports, locNbTeleport);
@@ -253,13 +215,7 @@ label_AStarSearch_end:
 	openList.clear();
 	POSS_AStarNode.reduce();
 	aStarGameWorld.clear();
-
-	//----------------- POST_CONDITIONS -----------------
-	wassert(openList.empty());
-	wassert(aStarGameWorld.empty());
-	assertParanoAstar(aStarGameWorld.reallyEmpty());
-	//---------------------------------------------------
-	return (locRoute);
+	return locRoute;
 }
 
 namespace {
