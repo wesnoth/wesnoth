@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-03 22:49+0200\n"
+"POT-Creation-Date: 2005-06-05 17:14+0200\n"
 "PO-Revision-Date: 2005-06-03 00:57+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -214,7 +214,7 @@ msgstr ""
 "det ger också en kostnad i underhåll. Läs <ref>dst=income_and_upkeep "
 "text='Inkomst och underhåll'</ref> för mer information om detta."
 
-#: data/help.cfg:92 src/help.cpp:1192
+#: data/help.cfg:92 src/help.cpp:1196
 msgid "Movement"
 msgstr "Förflyttning"
 
@@ -1282,11 +1282,223 @@ msgid ""
 "Baldras."
 msgstr "Om du vill så kan du komma, men ledaren vill bara tala med Baldras."
 
-#: data/scenarios/multiplayer/An_Island.cfg:7
-msgid "An Island"
+#: data/scenarios/multiplayer/2p_Blitz.cfg:7
+#, fuzzy
+msgid "2p - Blitz"
+msgstr "Blitz"
+
+#: data/scenarios/multiplayer/2p_Blitz.cfg:9
+#: data/scenarios/multiplayer/2p_Charge.cfg:9
+msgid "A duel map for super fast play. Recommended setting of 2g per village."
+msgstr ""
+"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
+"på att ge 2 guld per drag."
+
+#: data/scenarios/multiplayer/2p_Charge.cfg:7
+#, fuzzy
+msgid "2p - Charge"
+msgstr "Stormning"
+
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
+msgid "2p - Den of Onis"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
+msgid ""
+"Danger lurks around every corner in this underground battlefield, a duel map "
+"where force and subterfuge meet. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
+msgid "2p - Divide and Conquer"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
+#, fuzzy
+msgid ""
+"This small duel map divides the field of battle into three segments. "
+"Recommended settings of 2G per village."
+msgstr ""
+"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
+"på att ge 2 guld per drag."
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:3
+msgid "2p - Hamlets"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:4
+msgid ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
+msgid "2p - Hornshark Island"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
+msgid ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:3
+#, fuzzy
+msgid "2p - Icy Waters"
+msgstr "Ishav"
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:5
+msgid ""
+"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+msgstr "Strid i och omkring ishavet om denna viktiga hamn i norra Wesnoth."
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
+msgid "2p - Meteor Lake"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
+msgid ""
+"Long ago, a great meteor fell from the heavens, leaving its mark on this "
+"coniferous region. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
+msgid "2p - Silverhead Crossing"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
+msgid ""
+"Players must traverse all manner of terrain in pursuit of victory on this "
+"multi-fronted duel map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
+msgid "2p - Sullas Ruins"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
+msgid ""
+"Flooded by the seas and battered by the winter elements, only ruins, water "
+"and ice now remain in the shadow of this once mighty empire. Recommended "
+"settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
+#, fuzzy
+msgid "2p - Wesbowl"
+msgstr "Wesbowl"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
+msgid ""
+"In Wesbowl, a player must get their ball to the other player's end zone. "
+"However, the other player can attack your units. Wesbowl is played with "
+"blunt weapons, and healers are on hand, so when units are killed, they "
+"return to that player's end zone with an injury."
+msgstr ""
+"I Wesbowl skall en spelare få sin boll till den andra spelarens målzon. "
+"Motståndaren kan dock försöka förhindra detta genom att attackera. Wesbowl "
+"spelas med trubbiga vapen och helare finns på plats, så att när trupper "
+"dödas så återbördas de skadade till spelarens målzon."
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:11
+msgid ""
+"\n"
+"Victory:\n"
+"@Move either ball to your opponent's endzone more times than they move their "
+"ball to yours\n"
+"Defeat:\n"
+"#Opponent moves the balls to your endzone more times than you move them to "
+"theirs"
+msgstr ""
+"\n"
+"Seger:\n"
+"@Flytta bollarna till din motståndares målzon fler gånger än de flyttar dem "
+"till din\n"
+"Nederlag:\n"
+"#Din motståndare flyttar bollarna till din målzon fler gånger än du flyttar "
+"dem till deras"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:199
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:476
+msgid "Red scores! Current score is $redscore-$bluescore"
+msgstr "Poäng till röda laget! Poängställning: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:247
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:524
+msgid "Blue scores! Current score is $redscore-$bluescore"
+msgstr "Poäng till blå laget! Poängställning: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:337
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:614
+msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+msgstr "Jag kanske borde skicka vidare till $passto.type ($xloc,$yloc)?"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:339
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:616
+msgid "Yes!"
+msgstr "Ja!"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:361
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:638
+#: data/scenarios/tutorial/Basic_Training.cfg:318
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
+msgid "No"
+msgstr "Nej"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:661
+msgid "Blue team wins! Final score: $redscore-$bluescore"
+msgstr "Det blå laget vinner! Poängsumma: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:673
+msgid "Red team wins! Final score: $redscore-$bluescore"
+msgstr "Det röda laget vinner! Poängsumma: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:685
+msgid "Draw! Final score: $redscore-$bluescore"
+msgstr "Oavgjort! Poängsumma: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
+msgid "3p - 1v1v1Hex"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
+#, fuzzy
+msgid ""
+"Three players do battle in this small, enclosed region. Recommended settings "
+"of 2G per village."
+msgstr ""
+"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
+"på att ge 2 guld per drag."
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:3
+msgid "3p - Morituri"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:4
+msgid ""
+"Only one faction will emerge victorious from this tightly bordered three-"
+"player map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
+msgid "3p - Triple Blitz"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
+#, fuzzy
+msgid ""
+"Three players come head to head on this water-cut battlefield. Recommended "
+"settings of 2G per village."
+msgstr ""
+"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
+"på att ge 2 guld per drag."
+
+#: data/scenarios/multiplayer/4p_An_Island.cfg:7
+#, fuzzy
+msgid "4p - An Island"
 msgstr "En ö"
 
-#: data/scenarios/multiplayer/An_Island.cfg:10
+#: data/scenarios/multiplayer/4p_An_Island.cfg:10
 msgid ""
 "A 4 player map that is suitable for individual or team play, victory rests "
 "of dominating the centre island. North-West: Forest dominated area, North-"
@@ -1298,36 +1510,12 @@ msgstr ""
 "nordöst: snötäckta vidder, sydväst: blandad öken och slätt, sydöst: "
 "bergsparti. "
 
-#: data/scenarios/multiplayer/Blitz.cfg:7
-msgid "Blitz"
-msgstr "Blitz"
-
-#: data/scenarios/multiplayer/Blitz.cfg:9
-#: data/scenarios/multiplayer/Charge.cfg:9
-msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr ""
-"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
-"på att ge 2 guld per drag."
-
-#: data/scenarios/multiplayer/BrokenBridge.cfg:2
-msgid "The Broken Bridge"
-msgstr "Den trasiga bron"
-
-#: data/scenarios/multiplayer/BrokenBridge.cfg:4
-msgid ""
-"A small two vs. two map across the ruins of a once great bridge. Perfect for "
-"fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
-"2,4."
-msgstr ""
-"En liten 2-mot-2-karta över ruinerna av en tidigare mäktig bro. Den är "
-"perfekt för snabba, stridsintensiva och lagorienterade spel. Den skall "
-"spelas med spelare 1 och 3 i ett lag, och 2 och 4 i det andra."
-
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
-msgid "Castle Hopping Isle"
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
+#, fuzzy
+msgid "4p - Castle Hopping Isle"
 msgstr "Borghopparön"
 
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
 msgid ""
 "Many closely placed and strategically located castles. Small map for fast "
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
@@ -1338,15 +1526,12 @@ msgstr ""
 "drag och att lagen utgörs av spelare 1 och 3 respektive 2 och 4 i 2-mot-2 "
 "spel."
 
-#: data/scenarios/multiplayer/Charge.cfg:7
-msgid "Charge"
-msgstr "Stormning"
-
-#: data/scenarios/multiplayer/Clash.cfg:3
-msgid "Clash"
+#: data/scenarios/multiplayer/4p_Clash.cfg:3
+#, fuzzy
+msgid "4p - Clash"
 msgstr "Sammandrabbning"
 
-#: data/scenarios/multiplayer/Clash.cfg:5
+#: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid ""
 "Small map for 2v2. Teams should be player 1 and 3, vs player 2 and 4. "
 "Recommended setting of 2 gold per village."
@@ -1354,26 +1539,63 @@ msgstr ""
 "En liten karta för 2 mot 2-spel. Spelare 1 och 3 är ett lag, och spelare 2 "
 "och 4 det andra. Det rekommenderas att byarna ger 2 guld per drag."
 
-#: data/scenarios/multiplayer/ForestOfFear.cfg:3
-msgid "Forest of Fear"
+#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
+#, fuzzy
+msgid "4p - King of the Hill"
+msgstr "Herre på täppan"
+
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:3
+msgid "4p - Lagoon"
+msgstr ""
+
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:4
+#, fuzzy
+msgid ""
+"Four factions contend for dominance over this watery settlement. Recommended "
+"settings of 1G per village."
+msgstr ""
+"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
+"på att ge 2 guld per drag."
+
+#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#, fuzzy
+msgid "4p - Siege Castles"
+msgstr "Belägring"
+
+#: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
+#, fuzzy
+msgid "4p - The Valley of Death"
+msgstr "Dödens dal"
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
+msgid "4p - The Wilderlands"
+msgstr ""
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
+msgid ""
+"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
+"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
+"1G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
+#, fuzzy
+msgid "5p - Forest of Fear"
 msgstr "Fruktans skog"
 
-#: data/scenarios/multiplayer/Hexcake.cfg:3
-msgid "Hexcake"
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:3
+#, fuzzy
+msgid "6p - Hexcake"
 msgstr "Sexkant"
 
-#: data/scenarios/multiplayer/Hexcake.cfg:5
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2 mot 2- eller 3 mot 3-spel"
 
-#: data/scenarios/multiplayer/IcyWaters.cfg:3
-msgid "Icy Waters"
-msgstr "Ishav"
-
-#: data/scenarios/multiplayer/IcyWaters.cfg:5
-msgid ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
-msgstr "Strid i och omkring ishavet om denna viktiga hamn i norra Wesnoth."
+#: data/scenarios/multiplayer/7p_battleworld.cfg:7
+#, fuzzy
+msgid "7p - Battle World"
+msgstr "Krigsvärld"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1425,102 +1647,9 @@ msgstr ""
 "huvudsakligen har snötäckt terräng. Observera att slumpkartor ofta är "
 "obalanserade, men i mån av tid kan du skapa om dem tills du får en bra karta."
 
-#: data/scenarios/multiplayer/Wesbowl.cfg:3
-msgid "Wesbowl"
-msgstr "Wesbowl"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:6
-msgid ""
-"In Wesbowl, a player must get their ball to the other player's end zone. "
-"However, the other player can attack your units. Wesbowl is played with "
-"blunt weapons, and healers are on hand, so when units are killed, they "
-"return to that player's end zone with an injury."
-msgstr ""
-"I Wesbowl skall en spelare få sin boll till den andra spelarens målzon. "
-"Motståndaren kan dock försöka förhindra detta genom att attackera. Wesbowl "
-"spelas med trubbiga vapen och helare finns på plats, så att när trupper "
-"dödas så återbördas de skadade till spelarens målzon."
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:11
-msgid ""
-"\n"
-"Victory:\n"
-"@Move either ball to your opponent's endzone more times than they move their "
-"ball to yours\n"
-"Defeat:\n"
-"#Opponent moves the balls to your endzone more times than you move them to "
-"theirs"
-msgstr ""
-"\n"
-"Seger:\n"
-"@Flytta bollarna till din motståndares målzon fler gånger än de flyttar dem "
-"till din\n"
-"Nederlag:\n"
-"#Din motståndare flyttar bollarna till din målzon fler gånger än du flyttar "
-"dem till deras"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:199
-#: data/scenarios/multiplayer/Wesbowl.cfg:476
-msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr "Poäng till röda laget! Poängställning: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:247
-#: data/scenarios/multiplayer/Wesbowl.cfg:524
-msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr "Poäng till blå laget! Poängställning: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:337
-#: data/scenarios/multiplayer/Wesbowl.cfg:614
-msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "Jag kanske borde skicka vidare till $passto.type ($xloc,$yloc)?"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:339
-#: data/scenarios/multiplayer/Wesbowl.cfg:616
-msgid "Yes!"
-msgstr "Ja!"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:361
-#: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/Basic_Training.cfg:318
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
-msgid "No"
-msgstr "Nej"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:661
-msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr "Det blå laget vinner! Poängsumma: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:673
-msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr "Det röda laget vinner! Poängsumma: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:685
-msgid "Draw! Final score: $redscore-$bluescore"
-msgstr "Oavgjort! Poängsumma: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:3
-msgid "Battle for Weslin Bridge"
-msgstr "Striden vid Weslinbron"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:5
-msgid ""
-"Teams of 2 fight for control of the central bridge choke-point. Good for "
-"medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
-msgstr ""
-"Tvåmannalag kämpar om kontrollen över flaskhalsen vid den centralt belägna "
-"bron. Kartan lämpar sig för mellanlånga spel. Spelare 1 och 3 måste vara "
-"allierade, och 2 och 4 likaså."
-
-#: data/scenarios/multiplayer/battleworld.cfg:7
-msgid "Battle World"
-msgstr "Krigsvärld"
-
-#: data/scenarios/multiplayer/castles.cfg:7
-msgid "Siege Castles"
-msgstr "Belägring"
-
 #: data/scenarios/multiplayer/scenarios.cfg:3
-msgid "Across The River"
+#, fuzzy
+msgid "2p - Across The River"
 msgstr "Över floden"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
@@ -1533,153 +1662,6 @@ msgstr ""
 "tämligen välbalanserad.\n"
 "Om du låter datorn spela mot sig själv, så kan du se hur bra en grupp klarar "
 "sig mot den andra."
-
-#: data/scenarios/multiplayer/scenarios.cfg:110
-msgid "The Valley of Death"
-msgstr "Dödens dal"
-
-#: data/scenarios/multiplayer/scenarios.cfg:111
-#, fuzzy
-msgid " "
-msgstr "; "
-
-#: data/scenarios/multiplayer/scenarios.cfg:156
-msgid "King of the Hill"
-msgstr "Herre på täppan"
-
-#: data/scenarios/multiplayer/scenarios.cfg:195
-msgid "2p - Divide and Conquer"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:196
-#, fuzzy
-msgid ""
-"This small duel map divides the field of battle into three segments. "
-"Recommended settings of 2G per village."
-msgstr ""
-"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
-"på att ge 2 guld per drag."
-
-#: data/scenarios/multiplayer/scenarios.cfg:226
-msgid "2p - Silverhead Crossing"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:227
-msgid ""
-"Players must traverse all manner of terrain in pursuit of victory on this "
-"multi-fronted duel map. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:256
-msgid "2p - Meteor Lake"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:257
-msgid ""
-"Long ago, a great meteor fell from the heavens, leaving its mark on this "
-"coniferous region. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:286
-msgid "2p - Den of Onis"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:287
-msgid ""
-"Danger lurks around every corner in this underground battlefield, a duel map "
-"where force and subterfuge meet. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:316
-msgid "2p - Hamlets"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:317
-msgid ""
-"Warfare transforms the simple farms and villages of a peaceful region into a "
-"subtly parceled battlefield. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:346
-msgid "2p - Hornshark Island"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:347
-msgid ""
-"Players must navigate the dispersive terrain of this small but "
-"topographically dense island. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:376
-msgid "2p - Sullas Ruins"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:377
-msgid ""
-"Flooded by the seas and battered by the winter elements, only ruins, water "
-"and ice now remain in the shadow of this once mighty empire. Recommended "
-"settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:406
-msgid "3p - 1v1v1Hex"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:407
-#, fuzzy
-msgid ""
-"Three players do battle in this small, enclosed region. Recommended settings "
-"of 2G per village."
-msgstr ""
-"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
-"på att ge 2 guld per drag."
-
-#: data/scenarios/multiplayer/scenarios.cfg:443
-msgid "4p - Lagoon"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:444
-#, fuzzy
-msgid ""
-"Four factions contend for dominance over this watery settlement. Recommended "
-"settings of 1G per village."
-msgstr ""
-"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
-"på att ge 2 guld per drag."
-
-#: data/scenarios/multiplayer/scenarios.cfg:487
-msgid "4p - The Wilderlands"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:488
-msgid ""
-"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
-"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
-"1G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:531
-msgid "3p - Morituri"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:532
-msgid ""
-"Only one faction will emerge victorious from this tightly bordered three-"
-"player map. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:568
-msgid "3p - Triple Blitz"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:569
-#, fuzzy
-msgid ""
-"Three players come head to head on this water-cut battlefield. Recommended "
-"settings of 2G per village."
-msgstr ""
-"En duellkarta för mycket snabbt spel. Det rekommenderas att byarna ställs in "
-"på att ge 2 guld per drag."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
 msgid "Basic Training"
@@ -4776,10 +4758,12 @@ msgstr "Draksoldat"
 #: data/units/Drake_Clasher.cfg:18
 #, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Clashers' weapons of choice "
-"are the sword and spear, which they use to great effect. The greatest "
-"Clashers can become Drake Gladiators or Slashers."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Clashers' "
+"weapons of choice are the sword and spear, which they use to great effect. "
+"The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
 "Med sina förkrympta vingar och sin oförmåga att använda sin inre eld som "
 "vapen kan dessa anses vara olyckligt lottade bland drakfolket; detta är dock "
@@ -4788,24 +4772,24 @@ msgstr ""
 "tunga rustningar. Soldaterna använder svärd och spikklubbor med bravur. De "
 "bästa bland soldaterna kan bli gladiatorer eller veteraner. "
 
-#: data/units/Drake_Clasher.cfg:18 data/units/Drake_Enforcer.cfg:18
-#: data/units/Drake_Gladiator.cfg:19 data/units/Drake_Slasher.cfg:19
-#: data/units/Drake_Warden.cfg:19
+#: data/units/Drake_Enforcer.cfg:3
+msgid "Drake Enforcer"
+msgstr "Drakbetvingare"
+
+#: data/units/Drake_Enforcer.cfg:18
 #, fuzzy
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
-"would be mistaken."
+"would be mistaken. Drake Enforcers protect their vulnerable hides with thick "
+"brass armor and they arm themselves with as many emerald edged weapons as "
+"possible to fend off whatever opponents may await them."
 msgstr ""
 "Med sina förkrympta vingar och oförmåga att använda sin inre eld som vapen "
-"anses dessa ofta vara olyckligt lottade bland drakfolket; detta är dock ett "
-"stort misstag. Betvingarna skyddar sig med tjocka mässingsrustningar och de "
-"beväpnar sig med så många smaragdkantade vapen som möjligt för att avvärja "
-"varje hot från deras fiender."
-
-#: data/units/Drake_Enforcer.cfg:3
-msgid "Drake Enforcer"
-msgstr "Drakbetvingare"
+"anses dessa ofta vara olyckligt lottade bland drakfolket, vilket är ett "
+"stort misstag. Drakgladiatorerna skyddar sig med tjocka mässingsrustningar "
+"och de beväpnar sig med så många smaragdkantade vapen som möjligt för att "
+"avvärja varje hot från deras fiender."
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -4882,9 +4866,11 @@ msgstr "Drakgladiator"
 #: data/units/Drake_Gladiator.cfg:19
 #, fuzzy
 msgid ""
-" Drake Gladiators protect their vulnerable hides with thick brass armor and "
-"they arm themselves with as many emerald edged weapons as possible to fend "
-"off whatever opponents may await them."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. Drake Gladiators protect their vulnerable hides with "
+"thick brass armor and they arm themselves with as many emerald edged weapons "
+"as possible to fend off whatever opponents may await them."
 msgstr ""
 "Med sina förkrympta vingar och oförmåga att använda sin inre eld som vapen "
 "anses dessa ofta vara olyckligt lottade bland drakfolket, vilket är ett "
@@ -4975,9 +4961,11 @@ msgstr "Drakveteran"
 #: data/units/Drake_Slasher.cfg:19
 #, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Slashers' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Slashers' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 "Med sina förkrympta vingar och oförmåga att använda sin inre eld som vapen "
 "anses dessa ofta vara olyckligt lottade bland drakfolket, vilket är ett "
@@ -4999,9 +4987,11 @@ msgstr "Drakväktare"
 #: data/units/Drake_Warden.cfg:19
 #, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Wardens' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Wardens' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 "Med sina förkrympta vingar och oförmåga att använda sin inre eld som vapen "
 "anses dessa ofta vara olyckligt lottade bland drakfolket, vilket är ett "
@@ -8093,159 +8083,159 @@ msgstr "-   Grafikutvecklare"
 msgid "+Developers"
 msgstr "+Utvecklare"
 
-#: src/about.cpp:57
+#: src/about.cpp:58
 msgid "+General Purpose Administrators"
 msgstr "+Administratörer"
 
-#: src/about.cpp:61
+#: src/about.cpp:62
 msgid "+Artwork and graphics designers"
 msgstr "+Grafik"
 
-#: src/about.cpp:86
+#: src/about.cpp:88
 msgid "+Music"
 msgstr "+Musik"
 
-#: src/about.cpp:92
+#: src/about.cpp:94
 msgid "+Scenario Designers"
 msgstr "+Scenarioförfattare"
 
-#: src/about.cpp:101
+#: src/about.cpp:103
 msgid "+Multiplayer Maps"
 msgstr "+Gruppspelskartor"
 
-#: src/about.cpp:105
+#: src/about.cpp:107
 msgid "+Packagers"
 msgstr "+Paketerare"
 
-#: src/about.cpp:115
+#: src/about.cpp:117
 msgid "+Miscellaneous"
 msgstr "+Diverse"
 
-#: src/about.cpp:120
+#: src/about.cpp:122
 msgid "+Internationalization Managers"
 msgstr "+Översättningsamordnare"
 
-#: src/about.cpp:126
+#: src/about.cpp:129
 msgid "+Afrikaans Translation"
 msgstr "+Afrikaansk översättning"
 
-#: src/about.cpp:130
+#: src/about.cpp:133
 msgid "+Basque Translation"
 msgstr "+Baskisk översättning"
 
-#: src/about.cpp:135
+#: src/about.cpp:138
 msgid "+Bulgarian Translation"
 msgstr "+Bulgarisk översättning"
 
-#: src/about.cpp:138
+#: src/about.cpp:141
 msgid "+Catalan Translation"
 msgstr "+Katalansk översättning"
 
-#: src/about.cpp:145
+#: src/about.cpp:148
 msgid "+Chinese Translation"
 msgstr "+Kinesisk översättning"
 
-#: src/about.cpp:148
+#: src/about.cpp:151
 msgid "+Czech Translation"
 msgstr "+Tjeckisk översättning"
 
-#: src/about.cpp:156
+#: src/about.cpp:159
 msgid "+Danish Translation"
 msgstr "+Dansk översättning"
 
-#: src/about.cpp:160
+#: src/about.cpp:163
 msgid "+Dutch Translation"
 msgstr "+Holländsk översättning"
 
-#: src/about.cpp:167
+#: src/about.cpp:170
 msgid "+English (GB) Translation"
 msgstr "+Brittisk-engelsk översättning"
 
-#: src/about.cpp:170
+#: src/about.cpp:173
 msgid "+Estonian Translation"
 msgstr "+Estnisk översättning"
 
-#: src/about.cpp:173
+#: src/about.cpp:176
 msgid "+Finnish Translation"
 msgstr "+Finsk översättning"
 
-#: src/about.cpp:177
+#: src/about.cpp:181
 msgid "+French Translation"
 msgstr "+Fransk översättning"
 
-#: src/about.cpp:190
+#: src/about.cpp:194
 msgid "+German Translation"
 msgstr "+Tysk översättning"
 
-#: src/about.cpp:201
+#: src/about.cpp:205
 msgid "+Greek Translation"
 msgstr "+Grekisk översättning"
 
-#: src/about.cpp:205
+#: src/about.cpp:209
 msgid "+Hungarian Translation"
 msgstr "+Ungersk översättning"
 
-#: src/about.cpp:216
+#: src/about.cpp:220
 msgid "+Italian Translation"
 msgstr "+Italiensk översättning"
 
-#: src/about.cpp:225
+#: src/about.cpp:229
 msgid "+Japanese Translation"
 msgstr "+Japansk översättning"
 
-#: src/about.cpp:230
+#: src/about.cpp:234
 msgid "+Latin Translation"
 msgstr "+Latinsk översättning"
 
-#: src/about.cpp:233
+#: src/about.cpp:237
 msgid "+Norwegian Translation"
 msgstr "+Norsk översättning"
 
-#: src/about.cpp:239
+#: src/about.cpp:243
 msgid "+Polish Translation"
 msgstr "+Polsk översättning"
 
-#: src/about.cpp:249
+#: src/about.cpp:253
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Brasiliansk-portugisisk översättning"
 
-#: src/about.cpp:257
+#: src/about.cpp:261
 msgid "+Russian Translation"
 msgstr "+Rysk översättning"
 
-#: src/about.cpp:262
+#: src/about.cpp:266
 msgid "+Serbian Translation"
 msgstr "+Serbisk översättning"
 
-#: src/about.cpp:265
+#: src/about.cpp:269
 msgid "+Slovak Translation"
 msgstr "+Slovakisk översättning"
 
-#: src/about.cpp:268
+#: src/about.cpp:272
 msgid "+Slovenian Translation"
 msgstr "+Slovakisk översättning"
 
-#: src/about.cpp:271
+#: src/about.cpp:275
 msgid "+Spanish Translation"
 msgstr "+Spansk översättning"
 
-#: src/about.cpp:279
+#: src/about.cpp:283
 msgid "+Swedish Translation"
 msgstr "+Svensk översättning"
 
-#: src/about.cpp:285
+#: src/about.cpp:289
 msgid "+Turkish Translation"
 msgstr "+Turkisk översättning"
 
-#: src/about.cpp:289
+#: src/about.cpp:293
 msgid "+Contributors"
 msgstr "+Bidrag"
 
-#: src/about.cpp:292
+#: src/about.cpp:296
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:328 src/help.cpp:2654
+#: src/about.cpp:332 src/help.cpp:2658
 msgid "Close"
 msgstr "Stäng"
 
@@ -8268,12 +8258,12 @@ msgid "none"
 msgstr "inget"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1136 src/reports.cpp:236
+#: src/help.cpp:1140 src/reports.cpp:236
 msgid "melee"
 msgstr "närstrid"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1136 src/reports.cpp:237
+#: src/help.cpp:1140 src/reports.cpp:237
 msgid "ranged"
 msgstr "distans"
 
@@ -8325,32 +8315,32 @@ msgstr "förgiftad"
 msgid "slowed"
 msgstr "långsam"
 
-#: src/actions.cpp:1909
+#: src/actions.cpp:1915
 msgid "Ambushed!"
 msgstr "Bakhåll!"
 
-#: src/actions.cpp:1943
+#: src/actions.cpp:1949
 msgid "Friendly unit sighted"
 msgstr "Allierad trupp inom synhåll"
 
-#: src/actions.cpp:1945
+#: src/actions.cpp:1951
 msgid "Enemy unit sighted!"
 msgstr "Fiendetrupp inom synhåll!"
 
-#: src/actions.cpp:1950
+#: src/actions.cpp:1956
 msgid "$friends Friendly units sighted"
 msgstr "$friends allierade trupper inom synhåll"
 
-#: src/actions.cpp:1952
+#: src/actions.cpp:1958
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies fiendetrupper inom synhåll!"
 
-#: src/actions.cpp:1956
+#: src/actions.cpp:1962
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
 "Trupper inom synhåll! ($friends allierade trupper, $enemies fiendetrupper)"
 
-#: src/actions.cpp:1971
+#: src/actions.cpp:1977
 msgid "(press $hotkey to continue)"
 msgstr "(Tryck på $hotkey för att fortsätta)"
 
@@ -8394,11 +8384,11 @@ msgstr "%Y-%m-%d %H:%M"
 msgid "#(Invalid)"
 msgstr "#(Ogiltigt)"
 
-#: src/dialogs.cpp:373 src/game.cpp:753
+#: src/dialogs.cpp:373 src/game.cpp:754
 msgid "Campaign"
 msgstr "Kampanj"
 
-#: src/dialogs.cpp:375 src/game.cpp:1120
+#: src/dialogs.cpp:375 src/game.cpp:1121
 msgid "Multiplayer"
 msgstr "Gruppspel"
 
@@ -8486,7 +8476,7 @@ msgstr ""
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:550 src/game.cpp:887 src/help.cpp:1112
+#: src/dialogs.cpp:550 src/game.cpp:888 src/help.cpp:1116
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
 msgid "Name"
 msgstr "Namn"
@@ -8507,11 +8497,11 @@ msgstr "Välj spel"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1032
+#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1036
 msgid "level"
 msgstr "nivå"
 
-#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1090
+#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1094
 msgid "HP: "
 msgstr "HP: "
 
@@ -8520,7 +8510,7 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1091
+#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1095
 msgid "Moves: "
 msgstr "Förflyttning: "
 
@@ -8540,7 +8530,7 @@ msgstr "osynlig"
 msgid "OK"
 msgstr "OK"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:497
+#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Avbryt"
@@ -8557,7 +8547,7 @@ msgstr "Kampen om Wesnoth"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Varning: Filen du försöker öppna är felaktig. Försöker ändå.\n"
 
-#: src/game.cpp:646 src/multiplayer_connect.cpp:888
+#: src/game.cpp:646 src/multiplayer_connect.cpp:891
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -8565,7 +8555,7 @@ msgstr ""
 "Detta sparade spel är från en annan spelversion. Vill du försöka öppna "
 "spelet ändå?"
 
-#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:873
+#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:876
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Filen du försöker öppna är felaktig: '"
 
@@ -8573,224 +8563,224 @@ msgstr "Filen du försöker öppna är felaktig: '"
 msgid "File I/O Error while reading the game"
 msgstr "I/O-fel vid läsning från fil"
 
-#: src/game.cpp:743
+#: src/game.cpp:744
 msgid "Get More Campaigns..."
 msgstr "Hämta fler kampanjer..."
 
-#: src/game.cpp:744
+#: src/game.cpp:745
 msgid "Download more campaigns from a server on Internet."
 msgstr "Ladda ner fler kampanjer från en server över internet."
 
-#: src/game.cpp:754
+#: src/game.cpp:755
 msgid "Choose the campaign you want to play:"
 msgstr "Välj kampanj att spela: "
 
-#: src/game.cpp:783
+#: src/game.cpp:784
 msgid "Difficulty"
 msgstr "Svårighetsgrad"
 
-#: src/game.cpp:784
+#: src/game.cpp:785
 msgid "Select difficulty level:"
 msgstr "Välj svårighetsgrad:"
 
-#: src/game.cpp:809
+#: src/game.cpp:810
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:812
+#: src/game.cpp:813
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:815
+#: src/game.cpp:816
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:842
+#: src/game.cpp:843
 msgid "Connect to Server"
 msgstr "Anslut till server"
 
-#: src/game.cpp:843
+#: src/game.cpp:844
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Du kommer nu att anslutas till en kampanjserver där du kan hämta kampanjer."
 
-#: src/game.cpp:844
+#: src/game.cpp:845
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:857
+#: src/game.cpp:858
 msgid "Could not connect to host."
 msgstr "Kunde inte ansluta till servern."
 
-#: src/game.cpp:865
+#: src/game.cpp:866
 msgid "Awaiting response from server"
 msgstr "Väntar på svar från servern"
 
-#: src/game.cpp:878
+#: src/game.cpp:879
 msgid "Error communicating with the server."
 msgstr "Kunde ej kommunicera med servern."
 
-#: src/game.cpp:887 src/titlescreen.cpp:170
+#: src/game.cpp:888 src/titlescreen.cpp:170
 msgid "Version"
 msgstr "Version"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Author"
 msgstr "Författare"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Downloads"
 msgstr "Hämtningar"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Size"
 msgstr "Storlek"
 
-#: src/game.cpp:940
+#: src/game.cpp:941
 msgid "Publish campaign: "
 msgstr "Publicera kampanj: "
 
-#: src/game.cpp:944
+#: src/game.cpp:945
 msgid "Delete campaign: "
 msgstr "Ta bort kampanj: "
 
-#: src/game.cpp:948
+#: src/game.cpp:949
 msgid "There are no campaigns available for download from this server."
 msgstr "Det finns inga kampanjer att hämta på den här servern."
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Choose the campaign to download."
 msgstr "Välj kampanj att hämta hem:"
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Get Campaign"
 msgstr "Hämta kampanj"
 
-#: src/game.cpp:975
+#: src/game.cpp:976
 msgid "Downloading campaign..."
 msgstr "Hämtar kampanj..."
 
-#: src/game.cpp:989
+#: src/game.cpp:990
 msgid "Cannot rescan the filesystem"
 msgstr "Kan inte läsa om filsystemet"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "Campaign Installed"
 msgstr "Kampanjen har installerats"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "The campaign has been installed."
 msgstr "Kampanjen har installerats."
 
-#: src/game.cpp:1002
+#: src/game.cpp:1003
 msgid "Network communication error."
 msgstr "Nätverksfel."
 
-#: src/game.cpp:1004
+#: src/game.cpp:1005
 msgid "Remote host disconnected."
 msgstr "Anslutningen avbruten."
 
-#: src/game.cpp:1006
+#: src/game.cpp:1007
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Problem uppstod i skapandet av de filer som behövs för att installera denna "
 "kampanj."
 
-#: src/game.cpp:1018 src/game.cpp:1058 src/game.cpp:1083
+#: src/game.cpp:1019 src/game.cpp:1059 src/game.cpp:1084
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
 msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
-#: src/game.cpp:1021 src/game.cpp:1060 src/game.cpp:1085
+#: src/game.cpp:1022 src/game.cpp:1061 src/game.cpp:1086
 msgid "The server responded with an error: \""
 msgstr "Felmeddelande från servern: \""
 
-#: src/game.cpp:1025
+#: src/game.cpp:1026
 msgid "Terms"
 msgstr "Villkor"
 
-#: src/game.cpp:1063 src/game.cpp:1088
+#: src/game.cpp:1064 src/game.cpp:1089
 msgid "Response"
 msgstr "Svar"
 
-#: src/game.cpp:1103
+#: src/game.cpp:1104
 msgid "Join Official Server"
 msgstr "Anslut till den officiella servern"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Logga in på Kampen om Wesnoths officiella spelserver"
 
-#: src/game.cpp:1106 src/multiplayer_lobby.cpp:107
+#: src/game.cpp:1107 src/multiplayer_lobby.cpp:107
 msgid "Join Game"
 msgstr "Anslut till spel"
 
-#: src/game.cpp:1107
+#: src/game.cpp:1108
 msgid "Join a server or hosted game"
 msgstr "Anslut till en server eller ett spel som någon annan är värd för"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1110
 msgid "Host Networked Game"
 msgstr "Var värd för nätverksspel"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1111
 msgid "Host a game without using a server"
 msgstr "Var värd för ett spel utan att använda en server"
 
-#: src/game.cpp:1112
+#: src/game.cpp:1113
 msgid "Hotseat Game"
 msgstr "Heta stolen-spel"
 
-#: src/game.cpp:1113
+#: src/game.cpp:1114
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Spela ett gruppspel med en och samma dator"
 
-#: src/game.cpp:1115
+#: src/game.cpp:1116
 msgid "Human vs AI"
 msgstr "Människa mot dator"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1117
 msgid "Play a game against AI opponents"
 msgstr "Spela mot datorn"
 
-#: src/game.cpp:1122 src/multiplayer.cpp:187
+#: src/game.cpp:1123 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Logga in: "
 
-#: src/game.cpp:1153
+#: src/game.cpp:1154
 msgid "The game could not be loaded: "
 msgstr "Spelet kunde inte öppnas: "
 
-#: src/game.cpp:1155
+#: src/game.cpp:1156
 msgid "Error while playing the game: "
 msgstr "Fel under spel: "
 
-#: src/game.cpp:1167
+#: src/game.cpp:1168
 msgid "The game map could not be loaded: "
 msgstr "Kartan kunde inte öppnas: "
 
-#: src/game.cpp:1193
+#: src/game.cpp:1194
 msgid "Language"
 msgstr "Språk"
 
-#: src/game.cpp:1194
+#: src/game.cpp:1195
 msgid "Choose your preferred language:"
 msgstr "Välj språk: "
 
-#: src/game.cpp:1283
+#: src/game.cpp:1284
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Varning: Fel inträffade vid öppnande av spelkonfigurationsfiler: '"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1333
 msgid "Error loading game configuration files: '"
 msgstr "Fel vid öppnande av konfigurationsfiler: '"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1334
 msgid "' (The game will now exit)"
 msgstr "' (Spelet kommer nu att avslutas)"
 
-#: src/game.cpp:1406
+#: src/game.cpp:1407
 msgid "Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
@@ -8802,81 +8792,81 @@ msgstr "Seger:"
 msgid "Defeat:"
 msgstr "Nederlag:"
 
-#: src/help.cpp:1052
+#: src/help.cpp:1056
 msgid "Advances to: "
 msgstr "Kan befordras till: "
 
-#: src/help.cpp:1073
+#: src/help.cpp:1077
 msgid "Abilities: "
 msgstr "Förmågor: "
 
-#: src/help.cpp:1092
+#: src/help.cpp:1096
 msgid "Alignment: "
 msgstr "Sinnelag: "
 
-#: src/help.cpp:1096
+#: src/help.cpp:1100
 msgid "Required XP: "
 msgstr "EP för nästa nivå: "
 
-#: src/help.cpp:1105 src/reports.cpp:239
+#: src/help.cpp:1109 src/reports.cpp:239
 msgid "attacks"
 msgstr "attacker"
 
-#: src/help.cpp:1113 src/playturn.cpp:2045 src/playturn.cpp:2222
+#: src/help.cpp:1117 src/playturn.cpp:2045 src/playturn.cpp:2222
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:1114
+#: src/help.cpp:1118
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help.cpp:1115
+#: src/help.cpp:1119
 msgid "Range"
 msgstr "Räckvidd"
 
-#: src/help.cpp:1116
+#: src/help.cpp:1120
 msgid "Special"
 msgstr "Specialitet"
 
-#: src/help.cpp:1156
+#: src/help.cpp:1160
 msgid "Resistances"
 msgstr "Motståndskraft mot olika attacker"
 
-#: src/help.cpp:1160
+#: src/help.cpp:1164
 msgid "Attack Type"
 msgstr "Attacktyp"
 
-#: src/help.cpp:1161
+#: src/help.cpp:1165
 msgid "Resistance"
 msgstr "Motståndskraft"
 
-#: src/help.cpp:1186
+#: src/help.cpp:1190
 msgid "Terrain Modifiers"
 msgstr "Terrängavdrag"
 
-#: src/help.cpp:1190
+#: src/help.cpp:1194
 msgid "Terrain"
 msgstr "Terräng"
 
-#: src/help.cpp:1191
+#: src/help.cpp:1195
 msgid "Defense"
 msgstr "Försvar"
 
-#: src/help.cpp:1296
+#: src/help.cpp:1300
 msgid "or"
 msgstr "eller"
 
-#: src/help.cpp:1303
+#: src/help.cpp:1307
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
 "Den här terrängen betraktas som $terrains ur förflyttnings- och "
 "försvarssynpunkt"
 
-#: src/help.cpp:1305
+#: src/help.cpp:1309
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Den för truppen mest fördelaktiga terrängen används automatiskt"
 
-#: src/help.cpp:1309
+#: src/help.cpp:1313
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -8884,7 +8874,7 @@ msgstr ""
 "Den här terrängen fungerar som ett kärntorn. Du kan alltså rekrytera trupper "
 "när din ledare befinner på den här sortens terräng"
 
-#: src/help.cpp:1311
+#: src/help.cpp:1315
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -8892,19 +8882,19 @@ msgstr ""
 "Den här terrängen fungerar som en borg. Rekryterade trupper kan alltså "
 "placeras på den här sortens terräng"
 
-#: src/help.cpp:1313
+#: src/help.cpp:1317
 msgid "This terrain gives healing."
 msgstr "Den här terrängen läker trupper."
 
-#: src/help.cpp:2169
+#: src/help.cpp:2173
 msgid "< Back"
 msgstr "< Bakåt"
 
-#: src/help.cpp:2170
+#: src/help.cpp:2174
 msgid "Forward >"
 msgstr "Framåt >"
 
-#: src/help.cpp:2657
+#: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjälp om Kampen om Wesnoth"
 
@@ -9017,91 +9007,91 @@ msgstr "Omdirigeringsloop hos servern"
 msgid "You must log in to this server"
 msgstr "Du måste logga in på den här servern."
 
-#: src/multiplayer_connect.cpp:297
+#: src/multiplayer_connect.cpp:298
 msgid "(Vacant slot)"
 msgstr "(Ledig plats)"
 
-#: src/multiplayer_connect.cpp:303
+#: src/multiplayer_connect.cpp:304
 msgid "Anonymous local player"
 msgstr "Anonym lokal spelare"
 
-#: src/multiplayer_connect.cpp:309
+#: src/multiplayer_connect.cpp:310
 msgid "Computer player"
 msgstr "Datorspelare"
 
-#: src/multiplayer_connect.cpp:312
+#: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
 msgstr "(Tom plats)"
 
-#: src/multiplayer_connect.cpp:452
+#: src/multiplayer_connect.cpp:455
 msgid "No non-random sides in the current era"
 msgstr "Inga fördefinierade grupper i denna era"
 
-#: src/multiplayer_connect.cpp:468
+#: src/multiplayer_connect.cpp:471
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Kan ej finna lämplig ledare för gruppen $faction"
 
-#: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:491
+#: src/multiplayer_connect.cpp:485 src/multiplayer_connect.cpp:494
 msgid "Team"
 msgstr "Lag"
 
-#: src/multiplayer_connect.cpp:489
+#: src/multiplayer_connect.cpp:492
 msgid "Player/Type"
 msgstr "Spelare/Typ"
 
-#: src/multiplayer_connect.cpp:490
+#: src/multiplayer_connect.cpp:493
 msgid "Faction"
 msgstr "Grupp"
 
-#: src/multiplayer_connect.cpp:492
+#: src/multiplayer_connect.cpp:495
 msgid "Color"
 msgstr "Färg"
 
-#: src/multiplayer_connect.cpp:493 src/playturn.cpp:1769 src/playturn.cpp:1780
+#: src/multiplayer_connect.cpp:496 src/playturn.cpp:1769 src/playturn.cpp:1780
 msgid "Gold"
 msgstr "Guld"
 
-#: src/multiplayer_connect.cpp:495
+#: src/multiplayer_connect.cpp:498
 msgid "Computer vs Computer"
 msgstr "Dator mot dator"
 
-#: src/multiplayer_connect.cpp:496
+#: src/multiplayer_connect.cpp:499
 msgid "I'm Ready"
 msgstr "Klar!"
 
-#: src/multiplayer_connect.cpp:514
+#: src/multiplayer_connect.cpp:517
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenariot är ogiltigt då det saknar sidor."
 
-#: src/multiplayer_connect.cpp:791
+#: src/multiplayer_connect.cpp:794
 msgid "Game Lobby"
 msgstr "Spellobby"
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:814
 msgid "Network Player"
 msgstr "Nätverksspelare"
 
-#: src/multiplayer_connect.cpp:812
+#: src/multiplayer_connect.cpp:815
 msgid "Local Player"
 msgstr "Lokal spelare"
 
-#: src/multiplayer_connect.cpp:813
+#: src/multiplayer_connect.cpp:816
 msgid "Computer Player"
 msgstr "Datorspelare"
 
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:817
 msgid "Empty"
 msgstr "Tom"
 
-#: src/multiplayer_connect.cpp:880
+#: src/multiplayer_connect.cpp:883
 msgid "This is not a multiplayer save"
 msgstr "Detta är inte ett sparat gruppspel"
 
-#: src/multiplayer_connect.cpp:921
+#: src/multiplayer_connect.cpp:924
 msgid "Cannot find era $era"
 msgstr "Kan ej finna $era|-eran"
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:938
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -9109,7 +9099,7 @@ msgstr ""
 "Seger:\n"
 "@Besegra fiendens ledare"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:974
 msgid "Waiting for players to join..."
 msgstr "Väntar på att spelare skall ansluta sig..."
 
@@ -9929,6 +9919,45 @@ msgstr "redbar"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutral"
+
+#~ msgid "The Broken Bridge"
+#~ msgstr "Den trasiga bron"
+
+#~ msgid ""
+#~ "A small two vs. two map across the ruins of a once great bridge. Perfect "
+#~ "for fast-paced, combat intensive, team-oriented games. Must be players "
+#~ "1,3 vs. 2,4."
+#~ msgstr ""
+#~ "En liten 2-mot-2-karta över ruinerna av en tidigare mäktig bro. Den är "
+#~ "perfekt för snabba, stridsintensiva och lagorienterade spel. Den skall "
+#~ "spelas med spelare 1 och 3 i ett lag, och 2 och 4 i det andra."
+
+#~ msgid "Battle for Weslin Bridge"
+#~ msgstr "Striden vid Weslinbron"
+
+#~ msgid ""
+#~ "Teams of 2 fight for control of the central bridge choke-point. Good for "
+#~ "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
+#~ msgstr ""
+#~ "Tvåmannalag kämpar om kontrollen över flaskhalsen vid den centralt "
+#~ "belägna bron. Kartan lämpar sig för mellanlånga spel. Spelare 1 och 3 "
+#~ "måste vara allierade, och 2 och 4 likaså."
+
+#, fuzzy
+#~ msgid " "
+#~ msgstr "; "
+
+#, fuzzy
+#~ msgid ""
+#~ "With their stumpy vestigial wings and inability to use their great "
+#~ "internal fire as a weapon some may think that these Drakes are "
+#~ "disadvantaged; they would be mistaken."
+#~ msgstr ""
+#~ "Med sina förkrympta vingar och oförmåga att använda sin inre eld som "
+#~ "vapen anses dessa ofta vara olyckligt lottade bland drakfolket; detta är "
+#~ "dock ett stort misstag. Betvingarna skyddar sig med tjocka "
+#~ "mässingsrustningar och de beväpnar sig med så många smaragdkantade vapen "
+#~ "som möjligt för att avvärja varje hot från deras fiender."
 
 #~ msgid "The Isle of Anduin"
 #~ msgstr "Anduins ö"

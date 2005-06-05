@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-03 22:49+0200\n"
+"POT-Creation-Date: 2005-06-05 17:14+0200\n"
 "PO-Revision-Date: 2005-03-02 22:28+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -223,7 +223,7 @@ msgstr ""
 "aj ich údržba stojí peniaze. Ďalšie informácie nájdete v kapitole "
 "<ref>dst=income_and_upkeep text='Príjmy a výdavky'</ref>."
 
-#: data/help.cfg:92 src/help.cpp:1192
+#: data/help.cfg:92 src/help.cpp:1196
 msgid "Movement"
 msgstr "Pohyb"
 
@@ -1253,11 +1253,212 @@ msgid ""
 "Baldras."
 msgstr "Ak chceš, môžeš prísť, ale veliteľ má záujem hovoriť iba s Baldrasom."
 
-#: data/scenarios/multiplayer/An_Island.cfg:7
-msgid "An Island"
+#: data/scenarios/multiplayer/2p_Blitz.cfg:7
+#, fuzzy
+msgid "2p - Blitz"
+msgstr "Blesk"
+
+#: data/scenarios/multiplayer/2p_Blitz.cfg:9
+#: data/scenarios/multiplayer/2p_Charge.cfg:9
+msgid "A duel map for super fast play. Recommended setting of 2g per village."
+msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
+
+#: data/scenarios/multiplayer/2p_Charge.cfg:7
+#, fuzzy
+msgid "2p - Charge"
+msgstr "Výpad"
+
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
+msgid "2p - Den of Onis"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
+msgid ""
+"Danger lurks around every corner in this underground battlefield, a duel map "
+"where force and subterfuge meet. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
+msgid "2p - Divide and Conquer"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
+#, fuzzy
+msgid ""
+"This small duel map divides the field of battle into three segments. "
+"Recommended settings of 2G per village."
+msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:3
+msgid "2p - Hamlets"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:4
+msgid ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
+msgid "2p - Hornshark Island"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
+msgid ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:3
+#, fuzzy
+msgid "2p - Icy Waters"
+msgstr "Svätená voda"
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:5
+msgid ""
+"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
+msgid "2p - Meteor Lake"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
+msgid ""
+"Long ago, a great meteor fell from the heavens, leaving its mark on this "
+"coniferous region. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
+msgid "2p - Silverhead Crossing"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
+msgid ""
+"Players must traverse all manner of terrain in pursuit of victory on this "
+"multi-fronted duel map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
+msgid "2p - Sullas Ruins"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
+msgid ""
+"Flooded by the seas and battered by the winter elements, only ruins, water "
+"and ice now remain in the shadow of this once mighty empire. Recommended "
+"settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
+#, fuzzy
+msgid "2p - Wesbowl"
+msgstr "Wesbowl"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
+msgid ""
+"In Wesbowl, a player must get their ball to the other player's end zone. "
+"However, the other player can attack your units. Wesbowl is played with "
+"blunt weapons, and healers are on hand, so when units are killed, they "
+"return to that player's end zone with an injury."
+msgstr ""
+"V hre Wesbowl sa hráči snažia dostať loptu na súperov koniec ihriska. Hráči "
+"si môžu navzájom napádať jednotky. Wesbowl sa hrá tupými zbraňami pod "
+"dozorom liečiteľov, takže porazené jednotky sa vracajú zranené na štart."
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:11
+msgid ""
+"\n"
+"Victory:\n"
+"@Move either ball to your opponent's endzone more times than they move their "
+"ball to yours\n"
+"Defeat:\n"
+"#Opponent moves the balls to your endzone more times than you move them to "
+"theirs"
+msgstr ""
+"\n"
+"Vyhráš, ak:\n"
+"@Dostaneš loptu do súperovej cieľovej oblasti častejšie ako súper do tvojej\n"
+"Prehráš, ak:\n"
+"#Súper dostane loptu do tvojej cieľovej oblasti častejšie ako ty do jeho"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:199
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:476
+msgid "Red scores! Current score is $redscore-$bluescore"
+msgstr "Červený má bod! Skóre je $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:247
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:524
+msgid "Blue scores! Current score is $redscore-$bluescore"
+msgstr "Modrý má bod! Skóre je $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:337
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:614
+msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+msgstr "Mám loptu odovzdať hráčovi $passto.type ($xloc,$yloc)?"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:339
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:616
+msgid "Yes!"
+msgstr "Áno!"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:361
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:638
+#: data/scenarios/tutorial/Basic_Training.cfg:318
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
+msgid "No"
+msgstr "Nie"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:661
+msgid "Blue team wins! Final score: $redscore-$bluescore"
+msgstr "Modré družstvo vyhralo! Konečné skóre: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:673
+msgid "Red team wins! Final score: $redscore-$bluescore"
+msgstr "Červené družstvo vyhralo! Konečné skóre: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:685
+msgid "Draw! Final score: $redscore-$bluescore"
+msgstr "Remíza! Konečné skóre: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
+msgid "3p - 1v1v1Hex"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
+#, fuzzy
+msgid ""
+"Three players do battle in this small, enclosed region. Recommended settings "
+"of 2G per village."
+msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:3
+msgid "3p - Morituri"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:4
+msgid ""
+"Only one faction will emerge victorious from this tightly bordered three-"
+"player map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
+msgid "3p - Triple Blitz"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
+#, fuzzy
+msgid ""
+"Three players come head to head on this water-cut battlefield. Recommended "
+"settings of 2G per village."
+msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
+
+#: data/scenarios/multiplayer/4p_An_Island.cfg:7
+#, fuzzy
+msgid "4p - An Island"
 msgstr "Ostrov"
 
-#: data/scenarios/multiplayer/An_Island.cfg:10
+#: data/scenarios/multiplayer/4p_An_Island.cfg:10
 msgid ""
 "A 4 player map that is suitable for individual or team play, victory rests "
 "of dominating the centre island. North-West: Forest dominated area, North-"
@@ -1269,33 +1470,12 @@ msgstr ""
 "severovýchod: roviny a sneh; juhozápad: roviny a púšť; juhovýchod: prevažne "
 "hornatá oblasť."
 
-#: data/scenarios/multiplayer/Blitz.cfg:7
-msgid "Blitz"
-msgstr "Blesk"
-
-#: data/scenarios/multiplayer/Blitz.cfg:9
-#: data/scenarios/multiplayer/Charge.cfg:9
-msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
-
-#: data/scenarios/multiplayer/BrokenBridge.cfg:2
-msgid "The Broken Bridge"
-msgstr "Zlomený most"
-
-#: data/scenarios/multiplayer/BrokenBridge.cfg:4
-msgid ""
-"A small two vs. two map across the ruins of a once great bridge. Perfect for "
-"fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
-"2,4."
-msgstr ""
-"Malá mapa pre dvoch proti dvom uprostred ruín bývalého veľkého mosta. Vhodná "
-"na rýchle tímové hry s množstvom súbojov. Musia byť hráči 1 a 3 proti 2 a 4."
-
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
-msgid "Castle Hopping Isle"
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
+#, fuzzy
+msgid "4p - Castle Hopping Isle"
 msgstr "Ostrov blízkych hradov"
 
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
 msgid ""
 "Many closely placed and strategically located castles. Small map for fast "
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
@@ -1305,43 +1485,72 @@ msgstr ""
 "Odporúča sa nastaviť 2 zlatky za dedinu, a pri hre dvaja na dvoch, hráčov 1 "
 "a 3 proti 2 a 4."
 
-#: data/scenarios/multiplayer/Charge.cfg:7
-msgid "Charge"
-msgstr "Výpad"
-
-#: data/scenarios/multiplayer/Clash.cfg:3
+#: data/scenarios/multiplayer/4p_Clash.cfg:3
 #, fuzzy
-msgid "Clash"
+msgid "4p - Clash"
 msgstr "Klasická"
 
-#: data/scenarios/multiplayer/Clash.cfg:5
+#: data/scenarios/multiplayer/4p_Clash.cfg:5
 #, fuzzy
 msgid ""
 "Small map for 2v2. Teams should be player 1 and 3, vs player 2 and 4. "
 "Recommended setting of 2 gold per village."
 msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
 
-#: data/scenarios/multiplayer/ForestOfFear.cfg:3
-msgid "Forest of Fear"
-msgstr "Les strachu"
+#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
+#, fuzzy
+msgid "4p - King of the Hill"
+msgstr "Kráľ kopca"
 
-#: data/scenarios/multiplayer/Hexcake.cfg:3
-msgid "Hexcake"
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:3
+msgid "4p - Lagoon"
 msgstr ""
 
-#: data/scenarios/multiplayer/Hexcake.cfg:5
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:4
+#, fuzzy
+msgid ""
+"Four factions contend for dominance over this watery settlement. Recommended "
+"settings of 1G per village."
+msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
+
+#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#, fuzzy
+msgid "4p - Siege Castles"
+msgstr "Obliehanie hradov"
+
+#: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
+#, fuzzy
+msgid "4p - The Valley of Death"
+msgstr "Údolie smrti"
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
+msgid "4p - The Wilderlands"
+msgstr ""
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
+msgid ""
+"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
+"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
+"1G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
+#, fuzzy
+msgid "5p - Forest of Fear"
+msgstr "Les strachu"
+
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:3
+msgid "6p - Hexcake"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr ""
 
-#: data/scenarios/multiplayer/IcyWaters.cfg:3
+#: data/scenarios/multiplayer/7p_battleworld.cfg:7
 #, fuzzy
-msgid "Icy Waters"
-msgstr "Svätená voda"
-
-#: data/scenarios/multiplayer/IcyWaters.cfg:5
-msgid ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
-msgstr ""
+msgid "7p - Battle World"
+msgstr "Bojisko"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1392,98 +1601,9 @@ msgstr ""
 "mapy sú často nevyvážené, ale ak máte čas, môžete ich generovať znova, až "
 "kým nedostanete dobrú mapu."
 
-#: data/scenarios/multiplayer/Wesbowl.cfg:3
-msgid "Wesbowl"
-msgstr "Wesbowl"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:6
-msgid ""
-"In Wesbowl, a player must get their ball to the other player's end zone. "
-"However, the other player can attack your units. Wesbowl is played with "
-"blunt weapons, and healers are on hand, so when units are killed, they "
-"return to that player's end zone with an injury."
-msgstr ""
-"V hre Wesbowl sa hráči snažia dostať loptu na súperov koniec ihriska. Hráči "
-"si môžu navzájom napádať jednotky. Wesbowl sa hrá tupými zbraňami pod "
-"dozorom liečiteľov, takže porazené jednotky sa vracajú zranené na štart."
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:11
-msgid ""
-"\n"
-"Victory:\n"
-"@Move either ball to your opponent's endzone more times than they move their "
-"ball to yours\n"
-"Defeat:\n"
-"#Opponent moves the balls to your endzone more times than you move them to "
-"theirs"
-msgstr ""
-"\n"
-"Vyhráš, ak:\n"
-"@Dostaneš loptu do súperovej cieľovej oblasti častejšie ako súper do tvojej\n"
-"Prehráš, ak:\n"
-"#Súper dostane loptu do tvojej cieľovej oblasti častejšie ako ty do jeho"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:199
-#: data/scenarios/multiplayer/Wesbowl.cfg:476
-msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr "Červený má bod! Skóre je $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:247
-#: data/scenarios/multiplayer/Wesbowl.cfg:524
-msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr "Modrý má bod! Skóre je $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:337
-#: data/scenarios/multiplayer/Wesbowl.cfg:614
-msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "Mám loptu odovzdať hráčovi $passto.type ($xloc,$yloc)?"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:339
-#: data/scenarios/multiplayer/Wesbowl.cfg:616
-msgid "Yes!"
-msgstr "Áno!"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:361
-#: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/Basic_Training.cfg:318
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
-msgid "No"
-msgstr "Nie"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:661
-msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr "Modré družstvo vyhralo! Konečné skóre: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:673
-msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr "Červené družstvo vyhralo! Konečné skóre: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:685
-msgid "Draw! Final score: $redscore-$bluescore"
-msgstr "Remíza! Konečné skóre: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:3
-msgid "Battle for Weslin Bridge"
-msgstr "Bitka o most Weslin"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:5
-msgid ""
-"Teams of 2 fight for control of the central bridge choke-point. Good for "
-"medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
-msgstr ""
-"Dvojčlenné tímy bojujú o ovládnutie stredného spájacieho mostu. Vhodné na "
-"stredne dlhé hry. Hráči 1 a 3 musia byť spojenci, takisto 2 a 4."
-
-#: data/scenarios/multiplayer/battleworld.cfg:7
-msgid "Battle World"
-msgstr "Bojisko"
-
-#: data/scenarios/multiplayer/castles.cfg:7
-msgid "Siege Castles"
-msgstr "Obliehanie hradov"
-
 #: data/scenarios/multiplayer/scenarios.cfg:3
-msgid "Across The River"
+#, fuzzy
+msgid "2p - Across The River"
 msgstr "Cez rieku"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
@@ -1496,145 +1616,6 @@ msgstr ""
 "spravodlivo vyvážená.\n"
 "Môžete dať súboj počítača proti počítaču, aby ste videli, ako sa ktorej "
 "frakcii darí."
-
-#: data/scenarios/multiplayer/scenarios.cfg:110
-msgid "The Valley of Death"
-msgstr "Údolie smrti"
-
-#: data/scenarios/multiplayer/scenarios.cfg:111
-#, fuzzy
-msgid " "
-msgstr "Životy"
-
-#: data/scenarios/multiplayer/scenarios.cfg:156
-msgid "King of the Hill"
-msgstr "Kráľ kopca"
-
-#: data/scenarios/multiplayer/scenarios.cfg:195
-msgid "2p - Divide and Conquer"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:196
-#, fuzzy
-msgid ""
-"This small duel map divides the field of battle into three segments. "
-"Recommended settings of 2G per village."
-msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
-
-#: data/scenarios/multiplayer/scenarios.cfg:226
-msgid "2p - Silverhead Crossing"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:227
-msgid ""
-"Players must traverse all manner of terrain in pursuit of victory on this "
-"multi-fronted duel map. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:256
-msgid "2p - Meteor Lake"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:257
-msgid ""
-"Long ago, a great meteor fell from the heavens, leaving its mark on this "
-"coniferous region. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:286
-msgid "2p - Den of Onis"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:287
-msgid ""
-"Danger lurks around every corner in this underground battlefield, a duel map "
-"where force and subterfuge meet. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:316
-msgid "2p - Hamlets"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:317
-msgid ""
-"Warfare transforms the simple farms and villages of a peaceful region into a "
-"subtly parceled battlefield. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:346
-msgid "2p - Hornshark Island"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:347
-msgid ""
-"Players must navigate the dispersive terrain of this small but "
-"topographically dense island. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:376
-msgid "2p - Sullas Ruins"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:377
-msgid ""
-"Flooded by the seas and battered by the winter elements, only ruins, water "
-"and ice now remain in the shadow of this once mighty empire. Recommended "
-"settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:406
-msgid "3p - 1v1v1Hex"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:407
-#, fuzzy
-msgid ""
-"Three players do battle in this small, enclosed region. Recommended settings "
-"of 2G per village."
-msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
-
-#: data/scenarios/multiplayer/scenarios.cfg:443
-msgid "4p - Lagoon"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:444
-#, fuzzy
-msgid ""
-"Four factions contend for dominance over this watery settlement. Recommended "
-"settings of 1G per village."
-msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
-
-#: data/scenarios/multiplayer/scenarios.cfg:487
-msgid "4p - The Wilderlands"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:488
-msgid ""
-"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
-"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
-"1G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:531
-msgid "3p - Morituri"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:532
-msgid ""
-"Only one faction will emerge victorious from this tightly bordered three-"
-"player map. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:568
-msgid "3p - Triple Blitz"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:569
-#, fuzzy
-msgid ""
-"Three players come head to head on this water-cut battlefield. Recommended "
-"settings of 2G per village."
-msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
 #, fuzzy
@@ -4736,10 +4717,12 @@ msgstr "Jašter úderník"
 #: data/units/Drake_Clasher.cfg:18
 #, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Clashers' weapons of choice "
-"are the sword and spear, which they use to great effect. The greatest "
-"Clashers can become Drake Gladiators or Slashers."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Clashers' "
+"weapons of choice are the sword and spear, which they use to great effect. "
+"The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
 "Títo jašteri majú zakrpatené krídla a nedokážu využiť svoj vnútorný oheň ako "
 "zbraň. Neradno ich však podceňovať. Sú zručnými remeselníkmi, vedia si "
@@ -4747,25 +4730,25 @@ msgstr ""
 "zbrane úderníkov sú meče a kopije, ktoré zručne používajú. Z najúspešnejších "
 "úderníkov sa stávajú gladiátori alebo sekači."
 
-#: data/units/Drake_Clasher.cfg:18 data/units/Drake_Enforcer.cfg:18
-#: data/units/Drake_Gladiator.cfg:19 data/units/Drake_Slasher.cfg:19
-#: data/units/Drake_Warden.cfg:19
+#: data/units/Drake_Enforcer.cfg:3
+#, fuzzy
+msgid "Drake Enforcer"
+msgstr "Jašter opekač"
+
+#: data/units/Drake_Enforcer.cfg:18
 #, fuzzy
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
-"would be mistaken."
+"would be mistaken. Drake Enforcers protect their vulnerable hides with thick "
+"brass armor and they arm themselves with as many emerald edged weapons as "
+"possible to fend off whatever opponents may await them."
 msgstr ""
 "Kto by si myslel, že títo jašteri sú v nevýhode vďaka zakrpateným krídlam a "
 "neschopnosti používať svoj vnútorný oheň ako zbraň, mýlil by sa. Jašter "
 "gladiátor chráni svoje zraniteľné miesta hrubým mosadzným brnením a je po "
 "zuby ozbrojený zbraňami so smaragdovými čepeľami, aby odrazil všetkých "
 "súperov, ktorí ho čakajú."
-
-#: data/units/Drake_Enforcer.cfg:3
-#, fuzzy
-msgid "Drake Enforcer"
-msgstr "Jašter opekač"
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -4843,9 +4826,11 @@ msgstr "Jašter gladiátor"
 #: data/units/Drake_Gladiator.cfg:19
 #, fuzzy
 msgid ""
-" Drake Gladiators protect their vulnerable hides with thick brass armor and "
-"they arm themselves with as many emerald edged weapons as possible to fend "
-"off whatever opponents may await them."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. Drake Gladiators protect their vulnerable hides with "
+"thick brass armor and they arm themselves with as many emerald edged weapons "
+"as possible to fend off whatever opponents may await them."
 msgstr ""
 "Kto by si myslel, že títo jašteri sú v nevýhode vďaka zakrpateným krídlam a "
 "neschopnosti používať svoj vnútorný oheň ako zbraň, mýlil by sa. Jašter "
@@ -4926,9 +4911,11 @@ msgstr "Jašter sekač"
 #: data/units/Drake_Slasher.cfg:19
 #, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Slashers' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Slashers' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 "Títo jašteri majú zakrpatené krídla a nedokážu využiť svoj vnútorný oheň ako "
 "zbraň. Neradno ich však podceňovať. Sú zručnými remeselníkmi, vedia si "
@@ -4950,9 +4937,11 @@ msgstr "Žiarivý jašter"
 #: data/units/Drake_Warden.cfg:19
 #, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Wardens' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Wardens' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 "Títo jašteri majú zakrpatené krídla a nedokážu využiť svoj vnútorný oheň ako "
 "zbraň. Neradno ich však podceňovať. Sú zručnými remeselníkmi, vedia si "
@@ -7918,168 +7907,168 @@ msgstr "-   Umelecký a grafický dizajnér"
 msgid "+Developers"
 msgstr "+Vývojári"
 
-#: src/about.cpp:57
+#: src/about.cpp:58
 msgid "+General Purpose Administrators"
 msgstr "+Všeobecní správcovia"
 
-#: src/about.cpp:61
+#: src/about.cpp:62
 msgid "+Artwork and graphics designers"
 msgstr "+Umeleckí a grafickí dizajnéri"
 
-#: src/about.cpp:86
+#: src/about.cpp:88
 msgid "+Music"
 msgstr "+Hudba"
 
-#: src/about.cpp:92
+#: src/about.cpp:94
 msgid "+Scenario Designers"
 msgstr "+Dizajn scenárov"
 
-#: src/about.cpp:101
+#: src/about.cpp:103
 msgid "+Multiplayer Maps"
 msgstr "+Mapy na zápas"
 
-#: src/about.cpp:105
+#: src/about.cpp:107
 msgid "+Packagers"
 msgstr "+Výroba balíkov"
 
-#: src/about.cpp:115
+#: src/about.cpp:117
 msgid "+Miscellaneous"
 msgstr "+Rôzne"
 
-#: src/about.cpp:120
+#: src/about.cpp:122
 msgid "+Internationalization Managers"
 msgstr "+Manažéri prekladu"
 
-#: src/about.cpp:126
+#: src/about.cpp:129
 #, fuzzy
 msgid "+Afrikaans Translation"
 msgstr "+Dánsky preklad"
 
-#: src/about.cpp:130
+#: src/about.cpp:133
 msgid "+Basque Translation"
 msgstr "+Baskický preklad"
 
-#: src/about.cpp:135
+#: src/about.cpp:138
 msgid "+Bulgarian Translation"
 msgstr "+Bulharský preklad"
 
-#: src/about.cpp:138
+#: src/about.cpp:141
 msgid "+Catalan Translation"
 msgstr "+Katalánsky preklad"
 
-#: src/about.cpp:145
+#: src/about.cpp:148
 #, fuzzy
 msgid "+Chinese Translation"
 msgstr "+Fínsky preklad"
 
-#: src/about.cpp:148
+#: src/about.cpp:151
 msgid "+Czech Translation"
 msgstr "+Český preklad"
 
-#: src/about.cpp:156
+#: src/about.cpp:159
 msgid "+Danish Translation"
 msgstr "+Dánsky preklad"
 
-#: src/about.cpp:160
+#: src/about.cpp:163
 msgid "+Dutch Translation"
 msgstr "+Nizozemský preklad"
 
-#: src/about.cpp:167
+#: src/about.cpp:170
 #, fuzzy
 msgid "+English (GB) Translation"
 msgstr "+Dánsky preklad"
 
-#: src/about.cpp:170
+#: src/about.cpp:173
 #, fuzzy
 msgid "+Estonian Translation"
 msgstr "+Taliansky preklad"
 
-#: src/about.cpp:173
+#: src/about.cpp:176
 msgid "+Finnish Translation"
 msgstr "+Fínsky preklad"
 
-#: src/about.cpp:177
+#: src/about.cpp:181
 msgid "+French Translation"
 msgstr "+Francúzsky preklad"
 
-#: src/about.cpp:190
+#: src/about.cpp:194
 msgid "+German Translation"
 msgstr "+Nemecký preklad"
 
-#: src/about.cpp:201
+#: src/about.cpp:205
 msgid "+Greek Translation"
 msgstr "+Grécky preklad"
 
-#: src/about.cpp:205
+#: src/about.cpp:209
 msgid "+Hungarian Translation"
 msgstr "+Maďarský preklad"
 
-#: src/about.cpp:216
+#: src/about.cpp:220
 msgid "+Italian Translation"
 msgstr "+Taliansky preklad"
 
-#: src/about.cpp:225
+#: src/about.cpp:229
 #, fuzzy
 msgid "+Japanese Translation"
 msgstr "+Fínsky preklad"
 
-#: src/about.cpp:230
+#: src/about.cpp:234
 #, fuzzy
 msgid "+Latin Translation"
 msgstr "+Katalánsky preklad"
 
-#: src/about.cpp:233
+#: src/about.cpp:237
 msgid "+Norwegian Translation"
 msgstr "+Nórsky preklad"
 
-#: src/about.cpp:239
+#: src/about.cpp:243
 msgid "+Polish Translation"
 msgstr "+Poľský preklad"
 
-#: src/about.cpp:249
+#: src/about.cpp:253
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugalský preklad (Brazília)"
 
-#: src/about.cpp:257
+#: src/about.cpp:261
 msgid "+Russian Translation"
 msgstr "+Ruský preklad"
 
-#: src/about.cpp:262
+#: src/about.cpp:266
 #, fuzzy
 msgid "+Serbian Translation"
 msgstr "+Nemecký preklad"
 
-#: src/about.cpp:265
+#: src/about.cpp:269
 msgid "+Slovak Translation"
 msgstr "+Slovenský preklad"
 
-#: src/about.cpp:268
+#: src/about.cpp:272
 #, fuzzy
 msgid "+Slovenian Translation"
 msgstr "+Slovenský preklad"
 
-#: src/about.cpp:271
+#: src/about.cpp:275
 msgid "+Spanish Translation"
 msgstr "+Španielsky preklad"
 
-#: src/about.cpp:279
+#: src/about.cpp:283
 msgid "+Swedish Translation"
 msgstr "+Švédsky preklad"
 
-#: src/about.cpp:285
+#: src/about.cpp:289
 #, fuzzy
 msgid "+Turkish Translation"
 msgstr "+Dánsky preklad"
 
-#: src/about.cpp:289
+#: src/about.cpp:293
 msgid "+Contributors"
 msgstr "+Prispievatelia"
 
-#: src/about.cpp:292
+#: src/about.cpp:296
 msgid "+Bots"
 msgstr "+Roboti"
 
-#: src/about.cpp:328 src/help.cpp:2654
+#: src/about.cpp:332 src/help.cpp:2658
 msgid "Close"
 msgstr "Zavri"
 
@@ -8102,12 +8091,12 @@ msgid "none"
 msgstr "nič"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1136 src/reports.cpp:236
+#: src/help.cpp:1140 src/reports.cpp:236
 msgid "melee"
 msgstr "zblízka"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1136 src/reports.cpp:237
+#: src/help.cpp:1140 src/reports.cpp:237
 msgid "ranged"
 msgstr "na diaľku"
 
@@ -8159,31 +8148,31 @@ msgstr "otrávený"
 msgid "slowed"
 msgstr "spomalený"
 
-#: src/actions.cpp:1909
+#: src/actions.cpp:1915
 msgid "Ambushed!"
 msgstr "Prepad!"
 
-#: src/actions.cpp:1943
+#: src/actions.cpp:1949
 msgid "Friendly unit sighted"
 msgstr "Vidím priateľskú jednotku"
 
-#: src/actions.cpp:1945
+#: src/actions.cpp:1951
 msgid "Enemy unit sighted!"
 msgstr "Vidím nepriateľskú jednotku!"
 
-#: src/actions.cpp:1950
+#: src/actions.cpp:1956
 msgid "$friends Friendly units sighted"
 msgstr "Vidím $friends priateľských jednotiek"
 
-#: src/actions.cpp:1952
+#: src/actions.cpp:1958
 msgid "$enemies Enemy units sighted!"
 msgstr "Vidím $enemies nepriateľských jednotiek!"
 
-#: src/actions.cpp:1956
+#: src/actions.cpp:1962
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Vidím jednotky! (priatelia: $friends, nepriatelia: $enemies)"
 
-#: src/actions.cpp:1971
+#: src/actions.cpp:1977
 msgid "(press $hotkey to continue)"
 msgstr "(stlač $hotkey a pokračujeme)"
 
@@ -8227,11 +8216,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Neplatný)"
 
-#: src/dialogs.cpp:373 src/game.cpp:753
+#: src/dialogs.cpp:373 src/game.cpp:754
 msgid "Campaign"
 msgstr "Výprava"
 
-#: src/dialogs.cpp:375 src/game.cpp:1120
+#: src/dialogs.cpp:375 src/game.cpp:1121
 msgid "Multiplayer"
 msgstr "Zápas"
 
@@ -8321,7 +8310,7 @@ msgstr ""
 msgid "Date"
 msgstr "Brána"
 
-#: src/dialogs.cpp:550 src/game.cpp:887 src/help.cpp:1112
+#: src/dialogs.cpp:550 src/game.cpp:888 src/help.cpp:1116
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
 msgid "Name"
 msgstr "Meno"
@@ -8342,11 +8331,11 @@ msgstr "Vyber si, ktorú hru načítať"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1032
+#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1036
 msgid "level"
 msgstr "Úroveň"
 
-#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1090
+#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1094
 #, fuzzy
 msgid "HP: "
 msgstr "Životy"
@@ -8357,7 +8346,7 @@ msgstr "Životy"
 msgid "XP: "
 msgstr "Skúsenosti"
 
-#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1091
+#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1095
 #, fuzzy
 msgid "Moves: "
 msgstr "Ťahy"
@@ -8378,7 +8367,7 @@ msgstr "neviditeľný"
 msgid "OK"
 msgstr ""
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:497
+#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Storno"
@@ -8396,13 +8385,13 @@ msgstr "Bitka o Wesnoth"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Súbor, ktorý si chcel načítať, je poškodený"
 
-#: src/game.cpp:646 src/multiplayer_connect.cpp:888
+#: src/game.cpp:646 src/multiplayer_connect.cpp:891
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Toto je uložená hra z inej verzie programu. Mám sa ju pokúsiť načítať?"
 
-#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:873
+#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:876
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Súbor, ktorý ste chceli načítať, je poškodený: '"
 
@@ -8410,224 +8399,224 @@ msgstr "Súbor, ktorý ste chceli načítať, je poškodený: '"
 msgid "File I/O Error while reading the game"
 msgstr "Chyba pri čítaní súboru hry"
 
-#: src/game.cpp:743
+#: src/game.cpp:744
 msgid "Get More Campaigns..."
 msgstr "Ďalšie výpravy..."
 
-#: src/game.cpp:744
+#: src/game.cpp:745
 msgid "Download more campaigns from a server on Internet."
 msgstr "Stiahni si ďalšie výpravy z internetového servera."
 
-#: src/game.cpp:754
+#: src/game.cpp:755
 msgid "Choose the campaign you want to play:"
 msgstr "Vyber si, ktorú výpravu chceš hrať:"
 
-#: src/game.cpp:783
+#: src/game.cpp:784
 msgid "Difficulty"
 msgstr "Zložitosť"
 
-#: src/game.cpp:784
+#: src/game.cpp:785
 msgid "Select difficulty level:"
 msgstr "Vyber si náročnosť:"
 
-#: src/game.cpp:809
+#: src/game.cpp:810
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:812
+#: src/game.cpp:813
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:815
+#: src/game.cpp:816
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:842
+#: src/game.cpp:843
 msgid "Connect to Server"
 msgstr "Pripoj sa na server"
 
-#: src/game.cpp:843
+#: src/game.cpp:844
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Teraz sa pripojíš na server výprav, aby si si stiahol výpravy."
 
-#: src/game.cpp:844
+#: src/game.cpp:845
 msgid "Server: "
 msgstr "Server:"
 
-#: src/game.cpp:857
+#: src/game.cpp:858
 msgid "Could not connect to host."
 msgstr "Neviem sa pripojiť na server."
 
-#: src/game.cpp:865
+#: src/game.cpp:866
 msgid "Awaiting response from server"
 msgstr "Čakám na odpoveď servera"
 
-#: src/game.cpp:878
+#: src/game.cpp:879
 msgid "Error communicating with the server."
 msgstr "Chyba pri komunikácii so serverom."
 
-#: src/game.cpp:887 src/titlescreen.cpp:170
+#: src/game.cpp:888 src/titlescreen.cpp:170
 msgid "Version"
 msgstr "Verzia"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Author"
 msgstr "Autor"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Downloads"
 msgstr "Stiahnutí"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Size"
 msgstr "Veľkosť"
 
-#: src/game.cpp:940
+#: src/game.cpp:941
 msgid "Publish campaign: "
 msgstr "Publikuj výpravu:"
 
-#: src/game.cpp:944
+#: src/game.cpp:945
 msgid "Delete campaign: "
 msgstr "Vymaž výpravu:"
 
-#: src/game.cpp:948
+#: src/game.cpp:949
 msgid "There are no campaigns available for download from this server."
 msgstr "Na tomto serveri nie sú k dispozícii žiadne výpravy."
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Choose the campaign to download."
 msgstr "Vyber si výpravu, ktorú chceš stiahnuť."
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Get Campaign"
 msgstr "Stiahni výpravu"
 
-#: src/game.cpp:975
+#: src/game.cpp:976
 msgid "Downloading campaign..."
 msgstr "Sťahujem výpravu..."
 
-#: src/game.cpp:989
+#: src/game.cpp:990
 msgid "Cannot rescan the filesystem"
 msgstr ""
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "Campaign Installed"
 msgstr "Výprava nainštalovaná"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "The campaign has been installed."
 msgstr "Výprava je nainštalovaná."
 
-#: src/game.cpp:1002
+#: src/game.cpp:1003
 msgid "Network communication error."
 msgstr "Chyba pri komunikácii na sieti."
 
-#: src/game.cpp:1004
+#: src/game.cpp:1005
 msgid "Remote host disconnected."
 msgstr "Server sa odpojil"
 
-#: src/game.cpp:1006
+#: src/game.cpp:1007
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Nastala chyba pri vytváraní inštalačných súborov tejto výpravy."
 
-#: src/game.cpp:1018 src/game.cpp:1058 src/game.cpp:1083
+#: src/game.cpp:1019 src/game.cpp:1059 src/game.cpp:1084
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
 msgid "Connection timed out"
 msgstr "Čas na pripojenie vypršal"
 
-#: src/game.cpp:1021 src/game.cpp:1060 src/game.cpp:1085
+#: src/game.cpp:1022 src/game.cpp:1061 src/game.cpp:1086
 msgid "The server responded with an error: \""
 msgstr "Server ohlásil chybu: \""
 
-#: src/game.cpp:1025
+#: src/game.cpp:1026
 msgid "Terms"
 msgstr "Podmienky"
 
-#: src/game.cpp:1063 src/game.cpp:1088
+#: src/game.cpp:1064 src/game.cpp:1089
 msgid "Response"
 msgstr "Odpoveď"
 
-#: src/game.cpp:1103
+#: src/game.cpp:1104
 msgid "Join Official Server"
 msgstr "Prihlás sa na Wesnoth"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Prihlás sa na oficiálny server Wesnothu"
 
-#: src/game.cpp:1106 src/multiplayer_lobby.cpp:107
+#: src/game.cpp:1107 src/multiplayer_lobby.cpp:107
 msgid "Join Game"
 msgstr "Pridaj sa k hre"
 
-#: src/game.cpp:1107
+#: src/game.cpp:1108
 msgid "Join a server or hosted game"
 msgstr "Pridaj sa na server alebo do založenej hry"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1110
 msgid "Host Networked Game"
 msgstr "Založ sieťovú hru"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1111
 msgid "Host a game without using a server"
 msgstr "Založ novú hru bez pomoci servera"
 
-#: src/game.cpp:1112
+#: src/game.cpp:1113
 msgid "Hotseat Game"
 msgstr "Horúce kreslo"
 
-#: src/game.cpp:1113
+#: src/game.cpp:1114
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Hrajte zápas viacerí na jednom stroji"
 
-#: src/game.cpp:1115
+#: src/game.cpp:1116
 msgid "Human vs AI"
 msgstr "Človek proti počítaču"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1117
 msgid "Play a game against AI opponents"
 msgstr "Hraj zápas proti počítačovým súperom"
 
-#: src/game.cpp:1122 src/multiplayer.cpp:187
+#: src/game.cpp:1123 src/multiplayer.cpp:187
 #, fuzzy
 msgid "Login: "
 msgstr "Prihlásenie"
 
-#: src/game.cpp:1153
+#: src/game.cpp:1154
 msgid "The game could not be loaded: "
 msgstr "Nepodarilo sa načítať hru: "
 
-#: src/game.cpp:1155
+#: src/game.cpp:1156
 msgid "Error while playing the game: "
 msgstr "Chyba pri hraní hry: "
 
-#: src/game.cpp:1167
+#: src/game.cpp:1168
 msgid "The game map could not be loaded: "
 msgstr "Nepodarilo sa načítať mapu hry: "
 
-#: src/game.cpp:1193
+#: src/game.cpp:1194
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/game.cpp:1194
+#: src/game.cpp:1195
 #, fuzzy
 msgid "Choose your preferred language:"
 msgstr "Vyber si vhodný jazyk"
 
-#: src/game.cpp:1283
+#: src/game.cpp:1284
 #, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1333
 msgid "Error loading game configuration files: '"
 msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1334
 msgid "' (The game will now exit)"
 msgstr "' (Hra teraz skončí)"
 
-#: src/game.cpp:1406
+#: src/game.cpp:1407
 #, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
@@ -8642,83 +8631,83 @@ msgstr "Víťazstvo"
 msgid "Defeat:"
 msgstr "Prehra"
 
-#: src/help.cpp:1052
+#: src/help.cpp:1056
 #, fuzzy
 msgid "Advances to: "
 msgstr "Povýši sa na"
 
-#: src/help.cpp:1073
+#: src/help.cpp:1077
 #, fuzzy
 msgid "Abilities: "
 msgstr "Schopnosti"
 
-#: src/help.cpp:1092
+#: src/help.cpp:1096
 #, fuzzy
 msgid "Alignment: "
 msgstr "Povaha"
 
-#: src/help.cpp:1096
+#: src/help.cpp:1100
 #, fuzzy
 msgid "Required XP: "
 msgstr "Potrebné skúsenosti"
 
-#: src/help.cpp:1105 src/reports.cpp:239
+#: src/help.cpp:1109 src/reports.cpp:239
 msgid "attacks"
 msgstr "útoky"
 
-#: src/help.cpp:1113 src/playturn.cpp:2045 src/playturn.cpp:2222
+#: src/help.cpp:1117 src/playturn.cpp:2045 src/playturn.cpp:2222
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:1114
+#: src/help.cpp:1118
 msgid "Strikes"
 msgstr "Údery"
 
-#: src/help.cpp:1115
+#: src/help.cpp:1119
 msgid "Range"
 msgstr "Z diaľky"
 
-#: src/help.cpp:1116
+#: src/help.cpp:1120
 msgid "Special"
 msgstr "Špeciálne"
 
-#: src/help.cpp:1156
+#: src/help.cpp:1160
 msgid "Resistances"
 msgstr "Odolnosti"
 
-#: src/help.cpp:1160
+#: src/help.cpp:1164
 msgid "Attack Type"
 msgstr "Typ útoku"
 
-#: src/help.cpp:1161
+#: src/help.cpp:1165
 msgid "Resistance"
 msgstr "Odolnosť"
 
-#: src/help.cpp:1186
+#: src/help.cpp:1190
 msgid "Terrain Modifiers"
 msgstr "Vplyv terénu"
 
-#: src/help.cpp:1190
+#: src/help.cpp:1194
 msgid "Terrain"
 msgstr "Terén"
 
-#: src/help.cpp:1191
+#: src/help.cpp:1195
 msgid "Defense"
 msgstr "Obrana"
 
-#: src/help.cpp:1296
+#: src/help.cpp:1300
 msgid "or"
 msgstr "alebo"
 
-#: src/help.cpp:1303
+#: src/help.cpp:1307
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr "Tento terén sa z hľadiska pohybu a obrany ráta ako $terrains."
 
-#: src/help.cpp:1305
+#: src/help.cpp:1309
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Automaticky sa vyberie terén s najlepšími hodnotami."
 
-#: src/help.cpp:1309
+#: src/help.cpp:1313
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -8726,25 +8715,25 @@ msgstr ""
 "Tento terén sa počíta ako pevnosť, teda ak je na takomto teréne veliteľ, "
 "môžeš verbovať jednotky."
 
-#: src/help.cpp:1311
+#: src/help.cpp:1315
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr "Tento terén sa počíta ako hrad, teda naň môžeš verbovať jednotky."
 
-#: src/help.cpp:1313
+#: src/help.cpp:1317
 msgid "This terrain gives healing."
 msgstr "Tento terén lieči."
 
-#: src/help.cpp:2169
+#: src/help.cpp:2173
 msgid "< Back"
 msgstr "< Naspäť"
 
-#: src/help.cpp:2170
+#: src/help.cpp:2174
 msgid "Forward >"
 msgstr "Ďalej >"
 
-#: src/help.cpp:2657
+#: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Návod k Bitke o Wesnoth"
 
@@ -8861,95 +8850,95 @@ msgstr ""
 msgid "You must log in to this server"
 msgstr "Na tento server sa musíš prihlásiť"
 
-#: src/multiplayer_connect.cpp:297
+#: src/multiplayer_connect.cpp:298
 #, fuzzy
 msgid "(Vacant slot)"
 msgstr "Voľné miesto"
 
-#: src/multiplayer_connect.cpp:303
+#: src/multiplayer_connect.cpp:304
 msgid "Anonymous local player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:309
+#: src/multiplayer_connect.cpp:310
 #, fuzzy
 msgid "Computer player"
 msgstr "Počítač"
 
-#: src/multiplayer_connect.cpp:312
+#: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:452
+#: src/multiplayer_connect.cpp:455
 msgid "No non-random sides in the current era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:468
+#: src/multiplayer_connect.cpp:471
 msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:491
+#: src/multiplayer_connect.cpp:485 src/multiplayer_connect.cpp:494
 msgid "Team"
 msgstr "Tím"
 
-#: src/multiplayer_connect.cpp:489
+#: src/multiplayer_connect.cpp:492
 msgid "Player/Type"
 msgstr "Typ hráča"
 
-#: src/multiplayer_connect.cpp:490
+#: src/multiplayer_connect.cpp:493
 msgid "Faction"
 msgstr "Frakcia"
 
-#: src/multiplayer_connect.cpp:492
+#: src/multiplayer_connect.cpp:495
 #, fuzzy
 msgid "Color"
 msgstr "Farba"
 
-#: src/multiplayer_connect.cpp:493 src/playturn.cpp:1769 src/playturn.cpp:1780
+#: src/multiplayer_connect.cpp:496 src/playturn.cpp:1769 src/playturn.cpp:1780
 msgid "Gold"
 msgstr "Zlato"
 
-#: src/multiplayer_connect.cpp:495
+#: src/multiplayer_connect.cpp:498
 #, fuzzy
 msgid "Computer vs Computer"
 msgstr " Počítač proti počítaču "
 
-#: src/multiplayer_connect.cpp:496
+#: src/multiplayer_connect.cpp:499
 msgid "I'm Ready"
 msgstr "Som pripravený"
 
-#: src/multiplayer_connect.cpp:514
+#: src/multiplayer_connect.cpp:517
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:791
+#: src/multiplayer_connect.cpp:794
 msgid "Game Lobby"
 msgstr "Čakáreň"
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:814
 msgid "Network Player"
 msgstr "Sieťový hráč"
 
-#: src/multiplayer_connect.cpp:812
+#: src/multiplayer_connect.cpp:815
 msgid "Local Player"
 msgstr "Človek"
 
-#: src/multiplayer_connect.cpp:813
+#: src/multiplayer_connect.cpp:816
 msgid "Computer Player"
 msgstr "Počítač"
 
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:817
 msgid "Empty"
 msgstr "Nič"
 
-#: src/multiplayer_connect.cpp:880
+#: src/multiplayer_connect.cpp:883
 msgid "This is not a multiplayer save"
 msgstr "Toto nie je uložená sieťová hra"
 
-#: src/multiplayer_connect.cpp:921
+#: src/multiplayer_connect.cpp:924
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:938
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -8957,7 +8946,7 @@ msgstr ""
 "Vyhráš, ak:\n"
 "@Porazíš ostatných veliteľov"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:974
 #, fuzzy
 msgid "Waiting for players to join..."
 msgstr "Čakám, kým sa pripoja sieťoví hráči"
@@ -9796,6 +9785,44 @@ msgstr "poriadok"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutrál"
+
+#~ msgid "The Broken Bridge"
+#~ msgstr "Zlomený most"
+
+#~ msgid ""
+#~ "A small two vs. two map across the ruins of a once great bridge. Perfect "
+#~ "for fast-paced, combat intensive, team-oriented games. Must be players "
+#~ "1,3 vs. 2,4."
+#~ msgstr ""
+#~ "Malá mapa pre dvoch proti dvom uprostred ruín bývalého veľkého mosta. "
+#~ "Vhodná na rýchle tímové hry s množstvom súbojov. Musia byť hráči 1 a 3 "
+#~ "proti 2 a 4."
+
+#~ msgid "Battle for Weslin Bridge"
+#~ msgstr "Bitka o most Weslin"
+
+#~ msgid ""
+#~ "Teams of 2 fight for control of the central bridge choke-point. Good for "
+#~ "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
+#~ msgstr ""
+#~ "Dvojčlenné tímy bojujú o ovládnutie stredného spájacieho mostu. Vhodné na "
+#~ "stredne dlhé hry. Hráči 1 a 3 musia byť spojenci, takisto 2 a 4."
+
+#, fuzzy
+#~ msgid " "
+#~ msgstr "Životy"
+
+#, fuzzy
+#~ msgid ""
+#~ "With their stumpy vestigial wings and inability to use their great "
+#~ "internal fire as a weapon some may think that these Drakes are "
+#~ "disadvantaged; they would be mistaken."
+#~ msgstr ""
+#~ "Kto by si myslel, že títo jašteri sú v nevýhode vďaka zakrpateným krídlam "
+#~ "a neschopnosti používať svoj vnútorný oheň ako zbraň, mýlil by sa. Jašter "
+#~ "gladiátor chráni svoje zraniteľné miesta hrubým mosadzným brnením a je po "
+#~ "zuby ozbrojený zbraňami so smaragdovými čepeľami, aby odrazil všetkých "
+#~ "súperov, ktorí ho čakajú."
 
 #~ msgid "The Isle of Anduin"
 #~ msgstr "Ostrov Anduin"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-03 22:49+0200\n"
+"POT-Creation-Date: 2005-06-05 17:14+0200\n"
 "PO-Revision-Date: 2005-05-12 18:58+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -221,7 +221,7 @@ msgstr ""
 "им также нужны деньги для поддержки. Смотрите <ref>dst=income_and_upkeep "
 "text='Доход и Содержание'</ref> для более детальной информации."
 
-#: data/help.cfg:92 src/help.cpp:1192
+#: data/help.cfg:92 src/help.cpp:1196
 msgid "Movement"
 msgstr "Ходы"
 
@@ -1235,11 +1235,221 @@ msgid ""
 msgstr ""
 "Ты можешь проходить, если хочешь, но лидер будет говорить только с Балдрасом."
 
-#: data/scenarios/multiplayer/An_Island.cfg:7
-msgid "An Island"
+#: data/scenarios/multiplayer/2p_Blitz.cfg:7
+#, fuzzy
+msgid "2p - Blitz"
+msgstr "Блиц"
+
+#: data/scenarios/multiplayer/2p_Blitz.cfg:9
+#: data/scenarios/multiplayer/2p_Charge.cfg:9
+msgid "A duel map for super fast play. Recommended setting of 2g per village."
+msgstr ""
+"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
+"деревню."
+
+#: data/scenarios/multiplayer/2p_Charge.cfg:7
+#, fuzzy
+msgid "2p - Charge"
+msgstr "Бросок"
+
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
+msgid "2p - Den of Onis"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
+msgid ""
+"Danger lurks around every corner in this underground battlefield, a duel map "
+"where force and subterfuge meet. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
+msgid "2p - Divide and Conquer"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
+#, fuzzy
+msgid ""
+"This small duel map divides the field of battle into three segments. "
+"Recommended settings of 2G per village."
+msgstr ""
+"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
+"деревню."
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:3
+msgid "2p - Hamlets"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:4
+msgid ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
+msgid "2p - Hornshark Island"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
+msgid ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:3
+#, fuzzy
+msgid "2p - Icy Waters"
+msgstr "Ледяная вода"
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:5
+msgid ""
+"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
+msgid "2p - Meteor Lake"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
+msgid ""
+"Long ago, a great meteor fell from the heavens, leaving its mark on this "
+"coniferous region. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
+msgid "2p - Silverhead Crossing"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
+msgid ""
+"Players must traverse all manner of terrain in pursuit of victory on this "
+"multi-fronted duel map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
+msgid "2p - Sullas Ruins"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
+msgid ""
+"Flooded by the seas and battered by the winter elements, only ruins, water "
+"and ice now remain in the shadow of this once mighty empire. Recommended "
+"settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
+#, fuzzy
+msgid "2p - Wesbowl"
+msgstr "Кубок Веснота"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
+msgid ""
+"In Wesbowl, a player must get their ball to the other player's end zone. "
+"However, the other player can attack your units. Wesbowl is played with "
+"blunt weapons, and healers are on hand, so when units are killed, they "
+"return to that player's end zone with an injury."
+msgstr ""
+"В Кубке Веснота игрок должен пронести мяч до конечной зоны другого игрока. "
+"Другой игрок может атаковать Ваши соединения. Кубок Веснота играется с тупым "
+"оружием, и санитары всегда готовы, так что когда бойцов выводят из строя, "
+"они возвращаются в конечную зону игрока с ушибами."
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:11
+msgid ""
+"\n"
+"Victory:\n"
+"@Move either ball to your opponent's endzone more times than they move their "
+"ball to yours\n"
+"Defeat:\n"
+"#Opponent moves the balls to your endzone more times than you move them to "
+"theirs"
+msgstr ""
+"\n"
+"Победа:\n"
+"@Пронесите мяч в конечную зону оппонента больше раз, чем он пронесёт в Вашу\n"
+"Поражение:\n"
+"#Оппонент пронёс мяч в Вашу конечную зону больше раз, чем Вы в его"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:199
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:476
+msgid "Red scores! Current score is $redscore-$bluescore"
+msgstr "Красные забили! Текущее количество очков $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:247
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:524
+msgid "Blue scores! Current score is $redscore-$bluescore"
+msgstr "Синие забили! Текущее количество очков $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:337
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:614
+msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+msgstr "Отдать пас $passto.type ($xloc,$yloc)?"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:339
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:616
+msgid "Yes!"
+msgstr "Да!"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:361
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:638
+#: data/scenarios/tutorial/Basic_Training.cfg:318
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
+msgid "No"
+msgstr "Нет"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:661
+msgid "Blue team wins! Final score: $redscore-$bluescore"
+msgstr "Синяя команда выиграла! Финальный счёт: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:673
+msgid "Red team wins! Final score: $redscore-$bluescore"
+msgstr "Красная команда выиграла! Финальный счёт: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:685
+msgid "Draw! Final score: $redscore-$bluescore"
+msgstr "Ничья! Финальный счёт: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
+msgid "3p - 1v1v1Hex"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
+#, fuzzy
+msgid ""
+"Three players do battle in this small, enclosed region. Recommended settings "
+"of 2G per village."
+msgstr ""
+"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
+"деревню."
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:3
+msgid "3p - Morituri"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:4
+msgid ""
+"Only one faction will emerge victorious from this tightly bordered three-"
+"player map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
+msgid "3p - Triple Blitz"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
+#, fuzzy
+msgid ""
+"Three players come head to head on this water-cut battlefield. Recommended "
+"settings of 2G per village."
+msgstr ""
+"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
+"деревню."
+
+#: data/scenarios/multiplayer/4p_An_Island.cfg:7
+#, fuzzy
+msgid "4p - An Island"
 msgstr "Остров"
 
-#: data/scenarios/multiplayer/An_Island.cfg:10
+#: data/scenarios/multiplayer/4p_An_Island.cfg:10
 msgid ""
 "A 4 player map that is suitable for individual or team play, victory rests "
 "of dominating the centre island. North-West: Forest dominated area, North-"
@@ -1251,36 +1461,12 @@ msgstr ""
 "северо-восток: снежные равнины, юго-запад: пустыни, юго-восток: гористая "
 "местность."
 
-#: data/scenarios/multiplayer/Blitz.cfg:7
-msgid "Blitz"
-msgstr "Блиц"
-
-#: data/scenarios/multiplayer/Blitz.cfg:9
-#: data/scenarios/multiplayer/Charge.cfg:9
-msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
-
-#: data/scenarios/multiplayer/BrokenBridge.cfg:2
-msgid "The Broken Bridge"
-msgstr "Разрушенный Мост"
-
-#: data/scenarios/multiplayer/BrokenBridge.cfg:4
-msgid ""
-"A small two vs. two map across the ruins of a once great bridge. Perfect for "
-"fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
-"2,4."
-msgstr ""
-"Малая 'двое против двоих' карта с руинами, пересекаемыми большим мостом. "
-"Великолепна для для быстрых, с интенсивными боями, командно-ориентированных "
-"игр. Игроки должны быть 1 и 3 против 2 и 4."
-
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
-msgid "Castle Hopping Isle"
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
+#, fuzzy
+msgid "4p - Castle Hopping Isle"
 msgstr "Замок Хмельного острова"
 
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
 msgid ""
 "Many closely placed and strategically located castles. Small map for fast "
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
@@ -1290,15 +1476,12 @@ msgstr ""
 "для быстрой игры. Рекомендуемые настройки - 2 золота за деревню и игроки 1 и "
 "3 против игроков 2 и 4 для игры 'два на два'."
 
-#: data/scenarios/multiplayer/Charge.cfg:7
-msgid "Charge"
-msgstr "Бросок"
-
-#: data/scenarios/multiplayer/Clash.cfg:3
-msgid "Clash"
+#: data/scenarios/multiplayer/4p_Clash.cfg:3
+#, fuzzy
+msgid "4p - Clash"
 msgstr "Столкновение"
 
-#: data/scenarios/multiplayer/Clash.cfg:5
+#: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid ""
 "Small map for 2v2. Teams should be player 1 and 3, vs player 2 and 4. "
 "Recommended setting of 2 gold per village."
@@ -1306,26 +1489,62 @@ msgstr ""
 "Небольшая карта 2 на 2. Команды должны состоять из 1-го и 3-го игрока против "
 "2-го и 4-го игрока. Рекомендуемые настройки 2 золота на деревню."
 
-#: data/scenarios/multiplayer/ForestOfFear.cfg:3
-msgid "Forest of Fear"
-msgstr "Лес Страха"
+#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
+#, fuzzy
+msgid "4p - King of the Hill"
+msgstr "Царь горы"
 
-#: data/scenarios/multiplayer/Hexcake.cfg:3
-msgid "Hexcake"
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:3
+msgid "4p - Lagoon"
 msgstr ""
 
-#: data/scenarios/multiplayer/Hexcake.cfg:5
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:4
+#, fuzzy
+msgid ""
+"Four factions contend for dominance over this watery settlement. Recommended "
+"settings of 1G per village."
+msgstr ""
+"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
+"деревню."
+
+#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#, fuzzy
+msgid "4p - Siege Castles"
+msgstr "Замок в осаде"
+
+#: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
+#, fuzzy
+msgid "4p - The Valley of Death"
+msgstr "Долина Смерти"
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
+msgid "4p - The Wilderlands"
+msgstr ""
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
+msgid ""
+"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
+"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
+"1G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
+#, fuzzy
+msgid "5p - Forest of Fear"
+msgstr "Лес Страха"
+
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:3
+msgid "6p - Hexcake"
+msgstr ""
+
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "командная игра 2 на 2 или 3 на 3."
 
-#: data/scenarios/multiplayer/IcyWaters.cfg:3
-msgid "Icy Waters"
-msgstr "Ледяная вода"
-
-#: data/scenarios/multiplayer/IcyWaters.cfg:5
-msgid ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
-msgstr ""
+#: data/scenarios/multiplayer/7p_battleworld.cfg:7
+#, fuzzy
+msgid "7p - Battle World"
+msgstr "Мировая битва"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1375,100 +1594,9 @@ msgstr ""
 "Внимание: случайные карты не сбалансированы, но если у Вас есть время, Вы "
 "можете регенерировать её, пока не получите хорошую."
 
-#: data/scenarios/multiplayer/Wesbowl.cfg:3
-msgid "Wesbowl"
-msgstr "Кубок Веснота"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:6
-msgid ""
-"In Wesbowl, a player must get their ball to the other player's end zone. "
-"However, the other player can attack your units. Wesbowl is played with "
-"blunt weapons, and healers are on hand, so when units are killed, they "
-"return to that player's end zone with an injury."
-msgstr ""
-"В Кубке Веснота игрок должен пронести мяч до конечной зоны другого игрока. "
-"Другой игрок может атаковать Ваши соединения. Кубок Веснота играется с тупым "
-"оружием, и санитары всегда готовы, так что когда бойцов выводят из строя, "
-"они возвращаются в конечную зону игрока с ушибами."
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:11
-msgid ""
-"\n"
-"Victory:\n"
-"@Move either ball to your opponent's endzone more times than they move their "
-"ball to yours\n"
-"Defeat:\n"
-"#Opponent moves the balls to your endzone more times than you move them to "
-"theirs"
-msgstr ""
-"\n"
-"Победа:\n"
-"@Пронесите мяч в конечную зону оппонента больше раз, чем он пронесёт в Вашу\n"
-"Поражение:\n"
-"#Оппонент пронёс мяч в Вашу конечную зону больше раз, чем Вы в его"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:199
-#: data/scenarios/multiplayer/Wesbowl.cfg:476
-msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr "Красные забили! Текущее количество очков $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:247
-#: data/scenarios/multiplayer/Wesbowl.cfg:524
-msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr "Синие забили! Текущее количество очков $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:337
-#: data/scenarios/multiplayer/Wesbowl.cfg:614
-msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "Отдать пас $passto.type ($xloc,$yloc)?"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:339
-#: data/scenarios/multiplayer/Wesbowl.cfg:616
-msgid "Yes!"
-msgstr "Да!"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:361
-#: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/Basic_Training.cfg:318
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
-msgid "No"
-msgstr "Нет"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:661
-msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr "Синяя команда выиграла! Финальный счёт: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:673
-msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr "Красная команда выиграла! Финальный счёт: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:685
-msgid "Draw! Final score: $redscore-$bluescore"
-msgstr "Ничья! Финальный счёт: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:3
-msgid "Battle for Weslin Bridge"
-msgstr "Битва за мост Веслин"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:5
-msgid ""
-"Teams of 2 fight for control of the central bridge choke-point. Good for "
-"medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
-msgstr ""
-"Команды из двоих игроков бьются за контроль над точной на центральном мосте. "
-"Хороша для игр средней продолжительности. Игроки 1 и 3 должны быть "
-"союзниками, как и 2 и 4. "
-
-#: data/scenarios/multiplayer/battleworld.cfg:7
-msgid "Battle World"
-msgstr "Мировая битва"
-
-#: data/scenarios/multiplayer/castles.cfg:7
-msgid "Siege Castles"
-msgstr "Замок в осаде"
-
 #: data/scenarios/multiplayer/scenarios.cfg:3
-msgid "Across The River"
+#, fuzzy
+msgid "2p - Across The River"
 msgstr "Пересекая реку"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
@@ -1481,153 +1609,6 @@ msgstr ""
 "сбалансирована по отношению к обеим сторонам.\n"
 "Вы можете использовать её в 'компьютер против компьютера', чтобы увидеть, "
 "сколько одна сторона продержится против другой."
-
-#: data/scenarios/multiplayer/scenarios.cfg:110
-msgid "The Valley of Death"
-msgstr "Долина Смерти"
-
-#: data/scenarios/multiplayer/scenarios.cfg:111
-#, fuzzy
-msgid " "
-msgstr ";"
-
-#: data/scenarios/multiplayer/scenarios.cfg:156
-msgid "King of the Hill"
-msgstr "Царь горы"
-
-#: data/scenarios/multiplayer/scenarios.cfg:195
-msgid "2p - Divide and Conquer"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:196
-#, fuzzy
-msgid ""
-"This small duel map divides the field of battle into three segments. "
-"Recommended settings of 2G per village."
-msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
-
-#: data/scenarios/multiplayer/scenarios.cfg:226
-msgid "2p - Silverhead Crossing"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:227
-msgid ""
-"Players must traverse all manner of terrain in pursuit of victory on this "
-"multi-fronted duel map. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:256
-msgid "2p - Meteor Lake"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:257
-msgid ""
-"Long ago, a great meteor fell from the heavens, leaving its mark on this "
-"coniferous region. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:286
-msgid "2p - Den of Onis"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:287
-msgid ""
-"Danger lurks around every corner in this underground battlefield, a duel map "
-"where force and subterfuge meet. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:316
-msgid "2p - Hamlets"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:317
-msgid ""
-"Warfare transforms the simple farms and villages of a peaceful region into a "
-"subtly parceled battlefield. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:346
-msgid "2p - Hornshark Island"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:347
-msgid ""
-"Players must navigate the dispersive terrain of this small but "
-"topographically dense island. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:376
-msgid "2p - Sullas Ruins"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:377
-msgid ""
-"Flooded by the seas and battered by the winter elements, only ruins, water "
-"and ice now remain in the shadow of this once mighty empire. Recommended "
-"settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:406
-msgid "3p - 1v1v1Hex"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:407
-#, fuzzy
-msgid ""
-"Three players do battle in this small, enclosed region. Recommended settings "
-"of 2G per village."
-msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
-
-#: data/scenarios/multiplayer/scenarios.cfg:443
-msgid "4p - Lagoon"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:444
-#, fuzzy
-msgid ""
-"Four factions contend for dominance over this watery settlement. Recommended "
-"settings of 1G per village."
-msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
-
-#: data/scenarios/multiplayer/scenarios.cfg:487
-msgid "4p - The Wilderlands"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:488
-msgid ""
-"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
-"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
-"1G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:531
-msgid "3p - Morituri"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:532
-msgid ""
-"Only one faction will emerge victorious from this tightly bordered three-"
-"player map. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:568
-msgid "3p - Triple Blitz"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:569
-#, fuzzy
-msgid ""
-"Three players come head to head on this water-cut battlefield. Recommended "
-"settings of 2G per village."
-msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
 msgid "Basic Training"
@@ -4717,25 +4698,27 @@ msgstr "Конфликтный Дракон"
 
 #: data/units/Drake_Clasher.cfg:18
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Clashers' weapons of choice "
-"are the sword and spear, which they use to great effect. The greatest "
-"Clashers can become Drake Gladiators or Slashers."
-msgstr ""
-
-#: data/units/Drake_Clasher.cfg:18 data/units/Drake_Enforcer.cfg:18
-#: data/units/Drake_Gladiator.cfg:19 data/units/Drake_Slasher.cfg:19
-#: data/units/Drake_Warden.cfg:19
-msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
-"would be mistaken."
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Clashers' "
+"weapons of choice are the sword and spear, which they use to great effect. "
+"The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:3
 #, fuzzy
 msgid "Drake Enforcer"
 msgstr "Дракон Поджигатель"
+
+#: data/units/Drake_Enforcer.cfg:18
+msgid ""
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. Drake Enforcers protect their vulnerable hides with thick "
+"brass armor and they arm themselves with as many emerald edged weapons as "
+"possible to fend off whatever opponents may await them."
+msgstr ""
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -4813,9 +4796,11 @@ msgstr "Дракон Гладиатор"
 
 #: data/units/Drake_Gladiator.cfg:19
 msgid ""
-" Drake Gladiators protect their vulnerable hides with thick brass armor and "
-"they arm themselves with as many emerald edged weapons as possible to fend "
-"off whatever opponents may await them."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. Drake Gladiators protect their vulnerable hides with "
+"thick brass armor and they arm themselves with as many emerald edged weapons "
+"as possible to fend off whatever opponents may await them."
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:3
@@ -4886,9 +4871,11 @@ msgstr "Дракон с Саблей"
 
 #: data/units/Drake_Slasher.cfg:19
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Slashers' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Slashers' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:46
@@ -4905,9 +4892,11 @@ msgstr "Сияющий Дракон"
 
 #: data/units/Drake_Warden.cfg:19
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Wardens' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Wardens' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 
 #: data/units/Drake_Warrior.cfg:4
@@ -7870,160 +7859,160 @@ msgstr "-   Графика и дизайн"
 msgid "+Developers"
 msgstr "+Программисты"
 
-#: src/about.cpp:57
+#: src/about.cpp:58
 msgid "+General Purpose Administrators"
 msgstr "+Администраторы"
 
-#: src/about.cpp:61
+#: src/about.cpp:62
 msgid "+Artwork and graphics designers"
 msgstr "+Графика и дизайн"
 
-#: src/about.cpp:86
+#: src/about.cpp:88
 msgid "+Music"
 msgstr "+Музыка"
 
-#: src/about.cpp:92
+#: src/about.cpp:94
 msgid "+Scenario Designers"
 msgstr "+Дизайн сценариев"
 
-#: src/about.cpp:101
+#: src/about.cpp:103
 msgid "+Multiplayer Maps"
 msgstr "+Сетевые карты"
 
-#: src/about.cpp:105
+#: src/about.cpp:107
 msgid "+Packagers"
 msgstr "+Программные сборки"
 
-#: src/about.cpp:115
+#: src/about.cpp:117
 msgid "+Miscellaneous"
 msgstr "+Разное"
 
-#: src/about.cpp:120
+#: src/about.cpp:122
 msgid "+Internationalization Managers"
 msgstr "+Менеджеры по локализации"
 
-#: src/about.cpp:126
+#: src/about.cpp:129
 msgid "+Afrikaans Translation"
 msgstr "+Африканский перевод"
 
-#: src/about.cpp:130
+#: src/about.cpp:133
 msgid "+Basque Translation"
 msgstr "+Баскский перевод"
 
-#: src/about.cpp:135
+#: src/about.cpp:138
 msgid "+Bulgarian Translation"
 msgstr "+Болгарский перевод"
 
-#: src/about.cpp:138
+#: src/about.cpp:141
 msgid "+Catalan Translation"
 msgstr "+Каталонский перевод"
 
-#: src/about.cpp:145
+#: src/about.cpp:148
 msgid "+Chinese Translation"
 msgstr "+Китайский перевод"
 
-#: src/about.cpp:148
+#: src/about.cpp:151
 msgid "+Czech Translation"
 msgstr "+Чешский перевод"
 
-#: src/about.cpp:156
+#: src/about.cpp:159
 msgid "+Danish Translation"
 msgstr "+Датский перевод"
 
-#: src/about.cpp:160
+#: src/about.cpp:163
 msgid "+Dutch Translation"
 msgstr "+Голландский перевод"
 
-#: src/about.cpp:167
+#: src/about.cpp:170
 msgid "+English (GB) Translation"
 msgstr "+Британский английский перевод"
 
-#: src/about.cpp:170
+#: src/about.cpp:173
 msgid "+Estonian Translation"
 msgstr "+Эстонский перевод"
 
-#: src/about.cpp:173
+#: src/about.cpp:176
 msgid "+Finnish Translation"
 msgstr "+Финский перевод"
 
-#: src/about.cpp:177
+#: src/about.cpp:181
 msgid "+French Translation"
 msgstr "+Французский перевод"
 
-#: src/about.cpp:190
+#: src/about.cpp:194
 msgid "+German Translation"
 msgstr "+Немецкий перевод"
 
-#: src/about.cpp:201
+#: src/about.cpp:205
 msgid "+Greek Translation"
 msgstr "+Греческий перевод"
 
-#: src/about.cpp:205
+#: src/about.cpp:209
 msgid "+Hungarian Translation"
 msgstr "+Венгерский перевод"
 
-#: src/about.cpp:216
+#: src/about.cpp:220
 msgid "+Italian Translation"
 msgstr "+Итальянский перевод"
 
-#: src/about.cpp:225
+#: src/about.cpp:229
 msgid "+Japanese Translation"
 msgstr "+Японский перевод"
 
-#: src/about.cpp:230
+#: src/about.cpp:234
 msgid "+Latin Translation"
 msgstr "+Латинский перевод"
 
-#: src/about.cpp:233
+#: src/about.cpp:237
 msgid "+Norwegian Translation"
 msgstr "+Норвежский перевод"
 
-#: src/about.cpp:239
+#: src/about.cpp:243
 msgid "+Polish Translation"
 msgstr "+Польский перевод"
 
-#: src/about.cpp:249
+#: src/about.cpp:253
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Португальский перевод"
 
-#: src/about.cpp:257
+#: src/about.cpp:261
 msgid "+Russian Translation"
 msgstr "+Русский перевод"
 
-#: src/about.cpp:262
+#: src/about.cpp:266
 #, fuzzy
 msgid "+Serbian Translation"
 msgstr "+Немецкий перевод"
 
-#: src/about.cpp:265
+#: src/about.cpp:269
 msgid "+Slovak Translation"
 msgstr "+Словакский перевод"
 
-#: src/about.cpp:268
+#: src/about.cpp:272
 msgid "+Slovenian Translation"
 msgstr "+Словенский перевод"
 
-#: src/about.cpp:271
+#: src/about.cpp:275
 msgid "+Spanish Translation"
 msgstr "+Испанский перевод"
 
-#: src/about.cpp:279
+#: src/about.cpp:283
 msgid "+Swedish Translation"
 msgstr "+Шведский перевод"
 
-#: src/about.cpp:285
+#: src/about.cpp:289
 msgid "+Turkish Translation"
 msgstr "+Турецкий перевод"
 
-#: src/about.cpp:289
+#: src/about.cpp:293
 msgid "+Contributors"
 msgstr "+Помощники"
 
-#: src/about.cpp:292
+#: src/about.cpp:296
 msgid "+Bots"
 msgstr "+Боты"
 
-#: src/about.cpp:328 src/help.cpp:2654
+#: src/about.cpp:332 src/help.cpp:2658
 msgid "Close"
 msgstr "Закрыть"
 
@@ -8048,12 +8037,12 @@ msgid "none"
 msgstr "нет"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1136 src/reports.cpp:236
+#: src/help.cpp:1140 src/reports.cpp:236
 msgid "melee"
 msgstr "рукопашная"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1136 src/reports.cpp:237
+#: src/help.cpp:1140 src/reports.cpp:237
 msgid "ranged"
 msgstr "на дистанции"
 
@@ -8105,31 +8094,31 @@ msgstr "отравлен"
 msgid "slowed"
 msgstr "замедлен"
 
-#: src/actions.cpp:1909
+#: src/actions.cpp:1915
 msgid "Ambushed!"
 msgstr "Попал в засаду!"
 
-#: src/actions.cpp:1943
+#: src/actions.cpp:1949
 msgid "Friendly unit sighted"
 msgstr "Замечено дружественное соединение!"
 
-#: src/actions.cpp:1945
+#: src/actions.cpp:1951
 msgid "Enemy unit sighted!"
 msgstr "Замечено вражеское соединение!"
 
-#: src/actions.cpp:1950
+#: src/actions.cpp:1956
 msgid "$friends Friendly units sighted"
 msgstr "$friends видим дружественные соединения"
 
-#: src/actions.cpp:1952
+#: src/actions.cpp:1958
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies видим соединения противника!"
 
-#: src/actions.cpp:1956
+#: src/actions.cpp:1962
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Видим соединения! ($friends дружественные, $enemies враждебные)"
 
-#: src/actions.cpp:1971
+#: src/actions.cpp:1977
 msgid "(press $hotkey to continue)"
 msgstr "(нажмите $hotkey для продолжения)"
 
@@ -8173,11 +8162,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Неверно)"
 
-#: src/dialogs.cpp:373 src/game.cpp:753
+#: src/dialogs.cpp:373 src/game.cpp:754
 msgid "Campaign"
 msgstr "Кампания"
 
-#: src/dialogs.cpp:375 src/game.cpp:1120
+#: src/dialogs.cpp:375 src/game.cpp:1121
 msgid "Multiplayer"
 msgstr "Сетевая игра"
 
@@ -8264,7 +8253,7 @@ msgstr ""
 msgid "Date"
 msgstr "Ворота"
 
-#: src/dialogs.cpp:550 src/game.cpp:887 src/help.cpp:1112
+#: src/dialogs.cpp:550 src/game.cpp:888 src/help.cpp:1116
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
 msgid "Name"
 msgstr "Название"
@@ -8285,11 +8274,11 @@ msgstr "Выберите игру, которую Вы хотите загруз
 msgid "Profile"
 msgstr "Справка"
 
-#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1032
+#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1036
 msgid "level"
 msgstr "уровень"
 
-#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1090
+#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1094
 msgid "HP: "
 msgstr "ЗД:"
 
@@ -8298,7 +8287,7 @@ msgstr "ЗД:"
 msgid "XP: "
 msgstr "ОП:"
 
-#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1091
+#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1095
 msgid "Moves: "
 msgstr "Ходов:"
 
@@ -8318,7 +8307,7 @@ msgstr "невидимый"
 msgid "OK"
 msgstr "OK"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:497
+#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Отмена"
@@ -8337,7 +8326,7 @@ msgstr ""
 "Внимание: Файл, который Вы пытались загрузить, повреждён. Пробуем "
 "загрузить.\n"
 
-#: src/game.cpp:646 src/multiplayer_connect.cpp:888
+#: src/game.cpp:646 src/multiplayer_connect.cpp:891
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -8345,7 +8334,7 @@ msgstr ""
 "Данное сохранение из другой версии игры. Вы хотите попробовать загрузить "
 "данное сохранение?"
 
-#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:873
+#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:876
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Файл, который Вы пытались загрузить, повреждён: '"
 
@@ -8353,223 +8342,223 @@ msgstr "Файл, который Вы пытались загрузить, по�
 msgid "File I/O Error while reading the game"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
-#: src/game.cpp:743
+#: src/game.cpp:744
 msgid "Get More Campaigns..."
 msgstr "Загрузить другие кампании..."
 
-#: src/game.cpp:744
+#: src/game.cpp:745
 msgid "Download more campaigns from a server on Internet."
 msgstr "Загрузить другие кампании из Интернета."
 
-#: src/game.cpp:754
+#: src/game.cpp:755
 msgid "Choose the campaign you want to play:"
 msgstr "Выберите кампанию, в которую Вы хотите сыграть:"
 
-#: src/game.cpp:783
+#: src/game.cpp:784
 msgid "Difficulty"
 msgstr "Сложность"
 
-#: src/game.cpp:784
+#: src/game.cpp:785
 msgid "Select difficulty level:"
 msgstr "Выберите уровень сложности:"
 
-#: src/game.cpp:809
+#: src/game.cpp:810
 msgid "B"
 msgstr "Байт"
 
-#: src/game.cpp:812
+#: src/game.cpp:813
 msgid "KB"
 msgstr "КБайт"
 
-#: src/game.cpp:815
+#: src/game.cpp:816
 msgid "MB"
 msgstr "МБайт"
 
-#: src/game.cpp:842
+#: src/game.cpp:843
 msgid "Connect to Server"
 msgstr "Подключиться к серверу"
 
-#: src/game.cpp:843
+#: src/game.cpp:844
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Вы должны подключиться к серверу чтобы скачать кампании."
 
-#: src/game.cpp:844
+#: src/game.cpp:845
 msgid "Server: "
 msgstr "Сервер: "
 
-#: src/game.cpp:857
+#: src/game.cpp:858
 msgid "Could not connect to host."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:865
+#: src/game.cpp:866
 msgid "Awaiting response from server"
 msgstr "Ждём ответа от сервера"
 
-#: src/game.cpp:878
+#: src/game.cpp:879
 msgid "Error communicating with the server."
 msgstr "Ошибка при подключении к серверу."
 
-#: src/game.cpp:887 src/titlescreen.cpp:170
+#: src/game.cpp:888 src/titlescreen.cpp:170
 msgid "Version"
 msgstr "Версия"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Author"
 msgstr "Автор"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Downloads"
 msgstr "Загрузки"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Size"
 msgstr "Размер"
 
-#: src/game.cpp:940
+#: src/game.cpp:941
 msgid "Publish campaign: "
 msgstr "Опубликовать кампанию:"
 
-#: src/game.cpp:944
+#: src/game.cpp:945
 msgid "Delete campaign: "
 msgstr "Удалить кампанию:"
 
-#: src/game.cpp:948
+#: src/game.cpp:949
 msgid "There are no campaigns available for download from this server."
 msgstr "На этом сервере нет доступных для загрузки кампаний."
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Choose the campaign to download."
 msgstr "Выберите кампанию для загрузки."
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Get Campaign"
 msgstr "Загрузить кампанию"
 
-#: src/game.cpp:975
+#: src/game.cpp:976
 msgid "Downloading campaign..."
 msgstr "Загружаем кампанию..."
 
-#: src/game.cpp:989
+#: src/game.cpp:990
 msgid "Cannot rescan the filesystem"
 msgstr "Не могу перечитать файловую систему"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "Campaign Installed"
 msgstr "Установленные кампании"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "The campaign has been installed."
 msgstr "Кампания успешно установлена."
 
-#: src/game.cpp:1002
+#: src/game.cpp:1003
 msgid "Network communication error."
 msgstr "Ошибка при соединении к серверу."
 
-#: src/game.cpp:1004
+#: src/game.cpp:1005
 msgid "Remote host disconnected."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:1006
+#: src/game.cpp:1007
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Возникла проблема с созданием файлов, необходимых для полной установки "
 "кампании."
 
-#: src/game.cpp:1018 src/game.cpp:1058 src/game.cpp:1083
+#: src/game.cpp:1019 src/game.cpp:1059 src/game.cpp:1084
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
 msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
-#: src/game.cpp:1021 src/game.cpp:1060 src/game.cpp:1085
+#: src/game.cpp:1022 src/game.cpp:1061 src/game.cpp:1086
 msgid "The server responded with an error: \""
 msgstr "Сервер ответил с ошибкой: \""
 
-#: src/game.cpp:1025
+#: src/game.cpp:1026
 msgid "Terms"
 msgstr "Условия"
 
-#: src/game.cpp:1063 src/game.cpp:1088
+#: src/game.cpp:1064 src/game.cpp:1089
 msgid "Response"
 msgstr "Ответ"
 
-#: src/game.cpp:1103
+#: src/game.cpp:1104
 msgid "Join Official Server"
 msgstr "Подключиться к официальному серверу"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Войти на официальный игровой сервер Веснот"
 
-#: src/game.cpp:1106 src/multiplayer_lobby.cpp:107
+#: src/game.cpp:1107 src/multiplayer_lobby.cpp:107
 msgid "Join Game"
 msgstr "Подключиться к игре"
 
-#: src/game.cpp:1107
+#: src/game.cpp:1108
 msgid "Join a server or hosted game"
 msgstr "Подключиться к серверу или игре"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1110
 msgid "Host Networked Game"
 msgstr "Создать игру"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1111
 msgid "Host a game without using a server"
 msgstr "Создать локальную игру"
 
-#: src/game.cpp:1112
+#: src/game.cpp:1113
 msgid "Hotseat Game"
 msgstr "За одним компьютером"
 
-#: src/game.cpp:1113
+#: src/game.cpp:1114
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Играть в сетевую игру на этой же машине"
 
-#: src/game.cpp:1115
+#: src/game.cpp:1116
 msgid "Human vs AI"
 msgstr "Человек против Компьютера"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1117
 msgid "Play a game against AI opponents"
 msgstr "Игра против компьютера"
 
-#: src/game.cpp:1122 src/multiplayer.cpp:187
+#: src/game.cpp:1123 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Логин:"
 
-#: src/game.cpp:1153
+#: src/game.cpp:1154
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена:"
 
-#: src/game.cpp:1155
+#: src/game.cpp:1156
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры:"
 
-#: src/game.cpp:1167
+#: src/game.cpp:1168
 msgid "The game map could not be loaded: "
 msgstr "Игра не может быть загружена:"
 
-#: src/game.cpp:1193
+#: src/game.cpp:1194
 msgid "Language"
 msgstr "Язык"
 
-#: src/game.cpp:1194
+#: src/game.cpp:1195
 msgid "Choose your preferred language:"
 msgstr "Выберите предпочтительный язык:"
 
-#: src/game.cpp:1283
+#: src/game.cpp:1284
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Внимание: Ошибка при загрузке файлов с настройками игры: '"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1333
 msgid "Error loading game configuration files: '"
 msgstr "Ошибка при загрузке файлов с настройками игры: '"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1334
 msgid "' (The game will now exit)"
 msgstr "' (Сейчас игра будет завершена)"
 
-#: src/game.cpp:1406
+#: src/game.cpp:1407
 msgid "Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
@@ -8581,79 +8570,79 @@ msgstr "Победа:"
 msgid "Defeat:"
 msgstr "Поражение:"
 
-#: src/help.cpp:1052
+#: src/help.cpp:1056
 msgid "Advances to: "
 msgstr "Улучшение:"
 
-#: src/help.cpp:1073
+#: src/help.cpp:1077
 msgid "Abilities: "
 msgstr "Способности:"
 
-#: src/help.cpp:1092
+#: src/help.cpp:1096
 msgid "Alignment: "
 msgstr "Тип:"
 
-#: src/help.cpp:1096
+#: src/help.cpp:1100
 msgid "Required XP: "
 msgstr "Необходимый ОП:"
 
-#: src/help.cpp:1105 src/reports.cpp:239
+#: src/help.cpp:1109 src/reports.cpp:239
 msgid "attacks"
 msgstr "атаки"
 
-#: src/help.cpp:1113 src/playturn.cpp:2045 src/playturn.cpp:2222
+#: src/help.cpp:1117 src/playturn.cpp:2045 src/playturn.cpp:2222
 msgid "Type"
 msgstr "Тип"
 
-#: src/help.cpp:1114
+#: src/help.cpp:1118
 msgid "Strikes"
 msgstr "Удары"
 
-#: src/help.cpp:1115
+#: src/help.cpp:1119
 msgid "Range"
 msgstr "Область"
 
-#: src/help.cpp:1116
+#: src/help.cpp:1120
 msgid "Special"
 msgstr "Специальное"
 
-#: src/help.cpp:1156
+#: src/help.cpp:1160
 msgid "Resistances"
 msgstr "Сопротивление"
 
-#: src/help.cpp:1160
+#: src/help.cpp:1164
 msgid "Attack Type"
 msgstr "Тип атаки"
 
-#: src/help.cpp:1161
+#: src/help.cpp:1165
 msgid "Resistance"
 msgstr "Сопротивление"
 
-#: src/help.cpp:1186
+#: src/help.cpp:1190
 msgid "Terrain Modifiers"
 msgstr "Тип местности"
 
-#: src/help.cpp:1190
+#: src/help.cpp:1194
 msgid "Terrain"
 msgstr "Местность"
 
-#: src/help.cpp:1191
+#: src/help.cpp:1195
 msgid "Defense"
 msgstr "Защита"
 
-#: src/help.cpp:1296
+#: src/help.cpp:1300
 msgid "or"
 msgstr "или"
 
-#: src/help.cpp:1303
+#: src/help.cpp:1307
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr "Эта местность по свойствам движения и защиты похожа на $terrains ."
 
-#: src/help.cpp:1305
+#: src/help.cpp:1309
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Местность с лучшим модификатором, выбираемая автоматически."
 
-#: src/help.cpp:1309
+#: src/help.cpp:1313
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -8661,7 +8650,7 @@ msgstr ""
 "Эта местность - укрытие, то есть Вы можете призывать соединения, при условии "
 "того, что лидер находится на этой местности."
 
-#: src/help.cpp:1311
+#: src/help.cpp:1315
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -8669,19 +8658,19 @@ msgstr ""
 "Эта местность - замок, то есть Вы можете призывать соединения на квадраты с "
 "подобной местностью."
 
-#: src/help.cpp:1313
+#: src/help.cpp:1317
 msgid "This terrain gives healing."
 msgstr "Эта местность исцеляет."
 
-#: src/help.cpp:2169
+#: src/help.cpp:2173
 msgid "< Back"
 msgstr "< Вернуться"
 
-#: src/help.cpp:2170
+#: src/help.cpp:2174
 msgid "Forward >"
 msgstr "Вперёд >"
 
-#: src/help.cpp:2657
+#: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Помощь по игре Битва за Веснот"
 
@@ -8794,91 +8783,91 @@ msgstr ""
 msgid "You must log in to this server"
 msgstr "Вы должны подключиться к данному серверу"
 
-#: src/multiplayer_connect.cpp:297
+#: src/multiplayer_connect.cpp:298
 msgid "(Vacant slot)"
 msgstr "(Свободный слот)"
 
-#: src/multiplayer_connect.cpp:303
+#: src/multiplayer_connect.cpp:304
 msgid "Anonymous local player"
 msgstr "Анонимный локальный игрок"
 
-#: src/multiplayer_connect.cpp:309
+#: src/multiplayer_connect.cpp:310
 msgid "Computer player"
 msgstr "Компьютерный игрок"
 
-#: src/multiplayer_connect.cpp:312
+#: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
 msgstr "(Пустой слот)"
 
-#: src/multiplayer_connect.cpp:452
+#: src/multiplayer_connect.cpp:455
 msgid "No non-random sides in the current era"
 msgstr "Только случайные стороны могут быть в текущей эре"
 
-#: src/multiplayer_connect.cpp:468
+#: src/multiplayer_connect.cpp:471
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Не могу найти тип лидера для фракции $faction"
 
-#: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:491
+#: src/multiplayer_connect.cpp:485 src/multiplayer_connect.cpp:494
 msgid "Team"
 msgstr "Команда"
 
-#: src/multiplayer_connect.cpp:489
+#: src/multiplayer_connect.cpp:492
 msgid "Player/Type"
 msgstr "Игрок/Тип"
 
-#: src/multiplayer_connect.cpp:490
+#: src/multiplayer_connect.cpp:493
 msgid "Faction"
 msgstr "Фракция"
 
-#: src/multiplayer_connect.cpp:492
+#: src/multiplayer_connect.cpp:495
 msgid "Color"
 msgstr "Цвет"
 
-#: src/multiplayer_connect.cpp:493 src/playturn.cpp:1769 src/playturn.cpp:1780
+#: src/multiplayer_connect.cpp:496 src/playturn.cpp:1769 src/playturn.cpp:1780
 msgid "Gold"
 msgstr "Золото"
 
-#: src/multiplayer_connect.cpp:495
+#: src/multiplayer_connect.cpp:498
 msgid "Computer vs Computer"
 msgstr "Компьютер с Компьютером"
 
-#: src/multiplayer_connect.cpp:496
+#: src/multiplayer_connect.cpp:499
 msgid "I'm Ready"
 msgstr "Я готов"
 
-#: src/multiplayer_connect.cpp:514
+#: src/multiplayer_connect.cpp:517
 msgid "The scenario is invalid because it has no sides."
 msgstr "Этот сценарий неправильный, потому-что в нем нет сторон"
 
-#: src/multiplayer_connect.cpp:791
+#: src/multiplayer_connect.cpp:794
 msgid "Game Lobby"
 msgstr "Холл игры:"
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:814
 msgid "Network Player"
 msgstr "Сетевой игрок"
 
-#: src/multiplayer_connect.cpp:812
+#: src/multiplayer_connect.cpp:815
 msgid "Local Player"
 msgstr "Локальный игрок"
 
-#: src/multiplayer_connect.cpp:813
+#: src/multiplayer_connect.cpp:816
 msgid "Computer Player"
 msgstr "Компьютер"
 
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:817
 msgid "Empty"
 msgstr "Пусто"
 
-#: src/multiplayer_connect.cpp:880
+#: src/multiplayer_connect.cpp:883
 msgid "This is not a multiplayer save"
 msgstr "Это не сетевое сохранение."
 
-#: src/multiplayer_connect.cpp:921
+#: src/multiplayer_connect.cpp:924
 msgid "Cannot find era $era"
 msgstr "Не могу найти эру $era"
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:938
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -8886,7 +8875,7 @@ msgstr ""
 "Условие победы\n"
 "@Убейте лидера(ов) противника"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:974
 msgid "Waiting for players to join..."
 msgstr "Ждём подключения игроков..."
 
@@ -9711,6 +9700,33 @@ msgstr "порядочный"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "нейтральный"
+
+#~ msgid "The Broken Bridge"
+#~ msgstr "Разрушенный Мост"
+
+#~ msgid ""
+#~ "A small two vs. two map across the ruins of a once great bridge. Perfect "
+#~ "for fast-paced, combat intensive, team-oriented games. Must be players "
+#~ "1,3 vs. 2,4."
+#~ msgstr ""
+#~ "Малая 'двое против двоих' карта с руинами, пересекаемыми большим мостом. "
+#~ "Великолепна для для быстрых, с интенсивными боями, командно-"
+#~ "ориентированных игр. Игроки должны быть 1 и 3 против 2 и 4."
+
+#~ msgid "Battle for Weslin Bridge"
+#~ msgstr "Битва за мост Веслин"
+
+#~ msgid ""
+#~ "Teams of 2 fight for control of the central bridge choke-point. Good for "
+#~ "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
+#~ msgstr ""
+#~ "Команды из двоих игроков бьются за контроль над точной на центральном "
+#~ "мосте. Хороша для игр средней продолжительности. Игроки 1 и 3 должны быть "
+#~ "союзниками, как и 2 и 4. "
+
+#, fuzzy
+#~ msgid " "
+#~ msgstr ";"
 
 #~ msgid "The Isle of Anduin"
 #~ msgstr "Остров Андуин"

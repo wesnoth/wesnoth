@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-03 22:49+0200\n"
+"POT-Creation-Date: 2005-06-05 17:14+0200\n"
 "PO-Revision-Date: 2005-05-30 12:25+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -219,7 +219,7 @@ msgstr ""
 "További információkért tekintsd meg a <ref>dst=income_and_upkeep "
 "text='Bevétel és Fenntartás'</ref> fejezetet."
 
-#: data/help.cfg:92 src/help.cpp:1192
+#: data/help.cfg:92 src/help.cpp:1196
 msgid "Movement"
 msgstr "Mozgás"
 
@@ -1294,11 +1294,226 @@ msgid ""
 "Baldras."
 msgstr "Jöhetsz, ha úgy kívánod, de a vezér csak Baldras-szal kíván beszélni."
 
-#: data/scenarios/multiplayer/An_Island.cfg:7
-msgid "An Island"
+#: data/scenarios/multiplayer/2p_Blitz.cfg:7
+#, fuzzy
+msgid "2p - Blitz"
+msgstr "Lerohanás"
+
+#: data/scenarios/multiplayer/2p_Blitz.cfg:9
+#: data/scenarios/multiplayer/2p_Charge.cfg:9
+msgid "A duel map for super fast play. Recommended setting of 2g per village."
+msgstr ""
+"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
+"beállítani."
+
+#: data/scenarios/multiplayer/2p_Charge.cfg:7
+#, fuzzy
+msgid "2p - Charge"
+msgstr "Roham"
+
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
+msgid "2p - Den of Onis"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
+msgid ""
+"Danger lurks around every corner in this underground battlefield, a duel map "
+"where force and subterfuge meet. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
+msgid "2p - Divide and Conquer"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
+#, fuzzy
+msgid ""
+"This small duel map divides the field of battle into three segments. "
+"Recommended settings of 2G per village."
+msgstr ""
+"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
+"beállítani."
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:3
+msgid "2p - Hamlets"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:4
+msgid ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
+msgid "2p - Hornshark Island"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
+msgid ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:3
+#, fuzzy
+msgid "2p - Icy Waters"
+msgstr "Jeges vizek"
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:5
+msgid ""
+"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+msgstr ""
+"Csata jeges víztömegek felszínén és körül, ebben a embertelen kikötőben "
+"Wesnoth északi részén."
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
+msgid "2p - Meteor Lake"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
+msgid ""
+"Long ago, a great meteor fell from the heavens, leaving its mark on this "
+"coniferous region. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
+msgid "2p - Silverhead Crossing"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
+msgid ""
+"Players must traverse all manner of terrain in pursuit of victory on this "
+"multi-fronted duel map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
+msgid "2p - Sullas Ruins"
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
+msgid ""
+"Flooded by the seas and battered by the winter elements, only ruins, water "
+"and ice now remain in the shadow of this once mighty empire. Recommended "
+"settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
+#, fuzzy
+msgid "2p - Wesbowl"
+msgstr "Wesbowl"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
+msgid ""
+"In Wesbowl, a player must get their ball to the other player's end zone. "
+"However, the other player can attack your units. Wesbowl is played with "
+"blunt weapons, and healers are on hand, so when units are killed, they "
+"return to that player's end zone with an injury."
+msgstr ""
+"A Wesbowlban a játékosnak labdáját a másik játékos területeinek a végére "
+"kell vinnie. Persze a másik játékos megtámadhatja az egységeid. A Wesbowl "
+"kis hatásfokú fegyverekkel játszható, és gyógyítók is rendelkezésre állnak, "
+"valamint amikor az egységek meghalnak, akkor visszatérnek a játékos "
+"területeinek a széléhez egy kisebb sebesüléssel."
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:11
+msgid ""
+"\n"
+"Victory:\n"
+"@Move either ball to your opponent's endzone more times than they move their "
+"ball to yours\n"
+"Defeat:\n"
+"#Opponent moves the balls to your endzone more times than you move them to "
+"theirs"
+msgstr ""
+"\n"
+"Győzöl, ha:\n"
+"@Sikerült az egyik labdádat az ellenfeled területeinek a végére mozgatnod "
+"kevesebb idő alatt, mint őneki a saját labdáját a te területed szélére.\n"
+"Veszítesz, ha:\n"
+"#Az ellenfeled elérte a labdájával területeid végét, mint te a tiéddel az ő "
+"területeinek határát."
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:199
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:476
+msgid "Red scores! Current score is $redscore-$bluescore"
+msgstr "A vörös csapat gólt szerez! Az állás $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:247
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:524
+msgid "Blue scores! Current score is $redscore-$bluescore"
+msgstr "A kék csapat gólt szerez! Az állás $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:337
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:614
+msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+msgstr "Leadjam a labdát neki: $passto.type ($xloc,$yloc)?"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:339
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:616
+msgid "Yes!"
+msgstr "Igen!"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:361
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:638
+#: data/scenarios/tutorial/Basic_Training.cfg:318
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
+msgid "No"
+msgstr "Nem"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:661
+msgid "Blue team wins! Final score: $redscore-$bluescore"
+msgstr "A kék csapat győzött! Végeredmény: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:673
+msgid "Red team wins! Final score: $redscore-$bluescore"
+msgstr "A vörös csapat győzött! Végeredmény: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:685
+msgid "Draw! Final score: $redscore-$bluescore"
+msgstr "Döntetlen! Végeredmény: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
+msgid "3p - 1v1v1Hex"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
+#, fuzzy
+msgid ""
+"Three players do battle in this small, enclosed region. Recommended settings "
+"of 2G per village."
+msgstr ""
+"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
+"beállítani."
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:3
+msgid "3p - Morituri"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:4
+msgid ""
+"Only one faction will emerge victorious from this tightly bordered three-"
+"player map. Recommended settings of 2G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
+msgid "3p - Triple Blitz"
+msgstr ""
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
+#, fuzzy
+msgid ""
+"Three players come head to head on this water-cut battlefield. Recommended "
+"settings of 2G per village."
+msgstr ""
+"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
+"beállítani."
+
+#: data/scenarios/multiplayer/4p_An_Island.cfg:7
+#, fuzzy
+msgid "4p - An Island"
 msgstr "Egy sziget"
 
-#: data/scenarios/multiplayer/An_Island.cfg:10
+#: data/scenarios/multiplayer/4p_An_Island.cfg:10
 msgid ""
 "A 4 player map that is suitable for individual or team play, victory rests "
 "of dominating the centre island. North-West: Forest dominated area, North-"
@@ -1310,36 +1525,12 @@ msgstr ""
 "erdő borította vidék, északkeleten hóval fedett síkság, délnyugaton lakatlan "
 "alföld, délkeleten pedig hegységek."
 
-#: data/scenarios/multiplayer/Blitz.cfg:7
-msgid "Blitz"
-msgstr "Lerohanás"
-
-#: data/scenarios/multiplayer/Blitz.cfg:9
-#: data/scenarios/multiplayer/Charge.cfg:9
-msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr ""
-"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
-"beállítani."
-
-#: data/scenarios/multiplayer/BrokenBridge.cfg:2
-msgid "The Broken Bridge"
-msgstr "A lerombolt híd"
-
-#: data/scenarios/multiplayer/BrokenBridge.cfg:4
-msgid ""
-"A small two vs. two map across the ruins of a once great bridge. Perfect for "
-"fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
-"2,4."
-msgstr ""
-"Egy kis 2-2 elleni pálya, ahol egy nagy híd romjain kell harcolni. Különösen "
-"ajánlott gyors lefolyású, harc orientált csapatjátékokra. A 1,3 a 2,4 "
-"játékos ellen alkothat csapatot."
-
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
-msgid "Castle Hopping Isle"
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
+#, fuzzy
+msgid "4p - Castle Hopping Isle"
 msgstr "Várfoglalós sziget"
 
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
 msgid ""
 "Many closely placed and strategically located castles. Small map for fast "
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
@@ -1349,15 +1540,12 @@ msgstr ""
 "lévő várral. Ajánlott a falvanként 2 arany beállítása, és a 1, 3 a 2, 4 "
 "játékos ellen játszott 2-2 ellen játék."
 
-#: data/scenarios/multiplayer/Charge.cfg:7
-msgid "Charge"
-msgstr "Roham"
-
-#: data/scenarios/multiplayer/Clash.cfg:3
-msgid "Clash"
+#: data/scenarios/multiplayer/4p_Clash.cfg:3
+#, fuzzy
+msgid "4p - Clash"
 msgstr "Összezördülés"
 
-#: data/scenarios/multiplayer/Clash.cfg:5
+#: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid ""
 "Small map for 2v2. Teams should be player 1 and 3, vs player 2 and 4. "
 "Recommended setting of 2 gold per village."
@@ -1365,28 +1553,63 @@ msgstr ""
 "Egy kis méretű négyjátékos pálya, ahol ajánlott a falvanként 2 arany "
 "beállítása, és a 1, 3 a 2, 4 játékos ellen játszott 2-2 ellen csapatjáték."
 
-#: data/scenarios/multiplayer/ForestOfFear.cfg:3
-msgid "Forest of Fear"
+#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
+#, fuzzy
+msgid "4p - King of the Hill"
+msgstr "A domb királya"
+
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:3
+msgid "4p - Lagoon"
+msgstr ""
+
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:4
+#, fuzzy
+msgid ""
+"Four factions contend for dominance over this watery settlement. Recommended "
+"settings of 1G per village."
+msgstr ""
+"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
+"beállítani."
+
+#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#, fuzzy
+msgid "4p - Siege Castles"
+msgstr "Ostromlott várak"
+
+#: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
+#, fuzzy
+msgid "4p - The Valley of Death"
+msgstr "A halál völgye"
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
+msgid "4p - The Wilderlands"
+msgstr ""
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
+msgid ""
+"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
+"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
+"1G per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
+#, fuzzy
+msgid "5p - Forest of Fear"
 msgstr "A félelem erdeje"
 
-#: data/scenarios/multiplayer/Hexcake.cfg:3
-msgid "Hexcake"
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:3
+#, fuzzy
+msgid "6p - Hexcake"
 msgstr "Hatszögsüti"
 
-#: data/scenarios/multiplayer/Hexcake.cfg:5
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2 kontra 2 vagy 3 kontra 3 csapatjátékokra."
 
-#: data/scenarios/multiplayer/IcyWaters.cfg:3
-msgid "Icy Waters"
-msgstr "Jeges vizek"
-
-#: data/scenarios/multiplayer/IcyWaters.cfg:5
-msgid ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
-msgstr ""
-"Csata jeges víztömegek felszínén és körül, ebben a embertelen kikötőben "
-"Wesnoth északi részén."
+#: data/scenarios/multiplayer/7p_battleworld.cfg:7
+#, fuzzy
+msgid "7p - Battle World"
+msgstr "Csata világ"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1439,103 +1662,9 @@ msgstr ""
 "kiegyenlítetlenek, de ha időd engedi, akkor újragenerálhatod őket, míg a "
 "számodra megfelelőt kapsz."
 
-#: data/scenarios/multiplayer/Wesbowl.cfg:3
-msgid "Wesbowl"
-msgstr "Wesbowl"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:6
-msgid ""
-"In Wesbowl, a player must get their ball to the other player's end zone. "
-"However, the other player can attack your units. Wesbowl is played with "
-"blunt weapons, and healers are on hand, so when units are killed, they "
-"return to that player's end zone with an injury."
-msgstr ""
-"A Wesbowlban a játékosnak labdáját a másik játékos területeinek a végére "
-"kell vinnie. Persze a másik játékos megtámadhatja az egységeid. A Wesbowl "
-"kis hatásfokú fegyverekkel játszható, és gyógyítók is rendelkezésre állnak, "
-"valamint amikor az egységek meghalnak, akkor visszatérnek a játékos "
-"területeinek a széléhez egy kisebb sebesüléssel."
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:11
-msgid ""
-"\n"
-"Victory:\n"
-"@Move either ball to your opponent's endzone more times than they move their "
-"ball to yours\n"
-"Defeat:\n"
-"#Opponent moves the balls to your endzone more times than you move them to "
-"theirs"
-msgstr ""
-"\n"
-"Győzöl, ha:\n"
-"@Sikerült az egyik labdádat az ellenfeled területeinek a végére mozgatnod "
-"kevesebb idő alatt, mint őneki a saját labdáját a te területed szélére.\n"
-"Veszítesz, ha:\n"
-"#Az ellenfeled elérte a labdájával területeid végét, mint te a tiéddel az ő "
-"területeinek határát."
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:199
-#: data/scenarios/multiplayer/Wesbowl.cfg:476
-msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr "A vörös csapat gólt szerez! Az állás $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:247
-#: data/scenarios/multiplayer/Wesbowl.cfg:524
-msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr "A kék csapat gólt szerez! Az állás $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:337
-#: data/scenarios/multiplayer/Wesbowl.cfg:614
-msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "Leadjam a labdát neki: $passto.type ($xloc,$yloc)?"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:339
-#: data/scenarios/multiplayer/Wesbowl.cfg:616
-msgid "Yes!"
-msgstr "Igen!"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:361
-#: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/Basic_Training.cfg:318
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
-msgid "No"
-msgstr "Nem"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:661
-msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr "A kék csapat győzött! Végeredmény: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:673
-msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr "A vörös csapat győzött! Végeredmény: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:685
-msgid "Draw! Final score: $redscore-$bluescore"
-msgstr "Döntetlen! Végeredmény: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:3
-msgid "Battle for Weslin Bridge"
-msgstr "Csata a Weslin-hídért"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:5
-msgid ""
-"Teams of 2 fight for control of the central bridge choke-point. Good for "
-"medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
-msgstr ""
-"2 fős csapatok küzdenek a központi híd elkeskenyedő részéért. Közepesen "
-"hosszújátékokra alkalmas a pálya. A 2-es játékosnak a 4-essel kell "
-"szövetségben lennie, valamint az 1-esnek a 3-assal."
-
-#: data/scenarios/multiplayer/battleworld.cfg:7
-msgid "Battle World"
-msgstr "Csata világ"
-
-#: data/scenarios/multiplayer/castles.cfg:7
-msgid "Siege Castles"
-msgstr "Ostromlott várak"
-
 #: data/scenarios/multiplayer/scenarios.cfg:3
-msgid "Across The River"
+#, fuzzy
+msgid "2p - Across The River"
 msgstr "Átkelés a folyón"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
@@ -1548,153 +1677,6 @@ msgstr ""
 "legyen, hogy ki a jobb, ugyanis a pálya két oldala jól kiegyenlített.\n"
 "Kipróbálhatod, hogy ha MI az MI ellen játszik, hogyan boldogulnak egymás "
 "ellen."
-
-#: data/scenarios/multiplayer/scenarios.cfg:110
-msgid "The Valley of Death"
-msgstr "A halál völgye"
-
-#: data/scenarios/multiplayer/scenarios.cfg:111
-#, fuzzy
-msgid " "
-msgstr "; "
-
-#: data/scenarios/multiplayer/scenarios.cfg:156
-msgid "King of the Hill"
-msgstr "A domb királya"
-
-#: data/scenarios/multiplayer/scenarios.cfg:195
-msgid "2p - Divide and Conquer"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:196
-#, fuzzy
-msgid ""
-"This small duel map divides the field of battle into three segments. "
-"Recommended settings of 2G per village."
-msgstr ""
-"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
-"beállítani."
-
-#: data/scenarios/multiplayer/scenarios.cfg:226
-msgid "2p - Silverhead Crossing"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:227
-msgid ""
-"Players must traverse all manner of terrain in pursuit of victory on this "
-"multi-fronted duel map. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:256
-msgid "2p - Meteor Lake"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:257
-msgid ""
-"Long ago, a great meteor fell from the heavens, leaving its mark on this "
-"coniferous region. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:286
-msgid "2p - Den of Onis"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:287
-msgid ""
-"Danger lurks around every corner in this underground battlefield, a duel map "
-"where force and subterfuge meet. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:316
-msgid "2p - Hamlets"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:317
-msgid ""
-"Warfare transforms the simple farms and villages of a peaceful region into a "
-"subtly parceled battlefield. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:346
-msgid "2p - Hornshark Island"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:347
-msgid ""
-"Players must navigate the dispersive terrain of this small but "
-"topographically dense island. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:376
-msgid "2p - Sullas Ruins"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:377
-msgid ""
-"Flooded by the seas and battered by the winter elements, only ruins, water "
-"and ice now remain in the shadow of this once mighty empire. Recommended "
-"settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:406
-msgid "3p - 1v1v1Hex"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:407
-#, fuzzy
-msgid ""
-"Three players do battle in this small, enclosed region. Recommended settings "
-"of 2G per village."
-msgstr ""
-"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
-"beállítani."
-
-#: data/scenarios/multiplayer/scenarios.cfg:443
-msgid "4p - Lagoon"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:444
-#, fuzzy
-msgid ""
-"Four factions contend for dominance over this watery settlement. Recommended "
-"settings of 1G per village."
-msgstr ""
-"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
-"beállítani."
-
-#: data/scenarios/multiplayer/scenarios.cfg:487
-msgid "4p - The Wilderlands"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:488
-msgid ""
-"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
-"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
-"1G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:531
-msgid "3p - Morituri"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:532
-msgid ""
-"Only one faction will emerge victorious from this tightly bordered three-"
-"player map. Recommended settings of 2G per village."
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:568
-msgid "3p - Triple Blitz"
-msgstr ""
-
-#: data/scenarios/multiplayer/scenarios.cfg:569
-#, fuzzy
-msgid ""
-"Three players come head to head on this water-cut battlefield. Recommended "
-"settings of 2G per village."
-msgstr ""
-"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
-"beállítani."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
 msgid "Basic Training"
@@ -4813,10 +4795,12 @@ msgstr "Perzsekény szembeszálló"
 #: data/units/Drake_Clasher.cfg:18
 #, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Clashers' weapons of choice "
-"are the sword and spear, which they use to great effect. The greatest "
-"Clashers can become Drake Gladiators or Slashers."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Clashers' "
+"weapons of choice are the sword and spear, which they use to great effect. "
+"The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
 "Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
 "használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
@@ -4826,25 +4810,25 @@ msgstr ""
 "igazán erősek. A legkitűnőbb szembeszállókból perzsekény gladiátorok vagy "
 "vagdalkozók lehetnek."
 
-#: data/units/Drake_Clasher.cfg:18 data/units/Drake_Enforcer.cfg:18
-#: data/units/Drake_Gladiator.cfg:19 data/units/Drake_Slasher.cfg:19
-#: data/units/Drake_Warden.cfg:19
+#: data/units/Drake_Enforcer.cfg:3
+#, fuzzy
+msgid "Drake Enforcer"
+msgstr "Tűzokádó perzsekény"
+
+#: data/units/Drake_Enforcer.cfg:18
 #, fuzzy
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
-"would be mistaken."
+"would be mistaken. Drake Enforcers protect their vulnerable hides with thick "
+"brass armor and they arm themselves with as many emerald edged weapons as "
+"possible to fend off whatever opponents may await them."
 msgstr ""
 "Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
 "használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
 "perzsekények teljesen hasznavehetetlenek. A perzsekény gladiátorokat védi "
 "vékony sárgaréz páncéljuk, és smaragd élű fegyverekkel vannak "
 "felfegyverezve, így képesek elhárítani a különböző támadásokat."
-
-#: data/units/Drake_Enforcer.cfg:3
-#, fuzzy
-msgid "Drake Enforcer"
-msgstr "Tűzokádó perzsekény"
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -4923,9 +4907,11 @@ msgstr "Perzsekény gladiátor"
 #: data/units/Drake_Gladiator.cfg:19
 #, fuzzy
 msgid ""
-" Drake Gladiators protect their vulnerable hides with thick brass armor and "
-"they arm themselves with as many emerald edged weapons as possible to fend "
-"off whatever opponents may await them."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. Drake Gladiators protect their vulnerable hides with "
+"thick brass armor and they arm themselves with as many emerald edged weapons "
+"as possible to fend off whatever opponents may await them."
 msgstr ""
 "Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
 "használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
@@ -5014,9 +5000,11 @@ msgstr "Perzsekény vagdalkozó"
 #: data/units/Drake_Slasher.cfg:19
 #, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Slashers' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Slashers' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 "Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
 "használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
@@ -5040,9 +5028,11 @@ msgstr "Perzsekény lobbantó"
 #: data/units/Drake_Warden.cfg:19
 #, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Wardens' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Wardens' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 "Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
 "használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
@@ -8141,159 +8131,159 @@ msgstr "-   Művészeti és grafikai tervező"
 msgid "+Developers"
 msgstr "+Fejlesztők"
 
-#: src/about.cpp:57
+#: src/about.cpp:58
 msgid "+General Purpose Administrators"
 msgstr "+Általános Ügyintézők"
 
-#: src/about.cpp:61
+#: src/about.cpp:62
 msgid "+Artwork and graphics designers"
 msgstr "+Művészi és grafikai tervezők"
 
-#: src/about.cpp:86
+#: src/about.cpp:88
 msgid "+Music"
 msgstr "+Zene"
 
-#: src/about.cpp:92
+#: src/about.cpp:94
 msgid "+Scenario Designers"
 msgstr "+Történetírók"
 
-#: src/about.cpp:101
+#: src/about.cpp:103
 msgid "+Multiplayer Maps"
 msgstr "+Többjátékos Pályák"
 
-#: src/about.cpp:105
+#: src/about.cpp:107
 msgid "+Packagers"
 msgstr "+Csomagkészítők"
 
-#: src/about.cpp:115
+#: src/about.cpp:117
 msgid "+Miscellaneous"
 msgstr "+Egyéb"
 
-#: src/about.cpp:120
+#: src/about.cpp:122
 msgid "+Internationalization Managers"
 msgstr "+Honosítási Vezetők"
 
-#: src/about.cpp:126
+#: src/about.cpp:129
 msgid "+Afrikaans Translation"
 msgstr "+Dél-Afrikai Holland Fordítás"
 
-#: src/about.cpp:130
+#: src/about.cpp:133
 msgid "+Basque Translation"
 msgstr "+Baszk Fordítás"
 
-#: src/about.cpp:135
+#: src/about.cpp:138
 msgid "+Bulgarian Translation"
 msgstr "+Bolgár Fordítás"
 
-#: src/about.cpp:138
+#: src/about.cpp:141
 msgid "+Catalan Translation"
 msgstr "+Katalán Fordítás"
 
-#: src/about.cpp:145
+#: src/about.cpp:148
 msgid "+Chinese Translation"
 msgstr "+Kínai Fordítás"
 
-#: src/about.cpp:148
+#: src/about.cpp:151
 msgid "+Czech Translation"
 msgstr "+Cseh Fordítás"
 
-#: src/about.cpp:156
+#: src/about.cpp:159
 msgid "+Danish Translation"
 msgstr "+Dán Fordítás"
 
-#: src/about.cpp:160
+#: src/about.cpp:163
 msgid "+Dutch Translation"
 msgstr "+Holland Fordítás"
 
-#: src/about.cpp:167
+#: src/about.cpp:170
 msgid "+English (GB) Translation"
 msgstr "+Angol (NB) Fordítás"
 
-#: src/about.cpp:170
+#: src/about.cpp:173
 msgid "+Estonian Translation"
 msgstr "+Észt Fordítás"
 
-#: src/about.cpp:173
+#: src/about.cpp:176
 msgid "+Finnish Translation"
 msgstr "+Finn Fordítás"
 
-#: src/about.cpp:177
+#: src/about.cpp:181
 msgid "+French Translation"
 msgstr "+Francia Fordítás"
 
-#: src/about.cpp:190
+#: src/about.cpp:194
 msgid "+German Translation"
 msgstr "+Német Fordítás"
 
-#: src/about.cpp:201
+#: src/about.cpp:205
 msgid "+Greek Translation"
 msgstr "+Görög Fordítás"
 
-#: src/about.cpp:205
+#: src/about.cpp:209
 msgid "+Hungarian Translation"
 msgstr "+Magyar Fordítás"
 
-#: src/about.cpp:216
+#: src/about.cpp:220
 msgid "+Italian Translation"
 msgstr "+Olasz Fordítás"
 
-#: src/about.cpp:225
+#: src/about.cpp:229
 msgid "+Japanese Translation"
 msgstr "+Japán Fordítás"
 
-#: src/about.cpp:230
+#: src/about.cpp:234
 msgid "+Latin Translation"
 msgstr "+Latin Fordítás"
 
-#: src/about.cpp:233
+#: src/about.cpp:237
 msgid "+Norwegian Translation"
 msgstr "+Norvég Fordítás"
 
-#: src/about.cpp:239
+#: src/about.cpp:243
 msgid "+Polish Translation"
 msgstr "+Lengyel Fordítás"
 
-#: src/about.cpp:249
+#: src/about.cpp:253
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugál (brazil) Fordítás"
 
-#: src/about.cpp:257
+#: src/about.cpp:261
 msgid "+Russian Translation"
 msgstr "+Orosz Fordítás"
 
-#: src/about.cpp:262
+#: src/about.cpp:266
 msgid "+Serbian Translation"
 msgstr "+Szerb Fordítás"
 
-#: src/about.cpp:265
+#: src/about.cpp:269
 msgid "+Slovak Translation"
 msgstr "+Szlovák Fordítás"
 
-#: src/about.cpp:268
+#: src/about.cpp:272
 msgid "+Slovenian Translation"
 msgstr "+Szlovén Fordítás"
 
-#: src/about.cpp:271
+#: src/about.cpp:275
 msgid "+Spanish Translation"
 msgstr "+Spanyol Fordítás"
 
-#: src/about.cpp:279
+#: src/about.cpp:283
 msgid "+Swedish Translation"
 msgstr "+Svéd Fordítás"
 
-#: src/about.cpp:285
+#: src/about.cpp:289
 msgid "+Turkish Translation"
 msgstr "+Török Fordítás"
 
-#: src/about.cpp:289
+#: src/about.cpp:293
 msgid "+Contributors"
 msgstr "+Résztvevők"
 
-#: src/about.cpp:292
+#: src/about.cpp:296
 msgid "+Bots"
 msgstr "+Botok"
 
-#: src/about.cpp:328 src/help.cpp:2654
+#: src/about.cpp:332 src/help.cpp:2658
 msgid "Close"
 msgstr "Bezár"
 
@@ -8315,12 +8305,12 @@ msgid "none"
 msgstr "semelyik"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1136 src/reports.cpp:236
+#: src/help.cpp:1140 src/reports.cpp:236
 msgid "melee"
 msgstr "közelharc"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1136 src/reports.cpp:237
+#: src/help.cpp:1140 src/reports.cpp:237
 msgid "ranged"
 msgstr "távolsági harc"
 
@@ -8372,31 +8362,31 @@ msgstr "megmérgezett"
 msgid "slowed"
 msgstr "lelassított"
 
-#: src/actions.cpp:1909
+#: src/actions.cpp:1915
 msgid "Ambushed!"
 msgstr "Rajtaütés!"
 
-#: src/actions.cpp:1943
+#: src/actions.cpp:1949
 msgid "Friendly unit sighted"
 msgstr "Szövetséges egység a láthatáron"
 
-#: src/actions.cpp:1945
+#: src/actions.cpp:1951
 msgid "Enemy unit sighted!"
 msgstr "Ellenséges egység a láthatáron!"
 
-#: src/actions.cpp:1950
+#: src/actions.cpp:1956
 msgid "$friends Friendly units sighted"
 msgstr "$friends Szövetséges egységek a láthatáron"
 
-#: src/actions.cpp:1952
+#: src/actions.cpp:1958
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Ellenséges egységek a láthatáron!"
 
-#: src/actions.cpp:1956
+#: src/actions.cpp:1962
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Egységek a láthatáron! ($friends szövetséges, $enemies ellenséges)"
 
-#: src/actions.cpp:1971
+#: src/actions.cpp:1977
 msgid "(press $hotkey to continue)"
 msgstr "(a folytatáshoz nyomd le ezt: $hotkey)"
 
@@ -8440,11 +8430,11 @@ msgstr "%Y %M:%a %b %d %H"
 msgid "#(Invalid)"
 msgstr "#(Érvénytelen)"
 
-#: src/dialogs.cpp:373 src/game.cpp:753
+#: src/dialogs.cpp:373 src/game.cpp:754
 msgid "Campaign"
 msgstr "Hadjárat"
 
-#: src/dialogs.cpp:375 src/game.cpp:1120
+#: src/dialogs.cpp:375 src/game.cpp:1121
 msgid "Multiplayer"
 msgstr "Többjátékos"
 
@@ -8532,7 +8522,7 @@ msgstr ""
 msgid "Date"
 msgstr "Dátum"
 
-#: src/dialogs.cpp:550 src/game.cpp:887 src/help.cpp:1112
+#: src/dialogs.cpp:550 src/game.cpp:888 src/help.cpp:1116
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
 msgid "Name"
 msgstr "Név"
@@ -8553,11 +8543,11 @@ msgstr "Válaszd ki a betöltendő játékot"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1032
+#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1036
 msgid "level"
 msgstr "szintű"
 
-#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1090
+#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1094
 msgid "HP: "
 msgstr "ÉP:"
 
@@ -8566,7 +8556,7 @@ msgstr "ÉP:"
 msgid "XP: "
 msgstr "TP:"
 
-#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1091
+#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1095
 msgid "Moves: "
 msgstr "Lépés:"
 
@@ -8586,7 +8576,7 @@ msgstr "láthatatlan"
 msgid "OK"
 msgstr "Oké"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:497
+#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Mégse"
@@ -8604,14 +8594,14 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Figyelem: A fájl amit be próbáltál tölteni hibás. Ezzel szemben betöltöm.\n"
 
-#: src/game.cpp:646 src/multiplayer_connect.cpp:888
+#: src/game.cpp:646 src/multiplayer_connect.cpp:891
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Ez a mentés a játék másik verziójával készült. Megpróbálod mégis betölteni? "
 
-#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:873
+#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:876
 msgid "The file you have tried to load is corrupt: '"
 msgstr "A fájl amit be próbáltál tölteni hibás: '"
 
@@ -8619,222 +8609,222 @@ msgstr "A fájl amit be próbáltál tölteni hibás: '"
 msgid "File I/O Error while reading the game"
 msgstr "Fájl I/O hiba a játék beolvasásakor"
 
-#: src/game.cpp:743
+#: src/game.cpp:744
 msgid "Get More Campaigns..."
 msgstr "Szerezz be további hadjáratokat..."
 
-#: src/game.cpp:744
+#: src/game.cpp:745
 msgid "Download more campaigns from a server on Internet."
 msgstr "További hadjáratok letöltése az internetről"
 
-#: src/game.cpp:754
+#: src/game.cpp:755
 msgid "Choose the campaign you want to play:"
 msgstr "Válassz hadjáratot a játékra:"
 
-#: src/game.cpp:783
+#: src/game.cpp:784
 msgid "Difficulty"
 msgstr "Nehézség"
 
-#: src/game.cpp:784
+#: src/game.cpp:785
 msgid "Select difficulty level:"
 msgstr "Válassz nehézségi szintet:"
 
-#: src/game.cpp:809
+#: src/game.cpp:810
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:812
+#: src/game.cpp:813
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:815
+#: src/game.cpp:816
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:842
+#: src/game.cpp:843
 msgid "Connect to Server"
 msgstr "Csatlakozás a szerverhez"
 
-#: src/game.cpp:843
+#: src/game.cpp:844
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Most kapcsolódni fogsz egy szerverhez, ahonnan hadjáratokat tölthetsz le."
 
-#: src/game.cpp:844
+#: src/game.cpp:845
 msgid "Server: "
 msgstr "Szerver:"
 
-#: src/game.cpp:857
+#: src/game.cpp:858
 msgid "Could not connect to host."
 msgstr "Nem sikerült kapcsolódni a kiszolgálóhoz."
 
-#: src/game.cpp:865
+#: src/game.cpp:866
 msgid "Awaiting response from server"
 msgstr "Szerver válaszára várakozás"
 
-#: src/game.cpp:878
+#: src/game.cpp:879
 msgid "Error communicating with the server."
 msgstr "Hiba a szerverrel történt kommunikációban."
 
-#: src/game.cpp:887 src/titlescreen.cpp:170
+#: src/game.cpp:888 src/titlescreen.cpp:170
 msgid "Version"
 msgstr "Verzió"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Author"
 msgstr "Szerző"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Downloads"
 msgstr "Letöltések"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Size"
 msgstr "Méret"
 
-#: src/game.cpp:940
+#: src/game.cpp:941
 msgid "Publish campaign: "
 msgstr "Hadjárat közzététele:"
 
-#: src/game.cpp:944
+#: src/game.cpp:945
 msgid "Delete campaign: "
 msgstr "Hadjárat törlése:"
 
-#: src/game.cpp:948
+#: src/game.cpp:949
 msgid "There are no campaigns available for download from this server."
 msgstr "Nincsenek elérhető hadjárat-letöltések ezen a szerveren."
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Choose the campaign to download."
 msgstr "Válassz letöltendő hadjáratot!"
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Get Campaign"
 msgstr "Hadjárat beszerzése"
 
-#: src/game.cpp:975
+#: src/game.cpp:976
 msgid "Downloading campaign..."
 msgstr "Hadjárat letöltése..."
 
-#: src/game.cpp:989
+#: src/game.cpp:990
 msgid "Cannot rescan the filesystem"
 msgstr "Nem tudtam feltérképezni a fájlrendszert"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "Campaign Installed"
 msgstr "Hadjárat telepítve"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "The campaign has been installed."
 msgstr "A hadjárat fel lett telepítve."
 
-#: src/game.cpp:1002
+#: src/game.cpp:1003
 msgid "Network communication error."
 msgstr "Hálózati kommunikációs probléma."
 
-#: src/game.cpp:1004
+#: src/game.cpp:1005
 msgid "Remote host disconnected."
 msgstr "A távoli kiszolgáló lekapcsolódott"
 
-#: src/game.cpp:1006
+#: src/game.cpp:1007
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Probléma volt a hadjárathoz szükséges fájlok létrehozásával."
 
-#: src/game.cpp:1018 src/game.cpp:1058 src/game.cpp:1083
+#: src/game.cpp:1019 src/game.cpp:1059 src/game.cpp:1084
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
 msgid "Connection timed out"
 msgstr "A kapcsolat túllépte az időt"
 
-#: src/game.cpp:1021 src/game.cpp:1060 src/game.cpp:1085
+#: src/game.cpp:1022 src/game.cpp:1061 src/game.cpp:1086
 msgid "The server responded with an error: \""
 msgstr "A szerver hibajelzéssel válaszolt: \""
 
-#: src/game.cpp:1025
+#: src/game.cpp:1026
 msgid "Terms"
 msgstr "Feltételek"
 
-#: src/game.cpp:1063 src/game.cpp:1088
+#: src/game.cpp:1064 src/game.cpp:1089
 msgid "Response"
 msgstr "Válasz"
 
-#: src/game.cpp:1103
+#: src/game.cpp:1104
 msgid "Join Official Server"
 msgstr "Csatlakozás a hivatalos szervehez"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Bejelentkezés a Wesnoth hivatalos többjátékos szerverére"
 
-#: src/game.cpp:1106 src/multiplayer_lobby.cpp:107
+#: src/game.cpp:1107 src/multiplayer_lobby.cpp:107
 msgid "Join Game"
 msgstr "Csatlakozás játékhoz"
 
-#: src/game.cpp:1107
+#: src/game.cpp:1108
 msgid "Join a server or hosted game"
 msgstr "Csatlakozás egy szerverhez, vagy egy játékhoz"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1110
 msgid "Host Networked Game"
 msgstr "Hálózati játék készítése"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1111
 msgid "Host a game without using a server"
 msgstr "Játék készítése szerver használata nélkül"
 
-#: src/game.cpp:1112
+#: src/game.cpp:1113
 msgid "Hotseat Game"
 msgstr "Hotseat játék"
 
-#: src/game.cpp:1113
+#: src/game.cpp:1114
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Többjátékos játék játszása ugyanazon számítógép megosztásával"
 
-#: src/game.cpp:1115
+#: src/game.cpp:1116
 msgid "Human vs AI"
 msgstr "Játékos kontra MI"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1117
 msgid "Play a game against AI opponents"
 msgstr "Játék indítása a Mestersége Intelligencia ellen"
 
-#: src/game.cpp:1122 src/multiplayer.cpp:187
+#: src/game.cpp:1123 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Bejelentkezés:"
 
-#: src/game.cpp:1153
+#: src/game.cpp:1154
 msgid "The game could not be loaded: "
 msgstr "A játékot nem sikerült betölteni: "
 
-#: src/game.cpp:1155
+#: src/game.cpp:1156
 msgid "Error while playing the game: "
 msgstr "Hiba a játék közben: "
 
-#: src/game.cpp:1167
+#: src/game.cpp:1168
 msgid "The game map could not be loaded: "
 msgstr "A pályát nem sikerült betölteni: "
 
-#: src/game.cpp:1193
+#: src/game.cpp:1194
 msgid "Language"
 msgstr "Nyelv"
 
-#: src/game.cpp:1194
+#: src/game.cpp:1195
 msgid "Choose your preferred language:"
 msgstr "Leginkább megfelelő nyelv kiválasztása:"
 
-#: src/game.cpp:1283
+#: src/game.cpp:1284
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Figyelem: Hiba a konfigurációs fájlok betöltésekor: '"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1333
 msgid "Error loading game configuration files: '"
 msgstr "Hiba a konfigurációs fájlok betöoltésekor: '"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1334
 msgid "' (The game will now exit)"
 msgstr "' (A játék most ki fog lépni)"
 
-#: src/game.cpp:1406
+#: src/game.cpp:1407
 msgid "Battle for Wesnoth"
 msgstr "Harc Wesnoth-ért"
 
@@ -8846,79 +8836,79 @@ msgstr "Győzöl, ha:"
 msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
-#: src/help.cpp:1052
+#: src/help.cpp:1056
 msgid "Advances to: "
 msgstr "Szintlépés után:"
 
-#: src/help.cpp:1073
+#: src/help.cpp:1077
 msgid "Abilities: "
 msgstr "Képességek:"
 
-#: src/help.cpp:1092
+#: src/help.cpp:1096
 msgid "Alignment: "
 msgstr "Beállítottság:"
 
-#: src/help.cpp:1096
+#: src/help.cpp:1100
 msgid "Required XP: "
 msgstr "TP követelmény:"
 
-#: src/help.cpp:1105 src/reports.cpp:239
+#: src/help.cpp:1109 src/reports.cpp:239
 msgid "attacks"
 msgstr "támadás"
 
-#: src/help.cpp:1113 src/playturn.cpp:2045 src/playturn.cpp:2222
+#: src/help.cpp:1117 src/playturn.cpp:2045 src/playturn.cpp:2222
 msgid "Type"
 msgstr "Típus"
 
-#: src/help.cpp:1114
+#: src/help.cpp:1118
 msgid "Strikes"
 msgstr "Ütések"
 
-#: src/help.cpp:1115
+#: src/help.cpp:1119
 msgid "Range"
 msgstr "Hatótávolság"
 
-#: src/help.cpp:1116
+#: src/help.cpp:1120
 msgid "Special"
 msgstr "Különleges"
 
-#: src/help.cpp:1156
+#: src/help.cpp:1160
 msgid "Resistances"
 msgstr "Ellenállások"
 
-#: src/help.cpp:1160
+#: src/help.cpp:1164
 msgid "Attack Type"
 msgstr "Támadás típusa"
 
-#: src/help.cpp:1161
+#: src/help.cpp:1165
 msgid "Resistance"
 msgstr "Ellenállás"
 
-#: src/help.cpp:1186
+#: src/help.cpp:1190
 msgid "Terrain Modifiers"
 msgstr "Terep-alakítók"
 
-#: src/help.cpp:1190
+#: src/help.cpp:1194
 msgid "Terrain"
 msgstr "Terep"
 
-#: src/help.cpp:1191
+#: src/help.cpp:1195
 msgid "Defense"
 msgstr "Védekezés"
 
-#: src/help.cpp:1296
+#: src/help.cpp:1300
 msgid "or"
 msgstr "vagy"
 
-#: src/help.cpp:1303
+#: src/help.cpp:1307
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr "Ez a terep, mint $terrains viselkedik lépés és védekezés tekintetében."
 
-#: src/help.cpp:1305
+#: src/help.cpp:1309
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "A megjobb módosító tulajdonságú terep lesz önműködően kiválasztva."
 
-#: src/help.cpp:1309
+#: src/help.cpp:1313
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -8926,7 +8916,7 @@ msgstr ""
 "Ez az terep vártoronyként viselkedik, például toborozhatsz egységeket, ha a "
 "vezetőd egy ilyen helyen áll."
 
-#: src/help.cpp:1311
+#: src/help.cpp:1315
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -8934,19 +8924,19 @@ msgstr ""
 "Ez a terep várként viselkedik, például toborozhatsz az ilyen helyekre "
 "egységeket."
 
-#: src/help.cpp:1313
+#: src/help.cpp:1317
 msgid "This terrain gives healing."
 msgstr "Ez a terep gyógyít."
 
-#: src/help.cpp:2169
+#: src/help.cpp:2173
 msgid "< Back"
 msgstr "< Vissza"
 
-#: src/help.cpp:2170
+#: src/help.cpp:2174
 msgid "Forward >"
 msgstr "Előre >"
 
-#: src/help.cpp:2657
+#: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Harc Wesnoth-ért Súgó"
 
@@ -9059,91 +9049,91 @@ msgstr "Szerveroldali átirányító hurok"
 msgid "You must log in to this server"
 msgstr "Be kell jelentkezned erre a kiszolgálóra"
 
-#: src/multiplayer_connect.cpp:297
+#: src/multiplayer_connect.cpp:298
 msgid "(Vacant slot)"
 msgstr "(Betölthető hely)"
 
-#: src/multiplayer_connect.cpp:303
+#: src/multiplayer_connect.cpp:304
 msgid "Anonymous local player"
 msgstr "Névtelen helyi játékos"
 
-#: src/multiplayer_connect.cpp:309
+#: src/multiplayer_connect.cpp:310
 msgid "Computer player"
 msgstr "Számítógépvezérelte játékos"
 
-#: src/multiplayer_connect.cpp:312
+#: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
 msgstr "(Üres hely)"
 
-#: src/multiplayer_connect.cpp:452
+#: src/multiplayer_connect.cpp:455
 msgid "No non-random sides in the current era"
 msgstr "Ebben a korszakban nincsenek meghatározott csapatok"
 
-#: src/multiplayer_connect.cpp:468
+#: src/multiplayer_connect.cpp:471
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Nem találtam fővezért a $faction néphez"
 
-#: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:491
+#: src/multiplayer_connect.cpp:485 src/multiplayer_connect.cpp:494
 msgid "Team"
 msgstr "Csapat"
 
-#: src/multiplayer_connect.cpp:489
+#: src/multiplayer_connect.cpp:492
 msgid "Player/Type"
 msgstr "Játékos/Típus"
 
-#: src/multiplayer_connect.cpp:490
+#: src/multiplayer_connect.cpp:493
 msgid "Faction"
 msgstr "Faj"
 
-#: src/multiplayer_connect.cpp:492
+#: src/multiplayer_connect.cpp:495
 msgid "Color"
 msgstr "Szín"
 
-#: src/multiplayer_connect.cpp:493 src/playturn.cpp:1769 src/playturn.cpp:1780
+#: src/multiplayer_connect.cpp:496 src/playturn.cpp:1769 src/playturn.cpp:1780
 msgid "Gold"
 msgstr "Arany"
 
-#: src/multiplayer_connect.cpp:495
+#: src/multiplayer_connect.cpp:498
 msgid "Computer vs Computer"
 msgstr " Számítógép kontra számítógép "
 
-#: src/multiplayer_connect.cpp:496
+#: src/multiplayer_connect.cpp:499
 msgid "I'm Ready"
 msgstr "Indulhat!"
 
-#: src/multiplayer_connect.cpp:514
+#: src/multiplayer_connect.cpp:517
 msgid "The scenario is invalid because it has no sides."
 msgstr "Ez a pálya alkalmatlan, mert nincsenek csapatok benne."
 
-#: src/multiplayer_connect.cpp:791
+#: src/multiplayer_connect.cpp:794
 msgid "Game Lobby"
 msgstr "Játékcsarnok"
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:814
 msgid "Network Player"
 msgstr "Hálózati játékos"
 
-#: src/multiplayer_connect.cpp:812
+#: src/multiplayer_connect.cpp:815
 msgid "Local Player"
 msgstr "Helyi játékos"
 
-#: src/multiplayer_connect.cpp:813
+#: src/multiplayer_connect.cpp:816
 msgid "Computer Player"
 msgstr "Számítógép"
 
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:817
 msgid "Empty"
 msgstr "Üres"
 
-#: src/multiplayer_connect.cpp:880
+#: src/multiplayer_connect.cpp:883
 msgid "This is not a multiplayer save"
 msgstr "Ez nem egy többjátékos mentés"
 
-#: src/multiplayer_connect.cpp:921
+#: src/multiplayer_connect.cpp:924
 msgid "Cannot find era $era"
 msgstr "Nem találtam a $era korszakot"
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:938
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -9151,7 +9141,7 @@ msgstr ""
 "Győzöl, ha\n"
 "@Legyőződ az (összes) ellenfél vezérét"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:974
 msgid "Waiting for players to join..."
 msgstr "Hálózati játékosok kapcsolódására várakozás..."
 
@@ -9973,6 +9963,45 @@ msgstr "igazságos"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "semleges"
+
+#~ msgid "The Broken Bridge"
+#~ msgstr "A lerombolt híd"
+
+#~ msgid ""
+#~ "A small two vs. two map across the ruins of a once great bridge. Perfect "
+#~ "for fast-paced, combat intensive, team-oriented games. Must be players "
+#~ "1,3 vs. 2,4."
+#~ msgstr ""
+#~ "Egy kis 2-2 elleni pálya, ahol egy nagy híd romjain kell harcolni. "
+#~ "Különösen ajánlott gyors lefolyású, harc orientált csapatjátékokra. A 1,3 "
+#~ "a 2,4 játékos ellen alkothat csapatot."
+
+#~ msgid "Battle for Weslin Bridge"
+#~ msgstr "Csata a Weslin-hídért"
+
+#~ msgid ""
+#~ "Teams of 2 fight for control of the central bridge choke-point. Good for "
+#~ "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
+#~ msgstr ""
+#~ "2 fős csapatok küzdenek a központi híd elkeskenyedő részéért. Közepesen "
+#~ "hosszújátékokra alkalmas a pálya. A 2-es játékosnak a 4-essel kell "
+#~ "szövetségben lennie, valamint az 1-esnek a 3-assal."
+
+#, fuzzy
+#~ msgid " "
+#~ msgstr "; "
+
+#, fuzzy
+#~ msgid ""
+#~ "With their stumpy vestigial wings and inability to use their great "
+#~ "internal fire as a weapon some may think that these Drakes are "
+#~ "disadvantaged; they would be mistaken."
+#~ msgstr ""
+#~ "Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
+#~ "használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
+#~ "perzsekények teljesen hasznavehetetlenek. A perzsekény gladiátorokat védi "
+#~ "vékony sárgaréz páncéljuk, és smaragd élű fegyverekkel vannak "
+#~ "felfegyverezve, így képesek elhárítani a különböző támadásokat."
 
 #~ msgid "The Isle of Anduin"
 #~ msgstr "Anduin szigetén"

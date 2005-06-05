@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-03 22:49+0200\n"
+"POT-Creation-Date: 2005-06-05 17:14+0200\n"
 "PO-Revision-Date: 2005-06-04 05:40+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
@@ -210,7 +210,7 @@ msgstr ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 
-#: data/help.cfg:92 src/help.cpp:1192
+#: data/help.cfg:92 src/help.cpp:1196
 msgid "Movement"
 msgstr "Movement"
 
@@ -1273,68 +1273,266 @@ msgstr ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
 
-#: data/scenarios/multiplayer/An_Island.cfg:7
-msgid "An Island"
-msgstr "An Island"
-
-#: data/scenarios/multiplayer/An_Island.cfg:10
-msgid ""
-"A 4 player map that is suitable for individual or team play, victory rests "
-"of dominating the centre island. North-West: Forest dominated area, North-"
-"East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
-"Mountain dominated area."
-msgstr ""
-"A 4 player map that is suitable for individual or team play, victory rests "
-"of dominating the centre island. North-West: Forest dominated area, North-"
-"East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
-"Mountain dominated area."
-
-#: data/scenarios/multiplayer/Blitz.cfg:7
-msgid "Blitz"
+#: data/scenarios/multiplayer/2p_Blitz.cfg:7
+#, fuzzy
+msgid "2p - Blitz"
 msgstr "Blitz"
 
-#: data/scenarios/multiplayer/Blitz.cfg:9
-#: data/scenarios/multiplayer/Charge.cfg:9
+#: data/scenarios/multiplayer/2p_Blitz.cfg:9
+#: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
 msgstr "A duel map for super fast play. Recommended setting of 2g per village."
 
-#: data/scenarios/multiplayer/BrokenBridge.cfg:2
-msgid "The Broken Bridge"
-msgstr "The Broken Bridge"
-
-#: data/scenarios/multiplayer/BrokenBridge.cfg:4
-msgid ""
-"A small two vs. two map across the ruins of a once great bridge. Perfect for "
-"fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
-"2,4."
-msgstr ""
-"A small two vs. two map across the ruins of a once great bridge. Perfect for "
-"fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
-"2,4."
-
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
-msgid "Castle Hopping Isle"
-msgstr "Castle Hopping Isle"
-
-#: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
-msgid ""
-"Many closely placed and strategically located castles. Small map for fast "
-"play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
-"2, 4 for 2v2."
-msgstr ""
-"Many closely placed and strategically located castles. Small map for fast "
-"play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
-"2, 4 for 2v2."
-
-#: data/scenarios/multiplayer/Charge.cfg:7
-msgid "Charge"
+#: data/scenarios/multiplayer/2p_Charge.cfg:7
+#, fuzzy
+msgid "2p - Charge"
 msgstr "Charge"
 
-#: data/scenarios/multiplayer/Clash.cfg:3
-msgid "Clash"
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
+msgid "2p - Den of Onis"
+msgstr "2p - Den of Onis"
+
+#: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
+msgid ""
+"Danger lurks around every corner in this underground battlefield, a duel map "
+"where force and subterfuge meet. Recommended settings of 2G per village."
+msgstr ""
+"Danger lurks around every corner in this underground battlefield, a duel map "
+"where force and subterfuge meet. Recommended settings of 2G per village."
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
+msgid "2p - Divide and Conquer"
+msgstr "2p - Divide and Conquer"
+
+#: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
+msgid ""
+"This small duel map divides the field of battle into three segments. "
+"Recommended settings of 2G per village."
+msgstr ""
+"This small duel map divides the field of battle into three segments. "
+"Recommended settings of 2G per village."
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:3
+msgid "2p - Hamlets"
+msgstr "2p - Hamlets"
+
+#: data/scenarios/multiplayer/2p_Hamlets.cfg:4
+msgid ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield. Recommended settings of 2G per village."
+msgstr ""
+"Warfare transforms the simple farms and villages of a peaceful region into a "
+"subtly parceled battlefield. Recommended settings of 2G per village."
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
+msgid "2p - Hornshark Island"
+msgstr "2p - Hornshark Island"
+
+#: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
+msgid ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island. Recommended settings of 2G per village."
+msgstr ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island. Recommended settings of 2G per village."
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:3
+#, fuzzy
+msgid "2p - Icy Waters"
+msgstr "Icy Waters"
+
+#: data/scenarios/multiplayer/2p_IcyWaters.cfg:5
+msgid ""
+"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+msgstr ""
+"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
+msgid "2p - Meteor Lake"
+msgstr "2p - Meteor Lake"
+
+#: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
+msgid ""
+"Long ago, a great meteor fell from the heavens, leaving its mark on this "
+"coniferous region. Recommended settings of 2G per village."
+msgstr ""
+"Long ago, a great meteor fell from the heavens, leaving its mark on this "
+"coniferous region. Recommended settings of 2G per village."
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
+msgid "2p - Silverhead Crossing"
+msgstr "2p - Silverhead Crossing"
+
+#: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
+msgid ""
+"Players must traverse all manner of terrain in pursuit of victory on this "
+"multi-fronted duel map. Recommended settings of 2G per village."
+msgstr ""
+"Players must traverse all manner of terrain in pursuit of victory on this "
+"multi-fronted duel map. Recommended settings of 2G per village."
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
+msgid "2p - Sullas Ruins"
+msgstr "2p - Sullas Ruins"
+
+#: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
+msgid ""
+"Flooded by the seas and battered by the winter elements, only ruins, water "
+"and ice now remain in the shadow of this once mighty empire. Recommended "
+"settings of 2G per village."
+msgstr ""
+"Flooded by the seas and battered by the winter elements, only ruins, water "
+"and ice now remain in the shadow of this once mighty empire. Recommended "
+"settings of 2G per village."
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
+#, fuzzy
+msgid "2p - Wesbowl"
+msgstr "Wesbowl"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
+msgid ""
+"In Wesbowl, a player must get their ball to the other player's end zone. "
+"However, the other player can attack your units. Wesbowl is played with "
+"blunt weapons, and healers are on hand, so when units are killed, they "
+"return to that player's end zone with an injury."
+msgstr ""
+"In Wesbowl, a player must get their ball to the other player's end zone. "
+"However, the other player can attack your units. Wesbowl is played with "
+"blunt weapons, and healers are on hand, so when units are killed, they "
+"return to that player's end zone with an injury."
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:11
+msgid ""
+"\n"
+"Victory:\n"
+"@Move either ball to your opponent's endzone more times than they move their "
+"ball to yours\n"
+"Defeat:\n"
+"#Opponent moves the balls to your endzone more times than you move them to "
+"theirs"
+msgstr ""
+"\n"
+"Victory:\n"
+"@Move either ball to your opponent's endzone more times than they move their "
+"ball to yours\n"
+"Defeat:\n"
+"#Opponent moves the balls to your endzone more times than you move them to "
+"theirs"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:199
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:476
+msgid "Red scores! Current score is $redscore-$bluescore"
+msgstr "Red scores! Current score is $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:247
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:524
+msgid "Blue scores! Current score is $redscore-$bluescore"
+msgstr "Blue scores! Current score is $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:337
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:614
+msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+msgstr "Should I pass the ball to $passto.type ($xloc,$yloc)?"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:339
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:616
+msgid "Yes!"
+msgstr "Yes!"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:361
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:638
+#: data/scenarios/tutorial/Basic_Training.cfg:318
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
+msgid "No"
+msgstr "No"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:661
+msgid "Blue team wins! Final score: $redscore-$bluescore"
+msgstr "Blue team wins! Final score: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:673
+msgid "Red team wins! Final score: $redscore-$bluescore"
+msgstr "Red team wins! Final score: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:685
+msgid "Draw! Final score: $redscore-$bluescore"
+msgstr "Draw! Final score: $redscore-$bluescore"
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
+msgid "3p - 1v1v1Hex"
+msgstr "3p - 1v1v1Hex"
+
+#: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
+msgid ""
+"Three players do battle in this small, enclosed region. Recommended settings "
+"of 2G per village."
+msgstr ""
+"Three players do battle in this small, enclosed region. Recommended settings "
+"of 2G per village."
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:3
+msgid "3p - Morituri"
+msgstr "3p - Morituri"
+
+#: data/scenarios/multiplayer/3p_Morituri.cfg:4
+msgid ""
+"Only one faction will emerge victorious from this tightly bordered three-"
+"player map. Recommended settings of 2G per village."
+msgstr ""
+"Only one faction will emerge victorious from this tightly bordered three-"
+"player map. Recommended settings of 2G per village."
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
+msgid "3p - Triple Blitz"
+msgstr "3p - Triple Blitz"
+
+#: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
+msgid ""
+"Three players come head to head on this water-cut battlefield. Recommended "
+"settings of 2G per village."
+msgstr ""
+"Three players come head to head on this water-cut battlefield. Recommended "
+"settings of 2G per village."
+
+#: data/scenarios/multiplayer/4p_An_Island.cfg:7
+#, fuzzy
+msgid "4p - An Island"
+msgstr "An Island"
+
+#: data/scenarios/multiplayer/4p_An_Island.cfg:10
+msgid ""
+"A 4 player map that is suitable for individual or team play, victory rests "
+"of dominating the centre island. North-West: Forest dominated area, North-"
+"East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
+"Mountain dominated area."
+msgstr ""
+"A 4 player map that is suitable for individual or team play, victory rests "
+"of dominating the centre island. North-West: Forest dominated area, North-"
+"East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
+"Mountain dominated area."
+
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
+#, fuzzy
+msgid "4p - Castle Hopping Isle"
+msgstr "Castle Hopping Isle"
+
+#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
+msgid ""
+"Many closely placed and strategically located castles. Small map for fast "
+"play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
+"2, 4 for 2v2."
+msgstr ""
+"Many closely placed and strategically located castles. Small map for fast "
+"play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
+"2, 4 for 2v2."
+
+#: data/scenarios/multiplayer/4p_Clash.cfg:3
+#, fuzzy
+msgid "4p - Clash"
 msgstr "Clash"
 
-#: data/scenarios/multiplayer/Clash.cfg:5
+#: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid ""
 "Small map for 2v2. Teams should be player 1 and 3, vs player 2 and 4. "
 "Recommended setting of 2 gold per village."
@@ -1342,27 +1540,65 @@ msgstr ""
 "Small map for 2v2.   Teams should be player 1 and 3, vs player 2 and 4.  "
 "Recommended setting of 2 gold per village."
 
-#: data/scenarios/multiplayer/ForestOfFear.cfg:3
-msgid "Forest of Fear"
+#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
+#, fuzzy
+msgid "4p - King of the Hill"
+msgstr "King of the Hill"
+
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:3
+msgid "4p - Lagoon"
+msgstr "4p - Lagoon"
+
+#: data/scenarios/multiplayer/4p_Lagoon.cfg:4
+msgid ""
+"Four factions contend for dominance over this watery settlement. Recommended "
+"settings of 1G per village."
+msgstr ""
+"Four factions contend for dominance over this watery settlement. Recommended "
+"settings of 1G per village."
+
+#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#, fuzzy
+msgid "4p - Siege Castles"
+msgstr "Siege Castles"
+
+#: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
+#, fuzzy
+msgid "4p - The Valley of Death"
+msgstr "The Valley of Death"
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
+msgid "4p - The Wilderlands"
+msgstr "4p - The Wilderlands"
+
+#: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
+msgid ""
+"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
+"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
+"1G per village."
+msgstr ""
+"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
+"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
+"1G per village."
+
+#: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
+#, fuzzy
+msgid "5p - Forest of Fear"
 msgstr "Forest of Fear"
 
-#: data/scenarios/multiplayer/Hexcake.cfg:3
-msgid "Hexcake"
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:3
+#, fuzzy
+msgid "6p - Hexcake"
 msgstr "Hexcake"
 
-#: data/scenarios/multiplayer/Hexcake.cfg:5
+#: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2 vs. 2 or 3 vs. 3 team game."
 
-#: data/scenarios/multiplayer/IcyWaters.cfg:3
-msgid "Icy Waters"
-msgstr "Icy Waters"
-
-#: data/scenarios/multiplayer/IcyWaters.cfg:5
-msgid ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
-msgstr ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+#: data/scenarios/multiplayer/7p_battleworld.cfg:7
+#, fuzzy
+msgid "7p - Battle World"
+msgstr "Battle World"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1414,101 +1650,9 @@ msgstr ""
 "terrains.  Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 
-#: data/scenarios/multiplayer/Wesbowl.cfg:3
-msgid "Wesbowl"
-msgstr "Wesbowl"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:6
-msgid ""
-"In Wesbowl, a player must get their ball to the other player's end zone. "
-"However, the other player can attack your units. Wesbowl is played with "
-"blunt weapons, and healers are on hand, so when units are killed, they "
-"return to that player's end zone with an injury."
-msgstr ""
-"In Wesbowl, a player must get their ball to the other player's end zone. "
-"However, the other player can attack your units. Wesbowl is played with "
-"blunt weapons, and healers are on hand, so when units are killed, they "
-"return to that player's end zone with an injury."
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:11
-msgid ""
-"\n"
-"Victory:\n"
-"@Move either ball to your opponent's endzone more times than they move their "
-"ball to yours\n"
-"Defeat:\n"
-"#Opponent moves the balls to your endzone more times than you move them to "
-"theirs"
-msgstr ""
-"\n"
-"Victory:\n"
-"@Move either ball to your opponent's endzone more times than they move their "
-"ball to yours\n"
-"Defeat:\n"
-"#Opponent moves the balls to your endzone more times than you move them to "
-"theirs"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:199
-#: data/scenarios/multiplayer/Wesbowl.cfg:476
-msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr "Red scores! Current score is $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:247
-#: data/scenarios/multiplayer/Wesbowl.cfg:524
-msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr "Blue scores! Current score is $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:337
-#: data/scenarios/multiplayer/Wesbowl.cfg:614
-msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:339
-#: data/scenarios/multiplayer/Wesbowl.cfg:616
-msgid "Yes!"
-msgstr "Yes!"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:361
-#: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/Basic_Training.cfg:318
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:269
-msgid "No"
-msgstr "No"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:661
-msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr "Blue team wins! Final score: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:673
-msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr "Red team wins! Final score: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/Wesbowl.cfg:685
-msgid "Draw! Final score: $redscore-$bluescore"
-msgstr "Draw! Final score: $redscore-$bluescore"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:3
-msgid "Battle for Weslin Bridge"
-msgstr "Battle for Weslin Bridge"
-
-#: data/scenarios/multiplayer/WeslinBridge.cfg:5
-msgid ""
-"Teams of 2 fight for control of the central bridge choke-point. Good for "
-"medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
-msgstr ""
-"Teams of 2 fight for control of the central bridge choke-point. Good for "
-"medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
-
-#: data/scenarios/multiplayer/battleworld.cfg:7
-msgid "Battle World"
-msgstr "Battle World"
-
-#: data/scenarios/multiplayer/castles.cfg:7
-msgid "Siege Castles"
-msgstr "Siege Castles"
-
 #: data/scenarios/multiplayer/scenarios.cfg:3
-msgid "Across The River"
+#, fuzzy
+msgid "2p - Across The River"
 msgstr "Across The River"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
@@ -1520,166 +1664,6 @@ msgstr ""
 "This map is a convenient way to do some testing with two factions, as it is "
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
-
-#: data/scenarios/multiplayer/scenarios.cfg:110
-msgid "The Valley of Death"
-msgstr "The Valley of Death"
-
-#: data/scenarios/multiplayer/scenarios.cfg:111
-msgid " "
-msgstr " "
-
-#: data/scenarios/multiplayer/scenarios.cfg:156
-msgid "King of the Hill"
-msgstr "King of the Hill"
-
-#: data/scenarios/multiplayer/scenarios.cfg:195
-msgid "2p - Divide and Conquer"
-msgstr "2p - Divide and Conquer"
-
-#: data/scenarios/multiplayer/scenarios.cfg:196
-msgid ""
-"This small duel map divides the field of battle into three segments. "
-"Recommended settings of 2G per village."
-msgstr ""
-"This small duel map divides the field of battle into three segments. "
-"Recommended settings of 2G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:226
-msgid "2p - Silverhead Crossing"
-msgstr "2p - Silverhead Crossing"
-
-#: data/scenarios/multiplayer/scenarios.cfg:227
-msgid ""
-"Players must traverse all manner of terrain in pursuit of victory on this "
-"multi-fronted duel map. Recommended settings of 2G per village."
-msgstr ""
-"Players must traverse all manner of terrain in pursuit of victory on this "
-"multi-fronted duel map. Recommended settings of 2G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:256
-msgid "2p - Meteor Lake"
-msgstr "2p - Meteor Lake"
-
-#: data/scenarios/multiplayer/scenarios.cfg:257
-msgid ""
-"Long ago, a great meteor fell from the heavens, leaving its mark on this "
-"coniferous region. Recommended settings of 2G per village."
-msgstr ""
-"Long ago, a great meteor fell from the heavens, leaving its mark on this "
-"coniferous region. Recommended settings of 2G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:286
-msgid "2p - Den of Onis"
-msgstr "2p - Den of Onis"
-
-#: data/scenarios/multiplayer/scenarios.cfg:287
-msgid ""
-"Danger lurks around every corner in this underground battlefield, a duel map "
-"where force and subterfuge meet. Recommended settings of 2G per village."
-msgstr ""
-"Danger lurks around every corner in this underground battlefield, a duel map "
-"where force and subterfuge meet. Recommended settings of 2G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:316
-msgid "2p - Hamlets"
-msgstr "2p - Hamlets"
-
-#: data/scenarios/multiplayer/scenarios.cfg:317
-msgid ""
-"Warfare transforms the simple farms and villages of a peaceful region into a "
-"subtly parceled battlefield. Recommended settings of 2G per village."
-msgstr ""
-"Warfare transforms the simple farms and villages of a peaceful region into a "
-"subtly parceled battlefield. Recommended settings of 2G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:346
-msgid "2p - Hornshark Island"
-msgstr "2p - Hornshark Island"
-
-#: data/scenarios/multiplayer/scenarios.cfg:347
-msgid ""
-"Players must navigate the dispersive terrain of this small but "
-"topographically dense island. Recommended settings of 2G per village."
-msgstr ""
-"Players must navigate the dispersive terrain of this small but "
-"topographically dense island. Recommended settings of 2G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:376
-msgid "2p - Sullas Ruins"
-msgstr "2p - Sullas Ruins"
-
-#: data/scenarios/multiplayer/scenarios.cfg:377
-msgid ""
-"Flooded by the seas and battered by the winter elements, only ruins, water "
-"and ice now remain in the shadow of this once mighty empire. Recommended "
-"settings of 2G per village."
-msgstr ""
-"Flooded by the seas and battered by the winter elements, only ruins, water "
-"and ice now remain in the shadow of this once mighty empire. Recommended "
-"settings of 2G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:406
-msgid "3p - 1v1v1Hex"
-msgstr "3p - 1v1v1Hex"
-
-#: data/scenarios/multiplayer/scenarios.cfg:407
-msgid ""
-"Three players do battle in this small, enclosed region. Recommended settings "
-"of 2G per village."
-msgstr ""
-"Three players do battle in this small, enclosed region. Recommended settings "
-"of 2G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:443
-msgid "4p - Lagoon"
-msgstr "4p - Lagoon"
-
-#: data/scenarios/multiplayer/scenarios.cfg:444
-msgid ""
-"Four factions contend for dominance over this watery settlement. Recommended "
-"settings of 1G per village."
-msgstr ""
-"Four factions contend for dominance over this watery settlement. Recommended "
-"settings of 1G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:487
-msgid "4p - The Wilderlands"
-msgstr "4p - The Wilderlands"
-
-#: data/scenarios/multiplayer/scenarios.cfg:488
-msgid ""
-"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
-"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
-"1G per village."
-msgstr ""
-"A vast region of wild, untamed wilderness, its terrain dotted with forests, "
-"caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
-"1G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:531
-msgid "3p - Morituri"
-msgstr "3p - Morituri"
-
-#: data/scenarios/multiplayer/scenarios.cfg:532
-msgid ""
-"Only one faction will emerge victorious from this tightly bordered three-"
-"player map. Recommended settings of 2G per village."
-msgstr ""
-"Only one faction will emerge victorious from this tightly bordered three-"
-"player map. Recommended settings of 2G per village."
-
-#: data/scenarios/multiplayer/scenarios.cfg:568
-msgid "3p - Triple Blitz"
-msgstr "3p - Triple Blitz"
-
-#: data/scenarios/multiplayer/scenarios.cfg:569
-msgid ""
-"Three players come head to head on this water-cut battlefield. Recommended "
-"settings of 2G per village."
-msgstr ""
-"Three players come head to head on this water-cut battlefield. Recommended "
-"settings of 2G per village."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
 msgid "Basic Training"
@@ -4769,32 +4753,36 @@ msgid "Drake Clasher"
 msgstr "Drake Clasher"
 
 #: data/units/Drake_Clasher.cfg:18
+#, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Clashers' weapons of choice "
-"are the sword and spear, which they use to great effect. The greatest "
-"Clashers can become Drake Gladiators or Slashers."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Clashers' "
+"weapons of choice are the sword and spear, which they use to great effect. "
+"The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
 " To compensate they have become great craftsmen that can fabricate weapons "
 "with emerald edges, and wear heavy armour. The Clashers' weapons of choice "
 "are the sword and spear, which they use to great effect. The greatest "
 "Clashers can become Drake Gladiators or Slashers."
 
-#: data/units/Drake_Clasher.cfg:18 data/units/Drake_Enforcer.cfg:18
-#: data/units/Drake_Gladiator.cfg:19 data/units/Drake_Slasher.cfg:19
-#: data/units/Drake_Warden.cfg:19
-msgid ""
-"With their stumpy vestigial wings and inability to use their great internal "
-"fire as a weapon some may think that these Drakes are disadvantaged; they "
-"would be mistaken."
-msgstr ""
-"With their stumpy vestigial wings and inability to use their great internal "
-"fire as a weapon some may think that these Drakes are disadvantaged; they "
-"would be mistaken."
-
 #: data/units/Drake_Enforcer.cfg:3
 msgid "Drake Enforcer"
 msgstr "Drake Enforcer"
+
+#: data/units/Drake_Enforcer.cfg:18
+#, fuzzy
+msgid ""
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. Drake Enforcers protect their vulnerable hides with thick "
+"brass armor and they arm themselves with as many emerald edged weapons as "
+"possible to fend off whatever opponents may await them."
+msgstr ""
+" Drake Gladiators protect their vulnerable hides with thick brass armour and "
+"they arm themselves with as many emerald edged weapons as possible to fend "
+"off whatever opponents may await them."
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -4871,10 +4859,13 @@ msgid "Drake Gladiator"
 msgstr "Drake Gladiator"
 
 #: data/units/Drake_Gladiator.cfg:19
+#, fuzzy
 msgid ""
-" Drake Gladiators protect their vulnerable hides with thick brass armor and "
-"they arm themselves with as many emerald edged weapons as possible to fend "
-"off whatever opponents may await them."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. Drake Gladiators protect their vulnerable hides with "
+"thick brass armor and they arm themselves with as many emerald edged weapons "
+"as possible to fend off whatever opponents may await them."
 msgstr ""
 " Drake Gladiators protect their vulnerable hides with thick brass armour and "
 "they arm themselves with as many emerald edged weapons as possible to fend "
@@ -4956,10 +4947,13 @@ msgid "Drake Slasher"
 msgstr "Drake Slasher"
 
 #: data/units/Drake_Slasher.cfg:19
+#, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Slashers' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Slashers' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 " To compensate they have become great craftsmen that can fabricate weapons "
 "with emerald edges, and wear heavy armour. The Slashers' weapon of choice is "
@@ -4977,10 +4971,13 @@ msgid "Drake Warden"
 msgstr "Drake Warden"
 
 #: data/units/Drake_Warden.cfg:19
+#, fuzzy
 msgid ""
-" To compensate they have become great craftsmen that can fabricate weapons "
-"with emerald edges, and wear heavy armor. The Wardens' weapon of choice is "
-"the halberd, which they use to great effect."
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armor. The Wardens' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 " To compensate they have become great craftsmen that can fabricate weapons "
 "with emerald edges, and wear heavy armour. The Wardens' weapon of choice is "
@@ -8097,159 +8094,159 @@ msgstr "-   Artwork and graphics designer"
 msgid "+Developers"
 msgstr "+Developers"
 
-#: src/about.cpp:57
+#: src/about.cpp:58
 msgid "+General Purpose Administrators"
 msgstr "+General Purpose Administrators"
 
-#: src/about.cpp:61
+#: src/about.cpp:62
 msgid "+Artwork and graphics designers"
 msgstr "+Artwork and graphics designers"
 
-#: src/about.cpp:86
+#: src/about.cpp:88
 msgid "+Music"
 msgstr "+Music"
 
-#: src/about.cpp:92
+#: src/about.cpp:94
 msgid "+Scenario Designers"
 msgstr "+Scenario Designers"
 
-#: src/about.cpp:101
+#: src/about.cpp:103
 msgid "+Multiplayer Maps"
 msgstr "+Multiplayer Maps"
 
-#: src/about.cpp:105
+#: src/about.cpp:107
 msgid "+Packagers"
 msgstr "+Packagers"
 
-#: src/about.cpp:115
+#: src/about.cpp:117
 msgid "+Miscellaneous"
 msgstr "+Miscellaneous"
 
-#: src/about.cpp:120
+#: src/about.cpp:122
 msgid "+Internationalization Managers"
 msgstr "+Internationalization Managers"
 
-#: src/about.cpp:126
+#: src/about.cpp:129
 msgid "+Afrikaans Translation"
 msgstr "+Afrikaans Translation"
 
-#: src/about.cpp:130
+#: src/about.cpp:133
 msgid "+Basque Translation"
 msgstr "+Basque Translation"
 
-#: src/about.cpp:135
+#: src/about.cpp:138
 msgid "+Bulgarian Translation"
 msgstr "+Bulgarian Translation"
 
-#: src/about.cpp:138
+#: src/about.cpp:141
 msgid "+Catalan Translation"
 msgstr "+Catalan Translation"
 
-#: src/about.cpp:145
+#: src/about.cpp:148
 msgid "+Chinese Translation"
 msgstr "+Chinese Translation"
 
-#: src/about.cpp:148
+#: src/about.cpp:151
 msgid "+Czech Translation"
 msgstr "+Czech Translation"
 
-#: src/about.cpp:156
+#: src/about.cpp:159
 msgid "+Danish Translation"
 msgstr "+Danish Translation"
 
-#: src/about.cpp:160
+#: src/about.cpp:163
 msgid "+Dutch Translation"
 msgstr "+Dutch Translation"
 
-#: src/about.cpp:167
+#: src/about.cpp:170
 msgid "+English (GB) Translation"
 msgstr "+English (GB) Translation"
 
-#: src/about.cpp:170
+#: src/about.cpp:173
 msgid "+Estonian Translation"
 msgstr "+Estonian Translation"
 
-#: src/about.cpp:173
+#: src/about.cpp:176
 msgid "+Finnish Translation"
 msgstr "+Finnish Translation"
 
-#: src/about.cpp:177
+#: src/about.cpp:181
 msgid "+French Translation"
 msgstr "+French Translation"
 
-#: src/about.cpp:190
+#: src/about.cpp:194
 msgid "+German Translation"
 msgstr "+German Translation"
 
-#: src/about.cpp:201
+#: src/about.cpp:205
 msgid "+Greek Translation"
 msgstr "+Greek Translation"
 
-#: src/about.cpp:205
+#: src/about.cpp:209
 msgid "+Hungarian Translation"
 msgstr "+Hungarian Translation"
 
-#: src/about.cpp:216
+#: src/about.cpp:220
 msgid "+Italian Translation"
 msgstr "+Italian Translation"
 
-#: src/about.cpp:225
+#: src/about.cpp:229
 msgid "+Japanese Translation"
 msgstr "+Japanese Translation"
 
-#: src/about.cpp:230
+#: src/about.cpp:234
 msgid "+Latin Translation"
 msgstr "+Latin Translation"
 
-#: src/about.cpp:233
+#: src/about.cpp:237
 msgid "+Norwegian Translation"
 msgstr "+Norwegian Translation"
 
-#: src/about.cpp:239
+#: src/about.cpp:243
 msgid "+Polish Translation"
 msgstr "+Polish Translation"
 
-#: src/about.cpp:249
+#: src/about.cpp:253
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portuguese (Brazil) Translation"
 
-#: src/about.cpp:257
+#: src/about.cpp:261
 msgid "+Russian Translation"
 msgstr "+Russian Translation"
 
-#: src/about.cpp:262
+#: src/about.cpp:266
 msgid "+Serbian Translation"
 msgstr "+Serbian Translation"
 
-#: src/about.cpp:265
+#: src/about.cpp:269
 msgid "+Slovak Translation"
 msgstr "+Slovak Translation"
 
-#: src/about.cpp:268
+#: src/about.cpp:272
 msgid "+Slovenian Translation"
 msgstr "+Slovenian Translation"
 
-#: src/about.cpp:271
+#: src/about.cpp:275
 msgid "+Spanish Translation"
 msgstr "+Spanish Translation"
 
-#: src/about.cpp:279
+#: src/about.cpp:283
 msgid "+Swedish Translation"
 msgstr "+Swedish Translation"
 
-#: src/about.cpp:285
+#: src/about.cpp:289
 msgid "+Turkish Translation"
 msgstr "+Turkish Translation"
 
-#: src/about.cpp:289
+#: src/about.cpp:293
 msgid "+Contributors"
 msgstr "+Contributors"
 
-#: src/about.cpp:292
+#: src/about.cpp:296
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:328 src/help.cpp:2654
+#: src/about.cpp:332 src/help.cpp:2658
 msgid "Close"
 msgstr "Close"
 
@@ -8270,12 +8267,12 @@ msgid "none"
 msgstr "none"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1136 src/reports.cpp:236
+#: src/help.cpp:1140 src/reports.cpp:236
 msgid "melee"
 msgstr "melee"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1136 src/reports.cpp:237
+#: src/help.cpp:1140 src/reports.cpp:237
 msgid "ranged"
 msgstr "ranged"
 
@@ -8327,31 +8324,31 @@ msgstr "poisoned"
 msgid "slowed"
 msgstr "slowed"
 
-#: src/actions.cpp:1909
+#: src/actions.cpp:1915
 msgid "Ambushed!"
 msgstr "Ambushed!"
 
-#: src/actions.cpp:1943
+#: src/actions.cpp:1949
 msgid "Friendly unit sighted"
 msgstr "Friendly unit sighted"
 
-#: src/actions.cpp:1945
+#: src/actions.cpp:1951
 msgid "Enemy unit sighted!"
 msgstr "Enemy unit sighted!"
 
-#: src/actions.cpp:1950
+#: src/actions.cpp:1956
 msgid "$friends Friendly units sighted"
 msgstr "$friends Friendly units sighted"
 
-#: src/actions.cpp:1952
+#: src/actions.cpp:1958
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Enemy units sighted!"
 
-#: src/actions.cpp:1956
+#: src/actions.cpp:1962
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Units sighted! ($friends friendly, $enemies enemy)"
 
-#: src/actions.cpp:1971
+#: src/actions.cpp:1977
 msgid "(press $hotkey to continue)"
 msgstr "(press $hotkey to continue)"
 
@@ -8395,11 +8392,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Invalid)"
 
-#: src/dialogs.cpp:373 src/game.cpp:753
+#: src/dialogs.cpp:373 src/game.cpp:754
 msgid "Campaign"
 msgstr "Campaign"
 
-#: src/dialogs.cpp:375 src/game.cpp:1120
+#: src/dialogs.cpp:375 src/game.cpp:1121
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -8487,7 +8484,7 @@ msgstr ""
 msgid "Date"
 msgstr "Date"
 
-#: src/dialogs.cpp:550 src/game.cpp:887 src/help.cpp:1112
+#: src/dialogs.cpp:550 src/game.cpp:888 src/help.cpp:1116
 #: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
 msgid "Name"
 msgstr "Name"
@@ -8508,11 +8505,11 @@ msgstr "Choose the game to load"
 msgid "Profile"
 msgstr "Profile"
 
-#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1032
+#: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1036
 msgid "level"
 msgstr "level"
 
-#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1090
+#: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1094
 msgid "HP: "
 msgstr "HP: "
 
@@ -8521,7 +8518,7 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1091
+#: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1095
 msgid "Moves: "
 msgstr "Moves: "
 
@@ -8541,7 +8538,7 @@ msgstr "invisible"
 msgid "OK"
 msgstr "OK"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:497
+#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Cancel"
@@ -8558,7 +8555,7 @@ msgstr "The Battle for Wesnoth"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 
-#: src/game.cpp:646 src/multiplayer_connect.cpp:888
+#: src/game.cpp:646 src/multiplayer_connect.cpp:891
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -8566,7 +8563,7 @@ msgstr ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 
-#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:873
+#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:876
 msgid "The file you have tried to load is corrupt: '"
 msgstr "The file you have tried to load is corrupt: '"
 
@@ -8574,222 +8571,222 @@ msgstr "The file you have tried to load is corrupt: '"
 msgid "File I/O Error while reading the game"
 msgstr "File I/O Error while reading the game"
 
-#: src/game.cpp:743
+#: src/game.cpp:744
 msgid "Get More Campaigns..."
 msgstr "Get More Campaigns..."
 
-#: src/game.cpp:744
+#: src/game.cpp:745
 msgid "Download more campaigns from a server on Internet."
 msgstr "Download more campaigns from an Internet server."
 
-#: src/game.cpp:754
+#: src/game.cpp:755
 msgid "Choose the campaign you want to play:"
 msgstr "Choose the campaign you want to play:"
 
-#: src/game.cpp:783
+#: src/game.cpp:784
 msgid "Difficulty"
 msgstr "Difficulty"
 
-#: src/game.cpp:784
+#: src/game.cpp:785
 msgid "Select difficulty level:"
 msgstr "Select difficulty level:"
 
-#: src/game.cpp:809
+#: src/game.cpp:810
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:812
+#: src/game.cpp:813
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:815
+#: src/game.cpp:816
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:842
+#: src/game.cpp:843
 msgid "Connect to Server"
 msgstr "Connect to Server"
 
-#: src/game.cpp:843
+#: src/game.cpp:844
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "You will now connect to a campaign server to download campaigns."
 
-#: src/game.cpp:844
+#: src/game.cpp:845
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:857
+#: src/game.cpp:858
 msgid "Could not connect to host."
 msgstr "Could not connect to host."
 
-#: src/game.cpp:865
+#: src/game.cpp:866
 msgid "Awaiting response from server"
 msgstr "Awaiting response from server"
 
-#: src/game.cpp:878
+#: src/game.cpp:879
 msgid "Error communicating with the server."
 msgstr "Error communicating with the server."
 
-#: src/game.cpp:887 src/titlescreen.cpp:170
+#: src/game.cpp:888 src/titlescreen.cpp:170
 msgid "Version"
 msgstr "Version"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Author"
 msgstr "Author"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Downloads"
 msgstr "Downloads"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Size"
 msgstr "Size"
 
-#: src/game.cpp:940
+#: src/game.cpp:941
 msgid "Publish campaign: "
 msgstr "Publish campaign: "
 
-#: src/game.cpp:944
+#: src/game.cpp:945
 msgid "Delete campaign: "
 msgstr "Delete campaign: "
 
-#: src/game.cpp:948
+#: src/game.cpp:949
 msgid "There are no campaigns available for download from this server."
 msgstr "There are no campaigns available for download from this server."
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Choose the campaign to download."
 msgstr "Choose the campaign to download."
 
-#: src/game.cpp:955
+#: src/game.cpp:956
 msgid "Get Campaign"
 msgstr "Get Campaign"
 
-#: src/game.cpp:975
+#: src/game.cpp:976
 msgid "Downloading campaign..."
 msgstr "Downloading campaign..."
 
-#: src/game.cpp:989
+#: src/game.cpp:990
 msgid "Cannot rescan the filesystem"
 msgstr "Cannot rescan the filesystem"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "Campaign Installed"
 msgstr "Campaign Installed"
 
-#: src/game.cpp:1000
+#: src/game.cpp:1001
 msgid "The campaign has been installed."
 msgstr "The campaign has been installed."
 
-#: src/game.cpp:1002
+#: src/game.cpp:1003
 msgid "Network communication error."
 msgstr "Network communication error."
 
-#: src/game.cpp:1004
+#: src/game.cpp:1005
 msgid "Remote host disconnected."
 msgstr "Remote host disconnected."
 
-#: src/game.cpp:1006
+#: src/game.cpp:1007
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "There was a problem creating the files necessary to install this campaign."
 
-#: src/game.cpp:1018 src/game.cpp:1058 src/game.cpp:1083
+#: src/game.cpp:1019 src/game.cpp:1059 src/game.cpp:1084
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
 msgid "Connection timed out"
 msgstr "Connection timed out"
 
-#: src/game.cpp:1021 src/game.cpp:1060 src/game.cpp:1085
+#: src/game.cpp:1022 src/game.cpp:1061 src/game.cpp:1086
 msgid "The server responded with an error: \""
 msgstr "The server responded with an error: \""
 
-#: src/game.cpp:1025
+#: src/game.cpp:1026
 msgid "Terms"
 msgstr "Terms"
 
-#: src/game.cpp:1063 src/game.cpp:1088
+#: src/game.cpp:1064 src/game.cpp:1089
 msgid "Response"
 msgstr "Response"
 
-#: src/game.cpp:1103
+#: src/game.cpp:1104
 msgid "Join Official Server"
 msgstr "Join Official Server"
 
-#: src/game.cpp:1104
+#: src/game.cpp:1105
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Log on to the official Wesnoth multiplayer server"
 
-#: src/game.cpp:1106 src/multiplayer_lobby.cpp:107
+#: src/game.cpp:1107 src/multiplayer_lobby.cpp:107
 msgid "Join Game"
 msgstr "Join Game"
 
-#: src/game.cpp:1107
+#: src/game.cpp:1108
 msgid "Join a server or hosted game"
 msgstr "Join a server or hosted game"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1110
 msgid "Host Networked Game"
 msgstr "Host Networked Game"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1111
 msgid "Host a game without using a server"
 msgstr "Host a game without using a server"
 
-#: src/game.cpp:1112
+#: src/game.cpp:1113
 msgid "Hotseat Game"
 msgstr "Hotseat Game"
 
-#: src/game.cpp:1113
+#: src/game.cpp:1114
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Play a multiplayer game sharing the same machine"
 
-#: src/game.cpp:1115
+#: src/game.cpp:1116
 msgid "Human vs AI"
 msgstr "Human vs AI"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1117
 msgid "Play a game against AI opponents"
 msgstr "Play a game against AI opponents"
 
-#: src/game.cpp:1122 src/multiplayer.cpp:187
+#: src/game.cpp:1123 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Login: "
 
-#: src/game.cpp:1153
+#: src/game.cpp:1154
 msgid "The game could not be loaded: "
 msgstr "The game could not be loaded: "
 
-#: src/game.cpp:1155
+#: src/game.cpp:1156
 msgid "Error while playing the game: "
 msgstr "Error while playing the game: "
 
-#: src/game.cpp:1167
+#: src/game.cpp:1168
 msgid "The game map could not be loaded: "
 msgstr "The game map could not be loaded: "
 
-#: src/game.cpp:1193
+#: src/game.cpp:1194
 msgid "Language"
 msgstr "Language"
 
-#: src/game.cpp:1194
+#: src/game.cpp:1195
 msgid "Choose your preferred language:"
 msgstr "Choose your preferred language:"
 
-#: src/game.cpp:1283
+#: src/game.cpp:1284
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Warning: Errors occurred while loading game configuration files: '"
 
-#: src/game.cpp:1332
+#: src/game.cpp:1333
 msgid "Error loading game configuration files: '"
 msgstr "Error loading game configuration files: '"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1334
 msgid "' (The game will now exit)"
 msgstr "' (The game will now exit)"
 
-#: src/game.cpp:1406
+#: src/game.cpp:1407
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
@@ -8801,79 +8798,79 @@ msgstr "Victory:"
 msgid "Defeat:"
 msgstr "Defeat:"
 
-#: src/help.cpp:1052
+#: src/help.cpp:1056
 msgid "Advances to: "
 msgstr "Advances to: "
 
-#: src/help.cpp:1073
+#: src/help.cpp:1077
 msgid "Abilities: "
 msgstr "Abilities: "
 
-#: src/help.cpp:1092
+#: src/help.cpp:1096
 msgid "Alignment: "
 msgstr "Alignment: "
 
-#: src/help.cpp:1096
+#: src/help.cpp:1100
 msgid "Required XP: "
 msgstr "Required XP: "
 
-#: src/help.cpp:1105 src/reports.cpp:239
+#: src/help.cpp:1109 src/reports.cpp:239
 msgid "attacks"
 msgstr "attacks"
 
-#: src/help.cpp:1113 src/playturn.cpp:2045 src/playturn.cpp:2222
+#: src/help.cpp:1117 src/playturn.cpp:2045 src/playturn.cpp:2222
 msgid "Type"
 msgstr "Type"
 
-#: src/help.cpp:1114
+#: src/help.cpp:1118
 msgid "Strikes"
 msgstr "Strikes"
 
-#: src/help.cpp:1115
+#: src/help.cpp:1119
 msgid "Range"
 msgstr "Range"
 
-#: src/help.cpp:1116
+#: src/help.cpp:1120
 msgid "Special"
 msgstr "Special"
 
-#: src/help.cpp:1156
+#: src/help.cpp:1160
 msgid "Resistances"
 msgstr "Resistances"
 
-#: src/help.cpp:1160
+#: src/help.cpp:1164
 msgid "Attack Type"
 msgstr "Attack Type"
 
-#: src/help.cpp:1161
+#: src/help.cpp:1165
 msgid "Resistance"
 msgstr "Resistance"
 
-#: src/help.cpp:1186
+#: src/help.cpp:1190
 msgid "Terrain Modifiers"
 msgstr "Terrain Modifiers"
 
-#: src/help.cpp:1190
+#: src/help.cpp:1194
 msgid "Terrain"
 msgstr "Terrain"
 
-#: src/help.cpp:1191
+#: src/help.cpp:1195
 msgid "Defense"
 msgstr "Defence"
 
-#: src/help.cpp:1296
+#: src/help.cpp:1300
 msgid "or"
 msgstr "or"
 
-#: src/help.cpp:1303
+#: src/help.cpp:1307
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr "This terrain acts as $terrains for movement and defence purposes."
 
-#: src/help.cpp:1305
+#: src/help.cpp:1309
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "The terrain with the best modifier is chosen automatically."
 
-#: src/help.cpp:1309
+#: src/help.cpp:1313
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -8881,7 +8878,7 @@ msgstr ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
 
-#: src/help.cpp:1311
+#: src/help.cpp:1315
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -8889,19 +8886,19 @@ msgstr ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 
-#: src/help.cpp:1313
+#: src/help.cpp:1317
 msgid "This terrain gives healing."
 msgstr "This terrain gives healing."
 
-#: src/help.cpp:2169
+#: src/help.cpp:2173
 msgid "< Back"
 msgstr "< Back"
 
-#: src/help.cpp:2170
+#: src/help.cpp:2174
 msgid "Forward >"
 msgstr "Forward >"
 
-#: src/help.cpp:2657
+#: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "The Battle for Wesnoth Help"
 
@@ -9013,91 +9010,91 @@ msgstr "Server-side redirect loop"
 msgid "You must log in to this server"
 msgstr "You must log in to this server"
 
-#: src/multiplayer_connect.cpp:297
+#: src/multiplayer_connect.cpp:298
 msgid "(Vacant slot)"
 msgstr "(Vacant slot)"
 
-#: src/multiplayer_connect.cpp:303
+#: src/multiplayer_connect.cpp:304
 msgid "Anonymous local player"
 msgstr "Anonymous local player"
 
-#: src/multiplayer_connect.cpp:309
+#: src/multiplayer_connect.cpp:310
 msgid "Computer player"
 msgstr "Computer player"
 
-#: src/multiplayer_connect.cpp:312
+#: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
 msgstr "(Empty slot)"
 
-#: src/multiplayer_connect.cpp:452
+#: src/multiplayer_connect.cpp:455
 msgid "No non-random sides in the current era"
 msgstr "No non-random sides in the current era"
 
-#: src/multiplayer_connect.cpp:468
+#: src/multiplayer_connect.cpp:471
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Unable to find a leader type for faction $faction"
 
-#: src/multiplayer_connect.cpp:482 src/multiplayer_connect.cpp:491
+#: src/multiplayer_connect.cpp:485 src/multiplayer_connect.cpp:494
 msgid "Team"
 msgstr "Team"
 
-#: src/multiplayer_connect.cpp:489
+#: src/multiplayer_connect.cpp:492
 msgid "Player/Type"
 msgstr "Player/Type"
 
-#: src/multiplayer_connect.cpp:490
+#: src/multiplayer_connect.cpp:493
 msgid "Faction"
 msgstr "Faction"
 
-#: src/multiplayer_connect.cpp:492
+#: src/multiplayer_connect.cpp:495
 msgid "Color"
 msgstr "Colour"
 
-#: src/multiplayer_connect.cpp:493 src/playturn.cpp:1769 src/playturn.cpp:1780
+#: src/multiplayer_connect.cpp:496 src/playturn.cpp:1769 src/playturn.cpp:1780
 msgid "Gold"
 msgstr "Gold"
 
-#: src/multiplayer_connect.cpp:495
+#: src/multiplayer_connect.cpp:498
 msgid "Computer vs Computer"
 msgstr "Computer vs Computer"
 
-#: src/multiplayer_connect.cpp:496
+#: src/multiplayer_connect.cpp:499
 msgid "I'm Ready"
 msgstr "I'm Ready"
 
-#: src/multiplayer_connect.cpp:514
+#: src/multiplayer_connect.cpp:517
 msgid "The scenario is invalid because it has no sides."
 msgstr "The scenario is invalid because it has no sides."
 
-#: src/multiplayer_connect.cpp:791
+#: src/multiplayer_connect.cpp:794
 msgid "Game Lobby"
 msgstr "Game Lobby"
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:814
 msgid "Network Player"
 msgstr "Network Player"
 
-#: src/multiplayer_connect.cpp:812
+#: src/multiplayer_connect.cpp:815
 msgid "Local Player"
 msgstr "Local Player"
 
-#: src/multiplayer_connect.cpp:813
+#: src/multiplayer_connect.cpp:816
 msgid "Computer Player"
 msgstr "Computer Player"
 
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:817
 msgid "Empty"
 msgstr "Empty"
 
-#: src/multiplayer_connect.cpp:880
+#: src/multiplayer_connect.cpp:883
 msgid "This is not a multiplayer save"
 msgstr "This is not a multiplayer save"
 
-#: src/multiplayer_connect.cpp:921
+#: src/multiplayer_connect.cpp:924
 msgid "Cannot find era $era"
 msgstr "Cannot find era $era"
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:938
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -9105,7 +9102,7 @@ msgstr ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:974
 msgid "Waiting for players to join..."
 msgstr "Waiting for players to join..."
 
@@ -9919,6 +9916,40 @@ msgstr "lawful"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutral"
+
+#~ msgid "The Broken Bridge"
+#~ msgstr "The Broken Bridge"
+
+#~ msgid ""
+#~ "A small two vs. two map across the ruins of a once great bridge. Perfect "
+#~ "for fast-paced, combat intensive, team-oriented games. Must be players "
+#~ "1,3 vs. 2,4."
+#~ msgstr ""
+#~ "A small two vs. two map across the ruins of a once great bridge. Perfect "
+#~ "for fast-paced, combat intensive, team-oriented games. Must be players "
+#~ "1,3 vs. 2,4."
+
+#~ msgid "Battle for Weslin Bridge"
+#~ msgstr "Battle for Weslin Bridge"
+
+#~ msgid ""
+#~ "Teams of 2 fight for control of the central bridge choke-point. Good for "
+#~ "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
+#~ msgstr ""
+#~ "Teams of 2 fight for control of the central bridge choke-point. Good for "
+#~ "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid ""
+#~ "With their stumpy vestigial wings and inability to use their great "
+#~ "internal fire as a weapon some may think that these Drakes are "
+#~ "disadvantaged; they would be mistaken."
+#~ msgstr ""
+#~ "With their stumpy vestigial wings and inability to use their great "
+#~ "internal fire as a weapon some may think that these Drakes are "
+#~ "disadvantaged; they would be mistaken."
 
 #~ msgid "The Isle of Anduin"
 #~ msgstr "The Isle of Anduin"
