@@ -336,7 +336,7 @@ dist2: stamp-po $(DISTFILES)
 	  dists="$$dists Makevars.template"; \
 	fi; \
 	if test -f $(srcdir)/$(DOMAIN).pot; then \
-	  dists="$$dists $(DOMAIN).pot stamp-po"; \
+	  dists="$$dists $(DOMAIN).pot"; \
 	fi; \
 	if test -f $(srcdir)/ChangeLog; then \
 	  dists="$$dists ChangeLog"; \
