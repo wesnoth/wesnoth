@@ -31,7 +31,7 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 namespace mp {
 
 create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
-	ui(disp, cfg, c, gamelist),
+	ui(disp, _("Create Game"), cfg, c, gamelist),
 
 	tooltip_manager_(disp.video()),
 	map_selection_(-1),
@@ -383,7 +383,7 @@ void create::layout_children(const SDL_Rect& rect)
 	int ypos = ca.y;
 
 	// Dialog title
-	ypos += gui::draw_dialog_title(xpos, ypos, &video(), _("Create Game")).h + border_size;
+	ypos += title().height() + border_size;
 
 	// Name Entry
 	name_entry_label_.set_location(xpos, ypos);

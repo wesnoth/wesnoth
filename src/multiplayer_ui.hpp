@@ -17,6 +17,7 @@
 #include "hotkeys.hpp"
 #include "network.hpp"
 #include "preferences.hpp"
+#include "widgets/label.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/textbox.hpp"
@@ -71,7 +72,8 @@ class ui : public gui::widget
 public:
 	enum result { CONTINUE, JOIN, OBSERVE, CREATE, PLAY, QUIT };
 
-	ui(display& d, const config& cfg, chat& c, config& gamelist);
+	ui(display& d, const std::string& title,
+			const config& cfg, chat& c, config& gamelist);
 
 	// Asks the multiplayer_ui to pump some data from the network, and then
 	// to process it. The actual processing will be left to the child
@@ -145,6 +147,9 @@ protected:
 
 	// Returns the current gamelist
 	config& gamelist() { return gamelist_; };
+
+	const gui::widget& title() const;
+
 private:
 	/** Set to true when the widgets are intialized. Allows delayed
 	 * initialization on first positioning. */
@@ -163,6 +168,7 @@ private:
 
 	config& gamelist_;
 
+	gui::label title_;
 	gui::textbox chat_textbox_;
 	gui::textbox entry_textbox_;
 

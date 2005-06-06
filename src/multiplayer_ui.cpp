@@ -147,7 +147,7 @@ std::string chat::format_message(const msg& message)
 	return "<" + message.user + ">" + message.message + "\n";
 }
 
-ui::ui(display& disp, const config& cfg, chat& c, config& gamelist) :
+ui::ui(display& disp, const std::string& title, const config& cfg, chat& c, config& gamelist) :
 	gui::widget(disp.video()),
 	disp_(disp),
 	initialized_(false),
@@ -159,6 +159,7 @@ ui::ui(display& disp, const config& cfg, chat& c, config& gamelist) :
 	chat_(c),
 	gamelist_(gamelist),
 
+	title_(disp.video(), title, font::SIZE_LARGE, font::TITLE_COLOUR),
 	chat_textbox_(disp.video(), 100, "", false),
 	entry_textbox_(disp.video(), 100),
 	users_menu_(disp.video(), std::vector<std::string>()),
@@ -341,6 +342,7 @@ void ui::process_network_connection(const network::connection sock)
 
 void ui::hide_children(bool hide)
 {
+	title_.hide(hide);
 	chat_textbox_.hide(hide);
 	entry_textbox_.hide(hide);
 	users_menu_.hide(hide);
@@ -348,6 +350,7 @@ void ui::hide_children(bool hide)
 
 void ui::layout_children(const SDL_Rect& rect)
 {
+	title_.set_location(xscale(11)+4, xscale(42) + 4);
 	users_menu_.set_width(xscale(159));
 	users_menu_.set_location(xscale(856), yscale(42));
 	users_menu_.set_height(yscale(715));
@@ -386,6 +389,12 @@ void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 
 	users_menu_.set_items(user_list_);
 }
+
+const gui::widget& ui::title() const
+{
+	return title_;
+}
+
 
 }
 

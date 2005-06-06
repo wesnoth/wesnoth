@@ -19,6 +19,7 @@
 #include "wml_separators.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "show_dialog.hpp"
 
 namespace {
 
@@ -101,7 +102,7 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 }
 
 lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
-	mp::ui(disp, cfg, c, gamelist),
+	mp::ui(disp, _("Game Lobby"), cfg, c, gamelist),
 
 	observe_game_(disp.video(), _("Observe Game")),
 	join_game_(disp.video(), _("Join Game")),
@@ -135,8 +136,9 @@ void lobby::layout_children(const SDL_Rect& rect)
 	create_game_.set_location(observe_game_.location().x + observe_game_.location().w + 5,yscale(7));
 	quit_game_.set_location(create_game_.location().x + create_game_.location().w + 5,yscale(7));
 
-	games_menu_.set_width(xscale(832));
-	games_menu_.set_location(xscale(12),yscale(42));
+	games_menu_.set_location(client_area().x, client_area().y + title().height());
+	games_menu_.set_measurements(client_area().w, client_area().h 
+			- title().height() - gui::ButtonVPadding);
 }
 
 void lobby::gamelist_updated(bool silent)

@@ -19,6 +19,7 @@
 #include "sound.hpp"
 #include "wesconfig.h"
 
+#include "SDL.h"
 #include "SDL_mixer.h"
 
 #include <iostream>
@@ -44,6 +45,8 @@ manager::manager(bool sound_on)
 	if(!sound_on) {
 		return;
 	}
+
+	SDL_Init(SDL_INIT_AUDIO);
 
 //sounds don't sound good on Windows unless the buffer size is 4k,
 //but this seems to cause crashes on other systems...

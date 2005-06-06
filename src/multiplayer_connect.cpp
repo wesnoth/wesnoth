@@ -476,7 +476,7 @@ void connect::side::resolve_random()
 connect::connect(display& disp, const config& game_config, const game_data& data,
 		chat& c, config& gamelist, const create::parameters& params,
 		mp::controller default_controller) :
-	mp::ui(disp, game_config, c, gamelist),
+	mp::ui(disp, _("Game Lobby"), game_config, c, gamelist),
 
 	game_data_(data),
 	level_(),
@@ -789,9 +789,6 @@ void connect::layout_children(const SDL_Rect& rect)
 	ai_.set_location(left, bottom-left_button->height());
 	waiting_label_.set_location(ai_.location().x + ai_.location().w + 8,
 	                            bottom-left_button->height() + 4);
-
-	// Title and labels
-	gui::draw_dialog_title(left,top,&video(),_("Game Lobby"));
 
 	type_title_label_.set_location(left+30, top+35);
 	faction_title_label_.set_location((left+145), top+35);

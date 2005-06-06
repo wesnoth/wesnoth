@@ -201,7 +201,7 @@ void update_whole_screen()
 }
 CVideo::CVideo() : bpp(0), fake_screen(false), help_string_(0), updatesLocked_(0)
 {
-	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
+	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 
 	if(res < 0) {
 		ERR_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
@@ -212,7 +212,7 @@ CVideo::CVideo() : bpp(0), fake_screen(false), help_string_(0), updatesLocked_(0
 CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
 		 : bpp(0), fake_screen(false), help_string_(0), updatesLocked_(0)
 {
-	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
+	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
 		ERR_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
 		throw CVideo::error();
