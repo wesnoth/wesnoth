@@ -8,7 +8,7 @@
 
 int game::id_num = 1;
 
-game::game(const player_map& info) : player_info_(&info), id_(id_num++), started_(false), description_(NULL), end_turn_(0), allow_observers_(true)
+game::game(const player_map& info) : player_info_(&info), id_(id_num++), sides_taken_(9), side_controllers_(9), started_(false), description_(NULL), end_turn_(0), allow_observers_(true)
 {}
 
 bool game::is_owner(network::connection player) const
@@ -117,50 +117,55 @@ void game::start_game()
 bool game::take_side(network::connection player, const config& cfg)
 {
 	wassert(is_member(player));
-
+	
+	// verify that side is a side id
 	const std::string& side = cfg["side"];
-
-	//if the player is already on a side
-	if(sides_.count(player))
+	ssize_t side_num;
+	try {
+		side_num = lexical_cast<ssize_t, std::string>(side);
+		if(side_num < 1 || side_num > 9)
+			return false;
+	}
+	catch(bad_lexical_cast& bad_lexical) {
 		return false;
-
+	}
+	
+	size_t side_index = static_cast<size_t>(side_num - 1);
+	
 	//if the side is already taken, see if we can give the player
 	//another side instead
-	if(sides_taken_.count(side)) {
-		std::cerr << "side '" << side << "' taken, searching for alternative side\n";
+	if(side_controllers_[side_index] == "human" || (sides_taken_[side_index] && side_controllers_[side_index] == "network")) {
 		const config::child_list& sides = level_.get_children("side");
 		for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
-			if((**i)["controller"] == "network" && sides_taken_.count((**i)["side"]) == 0) {
-				config new_cfg = cfg;
-				new_cfg["side"] = (**i)["side"];
-
-				const bool res = take_side(player,new_cfg);
-
-#if 0
-				//if there's another side available, then tell the player that they've
-				//had their side reassigned
-				if(res) {
-					config response;
-					config& reassign = response.add_child("reassign_side");
-					reassign["from"] = cfg["side"];
-					reassign["to"] = new_cfg["side"];
-					network::queue_data(response,player);
+			if((**i)["controller"] == "network") {
+				// don't allow players to take sides in games with invalid side numbers
+				try {
+					side_num = lexical_cast<ssize_t, std::string>((**i)["side"]);
+					if(side_num < 1 || side_num > 9)
+						return false;
 				}
-#endif
-
-				return res;
+				catch(bad_lexical_cast& bad_lexical) {
+					return false;
+				}
+				// check if the side is taken if not take it
+				side_index = static_cast<size_t>(side_num - 1);
+				if(!sides_taken_[side_index]) {
+					side_controllers_[side_index] = "network";
+					sides_.insert(std::pair<network::connection, size_t>(player, side_index));
+					sides_taken_[side_index] = true;
+					network::queue_data(cfg, players_.front());
+					return true;
+				}
 			}
 		}
+		// if we get here we couldn't find a side to take
+		return false;
 	}
-
-	sides_[player] = side;
-	sides_taken_.insert(side);
-
-	//send host notification of taking this side
-	if(players_.empty() == false) {
-		network::queue_data(cfg,players_.front());
-	}
-
+	// else take the current side
+	side_controllers_[side_index] = "network";
+	sides_.insert(std::pair<network::connection, size_t>(player, side_index));
+	sides_taken_[side_index] = true;
+	network::queue_data(cfg, players_.front());
 	return true;
 }
 
@@ -183,17 +188,38 @@ void game::update_side_data()
 			continue;
 		}
 
+		ssize_t side_num;
+		size_t side_index;
 		config::child_iterator sd;
 		for(sd = level_sides.first; sd != level_sides.second; ++sd) {
-			if ((**sd)["description"] == info->second.name()) {
-				break;
+			try {
+				side_num = lexical_cast<ssize_t, std::string>((**sd)["side"]);
+				if(side_num < 1 || side_num > 9)
+					continue;
 			}
-		}
-
-		if (sd != level_sides.second) {
-			//this user has a side. Updates the variables accordingly.
-			sides_taken_.insert((**sd)["side"]);
-			sides_[*player] = (**sd)["side"];
+			catch(bad_lexical_cast& bad_lexical) {
+				continue;
+			}
+			side_index = static_cast<size_t>(side_num - 1);
+			
+			if((**sd)["controller"] == "network") {
+				side_controllers_[side_index] = "network";
+				if((**sd)["description"] == info->second.name()) {
+					sides_.insert(std::pair<network::connection, size_t>(*player, side_index));
+					sides_taken_[side_index] = true;
+				}
+				else {
+					sides_taken_[side_index] = false;
+				}
+			}
+			else if((**sd)["controller"] == "ai") {
+				side_controllers_[side_index] = "ai";
+				sides_taken_[side_index] = true;
+			}
+			else if((**sd)["controller"] == "human"){
+				sides_taken_[side_index] = true;
+				side_controllers_[side_index] = "human";
+			}
 		}
 	}
 }
@@ -214,25 +240,29 @@ const std::string& game::transfer_side_control(const config& cfg)
 		static const std::string notfound = "Player not found";
 		return notfound;
 	}
-
 	const std::string& side = cfg["side"];
-
-	for(std::map<network::connection,std::string>::const_iterator j = sides_.begin(); j != sides_.end(); ++j) {
-		if(j->second == side) {
-			static const std::string already = "This side is already controlled by a player";
-			return already;
-		}
+	static const std::string invalid = "Invalid side number";
+	ssize_t side_num;
+	try {
+		side_num = lexical_cast<ssize_t, std::string>(side);
+		if(side_num < 1 || side_num > 9)
+			return invalid;
 	}
-
-	// FIXME:
-	// what is so bad about a player controlling more than one side?
-	if(sides_.count(*i) > 0) {
-		static const std::string already = "Player already controls a side";
+	catch(bad_lexical_cast& bad_lexical) {
+		return invalid;
+	}
+	const size_t nsides = level_.get_children("side").size();
+	if(side_num > nsides)
+		return invalid;
+	
+	const size_t side_index = static_cast<size_t>(side_num - 1);
+	
+	if(side_controllers_[side_index] == "network" && sides_taken_[side_index]) {
+		static const std::string already = "This side is already controlled by a player";
 		return already;
 	}
 
 	if(cfg["orphan_side"] != "yes") {
-		const size_t nsides = level_.get_children("side").size();
 		const size_t active_side = end_turn_/nsides + 1;
 
 		if(lexical_cast_default<size_t>(side,0) == active_side) {
@@ -240,6 +270,10 @@ const std::string& game::transfer_side_control(const config& cfg)
 			return not_during_turn;
 		}
 	}
+	
+	sides_.insert(std::pair<network::connection,size_t>(*i, side_index));
+	side_controllers_[side_index] = "network";
+	sides_taken_[side_index] = true;
 
 	config response;
 	config& change = response.add_child("change_controller");
@@ -252,16 +286,12 @@ const std::string& game::transfer_side_control(const config& cfg)
 	change["controller"] = "human";
 	network::queue_data(response,*i);
 
-	if(i != players_.begin()) {
-		sides_[*i] = side;
+	if(sides_.count(*i) < 2) {
+		//send everyone a message saying that the observer who is taking the side has quit
+		config observer_quit;
+		observer_quit.add_child("observer_quit").values["name"] = player;
+		send_data(observer_quit);
 	}
-
-	sides_taken_.insert(side);
-
-	//send everyone a message saying that the observer who is taking the side has quit
-	config observer_quit;
-	observer_quit.add_child("observer_quit").values["name"] = player;
-	send_data(observer_quit);
 
 	static const std::string success = "";
 	return success;
@@ -424,21 +454,22 @@ void game::remove_player(network::connection player, bool notify_creator)
 		players_.erase(itor);
 
 	bool observer = true;
-	std::map<network::connection,std::string>::iterator side = sides_.find(player);
-	if(side != sides_.end()) {
+	std::pair<std::multimap<network::connection,size_t>::const_iterator,
+	          std::multimap<network::connection,size_t>::const_iterator> sides = sides_.equal_range(player);
+	while(sides.first != sides.second) {
 		//send the host a notification of removal of this side
 		if(notify_creator && players_.empty() == false) {
 			config drop;
-			drop["side_drop"] = side->second;
-			network::queue_data(drop,players_.front());
+			drop["side_drop"] = lexical_cast<std::string, size_t>(sides.first->second + 1);
+			network::queue_data(drop, players_.front());
 		}
-
-		sides_taken_.erase(side->second);
-		sides_.erase(side);
-
+		sides_taken_[sides.first->second] = false;
 		observer = false;
+		++sides.first;
 	}
-
+	if(!observer)
+		sides_.erase(player);
+	
 	send_user_list();
 
 	const player_map::const_iterator pl = player_info_->find(player);
@@ -490,25 +521,14 @@ void game::send_data(const config& data, network::connection exclude)
 
 bool game::player_on_team(const std::string& team, network::connection player) const
 {
-	//if the player is the game host, then iterate over all the sides and if any of
-	//the sides controlled by the game host are on this team, then the game host
-	//is on this team
-	if(players_.empty() == false && player == players_.front()) {
-		const config::child_list& sides = level_.get_children("side");
-		for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
-			if((**i)["controller"] == "human" && (**i)["team_name"] == team) {
-				return true;
-			}
-		}
-	}
-
-	//hosts other than the game host
-	const std::map<network::connection,std::string>::const_iterator side = sides_.find(player);
-	if(side != sides_.end()) {
-		const config* const side_cfg = level_.find_child("side","side",side->second);
+	std::pair<std::multimap<network::connection,size_t>::const_iterator,
+	          std::multimap<network::connection,size_t>::const_iterator> sides = sides_.equal_range(player);
+	while(sides.first != sides.second) {
+		const config* const side_cfg = level_.find_child("side","side", lexical_cast<std::string, size_t>(sides.first->second + 1));
 		if(side_cfg != NULL && (*side_cfg)["team_name"] == team) {
 			return true;
 		}
+		++sides.first;
 	}
 
 	return false;
