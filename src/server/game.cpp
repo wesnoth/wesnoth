@@ -217,16 +217,6 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 	const std::string& side = cfg["side"];
 
-	std::set<std::string>::const_iterator k;
-	for(k = sides_taken_.begin(); k != sides_taken_.end(); ++k) {
-		if(*k == side) break;
-	}
-
-	if(k == sides_taken_.end()) {
-		static const std::string notfound = "Side not found";
-		return notfound;
-	}
-
 	for(std::map<network::connection,std::string>::const_iterator j = sides_.begin(); j != sides_.end(); ++j) {
 		if(j->second == side) {
 			static const std::string already = "This side is already controlled by a player";
