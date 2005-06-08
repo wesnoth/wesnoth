@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-05 17:14+0200\n"
-"PO-Revision-Date: 2005-06-05 20:38+0200\n"
+"PO-Revision-Date: 2005-06-06 22:59+0200\n"
 "Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1600,7 +1600,7 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Satunnainen kartta jossa hiekka on pääasiallinen maato. Huomaa että "
+"Satunnainen kartta jossa hiekka on pääasiallinen maasto. Huomaa että "
 "satunnaiset kartat ovat usein epätasaisia, mutta jos sinulla on aikaa voit "
 "generoida uuden kunnes saat hyvän."
 
@@ -1615,9 +1615,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Satunnainen kartta jossa suo on pääasiallinen maato. Huomaa että satunnaiset "
-"kartat ovat usein epätasaisia, mutta jos sinulla on aikaa voit generoida "
-"uuden kunnes saat hyvän."
+"Satunnainen kartta jossa suo on pääasiallinen maasto. Huomaa että "
+"satunnaiset kartat ovat usein epätasaisia, mutta jos sinulla on aikaa voit "
+"generoida uuden kunnes saat hyvän."
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
@@ -2922,11 +2922,11 @@ msgstr "Lopeta vuoro"
 
 #: data/themes/default.cfg:167 src/playturn.cpp:2224 src/unit.cpp:1079
 msgid "HP"
-msgstr "Kesto (HP)"
+msgstr "Kesto"
 
 #: data/themes/default.cfg:176 src/playturn.cpp:2048 src/playturn.cpp:2225
 msgid "XP"
-msgstr "Kokemus (XP)"
+msgstr "Kok. (XP)"
 
 #: data/themes/default.cfg:186
 msgid "gold"
@@ -3021,7 +3021,7 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"Voit käyttää yksiköitä aikaisemmista skenaariosta valitsemalla 'kustu "
+"Voit käyttää yksiköitä aikaisemmista skenaariosta valitsemalla 'kutsu "
 "veteraaniyksikkö' pelin valikosta. Kutsumalla samat yksiköt uudestaan ja "
 "uudestaan voit luoda tehokkaan ja kokeneen armeijan."
 
@@ -3047,7 +3047,7 @@ msgstr ""
 "Mahdollisuus osua yksikköön riippuu yleensä yksikön puolustuksesta siinä "
 "maastossa missä se on. Taikahyökkäyksillä on kuitenkin aina 70% mahdollisuus "
 "osua hyökätessä ja puolustaessa ja tarkka-ampuja -hyökkäyksillä on aina "
-"vähintään 60% mahdollisuus osua <italic>hyökätessä</italic>."
+"vähintään 60% mahdollisuus osua hyökätessä."
 
 #: data/tips.cfg:9
 msgid ""
@@ -3651,11 +3651,11 @@ msgstr ""
 
 #: data/translations/english.cfg:132
 msgid "$name's Bridge,$name's Crossing"
-msgstr "$name|:n silta,$name|.n ylityspaikka"
+msgstr "$name|in silta,$name|in ylityspaikka"
 
 #: data/translations/english.cfg:133
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr "$name|:ntie,$name|:n läpikulku,$name|:n polku"
+msgstr "$name|intie,$name|in läpikulku,$name|in polku"
 
 #: data/translations/english.cfg:134
 msgid "$name River,River $name"
@@ -3663,7 +3663,7 @@ msgstr "$name|joki,$name -joki"
 
 #: data/translations/english.cfg:135
 msgid "$name Forest,$name's Forest"
-msgstr "$name metsä,$name|:n metsä"
+msgstr "$name|metsä,$name|in metsä"
 
 #: data/translations/english.cfg:136
 msgid "$name Lake"
@@ -3671,11 +3671,11 @@ msgstr "$name|järvi"
 
 #: data/translations/english.cfg:137
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr "$name|kylä,$name|:n kirkonkylä,$name|pitäjä"
+msgstr "$name|kylä,$name|in kirkonkylä,$name|pitäjä"
 
 #: data/translations/english.cfg:138
 msgid "$name|harbor,$name|port"
-msgstr "$name|:n satama,$name|:n satama"
+msgstr "$name|in satama,$name|in satama"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
@@ -5877,7 +5877,7 @@ msgid ""
 "great speed, yet can inflict substantial damage in battle."
 msgstr ""
 "Hiisiritarit ovat susiratsastajien eliitti. He matkustavat nopeasti ja "
-"voivat aiheuttaa huomattaa vahinkoa taistelussa."
+"voivat aiheuttaa huomattavaa vahinkoa taistelussa."
 
 #: data/units/Goblin_Pillager.cfg:3
 msgid "Goblin Pillager"
@@ -7917,7 +7917,7 @@ msgstr "Valkea Velhotar"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
-msgstr "Sudenratsastaja"
+msgstr "Susiratsastaja"
 
 #: data/units/Wolf_Rider.cfg:18
 msgid ""
@@ -7926,7 +7926,7 @@ msgid ""
 "as fast scouts for the goblinoid army. Raised in the orcs' dark caverns, "
 "Wolf Riders can brave even the mountains, unlike most other mounted units."
 msgstr ""
-"Koska hiidet ovat örkkejä pieempiä ja heikompia, hiidet kouluttavat suuria "
+"Koska hiidet ovat örkkejä pienempiä ja heikompia, hiidet kouluttavat suuria "
 "susia ratsuikseen luoden tehokkaan susiratsastajaparin jotka toimivat "
 "hiisirotujen armeijossa nopeina tiedustelijoina. Örkkien pimeissä luolissa "
 "kasvatut sudet selviävät jopa vuoristossa toisin kuin suurin osa ratsuväestä."
@@ -8246,7 +8246,7 @@ msgstr "(molempien pitäisi selvitä)"
 
 #: src/actions.cpp:657
 msgid "% Pr[kills/killed by/both survive]"
-msgstr "% Pr(tapot/tappaja/molemmat selviävät)"
+msgstr "% Pr(tappaa/kuolee/molemmat selviävät)"
 
 #: src/actions.cpp:859 src/actions.cpp:1025 src/display.cpp:1038
 msgid "poisoned"
@@ -8729,7 +8729,7 @@ msgstr "Tappio:"
 
 #: src/help.cpp:1056
 msgid "Advances to: "
-msgstr "Kehittyy:"
+msgstr "Tästä kehittyy "
 
 #: src/help.cpp:1077
 msgid "Abilities: "
@@ -8872,7 +8872,7 @@ msgstr "Korkeus:"
 
 #: src/mapgen_dialog.cpp:89
 msgid "Number of Hills:"
-msgstr "Kylien määrä:"
+msgstr "Kukkuloiden määrä:"
 
 #: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
@@ -8982,7 +8982,7 @@ msgstr "Kultaa"
 
 #: src/multiplayer_connect.cpp:498
 msgid "Computer vs Computer"
-msgstr " Tietokone vastaan Tietokone "
+msgstr "Tietokone vastaan Tietokone "
 
 #: src/multiplayer_connect.cpp:499
 msgid "I'm Ready"
@@ -9252,7 +9252,7 @@ msgstr ")"
 
 #: src/multiplayer_wait.cpp:375 src/playturn.cpp:1872
 msgid "unit^Gold"
-msgstr "Kulta"
+msgstr "Kultaa"
 
 #: src/playlevel.cpp:602 src/playlevel.cpp:871
 msgid "The file you have tried to load is corrupt"
@@ -9288,7 +9288,7 @@ msgstr "vuorossa"
 
 #: src/playlevel.cpp:845
 msgid "Turns finished early: "
-msgstr "Ajoissa lopetetut vuorot:"
+msgstr "Jäljelle jääneet vuorot:"
 
 #: src/playlevel.cpp:847
 msgid "Bonus: "
@@ -9317,7 +9317,7 @@ msgstr "Olet voittaja!"
 
 #: src/playlevel.cpp:865
 msgid "Scenario Report"
-msgstr "Skenaarionraportti:"
+msgstr "Skenaarioraportti:"
 
 #: src/playlevel.cpp:886
 msgid ""
@@ -9540,11 +9540,11 @@ msgstr "Otettu vahinko"
 
 #: src/playturn.cpp:2358
 msgid "Damage Inflicted (EV)"
-msgstr "Tehty vahinko (Keskiarvo)"
+msgstr "Odotettu tehty vahinko"
 
 #: src/playturn.cpp:2365
 msgid "Damage Taken (EV)"
-msgstr "Otettu vahinko (Keskiarvo)"
+msgstr "Odotettu otettu vahinko"
 
 #: src/playturn.cpp:2371
 msgid "Statistics"
