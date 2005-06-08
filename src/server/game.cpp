@@ -153,7 +153,9 @@ bool game::take_side(network::connection player, const config& cfg)
 					side_controllers_[side_index] = "network";
 					sides_.insert(std::pair<network::connection, size_t>(player, side_index));
 					sides_taken_[side_index] = true;
-					network::queue_data(cfg, players_.front());
+					config new_cfg = cfg;
+					new_cfg["side"] = (**i)["side"];
+					network::queue_data(new_cfg, players_.front());
 					return true;
 				}
 			}
@@ -172,6 +174,7 @@ bool game::take_side(network::connection player, const config& cfg)
 void game::update_side_data()
 {
 	sides_taken_.clear();
+	sides_taken_.resize(9);
 	sides_.clear();
 
 	const config::child_itors level_sides = level_.child_range("side");
@@ -204,7 +207,7 @@ void game::update_side_data()
 			
 			if((**sd)["controller"] == "network") {
 				side_controllers_[side_index] = "network";
-				if((**sd)["description"] == info->second.name()) {
+				if((**sd)["user_description"] == info->second.name()) {
 					sides_.insert(std::pair<network::connection, size_t>(*player, side_index));
 					sides_taken_[side_index] = true;
 				}
@@ -216,7 +219,7 @@ void game::update_side_data()
 				side_controllers_[side_index] = "ai";
 				sides_taken_[side_index] = true;
 			}
-			else if((**sd)["controller"] == "human"){
+			else if((**sd)["controller"] == "human") {
 				sides_taken_[side_index] = true;
 				side_controllers_[side_index] = "human";
 			}
@@ -270,17 +273,17 @@ const std::string& game::transfer_side_control(const config& cfg)
 			return not_during_turn;
 		}
 	}
-	
-	sides_.insert(std::pair<network::connection,size_t>(*i, side_index));
 	side_controllers_[side_index] = "network";
 	sides_taken_[side_index] = true;
-
+	sides_.insert(std::pair<const network::connection,size_t>(*i, side_index));
+	
+	// send a response to the host and to the new controller
 	config response;
 	config& change = response.add_child("change_controller");
 
 	change["side"] = side;
-	change["controller"] = "network";
 
+	change["controller"] = "network";
 	network::queue_data(response,players_.front());
 
 	change["controller"] = "human";
@@ -292,7 +295,6 @@ const std::string& game::transfer_side_control(const config& cfg)
 		observer_quit.add_child("observer_quit").values["name"] = player;
 		send_data(observer_quit);
 	}
-
 	static const std::string success = "";
 	return success;
 }
@@ -450,6 +452,7 @@ void game::remove_player(network::connection player, bool notify_creator)
 {
 	const std::vector<network::connection>::iterator itor =
 	             std::find(players_.begin(),players_.end(),player);
+	
 	if(itor != players_.end())
 		players_.erase(itor);
 

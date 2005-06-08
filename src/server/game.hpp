@@ -110,7 +110,7 @@ private:
 	static int id_num;
 	int id_;
 	std::vector<network::connection> players_;
-	std::map<network::connection,size_t> sides_;
+	std::multimap<network::connection,size_t> sides_;
 	std::vector<bool> sides_taken_;
 	std::vector<std::string> side_controllers_;
 	bool started_;
