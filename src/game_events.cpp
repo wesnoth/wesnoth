@@ -43,6 +43,7 @@
 #define WRN_NG LOG_STREAM(warn, engine)
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_DP LOG_STREAM(info, display)
+#define ERR_CF LOG_STREAM(err, config)
 
 namespace {
 
@@ -513,6 +514,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				if(i==0){
 					src.x = atoi(xvals[i].c_str())-1;
 					src.y = atoi(yvals[i].c_str())-1;
+					if (!game_map->on_board(src)) {
+						ERR_CF << "invalid move_unit_fake source: " << src << '\n';
+						break;
+					}
 					continue;
 				}
 				shortest_path_calculator calc(dummy_unit,
@@ -524,10 +529,15 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				dst.x = atoi(xvals[i].c_str())-1;
 				dst.y = atoi(yvals[i].c_str())-1;
+				if (!game_map->on_board(dst)) {
+					ERR_CF << "invalid move_unit_fake destination: " << dst << '\n';
+					break;
+				}
 
-				paths::route route = a_star_search(src, dst, 10000, &calc, game_map->x(), game_map->y());
-				unit_display::move_unit(*screen, *game_map, route.steps,
-						dummy_unit,status_ptr->get_time_of_day(), *units, *teams);
+				paths::route route = a_star_search(src, dst, 10000, &calc,
+				                                   game_map->x(), game_map->y());
+				unit_display::move_unit(*screen, *game_map, route.steps, dummy_unit,
+				                        status_ptr->get_time_of_day(), *units, *teams);
 
 				src = dst;
 			}
