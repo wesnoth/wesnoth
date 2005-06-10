@@ -2283,7 +2283,7 @@ void help_browser::handle_event(const SDL_Event &event)
 				const topic *t = find_topic(toplevel_, ref);
 				if (t == NULL) {
 					std::stringstream msg;
-					msg << "Reference to unknown topic: '" << ref << "'.";
+					msg << _("Reference to unknown topic: ") << "'" << ref << "'.";
 					gui::show_dialog(disp_, NULL, "", msg.str(), gui::OK_ONLY);
 					update_cursor();
 				}
@@ -2705,7 +2705,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	}
 	catch (parse_error e) {
 		std::stringstream msg;
-		msg << "Parse error when parsing help text: '" << e.message << "'";
+		msg << _("Parse error when parsing help text: ") << "'" << e.message << "'";
 		gui::show_dialog(disp, NULL, "", msg.str(), gui::OK_ONLY);
 	}
 }

@@ -2,6 +2,7 @@
 
 #include "serialization/binary_wml.hpp"
 #include "config.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "network_worker.hpp"
@@ -62,7 +63,7 @@ connection_details& get_connection_details(network::connection handle)
 {
 	const connection_map::iterator i = connections.find(handle);
 	if(i == connections.end()) {
-		throw network::error("invalid network handle");
+		throw network::error(_("invalid network handle"));
 	}
 
 	return i->second;
@@ -95,7 +96,7 @@ void check_error()
 	if(sock) {
 		for(connection_map::const_iterator i = connections.begin(); i != connections.end(); ++i) {
 			if(i->second.sock == sock) {
-				throw network::error("Socket error",i->first);
+				throw network::error(_("Socket error"),i->first);
 			}
 		}
 	}
@@ -413,7 +414,7 @@ connection accept_connection()
 		if(res == -1) {
 			SDLNet_TCP_Close(sock);
 
-			throw network::error("Could not add socket to socket set");
+			throw network::error(_("Could not add socket to socket set"));
 		}
 
 
@@ -424,7 +425,7 @@ connection accept_connection()
 		const int nbytes = SDLNet_TCP_Send(sock,buf,4);
 		if(nbytes != 4) {
 			SDLNet_TCP_Close(sock);
-			throw network::error("Could not send initial handshake");
+			throw network::error(_("Could not send initial handshake"));
 		}
 
 		waiting_sockets.insert(connect);
