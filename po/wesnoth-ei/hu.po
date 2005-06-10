@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-31 21:49+0200\n"
+"POT-Creation-Date: 2005-06-10 10:34+0200\n"
 "PO-Revision-Date: 2005-06-05 14:31+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -64,7 +64,7 @@ msgstr "Weldyn felé"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:34
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:34
 #: data/scenarios/Eastern_Invasion/Reject.cfg:32
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:39
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:30
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:30
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:42
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:77
@@ -111,6 +111,7 @@ msgstr "Eljuttatod Gweddry-t Weldynbe"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:108
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:69
 #: data/scenarios/Eastern_Invasion/Reject.cfg:118
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:207
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:81
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:120
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:183
@@ -133,6 +134,7 @@ msgstr "Gweddry elesik"
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:111
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:73
 #: data/scenarios/Eastern_Invasion/Reject.cfg:122
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:211
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:187
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:92
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:81
@@ -151,6 +153,7 @@ msgstr "Dacyn elesik"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:112
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:77
 #: data/scenarios/Eastern_Invasion/Reject.cfg:126
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:215
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:96
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:85
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:68
@@ -306,25 +309,21 @@ msgstr "Az őrök most meg vannak zavarodva! Itt az idő a menekülésre!"
 msgid "Huh? Who's there, who said that?"
 msgstr "Hehh? Ki mondta ezt?"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:424
-msgid "So, you want to resist me? Fine, but prepare to die!"
-msgstr "Szóval ellen akarsz állni? Nagyszerű, de készülj a halálodra!"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:448
+#: data/scenarios/Eastern_Invasion/Captured.cfg:430
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:181
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:372
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:236
 msgid "Holy Water"
 msgstr "Szentelt víz"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:451
+#: data/scenarios/Eastern_Invasion/Captured.cfg:433
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:184
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:375
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:239
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr "Ez a víz minden fegyveredet szent erővel tölti el, amíg csak élsz."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:452
+#: data/scenarios/Eastern_Invasion/Captured.cfg:434
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:185
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:376
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:240
@@ -332,17 +331,13 @@ msgid "I am not suited to using this item! Let another take it."
 msgstr ""
 "Én nem tudok mit kezdeni ezzel a tárggyal! Keress mást aki hasznát veszi!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:484
+#: data/scenarios/Eastern_Invasion/Captured.cfg:474
 msgid ""
 "Good! We have escaped these accursed caves! Let's get out of these mountains "
 "as quickly as possible!"
 msgstr ""
 "Végre, kijutottunk ezekből az átkozott barlangokból. Amilyen gyorsan csak "
 "lehet, hagyjuk el ezeket a hegyeket."
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:488
-msgid "I will come with you and help you on your quest, whatever it is."
-msgstr "Veled jövök és segítek a küldetésedben, akármi legyen is az."
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:4
 msgid "The Crossing"
@@ -1226,53 +1221,37 @@ msgstr ""
 msgid "The Drowned Plains"
 msgstr "Az elárasztott puszták"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:25
-msgid ""
-"\n"
-"Victory:\n"
-"@Defeat Khrakrahs the Skeletal Dragon\n"
-"Defeat:\n"
-"#Death of Gweddry\n"
-"#Death of Dacyn\n"
-"#Death of Owaec\n"
-"#Turns run out"
-msgstr ""
-"\n"
-"Győzöl, ha:\n"
-"@Legyőzöd Khrakrahs-t a csontsárkányt\n"
-"Veszítesz, ha:\n"
-"#Gweddry elesik\n"
-"#Dacyn elesik\n"
-"#Owaec elesik\n"
-"#Körök számát túlléped"
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:131
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:122
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:160
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:151
 msgid "There are still humans in this village! They can help us."
 msgstr "Még vannak emberek ebben a faluban! Segítségünkre lehetnek."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:167
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:174
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:158
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:165
 msgid "Villager"
 msgstr "Falusi"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:193
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:184
 msgid ""
 "The undead have killed all the villagers here, but they left their valuables."
 msgstr ""
 "Az élőholtak minden falusit lemészároltak itt, de itt hagyták az "
 "értéktárgyaikat."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:235
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:203
+msgid "Defeat Khrakrahs, the Skeletal Dragon"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:249
 msgid "What the... swamps? These were fertile plains when I was here last!"
 msgstr ""
 "Mi a .... mocsarak? Mikor utoljára jártam itt ezek a földek még termékenyek "
 "voltak!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:239
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:253
 msgid ""
 "The lich-lord Mal-Ravanal must have flooded the valley. The undead like the "
 "swamp. It is death, decay, everything that they are themselves."
@@ -1280,7 +1259,7 @@ msgstr ""
 "A villi-úr Mal-Ravanal minden bizonnyal elárasztotta a völgyet. A mocsár "
 "olyan mint az élőholtak. Halál, rothadás, minden ami rájuk emlékeztet."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:243
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:257
 msgid ""
 "I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
 "swamp, we can't e'en see any 'nemies."
@@ -1288,15 +1267,15 @@ msgstr ""
 "Gondolom át kell kelnünk rajta... uhh. És ez a mocsárból áradó köd, egy "
 "ellenségünket se vehetjük észre."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:247
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:261
 msgid "Findshhhh... dyhhhh... slayhhhh..."
 msgstr "Kereshhhhhétek... öljhhhhhétek... vághhhhhjátok... őhhhhhket..."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:251
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:265
 msgid "What is that?!?"
 msgstr "Mi ez?!?"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:255
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:269
 msgid ""
 "I do not know, but it sounded like the dragon Khrakrahs. When it was alive, "
 "it was the most powerful creature ever, living in the Eastern Mountains. It "
@@ -1306,7 +1285,7 @@ msgstr ""
 "élt, a legerősebb lény volt ami valaha is a Keleti Hegységekben lakozott. "
 "Biztosan elmenekült, amikor az élőhalottak jöttek."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:320
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:334
 msgid "Undead, undead are rising out of the ground!"
 msgstr "Élőholtak! Élőholtak emelkednek ki a föld repedéseiből!"
 
@@ -2380,6 +2359,31 @@ msgstr ""
 "újabb támadás, és Gweddry emberei kezdtek óvatlanná válni. Majd egy "
 "hajnalban Gweddry-t és embereit az éjszakai őr elkeseredett kiáltása "
 "riasztotta fel..."
+
+#~ msgid "So, you want to resist me? Fine, but prepare to die!"
+#~ msgstr "Szóval ellen akarsz állni? Nagyszerű, de készülj a halálodra!"
+
+#~ msgid "I will come with you and help you on your quest, whatever it is."
+#~ msgstr "Veled jövök és segítek a küldetésedben, akármi legyen is az."
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat Khrakrahs the Skeletal Dragon\n"
+#~ "Defeat:\n"
+#~ "#Death of Gweddry\n"
+#~ "#Death of Dacyn\n"
+#~ "#Death of Owaec\n"
+#~ "#Turns run out"
+#~ msgstr ""
+#~ "\n"
+#~ "Győzöl, ha:\n"
+#~ "@Legyőzöd Khrakrahs-t a csontsárkányt\n"
+#~ "Veszítesz, ha:\n"
+#~ "#Gweddry elesik\n"
+#~ "#Dacyn elesik\n"
+#~ "#Owaec elesik\n"
+#~ "#Körök számát túlléped"
 
 #~ msgid "The Cells"
 #~ msgstr "A cellák"

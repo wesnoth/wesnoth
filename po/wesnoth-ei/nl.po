@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-31 21:49+0200\n"
+"POT-Creation-Date: 2005-06-10 10:34+0200\n"
 "PO-Revision-Date: 2005-03-22 14:52+0200\n"
 "Last-Translator: Onne <onne@grammex.com>\n"
 "Language-Team: Dutch <onne@grammex.com>\n"
@@ -62,7 +62,7 @@ msgstr "Weldyn Naderen"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:34
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:34
 #: data/scenarios/Eastern_Invasion/Reject.cfg:32
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:39
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:30
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:30
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:42
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:77
@@ -109,6 +109,7 @@ msgstr "Breng Gweddry naar Weldyn"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:108
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:69
 #: data/scenarios/Eastern_Invasion/Reject.cfg:118
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:207
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:81
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:120
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:183
@@ -131,6 +132,7 @@ msgstr "Dood van Gweddry"
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:111
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:73
 #: data/scenarios/Eastern_Invasion/Reject.cfg:122
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:211
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:187
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:92
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:81
@@ -149,6 +151,7 @@ msgstr "Dood van Dacyn"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:112
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:77
 #: data/scenarios/Eastern_Invasion/Reject.cfg:126
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:215
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:96
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:85
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:68
@@ -297,25 +300,21 @@ msgstr "De wachters zijn afgeleid! Nu is het tijd om te ontsnappen!"
 msgid "Huh? Who's there, who said that?"
 msgstr "Huh? Wie is daar? Wie zei dat?"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:424
-msgid "So, you want to resist me? Fine, but prepare to die!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:448
+#: data/scenarios/Eastern_Invasion/Captured.cfg:430
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:181
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:372
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:236
 msgid "Holy Water"
 msgstr "Wijwater"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:451
+#: data/scenarios/Eastern_Invasion/Captured.cfg:433
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:184
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:375
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:239
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr "Dit water zal al je wapens heilig maken!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:452
+#: data/scenarios/Eastern_Invasion/Captured.cfg:434
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:185
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:376
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:240
@@ -324,18 +323,13 @@ msgstr ""
 "Ik ben niet in staat dit voorwerp te gebruiken. Laat een ander er wel bij "
 "varen."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:484
+#: data/scenarios/Eastern_Invasion/Captured.cfg:474
 msgid ""
 "Good! We have escaped these accursed caves! Let's get out of these mountains "
 "as quickly as possible!"
 msgstr ""
 "Goed! We zijn eindelijk uit deze vervloekte grotten ontsnapt! Nu nog snel "
 "uit deze bergen!"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:488
-msgid "I will come with you and help you on your quest, whatever it is."
-msgstr ""
-"Ik zal u vergezellen en u helpen met uw zoektocht, wat die ook moge wezen."
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:4
 msgid "The Crossing"
@@ -1224,50 +1218,34 @@ msgstr ""
 msgid "The Drowned Plains"
 msgstr "Het Verdronken Land"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:25
-msgid ""
-"\n"
-"Victory:\n"
-"@Defeat Khrakrahs the Skeletal Dragon\n"
-"Defeat:\n"
-"#Death of Gweddry\n"
-"#Death of Dacyn\n"
-"#Death of Owaec\n"
-"#Turns run out"
-msgstr ""
-"\n"
-"Overwinning:\n"
-"@Versla Khrakrahs de Skeletdraak\n"
-"Nederlaag:\n"
-"#Dood van Gweddry\n"
-"#Dood van Dacyn\n"
-"#Dood van Owaec\n"
-"#Beurten zijn om"
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:131
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:122
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:160
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:151
 msgid "There are still humans in this village! They can help us."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:167
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:174
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:158
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:165
 msgid "Villager"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:193
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:184
 msgid ""
 "The undead have killed all the villagers here, but they left their valuables."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:235
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:203
+msgid "Defeat Khrakrahs, the Skeletal Dragon"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:249
 msgid "What the... swamps? These were fertile plains when I was here last!"
 msgstr ""
 "Wat... moeras? Dit was een vruchtbare vlakte de laatste keer dat ik hier was!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:239
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:253
 msgid ""
 "The lich-lord Mal-Ravanal must have flooded the valley. The undead like the "
 "swamp. It is death, decay, everything that they are themselves."
@@ -1276,21 +1254,21 @@ msgstr ""
 "levende doden houden van moeras. Het is dood, ontbinding, alles wat ze graag "
 "hebben en zelf zijn."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:243
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:257
 msgid ""
 "I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
 "swamp, we can't e'en see any 'nemies."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:247
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:261
 msgid "Findshhhh... dyhhhh... slayhhhh..."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:251
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:265
 msgid "What is that?!?"
 msgstr "Wat is dat?!?"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:255
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:269
 #, fuzzy
 msgid ""
 "I do not know, but it sounded like the dragon Khrakrahs. When it was alive, "
@@ -1301,7 +1279,7 @@ msgstr ""
 "Het moet vanuit de oostelijke bergen naar hier zijn gevlucht toen de levende "
 "doden opmarcheerden."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:320
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:334
 #, fuzzy
 msgid "Undead, undead are rising out of the ground!"
 msgstr "Mijn heer, de levende doden herrijzen uit de spleten in de grond!"
@@ -2369,6 +2347,29 @@ msgstr ""
 "waren. Er vonden geen verdwijningen meer plaats gedurende verschillende "
 "weken, en de aandacht van Gweddrys manschappen begon te verslappen, toen op "
 "een dag in de vroege ochtend de kreten van een van de wachters weerklonken..."
+
+#~ msgid "I will come with you and help you on your quest, whatever it is."
+#~ msgstr ""
+#~ "Ik zal u vergezellen en u helpen met uw zoektocht, wat die ook moge wezen."
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat Khrakrahs the Skeletal Dragon\n"
+#~ "Defeat:\n"
+#~ "#Death of Gweddry\n"
+#~ "#Death of Dacyn\n"
+#~ "#Death of Owaec\n"
+#~ "#Turns run out"
+#~ msgstr ""
+#~ "\n"
+#~ "Overwinning:\n"
+#~ "@Versla Khrakrahs de Skeletdraak\n"
+#~ "Nederlaag:\n"
+#~ "#Dood van Gweddry\n"
+#~ "#Dood van Dacyn\n"
+#~ "#Dood van Owaec\n"
+#~ "#Beurten zijn om"
 
 #~ msgid "The Cells"
 #~ msgstr "De Cellen"

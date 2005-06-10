@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-05 17:14+0200\n"
+"POT-Creation-Date: 2005-06-10 10:28+0200\n"
 "PO-Revision-Date: 2005-05-25 18:50+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
@@ -1589,6 +1589,12 @@ msgstr ""
 msgid "4p - King of the Hill"
 msgstr "Le roi de la colline"
 
+#: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
+msgid ""
+"Who will remain standing as King of the Hill? Best played as a free-for-all "
+"(with everyone fighting everyone else)."
+msgstr ""
+
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
 msgstr ""
@@ -1607,10 +1613,18 @@ msgstr ""
 msgid "4p - Siege Castles"
 msgstr "Châteaux assiégés"
 
+#: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
+msgid "Take control of this huge river delta."
+msgstr ""
+
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
 #, fuzzy
 msgid "4p - The Valley of Death"
 msgstr "La vallée de la mort"
+
+#: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:5
+msgid "Can you defeat all enemies and declare victory in this desolate valley?"
+msgstr ""
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -1628,6 +1642,10 @@ msgstr ""
 msgid "5p - Forest of Fear"
 msgstr "La forêt de la peur"
 
+#: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
+msgid "In this mixed landscape, five armies battle for supremacy."
+msgstr ""
+
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 #, fuzzy
 msgid "6p - Hexcake"
@@ -1642,10 +1660,26 @@ msgstr "Jeux d'équipe en 2 contre 2 ou 3 contre 3"
 msgid "7p - Battle World"
 msgstr "Un monde de bataille"
 
+#: data/scenarios/multiplayer/7p_battleworld.cfg:9
+msgid ""
+"Up to 7 armies thrash about in this peaceful land. Prepare for a long battle."
+msgstr ""
+
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
-#: data/scenarios/multiplayer/Random_Scenario.cfg:16
+#: data/scenarios/multiplayer/Random_Scenario.cfg:17
 msgid "Random map"
 msgstr "Carte aléatoire"
+
+#: data/scenarios/multiplayer/Random_Scenario.cfg:4
+#, fuzzy
+msgid ""
+"Randomly generated map. Note: random maps are often unbalanced, but if you "
+"have time, you can regenerate them until you get a good one."
+msgstr ""
+"Une carte aléatoire comportant du sable en tant que terrain principal. Note: "
+"les cartes aléatoires ne sont pas toujours équilibrées, mais avec un peu de "
+"temps, vous pouvez les régénérer jusqu'à en obtenir une qui soit "
+"satisfaisante."
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
@@ -2860,7 +2894,7 @@ msgid "Underground"
 msgstr "Sous terre"
 
 #: data/terrain.cfg:7 src/multiplayer_create.cpp:51
-#: src/multiplayer_lobby.cpp:182
+#: src/multiplayer_lobby.cpp:184
 msgid "Shroud"
 msgstr "Voile"
 
@@ -4125,7 +4159,7 @@ msgstr ""
 "leurs adversaires."
 
 #: data/units/Assassin.cfg:34 data/units/Assassin.cfg:113
-#: data/units/Dwarvish_Thunderer.cfg:20
+#: data/units/Dwarvish_Thunderer.cfg:38
 #: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Orcish_Archer.cfg:21
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Slayer.cfg:19
 #: data/units/Poacher.cfg:25 data/units/Rogue.cfg:21 data/units/Rogue.cfg:81
@@ -4154,10 +4188,10 @@ msgstr "dague"
 #: data/units/Duelist.cfg:34 data/units/Dwarvish_Berserker.cfg:34
 #: data/units/Dwarvish_Fighter.cfg:23 data/units/Dwarvish_Lord.cfg:28
 #: data/units/Dwarvish_Lord.cfg:61 data/units/Dwarvish_Steelclad.cfg:29
-#: data/units/Dwarvish_Thunderer.cfg:21
+#: data/units/Dwarvish_Thunderer.cfg:39
 #: data/units/Dwarvish_Thunderguard.cfg:21
-#: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:24
-#: data/units/Elvish_Archer.cfg:103 data/units/Elvish_Avenger.cfg:25
+#: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:46
+#: data/units/Elvish_Archer.cfg:147 data/units/Elvish_Avenger.cfg:25
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:25
 #: data/units/Elvish_Champion.cfg:23 data/units/Elvish_Fighter.cfg:25
 #: data/units/Elvish_Hero.cfg:23 data/units/Elvish_High_Lord.cfg:22
@@ -4284,7 +4318,7 @@ msgstr ""
 #: data/units/Drake_Clasher.cfg:33 data/units/Drake_Enforcer.cfg:24
 #: data/units/Drake_Flameheart.cfg:23 data/units/Drake_Flare.cfg:23
 #: data/units/Drake_Gladiator.cfg:25 data/units/Drake_Warrior.cfg:22
-#: data/units/Elvish_Archer.cfg:23 data/units/Elvish_Archer.cfg:102
+#: data/units/Elvish_Archer.cfg:45 data/units/Elvish_Archer.cfg:146
 #: data/units/Elvish_Avenger.cfg:24 data/units/Elvish_Avenger.cfg:112
 #: data/units/Elvish_Captain.cfg:24 data/units/Elvish_Champion.cfg:22
 #: data/units/Elvish_Fighter.cfg:24 data/units/Elvish_Hero.cfg:22
@@ -4392,8 +4426,8 @@ msgid "stab"
 msgstr "flèche"
 
 #: data/units/Bone_Shooter.cfg:50 data/units/Bowman.cfg:50
-#: data/units/Commander.cfg:57 data/units/Elvish_Archer.cfg:40
-#: data/units/Elvish_Archer.cfg:119 data/units/Elvish_Avenger.cfg:40
+#: data/units/Commander.cfg:57 data/units/Elvish_Archer.cfg:62
+#: data/units/Elvish_Archer.cfg:163 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:128 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Fighter.cfg:41
 #: data/units/Elvish_Hero.cfg:41 data/units/Elvish_Marshal.cfg:41
@@ -4421,9 +4455,9 @@ msgstr "arc"
 #: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:27
 #: data/units/Dwarvish_Guardsman.cfg:40 data/units/Dwarvish_Sentinel.cfg:29
 #: data/units/Dwarvish_Sentinel.cfg:42 data/units/Dwarvish_Stalwart.cfg:29
-#: data/units/Dwarvish_Stalwart.cfg:42 data/units/Dwarvish_Thunderer.cfg:41
-#: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:41
-#: data/units/Elvish_Archer.cfg:120 data/units/Elvish_Avenger.cfg:41
+#: data/units/Dwarvish_Stalwart.cfg:42 data/units/Dwarvish_Thunderer.cfg:64
+#: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:63
+#: data/units/Elvish_Archer.cfg:164 data/units/Elvish_Avenger.cfg:41
 #: data/units/Elvish_Avenger.cfg:129 data/units/Elvish_Captain.cfg:41
 #: data/units/Elvish_Champion.cfg:42 data/units/Elvish_Druid.cfg:64
 #: data/units/Elvish_Fighter.cfg:42 data/units/Elvish_Hero.cfg:42
@@ -4625,7 +4659,7 @@ msgstr ""
 msgid "gaze"
 msgstr "regard"
 
-#: data/units/Cockatrice.cfg:38 src/actions.cpp:875 src/actions.cpp:1042
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:877 src/actions.cpp:1044
 msgid "stone"
 msgstr "pierre"
 
@@ -5412,7 +5446,7 @@ msgstr ""
 "lentes, moins ouvragées et plus bruyantes que les élégants et rapides arcs "
 "elfiques, mais leur puissance est sans égale."
 
-#: data/units/Dwarvish_Thunderer.cfg:40
+#: data/units/Dwarvish_Thunderer.cfg:63
 msgid "thunderstick"
 msgstr "bâton de tonnerre"
 
@@ -5495,7 +5529,7 @@ msgstr ""
 msgid "Elvish Archer"
 msgstr "Archer elfe"
 
-#: data/units/Elvish_Archer.cfg:20 data/units/Elvish_Archer.cfg:99
+#: data/units/Elvish_Archer.cfg:20 data/units/Elvish_Archer.cfg:121
 msgid ""
 "Elvish Archers are trained from youth in archery, and so skilled in long-"
 "range combat. Able to fire many arrows quickly and accurately, these Archers "
@@ -5506,7 +5540,7 @@ msgstr ""
 "rapidement et avec précision, l'Archer elfe compose une grande partie de "
 "l'armée elfe."
 
-#: data/units/Elvish_Archer.cfg:83
+#: data/units/Elvish_Archer.cfg:105
 msgid "female^Elvish Archer"
 msgstr "Archère elfe"
 
@@ -8463,112 +8497,112 @@ msgstr "+Traduction bulgare"
 msgid "+Catalan Translation"
 msgstr "+Traduction catalane"
 
-#: src/about.cpp:148
+#: src/about.cpp:149
 msgid "+Chinese Translation"
 msgstr "+Traduction chinoise"
 
-#: src/about.cpp:151
+#: src/about.cpp:152
 msgid "+Czech Translation"
 msgstr "+Traduction tchèque"
 
-#: src/about.cpp:159
+#: src/about.cpp:160
 msgid "+Danish Translation"
 msgstr "+Traduction danoise"
 
-#: src/about.cpp:163
+#: src/about.cpp:164
 msgid "+Dutch Translation"
 msgstr "+Traduction hollandaise"
 
-#: src/about.cpp:170
+#: src/about.cpp:171
 msgid "+English (GB) Translation"
 msgstr "+Traduction anglaise (de Grande Bretagne)"
 
-#: src/about.cpp:173
+#: src/about.cpp:174
 msgid "+Estonian Translation"
 msgstr "+Traduction estonienne"
 
-#: src/about.cpp:176
+#: src/about.cpp:177
 msgid "+Finnish Translation"
 msgstr "+Traduction finlandaise"
 
-#: src/about.cpp:181
+#: src/about.cpp:182
 msgid "+French Translation"
 msgstr "+Traduction française"
 
-#: src/about.cpp:194
+#: src/about.cpp:195
 msgid "+German Translation"
 msgstr "+Traduction allemande"
 
-#: src/about.cpp:205
+#: src/about.cpp:206
 msgid "+Greek Translation"
 msgstr "+Traduction grecque"
 
-#: src/about.cpp:209
+#: src/about.cpp:210
 msgid "+Hungarian Translation"
 msgstr "+Traduction hongroise"
 
-#: src/about.cpp:220
+#: src/about.cpp:221
 msgid "+Italian Translation"
 msgstr "+Traduction italienne"
 
-#: src/about.cpp:229
+#: src/about.cpp:230
 msgid "+Japanese Translation"
 msgstr "+Traduction japonaise"
 
-#: src/about.cpp:234
+#: src/about.cpp:235
 msgid "+Latin Translation"
 msgstr "+Traduction latine"
 
-#: src/about.cpp:237
+#: src/about.cpp:238
 msgid "+Norwegian Translation"
 msgstr "+Traduction norvégienne"
 
-#: src/about.cpp:243
+#: src/about.cpp:244
 msgid "+Polish Translation"
 msgstr "+Traduction polonaise"
 
-#: src/about.cpp:253
+#: src/about.cpp:254
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Traduction portugaise (brésilienne)"
 
-#: src/about.cpp:261
+#: src/about.cpp:262
 msgid "+Russian Translation"
 msgstr "+Traduction russe"
 
-#: src/about.cpp:266
+#: src/about.cpp:267
 #, fuzzy
 msgid "+Serbian Translation"
 msgstr "+Traduction allemande"
 
-#: src/about.cpp:269
+#: src/about.cpp:270
 msgid "+Slovak Translation"
 msgstr "+Traduction slovaque"
 
-#: src/about.cpp:272
+#: src/about.cpp:273
 msgid "+Slovenian Translation"
 msgstr "+Traduction slovaque"
 
-#: src/about.cpp:275
+#: src/about.cpp:276
 msgid "+Spanish Translation"
 msgstr "+Traduction espagnole"
 
-#: src/about.cpp:283
+#: src/about.cpp:284
 msgid "+Swedish Translation"
 msgstr "+Traduction suédoise"
 
-#: src/about.cpp:289
+#: src/about.cpp:290
 msgid "+Turkish Translation"
 msgstr "+Traduction turque"
 
-#: src/about.cpp:293
+#: src/about.cpp:294
 msgid "+Contributors"
 msgstr "+Contributeurs"
 
-#: src/about.cpp:296
+#: src/about.cpp:297
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:332 src/help.cpp:2658
+#: src/about.cpp:333 src/help.cpp:2658
 msgid "Close"
 msgstr "Fermer"
 
@@ -8642,39 +8676,39 @@ msgid "% Pr[kills/killed by/both survive]"
 msgstr ""
 "% probabilité [Coup mortel/Contre-attaque mortelle/Survie des deux camps]"
 
-#: src/actions.cpp:859 src/actions.cpp:1025 src/display.cpp:1038
+#: src/actions.cpp:861 src/actions.cpp:1027 src/display.cpp:1038
 msgid "poisoned"
 msgstr "empoisonnée"
 
-#: src/actions.cpp:864 src/actions.cpp:1030 src/display.cpp:1034
+#: src/actions.cpp:866 src/actions.cpp:1032 src/display.cpp:1034
 msgid "slowed"
 msgstr "ralentie"
 
-#: src/actions.cpp:1915
+#: src/actions.cpp:1917
 msgid "Ambushed!"
 msgstr "Embuscade !"
 
-#: src/actions.cpp:1949
+#: src/actions.cpp:1951
 msgid "Friendly unit sighted"
 msgstr "Unité alliée en vue"
 
-#: src/actions.cpp:1951
+#: src/actions.cpp:1953
 msgid "Enemy unit sighted!"
 msgstr "Unité ennemie en vue !"
 
-#: src/actions.cpp:1956
+#: src/actions.cpp:1958
 msgid "$friends Friendly units sighted"
 msgstr "$friends unité(s) alliée(s) en vue"
 
-#: src/actions.cpp:1958
+#: src/actions.cpp:1960
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies unité(s) ennemie(s) en vue !"
 
-#: src/actions.cpp:1962
+#: src/actions.cpp:1964
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unités en vue ! ($friends alliée(s), $enemies ennemie(s))"
 
-#: src/actions.cpp:1977
+#: src/actions.cpp:1979
 msgid "(press $hotkey to continue)"
 msgstr "(appuyez sur $hotkey pour continuer)"
 
@@ -8739,7 +8773,7 @@ msgstr "Didacticiel"
 msgid "replay"
 msgstr "film"
 
-#: src/dialogs.cpp:387 src/multiplayer_lobby.cpp:194 src/playturn.cpp:1613
+#: src/dialogs.cpp:387 src/multiplayer_lobby.cpp:196 src/playturn.cpp:1613
 msgid "Turn"
 msgstr "Tour"
 
@@ -8818,7 +8852,7 @@ msgid "Date"
 msgstr "Porte"
 
 #: src/dialogs.cpp:550 src/game.cpp:888 src/help.cpp:1116
-#: src/multiplayer_lobby.cpp:28 src/playturn.cpp:2046 src/playturn.cpp:2223
+#: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2046 src/playturn.cpp:2223
 msgid "Name"
 msgstr "Nom"
 
@@ -8890,7 +8924,7 @@ msgstr ""
 "Attention : Le fichier que vous avez d'ouvrir est corrompu. Le chargement "
 "continue.\n"
 
-#: src/game.cpp:646 src/multiplayer_connect.cpp:891
+#: src/game.cpp:646 src/multiplayer_connect.cpp:888
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -8898,7 +8932,7 @@ msgstr ""
 "Cette sauvegarde a été enregistrée sous une version différente du jeu. "
 "Voulez-vous essayer de la charger ?"
 
-#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:876
+#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:873
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Le fichier que vous avez essayé de charger est corrompu : '"
 
@@ -9062,7 +9096,7 @@ msgstr "Se connecter au serveur officiel"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Se connecter sur le serveur multi-joueurs officiel de Wesnoth"
 
-#: src/game.cpp:1107 src/multiplayer_lobby.cpp:107
+#: src/game.cpp:1107 src/multiplayer_lobby.cpp:108
 msgid "Join Game"
 msgstr "Se connecter à une partie"
 
@@ -9136,11 +9170,11 @@ msgstr " » (Le jeu va maintenant se terminer)"
 msgid "Battle for Wesnoth"
 msgstr "La Bataille pour Wesnoth"
 
-#: src/game_events.cpp:585
+#: src/game_events.cpp:595
 msgid "Victory:"
 msgstr "Victoire : "
 
-#: src/game_events.cpp:588
+#: src/game_events.cpp:598
 msgid "Defeat:"
 msgstr "Défaite : "
 
@@ -9392,6 +9426,11 @@ msgstr "Aucun camp non-aléatoire dans l'ére actuelle"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Aucun leader pour la faction $faction n'est trouvable"
 
+#: src/multiplayer_connect.cpp:479 src/multiplayer_lobby.cpp:105
+#: src/multiplayer_wait.cpp:145
+msgid "Game Lobby"
+msgstr "Le Vestibule"
+
 #: src/multiplayer_connect.cpp:485 src/multiplayer_connect.cpp:494
 msgid "Team"
 msgstr "Équipe"
@@ -9425,35 +9464,31 @@ msgstr "Je suis prêt"
 msgid "The scenario is invalid because it has no sides."
 msgstr "Le scénario n'est pas valide car il ne possède pas de camps."
 
-#: src/multiplayer_connect.cpp:794
-msgid "Game Lobby"
-msgstr "Le Vestibule"
-
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:811
 msgid "Network Player"
 msgstr "Joueur réseau"
 
-#: src/multiplayer_connect.cpp:815
+#: src/multiplayer_connect.cpp:812
 msgid "Local Player"
 msgstr "Humain"
 
-#: src/multiplayer_connect.cpp:816
+#: src/multiplayer_connect.cpp:813
 msgid "Computer Player"
 msgstr "Ordinateur"
 
-#: src/multiplayer_connect.cpp:817
+#: src/multiplayer_connect.cpp:814
 msgid "Empty"
 msgstr "Vide"
 
-#: src/multiplayer_connect.cpp:883
+#: src/multiplayer_connect.cpp:880
 msgid "This is not a multiplayer save"
 msgstr "Cette sauvegarde ne provient pas d'un jeu multi-joueurs"
 
-#: src/multiplayer_connect.cpp:924
+#: src/multiplayer_connect.cpp:921
 msgid "Cannot find era $era"
 msgstr "Ère $era introuvable"
 
-#: src/multiplayer_connect.cpp:938
+#: src/multiplayer_connect.cpp:935
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -9461,9 +9496,13 @@ msgstr ""
 "Victoire\n"
 "@Vaincre le(s) chef(s) ennemi(s)"
 
-#: src/multiplayer_connect.cpp:974
+#: src/multiplayer_connect.cpp:971
 msgid "Waiting for players to join..."
 msgstr "En attente d'autres joueurs..."
+
+#: src/multiplayer_create.cpp:34 src/multiplayer_lobby.cpp:109
+msgid "Create Game"
+msgstr "Créer une partie"
 
 #: src/multiplayer_create.cpp:46
 msgid "Name of game:"
@@ -9571,37 +9610,33 @@ msgstr "Modifications d'expérience : "
 msgid "Players: "
 msgstr "Joueurs : "
 
-#: src/multiplayer_create.cpp:386 src/multiplayer_lobby.cpp:108
-msgid "Create Game"
-msgstr "Créer une partie"
-
-#: src/multiplayer_lobby.cpp:28
+#: src/multiplayer_lobby.cpp:29
 #, fuzzy
 msgid "Map"
 msgstr "Carte utilisateur"
 
-#: src/multiplayer_lobby.cpp:29
+#: src/multiplayer_lobby.cpp:30
 #, fuzzy
 msgid "Status"
 msgstr "Statistiques"
 
-#: src/multiplayer_lobby.cpp:106
+#: src/multiplayer_lobby.cpp:107
 msgid "Observe Game"
 msgstr "Observer la partie"
 
-#: src/multiplayer_lobby.cpp:109
+#: src/multiplayer_lobby.cpp:110
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/multiplayer_lobby.cpp:197
+#: src/multiplayer_lobby.cpp:199
 msgid "Vacant Slot"
 msgstr "Place vacante"
 
-#: src/multiplayer_lobby.cpp:197
+#: src/multiplayer_lobby.cpp:199
 msgid "Vacant Slots"
 msgstr "Places vacantes"
 
-#: src/multiplayer_lobby.cpp:207
+#: src/multiplayer_lobby.cpp:209
 msgid "<no games open>"
 msgstr "<aucune partie en cours>"
 
@@ -9678,15 +9713,15 @@ msgstr "Aucun camp multi-joueurs"
 msgid "Choose your side:"
 msgstr "Choisissez votre camp :"
 
-#: src/multiplayer_wait.cpp:374 src/unit.cpp:1184
+#: src/multiplayer_wait.cpp:375 src/unit.cpp:1184
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:374 src/unit.cpp:1191
+#: src/multiplayer_wait.cpp:375 src/unit.cpp:1191
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:375 src/playturn.cpp:1872
+#: src/multiplayer_wait.cpp:376 src/playturn.cpp:1872
 msgid "unit^Gold"
 msgstr "p. d'or"
 

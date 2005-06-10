@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-31 21:49+0200\n"
+"POT-Creation-Date: 2005-06-10 10:34+0200\n"
 "PO-Revision-Date: 2005-06-07 19:25+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: Nils Kneuper <crazy-ivanovic AT gmx DOT net>\n"
@@ -65,7 +65,7 @@ msgstr "Ankunft in Weldyn"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:34
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:34
 #: data/scenarios/Eastern_Invasion/Reject.cfg:32
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:39
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:30
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:30
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:42
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:77
@@ -112,6 +112,7 @@ msgstr "Führt Gweddry nach Weldyn"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:108
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:69
 #: data/scenarios/Eastern_Invasion/Reject.cfg:118
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:207
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:81
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:120
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:183
@@ -134,6 +135,7 @@ msgstr "Gweddry fällt in der Schlacht"
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:111
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:73
 #: data/scenarios/Eastern_Invasion/Reject.cfg:122
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:211
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:187
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:92
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:81
@@ -152,6 +154,7 @@ msgstr "Dacyn fällt in der Schlacht"
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:112
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:77
 #: data/scenarios/Eastern_Invasion/Reject.cfg:126
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:215
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:96
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:85
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:68
@@ -313,27 +316,21 @@ msgstr "Die Wachen sind abgelenkt! Die Zeit der Flucht ist gekommen!"
 msgid "Huh? Who's there, who said that?"
 msgstr "Was zum...? Wer hat das gesagt?"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:424
-msgid "So, you want to resist me? Fine, but prepare to die!"
-msgstr ""
-"Also wollt ihr euch gegen mich stellen? So sei es. Macht euch bereit zu "
-"sterben!"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:448
+#: data/scenarios/Eastern_Invasion/Captured.cfg:430
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:181
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:372
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:236
 msgid "Holy Water"
 msgstr "Weihwasser"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:451
+#: data/scenarios/Eastern_Invasion/Captured.cfg:433
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:184
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:375
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:239
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr "Dieses Wasser weiht all eure Waffen ein Leben lang!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:452
+#: data/scenarios/Eastern_Invasion/Captured.cfg:434
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:185
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:376
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:240
@@ -342,19 +339,13 @@ msgstr ""
 "Es behagt mir nicht diesen Gegenstand zu benutzen! Gebt ihn an jemand "
 "anderes."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:484
+#: data/scenarios/Eastern_Invasion/Captured.cfg:474
 msgid ""
 "Good! We have escaped these accursed caves! Let's get out of these mountains "
 "as quickly as possible!"
 msgstr ""
 "Gut! Wir sind aus diesen verfluchten Höhlen entkommen! Lasst uns nun dieses "
 "Gebirge so schnell wie möglich verlassen!"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:488
-msgid "I will come with you and help you on your quest, whatever it is."
-msgstr ""
-"Ich werde euch begleiten und euch auf Eurer Queste unterstützen, egal worum "
-"es geht."
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:4
 msgid "The Crossing"
@@ -1276,53 +1267,37 @@ msgstr ""
 msgid "The Drowned Plains"
 msgstr "Die überfluteten Ebenen"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:25
-msgid ""
-"\n"
-"Victory:\n"
-"@Defeat Khrakrahs the Skeletal Dragon\n"
-"Defeat:\n"
-"#Death of Gweddry\n"
-"#Death of Dacyn\n"
-"#Death of Owaec\n"
-"#Turns run out"
-msgstr ""
-"\n"
-"Sieg:\n"
-"@Vernichtet Khrakrahs den Skelettdrachen\n"
-"Niederlage:\n"
-"#Gweddry fällt in der Schlacht\n"
-"#Dacyn fällt in der Schlacht\n"
-"#Owaec fällt in der Schlacht\n"
-"#Rundenlimit überschritten"
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:131
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:122
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:160
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:151
 msgid "There are still humans in this village! They can help us."
 msgstr "Es gibt immernoch Leute in diesem Dorf! Sie können uns unterstützen."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:167
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:174
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:158
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:165
 msgid "Villager"
 msgstr "Dorfbewohner"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:193
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:184
 msgid ""
 "The undead have killed all the villagers here, but they left their valuables."
 msgstr ""
 "Die Untoten haben alle Leute hier niedergemetzelt. Doch haben sie ihre "
 "Wertsachen hiergelassen."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:235
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:203
+msgid "Defeat Khrakrahs, the Skeletal Dragon"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:249
 msgid "What the... swamps? These were fertile plains when I was here last!"
 msgstr ""
 "Was zum... Sümpfe? Als ich zum letzten mal hier war, waren dies noch "
 "fruchtbare Ebenen!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:239
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:253
 msgid ""
 "The lich-lord Mal-Ravanal must have flooded the valley. The undead like the "
 "swamp. It is death, decay, everything that they are themselves."
@@ -1330,7 +1305,7 @@ msgstr ""
 "Der Fürst der Dunkelheit Mal-Ravanal muss das Tal geflutet haben. Die "
 "Untoten lieben Sümpfe. Sie sind tot, verfallen, eben genau wie sie selbst."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:243
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:257
 msgid ""
 "I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
 "swamp, we can't e'en see any 'nemies."
@@ -1338,15 +1313,15 @@ msgstr ""
 "Da werden wir wohl durchwaten müssen... Uhh. Und mit den ganzen "
 "Nebelschwaden im Gesicht können wir noch nichtmal unsere Feinde sehen."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:247
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:261
 msgid "Findshhhh... dyhhhh... slayhhhh..."
 msgstr "Sie finnnndennnn... sterrrrrrrbennnnn... nieederrrrmähennnn..."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:251
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:265
 msgid "What is that?!?"
 msgstr "Was ist das?!?"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:255
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:269
 msgid ""
 "I do not know, but it sounded like the dragon Khrakrahs. When it was alive, "
 "it was the most powerful creature ever, living in the Eastern Mountains. It "
@@ -1356,7 +1331,7 @@ msgstr ""
 "lebendig war, wer er das mächtigste Wesen, das je in den östlichen Gebirgen "
 "gelebt hat. Er muss geflohen sein, als die Untoten kamen."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:320
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:334
 msgid "Undead, undead are rising out of the ground!"
 msgstr "Ahhh!!! Es, es erheben sich Untote aus dem Boden!"
 
@@ -2479,3 +2454,32 @@ msgstr ""
 "begannen unvorsichtig zu werden. Doch plötzlich, eines Tages bei "
 "Morgengrauen, wurden Gweddry und seine Männer von einem markerschütternden "
 "Schrei der Nachtwache geweckt..."
+
+#~ msgid "So, you want to resist me? Fine, but prepare to die!"
+#~ msgstr ""
+#~ "Also wollt ihr euch gegen mich stellen? So sei es. Macht euch bereit zu "
+#~ "sterben!"
+
+#~ msgid "I will come with you and help you on your quest, whatever it is."
+#~ msgstr ""
+#~ "Ich werde euch begleiten und euch auf Eurer Queste unterstützen, egal "
+#~ "worum es geht."
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat Khrakrahs the Skeletal Dragon\n"
+#~ "Defeat:\n"
+#~ "#Death of Gweddry\n"
+#~ "#Death of Dacyn\n"
+#~ "#Death of Owaec\n"
+#~ "#Turns run out"
+#~ msgstr ""
+#~ "\n"
+#~ "Sieg:\n"
+#~ "@Vernichtet Khrakrahs den Skelettdrachen\n"
+#~ "Niederlage:\n"
+#~ "#Gweddry fällt in der Schlacht\n"
+#~ "#Dacyn fällt in der Schlacht\n"
+#~ "#Owaec fällt in der Schlacht\n"
+#~ "#Rundenlimit überschritten"
