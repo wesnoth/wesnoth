@@ -7,6 +7,7 @@ CVS HEAD:
    * updated translations:
      * Catalan, Finnish, Swedish, Turkish
    * updated MANUAL, brought into synch with wiki
+   * added descriptions to all multiplayer maps (#9763)
  * campaigns
    * Eastern Invasion:
      * made Captured a bit easier
@@ -14,10 +15,12 @@ CVS HEAD:
  * unit graphics and sound improvements:
    * new or modified images for Dwarvish Thunderer
    * new death animations for Dwarvish Thunderer, Elvish Archer
+   * new orc portraits by Pickslide, now used in Heir to the Throne
  * restored dialog titles for multiplayer screens (#13049)
  * wesnothd no longer rejects :control command with "Side not found"
  * --nosound commandline option no longer initializes sound (part of #11669)
  * players can now control multiple sides in multiplayer
+ * fixed crash: move_unit_fake with coordinates outside the map (part of #13334)
 
 Version 0.9.2:
  * user interface improvements:
