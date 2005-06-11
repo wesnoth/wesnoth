@@ -1279,6 +1279,39 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 
 				std::string error_log;
 				read(cfg, *stream, &error_log);
+
+				//load user campaigns
+				const std::string user_campaign_dir = get_user_data_dir() + "/data/campaigns/";
+				std::vector<std::string> user_campaigns, error_campaigns;
+				get_files_in_dir(user_campaign_dir,&user_campaigns,NULL,ENTIRE_FILE_PATH);
+				for(std::vector<std::string>::const_iterator uc = user_campaigns.begin(); uc != user_campaigns.end(); ++uc) {
+					try {
+						scoped_istream stream = preprocess_file(*uc,&defines);
+
+						config user_campaign_cfg;
+						read(user_campaign_cfg,*stream,NULL);
+						cfg.append(user_campaign_cfg);
+					} catch(config::error&) {
+						std::cerr << "error processing user campaign '" << *uc << "'\n";
+						error_campaigns.push_back(*uc);
+					} catch(io_exception&) {
+						std::cerr << "error reading user campaign '" << *uc << "'\n";
+						error_campaigns.push_back(*uc);
+					}
+				}
+
+				if(error_campaigns.empty() == false) {
+					std::stringstream msg;
+					msg << _("The following add-on campaign(s) had errors and could not be loaded:");
+					for(std::vector<std::string>::const_iterator i = error_campaigns.begin(); i != error_campaigns.end(); ++i) {
+						msg << "\n" << *i;
+					}
+
+					gui::show_error_message(disp(),msg.str());
+				}
+
+				cfg.merge_children("units");
+
 				if(!error_log.empty()) {
 					gui::show_error_message(disp(),
 							_("Warning: Errors occurred while loading game configuration files: '") +
@@ -1511,6 +1544,12 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 
+	res = game.init_video();
+	if(res == false) {
+		std::cerr << "could not initialize display\n";
+		return 0;
+	}
+
 #ifdef WIN32
 	res = game.init_config();
 	if(res == false) {
@@ -1518,12 +1557,6 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 #endif
-
-	res = game.init_video();
-	if(res == false) {
-		std::cerr << "could not initialize display\n";
-		return 0;
-	}
 
 	res = game.init_language();
 	if(res == false) {
@@ -1618,6 +1651,10 @@ int play_game(int argc, char** argv)
 	}
 
 	return 0;
+}
+
+void f() {
+	throw config::error("");
 }
 
 int main(int argc, char** argv)

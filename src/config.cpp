@@ -61,6 +61,22 @@ void config::append(const config& cfg)
 	}
 }
 
+void config::merge_children(const std::string& key)
+{
+	config merged_children;
+	const child_list& children = get_children(key);
+	if(children.size() < 2) {
+		return;
+	}
+
+	for(child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
+		merged_children.append(**i);
+	}
+
+	clear_children(key);
+	add_child(key,merged_children);
+}
+
 config::child_itors config::child_range(const std::string& key)
 {
 	child_map::iterator i = children.find(key);

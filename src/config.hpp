@@ -124,6 +124,10 @@ public:
 	//latter config object will clobber attributes in this one.
 	void append(const config& cfg);
 
+	//all children with the given key will be merged into the first element
+	//with that key
+	void merge_children(const std::string& key);
+
 	//resets the translated values of all strings contained in this object
 	void reset_translation() const;
 
