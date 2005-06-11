@@ -13,10 +13,10 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTHD 6 "April 9th 2005" "Wesnothd" "Battle for Wesnoth multiplayer network daemon"
+.TH WESNOTHD 6 "June 2005" "wesnothd" "Battle for Wesnoth multiplayer network daemon"
 
 .SH NAME
-battle for wesnoth multiplayer network daemon
+Battle for Wesnoth multiplayer network daemon
 
 .SH SYNOPSIS
 .B wesnothd
@@ -24,7 +24,7 @@ battle for wesnoth multiplayer network daemon
 .SH DESCRIPTION
 Battle for
 .B Wesnoth
-multiplayer network daemon
+multiplayer network daemon.
 
 .SH OPTIONS
 
@@ -33,7 +33,7 @@ multiplayer network daemon
 runs wesnothd as a daemon.
 
 .TP
-.BR --fifo PATH
+.BR --fifo \ PATH
 sets PATH of file to be used for input stream.
 
 .TP
@@ -46,21 +46,25 @@ sets maximum packet size to the specified value.
 
 .TP
 .BR -p , \ --port
-binds the server to the specified port. If no port is specified, port 15000 will be used.
+binds the server to the specified port. If no port is specified, port
+15000 will be used.
 
 .TP
 .BR -v , \ --version
 shows version number and exits.
 
 .SH AUTHOR
-Written by David White <davidnwhite@optusnet.com.au>.
-Edited by Nils Kneuper <crazy-ivanovic@gmx.net>.
+Written by David White <davidnwhite@comcast.net>.
+Edited by Nils Kneuper <crazy-ivanovic@gmx.net> and ott <ott@gaon.net>.
 This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
 .br
 Visit the official homepage: http://www.wesnoth.org/
 
 .SH COPYRIGHT
-Copyright \(co 2003 David White <davidnwhite@optusnet.com.au>
+Copyright \(co 2003 David White <davidnwhite@comcast.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+.SH SEE ALSO
+wesnoth(6), wesnoth_editor(6)
