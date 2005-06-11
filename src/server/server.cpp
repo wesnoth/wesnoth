@@ -249,6 +249,7 @@ void server::process_command(const std::string& cmd)
 		}
 	} else {
 		std::cout << "command '" << command << "' is not recognized" << std::endl;
+		std::cout << "available commands are: msg <message>, status, metrics, ban [<nick>], unban <nick>, kick <nick>" << std::endl;
 	}
 }
 

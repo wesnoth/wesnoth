@@ -24,6 +24,7 @@ CVS HEAD:
  * players can now control multiple sides in multiplayer
  * fixed crash: move_unit_fake with coordinates outside the map (part of #13334)
  * prevented user campaigns from making the game unstartable
+ * server now write a summary of available commands when a fifo command is not recognized
 
 Version 0.9.2:
  * user interface improvements:
