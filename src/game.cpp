@@ -206,11 +206,11 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 		} else if(val == "--nosound") {
 			//handled elsewhere
 		} else if(val[0] == '-') {
-			std::cerr << "unknown option: " << val << "\n";
+			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
 		} else {
 
-		  std::cerr << "Setting path using " << val;
+		  std::cerr << "Setting path using " << val << std::endl;
 			if(val[0] == '/') {
 				game_config::path = val;
 			} else {
