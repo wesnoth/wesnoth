@@ -533,7 +533,16 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	int divisor = 100;
 
 	const int base_damage = attack.damage();
-	const int resistance_modifier = d->second.damage_against(attack);
+	int resistance_modifier = d->second.damage_against(attack);
+
+	//steadfast doubles resistance, but is capped at increasing resistance to 50%
+	if (steadfast && resistance_modifier < 100 && resistance_modifier > 50) {
+		const int diff = 100 - resistance_modifier;
+		resistance_modifier -= diff;
+		if(resistance_modifier < 50) {
+			resistance_modifier = 50;
+		}
+	}
 
 	if (strings) {
 		std::stringstream str_base;
@@ -581,22 +590,19 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		}
 	}
 
-	if (steadfast) {
-		divisor *= 2;
-		if (strings) {
-			std::stringstream str;
-			str << _("steadfast") << EMPTY_COLUMN << _("Halved");
-			strings->attack_calculations.push_back(str.str());
-		}
-	}
-
 	if (strings && resistance_modifier != 100) {
 		const int resist = resistance_modifier - 100;
 		std::stringstream str_resist;
 		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs"))
-		           << ' ' << gettext(attack.type().c_str()) << EMPTY_COLUMN
+		           << ' ' << gettext(attack.type().c_str());
+		if(steadfast && resistance_modifier < 100) {
+			str_resist << ' ' << _(" (+steadfast)");
+		}
+		
+		str_resist << EMPTY_COLUMN
 		           << (resist > 0 ? "+" : "") << resist << '%';
 		strings->attack_calculations.push_back(str_resist.str());
+
 	}
 
 	bonus *= resistance_modifier;
