@@ -1,0 +1,184 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+.\"
+
+.TH WESNOTH 6 "Juni 2005" "wesnoth" "Kampen om Wesnoth"
+
+.SH NAMN
+Kampen om Wesnoth \- dragbaserat strategispel i fantasymilj\[:o]
+
+.SH SYNOPSIS
+.B wesnoth
+[\fIFLAGGOR\fR]
+[\fIDATAMAPP\fR]
+
+.SH BESKRIVNING
+Kampen om
+.B Wesnoth
+\[:a]r ett dragbaserat strategispel som utspelar sig i fantasymilj\[:o].
+
+Besegra alla fiendeledare med dina handplockade trupper och hush\[oa]ll med
+dina resurser av guld och byar. Alla trupper har sina egna f\[:o]rdelar och
+nackdelar; f\[:o]r att vinna m\[oa]ste du anv\[:a]nda trupperna d\[:a]r de kommer till
+st\[:o]rst nytta, samtidigt som du tvingar dina fiender till att sl\[oa]ss p\[oa] s\[:a]mre
+villkor. Dina trupper samlar erfarenhet och f\[oa]r nya f\[:o]rm\[oa]gor och blir
+m\[:a]ktigare. Du kan spela p\[oa] ditt eget spr\[oa]k och till och med skapa dina egna
+truppslag, scenarier och kampanjer. Pr\[:o]va dina f\[:a]rdigheter mot en smart 
+datormotst\[oa]ndare, eller anslut dig till Wesnoths stora f\[:o]lje av 
+n\[:a]tverksspelare.
+
+.SH FLAGGOR
+
+.TP
+.B --bpp
+anger v\[:a]rdet BitsPerPixel. Exempel: --bpp 32
+
+.TP
+.B --compress \ <infil> \ <utfil>
+komprimerar en fil med ett sparat spel i en WML-textfil (infil) till 
+en bin\[:a]r WML-fil (utfil).
+
+.TP
+.BR -d , \ --debug
+visar extrainformation f\[:o]r debuggning och aktiverar 
+debug-kommandon i kommandoradsl\[:a]get i spelet (se wikin p\[oa] 
+http://www.wesnoth.org/ f\[:o]r mer information om kommandoradsl\[:a]ge).
+
+.TP
+.B --decompress \ <infil> \ <utfil>
+dekomprimerar ett sparat spel i en bin\[:a]r WML-fil (infil) till en 
+WML-textfil (utfil).
+
+.TP
+.BR -f , \ --fullscreen
+k\[:o]r spelet i helsk\[:a]rm.
+
+.TP
+.B --fps
+visar antalet ramar per sekund som spelet k\[:o]rs i f\[:o]r n\[:a]rvarande i 
+ena h\[:o]rnet av f\[:o]nstret.
+
+.TP
+.BR -h , \ --help
+visar en sammanfattning av m\[:o]jliga kommandoradsflaggor.
+
+.TP
+.BR --log-error="dom\[:a]n1,dom\[:a]n2,..." , \ --log-warning=... , \ --log-info=...
+anger loggningsniv\[oa]n f\[:o]r debug-dom\[:a]nerna. F\[:o]r att se allt kan "all" 
+anv\[:a]ndas.
+.B --log-info
+visar alla meddelanden,
+.B --log-warning
+bara varningar och fel, och 
+.B --log-error
+endast fel.
+
+.TP
+.B --multiplayer
+k\[:o]r ett gruppspel. Ytterligare flaggor kan anv\[:a]ndas tillsammans med
+.B --multiplayer
+s\[oa]som beskrivs nedan.
+
+.TP
+.BR --nocache
+st\[:a]nger av cachning av speldata.
+
+.TP
+.BR --nosound
+k\[:o]r spelet utan ljud och musik.
+
+.TP
+.BR --path
+skriver ut namnet p\[oa] speldatamappen.
+
+.TP
+.BR -r , \ --resolution
+anger sk\[:a]rmuppl\[:o]sningen. Exempel: -r 800x600
+
+.TP
+.BR -t , \ --test
+k\[:o]r spelet i ett litet testscenario.
+
+.TP
+.BR -v , \ --version
+visar versionen.
+
+.TP
+.BR -w , \ --windowed
+k\[:o]r spelet i f\[:o]nsterl\[:a]ge.
+
+.SH Flaggor f\[:o]r --multiplayer
+
+De sidspecifika gruppspelsflaggorna markeras med <nummer>. <nummer> m\[oa]ste 
+ers\[:a]ttas med ett sidnummer. Detta \[:a]r vanligtvis 1 eller 2, men beror p\[oa] 
+det antal spelare som \[:a]r m\[:o]jligt i det valda scenariet.
+
+.TP
+.BR --era=v\[:a]rde
+v\[:a]ljer vilken era som skall anv\[:a]ndas ist\[:a]llet f\[:o]r "standarderan". Eran 
+v\[:a]ljs genom ett id-nummer. Valen finns beskrivna i filen 
+data/multiplayer.cfg. 
+
+.TP
+.B --nogui
+k\[:o]r spelet utan det grafiska anv\[:a]ndargr\[:a]nssnittet.
+
+.TP
+.BR --scenario=v\[:a]rde
+v\[:a]ljer ett gruppspelsscenario. Standardscenariet \[:a]r "multiplayer_test".
+
+.TP
+.BR --algorithm<nummer>=v\[:a]rde
+v\[:a]ljer en icke-standardalgoritm f\[:o]r AI:n som kontrollerar den angivna 
+sidan. Tillg\[:a]ngliga v\[:a]rden \[:a]r "idle_ai" och "sample_ai".
+
+.TP
+.BR --controller<nummer>=v\[:a]rde
+v\[:a]ljer hur sidan skall kontrolleras. M\[:o]jliga v\[:a]rden \[:a]r "human" och "ai".
+
+.TP
+.BR --parm<nummer>=namn:v\[:a]rde
+anger extra parametrar f\[:o]r den valda sidan. Denna parameter beror p\[oa] vilka 
+flaggor som anv\[:a]nts med
+.B --controller 
+och
+.B --algorithm.
+Detta torde bara vara anv\[:a]ndbart f\[:o]r de som designar sin egen AI (\[:a]nnu 
+inte helt dokumenterat).
+
+.TP
+.BR --side<nummer>=v\[:a]rde
+v\[:a]ljer en grupp f\[:o]r den valda era f\[:o]r angiven sida. Gruppen v\[:a]ljs genom ett 
+id-nummer. Grupperna finns beskrivna i filen data/multiplayer.cfg.
+
+.SH F\[:O]RFATTARE
+Skriven av David White <davidnwhite@comcast.net>.
+.br
+Redigerad av Nils Kneuper <crazy-ivanovic@gmx.net> och ott <ott@gaon.net>.
+.br
+\[:O]versatt till svenska av Stefan Bergstr\[:o]m <stefan PUNKT bergstrom HOS gmail PUNKT com>.
+.br
+Denna manualsida skrevs ursprungligen av Cyril Bouthors <cyril@bouthors.org>.
+.br
+Bes\[:o]k den officiella hemsidan: http://www.wesnoth.org/
+
+.SH COPYRIGHT
+Copyright \(co 2003 David White <davidnwhite@comcast.net>
+.br
+Detta \[:a]r fri mjukvara; denna mjukvara \[:a]r licensierad under GPL version 2, 
+s\[oa]som publicerad av Free Software Foundation. INGEN garanti ges; inte ens 
+f\[:o]r S\[:A]LJBARHET eller L\[:A]MPLIGHET F\[:O]R ETT VISST SYFTE.
+
+.SH SE \[:A]VEN
+wesnoth_editor(6), wesnothd(6)

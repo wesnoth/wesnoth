@@ -1,0 +1,73 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+.\"
+
+.TH WESNOTHD 6 "Juni 2005" "wesnothd" "Kampen om Wesnoths n\[:a]tverksdaemon"
+
+.SH NAMN
+Kampen om Wesnoths n\[:a]tverksdaemon
+
+.SH SYNOPSIS
+.B wesnothd
+
+.SH BESKRIVNING
+Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon f\[:o]r gruppspel.
+
+.SH FLAGGOR
+
+.TP
+.BR -d , \ --daemon
+k\[:o]r wesnothd som en daemon.
+
+.TP
+.BR --fifo \ S\[:O]KV\[:A]G
+anger s\[:o]kv\[:a]gen till filen som skall anv\[:a]ndas f\[:o]r input-str\[:o]mmen.
+
+.TP
+.BR -h , \ --help
+visar en sammanfattning av m\[:o]jliga kommandoradsflaggor.
+
+.TP
+.BR -m , \ --max_packet_size
+anger maximal paketstorlek
+
+.TP
+.BR -p , \ --port
+knyter servern till den specificerade porten. Om ingen port anges s\[oa] 
+anv\[:a]nds port 15000. 
+
+.TP
+.BR -v , \ --version
+visar versionen.
+
+.SH F\[:O]RFATTARE
+Skriven av David White <davidnwhite@comcast.net>.
+.br
+Redigerad av Nils Kneuper <crazy-ivanovic@gmx.net> och ott <ott@gaon.net>.
+.br
+\[:O]versatt till svenska av Stefan Bergstr\[:o]m <stefan PUNKT bergstrom HOS gmail PUNKT com>.
+.br
+Denna manualsida skrevs ursprungligen av Cyril Bouthors <cyril@bouthors.org>.
+.br
+Bes\[:o]k den officiella hemsidan: http://www.wesnoth.org/
+
+.SH COPYRIGHT
+Copyright \(co 2003 David White <davidnwhite@comcast.net>
+.br
+Detta \[:a]r fri mjukvara; denna mjukvara \[:a]r licensierad under GPL version  2, 
+s\[oa]som publicerad av Free Software Foundation. INGEN garanti ges; inte ens  
+f\[:o]r S\[:A]LJBARHET eller L\[:A]MPLIGHET F\[:O]R ETT VISST SYFTE.
+
+.SH SE \[:A]VEN
+wesnoth(6), wesnoth_editor(6)
