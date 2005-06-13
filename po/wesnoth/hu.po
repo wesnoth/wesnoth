@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-10 10:28+0200\n"
-"PO-Revision-Date: 2005-06-10 14:31+0200\n"
+"PO-Revision-Date: 2005-06-10 19:37+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -221,7 +221,7 @@ msgstr ""
 
 #: data/help.cfg:92 src/help.cpp:1196
 msgid "Movement"
-msgstr "Mozgás"
+msgstr "Lépés"
 
 #: data/help.cfg:93
 msgid ""
@@ -442,10 +442,10 @@ msgid ""
 "damage which they take from certain damage types."
 msgstr ""
 "A Wesnothban a sebzésnek három típusa van, amelyeket általában "
-"fizikaitámadásoknak neveznek: Penge, Páncéltörés és Ütés. Valamint "
-"háromtovábbi mágikusnak nevezett sebzéstípus: Tűz, Jég és Szentség. A "
-"különbözőegységeknek lehet ellenálló képességük, ami módosítja a sebzést "
-"amegfelelő támadási típusok esetén."
+"fizikaitámadásoknak neveznek: Penge, Páncéltörés és Ütés. Valamint három "
+"további mágikusnak nevezett sebzéstípus: Tűz, Jég és Szentség. A különböző "
+"egységeknek lehet ellenálló képességük, ami módosítja a sebzést amegfelelő "
+"támadási típusok esetén."
 
 #: data/help.cfg:126
 msgid ""
@@ -722,7 +722,7 @@ msgstr ""
 "\n"
 "\n"
 "A Bevételek nagyon egyszerűek. Minden faluért, ami hozzád tartozik, egy "
-"aranyat fogsz kapni körönként. Így, ha tíz faluval rendelkezel, akkor tíz "
+"aranyat fogsz kapni körönként. Így ha tíz faluval rendelkezel, akkor tíz "
 "aranyat kapsz normál esetben. Azonban a Fenntartási költségek csökkentik "
 "ezt, amelyről lentebb olvashatsz."
 
@@ -1569,6 +1569,8 @@ msgid ""
 "Who will remain standing as King of the Hill? Best played as a free-for-all "
 "(with everyone fighting everyone else)."
 msgstr ""
+"Ki lesz a végén a domb királya? Érdemes free-for-all módon (mindenki "
+"mindenki ellen) játszani."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
@@ -1588,7 +1590,7 @@ msgstr "4j - Ostromlott várak"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
 msgid "Take control of this huge river delta."
-msgstr ""
+msgstr "Vedd át a hatalmas folyótorkolat fölötti irányítást."
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
 msgid "4p - The Valley of Death"
@@ -1597,6 +1599,8 @@ msgstr "4j - A halál völgye"
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:5
 msgid "Can you defeat all enemies and declare victory in this desolate valley?"
 msgstr ""
+"Le tudod-e győzni az összes ellenséget és győzelemre vinni a csatát ebben az "
+"elhagyatott völgyben."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -1618,7 +1622,7 @@ msgstr "5j - A félelem erdeje"
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr ""
+msgstr "Ezen a sokszínű területen öt hadsereg küzd a hatalomért."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -1636,6 +1640,8 @@ msgstr "7j - Csata világ"
 msgid ""
 "Up to 7 armies thrash about in this peaceful land. Prepare for a long battle."
 msgstr ""
+"Akár 7 sereg is csépelheti egymást ezen a békés helyen. Hosszú csatára "
+"számíts!"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:17
@@ -1643,14 +1649,13 @@ msgid "Random map"
 msgstr "Véletlenszerű pályakialakítás"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:4
-#, fuzzy
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
-"Egy véletlenszerű pálya. Megjegyzendő, "
-"hogy a véletlenszerúen generált pályák gyakran kiegyenlítetlenek, de ha időd "
-"engedi, akkor újragenerálhatod őket, míg a számodra megfelelőt kapsz."
+"Egy véletlenszerű pálya. Megjegyzendő, hogy a véletlenszerűen generált "
+"pályák gyakran kiegyenlítetlenek, de ha időd engedi, akkor újragenerálhatod "
+"őket, míg a számodra megfelelőt kapsz."
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
@@ -3248,7 +3253,7 @@ msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
-"A vezető képességel rendelkező egységek a közelükben, velük harcoló "
+"A hadvezetés képességel rendelkező egységek a közelükben, velük harcoló "
 "alacsonyabb szintű egységeket erősebbé teszik."
 
 #: data/tips.cfg:22
@@ -8575,7 +8580,7 @@ msgstr "Profil"
 
 #: src/dialogs.cpp:708 src/display.cpp:1044 src/help.cpp:1036
 msgid "level"
-msgstr "szintű"
+msgstr "szint"
 
 #: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1094
 msgid "HP: "
