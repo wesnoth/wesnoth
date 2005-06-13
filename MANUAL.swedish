@@ -2,259 +2,329 @@
 
 MANUAL FÖR KAMPEN OM WESNOTH
 
-Om du inte har spelat Kampen om Wesnoth förut, så vill du kanske först läsa
-guiden GettingStarted (http://wesnoth.slack.it/?GettingStarted) .
+Om du inte har spelat Kampen om Wesnoth förut, så vill du kanske läsa
+guiden GettingStarted (http://wesnoth.slack.it/?GettingStarted) först.
 
 
 KONTROLLER
 
-F1:             Visar hjälp för Kampen om Wesnoth
-Piltangenter:   Scrollar slagfältet
-Vänsterklick:   Väljer trupp, flyttar trupp
-Högerklick:     Huvudmenyn, avbryt
-Mittenklick:    Centrerar skärmen till pekarpositionen
-Escape:         Avslutar spelet eller stänger menyn
-z:              Zoomar in
-x:              Zoomar ut
-c:              Standardzoomning
-u:              Ångra sista förflyttningen (om den inte påverkat spelet)
-r:              Gör om ångrad förflyttning
-n:              Stegar igenom de trupper som fortfarande kan flytta
-1-7:            Visar hur långt en trupp kan flytta på givet antal drag
-ctrl-v:         Visar fiendens förflyttning (vart en fiende kan flytta till
-nästa drag)
-mellanslag:     Avslutar vald trupps tur och går vidare till nästa trupp som
-fortfarande kan flytta
-l:              Centrerar runt ledaren
-ctrl-f:         Växlar mellan fullskärmsläge och fönsterläge
-ctrl-r:         Tar fram rekryteringsmenyn
-ctrl-shift-r:   Upprepar senaste rekryteringen
-alt-r:          Återkallar trupp
-ctrl-a:         Växlar mellan accelererad och normal spelhastighet
-d:              Visar beskrivningen för vald trupp
-ctrl-d:         Visar försvarsstyrkan mot attacker för vald trupp
-ctrl-s          Sparar spelet
-ctrl-l:         Öppna sparat spel
+F1		Visa hjälpen för Kampen om Wesnoth
+Piltangenter	Rulla slagfältet
+Vänsterklick	Välj trupp, flytta trupp
+Högerklick	Huvudmenyn, avbryt
+Mittenklick	Centrera skärmen på pekarpositionen
+Escape		Avsluta spelet, stäng menyn, avbryt meddelande
+ctrl-r		Rekrytera trupp
+ctrl-shift-r	Upprepa senaste rekrytering
+alt-r		Återkalla trupp
+u		Ångra senaste förflyttning (om den inte påverkat spelet)
+r		Gör om ångrad förflyttning
+m		Skicka meddelande till annan spelare (i gruppspel)
+M		Skicka meddelande till allierade spelare (i gruppspel)
+alt-m		Skicka meddelande till samtliga i spelet (i gruppspel)
+n		Stega igenom de trupper som kan förflyttas
+N		Stega igenom de trupper som kan förflyttas, i bakvänd 
+		ordning
+mellanslag	Avsluta vald trupps drag och gå vidare till nästa trupp 
+		som kan förflyttas
+alt-e		Avsluta aktuell spelares drag
+ctrl-mellanslag	Håll truppens position; truppen hoppas över när trupperna 
+		stegas igenom
+ctrl-v 		Visa fiendens förflyttning (vart fienden kan nå nästa drag)
+ctrl-f		Växla mellan helskärm och fönsterläge
+ctrl-a		Växla mellan accelererad och normal spelhastighet
+ctrl-s		Spara spel
+ctrl-l		Öppna sparat spel
+
+/		Sök
+t		Fortsätt avbruten truppförflyttning
+z		Zooma in
+x		Zooma ut
+c		Återställ till standardzoomning
+ctrl-n		Byt namn på trupp
+1-7		Visa hur långt vald trupp kan nå på givet antal drag
+l		Centrera kartan på ledaren
+d		Visa beskrivningen för vald trupp
+ctrl-b		Visa fiendens bästa förflyttningsmöjligheter
+ctrl-d		Visa vald trupps försvar mot attacker
+ctrl-g		Sätt på/stäng av rutmönster
+alt-k		Sätt på/stäng av slöja
+ctrl-k		Uppdatera slöja
+alt-l		Namnge terrängruta
+alt-s		Visa statustabell
+ctrl-t		Visa terrängtabell
+ctrl-m		Sätt på/stäng av ljudet
+:		Kommandoradsläge, se http://wesnoth.slack.it/?CommandMode
 
 
 SFÄRER
 
-Ovanför energimätaren som visas brevid alla dina trupper finns en sfär. Den
+Ovanför energimätaren som visas bredvid alla dina trupper finns en sfär. Den
 sfären är:
 
-  * grön om du kontrollerar truppen och den inte har flyttats detta drag
-  * gul om du kontrollerar truppen, du har flyttat den detta drag, men den kan
-flytta mer
-  * röd om du kontrollerar truppen, men redan använt all dess förflyttning detta
-drag
+  * grön om du kontrollerar truppen och den inte har förflyttats detta drag
+  * gul om du kontrollerar truppen, du har flyttat den detta drag, men den
+    kan förflyttas ytterligare och/eller anfalla under innevarande drag
+  * röd om du kontrollerar truppen, men dess förflyttning detta drag är
+    slut
   * blå om truppen är allierad och du inte kan flytta den
 
-Fiendetrupper har ingen sfär ovanför sina energimätare. (I äldre versioner <
-0.5.2 fanns där en svart sfär)
+Fiendetrupper har ingen sfär ovanför sina energimätare.
 
 
 BESKRIVNING
 
-Spelet är en serie av slag, ofta kallade scenarier. Varje scenario ställer dina
-trupper mot motståndartrupper. Varje sida börjar med en ledare i ett kärntorn.
+Spelet är en serie av slag, eller scenarier. Varje scenario ställer dina
+trupper mot dina motståndares trupper. Varje sida börjar med en ledare i
+sitt kärntorn.
 
 
 GULD
 
-Varje sida får lite guld att börja med, och får 2 guldstycken per drag, plus ett
-guldstycke för varje by sidan kontrollerar.
+Varje sida tilldelas en mängd guld att börja med samt en inkomst per drag
+som är lika med 2 guldstycken plus 1 guldstycke för varje by sidan
+kontrollerar.
 
-Alla trupper kräver underhåll. Underhållet är vanligtvis lika med truppens nivå
-(men se 'Lojal' under karaktärsdrag nedan). Trupper som inte är återkallade
-eller rekryterade - dvs. ledare eller de som gått med frivilligt - kräver inget
-underhåll. Underhåll behöver endast betalas om den sammanlagda
-underhållskostnaden är större än antalet byar som den sidan kontrollerar. Det
-utbetalda underhållet är mellanskillnaden mellan antalet byar och
-underhållskostnaden. Så, formeln för att avgöra inkomsten per drag är
+Trupperna kräver också underhåll. Underhållet är vanligtvis lika med
+truppens nivå, såvida inte truppen har karaktärsdraget Lojal (se nedan).
+Trupper som inte är återkallade eller rekryterade - dvs ledare eller de som
+gått med frivilligt - är vanligtvis lojala. Underhåll behöver endast
+betalas om den sammanlagda underhållskostnaden är större än antalet byar
+som den sidan kontrollerar. Det utbetalda underhållet är mellanskillnaden
+mellan antalet byar och underhållskostnaden.
+
+Detta innebär att formeln för att avgöra inkomsten per drag är
 
   2 + byar - maximum(0, underhåll - byar),
 
-där underhållet är lika med summan av nivåerna på alla trupper som blivit
-återkallade eller rekryterade.
+där "underhåll" är lika med summan av alla icke-lojala truppers
+erfarenhetsnivåer.
 
 
 REKRYTERING OCH ÅTERKALLNING
 
-Guld kan användas för att rekrytera trupper så länge ledaren är i ett kärntorn
-och det finns åtminstone en ledig ruta i samma borg. Högerklicka och välj
-"Rekrytera" för att rekrytera nya trupper. När du klarat av ett scenario, så
-kommer alla överlevande trupper vara tillgängliga i nästa scenario. Högerklicka
-och välj "Återkalla" för att omrekrytera trupper från tidigare scenarier.
-Återkallandet av en trupp kostar 20 guldstycken. Genom att markera en ledig ruta
-i borgen innan du väljer "Rekrytera", kan du välja var den rekryterade truppen
-hamnar, detta fungerar för både rekrytering och återkallning.
+Trupper kan rekryteras med guld så länge ledaren befinner sig i ett
+kärntorn och om det finns åtminstone en ledig ruta i samma borg.
+Högerklicka på den tomma rutan och välj "Rekrytera" för att rekrytera nya
+trupper från listan som presenteras. Kostnaden för att rekrytera beror på
+truppslaget, men är vanligtvis mellan 10 och 20 guldstycken.
 
-Du kan inte flytta en trupp samma drag som du rekryterat eller återkallat den.
+Efter att ett scenario är avklarat, så kommer alla överlevande trupper att
+vara tillgängliga i nästa scenario. Högerklicka och välj "Återkalla" för
+att återkalla trupper från tidigare scenarier. Återkallandet av en trupp
+kostar 20 guldstycken. En återkallad trupp bibehåller sina tidigare
+egenskaper, såsom nivå, erfarenhetspoäng, och (ibland) erhållna magiska
+föremål. Truppen kommer även att återkallas helt frisk (100% hälsopäng),
+även om den varit skadad i det tidigare scenariet.
+
+Du kan inte förflytta eller anfalla med en trupp samma drag som du
+rekryterat eller återkallat den.
 
 
 TRUPPSLAGENS EGENSKAPER
 
-Varje truppslags egenskaper finns beskrivna under "Truppbeskrivning"  i spelet.
+Varje truppslags egenskaper finns beskrivna under "Truppbeskrivning" i
+spelets hjälp.
 
 
 KARAKTÄRSDRAG
 
-Trupperna har drag som avspeglar deras karaktär. Karaktärsdragen delas ut
-slumpmässigt när trupperna skapas. Varje trupp får två karaktärsdrag. De olika
-karaktärsdragen är följande:
+Trupperna har karaktärsdrag som avspeglar vissa aspekter av dem.
+Karaktärsdragen tilldelas slumpmässigt när trupperna skapas. De flesta
+trupper får två karaktärsdrag. De olika karaktärsdragen är följande:
 
-  Lojal:         Truppen kräver aldrig mer underhåll än ett guldstycke.
-  Stark:         Truppen gör mer skada i närstrid och har lite bättre hälsa.
-  Snabb:         Truppen förflyttar sig längre varje drag men har lite sämre
-hälsa.
-  Stryktålig:    Truppen har bättre hälsa.
-  Intelligent:   Det krävs färre erfarenhetspoäng för att truppen ska befordras
-till nästa nivå.
+  Stark		Truppen vållar 1 extra skada i närstrid och har 2 
+		extra hälsopoäng
+  Snabb		Truppen har ett extra förflyttningspoäng, men 10% 
+		mindre hälsopoäng
+  Tålig		Truppen har 7 mer hälsopoäng än vanligt
+  Intelligent	Truppen kräver 20% mindre erfarenhetspoäng för att 
+		befordras (ej troll)
+
+Det finns även några karaktärsdrag som inte tilldelas slumpmässigt:
+
+  Lojal		Truppen kräver inget underhåll
+  Träffsäker	Truppen vållar 1 extra skada per träff i 
+		distansstrid (endast alver)
+  Vandöd	Truppen är immun mot gift (endast vandöda)
 
 
 FÖRFLYTTNING
 
-När du klickar på en trupp, så blir de rutor dit truppen kan flytta ljusare än
-de andra, som blir skuggade. Klicka på den ruta du vill flytta truppen till. Om
-du flyttar in i en by som inte ägs av dig så tar du över den. Klickar du på en
-ruta som är utom räckhåll för truppen samma drag, så kommer truppen att försöka
-gå dit automatiskt de följande dragen. Du kan lätt avbryta den automatiska
-flyttningen genom att klicka på truppen och ge den andra order.
+När du klickar på en trupp, så blir de rutor dit truppen kan flytta ljusare
+än de andra, som blir skuggade. Klicka på den ruta du vill flytta truppen
+till. Om du förflyttar en trupp in i en by som inte är kontrollerad av dig
+så tar du över den. Klickar du på en ruta som är utom räckhåll för truppen
+samma drag, så kommer truppen att försöka gå dit på egen hand de följande
+dragen. Du kan lätt avbryta den automatiska förflyttningen genom att klicka
+på truppen och ge den andra order.
 
-Du får inte passera genom de rutor som omger en fiende (deras kontrollzon) utan
-att stanna.
+Du kan inte passera genom de rutor som omger en fiende - deras kontrollzon
+- utan att stanna. Dock har trupper på nivå 0 ingen kontrollzon.
 
 
 STRID
 
-Om du flyttar intill en fiendetrupp kan du anfalla den. Klicka på din trupp som
-står intill en fiendetrupp och klicka på fiendetruppen du vill anfalla. Alla
-trupper har ett eller flera vapen de kan attackera med. Vissa vapen, som svärd,
-är närstridsvapen, och några vapen, som pilbågar, är distansvapen.
+Om du flyttar intill en fiendetrupp så kan du anfalla den. Klicka på din
+trupp som står intill en fiendetrupp och klicka därefter på fiendetruppen
+du vill anfalla. Alla trupper har ett eller flera vapen som de kan
+attackera med. Vissa vapen, som svärd, är närstridsvapen, och andra vapen,
+som pilbågar, är distansvapen.
 
-Om du attackerar med ett närstridsvapen så kommer fienden kunna slå tillbaka mot
-dig med sitt närstridsvapen. Om du attackerar med ett distansvapen kommer
-fienden kunna attackera tillbaka med sitt distansvapen, om han/hon har något.
+Om du attackerar med ett närstridsvapen så kommer truppen att kunna slå
+tillbaka mot dig med sitt närstridsvapen. Om du attackerar med ett
+distansvapen så kan truppen slå tillbaka med sitt distansvapen, om den har
+något.
 
-Olika vapen gör olika mycket skada och ger olika antal utfall. T ex gör en
-alvkrigare 5 skadepoäng med sitt svärd varje gång det träffar, och kan slå fyra
-gånger i varje attack. Detta skrivs vanligtvis 5-4.
+Olika vapen vållar olika mycket skada och ger olika antal utfall. T ex kan
+en alvkrigare göra 4 utfall med sitt svärd där varje lyckad träff ger 5
+poäng i skada. Detta skrivs vanligtvis 5-4, vilket betyder 5 skador per
+träff och 4 utfall.
 
-Alla truppers risk att bli träffade avgörs av terrängen de står på. T ex så
-löper de flesta trupper i borgar och byar mindre risk att bli träffade, alver
-löper liten risk att bli träffade i skogen, etc. För att se hur väl en trupp kan
-försvara sig i olika sorters terräng, så välj först truppen genom att klicka på
-den, och flytta sedan pekaren till den terräng du vill undersöka, och truppens
-försvarsprocent visas i övre högra hörnet.
+En trupps risk att bli träffad avgörs av terrängen den står på. T ex så
+löper de flesta trupper i borgar och byar mindre risk att bli träffade, och
+alver löper en relativt liten risk att bli träffade i skogen. För att se
+hur väl en trupp kan försvara sig i olika sorters terräng, välj först
+truppen genom att klicka på den, och flytta sedan pekaren till den terräng
+du vill undersöka. Truppens försvar visas då över rutan du pekar på, samt i
+statuspanelen i övre högra hörnet. Siffran som visas är chansen för truppen
+att undvika en fiendes utfall, i procent.
 
 
-LIVSÅSKÅDNING
+SINNELAG
 
-Alla trupper följer en livsåskådning: lagenlig, neutral eller kaotisk. Deras
-livsåskådning påverkar hur de presterar under olika tider på dygnet. Följande
-tabell illustrerar hur de olika tiderna på dygnet skiljer sig:
+Alla trupper har ett visst sinnelag: redbar, neutral eller ljusskygg.
+Sinnelaget påverkar hur de presterar under olika tider på dygnet. Neutrala
+trupper påverkas inte av tiden på dygnet. Redbara trupper vållar mer skada
+under dagtid och mindre nattetid. Ljusskygga trupper vållar mer skada
+nattetid och mindre under dagtid.
 
-| drag | tid på dygnet |
-------------------------
-|   1  |    gryning    |
-|   2  |    dag        |
-|   3  |    dag        |
-|   4  |    skymning   |
-|   5  |    natt       |
-|   6  |    natt       |
+De två faserna av dag och natt skiljs åt genom att kallas Förmiddag och
+Eftermiddag respektive Första och Andra vakten. Detta visas genom solens
+och månens positioner i tidsgrafiken.
 
-Lagenliga trupper gör 25% mer skada på dagen och 25% mindre skada på natten.
-Kaotiska trupper gör 25% mer skada på natten och 25% mindre skada på dagen.
-Neutrala trupper påverkas inte av dygnets växlingar. Lägg också märke till att i
-spelet så delas dag upp i Förmiddag och Eftermiddag, medan natt delas upp i
-Första och Andra vakten, vilket visas av solens och månens läge på bilden som
-visar vilken tid på dygnet det är.
+Följande tabell visar hur de olika tiderna på dygnet påverkar den vållade
+skadan av redbara och ljusskygga trupper:
+
+  | drag |  tid på dygnet         | redbar | ljusskygg |
+  ------------------------------------------------------
+  |   1  |  gryning               |   -    |     -     |
+  |   2  |  dag (förmiddag)       |  +25%  |    -25%   |
+  |   3  |  day (eftermiddag)     |  +25%  |    -25%   |
+  |   4  |  skymning              |   -    |     -     |
+  |   5  |  natt (första vakten)  |  -25%  |    +25%   |
+  |   6  |  natt (andra vakten)   |  -25%  |    +25%   |
+
+Exempel: föreställ dig en strid mellan en redbar och en ljusskygg trupp,
+där båda ger basskadan 12. Vid gryning och skymning kommer båda att vålla
+12 skadepoäng om de träffar. Under förmiddag och eftermiddag kommer den
+redbara truppen vålla (12 x 1.25) eller 15 poäng, medan den ljusskygga
+truppen ger (12 x 0.75) eller 9 poäng. Under första och andra vakten ger
+den redbara truppen 9 poäng jämfört med den ljusskygga truppens 15.
+
+Om en av trupperna istället var neutral, så skulle den alltid vålla 12
+skadepoäng, oavsett tiden på dygnet.
 
 
 LÄKANDE
 
-Skadade trupper som står i byar kommer att återfå åtta hälsopoäng varje drag.
-Skadade trupper som står intill en allierad trupp som har antingen förmågan
-"vårdar" eller "botar" kommer också att bli friskare. En trupp som inte flyttar
-eller strider under ett drag 'vilar' och återfår två hälsopoäng. Dessa
-hälsopoäng läggs till de hälsopoäng som truppen eventuellt återfår genom läkande
-eller regenerering.
+Skadade trupper som står i byar återfår åtta hälsopoäng varje drag. Skadade
+trupper som står intill en allierad trupp med förmågan att "vårda" eller
+"hela" kommer också att bli friskare. En trupp som inte flyttar eller
+strider under ett drag "vilar" och återfår två hälsopoäng. Dessa hälsopoäng
+läggs till de hälsopoäng som truppen eventuellt återfår genom läkande eller
+regenerering.
 
-En trupp som har förmågan 'vårdar' kan läka upp till 8 hälsopoäng per drag. En
-trupp som har förmågan 'botar', kan läka upp till 18 hälsopoäng per drag.
+En trupp som har förmågan "vårdar" kan läka upp till 8 hälsopoäng
+sammanlagt per drag. En trupp som har förmågan "helar" kan läka upp till 18
+hälsopoäng sammanlagt per drag.
 
-Trupper intill en eller flera trupper som har förmågan "vårdar" kan återfå max
-fyra hälsopoäng per drag, och max åtta hälsopoäng per drag om truppen står
-intill en eller flera trupper som har förmågan "botar". Ju fler trupper som står
-intill en trupp som kan hela desto mindre helas varje enskild trupp. 
+Trupper intill en eller flera trupper som har förmågan "vårdar" kan återfå
+max fyra hälsopoäng per drag, och max åtta hälsopoäng per drag om truppen
+står intill en eller flera trupper som har förmågan "helar". Ju fler
+trupper som står intill en läkande trupp desto mindre helas varje enskild
+trupp.
 
-Ett exempel av 'vårdar' med flera trupper bredvid: 
+Två exempel på hur förmågan "vårdar" fungerar:
 
-Två trupper bredvid en trupp som har förmågan 'vårdar' får 4 hälsopoäng var.
+  Två trupper bredvid en "vårdande" trupp får 4 hälsopoäng var.
 
-Tre trupper bredvid en trupp som har förmågan 'vårdar' får inte 4 hälsopoäng
-var; utan istället får två av dem 3 hälsopoäng vardera och den tredje 2
-hälsopoäng.
+  Tre trupper bredvid en "vårdande" trupp får inte 4 hälsopoäng var;
+  istället får två av dem 3 hälsopoäng vardera och den tredje 2 hälsopoäng.
 
-En trupp kan aldrig återfå mer än 8 hälsopoäng per drag, plus eventuellt 2
-hälsopoäng om den vilar. Därför återfår ett troll som står i en by sålunda
-endast 8 hälsopoäng per drag, inte 16. En trupp som står i en by får dessutom
-inte några extra hälsopoäng från en läkande trupp bredvid den.
+En trupp kan återfå maximalt 8 hälsopoäng per drag, samt eventuellt 2
+ytterligare hälsopoäng om den även vilar. Troll, som har förmågan att
+regenerera, återfår endast 8 hälsopoäng per drag, inte 16. En trupp som
+står i en by får inte några extra hälsopoäng från en läkande trupp bredvid
+den.
 
-"Vårdar" hindrar gift från att göra skada medan "botar" avgiftar truppen. Det
-drag då truppen antingen blir avgiftad, eller får hjälp av en 'vårdare' att
-motverka giftet, så vare sig får eller förlorar den några hälsopoäng.
+"Vårdar" hindrar gift från att göra skada medan "helar" avgiftar truppen.
+Det drag då en trupp blir avgiftad eller får hjälp att förhindra en
+förgiftning, så vare sig återfår eller förlorar den några hälsopoäng.
+
+För mer information om detta, se hjälpen i spelet.
 
 
 ERFARENHET
 
-Trupper får erfarenhet av att strida, och efter att ha fått tillräckligt med
-erfarenhet kommer truppen att befordras till en högre nivå och bli mäktigare.
-Hur mycket erfarenhetspoäng en trupp får beror på fiendetruppens nivå och hur
-striden utföll: om en trupp dödar en fiendetrupp så får den 8 erfarenhetpoäng
-för varje nivå som fiendetruppen hade (4 om fienden var nivå 0), medan trupper
-som överlever en strid utan att döda sin motståndare får 1 erfarenhetspoäng för
-varje nivå som fiendetruppen har. Det vill säga:
+Trupper får erfarenhet av att strida. Efter att ha fått tillräckligt med
+erfarenhet, befordras de till en högre nivå och bli mäktigare. Hur mycket
+erfarenhetspoäng en trupp får beror på fiendetruppens nivå och hur striden
+utföll: om en trupp dödar en fiendetrupp så får den 8 erfarenhetpoäng för
+varje nivå som fiendetruppen hade (4 om fienden var på nivå 0), medan
+trupper som överlever en strid utan att döda sin motståndare får 1
+erfarenhetspoäng för varje nivå som fiendetruppen har. Alltså:
 
-| fiendens  | bonus för | bonus för att |
-|   nivå    | att döda  |  slåss emot   |
------------------------------------------
-| 0         | 4         | 0             |
-| 1         | 8         | 1             |
-| 2         | 16        | 2             |
-| 3         | 24        | 3             |
-| 4         | 32        | 4             |
-| 5         | 40        | 5             |
-| 6         | 48        | 6             |
+  | fiendens | bonus för | bonus för |
+  |   nivå   |  att döda | att slåss |
+  ------------------------------------
+  |     0    |      4    |     0     |
+  |     1    |      8    |     1     |
+  |     2    |     16    |     2     |
+  |     3    |     24    |     3     |
+  |     4    |     32    |     4     |
+  |     5    |     40    |     5     |
+  |     6    |     48    |     6     |
 
 
 GRUPPSPEL
 
 Du kan vara värd för ett gruppspel med din klient, eller ansluta till en
-spelserver och starta ditt spel där. Om du är spelvärd med din klient, så måste
-andra spelare kunna ansluta till port 15000 (TCP) på din dator.
+spelserver och starta ditt spel där. Om du är spelvärd med din klient, så
+måste andra spelare kunna ansluta till port 15000 (TCP) på din dator. Om du
+sitter bakom en brandvägg och vill vara värd för ett spel, så behöver du
+troligtvis ändra dina brandväggsinställningar för att tillåta inkommande
+anslutningar till port 15000, samt konfigurera din brandvägg att
+vidarebefordra (eng. "forward") speltrafik till värddatorn. Du borde inte
+behöva ändra dina brandväggsinställningar för att ansluta till ett spel på
+en publik, eller annan, värddator.
 
-Tillgängliga spelservrar:
+Publika spelservrar:
 
-  server.wesnoth.org        för stabila versioner av spelet
-  devsrv.wesnoth.org        för testversioner av spelet
-  devsrv.wesnoth.org:14999  för CVS-versioner av spelet
+  server.wesnoth.org	för senaste versionen av spelet
+  devsrv.wesnoth.org	för aktuell CVS-version av spelet
 
+Alternativa servrar finns angivna på 
+
+  http://wesnoth.slack.it/?MultiplayerServers
 
 Att starta ett gruppspel
 
-  Steg 1: välj 'Gruppspel' i huvudmenyn och därefter antingen: a) 'Anslut till
-den officiella servern' och skapa spel där, b) 'Anslut till spel' för att
-ansluta till annan server eller till spel som en annan spelare är värd för, c)
-'Var värd för nätverksspel', d) 'Heta stolen-spel', alltså ett gruppspel lokalt
-på din dator, eller e) 'Människa mot dator' för att spela mot datorn.
+  Steg 1: välj "Gruppspel" i huvudmenyn och därefter antingen: 
+    a) "Anslut till den officiella servern" och skapa spel där
+    b) "Anslut till spel" för att ansluta till en annan värddator
+    c) "Var värd för nätverksspel", för att själv vara spelvärd med din 
+       klient
+    d) "Heta stolen-spel", alltså ett gruppspel lokalt på din dator
+    e) "Människa mot dator" för att spela mot datorn
 
-  Steg 2: välj karta och gör inställningar för spelet (stridsdimma, slöja, guld
-per by, osv.)
+  Steg 2: välj karta och gör inställningar för spelet (stridsdimma, slöja, 
+    guld per by, osv) 
 
   Steg 3: gör inställningar för spelare (lag/allianser, guld att starta med,
-grupp) och vänta sedan tills alla nätverksspelare har anslutit till spelet. Du
-ser ordet 'nätverksspelare' utbytt mot spelarens namn allt eftersom som de
-ansluter.
+    grupp) och vänta sedan tills alla nätverksspelare har anslutit till 
+    spelet. Du ser ordet "Nätverksspelare" utbytt mot spelarnas namn allt
+    eftersom som de ansluter.
 
   Steg 4: klicka [Klar!].
+
