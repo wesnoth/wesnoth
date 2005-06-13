@@ -2,6 +2,7 @@ CVS HEAD:
  * unit balancing and modifications: 
    * applied 0.9.2 changes to Thief, Elvish Ranger, Elvish Avenger to female
      units also
+   * steadfast now doubles resistances up to 50%; vulnerabilities are unaffected
  * language and i18n:
    * fixed 'make dist' not removing stamp-po files, causing broken translations
    * updated translations:
@@ -12,19 +13,25 @@ CVS HEAD:
    * user visible error messages are now translatable (#12605)
  * campaigns
    * Eastern Invasion:
-     * made Captured a bit easier
+     * made Captured and Approaching Weldyn easier
      * reduced the turn limit in The Drowned Plains
+   * Heir to the Throne:
+     * made campaign easier on "Easy" level
  * unit graphics and sound improvements:
    * new or modified images for Dwarvish Thunderer
    * new death animations for Dwarvish Thunderer, Elvish Archer
-   * new orc portraits by Pickslide, now used in Heir to the Throne
+   * new orc portraits, now used in Heir to the Throne
+   * new unit portraits for Bandit, Grand Knight, Halberdier, Horseman,
+     Javelineer, Knight, Lancer, Paladin, Peasant, Pikeman, Royal Guard,
+     Swordsman, Thug
+ * server
+   * no longer rejects :control command with "Side not found"
+   * write a summary of commands when a fifo command is not recognized
  * restored dialog titles for multiplayer screens (#13049)
- * wesnothd no longer rejects :control command with "Side not found"
  * --nosound commandline option no longer initializes sound (part of #11669)
  * players can now control multiple sides in multiplayer
  * fixed crash: move_unit_fake with coordinates outside the map (part of #13334)
  * prevented user campaigns from making the game unstartable
- * server now write a summary of available commands when a fifo command is not recognized
 
 Version 0.9.2:
  * user interface improvements:
