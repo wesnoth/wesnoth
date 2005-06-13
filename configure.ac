@@ -9,7 +9,87 @@ AC_PREREQ([2.57])
 define([WESNOTH_VERSION],[0.9.2+cvs])
 
 dnl define([DEFAULT_SERVER],[server.wesnoth.org])
-define([DEFAULT_SERVER],[devsrv.wesnoth.org])
+dnl define([DEFAULT_SERVER],[devsrv.wesnoth.org])
+define([DEFAULT_SERVER],[devsrv.wesnoth.org:14999])
+
+AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [davidnwhite@comcast.net], [wesnoth])
+AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["]DEFAULT_SERVER["], [The default server for this version])
+
+dnl
+dnl Generate wesconfig.h from the information above
+dnl
+AC_CONFIG_COMMANDS([src/wesconfig.h],
+		   [cat > src/wesconfig.h <<EOF
+#ifndef WESCONFIG_H_INCLUDED
+#define WESCONFIG_H_INCLUDED
+
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#else
+# define VERSION "]WESNOTH_VERSION["
+# define WESNOTH_DEFAULT_SERVER "]DEFAULT_SERVER["
+# define PACKAGE "wesnoth"
+# ifndef LOCALEDIR
+#  define LOCALEDIR "translations"
+# endif
+#endif
+
+#endif
+EOF
+])
+
+AC_REVISION([$Revision$])
+
+AC_CONFIG_AUX_DIR([config])
+AC_CONFIG_SRCDIR([src/actions.cpp])
+AC_CONFIG_HEADER([config.h])
+AC_CANONICAL_BUILD
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
+AM_INIT_AUTOMAKE([foreign 1.5])
+AM_MAINTAINER_MODE
+AM_GNU_GETTEXT([external])
+
+#######################################################################
+# Configuration options                                               #
+#######################################################################
+
+AC_ARG_ENABLE([debug],
+	      AS_HELP_STRING([--enable-debug], [enable debug in wesnoth]),
+	      [if test "x${enableval}" = "xyes" ; then
+                   CXXFLAGS="$CXXFLAGS -DDEBUG -O0 -ggdb3"
+	       fi])
+
+AC_ARG_ENABLE([static],
+              AS_HELP_STRING([--enable-static], [enable static building of wesnoth]),
+	      [static=$enableval],
+	      [static=no])
+
+AC_ARG_ENABLE([lite],
+              AS_HELP_STRING([--enable-lite], [enable lite version of wesnoth (without music or large images)]),
+	      [lite=$enableval],
+	      [lite=no])
+
+AC_ARG_ENABLE([tinygui],
+              AS_HELP_STRING([--enable-tinygui], [enable GUI reductions for resolutions down to 320x240 (PDAs)]),
+	      [tinygui=$enableval],
+	      [tinygui=no])
+
+if test "x$tinygui" = "xyes"
+then
+	CPPFLAGS="$CPPFLAGS -DUSE_TINY_GUI"
+fi
+AM_CONDITIONAL([TINYGUI], [test "x$tinygui" = "xyes"])
+
+DATADIR=$PACKAGE
+AC_ARG_WITH([datadir-name],
+            AS_HELP_STRING([--with-datadir-name@<:@=DIR@:>@], [change name of data directory @<:@wesnoth@:>@]),
+	      [case "${withval}" in
+	       yes)
+			DATADIR="wesnoth"
+			;;
+		no)
+			;;
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [davidnwhite@comcast.net], [wesnoth])
 AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["]DEFAULT_SERVER["], [The default server for this version])
