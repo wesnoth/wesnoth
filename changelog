@@ -17,6 +17,7 @@ CVS HEAD:
      * reduced the turn limit in The Drowned Plains
    * Heir to the Throne:
      * made campaign easier on "Easy" level
+     * fixed Hasty Alliance crash: avoid cavewall endpoints (part of #13334)
  * unit graphics and sound improvements:
    * new or modified images for Dwarvish Thunderer
    * new death animations for Dwarvish Thunderer, Elvish Archer
@@ -30,7 +31,7 @@ CVS HEAD:
  * restored dialog titles for multiplayer screens (#13049)
  * --nosound commandline option no longer initializes sound (part of #11669)
  * players can now control multiple sides in multiplayer
- * fixed crash: move_unit_fake with coordinates outside the map (part of #13334)
+ * fixed crash: move_unit_fake with illegal coordinates (part of #13334)
  * prevented user campaigns from making the game unstartable
 
 Version 0.9.2:
