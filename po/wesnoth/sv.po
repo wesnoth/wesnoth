@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-14 12:31+0200\n"
-"PO-Revision-Date: 2005-06-14 01:03+0200\n"
+"PO-Revision-Date: 2005-06-14 18:56+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -1559,7 +1559,7 @@ msgstr "4s - Lagunen"
 msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "settings of 1G per village."
-msgstr "Fyra grupper slåss om herraväldet. 1 guld per by rekommenderas."
+msgstr "Fyra fraktioner slåss om herraväldet. 1 guld per by rekommenderas."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
@@ -1685,10 +1685,10 @@ msgid ""
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
 msgstr ""
-"Denna karta lämpar sig väl för att testa två grupper, eftersom den är "
+"Denna karta lämpar sig väl för att testa två fraktioner, eftersom den är "
 "tämligen välbalanserad.\n"
-"Om du låter datorn spela mot sig själv, så kan du se hur bra en grupp klarar "
-"sig mot den andra."
+"Om du låter datorn spela mot sig själv, så kan du se hur bra en fraktion "
+"klarar sig mot den andra."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
 msgid "Basic Training"
@@ -3580,6 +3580,9 @@ msgid ""
 "Steadfast:\n"
 "This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
+"Ståndaktig:\n"
+"Denna trupp fördubblar sitt försvar, till ett maximum av 50%, när den "
+"försvarar sig."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -8308,9 +8311,8 @@ msgid "defender vulnerability vs"
 msgstr "försvararens sårbarhet för"
 
 #: src/actions.cpp:599
-#, fuzzy
 msgid " (+steadfast)"
-msgstr "ståndaktig"
+msgstr "(+ståndaktig)"
 
 #: src/actions.cpp:661
 msgid "(both should survive)"
@@ -8782,9 +8784,8 @@ msgid "Choose your preferred language:"
 msgstr "Välj språk: "
 
 #: src/game.cpp:1305
-#, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
-msgstr "Kartan kunde inte öppnas: "
+msgstr "Följande extrakampanjer var felaktiga och kunde inte öppnas: "
 
 #: src/game.cpp:1317
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -8914,16 +8915,15 @@ msgstr "Framåt >"
 
 #: src/help.cpp:2286
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Referens till okänt ämne: "
 
 #: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjälp om Kampen om Wesnoth"
 
 #: src/help.cpp:2708
-#, fuzzy
 msgid "Parse error when parsing help text: "
-msgstr "Fel under spel: "
+msgstr "Tolkningsfel när hjälptexten tolkades: "
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9051,11 +9051,11 @@ msgstr "(Tom plats)"
 
 #: src/multiplayer_connect.cpp:455
 msgid "No non-random sides in the current era"
-msgstr "Inga fördefinierade grupper i denna era"
+msgstr "Inga fördefinierade sidor i denna era"
 
 #: src/multiplayer_connect.cpp:471
 msgid "Unable to find a leader type for faction $faction"
-msgstr "Kan ej finna lämplig ledare för gruppen $faction"
+msgstr "Kan ej finna lämplig ledare för fraktionen $faction"
 
 #: src/multiplayer_connect.cpp:479 src/multiplayer_lobby.cpp:105
 #: src/multiplayer_wait.cpp:145
@@ -9072,7 +9072,7 @@ msgstr "Spelare/Typ"
 
 #: src/multiplayer_connect.cpp:493
 msgid "Faction"
-msgstr "Grupp"
+msgstr "Fraktion"
 
 #: src/multiplayer_connect.cpp:495
 msgid "Color"
@@ -9325,7 +9325,7 @@ msgstr "Hämtar spelinformation..."
 
 #: src/multiplayer_wait.cpp:180
 msgid "No multiplayer sides available in this game"
-msgstr "Det finns inga gruppspelssidor tillgängliga i detta spel."
+msgstr "Det finns inga sidor för gruppspel tillgängliga i detta spel."
 
 #: src/multiplayer_wait.cpp:207
 msgid "Era not available"
@@ -9333,7 +9333,7 @@ msgstr "Eran ej tillgänglig"
 
 #: src/multiplayer_wait.cpp:212
 msgid "No multiplayer sides found"
-msgstr "Inga gruppspelssidor funna"
+msgstr "Inga sidor för gruppspel funna"
 
 #: src/multiplayer_wait.cpp:229
 msgid "Choose your side:"
@@ -9946,14 +9946,3 @@ msgstr "redbar"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutral"
-
-#~ msgid ""
-#~ "Steadfast:\n"
-#~ "This unit takes half normal damage when it did not initiate the attack."
-#~ msgstr ""
-#~ "Ståndaktig:\n"
-#~ "Den här truppen tar halva nominella skadan om den inte anfaller själv "
-#~ "först."
-
-#~ msgid "Halved"
-#~ msgstr "Halverad"
