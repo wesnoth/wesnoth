@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-05 17:18+0200\n"
+"POT-Creation-Date: 2005-06-14 12:36+0200\n"
 "PO-Revision-Date: 2005-05-25 19:02+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
@@ -71,7 +71,9 @@ msgstr "Vaincre Slowhand"
 #: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:96
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:27
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:28
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:35
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:30
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:271
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:321
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:43
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:29
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:201
@@ -84,7 +86,9 @@ msgstr "Mort de Kapou'e"
 #: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:100
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:31
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:32
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:39
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:34
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:275
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:325
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:47
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:205
 msgid "Death of Grüü"
@@ -93,7 +97,9 @@ msgstr "Mort de Grüü"
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:32
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:40
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:47
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:42
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:283
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:329
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:55
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:33
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:209
@@ -107,7 +113,7 @@ msgstr "Fin des tours atteint"
 #: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:117
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:44
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:49
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:55
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:50
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:63
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:63
 msgid "Kapou'e"
@@ -419,7 +425,8 @@ msgstr "Vaincre Ar Dant"
 #: data/scenarios/Son_Of_The_Black_Eye/Desert_Of_Death.cfg:36
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:36
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:43
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:38
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:279
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:51
 msgid "Death of a Shaman"
 msgstr "Mort d'un chaman"
@@ -917,27 +924,24 @@ msgstr ""
 msgid "The Siege Of Barag Gór"
 msgstr "Le Siège de Barag Gór"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:24
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:26
 msgid "Rescue the Shamans"
 msgstr "Sauver les chamans"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:27
-msgid "Bring the Shamans and Kapou'e to the sign post"
-msgstr "Amener les chamans et Kapou'e au poteau de direction"
-
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:69
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:64
 msgid "Etheliel"
 msgstr "Etheliel"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:87
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:82
 msgid "Rugh"
 msgstr "Rugh"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:159
-msgid "Here is Barag Gor."
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:154
+#, fuzzy
+msgid "Here is Barag Gór."
 msgstr "Voici Barag Gor."
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:163
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:158
 msgid ""
 "Oh no! They are besieged by elves. We must help our brothers to get rid of "
 "this mob. But these filthy elves are so numerous."
@@ -945,34 +949,35 @@ msgstr ""
 "Oh non ! Ils sont assiégés par des elfes. Nous devons aider nos frères à se "
 "débarasser de cette engeance. Mais ces elfes répugnants sont si nombreux."
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:167
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:162
 msgid "I have a subtle plan, chief."
 msgstr "J'ai un plan subtil, chef."
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:171
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:166
 msgid "Which plan?"
 msgstr "Quel plan ?"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:175
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:170
 msgid "We go and we kill all of them. What do you think?"
 msgstr "On fonce et on les tue tous. T'en dis quoi, chef ?"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:179
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:174
 msgid "..."
 msgstr "..."
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:183
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:178
+#, fuzzy
 msgid ""
-"Then, Kapou'e launched his desperate attack to stop the siege of Barag Gor."
+"Then, Kapou'e launched his desperate attack to stop the siege of Barag Gór."
 msgstr ""
 "Alors, Kapou'e lança son attaque désespérée pour mettre fin au siège de "
 "Barag Gor."
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:202
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:197
 msgid "Jetto"
 msgstr "Jetto"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:219
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:214
 msgid ""
 "Freedom! Many thanks, Son of The Black Eye. I'm Jetto, master of assassins, "
 "now you can count on the assassins guild to help you in your quest!"
@@ -981,13 +986,11 @@ msgstr ""
 "assassins, vous pouvez maintenant compter sur la guilde des assassins pour "
 "vous aider dans votre quête !"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:249
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:297
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:244
 msgid "They are retreating at last!"
 msgstr "Ils battent enfin en retaite !"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:253
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:301
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:248
 msgid ""
 "We're not out of the woods yet. I can see that more are pouring from the "
 "forest. We are not yet safe."
@@ -995,8 +998,7 @@ msgstr ""
 "Nous ne sommes pas encore sortis de l'auberge. D'autres sortent encore des "
 "bois. Nous ne sommes pas en sécurité."
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:257
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:305
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:252
 msgid ""
 "You are right, we have to leave to a safer place. You have helped us. Would "
 "you help us again and escort us to the Harbour of Tirigaz?"
@@ -1005,13 +1007,11 @@ msgstr ""
 "aidés. Nous aidereriez-vous à nouveau en nous escortant jusqu'au port de "
 "Tirigaz ?"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:261
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:309
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:256
 msgid "Yes, I need to ask for assistance from the whole council. I'm with you."
 msgstr "Oui, je dois demander de l'aide au conseil. Je suis des vôtres."
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:265
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:313
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:260
 msgid ""
 "Excellent. This is a dangerous journey, as we have to take a road near the "
 "elvish forest. This is the road near that yellow farm."
@@ -1019,7 +1019,12 @@ msgstr ""
 "Excellent. C'est un voyage dangereux, nous devrons prendre la route le long "
 "de la forêt elfique. Celle près de la ferme jaune."
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:340
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:267
+#, fuzzy
+msgid "Bring the Shamans and then Kapou'e to the signpost"
+msgstr "Amener les chamans et Kapou'e au poteau de direction"
+
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:311
 msgid ""
 "We're safe, finally. Hurry up Kapou'e, come with us, we need to reach "
 "Tirigaz as soon as possible."
@@ -1027,29 +1032,36 @@ msgstr ""
 "Nous sommes enfin en sécurité. Hâtez-vous Kapou'e, venez avec nous, nous "
 "devons atteindre Tirigaz le plus vite possible."
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:366
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:317
+#, fuzzy
+msgid "Bring Kapou'e to the sign post"
+msgstr "Amener les chamans et Kapou'e au poteau de direction"
+
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:356
 msgid "Filiel"
 msgstr "Filiel"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:373
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:363
 msgid "Aha! Surprise! You thought you could cross elvish lands safely!"
 msgstr ""
 "Aha ! Surprise ! Vous pensiez peut-être pouvoir traverser les terres des "
 "elfes sans encombre ?"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:394
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:383
 msgid "We've made it! Our journey is still long. Hurry up, my people!"
 msgstr ""
 "Nous avons réussi ! Notre voyage est encore long. Hâtons-nous mes frères !"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:414
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:403
 msgid "They are destroying our castle! To my rescue my merry Elves!"
 msgstr ""
 "Ils détruisent notre château ! Venez à mon secours mes chers frères elfes !"
 
-#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:426
+#: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:415
+#, fuzzy
 msgid ""
-"At your service, Etheliel. Let push these evil creatures back to their quag!"
+"At your service, Etheliel. Let us push these evil creatures back to their "
+"quag!"
 msgstr ""
 "À votre service, Etheliel. Repoussons ces viles créatures dans leurs "
 "bourbiers !"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-10 10:28+0200\n"
+"POT-Creation-Date: 2005-06-14 12:31+0200\n"
 "PO-Revision-Date: 2005-06-05 21:11+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 msgstr "Bepa-Roman.ttf,FreeSans.ttf,Vera.ttf,sazanami-gothic.ttf"
 
-#: data/game.cfg:31
+#: data/game.cfg:30
 msgid "Binary Saves"
 msgstr "Zapis gry w formacie binarnym"
 
-#: data/game.cfg:38
+#: data/game.cfg:37
 msgid "Show Combat"
 msgstr "Pokaż walkę"
 
@@ -3463,7 +3463,7 @@ msgstr ""
 "w wiosce lub u uzdrowiciela."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
-#: data/units/Paladin.cfg:21 data/units/Saurian_Icecaster.cfg:20
+#: data/units/Paladin.cfg:22 data/units/Saurian_Icecaster.cfg:20
 #: data/units/Saurian_Tribalist.cfg:21
 msgid "heals"
 msgstr "leczy"
@@ -3519,7 +3519,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:452 src/actions.cpp:561
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:452 src/actions.cpp:570
 msgid "leadership"
 msgstr "dowodzenie"
 
@@ -3592,14 +3592,12 @@ msgstr "harcownik"
 #: data/translations/english.cfg:81
 msgid ""
 "Steadfast:\n"
-"This unit takes half normal damage when it did not initiate the attack."
+"This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
-"Wytrwały:\n"
-"Ta jednostka otrzymuje podczas obrony połowę obrażeń."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:588
+#: data/units/Merman_Hoplite.cfg:26
 msgid "steadfast"
 msgstr "niezłomny"
 
@@ -3907,7 +3905,7 @@ msgid "crush"
 msgstr "zgniatająca"
 
 #: data/units/Ancient_Wose.cfg:39 data/units/Arch_Mage.cfg:37
-#: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:33
+#: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:34
 #: data/units/Cave_Spider.cfg:47 data/units/Cuttle_Fish.cfg:33
 #: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:20
 #: data/units/Deathmaster.cfg:32 data/units/Drake_Enforcer.cfg:43
@@ -3955,7 +3953,7 @@ msgstr "zgniatająca"
 #: data/units/Soulless.cfg:111 data/units/Soulless.cfg:186
 #: data/units/Soulless.cfg:262 data/units/Soulless.cfg:337
 #: data/units/Soulless.cfg:412 data/units/Soulless.cfg:487
-#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:20 data/units/Troll.cfg:25
+#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:21 data/units/Troll.cfg:25
 #: data/units/Troll_Hero.cfg:22 data/units/Troll_Rocklobber.cfg:25
 #: data/units/Troll_Rocklobber.cfg:43 data/units/Troll_Warrior.cfg:25
 #: data/units/Troll_Whelp.cfg:25 data/units/Walking_Corpse.cfg:40
@@ -4087,10 +4085,10 @@ msgstr "sztylet"
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
 #: data/units/Fire_Dragon.cfg:23 data/units/General.cfg:29
 #: data/units/Ghoul.cfg:20 data/units/Goblin_Knight.cfg:21
-#: data/units/Grand_Knight.cfg:22 data/units/Grand_Marshal.cfg:25
+#: data/units/Grand_Knight.cfg:23 data/units/Grand_Marshal.cfg:25
 #: data/units/Gryphon.cfg:23 data/units/Gryphon_Master.cfg:25
-#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:65
-#: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:22
+#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:66
+#: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:23
 #: data/units/Lieutenant.cfg:25 data/units/Longbowman.cfg:23
 #: data/units/Lord.cfg:23 data/units/Lord.cfg:98
 #: data/units/Master_Bowman.cfg:22 data/units/Merman_Triton.cfg:36
@@ -4111,12 +4109,12 @@ msgstr "sztylet"
 #: data/units/Poacher.cfg:26 data/units/Princess.cfg:24
 #: data/units/Princess.cfg:62 data/units/Revenant.cfg:37
 #: data/units/Rogue.cfg:22 data/units/Rogue.cfg:40 data/units/Rogue.cfg:82
-#: data/units/Rogue.cfg:100 data/units/Royal_Guard.cfg:24
+#: data/units/Rogue.cfg:100 data/units/Royal_Guard.cfg:25
 #: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:25
 #: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:31
 #: data/units/Skeletal_Dragon.cfg:50 data/units/Skeleton.cfg:38
 #: data/units/Sleeping_Gryphon.cfg:19 data/units/Spectre.cfg:25
-#: data/units/Swordsman.cfg:24 data/units/Thief.cfg:85
+#: data/units/Swordsman.cfg:25 data/units/Thief.cfg:85
 #: data/units/Thief.cfg:186 data/units/Trapper.cfg:26
 #: data/units/Vampire_Bat.cfg:20 data/units/Vampire_Lady.cfg:21
 #: data/units/Wolf_Rider.cfg:22 data/units/Wraith.cfg:25
@@ -4127,7 +4125,7 @@ msgstr "sieczna"
 #: data/units/Assassin.cfg:39 data/units/Assassin.cfg:118
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:190 src/actions.cpp:579
+#: data/units/Thief.cfg:190 src/actions.cpp:588
 msgid "backstab"
 msgstr "cios w plecy"
 
@@ -4152,7 +4150,7 @@ msgstr "Zabójczyni"
 msgid "Bandit"
 msgstr "Bandyta"
 
-#: data/units/Bandit.cfg:16
+#: data/units/Bandit.cfg:17
 #, fuzzy
 msgid ""
 "Armed with a heavy mace, Bandits are adept at robbing and killing at night. "
@@ -4163,7 +4161,7 @@ msgstr ""
 "zabójstw. Noszą brązowe płaszcze i czarne kaptury, które kradną mieszkającym "
 "w pobliżu wieśniakom, gdy ci nie walczą z najeźdźcami."
 
-#: data/units/Bandit.cfg:32 data/units/Drake_Enforcer.cfg:42
+#: data/units/Bandit.cfg:33 data/units/Drake_Enforcer.cfg:42
 #: data/units/Drake_Gladiator.cfg:62 data/units/Great_Troll.cfg:21
 #: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:19
 #: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:102
@@ -4214,8 +4212,8 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:23
 #: data/units/Elvish_Sharpshooter.cfg:117 data/units/Fighter.cfg:20
 #: data/units/Fighter.cfg:61 data/units/General.cfg:28
-#: data/units/Grand_Knight.cfg:20 data/units/Grand_Marshal.cfg:24
-#: data/units/Horse_Lord.cfg:22 data/units/Knight.cfg:21
+#: data/units/Grand_Knight.cfg:21 data/units/Grand_Marshal.cfg:24
+#: data/units/Horse_Lord.cfg:22 data/units/Knight.cfg:22
 #: data/units/Lieutenant.cfg:24 data/units/Longbowman.cfg:22
 #: data/units/Lord.cfg:22 data/units/Lord.cfg:97
 #: data/units/Master_Bowman.cfg:21 data/units/Mounted_Captain.cfg:25
@@ -4228,10 +4226,10 @@ msgstr ""
 #: data/units/Orcish_Grunt.cfg:19 data/units/Orcish_Leader.cfg:21
 #: data/units/Orcish_Ruler.cfg:21 data/units/Orcish_Sovereign.cfg:21
 #: data/units/Orcish_Warlord.cfg:19 data/units/Orcish_Warrior.cfg:19
-#: data/units/Paladin.cfg:25 data/units/Princess.cfg:23
-#: data/units/Princess.cfg:61 data/units/Royal_Guard.cfg:23
+#: data/units/Paladin.cfg:26 data/units/Princess.cfg:23
+#: data/units/Princess.cfg:61 data/units/Royal_Guard.cfg:24
 #: data/units/Sea_Orc.cfg:19 data/units/Sergeant.cfg:24
-#: data/units/Swordsman.cfg:23
+#: data/units/Swordsman.cfg:24
 msgid "sword"
 msgstr "miecz"
 
@@ -4344,10 +4342,10 @@ msgstr "łuk"
 #: data/units/General.cfg:52 data/units/Giant_Scorpion.cfg:20
 #: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:40
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
-#: data/units/Grand_Knight.cfg:38 data/units/Grand_Marshal.cfg:48
-#: data/units/Halbardier.cfg:24 data/units/Horseman.cfg:22
-#: data/units/Javelineer.cfg:20 data/units/Javelineer.cfg:48
-#: data/units/Knight.cfg:38 data/units/Lancer.cfg:22
+#: data/units/Grand_Knight.cfg:39 data/units/Grand_Marshal.cfg:48
+#: data/units/Halbardier.cfg:25 data/units/Horseman.cfg:23
+#: data/units/Javelineer.cfg:21 data/units/Javelineer.cfg:49
+#: data/units/Knight.cfg:39 data/units/Lancer.cfg:23
 #: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:40
 #: data/units/Lord.cfg:40 data/units/Master_Bowman.cfg:34
 #: data/units/Merman.cfg:24 data/units/Merman_Entangler.cfg:20
@@ -4362,9 +4360,9 @@ msgstr "łuk"
 #: data/units/Orcish_Leader.cfg:38 data/units/Orcish_Ruler.cfg:39
 #: data/units/Orcish_Shaman.cfg:37 data/units/Orcish_Shaman.cfg:96
 #: data/units/Orcish_Shaman.cfg:155 data/units/Orcish_Sovereign.cfg:43
-#: data/units/Orcish_Warlord.cfg:31 data/units/Paladin.cfg:43
-#: data/units/Peasant.cfg:21 data/units/Peasant.cfg:34
-#: data/units/Pikeman.cfg:23 data/units/Pirate_Galleon.cfg:18
+#: data/units/Orcish_Warlord.cfg:31 data/units/Paladin.cfg:44
+#: data/units/Peasant.cfg:22 data/units/Peasant.cfg:35
+#: data/units/Pikeman.cfg:24 data/units/Pirate_Galleon.cfg:18
 #: data/units/Poacher.cfg:43 data/units/Saurian.cfg:26
 #: data/units/Saurian.cfg:44 data/units/Saurian_Ambusher.cfg:24
 #: data/units/Saurian_Ambusher.cfg:42 data/units/Saurian_Flanker.cfg:25
@@ -4481,8 +4479,8 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:27 data/units/Dwarvish_Stalwart.cfg:41
 #: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:39
 #: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
-#: data/units/Horseman.cfg:21 data/units/Javelineer.cfg:19
-#: data/units/Javelineer.cfg:47 data/units/Merman_Entangler.cfg:19
+#: data/units/Horseman.cfg:22 data/units/Javelineer.cfg:20
+#: data/units/Javelineer.cfg:48 data/units/Merman_Entangler.cfg:19
 #: data/units/Merman_Hunter.cfg:20 data/units/Merman_Hunter.cfg:60
 #: data/units/Merman_Javelineer.cfg:20 data/units/Merman_Javelineer.cfg:60
 #: data/units/Merman_Netcaster.cfg:19 data/units/Merman_Spearman.cfg:20
@@ -4496,10 +4494,10 @@ msgstr ""
 msgid "spear"
 msgstr "włócznia"
 
-#: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:39
-#: data/units/Horseman.cfg:23 data/units/Knight.cfg:39
-#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:462
-#: src/actions.cpp:570
+#: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:40
+#: data/units/Horseman.cfg:24 data/units/Knight.cfg:40
+#: data/units/Lancer.cfg:24 data/units/Paladin.cfg:45 src/actions.cpp:462
+#: src/actions.cpp:579
 msgid "charge"
 msgstr "szarża"
 
@@ -4522,7 +4520,7 @@ msgstr ""
 msgid "gaze"
 msgstr "spojrzenie"
 
-#: data/units/Cockatrice.cfg:38 src/actions.cpp:877 src/actions.cpp:1044
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:883 src/actions.cpp:1050
 msgid "stone"
 msgstr "zamiana w kamień"
 
@@ -4947,9 +4945,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:46
-#: data/units/Goblin_Impaler.cfg:26 data/units/Halbardier.cfg:28
-#: data/units/Halbardier.cfg:69 data/units/Javelineer.cfg:24
-#: data/units/Pikeman.cfg:27 data/units/Spearman.cfg:43
+#: data/units/Goblin_Impaler.cfg:26 data/units/Halbardier.cfg:29
+#: data/units/Halbardier.cfg:70 data/units/Javelineer.cfg:25
+#: data/units/Pikeman.cfg:28 data/units/Spearman.cfg:43
 msgid "firststrike"
 msgstr "pierwsze uderzenie"
 
@@ -5719,7 +5717,7 @@ msgstr ""
 "Rozczochrani rozbójnicy są zazwyczaj wysyłani jako zwiadowcy przez bandyckie "
 "gangi, aby znaleźli miejsca lub ludzi wartych rabunku."
 
-#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:19
+#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:20
 #: data/units/Troll.cfg:24 data/units/Troll_Hero.cfg:21
 msgid "club"
 msgstr "maczuga"
@@ -5933,7 +5931,7 @@ msgstr ""
 msgid "Grand Knight"
 msgstr "Wielki rycerz"
 
-#: data/units/Grand_Knight.cfg:17
+#: data/units/Grand_Knight.cfg:18
 #, fuzzy
 msgid ""
 "The most powerful mounted warriors of any race, Grand Knights have reached "
@@ -5942,8 +5940,8 @@ msgstr ""
 "Najpotężniejsi jeźdźdzy którejkolwiek z ras, Wielcy rycerze osiągneli szczyt "
 "zdolności władania mieczem i lancą."
 
-#: data/units/Grand_Knight.cfg:37 data/units/Knight.cfg:37
-#: data/units/Lancer.cfg:21 data/units/Paladin.cfg:42
+#: data/units/Grand_Knight.cfg:38 data/units/Knight.cfg:38
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43
 msgid "lance"
 msgstr "lanca"
 
@@ -6042,7 +6040,7 @@ msgstr ""
 msgid "Halberdier"
 msgstr "Halabardzista"
 
-#: data/units/Halbardier.cfg:19
+#: data/units/Halbardier.cfg:20
 #, fuzzy
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
@@ -6090,7 +6088,7 @@ msgstr "morganstern"
 msgid "Horseman"
 msgstr "Jeździec"
 
-#: data/units/Horseman.cfg:18
+#: data/units/Horseman.cfg:19
 #, fuzzy
 msgid ""
 "Trained from childhood to ride and to follow a strict code of honor, "
@@ -6138,7 +6136,7 @@ msgstr ""
 msgid "Javelineer"
 msgstr "Oszczepnik"
 
-#: data/units/Javelineer.cfg:16
+#: data/units/Javelineer.cfg:17
 #, fuzzy
 msgid ""
 "Javelineers have mastered the use of the pointy sticks they were given as "
@@ -6155,7 +6153,7 @@ msgstr ""
 msgid "Knight"
 msgstr "Rycerz"
 
-#: data/units/Knight.cfg:18
+#: data/units/Knight.cfg:19
 #, fuzzy
 msgid ""
 "Knights are skilled in the use of both lance and sword. With the lance, they "
@@ -6168,7 +6166,7 @@ msgstr ""
 msgid "Lancer"
 msgstr "Kopijnik"
 
-#: data/units/Lancer.cfg:18
+#: data/units/Lancer.cfg:19
 #, fuzzy
 msgid ""
 "Lancers are some of the bravest and most feared riders in all of Wesnoth. "
@@ -6304,7 +6302,7 @@ msgstr "promień światła"
 
 #: data/units/Mage_of_Light.cfg:47 data/units/Mage_of_Light.cfg:119
 #: data/units/Mermaid_Diviner.cfg:48 data/units/Mermaid_Priestess.cfg:46
-#: data/units/Paladin.cfg:27 data/units/White_Mage.cfg:46
+#: data/units/Paladin.cfg:28 data/units/White_Mage.cfg:46
 #: data/units/White_Mage.cfg:117
 msgid "holy"
 msgstr "święty"
@@ -6982,7 +6980,7 @@ msgstr ""
 msgid "Paladin"
 msgstr "Paladyn"
 
-#: data/units/Paladin.cfg:22
+#: data/units/Paladin.cfg:23
 #, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have all the skills of the Knight, "
@@ -6995,7 +6993,7 @@ msgstr ""
 msgid "Peasant"
 msgstr "Wieśniak"
 
-#: data/units/Peasant.cfg:17
+#: data/units/Peasant.cfg:18
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not fearsome by nature, they will stubbornly defend their "
@@ -7007,7 +7005,7 @@ msgstr ""
 "musisz rzucić wieśniaków do walki jasne jest, że brakuje ci lepszych "
 "jednostek."
 
-#: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
+#: data/units/Peasant.cfg:21 data/units/Peasant.cfg:34
 msgid "pitchfork"
 msgstr "widły"
 
@@ -7015,7 +7013,7 @@ msgstr "widły"
 msgid "Pikeman"
 msgstr "Pikinier"
 
-#: data/units/Pikeman.cfg:19
+#: data/units/Pikeman.cfg:20
 msgid ""
 "Pikemen are more experienced soldiers who have changed their spears for long "
 "pikes. Because of the length of their weapons, they always strike first in "
@@ -7028,7 +7026,7 @@ msgstr ""
 "atakują, nawet podczas obrony. Są szczególnie skuteczni w zwalczaniu "
 "kawalerii, choć walka w zwarciu sprawia pewne trudności."
 
-#: data/units/Pikeman.cfg:22
+#: data/units/Pikeman.cfg:23
 msgid "pike"
 msgstr "pika"
 
@@ -7135,7 +7133,7 @@ msgstr "Łotrzyca"
 msgid "Royal Guard"
 msgstr "Królewski gwardzista"
 
-#: data/units/Royal_Guard.cfg:20
+#: data/units/Royal_Guard.cfg:21
 msgid ""
 "Members of the Royal Guard are hand picked from the strongest and sturdiest "
 "of the army. They are deployed only in critical situations and, so far, have "
@@ -7494,7 +7492,7 @@ msgstr ""
 msgid "Swordsman"
 msgstr "Fechmistrz"
 
-#: data/units/Swordsman.cfg:20
+#: data/units/Swordsman.cfg:21
 #, fuzzy
 msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
@@ -7542,7 +7540,7 @@ msgstr "Złodziejka"
 msgid "Thug"
 msgstr "Siepacz"
 
-#: data/units/Thug.cfg:16
+#: data/units/Thug.cfg:17
 #, fuzzy
 msgid "Thugs are bandits who use large clubs to beat their victims."
 msgstr ""
@@ -8167,11 +8165,11 @@ msgstr "wręcz"
 msgid "ranged"
 msgstr "na odległość"
 
-#: src/actions.cpp:432 src/actions.cpp:540
+#: src/actions.cpp:432 src/actions.cpp:549
 msgid "base damage"
 msgstr "obrażenia podstawowe"
 
-#: src/actions.cpp:462 src/actions.cpp:570 src/actions.cpp:579
+#: src/actions.cpp:462 src/actions.cpp:579 src/actions.cpp:588
 msgid "Doubled"
 msgstr "Podwojone"
 
@@ -8183,13 +8181,9 @@ msgstr "odporność atakującego na"
 msgid "attacker vulnerability vs"
 msgstr "czułość atakującego na"
 
-#: src/actions.cpp:484 src/actions.cpp:610
+#: src/actions.cpp:484 src/actions.cpp:616
 msgid "total damage"
 msgstr "suma obrażeń"
-
-#: src/actions.cpp:588
-msgid "Halved"
-msgstr "Zmniejszona o połowę"
 
 #: src/actions.cpp:596
 msgid "defender resistance vs"
@@ -8199,47 +8193,52 @@ msgstr "odporność obrońcy na"
 msgid "defender vulnerability vs"
 msgstr "czułość obrońcy na"
 
-#: src/actions.cpp:655
+#: src/actions.cpp:599
+#, fuzzy
+msgid " (+steadfast)"
+msgstr "niezłomny"
+
+#: src/actions.cpp:661
 msgid "(both should survive)"
 msgstr "(obie powinny przetrwać)"
 
-#: src/actions.cpp:657
+#: src/actions.cpp:663
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Pr[zabija/zabity przez/obie przetrwają]"
 
-#: src/actions.cpp:861 src/actions.cpp:1027 src/display.cpp:1038
+#: src/actions.cpp:867 src/actions.cpp:1033 src/display.cpp:1038
 msgid "poisoned"
 msgstr "zatruty"
 
-#: src/actions.cpp:866 src/actions.cpp:1032 src/display.cpp:1034
+#: src/actions.cpp:872 src/actions.cpp:1038 src/display.cpp:1034
 msgid "slowed"
 msgstr "spowolniony"
 
-#: src/actions.cpp:1917
+#: src/actions.cpp:1923
 msgid "Ambushed!"
 msgstr "Zasadzka!"
 
-#: src/actions.cpp:1951
+#: src/actions.cpp:1957
 msgid "Friendly unit sighted"
 msgstr "Zauważono przyjazną jednostkę"
 
-#: src/actions.cpp:1953
+#: src/actions.cpp:1959
 msgid "Enemy unit sighted!"
 msgstr "Zauważono jednostkę wroga!"
 
-#: src/actions.cpp:1958
+#: src/actions.cpp:1964
 msgid "$friends Friendly units sighted"
 msgstr "Zauważono przyjazne jednostki: $friends"
 
-#: src/actions.cpp:1960
+#: src/actions.cpp:1966
 msgid "$enemies Enemy units sighted!"
 msgstr "Zauważono wrogie jednostki: $enemies"
 
-#: src/actions.cpp:1964
+#: src/actions.cpp:1970
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Zauważono jednostki! ($friends przyjaznych, $enemies wrogich)"
 
-#: src/actions.cpp:1979
+#: src/actions.cpp:1985
 msgid "(press $hotkey to continue)"
 msgstr "(wciśnij $hotkey aby kontynuować)"
 
@@ -8666,19 +8665,24 @@ msgstr "Język"
 msgid "Choose your preferred language:"
 msgstr "Wybierz twój preferowany język:"
 
-#: src/game.cpp:1284
+#: src/game.cpp:1305
+#, fuzzy
+msgid "The following add-on campaign(s) had errors and could not be loaded:"
+msgstr "Mapa gry nie może zostać wczytana:"
+
+#: src/game.cpp:1317
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Ostrzeżenie: Błąd podczas ładowania plików konfiguracyjnych gry: '"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1366
 msgid "Error loading game configuration files: '"
 msgstr "Błąd podczas ładowania plików konfiguracyjnych gry: '"
 
-#: src/game.cpp:1334
+#: src/game.cpp:1367
 msgid "' (The game will now exit)"
 msgstr "' (Gra zostanie zakończona)"
 
-#: src/game.cpp:1407
+#: src/game.cpp:1440
 msgid "Battle for Wesnoth"
 msgstr "Bitwa o Wesnoth"
 
@@ -8788,9 +8792,18 @@ msgstr "< Wróć"
 msgid "Forward >"
 msgstr "Dalej >"
 
+#: src/help.cpp:2286
+msgid "Reference to unknown topic: "
+msgstr ""
+
 #: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "System pomocy Bitwy o Wesnoth"
+
+#: src/help.cpp:2708
+#, fuzzy
+msgid "Parse error when parsing help text: "
+msgstr "Błąd w czasie gry:"
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9808,6 +9821,16 @@ msgstr "praworządny"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutralny"
+
+#~ msgid ""
+#~ "Steadfast:\n"
+#~ "This unit takes half normal damage when it did not initiate the attack."
+#~ msgstr ""
+#~ "Wytrwały:\n"
+#~ "Ta jednostka otrzymuje podczas obrony połowę obrażeń."
+
+#~ msgid "Halved"
+#~ msgstr "Zmniejszona o połowę"
 
 #~ msgid "The Broken Bridge"
 #~ msgstr "Zniszczony Most"

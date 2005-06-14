@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-10 10:28+0200\n"
+"POT-Creation-Date: 2005-06-14 12:31+0200\n"
 "PO-Revision-Date: 2005-06-09 12:24+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:31
+#: data/game.cfg:30
 msgid "Binary Saves"
 msgstr "Comprimeix les partides desades"
 
-#: data/game.cfg:38
+#: data/game.cfg:37
 msgid "Show Combat"
 msgstr "Mostra els combats"
 
@@ -3459,7 +3459,7 @@ msgstr ""
 "unitat amb l'habilitat de cura."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
-#: data/units/Paladin.cfg:21 data/units/Saurian_Icecaster.cfg:20
+#: data/units/Paladin.cfg:22 data/units/Saurian_Icecaster.cfg:20
 #: data/units/Saurian_Tribalist.cfg:21
 msgid "heals"
 msgstr "guareix"
@@ -3511,7 +3511,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:452 src/actions.cpp:561
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:452 src/actions.cpp:570
 msgid "leadership"
 msgstr "lideratge"
 
@@ -3583,14 +3583,12 @@ msgstr "fustiga"
 #: data/translations/english.cfg:81
 msgid ""
 "Steadfast:\n"
-"This unit takes half normal damage when it did not initiate the attack."
+"This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
-"Fermesa:\n"
-"Aquesta unitat rep la meitat de mal quan no ha iniciat l'atac."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:588
+#: data/units/Merman_Hoplite.cfg:26
 msgid "steadfast"
 msgstr "fermesa"
 
@@ -3887,7 +3885,7 @@ msgid "crush"
 msgstr "esclafa"
 
 #: data/units/Ancient_Wose.cfg:39 data/units/Arch_Mage.cfg:37
-#: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:33
+#: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:34
 #: data/units/Cave_Spider.cfg:47 data/units/Cuttle_Fish.cfg:33
 #: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:20
 #: data/units/Deathmaster.cfg:32 data/units/Drake_Enforcer.cfg:43
@@ -3935,7 +3933,7 @@ msgstr "esclafa"
 #: data/units/Soulless.cfg:111 data/units/Soulless.cfg:186
 #: data/units/Soulless.cfg:262 data/units/Soulless.cfg:337
 #: data/units/Soulless.cfg:412 data/units/Soulless.cfg:487
-#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:20 data/units/Troll.cfg:25
+#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:21 data/units/Troll.cfg:25
 #: data/units/Troll_Hero.cfg:22 data/units/Troll_Rocklobber.cfg:25
 #: data/units/Troll_Rocklobber.cfg:43 data/units/Troll_Warrior.cfg:25
 #: data/units/Troll_Whelp.cfg:25 data/units/Walking_Corpse.cfg:40
@@ -4068,10 +4066,10 @@ msgstr "daga"
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
 #: data/units/Fire_Dragon.cfg:23 data/units/General.cfg:29
 #: data/units/Ghoul.cfg:20 data/units/Goblin_Knight.cfg:21
-#: data/units/Grand_Knight.cfg:22 data/units/Grand_Marshal.cfg:25
+#: data/units/Grand_Knight.cfg:23 data/units/Grand_Marshal.cfg:25
 #: data/units/Gryphon.cfg:23 data/units/Gryphon_Master.cfg:25
-#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:65
-#: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:22
+#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:66
+#: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:23
 #: data/units/Lieutenant.cfg:25 data/units/Longbowman.cfg:23
 #: data/units/Lord.cfg:23 data/units/Lord.cfg:98
 #: data/units/Master_Bowman.cfg:22 data/units/Merman_Triton.cfg:36
@@ -4092,12 +4090,12 @@ msgstr "daga"
 #: data/units/Poacher.cfg:26 data/units/Princess.cfg:24
 #: data/units/Princess.cfg:62 data/units/Revenant.cfg:37
 #: data/units/Rogue.cfg:22 data/units/Rogue.cfg:40 data/units/Rogue.cfg:82
-#: data/units/Rogue.cfg:100 data/units/Royal_Guard.cfg:24
+#: data/units/Rogue.cfg:100 data/units/Royal_Guard.cfg:25
 #: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:25
 #: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:31
 #: data/units/Skeletal_Dragon.cfg:50 data/units/Skeleton.cfg:38
 #: data/units/Sleeping_Gryphon.cfg:19 data/units/Spectre.cfg:25
-#: data/units/Swordsman.cfg:24 data/units/Thief.cfg:85
+#: data/units/Swordsman.cfg:25 data/units/Thief.cfg:85
 #: data/units/Thief.cfg:186 data/units/Trapper.cfg:26
 #: data/units/Vampire_Bat.cfg:20 data/units/Vampire_Lady.cfg:21
 #: data/units/Wolf_Rider.cfg:22 data/units/Wraith.cfg:25
@@ -4108,7 +4106,7 @@ msgstr "talla"
 #: data/units/Assassin.cfg:39 data/units/Assassin.cfg:118
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:190 src/actions.cpp:579
+#: data/units/Thief.cfg:190 src/actions.cpp:588
 msgid "backstab"
 msgstr "punyala"
 
@@ -4133,7 +4131,7 @@ msgstr "Assassina"
 msgid "Bandit"
 msgstr "Bandit"
 
-#: data/units/Bandit.cfg:16
+#: data/units/Bandit.cfg:17
 msgid ""
 "Armed with a heavy mace, Bandits are adept at robbing and killing at night. "
 "Wearing brown cloaks and black hoods, they steal from the peasants who live "
@@ -4143,7 +4141,7 @@ msgstr ""
 "nit. Porten capes marrons i caputxes negres. Roben als camperols que viuen a "
 "prop seu quan no estan lluitant contra els invasors."
 
-#: data/units/Bandit.cfg:32 data/units/Drake_Enforcer.cfg:42
+#: data/units/Bandit.cfg:33 data/units/Drake_Enforcer.cfg:42
 #: data/units/Drake_Gladiator.cfg:62 data/units/Great_Troll.cfg:21
 #: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:19
 #: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:102
@@ -4193,8 +4191,8 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:23
 #: data/units/Elvish_Sharpshooter.cfg:117 data/units/Fighter.cfg:20
 #: data/units/Fighter.cfg:61 data/units/General.cfg:28
-#: data/units/Grand_Knight.cfg:20 data/units/Grand_Marshal.cfg:24
-#: data/units/Horse_Lord.cfg:22 data/units/Knight.cfg:21
+#: data/units/Grand_Knight.cfg:21 data/units/Grand_Marshal.cfg:24
+#: data/units/Horse_Lord.cfg:22 data/units/Knight.cfg:22
 #: data/units/Lieutenant.cfg:24 data/units/Longbowman.cfg:22
 #: data/units/Lord.cfg:22 data/units/Lord.cfg:97
 #: data/units/Master_Bowman.cfg:21 data/units/Mounted_Captain.cfg:25
@@ -4207,10 +4205,10 @@ msgstr ""
 #: data/units/Orcish_Grunt.cfg:19 data/units/Orcish_Leader.cfg:21
 #: data/units/Orcish_Ruler.cfg:21 data/units/Orcish_Sovereign.cfg:21
 #: data/units/Orcish_Warlord.cfg:19 data/units/Orcish_Warrior.cfg:19
-#: data/units/Paladin.cfg:25 data/units/Princess.cfg:23
-#: data/units/Princess.cfg:61 data/units/Royal_Guard.cfg:23
+#: data/units/Paladin.cfg:26 data/units/Princess.cfg:23
+#: data/units/Princess.cfg:61 data/units/Royal_Guard.cfg:24
 #: data/units/Sea_Orc.cfg:19 data/units/Sergeant.cfg:24
-#: data/units/Swordsman.cfg:23
+#: data/units/Swordsman.cfg:24
 msgid "sword"
 msgstr "espasa"
 
@@ -4325,10 +4323,10 @@ msgstr "arc"
 #: data/units/General.cfg:52 data/units/Giant_Scorpion.cfg:20
 #: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:40
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
-#: data/units/Grand_Knight.cfg:38 data/units/Grand_Marshal.cfg:48
-#: data/units/Halbardier.cfg:24 data/units/Horseman.cfg:22
-#: data/units/Javelineer.cfg:20 data/units/Javelineer.cfg:48
-#: data/units/Knight.cfg:38 data/units/Lancer.cfg:22
+#: data/units/Grand_Knight.cfg:39 data/units/Grand_Marshal.cfg:48
+#: data/units/Halbardier.cfg:25 data/units/Horseman.cfg:23
+#: data/units/Javelineer.cfg:21 data/units/Javelineer.cfg:49
+#: data/units/Knight.cfg:39 data/units/Lancer.cfg:23
 #: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:40
 #: data/units/Lord.cfg:40 data/units/Master_Bowman.cfg:34
 #: data/units/Merman.cfg:24 data/units/Merman_Entangler.cfg:20
@@ -4343,9 +4341,9 @@ msgstr "arc"
 #: data/units/Orcish_Leader.cfg:38 data/units/Orcish_Ruler.cfg:39
 #: data/units/Orcish_Shaman.cfg:37 data/units/Orcish_Shaman.cfg:96
 #: data/units/Orcish_Shaman.cfg:155 data/units/Orcish_Sovereign.cfg:43
-#: data/units/Orcish_Warlord.cfg:31 data/units/Paladin.cfg:43
-#: data/units/Peasant.cfg:21 data/units/Peasant.cfg:34
-#: data/units/Pikeman.cfg:23 data/units/Pirate_Galleon.cfg:18
+#: data/units/Orcish_Warlord.cfg:31 data/units/Paladin.cfg:44
+#: data/units/Peasant.cfg:22 data/units/Peasant.cfg:35
+#: data/units/Pikeman.cfg:24 data/units/Pirate_Galleon.cfg:18
 #: data/units/Poacher.cfg:43 data/units/Saurian.cfg:26
 #: data/units/Saurian.cfg:44 data/units/Saurian_Ambusher.cfg:24
 #: data/units/Saurian_Ambusher.cfg:42 data/units/Saurian_Flanker.cfg:25
@@ -4468,8 +4466,8 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:27 data/units/Dwarvish_Stalwart.cfg:41
 #: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:39
 #: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
-#: data/units/Horseman.cfg:21 data/units/Javelineer.cfg:19
-#: data/units/Javelineer.cfg:47 data/units/Merman_Entangler.cfg:19
+#: data/units/Horseman.cfg:22 data/units/Javelineer.cfg:20
+#: data/units/Javelineer.cfg:48 data/units/Merman_Entangler.cfg:19
 #: data/units/Merman_Hunter.cfg:20 data/units/Merman_Hunter.cfg:60
 #: data/units/Merman_Javelineer.cfg:20 data/units/Merman_Javelineer.cfg:60
 #: data/units/Merman_Netcaster.cfg:19 data/units/Merman_Spearman.cfg:20
@@ -4483,10 +4481,10 @@ msgstr ""
 msgid "spear"
 msgstr "llança"
 
-#: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:39
-#: data/units/Horseman.cfg:23 data/units/Knight.cfg:39
-#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:462
-#: src/actions.cpp:570
+#: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:40
+#: data/units/Horseman.cfg:24 data/units/Knight.cfg:40
+#: data/units/Lancer.cfg:24 data/units/Paladin.cfg:45 src/actions.cpp:462
+#: src/actions.cpp:579
 msgid "charge"
 msgstr "carrega"
 
@@ -4509,7 +4507,7 @@ msgstr ""
 msgid "gaze"
 msgstr "mirada"
 
-#: data/units/Cockatrice.cfg:38 src/actions.cpp:877 src/actions.cpp:1044
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:883 src/actions.cpp:1050
 msgid "stone"
 msgstr "pedra"
 
@@ -4990,9 +4988,9 @@ msgstr ""
 "perfecció."
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:46
-#: data/units/Goblin_Impaler.cfg:26 data/units/Halbardier.cfg:28
-#: data/units/Halbardier.cfg:69 data/units/Javelineer.cfg:24
-#: data/units/Pikeman.cfg:27 data/units/Spearman.cfg:43
+#: data/units/Goblin_Impaler.cfg:26 data/units/Halbardier.cfg:29
+#: data/units/Halbardier.cfg:70 data/units/Javelineer.cfg:25
+#: data/units/Pikeman.cfg:28 data/units/Spearman.cfg:43
 msgid "firststrike"
 msgstr "primer atac"
 
@@ -5783,7 +5781,7 @@ msgstr ""
 "Les bandes de lladres fan servir aquests saltejadors poc civilitzats per "
 "explorar els voltants amb l'objectiu de trobar possibles víctimes."
 
-#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:19
+#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:20
 #: data/units/Troll.cfg:24 data/units/Troll_Hero.cfg:21
 msgid "club"
 msgstr "garrot"
@@ -6001,7 +5999,7 @@ msgstr ""
 msgid "Grand Knight"
 msgstr "Gran Cavaller"
 
-#: data/units/Grand_Knight.cfg:17
+#: data/units/Grand_Knight.cfg:18
 msgid ""
 "The most powerful mounted warriors of any race, Grand Knights have reached "
 "the acme of skill with sword and lance."
@@ -6009,8 +6007,8 @@ msgstr ""
 "Els guerrers muntats més poderosos de qualsevol raça, que han assolit el "
 "nivell més alt en el domini de l'espasa i la llança."
 
-#: data/units/Grand_Knight.cfg:37 data/units/Knight.cfg:37
-#: data/units/Lancer.cfg:21 data/units/Paladin.cfg:42
+#: data/units/Grand_Knight.cfg:38 data/units/Knight.cfg:38
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43
 msgid "lance"
 msgstr "llança"
 
@@ -6108,7 +6106,7 @@ msgstr ""
 msgid "Halberdier"
 msgstr "Alabarder"
 
-#: data/units/Halbardier.cfg:19
+#: data/units/Halbardier.cfg:20
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -6159,7 +6157,7 @@ msgstr "estel d'alba"
 msgid "Horseman"
 msgstr "Genet"
 
-#: data/units/Horseman.cfg:18
+#: data/units/Horseman.cfg:19
 msgid ""
 "Trained from childhood to ride and to follow a strict code of honor, "
 "Horsemen are both fast and powerful attackers. Charging at their enemies, "
@@ -6203,7 +6201,7 @@ msgstr ""
 msgid "Javelineer"
 msgstr "Llançador de javelina"
 
-#: data/units/Javelineer.cfg:16
+#: data/units/Javelineer.cfg:17
 msgid ""
 "Javelineers have mastered the use of the pointy sticks they were given as "
 "recruits. Dangerous in melee, they have also developed their skill at "
@@ -6221,7 +6219,7 @@ msgstr ""
 msgid "Knight"
 msgstr "Cavaller"
 
-#: data/units/Knight.cfg:18
+#: data/units/Knight.cfg:19
 msgid ""
 "Knights are skilled in the use of both lance and sword. With the lance, they "
 "charge at enemies, inflicting and receiving double damage."
@@ -6234,7 +6232,7 @@ msgstr ""
 msgid "Lancer"
 msgstr "Llancer"
 
-#: data/units/Lancer.cfg:18
+#: data/units/Lancer.cfg:19
 msgid ""
 "Lancers are some of the bravest and most feared riders in all of Wesnoth. "
 "They wear very little armor, and thus ride swiftly and are ideal for "
@@ -6366,7 +6364,7 @@ msgstr "raig de llum"
 
 #: data/units/Mage_of_Light.cfg:47 data/units/Mage_of_Light.cfg:119
 #: data/units/Mermaid_Diviner.cfg:48 data/units/Mermaid_Priestess.cfg:46
-#: data/units/Paladin.cfg:27 data/units/White_Mage.cfg:46
+#: data/units/Paladin.cfg:28 data/units/White_Mage.cfg:46
 #: data/units/White_Mage.cfg:117
 msgid "holy"
 msgstr "sagrat"
@@ -7080,7 +7078,7 @@ msgstr ""
 msgid "Paladin"
 msgstr "Paladí"
 
-#: data/units/Paladin.cfg:22
+#: data/units/Paladin.cfg:23
 msgid ""
 "Knights of the highest virtue, Paladins have all the skills of the Knight, "
 "and can also heal adjacent friendly units."
@@ -7092,7 +7090,7 @@ msgstr ""
 msgid "Peasant"
 msgstr "Pagès"
 
-#: data/units/Peasant.cfg:17
+#: data/units/Peasant.cfg:18
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not fearsome by nature, they will stubbornly defend their "
@@ -7105,7 +7103,7 @@ msgstr ""
 "pagesos contra els vostres enemics significa clarament que us manquen "
 "soldats de nivell superior."
 
-#: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
+#: data/units/Peasant.cfg:21 data/units/Peasant.cfg:34
 msgid "pitchfork"
 msgstr "forca"
 
@@ -7113,7 +7111,7 @@ msgstr "forca"
 msgid "Pikeman"
 msgstr "Piquer"
 
-#: data/units/Pikeman.cfg:19
+#: data/units/Pikeman.cfg:20
 msgid ""
 "Pikemen are more experienced soldiers who have changed their spears for long "
 "pikes. Because of the length of their weapons, they always strike first in "
@@ -7127,7 +7125,7 @@ msgstr ""
 "unitats de cavalleria, encara que tenen alguns problemes amb la lluita molt "
 "cos a cos."
 
-#: data/units/Pikeman.cfg:22
+#: data/units/Pikeman.cfg:23
 msgid "pike"
 msgstr "pica"
 
@@ -7234,7 +7232,7 @@ msgstr "Múrria"
 msgid "Royal Guard"
 msgstr "Guàrdia Reial"
 
-#: data/units/Royal_Guard.cfg:20
+#: data/units/Royal_Guard.cfg:21
 msgid ""
 "Members of the Royal Guard are hand picked from the strongest and sturdiest "
 "of the army. They are deployed only in critical situations and, so far, have "
@@ -7616,7 +7614,7 @@ msgstr ""
 msgid "Swordsman"
 msgstr "Espadatxí"
 
-#: data/units/Swordsman.cfg:20
+#: data/units/Swordsman.cfg:21
 msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting."
@@ -7661,7 +7659,7 @@ msgstr "Lladre"
 msgid "Thug"
 msgstr "Brètol"
 
-#: data/units/Thug.cfg:16
+#: data/units/Thug.cfg:17
 msgid "Thugs are bandits who use large clubs to beat their victims."
 msgstr ""
 "Els brètols són bandits que fan servir grans garrots per vèncer les seves "
@@ -8321,11 +8319,11 @@ msgstr "melé"
 msgid "ranged"
 msgstr "distància"
 
-#: src/actions.cpp:432 src/actions.cpp:540
+#: src/actions.cpp:432 src/actions.cpp:549
 msgid "base damage"
 msgstr "mal base"
 
-#: src/actions.cpp:462 src/actions.cpp:570 src/actions.cpp:579
+#: src/actions.cpp:462 src/actions.cpp:579 src/actions.cpp:588
 msgid "Doubled"
 msgstr "Doblat"
 
@@ -8337,13 +8335,9 @@ msgstr "resistència de l'atacant contra"
 msgid "attacker vulnerability vs"
 msgstr "vulnerabilitat de l'atacant contra"
 
-#: src/actions.cpp:484 src/actions.cpp:610
+#: src/actions.cpp:484 src/actions.cpp:616
 msgid "total damage"
 msgstr "mal total"
-
-#: src/actions.cpp:588
-msgid "Halved"
-msgstr "A la meitat"
 
 #: src/actions.cpp:596
 msgid "defender resistance vs"
@@ -8353,47 +8347,52 @@ msgstr "resistència del defensor contra"
 msgid "defender vulnerability vs"
 msgstr "vulnerabilitat del defensor contra"
 
-#: src/actions.cpp:655
+#: src/actions.cpp:599
+#, fuzzy
+msgid " (+steadfast)"
+msgstr "fermesa"
+
+#: src/actions.cpp:661
 msgid "(both should survive)"
 msgstr "(Tots dos haurien de sobreviure.)"
 
-#: src/actions.cpp:657
+#: src/actions.cpp:663
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Probabilitat[matar/morir/tots dos sobrevisquin]"
 
-#: src/actions.cpp:861 src/actions.cpp:1027 src/display.cpp:1038
+#: src/actions.cpp:867 src/actions.cpp:1033 src/display.cpp:1038
 msgid "poisoned"
 msgstr "enverinat"
 
-#: src/actions.cpp:866 src/actions.cpp:1032 src/display.cpp:1034
+#: src/actions.cpp:872 src/actions.cpp:1038 src/display.cpp:1034
 msgid "slowed"
 msgstr "alentit "
 
-#: src/actions.cpp:1917
+#: src/actions.cpp:1923
 msgid "Ambushed!"
 msgstr "Emboscada!"
 
-#: src/actions.cpp:1951
+#: src/actions.cpp:1957
 msgid "Friendly unit sighted"
 msgstr "Heu vist una unitat amiga."
 
-#: src/actions.cpp:1953
+#: src/actions.cpp:1959
 msgid "Enemy unit sighted!"
 msgstr "Enemic a la vista!"
 
-#: src/actions.cpp:1958
+#: src/actions.cpp:1964
 msgid "$friends Friendly units sighted"
 msgstr "$friends unitats amigues vistes."
 
-#: src/actions.cpp:1960
+#: src/actions.cpp:1966
 msgid "$enemies Enemy units sighted!"
 msgstr "$friends unitats enemigues vistes."
 
-#: src/actions.cpp:1964
+#: src/actions.cpp:1970
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unitats a la vista! ($friends amigues, $enemies enemigues)."
 
-#: src/actions.cpp:1979
+#: src/actions.cpp:1985
 msgid "(press $hotkey to continue)"
 msgstr "(premeu $hotkey per continuar)"
 
@@ -8822,21 +8821,26 @@ msgstr "Idioma"
 msgid "Choose your preferred language:"
 msgstr "Trieu el vostre idioma:"
 
-#: src/game.cpp:1284
+#: src/game.cpp:1305
+#, fuzzy
+msgid "The following add-on campaign(s) had errors and could not be loaded:"
+msgstr "No ha estat possible carregar la partida:"
+
+#: src/game.cpp:1317
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Avís: s'ha produit un error en carregar els fitxers de configuració del joc: "
 "'"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1366
 msgid "Error loading game configuration files: '"
 msgstr "Error carregant els fitxers de configuració del joc: '"
 
-#: src/game.cpp:1334
+#: src/game.cpp:1367
 msgid "' (The game will now exit)"
 msgstr "' (ara es tancarà el joc)."
 
-#: src/game.cpp:1407
+#: src/game.cpp:1440
 msgid "Battle for Wesnoth"
 msgstr "Batalla per Wesnoth"
 
@@ -8947,9 +8951,18 @@ msgstr "< Enrera"
 msgid "Forward >"
 msgstr "Endavant >"
 
+#: src/help.cpp:2286
+msgid "Reference to unknown topic: "
+msgstr ""
+
 #: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Ajuda de Batalla per Wesnoth"
+
+#: src/help.cpp:2708
+#, fuzzy
+msgid "Parse error when parsing help text: "
+msgstr "S'ha produit un error durant la partida:"
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9973,3 +9986,13 @@ msgstr "legal"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutral"
+
+#~ msgid ""
+#~ "Steadfast:\n"
+#~ "This unit takes half normal damage when it did not initiate the attack."
+#~ msgstr ""
+#~ "Fermesa:\n"
+#~ "Aquesta unitat rep la meitat de mal quan no ha iniciat l'atac."
+
+#~ msgid "Halved"
+#~ msgstr "A la meitat"

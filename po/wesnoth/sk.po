@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-10 10:28+0200\n"
+"POT-Creation-Date: 2005-06-14 12:31+0200\n"
 "PO-Revision-Date: 2005-03-02 22:28+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 msgstr ""
 
-#: data/game.cfg:31
+#: data/game.cfg:30
 msgid "Binary Saves"
 msgstr ""
 
-#: data/game.cfg:38
+#: data/game.cfg:37
 #, fuzzy
 msgid "Show Combat"
 msgstr "Súboj"
@@ -3432,7 +3432,7 @@ msgstr ""
 "vyhľadať pomoc v dedine, alebo u jednotky, ktorá dokáže liečiť."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
-#: data/units/Paladin.cfg:21 data/units/Saurian_Icecaster.cfg:20
+#: data/units/Paladin.cfg:22 data/units/Saurian_Icecaster.cfg:20
 #: data/units/Saurian_Tribalist.cfg:21
 msgid "heals"
 msgstr "uzdravuje"
@@ -3487,7 +3487,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:452 src/actions.cpp:561
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:452 src/actions.cpp:570
 msgid "leadership"
 msgstr "velenie"
 
@@ -3559,14 +3559,12 @@ msgstr "priebojný"
 #: data/translations/english.cfg:81
 msgid ""
 "Steadfast:\n"
-"This unit takes half normal damage when it did not initiate the attack."
+"This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
-"Neoblomný:\n"
-"Táto jednotka dostane len polovičné zranenie, ak nevyvolala útok."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:588
+#: data/units/Merman_Hoplite.cfg:26
 msgid "steadfast"
 msgstr "neoblomný"
 
@@ -3868,7 +3866,7 @@ msgid "crush"
 msgstr "drvenie"
 
 #: data/units/Ancient_Wose.cfg:39 data/units/Arch_Mage.cfg:37
-#: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:33
+#: data/units/Arch_Mage.cfg:145 data/units/Bandit.cfg:34
 #: data/units/Cave_Spider.cfg:47 data/units/Cuttle_Fish.cfg:33
 #: data/units/Dark_Queen.cfg:35 data/units/Dark_Sorcerer.cfg:20
 #: data/units/Deathmaster.cfg:32 data/units/Drake_Enforcer.cfg:43
@@ -3916,7 +3914,7 @@ msgstr "drvenie"
 #: data/units/Soulless.cfg:111 data/units/Soulless.cfg:186
 #: data/units/Soulless.cfg:262 data/units/Soulless.cfg:337
 #: data/units/Soulless.cfg:412 data/units/Soulless.cfg:487
-#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:20 data/units/Troll.cfg:25
+#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:21 data/units/Troll.cfg:25
 #: data/units/Troll_Hero.cfg:22 data/units/Troll_Rocklobber.cfg:25
 #: data/units/Troll_Rocklobber.cfg:43 data/units/Troll_Warrior.cfg:25
 #: data/units/Troll_Whelp.cfg:25 data/units/Walking_Corpse.cfg:40
@@ -4047,10 +4045,10 @@ msgstr "dýka"
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
 #: data/units/Fire_Dragon.cfg:23 data/units/General.cfg:29
 #: data/units/Ghoul.cfg:20 data/units/Goblin_Knight.cfg:21
-#: data/units/Grand_Knight.cfg:22 data/units/Grand_Marshal.cfg:25
+#: data/units/Grand_Knight.cfg:23 data/units/Grand_Marshal.cfg:25
 #: data/units/Gryphon.cfg:23 data/units/Gryphon_Master.cfg:25
-#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:65
-#: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:22
+#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:66
+#: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:23
 #: data/units/Lieutenant.cfg:25 data/units/Longbowman.cfg:23
 #: data/units/Lord.cfg:23 data/units/Lord.cfg:98
 #: data/units/Master_Bowman.cfg:22 data/units/Merman_Triton.cfg:36
@@ -4071,12 +4069,12 @@ msgstr "dýka"
 #: data/units/Poacher.cfg:26 data/units/Princess.cfg:24
 #: data/units/Princess.cfg:62 data/units/Revenant.cfg:37
 #: data/units/Rogue.cfg:22 data/units/Rogue.cfg:40 data/units/Rogue.cfg:82
-#: data/units/Rogue.cfg:100 data/units/Royal_Guard.cfg:24
+#: data/units/Rogue.cfg:100 data/units/Royal_Guard.cfg:25
 #: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:25
 #: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:31
 #: data/units/Skeletal_Dragon.cfg:50 data/units/Skeleton.cfg:38
 #: data/units/Sleeping_Gryphon.cfg:19 data/units/Spectre.cfg:25
-#: data/units/Swordsman.cfg:24 data/units/Thief.cfg:85
+#: data/units/Swordsman.cfg:25 data/units/Thief.cfg:85
 #: data/units/Thief.cfg:186 data/units/Trapper.cfg:26
 #: data/units/Vampire_Bat.cfg:20 data/units/Vampire_Lady.cfg:21
 #: data/units/Wolf_Rider.cfg:22 data/units/Wraith.cfg:25
@@ -4087,7 +4085,7 @@ msgstr "sečný"
 #: data/units/Assassin.cfg:39 data/units/Assassin.cfg:118
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:190 src/actions.cpp:579
+#: data/units/Thief.cfg:190 src/actions.cpp:588
 msgid "backstab"
 msgstr "zákerný"
 
@@ -4113,7 +4111,7 @@ msgstr "Zabijak"
 msgid "Bandit"
 msgstr "Bandita"
 
-#: data/units/Bandit.cfg:16
+#: data/units/Bandit.cfg:17
 msgid ""
 "Armed with a heavy mace, Bandits are adept at robbing and killing at night. "
 "Wearing brown cloaks and black hoods, they steal from the peasants who live "
@@ -4123,7 +4121,7 @@ msgstr ""
 "zabíjaní. Nosia hnedé plášte s čiernymi kapucňami a okrádajú okolitých "
 "roľníkov, ak práve nebojujú s votrelcami."
 
-#: data/units/Bandit.cfg:32 data/units/Drake_Enforcer.cfg:42
+#: data/units/Bandit.cfg:33 data/units/Drake_Enforcer.cfg:42
 #: data/units/Drake_Gladiator.cfg:62 data/units/Great_Troll.cfg:21
 #: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:19
 #: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:102
@@ -4172,8 +4170,8 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:23
 #: data/units/Elvish_Sharpshooter.cfg:117 data/units/Fighter.cfg:20
 #: data/units/Fighter.cfg:61 data/units/General.cfg:28
-#: data/units/Grand_Knight.cfg:20 data/units/Grand_Marshal.cfg:24
-#: data/units/Horse_Lord.cfg:22 data/units/Knight.cfg:21
+#: data/units/Grand_Knight.cfg:21 data/units/Grand_Marshal.cfg:24
+#: data/units/Horse_Lord.cfg:22 data/units/Knight.cfg:22
 #: data/units/Lieutenant.cfg:24 data/units/Longbowman.cfg:22
 #: data/units/Lord.cfg:22 data/units/Lord.cfg:97
 #: data/units/Master_Bowman.cfg:21 data/units/Mounted_Captain.cfg:25
@@ -4186,10 +4184,10 @@ msgstr ""
 #: data/units/Orcish_Grunt.cfg:19 data/units/Orcish_Leader.cfg:21
 #: data/units/Orcish_Ruler.cfg:21 data/units/Orcish_Sovereign.cfg:21
 #: data/units/Orcish_Warlord.cfg:19 data/units/Orcish_Warrior.cfg:19
-#: data/units/Paladin.cfg:25 data/units/Princess.cfg:23
-#: data/units/Princess.cfg:61 data/units/Royal_Guard.cfg:23
+#: data/units/Paladin.cfg:26 data/units/Princess.cfg:23
+#: data/units/Princess.cfg:61 data/units/Royal_Guard.cfg:24
 #: data/units/Sea_Orc.cfg:19 data/units/Sergeant.cfg:24
-#: data/units/Swordsman.cfg:23
+#: data/units/Swordsman.cfg:24
 msgid "sword"
 msgstr "meč"
 
@@ -4299,10 +4297,10 @@ msgstr "luk"
 #: data/units/General.cfg:52 data/units/Giant_Scorpion.cfg:20
 #: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:40
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
-#: data/units/Grand_Knight.cfg:38 data/units/Grand_Marshal.cfg:48
-#: data/units/Halbardier.cfg:24 data/units/Horseman.cfg:22
-#: data/units/Javelineer.cfg:20 data/units/Javelineer.cfg:48
-#: data/units/Knight.cfg:38 data/units/Lancer.cfg:22
+#: data/units/Grand_Knight.cfg:39 data/units/Grand_Marshal.cfg:48
+#: data/units/Halbardier.cfg:25 data/units/Horseman.cfg:23
+#: data/units/Javelineer.cfg:21 data/units/Javelineer.cfg:49
+#: data/units/Knight.cfg:39 data/units/Lancer.cfg:23
 #: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:40
 #: data/units/Lord.cfg:40 data/units/Master_Bowman.cfg:34
 #: data/units/Merman.cfg:24 data/units/Merman_Entangler.cfg:20
@@ -4317,9 +4315,9 @@ msgstr "luk"
 #: data/units/Orcish_Leader.cfg:38 data/units/Orcish_Ruler.cfg:39
 #: data/units/Orcish_Shaman.cfg:37 data/units/Orcish_Shaman.cfg:96
 #: data/units/Orcish_Shaman.cfg:155 data/units/Orcish_Sovereign.cfg:43
-#: data/units/Orcish_Warlord.cfg:31 data/units/Paladin.cfg:43
-#: data/units/Peasant.cfg:21 data/units/Peasant.cfg:34
-#: data/units/Pikeman.cfg:23 data/units/Pirate_Galleon.cfg:18
+#: data/units/Orcish_Warlord.cfg:31 data/units/Paladin.cfg:44
+#: data/units/Peasant.cfg:22 data/units/Peasant.cfg:35
+#: data/units/Pikeman.cfg:24 data/units/Pirate_Galleon.cfg:18
 #: data/units/Poacher.cfg:43 data/units/Saurian.cfg:26
 #: data/units/Saurian.cfg:44 data/units/Saurian_Ambusher.cfg:24
 #: data/units/Saurian_Ambusher.cfg:42 data/units/Saurian_Flanker.cfg:25
@@ -4435,8 +4433,8 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:27 data/units/Dwarvish_Stalwart.cfg:41
 #: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:39
 #: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
-#: data/units/Horseman.cfg:21 data/units/Javelineer.cfg:19
-#: data/units/Javelineer.cfg:47 data/units/Merman_Entangler.cfg:19
+#: data/units/Horseman.cfg:22 data/units/Javelineer.cfg:20
+#: data/units/Javelineer.cfg:48 data/units/Merman_Entangler.cfg:19
 #: data/units/Merman_Hunter.cfg:20 data/units/Merman_Hunter.cfg:60
 #: data/units/Merman_Javelineer.cfg:20 data/units/Merman_Javelineer.cfg:60
 #: data/units/Merman_Netcaster.cfg:19 data/units/Merman_Spearman.cfg:20
@@ -4450,10 +4448,10 @@ msgstr ""
 msgid "spear"
 msgstr "kopija"
 
-#: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:39
-#: data/units/Horseman.cfg:23 data/units/Knight.cfg:39
-#: data/units/Lancer.cfg:23 data/units/Paladin.cfg:44 src/actions.cpp:462
-#: src/actions.cpp:570
+#: data/units/Chocobone.cfg:35 data/units/Grand_Knight.cfg:40
+#: data/units/Horseman.cfg:24 data/units/Knight.cfg:40
+#: data/units/Lancer.cfg:24 data/units/Paladin.cfg:45 src/actions.cpp:462
+#: src/actions.cpp:579
 msgid "charge"
 msgstr "výpad"
 
@@ -4475,7 +4473,7 @@ msgstr ""
 msgid "gaze"
 msgstr "pohľad"
 
-#: data/units/Cockatrice.cfg:38 src/actions.cpp:877 src/actions.cpp:1044
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:883 src/actions.cpp:1050
 msgid "stone"
 msgstr "kameň"
 
@@ -4955,9 +4953,9 @@ msgstr ""
 "zbrane sekáčov sú halapartne, ktoré zručne používajú."
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:46
-#: data/units/Goblin_Impaler.cfg:26 data/units/Halbardier.cfg:28
-#: data/units/Halbardier.cfg:69 data/units/Javelineer.cfg:24
-#: data/units/Pikeman.cfg:27 data/units/Spearman.cfg:43
+#: data/units/Goblin_Impaler.cfg:26 data/units/Halbardier.cfg:29
+#: data/units/Halbardier.cfg:70 data/units/Javelineer.cfg:25
+#: data/units/Pikeman.cfg:28 data/units/Spearman.cfg:43
 msgid "firststrike"
 msgstr "prvý úder"
 
@@ -5737,7 +5735,7 @@ msgstr ""
 "Banditské tlupy využívajú poskokov na prieskum miest a ľudí, ktorých možno "
 "okradnúť."
 
-#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:19
+#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:20
 #: data/units/Troll.cfg:24 data/units/Troll_Hero.cfg:21
 msgid "club"
 msgstr "kyjak"
@@ -5956,7 +5954,7 @@ msgstr ""
 msgid "Grand Knight"
 msgstr "Starší rytier"
 
-#: data/units/Grand_Knight.cfg:17
+#: data/units/Grand_Knight.cfg:18
 msgid ""
 "The most powerful mounted warriors of any race, Grand Knights have reached "
 "the acme of skill with sword and lance."
@@ -5964,8 +5962,8 @@ msgstr ""
 "Starší rytieri sú najmocnejšími jazdeckými bojovníkmi. Dosiahli vrchol "
 "zručnosti s mečom i kopijou."
 
-#: data/units/Grand_Knight.cfg:37 data/units/Knight.cfg:37
-#: data/units/Lancer.cfg:21 data/units/Paladin.cfg:42
+#: data/units/Grand_Knight.cfg:38 data/units/Knight.cfg:38
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43
 msgid "lance"
 msgstr "kopija"
 
@@ -6060,7 +6058,7 @@ msgstr ""
 msgid "Halberdier"
 msgstr "Halapartník"
 
-#: data/units/Halbardier.cfg:19
+#: data/units/Halbardier.cfg:20
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -6111,7 +6109,7 @@ msgstr "palcát"
 msgid "Horseman"
 msgstr "Jazdec"
 
-#: data/units/Horseman.cfg:18
+#: data/units/Horseman.cfg:19
 msgid ""
 "Trained from childhood to ride and to follow a strict code of honor, "
 "Horsemen are both fast and powerful attackers. Charging at their enemies, "
@@ -6155,7 +6153,7 @@ msgstr ""
 msgid "Javelineer"
 msgstr "Oštepár"
 
-#: data/units/Javelineer.cfg:16
+#: data/units/Javelineer.cfg:17
 #, fuzzy
 msgid ""
 "Javelineers have mastered the use of the pointy sticks they were given as "
@@ -6172,7 +6170,7 @@ msgstr ""
 msgid "Knight"
 msgstr "Rytier"
 
-#: data/units/Knight.cfg:18
+#: data/units/Knight.cfg:19
 msgid ""
 "Knights are skilled in the use of both lance and sword. With the lance, they "
 "charge at enemies, inflicting and receiving double damage."
@@ -6184,7 +6182,7 @@ msgstr ""
 msgid "Lancer"
 msgstr "Útočník"
 
-#: data/units/Lancer.cfg:18
+#: data/units/Lancer.cfg:19
 msgid ""
 "Lancers are some of the bravest and most feared riders in all of Wesnoth. "
 "They wear very little armor, and thus ride swiftly and are ideal for "
@@ -6312,7 +6310,7 @@ msgstr "lúč"
 
 #: data/units/Mage_of_Light.cfg:47 data/units/Mage_of_Light.cfg:119
 #: data/units/Mermaid_Diviner.cfg:48 data/units/Mermaid_Priestess.cfg:46
-#: data/units/Paladin.cfg:27 data/units/White_Mage.cfg:46
+#: data/units/Paladin.cfg:28 data/units/White_Mage.cfg:46
 #: data/units/White_Mage.cfg:117
 msgid "holy"
 msgstr "svätý"
@@ -6986,7 +6984,7 @@ msgstr ""
 msgid "Paladin"
 msgstr "Palatín"
 
-#: data/units/Paladin.cfg:22
+#: data/units/Paladin.cfg:23
 msgid ""
 "Knights of the highest virtue, Paladins have all the skills of the Knight, "
 "and can also heal adjacent friendly units."
@@ -6998,7 +6996,7 @@ msgstr ""
 msgid "Peasant"
 msgstr "Sedliak"
 
-#: data/units/Peasant.cfg:17
+#: data/units/Peasant.cfg:18
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not fearsome by nature, they will stubbornly defend their "
@@ -7010,7 +7008,7 @@ msgstr ""
 "sedliakov proti nepriateľským vojskám, znamená to, že jeho armáda nestojí za "
 "reč."
 
-#: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
+#: data/units/Peasant.cfg:21 data/units/Peasant.cfg:34
 msgid "pitchfork"
 msgstr "vidly"
 
@@ -7018,7 +7016,7 @@ msgstr "vidly"
 msgid "Pikeman"
 msgstr "Kopijník"
 
-#: data/units/Pikeman.cfg:19
+#: data/units/Pikeman.cfg:20
 #, fuzzy
 msgid ""
 "Pikemen are more experienced soldiers who have changed their spears for long "
@@ -7031,7 +7029,7 @@ msgstr ""
 "dĺžke majú aj pri obrane výhodu prvého útoku. Kopijníci sú zvlášť úspešní "
 "proti kavalérii."
 
-#: data/units/Pikeman.cfg:22
+#: data/units/Pikeman.cfg:23
 msgid "pike"
 msgstr "pika"
 
@@ -7136,7 +7134,7 @@ msgstr "Mágyňa"
 msgid "Royal Guard"
 msgstr "Kráľovský gardista"
 
-#: data/units/Royal_Guard.cfg:20
+#: data/units/Royal_Guard.cfg:21
 msgid ""
 "Members of the Royal Guard are hand picked from the strongest and sturdiest "
 "of the army. They are deployed only in critical situations and, so far, have "
@@ -7504,7 +7502,7 @@ msgstr ""
 msgid "Swordsman"
 msgstr "Bojovník"
 
-#: data/units/Swordsman.cfg:20
+#: data/units/Swordsman.cfg:21
 msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting."
@@ -7547,7 +7545,7 @@ msgstr "Mágyňa"
 msgid "Thug"
 msgstr "Hrdlorez"
 
-#: data/units/Thug.cfg:16
+#: data/units/Thug.cfg:17
 msgid "Thugs are bandits who use large clubs to beat their victims."
 msgstr "Hrdlorezi sú zločinci, ktorí svoje obete ubíjajú veľkými palcátmi."
 
@@ -8132,11 +8130,11 @@ msgstr "zblízka"
 msgid "ranged"
 msgstr "na diaľku"
 
-#: src/actions.cpp:432 src/actions.cpp:540
+#: src/actions.cpp:432 src/actions.cpp:549
 msgid "base damage"
 msgstr "základné zranenie"
 
-#: src/actions.cpp:462 src/actions.cpp:570 src/actions.cpp:579
+#: src/actions.cpp:462 src/actions.cpp:579 src/actions.cpp:588
 msgid "Doubled"
 msgstr "Dvojnásobné"
 
@@ -8148,13 +8146,9 @@ msgstr "útočníkova odolnosť voči"
 msgid "attacker vulnerability vs"
 msgstr "zraniteľnosť útočníka voči"
 
-#: src/actions.cpp:484 src/actions.cpp:610
+#: src/actions.cpp:484 src/actions.cpp:616
 msgid "total damage"
 msgstr "celkové zranenie"
-
-#: src/actions.cpp:588
-msgid "Halved"
-msgstr "Polovičné"
 
 #: src/actions.cpp:596
 msgid "defender resistance vs"
@@ -8164,47 +8158,52 @@ msgstr "obrancova odolnosť voči"
 msgid "defender vulnerability vs"
 msgstr "zraniteľnosť obrancu voči"
 
-#: src/actions.cpp:655
+#: src/actions.cpp:599
+#, fuzzy
+msgid " (+steadfast)"
+msgstr "neoblomný"
+
+#: src/actions.cpp:661
 msgid "(both should survive)"
 msgstr ""
 
-#: src/actions.cpp:657
+#: src/actions.cpp:663
 msgid "% Pr[kills/killed by/both survive]"
 msgstr ""
 
-#: src/actions.cpp:861 src/actions.cpp:1027 src/display.cpp:1038
+#: src/actions.cpp:867 src/actions.cpp:1033 src/display.cpp:1038
 msgid "poisoned"
 msgstr "otrávený"
 
-#: src/actions.cpp:866 src/actions.cpp:1032 src/display.cpp:1034
+#: src/actions.cpp:872 src/actions.cpp:1038 src/display.cpp:1034
 msgid "slowed"
 msgstr "spomalený"
 
-#: src/actions.cpp:1917
+#: src/actions.cpp:1923
 msgid "Ambushed!"
 msgstr "Prepad!"
 
-#: src/actions.cpp:1951
+#: src/actions.cpp:1957
 msgid "Friendly unit sighted"
 msgstr "Vidím priateľskú jednotku"
 
-#: src/actions.cpp:1953
+#: src/actions.cpp:1959
 msgid "Enemy unit sighted!"
 msgstr "Vidím nepriateľskú jednotku!"
 
-#: src/actions.cpp:1958
+#: src/actions.cpp:1964
 msgid "$friends Friendly units sighted"
 msgstr "Vidím $friends priateľských jednotiek"
 
-#: src/actions.cpp:1960
+#: src/actions.cpp:1966
 msgid "$enemies Enemy units sighted!"
 msgstr "Vidím $enemies nepriateľských jednotiek!"
 
-#: src/actions.cpp:1964
+#: src/actions.cpp:1970
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Vidím jednotky! (priatelia: $friends, nepriatelia: $enemies)"
 
-#: src/actions.cpp:1979
+#: src/actions.cpp:1985
 msgid "(press $hotkey to continue)"
 msgstr "(stlač $hotkey a pokračujeme)"
 
@@ -8635,20 +8634,25 @@ msgstr "Jazyk"
 msgid "Choose your preferred language:"
 msgstr "Vyber si vhodný jazyk"
 
-#: src/game.cpp:1284
+#: src/game.cpp:1305
+#, fuzzy
+msgid "The following add-on campaign(s) had errors and could not be loaded:"
+msgstr "Nepodarilo sa načítať mapu hry: "
+
+#: src/game.cpp:1317
 #, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1366
 msgid "Error loading game configuration files: '"
 msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
 
-#: src/game.cpp:1334
+#: src/game.cpp:1367
 msgid "' (The game will now exit)"
 msgstr "' (Hra teraz skončí)"
 
-#: src/game.cpp:1407
+#: src/game.cpp:1440
 #, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
@@ -8765,9 +8769,18 @@ msgstr "< Naspäť"
 msgid "Forward >"
 msgstr "Ďalej >"
 
+#: src/help.cpp:2286
+msgid "Reference to unknown topic: "
+msgstr ""
+
 #: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Návod k Bitke o Wesnoth"
+
+#: src/help.cpp:2708
+#, fuzzy
+msgid "Parse error when parsing help text: "
+msgstr "Chyba pri hraní hry: "
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9818,6 +9831,16 @@ msgstr "poriadok"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutrál"
+
+#~ msgid ""
+#~ "Steadfast:\n"
+#~ "This unit takes half normal damage when it did not initiate the attack."
+#~ msgstr ""
+#~ "Neoblomný:\n"
+#~ "Táto jednotka dostane len polovičné zranenie, ak nevyvolala útok."
+
+#~ msgid "Halved"
+#~ msgstr "Polovičné"
 
 #~ msgid "The Broken Bridge"
 #~ msgstr "Zlomený most"
