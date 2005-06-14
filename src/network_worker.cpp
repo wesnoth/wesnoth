@@ -345,10 +345,11 @@ TCPsocket detect_error()
 		for(socket_state_map::iterator i = sockets_locked.begin(); i != sockets_locked.end(); ++i) {
 			if(i->second == SOCKET_ERROR) {
 				--socket_errors;
-				const TCPsocket res = i->first;
+				const TCPsocket sock = i->first;
 				sockets_locked.erase(i);
-				remove_buffers(res);
-				return res;
+				remove_buffers(sock);
+				pending_receives.erase(std::remove(pending_receives.begin(),pending_receives.end(),sock),pending_receives.end());
+				return sock;
 			}
 		}
 	}
