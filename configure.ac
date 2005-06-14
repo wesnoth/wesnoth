@@ -167,13 +167,13 @@ AC_ARG_WITH([fifodir],
 AC_SUBST([fifodir])
 
 AC_ARG_WITH([server-uid],
-	          AS_HELP_STRING([--with-server-uid]. [user id of the user who runs wesnothd]),
+	          AS_HELP_STRING([--with-server-uid], [user id of the user who runs wesnothd]),
 	      [serveruid=$withval],
 	      [serveruid=0])
 AC_SUBST([serveruid])
 
 AC_ARG_WITH([server-gid],
-	          AS_HELP_STRING([--with-server-gid]. [group id of the user who runs wesnothd]),
+	          AS_HELP_STRING([--with-server-gid], [group id of the user who runs wesnothd]),
 	      [servergid=$withval],
 	      [servergid=0])
 AC_SUBST([servergid])
