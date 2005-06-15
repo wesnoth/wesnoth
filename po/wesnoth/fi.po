@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-14 12:31+0200\n"
-"PO-Revision-Date: 2005-06-09 13:17+0200\n"
+"PO-Revision-Date: 2005-06-15 20:03+0200\n"
 "Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1540,6 +1540,8 @@ msgid ""
 "Who will remain standing as King of the Hill? Best played as a free-for-all "
 "(with everyone fighting everyone else)."
 msgstr ""
+"Kuka käy kukkulan kuninkaaksi? Sopii parhaiten kaikki vastaan kaikki -"
+"otteluun."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
@@ -1559,7 +1561,7 @@ msgstr "4p - Piirityslinnat"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
 msgid "Take control of this huge river delta."
-msgstr ""
+msgstr "Ota haltuun tämä valtava joenuoma."
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
 msgid "4p - The Valley of Death"
@@ -1568,6 +1570,8 @@ msgstr "4p - Kuoleman laakso"
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:5
 msgid "Can you defeat all enemies and declare victory in this desolate valley?"
 msgstr ""
+"Voitko voittaa vihollisesi ja julistautua voittajaksi tässä autiossa "
+"laaksossa?"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -1588,7 +1592,7 @@ msgstr "5p - Pelon metsä"
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr ""
+msgstr "Tässä vaihtelevassa maastossa viisi armeijaa hakevat yliotetta."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -1606,6 +1610,8 @@ msgstr "7p - Taistelumaailma"
 msgid ""
 "Up to 7 armies thrash about in this peaceful land. Prepare for a long battle."
 msgstr ""
+"7 armeijaa kohtaavat tässä rauhanomaisessa maassa. Valmistaudu pitkään "
+"taistoon."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:17
@@ -1613,14 +1619,12 @@ msgid "Random map"
 msgstr "Satunnaisesti luotu kartta"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:4
-#, fuzzy
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
-"Satunnainen kartta jossa hiekka on pääasiallinen maasto. Huomaa että "
-"satunnaiset kartat ovat usein epätasaisia, mutta jos sinulla on aikaa voit "
-"generoida uuden kunnes saat hyvän."
+"Satunnainen kartta. Huomaa että satunnaiset kartat ovat usein epätasaisia, "
+"mutta jos sinulla on aikaa voit generoida uuden kunnes saat hyvän."
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
@@ -3552,6 +3556,9 @@ msgid ""
 "Steadfast:\n"
 "This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
+"Vankkumaton: \n"
+"Tämän yksikön vastustukset tuplataan (korkeintaan 50 prosenttiin) "
+"puolustaessa."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -8268,9 +8275,8 @@ msgid "defender vulnerability vs"
 msgstr "puolustaja on haavoittuva"
 
 #: src/actions.cpp:599
-#, fuzzy
 msgid " (+steadfast)"
-msgstr "vankkumaton"
+msgstr "[+vankkumaton)"
 
 #: src/actions.cpp:661
 msgid "(both should survive)"
@@ -8736,9 +8742,9 @@ msgid "Choose your preferred language:"
 msgstr "Valitse haluamasi kieli:"
 
 #: src/game.cpp:1305
-#, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
-msgstr "Karttaa ei voitu ladata:"
+msgstr ""
+"Näissä lisättyissä kampanjoissa oli virheitä ja niitä ei voitu ladata. "
 
 #: src/game.cpp:1317
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -8865,16 +8871,15 @@ msgstr "Eteenpäin >"
 
 #: src/help.cpp:2286
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Viittaus tuntemattomaan aiheeseen:"
 
 #: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Apua Battle for Wesnothiin"
 
 #: src/help.cpp:2708
-#, fuzzy
 msgid "Parse error when parsing help text: "
-msgstr "Virhe pelatessa:"
+msgstr "Parserivirhe aputekstissä:"
 
 #: src/intro.cpp:94
 msgid "Next"
