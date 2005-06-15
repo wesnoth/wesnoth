@@ -7,10 +7,8 @@ CVS HEAD:
    * fixed 'make dist' not removing stamp-po files, causing broken translations
    * updated translations:
      * British English, Catalan, Finnish, German, Hungarian, Swedish, Turkish
-   * updated MANUAL, brought into synch with wiki
-   * updated MANUAL (Swedish)
-   * updated man pages (English)
-   * added man pages (Swedish)
+   * updated MANUAL: English (also synched with wiki), Swedish
+   * man pages: updated English, added Swedish
    * added descriptions to all multiplayer maps (#9763)
    * user visible error messages are now translatable (#12605)
  * campaigns
@@ -30,10 +28,12 @@ CVS HEAD:
  * server
    * no longer rejects :control command with "Side not found"
    * write a summary of commands when a fifo command is not recognized
+   * attempt to fix assertion failure in network_worker.cpp
  * restored dialog titles for multiplayer screens (#13049)
  * --nosound commandline option no longer initializes sound (part of #11669)
  * players can now control multiple sides in multiplayer
- * fixed crash: move_unit_fake with illegal coordinates (part of #13334)
+ * move_unit_fake with illegal coordinates now logs error instead of
+   causing assertion failure crash (part of #13334)
  * prevented user campaigns from making the game unstartable
 
 Version 0.9.2:
