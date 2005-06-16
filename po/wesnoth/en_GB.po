@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-14 12:31+0200\n"
-"PO-Revision-Date: 2005-06-11 11:04+0200\n"
+"PO-Revision-Date: 2005-06-16 17:56+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -3569,6 +3569,8 @@ msgid ""
 "Steadfast:\n"
 "This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
+"Steadfast:\n"
+"This unit's resistance is doubled, up to a maximum of 50%, when defending."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -8329,9 +8331,8 @@ msgid "defender vulnerability vs"
 msgstr "defender vulnerability vs"
 
 #: src/actions.cpp:599
-#, fuzzy
 msgid " (+steadfast)"
-msgstr "steadfast"
+msgstr " (+steadfast)"
 
 #: src/actions.cpp:661
 msgid "(both should survive)"
@@ -8800,9 +8801,8 @@ msgid "Choose your preferred language:"
 msgstr "Choose your preferred language:"
 
 #: src/game.cpp:1305
-#, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
-msgstr "The game map could not be loaded: "
+msgstr "The following add-on campaign(s) had errors and could not be loaded:"
 
 #: src/game.cpp:1317
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -8930,16 +8930,15 @@ msgstr "Forward >"
 
 #: src/help.cpp:2286
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Reference to unknown topic: "
 
 #: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "The Battle for Wesnoth Help"
 
 #: src/help.cpp:2708
-#, fuzzy
 msgid "Parse error when parsing help text: "
-msgstr "Error while playing the game: "
+msgstr "Parse error when parsing help text: "
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9956,13 +9955,3 @@ msgstr "lawful"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutral"
-
-#~ msgid ""
-#~ "Steadfast:\n"
-#~ "This unit takes half normal damage when it did not initiate the attack."
-#~ msgstr ""
-#~ "Steadfast:\n"
-#~ "This unit takes half normal damage when it did not initiate the attack."
-
-#~ msgid "Halved"
-#~ msgstr "Halved"
