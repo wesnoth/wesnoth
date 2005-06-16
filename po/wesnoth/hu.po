@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-14 12:31+0200\n"
-"PO-Revision-Date: 2005-06-10 19:37+0100\n"
+"PO-Revision-Date: 2005-06-14 21:24+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1242,7 +1242,7 @@ msgstr "Élőholtak"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
 msgid "Knalgan Alliance"
-msgstr "Knalgan szövetség"
+msgstr "Knalgai szövetség"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
 msgid "Drakes"
@@ -1355,9 +1355,9 @@ msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island. Recommended settings of 2G per village."
 msgstr ""
-"A játékosoknak meg kell találniuk az utat a szétszórt területeken, amelyek "
-"ezt a kicsiny, de térképészetileg sűrű szigetet jellemzik. Ajánlott "
-"falvanként két aranyat beállítani."
+"A játékosoknak meg kell találniuk az utat a szétszórt területeken, ezen a "
+"térképészetileg sűrűnek mondható szigeten. Ajánlott falvanként két aranyat "
+"beállítani."
 
 #: data/scenarios/multiplayer/2p_IcyWaters.cfg:3
 msgid "2p - Icy Waters"
@@ -1484,7 +1484,7 @@ msgstr "Döntetlen! Végeredmény: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
 msgid "3p - 1v1v1Hex"
-msgstr "3j - 1 kontra 1 kontra 1 Hatszög"
+msgstr "3j - 1-1-1Hatszög"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
 msgid ""
@@ -3214,7 +3214,8 @@ msgstr ""
 #: data/tips.cfg:17
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
-msgstr "Ne félj visszvonulni és rendezni soraid, gyakran ez a győzelem kulcsa."
+msgstr ""
+"Ne félj visszavonulni és rendezni soraid, gyakran ez a győzelem kulcsa."
 
 #: data/tips.cfg:18
 msgid ""
@@ -3623,6 +3624,9 @@ msgid ""
 "Steadfast:\n"
 "This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
+"Rendíthetetlen:\n"
+"Ennek az egységnek kétszeresek az ellenállásai, de mindig legfeljebb 50%, "
+"védekezéskor."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -8376,9 +8380,8 @@ msgid "defender vulnerability vs"
 msgstr "védekező sebezhetőség kontra"
 
 #: src/actions.cpp:599
-#, fuzzy
 msgid " (+steadfast)"
-msgstr "rendíthetetlen"
+msgstr "(+rendíthetetlen)"
 
 #: src/actions.cpp:661
 msgid "(both should survive)"
@@ -8582,16 +8585,16 @@ msgstr "szint"
 
 #: src/dialogs.cpp:729 src/display.cpp:1062 src/help.cpp:1094
 msgid "HP: "
-msgstr "ÉP:"
+msgstr "ÉP: "
 
 #: src/dialogs.cpp:733 src/dialogs.cpp:741 src/display.cpp:1066
 #: src/display.cpp:1074
 msgid "XP: "
-msgstr "TP:"
+msgstr "TP: "
 
 #: src/dialogs.cpp:746 src/display.cpp:1078 src/help.cpp:1095
 msgid "Moves: "
-msgstr "Lépés:"
+msgstr "Lépés: "
 
 #: src/display.cpp:465
 msgid "Screenshot"
@@ -8846,9 +8849,10 @@ msgid "Choose your preferred language:"
 msgstr "Leginkább megfelelő nyelv kiválasztása:"
 
 #: src/game.cpp:1305
-#, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
-msgstr "A pályát nem sikerült betölteni: "
+msgstr ""
+"A következő beszerzett hadjárat(ok) hibákat tartalmaznak, így sikertelen "
+"volt a  betöltés:"
 
 #: src/game.cpp:1317
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -8876,7 +8880,7 @@ msgstr "Veszítesz, ha:"
 
 #: src/help.cpp:1056
 msgid "Advances to: "
-msgstr "Szintlépés után:"
+msgstr "Szintlépés után: "
 
 #: src/help.cpp:1077
 msgid "Abilities: "
@@ -8884,11 +8888,11 @@ msgstr "Képességek:"
 
 #: src/help.cpp:1096
 msgid "Alignment: "
-msgstr "Beállítottság:"
+msgstr "Beállítottság: "
 
 #: src/help.cpp:1100
 msgid "Required XP: "
-msgstr "TP követelmény:"
+msgstr "TP követelmény: "
 
 #: src/help.cpp:1109 src/reports.cpp:239
 msgid "attacks"
@@ -8976,16 +8980,15 @@ msgstr "Előre >"
 
 #: src/help.cpp:2286
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Ismeretlen tárgyra történt hivatkozás:"
 
 #: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Harc Wesnoth-ért Súgó"
 
 #: src/help.cpp:2708
-#, fuzzy
 msgid "Parse error when parsing help text: "
-msgstr "Hiba a játék közben: "
+msgstr "Elemzési hiba a súgó szövegének elemzésekor:"
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9294,7 +9297,7 @@ msgstr "Falu arany:"
 
 #: src/multiplayer_create.cpp:222
 msgid "Experience Modifier: "
-msgstr "Terep-alakító:"
+msgstr "Szintlépés-alakító:"
 
 #: src/multiplayer_create.cpp:325
 msgid "Players: "
