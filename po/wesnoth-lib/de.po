@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-03 22:56+0200\n"
-"PO-Revision-Date: 2005-06-01 14:27+0100\n"
+"PO-Revision-Date: 2005-06-16 13:24+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -53,7 +53,7 @@ msgstr "Verkleinern"
 
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
-msgstr "Standard Zoom"
+msgstr "Keine Vergrößerung"
 
 #: src/hotkeys.cpp:55 src/preferences.cpp:846
 msgid "Toggle Full Screen"
@@ -89,7 +89,7 @@ msgstr "Ausbilden"
 
 #: src/hotkeys.cpp:63
 msgid "Repeat Recruit"
-msgstr "Ausbilden wiederholen"
+msgstr "Weitere Einheit ausbilden"
 
 #: src/hotkeys.cpp:64
 msgid "Recall"
@@ -149,7 +149,7 @@ msgstr "Beschriftung erstellen"
 
 #: src/hotkeys.cpp:78
 msgid "Show Enemy Moves"
-msgstr "Gegnerische Bewegungen anzeigen"
+msgstr "Gegnerische Bewegungsmöglichkeiten anzeigen"
 
 #: src/hotkeys.cpp:79
 msgid "Best Possible Enemy Moves"
@@ -165,7 +165,7 @@ msgstr "Editor beenden"
 
 #: src/hotkeys.cpp:83
 msgid "New Map"
-msgstr "New Map"
+msgstr "Neue Karte"
 
 #: src/hotkeys.cpp:84
 msgid "Load Map"
@@ -221,11 +221,11 @@ msgstr "Alles auswählen"
 
 #: src/hotkeys.cpp:97
 msgid "Draw Terrain"
-msgstr "Terrain malen"
+msgstr "Terrain zeichnen"
 
 #: src/hotkeys.cpp:98
 msgid "Refresh Image Cache"
-msgstr "Grafik Cache Aktualisieren"
+msgstr "Grafik-Cache aktualisieren"
 
 #: src/hotkeys.cpp:100
 msgid "Delay Shroud Updates"
@@ -245,11 +245,11 @@ msgstr "Beschriftung oder Einheiten suchen"
 
 #: src/hotkeys.cpp:104
 msgid "Speak to Ally"
-msgstr "Zu Verbündeten sprechen"
+msgstr "Nachricht an Verbündete"
 
 #: src/hotkeys.cpp:105
 msgid "Speak to All"
-msgstr "Zu allen sprechen"
+msgstr "Nachricht an alle"
 
 #: src/hotkeys.cpp:106 src/show_dialog.cpp:577
 msgid "Help"
@@ -277,10 +277,10 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
-"Der Videomodus konnte nicht geändert werden. Euer Fenstermanager muss auf "
-"16bit Farbtiefe eingestellt sein, um das Spiel im Fenstermodus zu spielen. "
-"Um das Spiel im Vollbildmodus zu spielen, muss Euer Bildschirm 1024x768x16 "
-"unterstützen."
+"Der Bildschirmmodus konnte nicht geändert werden. Euer Fenstermanager muss "
+"auf 16bit Farbtiefe eingestellt sein, um das Spiel im Fenstermodus spielen "
+"zu können. Um das Spiel im Vollbildmodus zu spielen, muss Euer Bildschirm "
+"1024x768x16 unterstützen."
 
 #: src/preferences.cpp:395
 msgid "player"
@@ -308,7 +308,7 @@ msgstr "Hinweisfenster zum Rundenbeginn"
 
 #: src/preferences.cpp:852
 msgid "Turn Bell"
-msgstr "Akustische Benachrichtigung zum Rundenbeginn"
+msgstr "Akustische Benachrichtigung zu Rundenbeginn"
 
 #: src/preferences.cpp:853
 msgid "Show Team Colors"
@@ -316,7 +316,7 @@ msgstr "Teamfarben anzeigen"
 
 #: src/preferences.cpp:854
 msgid "Show Color Cursors"
-msgstr "Farbige Cursor anzeigen"
+msgstr "Farbige Mauszeiger anzeigen"
 
 #: src/preferences.cpp:855
 msgid "Show Haloing Effects"
@@ -336,7 +336,7 @@ msgstr "Helligkeit der Anzeige anpassen"
 
 #: src/preferences.cpp:859
 msgid "Reverse Time Graphics"
-msgstr "Tageszeit Grafiken vertauschen"
+msgstr "Tageszeit-Grafiken vertauschen"
 
 #: src/preferences.cpp:861
 msgid "Music Volume:"
@@ -394,15 +394,15 @@ msgstr "Schwebende Meldungen anzeigen"
 
 #: src/preferences.cpp:916
 msgid "Change the resolution the game runs at"
-msgstr "Verändert die Auflösung mit der das Spiel läuft"
+msgstr "Verändert die Auflösung, unter der das Spiel läuft"
 
 #: src/preferences.cpp:919
 msgid "Display a dialog at the beginning of your turn"
-msgstr "Zeigt ein Hinweisfenster zum Rundenbeginn des Spielers"
+msgstr "Zeigt ein Hinweisfenster zu Rundenbeginn des Spielers"
 
 #: src/preferences.cpp:922
 msgid "Play a bell sound at the beginning of your turn"
-msgstr "Spielt einen Signalton zum Rundenbeginn des Spielers"
+msgstr "Spielt einen Signalton zu Rundenbeginn des Spielers"
 
 #: src/preferences.cpp:925
 msgid ""
@@ -473,7 +473,7 @@ msgstr "Tastenkürzel anpassen"
 
 #: src/preferences.cpp:1278 src/preferences.cpp:1331
 msgid "Press desired HotKey"
-msgstr "Drückt die gewünschte Taste"
+msgstr "Drückt das gewünschte Tastenkürzel"
 
 #: src/preferences.cpp:1296
 msgid "Action"

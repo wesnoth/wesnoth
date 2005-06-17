@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-14 12:31+0200\n"
-"PO-Revision-Date: 2005-06-10 13:40+0100\n"
+"PO-Revision-Date: 2005-06-16 13:05+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # -- Anmerkungen --
+# Wenn an einem Tag 'Do not delete' steht, wäre es kooperativ, ihn
+# tatsächlich auch nicht zu löschen.
 # KENNZEICHNUNG: Vorschlag: Inhaltliche Anmerkungen mit 'Anm.' beginnen, dann lassen sie sich leicht durch die Suchfunktion finden. Beispiel:
 # - Statt:
 # Klingt komisch. Umformulieren
@@ -3746,6 +3748,9 @@ msgid ""
 "Steadfast:\n"
 "This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
+"Unerschütterlich:\n"
+"Diese Einheit steht wie ein Fels in der Schlacht. Ihre Resitenz wird "
+"verdoppelt, jedoch maximal um 50%, wenn sie sich gegen Feinde verteidigt."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -5016,7 +5021,7 @@ msgid ""
 "possible to fend off whatever opponents may await them."
 msgstr ""
 "Auch Bezwinger haben es nie gelernt, sich an das Firmament zu erheben. Statt "
-"dessen treten sie ihren Gegnern mit schwerer Bewaffnung gegebüber. Selbst "
+"dessen treten sie ihren Gegnern mit schwerer Bewaffnung gegenüber. Selbst "
 "den Nachteil, den sie aufgrund des Fehlens ihres inneren Feuers erleiden, "
 "gleichen sie hiermit aus. Die schwere Messingrüstung gibt ihnen den Schutz, "
 "den sie brauchen, um ihren Gegnern mit ihren Smaragdklingen das Fürchten zu "
@@ -6068,7 +6073,7 @@ msgstr "Tor"
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
 msgstr ""
-"Diese Tür wird sich für niemanden öffnen, der nicht mit ihr verbündet ist."
+"Diese Tür wird sich für niemanden öffnen, der nicht dazu berechtigt ist."
 
 #: data/units/Gate.cfg:20
 msgid "bump"
@@ -7692,6 +7697,7 @@ msgstr ""
 "Seefurien sind ältere und erfahrenere Seeteufel, die gelernt haben, mit "
 "Magie das Wasser zu beherrschen und es gegen ihre Feinde einzusetzen."
 
+# Klingt fast so gut wie Reiterelf.
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
 msgstr "Seeork"
@@ -7708,9 +7714,9 @@ msgstr ""
 "vermuten, dass es das Werk eines Schamanen war, andere jedoch, dass ein "
 "seltsamer Trank bei der Verwandlung eine Rolle gespielt hat. "
 "Augenzeugenberichten zu Folge weisen diese Orks Merkmale einer Amphibie auf, "
-"sodass sie auf dem Land so wie im Wasser gleichsam beweglich sind. Sie "
-"greifen ihre Feinde mit Krummschwertern an, sind aber nicht in der Lage, "
-"eine Fernkampfwaffe zu benutzen."
+"sodass sie auf dem Land wie im Wasser gleichsam beweglich sind. Sie greifen "
+"ihre Feinde mit Krummschwertern an, sind aber nicht in der Lage, eine "
+"Fernkampfwaffe zu benutzen."
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
@@ -7721,7 +7727,7 @@ msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
 "Seeschlagen sind riesige Monster, die in der Lage sind, Boote aus eigener "
-"Kraft kentern zu lassen."
+"Kraft zum Kentern zu bringen."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -7734,9 +7740,10 @@ msgid ""
 "the leader of his unit, he must survive for the battle to be won."
 msgstr ""
 "Der Feldwebel ist ein Unteroffizier in den Reihen der königlichen Armee. Er "
-"ist nicht stärker als die anderen Einheiten, aber aus ihm kann sich mit "
-"genügend Erfahrung ein guter Anführer entwickeln. Als Truppenführer sollte "
-"er überleben um eine Schlacht zu gewinnen."
+"ist nicht stärker als die anderen Einheiten, aber mit genügend Erfahrung "
+"kann sich aus ihm ein guter Anführer entwickeln. Da er Truppenführer ist, "
+"ist es ratsam, ihn vor tödlichen Angriffen zu schützen - sofern man eine "
+"Schlacht gewinnen möchte."
 
 #: data/units/Shadow.cfg:3
 msgid "Shadow"
@@ -7762,9 +7769,9 @@ msgid ""
 "slowly, they are immensely powerful and therefore feared throughout Wesnoth "
 "and even into the lands beyond."
 msgstr ""
-"Schreckenskrieger sind die Elite der wesnothischen Streitkräfte. Obwohl sie "
-"sich nur langsam fortbewegen, sind sie sehr stark und werden in ganz Wesnoth "
-"und sogar in angrenzenden Ländern gefürchtet."
+"Schreckenskrieger stellen die Elite der wesnothischen Streitkräfte. Obwohl "
+"sie sich nur langsam fortbewegen, sind sie sehr stark und werden in ganz "
+"Wesnoth und sogar in angrenzenden Ländern gefürchtet."
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
@@ -7796,17 +7803,17 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
-"Einstmals war dieser Drache eine der Mächtigsten Kreaturen auf dem "
-"Erdenrund. Doch ist dieser von allen gefürchtete Drache gestorben und nun "
-"sind einzig die Knochen und einige dunkle, beinahe schwarze Sehnen von ihm "
-"übrig. Jahrzehnte, wenn nicht gar Jahrhunderte nach seinem Ableben ist er "
-"durch die finsteren Mächte der Nekromantie wieder zum (Un)leben erweckt "
-"worden. Genau diesen bösen Mächten, die ihn einst zurückholten aus dem Reich "
-"der Toten dient er nun und auch wenn er nun nur noch wie ein Haufen alter, "
-"trockener Knochen aussehen mag, so ist er immer noch sehr gefährlich, auch "
-"wenn davon nur wenige auserwählte berichten können. Zwar haben schon viele "
-"versucht ihn wieder zurück in das Reich der toten zu schicken, doch keiner "
-"war dazu erwählt, diesen Versuch zu überleben..."
+"Einstmals war dieser Drache eine der mächtigsten Kreaturen auf dem "
+"Erdenrund. Glücklicherweise ist er vor langer Zeit gestorben. Einzig die "
+"Knochen und einige dunkle, beinahe schwarze Sehnen sind von ihm übrig "
+"geblieben. Jahrzehnte, wenn nicht gar Jahrhunderte nach seinem Ableben ist "
+"er durch die finsteren Mächte der Nekromantie wieder zum (Un)leben erweckt "
+"worden. Ihnen, die ihn einst zurückholten aus dem Reich der Toten, dient er "
+"nun. Auch wenn er nun nur noch wie ein Haufen alter, trockener Knochen "
+"aussehen mag, so ist er immer noch sehr gefährlich, auch wenn davon nur "
+"wenige auserwählte berichten können. Zwar haben schon viele versucht, ihn "
+"wieder zurück in das Reich der Toten zu schicken, doch keiner war dazu "
+"erwählt, diese Tat zu vollbringen - oder zu überleben."
 
 #: data/units/Skeletal_Dragon.cfg:29
 msgid "jaw"
@@ -7823,7 +7830,7 @@ msgid ""
 "holy spells, but resistant to bladed weapons."
 msgstr ""
 "Skelette sind untote Krieger, die auf dem Schlachtfeld erschlagen wurden und "
-"von dunklen Magiern zurückgerufen wurden. Wie alle Untoten sind sie leicht "
+"durch dunkle Magie zurückgerufen wurden. Wie alle Untoten sind sie leicht "
 "durch Flammen und heilige Angriffe verwundbar, aber widerstandsfähig gegen "
 "Klingenwaffen."
 
@@ -7863,10 +7870,10 @@ msgid ""
 "borne of the anguish of their empty and incoherent existence."
 msgstr ""
 "In ihrem früheren Leben gehörten sie zu den besten Bogenschützen die je auf "
-"dem Boden von Wesnoth wandelten. Nun dar sie von den Toten erweckt worden "
+"dem Boden von Wesnoth wandelten. Nun, da sie von den Toten erweckt worden "
 "sind, stellen sie eine Gefahr für die Lebenden dar. Die Seelenschützen "
-"durchstreifen die Gefilde Wesnoths einzig und allein getrieben von dem "
-"finsteren Drang Tod und Verderben über die Lebenden zu bringen und so ihrem "
+"durchstreifen die Gefilde Wesnoths, einzig und allein getrieben von dem "
+"finsteren Drang, Tod und Verderben über die Lebenden zu bringen und so ihrem "
 "untoten Dasein eine gewisse Berechtigung zu verschaffen."
 
 #: data/units/Soulless.cfg:3 data/units/Soulless.cfg:75
@@ -7907,9 +7914,9 @@ msgid ""
 msgstr ""
 "Speerträger sind das Herz der menschlichen Armeen. Die meist sehr jungen "
 "Soldaten bekommen eine Grundausbildung und werden anschließend an die Front "
-"geschickt, um einen Großteil der Kampfhandlungen zu übernehmen. Durch die "
-"Länge der Speere dürfen sie den ersten Schlag ausführen - auch wenn sie sich "
-"verteidigen."
+"geschickt, um einen Großteil der Kampfhandlungen zu übernehmen. Wegen der "
+"Länge der Speere dürfen sie den ersten Schlag ausführen - selbst, wenn sie "
+"sich verteidigen."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
@@ -7937,9 +7944,10 @@ msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting."
 msgstr ""
-"Schwertkämpfer sind das Herz der menschlichen Armeen. Diese jungen Soldaten "
-"bekommen eine Grundausbildung und stehen danach in den vordersten Reihen, um "
-"einen Großteil der Kampfhandlungen zu übernehmen."
+"Schwertkämpfer sind gemeinsam mit den Speerträgern das Herz der menschlichen "
+"Armeen. Diese jungen Soldaten bekommen eine Grundausbildung und stehen "
+"danach in den vordersten Reihen, um einen Großteil der Kampfhandlungen zu "
+"übernehmen."
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -7967,7 +7975,7 @@ msgstr ""
 "Diebe sind flink und verschlagen, weshalb sind sie nur schwer zu treffen "
 "sind. Ausgebildet in der Fertigkeit »Hinterhalt« können sie doppelten "
 "Schaden anrichten, wenn sich ein Verbündeter auf der gegenüberliegenden "
-"Seite von ihrem Gegner befindet. Da sie lichtscheu sind kämpfen sie besser "
+"Seite von ihrem Gegner befindet. Da sie lichtscheu sind, kämpfen sie besser "
 "in der Nacht als am Tag."
 
 #: data/units/Thief.cfg:104
@@ -8179,9 +8187,10 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"Vampirfledermäuse sind untote fliegende Kreaturen, die ihre Gegner beißend "
-"angreifen. Ihre Zähne richten zwar nicht sehr viel Schaden an, aber sie "
-"saugen Lebenspunkte ab und füllen so den Lebenspunktevorrat der Fledermaus."
+"Vampirfledermäuse sind untote fliegende Kreaturen, die ihre Gegner mit "
+"Bissen angreifen. Ihre Zähne richten zwar nicht sehr viel Schaden an, aber "
+"sie saugen Lebenspunkte ab und füllen so den Lebenspunktevorrat der "
+"Fledermaus."
 
 #: data/units/Vampire_Lady.cfg:3
 msgid "female^Vampire Lady"
@@ -8259,10 +8268,9 @@ msgid ""
 "protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
 "units, thereby increasing their fighting efficiency."
 msgstr ""
-"Als Herrscher über die Königreiche der Menschen sind Könige verantwortlich "
-"ihre Gebiete zu regieren und zu beschützen. Könige können die Angriffe von "
-"Einheiten der Stufe 1 und 2 koordinieren und erhöhen deren Effizienz im "
-"Kampf."
+"Als Herrscher über die Königreiche der Menschen heben Könige die Moral ihrer "
+"Truppe. Könige können die Angriffe von Einheiten der Stufe 1 und 2 "
+"koordinieren und erhöhen deren Effizienz im Kampf."
 
 #: data/units/Watch_Tower.cfg:3
 msgid "Watch Tower"
@@ -8274,7 +8282,7 @@ msgid ""
 "miscellaneous items at them with ballistas."
 msgstr ""
 "Beobachtungstürme werden genutzt, um herannahende Feinde ausfindig zu machen "
-"und danach verschiedene Geschosse mit Ballisten auf sie zu feuern."
+"und danach verschiedene Geschosse mit Ballistae auf sie zu feuern."
 
 #: data/units/White_Mage.cfg:3
 msgid "White Mage"
@@ -8393,9 +8401,9 @@ msgid ""
 "Today almost a boy, by his devotion to the crown he is seeking to become a "
 "Lord -- to join the elite of human fighters."
 msgstr ""
-"Er ist fast noch ein Kind, doch wird er mit seiner Hingabe für die Krone  "
-"eines Tages zum Fürsten, und damit zur Elite der menschlichen Truppen "
-"gehören."
+"Er ist fast noch ein Kind, doch wird er es dank seiner Hingabe für die "
+"Krone  eines Tages zum Fürsten bringen und damit zur Elite der menschlichen "
+"Truppen gehören."
 
 #: src/about.cpp:33
 msgid "+Core Developers"
@@ -8577,7 +8585,7 @@ msgstr ""
 #: src/actions.cpp:115
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"Euer Heerführer muss sich im Burgfried befinden um Einheiten auszubilden."
+"Euer Heerführer muss sich im Bergfried befinden, um Einheiten auszubilden."
 
 #: src/actions.cpp:135
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -8626,9 +8634,8 @@ msgid "defender vulnerability vs"
 msgstr "Verwundbarkeit des Verteidigers gegen"
 
 #: src/actions.cpp:599
-#, fuzzy
 msgid " (+steadfast)"
-msgstr "Unerschütterlich"
+msgstr "+(unerschütterlich)"
 
 #: src/actions.cpp:661
 msgid "(both should survive)"
@@ -8793,7 +8800,7 @@ msgid ""
 "some time."
 msgstr ""
 "Das Verzeichnis mit Euren gespeicherten Dateien enthält Spielstände einer "
-"älteren Version des Spieles. Wollt Ihr sie auf die neueste Version "
+"älteren Version des Spiels. Wollt Ihr sie auf die neueste Version "
 "aktualisieren? Dies kann einige Zeit in Anspruch nehmen."
 
 #: src/dialogs.cpp:495
@@ -9102,9 +9109,10 @@ msgid "Choose your preferred language:"
 msgstr "Wählt die gewünschte Sprache:"
 
 #: src/game.cpp:1305
-#, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
-msgstr "Die Karte konnte nicht geladen werden:"
+msgstr ""
+"Die folgende(n) Zusatzkampagne(n) weisen Fehler auf und können nicht geladen "
+"werden:"
 
 #: src/game.cpp:1317
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -9237,16 +9245,16 @@ msgstr "Vorwärts >"
 
 #: src/help.cpp:2286
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Verweis auf unbekanntes Thema:"
 
 #: src/help.cpp:2661
 msgid "The Battle for Wesnoth Help"
 msgstr "Hilfe zu Battle for Wesnoth"
 
+# Anm. Stimmt das im Kontext?
 #: src/help.cpp:2708
-#, fuzzy
 msgid "Parse error when parsing help text: "
-msgstr "Fehler beim Spielen: "
+msgstr "Fehler beim analysieren des Hilfetextes: "
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9528,8 +9536,9 @@ msgstr "Nichts teilen"
 # aber anscheinend kann man diesen Fehler kaum bekommen
 #: src/multiplayer_create.cpp:121
 msgid "No multiplayer sides."
-msgstr "Keine gegnerischen Mitspieler gefunden."
+msgstr "Keine gegnerischen Parteien gefunden."
 
+# Anm. Wasn das?
 #: src/multiplayer_create.cpp:123
 msgid "No eras found"
 msgstr "Keine Äras gefunden"
@@ -9664,7 +9673,7 @@ msgstr "Ära nicht verfügbar"
 # Clawed by VeryUhu
 #: src/multiplayer_wait.cpp:212
 msgid "No multiplayer sides found"
-msgstr "Keine gegnerischen Mitspieler gefunden."
+msgstr "Keine gegnerischen Parteien gefunden."
 
 #: src/multiplayer_wait.cpp:229
 msgid "Choose your side:"
