@@ -751,9 +751,11 @@ redo_turn:
 				info["type"] = "termination";
 				info["condition"] = "game over";
 				network::send_data(cfg);
-			} else
+			} else {
 				gui::show_dialog(gui, NULL, _("Game Over"),
 				                 _("The game is over."), gui::OK_ONLY);
+				return QUIT;
+			}
 		}
 
 		if(end_level.result == QUIT) {
