@@ -2259,12 +2259,6 @@ void turn_info::unit_list()
 
 		items.push_back(row.str());
 
-		//extra unit for the first row to make up the heading
-		if(units_list.empty()) {
-			locations_list.push_back(i->first);
-			units_list.push_back(i->second);
-		}
-
 		locations_list.push_back(i->first);
 		units_list.push_back(i->second);
 	}
