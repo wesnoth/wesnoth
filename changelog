@@ -1,5 +1,13 @@
 CVS HEAD:
-  * language and i18n:
+ * user interface improvements:
+   * restored dialog titles for multiplayer screens (#13049)
+   * --nosound commandline option no longer initializes sound (part of #11669)
+   * players can now control multiple sides in multiplayer
+   * prevented user campaigns with errors from making the game unstartable
+   * multiplayer replays no longer show 'The End' and game credits (#13375)
+   * fixed off-by-one error in Unit List (#13323)
+   * fixed multiple keystrokes (Esc/Return) registered by some dialogs (#13332)
+ * language and i18n:
    * fixed 'make dist' not removing stamp-po files, causing broken translations
    * updated translations:
      * British English, Catalan, Finnish, German, Hungarian, Swedish, Turkish
@@ -34,19 +42,14 @@ CVS HEAD:
    * increased Ghost line resistance to fire to 10%
    * decreased Ghost, Shadow and Nightgaunt resistance to impact to 50%
    * changed Ghoul line resistances to: Impact 0%, Fire 0%, Cold 40%
-   * decreased undeadfoot mvement cost on mountains from 4 to 3, on hills from 3
-   to 2
+   * decreased undeadfoot movement cost on mountains from 4 to 3
+   * decreased undeadfoot movement cost on hills from 3 to 2
  * server
    * no longer rejects :control command with "Side not found"
    * write a summary of commands when a fifo command is not recognized
    * attempt to fix assertion failure in network_worker.cpp
- * restored dialog titles for multiplayer screens (#13049)
- * --nosound commandline option no longer initializes sound (part of #11669)
- * players can now control multiple sides in multiplayer
  * move_unit_fake with illegal coordinates now logs error instead of
    causing assertion failure crash (part of #13334)
- * prevented user campaigns from making the game unstartable
- * multiplayer replays no longer show 'The End' and game credits (#13375)
 
 Version 0.9.2:
  * user interface improvements:
