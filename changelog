@@ -1,9 +1,5 @@
 CVS HEAD:
- * unit balancing and modifications: 
-   * applied 0.9.2 changes to Thief, Elvish Ranger, Elvish Avenger to female
-     units also
-   * steadfast now doubles resistances up to 50%; vulnerabilities are unaffected
- * language and i18n:
+  * language and i18n:
    * fixed 'make dist' not removing stamp-po files, causing broken translations
    * updated translations:
      * British English, Catalan, Finnish, German, Hungarian, Swedish, Turkish
@@ -28,8 +24,18 @@ CVS HEAD:
    * new unit portraits for Bandit, Grand Knight, Halberdier, Horseman,
      Javelineer, Knight, Lancer, Paladin, Peasant, Pikeman, Royal Guard,
      Swordsman, Thug
- * unit balancing and modifications: 
+ * unit balancing and modifications:
+   * applied 0.9.2 changes to Thief, Elvish Ranger, Elvish Avenger to female
+     units also
+   * steadfast now doubles resistances up to 50%; vulnerabilities are unaffected
+   * changed Dwarvish Guardsman line resistance to cold to 10%
    * increased Orcish Shaman (Novice and Old also) hitpoints from 18 to 20
+   * changed Pikeman attack from 9-3 to 10-3
+   * increased Ghost line resistance to fire to 10%
+   * decreased Ghost, Shadow and Nightgaunt resistance to impact to 50%
+   * changed Ghoul line resistances to: Impact 0%, Fire 0%, Cold 40%
+   * decreased undeadfoot mvement cost on mountains from 4 to 3, on hills from 3
+   to 2
  * server
    * no longer rejects :control command with "Side not found"
    * write a summary of commands when a fifo command is not recognized
