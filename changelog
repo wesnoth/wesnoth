@@ -30,7 +30,7 @@ CVS HEAD:
      Swordsman, Thug
  * unit balancing and modifications: 
    * increased Orcish Shaman (Novice and Old also) hitpoints from 18 to 20
-   * decreased Elvish Outrider pierce resistance from 20% to 10%
+   * decreased Elvish Outrider pierce vulnerability from -20% to -10%
    * increased Elvish Outrider defense on grassland from 40% to 50%
    * increased Elvish Outrider defense in forest from 60% to 70%
  * server
@@ -43,6 +43,7 @@ CVS HEAD:
  * move_unit_fake with illegal coordinates now logs error instead of
    causing assertion failure crash (part of #13334)
  * prevented user campaigns from making the game unstartable
+ * multiplayer replays no longer show 'The End' and game credits (#13375)
 
 Version 0.9.2:
  * user interface improvements:
