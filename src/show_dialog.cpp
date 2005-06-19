@@ -818,6 +818,14 @@ int show_dialog(display& disp, surface image,
 				} else if(res == dialog_button_action::CLOSE_DIALOG) {
 					return -1;
 				}
+
+				//reset button-tracking flags so that if the action displays a dialog, a button-press
+				//at the end of the dialog won't be mistaken for a button-press in this dialog.
+				//(We should eventually use a proper event-handling system instead of tracking
+				//flags to avoid problems like this altogether).
+				left_button = true;
+				right_button = true;
+				key_down = true;
 			}
 		}
 
@@ -841,7 +849,7 @@ namespace gui {
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
 {
-	const std::string title = _("Downloading...");
+	const std::string title = _("Receiving data...");
 
 	const size_t width = 300;
 	const size_t height = 80;
