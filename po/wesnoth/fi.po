@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-06-14 12:31+0200\n"
+"POT-Creation-Date: 2005-06-21 21:21+0200\n"
 "PO-Revision-Date: 2005-06-15 20:03+0200\n"
 "Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
 "Language-Team: none\n"
@@ -3761,7 +3761,7 @@ msgstr ""
 "kuin tavalliset epäkuolleet."
 
 #: data/units/Ancient_Lich.cfg:41 data/units/Demilich.cfg:31
-#: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
+#: data/units/Dread_Lich.cfg:19 data/units/Ghost.cfg:19 data/units/Lich.cfg:19
 msgid "touch"
 msgstr "kosketus"
 
@@ -3770,30 +3770,32 @@ msgstr "kosketus"
 #: data/units/Dark_Queen.cfg:45 data/units/Dark_Queen.cfg:46
 #: data/units/Dark_Sorcerer.cfg:41 data/units/Dark_Spirit.cfg:49
 #: data/units/Deathmaster.cfg:53 data/units/Demilich.cfg:32
-#: data/units/Demilich.cfg:45 data/units/Elvish_Enchantress.cfg:118
+#: data/units/Demilich.cfg:45 data/units/Dread_Lich.cfg:20
+#: data/units/Dread_Lich.cfg:33 data/units/Elvish_Enchantress.cfg:118
 #: data/units/Elvish_High_Lord.cfg:43 data/units/Elvish_Lord.cfg:39
 #: data/units/Elvish_Sorceress.cfg:118 data/units/Elvish_Sylph.cfg:84
 #: data/units/Ghost.cfg:20 data/units/Ghost.cfg:32 data/units/Initiate.cfg:20
 #: data/units/Lich.cfg:20 data/units/Lich.cfg:33 data/units/Necromancer.cfg:36
 #: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
-#: data/units/Saurian_Tribalist.cfg:41 data/units/Spectre.cfg:42
+#: data/units/Saurian_Tribalist.cfg:41 data/units/Spectre.cfg:65
 #: data/units/Wraith.cfg:42
 msgid "cold"
 msgstr "kylmä"
 
 #: data/units/Ancient_Lich.cfg:46 data/units/Blood_Bat.cfg:37
 #: data/units/Dark_Spirit.cfg:36 data/units/Demilich.cfg:36
-#: data/units/Lich.cfg:24 data/units/Orcish_Shaman.cfg:41
-#: data/units/Orcish_Shaman.cfg:100 data/units/Orcish_Shaman.cfg:159
-#: data/units/Skeletal_Dragon.cfg:33 data/units/Spectre.cfg:29
-#: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:26
-#: data/units/Vampire_Lady.cfg:39 data/units/Wraith.cfg:29
+#: data/units/Dread_Lich.cfg:24 data/units/Lich.cfg:24
+#: data/units/Orcish_Shaman.cfg:41 data/units/Orcish_Shaman.cfg:100
+#: data/units/Orcish_Shaman.cfg:159 data/units/Skeletal_Dragon.cfg:33
+#: data/units/Spectre.cfg:52 data/units/Vampire_Bat.cfg:24
+#: data/units/Vampire_Lady.cfg:26 data/units/Vampire_Lady.cfg:39
+#: data/units/Wraith.cfg:29
 msgid "drain"
 msgstr "energiaimu"
 
 #: data/units/Ancient_Lich.cfg:54 data/units/Deathmaster.cfg:52
-#: data/units/Demilich.cfg:44 data/units/Initiate.cfg:19
-#: data/units/Lich.cfg:32
+#: data/units/Demilich.cfg:44 data/units/Dread_Lich.cfg:32
+#: data/units/Initiate.cfg:19 data/units/Lich.cfg:32
 msgid "magic"
 msgstr "taikuus"
 
@@ -3802,26 +3804,26 @@ msgstr "taikuus"
 #: data/units/Commander.cfg:135 data/units/Dark_Adept.cfg:36
 #: data/units/Dark_Queen.cfg:47 data/units/Dark_Sorcerer.cfg:42
 #: data/units/Deathmaster.cfg:54 data/units/Demilich.cfg:46
-#: data/units/Dwarvish_Runemaster.cfg:47 data/units/Elder_Mage.cfg:42
-#: data/units/Elvish_Druid.cfg:65 data/units/Elvish_Enchantress.cfg:122
-#: data/units/Elvish_High_Lord.cfg:45 data/units/Elvish_Lord.cfg:41
-#: data/units/Elvish_Shyde.cfg:27 data/units/Elvish_Shyde.cfg:74
-#: data/units/Elvish_Sorceress.cfg:122 data/units/Elvish_Sylph.cfg:26
-#: data/units/Elvish_Sylph.cfg:85 data/units/Fighter.cfg:86
-#: data/units/Fireball.cfg:21 data/units/Great_Mage.cfg:47
-#: data/units/Great_Mage.cfg:140 data/units/Initiate.cfg:21
-#: data/units/Lich.cfg:34 data/units/Lord.cfg:117 data/units/Mage.cfg:44
-#: data/units/Mage.cfg:121 data/units/Mage_of_Light.cfg:49
-#: data/units/Mage_of_Light.cfg:121 data/units/Mermaid_Diviner.cfg:50
-#: data/units/Mermaid_Enchantress.cfg:42 data/units/Mermaid_Initiate.cfg:42
-#: data/units/Mermaid_Priestess.cfg:48 data/units/Mermaid_Siren.cfg:29
-#: data/units/Mermaid_Siren.cfg:72 data/units/Necromancer.cfg:37
-#: data/units/Princess.cfg:80 data/units/Red_Mage.cfg:47
-#: data/units/Red_Mage.cfg:140 data/units/Saurian_Icecaster.cfg:43
-#: data/units/Saurian_Soothsayer.cfg:42 data/units/Saurian_Tribalist.cfg:42
-#: data/units/Sea_Hag.cfg:34 data/units/Silver_Mage.cfg:96
-#: data/units/Silver_Mage.cfg:225 data/units/White_Mage.cfg:48
-#: data/units/White_Mage.cfg:119
+#: data/units/Dread_Lich.cfg:34 data/units/Dwarvish_Runemaster.cfg:47
+#: data/units/Elder_Mage.cfg:42 data/units/Elvish_Druid.cfg:65
+#: data/units/Elvish_Enchantress.cfg:122 data/units/Elvish_High_Lord.cfg:45
+#: data/units/Elvish_Lord.cfg:41 data/units/Elvish_Shyde.cfg:27
+#: data/units/Elvish_Shyde.cfg:74 data/units/Elvish_Sorceress.cfg:122
+#: data/units/Elvish_Sylph.cfg:26 data/units/Elvish_Sylph.cfg:85
+#: data/units/Fighter.cfg:86 data/units/Fireball.cfg:21
+#: data/units/Great_Mage.cfg:47 data/units/Great_Mage.cfg:140
+#: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Lord.cfg:117
+#: data/units/Mage.cfg:44 data/units/Mage.cfg:121
+#: data/units/Mage_of_Light.cfg:49 data/units/Mage_of_Light.cfg:121
+#: data/units/Mermaid_Diviner.cfg:50 data/units/Mermaid_Enchantress.cfg:42
+#: data/units/Mermaid_Initiate.cfg:42 data/units/Mermaid_Priestess.cfg:48
+#: data/units/Mermaid_Siren.cfg:29 data/units/Mermaid_Siren.cfg:72
+#: data/units/Necromancer.cfg:37 data/units/Princess.cfg:80
+#: data/units/Red_Mage.cfg:47 data/units/Red_Mage.cfg:140
+#: data/units/Saurian_Icecaster.cfg:43 data/units/Saurian_Soothsayer.cfg:42
+#: data/units/Saurian_Tribalist.cfg:42 data/units/Sea_Hag.cfg:34
+#: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:225
+#: data/units/White_Mage.cfg:48 data/units/White_Mage.cfg:119
 msgid "magical"
 msgstr "maaginen"
 
@@ -3880,7 +3882,7 @@ msgstr "murskaus"
 #: data/units/Fire_Dragon.cfg:42 data/units/Footpad.cfg:21
 #: data/units/Footpad.cfg:39 data/units/Footpad.cfg:87
 #: data/units/Footpad.cfg:105 data/units/Galleon.cfg:19 data/units/Gate.cfg:23
-#: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:44
+#: data/units/Giant_Mudcrawler.cfg:44 data/units/Giant_Mudcrawler.cfg:66
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:37
 #: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:117
 #: data/units/Great_Troll.cfg:22 data/units/Heavy_Infantryman.cfg:20
@@ -3894,7 +3896,7 @@ msgstr "murskaus"
 #: data/units/Merman_Entangler.cfg:28 data/units/Merman_Netcaster.cfg:28
 #: data/units/Mounted_Captain.cfg:48 data/units/Mounted_Commander.cfg:48
 #: data/units/Mounted_Fighter.cfg:45 data/units/Mounted_Warrior.cfg:45
-#: data/units/Mudcrawler.cfg:22 data/units/Necromancer.cfg:20
+#: data/units/Mudcrawler.cfg:44 data/units/Necromancer.cfg:20
 #: data/units/Noble_Youth.cfg:25 data/units/Orcish_Shaman.cfg:20
 #: data/units/Orcish_Shaman.cfg:79 data/units/Orcish_Shaman.cfg:138
 #: data/units/Outlaw.cfg:21 data/units/Outlaw.cfg:39 data/units/Outlaw.cfg:94
@@ -4034,13 +4036,13 @@ msgstr "tikari"
 #: data/units/Elvish_Hero.cfg:23 data/units/Elvish_High_Lord.cfg:22
 #: data/units/Elvish_Lord.cfg:23 data/units/Elvish_Marksman.cfg:24
 #: data/units/Elvish_Marksman.cfg:117 data/units/Elvish_Marshal.cfg:26
-#: data/units/Elvish_Outrider.cfg:28 data/units/Elvish_Ranger.cfg:25
+#: data/units/Elvish_Outrider.cfg:29 data/units/Elvish_Ranger.cfg:25
 #: data/units/Elvish_Ranger.cfg:115 data/units/Elvish_Rider.cfg:32
 #: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:24
 #: data/units/Elvish_Sharpshooter.cfg:118 data/units/Fencer.cfg:21
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
 #: data/units/Fire_Dragon.cfg:23 data/units/General.cfg:29
-#: data/units/Ghoul.cfg:20 data/units/Goblin_Knight.cfg:21
+#: data/units/Ghoul.cfg:27 data/units/Goblin_Knight.cfg:22
 #: data/units/Grand_Knight.cfg:23 data/units/Grand_Marshal.cfg:25
 #: data/units/Gryphon.cfg:23 data/units/Gryphon_Master.cfg:25
 #: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:66
@@ -4053,7 +4055,7 @@ msgstr "tikari"
 #: data/units/Naga-Fighter.cfg:22 data/units/Naga-Fighter.cfg:57
 #: data/units/Naga-Myrmidon.cfg:26 data/units/Naga-Myrmidon.cfg:65
 #: data/units/Naga-Warrior.cfg:26 data/units/Naga-Warrior.cfg:65
-#: data/units/Necrophage.cfg:20 data/units/Nightgaunt.cfg:21
+#: data/units/Necrophage.cfg:27 data/units/Nightgaunt.cfg:48
 #: data/units/Noble_Commander.cfg:29 data/units/Noble_Fighter.cfg:24
 #: data/units/Noble_Lord.cfg:28 data/units/Ogre.cfg:20
 #: data/units/Orcish_Archer.cfg:22 data/units/Orcish_Assassin.cfg:20
@@ -4069,17 +4071,17 @@ msgstr "tikari"
 #: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:25
 #: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:31
 #: data/units/Skeletal_Dragon.cfg:50 data/units/Skeleton.cfg:38
-#: data/units/Sleeping_Gryphon.cfg:19 data/units/Spectre.cfg:25
+#: data/units/Sleeping_Gryphon.cfg:19 data/units/Spectre.cfg:48
 #: data/units/Swordsman.cfg:25 data/units/Thief.cfg:85
 #: data/units/Thief.cfg:186 data/units/Trapper.cfg:26
 #: data/units/Vampire_Bat.cfg:20 data/units/Vampire_Lady.cfg:21
 #: data/units/Wolf_Rider.cfg:22 data/units/Wraith.cfg:25
-#: data/units/Young_Ogre.cfg:20
+#: data/units/Young_Ogre.cfg:42
 msgid "blade"
 msgstr "teräase"
 
 #: data/units/Assassin.cfg:39 data/units/Assassin.cfg:118
-#: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
+#: data/units/Nightgaunt.cfg:52 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
 #: data/units/Thief.cfg:190 src/actions.cpp:588
 msgid "backstab"
@@ -4092,8 +4094,8 @@ msgstr "puukko"
 
 #: data/units/Assassin.cfg:68 data/units/Assassin.cfg:147
 #: data/units/Cave_Spider.cfg:37 data/units/Cuttle_Fish.cfg:73
-#: data/units/Direwolf_Rider.cfg:54 data/units/Ghoul.cfg:24
-#: data/units/Giant_Scorpion.cfg:22 data/units/Necrophage.cfg:24
+#: data/units/Direwolf_Rider.cfg:54 data/units/Ghoul.cfg:31
+#: data/units/Giant_Scorpion.cfg:22 data/units/Necrophage.cfg:31
 #: data/units/Orcish_Assassin.cfg:41 data/units/Orcish_Slayer.cfg:46
 msgid "poison"
 msgstr "myrkky"
@@ -4159,7 +4161,7 @@ msgstr ""
 #: data/units/Elvish_Fighter.cfg:24 data/units/Elvish_Hero.cfg:22
 #: data/units/Elvish_High_Lord.cfg:21 data/units/Elvish_Lord.cfg:22
 #: data/units/Elvish_Marksman.cfg:23 data/units/Elvish_Marksman.cfg:116
-#: data/units/Elvish_Marshal.cfg:25 data/units/Elvish_Outrider.cfg:27
+#: data/units/Elvish_Marshal.cfg:25 data/units/Elvish_Outrider.cfg:28
 #: data/units/Elvish_Ranger.cfg:24 data/units/Elvish_Ranger.cfg:114
 #: data/units/Elvish_Rider.cfg:31 data/units/Elvish_Scout.cfg:32
 #: data/units/Elvish_Sharpshooter.cfg:23
@@ -4227,7 +4229,7 @@ msgstr ""
 "uhrien verestä."
 
 #: data/units/Blood_Bat.cfg:32 data/units/Cave_Spider.cfg:32
-#: data/units/Direwolf_Rider.cfg:37 data/units/Goblin_Knight.cfg:20
+#: data/units/Direwolf_Rider.cfg:37 data/units/Goblin_Knight.cfg:21
 #: data/units/Sea_Serpent.cfg:19 data/units/Vampire_Bat.cfg:19
 #: data/units/Wolf_Rider.cfg:21
 msgid "fangs"
@@ -4260,14 +4262,14 @@ msgstr "pisto"
 #: data/units/Elvish_Avenger.cfg:128 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Fighter.cfg:41
 #: data/units/Elvish_Hero.cfg:41 data/units/Elvish_Marshal.cfg:41
-#: data/units/Elvish_Outrider.cfg:43 data/units/Elvish_Ranger.cfg:41
+#: data/units/Elvish_Outrider.cfg:44 data/units/Elvish_Ranger.cfg:41
 #: data/units/Elvish_Ranger.cfg:131 data/units/Elvish_Rider.cfg:52
 #: data/units/Elvish_Scout.cfg:53 data/units/Longbowman.cfg:39
 #: data/units/Lord.cfg:39 data/units/Master_Bowman.cfg:33
 #: data/units/Noble_Commander.cfg:46 data/units/Noble_Lord.cfg:45
 #: data/units/Orcish_Archer.cfg:37 data/units/Orcish_Archer.cfg:67
 #: data/units/Orcish_Leader.cfg:37 data/units/Orcish_Ruler.cfg:38
-#: data/units/Orcish_Sovereign.cfg:42 data/units/Orcish_Warlord.cfg:30
+#: data/units/Orcish_Sovereign.cfg:42 data/units/Orcish_Warlord.cfg:40
 #: data/units/Poacher.cfg:42 data/units/Skeleton_Archer.cfg:41
 #: data/units/Soul_Shooter.cfg:40 data/units/Trapper.cfg:42
 msgid "bow"
@@ -4280,17 +4282,17 @@ msgstr "jousi"
 #: data/units/Drake_Clasher.cfg:52 data/units/Drake_Enforcer.cfg:61
 #: data/units/Drake_Gladiator.cfg:44 data/units/Drake_Slasher.cfg:44
 #: data/units/Drake_Warden.cfg:44 data/units/Duelist.cfg:50
-#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:27
-#: data/units/Dwarvish_Guardsman.cfg:40 data/units/Dwarvish_Sentinel.cfg:29
-#: data/units/Dwarvish_Sentinel.cfg:42 data/units/Dwarvish_Stalwart.cfg:29
-#: data/units/Dwarvish_Stalwart.cfg:42 data/units/Dwarvish_Thunderer.cfg:64
+#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:32
+#: data/units/Dwarvish_Guardsman.cfg:45 data/units/Dwarvish_Sentinel.cfg:34
+#: data/units/Dwarvish_Sentinel.cfg:47 data/units/Dwarvish_Stalwart.cfg:34
+#: data/units/Dwarvish_Stalwart.cfg:47 data/units/Dwarvish_Thunderer.cfg:64
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:63
 #: data/units/Elvish_Archer.cfg:164 data/units/Elvish_Avenger.cfg:41
 #: data/units/Elvish_Avenger.cfg:129 data/units/Elvish_Captain.cfg:41
 #: data/units/Elvish_Champion.cfg:42 data/units/Elvish_Druid.cfg:64
 #: data/units/Elvish_Fighter.cfg:42 data/units/Elvish_Hero.cfg:42
 #: data/units/Elvish_Marksman.cfg:40 data/units/Elvish_Marksman.cfg:133
-#: data/units/Elvish_Marshal.cfg:42 data/units/Elvish_Outrider.cfg:44
+#: data/units/Elvish_Marshal.cfg:42 data/units/Elvish_Outrider.cfg:45
 #: data/units/Elvish_Ranger.cfg:42 data/units/Elvish_Ranger.cfg:132
 #: data/units/Elvish_Rider.cfg:53 data/units/Elvish_Scout.cfg:54
 #: data/units/Elvish_Sharpshooter.cfg:41
@@ -4316,7 +4318,7 @@ msgstr "jousi"
 #: data/units/Orcish_Leader.cfg:38 data/units/Orcish_Ruler.cfg:39
 #: data/units/Orcish_Shaman.cfg:37 data/units/Orcish_Shaman.cfg:96
 #: data/units/Orcish_Shaman.cfg:155 data/units/Orcish_Sovereign.cfg:43
-#: data/units/Orcish_Warlord.cfg:31 data/units/Paladin.cfg:44
+#: data/units/Orcish_Warlord.cfg:41 data/units/Paladin.cfg:44
 #: data/units/Peasant.cfg:22 data/units/Peasant.cfg:35
 #: data/units/Pikeman.cfg:24 data/units/Pirate_Galleon.cfg:18
 #: data/units/Poacher.cfg:43 data/units/Saurian.cfg:26
@@ -4433,9 +4435,9 @@ msgstr ""
 
 #: data/units/Chocobone.cfg:32 data/units/Drake_Clasher.cfg:51
 #: data/units/Drake_Enforcer.cfg:60 data/units/Drake_Gladiator.cfg:43
-#: data/units/Dwarvish_Guardsman.cfg:25 data/units/Dwarvish_Guardsman.cfg:39
-#: data/units/Dwarvish_Sentinel.cfg:27 data/units/Dwarvish_Sentinel.cfg:41
-#: data/units/Dwarvish_Stalwart.cfg:27 data/units/Dwarvish_Stalwart.cfg:41
+#: data/units/Dwarvish_Guardsman.cfg:30 data/units/Dwarvish_Guardsman.cfg:44
+#: data/units/Dwarvish_Sentinel.cfg:32 data/units/Dwarvish_Sentinel.cfg:46
+#: data/units/Dwarvish_Stalwart.cfg:32 data/units/Dwarvish_Stalwart.cfg:46
 #: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:39
 #: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
 #: data/units/Horseman.cfg:22 data/units/Javelineer.cfg:20
@@ -4592,13 +4594,13 @@ msgstr ""
 "Pimeät henget ovat kuolleiden maan sanansaattajia ja kauhea voima tässä "
 "maailmassa. Onneksi niitä nähdään Wesnothissa vain harvoin."
 
-#: data/units/Dark_Spirit.cfg:31 data/units/Spectre.cfg:24
+#: data/units/Dark_Spirit.cfg:31 data/units/Spectre.cfg:47
 #: data/units/Wraith.cfg:24
 msgid "baneblade"
 msgstr "turmioterä"
 
 #: data/units/Dark_Spirit.cfg:48 data/units/Ghost.cfg:31
-#: data/units/Spectre.cfg:41 data/units/Wraith.cfg:41
+#: data/units/Spectre.cfg:64 data/units/Wraith.cfg:41
 msgid "wail"
 msgstr "vaikerointi"
 
@@ -4684,9 +4686,9 @@ msgstr ""
 
 #: data/units/Direwolf_Rider.cfg:49 data/units/Drake_Burner.cfg:34
 #: data/units/Drake_Fire.cfg:36 data/units/Drake_Inferno.cfg:24
-#: data/units/Ghoul.cfg:19 data/units/Gryphon.cfg:22
+#: data/units/Ghoul.cfg:26 data/units/Gryphon.cfg:22
 #: data/units/Gryphon_Master.cfg:24 data/units/Gryphon_Rider.cfg:23
-#: data/units/Necrophage.cfg:19 data/units/Nightgaunt.cfg:20
+#: data/units/Necrophage.cfg:26 data/units/Nightgaunt.cfg:47
 #: data/units/Shadow.cfg:20 data/units/Skeletal_Dragon.cfg:49
 #: data/units/Sleeping_Gryphon.cfg:18
 msgid "claws"
@@ -5016,6 +5018,20 @@ msgstr ""
 #: data/units/Revenant.cfg:36 data/units/Skeleton.cfg:37
 msgid "axe"
 msgstr "kirves"
+
+#: data/units/Dread_Lich.cfg:3
+msgid "Dread Lich"
+msgstr ""
+
+#: data/units/Dread_Lich.cfg:16
+msgid ""
+"At long last, Ha'atel has paid the ultimate sacrifice for the dark arts into "
+"which he has delved, and has, himself, entered into undeath.  At the apex of "
+"his power, he has become a lich, a waking embodiment of dread.  He has, "
+"beyond any doubt, passed the point of no return, and his power and "
+"immortality will have to provide consolation for what he has lost in his "
+"quest to achieve them."
+msgstr ""
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
@@ -5523,7 +5539,7 @@ msgstr ""
 msgid "Elvish Outrider"
 msgstr "Haltiaesiratsastaja"
 
-#: data/units/Elvish_Outrider.cfg:24
+#: data/units/Elvish_Outrider.cfg:25
 msgid ""
 "Riding like the wind, Elvish Outriders breeze through the forests to strike "
 "at weaker units and exposed flanks. Equally skilled in both bow and sword, "
@@ -5840,16 +5856,17 @@ msgid "Giant Mudcrawler"
 msgstr "Jättiläismutaryömijä"
 
 #: data/units/Giant_Mudcrawler.cfg:16
+#, fuzzy
 msgid ""
-"Giant Mudcrawlers are the larger kind of Mudcrawlers, and are magical "
-"constructs of soil and water. They attack by spraying boiling water on their "
-"foes, or with fists of mud."
+"Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
+"constructs of soil and water. They attack by belching lumps of mud at their "
+"foes, or by slapping them with their fists."
 msgstr ""
 "Jättiläismutaryömijät ovat mutaryömijöiden isompia serkkuja. Ne ovat "
 "maagisia maaperästä ja vedestä tehtyjä rakennelmia. Ne hyökkäävät kiehuvalla "
 "vedellä ja mutanyrkeille."
 
-#: data/units/Giant_Mudcrawler.cfg:20 data/units/Skeleton_Archer.cfg:24
+#: data/units/Giant_Mudcrawler.cfg:42 data/units/Skeleton_Archer.cfg:24
 #: data/units/Soulless.cfg:36 data/units/Soulless.cfg:110
 #: data/units/Soulless.cfg:185 data/units/Soulless.cfg:261
 #: data/units/Soulless.cfg:336 data/units/Soulless.cfg:411
@@ -5862,9 +5879,9 @@ msgstr ""
 msgid "fist"
 msgstr "nyrkki"
 
-#: data/units/Giant_Mudcrawler.cfg:42 data/units/Mudcrawler.cfg:20
-msgid "boiling water"
-msgstr "kiehuvaa vettä"
+#: data/units/Giant_Mudcrawler.cfg:64 data/units/Mudcrawler.cfg:42
+msgid "mud glob"
+msgstr ""
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
@@ -5909,7 +5926,7 @@ msgstr ""
 msgid "Goblin Knight"
 msgstr "Hiisiritari"
 
-#: data/units/Goblin_Knight.cfg:17
+#: data/units/Goblin_Knight.cfg:18
 msgid ""
 "The Goblin Knights are the elite of the Goblin Wolf Riders. They travel with "
 "great speed, yet can inflict substantial damage in battle."
@@ -6546,9 +6563,10 @@ msgid "Mudcrawler"
 msgstr "Mutaryömijä"
 
 #: data/units/Mudcrawler.cfg:16
+#, fuzzy
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
-"spraying boiling water on their foes."
+"belching lumps of mud at their foes."
 msgstr ""
 "Mutaryömijät ovat maagisia muta- ja vesiolentoja. He hyökkäävät "
 "suihkuttamalla kiehuvaa vettä."
@@ -6742,7 +6760,7 @@ msgstr ""
 "helppo juosta karkuun ja naruttaa, mutta heidän voimaansa ei kannata "
 "aliarvioida."
 
-#: data/units/Ogre.cfg:19 data/units/Young_Ogre.cfg:19
+#: data/units/Ogre.cfg:19 data/units/Young_Ogre.cfg:41
 msgid "cleaver"
 msgstr "lihakirves"
 
@@ -7693,16 +7711,17 @@ msgid "Troll Rocklobber"
 msgstr "Kivenheittäjäpeikko"
 
 #: data/units/Troll_Rocklobber.cfg:21
+#, fuzzy
 msgid ""
 "Given the monstrous strength of their race, trolls can turn rather mundane "
 "implements into weapons of deadly force. Some trolls piece together crude "
-"slings, little different from what a child would use, save for the fact they "
-"hurl boulders instead of pebbles. Though not especially accurate, a rock "
-"thrown by one of these monsters can cripple a man if it hits him. Despite "
-"being burdened by their heavy ammunition, and lacking in any sort of melee "
-"weaponry, a troll rocklobber is still bigger, stronger, and perhaps even "
-"uglier than the whelp it once was, and a troll's fist serves as well as a "
-"man's hammer in combat. Furthermore, their ability to strike back at an "
+"slings, little different from what a child would use, save for the fact that "
+"they hurl boulders instead of pebbles. Though not especially accurate, a "
+"rock thrown by one of these monsters can cripple a man if it hits him. "
+"Despite being burdened by their heavy ammunition, and lacking in any sort of "
+"melee weaponry, a troll rocklobber is still bigger, stronger, and perhaps "
+"even uglier than the whelp it once was, and a troll's fist serves as well as "
+"a man's hammer in combat. Furthermore, their ability to strike back at an "
 "enemy archer makes fighting them a dicey proposition at any range, unless "
 "one can attack under heavy cover of terrain.\n"
 "\n"
@@ -8661,7 +8680,7 @@ msgid ""
 msgstr "Tämän kampanjan asennustiedostoja luodessa tapahtui virhe."
 
 #: src/game.cpp:1019 src/game.cpp:1059 src/game.cpp:1084
-#: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35
+#: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:202
 msgid "Connection timed out"
 msgstr "Yhteys aikakatkaistiin"
 
@@ -8721,15 +8740,15 @@ msgstr "Pelaa tekoälyjä vastaan"
 msgid "Login: "
 msgstr "Sisäänkirjautuminen:"
 
-#: src/game.cpp:1154
+#: src/game.cpp:1154 src/playcampaign.cpp:181
 msgid "The game could not be loaded: "
 msgstr "Peliä ei voitu ladata:"
 
-#: src/game.cpp:1156
+#: src/game.cpp:1156 src/playcampaign.cpp:184
 msgid "Error while playing the game: "
 msgstr "Virhe pelatessa:"
 
-#: src/game.cpp:1168
+#: src/game.cpp:1168 src/playcampaign.cpp:187
 msgid "The game map could not be loaded: "
 msgstr "Karttaa ei voitu ladata:"
 
@@ -8769,6 +8788,11 @@ msgstr "Voitto:"
 #: src/game_events.cpp:598
 msgid "Defeat:"
 msgstr "Tappio:"
+
+#: src/gamestatus.cpp:476
+#, fuzzy
+msgid "Could not write to file"
+msgstr "Yhteyttä isäntäkoneeseen ei saatu"
 
 #: src/help.cpp:1056
 msgid "Advances to: "
@@ -9306,7 +9330,50 @@ msgstr ")"
 msgid "unit^Gold"
 msgstr "Kultaa"
 
-#: src/playlevel.cpp:602 src/playlevel.cpp:871
+#: src/network.cpp:66
+msgid "invalid network handle"
+msgstr ""
+
+#: src/network.cpp:99
+#, fuzzy
+msgid "Socket error"
+msgstr "Iskusoturi"
+
+#: src/network.cpp:417
+#, fuzzy
+msgid "Could not add socket to socket set"
+msgstr "Yhteyttä isäntäkoneeseen ei saatu"
+
+#: src/network.cpp:428
+msgid "Could not send initial handshake"
+msgstr ""
+
+#: src/playcampaign.cpp:149
+msgid "Do you want to save a replay of this scenario?"
+msgstr "Haluatko tallentaa uusinnan tästä skenaariosta?"
+
+#: src/playcampaign.cpp:150 src/playcampaign.cpp:270 src/playturn.cpp:1622
+msgid "Name:"
+msgstr "Nimi:"
+
+#: src/playcampaign.cpp:158 src/playcampaign.cpp:278 src/playturn.cpp:1639
+msgid "The game could not be saved"
+msgstr "Peliä ei voitu tallentaa"
+
+#: src/playcampaign.cpp:200
+#, fuzzy
+msgid "Downloading next level..."
+msgstr "Haetaan kampanjaa..."
+
+#: src/playcampaign.cpp:269
+msgid "Do you want to save your game?"
+msgstr "Haluatko tallentaa pelisi?"
+
+#: src/playcampaign.cpp:295
+msgid "Unknown scenario: '"
+msgstr ""
+
+#: src/playlevel.cpp:602 src/playlevel.cpp:873
 msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto jonka yritit avata on korruptoitunut"
 
@@ -9318,60 +9385,60 @@ msgstr "Peli loppui"
 msgid "The game is over."
 msgstr "Peli on ohitse."
 
-#: src/playlevel.cpp:769
+#: src/playlevel.cpp:771
 msgid "Defeat"
 msgstr "Tappio"
 
-#: src/playlevel.cpp:770
+#: src/playlevel.cpp:772
 msgid "You have been defeated!"
 msgstr "Sinä hävisit!"
 
-#: src/playlevel.cpp:839
+#: src/playlevel.cpp:841
 msgid "Remaining gold: "
 msgstr "Jäljellä oleva kulta:"
 
-#: src/playlevel.cpp:842
+#: src/playlevel.cpp:844
 msgid "Early finish bonus: "
 msgstr "Palkinto aikaisesti lopetuksesta:"
 
-#: src/playlevel.cpp:844
+#: src/playlevel.cpp:846
 msgid "per turn"
 msgstr "vuorossa"
 
-#: src/playlevel.cpp:845
+#: src/playlevel.cpp:847
 msgid "Turns finished early: "
 msgstr "Jäljelle jääneet vuorot:"
 
-#: src/playlevel.cpp:847
+#: src/playlevel.cpp:849
 msgid "Bonus: "
 msgstr "Palkinto:"
 
-#: src/playlevel.cpp:849
+#: src/playlevel.cpp:851
 msgid "Gold: "
 msgstr "Kultaa:"
 
-#: src/playlevel.cpp:854
+#: src/playlevel.cpp:856
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% kullasta säilyy seuraavaan skenaarioon"
 
-#: src/playlevel.cpp:855
+#: src/playlevel.cpp:857
 msgid "Retained Gold: "
 msgstr "Säilyvä kulta:"
 
-#: src/playlevel.cpp:860
+#: src/playlevel.cpp:862
 msgid "Victory"
 msgstr "Voitto"
 
-#: src/playlevel.cpp:861
+#: src/playlevel.cpp:863
 msgid "You have emerged victorious!"
 msgstr "Olet voittaja!"
 
-#: src/playlevel.cpp:865
+#: src/playlevel.cpp:867
 msgid "Scenario Report"
 msgstr "Skenaarioraportti:"
 
-#: src/playlevel.cpp:886
+#: src/playlevel.cpp:888
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -9430,10 +9497,6 @@ msgstr ""
 msgid "Rename Unit"
 msgstr "Uudelleennimeä yksikkö"
 
-#: src/playturn.cpp:1622
-msgid "Name:"
-msgstr "Nimi:"
-
 #: src/playturn.cpp:1625 src/playturn.cpp:1639
 msgid "Error"
 msgstr "Virhe"
@@ -9451,10 +9514,6 @@ msgstr "Tallennettu"
 #: src/playturn.cpp:1636
 msgid "The game has been saved"
 msgstr "Peli on tallennettu"
-
-#: src/playturn.cpp:1639
-msgid "The game could not be saved"
-msgstr "Peliä ei voitu tallentaa"
 
 #: src/playturn.cpp:1768
 msgid "Leader"
@@ -9558,83 +9617,83 @@ msgstr "Liikkuminen"
 msgid "Location"
 msgstr "Kohde"
 
-#: src/playturn.cpp:2280
+#: src/playturn.cpp:2274
 msgid "Unit List"
 msgstr "Yksikkölista"
 
-#: src/playturn.cpp:2316 src/playturn.cpp:2378
+#: src/playturn.cpp:2310 src/playturn.cpp:2372
 msgid "Recruits"
 msgstr "Värväyksiä"
 
-#: src/playturn.cpp:2322 src/playturn.cpp:2382
+#: src/playturn.cpp:2316 src/playturn.cpp:2376
 msgid "Recalls"
 msgstr "Kutsuntoja"
 
-#: src/playturn.cpp:2328 src/playturn.cpp:2386
+#: src/playturn.cpp:2322 src/playturn.cpp:2380
 msgid "Advancements"
 msgstr "Ylennyksiä"
 
-#: src/playturn.cpp:2334 src/playturn.cpp:2390
+#: src/playturn.cpp:2328 src/playturn.cpp:2384
 msgid "Losses"
 msgstr "Häviöitä"
 
-#: src/playturn.cpp:2340 src/playturn.cpp:2394
+#: src/playturn.cpp:2334 src/playturn.cpp:2388
 msgid "Kills"
 msgstr "Tappoja"
 
-#: src/playturn.cpp:2346
+#: src/playturn.cpp:2340
 msgid "Damage Inflicted"
 msgstr "Tehty vahinko"
 
-#: src/playturn.cpp:2352
+#: src/playturn.cpp:2346
 msgid "Damage Taken"
 msgstr "Otettu vahinko"
 
-#: src/playturn.cpp:2358
+#: src/playturn.cpp:2352
 msgid "Damage Inflicted (EV)"
 msgstr "Odotettu tehty vahinko"
 
-#: src/playturn.cpp:2365
+#: src/playturn.cpp:2359
 msgid "Damage Taken (EV)"
 msgstr "Odotettu otettu vahinko"
 
-#: src/playturn.cpp:2371
+#: src/playturn.cpp:2365
 msgid "Statistics"
 msgstr "Tilastot"
 
-#: src/playturn.cpp:2408
+#: src/playturn.cpp:2402
 msgid "Search"
 msgstr "Etsi"
 
-#: src/playturn.cpp:2418
+#: src/playturn.cpp:2412
 msgid "prompt^Command:"
 msgstr "Komento:"
 
-#: src/playturn.cpp:2429
+#: src/playturn.cpp:2423
 msgid "Chat Log"
 msgstr "Keskusteluloki"
 
-#: src/playturn.cpp:2494
+#: src/playturn.cpp:2488
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Säiettä '$search' sisältäväät yksikköä tai muistilappua ei löytynyt."
 
-#: src/playturn.cpp:2525
+#: src/playturn.cpp:2519
 msgid "Saved Theme Preference: "
 msgstr "Teemavalinta tallennettu:"
 
-#: src/playturn.cpp:2531
+#: src/playturn.cpp:2525
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Uusi teema tulee käyttöön seurravassa uudessa tai ladatussa pelissä."
 
-#: src/playturn.cpp:2632
+#: src/playturn.cpp:2626
 msgid "Place Label"
 msgstr "Aseta muistilappu"
 
-#: src/playturn.cpp:2633
+#: src/playturn.cpp:2627
 msgid "Label:"
 msgstr "Muistilappu:"
 
-#: src/playturn.cpp:2765
+#: src/playturn.cpp:2759
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -9642,23 +9701,23 @@ msgstr ""
 "Pelit eivät ole synkronoitu, ja ne lopetetaan. Haluatko tallentaa virhelokin "
 "pelistäsi?"
 
-#: src/playturn.cpp:2818
+#: src/playturn.cpp:2812
 msgid "Replace with AI"
 msgstr "Korvaa tietokoneella"
 
-#: src/playturn.cpp:2819
+#: src/playturn.cpp:2813
 msgid "Replace with local player"
 msgstr "Korvaa paikallisella pelaajalla"
 
-#: src/playturn.cpp:2820
+#: src/playturn.cpp:2814
 msgid "Abort game"
 msgstr "Keskeytä peli"
 
-#: src/playturn.cpp:2823
+#: src/playturn.cpp:2817
 msgid "Replace with "
 msgstr "Korvaa pelaajalla "
 
-#: src/playturn.cpp:2827
+#: src/playturn.cpp:2821
 msgid "has left the game. What do you want to do?"
 msgstr "on poistunut pelistä. Mitä haluat tehdä?"
 
@@ -9898,6 +9957,9 @@ msgstr "lainkuuliainen"
 msgid "neutral"
 msgstr "neutraali"
 
+#~ msgid "boiling water"
+#~ msgstr "kiehuvaa vettä"
+
 #~ msgid ""
 #~ "Steadfast:\n"
 #~ "This unit takes half normal damage when it did not initiate the attack."
@@ -9976,12 +10038,6 @@ msgstr "neutraali"
 
 #~ msgid "halberd"
 #~ msgstr "hilpari"
-
-#~ msgid "Do you want to save a replay of this scenario?"
-#~ msgstr "Haluatko tallentaa uusinnan tästä skenaariosta?"
-
-#~ msgid "Do you want to save your game?"
-#~ msgstr "Haluatko tallentaa pelisi?"
 
 #~ msgid "Dmg"
 #~ msgstr "Vahinko"
