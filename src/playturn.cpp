@@ -1510,13 +1510,18 @@ void turn_info::redo()
 			unit& un = recall_list[action.recall_pos];
 
 			recorder.add_recall(action.recall_pos,action.recall_loc);
-			recruit_unit(map_,team_num_,units_,un,action.recall_loc,&gui_);
-			statistics::recall_unit(un);
-			team& current_team = teams_[team_num_-1];
-			current_team.spend_gold(game_config::recall_cost);
-			recall_list.erase(recall_list.begin()+action.recall_pos);
+			const std::string& msg = recruit_unit(map_,team_num_,units_,un,action.recall_loc,&gui_);
+			if(msg.empty()) {
+				statistics::recall_unit(un);
+				team& current_team = teams_[team_num_-1];
+				current_team.spend_gold(game_config::recall_cost);
+				recall_list.erase(recall_list.begin()+action.recall_pos);
 
-			gui_.draw_tile(action.recall_loc.x,action.recall_loc.y);
+				gui_.draw_tile(action.recall_loc.x,action.recall_loc.y);
+			} else {
+				recorder.undo();
+				gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY);
+			}
 		}
 	} else {
 		// Redo movement action
