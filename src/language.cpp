@@ -255,7 +255,9 @@ void init_textdomains(const config& cfg)
 
 			//if location is empty, this causes a crash on Windows, so we
 			//disallow adding empty domains
-			if(location.empty() == false) {
+			if(location.empty()) {
+				std::cerr << "no location found for '" << path << "', not adding textdomain\n";
+			} else {
 				t_string::add_textdomain(name, location);
 			}
 		}
