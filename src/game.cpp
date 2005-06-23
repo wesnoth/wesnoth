@@ -1277,7 +1277,7 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 				//read the file and then write to the cache
 				scoped_istream stream = preprocess_file("data/game.cfg", &defines);
 
-				std::string error_log;
+				std::string error_log, user_error_log;
 				read(cfg, *stream, &error_log);
 
 				//load user campaigns
@@ -1288,12 +1288,22 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 					try {
 						scoped_istream stream = preprocess_file(*uc,&defines);
 
+						std::string campaign_error_log;
+
 						config user_campaign_cfg;
-						read(user_campaign_cfg,*stream,NULL);
-						cfg.append(user_campaign_cfg);
-					} catch(config::error&) {
-						std::cerr << "error processing user campaign '" << *uc << "'\n";
+						read(user_campaign_cfg,*stream,&campaign_error_log);
+
+						if(campaign_error_log.empty()) {
+							cfg.append(user_campaign_cfg);
+						} else {
+							user_error_log += error_log;
+							error_campaigns.push_back(*uc);
+						}
+					} catch(config::error& err) {
+						std::cerr << "error reading user campaign '" << *uc << "'\n";
 						error_campaigns.push_back(*uc);
+
+						user_error_log += err.message + "\n";
 					} catch(io_exception&) {
 						std::cerr << "error reading user campaign '" << *uc << "'\n";
 						error_campaigns.push_back(*uc);
@@ -1306,6 +1316,8 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 					for(std::vector<std::string>::const_iterator i = error_campaigns.begin(); i != error_campaigns.end(); ++i) {
 						msg << "\n" << *i;
 					}
+
+					msg << "\n" << _("ERROR DETAILS:") << "\n" << user_error_log;
 
 					gui::show_error_message(disp(),msg.str());
 				}
