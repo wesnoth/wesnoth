@@ -40,6 +40,6 @@ typedef std::map< std::string, preproc_define > preproc_map;
 //function to use the WML preprocessor on a file, and returns the resulting
 //preprocessed file data. defines is a map of symbols defined.
 std::istream *preprocess_file(std::string const &fname,
-                              preproc_map const *defines = NULL);
+                              preproc_map *defines = NULL);
 
 #endif

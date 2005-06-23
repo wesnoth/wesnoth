@@ -68,6 +68,7 @@ class preprocessor_streambuf: public std::streambuf
 	std::ostringstream buffer_;
 	preprocessor *current_;
 	preproc_map *defines_;
+	preproc_map default_defines_;
 	std::string textdomain_;
 	std::string location_;
 	int linenum_;
@@ -86,10 +87,13 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
 	: current_(NULL), defines_(def), textdomain_(PACKAGE),
 	  depth_(0), quoted_(false)
 {
+	if(defines_ == NULL) {
+		defines_ = &default_defines_;
+	}
 }
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: std::streambuf(), current_(NULL), defines_(t.defines_),
+	: current_(NULL), defines_(t.defines_),
 	  textdomain_(PACKAGE), depth_(t.depth_), quoted_(t.quoted_)
 {
 }
@@ -711,17 +715,14 @@ struct preprocessor_deleter: std::basic_istream<char>
 {
 	preprocessor_streambuf *buf_;
 	preprocessor_deleter(preprocessor_streambuf *buf) : std::basic_istream<char>(buf), buf_(buf) {}
-	~preprocessor_deleter() { rdbuf(NULL); delete buf_->defines_; delete buf_; }
+	~preprocessor_deleter() { rdbuf(NULL); delete buf_; }
 };
 
 std::istream *preprocess_file(std::string const &fname,
-                              preproc_map const *defines)
+                              preproc_map *defines)
 {
 	log_scope("preprocessing file...");
-	preproc_map *defines_copy = new preproc_map;
-	if (defines)
-		*defines_copy = *defines;
-	preprocessor_streambuf *buf = new preprocessor_streambuf(defines_copy);
+	preprocessor_streambuf *buf = new preprocessor_streambuf(defines);
 	new preprocessor_file(*buf, fname);
 	return new preprocessor_deleter(buf);
 }
