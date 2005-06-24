@@ -251,7 +251,7 @@ void init_textdomains(const config& cfg)
 		if(path.empty()) {
 			t_string::add_textdomain(name, get_intl_dir());
 		} else {
-			const std::string& location = get_binary_file_location(path, ".");
+			const std::string& location = get_binary_file_location(path, "");
 
 			//if location is empty, this causes a crash on Windows, so we
 			//disallow adding empty domains
