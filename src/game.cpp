@@ -1668,10 +1668,6 @@ int play_game(int argc, char** argv)
 	return 0;
 }
 
-void f() {
-	throw config::error("");
-}
-
 int main(int argc, char** argv)
 {
 	try {
