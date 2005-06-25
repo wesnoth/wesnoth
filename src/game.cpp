@@ -112,7 +112,7 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
-	void read_game_cfg(preproc_map& defines, config& cfg, bool use_cache);
+	void read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache);
 	void refresh_game_cfg(bool reset_translations=false);
 
 	void download_campaigns();
@@ -1216,7 +1216,7 @@ void game_controller::show_preferences()
 }
 
 //this function reads the game configuration, searching for valid cached copies first
-void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_cache)
+void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache)
 {
 	log_scope("read_game_cfg");
 
@@ -1274,8 +1274,10 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 
 				std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
 
+				preproc_map defines_map(defines);
+
 				//read the file and then write to the cache
-				scoped_istream stream = preprocess_file("data/game.cfg", &defines);
+				scoped_istream stream = preprocess_file("data/game.cfg", &defines_map);
 
 				std::string error_log, user_error_log;
 				read(cfg, *stream, &error_log);
@@ -1286,7 +1288,7 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 				get_files_in_dir(user_campaign_dir,&user_campaigns,NULL,ENTIRE_FILE_PATH);
 				for(std::vector<std::string>::const_iterator uc = user_campaigns.begin(); uc != user_campaigns.end(); ++uc) {
 					try {
-						scoped_istream stream = preprocess_file(*uc,&defines);
+						scoped_istream stream = preprocess_file(*uc,&defines_map);
 
 						std::string campaign_error_log;
 
@@ -1348,7 +1350,8 @@ void game_controller::read_game_cfg(preproc_map& defines, config& cfg, bool use_
 	}
 
 	std::cerr << "caching cannot be done. Reading file\n";
-	scoped_istream stream = preprocess_file("data/game.cfg", &defines);
+	preproc_map defines_map(defines);
+	scoped_istream stream = preprocess_file("data/game.cfg", &defines_map);
 	read(cfg, *stream);
 }
 
