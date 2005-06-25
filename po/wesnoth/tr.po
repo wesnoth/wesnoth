@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-21 21:21+0200\n"
-"PO-Revision-Date: 2005-06-06 14:37+0200\n"
+"PO-Revision-Date: 2005-06-25 16:09+0200\n"
 "Last-Translator: Selim Farsakoğlu <farsakoglu@web.de>\n"
 "Language-Team: Turkish <farsakoglu@web.de>\n"
 "MIME-Version: 1.0\n"
@@ -204,6 +204,11 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"Birimlerin sadece askere almak veya çağırmak için değil,·aynı zamanda "
+"yaşamak·için de paraya ihtiyacı olduğunu unutmayın.·Daha fazla bilgi "
+"için<ref>dst=income_and_upkeep·text='Gelir ve İdare masrafı'</ref>'nı okuyun."
 
 #: data/help.cfg:92 src/help.cpp:1196
 msgid "Movement"
@@ -345,6 +350,12 @@ msgid ""
 "which doubles the damage dealt by both attacker and defender when the unit "
 "with Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Az sayıda birim çarpışmada verilen hasarı etkileyen özel yeteneklere "
+"sahiptir. ·Bunların en meşhuru birim saldırdığında saldıran ve savunan "
+"tarafların verdiği hasarı ikiye katlayan <ref>dst=weaponspecial_charge "
+"text=Yükleme</ref>'dir."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -378,6 +389,11 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Mesela iskeletler bıçak ve delme hasarına karşı çok dayanıklı, fakat vuruş "
+"ve ateş hasarına karşı zaaf sahibi, kutsal hasara karşı da aşırı zaaf "
+"sahibidirler."
 
 #: data/help.cfg:133
 msgid "Time of Day"
@@ -396,6 +412,11 @@ msgid ""
 "The usual day/night cycle runs:\n"
 "\n"
 msgstr ""
+"Wesnoth oyunlarında genellikle gece-gündüz arasında düzenli dönüşüm olur."
+"Günün zamanı sağ üst köşedeki mini haritanın altında takip edilebilir.\n"
+"\n"
+"Normal gece/gündüz dönüşümü aşamaları:\n"
+"\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -501,6 +522,10 @@ msgid ""
 "Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
 "in its next turn."
 msgstr ""
+"\n"
+"\n"
+"Dinlenme: Hareket etmeyen, saldırmayan ve aynı zamanda saldırılmayan bir "
+"birim bir sonraki elde 2YP iyileşir."
 
 #: data/help.cfg:173
 msgid ""
@@ -2933,60 +2958,61 @@ msgstr ""
 
 #: data/translations/english.cfg:132
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "$name Köprüsü, $name Kavşağı"
 
 #: data/translations/english.cfg:133
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr ""
+msgstr "$name Otoyolu,$name' Geçidi,$name Patikası"
 
 #: data/translations/english.cfg:134
 msgid "$name River,River $name"
-msgstr ""
+msgstr "$name Nehri,$name Irmağı"
 
 #: data/translations/english.cfg:135
 msgid "$name Forest,$name's Forest"
-msgstr ""
+msgstr "$name Ormanı,$name Ormanı"
 
 #: data/translations/english.cfg:136
 msgid "$name Lake"
-msgstr ""
+msgstr "$name Gölü"
 
 #: data/translations/english.cfg:137
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr ""
+msgstr "$name|köy,$name|iye,$name|tepe"
 
 #: data/translations/english.cfg:138
 msgid "$name|harbor,$name|port"
-msgstr ""
+msgstr "$name|limanı,$name|suyu"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr ""
+msgstr "$name|başı,$name|yokuşu,$name|kavşağı,$river|yokuşu,$river|kavşağı"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
+msgstr "$river|köprü,$river|köprü,$river|köprü,$name|han,$name|köprü"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "$name|başı,$name|iye,$name|alan"
 
 #: data/translations/english.cfg:142
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr ""
+msgstr "$name|başı,$name|iye,$name|çalısı,$name Ormanı"
 
 #: data/translations/english.cfg:143
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
+msgstr "$name|başı,$name|eli,$name|iye,$name|tepe,$name|ler"
 
 #: data/translations/english.cfg:144
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
+"$name|başı,$name|eli,$name|iye,$name|dağ,$name|dağı,$name|lidağ,$name|lidağ"
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
-msgstr ""
+msgstr "Antik ceset"
 
 #: data/units/Ancient_Lich.cfg:19
 msgid ""
@@ -4310,11 +4336,11 @@ msgstr ""
 
 #: data/units/Elder_Mage.cfg:39
 msgid "lightning"
-msgstr ""
+msgstr "şimşek"
 
 #: data/units/Elder_Wose.cfg:3
 msgid "Elder Wose"
-msgstr ""
+msgstr "Yaşlı ağaç"
 
 #: data/units/Elder_Wose.cfg:17
 msgid ""
@@ -4339,7 +4365,7 @@ msgstr ""
 
 #: data/units/Elvish_Archer.cfg:105
 msgid "female^Elvish Archer"
-msgstr ""
+msgstr "Elf okçusu"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
@@ -4355,7 +4381,7 @@ msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:92
 msgid "female^Elvish Avenger"
-msgstr ""
+msgstr "Elf intikamcısı"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -4495,7 +4521,7 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:40
 #: data/units/Elvish_Sharpshooter.cfg:134
 msgid "longbow"
-msgstr ""
+msgstr "uzun ok"
 
 #: data/units/Elvish_Marksman.cfg:41 data/units/Elvish_Marksman.cfg:134
 #: data/units/Elvish_Sharpshooter.cfg:42
@@ -4505,7 +4531,7 @@ msgstr "nişancı"
 
 #: data/units/Elvish_Marksman.cfg:97
 msgid "female^Elvish Marksman"
-msgstr ""
+msgstr "Elf nişancısı"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
@@ -4544,7 +4570,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:93
 msgid "female^Elvish Ranger"
-msgstr ""
+msgstr "Elf orman savaşçısı"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -4568,7 +4594,7 @@ msgstr ""
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
-msgstr ""
+msgstr "Elf şamanı"
 
 #: data/units/Elvish_Shaman.cfg:20
 msgid ""
@@ -4592,11 +4618,11 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:98
 msgid "female^Elvish Sharpshooter"
-msgstr ""
+msgstr "Elf keskin nişancısı"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
-msgstr ""
+msgstr "Elf yer perisi"
 
 #: data/units/Elvish_Shyde.cfg:21
 msgid ""
@@ -4611,7 +4637,7 @@ msgstr ""
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "female^Elvish Sorceress"
-msgstr ""
+msgstr "Elf büyücü kızı"
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -4623,7 +4649,7 @@ msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
-msgstr "Elf hava perisi"
+msgstr "Elf gök perisi"
 
 #: data/units/Elvish_Sylph.cfg:20
 msgid ""
@@ -4661,7 +4687,7 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
-msgstr ""
+msgstr "Ateş Ejderhası"
 
 #: data/units/Fire_Dragon.cfg:17
 msgid ""
@@ -4674,7 +4700,7 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:21
 msgid "bite"
-msgstr ""
+msgstr "ısırma"
 
 #: data/units/Fire_Dragon.cfg:39
 msgid "tail"
@@ -4682,7 +4708,7 @@ msgstr ""
 
 #: data/units/Fireball.cfg:4
 msgid "Fireball"
-msgstr ""
+msgstr "Ateş topu"
 
 #: data/units/Fireball.cfg:16
 msgid ""
@@ -4717,7 +4743,7 @@ msgstr ""
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
-msgstr ""
+msgstr "Kalyon"
 
 #: data/units/Galleon.cfg:16
 msgid ""
@@ -4729,11 +4755,11 @@ msgstr ""
 
 #: data/units/Galleon.cfg:18
 msgid "dummy"
-msgstr ""
+msgstr "aptal"
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
-msgstr ""
+msgstr "Kapı"
 
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
@@ -4745,7 +4771,7 @@ msgstr ""
 
 #: data/units/General.cfg:3
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: data/units/General.cfg:25
 msgid ""
@@ -4757,7 +4783,7 @@ msgstr ""
 
 #: data/units/Ghost.cfg:3
 msgid "Ghost"
-msgstr ""
+msgstr "Hayalet"
 
 #: data/units/Ghost.cfg:16
 msgid ""
@@ -4808,7 +4834,7 @@ msgstr ""
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
-msgstr ""
+msgstr "Dev Akrep"
 
 #: data/units/Giant_Scorpion.cfg:16
 msgid ""
@@ -4865,7 +4891,7 @@ msgstr ""
 #: data/units/Goblin_Pillager.cfg:36 data/units/Merman_Entangler.cfg:27
 #: data/units/Merman_Netcaster.cfg:27
 msgid "net"
-msgstr ""
+msgstr "ağ"
 
 #: data/units/Goblin_Spearman.cfg:4
 msgid "Goblin Spearman"
@@ -4910,7 +4936,7 @@ msgstr ""
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
-msgstr ""
+msgstr "Büyük büyücü"
 
 #: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:113
 msgid ""
@@ -4920,11 +4946,11 @@ msgstr ""
 
 #: data/units/Great_Mage.cfg:96
 msgid "female^Great Mage"
-msgstr ""
+msgstr "Büyük büyücü"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
-msgstr ""
+msgstr "Büyük trol"
 
 #: data/units/Great_Troll.cfg:17
 msgid ""
@@ -4935,7 +4961,7 @@ msgstr ""
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
-msgstr ""
+msgstr "Zümrüd-ü Anka"
 
 #: data/units/Gryphon.cfg:16
 msgid ""
@@ -4946,7 +4972,7 @@ msgstr ""
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
-msgstr ""
+msgstr "Zümrüd-ü Anka Ustası"
 
 #: data/units/Gryphon_Master.cfg:18
 msgid ""
@@ -4957,7 +4983,7 @@ msgstr ""
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
-msgstr ""
+msgstr "Zümrüd-ü Anka Binicisi"
 
 #: data/units/Gryphon_Rider.cfg:17
 msgid ""
@@ -4982,7 +5008,7 @@ msgstr ""
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
-msgstr ""
+msgstr "Ağır piyade"
 
 #: data/units/Heavy_Infantryman.cfg:15
 msgid ""
@@ -4992,7 +5018,7 @@ msgstr ""
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
-msgstr ""
+msgstr "Süvari lordu"
 
 #: data/units/Horse_Lord.cfg:18
 msgid ""
@@ -5005,11 +5031,11 @@ msgstr ""
 #: data/units/Mounted_Commander.cfg:47 data/units/Mounted_Fighter.cfg:44
 #: data/units/Mounted_Warrior.cfg:44
 msgid "morning star"
-msgstr ""
+msgstr "sabah yıldızı"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
-msgstr ""
+msgstr "Süvari"
 
 #: data/units/Horseman.cfg:19
 msgid ""
@@ -5056,7 +5082,7 @@ msgstr ""
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
-msgstr ""
+msgstr "Şövalye"
 
 #: data/units/Knight.cfg:19
 msgid ""
@@ -5078,7 +5104,7 @@ msgstr ""
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
-msgstr ""
+msgstr "Ceset"
 
 #: data/units/Lich.cfg:16
 msgid ""
@@ -5091,7 +5117,7 @@ msgstr ""
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
-msgstr ""
+msgstr "Teğmen"
 
 #: data/units/Lieutenant.cfg:21
 msgid ""
@@ -5102,7 +5128,7 @@ msgstr ""
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
-msgstr ""
+msgstr "Uzun okçu"
 
 #: data/units/Longbowman.cfg:19
 msgid ""
@@ -5145,7 +5171,7 @@ msgstr "Büyücü"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
-msgstr "Işıkların büyücüsü"
+msgstr "Işık büyücüsü"
 
 #: data/units/Mage_of_Light.cfg:14 data/units/Mage_of_Light.cfg:86
 #: data/units/Mermaid_Diviner.cfg:11
@@ -5178,7 +5204,7 @@ msgstr "kutsal"
 
 #: data/units/Mage_of_Light.cfg:78
 msgid "female^Mage of Light"
-msgstr "Işıkların büyücüsü"
+msgstr "Işık büyücüsü"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
@@ -5260,7 +5286,7 @@ msgstr "Merman"
 #: data/units/Merman_Triton.cfg:35 data/units/Merman_Warrior.cfg:23
 #: data/units/Naga.cfg:24 data/units/Sea_Hag.cfg:23 data/units/Triton.cfg:25
 msgid "trident"
-msgstr ""
+msgstr "tırmık"
 
 #: data/units/Merman_Entangler.cfg:3
 msgid "Merman Entangler"
@@ -5371,7 +5397,7 @@ msgstr ""
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
-msgstr ""
+msgstr "Naga savaşçısı"
 
 #: data/units/Naga-Fighter.cfg:18 data/units/Naga-Fighter.cfg:53
 msgid ""
@@ -5384,7 +5410,7 @@ msgstr ""
 
 #: data/units/Naga-Fighter.cfg:39
 msgid "Nagini Fighter"
-msgstr ""
+msgstr "Naga savaşçısı"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
@@ -5414,7 +5440,7 @@ msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
 msgid "Naga Warrior"
-msgstr ""
+msgstr "Naga cengaveri"
 
 #: data/units/Naga-Warrior.cfg:22 data/units/Naga-Warrior.cfg:61
 msgid ""
@@ -8379,6 +8405,9 @@ msgstr "adaletli"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "tarafsız"
+
+#~ msgid "boiling water"
+#~ msgstr "kaynar su"
 
 #~ msgid "The Broken Bridge"
 #~ msgstr "Yıkık Köprü"
