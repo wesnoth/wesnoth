@@ -1,7 +1,8 @@
 DAS BATTLE FOR WESNOTH HANDBUCH
 
-Wenn Sie ein Neuling in Sachen Battle for Wesnoth sein sollten, könnte folgende Einführung (in Englisch) für Sie von Interesse sein. (http://wesnoth.slack.it/?GettingStarted)
-
+Wenn Sie ein Neuling in Sachen Battle for Wesnoth sein sollten, könnte
+folgende Einführung (in Englisch) für Sie von Interesse sein:
+http://wesnoth.slack.it/?GettingStarted.
 
 Steuerung
 
@@ -13,11 +14,14 @@ Steuerung
     * z:              hineinzoomen
     * x:              herauszoomen
     * c:              Zoom auf Standardgröße
-    * u:              Letzten Zug rückgängig machen (nur deterministische Züge können zurückgenommen werden)
+    * u:              Letzten Zug rückgängig machen (nur deterministische Züge
+                      können zurückgenommen werden)
     * r:              Zug wiederherstellen
     * n:              nächste Einheit, die noch bewegt werden kann, auswählen
-    * 1-7:            Zeigen, wie weit die gewählte Einheit in  entsprechend vielen Zügen bewegt werden kann
-    * Leertaste:      Zug der Einheit beenden und nächste Einheit auswählen, die noch bewegt werden kann
+    * 1-7:            Zeigen, wie weit die gewählte Einheit in entsprechend
+                      vielen Zügen bewegt werden kann
+    * Leertaste:      Zug der Einheit beenden und nächste Einheit auswählen, die
+                      noch bewegt werden kann
     * l:              Zum Anführer bewegen
     * Strg-f:         Umschalten zwischen Vollbild und Fenstermodus
     * Strg-r:         Einheit ausbilden
@@ -32,82 +36,138 @@ Steuerung
 
 Sphären
 
-An der Spitze des Energiebalkens neben jeder Einheit befindet sich eine Sphäre. Diese Sphäre ist:
+An der Spitze des Energiebalkens neben jeder Einheit befindet sich eine Sphäre.
+Diese Sphäre ist:
 
-   * Grün, bei einer Einheit unter Ihrer Kontrolle, die diese Runde nicht bewegt wurde.
-   * Gelb, bei einer Einheit unter Ihrer Kontrolle, die diese Runde bereits bewegt wurde, aber noch weiter bewegt werden oder angreifen könnte.
-   * Rot, bei einer Einheit unter Ihrer Kontrolle, die diese Runde alle ihre Bewegungspunkte aufgebraucht hat.
+   * Grün, bei einer Einheit unter Ihrer Kontrolle, die diese Runde nicht bewegt
+     wurde.
+   * Gelb, bei einer Einheit unter Ihrer Kontrolle, die diese Runde bereits
+     bewegt wurde, aber noch weiter bewegt werden oder angreifen könnte.
+   * Rot, bei einer Einheit unter Ihrer Kontrolle, die diese Runde alle ihre
+     Bewegungspunkte aufgebraucht hat.
    * Blau, wenn die Einheit ein Verbündeter ist, den du nicht steuern kannst
 
-Feindliche Einheiten haben keine Sphären auf ihrem Energiebalken (in alten Versionen < 0.5.2 war eine schwarze Sphäre auf der Spitze des Energiebalkens feindlicher Einheiten)
+Feindliche Einheiten haben keine Sphären auf ihrem Energiebalken (in alten
+Versionen < 0.5.2 war eine schwarze Sphäre auf der Spitze des Energiebalkens
+feindlicher Einheiten)
 
 
 Beschreibung
 
-Das Spiel besteht aus einer Abfolge von Schlachten oder Szenarios. In jedem Szenario kämpfen Ihre Truppen gegen die Truppen des Gegners. Jede Seite beginnt mit einem Anführer in Ihrem Bergfried.
+Das Spiel besteht aus einer Abfolge von Schlachten oder Szenarios. In jedem
+Szenario kämpfen Ihre Truppen gegen die Truppen des Gegners. Jede Seite beginnt
+mit einem Anführer in Ihrem Bergfried.
 
 
 Gold
 
-Jede Seite startet mit einer bestimmten Menge Gold und erhält zwei Goldstücke pro Zug, sowie ein weiteres Goldstück für jedes Dorf, das unter ihrer Kontrolle steht.
+Jede Seite startet mit einer bestimmten Menge Gold und erhält zwei Goldstücke
+pro Zug, sowie ein weiteres Goldstück für jedes Dorf, das unter ihrer Kontrolle
+steht.
 
-Jede Einheit verursacht Erhaltungskosten. Die Erhaltungskosten entsprechen im Allgemeinen der Stufe der Einheit (ausgenommen loyale Truppen, siehe unten). Einheiten, die nicht ausgebildet oder einberufen werden - d.h. die sich freiwillig einer Seite anschließen, verursachen keine Erhaltungskosten. Gold wird nur abgezogen, wenn die Summe der Erhaltungskosten größer ist als die Anzahl der kontrollierten Dörfer. Bezahlt wird die Differenz zwischen der Anzahl der Dörfer und den Erhaltungskosten.
+Jede Einheit verursacht Erhaltungskosten. Die Erhaltungskosten entsprechen im
+Allgemeinen der Stufe der Einheit (ausgenommen loyale Truppen, siehe unten).
+Einheiten, die nicht ausgebildet oder einberufen werden - d.h. die sich
+freiwillig einer Seite anschließen, verursachen keine Erhaltungskosten. Gold
+wird nur abgezogen, wenn die Summe der Erhaltungskosten größer ist als die
+Anzahl der kontrollierten Dörfer. Bezahlt wird die Differenz zwischen der Anzahl
+der Dörfer und den Erhaltungskosten.
 
 Daher ist die Formel für das Einkommen pro Runde:
 
 2 + Dörfer - Maximum(0, Erhaltungskosten - Dörfer)
 
-Die Erhaltungskosten entsprechen der Summe der Stufen aller ausgebildeten und einberufenen Einheiten.
+Die Erhaltungskosten entsprechen der Summe der Stufen aller ausgebildeten und
+einberufenen Einheiten.
 
 
 Ausbilden und Einberufen
 
-Einheiten können zu einem bestimmten Preis ausgebildet werden, solange der Anführer im Bergfried steht und noch ein Feld in der Burg frei ist. Das Ausbilden geschieht durch Rechtsklick und die Auswahl von »Ausbilden«.
+Einheiten können zu einem bestimmten Preis ausgebildet werden, solange der
+Anführer im Bergfried steht und noch ein Feld in der Burg frei ist. Das
+Ausbilden geschieht durch Rechtsklick und die Auswahl von »Ausbilden«.
 
-Wenn ein Szenario durchgespielt wurde, stehen alle überlebenden Einheiten im nächsten Szenario wieder zur Verfügung. Durch Rechtsklick und die Auswahl von »Einberufen« können Einheiten aus früheren Szenarios reaktiviert werden. Das Einberufen kostet immer 20 Goldstücke, egal welche Einheit Sie einberufen wollen.
+Wenn ein Szenario durchgespielt wurde, stehen alle überlebenden Einheiten im
+nächsten Szenario wieder zur Verfügung. Durch Rechtsklick und die Auswahl von
+»Einberufen« können Einheiten aus früheren Szenarios reaktiviert werden. Das
+Einberufen kostet immer 20 Goldstücke, egal welche Einheit Sie einberufen
+wollen.
 
-Sie können ein freies Feld der Burg markieren und danach eine Einheit rekrutieren oder einberufen. Auf diese Weise bestimmen Sie das Feld, auf dem die Einheit erscheint.
+Sie können ein freies Feld der Burg markieren und danach eine Einheit
+rekrutieren oder einberufen. Auf diese Weise bestimmen Sie das Feld, auf dem die
+Einheit erscheint.
 
-Eine gerade ausgebildete oder einberufene Einheit kann in der gleichen Runde nicht bewegt werden.
+Eine gerade ausgebildete oder einberufene Einheit kann in der gleichen Runde
+nicht bewegt werden.
 
 
 Besondere Eigenschaften der Einheiten
 
-Die besonderen Eigenschaften der Einheiten können mit dem Menüpunkt »Einheitenbeschreibung« eingesehen werden.
+Die besonderen Eigenschaften der Einheiten können mit dem Menüpunkt
+»Einheitenbeschreibung« eingesehen werden.
 
 
 Charakteristika
 
-Einheiten haben Merkmale, die Aspekte ihres Charakters reflektieren. Diese Charakteristika werden bei der Erschaffung der Einheiten zufällig vergeben. Im Regelfall erhält jede Einheit zwei Charakteristika. Folgende Charakteristika sind möglich:
+Einheiten haben Merkmale, die Aspekte ihres Charakters reflektieren. Diese
+Charakteristika werden bei der Erschaffung der Einheiten zufällig vergeben. Im
+Regelfall erhält jede Einheit zwei Charakteristika. Folgende Charakteristika
+sind möglich:
 
    Loyal:         Die Erhaltungskosten der Einheit sind niemals höher als 1.
-   Stark:         Die Einheit verursacht mehr Schaden im Nahkampf und hat etwas mehr Lebenspunkte.
-   Schnell:       Die Einheit hat einen zusätzlichen Bewegungspunkt, dafür etwas weniger Lebenspunkte.
+   Stark:         Die Einheit verursacht mehr Schaden im Nahkampf und hat etwas
+                  mehr Lebenspunkte.
+   Schnell:       Die Einheit hat einen zusätzlichen Bewegungspunkt, dafür etwas
+                  weniger Lebenspunkte.
    Unverwüstlich: Die Einheit hat mehr Lebenspunkte.
-   Intelligent:   Die Einheit braucht weniger Erfahrungspunkte, um eine Stufe aufzusteigen.
+   Intelligent:   Die Einheit braucht weniger Erfahrungspunkte, um eine Stufe
+                  aufzusteigen.
 
 
 Bewegung
 
-Wenn Sie eine Einheit per Mausklick anwählen , werden alle Felder beleuchtet, die sie in dieser Runde erreichen kann. Andere Felder erscheinen grau. Sie können anschließend das Feld anklicken, auf das sich Ihre Einheit bewegen soll. Wenn eine Einheit auf ein Dorf bewegt wird, das neutral ist oder vom Gegner kontrolliert wird, übernimmt der Besetzer die Kontrolle über das Dorf. Wird ein Ziel markiert, das außerhalb des in dieser Runde erreichbaren Gebietes liegt, begibt sich diese Einheit zu Beginn der nächsten Runde(n) selbstständig dorthin. Selbstständige Bewegungen können am Anfang einer Runde aufgehoben werden in dem der betreffenden Einheit ein neuer Befehl gegeben wird.
+Wenn Sie eine Einheit per Mausklick anwählen, werden alle Felder beleuchtet, die
+sie in dieser Runde erreichen kann. Andere Felder erscheinen grau. Sie können
+anschließend das Feld anklicken, auf das sich Ihre Einheit bewegen soll. Wenn
+eine Einheit auf ein Dorf bewegt wird, das neutral ist oder vom Gegner
+kontrolliert wird, übernimmt der Besetzer die Kontrolle über das Dorf. Wird ein
+Ziel markiert, das außerhalb des in dieser Runde erreichbaren Gebietes liegt,
+begibt sich diese Einheit zu Beginn der nächsten Runde(n) selbstständig dorthin.
+Selbstständige Bewegungen können am Anfang einer Runde aufgehoben werden in dem
+der betreffenden Einheit ein neuer Befehl gegeben wird.
 
-Das Ziehen in die Kontrollzone einer feindlichen Einheit (die sie umgebenden 6 Felder), verhindert eine weitere Bewegung der betroffenen Einheit.
+Das Ziehen in die Kontrollzone einer feindlichen Einheit (die sie umgebenden 6
+Felder), verhindert eine weitere Bewegung der betroffenen Einheit.
 
 
 Kampf
 
-Eine Einheit die auf ein, an eine feindliche Einheit angrenzendes Feld gezogen wird, kann diese angreifen. Klicken Sie auf die eigene Einheit und anschließend auf die feindliche Einheit, die angegriffen werden soll. Jede Einheit hat eine oder mehrere Waffen, mit denen sie angreifen kann. Manche Waffen sind Nahkampfwaffen, wie z.B. Schwerter, während andere Waffen, wie z.B. Bögen, Fernkampfwaffen sind.
+Eine Einheit die auf ein an eine feindliche Einheit angrenzendes Feld gezogen
+wird, kann diese angreifen. Klicken Sie auf die eigene Einheit und anschließend
+auf die feindliche Einheit, die angegriffen werden soll. Jede Einheit hat eine
+oder mehrere Waffen, mit denen sie angreifen kann. Manche Waffen sind
+Nahkampfwaffen, wie z.B. Schwerter, während andere Waffen, wie z.B. Bögen,
+Fernkampfwaffen sind.
 
-Mit Nahkampfwaffen angegriffene Einheiten verteidigen sich mit Nahkampfwaffen. Entprechend verteidigen sie sich mit Fernkampfwaffen gegen einen Angriff mit Fernkampfwaffen.
+Mit Nahkampfwaffen angegriffene Einheiten verteidigen sich mit Nahkampfwaffen.
+Entprechend verteidigen sie sich mit Fernkampfwaffen gegen einen Angriff mit
+Fernkampfwaffen.
 
-Jeder Waffe ist eine Anzahl von Angriffen und ein Schaden pro Treffer zugeordnet. Zum Beispiel verursacht ein Elfenkrieger 5 Schadenspunkte bei jedem Treffer und er kann bei jeder Kampfhandlung 4 mal zuschlagen. Dies wird allgemein als 5-4 geschrieben.
+Jeder Waffe ist eine Anzahl von Angriffen und ein Schaden pro Treffer
+zugeordnet. Zum Beispiel verursacht ein Elfenkrieger 5 Schadenspunkte bei jedem
+Treffer und er kann bei jeder Kampfhandlung 4 Mal zuschlagen. Dies wird
+allgemein als 5-4 geschrieben.
 
-Die Wahrscheinlichkeit einer Einheit, getroffen zu werden, ist vom Gelände abhängig. Einheiten in Dörfern und Burgen oder Elfen in Wälder, werden beispielsweise weniger häufig getroffen.
+Die Wahrscheinlichkeit einer Einheit, getroffen zu werden, ist vom Gelände
+abhängig. Einheiten in Dörfern und Burgen oder Elfen in Wälder, werden
+beispielsweise weniger häufig getroffen.
 
 
 Tag-/Nachteinfluss
 
-Jede Einheit wird von den vorherrschenden Lichtverhältnissen unterschiedlich beeinflusst. Es gibt drei Lichtverhältniskategorien: redlich, neutral oder lichtscheu. Die folgende Tabelle illustriert die verschiedenen Tageszeiten:
+Jede Einheit wird von den vorherrschenden Lichtverhältnissen unterschiedlich
+beeinflusst. Es gibt drei Lichtverhältniskategorien: redlich, neutral oder
+lichtscheu. Die folgende Tabelle illustriert die verschiedenen Tageszeiten:
 
  |  Zug  | Tageszeit |
  ---------------------
@@ -118,20 +178,36 @@ Jede Einheit wird von den vorherrschenden Lichtverhältnissen unterschiedlich be
  |   5   | Nacht     |
  |   6   | Nacht     |
 
-Redliche Einheiten verursachen bei Tag 25% mehr, bei Nacht 25% weniger Schaden. Lichtscheue Einheiten verursachen 25% mehr Schaden bei Nacht, und 25% weniger Schaden bei Tag. Neutrale Einheiten werden von der Tageszeit nicht beeinflusst.
+Redliche Einheiten verursachen bei Tag 25% mehr, bei Nacht 25% weniger Schaden.
+Lichtscheue Einheiten verursachen 25% mehr Schaden bei Nacht, und 25% weniger
+Schaden bei Tag. Neutrale Einheiten werden von der Tageszeit nicht beeinflusst.
 
 
 Heilung
 
-In Dörfern postierte, verwundete Einheiten regenerieren pro Runde 8 Lebenspunkte. Verwundete Einheiten, die neben Einheiten stehen, die über die Fähigkeit »Heilen« oder »Kurieren« verfügen, werden ebenfalls geheilt. Eine Einheit, um die sich ein Heiler bis zu 4 Lebenspunkte pro Runde zurück. Eine, mit der Fähigkeit »Kurieren« behandelte Einheiten regenerieren bis zu 8 Lebenspunkte. Die Heilwirkung nimmt jedoch mit zunehmender Anzahl verwundeter Einheiten ab.
+In Dörfern postierte, verwundete Einheiten regenerieren pro Runde 8
+Lebenspunkte. Verwundete Einheiten, die neben Einheiten stehen, die über die
+Fähigkeit »Heilen« oder »Kurieren« verfügen, werden ebenfalls geheilt. Eine
+Einheit, um die sich kein Heiler befindet, gewinnen bis zu 4 Lebenspunkte pro
+Runde zurück. Eine, mit der Fähigkeit »Kurieren« behandelte Einheiten
+regenerieren bis zu 8 Lebenspunkte. Die Heilwirkung nimmt jedoch mit zunehmender
+Anzahl verwundeter Einheiten ab.
 
-»Heilen« verhindert zwar, dass die Einheit weiteren Schaden durch eine Vergiftung erleidet, kann diese jedoch nicht heilen. Erst durch die »Kurieren« Fertigkeit wird die Vergiftung aufgehoben. Wenn eine Vergiftung behandelt wird, erhält die Einheit in dieser Runde keine Lebenspunkte zurück.
+»Heilen« verhindert zwar, dass die Einheit weiteren Schaden durch eine
+Vergiftung erleidet, kann diese jedoch nicht heilen. Erst durch die »Kurieren«
+Fertigkeit wird die Vergiftung aufgehoben. Wenn eine Vergiftung behandelt wird,
+erhält die Einheit in dieser Runde keine Lebenspunkte zurück.
 
 
 Erfahrung
 
-Einheiten erhalten Erfahrungspunkte im Kampf. Wenn sie genug gesammelt haben, steigen sie eine Stufe auf und werden stärker. Die Anzahl der gewonnenen Erfahrungspunkte hängt von der Stufe der gegnerischen Einheit und vom Ausgang des Kampfes ab: Eine Einheit die eine feindliche Einheit tötet, erhält 8 Erfahrungspunkte pro Stufe des Gegners (4 bei Gegnern der Stufe 0).
-Eine Einheit die einen Kampf überlebt ohne den Gegner zu töten, erhält einen Erfahrungspunkt pro Stufe des Gegners. Mit anderen Worten:
+Einheiten erhalten Erfahrungspunkte im Kampf. Wenn sie genug gesammelt haben,
+steigen sie eine Stufe auf und werden stärker. Die Anzahl der gewonnenen
+Erfahrungspunkte hängt von der Stufe der gegnerischen Einheit und vom Ausgang
+des Kampfes ab: Eine Einheit die eine feindliche Einheit tötet, erhält 8
+Erfahrungspunkte pro Stufe des Gegners (4 bei Gegnern der Stufe 0).
+Eine Einheit die einen Kampf überlebt ohne den Gegner zu töten, erhält einen
+Erfahrungspunkt pro Stufe des Gegners. Mit anderen Worten:
 
 | Feind Stufe | Vern.-Bonus| Kampf-Bonus    |
 ---------------------------------------------
@@ -146,7 +222,10 @@ Eine Einheit die einen Kampf überlebt ohne den Gegner zu töten, erhält einen 
 
 Mehrspieler
 
-Sie können ein eigene Mehrspielerpartie starten, in dem Sie Ihren PC als Spielserver benutzen oder sich mit dem Wesnoth-Spielserver verbinden und Ihr Spiel dort starten. Falls Sie Ihren PC benutzen benötigen Mitspieler die Möglichkeit sich mit Ihrem Port 15000 zu verbinden.
+Sie können ein eigene Mehrspielerpartie starten, in dem Sie Ihren PC als
+Spielserver benutzen oder sich mit dem Wesnoth-Spielserver verbinden und Ihr
+Spiel dort starten. Falls Sie Ihren PC benutzen benötigen Mitspieler die
+Möglichkeit sich mit Ihrem Port 15000 zu verbinden.
 
 
 Öffentliche Server:
@@ -158,11 +237,16 @@ Sie können ein eigene Mehrspielerpartie starten, in dem Sie Ihren PC als Spiels
 
 Starten einer Mehrspielerpartie
 
-Schritt 1: Wählen Sie Mehrspieler im Hauptmenü, anschließend entweder »Offiziellen Server betreten« oder »Netzwerkpartie eröffnen« und eröffnen Sie eine neue Partie.
+Schritt 1: Wählen Sie Mehrspieler im Hauptmenü, anschließend entweder
+»Offiziellen Server betreten« oder »Netzwerkpartie eröffnen« und eröffnen Sie
+eine neue Partie.
 
-Schritt 2: Wählen sie eine Karte und legen Sie die Spieleinstellungen fest (Nebel des Krieges, Schleier der Finsternis, Steuereinnahmen pro Dorf)
+Schritt 2: Wählen sie eine Karte und legen Sie die Spieleinstellungen fest
+(Nebel des Krieges, Schleier der Finsternis, Steuereinnahmen pro Dorf)
 
-Schritt 3: Konfigurieren Sie die Spieler (Teams/Allianzen, Startgold, Rassen) und warten Sie anschließend darauf, das alle anderen Spieler dem Spiel beitreten.  Teilnehmende Spieler werden mit ihren Nicknames aufgeführt.
+Schritt 3: Konfigurieren Sie die Spieler (Teams/Allianzen, Startgold, Rassen)
+und warten Sie anschließend darauf, das alle anderen Spieler dem Spiel
+beitreten.  Teilnehmende Spieler werden mit ihren Nicknames aufgeführt.
 
 Schritt 4: Klicken Sie »Ich bin bereit« an, um die Partie zu starten
 

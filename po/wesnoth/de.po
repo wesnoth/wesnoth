@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-21 21:21+0200\n"
-"PO-Revision-Date: 2005-06-16 13:05+0100\n"
+"PO-Revision-Date: 2005-06-26 15:22+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -230,7 +230,7 @@ msgstr ""
 "\n"
 "\n"
 "Ihr solltet beachten, dass Einheiten nicht nur bei der Ausbildung und "
-"Einberufung Gold kosten, sondern auch Unterhaltskosten haben. Geht zu "
+"Einberufung Gold kosten, sondern auch Unterhaltskosten verursachen. Geht zu "
 "<ref>dst=income_and_upkeep text='Einkommen und Unterhaltskosten'</ref>, um "
 "mehr darüber zu erfahren."
 
@@ -253,7 +253,7 @@ msgstr ""
 "und alle anderen abgedunkelt. Wenn Ihr mit der Maus über ein zu weit "
 "entferntes Feld fahrt, wird angezeigt, wie viele Züge die Einheit bis dahin "
 "benötigt. Wenn Ihr das Feld anklickt, wird sich die Einheit auf dem "
-"schnellsten Wege dort hin bewegen."
+"schnellsten Wege dorthin bewegen."
 
 #: data/help.cfg:95
 msgid ""
@@ -275,7 +275,7 @@ msgstr ""
 "verbraucht werden, wenn die Einheit ein neues Feld betritt. Das Betreten von "
 "Grasland kostet fast immer einen Bewegungspunkt. Die genauen Kosten hängen "
 "von der Art der Einheit ab: Elfen verbrauchen im Wald nur jeweils einen "
-"Bewegungspunkt, die meisten Menschen und Orks brauchen dort zwei, und Reiter "
+"Bewegungspunkt, die meisten Menschen und Orks brauchen dort zwei und Reiter "
 "sogar drei. Ihr könnt Euch die Bewegungskosten für eine Einheit anzeigen "
 "lassen, wenn Ihr auf diese rechtsklickt, danach »Einheitenbeschreibung« "
 "auswählt und Euch den Abschnitt <italic>text='Geländemodifikatoren'</italic> "
@@ -465,7 +465,7 @@ msgid ""
 "damage which they take from certain damage types."
 msgstr ""
 "In Wesnoth besitzen physische Attacken eine von drei verschiedenen "
-"Schadensarten: Klinge, Stich und Wucht. Desweiteren gibt es ebenfalls drei "
+"Schadensarten: Klinge, Stich und Wucht. Des Weiteren gibt es ebenfalls drei "
 "für magische Angriffe: Feuer, Kälte und heilige Attacken. Einheiten können "
 "Resistenzen gegen manche Schadensarten haben, was ihren Schaden entsprechend "
 "verändert."
@@ -771,8 +771,8 @@ msgstr ""
 "Stufe. Ihr könnt allerdings so viele Stufen an Einheiten, wie Ihr Dörfer "
 "Euer Eigen nennt, ohne Kosten unterhalten. Für jede Einheitenstufe darüber "
 "hinaus müsst Ihr ein Goldstück zahlen. Wenn Ihr zum Beispiel über 12 "
-"erststufige Einheiten verfügt und 10 Dörfer kontrolliert, müsst Ihr 2 Stücke "
-"Gold pro Zug bezahlen."
+"erststufige Einheiten verfügt und 10 Dörfer kontrolliert, müsst Ihr 2 "
+"Goldstücke pro Zug bezahlen."
 
 #: data/help.cfg:191
 msgid ""
@@ -784,7 +784,7 @@ msgstr ""
 "\n"
 "\n"
 "Diese Kosten werden von Eurem Einkommen abgezogen. Bei insgesamt zwölf "
-"Einheitenstufen und zehn Dörfern betrüge Euer Einkommen 8 Gold pro Zug."
+"Einheitenstufen und zehn Dörfern beträge Euer Einkommen 8 Goldstücke pro Zug."
 
 #: data/help.cfg:192
 msgid ""
@@ -1690,7 +1690,7 @@ msgstr "5S - Forst der Furcht"
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr ""
-"Im Norden Wesnoths liegt der sogennannte Forst der Furcht. Eine recht "
+"Im Norden Wesnoths liegt der so genannte Forst der Furcht. Eine recht "
 "abwechslungsreiche Flora und Fauna findet man in diesem Wald, ebenso wie die "
 "unterschiedlichsten Geländearten. In diesem Wald, der seinen Namen völlig zu "
 "unrecht trägt, kämpfen fünf Armeen um die Vorherrschaft."
@@ -2792,7 +2792,7 @@ msgstr ""
 msgid "How does resistance affect attack damage?"
 msgstr "Wie beeinflussen Resistenzen den Angriffsschaden?"
 
-# Anm. Müßte 'Einheitenbeschreibung' nicht 'Profil' heißen?
+# Anm. Müsste 'Einheitenbeschreibung' nicht 'Profil' heißen?
 #: data/scenarios/tutorial/utils.cfg:131
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
@@ -3187,8 +3187,8 @@ msgstr ""
 "und Heilig. Jede Einheit hat Stärken und Schwächen gegen unterschiedliche "
 "Arten von Angriffen. Klickt mit der rechten Maustaste auf eine Einheit und "
 "wählt die Option »Einheitenbeschreibung« aus. Die Tabelle »Resistenz« gibt "
-"Euch darüber Auskunft, wie hoch der Widerstand gegen eine bestimmte "
-"Schadensart ist."
+"darüber Auskunft, wie hoch der Widerstand gegen eine bestimmte Schadensart "
+"ist."
 
 #: data/tips.cfg:4
 msgid ""
@@ -3211,8 +3211,8 @@ msgid ""
 msgstr ""
 "Vergiftete Einheiten verlieren pro Runde 8 Lebenspunkte. Das Gift ist jedoch "
 "nicht in der Lage, Eure Einheit zu töten. Mindestens 1 Lebenspunkt bleibt "
-"übrig. Vergiftete Einheiten können kuriert  werden, wenn Ihr sie in ein Dorf "
-"führt oder sie neben einer Einheit mit der Fähigkeit »Kurieren« platziert."
+"übrig. Vergiftete Einheiten können kuriert werden, wenn Ihr sie in ein Dorf "
+"führt oder Ihr sie neben eine Einheit mit der Fähigkeit »Kurieren« platziert."
 
 #: data/tips.cfg:6
 msgid ""
@@ -3246,7 +3246,7 @@ msgid ""
 msgstr ""
 "Die Wahrscheinlichkeit, dass ein Angriff eine Einheit trifft, hängt "
 "normalerweise davon ab, wie gut sich diese Einheit in der aktuellen "
-"Geländeart verteidigen kann Magische Angriffe haben grundsätzlich eine "
+"Geländeart verteidigen kann. Magische Angriffe haben grundsätzlich eine "
 "Trefferwahrscheinlichkeit von 70%. Scharfschützen verfügen über eine "
 "Trefferwahrscheinlichkeit von mindestens 60%."
 
@@ -3396,8 +3396,8 @@ msgstr ""
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
-"Bildet mit Einheiten einen Wall, um verletze Einheiten zu schützen und ihnen "
-"das Erholen zu ermöglichen."
+"Bildet mit Einheiten einen Wall, um verletzte Einheiten zu schützen und "
+"ihnen das Erholen zu ermöglichen."
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
@@ -3749,7 +3749,7 @@ msgid ""
 "This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
 "Unerschütterlich:\n"
-"Diese Einheit steht wie ein Fels in der Schlacht. Ihre Resitenz wird "
+"Diese Einheit steht wie ein Fels in der Schlacht. Ihre Resistenz wird "
 "verdoppelt, jedoch maximal um 50%, wenn sie sich gegen Feinde verteidigt."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
@@ -5281,7 +5281,7 @@ msgstr "Axt"
 
 #: data/units/Dread_Lich.cfg:3
 msgid "Dread Lich"
-msgstr ""
+msgstr "Lich des Grauens"
 
 #: data/units/Dread_Lich.cfg:16
 msgid ""
@@ -5292,6 +5292,12 @@ msgid ""
 "immortality will have to provide consolation for what he has lost in his "
 "quest to achieve them."
 msgstr ""
+"Letztendlich hat Ha'atal das letzte Opfer für die dunklen Künste, denen er "
+"verfallen ist, erbracht und wurde selbst zum Untoten. Auf der Höhe seiner "
+"Macht, wurde zu einem Lich, die wandelnde Verkörperung des Grauens. Doch ist "
+"jener Pfad, auf dem er sich jetzt befindet, ein Pfad ohne Rückkehr. Im "
+"Ausstausch für Macht und Unsterblichkeit musste er große Opfer auf seiner "
+"Queste erbringen."
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
@@ -5582,7 +5588,7 @@ msgid ""
 msgstr ""
 "Elfenbogenschützen trainieren das Bogenschießen von klein auf, dadurch sind "
 "sie sehr geschickt im Fernkampf. Da sie in der Lage sind viele Pfeile "
-"schnell und zielsicher abzufeuern sind diese Bogenschützen ein sehr "
+"schnell und zielsicher abzufeuern, sind diese Bogenschützen ein sehr "
 "wichtiger Bestandteil der Elfentruppen."
 
 #: data/units/Elvish_Archer.cfg:105
@@ -5620,8 +5626,8 @@ msgid ""
 "range fighting."
 msgstr ""
 "Erfahren im Führen von Soldaten, bringt der Elfenhauptmann allen Einheiten "
-"der Stufe 1 auf benachbarten Feldern einen Bonus. Der Elfenhauptmann ist "
-"ebenso gewandt im Nahkampf wie im Kampf auf Distanz."
+"der Stufe 1 auf benachbarten Feldern einen Bonus. Der Elfenhauptmann ist im "
+"Nahkampf ebenso gewandt wie im Kampf auf Distanz."
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -5634,8 +5640,8 @@ msgid ""
 "the bow, able to inflict damage on their enemies from both near and far."
 msgstr ""
 "Elfenschwertmeister sind Meister des Schwertkampfes. Als meisterhafte "
-"Kämpfer sind sie auch kundig Umgang mit Pfeil und Bogen, fähig ihren Gegnern "
-"auf jede Distanz ernsthaft zu verletzen. "
+"Kämpfer sind sie auch kundig im Umgang mit Pfeil und Bogen, fähig ihre "
+"Gegner auf jede Distanz ernsthaft zu verletzen. "
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
@@ -6147,16 +6153,15 @@ msgid "Giant Mudcrawler"
 msgstr "Riesenschlammkriecher"
 
 #: data/units/Giant_Mudcrawler.cfg:16
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by slapping them with their fists."
 msgstr ""
 "Riesenschlammkriecher sind ausgewachsene Schlammkriecher, sie sind magische "
-"Wesen die aus Erde und Wasser bestehen. Sie greifen an indem sie siedendes "
-"Wasser auf ihre Feinde spritzen oder indem sie mit ihren Schlammfäusten auf "
-"sie losgehen."
+"Wesen die aus Erde und Wasser bestehen. Sie greifen an indem sie "
+"Schlammklumpen gegen ihre Feinde ausspeien oder indem sie mit ihren "
+"Schlammfäusten auf sie losgehen."
 
 #: data/units/Giant_Mudcrawler.cfg:42 data/units/Skeleton_Archer.cfg:24
 #: data/units/Soulless.cfg:36 data/units/Soulless.cfg:110
@@ -6173,7 +6178,7 @@ msgstr "Faust"
 
 #: data/units/Giant_Mudcrawler.cfg:64 data/units/Mudcrawler.cfg:42
 msgid "mud glob"
-msgstr ""
+msgstr "Schlammklumpen"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
@@ -6466,7 +6471,7 @@ msgid ""
 "weakened him to the point where he is too weak to attack in regular combat."
 msgstr ""
 "Nach ersten Erfahrungen in der Totenmagie hat seine Gier nach Macht diesen "
-"jungen Ha'atel soweit geschwächt, dass er an einem Punkt angekommen ist von "
+"jungen Ha'atel soweit geschwächt, dass er an einem Punkt angekommen ist, von "
 "dem an er nicht mehr auf reguläre Weise in einem Kampf bestehen kann."
 
 #: data/units/Iron_Mauler.cfg:3
@@ -6887,13 +6892,12 @@ msgid "Mudcrawler"
 msgstr "Schlammkriecher"
 
 #: data/units/Mudcrawler.cfg:16
-#, fuzzy
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
 "Schlammkriecher sind magische Wesen, die aus Erde und Wasser bestehen. Sie "
-"greifen an indem sie siedendes Wasser auf ihre Feinde spritzen."
+"greifen an indem sie Schlammklumpen gegen ihre Feinde ausspeien."
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
@@ -7829,7 +7833,7 @@ msgstr ""
 "worden. Ihnen, die ihn einst zurückholten aus dem Reich der Toten, dient er "
 "nun. Auch wenn er nun nur noch wie ein Haufen alter, trockener Knochen "
 "aussehen mag, so ist er immer noch sehr gefährlich, auch wenn davon nur "
-"wenige auserwählte berichten können. Zwar haben schon viele versucht, ihn "
+"wenige Auserwählte berichten können. Zwar haben schon viele versucht, ihn "
 "wieder zurück in das Reich der Toten zu schicken, doch keiner war dazu "
 "erwählt, diese Tat zu vollbringen - oder zu überleben."
 
@@ -7990,11 +7994,11 @@ msgid ""
 "opposite side of an enemy they are attacking. Being of chaotic disposition, "
 "Thieves fight better at night than day."
 msgstr ""
-"Diebe sind flink und verschlagen, weshalb sind sie nur schwer zu treffen "
-"sind. Ausgebildet in der Fertigkeit »Hinterhalt« können sie doppelten "
-"Schaden anrichten, wenn sich ein Verbündeter auf der gegenüberliegenden "
-"Seite von ihrem Gegner befindet. Da sie lichtscheu sind, kämpfen sie besser "
-"in der Nacht als am Tag."
+"Diebe sind flink und verschlagen, weshalb sie nur schwer zu treffen sind. "
+"Ausgebildet in der Fertigkeit »Hinterhalt« können sie doppelten Schaden "
+"anrichten, wenn sich ein Verbündeter auf der gegenüberliegenden Seite von "
+"ihrem Gegner befindet. Da sie lichtscheu sind, kämpfen sie besser in der "
+"Nacht als am Tag."
 
 #: data/units/Thief.cfg:104
 msgid "female^Thief"
@@ -8064,7 +8068,7 @@ msgid ""
 "their weakness during daylight hours."
 msgstr ""
 "Nachdem die Trolle ihrem Welpenstadium entwachsen sind, bewaffnen sie sich "
-"häuft mit großen Ästen, um ihre Angriffskraft zu erhöhen. Trolle mit "
+"häufig mit großen Ästen, um ihre Angriffskraft zu erhöhen. Trolle mit "
 "Nahkampfwaffen anzugreifen, führt meistens zu großen Verlusten in den "
 "eigenen Reihen. Mit der Kraft der Magie und unter einem Hagel von Pfeilen "
 "sind aber schon viele Trolle in den Staub gesunken."
@@ -8088,7 +8092,6 @@ msgid "Troll Rocklobber"
 msgstr "Troll-Felsenschleuderer"
 
 #: data/units/Troll_Rocklobber.cfg:21
-#, fuzzy
 msgid ""
 "Given the monstrous strength of their race, trolls can turn rather mundane "
 "implements into weapons of deadly force. Some trolls piece together crude "
@@ -8115,14 +8118,13 @@ msgid ""
 "them in open terrain during the day, when they are weakest."
 msgstr ""
 "Einige Trolle, die über eine besondere Geschicklichkeit verfügen, werden zu "
-"sogennanten Felsenschleuderern ausgebildet. Diese Trolle warten solange in "
+"so genannten Felsenschleuderern ausgebildet. Diese Trolle warten solange in "
 "ihren Verstecken, bis Handelszüge oder -karawanen eine Schlucht durchqueren "
-"müssen. Dann lassen sie grosse Felsbrocken auf ihre Opfer niederprasseln. "
+"müssen. Dann lassen sie große Felsbrocken auf ihre Opfer niederprasseln. "
 "Meist brauchen die Orks ihre Beute nach solch einem Bombardement nur noch "
 "einzusammeln. Aufgrund der, auf dem Schlachtfeld kaum vorhandenen "
 "Felsbrocken, benutzen sie kleinere Steine, die sie in einem Beutel bei sich "
-"tragen. Diese verschiessen sie mit einer primitiven Schleuder auf ihre "
-"Gegner."
+"tragen. Diese verschießen sie mit einer primitiven Schleuder auf ihre Gegner."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -8191,8 +8193,8 @@ msgstr ""
 "grüner Farbe, und sie besitzen die erstaunliche Fähigkeit der Regeneration. "
 "Viele tapfere Krieger mussten ihr Leben lassen, weil sie einen tödlich "
 "verwundeten Troll auf dem Schlachtfeld liegen ließen, um nach kurzer Zeit "
-"erneut von dem Monstrum angefallen zu wurden. Bevor sie ausgewachsen sind, "
-"spricht man von sogenannten Trollwelpen. In dieser Zeit sind Trolle noch "
+"erneut von dem Monstrum angefallen zu werden. Bevor sie ausgewachsen sind, "
+"spricht man von so genannten Trollwelpen. In dieser Zeit sind Trolle noch "
 "nicht besonders gefährlich, aber ihre Rasse ist bekannt für ihr schnelles "
 "Wachstum."
 
@@ -8301,7 +8303,7 @@ msgid ""
 "miscellaneous items at them with ballistas."
 msgstr ""
 "Beobachtungstürme werden genutzt, um herannahende Feinde ausfindig zu machen "
-"und danach verschiedene Geschosse mit Ballistae auf sie zu feuern."
+"und danach verschiedene Geschosse mit Ballistas auf sie zu feuern."
 
 #: data/units/White_Mage.cfg:3
 msgid "White Mage"
@@ -9158,9 +9160,8 @@ msgid "Defeat:"
 msgstr "Niederlage:"
 
 #: src/gamestatus.cpp:476
-#, fuzzy
 msgid "Could not write to file"
-msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
+msgstr "In die Datei konnte nicht geschrieben werden"
 
 #: src/help.cpp:1056
 msgid "Advances to: "
@@ -9278,7 +9279,7 @@ msgstr "Hilfe zu Battle for Wesnoth"
 # Anm. Stimmt das im Kontext?
 #: src/help.cpp:2708
 msgid "Parse error when parsing help text: "
-msgstr "Fehler beim analysieren des Hilfetextes: "
+msgstr "Fehler beim Analysieren des Hilfetextes: "
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9717,28 +9718,23 @@ msgstr "Gold"
 
 #: src/network.cpp:66
 msgid "invalid network handle"
-msgstr ""
+msgstr "Ungültige Verbindung"
 
 #: src/network.cpp:99
-#, fuzzy
 msgid "Socket error"
-msgstr "Schreckenskrieger"
+msgstr "Sockelfehler"
 
 #: src/network.cpp:417
-#, fuzzy
 msgid "Could not add socket to socket set"
-msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
+msgstr "Der Sockel konnte zum Sockelsatz nicht hinzugefügt werden."
 
 #: src/network.cpp:428
 msgid "Could not send initial handshake"
-msgstr ""
+msgstr "Der Anfangshandschlag konnte nicht ausgeführt werden"
 
 #: src/playcampaign.cpp:149
-#, fuzzy
 msgid "Do you want to save a replay of this scenario?"
-msgstr ""
-"Möchtet Ihr die Kenntnisse betrachten, die in diesem Szenario vermittelt "
-"wurden?"
+msgstr "Möchtet Ihr den Spielverlauf dieses Szenarios speichern?"
 
 #: src/playcampaign.cpp:150 src/playcampaign.cpp:270 src/playturn.cpp:1622
 msgid "Name:"
@@ -9749,18 +9745,16 @@ msgid "The game could not be saved"
 msgstr "Der Spielstand konnte nicht gespeichert werden"
 
 #: src/playcampaign.cpp:200
-#, fuzzy
 msgid "Downloading next level..."
-msgstr "Kampagne wird geladen ..."
+msgstr "Nächsten Szenarios wird geladen..."
 
 #: src/playcampaign.cpp:269
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
+msgstr "Möchtet Ihr diesen Spielstand abspeichern?"
 
 #: src/playcampaign.cpp:295
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Unbekanntes Szenario: '"
 
 #: src/playlevel.cpp:602 src/playlevel.cpp:873
 msgid "The file you have tried to load is corrupt"
@@ -9976,7 +9970,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Ihr verfügt über keine Truppen, die Ihr einberufen könntet.\n"
-"(Ihr benötigt überlebende Veteranen aus früheren Szenarien)"
+"(Ihr benötigt überlebende Veteranen aus früheren Szenarien.)"
 
 #: src/playturn.cpp:2039
 msgid "You must have at least $cost gold pieces to recall a unit"
