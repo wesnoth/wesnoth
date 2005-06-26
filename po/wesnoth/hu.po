@@ -12,13 +12,13 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-21 21:21+0200\n"
-"PO-Revision-Date: 2005-06-14 21:24+0100\n"
+"PO-Revision-Date: 2005-06-23 19:53+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;X-Generator: KBabel 1.3X-Generator: \n"
+"Plural-Forms: nplurals=1; plural=0;X-Generator: KBabel 1.3X-Generator: "
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
@@ -26,7 +26,7 @@ msgstr "Bepa-Roman.ttf,Vera.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:30
 msgid "Binary Saves"
-msgstr "Futtatható mentések"
+msgstr "Tömörített mentések"
 
 #: data/game.cfg:37
 msgid "Show Combat"
@@ -3236,10 +3236,10 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"Veztőd tud toborozni vagy visszhívni egységeket egy vár bármely "
-"vártornyából, nem csak a kezdő vártoronyból. El tudod foglalni az ellenség "
-"várát és onnan is toborozni. Továbbá, néhány szövetségesed is tarthat fenn "
-"neked helyet a várában, hogy ott toborozz egységeket."
+"Vezetőd egy vár bármely vártornyából tud toborozni vagy visszhívni "
+"egységeket, nem csak a kezdő vártoronyból. El tudod foglalni az ellenség "
+"várát és onnan is toborozni, továbbá néhány szövetségesed is tarthat fenn "
+"neked helyet a várában, hogy ott vegyél fel új egységeket."
 
 #: data/tips.cfg:20
 msgid ""
@@ -5113,7 +5113,7 @@ msgstr "csatabárd"
 
 #: data/units/Dread_Lich.cfg:3
 msgid "Dread Lich"
-msgstr ""
+msgstr "Rettegett villi"
 
 #: data/units/Dread_Lich.cfg:16
 msgid ""
@@ -5124,6 +5124,12 @@ msgid ""
 "immortality will have to provide consolation for what he has lost in his "
 "quest to achieve them."
 msgstr ""
+"Végre valahára Ha'atel az utolsó áldozatot is vállalta a sötét mágiák "
+"oltárán, amelyekben már régóta vájkált, és így ő maga is élőholttá vált. "
+"Erejének csúcsán a rettegés ébredő megtestesülésévé, villivé válhatott. Így "
+"minden kétséget kizárva visszafordíthatatlant tett, és hatalmának és "
+"halhatatlanságának kell vigaszt nyújtania mindazokért, amiket elvesztett "
+"saját magára kirótt küldetése során."
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
@@ -5943,15 +5949,14 @@ msgid "Giant Mudcrawler"
 msgstr "Óriás sártipró"
 
 #: data/units/Giant_Mudcrawler.cfg:16
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by slapping them with their fists."
 msgstr ""
 "Az óriás sártiprók nagyobb fajta sártiprók, földből és vízből gyúrt mágikus "
-"lények. A harcban vagy forró vizet permeteznek ellenfeleikre, vagy "
-"sáröklükkel támadnak."
+"lények. A harcban vagy sárrögöket okádnak ellenfelükre, vagy öklükkel "
+"támadnak."
 
 #: data/units/Giant_Mudcrawler.cfg:42 data/units/Skeleton_Archer.cfg:24
 #: data/units/Soulless.cfg:36 data/units/Soulless.cfg:110
@@ -5968,7 +5973,7 @@ msgstr "ököl"
 
 #: data/units/Giant_Mudcrawler.cfg:64 data/units/Mudcrawler.cfg:42
 msgid "mud glob"
-msgstr ""
+msgstr "sárlabdacs"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
@@ -6654,13 +6659,12 @@ msgid "Mudcrawler"
 msgstr "Sártipró"
 
 #: data/units/Mudcrawler.cfg:16
-#, fuzzy
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
 "A sártiprók a víz és a föld mágikus keverékei. Támadásuk során az ellenfélre "
-"forró vizet fröcskölnek."
+"sárrögöket okádnak."
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
@@ -7059,7 +7063,8 @@ msgid ""
 "the orcish fighting groups."
 msgstr ""
 "Csak a legfortélyosabb és legerősebb orkok válhatnak hadúrrá. Ezek a kardot "
-"jól forgató és íjjal is jól célzó vadak vezetik csatába az ork bandákat."
+"jól forgató és az íjjal is jól célzó vad harcosok vezetik csatába az ork "
+"csapatokat."
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
@@ -7808,7 +7813,6 @@ msgid "Troll Rocklobber"
 msgstr "Troll kőemelő"
 
 #: data/units/Troll_Rocklobber.cfg:21
-#, fuzzy
 msgid ""
 "Given the monstrous strength of their race, trolls can turn rather mundane "
 "implements into weapons of deadly force. Some trolls piece together crude "
@@ -8898,9 +8902,8 @@ msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
 #: src/gamestatus.cpp:476
-#, fuzzy
 msgid "Could not write to file"
-msgstr "Nem sikerült kapcsolódni a kiszolgálóhoz."
+msgstr "Nem sikerült a fájlba írni"
 
 #: src/help.cpp:1056
 msgid "Advances to: "
@@ -9441,26 +9444,23 @@ msgstr "Arany"
 
 #: src/network.cpp:66
 msgid "invalid network handle"
-msgstr ""
+msgstr "érvénytelen hálózati fogantyú"
 
 #: src/network.cpp:99
-#, fuzzy
 msgid "Socket error"
-msgstr "Darabont"
+msgstr "Foglalat hiba"
 
 #: src/network.cpp:417
-#, fuzzy
 msgid "Could not add socket to socket set"
-msgstr "Nem sikerült kapcsolódni a kiszolgálóhoz."
+msgstr "Nem sikerült a foglalatot a foglalatcsoporthoz adni"
 
 #: src/network.cpp:428
 msgid "Could not send initial handshake"
-msgstr ""
+msgstr "Nem sikerült a kézfogás kezdeményezése"
 
 #: src/playcampaign.cpp:149
-#, fuzzy
 msgid "Do you want to save a replay of this scenario?"
-msgstr "Szeretnéd a pályán tanultak valamelyikét újra megnézni?"
+msgstr "Szeretnéd a pálya visszajátszását elmenteni?"
 
 #: src/playcampaign.cpp:150 src/playcampaign.cpp:270 src/playturn.cpp:1622
 msgid "Name:"
@@ -9471,18 +9471,16 @@ msgid "The game could not be saved"
 msgstr "A játék nem menthető el"
 
 #: src/playcampaign.cpp:200
-#, fuzzy
 msgid "Downloading next level..."
-msgstr "Hadjárat letöltése..."
+msgstr "Következő szint letöltése..."
 
 #: src/playcampaign.cpp:269
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "Biztos törölni akarod ezt az állást?"
+msgstr "Szeretnéd elmenteni a játékot?"
 
 #: src/playcampaign.cpp:295
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Ismeretlen pálya: '"
 
 #: src/playlevel.cpp:602 src/playlevel.cpp:873
 msgid "The file you have tried to load is corrupt"
