@@ -40,14 +40,18 @@ CVS HEAD:
    * new unit portraits for Bandit, Grand Knight, Halberdier, Horseman,
      Javelineer, Knight, Lancer, Paladin, Peasant, Pikeman, Royal Guard,
      Swordsman, Thug
+ * new units
+   * added Orcish Slurbow
  * unit balancing and modifications:
    * applied 0.9.2 changes to Thief, Elvish Archer, Elvish Ranger,
      Elvish Avenger to female units also
    * steadfast now doubles resistances up to 50%; vulnerabilities are unaffected
    * decreased Dwarvish Guardsman line resistance to cold from 20% to 10%
    * decreased Dwarvish Stalwart defense in grassland from 50% to 40%
+   * increased Dwarvish Ulfserker cost from 18 to 19
    * increased Orcish Shaman (Novice and Old also) hitpoints from 18 to 20
    * increased Pikeman attack from 9-3 to 10-3
+   * increased Master Bowman hitpoints from 46 to 50
    * increased undeadspirit (Ghost line) resistance to fire from 0% to 10%
    * decreased Ghost, Shadow and Nightgaunt resistance to impact from 60% to 50%
    * changed Ghoul and Necrophage resistances: impact -10% -> 0%,
@@ -58,6 +62,10 @@ CVS HEAD:
    * increased Naga hitpoints from 30 to 33 and experience from 25 to 32
    * decreased Merman Hunter ranged attack from 6-3 to 5-3
    * increased Merman Fighter hitpoints from 32 to 36  
+   * decreased Elvish defence in swamp from 40% to 30%
+   * increased flying units (except bat) movement cost in caves to 3
+   * increased Drake Clasher line movement cost in caves to 2
+   * decreased Drakes defence in caves to 30%
  * server
    * no longer rejects :control command with "Side not found"
    * write a summary of commands when a fifo command is not recognized
