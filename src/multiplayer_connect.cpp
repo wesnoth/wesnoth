@@ -929,7 +929,7 @@ void connect::load_game()
 	//this will force connecting clients to be using the same version number as us.
 	level_["version"] = game_config::version;
 
-	level_["observers"] = params_.allow_observers ? "yes" : "no";
+	level_["observer"] = params_.allow_observers ? "yes" : "no";
 
 	if(level_["objectives"].empty()) {
 		level_["objectives"] = t_string(N_("Victory\n\
