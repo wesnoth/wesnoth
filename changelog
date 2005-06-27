@@ -64,15 +64,21 @@ CVS HEAD:
    * decreased Merman Hunter ranged attack from 6-3 to 5-3
    * increased Merman Fighter hitpoints from 32 to 36  
    * decreased Elvish defence in swamp from 40% to 30%
-   * increased flying units (except bat) movement cost in caves to 3
-   * increased Drake Clasher line movement cost in caves to 2
-   * decreased Drakes defence in caves to 30%
+   * increased movement cost of movetype "fly" units in caves from 2 to 3
+   * increased Drake Clasher line movement cost in caves from 1 to 2
+   * decreased Drakes' defence in caves from 40% to 30%
+   * increased Revenant hitpoints from 40 to 43
+   * increased Deathblade hitpoints from 32 to 35
+ * multiplayer scenarios
+   * added Sablestone Delta
+   * modified Den of Onis, Hornshark Island, Meteor Lake, Silverhead Crossing
  * server
    * no longer rejects :control command with "Side not found"
    * write a summary of commands when a fifo command is not recognized
    * fix assertion failure in network_worker.cpp
  * move_unit_fake with illegal coordinates now logs error instead of
    causing assertion failure crash (part of #13334)
+ * various bug fixes and code cleanups
 
 Version 0.9.2:
  * user interface improvements:
