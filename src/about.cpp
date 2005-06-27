@@ -103,6 +103,7 @@ std::vector<std::string> get_text() {
 		"_" N_("+Multiplayer Maps"),
 		"-   Peter Groen (pg)",
 		"-   Tom Chance (telex4)",
+		"-   Mike Quinones (Doc Paterson)",
 
 		"_" N_("+Packagers"),
 		"-   Cyril Bouthors (CyrilB)",
