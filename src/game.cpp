@@ -1276,6 +1276,11 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				std::vector<std::string> user_campaigns, error_campaigns;
 				get_files_in_dir(user_campaign_dir,&user_campaigns,NULL,ENTIRE_FILE_PATH);
 				for(std::vector<std::string>::const_iterator uc = user_campaigns.begin(); uc != user_campaigns.end(); ++uc) {
+					static const std::string extension = ".cfg";
+					if(uc->size() < extension.size() || std::equal(uc->end() - extension.size(),uc->end(),extension.begin()) == false) {
+						continue;
+					}
+
 					try {
 						scoped_istream stream = preprocess_file(*uc,&defines_map);
 
@@ -1287,7 +1292,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 						if(campaign_error_log.empty()) {
 							cfg.append(user_campaign_cfg);
 						} else {
-							user_error_log += error_log;
+							user_error_log += campaign_error_log;
 							error_campaigns.push_back(*uc);
 						}
 					} catch(config::error& err) {
