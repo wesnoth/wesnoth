@@ -95,6 +95,8 @@ public:
 	bool play_test();
 	bool play_multiplayer_mode();
 
+	void reset_game_cfg();
+
 	bool is_loading() const;
 	bool load_game();
 	void set_tutorial();
@@ -351,24 +353,11 @@ bool game_controller::init_video()
 bool game_controller::init_config()
 {
 	units_data_.clear();
-	defines_map_.clear();
 	//Resets old_defines_map_, to force refresh_game_cfg to reload
 	//everything.
 	old_defines_map_.clear();
 
-	//load in the game's configuration files
-#if defined(__APPLE__)
-	defines_map_["APPLE"] = preproc_define();
-#endif
-
-	defines_map_["NORMAL"] = preproc_define();
-	defines_map_["MEDIUM"] = preproc_define();
-
-	if(multiplayer_mode_) {
-		defines_map_["MULTIPLAYER"] = preproc_define();
-	}
-
-	refresh_game_cfg();
+	reset_game_cfg();
 
 	game_config::load_config(game_config_.child("game_config"));
 
@@ -1384,6 +1373,25 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 	}
 }
 
+void game_controller::reset_game_cfg()
+{
+	defines_map_.clear();
+
+	//load in the game's configuration files
+#if defined(__APPLE__)
+	defines_map_["APPLE"] = preproc_define();
+#endif
+
+	defines_map_["NORMAL"] = preproc_define();
+	defines_map_["MEDIUM"] = preproc_define();
+
+	if(multiplayer_mode_) {
+		defines_map_["MULTIPLAYER"] = preproc_define();
+	}
+
+	refresh_game_cfg();
+}
+
 void game_controller::play_game(RELOAD_GAME_DATA reload)
 {
 	if(reload == RELOAD_DATA) {
@@ -1601,6 +1609,9 @@ int play_game(int argc, char** argv)
 #endif
 
 	for(;;) {
+		//make sure the game config is always set to how it should be at the title screen
+		game.reset_game_cfg();
+
 		statistics::fresh_stats();
 
 		sound::play_music(game_config::title_music);
