@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-06-21 21:17+0200\n"
-"PO-Revision-Date: 2005-06-16 13:24+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2005-06-30 00:59+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic AT gmx DOT net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -119,9 +119,10 @@ msgstr "Sprechen"
 msgid "Create Unit (Debug!)"
 msgstr "Einheit erstellen (Debug!)"
 
+# Anm: WICHTIG!!! MUSS VERNÜNFTIG ANGEPASST WERDEN, quick and dirty fix
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
-msgstr "Einheitenzugehörigkeit ändern (Debug!)"
+msgstr "Zugehörigkeit ändern (Debug!)"
 
 #: src/hotkeys.cpp:72 src/preferences.cpp:1166
 msgid "Preferences"
@@ -147,13 +148,15 @@ msgstr "Spiel beenden"
 msgid "Set Label"
 msgstr "Beschriftung erstellen"
 
+# Anm: WICHTIG!!! MUSS VERNÜNFTIG ANGEPASST WERDEN, quick and dirty fix
 #: src/hotkeys.cpp:78
 msgid "Show Enemy Moves"
-msgstr "Gegnerische Bewegungsmöglichkeiten anzeigen"
+msgstr "Gegn. Bewegungen zeigen"
 
+# Anm: WICHTIG!!! MUSS VERNÜNFTIG ANGEPASST WERDEN, quick and dirty fix
 #: src/hotkeys.cpp:79
 msgid "Best Possible Enemy Moves"
-msgstr "Bestmögliche gegnerische Bewegungen"
+msgstr "Beste gegn. Bewegungen"
 
 #: src/hotkeys.cpp:81
 msgid "Set Terrain"
@@ -239,9 +242,10 @@ msgstr "Schleier jetzt aktualisieren"
 msgid "Continue Move"
 msgstr "Bewegung fortsetzen"
 
+# Anm: WICHTIG!!! MUSS VERNÜNFTIG ANGEPASST WERDEN, quick and dirty fix
 #: src/hotkeys.cpp:103
 msgid "Find Label or Unit"
-msgstr "Beschriftung oder Einheiten suchen"
+msgstr "Beschriftung / Einheiten suchen"
 
 #: src/hotkeys.cpp:104
 msgid "Speak to Ally"
