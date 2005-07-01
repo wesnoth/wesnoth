@@ -112,7 +112,7 @@ namespace {
 	bool is_observer(const std::vector<team>& teams)
 	{
 		for(std::vector<team>::const_iterator i = teams.begin(); i != teams.end(); ++i) {
-			if(i->is_human()) {
+			if(i->is_human() || i->is_persistent()) {
 				return false;
 			}
 		}
