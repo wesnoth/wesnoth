@@ -117,7 +117,7 @@ void game::start_game()
 bool game::take_side(network::connection player, const config& cfg)
 {
 	wassert(is_member(player));
-	
+
 	// verify that side is a side id
 	const std::string& side = cfg["side"];
 	ssize_t side_num;
@@ -129,9 +129,9 @@ bool game::take_side(network::connection player, const config& cfg)
 	catch(bad_lexical_cast& bad_lexical) {
 		return false;
 	}
-	
+
 	size_t side_index = static_cast<size_t>(side_num - 1);
-	
+
 	//if the side is already taken, see if we can give the player
 	//another side instead
 	if(side_controllers_[side_index] == "human" || (sides_taken_[side_index] && side_controllers_[side_index] == "network")) {
@@ -204,7 +204,7 @@ void game::update_side_data()
 				continue;
 			}
 			side_index = static_cast<size_t>(side_num - 1);
-			
+
 			if((**sd)["controller"] == "network") {
 				side_controllers_[side_index] = "network";
 				if((**sd)["user_description"] == info->second.name()) {
@@ -257,9 +257,9 @@ const std::string& game::transfer_side_control(const config& cfg)
 	const size_t nsides = level_.get_children("side").size();
 	if(side_num > nsides)
 		return invalid;
-	
+
 	const size_t side_index = static_cast<size_t>(side_num - 1);
-	
+
 	if(side_controllers_[side_index] == "network" && sides_taken_[side_index]) {
 		static const std::string already = "This side is already controlled by a player";
 		return already;
@@ -276,7 +276,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 	side_controllers_[side_index] = "network";
 	sides_taken_[side_index] = true;
 	sides_.insert(std::pair<const network::connection,size_t>(*i, side_index));
-	
+
 	// send a response to the host and to the new controller
 	config response;
 	config& change = response.add_child("change_controller");
@@ -452,7 +452,7 @@ void game::remove_player(network::connection player, bool notify_creator)
 {
 	const std::vector<network::connection>::iterator itor =
 	             std::find(players_.begin(),players_.end(),player);
-	
+
 	if(itor != players_.end())
 		players_.erase(itor);
 
@@ -472,7 +472,7 @@ void game::remove_player(network::connection player, bool notify_creator)
 	}
 	if(!observer)
 		sides_.erase(player);
-	
+
 	send_user_list();
 
 	const player_map::const_iterator pl = player_info_->find(player);

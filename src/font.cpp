@@ -1,7 +1,7 @@
 /* $Id$ */
 /* vim:set encoding=utf-8: */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

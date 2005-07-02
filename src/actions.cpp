@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@comcast.net>
+   Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -598,7 +598,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		if(steadfast && resistance_modifier < 100) {
 			str_resist << ' ' << _(" (+steadfast)");
 		}
-		
+
 		str_resist << EMPTY_COLUMN
 		           << (resist > 0 ? "+" : "") << resist << '%';
 		strings->attack_calculations.push_back(str_resist.str());

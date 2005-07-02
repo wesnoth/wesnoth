@@ -137,7 +137,7 @@ void lobby::layout_children(const SDL_Rect& rect)
 	quit_game_.set_location(create_game_.location().x + create_game_.location().w + 5,yscale(7));
 
 	games_menu_.set_location(client_area().x, client_area().y + title().height());
-	games_menu_.set_measurements(client_area().w, client_area().h 
+	games_menu_.set_measurements(client_area().w, client_area().h
 			- title().height() - gui::ButtonVPadding);
 }
 
