@@ -282,8 +282,10 @@ std::string preprocessor_data::read_word()
 	std::string res;
 	for(;;) {
 		int c = in_->peek();
-		if (!in_->good() || utils::portable_isspace(c))
+		if (c == preprocessor_streambuf::traits_type::eof() || utils::portable_isspace(c)) {
+			// LOG_CF << "(" << res << ")\n";
 			return res;
+		}
 		in_->get();
 		res += (char)c;
 	}

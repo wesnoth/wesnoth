@@ -6,6 +6,9 @@ CVS HEAD:
    * changed Naga Warrior attack from 5-5 to 7-4
  * graphics and sound improvements:
    * new or revised images for Dark Sorcerer, Dwarvish Thunderguard, Necromancer
+ * WML improvements:
+   * #define's in user campaigns are now local to each campaign (patch 4138)
+   * preprocess files that do not end with a final newline correctly
 
 Version 0.9.3:
  * user interface improvements:
@@ -91,7 +94,7 @@ Version 0.9.3:
    * decreased Merman Netcaster hitpoints from 42 to 40
    * increased Merman Netcaster ranged attack from 7-2 to 9-2
    * increased Merman Fighter hitpoints from 32 to 36
-   * increased Merman Warrior hitpoints from 48 to 50 and attack from 7-4 to 8-4  
+   * increased Merman Warrior hitpoints from 48 to 50 and attack from 7-4 to 8-4
    * decreased Elvish defence in swamp from 40% to 30%
    * increased Elvish Shaman ranged attack from 3-2 to 4-2
    * decreased Elvish Shaman meele attack from 3-2 to 2-2
