@@ -1269,6 +1269,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				scoped_istream stream = preprocess_file("data/game.cfg", &defines_map);
 
 				std::string error_log, user_error_log;
+
 				read(cfg, *stream, &error_log);
 
 				//load user campaigns
@@ -1282,7 +1283,8 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 					}
 
 					try {
-						scoped_istream stream = preprocess_file(*uc,&defines_map);
+						preproc_map user_defines_map(defines_map);
+						scoped_istream stream = preprocess_file(*uc,&user_defines_map);
 
 						std::string campaign_error_log;
 
