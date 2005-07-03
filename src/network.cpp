@@ -96,7 +96,7 @@ void check_error()
 	if(sock) {
 		for(connection_map::const_iterator i = connections.begin(); i != connections.end(); ++i) {
 			if(i->second.sock == sock) {
-				throw network::error(_("Socket error"),i->first);
+				throw network::error(_("Client disconnected"),i->first);
 			}
 		}
 	}

@@ -10,8 +10,10 @@
 #include "SDL.h"
 
 #include "game.hpp"
+#include "filesystem.hpp"
 #include "input_stream.hpp"
 #include "metrics.hpp"
+#include "serialization/parser.hpp"
 #include "player.hpp"
 
 #include <algorithm>
@@ -69,7 +71,7 @@ void truncate_message(t_string& str)
 class server
 {
 public:
-	server(int port, input_stream& input);
+	server(int port, input_stream& input, const config& cfg);
 	void run();
 private:
 	void process_data(network::connection sock, config& data, config& gamelist);
@@ -88,6 +90,7 @@ private:
 	const network::manager net_manager_;
 	const network::server_manager server_;
 
+	config version_query_response_;
 	config login_response_;
 	config join_lobby_response_;
 
@@ -108,15 +111,40 @@ private:
 
 	metrics metrics_;
 
+	const config& cfg_;
+
+	std::set<std::string> accepted_versions_;
+	std::map<std::string,config> redirected_versions_; 
+
 	bool is_ip_banned(const std::string& ip);
 	std::string ban_ip(const std::string& mask);
 	std::vector<std::string> bans_;
 };
 
-server::server(int port, input_stream& input) : net_manager_(5), server_(port), not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input)
+server::server(int port, input_stream& input, const config& cfg) : net_manager_(5), server_(port),
+    not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input), cfg_(cfg)
 {
+	version_query_response_.add_child("version");
+
 	login_response_.add_child("mustlogin");
-	login_response_["version"] = game_config::version;
+
+	const std::string& versions = cfg_["versions_accepted"];
+	if(versions.empty() == false) {
+		const std::vector<std::string> accepted(utils::split(versions));
+		for(std::vector<std::string>::const_iterator i = accepted.begin(); i != accepted.end(); ++i) {
+			accepted_versions_.insert(*i);
+		}
+	} else {
+		accepted_versions_.insert(game_config::version);
+	}
+
+	const config::child_list& redirects = cfg_.get_children("redirect");
+	for(config::child_list::const_iterator i = redirects.begin(); i != redirects.end(); ++i) {
+		const std::vector<std::string> versions(utils::split((**i)["version"]));
+		for(std::vector<std::string>::const_iterator j = versions.begin(); j != versions.end(); ++j) {
+			redirected_versions_[*j] = **i;
+		}
+	}
 
 	join_lobby_response_.add_child("join_lobby");
 }
@@ -287,7 +315,7 @@ void server::run()
 				network::send_data(construct_error("You are banned."),sock);
 				network::disconnect(sock);
 			} else if(sock) {
-				network::send_data(login_response_,sock);
+				network::send_data(version_query_response_,sock);
 				not_logged_in_.add_player(sock);
 			}
 
@@ -364,6 +392,42 @@ void server::process_data(const network::connection sock, config& data, config& 
 
 void server::process_login(const network::connection sock, const config& data, config& gamelist)
 {
+	//see if client is sending their version number
+	const config* const version = data.child("version");
+	if(version != NULL) {
+		const std::string& version_str = (*version)["version"];
+
+		if(accepted_versions_.count(version_str)) {
+			std::cerr << "player joined using accepted version " << version_str << ": telling them to log in\n";
+			network::send_data(login_response_,sock);
+		} else {
+			const std::map<std::string,config>::const_iterator i = redirected_versions_.find(version_str);
+			if(i != redirected_versions_.end()) {
+				std::cerr << "player joined using version " << version_str << ": redirecting them to "
+				          << i->second["host"] << ":" << i->second["port"] << "\n";
+				config response;
+				response.add_child("redirect",i->second);
+				network::send_data(response,sock);
+			} else {
+				std::cerr << "player joined using unknown version " << version_str << ": rejecting them\n";
+				config response;
+				if(accepted_versions_.empty() == false) {
+					response["version"] = *accepted_versions_.begin();
+				} else if(redirected_versions_.empty() == false) {
+					response["version"] = redirected_versions_.begin()->first;
+				} else {
+					std::cerr << "this server doesn't accept any versions at all\n";
+					response["version"] = "null";
+				}
+
+				network::send_data(response,sock);
+			}
+		}
+		
+		return;
+	}
+
+
 	const config* const login = data.child("login");
 
 	//client must send a login first.
@@ -889,6 +953,8 @@ int main(int argc, char** argv)
 
 	network::set_default_send_size(4096);
 
+	config configuration;
+
 #ifndef FIFODIR
 # define FIFODIR "/var/run/wesnothd"
 #endif
@@ -900,7 +966,20 @@ int main(int argc, char** argv)
 			continue;
 		}
 
-		if((val == "--max_packet_size" || val == "-m") && arg+1 != argc) {
+		if((val == "--config" || val == "-c") && arg+1 != argc) {
+			scoped_istream stream = istream_file(argv[++arg]);
+
+			std::string errors;
+			try {
+				read(configuration,*stream,&errors);
+				if(errors.empty() == false) {
+					std::cerr << "WARNING: errors reading configuration file: " << errors << "\n";
+				}
+			} catch(config::error& e) {
+				std::cerr << "ERROR: could not read configuration file: '" << e.message << "'\n";
+				return -1;
+			}
+		} else if((val == "--max_packet_size" || val == "-m") && arg+1 != argc) {
 			network::set_default_send_size(size_t(atoi(argv[++arg])));
 		}
 		else if((val == "--port" || val == "-p") && arg+1 != argc) {
@@ -944,7 +1023,7 @@ int main(int argc, char** argv)
 	input_stream input(fifo_path);
 
 	try {
-		server(port,input).run();
+		server(port,input,configuration).run();
 	} catch(network::error& e) {
 		std::cerr << "caught network error while server was running. aborting.: " << e.message << "\n";
 		return -1;
