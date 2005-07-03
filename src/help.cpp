@@ -1198,9 +1198,9 @@ public:
 
 			table.push_back(first_row);
 			for (std::set<std::string>::const_iterator terrain_it =
-					 preferences::encountered_terrains().begin(),
-				 terrain_end = preferences::encountered_terrains().end();
-				 terrain_it != terrain_end; terrain_it++) {
+				  preferences::encountered_terrains().begin(),
+				  terrain_end = preferences::encountered_terrains().end();
+				  terrain_it != terrain_end; terrain_it++) {
 				wassert(terrain_it->size() > 0);
 				const gamemap::TERRAIN terrain = (*terrain_it)[0];
 				if (terrain == gamemap::FOGGED || terrain == gamemap::VOID_TERRAIN)
@@ -1292,7 +1292,7 @@ struct terrain_topic_generator: topic_generator
 			const std::string aliased_terrains = type.type();
 			std::stringstream alias_ss;
 			for (std::string::const_iterator it = aliased_terrains.begin();
-				 it != aliased_terrains.end(); it++) {
+				  it != aliased_terrains.end(); it++) {
 				const gamemap::TERRAIN t = *it;
 				const std::string &alias_name = map->get_terrain_info(t).name();
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
