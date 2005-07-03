@@ -877,9 +877,10 @@ std::vector<topic> generate_topics(const std::string &generator)
 	else if (generator == "weapon_specials") {
 		res = generate_weapon_special_topics();
 	}
-	else if (generator == "terrains") {
-		res = generate_terrains_topics();
-	}
+//  terrain topics removed for now, since they aren't release-quality
+//	else if (generator == "terrains") {
+//		res = generate_terrains_topics();
+//	}
 	std::sort(res.begin(), res.end(), title_less());
 	return res;
 }
