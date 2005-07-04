@@ -1,7 +1,8 @@
 CVS HEAD:
  * language and i18n:
    * fixed help description of income and upkeep (#13565)
-   * fixed mistakes in several unit descriptions
+   * updated several unit descriptions
+   * document that Woses receive no traits (#13630)
  * unit balancing and modifications:
    * changed Naga Warrior attack from 5-5 to 7-4
  * graphics and sound improvements:
@@ -9,6 +10,7 @@ CVS HEAD:
  * WML improvements:
    * #define's in user campaigns are now local to each campaign (patch 4138)
    * preprocess files that do not end with a final newline correctly
+ * server now supports redirection based on client version number
 
 Version 0.9.3:
  * user interface improvements:
