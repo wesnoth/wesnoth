@@ -565,6 +565,7 @@ bool game_controller::play_multiplayer_mode()
 	}
 
 	try {
+		state_.snapshot = level;
 		::play_game(disp(),state_,game_config_,units_data_,video_);
 		//play_level(units_data_,game_config_,&level,video_,state_,story);
 	} catch(game::error& e) {
