@@ -26,6 +26,7 @@ struct size_specs {
 	size_t terrain_size;
 	size_t terrain_padding;
 	size_t terrain_space;
+	size_t terrain_width;
 	size_t palette_x;
 	size_t palette_y;
 	size_t palette_h;
