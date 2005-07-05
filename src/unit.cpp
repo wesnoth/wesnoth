@@ -119,7 +119,7 @@ unit::unit(const unit_type* t, const unit& u) :
 	gender_(u.gender_), variation_(u.variation_),
 	type_(&t->get_gender_unit_type(u.gender_).get_variation(u.variation_)),
 	state_(STATE_NORMAL),
-	hitpoints_(type_->hitpoints()),
+	hitpoints_(u.hitpoints()),
 	maxHitpoints_(type_->hitpoints()),
 	backupMaxHitpoints_(type_->hitpoints()),
 	experience_(0),
@@ -144,7 +144,9 @@ unit::unit(const unit_type* t, const unit& u) :
 
 	//apply modifications etc, refresh the unit
 	apply_modifications();
-	heal_all();
+	if(u.type().id()!=t->id()){
+	  heal_all();
+	}
 	statusFlags_.clear();
 }
 
