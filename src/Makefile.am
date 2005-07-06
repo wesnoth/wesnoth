@@ -417,7 +417,9 @@ wesnothd_SOURCES = \
 	thread.cpp \
 	tstring.cpp \
 	serialization/binary_wml.cpp \
+	serialization/parser.cpp \
 	serialization/string_utils.cpp \
+	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp \
 	server/game.hpp \
 	server/input_stream.hpp \
