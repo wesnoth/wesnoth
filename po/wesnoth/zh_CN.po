@@ -1,17 +1,76 @@
+# translation of wesnoth.po to
 # Chinese translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
-# Lim Choon Kiat <lim@singindustry.com>, 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-03 14:53+0200\n"
-"PO-Revision-Date: 2005-05-18 18:21+0800\n"
-"Last-Translator: Lim Choon Kiat <lim@singindustry.com>\n"
-"Language-Team:  <zh@li.org>\n"
+"PO-Revision-Date: 2005-07-09 09:53+0800\n"
+"Last-Translator: \n"
+"Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,8 +85,9 @@ msgid "Binary Saves"
 msgstr ""
 
 #: data/game.cfg:37
+#, fuzzy
 msgid "Show Combat"
-msgstr ""
+msgstr "战斗"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -178,6 +238,10 @@ msgid ""
 "standard 20 gold and presents you with a list of all surviving units from "
 "previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"在接下来的场景，您可宣回早些场景的生还者。宣将除了宣将一律20金币以外，有如征"
+"兵，呈现您早些场景的生还者。"
 
 #: data/help.cfg:87
 msgid ""
@@ -187,10 +251,14 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"要记得，每个单位不止要金币征或宣，还需要维持费。可观"
+"<ref>dst=income_and_upkeep text='收入与维持费'</ref>"
 
 #: data/help.cfg:92 src/help.cpp:1196
 msgid "Movement"
-msgstr ""
+msgstr "移动单位"
 
 #: data/help.cfg:93
 msgid ""
@@ -201,6 +269,9 @@ msgid ""
 "number of turns required to reach it, and clicking will cause the unit to "
 "move towards it by the fastest route over this and subsequent turns."
 msgstr ""
+"魏诺的单位移动很简单。只需选你要的单位，再选目的地就行。当单位被选时，该单位"
+"可移动的范围就会亮起来，而进不了的地区就变灰色。将电鼠越过灰色地区，抵达目的"
+"地的步数就会显示出来。选此格子就会在最短的路线抵达目的地。"
 
 #: data/help.cfg:95
 msgid ""
@@ -216,6 +287,13 @@ msgid ""
 "it, selecting Unit Description, and then look at <italic>text='Terrain "
 "Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"每个单位有个自固定的步数。这些步数将在移进不同的地形时被分析。举个例子，几乎"
+"每次进入草地时，只消耗1步数。进入其他格子的消费在于单位－例如进入森林把，精灵"
+"只消耗1步数，人类和半兽妖消耗2步数，而骑士则消耗3步数。如要获悉某个单位进入某"
+"个地形的步数消耗，只需左选单位，再选《描述单位》，然后阅读<italic>text='地形"
+"改造'</italic>。"
 
 #: data/help.cfg:97
 msgid ""
@@ -228,10 +306,15 @@ msgid ""
 "as only <ref>dst=ability_skirmisher text='Skirmishers'</ref> can ignore "
 "zones of control."
 msgstr ""
+"\n"
+"\n"
+"移动时，要警记的是“区域控制权”。每个单位都控制他旁边周围的格子，导致敌军如进"
+"入那些格子，就马上没有步数。学习如何利用区域控制权，是玩魏诺的一个重点，应"
+"为，只有<ref>dst=ability_skirmisher text='行刺者'</ref>不受区域控制权的影响。"
 
 #: data/help.cfg:102
 msgid "Combat"
-msgstr ""
+msgstr "战斗"
 
 #: data/help.cfg:103
 msgid ""
@@ -242,6 +325,9 @@ msgid ""
 "Combat is relatively straightforward; the attacker and defender alternate "
 "attacks until each has used their allotted number of attacks."
 msgstr ""
+"“魏诺之战”有两种战式，近击和远击，都只能在双方站在个旁，才能进行。近击的武器"
+"通常是剑、斧或爪，远击通用武器有弓箭、枪或火球。站式很直接，进攻者和防卫者个"
+"轮流攻打对方，直到个方的攻打次数消耗掉。"
 
 #: data/help.cfg:105
 msgid ""
@@ -249,6 +335,9 @@ msgid ""
 "\n"
 "<header>text='Order and number of attacks'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='攻打次序与次数'</header>"
 
 #: data/help.cfg:107
 msgid ""
@@ -260,6 +349,11 @@ msgid ""
 "5-4 sword attack may make 4 swings each dealing 5 damage, while an Orcish "
 "Grunt with 9-2 can only make 2 swings (but at 9 damage each)."
 msgstr ""
+"\n"
+"\n"
+"进攻者有权先攻击，然后防卫者反击。此攻击、反击次序继续到个方消耗全部的攻打数"
+"量。不同的单位有不同的攻打数量。举个例子，精灵战士5－4剑击可打4次，每次击中损"
+"敌5分，而半兽妖孺9－2可打2次（但每次击中损敌9分）。"
 
 #: data/help.cfg:109
 msgid ""
@@ -267,6 +361,9 @@ msgid ""
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='击中的比例'</header>"
 
 #: data/help.cfg:111
 msgid ""
@@ -280,6 +377,12 @@ msgid ""
 "30% chance of hitting them. Conversely, the elf's chance of hitting the "
 "attacker in return depends on what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"除了两个特别因素以外，击中敌方的比例，全靠他所立地形的防卫能力。要阅读此资料"
+"只需左选单位，再选《描述单位》，然后阅读<italic>text='地形改造'</italic>。举"
+"个例子，精灵大多数在森林里有70％防卫力，这表示进攻者只有30％击中能力。同样"
+"的，此精灵击中进攻者的可能性，在于进攻者所立的地形。"
 
 #: data/help.cfg:112
 msgid ""
@@ -290,6 +393,10 @@ msgid ""
 "regardless of terrain, and, when used offensively, Marksmen always have at "
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"有两个例外的因素：<ref>dst=weaponspecial_magical text='圣术攻击'</ref> 和 "
+"<ref>dst=weaponspecial_marksman text=神枪手</ref>。‘圣术攻击’不论什么地形，都"
+"有70％击中能力，而神枪手如是宣战者，也不论什么地形，有最少60％的击中能力。"
 
 #: data/help.cfg:114
 msgid ""
