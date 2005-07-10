@@ -265,50 +265,52 @@ bool game_controller::init_video()
 
 	std::pair<int,int> resolution = preferences::resolution();
 
+	const int DefaultBPP = 24;
+
 	std::cerr << "Checking video mode: " << resolution.first
-		  << "x" << resolution.second << "x16...\n";
-	int bpp = video_.modePossible(resolution.first,resolution.second,16,video_flags);
+		  << "x" << resolution.second << "x" << DefaultBPP << "...\n";
+	int bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
 
 	std::cerr << bpp << "\n";
 
 	if(bpp == 0) {
 		//Video mode not supported, maybe from bad prefs.
 		std::cerr << "Video mode " << resolution.first
-		          << "x" << resolution.second << "x16 "
-		          << "is not supported - attempting 1024x768x16...\n";
+		          << "x" << resolution.second << "x" << DefaultBPP << " "
+		          << "is not supported - attempting 1024x768x" << DefaultBPP << "...\n";
 
 		//Attempt 1024x768.
 		resolution.first = 1024;
 		resolution.second = 768;
 
-		bpp = video_.modePossible(resolution.first,resolution.second,16,video_flags);
+		bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
 
 		if(bpp == 0) {
-			std::cerr << "1024x768x16 not available - attempting 800x600x16...\n";
+			std::cerr << "1024x768x" << DefaultBPP << " not available - attempting 800x600x" << DefaultBPP << "...\n";
 
 			resolution.first = 800;
 			resolution.second = 600;
 
-			bpp = video_.modePossible(resolution.first,resolution.second,16,video_flags);
+			bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
 		}
 
 #ifdef USE_TINY_GUI
 		if(bpp == 0) {
-			std::cerr << "800x600x16 not available - attempting 640x480x16...\n";
+			std::cerr << "800x600x" << DefaultBPP << " not available - attempting 640x480x" << DefaultBPP << "...\n";
 
 			resolution.first = 640;
 			resolution.second = 480;
 
-			bpp = video_.modePossible(resolution.first,resolution.second,16,video_flags);
+			bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
 		}
 
 		if(bpp == 0) {
-			std::cerr << "640x480x16 not available - attempting 320x240x16...\n";
+			std::cerr << "640x480x" << DefaultBPP << " not available - attempting 320x240x" << DefaultBPP << "...\n";
 
 			resolution.first = 320;
 			resolution.second = 240;
 
-			bpp = video_.modePossible(resolution.first,resolution.second,16,video_flags);
+			bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
 		}
 #endif
 
@@ -316,12 +318,12 @@ bool game_controller::init_video()
 			//couldn't do 1024x768 or 800x600
 
 			std::cerr << "The required video mode, " << resolution.first
-			          << "x" << resolution.second << "x16 "
+			          << "x" << resolution.second << "x" << DefaultBPP << " "
 			          << "is not supported\n";
 
 			if((video_flags&FULL_SCREEN) != 0) {
 				std::cerr << "Try running the program with the --windowed option "
-				          << "using a 16bpp X windows setting\n";
+				          << "using a " << DefaultBPP << "bpp X windows setting\n";
 			}
 
 			if((video_flags&FULL_SCREEN) == 0) {
