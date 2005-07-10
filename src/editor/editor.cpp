@@ -303,12 +303,22 @@ void map_editor::edit_save_as() {
 	const std::string default_dir =
 		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
 	std::string input_name = filename_.empty() ? default_dir : filename_;
+	const std::string old_input_name = input_name;
+	
 	int res = 0;
-	int overwrite = 0;
+	int overwrite = 1;
 	do {
+		input_name = old_input_name;
 		res = dialogs::show_file_chooser_dialog(gui_, input_name, _("Save the Map As"));
 		if (res == 0) {
-			if (file_exists(input_name)) {
+
+			// Check whether the filename contains illegal characters
+			if(!verify_filename(input_name, true))
+			{
+				input_name = old_input_name;
+				continue;	
+			}
+			else if (file_exists(input_name)) {
 				overwrite = gui::show_dialog(gui_, NULL, "",
 					_("The map already exists. Do you want to overwrite it?"),
 					gui::YES_NO);
@@ -318,9 +328,14 @@ void map_editor::edit_save_as() {
 		}
 	} while (res == 0 && overwrite != 0);
 
+	// Try to save the map, if it fails we reset the filename.
 	if (res == 0) {
+		std::string old_file_name = filename_;
 		set_file_to_save_as(input_name);
-		save_map("", true);
+		if(!save_map("", true))
+		{
+			filename_ = old_file_name;
+		}
 	}
 }
 
@@ -386,6 +401,11 @@ void map_editor::edit_load_map() {
 		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/") : filename_;
 	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a Map to Load"));
 	if (res == 0) {
+		// Check if the mapname contains any illegal characters
+		if(!verify_filename(fn, false))	{
+			gui::show_dialog(gui_, NULL, "", _("Warning: Illegal characters found in the map name. You've to save under a different name."), gui::OK_ONLY);
+		}
+		
 		std::string new_map;
 		try {
 			new_map = load_map(fn);
@@ -1024,6 +1044,14 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 	else {
 		filename_ = filename;
 	}
+
+	// Check if the filename is correct before saving. We do this 
+	// twice (also in the 'save as' routine), because a file might
+	// already contain illegal characters if loaded.
+	if(!verify_filename(filename, display_confirmation)) {
+		return false;
+	}
+	
 	try {
 		write_file(filename, map_.write());
 		num_operations_since_save_ = 0;
@@ -1042,6 +1070,19 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 	return true;
 }
 
+bool map_editor::verify_filename(const std::string& filename, bool show_error) const
+{
+	static const std::string allowed_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_/\\.";
+	static const std::string prefix = "\\/";
+	std::size_t start_pos = filename.find_first_of(prefix);
+	
+	if(filename.find_first_not_of(allowed_characters, start_pos) != std::string::npos) {
+		if(show_error) {
+			gui::show_dialog(gui_, NULL, "", _("Error: Illegal character in filename."), gui::OK_ONLY);
+		}
+		return false;
+	}
+}
 void map_editor::show_menu(const std::vector<std::string>& items_arg, const int xloc,
 						   const int yloc, const bool /*context_menu*/) {
 	std::vector<std::string> items = items_arg;
