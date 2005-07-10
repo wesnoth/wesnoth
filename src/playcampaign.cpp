@@ -127,7 +127,9 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 		bool save_game_after_scenario = true;
 
 		try {
-			state.label = (*scenario)["name"];
+			// preserve old label eg. replay
+			if (state.label.empty())
+				state.label = (*scenario)["name"];
 
 			LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story);
 
@@ -138,7 +140,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				const std::string orig_scenario = state.scenario;
 				state.scenario = current_scenario;
 
-				std::string label = state.label + " replay";
+				std::string label = state.label + _(" replay");
 
 				bool retry = true;
 
