@@ -1082,6 +1082,8 @@ bool map_editor::verify_filename(const std::string& filename, bool show_error) c
 		}
 		return false;
 	}
+
+	return true;
 }
 void map_editor::show_menu(const std::vector<std::string>& items_arg, const int xloc,
 						   const int yloc, const bool /*context_menu*/) {
