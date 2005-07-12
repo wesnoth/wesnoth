@@ -440,7 +440,10 @@ std::istream *istream_file(std::string const &fname)
 
 	// FIXME: why do we rely on this even with relative paths ?
 	// still useful with zipios, for things like cache and prefs
-	return new std::ifstream(fname.c_str(),std::ios_base::binary);
+	std::istream *s = new std::ifstream(fname.c_str(), std::ios_base::binary);
+	if (s->fail())
+		ERR_FS << "streaming " << fname << " failed.\n";
+	return s;
 }
 
 std::string read_file(std::string const &fname)
