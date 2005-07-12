@@ -93,6 +93,7 @@ const token& tokenizer::next_token()
 				next_char();
 			if (current_ == 254) {
 				skip_comment();
+				--lineno_;
 				continue;
 			}
 
