@@ -87,13 +87,10 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
 	: current_(NULL), defines_(def), textdomain_(PACKAGE),
 	  depth_(0), quoted_(false)
 {
-	if(defines_ == NULL) {
-		defines_ = &default_defines_;
-	}
 }
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: current_(NULL), defines_(t.defines_),
+	: std::streambuf(), current_(NULL), defines_(t.defines_),
 	  textdomain_(PACKAGE), depth_(t.depth_), quoted_(t.quoted_)
 {
 }
@@ -716,15 +713,36 @@ bool preprocessor_data::get_chunk()
 struct preprocessor_deleter: std::basic_istream<char>
 {
 	preprocessor_streambuf *buf_;
-	preprocessor_deleter(preprocessor_streambuf *buf) : std::basic_istream<char>(buf), buf_(buf) {}
-	~preprocessor_deleter() { rdbuf(NULL); delete buf_; }
+	preproc_map *defines_;
+	preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines);
+	~preprocessor_deleter();
 };
+
+preprocessor_deleter::preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines)
+	: std::basic_istream<char>(buf), buf_(buf), defines_(defines)
+{
+}
+
+preprocessor_deleter::~preprocessor_deleter()
+{
+	rdbuf(NULL);
+	delete buf_;
+	delete defines_;
+}
+
 
 std::istream *preprocess_file(std::string const &fname,
                               preproc_map *defines)
 {
 	log_scope("preprocessing file...");
+	preproc_map *owned_defines = NULL;
+	if (!defines) {
+		// if no preproc_map has been given, create a new one, and ensure
+		// it is destroyed when the stream is by giving it to the deleter
+		owned_defines = new preproc_map;
+		defines = owned_defines;
+	}
 	preprocessor_streambuf *buf = new preprocessor_streambuf(defines);
 	new preprocessor_file(*buf, fname);
-	return new preprocessor_deleter(buf);
+	return new preprocessor_deleter(buf, owned_defines);
 }
