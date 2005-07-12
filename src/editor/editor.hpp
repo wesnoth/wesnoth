@@ -169,7 +169,7 @@ private:
 	void set_starting_position(const int player, const gamemap::location loc);
 
 	/// Check whether the filename contains illegal characters.
-	bool map_editor::verify_filename(const std::string& filename, bool show_error) const;
+	bool verify_filename(const std::string& filename, bool show_error) const;
 	
 	/// Display a menu with given items and at the given location.
 	void show_menu(const std::vector<std::string>& items_arg, const int xloc,
