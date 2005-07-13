@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 0.8.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-10 19:36+0200\n"
+"POT-Creation-Date: 2005-07-13 18:40+0200\n"
 "PO-Revision-Date: 2005-04-01 16:05+0200\n"
 "Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
 "Language-Team: Latin\n"
@@ -25,75 +25,69 @@ msgstr "Archivum"
 msgid "Edit"
 msgstr "Recensere"
 
-#: data/themes/editor.cfg:242
-msgid "Draw"
-msgstr "Pingere"
-
-#: data/themes/editor.cfg:251
-msgid "Flood"
-msgstr "Inundare"
-
-#: data/themes/editor.cfg:260
-msgid "Start P"
-msgstr "Pos. Init."
-
-#: data/themes/editor.cfg:269
-msgid "Paste"
-msgstr "Glutinare"
-
-#: src/editor/editor.cpp:309
+#: src/editor/editor.cpp:312
 msgid "Save the Map As"
 msgstr "Charta Servare Ut"
 
-#: src/editor/editor.cpp:313
+#: src/editor/editor.cpp:323
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Charta iam adest. Visne eam superscribere?"
 
-#: src/editor/editor.cpp:334
+#: src/editor/editor.cpp:349
 msgid "Which Player?"
 msgstr "Qualis lusor?"
 
-#: src/editor/editor.cpp:335
+#: src/editor/editor.cpp:350
 msgid "Which player should start here?"
 msgstr "Qualis lusor hic incipere debet?"
 
-#: src/editor/editor.cpp:387
+#: src/editor/editor.cpp:402
 msgid "Choose a Map to Load"
 msgstr "Chartam Restituendam Eligire"
 
-#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
+#: src/editor/editor.cpp:406
+msgid ""
+"Warning: Illegal characters found in the map name. You've to save under a "
+"different name."
+msgstr ""
+
+#: src/editor/editor.cpp:424 src/editor/editor.cpp:503
 msgid "The file does not contain a valid map."
 msgstr "Archivum chartam validam non continet."
 
-#: src/editor/editor.cpp:545
+#: src/editor/editor.cpp:565
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' non adest aut legi non potest."
 
-#: src/editor/editor.cpp:557
+#: src/editor/editor.cpp:577
 msgid "Load failed: "
 msgstr "Restitutio fefellit: "
 
-#: src/editor/editor.cpp:753
+#: src/editor/editor.cpp:773
 msgid "You must have a hex selected on the board."
 msgstr "Debes hexagonem in tabula eligere."
 
-#: src/editor/editor.cpp:1002
+#: src/editor/editor.cpp:1022
 msgid "Quit Editor"
 msgstr "Recensorem Relinquere"
 
-#: src/editor/editor.cpp:1007
+#: src/editor/editor.cpp:1027
 msgid "Do you want to save the map before quitting?"
 msgstr "Visne chartam servarve priusquam reliqueris?"
 
-#: src/editor/editor.cpp:1031
+#: src/editor/editor.cpp:1059
 msgid "Map saved."
 msgstr "Charta servata."
 
-#: src/editor/editor.cpp:1038
+#: src/editor/editor.cpp:1066
 msgid "Could not save the map: $msg"
 msgstr "Charta non servare potest: $msg"
 
-#: src/editor/editor.cpp:1094
+#: src/editor/editor.cpp:1081
+msgid "Error: Illegal character in filename."
+msgstr ""
+
+#: src/editor/editor.cpp:1137
 msgid "Player"
 msgstr "Lusor"
 
@@ -183,11 +177,11 @@ msgstr "Axis υ"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Volvi (hoc dimensiones chartae mutare potest)"
 
-#: src/editor/editor_palettes.cpp:316
+#: src/editor/editor_palettes.cpp:311
 msgid "FG"
 msgstr "Eminentia"
 
-#: src/editor/editor_palettes.cpp:318
+#: src/editor/editor_palettes.cpp:313
 msgid "BG"
 msgstr "Recessus"
 
@@ -198,6 +192,18 @@ msgstr "Pligam Delere"
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Deletio pligae fallitur."
+
+#~ msgid "Draw"
+#~ msgstr "Pingere"
+
+#~ msgid "Flood"
+#~ msgstr "Inundare"
+
+#~ msgid "Start P"
+#~ msgstr "Pos. Init."
+
+#~ msgid "Paste"
+#~ msgstr "Glutinare"
 
 #~ msgid "Ok"
 #~ msgstr "Bene"

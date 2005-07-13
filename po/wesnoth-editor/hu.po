@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-10 19:36+0200\n"
+"POT-Creation-Date: 2005-07-13 18:40+0200\n"
 "PO-Revision-Date: 2005-05-29 13:09+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -20,75 +20,69 @@ msgstr "Fájl"
 msgid "Edit"
 msgstr "Szerkeszt"
 
-#: data/themes/editor.cfg:242
-msgid "Draw"
-msgstr "Rajzol"
-
-#: data/themes/editor.cfg:251
-msgid "Flood"
-msgstr "Kitölt"
-
-#: data/themes/editor.cfg:260
-msgid "Start P"
-msgstr "Kezdőpont"
-
-#: data/themes/editor.cfg:269
-msgid "Paste"
-msgstr "Beillesztés"
-
-#: src/editor/editor.cpp:309
+#: src/editor/editor.cpp:312
 msgid "Save the Map As"
 msgstr "Mentés másként"
 
-#: src/editor/editor.cpp:313
+#: src/editor/editor.cpp:323
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "A pálya már létezik. Felül akarod írni?"
 
-#: src/editor/editor.cpp:334
+#: src/editor/editor.cpp:349
 msgid "Which Player?"
 msgstr "Melyik játékos?"
 
-#: src/editor/editor.cpp:335
+#: src/editor/editor.cpp:350
 msgid "Which player should start here?"
 msgstr "Melyik játékos kezdjen itt?"
 
-#: src/editor/editor.cpp:387
+#: src/editor/editor.cpp:402
 msgid "Choose a Map to Load"
 msgstr "Válaszd ki a betöltendő pályát"
 
-#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
+#: src/editor/editor.cpp:406
+msgid ""
+"Warning: Illegal characters found in the map name. You've to save under a "
+"different name."
+msgstr ""
+
+#: src/editor/editor.cpp:424 src/editor/editor.cpp:503
 msgid "The file does not contain a valid map."
 msgstr "A fájl nem tartalmaz érvényes pályát"
 
-#: src/editor/editor.cpp:545
+#: src/editor/editor.cpp:565
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' nem létezik, vagy nem olvasható."
 
-#: src/editor/editor.cpp:557
+#: src/editor/editor.cpp:577
 msgid "Load failed: "
 msgstr "Betöltés sikertelen:"
 
-#: src/editor/editor.cpp:753
+#: src/editor/editor.cpp:773
 msgid "You must have a hex selected on the board."
 msgstr "Ki kell jelölnöd egy hatszöget a táblán"
 
-#: src/editor/editor.cpp:1002
+#: src/editor/editor.cpp:1022
 msgid "Quit Editor"
 msgstr "Kilépés a szerkesztőből"
 
-#: src/editor/editor.cpp:1007
+#: src/editor/editor.cpp:1027
 msgid "Do you want to save the map before quitting?"
 msgstr "El akarod menteni a pályát kilépés előtt?"
 
-#: src/editor/editor.cpp:1031
+#: src/editor/editor.cpp:1059
 msgid "Map saved."
 msgstr "Pálya elmentve."
 
-#: src/editor/editor.cpp:1038
+#: src/editor/editor.cpp:1066
 msgid "Could not save the map: $msg"
 msgstr "A pályát nem lehet elmenteni: $msg"
 
-#: src/editor/editor.cpp:1094
+#: src/editor/editor.cpp:1081
+msgid "Error: Illegal character in filename."
+msgstr ""
+
+#: src/editor/editor.cpp:1137
 msgid "Player"
 msgstr "Játékos"
 
@@ -176,11 +170,11 @@ msgstr "Y-tengely"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Tükrözés (ez megváltoztathatja a pálya méreteit):"
 
-#: src/editor/editor_palettes.cpp:316
+#: src/editor/editor_palettes.cpp:311
 msgid "FG"
 msgstr "Bal gomb"
 
-#: src/editor/editor_palettes.cpp:318
+#: src/editor/editor_palettes.cpp:313
 msgid "BG"
 msgstr "Jobb gomb"
 
@@ -191,6 +185,18 @@ msgstr "Fájl törlése"
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "A fájl törlése sikertelen"
+
+#~ msgid "Draw"
+#~ msgstr "Rajzol"
+
+#~ msgid "Flood"
+#~ msgstr "Kitölt"
+
+#~ msgid "Start P"
+#~ msgstr "Kezdőpont"
+
+#~ msgid "Paste"
+#~ msgstr "Beillesztés"
 
 #~ msgid "Ok"
 #~ msgstr "Oké"

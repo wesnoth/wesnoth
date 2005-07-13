@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-10 19:36+0200\n"
+"POT-Creation-Date: 2005-07-13 18:40+0200\n"
 "PO-Revision-Date: 2005-05-30 11:15+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
@@ -19,75 +19,69 @@ msgstr "File"
 msgid "Edit"
 msgstr "Edit"
 
-#: data/themes/editor.cfg:242
-msgid "Draw"
-msgstr "Draw"
-
-#: data/themes/editor.cfg:251
-msgid "Flood"
-msgstr "Flood"
-
-#: data/themes/editor.cfg:260
-msgid "Start P"
-msgstr "Start Position"
-
-#: data/themes/editor.cfg:269
-msgid "Paste"
-msgstr "Paste"
-
-#: src/editor/editor.cpp:309
+#: src/editor/editor.cpp:312
 msgid "Save the Map As"
 msgstr "Save the Map As"
 
-#: src/editor/editor.cpp:313
+#: src/editor/editor.cpp:323
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "The map already exists. Do you want to overwrite it?"
 
-#: src/editor/editor.cpp:334
+#: src/editor/editor.cpp:349
 msgid "Which Player?"
 msgstr "Which Player?"
 
-#: src/editor/editor.cpp:335
+#: src/editor/editor.cpp:350
 msgid "Which player should start here?"
 msgstr "Which player should start here?"
 
-#: src/editor/editor.cpp:387
+#: src/editor/editor.cpp:402
 msgid "Choose a Map to Load"
 msgstr "Choose a Map to Load"
 
-#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
+#: src/editor/editor.cpp:406
+msgid ""
+"Warning: Illegal characters found in the map name. You've to save under a "
+"different name."
+msgstr ""
+
+#: src/editor/editor.cpp:424 src/editor/editor.cpp:503
 msgid "The file does not contain a valid map."
 msgstr "The file does not contain a valid map."
 
-#: src/editor/editor.cpp:545
+#: src/editor/editor.cpp:565
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' does not exist or can not be read as a file."
 
-#: src/editor/editor.cpp:557
+#: src/editor/editor.cpp:577
 msgid "Load failed: "
 msgstr "Load failed: "
 
-#: src/editor/editor.cpp:753
+#: src/editor/editor.cpp:773
 msgid "You must have a hex selected on the board."
 msgstr "You must have a hex selected on the board."
 
-#: src/editor/editor.cpp:1002
+#: src/editor/editor.cpp:1022
 msgid "Quit Editor"
 msgstr "Quit Editor"
 
-#: src/editor/editor.cpp:1007
+#: src/editor/editor.cpp:1027
 msgid "Do you want to save the map before quitting?"
 msgstr "Do you want to save the map before quitting?"
 
-#: src/editor/editor.cpp:1031
+#: src/editor/editor.cpp:1059
 msgid "Map saved."
 msgstr "Map saved."
 
-#: src/editor/editor.cpp:1038
+#: src/editor/editor.cpp:1066
 msgid "Could not save the map: $msg"
 msgstr "Could not save the map: $msg"
 
-#: src/editor/editor.cpp:1094
+#: src/editor/editor.cpp:1081
+msgid "Error: Illegal character in filename."
+msgstr ""
+
+#: src/editor/editor.cpp:1137
 msgid "Player"
 msgstr "Player"
 
@@ -175,11 +169,11 @@ msgstr "Y-Axis"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Flip around (this may change the dimensions of the map):"
 
-#: src/editor/editor_palettes.cpp:316
+#: src/editor/editor_palettes.cpp:311
 msgid "FG"
 msgstr "FG"
 
-#: src/editor/editor_palettes.cpp:318
+#: src/editor/editor_palettes.cpp:313
 msgid "BG"
 msgstr "BG"
 
@@ -190,3 +184,15 @@ msgstr "Delete File"
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Deletion of the file failed."
+
+#~ msgid "Draw"
+#~ msgstr "Draw"
+
+#~ msgid "Flood"
+#~ msgstr "Flood"
+
+#~ msgid "Start P"
+#~ msgstr "Start Position"
+
+#~ msgid "Paste"
+#~ msgstr "Paste"

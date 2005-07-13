@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-05-10 19:36+0200\n"
+"POT-Creation-Date: 2005-07-13 18:40+0200\n"
 "PO-Revision-Date: 2004-09-11 12:08+0200\n"
 "Last-Translator: Mathias Bundgaard Svensson <freaken@freaken.dk>\n"
 "Language-Team:  <da@li.org>\n"
@@ -26,75 +26,69 @@ msgstr "Fil"
 msgid "Edit"
 msgstr "Edit"
 
-#: data/themes/editor.cfg:242
-msgid "Draw"
-msgstr "Tegn"
-
-#: data/themes/editor.cfg:251
-msgid "Flood"
-msgstr "Fyld"
-
-#: data/themes/editor.cfg:260
-msgid "Start P"
-msgstr "Lejr"
-
-#: data/themes/editor.cfg:269
-msgid "Paste"
-msgstr "Sæt Ind"
-
-#: src/editor/editor.cpp:309
+#: src/editor/editor.cpp:312
 msgid "Save the Map As"
 msgstr ""
 
-#: src/editor/editor.cpp:313
+#: src/editor/editor.cpp:323
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Banen findes allerede. Vil du overskrive den?"
 
-#: src/editor/editor.cpp:334
+#: src/editor/editor.cpp:349
 msgid "Which Player?"
 msgstr "Hvilken Spiller?"
 
-#: src/editor/editor.cpp:335
+#: src/editor/editor.cpp:350
 msgid "Which player should start here?"
 msgstr "Hvilken spiller skal starte her?"
 
-#: src/editor/editor.cpp:387
+#: src/editor/editor.cpp:402
 msgid "Choose a Map to Load"
 msgstr "Vælg en Bane at Hente"
 
-#: src/editor/editor.cpp:404 src/editor/editor.cpp:483
+#: src/editor/editor.cpp:406
+msgid ""
+"Warning: Illegal characters found in the map name. You've to save under a "
+"different name."
+msgstr ""
+
+#: src/editor/editor.cpp:424 src/editor/editor.cpp:503
 msgid "The file does not contain a valid map."
 msgstr "Filen indholder ikke en gyldig bane."
 
-#: src/editor/editor.cpp:545
+#: src/editor/editor.cpp:565
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' findes ikke eller kan ikke blive læst som en fil."
 
-#: src/editor/editor.cpp:557
+#: src/editor/editor.cpp:577
 msgid "Load failed: "
 msgstr "Hentning fejlede."
 
-#: src/editor/editor.cpp:753
+#: src/editor/editor.cpp:773
 msgid "You must have a hex selected on the board."
 msgstr "Du må vælge et felt på brættet."
 
-#: src/editor/editor.cpp:1002
+#: src/editor/editor.cpp:1022
 msgid "Quit Editor"
 msgstr "Afslut Editoren"
 
-#: src/editor/editor.cpp:1007
+#: src/editor/editor.cpp:1027
 msgid "Do you want to save the map before quitting?"
 msgstr "Vil du gemme banen før du afslutter?"
 
-#: src/editor/editor.cpp:1031
+#: src/editor/editor.cpp:1059
 msgid "Map saved."
 msgstr "Bane gemt."
 
-#: src/editor/editor.cpp:1038
+#: src/editor/editor.cpp:1066
 msgid "Could not save the map: $msg"
 msgstr "Kunne ikke gemme bane: $msg"
 
-#: src/editor/editor.cpp:1094
+#: src/editor/editor.cpp:1081
+msgid "Error: Illegal character in filename."
+msgstr ""
+
+#: src/editor/editor.cpp:1137
 msgid "Player"
 msgstr "Spiller"
 
@@ -184,11 +178,11 @@ msgstr "Y-Aksen"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Spejl banen (dette ænder måske dimensionerne af banen):"
 
-#: src/editor/editor_palettes.cpp:316
+#: src/editor/editor_palettes.cpp:311
 msgid "FG"
 msgstr "Forgrund"
 
-#: src/editor/editor_palettes.cpp:318
+#: src/editor/editor_palettes.cpp:313
 msgid "BG"
 msgstr "Baggrund"
 
@@ -199,6 +193,18 @@ msgstr "Slet fil"
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Slettelse af fil mislykkedes"
+
+#~ msgid "Draw"
+#~ msgstr "Tegn"
+
+#~ msgid "Flood"
+#~ msgstr "Fyld"
+
+#~ msgid "Start P"
+#~ msgstr "Lejr"
+
+#~ msgid "Paste"
+#~ msgstr "Sæt Ind"
 
 #~ msgid "Ok"
 #~ msgstr "Ok"
