@@ -329,9 +329,9 @@ brush_bar::brush_bar(display &gui, const size_specs &sizes)
 	adjust_size();
 }
 
-void brush_bar::adjust_size() {
+void brush_bar::adjust_size() {// TODO
 	set_location(size_specs_.brush_x, size_specs_.brush_y);
-	set_measurements(size_ * total_brush_, size_);
+	set_measurements(size_ * total_brush_ + (total_brush_ - 1) * size_specs_.brush_padding, size_);
 	set_dirty();
 }
 
@@ -417,7 +417,7 @@ void brush_bar::draw(bool force) {
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
 			SDL_MapRGB(screen->format,0x00,0x00,0x00);
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
-		x += image->w;
+		x += image->w + size_specs_.brush_padding;
 	}
 	update_rect(loc);
 	set_dirty(false);
@@ -427,13 +427,13 @@ int brush_bar::selected_index(const int x, const int y) const {
 	const int bar_x = size_specs_.brush_x;
 	const int bar_y = size_specs_.brush_y;
 
-	if ((x < bar_x || (unsigned)x > bar_x + size_ * total_brush_)
+	if ((x < bar_x || (unsigned)x > bar_x + size_ * total_brush_ + total_brush_ * size_specs_.brush_padding)
 	    || (y < bar_y || (unsigned)y > bar_y + size_)) {
 		return -1;
 	}
 
 	for(int i = 0; i < total_brush_; i++) {
-		const int px = bar_x + size_ * i;
+		const int px = bar_x + size_ * i + i * size_specs_.brush_padding;
 
 		if(x >= px && (unsigned)x <= px + size_ && y >= bar_y && (unsigned)y <= bar_y + size_) {
 			return i;

@@ -33,6 +33,7 @@ struct size_specs {
 	size_t palette_w;
 	size_t brush_x;
 	size_t brush_y;
+	size_t brush_padding;
 };
 
 /// Adjust the internal size specifications to fit the display.

@@ -28,6 +28,7 @@ size_specs::size_specs() {
 	terrain_width = default_palette_width;
 	brush_x = 0;
 	brush_y = 0;
+	brush_padding = 5;
 	palette_x = 0;
 	palette_y = 0;
 	palette_w = 10;
@@ -35,7 +36,7 @@ size_specs::size_specs() {
 }
 
 void adjust_sizes(const display &disp, size_specs &sizes) {
-	sizes.brush_x = disp.mapx() + 28;
+	sizes.brush_x = disp.mapx() + 23;
 	sizes.brush_y = 190;
 	sizes.palette_x = disp.mapx() + 13;
 	sizes.palette_y = sizes.brush_y + 160 + 10;
