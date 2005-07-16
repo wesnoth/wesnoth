@@ -273,7 +273,7 @@ bool game_controller::init_video()
 
 	std::cerr << "Checking video mode: " << resolution.first
 		  << "x" << resolution.second << "x" << DefaultBPP << "...\n";
-	int bpp = video_.modePossible(resolution.first,resolution.second,0,video_flags);
+	int bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
 
 	std::cerr << bpp << "\n";
 
