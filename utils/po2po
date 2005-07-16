@@ -1,6 +1,14 @@
 #!/bin/sh
 set -e
 
+# where we find the distribution po hierarchy
+BASEDIR=po
+
+# if using a build directory other than source dir, set BUILDDIR to the
+# po directory in the build directory
+#BUILDDIR=testbuild/po
+BUILDDIR=po
+
 # copy relevant messages from SRCDOMAIN to DSTDOMAIN, for LANG
 
 if [ $# -lt 2 ]
@@ -14,37 +22,37 @@ DSTDOMAIN=$2
 shift
 shift
 
-if ! [ -r po/$DSTDOMAIN/Makefile ]
+if ! [ -r $BUILDDIR/$DSTDOMAIN/Makefile ]
 then
-    echo "Source not configured in po/$DSTDOMAIN"
+    echo "Source not configured in $BUILDDIR/$DSTDOMAIN"
     exit 1
 fi
 
 if [ $# = 0 ]
 then
-    set -- `cat po/$SRCDOMAIN/LINGUAS`
+    set -- `cat $BASEDIR/$SRCDOMAIN/LINGUAS`
 fi
 
 tmp=`tempfile`
 for LANG in "$@"
 do
     # merge the 2 files
-    msgcat --use-first -F po/$DSTDOMAIN/$LANG.po po/$SRCDOMAIN/$LANG.po >$tmp
-    mv po/$DSTDOMAIN/$LANG.po po/$DSTDOMAIN/$LANG.po.bak
-    mv $tmp po/$DSTDOMAIN/$LANG.po
+    msgcat --use-first -F $BASEDIR/$DSTDOMAIN/$LANG.po $BASEDIR/$SRCDOMAIN/$LANG.po >$tmp
+    mv $BASEDIR/$DSTDOMAIN/$LANG.po $BASEDIR/$DSTDOMAIN/$LANG.po.bak
+    mv $tmp $BASEDIR/$DSTDOMAIN/$LANG.po
 
     # sync with DST pot
-    touch -d '1970-01-02' po/$DSTDOMAIN/$LANG.po
-    make -C po/$DSTDOMAIN $LANG.po
+    touch -d '1970-01-02' $BASEDIR/$DSTDOMAIN/$LANG.po
+    make -C $BUILDDIR/$DSTDOMAIN $LANG.po
 
     # clear those obsolete strings added by SRC, but keep ours if any
-    msgattrib --no-obsolete po/$DSTDOMAIN/$LANG.po >$tmp
-    msgcat --use-first -F $tmp po/$DSTDOMAIN/$LANG.po.bak > po/$DSTDOMAIN/$LANG.po
+    msgattrib --no-obsolete $BASEDIR/$DSTDOMAIN/$LANG.po >$tmp
+    msgcat --use-first -F $tmp $BASEDIR/$DSTDOMAIN/$LANG.po.bak > $BASEDIR/$DSTDOMAIN/$LANG.po
 
-    touch -d '1970-01-02' po/$DSTDOMAIN/$LANG.po
-    make -C po/$DSTDOMAIN $LANG.po
+    touch -d '1970-01-02' $BASEDIR/$DSTDOMAIN/$LANG.po
+    make -C $BUILDDIR/$DSTDOMAIN $LANG.po
 
     # make sure the timestamp is fixed or cvs gets confused
-    touch po/$DSTDOMAIN/$LANG.po
+    touch $BASEDIR/$DSTDOMAIN/$LANG.po
 done
 rm $tmp
