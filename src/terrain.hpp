@@ -36,6 +36,7 @@ public:
 	//the underlying type of the terrain
 	const std::string& type() const;
 
+	bool is_nonnull() const;
 	bool is_light() const;
 	bool is_alias() const;
 

@@ -77,6 +77,11 @@ char terrain_type::letter() const
 	return letter_;
 }
 
+bool terrain_type::is_nonnull() const
+{
+	return (letter_ != 0) && (letter_ != ' ');
+}
+
 const std::string& terrain_type::type() const
 {
 	return type_;

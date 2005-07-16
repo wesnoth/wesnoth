@@ -1206,7 +1206,7 @@ public:
 				if (terrain == gamemap::FOGGED || terrain == gamemap::VOID_TERRAIN)
 					continue;
 				const terrain_type& info = map->get_terrain_info(terrain);
-				if (!info.is_alias()) {
+				if (!info.is_alias() && info.is_nonnull()) {
 					std::vector<item> row;
 					const std::string& name = info.name();
 					const int moves = movement_type.movement_cost(*map,terrain);
