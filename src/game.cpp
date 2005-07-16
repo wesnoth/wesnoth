@@ -265,11 +265,15 @@ bool game_controller::init_video()
 
 	std::pair<int,int> resolution = preferences::resolution();
 
-	const int DefaultBPP = 24;
+	int DefaultBPP = 24;
+	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
+	if(video_info != NULL && video_info->vfmt != NULL) {
+		DefaultBPP = video_info->vfmt->BitsPerPixel;
+	}
 
 	std::cerr << "Checking video mode: " << resolution.first
 		  << "x" << resolution.second << "x" << DefaultBPP << "...\n";
-	int bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
+	int bpp = video_.modePossible(resolution.first,resolution.second,0,video_flags);
 
 	std::cerr << bpp << "\n";
 
