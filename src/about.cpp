@@ -39,6 +39,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
+		"-   Bram Ridder (Morloth)",
 		"-   Cedric Duval",
 		"-   Cyril Bouthors (CyrilB)",
 		"-   Guillaume Melquiond (silene)",
@@ -101,9 +102,9 @@ std::vector<std::string> get_text() {
 		"-   Justin Zaun (jzaun)",
 
 		"_" N_("+Multiplayer Maps"),
+		"-   Mike Quinones (Doc Paterson)",
 		"-   Peter Groen (pg)",
 		"-   Tom Chance (telex4)",
-		"-   Mike Quinones (Doc Paterson)",
 
 		"_" N_("+Packagers"),
 		"-   Cyril Bouthors (CyrilB)",
