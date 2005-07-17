@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-13 18:16+0200\n"
-"PO-Revision-Date: 2005-07-10 18:21+0100\n"
+"PO-Revision-Date: 2005-07-13 21:25+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -620,7 +620,6 @@ msgstr ""
 "Einheiten könnt Ihr aus mehreren Aufstiegsmöglichkeiten auswählen."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -741,7 +740,6 @@ msgstr ""
 "zwei Dinge zu beachten: Einkommen und Unterhalt."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -752,10 +750,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mit dem Einkommen verhält es sich einfach: Ihr bekommt für jedes Dorf, das "
-"Ihr kontrolliert, 1 Goldstück pro Zug. Wenn Ihr also 10 Dörfer habt, würdet "
-"Ihr 10 Goldstücke erhalten. Leider werden Euch davon die Unterhaltskosten "
-"noch abgezogen."
+"Mit dem Einkommen verhält es sich einfach: Grundsätzlich erhaltet Ihr 2 "
+"Goldstücke pro Zug. Für jedes Dorf, das Ihr zusätzlich kontrolliert, "
+"erhaltet ihr ein weiteres Goldstück. Angenommen, Ihr würdet 10 Dörfer "
+"kontrollieren, so würdet Ihr 10 Goldstücke erhalten. Die Unterhaltskosten "
+"für Eure Truppen werden von Eurem Einkommen abgezogen."
 
 #: data/help.cfg:189
 msgid ""
@@ -778,7 +777,6 @@ msgstr ""
 "Goldstücke pro Zug bezahlen."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -789,10 +787,10 @@ msgstr ""
 "\n"
 "\n"
 "Diese Kosten werden von Eurem Einkommen abgezogen. Bei insgesamt zwölf "
-"Einheitenstufen und zehn Dörfern beträge Euer Einkommen 8 Goldstücke pro Zug."
+"Einheitenstufen und zehn Dörfern beträge Euer Einkommen also 8 Goldstücke "
+"pro Zug."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -802,9 +800,9 @@ msgid ""
 msgstr ""
 "\n"
 "Es gibt eine Ausnahme für die Berechnung der Unterhaltskosten. Einheiten mit "
-"der Charakteristik »loyal« kosten niemals Unterhalt. Einheiten, mit denen "
-"Ihr ein Szenario beginnt (z.B. Konrad oder Delfador) und Einheiten, die sich "
-"Euch während eines Szenarios anschließen (wie z.B. der Reiter im zweiten "
+"der Charakteristik »loyal« kosten keinen Unterhalt. Einheiten, mit denen Ihr "
+"ein Szenario beginnt (z.B. Konrad oder Delfador) und Einheiten, die sich "
+"Euch während eines Szenarios anschließen (z.B. der Reiter im zweiten "
 "Szenario von »Der Thronerbe«) sind üblicherweise »loyal«."
 
 #: data/help.cfg:197
@@ -831,18 +829,18 @@ msgid "About"
 msgstr "Das Team"
 
 #: data/help.cfg:210
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
-"Die meisten Einheiten verfügen über zwei Charakteristika. Die Untoten "
-"stellen hierbei eine Ausnahme dar. Sie haben die Charakteristik »Untot«. "
-"Charakteristika sind Modifikatoren, die Attribute der Einheiten leicht "
-"verändern. Normalerweise werden sie zufällig zugewiesen, wenn eine Einheit "
-"ausgebildet wird."
+"Die meisten Einheiten verfügen über zwei Charakteristika. Untote und "
+"Waldschrate stellen hierbei eine Ausnahme dar. Während Untote nur über die "
+"Charakteristik »Untot« verfügen, erhalten Waldschrate überhaupt keine "
+"Charakteristika.  Charakteristika sind Modifikatoren, die Attribute der "
+"Einheiten leicht verändern. Normalerweise werden sie zufällig zugewiesen, "
+"wenn eine Einheit ausgebildet wird."
 
 #: data/help.cfg:212
 msgid ""
@@ -1202,9 +1200,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:334
-#, fuzzy
 msgid "Tundra"
-msgstr "untot"
+msgstr "Tundra"
 
 #: data/help.cfg:337
 msgid ""
@@ -1256,9 +1253,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:364
-#, fuzzy
 msgid "Desert"
-msgstr "Wüstenhügel"
+msgstr "Wüste"
 
 #: data/help.cfg:365
 msgid ""
@@ -6571,6 +6567,12 @@ msgid ""
 "Special Notes: the Grand Knight's charging lance attack doubles both damage "
 "dealt and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Anmerkung: Der Lanzenangriff des Templers ist mit der Waffenfähigkeit "
+"»Ansturm« versehen. Hierdurch wird zwar der Schaden, den der Templer "
+"verursacht verdoppelt, jedoch verursacht auch sein Gegner doppelten Schaden. "
+"Im Verteidigungsfall, wird diese Fähigkeit nicht aktiviert."
 
 #: data/units/Grand_Knight.cfg:49 data/units/Knight.cfg:40
 #: data/units/Lancer.cfg:33 data/units/Paladin.cfg:54
@@ -6756,6 +6758,12 @@ msgid ""
 "Special Notes: the Horseman's only attack is a charge, which doubles both "
 "damage dealt and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Anmerkung: Der Lanzenangriff des Reiters ist mit der Waffenfähigkeit "
+"»Ansturm« versehen. Hierdurch wird zwar der Schaden, den der Reiter "
+"verursacht verdoppelt, jedoch verursacht auch sein Gegner doppelten Schaden. "
+"Im Verteidigungsfall, wird diese Fähigkeit nicht aktiviert."
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
@@ -6826,6 +6834,12 @@ msgid ""
 "Special Notes: the Knight's charging lance attack doubles both damage dealt "
 "and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Anmerkung: Der Lanzenangriff des Ritters ist mit der Waffenfähigkeit "
+"»Ansturm« versehen. Hierdurch wird zwar der Schaden, den der Ritter "
+"verursacht verdoppelt, jedoch verursacht auch sein Gegner doppelten Schaden. "
+"Im Verteidigungsfall, wird diese Fähigkeit nicht aktiviert."
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
@@ -6848,6 +6862,12 @@ msgid ""
 "Special Notes: the Lancer's charging lance attack doubles both damage dealt "
 "and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Anmerkung: Der Lanzenangriff des Lanzenreiters ist mit der Waffenfähigkeit "
+"»Ansturm« versehen. Hierdurch wird zwar der Schaden, den der Lanzenreiter "
+"verursacht, verdoppelt, jedoch verursacht auch sein Gegner doppelten "
+"Schaden. Im Verteidigungsfall, wird diese Fähigkeit nicht aktiviert."
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
@@ -7307,19 +7327,18 @@ msgid ""
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
 "that drain the lifeforce from their foes and add it to their own."
 msgstr ""
-"Totenbeschwörer sind Magier, die sich dazu entschlossen haben dem Pfad der "
-"dunklen Künste zu folgen. Mit Fähigkeiten der Untoten ausgestattet verfügen "
-"Totenbeschwörer über Zaubersprüche um sich die Lebenskraft von ihren Gegnern "
-"zu eigen zu machen."
+"Totenbeschwörer sind Zauberkundige, die sich dazu entschlossen haben, dem "
+"Pfad der Dunkelheit zu folgen. Mit Fähigkeiten der Untoten ausgestattet "
+"verfügen Totenbeschwörer über Zaubersprüche um sich die Lebenskraft von "
+"ihren Gegnern zu eigen zu machen."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Leichenfresser"
 
 #: data/units/Necrophage.cfg:17
-#, fuzzy
 msgid "satiated"
-msgstr "Eingeweihter"
+msgstr "gesätigt"
 
 #: data/units/Necrophage.cfg:26
 msgid ""
@@ -7775,6 +7794,16 @@ msgid ""
 "some to living creatures.  Paladins are capable of some healing, though they "
 "can only delay the effects of poison, not cure them entirely."
 msgstr ""
+"\n"
+"\n"
+"Anmerkung: Der Lanzenangriff des Paladins ist mit der Waffenfähigkeit "
+"»Ansturm« versehen. Hierdurch wird zwar der Schaden, den der Paladin "
+"verursacht verdoppelt, jedoch verursacht auch sein Gegner doppelten Schaden. "
+"Im Verteidigungsfall, wird diese Fähigkeit nicht aktiviert.\n"
+"Das Schwert des Paladins ist mit heiligem Wasser geweiht worden, so dass es "
+"vor allem Untoten schweren Schaden zufügt.\n"
+"Paladine verfügen über begrenzte Fähigkeiten der Heilung. Sie können jedoch "
+"nur den Schaden eines Giftes abwenden, es aber nicht vollständig kurieren."
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
@@ -8439,6 +8468,15 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
+"Nachdem die Trolle ihrem Welpenstadium entwachsen sind, bewaffnen sie sich "
+"häufig mit großen Ästen, um ihre Angriffskraft zu erhöhen. Trolle mit "
+"Nahkampfwaffen anzugreifen, führt meistens zu großen Verlusten in den "
+"eigenen Reihen. Mit der Kraft der Magie und unter einem Hagel von Pfeilen "
+"sind aber schon viele Trolle in den Staub gesunken.\n"
+"\n"
+"Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. Dadurch "
+"erhalten sie genauso viele Lebenspunkte, als würden sie sich in einem Dorf "
+"aufhalten."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
@@ -8471,6 +8509,20 @@ msgid ""
 "regeneration ability, which heals them as though they were always stationed "
 "in a village."
 msgstr ""
+"Einige Trolle, die über eine besondere Geschicklichkeit verfügen, werden zu "
+"so genannten Felsenschleuderern ausgebildet. Diese Trolle warten solange in "
+"ihren Verstecken, bis Handelszüge oder -karawanen eine Schlucht durchqueren "
+"müssen. Dann lassen sie große Felsbrocken auf ihre Opfer niederprasseln. "
+"Meist brauchen die Orks ihre Beute nach solch einem Bombardement nur noch "
+"einzusammeln. Aufgrund der, auf dem Schlachtfeld kaum vorhandenen "
+"Felsbrocken, benutzen sie kleinere Steine, die sie in einem Beutel bei sich "
+"tragen. Diese verschießen sie mit einer primitiven Schleuder auf ihre "
+"Gegner.\n"
+"\n"
+"Anmerkung: Obwohl die Steinbrocken unhandlicher sind, als Pfeil und Bogen, "
+"verursachen sie bei einem Treffer einen wesentlich höheren Schaden. Trolle "
+"verfügen über die Fertigkeit der Regeneration. Dadurch erhalten sie genauso "
+"viele Lebenspunkte, als würden sie sich in einem Dorf aufhalten."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -8490,6 +8542,16 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
+"Nur die stärksten Trolle werden von den Orks zu Kriegstrollen ausgebildet "
+"und dienen meist als Leibwächter für Orkhäuptlinge oder Schamanen. In ihrer "
+"Ausbildung lernen sie den Umgang mit großen Streitkolben und werden an den "
+"Umgang mit Rüstungen gewöhnt. Diese brutalen Kriegsmaschinen werden "
+"bevorzugt bei Eroberungen eingesetzt, um durch ihre bloße Anwesenheit Angst "
+"und Schrecken zu verbreiten.\n"
+"\n"
+"Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. Dadurch "
+"erhalten sie genauso viele Lebenspunkte, als würden sie sich in einem Dorf "
+"aufhalten."
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
@@ -8506,6 +8568,19 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
+"Trolle sind große, aufrecht gehende Kreaturen, die über 2,50 Meter groß "
+"werden können und über immense Körperkräfte verfügen. Ihr Fell ist von "
+"grüner Farbe, und sie besitzen die erstaunliche Fähigkeit der Regeneration. "
+"Viele tapfere Krieger mussten ihr Leben lassen, weil sie einen tödlich "
+"verwundeten Troll auf dem Schlachtfeld liegen ließen, um nach kurzer Zeit "
+"erneut von dem Monstrum angefallen zu werden. Bevor sie ausgewachsen sind, "
+"spricht man von so genannten Trollwelpen. In dieser Zeit sind Trolle noch "
+"nicht besonders gefährlich, aber ihre Rasse ist bekannt für ihr schnelles "
+"Wachstum.\n"
+"\n"
+"Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. Dadurch "
+"erhalten sie genauso viele Lebenspunkte, als würden sie sich in einem Dorf "
+"aufhalten."
 
 #: data/units/Vampire_Bat.cfg:3
 msgid "Vampire Bat"
@@ -10038,9 +10113,8 @@ msgid "invalid network handle"
 msgstr "Ungültige Verbindung"
 
 #: src/network.cpp:99
-#, fuzzy
 msgid "Client disconnected"
-msgstr "Der Server hat die Verbindung unterbrochen."
+msgstr "Der Client hat die Verbindung unterbrochen."
 
 #: src/network.cpp:417
 msgid "Could not add socket to socket set"
@@ -10051,9 +10125,8 @@ msgid "Could not send initial handshake"
 msgstr "Der Anfangshandschlag konnte nicht ausgeführt werden"
 
 #: src/playcampaign.cpp:143
-#, fuzzy
 msgid " replay"
-msgstr "Wiederholung anzeigen"
+msgstr " Spielverlauf"
 
 #: src/playcampaign.cpp:151
 msgid "Do you want to save a replay of this scenario?"
