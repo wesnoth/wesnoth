@@ -227,6 +227,9 @@ int main(int argc, char** argv)
 		}
 	}
 
+	// Set the caption of the window
+	SDL_WM_SetCaption(_("Battle for Wesnoth Map Editor"), NULL);
+
 	//Read the configuration af
 	config cfg;
 	try {
