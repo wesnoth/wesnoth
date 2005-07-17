@@ -19,6 +19,7 @@ class theme
 		object(const config& cfg);
 
 		SDL_Rect& location(const SDL_Rect& screen) const;
+		const SDL_Rect& get_location(void) const;
 
 		//all on-screen objects have 'anchoring' in the x and y dimensions
 		//'fixed' means that they have fixed co-ordinates and don't move
@@ -112,6 +113,8 @@ public:
 		const std::string& image() const;
 
 		const std::vector<std::string>& items() const;
+
+		const SDL_Rect& get_location(void) const;
 	private:
 		bool context_;
 		std::string title_, image_;

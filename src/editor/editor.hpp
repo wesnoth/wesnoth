@@ -18,9 +18,11 @@
 
 #include "../display.hpp"
 #include "../events.hpp"
+#include "../font.hpp"
 #include "../hotkeys.hpp"
 #include "../preferences.hpp"
 #include "../theme.hpp"
+#include "../tooltips.hpp"
 
 #include <map>
 #include <queue>
@@ -273,6 +275,9 @@ private:
 	/// for brush size.
 	void draw_on_mouseover_hexes(const gamemap::TERRAIN t);
 
+	// Load the tooltips for each button
+	void load_tooltips(void);
+
 	/// An item in the clipboard. Consists of the copied terrain and an
 	/// offset. When pasting stuff, the offset is used to calculate
 	/// where to put the pasted hex when calculating from the one
@@ -314,6 +319,9 @@ private:
 	gamemap::location clipboard_offset_loc_;
 	LEFT_BUTTON_HELD_FUNC l_button_held_func_;
 	gamemap::location selection_move_start_;
+
+	tooltips::manager tooltip_manager_;
+	font::floating_label_context floating_label_manager_;
 	// mouse_moved_ will be true if the mouse have moved between two
 	// cycles.
 	bool mouse_moved_;

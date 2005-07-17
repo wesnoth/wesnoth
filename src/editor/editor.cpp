@@ -91,7 +91,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	  theme_(theme), game_config_(game_config), map_dirty_(false), l_button_palette_dirty_(true),
 	  everything_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
 	  l_button_held_func_(NONE), highlighted_locs_cleared_(false), prefs_disp_manager_(&gui_),
-	  all_hexes_selected_(false) {
+	  all_hexes_selected_(false), tooltip_manager_(gui_.video()), floating_label_manager_() {
 
 	// Set size specs.
 	adjust_sizes(gui_, size_specs_);
@@ -117,6 +117,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 		palette_.select_bg_terrain(old_bg_terrain_);
 		brush_.select_brush_size(old_brush_size_);
 	}
+
 	hotkey::load_descriptions();
 	recalculate_starting_pos_labels();
 	gui_.invalidate_game_status();
@@ -127,6 +128,54 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	brush_.adjust_size();
 	events::raise_draw_event();
 	redraw_everything();
+	load_tooltips();
+}
+
+/**
+ * This should be replaced by a WML tag called 'tooltip=' in the
+ * data/themes/editor.cfg file. The theme and display classes
+ * should then load the given tooltip in the button.
+ */
+void map_editor::load_tooltips()
+{
+        // Add tooltips to all buttons
+	const theme &t = gui_.get_theme();
+        const std::vector<theme::menu> &menus = t.menus();
+        std::vector<theme::menu>::const_iterator it;
+        for (it = menus.begin(); it != menus.end(); it++) {
+		
+		const SDL_Rect draw_rect = (*it).get_location();
+		std::string text = "";
+
+	       	const std::vector<std::string> &menu_items = (*it).items();
+        	if (menu_items.size() == 1) {
+			if(menu_items.back() == "editdraw")
+				text = _("Draw tiles");
+			else if(menu_items.back() == "editfloodfill")
+				text = _("Fill");
+			else if(menu_items.back() == "editsetstartpos")
+				text = _("Set player's starting position");
+			else if(menu_items.back() == "zoomin")
+				text = _("Zoom in");
+			else if(menu_items.back() == "zoomout")
+				text = _("Zoom out");
+			else if(menu_items.back() == "undo")
+				text = _("Undo");
+			else if(menu_items.back() == "redo")
+				text = _("Redo");
+			else if(menu_items.back() == "zoomdefault")
+				text = _("Zoom to default view");
+			else if(menu_items.back() == "togglegrid")
+				text = _("Toggle grid");
+			else if(menu_items.back() == "editresize")
+				text = _("Resize the map");
+			else if(menu_items.back() == "editflip")
+				text = _("Flip map");
+		}
+        
+		if(text != "")
+			tooltips::add_tooltip(draw_rect, text);
+        }
 }
 
 map_editor::~map_editor() {
@@ -148,14 +197,17 @@ map_editor::~map_editor() {
 void map_editor::handle_event(const SDL_Event &event) {
 	if (event.type == SDL_VIDEORESIZE) {
 		everything_dirty_ = true;
-	}
+	}	
 	int mousex, mousey;
+
 	SDL_GetMouseState(&mousex,&mousey);
 	const SDL_KeyboardEvent keyboard_event = event.key;
 	handle_keyboard_event(keyboard_event, mousex, mousey);
 
 	const SDL_MouseButtonEvent mouse_button_event = event.button;
 	handle_mouse_button_event(mouse_button_event, mousex, mousey);
+
+	tooltips::process(mousex, mousey);
 }
 
 void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,

@@ -318,6 +318,11 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 	return relative_loc_;
 }
 
+const SDL_Rect& theme::object::get_location(void) const
+{
+	return loc_;
+}
+
 theme::object::ANCHORING theme::object::read_anchor(const std::string& str)
 {
 	static const std::string top_anchor = "top", left_anchor = "left",
@@ -423,6 +428,8 @@ const std::string& theme::menu::title() const { return title_; }
 const std::string& theme::menu::image() const { return image_; }
 
 const std::vector<std::string>& theme::menu::items() const { return items_; }
+
+const SDL_Rect& theme::menu::get_location(void) const { return object::get_location(); }
 
 theme::theme(const config& cfg, const SDL_Rect& screen):cfg_(resolve_rects(cfg)){
 	set_resolution(screen);
