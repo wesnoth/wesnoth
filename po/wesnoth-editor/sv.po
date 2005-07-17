@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-17 17:50+0200\n"
-"PO-Revision-Date: 2005-05-10 23:52+0200\n"
+"PO-Revision-Date: 2005-07-17 22:56+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.10\n"
+"X-Generator: KBabel 1.10.1\n"
 
 #: data/themes/editor.cfg:429
 msgid "File"
@@ -27,49 +27,47 @@ msgstr "Redigera"
 
 #: src/editor/editor.cpp:153
 msgid "Draw tiles"
-msgstr ""
+msgstr "Rita fält"
 
 #: src/editor/editor.cpp:155
-#, fuzzy
 msgid "Fill"
-msgstr "Arkiv"
+msgstr "Fyll"
 
 #: src/editor/editor.cpp:157
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Ange spelarens startposition"
 
 #: src/editor/editor.cpp:159
 msgid "Zoom in"
-msgstr ""
+msgstr "Zooma in"
 
 #: src/editor/editor.cpp:161
 msgid "Zoom out"
-msgstr ""
+msgstr "Zooma ut"
 
 #: src/editor/editor.cpp:163
 msgid "Undo"
-msgstr ""
+msgstr "Ångra"
 
 #: src/editor/editor.cpp:165
 msgid "Redo"
-msgstr ""
+msgstr "Gör om"
 
 #: src/editor/editor.cpp:167
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Standardzoom"
 
 #: src/editor/editor.cpp:169
 msgid "Toggle grid"
-msgstr ""
+msgstr "Visa rutnät"
 
 #: src/editor/editor.cpp:171
-#, fuzzy
 msgid "Resize the map"
 msgstr "Ändra kartans storlek"
 
 #: src/editor/editor.cpp:173
 msgid "Flip map"
-msgstr ""
+msgstr "Spegla kartan"
 
 #: src/editor/editor.cpp:364
 msgid "Save the Map As"
@@ -96,6 +94,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
+"Varning: otillåtna tecken finns i kartnamnet. Du måste spara kartan under "
+"ett annat namn."
 
 #: src/editor/editor.cpp:476 src/editor/editor.cpp:555
 msgid "The file does not contain a valid map."
@@ -131,7 +131,7 @@ msgstr "Kunde inte spara kartan: $msg"
 
 #: src/editor/editor.cpp:1133
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Fel: otillåtet tecken i filnamnet."
 
 #: src/editor/editor.cpp:1189
 msgid "Player"
@@ -223,7 +223,7 @@ msgstr "Flippa (detta kan ändra kartans dimensioner):"
 
 #: src/editor/editor_main.cpp:231
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Kampen om Wesnoths karteditor"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -240,15 +240,3 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
-
-#~ msgid "Draw"
-#~ msgstr "Rita"
-
-#~ msgid "Flood"
-#~ msgstr "Fyll"
-
-#~ msgid "Start P"
-#~ msgstr "Startp."
-
-#~ msgid "Paste"
-#~ msgstr "Klistra in"
