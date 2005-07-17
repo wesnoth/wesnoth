@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-13 18:16+0200\n"
+"POT-Creation-Date: 2005-07-17 17:49+0200\n"
 "PO-Revision-Date: 2005-03-02 22:28+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -995,7 +995,7 @@ msgid ""
 "inflict an additional point of damage with each arrow."
 msgstr ""
 
-#: data/help.cfg:272 data/terrain.cfg:149
+#: data/help.cfg:272 data/terrain.cfg:150
 msgid "Grassland"
 msgstr "Lúka"
 
@@ -1010,7 +1010,7 @@ msgid ""
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
 
-#: data/help.cfg:280 data/terrain.cfg:123 data/terrain.cfg:131
+#: data/help.cfg:280 data/terrain.cfg:124 data/terrain.cfg:132
 msgid "Road"
 msgstr "Cesta"
 
@@ -1021,7 +1021,7 @@ msgid ""
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
-#: data/help.cfg:286 data/terrain.cfg:320
+#: data/help.cfg:286 data/terrain.cfg:321
 msgid "Forest"
 msgstr "Les"
 
@@ -1042,7 +1042,7 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
 
-#: data/help.cfg:294 data/terrain.cfg:281
+#: data/help.cfg:294 data/terrain.cfg:282
 msgid "Hills"
 msgstr "Kopce"
 
@@ -1059,7 +1059,7 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 
-#: data/help.cfg:302 data/terrain.cfg:305
+#: data/help.cfg:302 data/terrain.cfg:306
 msgid "Mountains"
 msgstr "Hory"
 
@@ -1147,7 +1147,7 @@ msgid ""
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 
-#: data/help.cfg:348 data/terrain.cfg:369 data/terrain.cfg:429
+#: data/help.cfg:348 data/terrain.cfg:370 data/terrain.cfg:430
 msgid "Castle"
 msgstr "Hrad"
 
@@ -1163,7 +1163,7 @@ msgid ""
 "Most units have about 60% defense in a castle."
 msgstr ""
 
-#: data/help.cfg:356 data/terrain.cfg:106 data/terrain.cfg:115
+#: data/help.cfg:356 data/terrain.cfg:106
 msgid "Sand"
 msgstr "Piesok"
 
@@ -1176,7 +1176,7 @@ msgid ""
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
 
-#: data/help.cfg:364
+#: data/help.cfg:364 data/terrain.cfg:115
 #, fuzzy
 msgid "Desert"
 msgstr "Vymaž súbor"
@@ -1188,7 +1188,7 @@ msgid ""
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
 
-#: data/help.cfg:370 data/terrain.cfg:352
+#: data/help.cfg:370 data/terrain.cfg:353
 msgid "Cave"
 msgstr "Jaskyňa"
 
@@ -1204,7 +1204,7 @@ msgid ""
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
 
-#: data/help.cfg:378 data/terrain.cfg:156
+#: data/help.cfg:378 data/terrain.cfg:157
 msgid "Savanna"
 msgstr ""
 
@@ -1216,8 +1216,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
-#: data/terrain.cfg:164 data/terrain.cfg:173 data/terrain.cfg:184
-#: data/terrain.cfg:195 data/terrain.cfg:208 data/terrain.cfg:359
+#: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
+#: data/terrain.cfg:196 data/terrain.cfg:209 data/terrain.cfg:360
 #: src/reports.cpp:311
 msgid "Village"
 msgstr "Dedina"
@@ -3045,95 +3045,95 @@ msgstr "Hmla"
 msgid "Bridge"
 msgstr "Most"
 
-#: data/terrain.cfg:139
+#: data/terrain.cfg:140
 msgid "Dirt"
 msgstr "Prach"
 
-#: data/terrain.cfg:218 data/terrain.cfg:229
+#: data/terrain.cfg:219 data/terrain.cfg:230
 #, fuzzy
 msgid "Desert Village"
 msgstr "Dedina"
 
-#: data/terrain.cfg:240
+#: data/terrain.cfg:241
 msgid "Tropical Forest Village"
 msgstr ""
 
-#: data/terrain.cfg:251
+#: data/terrain.cfg:252
 msgid "Oasis"
 msgstr ""
 
-#: data/terrain.cfg:262
+#: data/terrain.cfg:263
 msgid "Snow"
 msgstr "Sneh"
 
-#: data/terrain.cfg:270
+#: data/terrain.cfg:271
 #, fuzzy
 msgid "Snow Village"
 msgstr "Dedina"
 
-#: data/terrain.cfg:288
+#: data/terrain.cfg:289
 #, fuzzy
 msgid "Snow Hills"
 msgstr "Kopce"
 
-#: data/terrain.cfg:297
+#: data/terrain.cfg:298
 #, fuzzy
 msgid "Desert Hills"
 msgstr "Vymaž súbor"
 
-#: data/terrain.cfg:312
+#: data/terrain.cfg:313
 #, fuzzy
 msgid "Desert Mountains"
 msgstr "Hory"
 
-#: data/terrain.cfg:328
+#: data/terrain.cfg:329
 #, fuzzy
 msgid "Snow Forest"
 msgstr "Les"
 
-#: data/terrain.cfg:336
+#: data/terrain.cfg:337
 msgid "Tropical Forest"
 msgstr ""
 
-#: data/terrain.cfg:344
+#: data/terrain.cfg:345
 msgid "Cave wall"
 msgstr "Stena jaskyne"
 
-#: data/terrain.cfg:378
+#: data/terrain.cfg:379
 msgid "Encampment"
 msgstr "Táborisko"
 
-#: data/terrain.cfg:388
+#: data/terrain.cfg:389
 msgid "Dwarven castle"
 msgstr "Trpasličí hrad"
 
-#: data/terrain.cfg:398
+#: data/terrain.cfg:399
 msgid "Keep"
 msgstr "Pevnosť"
 
-#: data/terrain.cfg:418
+#: data/terrain.cfg:419
 msgid "Canyon"
 msgstr "Kaňon"
 
-#: data/terrain.cfg:438
+#: data/terrain.cfg:439
 #, fuzzy
 msgid "Ruin"
 msgstr "vysatie"
 
-#: data/terrain.cfg:448
+#: data/terrain.cfg:449
 msgid "Sunken Ruin"
 msgstr ""
 
-#: data/terrain.cfg:459
+#: data/terrain.cfg:460
 #, fuzzy
 msgid "Swamp Ruin"
 msgstr "Močiar"
 
-#: data/terrain.cfg:470
+#: data/terrain.cfg:471
 msgid "River Ford"
 msgstr ""
 
-#: data/terrain.cfg:480
+#: data/terrain.cfg:481
 msgid "Lava"
 msgstr ""
 
@@ -4081,7 +4081,7 @@ msgstr "mágia"
 #: data/units/Dark_Queen.cfg:56 data/units/Dark_Sorcerer.cfg:53
 #: data/units/Deathmaster.cfg:55 data/units/Demilich.cfg:47
 #: data/units/Dread_Lich.cfg:44 data/units/Dwarvish_Runemaster.cfg:56
-#: data/units/Elder_Mage.cfg:51 data/units/Elvish_Druid.cfg:65
+#: data/units/Elder_Mage.cfg:51 data/units/Elvish_Druid.cfg:64
 #: data/units/Elvish_Enchantress.cfg:122 data/units/Elvish_High_Lord.cfg:54
 #: data/units/Elvish_Lord.cfg:41 data/units/Elvish_Shyde.cfg:36
 #: data/units/Elvish_Shyde.cfg:83 data/units/Elvish_Sorceress.cfg:122
@@ -4144,9 +4144,9 @@ msgstr "drvenie"
 #: data/units/Dwarvish_Lord.cfg:54 data/units/Dwarvish_Runemaster.cfg:30
 #: data/units/Dwarvish_Steelclad.cfg:46 data/units/Elder_Mage.cfg:33
 #: data/units/Elder_Wose.cfg:25 data/units/Elvish_Druid.cfg:24
-#: data/units/Elvish_Druid.cfg:43 data/units/Elvish_Enchantress.cfg:26
+#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Enchantress.cfg:26
 #: data/units/Elvish_Enchantress.cfg:66 data/units/Elvish_Lady.cfg:30
-#: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
+#: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:43
 #: data/units/Elvish_Shyde.cfg:35 data/units/Elvish_Shyde.cfg:61
 #: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:66
 #: data/units/Elvish_Sylph.cfg:34 data/units/Elvish_Sylph.cfg:61
@@ -4553,7 +4553,7 @@ msgstr "luk"
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:63
 #: data/units/Elvish_Archer.cfg:165 data/units/Elvish_Avenger.cfg:72
 #: data/units/Elvish_Avenger.cfg:192 data/units/Elvish_Captain.cfg:41
-#: data/units/Elvish_Champion.cfg:51 data/units/Elvish_Druid.cfg:64
+#: data/units/Elvish_Champion.cfg:51 data/units/Elvish_Druid.cfg:63
 #: data/units/Elvish_Fighter.cfg:42 data/units/Elvish_Hero.cfg:42
 #: data/units/Elvish_Marksman.cfg:62 data/units/Elvish_Marksman.cfg:178
 #: data/units/Elvish_Marshal.cfg:51 data/units/Elvish_Outrider.cfg:55
@@ -4673,9 +4673,8 @@ msgstr ""
 msgid "web"
 msgstr "sieť"
 
-#: data/units/Cave_Spider.cfg:71 data/units/Elvish_Druid.cfg:25
-#: data/units/Elvish_Druid.cfg:44 data/units/Elvish_Enchantress.cfg:67
-#: data/units/Elvish_Shaman.cfg:26 data/units/Elvish_Shaman.cfg:45
+#: data/units/Cave_Spider.cfg:71 data/units/Elvish_Druid.cfg:43
+#: data/units/Elvish_Enchantress.cfg:67 data/units/Elvish_Shaman.cfg:44
 #: data/units/Elvish_Shyde.cfg:62 data/units/Elvish_Sorceress.cfg:67
 #: data/units/Elvish_Sylph.cfg:62 data/units/Goblin_Pillager.cfg:48
 #: data/units/Merman_Entangler.cfg:39 data/units/Merman_Netcaster.cfg:30
@@ -5660,11 +5659,11 @@ msgstr ""
 "a používa lesné kvety na liečbu spojencov. Druid je cennou podpornou "
 "jednotkou každej elfej armády."
 
-#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Shyde.cfg:60
+#: data/units/Elvish_Druid.cfg:41 data/units/Elvish_Shyde.cfg:60
 msgid "ensnare"
 msgstr "lapenie"
 
-#: data/units/Elvish_Druid.cfg:63 data/units/Elvish_Shyde.cfg:81
+#: data/units/Elvish_Druid.cfg:62 data/units/Elvish_Shyde.cfg:81
 msgid "thorns"
 msgstr "tŕne"
 
@@ -5682,7 +5681,7 @@ msgstr ""
 "poryvmi ľadového vetra z astrálnych rovín a magicky rozhýbanými koreňmi, "
 "ktoré ich na mieste znehybnia."
 
-#: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:43
+#: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:42
 #: data/units/Elvish_Sorceress.cfg:65
 msgid "entangle"
 msgstr "zamotanie"
@@ -8305,168 +8304,168 @@ msgstr "-   Umelecký a grafický dizajnér"
 msgid "+Developers"
 msgstr "+Vývojári"
 
-#: src/about.cpp:58
+#: src/about.cpp:59
 msgid "+General Purpose Administrators"
 msgstr "+Všeobecní správcovia"
 
-#: src/about.cpp:62
+#: src/about.cpp:63
 msgid "+Artwork and graphics designers"
 msgstr "+Umeleckí a grafickí dizajnéri"
 
-#: src/about.cpp:88
+#: src/about.cpp:89
 msgid "+Music"
 msgstr "+Hudba"
 
-#: src/about.cpp:94
+#: src/about.cpp:95
 msgid "+Scenario Designers"
 msgstr "+Dizajn scenárov"
 
-#: src/about.cpp:103
+#: src/about.cpp:104
 msgid "+Multiplayer Maps"
 msgstr "+Mapy na zápas"
 
-#: src/about.cpp:108
+#: src/about.cpp:109
 msgid "+Packagers"
 msgstr "+Výroba balíkov"
 
-#: src/about.cpp:118
+#: src/about.cpp:119
 msgid "+Miscellaneous"
 msgstr "+Rôzne"
 
-#: src/about.cpp:123
+#: src/about.cpp:124
 msgid "+Internationalization Managers"
 msgstr "+Manažéri prekladu"
 
-#: src/about.cpp:130
+#: src/about.cpp:131
 #, fuzzy
 msgid "+Afrikaans Translation"
 msgstr "+Dánsky preklad"
 
-#: src/about.cpp:134
+#: src/about.cpp:135
 msgid "+Basque Translation"
 msgstr "+Baskický preklad"
 
-#: src/about.cpp:139
+#: src/about.cpp:140
 msgid "+Bulgarian Translation"
 msgstr "+Bulharský preklad"
 
-#: src/about.cpp:142
+#: src/about.cpp:143
 msgid "+Catalan Translation"
 msgstr "+Katalánsky preklad"
 
-#: src/about.cpp:150
+#: src/about.cpp:151
 #, fuzzy
 msgid "+Chinese Translation"
 msgstr "+Fínsky preklad"
 
-#: src/about.cpp:153
+#: src/about.cpp:154
 msgid "+Czech Translation"
 msgstr "+Český preklad"
 
-#: src/about.cpp:161
+#: src/about.cpp:162
 msgid "+Danish Translation"
 msgstr "+Dánsky preklad"
 
-#: src/about.cpp:165
+#: src/about.cpp:166
 msgid "+Dutch Translation"
 msgstr "+Nizozemský preklad"
 
-#: src/about.cpp:172
+#: src/about.cpp:173
 #, fuzzy
 msgid "+English (GB) Translation"
 msgstr "+Dánsky preklad"
 
-#: src/about.cpp:175
+#: src/about.cpp:176
 #, fuzzy
 msgid "+Estonian Translation"
 msgstr "+Taliansky preklad"
 
-#: src/about.cpp:178
+#: src/about.cpp:179
 msgid "+Finnish Translation"
 msgstr "+Fínsky preklad"
 
-#: src/about.cpp:183
+#: src/about.cpp:184
 msgid "+French Translation"
 msgstr "+Francúzsky preklad"
 
-#: src/about.cpp:196
+#: src/about.cpp:197
 msgid "+German Translation"
 msgstr "+Nemecký preklad"
 
-#: src/about.cpp:207
+#: src/about.cpp:208
 msgid "+Greek Translation"
 msgstr "+Grécky preklad"
 
-#: src/about.cpp:211
+#: src/about.cpp:212
 msgid "+Hungarian Translation"
 msgstr "+Maďarský preklad"
 
-#: src/about.cpp:222
+#: src/about.cpp:223
 msgid "+Italian Translation"
 msgstr "+Taliansky preklad"
 
-#: src/about.cpp:231
+#: src/about.cpp:232
 #, fuzzy
 msgid "+Japanese Translation"
 msgstr "+Fínsky preklad"
 
-#: src/about.cpp:236
+#: src/about.cpp:237
 #, fuzzy
 msgid "+Latin Translation"
 msgstr "+Katalánsky preklad"
 
-#: src/about.cpp:239
+#: src/about.cpp:240
 msgid "+Norwegian Translation"
 msgstr "+Nórsky preklad"
 
-#: src/about.cpp:245
+#: src/about.cpp:246
 msgid "+Polish Translation"
 msgstr "+Poľský preklad"
 
-#: src/about.cpp:255
+#: src/about.cpp:256
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugalský preklad (Brazília)"
 
-#: src/about.cpp:263
+#: src/about.cpp:264
 msgid "+Russian Translation"
 msgstr "+Ruský preklad"
 
-#: src/about.cpp:268
+#: src/about.cpp:269
 #, fuzzy
 msgid "+Serbian Translation"
 msgstr "+Nemecký preklad"
 
-#: src/about.cpp:271
+#: src/about.cpp:272
 msgid "+Slovak Translation"
 msgstr "+Slovenský preklad"
 
-#: src/about.cpp:274
+#: src/about.cpp:275
 #, fuzzy
 msgid "+Slovenian Translation"
 msgstr "+Slovenský preklad"
 
-#: src/about.cpp:277
+#: src/about.cpp:278
 msgid "+Spanish Translation"
 msgstr "+Španielsky preklad"
 
-#: src/about.cpp:285
+#: src/about.cpp:286
 msgid "+Swedish Translation"
 msgstr "+Švédsky preklad"
 
-#: src/about.cpp:291
+#: src/about.cpp:292
 #, fuzzy
 msgid "+Turkish Translation"
 msgstr "+Dánsky preklad"
 
-#: src/about.cpp:295
+#: src/about.cpp:296
 msgid "+Contributors"
 msgstr "+Prispievatelia"
 
-#: src/about.cpp:298
+#: src/about.cpp:299
 msgid "+Bots"
 msgstr "+Roboti"
 
-#: src/about.cpp:334 src/help.cpp:2659
+#: src/about.cpp:335 src/help.cpp:2659
 msgid "Close"
 msgstr "Zavri"
 
@@ -8615,11 +8614,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Neplatný)"
 
-#: src/dialogs.cpp:373 src/game.cpp:746
+#: src/dialogs.cpp:373 src/game.cpp:750
 msgid "Campaign"
 msgstr "Výprava"
 
-#: src/dialogs.cpp:375 src/game.cpp:1113
+#: src/dialogs.cpp:375 src/game.cpp:1117
 msgid "Multiplayer"
 msgstr "Zápas"
 
@@ -8709,7 +8708,7 @@ msgstr ""
 msgid "Date"
 msgstr "Brána"
 
-#: src/dialogs.cpp:550 src/game.cpp:880 src/help.cpp:1117
+#: src/dialogs.cpp:550 src/game.cpp:884 src/help.cpp:1117
 #: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2051 src/playturn.cpp:2228
 msgid "Name"
 msgstr "Meno"
@@ -8775,256 +8774,256 @@ msgstr "Storno"
 msgid "Vera.ttf"
 msgstr "Bepa-Roman.ttf"
 
-#: src/game.cpp:387
+#: src/game.cpp:391
 msgid "The Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
 
-#: src/game.cpp:616
+#: src/game.cpp:620
 #, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Súbor, ktorý si chcel načítať, je poškodený"
 
-#: src/game.cpp:638 src/multiplayer_connect.cpp:888
+#: src/game.cpp:642 src/multiplayer_connect.cpp:888
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Toto je uložená hra z inej verzie programu. Mám sa ju pokúsiť načítať?"
 
-#: src/game.cpp:646 src/game.cpp:649 src/multiplayer_connect.cpp:873
+#: src/game.cpp:650 src/game.cpp:653 src/multiplayer_connect.cpp:873
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Súbor, ktorý ste chceli načítať, je poškodený: '"
 
-#: src/game.cpp:652
+#: src/game.cpp:656
 msgid "File I/O Error while reading the game"
 msgstr "Chyba pri čítaní súboru hry"
 
-#: src/game.cpp:736
+#: src/game.cpp:740
 msgid "Get More Campaigns..."
 msgstr "Ďalšie výpravy..."
 
-#: src/game.cpp:737
+#: src/game.cpp:741
 msgid "Download more campaigns from a server on Internet."
 msgstr "Stiahni si ďalšie výpravy z internetového servera."
 
-#: src/game.cpp:747
+#: src/game.cpp:751
 msgid "Choose the campaign you want to play:"
 msgstr "Vyber si, ktorú výpravu chceš hrať:"
 
-#: src/game.cpp:776
+#: src/game.cpp:780
 msgid "Difficulty"
 msgstr "Zložitosť"
 
-#: src/game.cpp:777
+#: src/game.cpp:781
 msgid "Select difficulty level:"
 msgstr "Vyber si náročnosť:"
 
-#: src/game.cpp:802
+#: src/game.cpp:806
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:805
+#: src/game.cpp:809
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:808
+#: src/game.cpp:812
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:835
+#: src/game.cpp:839
 msgid "Connect to Server"
 msgstr "Pripoj sa na server"
 
-#: src/game.cpp:836
+#: src/game.cpp:840
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Teraz sa pripojíš na server výprav, aby si si stiahol výpravy."
 
-#: src/game.cpp:837
+#: src/game.cpp:841
 msgid "Server: "
 msgstr "Server:"
 
-#: src/game.cpp:850
+#: src/game.cpp:854
 msgid "Could not connect to host."
 msgstr "Neviem sa pripojiť na server."
 
-#: src/game.cpp:858
+#: src/game.cpp:862
 msgid "Awaiting response from server"
 msgstr "Čakám na odpoveď servera"
 
-#: src/game.cpp:871
+#: src/game.cpp:875
 msgid "Error communicating with the server."
 msgstr "Chyba pri komunikácii so serverom."
 
-#: src/game.cpp:880 src/titlescreen.cpp:170
+#: src/game.cpp:884 src/titlescreen.cpp:170
 msgid "Version"
 msgstr "Verzia"
 
-#: src/game.cpp:881
+#: src/game.cpp:885
 msgid "Author"
 msgstr "Autor"
 
-#: src/game.cpp:881
+#: src/game.cpp:885
 msgid "Downloads"
 msgstr "Stiahnutí"
 
-#: src/game.cpp:881
+#: src/game.cpp:885
 msgid "Size"
 msgstr "Veľkosť"
 
-#: src/game.cpp:933
+#: src/game.cpp:937
 msgid "Publish campaign: "
 msgstr "Publikuj výpravu:"
 
-#: src/game.cpp:937
+#: src/game.cpp:941
 msgid "Delete campaign: "
 msgstr "Vymaž výpravu:"
 
-#: src/game.cpp:941
+#: src/game.cpp:945
 msgid "There are no campaigns available for download from this server."
 msgstr "Na tomto serveri nie sú k dispozícii žiadne výpravy."
 
-#: src/game.cpp:948
+#: src/game.cpp:952
 msgid "Choose the campaign to download."
 msgstr "Vyber si výpravu, ktorú chceš stiahnuť."
 
-#: src/game.cpp:948
+#: src/game.cpp:952
 msgid "Get Campaign"
 msgstr "Stiahni výpravu"
 
-#: src/game.cpp:968
+#: src/game.cpp:972
 msgid "Downloading campaign..."
 msgstr "Sťahujem výpravu..."
 
-#: src/game.cpp:982
+#: src/game.cpp:986
 msgid "Cannot rescan the filesystem"
 msgstr ""
 
-#: src/game.cpp:993
+#: src/game.cpp:997
 msgid "Campaign Installed"
 msgstr "Výprava nainštalovaná"
 
-#: src/game.cpp:993
+#: src/game.cpp:997
 msgid "The campaign has been installed."
 msgstr "Výprava je nainštalovaná."
 
-#: src/game.cpp:995
+#: src/game.cpp:999
 msgid "Network communication error."
 msgstr "Chyba pri komunikácii na sieti."
 
-#: src/game.cpp:997
+#: src/game.cpp:1001
 msgid "Remote host disconnected."
 msgstr "Server sa odpojil"
 
-#: src/game.cpp:999
+#: src/game.cpp:1003
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Nastala chyba pri vytváraní inštalačných súborov tejto výpravy."
 
-#: src/game.cpp:1011 src/game.cpp:1051 src/game.cpp:1076
+#: src/game.cpp:1015 src/game.cpp:1055 src/game.cpp:1080
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:204
 msgid "Connection timed out"
 msgstr "Čas na pripojenie vypršal"
 
-#: src/game.cpp:1014 src/game.cpp:1053 src/game.cpp:1078
+#: src/game.cpp:1018 src/game.cpp:1057 src/game.cpp:1082
 msgid "The server responded with an error: \""
 msgstr "Server ohlásil chybu: \""
 
-#: src/game.cpp:1018
+#: src/game.cpp:1022
 msgid "Terms"
 msgstr "Podmienky"
 
-#: src/game.cpp:1056 src/game.cpp:1081
+#: src/game.cpp:1060 src/game.cpp:1085
 msgid "Response"
 msgstr "Odpoveď"
 
-#: src/game.cpp:1096
+#: src/game.cpp:1100
 msgid "Join Official Server"
 msgstr "Prihlás sa na Wesnoth"
 
-#: src/game.cpp:1097
+#: src/game.cpp:1101
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Prihlás sa na oficiálny server Wesnothu"
 
-#: src/game.cpp:1099 src/multiplayer_lobby.cpp:108
+#: src/game.cpp:1103 src/multiplayer_lobby.cpp:108
 msgid "Join Game"
 msgstr "Pridaj sa k hre"
 
-#: src/game.cpp:1100
+#: src/game.cpp:1104
 msgid "Join a server or hosted game"
 msgstr "Pridaj sa na server alebo do založenej hry"
 
-#: src/game.cpp:1102
+#: src/game.cpp:1106
 msgid "Host Networked Game"
 msgstr "Založ sieťovú hru"
 
-#: src/game.cpp:1103
+#: src/game.cpp:1107
 msgid "Host a game without using a server"
 msgstr "Založ novú hru bez pomoci servera"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1109
 msgid "Hotseat Game"
 msgstr "Horúce kreslo"
 
-#: src/game.cpp:1106
+#: src/game.cpp:1110
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Hrajte zápas viacerí na jednom stroji"
 
-#: src/game.cpp:1108
+#: src/game.cpp:1112
 msgid "Human vs AI"
 msgstr "Človek proti počítaču"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1113
 msgid "Play a game against AI opponents"
 msgstr "Hraj zápas proti počítačovým súperom"
 
-#: src/game.cpp:1115 src/multiplayer.cpp:187
+#: src/game.cpp:1119 src/multiplayer.cpp:187
 #, fuzzy
 msgid "Login: "
 msgstr "Prihlásenie"
 
-#: src/game.cpp:1146 src/playcampaign.cpp:183
+#: src/game.cpp:1150 src/playcampaign.cpp:183
 msgid "The game could not be loaded: "
 msgstr "Nepodarilo sa načítať hru: "
 
-#: src/game.cpp:1148 src/playcampaign.cpp:186
+#: src/game.cpp:1152 src/playcampaign.cpp:186
 msgid "Error while playing the game: "
 msgstr "Chyba pri hraní hry: "
 
-#: src/game.cpp:1160 src/playcampaign.cpp:189
+#: src/game.cpp:1164 src/playcampaign.cpp:189
 msgid "The game map could not be loaded: "
 msgstr "Nepodarilo sa načítať mapu hry: "
 
-#: src/game.cpp:1186
+#: src/game.cpp:1190
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/game.cpp:1187
+#: src/game.cpp:1191
 #, fuzzy
 msgid "Choose your preferred language:"
 msgstr "Vyber si vhodný jazyk"
 
-#: src/game.cpp:1316
+#: src/game.cpp:1320
 #, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Nepodarilo sa načítať mapu hry: "
 
-#: src/game.cpp:1321
+#: src/game.cpp:1325
 msgid "ERROR DETAILS:"
 msgstr ""
 
-#: src/game.cpp:1330
+#: src/game.cpp:1334
 #, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
 
-#: src/game.cpp:1380
+#: src/game.cpp:1384
 msgid "Error loading game configuration files: '"
 msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
 
-#: src/game.cpp:1381
+#: src/game.cpp:1385
 msgid "' (The game will now exit)"
 msgstr "' (Hra teraz skončí)"
 
-#: src/game.cpp:1473
+#: src/game.cpp:1477
 #, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"

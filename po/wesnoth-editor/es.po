@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-13 18:40+0200\n"
+"POT-Creation-Date: 2005-07-17 17:50+0200\n"
 "PO-Revision-Date: 2005-05-25 01:52+0200\n"
 "Last-Translator: David Martínez Moreno\n"
 "Language-Team: none\n"
@@ -16,77 +16,123 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/themes/editor.cfg:225
+#: data/themes/editor.cfg:429
 msgid "File"
 msgstr "Fichero"
 
-#: data/themes/editor.cfg:234
+#: data/themes/editor.cfg:438
 msgid "Edit"
 msgstr "Editar"
 
-#: src/editor/editor.cpp:312
+#: src/editor/editor.cpp:153
+msgid "Draw tiles"
+msgstr ""
+
+#: src/editor/editor.cpp:155
+#, fuzzy
+msgid "Fill"
+msgstr "Fichero"
+
+#: src/editor/editor.cpp:157
+msgid "Set player's starting position"
+msgstr ""
+
+#: src/editor/editor.cpp:159
+msgid "Zoom in"
+msgstr ""
+
+#: src/editor/editor.cpp:161
+msgid "Zoom out"
+msgstr ""
+
+#: src/editor/editor.cpp:163
+msgid "Undo"
+msgstr ""
+
+#: src/editor/editor.cpp:165
+msgid "Redo"
+msgstr ""
+
+#: src/editor/editor.cpp:167
+msgid "Zoom to default view"
+msgstr ""
+
+#: src/editor/editor.cpp:169
+msgid "Toggle grid"
+msgstr ""
+
+#: src/editor/editor.cpp:171
+#, fuzzy
+msgid "Resize the map"
+msgstr "Cambiar el tamaño del mapa"
+
+#: src/editor/editor.cpp:173
+msgid "Flip map"
+msgstr ""
+
+#: src/editor/editor.cpp:364
 msgid "Save the Map As"
 msgstr "Guardar el mapa como..."
 
-#: src/editor/editor.cpp:323
+#: src/editor/editor.cpp:375
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "El mapa ya existe. ¿Quiere sobreescribirlo?"
 
-#: src/editor/editor.cpp:349
+#: src/editor/editor.cpp:401
 msgid "Which Player?"
 msgstr "¿Qué jugador?"
 
-#: src/editor/editor.cpp:350
+#: src/editor/editor.cpp:402
 msgid "Which player should start here?"
 msgstr "¿Qué jugador debería empezar aquí?"
 
-#: src/editor/editor.cpp:402
+#: src/editor/editor.cpp:454
 msgid "Choose a Map to Load"
 msgstr "Escoja un mapa a cargar"
 
-#: src/editor/editor.cpp:406
+#: src/editor/editor.cpp:458
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
 
-#: src/editor/editor.cpp:424 src/editor/editor.cpp:503
+#: src/editor/editor.cpp:476 src/editor/editor.cpp:555
 msgid "The file does not contain a valid map."
 msgstr "El fichero no contiene un mapa válido."
 
-#: src/editor/editor.cpp:565
+#: src/editor/editor.cpp:617
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "«$filename» no existe o no es un fichero legible."
 
-#: src/editor/editor.cpp:577
+#: src/editor/editor.cpp:629
 msgid "Load failed: "
 msgstr "Error de carga: "
 
-#: src/editor/editor.cpp:773
+#: src/editor/editor.cpp:825
 msgid "You must have a hex selected on the board."
 msgstr "Debe tener seleccionado un hexágono en el tablero."
 
-#: src/editor/editor.cpp:1022
+#: src/editor/editor.cpp:1074
 msgid "Quit Editor"
 msgstr "Salir del editor"
 
-#: src/editor/editor.cpp:1027
+#: src/editor/editor.cpp:1079
 msgid "Do you want to save the map before quitting?"
 msgstr "¿Desea guardar el mapa antes de salir?"
 
-#: src/editor/editor.cpp:1059
+#: src/editor/editor.cpp:1111
 msgid "Map saved."
 msgstr "Mapa guardado."
 
-#: src/editor/editor.cpp:1066
+#: src/editor/editor.cpp:1118
 msgid "Could not save the map: $msg"
 msgstr "No se ha podido guardar el mapa: $msg"
 
-#: src/editor/editor.cpp:1081
+#: src/editor/editor.cpp:1133
 msgid "Error: Illegal character in filename."
 msgstr ""
 
-#: src/editor/editor.cpp:1137
+#: src/editor/editor.cpp:1189
 msgid "Player"
 msgstr "Jugador"
 
@@ -174,6 +220,10 @@ msgstr "Eje Y"
 #: src/editor/editor_dialogs.cpp:493
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Voltear (puede que cambien las dimensiones del mapa):"
+
+#: src/editor/editor_main.cpp:231
+msgid "Battle for Wesnoth Map Editor"
+msgstr ""
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"

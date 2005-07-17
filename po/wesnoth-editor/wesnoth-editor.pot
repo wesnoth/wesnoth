@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-13 18:40+0200\n"
+"POT-Creation-Date: 2005-07-17 17:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,77 +16,121 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/themes/editor.cfg:225
+#: data/themes/editor.cfg:429
 msgid "File"
 msgstr ""
 
-#: data/themes/editor.cfg:234
+#: data/themes/editor.cfg:438
 msgid "Edit"
 msgstr ""
 
-#: src/editor/editor.cpp:312
+#: src/editor/editor.cpp:153
+msgid "Draw tiles"
+msgstr ""
+
+#: src/editor/editor.cpp:155
+msgid "Fill"
+msgstr ""
+
+#: src/editor/editor.cpp:157
+msgid "Set player's starting position"
+msgstr ""
+
+#: src/editor/editor.cpp:159
+msgid "Zoom in"
+msgstr ""
+
+#: src/editor/editor.cpp:161
+msgid "Zoom out"
+msgstr ""
+
+#: src/editor/editor.cpp:163
+msgid "Undo"
+msgstr ""
+
+#: src/editor/editor.cpp:165
+msgid "Redo"
+msgstr ""
+
+#: src/editor/editor.cpp:167
+msgid "Zoom to default view"
+msgstr ""
+
+#: src/editor/editor.cpp:169
+msgid "Toggle grid"
+msgstr ""
+
+#: src/editor/editor.cpp:171
+msgid "Resize the map"
+msgstr ""
+
+#: src/editor/editor.cpp:173
+msgid "Flip map"
+msgstr ""
+
+#: src/editor/editor.cpp:364
 msgid "Save the Map As"
 msgstr ""
 
-#: src/editor/editor.cpp:323
+#: src/editor/editor.cpp:375
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: src/editor/editor.cpp:349
+#: src/editor/editor.cpp:401
 msgid "Which Player?"
 msgstr ""
 
-#: src/editor/editor.cpp:350
+#: src/editor/editor.cpp:402
 msgid "Which player should start here?"
 msgstr ""
 
-#: src/editor/editor.cpp:402
+#: src/editor/editor.cpp:454
 msgid "Choose a Map to Load"
 msgstr ""
 
-#: src/editor/editor.cpp:406
+#: src/editor/editor.cpp:458
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
 
-#: src/editor/editor.cpp:424 src/editor/editor.cpp:503
+#: src/editor/editor.cpp:476 src/editor/editor.cpp:555
 msgid "The file does not contain a valid map."
 msgstr ""
 
-#: src/editor/editor.cpp:565
+#: src/editor/editor.cpp:617
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr ""
 
-#: src/editor/editor.cpp:577
+#: src/editor/editor.cpp:629
 msgid "Load failed: "
 msgstr ""
 
-#: src/editor/editor.cpp:773
+#: src/editor/editor.cpp:825
 msgid "You must have a hex selected on the board."
 msgstr ""
 
-#: src/editor/editor.cpp:1022
+#: src/editor/editor.cpp:1074
 msgid "Quit Editor"
 msgstr ""
 
-#: src/editor/editor.cpp:1027
+#: src/editor/editor.cpp:1079
 msgid "Do you want to save the map before quitting?"
 msgstr ""
 
-#: src/editor/editor.cpp:1059
+#: src/editor/editor.cpp:1111
 msgid "Map saved."
 msgstr ""
 
-#: src/editor/editor.cpp:1066
+#: src/editor/editor.cpp:1118
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/editor/editor.cpp:1081
+#: src/editor/editor.cpp:1133
 msgid "Error: Illegal character in filename."
 msgstr ""
 
-#: src/editor/editor.cpp:1137
+#: src/editor/editor.cpp:1189
 msgid "Player"
 msgstr ""
 
@@ -172,6 +216,10 @@ msgstr ""
 
 #: src/editor/editor_dialogs.cpp:493
 msgid "Flip around (this may change the dimensions of the map):"
+msgstr ""
+
+#: src/editor/editor_main.cpp:231
+msgid "Battle for Wesnoth Map Editor"
 msgstr ""
 
 #: src/editor/editor_palettes.cpp:311
