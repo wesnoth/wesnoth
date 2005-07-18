@@ -433,7 +433,7 @@ AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome2 = xyes])
 # Checks for types.                                                   #
 #######################################################################
 
-# No need to chech anymore    
+# No need to check anymore    
 #AC_LANG([C++])
 #AC_MSG_CHECKING([if char is signed])
 
@@ -450,6 +450,7 @@ AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome2 = xyes])
 #######################################################################
 
 # Use a modified version of ac_link so that libtool gets called
+# this seems pretty broken on most systems
 AC_PATH_PROG([LTOOL], [libtool], [])
 if test "$static" = "yes" -a -n "$LTOOL"
 then
@@ -479,6 +480,8 @@ LIBS="$LIBS $SDL_LIBS"
 # There's no need for this, $SDL_CONFIG comes with libsdl and
 # it doesn't find it in FreeBSD
 # AC_CHECK_LIB([SDL], [SDL_Init])
+# unfortunately, sdl_config is not shipped with the Mac OS X packages...
+# so recommend using fink sdl packages as a workaround
 
 ac_link="$LDPREFIX $ac_link"
 AC_CHECK_LIB([SDL_image],
@@ -751,7 +754,7 @@ do
     echo "creating po/$domain/Makefile.in.in"
     mkdir -p po/$domain
     rm -f po/$domain/Makefile.in.in
-    ln -s $topdir/po/Makefile.in.in po/$domain/Makefile.in.in
+    ln -s "$topdir/po/Makefile.in.in" "po/$domain/Makefile.in.in"
 done
 
 AC_CONFIG_COMMANDS([translations],
