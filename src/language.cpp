@@ -124,6 +124,15 @@ std::vector<language_def> get_languages()
 static void wesnoth_setlocale(int category, std::string const &slocale)
 {
 	char const *locale = slocale.c_str();
+	// FIXME: ideally we should check LANGUAGE and on first invocation
+	// use that value, so someone with es would get the game in Spanish
+	// instead of en_US the first time round
+	// LANGUAGE overrides other settings, so for now just get rid of it
+	// does Windows have unsetenv? if so, can make this unconditional
+#ifndef _WIN32
+	unsetenv ("LANGUAGE"); // void so no return value to check
+#endif
+
 #ifdef __BEOS__
 	if(setenv ("LANG", locale, 1) == -1)
 		std::cerr << "setenv LANG failed: " << strerror(errno);
@@ -167,6 +176,8 @@ static void wesnoth_setlocale(int category, std::string const &slocale)
 	if (res == NULL)
 		std::cerr << "WARNING: setlocale() failed for "
 			  << locale << ".\n";
+	else
+		std::cerr << "set locale to " << locale << "\n";
 }
 
 bool set_language(const language_def& locale)
