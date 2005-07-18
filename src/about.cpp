@@ -290,7 +290,9 @@ std::vector<std::string> get_text() {
 		"-   wint3r",
 
 		"_" N_("+Turkish Translation"),
+		"-   Enes Akın (yekialem)",
 		"-   İhsan Akın",
+		"-   Kosif",
 		"-   Selim Farsakoğlu",
 
 		"_" N_("+Contributors"),
