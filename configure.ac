@@ -287,8 +287,15 @@ fi
 AC_PATH_PROGS([PNG_CONFIG], [libpng-config libpng12-config], [none])
 
 if test "x$PNG_CONFIG" = "xnone"; then
-    pngfound=no
-    AC_MSG_WARN([*** LIBPNG not found.])
+    AC_PATH_PROG([PNG_CONFIG], [pkg-config], [none])
+    if test "x$PNG_CONFIG" = "xnone"; then
+	pngfound=no
+	AC_MSG_WARN([*** LIBPNG not found.])
+    else
+	pngfound=yes
+	PNG_CFLAGS=`$PNG_CONFIG --cflags libpng12`
+	PNG_LIBS=`$PNG_CONFIG --libs libpng12`
+    fi
 else
     pngfound=yes
     PNG_CFLAGS=`$PNG_CONFIG --cflags`

@@ -5,6 +5,7 @@ CVS HEAD:
         Swedish, Turkish
    * fixed help description of income and upkeep (#13565)
    * updated several unit descriptions
+   * standardized on "magi" as plural of "mage"
    * document that Woses receive no traits (#13630)
    * replay suggested save game now translated (#13558)
    * fixed some typos (#13714,#13715,#13716,#13717,#13718)
@@ -33,6 +34,7 @@ CVS HEAD:
      * made campaign easier on "Easy" level
    * Eastern Invasion:
      * revised Approaching Weldyn for quicker gameplay
+     * tweaked Undead Crossing
    * The Dark Hordes:
      * cleaned up old id tags; added portraits for Tanar, Nati and Gwiti
  * server now supports redirection based on client version number
@@ -41,7 +43,12 @@ CVS HEAD:
    * relocated and enlarged the buttons (#11967)
    * maps can't be saved with illegal characters (#10704)
    * replaced the buttons under the minimap with a toolbar
- * added quotes to configure.ac (forum thread 6747)
+ * build process
+   * added quotes to configure.ac (forum thread 6747)
+   * new utility extractsources to extract lists of sources from Makefile.am
+   * new utility makemam to construct Makefile.am from Makefile.am.in and
+     files containing lists of sources
+   * fix libpng not being detected on NetBSD (#13808)
  * various bug fixes and code cleanups
 
 Version 0.9.3:
