@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-17 17:49+0200\n"
+"POT-Creation-Date: 2005-07-19 08:13+0200\n"
 "PO-Revision-Date: 2004-09-11 21:11+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -20,11 +20,11 @@ msgstr ""
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 msgstr ""
 
-#: data/game.cfg:28
+#: data/game.cfg:25
 msgid "Binary Saves"
 msgstr ""
 
-#: data/game.cfg:35
+#: data/game.cfg:32
 #, fuzzy
 msgid "Show Combat"
 msgstr "Combate"
@@ -545,8 +545,8 @@ msgstr ""
 msgid "Wrap Up"
 msgstr "Conclusão"
 
+# FIXME: and is missing in msgstr
 #: data/help.cfg:198
-#FIXME: and is missing in msgstr
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -556,9 +556,9 @@ msgid ""
 msgstr ""
 "Assim concluímos os fundamentos de Wesnoth. Você talvez queira ler mais "
 "sobre estratégia básica, ou se familiarizar com <ref>dst=traits "
-"text=Características</ref> <ref>dst=abilities text=Habilidades</ref>, mas você já "
-"sabe tudo o que precisa para jogar a campanha Herdeiro do Trono. Divirta-se, "
-"e boa sorte!"
+"text=Características</ref> <ref>dst=abilities text=Habilidades</ref>, mas "
+"você já sabe tudo o que precisa para jogar a campanha Herdeiro do Trono. "
+"Divirta-se, e boa sorte!"
 
 #: data/help.cfg:203 src/titlescreen.cpp:193
 msgid "About"
@@ -3533,8 +3533,8 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Berserk:\n"
-"When used offensively, this attack presses the engagement until one of the "
-"combatants is slain."
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain."
 msgstr ""
 "Fúria:\n"
 "Sempre que usada ofensivamente ou defensivamente, este ataque mantém o "
@@ -7251,12 +7251,23 @@ msgstr ""
 msgid "Red Mage"
 msgstr "Mago Vermelho"
 
-#: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:117
+#: data/units/Red_Mage.cfg:24 data/units/Red_Mage.cfg:121
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
 "significance of this change is often lost on the peasantry, who mistakenly "
-"title Master Magi as "
+"title Master Magi as 'Red Magi'. Likewise, the symbolism of the change in "
+"colors is often mistaken to signify the mage's ability to seemingly conjure "
+"fire from nothing but thin air, a trick which, although undeniably useful, "
+"is viewed as a crass application of the knowledge which they have "
+"painstakingly accrued.\n"
+"\n"
+"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
+"number of tricks up their sleeves, including the gouts of fire which may "
+"have cemented their colloquial name.\n"
+"\n"
+"Special Notes: the red mage's fireballs are magical, and always have a high "
+"chance of hitting an opponent."
 msgstr ""
 
 #: data/units/Red_Mage.cfg:100
@@ -7549,7 +7560,7 @@ msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
 "the world together, and have managed, somewhat, to lift the veil of a world "
-"far more vast than most men would ever imagine. Often viewed as sages, or "
+"far more vast than most would ever imagine. Often viewed as sages, or "
 "wandering mystics, silver magi act under an agenda which is obscure even to "
 "their own colleagues. Though helpful to the magisteriums which often employ "
 "them in the field, they remain somewhat aloof.\n"
@@ -7562,9 +7573,9 @@ msgid ""
 "when others have pried into their work, they have always abandoned the "
 "endeavor, never to speak of it again.\n"
 "\n"
-"Silver magi are often more physically apt than other magi, and their skills "
-"are of undeniable use on the battlefield, if one can manage to coerce the "
-"mage into applying them.\n"
+"Silver magi are often more physically adept than other magi, and their "
+"skills are of undeniable use on the battlefield, if one can manage to coerce "
+"the mage into applying them.\n"
 "\n"
 "Special Notes: the ranged attack of a silver mage is magical, and always has "
 "a high chance of hitting an opponent. Silver Magi are highly resistant to "
@@ -7983,11 +7994,11 @@ msgstr "Mago Branco"
 #: data/units/White_Mage.cfg:30 data/units/White_Mage.cfg:105
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
-"the suffering and squalor in which humans too often live, find that they "
+"the suffering and squalor in which humanity too often lives, find that they "
 "cannot bring themselves to be cloistered into a life of study. These men and "
 "women give up the life of a mage, and join monastic orders, dedicating the "
-"knowledge and power they have been given to the good of all. After training, "
-"they often travel the land, ministering to sickness and injuries.\n"
+"skills they have been given to the good of all. After their ordination, they "
+"often travel the world, ministering to sickness and injury.\n"
 "\n"
 "Though not trained for combat, there is one enemy against which they are a "
 "potent ally. If need arises, they can call on the power of the Light to "
@@ -8272,16 +8283,16 @@ msgstr "+Tradução para o Sueco"
 msgid "+Turkish Translation"
 msgstr "+Tradução para o Dinamarquês"
 
-#: src/about.cpp:296
+#: src/about.cpp:298
 msgid "+Contributors"
 msgstr "+Contribuidores"
 
-#: src/about.cpp:299
+#: src/about.cpp:301
 #, fuzzy
 msgid "+Bots"
 msgstr "+ Robôs"
 
-#: src/about.cpp:335 src/help.cpp:2659
+#: src/about.cpp:337 src/help.cpp:2659
 msgid "Close"
 msgstr "Fechar"
 
@@ -9008,7 +9019,7 @@ msgstr "Pular"
 msgid "The End"
 msgstr "O Fim"
 
-#: src/language.cpp:41 src/language.cpp:184
+#: src/language.cpp:41 src/language.cpp:195
 msgid "System default language"
 msgstr "Língua padrão do sistema"
 
