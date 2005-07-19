@@ -397,6 +397,7 @@ void menu::set_max_height(const int new_max_height) {
 	max_height_ = new_max_height;
 	itemRects_.clear();
 	max_items_ = -1;
+	update_size();
 }
 
 void menu::set_max_width(const int new_max_width) {

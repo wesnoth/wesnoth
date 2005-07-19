@@ -352,6 +352,7 @@ void ui::layout_children(const SDL_Rect& rect)
 {
 	title_.set_location(xscale(11)+4, xscale(42) + 4);
 	users_menu_.set_width(xscale(159));
+	users_menu_.set_max_width(xscale(159));
 	users_menu_.set_location(xscale(856), yscale(42));
 	users_menu_.set_height(yscale(715));
 	users_menu_.set_max_height(yscale(715));
@@ -375,19 +376,17 @@ void ui::gamelist_updated(bool silent)
 
 void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 {
-	const int old_users = user_list_.size();
-	user_list_ = list;
-	const int new_users = user_list_.size();
-
 	if(!silent) {
-		if(new_users < old_users) {
+		if(list.size() < user_list_.size()) {
 			sound::play_sound(game_config::sounds::user_leave);
-		} else if(new_users > old_users) {
+		} else if(list.size() > user_list_.size()) {
 			sound::play_sound(game_config::sounds::user_arrive);
 		}
 	}
 
-	users_menu_.set_items(user_list_);
+	user_list_ = list;
+
+	users_menu_.set_items(user_list_,true,true);
 }
 
 const gui::widget& ui::title() const
