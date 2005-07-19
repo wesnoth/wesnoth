@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-17 17:50+0200\n"
-"PO-Revision-Date: 2005-05-12 18:44+0300\n"
+"PO-Revision-Date: 2005-07-19 17:18+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -32,49 +32,47 @@ msgstr "Правка"
 
 #: src/editor/editor.cpp:153
 msgid "Draw tiles"
-msgstr ""
+msgstr "Рисовать квадраты"
 
 #: src/editor/editor.cpp:155
-#, fuzzy
 msgid "Fill"
-msgstr "Файл"
+msgstr "Заполнить"
 
 #: src/editor/editor.cpp:157
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Установить начальные позиции игроков"
 
 #: src/editor/editor.cpp:159
 msgid "Zoom in"
-msgstr ""
+msgstr "Увеличить"
 
 #: src/editor/editor.cpp:161
 msgid "Zoom out"
-msgstr ""
+msgstr "Уменьшить"
 
 #: src/editor/editor.cpp:163
 msgid "Undo"
-msgstr ""
+msgstr "Отменить"
 
 #: src/editor/editor.cpp:165
 msgid "Redo"
-msgstr ""
+msgstr "Повторить"
 
 #: src/editor/editor.cpp:167
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Увеличить к виду по умолчанию"
 
 #: src/editor/editor.cpp:169
 msgid "Toggle grid"
-msgstr ""
+msgstr "Включить сетку"
 
 #: src/editor/editor.cpp:171
-#, fuzzy
 msgid "Resize the map"
 msgstr "Изменить размер карты"
 
 #: src/editor/editor.cpp:173
 msgid "Flip map"
-msgstr ""
+msgstr "Перебросить карту"
 
 #: src/editor/editor.cpp:364
 msgid "Save the Map As"
@@ -101,6 +99,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
+"Внимание: Недопустимые символы в названии карты. Вы должны сохранить под "
+"другим именем."
 
 #: src/editor/editor.cpp:476 src/editor/editor.cpp:555
 msgid "The file does not contain a valid map."
@@ -136,7 +136,7 @@ msgstr "Невозможно сохранить карту: $msg"
 
 #: src/editor/editor.cpp:1133
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Ошибка: Недопустимые символы в названии файла."
 
 #: src/editor/editor.cpp:1189
 msgid "Player"
@@ -228,7 +228,7 @@ msgstr "Перевернуть (это может изменить размер�
 
 #: src/editor/editor_main.cpp:231
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Битва за Веснот: Редактор карт"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -245,15 +245,3 @@ msgstr "Удалить файл"
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Ошибка удаления файла."
-
-#~ msgid "Draw"
-#~ msgstr "Рисовать"
-
-#~ msgid "Flood"
-#~ msgstr "Заполнить"
-
-#~ msgid "Start P"
-#~ msgstr "Старт П"
-
-#~ msgid "Paste"
-#~ msgstr "Вставить"

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-19 08:13+0200\n"
-"PO-Revision-Date: 2005-05-12 18:58+0300\n"
+"PO-Revision-Date: 2005-07-19 17:15+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -590,7 +590,6 @@ msgstr ""
 "сможете выбрать тип будущего соединения."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -707,7 +706,6 @@ msgstr ""
 "аспекта: Доход и Содержание."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -718,10 +716,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"С доходом всё просто. C каждой деревни, контролируемой Вами, Вы получаете "
-"одну единицу золота за ход. Если у Вас десять деревень, то Вы должны "
-"получать десять единиц золота. К несчастью, Содержание Ваших соединений "
-"вычитает из Вашего дохода определённую сумму, подробнее об этом ниже."
+"С доходом всё просто. Вы получаете 2 единицы золота за ход. C каждой "
+"деревни, контролируемой Вами, Вы дополнительно получаете 1 единицу золота "
+"золота за ход. Если у Вас десять деревень, то Вы должны получать 12 единиц "
+"золота. К несчастью, Содержание Ваших соединений вычитает из Вашего дохода "
+"определённую сумму, подробнее об этом ниже."
 
 #: data/help.cfg:189
 msgid ""
@@ -745,7 +744,6 @@ msgstr ""
 "единиц золота за ход в качестве содержания."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -756,11 +754,10 @@ msgstr ""
 "\n"
 "\n"
 "Эта сумма и будет вычитаться из Вашего Дохода, значит, в случае двенадцати "
-"уровней и десяти деревень, Ваш Доход будет составлять восемь единиц золота "
-"за ход."
+"уровней и десяти деревень, Ваш Доход будет составлять 10 единиц золота за "
+"ход."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -769,13 +766,12 @@ msgid ""
 "the second scenario of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"В содержании есть два важных исключения. Во-первых, соединения с "
-"особенностью Преданный всегда будут требовать содержания как соединения "
-"первого уровня, независимо от настоящего уровня. Во-вторых, соединения, с "
-"которыми Вы начинаете сценарий (например, Конрад или Делфадор), и "
-"соединения, которые присоединяются к Вам по ходу сценария (например, Всадник "
-"во втором сценарии Наследника Престола) никогда не будут требовать "
-"содержания."
+"В содержании есть одно важное исключение: соединения с особенностью "
+"Преданный никогда не будут требовать содержания. Соединения, с которыми Вы "
+"начинаете сценарий (например, Конрад или Делфадор), и соединения, которые "
+"присоединяются к Вам по ходу сценария (например, Всадник во втором сценарии "
+"Наследника Престола) обычно будут требовать такого же содержания как и "
+"Преданные соединения."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -1113,9 +1109,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:334
-#, fuzzy
 msgid "Tundra"
-msgstr "мертвец"
+msgstr "Тундра"
 
 #: data/help.cfg:337
 msgid ""
@@ -1167,9 +1162,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:364 data/terrain.cfg:115
-#, fuzzy
 msgid "Desert"
-msgstr "Пустынные холмы"
+msgstr "Пустыня"
 
 #: data/help.cfg:365
 msgid ""
@@ -1482,9 +1476,8 @@ msgstr ""
 "Ты можешь проходить, если хочешь, но лидер будет говорить только с Балдрасом."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
-#, fuzzy
 msgid "2p - Blitz"
-msgstr "Блиц"
+msgstr "2p - Блиц"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
@@ -1494,9 +1487,8 @@ msgstr ""
 "деревню."
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
-#, fuzzy
 msgid "2p - Charge"
-msgstr "Бросок"
+msgstr "2p - Бросок"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
@@ -1513,13 +1505,12 @@ msgid "2p - Divide and Conquer"
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
-#, fuzzy
 msgid ""
 "This small duel map divides the field of battle into three segments. "
 "Recommended settings of 2G per village."
 msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
+"Эта небольшая дуэльная карта разделена на три сегмента. Рекомендуемые "
+"настройки 2 золота на деревню."
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
@@ -1542,9 +1533,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_IcyWaters.cfg:3
-#, fuzzy
 msgid "2p - Icy Waters"
-msgstr "Ледяная вода"
+msgstr "2p - Ледяная вода"
 
 #: data/scenarios/multiplayer/2p_IcyWaters.cfg:5
 msgid ""
@@ -1566,13 +1556,12 @@ msgid "2p - Sablestone Delta"
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers. Recommended settings of 2G per village."
 msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
+"Две армии сталкиваются на разделённом побережье скрытых пещер и бурных рек. "
+"Рекомендуемые настройки 2 золота на деревню."
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
@@ -1596,9 +1585,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
-#, fuzzy
 msgid "2p - Wesbowl"
-msgstr "Кубок Веснота"
+msgstr "2p - Кубок Веснота"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
 msgid ""
@@ -1672,13 +1660,12 @@ msgid "3p - 1v1v1Hex"
 msgstr ""
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
-#, fuzzy
 msgid ""
 "Three players do battle in this small, enclosed region. Recommended settings "
 "of 2G per village."
 msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
+"Три игрока бьются в этом маленьком, изолированном регионе. Рекомендуемые "
+"настройки 2 золота на деревню."
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
@@ -1695,18 +1682,16 @@ msgid "3p - Triple Blitz"
 msgstr ""
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid ""
 "Three players come head to head on this water-cut battlefield. Recommended "
 "settings of 2G per village."
 msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
+"Три игрока сходятся нос к носу на этом водяном боевом пространстве. "
+"Рекомендуемые настройки 2 золота на деревню."
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:7
-#, fuzzy
 msgid "4p - An Island"
-msgstr "Остров"
+msgstr "4p - Остров"
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:10
 msgid ""
@@ -1721,9 +1706,8 @@ msgstr ""
 "местность."
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
-#, fuzzy
 msgid "4p - Castle Hopping Isle"
-msgstr "Замок Хмельного острова"
+msgstr "4p - Замок Хмельного острова"
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
 msgid ""
@@ -1736,9 +1720,8 @@ msgstr ""
 "3 против игроков 2 и 4 для игры 'два на два'."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
-#, fuzzy
 msgid "4p - Clash"
-msgstr "Столкновение"
+msgstr "4p - Столкновение"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid ""
@@ -1749,9 +1732,8 @@ msgstr ""
 "2-го и 4-го игрока. Рекомендуемые настройки 2 золота на деревню."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
-#, fuzzy
 msgid "4p - King of the Hill"
-msgstr "Царь горы"
+msgstr "4p - Царь горы"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid ""
@@ -1764,27 +1746,24 @@ msgid "4p - Lagoon"
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "settings of 1G per village."
 msgstr ""
-"Дуэльная карта для сверхбыстрой игры. Рекомендуемые настройки 2 золота на "
-"деревню."
+"Четыре команды борются за доминирование над этим водянистым поселением. "
+"Рекомендуемые настройки 1 единица золота на деревню."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid "4p - Siege Castles"
-msgstr "Замок в осаде"
+msgstr "4p - Осаждаемые замки"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
 msgid "Take control of this huge river delta."
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
-#, fuzzy
 msgid "4p - The Valley of Death"
-msgstr "Долина Смерти"
+msgstr "4p - Долина Смерти"
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:5
 msgid "Can you defeat all enemies and declare victory in this desolate valley?"
@@ -1802,9 +1781,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
-#, fuzzy
 msgid "5p - Forest of Fear"
-msgstr "Лес Страха"
+msgstr "5p - Лес Страха"
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
@@ -1819,9 +1797,8 @@ msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "командная игра 2 на 2 или 3 на 3."
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
-#, fuzzy
 msgid "7p - Battle World"
-msgstr "Мировая битва"
+msgstr "7p - Мировая битва"
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:9
 msgid ""
@@ -1834,13 +1811,13 @@ msgid "Random map"
 msgstr "Случайная карта"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:4
-#, fuzzy
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
-"Случайная карта с песками. Внимание: случайные карты не сбалансированы, но "
-"если у Вас есть время, Вы можете регенерировать её, пока не получите хорошую."
+"Случайно генерируемая карта. Внимание: случайные карты обычно не "
+"сбалансированы, но если у Вас есть время, Вы можете регенерировать её, пока "
+"не получите карту, устраивающую вас."
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
@@ -1886,9 +1863,8 @@ msgstr ""
 "можете регенерировать её, пока не получите хорошую."
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
-#, fuzzy
 msgid "2p - Across The River"
-msgstr "Пересекая реку"
+msgstr "2p - Пересекая реку"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
 msgid ""
@@ -3778,15 +3754,14 @@ msgstr ""
 "соединениями.)"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
 "Берсерк:\n"
-"Когда используется в наступлении, эта атака продолжает битву, пока один из "
-"бойцов не погибнет."
+"Используется в наступлении или обороне, эта атака продолжает битву, пока "
+"один из бойцов не погибнет."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -4000,12 +3975,10 @@ msgstr "Древний Лич"
 #: data/units/Vampire_Lady.cfg:15 data/units/Wall_Guard.cfg:29
 #: data/units/Warrior_King.cfg:19 data/units/Watch_Tower.cfg:12
 #: data/units/Yeti.cfg:28
-#, fuzzy
 msgid "tough"
-msgstr "прикосновение"
+msgstr "жёсткий"
 
 #: data/units/Ancient_Lich.cfg:28
-#, fuzzy
 msgid ""
 "The final form that magi of the undead can achieve, Ancient Liches strike "
 "terror into the hearts of those who see them. Not only is their touch that "
@@ -4014,8 +3987,8 @@ msgid ""
 "far, for they move faster than most undead."
 msgstr ""
 "Финальная форма магов-мертвецов, Древние Личи несут ужас в сердца тех, кто "
-"увидит их. Не только их прикосновение несёт смерть, их заклинания "
-"могущественны и могут остановить любого храбреца. Если Вы пересекли ему "
+"увидит их. Не только их прикосновение несёт смерть, их заклинания достаточно "
+"могущественны и могут заморозить любого храбреца. Если Вы пересекли ему "
 "дорогу, быстрее бегите от него и подальше, потому что они передвигаются "
 "быстрее всех мертвецов."
 
@@ -4254,7 +4227,6 @@ msgid "Assassin"
 msgstr "Убийца"
 
 #: data/units/Assassin.cfg:27 data/units/Assassin.cfg:128
-#, fuzzy
 msgid ""
 "Assassins are masters of the night. Like Rogues, they can surround and "
 "backstab an opponent, doing double damage. They can also throw poison-tipped "
@@ -4262,7 +4234,7 @@ msgid ""
 msgstr ""
 "Убийцы - это мастера ночи. Как и Разбойники, они могут окружить соперника и "
 "нанести удар исподтишка, нанося двойной урон. Они могут также метать "
-"отравленные ножи в противника."
+"отравленные ножи в противника на большие расстояния."
 
 #: data/units/Assassin.cfg:43 data/units/Assassin.cfg:131
 #: data/units/Dwarvish_Thunderer.cfg:38
@@ -4401,7 +4373,6 @@ msgid "leadership,skirmisher"
 msgstr "лидер,застрельщик"
 
 #: data/units/Battle_Princess.cfg:29 data/units/Battle_Princess.cfg:88
-#, fuzzy
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -4594,7 +4565,6 @@ msgid "Bowman"
 msgstr "Лучник"
 
 #: data/units/Bowman.cfg:18
-#, fuzzy
 msgid ""
 "Immersed from childhood in the ways of archery, the young Bowmen are the "
 "most common ranged combatants in Wesnothian armies. They do not undergo as "
@@ -4718,7 +4688,6 @@ msgid "Cockatrice"
 msgstr "Василиск"
 
 #: data/units/Cockatrice.cfg:25
-#, fuzzy
 msgid ""
 "At first sight, these mystical snake-like creatures appear weak, but looks "
 "are deceiving. With just a glance, Cockatrices can turn their enemies into "
@@ -4726,7 +4695,8 @@ msgid ""
 msgstr ""
 "На первый взгляд, эти мистические змееподобные создания выглядят слабыми, но "
 "это не так. Просто взглянув на своих врагов, Василиски могут превратить их в "
-"камень до тех пор, пока источник их силы не будет уничтожен."
+"камень. Это будет длиться до тех пор, пока источник их силы не будет "
+"уничтожен."
 
 #: data/units/Cockatrice.cfg:42
 msgid "gaze"
@@ -4834,9 +4804,8 @@ msgstr ""
 #: data/units/Soulless.cfg:133 data/units/Soulless.cfg:217
 #: data/units/Soulless.cfg:302 data/units/Soulless.cfg:386
 #: data/units/Soulless.cfg:470 data/units/Soulless.cfg:554
-#, fuzzy
 msgid "plague(Walking Corpse)"
-msgstr "Ходячий Труп"
+msgstr "чума(Ходячий Труп)"
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -4898,7 +4867,6 @@ msgid "Deathmaster"
 msgstr "Хозяин Смерти"
 
 #: data/units/Deathmaster.cfg:17
-#, fuzzy
 msgid ""
 "Gwiti's wanderings on a dark path have given him power normally not granted "
 "to mortals, but with a terrible cost: the undead that he gave his soul to "
@@ -4906,16 +4874,15 @@ msgid ""
 "true undead and a terror to all that lives."
 msgstr ""
 "Продвижение Гвити по тёмному пути дало ему силу, недоступную простым "
-"смертным, но за ужасную цену - мертвец, отдавший свою душу, постепенно "
-"теряет и свою телесную оболочку. Со временем он станет настоящим мертвецом и "
-"будет устрашать всех живых."
+"смертным, но за ужасную цену: мертвец, отдавший свою душу, постепенно теряет "
+"и свою телесную оболочку. Со временем он станет настоящим мертвецом и будет "
+"устрашать всех живых."
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
 msgstr "Демилич"
 
 #: data/units/Demilich.cfg:17
-#, fuzzy
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
@@ -4923,7 +4890,7 @@ msgid ""
 "and feared by all alike."
 msgstr ""
 "После долгого и изучения забытых книг по магии и тёмному искусству, эти маги "
-"в начале заплатили высокую цену - Демиличи потеряли свои тела, став "
+"в начале заплатили высокую цену - Демиличи начали терять свои тела, став "
 "мертвецами. Со временем, они могут стать полностью мертвецами, ужасными как "
 "и все мертвецы."
 
@@ -4969,18 +4936,16 @@ msgstr ""
 "подвижность и устойчивость делает их очень ценными на боле битвы."
 
 #: data/units/Drake_Blademaster.cfg:4
-#, fuzzy
 msgid "Drake Blademaster"
-msgstr "Дракон Гладиатор"
+msgstr "Дракон Мастер Клинка"
 
 #: data/units/Drake_Blademaster.cfg:28
-#, fuzzy
 msgid ""
 "Drake Blademasters wield swords with great skill, and possess the fire "
 "breathing skills of their ancestors."
 msgstr ""
-"Драконы Воины обучены великолепно обращаться с мечами, и они владеют "
-"огнедышащими навыками от своих предков."
+"Драконы Мастера Клинка обучены великолепно обращаться с мечами, и они "
+"владеют огнедышащими навыками от своих предков."
 
 #: data/units/Drake_Blademaster.cfg:54 data/units/Drake_Burner.cfg:53
 #: data/units/Drake_Fighter.cfg:56 data/units/Drake_Fire.cfg:54
@@ -5024,7 +4989,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:3
-#, fuzzy
 msgid "Drake Enforcer"
 msgstr "Дракон Поджигатель"
 
@@ -5060,7 +5024,6 @@ msgid "Fire Drake"
 msgstr "Огненный Дракон"
 
 #: data/units/Drake_Fire.cfg:18
-#, fuzzy
 msgid ""
 "The great fire drakes equip themselves with silver plated armor to defend "
 "themselves from serious injuries. Although their melee technique is "
@@ -5095,7 +5058,6 @@ msgid "Drake Flare"
 msgstr "Сияющий Дракон"
 
 #: data/units/Drake_Flare.cfg:20
-#, fuzzy
 msgid ""
 "Drake Flares aspire to be leaders of their kind. While their mastery of "
 "their internal fire is not as great as some of their kin, these Drakes have "
@@ -5125,7 +5087,6 @@ msgid "Drake Glider"
 msgstr "Парящий Дракон"
 
 #: data/units/Drake_Glider.cfg:20
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -5147,9 +5108,8 @@ msgid "slam"
 msgstr "хлопанье"
 
 #: data/units/Drake_Hurricane.cfg:3
-#, fuzzy
 msgid "Hurricane Drake"
-msgstr "Огненный Дракон"
+msgstr "Ураганный Дракон"
 
 #: data/units/Drake_Hurricane.cfg:27
 msgid ""
@@ -5203,9 +5163,8 @@ msgid "firststrike"
 msgstr "первый удар"
 
 #: data/units/Drake_Warden.cfg:4
-#, fuzzy
 msgid "Drake Warden"
-msgstr "Сияющий Дракон"
+msgstr "Дракон Смотритель"
 
 #: data/units/Drake_Warden.cfg:28
 msgid ""
@@ -5348,7 +5307,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Гном Охранник"
 
 #: data/units/Dwarvish_Guardsman.cfg:22
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -5483,22 +5441,20 @@ msgid "Dwarvish Ulfserker"
 msgstr "Гном Ульфсерк"
 
 #: data/units/Dwarvish_Ulfserker.cfg:16
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
 "or they themselves perish, no matter how many wounds they receive."
 msgstr ""
-"Гномы - древнейшая раса сильных воинов. Ульферки - наиболее кровожадные из "
-"них в битве: их атака продолжается без остановки, пока их противник или они "
-"сами не умрут, и не важно, сколько ранений они при этом получат."
+"Гномы - древнейшая раса сильных воинов. Ульфсерки - наиболее жестокие из них "
+"в битве: их атака продолжается без остановки, пока их противник или они сами "
+"не умрут, и не важно, сколько ранений они при этом получат."
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
 msgstr "Древний Маг"
 
 #: data/units/Elder_Mage.cfg:30
-#, fuzzy
 msgid ""
 "Once great, Elder Magi have seen their power a little diminished from "
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
@@ -6081,15 +6037,14 @@ msgid "Giant Mudcrawler"
 msgstr "Гигантское Грязевое Чудище"
 
 #: data/units/Giant_Mudcrawler.cfg:25
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by slapping them with their fists."
 msgstr ""
-"Гигантские Грязевые Чудища - это разновидность Грязевых Чудищ, магических "
-"созданий из земли и воды. Они атакуют, брызгая струёй кипящей воды в своих "
-"врагов или ударяя кулаками из грязи."
+"Гигантские Грязевые Чудища больше Грязевых Чудищ, магических созданий из "
+"земли и воды. Они атакуют, брызгая струёй грязи в своих врагов или ударяя "
+"своими кулаками."
 
 #: data/units/Giant_Mudcrawler.cfg:52 data/units/Skeleton_Archer.cfg:24
 #: data/units/Soulless.cfg:45 data/units/Soulless.cfg:128
@@ -6289,7 +6244,6 @@ msgid "Gryphon Master"
 msgstr "Наездник Грифона"
 
 #: data/units/Gryphon_Master.cfg:27
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
@@ -6478,7 +6432,6 @@ msgid "Lich"
 msgstr "Лич"
 
 #: data/units/Lich.cfg:25
-#, fuzzy
 msgid ""
 "Liches are magi that have committed completely to the path of the dark arts. "
 "To gain control over the undead, Liches have forfeited their own bodies, "
@@ -6807,13 +6760,12 @@ msgid "Mudcrawler"
 msgstr "Грязевое чудище"
 
 #: data/units/Mudcrawler.cfg:18
-#, fuzzy
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
 "Грязевые Чудища - магические конструкты из земли и воды. Их атака поражает "
-"врагов струёй кипящей воды."
+"врагов струёй грязи или своими кулаками."
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
@@ -6909,7 +6861,6 @@ msgid "Necromancer"
 msgstr "Некромант"
 
 #: data/units/Necromancer.cfg:16
-#, fuzzy
 msgid ""
 "Necromancers are magi that have decided to follow the paths of the dark "
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
@@ -6924,9 +6875,8 @@ msgid "Necrophage"
 msgstr "Пожиратель Мёртвых"
 
 #: data/units/Necrophage.cfg:17
-#, fuzzy
 msgid "satiated"
-msgstr "Посвящённый"
+msgstr "насыщенный"
 
 #: data/units/Necrophage.cfg:26
 msgid ""
@@ -7075,7 +7025,6 @@ msgid "Orcish Leader"
 msgstr "Орк Лидер"
 
 #: data/units/Orcish_Leader.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Leaders are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -7083,7 +7032,7 @@ msgid ""
 "powerful fighters. Their natural leadership skills make them very precious "
 "in battle: if the Leader is lost, so is the battle."
 msgstr ""
-"Орки Правители являются предводителями своих кланов. Они принимают важные "
+"Орки Ледиры являются предводителями своих кланов. Они принимают важные "
 "решения и возглавляют своих соплеменников в битве. Они могут отстреливаться "
 "из лука в случае необходимости, но они лучше управляются мечом. Как и все, "
 "они сильные воины. Их природное лидерство делает их очень ценными в битве: "
@@ -7094,7 +7043,6 @@ msgid "Orcish Ruler"
 msgstr "Орк Правитель"
 
 #: data/units/Orcish_Ruler.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -7190,7 +7138,6 @@ msgstr ""
 "дальнего боя и используют яд для атак. Это делает их опасными соперниками."
 
 #: data/units/Orcish_Slurbow.cfg:3
-#, fuzzy
 msgid "Orcish Slurbow"
 msgstr "Орк Наёмный Убийца"
 
@@ -7208,7 +7155,6 @@ msgid "Orcish Sovereign"
 msgstr "Орк Повелитель"
 
 #: data/units/Orcish_Sovereign.cfg:27
-#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -7505,7 +7451,6 @@ msgid "Saurian Ambusher"
 msgstr "Скрытный Ящер"
 
 #: data/units/Saurian_Ambusher.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8390,9 +8335,8 @@ msgid "+Russian Translation"
 msgstr "+Русский перевод"
 
 #: src/about.cpp:269
-#, fuzzy
 msgid "+Serbian Translation"
-msgstr "+Немецкий перевод"
+msgstr "+Сербский перевод"
 
 #: src/about.cpp:272
 msgid "+Slovak Translation"
@@ -8485,9 +8429,8 @@ msgid "defender vulnerability vs"
 msgstr "защитник уязвим против"
 
 #: src/actions.cpp:599
-#, fuzzy
 msgid " (+steadfast)"
-msgstr "стойкий"
+msgstr "(+стойкий)"
 
 #: src/actions.cpp:661
 msgid "(both should survive)"
@@ -8607,19 +8550,19 @@ msgstr "Версия:"
 
 #: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
-msgstr ""
+msgstr "%b %d %y"
 
 #: src/dialogs.cpp:424
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:427
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:430
 msgid "%b %d"
-msgstr ""
+msgstr "%b %d"
 
 #: src/dialogs.cpp:454
 msgid "No Saved Games"
@@ -8660,9 +8603,8 @@ msgstr ""
 "версией Битвы за Веснот. Хотите зарегистрировать эти файлы?"
 
 #: src/dialogs.cpp:550
-#, fuzzy
 msgid "Date"
-msgstr "Ворота"
+msgstr "Дата"
 
 #: src/dialogs.cpp:550 src/game.cpp:884 src/help.cpp:1117
 #: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2051 src/playturn.cpp:2228
@@ -8958,13 +8900,12 @@ msgid "Choose your preferred language:"
 msgstr "Выберите предпочтительный язык:"
 
 #: src/game.cpp:1320
-#, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
-msgstr "Игра не может быть загружена:"
+msgstr "Следующие кампании имеют ошибки и не могут быть загружены:"
 
 #: src/game.cpp:1325
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "ПОДРОБНОСТИ ОШИБКИ:"
 
 #: src/game.cpp:1334
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -8991,9 +8932,8 @@ msgid "Defeat:"
 msgstr "Поражение:"
 
 #: src/gamestatus.cpp:476
-#, fuzzy
 msgid "Could not write to file"
-msgstr "Не могу подключиться к серверу."
+msgstr "Не могу записать в файл"
 
 #: src/help.cpp:1057
 msgid "Advances to: "
@@ -9097,16 +9037,15 @@ msgstr "Вперёд >"
 
 #: src/help.cpp:2287
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Ссылка на неизвестную тему:"
 
 #: src/help.cpp:2662
 msgid "The Battle for Wesnoth Help"
 msgstr "Помощь по игре Битва за Веснот"
 
 #: src/help.cpp:2709
-#, fuzzy
 msgid "Parse error when parsing help text: "
-msgstr "Возникла ошибка во время игры:"
+msgstr "Возникла ошибка во время загрузки помощи:"
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9193,9 +9132,8 @@ msgid "Choose host to connect to: "
 msgstr "Выберите сервер для подключения:"
 
 #: src/multiplayer.cpp:123 src/multiplayer.cpp:160
-#, fuzzy
 msgid "Connecting to Server..."
-msgstr "Подключиться к серверу"
+msgstr "Подключиться к серверу..."
 
 #: src/multiplayer.cpp:133
 msgid "Connecting to remote host..."
@@ -9426,12 +9364,11 @@ msgstr "Игроки:"
 
 #: src/multiplayer_lobby.cpp:29
 msgid "Map"
-msgstr ""
+msgstr "Карта"
 
 #: src/multiplayer_lobby.cpp:30
-#, fuzzy
 msgid "Status"
-msgstr "Статистика"
+msgstr "Статус"
 
 #: src/multiplayer_lobby.cpp:107
 msgid "Observe Game"
@@ -9542,28 +9479,24 @@ msgid "invalid network handle"
 msgstr ""
 
 #: src/network.cpp:99
-#, fuzzy
 msgid "Client disconnected"
-msgstr "Не могу подключиться к серверу."
+msgstr "Клиент отключён"
 
 #: src/network.cpp:417
-#, fuzzy
 msgid "Could not add socket to socket set"
-msgstr "Не могу подключиться к серверу."
+msgstr "Не могу добавить сокет к набору сокетов"
 
 #: src/network.cpp:428
 msgid "Could not send initial handshake"
 msgstr ""
 
 #: src/playcampaign.cpp:143
-#, fuzzy
 msgid " replay"
 msgstr "повтор"
 
 #: src/playcampaign.cpp:151
-#, fuzzy
 msgid "Do you want to save a replay of this scenario?"
-msgstr "Вы хотите просмотреть уроки, которые были изучены на данном уровне?"
+msgstr "Вы хотите сохранить повтор данного сценария?"
 
 #: src/playcampaign.cpp:152 src/playcampaign.cpp:272 src/playturn.cpp:1627
 msgid "Name:"
@@ -9574,18 +9507,16 @@ msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
 #: src/playcampaign.cpp:202
-#, fuzzy
 msgid "Downloading next level..."
-msgstr "Загружаем кампанию..."
+msgstr "Загружаем следующий уровень..."
 
 #: src/playcampaign.cpp:271
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "Вы действительно хотите удалить эту игру?"
+msgstr "Вы хотите сохранить свою игру?"
 
 #: src/playcampaign.cpp:297
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Неизвестный сценарий: '"
 
 #: src/playlevel.cpp:602 src/playlevel.cpp:873
 msgid "The file you have tried to load is corrupt"
@@ -9632,7 +9563,7 @@ msgid "Gold: "
 msgstr "Золото:"
 
 #: src/playlevel.cpp:856
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% золота сохраняется в следующем сценарии"
 
@@ -9805,9 +9736,8 @@ msgstr ""
 "У Вас должно быть по крайней мере $cost единиц золота для вербовки соединения"
 
 #: src/playturn.cpp:2052
-#, fuzzy
 msgid "Level"
-msgstr "уровень"
+msgstr "Уровень"
 
 #: src/playturn.cpp:2079
 msgid "Dismiss Unit"
@@ -10177,283 +10107,3 @@ msgstr "порядочный"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "нейтральный"
-
-#~ msgid ""
-#~ "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
-#~ "enemies."
-#~ msgstr ""
-#~ "Лидеры среди магов, Архи-Маги бросают огромные огненные шары в своих "
-#~ "врагов."
-
-#~ msgid ""
-#~ "Elder Woses have grown great and tall. Towering over most enemies, they "
-#~ "can deliver crushing blows, while resisting the enemy's counterattacks. "
-#~ "Watching one unexpectedly come stalking towards you out of a forest is a "
-#~ "terrifying sight. They are still very slow and stiff, being nearly immune "
-#~ "to arrows but still quite flammable. Drawing energy from nature around "
-#~ "them, Elder Woses can quickly heal themselves in the face of tremendous "
-#~ "injuries."
-#~ msgstr ""
-#~ "Старшие Лешие являются великовозрастными и высокими. Возвышаясь над всеми "
-#~ "противниками, они могут раздавать крушащие удары, хорошо сопротивляясь "
-#~ "атаками врагов. Вид неожиданно выходящего из леса дерева создаёт "
-#~ "ужасающее зрелище. Они очень медлительны и негнущиеся, что делает их "
-#~ "неуязвимыми против стрел, но очень хорошо воспламеняющимися. Получая силы "
-#~ "из окружающей их среды, Старшие Лешие могут восстанавливать себя после "
-#~ "ужасных ранений."
-
-#~ msgid ""
-#~ "The most powerful mounted warriors of any race, Grand Knights have "
-#~ "reached the acme of skill with sword and lance."
-#~ msgstr ""
-#~ "Самые сильные воители любой расы, Великие Рыцари достигли вершины "
-#~ "искусства владения мечом и копьём."
-
-#~ msgid ""
-#~ "Great Mages are awesome and fearsome enemies, exceeding even the Arch "
-#~ "Mages in power."
-#~ msgstr ""
-#~ "Великие Маги - устрашающие и грозные противники, превосходящие по силе "
-#~ "даже Радужных Магов."
-
-#~ msgid ""
-#~ "Great Trolls are strong and brutal humanoid monsters with the amazing "
-#~ "ability to regenerate themselves, so that they recover from wounds on "
-#~ "their own, even during battle."
-#~ msgstr ""
-#~ "Великие Тролли - сильные и грубые человекообразные монстры с удивительной "
-#~ "способностью регенерироваться, так что их раны залечиваются сами, даже во "
-#~ "время битвы."
-
-#~ msgid ""
-#~ "Trained from childhood to ride and to follow a strict code of honor, "
-#~ "Horsemen are both fast and powerful attackers. Charging at their enemies, "
-#~ "they do double damage, but also receive double damage when struck. Rebels "
-#~ "against Asheviere's tyranny often use Horsemen against her."
-#~ msgstr ""
-#~ "Обученные с детства ездить на лошадях и следовать строгому кодексу чести, "
-#~ "Всадники одинаково быстры и сильны. Совершая бросок на своих врагов, они "
-#~ "наносят двойной урон, но и получают также двойной урон. Мятежники, "
-#~ "восставшие против тирании Ашевьер, часто используют Всадников против неё."
-
-#~ msgid ""
-#~ "Knights are skilled in the use of both lance and sword. With the lance, "
-#~ "they charge at enemies, inflicting and receiving double damage."
-#~ msgstr ""
-#~ "Рыцари обучены использовать копьё и меч. С копьём они могут совершать "
-#~ "бросок на врагов, нанося и получая двойной урон."
-
-#~ msgid ""
-#~ "Lancers are some of the bravest and most feared riders in all of Wesnoth. "
-#~ "They wear very little armor, and thus ride swiftly and are ideal for "
-#~ "offensive use. While their charges inflict large amounts of damage, they "
-#~ "also expose the Lancers to great risk."
-#~ msgstr ""
-#~ "Уланы являются одними из самых храбрых и грозных всадников во всём "
-#~ "Весноте. Они облачены в очень лёгкие доспехи, что позволяет им "
-#~ "передвигаются очень быстро, и они идеальны для наступательных действий. "
-#~ "Их бросок причиняет большой урон, однако это также подвергает Уланов "
-#~ "смертельному риску."
-
-#~ msgid ""
-#~ "Mages are both weak and powerful. Moving slowly, and with poor defensive "
-#~ "skills, Mages attack with magical missiles that always have a high chance "
-#~ "of hitting their target. For this reason, Mages are an excellent choice "
-#~ "for flushing out enemies hiding in difficult terrain."
-#~ msgstr ""
-#~ "Маги одновременно и слабы, и сильны. Медленно передвигаясь и имея плохие "
-#~ "навыки самообороны, Маги атакуют магическими снарядами, которые всегда "
-#~ "имеют большой шанс поразить цель. В этом случае, Маги - прекрасный выбор "
-#~ "для выбивания противников, скрытых в трудной местности."
-
-#~ msgid ""
-#~ "Mages of Light are awesome allies of all lawful combatants, and fearsome "
-#~ "foes to the forces of chaos. These Mages' powers of illumination are so "
-#~ "great that the hexes they occupy and all adjacent hexes never experience "
-#~ "night. As a result, when a unit is adjacent to a Mage of Light, it will "
-#~ "fight as if it were day when it is dusk, and as if it were dusk when it "
-#~ "is night. Like the White Mages, the Mages of Light also cure adjacent "
-#~ "friendly units."
-#~ msgstr ""
-#~ "Светлые Маги - устрашающие союзники для всех порядочных бойцов и грозные "
-#~ "противники всем силам хаоса. Магический свет Магов великолепно освещает "
-#~ "квадраты, занимаемые ими, и все прилежащие квадраты не будут ввергнуты во "
-#~ "тьму. В итоге, когда соединение находится рядом со Светлым Магом, оно "
-#~ "дерётся в сумерки так, если бы это был день, а ночью дерётся так, если бы "
-#~ "это были сумерки. Как и Белые Маги, Светлые Маги также лечат все "
-#~ "дружественные соединения, находящиеся рядом."
-
-#~ msgid "Mounted Captain"
-#~ msgstr "Капитан Всадник"
-
-#~ msgid "Mounted Commander"
-#~ msgstr "Командир Всадник"
-
-#~ msgid ""
-#~ "Leaders of the plains, the Mounted Commanders are skilled with the use of "
-#~ "the sword and the morning star. Riding horses, they are able to move "
-#~ "around the battlefield with great speed, and can provide much needed "
-#~ "assistance to different fronts."
-#~ msgstr ""
-#~ "Лидеры равнин, Командиры Всадники обучены использовать меч и моргенштерн. "
-#~ "На лошадях они способны передвигаться по полю битвы с большой скоростью и "
-#~ "предоставлять необходимую помощь на различных фронтах."
-
-#~ msgid ""
-#~ "Knights of the highest virtue, Paladins have all the skills of the "
-#~ "Knight, and can also heal adjacent friendly units."
-#~ msgstr ""
-#~ "Рыцари высших помыслов, Паладины имеют все навыки Рыцарей и к тому же "
-#~ "могут восстанавливать находящиеся рядом дружеские соединения."
-
-#~ msgid ""
-#~ "Red Mages attack with powerful magic fireballs that are guaranteed a good "
-#~ "chance of hitting. Deft of foot, and skilled fighters both day and night, "
-#~ "Red Mages are therefore valuable in almost all situations."
-#~ msgstr ""
-#~ "Красные Маги атакуют мощными огненными шарами, что гарантирует хорошие "
-#~ "шансы на попадание. Ловкие бойцы, обученные одинаково хорошо драться и "
-#~ "днём, и ночью, Красные Маги очень полезны почти в любых ситуациях."
-
-#~ msgid ""
-#~ "Silver Mages are the most deft of foot and elusive of all mages. They can "
-#~ "teleport from any friendly village to another, translating themselves in "
-#~ "an instant. They are also highly resistant to most forms of magical "
-#~ "attack."
-#~ msgstr ""
-#~ "Серебрянные Маги - самые быстрые и неуловимые из всех магов. Они могут "
-#~ "телепортироваться из любой дружественной деревни в другую, быстро "
-#~ "перенося себя. Они также весьма защищены от большинства видов магических "
-#~ "атак."
-
-#~ msgid ""
-#~ "Troll heroes are strong and brutal humanoid monsters with the amazing "
-#~ "ability to regenerate themselves, so that they recover from wounds on "
-#~ "their own, even during battle."
-#~ msgstr ""
-#~ "Тролли Герои - сильные и грубые человекообразные монстры с удивительной "
-#~ "способностью регенерироваться, так что их раны залечиваются сами, даже во "
-#~ "время битвы."
-
-#, fuzzy
-#~ msgid ""
-#~ "White Mages are weak in combat, but expert in the ways of healing. Units "
-#~ "placed adjacent to a White Mage will heal as though they were resting in "
-#~ "a village. White Mages are potent in battle against the undead, which "
-#~ "suffer high damage from their light beam."
-#~ msgstr ""
-#~ "Белые Маги слабы в рукопашной, но они мастера по части лечения. "
-#~ "Соединения, помещённые рядом с Белыми Магами, будут исцеляться так, если "
-#~ "бы находились в деревне. Белые Маги хорошо сражаются против мертвецов, "
-#~ "нанося им огромный урон с помощью луча света."
-
-#~ msgid ""
-#~ "Woses are treelike creatures of legend. They rose from the forest, and "
-#~ "when in a forest they are indistinguishable from ordinary trees. Their "
-#~ "form is very slow and stiff, so they cannot avoid attacks very well. "
-#~ "Their tough bark is highly resistant to cold, crushing attacks, and "
-#~ "arrows, although blades have no trouble cutting through it, and they are "
-#~ "very flammable. By drawing nutrients from the ground and energy from the "
-#~ "sun, Woses can regrow missing limbs after a fight."
-#~ msgstr ""
-#~ "Лешие - это древоподобные существа из легенд. Они выросли в лесу, и в "
-#~ "лесу они неотличимы от обычных деревьев. Из-за их несгибаемости и "
-#~ "медлительности они не могут хорошо отражать атаки. Их жёсткая кора хорошо "
-#~ "сопротивляется холоду, ударам и стрелам, хотя клинки вроде бы без проблем "
-#~ "режут её. Но Лешие очень легко поджигаются. Получая пищу из земли и "
-#~ "энергию из солнца, Лешие могут отращивать потерянные ветви после битвы."
-
-#, fuzzy
-#~ msgid "Socket error"
-#~ msgstr "Ударный Пехотинец"
-
-#~ msgid ""
-#~ "A noble at birth, the Princess has learnt swordplay with the greatest "
-#~ "generals, and battle tactics with the greatest sages, making her both a "
-#~ "great combatant and leader. The units of lower level around the Princess "
-#~ "will fight better due to her presence. The Princess is a skilled "
-#~ "skirmisher, and ignores enemy zones of control."
-#~ msgstr ""
-#~ "Благородная от рождения, Принцесса изучала искусство меча с великими "
-#~ "генералами и тактику боя с великими стратегами, сделавшими её великим "
-#~ "бойцом и лидером. Соединения низшего уровня, окружающие Принцессу, будут "
-#~ "сражаться лучше под её командованием. Принцесса обладает навыками "
-#~ "застрельщика и игнорирует вражеские зоны контроля."
-
-#~ msgid "Thugs are bandits who use large clubs to beat their victims."
-#~ msgstr ""
-#~ "Головорезы - это бандиты, использующие большую дубину против своих жертв."
-
-#~ msgid "boiling water"
-#~ msgstr "кипящая вода"
-
-#~ msgid ""
-#~ "Steadfast:\n"
-#~ "This unit takes half normal damage when it did not initiate the attack."
-#~ msgstr ""
-#~ "Стойкий:\n"
-#~ "Это соединение получает половину нормального урона, если не начинало "
-#~ "атаку."
-
-#~ msgid "Halved"
-#~ msgstr "Уменьшен вдвое"
-
-#~ msgid "The Broken Bridge"
-#~ msgstr "Разрушенный Мост"
-
-#~ msgid ""
-#~ "A small two vs. two map across the ruins of a once great bridge. Perfect "
-#~ "for fast-paced, combat intensive, team-oriented games. Must be players "
-#~ "1,3 vs. 2,4."
-#~ msgstr ""
-#~ "Малая 'двое против двоих' карта с руинами, пересекаемыми большим мостом. "
-#~ "Великолепна для для быстрых, с интенсивными боями, командно-"
-#~ "ориентированных игр. Игроки должны быть 1 и 3 против 2 и 4."
-
-#~ msgid "Battle for Weslin Bridge"
-#~ msgstr "Битва за мост Веслин"
-
-#~ msgid ""
-#~ "Teams of 2 fight for control of the central bridge choke-point. Good for "
-#~ "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
-#~ msgstr ""
-#~ "Команды из двоих игроков бьются за контроль над точной на центральном "
-#~ "мосте. Хороша для игр средней продолжительности. Игроки 1 и 3 должны быть "
-#~ "союзниками, как и 2 и 4. "
-
-#, fuzzy
-#~ msgid " "
-#~ msgstr ";"
-
-#~ msgid "The Isle of Anduin"
-#~ msgstr "Остров Андуин"
-
-#~ msgid "The Three Rivers"
-#~ msgstr "Три Реки"
-
-#~ msgid "The Isles of the Damned"
-#~ msgstr "Проклятый Остров"
-
-#~ msgid "Dwarven Wasteland"
-#~ msgstr "Пустыня Гномов"
-
-#~ msgid "Princess's Battlefield"
-#~ msgstr "Поле Битвы Принцессы"
-
-#~ msgid ""
-#~ "The noble leaders of many troops, Lords are especially strong in melee "
-#~ "combat, and also possess skill with the bow. Like lords, Lords possess "
-#~ "leadership skills, and improve the fighting ability of all adjacent lower-"
-#~ "level units."
-#~ msgstr ""
-#~ "Благородные лидеры солдат, Лорды особенно сильны в рукопашной схватке и "
-#~ "также владеют навыками обращения с луком. Как и Командиры, Лорды имеют "
-#~ "навыки лидерства и повышают боеспособность всех соседних соединений "
-#~ "низших уровней."
-
-#, fuzzy
-#~ msgid "100 gold will be available for the next scenario"
-#~ msgstr "80% золота сохраняется в следующем сценарии"
-
-#~ msgid "level: "
-#~ msgstr "уровень:"
