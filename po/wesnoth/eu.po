@@ -25,12 +25,11 @@ msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:25
 msgid "Binary Saves"
-msgstr ""
+msgstr "Gorde konprimatuta"
 
 #: data/game.cfg:32
-#, fuzzy
 msgid "Show Combat"
-msgstr "Borrokak"
+msgstr "Borrokak erakutsi"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -437,7 +436,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -447,7 +445,7 @@ msgstr ""
 "\n"
 "\n"
 "Kontutan eduki unitate gehienak hiru maila dituztela, baina ez denek, eta "
-"batzuk (adibidez <ref>dst=unit_Mage text=Magoak</ref>) lahu eduki ditzazkete."
+"batzuk (adibidez <ref>dst=unit_Mage text=Magoak</ref>) lau eduki ditzazkete."
 
 #: data/help.cfg:169
 msgid "Healing"
@@ -533,7 +531,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -544,13 +541,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Irabaziak simpleak dira. Kontrolpean duzun herrixka bakoitzatik urre txanpon "
-"bat irabazten duzu txanda bakoitzean. Horrela, hamar herrixka baduzu, "
-"normalean hamar urre txanpon irabaziko duzu. Zoritxarrez, Gastuak "
+"Irabaziak simpleak dira. Oinarrizko irabaziak 2 urre txanpon txanda "
+"bakoitzeko dira. Kontrolpean duzun herrixka bakoitzatik urre txanpon bat "
+"gehiago irabazten duzu txanda bakoitzeko. Horrela, hamar herrixka baduzu, "
+"normalean 12 urre txanpon irabaziko duzu txanda bakoitzean. Gastuak "
 "irabazietik kentzen dira, azpian zehazten den moduan."
 
 #: data/help.cfg:189
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -564,14 +561,14 @@ msgstr ""
 "\n"
 "\n"
 "Gastuak ere nahiko simpleak dira. Unitate bakoitzak bere maila aina Gastu "
-"sortzen du. Dituzun herrixka bezainbeste unitate maila mantendu dezakezu "
-"dohainik, baina herrixka kopuru baino unitate maila gehiago baduzu, soberan "
-"dagoen unitate maila bakoitzagatik urre txanpon bat ordaindu behar duzu. "
-"Horrela, lehenengo mailako hamabi unitate eta hamar herrixka baduzu, bi urre "
-"txanpon ordaindu beharko zenuke txanda bakoitzean."
+"sortzen du. Dituzun herrixka bezainbeste <italic>text=balio</italic> duen "
+"unitate maila mantendu dezakezu dohainik. Dena den, herrixka kopuru baino "
+"unitate maila gehiago baduzu, soberan dagoen unitate maila bakoitzagatik "
+"urre txanpon bat ordaindu behar duzu txanda bakoitzeko. Horrela, lehenengo "
+"mailako hamabi unitate eta hamar herrixka baduzu, bi urre txanpon ordaindu "
+"beharko zenuke txanda bakoitzean Gastu moduan."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -581,8 +578,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Gastu hauek Irabazietatik kentzen dira, beraz hamabi unitate maila eta hamar "
-"herrixken kasuan zure Irabaziak 8 urre txanpon txanda bakoitzeko izango "
+"Gastuak Irabazietatik kentzen dira, beraz hamabi unitate maila eta hamar "
+"herrixken kasuan zure Irabaziak 10 urre txanpon txanda bakoitzeko izango "
 "lirateke"
 
 #: data/help.cfg:192
@@ -625,6 +622,9 @@ msgid ""
 "\n"
 "The traits that are available to all non-Undead units are:"
 msgstr ""
+"\n"
+"\n"
+"Ez-Hilak ez diren unitate guztiak izan dezaketen berezitasunak dira:"
 
 #: data/help.cfg:219
 msgid ""
@@ -698,6 +698,10 @@ msgid ""
 "\n"
 "Other special traits that may be assigned to units are:"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"Unitateetei esleitu daitezkeen beste motako berezitasunak dira:"
 
 #: data/help.cfg:251
 msgid ""
