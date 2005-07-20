@@ -157,7 +157,7 @@ std::string hotkey_item::get_name() const
 		if (shift_)
 			str << "shift+";
 		if (cmd_)
-			str << "command+";
+			str << "cmd+";
 
 		str << SDL_GetKeyName(SDLKey(keycode_));
 		return str.str();
