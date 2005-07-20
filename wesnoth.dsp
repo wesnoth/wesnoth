@@ -54,7 +54,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib /nologo /subsystem:windows /machine:I386 /out:"wesnoth.exe"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype219ST_D.lib /nologo /subsystem:windows /machine:I386 /out:"wesnoth.exe"
 
 !ELSEIF  "$(CFG)" == "wesnoth - Win32 Debug"
 
@@ -70,7 +70,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/wesnoth/src" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
+# ADD CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -80,7 +80,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype219ST_D.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
 
 !ENDIF 
 
@@ -102,6 +102,10 @@ SOURCE=.\src\actions.cpp
 # Begin Source File
 
 SOURCE=.\src\ai.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\ai2.cpp
 # End Source File
 # Begin Source File
 
@@ -138,6 +142,10 @@ SOURCE=.\src\widgets\button.cpp
 # Begin Source File
 
 SOURCE=.\src\cavegen.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\checksum.cpp
 # End Source File
 # Begin Source File
 
@@ -317,6 +325,10 @@ SOURCE=.\src\pathutils.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\playcampaign.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\playlevel.cpp
 # End Source File
 # Begin Source File
@@ -345,6 +357,10 @@ SOURCE=.\src\race.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\random.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\replay.cpp
 # End Source File
 # Begin Source File
@@ -366,6 +382,10 @@ SOURCE=.\src\widgets\scrollbar.cpp
 # Begin Source File
 
 SOURCE=.\src\widgets\scrollpane.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\sdl_ttf\SDL_ttf.c
 # End Source File
 # Begin Source File
 
@@ -417,7 +437,15 @@ SOURCE=.\src\titlescreen.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\serialization\tokenizer.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\tooltips.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\tstring.cpp
 # End Source File
 # Begin Source File
 
@@ -430,6 +458,10 @@ SOURCE=.\src\unit_display.cpp
 # Begin Source File
 
 SOURCE=.\src\unit_types.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\variable.cpp
 # End Source File
 # Begin Source File
 
@@ -485,6 +517,10 @@ SOURCE=.\src\astarnode.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\serialization\binary_or_text.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\serialization\binary_wml.hpp
 # End Source File
 # Begin Source File
@@ -498,6 +534,10 @@ SOURCE=.\src\widgets\button.hpp
 # Begin Source File
 
 SOURCE=.\src\cavegen.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\checksum.hpp
 # End Source File
 # Begin Source File
 
@@ -761,11 +801,23 @@ SOURCE=.\src\theme.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\thread.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\titlescreen.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\serialization\tokenizer.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\tooltips.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\tstring.hpp
 # End Source File
 # Begin Source File
 
@@ -795,6 +847,10 @@ SOURCE=.\src\widgets\widget.hpp
 # Begin Group "Resource Files"
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+# Begin Source File
+
+SOURCE=.\wesnoth.ico
+# End Source File
 # End Group
 # End Target
 # End Project
