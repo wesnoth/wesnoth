@@ -49,11 +49,11 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 }
 
 void terrain_palette::adjust_size() {
-	
+
 	scroll_top();
 	const size_t button_height = 24;
 	const size_t button_palette_padding = 8;
-	
+
 	SDL_Rect rect = { size_specs_.palette_x, size_specs_.palette_y, size_specs_.palette_w, size_specs_.palette_h };
 	set_location(rect);
 	top_button_y_ = size_specs_.palette_y;
@@ -232,7 +232,7 @@ void terrain_palette::handle_event(const SDL_Event& event) {
 }
 
 void terrain_palette::draw(bool force) {
-	
+
 	if (top_button_.pressed()) {
 		scroll_up();
 	}
@@ -262,7 +262,7 @@ void terrain_palette::draw(bool force) {
 		if((unsigned)image->w != size_specs_.terrain_size || (unsigned)image->h != size_specs_.terrain_size) {
 			image.assign(scale_surface(image, size_specs_.terrain_size, size_specs_.terrain_size));
 		}
-		
+
 		const int counter_from_zero = counter - starting;
 		SDL_Rect dstrect;
 		dstrect.x = loc.x + (counter_from_zero % size_specs_.terrain_width) * size_specs_.terrain_space;
