@@ -1,3 +1,16 @@
+/* $Id$ */
+/*
+   Copyright (C) 2003-5 by David White <davidnwhite@verizon.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include "../global.hpp"
 
 #include "../config.hpp"
@@ -114,7 +127,7 @@ private:
 	const config& cfg_;
 
 	std::set<std::string> accepted_versions_;
-	std::map<std::string,config> redirected_versions_; 
+	std::map<std::string,config> redirected_versions_;
 
 	bool is_ip_banned(const std::string& ip);
 	std::string ban_ip(const std::string& mask);
@@ -423,7 +436,7 @@ void server::process_login(const network::connection sock, const config& data, c
 				network::send_data(response,sock);
 			}
 		}
-		
+
 		return;
 	}
 
