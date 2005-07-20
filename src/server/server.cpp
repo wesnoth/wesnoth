@@ -28,6 +28,7 @@
 #include "metrics.hpp"
 #include "serialization/parser.hpp"
 #include "player.hpp"
+#include "proxy.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -127,7 +128,8 @@ private:
 	const config& cfg_;
 
 	std::set<std::string> accepted_versions_;
-	std::map<std::string,config> redirected_versions_;
+	std::map<std::string,config> redirected_versions_; 
+	std::map<std::string,config> proxy_versions_;
 
 	bool is_ip_banned(const std::string& ip);
 	std::string ban_ip(const std::string& mask);
@@ -156,6 +158,14 @@ server::server(int port, input_stream& input, const config& cfg) : net_manager_(
 		const std::vector<std::string> versions(utils::split((**i)["version"]));
 		for(std::vector<std::string>::const_iterator j = versions.begin(); j != versions.end(); ++j) {
 			redirected_versions_[*j] = **i;
+		}
+	}
+
+	const config::child_list& proxies = cfg_.get_children("proxy");
+	for(config::child_list::const_iterator p = proxies.begin(); p != proxies.end(); ++p) {
+		const std::vector<std::string> versions(utils::split((**p)["version"]));
+		for(std::vector<std::string>::const_iterator j = versions.begin(); j != versions.end(); ++j) {
+			proxy_versions_[*j] = **p;
 		}
 	}
 
@@ -370,6 +380,9 @@ void server::run()
 				}
 
 				if(e.socket) {
+					if(proxy::is_proxy(e.socket)) {
+						proxy::disconnect(e.socket);
+					}
 					e.disconnect();
 				}
 
@@ -390,9 +403,12 @@ void server::run()
 
 void server::process_data(const network::connection sock, config& data, config& gamelist)
 {
+	if(proxy::is_proxy(sock)) {
+		proxy::received_data(sock,data);
+	}
 	//if someone who is not yet logged in is sending
 	//login details
-	if(not_logged_in_.is_member(sock)) {
+	else if(not_logged_in_.is_member(sock)) {
 		process_login(sock,data,gamelist);
 	} else if(const config* query = data.child("query")) {
 		process_query(sock,*query,gamelist);
@@ -422,24 +438,33 @@ void server::process_login(const network::connection sock, const config& data, c
 				response.add_child("redirect",i->second);
 				network::send_data(response,sock);
 			} else {
-				std::cerr << "player joined using unknown version " << version_str << ": rejecting them\n";
-				config response;
-				if(accepted_versions_.empty() == false) {
-					response["version"] = *accepted_versions_.begin();
-				} else if(redirected_versions_.empty() == false) {
-					response["version"] = redirected_versions_.begin()->first;
-				} else {
-					std::cerr << "this server doesn't accept any versions at all\n";
-					response["version"] = "null";
-				}
+				const std::map<std::string,config>::const_iterator i = proxy_versions_.find(version_str);
 
-				network::send_data(response,sock);
+				if(i != proxy_versions_.end()) {
+					std::cerr << "player joined using version " << version_str << ": connecting them by proxy to "
+					          << i->second["host"] << ":" << i->second["port"] << "\n";
+
+					proxy::create_proxy(sock,i->second["host"],lexical_cast_default<int>(i->second["port"],15000));
+				} else {
+
+					std::cerr << "player joined using unknown version " << version_str << ": rejecting them\n";
+					config response;
+					if(accepted_versions_.empty() == false) {
+						response["version"] = *accepted_versions_.begin();
+					} else if(redirected_versions_.empty() == false) {
+						response["version"] = redirected_versions_.begin()->first;
+					} else {
+						std::cerr << "this server doesn't accept any versions at all\n";
+						response["version"] = "null";
+					}
+
+					network::send_data(response,sock);
+				}
 			}
 		}
-
+		
 		return;
 	}
-
 
 	const config* const login = data.child("login");
 

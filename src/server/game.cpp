@@ -133,9 +133,9 @@ bool game::take_side(network::connection player, const config& cfg)
 
 	// verify that side is a side id
 	const std::string& side = cfg["side"];
-	ssize_t side_num;
+	size_t side_num;
 	try {
-		side_num = lexical_cast<ssize_t, std::string>(side);
+		side_num = lexical_cast<size_t, std::string>(side);
 		if(side_num < 1 || side_num > 9)
 			return false;
 	}
@@ -153,7 +153,7 @@ bool game::take_side(network::connection player, const config& cfg)
 			if((**i)["controller"] == "network") {
 				// don't allow players to take sides in games with invalid side numbers
 				try {
-					side_num = lexical_cast<ssize_t, std::string>((**i)["side"]);
+					side_num = lexical_cast<size_t, std::string>((**i)["side"]);
 					if(side_num < 1 || side_num > 9)
 						return false;
 				}
@@ -204,12 +204,12 @@ void game::update_side_data()
 			continue;
 		}
 
-		ssize_t side_num;
+		size_t side_num;
 		size_t side_index;
 		config::child_iterator sd;
 		for(sd = level_sides.first; sd != level_sides.second; ++sd) {
 			try {
-				side_num = lexical_cast<ssize_t, std::string>((**sd)["side"]);
+				side_num = lexical_cast<size_t, std::string>((**sd)["side"]);
 				if(side_num < 1 || side_num > 9)
 					continue;
 			}
@@ -233,6 +233,7 @@ void game::update_side_data()
 				sides_taken_[side_index] = true;
 			}
 			else if((**sd)["controller"] == "human") {
+				sides_.insert(std::pair<network::connection,size_t>(players_.front(),side_index));
 				sides_taken_[side_index] = true;
 				side_controllers_[side_index] = "human";
 			}
@@ -258,9 +259,9 @@ const std::string& game::transfer_side_control(const config& cfg)
 	}
 	const std::string& side = cfg["side"];
 	static const std::string invalid = "Invalid side number";
-	ssize_t side_num;
+	size_t side_num;
 	try {
-		side_num = lexical_cast<ssize_t, std::string>(side);
+		side_num = lexical_cast<size_t, std::string>(side);
 		if(side_num < 1 || side_num > 9)
 			return invalid;
 	}

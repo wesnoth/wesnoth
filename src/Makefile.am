@@ -406,6 +406,7 @@ wesnothd_SOURCES = \
 	server/input_stream.cpp \
 	server/metrics.cpp \
 	server/player.cpp \
+	server/proxy.cpp \
 	server/server.cpp \
 	config.cpp \
 	filesystem.cpp \
@@ -425,6 +426,7 @@ wesnothd_SOURCES = \
 	server/input_stream.hpp \
 	server/metrics.hpp \
 	server/player.hpp \
+	server/proxy.hpp \
 	config.hpp \
 	filesystem.hpp \
 	game_config.hpp \
