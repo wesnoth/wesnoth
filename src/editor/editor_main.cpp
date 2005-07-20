@@ -213,6 +213,10 @@ int main(int argc, char** argv)
 	// make it load that way maybe.
 	defines_map["MULTIPLAYER"] = preproc_define();
 
+#if defined(__APPLE__)
+	defines_map["APPLE"] = preproc_define();
+#endif
+	
 	//Set the locale first, then read the configuration, or else WML
 	//strings are not correctly translated. Does this work on on the win32
 	//platform?
