@@ -12,6 +12,7 @@ CVS HEAD:
    * added terrain descriptions to in-game help
    * fixed blank terrain entries in unit help
    * ignore LANGUAGE in environment: broke translations (forum thread 6614)
+   * added Swedish man pages to the list of man pages to be installed
  * unit balancing and modifications:
    * max level units given After-Max-Level-Advancement (AMLA) of 3 HP/100XP
      added to max HP, with no auto-heal; Necrophage has healing AMLA
@@ -33,11 +34,17 @@ CVS HEAD:
  * campaigns
    * Heir to the Throne:
      * made campaign easier on "Easy" level
+     * removed duplicate file inclusion - campaign should now start faster
    * Eastern Invasion:
      * revised Approaching Weldyn for quicker gameplay
      * tweaked Undead Crossing
+     * removed duplicate file inclusion - campaign should now start faster
    * The Dark Hordes:
      * cleaned up old id tags; added portraits for Tanar, Nati and Gwiti
+     * removed duplicate file inclusion - campaign should now start faster
+   * The Rise of Wesnoth:
+     * removed duplicate file inclusion - campaign should now start faster
+     * fixed Lt. Aethyr death events not triggering in Rise of Wesnoth (#13848)
  * server now supports redirection based on client version number
  * editor
    * changed the layout of the terrain palette (#11965)
@@ -50,6 +57,9 @@ CVS HEAD:
    * new utility makemam to construct Makefile.am from Makefile.am.in and
      files containing lists of sources
    * fix libpng not being detected on NetBSD (#13808)
+ * user interface improvements:
+   * show scrollbar in multiplayer lobby when there are many players (#13521)
+   * multiplayer lobby player list no longer resets to start (#13345)
  * remove redundant {utils} and {~utils} references (#13843)
  * various bug fixes and code cleanups
 
