@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-19 08:13+0200\n"
-"PO-Revision-Date: 2005-07-07 21:47+0100\n"
+"PO-Revision-Date: 2005-07-20 12:19+0200\n"
 "Last-Translator: Maarten Albrecht <maartenalbrecht@gmail.com>\n"
 "Language-Team: Dutch <onne@grammex.com>\n"
 "MIME-Version: 1.0\n"
@@ -597,7 +597,6 @@ msgstr ""
 "een keuze maken voor de promotie."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -714,7 +713,6 @@ msgstr ""
 "Inkomen en Onderhoud."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -728,7 +726,7 @@ msgstr ""
 "Inkomen is eenvoudig. Voor elk dorpje dat in jouw bezit is krijg je in "
 "principe 1 goudstuk per beurt. Dus als je tien dorpjes hebt zou je tien "
 "goudstukken per beurt krijgen. Daar worden echter de onderhoudskosten nog "
-"van afgetrokken."
+"van afgetrokken, zoals hieronder wordt uitgelegd."
 
 #: data/help.cfg:189
 msgid ""
@@ -750,7 +748,6 @@ msgstr ""
 "dan twee goudstukken per beurt betalen aan onderhoud."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -761,10 +758,9 @@ msgstr ""
 "\n"
 "\n"
 "De onderhoudskosten worden afgetrokken van je inkomen, zodat je in het "
-"voorbeeld een inkomen zou hebben van 8 goudstukken per beurt. "
+"voorbeeld een inkomen zou hebben van 8 goudstukken per beurt."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -774,11 +770,10 @@ msgid ""
 msgstr ""
 "\n"
 "Er zijn twee uitzonderingen wat betreft de onderhoudskosten. Ten eerste "
-"kosten troepen met de trek Loyaal nooit meer dan 1 goudstuk per beurt, "
-"ongeacht hun rang. En ten tweede betaal je niets voor eenheden die je vanaf "
-"het begin van het scenario hebt (zoals Konrad en Delfador), of die zich "
-"tijdens het scenario bij je voegen (zoals de Ruiter in het tweede scenario "
-"van De Kroonprins)."
+"hebben troepen met de trek Loyaal nooit onderhoudskosten, ongeacht hun rang. "
+"Eenheden die je vanaf het begin van het scenario hebt (zoals Konrad en "
+"Delfador), of die zich tijdens een scenario bij je voegen (zoals de Ruiter "
+"in het tweede scenario van De Kroonprins) zijn meestal loyaal."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -803,7 +798,6 @@ msgid "About"
 msgstr "Over"
 
 #: data/help.cfg:210
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -811,9 +805,10 @@ msgid ""
 "randomly assigned to a unit when it is recruited."
 msgstr ""
 "De meeste eenheden hebben twee trekken, met uitzondering van de ondode "
-"eenheden die de trek 'Ondood' krijgen. Trekken veranderen de "
-"karakteristieken van een eenheid lichtelijk. In principe worden ze "
-"willekeurig toegewezen aan een gerekruteerde eenheid."
+"eenheden die alleen de trek 'Ondood' krijgen, en Enten die helemaal geen "
+"trek krijgen. Trekken veranderen de karakteristieken van een eenheid "
+"lichtelijk. In principe worden ze willekeurig toegewezen aan een "
+"gerekruteerde eenheid."
 
 #: data/help.cfg:212
 msgid ""
@@ -1051,6 +1046,14 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"Grasland representeert open vlaktes, hetzij natuurlijk, hetzij bedoeld voor "
+"landbouw of veeteelt. De open vlaktes zijn makkelijk te doorkruisen maar het "
+"is moeilijk er verdediging te vinden. Over het algemeen zijn de eenheden die "
+"het beste presteren op grasland cavalerie en erg wendbare eenheden, die "
+"gebruik maken van de ruimte.\n"
+"\n"
+"De meeste eenheden hebben een verdedigingspercentage van 30% tot 40% op "
+"grasland."
 
 #: data/help.cfg:280 data/terrain.cfg:124 data/terrain.cfg:132
 msgid "Road"
@@ -1062,6 +1065,9 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"Wegen zijn platgetreden stofpaden, gevormd door het passeren van vele "
+"reizigers. Wat betreft de spelregels zijn wegen gelijk aan "
+"<ref>dst=terrain_grassland text=Grasland</ref>."
 
 #: data/help.cfg:286 data/terrain.cfg:321
 msgid "Forest"
@@ -1083,6 +1089,20 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"Bos representeert elk soort bebost gebied met genoeg lage begroeiing om de "
+"doorgang te hinderen. Hoewel het bijna ieders voortgang vertraagt, biedt het "
+"bos de meeste eenheden betere verdediging dan grasland. Cavalerie echter, "
+"heeft zoveel moeite zijn weg door het bos te vinden dat elk verkregen "
+"verdedigingsvoordeel daardoor weer ongedaan wordt gemaakt. Elfen vormen een "
+"uitzondering. Niet alleen houden ze hun volledige bewegingssnelheid, ze "
+"hebben ook een aanzienlijke verdedigingsbonus. Dwergen zijn een andere "
+"uitzondering. Hoewel ze zich zonder veel moeite door het bos bewegen, worden "
+"ze in hun verdediging sterk gehinderd door hun onervarenheid met het "
+"terrein.\n"
+"\n"
+"De meeste eenheden hebben 50% verdediging in het bos, maar cavalerie heeft "
+"niet meer dan 40%. Elfen, inclusief hun bereden eenheden, hebben 60% tot 70% "
+"verdediging, terwijl dwergen niet meer dan 30% krijgen."
 
 #: data/help.cfg:294 data/terrain.cfg:282
 msgid "Hills"
@@ -1100,6 +1120,15 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"Heuvels representeren elk soort redelijk ruig terrein, met genoeg hogere en "
+"diepere punten om wat dekking te geven. De meeste eenheden bewegen moeizaam "
+"door heuvels. Dwergen, Trollen en Orks zijn bekend met het terrein en worden "
+"er niet door vertraagd. Cavalerie heeft zoveel problemen zich door het "
+"terrein te bewegen dat enig verdedigingsvoordeel weer ongedaan gemaakt "
+"wordt.\n"
+"\n"
+"De meeste eenheden hebben 50% verdediging in de heuvels, maar cavalerie "
+"heeft 40% en Dwergen 60%."
 
 #: data/help.cfg:302 data/terrain.cfg:306
 msgid "Mountains"
@@ -1117,6 +1146,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Bergen zijn zo steil dat eenheden regelmatig over obstakels moeten klouteren "
+"om vooruit te komen. Deze eigenschap geeft de meeste eenheden een "
+"aanzienlijke verdediging, maar bergen vertragen ook. De meeste ruiters "
+"kunnen zelfs helemaal niet door de bergen; Elfen en goblin wolfruiters zijn "
+"hier een uitzondering op. Zowel Dwergen als Trollen komen van nature uit de "
+"bergen en lopen er op hun gemak rond.\n"
+"\n"
+"De meeste eenheden hebben een verdediging van 60% in de bergen, dwergen "
+"zelfs 70%."
 
 #: data/help.cfg:310 data/terrain.cfg:51
 msgid "Swamp"
@@ -1133,6 +1171,14 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
+"Moeras representeert elk soort nat gebied. Moerassen vertragen bijna "
+"iedereen, en hinderen de verdedigingsmogelijkheden. Uitzonderingen hierop "
+"zijn rassen die gebouwd zijn voor het water; deze bewegen zich snel en "
+"hebben een hoge verdediging. Degenen die hun brood verdienen in het moeras "
+"kunnen zich er ook goed verdedigen.\n"
+"\n"
+"De meeste eenheden moeten het doen met 30% verdediging in het moeras. "
+"Meermannen, Naga's en Saurianen krijgen meestal 60%."
 
 #: data/help.cfg:318 data/terrain.cfg:30
 msgid "Shallow Water"
@@ -1150,6 +1196,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
+"Ondiep water representeert elk soort water dat zo diep is dat het tot het "
+"middel van een man komt. Het vertraagt bijna iedereen en geeft weinig "
+"verdediging. Zeker dwergen, die het water tot het hoofd komt, hebben het "
+"moeilijk. De uitzondering wordt gevormd door de rassen die gebouwd zijn om "
+"in het water te leven. Deze krijgen een aanzienlijke verdedigingsbonus en "
+"volledige beweging.\n"
+"\n"
+"De meeste eenheden moeten het doen met 20% tot 30% verdediging in ondiep "
+"water. Meermannen en Naga's krijgen daarentegen 60%."
 
 #: data/help.cfg:326 data/terrain.cfg:21
 msgid "Deep Water"
@@ -1163,11 +1218,17 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"Diep water representeert elke watermassa diep genoeg om tot boven het hoofd "
+"van een volwassen man te komen. De meeste eenheden kunnen niet door diep "
+"water bewegen: het is het domein van eenheden die of kunnen vliegen of "
+"uitzonderlijk goede zwemmers zijn.\n"
+"\n"
+"Meermannen en Naga's krijgen beide een verdediging van 50% in diep water en "
+"worden er niet door vertraagd."
 
 #: data/help.cfg:334
-#, fuzzy
 msgid "Tundra"
-msgstr "ondood"
+msgstr "Toendra"
 
 #: data/help.cfg:337
 msgid ""
@@ -1177,6 +1238,11 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in Tundra."
 msgstr ""
+"Toendra is grasland bedekt met sneeuw, hetzij tijdelijk hetzij permanent. De "
+"meeste eenheden worden opgehouden in de toendra en hebben het moeilijk bij "
+"de verdediging.\n"
+"\n"
+"De meeste eenheden krijgen 20% tot 40% verdediging in de Toendra."
 
 #: data/help.cfg:342 data/terrain.cfg:70
 msgid "Ice"
@@ -1188,6 +1254,10 @@ msgid ""
 "identical to <ref>dst=terrain_tundra text=Tundra</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
+"IJs representeert elk soort bevroren water. Qua spelregels is het gelijk aan "
+"<ref>dst=terrain_tundra text=Toendra</ref>. Merk op dat zwemmende eenheden, "
+"zelfs degenen die onderwater kunnen ademen, niet onder het ijs kunnen "
+"zwemmen."
 
 #: data/help.cfg:348 data/terrain.cfg:370 data/terrain.cfg:430
 msgid "Castle"
@@ -1204,6 +1274,13 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"Kastelen zijn elk soort permanente fortificatie. Bijna alle eenheden krijgen "
+"een aanzienlijke verdedigingsbonus wanneer ze in een kasteel geplaatst zijn "
+"en alle eenheden kunnen er ongehinderd bewegen. Een kasteel verdedig je door "
+"er eenheden in te plaatsen. Wanneer een kasteelvakje vrij is kan een vijand "
+"eenvoudigweg binnensluipen en zo dezelfde verdedigingsbonus krijgen.\n"
+"\n"
+"De meeste eenheden hebben ongeveer 60% verdediging in een kasteel."
 
 #: data/help.cfg:356 data/terrain.cfg:106
 msgid "Sand"
@@ -1217,11 +1294,15 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
+"Los zand hindert de bewegingen van troepen en laat hen vrijwel onverdedigd. "
+"Dat geldt niet voor de hagedisachtigen met hun brede voeten en slangachtige "
+"lichamen.\n"
+"\n"
+"De meeste eenheden krijgen 20% tot 40% verdediging in het zand."
 
 #: data/help.cfg:364 data/terrain.cfg:115
-#, fuzzy
 msgid "Desert"
-msgstr "Woestijnbergen"
+msgstr "Woestijn"
 
 #: data/help.cfg:365
 msgid ""
@@ -1229,6 +1310,9 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
+"Woestijnen hebben een enigzins andere samenstelling dan kleine zandputten en "
+"stranden, maar qua spelregels gelden ze toch als <ref>dst=terrain_sand "
+"text=Zand</ref>."
 
 #: data/help.cfg:370 data/terrain.cfg:353
 msgid "Cave"
@@ -1245,6 +1329,13 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Een grot representeert een ondergrondse ruimte, ruim genoeg voor een eenheid "
+"om erdoor te kunnen.De meeste eenheden zijn volstrekt onbekend met het "
+"terrein en worden daardoor in hun voortgang gehinderd. Dwergen en Trollen, "
+"die in grotten huizen, hebben het er makkelijker. Zeker dwergen, die door "
+"hun geringe grootte makkelijker de obstakels in de grot kunnen ontwijken.\n"
+"\n"
+"De meeste eenheden krijgen 20% tot 40% verdediging in grotten, dwergen 50%."
 
 #: data/help.cfg:378 data/terrain.cfg:157
 msgid "Savanna"
@@ -1256,6 +1347,9 @@ msgid ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"Savannes zijn vlaktes met lang gras, die men vindt in de warmere regios van "
+"de wereld. Qua spelregels is het gelijk aan <ref>dst=terrain_grassland "
+"text=Grasland</ref>."
 
 #: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
@@ -1276,6 +1370,15 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"Dorpen representeren een groep gebouwen, menselijk of anderszins. Bijna alle "
+"eenheden, zelfs cavalerie, kunnen makkelijk door dorpen bewegen, en de "
+"meeste eenheden krijgen een verdedigingsbonus als ze in een dorp "
+"gestationeerd zijn. Dorpen voorschaffen eenheden de mogelijkheid hun wonden "
+"te verzorgen, zodat elke eenheid in een dorp elke beurt acht hitpoints "
+"geneest of bijkomt van zijn vergiftiging.\n"
+"\n"
+"De meeste eenheden hebben 50% tot 60% verdediging in een dorp, cavalerie "
+"slechts 40%."
 
 #: data/items.cfg:264
 msgid ""
@@ -4064,12 +4167,10 @@ msgstr "Oude Lich"
 #: data/units/Vampire_Lady.cfg:15 data/units/Wall_Guard.cfg:29
 #: data/units/Warrior_King.cfg:19 data/units/Watch_Tower.cfg:12
 #: data/units/Yeti.cfg:28
-#, fuzzy
 msgid "tough"
-msgstr "aanraking"
+msgstr "pezig"
 
 #: data/units/Ancient_Lich.cfg:28
-#, fuzzy
 msgid ""
 "The final form that magi of the undead can achieve, Ancient Liches strike "
 "terror into the hearts of those who see them. Not only is their touch that "
@@ -4173,6 +4274,19 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Er is een merkwaardig verhaal over een boer die een grote eik op zijn veld "
+"had staan. Een boom die er al stond toen zijn vader voor het eerst het land "
+"omploegde en waaronder zijn familie veel gedenkwaardige momenten beleefd "
+"had. Het was dus nogal een schok voor de boer, toen hij op een morgen "
+"wakkerwerd en zag dat de boom op mysterieuze wijze was verdwenen. Op de "
+"plaats waar hij had gestaan restte niets dan een kaal stuk grond. De arme "
+"boer is nooit meer helemaal zichzelf geworden.\n"
+"\n"
+"Dit soort gebeurtenissen zijn de enige aanwijzingen die er zijn voor wat "
+"vermoedelijke de alleroudste enten zijn.\n"
+"\n"
+"Bijzonderheden: Enten regenereren met behulp van de natuurlijke hulpmiddelen "
+"rondom hen, zonder dat ze daarvoor in een dorp hoeven te zijn."
 
 #: data/units/Ancient_Wose.cfg:51 data/units/Elder_Wose.cfg:24
 #: data/units/Wose.cfg:24
@@ -4262,6 +4376,21 @@ msgid ""
 "Special Notes: the arch mage's fireballs are magical, and always have a high "
 "chance of hitting an opponent."
 msgstr ""
+"De titel Oppermagiër wordt slechts gedragen door hen die een leven van "
+"studie en grootse verrichtingen achter zich hebben. Oppermagiërs hebben vaak "
+"een positie als leraar of adviseur van degenen die slim genoeg zijn de "
+"vruchten van hun wijsheid te zoeken. Velen staan in dienst van rijke "
+"patroonheren, waarvan beide partijen profiteren, omdat het de magiër in "
+"staat stelt zijn studie ongestoord uit te voeren. Sommige anderen keren zich "
+"af van de beschaving en brengen hun dagen door als kluizenaars, veelal om "
+"dubieuze studies te verrichten.\n"
+"\n"
+"Hoewel niet geoefend in het gevecht, kunnen Oppermagiërs wanneer nodig de "
+"volle kracht van hun magische kunsten inzetten, wat niet licht opgevat kan "
+"worden.\n"
+"\n"
+"Bijzonderheden: De vuurballen van de Oppermagiër zijn magisch en hebben als "
+"zodanig altijd een hoge raakkans."
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:152
 #: data/units/Dark_Sorcerer.cfg:28 data/units/Deathmaster.cfg:32
@@ -4982,7 +5111,6 @@ msgid "Demilich"
 msgstr "Demusteek"
 
 #: data/units/Demilich.cfg:17
-#, fuzzy
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
@@ -5603,13 +5731,12 @@ msgid "Elder Mage"
 msgstr "Oude Magiër"
 
 #: data/units/Elder_Mage.cfg:30
-#, fuzzy
 msgid ""
 "Once great, Elder Magi have seen their power a little diminished from "
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
-"De Oude Magiër was ooit een Meester Magiër maar over de jaren is zijn kracht "
+"De Oude Magiër was ooit een Meestermagiër maar over de jaren is zijn kracht "
 "misschien verminderd, maar zeker niet minder dodelijk geworden. De "
 "bliksemschichten die deze tovenaars gebruiken worden terecht door iedereen "
 "gevreesd."
@@ -5639,6 +5766,19 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Van enten wordt verteld dat ze in velerlei verschillende vormen voorkomen, "
+"altijd gelijkend op een boom, en dat ze groeien naarmate ze ouder worden. "
+"Verhalen vertellen hoe ze ook in dit opzicht op bomen lijken, uittorend "
+"boven de wezens die onder hen door lopen. Dat verklaart voor een groot deel "
+"waarom ze zelden worden gezien - stilstaand lijken ze sprekend op een boom. "
+"Zelfs een onoplettende elf kan op die manier misleid worden.\n"
+"\n"
+"Enten zijn in geen enkel opzicht krijgers, maar de kracht die ze bezitten "
+"stelt hen in staat rake klappen uit te delen wanneer hun toorn gewekt "
+"wordt.\n"
+"\n"
+"Bijzonderheden: Enten regenereren met behulp van de natuurlijke hulpmiddelen "
+"rondom hen, zonder dat ze daarvoor in een dorp hoeven te zijn."
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -6317,6 +6457,11 @@ msgid ""
 "head of a charge is a terrifying sight for infantry, and is often enough to "
 "break right through a defensive line."
 msgstr ""
+"Grootse Ridders hebben het toppunt van vaardigheid met zwaard en lans "
+"bereikt. Volledig in staal gehuld en rijdend op op kracht gefokte paarden, "
+"vormen deze ruiters de kern van elke serieuze cavalerie. Een grootse ridder "
+"vooraan een stormloop is een angstaanjagende aanblik voor infanterie en is "
+"vaak genoeg om dwars door een verdedigingslinie te breken."
 
 #: data/units/Grand_Knight.cfg:29
 msgid ""
@@ -6325,6 +6470,11 @@ msgid ""
 "Special Notes: the Grand Knight's charging lance attack doubles both damage "
 "dealt and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Bijzonderheden: de stormloop aanval van de Grootse Ridder verdubbelt zowel "
+"de toegebrachte als de ontvangen schade. Het heeft geen invloed op zijn "
+"verdediging."
 
 #: data/units/Grand_Knight.cfg:49 data/units/Knight.cfg:40
 #: data/units/Lancer.cfg:33 data/units/Paladin.cfg:54
@@ -6350,7 +6500,7 @@ msgstr ""
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
-msgstr "Meester Magiër"
+msgstr "Meestermagiër"
 
 #: data/units/Great_Mage.cfg:33 data/units/Great_Mage.cfg:139
 msgid ""
@@ -6369,10 +6519,24 @@ msgid ""
 "Special Notes: the great mage's fireballs are magical, and always have a "
 "high chance of hitting an opponent."
 msgstr ""
+"Iemand waarvan zelfs maar overwogen wordt hem de titel Meestermagiër te "
+"geven is al bijna een levende legende en stadsomroepers hebben gedwongen "
+"descretie leren betrachten bij het gebruik van de titel. Magiërs die in "
+"aanmerking komen voor de titel worden zorgvuldig onder de loep genomen door "
+"de raad van de leidende magiërs en de titel wordt alleen bij meerderheid van "
+"stemmer verstrekt. Hoe dan ook, iemand die alleen maar genomineerd wordt "
+"voor eer Meestermagiër genoemd te worden, is sowieso een meester in de "
+"kunsten en is nagenoeg al zijn tijdgenoten voorbijgestreefd.\n"
+"\n"
+"Hoewel ze geenszins krijgers zijn, kijken soldaten liever van een afstandje "
+"toe, als de Meestermagiër zijn vaardigheden toepast op het strijdveld.\n"
+"\n"
+"Bijzonderheden: De vuurballen van de Meestermagiër zijn magisch en hebben "
+"als zodanig altijd een hoge raakkans."
 
 #: data/units/Great_Mage.cfg:109
 msgid "female^Great Mage"
-msgstr "Meester Magiër"
+msgstr "Meestermagiër"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
@@ -6389,10 +6553,18 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
+"Als de leeftijd en wijsheid van een trol op hetzelfde niveau komen als zijn "
+"buitengewone kracht, wordt het een uitzonderlijk wezen, een beest dat "
+"generaties lang herinnerd zal worden. Hun kracht en sluwheid zijn de bron "
+"van de meeste trolverhalen en wanneer men de verhalen werkelijkheid ziet "
+"worden ziet men dat er niets van gelogen is.\n"
+"\n"
+"Bijzonderheden: Trollen regenereren, wat inhoudt dat ze genezen alsof ze "
+"altijd in een dorp staan."
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
-msgstr "Grifoen"
+msgstr "Griffioen"
 
 #: data/units/Gryphon.cfg:25
 msgid ""
@@ -6408,20 +6580,19 @@ msgid "Gryphon Master"
 msgstr "Grifoen Meester"
 
 #: data/units/Gryphon_Master.cfg:27
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty pairs may strike from anywhere."
 msgstr ""
-"Voor deze ruiters van de hemel is de grifoen meer dan een rijdier, het is "
+"Voor deze ruiters van de hemel is de grifioen meer dan een rijdier, het is "
 "een verlenging van henzelf. Een speciaal pact dat het hart van de "
 "aardbewoners doet beven, want sindsdien kunnen machtige schepsel hen van "
 "overal belagen."
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
-msgstr "Grifoenruiter"
+msgstr "Griffioenruiter"
 
 #: data/units/Gryphon_Rider.cfg:17
 msgid ""
@@ -6497,6 +6668,13 @@ msgid ""
 "must take care against both spearmen and archers, for whom their large size "
 "and momentum provide inviting targets."
 msgstr ""
+"Ruiters, vaak afkomstig van de wilde regio's van Wesnoth, worden van kinds "
+"af aan getraind in het paardrijden en hebben een strenge erecode. Een "
+"stormloop uitgevoerd door een ruiter is een machtige maar roekeloze taktiek, "
+"waarvan de waarde keer op keer bewezen is. Ruiters blinken uit tegen de "
+"meeste soorten infanterie, voornamelijk wanneer die uit het gelid is "
+"geraakt, maar moeten uitkijken met speermannen en boogschutters voor wie de "
+"grote ruiters een verleidelijk doelwit vormen."
 
 #: data/units/Horseman.cfg:21
 msgid ""
@@ -6505,6 +6683,11 @@ msgid ""
 "Special Notes: the Horseman's only attack is a charge, which doubles both "
 "damage dealt and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Bijzonderheden: de enige aanval van de Ruiter is een stormloop, die zowel de "
+"uitgedeelde als ontvangen schade verdubbelt. Dit heeft geen effect op zijn "
+"verdediging."
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
@@ -6565,6 +6748,12 @@ msgid ""
 "patience, are far safer than a charge. Their lances are still at the ready, "
 "however, and growing experience with these weapons is only to their benefit."
 msgstr ""
+"Vaardige en gedisciplineerd Ruiters worden gepromoveerd tot Ridders. Als "
+"veteranen kennen ze de, vaak fatale, afloop van een mislukte stormloop en "
+"hebben ze geleerd die met mate toe te passen. Ridders dragen daarom zwaarden "
+"bij zich om ook veiliger taktieken te kunnen gebruiken. Hun lans hebben ze "
+"overigens niet aan de wilgen gehangen, en hun groeiende ervaring met dit "
+"wapen is in hun voordeel."
 
 #: data/units/Knight.cfg:21
 msgid ""
@@ -6573,6 +6762,10 @@ msgid ""
 "Special Notes: the Knight's charging lance attack doubles both damage dealt "
 "and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Bijzonderheden: de stormloop van de Ridder verdubbelt zowel de uitgedeelde "
+"als ontvangen schade. Dit heeft geen effect op zijn verdediging."
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
@@ -6587,6 +6780,13 @@ msgid ""
 "infantrymen who've made the mistake of breaking formation, and in piercing "
 "defensive lines. However, they have limited use in defense."
 msgstr ""
+"Lanseniers behoren tot de dapperste en meest gevreesde ruiters van Wesnoth. "
+"Gehuld in minimale bepantsering zijn ze erg wendbaar. Hun gewaagde taktieken "
+"behelzen onder andere een dubbelzijdig zwaard, die vaak of een snelle "
+"overwinning, of een spoedige dood brengt. Lanseniers blinken uit in het "
+"achternajagen van infanteristen die hun formatie verbroken hebben, en in het "
+"vormen van spiezende verdedigingslinies. Ze zijn echter van beperkt nut in "
+"de verdediging."
 
 #: data/units/Lancer.cfg:30
 msgid ""
@@ -6595,13 +6795,16 @@ msgid ""
 "Special Notes: the Lancer's charging lance attack doubles both damage dealt "
 "and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Bijzonderheden: de stormloop van de Lansenier verdubbelt zowel de "
+"uitgedeelde als ontvangen schade. Dit heeft geen effect op zijn verdediging."
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
 msgstr "Lich"
 
 #: data/units/Lich.cfg:25
-#, fuzzy
 msgid ""
 "Liches are magi that have committed completely to the path of the dark arts. "
 "To gain control over the undead, Liches have forfeited their own bodies, "
@@ -6683,6 +6886,25 @@ msgid ""
 "Special Notes: the ranged attack of a mage is magical, and always has a high "
 "chance of hitting an opponent."
 msgstr ""
+"Mensen hebben veel gedachten geweid aan de wereld waarin zij leven. Sommigen "
+"pogen hierin verder te gaan dan oppervlakkig getob en zien het als de "
+"voornaamste bezigheid in hun leven. Magiërs hebben enkele jaren aan studie "
+"geweid en hebben een bewonderenswaardige hoeveelheid kennis verzameld. In "
+"een wereld waar slechts weinigen kunnen lezen en schrijven hebben deze "
+"mensen zichzelf volledig toegelegd op het verkrijgen van kennis. Hun "
+"gelederen zijn vergeven van de kinderen van hoopvolle adel en van hen die de "
+"intellectuele leegte van een leven van handenarbeid wilden ontsnappen.\n"
+"\n"
+"Het is ironisch dat, met alle kennis die ze hebben verzameld en hun "
+"monopolie daarop, de magiërs gezamelijk vermoedelijk de wereld zouden kunnen "
+"regeren, als ze dat ooit zouden proberen. Maar hun begeerte naar geld en "
+"macht is gering en degenen die de wetten van de magie bestuderen met die "
+"doelen hebben vaak niet de benodigde overtuiging.\n"
+"\n"
+"Fysiek broos en onervaren in het gevecht hebben magiërs toch enige, op het "
+"slagveld nuttige, eigenschappen.\n"
+"Bijzonderheden: de aanval op afstand van de magiër is magisch en heeft als "
+"zodanig altijd een hoge raakkans."
 
 #: data/units/Mage.cfg:47 data/units/Mage.cfg:130
 #: data/units/Silver_Mage.cfg:108 data/units/Silver_Mage.cfg:252
@@ -6719,6 +6941,19 @@ msgid ""
 "also have the power of Illumination, which increases the lighting level in "
 "the area adjacent to the mage."
 msgstr ""
+"Na jaren ervaring te hebben opgedaan hebben de meest toegeweide witte "
+"magiërs de beschikking over een breed scala aan spirituele krachten. Daar "
+"hun devotie aan het pad van het licht kunnen ze de schaduwen van de nacht "
+"verjagen.\n"
+"\n"
+"Deze mannen en vrouwen, die zich aan een strenge code van plicht en eer "
+"houden, werken onvermoeibaar om leven en orde te brengen in de wereld.\n"
+"\n"
+"Bijzonderheden: het licht dat een magiër des lichts werpt is van magische "
+"aard en heeft altijd een hoge raakkans. Het licht brengt enorme verwondingen "
+"toe aan ondoden en ook enigzins aan de levenden. Magiërs des lichts kunnen "
+"eenheden rondom hen genezen van verwondingen en vergif. Ze stralen bovendien "
+"licht uit zodat het rondom hen altijd iets lichter is dan in de omgeving."
 
 #: data/units/Mage_of_Light.cfg:59 data/units/Mage_of_Light.cfg:144
 #: data/units/Mermaid_Diviner.cfg:56 data/units/Mermaid_Priestess.cfg:45
@@ -7039,28 +7274,26 @@ msgstr ""
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
-msgstr "Necromancer"
+msgstr "Dodenbezweerder"
 
 #: data/units/Necromancer.cfg:16
-#, fuzzy
 msgid ""
 "Necromancers are magi that have decided to follow the paths of the dark "
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
 "that drain the lifeforce from their foes and add it to their own."
 msgstr ""
-"Een necromancer is een magiër die besloten heeft het pad van de zwarte magie "
-"te bewandelen. Door uit de duistere machten te tappen kan hij spreuken over "
-"zijn vijanden uitspreken en zo het leven uit hun wegzuigen.. en zichzelf "
-"sterken."
+"Een dodenbezweerder is een magiër die besloten heeft het pad van de zwarte "
+"magie te bewandelen. Door uit de duistere machten te tappen kan hij spreuken "
+"over zijn vijanden uitspreken en zo het leven uit hun wegzuigen.. en "
+"zichzelf sterken."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Necrophagus"
 
 #: data/units/Necrophage.cfg:17
-#, fuzzy
 msgid "satiated"
-msgstr "Begin"
+msgstr "verzadigd"
 
 #: data/units/Necrophage.cfg:26
 msgid ""
@@ -7465,6 +7698,12 @@ msgid ""
 "in combat, and their piety grants them other gifts. A Paladin is a bane to "
 "the unworldly, and has trained in ministering to the wounds of his comrades."
 msgstr ""
+"Paladijnen, de meest deugdzame Ridders, hebben hun trouw gezworen aan "
+"kloosterordes, om zo hun macht in te zetten voor rechtvaardigheid. Hoewel "
+"niet zo imposant als de Grootse Ridder, is een Paladijn een machtig wapen in "
+"de strijd, en hun plichtsbesef wordt beloond met andere gaven. Een Paladijn "
+"richt enorme schade toe aan de onwereldlijken en is getraind in het genezen "
+"van de wonden van zijn kamaraden."
 
 #: data/units/Paladin.cfg:34
 msgid ""
@@ -7476,6 +7715,13 @@ msgid ""
 "some to living creatures.  Paladins are capable of some healing, though they "
 "can only delay the effects of poison, not cure them entirely."
 msgstr ""
+"\n"
+"\n"
+"Bijzonderheden: de stormloop van de Paladijn verdubbelt zowel de uitgedeelde "
+"als ontvangen schade. Dit heeft geen effect op zijn verdediging. De heilige "
+"aanval met zijn zwaard brengt enorme verwondingen toe aan ondoden, maar ook "
+"wat aan levenden. Paladijnen hebben beperkte geneeskrachtige gaven. Ze "
+"kunnen vergif afremmen, maar niet genezen."
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
@@ -7857,6 +8103,7 @@ msgid "Silver Mage"
 msgstr "Zilveren Magiër"
 
 #: data/units/Silver_Mage.cfg:37 data/units/Silver_Mage.cfg:181
+#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -7884,6 +8131,24 @@ msgid ""
 "villages instantly, though the player must control both, and the destination "
 "village must be unoccupied."
 msgstr ""
+"De vele paden die een magiër kan volgen in zijn studie leiden tot "
+"opmerkelijk verschillende resultaten. Zilveren magiërs hebben zichzelf "
+"toegelegd op een studie van de krachten die de wereld bijeen houden en zijn "
+"er min of meer in geslaagd de sluier van de wereld op te lichten. Vaak "
+"gezien als wijzen of zwervende mystici, handelen zilveren magiërs volgens "
+"een agenda die zelfs voor hun collega's geheimzinnig is. Hoewel ze "
+"behulpzaam zijn voor het magisterium waar ze vaak werken, blijven ze altijd "
+"enigszins afstandelijk.\n"
+"\n"
+"Zilveren magiërs zijn vaak fysiek sterker dan andere magiërs en de waarde "
+"van hun  vaardigheden op het slagveld moet niet onderschat worden. Als men "
+"de magiër tenminste zover krijgt ze toe te passen.\n"
+"\n"
+"Bijzonderheden: de aanval op afstand van de magiër is magisch en heeft als "
+"zodanig altijd een hoge raakkans. Zilveren magiërs hebben een uiterst hoge "
+"weerstand tegen vele soorten magische verwondingen. Ze kunnen bovendien "
+"teleporteren tussen twee dorpen als ze beide vrij zijn en in bezit van de "
+"speler."
 
 #: data/units/Silver_Mage.cfg:147
 msgid "female^Silver Mage"
@@ -8123,6 +8388,15 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
+"Dwergen en mensen zijn er nog altijd niet uit wat de herkomst is van het "
+"wezen dat ze trol noemen en, misschien wel belangerijker, wat hun "
+"onnatuurlijke vitaliteit en kracht veroorzaakt. Een volgroeide trol torend "
+"boven een mens uit en is, zelfs ongewapend, een grote bedreiging in het "
+"gevecht. De grote knuppels, die ze graag gebruiken, vormen een verlenging "
+"van hun armen.\n"
+"\n"
+"Bijzonderheden: trollen regenereren, wat betekent dat ze elke buurt genezen "
+"alsof ze in een dorpje staan."
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
@@ -8137,6 +8411,12 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
+"Sommige trollen worden geboren met een grotere kracht dan gewoon is voor hun "
+"ras. In een gemeenschap waar het recht van de sterkste geldt, worden zij als "
+"helden gezien.\n"
+"\n"
+"Bijzonderheden: trollen regenereren, hetgeen betekent dat ze elke beurt "
+"genezen alsof ze in een dorp staan."
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
@@ -8155,6 +8435,15 @@ msgid ""
 "regeneration ability, which heals them as though they were always stationed "
 "in a village."
 msgstr ""
+"De gedachte aan het gooien van een rotsblok in een gevecht is ongetwijfeld "
+"bij vele trollen opgekomen en voor sommigen is het hun favoriete wapen "
+"geworden. Omdat dat soort stenen niet altijd even makkelijk te vinden is, "
+"sleuren Rotsslingeraars ze mee in een grote zak over hun schouders. "
+"Hetzelfde leer waarvan de zak gemaakt is, dient ook als slinger.\n"
+"\n"
+"Bijzonderheden: een rotsblok brengt veel meer schade toe dan een pijl. "
+"Trollen regenereren, hetgeen betekent dat ze elke beurt genezen alsof ze in "
+"een dorp staan."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -8174,6 +8463,16 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
+"Trollen hebben meestal niet de behoefte om fatsoenlijke wapens te gebruiken. "
+"Lange stokken en stenen zijn goed genoeg. Toch worden er ook wel trollen "
+"gezien met zware bepantsering en met zware metalen hamers. Men vermoedt dat "
+"hun Orkvrienden die gesmeed hebben aangezien in trollenholen zelden "
+"gereedschap wordt aangetroffen. Gegeven het gevaar van een trol in het "
+"gevecht is de gedachte aan een volledig uitgeruste trol uiterst "
+"beangstigend.\n"
+"\n"
+"Bijzonderheden: trollen regenereren, hetgeen betekent dat ze iedere beurt "
+"genezen alsof ze in een dorp staan."
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
@@ -8190,6 +8489,14 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
+"Een trol als welp beschrijven is enigzins tegenstrijdig, gegeven het feit "
+"dat ze op die leeftijd al veel steviger en groter zijn dan een man. Ze zijn "
+"onhandig en nog niet in staat normaal te lopen. Daarom kruipen ze rond op "
+"vier poten. Maar elke hinder die ze daarvan ondervinden wordt teniet gedaan "
+"door hun brute kracht.\n"
+"\n"
+"Bijzonderheden: troller regenereren, hetgeen betekent dat ze elke beurt "
+"genezen alsof ze in een dorp staan."
 
 #: data/units/Vampire_Bat.cfg:3
 msgid "Vampire Bat"
@@ -8300,6 +8607,7 @@ msgid "White Mage"
 msgstr "Witte Magiër"
 
 #: data/units/White_Mage.cfg:30 data/units/White_Mage.cfg:105
+#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -8317,6 +8625,21 @@ msgid ""
 "damage to the undead, and can even damage living creatures. White magi are "
 "capable of healing units around them, and curing them of poison."
 msgstr ""
+"Sommige magiërs, die de wereld waarin ze leven hebben doorgrond en die de "
+"waarheid omtrend het menselijk lijden kennen, merken dat ze zich niet kunnen "
+"afzonderen van die wereld voor een leven van studie. Deze mannen en vrouwen "
+"geven het leven van magiër op om zich bij een kloosterorde te voegen waaraan "
+"ze hun krachten ter beschikking stellen. Na hun training bereizen ze vaak "
+"het land om zieken en gewonden te verzorgen.\n"
+"\n"
+"Hoewel niet getraind voor het gevecht is er een soort vijand waartegen ze "
+"sterk staan. Als het nodig is doen ze een oproep aan de kracht van het licht "
+"om de onwereldlijken te verdrijven.\n"
+"\n"
+"Bijzonderheden: het licht waarmee een witte magiër schiet is magisch en "
+"heeft als zodanig altijd een hoge raakkans. Het licht brengt enorme "
+"verwondingen toe aan ondoden. Witte magiërs kunnen eenheden rondom hen "
+"genezen van verwondingen en vergif."
 
 #: data/units/White_Mage.cfg:81
 msgid "female^White Mage"
@@ -8358,6 +8681,18 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Zelden worden ze gezien, zelfs niet door Elven. Van Enten is maar weinig "
+"bekend. Wat er bekend is, is te danken aan de Elven. Ze weten dat deze "
+"wezens niet van bomen afstammen, ondanks de gelijkenis. Ze weten ook dat een "
+"Ent meer banden heeft met de feeënwereld dan met de Elven zelf, hoewel op "
+"een andere manier. De motieven en gedragingen van hun soort zijn onbekend, "
+"hoewel velen stellen dat Enten de wachters van de natuurlijke wereld zijn.\n"
+"\n"
+"Enten zijn geenszins oorlogszuchtig, maar bezitten een enorme kracht. Ze "
+"zijn echter niet gewend veel te bewegen.\n"
+"\n"
+"Bijzonderheden: Enten regenereren, hetgeen betekent dat ze elke beurt "
+"genezen alsof ze in een dorp staan."
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
@@ -8704,7 +9039,7 @@ msgstr "Geen doel beschikbaar."
 
 #: src/dialogs.cpp:184
 msgid "Save Game"
-msgstr "Opslaan"
+msgstr "Spel Opslaan"
 
 #: src/dialogs.cpp:186
 msgid "Overwrite?"
@@ -8752,7 +9087,7 @@ msgstr "Beurt"
 
 #: src/dialogs.cpp:389
 msgid "Scenario Start"
-msgstr "Scenario Start"
+msgstr "Scenariostart"
 
 #: src/dialogs.cpp:392
 msgid "Difficulty: "
@@ -8792,7 +9127,7 @@ msgstr ""
 
 #: src/dialogs.cpp:474
 msgid "Delete Save"
-msgstr "Verwijder Spel"
+msgstr "Spel Verwijderen"
 
 #: src/dialogs.cpp:489
 msgid "Import Saved Games"
@@ -8831,7 +9166,7 @@ msgstr "Toon Opgenomen"
 
 #: src/dialogs.cpp:579 src/multiplayer_create.cpp:74
 msgid "Load Game"
-msgstr "Laad Spel"
+msgstr "Spel Laden"
 
 #: src/dialogs.cpp:580
 msgid "Choose the game to load"
@@ -8877,7 +9212,7 @@ msgstr "OK"
 #: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
-msgstr "Annuleer"
+msgstr "Annuleren"
 
 #: src/font.cpp:292
 msgid "Vera.ttf"
@@ -8943,7 +9278,7 @@ msgstr "MB"
 
 #: src/game.cpp:839
 msgid "Connect to Server"
-msgstr "Verbind met Server"
+msgstr "Met Server Verbinden"
 
 #: src/game.cpp:840
 msgid "You will now connect to a campaign server to download campaigns."
@@ -8984,11 +9319,11 @@ msgstr "Grootte"
 
 #: src/game.cpp:937
 msgid "Publish campaign: "
-msgstr "Publiceer veldtocht:"
+msgstr "Veldtocht publiceren:"
 
 #: src/game.cpp:941
 msgid "Delete campaign: "
-msgstr "Verwijder veldtocht:"
+msgstr "Veldtocht verwijderen:"
 
 #: src/game.cpp:945
 msgid "There are no campaigns available for download from this server."
@@ -9000,7 +9335,7 @@ msgstr "Kies een veldtocht om te downloaden."
 
 #: src/game.cpp:952
 msgid "Get Campaign"
-msgstr "Haal een Veldtocht"
+msgstr "Veldtocht Downloaden"
 
 #: src/game.cpp:972
 msgid "Downloading campaign..."
@@ -9694,9 +10029,8 @@ msgid "invalid network handle"
 msgstr "ongeldige netwerkhandle"
 
 #: src/network.cpp:99
-#, fuzzy
 msgid "Client disconnected"
-msgstr "'Remote host' brak verbinding af."
+msgstr "Client heeft de verbinding verbroken."
 
 #: src/network.cpp:417
 msgid "Could not add socket to socket set"
@@ -9707,9 +10041,8 @@ msgid "Could not send initial handshake"
 msgstr "Kon initiele handdruk niet verzenden"
 
 #: src/playcampaign.cpp:143
-#, fuzzy
 msgid " replay"
-msgstr "herspeel"
+msgstr "herhaling"
 
 #: src/playcampaign.cpp:151
 msgid "Do you want to save a replay of this scenario?"
@@ -9890,7 +10223,7 @@ msgstr "Dorpen"
 
 #: src/playturn.cpp:1777
 msgid "Upkeep"
-msgstr "Onderhoudskost"
+msgstr "Onderhoudskosten"
 
 #: src/playturn.cpp:1778
 msgid "Income"
@@ -10025,7 +10358,7 @@ msgstr "Statistieken"
 
 #: src/playturn.cpp:2407
 msgid "Search"
-msgstr "Zoek"
+msgstr "Zoeken"
 
 #: src/playturn.cpp:2417
 msgid "prompt^Command:"
@@ -10049,7 +10382,7 @@ msgstr "Het nieuwe thema wordt in gebruik genomen in het volgende spel"
 
 #: src/playturn.cpp:2631
 msgid "Place Label"
-msgstr "Plaats Label"
+msgstr "Label Plaatsen"
 
 #: src/playturn.cpp:2632
 msgid "Label:"
@@ -10073,7 +10406,7 @@ msgstr "Vervang door lokale speler"
 
 #: src/playturn.cpp:2819
 msgid "Abort game"
-msgstr "Stop spel"
+msgstr "Spel afbreken"
 
 #: src/playturn.cpp:2822
 msgid "Replace with "
@@ -10232,7 +10565,7 @@ msgstr "Multiplayer"
 
 #: src/titlescreen.cpp:190
 msgid "TitleScreen button^Load"
-msgstr "Laad"
+msgstr "Spel Laden"
 
 #: src/titlescreen.cpp:191
 msgid "TitleScreen button^Language"
@@ -10279,7 +10612,7 @@ msgstr "Over de makers van Wesnoth"
 
 #: src/titlescreen.cpp:202
 msgid "Quit the game"
-msgstr "Verlaat het spel"
+msgstr "Spel verlaten"
 
 #: src/titlescreen.cpp:233
 msgid "More"
@@ -10303,7 +10636,7 @@ msgstr ": "
 
 #: src/unit_types.cpp:331
 msgid "strikes"
-msgstr "slaat"
+msgstr "klappen"
 
 #: src/unit_types.cpp:942
 msgid "chaotic"
