@@ -45,7 +45,9 @@ CVS HEAD:
    * The Rise of Wesnoth:
      * removed duplicate file inclusion - campaign should now start faster
      * fixed Lt. Aethyr death events not triggering in Rise of Wesnoth (#13848)
- * server now supports redirection based on client version number
+ * server
+   * now supports redirection based on client version number
+   * can now act as proxy
  * editor
    * changed the layout of the terrain palette (#11965)
    * relocated and enlarged the buttons (#11967)
@@ -60,6 +62,7 @@ CVS HEAD:
  * user interface improvements:
    * show scrollbar in multiplayer lobby when there are many players (#13521)
    * multiplayer lobby player list no longer resets to start (#13345)
+   * fixed game host sometimes not recognized as a side owner
  * remove redundant {utils} and {~utils} references (#13843)
  * various bug fixes and code cleanups
 
