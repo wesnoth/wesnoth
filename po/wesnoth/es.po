@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-19 08:13+0200\n"
+"POT-Creation-Date: 2005-07-20 14:39+0200\n"
 "PO-Revision-Date: 2005-06-05 21:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
@@ -819,7 +819,7 @@ msgstr ""
 "text=habilidades</ref>, pero ahora ya sabe lo necesario para poder jugar en "
 "el escenario del «Heredero al trono». ¡Diviértase, y buena suerte!"
 
-#: data/help.cfg:203 src/titlescreen.cpp:193
+#: data/help.cfg:203 src/titlescreen.cpp:206
 msgid "About"
 msgstr "Acerca de"
 
@@ -1290,7 +1290,7 @@ msgstr ""
 #: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
 #: data/terrain.cfg:196 data/terrain.cfg:209 data/terrain.cfg:360
-#: src/reports.cpp:311
+#: src/reports.cpp:324
 msgid "Village"
 msgstr "Aldea"
 
@@ -8774,12 +8774,12 @@ msgid "none"
 msgstr "ninguna"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1141 src/reports.cpp:236
+#: src/help.cpp:1141 src/reports.cpp:249
 msgid "melee"
 msgstr "meleé"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1141 src/reports.cpp:237
+#: src/help.cpp:1141 src/reports.cpp:250
 msgid "ranged"
 msgstr "distancia"
 
@@ -9042,11 +9042,11 @@ msgstr "sano"
 msgid "invisible"
 msgstr "invisible"
 
-#: src/filechooser.cpp:38 src/multiplayer_create.cpp:54
+#: src/filechooser.cpp:51 src/multiplayer_create.cpp:54
 msgid "OK"
 msgstr "Aceptar"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
+#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Cancelar"
@@ -9139,7 +9139,7 @@ msgstr "Esperando respuesta por parte del servidor"
 msgid "Error communicating with the server."
 msgstr "Error de comunicación con el servidor."
 
-#: src/game.cpp:884 src/titlescreen.cpp:170
+#: src/game.cpp:884 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Versión"
 
@@ -9340,7 +9340,7 @@ msgstr "Alineamiento: "
 msgid "Required XP: "
 msgstr "PX requeridos: "
 
-#: src/help.cpp:1110 src/reports.cpp:239
+#: src/help.cpp:1110 src/reports.cpp:252
 msgid "attacks"
 msgstr "ataques"
 
@@ -9457,59 +9457,59 @@ msgstr "Idioma predeterminado del sistema"
 msgid "?"
 msgstr "?"
 
-#: src/mapgen_dialog.cpp:78
+#: src/mapgen_dialog.cpp:91
 msgid "Close Window"
 msgstr "Cerrar ventana"
 
-#: src/mapgen_dialog.cpp:81
+#: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
 msgstr "Generador de mapas"
 
-#: src/mapgen_dialog.cpp:86
+#: src/mapgen_dialog.cpp:99
 msgid "Players:"
 msgstr "Jugadores:"
 
-#: src/mapgen_dialog.cpp:87
+#: src/mapgen_dialog.cpp:100
 msgid "Width:"
 msgstr "Anchura:"
 
-#: src/mapgen_dialog.cpp:88
+#: src/mapgen_dialog.cpp:101
 msgid "Height:"
 msgstr "Altura:"
 
-#: src/mapgen_dialog.cpp:89
+#: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
 msgstr "Número de colinas:"
 
-#: src/mapgen_dialog.cpp:90
+#: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
 msgstr "Tamaño máximo de colina:"
 
-#: src/mapgen_dialog.cpp:91
+#: src/mapgen_dialog.cpp:104
 msgid "Villages:"
 msgstr "Aldeas"
 
-#: src/mapgen_dialog.cpp:92
+#: src/mapgen_dialog.cpp:105
 msgid "Landform:"
 msgstr "Perfil de:"
 
-#: src/mapgen_dialog.cpp:198
+#: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
 msgstr "Carreteras entre los castillos"
 
-#: src/mapgen_dialog.cpp:255
+#: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
 msgstr "/1000 casillas"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Coastal"
 msgstr "Costa"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Inland"
 msgstr "Interior"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Island"
 msgstr "Isla"
 
@@ -9864,21 +9864,21 @@ msgstr ")"
 msgid "unit^Gold"
 msgstr "Oro"
 
-#: src/network.cpp:66
+#: src/network.cpp:79
 msgid "invalid network handle"
 msgstr ""
 
-#: src/network.cpp:99
+#: src/network.cpp:112
 #, fuzzy
 msgid "Client disconnected"
 msgstr "Equipo remoto desconectado."
 
-#: src/network.cpp:417
+#: src/network.cpp:430
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "No ha sido posible conectar al servidor."
 
-#: src/network.cpp:428
+#: src/network.cpp:441
 msgid "Could not send initial handshake"
 msgstr ""
 
@@ -10001,7 +10001,7 @@ msgstr "Defensor"
 msgid "Damage Calculations"
 msgstr "Cálculos del daño"
 
-#: src/playturn.cpp:628 src/reports.cpp:214
+#: src/playturn.cpp:628 src/reports.cpp:227
 msgid "vs"
 msgstr "contra"
 
@@ -10265,17 +10265,17 @@ msgstr "Reemplazar con "
 msgid "has left the game. What do you want to do?"
 msgstr "ha dejado el juego. ¿Qué quiere hacer?"
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Esta unidad es invisible. No puede ser vista ni atacada por unidades "
 "enemigas."
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 msgid "invisible: "
 msgstr "invisible: "
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
@@ -10283,11 +10283,11 @@ msgstr ""
 "Esta unidad ha sido ralentizada. Su velocidad es la mitad de lo normal, y "
 "tiene un ataque menos en combate."
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 msgid "slowed: "
 msgstr "ralentizado: "
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -10302,47 +10302,47 @@ msgstr ""
 "Las unidades no pueden morir envenenadas. El veneno no afectará por debajo "
 "de 1 PV."
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 msgid "poisoned: "
 msgstr "envenenado: "
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Esta unidad ha sido petrificada. No se puede mover ni atacar."
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 msgid "stone: "
 msgstr "petrificado: "
 
-#: src/reports.cpp:238 src/unit_types.cpp:311
+#: src/reports.cpp:251 src/unit_types.cpp:311
 msgid "damage"
 msgstr "daño"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:269
 msgid "Lawful units: "
 msgstr "Unidades legales: "
 
-#: src/reports.cpp:258
+#: src/reports.cpp:271
 msgid "Neutral units: "
 msgstr "Unidades neutrales: "
 
-#: src/reports.cpp:259
+#: src/reports.cpp:272
 msgid "Chaotic units: "
 msgstr "Unidades caóticas: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:326
 msgid "Owned village"
 msgstr "Aldea propia"
 
-#: src/reports.cpp:315
+#: src/reports.cpp:328
 msgid "Enemy village"
 msgstr "Aldea enemiga"
 
-#: src/reports.cpp:317
+#: src/reports.cpp:330
 msgid "Allied village"
 msgstr "Aldea aliada"
 
-#: src/reports.cpp:377
+#: src/reports.cpp:390
 msgid "Observers:"
 msgstr "Observadores:"
 
@@ -10406,43 +10406,43 @@ msgstr " incluido en "
 msgid "$error at $pos"
 msgstr "$error en $pos"
 
-#: src/titlescreen.cpp:187
+#: src/titlescreen.cpp:200
 msgid "TitleScreen button^Tutorial"
 msgstr "Tutorial"
 
-#: src/titlescreen.cpp:188
+#: src/titlescreen.cpp:201
 msgid "TitleScreen button^Campaign"
 msgstr "Campaña"
 
-#: src/titlescreen.cpp:189
+#: src/titlescreen.cpp:202
 msgid "TitleScreen button^Multiplayer"
 msgstr "Multijugador"
 
-#: src/titlescreen.cpp:190
+#: src/titlescreen.cpp:203
 msgid "TitleScreen button^Load"
 msgstr "Cargar"
 
-#: src/titlescreen.cpp:191
+#: src/titlescreen.cpp:204
 msgid "TitleScreen button^Language"
 msgstr "Idioma"
 
-#: src/titlescreen.cpp:192
+#: src/titlescreen.cpp:205
 msgid "TitleScreen button^Preferences"
 msgstr "Preferencias"
 
-#: src/titlescreen.cpp:194
+#: src/titlescreen.cpp:207
 msgid "TitleScreen button^Quit"
 msgstr "Salir"
 
-#: src/titlescreen.cpp:195
+#: src/titlescreen.cpp:208
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Jugar un tutorial para familiarizarse con el juego"
 
-#: src/titlescreen.cpp:196
+#: src/titlescreen.cpp:209
 msgid "Start a new single player campaign"
 msgstr "Empieza una nueva campaña para un solo jugador"
 
-#: src/titlescreen.cpp:197
+#: src/titlescreen.cpp:210
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -10450,31 +10450,31 @@ msgstr ""
 "Juega en modo multijugador (varios jugadores, LAN, o Internet), o solo en un "
 "escenario contra la IA"
 
-#: src/titlescreen.cpp:198
+#: src/titlescreen.cpp:211
 msgid "Load a single player saved game"
 msgstr "Carga una partida grabada"
 
-#: src/titlescreen.cpp:199
+#: src/titlescreen.cpp:212
 msgid "Change the language"
 msgstr "Cambia el idioma"
 
-#: src/titlescreen.cpp:200
+#: src/titlescreen.cpp:213
 msgid "Configure the game's settings"
 msgstr "Configura los parámetros del juego"
 
-#: src/titlescreen.cpp:201
+#: src/titlescreen.cpp:214
 msgid "View the credits"
 msgstr "Muestra a los colaboradores"
 
-#: src/titlescreen.cpp:202
+#: src/titlescreen.cpp:215
 msgid "Quit the game"
 msgstr "Salir del juego"
 
-#: src/titlescreen.cpp:233
+#: src/titlescreen.cpp:246
 msgid "More"
 msgstr "Más"
 
-#: src/titlescreen.cpp:243
+#: src/titlescreen.cpp:256
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Compendio de Guerra y Virtud"
 

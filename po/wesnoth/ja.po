@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-19 08:13+0200\n"
+"POT-Creation-Date: 2005-07-20 14:39+0200\n"
 "PO-Revision-Date: 2005-06-06 04:33+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -774,7 +774,7 @@ msgstr ""
 "ぐ者」を遊ぶために 必要な知識をすべて得ました。 楽しんで下さい、そして幸運"
 "を！"
 
-#: data/help.cfg:203 src/titlescreen.cpp:193
+#: data/help.cfg:203 src/titlescreen.cpp:206
 msgid "About"
 msgstr "クレジット"
 
@@ -1234,7 +1234,7 @@ msgstr ""
 #: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
 #: data/terrain.cfg:196 data/terrain.cfg:209 data/terrain.cfg:360
-#: src/reports.cpp:311
+#: src/reports.cpp:324
 msgid "Village"
 msgstr "村"
 
@@ -8385,12 +8385,12 @@ msgid "none"
 msgstr "なし"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1141 src/reports.cpp:236
+#: src/help.cpp:1141 src/reports.cpp:249
 msgid "melee"
 msgstr "格闘"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1141 src/reports.cpp:237
+#: src/help.cpp:1141 src/reports.cpp:250
 msgid "ranged"
 msgstr "投射"
 
@@ -8653,11 +8653,11 @@ msgstr "健康"
 msgid "invisible"
 msgstr "透明"
 
-#: src/filechooser.cpp:38 src/multiplayer_create.cpp:54
+#: src/filechooser.cpp:51 src/multiplayer_create.cpp:54
 msgid "OK"
 msgstr "OK"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
+#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "キャンセル"
@@ -8744,7 +8744,7 @@ msgstr "サーバからの応答を待っています"
 msgid "Error communicating with the server."
 msgstr "サーバとの通信エラー"
 
-#: src/game.cpp:884 src/titlescreen.cpp:170
+#: src/game.cpp:884 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "バージョン"
 
@@ -8946,7 +8946,7 @@ msgstr "属性: "
 msgid "Required XP: "
 msgstr "必要経験値: "
 
-#: src/help.cpp:1110 src/reports.cpp:239
+#: src/help.cpp:1110 src/reports.cpp:252
 msgid "attacks"
 msgstr "攻撃"
 
@@ -9063,59 +9063,59 @@ msgstr "システムデフォルト言語"
 msgid "?"
 msgstr "？"
 
-#: src/mapgen_dialog.cpp:78
+#: src/mapgen_dialog.cpp:91
 msgid "Close Window"
 msgstr "ウィンドウを閉じる"
 
-#: src/mapgen_dialog.cpp:81
+#: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
 msgstr "マップ生成"
 
-#: src/mapgen_dialog.cpp:86
+#: src/mapgen_dialog.cpp:99
 msgid "Players:"
 msgstr "プレイヤー数:"
 
-#: src/mapgen_dialog.cpp:87
+#: src/mapgen_dialog.cpp:100
 msgid "Width:"
 msgstr "幅:"
 
-#: src/mapgen_dialog.cpp:88
+#: src/mapgen_dialog.cpp:101
 msgid "Height:"
 msgstr "高さ:"
 
-#: src/mapgen_dialog.cpp:89
+#: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
 msgstr "丘の数:"
 
-#: src/mapgen_dialog.cpp:90
+#: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
 msgstr "最大の丘の大きさ:"
 
-#: src/mapgen_dialog.cpp:91
+#: src/mapgen_dialog.cpp:104
 msgid "Villages:"
 msgstr "村:"
 
-#: src/mapgen_dialog.cpp:92
+#: src/mapgen_dialog.cpp:105
 msgid "Landform:"
 msgstr "地形:"
 
-#: src/mapgen_dialog.cpp:198
+#: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
 msgstr "城間の道"
 
-#: src/mapgen_dialog.cpp:255
+#: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
 msgstr "/1000 タイル"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Coastal"
 msgstr "沿岸"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Inland"
 msgstr "内陸"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Island"
 msgstr "島"
 
@@ -9468,21 +9468,21 @@ msgstr "）"
 msgid "unit^Gold"
 msgstr "ゴールド"
 
-#: src/network.cpp:66
+#: src/network.cpp:79
 msgid "invalid network handle"
 msgstr ""
 
-#: src/network.cpp:99
+#: src/network.cpp:112
 #, fuzzy
 msgid "Client disconnected"
 msgstr "リモートホストと切断しました。"
 
-#: src/network.cpp:417
+#: src/network.cpp:430
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "ホストに接続できませんでした。"
 
-#: src/network.cpp:428
+#: src/network.cpp:441
 msgid "Could not send initial handshake"
 msgstr ""
 
@@ -9607,7 +9607,7 @@ msgstr "防御側"
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
-#: src/playturn.cpp:628 src/reports.cpp:214
+#: src/playturn.cpp:628 src/reports.cpp:227
 msgid "vs"
 msgstr "対"
 
@@ -9866,17 +9866,17 @@ msgstr "交代する "
 msgid "has left the game. What do you want to do?"
 msgstr " はゲームを去りました。 どうしますか？"
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "このユニットは見えません。 敵のユニットから 発見されることも、 攻撃されること"
 "もありません。"
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 msgid "invisible: "
 msgstr "姿が見えない: "
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
@@ -9884,11 +9884,11 @@ msgstr ""
 "このユニットは遅くなっています。 通常の半分のスピードでしか動けず、 戦闘にお"
 "いて攻撃を受ける回数が 通常より1回少なくなります。"
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 msgid "slowed: "
 msgstr "遅化: "
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -9902,47 +9902,47 @@ msgstr ""
 "\n"
 "毒のみでは死ぬことはありません。毒はHPを1未満には下げません。"
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 msgid "poisoned: "
 msgstr "毒: "
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "このユニットは石になってしまいました。移動や攻撃はできません。"
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 msgid "stone: "
 msgstr "石化: "
 
-#: src/reports.cpp:238 src/unit_types.cpp:311
+#: src/reports.cpp:251 src/unit_types.cpp:311
 msgid "damage"
 msgstr "ダメージ"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:269
 msgid "Lawful units: "
 msgstr "秩序ユニット: "
 
-#: src/reports.cpp:258
+#: src/reports.cpp:271
 msgid "Neutral units: "
 msgstr "中立ユニット: "
 
-#: src/reports.cpp:259
+#: src/reports.cpp:272
 msgid "Chaotic units: "
 msgstr "混沌ユニット: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:326
 msgid "Owned village"
 msgstr "自軍所有の村"
 
-#: src/reports.cpp:315
+#: src/reports.cpp:328
 msgid "Enemy village"
 msgstr "敵所有の村"
 
-#: src/reports.cpp:317
+#: src/reports.cpp:330
 msgid "Allied village"
 msgstr "同盟所有の村"
 
-#: src/reports.cpp:377
+#: src/reports.cpp:390
 msgid "Observers:"
 msgstr "観戦者:"
 
@@ -10003,43 +10003,43 @@ msgstr "は以下に含まれる:"
 msgid "$error at $pos"
 msgstr "$pos の $error"
 
-#: src/titlescreen.cpp:187
+#: src/titlescreen.cpp:200
 msgid "TitleScreen button^Tutorial"
 msgstr "チュートリアル"
 
-#: src/titlescreen.cpp:188
+#: src/titlescreen.cpp:201
 msgid "TitleScreen button^Campaign"
 msgstr "キャンペーン"
 
-#: src/titlescreen.cpp:189
+#: src/titlescreen.cpp:202
 msgid "TitleScreen button^Multiplayer"
 msgstr "マルチプレイ"
 
-#: src/titlescreen.cpp:190
+#: src/titlescreen.cpp:203
 msgid "TitleScreen button^Load"
 msgstr "再開"
 
-#: src/titlescreen.cpp:191
+#: src/titlescreen.cpp:204
 msgid "TitleScreen button^Language"
 msgstr "言語"
 
-#: src/titlescreen.cpp:192
+#: src/titlescreen.cpp:205
 msgid "TitleScreen button^Preferences"
 msgstr "設定"
 
-#: src/titlescreen.cpp:194
+#: src/titlescreen.cpp:207
 msgid "TitleScreen button^Quit"
 msgstr "終了"
 
-#: src/titlescreen.cpp:195
+#: src/titlescreen.cpp:208
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "ゲームに慣れるためのチュートリアルを開始します"
 
-#: src/titlescreen.cpp:196
+#: src/titlescreen.cpp:209
 msgid "Start a new single player campaign"
 msgstr "新たに一人用キャンペーンを開始します"
 
-#: src/titlescreen.cpp:197
+#: src/titlescreen.cpp:210
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -10047,31 +10047,31 @@ msgstr ""
 "マルチプレイヤーゲーム（交互に一台か、LAN、あるいはインターネット）、またはAI"
 "との対戦で単一シナリオをプレイします"
 
-#: src/titlescreen.cpp:198
+#: src/titlescreen.cpp:211
 msgid "Load a single player saved game"
 msgstr "シングルプレイヤーゲームを読み込みます"
 
-#: src/titlescreen.cpp:199
+#: src/titlescreen.cpp:212
 msgid "Change the language"
 msgstr "言語を変更します"
 
-#: src/titlescreen.cpp:200
+#: src/titlescreen.cpp:213
 msgid "Configure the game's settings"
 msgstr "ゲームの設定を行います"
 
-#: src/titlescreen.cpp:201
+#: src/titlescreen.cpp:214
 msgid "View the credits"
 msgstr "クレジットを表示します"
 
-#: src/titlescreen.cpp:202
+#: src/titlescreen.cpp:215
 msgid "Quit the game"
 msgstr "ゲームを終了します"
 
-#: src/titlescreen.cpp:233
+#: src/titlescreen.cpp:246
 msgid "More"
 msgstr "次"
 
-#: src/titlescreen.cpp:243
+#: src/titlescreen.cpp:256
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnothの書"
 

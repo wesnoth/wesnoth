@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-19 08:13+0200\n"
+"POT-Creation-Date: 2005-07-20 14:39+0200\n"
 "PO-Revision-Date: 2005-03-02 22:28+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -800,7 +800,7 @@ msgstr ""
 "<ref>dst=abilities text='schopnosťami'</ref>, ale teraz už vieš všetko, čo "
 "potrebuješ na hranie výpravy \"Dedič trónu\". Príjemnú zábavu a veľa šťastia!"
 
-#: data/help.cfg:203 src/titlescreen.cpp:193
+#: data/help.cfg:203 src/titlescreen.cpp:206
 msgid "About"
 msgstr "O hre"
 
@@ -1218,7 +1218,7 @@ msgstr ""
 #: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
 #: data/terrain.cfg:196 data/terrain.cfg:209 data/terrain.cfg:360
-#: src/reports.cpp:311
+#: src/reports.cpp:324
 msgid "Village"
 msgstr "Dedina"
 
@@ -8499,12 +8499,12 @@ msgid "none"
 msgstr "nič"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1141 src/reports.cpp:236
+#: src/help.cpp:1141 src/reports.cpp:249
 msgid "melee"
 msgstr "zblízka"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1141 src/reports.cpp:237
+#: src/help.cpp:1141 src/reports.cpp:250
 msgid "ranged"
 msgstr "na diaľku"
 
@@ -8772,11 +8772,11 @@ msgstr "zdravý"
 msgid "invisible"
 msgstr "neviditeľný"
 
-#: src/filechooser.cpp:38 src/multiplayer_create.cpp:54
+#: src/filechooser.cpp:51 src/multiplayer_create.cpp:54
 msgid "OK"
 msgstr ""
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
+#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Storno"
@@ -8864,7 +8864,7 @@ msgstr "Čakám na odpoveď servera"
 msgid "Error communicating with the server."
 msgstr "Chyba pri komunikácii so serverom."
 
-#: src/game.cpp:884 src/titlescreen.cpp:170
+#: src/game.cpp:884 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Verzia"
 
@@ -9074,7 +9074,7 @@ msgstr "Povaha"
 msgid "Required XP: "
 msgstr "Potrebné skúsenosti"
 
-#: src/help.cpp:1110 src/reports.cpp:239
+#: src/help.cpp:1110 src/reports.cpp:252
 msgid "attacks"
 msgstr "útoky"
 
@@ -9189,64 +9189,64 @@ msgstr "Štandardný jazyk systému"
 msgid "?"
 msgstr "?"
 
-#: src/mapgen_dialog.cpp:78
+#: src/mapgen_dialog.cpp:91
 msgid "Close Window"
 msgstr "Zavri okno"
 
-#: src/mapgen_dialog.cpp:81
+#: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
 msgstr "Generátor mapy"
 
-#: src/mapgen_dialog.cpp:86
+#: src/mapgen_dialog.cpp:99
 #, fuzzy
 msgid "Players:"
 msgstr "Hráči:"
 
-#: src/mapgen_dialog.cpp:87
+#: src/mapgen_dialog.cpp:100
 #, fuzzy
 msgid "Width:"
 msgstr "Šírka"
 
-#: src/mapgen_dialog.cpp:88
+#: src/mapgen_dialog.cpp:101
 #, fuzzy
 msgid "Height:"
 msgstr "Výška"
 
-#: src/mapgen_dialog.cpp:89
+#: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:90
+#: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:91
+#: src/mapgen_dialog.cpp:104
 #, fuzzy
 msgid "Villages:"
 msgstr "Dediny"
 
-#: src/mapgen_dialog.cpp:92
+#: src/mapgen_dialog.cpp:105
 #, fuzzy
 msgid "Landform:"
 msgstr "Krajinka"
 
-#: src/mapgen_dialog.cpp:198
+#: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
 msgstr "Spoj hrady cestami"
 
-#: src/mapgen_dialog.cpp:255
+#: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
 msgstr "/1000 polí"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Coastal"
 msgstr "Pobrežie"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Inland"
 msgstr "Vnútrozemie"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Island"
 msgstr "Ostrov"
 
@@ -9611,21 +9611,21 @@ msgstr ""
 msgid "unit^Gold"
 msgstr "Zlato"
 
-#: src/network.cpp:66
+#: src/network.cpp:79
 msgid "invalid network handle"
 msgstr ""
 
-#: src/network.cpp:99
+#: src/network.cpp:112
 #, fuzzy
 msgid "Client disconnected"
 msgstr "Server sa odpojil"
 
-#: src/network.cpp:417
+#: src/network.cpp:430
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Neviem sa pripojiť na server."
 
-#: src/network.cpp:428
+#: src/network.cpp:441
 msgid "Could not send initial handshake"
 msgstr ""
 
@@ -9753,7 +9753,7 @@ msgstr "Obranca"
 msgid "Damage Calculations"
 msgstr "Výpočet zranenia"
 
-#: src/playturn.cpp:628 src/reports.cpp:214
+#: src/playturn.cpp:628 src/reports.cpp:227
 msgid "vs"
 msgstr "proti"
 
@@ -10014,18 +10014,18 @@ msgstr "Nahradiť "
 msgid "has left the game. What do you want to do?"
 msgstr "opustil hru. Čo chceš urobiť?"
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Táto jednotka je neviditeľná. Súperove jednotky ju nemôžu vidieť ani "
 "napadnúť."
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 #, fuzzy
 msgid "invisible: "
 msgstr "neviditeľný"
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
@@ -10033,12 +10033,12 @@ msgstr ""
 "Táto jednotka bola spomalená. Pohybuje sa polovičnou rýchlosťou a v boji má "
 "o jeden útok menej."
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 #, fuzzy
 msgid "slowed: "
 msgstr "spomalený"
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -10052,52 +10052,52 @@ msgstr ""
 "\n"
 "Samotný jed jednotku nezabije. Počet životov pôsobením jedu neklesne pod 1."
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 #, fuzzy
 msgid "poisoned: "
 msgstr "otrávený"
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Táto jednotka skamenela. Nemôže sa hýbať ani bojovať."
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 #, fuzzy
 msgid "stone: "
 msgstr "kameň"
 
-#: src/reports.cpp:238 src/unit_types.cpp:311
+#: src/reports.cpp:251 src/unit_types.cpp:311
 msgid "damage"
 msgstr "zranenia"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:269
 #, fuzzy
 msgid "Lawful units: "
 msgstr "Jednotky poriadku"
 
-#: src/reports.cpp:258
+#: src/reports.cpp:271
 #, fuzzy
 msgid "Neutral units: "
 msgstr "Neutrálne jednotky"
 
-#: src/reports.cpp:259
+#: src/reports.cpp:272
 #, fuzzy
 msgid "Chaotic units: "
 msgstr "Jednotky chaosu"
 
-#: src/reports.cpp:313
+#: src/reports.cpp:326
 msgid "Owned village"
 msgstr "Naša dedina"
 
-#: src/reports.cpp:315
+#: src/reports.cpp:328
 msgid "Enemy village"
 msgstr "Nepriateľská dedina"
 
-#: src/reports.cpp:317
+#: src/reports.cpp:330
 msgid "Allied village"
 msgstr "Spojenecká dedina"
 
-#: src/reports.cpp:377
+#: src/reports.cpp:390
 #, fuzzy
 msgid "Observers:"
 msgstr "Diváci"
@@ -10158,43 +10158,43 @@ msgstr ""
 msgid "$error at $pos"
 msgstr ""
 
-#: src/titlescreen.cpp:187
+#: src/titlescreen.cpp:200
 msgid "TitleScreen button^Tutorial"
 msgstr "Výcvik"
 
-#: src/titlescreen.cpp:188
+#: src/titlescreen.cpp:201
 msgid "TitleScreen button^Campaign"
 msgstr "Výprava"
 
-#: src/titlescreen.cpp:189
+#: src/titlescreen.cpp:202
 msgid "TitleScreen button^Multiplayer"
 msgstr "Zápas"
 
-#: src/titlescreen.cpp:190
+#: src/titlescreen.cpp:203
 msgid "TitleScreen button^Load"
 msgstr "Načítaj hru"
 
-#: src/titlescreen.cpp:191
+#: src/titlescreen.cpp:204
 msgid "TitleScreen button^Language"
 msgstr "Jazyk"
 
-#: src/titlescreen.cpp:192
+#: src/titlescreen.cpp:205
 msgid "TitleScreen button^Preferences"
 msgstr "Nastavenia"
 
-#: src/titlescreen.cpp:194
+#: src/titlescreen.cpp:207
 msgid "TitleScreen button^Quit"
 msgstr "Koniec"
 
-#: src/titlescreen.cpp:195
+#: src/titlescreen.cpp:208
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Spusti úvodný výcvik, v ktorom sa zoznámiš s touto hrou"
 
-#: src/titlescreen.cpp:196
+#: src/titlescreen.cpp:209
 msgid "Start a new single player campaign"
 msgstr "Spusti novú výpravu pre jedného hráča"
 
-#: src/titlescreen.cpp:197
+#: src/titlescreen.cpp:210
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -10202,31 +10202,31 @@ msgstr ""
 "Zápas medzi viacerými hráčmi (striedavo, na lokálnej sieti, na Internete), "
 "alebo proti počítaču"
 
-#: src/titlescreen.cpp:198
+#: src/titlescreen.cpp:211
 msgid "Load a single player saved game"
 msgstr "Pokračuj v uloženej hre pre jedného hráča"
 
-#: src/titlescreen.cpp:199
+#: src/titlescreen.cpp:212
 msgid "Change the language"
 msgstr "Zmeň jazyk"
 
-#: src/titlescreen.cpp:200
+#: src/titlescreen.cpp:213
 msgid "Configure the game's settings"
 msgstr "Nastav rôzne možnosti hry"
 
-#: src/titlescreen.cpp:201
+#: src/titlescreen.cpp:214
 msgid "View the credits"
 msgstr "Zobraz informácie o autoroch hry"
 
-#: src/titlescreen.cpp:202
+#: src/titlescreen.cpp:215
 msgid "Quit the game"
 msgstr "Ukonči hru"
 
-#: src/titlescreen.cpp:233
+#: src/titlescreen.cpp:246
 msgid "More"
 msgstr "Ďalej"
 
-#: src/titlescreen.cpp:243
+#: src/titlescreen.cpp:256
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Kniha o Wesnothe"
 

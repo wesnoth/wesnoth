@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-19 08:13+0200\n"
+"POT-Creation-Date: 2005-07-20 14:39+0200\n"
 "PO-Revision-Date: 2005-07-11 01:59+0200\n"
 "Last-Translator: ihsan <ihsan_akin@yahoo.com>\n"
 "Language-Team: Turkish <farsakoglu@web.de>\n"
@@ -778,7 +778,7 @@ msgstr ""
 "şimdi Tahta Varis senaryosunu oynayabilecek her şeyi biliyorsunuz. İyi "
 "eğlenceler ve iyi şanslar!"
 
-#: data/help.cfg:203 src/titlescreen.cpp:193
+#: data/help.cfg:203 src/titlescreen.cpp:206
 msgid "About"
 msgstr "Hakkında"
 
@@ -1242,7 +1242,7 @@ msgstr ""
 #: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
 #: data/terrain.cfg:196 data/terrain.cfg:209 data/terrain.cfg:360
-#: src/reports.cpp:311
+#: src/reports.cpp:324
 msgid "Village"
 msgstr "Kasaba"
 
@@ -7502,12 +7502,12 @@ msgid "none"
 msgstr "hiçbiri"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1141 src/reports.cpp:236
+#: src/help.cpp:1141 src/reports.cpp:249
 msgid "melee"
 msgstr "yakın dövüş"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1141 src/reports.cpp:237
+#: src/help.cpp:1141 src/reports.cpp:250
 msgid "ranged"
 msgstr "menzilli"
 
@@ -7762,11 +7762,11 @@ msgstr "sağlıklı"
 msgid "invisible"
 msgstr "görünmez"
 
-#: src/filechooser.cpp:38 src/multiplayer_create.cpp:54
+#: src/filechooser.cpp:51 src/multiplayer_create.cpp:54
 msgid "OK"
 msgstr "Tamam"
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
+#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "İptal"
@@ -7855,7 +7855,7 @@ msgstr "Sunucudan cevap bekleniyor"
 msgid "Error communicating with the server."
 msgstr "Sunucu ile iletişim hatası."
 
-#: src/game.cpp:884 src/titlescreen.cpp:170
+#: src/game.cpp:884 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Versiyon"
 
@@ -8056,7 +8056,7 @@ msgstr "Hizalama: "
 msgid "Required XP: "
 msgstr "Gerekli TP: "
 
-#: src/help.cpp:1110 src/reports.cpp:239
+#: src/help.cpp:1110 src/reports.cpp:252
 msgid "attacks"
 msgstr "saldırı"
 
@@ -8169,59 +8169,59 @@ msgstr "Sistem varsayılan dili"
 msgid "?"
 msgstr "?"
 
-#: src/mapgen_dialog.cpp:78
+#: src/mapgen_dialog.cpp:91
 msgid "Close Window"
 msgstr "Pencereyi kapa"
 
-#: src/mapgen_dialog.cpp:81
+#: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
 msgstr "Harita üreticisi"
 
-#: src/mapgen_dialog.cpp:86
+#: src/mapgen_dialog.cpp:99
 msgid "Players:"
 msgstr "Oyuncular:"
 
-#: src/mapgen_dialog.cpp:87
+#: src/mapgen_dialog.cpp:100
 msgid "Width:"
 msgstr "Eni:"
 
-#: src/mapgen_dialog.cpp:88
+#: src/mapgen_dialog.cpp:101
 msgid "Height:"
 msgstr "Boyu:"
 
-#: src/mapgen_dialog.cpp:89
+#: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
 msgstr "Tepe sayısı:"
 
-#: src/mapgen_dialog.cpp:90
+#: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
 msgstr "En fazla tepe boyutu:"
 
-#: src/mapgen_dialog.cpp:91
+#: src/mapgen_dialog.cpp:104
 msgid "Villages:"
 msgstr "Köyler:"
 
-#: src/mapgen_dialog.cpp:92
+#: src/mapgen_dialog.cpp:105
 msgid "Landform:"
 msgstr "Arazi şekli:"
 
-#: src/mapgen_dialog.cpp:198
+#: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
 msgstr "Kaleler arasında yollar"
 
-#: src/mapgen_dialog.cpp:255
+#: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
 msgstr "/1000 tuğla"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Coastal"
 msgstr "Sahil"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Inland"
 msgstr "Kara"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Island"
 msgstr "Ada"
 
@@ -8574,21 +8574,21 @@ msgstr ")"
 msgid "unit^Gold"
 msgstr "Altın"
 
-#: src/network.cpp:66
+#: src/network.cpp:79
 msgid "invalid network handle"
 msgstr ""
 
-#: src/network.cpp:99
+#: src/network.cpp:112
 #, fuzzy
 msgid "Client disconnected"
 msgstr "Uzak sunucuyla bağlantı koptu"
 
-#: src/network.cpp:417
+#: src/network.cpp:430
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Sunucuya bağlanılamadı"
 
-#: src/network.cpp:428
+#: src/network.cpp:441
 msgid "Could not send initial handshake"
 msgstr ""
 
@@ -8713,7 +8713,7 @@ msgstr "Savunan"
 msgid "Damage Calculations"
 msgstr "Hasar hesaplamaları"
 
-#: src/playturn.cpp:628 src/reports.cpp:214
+#: src/playturn.cpp:628 src/reports.cpp:227
 msgid "vs"
 msgstr "karşı"
 
@@ -8971,16 +8971,16 @@ msgstr "Başkasıyla değiştir: "
 msgid "has left the game. What do you want to do?"
 msgstr "oyunu terketti. Ne yapmak istersin?"
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Bu birim görünmez. Düşman birimleri tarafından görülemez ve saldırılamaz."
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 msgid "invisible: "
 msgstr "görünmez: "
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
@@ -8988,11 +8988,11 @@ msgstr ""
 "Bu birim yavaşlatılmış.Normalin yarı hızında ilerler ve çarpışmada normalden "
 "bir eksik saldırı alır."
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 msgid "slowed: "
 msgstr "yavaşlatılmış: "
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -9007,47 +9007,47 @@ msgstr ""
 "Bir birim sadece zehir ile öldürülemez. Zehir onu 1 YP nin altına "
 "düşürmeyecek."
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 msgid "poisoned: "
 msgstr "zehirlenmiş: "
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Bu birim taşa çevirildi. Artık hareket edemez ve saldıramaz."
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 msgid "stone: "
 msgstr "taş: "
 
-#: src/reports.cpp:238 src/unit_types.cpp:311
+#: src/reports.cpp:251 src/unit_types.cpp:311
 msgid "damage"
 msgstr "hasar"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:269
 msgid "Lawful units: "
 msgstr "Adaletli birimler: "
 
-#: src/reports.cpp:258
+#: src/reports.cpp:271
 msgid "Neutral units: "
 msgstr "Tarafsız birimler:"
 
-#: src/reports.cpp:259
+#: src/reports.cpp:272
 msgid "Chaotic units: "
 msgstr "Kaotik birimler: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:326
 msgid "Owned village"
 msgstr "Sahipli köy"
 
-#: src/reports.cpp:315
+#: src/reports.cpp:328
 msgid "Enemy village"
 msgstr "Düşman köyü"
 
-#: src/reports.cpp:317
+#: src/reports.cpp:330
 msgid "Allied village"
 msgstr "Müttefik köyü"
 
-#: src/reports.cpp:377
+#: src/reports.cpp:390
 msgid "Observers:"
 msgstr "Seyirciler:"
 
@@ -9107,43 +9107,43 @@ msgstr " içerildiği yer: "
 msgid "$error at $pos"
 msgstr "$pos pozisyonunda $error"
 
-#: src/titlescreen.cpp:187
+#: src/titlescreen.cpp:200
 msgid "TitleScreen button^Tutorial"
 msgstr "Eğitim"
 
-#: src/titlescreen.cpp:188
+#: src/titlescreen.cpp:201
 msgid "TitleScreen button^Campaign"
 msgstr "Kampanya"
 
-#: src/titlescreen.cpp:189
+#: src/titlescreen.cpp:202
 msgid "TitleScreen button^Multiplayer"
 msgstr "Çok oyunculu"
 
-#: src/titlescreen.cpp:190
+#: src/titlescreen.cpp:203
 msgid "TitleScreen button^Load"
 msgstr "Yükle"
 
-#: src/titlescreen.cpp:191
+#: src/titlescreen.cpp:204
 msgid "TitleScreen button^Language"
 msgstr "Dil"
 
-#: src/titlescreen.cpp:192
+#: src/titlescreen.cpp:205
 msgid "TitleScreen button^Preferences"
 msgstr "Seçenekler"
 
-#: src/titlescreen.cpp:194
+#: src/titlescreen.cpp:207
 msgid "TitleScreen button^Quit"
 msgstr "Çıkış"
 
-#: src/titlescreen.cpp:195
+#: src/titlescreen.cpp:208
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Kendini oyuna alıştırmak için bir eğitim başlat"
 
-#: src/titlescreen.cpp:196
+#: src/titlescreen.cpp:209
 msgid "Start a new single player campaign"
 msgstr "Yeni bir tek kişilik kampanya başlat"
 
-#: src/titlescreen.cpp:197
+#: src/titlescreen.cpp:210
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -9151,31 +9151,31 @@ msgstr ""
 "Çok oyunculu oyun (ikili, LAN veya Internet) veya YZ'ye karşı tek kişilik "
 "senaryo oyna."
 
-#: src/titlescreen.cpp:198
+#: src/titlescreen.cpp:211
 msgid "Load a single player saved game"
 msgstr "Kayıtlı bir tek oyuncu oyununu yükle"
 
-#: src/titlescreen.cpp:199
+#: src/titlescreen.cpp:212
 msgid "Change the language"
 msgstr "Dili değiştir"
 
-#: src/titlescreen.cpp:200
+#: src/titlescreen.cpp:213
 msgid "Configure the game's settings"
 msgstr "Oyunun ayarlarını değiştir"
 
-#: src/titlescreen.cpp:201
+#: src/titlescreen.cpp:214
 msgid "View the credits"
 msgstr "Jenerike bak"
 
-#: src/titlescreen.cpp:202
+#: src/titlescreen.cpp:215
 msgid "Quit the game"
 msgstr "Oyundan çık"
 
-#: src/titlescreen.cpp:233
+#: src/titlescreen.cpp:246
 msgid "More"
 msgstr "Devamı"
 
-#: src/titlescreen.cpp:243
+#: src/titlescreen.cpp:256
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth Kitabı"
 

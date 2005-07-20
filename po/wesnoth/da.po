@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-19 08:13+0200\n"
+"POT-Creation-Date: 2005-07-20 14:39+0200\n"
 "PO-Revision-Date: 2004-09-13 17:48+0200\n"
 "Last-Translator: Mathias Bundgaard Svensson <freaken@freaken.dk>\n"
 "Language-Team:  <da@li.org>\n"
@@ -554,7 +554,7 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 
-#: data/help.cfg:203 src/titlescreen.cpp:193
+#: data/help.cfg:203 src/titlescreen.cpp:206
 msgid "About"
 msgstr "Om"
 
@@ -918,7 +918,7 @@ msgstr ""
 #: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
 #: data/terrain.cfg:196 data/terrain.cfg:209 data/terrain.cfg:360
-#: src/reports.cpp:311
+#: src/reports.cpp:324
 msgid "Village"
 msgstr "Landsby"
 
@@ -7728,12 +7728,12 @@ msgid "none"
 msgstr "ingen"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1141 src/reports.cpp:236
+#: src/help.cpp:1141 src/reports.cpp:249
 msgid "melee"
 msgstr "nærkamp"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1141 src/reports.cpp:237
+#: src/help.cpp:1141 src/reports.cpp:250
 msgid "ranged"
 msgstr "langrækkende"
 
@@ -8001,11 +8001,11 @@ msgstr "sund"
 msgid "invisible"
 msgstr "usynlig"
 
-#: src/filechooser.cpp:38 src/multiplayer_create.cpp:54
+#: src/filechooser.cpp:51 src/multiplayer_create.cpp:54
 msgid "OK"
 msgstr ""
 
-#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
+#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Annuller"
@@ -8100,7 +8100,7 @@ msgstr "Venter på svar fra server"
 msgid "Error communicating with the server."
 msgstr "Fejl i kommunikationen med serveren."
 
-#: src/game.cpp:884 src/titlescreen.cpp:170
+#: src/game.cpp:884 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Version"
 
@@ -8316,7 +8316,7 @@ msgstr ""
 msgid "Required XP: "
 msgstr "Krævet XP"
 
-#: src/help.cpp:1110 src/reports.cpp:239
+#: src/help.cpp:1110 src/reports.cpp:252
 msgid "attacks"
 msgstr "angreb"
 
@@ -8438,64 +8438,64 @@ msgstr "Systemets Standard Sprog"
 msgid "?"
 msgstr "?"
 
-#: src/mapgen_dialog.cpp:78
+#: src/mapgen_dialog.cpp:91
 msgid "Close Window"
 msgstr "Luk Vindue"
 
-#: src/mapgen_dialog.cpp:81
+#: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
 msgstr "Bane Generator"
 
-#: src/mapgen_dialog.cpp:86
+#: src/mapgen_dialog.cpp:99
 #, fuzzy
 msgid "Players:"
 msgstr "Spillere"
 
-#: src/mapgen_dialog.cpp:87
+#: src/mapgen_dialog.cpp:100
 #, fuzzy
 msgid "Width:"
 msgstr "Bredde"
 
-#: src/mapgen_dialog.cpp:88
+#: src/mapgen_dialog.cpp:101
 #, fuzzy
 msgid "Height:"
 msgstr "Højde"
 
-#: src/mapgen_dialog.cpp:89
+#: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:90
+#: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:91
+#: src/mapgen_dialog.cpp:104
 #, fuzzy
 msgid "Villages:"
 msgstr "Landsbyer"
 
-#: src/mapgen_dialog.cpp:92
+#: src/mapgen_dialog.cpp:105
 #, fuzzy
 msgid "Landform:"
 msgstr "Landform"
 
-#: src/mapgen_dialog.cpp:198
+#: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
 msgstr "Veje Mellem Borge"
 
-#: src/mapgen_dialog.cpp:255
+#: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
 msgstr "/1000 felter"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Coastal"
 msgstr "Kystlinie"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Inland"
 msgstr "Indland"
 
-#: src/mapgen_dialog.cpp:260
+#: src/mapgen_dialog.cpp:273
 msgid "Island"
 msgstr "Ø"
 
@@ -8868,21 +8868,21 @@ msgstr ""
 msgid "unit^Gold"
 msgstr "Guld"
 
-#: src/network.cpp:66
+#: src/network.cpp:79
 msgid "invalid network handle"
 msgstr ""
 
-#: src/network.cpp:99
+#: src/network.cpp:112
 #, fuzzy
 msgid "Client disconnected"
 msgstr "Fjern host afbrudt."
 
-#: src/network.cpp:417
+#: src/network.cpp:430
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Kunne ikke forbindes til hosten"
 
-#: src/network.cpp:428
+#: src/network.cpp:441
 msgid "Could not send initial handshake"
 msgstr ""
 
@@ -9012,7 +9012,7 @@ msgstr "Forsvarer"
 msgid "Damage Calculations"
 msgstr "Skades beregninger"
 
-#: src/playturn.cpp:628 src/reports.cpp:214
+#: src/playturn.cpp:628 src/reports.cpp:227
 msgid "vs"
 msgstr "mod"
 
@@ -9276,18 +9276,18 @@ msgstr "Erstat med"
 msgid "has left the game. What do you want to do?"
 msgstr "har forladt spillet. Hvad vil du?"
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Denne enhed er usynlig. Den kan ikke ses eller angribes af fjendtlige "
 "enheder."
 
-#: src/reports.cpp:111
+#: src/reports.cpp:124
 #, fuzzy
 msgid "invisible: "
 msgstr "usynlig"
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
@@ -9295,12 +9295,12 @@ msgstr ""
 "Enheden er blevet nedsløvet. Den bevæger sig med halvdelen af sin normale "
 "hastighed og får kun en mindre angrebstur end i en normal kamp."
 
-#: src/reports.cpp:116
+#: src/reports.cpp:129
 #, fuzzy
 msgid "slowed: "
 msgstr "nedsløvede"
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -9315,53 +9315,53 @@ msgstr ""
 "Enheder kan ikke blive dræbt af gift alene. Giften vil skade enheder til "
 "mindre end 1 HP."
 
-#: src/reports.cpp:121
+#: src/reports.cpp:134
 #, fuzzy
 msgid "poisoned: "
 msgstr "forgiftet"
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
 "Denne enhed er blevet lavet til sten. Den kan ikke bevæge sig eller angribe."
 
-#: src/reports.cpp:128
+#: src/reports.cpp:141
 #, fuzzy
 msgid "stone: "
 msgstr "sten"
 
-#: src/reports.cpp:238 src/unit_types.cpp:311
+#: src/reports.cpp:251 src/unit_types.cpp:311
 msgid "damage"
 msgstr "skade"
 
-#: src/reports.cpp:256
+#: src/reports.cpp:269
 #, fuzzy
 msgid "Lawful units: "
 msgstr "Lovlydige enheder"
 
-#: src/reports.cpp:258
+#: src/reports.cpp:271
 #, fuzzy
 msgid "Neutral units: "
 msgstr "Neutrale enheder"
 
-#: src/reports.cpp:259
+#: src/reports.cpp:272
 #, fuzzy
 msgid "Chaotic units: "
 msgstr "Kaotiske enheder"
 
-#: src/reports.cpp:313
+#: src/reports.cpp:326
 msgid "Owned village"
 msgstr "Ejet landsby"
 
-#: src/reports.cpp:315
+#: src/reports.cpp:328
 msgid "Enemy village"
 msgstr "Fjendtlig landsby"
 
-#: src/reports.cpp:317
+#: src/reports.cpp:330
 msgid "Allied village"
 msgstr "Allieret landsby"
 
-#: src/reports.cpp:377
+#: src/reports.cpp:390
 #, fuzzy
 msgid "Observers:"
 msgstr "Observator"
@@ -9422,43 +9422,43 @@ msgstr ""
 msgid "$error at $pos"
 msgstr ""
 
-#: src/titlescreen.cpp:187
+#: src/titlescreen.cpp:200
 msgid "TitleScreen button^Tutorial"
 msgstr "Tutorial"
 
-#: src/titlescreen.cpp:188
+#: src/titlescreen.cpp:201
 msgid "TitleScreen button^Campaign"
 msgstr "Kampagne"
 
-#: src/titlescreen.cpp:189
+#: src/titlescreen.cpp:202
 msgid "TitleScreen button^Multiplayer"
 msgstr "Multiplayer"
 
-#: src/titlescreen.cpp:190
+#: src/titlescreen.cpp:203
 msgid "TitleScreen button^Load"
 msgstr "Hent"
 
-#: src/titlescreen.cpp:191
+#: src/titlescreen.cpp:204
 msgid "TitleScreen button^Language"
 msgstr "Sprog"
 
-#: src/titlescreen.cpp:192
+#: src/titlescreen.cpp:205
 msgid "TitleScreen button^Preferences"
 msgstr "Indstillinger"
 
-#: src/titlescreen.cpp:194
+#: src/titlescreen.cpp:207
 msgid "TitleScreen button^Quit"
 msgstr "Afslut"
 
-#: src/titlescreen.cpp:195
+#: src/titlescreen.cpp:208
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Start en tutorial for at lære spillet at kende"
 
-#: src/titlescreen.cpp:196
+#: src/titlescreen.cpp:209
 msgid "Start a new single player campaign"
 msgstr "Start en ny single player kampagne"
 
-#: src/titlescreen.cpp:197
+#: src/titlescreen.cpp:210
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -9466,31 +9466,31 @@ msgstr ""
 "Spil multiplayer (lokalt, over LAN eller over Internettet) eller et enkelt "
 "scenarie mod en Computer"
 
-#: src/titlescreen.cpp:198
+#: src/titlescreen.cpp:211
 msgid "Load a single player saved game"
 msgstr "Hent et single player gemt spil"
 
-#: src/titlescreen.cpp:199
+#: src/titlescreen.cpp:212
 msgid "Change the language"
 msgstr "Skift sprog"
 
-#: src/titlescreen.cpp:200
+#: src/titlescreen.cpp:213
 msgid "Configure the game's settings"
 msgstr "Spil indstillinger"
 
-#: src/titlescreen.cpp:201
+#: src/titlescreen.cpp:214
 msgid "View the credits"
 msgstr "Se credits"
 
-#: src/titlescreen.cpp:202
+#: src/titlescreen.cpp:215
 msgid "Quit the game"
 msgstr "Afslut spillet"
 
-#: src/titlescreen.cpp:233
+#: src/titlescreen.cpp:246
 msgid "More"
 msgstr "Mere"
 
-#: src/titlescreen.cpp:243
+#: src/titlescreen.cpp:256
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Bogen om Wesnoth"
 
