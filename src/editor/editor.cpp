@@ -138,13 +138,20 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
  */
 void map_editor::load_tooltips()
 {
-        // Add tooltips to all buttons
+	// Clear all previous tooltips
+	tooltips::clear_tooltips();
+	
+	// Add tooltips to all buttons
 	const theme &t = gui_.get_theme();
         const std::vector<theme::menu> &menus = t.menus();
         std::vector<theme::menu>::const_iterator it;
         for (it = menus.begin(); it != menus.end(); it++) {
 		
-		const SDL_Rect draw_rect = (*it).get_location();
+		// Get the button's screen location
+		SDL_Rect screen;
+		screen.x = 0; screen.y = 0; screen.w = gui_.x(); screen.h = gui_.y();
+		
+		const SDL_Rect tooltip_rect = (*it).location(screen);
 		std::string text = "";
 
 	       	const std::vector<std::string> &menu_items = (*it).items();
@@ -174,7 +181,7 @@ void map_editor::load_tooltips()
 		}
         
 		if(text != "")
-			tooltips::add_tooltip(draw_rect, text);
+			tooltips::add_tooltip(tooltip_rect, text);
         }
 }
 
@@ -788,6 +795,7 @@ void map_editor::redraw_everything() {
 	update_l_button_palette();
 	palette_.draw(true);
 	brush_.draw(true);
+	load_tooltips();
 }
 
 void map_editor::highlight_selected_hexes(const bool clear_old) {

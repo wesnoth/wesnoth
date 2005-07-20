@@ -113,8 +113,6 @@ public:
 		const std::string& image() const;
 
 		const std::vector<std::string>& items() const;
-
-		const SDL_Rect& get_location(void) const;
 	private:
 		bool context_;
 		std::string title_, image_;

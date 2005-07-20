@@ -429,8 +429,6 @@ const std::string& theme::menu::image() const { return image_; }
 
 const std::vector<std::string>& theme::menu::items() const { return items_; }
 
-const SDL_Rect& theme::menu::get_location(void) const { return object::get_location(); }
-
 theme::theme(const config& cfg, const SDL_Rect& screen):cfg_(resolve_rects(cfg)){
 	set_resolution(screen);
 }
