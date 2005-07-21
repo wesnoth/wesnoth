@@ -132,6 +132,9 @@ ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = config/config.rpath
 
+update-po:
+	@cd po && make $@ || exit $?
+
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
 wesnoth-deps.dot:
 	(cd $(top_srcdir) && graph-includes -verbose --class wesnoth --group 1-1 \
