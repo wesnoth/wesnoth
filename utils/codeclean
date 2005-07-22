@@ -18,7 +18,8 @@ $changes += s/\r$// # de-DOS-ify
 + s/ +\t/\t/g # remove spaces hidden by tabs
 + s/[\t ]+$// # remove trailing whitespace
 + s#wesnoth\.whitevine\.net/?#www.wesnoth.org/#g
-+ s#davidnwhite\@optusnet\.com\.au#davidnwhite\@comcast.net#g;
++ s#davidnwhite\@optusnet\.com\.au#davidnwhite\@verizon.net#g;
++ s#davidnwhite\@comcast\.net#davidnwhite\@verizon.net#g;
 if (eof and index($_, "\n") < 0) { s/$/\n/; ++$changes } # ensure EOL at EOF
 
 END { print "$changes made\n"; }
