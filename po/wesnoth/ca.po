@@ -2,14 +2,15 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
+# Dan Rosàs Garcia, 2004.
 # Jordà Polo <jorda@ettin.org>, 2004, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-20 14:39+0200\n"
-"PO-Revision-Date: 2005-06-19 17:42+0200\n"
+"POT-Creation-Date: 2005-07-19 08:13+0200\n"
+"PO-Revision-Date: 2005-07-22 11:40+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -595,7 +596,6 @@ msgstr ""
 "opcions per avançar."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -715,7 +715,6 @@ msgstr ""
 "aquest tema: els guanys i el manteniment."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -726,8 +725,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Els guanys són fàcils. Per cada llogaret controlat, guanyeu una moneda d'or "
-"cada torn. Per tant, si teniu 10 llogarets, guanyareu 10 monedes d'or. "
+"Els guanys són fàcils. Disposeu d'un guany base de 2 monedes d'or per torn. A més, per cada llogaret controlat rebreu una moneda d'or addicional. Per tant, si teniu 10 llogarets, guanyareu 12 monedes d'or. "
 "Malauradament, els costos de manteniment es resten als guanys, tal i com es "
 "mostra a continuació."
 
@@ -752,7 +750,6 @@ msgstr ""
 "pagar dos monedes d'or de manteniment cada torn."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -763,11 +760,10 @@ msgstr ""
 "\n"
 "\n"
 "Aquest cost es resta als guanys, de tal manera que en el cas anterior, amb "
-"dotze nivells d'unitats i deu llogarets, els guanys finals serien 8 monedes "
+"dotze nivells d'unitats i deu llogarets, els guanys finals serien 10 monedes "
 "d'or per torn."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -800,12 +796,11 @@ msgstr ""
 "<ref>dst=abilities text='habilitats'</ref>, però ara ja sabeu tot el que "
 "necessiteu per jugar la campanya Hereu al tron. Divertiu-vos, i bona sort!"
 
-#: data/help.cfg:203 src/titlescreen.cpp:206
+#: data/help.cfg:203 src/titlescreen.cpp:193
 msgid "About"
 msgstr "Quant a"
 
 #: data/help.cfg:210
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1046,7 +1041,7 @@ msgstr ""
 
 #: data/help.cfg:272 data/terrain.cfg:150
 msgid "Grassland"
-msgstr "Herba"
+msgstr "Prada"
 
 #: data/help.cfg:275
 msgid ""
@@ -1058,6 +1053,9 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"Les prades representen terrenys oberts, ja siguin cultivats, per pasturar, o salvatges. Resulta fàcil moure's en aquest tipus de terreny, però les seves característiques també fan que sigui difícil defensar-s'hi. Normalment les unitats que es comporten millor a les prades són les de cavalleria, tot i que també hi ha altres unitats molt àgils que són capaces d'aprofitar les avantatges de les zones obertes.\n"
+"\n"
+"La majoria d'unitats tenen una defensa d'entre un 30% i un 40% a les prades."
 
 #: data/help.cfg:280 data/terrain.cfg:124 data/terrain.cfg:132
 msgid "Road"
@@ -1068,7 +1066,7 @@ msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
-msgstr ""
+msgstr "Els camins són rutes marcades de terra formades pels mateixos viatgers després de passar-hi repetidament. Pel que fa al joc, els camins són idèntics a les <ref>dst=terrain_grassland text=prades</ref>."
 
 #: data/help.cfg:286 data/terrain.cfg:321
 msgid "Forest"
@@ -1090,10 +1088,13 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"El boscos representen qualsevol terreny amb una quantitat de vegetació considerable, suficient com per dificultar el camí. Encara que alenteixen gairebé a tothom que s'hi endinsa, els boscos esdevenen una bona defensa per aquells que saben treure'n profit. A les unitats de cavalleria, per exemple, no els resulta avantatjós ja que tenen molts problemes per obrir-se el pas entre els arbres. Els elfs són una excepció d'aquesta regla general; no només posseeixen moviment complet als boscos, sinó que també guanyen considerablement en defensa. Els nans són l'altra excepció; tot i que poden avançar sense gaire pèrdua de velocitat, la seva desconeixença del terreny fa que no rebin cap bonificació defensiva.\n"
+"\n"
+"La majoria d'unitats tenen un 50% de defensa al bosc, però la cavalleria està limitada al 40%. Els elfs, per la seva part, gaudeixen d'una defensa d'entre un 60% i un 70%, fins i tot les seves unitats muntades. Els nans es conformen amb només un 30%."
 
 #: data/help.cfg:294 data/terrain.cfg:282
 msgid "Hills"
-msgstr "Turons"
+msgstr "Colls"
 
 #: data/help.cfg:297
 msgid ""
@@ -1107,6 +1108,9 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"Els colls són un terreny abrupte i amb prou pujades i baixades com per proporcionar una mica de cobertura. Per a la majoria de tropes són zones difícils de travessar. Només nans, trolls i orcs estan suficientment familiaritzats com per passar-hi sense ser alentits. La cavalleria, en canvi, té tants problemes que qualsevol millora defensiva es veu negada per la seva ineptitud en aquest terreny.\n"
+"\n "
+"La majoria d'unitats tenen aproximadament un 50% de defensa als colls, mentre que la cavalleria està limitada al 40%. Els nans gaudeixen d'un 60% de defensa."
 
 #: data/help.cfg:302 data/terrain.cfg:306
 msgid "Mountains"
@@ -1124,6 +1128,9 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Les muntanyes són terrenys tant escarpats que les unitats sovint tenen que escalar per damunt dels obstacles per tal d'avançar. Per la seva naturalesa, proporcionen bones posicions de defensa per a la majoria de tropes, però també n'hi ha d'altres que veuen impedit el seu pas. La majoria de la cavalleria simplement no pot entrar en terreny muntanyós; tanmateix, els exploradors elfs en són una excepció, juntament amb els genets de llop goblin. Nans i trolls són els habitants més adaptats a la muntanya, i s'hi mouen amb facilitat.\n"
+"\n"
+"La majoria d'unitats tenen un 60% de defensa a les muntanyes. Els nans, per la seva part, obtenen una defensa millorada fins al 70%."
 
 #: data/help.cfg:310 data/terrain.cfg:51
 msgid "Swamp"
@@ -1140,6 +1147,9 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
+"Els pantans representen qualsevol tipus de terra mullada. Aquest terreny alenteix gairebé a tothom, impossibilitant així les opcions de defensa. Només les races preparades físicament per navegar per l'aigua poden desplaçar-se per les zones pantanoses amb destresa. Aquells que fan vida al pantà també poden arribar a emprar-lo per cobrir-se defensivament en combat.\n"
+"\n"
+"La majoria d'unitats tenen una defensa del 30% als pantans. Sirènids, nagues i sauris gaudeixen, en general, d'una defensa que volta el 60%."
 
 #: data/help.cfg:318 data/terrain.cfg:30
 msgid "Shallow Water"
@@ -1172,9 +1182,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:334
-#, fuzzy
 msgid "Tundra"
-msgstr "no mort"
+msgstr "Tundra"
 
 #: data/help.cfg:337
 msgid ""
@@ -1184,6 +1193,9 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in Tundra."
 msgstr ""
+"La tundra és una extensió coberta de neu, ja sigui permanent o temporalment. Moltes unitats es mouen més lentament en aquest terreny, i per tant també ho tenen més difícil per defensar-se.\n"
+"\n"
+"La majoria de les unitats tenen entre un 20% i un 40% de defensa a la tundra."
 
 #: data/help.cfg:342 data/terrain.cfg:70
 msgid "Ice"
@@ -1226,9 +1238,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:364 data/terrain.cfg:115
-#, fuzzy
 msgid "Desert"
-msgstr "Dunes"
+msgstr "Desert"
 
 #: data/help.cfg:365
 msgid ""
@@ -1267,7 +1278,7 @@ msgstr ""
 #: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
 #: data/terrain.cfg:196 data/terrain.cfg:209 data/terrain.cfg:360
-#: src/reports.cpp:324
+#: src/reports.cpp:311
 msgid "Village"
 msgstr "Llogaret"
 
@@ -1552,8 +1563,7 @@ msgstr "Blitz"
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr ""
-"Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
+msgstr "Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
@@ -1613,8 +1623,7 @@ msgid "2p - Icy Waters"
 msgstr "Aigües gelades"
 
 #: data/scenarios/multiplayer/2p_IcyWaters.cfg:5
-msgid ""
-"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
+msgid "Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 msgstr ""
 "Combat en aquesta badia d'aigües gelades del nord de Wesnoth i pels seus "
 "voltants."
@@ -1897,8 +1906,7 @@ msgid "7p - Battle World"
 msgstr "Batalla mundial"
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:9
-msgid ""
-"Up to 7 armies thrash about in this peaceful land. Prepare for a long battle."
+msgid "Up to 7 armies thrash about in this peaceful land. Prepare for a long battle."
 msgstr ""
 "Fins a set exèrcits s'enfronten en aquesta pacífica terra. Prepareu-vos per "
 "a una llarga batalla."
@@ -2157,8 +2165,7 @@ msgstr "Visca!"
 #: data/scenarios/tutorial/Basic_Training.cfg:299
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:249
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr ""
-"Voleu revisar alguna de les habilitats que heu après en aquest escenari?"
+msgstr "Voleu revisar alguna de les habilitats que heu après en aquest escenari?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:302
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
@@ -2188,8 +2195,7 @@ msgstr "Trets i especialitats"
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr ""
-"Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
+msgstr "Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
 msgid ""
@@ -2294,8 +2300,7 @@ msgstr ""
 "les unitats."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
-msgid ""
-"Many units have a specialty which changes the rules of play in some way."
+msgid "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 "Moltes unitats tenen alguna característica que canvia les regles del joc "
 "d'alguna manera."
@@ -2326,8 +2331,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
 msgid "Next, you may want to begin a campaign, or play multiplayer."
-msgstr ""
-"Ara potser voldreu començar una campanya, o fer una partida multijugador."
+msgstr "Ara potser voldreu començar una campanya, o fer una partida multijugador."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -3322,8 +3326,7 @@ msgstr ""
 "tiradors, que tenen un 60%."
 
 #: data/tips.cfg:9
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "Les unitats que descansen als llogarets recuperen 8 punts de vida al "
 "començament del seu torn."
@@ -3391,8 +3394,7 @@ msgstr ""
 "tropes prescindibles per retrasar l'atac."
 
 #: data/tips.cfg:17
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 "No tingueu por de retirar-vos i tornar-vos a agrupar, aquesta pot ser la "
 "clau de la victòria."
@@ -3829,14 +3831,13 @@ msgstr ""
 "de l'objectiu (no funciona amb unitats aliades)."
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
 "Berserk:\n"
-"Quan s'usa ofensivament, aquest atac allarga la lluita fins la mort d'un "
+"Quan s'usa, ja sigui ofensiva o defensivament, aquest atac allarga la lluita fins la mort d'un "
 "dels dos combatents."
 
 #: data/translations/english.cfg:99
@@ -3961,8 +3962,7 @@ msgstr "$name|a,El gual de $name,El creuament de $name,$river|ós,$river"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
-"Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
+msgstr "Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
@@ -3977,8 +3977,7 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name de mar,$name de dalt,$name,$name,$name"
 
 #: data/translations/english.cfg:144
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr "$name,$name,$name,$name,$name,$name,$name"
 
 #: data/units/Ancient_Lich.cfg:3
@@ -4048,12 +4047,10 @@ msgstr "Lich ancià"
 #: data/units/Vampire_Lady.cfg:15 data/units/Wall_Guard.cfg:29
 #: data/units/Warrior_King.cfg:19 data/units/Watch_Tower.cfg:12
 #: data/units/Yeti.cfg:28
-#, fuzzy
 msgid "tough"
-msgstr "toc"
+msgstr "resistent"
 
 #: data/units/Ancient_Lich.cfg:28
-#, fuzzy
 msgid ""
 "The final form that magi of the undead can achieve, Ancient Liches strike "
 "terror into the hearts of those who see them. Not only is their touch that "
@@ -4061,10 +4058,10 @@ msgid ""
 "where they stand. Should you ever come across one of these, flee fast and "
 "far, for they move faster than most undead."
 msgstr ""
-"És la forma definitiva que un mag dels No morts pot assolir. El lich ancià "
+"És la forma definitiva que un mag dels no morts pot assolir. El lich ancià "
 "fa arrelar el terror als cors d'aquells que el veuen. No només poseeix el "
-"'toc' dels no morts, sinó que, a més, la seva màgia es capaç de congelar els "
-"cors dels més valents, allà on siguin."
+"'toc' dels no morts, sinó que, a més, la seva màgia és capaç de congelar els "
+"adversaris més valents, allà on siguin. Si mai trobeu una d'aquestes criatures, fugiu de pressa i lluny, ja que es mouen més ràpidament que la majoria de no morts."
 
 #: data/units/Ancient_Lich.cfg:50 data/units/Demilich.cfg:32
 #: data/units/Dread_Lich.cfg:29 data/units/Ghost.cfg:19 data/units/Lich.cfg:28
@@ -4969,7 +4966,6 @@ msgid "Demilich"
 msgstr "Semilich"
 
 #: data/units/Demilich.cfg:17
-#, fuzzy
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
@@ -4978,8 +4974,8 @@ msgid ""
 msgstr ""
 "Després de molt de temps indagant en el camí de les màgies prohibides i les "
 "arts obscures, aquests mags comencen a pagar les conseqüències del que han "
-"fet. Perden el seu cos, convertint-se d'aquesta manera en no morts, essent "
-"temuts per tothom."
+"fet. Perden el seu cos convertint-se d'aquesta manera en no morts, i essent "
+"cada vegada més temuts per tothom."
 
 #: data/units/Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
@@ -5586,16 +5582,14 @@ msgid "Elder Mage"
 msgstr "Mag ancià"
 
 #: data/units/Elder_Mage.cfg:30
-#, fuzzy
 msgid ""
 "Once great, Elder Magi have seen their power a little diminished from "
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
-"Aquell qui una vegada fou Gran mag, encara conserva gran part dels seus "
-"poders. Tot i que han disminuït sensiblement amb el pas dels anys, usen "
-"potents llampecs al camp de batalla. Per aquest motiu són temuts al camp de "
-"batalla per tots aquells qui són considerats enemics..."
+"Aquells que una vegada foren els més grans, encara conserven bona part dels seus "
+"poders. Tot i que han disminuït sensiblement amb el pas dels anys, continuen usant"
+"potents llampecs al camp de batalla. La vellesa no és prou motiu com per deixar de témer-los."
 
 #: data/units/Elder_Mage.cfg:48
 msgid "lightning"
@@ -6068,8 +6062,7 @@ msgid "Fireball"
 msgstr "Bola de foc"
 
 #: data/units/Fireball.cfg:25
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr "Una bola de foc. Només usat per 'Move_Unit_Fake'."
 
 #: data/units/Footpad.cfg:3
@@ -6182,15 +6175,13 @@ msgid "Giant Mudcrawler"
 msgstr "Rossegador gegant de fang"
 
 #: data/units/Giant_Mudcrawler.cfg:25
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by slapping them with their fists."
 msgstr ""
 "Els rossegadors gegants són el tipus de rossegador més gran que existeix. "
-"Estan fets només de terra i aigua, i els seus atacs també deriven d'aquests "
-"elements: o bé ataquen amb els seus punys o bé tiren rajos d'aigua bullent. "
+"Són criatures màgiques fetes només de terra i aigua. Els seus atacs també deriven d'aquests elements: o bé colpegen amb els seus punys o bé escupeixen una mena de fang fastigòs."
 
 #: data/units/Giant_Mudcrawler.cfg:52 data/units/Skeleton_Archer.cfg:24
 #: data/units/Soulless.cfg:45 data/units/Soulless.cfg:128
@@ -6207,7 +6198,7 @@ msgstr "puny"
 
 #: data/units/Giant_Mudcrawler.cfg:74 data/units/Mudcrawler.cfg:43
 msgid "mud glob"
-msgstr ""
+msgstr "bola de fang"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
@@ -6404,7 +6395,6 @@ msgid "Gryphon Master"
 msgstr "Mestre de grius"
 
 #: data/units/Gryphon_Master.cfg:27
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
@@ -6597,17 +6587,15 @@ msgid "Lich"
 msgstr "Lich"
 
 #: data/units/Lich.cfg:25
-#, fuzzy
 msgid ""
 "Liches are magi that have committed completely to the path of the dark arts. "
 "To gain control over the undead, Liches have forfeited their own bodies, "
 "becoming undead themselves. This grants them the ability to drain the life "
 "from their opponents with a single touch, and to cast powerful cold spells."
 msgstr ""
-"El lich és un mag que s'ha dedicat completament al camí de les arts "
-"obscures. Per tal de guanyar més control sobre els no morts, el lich ha "
-"deixat de banda el seu propi cos, convertint-se en un d'ells... Això li dona "
-"capacitat per drenar la vida dels seus enemics amb tansols tocar-los, i a "
+"Els liches són mags que s'ha dedicat completament al camí de les arts "
+"obscures. Per tal de guanyar més control sobre els no morts, els liches deixen de banda el seu propi cos, convertint-se en un d'ells. Això els dona "
+"capacitat per drenar la vida dels seus enemics amb tan sols tocar-los, a més de"
 "llançar poderosos conjurs de fred."
 
 #: data/units/Lieutenant.cfg:3
@@ -6936,13 +6924,12 @@ msgid "Mudcrawler"
 msgstr "Rossegador de fang"
 
 #: data/units/Mudcrawler.cfg:18
-#, fuzzy
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
 "Els rossegadors de fang són criatures màgiques fetes de terra i aigua. "
-"Ataquen disparant aigua molt calenta als seus enemics."
+"Ataquen disparant una mena de pasta fangosa als seus enemics."
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
@@ -7046,7 +7033,6 @@ msgid "Necromancer"
 msgstr "Nigromant"
 
 #: data/units/Necromancer.cfg:16
-#, fuzzy
 msgid ""
 "Necromancers are magi that have decided to follow the paths of the dark "
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
@@ -7061,9 +7047,8 @@ msgid "Necrophage"
 msgstr "Necròfag"
 
 #: data/units/Necrophage.cfg:17
-#, fuzzy
 msgid "satiated"
-msgstr "Iniciat"
+msgstr "saciat"
 
 #: data/units/Necrophage.cfg:26
 msgid ""
@@ -7405,8 +7390,7 @@ msgstr "Proscrita"
 
 #: data/units/Outlaw.cfg:107
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
-msgstr ""
-"Els proscrits lluiten millor de nit. Les proscrites, a més, ho fan amb estil."
+msgstr "Els proscrits lluiten millor de nit. Les proscrites, a més, ho fan amb estil."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
@@ -7805,10 +7789,8 @@ msgid "Sea Serpent"
 msgstr "Serp marina"
 
 #: data/units/Sea_Serpent.cfg:25
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"La serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
+msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr "La serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -8590,8 +8572,7 @@ msgstr "No teniu un líder amb el que reclutar."
 
 #: src/actions.cpp:115
 msgid "You must have your leader on a keep to recruit or recall units."
-msgstr ""
-"El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
+msgstr "El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
 
 #: src/actions.cpp:135
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -8602,12 +8583,12 @@ msgid "none"
 msgstr "cap"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1095
-#: src/help.cpp:1141 src/reports.cpp:249
+#: src/help.cpp:1141 src/reports.cpp:236
 msgid "melee"
 msgstr "melé"
 
 #: src/actions.cpp:382 src/dialogs.cpp:761 src/display.cpp:1096
-#: src/help.cpp:1141 src/reports.cpp:250
+#: src/help.cpp:1141 src/reports.cpp:237
 msgid "ranged"
 msgstr "distància"
 
@@ -8869,11 +8850,11 @@ msgstr "sà"
 msgid "invisible"
 msgstr "invisible"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:54
+#: src/filechooser.cpp:38 src/multiplayer_create.cpp:54
 msgid "OK"
 msgstr "D'acord"
 
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:500
+#: src/filechooser.cpp:39 src/multiplayer_connect.cpp:500
 #: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -8964,7 +8945,7 @@ msgstr "Esperant resposta del servidor."
 msgid "Error communicating with the server."
 msgstr "Error de comunicació amb el servidor."
 
-#: src/game.cpp:884 src/titlescreen.cpp:183
+#: src/game.cpp:884 src/titlescreen.cpp:170
 msgid "Version"
 msgstr "Versió"
 
@@ -9025,8 +9006,7 @@ msgid "Remote host disconnected."
 msgstr "Servidor remot desconnectat."
 
 #: src/game.cpp:1003
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
+msgid "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "S'ha produït un error creant els fitxers necessaris per instal·lar aquesta "
 "campanya."
@@ -9166,7 +9146,7 @@ msgstr "Alineació: "
 msgid "Required XP: "
 msgstr "Experiència requerida: "
 
-#: src/help.cpp:1110 src/reports.cpp:252
+#: src/help.cpp:1110 src/reports.cpp:239
 msgid "attacks"
 msgstr "atacs"
 
@@ -9216,8 +9196,7 @@ msgstr "o"
 
 #: src/help.cpp:1308
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
-"Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
+msgstr "Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
 
 #: src/help.cpp:1310
 msgid "The terrain with the best modifier is chosen automatically."
@@ -9281,59 +9260,59 @@ msgstr "Idioma per defecte del sistema"
 msgid "?"
 msgstr "?"
 
-#: src/mapgen_dialog.cpp:91
+#: src/mapgen_dialog.cpp:78
 msgid "Close Window"
 msgstr "Tanca finestra"
 
-#: src/mapgen_dialog.cpp:94
+#: src/mapgen_dialog.cpp:81
 msgid "Map Generator"
 msgstr "Generador de mapes"
 
-#: src/mapgen_dialog.cpp:99
+#: src/mapgen_dialog.cpp:86
 msgid "Players:"
 msgstr "Jugadors:"
 
-#: src/mapgen_dialog.cpp:100
+#: src/mapgen_dialog.cpp:87
 msgid "Width:"
 msgstr "Amplada:"
 
-#: src/mapgen_dialog.cpp:101
+#: src/mapgen_dialog.cpp:88
 msgid "Height:"
 msgstr "Alçada:"
 
-#: src/mapgen_dialog.cpp:102
+#: src/mapgen_dialog.cpp:89
 msgid "Number of Hills:"
 msgstr "Nombre de turons:"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:90
 msgid "Max Hill Size:"
 msgstr "Mida dels turons:"
 
-#: src/mapgen_dialog.cpp:104
+#: src/mapgen_dialog.cpp:91
 msgid "Villages:"
 msgstr "Llogarets:"
 
-#: src/mapgen_dialog.cpp:105
+#: src/mapgen_dialog.cpp:92
 msgid "Landform:"
 msgstr "Perfil:"
 
-#: src/mapgen_dialog.cpp:211
+#: src/mapgen_dialog.cpp:198
 msgid "Roads Between Castles"
 msgstr "Camí entre castells"
 
-#: src/mapgen_dialog.cpp:268
+#: src/mapgen_dialog.cpp:255
 msgid "/1000 tiles"
 msgstr "cada 1000 hexàgons"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:260
 msgid "Coastal"
 msgstr "Costaner"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:260
 msgid "Inland"
 msgstr "Interior"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:260
 msgid "Island"
 msgstr "Illa"
 
@@ -9686,27 +9665,25 @@ msgstr ")"
 msgid "unit^Gold"
 msgstr "Or"
 
-#: src/network.cpp:79
+#: src/network.cpp:66
 msgid "invalid network handle"
-msgstr ""
+msgstr "el gestor de xarxa és invàlid"
 
-#: src/network.cpp:112
-#, fuzzy
+#: src/network.cpp:99
 msgid "Client disconnected"
-msgstr "Servidor remot desconnectat."
+msgstr "Client desconnectat"
 
-#: src/network.cpp:430
+#: src/network.cpp:417
 msgid "Could not add socket to socket set"
-msgstr ""
+msgstr "No s'ha pogut afegir el sòcol."
 
-#: src/network.cpp:441
+#: src/network.cpp:428
 msgid "Could not send initial handshake"
-msgstr ""
+msgstr "No s'ha pogut establir la connexió inicial."
 
 #: src/playcampaign.cpp:143
-#, fuzzy
 msgid " replay"
-msgstr "repetició"
+msgstr " repetició"
 
 #: src/playcampaign.cpp:151
 msgid "Do you want to save a replay of this scenario?"
@@ -9718,14 +9695,13 @@ msgstr "Nom:"
 
 #: src/playcampaign.cpp:160 src/playcampaign.cpp:280 src/playturn.cpp:1644
 msgid "The game could not be saved"
-msgstr "No ha estat possible desar la partida."
+msgstr "No s'ha pogut desar la partida."
 
 #: src/playcampaign.cpp:202
 msgid "Downloading next level..."
 msgstr "S'està descarregant el següent nivell..."
 
 #: src/playcampaign.cpp:271
-#, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Voleu desar la partida?"
 
@@ -9822,7 +9798,7 @@ msgstr "Defensor"
 msgid "Damage Calculations"
 msgstr "Càlcul de mal"
 
-#: src/playturn.cpp:628 src/reports.cpp:227
+#: src/playturn.cpp:628 src/reports.cpp:214
 msgid "vs"
 msgstr "contra"
 
@@ -9835,8 +9811,7 @@ msgid "Choose weapon:"
 msgstr "Trieu l'arma:"
 
 #: src/playturn.cpp:1309
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
+msgid "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "No heu començat a moure les unitats. Segur de que voleu finalitzar el vostre "
 "torn?"
@@ -9869,8 +9844,7 @@ msgstr "Error"
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
-msgstr ""
-"Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
+msgstr "Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
 
 #: src/playturn.cpp:1641
 msgid "Saved"
@@ -9916,8 +9890,7 @@ msgstr "No teniu prou diners per reclutar aquesta unitat."
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
-msgstr ""
-"Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
+msgstr "Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
 
 #: src/playturn.cpp:1990
 msgid ""
@@ -10045,8 +10018,7 @@ msgstr "Tria el tema: "
 
 #: src/playturn.cpp:2530
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
-"Els canvis de tema tenen efecte en carregar o iniciar una nova partida."
+msgstr "Els canvis de tema tenen efecte en carregar o iniciar una nova partida."
 
 #: src/playturn.cpp:2631
 msgid "Place Label"
@@ -10084,17 +10056,17 @@ msgstr "Reemplaça amb"
 msgid "has left the game. What do you want to do?"
 msgstr "ha deixat la partida. Què voleu fer?"
 
-#: src/reports.cpp:124
+#: src/reports.cpp:111
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Aquesta unitat és invisible. No pot ser vista ni atacada per unitats "
 "enemigues."
 
-#: src/reports.cpp:124
+#: src/reports.cpp:111
 msgid "invisible: "
 msgstr "invisible: "
 
-#: src/reports.cpp:129
+#: src/reports.cpp:116
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
@@ -10102,11 +10074,11 @@ msgstr ""
 "Aquesta unitat ha esta alentida. Es mou a la meitat de la seva velocitat "
 "habitual i pot fer un atac menys del normal en combat."
 
-#: src/reports.cpp:129
+#: src/reports.cpp:116
 msgid "slowed: "
 msgstr "alentit: "
 
-#: src/reports.cpp:134
+#: src/reports.cpp:121
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -10122,48 +10094,47 @@ msgstr ""
 "Les unitats no poden morir només a causa del verí, que només reuirà els "
 "punts de vida fins a 1."
 
-#: src/reports.cpp:134
+#: src/reports.cpp:121
 msgid "poisoned: "
 msgstr "enverinat: "
 
-#: src/reports.cpp:141
+#: src/reports.cpp:128
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-"Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
+msgstr "Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
 
-#: src/reports.cpp:141
+#: src/reports.cpp:128
 msgid "stone: "
 msgstr "pedra: "
 
-#: src/reports.cpp:251 src/unit_types.cpp:311
+#: src/reports.cpp:238 src/unit_types.cpp:311
 msgid "damage"
 msgstr "mal"
 
-#: src/reports.cpp:269
+#: src/reports.cpp:256
 msgid "Lawful units: "
 msgstr "Unitats legals: "
 
-#: src/reports.cpp:271
+#: src/reports.cpp:258
 msgid "Neutral units: "
 msgstr "Unitats neutrals: "
 
-#: src/reports.cpp:272
+#: src/reports.cpp:259
 msgid "Chaotic units: "
 msgstr "Unitats caòtiques: "
 
-#: src/reports.cpp:326
+#: src/reports.cpp:313
 msgid "Owned village"
 msgstr "Llogaret propi"
 
-#: src/reports.cpp:328
+#: src/reports.cpp:315
 msgid "Enemy village"
 msgstr "Llogaret enemic"
 
-#: src/reports.cpp:330
+#: src/reports.cpp:317
 msgid "Allied village"
 msgstr "Llogaret aliat"
 
-#: src/reports.cpp:390
+#: src/reports.cpp:377
 msgid "Observers:"
 msgstr "Observadors:"
 
@@ -10225,73 +10196,73 @@ msgstr " inclòs des de "
 msgid "$error at $pos"
 msgstr "$error a $pos"
 
-#: src/titlescreen.cpp:200
+#: src/titlescreen.cpp:187
 msgid "TitleScreen button^Tutorial"
 msgstr "Tutorial"
 
-#: src/titlescreen.cpp:201
+#: src/titlescreen.cpp:188
 msgid "TitleScreen button^Campaign"
 msgstr "Campanya"
 
-#: src/titlescreen.cpp:202
+#: src/titlescreen.cpp:189
 msgid "TitleScreen button^Multiplayer"
 msgstr "Multijugador"
 
-#: src/titlescreen.cpp:203
+#: src/titlescreen.cpp:190
 msgid "TitleScreen button^Load"
 msgstr "Carrega"
 
-#: src/titlescreen.cpp:204
+#: src/titlescreen.cpp:191
 msgid "TitleScreen button^Language"
 msgstr "Idioma"
 
-#: src/titlescreen.cpp:205
+#: src/titlescreen.cpp:192
 msgid "TitleScreen button^Preferences"
 msgstr "Preferències"
 
-#: src/titlescreen.cpp:207
+#: src/titlescreen.cpp:194
 msgid "TitleScreen button^Quit"
 msgstr "Surt"
 
-#: src/titlescreen.cpp:208
+#: src/titlescreen.cpp:195
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Comença el tutorial per familiaritzar-te amb el joc"
 
-#: src/titlescreen.cpp:209
+#: src/titlescreen.cpp:196
 msgid "Start a new single player campaign"
 msgstr "Comença una nova campanya"
 
-#: src/titlescreen.cpp:210
+#: src/titlescreen.cpp:197
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "Juga acompanyat o contra la màquina"
 
-#: src/titlescreen.cpp:211
+#: src/titlescreen.cpp:198
 msgid "Load a single player saved game"
 msgstr "Carrega una partida desada"
 
-#: src/titlescreen.cpp:212
+#: src/titlescreen.cpp:199
 msgid "Change the language"
 msgstr "Canvia l'idioma"
 
-#: src/titlescreen.cpp:213
+#: src/titlescreen.cpp:200
 msgid "Configure the game's settings"
 msgstr "Configura les opcions de joc"
 
-#: src/titlescreen.cpp:214
+#: src/titlescreen.cpp:201
 msgid "View the credits"
 msgstr "Mostra els crèdits"
 
-#: src/titlescreen.cpp:215
+#: src/titlescreen.cpp:202
 msgid "Quit the game"
 msgstr "Surt del joc"
 
-#: src/titlescreen.cpp:246
+#: src/titlescreen.cpp:233
 msgid "More"
 msgstr "Més"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:243
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Guerra i virtut"
 
@@ -10323,381 +10294,3 @@ msgstr "legal"
 msgid "neutral"
 msgstr "neutral"
 
-#~ msgid ""
-#~ "Terrible and awe-inspiring, the most ancient of woses grow to a "
-#~ "tremendous size. They are a thing rarely seen outside of legend, wherein "
-#~ "they are said to kick aside their enemies like sticks and feathers, and "
-#~ "to possess an unearthly strength, crushing the greatest of boulders into "
-#~ "powder, as though all the strength of a tree to grow and split through "
-#~ "stone over the course of years was brought to bear in a mere moment. "
-#~ "These same legends speak of their tireless stewardship of the forests of "
-#~ "the world, the desecration of which is often the only thing which could "
-#~ "incur the wrath of these otherwise kind and curious beings."
-#~ msgstr ""
-#~ "Terribles i temuts, els més venerables dels woses creixen fins a alçades "
-#~ "increïbles. Rarament són vistos fora de les llegendes, on se'ls atribueix "
-#~ "una força sobrenatural que els permet fer miques fins i tot les roques "
-#~ "més grans. Les mateixes llegendes parlen de la seva incansable defensa "
-#~ "dels boscos de tot Wesnoth, la profanació dels quals és sovint l'únic "
-#~ "motiu de la seva còlera."
-
-#~ msgid ""
-#~ "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
-#~ "enemies."
-#~ msgstr ""
-#~ "Un líder entre els mags, l'arximag llança grans boles de foc als seus "
-#~ "enemics."
-
-#~ msgid ""
-#~ "Elder Woses have grown great and tall. Towering over most enemies, they "
-#~ "can deliver crushing blows, while resisting the enemy's counterattacks. "
-#~ "Watching one unexpectedly come stalking towards you out of a forest is a "
-#~ "terrifying sight. They are still very slow and stiff, being nearly immune "
-#~ "to arrows but still quite flammable. Drawing energy from nature around "
-#~ "them, Elder Woses can quickly heal themselves in the face of tremendous "
-#~ "injuries."
-#~ msgstr ""
-#~ "Els woses vells han crescut grans i forts. Com que són més alts que la "
-#~ "majoria dels seus enemics, poden repartir cops mentre aguanten els "
-#~ "contraatacs de l'enemic. Veure com un d'aquests woses se t'apropa "
-#~ "sigilosament pel bosc és una visió certament aterradora."
-
-#~ msgid ""
-#~ "The most powerful mounted warriors of any race, Grand Knights have "
-#~ "reached the acme of skill with sword and lance."
-#~ msgstr ""
-#~ "Els guerrers muntats més poderosos de qualsevol raça, que han assolit el "
-#~ "nivell més alt en el domini de l'espasa i la llança."
-
-#~ msgid ""
-#~ "Great Mages are awesome and fearsome enemies, exceeding even the Arch "
-#~ "Mages in power."
-#~ msgstr ""
-#~ "El Gran mag és un enemic tan impressionant com temible, superant en poder "
-#~ "fins i tot l'arximag."
-
-#~ msgid ""
-#~ "Great Trolls are strong and brutal humanoid monsters with the amazing "
-#~ "ability to regenerate themselves, so that they recover from wounds on "
-#~ "their own, even during battle."
-#~ msgstr ""
-#~ "Els grans trolls són monstres forts i brutals amb una habilitat increïble "
-#~ "per regenerar-se ells mateixos, fins i tot durant els combats."
-
-#~ msgid ""
-#~ "Trained from childhood to ride and to follow a strict code of honor, "
-#~ "Horsemen are both fast and powerful attackers. Charging at their enemies, "
-#~ "they do double damage, but also receive double damage when struck. Rebels "
-#~ "against Asheviere's tyranny often use Horsemen against her."
-#~ msgstr ""
-#~ "Els genets són tropes ràpides i poderoses en l'atac. Entrenats des de la "
-#~ "seva infantesa per a muntar, poden fer una càrrega sobre els seus enemics "
-#~ "per tal d'infringir el doble de mal; no obstant, també rebran en aquest "
-#~ "cas el doble de ferides en ser atacats."
-
-#~ msgid ""
-#~ "Knights are skilled in the use of both lance and sword. With the lance, "
-#~ "they charge at enemies, inflicting and receiving double damage."
-#~ msgstr ""
-#~ "El cavaller és un genet destre tant en l'ús de la llança com en el de "
-#~ "l'espasa. Amb la llança és capaç de carregar sobre els seus enemics, "
-#~ "provocant el doble de mal, i rebent-ne també el doble."
-
-#~ msgid ""
-#~ "Lancers are some of the bravest and most feared riders in all of Wesnoth. "
-#~ "They wear very little armor, and thus ride swiftly and are ideal for "
-#~ "offensive use. While their charges inflict large amounts of damage, they "
-#~ "also expose the Lancers to great risk."
-#~ msgstr ""
-#~ "Els llancers són uns dels genets més braus i més temuts de tot Wesnoth. "
-#~ "Vesteixen una armadura molt lleugera que els permet cavalcar ràpidament. "
-#~ "Són ideals per a l'atac: poden infligir greus ferides als enemics, però "
-#~ "també estan molt exposats a ser colpejats."
-
-#~ msgid ""
-#~ "Mages are both weak and powerful. Moving slowly, and with poor defensive "
-#~ "skills, Mages attack with magical missiles that always have a high chance "
-#~ "of hitting their target. For this reason, Mages are an excellent choice "
-#~ "for flushing out enemies hiding in difficult terrain."
-#~ msgstr ""
-#~ "El Mag és feble, però potent. Es mou amb lentitud i es defensivament "
-#~ "vulnerable, però els seus atacs màgics sempre tenen una alta probabilitat "
-#~ "d'encert. Per aquesta raó, el Mag és una elecció excel·lent per afrontar "
-#~ "enemics defensant terrenys favorables."
-
-#~ msgid ""
-#~ "Mages of Light are awesome allies of all lawful combatants, and fearsome "
-#~ "foes to the forces of chaos. These Mages' powers of illumination are so "
-#~ "great that the hexes they occupy and all adjacent hexes never experience "
-#~ "night. As a result, when a unit is adjacent to a Mage of Light, it will "
-#~ "fight as if it were day when it is dusk, and as if it were dusk when it "
-#~ "is night. Like the White Mages, the Mages of Light also cure adjacent "
-#~ "friendly units."
-#~ msgstr ""
-#~ "El mag de la llum és un perfecte aliat en la lluita pels  qui combaten en "
-#~ "nom del bé, i un terrible adversari per les forces del mal. És capaç de "
-#~ "curar els seus aliats, i els poders de la llum són tan grans en ell que "
-#~ "als voltants de la seva figura mai serà de nit. Quan una unitat lluita al "
-#~ "seu costat, lluitarà com si fos de dia a l'alba i al vespre, i com si "
-#~ "encara no s'hagués fet fos durant la nit."
-
-#~ msgid "Mounted Captain"
-#~ msgstr "Capità muntat"
-
-#~ msgid "Mounted Commander"
-#~ msgstr "Comandant muntat"
-
-#~ msgid ""
-#~ "Leaders of the plains, the Mounted Commanders are skilled with the use of "
-#~ "the sword and the morning star. Riding horses, they are able to move "
-#~ "around the battlefield with great speed, and can provide much needed "
-#~ "assistance to different fronts."
-#~ msgstr ""
-#~ "Líders de les planes, els Comandants muntats són hàbils en l'us de "
-#~ "l'espasa i de l'estel d'alba. Cavalcant els seus cavalls, poden arribar a "
-#~ "moure's pel camp de batalla amb una gran velocitat, i poden oferir "
-#~ "assistència als fronts on sigui més necessària."
-
-#~ msgid ""
-#~ "Knights of the highest virtue, Paladins have all the skills of the "
-#~ "Knight, and can also heal adjacent friendly units."
-#~ msgstr ""
-#~ "Un cavaller de virtuts insuperables, el paladí poseeix totes les "
-#~ "habilitats d'un cavaller més la de curar els seus aliats."
-
-#~ msgid ""
-#~ "Red Mages attack with powerful magic fireballs that are guaranteed a good "
-#~ "chance of hitting. Deft of foot, and skilled fighters both day and night, "
-#~ "Red Mages are therefore valuable in almost all situations."
-#~ msgstr ""
-#~ "El mag roig usa potents boles de foc, amb una habilitat sorprenent que es "
-#~ "tradueix en alta probabilitat d'impactar. Hàbil tant de dia com de nit, i "
-#~ "ràpid de moviments, el mag roig és un valuós aliat en gairebé qualsevol "
-#~ "situació."
-
-#~ msgid ""
-#~ "Silver Mages are the most deft of foot and elusive of all mages. They can "
-#~ "teleport from any friendly village to another, translating themselves in "
-#~ "an instant. They are also highly resistant to most forms of magical "
-#~ "attack."
-#~ msgstr ""
-#~ "Els mags d'argent són els més hàbils i esquius de tots els mags. Poden "
-#~ "teletransportar-se des d'un llogaret amic a un altre, traslladant-se a "
-#~ "ells mateixos en un instant. També són molt resistents a la majoria "
-#~ "d'atacs màgics."
-
-#~ msgid ""
-#~ "Trolls, grown to adulthood, are possessed of a fearsome strength. Their "
-#~ "stone-like bodies have grown to a size much taller than a man, and their "
-#~ "terrifying ability to recover from wounds make them a formidable foe even "
-#~ "far from the mountainous ground they prefer to fight in. An adult troll "
-#~ "is smarter, faster, stronger, and though one would dare not say it to "
-#~ "their face, uglier than any of their children. They wield heavy clubs "
-#~ "with brutal proficiency, and form a bulwark of strength in any battle "
-#~ "they participate in - the only weakness they have, if such can be said, "
-#~ "is their inability to fight at a distance.\n"
-#~ "\n"
-#~ "Usage:\n"
-#~ "Trolls fight well on rough, rocky terrain, especially at night. They are "
-#~ "vulnerable to archers, especially in open terrain, and should always have "
-#~ "a healthy fear of spellcasters in all terrain. They are quite powerful "
-#~ "against brittle foes, like skeletons, and quite weak against well armored "
-#~ "or naturally resilient enemies, such as their woodland counterpart, the "
-#~ "wose. Their regeneration allows them to cure poison and heal wounds "
-#~ "without the aid of a nearby village. Their relatively slow speed is a "
-#~ "liability, as is their weakness during daylight hours."
-#~ msgstr ""
-#~ "Els trolls, quan arriben a la majoria d'edat, posseeixen una força temuda "
-#~ "arreu. Els seus cossos, que semblen ben bé fets de pedra, han crescut "
-#~ "molt més que els dels homes. La seva habilitat per recuperar-se de les "
-#~ "ferides els fa formidables fins i tot lluny de les muntanyes, el seu "
-#~ "terreny preferit per lluitar. Un troll adult és més llest, més ràpid, més "
-#~ "fort, i encara que ningú gosaria dir-li a la cara, més lleig que "
-#~ "qualsevol dels seus fills. Maneguen els seus grans garrots hàbilment, i "
-#~ "formen el baluard de la força en qualsevol batalla en que participen. "
-#~ "L'únic punt feble que tenen, si es que se li pot dir així, és que no "
-#~ "poden lluitar des de la distància.\n"
-#~ "\n"
-#~ "Ús:\n"
-#~ "Els trolls lluiten bé en terrenys abruptes i rocosos, sobretot per la "
-#~ "nit. Són vulnerables als arquers, especialment en terrenys oberts, i "
-#~ "tenen por de qualsevol tipus d'unitat amb poders màgics. Són poderosos "
-#~ "contra unitats fràgils, com els esquelets, i força dèbils contra enemics "
-#~ "ben armats o resistents, com els woses. La regeneració els permet "
-#~ "recuperar-se del verí i les ferides sense necessitat d'acudir al llogaret "
-#~ "més proper. La seva relativa lentitud, així com la seva feblesa durant "
-#~ "les hores de dia, són les contrapartides d'aquesta unitat."
-
-#~ msgid ""
-#~ "Troll heroes are strong and brutal humanoid monsters with the amazing "
-#~ "ability to regenerate themselves, so that they recover from wounds on "
-#~ "their own, even during battle."
-#~ msgstr ""
-#~ "Els herois trolls són uns monstres forts i brutals amb una increïble "
-#~ "habilitat de regeneració. Ells mateixos es recuperen de les ferides, fins "
-#~ "i tot durant el combat."
-
-#~ msgid ""
-#~ "Given the monstrous strength of their race, trolls can turn rather "
-#~ "mundane implements into weapons of deadly force. Some trolls piece "
-#~ "together crude slings, little different from what a child would use, save "
-#~ "for the fact that they hurl boulders instead of pebbles. Though not "
-#~ "especially accurate, a rock thrown by one of these monsters can cripple a "
-#~ "man if it hits him. Despite being burdened by their heavy ammunition, and "
-#~ "lacking in any sort of melee weaponry, a troll rocklobber is still "
-#~ "bigger, stronger, and perhaps even uglier than the whelp it once was, and "
-#~ "a troll's fist serves as well as a man's hammer in combat. Furthermore, "
-#~ "their ability to strike back at an enemy archer makes fighting them a "
-#~ "dicey proposition at any range, unless one can attack under heavy cover "
-#~ "of terrain.\n"
-#~ "\n"
-#~ "Usage:\n"
-#~ "Troll Rocklobbers fight well on rough, rocky terrain, especially at "
-#~ "night. Unlike most others of their race, a Troll Rocklobber will make "
-#~ "many archers think twice about attacking, and is quite dangerous for an "
-#~ "enemy spellcaster to attack. They are quite powerful against brittle "
-#~ "foes, like skeletons, and quite weak against well armored or naturally "
-#~ "resilient enemies, such as their woodland counterpart, the wose. Their "
-#~ "regeneration allows them to cure poison and heal wounds without the aid "
-#~ "of a nearby village. Their relatively slow speed is a liability, as is "
-#~ "their weakness during daylight hours. The greatest danger to a Troll "
-#~ "Rocklobber is a powerful melee unit attacking them in open terrain during "
-#~ "the day, when they are weakest."
-#~ msgstr ""
-#~ "Donada la monstruosa força de la seva raça, els trolls poden convertir "
-#~ "les armes més mundanes en instruments mortífers. Alguns trolls es "
-#~ "fabriquen les seves propies fones, no gaire diferents de les de qualsevol "
-#~ "nen, excepte pel fet que utilitzen autèntiques roques en comptes de "
-#~ "petites pedres. Tot i que no són especialment acurades, una roca llançada "
-#~ "per una d'aquestes criatures pot destrossar un home si l'arriba a tocar. "
-#~ "Carregat amb una pesada munició i sense cap tipus d'arma de cos a cos, un "
-#~ "llança pedres és encara més gran, més fort, i potser fins i tot més lleig "
-#~ "que la cria que va ser una vegada... i amb els seus cops de puny ja pot "
-#~ "defensar-se prou bé. A més, la seva habilitat per respondre als atacs "
-#~ "dels arquers fa que lluitar contra ells sigui una proposta arriscada, des "
-#~ "de qualsevol distància.\n"
-#~ "\n"
-#~ "Ús:\n"
-#~ "Les llança pedres trolls lluiten bé en terrenys abruptes i rocosos, "
-#~ "sobretot per la nit. A diferència de la majoria dels de la seva raça, els "
-#~ "llança pedres faran que més d'un arquer o mag s'ho pensi dues vegades "
-#~ "abans d'atacar. Són poderosos contra unitats fràgils, com els esquelets, "
-#~ "i força dèbils contra enemics ben armats o resistents, com els woses. La "
-#~ "regeneració els permet recuperar-se del verí i les ferides sense "
-#~ "necessitat d'acudir al llogaret més proper. La seva relativa lentitud, "
-#~ "així com la seva feblesa durant les hores de dia, són les contrapartides "
-#~ "d'aquesta unitat. El perill més important per a un llança pedres és una "
-#~ "unitat de combat cos a cos atacant durant el dia i en terreny obert."
-
-#~ msgid ""
-#~ "A terrifying, monstrous bastion of strength, a Troll Warrior brings to "
-#~ "fore all the tales that have been told of their race's terrifying power. "
-#~ "Wielding massive hammers that could knock a house off its foundation, and "
-#~ "able to absorb a seemingly endless rash of punishment, Troll Warriors are "
-#~ "capable of singlehandedly changing the strategies of an enemy commander "
-#~ "they face. A troll warrior is not something brought down by one man, but "
-#~ "by a whole group of them, fighting desperately against this hideous "
-#~ "strength borne before them. That which causes the most terror about a "
-#~ "troll warrior, is not their appearance, or their power, but the fact that "
-#~ "one brought even within an inch of its life will shortly return to its "
-#~ "full strength if it is not truly sent to death.\n"
-#~ "\n"
-#~ "Usage:\n"
-#~ "Troll Warriors fight well on rough, rocky terrain, especially at night. "
-#~ "Though vulnerable to archers and spellcasters, especially in open "
-#~ "terrain, the raw power of a Troll Warrior makes it a foe that generally "
-#~ "must be brought down by several enemies. There are few enemies which can "
-#~ "engage them in one-on-one combat without a great danger of being killed "
-#~ "on the same turn. Their regeneration allows them to cure poison, and heal "
-#~ "wounds without the aid of a nearby village. Their relative weakness "
-#~ "during daylight hours is a liability, though a Troll Warrior is still "
-#~ "very powerful during the day."
-#~ msgstr ""
-#~ "Tot un aterrador bastió de força, el guerrer troll deixa curts tots els "
-#~ "contes que han estat explicats sobre el poder dels de la seva raça. "
-#~ "Manegant grans martells que poden estabornir a qualsevol, i capaços "
-#~ "d'absorbir un nombre gairebé infinit de cops, aquests guerrers són "
-#~ "capaços de canviar les estratègies dels comandants que s'enfronten a "
-#~ "ells. Un guerrer troll no és un enemic que pot ser derrotat per un sol "
-#~ "home, sinó que cal tot un grup de combatents lluitant desesperadament "
-#~ "contra ell. El que causa més terror d'aquestes criatures no és la seva "
-#~ "aparença ni el seu poder, sinó el fet que encara després de ser colpejat "
-#~ "durament, tornarà a recuperar-se lentament de les seves ferides.\n"
-#~ "\n"
-#~ "Ús:\n"
-#~ "Els guerrers troll lluiten bé en terrenys abruptes i rocosos, sobretot "
-#~ "per la nit. Tot i que són vulnerables als arquers i mags, especialment en "
-#~ "terrenys oberts, la seva força bruta fa que generalment calgui tot un "
-#~ "grup d'enemics per derrotar-lo. Hi ha pocs que puguin encarar-s'hi en "
-#~ "combat directe sense córrer un gran perill de morir al mateix torn. La "
-#~ "regeneració els permet recuperar-se del verí i les ferides sense "
-#~ "necessitat d'acudir al llogaret més proper. La seva relativa lentitud "
-#~ "durant les hores de dia és el seu punt feble, tot i que un guerrer troll "
-#~ "és, amb tot, molt poderós fins i tot durant el dia."
-
-#~ msgid ""
-#~ "The word 'whelp,' applied even to fearsome animals like wolves and lions, "
-#~ "brings to mind images of frail, helpless, and even 'cute' creatures, so "
-#~ "young they can hardly stand on their own feet. Given the nature of "
-#~ "Trolls, however, a Troll 'whelp' already possesses the terrifying "
-#~ "strength native to their race. Troll whelps stumble about with bodies "
-#~ "bigger than grown men, and with strength to match. Their uncanny "
-#~ "regeneration, and stone-like skin, make them monstrous opponents, "
-#~ "especially on their favored ground in the mountains and hills from whence "
-#~ "they came. The only reassurance one has in fighting a troll whelp is "
-#~ "their slow speed, and the fact that they have not grown to their full "
-#~ "strength... yet.\n"
-#~ "\n"
-#~ "Usage:\n"
-#~ "Troll Whelps fight well on rough, rocky terrain, especially at night. "
-#~ "They are vulnerable to archers, especially in open terrain, and should "
-#~ "always have a healthy fear of spellcasters in all terrain. They are quite "
-#~ "powerful against brittle foes, like skeletons, and quite weak against "
-#~ "well armored or naturally resilient enemies, such as their woodland "
-#~ "counterpart, the wose. Their regeneration allows them to cure poison and "
-#~ "heal wounds without the aid of a nearby village. Their relatively slow "
-#~ "speed is a liability, as is their weakness during daylight hours."
-#~ msgstr ""
-#~ "La paraula 'cria', aplicada fins i tot a animals temibles com llops i "
-#~ "lleons, fa pensar en criatures fràgils, inofensives, i fins i tot "
-#~ "maques... tan petites que difícilment poden mantenir-se en peu. Però "
-#~ "donada la natura dels trolls, una de les seves cries ja posseeix "
-#~ "l'aterradora força pròpia de la seva raça. Les cries de troll, més grans "
-#~ "que un home adult, i amb una força similar, difícilment poden controlar "
-#~ "els seus cossos. La seva misteriosa regeneració, i una pell que sembla de "
-#~ "pedra, els converteix en adversaris monstruosos, especialment en el "
-#~ "terreny del que provenen, les muntanyes i els turons. L'únic consol que "
-#~ "queda quan algú s'ha d'enfrontar a una cria de troll, és la seva lentitud "
-#~ "i el fet que encara no han desenvolupat tota la seva força... encara.\n"
-#~ "\n"
-#~ "Ús:\n"
-#~ "Les cries de troll lluiten bé en terrenys abruptes i rocosos, sobretot "
-#~ "per la nit. Són vulnerables als arquers, especialment en terrenys oberts, "
-#~ "i tenen por de qualsevol tipus d'unitat amb poders màgics. Són poderosos "
-#~ "contra unitats fràgils, com els esquelets, i força dèbils contra enemics "
-#~ "ben armats o resistents, com els woses. La regeneració els permet "
-#~ "recuperar-se del verí i les ferides sense necessitat d'acudir al llogaret "
-#~ "més proper. La seva relativa lentitud, així com la seva feblesa durant "
-#~ "les hores de dia, són les contrapartides d'aquesta unitat."
-
-#~ msgid ""
-#~ "White Mages are weak in combat, but expert in the ways of healing. Units "
-#~ "placed adjacent to a White Mage will heal as though they were resting in "
-#~ "a village. White Mages are potent in battle against the undead, which "
-#~ "suffer high damage from their light beam."
-#~ msgstr ""
-#~ "El mag blanc és feble en el combat, però tot un expert en la curació. Les "
-#~ "unitats situades prop d'aquest mag curaran les seves ferides com si "
-#~ "descansessin a un llogaret. Tanmateix, el mag blanc és poderós en la "
-#~ "lluita envers els no morts, els quals pateixen danys terribles dels rajos "
-#~ "de llum dels mags."
-
-#~ msgid ""
-#~ "Woses are treelike creatures of legend. They rose from the forest, and "
-#~ "when in a forest they are indistinguishable from ordinary trees. Their "
-#~ "form is very slow and stiff, so they cannot avoid attacks very well. "
-#~ "Their tough bark is highly resistant to cold, crushing attacks, and "
-#~ "arrows, although blades have no trouble cutting through it, and they are "
-#~ "very flammable. By drawing nutrients from the ground and energy from the "
-#~ "sun, Woses can regrow missing limbs after a fight."
-#~ msgstr "Wose"
