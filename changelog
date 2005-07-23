@@ -2,6 +2,15 @@ CVS HEAD:
  * language and i18n:
    * updated translations:
      * Catalan, Hungarian
+   * fixed linebreaks not working properly for Chinese translation (#13352)
+ * graphics and sound improvements:
+   * fixed layering of multi-hex tiles (#13586)
+ * server:
+   * fixed rejoining game as observer but with same nick causing out of synch
+ * fixed chat messages from allies not being shown in multiplayer (#13657)
+ * fixed failed recruit attempt clearing undo stack (#13833)
+ * fixed recall not clearing shroud (#13824)
+ * various bug fixes and code cleanups
 
 Version 0.9.4:
  * language and i18n:
