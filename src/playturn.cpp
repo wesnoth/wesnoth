@@ -1939,20 +1939,19 @@ void turn_info::do_recruit(const std::string& name)
 		if(msg.empty()) {
 			current_team.spend_gold(u_type->second.cost());
 			statistics::recruit_unit(new_unit);
+			
+			clear_undo_stack();
+			redo_stack_.clear();
+
+			clear_shroud();
+
+			gui_.recalculate_minimap();
+			gui_.invalidate_game_status();
+			gui_.invalidate_all();
 		} else {
 			recorder.undo();
 			gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY);
-			return;
 		}
-
-		clear_undo_stack();
-		redo_stack_.clear();
-
-		clear_shroud();
-
-		gui_.recalculate_minimap();
-		gui_.invalidate_game_status();
-		gui_.invalidate_all();
 	}
 }
 
@@ -2110,6 +2109,8 @@ void turn_info::recall()
 
 				undo_stack_.push_back(undo_action(un,loc,res));
 				redo_stack_.clear();
+
+				clear_shroud();
 
 				recall_list.erase(recall_list.begin()+res);
 				gui_.invalidate_game_status();
