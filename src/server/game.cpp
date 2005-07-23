@@ -110,6 +110,13 @@ void game::start_game()
 {
 	started_ = true;
 
+	//set all side controllers to 'human' so that observers will understand that they can't
+	//take control of any sides if they happen to have the same name as one of the descriptions
+	config::child_itors& sides = level_.child_range("side");
+	for(; sides.first != sides.second; ++sides.first) {
+		(**sides.first)["controller"] = "human";
+	}
+
 	describe_slots();
 	if(description()) {
 		description()->values["turn"] = describe_turns(1,level()["turns"]);
