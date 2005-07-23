@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-20 14:39+0200\n"
-"PO-Revision-Date: 2005-07-10 20:42+0200\n"
+"PO-Revision-Date: 2005-07-21 15:50+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -595,7 +595,6 @@ msgstr ""
 "maximális lesz.Néhány esetben kiválaszthatjuk, mivé fejlődjön az egység."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -604,9 +603,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ne felejtsd el, hogy amíg a legtöbb egységnek csak három lehetségesfejlődési "
-"szintje van, addig némelyeknek (mint például a <ref>dst=unit_Mage "
-"text=Mágusoknak</ref>) négy is lehet."
+"Ne felejtsd el, hogy bár a legtöbb egységnek három lehetséges fejlődési "
+"szintje van, de nem mindnek, sőt némelyeknek (mint például a "
+"<ref>dst=unit_Mage text=Mágusoknak</ref>) négy is lehet."
 
 #: data/help.cfg:169
 msgid "Healing"
@@ -713,7 +712,6 @@ msgstr ""
 "Fenntartási költségek alapján kezeled."
 
 #: data/help.cfg:187
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -724,10 +722,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"A Bevételek nagyon egyszerűek. Minden faluért, ami hozzád tartozik, egy "
-"aranyat fogsz kapni körönként. Így ha tíz faluval rendelkezel, akkor tíz "
-"aranyat kapsz normál esetben. Azonban a Fenntartási költségek csökkentik "
-"ezt, amelyről lentebb olvashatsz."
+"A Bevételek nagyon egyszerűek. Alapbevételed két arany minden kör elején. "
+"Minden faluért, ami hozzád tartozik, egy újabb aranyat fogsz kapni "
+"körönként. Így ha 10 faluval rendelkezel, akkor 12 aranyat kapsz normál "
+"esetben. Azonban a Fenntartási költségek csökkentik ezt, amelyről lentebb "
+"olvashatsz."
 
 #: data/help.cfg:189
 msgid ""
@@ -750,7 +749,6 @@ msgstr ""
 "és tíz falvad, akkor 2 aranyat kell fizetned körönként kiadásként."
 
 #: data/help.cfg:191
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -760,11 +758,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ezek a költségek levonódnak a Bevételeidből, így tizenkét első szintű egység "
-"és tíz város esetén a Bevételeid maradéka 8 arany lesz körönként."
+"A Fenntartási költségek levonódnak a Bevételeidből, így 12 szintnek "
+"megfelelő egység és 10 város esetén a Bevételeid maradéka 10 arany lesz "
+"körönként."
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -773,13 +771,12 @@ msgid ""
 "the second scenario of Heir to the Throne) will usually have the Loyal trait."
 msgstr ""
 "\n"
-"Két fő kivétel van a Fenntartási költségek alól. Az első esetben, azon "
-"egységek, amelyek rendelkezneka Hűség jellemvonással csak 1 aranyba kerülnek "
-"körönként, attól függetlenül, hogy hányadik szintűek. A második esetben, "
-"azok az egységek, amelyek a pálya legelején is megvannak (mint például "
+"Van egy fontos kivétel a Fenntartási költségek alól: azon egységek, amelyek "
+"rendelkezneka Hűség jellemvonással sose járnak körönként ilyen költséggel. "
+"Azok az egységek, amelyek a pálya legelején is megvannak (mint például "
 "Konrad vagy Delfador), vagy az olyan egységek, amelyek a pályán csatlakoznak "
-"hozzánk (mint például a Lovas a második pályán), sohasem fognak költséggel "
-"járni."
+"hozzád (mint például a Lovas, A Trónörökös hadjárat második pályáján) mindig "
+"megkapják a Hűséges jellemvonást."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -804,7 +801,6 @@ msgid "About"
 msgstr "Készítők"
 
 #: data/help.cfg:210
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -812,9 +808,10 @@ msgid ""
 "randomly assigned to a unit when it is recruited."
 msgstr ""
 "A legtöbb egység két jellemvonással rendelkezik, kivéve az élőholtakat, akik "
-"az 'élőholt' jellemvonást kapják meg. A jellemvonások apró változtatások az "
-"egység tulajdonságain. Alapvetően véletlenszerűen kapják meg őket az "
-"egységek toborzáskor."
+"csak az 'élőholt' jellemvonást kapják meg, és a fapásztorokat, akik nem "
+"tesznek szert ilyenre. A jellemvonások apró változtatások az egység "
+"tulajdonságain. Alapvetően véletlenszerűen kapják meg őket toborozáskor az "
+"egységek."
 
 #: data/help.cfg:212
 msgid ""
@@ -824,7 +821,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"A jellemvonások amelyek minden nem élőholt egység számára elérhetőek:"
+"A jellemvonások amelyek az élőholttól eltérő egységek számára elérhetőek:"
 
 #: data/help.cfg:219
 msgid ""
@@ -1057,6 +1054,13 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"A mezőség egy sík tájat jelöl, legyen az akár művelt, legeltetésre használt, "
+"vagy vad terület. Mivel az ilyen területek nyílt földek, könnyen lehet "
+"rajtuk mozogni, viszont nehéz védekezni. Általánosságban a legjobban a lovas "
+"egységek és a nagyon állóképes egységek tudják kihasználni ezt a szabad "
+"teret.\n"
+"\n"
+"A mezőségeken a legtöbb egységnek 30 és 40% közti a védekezése."
 
 #: data/help.cfg:280 data/terrain.cfg:124 data/terrain.cfg:132
 msgid "Road"
@@ -1068,6 +1072,9 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"Az országutakat az arrafelé járó számos utazók járták ki. Ami a játékmenetet "
+"illeti, az országutak megegyeznek a <ref>dst=terrain_grassland "
+"text=mezőséggel</ref>."
 
 #: data/help.cfg:286 data/terrain.cfg:321
 msgid "Forest"
@@ -1089,6 +1096,19 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"Az erdőség egy fákkal és aljnövényzettel borított területet jelöl, így "
+"gátolja a haladást. Bár szinte minden egységet lelassít, az erdőkben jobban "
+"tudnak védekezni, mint a nyílt terepen. A lovasoknak itt akkora nehézséget "
+"jelent a navigálás, hogy ez közömbösíti a rejtőzködés nyújtotta hasznot. A "
+"tündék esetében eltérő változásokat tapasztalunk. Ők nemcsak hogy teljesen "
+"gyorsan tudnak haladni az erdőségekben, de még jelentős védekezési többletet "
+"is nyernek. A törpök a másik kivétel. Bár ő nekik sem jelent túl nagy "
+"akadályt átvergődni a növényzeten, magabiztosságuk teljes hiánya ezen a "
+"terepen nem engedi meg ,hogy rendesen védekezzenek.\n"
+"\n"
+"A erdőségekben a legtöbb egységnek 50% a védekezése, de a lovas egységeknek "
+"nem több mint 40%. Másik oldalon a tündék 60-70%-os védekezést élveznek, még "
+"lóháton is. A törpök általában csak 30%-ot kapnak."
 
 #: data/help.cfg:294 data/terrain.cfg:282
 msgid "Hills"
@@ -1106,6 +1126,15 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"A dombság egy elég zord terepet jelöl, ahol a talaj süllyedései és "
+"kiemelkedései egy kis fedezéket tudnak nyújtani. A dombokon a legtöbb csapat "
+"csak nehezen igazodik el. A törpöknek, trolloknak és orkoknak van akkora "
+"tapasztalatuk az ilyen területeket illetően, hogy ne kelljen lelassulniuk "
+"áthaladáskor. A lovasok viszont olyan nehezen mozognak ezen a területen, "
+"hogy ez a rejtőzködésből származó előnyöket is közömbösíti.\n"
+"\n"
+"Az erdőségekben a legtöbb egységnek 50% körüli a védekezése, de a lovas "
+"egységeknek nem több mint 40%. A törpök 60% védekezést kapnak dombságon."
 
 #: data/help.cfg:302 data/terrain.cfg:306
 msgid "Mountains"
@@ -1123,6 +1152,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"A hegyvidék elég meredek ahhoz, hogy akadályokat kellen megmászni az "
+"áthaladni vágyóknak. Ennek következtében a legtöbb csapat jól tud védekezni "
+"a hegyek közt, ed csak nagy nehézségek árán juthatnak át rajtuk. A legtöbb "
+"lovas egység meg se tudja közeíteni az ilyen területeket, ez alól kivételt "
+"jelentenek a tündék és a kobold farkaslovasok. Mind a törpök, mind a trollok "
+"otthon érzik magukat a hegyekben, és könnyen mozognak.\n"
+"\n"
+"A hegyvidéken a legtöbb egységnek 60% körüli a védekezése, de a törpök 70% "
+"védekezést kapnak."
 
 #: data/help.cfg:310 data/terrain.cfg:51
 msgid "Swamp"
@@ -1139,6 +1177,14 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
+"A lápok mindenféle mocsaras területet jelölnek. A láp szinte mindenkit "
+"lelassít, és a védekezésben is akadályozza az egységeket. Ez alól a vízek "
+"lényei jelentenek kivételt, akik teljes lépési lehetőségüket kihasználhatják "
+"és védekezni még jobban is védekeznek. A mocsarakban nevelkedett lények is "
+"hozzászokhattak már az itteni rejtőzködéshez.\n"
+"\n"
+"A lápokban a legtöbb egységnek 30% a védekezése. A sellők, nagák és a gyíkok "
+"általánosan 60% védekezést kapnak."
 
 #: data/help.cfg:318 data/terrain.cfg:30
 msgid "Shallow Water"
@@ -1156,6 +1202,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
+"A sekély vizek olyan vizes helyeket jelölnek, amelyek elég mélyek ahhoz, "
+"hogy nagyjából egy ember csípőjéig érjenek. Ez elég ahhoz, hogy szinte "
+"mindenkit lelassítson, és kiszolgáltassa a támadásoknak. A törpök, mivel "
+"alig ér le a lábuk, nagyon nehezen viselik ezeket a körülményeket. A "
+"kivételt az úszni képes fajok jelentik, akik jelentős védekezési előnyt "
+"kapnak és nem is lassulnak le.\n"
+"\n"
+"A sekály vizekben a legtöbb egységnek 20 és 30% közti a védekezése, de a "
+"nagák és a sellők 60% védekezést kapnak."
 
 #: data/help.cfg:326 data/terrain.cfg:21
 msgid "Deep Water"
@@ -1169,11 +1224,17 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"A mélyvizek olyayn vizes helyeket jelölnek, amelyek elég mélyek ahhoz, hogy "
+"betemessenek egy egész embert. A legtöbb egység nem képes megközelíteni az "
+"ilyen területeket: ide csak a repülni, és a kíválóan úszni tudó egységek "
+"terjeszthetik ki hatalmukat.\n"
+"\n"
+"A mélyvizekben a nagáknak és a sellőknek is 50% a védekezése, és teljesen "
+"kihasználhatják lépési pontjaikat."
 
 #: data/help.cfg:334
-#, fuzzy
 msgid "Tundra"
-msgstr "élőholt"
+msgstr "Tundra"
 
 #: data/help.cfg:337
 msgid ""
@@ -1183,6 +1244,10 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in Tundra."
 msgstr ""
+"A tundra egy időszakosan, vagy állandóan hófödte mezőséget jelöl. A legtöbb "
+"egység lassabban mozog itt és nehezebben tud védekezni is.\n"
+"\n"
+"A tundrán a legtöbb egységnek 20 és 40% közti a védekezése."
 
 #: data/help.cfg:342 data/terrain.cfg:70
 msgid "Ice"
@@ -1194,6 +1259,10 @@ msgid ""
 "identical to <ref>dst=terrain_tundra text=Tundra</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
+"A jég mindenféle befagyott vizet jelölhet. A játékmenet szempontjából "
+"teljesen azonos a <ref>dst=terrain_tundra·text=Tundrával</ref>. "
+"Megjegyzendő, hogy az úszni képes egységek, még ha a víz alatt is élnek, a "
+"jég alatt nem tudnak úszni."
 
 #: data/help.cfg:348 data/terrain.cfg:370 data/terrain.cfg:430
 msgid "Castle"
@@ -1210,6 +1279,15 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"A várkastélyok állandó jellegű erődítményeket jelölnek. Szinte minden egység "
+"részesül egy jelentős védekezési előnyből, ha egy várkastélyban tartózkodik, "
+"és minden egység gyorsan tud itt haladni. Az egységeket a várban elhelyezve "
+"használhatod ki ezeket a védekezési adotságokat a legjobban. De ha nem "
+"állnak egységek minden hatszögnél a falaknál, az ellenség könnyen "
+"besurranhat minden nehézség nélkül, megkapva ugyanazt a védekezési előnyt, "
+"amit  a bentlévők.\n"
+"\n"
+"A várkastélyokban a legtöbb egységnek 60% körüli a védekezése."
 
 #: data/help.cfg:356 data/terrain.cfg:106
 msgid "Sand"
@@ -1223,11 +1301,15 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
+"A homok süppedése a legtöbb egység számára megnehezíti az átjutást, és "
+"kiszolgáltatja őket a támadásoknak. Ezzel szemben a gyíkszerű lények széles "
+"talpa, vagy kígyószerű teste sokkal könnyebbé teszi számukra a közlekedést.\n"
+"\n"
+"A homokban a legtöbb egységnek 20 és 40% közti a védekezése."
 
 #: data/help.cfg:364 data/terrain.cfg:115
-#, fuzzy
 msgid "Desert"
-msgstr "Sivatagi dombság"
+msgstr "Sivatag"
 
 #: data/help.cfg:365
 msgid ""
@@ -1235,6 +1317,9 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
+"A sivatagok valamennyiben különböznek a kis homokbuckáktól és a "
+"lapospartoktól, de a játékmenet szempontjából azonosak. Lásd a "
+"<ref>dst=terrain_sand·text=Homokot</ref>."
 
 #: data/help.cfg:370 data/terrain.cfg:353
 msgid "Cave"
@@ -1251,6 +1336,15 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"A barlang olyan földalatti járatot jelöl, amelyen egy egység akadálytalanul "
+"átmehet. A legtöbb egység számára szokatlan ez a hely, ezért lassabban halad "
+"és védekezni is csak nehezebben tud. A törpök és a trollok, mivel ilyen "
+"tárnákban nőttek fel, mindketten gyorsan mozognak, kifejezetten a törpök, "
+"akik alacsony termetüknél fogva olyan utakat is megtalálnak, amelyek más "
+"fajok számára járhatatlanok lennének.\n"
+"\n"
+"A barlangokban a legtöbb egységnek 20 és 40% közti a védekezése, míg a "
+"törpöknek 50%."
 
 #: data/help.cfg:378 data/terrain.cfg:157
 msgid "Savanna"
@@ -1262,6 +1356,9 @@ msgid ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"A szavannák magas fűvel benőtt rétek, melyek melegebb éghajlati körülmények "
+"közt alakulnak ki. A játékmenet szempontjából megegyeznek a "
+"<ref>dst=terrain_grassland·text=Mezőséggel</ref>."
 
 #: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
@@ -1282,6 +1379,15 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"A falvak épületek együttesét jelölik, legyen az emberi vagy bármilyen más "
+"építésű. Szinte minden egység, beleérrtve a lovasokat is könnyen mozog a "
+"falvakban, és a legtöbb védekezési előnyt is szerez, amikor egy faluban "
+"tartózkodik. A falvakban az egységek pihenhetnek, és sebeikre is találnak "
+"gyógyírt, így minden faluban tartózkodó egység nyolc életerő pontot gyógyul "
+"körönként, vagy kigyógyul a méregből.\n"
+"\n"
+"A falvakban a legtöbb egységnek 50 és 60% közti a védekezése, míg a lovasok "
+"csak 40%-ot kapnak."
 
 #: data/items.cfg:264
 msgid ""
@@ -3096,7 +3202,7 @@ msgstr ""
 "Ha szeretnél Wesnothot játszani más játékosok ellen, válaszd ki a "
 "Többjátékos funkciót, majd kattints a 'Csatlakozás a hivatalos szerverhez' "
 "gombra. Ez automatikusan fellépteti a játékot a hivatalos szerverre, ahol "
-"bizonyíthatod játéktudásodat mások elött."
+"bizonyíthatod játéktudásodat mások előtt."
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -4085,12 +4191,10 @@ msgstr "Ős-villi"
 #: data/units/Vampire_Lady.cfg:15 data/units/Wall_Guard.cfg:29
 #: data/units/Warrior_King.cfg:19 data/units/Watch_Tower.cfg:12
 #: data/units/Yeti.cfg:28
-#, fuzzy
 msgid "tough"
-msgstr "érintés"
+msgstr "edzett"
 
 #: data/units/Ancient_Lich.cfg:28
-#, fuzzy
 msgid ""
 "The final form that magi of the undead can achieve, Ancient Liches strike "
 "terror into the hearts of those who see them. Not only is their touch that "
@@ -5009,7 +5113,6 @@ msgid "Demilich"
 msgstr "Fél-villi"
 
 #: data/units/Demilich.cfg:17
-#, fuzzy
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
@@ -5641,7 +5744,6 @@ msgid "Elder Mage"
 msgstr "Vén Mágus"
 
 #: data/units/Elder_Mage.cfg:30
-#, fuzzy
 msgid ""
 "Once great, Elder Magi have seen their power a little diminished from "
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
@@ -6448,15 +6550,15 @@ msgid "Gryphon Master"
 msgstr "Griff úr"
 
 #: data/units/Gryphon_Master.cfg:27
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty pairs may strike from anywhere."
 msgstr ""
 "A griff uraknak nagy tapasztalatuk van a griffek megülésében, amik szinte "
-"már hozzájuk tartoznak. Ez a különleges kapcsolat miatt reszketnek "
-"világszerte a szívek, mivel ezek a titokzatos párosok bárhonnan lecsaphatnak."
+"már hozzájuk nőttek. Ez a különleges kapcsolat az, ami miatt a szívek "
+"világszerte reszketnek, mivel ezek a titokzatos párosok bárhonnan "
+"lecsaphatnak."
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
@@ -6642,7 +6744,6 @@ msgid "Lich"
 msgstr "Villi"
 
 #: data/units/Lich.cfg:25
-#, fuzzy
 msgid ""
 "Liches are magi that have committed completely to the path of the dark arts. "
 "To gain control over the undead, Liches have forfeited their own bodies, "
@@ -7077,7 +7178,6 @@ msgid "Necromancer"
 msgstr "Holtidéző"
 
 #: data/units/Necromancer.cfg:16
-#, fuzzy
 msgid ""
 "Necromancers are magi that have decided to follow the paths of the dark "
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
@@ -7092,9 +7192,8 @@ msgid "Necrophage"
 msgstr "Halvajáró"
 
 #: data/units/Necrophage.cfg:17
-#, fuzzy
 msgid "satiated"
-msgstr "Beavatott"
+msgstr "kielégült"
 
 #: data/units/Necrophage.cfg:26
 msgid ""
@@ -9722,9 +9821,8 @@ msgid "invalid network handle"
 msgstr "érvénytelen hálózati fogantyú"
 
 #: src/network.cpp:112
-#, fuzzy
 msgid "Client disconnected"
-msgstr "A távoli kiszolgáló lekapcsolódott"
+msgstr "A kliens lekapcsolódott"
 
 #: src/network.cpp:430
 msgid "Could not add socket to socket set"
@@ -9735,9 +9833,8 @@ msgid "Could not send initial handshake"
 msgstr "Nem sikerült a kézfogás kezdeményezése"
 
 #: src/playcampaign.cpp:143
-#, fuzzy
 msgid " replay"
-msgstr "visszajátszás"
+msgstr " visszajátszás"
 
 #: src/playcampaign.cpp:151
 msgid "Do you want to save a replay of this scenario?"
