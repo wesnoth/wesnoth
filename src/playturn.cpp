@@ -1942,6 +1942,7 @@ void turn_info::do_recruit(const std::string& name)
 		} else {
 			recorder.undo();
 			gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY);
+			return;
 		}
 
 		clear_undo_stack();
