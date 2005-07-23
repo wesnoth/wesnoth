@@ -216,7 +216,8 @@ bool show_intro_part(display &disp, const config& part,
 		}
 	}
 
-	const std::string& story = part["story"];
+	const int max_width = next_button.location().x - 10 - textx;
+	const std::string story = font::word_wrap_text(part["story"], font::SIZE_PLUS, max_width);
 	utils::utf8_iterator itor(story);
 
 	bool skip = false, last_key = true;
@@ -224,38 +225,14 @@ bool show_intro_part(display &disp, const config& part,
 	int xpos = textx, ypos = texty;
 
 	//the maximum position that text can reach before wrapping
-	const int max_xpos = next_button.location().x - 10;
 	size_t height = 0;
 
 	for(;;) {
 		if(itor != utils::utf8_iterator::end(story)) {
-			if(*itor == ' ') {
-				//we're at a space, so find the next space or end-of-text,
-				//to find out if the next word will fit, or if it has to be wrapped
-				utils::utf8_iterator start_word = itor;
-				++start_word;
-				utils::utf8_iterator end_word = start_word;
-				const utils::utf8_iterator end_story = utils::utf8_iterator::end(story);
-				for(; end_word != end_story; ++end_word) {
-					if(*end_word == ' ') {
-						break;
-					}
-				}
-
-				std::string word;
-				for(; start_word != end_word; ++start_word) {
-					word.append(start_word.substr().first, start_word.substr().second);
-				}
-				const SDL_Rect rect = font::draw_text(NULL,screen_area(),
-						font::SIZE_PLUS,font::NORMAL_COLOUR,
-						word, xpos, ypos, false);
-
-				if(xpos + rect.w >= max_xpos) {
-					xpos = textx;
-					ypos += height;
-					++itor;
-					continue;
-				}
+			if(*itor == '\n') {
+				xpos = textx;
+				ypos += height;
+				++itor;
 			}
 
 			// output the character
