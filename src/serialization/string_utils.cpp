@@ -603,7 +603,7 @@ utf8_string lowercase(const utf8_string& s)
 		std::string res;
 
 		for(;itor != utf8_iterator::end(s); ++itor) {
-#ifdef __APPLE__
+#if defined(__APPLE__) || defined(__OpenBSD__)
 			// FIXME: Should we support towupper on recent OSX platforms?
 			wchar_t uchar = *itor;
 			if(uchar >= 0 && uchar < 0x100)
