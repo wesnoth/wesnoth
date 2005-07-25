@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 0.8.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-17 17:50+0200\n"
+"POT-Creation-Date: 2005-07-25 17:08+0200\n"
 "PO-Revision-Date: 2005-04-01 16:04+0200\n"
 "Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
 "Language-Team: Latin\n"
@@ -57,7 +57,7 @@ msgstr "Minuere"
 msgid "Default Zoom"
 msgstr "Conspectus Solitus"
 
-#: src/hotkeys.cpp:55 src/preferences.cpp:846
+#: src/hotkeys.cpp:55 src/preferences.cpp:856
 #, fuzzy
 msgid "Toggle Full Screen"
 msgstr "Scrinium Totum"
@@ -126,7 +126,7 @@ msgstr "Unitatem Creare (Emendare!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Partem Unitatis Mutare (Emendare!)"
 
-#: src/hotkeys.cpp:72 src/preferences.cpp:1166
+#: src/hotkeys.cpp:72 src/preferences.cpp:1176
 msgid "Preferences"
 msgstr "Anteposita"
 
@@ -289,124 +289,124 @@ msgstr ""
 msgid "player"
 msgstr "lusor"
 
-#: src/preferences.cpp:847
+#: src/preferences.cpp:857
 msgid "Accelerated Speed"
 msgstr "Celerius"
 
-#: src/preferences.cpp:848
+#: src/preferences.cpp:858
 msgid "Skip AI Moves"
 msgstr "Tractus IA Praetermittere"
 
-#: src/preferences.cpp:849
+#: src/preferences.cpp:859
 msgid "Show Grid"
 msgstr "Rete Monstare"
 
-#: src/preferences.cpp:850
+#: src/preferences.cpp:860
 msgid "Show Floating Labels"
 msgstr "Titula Volitantia Monstrare"
 
-#: src/preferences.cpp:851
+#: src/preferences.cpp:861
 msgid "Turn Dialog"
 msgstr "Cesta Dialogi Tractus"
 
-#: src/preferences.cpp:852
+#: src/preferences.cpp:862
 msgid "Turn Bell"
 msgstr "Tintinnabulum Tractus"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:863
 msgid "Show Team Colors"
 msgstr "Colores Partium Monstrare"
 
-#: src/preferences.cpp:854
+#: src/preferences.cpp:864
 msgid "Show Color Cursors"
 msgstr "Indicia Colorata Monstrare"
 
-#: src/preferences.cpp:855
+#: src/preferences.cpp:865
 msgid "Show Haloing Effects"
 msgstr "Iactationes Aureolae Monstrare"
 
-#: src/preferences.cpp:856
+#: src/preferences.cpp:866
 msgid "Video Mode"
 msgstr "Modus Visivus"
 
-#: src/preferences.cpp:857
+#: src/preferences.cpp:867
 msgid "Hotkeys"
 msgstr "Claves Notarum"
 
-#: src/preferences.cpp:858
+#: src/preferences.cpp:868
 msgid "Adjust Gamma"
 msgstr "Gamma Accomodare"
 
-#: src/preferences.cpp:859
+#: src/preferences.cpp:869
 msgid "Reverse Time Graphics"
 msgstr "Imagines Tempi Invertere"
 
-#: src/preferences.cpp:861
+#: src/preferences.cpp:871
 msgid "Music Volume:"
 msgstr "Magnitudo Musicae:"
 
-#: src/preferences.cpp:861
+#: src/preferences.cpp:871
 msgid "SFX Volume:"
 msgstr "Magnitudo Sonitus:"
 
-#: src/preferences.cpp:862
+#: src/preferences.cpp:872
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences.cpp:862
+#: src/preferences.cpp:872
 msgid "Scroll Speed:"
 msgstr "Velocitas Gyri:"
 
-#: src/preferences.cpp:881
+#: src/preferences.cpp:891
 msgid "Change the sound effects volume"
 msgstr "Magnitudinem sonituum mutare"
 
-#: src/preferences.cpp:886
+#: src/preferences.cpp:896
 msgid "Change the music volume"
 msgstr "Magnitudinem musicae mutare"
 
-#: src/preferences.cpp:891
+#: src/preferences.cpp:901
 msgid "Change the speed of scrolling around the map"
 msgstr "Velocitatem gyri in charta mutare"
 
-#: src/preferences.cpp:894 src/preferences.cpp:899
+#: src/preferences.cpp:904 src/preferences.cpp:909
 msgid "Change the brightness of the display"
 msgstr "Candorem scrinii mutare"
 
-#: src/preferences.cpp:902
+#: src/preferences.cpp:912
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Eligere si lusus in scrinio aut in fenestra mostratur"
 
-#: src/preferences.cpp:905
+#: src/preferences.cpp:915
 msgid "Make units move and fight faster"
 msgstr "Efficere ut unitates celerius moveantur et pugnent"
 
-#: src/preferences.cpp:908
+#: src/preferences.cpp:918
 msgid "Do not animate AI units moving"
 msgstr "Non animare tractus unitatum IA"
 
-#: src/preferences.cpp:911
+#: src/preferences.cpp:921
 msgid "Overlay a grid onto the map"
 msgstr "Rete monstrare super charta"
 
-#: src/preferences.cpp:914
+#: src/preferences.cpp:924
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Titulum super unitate damnum inflictum ostendens monstrare cum percutitur"
 
-#: src/preferences.cpp:916
+#: src/preferences.cpp:926
 msgid "Change the resolution the game runs at"
 msgstr "Modum visivum lusi mutare"
 
-#: src/preferences.cpp:919
+#: src/preferences.cpp:929
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Cestam dialogi in initio tractus tui monstrare"
 
-#: src/preferences.cpp:922
+#: src/preferences.cpp:932
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Tintinnabuli sonitum in initio tractus tui facere"
 
-#: src/preferences.cpp:925
+#: src/preferences.cpp:935
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -414,86 +414,86 @@ msgstr ""
 "Circulum coloratum circa fundamentum cuiusque unitatis partem ostendentem "
 "monstrare."
 
-#: src/preferences.cpp:928
+#: src/preferences.cpp:938
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Eligere si sol movetur a sinistra ad dexteram aut a dextera ad sinistram"
 
-#: src/preferences.cpp:931
+#: src/preferences.cpp:941
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Indiciis muris coloratis uti (potest esse lentior)"
 
-#: src/preferences.cpp:934
+#: src/preferences.cpp:944
 msgid "Use graphical special effects (may be slower)"
 msgstr "Iactationibus graphicis uti (potest esse lentior)"
 
-#: src/preferences.cpp:936
+#: src/preferences.cpp:946
 msgid "View and configure keyboard shortcuts"
 msgstr "Aspicere et imponere claves notarum"
 
-#: src/preferences.cpp:1094
+#: src/preferences.cpp:1104
 #, fuzzy
 msgid "yes"
 msgstr "Ita"
 
-#: src/preferences.cpp:1096
+#: src/preferences.cpp:1106
 #, fuzzy
 msgid "no"
 msgstr "Infectum Reddere"
 
-#: src/preferences.cpp:1153
+#: src/preferences.cpp:1163
 msgid "Prefs section^General"
 msgstr "Communes"
 
-#: src/preferences.cpp:1154
+#: src/preferences.cpp:1164
 msgid "Prefs section^Display"
 msgstr "Scrinium"
 
-#: src/preferences.cpp:1155
+#: src/preferences.cpp:1165
 msgid "Prefs section^Sound"
 msgstr "Sonitus"
 
-#: src/preferences.cpp:1156
+#: src/preferences.cpp:1166
 msgid "Advanced section^Advanced"
 msgstr ""
 
-#: src/preferences.cpp:1212
+#: src/preferences.cpp:1222
 msgid "There are no alternative video modes available"
 msgstr "Carent alteris modis visivis"
 
-#: src/preferences.cpp:1241
+#: src/preferences.cpp:1251
 msgid "Choose Resolution"
 msgstr "Resolutionem Eligere"
 
-#: src/preferences.cpp:1269
+#: src/preferences.cpp:1279
 msgid "Close Window"
 msgstr "Fenestram Claudere"
 
-#: src/preferences.cpp:1274
+#: src/preferences.cpp:1284
 msgid "Hotkey Settings"
 msgstr "Impostationes Clavium Notarum"
 
-#: src/preferences.cpp:1278 src/preferences.cpp:1331
+#: src/preferences.cpp:1288 src/preferences.cpp:1341
 msgid "Press desired HotKey"
 msgstr "Premere Clavem Notarum volutam"
 
-#: src/preferences.cpp:1296
+#: src/preferences.cpp:1306
 msgid "Action"
 msgstr ""
 
-#: src/preferences.cpp:1296
+#: src/preferences.cpp:1306
 msgid "Binding"
 msgstr ""
 
-#: src/preferences.cpp:1308
+#: src/preferences.cpp:1318
 msgid "Change Hotkey"
 msgstr "Clavem Notarum Mutare"
 
-#: src/preferences.cpp:1311
+#: src/preferences.cpp:1321
 msgid "Save Hotkeys"
 msgstr "Claves Notarum Servare"
 
-#: src/preferences.cpp:1357
+#: src/preferences.cpp:1367
 msgid "This HotKey is already in use."
 msgstr "Haec Clavis Notarum iam usum habet."
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-20 14:40+0200\n"
+"POT-Creation-Date: 2005-07-25 17:08+0200\n"
 "PO-Revision-Date: 2005-07-19 17:28+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -25,7 +25,8 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: data/campaigns/The_Dark_Hordes.cfg:5
-msgid "The Dark Hordes"
+#, fuzzy
+msgid "The Dark Hordes (Part 1)"
 msgstr "Тёмные Орды"
 
 #: data/campaigns/The_Dark_Hordes.cfg:9
@@ -47,6 +48,11 @@ msgstr "(сложнее)"
 #: data/campaigns/The_Dark_Hordes.cfg:11
 msgid "Dark Lord"
 msgstr "Тёмный Лорд"
+
+#: data/campaigns/The_Dark_Hordes.cfg:13
+msgid ""
+"Lead fugitive necromancer Gwiti Ha'atel to mastery of the undead hordes."
+msgstr ""
 
 #: data/scenarios/The_Dark_Hordes/A_New_Chance.cfg:4
 msgid "A New Chance"
@@ -862,15 +868,23 @@ msgstr ""
 msgid "If there is anything to dread here, it is me. Now, onward!"
 msgstr "Если кто здесь и ужасен, так это я. А теперь вперёд!"
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:243
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:223
+msgid "End of Part 1"
+msgstr ""
+
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:224
+msgid ""
+"Gwiti's adventures will continue in another installment of The Dark Hordes."
+msgstr ""
+
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:248
 msgid "The Hoard of the Dwarves! Three hundred gold at least!"
 msgstr "Сокровища Гномов! Триста золотых монет!"
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:260
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:265
 msgid "You swore you would protect me!"
 msgstr "Ты поклялся защищать меня!"
 
-#: data/scenarios/The_Dark_Hordes/intro.cfg:5
 #: data/scenarios/The_Dark_Hordes/utils/intro.cfg:5
 msgid ""
 "At a great battle at the Stone of Erzen, the brothers Gwiti and Nati Ha'atel "
@@ -882,7 +896,6 @@ msgstr ""
 "свои способности: считая, что их сторона проиграла в битве, они подняли тела "
 "своих прежних врагов драться вновь, но уже на их стороне."
 
-#: data/scenarios/The_Dark_Hordes/intro.cfg:14
 #: data/scenarios/The_Dark_Hordes/utils/intro.cfg:14
 msgid ""
 "However, not only was this forbidden, but rash as well. The cavalry meant to "
@@ -894,7 +907,6 @@ msgstr ""
 "подкрепления вместо того, чтобы столкнуться с легионами мертвецов, и "
 "проигранная битва была бы выиграна без этих двоих некромантов."
 
-#: data/scenarios/The_Dark_Hordes/intro.cfg:23
 #: data/scenarios/The_Dark_Hordes/utils/intro.cfg:23
 msgid ""
 "The Ha'atel brothers fled. Immediately upon their return, they were clapped "
@@ -905,7 +917,6 @@ msgstr ""
 "посажены на корабль без руля и брошены тонуть в море, потому как жители "
 "Веснота боялись, что их тела однажды могут восстать снова."
 
-#: data/scenarios/The_Dark_Hordes/intro.cfg:32
 #: data/scenarios/The_Dark_Hordes/utils/intro.cfg:32
 msgid ""
 "But Fate intervened. The ship was beset by a sudden storm and disintegrated, "

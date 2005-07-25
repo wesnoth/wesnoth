@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-20 14:40+0200\n"
+"POT-Creation-Date: 2005-07-25 17:08+0200\n"
 "PO-Revision-Date: 2005-03-21 12:17+0100\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/campaigns/The_Dark_Hordes.cfg:5
-msgid "The Dark Hordes"
+#, fuzzy
+msgid "The Dark Hordes (Part 1)"
 msgstr "Las hordas oscuras"
 
 #: data/campaigns/The_Dark_Hordes.cfg:9
@@ -39,6 +40,11 @@ msgstr "(difícil)"
 #: data/campaigns/The_Dark_Hordes.cfg:11
 msgid "Dark Lord"
 msgstr "Señor oscuro"
+
+#: data/campaigns/The_Dark_Hordes.cfg:13
+msgid ""
+"Lead fugitive necromancer Gwiti Ha'atel to mastery of the undead hordes."
+msgstr ""
 
 #: data/scenarios/The_Dark_Hordes/A_New_Chance.cfg:4
 msgid "A New Chance"
@@ -871,15 +877,23 @@ msgstr ""
 msgid "If there is anything to dread here, it is me. Now, onward!"
 msgstr "Si algo hay aquí que temer, ese soy yo. ¡En marcha!"
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:243
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:223
+msgid "End of Part 1"
+msgstr ""
+
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:224
+msgid ""
+"Gwiti's adventures will continue in another installment of The Dark Hordes."
+msgstr ""
+
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:248
 msgid "The Hoard of the Dwarves! Three hundred gold at least!"
 msgstr "¡El tesoro de los enanos! ¡Por lo menos hay trescientas piezas de oro!"
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:260
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:265
 msgid "You swore you would protect me!"
 msgstr "¡Juraste que me protegerías!"
 
-#: data/scenarios/The_Dark_Hordes/intro.cfg:5
 #: data/scenarios/The_Dark_Hordes/utils/intro.cfg:5
 msgid ""
 "At a great battle at the Stone of Erzen, the brothers Gwiti and Nati Ha'atel "
@@ -892,7 +906,6 @@ msgstr ""
 "perdiendo la batalla, llamaron a los cadáveres de sus enemigos a levantarse "
 "y  luchar a su lado."
 
-#: data/scenarios/The_Dark_Hordes/intro.cfg:14
 #: data/scenarios/The_Dark_Hordes/utils/intro.cfg:14
 msgid ""
 "However, not only was this forbidden, but rash as well. The cavalry meant to "
@@ -905,7 +918,6 @@ msgstr ""
 "las legiones de muertos vivientes, y así, una batalla que se podría haber "
 "ganado no pudo serlo por culpa de los dos nigromantes."
 
-#: data/scenarios/The_Dark_Hordes/intro.cfg:23
 #: data/scenarios/The_Dark_Hordes/utils/intro.cfg:23
 msgid ""
 "The Ha'atel brothers fled. Immediately upon their return, they were clapped "
@@ -917,7 +929,6 @@ msgstr ""
 "mar, ya que los habitantes de Wesnoth temían que sus cadáveres pudiesen "
 "alzarse de nuevo."
 
-#: data/scenarios/The_Dark_Hordes/intro.cfg:32
 #: data/scenarios/The_Dark_Hordes/utils/intro.cfg:32
 msgid ""
 "But Fate intervened. The ship was beset by a sudden storm and disintegrated, "

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-20 14:39+0200\n"
+"POT-Creation-Date: 2005-07-25 16:50+0200\n"
 "PO-Revision-Date: 2005-07-21 15:50+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -40,7 +40,7 @@ msgstr "Bevezetés"
 msgid "Gameplay"
 msgstr "Játékmenet"
 
-#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2231
+#: data/help.cfg:22 data/help.cfg:215 src/playturn.cpp:2233
 msgid "Traits"
 msgstr "Jellemvonások"
 
@@ -800,7 +800,11 @@ msgstr ""
 msgid "About"
 msgstr "Készítők"
 
-#: data/help.cfg:210
+#: data/help.cfg:209
+msgid "License"
+msgstr ""
+
+#: data/help.cfg:216
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -813,7 +817,7 @@ msgstr ""
 "tulajdonságain. Alapvetően véletlenszerűen kapják meg őket toborozáskor az "
 "egységek."
 
-#: data/help.cfg:212
+#: data/help.cfg:218
 msgid ""
 "\n"
 "\n"
@@ -823,7 +827,7 @@ msgstr ""
 "\n"
 "A jellemvonások amelyek az élőholttól eltérő egységek számára elérhetőek:"
 
-#: data/help.cfg:219
+#: data/help.cfg:225
 msgid ""
 "\n"
 "\n"
@@ -852,7 +856,7 @@ msgstr ""
 "sokkal inkább a hasznosabb jellemvonásokkal rendelkező egységeket érdemes "
 "visszahívnod."
 
-#: data/help.cfg:226
+#: data/help.cfg:232
 msgid ""
 "\n"
 "\n"
@@ -883,7 +887,7 @@ msgstr ""
 "gyors egységek nem olyan erősek, mint általában a többi egység, és emiatt "
 "nem olyan jók egy terület megtartására."
 
-#: data/help.cfg:233
+#: data/help.cfg:239
 msgid ""
 "\n"
 "\n"
@@ -911,7 +915,7 @@ msgstr ""
 "védekezőképessége vagy magas mértékű ellenállásai vannak. Az ilyen egységek "
 "leginkább egy terület megtartásában tudnak jeleskedni."
 
-#: data/help.cfg:240
+#: data/help.cfg:246
 msgid ""
 "\n"
 "\n"
@@ -938,7 +942,7 @@ msgstr ""
 "hasznosak lehetnek, ha az a kevés hozzáadott sebzés éppen elengendő ahhoz, "
 "hogy egy egyszerű sebzésből halálos sebzés váljon."
 
-#: data/help.cfg:243
+#: data/help.cfg:249
 msgid ""
 "\n"
 "\n"
@@ -950,7 +954,7 @@ msgstr ""
 "\n"
 "Más különleges jellemvonások, amelyeket egységek kaphatnak:"
 
-#: data/help.cfg:251
+#: data/help.cfg:257
 msgid ""
 "\n"
 "\n"
@@ -987,7 +991,7 @@ msgstr ""
 "megszerezni, ezért felelőtlen dolog elbocsátani, vagy a biztos halálba "
 "küldeni őket."
 
-#: data/help.cfg:258
+#: data/help.cfg:264
 msgid ""
 "\n"
 "\n"
@@ -1013,7 +1017,7 @@ msgstr ""
 "nem hat rájuk. Ez felbecsülhetetlenné teszi őket olyan ellenfelek elleni "
 "küzdelemben, akik mérget is használnak támadásukban."
 
-#: data/help.cfg:265
+#: data/help.cfg:271
 msgid ""
 "\n"
 "\n"
@@ -1040,11 +1044,11 @@ msgstr ""
 "felebarátaikén is túltesz. Ezek a tündék eggyel többet sebeznek minden célba "
 "talált nyilvesszővel, ami mutatja képességüket."
 
-#: data/help.cfg:272 data/terrain.cfg:150
+#: data/help.cfg:278 data/terrain.cfg:150
 msgid "Grassland"
 msgstr "Mezőség"
 
-#: data/help.cfg:275
+#: data/help.cfg:283
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1062,11 +1066,11 @@ msgstr ""
 "\n"
 "A mezőségeken a legtöbb egységnek 30 és 40% közti a védekezése."
 
-#: data/help.cfg:280 data/terrain.cfg:124 data/terrain.cfg:132
+#: data/help.cfg:288 data/terrain.cfg:124 data/terrain.cfg:132
 msgid "Road"
 msgstr "Országút"
 
-#: data/help.cfg:281
+#: data/help.cfg:291
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1076,11 +1080,11 @@ msgstr ""
 "illeti, az országutak megegyeznek a <ref>dst=terrain_grassland "
 "text=mezőséggel</ref>."
 
-#: data/help.cfg:286 data/terrain.cfg:321
+#: data/help.cfg:296 data/terrain.cfg:321
 msgid "Forest"
 msgstr "Erdőség"
 
-#: data/help.cfg:289
+#: data/help.cfg:301
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1110,11 +1114,11 @@ msgstr ""
 "nem több mint 40%. Másik oldalon a tündék 60-70%-os védekezést élveznek, még "
 "lóháton is. A törpök általában csak 30%-ot kapnak."
 
-#: data/help.cfg:294 data/terrain.cfg:282
+#: data/help.cfg:306 data/terrain.cfg:282
 msgid "Hills"
 msgstr "Dombság"
 
-#: data/help.cfg:297
+#: data/help.cfg:311
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1136,11 +1140,11 @@ msgstr ""
 "Az erdőségekben a legtöbb egységnek 50% körüli a védekezése, de a lovas "
 "egységeknek nem több mint 40%. A törpök 60% védekezést kapnak dombságon."
 
-#: data/help.cfg:302 data/terrain.cfg:306
+#: data/help.cfg:316 data/terrain.cfg:306
 msgid "Mountains"
 msgstr "Hegyvidék"
 
-#: data/help.cfg:305
+#: data/help.cfg:321
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1162,11 +1166,11 @@ msgstr ""
 "A hegyvidéken a legtöbb egységnek 60% körüli a védekezése, de a törpök 70% "
 "védekezést kapnak."
 
-#: data/help.cfg:310 data/terrain.cfg:51
+#: data/help.cfg:326 data/terrain.cfg:51
 msgid "Swamp"
 msgstr "Láp"
 
-#: data/help.cfg:313
+#: data/help.cfg:331
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1186,11 +1190,11 @@ msgstr ""
 "A lápokban a legtöbb egységnek 30% a védekezése. A sellők, nagák és a gyíkok "
 "általánosan 60% védekezést kapnak."
 
-#: data/help.cfg:318 data/terrain.cfg:30
+#: data/help.cfg:336 data/terrain.cfg:30
 msgid "Shallow Water"
 msgstr "Sekélyvíz"
 
-#: data/help.cfg:321
+#: data/help.cfg:341
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1212,11 +1216,11 @@ msgstr ""
 "A sekály vizekben a legtöbb egységnek 20 és 30% közti a védekezése, de a "
 "nagák és a sellők 60% védekezést kapnak."
 
-#: data/help.cfg:326 data/terrain.cfg:21
+#: data/help.cfg:346 data/terrain.cfg:21
 msgid "Deep Water"
 msgstr "Mélyvíz"
 
-#: data/help.cfg:329
+#: data/help.cfg:351
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1232,11 +1236,11 @@ msgstr ""
 "A mélyvizekben a nagáknak és a sellőknek is 50% a védekezése, és teljesen "
 "kihasználhatják lépési pontjaikat."
 
-#: data/help.cfg:334
+#: data/help.cfg:356
 msgid "Tundra"
 msgstr "Tundra"
 
-#: data/help.cfg:337
+#: data/help.cfg:361
 msgid ""
 "Tundra is any grassland covered by snow, either permanently, or temporarily. "
 "Most units are slowed down by tundra, and have a harder time defending "
@@ -1249,11 +1253,11 @@ msgstr ""
 "\n"
 "A tundrán a legtöbb egységnek 20 és 40% közti a védekezése."
 
-#: data/help.cfg:342 data/terrain.cfg:70
+#: data/help.cfg:366 data/terrain.cfg:70
 msgid "Ice"
 msgstr "Jég"
 
-#: data/help.cfg:343
+#: data/help.cfg:369
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Tundra</ref>. Note that swimming "
@@ -1264,11 +1268,11 @@ msgstr ""
 "Megjegyzendő, hogy az úszni képes egységek, még ha a víz alatt is élnek, a "
 "jég alatt nem tudnak úszni."
 
-#: data/help.cfg:348 data/terrain.cfg:370 data/terrain.cfg:430
+#: data/help.cfg:374 data/terrain.cfg:370 data/terrain.cfg:481
 msgid "Castle"
 msgstr "Várkastély"
 
-#: data/help.cfg:351
+#: data/help.cfg:379
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1289,11 +1293,11 @@ msgstr ""
 "\n"
 "A várkastélyokban a legtöbb egységnek 60% körüli a védekezése."
 
-#: data/help.cfg:356 data/terrain.cfg:106
+#: data/help.cfg:386 data/terrain.cfg:106
 msgid "Sand"
 msgstr "Homok"
 
-#: data/help.cfg:359
+#: data/help.cfg:391
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1307,11 +1311,11 @@ msgstr ""
 "\n"
 "A homokban a legtöbb egységnek 20 és 40% közti a védekezése."
 
-#: data/help.cfg:364 data/terrain.cfg:115
+#: data/help.cfg:396 data/terrain.cfg:115
 msgid "Desert"
 msgstr "Sivatag"
 
-#: data/help.cfg:365
+#: data/help.cfg:399
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1321,11 +1325,11 @@ msgstr ""
 "lapospartoktól, de a játékmenet szempontjából azonosak. Lásd a "
 "<ref>dst=terrain_sand·text=Homokot</ref>."
 
-#: data/help.cfg:370 data/terrain.cfg:353
+#: data/help.cfg:404 data/terrain.cfg:353
 msgid "Cave"
 msgstr "Barlang"
 
-#: data/help.cfg:373
+#: data/help.cfg:409
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1346,11 +1350,11 @@ msgstr ""
 "A barlangokban a legtöbb egységnek 20 és 40% közti a védekezése, míg a "
 "törpöknek 50%."
 
-#: data/help.cfg:378 data/terrain.cfg:157
+#: data/help.cfg:414 data/terrain.cfg:157
 msgid "Savanna"
 msgstr "Szavanna"
 
-#: data/help.cfg:379
+#: data/help.cfg:416
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -1360,14 +1364,14 @@ msgstr ""
 "közt alakulnak ki. A játékmenet szempontjából megegyeznek a "
 "<ref>dst=terrain_grassland·text=Mezőséggel</ref>."
 
-#: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
+#: data/help.cfg:421 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
 #: data/terrain.cfg:196 data/terrain.cfg:209 data/terrain.cfg:360
 #: src/reports.cpp:324
 msgid "Village"
 msgstr "Falu"
 
-#: data/help.cfg:387
+#: data/help.cfg:426
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -3208,7 +3212,7 @@ msgstr ""
 msgid "Underground"
 msgstr "Föld alatt"
 
-#: data/terrain.cfg:7 src/multiplayer_create.cpp:51
+#: data/terrain.cfg:7 src/multiplayer_create.cpp:52
 #: src/multiplayer_lobby.cpp:184
 msgid "Shroud"
 msgstr "Eltakarás"
@@ -3285,23 +3289,23 @@ msgstr "Vártorony"
 msgid "Canyon"
 msgstr "Kanyon"
 
-#: data/terrain.cfg:439
+#: data/terrain.cfg:426
 msgid "Ruin"
 msgstr "Rom"
 
-#: data/terrain.cfg:449
+#: data/terrain.cfg:436
 msgid "Sunken Ruin"
 msgstr "Elsüllyedt rom"
 
-#: data/terrain.cfg:460
+#: data/terrain.cfg:447
 msgid "Swamp Ruin"
 msgstr "Lápos rom"
 
-#: data/terrain.cfg:471
+#: data/terrain.cfg:458
 msgid "River Ford"
 msgstr "Gázló"
 
-#: data/terrain.cfg:481
+#: data/terrain.cfg:468
 msgid "Lava"
 msgstr "Láva"
 
@@ -3317,11 +3321,11 @@ msgstr "Parancsok"
 msgid "End Turn"
 msgstr "Kör vége"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2229 src/unit.cpp:1081
+#: data/themes/default.cfg:167 src/playturn.cpp:2231 src/unit.cpp:1081
 msgid "HP"
 msgstr "ÉP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2053 src/playturn.cpp:2230
+#: data/themes/default.cfg:176 src/playturn.cpp:2053 src/playturn.cpp:2232
 msgid "XP"
 msgstr "TP"
 
@@ -3919,9 +3923,9 @@ msgstr ""
 "ellenség ellenőrizte terület határáról tudomást sem véve."
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:26
-#: data/units/Assassin.cfg:127 data/units/Duelist.cfg:25
+#: data/units/Assassin.cfg:129 data/units/Duelist.cfg:25
 #: data/units/Fencer.cfg:16 data/units/Outlaw_Princess.cfg:20
-#: data/units/Rogue.cfg:17 data/units/Rogue.cfg:77 data/units/Saurian.cfg:22
+#: data/units/Rogue.cfg:17 data/units/Rogue.cfg:79 data/units/Saurian.cfg:22
 #: data/units/Saurian_Ambusher.cfg:20 data/units/Saurian_Flanker.cfg:30
 #: data/units/Saurian_Skirmisher.cfg:20 data/units/Saurian_Warrior.cfg:31
 msgid "skirmisher"
@@ -4129,7 +4133,7 @@ msgid "Ancient Lich"
 msgstr "Ős-villi"
 
 #: data/units/Ancient_Lich.cfg:17 data/units/Ancient_Wose.cfg:15
-#: data/units/Assassin.cfg:15 data/units/Assassin.cfg:116
+#: data/units/Assassin.cfg:15 data/units/Assassin.cfg:118
 #: data/units/Bandit.cfg:15 data/units/Battle_Princess.cfg:17
 #: data/units/Battle_Princess.cfg:76 data/units/Blood_Bat.cfg:14
 #: data/units/Cavalier.cfg:15 data/units/Cave_Spider.cfg:14
@@ -4329,7 +4333,7 @@ msgstr "zúzás"
 #: data/units/Giant_Scorpion.cfg:47 data/units/Goblin_Pillager.cfg:47
 #: data/units/Great_Mage.cfg:37 data/units/Great_Mage.cfg:143
 #: data/units/Great_Troll.cfg:33 data/units/Heavy_Infantryman.cfg:20
-#: data/units/Horse_Lord.cfg:45 data/units/Iron_Mauler.cfg:29
+#: data/units/Horse_Lord.cfg:45 data/units/Iron_Mauler.cfg:31
 #: data/units/Mage.cfg:27 data/units/Mage.cfg:110
 #: data/units/Mage_of_Light.cfg:44 data/units/Mage_of_Light.cfg:129
 #: data/units/Mermaid_Diviner.cfg:40 data/units/Mermaid_Enchantress.cfg:22
@@ -4442,31 +4446,36 @@ msgstr "Varázslómesternő"
 msgid "Assassin"
 msgstr "Orgyilkos"
 
-#: data/units/Assassin.cfg:27 data/units/Assassin.cfg:128
+#: data/units/Assassin.cfg:29 data/units/Assassin.cfg:132
 msgid ""
-"Assassins are masters of the night. Like Rogues, they can surround and "
-"backstab an opponent, doing double damage. They can also throw poison-tipped "
-"knives at their enemies from long range."
+"The greatest of thieves are sometimes tasked to take far more than their "
+"victim's belongings. Masters of knife-fighting and uncannily light on their "
+"feet, these menacing figures employ any means to silently dispatch their "
+"victims, be it poisoned knives thrown from afar, or a dagger planted in the "
+"back. Deadly at night, these assassins are somewhat uncomfortable fighting "
+"under the open sun.\n"
+"\n"
+"Special Notes: while a unit with the same allegiance as the assassin "
+"distracts an enemy, the assassin may backstab, inflicting double damage, by "
+"creeping around behind that enemy. Their throwing knives are also poisoned, "
+"which will continually sap away an enemy's strength."
 msgstr ""
-"Az orgyilkosok az éjszaka urai. Akárcsak a haramiák, körbe tudják venni és "
-"lesből megtámadni ellenségüket, így kétszeres sebzést okozva. Távolból "
-"mérgezett tőröket hajíthatnak célpontjaikra."
 
-#: data/units/Assassin.cfg:43 data/units/Assassin.cfg:131
+#: data/units/Assassin.cfg:45 data/units/Assassin.cfg:135
 #: data/units/Dwarvish_Thunderer.cfg:38
-#: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Orcish_Archer.cfg:21
+#: data/units/Dwarvish_Thunderguard.cfg:22 data/units/Orcish_Archer.cfg:21
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Slayer.cfg:28
-#: data/units/Poacher.cfg:25 data/units/Rogue.cfg:21 data/units/Rogue.cfg:81
-#: data/units/Thief.cfg:84 data/units/Thief.cfg:185 data/units/Trapper.cfg:34
+#: data/units/Poacher.cfg:25 data/units/Rogue.cfg:23 data/units/Rogue.cfg:85
+#: data/units/Thief.cfg:86 data/units/Thief.cfg:189 data/units/Trapper.cfg:34
 msgid "dagger"
 msgstr "tőr"
 
-#: data/units/Assassin.cfg:44 data/units/Assassin.cfg:75
-#: data/units/Assassin.cfg:132 data/units/Assassin.cfg:163
+#: data/units/Assassin.cfg:46 data/units/Assassin.cfg:77
+#: data/units/Assassin.cfg:136 data/units/Assassin.cfg:167
 #: data/units/Battle_Princess.cfg:45 data/units/Battle_Princess.cfg:92
 #: data/units/Blood_Bat.cfg:42 data/units/Bone_Shooter.cfg:38
 #: data/units/Bowman.cfg:34 data/units/Cavalier.cfg:50
-#: data/units/Cavalryman.cfg:42 data/units/Cave_Spider.cfg:42
+#: data/units/Cavalryman.cfg:44 data/units/Cave_Spider.cfg:42
 #: data/units/Commander.cfg:36 data/units/Commander.cfg:111
 #: data/units/Dark_Spirit.cfg:41 data/units/Death_Knight.cfg:43
 #: data/units/Deathblade.cfg:49 data/units/Direwolf_Rider.cfg:47
@@ -4478,11 +4487,11 @@ msgstr "tőr"
 #: data/units/Drake_Gladiator.cfg:35 data/units/Drake_Inferno.cfg:34
 #: data/units/Drake_Slasher.cfg:26 data/units/Drake_Warden.cfg:35
 #: data/units/Drake_Warrior.cfg:23 data/units/Draug.cfg:46
-#: data/units/Duelist.cfg:43 data/units/Dwarvish_Berserker.cfg:37
+#: data/units/Duelist.cfg:47 data/units/Dwarvish_Berserker.cfg:37
 #: data/units/Dwarvish_Fighter.cfg:23 data/units/Dwarvish_Lord.cfg:37
 #: data/units/Dwarvish_Lord.cfg:70 data/units/Dwarvish_Steelclad.cfg:29
 #: data/units/Dwarvish_Thunderer.cfg:39
-#: data/units/Dwarvish_Thunderguard.cfg:21
+#: data/units/Dwarvish_Thunderguard.cfg:23
 #: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:46
 #: data/units/Elvish_Archer.cfg:148 data/units/Elvish_Avenger.cfg:56
 #: data/units/Elvish_Avenger.cfg:176 data/units/Elvish_Captain.cfg:25
@@ -4493,13 +4502,13 @@ msgstr "tőr"
 #: data/units/Elvish_Outrider.cfg:39 data/units/Elvish_Ranger.cfg:47
 #: data/units/Elvish_Ranger.cfg:160 data/units/Elvish_Rider.cfg:33
 #: data/units/Elvish_Scout.cfg:34 data/units/Elvish_Sharpshooter.cfg:55
-#: data/units/Elvish_Sharpshooter.cfg:181 data/units/Fencer.cfg:21
+#: data/units/Elvish_Sharpshooter.cfg:181 data/units/Fencer.cfg:25
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
 #: data/units/Fire_Dragon.cfg:32 data/units/General.cfg:29
 #: data/units/Ghoul.cfg:27 data/units/Goblin_Knight.cfg:22
 #: data/units/Grand_Knight.cfg:34 data/units/Grand_Marshal.cfg:34
 #: data/units/Gryphon.cfg:32 data/units/Gryphon_Master.cfg:34
-#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:75
+#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:79
 #: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:25
 #: data/units/Lieutenant.cfg:25 data/units/Longbowman.cfg:23
 #: data/units/Lord.cfg:32 data/units/Lord.cfg:116
@@ -4519,33 +4528,33 @@ msgstr "tőr"
 #: data/units/Orcish_Sovereign.cfg:31 data/units/Orcish_Warlord.cfg:29
 #: data/units/Orcish_Warrior.cfg:20 data/units/Poacher.cfg:26
 #: data/units/Princess.cfg:24 data/units/Princess.cfg:62
-#: data/units/Revenant.cfg:37 data/units/Rogue.cfg:22 data/units/Rogue.cfg:40
-#: data/units/Rogue.cfg:82 data/units/Rogue.cfg:100
+#: data/units/Revenant.cfg:37 data/units/Rogue.cfg:24 data/units/Rogue.cfg:42
+#: data/units/Rogue.cfg:86 data/units/Rogue.cfg:104
 #: data/units/Royal_Guard.cfg:34 data/units/Sea_Orc.cfg:29
 #: data/units/Sergeant.cfg:25 data/units/Shadow.cfg:21
 #: data/units/Skeletal_Dragon.cfg:40 data/units/Skeletal_Dragon.cfg:59
 #: data/units/Skeleton.cfg:38 data/units/Sleeping_Gryphon.cfg:28
 #: data/units/Spectre.cfg:57 data/units/Swordsman.cfg:25
-#: data/units/Thief.cfg:85 data/units/Thief.cfg:186 data/units/Trapper.cfg:35
+#: data/units/Thief.cfg:87 data/units/Thief.cfg:190 data/units/Trapper.cfg:35
 #: data/units/Vampire_Bat.cfg:20 data/units/Vampire_Lady.cfg:30
 #: data/units/Wolf_Rider.cfg:22 data/units/Wraith.cfg:25
 #: data/units/Young_Ogre.cfg:42
 msgid "blade"
 msgstr "penge"
 
-#: data/units/Assassin.cfg:48 data/units/Assassin.cfg:136
-#: data/units/Nightgaunt.cfg:61 data/units/Rogue.cfg:26
-#: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:190 src/actions.cpp:588
+#: data/units/Assassin.cfg:50 data/units/Assassin.cfg:140
+#: data/units/Nightgaunt.cfg:61 data/units/Rogue.cfg:28
+#: data/units/Rogue.cfg:90 data/units/Shadow.cfg:25 data/units/Thief.cfg:91
+#: data/units/Thief.cfg:194 src/actions.cpp:588
 msgid "backstab"
 msgstr "orvtámadás"
 
-#: data/units/Assassin.cfg:74 data/units/Assassin.cfg:162
-#: data/units/Rogue.cfg:39 data/units/Rogue.cfg:99
+#: data/units/Assassin.cfg:76 data/units/Assassin.cfg:166
+#: data/units/Rogue.cfg:41 data/units/Rogue.cfg:103
 msgid "knife"
 msgstr "kés"
 
-#: data/units/Assassin.cfg:77 data/units/Assassin.cfg:165
+#: data/units/Assassin.cfg:79 data/units/Assassin.cfg:169
 #: data/units/Cave_Spider.cfg:46 data/units/Cuttle_Fish.cfg:82
 #: data/units/Direwolf_Rider.cfg:63 data/units/Ghoul.cfg:31
 #: data/units/Giant_Scorpion.cfg:31 data/units/Necrophage.cfg:41
@@ -4553,7 +4562,7 @@ msgstr "kés"
 msgid "poison"
 msgstr "mérgezés"
 
-#: data/units/Assassin.cfg:104
+#: data/units/Assassin.cfg:106
 msgid "female^Assassin"
 msgstr "Orgyilkosnő"
 
@@ -4563,17 +4572,16 @@ msgstr "Bandita"
 
 #: data/units/Bandit.cfg:26
 msgid ""
-"Armed with a heavy mace, Bandits are adept at robbing and killing at night. "
-"Wearing brown cloaks and black hoods, they steal from the peasants who live "
-"near them when not fighting against invaders."
+"Bandits are a motley collection of men, most of dubious background. They are "
+"the strong arm of any organized group of criminals, and though they may lack "
+"in finesse, or intelligence, they excel at their preferred task of pummeling "
+"victims into submission. Like any sort of outlaw, they're not comfortable "
+"fighting in broad daylight, being used to working at night."
 msgstr ""
-"A nehéz buzogánnyal felszerelt banditák ügyesek az éjszakai rablásban és a "
-"gyilkolásban. Barna leplet és fekete csuklyát viselnek, amit parasztoktól "
-"rabolnak, ha azok épp nem harcolnak megszállók ellen."
 
 #: data/units/Bandit.cfg:42 data/units/Drake_Enforcer.cfg:51
 #: data/units/Drake_Gladiator.cfg:71 data/units/Great_Troll.cfg:32
-#: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:28
+#: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:30
 #: data/units/Mage_of_Light.cfg:43 data/units/Mage_of_Light.cfg:128
 #: data/units/Outlaw.cfg:29 data/units/Outlaw.cfg:111
 #: data/units/Shock_Trooper.cfg:19 data/units/Warrior_King.cfg:34
@@ -4603,7 +4611,7 @@ msgstr ""
 
 #: data/units/Battle_Princess.cfg:44 data/units/Battle_Princess.cfg:91
 #: data/units/Bowman.cfg:33 data/units/Cavalier.cfg:49
-#: data/units/Cavalryman.cfg:41 data/units/Commander.cfg:35
+#: data/units/Cavalryman.cfg:43 data/units/Commander.cfg:35
 #: data/units/Commander.cfg:110 data/units/Deathblade.cfg:48
 #: data/units/Dragoon.cfg:45 data/units/Drake_Blademaster.cfg:31
 #: data/units/Drake_Clasher.cfg:33 data/units/Drake_Enforcer.cfg:33
@@ -4720,12 +4728,12 @@ msgstr "íj"
 #: data/units/Death_Knight.cfg:60 data/units/Dragoon.cfg:67
 #: data/units/Drake_Clasher.cfg:52 data/units/Drake_Enforcer.cfg:70
 #: data/units/Drake_Gladiator.cfg:53 data/units/Drake_Slasher.cfg:44
-#: data/units/Drake_Warden.cfg:53 data/units/Duelist.cfg:59
+#: data/units/Drake_Warden.cfg:53 data/units/Duelist.cfg:63
 #: data/units/Dwarvish_Dragonguard.cfg:48 data/units/Dwarvish_Guardsman.cfg:32
 #: data/units/Dwarvish_Guardsman.cfg:45 data/units/Dwarvish_Sentinel.cfg:43
 #: data/units/Dwarvish_Sentinel.cfg:56 data/units/Dwarvish_Stalwart.cfg:34
 #: data/units/Dwarvish_Stalwart.cfg:47 data/units/Dwarvish_Thunderer.cfg:64
-#: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:63
+#: data/units/Dwarvish_Thunderguard.cfg:49 data/units/Elvish_Archer.cfg:63
 #: data/units/Elvish_Archer.cfg:165 data/units/Elvish_Avenger.cfg:72
 #: data/units/Elvish_Avenger.cfg:192 data/units/Elvish_Captain.cfg:41
 #: data/units/Elvish_Champion.cfg:51 data/units/Elvish_Druid.cfg:63
@@ -4740,8 +4748,8 @@ msgstr "íj"
 #: data/units/Goblin_Impaler.cfg:30 data/units/Goblin_Impaler.cfg:49
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
 #: data/units/Grand_Knight.cfg:50 data/units/Grand_Marshal.cfg:57
-#: data/units/Halbardier.cfg:34 data/units/Horseman.cfg:25
-#: data/units/Javelineer.cfg:30 data/units/Javelineer.cfg:58
+#: data/units/Halbardier.cfg:38 data/units/Horseman.cfg:25
+#: data/units/Javelineer.cfg:32 data/units/Javelineer.cfg:60
 #: data/units/Knight.cfg:41 data/units/Lancer.cfg:34
 #: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:40
 #: data/units/Lord.cfg:49 data/units/Master_Bowman.cfg:43
@@ -4759,7 +4767,7 @@ msgstr "íj"
 #: data/units/Orcish_Shaman.cfg:182 data/units/Orcish_Slurbow.cfg:49
 #: data/units/Orcish_Sovereign.cfg:52 data/units/Orcish_Warlord.cfg:50
 #: data/units/Paladin.cfg:55 data/units/Peasant.cfg:22
-#: data/units/Peasant.cfg:35 data/units/Pikeman.cfg:24
+#: data/units/Peasant.cfg:35 data/units/Pikeman.cfg:26
 #: data/units/Pirate_Galleon.cfg:27 data/units/Poacher.cfg:43
 #: data/units/Saurian.cfg:26 data/units/Saurian.cfg:44
 #: data/units/Saurian_Ambusher.cfg:24 data/units/Saurian_Ambusher.cfg:42
@@ -4769,7 +4777,7 @@ msgstr "íj"
 #: data/units/Sea_Hag.cfg:33 data/units/Sea_Serpent.cfg:29
 #: data/units/Sergeant.cfg:42 data/units/Skeleton_Archer.cfg:42
 #: data/units/Soul_Shooter.cfg:37 data/units/Soul_Shooter.cfg:50
-#: data/units/Spearman.cfg:60 data/units/Spearman.cfg:111
+#: data/units/Spearman.cfg:62 data/units/Spearman.cfg:113
 #: data/units/Transport_Galleon.cfg:27 data/units/Trapper.cfg:52
 #: data/units/Triton.cfg:35 data/units/Vampire_Lady.cfg:44
 #: data/units/Wall_Guard.cfg:46 data/units/Watch_Tower.cfg:28
@@ -4782,15 +4790,12 @@ msgstr "Íjlövész"
 
 #: data/units/Bowman.cfg:18
 msgid ""
-"Immersed from childhood in the ways of archery, the young Bowmen are the "
-"most common ranged combatants in Wesnothian armies. They do not undergo as "
-"rigorous a training as the spearman or heavy infantry, because their battle "
-"tactics require more finesse than brute strength."
+"The use of archery in shooting something other than game was seen from its "
+"inception, and archers have had indispensable use in warfare since time "
+"immemorial. Usually of humble origins, hailing from the peasantry or the odd "
+"woodsman, bowmen have reasonable prowess with both a bow and a short sword, "
+"and are very common on the battlefield."
 msgstr ""
-"A gyerekkoruk óta íjászatra edzett fiatal íjászokból kerül ki a wesnoth-i "
-"hadsereg legtöbb lőfegyveres harcosa. Ezen egységek nem olyan szigorú a "
-"képzésük, mint egy dárdás vagy egy nehézgyalogsághoz tartozó harcosnak, mert "
-"harci taktikájukhoz több ravaszságot, mint nyers erőt használnak fel."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
@@ -4809,7 +4814,7 @@ msgstr ""
 "harcosaivá emelte őket."
 
 #: data/units/Cavalier.cfg:70 data/units/Death_Knight.cfg:59
-#: data/units/Dragoon.cfg:66 data/units/Duelist.cfg:58
+#: data/units/Dragoon.cfg:66 data/units/Duelist.cfg:62
 #: data/units/General.cfg:51 data/units/Grand_Marshal.cfg:56
 #: data/units/Lieutenant.cfg:41 data/units/Orcish_Crossbowman.cfg:39
 #: data/units/Orcish_Crossbowman.cfg:66 data/units/Orcish_Slurbow.cfg:48
@@ -4822,17 +4827,17 @@ msgstr "számszeríj"
 msgid "Cavalryman"
 msgstr "Huszár"
 
-#: data/units/Cavalryman.cfg:26
+#: data/units/Cavalryman.cfg:28
 msgid ""
-"The best riders in Wesnoth are recruited into the military to become "
-"Cavalrymen. A Cavalryman, strictly disciplined, does not charge across the "
-"field of battle like a horseman, but makes more of an effort to hold his "
-"position."
+"Cavalrymen are distinguished from horsemen by their tactics and equipment.  "
+"A cavalryman wears heavier armor, and carries a sword and shield, rather "
+"than a lance.  Their tactics do not include charging, but instead maneuvers "
+"like hit and run slashes with their sword, using both horse and rider as an "
+"effective tool of melee.\n"
+"\n"
+"Cavalrymen are very useful for taking and holding positions on open ground, "
+"for screening friendly soldiers, and also for scoutwork."
 msgstr ""
-"A huszárok Wesnoth legjobb lovasaiból kerülnek ki. Ez a szigorúan "
-"fegyelmezett hadosztály, amellyel bár nem lehet oly kiválóan rohamozni a "
-"harcmezőn, mint egy lovassal, de különösen hatékony a pozíciójának a "
-"megtartásában."
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
@@ -4881,8 +4886,8 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:32 data/units/Dwarvish_Stalwart.cfg:46
 #: data/units/Goblin_Impaler.cfg:29 data/units/Goblin_Impaler.cfg:48
 #: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
-#: data/units/Horseman.cfg:24 data/units/Javelineer.cfg:29
-#: data/units/Javelineer.cfg:57 data/units/Merman_Entangler.cfg:28
+#: data/units/Horseman.cfg:24 data/units/Javelineer.cfg:31
+#: data/units/Javelineer.cfg:59 data/units/Merman_Entangler.cfg:28
 #: data/units/Merman_Hunter.cfg:20 data/units/Merman_Hunter.cfg:60
 #: data/units/Merman_Javelineer.cfg:29 data/units/Merman_Javelineer.cfg:69
 #: data/units/Merman_Netcaster.cfg:19 data/units/Merman_Spearman.cfg:20
@@ -4891,8 +4896,8 @@ msgstr ""
 #: data/units/Saurian_Ambusher.cfg:40 data/units/Saurian_Flanker.cfg:32
 #: data/units/Saurian_Flanker.cfg:50 data/units/Saurian_Skirmisher.cfg:22
 #: data/units/Saurian_Skirmisher.cfg:40 data/units/Saurian_Warrior.cfg:33
-#: data/units/Saurian_Warrior.cfg:51 data/units/Spearman.cfg:59
-#: data/units/Spearman.cfg:110
+#: data/units/Saurian_Warrior.cfg:51 data/units/Spearman.cfg:61
+#: data/units/Spearman.cfg:112
 msgid "spear"
 msgstr "dárda"
 
@@ -5425,9 +5430,9 @@ msgstr ""
 "használni."
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:55
-#: data/units/Goblin_Impaler.cfg:35 data/units/Halbardier.cfg:38
-#: data/units/Halbardier.cfg:79 data/units/Javelineer.cfg:34
-#: data/units/Pikeman.cfg:28 data/units/Spearman.cfg:65
+#: data/units/Goblin_Impaler.cfg:35 data/units/Halbardier.cfg:42
+#: data/units/Halbardier.cfg:83 data/units/Javelineer.cfg:36
+#: data/units/Pikeman.cfg:30 data/units/Spearman.cfg:67
 msgid "firststrike"
 msgstr "első ütés"
 
@@ -5511,17 +5516,26 @@ msgstr ""
 msgid "Duelist"
 msgstr "Párbajhős"
 
-#: data/units/Duelist.cfg:26
+#: data/units/Duelist.cfg:30
 msgid ""
-"Duelists are masters of the art of swordplay. Their skill with the rapier "
-"allows them to attack and parry with only one hand, while they wield a "
-"crossbow in the other to shoot distant foes."
+"It is a peculiar fashion of Wesnoth's nobility, in that they typically "
+"enroll their sons into one of two orders of armigers, training them either "
+"in the art of horsemanship, or fencing. Duelists are so named for an "
+"unfortunately common practice of young aristocrats, for whom the heat of "
+"insult can sometimes incite a rash demonstration of their natural right.\n"
+"\n"
+"Experienced fencers, who often look the part of nobility if not always "
+"actually of noble birth, carry with them a small crossbow that is easily "
+"concealed under a coat or cape. Slow to load and often thought dishonorable "
+"to use, it is in fact very useful, and those of their ranks who live long "
+"enough to be veterans typically do so by making such concessions to utility "
+"and survival.\n"
+"\n"
+"Special Notes: their skill at skirmishing allows fencers to dart right past "
+"an opponent, ignoring zones of control."
 msgstr ""
-"A kardvívást művész szinten űző vívó mestere a tőrnek, így egyetlen "
-"fegyverrel támad és véd is. Szabad kezével aprópuskát kezel, s így a "
-"távolabbi ellenségeit is veszélyezteti."
 
-#: data/units/Duelist.cfg:42 data/units/Fencer.cfg:20
+#: data/units/Duelist.cfg:46 data/units/Fencer.cfg:24
 msgid "rapier"
 msgstr "párbajtőr"
 
@@ -5557,13 +5571,15 @@ msgstr "Törp sárkányőr"
 
 #: data/units/Dwarvish_Dragonguard.cfg:25
 msgid ""
-"The guardians of the great dwarvish cities, they blast at their enemies "
-"using fire from what are called dragonstaves. They are the chief possessors "
-"of arcane Dwarvish technology."
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors in a single blow."
 msgstr ""
-"A hatalmas törp városok őrzői az ellenfelek közé tüzet lőnek fegyvereikkel, "
-"melyeket sárkánybotnak hívnak. Ők a vezető professzorai a titkos Törp "
-"technológiának."
 
 #: data/units/Dwarvish_Dragonguard.cfg:29
 #: data/units/Dwarvish_Dragonguard.cfg:47
@@ -5610,13 +5626,11 @@ msgstr "Törp-báró"
 
 #: data/units/Dwarvish_Lord.cfg:33
 msgid ""
-"Dwarvish Lords are kings under the mountains. Their skill with the battle "
-"axe is unmatched, and they are able to hit even enemies that are far away. "
-"Their fine armor is made of the strong alloys crafted by their kin."
+"Clad in shining armor, these dwarves look like kings from under the "
+"mountains. They wield axe and hammer with masterful skill, and can hit a "
+"target with a thrown hand axe at several paces. Though slow on their feet, "
+"these dwarves are a testament to the prowess of their kin."
 msgstr ""
-"A hegyek gyomrában a törp-báró az úr. Csatabárdot jobban nem forgat senki, "
-"akár a távolabb álló ellenségét is könnyedén eléri. Finom páncélja keményen "
-"megművelt ötvözetből készült."
 
 #: data/units/Dwarvish_Lord.cfg:69
 msgid "hatchet"
@@ -5628,15 +5642,11 @@ msgstr "Törp Rúnafaragó"
 
 #: data/units/Dwarvish_Runemaster.cfg:25
 msgid ""
-"The mighty Dwarvish Runemasters are fearsome and sturdy warriors who have "
-"harnessed the secret powers of the Dwarven runes. They can send lightning "
-"bolts at their enemies by striking the ground with their marvelously crafted "
-"and much beloved hammers, which shimmer with magical energy."
+"Dwarven magic, inasmuch as is known, most often manifests itself by the "
+"inscription of runes in the surface of an object, which by their mere "
+"presence somehow imbue it with power. Though rarely seen in combat, a master "
+"of these runes can put them to terrifying use."
 msgstr ""
-"A törp rúnák titkos hatalmát uralják a félelmes és keménykötésű harcosok, az "
-"erőteljes Törp Rúnafaragók. Nagy figyelemmel és szeretettel faragják meg "
-"kalapácsaikat, melyek varázserőtől remegnek, és villámokat szórnak "
-"ellenségeikre, ha gazdájuk a földre sújt."
 
 #: data/units/Dwarvish_Runemaster.cfg:29
 msgid "runic hammer"
@@ -5690,15 +5700,14 @@ msgstr "Törp mennydörgő"
 
 #: data/units/Dwarvish_Thunderer.cfg:16
 msgid ""
-"Dwarvish Thunderers provide much needed ranged support to the mighty, yet "
-"slow, close-range fighters of the Dwarvish armies. Their mysterious weapons "
-"are slower, cruder and noisier than the elegant and swift elvish bows, but "
-"their impact is unmatched."
+"When the men of Wesnoth first encountered the dwarves, they were mystified "
+"by the power of the Dwarvish Thunderers, who were able to hurl death from "
+"afar through the apparatus of these strange ... 'wands' they carried into "
+"battle. After the peace instituted by the Ka'lian came into effect, "
+"Haldric's people, not understanding these weapons, and certainly unable to "
+"make any of their own, realized they were lucky to no longer be fighting the "
+"dwarves, and vowed never to do so again."
 msgstr ""
-"A törp seregek erős, de lassú közelharci egységeinek létszükséglete a "
-"támogatás. Ezt a feladatot látják el a mennydörgők: nehézkes flintáik "
-"lassabbak, durvábbak és zajosabbak a kecses és gyors tünde íjaknál, de tűz- "
-"és ütőerejük páratlan."
 
 #: data/units/Dwarvish_Thunderer.cfg:63
 msgid "thunderstick"
@@ -5708,19 +5717,21 @@ msgstr "villámvessző"
 msgid "Dwarvish Thunderguard"
 msgstr "Törp villámőrző"
 
-#: data/units/Dwarvish_Thunderguard.cfg:16
+#: data/units/Dwarvish_Thunderguard.cfg:18
 msgid ""
-"The famed Dwarvish Thunderguards wield mysterious and feared weapons forged "
-"by the Dwarf weapon-masters, experts in arcane Dwarvish technology. Although "
-"they are no faster than the more common Thunderers, their attack is much "
-"more deadly."
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these 'thundersticks' can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
-"A híres törp villámőrzők misztikus és félelmetes fegyvereket kezelnek, "
-"melyek a törp fegyverkészítő-mesterek, a titokzatos törp-technológiával "
-"kovácsolnak. Nem gyorsabbak semmilyen téren a mennydörgőknél, de sokkal "
-"halálosabbak támadásaik."
 
-#: data/units/Dwarvish_Thunderguard.cfg:46
+#: data/units/Dwarvish_Thunderguard.cfg:48
 msgid "dragonstick"
 msgstr "sárkányvessző"
 
@@ -6160,16 +6171,22 @@ msgstr "ökörnyál"
 msgid "Fencer"
 msgstr "Vívó"
 
-#: data/units/Fencer.cfg:17
+#: data/units/Fencer.cfg:21
 msgid ""
-"Fencers are trained in the arts of swordplay. While their rapier is a light "
-"weapon, they can use it quickly and with deadly skill. Wielding a dagger in "
-"their other hand, they can also deftly parry all kinds of attacks. Fencers "
-"are skirmishers, and so can move right past enemy units."
+"Fencers belong to a school of thought that considers the armor most soldiers "
+"wear in combat to be their own worst enemy. While armor can only soften a "
+"blow, evading it will completely negate any ill effects. Being able to "
+"reliably dodge any offensive move is a luxury only afforded to the fit of "
+"body, and then only to those who endure rigorous training.\n"
+"\n"
+"Outfitted with only a dagger and rapier, fencers are light on their feet and "
+"useful in many situations where their armor-bound peers are at a "
+"disadvantage. They relish, often literally, in dancing circles around troops "
+"like heavy infantry, in mockery of the price they pay for their full plate.\n"
+"\n"
+"Special Notes: their skill at skirmishing allows fencers to dart right past "
+"an opponent, ignoring zones of control."
 msgstr ""
-"A vívók a kardvívás fortélyainak ismerői. Noha vívótőrük könnyű fegyver, az "
-"ő kezükben gyors és halálos. Bal kézben hárítótőrt forgatva könnyen védenek "
-"minden támadást"
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
@@ -6225,11 +6242,13 @@ msgstr "Útonálló"
 
 #: data/units/Footpad.cfg:17 data/units/Footpad.cfg:83
 msgid ""
-"The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
-"places and people to rob."
+"These petty criminals are often derisively called 'footpads' by their "
+"superiors, for they are tasked with any job that requires a great deal of "
+"running around, often being employed as couriers, or scouts. The endurance "
+"and skill on their feet that comes of this serves them well in combat, and "
+"despite their pitiable weaponry, they are quite good at harrying their "
+"enemies, especially under cover of darkness."
 msgstr ""
-"A bandita hordák az útonállók segítségével kutatják fel a kirabolható "
-"embereket és házakat."
 
 #: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:20
 #: data/units/Troll.cfg:23 data/units/Troll_Hero.cfg:23
@@ -6578,21 +6597,24 @@ msgstr ""
 msgid "Halberdier"
 msgstr "Alabárdos"
 
-#: data/units/Halbardier.cfg:29
+#: data/units/Halbardier.cfg:33
 msgid ""
-"The best of the soldiers are chosen to become Halberdiers. Their weapon, "
-"though a little slower than the sword, can strike with deadly force, and "
-"because of its great length, Halberdiers always strike first in combat, even "
-"when defending. Halberdiers have great facility at dealing with troops they "
-"can keep further than the end of their weapons, but find some difficulty in "
-"very close combat."
+"A halberd is a difficult and very heavy weapon to use, but powerful in the "
+"hands of an expert. It is also much more flexible than the spear from which "
+"it descended. As any halberdier can tell you, the weapon possesses 4 primary "
+"striking points, 2 more than a spear or pike; these are the tip, the blade, "
+"the spike at the base of the shaft, and the inner point on the blade, which "
+"can be used in a motion pulling back towards the wielder. All this makes for "
+"a very versatile weapon in melee, especially against cavalry.\n"
+"\n"
+"However, a halberd is notably more expensive to craft than a spear, and in "
+"the hands of a novice, much less effective. In the armies of Wesnoth, it is "
+"customary only to grant these weapons to veteran pikemen, who have proven "
+"their skill to employ them properly on the field of war.\n"
+"\n"
+"Special Notes: the length of their weapon allows a halberdier to strike "
+"first in melee, even in defense."
 msgstr ""
-"A közkatonák legjobbjait alabárdosokká teszik meg. Habár a kardnál lassabb a "
-"fegyverük, halálos sebeket lehet vele ejteni, és ámulatba ejtő hoszuknak "
-"köszönhetően az alabárdosok mindig először ütnek, még védekezésben is. Az "
-"alabárdosok könnyen elbánnak azokkal a csapatokkal, amelyek fegyvereik "
-"távolságában állnak, de nehézségekbe ütközhetnek a túlságosan közeli "
-"harcokban."
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -6600,11 +6622,15 @@ msgstr "Nehézgyalogság"
 
 #: data/units/Heavy_Infantryman.cfg:15
 msgid ""
-"Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
-"lack of speed is their only disadvantage."
+"Heavy infantry are a somewhat anomalous choice for outfitting troops. They "
+"are very difficult to send afield in war, and are useful mostly only in the "
+"defense of the city or castle in which they are stationed. Clad head to toe "
+"in full plate, and armed with large maces, heavy infantry excel at their "
+"sole purpose of melee combat. A few of them in the center of a line will "
+"shore up its strength considerably. The downsides to this are obvious, both "
+"in the weight of the metal, and the great care that must be taken of it, but "
+"in certain situations, these troops are well worth the trade-offs."
 msgstr ""
-"A nehézgyalogság tagjai talpig vasban harcolnak, így sok csapást elviselnek. "
-"Egyetlen hátrányuk lassúságukban áll."
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -6666,34 +6692,37 @@ msgstr ""
 msgid "Iron Mauler"
 msgstr "Vasöklű"
 
-#: data/units/Iron_Mauler.cfg:24
+#: data/units/Iron_Mauler.cfg:26
 msgid ""
-"Towering over the battlefield like iron giants, Iron Maulers are renowned "
-"(and feared) for their incredible resilience and brutal hammer blows. Were "
-"it not for their slow movement and rarity on the battlefield, these mighty "
-"soldiers would control the continent."
+"Iron Maulers are given their name for reasons which are all too obvious. The "
+"men within these suits of armor can match ogres in contests of strength, and "
+"are marked as the champions of the castle guards in which they serve. They "
+"are, however, expensive to maintain, and cannot be sent to distant battles "
+"without a full convoy of servants to support them.\n"
+"\n"
+"Though staggering in melee combat, there are many drawbacks to being "
+"outfitted in this way; Iron Maulers tire easily, and know all too well that "
+"they cannot run on the battlefield. Too often have they seen a distant "
+"comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
-"A harcmezők vasba öltözött óriásai, a Vasöklűek híresek és félelmetesek "
-"hihetetlen ellenállóképességük és rettenetes kalapácsaik nyomán. Ha nem "
-"lennének olyan lassúak, és gyakrabban mennének a harcmezőre, ezek a harcosok "
-"képesek lennének a kontinenset is uralmuk alá hajtani."
 
 #: data/units/Javelineer.cfg:3
 msgid "Javelineer"
 msgstr "Lándzsás gyalogság"
 
-#: data/units/Javelineer.cfg:26
+#: data/units/Javelineer.cfg:28
 msgid ""
-"Javelineers have mastered the use of the pointy sticks they were given as "
-"recruits. Dangerous in melee, they have also developed their skill at "
-"throwing their javelins, making them potent in both demesnes of combat. "
-"Because of the length of their spears, they strike first in melee, even when "
-"defending."
+"Spearmen almost always equip themselves with a few javelins, to harry, if "
+"not kill, enemies at range. Some, however, take to them rather well, finding "
+"that they have a natural talent in their use. Javelineers are a valuable "
+"asset to an army, being able to supplement their skill in melee combat with "
+"an ability to handle distant foes. They can hurl javelins into enemy ranks "
+"from a distance, often without retribution, and still hold their ground in "
+"melee.\n"
+"\n"
+"Special Notes: the length of their weapon allows a javelineer to strike "
+"first in melee, even in defense."
 msgstr ""
-"A lándzsás gyalogság mesterien használja hosszú fegyverét. Életveszélyes a "
-"közelharcban, de képes fegyvereit dobni is, ezzel mindkét harcmodorban "
-"ütőképessé téve őt. Ezen felül a lándzsáik hossza miatt övék az első "
-"támadás, még védekezés során is."
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
@@ -6775,11 +6804,12 @@ msgstr "Hosszúíj nyilas"
 
 #: data/units/Longbowman.cfg:19
 msgid ""
-"Longbowmen carry the huge specialized bows that they have learned to handle "
-"after years of combat. Their missiles can pierce even armor."
+"Longbows are forbidden to beginning archers simply by merit of physical law. "
+"It takes great strength to draw one, and the added range and power are "
+"useless unless one has good aim with the weapon, a gift that beginners "
+"certainly lack. Longbowmen carry their weaponry as a badge of pride, and "
+"most bowmen look to the day they can progress to using one."
 msgstr ""
-"A hosszúíj nyilasok hatalmas, sajátos íjakat használnak, amiknek kezelését "
-"harcok hosszú sora alatt sajátítottak el. Nyilaik még a páncélt is átütik."
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:87
 msgid "Lord"
@@ -6883,13 +6913,15 @@ msgstr "Mesteríjász"
 
 #: data/units/Master_Bowman.cfg:27
 msgid ""
-"Master Bowmen have reached the highest levels of skill with the bow that any "
-"human can hope to attain. Their power with this deadly weapon is surpassed "
-"only by that of the Elves."
+"Master bowmen have reached the zenith of their art, inasmuch as any man is "
+"capable. Armed with both a sword, and a great yew bow, these warriors crown "
+"battalions of archers with their presence, bringing down many a foe with "
+"their well-aimed shots. Their skill with the sword is also not to be "
+"discounted; they are easily as good with it as any novice swordsman. Of the "
+"many races in the world, only the elves surpass humanity in archery, and "
+"their human counterparts have speculated, perhaps in envy, that this is only "
+"by dint of age."
 msgstr ""
-"A Mesteríjász elért arra a legmagasabb szintre az íj használatában, amit "
-"minden ember remélni tud hogy elér. Ügyességüket eme halálos fegyver "
-"használatában csak a tündéké múlja felül."
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
@@ -7533,19 +7565,20 @@ msgstr ""
 msgid "Outlaw"
 msgstr "Törvényen kívüli"
 
-#: data/units/Outlaw.cfg:26
-msgid "Outlaws fight better at night."
-msgstr "A törvényen kívüliek az éj leple alatt jobban harcolnak."
+#: data/units/Outlaw.cfg:26 data/units/Outlaw.cfg:107
+msgid ""
+"After some years of service, former 'footpads' rise up in the ranks of their "
+"fellow outlaws. Having proven themselves in combat, they are given more "
+"dangerous tasks, and a greater share of the spoils. Though many opponents "
+"would mock their choice of weaponry, the outlaws are well aware of its "
+"deadly capacity, and also of the ready availability of ammunition. Outlaws "
+"are somewhat ill at ease fighting during the day, preferring the cover of "
+"nightfall."
+msgstr ""
 
 #: data/units/Outlaw.cfg:84
 msgid "female^Outlaw"
 msgstr "Törvényen kívüli"
-
-#: data/units/Outlaw.cfg:107
-msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
-msgstr ""
-"A törvényen kívüliek az éj leple alatt jobban harcolnak. A nők emellett jól "
-"is néznek ki."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
@@ -7633,20 +7666,20 @@ msgstr "vasvilla"
 msgid "Pikeman"
 msgstr "Pikás gyalogság"
 
-#: data/units/Pikeman.cfg:20
+#: data/units/Pikeman.cfg:22
 msgid ""
-"Pikemen are more experienced soldiers who have changed their spears for long "
-"pikes. Because of the length of their weapons, they always strike first in "
-"combat, even when defending. They are especially deadly when fighting "
-"cavalry, though they find some difficulty in fighting in extremely close "
-"quarters."
+"Promising spearmen in the armies of Wesnoth are often graduated to wielding "
+"pikes, and are outfitted with something far superior to the motley "
+"collection of leather armor they wore as recruits. A pike is a much longer "
+"weapon than a spear, and thus facilitates different combat tactics. A wall "
+"of pikemen is the bane of any cavalry charge, and with proper discipline and "
+"tactics, pikemen can also hold most infantry at bay.\n"
+"\n"
+"Special Notes: the length of their weapon allows a pikeman to strike first "
+"in melee, even in defense."
 msgstr ""
-"A tapasztaltabb lándzsások fegyverüket hosszú, hegyes, vékony pikára "
-"cserélik. Fegyverük hossza megadja nekik az első ütés lehetőségét, még "
-"védekezéskor is.Rendkívül veszélyesek bármilyen lovascsapat ellen, de a "
-"túlságosan közeli harcban nehézségeik támadhatnak."
 
-#: data/units/Pikeman.cfg:23
+#: data/units/Pikeman.cfg:25
 msgid "pike"
 msgstr "pika"
 
@@ -7742,19 +7775,21 @@ msgstr ""
 msgid "Rogue"
 msgstr "Haramia"
 
-#: data/units/Rogue.cfg:18 data/units/Rogue.cfg:78
+#: data/units/Rogue.cfg:20 data/units/Rogue.cfg:82
 msgid ""
-"Rogues are masters of agility and can move right past an enemy, ignoring any "
-"zones of control. Master thieves, they too have the backstab ability, which "
-"allows them to do double damage if an ally of theirs is on the opposite side "
-"of an enemy they are attacking."
+"The ringleaders of any group of thieves earn their positions by skill. These "
+"rogues have spent many an unpleasant moment darting through crowds and "
+"dodging away from those who wish them ill, a set of skills which is very "
+"handy in a fight. Masters of knifework, they can also throw knives with "
+"reliable accuracy, and their long hours of prowling around at night leave "
+"them more comfortable fighting in the dark.\n"
+"\n"
+"Special Notes: while a unit with the same allegiance as the rogue distracts "
+"an enemy, the rogue may backstab, inflicting double damage, by creeping "
+"around behind that enemy."
 msgstr ""
-"A haramiák a legfürgébbek közé tartoznak, bármely ellenséges csapat vonalai "
-"mellett elsurranhatnak, tekintet nélkül az ellenőrzési zónákra. Lesből, "
-"orvul támadnak, ha lehetőségük van rá - így kétszereset sebezhetnek, ha a "
-"megtámadott ellenség másik oldalán szövetségesük áll."
 
-#: data/units/Rogue.cfg:63
+#: data/units/Rogue.cfg:65
 msgid "female^Rogue"
 msgstr "Haramia"
 
@@ -7764,13 +7799,15 @@ msgstr "Udvari testőr"
 
 #: data/units/Royal_Guard.cfg:30
 msgid ""
-"Members of the Royal Guard are hand picked from the strongest and sturdiest "
-"of the army. They are deployed only in critical situations and, so far, have "
-"always succeeded in their assigned tasks."
+"Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
+"any of the higher nobility, they function as bodyguards, and partly as a "
+"badge of office for their employers. A special force of Royal Guards is "
+"stationed at the capitol, guarding the palace grounds and the royal family. "
+"Because of their trusted relationship to their superiors, they, rather than "
+"mercenaries, are often deployed on missions of crucial import. Their "
+"reliability and mastery of close combat are their best assets, for which "
+"they are well-renowned."
 msgstr ""
-"Az Udvari Testőrség embereit egyenként válogatják ki a sereg legkiválóbb és "
-"legerősebb katonái közül. A hűség vezérli őket minden válságos helyzetben, "
-"és eddig minden feladatukat sikerrel teljesítették."
 
 #: data/units/Saurian.cfg:20
 msgid ""
@@ -7979,13 +8016,15 @@ msgstr "Darabont"
 
 #: data/units/Shock_Trooper.cfg:15
 msgid ""
-"Shock Troopers are the elite of the Wesnothian military. Although they move "
-"slowly, they are immensely powerful and therefore feared throughout Wesnoth "
-"and even into the lands beyond."
+"Shock troopers are the elite of the heavy infantry, and half of their use in "
+"war is simply a matter of intimidation. The only men who can enter their "
+"ranks are prodigiously well-built, and when clad in black plate brimming "
+"with spikes, they are a fearsome sight to behold. The sight of Shock "
+"Troopers breaking an enemy with their morning stars is often enough to "
+"shatter the morale of any opposition, who sometimes wonder if such armor "
+"covers monsters, rather than men. The drawback of such heavy armor is, of "
+"course, the time it takes to move into and out of combat."
 msgstr ""
-"A darabontok a wesnoth-i katonák legkiválóbbjai. Lassan mozognak, de "
-"félelmetesen harcolnak, okkal rettegnek tőlük Wesnoth földjén, de azon kívül "
-"is."
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
@@ -8120,17 +8159,17 @@ msgstr "A mozgó eleven testek megedződtek az életükért vívott harcban."
 msgid "Spearman"
 msgstr "Dárdás"
 
-#: data/units/Spearman.cfg:17
+#: data/units/Spearman.cfg:19
 msgid ""
-"Spearmen are the core of the human armies. These young soldiers are given "
-"basic training and put in the front lines to do the bulk of the fighting. "
-"Because of the length of their spears, they strike first in melee, even when "
-"defending."
+"Swords are, for many, an expensive luxury, and one which peasants can ill "
+"afford. Spears are much easier to make and will do well even without a head, "
+"though most can afford one. Clad in leather armor, and often armed with a "
+"shield and a few javelins, spearmen are the staple of most armies, often "
+"thrown into the front lines with only basic training.\n"
+"\n"
+"Special Notes: the length of their weapon allows a spearman to strike first "
+"in melee, even in defense."
 msgstr ""
-"A dárdások jelentős részt képeznek az emberi seregekben. Alapkiképzésben "
-"részesülnek és egyből az arcvonalra kerülnek megtapasztalni a csata sűrűjét. "
-"Lándzsáik hosszúsága lehetővé teszi, hogy még védekezéskor is először "
-"üssenek a közelharcban."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
@@ -8153,11 +8192,13 @@ msgstr "Kardos"
 
 #: data/units/Swordsman.cfg:21
 msgid ""
-"Swordsmen are the core of the human armies. These young soldiers are given "
-"basic training and put in the front lines to do the bulk of the fighting."
+"An experienced soldier will often save enough to equip a suit of scale or "
+"chain armor, and a sturdy broadsword. Though trading their spears for swords "
+"is often a somewhat jarring change, most spearmen will leap at the chance, "
+"knowing all too well the limitations of the weapon they are leaving behind. "
+"A sword is not without its own drawbacks, but is much more maneuverable than "
+"a spear, and much better in close quarters."
 msgstr ""
-"A kardosok jelentős részt alkotnak az emberi seregekben. Alapkiképzésben "
-"részesülnek és egyből az arcvonalra kerülnek megtapasztalni a csata sűrűjét."
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -8175,19 +8216,18 @@ msgstr ""
 msgid "Thief"
 msgstr "Tolvaj"
 
-#: data/units/Thief.cfg:18 data/units/Thief.cfg:119
+#: data/units/Thief.cfg:18 data/units/Thief.cfg:121
 msgid ""
-"Thieves are deft of foot and elusive, making them difficult to hit. Skilled "
-"at back-stabbing, Thieves do double damage if an ally of theirs is on the "
-"opposite side of an enemy they are attacking. Being of chaotic disposition, "
-"Thieves fight better at night than day."
+"For as long as anyone can remember, the members of the various 'guilds' of "
+"rat-catchers that spring up in any larger city have had a curious practice "
+"of bleaching their hair with lime till it becomes a pale shade of blue. It "
+"is a bold thing to do, as their profession often delves into less-than-legal "
+"enterprises. Thieves have many skills, and by necessity are both light on "
+"their feet, and good with knives. They happily employ less-than-honorable "
+"tactics in combat, seeing little purpose in a "
 msgstr ""
-"A tolvaj sebes léptű és rejtőzködő, így nehezen lehet megsebezni. Lest "
-"vetnek ellenségeiknek, ezért kétszereset sebeznek azon az ellenséges "
-"egységen, amelyiknek a tolvajjal ellentétes oldalán szövetséges egység áll. "
-"Mivel gátlástalanok, éjjel jobban harcolnak, mint nappal."
 
-#: data/units/Thief.cfg:104
+#: data/units/Thief.cfg:106
 msgid "female^Thief"
 msgstr "Tolvajnő"
 
@@ -8196,12 +8236,13 @@ msgid "Thug"
 msgstr "Gyilkos"
 
 #: data/units/Thug.cfg:17
+#, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
 "peasants thrown off their lands. They quickly become thugs as a means of "
-"sustenance. Regardless of their background, they all share a similar "
-"characteristic: they beat victims with large clubs."
+"sustenance. Regardless of their background, they all share the practice of "
+"beating their victims with large clubs."
 msgstr ""
 "A gyilkosok sokféle helyről származhatnak, de vannak olyanok is, akik ebbe "
 "születtek bele. Legtöbbjüket a hadseregtől csapták ki, vagy művelt "
@@ -8952,7 +8993,7 @@ msgid "Date"
 msgstr "Dátum"
 
 #: src/dialogs.cpp:550 src/game.cpp:884 src/help.cpp:1117
-#: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2051 src/playturn.cpp:2228
+#: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2051 src/playturn.cpp:2230
 msgid "Name"
 msgstr "Név"
 
@@ -8960,7 +9001,7 @@ msgstr "Név"
 msgid "Show replay"
 msgstr "Visszajátszás mutatása"
 
-#: src/dialogs.cpp:579 src/multiplayer_create.cpp:74
+#: src/dialogs.cpp:579 src/multiplayer_create.cpp:75
 msgid "Load Game"
 msgstr "Betölt"
 
@@ -9001,12 +9042,12 @@ msgstr "egészséges"
 msgid "invisible"
 msgstr "láthatatlan"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:54
+#: src/filechooser.cpp:51 src/multiplayer_create.cpp:55
 msgid "OK"
 msgstr "Oké"
 
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:500
-#: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
+#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:507
+#: src/multiplayer_create.cpp:54 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -9023,14 +9064,14 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Figyelem: A fájl amit be próbáltál tölteni hibás. Ezzel szemben betöltöm.\n"
 
-#: src/game.cpp:642 src/multiplayer_connect.cpp:888
+#: src/game.cpp:642 src/multiplayer_connect.cpp:895
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Ez a mentés a játék másik verziójával készült. Megpróbálod mégis betölteni? "
 
-#: src/game.cpp:650 src/game.cpp:653 src/multiplayer_connect.cpp:873
+#: src/game.cpp:650 src/game.cpp:653 src/multiplayer_connect.cpp:880
 msgid "The file you have tried to load is corrupt: '"
 msgstr "A fájl amit be próbáltál tölteni hibás: '"
 
@@ -9299,7 +9340,7 @@ msgstr "TP követelmény: "
 msgid "attacks"
 msgstr "támadás"
 
-#: src/help.cpp:1118 src/playturn.cpp:2050 src/playturn.cpp:2227
+#: src/help.cpp:1118 src/playturn.cpp:2050 src/playturn.cpp:2229
 msgid "Type"
 msgstr "Típus"
 
@@ -9399,7 +9440,7 @@ msgstr "Következő"
 msgid "Skip"
 msgstr "Kihagyás"
 
-#: src/intro.cpp:320
+#: src/intro.cpp:297
 msgid "The End"
 msgstr "Vége"
 
@@ -9515,76 +9556,76 @@ msgstr "Számítógépvezérelte játékos"
 msgid "(Empty slot)"
 msgstr "(Üres hely)"
 
-#: src/multiplayer_connect.cpp:455
+#: src/multiplayer_connect.cpp:462
 msgid "No non-random sides in the current era"
 msgstr "Ebben a korszakban nincsenek meghatározott csapatok"
 
-#: src/multiplayer_connect.cpp:471
+#: src/multiplayer_connect.cpp:478
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Nem találtam fővezért a $faction néphez"
 
-#: src/multiplayer_connect.cpp:479 src/multiplayer_lobby.cpp:105
+#: src/multiplayer_connect.cpp:486 src/multiplayer_lobby.cpp:105
 #: src/multiplayer_wait.cpp:145
 msgid "Game Lobby"
 msgstr "Játékcsarnok"
 
-#: src/multiplayer_connect.cpp:485 src/multiplayer_connect.cpp:494
+#: src/multiplayer_connect.cpp:492 src/multiplayer_connect.cpp:501
 msgid "Team"
 msgstr "Csapat"
 
-#: src/multiplayer_connect.cpp:492
+#: src/multiplayer_connect.cpp:499
 msgid "Player/Type"
 msgstr "Játékos/Típus"
 
-#: src/multiplayer_connect.cpp:493
+#: src/multiplayer_connect.cpp:500
 msgid "Faction"
 msgstr "Faj"
 
-#: src/multiplayer_connect.cpp:495
+#: src/multiplayer_connect.cpp:502
 msgid "Color"
 msgstr "Szín"
 
-#: src/multiplayer_connect.cpp:496 src/playturn.cpp:1774 src/playturn.cpp:1785
+#: src/multiplayer_connect.cpp:503 src/playturn.cpp:1774 src/playturn.cpp:1785
 msgid "Gold"
 msgstr "Arany"
 
-#: src/multiplayer_connect.cpp:498
+#: src/multiplayer_connect.cpp:505
 msgid "Computer vs Computer"
 msgstr " Számítógép kontra számítógép "
 
-#: src/multiplayer_connect.cpp:499
+#: src/multiplayer_connect.cpp:506
 msgid "I'm Ready"
 msgstr "Indulhat!"
 
-#: src/multiplayer_connect.cpp:517
+#: src/multiplayer_connect.cpp:524
 msgid "The scenario is invalid because it has no sides."
 msgstr "Ez a pálya alkalmatlan, mert nincsenek csapatok benne."
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:818
 msgid "Network Player"
 msgstr "Hálózati játékos"
 
-#: src/multiplayer_connect.cpp:812
+#: src/multiplayer_connect.cpp:819
 msgid "Local Player"
 msgstr "Helyi játékos"
 
-#: src/multiplayer_connect.cpp:813
+#: src/multiplayer_connect.cpp:820
 msgid "Computer Player"
 msgstr "Számítógép"
 
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:821
 msgid "Empty"
 msgstr "Üres"
 
-#: src/multiplayer_connect.cpp:880
+#: src/multiplayer_connect.cpp:887
 msgid "This is not a multiplayer save"
 msgstr "Ez nem egy többjátékos mentés"
 
-#: src/multiplayer_connect.cpp:921
+#: src/multiplayer_connect.cpp:928
 msgid "Cannot find era $era"
 msgstr "Nem találtam a $era korszakot"
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:942
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -9592,7 +9633,7 @@ msgstr ""
 "Győzöl, ha\n"
 "@Legyőződ az (összes) ellenfél vezérét"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:978
 msgid "Waiting for players to join..."
 msgstr "Hálózati játékosok kapcsolódására várakozás..."
 
@@ -9613,94 +9654,102 @@ msgid "Map to play:"
 msgstr "Pálya a játékhoz:"
 
 #: src/multiplayer_create.cpp:50
+msgid "Use map settings"
+msgstr ""
+
+#: src/multiplayer_create.cpp:51
 msgid "Fog Of War"
 msgstr "Köd"
 
-#: src/multiplayer_create.cpp:52
+#: src/multiplayer_create.cpp:53
 msgid "Observers"
 msgstr "Megfigyelők"
 
-#: src/multiplayer_create.cpp:55
+#: src/multiplayer_create.cpp:56
 msgid "Regenerate"
 msgstr "Újrarajzolás"
 
-#: src/multiplayer_create.cpp:56
+#: src/multiplayer_create.cpp:57
 msgid "Settings..."
 msgstr "Beállítások..."
 
-#: src/multiplayer_create.cpp:85
+#: src/multiplayer_create.cpp:86
 msgid "The maximum turns the game will go for"
 msgstr "A legtovább ennyi körig tarthat a játék"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:91
 msgid "The amount of income each village yields per turn"
 msgstr "A bevétel mértéke, amit egy falu körönként biztosít"
 
-#: src/multiplayer_create.cpp:95
+#: src/multiplayer_create.cpp:96
 msgid "The amount of experience a unit needs to advance"
 msgstr "A tapasztalati követelmény mértéke, egy egység szintlépéséhez"
 
-#: src/multiplayer_create.cpp:98
+#: src/multiplayer_create.cpp:99
+msgid "Use scenario specific settings"
+msgstr ""
+
+#: src/multiplayer_create.cpp:102
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Az ellenség nem látható, amíg az egységeid látókörébe nem kerül"
 
-#: src/multiplayer_create.cpp:101
+#: src/multiplayer_create.cpp:105
 msgid "The map is unknown until your units explore it"
 msgstr "A pálya ismeretlen, amíg az egységeid fel nem fedezik"
 
-#: src/multiplayer_create.cpp:104
+#: src/multiplayer_create.cpp:108
 msgid "Allow users who are not playing to watch the game"
 msgstr "A játék megtekintésének engedélyezése a játékban nem résztvevőknek"
 
-#: src/multiplayer_create.cpp:108
+#: src/multiplayer_create.cpp:112
 msgid "Share View"
 msgstr "Látottak megosztása"
 
-#: src/multiplayer_create.cpp:109
+#: src/multiplayer_create.cpp:113
 msgid "Share Maps"
 msgstr "Pálya megosztása"
 
-#: src/multiplayer_create.cpp:110
+#: src/multiplayer_create.cpp:114
 msgid "Share None"
 msgstr "Nincs megosztás"
 
-#: src/multiplayer_create.cpp:121
+#: src/multiplayer_create.cpp:125
 msgid "No multiplayer sides."
 msgstr "Nincs többjátékos oldal."
 
-#: src/multiplayer_create.cpp:123
+#: src/multiplayer_create.cpp:127
 msgid "No eras found"
 msgstr "Nem találtam korszakot"
 
-#: src/multiplayer_create.cpp:136
+#: src/multiplayer_create.cpp:140
 msgid "$login's game"
 msgstr "$login játéka"
 
-#: src/multiplayer_create.cpp:167
+#: src/multiplayer_create.cpp:172
 msgid "Invalid era selected"
 msgstr "A kiválasztott korszak érvénytelen"
 
-#: src/multiplayer_create.cpp:198
+#: src/multiplayer_create.cpp:204
 msgid "You must enter a name."
 msgstr "Meg kell adnod egy nevet."
 
-#: src/multiplayer_create.cpp:207
+#: src/multiplayer_create.cpp:213
 msgid "Turns: "
 msgstr "Kör:"
 
-#: src/multiplayer_create.cpp:209
+#: src/multiplayer_create.cpp:215
 msgid "Unlimited Turns"
 msgstr "Korlátlan kör"
 
-#: src/multiplayer_create.cpp:216
+#: src/multiplayer_create.cpp:222
 msgid "Village Gold: "
 msgstr "Falu arany:"
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:228
 msgid "Experience Modifier: "
 msgstr "Szintlépés-alakító:"
 
-#: src/multiplayer_create.cpp:325
+#: src/multiplayer_create.cpp:331
 msgid "Players: "
 msgstr "Játékosok:"
 
@@ -10085,103 +10134,103 @@ msgstr "Egység elbocsátása"
 msgid "Recall"
 msgstr "Visszahívás"
 
-#: src/playturn.cpp:2137
+#: src/playturn.cpp:2139
 msgid "Message:"
 msgstr "Üzenet: "
 
-#: src/playturn.cpp:2137
+#: src/playturn.cpp:2139
 msgid "Send to allies only"
 msgstr "Küldés csak a szövetségeseknek"
 
-#: src/playturn.cpp:2232 src/unit.cpp:1118
+#: src/playturn.cpp:2234 src/unit.cpp:1118
 msgid "Moves"
 msgstr "lép"
 
-#: src/playturn.cpp:2233
+#: src/playturn.cpp:2235
 msgid "Location"
 msgstr "Hely"
 
-#: src/playturn.cpp:2279
+#: src/playturn.cpp:2281
 msgid "Unit List"
 msgstr "Egységek listája"
 
-#: src/playturn.cpp:2315 src/playturn.cpp:2377
+#: src/playturn.cpp:2317 src/playturn.cpp:2379
 msgid "Recruits"
 msgstr "Toboroz"
 
-#: src/playturn.cpp:2321 src/playturn.cpp:2381
+#: src/playturn.cpp:2323 src/playturn.cpp:2383
 msgid "Recalls"
 msgstr "Visszahív"
 
-#: src/playturn.cpp:2327 src/playturn.cpp:2385
+#: src/playturn.cpp:2329 src/playturn.cpp:2387
 msgid "Advancements"
 msgstr "Szintfejlődések"
 
-#: src/playturn.cpp:2333 src/playturn.cpp:2389
+#: src/playturn.cpp:2335 src/playturn.cpp:2391
 msgid "Losses"
 msgstr "Veszít"
 
-#: src/playturn.cpp:2339 src/playturn.cpp:2393
+#: src/playturn.cpp:2341 src/playturn.cpp:2395
 msgid "Kills"
 msgstr "Öl"
 
-#: src/playturn.cpp:2345
+#: src/playturn.cpp:2347
 msgid "Damage Inflicted"
 msgstr "Okozott sebzés"
 
-#: src/playturn.cpp:2351
+#: src/playturn.cpp:2353
 msgid "Damage Taken"
 msgstr "Elszenvedett sebzés"
 
-#: src/playturn.cpp:2357
+#: src/playturn.cpp:2359
 msgid "Damage Inflicted (EV)"
 msgstr "Okozott sebzés (EV)"
 
-#: src/playturn.cpp:2364
+#: src/playturn.cpp:2366
 msgid "Damage Taken (EV)"
 msgstr "Elszenvedett sebzés (EV)"
 
-#: src/playturn.cpp:2370
+#: src/playturn.cpp:2372
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/playturn.cpp:2407
+#: src/playturn.cpp:2409
 msgid "Search"
 msgstr "Keresés"
 
-#: src/playturn.cpp:2417
+#: src/playturn.cpp:2419
 msgid "prompt^Command:"
 msgstr "Parancs:"
 
-#: src/playturn.cpp:2428
+#: src/playturn.cpp:2430
 msgid "Chat Log"
 msgstr "Csevejnapló"
 
-#: src/playturn.cpp:2493
+#: src/playturn.cpp:2495
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Nem találtam olyan címkét vagy egységet ami megfelelt volna a "
 "következőpőnek: '$search'."
 
-#: src/playturn.cpp:2524
+#: src/playturn.cpp:2526
 msgid "Saved Theme Preference: "
 msgstr "Elmentett téma beállításai: "
 
-#: src/playturn.cpp:2530
+#: src/playturn.cpp:2532
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Az új téma a következő megkezdett vagy folytatott játékban fog használatba "
 "lépni."
 
-#: src/playturn.cpp:2631
+#: src/playturn.cpp:2633
 msgid "Place Label"
 msgstr "Címke elhelyezése"
 
-#: src/playturn.cpp:2632
+#: src/playturn.cpp:2634
 msgid "Label:"
 msgstr "Címke:"
 
-#: src/playturn.cpp:2764
+#: src/playturn.cpp:2766
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -10189,23 +10238,23 @@ msgstr ""
 "A játékok elvesztették az összhangot, ezért ki kell lépni. Szeretnéd "
 "elmenteni a hibanaplót?"
 
-#: src/playturn.cpp:2817
+#: src/playturn.cpp:2819
 msgid "Replace with AI"
 msgstr "Állítsunk be egy MI-t"
 
-#: src/playturn.cpp:2818
+#: src/playturn.cpp:2820
 msgid "Replace with local player"
 msgstr "Állítsunk be egy helyi játékost"
 
-#: src/playturn.cpp:2819
+#: src/playturn.cpp:2821
 msgid "Abort game"
 msgstr "Fejezzük be a játékot"
 
-#: src/playturn.cpp:2822
+#: src/playturn.cpp:2824
 msgid "Replace with "
 msgstr "Állítsuk be őt:"
 
-#: src/playturn.cpp:2826
+#: src/playturn.cpp:2828
 msgid "has left the game. What do you want to do?"
 msgstr "kilépett a játékból. Mit tegyünk most?"
 
@@ -10447,6 +10496,266 @@ msgstr "igazságos"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "semleges"
+
+#~ msgid ""
+#~ "Assassins are masters of the night. Like Rogues, they can surround and "
+#~ "backstab an opponent, doing double damage. They can also throw poison-"
+#~ "tipped knives at their enemies from long range."
+#~ msgstr ""
+#~ "Az orgyilkosok az éjszaka urai. Akárcsak a haramiák, körbe tudják venni "
+#~ "és lesből megtámadni ellenségüket, így kétszeres sebzést okozva. Távolból "
+#~ "mérgezett tőröket hajíthatnak célpontjaikra."
+
+#~ msgid ""
+#~ "Armed with a heavy mace, Bandits are adept at robbing and killing at "
+#~ "night. Wearing brown cloaks and black hoods, they steal from the peasants "
+#~ "who live near them when not fighting against invaders."
+#~ msgstr ""
+#~ "A nehéz buzogánnyal felszerelt banditák ügyesek az éjszakai rablásban és "
+#~ "a gyilkolásban. Barna leplet és fekete csuklyát viselnek, amit "
+#~ "parasztoktól rabolnak, ha azok épp nem harcolnak megszállók ellen."
+
+#~ msgid ""
+#~ "Immersed from childhood in the ways of archery, the young Bowmen are the "
+#~ "most common ranged combatants in Wesnothian armies. They do not undergo "
+#~ "as rigorous a training as the spearman or heavy infantry, because their "
+#~ "battle tactics require more finesse than brute strength."
+#~ msgstr ""
+#~ "A gyerekkoruk óta íjászatra edzett fiatal íjászokból kerül ki a wesnoth-i "
+#~ "hadsereg legtöbb lőfegyveres harcosa. Ezen egységek nem olyan szigorú a "
+#~ "képzésük, mint egy dárdás vagy egy nehézgyalogsághoz tartozó harcosnak, "
+#~ "mert harci taktikájukhoz több ravaszságot, mint nyers erőt használnak fel."
+
+#~ msgid ""
+#~ "The best riders in Wesnoth are recruited into the military to become "
+#~ "Cavalrymen. A Cavalryman, strictly disciplined, does not charge across "
+#~ "the field of battle like a horseman, but makes more of an effort to hold "
+#~ "his position."
+#~ msgstr ""
+#~ "A huszárok Wesnoth legjobb lovasaiból kerülnek ki. Ez a szigorúan "
+#~ "fegyelmezett hadosztály, amellyel bár nem lehet oly kiválóan rohamozni a "
+#~ "harcmezőn, mint egy lovassal, de különösen hatékony a pozíciójának a "
+#~ "megtartásában."
+
+#~ msgid ""
+#~ "Duelists are masters of the art of swordplay. Their skill with the rapier "
+#~ "allows them to attack and parry with only one hand, while they wield a "
+#~ "crossbow in the other to shoot distant foes."
+#~ msgstr ""
+#~ "A kardvívást művész szinten űző vívó mestere a tőrnek, így egyetlen "
+#~ "fegyverrel támad és véd is. Szabad kezével aprópuskát kezel, s így a "
+#~ "távolabbi ellenségeit is veszélyezteti."
+
+#~ msgid ""
+#~ "The guardians of the great dwarvish cities, they blast at their enemies "
+#~ "using fire from what are called dragonstaves. They are the chief "
+#~ "possessors of arcane Dwarvish technology."
+#~ msgstr ""
+#~ "A hatalmas törp városok őrzői az ellenfelek közé tüzet lőnek "
+#~ "fegyvereikkel, melyeket sárkánybotnak hívnak. Ők a vezető professzorai a "
+#~ "titkos Törp technológiának."
+
+#~ msgid ""
+#~ "Dwarvish Lords are kings under the mountains. Their skill with the battle "
+#~ "axe is unmatched, and they are able to hit even enemies that are far "
+#~ "away. Their fine armor is made of the strong alloys crafted by their kin."
+#~ msgstr ""
+#~ "A hegyek gyomrában a törp-báró az úr. Csatabárdot jobban nem forgat "
+#~ "senki, akár a távolabb álló ellenségét is könnyedén eléri. Finom páncélja "
+#~ "keményen megművelt ötvözetből készült."
+
+#~ msgid ""
+#~ "The mighty Dwarvish Runemasters are fearsome and sturdy warriors who have "
+#~ "harnessed the secret powers of the Dwarven runes. They can send lightning "
+#~ "bolts at their enemies by striking the ground with their marvelously "
+#~ "crafted and much beloved hammers, which shimmer with magical energy."
+#~ msgstr ""
+#~ "A törp rúnák titkos hatalmát uralják a félelmes és keménykötésű harcosok, "
+#~ "az erőteljes Törp Rúnafaragók. Nagy figyelemmel és szeretettel faragják "
+#~ "meg kalapácsaikat, melyek varázserőtől remegnek, és villámokat szórnak "
+#~ "ellenségeikre, ha gazdájuk a földre sújt."
+
+#~ msgid ""
+#~ "Dwarvish Thunderers provide much needed ranged support to the mighty, yet "
+#~ "slow, close-range fighters of the Dwarvish armies. Their mysterious "
+#~ "weapons are slower, cruder and noisier than the elegant and swift elvish "
+#~ "bows, but their impact is unmatched."
+#~ msgstr ""
+#~ "A törp seregek erős, de lassú közelharci egységeinek létszükséglete a "
+#~ "támogatás. Ezt a feladatot látják el a mennydörgők: nehézkes flintáik "
+#~ "lassabbak, durvábbak és zajosabbak a kecses és gyors tünde íjaknál, de "
+#~ "tűz- és ütőerejük páratlan."
+
+#~ msgid ""
+#~ "The famed Dwarvish Thunderguards wield mysterious and feared weapons "
+#~ "forged by the Dwarf weapon-masters, experts in arcane Dwarvish "
+#~ "technology. Although they are no faster than the more common Thunderers, "
+#~ "their attack is much more deadly."
+#~ msgstr ""
+#~ "A híres törp villámőrzők misztikus és félelmetes fegyvereket kezelnek, "
+#~ "melyek a törp fegyverkészítő-mesterek, a titokzatos törp-technológiával "
+#~ "kovácsolnak. Nem gyorsabbak semmilyen téren a mennydörgőknél, de sokkal "
+#~ "halálosabbak támadásaik."
+
+#~ msgid ""
+#~ "Fencers are trained in the arts of swordplay. While their rapier is a "
+#~ "light weapon, they can use it quickly and with deadly skill. Wielding a "
+#~ "dagger in their other hand, they can also deftly parry all kinds of "
+#~ "attacks. Fencers are skirmishers, and so can move right past enemy units."
+#~ msgstr ""
+#~ "A vívók a kardvívás fortélyainak ismerői. Noha vívótőrük könnyű fegyver, "
+#~ "az ő kezükben gyors és halálos. Bal kézben hárítótőrt forgatva könnyen "
+#~ "védenek minden támadást"
+
+#~ msgid ""
+#~ "The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
+#~ "places and people to rob."
+#~ msgstr ""
+#~ "A bandita hordák az útonállók segítségével kutatják fel a kirabolható "
+#~ "embereket és házakat."
+
+#~ msgid ""
+#~ "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
+#~ "though a little slower than the sword, can strike with deadly force, and "
+#~ "because of its great length, Halberdiers always strike first in combat, "
+#~ "even when defending. Halberdiers have great facility at dealing with "
+#~ "troops they can keep further than the end of their weapons, but find some "
+#~ "difficulty in very close combat."
+#~ msgstr ""
+#~ "A közkatonák legjobbjait alabárdosokká teszik meg. Habár a kardnál "
+#~ "lassabb a fegyverük, halálos sebeket lehet vele ejteni, és ámulatba ejtő "
+#~ "hoszuknak köszönhetően az alabárdosok mindig először ütnek, még "
+#~ "védekezésben is. Az alabárdosok könnyen elbánnak azokkal a csapatokkal, "
+#~ "amelyek fegyvereik távolságában állnak, de nehézségekbe ütközhetnek a "
+#~ "túlságosan közeli harcokban."
+
+#~ msgid ""
+#~ "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
+#~ "lack of speed is their only disadvantage."
+#~ msgstr ""
+#~ "A nehézgyalogság tagjai talpig vasban harcolnak, így sok csapást "
+#~ "elviselnek. Egyetlen hátrányuk lassúságukban áll."
+
+#~ msgid ""
+#~ "Towering over the battlefield like iron giants, Iron Maulers are renowned "
+#~ "(and feared) for their incredible resilience and brutal hammer blows. "
+#~ "Were it not for their slow movement and rarity on the battlefield, these "
+#~ "mighty soldiers would control the continent."
+#~ msgstr ""
+#~ "A harcmezők vasba öltözött óriásai, a Vasöklűek híresek és félelmetesek "
+#~ "hihetetlen ellenállóképességük és rettenetes kalapácsaik nyomán. Ha nem "
+#~ "lennének olyan lassúak, és gyakrabban mennének a harcmezőre, ezek a "
+#~ "harcosok képesek lennének a kontinenset is uralmuk alá hajtani."
+
+#~ msgid ""
+#~ "Javelineers have mastered the use of the pointy sticks they were given as "
+#~ "recruits. Dangerous in melee, they have also developed their skill at "
+#~ "throwing their javelins, making them potent in both demesnes of combat. "
+#~ "Because of the length of their spears, they strike first in melee, even "
+#~ "when defending."
+#~ msgstr ""
+#~ "A lándzsás gyalogság mesterien használja hosszú fegyverét. Életveszélyes "
+#~ "a közelharcban, de képes fegyvereit dobni is, ezzel mindkét harcmodorban "
+#~ "ütőképessé téve őt. Ezen felül a lándzsáik hossza miatt övék az első "
+#~ "támadás, még védekezés során is."
+
+#~ msgid ""
+#~ "Longbowmen carry the huge specialized bows that they have learned to "
+#~ "handle after years of combat. Their missiles can pierce even armor."
+#~ msgstr ""
+#~ "A hosszúíj nyilasok hatalmas, sajátos íjakat használnak, amiknek "
+#~ "kezelését harcok hosszú sora alatt sajátítottak el. Nyilaik még a páncélt "
+#~ "is átütik."
+
+#~ msgid ""
+#~ "Master Bowmen have reached the highest levels of skill with the bow that "
+#~ "any human can hope to attain. Their power with this deadly weapon is "
+#~ "surpassed only by that of the Elves."
+#~ msgstr ""
+#~ "A Mesteríjász elért arra a legmagasabb szintre az íj használatában, amit "
+#~ "minden ember remélni tud hogy elér. Ügyességüket eme halálos fegyver "
+#~ "használatában csak a tündéké múlja felül."
+
+#~ msgid "Outlaws fight better at night."
+#~ msgstr "A törvényen kívüliek az éj leple alatt jobban harcolnak."
+
+#~ msgid ""
+#~ "Outlaws fight better at night. Female Outlaws look good while doing it."
+#~ msgstr ""
+#~ "A törvényen kívüliek az éj leple alatt jobban harcolnak. A nők emellett "
+#~ "jól is néznek ki."
+
+#~ msgid ""
+#~ "Pikemen are more experienced soldiers who have changed their spears for "
+#~ "long pikes. Because of the length of their weapons, they always strike "
+#~ "first in combat, even when defending. They are especially deadly when "
+#~ "fighting cavalry, though they find some difficulty in fighting in "
+#~ "extremely close quarters."
+#~ msgstr ""
+#~ "A tapasztaltabb lándzsások fegyverüket hosszú, hegyes, vékony pikára "
+#~ "cserélik. Fegyverük hossza megadja nekik az első ütés lehetőségét, még "
+#~ "védekezéskor is.Rendkívül veszélyesek bármilyen lovascsapat ellen, de a "
+#~ "túlságosan közeli harcban nehézségeik támadhatnak."
+
+#~ msgid ""
+#~ "Rogues are masters of agility and can move right past an enemy, ignoring "
+#~ "any zones of control. Master thieves, they too have the backstab ability, "
+#~ "which allows them to do double damage if an ally of theirs is on the "
+#~ "opposite side of an enemy they are attacking."
+#~ msgstr ""
+#~ "A haramiák a legfürgébbek közé tartoznak, bármely ellenséges csapat "
+#~ "vonalai mellett elsurranhatnak, tekintet nélkül az ellenőrzési zónákra. "
+#~ "Lesből, orvul támadnak, ha lehetőségük van rá - így kétszereset "
+#~ "sebezhetnek, ha a megtámadott ellenség másik oldalán szövetségesük áll."
+
+#~ msgid ""
+#~ "Members of the Royal Guard are hand picked from the strongest and "
+#~ "sturdiest of the army. They are deployed only in critical situations and, "
+#~ "so far, have always succeeded in their assigned tasks."
+#~ msgstr ""
+#~ "Az Udvari Testőrség embereit egyenként válogatják ki a sereg legkiválóbb "
+#~ "és legerősebb katonái közül. A hűség vezérli őket minden válságos "
+#~ "helyzetben, és eddig minden feladatukat sikerrel teljesítették."
+
+#~ msgid ""
+#~ "Shock Troopers are the elite of the Wesnothian military. Although they "
+#~ "move slowly, they are immensely powerful and therefore feared throughout "
+#~ "Wesnoth and even into the lands beyond."
+#~ msgstr ""
+#~ "A darabontok a wesnoth-i katonák legkiválóbbjai. Lassan mozognak, de "
+#~ "félelmetesen harcolnak, okkal rettegnek tőlük Wesnoth földjén, de azon "
+#~ "kívül is."
+
+#~ msgid ""
+#~ "Spearmen are the core of the human armies. These young soldiers are given "
+#~ "basic training and put in the front lines to do the bulk of the fighting. "
+#~ "Because of the length of their spears, they strike first in melee, even "
+#~ "when defending."
+#~ msgstr ""
+#~ "A dárdások jelentős részt képeznek az emberi seregekben. Alapkiképzésben "
+#~ "részesülnek és egyből az arcvonalra kerülnek megtapasztalni a csata "
+#~ "sűrűjét. Lándzsáik hosszúsága lehetővé teszi, hogy még védekezéskor is "
+#~ "először üssenek a közelharcban."
+
+#~ msgid ""
+#~ "Swordsmen are the core of the human armies. These young soldiers are "
+#~ "given basic training and put in the front lines to do the bulk of the "
+#~ "fighting."
+#~ msgstr ""
+#~ "A kardosok jelentős részt alkotnak az emberi seregekben. Alapkiképzésben "
+#~ "részesülnek és egyből az arcvonalra kerülnek megtapasztalni a csata "
+#~ "sűrűjét."
+
+#~ msgid ""
+#~ "Thieves are deft of foot and elusive, making them difficult to hit. "
+#~ "Skilled at back-stabbing, Thieves do double damage if an ally of theirs "
+#~ "is on the opposite side of an enemy they are attacking. Being of chaotic "
+#~ "disposition, Thieves fight better at night than day."
+#~ msgstr ""
+#~ "A tolvaj sebes léptű és rejtőzködő, így nehezen lehet megsebezni. Lest "
+#~ "vetnek ellenségeiknek, ezért kétszereset sebeznek azon az ellenséges "
+#~ "egységen, amelyiknek a tolvajjal ellentétes oldalán szövetséges egység "
+#~ "áll. Mivel gátlástalanok, éjjel jobban harcolnak, mint nappal."
 
 #~ msgid ""
 #~ "Terrible and awe-inspiring, the most ancient of woses grow to a "

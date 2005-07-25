@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-20 14:39+0200\n"
+"POT-Creation-Date: 2005-07-25 16:50+0200\n"
 "PO-Revision-Date: 2005-07-20 12:19+0200\n"
 "Last-Translator: Maarten Albrecht <maartenalbrecht@gmail.com>\n"
 "Language-Team: Dutch <onne@grammex.com>\n"
@@ -34,7 +34,7 @@ msgstr "Inleiding"
 msgid "Gameplay"
 msgstr "Gameplay"
 
-#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2231
+#: data/help.cfg:22 data/help.cfg:215 src/playturn.cpp:2233
 msgid "Traits"
 msgstr "Trekken"
 
@@ -797,7 +797,11 @@ msgstr ""
 msgid "About"
 msgstr "Over"
 
-#: data/help.cfg:210
+#: data/help.cfg:209
+msgid "License"
+msgstr ""
+
+#: data/help.cfg:216
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -810,7 +814,7 @@ msgstr ""
 "lichtelijk. In principe worden ze willekeurig toegewezen aan een "
 "gerekruteerde eenheid."
 
-#: data/help.cfg:212
+#: data/help.cfg:218
 msgid ""
 "\n"
 "\n"
@@ -820,7 +824,7 @@ msgstr ""
 "\n"
 "De trekken, die alle niet-ondode eenheden kunnen krijgen, zijn:"
 
-#: data/help.cfg:219
+#: data/help.cfg:225
 msgid ""
 "\n"
 "\n"
@@ -848,7 +852,7 @@ msgstr ""
 "eenheden van hogere rang hebt dan zul je vermoedelijk eenheden oproepen met "
 "nuttiger \"lange termijn\" trekken."
 
-#: data/help.cfg:226
+#: data/help.cfg:232
 msgid ""
 "\n"
 "\n"
@@ -878,7 +882,7 @@ msgstr ""
 "strijdkrachten inzet. Onthoud ook dat deze eenheden niet zo stevig gebouwd "
 "zijn en dus minder goed in staat zijn posities te behouden."
 
-#: data/help.cfg:233
+#: data/help.cfg:239
 msgid ""
 "\n"
 "\n"
@@ -904,7 +908,7 @@ msgstr ""
 "nuttig zijn, hoewel de ene eenheid er meer van profiteert dan de andere. "
 "Robuste eenheden zijn goed in staat posities te behouden."
 
-#: data/help.cfg:240
+#: data/help.cfg:246
 msgid ""
 "\n"
 "\n"
@@ -932,7 +936,7 @@ msgstr ""
 "Elfenvechter. Sterke eenheden kunnen erg nuttig zijn wanneer een extra "
 "puntje schade genoeg is om de fatale klap uit te delen."
 
-#: data/help.cfg:243
+#: data/help.cfg:249
 msgid ""
 "\n"
 "\n"
@@ -944,7 +948,7 @@ msgstr ""
 "\n"
 "Andere bijzondere trekken die een eenheid kan hebben zijn:"
 
-#: data/help.cfg:251
+#: data/help.cfg:257
 msgid ""
 "\n"
 "\n"
@@ -980,7 +984,7 @@ msgstr ""
 "Deze trek wordt nooit toegewezen aan gerekruteerde eenheden dus het kan "
 "onverstandig zijn zulke eenheden te ontslaan of per ongeluk te laten omkomen."
 
-#: data/help.cfg:258
+#: data/help.cfg:264
 msgid ""
 "\n"
 "\n"
@@ -1006,7 +1010,7 @@ msgstr ""
 "te vechten, heeft vergif tegen hen geen effect. Dat kan hen waardevol maken "
 "in het gevecht tegen vijanden die vergif gebruiken bij hun aanvallen."
 
-#: data/help.cfg:265
+#: data/help.cfg:271
 msgid ""
 "\n"
 "\n"
@@ -1032,11 +1036,11 @@ msgstr ""
 "zijn begiftigd met een talent dat dat van hun broeders overtreft. Deze Elfen "
 "brengen met elke pijl een extra punt schade toe."
 
-#: data/help.cfg:272 data/terrain.cfg:150
+#: data/help.cfg:278 data/terrain.cfg:150
 msgid "Grassland"
 msgstr "Grasland"
 
-#: data/help.cfg:275
+#: data/help.cfg:283
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1055,11 +1059,11 @@ msgstr ""
 "De meeste eenheden hebben een verdedigingspercentage van 30% tot 40% op "
 "grasland."
 
-#: data/help.cfg:280 data/terrain.cfg:124 data/terrain.cfg:132
+#: data/help.cfg:288 data/terrain.cfg:124 data/terrain.cfg:132
 msgid "Road"
 msgstr "Weg"
 
-#: data/help.cfg:281
+#: data/help.cfg:291
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1069,11 +1073,11 @@ msgstr ""
 "reizigers. Wat betreft de spelregels zijn wegen gelijk aan "
 "<ref>dst=terrain_grassland text=Grasland</ref>."
 
-#: data/help.cfg:286 data/terrain.cfg:321
+#: data/help.cfg:296 data/terrain.cfg:321
 msgid "Forest"
 msgstr "Bos"
 
-#: data/help.cfg:289
+#: data/help.cfg:301
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1104,11 +1108,11 @@ msgstr ""
 "niet meer dan 40%. Elfen, inclusief hun bereden eenheden, hebben 60% tot 70% "
 "verdediging, terwijl dwergen niet meer dan 30% krijgen."
 
-#: data/help.cfg:294 data/terrain.cfg:282
+#: data/help.cfg:306 data/terrain.cfg:282
 msgid "Hills"
 msgstr "Heuvels"
 
-#: data/help.cfg:297
+#: data/help.cfg:311
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1130,11 +1134,11 @@ msgstr ""
 "De meeste eenheden hebben 50% verdediging in de heuvels, maar cavalerie "
 "heeft 40% en Dwergen 60%."
 
-#: data/help.cfg:302 data/terrain.cfg:306
+#: data/help.cfg:316 data/terrain.cfg:306
 msgid "Mountains"
 msgstr "Bergen"
 
-#: data/help.cfg:305
+#: data/help.cfg:321
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1156,11 +1160,11 @@ msgstr ""
 "De meeste eenheden hebben een verdediging van 60% in de bergen, dwergen "
 "zelfs 70%."
 
-#: data/help.cfg:310 data/terrain.cfg:51
+#: data/help.cfg:326 data/terrain.cfg:51
 msgid "Swamp"
 msgstr "Moeras"
 
-#: data/help.cfg:313
+#: data/help.cfg:331
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1180,11 +1184,11 @@ msgstr ""
 "De meeste eenheden moeten het doen met 30% verdediging in het moeras. "
 "Meermannen, Naga's en Saurianen krijgen meestal 60%."
 
-#: data/help.cfg:318 data/terrain.cfg:30
+#: data/help.cfg:336 data/terrain.cfg:30
 msgid "Shallow Water"
 msgstr "Ondiep Water"
 
-#: data/help.cfg:321
+#: data/help.cfg:341
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1206,11 +1210,11 @@ msgstr ""
 "De meeste eenheden moeten het doen met 20% tot 30% verdediging in ondiep "
 "water. Meermannen en Naga's krijgen daarentegen 60%."
 
-#: data/help.cfg:326 data/terrain.cfg:21
+#: data/help.cfg:346 data/terrain.cfg:21
 msgid "Deep Water"
 msgstr "Diep Water"
 
-#: data/help.cfg:329
+#: data/help.cfg:351
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1226,11 +1230,11 @@ msgstr ""
 "Meermannen en Naga's krijgen beide een verdediging van 50% in diep water en "
 "worden er niet door vertraagd."
 
-#: data/help.cfg:334
+#: data/help.cfg:356
 msgid "Tundra"
 msgstr "Toendra"
 
-#: data/help.cfg:337
+#: data/help.cfg:361
 msgid ""
 "Tundra is any grassland covered by snow, either permanently, or temporarily. "
 "Most units are slowed down by tundra, and have a harder time defending "
@@ -1244,11 +1248,11 @@ msgstr ""
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in de Toendra."
 
-#: data/help.cfg:342 data/terrain.cfg:70
+#: data/help.cfg:366 data/terrain.cfg:70
 msgid "Ice"
 msgstr "IJs"
 
-#: data/help.cfg:343
+#: data/help.cfg:369
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Tundra</ref>. Note that swimming "
@@ -1259,11 +1263,11 @@ msgstr ""
 "zelfs degenen die onderwater kunnen ademen, niet onder het ijs kunnen "
 "zwemmen."
 
-#: data/help.cfg:348 data/terrain.cfg:370 data/terrain.cfg:430
+#: data/help.cfg:374 data/terrain.cfg:370 data/terrain.cfg:481
 msgid "Castle"
 msgstr "Kasteel"
 
-#: data/help.cfg:351
+#: data/help.cfg:379
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1282,11 +1286,11 @@ msgstr ""
 "\n"
 "De meeste eenheden hebben ongeveer 60% verdediging in een kasteel."
 
-#: data/help.cfg:356 data/terrain.cfg:106
+#: data/help.cfg:386 data/terrain.cfg:106
 msgid "Sand"
 msgstr "Zand"
 
-#: data/help.cfg:359
+#: data/help.cfg:391
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1300,11 +1304,11 @@ msgstr ""
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in het zand."
 
-#: data/help.cfg:364 data/terrain.cfg:115
+#: data/help.cfg:396 data/terrain.cfg:115
 msgid "Desert"
 msgstr "Woestijn"
 
-#: data/help.cfg:365
+#: data/help.cfg:399
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1314,11 +1318,11 @@ msgstr ""
 "stranden, maar qua spelregels gelden ze toch als <ref>dst=terrain_sand "
 "text=Zand</ref>."
 
-#: data/help.cfg:370 data/terrain.cfg:353
+#: data/help.cfg:404 data/terrain.cfg:353
 msgid "Cave"
 msgstr "Grot"
 
-#: data/help.cfg:373
+#: data/help.cfg:409
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1337,11 +1341,11 @@ msgstr ""
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in grotten, dwergen 50%."
 
-#: data/help.cfg:378 data/terrain.cfg:157
+#: data/help.cfg:414 data/terrain.cfg:157
 msgid "Savanna"
 msgstr "Savanne"
 
-#: data/help.cfg:379
+#: data/help.cfg:416
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -1351,14 +1355,14 @@ msgstr ""
 "de wereld. Qua spelregels is het gelijk aan <ref>dst=terrain_grassland "
 "text=Grasland</ref>."
 
-#: data/help.cfg:384 data/terrain.cfg:39 data/terrain.cfg:60
+#: data/help.cfg:421 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
 #: data/terrain.cfg:196 data/terrain.cfg:209 data/terrain.cfg:360
 #: src/reports.cpp:324
 msgid "Village"
 msgstr "Dorp"
 
-#: data/help.cfg:387
+#: data/help.cfg:426
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -3202,7 +3206,7 @@ msgstr ""
 msgid "Underground"
 msgstr "Ondergronds"
 
-#: data/terrain.cfg:7 src/multiplayer_create.cpp:51
+#: data/terrain.cfg:7 src/multiplayer_create.cpp:52
 #: src/multiplayer_lobby.cpp:184
 msgid "Shroud"
 msgstr "Sluier"
@@ -3279,23 +3283,23 @@ msgstr "Donjon"
 msgid "Canyon"
 msgstr "Canyon"
 
-#: data/terrain.cfg:439
+#: data/terrain.cfg:426
 msgid "Ruin"
 msgstr "Ruïne"
 
-#: data/terrain.cfg:449
+#: data/terrain.cfg:436
 msgid "Sunken Ruin"
 msgstr "Verzonken Ruïne"
 
-#: data/terrain.cfg:460
+#: data/terrain.cfg:447
 msgid "Swamp Ruin"
 msgstr "Moerasruïne"
 
-#: data/terrain.cfg:471
+#: data/terrain.cfg:458
 msgid "River Ford"
 msgstr "Rivierwade"
 
-#: data/terrain.cfg:481
+#: data/terrain.cfg:468
 msgid "Lava"
 msgstr "Lava"
 
@@ -3311,11 +3315,11 @@ msgstr "Acties"
 msgid "End Turn"
 msgstr "Volgende"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2229 src/unit.cpp:1081
+#: data/themes/default.cfg:167 src/playturn.cpp:2231 src/unit.cpp:1081
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2053 src/playturn.cpp:2230
+#: data/themes/default.cfg:176 src/playturn.cpp:2053 src/playturn.cpp:2232
 msgid "XP"
 msgstr "XP"
 
@@ -3899,9 +3903,9 @@ msgstr ""
 "negeert controlezones."
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:26
-#: data/units/Assassin.cfg:127 data/units/Duelist.cfg:25
+#: data/units/Assassin.cfg:129 data/units/Duelist.cfg:25
 #: data/units/Fencer.cfg:16 data/units/Outlaw_Princess.cfg:20
-#: data/units/Rogue.cfg:17 data/units/Rogue.cfg:77 data/units/Saurian.cfg:22
+#: data/units/Rogue.cfg:17 data/units/Rogue.cfg:79 data/units/Saurian.cfg:22
 #: data/units/Saurian_Ambusher.cfg:20 data/units/Saurian_Flanker.cfg:30
 #: data/units/Saurian_Skirmisher.cfg:20 data/units/Saurian_Warrior.cfg:31
 msgid "skirmisher"
@@ -4105,7 +4109,7 @@ msgid "Ancient Lich"
 msgstr "Oude Lich"
 
 #: data/units/Ancient_Lich.cfg:17 data/units/Ancient_Wose.cfg:15
-#: data/units/Assassin.cfg:15 data/units/Assassin.cfg:116
+#: data/units/Assassin.cfg:15 data/units/Assassin.cfg:118
 #: data/units/Bandit.cfg:15 data/units/Battle_Princess.cfg:17
 #: data/units/Battle_Princess.cfg:76 data/units/Blood_Bat.cfg:14
 #: data/units/Cavalier.cfg:15 data/units/Cave_Spider.cfg:14
@@ -4317,7 +4321,7 @@ msgstr "verpletter"
 #: data/units/Giant_Scorpion.cfg:47 data/units/Goblin_Pillager.cfg:47
 #: data/units/Great_Mage.cfg:37 data/units/Great_Mage.cfg:143
 #: data/units/Great_Troll.cfg:33 data/units/Heavy_Infantryman.cfg:20
-#: data/units/Horse_Lord.cfg:45 data/units/Iron_Mauler.cfg:29
+#: data/units/Horse_Lord.cfg:45 data/units/Iron_Mauler.cfg:31
 #: data/units/Mage.cfg:27 data/units/Mage.cfg:110
 #: data/units/Mage_of_Light.cfg:44 data/units/Mage_of_Light.cfg:129
 #: data/units/Mermaid_Diviner.cfg:40 data/units/Mermaid_Enchantress.cfg:22
@@ -4445,32 +4449,36 @@ msgstr "Oppermagiër"
 msgid "Assassin"
 msgstr "Sluipmoordenaar"
 
-#: data/units/Assassin.cfg:27 data/units/Assassin.cfg:128
+#: data/units/Assassin.cfg:29 data/units/Assassin.cfg:132
 msgid ""
-"Assassins are masters of the night. Like Rogues, they can surround and "
-"backstab an opponent, doing double damage. They can also throw poison-tipped "
-"knives at their enemies from long range."
+"The greatest of thieves are sometimes tasked to take far more than their "
+"victim's belongings. Masters of knife-fighting and uncannily light on their "
+"feet, these menacing figures employ any means to silently dispatch their "
+"victims, be it poisoned knives thrown from afar, or a dagger planted in the "
+"back. Deadly at night, these assassins are somewhat uncomfortable fighting "
+"under the open sun.\n"
+"\n"
+"Special Notes: while a unit with the same allegiance as the assassin "
+"distracts an enemy, the assassin may backstab, inflicting double damage, by "
+"creeping around behind that enemy. Their throwing knives are also poisoned, "
+"which will continually sap away an enemy's strength."
 msgstr ""
-"Sluipmoordenaars zijn meesters van de nacht. Net zoals schurken beheersen ze "
-"de ruggesteek en worden ze niet tegengehouden door vijandige zones. "
-"Sluipmoordenaars gooien messen met een giftige punt van veraf naar hun "
-"vijand."
 
-#: data/units/Assassin.cfg:43 data/units/Assassin.cfg:131
+#: data/units/Assassin.cfg:45 data/units/Assassin.cfg:135
 #: data/units/Dwarvish_Thunderer.cfg:38
-#: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Orcish_Archer.cfg:21
+#: data/units/Dwarvish_Thunderguard.cfg:22 data/units/Orcish_Archer.cfg:21
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Slayer.cfg:28
-#: data/units/Poacher.cfg:25 data/units/Rogue.cfg:21 data/units/Rogue.cfg:81
-#: data/units/Thief.cfg:84 data/units/Thief.cfg:185 data/units/Trapper.cfg:34
+#: data/units/Poacher.cfg:25 data/units/Rogue.cfg:23 data/units/Rogue.cfg:85
+#: data/units/Thief.cfg:86 data/units/Thief.cfg:189 data/units/Trapper.cfg:34
 msgid "dagger"
 msgstr "dolk"
 
-#: data/units/Assassin.cfg:44 data/units/Assassin.cfg:75
-#: data/units/Assassin.cfg:132 data/units/Assassin.cfg:163
+#: data/units/Assassin.cfg:46 data/units/Assassin.cfg:77
+#: data/units/Assassin.cfg:136 data/units/Assassin.cfg:167
 #: data/units/Battle_Princess.cfg:45 data/units/Battle_Princess.cfg:92
 #: data/units/Blood_Bat.cfg:42 data/units/Bone_Shooter.cfg:38
 #: data/units/Bowman.cfg:34 data/units/Cavalier.cfg:50
-#: data/units/Cavalryman.cfg:42 data/units/Cave_Spider.cfg:42
+#: data/units/Cavalryman.cfg:44 data/units/Cave_Spider.cfg:42
 #: data/units/Commander.cfg:36 data/units/Commander.cfg:111
 #: data/units/Dark_Spirit.cfg:41 data/units/Death_Knight.cfg:43
 #: data/units/Deathblade.cfg:49 data/units/Direwolf_Rider.cfg:47
@@ -4482,11 +4490,11 @@ msgstr "dolk"
 #: data/units/Drake_Gladiator.cfg:35 data/units/Drake_Inferno.cfg:34
 #: data/units/Drake_Slasher.cfg:26 data/units/Drake_Warden.cfg:35
 #: data/units/Drake_Warrior.cfg:23 data/units/Draug.cfg:46
-#: data/units/Duelist.cfg:43 data/units/Dwarvish_Berserker.cfg:37
+#: data/units/Duelist.cfg:47 data/units/Dwarvish_Berserker.cfg:37
 #: data/units/Dwarvish_Fighter.cfg:23 data/units/Dwarvish_Lord.cfg:37
 #: data/units/Dwarvish_Lord.cfg:70 data/units/Dwarvish_Steelclad.cfg:29
 #: data/units/Dwarvish_Thunderer.cfg:39
-#: data/units/Dwarvish_Thunderguard.cfg:21
+#: data/units/Dwarvish_Thunderguard.cfg:23
 #: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:46
 #: data/units/Elvish_Archer.cfg:148 data/units/Elvish_Avenger.cfg:56
 #: data/units/Elvish_Avenger.cfg:176 data/units/Elvish_Captain.cfg:25
@@ -4497,13 +4505,13 @@ msgstr "dolk"
 #: data/units/Elvish_Outrider.cfg:39 data/units/Elvish_Ranger.cfg:47
 #: data/units/Elvish_Ranger.cfg:160 data/units/Elvish_Rider.cfg:33
 #: data/units/Elvish_Scout.cfg:34 data/units/Elvish_Sharpshooter.cfg:55
-#: data/units/Elvish_Sharpshooter.cfg:181 data/units/Fencer.cfg:21
+#: data/units/Elvish_Sharpshooter.cfg:181 data/units/Fencer.cfg:25
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
 #: data/units/Fire_Dragon.cfg:32 data/units/General.cfg:29
 #: data/units/Ghoul.cfg:27 data/units/Goblin_Knight.cfg:22
 #: data/units/Grand_Knight.cfg:34 data/units/Grand_Marshal.cfg:34
 #: data/units/Gryphon.cfg:32 data/units/Gryphon_Master.cfg:34
-#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:75
+#: data/units/Gryphon_Rider.cfg:24 data/units/Halbardier.cfg:79
 #: data/units/Horse_Lord.cfg:23 data/units/Knight.cfg:25
 #: data/units/Lieutenant.cfg:25 data/units/Longbowman.cfg:23
 #: data/units/Lord.cfg:32 data/units/Lord.cfg:116
@@ -4523,33 +4531,33 @@ msgstr "dolk"
 #: data/units/Orcish_Sovereign.cfg:31 data/units/Orcish_Warlord.cfg:29
 #: data/units/Orcish_Warrior.cfg:20 data/units/Poacher.cfg:26
 #: data/units/Princess.cfg:24 data/units/Princess.cfg:62
-#: data/units/Revenant.cfg:37 data/units/Rogue.cfg:22 data/units/Rogue.cfg:40
-#: data/units/Rogue.cfg:82 data/units/Rogue.cfg:100
+#: data/units/Revenant.cfg:37 data/units/Rogue.cfg:24 data/units/Rogue.cfg:42
+#: data/units/Rogue.cfg:86 data/units/Rogue.cfg:104
 #: data/units/Royal_Guard.cfg:34 data/units/Sea_Orc.cfg:29
 #: data/units/Sergeant.cfg:25 data/units/Shadow.cfg:21
 #: data/units/Skeletal_Dragon.cfg:40 data/units/Skeletal_Dragon.cfg:59
 #: data/units/Skeleton.cfg:38 data/units/Sleeping_Gryphon.cfg:28
 #: data/units/Spectre.cfg:57 data/units/Swordsman.cfg:25
-#: data/units/Thief.cfg:85 data/units/Thief.cfg:186 data/units/Trapper.cfg:35
+#: data/units/Thief.cfg:87 data/units/Thief.cfg:190 data/units/Trapper.cfg:35
 #: data/units/Vampire_Bat.cfg:20 data/units/Vampire_Lady.cfg:30
 #: data/units/Wolf_Rider.cfg:22 data/units/Wraith.cfg:25
 #: data/units/Young_Ogre.cfg:42
 msgid "blade"
 msgstr "snij"
 
-#: data/units/Assassin.cfg:48 data/units/Assassin.cfg:136
-#: data/units/Nightgaunt.cfg:61 data/units/Rogue.cfg:26
-#: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:190 src/actions.cpp:588
+#: data/units/Assassin.cfg:50 data/units/Assassin.cfg:140
+#: data/units/Nightgaunt.cfg:61 data/units/Rogue.cfg:28
+#: data/units/Rogue.cfg:90 data/units/Shadow.cfg:25 data/units/Thief.cfg:91
+#: data/units/Thief.cfg:194 src/actions.cpp:588
 msgid "backstab"
 msgstr "ruggesteek"
 
-#: data/units/Assassin.cfg:74 data/units/Assassin.cfg:162
-#: data/units/Rogue.cfg:39 data/units/Rogue.cfg:99
+#: data/units/Assassin.cfg:76 data/units/Assassin.cfg:166
+#: data/units/Rogue.cfg:41 data/units/Rogue.cfg:103
 msgid "knife"
 msgstr "mes"
 
-#: data/units/Assassin.cfg:77 data/units/Assassin.cfg:165
+#: data/units/Assassin.cfg:79 data/units/Assassin.cfg:169
 #: data/units/Cave_Spider.cfg:46 data/units/Cuttle_Fish.cfg:82
 #: data/units/Direwolf_Rider.cfg:63 data/units/Ghoul.cfg:31
 #: data/units/Giant_Scorpion.cfg:31 data/units/Necrophage.cfg:41
@@ -4557,7 +4565,7 @@ msgstr "mes"
 msgid "poison"
 msgstr "gif"
 
-#: data/units/Assassin.cfg:104
+#: data/units/Assassin.cfg:106
 msgid "female^Assassin"
 msgstr "Kunoichi"
 
@@ -4567,17 +4575,16 @@ msgstr "Bandiet"
 
 #: data/units/Bandit.cfg:26
 msgid ""
-"Armed with a heavy mace, Bandits are adept at robbing and killing at night. "
-"Wearing brown cloaks and black hoods, they steal from the peasants who live "
-"near them when not fighting against invaders."
+"Bandits are a motley collection of men, most of dubious background. They are "
+"the strong arm of any organized group of criminals, and though they may lack "
+"in finesse, or intelligence, they excel at their preferred task of pummeling "
+"victims into submission. Like any sort of outlaw, they're not comfortable "
+"fighting in broad daylight, being used to working at night."
 msgstr ""
-"Bandieten, bewapend met een zware goedendag, zijn bedreven in het roven en "
-"moorden in de nacht. Gekleed in bruine mantels en zwarte kappen bestelen ze "
-"de boeren uit de omgeving, wanneer ze zich niet verdedigen tegen indringers."
 
 #: data/units/Bandit.cfg:42 data/units/Drake_Enforcer.cfg:51
 #: data/units/Drake_Gladiator.cfg:71 data/units/Great_Troll.cfg:32
-#: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:28
+#: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:30
 #: data/units/Mage_of_Light.cfg:43 data/units/Mage_of_Light.cfg:128
 #: data/units/Outlaw.cfg:29 data/units/Outlaw.cfg:111
 #: data/units/Shock_Trooper.cfg:19 data/units/Warrior_King.cfg:34
@@ -4607,7 +4614,7 @@ msgstr ""
 
 #: data/units/Battle_Princess.cfg:44 data/units/Battle_Princess.cfg:91
 #: data/units/Bowman.cfg:33 data/units/Cavalier.cfg:49
-#: data/units/Cavalryman.cfg:41 data/units/Commander.cfg:35
+#: data/units/Cavalryman.cfg:43 data/units/Commander.cfg:35
 #: data/units/Commander.cfg:110 data/units/Deathblade.cfg:48
 #: data/units/Dragoon.cfg:45 data/units/Drake_Blademaster.cfg:31
 #: data/units/Drake_Clasher.cfg:33 data/units/Drake_Enforcer.cfg:33
@@ -4725,12 +4732,12 @@ msgstr "boog"
 #: data/units/Death_Knight.cfg:60 data/units/Dragoon.cfg:67
 #: data/units/Drake_Clasher.cfg:52 data/units/Drake_Enforcer.cfg:70
 #: data/units/Drake_Gladiator.cfg:53 data/units/Drake_Slasher.cfg:44
-#: data/units/Drake_Warden.cfg:53 data/units/Duelist.cfg:59
+#: data/units/Drake_Warden.cfg:53 data/units/Duelist.cfg:63
 #: data/units/Dwarvish_Dragonguard.cfg:48 data/units/Dwarvish_Guardsman.cfg:32
 #: data/units/Dwarvish_Guardsman.cfg:45 data/units/Dwarvish_Sentinel.cfg:43
 #: data/units/Dwarvish_Sentinel.cfg:56 data/units/Dwarvish_Stalwart.cfg:34
 #: data/units/Dwarvish_Stalwart.cfg:47 data/units/Dwarvish_Thunderer.cfg:64
-#: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:63
+#: data/units/Dwarvish_Thunderguard.cfg:49 data/units/Elvish_Archer.cfg:63
 #: data/units/Elvish_Archer.cfg:165 data/units/Elvish_Avenger.cfg:72
 #: data/units/Elvish_Avenger.cfg:192 data/units/Elvish_Captain.cfg:41
 #: data/units/Elvish_Champion.cfg:51 data/units/Elvish_Druid.cfg:63
@@ -4745,8 +4752,8 @@ msgstr "boog"
 #: data/units/Goblin_Impaler.cfg:30 data/units/Goblin_Impaler.cfg:49
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
 #: data/units/Grand_Knight.cfg:50 data/units/Grand_Marshal.cfg:57
-#: data/units/Halbardier.cfg:34 data/units/Horseman.cfg:25
-#: data/units/Javelineer.cfg:30 data/units/Javelineer.cfg:58
+#: data/units/Halbardier.cfg:38 data/units/Horseman.cfg:25
+#: data/units/Javelineer.cfg:32 data/units/Javelineer.cfg:60
 #: data/units/Knight.cfg:41 data/units/Lancer.cfg:34
 #: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:40
 #: data/units/Lord.cfg:49 data/units/Master_Bowman.cfg:43
@@ -4764,7 +4771,7 @@ msgstr "boog"
 #: data/units/Orcish_Shaman.cfg:182 data/units/Orcish_Slurbow.cfg:49
 #: data/units/Orcish_Sovereign.cfg:52 data/units/Orcish_Warlord.cfg:50
 #: data/units/Paladin.cfg:55 data/units/Peasant.cfg:22
-#: data/units/Peasant.cfg:35 data/units/Pikeman.cfg:24
+#: data/units/Peasant.cfg:35 data/units/Pikeman.cfg:26
 #: data/units/Pirate_Galleon.cfg:27 data/units/Poacher.cfg:43
 #: data/units/Saurian.cfg:26 data/units/Saurian.cfg:44
 #: data/units/Saurian_Ambusher.cfg:24 data/units/Saurian_Ambusher.cfg:42
@@ -4774,7 +4781,7 @@ msgstr "boog"
 #: data/units/Sea_Hag.cfg:33 data/units/Sea_Serpent.cfg:29
 #: data/units/Sergeant.cfg:42 data/units/Skeleton_Archer.cfg:42
 #: data/units/Soul_Shooter.cfg:37 data/units/Soul_Shooter.cfg:50
-#: data/units/Spearman.cfg:60 data/units/Spearman.cfg:111
+#: data/units/Spearman.cfg:62 data/units/Spearman.cfg:113
 #: data/units/Transport_Galleon.cfg:27 data/units/Trapper.cfg:52
 #: data/units/Triton.cfg:35 data/units/Vampire_Lady.cfg:44
 #: data/units/Wall_Guard.cfg:46 data/units/Watch_Tower.cfg:28
@@ -4787,14 +4794,12 @@ msgstr "Boogschutter"
 
 #: data/units/Bowman.cfg:18
 msgid ""
-"Immersed from childhood in the ways of archery, the young Bowmen are the "
-"most common ranged combatants in Wesnothian armies. They do not undergo as "
-"rigorous a training as the spearman or heavy infantry, because their battle "
-"tactics require more finesse than brute strength."
+"The use of archery in shooting something other than game was seen from its "
+"inception, and archers have had indispensable use in warfare since time "
+"immemorial. Usually of humble origins, hailing from the peasantry or the odd "
+"woodsman, bowmen have reasonable prowess with both a bow and a short sword, "
+"and are very common on the battlefield."
 msgstr ""
-"De boogschutters worden vanaf hun kindertijd ondergedompeld in het "
-"boogschieten. De jonge boogschutters zijn een vitaal onderdeel in de legers "
-"van Wesnoth."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
@@ -4814,7 +4819,7 @@ msgstr ""
 "kantelen."
 
 #: data/units/Cavalier.cfg:70 data/units/Death_Knight.cfg:59
-#: data/units/Dragoon.cfg:66 data/units/Duelist.cfg:58
+#: data/units/Dragoon.cfg:66 data/units/Duelist.cfg:62
 #: data/units/General.cfg:51 data/units/Grand_Marshal.cfg:56
 #: data/units/Lieutenant.cfg:41 data/units/Orcish_Crossbowman.cfg:39
 #: data/units/Orcish_Crossbowman.cfg:66 data/units/Orcish_Slurbow.cfg:48
@@ -4827,15 +4832,17 @@ msgstr "kruisboog"
 msgid "Cavalryman"
 msgstr "Cavalryman"
 
-#: data/units/Cavalryman.cfg:26
+#: data/units/Cavalryman.cfg:28
 msgid ""
-"The best riders in Wesnoth are recruited into the military to become "
-"Cavalrymen. A Cavalryman, strictly disciplined, does not charge across the "
-"field of battle like a horseman, but makes more of an effort to hold his "
-"position."
+"Cavalrymen are distinguished from horsemen by their tactics and equipment.  "
+"A cavalryman wears heavier armor, and carries a sword and shield, rather "
+"than a lance.  Their tactics do not include charging, but instead maneuvers "
+"like hit and run slashes with their sword, using both horse and rider as an "
+"effective tool of melee.\n"
+"\n"
+"Cavalrymen are very useful for taking and holding positions on open ground, "
+"for screening friendly soldiers, and also for scoutwork."
 msgstr ""
-"De beste ruiters in Wesnoth worden gerekruteerd om cavalerie te worden. Deze "
-"gedisciplineerde troepen zijn uitermate geschikt om dorpen in te nemen."
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
@@ -4884,8 +4891,8 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:32 data/units/Dwarvish_Stalwart.cfg:46
 #: data/units/Goblin_Impaler.cfg:29 data/units/Goblin_Impaler.cfg:48
 #: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:33
-#: data/units/Horseman.cfg:24 data/units/Javelineer.cfg:29
-#: data/units/Javelineer.cfg:57 data/units/Merman_Entangler.cfg:28
+#: data/units/Horseman.cfg:24 data/units/Javelineer.cfg:31
+#: data/units/Javelineer.cfg:59 data/units/Merman_Entangler.cfg:28
 #: data/units/Merman_Hunter.cfg:20 data/units/Merman_Hunter.cfg:60
 #: data/units/Merman_Javelineer.cfg:29 data/units/Merman_Javelineer.cfg:69
 #: data/units/Merman_Netcaster.cfg:19 data/units/Merman_Spearman.cfg:20
@@ -4894,8 +4901,8 @@ msgstr ""
 #: data/units/Saurian_Ambusher.cfg:40 data/units/Saurian_Flanker.cfg:32
 #: data/units/Saurian_Flanker.cfg:50 data/units/Saurian_Skirmisher.cfg:22
 #: data/units/Saurian_Skirmisher.cfg:40 data/units/Saurian_Warrior.cfg:33
-#: data/units/Saurian_Warrior.cfg:51 data/units/Spearman.cfg:59
-#: data/units/Spearman.cfg:110
+#: data/units/Saurian_Warrior.cfg:51 data/units/Spearman.cfg:61
+#: data/units/Spearman.cfg:112
 msgid "spear"
 msgstr "speer"
 
@@ -5419,9 +5426,9 @@ msgstr ""
 "Hakkers beheersing van zijn hellebaard is uitzonderlijk."
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:55
-#: data/units/Goblin_Impaler.cfg:35 data/units/Halbardier.cfg:38
-#: data/units/Halbardier.cfg:79 data/units/Javelineer.cfg:34
-#: data/units/Pikeman.cfg:28 data/units/Spearman.cfg:65
+#: data/units/Goblin_Impaler.cfg:35 data/units/Halbardier.cfg:42
+#: data/units/Halbardier.cfg:83 data/units/Javelineer.cfg:36
+#: data/units/Pikeman.cfg:30 data/units/Spearman.cfg:67
 msgid "firststrike"
 msgstr "eerste contact"
 
@@ -5504,17 +5511,26 @@ msgstr ""
 msgid "Duelist"
 msgstr "Duelist"
 
-#: data/units/Duelist.cfg:26
+#: data/units/Duelist.cfg:30
 msgid ""
-"Duelists are masters of the art of swordplay. Their skill with the rapier "
-"allows them to attack and parry with only one hand, while they wield a "
-"crossbow in the other to shoot distant foes."
+"It is a peculiar fashion of Wesnoth's nobility, in that they typically "
+"enroll their sons into one of two orders of armigers, training them either "
+"in the art of horsemanship, or fencing. Duelists are so named for an "
+"unfortunately common practice of young aristocrats, for whom the heat of "
+"insult can sometimes incite a rash demonstration of their natural right.\n"
+"\n"
+"Experienced fencers, who often look the part of nobility if not always "
+"actually of noble birth, carry with them a small crossbow that is easily "
+"concealed under a coat or cape. Slow to load and often thought dishonorable "
+"to use, it is in fact very useful, and those of their ranks who live long "
+"enough to be veterans typically do so by making such concessions to utility "
+"and survival.\n"
+"\n"
+"Special Notes: their skill at skirmishing allows fencers to dart right past "
+"an opponent, ignoring zones of control."
 msgstr ""
-"De duelist is een meester in het zwaardvechten. Zijn kunde met het zwaard "
-"stellen hem in staat aan te vallen en te pareren met een hand. In de andere "
-"hand hanteert hij een kruisboog"
 
-#: data/units/Duelist.cfg:42 data/units/Fencer.cfg:20
+#: data/units/Duelist.cfg:46 data/units/Fencer.cfg:24
 msgid "rapier"
 msgstr "stootdegen"
 
@@ -5548,12 +5564,15 @@ msgstr "Draakwachter"
 
 #: data/units/Dwarvish_Dragonguard.cfg:25
 msgid ""
-"The guardians of the great dwarvish cities, they blast at their enemies "
-"using fire from what are called dragonstaves. They are the chief possessors "
-"of arcane Dwarvish technology."
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors in a single blow."
 msgstr ""
-"De wachters van de grote steden der dwergen, ze vuren naar de vijand met "
-"zogenaamde draakstaven, het summum onder de dwergse vuurwapens."
 
 #: data/units/Dwarvish_Dragonguard.cfg:29
 #: data/units/Dwarvish_Dragonguard.cfg:47
@@ -5599,13 +5618,11 @@ msgstr "Dwergheer"
 
 #: data/units/Dwarvish_Lord.cfg:33
 msgid ""
-"Dwarvish Lords are kings under the mountains. Their skill with the battle "
-"axe is unmatched, and they are able to hit even enemies that are far away. "
-"Their fine armor is made of the strong alloys crafted by their kin."
+"Clad in shining armor, these dwarves look like kings from under the "
+"mountains. They wield axe and hammer with masterful skill, and can hit a "
+"target with a thrown hand axe at several paces. Though slow on their feet, "
+"these dwarves are a testament to the prowess of their kin."
 msgstr ""
-"De dwergheren zijn de heersers over bergachtige rijken. Hun kunde met het "
-"strijdbijl is ongeëvenaard. Maar ook vanop afstand zijn de dwergheren niet "
-"te onderschatten: hun werpbijl mist zelden doel."
 
 #: data/units/Dwarvish_Lord.cfg:69
 msgid "hatchet"
@@ -5617,15 +5634,11 @@ msgstr "Runemeester"
 
 #: data/units/Dwarvish_Runemaster.cfg:25
 msgid ""
-"The mighty Dwarvish Runemasters are fearsome and sturdy warriors who have "
-"harnessed the secret powers of the Dwarven runes. They can send lightning "
-"bolts at their enemies by striking the ground with their marvelously crafted "
-"and much beloved hammers, which shimmer with magical energy."
+"Dwarven magic, inasmuch as is known, most often manifests itself by the "
+"inscription of runes in the surface of an object, which by their mere "
+"presence somehow imbue it with power. Though rarely seen in combat, a master "
+"of these runes can put them to terrifying use."
 msgstr ""
-"De machtige runemeesters zijn gevreesde en robuuste strijders die de geheime "
-"krachten van de runen hebben leren beheersen. Ze kunnen bliksembollen naar "
-"hun vijanden rollen door de grond met meesterlijk vervaardigde hamers aan te "
-"raken."
 
 #: data/units/Dwarvish_Runemaster.cfg:29
 msgid "runic hammer"
@@ -5679,15 +5692,14 @@ msgstr "Donderaar"
 
 #: data/units/Dwarvish_Thunderer.cfg:16
 msgid ""
-"Dwarvish Thunderers provide much needed ranged support to the mighty, yet "
-"slow, close-range fighters of the Dwarvish armies. Their mysterious weapons "
-"are slower, cruder and noisier than the elegant and swift elvish bows, but "
-"their impact is unmatched."
+"When the men of Wesnoth first encountered the dwarves, they were mystified "
+"by the power of the Dwarvish Thunderers, who were able to hurl death from "
+"afar through the apparatus of these strange ... 'wands' they carried into "
+"battle. After the peace instituted by the Ka'lian came into effect, "
+"Haldric's people, not understanding these weapons, and certainly unable to "
+"make any of their own, realized they were lucky to no longer be fighting the "
+"dwarves, and vowed never to do so again."
 msgstr ""
-"De donderaars voorzien het leger der dwergen van de broodnodige "
-"ondersteuning voor aanvallen vanop afstand. Hun zware musketten zijn ruwer "
-"en lawaaieriger dan de elegante zoevende elfenbogen, maar hun vuurkracht "
-"valt niet te onderschatten."
 
 #: data/units/Dwarvish_Thunderer.cfg:63
 msgid "thunderstick"
@@ -5697,18 +5709,21 @@ msgstr "donderstok"
 msgid "Dwarvish Thunderguard"
 msgstr "Donderwachter"
 
-#: data/units/Dwarvish_Thunderguard.cfg:16
+#: data/units/Dwarvish_Thunderguard.cfg:18
 msgid ""
-"The famed Dwarvish Thunderguards wield mysterious and feared weapons forged "
-"by the Dwarf weapon-masters, experts in arcane Dwarvish technology. Although "
-"they are no faster than the more common Thunderers, their attack is much "
-"more deadly."
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these 'thundersticks' can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
-"De beroemde donderwachters hanteren mysterieuze en geduchte wapens gesmeed "
-"door dwergse wapenmeesters. Ook al zijn de donderwachters niet sneller dan "
-"de gewone donderaars, hun vuurkracht is heel wat krachtiger."
 
-#: data/units/Dwarvish_Thunderguard.cfg:46
+#: data/units/Dwarvish_Thunderguard.cfg:48
 msgid "dragonstick"
 msgstr "drakenstok"
 
@@ -6161,16 +6176,22 @@ msgstr "spinrag"
 msgid "Fencer"
 msgstr "Schermer"
 
-#: data/units/Fencer.cfg:17
+#: data/units/Fencer.cfg:21
 msgid ""
-"Fencers are trained in the arts of swordplay. While their rapier is a light "
-"weapon, they can use it quickly and with deadly skill. Wielding a dagger in "
-"their other hand, they can also deftly parry all kinds of attacks. Fencers "
-"are skirmishers, and so can move right past enemy units."
+"Fencers belong to a school of thought that considers the armor most soldiers "
+"wear in combat to be their own worst enemy. While armor can only soften a "
+"blow, evading it will completely negate any ill effects. Being able to "
+"reliably dodge any offensive move is a luxury only afforded to the fit of "
+"body, and then only to those who endure rigorous training.\n"
+"\n"
+"Outfitted with only a dagger and rapier, fencers are light on their feet and "
+"useful in many situations where their armor-bound peers are at a "
+"disadvantage. They relish, often literally, in dancing circles around troops "
+"like heavy infantry, in mockery of the price they pay for their full plate.\n"
+"\n"
+"Special Notes: their skill at skirmishing allows fencers to dart right past "
+"an opponent, ignoring zones of control."
 msgstr ""
-"Schermers worden getraind in de fijne kunst van het zwaardspel. Hun degen is "
-"een licht wapen, doch zij kunnen het hanteren met dodelijke precisie. Met "
-"een dolk in de andere hand slaan ze allerlei aanvallen succesvol af."
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
@@ -6226,11 +6247,13 @@ msgstr "Voetscout"
 
 #: data/units/Footpad.cfg:17 data/units/Footpad.cfg:83
 msgid ""
-"The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
-"places and people to rob."
+"These petty criminals are often derisively called 'footpads' by their "
+"superiors, for they are tasked with any job that requires a great deal of "
+"running around, often being employed as couriers, or scouts. The endurance "
+"and skill on their feet that comes of this serves them well in combat, and "
+"despite their pitiable weaponry, they are quite good at harrying their "
+"enemies, especially under cover of darkness."
 msgstr ""
-"De kroezelharige Voetscouts worden gebruikt door bandieten als verkenners op "
-"zoek naar mensen en plaatsen om te beroven."
 
 #: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:20
 #: data/units/Troll.cfg:23 data/units/Troll_Hero.cfg:23
@@ -6608,19 +6631,24 @@ msgstr ""
 msgid "Halberdier"
 msgstr "Hellebaardier"
 
-#: data/units/Halbardier.cfg:29
+#: data/units/Halbardier.cfg:33
 msgid ""
-"The best of the soldiers are chosen to become Halberdiers. Their weapon, "
-"though a little slower than the sword, can strike with deadly force, and "
-"because of its great length, Halberdiers always strike first in combat, even "
-"when defending. Halberdiers have great facility at dealing with troops they "
-"can keep further than the end of their weapons, but find some difficulty in "
-"very close combat."
+"A halberd is a difficult and very heavy weapon to use, but powerful in the "
+"hands of an expert. It is also much more flexible than the spear from which "
+"it descended. As any halberdier can tell you, the weapon possesses 4 primary "
+"striking points, 2 more than a spear or pike; these are the tip, the blade, "
+"the spike at the base of the shaft, and the inner point on the blade, which "
+"can be used in a motion pulling back towards the wielder. All this makes for "
+"a very versatile weapon in melee, especially against cavalry.\n"
+"\n"
+"However, a halberd is notably more expensive to craft than a spear, and in "
+"the hands of a novice, much less effective. In the armies of Wesnoth, it is "
+"customary only to grant these weapons to veteran pikemen, who have proven "
+"their skill to employ them properly on the field of war.\n"
+"\n"
+"Special Notes: the length of their weapon allows a halberdier to strike "
+"first in melee, even in defense."
 msgstr ""
-"De beste soldaten worden geselecteerd om hellebaardiers te worden. Ook al is "
-"de hellebaard trager dan het zwaard, de schade die het aanricht is dodelijk. "
-"Hellebaardiers zijn altijd de eersten om een slag toe te dienen, zowel bij "
-"aanval als bij  verdediging."
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -6628,11 +6656,15 @@ msgstr "Zware Infanterie"
 
 #: data/units/Heavy_Infantryman.cfg:15
 msgid ""
-"Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
-"lack of speed is their only disadvantage."
+"Heavy infantry are a somewhat anomalous choice for outfitting troops. They "
+"are very difficult to send afield in war, and are useful mostly only in the "
+"defense of the city or castle in which they are stationed. Clad head to toe "
+"in full plate, and armed with large maces, heavy infantry excel at their "
+"sole purpose of melee combat. A few of them in the center of a line will "
+"shore up its strength considerably. The downsides to this are obvious, both "
+"in the weight of the metal, and the great care that must be taken of it, but "
+"in certain situations, these troops are well worth the trade-offs."
 msgstr ""
-"De zware infanterie is gemanteld in staal. Ze zijn uitermate robuust maar "
-"traag.."
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -6706,34 +6738,37 @@ msgstr ""
 msgid "Iron Mauler"
 msgstr "Ijzeren Maler"
 
-#: data/units/Iron_Mauler.cfg:24
+#: data/units/Iron_Mauler.cfg:26
 msgid ""
-"Towering over the battlefield like iron giants, Iron Maulers are renowned "
-"(and feared) for their incredible resilience and brutal hammer blows. Were "
-"it not for their slow movement and rarity on the battlefield, these mighty "
-"soldiers would control the continent."
+"Iron Maulers are given their name for reasons which are all too obvious. The "
+"men within these suits of armor can match ogres in contests of strength, and "
+"are marked as the champions of the castle guards in which they serve. They "
+"are, however, expensive to maintain, and cannot be sent to distant battles "
+"without a full convoy of servants to support them.\n"
+"\n"
+"Though staggering in melee combat, there are many drawbacks to being "
+"outfitted in this way; Iron Maulers tire easily, and know all too well that "
+"they cannot run on the battlefield. Too often have they seen a distant "
+"comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
-"Uittorend boven het slagveld als stalen giganten, de Ijzeren malers zijn "
-"berucht voor hun ongelooflijk brutale hamerslagen en hun robuustheid. Indien "
-"ze niet zo traag zouden zijn, heersten ze beslist over het hele continent."
 
 #: data/units/Javelineer.cfg:3
 msgid "Javelineer"
 msgstr "Speerman"
 
-#: data/units/Javelineer.cfg:26
+#: data/units/Javelineer.cfg:28
 msgid ""
-"Javelineers have mastered the use of the pointy sticks they were given as "
-"recruits. Dangerous in melee, they have also developed their skill at "
-"throwing their javelins, making them potent in both demesnes of combat. "
-"Because of the length of their spears, they strike first in melee, even when "
-"defending."
+"Spearmen almost always equip themselves with a few javelins, to harry, if "
+"not kill, enemies at range. Some, however, take to them rather well, finding "
+"that they have a natural talent in their use. Javelineers are a valuable "
+"asset to an army, being able to supplement their skill in melee combat with "
+"an ability to handle distant foes. They can hurl javelins into enemy ranks "
+"from a distance, often without retribution, and still hold their ground in "
+"melee.\n"
+"\n"
+"Special Notes: the length of their weapon allows a javelineer to strike "
+"first in melee, even in defense."
 msgstr ""
-"De speerman vormt evenals de zwaardvechter de basis van het mensenleger. "
-"Deze jonge soldaten krijgen een basistraining en doen het meeste van het "
-"vechten aan het front. Omwille van de lengte van hun speer krijgen de "
-"speermannen altijd het eerste woord in een gevecht, zelfs wanneer ze "
-"verdedigen."
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
@@ -6836,11 +6871,12 @@ msgstr "Longbowman"
 
 #: data/units/Longbowman.cfg:19
 msgid ""
-"Longbowmen carry the huge specialized bows that they have learned to handle "
-"after years of combat. Their missiles can pierce even armor."
+"Longbows are forbidden to beginning archers simply by merit of physical law. "
+"It takes great strength to draw one, and the added range and power are "
+"useless unless one has good aim with the weapon, a gift that beginners "
+"certainly lack. Longbowmen carry their weaponry as a badge of pride, and "
+"most bowmen look to the day they can progress to using one."
 msgstr ""
-"Longbowmannen dragen grote bogen, die ze na jaren oefenen hebben kunnen "
-"leren beheersen. Hun pijlen gaan dwars door een harnas."
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:87
 msgid "Lord"
@@ -6978,12 +7014,15 @@ msgstr "Meester Schutter"
 
 #: data/units/Master_Bowman.cfg:27
 msgid ""
-"Master Bowmen have reached the highest levels of skill with the bow that any "
-"human can hope to attain. Their power with this deadly weapon is surpassed "
-"only by that of the Elves."
+"Master bowmen have reached the zenith of their art, inasmuch as any man is "
+"capable. Armed with both a sword, and a great yew bow, these warriors crown "
+"battalions of archers with their presence, bringing down many a foe with "
+"their well-aimed shots. Their skill with the sword is also not to be "
+"discounted; they are easily as good with it as any novice swordsman. Of the "
+"many races in the world, only the elves surpass humanity in archery, and "
+"their human counterparts have speculated, perhaps in envy, that this is only "
+"by dint of age."
 msgstr ""
-"Meester schutters hebben het hoogste niveau van kunde bereikt dat voor een "
-"mens haalbaar is. Alleen de Elfen kunnen beter met een boog overweg."
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
@@ -7628,19 +7667,20 @@ msgstr ""
 msgid "Outlaw"
 msgstr "Brigant"
 
-#: data/units/Outlaw.cfg:26
-msgid "Outlaws fight better at night."
-msgstr "Briganten vechten beter 's nachts."
+#: data/units/Outlaw.cfg:26 data/units/Outlaw.cfg:107
+msgid ""
+"After some years of service, former 'footpads' rise up in the ranks of their "
+"fellow outlaws. Having proven themselves in combat, they are given more "
+"dangerous tasks, and a greater share of the spoils. Though many opponents "
+"would mock their choice of weaponry, the outlaws are well aware of its "
+"deadly capacity, and also of the ready availability of ammunition. Outlaws "
+"are somewhat ill at ease fighting during the day, preferring the cover of "
+"nightfall."
+msgstr ""
 
 #: data/units/Outlaw.cfg:84
 msgid "female^Outlaw"
 msgstr "Brigante"
-
-#: data/units/Outlaw.cfg:107
-msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
-msgstr ""
-"Briganten vechten beter 's nachts. Vrouwelijk Briganten zien er goed uit "
-"terwijl ze dit doen."
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
@@ -7746,18 +7786,20 @@ msgstr "riek"
 msgid "Pikeman"
 msgstr "Piekenier"
 
-#: data/units/Pikeman.cfg:20
+#: data/units/Pikeman.cfg:22
 msgid ""
-"Pikemen are more experienced soldiers who have changed their spears for long "
-"pikes. Because of the length of their weapons, they always strike first in "
-"combat, even when defending. They are especially deadly when fighting "
-"cavalry, though they find some difficulty in fighting in extremely close "
-"quarters."
+"Promising spearmen in the armies of Wesnoth are often graduated to wielding "
+"pikes, and are outfitted with something far superior to the motley "
+"collection of leather armor they wore as recruits. A pike is a much longer "
+"weapon than a spear, and thus facilitates different combat tactics. A wall "
+"of pikemen is the bane of any cavalry charge, and with proper discipline and "
+"tactics, pikemen can also hold most infantry at bay.\n"
+"\n"
+"Special Notes: the length of their weapon allows a pikeman to strike first "
+"in melee, even in defense."
 msgstr ""
-"Piekeniers zijn meer ervaren soldaten die hun speren voor lange pieken "
-"hebben geruild. Piekeniers zijn de nachtmerrie van elke cavalerie."
 
-#: data/units/Pikeman.cfg:23
+#: data/units/Pikeman.cfg:25
 msgid "pike"
 msgstr "piek"
 
@@ -7852,19 +7894,21 @@ msgstr ""
 msgid "Rogue"
 msgstr "Schurk"
 
-#: data/units/Rogue.cfg:18 data/units/Rogue.cfg:78
+#: data/units/Rogue.cfg:20 data/units/Rogue.cfg:82
 msgid ""
-"Rogues are masters of agility and can move right past an enemy, ignoring any "
-"zones of control. Master thieves, they too have the backstab ability, which "
-"allows them to do double damage if an ally of theirs is on the opposite side "
-"of an enemy they are attacking."
+"The ringleaders of any group of thieves earn their positions by skill. These "
+"rogues have spent many an unpleasant moment darting through crowds and "
+"dodging away from those who wish them ill, a set of skills which is very "
+"handy in a fight. Masters of knifework, they can also throw knives with "
+"reliable accuracy, and their long hours of prowling around at night leave "
+"them more comfortable fighting in the dark.\n"
+"\n"
+"Special Notes: while a unit with the same allegiance as the rogue distracts "
+"an enemy, the rogue may backstab, inflicting double damage, by creeping "
+"around behind that enemy."
 msgstr ""
-"Schurken zijn meesters in behendigheid, ze kunnen langs een vijand glippen "
-"en de controlezones negeren. Ze beheersen tevens de ruggesteek, wat hen "
-"toestaat twee keer zoveel schade te berokkenen dan normaal wanneer een "
-"bevriende eenheid de vijand langsvoor afleidt."
 
-#: data/units/Rogue.cfg:63
+#: data/units/Rogue.cfg:65
 msgid "female^Rogue"
 msgstr "Schurk"
 
@@ -7874,13 +7918,15 @@ msgstr "Koninklijke Garde"
 
 #: data/units/Royal_Guard.cfg:30
 msgid ""
-"Members of the Royal Guard are hand picked from the strongest and sturdiest "
-"of the army. They are deployed only in critical situations and, so far, have "
-"always succeeded in their assigned tasks."
+"Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
+"any of the higher nobility, they function as bodyguards, and partly as a "
+"badge of office for their employers. A special force of Royal Guards is "
+"stationed at the capitol, guarding the palace grounds and the royal family. "
+"Because of their trusted relationship to their superiors, they, rather than "
+"mercenaries, are often deployed on missions of crucial import. Their "
+"reliability and mastery of close combat are their best assets, for which "
+"they are well-renowned."
 msgstr ""
-"Leden van de koninklijke garde worden geselecteerd uit de sterksten en "
-"krachtigsten uit het Rijk Wesnoth. Ze worden alleen in kritieke situaties "
-"gebruikt, en totnogtoe hebben ze hun taak steeds volbracht."
 
 #: data/units/Saurian.cfg:20
 msgid ""
@@ -8091,12 +8137,15 @@ msgstr "Schoktroep"
 
 #: data/units/Shock_Trooper.cfg:15
 msgid ""
-"Shock Troopers are the elite of the Wesnothian military. Although they move "
-"slowly, they are immensely powerful and therefore feared throughout Wesnoth "
-"and even into the lands beyond."
+"Shock troopers are the elite of the heavy infantry, and half of their use in "
+"war is simply a matter of intimidation. The only men who can enter their "
+"ranks are prodigiously well-built, and when clad in black plate brimming "
+"with spikes, they are a fearsome sight to behold. The sight of Shock "
+"Troopers breaking an enemy with their morning stars is often enough to "
+"shatter the morale of any opposition, who sometimes wonder if such armor "
+"covers monsters, rather than men. The drawback of such heavy armor is, of "
+"course, the time it takes to move into and out of combat."
 msgstr ""
-"De schoktroepen behoren tot de elitesoldaten in Wesnoth. Ze zijn traag, maar "
-"ongelooflijk sterk, en worden gevreesd in Wesnoth en ver erbuiten."
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
@@ -8253,17 +8302,17 @@ msgstr ""
 msgid "Spearman"
 msgstr "Speerman"
 
-#: data/units/Spearman.cfg:17
+#: data/units/Spearman.cfg:19
 msgid ""
-"Spearmen are the core of the human armies. These young soldiers are given "
-"basic training and put in the front lines to do the bulk of the fighting. "
-"Because of the length of their spears, they strike first in melee, even when "
-"defending."
+"Swords are, for many, an expensive luxury, and one which peasants can ill "
+"afford. Spears are much easier to make and will do well even without a head, "
+"though most can afford one. Clad in leather armor, and often armed with a "
+"shield and a few javelins, spearmen are the staple of most armies, often "
+"thrown into the front lines with only basic training.\n"
+"\n"
+"Special Notes: the length of their weapon allows a spearman to strike first "
+"in melee, even in defense."
 msgstr ""
-"De speerman vormt de basis van het mensenleger. Deze jonge soldaten krijgen "
-"een basistraining en doen het meeste van het vechten aan het front. Omwille "
-"van de lengte van hun speer krijgen de speermannen altijd het eerste woord "
-"in een gevecht, zelfs wanneer ze verdedigen."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
@@ -8287,11 +8336,13 @@ msgstr "Zwaardvechter"
 
 #: data/units/Swordsman.cfg:21
 msgid ""
-"Swordsmen are the core of the human armies. These young soldiers are given "
-"basic training and put in the front lines to do the bulk of the fighting."
+"An experienced soldier will often save enough to equip a suit of scale or "
+"chain armor, and a sturdy broadsword. Though trading their spears for swords "
+"is often a somewhat jarring change, most spearmen will leap at the chance, "
+"knowing all too well the limitations of the weapon they are leaving behind. "
+"A sword is not without its own drawbacks, but is much more maneuverable than "
+"a spear, and much better in close quarters."
 msgstr ""
-"De zwaardvechter is de basis van de mensenlegers. Deze jonge soldaten "
-"krijgen een basistraining en doen het meeste van het vechten aan het front."
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -8309,19 +8360,18 @@ msgstr ""
 msgid "Thief"
 msgstr "Dief"
 
-#: data/units/Thief.cfg:18 data/units/Thief.cfg:119
+#: data/units/Thief.cfg:18 data/units/Thief.cfg:121
 msgid ""
-"Thieves are deft of foot and elusive, making them difficult to hit. Skilled "
-"at back-stabbing, Thieves do double damage if an ally of theirs is on the "
-"opposite side of an enemy they are attacking. Being of chaotic disposition, "
-"Thieves fight better at night than day."
+"For as long as anyone can remember, the members of the various 'guilds' of "
+"rat-catchers that spring up in any larger city have had a curious practice "
+"of bleaching their hair with lime till it becomes a pale shade of blue. It "
+"is a bold thing to do, as their profession often delves into less-than-legal "
+"enterprises. Thieves have many skills, and by necessity are both light on "
+"their feet, and good with knives. They happily employ less-than-honorable "
+"tactics in combat, seeing little purpose in a "
 msgstr ""
-"Dieven zijn snel en handig, daardoor zijn ze moeilijk te raken en ze "
-"schrikken er niet voor terug hun vijand ook in de rug aan te vallen. Een "
-"dief is twee keer zo dodelijk wanneer de vijand tussen hem en een bondgenoot "
-"staat. Dieven werken efficiënter 's nachts dan overdag."
 
-#: data/units/Thief.cfg:104
+#: data/units/Thief.cfg:106
 msgid "female^Thief"
 msgstr "Dievegge"
 
@@ -8330,12 +8380,13 @@ msgid "Thug"
 msgstr "Vrijbuiter"
 
 #: data/units/Thug.cfg:17
+#, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
 "peasants thrown off their lands. They quickly become thugs as a means of "
-"sustenance. Regardless of their background, they all share a similar "
-"characteristic: they beat victims with large clubs."
+"sustenance. Regardless of their background, they all share the practice of "
+"beating their victims with large clubs."
 msgstr ""
 "Vrijbuiters komen uit een verscheidenheid aan milieus; sommigen worden "
 "geboren als vrijbuiter, velen zijn oud-soldaten die ongeschikt zijn bevonden "
@@ -9156,7 +9207,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:550 src/game.cpp:884 src/help.cpp:1117
-#: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2051 src/playturn.cpp:2228
+#: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2051 src/playturn.cpp:2230
 msgid "Name"
 msgstr "Naam"
 
@@ -9164,7 +9215,7 @@ msgstr "Naam"
 msgid "Show replay"
 msgstr "Toon Opgenomen"
 
-#: src/dialogs.cpp:579 src/multiplayer_create.cpp:74
+#: src/dialogs.cpp:579 src/multiplayer_create.cpp:75
 msgid "Load Game"
 msgstr "Spel Laden"
 
@@ -9205,12 +9256,12 @@ msgstr "gezond"
 msgid "invisible"
 msgstr "onzichtbaar"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:54
+#: src/filechooser.cpp:51 src/multiplayer_create.cpp:55
 msgid "OK"
 msgstr "OK"
 
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:500
-#: src/multiplayer_create.cpp:53 src/multiplayer_wait.cpp:147
+#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:507
+#: src/multiplayer_create.cpp:54 src/multiplayer_wait.cpp:147
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -9228,7 +9279,7 @@ msgstr ""
 "Waarschuwing: Het bestand dat je hebt proberen laden is corrupt. Het wordt "
 "toch geladen.\n"
 
-#: src/game.cpp:642 src/multiplayer_connect.cpp:888
+#: src/game.cpp:642 src/multiplayer_connect.cpp:895
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -9236,7 +9287,7 @@ msgstr ""
 "Dit opgeslagen spel is van een andere versie van Strijd om Wesnoth. Wil je "
 "proberen het te laden?"
 
-#: src/game.cpp:650 src/game.cpp:653 src/multiplayer_connect.cpp:873
+#: src/game.cpp:650 src/game.cpp:653 src/multiplayer_connect.cpp:880
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Het bestand dat je hebt proberen laden is corrupt: '"
 
@@ -9506,7 +9557,7 @@ msgstr "Benodigde XP: "
 msgid "attacks"
 msgstr "aanvallen"
 
-#: src/help.cpp:1118 src/playturn.cpp:2050 src/playturn.cpp:2227
+#: src/help.cpp:1118 src/playturn.cpp:2050 src/playturn.cpp:2229
 msgid "Type"
 msgstr "Type"
 
@@ -9607,7 +9658,7 @@ msgstr "Volgende"
 msgid "Skip"
 msgstr "Overslaan"
 
-#: src/intro.cpp:320
+#: src/intro.cpp:297
 msgid "The End"
 msgstr "Einde"
 
@@ -9721,76 +9772,76 @@ msgstr "Computer speler"
 msgid "(Empty slot)"
 msgstr "(Vacante plaats)"
 
-#: src/multiplayer_connect.cpp:455
+#: src/multiplayer_connect.cpp:462
 msgid "No non-random sides in the current era"
 msgstr "Er zijn geen niet-willekeurige partijen in het huidige tijdperk"
 
-#: src/multiplayer_connect.cpp:471
+#: src/multiplayer_connect.cpp:478
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Geen leider gevonden voor de factie $faction"
 
-#: src/multiplayer_connect.cpp:479 src/multiplayer_lobby.cpp:105
+#: src/multiplayer_connect.cpp:486 src/multiplayer_lobby.cpp:105
 #: src/multiplayer_wait.cpp:145
 msgid "Game Lobby"
 msgstr "Spel Lobby"
 
-#: src/multiplayer_connect.cpp:485 src/multiplayer_connect.cpp:494
+#: src/multiplayer_connect.cpp:492 src/multiplayer_connect.cpp:501
 msgid "Team"
 msgstr "Team"
 
-#: src/multiplayer_connect.cpp:492
+#: src/multiplayer_connect.cpp:499
 msgid "Player/Type"
 msgstr "Speler/Type"
 
-#: src/multiplayer_connect.cpp:493
+#: src/multiplayer_connect.cpp:500
 msgid "Faction"
 msgstr "Factie"
 
-#: src/multiplayer_connect.cpp:495
+#: src/multiplayer_connect.cpp:502
 msgid "Color"
 msgstr "Kleur"
 
-#: src/multiplayer_connect.cpp:496 src/playturn.cpp:1774 src/playturn.cpp:1785
+#: src/multiplayer_connect.cpp:503 src/playturn.cpp:1774 src/playturn.cpp:1785
 msgid "Gold"
 msgstr "Goud"
 
-#: src/multiplayer_connect.cpp:498
+#: src/multiplayer_connect.cpp:505
 msgid "Computer vs Computer"
 msgstr "Computer vs Computer"
 
-#: src/multiplayer_connect.cpp:499
+#: src/multiplayer_connect.cpp:506
 msgid "I'm Ready"
 msgstr "Klaar!"
 
-#: src/multiplayer_connect.cpp:517
+#: src/multiplayer_connect.cpp:524
 msgid "The scenario is invalid because it has no sides."
 msgstr "Dit scenario is ongeldig vermits het geen kanten bevat"
 
-#: src/multiplayer_connect.cpp:811
+#: src/multiplayer_connect.cpp:818
 msgid "Network Player"
 msgstr "Netwerk Speler"
 
-#: src/multiplayer_connect.cpp:812
+#: src/multiplayer_connect.cpp:819
 msgid "Local Player"
 msgstr "Lokale Speler"
 
-#: src/multiplayer_connect.cpp:813
+#: src/multiplayer_connect.cpp:820
 msgid "Computer Player"
 msgstr "Computer Speler"
 
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:821
 msgid "Empty"
 msgstr "Leeg"
 
-#: src/multiplayer_connect.cpp:880
+#: src/multiplayer_connect.cpp:887
 msgid "This is not a multiplayer save"
 msgstr "Dit is geen multiplayer opgeslagen spel."
 
-#: src/multiplayer_connect.cpp:921
+#: src/multiplayer_connect.cpp:928
 msgid "Cannot find era $era"
 msgstr "Kan tijdperk $era niet vinden"
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:942
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -9798,7 +9849,7 @@ msgstr ""
 "Overwinning\n"
 "@Versla vijandige leider(s)"
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:978
 msgid "Waiting for players to join..."
 msgstr "Aan het wachten op netwerkspelers..."
 
@@ -9819,96 +9870,104 @@ msgid "Map to play:"
 msgstr "Kaart om te spelen:"
 
 #: src/multiplayer_create.cpp:50
+msgid "Use map settings"
+msgstr ""
+
+#: src/multiplayer_create.cpp:51
 msgid "Fog Of War"
 msgstr "Oorlogsmist"
 
-#: src/multiplayer_create.cpp:52
+#: src/multiplayer_create.cpp:53
 msgid "Observers"
 msgstr "Observeerders"
 
-#: src/multiplayer_create.cpp:55
+#: src/multiplayer_create.cpp:56
 msgid "Regenerate"
 msgstr "Regenereer"
 
-#: src/multiplayer_create.cpp:56
+#: src/multiplayer_create.cpp:57
 msgid "Settings..."
 msgstr "Instellingen..."
 
-#: src/multiplayer_create.cpp:85
+#: src/multiplayer_create.cpp:86
 msgid "The maximum turns the game will go for"
 msgstr "Het maximale aantal beurten in het spel"
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:91
 msgid "The amount of income each village yields per turn"
 msgstr "Het aantal goud dat een dorp levert per beurt"
 
-#: src/multiplayer_create.cpp:95
+#: src/multiplayer_create.cpp:96
 msgid "The amount of experience a unit needs to advance"
 msgstr "Benodigde ervaring voordat een eenheid promoveert"
 
-#: src/multiplayer_create.cpp:98
+#: src/multiplayer_create.cpp:99
+msgid "Use scenario specific settings"
+msgstr ""
+
+#: src/multiplayer_create.cpp:102
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Vijandige eenheden kunnen niet worden gezien tenzij ze binnen het bereik "
 "zijn van je eenheden."
 
-#: src/multiplayer_create.cpp:101
+#: src/multiplayer_create.cpp:105
 msgid "The map is unknown until your units explore it"
 msgstr "De map is onbekend totdat je eenheden ze verkennen."
 
-#: src/multiplayer_create.cpp:104
+#: src/multiplayer_create.cpp:108
 msgid "Allow users who are not playing to watch the game"
 msgstr "Sta spelers die het spel niet spelen toe om het spel te bekijken."
 
-#: src/multiplayer_create.cpp:108
+#: src/multiplayer_create.cpp:112
 msgid "Share View"
 msgstr "Deel Zicht"
 
-#: src/multiplayer_create.cpp:109
+#: src/multiplayer_create.cpp:113
 msgid "Share Maps"
 msgstr "Deel Kaarten"
 
-#: src/multiplayer_create.cpp:110
+#: src/multiplayer_create.cpp:114
 msgid "Share None"
 msgstr "Deel Niets"
 
-#: src/multiplayer_create.cpp:121
+#: src/multiplayer_create.cpp:125
 msgid "No multiplayer sides."
 msgstr "Geen multiplayer kanten."
 
-#: src/multiplayer_create.cpp:123
+#: src/multiplayer_create.cpp:127
 msgid "No eras found"
 msgstr "Geen tijdperken gevonden"
 
-#: src/multiplayer_create.cpp:136
+#: src/multiplayer_create.cpp:140
 msgid "$login's game"
 msgstr "$login's spel"
 
-#: src/multiplayer_create.cpp:167
+#: src/multiplayer_create.cpp:172
 msgid "Invalid era selected"
 msgstr "Ongeldig tijdperk geselecteerd"
 
-#: src/multiplayer_create.cpp:198
+#: src/multiplayer_create.cpp:204
 msgid "You must enter a name."
 msgstr "Je moet een naam opgeven."
 
-#: src/multiplayer_create.cpp:207
+#: src/multiplayer_create.cpp:213
 msgid "Turns: "
 msgstr "Beurten: "
 
-#: src/multiplayer_create.cpp:209
+#: src/multiplayer_create.cpp:215
 msgid "Unlimited Turns"
 msgstr "Oneindig"
 
-#: src/multiplayer_create.cpp:216
+#: src/multiplayer_create.cpp:222
 msgid "Village Gold: "
 msgstr "Dorpsgoud: "
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:228
 msgid "Experience Modifier: "
 msgstr "XP:"
 
-#: src/multiplayer_create.cpp:325
+#: src/multiplayer_create.cpp:331
 msgid "Players: "
 msgstr "Spelers: "
 
@@ -10296,99 +10355,99 @@ msgstr "Ontsla Eenheid"
 msgid "Recall"
 msgstr "Oproepen"
 
-#: src/playturn.cpp:2137
+#: src/playturn.cpp:2139
 msgid "Message:"
 msgstr "Bericht:"
 
-#: src/playturn.cpp:2137
+#: src/playturn.cpp:2139
 msgid "Send to allies only"
 msgstr "Stuur alleen naar bondgenoten"
 
-#: src/playturn.cpp:2232 src/unit.cpp:1118
+#: src/playturn.cpp:2234 src/unit.cpp:1118
 msgid "Moves"
 msgstr "Stappen"
 
-#: src/playturn.cpp:2233
+#: src/playturn.cpp:2235
 msgid "Location"
 msgstr "Locatie"
 
-#: src/playturn.cpp:2279
+#: src/playturn.cpp:2281
 msgid "Unit List"
 msgstr "Troepenlijst"
 
-#: src/playturn.cpp:2315 src/playturn.cpp:2377
+#: src/playturn.cpp:2317 src/playturn.cpp:2379
 msgid "Recruits"
 msgstr "Rekruteringen"
 
-#: src/playturn.cpp:2321 src/playturn.cpp:2381
+#: src/playturn.cpp:2323 src/playturn.cpp:2383
 msgid "Recalls"
 msgstr "Oproepingen"
 
-#: src/playturn.cpp:2327 src/playturn.cpp:2385
+#: src/playturn.cpp:2329 src/playturn.cpp:2387
 msgid "Advancements"
 msgstr "Promoties"
 
-#: src/playturn.cpp:2333 src/playturn.cpp:2389
+#: src/playturn.cpp:2335 src/playturn.cpp:2391
 msgid "Losses"
 msgstr "Verliezen"
 
-#: src/playturn.cpp:2339 src/playturn.cpp:2393
+#: src/playturn.cpp:2341 src/playturn.cpp:2395
 msgid "Kills"
 msgstr "Gedoodden"
 
-#: src/playturn.cpp:2345
+#: src/playturn.cpp:2347
 msgid "Damage Inflicted"
 msgstr "Toegebrachte Schade"
 
-#: src/playturn.cpp:2351
+#: src/playturn.cpp:2353
 msgid "Damage Taken"
 msgstr "Ontvangen Schade"
 
-#: src/playturn.cpp:2357
+#: src/playturn.cpp:2359
 msgid "Damage Inflicted (EV)"
 msgstr "Toegebrachte Schade (EV)"
 
-#: src/playturn.cpp:2364
+#: src/playturn.cpp:2366
 msgid "Damage Taken (EV)"
 msgstr "Ontvangen Schade (EV)"
 
-#: src/playturn.cpp:2370
+#: src/playturn.cpp:2372
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: src/playturn.cpp:2407
+#: src/playturn.cpp:2409
 msgid "Search"
 msgstr "Zoeken"
 
-#: src/playturn.cpp:2417
+#: src/playturn.cpp:2419
 msgid "prompt^Command:"
 msgstr "Commando:"
 
-#: src/playturn.cpp:2428
+#: src/playturn.cpp:2430
 msgid "Chat Log"
 msgstr "Chat Log"
 
-#: src/playturn.cpp:2493
+#: src/playturn.cpp:2495
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kon geen label of eenheid vinden met '$search'."
 
-#: src/playturn.cpp:2524
+#: src/playturn.cpp:2526
 msgid "Saved Theme Preference: "
 msgstr "Instellingen Opgeslagen Thema"
 
-#: src/playturn.cpp:2530
+#: src/playturn.cpp:2532
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Het nieuwe thema wordt in gebruik genomen in het volgende spel"
 
-#: src/playturn.cpp:2631
+#: src/playturn.cpp:2633
 msgid "Place Label"
 msgstr "Label Plaatsen"
 
-#: src/playturn.cpp:2632
+#: src/playturn.cpp:2634
 msgid "Label:"
 msgstr "Label:"
 
-#: src/playturn.cpp:2764
+#: src/playturn.cpp:2766
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -10396,23 +10455,23 @@ msgstr ""
 "De spellen verlopen niet meer synchroon en zullen moeten afsluiten. Wil je "
 "een error log opslaan van dit spel?"
 
-#: src/playturn.cpp:2817
+#: src/playturn.cpp:2819
 msgid "Replace with AI"
 msgstr "Vervang door AI"
 
-#: src/playturn.cpp:2818
+#: src/playturn.cpp:2820
 msgid "Replace with local player"
 msgstr "Vervang door lokale speler"
 
-#: src/playturn.cpp:2819
+#: src/playturn.cpp:2821
 msgid "Abort game"
 msgstr "Spel afbreken"
 
-#: src/playturn.cpp:2822
+#: src/playturn.cpp:2824
 msgid "Replace with "
 msgstr "Vervang door"
 
-#: src/playturn.cpp:2826
+#: src/playturn.cpp:2828
 msgid "has left the game. What do you want to do?"
 msgstr "heeft het spel verlaten. Wat wil je doen?"
 
@@ -10649,6 +10708,258 @@ msgstr "rechtvaardig"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutraal"
+
+#~ msgid ""
+#~ "Assassins are masters of the night. Like Rogues, they can surround and "
+#~ "backstab an opponent, doing double damage. They can also throw poison-"
+#~ "tipped knives at their enemies from long range."
+#~ msgstr ""
+#~ "Sluipmoordenaars zijn meesters van de nacht. Net zoals schurken beheersen "
+#~ "ze de ruggesteek en worden ze niet tegengehouden door vijandige zones. "
+#~ "Sluipmoordenaars gooien messen met een giftige punt van veraf naar hun "
+#~ "vijand."
+
+#~ msgid ""
+#~ "Armed with a heavy mace, Bandits are adept at robbing and killing at "
+#~ "night. Wearing brown cloaks and black hoods, they steal from the peasants "
+#~ "who live near them when not fighting against invaders."
+#~ msgstr ""
+#~ "Bandieten, bewapend met een zware goedendag, zijn bedreven in het roven "
+#~ "en moorden in de nacht. Gekleed in bruine mantels en zwarte kappen "
+#~ "bestelen ze de boeren uit de omgeving, wanneer ze zich niet verdedigen "
+#~ "tegen indringers."
+
+#~ msgid ""
+#~ "Immersed from childhood in the ways of archery, the young Bowmen are the "
+#~ "most common ranged combatants in Wesnothian armies. They do not undergo "
+#~ "as rigorous a training as the spearman or heavy infantry, because their "
+#~ "battle tactics require more finesse than brute strength."
+#~ msgstr ""
+#~ "De boogschutters worden vanaf hun kindertijd ondergedompeld in het "
+#~ "boogschieten. De jonge boogschutters zijn een vitaal onderdeel in de "
+#~ "legers van Wesnoth."
+
+#~ msgid ""
+#~ "The best riders in Wesnoth are recruited into the military to become "
+#~ "Cavalrymen. A Cavalryman, strictly disciplined, does not charge across "
+#~ "the field of battle like a horseman, but makes more of an effort to hold "
+#~ "his position."
+#~ msgstr ""
+#~ "De beste ruiters in Wesnoth worden gerekruteerd om cavalerie te worden. "
+#~ "Deze gedisciplineerde troepen zijn uitermate geschikt om dorpen in te "
+#~ "nemen."
+
+#~ msgid ""
+#~ "Duelists are masters of the art of swordplay. Their skill with the rapier "
+#~ "allows them to attack and parry with only one hand, while they wield a "
+#~ "crossbow in the other to shoot distant foes."
+#~ msgstr ""
+#~ "De duelist is een meester in het zwaardvechten. Zijn kunde met het zwaard "
+#~ "stellen hem in staat aan te vallen en te pareren met een hand. In de "
+#~ "andere hand hanteert hij een kruisboog"
+
+#~ msgid ""
+#~ "The guardians of the great dwarvish cities, they blast at their enemies "
+#~ "using fire from what are called dragonstaves. They are the chief "
+#~ "possessors of arcane Dwarvish technology."
+#~ msgstr ""
+#~ "De wachters van de grote steden der dwergen, ze vuren naar de vijand met "
+#~ "zogenaamde draakstaven, het summum onder de dwergse vuurwapens."
+
+#~ msgid ""
+#~ "Dwarvish Lords are kings under the mountains. Their skill with the battle "
+#~ "axe is unmatched, and they are able to hit even enemies that are far "
+#~ "away. Their fine armor is made of the strong alloys crafted by their kin."
+#~ msgstr ""
+#~ "De dwergheren zijn de heersers over bergachtige rijken. Hun kunde met het "
+#~ "strijdbijl is ongeëvenaard. Maar ook vanop afstand zijn de dwergheren "
+#~ "niet te onderschatten: hun werpbijl mist zelden doel."
+
+#~ msgid ""
+#~ "The mighty Dwarvish Runemasters are fearsome and sturdy warriors who have "
+#~ "harnessed the secret powers of the Dwarven runes. They can send lightning "
+#~ "bolts at their enemies by striking the ground with their marvelously "
+#~ "crafted and much beloved hammers, which shimmer with magical energy."
+#~ msgstr ""
+#~ "De machtige runemeesters zijn gevreesde en robuuste strijders die de "
+#~ "geheime krachten van de runen hebben leren beheersen. Ze kunnen "
+#~ "bliksembollen naar hun vijanden rollen door de grond met meesterlijk "
+#~ "vervaardigde hamers aan te raken."
+
+#~ msgid ""
+#~ "Dwarvish Thunderers provide much needed ranged support to the mighty, yet "
+#~ "slow, close-range fighters of the Dwarvish armies. Their mysterious "
+#~ "weapons are slower, cruder and noisier than the elegant and swift elvish "
+#~ "bows, but their impact is unmatched."
+#~ msgstr ""
+#~ "De donderaars voorzien het leger der dwergen van de broodnodige "
+#~ "ondersteuning voor aanvallen vanop afstand. Hun zware musketten zijn "
+#~ "ruwer en lawaaieriger dan de elegante zoevende elfenbogen, maar hun "
+#~ "vuurkracht valt niet te onderschatten."
+
+#~ msgid ""
+#~ "The famed Dwarvish Thunderguards wield mysterious and feared weapons "
+#~ "forged by the Dwarf weapon-masters, experts in arcane Dwarvish "
+#~ "technology. Although they are no faster than the more common Thunderers, "
+#~ "their attack is much more deadly."
+#~ msgstr ""
+#~ "De beroemde donderwachters hanteren mysterieuze en geduchte wapens "
+#~ "gesmeed door dwergse wapenmeesters. Ook al zijn de donderwachters niet "
+#~ "sneller dan de gewone donderaars, hun vuurkracht is heel wat krachtiger."
+
+#~ msgid ""
+#~ "Fencers are trained in the arts of swordplay. While their rapier is a "
+#~ "light weapon, they can use it quickly and with deadly skill. Wielding a "
+#~ "dagger in their other hand, they can also deftly parry all kinds of "
+#~ "attacks. Fencers are skirmishers, and so can move right past enemy units."
+#~ msgstr ""
+#~ "Schermers worden getraind in de fijne kunst van het zwaardspel. Hun degen "
+#~ "is een licht wapen, doch zij kunnen het hanteren met dodelijke precisie. "
+#~ "Met een dolk in de andere hand slaan ze allerlei aanvallen succesvol af."
+
+#~ msgid ""
+#~ "The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
+#~ "places and people to rob."
+#~ msgstr ""
+#~ "De kroezelharige Voetscouts worden gebruikt door bandieten als verkenners "
+#~ "op zoek naar mensen en plaatsen om te beroven."
+
+#~ msgid ""
+#~ "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
+#~ "though a little slower than the sword, can strike with deadly force, and "
+#~ "because of its great length, Halberdiers always strike first in combat, "
+#~ "even when defending. Halberdiers have great facility at dealing with "
+#~ "troops they can keep further than the end of their weapons, but find some "
+#~ "difficulty in very close combat."
+#~ msgstr ""
+#~ "De beste soldaten worden geselecteerd om hellebaardiers te worden. Ook al "
+#~ "is de hellebaard trager dan het zwaard, de schade die het aanricht is "
+#~ "dodelijk. Hellebaardiers zijn altijd de eersten om een slag toe te "
+#~ "dienen, zowel bij aanval als bij  verdediging."
+
+#~ msgid ""
+#~ "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
+#~ "lack of speed is their only disadvantage."
+#~ msgstr ""
+#~ "De zware infanterie is gemanteld in staal. Ze zijn uitermate robuust maar "
+#~ "traag.."
+
+#~ msgid ""
+#~ "Towering over the battlefield like iron giants, Iron Maulers are renowned "
+#~ "(and feared) for their incredible resilience and brutal hammer blows. "
+#~ "Were it not for their slow movement and rarity on the battlefield, these "
+#~ "mighty soldiers would control the continent."
+#~ msgstr ""
+#~ "Uittorend boven het slagveld als stalen giganten, de Ijzeren malers zijn "
+#~ "berucht voor hun ongelooflijk brutale hamerslagen en hun robuustheid. "
+#~ "Indien ze niet zo traag zouden zijn, heersten ze beslist over het hele "
+#~ "continent."
+
+#~ msgid ""
+#~ "Javelineers have mastered the use of the pointy sticks they were given as "
+#~ "recruits. Dangerous in melee, they have also developed their skill at "
+#~ "throwing their javelins, making them potent in both demesnes of combat. "
+#~ "Because of the length of their spears, they strike first in melee, even "
+#~ "when defending."
+#~ msgstr ""
+#~ "De speerman vormt evenals de zwaardvechter de basis van het mensenleger. "
+#~ "Deze jonge soldaten krijgen een basistraining en doen het meeste van het "
+#~ "vechten aan het front. Omwille van de lengte van hun speer krijgen de "
+#~ "speermannen altijd het eerste woord in een gevecht, zelfs wanneer ze "
+#~ "verdedigen."
+
+#~ msgid ""
+#~ "Longbowmen carry the huge specialized bows that they have learned to "
+#~ "handle after years of combat. Their missiles can pierce even armor."
+#~ msgstr ""
+#~ "Longbowmannen dragen grote bogen, die ze na jaren oefenen hebben kunnen "
+#~ "leren beheersen. Hun pijlen gaan dwars door een harnas."
+
+#~ msgid ""
+#~ "Master Bowmen have reached the highest levels of skill with the bow that "
+#~ "any human can hope to attain. Their power with this deadly weapon is "
+#~ "surpassed only by that of the Elves."
+#~ msgstr ""
+#~ "Meester schutters hebben het hoogste niveau van kunde bereikt dat voor "
+#~ "een mens haalbaar is. Alleen de Elfen kunnen beter met een boog overweg."
+
+#~ msgid "Outlaws fight better at night."
+#~ msgstr "Briganten vechten beter 's nachts."
+
+#~ msgid ""
+#~ "Outlaws fight better at night. Female Outlaws look good while doing it."
+#~ msgstr ""
+#~ "Briganten vechten beter 's nachts. Vrouwelijk Briganten zien er goed uit "
+#~ "terwijl ze dit doen."
+
+#~ msgid ""
+#~ "Pikemen are more experienced soldiers who have changed their spears for "
+#~ "long pikes. Because of the length of their weapons, they always strike "
+#~ "first in combat, even when defending. They are especially deadly when "
+#~ "fighting cavalry, though they find some difficulty in fighting in "
+#~ "extremely close quarters."
+#~ msgstr ""
+#~ "Piekeniers zijn meer ervaren soldaten die hun speren voor lange pieken "
+#~ "hebben geruild. Piekeniers zijn de nachtmerrie van elke cavalerie."
+
+#~ msgid ""
+#~ "Rogues are masters of agility and can move right past an enemy, ignoring "
+#~ "any zones of control. Master thieves, they too have the backstab ability, "
+#~ "which allows them to do double damage if an ally of theirs is on the "
+#~ "opposite side of an enemy they are attacking."
+#~ msgstr ""
+#~ "Schurken zijn meesters in behendigheid, ze kunnen langs een vijand "
+#~ "glippen en de controlezones negeren. Ze beheersen tevens de ruggesteek, "
+#~ "wat hen toestaat twee keer zoveel schade te berokkenen dan normaal "
+#~ "wanneer een bevriende eenheid de vijand langsvoor afleidt."
+
+#~ msgid ""
+#~ "Members of the Royal Guard are hand picked from the strongest and "
+#~ "sturdiest of the army. They are deployed only in critical situations and, "
+#~ "so far, have always succeeded in their assigned tasks."
+#~ msgstr ""
+#~ "Leden van de koninklijke garde worden geselecteerd uit de sterksten en "
+#~ "krachtigsten uit het Rijk Wesnoth. Ze worden alleen in kritieke situaties "
+#~ "gebruikt, en totnogtoe hebben ze hun taak steeds volbracht."
+
+#~ msgid ""
+#~ "Shock Troopers are the elite of the Wesnothian military. Although they "
+#~ "move slowly, they are immensely powerful and therefore feared throughout "
+#~ "Wesnoth and even into the lands beyond."
+#~ msgstr ""
+#~ "De schoktroepen behoren tot de elitesoldaten in Wesnoth. Ze zijn traag, "
+#~ "maar ongelooflijk sterk, en worden gevreesd in Wesnoth en ver erbuiten."
+
+#~ msgid ""
+#~ "Spearmen are the core of the human armies. These young soldiers are given "
+#~ "basic training and put in the front lines to do the bulk of the fighting. "
+#~ "Because of the length of their spears, they strike first in melee, even "
+#~ "when defending."
+#~ msgstr ""
+#~ "De speerman vormt de basis van het mensenleger. Deze jonge soldaten "
+#~ "krijgen een basistraining en doen het meeste van het vechten aan het "
+#~ "front. Omwille van de lengte van hun speer krijgen de speermannen altijd "
+#~ "het eerste woord in een gevecht, zelfs wanneer ze verdedigen."
+
+#~ msgid ""
+#~ "Swordsmen are the core of the human armies. These young soldiers are "
+#~ "given basic training and put in the front lines to do the bulk of the "
+#~ "fighting."
+#~ msgstr ""
+#~ "De zwaardvechter is de basis van de mensenlegers. Deze jonge soldaten "
+#~ "krijgen een basistraining en doen het meeste van het vechten aan het "
+#~ "front."
+
+#~ msgid ""
+#~ "Thieves are deft of foot and elusive, making them difficult to hit. "
+#~ "Skilled at back-stabbing, Thieves do double damage if an ally of theirs "
+#~ "is on the opposite side of an enemy they are attacking. Being of chaotic "
+#~ "disposition, Thieves fight better at night than day."
+#~ msgstr ""
+#~ "Dieven zijn snel en handig, daardoor zijn ze moeilijk te raken en ze "
+#~ "schrikken er niet voor terug hun vijand ook in de rug aan te vallen. Een "
+#~ "dief is twee keer zo dodelijk wanneer de vijand tussen hem en een "
+#~ "bondgenoot staat. Dieven werken efficiënter 's nachts dan overdag."
 
 #~ msgid ""
 #~ "Terrible and awe-inspiring, the most ancient of woses grow to a "
