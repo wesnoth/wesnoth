@@ -760,7 +760,12 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				g->level().values["map_data"] = data["map_data"];
 				g->level().values["map"] = data["map"];
 			}
-
+			g->level().values["mp_use_map_settings"] = data["mp_use_map_settings"];
+			g->level().values["mp_village_gold"] = data["mp_village_gold"];
+			g->level().values["mp_fog"] = data["mp_fog"];
+			g->level().values["mp_shroud"] = data["mp_shroud"];
+			g->level().values["experience_modifier"] = data["experience_modifier"];
+			
 			//update our config object which describes the
 			//open games, and notifies the game of where its description
 			//is located at

@@ -27,7 +27,7 @@ std::string games_menu_heading()
 {
 	std::ostringstream str;
 	str << HEADING_PREFIX << _("Map") << COLUMN_SEPARATOR << _("Name")
-		<< COLUMN_SEPARATOR << _("Status");
+		<< COLUMN_SEPARATOR << _("Status") << COLUMN_SEPARATOR << _("Settings");
 	return str.str();
 }
 
@@ -198,6 +198,12 @@ void lobby::gamelist_updated(bool silent)
 			str << COLUMN_SEPARATOR << slots << " " <<
 				ngettext(_("Vacant Slot"), _("Vacant Slots"), nslots);
 		}
+		str << COLUMN_SEPARATOR << "  " << (**game)["mp_village_gold"] << " "
+			<< _("Gold") << "  " << (**game)["experience_modifier"] << "% " << "XP";
+		if((**game)["mp_use_map_settings"] == "yes")
+			str << "  " << _("Use map settings");
+		else if((**game)["mp_fog"] == "yes")
+			str << "  " << _("Fog");
 
 		game_strings.push_back(str.str());
 
