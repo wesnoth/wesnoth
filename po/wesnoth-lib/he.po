@@ -1,32 +1,34 @@
+# ----wesnoth-lib.po (wesnoth 0.9.4)
 # Hebrew translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-#
+# This file is distributed under the same license as the wesnoth package.
+# Oron Peled <oron@actcom.co.il>, 2005.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.9.4+cvs\n"
+"Project-Id-Version: wesnoth 0.9.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-17 17:50+0200\n"
-"PO-Revision-Date: 2005-07-17 17:50+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-07-25 09:42+0300\n"
+"Last-Translator: Oron Peled <oron@actcom.co.il>\n"
+"Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
-msgstr ""
+msgstr "היחידה הבאה"
 
 #: src/hotkeys.cpp:46
 msgid "Previous unit"
-msgstr ""
+msgstr "היחידה הקודמת"
 
 #: src/hotkeys.cpp:47
+#, fuzzy
 msgid "Hold Position"
-msgstr ""
+msgstr "המתן במקום"
 
 #: src/hotkeys.cpp:48
 msgid "End Unit Turn"
@@ -34,7 +36,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:49
 msgid "Leader"
-msgstr ""
+msgstr "מנהיג"
 
 #: src/hotkeys.cpp:50
 msgid "Undo"
@@ -58,35 +60,35 @@ msgstr ""
 
 #: src/hotkeys.cpp:55 src/preferences.cpp:846
 msgid "Toggle Full Screen"
-msgstr ""
+msgstr "חלון/מסך מלא"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
-msgstr ""
+msgstr "צילום מסך"
 
 #: src/hotkeys.cpp:57
 msgid "Accelerated"
-msgstr ""
+msgstr "מואץ"
 
 #: src/hotkeys.cpp:58
 msgid "Unit Description"
-msgstr ""
+msgstr "תיאור היחידה"
 
 #: src/hotkeys.cpp:59
 msgid "Rename Unit"
-msgstr ""
+msgstr "החלף שם יחידה"
 
 #: src/hotkeys.cpp:60
 msgid "Save Game"
-msgstr ""
+msgstr "שמור משחק"
 
 #: src/hotkeys.cpp:61
 msgid "Load Game"
-msgstr ""
+msgstr "טען משחק"
 
 #: src/hotkeys.cpp:62
 msgid "Recruit"
-msgstr ""
+msgstr "גייס"
 
 #: src/hotkeys.cpp:63
 msgid "Repeat Recruit"
@@ -98,7 +100,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:65
 msgid "End Turn"
-msgstr ""
+msgstr "סוף תור"
 
 #: src/hotkeys.cpp:66
 msgid "Toggle Grid"
@@ -106,15 +108,15 @@ msgstr ""
 
 #: src/hotkeys.cpp:67
 msgid "Status Table"
-msgstr ""
+msgstr "טבלת מצב"
 
 #: src/hotkeys.cpp:68
 msgid "Mute"
-msgstr ""
+msgstr "השתק"
 
 #: src/hotkeys.cpp:69
 msgid "Speak"
-msgstr ""
+msgstr "דבר"
 
 #: src/hotkeys.cpp:70
 msgid "Create Unit (Debug!)"
@@ -126,15 +128,15 @@ msgstr ""
 
 #: src/hotkeys.cpp:72 src/preferences.cpp:1166
 msgid "Preferences"
-msgstr ""
+msgstr "העדפות"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
-msgstr ""
+msgstr "מטרות התרחיש"
 
 #: src/hotkeys.cpp:74
 msgid "Unit List"
-msgstr ""
+msgstr "רשימת יחידות"
 
 #: src/hotkeys.cpp:75
 msgid "Statistics"
@@ -142,7 +144,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:76
 msgid "Quit Game"
-msgstr ""
+msgstr "צא מהמשחק"
 
 #: src/hotkeys.cpp:77
 msgid "Set Label"
@@ -150,7 +152,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:78
 msgid "Show Enemy Moves"
-msgstr ""
+msgstr "הראה תנועות אוייב"
 
 #: src/hotkeys.cpp:79
 msgid "Best Possible Enemy Moves"
@@ -162,19 +164,19 @@ msgstr ""
 
 #: src/hotkeys.cpp:82
 msgid "Quit Editor"
-msgstr ""
+msgstr "צא מהעורך"
 
 #: src/hotkeys.cpp:83
 msgid "New Map"
-msgstr ""
+msgstr "מפה חדשה"
 
 #: src/hotkeys.cpp:84
 msgid "Load Map"
-msgstr ""
+msgstr "טען מפה"
 
 #: src/hotkeys.cpp:85
 msgid "Save Map"
-msgstr ""
+msgstr "שמור מפה"
 
 #: src/hotkeys.cpp:86
 msgid "Save As"
@@ -190,19 +192,19 @@ msgstr ""
 
 #: src/hotkeys.cpp:89
 msgid "Fill Selection"
-msgstr ""
+msgstr "מלא את הבחירה"
 
 #: src/hotkeys.cpp:90
 msgid "Cut"
-msgstr ""
+msgstr "גזור"
 
 #: src/hotkeys.cpp:91
 msgid "Copy"
-msgstr ""
+msgstr "העתק"
 
 #: src/hotkeys.cpp:92
 msgid "Paste"
-msgstr ""
+msgstr "הדבק"
 
 #: src/hotkeys.cpp:93
 msgid "Revert from Disk"
@@ -210,7 +212,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
-msgstr ""
+msgstr "שנה גודל מפה"
 
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
@@ -218,7 +220,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:96
 msgid "Select All"
-msgstr ""
+msgstr "בחר הכל"
 
 #: src/hotkeys.cpp:97
 msgid "Draw Terrain"
@@ -238,7 +240,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:102
 msgid "Continue Move"
-msgstr ""
+msgstr "המשך תנועה"
 
 #: src/hotkeys.cpp:103
 msgid "Find Label or Unit"
@@ -254,7 +256,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:106 src/show_dialog.cpp:577
 msgid "Help"
-msgstr ""
+msgstr "עזרה"
 
 #: src/hotkeys.cpp:107
 msgid "View Chat Log"
@@ -262,7 +264,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:108
 msgid "Enter user command"
-msgstr ""
+msgstr "הכנס פקודת משתמש"
 
 #: src/hotkeys.cpp:357 src/hotkeys.cpp:551
 msgid "Do you really want to quit?"
@@ -270,7 +272,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:357 src/hotkeys.cpp:551
 msgid "Quit"
-msgstr ""
+msgstr "צא"
 
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
@@ -281,11 +283,11 @@ msgstr ""
 
 #: src/preferences.cpp:395
 msgid "player"
-msgstr ""
+msgstr "שחקן"
 
 #: src/preferences.cpp:847
 msgid "Accelerated Speed"
-msgstr ""
+msgstr "מהירות מואצת"
 
 #: src/preferences.cpp:848
 msgid "Skip AI Moves"
@@ -349,7 +351,7 @@ msgstr ""
 
 #: src/preferences.cpp:862
 msgid "Scroll Speed:"
-msgstr ""
+msgstr "מהירות גלגול:"
 
 #: src/preferences.cpp:881
 msgid "Change the sound effects volume"
@@ -423,27 +425,27 @@ msgstr ""
 
 #: src/preferences.cpp:1094
 msgid "yes"
-msgstr ""
+msgstr "כן"
 
 #: src/preferences.cpp:1096
 msgid "no"
-msgstr ""
+msgstr "לא"
 
 #: src/preferences.cpp:1153
 msgid "Prefs section^General"
-msgstr ""
+msgstr "כללי"
 
 #: src/preferences.cpp:1154
 msgid "Prefs section^Display"
-msgstr ""
+msgstr "תצוגה"
 
 #: src/preferences.cpp:1155
 msgid "Prefs section^Sound"
-msgstr ""
+msgstr "צליל"
 
 #: src/preferences.cpp:1156
 msgid "Advanced section^Advanced"
-msgstr ""
+msgstr "מתקדם"
 
 #: src/preferences.cpp:1212
 msgid "There are no alternative video modes available"
@@ -455,7 +457,7 @@ msgstr ""
 
 #: src/preferences.cpp:1269
 msgid "Close Window"
-msgstr ""
+msgstr "סגור חלון"
 
 #: src/preferences.cpp:1274
 msgid "Hotkey Settings"
@@ -467,7 +469,7 @@ msgstr ""
 
 #: src/preferences.cpp:1296
 msgid "Action"
-msgstr ""
+msgstr "פעולה"
 
 #: src/preferences.cpp:1296
 msgid "Binding"
@@ -487,28 +489,28 @@ msgstr ""
 
 #: src/show_dialog.cpp:314
 msgid "Error"
-msgstr ""
+msgstr "שגיאה"
 
 #: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
-msgstr ""
+msgstr "אשר"
 
 #: src/show_dialog.cpp:422
 msgid "Yes"
-msgstr ""
+msgstr "כן"
 
 #: src/show_dialog.cpp:423
 msgid "No"
-msgstr ""
+msgstr "לא"
 
 #: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:860
 #: src/show_dialog.cpp:937
 msgid "Cancel"
-msgstr ""
+msgstr "בטל"
 
 #: src/show_dialog.cpp:442
 msgid "Close"
-msgstr ""
+msgstr "סגור"
 
 #: src/show_dialog.cpp:852
 msgid "Receiving data..."
