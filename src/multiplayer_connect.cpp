@@ -336,11 +336,18 @@ config connect::side::get_config() const
 		res["colour"] = lexical_cast<std::string>(colour_ + 1);
 		res["gold"] = lexical_cast<std::string>(gold_);
 
-		res["fog"] = parent_->params_.fog_game ? "yes" : "no";
-		res["shroud"] = parent_->params_.shroud_game ? "yes" : "no";
+		if(!parent_->params_.use_map_settings || res["fog"].empty() || (res["fog"] != "yes" && res["fog"] != "no")) {
+			res["fog"] = parent_->params_.fog_game ? "yes" : "no";
+		}
+
+		if(!parent_->params_.use_map_settings || res["shroud"].empty() || (res["shroud"] != "yes" && res["shroud"] != "no")) {
+			res["shroud"] = parent_->params_.shroud_game ? "yes" : "no";
+		}
+
 		res["share_maps"] = parent_->params_.share_maps ? "yes" : "no";
 		res["share_view"] =  parent_->params_.share_view ? "yes" : "no";
-		res["village_gold"] = lexical_cast<std::string>(parent_->params_.village_gold);
+		if(!parent_->params_.use_map_settings || res["village_gold"].empty())
+			res["village_gold"] = lexical_cast<std::string>(parent_->params_.village_gold);
 
 		res["allow_changes"] = "yes";
 	} else {

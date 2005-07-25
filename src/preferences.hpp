@@ -104,6 +104,9 @@ namespace preferences {
 	bool allow_observers();
 	void set_allow_observers(bool value);
 
+	bool use_map_settings();
+	void set_use_map_settings(bool value);
+
 	bool fog();
 	void set_fog(bool value);
 

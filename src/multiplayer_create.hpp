@@ -35,7 +35,7 @@ public:
 			num_turns = 0;
 			village_gold = 0;
 			xp_modifier = 0;
-			fog_game = shroud_game = allow_observers = share_view = share_maps = false;
+			use_map_settings = fog_game = shroud_game = allow_observers = share_view = share_maps = false;
 
 			scenario_data.clear();
 		}
@@ -48,6 +48,7 @@ public:
 		int num_turns;
 		int village_gold;
 		int xp_modifier;
+		bool use_map_settings;
 		bool fog_game;
 		bool shroud_game;
 		bool allow_observers;
@@ -93,6 +94,7 @@ private:
 	gui::label era_label_;
 	gui::label map_label_;
 
+	gui::button use_map_settings_;
 	gui::button fog_game_;
 	gui::button shroud_game_;
 	gui::button observers_game_;

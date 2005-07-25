@@ -47,6 +47,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	use_map_settings_(disp.video(), _("Use map settings"), gui::button::TYPE_CHECK),
 	fog_game_(disp.video(), _("Fog Of War"), gui::button::TYPE_CHECK),
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
@@ -93,7 +94,10 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	xp_modifier_slider_.set_value(preferences::xp_modifier());
 	xp_modifier_slider_.set_increment(10);
 	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
-
+	
+	use_map_settings_.set_check(preferences::use_map_settings());
+	use_map_settings_.set_help_string(_("Use scenario specific settings"));
+	
 	fog_game_.set_check(preferences::fog());
 	fog_game_.set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
 
@@ -144,6 +148,7 @@ create::~create()
 
 	//Save values for next game
 	preferences::set_allow_observers(parameters_.allow_observers);
+	preferences::set_use_map_settings(parameters_.use_map_settings);
 	preferences::set_fog(parameters_.fog_game);
 	preferences::set_shroud(parameters_.shroud_game);
 	preferences::set_turns(parameters_.num_turns);
@@ -170,6 +175,7 @@ create::parameters& create::get_parameters()
 	parameters_.num_turns = turns;
 	parameters_.village_gold = village_gold_slider_.value();
 	parameters_.xp_modifier = xp_modifier_slider_.value();
+	parameters_.use_map_settings = use_map_settings_.checked();
 	parameters_.fog_game = fog_game_.checked();
 	parameters_.shroud_game = shroud_game_.checked();
 	parameters_.allow_observers = observers_game_.checked();
@@ -344,6 +350,7 @@ void create::hide_children(bool hide)
 	era_label_.hide(hide);
 	map_label_.hide(hide);
 
+	use_map_settings_.hide(hide);
 	fog_game_.hide(hide);
 	shroud_game_.hide(hide);
 	observers_game_.hide(hide);
@@ -446,6 +453,9 @@ void create::layout_children(const SDL_Rect& rect)
 	era_label_.set_location(xpos, ypos + (era_combo_.height() - era_label_.height()) / 2);
 	era_combo_.set_location(xpos + era_label_.width() + border_size, ypos);
 	ypos += era_combo_.height() + border_size;
+
+	use_map_settings_.set_location(xpos, ypos);
+	ypos += use_map_settings_.height() + border_size;
 
 	fog_game_.set_location(xpos, ypos);
 	ypos += fog_game_.height() + border_size;

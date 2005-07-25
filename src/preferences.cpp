@@ -489,6 +489,16 @@ void set_allow_observers(bool value)
 	prefs["allow_observers"] = value ? "yes" : "no";
 }
 
+bool use_map_settings()
+{
+	return prefs["mp_use_map_settings"] == "yes";
+}
+
+void set_use_map_settings(bool value)
+{
+	prefs["mp_use_map_settings"] = value ? "yes" : "no";
+}
+
 bool fog()
 {
 	return prefs["mp_fog"] == "yes";
