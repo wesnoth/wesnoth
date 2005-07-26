@@ -247,9 +247,9 @@ void lobby::process_event()
 	const bool games_available = game_vacant_slots_.empty() == false;
 	wassert(!games_available || selection >= 0 && selection < int(game_vacant_slots_.size()));
 	const bool double_click = games_menu_.double_clicked();
-	const bool observe = observe_game_.pressed() || games_available && !game_vacant_slots_[selection] && double_click;
+	const bool observe = observe_game_.pressed() || games_available && !game_vacant_slots_[selection] && double_click && game_observers_[selection];
 
-	if(games_available && (observe || join_game_.pressed() || double_click)) {
+	if(games_available && (observe || ((join_game_.pressed() || double_click) && game_vacant_slots_[selection]))) {
 		const size_t index = size_t(games_menu_.selection());
 		const config* game = gamelist().child("gamelist");
 		if (game != NULL) {
