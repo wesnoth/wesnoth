@@ -330,6 +330,13 @@ void create::process_event()
 		std::stringstream players;
 		players << _("Players: ") << nsides;
 		num_players_label_.set_text(players.str());
+
+		if(use_map_settings_.checked()) {
+			try {
+				xp_modifier_slider_.set_value(lexical_cast<int>(parameters_.scenario_data["experience_modifier"]));
+			} catch(bad_lexical_cast bad_lexical) {
+			}
+		}
 	}
 }
 
