@@ -335,6 +335,7 @@ void create::process_event()
 			try {
 				xp_modifier_slider_.set_value(lexical_cast<int>(parameters_.scenario_data["experience_modifier"]));
 			} catch(bad_lexical_cast bad_lexical) {
+				xp_modifier_slider_.set_value(preferences::xp_modifier());
 			}
 		}
 	}
