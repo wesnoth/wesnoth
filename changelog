@@ -5,23 +5,26 @@ CVS HEAD:
    * fixed linebreaks not working properly for Chinese translation (#13352)
    * updated several unit descriptions
    * added GPL to help
-   * added bidirectional text support via fribidi
+   * fixed some untranslatable attack names (part of #12788)
  * graphics and sound improvements:
    * fixed layering of multi-hex tiles (#13586)
    * removed Mac OS X icon border (#12928)
- * server:
-   * fixed rejoining game as observer but with same nick causing out of synch
-     (#12824 and #12997, still subject to confirmation)
+   * updated images for Elish Druid, Elvish Shaman, Elvish Shyde
+   * new and revised portraits for The Dark Hordes
  * campaigns
    * Eastern Invasion: fixed missing background in intro (#13901)
    * Son of the Black Eye: fixed untranslatable strings in Saving Inarix
    * The Dark Hordes: terminate the campaign at this point as Part 1
+ * multiplayer:
+   * fixed rejoining game as observer but with same nick causing out of synch
+     (#12824 and #12997, still subject to confirmation)
+   * fixed chat messages from allies not being shown in multiplayer (#13657)
+   * added Use map settings option to preset scenario suggested values at setup
+   * show game settings in the game list
+   * fixed lobby corruption when trying to join a game that disallows observers
  * fixed failed recruit attempt clearing undo stack (#13833)
  * fixed recall not clearing shroud (#13824)
  * fixed towupper causing build to fail on OpenBSD (#13709)
- * multiplayer:
-   * fixed chat messages from allies not being shown in multiplayer (#13657)
-   * added Use map settings option to preset scenario suggested values at setup
  * various bug fixes and code cleanups
 
 Version 0.9.4:
