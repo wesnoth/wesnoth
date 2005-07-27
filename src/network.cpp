@@ -187,7 +187,7 @@ manager::manager(size_t nthreads) : free_(true)
 		throw error(SDL_GetError());
 	}
 
-	socket_set = SDLNet_AllocSocketSet(64);
+	socket_set = SDLNet_AllocSocketSet(512);
 
 	worker_pool_man = new network_worker_pool::manager(nthreads);
 }
@@ -378,7 +378,7 @@ connection accept_connection()
 		LOG_NW << "received connection. Pending handshake...\n";
 		pending_sockets.push_back(sock);
 		if(pending_socket_set == 0) {
-			pending_socket_set = SDLNet_AllocSocketSet(64);
+			pending_socket_set = SDLNet_AllocSocketSet(512);
 		}
 
 		if(pending_socket_set != 0) {
