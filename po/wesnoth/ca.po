@@ -804,7 +804,7 @@ msgstr "Quant a"
 
 #: data/help.cfg:209
 msgid "License"
-msgstr ""
+msgstr "Llicència"
 
 #: data/help.cfg:216
 msgid ""
@@ -1213,7 +1213,9 @@ msgid ""
 "\n"
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
-msgstr ""
+msgstr "Aquest terreny representa qualsevol zona amb aigua suficient com per arribar a la cintura d'un home. L'aigua baixa no només pot alentir a qualsevol, sinó que també deixa sense defenses. Els nans, a causa de la seva estatura, ho tenen molt difícil en aquests terrenys. D'altra banda, les races amb cossos especialment preparats per nedar en són l'excepció, ja que reben una bonificació tant en defensa com en moviment.\n"
+"\n"
+"La majoria d'unitats tenen un 20% o un 30% de defensa en aigües baixes. Sirènids i nagues, en canvi, gaudeixen d'un 60%."
 
 #: data/help.cfg:346 data/terrain.cfg:21
 msgid "Deep Water"
@@ -1226,7 +1228,9 @@ msgid ""
 "either fly, or are exceptionally strong swimmers.\n"
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
-msgstr ""
+msgstr "L'aigua profunda pot cobrir un home fins al cap. La majoria d'unitats no podran entrar-hi: és el domini d'aquelles unitats que, o bé tenen una especial habilitat per a la natació, o bé poden volar.\n"
+"\n"
+"Sirènids i nagues tenen un 50% de defensa a aigües profundes, amb completa capacitat de moviment."
 
 #: data/help.cfg:356
 msgid "Tundra"
@@ -1255,7 +1259,7 @@ msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Tundra</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
-msgstr ""
+msgstr "El gel representa tota aquella zona d'aigua gelada. En el joc, és equivalent a la <ref>dst=terrain_tundra text=tundra</ref>. Cal destacar que les unitats nedadores, fins i tot aquelles que poden respirar sota l'aigua, no poden nedar per sota del gel."
 
 #: data/help.cfg:374 data/terrain.cfg:370 data/terrain.cfg:481
 msgid "Castle"
@@ -1271,7 +1275,9 @@ msgid ""
 "defensive bonus as everyone inside.\n"
 "\n"
 "Most units have about 60% defense in a castle."
-msgstr ""
+msgstr "Els castells són una mena de fortificació permanent. Gairebé totes les unitats reben una considerable bonificació quan resten als castells, i totes tenen capacitat de moviment completa. Posicionar unitats als castells és tota una acció defensiva. Si deixem alguna zona del castell descuidada, els enemics podrien infiltrar-s'hi, guanyant la mateixa bonificació defensiva que els ocupants.\n"
+"\n"
+"La majoria d'unitats tenen un 60% de defensa als castells."
 
 #: data/help.cfg:386 data/terrain.cfg:106
 msgid "Sand"
@@ -1284,7 +1290,9 @@ msgid ""
 "the lizardly races make sand much easier for them to navigate.\n"
 "\n"
 "Most units receive 20 to 40% defense in Sand."
-msgstr ""
+msgstr "La sorra és un terreny de travessia dificultosa a causa de la seva inestabilitat. A més, deixa a les unitats desprotegides davant d'un possible atac. Una exepció, però, són les races sauries que amb els seus amples peus i la pell de serp, poden fins i tot arribar a habitar aquestes zones."
+"\n"
+"La majoria d'unitats tenen entre un 20% i un 40% de defensa a la sorra."
 
 #: data/help.cfg:396 data/terrain.cfg:115
 msgid "Desert"
@@ -1295,7 +1303,7 @@ msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
-msgstr ""
+msgstr "Els deserts tenen una composició diferent als petits munts de sorra o les platges, però a efectes pràctics del joc són equivalents. Vegeu <ref>dst=terrain_sand text=sorra</ref>."
 
 #: data/help.cfg:404 data/terrain.cfg:353
 msgid "Cave"
@@ -1322,7 +1330,7 @@ msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
-msgstr ""
+msgstr "La sabana consisteix en una praderia d'herbes altes que es pot trobar als climes més càlids. A efectes pràctics del joc, la sabana és igual que la <ref>dst=terrain_grassland text=prada</ref>."
 
 #: data/help.cfg:421 data/terrain.cfg:39 data/terrain.cfg:60
 #: data/terrain.cfg:165 data/terrain.cfg:174 data/terrain.cfg:185
@@ -9569,7 +9577,7 @@ msgstr "Mapa a jugar:"
 
 #: src/multiplayer_create.cpp:50
 msgid "Use map settings"
-msgstr ""
+msgstr "Paràmetres del mapa"
 
 #: src/multiplayer_create.cpp:51
 msgid "Fog Of War"
@@ -9601,7 +9609,7 @@ msgstr "La quantitat d'experiència que necessita una unitat per avançar"
 
 #: src/multiplayer_create.cpp:99
 msgid "Use scenario specific settings"
-msgstr ""
+msgstr "Utilitza els paràmetres específics de l'escenari"
 
 #: src/multiplayer_create.cpp:102
 msgid "Enemy units cannot be seen unless they are in range of your units"
