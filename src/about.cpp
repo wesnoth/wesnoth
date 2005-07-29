@@ -69,6 +69,7 @@ std::vector<std::string> get_text() {
 		"-   Gareth Miller (Gafgarion)",
 		"-   Hogne Håskjold (frame)",
 		"-   James Barton (Sangel)",
+		"-   James Woo (Pickslide)",
 		"-   Jason Lutes",
 		"-   Jimmy Olsson (Azlan)",
 		"-   Johanna Manninen (lohari)",
