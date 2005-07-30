@@ -2114,6 +2114,7 @@ void turn_info::recall()
 
 				recall_list.erase(recall_list.begin()+res);
 				gui_.invalidate_game_status();
+				gui_.invalidate_all();
 			}
 		}
 	}
