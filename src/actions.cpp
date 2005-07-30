@@ -1889,6 +1889,10 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		disp->invalidate(steps.back());
 	}
 
+	if(move_recorder != NULL) {
+		move_recorder->add_movement(steps.front(),steps.back());
+	}
+
 	int orig_village_owner = -1;
 	if(map.is_village(steps.back())) {
 		orig_village_owner = village_owner(steps.back(),teams);
@@ -1897,10 +1901,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			ui->second.set_movement(0);
 			get_village(steps.back(),teams,team_num,units);
 		}
-	}
-
-	if(move_recorder != NULL) {
-		move_recorder->add_movement(steps.front(),steps.back());
 	}
 
 	const bool event_mutated = game_events::fire("moveto",steps.back());
