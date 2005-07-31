@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-editor 0.9.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-20 14:40+0200\n"
-"PO-Revision-Date: 2005-07-25 09:41+0300\n"
+"PO-Revision-Date: 2005-07-27 01:08+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: data/themes/editor.cfg:429
 msgid "File"
-msgstr ""
+msgstr "קובץ"
 
 #: data/themes/editor.cfg:438
 msgid "Edit"
-msgstr ""
+msgstr "עריכה"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
@@ -30,11 +30,11 @@ msgstr ""
 
 #: src/editor/editor.cpp:162
 msgid "Fill"
-msgstr ""
+msgstr "מילוי"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "קביעת מיקום התחלתי לשחקן"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
@@ -62,7 +62,7 @@ msgstr ""
 
 #: src/editor/editor.cpp:178
 msgid "Resize the map"
-msgstr ""
+msgstr "שינוי גודל מפה"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
@@ -70,23 +70,23 @@ msgstr ""
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
-msgstr ""
+msgstr "שמירת מפה בשם"
 
 #: src/editor/editor.cpp:382
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "המפה כבר קיימת. האם לדרוס אותה?"
 
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
-msgstr ""
+msgstr "איזה שחקן?"
 
 #: src/editor/editor.cpp:409
 msgid "Which player should start here?"
-msgstr ""
+msgstr "איזה שחקן צריך להתחיל כאן?"
 
 #: src/editor/editor.cpp:461
 msgid "Choose a Map to Load"
-msgstr ""
+msgstr "בחירת מפה לטעינה"
 
 #: src/editor/editor.cpp:465
 msgid ""
@@ -104,7 +104,7 @@ msgstr ""
 
 #: src/editor/editor.cpp:636
 msgid "Load failed: "
-msgstr ""
+msgstr "טעינה נכשלה: "
 
 #: src/editor/editor.cpp:833
 msgid "You must have a hex selected on the board."
@@ -112,7 +112,7 @@ msgstr ""
 
 #: src/editor/editor.cpp:1082
 msgid "Quit Editor"
-msgstr ""
+msgstr "צא מתוכנית העריכה"
 
 #: src/editor/editor.cpp:1087
 msgid "Do you want to save the map before quitting?"
@@ -120,7 +120,7 @@ msgstr ""
 
 #: src/editor/editor.cpp:1119
 msgid "Map saved."
-msgstr ""
+msgstr "מפה נשמרה."
 
 #: src/editor/editor.cpp:1126
 msgid "Could not save the map: $msg"
@@ -128,11 +128,11 @@ msgstr ""
 
 #: src/editor/editor.cpp:1141
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "שגיאה: תוו בלתי חוקי לשם קובץ."
 
 #: src/editor/editor.cpp:1197
 msgid "Player"
-msgstr ""
+msgstr "שחקן"
 
 #: src/editor/editor_dialogs.cpp:47
 msgid "Your modifications to the map will be lost. Continue?"
@@ -140,15 +140,15 @@ msgstr ""
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
 msgid "Create New Map"
-msgstr ""
+msgstr "יצירת מפה חדשה"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
 msgid "Width:"
-msgstr ""
+msgstr "רוחב:"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
 msgid "Height:"
-msgstr ""
+msgstr "גובה:"
 
 #: src/editor/editor_dialogs.cpp:93
 msgid "Generate New Map"
@@ -156,7 +156,7 @@ msgstr ""
 
 #: src/editor/editor_dialogs.cpp:94
 msgid "Generate Random Map"
-msgstr ""
+msgstr "יצירת מפה אקראית"
 
 #: src/editor/editor_dialogs.cpp:95
 msgid "Random Generator Settings"
@@ -164,23 +164,23 @@ msgstr ""
 
 #: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 #: src/editor/editor_dialogs.cpp:181
 msgid "Map creation failed."
-msgstr ""
+msgstr "יצירת מפה נכשלה."
 
 #: src/editor/editor_dialogs.cpp:247
 msgid "Close Window"
-msgstr ""
+msgstr "סגירת חלון"
 
 #: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
 msgid "Preferences"
-msgstr ""
+msgstr "העדפות"
 
 #: src/editor/editor_dialogs.cpp:255
 msgid "Scroll Speed:"
-msgstr ""
+msgstr "מהירות גלילה:"
 
 #: src/editor/editor_dialogs.cpp:282
 msgid "Toggle Full Screen"
@@ -188,7 +188,7 @@ msgstr ""
 
 #: src/editor/editor_dialogs.cpp:289
 msgid "Show Grid"
-msgstr ""
+msgstr "הצג סריג"
 
 #: src/editor/editor_dialogs.cpp:296
 msgid "Video Mode"
@@ -196,23 +196,23 @@ msgstr ""
 
 #: src/editor/editor_dialogs.cpp:299
 msgid "Hotkeys"
-msgstr ""
+msgstr "מקשי קיצור"
 
 #: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
 msgid "Resize Map"
-msgstr ""
+msgstr "שינוי גודל המפה"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
-msgstr ""
+msgstr "אישור"
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
-msgstr ""
+msgstr "ציר X"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "Y-Axis"
-msgstr ""
+msgstr "ציר Y"
 
 #: src/editor/editor_dialogs.cpp:493
 msgid "Flip around (this may change the dimensions of the map):"
@@ -220,7 +220,7 @@ msgstr ""
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "עורך מפות עבור הקרב על ווסנות'"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -232,8 +232,8 @@ msgstr ""
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
-msgstr ""
+msgstr "מחיקת קובץ"
 
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
-msgstr ""
+msgstr "מחיקת קובץ נכשלה"
