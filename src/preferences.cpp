@@ -898,8 +898,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
 	  gamma_button_(disp.video(), _("Adjust Gamma"), gui::button::TYPE_CHECK),
 	  flip_time_button_(disp.video(), _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
-	  sound_button_(disp.video(), _("Enable/Disable sound"), gui::button::TYPE_CHECK),
-	  music_button_(disp.video(), _("Enable/Disable music"), gui::button::TYPE_CHECK),
+	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
+	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
 	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")),
@@ -919,7 +919,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	                                        gamma_label_.width())));
 
 	sound_button_.set_check(sound_on());
-	sound_button_.set_help_string(_("Sound on/off"));
+	sound_button_.set_help_string(_("Sound effects on/off"));
 	sound_slider_.set_min(0);
 	sound_slider_.set_max(128);
 	sound_slider_.set_value(sound_volume());
