@@ -1290,21 +1290,24 @@ void turn_info::end_turn()
 	if(browse_)
 		return;
 
-	bool unmoved_units = false, partmoved_units = false;
+	bool unmoved_units = false, partmoved_units = false, some_units_have_moved = false;
 	for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
 		if(un->second.side() == team_num_) {
 			if(unit_can_move(un->first,units_,map_,teams_)) {
-				if(un->second.movement_left() == un->second.total_movement()) {
+				if(!un->second.has_moved()) {
 					unmoved_units = true;
 				}
 
 				partmoved_units = true;
 			}
+			if(un->second.has_moved()) {
+				some_units_have_moved = true;
+			}
 		}
 	}
 
 	//Ask for confirmation if the player hasn't made any moves (other than gotos).
-	if(preferences::confirm_no_moves() && unmoved_units) {
+	if(preferences::confirm_no_moves() && ! some_units_have_moved) {
 		if (recorder.ncommands() == start_ncmd_) {
 			const int res = gui::show_dialog(gui_,NULL,"",_("You have not started your turn yet.  Do you really want to end your turn?"), gui::YES_NO);
 			if(res != 0) {

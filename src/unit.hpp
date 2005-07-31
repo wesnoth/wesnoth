@@ -90,6 +90,7 @@ public:
 	bool stone() const;
 
 	bool incapacitated() const;
+	bool has_moved() const;
 
 	bool emits_zoc() const;
 

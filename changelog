@@ -1,13 +1,15 @@
 CVS HEAD:
  * language and i18n:
    * new translation: Hebrew (no rtl support added in yet)
-   * updated translations:
-     * British English, Catalan, German, Hungarian, Swedish, Turkish
+   * updated translations: British English, Catalan, German, Hungarian,
+     Swedish, Turkish
    * fixed linebreaks not working properly for Chinese translation (#13352)
    * updated several unit descriptions
    * added GPL to help
    * fixed some untranslatable attack names (part of #12788)
-   * fixed Battle Princess not being translateable different than Princess
+   * added MANUAL to in-game help
+   * Battle Princess can now have translation different to Princess
+   * fix terrain list cross-references in unit help
  * graphics and sound improvements:
    * fixed layering of multi-hex tiles (#13586)
    * removed Mac OS X icon border (#12928)
@@ -29,6 +31,10 @@ CVS HEAD:
  * fixed failed recruit attempt clearing undo stack (#13833)
  * fixed recall not clearing shroud (#13824)
  * fixed towupper causing build to fail on OpenBSD (#13709)
+ * fixed replay errors due to capture events not saving randomness (#13666)
+ * fixed editor insisting on path without spaces, for saving map (#13919)
+ * fixed spurious warning when loading a saved game and ending turn (#12986)
+ * sound is handled better, and can now be set as a preference (rest of #11669)
  * various bug fixes and code cleanups
 
 Version 0.9.4:

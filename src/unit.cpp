@@ -487,6 +487,11 @@ bool unit::incapacitated() const
 	return stone();
 }
 
+bool unit::has_moved() const
+{
+	return this->movement_left() != this->total_movement();
+}
+
 bool unit::emits_zoc() const
 {
 	return type().has_zoc() && stone() == false;
