@@ -1,22 +1,25 @@
+# translation of wesnoth-editor.po to Türkçe
 # ----wesnoth-editor.cpp1.po (Battle for Wesnoth 0.9.0+cvs)  ----Turkish translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
 # Automatically generated <(null)>, 2005.
 # İhsan Akın <ihsan_akin@yahoo.com>, 2005.
+# ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005.
 # 
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
+"Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-07-20 14:40+0200\n"
-"PO-Revision-Date: 2005-06-06 04:11+0200\n"
-"Last-Translator: Ä°hsan AkÄ±nİhsan Ak <ihsan_akin@yahoo.com>\n"
-"Language-Team: Turkish <farsakoglu@web.de>\n"
+"PO-Revision-Date: 2005-07-30 21:21+0300\n"
+"Last-Translator: ihsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
+"Language-Team: Türkçe\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10\n"
 
 #: data/themes/editor.cfg:429
 msgid "File"
@@ -28,49 +31,47 @@ msgstr "Yaz"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
-msgstr ""
+msgstr "Çizgileri çiz"
 
 #: src/editor/editor.cpp:162
-#, fuzzy
 msgid "Fill"
-msgstr "Dosya"
+msgstr "Doldur"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Oyuncunun başlangıç konumunu belirle"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
-msgstr ""
+msgstr "Yakınlaş"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom out"
-msgstr ""
+msgstr "Uzaklaş"
 
 #: src/editor/editor.cpp:170
 msgid "Undo"
-msgstr ""
+msgstr "Geri al"
 
 #: src/editor/editor.cpp:172
 msgid "Redo"
-msgstr ""
+msgstr "Tekrar yap"
 
 #: src/editor/editor.cpp:174
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Ön tanımlı boyutta görüntüle"
 
 #: src/editor/editor.cpp:176
 msgid "Toggle grid"
-msgstr ""
+msgstr "Çizgileri aç-kapa"
 
 #: src/editor/editor.cpp:178
-#, fuzzy
 msgid "Resize the map"
-msgstr "Haritayı tekrar boylandır"
+msgstr "Haritayı boylandır"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
-msgstr ""
+msgstr "Hartitayı doldur"
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
@@ -97,6 +98,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
+"Uyarı : Haritanızın isminde geçersiz karakter bulundu. Başka bir isimle "
+"kayıt etmelisiniz."
 
 #: src/editor/editor.cpp:483 src/editor/editor.cpp:562
 msgid "The file does not contain a valid map."
@@ -132,7 +135,7 @@ msgstr "Harita kayıt edilemedi: $msg"
 
 #: src/editor/editor.cpp:1141
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Hata : Dosya isminde geçersiz karakter"
 
 #: src/editor/editor.cpp:1197
 msgid "Player"
@@ -144,7 +147,7 @@ msgstr "Haritaya yaptığınız değişiklikler kaybolacak. Devam?"
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
 msgid "Create New Map"
-msgstr "Yeni bir Harita yap"
+msgstr "Yeni Bir Harita Yap"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
 msgid "Width:"
@@ -156,15 +159,15 @@ msgstr "Boyu:"
 
 #: src/editor/editor_dialogs.cpp:93
 msgid "Generate New Map"
-msgstr "Yeni bir harita oluştur"
+msgstr "Yeni Bir Harita Oluştur"
 
 #: src/editor/editor_dialogs.cpp:94
 msgid "Generate Random Map"
-msgstr "Rasgele harita oluştur."
+msgstr "Rasgele Harita Oluştur."
 
 #: src/editor/editor_dialogs.cpp:95
 msgid "Random Generator Settings"
-msgstr "Rastgele üreteci ayarları"
+msgstr "Rastgele Üreteci Ayarları"
 
 #: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
 msgid "Cancel"
@@ -176,7 +179,7 @@ msgstr "Map oluşturma başarısız oldu."
 
 #: src/editor/editor_dialogs.cpp:247
 msgid "Close Window"
-msgstr "Pencereyi kapat"
+msgstr "Pencereyi Kapat"
 
 #: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
 msgid "Preferences"
@@ -192,19 +195,19 @@ msgstr "Tam Ekran Aç Kapa"
 
 #: src/editor/editor_dialogs.cpp:289
 msgid "Show Grid"
-msgstr "Çizgileri göster"
+msgstr "Çizgileri Göster"
 
 #: src/editor/editor_dialogs.cpp:296
 msgid "Video Mode"
-msgstr "Ekran çözünürlüğü"
+msgstr "Ekran Çözünürlüğü"
 
 #: src/editor/editor_dialogs.cpp:299
 msgid "Hotkeys"
-msgstr "Hızlı tuşlar"
+msgstr "Hızlı Tuşlar"
 
 #: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
 msgid "Resize Map"
-msgstr "Haritayı tekrar boylandır"
+msgstr "Haritayı Tekrar Boylandır"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
@@ -224,7 +227,7 @@ msgstr "döndür (bu işlem haritanın boyutlarının değişmesine neden olabil
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "\"Battle for Wesnoth\" için Harita Düzenleyici"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -241,18 +244,3 @@ msgstr "Dosyayı Sil"
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Dosyanın silinmesi başarısız oldu."
-
-#~ msgid "Draw"
-#~ msgstr "Çiz"
-
-#~ msgid "Flood"
-#~ msgstr "Yay"
-
-#~ msgid "Start P"
-#~ msgstr "Oyuncu1"
-
-#~ msgid "Paste"
-#~ msgstr "Yapıştır"
-
-#~ msgid "Ok"
-#~ msgstr "Tamam"
