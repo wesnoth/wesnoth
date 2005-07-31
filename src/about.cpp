@@ -200,6 +200,7 @@ std::vector<std::string> get_text() {
 		"-   Boris Stumm (quijote_)",
 		"-   Christoph Berg (chrber)",
 		"-   Gerfried Fuchs (Alfie)",
+		"-   Jan Greve (Jan)",
 		"-   Jan Heiner Laberenz (jan-heiner)",
 		"-   Kai Ensenbach (Pingu)",
 		"-   Nils Kneuper (Ivanovic)",
