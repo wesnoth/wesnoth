@@ -1209,10 +1209,11 @@ public:
 				if (!info.is_alias() && info.is_nonnull()) {
 					std::vector<item> row;
 					const std::string& name = info.name();
+					const std::string id = info.id();
 					const int moves = movement_type.movement_cost(*map,terrain);
 					std::stringstream str;
 					str << "<ref>text='" << escape(name) << "' dst='"
-					    << escape(std::string("terrain_") + terrain) << "'</ref>";
+					    << escape(std::string("terrain_") + id) << "'</ref>";
 					row.push_back(std::make_pair(str.str(),
 								     font::line_width(name,
 										      normal_font_size)));
