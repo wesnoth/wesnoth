@@ -129,11 +129,11 @@ void play_music(std::string file)
 		return;
 	else if(current_music.empty() && file.empty())
 		return;
-	if(file.empty()) {
-		file = current_music;
-	}
 
-	current_music = file;
+	if(file.empty())
+		file = current_music;
+	else
+		current_music = file;
 
 	if(preferences::music_on() && mix_ok) {
 		std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(file);
