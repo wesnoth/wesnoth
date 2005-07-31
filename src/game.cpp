@@ -85,7 +85,7 @@ bool less_campaigns_rank(const config* a, const config* b) {
 class game_controller
 {
 public:
-	game_controller(int argc, char** argv, bool use_sound);
+	game_controller(int argc, char** argv);
 
 	display& disp();
 
@@ -132,8 +132,8 @@ private:
 	CVideo video_;
 
 	const font::manager font_manager_;
-	const sound::manager sound_manager_;
 	const preferences::manager prefs_manager_;
+	const sound::manager sound_manager_;
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
@@ -156,9 +156,9 @@ private:
 	preproc_map defines_map_, old_defines_map_;
 };
 
-game_controller::game_controller(int argc, char** argv, bool use_sound)
+game_controller::game_controller(int argc, char** argv)
    : argc_(argc), arg_(1), argv_(argv), thread_manager(),
-     sound_manager_(use_sound), test_mode_(false), multiplayer_mode_(false),
+     test_mode_(false), multiplayer_mode_(false),
      no_gui_(false), use_caching_(true), force_bpp_(-1), disp_(NULL),
      loaded_game_show_replay_(false)
 {
@@ -206,7 +206,8 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 			game_config::debug = true;
 		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val == "--nosound") {
-			//handled elsewhere
+			preferences::set_sound(false);
+			preferences::set_music(false);
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -224,6 +225,13 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 				throw config::error("directory not found");
 			}
 
+		}
+	}
+
+	if (preferences::sound() || preferences::music()) {
+		if(!sound::init_sound()) {
+			preferences::set_sound(false);
+			preferences::set_music(false);
 		}
 	}
 }
@@ -1442,8 +1450,6 @@ int play_game(int argc, char** argv)
 {
 	const int start_ticks = SDL_GetTicks();
 
-	bool use_sound = true;
-
 	//parse arguments that shouldn't require a display device
 	int arg;
 	for(arg = 1; arg != argc; ++arg) {
@@ -1481,8 +1487,6 @@ int play_game(int argc, char** argv)
 			std::cout <<  game_config::path
 			          << "\n";
 			return 0;
-		} else if(val == "--nosound") {
-			use_sound = false;
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');
 			if (p == std::string::npos) {
@@ -1549,7 +1553,7 @@ int play_game(int argc, char** argv)
 
 	srand(time(NULL));
 
-	game_controller game(argc,argv,use_sound);
+	game_controller game(argc,argv);
 
 	if (!filesystem_init()) {
 		std::cerr << "cannot init filesystem code\n";

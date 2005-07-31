@@ -247,40 +247,24 @@ void set_language(const std::string& s)
 
 int music_volume()
 {
-	static const int default_value = 100;
-	const string_map::const_iterator volume = prefs.values.find("music_volume");
-	if(volume != prefs.values.end() && volume->second.empty() == false)
-		return atoi(volume->second.c_str());
-	else
-		return default_value;
+	return lexical_cast_default<int>(prefs["music_volume"], 100);
 }
 
 void set_music_volume(int vol)
 {
-	std::stringstream stream;
-	stream << vol;
-	prefs["music_volume"] = stream.str();
-
-	sound::set_music_volume(vol / 100.0);
+	prefs["music_volume"] = lexical_cast_default<std::string>(vol, "100");
+	sound::set_music_volume(music_volume());
 }
 
 int sound_volume()
 {
-	static const int default_value = 100;
-	const string_map::const_iterator volume = prefs.values.find("sound_volume");
-	if(volume != prefs.values.end() && volume->second.empty() == false)
-		return atoi(volume->second.c_str());
-	else
-		return default_value;
+	return lexical_cast_default<int>(prefs["sound_volume"], 100);
 }
 
 void set_sound_volume(int vol)
 {
-	std::stringstream stream;
-	stream << vol;
-	prefs["sound_volume"] = stream.str();
-
-	sound::set_sound_volume(vol / 100.0);
+	prefs["sound_volume"] = lexical_cast_default<std::string>(vol, "100");
+	sound::set_sound_volume(sound_volume());
 }
 
 void mute(bool muted)
@@ -462,6 +446,49 @@ bool message_bell()
 void set_message_bell(bool ison)
 {
 	prefs["message_bell"] = (ison ? "yes" : "no");
+}
+
+bool sound() {
+	return prefs["sound"] != "no";
+}
+
+void set_sound(bool ison) {
+	if(!sound() && ison) {
+		prefs["sound"] = "yes";
+		if(!music()) {
+			if(!sound::init_sound())
+				prefs["sound"] = "no";
+		}
+	} else if(sound() && !ison) {
+		prefs["sound"] = "no";
+		sound::stop_sound();
+		if(!music())
+			sound::close_sound();
+	}
+	return;
+}
+
+bool music() {
+	return prefs["music"] != "no";
+}
+
+void set_music(bool ison) {
+	if(!music() && ison) {
+		prefs["music"] = "yes";
+		if(!sound()) {
+			if(!sound::init_sound())
+				prefs["music"] = "no";
+		}
+		else
+			sound::play_music("");
+	} else if(music() && !ison) {
+		prefs["music"] = "no";
+		if(!sound())
+			sound::close_sound();
+		else
+			sound::stop_music();
+	}
+	return;
 }
 
 bool turn_dialog()
@@ -836,7 +863,7 @@ private:
 	            show_grid_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 	            show_haloing_button_, video_mode_button_, hotkeys_button_, gamma_button_,
-				flip_time_button_, advanced_button_;
+				flip_time_button_, advanced_button_, sound_button_, music_button_;
 	gui::label music_label_, sound_label_, scroll_label_, gamma_label_;
 	unsigned slider_label_width_;
 
@@ -867,6 +894,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
 	  gamma_button_(disp.video(), _("Adjust Gamma"), gui::button::TYPE_CHECK),
 	  flip_time_button_(disp.video(), _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
+	  sound_button_(disp.video(), _("Enable/Disable sound"), gui::button::TYPE_CHECK),
+	  music_button_(disp.video(), _("Enable/Disable music"), gui::button::TYPE_CHECK),
 	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")),
@@ -885,15 +914,20 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	                      maximum<unsigned>(scroll_label_.width(),
 	                                        gamma_label_.width())));
 
+	sound_button_.set_check(sound());
+	sound_button_.set_help_string(_("Sound on/off"));
 	sound_slider_.set_min(1);
 	sound_slider_.set_max(100);
 	sound_slider_.set_value(sound_volume());
 	sound_slider_.set_help_string(_("Change the sound effects volume"));
 
+	music_button_.set_check(music());
+	music_button_.set_help_string(_("Music on/off"));
 	music_slider_.set_min(1);
 	music_slider_.set_max(100);
 	music_slider_.set_value(music_volume());
 	music_slider_.set_help_string(_("Change the music volume"));
+
 
 	scroll_slider_.set_min(1);
 	scroll_slider_.set_max(100);
@@ -990,15 +1024,22 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	// Sound tab
 	ypos = rect.y;
-	music_label_.set_location(rect.x, ypos);
-	SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
-	                        rect.w - slider_label_width_ - border, 0 };
-	music_slider_.set_location(music_rect);
+	sound_button_.set_location(rect.x, ypos);
+
 	ypos += item_interline;
 	sound_label_.set_location(rect.x, ypos);
-	SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
-				rect.w - slider_label_width_ - border, 0 };
+	const SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
+	                        rect.w - slider_label_width_ - border, 0 };
 	sound_slider_.set_location(sound_rect);
+
+	ypos += item_interline;
+	music_button_.set_location(rect.x, ypos);
+
+	ypos += item_interline;
+	music_label_.set_location(rect.x, ypos);
+	const SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
+	                        rect.w - slider_label_width_ - border, 0 };
+	music_slider_.set_location(music_rect);
 
 	//Advanced tab
 	ypos = rect.y;
@@ -1046,10 +1087,18 @@ void preferences_dialog::process_event()
 		gamma_slider_.hide(hide_gamma);
 		gamma_label_.hide(hide_gamma);
 	}
+
+	if (sound_button_.pressed())
+		set_sound(sound_button_.checked());
+	set_sound_volume(sound_slider_.value());
+
+	if (music_button_.pressed())
+		set_music(music_button_.checked());
+	set_music_volume(music_slider_.value());
+
 	if (flip_time_button_.pressed())
 		set_flip_time(flip_time_button_.checked());
-	set_sound_volume(sound_slider_.value());
-	set_music_volume(music_slider_.value());
+
 	set_scroll_speed(scroll_slider_.value());
 	set_gamma(gamma_slider_.value());
 
@@ -1142,8 +1191,10 @@ void preferences_dialog::set_selection(int index)
 	flip_time_button_.hide(hide_display);
 
 	const bool hide_sound = tab_ != SOUND_TAB;
+	music_button_.hide(hide_sound);
 	music_label_.hide(hide_sound);
 	music_slider_.hide(hide_sound);
+	sound_button_.hide(hide_sound);
 	sound_label_.hide(hide_sound);
 	sound_slider_.hide(hide_sound);
 

@@ -55,11 +55,17 @@ namespace preferences {
 	const std::string& language();
 	void set_language(const std::string& s);
 
-	int music_volume();
-	void set_music_volume(int vol);
+	bool sound();
+	void set_sound(bool ison);
 
 	int sound_volume();
 	void set_sound_volume(int vol);
+
+	bool music();
+	void set_music(bool ison);
+
+	int music_volume();
+	void set_music_volume(int vol);
 
 	void mute(bool muted);
 	bool is_muted();

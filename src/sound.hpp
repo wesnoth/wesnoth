@@ -18,15 +18,21 @@
 namespace sound {
 
 struct manager {
-	manager(bool sound_on);
+	manager();
 	~manager();
 };
 
-void play_music(const std::string& file);
+bool init_sound();
+void close_sound();
+
+void stop_music();
+void stop_sound();
+
+void play_music(std::string file);
 void play_sound(const std::string& file);
 
-void set_music_volume(double vol);
-void set_sound_volume(double vol);
+void set_music_volume(int vol);
+void set_sound_volume(int vol);
 
 }
 
