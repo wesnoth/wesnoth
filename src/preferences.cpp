@@ -916,15 +916,15 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	sound_button_.set_check(sound());
 	sound_button_.set_help_string(_("Sound on/off"));
-	sound_slider_.set_min(1);
-	sound_slider_.set_max(100);
+	sound_slider_.set_min(0);
+	sound_slider_.set_max(128);
 	sound_slider_.set_value(sound_volume());
 	sound_slider_.set_help_string(_("Change the sound effects volume"));
 
 	music_button_.set_check(music());
 	music_button_.set_help_string(_("Music on/off"));
-	music_slider_.set_min(1);
-	music_slider_.set_max(100);
+	music_slider_.set_min(0);
+	music_slider_.set_max(128);
 	music_slider_.set_value(music_volume());
 	music_slider_.set_help_string(_("Change the music volume"));
 
