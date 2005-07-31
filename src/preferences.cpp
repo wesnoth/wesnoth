@@ -452,12 +452,14 @@ bool sound() {
 	return prefs["sound"] != "no";
 }
 
-void set_sound(bool ison) {
+bool set_sound(bool ison) {
 	if(!sound() && ison) {
 		prefs["sound"] = "yes";
 		if(!music()) {
-			if(!sound::init_sound())
+			if(!sound::init_sound()) {
 				prefs["sound"] = "no";
+				return false;
+			}
 		}
 	} else if(sound() && !ison) {
 		prefs["sound"] = "no";
@@ -465,19 +467,21 @@ void set_sound(bool ison) {
 		if(!music())
 			sound::close_sound();
 	}
-	return;
+	return true;
 }
 
 bool music() {
 	return prefs["music"] != "no";
 }
 
-void set_music(bool ison) {
+bool set_music(bool ison) {
 	if(!music() && ison) {
 		prefs["music"] = "yes";
 		if(!sound()) {
-			if(!sound::init_sound())
+			if(!sound::init_sound()) {
 				prefs["music"] = "no";
+				return false;
+			}
 		}
 		else
 			sound::play_music("");
@@ -488,7 +492,7 @@ void set_music(bool ison) {
 		else
 			sound::stop_music();
 	}
-	return;
+	return true;
 }
 
 bool turn_dialog()
@@ -1088,12 +1092,16 @@ void preferences_dialog::process_event()
 		gamma_label_.hide(hide_gamma);
 	}
 
-	if (sound_button_.pressed())
-		set_sound(sound_button_.checked());
+	if (sound_button_.pressed()) {
+		if(!set_sound(sound_button_.checked()))
+			sound_button_.set_check(false);
+	}
 	set_sound_volume(sound_slider_.value());
 
-	if (music_button_.pressed())
-		set_music(music_button_.checked());
+	if (music_button_.pressed()) {
+		if(!set_music(music_button_.checked()))
+			music_button_.set_check(false);
+	}
 	set_music_volume(music_slider_.value());
 
 	if (flip_time_button_.pressed())

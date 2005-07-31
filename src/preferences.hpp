@@ -56,13 +56,13 @@ namespace preferences {
 	void set_language(const std::string& s);
 
 	bool sound();
-	void set_sound(bool ison);
+	bool set_sound(bool ison);
 
 	int sound_volume();
 	void set_sound_volume(int vol);
 
 	bool music();
-	void set_music(bool ison);
+	bool set_music(bool ison);
 
 	int music_volume();
 	void set_music_volume(int vol);
