@@ -228,7 +228,7 @@ game_controller::game_controller(int argc, char** argv)
 		}
 	}
 
-	if (preferences::sound() || preferences::music()) {
+	if (preferences::sound_on() || preferences::music_on()) {
 		if(!sound::init_sound()) {
 			preferences::set_sound(false);
 			preferences::set_music(false);

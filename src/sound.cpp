@@ -135,7 +135,7 @@ void play_music(std::string file)
 
 	current_music = file;
 
-	if(preferences::music() && mix_ok) {
+	if(preferences::music_on() && mix_ok) {
 		std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(file);
 		if(itor == music_cache.end()) {
 			const std::string& filename = get_binary_file_location("music",file);
@@ -168,7 +168,7 @@ void play_music(std::string file)
 
 void play_sound(const std::string& file)
 {
-	if(preferences::sound() && mix_ok) {
+	if(preferences::sound_on() && mix_ok) {
 		// the insertion will fail if there is already an element in the cache
 		std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
 			it = sound_cache.insert(std::make_pair(file, (Mix_Chunk *)0));

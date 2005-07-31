@@ -448,36 +448,36 @@ void set_message_bell(bool ison)
 	prefs["message_bell"] = (ison ? "yes" : "no");
 }
 
-bool sound() {
+bool sound_on() {
 	return prefs["sound"] != "no";
 }
 
 bool set_sound(bool ison) {
-	if(!sound() && ison) {
+	if(!sound_on() && ison) {
 		prefs["sound"] = "yes";
-		if(!music()) {
+		if(!music_on()) {
 			if(!sound::init_sound()) {
 				prefs["sound"] = "no";
 				return false;
 			}
 		}
-	} else if(sound() && !ison) {
+	} else if(sound_on() && !ison) {
 		prefs["sound"] = "no";
 		sound::stop_sound();
-		if(!music())
+		if(!music_on())
 			sound::close_sound();
 	}
 	return true;
 }
 
-bool music() {
+bool music_on() {
 	return prefs["music"] != "no";
 }
 
 bool set_music(bool ison) {
-	if(!music() && ison) {
+	if(!music_on() && ison) {
 		prefs["music"] = "yes";
-		if(!sound()) {
+		if(!sound_on()) {
 			if(!sound::init_sound()) {
 				prefs["music"] = "no";
 				return false;
@@ -485,9 +485,9 @@ bool set_music(bool ison) {
 		}
 		else
 			sound::play_music("");
-	} else if(music() && !ison) {
+	} else if(music_on() && !ison) {
 		prefs["music"] = "no";
-		if(!sound())
+		if(!sound_on())
 			sound::close_sound();
 		else
 			sound::stop_music();
@@ -918,14 +918,14 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	                      maximum<unsigned>(scroll_label_.width(),
 	                                        gamma_label_.width())));
 
-	sound_button_.set_check(sound());
+	sound_button_.set_check(sound_on());
 	sound_button_.set_help_string(_("Sound on/off"));
 	sound_slider_.set_min(0);
 	sound_slider_.set_max(128);
 	sound_slider_.set_value(sound_volume());
 	sound_slider_.set_help_string(_("Change the sound effects volume"));
 
-	music_button_.set_check(music());
+	music_button_.set_check(music_on());
 	music_button_.set_help_string(_("Music on/off"));
 	music_slider_.set_min(0);
 	music_slider_.set_max(128);

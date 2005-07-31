@@ -55,13 +55,15 @@ namespace preferences {
 	const std::string& language();
 	void set_language(const std::string& s);
 
-	bool sound();
+	// don't rename it to sound() because of a gcc-3.3 branch bug
+	// which will cause it to conflict with the sound namespace
+	bool sound_on();
 	bool set_sound(bool ison);
 
 	int sound_volume();
 	void set_sound_volume(int vol);
 
-	bool music();
+	bool music_on();
 	bool set_music(bool ison);
 
 	int music_volume();
