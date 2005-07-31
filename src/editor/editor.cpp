@@ -402,7 +402,7 @@ void map_editor::perform_set_starting_pos() {
 	std::vector<std::string> players;
 	for (int i = 0; i < num_players; i++) {
 		std::stringstream str;
-		str << "Player " << i + 1;
+		str << _("Player ") << i + 1;
 		players.push_back(str.str());
 	}
 	int res = gui::show_dialog(gui_, NULL, _("Which Player?"),
