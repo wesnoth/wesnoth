@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-25 17:08+0200\n"
+"POT-Creation-Date: 2005-08-01 13:27+0200\n"
 "PO-Revision-Date: 2005-03-25 15:59+0100\n"
 "Last-Translator:  Alfredo Beaumont Sainz <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque\n"
@@ -55,7 +55,7 @@ msgstr "Txikiagotu"
 msgid "Default Zoom"
 msgstr "Lehenetsitako zooma"
 
-#: src/hotkeys.cpp:55 src/preferences.cpp:856
+#: src/hotkeys.cpp:55 src/preferences.cpp:887
 msgid "Toggle Full Screen"
 msgstr "Pantaila osoa ezarri/kendu"
 
@@ -123,7 +123,7 @@ msgstr "Unitatea sortu (Arazteko!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Aldatu unitatearen taldea (Arazteko!)"
 
-#: src/hotkeys.cpp:72 src/preferences.cpp:1176
+#: src/hotkeys.cpp:72 src/preferences.cpp:1236
 msgid "Preferences"
 msgstr "Hobespenak"
 
@@ -281,129 +281,146 @@ msgstr ""
 "bakoitzeko sakonera izan behar du leiho moduan abiarazteko. Zure pantailak "
 "1024x768x16-ko bereizmena onartu behar du pantaila osoan abiarazteko."
 
-#: src/preferences.cpp:395
+#: src/preferences.cpp:379
 msgid "player"
 msgstr "jokalaria"
 
-#: src/preferences.cpp:857
+#: src/preferences.cpp:888
 msgid "Accelerated Speed"
 msgstr "Abiadura azeleratua"
 
-#: src/preferences.cpp:858
+#: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "AA mugimenduak saltatu"
 
-#: src/preferences.cpp:859
+#: src/preferences.cpp:890
 msgid "Show Grid"
 msgstr "Erakutsi sareta"
 
-#: src/preferences.cpp:860
+#: src/preferences.cpp:891
 msgid "Show Floating Labels"
 msgstr "Eraktutsi etiketa flotagarriak"
 
-#: src/preferences.cpp:861
+#: src/preferences.cpp:892
 msgid "Turn Dialog"
 msgstr "Elkarrizketak"
 
-#: src/preferences.cpp:862
+#: src/preferences.cpp:893
 msgid "Turn Bell"
 msgstr "Kanpaia"
 
-#: src/preferences.cpp:863
+#: src/preferences.cpp:894
 msgid "Show Team Colors"
 msgstr "Erakutsi taldeen koloreak"
 
-#: src/preferences.cpp:864
+#: src/preferences.cpp:895
 msgid "Show Color Cursors"
 msgstr "Erakutsi koloreko kurtsorea"
 
-#: src/preferences.cpp:865
+#: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Erakutsi halo-efectuak"
 
-#: src/preferences.cpp:866
+#: src/preferences.cpp:897
 msgid "Video Mode"
 msgstr "Bideo modua"
 
-#: src/preferences.cpp:867
+#: src/preferences.cpp:898
 msgid "Hotkeys"
 msgstr "Lasterbideak"
 
-#: src/preferences.cpp:868
+#: src/preferences.cpp:899
 msgid "Adjust Gamma"
 msgstr "Gamma doitu"
 
-#: src/preferences.cpp:869
+#: src/preferences.cpp:900
 msgid "Reverse Time Graphics"
 msgstr "Alderantzizko denbora grafikoak"
 
-#: src/preferences.cpp:871
+#: src/preferences.cpp:901
+#, fuzzy
+msgid "Sound effects"
+msgstr "Erakutsi halo-efectuak"
+
+#: src/preferences.cpp:902
+msgid "Music"
+msgstr ""
+
+#: src/preferences.cpp:904
 msgid "Music Volume:"
 msgstr "Musika bolumena:"
 
-#: src/preferences.cpp:871
+#: src/preferences.cpp:904
 msgid "SFX Volume:"
 msgstr "Soinu efektuen bolumena:"
 
-#: src/preferences.cpp:872
+#: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences.cpp:872
+#: src/preferences.cpp:905
 msgid "Scroll Speed:"
 msgstr "Korritze abiadura:"
 
-#: src/preferences.cpp:891
+#: src/preferences.cpp:922
+msgid "Sound effects on/off"
+msgstr ""
+
+#: src/preferences.cpp:926
 msgid "Change the sound effects volume"
 msgstr "Aldatu soinu efektuen bolumena"
 
-#: src/preferences.cpp:896
+#: src/preferences.cpp:929
+msgid "Music on/off"
+msgstr ""
+
+#: src/preferences.cpp:933
 msgid "Change the music volume"
 msgstr "Aldatu musikaren bolumena"
 
-#: src/preferences.cpp:901
+#: src/preferences.cpp:939
 msgid "Change the speed of scrolling around the map"
 msgstr "Aldatu mapatik mugitzearen abiadura"
 
-#: src/preferences.cpp:904 src/preferences.cpp:909
+#: src/preferences.cpp:942 src/preferences.cpp:947
 msgid "Change the brightness of the display"
 msgstr "Aldatu pantailaren distira"
 
-#: src/preferences.cpp:912
+#: src/preferences.cpp:950
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Aukeratu jokuak pantaila osoan zein leiho moduan ibili behar duen"
 
-#: src/preferences.cpp:915
+#: src/preferences.cpp:953
 msgid "Make units move and fight faster"
 msgstr "Egin unitateak azkarrago mugitu eta borrokatzea"
 
-#: src/preferences.cpp:918
+#: src/preferences.cpp:956
 msgid "Do not animate AI units moving"
 msgstr "Ez animatu AA unitateak mugitzerakoan"
 
-#: src/preferences.cpp:921
+#: src/preferences.cpp:959
 msgid "Overlay a grid onto the map"
 msgstr "Saretxo bat gainjarri mapan"
 
-#: src/preferences.cpp:924
+#: src/preferences.cpp:962
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Erakutsi testua unitate baten gainean jotzen dutenean, jakiteko zenbat kalte "
 "jaso duen"
 
-#: src/preferences.cpp:926
+#: src/preferences.cpp:964
 msgid "Change the resolution the game runs at"
 msgstr "Aldatu jokuak erabiltzen duen bereizmena"
 
-#: src/preferences.cpp:929
+#: src/preferences.cpp:967
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Erakutsi testu bat zure txandaren hasieran"
 
-#: src/preferences.cpp:932
+#: src/preferences.cpp:970
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Kanpaia jo zure txandaren hasieran"
 
-#: src/preferences.cpp:935
+#: src/preferences.cpp:973
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -411,85 +428,85 @@ msgstr ""
 "Erakutsi koloredun zirkulu bat unitate bakoitzeko oinarrian bere taldea "
 "erakusteko"
 
-#: src/preferences.cpp:938
+#: src/preferences.cpp:976
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Aukeratu eguzkia ezkerritatik eskumatara ala eskmutatik ezkerretara mugitzen "
 "den"
 
-#: src/preferences.cpp:941
+#: src/preferences.cpp:979
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Erabili koloredun sagu kurtsoreak (jokua geldotu dezake)"
 
-#: src/preferences.cpp:944
+#: src/preferences.cpp:982
 msgid "Use graphical special effects (may be slower)"
 msgstr "Erabili efektu grafiko bereziak (jokua geldotu dezake)"
 
-#: src/preferences.cpp:946
+#: src/preferences.cpp:984
 msgid "View and configure keyboard shortcuts"
 msgstr "Ikusi eta egokitu teklatuaren lasterbideak"
 
-#: src/preferences.cpp:1104
+#: src/preferences.cpp:1162
 msgid "yes"
 msgstr "bai"
 
-#: src/preferences.cpp:1106
+#: src/preferences.cpp:1164
 msgid "no"
 msgstr "ez"
 
-#: src/preferences.cpp:1163
+#: src/preferences.cpp:1223
 msgid "Prefs section^General"
 msgstr "Orokorra"
 
-#: src/preferences.cpp:1164
+#: src/preferences.cpp:1224
 msgid "Prefs section^Display"
 msgstr "Pantaila"
 
-#: src/preferences.cpp:1165
+#: src/preferences.cpp:1225
 msgid "Prefs section^Sound"
 msgstr "Soinua"
 
-#: src/preferences.cpp:1166
+#: src/preferences.cpp:1226
 msgid "Advanced section^Advanced"
 msgstr "Sail aurreratua^Aurreratua"
 
-#: src/preferences.cpp:1222
+#: src/preferences.cpp:1282
 msgid "There are no alternative video modes available"
 msgstr "Ez dago beste bideo modu erabilgarririk"
 
-#: src/preferences.cpp:1251
+#: src/preferences.cpp:1311
 msgid "Choose Resolution"
 msgstr "Aukeratu bereizmena"
 
-#: src/preferences.cpp:1279
+#: src/preferences.cpp:1339
 msgid "Close Window"
 msgstr "Itxi leihoa"
 
-#: src/preferences.cpp:1284
+#: src/preferences.cpp:1344
 msgid "Hotkey Settings"
 msgstr "Lasterbideen ezarpenak"
 
-#: src/preferences.cpp:1288 src/preferences.cpp:1341
+#: src/preferences.cpp:1348 src/preferences.cpp:1401
 msgid "Press desired HotKey"
 msgstr "Hautatutako lasterbidea sakatu"
 
-#: src/preferences.cpp:1306
+#: src/preferences.cpp:1366
 msgid "Action"
 msgstr "Ekintza"
 
-#: src/preferences.cpp:1306
+#: src/preferences.cpp:1366
 msgid "Binding"
 msgstr "Tekla"
 
-#: src/preferences.cpp:1318
+#: src/preferences.cpp:1378
 msgid "Change Hotkey"
 msgstr "Aldatu lasterbidea"
 
-#: src/preferences.cpp:1321
+#: src/preferences.cpp:1381
 msgid "Save Hotkeys"
 msgstr "Gorde lasterbideak"
 
-#: src/preferences.cpp:1367
+#: src/preferences.cpp:1427
 msgid "This HotKey is already in use."
 msgstr "Lasterbide hau aurretik erabiltzen ari da."
 

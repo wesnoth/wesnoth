@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-20 14:40+0200\n"
+"POT-Creation-Date: 2005-08-01 13:27+0200\n"
 "PO-Revision-Date: 2004-09-02 22:32+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -78,6 +78,10 @@ msgstr ""
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kartta on jo olemassa. Haluatko kirjoittaa sen päälle?"
 
+#: src/editor/editor.cpp:405
+msgid "Player "
+msgstr ""
+
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
 msgstr "Kuka pelaaja?"
@@ -145,11 +149,13 @@ msgid "Create New Map"
 msgstr "Uusi kartta"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:100
 #, fuzzy
 msgid "Width:"
 msgstr "Leveys"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:101
 #, fuzzy
 msgid "Height:"
 msgstr "Korkeus"
@@ -174,7 +180,7 @@ msgstr "Peruuta"
 msgid "Map creation failed."
 msgstr "Kartan luonti epäonnistui."
 
-#: src/editor/editor_dialogs.cpp:247
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:91
 msgid "Close Window"
 msgstr "Sulje ikkuna"
 
@@ -233,6 +239,50 @@ msgstr ""
 
 #: src/editor/editor_palettes.cpp:313
 msgid "BG"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:94
+msgid "Map Generator"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:99
+msgid "Players:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:102
+msgid "Number of Hills:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:103
+msgid "Max Hill Size:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:104
+msgid "Villages:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:105
+msgid "Landform:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:211
+msgid "Roads Between Castles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:268
+msgid "/1000 tiles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:273
+msgid "Coastal"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:273
+msgid "Inland"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:273
+msgid "Island"
 msgstr ""
 
 #: src/widgets/file_chooser.cpp:37

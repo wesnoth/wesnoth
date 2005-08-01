@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-25 17:08+0200\n"
+"POT-Creation-Date: 2005-08-01 13:27+0200\n"
 "PO-Revision-Date: 2004-11-15 22:20+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
@@ -55,7 +55,7 @@ msgstr "Gå ut"
 msgid "Default Zoom"
 msgstr "Standardoppløsning"
 
-#: src/hotkeys.cpp:55 src/preferences.cpp:856
+#: src/hotkeys.cpp:55 src/preferences.cpp:887
 #, fuzzy
 msgid "Toggle Full Screen"
 msgstr "Fullskjerm"
@@ -124,7 +124,7 @@ msgstr "Lag enhet (Kun for testing!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Endre enhetens side (Kun for testing!)"
 
-#: src/hotkeys.cpp:72 src/preferences.cpp:1176
+#: src/hotkeys.cpp:72 src/preferences.cpp:1236
 msgid "Preferences"
 msgstr "Innstillinger"
 
@@ -283,211 +283,228 @@ msgstr ""
 "per pixel for å kjøre dette spillet i vindumodus. Displayet må støtte "
 "1024x768x16 for å kunne kjøres med full skjerm."
 
-#: src/preferences.cpp:395
+#: src/preferences.cpp:379
 msgid "player"
 msgstr "spiller"
 
-#: src/preferences.cpp:857
+#: src/preferences.cpp:888
 msgid "Accelerated Speed"
 msgstr "Akselerert"
 
-#: src/preferences.cpp:858
+#: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "Ignorer datamaskinens bevegelser"
 
-#: src/preferences.cpp:859
+#: src/preferences.cpp:890
 msgid "Show Grid"
 msgstr "Vis rutenett"
 
-#: src/preferences.cpp:860
+#: src/preferences.cpp:891
 msgid "Show Floating Labels"
 msgstr "Vis flytende merkelapper"
 
-#: src/preferences.cpp:861
+#: src/preferences.cpp:892
 msgid "Turn Dialog"
 msgstr "Dialogboks på ny runde"
 
-#: src/preferences.cpp:862
+#: src/preferences.cpp:893
 msgid "Turn Bell"
 msgstr "Pling på ny runde"
 
-#: src/preferences.cpp:863
+#: src/preferences.cpp:894
 msgid "Show Team Colors"
 msgstr "Vis lagenes farger"
 
-#: src/preferences.cpp:864
+#: src/preferences.cpp:895
 msgid "Show Color Cursors"
 msgstr "Vis fargede pekere"
 
-#: src/preferences.cpp:865
+#: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Vis halo-effekter"
 
-#: src/preferences.cpp:866
+#: src/preferences.cpp:897
 msgid "Video Mode"
 msgstr "Video-modus"
 
-#: src/preferences.cpp:867
+#: src/preferences.cpp:898
 msgid "Hotkeys"
 msgstr "Hurtigtaster"
 
-#: src/preferences.cpp:868
+#: src/preferences.cpp:899
 msgid "Adjust Gamma"
 msgstr "Endre gammanivå"
 
-#: src/preferences.cpp:869
+#: src/preferences.cpp:900
 msgid "Reverse Time Graphics"
 msgstr ""
 
-#: src/preferences.cpp:871
+#: src/preferences.cpp:901
+#, fuzzy
+msgid "Sound effects"
+msgstr "Vis halo-effekter"
+
+#: src/preferences.cpp:902
+msgid "Music"
+msgstr ""
+
+#: src/preferences.cpp:904
 msgid "Music Volume:"
 msgstr "Musikkvolum:"
 
-#: src/preferences.cpp:871
+#: src/preferences.cpp:904
 msgid "SFX Volume:"
 msgstr "Lydeffektvolum:"
 
-#: src/preferences.cpp:872
+#: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences.cpp:872
+#: src/preferences.cpp:905
 msgid "Scroll Speed:"
 msgstr "Panoreringsfart:"
 
-#: src/preferences.cpp:891
+#: src/preferences.cpp:922
+msgid "Sound effects on/off"
+msgstr ""
+
+#: src/preferences.cpp:926
 msgid "Change the sound effects volume"
 msgstr "Endre lydeffektsvolumet"
 
-#: src/preferences.cpp:896
+#: src/preferences.cpp:929
+msgid "Music on/off"
+msgstr ""
+
+#: src/preferences.cpp:933
 msgid "Change the music volume"
 msgstr "Endre musikkvolumet"
 
-#: src/preferences.cpp:901
+#: src/preferences.cpp:939
 msgid "Change the speed of scrolling around the map"
 msgstr "Endre panoreringsfart"
 
-#: src/preferences.cpp:904 src/preferences.cpp:909
+#: src/preferences.cpp:942 src/preferences.cpp:947
 msgid "Change the brightness of the display"
 msgstr "Endre lysstyrke"
 
-#: src/preferences.cpp:912
+#: src/preferences.cpp:950
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Velge om spillet skal kjøres med full skjerm eller i vindu"
 
-#: src/preferences.cpp:915
+#: src/preferences.cpp:953
 msgid "Make units move and fight faster"
 msgstr "Enheter beveger og slåss raskere"
 
-#: src/preferences.cpp:918
+#: src/preferences.cpp:956
 msgid "Do not animate AI units moving"
 msgstr "Ikke vis at datastyrte enheter beveger seg"
 
-#: src/preferences.cpp:921
+#: src/preferences.cpp:959
 msgid "Overlay a grid onto the map"
 msgstr "Vis et rutenett på kartet"
 
-#: src/preferences.cpp:924
+#: src/preferences.cpp:962
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Vis tall over en truffet enhet for å vise påført skade"
 
-#: src/preferences.cpp:926
+#: src/preferences.cpp:964
 msgid "Change the resolution the game runs at"
 msgstr "Endre oppløsningsgraden til spillet"
 
-#: src/preferences.cpp:929
+#: src/preferences.cpp:967
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Vis dialogboks hver gang det blir din tur"
 
-#: src/preferences.cpp:932
+#: src/preferences.cpp:970
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Pling hver gang det blir din tur"
 
-#: src/preferences.cpp:935
+#: src/preferences.cpp:973
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Vis farget oval rundt hver enhet for å vise hvilken side den tilhører"
 
-#: src/preferences.cpp:938
+#: src/preferences.cpp:976
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 
-#: src/preferences.cpp:941
+#: src/preferences.cpp:979
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Bruk fargede musepekere (kan sakke spillet)"
 
-#: src/preferences.cpp:944
+#: src/preferences.cpp:982
 msgid "Use graphical special effects (may be slower)"
 msgstr "Bruk spesielle grafikk-effekter (kan sakke spillet)"
 
-#: src/preferences.cpp:946
+#: src/preferences.cpp:984
 msgid "View and configure keyboard shortcuts"
 msgstr "Se og endre snarveier på tastaturet"
 
-#: src/preferences.cpp:1104
+#: src/preferences.cpp:1162
 #, fuzzy
 msgid "yes"
 msgstr "Ja"
 
-#: src/preferences.cpp:1106
+#: src/preferences.cpp:1164
 #, fuzzy
 msgid "no"
 msgstr "Ta tilbake"
 
-#: src/preferences.cpp:1163
+#: src/preferences.cpp:1223
 msgid "Prefs section^General"
 msgstr "Allmenne innstillinger"
 
-#: src/preferences.cpp:1164
+#: src/preferences.cpp:1224
 msgid "Prefs section^Display"
 msgstr "Skjerminnstillinger"
 
-#: src/preferences.cpp:1165
+#: src/preferences.cpp:1225
 msgid "Prefs section^Sound"
 msgstr "Lydinnstillinger"
 
-#: src/preferences.cpp:1166
+#: src/preferences.cpp:1226
 msgid "Advanced section^Advanced"
 msgstr ""
 
-#: src/preferences.cpp:1222
+#: src/preferences.cpp:1282
 msgid "There are no alternative video modes available"
 msgstr "Det finnes ingen alternative video-moduser tilgjengelig"
 
-#: src/preferences.cpp:1251
+#: src/preferences.cpp:1311
 msgid "Choose Resolution"
 msgstr "Velg oppløsning"
 
-#: src/preferences.cpp:1279
+#: src/preferences.cpp:1339
 msgid "Close Window"
 msgstr "Lukk vindu"
 
-#: src/preferences.cpp:1284
+#: src/preferences.cpp:1344
 msgid "Hotkey Settings"
 msgstr "Innstillinger for Hurtigtaster"
 
-#: src/preferences.cpp:1288 src/preferences.cpp:1341
+#: src/preferences.cpp:1348 src/preferences.cpp:1401
 msgid "Press desired HotKey"
 msgstr "Trykk ønsket hurtigtast"
 
-#: src/preferences.cpp:1306
+#: src/preferences.cpp:1366
 msgid "Action"
 msgstr ""
 
-#: src/preferences.cpp:1306
+#: src/preferences.cpp:1366
 msgid "Binding"
 msgstr ""
 
-#: src/preferences.cpp:1318
+#: src/preferences.cpp:1378
 msgid "Change Hotkey"
 msgstr "Endre hurtigtast"
 
-#: src/preferences.cpp:1321
+#: src/preferences.cpp:1381
 msgid "Save Hotkeys"
 msgstr "Lagre hurtigtaster"
 
-#: src/preferences.cpp:1367
+#: src/preferences.cpp:1427
 msgid "This HotKey is already in use."
 msgstr "Denne hurtigtasten er allerede i bruk."
 

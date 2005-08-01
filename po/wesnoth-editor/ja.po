@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-20 14:40+0200\n"
+"POT-Creation-Date: 2005-08-01 13:27+0200\n"
 "PO-Revision-Date: 2005-06-06 02:33+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: none\n"
@@ -81,6 +81,11 @@ msgstr "マップに名前を付けて保存"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "マップはすでに存在します。 上書きしますか？"
 
+#: src/editor/editor.cpp:405
+#, fuzzy
+msgid "Player "
+msgstr "プレイヤー"
+
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
 msgstr "どのプレイヤー？"
@@ -148,10 +153,12 @@ msgid "Create New Map"
 msgstr "新しいマップの作成"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:100
 msgid "Width:"
 msgstr "幅："
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:101
 msgid "Height:"
 msgstr "高さ："
 
@@ -175,7 +182,7 @@ msgstr "キャンセル"
 msgid "Map creation failed."
 msgstr "マップの作成に失敗しました。"
 
-#: src/editor/editor_dialogs.cpp:247
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:91
 msgid "Close Window"
 msgstr "ウィンドウを閉じる"
 
@@ -234,6 +241,51 @@ msgstr "FG"
 #: src/editor/editor_palettes.cpp:313
 msgid "BG"
 msgstr "BG"
+
+#: src/mapgen_dialog.cpp:94
+msgid "Map Generator"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:99
+#, fuzzy
+msgid "Players:"
+msgstr "プレイヤー"
+
+#: src/mapgen_dialog.cpp:102
+msgid "Number of Hills:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:103
+msgid "Max Hill Size:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:104
+msgid "Villages:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:105
+msgid "Landform:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:211
+msgid "Roads Between Castles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:268
+msgid "/1000 tiles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:273
+msgid "Coastal"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:273
+msgid "Inland"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:273
+msgid "Island"
+msgstr ""
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-07-20 14:40+0200\n"
+"POT-Creation-Date: 2005-08-01 13:27+0200\n"
 "PO-Revision-Date: 2005-05-13 18:16+0100\n"
 "Last-Translator: americo iacovizzi <americo_iacovizzi@libero.it>\n"
 "Language-Team: IT\n"
@@ -77,6 +77,11 @@ msgstr "Salva la Mappa con nome"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Una mappa con questo nome esiste già. Vuoi sovrascriverla?"
 
+#: src/editor/editor.cpp:405
+#, fuzzy
+msgid "Player "
+msgstr "Giocatore"
+
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
 msgstr "Quale giocatore?"
@@ -144,10 +149,12 @@ msgid "Create New Map"
 msgstr "Crea una Nuova Mappa"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:100
 msgid "Width:"
 msgstr "Larghezza:"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:101
 msgid "Height:"
 msgstr "Altezza:"
 
@@ -171,7 +178,7 @@ msgstr "Annulla"
 msgid "Map creation failed."
 msgstr "Il processo di creazione della mappa è fallito."
 
-#: src/editor/editor_dialogs.cpp:247
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:91
 msgid "Close Window"
 msgstr "Chiudi Finestra"
 
@@ -230,6 +237,51 @@ msgstr "Primo Piano"
 #: src/editor/editor_palettes.cpp:313
 msgid "BG"
 msgstr "Sfondo"
+
+#: src/mapgen_dialog.cpp:94
+msgid "Map Generator"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:99
+#, fuzzy
+msgid "Players:"
+msgstr "Giocatore"
+
+#: src/mapgen_dialog.cpp:102
+msgid "Number of Hills:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:103
+msgid "Max Hill Size:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:104
+msgid "Villages:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:105
+msgid "Landform:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:211
+msgid "Roads Between Castles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:268
+msgid "/1000 tiles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:273
+msgid "Coastal"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:273
+msgid "Inland"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:273
+msgid "Island"
+msgstr ""
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
