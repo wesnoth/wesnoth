@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-01 13:09+0200\n"
-"PO-Revision-Date: 2005-07-29 17:28+0200\n"
+"PO-Revision-Date: 2005-08-01 16:48+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -14,11 +14,11 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +{HP_ADVANCE}"
-msgstr ""
+msgstr "Max HP-bonus +{HP_ADVANCE}"
 
 #: data/amla.cfg:21
 msgid "Full Heal"
-msgstr ""
+msgstr "Fullständigt läkande"
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
@@ -72,7 +72,6 @@ msgstr ""
 "dem."
 
 #: data/help.cfg:61
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -84,29 +83,28 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kampen om Wesnoth är ett dragbaserat strategispel i fantasymiljö som är lite "
-"annorlunda jämfört med andra moderna strategispel. Medan andra spel strävar "
-"efter komplexitet, både vad gäller regler och spelteknik, så är Kampen om "
-"Wesnoth uppbyggt kring enkla regler och enkel spelteknik. Tro nu inte att "
-"detta gör spelet i sig lätt - dessa enkla regler ger ett mycket rikt "
-"strategispel, som är lätt att lära sig men en rejäl utmaning att bemästra. "
+"Kampen om Wesnoth är ett dragbaserat strategispel i fantasymiljö som ter sig "
+"något annorlunda jämfört med andra moderna strategispel. Medan andra spel "
+"strävar efter komplexitet, så strävar Kampen om Wesnoth efter enkelhet i "
+"både regler och spelteknik. Tro nu inte att detta gör spelet i sig lätt - "
+"dessa enkla regler ger ett mycket rikt strategispel, som är lätt att lära "
+"sig men en rejäl utmaning att bemästra. "
 
 #: data/help.cfg:66
 msgid "Fundamentals of Gameplay"
 msgstr "Grundläggande spelteknik"
 
 #: data/help.cfg:67
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. For more detailed "
 "information on special situations and exceptions, please follow the links "
 "included."
 msgstr ""
-"Den här sidan ger en översikt över allt du behöver veta för att spela Kampen "
-"om Wesnoth. Den tar upp hur man spelar och de grundläggande mekanismer som "
-"styr spelet. Tänk på att detta bara är en översikt - om du följer länkarna "
-"kan du läsa om speciella undantag och situationer."
+"Dessa sidor ger en översikt över allt du behöver veta för att spela Kampen "
+"om Wesnoth. De tar upp hur man spelar och de grundläggande mekanismer som "
+"styr spelet. Om du följer länkarna får du mer detaljerad information "
+"angående särskilda situationer och undantag."
 
 #: data/help.cfg:69
 msgid ""
@@ -129,21 +127,20 @@ msgstr ""
 "börja med en <italic>text=Lätt</italic> kampanj."
 
 #: data/help.cfg:72
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
 "will be shown explaining that item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"När du spelar kan du hålla muspekaren över informationen i fältet till "
-"höger, vilket ger dig en ruta som förklarar det du pekar på lite närmare. "
-"Detta är särskilt användbart när du stöter på en ny egenskap första gången."
+"När du spelar kan du hålla muspekaren över många av de objekt som visas på "
+"skärmen, såsom informationen i fältet till höger, vilket ger dig en ruta som "
+"förklarar det du pekar på lite närmare. Detta är särskilt användbart när du "
+"stöter på nya <ref>dst=abilities text=förmågor</ref> första gången."
 
 #: data/help.cfg:77
-#, fuzzy
 msgid "About the Game"
-msgstr "Avsluta spelet"
+msgstr "Om spelet"
 
 #: data/help.cfg:78
 msgid ""
@@ -155,6 +152,12 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
+"Spelet är en serie av slag, eller scenarier. I varje scenario ställs "
+"dinatrupper mot en eller flera motståndares trupper. Du kan spela mot datorn "
+"eller mot dina vänner, där ni turas om med att sitta vid datorn och göra era "
+"drag (heta stolen-spel). Om din dator är uppkopplad i ett nätverk så kan du "
+"också spela mot andra som är uppkopplade mot samma nätverk. Om din dator har "
+"tillgång till Internet så kan du spela mot andra över Internet."
 
 #: data/help.cfg:80
 msgid ""
@@ -166,6 +169,13 @@ msgid ""
 "need to reach a destination, to rescue someone, to solve a puzzle, or just "
 "to survive a certain number of turns."
 msgstr ""
+"\n"
+"\n"
+"Varje scenario har vissa målsättningar som visas när scenariot börjar. Dessa "
+"målsättningar visar vad som krävs för att vinna scenariot, och vad du skall "
+"göra för att undvika förlust. Målsättningen är ofta att besegra alla "
+"fiender, men du kan även behöva nå en viss plats på kartan, rädda någon, "
+"lösa en gåta, eller bara överleva ett visst antal drag."
 
 #: data/help.cfg:82
 msgid ""
@@ -176,13 +186,18 @@ msgid ""
 "preserving your best troops so that they can be used again in later "
 "scenarios in the campaign."
 msgstr ""
+"\n"
+"\n"
+"Kampanjer består av flera scenarier som följer efter varandra i en "
+"sammanhängande historia. I en kampanj måste du ofta spela mer försiktigt och "
+"noggrant och hålla dina bästa trupper vid liv så att de kan användas i "
+"senare scenarier i kampanjen."
 
 #: data/help.cfg:87
 msgid "Recruiting and Recalling"
 msgstr "Rekrytera och återkalla"
 
 #: data/help.cfg:88
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -194,15 +209,17 @@ msgid ""
 "units available for recruitment, along with their gold cost. Click on a unit "
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
-"Då du spelar ett scenario - speciellt i början - kommer du att behöva "
-"rekrytera nya trupper till din armé. För att kunna göra detta, måste din "
-"ledare (Konrad i kampanjen Tronarvingen) stå i kärntornet i en borg. Du "
-"rekryterar antingen genom att välja Rekrytera från menyn eller genom att "
-"högerklicka på någon ruta och välja <italic>text=Rekrytera</italic>. Du får "
-"då upp rekryteringsmenyn, där tillgångliga trupper visas tillsammans med vad "
-"det kostar att leja dem. Om du klickar på ett truppslag så visas dess "
-"egenskaper till vänster i dialogrutan. För att rekrytera en trupp ur det "
-"valda truppslaget klickar du på Rekrytera."
+"Varje sida i spelet börjar med sin respektive ledare i ett kärntorn. I "
+"början av ett scenario, och ibland även senare under scenariot, så kommer du "
+"att behöva rekrytera nya trupper till din armé. För att kunna göra detta, "
+"måste din ledare (t ex Konrad i kampanjen Tronarvingen) stå i kärntornet i "
+"en <ref>dst=terrain_castle text=borg</ref>. Du rekryterar antingen genom att "
+"välja Rekrytera från menyn eller genom att högerklicka på någon ruta och "
+"välja <italic>text=Rekrytera</italic>. Du får då upp rekryteringsmenyn, där "
+"tillgångliga trupper visas tillsammans med vad det kostar att leja dem. Om "
+"du klickar på ett truppslag så visas dess egenskaper till vänster i "
+"dialogrutan. För att rekrytera en trupp ur det valda truppslaget klickar du "
+"på Rekrytera."
 
 #: data/help.cfg:90
 msgid ""
@@ -234,7 +251,6 @@ msgstr ""
 "text='Karaktärsdrag'</ref> som ändrar deras egenskaper."
 
 #: data/help.cfg:94
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -251,7 +267,6 @@ msgstr ""
 "tillgängliga veteraner som du kan välja bland."
 
 #: data/help.cfg:96
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -261,14 +276,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Tänk på att det inte bara kostar guld att Rekrytera eller Återkalla, utan "
-"det ger också en kostnad i underhåll. Läs <ref>dst=income_and_upkeep "
-"text='Inkomst och underhåll'</ref> för mer information om detta."
+"Trupper kostar inte bara då de rekryteras eller återkallas, utan de ger "
+"också en underhållskostnad. Läs <ref>dst=income_and_upkeep text='Inkomst och "
+"underhåll'</ref> för mer information om detta."
 
 #: data/help.cfg:101
-#, fuzzy
 msgid "Orbs"
-msgstr "Orcher"
+msgstr "Sfärer"
 
 #: data/help.cfg:111
 msgid ""
@@ -284,13 +298,24 @@ msgid ""
 "\n"
 "Enemy units have no orb on the top of their energy bar."
 msgstr ""
+"Ovanför energimätaren som visas bredvid alla dina trupper finns en sfär. Den "
+"sfären är:\n"
+"\n"
+"  * grön om du kontrollerar truppen och den inte har förflyttats detta "
+"drag,\n"
+"  * gul om du kontrollerar truppen, du har flyttat den detta drag, men den "
+"kan förflyttas ytterligare och/eller anfalla under innevarande drag,\n"
+"  * röd om du kontrollerar truppen, men dess förflyttning detta drag är "
+"slut,\n"
+"  * blå om truppen är allierad och du inte kan flytta den.\n"
+"\n"
+"Fiendetrupper har ingen sfär ovanför sina energimätare."
 
 #: data/help.cfg:116 src/help.cpp:1197
 msgid "Movement"
 msgstr "Förflyttning"
 
 #: data/help.cfg:117
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -301,16 +326,16 @@ msgid ""
 "clicking will cause the unit to move towards it by the fastest route over "
 "this and subsequent turns."
 msgstr ""
-"Det är lätt att förflytta trupper i Kampen om Wesnoth. Klicka helt enkelt på "
-"truppen du vill flytta, och sen på rutan du vill flytta truppen till. När "
-"truppen är vald, visas rutorna som den kan flytta till genom att de rutor "
-"som truppen inte kan nå på ett enda drag skuggas. Om muspekaren hålls över "
-"skuggad ruta, så visas antalet drag som krävs för att nå den. Om en sådan "
-"ruta väljs, kommer truppen att flyttas dit den snabbaste vägen under "
-"kommande drag."
+"Det är ingen konst att förflytta trupper i Kampen om Wesnoth. Klicka helt "
+"enkelt på truppen du vill flytta, och därefter på rutan du vill flytta "
+"truppen till. När truppen är vald så visas de rutor som den kan flytta till "
+"under samma drag genom att lysas upp. Om muspekaren hålls över sådan upplyst "
+"ruta, så visas det försvar som truppen får om den ställs på den rutan. Om "
+"muspekaren hålls över en skuggad ruta, så visas dessutom antalet drag som "
+"krävs för att nå den. Om en skuggad ruta väljs, kommer truppen att flyttas "
+"dit den snabbaste vägen under kommande drag."
 
 #: data/help.cfg:119
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -328,14 +353,14 @@ msgstr ""
 "\n"
 "Varje trupp har ett givet antal förflyttningspoäng för varje drag, och som "
 "spenderas för varje ruta som truppen träder in i. Kostnaden att förflytta "
-"sig över en viss ruta avgörs av rutans Terräng. Till exempel kostar det "
+"sig över en viss ruta avgörs av rutans terräng. Till exempel kostar det "
 "nästan alltid 1 förflyttningspoäng att gå på en slättruta. Exakt hur många "
-"poäng det kostar att gå på en vis typ av ruta avgörs av truppens typ. I skog "
-"kostar det bara 1 poäng för alver, 2 för de flesta människo- och "
-"orchtrupper, medan det för ryttare kostar 3. Om du vill veta vad det kostar "
-"för en trupp att gå på en viss typ av terräng, så kan du högerklicka på "
-"truppen, välja Truppbeskrivning, och sedan <italic>text='Terrängavdrag'</"
-"italic>."
+"poäng det kostar att gå på en vis typ av ruta avgörs av det aktuella "
+"truppslaget. I skog kostar det bara 1 poäng för alver, 2 för de flesta "
+"människo- och orchtrupper, medan det för ryttare kostar 3. Om du vill veta "
+"vad det kostar för en trupp att gå på en viss typ av terräng, så kan du "
+"högerklicka på truppen, välja Truppbeskrivning, och sedan "
+"<italic>text='Terrängavdrag'</italic>."
 
 #: data/help.cfg:121
 msgid ""
@@ -365,6 +390,11 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"För att se vart fienden kan förflytta under nästa drag, tryck Ctrl-v eller "
+"Cmd-v. Ctrl-b eller Cmd-b visar vart fienden skulle kunna flytta om dina "
+"trupper inte fanns på kartan och blockerade framfarten."
 
 #: data/help.cfg:128
 msgid "Combat"
@@ -382,6 +412,15 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
+"I Kampen om Wesnoth äger striderna alltid rum mellan trupper i intilliggande "
+"rutor. Klicka på den av dina trupper som du vill anfalla med, och därefter "
+"på den fiendetrupp som du vill anfalla. Din trupp kommer då att flytta mot "
+"fiendetruppen, och när de står bredvid varandra så börjar striden. "
+"Anfallaren och försvararen utväxlar attacker tills de använt sitt givna "
+"antal utfall. Anfallaren väljer ett av sina vapen att anfalla med, och "
+"försvararen återgäldar med ett av sina vapen som har samma räckvidd. Vapnens "
+"räckvidd indelas i närstrid, där vapen som svärd, yxor eller huggtänder "
+"används, och distansstrid, där vapen som pilbågar, spjut och eldklot används."
 
 #: data/help.cfg:131
 msgid ""
@@ -394,7 +433,6 @@ msgstr ""
 "<header>text='Turordning och antal attacker'</header>"
 
 #: data/help.cfg:133
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -408,10 +446,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Anfallaren får första attacken, därefter försvararen. Detta fortsätter "
-"växelvis tills båda trupperna har använt sina givna antal attacker. Antalet "
-"attacker en trupp har varierar, till exempel har en alvkrigare med ett 5-4-"
-"svärd 4 utfall som vardera ger 5 i skada, medan en orchsoldat med 9-2 bara "
+"Anfallaren får första utfallet, och därefter får försvararen slå tillbaka. "
+"Varje utfall antingen träffar, och åsamkar då en given mängd skada, eller "
+"missar, och åsamkar då ingen skada alls. Utfallen fortsätter växelvis tills "
+"båda trupperna har använt sitt givna antal attacker. Antalet attacker en "
+"trupp har varierar, till exempel har en alvkrigare med ett 5-4-svärd 4 "
+"utfall som vardera ger 5 i skada, medan en orchsoldat med en 9-2-attack bara "
 "har två utfall (men som ger 9 i skada vardera)."
 
 #: data/help.cfg:135
@@ -425,7 +465,6 @@ msgstr ""
 "<header>text='Chans för träff'</header>"
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -439,16 +478,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Chansen att en trupp träffar en annan under ett anfall beror i princip bara "
-"på vilken terräng försvararen står på. Chansen att träffa kan man se genom "
-"att högerklicka på en trupp, välja Truppbeskrivning, och sedan "
-"<italic>text='Terrängavdrag'</italic>. Till exempel har många alver en "
+"Chansen att en trupp träffar en annan under ett utfall beror i princip bara "
+"på vilken terräng försvararen står på. Chansen att träffa i statuspanelen "
+"eller genom att man högerklickar på en trupp, väljer Truppbeskrivning, och "
+"sedan <italic>text='Terrängavdrag'</italic>. Till exempel har många alver en "
 "försvarsnivå på 70% i skog, vilket innebär att en attackerande trupp bara "
 "bara har 30% chans att träffa dem. Precis på samma sätt avgörs "
 "träffmöjligheten för alven av terrängen som den andra truppen står på."
 
 #: data/help.cfg:139
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -459,11 +497,13 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Det finns två undantag till den här regeln: vid <ref>dst=magical_attacks "
-"text='Magiska attacker'</ref> och då <ref>dst=ability_marksman "
-"text=Prickskyttar</ref> anfaller. Magiska attacker har alltid 70% chans att "
-"träffa, oavsett terräng; när prickskyttar anfaller har de alltid minst 60% "
-"chans att träffa, även dessa oavsett terräng."
+"\n"
+"Det finns två undantag till den här regeln: vid "
+"<ref>dst=weaponspecial_magical text='Magiska attacker'</ref> och då "
+"<ref>dst=weaponspecial_marksman text=Prickskyttar</ref> anfaller. Magiska "
+"attacker har alltid 70% chans att träffa, oavsett terräng, och när "
+"prickskyttar gör ett offensivt utfall har de alltid minst 60% chans att "
+"träffa, oavsett terräng."
 
 #: data/help.cfg:141
 msgid ""
@@ -476,7 +516,6 @@ msgstr ""
 "<header>text=Skada</header>"
 
 #: data/help.cfg:143
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -491,13 +530,13 @@ msgstr ""
 "\n"
 "Varje träff ger en grundskada som beror på typen av attack. Till exempel ger "
 "en alvkrigare med ett 5-4-svärd en grundskada på 5 hälsopoäng (HP). Detta "
-"kan ändras beroende på två saker: försvararens "
+"modifieras vanligtvis av två faktorer: försvararens "
 "<ref>dst=damage_types_and_resistance text=Motståndskraft</ref> samt vilken "
-"<ref>dst=time_of_day text='Tid på dygnet'</ref> det är. Båda dessa förklaras "
-"nedan."
+"<ref>dst=time_of_day text='Tid på dygnet'</ref> det är. Hur grundskadan "
+"förändras av dessa faktorer kan du se under <italic>text='Skadeberäkning'</"
+"italic> när du väljer attack."
 
 #: data/help.cfg:145
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -510,8 +549,8 @@ msgstr ""
 "\n"
 "Vissa trupper har speciella förmågor som påverkar hur mycket skada de vållar "
 "sina fiender i strid. Den vanligaste av dessa är förmågan är att "
-"<ref>dst=ability_charge text=Storma</ref>. Då en trupp stormar en annan "
-"fördubblas skadan som både anfallaren och försvararen vållar."
+"<ref>dst=weaponspecial_charge text=Storma</ref>. Då en trupp stormar en "
+"annan fördubblas skadan som både anfallaren och försvararen vållar."
 
 #: data/help.cfg:150
 msgid "Damage Types and Resistance"
@@ -532,7 +571,6 @@ msgstr ""
 "olika skadetyper."
 
 #: data/help.cfg:153
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -544,12 +582,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Motståndskrafter är lätta att förstå. En trupp som exempelvis har 40% "
-"motståndskraft mot en viss typ av skada kommer att få 40% mindre skada när "
-"den får en skada av just den sorten. Det är också möjligt att en trupp är "
-"extra sårbar för vissa sorters attacker. Om en trupp har en negativ "
+"Motståndskrafter fungerar som följer. En trupp som exempelvis har 40% "
+"motståndskraft mot en viss typ av attack kommer att få 40% mindre skada när "
+"den träffas av en sådan attack. Det är också möjligt att en trupp är extra "
+"sårbar för vissa sorters attacker. Om en trupp har en negativ "
 "motståndskraft, till exempel -100%, så kommer den att få 100% mer i skada "
-"när den får den sortens skada."
+"när den träffas av den sortens attack."
 
 #: data/help.cfg:155
 msgid ""
@@ -573,6 +611,10 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"Om en attack träffar, så vållar den alltid minst en poäng i skada. Detta "
+"gäller även om truppen har 100% motstånd mot aktuell attacktyp."
 
 #: data/help.cfg:162
 msgid "Time of Day"
@@ -691,7 +733,6 @@ msgstr ""
 "fulla styrka. I vissa fall ges möjlighet att välja truppens nästa roll."
 
 #: data/help.cfg:193
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -700,8 +741,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"De flesta trupper har tre erfarenhetsnivåer, men de kan också ha färre, och "
-"somliga (såsom <ref>dst=unit_Mage text=Magiker</ref>) kan ha fyra."
+"De flesta truppslag har tre erfarenhetsnivåer, dock inte alla. Vissa "
+"truppslag (såsom <ref>dst=unit_Mage text=Magiker</ref>) kan ha fyra."
 
 #: data/help.cfg:198
 msgid "Healing"
@@ -1259,7 +1300,6 @@ msgid "Swamp"
 msgstr "Träsk"
 
 #: data/help.cfg:360
-#, fuzzy
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1487,6 +1527,9 @@ msgid ""
 "is concerned, only units capable of flying over canyons can cross this "
 "terrain."
 msgstr ""
+"En ravin är en reva i marken som når okända djup. Raviner har branta "
+"klippväggar som det skulle ta dagar att ta sig över. I spelet är det bara "
+"flygande truppslag som kan ta sig över denna typ av terräng."
 
 #: data/help.cfg:469 data/terrain.cfg:472
 msgid "Lava"
@@ -1498,6 +1541,8 @@ msgid ""
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
+"Farorna med att försöka vada genom lava är uppenbara. Denna typ av terräng "
+"kan bara korsas av trupper som har tillräcklig flyghöjd."
 
 #: data/help.cfg:476 data/terrain.cfg:462
 msgid "River Ford"
@@ -1512,6 +1557,11 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Där en flod råkar vara mycket grund kan den med lätthet passeras även av "
+"landlevande truppslag. Varelser som kan simma rör sig fritt även över sådana "
+"grunda platser i floden. I spelet behandlas vadställen som antingen slätt "
+"eller grunt vatten beroende på vad som är bäst för truppslaget som befinner "
+"sig där."
 
 #: data/items.cfg:264
 msgid ""
@@ -4390,7 +4440,6 @@ msgid "Arch Mage"
 msgstr "Ärkemagiker"
 
 #: data/units/Arch_Mage.cfg:24
-#, fuzzy
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -4413,11 +4462,12 @@ msgstr ""
 "till de som är insiktsfulla nog att söka deras visdom. Många tjänstgör hos "
 "förmögna och högt stående i samhället, något som är gynnar båda parterna, då "
 "magikern får tid och resurser för sin egen forskning i utbyte mot sporadiska "
-"råd och andra uppgifter. Vissa av dem skyr civilisationen och tillbringar "
-"sina dagar som eremiter, där de kan studera ämnen som uppskattas av få.\n"
+"råd och andra uppgifter. Vissa magiker skyr civilisationen och väljer att "
+"tillbringa sina dagar som eremiter, där de kan studera ämnen som uppskattas "
+"av få.\n"
 "\n"
-"Även om de inte är tränade för strid, så kan de om nöden kräver släppa lös "
-"den fulla kraften i sin konst, något som inte skall förringas.\n"
+"Även om de inte är tränade för strid, så kan ärkemagiker om nöden kräver "
+"släppa lös den fulla kraften i sin konst, något som inte skall förringas.\n"
 "\n"
 "Observera: ärkemagikerns eldklot är magiska och träffar därför ofta sitt mål."
 
@@ -4665,9 +4715,8 @@ msgid "mace"
 msgstr "spikklubba"
 
 #: data/units/Battle_Princess.cfg:3
-#, fuzzy
 msgid "female^Battle Princess"
-msgstr "Fredlös prinsessa"
+msgstr "Stridsprinsessa"
 
 #: data/units/Battle_Princess.cfg:22 data/units/Battle_Princess.cfg:76
 msgid "leadership,skirmisher"
@@ -4867,7 +4916,6 @@ msgid "Bowman"
 msgstr "Bågskytt"
 
 #: data/units/Bowman.cfg:18
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -5516,9 +5564,8 @@ msgstr ""
 #: data/units/Drake_Slasher.cfg:25 data/units/Drake_Slasher.cfg:43
 #: data/units/Drake_Warden.cfg:27 data/units/Drake_Warden.cfg:45
 #: data/units/Halbardier.cfg:29 data/units/Halbardier.cfg:70
-#, fuzzy
 msgid "halberd"
-msgstr "Hillebardiär"
+msgstr "hillebard"
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:48
 #: data/units/Goblin_Impaler.cfg:28 data/units/Halbardier.cfg:35
@@ -6516,6 +6563,16 @@ msgid ""
 "poison will continually take damage until they can be cured in town or by a "
 "healer."
 msgstr ""
+"Endast de som nått in i nekromantins kretsar vet hur man gör en person till "
+"en ghul, och det är en väl förborgad hemlighet. Vilka onämnbara riter de än "
+"använt så är resultatet en varelse som inte minns något av sina dagar som "
+"människa, en varelse som hasar omkring lika naken som den dag den föddes, "
+"och smörjer kråset med köttet från de döda.\n"
+"\n"
+"Det är på grund av sådana handlingar som nekromantin hatas och fördöms.\n"
+"Observera: ghulernas klor är täckta av gift, och de som blir förgiftade i "
+"kampen mot en ghul kommer att försvagas gradvis tills de kan bli botade i en "
+"by eller av en helare."
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
@@ -6802,7 +6859,6 @@ msgid "Halberdier"
 msgstr "Hillebardiär"
 
 #: data/units/Halbardier.cfg:26
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -6828,7 +6884,7 @@ msgstr ""
 "användas i en dragande rörelser mot brukaren. Allt detta ger ett mångsidigt "
 "vapen i närstrid, särskilt mot kavalleri.\n"
 "\n"
-"En hillebard är dock mycket dyrare att tillverka än ett spjut, och har i en "
+"En hillebard är dock mycket dyrare att tillverka än ett spjut, och gör i en "
 "nybörjares händer betydligt mindre nytta. I Wesnoths arméer är det brukligt "
 "att endast tilldela veteraner bland pikenerarna detta vapen, när de visat "
 "prov på sin skicklighet på slagfältet.\n"
@@ -6841,7 +6897,6 @@ msgid "Heavy Infantryman"
 msgstr "Tung infanterist"
 
 #: data/units/Heavy_Infantryman.cfg:15
-#, fuzzy
 msgid ""
 "Heavy infantry are an unusual choice for outfitting troops. They are very "
 "difficult to send afield in war, and are typically useful only in the "
@@ -6854,9 +6909,9 @@ msgid ""
 msgstr ""
 "Det tunga infanteriet utrustas på ett något egendomligt vis. Det är svårt "
 "att skicka dem i fält i ett krig, och de gör nästan bara rätt för sig i "
-"försvaret av staden eller borgen de är stationerade i. De är klädda i "
-"rustning från topp till tå och bär tunga spikklubbor som de använder med "
-"stor förtjänst i närstrid. Ett par tunga infanterister förstärker en "
+"försvar av staden eller borgen de är stationerade i. De är klädda i rustning "
+"från topp till tå och bär tunga spikklubbor som de använder med stor "
+"förtjänst i närstrid. Ett par tunga infanterister förstärker en "
 "försvarslinje avsevärt. Deras nackdelar är uppenbara, och ligger i vikten de "
 "bär och den vård som krävs för all denna metall, men slagkraften hos dessa "
 "soldater kompenserar mer än väl."
@@ -7084,7 +7139,6 @@ msgid "Longbowman"
 msgstr "Långbågsskytt"
 
 #: data/units/Longbowman.cfg:19
-#, fuzzy
 msgid ""
 "Longbows are forbidden to beginning archers simply by merit of physical law. "
 "It takes great strength to draw one, and the added range and power are "
@@ -7182,7 +7236,6 @@ msgid "illuminates,cures"
 msgstr "lyser upp, helar"
 
 #: data/units/Mage_of_Light.cfg:35
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi are bestowed with "
 "vast spiritual powers. By strict devotion to the path of the light, they can "
@@ -7583,7 +7636,6 @@ msgid "Necrophage"
 msgstr "Nekrofag"
 
 #: data/units/Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -7597,7 +7649,11 @@ msgstr ""
 "Drivna av sin vanheliga hunger efter kött attackerar nekrofagerna utsvultet "
 "sitt byte med sina giftiga klor. När de ätit sig mätta på sina offers kött "
 "skakar de helt enkelt av sig all skada de ådragit sig, och börjar ånyo sitt "
-"sökande efter föda."
+"sökande efter föda.\n"
+"\n"
+"Observera: nekrofagernas klor är täckta av gift, och de som blir förgiftade "
+"i kampen mot en nekrofag kommer att försvagas gradvis tills de kan bli "
+"botade i en by eller av en helare."
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
@@ -8684,7 +8740,6 @@ msgid "Thief"
 msgstr "Tjuv"
 
 #: data/units/Thief.cfg:20 data/units/Thief.cfg:123
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -8704,7 +8759,11 @@ msgstr ""
 "deras sort ofta hänger sig åt mindre lagliga göromål. Tjuvar har många olika "
 "färdigheter, och de är av nödvändighet snabba och smidiga och skickliga med "
 "sina knivar. Deras taktik är ofta av det slag som av många skulle betraktas "
-"som vanhedrande."
+"som vanhedrande.\n"
+"\n"
+"Observera: om en allierad trupp distraherar en fiende, så att lönnmördaren "
+"kan smyga in bakom ryggen på sitt offer och hugga med sin kniv, så gör denna "
+"attack dubbel skada."
 
 #: data/units/Thief.cfg:106
 msgid "female^Thief"
@@ -9411,7 +9470,7 @@ msgstr "(Tryck på $hotkey för att fortsätta)"
 
 #: src/dialogs.cpp:100
 msgid "Advance Unit"
-msgstr "Uppgradera trupp"
+msgstr "Befordra trupp"
 
 #: src/dialogs.cpp:101
 msgid "What should our victorious unit become?"
@@ -10037,7 +10096,7 @@ msgstr "Byar:"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr "Landform:"
+msgstr "Landskapstyp:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
@@ -10311,9 +10370,8 @@ msgid "Map"
 msgstr "Karta"
 
 #: src/multiplayer_lobby.cpp:30
-#, fuzzy
 msgid "Settings"
-msgstr "Inställningar..."
+msgstr "Inställningar"
 
 #: src/multiplayer_lobby.cpp:30
 msgid "Status"
@@ -11054,34 +11112,3 @@ msgstr "redbar"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "neutral"
-
-#~ msgid ""
-#~ "There are two types of combat in Battle for Wesnoth, short- and long-"
-#~ "ranged, but both of them take place between units in adjacent hexes. "
-#~ "Short-range combat usually involves weapons such as swords, axes or "
-#~ "fangs, while long-range combat usually involves weapons such as bows, "
-#~ "spears and fireballs. Combat is relatively straightforward; the attacker "
-#~ "and defender alternate attacks until each has used their allotted number "
-#~ "of attacks."
-#~ msgstr ""
-#~ "Det finns två sorters strid i Kampen om Wesnoth, närstrid och "
-#~ "distansstrid. Båda sorter äger rum mellan trupper som står på "
-#~ "intilliggande rutor. I närstrid används vanligtvis vapen såsom svärd, "
-#~ "yxor eller huggtänder, medan det för strid på distans krävs pilbågar, "
-#~ "spjut och eldklot. Striden i sig är inte märkligare än att den anfallande "
-#~ "och försvarande truppen växelvis attackerar varandra tills det att båda "
-#~ "har använt sina givna antal attacker."
-
-#~ msgid "tough"
-#~ msgstr "härdad"
-
-#~ msgid ""
-#~ "Sometimes starved and ravenous humans who are forced to eat human corpses "
-#~ "awake after their deaths to find that they are trapped in a tortured "
-#~ "existence as Ghouls."
-#~ msgstr ""
-#~ "Svältande och utmärglade människor som har tvingats äta sina kamrater, "
-#~ "dessa vaknar ibland upp efter sin död som ghuler plågade av sina minnen."
-
-#~ msgid "satiated"
-#~ msgstr "mätt"
