@@ -238,8 +238,9 @@ void lobby::process_event()
 
 	int selection = games_menu_.selection();
 
-	if(selection != current_game_ && selection >= 0 && selection < int(game_vacant_slots_.size())) {
-		current_game_ = selection;
+	if(selection >= 0 && selection < int(game_vacant_slots_.size())) {
+		if(selection != current_game_)
+			current_game_ = selection;
 		join_game_.hide(!game_vacant_slots_[selection]);
 		observe_game_.hide(!game_observers_[selection]);
 	}
