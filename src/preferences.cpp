@@ -1030,10 +1030,11 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos = rect.y;
 	sound_button_.set_location(rect.x, ypos);
 
+	const unsigned slider_label_width = maximum<unsigned>(sound_label_.width(), music_label_.width());
 	ypos += item_interline;
 	sound_label_.set_location(rect.x, ypos);
-	const SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
-	                        rect.w - slider_label_width_ - border, 0 };
+	const SDL_Rect sound_rect = { rect.x + slider_label_width, ypos,
+	                        rect.w - slider_label_width - border, 0 };
 	sound_slider_.set_location(sound_rect);
 
 	ypos += item_interline;
@@ -1041,8 +1042,8 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	ypos += item_interline;
 	music_label_.set_location(rect.x, ypos);
-	const SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
-	                        rect.w - slider_label_width_ - border, 0 };
+	const SDL_Rect music_rect = { rect.x + slider_label_width, ypos,
+	                        rect.w - slider_label_width - border, 0 };
 	music_slider_.set_location(music_rect);
 
 	//Advanced tab
