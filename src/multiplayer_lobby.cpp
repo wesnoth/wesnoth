@@ -221,13 +221,11 @@ void lobby::gamelist_updated(bool silent)
 	if(games_menu_.selection() >= 0 && games_menu_.selection() < int(game_vacant_slots_.size())) {
 		wassert(game_vacant_slots_.size() == game_observers_.size());
 
-		observe_game_.enable(true);
-		join_game_.enable(true);
 		join_game_.hide(!game_vacant_slots_[games_menu_.selection()]);
 		observe_game_.hide(!game_observers_[games_menu_.selection()]);
 	} else {
-		observe_game_.enable(false);
-		join_game_.enable(false);
+		join_game_.hide();
+		observe_game_.hide();
 	}
 
 }
@@ -243,6 +241,9 @@ void lobby::process_event()
 			current_game_ = selection;
 		join_game_.hide(!game_vacant_slots_[selection]);
 		observe_game_.hide(!game_observers_[selection]);
+	} else {
+		join_game_.hide();
+		observe_game_.hide();
 	}
 
 	const bool games_available = game_vacant_slots_.empty() == false;
