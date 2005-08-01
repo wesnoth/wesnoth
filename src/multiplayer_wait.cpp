@@ -16,6 +16,7 @@
 #include "display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "multiplayer.hpp"
 #include "multiplayer_wait.hpp"
 #include "preferences.hpp"
 #include "statistics.hpp"
@@ -177,7 +178,7 @@ void wait::join_game(bool observe)
 
 		if(sides_list.empty()) {
 			set_result(QUIT);
-			throw network::error(_("No multiplayer sides available in this game"));
+			throw mp::error(_("No multiplayer sides available in this game"));
 			return;
 		}
 
@@ -204,12 +205,12 @@ void wait::join_game(bool observe)
 		if(allow_changes) {
 			const config* era = level_.child("era");
 			if(era == NULL)
-				throw network::error(_("Era not available"));
+				throw mp::error(_("Era not available"));
 			const config::child_list& possible_sides =
 				era->get_children("multiplayer_side");
 			if(possible_sides.empty()) {
 				set_result(QUIT);
-				throw network::error(_("No multiplayer sides found"));
+				throw mp::error(_("No multiplayer sides found"));
 				return;
 			}
 

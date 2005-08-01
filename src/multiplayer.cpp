@@ -343,10 +343,22 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 
 		switch (res) {
 		case mp::ui::JOIN:
-			enter_wait_mode(disp, game_config, data, chat, gamelist, false);
+			try {
+				enter_wait_mode(disp, game_config, data, chat, gamelist, false);
+			} catch(mp::error& err) {
+				if(!err.message.empty()) {
+					gui::show_error_message(disp, err.message);
+				}
+			}
 			break;
 		case mp::ui::OBSERVE:
-			enter_wait_mode(disp, game_config, data, chat, gamelist, true);
+			try {
+				enter_wait_mode(disp, game_config, data, chat, gamelist, true);
+			} catch(mp::error& err) {
+				if(!err.message.empty()) {
+					gui::show_error_message(disp, err.message);
+				}
+			}
 			break;
 		case mp::ui::CREATE:
 			try {
