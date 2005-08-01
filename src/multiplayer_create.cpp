@@ -43,7 +43,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	xp_modifier_slider_(disp.video()),
 	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
-	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOUR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
@@ -402,10 +402,9 @@ void create::layout_children(const SDL_Rect& rect)
 
 	// Name Entry
 	name_entry_label_.set_location(xpos, ypos);
-	ypos += name_entry_label_.height() + border_size;
-	name_entry_.set_location(xpos, ypos);
-	name_entry_.set_width(ca.w);
-	ypos += name_entry_.height() + border_size;
+	name_entry_.set_location(xpos + name_entry_label_.width() + border_size, ypos);
+	name_entry_.set_width(ca.w - name_entry_label_.width() - border_size);
+	ypos += maximum<int>(name_entry_.height(), name_entry_label_.height()) + border_size;
 
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;

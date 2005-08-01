@@ -113,8 +113,6 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	current_game_(0)
 {
 	game_config::debug = false;
-	const SDL_Rect pos = { 0, 0, disp.video().getx(), disp.video().gety() };
-	ui::set_location(pos);
 	gamelist_updated();
 }
 
