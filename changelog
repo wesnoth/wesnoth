@@ -5,9 +5,8 @@ CVS HEAD:
      Swedish, Turkish
    * fixed linebreaks not working properly for Chinese translation (#13352)
    * updated several unit descriptions
-   * added GPL to help
+   * added GPL, MANUAL and additional content to in-game help
    * fixed some untranslatable attack names (part of #12788)
-   * added MANUAL to in-game help
    * Battle Princess can now have translation different to Princess
    * fix terrain list cross-references in unit help
  * graphics and sound improvements:
@@ -28,13 +27,16 @@ CVS HEAD:
    * added Use map settings option to preset scenario suggested values at setup
    * show game settings in the game list
    * fixed lobby corruption when trying to join a game that disallows observers
- * fixed failed recruit attempt clearing undo stack (#13833)
- * fixed recall not clearing shroud (#13824)
+ * user interface improvements: 
+   * fixed failed recruit attempt clearing undo stack (#13833)
+   * fixed recall not clearing shroud (#13824)
+   * fixed spurious warning when loading a saved game and ending turn (#12986)
+   * sound is handled better, and can be set as a preference (rest of #11669)
+   * fixed editor insisting on path without spaces, for saving maps (#13919)
+   * changed hotkeys for end turn (alt-e->alt-space) and open/load game
+     (ctrl-l->ctrl-o)
  * fixed towupper causing build to fail on OpenBSD (#13709)
- * fixed replay errors due to capture events not saving randomness (#13666)
- * fixed editor insisting on path without spaces, for saving map (#13919)
- * fixed spurious warning when loading a saved game and ending turn (#12986)
- * sound is handled better, and can now be set as a preference (rest of #11669)
+ * fixed replay corruption due to capture events not saving randomness (#13666)
  * various bug fixes and code cleanups
 
 Version 0.9.4:
