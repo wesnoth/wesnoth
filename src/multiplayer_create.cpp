@@ -46,7 +46,6 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
-	vision_label_(disp.video(), _("Vision:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	use_map_settings_(disp.video(), _("Use map settings"), gui::button::TYPE_CHECK),
 	fog_game_(disp.video(), _("Fog Of War"), gui::button::TYPE_CHECK),
@@ -357,7 +356,6 @@ void create::hide_children(bool hide)
 	name_entry_label_.hide(hide);
 	num_players_label_.hide(hide);
 	era_label_.hide(hide);
-	vision_label_.hide(hide);
 	map_label_.hide(hide);
 
 	use_map_settings_.hide(hide);
@@ -420,18 +418,15 @@ void create::layout_children(const SDL_Rect& rect)
 
 	num_players_label_.set_location(xpos, ypos);
 	ypos += num_players_label_.height() + border_size;
-	
-	era_label_.set_location(xpos, ypos + (era_combo_.height() - era_label_.height()) / 2);
-	era_combo_.set_location(xpos + vision_label_.width() + border_size, ypos);
-	ypos += era_combo_.height() + border_size;
 
-	vision_label_.set_location(xpos, ypos + (vision_combo_.height() - vision_label_.height()) / 2);
-	vision_combo_.set_location(xpos + vision_label_.width() + border_size, ypos);
-	ypos += vision_combo_.height() + border_size;
-
-	regenerate_map_.set_location(xpos, ypos);
+	regenerate_map_.set_location(xpos + era_label_.width() + border_size, ypos);
 	ypos += regenerate_map_.height() + border_size;
-	generator_settings_.set_location(xpos, ypos);
+	generator_settings_.set_location(xpos + era_label_.width() + border_size, ypos);
+	ypos += generator_settings_.height() + border_size;
+
+	era_label_.set_location(xpos, ypos + (era_combo_.height() - era_label_.height()) / 2);
+	era_combo_.set_location(xpos + era_label_.width() + border_size, ypos);
+	ypos += era_combo_.height() + border_size;
 
 	// Second column: map menu
 	ypos = ypos_columntop;
@@ -480,6 +475,9 @@ void create::layout_children(const SDL_Rect& rect)
 
 	observers_game_.set_location(xpos, ypos);
 	ypos += observers_game_.height() + border_size;
+
+	vision_combo_.set_location(xpos, ypos);
+	ypos += vision_combo_.height() + border_size;
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;

@@ -92,7 +92,6 @@ private:
 	gui::label name_entry_label_;
 	gui::label num_players_label_;
 	gui::label era_label_;
-	gui::label vision_label_;
 	gui::label map_label_;
 
 	gui::button use_map_settings_;
