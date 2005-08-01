@@ -645,7 +645,7 @@ void connect::process_network_data(const config& data, const network::connection
 		const int side_drop = lexical_cast_default<int>(data["side_drop"], 0) - 1;
 		if(side_drop >= 0 && side_drop < int(sides_.size())) {
 			connected_user_list::iterator player = find_player(sides_[side_drop].get_id());
-			sides_[side_drop].reset(default_controller_);
+			sides_[side_drop].reset(sides_[side_drop].get_controller());
 			if (player != users_.end()) {
 				users_.erase(player);
 				update_user_combos();
@@ -685,6 +685,13 @@ void connect::process_network_data(const config& data, const network::connection
 					config response;
 					response.values["failed"] = "yes";
 					network::send_data(response, sock);
+					config kick;
+					kick["username"] = data["name"];
+					config res;
+					res.add_child("kick", kick);
+					network::send_data(res);
+					update_user_combos();
+					update_and_send_diff();
 					return;
 				}
 			}

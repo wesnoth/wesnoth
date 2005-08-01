@@ -47,7 +47,7 @@ void start_client(display& disp, const config& game_config, game_data& data,
 		const std::string host);
 
 struct error {
-	error(const std::string& msg) : message(msg) {}
+	error(const std::string& msg = "") : message(msg) { }
 	std::string message;
 };
 
