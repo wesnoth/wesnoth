@@ -1300,7 +1300,7 @@ void turn_info::end_turn()
 
 				partmoved_units = true;
 			}
-			if(un->second.has_moved()) {
+			if(un->second.has_moved() && ! un->second.has_goto()) {
 				some_units_have_moved = true;
 			}
 		}
@@ -1308,11 +1308,9 @@ void turn_info::end_turn()
 
 	//Ask for confirmation if the player hasn't made any moves (other than gotos).
 	if(preferences::confirm_no_moves() && ! some_units_have_moved) {
-		if (recorder.ncommands() == start_ncmd_) {
-			const int res = gui::show_dialog(gui_,NULL,"",_("You have not started your turn yet.  Do you really want to end your turn?"), gui::YES_NO);
-			if(res != 0) {
-				return;
-			}
+		const int res = gui::show_dialog(gui_,NULL,"",_("You have not started your turn yet.  Do you really want to end your turn?"), gui::YES_NO);
+		if(res != 0) {
+			return;
 		}
 	}
 

@@ -91,6 +91,7 @@ public:
 
 	bool incapacitated() const;
 	bool has_moved() const;
+	bool has_goto() const;
 
 	bool emits_zoc() const;
 

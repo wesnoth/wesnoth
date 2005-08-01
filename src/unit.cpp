@@ -492,6 +492,11 @@ bool unit::has_moved() const
 	return this->movement_left() != this->total_movement();
 }
 
+bool unit::has_goto() const
+{
+        return this->get_goto().valid();
+}
+
 bool unit::emits_zoc() const
 {
 	return type().has_zoc() && stone() == false;
