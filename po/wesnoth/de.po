@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-01 13:09+0200\n"
-"PO-Revision-Date: 2005-07-31 14:46+0100\n"
+"PO-Revision-Date: 2005-08-02 20:32+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic AT gmx DOT net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,11 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +{HP_ADVANCE}"
-msgstr ""
+msgstr "Bonus zu max. LP: +{HP_ADVANCE}"
 
 #: data/amla.cfg:21
 msgid "Full Heal"
-msgstr ""
+msgstr "Vollständige Heilung"
 
 # -- Anmerkungen --
 # Wenn an einem Tag 'Do not delete' steht, wäre es kooperativ, ihn
@@ -58,7 +58,7 @@ msgstr "Spielregeln"
 
 #: data/help.cfg:21 data/help.cfg:244 src/playturn.cpp:2237
 msgid "Traits"
-msgstr "Charakteristika"
+msgstr "Charakteristiken"
 
 #: data/help.cfg:27 src/playturn.cpp:1779
 msgid "Units"
@@ -88,7 +88,6 @@ msgstr ""
 "erscheinen, sobald Ihr auf sie gestoßen seid."
 
 #: data/help.cfg:61
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -113,7 +112,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Grundlegendes zum Spiel"
 
 #: data/help.cfg:67
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. For more detailed "
@@ -148,21 +146,20 @@ msgstr ""
 "Schwierigkeitsgrad <italic>text=leicht</italic> zu wählen."
 
 #: data/help.cfg:72
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
 "will be shown explaining that item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"Wenn Ihr während des Spiels die Maus über die Menüleiste zur Rechten bewegt, "
-"bekommt Ihr zumeist eine kurze Beschreibung angezeigt. Das ist vor allem "
-"dann sinnvoll, wenn neue Eigenschaften zum ersten Mal auftauchen."
+"Vergesst nicht, dass Ihr die Maus über viele Spielelemente bewegen könnt, um "
+"Euch zumeist eine kurze Beschreibung anzeigen zu lassen. Das ist vor allem "
+"dann sinnvoll, wenn neue <ref>dst=abilities text=Fertigkeiten</ref> zum "
+"ersten Mal auftauchen."
 
 #: data/help.cfg:77
-#, fuzzy
 msgid "About the Game"
-msgstr "Das Spiel beenden"
+msgstr "Über das Spiel"
 
 #: data/help.cfg:78
 msgid ""
@@ -201,7 +198,6 @@ msgid "Recruiting and Recalling"
 msgstr "Ausbildung und Einberufung"
 
 #: data/help.cfg:88
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -214,15 +210,16 @@ msgid ""
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 "Am Anfang einer Schlacht, manchmal auch während des Kampfes, müsst Ihr "
-"Truppen für Eure Armee ausbilden. Dafür muss Euer Anführer (Konrad in der "
-"Kampagne »Der Thronerbe«) auf dem Bergfried-Feld in einer Burg stehen. Ihr "
-"könnt dann entweder »Ausbilden« im Menü auswählen oder nach einem "
-"Rechtsklick auf ein Hexfeld <italic>text=Ausbilden</italic> auswählen. "
-"Danach erscheint das Ausbildungsmenü, wo alle Einheitentypen, die "
-"ausgebildet werden können, aufgelistet sind. Neben den Einheiten ist "
-"angegeben, wie viel die Ausbildung kostet. Wenn Ihr eine Einheit wählt, "
-"erscheinen ihre Eigenschaften auf der linken Seite. Ihr könnt dann den "
-"»Ausbilden«-Knopf drücken, um die Einheit auszubilden."
+"Truppen für Eure Armee ausbilden. Dafür muss Euer Anführer (beispielsweise "
+"Konrad in der Kampagne »Der Thronerbe«) auf dem Bergfried-Feld in einer "
+"<ref>dst=terrain_castle text=Burg</ref> stehen. Ihr könnt dann entweder "
+"»Ausbilden« im Menü auswählen oder nach einem Rechtsklick auf ein Hexfeld "
+"<italic>text=Ausbilden</italic> auswählen. Danach erscheint das "
+"Ausbildungsmenü, in dem alle Einheitentypen, die ausgebildet werden können, "
+"aufgelistet werden. Neben den Einheiten ist angegeben, wie viel die "
+"Ausbildung kostet. Wenn Ihr eine Einheit wählt, erscheinen ihre "
+"Eigenschaften auf der linken Seite. Ihr könnt dann den »Ausbilden«-Knopf "
+"drücken, um die Einheit auszubilden."
 
 #: data/help.cfg:90
 msgid ""
@@ -254,7 +251,6 @@ msgstr ""
 "text=Charakteristiken</ref>, die ihre Eigenschaften verändern."
 
 #: data/help.cfg:94
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -264,13 +260,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"In späteren Szenarien könnt Ihr Überlebende aus früheren Schlachten "
+"In späteren Szenarios könnt Ihr Überlebende aus früheren Schlachten "
 "einberufen. Das funktioniert genauso wie das Ausbilden, kostet aber immer 20 "
 "Goldstücke. Im Auswahlmenü werden alle überlebenden Einheiten der "
 "vergangenen Szenarien angezeigt."
 
 #: data/help.cfg:96
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -310,7 +305,6 @@ msgid "Movement"
 msgstr "Bewegungskosten"
 
 #: data/help.cfg:117
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -324,13 +318,14 @@ msgstr ""
 "Das Bewegen von Einheiten in Battle for Wesnoth ist einfach: Klickt zuerst "
 "auf die zu bewegende Einheit und danach auf das gewünschte Zielfeld. Wenn "
 "eine Einheit ausgewählt ist, werden alle erreichbaren Felder hervorgehoben "
-"und alle anderen abgedunkelt. Wenn Ihr mit der Maus über ein zu weit "
-"entferntes Feld fahrt, wird angezeigt, wie viele Züge die Einheit bis dahin "
-"benötigt. Wenn Ihr das Feld anklickt, wird sich die Einheit auf dem "
-"schnellsten Wege dorthin bewegen."
+"und alle anderen abgedunkelt. Wenn Ihr mit der Maus über ein Feld fahrt, "
+"wird der Verteidigungswert, über denn die ausgewählte Einheit in diesem "
+"Gelände verfügt, angezeigt. Fahrt Ihr über ein abgedunkeltes Feld wird "
+"zusätzlich angezeigt, wie viele Züge die Einheit bis dahin benötigt. Wenn "
+"Ihr das Feld anklickt, wird sich die Einheit auf dem schnellsten Wege "
+"dorthin bewegen."
 
 #: data/help.cfg:119
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -414,7 +409,6 @@ msgstr ""
 "<header>text='Reihenfolge und Anzahl von Angriffen'</header>"
 
 #: data/help.cfg:133
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -447,7 +441,6 @@ msgstr ""
 "<header>text='Trefferwahrscheinlichkeit'</header>"
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -472,7 +465,6 @@ msgstr ""
 "Geländes ab, in dem sich der Angreifer befindet. "
 
 #: data/help.cfg:139
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -486,9 +478,9 @@ msgstr ""
 "Es gibt zwei Ausnahmen von dieser Regel: <ref>dst=weaponspecial_magical "
 "text='Magische Angriffe'</ref> und Angriffe unter Verwendung der Fertigkeit "
 "<ref>dst=weaponspecial_marksman text='Schießkunst'</ref>. Magische Angriffe "
-"haben grundsätzlich eine 70%-Trefferwahrscheinlichkeit. Scharfschützen haben "
-"stets eine Trefferwahrscheinlichkeit von mindestens 60%, unabhängig vom "
-"jeweiligen Gelände."
+"haben grundsätzlich eine 70%ige Trefferwahrscheinlichkeit. Scharfschützen "
+"haben stets eine Trefferwahrscheinlichkeit von mindestens 60%, unabhängig "
+"vom jeweiligen Gelände."
 
 #: data/help.cfg:141
 msgid ""
@@ -501,7 +493,6 @@ msgstr ""
 "<header>text=Schaden</header>"
 
 #: data/help.cfg:143
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -519,11 +510,11 @@ msgstr ""
 "verursacht beispielsweise einen Grundschaden von 5 Punkten. Dieser Wert wird "
 "normalerweise von zwei Faktoren beeinflusst: "
 "<ref>dst=damage_types_and_resistance text='Resistenzen'</ref> und "
-"<ref>dst=time_of_day text='der Tageszeit'</ref>, die nachfolgend erklärt "
-"werden."
+"<ref>dst=time_of_day text='der Tageszeit'</ref>. Um herauszufinden, wie der "
+"Grundschaden durch diese Faktoren beeinflusst wird, wählt  "
+"<italic>text='Schadensberechnung'</italic> im Dialog »Gegner angreifen«."
 
 #: data/help.cfg:145
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -535,10 +526,11 @@ msgstr ""
 "\n"
 "\n"
 "Manche Einheiten verfügen in Kombination mit ihrem Angriff über spezielle "
-"Fertigkeiten, die den ausgeteilten Schaden beeinflussen. Die am meisten "
-"verbreitete ist der <ref>dst=weaponspecial_charge text=Sturmangriff</ref>, "
-"welcher den ausgeteilten Schaden von Angreifer und Verteidiger verdoppelt, "
-"wenn eine Einheit mit dieser Fertigkeit angreift."
+"<ref>dst=abilities text=Fertigkeiten</ref>, die den ausgeteilten Schaden "
+"beeinflussen. Die am meisten verbreitete ist der "
+"<ref>dst=weaponspecial_charge text=Sturmangriff</ref>, welcher den "
+"ausgeteilten Schaden von Angreifer und Verteidiger verdoppelt, wenn eine "
+"Einheit mit dieser Fertigkeit angreift."
 
 #: data/help.cfg:150
 msgid "Damage Types and Resistance"
@@ -559,7 +551,6 @@ msgstr ""
 "verändert."
 
 #: data/help.cfg:153
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -573,9 +564,9 @@ msgstr ""
 "\n"
 "Resistenzen funktionieren sehr einfach: Wenn eine Einheit über eine 40%ige "
 "Resistenz gegen eine Schadensart verfügt, erleidet sie bei einer Attacke "
-"dieses Typs 40% weniger Schaden. Eine Einheit kann auch besonders verwundbar "
+"dieses Typs 40% weniger Schaden. Eine Einheit kann auch besonders anfällig "
 "für eine Schadensart sein. Bei einer Resistenz von -100% erleidet die "
-"Einheit 100% mehr Schaden durch einen entsprechenden Angriff."
+"Einheit 100% mehr Schaden durch einen entsprechenden Angriff dieser Art."
 
 #: data/help.cfg:155
 msgid ""
@@ -718,7 +709,6 @@ msgstr ""
 "Einheiten könnt Ihr aus mehreren Aufstiegsmöglichkeiten auswählen."
 
 #: data/help.cfg:193
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1310,7 +1300,6 @@ msgid "Swamp"
 msgstr "Sumpf"
 
 #: data/help.cfg:360
-#, fuzzy
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1324,9 +1313,8 @@ msgstr ""
 "Sümpfe repräsentieren jede Form von Feuchtgebieten. Fast jede Einheit wird "
 "in den Sümpfen verlangsamt und beim Verteidigen behindert. Eine Ausnahme "
 "sind alle Einheiten, die sich im Wasser bewegen können. Sie sind voll "
-"beweglich und erhalten einen Verteidigungsbonus. Einheiten die aus den "
-"Sümpfen stammen sind auch erfahren genug um Deckung in diesem Gelände zu "
-"finden.\n"
+"beweglich und erhalten einen Verteidigungsbonus. Einheiten die aus Sümpfen "
+"stammen sind auch erfahren genug um Deckung in diesem Gelände zu finden.\n"
 "\n"
 "Die meisten Einheiten haben 30% Verteidigung in den Sümpfen. Wassermänner, "
 "Nagas und Saurianer haben 60%."
@@ -4671,7 +4659,7 @@ msgstr ""
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
-msgstr "Assassine"
+msgstr "Attentäter"
 
 #: data/units/Assassin.cfg:24 data/units/Assassin.cfg:122
 msgid ""
@@ -4687,6 +4675,18 @@ msgid ""
 "creeping around behind that enemy. Their throwing knives are also poisoned, "
 "which will continually sap away an enemy's strength."
 msgstr ""
+"Die Besten unter den Dieben werden manchmal damit beauftragt, ihren Opfern "
+"mehr als nur ihren Besitz zu nehmen. Als Meister im Umgang mit kurzen "
+"Klingen und der Fähigkeit sich unhörbar anzuschleichen, ist es ihnen ein "
+"Leichtes, ihre Opfer zu beseitigen, sei es mit vergifteten Messern aus der "
+"Ferne oder mit einem wohl platzierten Dolchstoß in den Rücken. So tödlich "
+"wie sie bei Nacht sind, fällt es ihnen am Tag bedeutend schwieriger, ihren "
+"Auftrag auszuführen.\n"
+"\n"
+"Anmerkung: Während eine befreundete Einheit einen Gegner ablenkt, schleicht "
+"sich der Attentäter in dessen Rücken und kann einen hinterhältigen Angriff "
+"ausführen, der doppelten Schaden verursacht. Sie vergiften ihre Wurfmesser, "
+"um ihren Gegner zu schwächen und ihn so leichter erledigen zu können."
 
 #: data/units/Assassin.cfg:40 data/units/Assassin.cfg:125
 #: data/units/Dwarvish_Thunderer.cfg:38
@@ -4816,9 +4816,8 @@ msgid "mace"
 msgstr "Streitkolben"
 
 #: data/units/Battle_Princess.cfg:3
-#, fuzzy
 msgid "female^Battle Princess"
-msgstr "Geächtete Prinzessin"
+msgstr "Kriegerprinzessin"
 
 #: data/units/Battle_Princess.cfg:22 data/units/Battle_Princess.cfg:76
 msgid "leadership,skirmisher"
@@ -5692,9 +5691,8 @@ msgstr ""
 #: data/units/Drake_Slasher.cfg:25 data/units/Drake_Slasher.cfg:43
 #: data/units/Drake_Warden.cfg:27 data/units/Drake_Warden.cfg:45
 #: data/units/Halbardier.cfg:29 data/units/Halbardier.cfg:70
-#, fuzzy
 msgid "halberd"
-msgstr "Hellebardier"
+msgstr "Hellebarde"
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:48
 #: data/units/Goblin_Impaler.cfg:28 data/units/Halbardier.cfg:35
@@ -5849,6 +5847,14 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
+"Es ist nicht genau bekannt warum die Drachenwächter diesen Titel tragen, "
+"welcher ihnen von ihren zwergischen Brüdern verliehen wurde. Manche glauben, "
+"dass der Name von ihren Waffen herrührt, die Feuer und Tod spucken. Andere "
+"mutmaßen, dass diese Waffen sogar eine Gefahr für einen waren Drachen "
+"darstellen würden, falls jemals wieder eines dieser Wesen auftauchen würde. "
+"Was auch immer der Grund für diesen Titel ist, eines ist gewiss: Als Wächter "
+"der zwergischen Zitadellen werden sie geachtet und gefürchtet, da sie selbst "
+"die stärksten Krieger mit einem Schuss ihrer Waffen töten können."
 
 #: data/units/Dwarvish_Dragonguard.cfg:22
 #: data/units/Dwarvish_Dragonguard.cfg:40
@@ -5980,6 +5986,13 @@ msgid ""
 "make any of their own, realized they were lucky to no longer be fighting the "
 "dwarves, and vowed never to do so again."
 msgstr ""
+"Als die Menschen von Wesnoth den Zwergen zum ersten Mal begegneten, waren "
+"sie bestürzt über die Macht der zwergischen Donnerer. Diese waren in der "
+"Lage den Tod aus der Ferne zu bringen, indem sie merkwürdige »Stäbe« "
+"bedienten. Nachdem der Friede, der mit den Ka'lian geschlossen wurde, in "
+"Kraft trat, begriffen Haldrics Gefolgsleute, dass sie nicht mehr gegen die "
+"Zwerge und ihre seltsamen Waffen kämpfen mussten und gelobten nie wieder die "
+"Waffen gegen diese zu erheben."
 
 #: data/units/Dwarvish_Thunderer.cfg:63
 msgid "thunderstick"
@@ -6002,6 +6015,17 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
+"Die zwergischen Donnerwächter sind für ihre merkwürdigen Waffen - seltsame "
+"Stäbe aus Holz und Metall, die einen donnernden Zorneslaut ausstoßen - "
+"berühmt geworden. Das Geheimnis dieser Waffe wird wohl auf ewig ein Rätsel "
+"bleiben, ein Geheimnis das die Zwerge von Knalga, die sie verwenden und "
+"angeblich hergestellt haben sollen, mit ins Grab nehmen. Das einzige Wissen "
+"über diese Waffen stammt aus Berichten von Augenzeugen, die gesehen haben, "
+"wie die Zwerge ein schwarzes Pulver in das Maul der Waffe füllten. Angeblich "
+"sei dieses Pulver Nahrung für das Ungetüm, welches im Inneren haust.\n"
+"\n"
+"Obwohl ein einzelner Schuss aus diesen »Donnerstöcken« einige Minuten der "
+"Vorbereitung bedarf, spricht das Ergebnis für sich."
 
 #: data/units/Dwarvish_Thunderguard.cfg:48
 msgid "dragonstick"
@@ -6929,7 +6953,6 @@ msgid "Halberdier"
 msgstr "Hellebardier"
 
 #: data/units/Halbardier.cfg:26
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -7619,7 +7642,6 @@ msgid "Necrophage"
 msgstr "Leichenfresser"
 
 #: data/units/Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -7631,9 +7653,14 @@ msgid ""
 "by a healer."
 msgstr ""
 "Von fürchterlichem Hunger auf totes Fleisch angetrieben, greifen "
-"Leichenfresser ihre potenzielle Nahrung mit ihren giftigen Krallen an. Wenn "
-"sie von dem Fleisch ihrer Gegner gesättigt sind regenerieren sie ihre Wunden "
-"und kämpfen danach wie frische Einheiten."
+"Leichenfresser ihre potenzielle Nahrung mit der Wildheit eines "
+"ausgehungerten Tieres an. Wenn sie durch das Fleisch ihrer Gegner gesättigt "
+"sind, regenerieren sie ihre Wunden und beginnen mit neuen Kräften erneut die "
+"Suche nach Fleisch.\n"
+"\n"
+"Anmerkung: Wenn die Klauen eines Leichenfressers ein Opfer verletzen, "
+"sondern sie ein Gift ab, was den Unglücklichen dauerhaft schädigt, bis in "
+"einem Dorf oder von einem Heiler kuriert wird."
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
@@ -10327,9 +10354,8 @@ msgid "Map"
 msgstr "Karte"
 
 #: src/multiplayer_lobby.cpp:30
-#, fuzzy
 msgid "Settings"
-msgstr "Einstellungen..."
+msgstr "Einstellungen"
 
 #: src/multiplayer_lobby.cpp:30
 msgid "Status"
