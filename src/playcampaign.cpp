@@ -175,8 +175,13 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				res = VICTORY;
 				save_game_after_scenario = false;
 			}
-
 			if(res != VICTORY) {
+				// tell all clients that the campaign won't continue
+				if(io_type == IO_SERVER) {
+					config end;
+					end.add_child("end_scenarios");
+					network::send_data(end);
+				}
 				return res;
 			}
 		} catch(game::load_game_failed& e) {
