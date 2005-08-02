@@ -226,9 +226,13 @@ void wait::join_game(bool observe)
 					possible_sides);
 			preview_panes.push_back(&leader_selector);
 
-			faction_choice = size_t(gui::show_dialog(disp(), NULL, "",
-						_("Choose your side:"),
-						gui::OK_ONLY, &choices, &preview_panes));
+			const int res = gui::show_dialog(disp(), NULL, "", _("Choose your side:"),
+						gui::OK_CANCEL, &choices, &preview_panes);
+			if(res < 0) {
+				set_result(QUIT);
+				return;
+			}
+			faction_choice = res;
 			leader_choice = leader_selector.get_selected_leader();
 
 			wassert(faction_choice < possible_sides.size());
