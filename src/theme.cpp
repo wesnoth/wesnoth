@@ -144,9 +144,8 @@ namespace {
 	}
 #endif
 
-	config* expand_partialresolution(const config& cfg, const config& topcfg) {
+	void expand_partialresolution(const config& cfg, const config& topcfg, config& outcfg) {
 		// start with a copy of the declared parent
-		config* outcfg;
 		const config* origcfg = topcfg.find_child("resolution", "id", cfg["inherits"]);
 		if (origcfg == NULL) {
 			origcfg = topcfg.find_child("partialresolution", "id", cfg["inherits"]);
@@ -157,30 +156,30 @@ namespace {
 			// expand parent again - not so big a deal, the only thing really
 			// done again is applying he parent's changes, since we would have
 			// copied anyway.
-			outcfg = expand_partialresolution(*origcfg, topcfg);
+			expand_partialresolution(*origcfg, topcfg, outcfg);
 		} else {
-			outcfg = new config(*origcfg);
+			outcfg = *origcfg;
 		}
 
 		// FIXME: we should ignore any id attribute from inherited [resolution]
 
 		// override attributes
 		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
-			outcfg->values[j->first] = j->second;
+			outcfg.values[j->first] = j->second;
 		}
 
 		// apply operations
 		{
 			const config::child_list& c = cfg.get_children("remove");
 			for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
-				find_ref ((**i)["id"], *outcfg,
+				find_ref ((**i)["id"], outcfg,
 					  true /* remove found child */);
 			}
 		}
 		{
 			const config::child_list& c = cfg.get_children("change");
 			for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
-				config& target = find_ref ((**i)["id"], *outcfg);
+				config& target = find_ref ((**i)["id"], outcfg);
 				for(string_map::iterator j = (**i).values.begin();
 				    j != (**i).values.end(); ++j) {
 					target.values[j->first] = j->second;
@@ -195,13 +194,11 @@ namespace {
 				for(config::child_map::const_iterator j = m.begin(); j != m.end(); ++j) {
 					for(config::child_list::const_iterator i = j->second.begin();
 					    i != j->second.end(); ++i) {
-						outcfg->add_child(j->first, **i);
+						outcfg.add_child(j->first, **i);
 					}
 				}
 			}
 		}
-
-		return outcfg;
 	}
 
 	void do_resolve_rects(const config& cfg, config& resolved_config,
@@ -210,17 +207,17 @@ namespace {
 		// recursively resolve children
 		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
 			const std::pair<const std::string*,const config*>& value = *i;
-			const std::string* childname = value.first;
+			std::string childname = *value.first;
 			const config* sourceconfig = value.second;
+			config partialcfg;
 			if (*value.first == "partialresolution") {
-				childname = new std::string("resolution");
-				sourceconfig = expand_partialresolution (*sourceconfig, topcfg);
+				childname = "resolution";
+				expand_partialresolution (*sourceconfig, topcfg, partialcfg);
+				sourceconfig = &partialcfg;
 			}
-			config& childcfg = resolved_config.add_child(*childname);
+			config& childcfg = resolved_config.add_child(childname);
 			do_resolve_rects(*sourceconfig, childcfg, topcfg,
-					 (*childname=="resolution") ? &childcfg : resol_cfg);
-
-			if (childname != value.first) delete childname;
+					 (childname=="resolution") ? &childcfg : resol_cfg);
 		}
 
 		// copy all key/values
@@ -252,13 +249,13 @@ namespace {
 		}
 	}
 
-	config& resolve_rects(const config& cfg) {
-		config* newcfg = new config();
+	config resolve_rects(const config& cfg) {
+		config newcfg;
 
-		do_resolve_rects(cfg, *newcfg, cfg);
+		do_resolve_rects(cfg, newcfg, cfg);
 		//std::cerr << newcfg->write();
 
-		return *newcfg;
+		return newcfg;
 	}
 
 }
