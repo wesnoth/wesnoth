@@ -147,13 +147,7 @@ namespace {
 	void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 	{
 		std::vector<config> res_cfgs_;
-		// add all the resolutions
-		const config::child_list& res_list = top_cfg.get_children("resolution");
-		for(config::child_list::const_iterator i = res_list.begin(); i != res_list.end(); ++i) {
-			res_cfgs_.push_back(**i);
-		}
-
-		// now resolve all the partialresolutions
+		// resolve all the partialresolutions
 		const config::child_list& parts_list = top_cfg.get_children("partialresolution");
 		for(config::child_list::const_iterator i = parts_list.begin(); i != parts_list.end(); ++i) {
 			// follow the inheritance hierarchy and push all the nodes on the stack
@@ -168,7 +162,7 @@ namespace {
 				parent_id = &((*parent)["inherits"]);
 			}
 
-			// add the parent and apply all the modification of the children
+			// add the parent resolution and apply all the modifications of its children
 			res_cfgs_.push_back(*parent);
 			while(!parent_stack.empty()) {
 				//override attributes
@@ -208,21 +202,25 @@ namespace {
 				parent_stack.pop_back();
 			}
 		}
+		// add all the resolutions
+		const config::child_list& res_list = top_cfg.get_children("resolution");
+		for(config::child_list::const_iterator i = res_list.begin(); i != res_list.end(); ++i) {
+			dst_cfg.add_child("resolution", (**i));
+		}
+		// add all the resolved resolutions
 		for(std::vector<config>::const_iterator i = res_cfgs_.begin(); i != res_cfgs_.end(); ++i) {
 			dst_cfg.add_child("resolution", (*i));
 		}
 		return;
 	}
 
-	void do_resolve_rects(const config& cfg, config& resolved_config,
-			      const config& topcfg, config* resol_cfg = NULL) {
+	void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = NULL) {
 
 		// recursively resolve children
 		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
 			const std::pair<const std::string*,const config*>& value = *i;
 			config& childcfg = resolved_config.add_child(*value.first);
-			do_resolve_rects(*value.second, childcfg, topcfg,
-					 (*value.first =="resolution") ? &childcfg : resol_cfg);
+			do_resolve_rects(*value.second, childcfg, (*value.first =="resolution") ? &childcfg : resol_cfg);
 		}
 
 		// copy all key/values
@@ -437,7 +435,7 @@ const std::vector<std::string>& theme::menu::items() const { return items_; }
 theme::theme(const config& cfg, const SDL_Rect& screen) {
 	config tmp;
 	expand_partialresolution(tmp, cfg);
-	do_resolve_rects(tmp, cfg_, tmp);
+	do_resolve_rects(tmp, cfg_);
 	set_resolution(screen);
 }
 
