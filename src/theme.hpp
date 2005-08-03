@@ -152,7 +152,7 @@ public:
 private:
 	static std::map<std::string, config> known_themes;
         std::string cur_theme;
-        const config& cfg_;
+        config cfg_;
 	std::vector<panel> panels_;
 	std::vector<label> labels_;
 	std::vector<menu> menus_;

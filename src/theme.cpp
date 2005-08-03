@@ -144,61 +144,74 @@ namespace {
 	}
 #endif
 
-	void expand_partialresolution(const config& cfg, const config& topcfg, config& outcfg) {
-		// start with a copy of the declared parent
-		const config* origcfg = topcfg.find_child("resolution", "id", cfg["inherits"]);
-		if (origcfg == NULL) {
-			origcfg = topcfg.find_child("partialresolution", "id", cfg["inherits"]);
-			if (origcfg == NULL) {
-				throw config::error("[partialresolution] refers to non-existant [resolution] "
-						    + cfg["inherits"].str());
+	void expand_partialresolution(config& dst_cfg, const config& top_cfg)
+	{
+		std::vector<config> res_cfgs_;
+		// add all the resolutions
+		const config::child_list& res_list = top_cfg.get_children("resolution");
+		for(config::child_list::const_iterator i = res_list.begin(); i != res_list.end(); ++i) {
+			res_cfgs_.push_back(**i);
+		}
+
+		// now resolve all the partialresolutions
+		const config::child_list& parts_list = top_cfg.get_children("partialresolution");
+		for(config::child_list::const_iterator i = parts_list.begin(); i != parts_list.end(); ++i) {
+			// follow the inheritance hierarchy and push all the nodes on the stack
+			std::vector<const config*> parent_stack(1, (*i));
+			const config* parent;
+			const t_string* parent_id = &((**i)["inherits"]);
+			while((parent = top_cfg.find_child("resolution", "id", (*parent_id))) == NULL) {
+				parent = top_cfg.find_child("partialresolution", "id", (*parent_id));
+				if(parent == NULL)
+					throw config::error("[partialresolution] refers to non-existant [resolution] " + (*parent_id).str());
+				parent_stack.push_back(parent);
+				parent_id = &((*parent)["inherits"]);
 			}
-			// expand parent again - not so big a deal, the only thing really
-			// done again is applying he parent's changes, since we would have
-			// copied anyway.
-			expand_partialresolution(*origcfg, topcfg, outcfg);
-		} else {
-			outcfg = *origcfg;
-		}
 
-		// FIXME: we should ignore any id attribute from inherited [resolution]
-
-		// override attributes
-		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
-			outcfg.values[j->first] = j->second;
-		}
-
-		// apply operations
-		{
-			const config::child_list& c = cfg.get_children("remove");
-			for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
-				find_ref ((**i)["id"], outcfg,
-					  true /* remove found child */);
-			}
-		}
-		{
-			const config::child_list& c = cfg.get_children("change");
-			for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
-				config& target = find_ref ((**i)["id"], outcfg);
-				for(string_map::iterator j = (**i).values.begin();
-				    j != (**i).values.end(); ++j) {
-					target.values[j->first] = j->second;
+			// add the parent and apply all the modification of the children
+			res_cfgs_.push_back(*parent);
+			while(!parent_stack.empty()) {
+				//override attributes
+				for(string_map::const_iterator j = parent_stack.back()->values.begin(); j != parent_stack.back()->values.end(); ++j) {
+					res_cfgs_.back().values[j->first] = j->second;
 				}
-			}
-		}
-		{
-			// cannot add [status] sub-elements, but who cares
-			const config* c = cfg.child("add");
-			if (c != NULL) {
-				const config::child_map m = c->all_children();
-				for(config::child_map::const_iterator j = m.begin(); j != m.end(); ++j) {
-					for(config::child_list::const_iterator i = j->second.begin();
-					    i != j->second.end(); ++i) {
-						outcfg.add_child(j->first, **i);
+
+				{
+					const config::child_list& c = parent_stack.back()->get_children("remove");
+					for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
+						find_ref ((**j)["id"], res_cfgs_.back(), true);
 					}
 				}
+				{
+					const config::child_list& c = parent_stack.back()->get_children("change");
+					for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
+						config& target = find_ref ((**j)["id"], res_cfgs_.back());
+						for(string_map::iterator k = (**j).values.begin();
+								k != (**j).values.end(); ++k) {
+							target.values[k->first] = k->second;
+						}
+					}
+				}
+				{
+					// cannot add [status] sub-elements, but who cares
+					const config* c = parent_stack.back()->child("add");
+					if (c != NULL) {
+						const config::child_map m = c->all_children();
+						for(config::child_map::const_iterator j = m.begin(); j != m.end(); ++j) {
+							for(config::child_list::const_iterator k = j->second.begin();
+									k != j->second.end(); ++k) {
+								res_cfgs_.back().add_child(j->first, **k);
+							}
+						}
+					}
+				}
+				parent_stack.pop_back();
 			}
 		}
+		for(std::vector<config>::const_iterator i = res_cfgs_.begin(); i != res_cfgs_.end(); ++i) {
+			dst_cfg.add_child("resolution", (*i));
+		}
+		return;
 	}
 
 	void do_resolve_rects(const config& cfg, config& resolved_config,
@@ -207,17 +220,9 @@ namespace {
 		// recursively resolve children
 		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
 			const std::pair<const std::string*,const config*>& value = *i;
-			std::string childname = *value.first;
-			const config* sourceconfig = value.second;
-			config partialcfg;
-			if (*value.first == "partialresolution") {
-				childname = "resolution";
-				expand_partialresolution (*sourceconfig, topcfg, partialcfg);
-				sourceconfig = &partialcfg;
-			}
-			config& childcfg = resolved_config.add_child(childname);
-			do_resolve_rects(*sourceconfig, childcfg, topcfg,
-					 (childname=="resolution") ? &childcfg : resol_cfg);
+			config& childcfg = resolved_config.add_child(*value.first);
+			do_resolve_rects(*value.second, childcfg, topcfg,
+					 (*value.first =="resolution") ? &childcfg : resol_cfg);
 		}
 
 		// copy all key/values
@@ -248,16 +253,6 @@ namespace {
 			resolved_config.values["rect"] = resolve_rect(cfg["rect"]);
 		}
 	}
-
-	config resolve_rects(const config& cfg) {
-		config newcfg;
-
-		do_resolve_rects(cfg, newcfg, cfg);
-		//std::cerr << newcfg->write();
-
-		return newcfg;
-	}
-
 }
 
 theme::object::object() : loc_(empty_rect), relative_loc_(empty_rect),
@@ -439,7 +434,10 @@ const std::string& theme::menu::image() const { return image_; }
 
 const std::vector<std::string>& theme::menu::items() const { return items_; }
 
-theme::theme(const config& cfg, const SDL_Rect& screen):cfg_(resolve_rects(cfg)){
+theme::theme(const config& cfg, const SDL_Rect& screen) {
+	config tmp;
+	expand_partialresolution(tmp, cfg);
+	do_resolve_rects(tmp, cfg_, tmp);
 	set_resolution(screen);
 }
 
