@@ -27,6 +27,13 @@ CVS HEAD:
    * added Use map settings option to preset scenario suggested values at setup
    * show game settings in the game list
    * fixed lobby corruption when trying to join a game that disallows observers
+   * fixed create-game-then-cancel lobby corruption (#13522)
+   * tweaked layout of game creation screen
+   * fixed non-fatal errors exiting lobby (#13783)
+   * choosing vacant slot then joining all computer game is no longer allowed
+   * map for Sulla's Ruins modified
+   * cancelling faction selection now goes back to scenario setup (#9376)
+   * ending game now returns to lobby if host dismisses dialogs (part of #13348)
  * user interface improvements: 
    * fixed failed recruit attempt clearing undo stack (#13833)
    * fixed recall not clearing shroud (#13824)
