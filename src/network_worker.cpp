@@ -64,6 +64,33 @@ threading::condition* cond = NULL;
 
 std::vector<threading::thread*> threads;
 
+SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
+	size_t upto = 0;
+	size_t size = buf.size();
+
+	current_transfer_stats.first = 0;
+	current_transfer_stats.second = static_cast<int>(size);
+
+	while(upto < size) {
+		{
+			// check if the socket is still locked
+			const threading::lock lock(*global_mutex);
+			if(sockets_locked[sock] != SOCKET_LOCKED)
+				return SOCKET_ERROR;
+		}
+		const int bytes_to_send = static_cast<int>(size - upto);
+		const int res = SDLNet_TCP_Send(sock, &buf[upto], bytes_to_send);
+
+		current_transfer_stats.first += res;
+
+		if(res < 0 || res != bytes_to_send && errno != EAGAIN)
+			return SOCKET_ERROR;
+
+		upto += res;
+	}
+	return SOCKET_READY;
+}
+
 SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 {
 	char num_buf[4];
@@ -171,25 +198,7 @@ int process_queue(void* data)
 		std::vector<char> buf;
 
 		if(sent_buf != NULL) {
-			std::vector<char> &v = sent_buf->buf;
-			for(size_t upto = 0, size = v.size(); result != SOCKET_ERROR && upto < size; ) {
-				{
-					// check if the socket is still locked
-					const threading::lock lock(*global_mutex);
-					if(sockets_locked[sent_buf->sock] != SOCKET_LOCKED) {
-						result = SOCKET_ERROR;
-						break;
-					}
-				}
-				const int bytes_to_send = int(size - upto);
-				const int res = SDLNet_TCP_Send(sent_buf->sock, &v[upto], bytes_to_send);
-				if(res < 0 || res != bytes_to_send && errno != EAGAIN) {
-					result = SOCKET_ERROR;
-				} else {
-					upto += res;
-				}
-			}
-
+			result = send_buf(sent_buf->sock, sent_buf->buf);
 			delete sent_buf;
 			sent_buf = NULL;
 		} else {
