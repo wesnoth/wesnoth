@@ -55,7 +55,7 @@ std::pair<int,int> current_transfer_stats;
 typedef std::deque<buffer> received_queue;
 received_queue received_data_queue;
 
-enum SOCKET_STATE { SOCKET_READY, SOCKET_LOCKED, SOCKET_ERROR };
+enum SOCKET_STATE { SOCKET_READY, SOCKET_LOCKED, SOCKET_ERROR, SOCKET_INTERRUPT };
 typedef std::map<TCPsocket,SOCKET_STATE> socket_state_map;
 socket_state_map sockets_locked;
 int socket_errors = 0;
@@ -87,6 +87,13 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 	current_transfer_stats.second = len;
 
 	while(beg != end) {
+		{
+			// if we are receiving the socket is in sockets_locked
+			// check if it is still locked
+			const threading::lock lock(*global_mutex);
+			if(sockets_locked[sock] != SOCKET_LOCKED)
+				return SOCKET_ERROR;
+		}
 		const int len = SDLNet_TCP_Recv(sock,beg,end - beg);
 		if(len <= 0) {
 			return SOCKET_ERROR;
@@ -166,6 +173,14 @@ int process_queue(void* data)
 		if(sent_buf != NULL) {
 			std::vector<char> &v = sent_buf->buf;
 			for(size_t upto = 0, size = v.size(); result != SOCKET_ERROR && upto < size; ) {
+				{
+					// check if the socket is still locked
+					const threading::lock lock(*global_mutex);
+					if(sockets_locked[sent_buf->sock] != SOCKET_LOCKED) {
+						result = SOCKET_ERROR;
+						break;
+					}
+				}
 				const int bytes_to_send = int(size - upto);
 				const int res = SDLNet_TCP_Send(sent_buf->sock, &v[upto], bytes_to_send);
 				if(res < 0 || res != bytes_to_send && errno != EAGAIN) {
@@ -338,15 +353,19 @@ void close_socket(TCPsocket sock)
 		}
 
 		const socket_state_map::iterator lock_it = sockets_locked.find(sock);
-
-		if(lock_it == sockets_locked.end() || lock_it->second != SOCKET_LOCKED) {
-			if(lock_it != sockets_locked.end()) {
-				sockets_locked.erase(lock_it);
-			}
-
+		if(lock_it == sockets_locked.end()) {
 			remove_buffers(sock);
-
 			break;
+		}
+			
+		if(lock_it->second != SOCKET_LOCKED) {
+			if(lock_it->second != SOCKET_INTERRUPT) {
+				sockets_locked.erase(lock_it);
+				remove_buffers(sock);
+				break;
+			}
+		} else {
+			lock_it->second = SOCKET_INTERRUPT;
 		}
 	}
 }
