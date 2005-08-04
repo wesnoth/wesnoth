@@ -81,11 +81,10 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		const int bytes_to_send = static_cast<int>(size - upto);
 		const int res = SDLNet_TCP_Send(sock, &buf[upto], bytes_to_send);
 
-		current_transfer_stats.first += res;
-
 		if(res < 0 || res != bytes_to_send && errno != EAGAIN)
 			return SOCKET_ERROR;
 
+		current_transfer_stats.first += res;
 		upto += res;
 	}
 	return SOCKET_READY;
