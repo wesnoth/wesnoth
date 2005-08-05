@@ -168,11 +168,11 @@ struct statistics
 		total += size;
 		current += size;
 	}
-	bool operator==(const statistics& stats)
+	bool operator==(const statistics& stats) const
 	{
 		return total == stats.total && current == stats.current && current_max == stats.current_max;
 	}
-	bool operator!=(const statistics& stats)
+	bool operator!=(const statistics& stats) const
 	{
 		return !operator==(stats);
 	}

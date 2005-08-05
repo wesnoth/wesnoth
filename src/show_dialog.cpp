@@ -875,8 +875,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	cfg.clear();
 	for(;;) {
 		const network::connection res = network::receive_data(cfg,connection_num,100);
-
-		network::statistics stats = network::get_receive_stats(connection_num);
+		const network::statistics stats = network::get_receive_stats(connection_num);
 		if(stats.current_max != 0 && stats != old_stats) {
 			old_stats = stats;
 			progress.set_progress_percent((stats.current*100)/stats.current_max);
