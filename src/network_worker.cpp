@@ -27,7 +27,7 @@
 #include <vector>
 
 #define LOG_NW LOG_STREAM(info, network)
-
+#define ERR_NW LOG_STREAM(err, network)
 namespace {
 
 unsigned int buf_id = 0;
@@ -92,16 +92,31 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 
 SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 {
+	SDLNet_SocketSet set = SDLNet_AllocSocketSet(1);
+	if(!set) {
+		ERR_NW << "SDLNet_AllocSocketSet: " << SDLNet_GetError() << "\n";
+		SDLNet_FreeSocketSet(set);
+		return SOCKET_ERROR;
+	}
+	if(SDLNet_TCP_AddSocket(set, sock) < 0) {
+		ERR_NW << "SDLNet_TCP_AddSocket: " << SDLNet_GetError() << "\n";
+		SDLNet_FreeSocketSet(set);
+		return SOCKET_ERROR;
+	}
 	char num_buf[4];
 	int len = SDLNet_TCP_Recv(sock,num_buf,4);
 
 	if(len != 4) {
+		SDLNet_TCP_DelSocket(set, sock);
+		SDLNet_FreeSocketSet(set);
 		return SOCKET_ERROR;
 	}
 
 	len = SDLNet_Read32(num_buf);
 
 	if(len < 1 || len > 100000000) {
+		SDLNet_TCP_DelSocket(set, sock);
+		SDLNet_FreeSocketSet(set);
 		return SOCKET_ERROR;
 	}
 
@@ -117,11 +132,24 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 			// if we are receiving the socket is in sockets_locked
 			// check if it is still locked
 			const threading::lock lock(*global_mutex);
-			if(sockets_locked[sock] != SOCKET_LOCKED)
+			if(sockets_locked[sock] != SOCKET_LOCKED) {
+				SDLNet_TCP_DelSocket(set, sock);
+				SDLNet_FreeSocketSet(set);
 				return SOCKET_ERROR;
+			}
 		}
-		const int len = SDLNet_TCP_Recv(sock,beg,end - beg);
+		// check for a maximum of 15 seconds for the socket to have a activity
+		if(SDLNet_CheckSockets(set, 15000) <= 0) {
+			ERR_NW << "SDLNet_CheckSockets: " << SDLNet_GetError() << "\n";
+			SDLNet_TCP_DelSocket(set, sock);
+			SDLNet_FreeSocketSet(set);
+			return SOCKET_ERROR;
+		}
+		// receive one byte at a time
+		const int len = SDLNet_TCP_Recv(sock,beg, 1);
 		if(len <= 0) {
+			SDLNet_TCP_DelSocket(set, sock);
+			SDLNet_FreeSocketSet(set);
 			return SOCKET_ERROR;
 		}
 
@@ -129,7 +157,8 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 
 		current_transfer_stats.first = beg - &buf[0];
 	}
-
+	SDLNet_TCP_DelSocket(set, sock);
+	SDLNet_FreeSocketSet(set);
 	return SOCKET_READY;
 }
 
