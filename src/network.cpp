@@ -706,11 +706,11 @@ std::string ip_address(connection connection_num)
 
 statistics get_send_stats(connection handle)
 {
-	return network_worker_pool::get_current_transfer_stats(get_socket(handle)).first;
+	return network_worker_pool::get_current_transfer_stats(handle == 0 ? get_socket(sockets.back()) : get_socket(handle)).first;
 }
 statistics get_receive_stats(connection handle)
 {
-	return network_worker_pool::get_current_transfer_stats(get_socket(handle)).second;
+	return network_worker_pool::get_current_transfer_stats(handle == 0 ? get_socket(sockets.back()) : get_socket(handle)).second;
 }
 
 } //end namespace network
