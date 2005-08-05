@@ -767,11 +767,9 @@ redo_turn:
 			}
 
 			if (!obs)
-				gui::show_dialog(gui, NULL,
-				                 _("Defeat"),
-				                 _("You have been defeated!"),
-				                 gui::OK_ONLY);
-			return DEFEAT;
+				return DEFEAT;
+			else
+				return QUIT;
 		} else if (end_level.result == VICTORY || end_level.result == LEVEL_CONTINUE ||
 		           end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 			try {

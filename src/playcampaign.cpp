@@ -134,7 +134,23 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story);
 
 			state.snapshot = config();
-
+			if (res == DEFEAT) {
+				// tell all clients that the campaign won't continue
+				if(io_type == IO_SERVER) {
+					config end;
+					end.add_child("end_scenarios");
+					network::send_data(end);
+				}
+				gui::show_dialog(disp, NULL,
+				                 _("Defeat"),
+				                 _("You have been defeated!"),
+				                 gui::OK_ONLY);
+			}
+			if(res == QUIT && io_type == IO_SERVER) {
+					config end;
+					end.add_child("end_scenarios");
+					network::send_data(end);
+			}
 			//ask to save a replay of the game
 			if(res == VICTORY || res == DEFEAT) {
 				const std::string orig_scenario = state.scenario;
@@ -175,15 +191,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				res = VICTORY;
 				save_game_after_scenario = false;
 			}
-			if(res != VICTORY) {
-				// tell all clients that the campaign won't continue
-				if(io_type == IO_SERVER) {
-					config end;
-					end.add_child("end_scenarios");
-					network::send_data(end);
-				}
+			if(res != VICTORY)
 				return res;
-			}
 		} catch(game::load_game_failed& e) {
 			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
 			return QUIT;
