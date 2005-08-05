@@ -138,7 +138,7 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 				return SOCKET_ERROR;
 			}
 		}
-		// check for a maximum of 15 seconds for the socket to have a activity
+		// wait for a maximum of 15 seconds for the socket to have activity
 		if(SDLNet_CheckSockets(set, 15000) <= 0) {
 			ERR_NW << "SDLNet_CheckSockets: " << SDLNet_GetError() << "\n";
 			SDLNet_TCP_DelSocket(set, sock);
