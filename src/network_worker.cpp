@@ -47,11 +47,6 @@ buffer_set bufs;
 typedef std::vector<TCPsocket> receive_list;
 receive_list pending_receives;
 
-//access to this variable isn't synchronized -- it's non-critical
-//and we don't want to pay the synchronization cost when it's rarely
-//cared about.
-std::pair<int,int> current_transfer_stats;
-
 typedef std::deque<buffer> received_queue;
 received_queue received_data_queue;
 
