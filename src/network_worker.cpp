@@ -57,7 +57,11 @@ received_queue received_data_queue;
 
 enum SOCKET_STATE { SOCKET_READY, SOCKET_LOCKED, SOCKET_ERROR, SOCKET_INTERRUPT };
 typedef std::map<TCPsocket,SOCKET_STATE> socket_state_map;
+typedef std::map<TCPsocket, std::pair<network::statistics,network::statistics> > socket_stats_map;
+
 socket_state_map sockets_locked;
+socket_stats_map transfer_stats;
+
 int socket_errors = 0;
 threading::mutex* global_mutex = NULL;
 threading::condition* cond = NULL;
@@ -67,9 +71,10 @@ std::vector<threading::thread*> threads;
 SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 	size_t upto = 0;
 	size_t size = buf.size();
-
-	current_transfer_stats.first = 0;
-	current_transfer_stats.second = static_cast<int>(size);
+	{
+		const threading::lock lock(*global_mutex);
+		transfer_stats[sock].first.fresh_current(size);
+	}
 
 	while(upto < size) {
 		{
@@ -84,8 +89,11 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		if(res < 0 || res != bytes_to_send && errno != EAGAIN)
 			return SOCKET_ERROR;
 
-		current_transfer_stats.first += res;
 		upto += res;
+		{
+			const threading::lock lock(*global_mutex);
+			transfer_stats[sock].first.transfer(res);
+		}
 	}
 	return SOCKET_READY;
 }
@@ -124,8 +132,10 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 	char* beg = &buf[0];
 	const char* const end = beg + len;
 
-	current_transfer_stats.first = 0;
-	current_transfer_stats.second = len;
+	{
+		const threading::lock lock(*global_mutex);
+		transfer_stats[sock].second.fresh_current(len);
+	}
 
 	while(beg != end) {
 		{
@@ -145,17 +155,18 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 			SDLNet_FreeSocketSet(set);
 			return SOCKET_ERROR;
 		}
-		// receive one byte at a time
-		const int len = SDLNet_TCP_Recv(sock,beg, 1);
-		if(len <= 0) {
+
+		if(SDLNet_TCP_Recv(sock, beg, 1) <= 0) {
 			SDLNet_TCP_DelSocket(set, sock);
 			SDLNet_FreeSocketSet(set);
 			return SOCKET_ERROR;
 		}
-
-		beg += len;
-
-		current_transfer_stats.first = beg - &buf[0];
+		++beg;
+		{
+			const threading::lock lock(*global_mutex);
+			++transfer_stats[sock].second.total;
+			++transfer_stats[sock].second.current;
+		}
 	}
 	SDLNet_TCP_DelSocket(set, sock);
 	SDLNet_FreeSocketSet(set);
@@ -294,6 +305,7 @@ manager::~manager()
 		cond = NULL;
 
 		sockets_locked.clear();
+		transfer_stats.clear();
 
 		LOG_NW << "exiting manager::~manager()\n";
 	}
@@ -426,9 +438,10 @@ TCPsocket detect_error()
 	return 0;
 }
 
-std::pair<int,int> get_current_transfer_stats()
+std::pair<network::statistics,network::statistics> get_current_transfer_stats(TCPsocket sock)
 {
-	return current_transfer_stats;
+	const threading::lock lock(*global_mutex);
+	return transfer_stats[sock];
 }
 
 }

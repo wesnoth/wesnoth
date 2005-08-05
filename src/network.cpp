@@ -704,9 +704,13 @@ std::string ip_address(connection connection_num)
 	return str.str();
 }
 
-std::pair<int,int> current_transfer_stats()
+statistics get_send_stats(connection handle)
 {
-	return network_worker_pool::get_current_transfer_stats();
+	return network_worker_pool::get_current_transfer_stats(get_socket(handle)).first;
+}
+statistics get_receive_stats(connection handle)
+{
+	return network_worker_pool::get_current_transfer_stats(get_socket(handle)).second;
 }
 
 } //end namespace network

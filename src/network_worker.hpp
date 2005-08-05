@@ -19,6 +19,11 @@
 
 #include "SDL_net.h"
 
+namespace network
+{
+	struct statistics;
+}
+
 namespace network_worker_pool
 {
 
@@ -44,7 +49,7 @@ bool socket_locked(TCPsocket sock);
 void close_socket(TCPsocket sock);
 TCPsocket detect_error();
 
-std::pair<int,int> get_current_transfer_stats();
+std::pair<network::statistics,network::statistics> get_current_transfer_stats(TCPsocket sock);
 
 }
 

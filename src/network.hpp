@@ -136,9 +136,6 @@ void send_data_all_except(const config& cfg, connection connection_num, size_t m
 //function to get the remote ip address of a socket
 std::string ip_address(connection connection_num);
 
-//function to see the number of bytes being processed on the current socket
-std::pair<int,int> current_transfer_stats();
-
 struct connection_stats
 {
 	connection_stats(int sent, int received, int connected_at);
@@ -158,6 +155,37 @@ struct error
 	void disconnect();
 };
 
+struct statistics
+{
+	statistics() : total(0), current(0), current_max(0) {}
+	void fresh_current(size_t len)
+	{
+		current = 0;
+		current_max = len;
+	}
+	void transfer(size_t size)
+	{
+		total += size;
+		current += size;
+	}
+	bool operator==(const statistics& stats)
+	{
+		return total == stats.total && current == stats.current && current_max == stats.current_max;
+	}
+	bool operator!=(const statistics& stats)
+	{
+		return !operator==(stats);
+	}
+	size_t total;
+	size_t current;
+	size_t current_max;
+};
+
+//function to see the number of bytes being processed on the current socket
+statistics get_send_stats(connection handle);
+statistics get_receive_stats(connection handle);
+
 }
+
 
 #endif

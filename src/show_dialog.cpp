@@ -870,18 +870,18 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	events::raise_draw_event();
 	disp.flip();
 
-	std::pair<int,int> old_stats = network::current_transfer_stats();
+	network::statistics old_stats = network::get_receive_stats(connection_num);
 
 	cfg.clear();
 	for(;;) {
 		const network::connection res = network::receive_data(cfg,connection_num,100);
 
-		const std::pair<int,int> stats = network::current_transfer_stats();
-		if(stats.first != -1 && stats.second != 0 && stats != old_stats) {
+		network::statistics stats = network::get_receive_stats(connection_num);
+		if(stats.current_max != 0 && stats != old_stats) {
 			old_stats = stats;
-			progress.set_progress_percent((stats.first*100)/stats.second);
+			progress.set_progress_percent((stats.current*100)/stats.current_max);
 			std::ostringstream stream;
-			stream << stats.first/1024 << "/" << stats.second/1024 << _("KB");
+			stream << stats.current/1024 << "/" << stats.current_max/1024 << _("KB");
 			progress.set_text(stream.str());
 		}
 
