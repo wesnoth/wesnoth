@@ -757,7 +757,7 @@ void display::draw(bool update,bool force)
 		lastDraw_ = SDL_GetTicks();
 
 		if(wait_time >= 0 || drawSkips_ >= max_skips || force) {
-			if(changed) {
+			if(changed || force) {
 				update_display();
 			}
 		} else {

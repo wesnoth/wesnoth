@@ -35,6 +35,7 @@ CVS HEAD:
    * choosing vacant slot then joining all computer game is no longer allowed
    * cancelling faction selection now goes back to scenario setup (#9376)
    * ending game now returns to lobby (#13348)
+   * more robust network code: ghost connections should no longer linger forever
  * new units: added Drake Enforcer
  * unit balancing and modifications
    * increased Elvish Scout ranged attack damage from 5-2 to 6-2
@@ -56,6 +57,7 @@ CVS HEAD:
  * keep send and receive connection statistics separate for each socket
  * more responsive networking code, less subject to network errors
  * fixed campaign upload with no passphrase not storing generated passphrase
+ * tag [redraw] now forces redraw and is no longer a no-op (#11079)
  * various bug fixes and code cleanups
 
 Version 0.9.4:

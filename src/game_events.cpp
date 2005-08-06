@@ -1446,7 +1446,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "redraw") {
 		screen->invalidate_all();
-		screen->draw(true);
+		screen->draw(true,true);
 	}
 
 	LOG_NG << "done handling command...\n";
