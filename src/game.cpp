@@ -120,6 +120,7 @@ private:
 	void download_campaigns();
 	void upload_campaign(const std::string& campaign, network::connection sock);
 	void delete_campaign(const std::string& campaign, network::connection sock);
+	void remove_campaign(const std::string& campaign);
 
 	const int argc_;
 	int arg_;
@@ -987,6 +988,11 @@ void game_controller::download_campaigns()
 			return;
 		}
 
+		//remove any existing versions of the just downloaded campaign
+		//assuming it consists of a dir and a cfg file
+		remove_campaign(campaigns[index]);
+
+		//put a break at line below to see that it really works.
 		unarchive_campaign(cfg);
 
 		// when using zipios, force a reread zip and directory indices
@@ -1091,6 +1097,13 @@ void game_controller::delete_campaign(const std::string& campaign, network::conn
 	} else if(data.child("message")) {
 		gui::show_dialog(disp(),NULL,_("Response"),(*data.child("message"))["message"],gui::OK_ONLY);
 	}
+}
+
+void game_controller::remove_campaign(const std::string& campaign)
+{
+	const std::string campaign_dir = get_user_data_dir() + "/data/campaigns/" + campaign;
+	delete_directory(campaign_dir);
+	delete_directory(campaign_dir + ".cfg");
 }
 
 bool game_controller::play_multiplayer()

@@ -56,6 +56,7 @@ std::string get_user_data_dir();
 std::string get_cwd();
 
 void make_directory(const std::string& dirname);
+bool delete_directory(const std::string& dirname);
 
 //basic disk I/O
 bool filesystem_init();

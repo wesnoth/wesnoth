@@ -49,7 +49,8 @@ BPath be_path;
 
 //for getenv
 #include <cstdlib>
-
+#include <cerrno>
+#include <cstring>
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -314,6 +315,41 @@ void make_directory(const std::string& path)
 #else
 	mkdir(path.c_str(),AccessMode);
 #endif
+}
+
+//this deletes a directory with no hidden files and subdirectories
+//also deletes a single file
+bool delete_directory(const std::string& path) 
+{
+	bool ret = true;
+	std::vector<std::string> files;
+	std::vector<std::string> dirs;
+
+	get_files_in_dir(path, &files, &dirs, ENTIRE_FILE_PATH);
+
+	if(!files.empty()) {
+		for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
+			errno = 0;
+			if(remove((*i).c_str()) != 0) {
+				LOG_FS << "remove(" << (*i) << "): " << strerror(errno) << "\n";
+				ret = false;
+			}
+		}
+	}
+
+	if(!dirs.empty()) {
+		for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
+			if(!delete_directory(*j))
+				ret = false;
+		}
+	}
+
+	errno = 0;
+	if(remove(path.c_str()) != 0) {
+		LOG_FS << "remove(" << path << "): " << strerror(errno) << "\n";
+		ret = false;
+	}
+	return ret;
 }
 
 std::string get_cwd()
