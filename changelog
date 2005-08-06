@@ -12,16 +12,18 @@ CVS HEAD:
  * graphics and sound improvements:
    * fixed layering of multi-hex tiles (#13586)
    * removed Mac OS X icon border (#12928)
-   * updated images for Elish Druid, Elvish Shaman, Elvish Shyde,
-     Master Bowman
-   * new and revised portraits for The Dark Hordes
+   * updated images for Elvish Druid, Elvish Scout, Elvish Shaman, Elvish Shyde,
+     Grand Knight, Master Bowman
+   * new and revised portraits for The Dark Hordes and Konrad
  * campaigns
-   * Eastern Invasion: fixed missing background in intro (#13901)
+   * Eastern Invasion
+     * fixed missing background in intro (#13901)
+     * campaign plot and dialogue extensively revised
    * Son of the Black Eye: fixed untranslatable strings in Saving Inarix
    * The Dark Hordes: terminate the campaign at this point as Part 1
    * Heir to the Throne: stop Bugg being resurrected in Bay of Pearls (#13950)
  * multiplayer:
-   * fixed rejoining game as observer but with same nick causing out of synch
+   * rejoining game as observer, with same nick, no longer causes out of synch
      (#12824 and #12997, still subject to confirmation)
    * fixed chat messages from allies not being shown in multiplayer (#13657)
    * added Use map settings option to preset scenario suggested values at setup
@@ -31,17 +33,15 @@ CVS HEAD:
    * tweaked layout of game creation screen
    * fixed non-fatal errors exiting lobby (#13783)
    * choosing vacant slot then joining all computer game is no longer allowed
-   * map for Sulla's Ruins modified
    * cancelling faction selection now goes back to scenario setup (#9376)
    * ending game now returns to lobby if host dismisses dialogs (part of #13348)
- * new units
-   * added Drake Enforcer
+ * new units: added Drake Enforcer
  * unit balancing and modifications
    * increased Elvish Scout ranged attack damage from 5-2 to 6-2
    * increased Cavalryman attack damage from 5-3 to 6-3
- * multiplayer scenarios
-   * removed Icy Waters
-   * added Smallolof
+   * reduced dwarvishfoot and mountainfoot defense on tundra from 40% to 30%
+ * multiplayer scenarios: removed Icy Waters, added Smallolof, modified
+   Sulla's Ruins map
  * user interface improvements: 
    * fixed failed recruit attempt clearing undo stack (#13833)
    * fixed recall not clearing shroud (#13824)
