@@ -84,10 +84,10 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		if(res < 0 || res != bytes_to_send && errno != EAGAIN)
 			return SOCKET_ERROR;
 
-		upto += res;
+		upto += static_cast<size_t>(res);
 		{
 			const threading::lock lock(*global_mutex);
-			transfer_stats[sock].first.transfer(res);
+			transfer_stats[sock].first.transfer(static_cast<size_t>(res));
 		}
 	}
 	return SOCKET_READY;
@@ -159,8 +159,9 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 		++beg;
 		{
 			const threading::lock lock(*global_mutex);
-			++transfer_stats[sock].second.total;
-			++transfer_stats[sock].second.current;
+			network::statistics& stats = transfer_stats[sock].second;
+			++stats.total;
+			++stats.current;
 		}
 	}
 	SDLNet_TCP_DelSocket(set, sock);
