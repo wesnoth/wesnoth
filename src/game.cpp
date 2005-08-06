@@ -1042,10 +1042,9 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 		for(size_t n = 0; n != 8; ++n) {
 			passphrase[n] = 'a' + (rand()%26);
 		}
-
+		cfg["passphrase"] = passphrase;
 		set_campaign_info(campaign,cfg);
 	}
-	cfg["passphrase"] = passphrase;
 
 	cfg["name"] = campaign;
 
