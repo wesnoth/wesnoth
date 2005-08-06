@@ -5,7 +5,7 @@ CVS HEAD:
      Polish, Swedish, Turkish
    * fixed linebreaks not working properly for Chinese translation (#13352)
    * updated several unit descriptions
-   * added GPL, MANUAL and additional content to in-game help
+   * added GPL, MANUAL and more descriptions and images to in-game help
    * fixed some untranslatable attack names (part of #12788)
    * Battle Princess can now have translation different to Princess
    * fix terrain list cross-references in unit help
@@ -34,12 +34,13 @@ CVS HEAD:
    * fixed non-fatal errors exiting lobby (#13783)
    * choosing vacant slot then joining all computer game is no longer allowed
    * cancelling faction selection now goes back to scenario setup (#9376)
-   * ending game now returns to lobby if host dismisses dialogs (part of #13348)
+   * ending game now returns to lobby (#13348)
  * new units: added Drake Enforcer
  * unit balancing and modifications
    * increased Elvish Scout ranged attack damage from 5-2 to 6-2
    * increased Cavalryman attack damage from 5-3 to 6-3
    * reduced dwarvishfoot and mountainfoot defense on tundra from 40% to 30%
+   * simplified AMLA, using global macros in amla.cfg
  * multiplayer scenarios: removed Icy Waters, added Smallolof, modified
    Sulla's Ruins map
  * user interface improvements: 
@@ -52,6 +53,9 @@ CVS HEAD:
      (ctrl-l->ctrl-o)
  * fixed towupper causing build to fail on OpenBSD (#13709)
  * fixed replay corruption due to capture events not saving randomness (#13666)
+ * keep send and receive connection statistics separate for each socket
+ * more responsive networking code, less subject to network errors
+ * fixed campaign upload with no passphrase not storing generated passphrase
  * various bug fixes and code cleanups
 
 Version 0.9.4:
