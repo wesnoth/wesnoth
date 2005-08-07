@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-01 13:09+0200\n"
-"PO-Revision-Date: 2005-07-29 22:28+0200\n"
+"PO-Revision-Date: 2005-08-07 19:46+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -14,15 +14,15 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +{HP_ADVANCE}"
-msgstr ""
+msgstr "Max HP bonus +{HP_ADVANCE}"
 
 #: data/amla.cfg:21
 msgid "Full Heal"
-msgstr ""
+msgstr "Full Heal"
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/game.cfg:25
 msgid "Binary Saves"
@@ -71,7 +71,6 @@ msgstr ""
 "will be listed under this topic as you encounter them."
 
 #: data/help.cfg:61
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -84,28 +83,26 @@ msgstr ""
 "\n"
 "\n"
 "Battle for Wesnoth is a turn-based fantasy strategy game somewhat unusual "
-"among modern strategy games. While other games strive for complexity, both "
-"in rules and gameplay, Battle for Wesnoth strives for simplicity of rules "
-"and gameplay. This does not make the game simple, however - from these "
-"simple rules arise a wealth of strategy, making the game easy to learn but a "
-"challenge to master."
+"among modern strategy games. While other games strive for complexity, Battle "
+"for Wesnoth strives for simplicity of both rules and gameplay. This does not "
+"make the game simple, however - from these simple rules arise a wealth of "
+"strategy, making the game easy to learn but a challenge to master."
 
 #: data/help.cfg:66
 msgid "Fundamentals of Gameplay"
 msgstr "Fundamentals of Gameplay"
 
 #: data/help.cfg:67
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. For more detailed "
 "information on special situations and exceptions, please follow the links "
 "included."
 msgstr ""
-"This page outlines all you need to know to play Battle for Wesnoth. It "
-"covers how to play and the basic mechanics behind the game. Keep in mind "
-"that this is just an outline - for special exceptions and situations, please "
-"follow the links included."
+"These pages outline all you need to know to play Battle for Wesnoth. They "
+"cover how to play and the basic mechanics behind the game. For more detailed "
+"information on special situations and exceptions, please follow the links "
+"included."
 
 #: data/help.cfg:69
 msgid ""
@@ -128,21 +125,20 @@ msgstr ""
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 
 #: data/help.cfg:72
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
 "will be shown explaining that item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"While playing, keep in mind that if you mouse-over many items on the menu "
-"bar to the right, a brief description will pop up explaining each item. This "
-"is especially useful when you encounter new abilities for the first time."
+"While playing, keep in mind that if you mouse-over many items in the game, "
+"such as the information displayed in the status pane, a brief description "
+"will be shown explaining each item. This is especially useful when you "
+"encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 
 #: data/help.cfg:77
-#, fuzzy
 msgid "About the Game"
-msgstr "Quit the game"
+msgstr "About the game"
 
 #: data/help.cfg:78
 msgid ""
@@ -154,6 +150,13 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
+"The game takes place over a series of battles, called scenarios. Each "
+"scenario pits your troops against the troops of one or more adversaries. You "
+"can play against the computer, or with friends who each take turns sitting "
+"at the computer (hotseat play). If your computer is connected to a computer "
+"network, you can also play against other people connected to that network. "
+"If your computer has a connection to the Internet, you can play against "
+"other people across the Internet."
 
 #: data/help.cfg:80
 msgid ""
@@ -165,6 +168,13 @@ msgid ""
 "need to reach a destination, to rescue someone, to solve a puzzle, or just "
 "to survive a certain number of turns."
 msgstr ""
+"\n"
+"\n"
+"Each scenario has some objectives, shown as the scenario starts. These "
+"objectives list what you need to do to win, and what you should do to avoid "
+"losing. Often the objective is to defeat all enemies, but other times you "
+"need to reach a destination, to rescue someone, to solve a puzzle, or just "
+"to survive a certain number of turns."
 
 #: data/help.cfg:82
 msgid ""
@@ -175,13 +185,18 @@ msgid ""
 "preserving your best troops so that they can be used again in later "
 "scenarios in the campaign."
 msgstr ""
+"\n"
+"\n"
+"Campaigns consist of multiple scenarios that follow on from each other, "
+"telling a story. In a campaign, you often need to play more carefully, "
+"preserving your best troops so that they can be used again in later "
+"scenarios in the campaign."
 
 #: data/help.cfg:87
 msgid "Recruiting and Recalling"
 msgstr "Recruiting and Recalling"
 
 #: data/help.cfg:88
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -193,14 +208,15 @@ msgid ""
 "units available for recruitment, along with their gold cost. Click on a unit "
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
-"At the start of any battle, and at times during it, you will need to recruit "
-"units into your army. To recruit, you must have your leader (Konrad in the "
-"Heir to the Throne campaign) on the Keep square of a Castle. Then you may "
-"recruit by either choosing Recruit from the menu or right-clicking on a hex "
-"and selecting <italic>text=Recruit</italic>. This brings up the recruit "
-"menu, which lists units available for recruitment, along with their gold "
-"cost. Click on a unit to see its statistics to the left, then press the "
-"recruit button to recruit it."
+"Each side begins with one leader in their keep. At the start of any battle, "
+"and at times during it, you will need to recruit <ref>dst=units text=units</"
+"ref> into your army. To recruit, you must have your leader (for instance, "
+"Konrad in the Heir to the Throne campaign) on the Keep square of a "
+"<ref>dst=terrain_castle text=Castle</ref>. Then you may recruit by either "
+"choosing Recruit from the menu or right-clicking on a hex and selecting "
+"<italic>text=Recruit</italic>. This brings up the recruit menu, which lists "
+"units available for recruitment, along with their gold cost. Click on a unit "
+"to see its statistics, then press the recruit button to recruit it."
 
 #: data/help.cfg:90
 msgid ""
@@ -231,7 +247,6 @@ msgstr ""
 "modify their statistics."
 
 #: data/help.cfg:94
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -242,12 +257,10 @@ msgstr ""
 "\n"
 "\n"
 "In later scenarios, you may also Recall survivors from earlier battles. "
-"Recalling functions identically to Recruiting, save that recalling costs a "
-"standard 20 gold and presents you with a list of all surviving units from "
-"previous scenarios."
+"Recalling costs a standard 20 gold and presents you with a list of all "
+"surviving units from previous scenarios."
 
 #: data/help.cfg:96
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -257,14 +270,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Keep in mind that units not only cost gold to Recruit or Recall, they also "
-"require money to support. See <ref>dst=income_and_upkeep text='Income and "
-"Upkeep'</ref> for more information."
+"Units not only cost gold to Recruit or Recall, they also require money to "
+"support. See <ref>dst=income_and_upkeep text='Income and Upkeep'</ref> for "
+"more information."
 
 #: data/help.cfg:101
-#, fuzzy
 msgid "Orbs"
-msgstr "Orcs"
+msgstr "Orbs"
 
 #: data/help.cfg:111
 msgid ""
@@ -280,13 +292,23 @@ msgid ""
 "\n"
 "Enemy units have no orb on the top of their energy bar."
 msgstr ""
+"On the top of the energy bar shown next to each unit of yours is an orb.\n"
+"This orb is:\n"
+"\n"
+"  * green if you control the unit and it hasn't moved this turn,\n"
+"  * yellow if you control the unit and it has moved this turn, but could\n"
+"    still move further or attack,\n"
+"  * red if you control the unit, but it has used all its movement this turn, "
+"or\n"
+"  * blue if the unit is an ally you do not control.\n"
+"\n"
+"Enemy units have no orb on the top of their energy bar."
 
 #: data/help.cfg:116 src/help.cpp:1197
 msgid "Movement"
 msgstr "Movement"
 
 #: data/help.cfg:117
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -297,15 +319,16 @@ msgid ""
 "clicking will cause the unit to move towards it by the fastest route over "
 "this and subsequent turns."
 msgstr ""
-"Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
-"to move, then click on the hex you wish to move it to. When a unit is "
+"Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
+"to select it, then click on the hex you wish to move it to. When a unit is "
 "selected, everywhere it can move this turn will be highlighted, and all "
-"other hexes on the map are made dull. Mousing over a dull hex will show the "
-"number of turns required to reach it, and clicking will cause the unit to "
-"move towards it by the fastest route over this and subsequent turns."
+"other hexes on the map are made dull. Mousing over a highlighted hex shows "
+"the defence rating the unit would have if you moved it to that hex. Mousing "
+"over a dull hex will also show the number of turns required to reach it, and "
+"clicking will cause the unit to move towards it by the fastest route over "
+"this and subsequent turns."
 
 #: data/help.cfg:119
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -321,14 +344,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Each unit has a certain number of movement points which are expended when "
+"Each unit has a certain number of movement points which are used up when "
 "moving into a new hex, depending on the Terrain of that particular hex. For "
 "instance, grassland nearly always costs 1 movement point to enter. Exactly "
 "how many movement points are spent entering a hex depends on the unit type - "
 "in forest, elvish units only spend 1 movement point, most human and orc "
 "units spend 2, while horsemen spend 3. You can learn how many movement "
 "points a unit requires to enter a certain terrain type by right-clicking on "
-"it, selecting Unit Description, and then look at <italic>text='Terrain "
+"it, selecting Unit Description, and then looking at <italic>text='Terrain "
 "Modifiers'</italic>."
 
 #: data/help.cfg:121
@@ -359,6 +382,11 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"To see where the enemy can move to during their next turn, press Ctrl-v or "
+"Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
+"not on the map to block their progress."
 
 #: data/help.cfg:128
 msgid "Combat"
@@ -376,6 +404,15 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
+"Combat in Battle for Wesnoth always takes place between units in adjacent "
+"hexes. Click on your unit, and click on the enemy you want to attack: your "
+"unit will move towards the enemy unit, and when they are next to each other, "
+"combat will begin. The attacker and defender alternate attacks until each "
+"has used their allotted number of attacks. The attacker chooses one of its "
+"weapons to attack with, and the defender retaliates with one of its attacks "
+"of the same type. There are two types of attacks: melee, which usually "
+"involves weapons such as swords, axes or fangs; and ranged, which usually "
+"involves weapons such as bows, spears and fireballs."
 
 #: data/help.cfg:131
 msgid ""
@@ -388,7 +425,6 @@ msgstr ""
 "<header>text='Order and number of attacks'</header>"
 
 #: data/help.cfg:133
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -402,11 +438,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"The attacker gets the first attack, then the defender retaliates. This "
-"continues to alternate until each unit has used up all of its attacks. The "
-"number of attacks a unit has varies; for instance, an Elvish fighter with a "
-"5-4 sword attack may make 4 swings each dealing 5 damage, while an Orcish "
-"Grunt with 9-2 can only make 2 swings (but at 9 damage each)."
+"The attacker gets the first attack, then the defender retaliates. Each "
+"attack either hits, doing a given amount of damage, or misses, doing no "
+"damage at all. Attacks alternate until each unit has used up all of its "
+"attacks. The number of attacks a unit has varies; for instance, an Elvish "
+"fighter with a 5-4 attack may attack 4 times, each successful hit dealing 5 "
+"damage, while an Orcish Grunt with a 9-2 attack can only attack 2 times (but "
+"at 9 damage for each hit)."
 
 #: data/help.cfg:135
 msgid ""
@@ -419,7 +457,6 @@ msgstr ""
 "<header>text='Chance to hit'</header>"
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -433,16 +470,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"With two exceptions, the chance to hit a unit is based solely on its defence "
-"rating in the Terrain it is currently standing in. This may be found by "
-"right-clicking a unit, selecting Unit Description, and then look at "
-"<italic>text='Terrain Modifiers'</italic>. For instance, many elves have a "
-"defence rating of 70% in forest, meaning a unit attacking them has only a "
-"30% chance of hitting them. Conversely, the elf's chance of hitting the "
-"attacker in return depends on what terrain the attacker is in."
+"Every unit has a chance of being hit, based on the Terrain it is in. This is "
+"shown in the status pane, and may also be found by right-clicking a unit, "
+"selecting Unit Description, and then looking at <italic>text='Terrain "
+"Modifiers'</italic>. For instance, many elves have a defence rating of 70% "
+"in forest, so a unit attacking them has only a 30% chance of hitting. "
+"Conversely, the elf's chance of hitting the attacker in return depends on "
+"what terrain the attacker is in."
 
 #: data/help.cfg:139
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -452,6 +488,7 @@ msgid ""
 "regardless of terrain, and, when used offensively, Marksmen always have at "
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
+"\n"
 "\n"
 "There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
 "text='Magical attacks'</ref> and <ref>dst=weaponspecial_marksman "
@@ -470,7 +507,6 @@ msgstr ""
 "<header>text=Damage</header>"
 
 #: data/help.cfg:143
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -484,14 +520,13 @@ msgstr ""
 "\n"
 "\n"
 "Each blow which hits causes a base amount of damage depending on the attack "
-"type. For instance, an Elvish Fighter with a 5-4 sword attack causes a base "
-"of 5 damage. This is usually modified by two things: "
-"<ref>dst=damage_types_and_resistance text=Resistance</ref> and "
-"<ref>dst=time_of_day text='Time of Day'</ref>, both of which are explained "
-"below."
+"type. For instance, an Elvish Fighter with a 5-4 attack does 5 base damage. "
+"This is usually modified by two things: <ref>dst=damage_types_and_resistance "
+"text=Resistance</ref> and <ref>dst=time_of_day text='Time of Day'</ref>. To "
+"see how base damage is modified by the circumstances, select "
+"<italic>text='Damage Calculations'</italic> in the attack selection menu."
 
 #: data/help.cfg:145
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -502,10 +537,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"A few units have special abilities which affect damage dealt in combat. The "
-"most common of these is <ref>dst=weaponspecial_charge text=Charge</ref>, "
-"which doubles the damage dealt by both attacker and defender when the unit "
-"with Charge attacks."
+"A few units have special <ref>dst=abilities text=abilities</ref> which "
+"affect damage dealt in combat. The most common of these is "
+"<ref>dst=weaponspecial_charge text=Charge</ref>, which doubles the damage "
+"dealt by both attacker and defender when the unit with Charge attacks."
 
 #: data/help.cfg:150
 msgid "Damage Types and Resistance"
@@ -526,7 +561,6 @@ msgstr ""
 "damage which they take from certain damage types."
 
 #: data/help.cfg:153
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -538,11 +572,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Resistances work very simply: If a unit has 40% resistance against a damage "
-"type, then they will suffer 40% less damage when hit with that damage type. "
-"It is also possible for a unit to have weakness; if a unit has -100% "
-"resistance against a damage type, it will suffer 100% more damage when hit "
-"by that type."
+"Resistances work very simply: if a unit has 40% resistance against a damage "
+"type, then it will suffer 40% less damage when hit with that damage type. It "
+"is also possible for a unit to be vulnerable against some damage types. If a "
+"unit has -100% resistance against a damage type, it will suffer 100% more "
+"damage when hit by that type."
 
 #: data/help.cfg:155
 msgid ""
@@ -566,6 +600,11 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"If an attack is determined to hit, it will always do at least 1 point of "
+"damage. This applies even if the defender has 100% resistance to the damage "
+"type."
 
 #: data/help.cfg:162
 msgid "Time of Day"
@@ -681,7 +720,6 @@ msgstr ""
 "some cases, you will be given a choice of advancement options."
 
 #: data/help.cfg:193
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -690,8 +728,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Keep in mind that while most units have three levels, not all do, and that "
-"occasional units (such as <ref>dst=unit_Mage text=Magi</ref>) may have four."
+"While most units have three levels, not all do. Occasional units (such as "
+"<ref>dst=unit_Mage text=Magi</ref>) may have four."
 
 #: data/help.cfg:198
 msgid "Healing"
@@ -1248,7 +1286,6 @@ msgid "Swamp"
 msgstr "Swamp"
 
 #: data/help.cfg:360
-#, fuzzy
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1262,8 +1299,8 @@ msgstr ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
 "bodily skilled in navigating water; these receive both full movement and a "
-"defensive bonus.  Those that make their living in the wetlands are also "
-"adept at using this terrain for cover.\n"
+"defensive bonus. Those that make their living in the wetlands are also adept "
+"at using this terrain for cover.\n"
 "\n"
 "Most units make do with 30% defence in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
@@ -1478,6 +1515,10 @@ msgid ""
 "is concerned, only units capable of flying over canyons can cross this "
 "terrain."
 msgstr ""
+"A canyon is a gorge in the ground, leading to depths unknown. Canyons are "
+"noted for sheer walls which would take days to traverse. As far as gameplay "
+"is concerned, only units capable of flying over canyons can cross this "
+"terrain."
 
 #: data/help.cfg:469 data/terrain.cfg:472
 msgid "Lava"
@@ -1489,6 +1530,9 @@ msgid ""
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
+"The dangers inherent in trying to walk on lava are fairly obvious. This "
+"terrain can only be crossed by those units capable of flying a considerable "
+"distance above it."
 
 #: data/help.cfg:476 data/terrain.cfg:462
 msgid "River Ford"
@@ -1503,6 +1547,12 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"When a river happens to be extremely shallow, passing over it is a trivial "
+"matter for land based units. Moreover, any creature best adapted to swimming "
+"has full mobility even at such places in the river. As far as gameplay is "
+"concerned, a river ford is treated as either grassland or shallow water, "
+"choosing whichever one offers the best defensive and movement bonuses for "
+"the unit on it."
 
 #: data/items.cfg:264
 msgid ""
@@ -4381,7 +4431,6 @@ msgid "Arch Mage"
 msgstr "Arch Mage"
 
 #: data/units/Arch_Mage.cfg:24
-#, fuzzy
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -4409,7 +4458,7 @@ msgstr ""
 "tend to frown upon.\n"
 "\n"
 "Though not trained for any sort of combat, if need arises an Arch Mage can "
-"unleash the full power of the magic arts, something which is not to be taken "
+"unleash the full power of their art, something which is not to be taken "
 "lightly.\n"
 "\n"
 "Special Notes: the arch mage's fireballs are magical, and always have a high "
@@ -4661,9 +4710,8 @@ msgid "mace"
 msgstr "mace"
 
 #: data/units/Battle_Princess.cfg:3
-#, fuzzy
 msgid "female^Battle Princess"
-msgstr "Outlaw Princess"
+msgstr "female^Battle Princess"
 
 #: data/units/Battle_Princess.cfg:22 data/units/Battle_Princess.cfg:76
 msgid "leadership,skirmisher"
@@ -4862,7 +4910,6 @@ msgid "Bowman"
 msgstr "Bowman"
 
 #: data/units/Bowman.cfg:18
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -4871,7 +4918,7 @@ msgid ""
 "and are very common on the battlefield."
 msgstr ""
 "The use of archery in shooting something other than game was seen from its "
-"inception, and archers have had indispensable use in warfare since time "
+"inception, and archers have been indispensable in warfare since time "
 "immemorial. Usually of humble origins, hailing from the peasantry or the odd "
 "woodsman, bowmen have reasonable prowess with both a bow and a short sword, "
 "and are very common on the battlefield."
@@ -5516,9 +5563,8 @@ msgstr ""
 #: data/units/Drake_Slasher.cfg:25 data/units/Drake_Slasher.cfg:43
 #: data/units/Drake_Warden.cfg:27 data/units/Drake_Warden.cfg:45
 #: data/units/Halbardier.cfg:29 data/units/Halbardier.cfg:70
-#, fuzzy
 msgid "halberd"
-msgstr "Halberdier"
+msgstr "halberd"
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:48
 #: data/units/Goblin_Impaler.cfg:28 data/units/Halbardier.cfg:35
@@ -6525,6 +6571,19 @@ msgid ""
 "poison will continually take damage until they can be cured in town or by a "
 "healer."
 msgstr ""
+"Only those who have delved into the circles of necromancy know what must be "
+"done to turn a person into a ghoul, and it is a secret they are not "
+"telling.  Whatever unspeakable rites they have performed, the result is a "
+"beast that knows nothing of its days as a human being, a creature that "
+"shambles about as naked as the day it was born, and gorges itself on the "
+"flesh of the dead.\n"
+"\n"
+"It is because of such things that necromancy is condemned with an almost "
+"primal hatred.\n"
+"\n"
+"Special Notes: A ghoul's claws are covered in poison, and victims of this "
+"poison will continually take damage until they can be cured in town or by a "
+"healer."
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
@@ -6812,7 +6871,6 @@ msgid "Halberdier"
 msgstr "Halberdier"
 
 #: data/units/Halbardier.cfg:26
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -6841,7 +6899,7 @@ msgstr ""
 "However, a halberd is notably more expensive to craft than a spear, and in "
 "the hands of a novice, much less effective. In the armies of Wesnoth, it is "
 "customary only to grant these weapons to veteran pikemen, who have proven "
-"their skill to employ them properly on the field of war.\n"
+"that they have the skill to employ them properly on the field of war.\n"
 "\n"
 "Special Notes: the length of their weapon allows a halberdier to strike "
 "first in melee, even in defense."
@@ -6851,7 +6909,6 @@ msgid "Heavy Infantryman"
 msgstr "Heavy Infantryman"
 
 #: data/units/Heavy_Infantryman.cfg:15
-#, fuzzy
 msgid ""
 "Heavy infantry are an unusual choice for outfitting troops. They are very "
 "difficult to send afield in war, and are typically useful only in the "
@@ -6862,8 +6919,8 @@ msgid ""
 "in the weight of the metal, and the great care that must be taken of it, but "
 "in certain situations, these troops are well worth the trade-offs."
 msgstr ""
-"Heavy infantry are a somewhat anomalous choice for outfitting troops. They "
-"are very difficult to send afield in war, and are useful mostly only in the "
+"Heavy infantry are an unusual choice for outfitting troops. They are very "
+"difficult to send afield in war, and are typically useful only in the "
 "defence of the city or castle in which they are stationed. Clad head to toe "
 "in full plate, and armed with large maces, heavy infantry excel at their "
 "sole purpose of melee combat. A few of them in the center of a line will "
@@ -7091,7 +7148,6 @@ msgid "Longbowman"
 msgstr "Longbowman"
 
 #: data/units/Longbowman.cfg:19
-#, fuzzy
 msgid ""
 "Longbows are forbidden to beginning archers simply by merit of physical law. "
 "It takes great strength to draw one, and the added range and power are "
@@ -7103,7 +7159,7 @@ msgstr ""
 "It takes great strength to draw one, and the added range and power are "
 "useless unless one has good aim with the weapon, a gift that beginners "
 "certainly lack. Longbowmen carry their weaponry as a badge of pride, and "
-"most bowmen look to the day they can progress to using one."
+"most bowmen look forward to the day they can begin using one."
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:82
 msgid "Lord"
@@ -7188,7 +7244,6 @@ msgid "illuminates,cures"
 msgstr "illuminates,cures"
 
 #: data/units/Mage_of_Light.cfg:35
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi are bestowed with "
 "vast spiritual powers. By strict devotion to the path of the light, they can "
@@ -7205,9 +7260,9 @@ msgid ""
 "also have the power of Illumination, which increases the lighting level in "
 "the area adjacent to the mage."
 msgstr ""
-"After years of experience, the most devout of white magi have access to vast "
-"spiritual powers. By strict devotion to the path of the light, they can call "
-"upon its aid to chase away the shadows of the night.\n"
+"After years of experience, the most devout of white magi are bestowed with "
+"vast spiritual powers. By strict devotion to the path of the light, they can "
+"call upon its aid to chase away the shadows of the night.\n"
 "\n"
 "Following a strict code of piety and honour, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they "
@@ -7598,7 +7653,6 @@ msgid "Necrophage"
 msgstr "Necrophage"
 
 #: data/units/Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -7610,9 +7664,13 @@ msgid ""
 "by a healer."
 msgstr ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
-"hoped-for food with poisonous claws. When they are sated with the flesh of "
-"their victims, they simply shrug off all damage sustained as if they had "
-"been freshly summoned, to begin their search for flesh again."
+"hoped-for food with beast-like ferocity. When they are sated with the flesh "
+"of their victims, they simply shrug off all damage sustained as if they had "
+"been freshly summoned, to begin their search for flesh again.\n"
+"\n"
+"Special Notes: A Necrophage's claws are covered in poison, and victims of "
+"this poison will continually take damage until they can be cured in town or "
+"by a healer."
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
@@ -8706,7 +8764,6 @@ msgid "Thief"
 msgstr "Thief"
 
 #: data/units/Thief.cfg:20 data/units/Thief.cfg:123
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -8726,7 +8783,11 @@ msgstr ""
 "is a bold thing to do, as their profession often delves into less-than-legal "
 "enterprises. Thieves have many skills, and by necessity are both light on "
 "their feet, and good with knives. They happily employ less-than-honourable "
-"tactics in combat, seeing little purpose in a "
+"tactics in combat, seeing little purpose in a 'fair fight'.\n"
+"\n"
+"Special Notes: while a unit with the same allegiance as the thief distracts "
+"an enemy, the thief may backstab, inflicting double damage, by creeping "
+"around behind that enemy."
 
 #: data/units/Thief.cfg:106
 msgid "female^Thief"
@@ -10331,9 +10392,8 @@ msgid "Map"
 msgstr "Map"
 
 #: src/multiplayer_lobby.cpp:30
-#, fuzzy
 msgid "Settings"
-msgstr "Settings..."
+msgstr "Settings"
 
 #: src/multiplayer_lobby.cpp:30
 msgid "Status"
