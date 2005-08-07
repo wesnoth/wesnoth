@@ -289,7 +289,7 @@ manager::~manager()
 void set_font()
 {
 	clear_fonts();
-	font_names.push_back(_("Vera.ttf"));
+	font_names.push_back(_("DejaVuSans.ttf"));
 }
 
 void set_font_list(const std::vector<subset_descriptor>& fontlist)
