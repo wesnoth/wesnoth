@@ -21,6 +21,7 @@
 
 #include <algorithm>
 #include <cerrno>
+#include <cstring>
 #include <deque>
 #include <iostream>
 #include <map>
@@ -145,7 +146,7 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 		}
 		// wait for a maximum of 15 seconds for the socket to have activity
 		if(SDLNet_CheckSockets(set, 15000) <= 0) {
-			ERR_NW << "SDLNet_CheckSockets: " << SDLNet_GetError() << "\n";
+			ERR_NW << "SDLNet_CheckSockets: " << strerror(errno) << "\n";
 			SDLNet_TCP_DelSocket(set, sock);
 			SDLNet_FreeSocketSet(set);
 			return SOCKET_ERROR;
