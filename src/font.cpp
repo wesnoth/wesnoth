@@ -286,12 +286,6 @@ manager::~manager()
 	TTF_Quit();
 }
 
-void set_font()
-{
-	clear_fonts();
-	font_names.push_back(_("DejaVuSans.ttf"));
-}
-
 void set_font_list(const std::vector<subset_descriptor>& fontlist)
 {
 	clear_fonts();
@@ -299,8 +293,27 @@ void set_font_list(const std::vector<subset_descriptor>& fontlist)
 
 	std::vector<subset_descriptor>::const_iterator itor;
 	for(itor = fontlist.begin(); itor != fontlist.end(); ++itor) {
-		subset_id subset = font_names.size();
-		font_names.push_back(itor->name);
+		const subset_id subset = font_names.size();
+		// Insert fonts only if the font file exists
+#ifndef USE_ZIPIOS
+		if(game_config::path.empty() == false) {
+			if(file_exists(game_config::path + "/fonts/" + itor->name)) {
+				font_names.push_back(itor->name);
+			}
+		} else {
+			if(file_exists("fonts/" + itor->name)) {
+				font_names.push_back(itor->name);
+			}
+		}
+#else
+		if (!read_file("fonts/" + itor->name).empty()) {
+			font_names.push_back(itor->name);
+		}
+#endif
+		if(font_names.back() != itor->name) {
+			WRN_FT << "Failed opening font file '" << itor->name << "'\n";
+			continue;
+		}
 
 		std::vector<std::pair<size_t,size_t> >::const_iterator cp_range;
 		for(cp_range = itor->present_codepoints.begin();
