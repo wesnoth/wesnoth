@@ -309,6 +309,7 @@ void connect_operation::run()
 
 	LOG_NW << "sent handshake...\n";
 
+	const threading::lock l(get_mutex());
 	if(is_aborted()) {
 		LOG_NW << "connect operation aborted by calling thread\n";
 		SDLNet_TCP_Close(sock);
@@ -331,7 +332,6 @@ void connect_operation::run()
 	wassert(schemas.count(connect_) == 0);
 	schemas.insert(std::pair<network::connection,schema_pair>(connect_,schema_pair()));
 
-	const threading::lock l(get_mutex());
 	while(!notify_finished());
 }
 
