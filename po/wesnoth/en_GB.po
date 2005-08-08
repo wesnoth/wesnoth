@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 13:32+0200\n"
-"PO-Revision-Date: 2005-08-07 22:49+0200\n"
+"PO-Revision-Date: 2005-08-08 17:38+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,6 @@ msgid "Full Heal"
 msgstr "Full Heal"
 
 #: data/fonts.cfg:6
-#, fuzzy
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
@@ -62,9 +61,8 @@ msgid "Terrains"
 msgstr "Terrains"
 
 #: data/help.cfg:54 data/help.cfg:60 data/help.cfg:244
-#, fuzzy
 msgid "Overview"
-msgstr "Overwrite?"
+msgstr "Overview"
 
 #: data/help.cfg:55
 msgid ""
@@ -99,7 +97,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Fundamentals of Gameplay"
 
 #: data/help.cfg:69
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -108,9 +105,10 @@ msgid ""
 "exceptions, please follow the links included."
 msgstr ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
-"cover how to play and the basic mechanics behind the game. For more detailed "
-"information on special situations and exceptions, please follow the links "
-"included."
+"cover how to play and the basic mechanics behind the game. As you play the "
+"game, new information is added to these pages as you come across new aspects "
+"of the game. For more detailed information on special situations and "
+"exceptions, please follow the links included."
 
 #: data/help.cfg:71
 msgid ""
@@ -428,7 +426,6 @@ msgid "Combat"
 msgstr "Combat"
 
 #: data/help.cfg:135
-#, fuzzy
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -443,15 +440,14 @@ msgstr ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
 "unit will move towards the enemy unit, and when they are next to each other, "
-"combat will begin. The attacker and defender alternate attacks until each "
-"has used their allotted number of attacks. The attacker chooses one of its "
+"combat will begin. The attacker and defender alternate strikes until each "
+"has used their allotted number of strikes. The attacker chooses one of its "
 "weapons to attack with, and the defender retaliates with one of its attacks "
 "of the same type. There are two types of attacks: melee, which usually "
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -459,7 +455,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Order and number of attacks'</header>"
+"<header>text='Order and number of strikes'</header>"
 
 #: data/help.cfg:139
 #, fuzzy
@@ -675,6 +671,11 @@ msgid ""
 "pane. For the usual day/night cycle, Morning and Afternoon count as day, "
 "First and Second Watch count as night:\n"
 msgstr ""
+"\n"
+"\n"
+"The current time of day can be observed under the minimap in the status "
+"pane. For the usual day/night cycle, Morning and Afternoon count as day, "
+"First and Second Watch count as night:\n"
 
 #: data/help.cfg:175 data/schedules.cfg:5
 msgid "Dawn"
@@ -815,6 +816,12 @@ msgid ""
 "and are fighting on the same side as the healing unit, and only up to 4HP "
 "per unit."
 msgstr ""
+"\n"
+"Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
+"ability will heal up to 8HP of damage per turn, as well as preventing Poison "
+"from causing damage. Only those units will be healed that are adjacent to "
+"and are fighting on the same side as the healing unit, and only up to 4HP "
+"per unit."
 
 #: data/help.cfg:206
 #, fuzzy
@@ -832,7 +839,6 @@ msgstr ""
 "total maximum of 18 points healed, or cure a unit of Poison."
 
 #: data/help.cfg:208
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -845,8 +851,10 @@ msgstr ""
 "\n"
 "\n"
 "Resting can be combined with other forms of healing, but villages, "
-"regeneration, and healing/curing cannot combine with each other. Also, units "
-"heal fully between scenarios."
+"regeneration, healing and curing cannot combine with each other. A healing "
+"or curing unit whose attention is split between many wounded will be less "
+"effective at healing their individual wounds. Finally, units heal fully "
+"between scenarios."
 
 #: data/help.cfg:213
 msgid "Income and Upkeep"
@@ -947,9 +955,8 @@ msgstr ""
 "fun, and good luck!"
 
 #: data/help.cfg:232
-#, fuzzy
 msgid "Contributors"
-msgstr "+Contributors"
+msgstr "Contributors"
 
 #: data/help.cfg:238
 msgid "License"
@@ -976,6 +983,12 @@ msgid ""
 "text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
 "<ref>dst=traits_strong text=Strong</ref>."
 msgstr ""
+"\n"
+"\n"
+"The traits that are available to all non-Undead units are "
+"<ref>dst=traits_intelligent text=Intelligent</ref>, <ref>dst=traits_quick "
+"text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
+"<ref>dst=traits_strong text=Strong</ref>."
 
 #: data/help.cfg:249
 msgid ""
@@ -985,15 +998,19 @@ msgid ""
 "text=Loyal</ref>, <ref>dst=traits_undead text=Undead</ref>, and "
 "<ref>dst=traits_dextrous text=Dextrous</ref>."
 msgstr ""
+"\n"
+"\n"
+"Other traits that may be assigned to units are <ref>dst=traits_loyal "
+"text=Loyal</ref>, <ref>dst=traits_undead text=Undead</ref>, and "
+"<ref>dst=traits_dextrous text=Dextrous</ref>."
 
 #: data/help.cfg:254
-#, fuzzy
 msgid "Intelligent"
-msgstr "intelligent"
+msgstr "Intelligent"
 
 #: data/help.cfg:255
 msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
+msgstr "Intelligent units require 20% less experience than usual to advance."
 
 #: data/help.cfg:257
 #, fuzzy
@@ -1020,16 +1037,14 @@ msgstr ""
 "you may wish to recall units with more desirable traits."
 
 #: data/help.cfg:262
-#, fuzzy
 msgid "Quick"
-msgstr "quick"
+msgstr "Quick"
 
 #: data/help.cfg:263
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
-msgstr ""
+msgstr "Quick units have 1 extra movement point, but 10% less HP than usual."
 
 #: data/help.cfg:265
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1042,29 +1057,22 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Quick</header>\n"
-"\n"
-"Quick units have 1 extra movement point, but 10% less HP than usual.\n"
-"\n"
 "Quick is the most noticeable trait, particularly in slower moving units such "
 "as trolls or heavy infantry. Units with the Quick trait often have greatly "
-"increased mobility in rough terrain, so you should consider that when "
+"increased mobility in rough terrain, which can be important to consider when "
 "deploying your forces. Also, Quick units aren't quite as tough as units "
 "without this trait and are subsequently less good at holding contested "
 "positions."
 
 #: data/help.cfg:270
-#, fuzzy
 msgid "Resilient"
-msgstr "resilient"
+msgstr "Resilient"
 
 #: data/help.cfg:271
 msgid "Resilient units have 7 more HP than usual."
-msgstr ""
+msgstr "Resilient units have 7 more HP than usual."
 
 #: data/help.cfg:273
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1076,30 +1084,25 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Resilient</header>\n"
-"\n"
-"Resilient units have 7 more HP than usual.\n"
-"\n"
 "Resilient units can be useful at all stages of a campaign, and this is a "
 "useful trait for all units. Resilient is often most helpful as a trait when "
 "it occurs in a unit that has some combination of low hitpoints, good "
-"defence, or high resistances. Resilient units are especially useful for "
+"defense, or high resistances. Resilient units are especially useful for "
 "holding strategic positions against opponents."
 
 #: data/help.cfg:278
-#, fuzzy
 msgid "Strong"
-msgstr "strong"
+msgstr "Strong"
 
 #: data/help.cfg:279
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 2 more HP."
 msgstr ""
+"Strong units do 1 more damage for every successful strike in melee combat, "
+"and have 2 more HP."
 
 #: data/help.cfg:281
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1110,21 +1113,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Strong</header>\n"
-"\n"
-"Strong units do 1 more damage per swing in melee combat, and have 2 more "
-"HP.\n"
-"\n"
 "While useful for any close-combat unit, Strong is most effective for units "
-"that have a high number of swings, such as the Elvish Fighter. Strong units "
+"who have a high number of swings such as the Elvish Fighter. Strong units "
 "can be very useful when a tiny bit of extra damage is all that is needed to "
 "turn a damaging stroke into a killing blow."
 
 #: data/help.cfg:286
-#, fuzzy
 msgid "Loyal"
-msgstr "loyal"
+msgstr "Loyal"
 
 #: data/help.cfg:287
 msgid ""
@@ -1132,9 +1128,11 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
+"Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
+"of every turn, which is equal to their level. Loyal units do not incur this "
+"cost."
 
 #: data/help.cfg:289
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1145,14 +1143,6 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
-"\n"
-"\n"
-"\n"
-"<header>text=Loyal</header>\n"
-"\n"
-"Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
-"of every turn, which is equal to their level. Loyal units do not incur this "
-"cost.\n"
 "\n"
 "\n"
 "During campaigns, certain units may opt to join the player's forces of their "
@@ -1169,10 +1159,9 @@ msgstr "Undead"
 
 #: data/help.cfg:295
 msgid "Undead units are immune to poison."
-msgstr ""
+msgstr "Undead units are immune to poison."
 
 #: data/help.cfg:297
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1183,27 +1172,20 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Undead</header>\n"
-"\n"
-"Undead units are immune to poison.\n"
-"\n"
 "Undead units generally have 'Undead' as their only trait. Since Undead units "
 "are the bodies of the dead, risen to fight again, poison has no effect upon "
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 
 #: data/help.cfg:302
-#, fuzzy
 msgid "Dextrous"
-msgstr "dextrous"
+msgstr "Dextrous"
 
 #: data/help.cfg:303
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
-msgstr ""
+msgstr "Dextrous units do 1 more damage for every successful strike with a bow."
 
 #: data/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1213,11 +1195,6 @@ msgid ""
 "inflict an additional point of damage with each arrow."
 msgstr ""
 "\n"
-"\n"
-"\n"
-"<header>text=Dextrous</header>\n"
-"\n"
-"Dextrous units do +1 damage for every successful strike with a bow.\n"
 "\n"
 "Dextrous is a trait possessed only by Elves. The Elven people are known for "
 "their uncanny grace, and their great facility with the bow. Some, however, "
@@ -1419,7 +1396,6 @@ msgid "Snow"
 msgstr "Snow"
 
 #: data/help.cfg:393
-#, fuzzy
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1427,25 +1403,24 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in snow."
 msgstr ""
-"Tundra is any grassland covered by snow, either permanently, or temporarily. "
-"Most units are slowed down by tundra, and have a harder time defending "
-"themselves.\n"
+"Snow represents any flat area that is frozen, either permanently (like "
+"tundra), or temporarily (like snow-covered grassland). Most units are slowed "
+"down by snow, and have a harder time defending themselves.\n"
 "\n"
-"Most units have 20 to 40% defence in Tundra."
+"Most units have 20 to 40% defense in snow."
 
 #: data/help.cfg:398 data/terrain.cfg:265
 msgid "Ice"
 msgstr "Ice"
 
 #: data/help.cfg:401
-#, fuzzy
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
-"identical to <ref>dst=terrain_tundra text=Tundra</ref>. Note that swimming "
+"identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 
 #: data/help.cfg:406 data/terrain.cfg:374 data/terrain.cfg:485
@@ -1642,15 +1617,16 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:495 data/terrain.cfg:349
-#, fuzzy
 msgid "Cave Wall"
-msgstr "Cave wall"
+msgstr "Cave Wall"
 
 #: data/help.cfg:497
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"Cave walls are made of solid stone, renowned for its ability to impede even "
+"the most determined traveller."
 
 #: data/items.cfg:264
 msgid ""
@@ -2145,7 +2121,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr "4p - Blue Water Province"
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:4
 msgid ""
@@ -2154,6 +2130,10 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice. Recommended settings of 2 gold per village."
 msgstr ""
+"It has been said that Bluewater Province has been destroyed and rebuilt some "
+"twenty times. Now, as armies once again converge on the rocky streams and "
+"snowcapped mountains of this small province, its villagers hardly seem to "
+"take notice. Recommended settings of 2 gold per village."
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
 msgid "4p - Castle Hopping Isle"
@@ -2254,17 +2234,17 @@ msgstr "2 vs. 2 or 3 vs. 3 team game."
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:3
 msgid "6p - Smallolof"
-msgstr ""
+msgstr "6p - Smallolof"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head. Recommended settings of 2 gold per "
 "village."
 msgstr ""
-"Danger lurks around every corner in this underground battlefield, a duel map "
-"where force and subterfuge meet. Recommended settings of 2G per village."
+"Only a true tactician will survive in this deadly and confining battlefield, "
+"where six boxed-in armies come to a head. Recommended settings of 2 gold per "
+"village."
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
 msgid "7p - Battle World"
@@ -3508,9 +3488,8 @@ msgid "Encampment"
 msgstr "Encampment"
 
 #: data/terrain.cfg:393
-#, fuzzy
 msgid "Dwarven Castle"
-msgstr "Dwarven castle"
+msgstr "Dwarven Castle"
 
 #: data/terrain.cfg:403
 msgid "Keep"
@@ -4351,6 +4330,13 @@ msgid ""
 "high chance of hitting an opponent. The touch of a lich drains the victim's "
 "life to renew the lich."
 msgstr ""
+"A being of this order is a herald of the age long past. Anyone who "
+"encounters an Ancient Lich likely has far worse things to worry about than "
+"death.\n"
+"\n"
+"Special Notes: The ranged attacks of a lich are magical, and always have a "
+"high chance of hitting an opponent. The touch of a lich drains the victim's "
+"life to renew the lich."
 
 #: data/units/Ancient_Lich.cfg:44 data/units/Demilich.cfg:32
 #: data/units/Dread_Lich.cfg:21 data/units/Ghost.cfg:23 data/units/Lich.cfg:24
@@ -5119,6 +5105,9 @@ msgid ""
 "to turn the living to stone. Needless to say, this makes them extremely "
 "dangerous."
 msgstr ""
+"Sometimes known as 'basilisks,' these mystical creatures are said to be able "
+"to turn the living to stone. Needless to say, this makes them extremely "
+"dangerous."
 
 #: data/units/Cockatrice.cfg:33
 msgid "gaze"
@@ -5198,9 +5187,8 @@ msgid "chill wave"
 msgstr "chill wave"
 
 #: data/units/Dark_Adept.cfg:63
-#, fuzzy
 msgid "female^Dark Adept"
-msgstr "Dark Queen"
+msgstr "Dark Adept"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
@@ -5280,17 +5268,16 @@ msgid "Death Knight"
 msgstr "Death Knight"
 
 #: data/units/Death_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
 "the same weapons as they did before, they command the Undead in their quest "
 "for revenge."
 msgstr ""
-"Sometimes the mightiest warriors and generals, cursed with hate and a sense "
-"of betrayal, come back to this world as Death Knights. Wielding the same "
-"weapons as they did before, they command the Undead in their quest for "
-"revenge."
+"Tales are told of the mightiest warriors and generals, who, cursed with hate "
+"and a sense of betrayal, came back to this world as Death Knights. Wielding "
+"the same weapons as they did before, they command the Undead in their quest "
+"for revenge."
 
 #: data/units/Death_Knight.cfg:34 data/units/Dwarvish_Lord.cfg:28
 #: data/units/Dwarvish_Steelclad.cfg:27
@@ -5309,6 +5296,11 @@ msgid ""
 "the skills they once had. Though frail, these monsters are much faster than "
 "the rest of their kind, both on foot and with their blades."
 msgstr ""
+"In life, the abominations known as 'Deathblades' were masters of combat, "
+"soldiers who were both lithe and deadly. Their new masters will often "
+"recognize this, and try to take advantage of it by outfitting them to match "
+"the skills they once had. Though frail, these monsters are much faster than "
+"the rest of their kind, both on foot and with their blades."
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
@@ -5401,6 +5393,8 @@ msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of this is the black and white warpaint they display in battle."
 msgstr ""
+"The drakes who master the use of a sword are sworn into a special order. The "
+"mark of this is the black and white warpaint they display in battle."
 
 #: data/units/Drake_Blademaster.cfg:46 data/units/Drake_Burner.cfg:53
 #: data/units/Drake_Fighter.cfg:56 data/units/Drake_Fire.cfg:54
@@ -5422,6 +5416,10 @@ msgid ""
 "This, coupled with their sheer size and clawed hands makes for a dangerous "
 "foe in combat."
 msgstr ""
+"Drake Burners are the few and the proud, who have inherited most truly the "
+"strengths of their remote ancestors, especially the ability to breathe fire. "
+"This, coupled with their sheer size and clawed hands makes for a dangerous "
+"foe in combat."
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
@@ -5455,6 +5453,9 @@ msgid ""
 "hours at the forge have provided them with a bristling array of weaponry, "
 "and have clad them head to toe in shining armor."
 msgstr ""
+"The great Drake Enforcers epitomize the raw strength of their kind. Long "
+"hours at the forge have provided them with a bristling array of weaponry, "
+"and have clad them head to toe in shining armor."
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -5484,6 +5485,9 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
+"The great fire drakes are masters of their internal fire. Clad in shining "
+"armor, they belch columns of flame at any who oppose them, a testament to "
+"the strength and majesty of their kind."
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
@@ -5529,6 +5533,12 @@ msgid ""
 "maces which complement their already impressive array. Their intense focus "
 "on their weapons comes at the slight expense of their defensive abilities."
 msgstr ""
+"The Gladiator has taken a completely different path from the Slashers. "
+"Rather than emphasize training, they have chosen to focus on the craft of "
+"their weaponry. They are the smiths of Drake society, and it follows that "
+"they possess the best weaponry - the sharpest blades and spears, and the "
+"maces which complement their already impressive array. Their intense focus "
+"on their weapons comes at the slight expense of their defensive abilities."
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
@@ -5581,6 +5591,11 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
+"The flying configurations known as Drake Infernos are the masters of the "
+"fire they breathe, and rival their predecessors the Dragons in their ability "
+"to use it. This natural ability renders them nearly immune to fire. Their "
+"shining, flame-colored armour is a mark of their proud and powerful caste, "
+"the ideal to which their brethren aspire."
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
@@ -5608,6 +5623,11 @@ msgid ""
 "boar. Their training has also enhanced their stamina and defensive skills, "
 "which is a major advantage over their close cousins the Gladiators."
 msgstr ""
+"Slashers are clashers who have chosen to master the use of a Halberd instead "
+"of carrying a sword and the spear. Their great size allows them to use a "
+"weapon of matching scale, large enough to skewer a horse as a man would a "
+"boar. Their training has also enhanced their stamina and defensive skills, "
+"which is a major advantage over their close cousins the Gladiators."
 
 #: data/units/Drake_Slasher.cfg:25 data/units/Drake_Slasher.cfg:43
 #: data/units/Drake_Warden.cfg:26 data/units/Drake_Warden.cfg:44
@@ -5633,21 +5653,24 @@ msgid ""
 "on this earth would dare stand against them. The Wardens' weapon of choice "
 "is the halberd, which they use to great effect."
 msgstr ""
+"The Warden represents the pinnacle of the clasher caste, being picked from "
+"the most able Slashers. They have forged their might such that few warriors "
+"on this earth would dare stand against them. The Wardens' weapon of choice "
+"is the halberd, which they use to great effect."
 
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "Drake Warrior"
 
 #: data/units/Drake_Warrior.cfg:19
-#, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike withering blows, and to withstand punishment in equal measure."
 msgstr ""
-"Drake Fighters wield curved scimitars with deadly skill, and possess the "
-"fire breathing skills of their ancestors. The most skilled Fighters go on to "
-"join the ranks of the elite Drake Warriors."
+"Drake Warriors wield swords with great skill, and possess the fire breathing "
+"skills of their ancestors. The great strength of their kind allows them to "
+"strike withering blows, and to withstand punishment in equal measure."
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
@@ -5679,7 +5702,6 @@ msgid "Dread Lich"
 msgstr "Dread Lich"
 
 #: data/units/Dread_Lich.cfg:18
-#, fuzzy
 msgid ""
 "At long last, Ha'atel has paid the ultimate sacrifice for the dark arts into "
 "which he has delved, and has, himself, entered into undeath. At the apex of "
@@ -5690,7 +5712,7 @@ msgid ""
 msgstr ""
 "At long last, Ha'atel has paid the ultimate sacrifice for the dark arts into "
 "which he has delved, and has, himself, entered into undeath.  At the apex of "
-"his power, he has become a lich, a waking embodiment of dread.  He has, "
+"his power, he has become a lich, a waking embodiment of dread. He has, "
 "beyond any doubt, passed the point of no return, and his power and "
 "immortality will have to provide consolation for what he has lost in his "
 "quest to achieve them."
@@ -6048,6 +6070,12 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
+"Elves have always had a reputation for archery, a skill that, for many "
+"reasons, comes naturally to them. Even the frail of body can be deadly with "
+"a bow in hand, and in times of war, many will take up this weapon. Though "
+"their relative inexperience with combat leaves them somewhat vulnerable, "
+"their natural grace ensures that they can best any of humanity's fresh "
+"recruits."
 
 #: data/units/Elvish_Archer.cfg:105
 msgid "female^Elvish Archer"
@@ -6109,6 +6137,12 @@ msgid ""
 "a secondary pursuit, is executed with a skill that most of humanity can only "
 "stare at with wonder."
 msgstr ""
+"Those few elves who deliberately hone themselves into weapons of war become "
+"something which belies the rather docile reputation of their race. "
+"Dedication and skill are matched with purity of form, and the result is a "
+"mastery of swordsmanship to which few can compare. Even archery, treated as "
+"a secondary pursuit, is executed with a skill that most of humanity can only "
+"stare at with wonder."
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
@@ -6172,6 +6206,10 @@ msgid ""
 "can grasp the basics of swordsmanship and archery in an uncannily short "
 "time, and put them to effective use on the battlefield."
 msgstr ""
+"Elves are not warlike by nature, but in times of need, their natural grace "
+"and agility serve them well, as does their skilful craftsmanship. An elf "
+"can grasp the basics of swordsmanship and archery in an uncannily short "
+"time, and put them to effective use on the battlefield."
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
@@ -6183,6 +6221,9 @@ msgid ""
 "fighter into a master of combat. Those who are honored as heroes are strong "
 "with both sword and bow, skills that never fade for lack of practice."
 msgstr ""
+"A relatively small amount of experience will turn an elf from a competent "
+"fighter into a master of combat. Those who are honoured as heroes are strong "
+"with both sword and bow, skills that never fade for lack of practice."
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
@@ -6195,6 +6236,10 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"The leaders of the elves do not fall sallow and frail with age. Rather, it "
+"is then that they grow to their true potential. Quiet and contemplative in "
+"times of peace, a High Lord in the full of his wrath is an awesome sight "
+"indeed."
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
@@ -6207,6 +6252,10 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"Elves choose their leaders for their power and wisdom; foresight is what has "
+"protected them in times of uncertainty. Their just reign is rewarded by the "
+"unflagging fealty of their people, which is the greatest gift any ruler "
+"could ask for."
 
 #: data/units/Elvish_Lady.cfg:21
 msgid "shove"
@@ -6222,6 +6271,9 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"The nobility of the elves are possessed of merit to match their standing in "
+"society. Elvish Lords are the wisest and strongest of their people, and are "
+"fearsome in their command of magic."
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
@@ -6340,6 +6392,11 @@ msgid ""
 "thick of the forest with nary a scratch. They are, perhaps, some of the only "
 "cavalry in existence that fares better in the woods than on open ground."
 msgstr ""
+"The horsemen of the wood elves have some skill with bow and sword, but their "
+"true skill lies in their horsemanship. Even other elves are somewhat taken "
+"by their uncanny speed in the woods, and their ability to dart through the "
+"thick of the forest with nary a scratch. They are, perhaps, some of the only "
+"cavalry in existence that fares better in the woods than on open ground."
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
@@ -6703,6 +6760,8 @@ msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation."
 msgstr ""
+"A normal scorpion is dangerous enough - one the size of a man needs little "
+"explanation."
 
 #: data/units/Giant_Scorpion.cfg:20
 msgid "sting"
@@ -6782,6 +6841,14 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
+"In any litter of orcs, several are born much smaller and weaker than the "
+"rest. These runts are called 'Goblins' and are looked down on by the rest of "
+"their kin. In battle, these are given the most meagre of equipment, and are "
+"used as a shield to give the Warlords time to prepare the real assault.\n"
+"\n"
+"Some speculate that the existence of these creatures is the beginning of a "
+"failure of the orcish bloodline, though no one knows enough of their history "
+"to state anything conclusive."
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -6909,14 +6976,13 @@ msgid "Gryphon"
 msgstr "Gryphon"
 
 #: data/units/Gryphon.cfg:17
-#, fuzzy
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
-"Half-lion, half-bird, these majestic creatures dominate the skies of the "
-"world. Since they are wary of other intelligent races, Gryphons should not "
+"These majestic and powerful creatures are masters of the sky. Gryphons are "
+"both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 
 #: data/units/Gryphon_Master.cfg:3
@@ -7408,7 +7474,7 @@ msgstr ""
 
 #: data/units/Master_at_Arms.cfg:3
 msgid "Master at Arms"
-msgstr ""
+msgstr "Master at Arms"
 
 #: data/units/Master_at_Arms.cfg:22
 msgid ""
@@ -7559,9 +7625,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:27
-#, fuzzy
 msgid "naia touch"
-msgstr "naiad touch"
+msgstr "naia touch"
 
 #: data/units/Merman.cfg:6
 msgid "Merman"
@@ -7629,6 +7694,10 @@ msgid ""
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
+"The skills employed by mermen in spear-fishing are easily translated into "
+"warfare, especially against those who are not at home in the water. In times "
+"of need, many mermen of that occupation will volunteer to swell the ranks of "
+"their military."
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
@@ -7641,6 +7710,10 @@ msgid ""
 "impact of one is considerably greater. In the water, the mobility of the "
 "mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
+"Those mermen who master the art of javelinry can become nearly as effective "
+"as an archer - though the heft of their weapons impedes their range, the "
+"impact of one is considerably greater. In the water, the mobility of the "
+"mermen more than makes up for this when facing foes who cannot swim."
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
@@ -7674,6 +7747,12 @@ msgid ""
 "effective. They are also useful in melee, even deep under the surface, which "
 "is something that certainly cannot be said of arrows."
 msgstr ""
+"Archery is little favoured by the mermen, for whom javelinry serves the same "
+"function. Though thrown javelins are of little use under the water, they are "
+"extremely useful at the surface, where their weight allows them to plunge "
+"several feet below the water while retaining enough momentum to remain "
+"effective. They are also useful in melee, even deep under the surface, which "
+"is something that certainly cannot be said of arrows."
 
 #: data/units/Merman_Triton.cfg:3
 msgid "Merman Triton"
@@ -7938,15 +8017,15 @@ msgid "Ogre"
 msgstr "Ogre"
 
 #: data/units/Ogre.cfg:17
-#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Ogres are stupid giant humanoids that usually live alone in the wilderness. "
-"While they can be easily outrun or outsmarted, their strength is not to be "
+"Ogres are giant creatures that usually live alone in the wilderness, "
+"remarkably similar to humans in form, though large and misshapen. While they "
+"can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 
 #: data/units/Ogre.cfg:20 data/units/Young_Ogre.cfg:41
@@ -8187,15 +8266,14 @@ msgid "Orcish Warlord"
 msgstr "Orcish Warlord"
 
 #: data/units/Orcish_Warlord.cfg:17
-#, fuzzy
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with an iron hand."
 msgstr ""
-"Only Orcs with both great cunning and unsurpassed strength can become "
-"Warlords. Skilled with both the sword and the bow, these beast-warriors lead "
-"the orcish fighting groups."
+"Only orcs with both great cunning and unsurpassed strength can become "
+"Warlords. Masters of the sword, and even possessing some skill with the bow, "
+"these beast-warriors lead their brethren with an iron hand."
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
@@ -8841,16 +8919,16 @@ msgid "Skeleton"
 msgstr "Skeleton"
 
 #: data/units/Skeleton.cfg:16
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
-"Skeletons are warriors that have been slain in battle and brought back by "
-"dark magics. Like all undead, they are especially vulnerable to fire and "
-"holy spells, but resistant to bladed weapons."
+"Skeletons are warriors who have been slain in battle and brought back by "
+"dark magics. Nearly mindless, and unwavering in their purpose, they fear "
+"neither pain, nor death, and their mere presence will often frighten away "
+"any who would challenge their master."
 
 #: data/units/Skeleton.cfg:61 data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -9418,30 +9496,28 @@ msgid "Yeti"
 msgstr "Yeti"
 
 #: data/units/Yeti.cfg:31
-#, fuzzy
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
-"Yetis are giant humanoid creatures that live in the mountains. Few have ever "
-"survived an encounter with one, and their existence is doubted by many."
+"Little is known about Yetis, ape-like creatures said to live in remote and "
+"snow-covered mountains. Few profess to have seen one, and their existence is "
+"doubted by many."
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
 msgstr "Young Ogre"
 
 #: data/units/Young_Ogre.cfg:16
-#, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into the army to be "
 "trained. They cannot manage weapons skillfully, but that is of little "
 "concern given their strength."
 msgstr ""
-"When still young, Ogres are taken into the army to be trained. They cannot "
-"manage weapons skillfully, so they are given a large blade, in the hope that "
-"they will be smart enough to swing it at their enemies, and not their own "
-"throat."
+"When still young, Ogres are sometimes captured and taken into the army to be "
+"trained. They cannot manage weapons skilfully, but that is of little "
+"concern given their strength."
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
@@ -11736,17 +11812,6 @@ msgstr "neutral"
 #~ "Elvish Archers are trained from youth in archery, and so are skilled in "
 #~ "long-range combat. Able to fire many arrows quickly and accurately, these "
 #~ "Archers make up a large portion of the Elvish military."
-
-#~ msgid ""
-#~ "Elvish Avengers are extremely skillful and extremely quick, powerful in "
-#~ "all forms of combat. Avengers are considered the best of all woodsmen in "
-#~ "Wesnoth, and can ambush their foes in the forest, because they cannot be "
-#~ "seen in the woods until just after they have attacked."
-#~ msgstr ""
-#~ "Elvish Avengers are extremely skilful and extremely quick, powerful in "
-#~ "all forms of combat. Avengers are considered the best of all woodsmen in "
-#~ "Wesnoth, and can ambush their foes in the forest, because they cannot be "
-#~ "seen in the woods until just after they have attacked."
 
 #~ msgid ""
 #~ "Skilled in commanding soldiers, Elvish Captains provide a bonus to all "
