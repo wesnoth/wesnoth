@@ -307,8 +307,6 @@ void connect_operation::run()
 		return;
 	}
 
-	//no blocking operations from here on
-	const threading::lock l(get_mutex());
 	LOG_NW << "sent handshake...\n";
 
 	if(is_aborted()) {
@@ -333,6 +331,7 @@ void connect_operation::run()
 	wassert(schemas.count(connect_) == 0);
 	schemas.insert(std::pair<network::connection,schema_pair>(connect_,schema_pair()));
 
+	const threading::lock l(get_mutex());
 	while(!notify_finished());
 }
 
