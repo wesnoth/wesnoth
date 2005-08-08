@@ -120,6 +120,7 @@ std::vector<std::string> get_text() {
 		"_" N_("+Miscellaneous"),
 		"-   Francesco Gigli (Jaramir)",
 		"-   Jordà Polo (ettin)",
+		"-   Bartek Waresiak (Dragonking)",
 		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
 
 		"_" N_("+Internationalization Managers"),
