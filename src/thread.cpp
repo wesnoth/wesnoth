@@ -12,13 +12,14 @@
 */
 
 #include "global.hpp"
-
+#include "log.hpp"
 #include "thread.hpp"
 
 #include <new>
 #include <iostream>
 #include <vector>
 
+#define ERR_G LOG_STREAM(err, general)
 namespace {
 
 int run_async_operation(void* data)
@@ -128,19 +129,27 @@ condition::WAIT_TIMEOUT_RESULT condition::wait_timeout(const mutex& m, unsigned 
 	}
 }
 
-void condition::notify_one()
+bool condition::notify_one()
 {
-	SDL_CondSignal(cond_);
+	if(SDL_CondSignal(cond_) < 0) {
+		ERR_G << "SDL_CondSignal: " << SDL_GetError() << "\n";
+		return false;
+	}
+	return true;
 }
 
-void condition::notify_all()
+bool condition::notify_all()
 {
-	SDL_CondBroadcast(cond_);
+	if(SDL_CondBroadcast(cond_) < 0) {
+		ERR_G << "SDL_CondBroadcast: " << SDL_GetError() << "\n";
+		return false;
+	}
+	return true;
 }
 
-void async_operation::notify_finished()
+bool async_operation::notify_finished()
 {
-	finished_.notify_one();
+	return finished_.notify_one();
 }
 
 async_operation::RESULT async_operation::execute(waiter& wait)

@@ -333,7 +333,7 @@ void connect_operation::run()
 	wassert(schemas.count(connect_) == 0);
 	schemas.insert(std::pair<network::connection,schema_pair>(connect_,schema_pair()));
 
-	notify_finished();
+	while(!notify_finished());
 }
 
 }

@@ -161,18 +161,14 @@ public:
 	// signal the condition and wake up one thread waiting on the
 	// condition. If no thread is waiting, notify_one() is a no-op.
 	// Does not unlock the mutex.
-	//
-	// \todo SDL_CondSignal can return an error. This is never checked
-	void notify_one();
+	bool notify_one();
 
 	// signal all threads waiting on the condition and let them contend
 	// for the lock. This is often used when varying resource amounts are
 	// involved and you do not know how many processes might continue.
 	// The function should be used with care, especially if many threads are
 	// waiting on the condition variable.
-	//
-	// \todo SDL_CondBroadcast can return an error. This is never checked
-	void notify_all();
+	bool notify_all();
 
 private:
 	condition(const condition&);
@@ -218,7 +214,7 @@ public:
 	//while holding the mutex and after checking is_aborted()
 	//if we want to be sure that if the operation is completed, the caller is notified.
 	//will be called in any case after the operation returns
-	void notify_finished();
+	bool notify_finished();
 
 	//must hold the mutex before calling this function from the worker thread
 	bool is_aborted() const { return aborted_; }
