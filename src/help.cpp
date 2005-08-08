@@ -1095,7 +1095,9 @@ public:
 		ss << _("HP: ") << type_.hitpoints() << jump(30)
 		   << _("Moves: ") << type_.movement() << jump(30)
 		   << _("Alignment: ")
+		   << "<ref>dst='time_of_day' text='"
 		   << type_.alignment_description(type_.alignment())
+		   << "'</ref>"
 		   << jump(30);
 		if (type_.can_advance())
 			ss << _("Required XP: ") << type_.experience_needed();
