@@ -141,51 +141,28 @@ std::vector<text_chunk> split_text(std::string const & utf8_text) {
 TTF_Font* open_font(const std::string& fname, int size)
 {
 	std::string name;
-
-	LOG_FT << "Opening font '" << fname << "' ...\n";
-#ifndef USE_ZIPIOS
-	if(game_config::path.empty() == false) {
+	if(!game_config::path.empty()) {
 		name = game_config::path + "/fonts/" + fname;
-		LOG_FT << "Trying file '" << name << "' ...\n";
-
-		if (!file_exists(name)) {
-			name = "fonts/" + fname;
-			WRN_FT << "Failed opening '" << name << "'; now trying '" << name << "' ...\n";
-			if (!file_exists(name)) {
-				ERR_FT << "Failed opening font: " << fname << "\n";
-				return NULL;
-			}
+		if(!file_exists(name)) {
+			ERR_FT << "Failed opening font: '" << name << "': No such file or directory\n";
+			return NULL;
 		}
 	} else {
 		name = "fonts/" + fname;
-		LOG_FT << "Trying file '" << name << "' ...\n";
-
 		if(!file_exists(name)) {
-			ERR_FT << "Failed opening font '" << fname << "'\n";
-			return NULL;
+			if(!file_exists(fname)) {
+				ERR_FT << "Failed opening font: '" << name << "': No such file or directory\n";
+				return NULL;
+			}
+			name = fname;
 		}
 	}
 
-	LOG_FT << "Opening font file '" << name << "', font size is " << size << "\n";
-
 	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
-#else
-	std::string tmp = read_file("fonts/" + fname);
-	if (tmp.empty()) {
-		ERR_FT << "Failed opening font file '" << fname << "'\n";
-		return NULL;
-	}
-	// the following statement would leak memory if fonts were closed
-	std::string *s = new std::string(tmp);
-	SDL_RWops* ops = SDL_RWFromMem((void*)s->c_str(), s->size());
-	TTF_Font* font = TTF_OpenFontRW(ops, 0, size);
-#endif
 	if(font == NULL) {
-		ERR_FT << "Failed opening font file '" << name << "'\n";
+		ERR_FT << "Failed opening font: TTF_OpenFont: " << TTF_GetError() << "\n";
 		return NULL;
 	}
-
-	LOG_FT << "Opened font okay\n";
 
 	return font;
 }
@@ -293,27 +270,22 @@ void set_font_list(const std::vector<subset_descriptor>& fontlist)
 
 	std::vector<subset_descriptor>::const_iterator itor;
 	for(itor = fontlist.begin(); itor != fontlist.end(); ++itor) {
-		const subset_id subset = font_names.size();
 		// Insert fonts only if the font file exists
-#ifndef USE_ZIPIOS
 		if(game_config::path.empty() == false) {
-			if(file_exists(game_config::path + "/fonts/" + itor->name)) {
-				font_names.push_back(itor->name);
+			if(!file_exists(game_config::path + "/fonts/" + itor->name)) {
+				WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory\n";
+				continue;
 			}
 		} else {
-			if(file_exists("fonts/" + itor->name)) {
-				font_names.push_back(itor->name);
+			if(!file_exists("fonts/" + itor->name)) {
+				if(!file_exists(itor->name)) {
+					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory\n";
+					continue;
+				}
 			}
 		}
-#else
-		if (!read_file("fonts/" + itor->name).empty()) {
-			font_names.push_back(itor->name);
-		}
-#endif
-		if(font_names.back() != itor->name) {
-			WRN_FT << "Failed opening font file '" << itor->name << "'\n";
-			continue;
-		}
+		const subset_id subset = font_names.size();
+		font_names.push_back(itor->name);
 
 		std::vector<std::pair<size_t,size_t> >::const_iterator cp_range;
 		for(cp_range = itor->present_codepoints.begin();
