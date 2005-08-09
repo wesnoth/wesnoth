@@ -122,10 +122,9 @@ condition::WAIT_TIMEOUT_RESULT condition::wait_timeout(const mutex& m, unsigned 
 {
 	const int res = SDL_CondWaitTimeout(cond_,m.m_,timeout);
 	switch(res) {
-	//the SDL documentation appears backward on when these results are returned
-	case 0: return WAIT_TIMEOUT;
-	case SDL_MUTEX_TIMEDOUT: return WAIT_OK;
-	default: return WAIT_ERROR;
+		case 0: return WAIT_OK;
+		case SDL_MUTEX_TIMEDOUT: return WAIT_TIMEOUT;
+		default: return WAIT_ERROR;
 	}
 }
 
