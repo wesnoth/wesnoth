@@ -280,8 +280,12 @@ void set_font_list(const std::vector<subset_descriptor>& fontlist)
 		// Insert fonts only if the font file exists
 		if(game_config::path.empty() == false) {
 			if(!file_exists(game_config::path + "/fonts/" + itor->name)) {
-				WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory\n";
-				continue;
+				if(!file_exists("fonts/" + itor->name)) {
+					if(!file_exists(itor->name)) {
+					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory\n";
+					continue;
+					}
+				}
 			}
 		} else {
 			if(!file_exists("fonts/" + itor->name)) {
