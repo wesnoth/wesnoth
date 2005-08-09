@@ -120,7 +120,7 @@ bool condition::wait(const mutex& m)
 
 condition::WAIT_TIMEOUT_RESULT condition::wait_timeout(const mutex& m, unsigned int timeout)
 {
-	const int res = SDL_CondWaitTimeout(cond_,m.m_,timeout) == 0;
+	const int res = SDL_CondWaitTimeout(cond_,m.m_,timeout);
 	switch(res) {
 	//the SDL documentation appears backward on when these results are returned
 	case 0: return WAIT_TIMEOUT;
