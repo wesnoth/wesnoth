@@ -144,9 +144,16 @@ TTF_Font* open_font(const std::string& fname, int size)
 	if(!game_config::path.empty()) {
 		name = game_config::path + "/fonts/" + fname;
 		if(!file_exists(name)) {
-			ERR_FT << "Failed opening font: '" << name << "': No such file or directory\n";
-			return NULL;
+			name = "fonts/" + fname;
+			if(!file_exists(name)) {
+				name = fname;
+				if(!file_exists(name)) {
+					ERR_FT << "Failed opening font: '" << name << "': No such file or directory\n";
+					return NULL;
+				}
+			}
 		}
+		
 	} else {
 		name = "fonts/" + fname;
 		if(!file_exists(name)) {
