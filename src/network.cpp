@@ -279,6 +279,8 @@ void connect_operation::run()
 	IPaddress ip;
 	if(SDLNet_ResolveHost(&ip,hostname,port_) == -1) {
 		error_ = "Could not connect to host";
+		const threading::lock l(get_mutex());
+		while(!notify_finished());
 		return;
 	}
 
@@ -286,6 +288,8 @@ void connect_operation::run()
 	if(!sock) {
 		error_ = hostname == NULL ? "Could not bind to port" :
 		                            "Could not connect to host";
+		const threading::lock l(get_mutex());
+		while(!notify_finished());
 		return;
 	}
 
@@ -293,6 +297,7 @@ void connect_operation::run()
 	if(hostname == NULL) {
 		const threading::lock l(get_mutex());
 		connect_ = create_connection(sock,"",port_);
+		while(!notify_finished());
 		return;
 	}
 
@@ -304,6 +309,8 @@ void connect_operation::run()
 		SDLNet_TCP_Close(sock);
 
 		error_ = "Could not send initial handshake";
+		const threading::lock l(get_mutex());
+		while(!notify_finished());
 		return;
 	}
 
@@ -313,6 +320,7 @@ void connect_operation::run()
 	if(is_aborted()) {
 		LOG_NW << "connect operation aborted by calling thread\n";
 		SDLNet_TCP_Close(sock);
+		while(!notify_finished());
 		return;
 	}
 
@@ -323,6 +331,7 @@ void connect_operation::run()
 	if(res == -1) {
 		SDLNet_TCP_Close(sock);
 		error_ = "Could not add socket to socket set";
+		while(!notify_finished());
 		return;
 	}
 
