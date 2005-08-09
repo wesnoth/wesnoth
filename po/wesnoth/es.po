@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 13:32+0200\n"
-"PO-Revision-Date: 2005-08-08 09:17+0200\n"
+"PO-Revision-Date: 2005-08-09 01:47+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,6 @@ msgid "Full Heal"
 msgstr "Curación completa"
 
 #: data/fonts.cfg:6
-#, fuzzy
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
@@ -69,9 +68,8 @@ msgid "Terrains"
 msgstr "Terreno"
 
 #: data/help.cfg:54 data/help.cfg:60 data/help.cfg:244
-#, fuzzy
 msgid "Overview"
-msgstr "¿Sobreescribir?"
+msgstr "Introducción"
 
 #: data/help.cfg:55
 msgid ""
@@ -108,7 +106,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Fundamentos del juego"
 
 #: data/help.cfg:69
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -117,9 +114,10 @@ msgid ""
 "exceptions, please follow the links included."
 msgstr ""
 "Estas páginas esbozan todo lo que tiene que saber para jugar a La Batalla "
-"por Wesnoth. Cubren el sistema de juego y la mecánica básica que se esconde "
-"detrás. Si desea conocer todas las excepciones y situaciones especiales, por "
-"favor, siga los enlaces que se indican."
+"por Wesnoth. A medida que juegue, se irá añadiendo más información a estas "
+"páginas para cubrir los aspectos del juego que vayan apareciendo. Si desea "
+"conocer todas las excepciones y situaciones especiales, por favor, siga los "
+"enlaces que se indican."
 
 #: data/help.cfg:71
 msgid ""
@@ -144,7 +142,6 @@ msgstr ""
 "<italic>text=Fácil</italic>."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -152,9 +149,10 @@ msgid ""
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
 "Mientras esté jugando, tenga presente que si sitúa su cursor sobre la "
-"mayoría de iconos y objetos de la barra de menú de la derecha, obtendrá una "
-"pequeña descripción que lo explique. Esta característica del juego será "
-"especialmente útil cuando reciba habilidades nuevas por vez primera."
+"mayoría de objetos del juego, como la información que se muestra en el panel "
+"de estado, obtendrá una pequeña descripción que le explique para qué sirve. "
+"Esta característica del juego será especialmente útil cuando reciba "
+"<ref>dst=abilities text=habilidades</ref> nuevas por vez primera."
 
 #: data/help.cfg:79
 msgid "About the Game"
@@ -197,7 +195,6 @@ msgid "Recruiting and Recalling"
 msgstr "Reclutar y reincorporar"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -209,15 +206,17 @@ msgid ""
 "units available for recruitment, along with their gold cost. Click on a unit "
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
-"Al comienzo de cada batalla, y a veces durante ella, necesitará reclutar "
-"unidades para su ejército. Para ello, ha de tener a su líder (Konrad en la "
-"campaña «Heredero al trono») en la casilla del torreón de un castillo. "
-"Entonces podrá reclutar tan sólo con escoger «Reclutar» en el menú, o bien "
-"pulsando con el botón derecho en un hexágono y seleccionando la opción "
-"<italic>text=Reclutar</italic>. Al hacer esto se mostrará el menú de "
-"reclutamiento, donde se listan las unidades disponibles para reclutar, junto "
-"con su coste en piezas de oro. Pinche en una unidad para ver sus "
-"estadísticas a la izquierda, y pulse el botón Reclutar para hacerlo."
+"Cada bando comienza con un líder en su torreón. Al comienzo de cada batalla, "
+"y a veces durante ella, necesitará reclutar <ref>dst=units text=unidades</"
+"ref> para su ejército. Para ello, ha de tener a su líder (por ejemplo, "
+"Konrad en la campaña «Heredero al trono») en la casilla del torreón de un "
+"<ref>dst=terrain_castle text=castillo</ref>. Entonces podrá reclutar tan "
+"sólo con escoger «Reclutar» en el menú, o bien pulsando con el botón derecho "
+"en un hexágono y seleccionando la opción <italic>text=Reclutar</italic>. Al "
+"hacer esto se mostrará el menú de reclutamiento, donde se listan las "
+"unidades disponibles para reclutar, junto con su coste en piezas de oro. "
+"Pinche en una unidad para ver sus estadísticas a la izquierda, y pulse el "
+"botón Reclutar para hacerlo."
 
 #: data/help.cfg:92
 msgid ""
@@ -249,7 +248,6 @@ msgstr ""
 "aleatorios que modifican sus estadísticas."
 
 #: data/help.cfg:96
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -260,13 +258,11 @@ msgstr ""
 "\n"
 "\n"
 "En escenarios posteriores, también podrá reincorporar a los supervivientes "
-"en batallas anteriores. La reincorporación funciona de manera idéntica al "
-"reclutamiento, salvo porque el coste de reincorporación de una unidad "
-"siempre cuesta 20 piezas de oro y en que se muestra una lista de todas las "
-"unidades supervivientes en escenarios anteriores."
+"en batallas anteriores. La reincorporación cuesta 20 piezas de oro y le "
+"muestra una lista de todas las unidades supervivientes en escenarios "
+"anteriores."
 
 #: data/help.cfg:98
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -282,39 +278,43 @@ msgstr ""
 "ref> para obtener más información."
 
 #: data/help.cfg:103
-#, fuzzy
 msgid "Orbs"
-msgstr "Orcos"
+msgstr "Orbes"
 
 #: data/help.cfg:104
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
+"Encima de la barra de energía próxima a cada unidad suya hay un pequeño "
+"orbe. En las unidades que usted controla, este orbe es:"
 
 #: data/help.cfg:105
 msgid "green if it hasn't moved this turn,"
-msgstr ""
+msgstr "verde si la unidad no se ha movido este turno,"
 
 #: data/help.cfg:106
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
+"amarillo si se ha movido, pero aún le queda capacidad de movimiento o "
+"ataque, o"
 
 #: data/help.cfg:107
 msgid "red if it has used all its movement this turn."
-msgstr ""
+msgstr "rojo si ha usado todo su movimiento este turno."
 
 #: data/help.cfg:108
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr ""
+"El orbe será azul si la unidad es aliada y no tiene control sobre ella."
 
 #: data/help.cfg:109
 msgid "Enemy units have no orb on top of their energy bar."
-msgstr ""
+msgstr "Las unidades enemigas no tienen orbes encima de sus barras de energía."
 
 #: data/help.cfg:114
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "Puntos de vida y experiencia"
 
 #: data/help.cfg:115
 msgid ""
@@ -440,7 +440,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -643,21 +642,17 @@ msgid "Time of Day"
 msgstr "Hora del día"
 
 #: data/help.cfg:172
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night\n"
 " Chaotic units get +25% damage at night, and -25% in daytime\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"\n"
-"\n"
 "La hora del día afecta al daño de ciertas unidades como sigue:\n"
-"\n"
-"Las unidades legales ganan un +25% de daño cuando es de día, y un -25% "
+" Las unidades legales ganan un +25% de daño cuando es de día, y un -25% "
 "cuando es de noche.\n"
-"Las unidades caóticas ganan un +25% de daño de noche, y un -25% de día.\n"
-"Las unidades neutrales no se ven afectadas por la hora del día."
+" Las unidades caóticas ganan un +25% de daño de noche, y un -25% de día.\n"
+" Las unidades neutrales no se ven afectadas por la hora del día."
 
 #: data/help.cfg:175
 #, fuzzy
@@ -964,7 +959,7 @@ msgstr "+Colaboradores"
 
 #: data/help.cfg:238
 msgid "License"
-msgstr ""
+msgstr "Licencia"
 
 #: data/help.cfg:245
 #, fuzzy
