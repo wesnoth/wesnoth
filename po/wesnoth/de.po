@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 13:32+0200\n"
-"PO-Revision-Date: 2005-08-09 00:03+0100\n"
+"PO-Revision-Date: 2005-08-09 15:36+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -840,11 +840,11 @@ msgid ""
 "take place at the beginning of your turn, before you take action."
 msgstr ""
 "Im Kampf werden Eure Einheiten unvermeidlich Verletzungen davontragen. Wenn "
-"eine Einheit <ref>dst=experience_and_advancement text=eine Stufe aufsteigt</"
-"ref>, wird sie vollständig geheilt. Dies kann am Ende eines Kampfes "
-"geschehen, unabhängig davon, wer am Zug ist. In Wesnoth gibt es natürlich "
-"noch andere Möglichkeiten, erlittenen Schaden zu heilen. Diese Möglichkeiten "
-"werden jeweils zu Beginn Eures Zuges ausgeführt."
+"eine Einheit <ref>dst=experience_and_advancement text='eine Stufe "
+"aufsteigt'</ref>, wird sie vollständig geheilt. Dies kann am Ende eines "
+"Kampfes geschehen, unabhängig davon, wer am Zug ist. In Wesnoth gibt es "
+"natürlich noch andere Möglichkeiten, erlittenen Schaden zu heilen. Diese "
+"Möglichkeiten werden jeweils zu Beginn Eures Zuges ausgeführt."
 
 #: data/help.cfg:202
 msgid ""
@@ -1664,6 +1664,9 @@ msgid ""
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
+"Die Gefahren, die mit dem Überqueren von flüssiger Lava verbunden sind, "
+"sollten offensichtlich sein. Deshalb kann dieses Gelände nur von fliegenden "
+"Einheiten passiert werden."
 
 #: data/help.cfg:479 data/terrain.cfg:462
 msgid "River Ford"
@@ -1678,6 +1681,11 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Wird ein Fluss sehr seicht, stellt er kein Hindernis mehr für Fußtruppen "
+"dar. Zudem bleibt jedem schwimmenden Wesen sogar an solchen Orten seine "
+"volle Mobilität erhalten. Spieltechnisch hat das Gelände Furt die selben "
+"Auswirken wie Grasland oder Seichtes Wasser, je nachdem in welchem Gelände "
+"bessere Bewegungs- und Verteidungsboni für die Einheit gelten."
 
 #: data/help.cfg:486 data/terrain.cfg:75 data/terrain.cfg:83
 #: data/terrain.cfg:91
@@ -1708,6 +1716,8 @@ msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"Höhlenwände bestehen aus solidem Fels, die selbst den hartgesottensten "
+"Wanderer aufhalten."
 
 #: data/items.cfg:264
 msgid ""
@@ -2232,7 +2242,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr "4S - Provinz Blauwasser"
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:4
 msgid ""
@@ -2241,6 +2251,11 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice. Recommended settings of 2 gold per village."
 msgstr ""
+"Es wird erzählt, dass die Provinz Blauwasser bis zu zwanzig mal zerstört und "
+"wiederaufgebaut wurde. Nun da sich erneut Armeen zwischen den "
+"schneebedeckten Gebirgen und reißenden Flüssen sammeln, scheinen die "
+"Bewohner dieser Region davon kaum Notiz zu nehmen.\n"
+"Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
 msgid "4p - Castle Hopping Isle"
@@ -2359,18 +2374,14 @@ msgid "6p - Smallolof"
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head. Recommended settings of 2 gold per "
 "village."
 msgstr ""
-"Onis, ein zwergischer Architekt, entwarf diese Höhle einst, als "
-"Zufluchtsstätte für sein Volk in Zeiten der Not. Jedoch unterlief ihm ein "
-"fataler Rechenfehler und die Stützbalken waren nicht stark genug, um das "
-"über ihnen liegende Erdreich zu tragen. Ein Teil der Höhle stürzte ein und "
-"begrub Onis unter sich. Zwielichtige Gestalten suchen seitdem hier Schutz, "
-"obwohl immer noch Einsturzgefahr besteht.\n"
+"Nur ein wahrer Taktiker wird dieses tödliche, auf kleinstem Raum begrenzte "
+"Schlachtfeld als Sieger verlassen, in dem sechs Heerführer Ihre Armeen in "
+"die Schlacht schicken.\n"
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
@@ -5043,7 +5054,6 @@ msgid "Bone Shooter"
 msgstr "Knochenbogenschütze"
 
 #: data/units/Bone_Shooter.cfg:15
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -5289,6 +5299,9 @@ msgid ""
 "to turn the living to stone. Needless to say, this makes them extremely "
 "dangerous."
 msgstr ""
+"Auf den ersten Blick wirken diese mystischen Kreaturen schwächlich. Der "
+"Schein aber trügt, denn der Blick eines Gorgoniten kann einen Gegner auf der "
+"Stelle zu Stein verwandeln."
 
 #: data/units/Cockatrice.cfg:33
 msgid "gaze"
@@ -5451,7 +5464,6 @@ msgid "Death Knight"
 msgstr "Todesritter"
 
 #: data/units/Death_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
@@ -5537,6 +5549,16 @@ msgid ""
 "victims of this poison will continually take damage until they can be cured "
 "in town or by a healer."
 msgstr ""
+"Neben den Bergwölfen leben in den Bergen noch die so genannten "
+"Schreckenswölfe. Diese Wölfe zählen zu den gefährlichsten Raubtieren von "
+"Wesnoth, da sie zu ihrer ungezähmten Wildheit noch über giftige Klauen "
+"verfügen. Man muss wohl nicht nur geschickt sondern auch verrückt genug "
+"sein, um diese Tiere zähmen zu wollen. Diese Kobolde haben aber eben dieses "
+"fertig gebracht und wo sie auftauchen, schwindet dem Gegner schnell der Mut "
+"beim Anblick dieser Bestien.\n"
+"\n"
+"Anmerkung: Jeder, der von den Klauen eines Schreckenswolfes getroffen wird, "
+"zieht sich mit großer Wahrscheinlichkeit eine Vergiftung zu."
 
 #: data/units/Direwolf_Rider.cfg:54 data/units/Drake_Burner.cfg:34
 #: data/units/Drake_Fire.cfg:36 data/units/Drake_Inferno.cfg:25
@@ -5816,7 +5838,6 @@ msgid "Drake Warrior"
 msgstr "Drake Krieger"
 
 #: data/units/Drake_Warrior.cfg:19
-#, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
@@ -6726,7 +6747,6 @@ msgid "General"
 msgstr "General"
 
 #: data/units/General.cfg:28
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -6738,8 +6758,11 @@ msgid ""
 msgstr ""
 "Generäle sind die ranghöchsten Anführer der menschlichen Armeen. Sie sind "
 "verantwortlich für den Schutz großer oder wichtiger Gebiete der menschlichen "
-"Königreiche. Generäle können die Angriffe von Stufe 1 und Stufe 2 Einheiten "
-"koordinieren und so deren Effizienz im Kampf erhöhen."
+"Königreiche.\n"
+"\n"
+"Anmerkung: Die Führungsqualitäten des Generals gewähren allen benachbarten "
+"eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie eine niedrigere "
+"Stufe besitzen."
 
 #: data/units/Ghost.cfg:3
 msgid "Ghost"
@@ -6845,6 +6868,14 @@ msgid ""
 "Special Notes: the length of their weapon allows an impaler to strike first "
 "in melee, even in defense."
 msgstr ""
+"Überlebt ein koboldischer Speerträger die wilden Schlachten, in die sie von "
+"den Orks geschickt werden, erhält er den Titel eines Pfählers. Er wird mit "
+"einem längeren und besseren Speer ausgerüstet und wieder in die Schlacht "
+"geschickt, der es ihm ermöglicht im Nahkampf immer den ersten Angriff "
+"auszuführen.\n"
+"\n"
+"Anmerkung: Durch die Länge ihrer Waffe führt jeder Pfähler den ersten "
+"Schlag, auch wenn er sich nur verteidigt."
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -6861,6 +6892,12 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
+"Der Titel eines Raubritters wird an Kobolde verliehen, die sich durch "
+"herausragende Leistungen auf dem Schlachtfeld ausgezeichnet oder tollkühne "
+"Überfälle mit großer Beute  verübt haben. Die Wölfe, die diese Kobolde mit "
+"ihrem Titel erhalten, zeichnen sich unter den Bergwölfen durch besondere "
+"Schnelligkeit aus, sodass sie selbst die Kundschafter der elfischen und "
+"menschlichen Armeen in den Schatten stellen."
 
 #: data/units/Goblin_Pillager.cfg:3
 msgid "Goblin Pillager"
@@ -6876,6 +6913,15 @@ msgid ""
 "Special Notes: being caught in a net slows enemies down and reduces by one "
 "the strikes they can deliver in combat."
 msgstr ""
+"Einigen Kobolden gelingt es, ihre Reittiere so abzurichten, dass sie ihre "
+"Angst vor Feuer verlieren. Diese Kobolde werden in menschlichen Siedlungen "
+"nahe der Grenze zu den Orklanden gefürchtet, da sie bei ihren Überfällen mit "
+"ihren Fackeln die Häuser in Brand setzen. Auf dem Schlachtfeld werden sie "
+"vor allem wegen ihrem Umgang mit dem Wurfnetz eingesetzt, da sie so schon "
+"ganze Truppenverbände durcheinander brachten.\n"
+"\n"
+"Anmerkung: Wenn ein Gegner in einem Netz verstrickt ist, wird jeder seiner "
+"Angriffe um einen reduziert."
 
 #: data/units/Goblin_Pillager.cfg:24
 msgid "torch"
@@ -6901,6 +6947,11 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
+"Alle Kobolde, die nicht in der Lage sind, auf einem Wolf zu reiten, werden "
+"von den Orks mit zerschliessenen Lederrüstungen und rostigen Speeren "
+"ausgerüstet und in Massen auf den Gegner losgelassen. Sie dienen "
+"hauptsächlich als Kanonenfutter, um den orkischen Kriegern mehr Zeit für die "
+"eigentliche Offensive zu verschaffen."
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -6939,7 +6990,6 @@ msgid "Grand Marshal"
 msgstr "Feldmarschall"
 
 #: data/units/Grand_Marshal.cfg:24
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -6951,11 +7001,15 @@ msgid ""
 "lower level."
 msgstr ""
 "Einer der am meisten geachtetsten Ränge in der Armee der Menschen ist der "
-"eines Feldmarschalls. Diejenigen die diesen Titel tragen dürfen haben viele "
-"Feuerproben bestanden. Sie haben sowohl beträchtlichen Mut im Kampf Mann "
-"gegen Mann bewiesen, als auch ihr exzellentes taktisches Geschick. Ihre "
+"eines Feldmarschalls. Diejenigen, die diesen Titel tragen dürfen, haben "
+"viele Feuerproben bestanden. Sie haben sowohl beträchtlichen Mut im Kampf "
+"Mann gegen Mann bewiesen, als auch ihr exzellentes taktisches Geschick. Ihre "
 "Präsenz auf dem Schlachtfeld ist eine große Hilfe für alle die, die unter "
-"ihrem Kommando kämpfen."
+"ihrem Kommando kämpfen.\n"
+"\n"
+"Anmerkung: Die Führungsqualitäten des Feldmarschalls gewähren allen "
+"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
+"eine niedrigere Stufe besitzen."
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
@@ -7014,7 +7068,6 @@ msgid "Gryphon"
 msgstr "Greif"
 
 #: data/units/Gryphon.cfg:17
-#, fuzzy
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
 "both dangerous and wary of other intelligent creatures, and thus should not "
@@ -7287,7 +7340,6 @@ msgid "Lieutenant"
 msgstr "Leutnant"
 
 #: data/units/Lieutenant.cfg:23
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
@@ -7297,8 +7349,11 @@ msgid ""
 "level."
 msgstr ""
 "Geübt im Umgang mit Schwert und Armbrust führt der Leutnant eine kleine "
-"Gruppe von Soldaten der Menschen an, koordiniert ihren Angriff und erhöht "
-"die Kampfstärke der benachbarten Einheiten mit niedrigerem Rang."
+"Gruppe von Soldaten der Menschen an und koordiniert ihren Angriff.\n"
+"\n"
+"Anmerkung: Die Führungsqualitäten des Leutnants gewähren allen benachbarten "
+"eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie eine niedrigere "
+"Stufe besitzen."
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
@@ -7429,7 +7484,7 @@ msgstr ""
 
 #: data/units/Master_at_Arms.cfg:3
 msgid "Master at Arms"
-msgstr ""
+msgstr "Fechtmeister"
 
 #: data/units/Master_at_Arms.cfg:22
 msgid ""
@@ -7931,7 +7986,6 @@ msgid "Ogre"
 msgstr "Oger"
 
 #: data/units/Ogre.cfg:17
-#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -8801,7 +8855,6 @@ msgid "Skeleton"
 msgstr "Skelett"
 
 #: data/units/Skeleton.cfg:16
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
@@ -8809,9 +8862,10 @@ msgid ""
 "any who would challenge their master."
 msgstr ""
 "Skelette sind untote Krieger, die auf dem Schlachtfeld erschlagen wurden und "
-"durch dunkle Magie zurückgerufen wurden. Wie alle Untoten sind sie leicht "
-"durch Flammen und heilige Angriffe verwundbar, aber widerstandsfähig gegen "
-"Klingenwaffen."
+"durch dunkle Magie zurückgerufen wurden. Sie fürchten weder Schmerz noch Tot "
+"und werden nur durch den Willen ihres Meisters getrieben. Ihre Präsenz "
+"allein reicht oftmals aus, um die Feinde ihres Meisters in die Flucht zu "
+"schlagen."
 
 #: data/units/Skeleton.cfg:61 data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -9337,31 +9391,31 @@ msgid "Yeti"
 msgstr "Yeti"
 
 #: data/units/Yeti.cfg:31
-#, fuzzy
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
-"Yetis sind gigantische menschenähnliche Kreaturen, die in den Bergen leben. "
-"Nur wenige überlebten eine Begegnung mit so einem Wesen, und viele zweifeln "
-"an seiner Existenz."
+"Wenig ist bekannt über die Yetis, affenähnliche Kreaturen, die in den "
+"entlegenen Eisgebirgen hausen sollen. Einige behaupten, sie hätten welche "
+"gesehen. Jedoch klangen ihre Erzählungen so unglaubwürdig, dass viele nicht "
+"an die Existenz dieser Kreaturen glauben."
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
 msgstr "Junger Oger"
 
 #: data/units/Young_Ogre.cfg:16
-#, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into the army to be "
 "trained. They cannot manage weapons skillfully, but that is of little "
 "concern given their strength."
 msgstr ""
-"Solange sie jung sind, werden Oger in einer Armee ausgebildet. Sie können "
-"nicht besonders gut mit Waffen umgehen, deswegen werden sie mit einem "
-"riesigem Fleischerbeil ausgestattet in der Hoffnung, dass sie intelligent "
-"genug sind, damit ihre Gegner zu treffen und nicht ihre eigene Kehle."
+"Manchmal werden Oger in jungen Jahren eingefangen und in einer Armee "
+"ausgebildet. Sie können nicht besonders gut mit Waffen umgehen, deswegen "
+"werden sie mit einem riesigem Fleischerbeil ausgestattet in der Hoffnung, "
+"dass sie intelligent genug sind, damit ihre Gegner zu treffen und nicht ihre "
+"eigene Kehle."
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
