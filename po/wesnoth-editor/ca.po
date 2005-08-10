@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-01 13:27+0200\n"
-"PO-Revision-Date: 2005-06-04 12:37+0200\n"
+"PO-Revision-Date: 2005-08-10 21:44+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -74,12 +74,11 @@ msgstr "Desa com"
 
 #: src/editor/editor.cpp:382
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Ja existeix un fitxer amb aquest. Voleu sobreescriure'l? "
+msgstr "Ja existeix un mapa amb aquest nom. Voleu sobreescriure'l? "
 
 #: src/editor/editor.cpp:405
-#, fuzzy
 msgid "Player "
-msgstr "Jugador"
+msgstr "Jugador "
 
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
@@ -91,7 +90,7 @@ msgstr "Quin jugador hauria de començar aquí?"
 
 #: src/editor/editor.cpp:461
 msgid "Choose a Map to Load"
-msgstr "Trieu un mapa"
+msgstr "Trieu el mapa que voleu carregar"
 
 #: src/editor/editor.cpp:465
 msgid ""
@@ -111,7 +110,7 @@ msgstr "'$filename' no existeix o no pot ser llegit."
 
 #: src/editor/editor.cpp:636
 msgid "Load failed: "
-msgstr "Càrrega fallida"
+msgstr "Càrrega fallida: "
 
 #: src/editor/editor.cpp:833
 msgid "You must have a hex selected on the board."
@@ -147,7 +146,7 @@ msgstr "Les vostres modificacions del mapa es perdran. Voleu continuar?"
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
 msgid "Create New Map"
-msgstr "Nou mapa "
+msgstr "Nou mapa"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
 #: src/mapgen_dialog.cpp:100
@@ -161,7 +160,7 @@ msgstr "Alçada:"
 
 #: src/editor/editor_dialogs.cpp:93
 msgid "Generate New Map"
-msgstr "Genera mapa"
+msgstr "Genera nou mapa"
 
 #: src/editor/editor_dialogs.cpp:94
 msgid "Generate Random Map"
@@ -209,7 +208,7 @@ msgstr "Dreceres de teclat"
 
 #: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
 msgid "Resize Map"
-msgstr "Redimensiona mapa"
+msgstr "Redimensiona el mapa"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
@@ -225,7 +224,7 @@ msgstr "Eix Y"
 
 #: src/editor/editor_dialogs.cpp:493
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Invertir (pot canviar les dimensions del mapa):"
+msgstr "Inverteix (pot canviar les dimensions del mapa):"
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
@@ -241,48 +240,47 @@ msgstr "SP"
 
 #: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
-msgstr ""
+msgstr "Generador de mapes"
 
 #: src/mapgen_dialog.cpp:99
-#, fuzzy
 msgid "Players:"
-msgstr "Jugador"
+msgstr "Jugadors:"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Nombre de colls:"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Mida màxima dels colls:"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "Llogarets:"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "Perfil:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Camí entre castells"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "cada 1000 hexàgons"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "Costaner"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "Interior"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "Illa"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
