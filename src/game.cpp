@@ -755,14 +755,13 @@ bool game_controller::new_campaign()
 	std::vector<gui::preview_pane*> preview_panes;
 	preview_panes.push_back(&campaign_preview);
 
-	if(campaign_names.size() > 0) {
-		res = gui::show_dialog(disp(),NULL,_("Campaign"),
-				_("Choose the campaign you want to play:"),
-				gui::OK_CANCEL,&campaign_names,&preview_panes);
+	wassert(campaign_names.size() > 0);
+	res = gui::show_dialog(disp(),NULL,_("Campaign"),
+			_("Choose the campaign you want to play:"),
+			gui::OK_CANCEL,&campaign_names,&preview_panes);
 
-		if(res == -1) {
-			return false;
-		}
+	if(res == -1) {
+		return false;
 	}
 
 	//get more campaigns from server
