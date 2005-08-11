@@ -152,8 +152,7 @@ void play_music(std::string file)
 			}
 
 			itor = music_cache.insert(std::pair<std::string,Mix_Music*>(file,music)).first;
-		} else if(current_music == file)
-			return;
+		}
 
 		if(Mix_PlayingMusic()) {
 			Mix_FadeOutMusic(500);
