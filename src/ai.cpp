@@ -28,6 +28,7 @@
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
+#include "unit.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
@@ -375,7 +376,10 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	const location loc = move_unit_partial(from,to,possible_moves);
 	const unit_map::iterator u = info_.units.find(loc);
 	if(u != info_.units.end()) {
-		u->second.set_movement(0);
+		if (from == to)
+			u->second.set_movement(unit::NOT_MOVED);
+		else
+			u->second.set_movement(0);
 	}
 
 	return loc;

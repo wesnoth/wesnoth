@@ -163,6 +163,10 @@ public:
 	bool move_interrupted() const;
 	const gamemap::location& get_interrupted_move() const;
 	void set_interrupted_move(const gamemap::location& interrupted_move);
+	//is set to the number of moves left, ATTACKED if attacked,
+	// MOVED if moved and then pressed "end turn"
+	// NOT_MOVED if not moved and pressed "end turn"
+	enum MOVES { ATTACKED=-1, MOVED=-2, NOT_MOVED=-3 };
 private:
 	unit_race::GENDER generate_gender(const unit_type& type, bool use_genders);
 	unit_race::GENDER gender_;
@@ -184,10 +188,6 @@ private:
 
 	int side_;
 
-	//is set to the number of moves left, ATTACKED if attacked,
-	// MOVED if moved and then pressed "end turn"
-	// NOT_MOVED if not moved and pressed "end turn"
-	enum MOVES { ATTACKED=-1, MOVED=-2, NOT_MOVED=-3 };
 	int moves_;
 	bool user_end_turn_;
 	bool facingLeft_;

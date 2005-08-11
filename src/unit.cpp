@@ -259,7 +259,7 @@ int unit::movement_left() const
 
 bool unit::can_attack() const
 {
-	return moves_ != -1;
+	return moves_ != ATTACKED;
 }
 
 void unit::set_movement(int moves)
