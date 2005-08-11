@@ -118,9 +118,9 @@ std::vector<std::string> get_text() {
 		"-   Mark Michelsen (skovbaer)",
 
 		"_" N_("+Miscellaneous"),
+		"-   Bartek Waresiak (Dragonking)",
 		"-   Francesco Gigli (Jaramir)",
 		"-   Jordà Polo (ettin)",
-		"-   Bartek Waresiak (Dragonking)",
 		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
 
 		"_" N_("+Internationalization Managers"),
