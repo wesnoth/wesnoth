@@ -199,7 +199,7 @@ void lobby::gamelist_updated(bool silent)
 				ngettext(_("Vacant Slot"), _("Vacant Slots"), nslots);
 		}
 		str << COLUMN_SEPARATOR << "  " << (**game)["mp_village_gold"] << " "
-			<< _("Gold") << "  " << (**game)["experience_modifier"] << "% " << "XP";
+			<< _("Gold") << "  " << (**game)["experience_modifier"] << "% " << _("XP");
 		if((**game)["mp_use_map_settings"] == "yes")
 			str << "  " << _("Use map settings");
 		else if((**game)["mp_fog"] == "yes")
