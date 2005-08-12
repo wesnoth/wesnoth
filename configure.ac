@@ -124,7 +124,7 @@ AC_ARG_WITH([icondir],
             AS_HELP_STRING([--with-icondir@<:@=DIR@:>@], [change icon directory under gnome]),
 		  [case "${withval}" in
 		   yes)
-				ICONDIR="$(datadir)/icons"
+				ICONDIR="${datadir}/icons"
 				;;
 		   no)
 				;;
@@ -138,7 +138,7 @@ AC_ARG_WITH([desktopdir],
             AS_HELP_STRING([--with-desktopdir@<:@=DIR@:>@], [change desktop directory under gnome 2]),
 		  [case "${withval}" in
 		   yes)	
-				DESKTOPDIR="$(datadir)/applications"
+				DESKTOPDIR="${datadir}/applications"
 				;;
 		   no)
 				;;
