@@ -61,6 +61,7 @@ std::vector<std::string> get_text() {
 		"-   Isaac Clerencia",
 
 		"_" N_("+Artwork and graphics designers"),
+		"-   Alex Jarocha-Ernst (Jormungandr)",
 		"-   Andrew James Patterson (Kamahawk)",
 		"-   antwerp",
 		"-   Christophe Anjard",
