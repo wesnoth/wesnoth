@@ -6,32 +6,54 @@ http://wesnoth.slack.it/?GettingStarted.
 
 Steuerung
 
+    * F1              Das Hilfsmenue von BfW
     * Cursortasten:   Scrollen
     * Linksklick:     Einheit wählen/bewegen
     * Rechtsklick:    Hauptmenü, Aktion abbrechen
     * Mittelklick:    Auf Cursorposition zentrieren
     * Esc:            Spiel verlassen, Menü verlassen
-    * z:              hineinzoomen
-    * x:              herauszoomen
-    * c:              Zoom auf Standardgröße
-    * u:              Letzten Zug rückgängig machen (nur deterministische Züge
-                      können zurückgenommen werden)
-    * r:              Zug wiederherstellen
-    * n:              nächste Einheit, die noch bewegt werden kann, auswählen
-    * 1-7:            Zeigen, wie weit die gewählte Einheit in entsprechend
-                      vielen Zügen bewegt werden kann
-    * Leertaste:      Zug der Einheit beenden und nächste Einheit auswählen, die
-                      noch bewegt werden kann
-    * l:              Zum Anführer bewegen
-    * Strg-f:         Umschalten zwischen Vollbild und Fenstermodus
     * Strg-r:         Einheit ausbilden
     * Strg-Shift-r:   Letzte Einheiten-Ausbildung wiederholen
     * Alt-r:          Einheit einberufen
+    * u:              Letzten Zug rückgängig machen (nur deterministische Züge
+                      können zurückgenommen werden)
+    * r:              Zug wiederherstellen
+    * m:              Eine Nachricht an die Mitspieler schreiben (Multiplayer)
+    * M:              Eine Nachricht an die Verbündeten schreiben (Multiplayer)
+    * alt-m:          Eine Nachricht an alle im Spiel schreiben (Multiplayer)
+    * n:              nächste Einheite mit verblieben BP auswählen
+    * N:              nächste Einheite mit verblieben BP auswählen (umgekehrte Reihenfolge)
+    * Space:          Zug der Einheit beenden und nächste Einheit auswählen, die
+                      noch bewegt werden kann
+    * Alt-Space       Zug dieses Spielers beenden
+    * Strg-Space:     Position der Einheit halten. Einheit in diesem Zug nicht mehr durch "n"
+                      oder "N" auswählen
+    * Strg-v          Mögliche gegnerische Züge anzeigen (bei Beachtung gegenwärtiger ZOCs)
+    * Strg-b          Mögliche gegnerische Züge anzeigen (bei Nichtbeachtung jeglicher ZOCs)
+    * Strg-f          Zwischen Vollbild- und Fenstermodus wechseln
     * Strg-a:         Beschleunigten Spiel-Modus ein/ausschalten
+    * Strg-s:         Spiel speichern
+    * Strg-o:         Spiel laden
+
+    * /:              Suchen
+    * t:              Unterbrochenen Zug fortsetzen
+    * z:              hineinzoomen
+    * x:              herauszoomen
+    * c:              Zoom auf Standardgröße
+    * Strg-n:         Einheit umbenennen
+    * 1-7:            Zeigen, wie weit die gewählte Einheit in entsprechend
+                      vielen Zügen bewegt werden kann
+    * l:              Zum Anführer bewegen
     * d:              Gewählte Einheit beschreiben
     * Strg-d:         Verteidigungswerte der gewählten Einheit anzeigen
+    * Strg-g:         Gitternetz an-/abschalten
+    * alt-k:          Schleier der Finsternis ein-/ausschalten
+    * Strg-k:         Schleier der Finsternis aktualisieren
+    * alt-s:          Status-Tabelle anzeigen
     * Strg-t:         Geländeeinfluss auf die gewählte Einheit anzeigen
-    * Strg-s:         Spiel speichern
+    * ::              Kommando-Modus, siehe http://wesnoth.slack.it/?CommandMode
+
+Mac OS X Benutzer drücken statt der Strg-Taste die Cmd-Taste. Omd wird statt Alt benutzt.
 
 
 Sphären
@@ -249,4 +271,10 @@ und warten Sie anschließend darauf, das alle anderen Spieler dem Spiel
 beitreten.  Teilnehmende Spieler werden mit ihren Nicknames aufgeführt.
 
 Schritt 4: Klicken Sie »Ich bin bereit« an, um die Partie zu starten
+
+Andere Ressourcen:
+Die Ingame-Hilfe ist während des Spielens durch Drücken der Hilfe-Taste, oder entsprechende Auswahl im Menue erreichbar. 
+Die Homepage des Projekts findet sich unter www.wesnoth.org. Dort finden sich auch weiterführende Links zu diesem Spiel, unter anderem zu unserer Wiki http://wiki.wesnoth.org/ wo sich unteranderem Komplettlösungen für einzelne Kampagnen oder allgemeine Tips zur Spielstrategie finden lassen, ausserdem ein Baum alle in Wesnoth vorkommenden Einheiten aufschlüsselt.
+Des weiteren finden sie Informationen, wie sie an der Entwicklung von Battle for Wesnoth teilhaben können z.B. als Programmierer, Künstler oder Übersetzer.
+Und da wäre noch der IRC-Channel des Wesnoth Projekts auf irc.wesnoth.org im Channel #wesnoth.
 
