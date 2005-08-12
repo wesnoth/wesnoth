@@ -18,7 +18,7 @@ checksumstreambuf::checksumstreambuf() : csuma(0), csumb(0)
 	setp((char*)buffer, (char*)buffer+BUFFERSIZE);
 }
 
-unsigned long checksumstreambuf::checksum()
+unsigned int checksumstreambuf::checksum()
 {
 	sum((unsigned char*)pbase(), (unsigned char*)pptr());
 
@@ -51,8 +51,8 @@ void checksumstreambuf::sum(unsigned char* begin, unsigned char* end)
 			x = (unsigned short)(*p) + ((unsigned short)(*(p+1)) << 8);
 		}
 
-		sa = 0xffff & ((unsigned long)(sa) + (unsigned long)(sb));
-		sb = 0xffff & ((unsigned long)(x) + (unsigned long)(sb));
+		sa = 0xffff & ((unsigned int)(sa) + (unsigned int)(sb));
+		sb = 0xffff & ((unsigned int)(x) + (unsigned int)(sb));
 	}
 }
 
@@ -61,7 +61,7 @@ checksumstream::checksumstream() : std::basic_ostream<char>(this), sbuf(*this)
 {
 }
 
-unsigned long checksumstream::checksum()
+unsigned int checksumstream::checksum()
 {
 	return sbuf.checksum();
 }

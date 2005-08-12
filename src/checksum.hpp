@@ -21,7 +21,7 @@ class checksumstreambuf : public std::basic_streambuf<char>
 {
 public:
 	checksumstreambuf();
-	unsigned long checksum();
+	unsigned int checksum();
 
 protected:
 	virtual int overflow(int c);
@@ -43,7 +43,7 @@ class checksumstream : private checksumstreambuf, public std::basic_ostream<char
 {
 public:
 	checksumstream();
-	unsigned long checksum();
+	unsigned int checksum();
 private:
 	checksumstreambuf& sbuf;
 };
