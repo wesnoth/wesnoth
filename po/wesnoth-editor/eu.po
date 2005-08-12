@@ -1,16 +1,17 @@
 # Basque translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2004, 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
-#
+# Mikel Olasagasti Uranga <hey_neken@mundurat.net>, 2005.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-01 13:27+0200\n"
-"PO-Revision-Date: 2005-02-14 21:21+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-08-10 17:05+0200\n"
+"Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
+"Language-Team: Basque\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,49 +26,47 @@ msgstr "Editatu"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
-msgstr ""
+msgstr "Margotu mosaikoak"
 
 #: src/editor/editor.cpp:162
-#, fuzzy
 msgid "Fill"
-msgstr "Fitxategia"
+msgstr "Bete"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Ezarri jokalariaren abio posizioa"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
-msgstr ""
+msgstr "Handiagotu"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom out"
-msgstr ""
+msgstr "Txikiagotu"
 
 #: src/editor/editor.cpp:170
 msgid "Undo"
-msgstr ""
+msgstr "Desegin"
 
 #: src/editor/editor.cpp:172
 msgid "Redo"
-msgstr ""
+msgstr "Berregin"
 
 #: src/editor/editor.cpp:174
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Zoom egin lehenetsitako bistara"
 
 #: src/editor/editor.cpp:176
 msgid "Toggle grid"
-msgstr ""
+msgstr "Burdinesia erakutsi"
 
 #: src/editor/editor.cpp:178
-#, fuzzy
 msgid "Resize the map"
 msgstr "Maparen tamaina aldatu"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
-msgstr ""
+msgstr "Itzuli mapa"
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
@@ -78,9 +77,8 @@ msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Mapa aurretik existitzen da. Gainidatzea nahi duzu?"
 
 #: src/editor/editor.cpp:405
-#, fuzzy
 msgid "Player "
-msgstr "Jokalaria"
+msgstr "Jokalaria "
 
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
@@ -99,6 +97,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
+"Kontuz: Erabili ezin den karaktere bat topatu da maparen izenean. Beste izen "
+"batekin gorde behar duzu."
 
 #: src/editor/editor.cpp:483 src/editor/editor.cpp:562
 msgid "The file does not contain a valid map."
@@ -134,16 +134,15 @@ msgstr "Ezin izan da mapa gorde: $msg"
 
 #: src/editor/editor.cpp:1141
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Errorea: Karaketere ilgeala fitxategi izenean."
 
 #: src/editor/editor.cpp:1197
 msgid "Player"
 msgstr "Jokalaria"
 
 #: src/editor/editor_dialogs.cpp:47
-#, fuzzy
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Mapan egin dituzun aldaketak galduko dira.  Jarraitu?"
+msgstr "Mapan egin dituzun aldaketak galdu egingo dira. Jarraitu?"
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
 msgid "Create New Map"
@@ -192,9 +191,8 @@ msgid "Scroll Speed:"
 msgstr "Korritze abiadura:"
 
 #: src/editor/editor_dialogs.cpp:282
-#, fuzzy
 msgid "Toggle Full Screen"
-msgstr "Pantaila osoa"
+msgstr "Pantaila osora aldatu"
 
 #: src/editor/editor_dialogs.cpp:289
 msgid "Show Grid"
@@ -214,7 +212,7 @@ msgstr "Maparen tamaina aldatu"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
-msgstr ""
+msgstr "Ados"
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -230,7 +228,7 @@ msgstr "Irauli (honek maparen tamaina alda dezake):"
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Battle of Wesnoth-en mapa editorea"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -242,48 +240,47 @@ msgstr "Atzean"
 
 #: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
-msgstr ""
+msgstr "Mapa sortzailea"
 
 #: src/mapgen_dialog.cpp:99
-#, fuzzy
 msgid "Players:"
-msgstr "Jokalaria"
+msgstr "Jokalariak:"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Mendiska kopurua"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Mendiskaren gehiengo tamainua:"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "Herrixkak:"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "Terreno mota:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Gazteluen arteko errepideak"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 mosaiko"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "Kosta"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "Barrukaldea"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "Irla"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
