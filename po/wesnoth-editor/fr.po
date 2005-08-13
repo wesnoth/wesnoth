@@ -27,49 +27,47 @@ msgstr "Éditer"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
-msgstr ""
+msgstr "Afficher les briques"
 
 #: src/editor/editor.cpp:162
-#, fuzzy
 msgid "Fill"
-msgstr "Fichier"
+msgstr "Remplir"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Placer la position de départ du joueur"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
-msgstr ""
+msgstr "Zoom avant"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom out"
-msgstr ""
+msgstr "Zoom arrière"
 
 #: src/editor/editor.cpp:170
 msgid "Undo"
-msgstr ""
+msgstr "Annuler"
 
 #: src/editor/editor.cpp:172
 msgid "Redo"
-msgstr ""
+msgstr "Refaire"
 
 #: src/editor/editor.cpp:174
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Zoom à la vue par défaut"
 
 #: src/editor/editor.cpp:176
 msgid "Toggle grid"
-msgstr ""
+msgstr "Grille"
 
 #: src/editor/editor.cpp:178
-#, fuzzy
 msgid "Resize the map"
 msgstr "Redimensionner la carte"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
-msgstr ""
+msgstr "Basculer la carte"
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
@@ -80,9 +78,8 @@ msgid "The map already exists. Do you want to overwrite it?"
 msgstr "La carte existe déjà. Souhaitez-vous l'écraser ?"
 
 #: src/editor/editor.cpp:405
-#, fuzzy
 msgid "Player "
-msgstr "Joueur"
+msgstr "Joueur "
 
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
@@ -101,6 +98,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
+"Avertissement : caractère illégal rencontré dans le nom de la carte. Vous "
+"devez sauvegarder sous un nom différent."
 
 #: src/editor/editor.cpp:483 src/editor/editor.cpp:562
 msgid "The file does not contain a valid map."
@@ -108,7 +107,7 @@ msgstr "Ce fichier ne contient pas de carte valide."
 
 #: src/editor/editor.cpp:624
 msgid "'$filename' does not exist or can not be read as a file."
-msgstr "'$filename' n'est pas un fichier existant ou ne peut pas être lu."
+msgstr "« $filename » n'est pas un fichier existant ou ne peut pas être lu."
 
 #: src/editor/editor.cpp:636
 msgid "Load failed: "
@@ -136,7 +135,7 @@ msgstr "Impossible de sauvegarder la carte : $msg"
 
 #: src/editor/editor.cpp:1141
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Erreur : caractère illégal dans le nom du fichier."
 
 #: src/editor/editor.cpp:1197
 msgid "Player"
@@ -153,16 +152,16 @@ msgstr "Créer une nouvelle carte"
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
 #: src/mapgen_dialog.cpp:100
 msgid "Width:"
-msgstr "Largeur"
+msgstr "Largeur :"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
 #: src/mapgen_dialog.cpp:101
 msgid "Height:"
-msgstr "Hauteur"
+msgstr "Hauteur :"
 
 #: src/editor/editor_dialogs.cpp:93
 msgid "Generate New Map"
-msgstr "Générer une nouvell carte"
+msgstr "Générer une nouvelle carte"
 
 #: src/editor/editor_dialogs.cpp:94
 msgid "Generate Random Map"
@@ -230,7 +229,7 @@ msgstr "Retourner (cela peut modifier les dimensions de la carte) :"
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Éditeur de cartes de la bataille pour Wesnoth"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -242,48 +241,47 @@ msgstr "AP"
 
 #: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
-msgstr ""
+msgstr "Générateur de cartes"
 
 #: src/mapgen_dialog.cpp:99
-#, fuzzy
 msgid "Players:"
-msgstr "Joueur"
+msgstr "Joueurs :"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Nombre de collines :"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Taille maximale des colines :"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "Villages :"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "Formes du terrain :"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Routes entre les châteaux"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 briques"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "Côtier"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "Continental"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "Insulaire"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
