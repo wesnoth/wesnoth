@@ -1,16 +1,17 @@
 # Portuguese translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
-#
+# Automatically generated ail.com, 2005.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-01 13:27+0200\n"
-"PO-Revision-Date: 2004-09-02 22:32+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-08-11 19:50-0300\n"
+"Last-Translator: Tiago \"Salvador\" Souza <ts.salvador AT gmail DOT com>\n"
+"Language-Team: Portuguese/Brazil\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,62 +27,59 @@ msgstr "Editar"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
-msgstr ""
+msgstr "Desenhar tiras"
 
 #: src/editor/editor.cpp:162
-#, fuzzy
 msgid "Fill"
-msgstr "Arquivo"
+msgstr "Preencher"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Escolher posição inicial do jogador"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
-msgstr ""
+msgstr "Aproximar"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom out"
-msgstr ""
+msgstr "Afastar"
 
 #: src/editor/editor.cpp:170
 msgid "Undo"
-msgstr ""
+msgstr "Desfazer"
 
 #: src/editor/editor.cpp:172
 msgid "Redo"
-msgstr ""
+msgstr "Refazer"
 
 #: src/editor/editor.cpp:174
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Aproximação padrão"
 
 #: src/editor/editor.cpp:176
 msgid "Toggle grid"
-msgstr ""
+msgstr "Alternar grade"
 
 #: src/editor/editor.cpp:178
-#, fuzzy
 msgid "Resize the map"
 msgstr "Redimensionar o mapa"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
-msgstr ""
+msgstr "Girar mapa"
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
-msgstr ""
+msgstr "Salvar o mapa como"
 
 #: src/editor/editor.cpp:382
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "O mapa já existe. Você quer sobreescrevê-lo?"
 
 #: src/editor/editor.cpp:405
-#, fuzzy
 msgid "Player "
-msgstr "Jogador"
+msgstr "Jogador "
 
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
@@ -89,7 +87,7 @@ msgstr "Qual jogador?"
 
 #: src/editor/editor.cpp:409
 msgid "Which player should start here?"
-msgstr "Qual jogador vai começar aqui?"
+msgstr "Qual jogador deve começar aqui?"
 
 #: src/editor/editor.cpp:461
 msgid "Choose a Map to Load"
@@ -100,6 +98,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
+"Aviso: Caracteres inválidos foram encontrados no nome do mapa. Você deve "
+"salvar com um nome diferente."
 
 #: src/editor/editor.cpp:483 src/editor/editor.cpp:562
 msgid "The file does not contain a valid map."
@@ -111,7 +111,7 @@ msgstr "'$filename' não existe, ou não pode ser lido."
 
 #: src/editor/editor.cpp:636
 msgid "Load failed: "
-msgstr "Falha ao carregar:"
+msgstr "Falha ao carregar: "
 
 #: src/editor/editor.cpp:833
 msgid "You must have a hex selected on the board."
@@ -135,16 +135,15 @@ msgstr "Não foi possível salvar o mapa: $msg"
 
 #: src/editor/editor.cpp:1141
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Erro: Caractere inválido no nome do arquivo."
 
 #: src/editor/editor.cpp:1197
 msgid "Player"
 msgstr "Jogador"
 
 #: src/editor/editor_dialogs.cpp:47
-#, fuzzy
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr "As modificações feitas no mapa serão perdidas. Continuar?"
+msgstr "Suas modificações feitas no mapa serão perdidas. Continuar?"
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
 msgid "Create New Map"
@@ -182,7 +181,7 @@ msgstr "Falha na criação do mapa"
 
 #: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:91
 msgid "Close Window"
-msgstr "Fechar a janela"
+msgstr "Fechar Janela"
 
 #: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
 msgid "Preferences"
@@ -193,9 +192,8 @@ msgid "Scroll Speed:"
 msgstr "Velocidade de deslocamento:"
 
 #: src/editor/editor_dialogs.cpp:282
-#, fuzzy
 msgid "Toggle Full Screen"
-msgstr "Tela cheia"
+msgstr "Alternar Tela Cheia"
 
 #: src/editor/editor_dialogs.cpp:289
 msgid "Show Grid"
@@ -215,7 +213,7 @@ msgstr "Redimensionar o mapa"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -227,11 +225,11 @@ msgstr "Eixo Y"
 
 #: src/editor/editor_dialogs.cpp:493
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Espelhar o mapa (pode mudar suas dimensões)"
+msgstr "Girar o mapa (isso pode mudar as dimensões do mapa):"
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Battle for Wesnoth Editor de Mapas"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -243,48 +241,47 @@ msgstr "Fundo"
 
 #: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
-msgstr ""
+msgstr "Gerador de Mapas"
 
 #: src/mapgen_dialog.cpp:99
-#, fuzzy
 msgid "Players:"
-msgstr "Jogador"
+msgstr "Jogadores:"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Número de Colinas:"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Quantidade máxima de Colinas:"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "Vilas:"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "Forma do terreno:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Estradas entre os Castelos"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 tiras"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "Costa marítima"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "Continental"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "Ilha"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
