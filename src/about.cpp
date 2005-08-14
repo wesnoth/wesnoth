@@ -163,6 +163,9 @@ std::vector<std::string> get_text() {
 		"-   Vít Krčál",
 
 		"_" N_("+Danish Translation"),
+		"-   Anders K. Madsen (madsen)",
+		"-   Bjarke Sørensen (basher)",
+		"-   Jesper Fuglsang Wolff (ulven)",
 		"-   Mark Michelsen (skovbaer)",
 		"-   Mathias Bundgaard Svensson (freaken)",
 
