@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 13:32+0200\n"
-"PO-Revision-Date: 2005-08-10 22:46+0200\n"
+"PO-Revision-Date: 2005-08-15 22:46+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr "Habilitats"
 
 #: data/help.cfg:42
 msgid "Weapon Specials"
-msgstr "Armes especials"
+msgstr "Atacs especials"
 
 #: data/help.cfg:48
 msgid "Terrains"
@@ -80,7 +80,6 @@ msgstr ""
 "Aquestes habilitats es mostren a continuació."
 
 #: data/help.cfg:63
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -104,7 +103,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Fonaments del joc"
 
 #: data/help.cfg:69
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -112,9 +110,11 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Aquesta pàgina resumeix tot el que necessiteu saber per jugar a Batalla per "
-"Wesnoth. Explica com jugar i els mecanismes bàsics que hi ha darrera del "
-"joc. Recordeu que això és només un resum. Per a situacions especials o "
+"Aquestes pàgines resumeixen tot el que necessiteu saber per jugar a Batalla "
+"per Wesnoth. S'explica com jugar i els mecanismes bàsics que hi ha darrera "
+"el joc. Mentre jugueu, s'anirà afegint nova informació a mesura que "
+"descobriu nous aspectes. "
+"Recordeu que això és només un resum. Per a situacions especials o "
 "excepcions, seguiu els enllaços que s'inclouen."
 
 #: data/help.cfg:71
@@ -130,16 +130,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Per començar, el millor és fer clic sobre el botó <italic>text=Tutorial</"
+"Per començar, el millor és fer clic sobre el botó <italic>text='Tutorial'</"
 "italic> al menú principal. Això us portarà a fer una campanya d'aprenentatge "
 "que us ensenyarà els conceptes bàsics de Wesnoth. Després d'això, és "
-"recomanable jugar la campanya Hereu al Tron: clic a <italic>text=Campanya</"
+"recomanable jugar la campanya Hereu al Tron: clic a <italic>text='Campanya'</"
 "italic>, i després <italic>text='Hereu al Tron'</italic>. Wesnoth és un joc "
 "desafiant, així que és recomanable començar en nivell <italic>text=Fàcil</"
 "italic>."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -147,13 +146,12 @@ msgid ""
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
 "Mentre jugueu, recordeu que si poseu el punter del ratolí sobre alguns dels "
-"elements del menú lateral dret, apareixerà una descripció explicatòria. Això "
-"pot ser especialment útil quan trobeu noves habilitats per primera vegada."
+"elements de la pantalla, com la barra d'estat, apareixerà una descripció explicatòria. Això "
+"pot ser especialment útil quan trobeu noves <ref>dst=abilities text='habilitats'</ref> per primera vegada."
 
 #: data/help.cfg:79
-#, fuzzy
 msgid "About the Game"
-msgstr "Surt del joc"
+msgstr "Quant a Wesnoth"
 
 #: data/help.cfg:80
 msgid ""
@@ -165,6 +163,7 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
+"El joc pren lloc en una sèrie de batalles anomenades escenaris. Cada escenari enfronta les teves tropes contra un o més adversaris. Podeu jugar contra l'ordinador o amb amics agafant el control d'un bàndol diferent a cada torn (modalitat tots a una). Si el vostre ordinador està en xarxa, podeu jugar amb la resta d'ordinadors que en formin part. I si disposeu de connexió a internet, podreu jugar amb gent de tot el món."
 
 #: data/help.cfg:82
 msgid ""
@@ -176,6 +175,9 @@ msgid ""
 "need to reach a destination, to rescue someone, to solve a puzzle, or just "
 "to survive a certain number of turns."
 msgstr ""
+"\n"
+"\n"
+"Cada escenari té uns objectius marcats que apareixen a l'inici de cada partida. Aquests objectius us diuen tant el que necessiteu fer per guanyar, com el que heu d'evitar per tal de no perdre. Sovint l'objectiu és derrotar tots els enemics, però en altres ocasions necessitareu arribar a una posició del mapa, rescatar algú, solucionar un problema, o simplement sobreviure un cert nombre de torns."
 
 #: data/help.cfg:84
 msgid ""
@@ -186,13 +188,15 @@ msgid ""
 "preserving your best troops so that they can be used again in later "
 "scenarios in the campaign."
 msgstr ""
+"\n"
+"\n"
+"Les campanyes consisteixen en múltiples escenaris que esdevenen l'un a continuació de l'altre, tot i explicant una història. En una campanya, és recomanable que jugueu amb molta cura, reservant les millors unitats per tal de reincorporar-les en escenaris posteriors."
 
 #: data/help.cfg:89
 msgid "Recruiting and Recalling"
 msgstr "Reclutant i reincorporant"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -204,15 +208,16 @@ msgid ""
 "units available for recruitment, along with their gold cost. Click on a unit "
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
+"Cada bàndol comença amb un líder a la seva torre. "
 "Al començament de cada batalla, i de vegades en mig d'aquesta, necessitareu "
 "reclutar unitats pel vostre exèrcit. Per tal de fer-ho, heu de tenir al "
 "vostre líder (per exemple Konrad a Hereu al Tron) a la torre del castell. "
-"Aleshores, podreu reclutar ja sigui triant <italic>text=Recluta</italic> des "
+"Aleshores, podreu reclutar ja sigui triant <italic>text='Recluta'</italic> des "
 "del menú o fent clic amb el botó dret sobre un hexàgon i seleccionant "
-"<italic>text=Recluta</italic>. Això mostrarà el diàleg de reclutament, que "
+"<italic>text='Recluta'</italic>. Això mostrarà el diàleg de reclutament, que "
 "llistarà les unitats disponibles i el seu cost en monedes d'or. Si feu clic "
 "sobre una unitat veureu les seves estadístiques a l'esquerra. Fent clic "
-"sobre el botó <italic>text=D\\'acord</italic>, reclutareu la unitat "
+"sobre el botó <italic>text='D\\'acord'</italic>, reclutareu la unitat "
 "seleccionada."
 
 #: data/help.cfg:92
@@ -227,7 +232,7 @@ msgstr ""
 "\n"
 "\n"
 "Si feu clic amb el botó dret sobre un hexàgon del castell i seleccioneu "
-"<italic>text=Recluta</italic>, la nova unitat apareixerà en aquell hexàgon. "
+"<italic>text='Recluta'</italic>, la nova unitat apareixerà en aquell hexàgon. "
 "D'altra banda, si no seleccioneu cap hexàgon, apareixerà en qualsevol zona "
 "lliure propera a la torre. Només podeu reclutar tantes unitats com hexàgons "
 "disponibles hi hagi, i no podeu gastar més diners dels que tingueu."
@@ -241,11 +246,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unitats reclutades tenen dos <ref>dst=traits text=trets</ref> aleatoris "
+"Les unitats reclutades tenen dos <ref>dst=traits text='trets'</ref> aleatoris "
 "que modifiquen les seves estadístiques."
 
 #: data/help.cfg:96
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -256,13 +260,11 @@ msgstr ""
 "\n"
 "\n"
 "En escenaris més avançats, també podeu reincorporar unitats supervivents de "
-"batalles anteriors. La reincorporació funciona exactament igual que el "
-"reclutament, excepte pel fet que les unitats reincorporades tenen un cost "
-"estàndard de 20 monedes d'or i el diàleg presenta una llista de totes les "
-"unitats que han sobreviscut als escenaris anteriors."
+"batalles anteriors. Reincorporar té un cost estàndard de 20 monedes d'or "
+"i el diàleg presenta una llista de totes les unitats que han sobreviscut a "
+"escenaris anteriors."
 
 #: data/help.cfg:98
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -278,39 +280,40 @@ msgstr ""
 "informació."
 
 #: data/help.cfg:103
-#, fuzzy
 msgid "Orbs"
-msgstr "Orcs"
+msgstr "Orbes"
 
 #: data/help.cfg:104
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
+"A sobre de la barra d'energia de cada unitat hi ha un orbe. "
+"Per a unitats que estan sota el vostre control, aquest orbe pot ser:"
 
 #: data/help.cfg:105
 msgid "green if it hasn't moved this turn,"
-msgstr ""
+msgstr "Verd, si encara no s'ha desplaçat."
 
 #: data/help.cfg:106
 msgid "yellow if it has moved, but could still move further or attack, or"
-msgstr ""
+msgstr "Groc, si s'ha mogut però encara pot continuar o atacar."
 
 #: data/help.cfg:107
 msgid "red if it has used all its movement this turn."
-msgstr ""
+msgstr "Vermell, si ja ha esgotat els seus moviments en aquest torn."
 
 #: data/help.cfg:108
 msgid "The orb is blue if the unit is an ally you do not control."
-msgstr ""
+msgstr "L'orbe és blau si la unitat és aliada però no la controleu."
 
 #: data/help.cfg:109
 msgid "Enemy units have no orb on top of their energy bar."
-msgstr ""
+msgstr "Les unitats enemigues no tenen orbe."
 
 #: data/help.cfg:114
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "Salut i experiència"
 
 #: data/help.cfg:115
 msgid ""
@@ -319,6 +322,10 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
+"Cada unitat té un cert nombre de punts de vida (HP). Si aquests arriben a estar "
+"per sota de 1, la unitat mor. D'altra banda, les unitats també tenen punts "
+"d'experiència (XP). Una unitat acabada de reclutar comença sense experiència, "
+"però l'anirà adquirint a mesura que lluiti contra els seus rivals."
 
 #: data/help.cfg:116
 msgid ""
@@ -326,6 +333,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
+"Els punts de vida i experiència s'indiquen a la barra d'estat usant dos nombres "
+"(el valor actual i el valor màxim que pot tenir la unitat)."
 
 #: data/help.cfg:117
 msgid ""
@@ -334,13 +343,17 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst=experience_and_advancement text=advance</ref>."
 msgstr ""
+"Els punts de vida també s'indiquen mitjançant la barra d'energia que hi ha al costat "
+"de cada unitat, "
+"que pot ser verda, groga o vermella. Una unitat amb al menys un punt d'experiència "
+"tindrà una barra de color blau que s'anirà emblanquint a mesura que s'apropi a "
+"l'avanç de nivell."
 
 #: data/help.cfg:122 src/help.cpp:1197
 msgid "Movement"
 msgstr "Moviment"
 
 #: data/help.cfg:123
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -351,14 +364,16 @@ msgid ""
 "clicking will cause the unit to move towards it by the fastest route over "
 "this and subsequent turns."
 msgstr ""
-"El moviment a Batalla per Wesnoth és simple: primer feu un clic a la unitat "
-"que desitgeu moure i aleshores feu clic al hexàgon de destí. Quan una unitat "
+"El moviment a Batalla per Wesnoth és simple. Primer feu clic sobre la unitat que "
+"desitgeu moure i aleshores feu clic a l'hexàgon de destí. "
+"Quan una unitat "
 "està seleccionada, tots els hexàgons on pot desplaçar-se en el torn actual "
 "queden il·luminats. Si situeu el ratolí sobre un hexàgon fora de la zona "
-"il·luminada se us mostrarà els nombre de torns necessaris per arribar-hi."
+"il·luminada se us mostrarà el nombre de torns necessaris per arribar-hi."
+"Quan desplacem una unitat, aquesta sempre es mourà pel camí més curt fins a "
+"la seva destinació."
 
 #: data/help.cfg:125
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -375,13 +390,13 @@ msgstr ""
 "\n"
 "\n"
 "Cada unitat té un cert nombre de punts de moviment que es gasten cada vegada "
-"que la unitat es mou, depenent del terreny. Per exemple, entrar a una zona "
-"de herba casi sempre costa un punt de moviment. El nombre exacte de punts de "
+"que la unitat es mou, depenent del terreny. Per exemple, entrar en una "
+"prada casi sempre costa un punt de moviment. El nombre exacte de punts de "
 "moviment que es gasten depèn també de la unitat. Als boscos, els elfs només "
 "gasten 1 punt, la majoria d'humans i orcs 2, i els genets 3. Podeu veure "
 "quants punts necessita una unitat per entrar en un determinat tipus de "
-"terreny fent clic sobre ella amb el botó dret i seleccionant <italic>Descriu "
-"unitat</italic>."
+"terreny fent clic sobre ella amb el botó dret i seleccionant <italic>text='Descriu "
+"unitat'</italic>."
 
 #: data/help.cfg:127
 msgid ""
@@ -396,8 +411,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Un altre factor a tenir en compte són les <ref>dst=zones_of_control "
-"text='zones de control'</ref>. Cada unitat genera una zona de control sobre "
+"Un altre factor a tenir en compte són les  "
+"zones de control. Cada unitat genera una zona de control sobre "
 "els hexàgons que té al voltant. Si una unitat enemiga entra en aquesta zona, "
 "acaba el seu moviment. Aprendre com fer servir les zones de control és un "
 "avantatge important a Wesnoth ja que només les unitats amb l'habilitat de "
@@ -412,6 +427,11 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"Per veure fins on pot moure's l'enemic durant el proper torn, premeu Ctrl-v o "
+"Cmd-v. Ctrl-b o Cmd-b mostra els possibles moviments enemics si les vostres "
+"unitats no estiguessin al mapa."
 
 #: data/help.cfg:134
 msgid "Combat"
@@ -429,9 +449,16 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
+"El combat a Batalla per Wesnoth sempre pren lloc entre unitats que es troben "
+"en hexàgons adjacents. Feu clic sobre la vostra unitat, i després feu clic a la "
+"unitat que voleu atacar: us moureu fins a ella, i quan estigueu al costat començarà "
+"l'atac. L'atacant i el defensor alternen els cops fins que cadascún d'ells els "
+"esgota. L'atacant serà sempre qui triï una de les seves armes i l'adversari "
+"s'haurà de defensar amb una arma del mateix tipus. Hi ha dos tipus d'atacs: melé, "
+"que normalment implica armes com espases, destrals o ullals; i a distància, amb "
+"arcs, llances o boles de foc."
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -442,7 +469,6 @@ msgstr ""
 "<header>text='Ordre i nombre dels atacs'</header>"
 
 #: data/help.cfg:139
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -456,12 +482,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"L'atacant realitza el primer atac i després ho fa el defensor. Això continua "
-"fins que cadascuna de les unitats ha fet tots els seus atacs. El nombre dels "
+"L'atacant realitza el primer atac i després ho fa el defensor. "
+"Això continua "
+"fins que cadascuna de les unitats ha realitzat tots els seus atacs. El nombre dels "
 "atacs de cada unitat pot variar. Per exemple, un lluitador elf amb un atac "
 "d'espasa de 5-4 podrà realitzar 4 atacs fent 5 punts de mal en cada intent. "
-"En canvi un Recluta orc amb 9-2 només tindrà la possibilitat d'atacar 2 "
+"En canvi un recluta orc amb 9-2 només tindrà la possibilitat d'atacar 2 "
 "vegades, però infligint 9 punts de mal."
+"Així doncs, cada atac pot encertar, causant un certa quantitat de mal, o bé fallar i no "
+"causar cap mena de ferida a l'adversari."
 
 #: data/help.cfg:141
 msgid ""
@@ -474,7 +503,6 @@ msgstr ""
 "<header>text='Possibilitat de colpejar'</header>"
 
 #: data/help.cfg:143
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -490,15 +518,15 @@ msgstr ""
 "\n"
 "La possibilitat de colpejar una unitat està basada únicament en el seu grau "
 "de defensa en el terreny en el que es troba. Podeu veure la seva defensa "
+"a la barra d'estat o bé "
 "fent clic amb el botó dret sobre una unitat i seleccionant la opció "
-"<italic>Descriu unitat</italic>. Per exemple, els elfs tenen un grau de "
+"<italic>text='Descriu unitat'</italic>. Per exemple, els elfs tenen un grau de "
 "defensa del 70% als boscos, que vol dir que si una unitat els ataca només "
 "tindrà un 30% de possibilitats d'encertar. De la mateixa manera, les "
 "possibilitats dels elfs de colpejar l'enemic dependran del terreny en que es "
 "trobi l'atacant."
 
 #: data/help.cfg:145
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -513,8 +541,8 @@ msgstr ""
 "text='els atacs màgics'</ref>, i l'habilitat de "
 "<ref>dst=weaponspecial_marksman text='tirador'</ref>. Els atacs màgics "
 "sempre tenen un 70% de possibilitats de colpejar, sigui quin sigui el "
-"terreny, mentre que amb l'habilitat de tirador, les possibilitats són del "
-"60%."
+"terreny, mentre que amb l'habilitat de tirador les possibilitats són del 60% "
+"sempre que s'usi ofensivament."
 
 #: data/help.cfg:147
 msgid ""
@@ -527,7 +555,6 @@ msgstr ""
 "<header>text=Mal</header>"
 
 #: data/help.cfg:149
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -545,10 +572,10 @@ msgstr ""
 "exemple, un lluitador elf amb un atac d'espasa de 5-4 causa un mal base de 5 "
 "punts. Això es veu modificat per dos factors: "
 "<ref>dst=damage_types_and_resistance text='resistència'</ref> i "
-"<ref>dst=time_of_day text='hora del dia'</ref>."
+"<ref>dst=time_of_day text='hora del dia'</ref>. Per veure com es veu afectat "
+"el mal base, seleccioneu <italic>text='Càlcul de mal'</italic> al diàleg d'atac."
 
 #: data/help.cfg:151
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -559,7 +586,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Algunes unitats tenen habilitats que poden afectar el mal infligit en "
+"Algunes unitats tenen <ref>dst=abilities text='habilitats'</ref> que poden afectar el mal infligit en "
 "combat. La més comuna és la <ref>dst=ability_charge text='càrrega'</ref>, la "
 "qual dobla el mal causat per l'atacant i pel defensor quan la unitat amb "
 "aquesta habilitat ataca."
@@ -582,7 +609,6 @@ msgstr ""
 "aquests atacs que alteren el mal que poden rebre."
 
 #: data/help.cfg:159
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -622,23 +648,24 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"Si un atac és determinat a colpejar, sempre farà com a mínim 1 punt de mal. "
+"Això s'aplica fins i tot si el defensor té un 100% de resistència al tipus "
+"de mal."
 
 #: data/help.cfg:168
 msgid "Time of Day"
 msgstr "Hora del dia"
 
 #: data/help.cfg:172
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night\n"
 " Chaotic units get +25% damage at night, and -25% in daytime\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"\n"
-"\n"
 "L'hora del dia afecta el mal que fan certes unitats de la següent manera:\n"
-"\n"
 "Les unitat lleials fan +25% de mal durant el dia, i -25% durant la nit.\n"
 "Les unitats caòtiques, +25% de mal durant la nit, i -25% durant el dia.\n"
 "Les unitats neutrals no es veuen afectades per l'hora del dia."
@@ -651,6 +678,11 @@ msgid ""
 "pane. For the usual day/night cycle, Morning and Afternoon count as day, "
 "First and Second Watch count as night:\n"
 msgstr ""
+"\n"
+"\n"
+"Es pot observer l'hora del dia actual a la barra d'estat de la "
+"dreta, sota el minimapa. Pel cicle de dia/nit habitual, matí i migdia són "
+"com dia, mentre que matinada equival a nit:\n"
 
 #: data/help.cfg:175 data/schedules.cfg:5
 msgid "Dawn"
