@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 14:28+0200\n"
-"PO-Revision-Date: 2005-07-21 19:28+0100\n"
+"PO-Revision-Date: 2005-08-15 15:01+0100\n"
 "Last-Translator: Americo Iacovizzi <darkamex@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Termina turno dell'unità"
 
 #: src/hotkeys.cpp:49
 msgid "Leader"
-msgstr "Comandante"
+msgstr "Condottiero"
 
 #: src/hotkeys.cpp:50
 msgid "Undo"
@@ -46,11 +46,11 @@ msgstr "Ripeti"
 
 #: src/hotkeys.cpp:52
 msgid "Zoom In"
-msgstr "Zoom In"
+msgstr "Aumenta Zoom"
 
 #: src/hotkeys.cpp:53
 msgid "Zoom Out"
-msgstr "Zoom Out"
+msgstr "Diminuisci Zoom"
 
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
@@ -62,7 +62,7 @@ msgstr "Schermo Intero"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
-msgstr "Anteprima"
+msgstr "Fotografa Schermo"
 
 #: src/hotkeys.cpp:57
 msgid "Accelerated"
@@ -118,7 +118,7 @@ msgstr "Parla"
 
 #: src/hotkeys.cpp:70
 msgid "Create Unit (Debug!)"
-msgstr "Crea unità (Debug!)"
+msgstr "Crea Unità (Debug!)"
 
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
@@ -186,7 +186,7 @@ msgstr "Imposta il Mantenimento del Giocatore"
 
 #: src/hotkeys.cpp:88
 msgid "Flood Fill"
-msgstr "Riempi d'acqua"
+msgstr "Riempi"
 
 #: src/hotkeys.cpp:89
 msgid "Fill Selection"
@@ -289,7 +289,7 @@ msgstr "giocatore"
 
 #: src/preferences.cpp:888
 msgid "Accelerated Speed"
-msgstr "Accellerato"
+msgstr "Velocità Accellerata"
 
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
@@ -301,7 +301,7 @@ msgstr "Mostra la Griglia"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
-msgstr "Mostra le Etichette Fluttuanti"
+msgstr "Mostra le Etichette"
 
 #: src/preferences.cpp:892
 msgid "Turn Dialog"
@@ -317,11 +317,11 @@ msgstr "Mostra Colori delle Squadre"
 
 #: src/preferences.cpp:895
 msgid "Show Color Cursors"
-msgstr "Mostra cursori colorati"
+msgstr "Mostra i Cursori Colorati"
 
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
-msgstr "Mostra effetti haloing"
+msgstr "Mostra gli Effetti Haloing"
 
 #: src/preferences.cpp:897
 msgid "Video Mode"
@@ -340,13 +340,12 @@ msgid "Reverse Time Graphics"
 msgstr "Inverti i grafici del tempo"
 
 #: src/preferences.cpp:901
-#, fuzzy
 msgid "Sound effects"
-msgstr "Mostra effetti haloing"
+msgstr "Effetti Sonori"
 
 #: src/preferences.cpp:902
 msgid "Music"
-msgstr ""
+msgstr "Musica"
 
 #: src/preferences.cpp:904
 msgid "Music Volume:"
@@ -366,7 +365,7 @@ msgstr "Velocità di Scorrimento:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "Effetti Sonori on/off"
 
 #: src/preferences.cpp:922
 msgid "Change the sound effects volume"
@@ -374,7 +373,7 @@ msgstr "Cambia il volume degli effetti sonori"
 
 #: src/preferences.cpp:925
 msgid "Music on/off"
-msgstr ""
+msgstr "Musica on/off"
 
 #: src/preferences.cpp:929
 msgid "Change the music volume"
@@ -390,7 +389,9 @@ msgstr "Cambia il contrasto del monitor"
 
 #: src/preferences.cpp:946
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Scegli se il gioco deve girare in una finestra o a schermo intero"
+msgstr ""
+"Scegli se il gioco deve essere visualizzato in una finestra o a schermo "
+"intero"
 
 #: src/preferences.cpp:949
 msgid "Make units move and fight faster"
@@ -426,7 +427,7 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Mostra un cerchi colorato alla base delle unità per vedere a quale fronte "
+"Mostra un cerchio colorato alla base delle unità per vedere a quale fronte "
 "appartengono"
 
 #: src/preferences.cpp:972
@@ -476,7 +477,7 @@ msgstr "Nessuna modalità video alternativa disponibile"
 
 #: src/preferences.cpp:1307
 msgid "Choose Resolution"
-msgstr "Scegli risoluzione"
+msgstr "Scegli Risoluzione"
 
 #: src/preferences.cpp:1335
 msgid "Close Window"
@@ -488,7 +489,7 @@ msgstr "Impostazioni Scorciatoie"
 
 #: src/preferences.cpp:1344 src/preferences.cpp:1397
 msgid "Press desired HotKey"
-msgstr "Premi la Combinazione desiderata"
+msgstr "Premi la Scorciatoia desiderata"
 
 #: src/preferences.cpp:1362
 msgid "Action"
@@ -500,15 +501,15 @@ msgstr "Legame"
 
 #: src/preferences.cpp:1374
 msgid "Change Hotkey"
-msgstr "Cambia Combinazione"
+msgstr "Cambia Scorciatoia"
 
 #: src/preferences.cpp:1377
 msgid "Save Hotkeys"
-msgstr "Salva Combinazioni"
+msgstr "Salva Scorciatoie"
 
 #: src/preferences.cpp:1423
 msgid "This HotKey is already in use."
-msgstr "Questa Combinazione è già in uso."
+msgstr "Questa Scorciatoia è già in uso."
 
 #: src/show_dialog.cpp:314
 msgid "Error"
