@@ -184,6 +184,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Finnish Translation"),
 		"-   Ankka",
+		"-   kko",
 		"-   Matias Parmala",
 		"-   paxed",
 
