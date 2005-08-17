@@ -133,6 +133,13 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 		transfer_stats[sock].second.fresh_current(len);
 	}
 
+	// wait for a maximum of 15 seconds for the socket to have activity
+	if(SDLNet_CheckSockets(set, 15000) <= 0) {
+		ERR_NW << "SDLNet_CheckSockets: " << strerror(errno) << "\n";
+		SDLNet_TCP_DelSocket(set, sock);
+		SDLNet_FreeSocketSet(set);
+		return SOCKET_ERROR;
+	}
 	while(beg != end) {
 		{
 			// if we are receiving the socket is in sockets_locked
@@ -144,25 +151,24 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 				return SOCKET_ERROR;
 			}
 		}
-		// wait for a maximum of 15 seconds for the socket to have activity
-		if(SDLNet_CheckSockets(set, 15000) <= 0) {
-			ERR_NW << "SDLNet_CheckSockets: " << strerror(errno) << "\n";
-			SDLNet_TCP_DelSocket(set, sock);
-			SDLNet_FreeSocketSet(set);
-			return SOCKET_ERROR;
+
+		const ssize_t res = SDLNet_TCP_Recv(sock, beg, end - beg);
+		if(res <= 0) {
+			if(SDLNet_CheckSockets(set, 15000) <= 0) {
+				ERR_NW << "SDLNet_CheckSockets: " << strerror(errno) << "\n";
+				SDLNet_TCP_DelSocket(set, sock);
+				SDLNet_FreeSocketSet(set);
+				return SOCKET_ERROR;
+			}
+			continue;
 		}
 
-		if(SDLNet_TCP_Recv(sock, beg, 1) <= 0) {
-			SDLNet_TCP_DelSocket(set, sock);
-			SDLNet_FreeSocketSet(set);
-			return SOCKET_ERROR;
-		}
-		++beg;
+		beg += res;
 		{
 			const threading::lock lock(*global_mutex);
 			network::statistics& stats = transfer_stats[sock].second;
-			++stats.total;
-			++stats.current;
+			stats.total += res;
+			stats.current += res;
 		}
 	}
 	SDLNet_TCP_DelSocket(set, sock);

@@ -33,6 +33,12 @@
 #include <vector>
 
 #include <signal.h>
+#if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
+#include <windows.h>
+#else
+#include <fcntl.h>
+#define SOCKET int
+#endif
 
 #define LOG_NW LOG_STREAM(info, network)
 #define WRN_NW LOG_STREAM(warn, network)
@@ -273,14 +279,22 @@ void connect_operation::check_error()
 	}
 }
 
+namespace {
+	struct _TCPsocket {
+		int ready;
+		SOCKET channel;
+		IPaddress remoteAddress;
+		IPaddress localAddress;
+		int sflag;
+	};
+}
+
 void connect_operation::run()
 {
 	char* const hostname = host_.empty() ? NULL : const_cast<char*>(host_.c_str());
 	IPaddress ip;
 	if(SDLNet_ResolveHost(&ip,hostname,port_) == -1) {
 		error_ = "Could not connect to host";
-		const threading::lock l(get_mutex());
-		while(!notify_finished());
 		return;
 	}
 
@@ -288,16 +302,25 @@ void connect_operation::run()
 	if(!sock) {
 		error_ = hostname == NULL ? "Could not bind to port" :
 		                            "Could not connect to host";
-		const threading::lock l(get_mutex());
-		while(!notify_finished());
 		return;
 	}
+
+// use non blocking IO
+#ifdef O_NONBLOCK
+	fcntl(((_TCPsocket*)sock)->channel, F_SETFL, O_NONBLOCK);
+#else
+#if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
+	{
+		unsigned long mode = 1;
+		ioctlsocket (((_TCPsocket*)sock)->channel, FIONBIO, &mode);
+	}
+#endif
+#endif
 
 	//if this is a server socket
 	if(hostname == NULL) {
 		const threading::lock l(get_mutex());
 		connect_ = create_connection(sock,"",port_);
-		while(!notify_finished());
 		return;
 	}
 
@@ -307,20 +330,17 @@ void connect_operation::run()
 	const int nbytes = SDLNet_TCP_Send(sock,buf,4);
 	if(nbytes != 4) {
 		SDLNet_TCP_Close(sock);
-
 		error_ = "Could not send initial handshake";
-		const threading::lock l(get_mutex());
-		while(!notify_finished());
 		return;
 	}
 
+	//no blocking operations from here on
+	const threading::lock l(get_mutex());
 	LOG_NW << "sent handshake...\n";
 
-	const threading::lock l(get_mutex());
 	if(is_aborted()) {
 		LOG_NW << "connect operation aborted by calling thread\n";
 		SDLNet_TCP_Close(sock);
-		while(!notify_finished());
 		return;
 	}
 
@@ -331,7 +351,6 @@ void connect_operation::run()
 	if(res == -1) {
 		SDLNet_TCP_Close(sock);
 		error_ = "Could not add socket to socket set";
-		while(!notify_finished());
 		return;
 	}
 
