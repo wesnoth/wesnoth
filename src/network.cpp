@@ -306,15 +306,31 @@ void connect_operation::run()
 	}
 
 // use non blocking IO
-#ifdef O_NONBLOCK
-	fcntl(((_TCPsocket*)sock)->channel, F_SETFL, O_NONBLOCK);
-#else
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
 	{
 		unsigned long mode = 1;
 		ioctlsocket (((_TCPsocket*)sock)->channel, FIONBIO, &mode);
 	}
+#elif !defined(BEOS)
+	int flags;
+	flags = fcntl(((_TCPsocket*)sock)->channel, F_GETFL, 0);
+#if defined(O_NONBLOCK)
+	flags |= O_NONBLOCK;
+#elif defined(O_NDELAY)
+	flags |= O_NDELAY;
+#elif defined(FNDELAY)
+	flags |= FNDELAY;
 #endif
+	if(fcntl(((_TCPsocket*)sock)->channel, F_SETFL, flags) == -1) {
+		error_ = ("Could not make socket non-blocking: " + std::string(strerror(errno))).c_str();
+		return;
+	}
+#else
+	int on = 1;
+	if(setsockopt(((_TCPsocket*)sock)->channel, SOL_SOCKET, SO_NONBLOCK, &on, sizeof(int)) < 0) {
+		error_ = ("Could not make socket non-blocking: " + std::string(strerror(errno))).c_str();
+		return;
+	}
 #endif
 
 	//if this is a server socket
