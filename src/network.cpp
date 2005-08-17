@@ -35,6 +35,9 @@
 #include <signal.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
 #include <windows.h>
+#elif defined(BEOS)
+#include <sys/types.h>
+#include <sys/socket.h>
 #else
 #include <fcntl.h>
 #define SOCKET int
