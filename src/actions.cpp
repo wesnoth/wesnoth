@@ -96,9 +96,9 @@ std::string recruit_unit(const gamemap& map, int side,
 	typedef std::map<gamemap::location,unit> units_map;
 
 	//find the unit that can recruit
-	units_map::const_iterator u = units.end();
+	units_map::const_iterator u = units.begin();
 
-	for(u = units.begin(); u != units.end(); ++u) {
+	for(; u != units.end(); ++u) {
 		if(u->second.can_recruit() && u->second.side() == side) {
 			break;
 		}
