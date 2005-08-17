@@ -415,8 +415,8 @@ msgstr ""
 "zones de control. Cada unitat genera una zona de control sobre "
 "els hexàgons que té al voltant. Si una unitat enemiga entra en aquesta zona, "
 "acaba el seu moviment. Aprendre com fer servir les zones de control és un "
-"avantatge important a Wesnoth ja que només les unitats amb l'habilitat de "
-"<ref>dst=ability_skirmisher text='fustigar'</ref> poden ignorar aquestes "
+"avantatge important a Wesnoth ja que només les unitats amb l'habilitat d'"
+"<ref>dst=ability_skirmisher text='esquivar'</ref> poden ignorar aquestes "
 "zones."
 
 #: data/help.cfg:129
@@ -520,7 +520,7 @@ msgstr ""
 "de defensa en el terreny en el que es troba. Podeu veure la seva defensa "
 "a la barra d'estat o bé "
 "fent clic amb el botó dret sobre una unitat i seleccionant la opció "
-"<italic>text='Descriu unitat'</italic>. Per exemple, els elfs tenen un grau de "
+"<italic>text='Descriu la unitat'</italic>. Per exemple, els elfs tenen un grau de "
 "defensa del 70% als boscos, que vol dir que si una unitat els ataca només "
 "tindrà un 30% de possibilitats d'encertar. De la mateixa manera, les "
 "possibilitats dels elfs de colpejar l'enemic dependran del terreny en que es "
@@ -768,13 +768,24 @@ msgid ""
 "number of units, for example the Necrophage, will actually heal with AMLA "
 "effects. Most units just gain the bonus to the Maximum HP."
 msgstr ""
+"\n"
+"\n"
+"Recordeu que mentre la majoria d'unitats tenen tres nivells, no totes hi "
+"arriben, i n'hi ha d'altres (com els <ref>dst=unit_Mage text='mags'</ref>) "
+"que en poden tenir quatre. Una vegada assolit el nivell màxim, pot haver-hi "
+"un Avançament Després del Nivell Màxim (també conegut com AMLA, de l'anglès "
+"<italic>text='After Maximum Level Advancement'</italic>)."
+"L'AMLA suposarà una millora en la unitat que arribi a una certa experiència, "
+"però sempre continuarà tenint el mateix nivell. Per exemple, una unitat pot guanyar "
+"3 punts de vida per cada 100 punts d'experiència. Noteu que només un "
+"reduït nombre d'unitats podrà curar-se mitjançant AMLA. La majoria d'unitats "
+"veuran incrementats els punts de vida màxims."
 
 #: data/help.cfg:199
 msgid "Healing"
 msgstr "Curació"
 
 #: data/help.cfg:200
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -782,8 +793,12 @@ msgid ""
 "not. Wesnoth offers several other ways for your units to heal, all of which "
 "take place at the beginning of your turn, before you take action."
 msgstr ""
-"En combat, les unitats inevitablement prendran mal. Wesnoth ofereix "
-"diferents maneres de curar les unitats, i totes tenen lloc al començament "
+"En combat, les unitats inevitablement prendran mal. Quan una unitat "
+"<ref>dst=experience_and_advancement text='avança de nivell'</ref>, "
+"serà curada completament. Això pot passar després d'acabar de lluitar contra "
+"un enemic, sigui o no el teu torn."
+"Wesnoth ofereix "
+"moltes altres maneres de curar les unitats, i totes tenen lloc al començament "
 "del vostre torn, abans de passar a l'acció."
 
 #: data/help.cfg:202
@@ -795,7 +810,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Reposar: una unitat que no es mou de la seva posició, i ni ataca ni és "
+"Repòs: una unitat que no es mou de la seva posició, i ni ataca ni és "
 "atacada, recuperarà 2 punts de vida al següent torn."
 
 #: data/help.cfg:203
@@ -805,7 +820,7 @@ msgid ""
 msgstr ""
 "\n"
 "Llogarets: una unitat que comença el torn en un llogaret curarà 8 punts de "
-"vida."
+"les seves ferides."
 
 #: data/help.cfg:204
 msgid ""
@@ -814,7 +829,7 @@ msgid ""
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Regeneració</ref>: certes unitats amb "
+"<ref>dst=ability_regenerates text='Regeneració'</ref>: certes unitats amb "
 "aquesta habilitat (com els trolls) recuperen automàticament 8 punts de vida "
 "cada torn."
 
@@ -827,9 +842,14 @@ msgid ""
 "and are fighting on the same side as the healing unit, and only up to 4HP "
 "per unit."
 msgstr ""
+"\n"
+"Unitats guaridores: les unitats amb l'habilitat de "
+"<ref>dst=ability_healstext='guarir'</ref>, curaran fins a 8 punts de vida "
+"per torn, així com també podran prevenir l'efecte del verí. El seu poder "
+"afecta únicament a aquelles unitats que estiguin estiguin al seu voltant, "
+"i té un limit de 4 punts de vida per unitat."
 
 #: data/help.cfg:206
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -845,7 +865,6 @@ msgstr ""
 "curar unitats enverinades."
 
 #: data/help.cfg:208
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -858,8 +877,8 @@ msgstr ""
 "\n"
 "\n"
 "El repòs es pot combinar amb altres mètodes per curar, però no passa el "
-"mateix amb els llogarets, la regeneració o les unitats guaridores/curadores. "
-"A més, les unitats recuperen tota la seva vida entre els escenaris d'una "
+"mateix amb els llogarets, la regeneració o les unitats guaridores i curadores. "
+"Per acabar, recordeu que les unitats recuperen tota la seva vida entre els escenaris d'una "
 "campanya."
 
 #: data/help.cfg:213
@@ -963,9 +982,8 @@ msgstr ""
 "necessiteu per jugar la campanya Hereu al tron. Divertiu-vos, i bona sort!"
 
 #: data/help.cfg:232
-#, fuzzy
 msgid "Contributors"
-msgstr "+Col·laboradors"
+msgstr "Col·laboradors"
 
 #: data/help.cfg:238
 msgid "License"
@@ -992,6 +1010,12 @@ msgid ""
 "text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
 "<ref>dst=traits_strong text=Strong</ref>."
 msgstr ""
+"\n"
+"\n"
+"Els trets disponibles per a tots als que no siguin no morts són "
+"<ref>dst=traits_intelligent text='intel·ligent'</ref>, <ref>dst=traits_quick "
+"text='ràpid'</ref>, <ref>dst=traits_resilient text='resistent'</ref>, i "
+"<ref>dst=traits_strong text='fort'</ref>."
 
 #: data/help.cfg:249
 msgid ""
@@ -1001,18 +1025,22 @@ msgid ""
 "text=Loyal</ref>, <ref>dst=traits_undead text=Undead</ref>, and "
 "<ref>dst=traits_dextrous text=Dextrous</ref>."
 msgstr ""
+"\n"
+"\n"
+"Altres trets que poden ser assignats són <ref>dst=traits_loyal "
+"text='lleial'</ref>, <ref>dst=traits_undead text='no mort'</ref>, i "
+"<ref>dst=traits_dextrous text='destre'</ref>."
 
 #: data/help.cfg:254
-#, fuzzy
 msgid "Intelligent"
-msgstr "intel·ligent"
+msgstr "Intel·ligent"
 
 #: data/help.cfg:255
 msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
+msgstr "Les unitats intel·ligents necessiten un 20% menys d'experiència per "
+"pujar de nivell."
 
 #: data/help.cfg:257
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1024,29 +1052,25 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Intel·ligent</header>\n"
-"\n"
-"Les unitats intel·ligents requereixen un 20% menys d'experiència per avançar "
-"de nivell.\n"
-"\n"
 "Les unitats intel·ligents són molt útils al principi de les campanyes, ja "
-"que poden avançar més ràpidament i convertir-se així en unitats de nivells "
-"superiors. En etapes posteriors, no són tan útils. Si teniu moltes unitats "
+"que poden avançar més ràpidament i convertir-se així en unitats "
+"superiors. En etapes posteriors, no són tan útils ja que una vegada assolit "
+"el nivell màxim, els canvis no són significatius. "
+"Si teniu moltes unitats "
 "de nivell màxim, podeu mirar de reincorporar unitats amb trets més útils a "
 "llarg termini."
 
 #: data/help.cfg:262
-#, fuzzy
 msgid "Quick"
-msgstr "ràpid"
+msgstr "Ràpid"
 
 #: data/help.cfg:263
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgstr ""
+"Les unitats ràpides tenen un punt de moviment extra, però un 10% menys de "
+"vida de lo normal."
 
 #: data/help.cfg:265
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1059,12 +1083,6 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Ràpid</header>\n"
-"\n"
-"Les unitats ràpides tenen un punt de moviment extra, però un 10% menys de "
-"vida de lo normal.\n"
-"\n"
 "La rapidesa és un dels trets més notables, particularment en unitats lentes "
 "com ara els trolls o la infanteria pesada. Les unitats amb aquest tret "
 "guanyen una considerable mobilitat en terrenys escabrosos. Recordeu també "
@@ -1072,16 +1090,15 @@ msgstr ""
 "per mantenir posicions."
 
 #: data/help.cfg:270
-#, fuzzy
 msgid "Resilient"
-msgstr "resistent"
+msgstr "Resistent"
 
 #: data/help.cfg:271
 msgid "Resilient units have 7 more HP than usual."
 msgstr ""
+"Les unitats resistents tenen 7 punts de vida més del que és habitual."
 
 #: data/help.cfg:273
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1093,11 +1110,6 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Resistent</header>\n"
-"\n"
-"Les unitats resistents tenen 7 punts de vida més del que és habitual. \n"
-"\n"
 "Les unitats resistents poden ser molt útils en totes les etapes de la "
 "campanya, i és un tret vàlid per a totes les unitats. Aquest tret ajuda molt "
 "a unitats que, o bé tenen pocs punts de vida, o bé tenen ja una bona "
@@ -1105,18 +1117,18 @@ msgstr ""
 "posicions davant l'oponent."
 
 #: data/help.cfg:278
-#, fuzzy
 msgid "Strong"
-msgstr "fort"
+msgstr "Fort"
 
 #: data/help.cfg:279
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 2 more HP."
 msgstr ""
+"Les unitats fortes fan 1 punt més de mal en combat cos a cos, i tenen 2 "
+"punts més de vida."
 
 #: data/help.cfg:281
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1127,21 +1139,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Fort</header>\n"
-"\n"
-"Les unitats fortes fan 1 punt més de mal en combat cos a cos, i tenen 2 "
-"punts més de vida.\n"
-"\n"
 "Útils per a qualsevol combat a curta distància, el tret fort és més efectiu "
 "amb unitats que tenen un nombre elevat de oportunitats de colpejar, com ara "
 "el lluitador elf. Les unitats fortes poden ser molt bones quan només un "
 "petit augment del mal és capaç de convertir un cop fort en un cop mortal."
 
 #: data/help.cfg:286
-#, fuzzy
 msgid "Loyal"
-msgstr "lleial"
+msgstr "Lleial"
 
 #: data/help.cfg:287
 msgid ""
@@ -1149,9 +1154,11 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
+"Les unitats lleials no costen manteniment. A diferència de la majoria "
+"d'unitats, que necessiten un mínim de diners al final de cada torn, no s'ha "
+"de pagar res per aquestes unitats."
 
 #: data/help.cfg:289
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1164,33 +1171,24 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Lleial</header>\n"
-"\n"
-"Les unitats lleials no costen manteniment. A diferència de la majoria "
-"d'unitats, que necessiten un mínim de diners al final de cada torn, no s'ha "
-"de pagar res per aquestes unitats.\n"
-"\n"
-"\n"
 "Durant les campanyes, certes unitats poden optar per unir-se a vos per "
 "decisió propia. Aquestes unitats són marcades amb el tret 'lleial'. Encara "
 "que pot ser necessari pagar per tal de reincorporar-les, no caldrà mai pagar "
 "el seu cost de manteniment. Aquest fet les converteix en unitats amb un "
 "valor incalculable en campanyes llargues, en els moments en que anem més "
-"escassos de recursos. No s'assigna mai a unitats reclutades, així que no "
+"escassos de recursos. Aquest tret no s'assigna mai a unitats reclutades, així que no "
 "seria gaire encertat acomiadar-les o enviar-les a una mort inútil."
 
 #: data/help.cfg:294 data/multiplayer.cfg:69 data/multiplayer.cfg:158
 #: data/multiplayer.cfg:260 data/translations/english.cfg:129
 msgid "Undead"
-msgstr "No morts"
+msgstr "No mort"
 
 #: data/help.cfg:295
 msgid "Undead units are immune to poison."
-msgstr ""
+msgstr "Les unitats no mortes són immunes al verí."
 
 #: data/help.cfg:297
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1201,27 +1199,22 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=No mort</header>\n"
-"\n"
-"Les unitats no mortes són immunes al verí.\n"
-"\n"
 "En general, els no morts tenen únicament aquest tret. Com que aquestes "
 "unitats estan formades pels cossos dels morts, el verí no té cap efecte "
 "sobre elles. Aquest fet converteix els no morts en el pitjor enemic "
 "d'aquells que usen algun tipus de verí en els seus atacs."
 
 #: data/help.cfg:302
-#, fuzzy
 msgid "Dextrous"
-msgstr "destre"
+msgstr "Destre"
 
 #: data/help.cfg:303
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
 msgstr ""
+"Les unitats destres fan +1 de mal cada vegada que encerten una fletxa amb el "
+"seu arc."
 
 #: data/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1231,12 +1224,6 @@ msgid ""
 "inflict an additional point of damage with each arrow."
 msgstr ""
 "\n"
-"\n"
-"\n"
-"<header>text=Destre</header>\n"
-"\n"
-"Les unitats destres fan +1 de mal cada vegada que encerten una fletxa amb el "
-"seu arc.\n"
 "\n"
 "Només els elfs poden posseir aquest tret. La gent elfa és coneguda per la "
 "seva estranya gràcia, i la seva facilitat increïble pel tir amb arc. Alguns, "
@@ -1276,7 +1263,7 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
-"Els camins són rutes marcades de terra formades pels mateixos viatgers "
+"Els camins són rutes marcades de terra, formades pels mateixos viatgers "
 "després de passar-hi repetidament. Pel que fa al joc, els camins són "
 "idèntics a les <ref>dst=terrain_grassland text=prades</ref>."
 
@@ -1363,7 +1350,7 @@ msgstr ""
 "escalar per damunt dels obstacles per tal d'avançar. Per la seva naturalesa, "
 "proporcionen bones posicions de defensa per a la majoria de tropes, però "
 "també n'hi ha d'altres que veuen impedit el seu pas. La majoria de la "
-"cavalleria simplement no pot entrar en terreny muntanyós; tanmateix, els "
+"cavalleria simplement no pot entrar en terreny muntanyós; els "
 "exploradors elfs en són una excepció, juntament amb els genets de llop "
 "goblin. Nans i trolls són els habitants més adaptats a la muntanya, i s'hi "
 "mouen amb facilitat.\n"
@@ -1376,7 +1363,6 @@ msgid "Swamp"
 msgstr "Pantà"
 
 #: data/help.cfg:363
-#, fuzzy
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1447,7 +1433,6 @@ msgid "Snow"
 msgstr "Neu"
 
 #: data/help.cfg:393
-#, fuzzy
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1466,14 +1451,13 @@ msgid "Ice"
 msgstr "Gel"
 
 #: data/help.cfg:401
-#, fuzzy
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 "El gel representa tota aquella zona d'aigua gelada. En el joc, és equivalent "
-"a la <ref>dst=terrain_tundra text=tundra</ref>. Cal destacar que les unitats "
+"a la <ref>dst=terrain_tundra text='neu'</ref>. Cal destacar que les unitats "
 "nedadores, fins i tot aquelles que poden respirar sota l'aigua, no poden "
 "nedar per sota del gel."
 
@@ -1517,6 +1501,7 @@ msgstr ""
 "inestabilitat. A més, deixa a les unitats desprotegides davant d'un possible "
 "atac. Una exepció, però, són les races sauries que amb els seus amples peus "
 "i la pell de serp, poden fins i tot arribar a habitar aquestes zones.\n"
+"\n"
 "La majoria d'unitats tenen entre un 20% i un 40% de defensa a la sorra."
 
 #: data/help.cfg:428 data/terrain.cfg:109
@@ -1548,6 +1533,16 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"La cova representa qualsevol caverna sota terra amb prou lloc com per "
+"que hi passi una unitat. La majoria no estan familiaritzades amb "
+"el terreny, i és per això que es veuen alentides i amb un defensa "
+"reduïda. Nans i trolls, que fa de les coves les seves cases, no tenen "
+"gaires dificultats per moure's. Especialment els nans, que gràcies "
+"a la seva estatura no es troben amb tants obstacles com "
+"les altres races.\n"
+"\n"
+"La majoria d'unitats tenen entre un 20% i un 40% de defense a les coves, "
+"mentre que els nans tenen un 50%."
 
 #: data/help.cfg:446 data/terrain.cfg:151
 msgid "Savanna"
@@ -1561,7 +1556,7 @@ msgid ""
 msgstr ""
 "La sabana consisteix en una praderia d'herbes altes que es pot trobar als "
 "climes més càlids. A efectes pràctics del joc, la sabana és igual que la "
-"<ref>dst=terrain_grassland text=prada</ref>."
+"<ref>dst=terrain_grassland text='prada'</ref>."
 
 #: data/help.cfg:453 data/terrain.cfg:43 data/terrain.cfg:64
 #: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:179
@@ -1582,6 +1577,15 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"Els llogarets són petits nuclis de població, ja siguin humans o d'altres races. Gairebé "
+"totes les unitats, fins i tot la cavalleria, poden desplaçar-s'hi cómodament. "
+"A més, les unitats que hi estacionen, es beneficien d'una bonificació defensiva. "
+"Els llogarets també disposen dels recursos necessàris per curar ferides, "
+"i per tant, les unitats poden recuperar fins a 8 punts de vida per cada torn "
+"que hi passin, o bé eliminar els efectes del verí.\n"
+"\n"
+"La majoria d'unitats tenen 50% o 60% de defensa en llogarets. La cavallaria "
+"només un 40%."
 
 #: data/help.cfg:465 data/terrain.cfg:423
 msgid "Canyon"
@@ -1594,6 +1598,10 @@ msgid ""
 "is concerned, only units capable of flying over canyons can cross this "
 "terrain."
 msgstr ""
+"Una gorja és un terreny espadat que arriba fins a profunditats "
+"desconegudes. "
+"Les seves característiques fan d'aquest terreny una zona impossible "
+"de travessar, excepte per aquelles unitats amb capacitat de volar."
 
 #: data/help.cfg:472 data/terrain.cfg:472
 msgid "Lava"
@@ -1605,10 +1613,13 @@ msgid ""
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
+"Els perills d'intentar passar per sobre de la lava són obvis. "
+"Així doncs, aquest terreny només pot ser travessat per aquelles unitats que puguin "
+"volar a una alçada considerable."
 
 #: data/help.cfg:479 data/terrain.cfg:462
 msgid "River Ford"
-msgstr "Gual del riu"
+msgstr "Gual"
 
 #: data/help.cfg:481
 msgid ""
@@ -1619,6 +1630,10 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Quan un riu és poc profund, creuar-lo és trivial per a les unitats terrestres. "
+"A més, qualsevol criatura adaptada a l'aigua té mobilitat completa fins i "
+"tot en aquestes zones. Pel que fa al joc, un gual equival o bé a prada o "
+"bé a aigua baixa, el que millor bonificació de defensa i moviment ofereixi a la unitat."
 
 #: data/help.cfg:486 data/terrain.cfg:75 data/terrain.cfg:83
 #: data/terrain.cfg:91
@@ -1639,17 +1654,29 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Per a aquells capaços de construir-ne, els ponts són tota una alliberació "
+"del canviant cabal dels rius i passos d'aigua, ja que els guals sovint queden inutilitzables "
+"a causa de les marees."
+"Per tant, tenen poc a veure amb el luxe de caminar a peu eixut. La pèrdua "
+"d'un pont no és pas motiu de broma en els mesos més freds de l'any.\n"
+"\n"
+"Per a aquells que van per terra o mar, un pont és el millor d'ambdòs móns. "
+"En el joc, es tracten els ponts com prada o com aigua baixa, "
+"el que ofereixi millor bonificació a la defensa i al moviment. "
+"Tingueu en compte que una unitat nedadora i una terrestre no poden ocupar "
+"un pont al mateix temps."
 
 #: data/help.cfg:495 data/terrain.cfg:349
-#, fuzzy
 msgid "Cave Wall"
-msgstr "Paret de la cova"
+msgstr "Paret de cova"
 
 #: data/help.cfg:497
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"Les parets de les coves estan fetes de roca sólida, anomenada per la seva "
+"capacitat d'impedir el pas fins i tot dels viatgers més determinats."
 
 #: data/items.cfg:264
 msgid ""
@@ -1657,11 +1684,11 @@ msgid ""
 "What would you like to wish for?"
 msgstr ""
 "Heu arribat a un pou dels desitjos.\n"
-"Què voldríeu demanar?"
+"Què voleu demanar?"
 
 #: data/items.cfg:268
 msgid "A swift victory"
-msgstr "Una ràpida victòria"
+msgstr "Una victòria ràpida"
 
 #: data/items.cfg:276
 msgid ""
@@ -1765,7 +1792,7 @@ msgstr "Bastó de la rapidesa"
 
 #: data/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
-msgstr "Aquest bastó concedirà al seu portador un moviment més ràpid."
+msgstr "Aquest bastó concedirà al seu portador moviments més ràpids."
 
 #: data/items.cfg:619
 msgid "Only magical beings can wield such an object."
@@ -2146,7 +2173,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr "Aigua Blava"
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:4
 msgid ""
@@ -2155,6 +2182,10 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice. Recommended settings of 2 gold per village."
 msgstr ""
+"Es diu que la província d'Aigua Blava ha estat destruïda i reconstruïda "
+"desenes de vegades. Ara, els exèrcits tornen a convergir una altra vegada "
+"sobre el terreny rocòs i escarpat d'aquesta petita província."
+"Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
 msgid "4p - Castle Hopping Isle"
@@ -2204,7 +2235,7 @@ msgid ""
 "settings of 1G per village."
 msgstr ""
 "Quatre faccions lluiten per la dominació d'aquest assentament aquós. Es "
-"recomana 1 monedes d'or per llogaret."
+"recomana 1 moneda d'or per llogaret."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
@@ -2235,7 +2266,7 @@ msgid ""
 "1G per village."
 msgstr ""
 "Una extensa regió salvatge, amb terrenys formats per boscos, coves, rius i "
-"ruïnes d'antigues fortaleses. Es recomana 1 monedes d'or per llogaret."
+"ruïnes d'antigues fortaleses. Es recomana 1 moneda d'or per llogaret."
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
 msgid "5p - Forest of Fear"
@@ -2257,10 +2288,9 @@ msgstr "Partides per equips de 2 contra 2 o 3 contra 3."
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:3
 msgid "6p - Smallolof"
-msgstr ""
+msgstr "Breu escaramussa"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head. Recommended settings of 2 gold per "
@@ -2337,7 +2367,7 @@ msgid ""
 "can regenerate them until you get a good one."
 msgstr ""
 "Un mapa aletori que té lloc entre l'hivern i la primavera, majoritariment "
-"amb terrenys nevats. Nota: els mapes aleatoris poden ser desequilibrats, "
+"en terrenys nevats. Nota: els mapes aleatoris poden ser desequilibrats, "
 "però si teniu temps, podeu regenerar-lo fins a obtenir-ne un de bo."
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
@@ -2377,7 +2407,7 @@ msgstr ""
 "Abans de començar cap batalla, necessiteu reclutar unitats. Per tal de "
 "reclutar una unitat, heu de fer clic amb el botó dret sobre el castell. "
 "Aleshores, premeu 'Recluta' i després 'D'acord'. Només podeu reclutar "
-"unitats des del castell on esteu."
+"unitats des de la torre on esteu."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:78
 msgid "Recruit a unit"
@@ -2426,7 +2456,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "Moveu el vostre lluitador a prop de Merle"
+msgstr "Mou al lluitador a prop de Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:147
 msgid ""
@@ -2444,7 +2474,7 @@ msgid ""
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
-"Ara, heu d'atacar amb el vostre lluitador. Per atacar, primer seleccioneu "
+"Ara heu d'atacar amb el vostre lluitador. Per atacar, primer seleccioneu "
 "una unitat, i seguidament seleccioneu el seu objectiu, que ha de ser una "
 "unitat enemiga propera. Veureu aleshores el diàleg d'atac, on haureu de "
 "seleccionar l'atac a realitzar."
@@ -2606,7 +2636,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:71
 msgid "Defeat Delfador"
-msgstr "Derroteu Delfador"
+msgstr "Derrota Delfador"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 #: data/scenarios/tutorial/utils.cfg:51
@@ -2690,7 +2720,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
 msgid "This potion increases the damage of all the drinker's attacks by four."
-msgstr "Aquesta poció incrementa per quatre el mal del atacs de qui la beu."
+msgstr "Aquesta poció incrementa per quatre el mal dels atacs de qui la beu."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:218
 msgid ""
@@ -2698,7 +2728,7 @@ msgid ""
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
-"Recordeu prevenir que l'enemic capturi llogarets, i torneu a capturar "
+"Recordeu evitar sempre que sigui possible que l'enemic capturi llogarets, i torneu a capturar "
 "aquells que ja siguin seus. D'aquesta manera reduireu el seu subministre de "
 "diners, impossibilitant que recluti unitats."
 
@@ -2817,7 +2847,7 @@ msgid ""
 msgstr ""
 "Una manera de fer-ho és simplement clicant sobre el botó 'Fi del torn' que "
 "hi ha a la cantonada inferior dreta. També podeu fer servir la drecera de "
-"teclat 'Alt-E'."
+"teclat 'Alt-Espai'."
 
 #: data/scenarios/tutorial/utils.cfg:74
 msgid "What happens when I end my turn?"
@@ -2857,9 +2887,9 @@ msgid ""
 "twice to remove the course."
 msgstr ""
 "El vostre lluitador elf comença cada torn amb un nombre determinat de punts "
-"de moviment. Aquesta és la seva velocitat. Quan el vostre lluitador elf es "
-"mou per una ruta, cada hexàgon que travessa li costa punts de moviment. Quan "
-"el seleccioneu, els hexàgons als que no pot arribar en un sol torn quedaran "
+"de moviment. Aquesta és la seva velocitat. Quan la unitat es "
+"mou per una ruta, cada hexàgon que travessa li costa punts de moviment. En "
+"seleccionar-lo, els hexàgons als que no pot arribar en un sol torn quedaran "
 "enfosquits. Si la destinació està més lluny d'un torn, es mostraran el "
 "nombre de torns necessaris per arribar-hi. Si accidentalment us equivoqueu, "
 "podeu cancel·lar la destinació seleccionant la unitat dos vegades."
@@ -2884,7 +2914,7 @@ msgstr "Què és la zona de control?"
 
 #: data/scenarios/tutorial/utils.cfg:80
 msgid "How do I tell who is allied and who is an enemy?"
-msgstr "Com puc saber qui es un aliat i qui es un enemic?"
+msgstr "Com puc saber qui és un aliat i qui un enemic?"
 
 #: data/scenarios/tutorial/utils.cfg:80
 msgid ""
@@ -2901,8 +2931,8 @@ msgstr ""
 "moviment parcial, i el vermell que ja ha esgotat el seu moviment. Les "
 "unitats controlades per l'enemic no tenen cercle d'energia, mentre que els "
 "aliats que no podeu controlar directament, com ara jo, tenen un cercle blau. "
-"A més d'això, l'opció 'Mostra colors de bàndol' que trobareu a les "
-"'Preferències' del joc, fa que el color del bàndol es pugui veure sota cada "
+"A més d'això, l'opció 'Mostra colors de bàndol' que trobareu al diàleg de "
+"preferències del joc, fa que el color del bàndol es pugui veure a sota de cada "
 "unitat en forma de el·lipse."
 
 #: data/scenarios/tutorial/utils.cfg:84
@@ -2931,8 +2961,8 @@ msgstr ""
 "cops. Tot i així, qualsevol unitat només pot contraatacar usant armes del "
 "mateix rang que l'atacant. Per exemple, un atac a llarga distància només pot "
 "ser contrarestat amb un altre atac a llarga distància. La majoria d'unitats "
-"tenen millors atacs de cos a cos que de llarga distància. Les unitats amb "
-"atacs a llarga distància més forts son útils atacant unitats més orientades "
+"tenen millors atacs de cos a cos que de llarga distància. Per això les unitats amb "
+"atacs a llarga distància més forts son útils contra unitats més orientades "
 "al cos a cos."
 
 #: data/scenarios/tutorial/utils.cfg:85
@@ -2947,8 +2977,8 @@ msgid ""
 "combat."
 msgstr ""
 "Cada atac fa una certa quantitat de mal per cop, i pot repetir-se un "
-"determinat nombre de vegades per batalla. Aquests nombres es mostren en "
-"ordre sota el nom de l'atac a la descripció de la unitat. Per saber "
+"determinat nombre de vegades a cada batalla. Aquests nombres es mostren en "
+"ordre sota el nom de l'atac, a la descripció de la unitat. Per saber "
 "ràpidament el màxim mal que es pot fer amb un atac, multiplica el mal per el "
 "nombre de cops. Per exemple, el meu atac de llampec fa 14 de mal i el puc "
 "fer 4 vegades, per tant, puc fer fins a 56 punts de mal en un sol combat."
@@ -2985,8 +3015,8 @@ msgid ""
 msgstr ""
 "Quan una unitat lluita, guanya experiència (també denotada 'XP'). La "
 "quantitat d'experiència guanyada és igual al nivell de l'oponent que sol "
-"representar el poder de la unitat. Es guanya molta més experiència derrotant "
-"una unitat enemiga. En aquest cas la quantitat d'experiència guanyada serà "
+"representar el poder de la unitat. Però es guanya molta més experiència derrotant "
+"una unitat enemiga. En aquest cas, la quantitat d'experiència guanyada serà "
 "de 8 vegades el nivell de la unitat."
 
 #: data/scenarios/tutorial/utils.cfg:91
@@ -3045,11 +3075,11 @@ msgid ""
 "scenario all of your units are fully healed."
 msgstr ""
 "Hi ha diferents maneres de fer-ho fins i tot sense llogarets. Si una unitat "
-"no es mou ni ataca durant un torn, recuperarà 2 punts de vida per descansar. "
+"no es mou ni ataca durant un torn, recuperarà 2 punts de vida pel fet de descansar. "
 "A més, hi ha certes unitats que són capaces de guarir les unitats properes. "
 "La xaman elfa és una d'aquestes unitats; les unitats ferides que estiguin al "
 "seu voltant recuperaran 4 punts de vida cada torn. Finalment, sempre que una "
-"unitat guanyi un nivell, recuperarà tots els seus punts de vida. "
+"unitat pugi de nivell, recuperarà tots els seus punts de vida. "
 
 #: data/scenarios/tutorial/utils.cfg:100
 msgid "How do I know how to complete a scenario? Will you always tell me?"
@@ -3067,7 +3097,7 @@ msgstr ""
 "De vegades no està del tot clar com guanyar un escenari simplement escoltant "
 "el diàleg. En aquests casos, haureu de mirar els objectius de l'escenari, "
 "que apareixen en finalitzar els diàlegs. També podeu accedir-hi durant la "
-"partida fent clic al botó 'Objectius de l'escenari' del menú. Els objectius "
+"partida fent clic a 'Objectius de l'escenari', al menú. Els objectius "
 "són una llista de condicions de victòria i derrota. Quan aquestes condicions "
 "es compleixen, l'escenari s'acaba... amb una mica de sort victoriosament."
 
@@ -3085,9 +3115,9 @@ msgid ""
 msgstr ""
 "Quan guanyeu un escenari, totes les vostres unitats sobreviuen, són curades, "
 "i no heu de pagar el seu manteniment durant els torns restants. A més, si el "
-"vostre exèrcit continua en la mateixa zona després de vèncer, totes les "
-"viles que hi hagi seran vostres immediatament després de la victòria. "
-"Tingueu en compte, però, que entre els escenaris es perd un 20% de l'or "
+"vostre exèrcit continua en la mateixa zona després de vèncer, tots els "
+"llogarets que hi hagi seran vostres immediatament després de la victòria. "
+"Tingueu en compte, però, que entre escenaris es perd un 20% de l'or "
 "recaptat."
 
 #: data/scenarios/tutorial/utils.cfg:105
@@ -3149,7 +3179,7 @@ msgid ""
 "traits when they are recruited. Also, some races and units may have traits "
 "that are unique to them."
 msgstr ""
-"Hi ha cinc tipus de trets que tenen diferents efectes, des de incrementar "
+"Hi ha cinc tipus de trets que tenen diferents efectes, des d'incrementar "
 "els punts de vida fins a reduir l'experiència necessària per avançar de "
 "nivell. En qualsevol cas, els trets estan dissenyats per millorar les "
 "unitats, no hi ha trets negatius. La majoria de les unitats tenen la mateixa "
@@ -3283,11 +3313,11 @@ msgid ""
 "it will cost the selected unit to move through that hex."
 msgstr ""
 "Per saber quines són les propietats d'un terreny respecte una unitat, feu "
-"clic amb el botó dret sobre la unitat i seleccioneu 'Descriu unitat'. Allà "
+"clic amb el botó dret sobre la unitat i seleccioneu 'Descriu la unitat'. Allà "
 "hi trobareu un llistat dels modificadors de terreny. D'altra banda, a la "
 "barra d'estat superior, a la part dreta, hi podeu veure el nom del terreny i "
-"les coordenades, i si hi ha alguna unitat, la seva defensa i el nombre de "
-"punts de moviment que són necessaris per passar per aquell terreny."
+"les coordenades. A més, si hi ha alguna unitat, veureu la seva defensa i el nombre de "
+"punts de moviment que li calen per passar per aquell terreny."
 
 #: data/scenarios/tutorial/utils.cfg:130
 msgid ""
@@ -3326,7 +3356,7 @@ msgstr ""
 "màgics: foc, fred i sagrat. Totes les unitats vivents tenen resistència "
 "contra els atacs sagrats mentre que els no morts són molt vulnerables. Per "
 "veure les resistències específiques de cada unitat, feu clic amb el botó "
-"dret sobre la unitat i seleccioneu 'Descriu unitat'."
+"dret sobre la unitat i seleccioneu 'Descriu la unitat'."
 
 #: data/scenarios/tutorial/utils.cfg:131
 msgid "What are the different damage types?"
@@ -3340,7 +3370,7 @@ msgid ""
 msgstr ""
 "Cadascuna d'aquestes característiques fa coses diferents, aquesta és la seva "
 "gràcia. Per veure la descripció d'una d'aquestes especialitats, poseu el "
-"ratolí sobre aquesta."
+"ratolí a sobre."
 
 #: data/scenarios/tutorial/utils.cfg:135
 msgid "What do specialties do?"
@@ -3473,7 +3503,7 @@ msgstr "Terra"
 
 #: data/terrain.cfg:213 data/terrain.cfg:224
 msgid "Desert Village"
-msgstr "Llogaret"
+msgstr "Llogaret desèrtic"
 
 #: data/terrain.cfg:235
 msgid "Tropical Forest Village"
@@ -3493,11 +3523,11 @@ msgstr "Dunes"
 
 #: data/terrain.cfg:301
 msgid "Snow Hills"
-msgstr "Turons nevats"
+msgstr "Colls nevats"
 
 #: data/terrain.cfg:317
 msgid "Desert Mountains"
-msgstr "Muntanyes"
+msgstr "Muntanyes desèrtiques"
 
 #: data/terrain.cfg:332
 msgid "Tropical Forest"
@@ -3512,7 +3542,6 @@ msgid "Encampment"
 msgstr "Campament"
 
 #: data/terrain.cfg:393
-#, fuzzy
 msgid "Dwarven Castle"
 msgstr "Castell nan"
 
@@ -3616,7 +3645,7 @@ msgstr ""
 "Hi ha sis tipus d'atac: tallant, perforant, impactant, foc, fred i sagrat. "
 "Les unitats tenen debilitats contra certs tipus d'atacs. Per veure les "
 "resistències específiques de cada unitat, feu clic amb el botó dret sobre la "
-"unitat i seleccioneu 'Descriu unitat'."
+"unitat i seleccioneu 'Descriu la unitat'."
 
 #: data/tips.cfg:4
 msgid ""
@@ -3658,11 +3687,11 @@ msgid ""
 "turn. Level 0 units are too frail to control a zone; and skirmisher units "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Totes les unitats exerceixen una zona de control sobre els hexàgons que té "
+"Totes les unitats exerceixen una zona de control sobre els hexàgons que tenen "
 "al seu voltant. Si una unitat entra en la zona de control de l'enemic, no "
 "podrà moure's més durant aquell torn. Hi ha excepcions: les unitats de "
 "nivell 0, que són massa dèbils per controlar una zona; i les unitats "
-"fustigadores, que ignoren aquestes zones."
+"amb capacitat per esquivar, que ignoren aquestes zones."
 
 #: data/tips.cfg:8
 msgid ""
@@ -3839,8 +3868,8 @@ msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Feu servir els curadors per ajudar les unitats d'atac. Guanyaran batalles "
-"sense atacar res directament."
+"Feu servir els curadors per ajudar les unitats d'atac. Us faran guanyar batalles "
+"sense atacar ningú directament."
 
 #: data/tips.cfg:29
 msgid ""
@@ -3992,7 +4021,7 @@ msgstr ""
 "unitats més ràpidament del que seria possible al camp de batalla. Tindrà "
 "cura de les unitats amigues adjacents que hagin estat malmeses.\n"
 "Una unitat curada pot recuperar fins a 8 punts de vida per torn.\n"
-"Es poden curar fins a 18 punts de vida per torn, per a totes les unitats.\n"
+"Es poden curar fins a 18 punts de vida en total, per a totes les unitats.\n"
 "Les unitats enverinades no rebran cap curació addicional durant el torn en "
 "que són tractades del seu enverinament."
 
@@ -4041,7 +4070,7 @@ msgstr ""
 "Aquesta unitat il·lumina l'àrea que l'envolta, fent que les unitats legals "
 "lluitin millor, i les caòtiques pitjor.\n"
 "Qualsevol unitat adjacent a aquesta lluitarà com ho faria al vespre quan és "
-"de nit, y com ho faria al alba durant la vesprada."
+"de nit, i com ho faria al alba durant la vesprada."
 
 #: data/translations/english.cfg:49
 msgid "illuminates"
@@ -4131,7 +4160,7 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
 "Zones of Control."
 msgstr ""
-"Fustigar:\n"
+"Esquiva:\n"
 "Aquesta unitat és hàbil movent-se entre els enemics ràpidament. Ignora totes "
 "les zones de control."
 
@@ -4143,7 +4172,7 @@ msgstr ""
 #: data/units/Saurian_Ambusher.cfg:20 data/units/Saurian_Flanker.cfg:22
 #: data/units/Saurian_Skirmisher.cfg:20 data/units/Saurian_Warrior.cfg:23
 msgid "skirmisher"
-msgstr "fustiga"
+msgstr "esquiva"
 
 #: data/translations/english.cfg:81
 msgid ""
@@ -4258,7 +4287,7 @@ msgid ""
 msgstr ""
 "Verí:\n"
 "Aquest atac enverina el seu blanc. Les unitats enverinades perden 8 punts de "
-"vida cada torn fins que son curades o bé arriban a un punt de vida."
+"vida cada torn fins que son curades o bé arriben a un punt de vida."
 
 #: data/translations/english.cfg:120
 msgid ""
@@ -4268,7 +4297,7 @@ msgid ""
 "controllers' turn."
 msgstr ""
 "Alenteix:\n"
-"Aquesta unitat alenteix l'objectiu. Les unitats alentides es mouen a la "
+"Aquest atac alenteix l'objectiu. Les unitats alentides es mouen a la "
 "meitat de la seva velocitat habitual i poden realitzar menys atacs en combat "
 "durant un torn."
 
@@ -4279,7 +4308,7 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "Petrifica:\n"
-"Aquesta unitat pot convertir els seus enemics en pedra. Les unitats "
+"Aquest atac pot convertir els enemics en pedra. Les unitats "
 "petrificades no es poden moure ni atacar."
 
 #: data/translations/english.cfg:132
@@ -4329,12 +4358,12 @@ msgstr "$name|a,$name de munt,$name,El bosc de $name"
 
 #: data/translations/english.cfg:143
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name de mar,$name de dalt,$name,$name,$name"
+msgstr "Mont $name,$name de dalt,$name,Coll de $name,Turó de $name"
 
 #: data/translations/english.cfg:144
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
-msgstr "$name,$name,$name,$name,$name,$name,$name"
+msgstr "Can $name,El $name,Sant $name,$name,$name,$name,$name"
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
@@ -4350,6 +4379,13 @@ msgid ""
 "high chance of hitting an opponent. The touch of a lich drains the victim's "
 "life to renew the lich."
 msgstr ""
+"Un ésser d'aquest ordre és tot un herald de temps passats. Qualsevol "
+"que es trobi amb un lich ancià tindrà preocupacions molt més importants "
+"que la mort.\n"
+"\n"
+"Notes especials\nEls atacs a distància d'un lich són màgics i sempre tenen moltes"
+"possibilitats d'encertar. D'altra banda, el seu toc drena la vida "
+"de la víctima per recuperar-se."
 
 #: data/units/Ancient_Lich.cfg:44 data/units/Demilich.cfg:32
 #: data/units/Dread_Lich.cfg:21 data/units/Ghost.cfg:23 data/units/Lich.cfg:24
@@ -4531,6 +4567,21 @@ msgid ""
 "Special Notes: the arch mage's fireballs are magical, and always have a high "
 "chance of hitting an opponent."
 msgstr ""
+"El títol d'arximag només és conferit després de tota una vida d'estudi "
+"i dedicació a la màgia. Els arximags sovint ocupen el seu temps en l'educació,"
+" o com a consellers d'aquells prou intel·ligents com per buscar en la seva "
+"saviesa. Molts tenen patrons rics, un negoci profitòs "
+"ja que més enllà dels consells ocasionals, els deixa tenen temps "
+"per dedicar-se a la recerca. N'hi ha d'altres que prefereixen "
+"allunyar-se de la civilització, passant els seus dies com ermitans.\n"
+"\n"
+"Tot i que no estan entrenats pel combat, si sorgeix la necessitat són "
+"capaços de desplegar tot el poder del seu art, cosa que no s'ha de prendre "
+"a la lleugera.\n"
+"\n"
+"Notes especials\n"
+"Les boles de foc dels arximags són màgiques, per tant, tenen moltes "
+"possibilitats de colpejar l'enemic."
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:152
 #: data/units/Dark_Sorcerer.cfg:24 data/units/Deathmaster.cfg:32
@@ -4599,6 +4650,19 @@ msgid ""
 "creeping around behind that enemy. Their throwing knives are also poisoned, "
 "which will continually sap away an enemy's strength."
 msgstr ""
+"Els més grans dels lladres sovint s'han d'encarregar de tasques que van "
+"més enllà de robar les possissions de les seves víctimes. Mestres de la "
+"lluita amb ganivets, i sorprenentment lleugers a l'hora de moure's, "
+"aquestes amenaçadores figures empren el sigil per desempallegar-se dels "
+"seus adversaris. "
+"Mortífers per la nit, els assassins es senten una mica insegurs si "
+"han de lluitar en ple dia.\n"
+"\n"
+"Notes especials\n"
+"Mentre una unitat del mateix bàndol que l'assassí distreu un enemic, aquest "
+"pot anar pel darrere i clavar-li una punyalada per l'esquena, infligint el "
+"doble de mal. Els seus ganivets també estan enverinats, podent "
+"causar així un dolor continuat a la víctima després del combat."
 
 #: data/units/Assassin.cfg:37 data/units/Assassin.cfg:119
 #: data/units/Dwarvish_Thunderer.cfg:38
@@ -4718,6 +4782,11 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Els bandits són grups d'homes amb un passat dubtós."
+"Són el braç armat de tot tipus de grups criminals organitzats, i tot i la "
+"manca d'intel·ligència i delicadesa, compleixen a la perfecció la seva "
+"missió. De la mateixa manera que els proscrits, no se senten cómodes "
+"lluitant en plena llum del dia, i prefereixen actuar de nit."
 
 #: data/units/Bandit.cfg:34 data/units/Drake_Enforcer.cfg:43
 #: data/units/Drake_Gladiator.cfg:61 data/units/Great_Troll.cfg:24
@@ -4729,13 +4798,12 @@ msgid "mace"
 msgstr "maça"
 
 #: data/units/Battle_Princess.cfg:3
-#, fuzzy
 msgid "female^Battle Princess"
-msgstr "Princesa proscrita"
+msgstr "Princesa de batalla"
 
 #: data/units/Battle_Princess.cfg:19 data/units/Battle_Princess.cfg:70
 msgid "leadership,skirmisher"
-msgstr "lideratge, fustiga"
+msgstr "lideratge, esquiva"
 
 #: data/units/Battle_Princess.cfg:21 data/units/Battle_Princess.cfg:72
 msgid ""
@@ -4744,9 +4812,9 @@ msgid ""
 "great combatant and leader. Now battle-hardened and strong of will, she can "
 "now aid those around her in the art of combat."
 msgstr ""
-"Noble de naixement, la princesa ha après a lluitar amb els més grans "
-"generals, i ha conegut l'estratègia amb els més grans savis. Ens trobem "
-"doncs davant una gran combatent i millor líder, capaç d'ajudar durant la "
+"Noble de naixement, la princesa ha après a lluitar amb els millors "
+"generals, i ha conegut l'estratègia amb els savis més grans. Ens trobem "
+"doncs davant d'una gran combatent i millor líder, capaç d'ajudar durant la "
 "lluita als seus soldats de rang inferior."
 
 #: data/units/Battle_Princess.cfg:36 data/units/Battle_Princess.cfg:75
@@ -4810,9 +4878,10 @@ msgid ""
 "began the battle. Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
-"La pell d'aquest no mort està recoberta de sang de les seves víctimes. El "
-"xuclasang és ràpid, i amb la sang de les ferides dels seus enemics es cura i "
-"s'enforteix."
+"El xuclasang és ràpid, i amb la sang de les ferides dels seus enemics "
+"pot curar-se fins al punt de fer-se més fort del que era en començar "
+"la batalla."
+"Tant és així, que la pell d'aquestes criatures voladores està recoberta del vermell de la sang de les seves víctimes."
 
 #: data/units/Blood_Bat.cfg:33 data/units/Cave_Spider.cfg:33
 #: data/units/Direwolf_Rider.cfg:42 data/units/Goblin_Knight.cfg:23
@@ -4826,7 +4895,6 @@ msgid "Bone Shooter"
 msgstr "Disparaossos"
 
 #: data/units/Bone_Shooter.cfg:15
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -4835,10 +4903,13 @@ msgid ""
 "Dubbed simply 'Bone-Shooters' by their unfortunate enemies, these "
 "abominations are a terror to all who live."
 msgstr ""
-"Els més destres dels arquers no morts són triats pels seus mestres i "
-"equipats amb un autèntic arsenal de guerra. Al carcaix, no hi duen simples "
-"fletxes de fusta, sinó ossos dels seus enemics. Se'ls coneix com els "
-"disparaossos, i només el seu nom ja causa terror entre els adversaris."
+"De les creacions dels nigromants, algunes s'aferren més fortament a la "
+"falsa vida que els ha estat donada. "
+"Els arquers en concret sovint s'equipen amb un arsenal tant cruel com ells."
+"Al carcaix no hi duen simples fletxes de fusta, sinó ossos de les seves "
+"víctimes. Més coneguts com disparaossos "
+"entre els seus desafortunats enemics, "
+"la sola menció d'aquest nom ja causa terror."
 
 #: data/units/Bone_Shooter.cfg:36 data/units/Soul_Shooter.cfg:27
 msgid "stab"
@@ -4938,6 +5009,12 @@ msgid ""
 "woodsman, bowmen have reasonable prowess with both a bow and a short sword, "
 "and are very common on the battlefield."
 msgstr ""
+"L'ús dels arcs per disparar des de la distància més enllà de cap joc "
+"es va veure com una possibilitat des dels seus inicis, i els arquers han estat indispensables "
+"en les guerres des d'aleshores. "
+"Normalment d'orígen humil, vinguts de famílies de pagesos o llenyataires, "
+"els arquers saben agafar raonablement bé tant l'arc com l'espasa petita, "
+"i són habituals al camp de batalla."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
@@ -5140,9 +5217,8 @@ msgid "chill wave"
 msgstr "onada de fred"
 
 #: data/units/Dark_Adept.cfg:63
-#, fuzzy
 msgid "female^Dark Adept"
-msgstr "Reina Obscura"
+msgstr "Adepta obscura"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
@@ -7910,7 +7986,7 @@ msgstr "Reina proscrita"
 
 #: data/units/Outlaw_Queen.cfg:21
 msgid "skirmisher,leadership"
-msgstr "fustiga, lideratge"
+msgstr "esquiva, lideratge"
 
 #: data/units/Outlaw_Queen.cfg:24
 msgid ""
@@ -8747,7 +8823,7 @@ msgstr "Guàrdia de la muralla"
 
 #: data/units/Wall_Guard.cfg:32
 msgid "skirmisher,regenerates"
-msgstr "fustiga, regenera"
+msgstr "esquiva, regenera"
 
 #: data/units/Wall_Guard.cfg:34
 msgid ""
