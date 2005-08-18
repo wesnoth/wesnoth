@@ -65,6 +65,7 @@ threading::condition* cond = NULL;
 std::vector<threading::thread*> threads;
 
 SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
+	int timeout = 15000;
 	size_t upto = 0;
 	size_t size = buf.size();
 	{
@@ -72,7 +73,7 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		transfer_stats[sock].first.fresh_current(size);
 	}
 
-	while(upto < size) {
+	while(upto < size && timeout > 0) {
 		{
 			// check if the socket is still locked
 			const threading::lock lock(*global_mutex);
@@ -82,9 +83,26 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		const int bytes_to_send = static_cast<int>(size - upto);
 		const int res = SDLNet_TCP_Send(sock, &buf[upto], bytes_to_send);
 
-		if(res < 0 || res != bytes_to_send && errno != EAGAIN)
+		if(res == -1) {
+#ifdef EAGAIN
+			if(errno == EAGAIN) {
+				SDL_Delay(100);
+				timeout -= 100;
+				continue;
+			}
+#elif defined(EWOULDBLOCK)
+			if(errno == EWOULDBLOCK) {
+				SDL_Delay(100);
+				timeout -= 100;
+				continue;
+			}
+#endif
 			return SOCKET_ERROR;
-
+		}
+		if(res != bytes_to_send) {
+			return SOCKET_ERROR;
+		}
+		timeout = 15000;
 		upto += static_cast<size_t>(res);
 		{
 			const threading::lock lock(*global_mutex);
@@ -166,9 +184,7 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 		beg += res;
 		{
 			const threading::lock lock(*global_mutex);
-			network::statistics& stats = transfer_stats[sock].second;
-			stats.total += res;
-			stats.current += res;
+			transfer_stats[sock].second.transfer(static_cast<size_t>(res));
 		}
 	}
 	SDLNet_TCP_DelSocket(set, sock);
