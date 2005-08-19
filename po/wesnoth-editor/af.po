@@ -22,40 +22,41 @@ msgstr "Wysig"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
-msgstr ""
+msgstr "Teken vensters"
 
 #: src/editor/editor.cpp:162
 #, fuzzy
 msgid "Fill"
-msgstr "Lêer"
+msgstr "Invul"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Verstel speler se beginposisie"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
-msgstr ""
+msgstr "Vergroot"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom out"
-msgstr ""
+msgstr "Verklein"
 
 #: src/editor/editor.cpp:170
 msgid "Undo"
-msgstr ""
+msgstr "Kanselleer verandering"
 
 #: src/editor/editor.cpp:172
 msgid "Redo"
-msgstr ""
+msgstr "Doen weer"
 
 #: src/editor/editor.cpp:174
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Herstel standaard beeldgrootte"
 
 #: src/editor/editor.cpp:176
+#, fuzzy
 msgid "Toggle grid"
-msgstr ""
+msgstr "Wissel rooster"
 
 #: src/editor/editor.cpp:178
 #, fuzzy
@@ -64,7 +65,7 @@ msgstr "Verander Kaart Grootte"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
-msgstr ""
+msgstr "Keer kaart om"
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
@@ -72,7 +73,7 @@ msgstr "Stoor die Kaart As"
 
 #: src/editor/editor.cpp:382
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Die kaart bestaan. Wil jy dit vervang?"
+msgstr "Kaart bestaan reeds. Wil jy dit vervang?"
 
 #: src/editor/editor.cpp:405
 #, fuzzy
@@ -96,6 +97,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
+"Waarskuwing: Onwettige karakters is in die kaartnaam gevind. Jy sal onder 'n "
+"ander naam moet stoor."
 
 #: src/editor/editor.cpp:483 src/editor/editor.cpp:562
 msgid "The file does not contain a valid map."
@@ -111,7 +114,7 @@ msgstr "Oplaai het misluk: "
 
 #: src/editor/editor.cpp:833
 msgid "You must have a hex selected on the board."
-msgstr "Jy moet een van die heksionale spasies op die bord gekies hê."
+msgstr "Jy moet een van die heksagonale spasies op die bord gemerk hê."
 
 #: src/editor/editor.cpp:1082
 msgid "Quit Editor"
@@ -131,7 +134,7 @@ msgstr "Kon nie die kaart stoor nie: $msg"
 
 #: src/editor/editor.cpp:1141
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Fout: Onwettige karakter in lêernaam."
 
 #: src/editor/editor.cpp:1197
 msgid "Player"
@@ -140,8 +143,8 @@ msgstr "Speler"
 #: src/editor/editor_dialogs.cpp:47
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr ""
-"Jou veranderinge aan die kaart sal jy verloor. Is jy seker jy wil verder "
-"gaan?"
+"Jou veranderinge aan die kaart sal verlore gaan. Gaan voort?Jou veranderinge "
+"aan die kaart sal jy verloor. Is jy seker jy wil verder gaan?"
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
 msgid "Create New Map"
@@ -163,11 +166,11 @@ msgstr "Maak Nuwe Kaart"
 
 #: src/editor/editor_dialogs.cpp:94
 msgid "Generate Random Map"
-msgstr "Genereer Willekeurige Kaart"
+msgstr "Skep Willekeurige Kaart"
 
 #: src/editor/editor_dialogs.cpp:95
 msgid "Random Generator Settings"
-msgstr "Willekeurige Kaartgenerator Stellings"
+msgstr "Willekeurige Kaartskep verstellings"
 
 #: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
 msgid "Cancel"
@@ -191,11 +194,11 @@ msgstr "Scrolsnelheid"
 
 #: src/editor/editor_dialogs.cpp:282
 msgid "Toggle Full Screen"
-msgstr "Wissel Volledige Skerm"
+msgstr "Wissel Volgrootte Skerm"
 
 #: src/editor/editor_dialogs.cpp:289
 msgid "Show Grid"
-msgstr "Wys Grid"
+msgstr "Wys Rooster"
 
 #: src/editor/editor_dialogs.cpp:296
 msgid "Video Mode"
@@ -226,8 +229,9 @@ msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Kantel (dit kan die dimensie van die kaart verander)"
 
 #: src/editor/editor_main.cpp:235
+#, fuzzy
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Die stryd vir Wesnoth Kaartversteller"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -239,68 +243,53 @@ msgstr "AG"
 
 #: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
-msgstr ""
+msgstr "Kaartskepper"
 
 #: src/mapgen_dialog.cpp:99
 #, fuzzy
 msgid "Players:"
-msgstr "Speler"
+msgstr "Spelers:"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Aantal Heuwels:"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Maks Heuwelgrootte"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "Dorpies"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "Landvorm:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Paaie Tussen Kastele"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 blokke"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "Kusstreek"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "Binnelands"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "Eiland"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
-msgstr "Wis lêer uit"
+msgstr "Vee lêer uit"
 
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
-msgstr "Uitwissing van die lêer was onsuksesvol."
-
-#~ msgid "Draw"
-#~ msgstr "Teken"
-
-#~ msgid "Flood"
-#~ msgstr "Vul op"
-
-#~ msgid "Start P"
-#~ msgstr "Begin P"
-
-#~ msgid "Paste"
-#~ msgstr "Plak"
-
-#~ msgid "Ok"
-#~ msgstr "Goed"
+msgstr "Uitvee van die lêer was onsuksesvol."
