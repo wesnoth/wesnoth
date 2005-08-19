@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 13:32+0200\n"
-"PO-Revision-Date: 2005-07-11 01:59+0200\n"
+"PO-Revision-Date: 2005-08-19 19:14+0300\n"
 "Last-Translator: ihsan <ihsan_akin@yahoo.com>\n"
 "Language-Team: Turkish <farsakoglu@web.de>\n"
 "MIME-Version: 1.0\n"
@@ -21,16 +21,15 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +{HP_ADVANCE}"
-msgstr ""
+msgstr "En çok YP bonus +{HP_ADVANCE}"
 
 #: data/amla.cfg:21
 msgid "Full Heal"
-msgstr ""
+msgstr "Tam tedavi"
 
 #: data/fonts.cfg:6
-#, fuzzy
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-msgstr "FreeSans.ttf,Vera.ttf,Bepa-Roman.ttf,sazanami-gothic.ttf"
+msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
 #: data/game.cfg:27
 msgid "Binary Saves"
@@ -69,9 +68,8 @@ msgid "Terrains"
 msgstr "Araziler"
 
 #: data/help.cfg:54 data/help.cfg:60 data/help.cfg:244
-#, fuzzy
 msgid "Overview"
-msgstr "Üzerine yaz?"
+msgstr "Genel bakış"
 
 #: data/help.cfg:55
 msgid ""
@@ -84,7 +82,6 @@ msgstr ""
 "altında siz açtıkça bu kabiliyetler listelenecektir."
 
 #: data/help.cfg:63
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -99,7 +96,7 @@ msgstr ""
 "Battle for Wesnoth (Wesnoth için Savaş) modern strateji oyunları arasında az "
 "rastlanan türden bir sıra tabanlı fantazi strateji oyunudur. Diğer oyunların "
 "kurallar ve oynanışta derinliğe uğraşmasına karşın, Battle for Wesnoth "
-"kurallar ve oynanışın basitliğine çabalar. Ancak bu özellik oyunu "
+"kurallar ve oynanışın basitliğine çabalar.Ancak bu özellik oyunu "
 "basitleştirmez - bu basit kurallardan, oyunu öğrenmesi kolay ama "
 "uzmanlaşması zor hale getiren zengin stratejiler zuhur eder."
 
@@ -108,7 +105,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Oynanış Temelleri"
 
 #: data/help.cfg:69
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -116,10 +112,11 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Bu sayfa Battle for Wesnoth oynamak için bilmeniz gereken herşeyi ana "
-"hatlarıyla kapsar. Nasıl oynayacağınızı ve oyunun temel mekaniklerini "
-"içerir. Aklınızda bulunsun, bu sadece ana hatlardır - özel durumlar ve "
-"istisnalar için,-lütfen içerilen linkleri takip edin."
+"Bu sayfa Battle for Wesnoth oynamak için bilmen gereken herşeyi ana "
+"hatlarıyla kapsar. Nasıl oynayacağını ve oyunun temel mekaniklerini içerir. "
+"Sen oyunu oynadıkça oyunun yeni yönlerini keşfettikçe bu sayfalara yeni "
+"bilgiler eklenir. Özel durumlar ve istisnalarla ilgili daha fazla bilgi "
+"için, lütfen içerilen linkleri takip et."
 
 #: data/help.cfg:71
 msgid ""
@@ -143,7 +140,6 @@ msgstr ""
 "ile başlamalısın."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -151,13 +147,13 @@ msgid ""
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
 "Oyun esnasında,fareyi sağdaki menü çubuğunda bir çok öğenin üstüne "
-"getirdiğinizde, o öğeyi açıklayan kısa bir tarif çıkacağını unutmayın. Bu "
-"özellikle yeni kabiliyetlerle ilk defa karşılaştığınızda işinize yarar."
+"getirdiğinde, o öğeyi açıklayan kısa bir tarif çıkacağını unutma. Bu "
+"bilhassa yeni <ref>dst=abilities text=kabiliyetlerle</ref> ilk defa "
+"karşılaşınca işine yarar."
 
 #: data/help.cfg:79
-#, fuzzy
 msgid "About the Game"
-msgstr "Oyundan çık"
+msgstr "Oyun hakkında"
 
 #: data/help.cfg:80
 msgid ""
@@ -169,6 +165,12 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
+"Oyun senaryo adı verilen bir dizi savaştan oluşmaktadır. Her senaryodasenin "
+"birimlerin bir veya daha fazla düşmanın birimleri ile savaşır. Bilgisayara "
+"karşı veya aynı bilgisayarda sırayla oynayan arkadaşlara karşı (ikili oyun) "
+"oynayabilirsin. Eğer bilgisayarın bir bilgisayar ağına bağlı ise bu ağa "
+"bağlı diğer insanlara karşı da oynayabilirsin. Eğer internet bağlantın var "
+"ise internet üzerinden diğer insanlarla oynayabilirsin."
 
 #: data/help.cfg:82
 msgid ""
@@ -180,6 +182,13 @@ msgid ""
 "need to reach a destination, to rescue someone, to solve a puzzle, or just "
 "to survive a certain number of turns."
 msgstr ""
+"\n"
+"\n"
+"Her senaryonun senaryo başlangıcında gösterilen amaçları vardır. Bu amaçlar "
+"kazanmak için ne yapman ve kaybetmemek için ne yapmaman gerektiğini "
+"listeler. Sıklıkla amaç tüm düşmanları yok etmektir, bazense bir hedef "
+"noktaya ulaşmak, birini kurtarmak, bir bulmacayı çözmek veya sadece belli "
+"sayıda el hayatta kalmaktır."
 
 #: data/help.cfg:84
 msgid ""
@@ -190,13 +199,18 @@ msgid ""
 "preserving your best troops so that they can be used again in later "
 "scenarios in the campaign."
 msgstr ""
+"\n"
+"\n"
+"Kampanyalar bir hikaye eşliğinde birbirini takip eden birden çok senaryodan "
+"oluşur. Bir kampanyada sıklıkla daha dikkatli oynamalısın, en iyi "
+"askerlerini korumalısın ki onları kampanyanın ilerleyen senaryolarında "
+"tekrar kullanabilesin."
 
 #: data/help.cfg:89
 msgid "Recruiting and Recalling"
 msgstr "Askere alma ve Geri çağırma"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -208,14 +222,15 @@ msgid ""
 "units available for recruitment, along with their gold cost. Click on a unit "
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
-"Bir savaşın başında ve savaş devam ederken ordunuza birimler katmaya "
-"ihtiyacınız olur. Asker almak için liderinizin (Konrad Tahta Varis "
-"kampanyasında bir liderdir) bir kalenin iç kalesinde olmalıdır. Bundan sonra "
-"menüdeki asker al' ı kulanarak yada bir altıgende fareyi sağ tıklayarak ve "
-"<italic>text=Asker al</italic>' ı seçerek asker alabilirsiniz. Bu işlem "
-"asker al menüsünü meydan çıkartır, bu menü alınabilecek askerleri ve onların "
-"altın maliyetleri ile listeler. Bir birimin istatistiklerini görmek için "
-"fareyi üzerinde tıklayın, ve  asker al düğmesine tıklayarak askeri alın."
+"Her taraf oyuna kalesinde bir lider olduğu halde başlar. Bir savaşın başında "
+"ve savaş devam ederken orduna birimler katmaya ihtiyacın olur. Asker almak "
+"için liderinin (Konrad Tahta Varis kampanyasında bir liderdir) bir kalenin "
+"iç kalesinde olmalıdır. Bundan sonra menüdeki asker al' ı kulanarak yada bir "
+"altıgende fareyi sağ tıklayarak ve <italic>text=Asker al</italic>' ı seçerek "
+"asker alabilirsin. Bu işlem askere al menüsünü meydan çıkartır, bu menü "
+"alınabilecek askerleri onların altın maliyetleri ile listeler. Bir birimin "
+"istatistiklerini görmek için fareyi üzerinde tıkla, ve asker al düğmesine "
+"tıklayarak askeri al."
 
 #: data/help.cfg:92
 msgid ""
@@ -242,11 +257,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Askere alınan birimler istatistiklerini ayarlayan iki rasgele "
+"Askere alınan birimler istatistiklerini ayarlayan iki rastgele "
 "<ref>dst=traits·text=Traits</ref>le gelirler."
 
 #: data/help.cfg:96
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -256,13 +270,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"İlerleyen senaryolarda, önceki savaşlardan kalma gazileri çağırabilirsin. "
-"Celb, askere alma ile aynı şekilde işler, celbin standart olarak 20 altın "
-"tuttuğu ve sana önceki senaryolardan kalma tüm gazilerin bir listesini "
-"gösterdiğini aklında tut."
+"İlerleyen senaryolarda, önceki savaşlardan hayatta kalanları çağırabilirsin. "
+"Çağırma standart olarak 20 altın tutar ve sana önceki senaryolarda hayatta "
+"kalan birimlerin bir listesini gösterir."
 
 #: data/help.cfg:98
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -272,44 +284,47 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Birimlerin sadece askere almak veya çağırmak için değil,·aynı zamanda "
-"yaşamak·için de paraya ihtiyacı olduğunu unutmayın.·Daha fazla bilgi "
-"için<ref>dst=income_and_upkeep·text='Gelir ve İdare masrafı'</ref>'nı okuyun."
+"Birimler sadece askere almak veya çağırmak için değil,·aynı zamanda "
+"yaşamak·için de paraya ihtiyaç duyarlar.·Daha fazla bilgi için "
+"<ref>dst=income_and_upkeep text='Gelir ve İdare masrafı'</ref>'nı oku."
 
 #: data/help.cfg:103
-#, fuzzy
 msgid "Orbs"
-msgstr "Orklar"
+msgstr "Küreler"
 
 #: data/help.cfg:104
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
+"Her biriminin yanındaki enerji sütununun tepesinde bir küre vardır.Senin "
+"kontrolündeki birimler için bu küre:"
 
 #: data/help.cfg:105
 msgid "green if it hasn't moved this turn,"
-msgstr ""
+msgstr "bu tur hiç hareket etmemişse yeşildir."
 
 #: data/help.cfg:106
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
+"bu tur hareket etmiş ama hareket etmeye devam edebilecek veya "
+"saldırabilecekse sarıdır"
 
 #: data/help.cfg:107
 msgid "red if it has used all its movement this turn."
-msgstr ""
+msgstr "bu tur tüm hareket hakkını doldurmuşsa kırmızıdır."
 
 #: data/help.cfg:108
 msgid "The orb is blue if the unit is an ally you do not control."
-msgstr ""
+msgstr "Müttefik olup senin idarende olmayan bir birimde küre mavidir."
 
 #: data/help.cfg:109
 msgid "Enemy units have no orb on top of their energy bar."
-msgstr ""
+msgstr "Düşman birimlerinin enerji sütunlarının üstünde küre yoktur."
 
 #: data/help.cfg:114
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "Yaşam puanı ve tecrübe"
 
 #: data/help.cfg:115
 msgid ""
@@ -318,6 +333,10 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
+"Her birimin belli bir yaşam puanı (YP) vardır. Eğer bir birimin yaşam puanı "
+"1in altına düşerse birim ölür. Her birimin belli bir de tecrübe puanı (TP) "
+"vardır. Yeni askere alınmış bir birim hiç tecrübesiz başlar ve düşmanlarla "
+"savaşarak tecrübe kazanır."
 
 #: data/help.cfg:116
 msgid ""
@@ -325,6 +344,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
+"Yaşam ve tecrübe puanları durum çubuğunda iki rakamla (şimdiki değer ve "
+"birimin edinebileceği en fazla değer) gösterilmiştir."
 
 #: data/help.cfg:117
 msgid ""
@@ -333,13 +354,16 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst=experience_and_advancement text=advance</ref>."
 msgstr ""
+"Yaşam puanları ayrıca her birimin yanındaki bir enerji çubuğunda da "
+"gösterilir, bu yeşil, sarı veya kırmızıdır. En az 1 tecrübe puanına sahip "
+"bir birimin <ref>dst=experience_and_advancement text=seviye atlamak</ref> "
+"üzere iken beyaza dönüşen mavi bir tecrübe çubuğu vardır."
 
 #: data/help.cfg:122 src/help.cpp:1197
 msgid "Movement"
 msgstr "Hareket"
 
 #: data/help.cfg:123
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -350,16 +374,15 @@ msgid ""
 "clicking will cause the unit to move towards it by the fastest route over "
 "this and subsequent turns."
 msgstr ""
-"Battle for Wesnoth' ta hareket basittir: Basitçe hareket ettirmek "
-"istediğiniz birimi tıklayın, ve götürmek istediğiniz altıgene tıklayın. Bir "
-"birim seçildiği zaman, birimin o sırada hareket edebileceği her yer fazladan "
-"ışıklandırılır, geri kalan alıgenler ise matlaştırılır. Fareyi "
-"matlaştırılmış bir altıgene getirme işlemi birimin oraya kaç sırada "
-"gideceğini gösterir, ve oraya tıklanırsa birimin o bölgeye en kısa yoldan bu "
-"sırada ve geri sıralarda gitmesini sağlar."
+"Battle for Wesnoth' ta hareket basittir: Basitçe hareket ettirmek istediğin "
+"birimi tıkla, ve götürmek istediğin altıgene tıklay. Bir birim seçildiği "
+"zaman, birimin o sırada hareket edebileceği her yer fazladan ışıklandırılır, "
+"geri kalan alıgenler ise matlaştırılır. Fareyi matlaştırılmış bir altıgene "
+"getirme işlemi birimin oraya kaç sırada gideceğini gösterir, ve oraya "
+"tıklanırsa birimin o bölgeye en kısa yoldan bu sırada ve geri sıralarda "
+"gitmesini sağlar."
 
 #: data/help.cfg:125
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -376,13 +399,13 @@ msgstr ""
 "\n"
 "\n"
 "Her birim belli bir sayıda hareket sayısına sahiptir, bu sayı hareket edilen "
-"bir sonraki altıgemin türüne göre harcanır. Mesela, çayırlar neredeyse her "
+"bir sonraki altıgenin türüne göre harcanır. Mesela, çayırlar neredeyse her "
 "birim için sadece 1 hareket sayısı tutar. Bit altıgene girmek için harcanan "
 "sayının tam değeri birimin türüne bağlıdır, ormanda elf birimleri 1 hareket "
 "sayısı harcarken, bir çok insan ve ork birimleri 2 harcarken atlılar 3 "
 "harcarlar.  Bir birimin, bir altıgene girmek için ne kadar hareket sayısı "
 "harcıyacağını görmek için, birimin üzerinde sağ tıklayıp, birim tanımını "
-"seçin, ve oradanda <italic>text='Arazi ayarı'</italic>' na bakın."
+"seçin, ve oradan da <italic>text='Arazi ayarı'</italic>' na bakın."
 
 #: data/help.cfg:127
 msgid ""
@@ -412,6 +435,11 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"Bir sonraki turunda düşmanın nerelere hareket edebileceğini görmek için Ctrl-"
+"v veya Cmd-v'ye bas. Ctrl-b veya Cmd-b senin birimlerin haritada olmayıp "
+"onları engellemese düşmanın nereye hareket edebilecek olduğunu gösterir."
 
 #: data/help.cfg:134
 msgid "Combat"
@@ -429,9 +457,16 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
+"Battle for Wesnoth'ta dövüş her zaman birbirinin yanındaki birimler arasında "
+"cereyan eder. Birimine tıkla, ardından saldırmak istediğin düşman birimine "
+"tıkla, birimin düşman birimine doğru gidecek ve yanyana oldukları zaman "
+"dövüş başlayacaktır. Saldıran ve savunan kendi vuruş sayıları dolana kadar "
+"karşılıklı vuruşurlar. Saldıran saldıracak bir silahını seçer ve savunan "
+"aynı türden bir saldırısı ile karşılık verir. İki saldırı türü vardır: "
+"genellikle kılıç, balta ve pençe gibi silahları kapsayan yakın dövüş ve "
+"genellikle ok mızrak ve ateş topu gibi silahları kapsayan menzilli."
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -439,10 +474,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Saldırıların sıra ve sayısı'</header>"
+"<header>text='Vuruşların sıra ve sayısı'</header>"
 
 #: data/help.cfg:139
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -457,7 +491,7 @@ msgstr ""
 "\n"
 "\n"
 "Saldıran taraf ilk hücümu yapar, ondan sonrada savunan misilleme yapar. Bu "
-"her iki tarafta bütün saldırılarını kullanana kadar devam eder. Birimlerin "
+"her iki taraf da bütün saldırılarını kullanana kadar devam eder. Birimlerin "
 "sahip olduğu hücüm sayıs değişkendir, mesela, 5-4 kılıç hücumlu bir elf "
 "savaşçısı 5 hasar verebilen 4 adet kılıç sallayabilir, bununla beraber 9-"
 "2'lik bir ork izbandudu sadece 2 yumruk sallama yapabilir (ama her ikiside 9 "
@@ -474,7 +508,6 @@ msgstr ""
 "<header>text='İsabet şansı'</header>"
 
 #: data/help.cfg:143
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -497,7 +530,6 @@ msgstr ""
 "bulunduğu bölgeyle alakalıdır."
 
 #: data/help.cfg:145
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -508,11 +540,11 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Bu kurala iki istisna vardır: <ref>dst=weaponspecial_magical text='Sihirsel "
-"saldırılar'</ref> ve  <ref>dst=weaponspecial_marksman text=Nişancı</ref>. "
-"Sihirsel saldıralar saldırı amaçla kullanıldığı zaman bölgeye aldırmadan her "
-"zaman %70 vurma oranına sahiptirleri Nişancılar ise bölgeye aldırmadan her "
-"zaman %60  vurma şansına sahiptirler."
+"Bu kurala iki istisna vardır: <ref>dst=weaponspecial_magical text='Sihirli "
+"saldırılar'</ref> ve <ref>dst=weaponspecial_marksman text=Nişancı</ref>. "
+"Sihirli saldırılar araziye aldırmadan her zaman %70 vurma oranına "
+"sahiptirler. Nişancılar ise saldırı amaçla kullanıldığı zaman araziye "
+"aldırmadan her zaman %60 vurma şansına sahiptirler."
 
 #: data/help.cfg:147
 msgid ""
@@ -525,7 +557,6 @@ msgstr ""
 "<header>text=Hasar</header>"
 
 #: data/help.cfg:149
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -539,14 +570,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Vuran her darbe saldırı tipine bağlı olarak bir temel vurma miktarı vardır. "
-"Mesela, Elf Savaşçısının 5-4' luk bir kılıç saldırısı 5 hasarlık bir vuruş "
+"İsabet eden her darbe saldırı tipine bağlı olarak bir temel hasar verir. "
+"Mesela, elf savaşçının 5-4' lük bir kılıç saldırısı 5 hasarlık bir vuruş "
 "yapar. Bu genel olarak iki şeyle değişir: "
 "<ref>dst=damage_types_and_resistance text=Dayanıklılık</ref> ve "
-"<ref>dst=time_of_day text='Günün saati'</ref>, bunlar aşağıda açıklanmıştır."
+"<ref>dst=time_of_day text='Günün saati'</ref>. Temel hasarın duruma göre "
+"nasıl değiştiğini görmek için, saldırı seçme menüsünden <italic>text='hasar "
+"hesaplamaları'</italic>'nı seç."
 
 #: data/help.cfg:151
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -558,9 +590,9 @@ msgstr ""
 "\n"
 "\n"
 "Az sayıda birim çarpışmada verilen hasarı etkileyen özel yeteneklere "
-"sahiptir. Bunların en meşhuru birim saldırdığında saldıran ve savunan "
-"tarafların verdiği hasarı ikiye katlayan <ref>dst=weaponspecial_charge "
-"text=Yükleme</ref>'dir."
+"sahiptir. Bunların en meşhuru bu özelliğe sahip birim saldırdığında hem "
+"saldıran hem de savunan tarafların verdiği hasarı ikiye katlayan "
+"<ref>dst=weaponspecial_charge text=Yükleme</ref>'dir."
 
 #: data/help.cfg:156
 msgid "Damage Types and Resistance"
@@ -580,7 +612,6 @@ msgstr ""
 "aldıkları hasarın miktarını değiştiren dayanıklılıkları olabilir."
 
 #: data/help.cfg:159
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -592,11 +623,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dirençlilikler çok basitçe çalışıyor: Eğer bir birim, bir hasar türüne karşı "
-"%40 direnci varsa, o  hasar türüyle vuruldukaları zaman %40 daha az hasar "
-"alırlar. Bir birimin zayıflığıda mümkündür: eğer bir birimin bir hasar "
-"türüne -%100 dayanıklığı varsa, o zaman bu hasar türüyle vuruldukları zaman %"
-"100 daha fazla hasar alırlar."
+"Dirençlilikler çok basitçe çalışır: Eğer bir birim, bir hasar türüne karşı %"
+"40 direnci varsa, o hasar türüyle vurulduğu zaman %40 daha az hasar alırlar. "
+"Bir birimin zayıflığıda mümkündür: eğer bir birimin bir hasar türüne -%100 "
+"dayanıklığı varsa, o zaman bu hasar türüyle vuruldukları zaman %100 daha "
+"fazla hasar alırlar."
 
 #: data/help.cfg:161
 msgid ""
@@ -620,13 +651,16 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"Eğer bir vuruş isabet ederse her zaman en az 1 hasar verir. Bu karşı tarafın "
+"o hasar türüne %100 direnci olsa da geçerlidir."
 
 #: data/help.cfg:168
 msgid "Time of Day"
 msgstr "Günün saati"
 
 #: data/help.cfg:172
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night\n"
@@ -636,10 +670,9 @@ msgstr ""
 "\n"
 "\n"
 "Günün saati belirli birimlere aşağıdaki şekilde etki eder -\n"
-"\n"
-"Lawful birimler gündüz +%25 hasar, gece -%25 hasar alırlar.\n"
-"Chaotic birimler gündüz -%25, gece +%25 hasar alırlar.\n"
-"Neutral birimler günün saatinden etkilenmezler."
+"Adaletli birimler gündüz +%25 hasar, gece -%25 hasar alırlar.\n"
+"Kaotik birimler gündüz -%25, gece +%25 hasar alırlar.\n"
+"Tarafsız birimler günün saatinden etkilenmezler."
 
 #: data/help.cfg:175
 msgid ""
@@ -649,6 +682,11 @@ msgid ""
 "pane. For the usual day/night cycle, Morning and Afternoon count as day, "
 "First and Second Watch count as night:\n"
 msgstr ""
+"\n"
+"\n"
+"Günün saati durum çubuğundaki mini haritadan takip edilebilir. Normal gece/"
+"gündüz dönüşümü için, sabah ve ikindi gündüz; ilk ve ikinci yarılar ise gece "
+"sayılır."
 
 #: data/help.cfg:175 data/schedules.cfg:5
 msgid "Dawn"
@@ -731,13 +769,23 @@ msgid ""
 "number of units, for example the Necrophage, will actually heal with AMLA "
 "effects. Most units just gain the bonus to the Maximum HP."
 msgstr ""
+"\n"
+"\n"
+"Çoğu birimin üç seviyesi olmakla birlikte bazılarının yoktur. Sıradışı "
+"birimlerin (mesela <ref>dst=unit_Mage text=büyücü</ref>'ler) dört tane "
+"olabilir. Bir birim en üst seviyesine ulaşınca son seviye sonrası terfi "
+"(SSST) sahibi olabilir.\n"
+"SSST birimi tecrübe hedefine ulaşınca değiştirecektir ama birimin seviyesi "
+"aynı kalır. Birim için tipik SSST etkisi\n"
+"kazanılan her 100 TP için en fazla YP'yi 3 arttırmaktır. Sadece az sayıda "
+"birimin, mesela leş yiyen, SSST etkisi ile tedavi olacağını unutmayın. Çoğu "
+"birim ise sadece en fazla YP bonusunu kazanır."
 
 #: data/help.cfg:199
 msgid "Healing"
 msgstr "Tedavi"
 
 #: data/help.cfg:200
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -745,9 +793,11 @@ msgid ""
 "not. Wesnoth offers several other ways for your units to heal, all of which "
 "take place at the beginning of your turn, before you take action."
 msgstr ""
-"Birimleriniz dövüşte kaçınılmaz olarak hasar alırlar. Wesnoth birimlerinizi "
-"iyileştirmek için bir çok yol sunar, Hepsi de sizin sıranızın başında siz "
-"bir aksiyon yapmadan meydana gelir."
+"Birimlerin dövüşte kaçınılmaz olarak hasar alırlar.Bir birim "
+"<ref>dst=experience_and_advancement·text=seviye atlarsa</ref> tamamen "
+"iyileşir. Bu senin sıran olsa da olmasa da düşmanla dövüşmeyi bitirince "
+"gerçekleşir. Wesnoth birimlerini iyileştirmek için daha bir çok yol sunar, "
+"Hepsi de sıranın başında sen bir eylem yapmadan meydana gelir."
 
 #: data/help.cfg:202
 msgid ""
@@ -788,9 +838,13 @@ msgid ""
 "and are fighting on the same side as the healing unit, and only up to 4HP "
 "per unit."
 msgstr ""
+"\n"
+"Tedavi eden birimler: <ref>dst=ability_heals text=tedavi eder</ref> "
+"kabiliyetine sahip birimler el başına 8YP ye kadar tedavi eder veya zehirin "
+"hasar vermesini önlerler. Sadece tedavi eden birimin yanında ve aynı safta "
+"olan birimler tedavi edilir, ve bu tedavi birim başına en fazla 4YPdir."
 
 #: data/help.cfg:206
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -800,13 +854,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"İlaç varen birimler :  <ref>dst=ability_cures text=ilaç verir</"
-"ref>kabiliyetine sahip birimler yanlarındaki bütün dost birimleri her sırada "
-"8YP miktarınca tedavi eder, toplamda en fazla 18YP verebilirler, yada "
-"zehirin tedavi ederler."
+"İlaç veren birimler: <ref>dst=ability_cures text=ilaç verir</"
+"ref>kabiliyetine sahip birimler el başına en fazla 18YP hasar tedavi "
+"ederler, ya da zehiri tedavi ederler. Sadece tedavi eden birimin yanında "
+"duran ve aynı safta savaşan birimler ve birim başına en çok 8YP tedavi "
+"edilirler."
 
 #: data/help.cfg:208
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -818,9 +872,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dinlenme diğer iyileşme eylemleri ile birleşebilir, ama kasabalar, iyileşme "
-"ve tedavi / ilaç tedavisi birlikte uygulanamaz. Bununla beraber, birimler "
-"senaryolar arasında tamamen iyileşirler."
+"Dinlenme diğer iyileşme eylemleri ile birleşebilir, ama kasabalar,  "
+"yenilenme, tedavi ve ilaç verme birlikte uygulanamaz. Birden çok yaralı "
+"arasında kalan bir ilaç veren birim bunların her birini tedavi etmekte daha "
+"etkisiz kalacaktır. Son olarak birimler senaryolar arasında tamamen iyileşir."
 
 #: data/help.cfg:213
 msgid "Income and Upkeep"
@@ -920,13 +975,12 @@ msgstr ""
 "eğlenceler ve iyi şanslar!"
 
 #: data/help.cfg:232
-#, fuzzy
 msgid "Contributors"
-msgstr "+Katkıda bulunanlar"
+msgstr "Katkıda bulunanlar"
 
 #: data/help.cfg:238
 msgid "License"
-msgstr ""
+msgstr "Lisans"
 
 #: data/help.cfg:245
 msgid ""
@@ -949,6 +1003,12 @@ msgid ""
 "text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
 "<ref>dst=traits_strong text=Strong</ref>."
 msgstr ""
+"\n"
+"\n"
+"Tüm yarı ölü olmayan birimlere verilebilecek mizaçlar "
+"<ref>dst=traits_intelligent text=Zeki</ref>, <ref>dst=traits_quick "
+"text=Hızlı</ref>, <ref>dst=traits_resilient text=Dayanıklı</ref>, ve "
+"<ref>dst=traits_strong text=Güçlü</ref>dür."
 
 #: data/help.cfg:249
 msgid ""
@@ -958,18 +1018,21 @@ msgid ""
 "text=Loyal</ref>, <ref>dst=traits_undead text=Undead</ref>, and "
 "<ref>dst=traits_dextrous text=Dextrous</ref>."
 msgstr ""
+"\n"
+"\n"
+"Birimlere verilebilecek diğer mizaçlar <ref>dst=traits_loyal text=Ulusal</"
+"ref>, <ref>dst=traits_undead text=Yarı ölü</ref>, ve "
+"<ref>dst=traits_dextrous text=Maharetli</ref>dir."
 
 #: data/help.cfg:254
-#, fuzzy
 msgid "Intelligent"
-msgstr "zeki"
+msgstr "Zeki"
 
 #: data/help.cfg:255
 msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
+msgstr "Zeki birimler seviye atlama için normalden %20 daha az tecrübe ister."
 
 #: data/help.cfg:257
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -981,30 +1044,23 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Zeki</header>\n"
-"\n"
-"Zeki birimler bir üst seviyeye ilerlemek için normal birimlerden %20 daha "
-"tecrübe puanına ihtiyaç duyarlar.\n"
-"\n"
 "Zeki birimler bir kampanyanın başında çok faydalıdırlar, çünkü üst "
 "seviyelere daha çabuk ulaşırlar. Kampayanın ilerleyen zamanlarında zeki "
 "birimler artık çok faydalı olmaya olmazlar çünkü en üst seviyeye ulaştıktan "
-"sonra tecrübe puanları birimler için bir işe yaramaz. Eğer bir çok 'en üst "
-"seviye' birimine sahipseniz, işinize en çok yarayacak mizaçlı olanları celb "
-"etmeyi isteyebilirsiniz."
+"sonra tecrübe puanları birimler için pek bir işe yaramaz. Eğer bir çok 'en "
+"üst seviye' birimine sahipseniz, işinize en çok yarayacak mizaçlı olanları "
+"çağırmayı isteyebilirsiniz."
 
 #: data/help.cfg:262
-#, fuzzy
 msgid "Quick"
-msgstr "hızlı"
+msgstr "Hızlı"
 
 #: data/help.cfg:263
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgstr ""
+"Hızlı birimlerin normalden 1 fazla hareketi ama %10 az yaşam puanı olur."
 
 #: data/help.cfg:265
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1017,12 +1073,6 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Hızlı</header>\n"
-"\n"
-"Hızlı birimler fazladan bir birim yürürler, ama normalden %10 daha az YP' ye "
-"sahiptirler.\n"
-"\n"
 "Hızlılık en çabuk farkedilebilen mizaçtır, özellikle yavaş birimlerde mesela "
 "troller ve ağır piyade. Hızlı mizaçlı birimler genellikle zor bölgelerde "
 "arttırılmış hareket kabiliye sahiptir bu yüzden birimlerinizi yayarken bunu "
@@ -1030,16 +1080,14 @@ msgstr ""
 "sıkı değillerdir ve sonuçta karşı koyma pozisyonlarında daha az iyidirler."
 
 #: data/help.cfg:270
-#, fuzzy
 msgid "Resilient"
-msgstr "dayanıklı"
+msgstr "Dayanıklı"
 
 #: data/help.cfg:271
 msgid "Resilient units have 7 more HP than usual."
-msgstr ""
+msgstr "Dayanıklı birimlerin normalden 7 fazla yaşam puanı vardır."
 
 #: data/help.cfg:273
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1051,29 +1099,24 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Dayanıklı</header>\n"
-"\n"
-"Dayanıklı birimler fazladan 7 YP' ye sahiptirler.\n"
-"\n"
 "Dayanıklı birimler bir kampanyanın her bölümüne faydalıdırlar, ve bütün "
-"birimler için en faydalı mizaçtır. Dayanıklı mizacı az Yaşam Puanı, iyi "
+"birimler için en faydalı mizaçtır. Dayanıklı mizacı az yaşam puanı, iyi "
 "savunma, ve yüksek driençliliğin kombinasyonlarına sahip bir birim için çok "
-"faydalıdır. Dayanıklı birimeler stratejik noktaları tutmak için idealdirler."
+"faydalıdır. Dayanıklı birimler stratejik noktaları tutmak için idealdirler."
 
 #: data/help.cfg:278
-#, fuzzy
 msgid "Strong"
-msgstr "güçlü"
+msgstr "Güçlü"
 
 #: data/help.cfg:279
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 2 more HP."
 msgstr ""
+"Güçlü birimler yakın dövüşte vuruş başına 1 fazla hasar verirler ve 2 fazla "
+"YPleri vardır."
 
 #: data/help.cfg:281
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1084,21 +1127,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Güçlü</header>\n"
-"\n"
-"Güçlü birimler her vuruşlarında fazladan 1 birim hasar verirler, normalden 2 "
-"YP fazlasına sahiptirler.\n"
-"\n"
-"Herhangi yakın savaş birimi için kulanışlıyken, Güçlülük, Elf savaşçısı "
+"Herhangi yakın savaş birimi için kulanışlıyken, güçlülük, elf savaşçısı "
 "gibi, fazla sayıda vuruş yapan birimlerde daha etkilidir. Güçlü birimler bir "
-"birimi öldürmek için vurulabilecek olandan az falza hasar gerektiği zaman "
+"birimi öldürmek için vurulabilecek olandan az fazla hasar gerektiği zaman "
 "çok faydalıdırlar."
 
 #: data/help.cfg:286
-#, fuzzy
 msgid "Loyal"
-msgstr "ulusalcı"
+msgstr "Ulusal"
 
 #: data/help.cfg:287
 msgid ""
@@ -1106,9 +1142,10 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
+"Ulusal birimlerin gideri yoktur. Çoğu birim el sonunda seviyelerine eşit "
+"olan bir gidere yol açar. Ulusal birimler bu gidere yol açmazlar."
 
 #: data/help.cfg:289
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1121,20 +1158,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Ulusal</header>\n"
-"\n"
-"Ulusal birmler gider hesabına girmezler. Birçok birim sıranın sonunda "
-"seviyelerine denk olan bir gider maliyeti oluştururlar. Ulusal birimler bu "
-"maliyeti oluşturmazlar.\n"
-"\n"
-"\n"
-"Kampanyalar sırasında, bazı birmler kendi istekleriyle oyuncunun kuvetlerine "
-"katılırlar. Bu biremler Ulusal  mizaçlıdırlar. Her nekadar çağrılmak için "
-"ödenek istelersede, alsa herhangi bir gider maliyenine sebep olmazlar. Bu "
-"onları uzun kampanyalarda paranın az olduğu zamanlarda paha biçilmez yapar. "
-"Bu mizaç asla askere alınan birimlere verilmez, bu yüzden onları aptalca bir "
-"ölüme göndermek veya azletmek akıllıca bir iş değildir."
+"Kampanyalar sırasında, bazı birimler kendi istekleriyle oyuncunun "
+"kuvetlerine katılırlar. Bu biremler Ulusal  mizaçlıdırlar. Her nekadar "
+"çağrılmak için ödenek isterlerse de, asla herhangi bir gider maliyetine "
+"sebep olmazlar. Bu onları uzun kampanyalarda paranın az olduğu zamanlarda "
+"paha biçilmez yapar. Bu mizaç asla askere alınan birimlere verilmez, bu "
+"yüzden onları aptalca bir ölüme göndermek veya azletmek akıllıca bir iş "
+"değildir."
 
 #: data/help.cfg:294 data/multiplayer.cfg:69 data/multiplayer.cfg:158
 #: data/multiplayer.cfg:260 data/translations/english.cfg:129
@@ -1143,10 +1173,9 @@ msgstr "Yarı ölüler"
 
 #: data/help.cfg:295
 msgid "Undead units are immune to poison."
-msgstr ""
+msgstr "Yarı ölüler zehire karşı bağışıklıdır."
 
 #: data/help.cfg:297
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1157,27 +1186,22 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Yarı Ölü</header>\n"
-"\n"
-"Yarı ölüler zehire karşı bağışıklıdır.\n"
-"\n"
-"Yarı Ölü birimleri genellikle sadece 'Yarı Ölü' mizaca sahiptirler. Yarı "
-"Ölüler savaşmak için tekrar kaldıralan ölülerin vucütları olduları için "
+"Yarı ölü birimler genellikle sadece 'yarı ölü' mizaca sahiptirler. Yarı "
+"ölüler savaşmak için tekrar kaldırılan ölülerin vucütları olduları için "
 "zehir onlara karşı bir etki yapmaz. Bu onları zehirli saldırı yapan "
 "düşmanlarla savaşırken paha biçilmez yapar."
 
 #: data/help.cfg:302
-#, fuzzy
 msgid "Dextrous"
-msgstr "maharetli"
+msgstr "Maharetli"
 
 #: data/help.cfg:303
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
 msgstr ""
+"Maharetli birimler menzilli dövüşte her isabet eden atışta 1 fazla hasar "
+"verirler."
 
 #: data/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1188,14 +1212,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Becerikli</header>\n"
-"\n"
-"Becerikli birimler ok ile başarılı bir saldırıda +1 hasara sebep olurlar.\n"
-"\n"
 "Becerikli mizacı sadece Elflere aittir. Elf insanları onların esrarengiz "
-"zerafeti ve ok ile büyük yetenekleri ile bilinirler. Bu elfler her bir ok "
-"ile ek bir hasara sebebiyet verirler."
+"zerafeti ve ok ile büyük yetenekleri ile bilinirler. Bazıları ise "
+"diğerlerini çok aşan doğal bir yeteneğe sahiptir. Bu elfler her bir ok ile "
+"ek bir hasara sebebiyet verirler."
 
 #: data/help.cfg:310 data/terrain.cfg:144
 msgid "Grassland"
@@ -1322,7 +1342,6 @@ msgid "Swamp"
 msgstr "Bataklık"
 
 #: data/help.cfg:363
-#, fuzzy
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1333,14 +1352,14 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
-"Bataklıklar  herhangi bir türde ıslak alanları temsil eder. Bataklıklar "
+"Bataklıklar herhangi bir türde ıslak alanları temsil eder. Bataklıklar "
 "neredeyse herkesi yavaşlatır ve kensilerini savunma kabiliyetlerini "
 "yasaklar. Bu kurala istisna vücudu duda gitmeye müsait ırklardır ki bunlar "
 "burada normal hızda giderler ve savunma bonusu alırlar. Islak bölgede "
 "yaşayanlar bü bölgeyi gizlenme amaçlı kullanmayada aşinadırlar.\n"
 "\n"
-"Bir çok birim bataklıkta %30 defans yapabilirler. Suadamı, Naga ve "
-"Sürüngenlerin hepsi genellikle %60' a sahip olurlar."
+"Bir çok birim bataklıkta %30 savunma yapabilirler. Su adamı, naga ve "
+"sürüngenlerin hepsi genellikle %60'a sahip olurlar."
 
 #: data/help.cfg:368 data/terrain.cfg:34
 msgid "Shallow Water"
@@ -1390,7 +1409,6 @@ msgid "Snow"
 msgstr "Kar"
 
 #: data/help.cfg:393
-#, fuzzy
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1398,25 +1416,25 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in snow."
 msgstr ""
-"Tundra temelli olarak yada geçici olarak karla kaplanmış çayırlardır. Bir "
-"çok birim Tundrada yavaşlar ve kendilerini savunmada zorlanırlar.\n"
+"Kar temelli olarak (turndra gibi) ya da geçici olarak (karlı çayır gibi) "
+"karla kaplanmış düzlüklerdir. Bir çok birim karda yavaşlar ve kendilerini "
+"savunmada zorlanırlar.\n"
 "\n"
-"Bir çok birim Tundrada %20 ila %40 arası savunmaya sahiptir."
+"Bir çok birim karda %20 ila %40 savunmaya sahiptir."
 
 #: data/help.cfg:398 data/terrain.cfg:265
 msgid "Ice"
 msgstr "Buz"
 
 #: data/help.cfg:401
-#, fuzzy
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 "Buz ile donmuş sular kastedilir. Oyun bakımından <ref>dst=terrain_tundra "
-"text=Tundra</ref>' ya denktir. Yüzebilen birimler için not : her ne kadar su "
-"altında nefes alabilselerde, buzun altında yüzemezler."
+"text=tundra</ref>' ya denktir. Yüzebilen birimler için not, her ne kadar su "
+"altında nefes alabilseler de, buz altında yüzemezler."
 
 #: data/help.cfg:406 data/terrain.cfg:374 data/terrain.cfg:485
 msgid "Castle"
@@ -1548,6 +1566,9 @@ msgid ""
 "is concerned, only units capable of flying over canyons can cross this "
 "terrain."
 msgstr ""
+"Kanyon yerin bilinmeyen derinliklerine açılan bir geçittir. Kanyonlar kat "
+"etmesi günler alan dimdik duvarları ile meşhurdur. Oyunda sadece "
+"üzerlerinden uçabilen birimler bu araziden geçebilir."
 
 #: data/help.cfg:472 data/terrain.cfg:472
 msgid "Lava"
@@ -1559,6 +1580,9 @@ msgid ""
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
+"Lav üzerinde yürümeye çalışmanın doğasındaki tehlikeler gün gibi ortadadır. "
+"Bu arazi sadece üzerinden ciddi bir mesafeyi uçabilecek birimler tarafından "
+"aşılabilir."
 
 #: data/help.cfg:479 data/terrain.cfg:462
 msgid "River Ford"
@@ -1573,6 +1597,11 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Bir ırmak aşırı derece sığ ise kara birimlerinin onun üzerinden geçmesi pek "
+"büyük bir mesele değildir. Dahası yüzmeye alışmış bir birim ırmakta böyle "
+"yerlerde bile tam bir hareket kabiliyetine sahiptir. Oyunda sığ geçit, ya "
+"çayır ya da sığ su yerine geçer, hangisi üzerindeki birim için daha iyi "
+"hareket ve saldırı bonuslarına sahipse o olarak kabul edilir."
 
 #: data/help.cfg:486 data/terrain.cfg:75 data/terrain.cfg:83
 #: data/terrain.cfg:91
@@ -1593,9 +1622,17 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"İnşa etmeye gücü yetenler için bir köprü kurabilme, geçitleri su seviyesine "
+"bağlı olarak ortaya çıkıp yokolan su yollarının kararsız yapısından bir "
+"kurtuluş sağlar. Bu kaybı yılın soğuk aylarında pek ciddi bir konu olan kuru "
+"bir ayak lüksüdür.\n"
+"\n"
+"Deniz ve karada gidenlere köprü her iki dünyanında en iyisini sunar, oyunda "
+"çayır veya sığ su yerine geçer, hangisi köprüdeki birim için en iyi hareket "
+"ve savunma bonuslarını sunuyor ise o olarak kabul edilir. Yüzen bir birim "
+"ile bir kara biriminin aynı anda bir köprü altıgeninde duramayacağını unutma."
 
 #: data/help.cfg:495 data/terrain.cfg:349
-#, fuzzy
 msgid "Cave Wall"
 msgstr "Mağara duvarı"
 
@@ -1604,6 +1641,8 @@ msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"Mağara duvarları katı taştan yapılmıştır, en kararlı yolcuya bile mani "
+"olabilmesiyle ünlüdür."
 
 #: data/items.cfg:264
 msgid ""
@@ -1792,7 +1831,7 @@ msgstr "Varsayılan"
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/leader_list.cpp:99
 msgid "Random"
-msgstr "Rasgele"
+msgstr "Rastgele"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
@@ -2101,7 +2140,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr "4o - Mavi su bölgesi"
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:4
 msgid ""
@@ -2110,6 +2149,10 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice. Recommended settings of 2 gold per village."
 msgstr ""
+"Söylentiye göre Mavisu bölgesi 20ye yakın kez yok edilip yeniden imar "
+"edilmiş. Şimdi bir kez daha askerler bu küçük bölgenin coşkun sularında ve "
+"karlı dağlarında belirmişken, yerlilerin pek bundan haberi var gibi "
+"gözükmüyor. Tavsiye edilen kasaba başına altın miktarı 2dir."
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
 msgid "4p - Castle Hopping Isle"
@@ -2191,7 +2234,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
 msgid "5p - Forest of Fear"
-msgstr "5 o - Korku ormanı"
+msgstr "5o - Korku ormanı"
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
@@ -2207,17 +2250,17 @@ msgstr "2 ye 2 veya 3 e 3 takım oyunu"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:3
 msgid "6p - Smallolof"
-msgstr ""
+msgstr "6o - Küçük olof"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head. Recommended settings of 2 gold per "
 "village."
 msgstr ""
-"Bu yeraltı savaş bölgesinin her köşesinde tehlike gizleniyor, gücün ve "
-"hilenin birleştiği bir düello haritası. Her kasabaya 2 altın tavsiye edilir."
+"Sadece gerçek bir taktikçi altı ordunun kafa kafaya geldiği bu ölümcül ve "
+"daracık savaş alanından hayatta çıkabilir. Her kasabaya 2 altın tavsiye "
+"edilir."
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
 msgid "7p - Battle World"
@@ -2231,21 +2274,21 @@ msgstr "Bu barışçıl bölgede 7 orduya kadar. Uzun bir savaşa hazırlan."
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:17
 msgid "Random map"
-msgstr "Rasgele harita"
+msgstr "Rastgele harita"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:4
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
-"Rastgele oluşturulmuş hartita. Not : Rasgele haritalar genellikle dengeli "
+"Rastgele oluşturulmuş harita. Not : Rastgele haritalar genellikle dengeli "
 "değillerdir, eğer zamanınız varsa, tekrar tekrar deneyerek güzel bir tane "
 "yakalayabilirsiniz."
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
 msgid "Random map (Desert)"
-msgstr "Rasgele harita (Çöl)"
+msgstr "Rastgele harita (Çöl)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:5
 msgid ""
@@ -2253,7 +2296,7 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Kumun temel alındığı bir rastgele hartita. Not : Rasgele haritalar "
+"Kumun temel alındığı bir rastgele hartita. Not : Rastgele haritalar "
 "genellikle dengeli değillerdir, eğer zamanınız varsa, tekrar tekrar "
 "deneyerek güzel bir tane yakalayabilirsiniz."
 
@@ -2268,14 +2311,14 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"Bataklığın temel alındığı bir rastgele hartita. Not : Rasgele haritalar "
+"Bataklığın temel alındığı bir rastgele hartita. Not : Rastgele haritalar "
 "genellikle dengeli değillerdir, eğer zamanınız varsa, tekrar tekrar "
 "deneyerek güzel bir tane yakalayabilirsiniz."
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
 msgid "Random map (Winter)"
-msgstr "Rasgele harita (Kış)"
+msgstr "Rastgele harita (Kış)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:4
 msgid ""
@@ -2284,7 +2327,7 @@ msgid ""
 "can regenerate them until you get a good one."
 msgstr ""
 "Bahar ile kışın karşılaştığı zamanda, çoğunlukla karlı bölgeli bir rastgele "
-"harita. Not : Rasgele haritalar genellikle dengeli değillerdir, eğer "
+"harita. Not : Rastgele haritalar genellikle dengeli değillerdir, eğer "
 "zamanınız varsa, tekrar tekrar deneyerek güzel bir tane yakalayabilirsiniz."
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
@@ -3458,7 +3501,6 @@ msgid "Encampment"
 msgstr "Ordugah"
 
 #: data/terrain.cfg:393
-#, fuzzy
 msgid "Dwarven Castle"
 msgstr "Cüce kalesi"
 
@@ -3761,7 +3803,6 @@ msgstr ""
 "Yaralanmış birimlerin düzelmesi için diğer birimleri perde olarak kullan."
 
 #: data/tips.cfg:25
-#, fuzzy
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Tercihler menüsündeki kısatuşları oku"
 
@@ -4138,13 +4179,12 @@ msgstr ""
 "saldırı çift kat hasar yapar. (Bu saldırı müttefik birimlerle çalışmaz.)"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
-"Çılgın:\n"
+"Cinnet:\n"
 "Bu saldırı, bu birim saldırdığı zaman veya bu birime saldırıldığı zaman, iki "
 "taraftan biri ölene kadar çarpışmanın devam etmesini sağlar."
 
@@ -4291,7 +4331,7 @@ msgstr ""
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
-msgstr "Antik ceset"
+msgstr "Antik ölü büyücü"
 
 #: data/units/Ancient_Lich.cfg:22
 msgid ""
@@ -4303,6 +4343,13 @@ msgid ""
 "high chance of hitting an opponent. The touch of a lich drains the victim's "
 "life to renew the lich."
 msgstr ""
+"Bu yola bağlı bir varlık geçmiş çağların habercisidir. Bir antik ölü büyücü "
+"ile karşılaşan kişi muhtemelen ölümden çok daha kötü şeylere maruz "
+"kalacaktır.\n"
+"\n"
+"Özel notlar: Ölü büyücünün menzilli saldırıları sihirli ve her zaman yüksek "
+"isabet şansına sahiptir. Ölü büyücünün dokunuşu kendisini yenilemek için "
+"kurbanın hayatını sömürür."
 
 #: data/units/Ancient_Lich.cfg:44 data/units/Demilich.cfg:32
 #: data/units/Dread_Lich.cfg:21 data/units/Ghost.cfg:23 data/units/Lich.cfg:24
@@ -4395,6 +4442,18 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Hikayeye göre bahçesinde babası bu topraklara ilk yerleştiğinden beri ayakta "
+"duran ve altında ailece pek çok şeyler yaşadıkları bir meşe olan meraklı bir "
+"çiftçi varmış. Bu yüzden bir sabah kalktığında yerinde yeller estiğini, "
+"eskiden ağacın durduğu yerde koca bir çukurdan başka bir şey olmadığını "
+"görmek adama sert bir şok yaşatmış. Zavallı çiftçi o günden beri bir türlü "
+"kendine gelememiş.\n"
+"\n"
+"Bu tür karşılaşmalar muhtemelen en antik meşeler hakkında elimize ulaşan "
+"yegane bilgilerdir.\n"
+"\n"
+"Özel notlar: Ağaçlar gıda ve tedavi için şehirlere sığınmaya gerek duymadan "
+"etraflarındaki doğal kaynakları kullanarak iyileşirler."
 
 #: data/units/Ancient_Wose.cfg:43 data/units/Elder_Wose.cfg:24
 #: data/units/Wose.cfg:24
@@ -4484,6 +4543,21 @@ msgid ""
 "Special Notes: the arch mage's fireballs are magical, and always have a high "
 "chance of hitting an opponent."
 msgstr ""
+"Baş büyücü ünvanı kişiye ancak hayat boyu bir eğitim ve başarı sonucunda "
+"ihsan edilir. Baş büyücüler sıklıkla eğitimcilik veya ilimlerinin semeresini "
+"toplayabilecek kadar bilge kişilere danışmanlık yaparlar. Çoğu varlıklı "
+"patronlara çalışırlar; bu az yapılan bir iş ve değerli bir tavsiye olarak "
+"her iki taraf için de karlı bir alışveriştir ve büyücüye araştırmalarında "
+"yoğunlaşabilme imkanı sunar. Belli bazıları ise sıklıkla çoğu insanın "
+"görünce korkacağı işleri araştırmak üzere medeniyetten uzaklaşır münzevi "
+"olarak günlerini geçirir.\n"
+"\n"
+"Herhangi bir dövüş için eğitilmemiş olmakla birlikte, durum gerektirince baş "
+"büyücü türünün kaldırması pek de kolay olmayan tam gücünü açığa "
+"çıkarabilir.\n"
+"\n"
+"Özel notlar: baş büyücünün ateş topları sihirli ve her zaman yüksek isabet "
+"şansına sahiptirler."
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:152
 #: data/units/Dark_Sorcerer.cfg:24 data/units/Deathmaster.cfg:32
@@ -4552,6 +4626,17 @@ msgid ""
 "creeping around behind that enemy. Their throwing knives are also poisoned, "
 "which will continually sap away an enemy's strength."
 msgstr ""
+"En büyük hırsızlar bazen kurbanlarının eşyalarını çalmaktan çok daha ötesi "
+"için vazifelendirilirler. Bıçaklı dövüşün ustaları ve esrarengiz şekilde "
+"hızlı kişiler olarak, bu tehditkar kişiler sessizce kurbanlarının işini "
+"bitirmek için uzaktan zehirli bıçak fırlatma, sırta hançer saplama gibi her "
+"yolu kullanırlar.Geceleri ölümcül olan bu suikastçiler nedense açık güneş "
+"altında savaşırken pek rahat olmazlar.\n"
+"\n"
+"Özel notlar: Suikastçi ile aynı tarafta olan bir birim düşmanın dikkatini "
+"başka yöne çekerken suikastçi sessizce bu düşmanın etrafından dolaşıp "
+"arkadan bıçaklayarak iki kat hasar verebilir. Fırlattıkları bıçaklar da "
+"zehirlidir, düşmanın gücünü sürekli olarak emerler."
 
 #: data/units/Assassin.cfg:37 data/units/Assassin.cfg:119
 #: data/units/Dwarvish_Thunderer.cfg:38
@@ -4671,6 +4756,11 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Haydutlar çoğunluğunun geçmişi belirsiz cins adamlardan oluşan bir "
+"topluluktur. Herhangi bir organize suçlular grubunun sağ koludurlar, zeka ve "
+"kurnazlık açılarından eksik olsalar da kurbanlarını bilek gücü ile yola "
+"getirme konusunda çok iyidirler. Her kanun kaçağı gibi bunlar da günışığında "
+"iyi savaşamazlar, gece çalışmaya alışmışlardır."
 
 #: data/units/Bandit.cfg:34 data/units/Drake_Enforcer.cfg:43
 #: data/units/Drake_Gladiator.cfg:61 data/units/Great_Troll.cfg:24
@@ -4682,9 +4772,8 @@ msgid "mace"
 msgstr "topuz"
 
 #: data/units/Battle_Princess.cfg:3
-#, fuzzy
 msgid "female^Battle Princess"
-msgstr "Kaçak prenses"
+msgstr "Savaş prensesi"
 
 #: data/units/Battle_Princess.cfg:19 data/units/Battle_Princess.cfg:70
 msgid "leadership,skirmisher"
@@ -4697,6 +4786,10 @@ msgid ""
 "great combatant and leader. Now battle-hardened and strong of will, she can "
 "now aid those around her in the art of combat."
 msgstr ""
+"Doğuştan soylu biri olarak Prenses en büyük generallerden kılıç kullanmayı, "
+"en büyük bilgelerden savaş taktiklerini öğrenmiş bu özellikler onu hem büyük "
+"bir savaşçı hem de lider yapmıştır. Savaş tecrübesine sahip ve hevesli "
+"olarak artık çarpışmada etrafındakilere destek olabilir."
 
 #: data/units/Battle_Princess.cfg:36 data/units/Battle_Princess.cfg:75
 #: data/units/Bowman.cfg:33 data/units/Cavalier.cfg:41
@@ -4759,6 +4852,10 @@ msgid ""
 "began the battle. Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
+"Kanlı yarasalar hızlıdır ve saldırdıklarından kan emebilir, kendilerini "
+"bazen savaşa başladıklarından daha iyi düzeye getirecek derecede tedavi "
+"ederler.O derece hiddetlidirler ki bu yarı ölü uçan canavarların tüyleri "
+"bile kurbanlarının kanından kırmızıya boyanmıştır."
 
 #: data/units/Blood_Bat.cfg:33 data/units/Cave_Spider.cfg:33
 #: data/units/Direwolf_Rider.cfg:42 data/units/Goblin_Knight.cfg:23
@@ -4780,6 +4877,12 @@ msgid ""
 "Dubbed simply 'Bone-Shooters' by their unfortunate enemies, these "
 "abominations are a terror to all who live."
 msgstr ""
+"Bir nekromantiğin eserlerinden bazıları kendilerine verilen sahte hayata "
+"daha da güçlü olarak gelmişlerdir. Herkesin gücüne göre silah verilir, "
+"özellikle okçular çok rezil bir techizata sahiptirler. Ok kılıfları tahtadan "
+"değil kurbanlarının kemiklerinden yapılma oklarla doludur. Zavallı "
+"düşmanları tarafından 'kemik atıcısı'lakabı takılan bu iğrenç şeyler "
+"yaşayanlara korku saçar."
 
 #: data/units/Bone_Shooter.cfg:36 data/units/Soul_Shooter.cfg:27
 msgid "stab"
@@ -4879,6 +4982,11 @@ msgid ""
 "woodsman, bowmen have reasonable prowess with both a bow and a short sword, "
 "and are very common on the battlefield."
 msgstr ""
+"Oyun harici bir şeyi vurmak için okçuluğun kullanımı ta başından beri mevcut "
+"olagelmiştir ve okçular çok eskilerden bu yana savaşta vazgeçilemez "
+"olmuşlardır. Genelde mütevazi ailelerden gelen, köylü takımından veya "
+"rastgele ormancılardan oluşturulan okçular hem ok hem de kılıç ile kayda "
+"değer cesaret sahibidirler ve savaşlarda çok sayıda bulunurlar."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
@@ -4891,6 +4999,10 @@ msgid ""
 "allows them to strike at many a foe with impunity, and their mettle has "
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
+"Savaşta bir iftihar tablosu olan kavalyeler at sırtında kılıç ve tatar yayı "
+"kullanımının ustalarıdırlar. Menzilli silahlardaki hünerleri çoğu düşmana "
+"karşılık görmeden ateş etmelerini sağlar ve yiğitlikleri bilinen tarihte en "
+"büyük bazı savaşların kaderini değiştirmiştir."
 
 #: data/units/Cavalier.cfg:62 data/units/Death_Knight.cfg:51
 #: data/units/Dragoon.cfg:66 data/units/Duelist.cfg:53
@@ -4917,6 +5029,13 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scoutwork."
 msgstr ""
+"Süvariler taktikleri ve aletleri yönünden binicilerden ayrılır. Süvari daha "
+"ağır zırh giyer ve bir mızrak yerine kılıç ve kalkan taşır. Taktikleri "
+"arasında yükleme yoktur onun yerine hem at hem de sürücüyü etkili bir yakın "
+"dövüş aracı olarak kullanan kılıçla vur kaç manevraları vardır.\n"
+"\n"
+"Süvariler açık arazide mevzileri alıp korumak, dost askerleri perdelemek ve "
+"keşif işleri için çok kullanışlıdırlar."
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
@@ -4928,6 +5047,10 @@ msgid ""
 "They can bite at close range, thereby poisoning their enemies, and also can "
 "attack with a web at long range, slowing their foes down."
 msgstr ""
+"Dev örümceklerin Knalga'nın derinliklerinde dolaşıp pek çok kurban mideye "
+"indirdikleri söylenir. Yakın mesafede ısırıp düşmanlarını zehirleyebilir, "
+"aynı zamanda uzun mesafeden bir ağ ile saldırıp rakiplerini "
+"yavaşlatabilirler."
 
 #: data/units/Cave_Spider.cfg:47
 msgid "web"
@@ -4994,6 +5117,9 @@ msgid ""
 "to turn the living to stone. Needless to say, this makes them extremely "
 "dangerous."
 msgstr ""
+"Bazen 'basilikler' olarak bilinen bu mistik yaratıklar söylenene göre "
+"canlıları taşa çevirebilirlermiş. Bunun onları aşırı derecede tehlikeli "
+"yaptığı söylemeye gerek yok."
 
 #: data/units/Cockatrice.cfg:33
 msgid "gaze"
@@ -5016,6 +5142,11 @@ msgid ""
 "although they also carry a bow to use when necessary. If the Commander is "
 "lost, so is the battle."
 msgstr ""
+"Komutan rütbesi savaş gruplarını çarpışmada idare edenlere aittir. Sahip "
+"oldukları liderlik becerileri ile yanlarındaki altıgenlerde bulunan alt "
+"seviye birimlere yüksek performans verirler. Komutanlar en çok kılıçta "
+"mahretlidirler, yine de mecbur kalınca kullanmak için bir oku da taşırlar. "
+"Eğer komutanı kaybedersen, savaşı da kaybetmiş olursun."
 
 #: data/units/Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
@@ -5028,6 +5159,10 @@ msgid ""
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
+"Mürekkep balıkları dev deniz yaratıklarıdır. Rakiplerini güçlü dokunaçlar "
+"ile yakalayabilir veya belli bir mesafeden zehirli siyah mürekkep "
+"tükürebilirler. Bu canavarlarla bir karşılaşmadan sağ çıkmanın en iyi yolu "
+"karada kalmaktır."
 
 #: data/units/Cuttle_Fish.cfg:33 data/units/Tentacle.cfg:21
 msgid "tentacle"
@@ -5057,6 +5192,18 @@ msgid ""
 "Special Notes: The attacks of a dark adept are magical, and always have a "
 "high chance of hitting an opponent."
 msgstr ""
+"Pratisyenlerin ilgisini cezbetmek için kara büyü tuzağı hakikaten de büyük "
+"bir ganimet olmalıdır, medeni dünyada bu sanatı uygularken yakalananlar ölüm "
+"cezasına çarptırılır. Yine de sunduğu ödül ölümsüzlük olduğu için bu santla "
+"uğraşmaya devam edenler vardır. Bu fanatiklerin gizli mezheplerde saklanarak "
+"ya da yeraltı dünyasının karanlık yollarına bağlanarak katlanmaları gereken "
+"eğitim onları sıklıkla tükenme ve bitkinliğe sürükler.\n"
+"\n"
+"Böyle bir durumda yegane silahları kendilerini öğrenmeye adamış oldukları "
+"şeytanlıklardır.\n"
+"\n"
+"Özel notlar: Kara üstadın saldırıları sihirlidir ve her zaman yüksek bir "
+"isabet şansına sahiptir."
 
 #: data/units/Dark_Adept.cfg:38 data/units/Dark_Sorcerer.cfg:47
 #: data/units/Necromancer.cfg:38
@@ -5064,9 +5211,8 @@ msgid "chill wave"
 msgstr "soğuk dalga"
 
 #: data/units/Dark_Adept.cfg:63
-#, fuzzy
 msgid "female^Dark Adept"
-msgstr "Kara kraliçe"
+msgstr "Kara üstat"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
@@ -5078,6 +5224,9 @@ msgid ""
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
+"Kötü kraliçe anne Asheviere, Wesnoth'ta uzun yıllar terör estirdi. Sihir "
+"konusundaki bilgisi onu çarpışmada kayda değer bir düşman yapar, amagücünün "
+"çoğu komutası altındakilerden gelmiştir."
 
 #: data/units/Dark_Queen.cfg:35
 msgid "scepter"
@@ -5106,13 +5255,28 @@ msgid ""
 "marked with the plague, and any foe struck down by it will rise again in "
 "unlife."
 msgstr ""
+"Sıradan bir insanın kara büyüden duyduğu korku genellikle onun hakkında az "
+"bilgi sahibi olmasından ileri gelir. Büyücüler hastalık ve zafiyet korkusu "
+"ile eğer bahşettiği şey gerçekten ölümsüzlük ise o halde ölü büyücülüğe "
+"dönüşüm bir an önce elde edilmesi gereken bir şeydir derler. Ama elverişli "
+"durumlarda bir kara büyücünün yaşlı ama açıkça bir ölü büyücüye rekabet "
+"edebilecek kadar güçlü olanı görülmüştür.\n"
+"\n"
+"Böyle birinin neden tereddüt edeceği veya bu yoldan komple vazgeçeceği "
+"konusunda sadece spekülasyon yapılabilir. Sanılana göre ya ölü büyücülük "
+"iddia edildiği gibi gerçek ölümsüzlük değil ya da ölü büyücü olmanın korkunç "
+"ve söylenmeyen ağır bir bedeli var.\n"
+"\n"
+"Özel notlar: kara sihirbazın menzilli atışları sihirlidir ve her zaman bir "
+"rakibe isabet konusunda yüksek şansa sahiptir. Kara sihirbazın değneği "
+"salgın ile saçar ve onunla işi bitirilen bir rakip ölüp tekrar dirilir."
 
 #: data/units/Dark_Sorcerer.cfg:29 data/units/Soulless.cfg:42
 #: data/units/Soulless.cfg:117 data/units/Soulless.cfg:193
 #: data/units/Soulless.cfg:270 data/units/Soulless.cfg:346
 #: data/units/Soulless.cfg:422 data/units/Soulless.cfg:498
 msgid "plague(Walking Corpse)"
-msgstr "veba(Ayaklı ceset)"
+msgstr "salgın(Ayaklı ceset)"
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -5124,6 +5288,9 @@ msgid ""
 "dead, and a force of dread in this world. Happily, they have rarely been "
 "seen in Wesnoth."
 msgstr ""
+"Kara tılsımlar ölüler diyarından birer elçi ve felaket tellalları, bu "
+"dünyada korkunun birlikleridirler. Çok şükür ki Wesnoth'ta kendilerine pek "
+"fazla rastlanmaz."
 
 #: data/units/Dark_Spirit.cfg:32 data/units/Spectre.cfg:52
 #: data/units/Wraith.cfg:28
@@ -5146,6 +5313,10 @@ msgid ""
 "the same weapons as they did before, they command the Undead in their quest "
 "for revenge."
 msgstr ""
+"Nefretle ve ihanet duygusu içinde lanetlenip bu dünyaya ölüm şövalyeleri "
+"olarak geri dönen kahraman cengaver ve komutanların hikayesi anlatılır. "
+"Eskiden sahip oldukları silahları kullanır, intikam avlarında yarı ölüleri "
+"komuta ederler."
 
 #: data/units/Death_Knight.cfg:34 data/units/Dwarvish_Lord.cfg:28
 #: data/units/Dwarvish_Steelclad.cfg:27
@@ -5164,6 +5335,12 @@ msgid ""
 "the skills they once had. Though frail, these monsters are much faster than "
 "the rest of their kind, both on foot and with their blades."
 msgstr ""
+"Hayatta iken 'ölüm kılıcı' olarak bilinen iğrenç yaratıklar dövüş ustaları "
+"ve hem kıvrak hem de ölümcül askerler idiler. Yeni ustaları genelde bunu "
+"bilirler ve onları eskiden sahip oldukları yeteneklere uygun biçimde teçhiz "
+"ederek bu avantajlarından yararlanmaya çalışırlar. Narin yapılı olmakla "
+"birlikte bu canavarlar hem ayakları hem de kılıçları açısından türlerinin "
+"geri kalanından çok daha hızlıdırlar."
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
@@ -5176,10 +5353,14 @@ msgid ""
 "are gradually claiming his mortal shell too, and with time, he will be a "
 "true undead and a terror to all that lives."
 msgstr ""
+"Gwiti'nin karanlık yoldaki gezileri ona normalde ölümlülere bahşedilmeyen "
+"bir güç verdi, ama korkunç bir pahaya: ruhunu verdiği yarı ölüler peyderpey "
+"ölümlü bedeninde de hak talep ediyorlar ve kendisi zamanla gerçek bir yarı "
+"ölü olacak ve tüm yaşayanlara dehşet saçacak."
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
-msgstr "Yarım ceset"
+msgstr "Yarım ölü büyücü"
 
 #: data/units/Demilich.cfg:17
 msgid ""
@@ -5188,6 +5369,10 @@ msgid ""
 "bodies, becoming undead themselves. With time, they may become fully undead, "
 "and feared by all alike."
 msgstr ""
+"Çok uzun zaman yasak büyü ve kara sanatlarla uğraşmanın ardından bu "
+"büyücüler ağır bir bedel ödemeye başladılar. Yarım ölü büyücüler bedenlerini "
+"kaybedip bizzat yarı ölüye dönüşmeye başladılar. Zamanla tam birer yarı ölü "
+"olabilir ve benzerlerine korku saçabilirler."
 
 #: data/units/Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
@@ -5210,6 +5395,20 @@ msgid ""
 "victims of this poison will continually take damage until they can be cured "
 "in town or by a healer."
 msgstr ""
+"'Canavar'lar benzer cinslerden sadece boy ve renk olarak ayrılırlar. Tipik "
+"olarak omuz hizasında bir attan yüksektirler ve saldırgan yaratılışlıdırlar. "
+"Sadece deli biri onlarla bilerek muhatap olabilir; goblinler tabir caizse "
+"kendilerinden büyük fedakarlık yaparak onları evcilleştirebilmişlerdir.\n"
+"\n"
+"Bir kurtun pençeleri genellikle en tehlikeli kısımları olarak kabul "
+"edilmezler ama bu denli büyük bir canavarda demir çivilerden daha kalın ve "
+"uzun olurlar. Sahipleri ön takımlara ork suikastçilerinkinden pek farklı "
+"olmayan bir zehir sıvarlar, bu ise bu canavarların pençelerinden gelen bir "
+"tırmalamayı çok ölümcül bir darbe haline getirir.\n"
+"\n"
+"Özel notlar: Canavarın pençeleri tarafından vurulan kimse zehirlenir ve bu "
+"zehirin kurbanları şehirde veya bir tedavici tarafından ilaç verilene kadar "
+"sürekli hasar görür."
 
 #: data/units/Direwolf_Rider.cfg:54 data/units/Drake_Burner.cfg:34
 #: data/units/Drake_Fire.cfg:36 data/units/Drake_Inferno.cfg:25
@@ -5233,6 +5432,11 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
+"Wesnoth ordularındaki daha yetenekli süvariler tatar yayı kullanmayı "
+"bilirler ve çok daha güçlü küheylanlar ile donatılmışlardır. Kalın zırhlı ve "
+"kılıçlarını kullanmakta kabiliyetli olan bu askerler ileri sürebilir ve "
+"aldıkları mevzileri koruyabilirler. Hareket kabiliyetleri ve "
+"dayanıklılıkları onları savaş alanında çok değerli kılar."
 
 #: data/units/Drake_Blademaster.cfg:4
 msgid "Drake Blademaster"
@@ -5243,6 +5447,8 @@ msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of this is the black and white warpaint they display in battle."
 msgstr ""
+"Kılıç kullanımında ustalaşan ejderler özel bir yola bağlanmışlardır. Bunun "
+"işareti savaşta sürdükleri siyah ve beyaz boyadır."
 
 #: data/units/Drake_Blademaster.cfg:46 data/units/Drake_Burner.cfg:53
 #: data/units/Drake_Fighter.cfg:56 data/units/Drake_Fire.cfg:54
@@ -5264,6 +5470,10 @@ msgid ""
 "This, coupled with their sheer size and clawed hands makes for a dangerous "
 "foe in combat."
 msgstr ""
+"Uzaktan atalarının güçlerini, özellikle ateş üfleme kabiliyetini en iyi "
+"biçimde miras alan ejder yakıcılar az sayıda ve gururludurlar. Bu, göğüs "
+"genişlikleri ve pençeli eller de hesaba katılınca kendilerini dövüşte "
+"tehlikeli bir rakip yapar."
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
@@ -5286,6 +5496,19 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
+"Ejder çarpıcı hem uçamaz hem de ateş üfleyemez ve çoğu kişi onların yakın "
+"dövüş ligine indirilmelerinin sebebinin sakatlıkları olduğunu, bunun aksi "
+"takdirde boş duracak bir şeyin hayata kazandırılması olduğunu varsayar. Sözü "
+"edilen kabiliyetler noktasında bazı eksiklikleri olabilir, ama bu teoriyi "
+"savunanlar onların hemcinsleri bir ejderle dövüşmekte ne kadar eşsiz bir "
+"şekilde uygun olduklarını farkedememişlerdir.\n"
+"\n"
+"Onlar gerçekte ejder hiyerarşisinin yargıçlarıdırlar ve silahları şimdi çok "
+"ağır olmasına rağmen hiç olmazsa etkilidirler. Daha küçük ırklarla "
+"karşılaşmalarında sırf doğal büyüklükleri ve güçlerinin bile güçlü silahlar "
+"olduğunu keşfetmişlerdir, buna bu sınıfın taşıdığı silahlar eklenince, "
+"ortaya çıkan savaşçılarda mızrak ve oka karşı zaaf gibi türlerinin bazı "
+"tipik zayıflıkları yoktur."
 
 #: data/units/Drake_Enforcer.cfg:3
 msgid "Drake Enforcer"
@@ -5297,6 +5520,9 @@ msgid ""
 "hours at the forge have provided them with a bristling array of weaponry, "
 "and have clad them head to toe in shining armor."
 msgstr ""
+"Büyük ejder infazcılar türlerinin ham gücünün bir örneğini teşkil ederler. "
+"Uzun demir dövmeler onlara geniş bir silah yelpazesi vermiş ve onları baştan "
+"ayağa parlak zırha bürümüştür."
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -5308,6 +5534,9 @@ msgid ""
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
 "join the ranks of the elite Drake Warriors."
 msgstr ""
+"Ejder savaşçılar eğri kılıçları ölümcül bir yetenek ile kullanırlar, ve "
+"atalarının ateş üfleme kabiliyetlerine sahiptirler. En kabiliyetli "
+"savaşçılar gidip elit ejder cengaverlerin saflarına katılırlar."
 
 #: data/units/Drake_Fighter.cfg:33
 msgid "scimitar"
@@ -5323,6 +5552,9 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
+"Büyük ateş ejderleri içlerindeki ateşin ustalarıdırlar. Parlak zırhlar "
+"içinde güç ve haşmetlerinin bir göstergesi olarak karşılarına çıkanlara ateş "
+"sütunları püskürtürler."
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
@@ -5339,6 +5571,14 @@ msgid ""
 "it to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"Denir ki en yaşlı ejder neslinin, ejderhaların direk torunlarının, "
+"içlerinden kan yerine ateş akan damarları olurmuş. Ateş pükürebilmeleri bu "
+"inanca güvenilirlik kazandırmakla birlikte, her nedense kimse bunun gerçek "
+"olup olmadığını öğrenmek için bir tanesini kesip içine bakmamıştır.\n"
+"\n"
+"Özel notlar: alevkalplinin liderliği kendisinin yanında bulunan dost "
+"birimlerin dövüşte daha çok hasar vermesini sağlar, ancak bu sadece alt "
+"seviye birimler için geçerlidir."
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
@@ -5354,6 +5594,13 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"Ejderler kendi doğal liderlerini dinleyecek kadar bilge eski bir ırktır. "
+"Düşmanları tarafından 'alevli' ismi verilenler savaş ve barışta böyle "
+"liderler olmaya talip olanlardır.\n"
+"\n"
+"Özel notlar: alevlinin liderliği komşusu olan dost birimlerin dövüşte daha "
+"çok hasar vermesini sağlar, ancak bu sadece alt seviye birimler için "
+"geçerlidir."
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
@@ -5368,6 +5615,12 @@ msgid ""
 "maces which complement their already impressive array. Their intense focus "
 "on their weapons comes at the slight expense of their defensive abilities."
 msgstr ""
+"Gladyatör çarpıcılardan çok farklı bir yol izlemişlerdir. Eğitime "
+"yoğunlaşmak yerine silah gücüne ağırlık vermeyi tercih etmişlerdir. Ejder "
+"ırkının demircileridirler, bunun sonucu olarak en iyi silahlara sahiplerdir "
+"- en keskin kılıçlar ve mızraklar ve bu zaten etkileyici techizatlarını "
+"zenginleştiren topuzlar. Silahlar üzerinde yoğunlaşan ilgileri savunma "
+"kabiliyetlerine az önem verme olarak ortaya çıkar."
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
@@ -5382,6 +5635,12 @@ msgid ""
 "submission. The best gliders can look forward to being accepted into the "
 "ranks of the high flying Sky Drakes."
 msgstr ""
+"Ejder planörcüler olabildiğince az zırh giyerler ki böylece mağaralarını "
+"terkettiklerince rakiplerinden hızlıca kaçabilsinler. Türlerinin çoğunda "
+"bulunan iç ateşine sahip olan bu ejderler kifayetli savaşçılardır. "
+"Planörcüler ayrıca rakiplerine çarpıp onları yere indirmek için hızlarını "
+"etkili biçimde kullanabilirler. En iyi planörcüler yüksek uçan gök "
+"ejderlerinin sınıfına kabul edilmeyi beklerler."
 
 #: data/units/Drake_Glider.cfg:23 data/units/Drake_Hurricane.cfg:27
 #: data/units/Drake_Sky.cfg:28
@@ -5398,6 +5657,10 @@ msgid ""
 "those drakes which are gifted with flight. Soaring high in the air, they can "
 "see past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
+"Gökyüzü aleminin efendileri olan gök ejderleri özel bir uçuş yeteneğine "
+"sahip ejderler arasında elit tabakadırlar. Havada yükseklerden süzülerek en "
+"gizli çalılıkların ötesini görebilir ve korkusuzca düşmanlarına ateş "
+"tükürebilirler."
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -5411,6 +5674,11 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
+"Cehennme ejderi olarak bilinen uçan cisimler soludukları ateşin pirleri olup "
+"bunun kullanımında ataları ejderhalarla boy ölçüşebilecek düzeydedirler. Bu "
+"doğal kabiliyet onları neredeyse ateşe bağışıklı kılar. Parlak, alev renkli "
+"zırhları kardeşlerinin erişmek istediği ideal olan onurlu ve güçlü "
+"sınıflarının bir sembolüdür."
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
@@ -5422,6 +5690,10 @@ msgid ""
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
 "down on prey, and are usually long gone before anyone can stop them."
 msgstr ""
+"Gök ejderleri gerçekten de göğün krallarıdırlar. Hareket kabiliyetleri ve "
+"ateşli nefeslerini silah olarak kullanan bu ejderler pek çok kişinin "
+"felaketidirler. Avlarının üzerine şimşek gibi çullanıp genelde biri "
+"tarafından durdurulamadan uçup giderler."
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -5435,13 +5707,17 @@ msgid ""
 "boar. Their training has also enhanced their stamina and defensive skills, "
 "which is a major advantage over their close cousins the Gladiators."
 msgstr ""
+"Hezarlar bir kılıç ve mızrak taşımak yerine teber kullanımında uzmanlaşmayı "
+"tercih etmiş olan çarpıcılardır. Büyük boyutları ona yaraşır büyüklükte bir "
+"silah kullanmalarına el verir, o kadar büyük ki bir atı adam gibi "
+"şişleyebilirler. Eğitimleri kuzenleri gladyatörlere karşı büyük bir avantaj "
+"olan tahammül ve savunma kabiliyetlerini de geliştirmiştir."
 
 #: data/units/Drake_Slasher.cfg:25 data/units/Drake_Slasher.cfg:43
 #: data/units/Drake_Warden.cfg:26 data/units/Drake_Warden.cfg:44
 #: data/units/Halbardier.cfg:28 data/units/Halbardier.cfg:69
-#, fuzzy
 msgid "halberd"
-msgstr "Teberci"
+msgstr "teber"
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:47
 #: data/units/Goblin_Impaler.cfg:29 data/units/Halbardier.cfg:34
@@ -5461,6 +5737,10 @@ msgid ""
 "on this earth would dare stand against them. The Wardens' weapon of choice "
 "is the halberd, which they use to great effect."
 msgstr ""
+"En güçlü hezarlar arasından seçilen muhafız, çarpıcı sınıfının doruk "
+"noktasını temsil eder. Becerilerini o denli ilerletmişlerdir ki bu "
+"yeryüzünde çok az cengaver onların karşısına çıkmaya cesaret edebilir. "
+"Muhafızların tercih ettiği silah çok etkili biçimde kullandıkları teberdir."
 
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
@@ -5472,6 +5752,10 @@ msgid ""
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike withering blows, and to withstand punishment in equal measure."
 msgstr ""
+"Ejder cengaverler kılıçları çok büyük bir ustalıkla kullanırlar ve "
+"atalarının ateş soluma özelliğine sahiptirler. Türlerinin büyük gücü kurutan "
+"rüzgarlar savurmalarına ve aynı derecede dayağa direnç göstermelerine izin "
+"verir."
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
@@ -5486,6 +5770,13 @@ msgid ""
 "bought only by strength of arms. The memory of their enemy, and the purpose "
 "of their struggle have long faded into oblivion."
 msgstr ""
+"Bir zamanlar efsanevi kahramanlar olan kimselerin devasa kalıntıları olan "
+"hayalet askerler karşılarına çıkanın kalbine korku saçarlar. Suç işleme "
+"kastıyla hareket etmezler, hayır, onlar kurtuluş için,güçle elde edilebilen "
+"bir huzura kavuşmak için umutsuzca savaştıkları ve hayallerindeki büyük "
+"savaşlar arasında gayesizce dolaştıkları bir ölümsüzlük rüyasında sıkışıp "
+"kalmışlardır. Düşmanlarının hayali ve çabalarının gayesi çoktan unutulup "
+"gitmiştir."
 
 #: data/units/Draug.cfg:37 data/units/Dwarvish_Fighter.cfg:22
 #: data/units/Revenant.cfg:36 data/units/Skeleton.cfg:37
@@ -5494,7 +5785,7 @@ msgstr "balta"
 
 #: data/units/Dread_Lich.cfg:3
 msgid "Dread Lich"
-msgstr "Sömüren ceset"
+msgstr "Sömüren ölü büyücü"
 
 #: data/units/Dread_Lich.cfg:18
 msgid ""
@@ -5505,6 +5796,11 @@ msgid ""
 "immortality will have to provide consolation for what he has lost in his "
 "quest to achieve them."
 msgstr ""
+"En nihayetinde, Ha'atel altını üstüne getirdiği kara sanatlar için en büyük "
+"kurbanı verdi, ve bizzat kendisi ölüm ötesine ulaştı. Gücünün doruğunda bir "
+"ölü büyücü, korkunun şekli bir ifadesi oldu. Şüpheye meydan bırakmadan geri "
+"dönülmez noktasını geçti, artık gücü ve ölümsüzlüğü onları elde ederken "
+"kaybettikleri için bir teselli olmalı."
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
@@ -5528,6 +5824,21 @@ msgid ""
 "Special Notes: their skill at skirmishing allows these fencers to dart right "
 "past an opponent, ignoring zones of control."
 msgstr ""
+"Oğullarını tipik olarak ya binicilik sanatında ya da eskirimcilikte eğiterek "
+"iki şövalye yolundan birine kaydettirmek Wesnoth asilzadeliğinin kendine has "
+"bir modasıdır. Düellocular şeref meselelerinin kışkırtmasıyla bazen doğal "
+"haklarını birden açığa vuran genç aristokratların malesef çok yaptıkları bu "
+"iş sebebiyle böyle isimlendirilirler.\n"
+"\n"
+"Doğuştan asil olmamaları durumunda da asilzade gibi gözüken bu tecrübeli "
+"eskrimciler yanlarında kolayca yelek veya pelerin altına gizlenebilen bir "
+"tatar yayı taşırlar. Çekmesi yavaş ve kullanılması sıklıkla utanç verici "
+"kabul edilen bu yay gerçekte çok kullanışlıdır, ve aralarından tecrübe "
+"kazanacak kadar uzun yaşayanlar bunu yaşamak için kendi faydalarına "
+"yaptıkları böyle tavizlerle başarırlar.\n"
+"\n"
+"Özel notlar: eskirimcilik konusunda kabiliyetleri bu eskirimcilerin kontrol "
+"alanlarını yok sayarak rakibi en uygun yerden şişlemelerini sağlar."
 
 #: data/units/Duelist.cfg:37 data/units/Fencer.cfg:24
 #: data/units/Master_at_Arms.cfg:38
@@ -5545,6 +5856,10 @@ msgid ""
 "battle is entered, Dwarvish Berserkers attack ferociously, continuing to "
 "push the attack until either they or their enemy lies dead."
 msgstr ""
+"Cüceler güçlü savaşçılardan oluşan antik bir ırktır. Çılgın cüceler "
+"düşmanlarına ağır hasar karşılığında tüm savunmayı unuturlar. Çarpışma bir "
+"kere başladı mı çılgın cüceler yırtıcı biçimde saldırır, ya kendileri ya da "
+"düşman yere serilene kadar saldırmaya devam ederler."
 
 #: data/units/Dwarvish_Berserker.cfg:27 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
@@ -5569,6 +5884,14 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
+"Ejderha muhafızlarına cüce kardeşleri tarafından verilen bu ismin neden "
+"verildiği tam olarak belli değildir. Bazıları bu isim silah tercihlerinden, "
+"yani ateş ve ölüm püskürten şu garip değneklerden gelmiştir der. Diğer "
+"bazıları sebebin - şayet bilinen dünyada tekrar ejderha diye bir şey "
+"görülebilirse- bu silahların gerçek bir ejderhaya bile gözdağı verebileceği "
+"üzerinde durur. Sebep her ne ise büyük cüce hisarlarının muhafızlarının "
+"sayesinde hem isim yapıp hem korkulduğu, en kahraman cengaverlerin bir "
+"atışta işini bitiren bu silahlarla ilgilidir."
 
 #: data/units/Dwarvish_Dragonguard.cfg:21
 #: data/units/Dwarvish_Dragonguard.cfg:39
@@ -5586,6 +5909,10 @@ msgid ""
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
+"Cüce savaşçılar sağlam savaş baltaları ve çekiçler kullanır, bu onları yakın "
+"mesafe dövüşte korkulan rakipler yapar. Dağlık arazi veya yeraltında çok "
+"iyidirler. Süratli değillerdir, ama güç ve dayanıklılıkları bunu fazlası ile "
+"telafi eder."
 
 #: data/units/Dwarvish_Fighter.cfg:39 data/units/Dwarvish_Lord.cfg:45
 #: data/units/Dwarvish_Steelclad.cfg:45 data/units/Troll_Warrior.cfg:24
@@ -5602,6 +5929,9 @@ msgid ""
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
 "lot of damage, and hurling heavy spears for defense."
 msgstr ""
+"En dayanıklı cüceler bazen cüce ordusuna muhafızlar olarak katılırlar. Yavaş "
+"ve güçlü bir saldırıdan mahrum, pek çok hasarı emerek ve savunmada ağır "
+"mızraklar atarak ordunun kanatlarını muhafaza ederler."
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -5614,6 +5944,10 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
+"Parlak zırha bürünen bu cüceler dağların altından gelen krallara benzerler. "
+"Balta ve çekici usta maharetiyle kullanır ve fırlattıkları el baltası ile "
+"bir hedefi bir kaç adımda vurabilirler. Yürümeli yavaş olmakla birlikte bu "
+"cüceler türlerinin yiğitliğine birer kanıttırlar."
 
 #: data/units/Dwarvish_Lord.cfg:61
 msgid "hatchet"
@@ -5621,7 +5955,7 @@ msgstr "el baltası"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
-msgstr "Cüce madenci"
+msgstr "Cüce rünik ustası"
 
 #: data/units/Dwarvish_Runemaster.cfg:17
 msgid ""
@@ -5630,6 +5964,10 @@ msgid ""
 "presence somehow imbue it with power. Though rarely seen in combat, a master "
 "of these runes can put them to terrifying use."
 msgstr ""
+"Cüce büyüsü, bilindiği kadarı ile, kendini rünik yazıların bir nesnenin "
+"yüzeyine yazılması ile ortaya koyar, nasılsa bu yazılar sırf üzerinde "
+"durarak onu güçle doldurur. Dövüşte nadiren görülmekle birlikte bu "
+"rüniklerin ustası onları korkunç derecede kullanabilir."
 
 #: data/units/Dwarvish_Runemaster.cfg:21
 msgid "runic hammer"
@@ -5648,6 +5986,8 @@ msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
 msgstr ""
+"Kale gibi kalkanı ve büyük cesareti ile cüce nöbetçi en güçlü düşman "
+"saldırıları karşısında bile teslim olmaz."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
@@ -5659,6 +5999,9 @@ msgid ""
 "armor from the ruins of their enemies. While slow, they are the feared for "
 "their resilience and strength."
 msgstr ""
+"Cüce kayalar, savaşta yıllar geçirdikten sonra düşmanlarının kalıntılarından "
+"kendilerine yeni kalkanlar ve güçlü zırhlar yapmışlardır. Yavaş olamkal "
+"birlikte dayanıklılık ve güçleri sebebiyle korkulurlar."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -5669,6 +6012,8 @@ msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
 msgstr ""
+"En tecrübeli cüce çelik zırhlılar kendileriyle hayli meşhur oldukları çelik "
+"zırhlar  ve zincirli elbiseler giyerler."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
 msgid "Dwarvish Thunderer"
@@ -5684,6 +6029,13 @@ msgid ""
 "make any of their own, realized they were lucky to no longer be fighting the "
 "dwarves, and vowed never to do so again."
 msgstr ""
+"Wesnoth'un insanları cücelerle ilk karşılaşmalarında savaşa getirdikleri şu "
+"garip ... 'değnek' aletiyle uzaktan ölüm püskürtebilen cüce gürleyicilerin "
+"gücü karşısında hayrete düşmüşlerdi. Ka'lian tarafından tesis edilen barış "
+"yürürlüğe girince bu silahları anlamayan ve kesinlikle kendileri yapamayacak "
+"olan Haldric'in adamları artık cücelerle savaşmak zorunda olmadıkları için "
+"şanslı olduklarını farkettiler, ve bir daha bunu yapmayacaklarına yemin "
+"ettiler."
 
 #: data/units/Dwarvish_Thunderer.cfg:63
 msgid "thunderstick"
@@ -5721,6 +6073,9 @@ msgid ""
 "ferocious of these in battle: they persist until either their enemy is dead "
 "or they themselves perish, no matter how many wounds they receive."
 msgstr ""
+"Cüceler güçlü savaşçılardan oluşan antik bir ırktır. Deli cüceler savaşta "
+"bunların en azgın olanlarıdır: ne kadar yara alırlarsa alsınlar düşmanları "
+"ölene veya kendileri harap olana kadar inat ederler."
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
@@ -5732,6 +6087,9 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Bir zamanlar harika olan yaşlı büyücüler güçlerinin yılllarca süren savaş "
+"bıkkınlığı yüzünden azaldığını gördüler. Mamafih güçlü yıldırım toplarının "
+"hürmetine savaş alanlarında korkulan kişiler olarak kaldılar."
 
 #: data/units/Elder_Mage.cfg:40
 msgid "lightning"
@@ -5870,6 +6228,9 @@ msgid ""
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
 "magically animate roots with which they bind their enemies in place."
 msgstr ""
+"Elf büyücü hanımlar saldırı büyüsünün ustalarıdırlar, düşmanlarına hava "
+"tabakalarından iplik gibi çekilen buzlu rüzgarlar ve düşmanları oldukları "
+"yere bağlayan büyülü canlı kökler ile saldırırlar."
 
 #: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:46
 #: data/units/Elvish_Sorceress.cfg:65
@@ -5893,6 +6254,10 @@ msgid ""
 "can grasp the basics of swordsmanship and archery in an uncannily short "
 "time, and put them to effective use on the battlefield."
 msgstr ""
+"Elflerin tabiatında savaşçılık yoktur ama gerektiği zaman doğal zerafet ve "
+"çeviklikleri görevini yerine getirip onların silahı olur. Bir elf kılıç "
+"kullanma ve okçuluğun temellerini esrarengiz kısa sürede kavrayıp, bunları "
+"savaş alanında hayata geçirebilir."
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
@@ -5904,6 +6269,9 @@ msgid ""
 "fighter into a master of combat. Those who are honored as heroes are strong "
 "with both sword and bow, skills that never fade for lack of practice."
 msgstr ""
+"Nispeten az miktarda tecrübe bir elfi becerikli bir savaşçıdan bir dövüş "
+"ustasına çevirebilir. Kahraman olarak saygı gösterilenler hem kılıç hem de "
+"okta güçlü, pratik yapmamakla kaybolmayacak kadar kabiliyetlidirler."
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
@@ -5916,6 +6284,9 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"Elf liderleri yaş ile birlikte solup kırılmazlar. Dahası bu onların asıl "
+"potansiyellerinin ortaya çıktığı çağdır. Barış zamanları sessiz ve dalgın "
+"olan yüksek lord hiddeti son noktaya ulaşınca görülmeye değerdir."
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
@@ -5928,6 +6299,10 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"Elfler liderlerini güç ve bilgeliğine göre seçerler, belirsizlik durumunda "
+"basiretleri onları korumuştur. Yegane saltanatları bir yöneticinin "
+"dileyebileceği en büyük hediye olan insanlarının koşulsuz sadakati ile "
+"mükafatlandırılmıştır."
 
 #: data/units/Elvish_Lady.cfg:21
 msgid "shove"
@@ -5943,6 +6318,9 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"Elflerin asilzadelerinin toplumdaki konumlarına yakışan hünerleri vardır. "
+"Elf lordlar insanlarının en bilge ve en güçlüleridir ve büyü kullanma "
+"konusunda korkunçturlar."
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
@@ -6264,7 +6642,7 @@ msgstr "Kapı"
 
 #: data/units/Gate.cfg:19
 msgid "The door will not open for any who are not allied with it."
-msgstr ""
+msgstr "Kapı kendiyle müttefik olmayan kimseye açılmayacak."
 
 #: data/units/Gate.cfg:21
 msgid "bump"
@@ -6362,6 +6740,8 @@ msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation."
 msgstr ""
+"Normal bir akrep yeterince tehlikelidir - insan boyundaki birinin nasıl "
+"olabileceğini siz düşünün."
 
 #: data/units/Giant_Scorpion.cfg:20
 msgid "sting"
@@ -6462,6 +6842,10 @@ msgid ""
 "Special Notes: the Grand Knight's charging lance attack doubles both damage "
 "dealt and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Özel notlar: Büyük şövalyenin yüklemeli mızrak saldırısı verilen ve alınan "
+"hasarı ikiye katlar. Bu kendisinin savunma misillemesinde geçerli değildir."
 
 #: data/units/Grand_Knight.cfg:41 data/units/Knight.cfg:40
 #: data/units/Lancer.cfg:25 data/units/Paladin.cfg:46
@@ -6528,7 +6912,7 @@ msgstr ""
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
-msgstr "Zümrüdü anka"
+msgstr "Grifon"
 
 #: data/units/Gryphon.cfg:17
 msgid ""
@@ -6536,10 +6920,13 @@ msgid ""
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
+"Bu haşmetli ve güçlü yaratıklar göklerin efendisidirler. Grifonlar hem "
+"tehlikeli hem de diğer akıllı yaratıklardan farklıdırlar ve bu sebeple iyi "
+"bir sebep olmaksızın rahatsız edilmemelidirler."
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
-msgstr "Zümrüdü anka ustası"
+msgstr "Grifon ustası"
 
 #: data/units/Gryphon_Master.cfg:20
 msgid ""
@@ -6550,7 +6937,7 @@ msgstr ""
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
-msgstr "Zümrüdü anka binici"
+msgstr "Grifon binici"
 
 #: data/units/Gryphon_Rider.cfg:17
 msgid ""
@@ -6608,6 +6995,9 @@ msgid ""
 "their houses and are respected by all, friend or foe. Their sword can kill "
 "most ordinary enemies, and their morning star crushes those who are left."
 msgstr ""
+"Düzlüklerin en büyük adamları olan atlı lordlar evlerinin başıdırlar ve dost "
+"düşman herkes tarafından saygı görürler. Kılıçları çoğu sıradan düşmanı "
+"öldürebilir, kalanları ise sabah yıldızları ezip geçer."
 
 #: data/units/Horse_Lord.cfg:44 data/units/Mounted_Fighter.cfg:44
 #: data/units/Mounted_Warrior.cfg:44
@@ -6636,6 +7026,10 @@ msgid ""
 "Special Notes: the Horseman's only attack is a charge, which doubles both "
 "damage dealt and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Özel Notlar : Binicinin tek saldırısı yüklemedir, bu verilen ve alınan "
+"hasarı ikiye katlar. Bunun savanma tepkimesinde etkisi yoktur."
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
@@ -6646,6 +7040,9 @@ msgid ""
 "Dabbling in the Death Magic, this young Ha'atel's lust for power has "
 "weakened him to the point where he is too weak to attack in regular combat."
 msgstr ""
+"Kara büyüyle amatörce uğraşı ve Ha'atel' in güce olan ihtisarı onu "
+"zayıflatmış ve savaşta normal olarak  saldıramayacak kadar güçsüz "
+"bırakmıştır."
 
 #: data/units/Iron_Mauler.cfg:3
 msgid "Iron Mauler"
@@ -6664,6 +7061,15 @@ msgid ""
 "they cannot run on the battlefield. Too often have they seen a distant "
 "comrade fall, yet were powerless to reach the scene in time to help."
 msgstr ""
+"Demir Bolyoz ismine sahip olmalarının sebebi hepimize malumdur. Bu zırhlı "
+"elbise içinde güç savaşında ogrelere denk gelebilirler, ve savundukları "
+"kalede, savunucularının şampiyonları olarak gösterilirler. Ama bunları "
+"orududa tutmak pahalıdır, ve uzak savaşlara yanlarında onları tam "
+"destekleyen hizmetkarlar olmadan gönderilemezler. \n"
+"Yakın dövüşte herhesi hayrete düşürsede, bu şekilde donanımlı olmalarının "
+"zaafları vardır; Demir Balyozlar kolayca yorulurlar, ve hepimizin iyi "
+"bildiği gibi savaş alanından kaçamazlar. Çok zaman bir grupla birlikte "
+"savaşa gönderilip olaya zamanında yetişip yardım edemediği görülmüştür."
 
 #: data/units/Javelineer.cfg:3
 msgid "Javelineer"
@@ -6696,6 +7102,13 @@ msgid ""
 "patience, are far safer than a charge. Their lances are still at the ready, "
 "however, and growing experience with these weapons is only to their benefit."
 msgstr ""
+"Biniciler kabiliyet ve disiplin ile Şövalye' ye terfi eder. Savaşın "
+"gazileri, yükleme saldırısının başarısızlığının ölümcül onucunu sık sık "
+"gördükleri için onun kullanımından uzak durmaya çalışırlar. Bundan dolayı "
+"Şövalyeler teçhizatlarında kılıç taşırlar, ve taktik savaşı çok daha zor "
+"olmasına karşı yüklemeden güvenli olduğu için kılıcı tercih ederler. Ama, "
+"kargıları hala yanlarındadır, ve bu silahla tecrübe geliştirmeleri onların "
+"yararınadır."
 
 #: data/units/Knight.cfg:21
 msgid ""
@@ -6704,6 +7117,10 @@ msgid ""
 "Special Notes: the Knight's charging lance attack doubles both damage dealt "
 "and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Özel Notlar : Şövalyelerin kargılarıyla yükleme saldırısı verilen ve alınan "
+"hasarı ikiye katlar. Bunun savanma tepkimesinde etkisi yoktur."
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
@@ -6718,6 +7135,12 @@ msgid ""
 "infantrymen who've made the mistake of breaking formation, and in piercing "
 "defensive lines. However, they have limited use in defense."
 msgstr ""
+"Mızraklı Şövalyeler bütün Wesnoth' daki en cesurlardan ve en korkulan "
+"binicilerdendir. En az zırh ile donanmış, kendilerini çabuk sürmeye bırakmış "
+"ve emsallerinden daha hızlılar. Kullandıkları cesur taktikleri iki tarafı "
+"keskin kılıçlarıdır, sonuçta ya kazanırlar, yada çabucak ölürler. Mızraklı "
+"Şövalyeler Formasyonu bozan piyadeleri avlamak ve savunma hatlarını yarmak "
+"için idealdirler. Ama, savunmada kısıtlı bir kullanımları vardır."
 
 #: data/units/Lancer.cfg:22
 msgid ""
@@ -6726,6 +7149,10 @@ msgid ""
 "Special Notes: the Lancer's charging lance attack doubles both damage dealt "
 "and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Özel Notlar : Mızraklı Şövalyelerin kargılarıyla yükleme saldırısı verilen "
+"ve alınan hasarı ikiye katlar. Bunun savanma tepkimesinde etkisi yoktur."
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
@@ -6761,6 +7188,12 @@ msgid ""
 "it to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"Kılıçla ve okla talim etmiş, Teğmenler ufak sayıdaki insan askerleri "
+"yönetir, saldırılarını yöndetir. \n"
+"\n"
+"Özel Notlar: Alt seviye birimlerde etkilidi olmasına rağmen Teğmenin "
+"liderlik kabiliyeti yakınındaki birimlerin çarpışmada daha fazla hasar "
+"vermelerini sağlar."
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
@@ -6774,6 +7207,12 @@ msgid ""
 "certainly lack. Longbowmen carry their weaponry as a badge of pride, and "
 "most bowmen look forward to the day they can begin using one."
 msgstr ""
+"Uzun oklar, okçuluğa ilk başlayanlara fizik kanunlarının sebebiyle "
+"yasaklanmıştır. Bir oku germek çok büyük bir güç ister, ve biri iyi bir "
+"hedeflemeye sahip değilse daha uzun ve daha güçlü etkisi tamamem "
+"kullanışsızdır ve yeni başlayanlar bunlardan uzaktırlar. Uzun Okçular "
+"silahlarını övgü nişanı gibi taşırlar ve birçok okçu da böyle bir tane "
+"taşıyacağı günü gözler durur."
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:79
 msgid "Lord"
@@ -6786,6 +7225,10 @@ msgid ""
 "leadership skills, and improve the fighting ability of all adjacent lower-"
 "level units."
 msgstr ""
+"Bir çok birliğin asil liderleri, Lordlar özellikle yakın savaşta "
+"güçlüdürler, ve ok kullanmadada maharetlidirler. Komutanlar gibi, Lordlarda "
+"liderlik vardır, ve yakındaki tüm alt seviye birimlerin savaş becerisini "
+"geliştirirler."
 
 #: data/units/Mage.cfg:3
 msgid "Mage"
@@ -6883,6 +7326,14 @@ msgid ""
 "their human counterparts have speculated, perhaps in envy, that this is only "
 "by dint of age."
 msgstr ""
+"Usta Okçular kendi sanatlarında bir insanın ulaşabileceği en yüksek seviyeye "
+"ulaşmışlardır. Bir kılıç ve porsuk ağacından yapılmış büyük bir ok ile "
+"silahlanmış bu savaşçılar okçuların şahıdırlar ve orduda bulunmalarıyla bir "
+"çok düşmanı iyi nişanlanmış oklarıyla yere sererler. Onların kılıçla olan "
+"kabiliyetleri de göz ardı edilmemelidir; onlar en az bir acemi kılıççılar "
+"kadar iyidirler. Dünyadaki bir çok ırklardan sadece elfler insanları "
+"okçulukta geçerler, ve insan mukabilleri, biraz da gıpta ile, bu farkın "
+"yüzyıllar farkından geldiğini düşünürler."
 
 #: data/units/Master_at_Arms.cfg:3
 msgid "Master at Arms"
@@ -6907,8 +7358,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
+#, fuzzy
 msgid "female^Mermaid Diviner"
-msgstr "Denizkızı kahin"
+msgstr "female^Denizkızı kahin"
 
 #: data/units/Mermaid_Diviner.cfg:28
 msgid ""
@@ -7163,13 +7615,15 @@ msgstr ""
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
-msgstr "Çamur"
+msgstr "Çamurca"
 
 #: data/units/Mudcrawler.cfg:18
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
+"Çamurcalar topral ve suyun sihirsel oluşumlarıdır. Onlar düşmanlarına toprak "
+"parçası atarak saldırırlar."
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
@@ -7311,13 +7765,15 @@ msgstr "Asil lord"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr "Asil gençlik"
+msgstr "Asil Genç"
 
 #: data/units/Noble_Youth.cfg:20
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
 "become a Lord -- to join the elite of humanity."
 msgstr ""
+"Bügün o bir genç adam, taca bağlılığı ile o Lord olmayı hedefliyor -- "
+"insanların elitlerine katılmayı"
 
 #: data/units/Noble_Youth.cfg:23 data/units/Youth.cfg:20
 msgid "training sword"
@@ -7334,6 +7790,10 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Tepegözler vahşi ortama yanlız yaşayan büyük yaratıklardır, insan formuna "
+"yakın olarak gözüksede büyük ve yanlış şekillenmişlerdir. Genellikle kolayca "
+"kaçılsa yada onlardan akılca üstün olunabilse de, onların güçleri "
+"küçümsenmemelidir."
 
 #: data/units/Ogre.cfg:20 data/units/Young_Ogre.cfg:41
 msgid "cleaver"
@@ -7350,6 +7810,10 @@ msgid ""
 "since most orcs won't learn how to handle a bow, he is an indispensable part "
 "of the orcish army."
 msgstr ""
+"Ork okçuları düşmanlarına uzaktan saldırdıkları için Orkdaşları tarafından "
+"bir alt sınıf savaşçı olarak düşünülülür. Ama, birçok Ork bir okun nasıl "
+"kullanabileceğini öğrenemediği için onlar Ork ordusunun vazgeçilmez "
+"parçasıdırlar."
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
@@ -7390,7 +7854,7 @@ msgstr "kısa kılıç"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr "Ork izbandut"
+msgstr "Ork İzbandut"
 
 #: data/units/Orcish_Grunt.cfg:16
 msgid ""
@@ -7398,10 +7862,13 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"Ork İzbandutları Ork ordusunun temel yapıtaşıdır. İnsan yada elf "
+"Savaşçılardan yavaş olsada, Izbandutlar çok daha güçlü darbeler vururlar, ve "
+"ölmeden evvel çok daha fazlasını alırlar."
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr "Ork lider"
+msgstr "Ork Lideri"
 
 #: data/units/Orcish_Leader.cfg:18
 msgid ""
@@ -7411,6 +7878,11 @@ msgid ""
 "powerful fighters. Their natural leadership skills make them very precious "
 "in battle: if the Leader is lost, so is the battle."
 msgstr ""
+"Ork Liderleri kendi kabilelerinin şefleridir. Onlar önemli kararları "
+"verirler ve kendi insanlarını savaşta yöndetirler. Onlar greksizce ok "
+"taşırlar, ama kılıçta çok beceriklidirler, genelde, onlar çok iyi "
+"savaşçıdırlar. Onların doğal liderlik kabiliyeti savaşta çok önemlidir: Eğer "
+"lider kaybederse, savaşıda kaybederler."
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
@@ -7424,10 +7896,15 @@ msgid ""
 "powerful fighters. Their natural leadership skills make them very precious "
 "in battle: if the Ruler is lost, so is the battle."
 msgstr ""
+"Ork Liderleri kendi kabilelerinin şefleridir. Onlar önemli kararları "
+"verirler ve kendi insanlarını savaşta yöndetirler. Onlar greksizce ok "
+"taşırlar, ama kılıçta çok beceriklidirler, genelde, onlar çok iyi "
+"savaşçıdırlar. Onların doğal liderlik kabiliyeti savaşta çok önemlidir: Eğer "
+"Hükümdar kaybederse, savaşıda kaybederler."
 
 #: data/units/Orcish_Shaman.cfg:3
 msgid "Orcish Shaman"
-msgstr "Ork şaman"
+msgstr "Ork şamanı"
 
 #: data/units/Orcish_Shaman.cfg:17
 msgid ""
@@ -7438,6 +7915,12 @@ msgid ""
 "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
 msgstr ""
+"Ork şamanları ork büyüsünün vasileridirler. Ork kabilelerinden saygı "
+"görürler, Ork Konseyini kurarlar, ki Konsey bütün Ork ırkı için önemli "
+"kararlar alır ve tarrışmayı seven bu ırkın kabileleri arasındaki "
+"anlaşmazlıklarda son sözü söylerler. Fisiksel olarak sayıf olsalarda (Orklar "
+"için), Ork Şamanları iyi bir sihir yapıcıdırlar ve düşmanlarına beddua "
+"ederek onların hayatlarından çalarlar."
 
 #: data/units/Orcish_Shaman.cfg:37 data/units/Orcish_Shaman.cfg:97
 #: data/units/Orcish_Shaman.cfg:157 data/units/Vampire_Lady.cfg:35
@@ -7446,7 +7929,7 @@ msgstr "beddua"
 
 #: data/units/Orcish_Shaman.cfg:63
 msgid "Novice Orcish Shaman"
-msgstr "Toy ork şaman"
+msgstr "Toy Ork Şamanı"
 
 #: data/units/Orcish_Shaman.cfg:77
 msgid ""
@@ -7458,10 +7941,18 @@ msgid ""
 "draining their life. Novice Shamans are still young and vigorous, but their "
 "spell-casting ability still needs improvement."
 msgstr ""
+"Ork şamanları ork büyüsünün vasileridirler. Ork kabilelerinden saygı "
+"görürler, Ork Konseyini kurarlar, ki Konsey bütün Ork ırkı için önemli "
+"kararlar alır ve tarrışmayı seven bu ırkın kabileleri arasındaki "
+"anlaşmazlıklarda son sözü söylerler. Fisiksel olarak sayıf olsalarda (Orklar "
+"için), Ork şamanları iyi bir sihir yapıcıdırlar ve düşmanlarına beddua "
+"ederek onların hayatlarından çalarlar. Toy Ork Şamanları hala genç ve "
+"kuvvetlidirler, ama onların büyü yapma kabiliyetlerinin gelişmeye ihtiyacı "
+"vardır."
 
 #: data/units/Orcish_Shaman.cfg:123
 msgid "Old Orcish Shaman"
-msgstr "Yaşlı ork şaman"
+msgstr "Yaşlı Ork Şamanı"
 
 #: data/units/Orcish_Shaman.cfg:137
 msgid ""
@@ -7473,6 +7964,13 @@ msgid ""
 "draining their life. Old Orcish Shamans are shamans that have mastered "
 "magic, although their physical strength has declined with age."
 msgstr ""
+"Ork şamanları ork büyüsünün vasileridirler. Ork kabilelerinden saygı "
+"görürler, Ork Konseyini kurarlar, ki Konsey bütün Ork ırkı için önemli "
+"kararlar alır ve tarrışmayı seven bu ırkın kabileleri arasındaki "
+"anlaşmazlıklarda son sözü söylerler. Fisiksel olarak sayıf olsalarda (Orklar "
+"için), Ork şamanları iyi bir sihir yapıcıdırlar ve düşmanlarına beddua "
+"ederek onların hayatlarından çalarlar. Yaşlı Ork Şamanlarının fiziksel "
+"güçleri yaşları ile beraber azalsada onlar büyüde ustalaşmışlardır."
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
@@ -7506,7 +8004,7 @@ msgstr ""
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
-msgstr "Ork imparator"
+msgstr "Ork İmparatoru"
 
 #: data/units/Orcish_Sovereign.cfg:19
 msgid ""
@@ -7516,10 +8014,15 @@ msgid ""
 "powerful fighters. Their natural leadership skills make them very precious "
 "in battle: if the Sovereign is lost, so is the battle."
 msgstr ""
+"Ork Liderleri kendi kabilelerinin şefleridir. Onlar önemli kararları "
+"verirler ve kendi insanlarını savaşta yöndetirler. Onlar greksizce ok "
+"taşırlar, ama kılıçta çok beceriklidirler, genelde, onlar çok iyi "
+"savaşçıdırlar. Onların doğal liderlik kabiliyeti savaşta çok önemlidir: Eğer "
+"İmparator kaybederse, savaşıda kaybederler."
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
-msgstr "Ork savaş lordu"
+msgstr "Ork Savaş Lordu"
 
 #: data/units/Orcish_Warlord.cfg:17
 msgid ""
@@ -7527,10 +8030,13 @@ msgid ""
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with an iron hand."
 msgstr ""
+"Sadece çok kurnaz ve emsalsiz güçteki Orklar Savaş Lordları olabilirler. "
+"Kılıcın ustaları, ve hatta okla bazı ustalıklara sahipler, bu yabani-"
+"savaşçılar kardeşlerini demir yumrukla yönetirler."
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
-msgstr "Ork cengaver"
+msgstr "Ork Cengaveri"
 
 #: data/units/Orcish_Warrior.cfg:16
 msgid ""
@@ -7538,6 +8044,9 @@ msgid ""
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
+"Çift kılıçla savaşmadae uzmanlaşmış bu savaşçılar, Ork Cengaverleri orklar "
+"tarafından çok saygı görürler, ve düşmaları onlardan çok korkarlar. Onların "
+"tek zayıflığı ok kullanamamalarıdır."
 
 #: data/units/Outlaw.cfg:3
 msgid "Outlaw"
@@ -7556,11 +8065,11 @@ msgstr ""
 
 #: data/units/Outlaw.cfg:76
 msgid "female^Outlaw"
-msgstr "Kanun kaçağı"
+msgstr "female^Kanun kaçağı"
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
-msgstr "Kaçak prenses"
+msgstr "female^Kaçak prenses"
 
 #: data/units/Outlaw_Princess.cfg:22
 msgid ""
@@ -7572,7 +8081,7 @@ msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:3
 msgid "female^Outlaw Queen"
-msgstr "Kaçak kraliçe"
+msgstr "female^Kaçak kraliçe"
 
 #: data/units/Outlaw_Queen.cfg:21
 msgid "skirmisher,leadership"
@@ -7590,7 +8099,7 @@ msgstr ""
 
 #: data/units/Paladin.cfg:3
 msgid "Paladin"
-msgstr "Frenk şövalyesi"
+msgstr "Frenk Şövalyesi"
 
 #: data/units/Paladin.cfg:24
 msgid ""
@@ -7623,6 +8132,10 @@ msgid ""
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
+"Köylüler yerel ekonominin iskeletidir, ve en son kullanılan askerlerdir. "
+"Doğal olarak korkusuz olmasalarda, onlar evlerini inatla korurlar. Ama, eğer "
+"düşmanlarınıza köylü gönderiyorsanız, bu demektir ki siz büyük bir güçten "
+"mahrumsunuz."
 
 #: data/units/Peasant.cfg:21 data/units/Peasant.cfg:34
 msgid "pitchfork"
@@ -7651,14 +8164,18 @@ msgstr "kargı"
 
 #: data/units/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
-msgstr "Korsan kalyon"
+msgstr "Korsan Kalyonu"
 
 #: data/units/Pirate_Galleon.cfg:15
+#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. Ships full "
 "of goods shouldn't be lonely, far away from any land, better to help them to "
 "avoid it being sunk from overloading..."
 msgstr ""
+"Korsan Kalyonları taşıma gemileridir. Tam yüklü gemiler yanlız olmamalı, "
+"karadan çok uzak olmamalı, en iyisi falza yükten batmamaları için yardım "
+"edilmeli..."
 
 #: data/units/Pirate_Galleon.cfg:17 data/units/Transport_Galleon.cfg:17
 #: data/units/Watch_Tower.cfg:18
@@ -7667,17 +8184,19 @@ msgstr "mancınık"
 
 #: data/units/Poacher.cfg:3
 msgid "Poacher"
-msgstr "Kaçak avcı"
+msgstr "Kaçak Avcı"
 
 #: data/units/Poacher.cfg:17
 msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
 msgstr ""
+"Kaçak Avcılar avcılık tecrübelerine güvenirler ve gece, orman ve "
+"bataklıklarda çok değerldirler."
 
 #: data/units/Princess.cfg:3
 msgid "female^Princess"
-msgstr "Prenses"
+msgstr "female^Prenses"
 
 #: data/units/Princess.cfg:20 data/units/Princess.cfg:58
 msgid ""
@@ -7776,20 +8295,21 @@ msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr "Sürüngen pusucu"
+msgstr "Sürüngen Pusucu"
 
 #: data/units/Saurian_Ambusher.cfg:18
+#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
 "valued as scouts as they can navigate through rough terrain and around "
 "opponents. Saurian Ambushers possess the strength to take full advantage of "
 "this fact. The best Ambushers go on to become Saurian Flankers."
-msgstr ""
+msgstr "Sürüngen Pusucular mızrak kullanmada çok kabiliyetlidirler. "
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr "Sürüngen kuşatmacı"
+msgstr "Sürüngen Kuşatmacı"
 
 #: data/units/Saurian_Flanker.cfg:20
 msgid ""
@@ -9158,7 +9678,7 @@ msgstr "Şu ek kampanya(lar) hatalı ve yüklenemedi: "
 
 #: src/game.cpp:1345
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "HATA DETAYLARI:"
 
 #: src/game.cpp:1354
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -9170,7 +9690,7 @@ msgstr ""
 
 #: src/game.cpp:1405
 msgid "' (The game will now exit)"
-msgstr ""
+msgstr "' (Oyun şimdi bitiyor)"
 
 #: src/game.cpp:1495
 msgid "Battle for Wesnoth"
@@ -9286,7 +9806,7 @@ msgstr "İleri >"
 
 #: src/help.cpp:2288
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Bilinmeyen bir konuya bağlantı:"
 
 #: src/help.cpp:2663
 msgid "The Battle for Wesnoth Help"
@@ -9535,7 +10055,7 @@ msgstr "Harita:"
 
 #: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:204
 msgid "Use map settings"
-msgstr ""
+msgstr "Harita ayarlarını kullan"
 
 #: src/multiplayer_create.cpp:51
 msgid "Fog Of War"
@@ -9567,7 +10087,7 @@ msgstr "Bir birimin terfi etmesi için gereken deneyim miktarı"
 
 #: src/multiplayer_create.cpp:99
 msgid "Use scenario specific settings"
-msgstr ""
+msgstr "Senaryoya özel ayarları kullan"
 
 #: src/multiplayer_create.cpp:102
 msgid "Enemy units cannot be seen unless they are in range of your units"
@@ -9735,12 +10255,13 @@ msgid ")"
 msgstr ")"
 
 #: src/multiplayer_wait.cpp:381 src/playturn.cpp:1878
+#, fuzzy
 msgid "unit^Gold"
 msgstr "Altın"
 
 #: src/network.cpp:79
 msgid "invalid network handle"
-msgstr ""
+msgstr "Geçersiz ağ bağlantısı"
 
 #: src/network.cpp:112
 msgid "Client disconnected"
@@ -9751,8 +10272,9 @@ msgid "Could not add socket to socket set"
 msgstr "Soket, soket setine eklenemedi"
 
 #: src/network.cpp:441
+#, fuzzy
 msgid "Could not send initial handshake"
-msgstr ""
+msgstr "İlk el tokuşma gönderilemedi"
 
 #: src/playcampaign.cpp:145
 msgid "Defeat"
@@ -9788,7 +10310,7 @@ msgstr "Oyununu kaydetmek istiyor musun?"
 
 #: src/playcampaign.cpp:311
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Bilinmeyen Senaryo: '"
 
 #: src/playlevel.cpp:602 src/playlevel.cpp:871
 msgid "The file you have tried to load is corrupt"
@@ -10368,226 +10890,3 @@ msgstr "adaletli"
 #: src/unit_types.cpp:942
 msgid "neutral"
 msgstr "tarafsız"
-
-#~ msgid ""
-#~ "There are two types of combat in Battle for Wesnoth, short- and long-"
-#~ "ranged, but both of them take place between units in adjacent hexes. "
-#~ "Short-range combat usually involves weapons such as swords, axes or "
-#~ "fangs, while long-range combat usually involves weapons such as bows, "
-#~ "spears and fireballs. Combat is relatively straightforward; the attacker "
-#~ "and defender alternate attacks until each has used their allotted number "
-#~ "of attacks."
-#~ msgstr ""
-#~ "Battle for Wesnoth'da iki çeşit çarpışma vardır, kısa- ve uzun menzilli, "
-#~ "ama bu ikisisde yakın altıgenlerde yapılır. Kısa mesafeli çarpışma "
-#~ "genellikle kılıçlar, baltalar veya pençeler ile olurken, uzun menzilli "
-#~ "dövüş oklar, mızraklar ve ateştoplarıyla yapılır. Dövüş sonderece "
-#~ "basittir, saldıran ve savunan izin verilen saldırı sayılarınca "
-#~ "saldırılarını birbiri ardına yapar. "
-
-#~ msgid ""
-#~ "Wesnoth games usually take place with a regular cycle between day and "
-#~ "night. The current time of day can be observed under the minimap in the "
-#~ "upper right.\n"
-#~ "\n"
-#~ "The usual day/night cycle runs:\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Wesnoth oyunlarında genellikle gece-gündüz arasında düzenli dönüşüm olur."
-#~ "Günün zamanı sağ üst köşedeki mini haritanın altında takip edilebilir.\n"
-#~ "\n"
-#~ "Normal gece/gündüz dönüşümü aşamaları:\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Morning and Afternoon count as day, First and Second Watch count as night."
-#~ msgstr ""
-#~ "\n"
-#~ "Sabah ve ikindi gün, ilk ve ikinci yarı gece sayılır."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Keep in mind that while most units have three levels, not all do, and "
-#~ "that occasional units (such as <ref>dst=unit_Mage text=Magi</ref>) may "
-#~ "have four."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Şunu akılda tutun, bir çok birim 3 seviyeye sahiptir, ama hepsi değil, ve "
-#~ "bazı ender birimler (mesela <ref>dst=unit_Mage text=Büyücüler</ref> ) 4 "
-#~ "seviyeye sahiptir."
-
-#~ msgid ""
-#~ "\n"
-#~ "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
-#~ "ability will heal all friendly units immediately beside them for 4HP each "
-#~ "turn, to a total maximum of 8 points healed, or prevent Poison from "
-#~ "dealing damage."
-#~ msgstr ""
-#~ "\n"
-#~ "Tedavi birimleri : <ref>dst=ability_heals text=Tedavi eder</ref> "
-#~ "kabiliyetine sahip birimler yanlarındaki bütün dost birimleri her sırada "
-#~ "4YP miktarınca tedavi eder, toplamda en fazla 8YP verebilirler, yada "
-#~ "zehirin hasar etkisini engellerler."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "The traits that are available to all non-Undead units are:"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Tüm yarı canlılar için geçerli olan mizaçlar:"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "Other special traits that may be assigned to units are:"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "Birimlere atanabilecek diğer özel karakterler:"
-
-#~ msgid "Tundra"
-#~ msgstr "Tundra"
-
-#~ msgid "2p - Icy Waters"
-#~ msgstr "2o - Buzlu sular"
-
-#~ msgid ""
-#~ "Battle in and around the icy waters of this crucial harbor in North "
-#~ "Wesnoth."
-#~ msgstr ""
-#~ "Kuzey Wesnoth' un önemli limanlarının buzlu sularının içinde ve etrafında "
-#~ "savaş."
-
-#~ msgid "tough"
-#~ msgstr "sert"
-
-#~ msgid ""
-#~ "The final form that magi of the undead can achieve, Ancient Liches strike "
-#~ "terror into the hearts of those who see them. Not only is their touch "
-#~ "that of death, but their spells are powerful enough to freeze even the "
-#~ "bravest where they stand. Should you ever come across one of these, flee "
-#~ "fast and far, for they move faster than most undead."
-#~ msgstr ""
-#~ "Yarı ölü büyücülerin erişebileceği son mertebe olan antik cesetler, "
-#~ "görenlerin kalbine dehşet saçar. Sadece dokunuşları ölümcül değil, aynı "
-#~ "zamanda büyüleri de en cesur adamı bile olduğu yerde donduracak kadar "
-#~ "güçlüdür. Eğer bunlardan biri karşına çıkarsa arkana bakmadan kaç, çünkü "
-#~ "bunlar çoğu yarı ölüden daha hızlı hareket ederler."
-
-#~ msgid ""
-#~ "Assassins are masters of the night. Like Rogues, they can surround and "
-#~ "backstab an opponent, doing double damage. They can also throw poison-"
-#~ "tipped knives at their enemies from long range."
-#~ msgstr ""
-#~ "Suikastçiler gecenin efendileridir. Tıpkı dolandırıcılar gibi rakiplerini "
-#~ "çevreleyip arkadan vurarak, hasarı ikiye katlayabilirler. Ayrıca "
-#~ "düşmanlarına uzaktan zehirli uçlu bıçaklar fırlatabilirler."
-
-#~ msgid ""
-#~ "Armed with a heavy mace, Bandits are adept at robbing and killing at "
-#~ "night. Wearing brown cloaks and black hoods, they steal from the peasants "
-#~ "who live near them when not fighting against invaders."
-#~ msgstr ""
-#~ "Ağır bir topuz kuşalı olan haydutlar, gece soygun ve katlde ustadırlar. "
-#~ "Kahverengi pelerin ve siyah kapşonlar giyer, istilacılarla savaşmadıkları "
-#~ "zamanlar, yakınlarında yaşayan köylü takımını soyarlar."
-
-#~ msgid ""
-#~ "Elvish Archers are trained from youth in archery, and so skilled in long-"
-#~ "range combat. Able to fire many arrows quickly and accurately, these "
-#~ "Archers make up a large portion of the Elvish military."
-#~ msgstr ""
-#~ "Elf okçular genç yaştan itibaren okçuluk eğitimi alırlar ve bu yüzden "
-#~ "uzun mesafeli döğüşte kabiliyetlidirler. Bir çok oku hızlı ve hatasız "
-#~ "atabilen bu okçular elf ordusunun büyük bir kısmını oluştururlar."
-
-#~ msgid ""
-#~ "Skilled in commanding soldiers, Elvish Captains provide a bonus to all "
-#~ "level-1 units on adjacent hexes. Captains are also skilled in both short- "
-#~ "and long-range fighting."
-#~ msgstr ""
-#~ "Askerleri komuta etmekte hüner sahibi olan elf kaptanlar bitişik "
-#~ "altıgenlerdeki tüm 1. seviye birimlere bir kıyak geçerler. Kaptanlar "
-#~ "ayrıca hem kısa hem de uzun mesafeli döğüşte de hüner sahibidirler."
-
-#~ msgid ""
-#~ "Elvish Champions are awesome masters of swordsmanship, inflicting large "
-#~ "amounts of damage in close combat. Master fighters, they are also adept "
-#~ "with the bow, able to inflict damage on their enemies from both near and "
-#~ "far."
-#~ msgstr ""
-#~ "Elf şampiyonlar tam birer kılıç ustasıdırlar ve yakın döğüşte büyük "
-#~ "hasarlar verirler. Usta birer savaşçı olarak ok kullanımında da "
-#~ "ustadırlar; düşmanlarına hem yakından hem de uzaktan hasar verebilirler."
-
-#~ msgid ""
-#~ "Elvish High Lords are fearsome in combat, using the sword at close range "
-#~ "and devastating balls of frost at long range."
-#~ msgstr ""
-#~ "Yakın mesafede kılıç, uzun mesafede mahvedici buz topları kullanan elf "
-#~ "yüksek lordlar, korkunç döğüşürler."
-
-#~ msgid ""
-#~ "Elvish Lords are fearsome in combat, using the sword at close range and "
-#~ "devastating balls of frost at long range."
-#~ msgstr ""
-#~ "Yakın·mesafede·kılıç,"
-#~ "·uzun·mesafede·mahvedici·buz·topları·kullanan·elf·lordlar,"
-#~ "·korkunç·döğüşürler."
-
-#~ msgid "satiated"
-#~ msgstr "doygun"
-
-#~ msgid "darts"
-#~ msgstr "iğneleme"
-
-#~ msgid "Outlaws fight better at night."
-#~ msgstr "Kanun kaçakları gece daha iyi savaşır."
-
-#~ msgid ""
-#~ "Outlaws fight better at night. Female Outlaws look good while doing it."
-#~ msgstr ""
-#~ "Kanun kaçakları gece daha iyi savaşır. Dişi kanun kaçakları aynı zamanda "
-#~ "güzel görünür."
-
-#~ msgid "Vera.ttf"
-#~ msgstr "Vera.ttf"
-
-#~ msgid "Mounted Captain"
-#~ msgstr "Atlı kaptan"
-
-#~ msgid "Mounted Commander"
-#~ msgstr "Atlı kumandan"
-
-#, fuzzy
-#~ msgid "Socket error"
-#~ msgstr "Vurucu tim"
-
-#~ msgid "boiling water"
-#~ msgstr "kaynar su"
-
-#~ msgid "Halved"
-#~ msgstr "Yarılı"
-
-#~ msgid "The Broken Bridge"
-#~ msgstr "Yıkık Köprü"
-
-#~ msgid " "
-#~ msgstr " "
-
-#~ msgid "The Three Rivers"
-#~ msgstr "Üç Nehir"
-
-#, fuzzy
-#~ msgid "100 gold will be available for the next scenario"
-#~ msgstr "Altının %80 i bir sonraki senaryo için kaldı"
-
-#~ msgid "level: "
-#~ msgstr "seviye: "
