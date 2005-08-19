@@ -12,6 +12,7 @@ CVS HEAD:
    * Eastern Invasion: further revisions for Weldyn Under Attack
  * new unit portraits for Ghoul, Mermaid Initiate, Merman Fighter,
    Merman Hunter,Naga Fighter, Nagini Fighter
+ * revised unit images and animations for Duelist, Fencer, Master at Arms
  * fixed fonts sometimes not being found, eg. on BeOS
  * fixed campaign dialog with no campaigns trying forever to download (#14078)
  * fixed AI units not getting rest-healing, causing replay errors
@@ -29,6 +30,7 @@ CVS HEAD:
  * made checksums work on AMD64
  * fixed broken scepter of fire attack icon (#14028)
  * added hotkey ctrl-j to show objectives (#7830)
+ * revised network code, try to use non-blocking I/O if available
  * various bug fixes and code cleanups
 
 Version 0.9.5:
