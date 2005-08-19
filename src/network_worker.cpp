@@ -80,8 +80,7 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 			if(sockets_locked[sock] != SOCKET_LOCKED)
 				return SOCKET_ERROR;
 		}
-		const int bytes_to_send = static_cast<int>(size - upto);
-		const int res = SDLNet_TCP_Send(sock, &buf[upto], bytes_to_send);
+		const int res = SDLNet_TCP_Send(sock, &buf[upto], static_cast<int>(size - upto));
 
 		if(res == -1) {
 #ifdef EAGAIN
@@ -97,9 +96,6 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 				continue;
 			}
 #endif
-			return SOCKET_ERROR;
-		}
-		if(res != bytes_to_send) {
 			return SOCKET_ERROR;
 		}
 		timeout = 15000;
