@@ -38,7 +38,11 @@
 #else
 #include <sys/types.h>
 #include <sys/socket.h>
+#ifdef __BEOS__
+#include <socket.h>
+#else
 #include <fcntl.h>
+#endif
 #define SOCKET int
 #endif
 
@@ -313,7 +317,7 @@ void connect_operation::run()
 		unsigned long mode = 1;
 		ioctlsocket (((_TCPsocket*)sock)->channel, FIONBIO, &mode);
 	}
-#elif !defined(BEOS)
+#elif !defined(__BEOS__)
 	int flags;
 	flags = fcntl(((_TCPsocket*)sock)->channel, F_GETFL, 0);
 #if defined(O_NONBLOCK)
