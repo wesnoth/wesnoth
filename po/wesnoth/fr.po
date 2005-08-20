@@ -11,9 +11,9 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 13:32+0200\n"
-"PO-Revision-Date: 2005-08-20 12:02+0100\n"
+"PO-Revision-Date: 2005-08-20 18:31+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
-"Language-Team: Language fr\n"
+"Language-Team: Language fr <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -188,9 +188,9 @@ msgstr ""
 "\n"
 "\n"
 "Chaque scénario a des objectifs, décrits au démarrage du scénario. Ces "
-"objectifs listent ce que vous devez faire pour gagner, et ce que vous "
-"devriez faire pour éviter de perdre. Souvent l'objectif est de vaincre tous "
-"les ennemis, mais parfois vous devrez atteindre une destination, sauver "
+"objectifs listent ce que vous devez faire pour gagner et ce que vous devriez "
+"faire pour éviter de perdre. Souvent l'objectif est de vaincre tous les "
+"ennemis, mais parfois vous devrez atteindre une destination, sauver "
 "quelqu'un, résoudre une énigme, ou juste survivre un certain nombre de tours."
 
 #: data/help.cfg:84
@@ -207,7 +207,7 @@ msgstr ""
 "Les campagnes consistent en plusieurs scénarios qui se suivent, racontant "
 "une histoire. Dans une campagne, vous avez souvent besoin de jouer plus "
 "prudemment, afin de préserver vos meilleures troupes pour qu'elles puissent "
-"être réutilisées dans des scénarios ultérieurs à la campagne."
+"être réutilisées dans les scénarios ultérieurs de la campagne."
 
 #: data/help.cfg:89
 msgid "Recruiting and Recalling"
@@ -251,8 +251,8 @@ msgstr ""
 "Si vous faites un clic-droit sur un hexagone de château et sélectionnez "
 "Recruter, la nouvelle unité apparaîtra sur cette case. Autrement, elle "
 "apparaîtra sur une case libre près du donjon. Vous pouvez recruter autant "
-"d'unités qu'il y a de cases libres dans votre château, et vous ne pouvez pas "
-"dépenser plus d'or que vous n'en disposez en nouvelles unités."
+"d'unités qu'il y a de cases libres dans votre château mais vous ne pouvez "
+"pas dépenser plus d'or que vous n'en disposez en nouvelles unités."
 
 #: data/help.cfg:94
 msgid ""
@@ -345,7 +345,7 @@ msgstr ""
 "Chaque unité a un certain nombre de points de vie (PV). Si les points de vie "
 "d'une unité passent sous 1, l'unité meurt. Chaque unité a aussi un certain "
 "nombre de points d'expérience (XP). Une unité fraîchement recrutée démarre "
-"sans points d'expérience, et gagne de l'expérience en combattant des ennemis."
+"sans points d'expérience et gagne de l'expérience en combattant des ennemis."
 
 #: data/help.cfg:116
 msgid ""
@@ -388,10 +388,10 @@ msgstr ""
 "Le déplacement dans Bataille pour Wesnoth est simple. Cliquez sur l'unité à "
 "déplacer, puis cliquez sur l'hexagone vers lequel vous souhaitez la "
 "déplacer. Quand une unité est sélectionnée, tous les hexagones qu'elle peut "
-"atteindre ce tour-ci sont éclairés, et les autres sont grisés. Passer la "
+"atteindre ce tour-ci sont éclairés et les autres sont grisés. Passer la "
 "souris sur une case éclairée affiche le taux de défense que l'unité aura si "
 "vous l'y déplacez. Passer la souris sur une case grisée affiche aussi le "
-"nombre de tours nécessaires pour l'atteindre, et cliquer dessus provoque le "
+"nombre de tours nécessaires pour l'atteindre et cliquer dessus provoque le "
 "mouvement de l'unité vers cette case par le chemin le plus court à ce tour "
 "et aux suivants."
 
@@ -437,7 +437,7 @@ msgstr ""
 "\n"
 "Une autre chose à ne pas oublier lors des déplacements est la notion de "
 "Zones de contrôle. Chaque unité génère une zone de contrôle dans les "
-"hexagones qui l'entourent, et toute unité ennemie qui pénètre dans ces "
+"hexagones qui l'entourent et toute unité ennemie qui pénètre dans ces "
 "hexagones termine immédiatement son mouvement. Apprendre de quelle manière "
 "utiliser les zones de contrôle à votre avantage est une part importante de "
 "Wesnoth, puisque seuls les <ref>dst=ability_skirmisher text='Tirailleurs'</"
@@ -474,15 +474,15 @@ msgid ""
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
 "Un combat dans Bataille pour Wesnoth prend toujours place entre deux unités "
-"sur des cases adjacentes. Cliquez sur votre unité, et cliquez sur l'ennemi "
-"que vous voulez attaquer : votre unité se déplacera vers l'unité ennemie, et "
+"sur des cases adjacentes. Cliquez sur votre unité puis cliquez sur l'ennemi "
+"que vous voulez attaquer : votre unité se déplacera vers l'unité ennemie et, "
 "quand elles seront côte à côte, le combat commencera. L'attaquant et le "
 "défenseur se frappent tour à tour jusqu'à ce qu'ils aient utilisés leur "
 "nombre de frappes. L'attaquant choisit une de ses armes avec laquelle "
-"attaquer, et le défenseur riposte avec une de ses attaques du même type. Il "
-"y a deux types d'attaques : le corps-à-corps, qui implique des armes comme "
-"les épées, les haches ou les crocs ; et les attaques à distance qui "
-"impliquent des armes telles que les arcs, les lances et les boules de feu. "
+"attaquer et le défenseur riposte avec une de ses attaques du même type. Il y "
+"a deux types d'attaques : le corps-à-corps, qui implique des armes comme les "
+"épées, les haches ou les crocs ; et les attaques à distance qui impliquent "
+"des armes telles que les arcs, les lances et les boules de feu. "
 
 #: data/help.cfg:137
 msgid ""
@@ -541,7 +541,7 @@ msgstr ""
 "\n"
 "\n"
 "Chaque unité a une probabilité d'être touchée, en fonction du Terrain sur "
-"lequel elle est. Cela est montré dans le panneau d'état, et peut aussi être "
+"lequel elle est. Cela est montré dans le panneau d'état et peut aussi être "
 "trouvé par un clic-droit sur une unité, en choisissant Description de "
 "l'unité puis en regardant la rubrique <italic>text='Modificateurs de "
 "terrain'</italic>. Par exemple, les elfes ont une défense de 70 % en forêt, "
@@ -709,7 +709,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le moment de la journée peut être observé sous la minicarte dans le panneau "
+"Le moment de la journée peut être observé sous la mini carte dans le panneau "
 "d'état. Pour le cycle habituel jour/nuit, le matin et l'après-midi comptent "
 "pour le jour, le premier et le deuxième quart comptent pour la nuit :\n"
 
@@ -783,7 +783,7 @@ msgstr ""
 "options d'avancement vous sera proposé."
 
 # FIXME: 
-# blurgk: After Maximum Level Advancement -> amélioration post-niveau maximum ?
+# blurgk: After Maximum Level Advancement -> amélioration post-niveau maximum ?
 #: data/help.cfg:194
 msgid ""
 "\n"
@@ -840,8 +840,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Repos : Une unité qui ne bouge pas, n'attaque pas, et ne se fait pas "
-"attaquer, se soignera de 2 PV à son prochain tour."
+"Repos : Une unité qui ne bouge pas, n'attaque pas et ne se fait pas "
+"attaquer, se soignera de 2 PV à son prochain tour."
 
 #: data/help.cfg:203
 msgid ""
@@ -873,9 +873,9 @@ msgid ""
 msgstr ""
 "\n"
 "Unités soignantes : les unités avec la capacité de <ref>dst=ability_heals "
-"text=Soin</ref> soigneront jusqu'à 8 PV de dégats par tour, et empêcheront "
-"le poison de faire des dégâts. Seules seront soignées les unités amicales "
-"adjacentes à l'unité soignante, et jusqu'à 4 PV par unité."
+"text=Soin</ref> soigneront jusqu'à 8 PV de dégats par tour et empêcheront le "
+"poison de faire des dégâts. Seules seront soignées les unités alliées "
+"adjacentes à l'unité soignante et jusqu'à 4 PV par unité."
 
 #: data/help.cfg:206
 msgid ""
@@ -889,7 +889,7 @@ msgstr ""
 "Pouvoir de guérison : Les unités avec la capacité de <ref>dst=ability_cures "
 "text=Guérison</ref> soigneront jusqu'à 18 PV de dégâts par tour, et "
 "guériront de l'empoisonnement. Seules seront soignées ou guéries les unités "
-"amicales adjacentes à l'unité guérisseuse, et jusqu'à 8 PV par unité."
+"alliées adjacentes à l'unité guérisseuse, et jusqu'à 8 PV par unité."
 
 #: data/help.cfg:208
 msgid ""
@@ -1573,7 +1573,7 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
-"Les terrains caverneux représentent les cavernes sous-terraines suffisamment "
+"Les terrains caverneux représentent les cavernes souterraines suffisamment "
 "spacieuses pour permettre le passage des unités. Il s'agit d'un terrain "
 "inconnu pour la plupart des unités, qui sont donc ralenties et gênées pour "
 "leur défense. Les nains et les trolls, qui font de ces cavernes leurs "
@@ -1873,7 +1873,7 @@ msgid "flaming sword"
 msgstr "épée de flammes"
 
 # Je mets les majuscules: c'est vraiment un nom propre, pour le coup.
-# Jean : Dans ce cas, majuscule à Sceptre mais pas à feu (typo française)
+# Jean : Dans ce cas, majuscule à Sceptre mais pas à feu (typo française)
 #: data/items.cfg:755
 msgid "Scepter of Fire"
 msgstr "Sceptre de feu"
@@ -2009,7 +2009,7 @@ msgstr ""
 "une carte où la force et les subterfuges se rencontrent. Il est recommandé "
 "de configurer 2 pièces d'or par village."
 
-# Jean : « divide ut imperes » en latin
+# Jean : « divide ut imperes » en latin
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
 msgid "2p - Divide and Conquer"
 msgstr "2p - Diviser pour régner"
@@ -2035,7 +2035,7 @@ msgstr ""
 "champ de bataille subtilement divisé. Il est recommandé de configurer 2 "
 "pièces d'or par village."
 
-# Piou2fois : fallait-il traduire Hornshark ?
+# Piou2fois : fallait-il traduire Hornshark ?
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
 msgstr "2p - La péninsule aux requins"
@@ -2067,7 +2067,7 @@ msgid "2p - Sablestone Delta"
 msgstr "2p - Le delta des roches sombres"
 
 # Piou2fois hou la pas sur pour le coup
-# blurgk: j'ai essayé d'arrangr ça
+# blurgk: j'ai essayé d'arranger ça
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
@@ -2227,12 +2227,12 @@ msgid ""
 "Mountain dominated area."
 msgstr ""
 "Une carte pour 4 joueurs, convenant à un jeu individuel ou par équipes, la "
-"victoire reposant sur le contrôle de l'île centrale.  Au nord-ouest une zone "
+"victoire reposant sur le contrôle de l'île centrale. Au nord-ouest une zone "
 "à dominante forestière, au nord-est des plaines partiellement enneigées, au "
 "sud-ouest des plaines partiellement désertiques, et au sud-est une zone à "
 "dominante montagneuse."
 
-# Jean traduire Bluewater ?
+# Jean traduire Bluewater ?
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
 msgid "4p - Blue Water Province"
 msgstr "4p - La province de Bluewater"
@@ -2369,7 +2369,7 @@ msgstr ""
 msgid "7p - Battle World"
 msgstr "7p - Un monde de bataille"
 
-# Piou2fois : trash about je ne vois pas, mais j'ai jugé que le sens était celui là. À vous de changer
+# Piou2fois : trash about je ne vois pas, mais j'ai jugé que le sens était celui là. À vous de changer
 #: data/scenarios/multiplayer/7p_battleworld.cfg:9
 msgid ""
 "Up to 7 armies thrash about in this peaceful land. Prepare for a long battle."
@@ -2522,7 +2522,7 @@ msgid ""
 msgstr ""
 "Votre prochaine tâche consiste à déplacer votre guerrier elfe. Pour déplacer "
 "une unité, sélectionnez-la puis sélectionnez sa destination. Ici, sa "
-"destination est le panneau à coté de la chamane elfe, Merle."
+"destination est le panneau à coté de la prêtresse elfe, Merle."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid "Move your Elvish Fighter next to Merle"
@@ -2600,7 +2600,7 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
-"Oups ! Vous avez  déplacé votre chef en dehors du donjon. Rappelez-vous que "
+"Oups ! Vous avez déplacé votre chef en dehors du donjon. Rappelez-vous que "
 "lorsque votre chef n'est pas sur un donjon, vous ne pouvez pas recruter. "
 "Souvenez-vous aussi que si votre chef décède, vous perdez. Pour continuer le "
 "didacticiel, je vais devoir vous téléporter sur le donjon."
@@ -2751,7 +2751,7 @@ msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
-"Quand vous recrutez ou rappelez des unités, vous perdez de l'or. Si ceci  "
+"Quand vous recrutez ou rappelez des unités, vous perdez de l'or. Si ceci "
 "vous amène à avoir moins de 0 pièce d'or, vous ne pourrez pas recruter ou "
 "rappeler."
 
@@ -3175,9 +3175,9 @@ msgstr ""
 "pas et ne combat pas pendant 1 tour, elle regagne 2 PV par le repos. "
 "Cependant si un ennemi l'attaque, elle ne peut pas recevoir de soins par le "
 "repos. Par ailleurs, il y a des unités qui soignent les unités qui les "
-"entourent. Le chaman elfe est une telle unité ; les unités à côté d'un "
-"chaman elfe regagnent 4 PV par tour. En dernier lieu, lorsque vous gagnez un "
-"niveau toutes vos unités sont soignées en totalité."
+"entourent. La prêtresse elfe est une telle unité ; les unités à côté d'une "
+"prêtresse elfe regagnent 4 PV par tour. En dernier lieu, lorsque vous gagnez "
+"un niveau toutes vos unités sont soignées en totalité."
 
 #: data/scenarios/tutorial/utils.cfg:100
 msgid "How do I know how to complete a scenario? Will you always tell me?"
@@ -3398,7 +3398,7 @@ msgstr ""
 "d'un terrain est son coût en point de mouvement pour y pénétrer. La seconde "
 "est la défense que procure le terrain à l'unité. C'est un pourcentage qui "
 "détermine la probabilité d'être touché en étant sur ce terrain. Par exemple, "
-"de nombreux  elfes ont 70 % de défense en forêt et ne sont donc touchés que "
+"de nombreux elfes ont 70 % de défense en forêt et ne sont donc touchés que "
 "30 % du temps."
 
 #: data/scenarios/tutorial/utils.cfg:125
@@ -3449,7 +3449,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:130
 msgid "How does resistance affect attack damage?"
-msgstr "Comment la résistance affecte-t-elle les dommages ?"
+msgstr "Comment la résistance affecte-t-elle les dégâts ?"
 
 #: data/scenarios/tutorial/utils.cfg:131
 msgid ""
@@ -4031,7 +4031,7 @@ msgid "loyal"
 msgstr "loyal"
 
 # XXX pas sur de la signification
-# Jean : cela semble ça.
+# Jean : cela semble ça.
 #: data/traits.cfg:7
 msgid "Zero upkeep"
 msgstr "Sans entretien"
@@ -4247,7 +4247,7 @@ msgid "leadership"
 msgstr "commandement"
 
 # Le comportement de loyal a changé depuis plusieurs version (0 entretien maintenant)
-# Quelqu'un pour le signaler ?
+# Quelqu'un pour le signaler ?
 #: data/translations/english.cfg:59
 msgid ""
 "Loyal:\n"
@@ -4352,7 +4352,7 @@ msgid ""
 "of the target. (This doesn't work with allied units.)"
 msgstr ""
 "Assassinat :\n"
-"Cette attaque occasionne le double de dommages si une unité alliée se trouve "
+"Cette attaque occasionne le double de dégâts si une unité alliée se trouve "
 "de l'autre côté de la cible (cela ne marche qu'entre les unités d'une même "
 "armée)."
 
@@ -4545,7 +4545,8 @@ msgstr "Ancienne liche"
 
 # FIXME:
 # blurgk: "special notes" -> peut-être plutôt "notes sur les capacités spéciales",
-# ou juste "capacités spéciales" ?
+# ou juste "capacités spéciales" ?
+# Jean : juste "remarque " en fait
 #: data/units/Ancient_Lich.cfg:22
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
@@ -4559,9 +4560,9 @@ msgstr ""
 "Un être de cet ordre est un héraut des temps ancestraux. Quiconque rencontre "
 "une ancienne liche a bien pire à craindre que la mort.\n"
 "\n"
-"Remarque : les attaques à distance d'une liche sont magiques et ont toujours "
-"une grande chance de toucher l'adversaire. Le toucher d'une liche draine la "
-"vie de la victime pour raviver la liche."
+"Remarques : les attaques à distance d'une liche sont magiques et ont "
+"toujours une grande chance de toucher l'adversaire. Le toucher d'une liche "
+"draine la vie de la victime pour raviver la liche."
 
 #: data/units/Ancient_Lich.cfg:44 data/units/Demilich.cfg:32
 #: data/units/Dread_Lich.cfg:21 data/units/Ghost.cfg:23 data/units/Lich.cfg:24
@@ -4759,7 +4760,7 @@ msgstr ""
 "archimage peut déchaîner la toute puissance de son art, qu'il ne faut pas "
 "prendre à la légère.\n"
 "\n"
-"Remarque : les boules de feu d'un archimage sont magiques, et ont toujours "
+"Remarque : les boules de feu d'un archimage sont magiques et ont toujours "
 "une grande chance de toucher un adversaire."
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:152
@@ -4837,7 +4838,7 @@ msgstr ""
 "lançant des couteaux empoisonnés, ou en plantant une dague dans leur dos. "
 "Mortels la nuit, ces assassins sont moins à l'aise à la lumière du soleil.\n"
 "\n"
-"Remarque : quand une unité de même allégeance que l'assassin distrait un "
+"Remarques : quand une unité de même allégeance que l'assassin distrait un "
 "ennemi, l'assassin peut le poignarder dans le dos, infligeant le double des "
 "dégâts, en se glissant derrière lui. Les couteaux qu'ils lancent sont aussi "
 "empoisonnés, ce qui affaiblira en continu la force d'un ennemi."
@@ -5072,7 +5073,7 @@ msgstr ""
 msgid "fangs"
 msgstr "crocs"
 
-# Jean : Proposition du forum
+# Jean : Proposition du forum
 #: data/units/Bone_Shooter.cfg:3
 msgid "Bone Shooter"
 msgstr "Décocheur d'os"
@@ -5280,7 +5281,7 @@ msgstr "toile"
 msgid "slow"
 msgstr "ralentissement"
 
-# Jean : les chocob'os sont la parodie des chocobos de FF
+# Jean : les chocob'os sont la parodie des chocobos de FF
 #: data/units/Chocobone.cfg:3
 msgid "Chocobone"
 msgstr "Chocob'os"
@@ -5421,7 +5422,7 @@ msgstr ""
 "Dans de telles conditions, leur seule arme est l'art à l'apprentissage "
 "duquel ils se consacrent tant.\n"
 "\n"
-"Remarque : Les attaques d'un adepte des ténèbres sont magiques, et ont "
+"Remarque : Les attaques d'un adepte des ténèbres sont magiques et ont "
 "toujours une grande chance de toucher un adversaire."
 
 #: data/units/Dark_Adept.cfg:38 data/units/Dark_Sorcerer.cfg:47
@@ -5486,7 +5487,7 @@ msgstr ""
 "supposé que les liches n'atteignent pas la vraie immortalité, ou qu'il y a "
 "un prix terrible et inconnu à payer pour en devenir une.\n"
 "\n"
-"Remarque : les attaques à distance d'un sorcier sombre sont magiques, et ont "
+"Remarques : les attaques à distance d'un sorcier sombre sont magiques et ont "
 "toujours une grande chance de toucher l'adversaire. Le bâton d'un sorcier "
 "sombre est maudit, et quiconque terrassé par celui-ci se relèvera dans la "
 "mort."
@@ -5598,7 +5599,7 @@ msgstr ""
 
 #: data/units/Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
-msgstr "Monteurs de grands loups"
+msgstr "Monteur de grand loup"
 
 #: data/units/Direwolf_Rider.cfg:22
 msgid ""
@@ -5629,7 +5630,7 @@ msgstr ""
 "poison, comme les orcs assassins, rendant plus mortel encore un coup de "
 "patte de ces bêtes.\n"
 "\n"
-"Remarque : quiconque griffé par un grand loup sera empoisonné, et les "
+"Remarque : quiconque griffé par un grand loup sera empoisonné et les "
 "victimes du poison auront continuellement des dégâts jusqu'à ce qu'ils "
 "soient soignées dans un village ou par un soigneur."
 
@@ -5656,10 +5657,10 @@ msgid ""
 "value on the battlefield."
 msgstr ""
 "Les plus talentueux des hussards des armées de Wesnoth sont entraînés au "
-"maniement de l'arbalète et équipés de destriers encore plus puissants.  "
-"Dotés d'une bonne armure, et habiles au sabre, ces soldats peuvent enfoncer "
-"les rangs ennemis et tenir le terrain conquis. Leur mobilité et leur "
-"résistance leur donne une grande valeur sur le champ de bataille."
+"maniement de l'arbalète et équipés de destriers encore plus puissants. Dotés "
+"d'une bonne armure, et habiles au sabre, ces soldats peuvent enfoncer les "
+"rangs ennemis et tenir le terrain conquis. Leur mobilité et leur résistance "
+"leur donne une grande valeur sur le champ de bataille."
 
 #: data/units/Drake_Blademaster.cfg:4
 msgid "Drake Blademaster"
@@ -5720,6 +5721,8 @@ msgid ""
 "arrows."
 msgstr ""
 
+# FIXME: blurgk: enforcer -> punisseur ?
+# Jean : je propose écraseur
 #: data/units/Drake_Enforcer.cfg:3
 msgid "Drake Enforcer"
 msgstr "Écraseur drake"
@@ -5789,7 +5792,7 @@ msgstr ""
 "plus crédible, bien que pour quelque raison personne n'ait essayé d'en "
 "ouvrir un pour s'en assurer.\n"
 "\n"
-"Remarque : le commandement d'un cœur-de-flamme permet aux unités amicales "
+"Remarque : le commandement d'un cœur-de-flamme permet aux unités alliées "
 "adjacentes de faire plus de dégâts en combat, ceci ne s'applique néanmoins "
 "qu'aux unités de niveau inférieur."
 
@@ -5811,7 +5814,7 @@ msgstr ""
 "naturels. Ceux appelés « flamboyants » par leurs ennemis sont les drakes qui "
 "aspirent à être de tels chefs, en temps de guerre ou de paix.\n"
 "\n"
-"Remarque : le commandement d'un flamboyant permet aux unités amicales "
+"Remarque : le commandement d'un flamboyant permet aux unités alliées "
 "adjacentes de faire plus de dégâts en combat, ceci ne s'applique néanmoins "
 "qu'aux unités de niveau inférieur."
 
@@ -6136,7 +6139,7 @@ msgid ""
 msgstr ""
 "Les nains les plus robustes rejoignent parfois l'armée naine en tant que "
 "gardes. Lents et dépourvus d'attaque puissante, ils protègent les flancs de "
-"l'armée, absorbent les dommages et lancent leurs lourdes lances sur leurs "
+"l'armée, absorbent les dégâts et lancent leurs lourdes lances sur leurs "
 "ennemis."
 
 #: data/units/Dwarvish_Lord.cfg:3
@@ -6159,11 +6162,9 @@ msgstr ""
 msgid "hatchet"
 msgstr "hachette"
 
-# Jean : c'est plus simple que l'adjectif se rapporte aux runes plutôt qu'à
-# l'unité
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
-msgstr "Maître des runes naines"
+msgstr "Maître des runes nain"
 
 #: data/units/Dwarvish_Runemaster.cfg:17
 msgid ""
@@ -6182,7 +6183,7 @@ msgid "runic hammer"
 msgstr "marteau runique"
 
 # Ou éclair ?
-# Jean : Au chocolat ?
+# Jean : Au chocolat ?
 #: data/units/Dwarvish_Runemaster.cfg:42
 msgid "Lightning bolt"
 msgstr "Foudre"
@@ -6215,7 +6216,7 @@ msgstr ""
 "boucliers et de solides armures à partir des restes de leurs ennemis. Bien "
 "que lents, ils sont craints pour leur résistance et leur force."
 
-# Jean : proposition du forum
+# Jean : proposition du forum
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
 msgstr "Nain cuirassé"
@@ -6357,8 +6358,8 @@ msgstr ""
 "déclencher la colère de ces créatures.\n"
 "\n"
 "Remarque : les Woses se régénèrent en utilisant les ressources naturelles "
-"alentours, et n'ont pas besoin de se serrer dans des villages pour obtenir "
-"de la nourriture et de l'aide."
+"alentours et n'ont pas besoin de se serrer dans des villages pour obtenir de "
+"la nourriture et de l'aide."
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -6446,7 +6447,7 @@ msgstr ""
 "accepter la sagesse de leurs chefs, et leur tendance à choisir des chefs "
 "méritants constitue un point fort des elfes.\n"
 "\n"
-"Remarque : le commandement d'un capitaine permet aux unités amicales "
+"Remarque : le commandement d'un capitaine permet aux unités alliées "
 "adjacentes de faire plus de dégâts au combat, ceci ne s'applique néanmoins "
 "qu'aux unités de niveau inférieur."
 
@@ -6683,7 +6684,7 @@ msgstr ""
 "Dans les rares occasions où un elfe se consacre à la guerre, les stratégies "
 "qui en découlent sont le travail d'un maître.\n"
 "\n"
-"Remarque : le commandement d'un maréchal permet aux unités amicales "
+"Remarque : le commandement d'un maréchal permet aux unités alliées "
 "adjacentes de faire plus de dégâts en combat, ceci ne s'applique néanmoins "
 "qu'aux unités de niveau inférieur."
 
@@ -6803,7 +6804,7 @@ msgid ""
 "healing, though they can only delay the effects of poison, not cure them "
 "entirely."
 msgstr ""
-"D'une nature en partie féérique, les elfes ont des pouvoirs magiques. Ils "
+"D'une nature en partie féerique, les elfes ont des pouvoirs magiques. Ils "
 "s'appuient sur leur affinité avec le monde naturel, qu'ils peuvent invoquer "
 "comme un allié au combat. Les ennemis égarés dans leurs forêts peuvent se "
 "retrouver enchevêtrés dans les racines sur lesquelles ils se tiennent, les "
@@ -6812,8 +6813,8 @@ msgstr ""
 "Les capacités de soin des elfes sont aussi remarquables, et d'une utilité "
 "capitale dans la bataille.\n"
 "\n"
-"Remarque : une attaque d'enchevêtrement d'une prétresse ralentit les ennemis "
-"et réduit d'un coup le nombre de leurs attaques. Les prétresses sont "
+"Remarque : une attaque d'enchevêtrement d'une prêtresse ralentit les ennemis "
+"et réduit d'un coup le nombre de leurs attaques. Les prêtresses sont "
 "capables d'administrer un soin simple et ne peuvent que retarder les effets "
 "du poison sans les annuler entièrement."
 
@@ -6845,6 +6846,7 @@ msgstr ""
 msgid "female^Elvish Sharpshooter"
 msgstr "Franc-tireur elfe"
 
+# Jean : proposition "Nymphe"
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
 msgstr "Shyde elfe"
@@ -6939,8 +6941,8 @@ msgstr ""
 "danser en cercle autour des troupes d'infanterie lourde, pour se moquer du "
 "prix qu'ils payent pour leurs blindages.\n"
 "\n"
-"Remarque : leur compétence de tirailleurs permet aux escrimeurs de se "
-"glisser derrière un adversaire en ignorant les zones de contrôle."
+"Remarque : leur compétence de tirailleur permet aux escrimeurs de se glisser "
+"derrière un adversaire en ignorant les zones de contrôle."
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
@@ -7009,8 +7011,8 @@ msgid ""
 msgstr ""
 "Ces petits criminels sont souvent appelés « vagabonds » de façon moqueuse "
 "par leurs supérieurs, qui leur attribuent des tâches qui nécessitent de "
-"courir ça et là. Ils sont souvent employés comme courriers, ou scouts. Leur "
-"endurance et leur agilité leur est bien utile en combat, et malgré leur "
+"courir ça et là. Ils sont souvent employés comme courriers ou éclaireur. "
+"Leur endurance et leur agilité leur est bien utile en combat, et malgré leur "
 "armement misérable ils tourmentent bien leurs ennemis, particulièrement sous "
 "la protection de l'obscurité."
 
@@ -7026,9 +7028,10 @@ msgstr "gourdin"
 msgid "sling"
 msgstr "fronde"
 
+# Jean : J'ai un doute, je suis pas sur que l'on dise vagabonde pour une dame
 #: data/units/Footpad.cfg:69
 msgid "female^Footpad"
-msgstr "Vagabonde hirsute"
+msgstr "Vagabonde"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
@@ -7042,7 +7045,7 @@ msgid ""
 "prepared to fight, and is able to adapt to many different tasks."
 msgstr ""
 "Même ceux vivant heureux chez eux en viennent à avoir besoin d'un moyen de "
-"transport maritime, ne serait-ce que pour aller pêcher, ou pour le commerce "
+"transport maritime, ne serait-ce que pour aller pêcher ou pour le commerce "
 "de marchandises. Le galion est parfaitement adapté à ça : il est rapide et "
 "solide, mais non préparé au combat, et peu s'adapter à de nombreuses tâches."
 
@@ -7087,9 +7090,9 @@ msgstr ""
 "prêté serment d'allégeance. Leur entraînement et leur expérience leur permet "
 "d'appliquer ces ordres.\n"
 "\n"
-"Remarque : le commandement d'un général permet aux unités amicales "
-"adjacentes d'infliger plus de dégâts au combat, ceci ne s'applique néanmoins "
-"qu'aux unités de niveau inférieur."
+"Remarque : le commandement d'un général permet aux unités alliées adjacentes "
+"d'infliger plus de dégâts au combat, ceci ne s'applique néanmoins qu'aux "
+"unités de niveau inférieur."
 
 #: data/units/Ghost.cfg:3
 msgid "Ghost"
@@ -7118,7 +7121,7 @@ msgstr ""
 "un serviteur infaillible, pouvant réaliser toute tâche pour laquelle son "
 "maître le juge adapté.\n"
 "\n"
-"Remarque : les fantômes ont des résistances particulières aux dégâts, et se "
+"Remarque : les fantômes ont des résistances particulières aux dégâts et se "
 "déplacent plutôt lentement au-dessus de l'eau."
 
 #: data/units/Ghoul.cfg:3
@@ -7151,8 +7154,8 @@ msgstr ""
 "C'est à cause de ce genre de choses que la nécromancie est condamnée avec "
 "une haine presque primaire.\n"
 "\n"
-"Remarque : les griffes d'un goule sont enduites de poison, et les victimes "
-"de ce poison auront continuellement des dégâts jusqu'à ce qu'elles puissent "
+"Remarque : les griffes d'un goule sont enduites de poison et les victimes de "
+"ce poison auront continuellement des dégâts jusqu'à ce qu'elles puissent "
 "être soignées dans un village ou par un soigneur."
 
 # Démesuré ?
@@ -7366,7 +7369,7 @@ msgstr ""
 "du feu, prouvant leurs considérables capacités aussi bien au combat qu'au "
 "commandement tactique.\n"
 "\n"
-"Remarque : le commandement d'un grand maréchal permet aux unités amicales "
+"Remarque : le commandement d'un grand maréchal permet aux unités alliées "
 "adjacentes de faire plus de dégâts au combat, ceci ne s'applique néanmoins "
 "qu'aux unités de niveau inférieur."
 
@@ -7419,7 +7422,7 @@ msgstr ""
 "ne diminue en rien leur grandeur.\n"
 "\n"
 "Remarque : les trolls ont la capacité de se régénérer, qui les soigne comme "
-"si ils étaient toujours dans un village."
+"si ils étaient en permanence dans un village."
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
@@ -7491,9 +7494,9 @@ msgstr ""
 "elle dérive. Comme tout hallebardier peut vous le raconter, l'arme est dotée "
 "de 4 points de frappe principaux, 2 de plus qu'une lance ou qu'une pique ; "
 "ce sont l'extrémité, la lame, la pointe à la base du manche, et la pointe "
-"intérieure de la lame, qui peuventt être utilisées dans un mouvement de "
-"revers. Tout cela en fait une arme polyvalente dans les mêlées, "
-"particulièrement contre la cavalerie.\n"
+"intérieure de la lame, qui peut être utilisée dans un mouvement de revers. "
+"Tout cela en fait une arme polyvalente dans les mêlées, particulièrement "
+"contre la cavalerie.\n"
 "\n"
 "Cependant, une hallebarde est considérablement plus chère à fabriquer, et "
 "dans les mains d'un novice elle est beaucoup moins efficace. Dans les armées "
@@ -7708,7 +7711,7 @@ msgstr ""
 "plus rapidement que leurs semblables. Les tactiques audacieuses qu'ils "
 "emploient sont à double tranchant, leur apportant la gloire ou une mort "
 "rapide. Les jouteurs excellent à la poursuite des infanteries qui ont fait "
-"l'erreur de briser leur formation, et au percement des lignes défensives. "
+"l'erreur de briser leur formation et au percement des lignes défensives. "
 "Cependant, ils sont d'une utilité moindre en défense."
 
 #: data/units/Lancer.cfg:22
@@ -7760,7 +7763,7 @@ msgstr ""
 "Agiles à l'épée et à l'arbalète, les lieutenants mènent de petits groupes de "
 "soldats humains, coordonnant leurs attaques.\n"
 "\n"
-"Remarque : le commandement des lieutenants permet aux unités amicales "
+"Remarque : le commandement des lieutenants permet aux unités alliées "
 "adjacentes de faire plus de dégâts au combat, ceci ne s'applique néanmoins "
 "qu'aux unités de niveau inférieur."
 
@@ -7863,7 +7866,7 @@ msgid ""
 "the area adjacent to the mage."
 msgstr ""
 "Après des années d'expérience, de grands pouvoirs spirituels sont offerts "
-"aux mages blancs les plus fervents. Entièrement dévoués au chemin de la "
+"auxmages blancs les plus fervents. Entièrement dévoués au chemin de la "
 "lumière, ils peuvent invoquer son aide pour chasser au loin les ombres de la "
 "nuit.\n"
 "\n"
@@ -7871,11 +7874,11 @@ msgstr ""
 "travaillent sans relâche pour apporter la vie et l'ordre au monde troublé "
 "dans lequel ils vivent.\n"
 "\n"
-"Remarque : la lumière émise par un mage de lumière est d'une nature magique, "
+"Remarque : la lumière émise par un mage de lumière est d'une nature magique "
 "et a toujours une grande probabilité de frapper un adversaire. Cette lumière "
-"fait une quantité de dégâts terrible aux morts-vivants, et en fait aussi à "
+"fait une quantité de dégâts terrible aux morts-vivants et en fait aussi à "
 "certaines créatures vivantes. Les mages de lumières peuvent soigner les "
-"unités alentours, et les guérir des effets du poison. Ils possèdent aussi le "
+"unités alentours et les guérir des effets du poison. Ils possèdent aussi le "
 "pouvoir d'illumination, qui augmente le niveau de lumière dans les zones "
 "adjacentes au mage."
 
@@ -7922,7 +7925,7 @@ msgstr ""
 
 #: data/units/Master_at_Arms.cfg:3
 msgid "Master at Arms"
-msgstr "Maîtres d'armes"
+msgstr "Maître d'armes"
 
 #: data/units/Master_at_Arms.cfg:22
 msgid ""
@@ -7944,7 +7947,7 @@ msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr "Ondine divinatrice"
+msgstr "Oracle ondine"
 
 #: data/units/Mermaid_Diviner.cfg:28
 msgid ""
@@ -8064,7 +8067,7 @@ msgstr ""
 msgid "trident"
 msgstr "trident"
 
-# Jean : Le rétiaire est le gladiateur armé d'un filet
+# Jean : Le rétiaire est le gladiateur armé d'un filet
 #: data/units/Merman_Entangler.cfg:3
 msgid "Merman Entangler"
 msgstr "Enchevêtreur ondin"
@@ -8080,8 +8083,8 @@ msgid ""
 "Special Notes: being caught in a net slows enemies down and reduces by one "
 "the strikes they can deliver in combat."
 msgstr ""
-"Les lourds filets utilisés par les Ondins au combat sont une arme difficile "
-"à bien utiliser ; ceux qui la maîtrisent sont admirés par leurs camarades. "
+"Le lourd filet utilisé par les Ondins au combat est une arme difficile à "
+"bien utiliser ; ceux qui la maîtrisent sont admirés par leurs camarades. "
 "Cette arme aide à construire l'hégémonie des Ondins dans leur élément, et "
 "fait de leur race une menace pour les ennemis approchant de l'eau.\n"
 "\n"
@@ -8092,8 +8095,8 @@ msgstr ""
 msgid "Merman Fighter"
 msgstr "Combattant ondin"
 
-# Jean : l'hoplite est un guerrier grec lourdement armé
-# Jean : l'hoplomaque est un gladiateur possédant un large bouclier rectangulaire
+# Jean : l'hoplite est un guerrier grec lourdement armé
+# Jean : l'hoplomaque est un gladiateur possédant un large bouclier rectangulaire
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
 msgstr "Hoplite ondin"
@@ -8159,7 +8162,7 @@ msgid ""
 "the strikes they can deliver in combat."
 msgstr ""
 
-# Jean : Le vélite est le gladiateur armé d'une lance
+# Jean : Le vélite est le gladiateur armé d'une lance
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
 msgstr "Lancier ondin"
@@ -8174,11 +8177,10 @@ msgid ""
 "is something that certainly cannot be said of arrows."
 msgstr ""
 
-# Jean : Triton est le fils de Posséidon
-# Jean : le laquaire est le gladiateur armé d'un trident
+# Jean : Triton est le fils de Posséidon
 #: data/units/Merman_Triton.cfg:3
 msgid "Merman Triton"
-msgstr "Triton ondin"
+msgstr "Triton"
 
 #: data/units/Merman_Triton.cfg:21 data/units/Triton.cfg:23
 msgid ""
@@ -8555,7 +8557,7 @@ msgstr ""
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr "Seigneur orc"
+msgstr "Meneur orc"
 
 #: data/units/Orcish_Leader.cfg:18
 msgid ""
@@ -8565,16 +8567,16 @@ msgid ""
 "powerful fighters. Their natural leadership skills make them very precious "
 "in battle: if the Leader is lost, so is the battle."
 msgstr ""
-"Les seigneurs orcs sont les chefs de leurs tribus. Ils prennent les "
-"décisions importantes et dirigent leur peuple lors des batailles. Ils "
-"manient l'arc en cas de nécessité mais sont bien plus habiles à l'épée ; ce "
-"sont des guerriers redoutables. Leur talents de commandement les rend "
-"vraiment précieux dans les combats : s'il est perdu, il en est de même pour "
-"la bataille."
+"Les meneurs orcs sont les chefs de leurs tribus. Ils prennent les décisions "
+"importantes et dirigent leur peuple lors des batailles. Ils manient l'arc en "
+"cas de nécessité mais sont bien plus habiles à l'épée ; ce sont des "
+"guerriers redoutables. Leur talents de commandement les rend vraiment "
+"précieux dans les combats : s'il est perdu, il en est de même pour la "
+"bataille."
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
-msgstr "Meneur orc"
+msgstr "Dirigeant orc"
 
 #: data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -8584,9 +8586,9 @@ msgid ""
 "powerful fighters. Their natural leadership skills make them very precious "
 "in battle: if the Ruler is lost, so is the battle."
 msgstr ""
-"Les meneurs orcs sont les chefs de leurs tribus. Ils prennent les décisions "
-"importantes et dirigent leur peuple lors des batailles. Ils manient l'arc en "
-"cas de nécessité mais sont bien plus habiles à l'épée ; ce sont des "
+"Les dirigeants orcs sont les chefs de leurs tribus. Ils prennent les "
+"décisions importantes et mennent leur peuple lors des batailles. Ils manient "
+"l'arc en cas de nécessité mais sont bien plus habiles à l'épée ; ce sont des "
 "guerriers redoutables. Leur talent de commandement les rend vraiment "
 "précieux dans les combats : s'il est perdu, il en est de même pour la "
 "bataille."
@@ -8679,7 +8681,7 @@ msgid ""
 "in town or by a healer."
 msgstr ""
 
-# Jean : pas trouvé Slurbow dans un dico
+# Jean : pas trouvé Slurbow dans un dico
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
 msgstr "Franc-arbalétrier orc"
@@ -8978,7 +8980,7 @@ msgstr ""
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
-msgstr "Bandit"
+msgstr "Brigand"
 
 #: data/units/Rogue.cfg:20 data/units/Rogue.cfg:82
 msgid ""
@@ -8996,7 +8998,7 @@ msgstr ""
 
 #: data/units/Rogue.cfg:65
 msgid "female^Rogue"
-msgstr "Bandit"
+msgstr "Brigande"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
@@ -9188,13 +9190,13 @@ msgstr ""
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
-msgstr "Serpent des mers"
+msgstr "Serpent de mer"
 
 #: data/units/Sea_Serpent.cfg:17
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
-"Les serpents des mers sont des monstres gigantesques capables à eux-seuls de "
+"Les serpents de mer sont des monstres gigantesques capables à eux-seuls de "
 "faire chavirer un bateau."
 
 #: data/units/Sergeant.cfg:3
@@ -9340,10 +9342,10 @@ msgstr "Griffon endormi"
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
 msgstr "Chut ! Le griffon dort ! Vous feriez mieux de ne pas le réveiller !"
 
-# Jean : proposition forum
+# Jean : proposition forum
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
-msgstr "Tireur d'âmes"
+msgstr "Chasseur d'âme"
 
 #: data/units/Soul_Shooter.cfg:18
 msgid ""
@@ -9467,6 +9469,7 @@ msgid "Thug"
 msgstr "Brigand"
 
 #: data/units/Thug.cfg:17
+#, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -9474,11 +9477,11 @@ msgid ""
 "sustenance. Regardless of their background, they all share the practice of "
 "beating their victims with large clubs."
 msgstr ""
-"Les brigands sont issus de plusieurs origines ; tandis que certains sont nés "
-"dans le brigandage, beaucoup sont d'anciens soldats considérés inaptes au "
-"service dans l'armée ou des paysans chassés de leurs terres. Ils deviennent "
-"rapidement des brigands pour survivre. Quelle que soit leur origine, ils "
-"frappent toutes leurs victimes à l'aide de grands gourdins."
+"Les gredins sont issus de plusieurs origines ; tandis que certains sont nés "
+"dans le vol à main armée, beaucoup sont d'anciens soldats considérés inaptes "
+"au service dans l'armée ou des paysans chassés de leurs terres. Ils "
+"deviennent rapidement des brigands pour survivre. Quelle que soit leur "
+"origine, ils frappent toutes leurs victimes à l'aide de grands gourdins."
 
 #: data/units/Transport_Galleon.cfg:3
 msgid "Transport Galleon"
@@ -9546,7 +9549,7 @@ msgstr ""
 "ceux ci sont vénéré comme des héros dans leur tribus.\n"
 "\n"
 "Remarque : les Trolls possèdent la capacité régénération, qui les soigne "
-"comme si ils étaient toujours stationnés dans un village."
+"comme si ils étaient stationnés en permanence dans un village."
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
@@ -9565,17 +9568,17 @@ msgid ""
 "regeneration ability, which heals them as though they were always stationed "
 "in a village."
 msgstr ""
-"La pensée de projeter un rocher en combat est certainement venu à beaucoup "
-"de troll, et certains les ont pris comme une arme de choix. Parce que de "
-"telles pierres ne sont pas toujours faciles à trouver, les trolls lanceur de "
-"pierres ont choisi de les transporter dans un sac jeté par dessus leur "
+"La pensée de projeter des rochers en combat est certainement venu à beaucoup "
+"de troll et certains les ont choisis comme arme de prédilection. Parce que "
+"de telles pierres ne sont pas toujours faciles à trouver, les trolls lanceur "
+"de pierres ont choisi de les transporter dans un sac jeté par dessus leur "
 "épaules. Le même cuir dont est fait le sac est facilement adapté en une "
 "fronde grossière.\n"
 "\n"
-"Remarque : quoique peu maniable, une pierre lancée par une de ces créatures "
+"Remarques : quoique peu maniable, une pierre lancé par une de ces créatures "
 "est bien plus mortelle que n'importe qu'elle flèche, si elle réussi à "
-"toucher. les Trolls possèdent la capacité régénération, qui les soigne comme "
-"si ils étaient toujours stationnés dans un village."
+"toucher. Les Trolls possèdent la capacité régénération, qui les soigne comme "
+"si ils étaient stationnés en permanence dans un village."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -9606,8 +9609,8 @@ msgstr ""
 "dangerosité des troll en combat, la pensée d'un troll en armure complète est "
 "très troublante.\n"
 "\n"
-"Remarques : les Trolls possèdent la capacité régénération, qui les soigne "
-"comme si ils étaient toujours stationnés dans un village."
+"Remarque : les Trolls possèdent la capacité régénération qui les soigne "
+"comme si ils étaient stationnés en permanence dans un village."
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
@@ -9630,8 +9633,8 @@ msgstr ""
 "de se balancer sur leurs quatre membres, mais le frein que cela leur cause "
 "est largement compensé par la force brute de leur race.\n"
 "\n"
-"Remarques : les Trolls possèdent la capacité régénération, qui les soigne "
-"comme si ils étaient toujours stationnés dans un village."
+"Remarque : les Trolls possèdent la capacité régénération qui les soigne "
+"comme si ils étaient stationnés en permanence dans un village."
 
 #: data/units/Vampire_Bat.cfg:3
 msgid "Vampire Bat"
@@ -9781,9 +9784,9 @@ msgstr ""
 "\n"
 "Remarques : la lumière envoyée par un mage blanc est magique par nature et a "
 "toujours une chance élevée de frapper l'adversaire. Cette lumière fait "
-"d'énormes dommages aux morts-vivants, et peut éventuellement porter atteinte "
+"d'énormes dégâts aux morts-vivants et peut éventuellement porter atteinte "
 "aux créatures vivantes. Les mages blancs sont capables de soigner les unités "
-"autour d'eux, et de les guérir du poison."
+"autour d'eux et de les guérir du poison."
 
 #: data/units/White_Mage.cfg:81
 msgid "female^White Mage"
@@ -9847,9 +9850,9 @@ msgstr ""
 "Les Woses sont complètement pacifiques , mais possèdent une grande force. "
 "Ils sont, malgré tout, ni rapide, ni prompt a se déplacer.\n"
 "\n"
-"Notes spéciales: les Woses se régénèrent en utilisant les ressources "
-"naturelles présentent autour d'eux, sans avoir besoin de s'amasser dans un "
-"village pour obtenir subsistance et aide."
+"Remarque : les Woses se régénèrent en utilisant les ressources naturelles "
+"présentent autour d'eux, sans avoir besoin de s'amasser dans un village pour "
+"obtenir subsistance et aide."
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
@@ -9875,14 +9878,14 @@ msgstr ""
 "choses les plus terrifiantes qu'un nécromancien puisse créer, étant donné "
 "qu'une épée les trancheras de part en part comme si elles étaient faites "
 "d'air. Ce qui inspire une telle peur est la pensée que ces monstres sont "
-"invincibles, une croyance qui est actuellement loin de la vérité.\n"
+"invincible, une croyance qui est actuellement loin de la vérité.\n"
 "\n"
-"A cause de cela, par l'enchantement qui anime ces créatures, elles peuvent "
-"se soigner elles mêmes à travers chaque choses qui les menacent.\n"
+"À cause de cela, par l'enchantement qui anime ces créatures, elles peuvent "
+"se soigner elles mêmes à travers chaque choses qui les menaces.\n"
 "\n"
-"Remarques : un coup de leur épée drainera la vie de leur victime, pour "
-"soigner l'apparition. Les apparitions ont une résistance inhabituelle au "
-"dommage, et se déplacent assez lentement sur l'eau."
+"Remarques : un coup de leur épée drainera la vie de leur victime et "
+"régénèrera l'apparition. Les apparitions ont une résistance inhabituelle aux "
+"dégâts et se déplace assez lentement sur l'eau."
 
 #: data/units/Yeti.cfg:3
 msgid "Yeti"
@@ -11276,7 +11279,7 @@ msgstr "Vous avez été battu !"
 # Jean: « revoir la partie » ?
 #: src/playcampaign.cpp:159
 msgid " replay"
-msgstr "film"
+msgstr " film"
 
 #: src/playcampaign.cpp:167
 msgid "Do you want to save a replay of this scenario?"
@@ -11751,7 +11754,7 @@ msgstr "Nom d'étiquette incorrect"
 
 #: src/serialization/parser.cpp:152
 msgid "Unterminated [+element] tag"
-msgstr "Etiquette [+element] non terminée"
+msgstr "Étiquette [+element] non terminée"
 
 #: src/serialization/parser.cpp:168
 msgid "Invalid closing tag name"
