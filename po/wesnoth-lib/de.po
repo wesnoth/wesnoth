@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.9.3+CVS\n"
+"Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 14:28+0200\n"
 "PO-Revision-Date: 2005-08-01 15:20+0100\n"
@@ -29,7 +29,6 @@ msgstr "Vorherige Einheit"
 msgid "Hold Position"
 msgstr "Position halten"
 
-# Anm.: Komisch, aber nicht das gleiche wie Runde beenden!
 #: src/hotkeys.cpp:48
 msgid "End Unit Turn"
 msgstr "Zug der Einheit beenden"
@@ -122,7 +121,6 @@ msgstr "Sprechen"
 msgid "Create Unit (Debug!)"
 msgstr "Einheit erstellen (Debug!)"
 
-# Anm: WICHTIG!!! MUSS VERNÜNFTIG ANGEPASST WERDEN, quick and dirty fix
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Zugehörigkeit ändern (Debug!)"
@@ -151,12 +149,10 @@ msgstr "Spiel beenden"
 msgid "Set Label"
 msgstr "Beschriftung erstellen"
 
-# Anm: WICHTIG!!! MUSS VERNÜNFTIG ANGEPASST WERDEN, quick and dirty fix
 #: src/hotkeys.cpp:78
 msgid "Show Enemy Moves"
 msgstr "Gegn. Bewegungen zeigen"
 
-# Anm: WICHTIG!!! MUSS VERNÜNFTIG ANGEPASST WERDEN, quick and dirty fix
 #: src/hotkeys.cpp:79
 msgid "Best Possible Enemy Moves"
 msgstr "Beste gegn. Bewegungen"
@@ -245,7 +241,6 @@ msgstr "Schleier jetzt aktualisieren"
 msgid "Continue Move"
 msgstr "Bewegung fortsetzen"
 
-# Anm: WICHTIG!!! MUSS VERNÜNFTIG ANGEPASST WERDEN, quick and dirty fix
 #: src/hotkeys.cpp:103
 msgid "Find Label or Unit"
 msgstr "Beschriftung / Einheiten suchen"
@@ -473,7 +468,6 @@ msgstr "Video"
 msgid "Prefs section^Sound"
 msgstr "Audio"
 
-# edited by Ivanovic
 #: src/preferences.cpp:1222
 msgid "Advanced section^Advanced"
 msgstr "Diverses"
@@ -550,9 +544,3 @@ msgstr "Empfange Daten..."
 #: src/show_dialog.cpp:883
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Set Player Start Position"
-#~ msgstr "Startpositionen festlegen"
-
-#~ msgid "Downloading..."
-#~ msgstr "Empfange Daten..."

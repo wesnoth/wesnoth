@@ -5,11 +5,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
+"Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 13:32+0200\n"
-"PO-Revision-Date: 2005-08-19 19:14+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2005-08-20 15:14+0100\n"
+"Last-Translator: Nils Kneuper <crazy - ivanovic AT gmx DOT de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,19 +23,6 @@ msgstr "Bonus zu max. LP: +{HP_ADVANCE}"
 msgid "Full Heal"
 msgstr "Vollständige Heilung"
 
-# -- Anmerkungen --
-# Wenn an einem Tag 'Do not delete' steht, wäre es kooperativ, ihn
-# tatsächlich auch nicht zu löschen.
-# KENNZEICHNUNG: Vorschlag: Inhaltliche Anmerkungen mit 'Anm.' beginnen, dann lassen sie sich leicht durch die Suchfunktion finden. Beispiel:
-# - Statt:
-# Klingt komisch. Umformulieren
-# - besser so:
-# Anm. Klingt komisch. Umformulieren
-# Zahlen innerhalb eines Abschnittes ausschreiben oder in Ziffern stellen - VeryUhu
-# Wir sollten vielleicht ein anderes Wort für 'Spezialitäten' verwenden. Vorschlag: Besonderheiten - VeryUhu
-# Was meint Ihr? ...........
-# 'Euer' und 'Euere' wie das 'Ihr' groß schreiben - VeryUhu
-# -- Anmerkungen Ende --
 #: data/fonts.cfg:6
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
@@ -261,7 +248,7 @@ msgstr ""
 "\n"
 "Wenn Ihr über einen Rechtsklick auf ein Hexfeld Eures Burgfrieds ins "
 "Ausbildungsmenü gelangt seid, wird die neue Einheit dort erscheinen. Sonst "
-"wird sie auf einem freien Feld in der Burg eingesetzt. Einheiten könnt ihr "
+"wird sie auf einem freien Feld in der Burg eingesetzt. Einheiten könnt Ihr "
 "nur ausbilden, solange es freie Hexfelder in der Burg gibt und Ihr über "
 "genug Gold verfügt."
 
@@ -1351,7 +1338,7 @@ msgstr ""
 "Verteidigungsbonus erhalten.\n"
 "\n"
 "Alle elfischen Einheiten, wozu auch ihre berittenen Einheiten zu zählen "
-"sind, erhalten 60 bis 70% Verteidigung. \n"
+"sind, erhalten 60 bis 70% Verteidigung.\n"
 "Zwerge verfügen generell nur über 30% Verteidigung in Wäldern.\n"
 "Fußtruppen der übrigen Rassen erhalten 50% Verteidigung in allen "
 "Waldfeldern, wohingegen ihre Kavallerie auf 40% begrenzt ist."
@@ -1376,8 +1363,8 @@ msgstr ""
 "Boden die etwas Deckung bieten. Die meisten Einheiten kommen nur langsam in "
 "diesem schwierigen Gelände voran. Zwerge, Trolle und Orks sind sehr vertraut "
 "mit diesem Untergrund und bewegen sich ohne Abzug darauf. Die Kavallerie hat "
-"es so schwer sich in den Hügeln zu bewegen, dass der Verteidigungsvorteil "
-"durch die Deckungungsmöglichkeiten wieder zunichte gemacht wird.\n"
+"es so schwer, sich in den Hügeln zu bewegen, dass der Verteidigungsvorteil "
+"durch die Deckungsmöglichkeiten wieder zunichte gemacht wird.\n"
 "\n"
 "Die meisten Einheiten erhalten 50% Verteidigung, Kavallerie maximal 40%.\n"
 "Zwerge haben sogar 60% Verteidigung in den Hügeln."
@@ -1534,7 +1521,7 @@ msgstr ""
 "erhalten einen Verteidigungsbonus, wenn sie sich auf einem derartigen Feld "
 "aufhalten. In der Burg haben alle Einheiten volle Bewegung. Die Anzahl der "
 "in der Burg stationierten Einheiten repräsentiert deren "
-"Verteidigunsfähigkeit. Wenn nicht auf jedem Burghexfeld eine Einheit steht, "
+"Verteidigungsfähigkeit. Wenn nicht auf jedem Burghexfeld eine Einheit steht, "
 "können leicht Gegner diesen Platz einnehmen und den selben "
 "Verteidigungsbonus erhalten.\n"
 "\n"
@@ -1611,7 +1598,7 @@ msgid ""
 msgstr ""
 "Savannen sind Flächen mit hohem Gras, wie man sie in den wärmeren Gebieten "
 "der Welt findet. Spieltechnisch verhält es sich wie das Gelände "
-"<ref>dst=terrain_grassland text=Grassland</ref>."
+"<ref>dst=terrain_grassland text=Grasland</ref>."
 
 #: data/help.cfg:453 data/terrain.cfg:43 data/terrain.cfg:64
 #: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:179
@@ -2201,7 +2188,6 @@ msgstr "Die rote Mannschaft hat gewonnen! Der Endstand: $redscore-$bluescore"
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Unentschieden! Der Endstand: $redscore-$bluescore"
 
-# Anm: kann noch überarbeitet werden
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
 msgid "3p - 1v1v1Hex"
 msgstr "3S - 3er-Hex"
@@ -2228,7 +2214,6 @@ msgstr ""
 "siegreich verlassen.\n"
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
-# Anm: kann noch überarbeitet werden
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
 msgstr "3S - Dreifach Blitz"
@@ -2383,7 +2368,6 @@ msgstr ""
 msgid "6p - Hexcake"
 msgstr "6S - Hexagon"
 
-# Anm. klingt komisch / falsch [ist es aber nicht (S.G.) ]
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Teamspiel: 2 gegen 2 oder 3 gegen 3 Spieler."
@@ -2694,7 +2678,6 @@ msgstr ""
 "vorbei. Wir gehen nun zum nächsten Szenario, wo Ihr mit mir in einem "
 "Übungskampf bestehen müsst."
 
-# Anm. Alternativbegriff für "Spezialitäten" universell festlegen? (Besonderheiten?)
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:4
 msgid "Traits and Specialties"
 msgstr "Charakteristiken und Spezialitäten"
@@ -3003,7 +2986,7 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
-"Euer Elfenkrieger hat am Anfang jedes Zuges eine bestimmte Anzahl an "
+"Euer Elfenkrieger hat am Anfang jeden Zuges eine bestimmte Anzahl an "
 "Bewegungspunkten, auch »Geschwindigkeit« genannt. Wenn Ihr den Elfenkrieger "
 "bewegt, kostet ihn jedes Hexfeld, das er betritt, Bewegungspunkte. Wählt Ihr "
 "Euren Elfenkrieger aus, so werden alle Felder verdunkelt, die er in diesem "
@@ -3197,7 +3180,6 @@ msgstr ""
 "Wie können meine Einheiten geheilt werden, wenn keine Dörfer in der Nähe "
 "sind?"
 
-# Anm. Vereinheitlichen der Ziffernschrift? ("zwei LP" oder "2 LP")
 #: data/scenarios/tutorial/utils.cfg:96
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
@@ -3377,7 +3359,6 @@ msgstr ""
 "unter Eure Kontrolle bringen. Jedes Dorf bringt Euch ein weiteres Goldstück "
 "pro Zug."
 
-# Anm. Muss umformuliert werden
 #: data/scenarios/tutorial/utils.cfg:120
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
@@ -3491,7 +3472,6 @@ msgstr ""
 msgid "How does resistance affect attack damage?"
 msgstr "Wie beeinflussen Resistenzen den Angriffsschaden?"
 
-# Anm. Müsste 'Einheitenbeschreibung' nicht 'Profil' heißen?
 #: data/scenarios/tutorial/utils.cfg:131
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
@@ -3514,7 +3494,6 @@ msgstr ""
 msgid "What are the different damage types?"
 msgstr "Was sind die verschiedenen Schadensarten?"
 
-# Anm. 'Spezialitäten' habe ich ab hier zu 'Besonderheiten' geändert (ist ja nix zu essen ...)
 #: data/scenarios/tutorial/utils.cfg:135
 msgid ""
 "Each specialty does something different; that's the whole point of a "
@@ -4564,7 +4543,6 @@ msgstr ""
 "$name|sheim,Sankt-$name,$name|shausen,$name|sberg,$name|shöhe,$name|sklippe,"
 "$name|sklippe"
 
-# Anm. 'Alter' Klingt komisch.
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Alter Lich"
@@ -4661,7 +4639,6 @@ msgstr "Kälteschock"
 msgid "magical"
 msgstr "magisch"
 
-# Anm. 'Alter' klingt komisch.Waldschrat-Ältester ist nicht viel, aber ein bissschen besser...? - VeryUhu
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
 msgstr "Alter Waldschrat"
@@ -4686,6 +4663,20 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Eine interessante Geschichte hörte man einst von einem Bauern, die von einer "
+"großen Eiche, die auf seinem Land wuchs, handelte. Der Baum war schon dort, "
+"als sein Vater das erste mal dieses Land betreten hatte. Es war ein großer "
+"Schock für ihn, als er eines Morgens aufwachte und sah, dass der Baum wie "
+"von Geisterhand verschwunden war. Alles was von der Anwesenheit dieses "
+"Baumes noch zeugte, war ein großer Haufen Erde. Der arme Bauer war danach "
+"nie wieder, wie er vor diesen Erlebnis gewesen war.\n"
+"\n"
+"Solche Geschichten sind die einzigen Hinweise darauf, dass es noch viel "
+"ältere Waldschrate gibt, als man bisher angenommen hatte.\n"
+"\n"
+"Anmerkung: Die Ältesten der Waldschrate verfügen über die Fertigkeit der "
+"Regeneration. Dadurch erhalten sie genauso viele Lebenspunkte, als würden "
+"sie sich in einem Dorf aufhalten."
 
 #: data/units/Ancient_Wose.cfg:43 data/units/Elder_Wose.cfg:24
 #: data/units/Wose.cfg:24
@@ -4753,7 +4744,6 @@ msgstr "Zermalmen"
 msgid "impact"
 msgstr "Wucht"
 
-# Anm. Die englischen Mage-Beschreibungen werden derzeit überarbeitet. Ich kann sie einfügen, wenn sie im CVS aktualisiert worden sind. - VeryUhu
 #: data/units/Arch_Mage.cfg:3
 msgid "Arch Mage"
 msgstr "Erzmagier"
@@ -4776,6 +4766,23 @@ msgid ""
 "Special Notes: the arch mage's fireballs are magical, and always have a high "
 "chance of hitting an opponent."
 msgstr ""
+"Erst nach einer geradezu unendlich langen Zeit des Studiums, kann ein "
+"Meister in den Rang eines Erzmagiers aufsteigen. Oftmals sind sie es, die "
+"neue Schüler in die Reihen der Magier aufnehmen und diese unterweisen. "
+"Mancher Erzmagier steht gar einem König bei wichtigen Entscheidungen als "
+"Berater zur Seite. Meist  besitzen sie einen nicht unbeträchtlichen "
+"Wohlstand, welcher ihnen dabei hilft, ungestört Lehren und Lernen zu können. "
+"Einigen Erzmagiern ist selbst dies noch nicht ungestört genug, so dass sie "
+"sich ganz aus den zivilisierten Gegenden zurückziehen. Um sich mit "
+"Gleichgesinnten austauschen können, besuchen sie häufig die geheimen Treffen "
+"der Magierzirkel.\n"
+"\n"
+"Auch wenn sie nie zum Kämpfer erzogen wurden, sollte man sich doch davor in "
+"Acht nehmen, einen Erzmagier zu erzürnen. Kaum ein Anderer versteht sich so "
+"gut darauf, sich mit einem Feuerball seiner Widersacher zu entledigen.\n"
+"\n"
+"Anmerkung: Der Fernkampfangriff eines Erzmagiers ist magischer Natur und hat "
+"daher eine erhöhte Trefferwahrscheinlichkeit."
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:152
 #: data/units/Dark_Sorcerer.cfg:24 data/units/Deathmaster.cfg:32
@@ -5071,8 +5078,6 @@ msgstr "Zepter des Feuers"
 msgid "Blood Bat"
 msgstr "Blutfledermaus"
 
-# Anm. 'Vampirfledermäuse'? - VeryUhu
-# Poliert von VeryUhu
 #: data/units/Blood_Bat.cfg:17
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
@@ -5767,7 +5772,7 @@ msgid ""
 "hours at the forge have provided them with a bristling array of weaponry, "
 "and have clad them head to toe in shining armor."
 msgstr ""
-"Die großen Erzwinger versinnbildlichen die unglaubliche Stärke ihrer Art. "
+"Die großen Bezwinger versinnbildlichen die unglaubliche Stärke ihrer Art. "
 "Viele Stunden in der Schmiede bescheren ihnen ein furchterregendes "
 "Waffenarsenal und sie kleiden sich von Kopf bis Fuß in einer nahezu "
 "undurchdringlichen Rüstung."
@@ -6402,6 +6407,21 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Man munkelt, das Waldschrate viele verschiedene Formen haben, aber alle "
+"ähneln sie Bäumen. Wie es bei Bäumen üblich ist, werden sie mit zunehmendem "
+"Alter immer größer. Weiterhin wird erzählt, dass sie mit Bäumen auch die "
+"Größe gemeinsam haben. Die Geschöpfe, die unter ihnen wandeln, bemerken sie "
+"gar nicht, da Waldschrate häufig vor sich hin dösen und so von normalen "
+"Bäumen  kaum zu unterscheiden sind. Selbst ein unachtsamer Elf übersieht sie "
+"so manches mal.\n"
+"\n"
+"Wenn sie an der Seite der Elfen in die Schlacht ziehen, setzen sie ihren "
+"Körper als Waffe ein. Mit ihrer Kraft sind sie in der Lage ihre Gegner "
+"meterweit durch die Luft zu schleudern.\n"
+"\n"
+"Anmerkung: Ältere Waldschrate verfügen über die Fertigkeit der Regeneration. "
+"Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
+"einem Dorf aufhalten."
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -7147,7 +7167,6 @@ msgstr "Platzhalter"
 msgid "Gate"
 msgstr "Tor"
 
-# Anm. klingt bescheuert (aber auch im Original)
 #: data/units/Gate.cfg:19
 msgid "The door will not open for any who are not allied with it."
 msgstr ""
@@ -7497,6 +7516,24 @@ msgid ""
 "Special Notes: the great mage's fireballs are magical, and always have a "
 "high chance of hitting an opponent."
 msgstr ""
+"Jeder, der bisher den Titel des Großmagiers erhalten hat, war eine wahre "
+"Legende in seiner Zeit. Das Konzil der Magier beschließt, ob jemand sich "
+"würdig gezeigt hat, den Titel Großmagier tragen zu dürfen. Man munkelt, dass "
+"Großmagier beinahe das gesamte Wissen der Menschheit in sich aufgenommen "
+"haben. Einjeder, der für diesen Titel vorgeschlagen wird, verfügt über "
+"Fähigkeiten, die schon fast ins Göttliche reichen. Er hat die Magie "
+"gemeistert und ist befähigt jede Frage zu beantworten, die man ihm stellt, "
+"auch wenn er eine Antwort nur jenen gibt, die ihrer auch würdig sind.\n"
+"\n"
+"Ein Großmagier beschäftigt sich lieber mit dem Erwerb von Wissen, als mit "
+"dem Kampf. Doch bleibt es kaum aus, dass er nicht irgendwann einer Armee in "
+"einer finsteren Stunde beisteht und ihr doch noch zum Sieg verhilft. Oft "
+"werden sie von Herrschern angefleht, ihnen in der Schlacht beizustehen. Doch "
+"für ihre Dienste fordern sie einen hohen Preis, den sich nur wenige leisten "
+"können, auch wenn sie diesen Preis meist mehr als wert sind.\n"
+"\n"
+"Anmerkung: Der Fernkampfangriff eines Großmagiers ist magischer Natur und "
+"hat daher eine erhöhte Trefferwahrscheinlichkeit."
 
 #: data/units/Great_Mage.cfg:101
 msgid "female^Great Mage"
@@ -7520,9 +7557,9 @@ msgstr ""
 "Immer, wenn ein Troll, dem das Geschenk großer Lebenskraft zuteil wurde, "
 "älter und weiser wird, wird aus ihm etwas gänzlich Außergewöhnliches: Ein "
 "Biest, über das Generation für Generation Sagen entstehen, für die ihre "
-"Stärkeund ihre List in den meisten Fällen der Ursprung sind. Auch, wenn "
-"diese Sagenin ihrer Entstehung immer weiter ausgeschmückt wurden, ändert das "
-"nichts anihrer beeindruckenden Erscheinung.\n"
+"Stärke und ihre List in den meisten Fällen der Ursprung sind. Auch, wenn "
+"diese Sagen in ihrer Entstehung immer weiter ausgeschmückt wurden, ändert "
+"das nichts an ihrer beeindruckenden Erscheinung.\n"
 "\n"
 "Spezielle Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. "
 "Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
@@ -7552,7 +7589,7 @@ msgid ""
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty pairs may strike from anywhere."
 msgstr ""
-"Greifenmeister haben soviel Erfahrung darin, mit ihren Greifen zu fliegen, "
+"Greifenmeister haben so viel Erfahrung darin, mit ihren Greifen zu fliegen, "
 "dass diese inzwischen zu einem Teil von ihnen selbst geworden sind. Diese "
 "besondere Beziehung lässt die Herzen derer, die auf der Erdoberfläche "
 "wandeln vor Furcht erzittern."
@@ -7604,7 +7641,7 @@ msgstr ""
 "\n"
 "Diese Waffe herzustellen ist wesentlich teurer, als die Herstellung eines "
 "Speers. Zudem ist sie in den Händen eines Anfängers so gut wie nutzlos, so "
-"das sie nur an die besten Pikenträger ausgegeben wird.\n"
+"dass sie nur an die besten Pikenträger ausgegeben wird.\n"
 "\n"
 "Anmerkung: Durch die Länge dieser Waffe führt jeder Hellebardier den ersten "
 "Schlag, auch wenn er sich nur verteidigt."
@@ -7970,6 +8007,25 @@ msgid ""
 "Special Notes: the ranged attack of a mage is magical, and always has a high "
 "chance of hitting an opponent."
 msgstr ""
+"Seit Anbeginn des Seins haben sich die Menschen über Aufbau und Ursprung der "
+"Welt Gedanken gemacht. Einige haben sich diese Studien gar zur Lebensaufgabe "
+"gemacht. In den Jahren, die sie über ihren Büchern zugebracht haben, konnten "
+"sie Unmengen an Wissen anhäufen, wodurch sie aus der Masse hervor stechen. "
+"Viele Magier stammen aus reichen Familien, da ein Studium sehr kostspielig "
+"ist.\n"
+"\n"
+"Während ihrer Studien sind sie dem Geheimnis des Lebensflusses auf die Spur "
+"gekommen. Sie haben gelernt, sich diese Kraft zunutze zu machen, wodurch es "
+"ihnen ohne weiteres möglich wäre, sich die Welt Untertan zu mache, jedoch "
+"verteidigen sie stattdessen eben diese Weltordnung.\n"
+"\n"
+"Ihre vielen Studien lassen ihnen keine Zeit, ihren Körper zu trainieren. "
+"Zudem können sie einer direkten Konfrontation nichts abgewinnen, sind aber "
+"trotzdem in der Lage sich in der Not mittels ihrer magischen Fähigkeiten zu "
+"verteidigen.\n"
+"\n"
+"Anmerkung: Der Fernkampfangriff eines Magiers ist magischer Natur und hat "
+"daher eine erhöhte Trefferwahrscheinlichkeit."
 
 #: data/units/Mage.cfg:47 data/units/Mage.cfg:130
 #: data/units/Silver_Mage.cfg:100 data/units/Silver_Mage.cfg:236
@@ -8006,6 +8062,23 @@ msgid ""
 "also have the power of Illumination, which increases the lighting level in "
 "the area adjacent to the mage."
 msgstr ""
+"Nach vielen Jahren, in denen sie Erfahrung im Umgang mit dem Leid gesammelt "
+"haben, erheben sich jene Weißen Magier, die über ausreichend spirituelle "
+"Energie verfügen in den Status von Magiern des Lichtes. Ihre vollkommene "
+"Aufopferung an den Pfad des Lichtes wird an der hellen Aura, die sie umgibt, "
+"deutlich.\n"
+"\n"
+"Einem strikten Ehrenkodex folgend, arbeiten diese Männer und Frauen "
+"aufopferungsvoll um ein kleinwenig Hoffnung in die arg zerrüttete Welt zu "
+"bringen, in der sie leben.\n"
+"\n"
+"Anmerkung: Der Fernkampfangriff eines Magiers des Lichts ist magischer Natur "
+"und hat daher eine erhöhte Trefferwahrscheinlichkeit. Der Lichtstrahl fügt "
+"untoten Einheiten schweren Schaden zu und verletzt auch Lebende. Zudem sind "
+"sind sie in der Lage alle befreundeten direkt benachbarten Einheiten von "
+"ihren Wunden zu heilen oder von der Wirkung eines Giftes zu kurieren. Noch "
+"dazu sind sie von einer gleißenden Lichtaura umgeben, die die "
+"Lichtverhältnisse in der Nähe des Magiers des Lichtes verbessert."
 
 #: data/units/Mage_of_Light.cfg:51 data/units/Mage_of_Light.cfg:128
 #: data/units/Mermaid_Diviner.cfg:48 data/units/Mermaid_Priestess.cfg:43
@@ -9272,6 +9345,22 @@ msgid ""
 "Special Notes: the red mage's fireballs are magical, and always have a high "
 "chance of hitting an opponent."
 msgstr ""
+"Nachdem sie die überaus langwierige und anstrengende Phase der Lehre hinter "
+"sich gebracht haben, ist es den Magiern gestattet, ihr blaues Gewand gegen "
+"ein rotes zu tauschen. Anhand dieses Gewandes erkennt man einen Meister der "
+"Magie. Hingegen wird dies vom einfachen Volk nicht richtig wahrgenommen, da "
+"sie fälschlicherweise diese Meister als »rote Magier« bezeichnen. Viele "
+"sehen den Wechsel des Gewandes auch darin begründet, dass sie nunmehr "
+"erlernt haben, anstelle von simpler magischer Kraft, mit Feuerbällen um sich "
+"zu werfen. Auch wenn dies eine überaus nützliche Fähigkeit ist, so setzen "
+"Magier sie doch nur ungern ein, da sie damit jenes zerstören könnten, was "
+"sich zu studieren lohnen würde.\n"
+"\n"
+"Für einen Kampf haben auch diese Magier nie trainiert, doch können sie sich "
+"mit einem gekonnt geschleuderten Feuerball in der Not zur Wehr setzten.\n"
+"\n"
+"Anmerkung: Der Fernkampfangriff eines Roten Magiers ist magischer Natur und "
+"hat daher eine erhöhte Trefferwahrscheinlichkeit."
 
 #: data/units/Red_Mage.cfg:100
 msgid "female^Red Mage"
@@ -9354,12 +9443,12 @@ msgstr ""
 "Nur die besten Schwertkämpfer von Wesnoth dürfen darauf hoffen, einmal "
 "Leibgardist zu werden. Dem Hochadel unterstellt, sind sie, wie der Name "
 "schon vermuten lässt, für den Schutz ihres Herrn verantwortlich und dienen "
-"in manchen Belangen als Berate. Eine Spezialeinheit der Leibgardisten ist in "
-"Weldyn  stationiert, um den Palast und die königliche Familie zu schützen. "
-"Sie pflegen ein starkes Vertrauensverhältnis zu ihrem Herrn und werden oft "
-"auf wichtige Missionen geschickt, für die normale Söldner nicht geeignet "
-"wären. Für ihre Zuverlässigkeit und ihrer meisterlichen Fähigkeiten im "
-"Nahkampf werden sie von allen hochgeschätzt."
+"in manchen Belangen als Berater. Eine Spezialeinheit der Leibgardisten ist "
+"in Weldyn  stationiert, um den Palast und die königliche Familie zu "
+"schützen. Sie pflegen ein starkes Vertrauensverhältnis zu ihrem Herrn und "
+"werden oft auf wichtige Missionen geschickt, für die normale Söldner nicht "
+"geeignet wären. Für ihre Zuverlässigkeit und ihrer meisterlichen Fähigkeiten "
+"im Nahkampf werden sie von allen hochgeschätzt."
 
 #: data/units/Saurian.cfg:20
 msgid ""
@@ -9508,7 +9597,6 @@ msgstr ""
 "Seefurien sind ältere und erfahrenere Seeteufel, die gelernt haben, mit "
 "Magie das Wasser zu beherrschen und es gegen ihre Feinde einzusetzen."
 
-# Klingt fast so gut wie Reiterelf.
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
 msgstr "Seeork"
@@ -9649,6 +9737,30 @@ msgid ""
 "villages instantly, though the player must control both, and the destination "
 "village must be unoccupied."
 msgstr ""
+"Für das Studium gibt es nahezu unbegrenzte Möglichkeiten. Die silbernen "
+"Magier haben sich dazu entschlossen, jene Kräfte zu studieren, die die Welt "
+"zusammenhalten. Sie haben so manches Mysterium entschlüsselt und einiges "
+"entdeckt, was viele sich nicht einmal ansatzweise vorstellen können. Oftmals "
+"wandern sie als Sagenerzähler umher, wobei noch nicht mal ein anderer Magier "
+"sie wirklich voll und ganz verstehen kann.\n"
+"\n"
+"Die silbernen Magier haben ihren eigenen Orden gegründet, der so manches "
+"Geheimnis vor ihren Brüdern geheim hält. Zum Beispiel das Geheimnis um ihre "
+"Fähigkeit große Distanzen in unglaublich kurzer Zeit zu überbrücken, "
+"schneller als jemals irgendein Wesen sich fortbewegen könnte.\n"
+"\n"
+"Silberne Magier kommen weit besser mit dem weltlichen Leben zurecht, als die "
+"meisten anderen Magier. So ist ihr Körper besser trainiert und während ihrer "
+"Reisen mussten sie sich auch schon des öfteren gegen eine Bande "
+"Straßenräuber verteidigen. Deshalb sind ihre Fähigkeiten von unschätzbarem "
+"Wert in der Schlacht, wenn man sie erstmal dazu bringt, sie einzusetzen.\n"
+"\n"
+"Anmerkung: Der Fernkampfangriff eines Silbernen Magiers ist magischer Natur "
+"und hat daher eine erhöhte Trefferwahrscheinlichkeit. Sie verfügen über "
+"große Widerstandskräfte gegen jedwede Art der Magie und können sich zwischen "
+"zwei Dorfern hin und her teleportieren. Dafür muss der Spieler allerdings "
+"beide Dörfer kontrollieren und in den Dörfern dürfen keine anderen Einheiten "
+"stehen."
 
 #: data/units/Silver_Mage.cfg:139
 msgid "female^Silver Mage"
@@ -9990,8 +10102,8 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
-"Einige Trolle werden mit unverhältnismäßig viel Stärke und Vitalität geboren,"
-"die ihrer Rasse eigen sind.\n"
+"Einige Trolle werden mit unverhältnismäßig viel Stärke und Vitalität "
+"geboren, die ihrer Rasse eigen sind.\n"
 "\n"
 "Spezielle Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. "
 "Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
@@ -10215,6 +10327,22 @@ msgid ""
 "damage to the undead, and can even damage living creatures. White magi are "
 "capable of healing units around them, and curing them of poison."
 msgstr ""
+"Einige Magier erfahren während ihres Studiums, wie die Welt um sie herum "
+"wirklich aussieht. Das Elend und Leiden der Menschen zeigt ihnen, dass das "
+"Studium allein ihr Leben nicht ausfüllt. Um für eine bessere Welt eintreten "
+"zu können, schließen sie sich klosterartigen Glaubensgemeinschaften an, "
+"welche sich dem Dienst an der Menschheit verschrieben haben. Oft werden sie "
+"auf Missionen ausgesandt, um gegen allerlei Leid und Übel vorzugehen.\n"
+"\n"
+"Für einen Kampf Mann gegen Mann sind sie nicht ausgebildet, doch ihre "
+"weißmagischen Zaubersprüche ermöglichen es ihnen, alles Wiedernatürliche zu "
+"vernichten.\n"
+"\n"
+"Anmerkung: Der Fernkampfangriff eines Weißen Magiers ist magischer Natur und "
+"hat daher eine erhöhte Trefferwahrscheinlichkeit. Der Lichtstrahl fügt "
+"untoten Einheiten schweren Schaden zu und verletzt auch Lebende. Zudem sind "
+"sie in der Lage, alle befreundeten direkt benachbarten Einheiten von ihren "
+"Wunden zu heilen oder von der Wirkung eines Giftes zu kurieren."
 
 #: data/units/White_Mage.cfg:81
 msgid "female^White Mage"
@@ -10264,6 +10392,21 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Da Waldschrate selbst von Elfen nur sehr selten gesehen werden, ist wenig "
+"über sie bekannt. Sämtliches Wissen über Waldschrate hat man von den Elfen "
+"erfahren. So ist es zum Beispiel so, dass Waldschrate trotz ihrer äußeren "
+"Ähnlichkeiten nicht von Bäumen abstammen, sondern dass sie Wesen aus der "
+"Feenwelt sind. Hieraus lässt sich vielleicht auch ableiten, warum sich "
+"Waldschrate und Elfen so gut verstehen. Die Beweggründe ihrer Art sind zwar "
+"unbekannt, aber es man vermutetet, dass sie die Wächter der natürlichen Welt "
+"darstellen.\n"
+"\n"
+"Waldschrate sind von Natur aus friedfertig. Man sollte sich jedoch davor "
+"hüten, etwas zu tun, was sie erzürnen könnte.\n"
+"\n"
+"Anmerkung: Waldschrate verfügen über die Fertigkeit der Regeneration. "
+"Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
+"einem Dorf aufhalten."
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
@@ -10695,8 +10838,6 @@ msgstr "Schwierigkeitsgrad:"
 msgid "Version: "
 msgstr "Version:"
 
-# Anm: Zeitreihenfolge, bin mir nicht sicher, wie die geändert werden soll.
-# Laut "man strftime" habe ich es von Monat, Tag, Jahr geändert auf Tag, Monat, Jahr
 #: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
 msgstr "%d %b %y"
@@ -10705,12 +10846,10 @@ msgstr "%d %b %y"
 msgid "%H:%M"
 msgstr "%H:%M"
 
-# Anm.: Wochentag, Stunden:Minuten
 #: src/dialogs.cpp:427
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-# Anm: Tag Monat
 #: src/dialogs.cpp:430
 msgid "%b %d"
 msgstr "%d %b"
@@ -11197,7 +11336,6 @@ msgstr "Verweis auf unbekanntes Thema:"
 msgid "The Battle for Wesnoth Help"
 msgstr "Hilfe zu Battle for Wesnoth"
 
-# Anm. Stimmt das im Kontext?
 #: src/help.cpp:2710
 msgid "Parse error when parsing help text: "
 msgstr "Fehler beim Analysieren des Hilfetextes: "
@@ -11320,10 +11458,6 @@ msgstr "Es sind keine Fraktionen in dieser Partie verfügbar."
 msgid "Era not available"
 msgstr "Ära nicht verfügbar"
 
-# Anm. Die Übersetzung ist falsch
-# Passt auch noch nicht ganz
-# aber anscheinend kann man diesen Fehler kaum bekommen
-# Clawed by VeryUhu
 #: src/multiplayer.cpp:352 src/multiplayer.cpp:367
 #: src/multiplayer_wait.cpp:213
 msgid "No multiplayer sides found"
@@ -11507,17 +11641,13 @@ msgstr "Karten teilen"
 msgid "Share None"
 msgstr "Nichts teilen"
 
-# Anm. Die Übersetzung ist falsch
-# Passt auch noch nicht ganz
-# aber anscheinend kann man diesen Fehler kaum bekommen
 #: src/multiplayer_create.cpp:125
 msgid "No multiplayer sides."
 msgstr "Keine gegnerischen Parteien gefunden."
 
-# Anm. Wasn das?
 #: src/multiplayer_create.cpp:127
 msgid "No eras found"
-msgstr "Keine Äras gefunden"
+msgstr "Keine Ära gefunden"
 
 #: src/multiplayer_create.cpp:140
 msgid "$login's game"
