@@ -28,13 +28,19 @@ CVS HEAD:
    * fixed game music continuing to play on the title screen (#14080)
    * added hotkey ctrl-j to show objectives (#7830)
    * fixed more problems with observers (also #14239)
-   * fixed scrollarea and textbox glitches, especially MP lobby (also #13011)
+   * fixed scrollarea and textbox glitches in MP lobby (#13011,#14124)
+   * menus now can acquire keyboard focus (#13118)
+   * info text (defense-%, #-turns) is no longer obscured by terrain (#13995)
+   * tips of the day now only change when playing a game (#14235)
+   * hotkey for taking a screenshot now works in editor also (#13841)
  * fixed AI units not getting rest-healing, causing replay errors
  * fixed configure options --with-icondir and --with-desktopdir (#14100)
  * changed Merman hoplite to bring it up to date with changes to steadfast
  * fixed Dark Adept female version glitches (#14073,#14122,#13986)
  * made checksums work on AMD64
  * revised network code, try to use non-blocking I/O if available
+ * new description= attribute of [attack], name="x" now implies
+   description=_"x" and icon="attacks/x.png" if not specified (#12788,#14113)
  * various bug fixes and code cleanups
 
 Version 0.9.5:
