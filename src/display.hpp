@@ -208,6 +208,9 @@ public:
 	//return with no effect.
 	void draw_footstep(const gamemap::location& loc, int xloc, int yloc);
 
+	//draws the movement info (turns available) for a given location
+	void draw_movement_info(const gamemap::location& loc, int xloc, int yloc);
+
 	//gets the underlying screen object.
 	CVideo& video() { return screen_; }
 

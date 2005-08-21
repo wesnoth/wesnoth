@@ -1550,7 +1550,6 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 				SDL_BlitSurface(overlay_surface,NULL,dst,&dstrect);
 			}
 		}
-		draw_footstep(loc,xpos,ypos);
 	} else {
 		//FIXME: shouldn't void.png and fog.png be in the program configuration?
 		surface surface(image::get_image("terrain/void.png"));
@@ -1564,10 +1563,12 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 		SDL_BlitSurface(surface,NULL,dst,&dstrect);
 	}
 
+	draw_footstep(loc,xpos,ypos);
 	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
 
-	if(!shrouded(x,y)) {
+	if(!is_shrouded) {
 		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
+		draw_movement_info(loc,xpos,ypos);
 	}
 
 	if(fogged(x,y) && shrouded(x,y) == false) {
@@ -1625,8 +1626,6 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 
 	if(i == route_.steps.begin() || i == route_.steps.end())
 		return;
-
-	const bool show_time = (i+1 == route_.steps.end());
 
 	const bool left_foot = is_even(i - route_.steps.begin());
 
@@ -1698,6 +1697,13 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	}
 
 	draw_unit(xloc,yloc,image,vflip,ftofxp(0.5));
+}
+
+void display::draw_movement_info(const gamemap::location& loc, int xloc, int yloc)
+{
+	std::vector<gamemap::location>::const_iterator i =
+	         std::find(route_.steps.begin(),route_.steps.end(),loc);
+	const bool show_time = (i+1 == route_.steps.end());
 
 	if(show_time == false) {
 		return;
@@ -1706,6 +1712,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	std::stringstream text;
 
 #ifndef USE_TINY_GUI
+	const unit_map::const_iterator un = units_.find(route_.steps.front());
 	if(un != units_.end() && zoom_ >= DefaultZoom) {
 		text << (100-un->second.defense_modifier(map_,map_.get_terrain(loc))) << "%";
 	}
