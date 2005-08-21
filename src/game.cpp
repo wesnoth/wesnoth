@@ -1637,6 +1637,9 @@ int play_game(int argc, char** argv)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
+	int ntip = -1;
+	config tips_of_day;
+
 	for(;;) {
 		//make sure the game config is always set to how it should be at the title screen
 		game.reset_game_cfg();
@@ -1662,12 +1665,9 @@ int play_game(int argc, char** argv)
 		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::TITLE_CONTINUE;
 
-		int ntip = -1;
-		config tips_of_day;
 		while(res == gui::TITLE_CONTINUE) {
 			res = gui::show_title(game.disp(),tips_of_day,&ntip);
 		}
-		tips_of_day.clear();
 
 		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
 		std::cerr << "title screen returned result\n";
@@ -1703,6 +1703,7 @@ int play_game(int argc, char** argv)
 		}
 
 		game.play_game(should_reload);
+		ntip = -1; // Change tip when a game is played
 	}
 
 	return 0;
