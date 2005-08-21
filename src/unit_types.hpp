@@ -79,7 +79,7 @@ public:
 	enum RANGE { SHORT_RANGE, LONG_RANGE };
 
 	attack_type(const config& cfg);
-	const std::string& name() const;
+	const t_string& name() const;
 	const std::string& type() const;
 	const std::string& special() const;
 	const std::string& icon() const;
@@ -102,7 +102,7 @@ public:
 private:
 	std::vector<unit_animation> animation_;
 	std::vector<unit_animation> direction_animation_[6];
-	std::string name_;
+	t_string description_;
 	std::string type_;
 	std::string special_;
 	std::string icon_;

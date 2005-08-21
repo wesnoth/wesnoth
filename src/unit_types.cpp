@@ -153,14 +153,18 @@ attack_type::attack_type(const config& cfg)
 		animation_.push_back(unit_animation(cfg));
 	}
 
-	name_ = cfg["name"];
+	std::string name = cfg["name"];
+	description_ = cfg["description"];
+	if (description_.empty())
+		description_ = egettext(name.c_str());
+
 	type_ = cfg["type"];
 	special_ = cfg["special"];
 	backstab_ = special_ == "backstab";
 	slow_ = special_ == "slow";
 	icon_ = cfg["icon"];
 	if(icon_.empty())
-		icon_ = "attacks/" + name_ + ".png";
+		icon_ = "attacks/" + name + ".png";
 
 	range_ = cfg["range"] == "long" ? LONG_RANGE : SHORT_RANGE;
 	damage_ = atol(cfg["damage"].c_str());
@@ -174,9 +178,9 @@ attack_type::attack_type(const config& cfg)
 	  defense_weight_ = 1.0;
 }
 
-const std::string& attack_type::name() const
+const t_string& attack_type::name() const
 {
-	return name_;
+	return description_;
 }
 
 const std::string& attack_type::type() const
@@ -272,7 +276,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 	if(!matches_filter(cfg))
 		return false;
 
-	const std::string& set_name = cfg["set_name"];
+	const t_string& set_name = cfg["set_name"];
 	const std::string& set_type = cfg["set_type"];
 	const std::string& set_special = cfg["set_special"];
 	const std::string& increase_damage = cfg["increase_damage"];
@@ -281,7 +285,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 	std::stringstream desc;
 
 	if(set_name.empty() == false) {
-		name_ = set_name;
+		description_ = set_name;
 	}
 
 	if(set_type.empty() == false) {

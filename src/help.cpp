@@ -1126,7 +1126,7 @@ public:
 			for(std::vector<attack_type>::const_iterator attack_it = attacks.begin(),
 				 attack_end = attacks.end();
 				 attack_it != attack_end; ++attack_it) {
-				std::string lang_weapon = gettext(attack_it->name().c_str());
+				std::string lang_weapon = attack_it->name();
 				std::string lang_type = gettext(attack_it->type().c_str());
 				std::vector<item> row;
 				std::stringstream attack_ss;

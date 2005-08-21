@@ -370,7 +370,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	res.attacker_slows = res.attacker_special == slow_string;
 
 	if (strings) {
-		strings->attack_name = egettext(attack.name().c_str());
+		strings->attack_name = attack.name();
 		strings->attack_type = egettext(attack.type().c_str());
 		strings->attack_special = egettext(res.attacker_special.c_str());
 		strings->attack_icon = attack.icon();
@@ -492,7 +492,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		res.ndefends = defend.num_attacks();
 
 		if (strings) {
-			strings->defend_name = egettext(defend.name().c_str());
+			strings->defend_name = defend.name();
 			strings->defend_type = egettext(defend.type().c_str());
 			strings->defend_special = egettext(res.defender_special.c_str());
 			strings->defend_icon = defend.icon();
