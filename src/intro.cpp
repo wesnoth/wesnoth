@@ -127,8 +127,15 @@ bool show_intro_part(display &disp, const config& part,
 		textx = 10;
 		int xbuttons = video.getx() - 50;
 #else
-		textx = dstrect.x;
-		int xbuttons = dstrect.x+dstrect.w-40;
+		int xbuttons;
+
+		if (background->w > 400) {
+			textx = dstrect.x;
+			xbuttons = dstrect.x+dstrect.w-40;
+		} else {
+			textx = 200;
+			xbuttons = video.getx() - 200 - 40;
+		}
 #endif
 		texty = dstrect.y + dstrect.h + 10;
 
