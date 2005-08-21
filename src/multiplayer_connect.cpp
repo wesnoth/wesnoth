@@ -881,7 +881,10 @@ void connect::load_game()
 		}
 
 		std::string error_log;
-		::load_game(game_data_, game, state_, &error_log);
+		{
+			cursor::setter cur(cursor::WAIT);
+			::load_game(game_data_, game, state_, &error_log);
+		}
 		if(!error_log.empty()) {
 			gui::show_error_message(disp(),
 					_("The file you have tried to load is corrupt: '") +

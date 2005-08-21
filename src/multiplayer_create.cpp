@@ -287,6 +287,7 @@ void create::process_event()
 		const cursor::setter cursor_setter(cursor::WAIT);
 
 		//generate the random map
+		cursor::setter cur(cursor::WAIT);
 		parameters_.scenario_data = generator_->create_scenario(std::vector<std::string>());
 		map_changed = true;
 
