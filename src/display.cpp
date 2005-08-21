@@ -938,7 +938,7 @@ void display::draw_report(reports::TYPE report_num)
 			std::string str = item->prefix();
 			if(str.empty() == false) {
 				report.insert(report.begin(), reports::element(str,"",report.begin()->tooltip));
-				}
+			}
 			str = item->postfix();
 			if(str.empty() == false) {
 				report.push_back(reports::element(str,"",report.end()->tooltip));

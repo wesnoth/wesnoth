@@ -415,15 +415,15 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		}
 	}
 	case REPORT_CLOCK: {
-	  time_t t=time(NULL);
-	  struct tm *lt=localtime(&t);
-	  char temp[10];
-	  size_t s=strftime(temp,10,preferences::clock_format().c_str(),lt);
-	  if(s>0){
-	    return report(temp);
-	  }else{
-	    return report();
-	  }
+		time_t t = time(NULL);
+		struct tm *lt=localtime(&t);
+		char temp[10];
+		size_t s = strftime(temp,10,preferences::clock_format().c_str(),lt);
+		if(s>0) {
+			return report(temp);
+		} else {
+			return report();
+		}
 	}
 
 	default:
