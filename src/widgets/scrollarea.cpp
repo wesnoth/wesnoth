@@ -143,11 +143,14 @@ void scrollarea::handle_event(const SDL_Event& event)
 		return;
 
 	SDL_MouseButtonEvent const &e = event.button;
-	if (point_in_rect(e.x, e.y, inner_location()))
-		if (e.button == SDL_BUTTON_WHEELDOWN)
-			scrollbar_.move_position(scrollbar_.scroll_rate_);
-		else if (e.button == SDL_BUTTON_WHEELUP)
-			scrollbar_.move_position(-scrollbar_.scroll_rate_);
+	if (point_in_rect(e.x, e.y, inner_location())) {
+		if (e.button == SDL_BUTTON_WHEELDOWN) {
+			scrollbar_.scroll_down();
+		} else if (e.button == SDL_BUTTON_WHEELUP) {
+			scrollbar_.scroll_up();
+		}
+	}
 }
 
 }
+

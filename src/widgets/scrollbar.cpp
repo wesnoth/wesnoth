@@ -150,12 +150,23 @@ bool scrollbar::is_valid_height(int height) const
 	}
 }
 
+void scrollbar::scroll_down()
+{
+	move_position(scroll_rate_);
+}
+
+void scrollbar::scroll_up()
+{
+	move_position(-scroll_rate_);
+}
+
 void scrollbar::process_event()
 {
 	if (uparrow_.pressed())
-		move_position(-scroll_rate_);
+		scroll_up();
+
 	if (downarrow_.pressed())
-		move_position(scroll_rate_);
+		scroll_down();
 }
 
 SDL_Rect scrollbar::groove_area() const

@@ -63,6 +63,12 @@ public:
 	/// Return true if the scrollbar has a valid size.
 	bool is_valid_height(int height) const;
 
+	/// Scrolls down one step
+	void scroll_down();
+
+	/// Scrolls up one step
+	void scroll_up();
+
 protected:
 	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
@@ -83,7 +89,6 @@ private:
 	// Relative data
 	int grip_position_, old_position_, grip_height_, full_height_, scroll_rate_;
 
-	friend class scrollarea;
 };
 
 }
