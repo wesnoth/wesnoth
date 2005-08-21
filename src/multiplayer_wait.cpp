@@ -280,6 +280,7 @@ void wait::layout_children(const SDL_Rect& rect)
 	game_menu_.set_location(ca.x, ca.y + title().height());
 	game_menu_.set_measurements(ca.w, y - ca.y - title().height()
 			- gui::ButtonVPadding);
+	game_menu_.set_max_height(y - ca.y - title().height() - gui::ButtonVPadding);
 	cancel_button_.set_location(ca.x + ca.w - cancel_button_.width(), y);
 	start_label_.set_location(ca.x, y + 4);
 }
