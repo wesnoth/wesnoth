@@ -524,10 +524,13 @@ void menu::handle_event(const SDL_Event& event)
 {
 	scrollarea::handle_event(event);
 	if(event.type == SDL_KEYDOWN) {
-		key_press(event.key.keysym.sym);
+		// Only pass key events if we have the focus
+		if (focus())
+			key_press(event.key.keysym.sym);
 	} else if(event.type == SDL_MOUSEBUTTONDOWN &&
 	          event.button.button == SDL_BUTTON_LEFT ||
 		  event.type == DOUBLE_CLICK_EVENT) {
+
 		int x = 0;
 		int y = 0;
 		if(event.type == SDL_MOUSEBUTTONDOWN) {
@@ -540,6 +543,7 @@ void menu::handle_event(const SDL_Event& event)
 
 		const int item = hit(x,y);
 		if(item != -1) {
+			set_focus(true);
 			move_selection(item);
 
 			if(click_selects_) {

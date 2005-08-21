@@ -669,9 +669,7 @@ int show_dialog(display& disp, surface image,
 
 	CKey key;
 
-	bool left_button = true, right_button = true, key_down = true,
-	     up_arrow = false, down_arrow = false,
-	     page_up = false, page_down = false;
+	bool left_button = true, right_button = true, key_down = true;
 
 	disp.invalidate_all();
 
@@ -692,12 +690,6 @@ int show_dialog(display& disp, surface image,
 		const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
 		const bool new_key_down = key[SDLK_SPACE] || key[SDLK_RETURN] ||
 		                          key[SDLK_ESCAPE];
-
-		const bool new_up_arrow = key[SDLK_UP] != 0;
-		const bool new_down_arrow = key[SDLK_DOWN] != 0;
-
-		const bool new_page_up = key[SDLK_PAGEUP] != 0;
-		const bool new_page_down = key[SDLK_PAGEDOWN] != 0;
 
 		if((!key_down && key[SDLK_RETURN] || menu_.double_clicked()) &&
 		   (type == YES_NO || type == OK_CANCEL || type == OK_ONLY || type == CLOSE_ONLY)) {
@@ -754,11 +746,6 @@ int show_dialog(display& disp, surface image,
 				return res;
 			}
 		}
-
-		up_arrow = new_up_arrow;
-		down_arrow = new_down_arrow;
-		page_up = new_page_up;
-		page_down = new_page_down;
 
 		events::raise_process_event();
 		events::raise_draw_event();

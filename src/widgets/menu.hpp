@@ -123,6 +123,8 @@ protected:
 	void handle_event(const SDL_Event& event);
 	void set_inner_location(const SDL_Rect& rect);
 
+	bool requires_event_focus() const { return true; };
+
 private:
 	size_t max_items_onscreen() const;
 
