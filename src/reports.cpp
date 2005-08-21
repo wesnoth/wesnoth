@@ -203,12 +203,11 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const std::vector<attack_type>& attacks = u->second.attacks();
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
-			const std::string& lang_weapon = gettext(at_it->name().c_str());
 			const std::string& lang_type = gettext(at_it->type().c_str());
 
-			str << lang_weapon << " (" << lang_type << ")\n";
+			str << at_it->name() << " (" << lang_type << ")\n";
 
-			tooltip << lang_weapon << " (" << lang_type << ")\n";
+			tooltip << at_it->name() << " (" << lang_type << ")\n";
 
 			//find all the unit types on the map, and show this weapon's bonus against all the different units
 			std::set<std::string> seen_units;

@@ -751,8 +751,7 @@ void unit_preview_pane::draw_contents()
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
 
-			details << "\n"
-			        << gettext(at_it->name().c_str())
+			details << "\n" << at_it->name()
 			        << " (" << gettext(at_it->type().c_str()) << ")\n";
 			if (!at_it->special().empty())
 				details << gettext(at_it->special().c_str());
