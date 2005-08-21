@@ -203,6 +203,8 @@ void wait::join_game(bool observe)
 		size_t faction_choice = 0;
 
 		if(allow_changes) {
+			events::event_context context;
+
 			const config* era = level_.child("era");
 			if(era == NULL)
 				throw network::error(_("Era not available"));
