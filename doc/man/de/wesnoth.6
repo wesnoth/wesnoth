@@ -28,17 +28,17 @@ Battle for
 .B Wesnoth
 ist ein rundenbasiertes Strategiespiel in einem Fantasy Szeanrio.
 
-Schlüpft in die Rolle eines Herrführers und führt Eure Armee zum Sieg. Wählt aus verschiedenen Rassen, mit unterschiedlichen Fertigkeiten, Waffen und Sprüchen, aus und zerschmettert Euren Gegner.
+SchlÃ¼pft in die Rolle eines HerrfÃ¼hrers und fÃ¼hrt Eure Armee zum Sieg. WÃ¤hlt aus verschiedenen Rassen, mit unterschiedlichen Fertigkeiten, Waffen und SprÃ¼chen aus und zerschmettert Euren Gegner.
 
 .SH KOMMANDOZEILENOPTIONEN
 
 .TP
 .B --bpp
-Gibt einem die Möglichkeit die Farbtiefe zu bestimmen, in der das Spiel gestartet wird. Bsp: --bpp32 
+Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Bsp: --bpp32
 
 .TP
 .B --compress \ <entpackte_datei> \ <komprimierte_datei>
-Wandelt eine normale WML-Textdatei (entpackte_datei) um in einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei).
+Wandelt eine normale WML-Textdatei (entpackte_datei) in einen als WML-BinÃ¤rdatei komprimierten Spielstand (komprimierte_datei) um.
 
 .TP
 .BR -d , \ --debug
@@ -46,7 +46,7 @@ Zeigt Eintwicklerinformationen im Spiel an.
 
 .TP
 .B --decompress \ <komprimierte_datei> \ <entpackte_datei>
-Wandelt einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei) um in eine normale WML-Textdatei (entpackte_datei).
+Wandelt einen als WML-BinÃ¤rdatei komprimierten Spielstand (komprimierte_datei) in eine normale WML-Textdatei (entpackte_datei) um.
 
 .TP
 .BR -f , \ --fullscreen
@@ -54,28 +54,28 @@ Startet das Programm im Vollbildmodus.
 
 .TP
 .B --fps
-Hiermit kann man sich die Anzahl der Bilder pro Sekunde anzeigen lassen.
+Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
 
 .TP
 .BR -h , \ --help
-Gibt die möglichen Kommandozeilenoptionen aus.
+Gibt die mÃ¶glichen Kommandozeilenoptionen aus.
 
 .TP
 .BR --log-error="domain1,domain2,..." , \ --log-warning=... , \ --log-info=...
-Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche Meldungen auszugeben.
+Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sÃ¤mtliche Meldungen auszugeben.
 .B --log-info
 zeigt alle Meldungen,
 .B --log-warning
-zeigt nur Warnungen und Fehler, und
+zeigt nur Warnungen und Fehler und
 .B --log-error
 nur Fehler.
 
 
 .TP
-.Bb --multiplayer
-Starte das Spiel im Mehrerspieler-Modus. Es gibt noch zusätzliche Optionen die zusammen mit 
 .B --multiplayer
- verwendet werden können. Diese werden weiter unten näher erklärt.
+Starte das Spiel im Mehrerspieler-Modus. Es gibt noch zusÃ¤tzliche Optionen die zusammen mit
+.B --multiplayer
+ verwendet werden kÃ¶nnen. Diese werden weiter unten nÃ¤her erklÃ¤rt.
 
 .TP
 .BR --nocache
@@ -91,7 +91,7 @@ Zeigt an, wo sich der Ordner mit den Spieldateien befindet .
 
 .TP
 .BR -r , \ --resolution
-Ermöglich es, die Auflösung zu bestimmen, in der das Spiel gestartet wird. Bsp: -r 800x600
+ErmÃ¶glicht es, die AuflÃ¶sung zu bestimmen, in der das Spiel gestartet wird. Bsp: -r 800x600
 
 .TP
 .BR -t , \ --test
@@ -105,46 +105,46 @@ Zeigt die Versionsnummer an und beendet das Programm.
 .BR -w , \ --windowed
 Startet das Programm im Fenstermodus.
 
-.SH Zusätzliche Optionen für --multiplayer
+.SH ZusÃ¤tzliche Optionen fÃ¼r --multiplayer
 
-Die seitenspezifischen Einstellungen sind mit <NUMMER> markiert. <NUMMER> muss dabei durch die Nummer der jeweiligen Seite ersetzt werden. Meistens ist diese Nummer 1 oder 2, doch hängt es letztendlich von der Anzahl der möglichen Spieler in dem gewählten Scenario ab.
+Die seitenspezifischen Einstellungen sind mit <NUMMER> markiert. <NUMMER> muss dabei durch die Nummer der jeweiligen Seite ersetzt werden. Meistens ist diese Nummer 1 oder 2, doch hÃ¤ngt es letztendlich von der Anzahl der mÃ¶glichen Spieler in dem gewÃ¤hlten Scenario ab.
 
 .TP
 .BR --era=<WERT>
-Benutze diese Option um das Zeitalter zu bestimmen in dem das Spiel gestartet wird. Das Zeitalter wird per "id" bestimmt. Eine genaue Beschreibung der Rassen und Zeitalter ist in der Datei data/multiplayer.cfg zu finden.
+Bestimmt, welche Ã„ra fÃ¼r diese Partie genutzt werden soll. Die Ã„ra wird per "id" bestimmt. Eine genaue Beschreibung der Rassen und Epochen ist in der Datei data/multiplayer.cfg zu finden.
 
 .TP
 .BR --nogui
-Starte das Spiel ohne grafische Oberfläche. 
+Das Spiel startet ohne grafische OberflÃ¤che.
 
 .TP
 .BR --scenario=<WERT>
-Ermöglicht es, sich ein Szenario auszusuchen. Standard ist "multiplayer_test".
+Bestimmt das Szenario, dass geladen werden soll. Standard ist "multiplayer_test".
 
 .TP
 .BR --algorithm<NUMMER>=<WERT>
-Ermöglich es, einen anderen als den Standardalgorithmus für die KI der gewählten Seite festzulegen. Mögliche Werte: "idle_ai" und "sample_ai". 
+Legt einen anderen als den Standardalgorithmus fÃ¼r die KI der gewÃ¤hlten Seite fest. MÃ¶gliche Werte sind "idle_ai" oder "sample_ai".
 
 .TP
 .BR --controller<NUMMER>=<WERT>
-Bestimmt wer die gewählte Seite kontrolliert. Mögliche Werte:"human" für einen Menschen und "ai" für einen KI-Spieler.
+Bestimmt, wer die gewÃ¤hlte Seite kontrolliert. MÃ¶gliche Werte sind "human" fÃ¼r einen Menschen oder "ai" fÃ¼r einen KI-Spieler.
 
 .TP
 .BR --parm<NUMMER>=<NAME>:<WERT>
-Gibt zusätzliche Parameter für diese Seite an. Die möglichen Parameter hängen davon ab, welche Optionen man für
-.B --controller 
+Gibt zusÃ¤tzliche Parameter fr diese Seite an. Die mÃ¶glichen Parameter hÃ¤ngen davon ab, welche Optionen fÃ¼r
+.B --controller
 und
-.B --algorithm 
-verwendet. Sollte nur für Leuten nützlich sein, die ihre eigene "KI" entwickeln wollen.
+.B --algorithm
+verwendet werden. Diese Einstellung ist nur interessant, wenn Sie Ihre eigene "KI" entwickeln wollen.
 
 .TP
 .BR --side<NUMMER>=<WERT>
-Dies bestimmt die Rasse für die festegelegte Seite abhängig vom gewählten Zeitalter. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung der Rassen und Zeitalter ist in der Datei data/multiplayer.cfg zu finden.
+Bestimmt die Rasse fÃ¼r die festegelegte Seite in AbhÃ¤ngigkeit von der gewÃ¤hlten Ã„ra. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung der Rassen und Epochen ist in der Datei data/multiplayer.cfg zu finden.
 
 .SH AUTOR
 Geschrieben von David White <davidnwhite@comcast.net>.
 Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net> und ott <ott@gaon.net>.
-Übersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de> und Nils Kneuper <crazy-ivanovic@gmx.net>.
+Ãœbersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de> und Nils Kneuper <crazy-ivanovic@gmx.net>.
 Diese Beschreibung stammt im Original von Cyril Bouthors <cyril@bouthors.org>.
 .br
 Besucht auch die offizielle Internetseite: http://www.wesnoth.org/
@@ -152,9 +152,9 @@ Besucht auch die offizielle Internetseite: http://www.wesnoth.org/
 .SH COPYRIGHT
 Copyright \(co 2003 David White <davidnwhite@comcast.net>
 .br
-Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 2 der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
 .br
-Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
+Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
 .br
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
 
