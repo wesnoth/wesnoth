@@ -153,10 +153,10 @@ attack_type::attack_type(const config& cfg)
 		animation_.push_back(unit_animation(cfg));
 	}
 
-	std::string name = cfg["name"];
+	id_ = cfg["name"];
 	description_ = cfg["description"];
 	if (description_.empty())
-		description_ = egettext(name.c_str());
+		description_ = egettext(id_.c_str());
 
 	type_ = cfg["type"];
 	special_ = cfg["special"];
@@ -164,7 +164,7 @@ attack_type::attack_type(const config& cfg)
 	slow_ = special_ == "slow";
 	icon_ = cfg["icon"];
 	if(icon_.empty())
-		icon_ = "attacks/" + name + ".png";
+		icon_ = "attacks/" + id_ + ".png";
 
 	range_ = cfg["range"] == "long" ? LONG_RANGE : SHORT_RANGE;
 	damage_ = atol(cfg["damage"].c_str());
@@ -181,6 +181,11 @@ attack_type::attack_type(const config& cfg)
 const t_string& attack_type::name() const
 {
 	return description_;
+}
+
+const std::string& attack_type::id() const
+{
+	return id_;
 }
 
 const std::string& attack_type::type() const
@@ -286,6 +291,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 
 	if(set_name.empty() == false) {
 		description_ = set_name;
+		id_ = set_name;
 	}
 
 	if(set_type.empty() == false) {

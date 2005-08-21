@@ -80,6 +80,7 @@ public:
 
 	attack_type(const config& cfg);
 	const t_string& name() const;
+	const std::string& id() const;
 	const std::string& type() const;
 	const std::string& special() const;
 	const std::string& icon() const;
@@ -103,6 +104,7 @@ private:
 	std::vector<unit_animation> animation_;
 	std::vector<unit_animation> direction_animation_[6];
 	t_string description_;
+	std::string id_;
 	std::string type_;
 	std::string special_;
 	std::string icon_;

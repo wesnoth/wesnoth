@@ -580,7 +580,7 @@ bool unit::matches_filter(const config& cfg) const
 		const std::vector<attack_type>& attacks = this->attacks();
 		for(std::vector<attack_type>::const_iterator i = attacks.begin();
 		    i != attacks.end(); ++i) {
-			if(i->name() == weapon) {
+			if(i->id() == weapon) {
 				has_weapon = true;
 			}
 		}
