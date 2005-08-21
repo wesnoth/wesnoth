@@ -231,6 +231,7 @@ void textbox::set_location(const SDL_Rect& rect)
 	text_pos_ = 0;
 
 	scrollarea::set_location(rect);
+	set_shown_size(location().h);
 }
 
 void textbox::scroll(int pos)

@@ -55,6 +55,8 @@ private:
 	scrollbar scrollbar_;
 	int old_position_;
 	bool recursive_, shown_scrollbar_;
+	unsigned shown_size_;
+	unsigned full_size_;
 
 	void test_scrollbar();
 };

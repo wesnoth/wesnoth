@@ -22,13 +22,15 @@ namespace gui {
 
 scrollarea::scrollarea(CVideo &video)
 	: widget(video), scrollbar_(video),
-	  old_position_(0), recursive_(false), shown_scrollbar_(false)
+	  old_position_(0), recursive_(false), shown_scrollbar_(false),
+	  shown_size_(0), full_size_(0)
 {
+	scrollbar_.hide(true);
 }
 
 bool scrollarea::has_scrollbar() const
 {
-	return scrollbar_.grip_height_ < scrollbar_.full_height_ && scrollbar_.is_valid_height(location().h);
+	return shown_size_ < full_size_ && scrollbar_.is_valid_height(location().h);
 }
 
 void scrollarea::update_location(SDL_Rect const &rect)
@@ -42,7 +44,8 @@ void scrollarea::update_location(SDL_Rect const &rect)
 		scrollbar_.set_location(r);
 		r.x -= w;
 		r.w = w;
-	}
+	} 
+
 	if (!hidden())
 		scrollbar_.hide(!shown_scrollbar_);
 	set_inner_location(r);
@@ -64,7 +67,7 @@ void scrollarea::test_scrollbar()
 void scrollarea::hide(bool value)
 {
 	widget::hide(value);
-	if (has_scrollbar())
+	if (shown_scrollbar_)
 		scrollbar_.hide(value);
 }
 
@@ -96,12 +99,14 @@ void scrollarea::move_position(int dep)
 void scrollarea::set_shown_size(unsigned h)
 {
 	scrollbar_.set_shown_size(h);
+	shown_size_ = h;
 	test_scrollbar();
 }
 
 void scrollarea::set_full_size(unsigned h)
 {
 	scrollbar_.set_full_size(h);
+	full_size_ = h;
 	test_scrollbar();
 }
 
@@ -122,7 +127,7 @@ void scrollarea::process_event()
 SDL_Rect scrollarea::inner_location() const
 {
 	SDL_Rect r = location();
-	if (has_scrollbar())
+	if (shown_scrollbar_)
 		r.w -= scrollbar_.width();
 	return r;
 }

@@ -51,10 +51,11 @@ void widget::bg_cancel()
 
 void widget::set_location(SDL_Rect const &rect)
 {
-	if (rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h)
+	if(rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h)
 		return;
-	if (state_ == UNINIT && rect.x != -1234 && rect.y != -1234)
+	if(state_ == UNINIT && rect.x != -1234 && rect.y != -1234)
 		state_ = DRAWN;
+
 	bg_restore();
 	bg_cancel();
 	rect_ = rect;

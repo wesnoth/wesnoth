@@ -62,7 +62,9 @@ void scrollbar::update_location(SDL_Rect const &rect)
 	SDL_Rect r = rect;
 	r.y += uh;
 	r.h -= uh + dh;
-	bg_register(r);
+
+	widget::update_location(r);
+	//bg_register(r);
 }
 
 void scrollbar::hide(bool value)
