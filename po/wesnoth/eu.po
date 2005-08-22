@@ -9,15 +9,18 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth HEAD\n"
+"Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 13:32+0200\n"
-"PO-Revision-Date: 2005-08-07 22:49+0200\n"
+"PO-Revision-Date: 2005-08-22 17:42+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
-"Language-Team: Basque\n"
+"Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Basque\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +{HP_ADVANCE}"
@@ -25,10 +28,9 @@ msgstr ""
 
 #: data/amla.cfg:21
 msgid "Full Heal"
-msgstr ""
+msgstr "Bizitza osoa"
 
 #: data/fonts.cfg:6
-#, fuzzy
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
@@ -69,9 +71,8 @@ msgid "Terrains"
 msgstr "Lur motak"
 
 #: data/help.cfg:54 data/help.cfg:60 data/help.cfg:244
-#, fuzzy
 msgid "Overview"
-msgstr "Gainidatzi?"
+msgstr "Sarrera"
 
 #: data/help.cfg:55
 msgid ""
@@ -129,9 +130,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:79
-#, fuzzy
 msgid "About the Game"
-msgstr "Jokutik irten"
+msgstr "Jokuari buruz"
 
 #: data/help.cfg:80
 msgid ""
@@ -219,9 +219,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:103
-#, fuzzy
 msgid "Orbs"
-msgstr "Orkoak"
+msgstr "Bolatxo"
 
 #: data/help.cfg:104
 msgid ""
@@ -251,7 +250,7 @@ msgstr ""
 
 #: data/help.cfg:114
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "Minpuntuak eta Esperientzia"
 
 #: data/help.cfg:115
 msgid ""
@@ -346,7 +345,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -576,7 +574,6 @@ msgid "Healing"
 msgstr "Sendaketak"
 
 #: data/help.cfg:200
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -584,8 +581,11 @@ msgid ""
 "not. Wesnoth offers several other ways for your units to heal, all of which "
 "take place at the beginning of your turn, before you take action."
 msgstr ""
-"Unitateek borrokan zauriak izatea ekidin ezina da. Wesnoth-ek zure txandaren "
-"haseran bide ezberdinak ematen dizkizu unitateak sendatzeko."
+"Unitateek borrokan zauriak izatea ekidin ezina da. Unitatete batek "
+"<ref>dst=experience_and_advancement text=aurreratzerakoan</ref>, guztiz "
+"sendatzen da. Hau gerta daiteke borroka bat bukatzerakoan zure txanda izan "
+"ala ez. Wesnoth-ek bide ezberdinak ematen dizkizu unitateak sendatzeko zure "
+"txandaren hasieran, ekintzarik egin baino lehen."
 
 #: data/help.cfg:202
 msgid ""
@@ -735,13 +735,12 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:232
-#, fuzzy
 msgid "Contributors"
-msgstr "+Laguntzaileak"
+msgstr "Laguntzaileak"
 
 #: data/help.cfg:238
 msgid "License"
-msgstr ""
+msgstr "Lizentzia"
 
 #: data/help.cfg:245
 msgid ""
@@ -771,9 +770,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:254
-#, fuzzy
 msgid "Intelligent"
-msgstr "adimendun"
+msgstr "Adimendun"
 
 #: data/help.cfg:255
 msgid "Intelligent units require 20% less experience than usual to advance."
@@ -791,9 +789,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:262
-#, fuzzy
 msgid "Quick"
-msgstr "azkarra"
+msgstr "Azkarra"
 
 #: data/help.cfg:263
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
@@ -812,9 +809,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:270
-#, fuzzy
 msgid "Resilient"
-msgstr "erresistente"
+msgstr "Erresistente"
 
 #: data/help.cfg:271
 msgid "Resilient units have 7 more HP than usual."
@@ -832,9 +828,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:278
-#, fuzzy
 msgid "Strong"
-msgstr "indartsua"
+msgstr "Indartsua"
 
 #: data/help.cfg:279
 msgid ""
@@ -853,9 +848,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:286
-#, fuzzy
 msgid "Loyal"
-msgstr "leial"
+msgstr "Leiala"
 
 #: data/help.cfg:287
 msgid ""
@@ -896,9 +890,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:302
-#, fuzzy
 msgid "Dextrous"
-msgstr "trebea"
+msgstr "Trebea"
 
 #: data/help.cfg:303
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
@@ -1095,9 +1088,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:428 data/terrain.cfg:109
-#, fuzzy
 msgid "Desert"
-msgstr "Basamortu Mendilerroa"
+msgstr "Basamortua"
 
 #: data/help.cfg:431
 msgid ""
@@ -1178,7 +1170,7 @@ msgstr ""
 
 #: data/help.cfg:479 data/terrain.cfg:462
 msgid "River Ford"
-msgstr ""
+msgstr "Ford Erreka"
 
 #: data/help.cfg:481
 msgid ""
@@ -1211,9 +1203,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:495 data/terrain.cfg:349
-#, fuzzy
 msgid "Cave Wall"
-msgstr "Leize orma"
+msgstr "Leize horma"
 
 #: data/help.cfg:497
 msgid ""
@@ -1372,7 +1363,7 @@ msgstr "suzko ezpata"
 
 #: data/items.cfg:755
 msgid "Scepter of Fire"
-msgstr ""
+msgstr "Suaren Zetroa"
 
 #: data/items.cfg:758
 msgid ""
@@ -1422,7 +1413,7 @@ msgstr "Knalgan-en aliantza"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
 msgid "Drakes"
-msgstr ""
+msgstr "Drakuak"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -1484,9 +1475,8 @@ msgstr ""
 "gomendatzen da."
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
-#, fuzzy
 msgid "2p - Charge"
-msgstr "Kargatu"
+msgstr "2j - Kargatu"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
@@ -1542,8 +1532,9 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
+#, fuzzy
 msgid "2p - Sablestone Delta"
-msgstr ""
+msgstr "Delta funtzioa urratsez urrats"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
 #, fuzzy
@@ -1659,7 +1650,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
-msgstr ""
+msgstr "3j - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
 msgid ""
@@ -1681,9 +1672,8 @@ msgstr ""
 "gomendatzen da."
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:7
-#, fuzzy
 msgid "4p - An Island"
-msgstr "Irla bat"
+msgstr "4j - Irla bat"
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:10
 msgid ""
@@ -1732,9 +1722,8 @@ msgstr ""
 "gomendatzen da."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
-#, fuzzy
 msgid "4p - King of the Hill"
-msgstr "Mendilerroaren Erregea"
+msgstr "4j - Mendilerroaren Errege"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid ""
@@ -1758,16 +1747,15 @@ msgstr ""
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
 #, fuzzy
 msgid "4p - Siege Castles"
-msgstr "Gazteluak setiatu"
+msgstr "Gazteluen arteko errepideak"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
 msgid "Take control of this huge river delta."
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
-#, fuzzy
 msgid "4p - The Valley of Death"
-msgstr "Heriotzaren Harana"
+msgstr "4j - Heriotzaren Harana"
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:5
 msgid "Can you defeat all enemies and declare victory in this desolate valley?"
@@ -1785,9 +1773,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
-#, fuzzy
 msgid "5p - Forest of Fear"
-msgstr "Beldurraren Basoa"
+msgstr "5p - Beldurraren Basoa"
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
@@ -1813,9 +1800,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
-#, fuzzy
 msgid "7p - Battle World"
-msgstr "Mundu borroka"
+msgstr "7j - Mundu Borroka"
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:9
 msgid ""
@@ -1870,9 +1856,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
-#, fuzzy
 msgid "2p - Across The River"
-msgstr "Ibaian Zehar"
+msgstr "2j - Ibaian Zehar"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
 msgid ""
@@ -1946,7 +1931,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "Zure Elfo Borrokalaria Merle-ren ondora mugitu"
+msgstr "Zure elfo borrokalaria Merle-ren ondora mugitu"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:147
 msgid ""
@@ -2053,7 +2038,7 @@ msgstr "Bai"
 #: data/scenarios/tutorial/Basic_Training.cfg:304
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
 msgid "I'm done reviewing skills!"
-msgstr ""
+msgstr "Trebetasunen berrikustea amaitu dut"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:324
 msgid ""
@@ -2200,7 +2185,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:45
 msgid "Current objective:"
-msgstr ""
+msgstr "Uneko helburua:"
 
 #: data/scenarios/tutorial/utils.cfg:55
 msgid "Death of Delfador"
@@ -2297,7 +2282,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:78
 msgid "How far can my Elvish Fighter move?"
-msgstr "Noraino mugi daiteke nire Elfo Borrokalaria?"
+msgstr "Noraino mugi daiteke nire elfo borrokalaria?"
 
 #: data/scenarios/tutorial/utils.cfg:78
 msgid ""
@@ -2806,9 +2791,8 @@ msgid "Encampment"
 msgstr "Kanpamentua"
 
 #: data/terrain.cfg:393
-#, fuzzy
 msgid "Dwarven Castle"
-msgstr "Nano Gaztelua"
+msgstr "Nano gaztelua"
 
 #: data/terrain.cfg:403
 msgid "Keep"
@@ -2870,11 +2854,11 @@ msgstr "irabaziak"
 
 #: data/themes/default.cfg:358
 msgid "statuspanel^level"
-msgstr ""
+msgstr "maila"
 
 #: data/themes/default.cfg:389
 msgid "statuspanel^movement"
-msgstr ""
+msgstr "mugimendua"
 
 #: data/themes/default.cfg:513
 msgid "Act."
@@ -2882,7 +2866,7 @@ msgstr ""
 
 #: data/themes/default.cfg:546
 msgid "short end-turn^End"
-msgstr ""
+msgstr "Bukatu"
 
 #: data/tips.cfg:1
 msgid ""
@@ -3425,8 +3409,9 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:132
+#, fuzzy
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "$name|portua,$name|portua"
 
 #: data/translations/english.cfg:133
 msgid "$name's Highway,$name's Pass,Path of $name"
@@ -3461,8 +3446,9 @@ msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
 #: data/translations/english.cfg:141
+#, fuzzy
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "'Izena' eremua beharrezkoa da."
 
 #: data/translations/english.cfg:142
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
@@ -3479,7 +3465,7 @@ msgstr ""
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
-msgstr ""
+msgstr "Hilotz zaharra"
 
 #: data/units/Ancient_Lich.cfg:22
 msgid ""
@@ -3652,7 +3638,7 @@ msgstr "kolpea"
 
 #: data/units/Arch_Mage.cfg:3
 msgid "Arch Mage"
-msgstr ""
+msgstr "Mago handia"
 
 #: data/units/Arch_Mage.cfg:24 data/units/Arch_Mage.cfg:134
 msgid ""
@@ -3720,7 +3706,7 @@ msgstr "su"
 
 #: data/units/Arch_Mage.cfg:113
 msgid "female^Arch Mage"
-msgstr ""
+msgstr "Mago handia"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
@@ -3849,7 +3835,7 @@ msgstr "Hiltzailea"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
-msgstr "Bidelapur"
+msgstr "Mandila"
 
 #: data/units/Bandit.cfg:18
 msgid ""
@@ -3870,9 +3856,8 @@ msgid "mace"
 msgstr "matrailu"
 
 #: data/units/Battle_Princess.cfg:3
-#, fuzzy
 msgid "female^Battle Princess"
-msgstr "Printzesa"
+msgstr "Pritzesa borrokalaria"
 
 #: data/units/Battle_Princess.cfg:19 data/units/Battle_Princess.cfg:70
 msgid "leadership,skirmisher"
@@ -3934,7 +3919,7 @@ msgstr "Printzesa"
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:116
 #: data/units/Princess.cfg:77
 msgid "scepter of fire"
-msgstr ""
+msgstr "suaren zetroa"
 
 #: data/units/Blood_Bat.cfg:3
 msgid "Blood Bat"
@@ -4057,7 +4042,7 @@ msgstr ""
 
 #: data/units/Bowman.cfg:3
 msgid "Bowman"
-msgstr "Bailesta Gizona"
+msgstr "Arkularia"
 
 #: data/units/Bowman.cfg:18
 msgid ""
@@ -4070,7 +4055,7 @@ msgstr ""
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
-msgstr ""
+msgstr "Husarra"
 
 #: data/units/Cavalier.cfg:26
 msgid ""
@@ -4092,7 +4077,7 @@ msgstr "Balezta"
 
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
-msgstr ""
+msgstr "Zalditeri borrokalaria"
 
 #: data/units/Cavalryman.cfg:28
 msgid ""
@@ -4245,17 +4230,17 @@ msgstr ""
 
 #: data/units/Dark_Adept.cfg:38 data/units/Dark_Sorcerer.cfg:47
 #: data/units/Necromancer.cfg:38
+#, fuzzy
 msgid "chill wave"
-msgstr ""
+msgstr "New Wave musika"
 
 #: data/units/Dark_Adept.cfg:63
-#, fuzzy
 msgid "female^Dark Adept"
-msgstr "Itzaletako Erregina"
+msgstr "Itzaletako ikaslea"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
-msgstr "Itzaletako Erregina"
+msgstr "Itzaletako erregina"
 
 #: data/units/Dark_Queen.cfg:18
 msgid ""
@@ -4270,7 +4255,7 @@ msgstr "espektroa"
 
 #: data/units/Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Itzaletako aztia"
 
 #: data/units/Dark_Sorcerer.cfg:21
 msgid ""
@@ -4323,7 +4308,7 @@ msgstr ""
 
 #: data/units/Death_Knight.cfg:3
 msgid "Death Knight"
-msgstr "Heriotz Gerlaria"
+msgstr "Heriotz gerlaria"
 
 #: data/units/Death_Knight.cfg:19
 msgid ""
@@ -4365,7 +4350,7 @@ msgstr ""
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
-msgstr ""
+msgstr "Hilotzerdi"
 
 #: data/units/Demilich.cfg:17
 msgid ""
@@ -4377,7 +4362,7 @@ msgstr ""
 
 #: data/units/Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
-msgstr ""
+msgstr "Otso basatiaren gidaria"
 
 #: data/units/Direwolf_Rider.cfg:22
 msgid ""
@@ -4405,11 +4390,11 @@ msgstr ""
 #: data/units/Shadow.cfg:24 data/units/Skeletal_Dragon.cfg:50
 #: data/units/Sleeping_Gryphon.cfg:19
 msgid "claws"
-msgstr ""
+msgstr "atzaparrak"
 
 #: data/units/Dragoon.cfg:3
 msgid "Dragoon"
-msgstr ""
+msgstr "Dragoia"
 
 #: data/units/Dragoon.cfg:25
 msgid ""
@@ -4421,9 +4406,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Blademaster.cfg:4
-#, fuzzy
 msgid "Drake Blademaster"
-msgstr "Heriotz Maisua"
+msgstr "Draku ezpata maisua"
 
 #: data/units/Drake_Blademaster.cfg:20
 msgid ""
@@ -4442,7 +4426,7 @@ msgstr "suzko atsa"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
-msgstr ""
+msgstr "Draku erretzailea"
 
 #: data/units/Drake_Burner.cfg:18
 msgid ""
@@ -4454,7 +4438,7 @@ msgstr ""
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
-msgstr ""
+msgstr "Draku erronkatzailea"
 
 #: data/units/Drake_Clasher.cfg:20
 msgid ""
@@ -4476,7 +4460,7 @@ msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:3
 msgid "Drake Enforcer"
-msgstr ""
+msgstr "Draku menderatzailea"
 
 #: data/units/Drake_Enforcer.cfg:19
 msgid ""
@@ -4487,7 +4471,7 @@ msgstr ""
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
-msgstr ""
+msgstr "Draku Borrokalaria"
 
 #: data/units/Drake_Fighter.cfg:18
 msgid ""
@@ -4502,7 +4486,7 @@ msgstr ""
 
 #: data/units/Drake_Fire.cfg:3
 msgid "Fire Drake"
-msgstr ""
+msgstr "Suzko drakua"
 
 #: data/units/Drake_Fire.cfg:18
 msgid ""
@@ -4513,7 +4497,7 @@ msgstr ""
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Draku subihotza"
 
 #: data/units/Drake_Flameheart.cfg:23
 msgid ""
@@ -4529,7 +4513,7 @@ msgstr ""
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
-msgstr ""
+msgstr "Draku sugarra"
 
 #: data/units/Drake_Flare.cfg:22
 msgid ""
@@ -4544,7 +4528,7 @@ msgstr ""
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "Draku gladiadorea"
 
 #: data/units/Drake_Gladiator.cfg:18
 msgid ""
@@ -4558,7 +4542,7 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
-msgstr ""
+msgstr "Draku planeatzailea"
 
 #: data/units/Drake_Glider.cfg:20
 msgid ""
@@ -4577,7 +4561,7 @@ msgstr ""
 
 #: data/units/Drake_Hurricane.cfg:3
 msgid "Hurricane Drake"
-msgstr ""
+msgstr "Draku urakana"
 
 #: data/units/Drake_Hurricane.cfg:19
 msgid ""
@@ -4588,7 +4572,7 @@ msgstr ""
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
-msgstr ""
+msgstr "Draku infernua"
 
 #: data/units/Drake_Inferno.cfg:19
 msgid ""
@@ -4601,7 +4585,7 @@ msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
-msgstr ""
+msgstr "Draku zerua"
 
 #: data/units/Drake_Sky.cfg:20
 msgid ""
@@ -4612,7 +4596,7 @@ msgstr ""
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
-msgstr ""
+msgstr "Draku zulatzailea"
 
 #: data/units/Drake_Slasher.cfg:19
 msgid ""
@@ -4639,7 +4623,7 @@ msgstr ""
 
 #: data/units/Drake_Warden.cfg:4
 msgid "Drake Warden"
-msgstr ""
+msgstr "Draku zaindaria"
 
 #: data/units/Drake_Warden.cfg:20
 msgid ""
@@ -4651,7 +4635,7 @@ msgstr ""
 
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "Draku gudaria"
 
 #: data/units/Drake_Warrior.cfg:19
 msgid ""
@@ -4681,7 +4665,7 @@ msgstr "aizkora"
 
 #: data/units/Dread_Lich.cfg:3
 msgid "Dread Lich"
-msgstr ""
+msgstr "Ilotz ikaragarria"
 
 #: data/units/Dread_Lich.cfg:18
 msgid ""
@@ -4695,7 +4679,7 @@ msgstr ""
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
-msgstr ""
+msgstr "Dueluaria"
 
 #: data/units/Duelist.cfg:21
 msgid ""
@@ -4723,7 +4707,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
-msgstr ""
+msgstr "Nano berseker"
 
 #: data/units/Dwarvish_Berserker.cfg:17
 msgid ""
@@ -4743,7 +4727,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "Nano dragoi zaindaria"
 
 #: data/units/Dwarvish_Dragonguard.cfg:17
 msgid ""
@@ -4764,7 +4748,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Fighter.cfg:3
 msgid "Dwarvish Fighter"
-msgstr "Nano Borrokalaria"
+msgstr "Nano borrokalaria"
 
 #: data/units/Dwarvish_Fighter.cfg:19
 msgid ""
@@ -4781,7 +4765,7 @@ msgstr "mailua"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Nano zaindaria"
 
 #: data/units/Dwarvish_Guardsman.cfg:22
 msgid ""
@@ -4792,7 +4776,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
-msgstr "Nano Jauna"
+msgstr "Nano jauna"
 
 #: data/units/Dwarvish_Lord.cfg:25
 msgid ""
@@ -4808,7 +4792,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "Nano runa maisua"
 
 #: data/units/Dwarvish_Runemaster.cfg:17
 msgid ""
@@ -4828,7 +4812,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
-msgstr "Nano Zaindaria"
+msgstr "Nano jagolea"
 
 #: data/units/Dwarvish_Sentinel.cfg:25
 msgid ""
@@ -4838,7 +4822,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Nano defendatzailea"
 
 #: data/units/Dwarvish_Stalwart.cfg:24
 msgid ""
@@ -4849,7 +4833,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "Nano altzairu zaindaria"
 
 #: data/units/Dwarvish_Steelclad.cfg:24
 msgid ""
@@ -4859,7 +4843,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Thunderer.cfg:3
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "Nano arkabuzaria"
 
 #: data/units/Dwarvish_Thunderer.cfg:16
 msgid ""
@@ -4878,7 +4862,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
-msgstr ""
+msgstr "Nano trumoi zaindaria"
 
 #: data/units/Dwarvish_Thunderguard.cfg:18
 msgid ""
@@ -4900,7 +4884,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "Nano ulfserker-a"
 
 #: data/units/Dwarvish_Ulfserker.cfg:16
 msgid ""
@@ -4911,7 +4895,7 @@ msgstr ""
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
-msgstr "Mago Elfoa"
+msgstr "Mago zaharra"
 
 #: data/units/Elder_Mage.cfg:22
 msgid ""
@@ -4925,8 +4909,9 @@ msgid "lightning"
 msgstr "tximista"
 
 #: data/units/Elder_Wose.cfg:3
+#, fuzzy
 msgid "Elder Wose"
-msgstr ""
+msgstr "Mago Elfoa"
 
 #: data/units/Elder_Wose.cfg:21
 msgid ""
@@ -4948,7 +4933,7 @@ msgstr ""
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
-msgstr "Elfo Arkularia"
+msgstr "Elfo arkularia"
 
 #: data/units/Elvish_Archer.cfg:20 data/units/Elvish_Archer.cfg:122
 msgid ""
@@ -4962,11 +4947,11 @@ msgstr ""
 
 #: data/units/Elvish_Archer.cfg:105
 msgid "female^Elvish Archer"
-msgstr "Elfo Arkularia"
+msgstr "Elfo arkularia"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
-msgstr ""
+msgstr "Elfo mendekatzailea"
 
 #: data/units/Elvish_Avenger.cfg:26 data/units/Elvish_Avenger.cfg:142
 msgid ""
@@ -4987,11 +4972,11 @@ msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:119
 msgid "female^Elvish Avenger"
-msgstr ""
+msgstr "Elfo mendekatzailea"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
-msgstr "Elfo Kapitaina"
+msgstr "Elfo kapitaina"
 
 #: data/units/Elvish_Captain.cfg:23
 msgid ""
@@ -5009,7 +4994,7 @@ msgstr ""
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
-msgstr "Elfo Txapelduna"
+msgstr "Elfo txapelduna"
 
 #: data/units/Elvish_Champion.cfg:20
 msgid ""
@@ -5023,7 +5008,7 @@ msgstr ""
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
-msgstr "Elfo Aztia"
+msgstr "Elfo aztia"
 
 #: data/units/Elvish_Druid.cfg:24
 msgid ""
@@ -5049,7 +5034,7 @@ msgstr ""
 
 #: data/units/Elvish_Enchantress.cfg:3
 msgid "female^Elvish Enchantress"
-msgstr ""
+msgstr "Elfo sorgintzailea"
 
 #: data/units/Elvish_Enchantress.cfg:21
 msgid ""
@@ -5066,12 +5051,13 @@ msgstr "nahaspilatu"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:43
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:84
+#, fuzzy
 msgid "faerie fire"
-msgstr ""
+msgstr "Suaren Zetroa"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
-msgstr "Elfo Borrokalaria"
+msgstr "Elfo borrokalaria"
 
 #: data/units/Elvish_Fighter.cfg:19
 msgid ""
@@ -5083,7 +5069,7 @@ msgstr ""
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
-msgstr "Elfo Heroia"
+msgstr "Elfo heroia"
 
 #: data/units/Elvish_Hero.cfg:19
 msgid ""
@@ -5094,7 +5080,7 @@ msgstr ""
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
-msgstr "Elfo Jaun Gorena"
+msgstr "Elfo jaun gorena"
 
 #: data/units/Elvish_High_Lord.cfg:19
 msgid ""
@@ -5106,7 +5092,7 @@ msgstr ""
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
-msgstr "Elfo Andrea"
+msgstr "Elfo andrea"
 
 #: data/units/Elvish_Lady.cfg:19
 msgid ""
@@ -5122,7 +5108,7 @@ msgstr "pala"
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
-msgstr "Elfo Jauna"
+msgstr "Elfo jauna"
 
 #: data/units/Elvish_Lord.cfg:19
 msgid ""
@@ -5133,7 +5119,7 @@ msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
-msgstr ""
+msgstr "Elfo tiratzailea"
 
 #: data/units/Elvish_Marksman.cfg:24 data/units/Elvish_Marksman.cfg:144
 msgid ""
@@ -5163,11 +5149,11 @@ msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:123
 msgid "female^Elvish Marksman"
-msgstr ""
+msgstr "Elfo tiratzailea"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
-msgstr ""
+msgstr "Elfo marexala"
 
 #: data/units/Elvish_Marshal.cfg:25
 msgid ""
@@ -5185,7 +5171,7 @@ msgstr ""
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
-msgstr ""
+msgstr "Elfo eskolta"
 
 #: data/units/Elvish_Outrider.cfg:29
 msgid ""
@@ -5202,7 +5188,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
-msgstr "Elfo Basajauna"
+msgstr "Elfo basajauna"
 
 #: data/units/Elvish_Ranger.cfg:23 data/units/Elvish_Ranger.cfg:138
 msgid ""
@@ -5219,7 +5205,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:117
 msgid "female^Elvish Ranger"
-msgstr "Elfo Basandrea"
+msgstr "Elfo basandrea"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -5238,7 +5224,7 @@ msgstr ""
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
-msgstr ""
+msgstr "Elfo esploratzailea"
 
 #: data/units/Elvish_Scout.cfg:30
 msgid ""
@@ -5251,7 +5237,7 @@ msgstr ""
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
-msgstr ""
+msgstr "Elfo xamana"
 
 #: data/units/Elvish_Shaman.cfg:24
 msgid ""
@@ -5272,7 +5258,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
-msgstr ""
+msgstr "Elfo frankotiratzailea"
 
 #: data/units/Elvish_Sharpshooter.cfg:23
 #: data/units/Elvish_Sharpshooter.cfg:143
@@ -5288,11 +5274,11 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:123
 msgid "female^Elvish Sharpshooter"
-msgstr ""
+msgstr "Elfo frankotiratzailea"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
-msgstr ""
+msgstr "Elfo shyde-a"
 
 #: data/units/Elvish_Shyde.cfg:24
 msgid ""
@@ -5312,7 +5298,7 @@ msgstr ""
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "female^Elvish Sorceress"
-msgstr ""
+msgstr "Elfo konjuratzailea"
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -5324,7 +5310,7 @@ msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
-msgstr ""
+msgstr "Elfo silfidea"
 
 #: data/units/Elvish_Sylph.cfg:21
 msgid ""
@@ -5339,7 +5325,7 @@ msgstr ""
 
 #: data/units/Fencer.cfg:3
 msgid "Fencer"
-msgstr ""
+msgstr "Eskrimalari"
 
 #: data/units/Fencer.cfg:21
 msgid ""
@@ -5401,7 +5387,7 @@ msgstr ""
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
-msgstr ""
+msgstr "Bidelapurra"
 
 #: data/units/Footpad.cfg:17 data/units/Footpad.cfg:83
 msgid ""
@@ -5426,8 +5412,9 @@ msgid "sling"
 msgstr "euskarria"
 
 #: data/units/Footpad.cfg:69
+#, fuzzy
 msgid "female^Footpad"
-msgstr ""
+msgstr "Hiltzailea"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
@@ -5513,8 +5500,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:3
+#, fuzzy
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Armiarmatzarra"
 
 #: data/units/Giant_Mudcrawler.cfg:17
 msgid ""
@@ -5560,7 +5548,7 @@ msgstr "pintzatu"
 
 #: data/units/Goblin_Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr ""
+msgstr "Goblin zartadatzailea"
 
 #: data/units/Goblin_Impaler.cfg:20
 msgid ""
@@ -5575,7 +5563,7 @@ msgstr ""
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
-msgstr "Goblin Gerlaria"
+msgstr "Goblin gerlaria"
 
 #: data/units/Goblin_Knight.cfg:20
 msgid ""
@@ -5591,7 +5579,7 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:3
 msgid "Goblin Pillager"
-msgstr ""
+msgstr "Goblin arpilatzailea"
 
 #: data/units/Goblin_Pillager.cfg:21
 msgid ""
@@ -5615,7 +5603,7 @@ msgstr "sarea"
 
 #: data/units/Goblin_Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr ""
+msgstr "Goblin lantzaria"
 
 #: data/units/Goblin_Spearman.cfg:19
 msgid ""
@@ -5631,7 +5619,7 @@ msgstr ""
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
-msgstr "Gerlari Handia"
+msgstr "Gerlari handia"
 
 #: data/units/Grand_Knight.cfg:19
 msgid ""
@@ -5657,7 +5645,7 @@ msgstr "lantza"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr ""
+msgstr "Marexal handia"
 
 #: data/units/Grand_Marshal.cfg:24
 msgid ""
@@ -5673,7 +5661,7 @@ msgstr ""
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
-msgstr "Mago Handia"
+msgstr "Mago bikaina"
 
 #: data/units/Great_Mage.cfg:25 data/units/Great_Mage.cfg:123
 msgid ""
@@ -5695,7 +5683,7 @@ msgstr ""
 
 #: data/units/Great_Mage.cfg:101
 msgid "female^Great Mage"
-msgstr "Mago Handia"
+msgstr "Mago bikaina"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
@@ -5715,7 +5703,7 @@ msgstr ""
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
-msgstr ""
+msgstr "Grifoa"
 
 #: data/units/Gryphon.cfg:17
 msgid ""
@@ -5726,7 +5714,7 @@ msgstr ""
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
-msgstr ""
+msgstr "Grifo maisua"
 
 #: data/units/Gryphon_Master.cfg:20
 msgid ""
@@ -5737,7 +5725,7 @@ msgstr ""
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
-msgstr ""
+msgstr "Grifo gidaria"
 
 #: data/units/Gryphon_Rider.cfg:17
 msgid ""
@@ -5748,7 +5736,7 @@ msgstr ""
 
 #: data/units/Halbardier.cfg:3
 msgid "Halberdier"
-msgstr ""
+msgstr "Alabardari"
 
 #: data/units/Halbardier.cfg:25
 msgid ""
@@ -5771,7 +5759,7 @@ msgstr ""
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
-msgstr ""
+msgstr "Infanteriagizon astuna"
 
 #: data/units/Heavy_Infantryman.cfg:15
 msgid ""
@@ -5787,7 +5775,7 @@ msgstr ""
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
-msgstr ""
+msgstr "Zaldun jauna"
 
 #: data/units/Horse_Lord.cfg:18
 msgid ""
@@ -5798,8 +5786,9 @@ msgstr ""
 
 #: data/units/Horse_Lord.cfg:44 data/units/Mounted_Fighter.cfg:44
 #: data/units/Mounted_Warrior.cfg:44
+#, fuzzy
 msgid "morning star"
-msgstr ""
+msgstr "Sortu izarra"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
@@ -5836,7 +5825,7 @@ msgstr ""
 
 #: data/units/Iron_Mauler.cfg:3
 msgid "Iron Mauler"
-msgstr ""
+msgstr "Burdinezko hiltzailea"
 
 #: data/units/Iron_Mauler.cfg:18
 msgid ""
@@ -5854,7 +5843,7 @@ msgstr ""
 
 #: data/units/Javelineer.cfg:3
 msgid "Javelineer"
-msgstr ""
+msgstr "Xabalina jaurtitzailea"
 
 #: data/units/Javelineer.cfg:20
 msgid ""
@@ -5894,7 +5883,7 @@ msgstr ""
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
-msgstr ""
+msgstr "Lantzaria"
 
 #: data/units/Lancer.cfg:20
 msgid ""
@@ -5916,7 +5905,7 @@ msgstr ""
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
-msgstr ""
+msgstr "Hilotza"
 
 #: data/units/Lich.cfg:21
 msgid ""
@@ -5937,7 +5926,7 @@ msgstr ""
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
-msgstr ""
+msgstr "Lotinant"
 
 #: data/units/Lieutenant.cfg:23
 msgid ""
@@ -6009,11 +5998,11 @@ msgstr "misila"
 
 #: data/units/Mage.cfg:86
 msgid "female^Mage"
-msgstr ""
+msgstr "Magoa"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
-msgstr "Argiaren Magoa"
+msgstr "Argiaren magoa"
 
 #: data/units/Mage_of_Light.cfg:14 data/units/Mage_of_Light.cfg:91
 #: data/units/Mermaid_Diviner.cfg:11
@@ -6053,11 +6042,11 @@ msgstr "bedeinkatua"
 
 #: data/units/Mage_of_Light.cfg:83
 msgid "female^Mage of Light"
-msgstr "Argiaren Magoa"
+msgstr "Argiaren magoa"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
-msgstr ""
+msgstr "Arku maisua"
 
 #: data/units/Master_Bowman.cfg:19
 msgid ""
@@ -6073,7 +6062,7 @@ msgstr ""
 
 #: data/units/Master_at_Arms.cfg:3
 msgid "Master at Arms"
-msgstr ""
+msgstr "Armetako maisua"
 
 #: data/units/Master_at_Arms.cfg:22
 msgid ""
@@ -6094,8 +6083,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
+#, fuzzy
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "Itzaletako Erregina"
 
 #: data/units/Mermaid_Diviner.cfg:28
 msgid ""
@@ -6114,8 +6104,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:3
+#, fuzzy
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "Itzaletako Erregina"
 
 #: data/units/Mermaid_Enchantress.cfg:20
 msgid ""
@@ -6132,12 +6123,14 @@ msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:40 data/units/Mermaid_Initiate.cfg:42
 #: data/units/Mermaid_Siren.cfg:69 data/units/Sea_Hag.cfg:31
+#, fuzzy
 msgid "water spray"
-msgstr ""
+msgstr "Azaletako ura"
 
 #: data/units/Mermaid_Initiate.cfg:3
+#, fuzzy
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Itzaletako Erregina"
 
 #: data/units/Mermaid_Initiate.cfg:22
 msgid ""
@@ -6153,8 +6146,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:3
+#, fuzzy
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "Itzaletako Erregina"
 
 #: data/units/Mermaid_Priestess.cfg:23
 msgid ""
@@ -6231,8 +6225,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Fighter.cfg:3
+#, fuzzy
 msgid "Merman Fighter"
-msgstr ""
+msgstr "Nano Borrokalaria"
 
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
@@ -6315,8 +6310,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Warrior.cfg:3
+#, fuzzy
 msgid "Merman Warrior"
-msgstr ""
+msgstr "Orko Gudaria"
 
 #: data/units/Merman_Warrior.cfg:20
 msgid ""
@@ -6326,7 +6322,7 @@ msgstr ""
 
 #: data/units/Mounted_Fighter.cfg:3
 msgid "Mounted Fighter"
-msgstr ""
+msgstr "Zaldizko borrokalaria"
 
 #: data/units/Mounted_Fighter.cfg:18
 msgid ""
@@ -6338,7 +6334,7 @@ msgstr ""
 
 #: data/units/Mounted_Warrior.cfg:3
 msgid "Mounted Warrior"
-msgstr ""
+msgstr "Zaldizko gudaria"
 
 #: data/units/Mounted_Warrior.cfg:18
 msgid ""
@@ -6359,8 +6355,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:3
+#, fuzzy
 msgid "Naga Fighter"
-msgstr ""
+msgstr "Nano Borrokalaria"
 
 #: data/units/Naga-Fighter.cfg:18 data/units/Naga-Fighter.cfg:53
 msgid ""
@@ -6372,8 +6369,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:39
+#, fuzzy
 msgid "Nagini Fighter"
-msgstr ""
+msgstr "Nano Borrokalaria"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
@@ -6402,8 +6400,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
+#, fuzzy
 msgid "Naga Warrior"
-msgstr ""
+msgstr "Orko Gudaria"
 
 #: data/units/Naga-Warrior.cfg:22 data/units/Naga-Warrior.cfg:61
 msgid ""
@@ -6416,12 +6415,14 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:43
+#, fuzzy
 msgid "Nagini Warrior"
-msgstr ""
+msgstr "Orko Gudaria"
 
 #: data/units/Naga.cfg:6
+#, fuzzy
 msgid "female^Naga"
-msgstr ""
+msgstr "Hiltzailea"
 
 #: data/units/Naga.cfg:21
 msgid ""
@@ -6431,7 +6432,7 @@ msgstr ""
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
-msgstr ""
+msgstr "Nekromante"
 
 #: data/units/Necromancer.cfg:16
 msgid ""
@@ -6479,11 +6480,11 @@ msgstr ""
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr ""
+msgstr "Noble komandantea"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr ""
+msgstr "Noble borrokalaria"
 
 #: data/units/Noble_Fighter.cfg:20
 msgid ""
@@ -6494,11 +6495,11 @@ msgstr ""
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr ""
+msgstr "Noble jauna"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr ""
+msgstr "Noble gaztea"
 
 #: data/units/Noble_Youth.cfg:20
 msgid ""
@@ -6528,7 +6529,7 @@ msgstr ""
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
-msgstr "Orko Arkularia"
+msgstr "Orko arkularia"
 
 #: data/units/Orcish_Archer.cfg:17
 msgid ""
@@ -6540,7 +6541,7 @@ msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
-msgstr "Orko Hiltzailea"
+msgstr "Orko hiltzailea"
 
 #: data/units/Orcish_Assassin.cfg:18
 msgid ""
@@ -6561,7 +6562,7 @@ msgstr ""
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "Orko baleztaria"
 
 #: data/units/Orcish_Crossbowman.cfg:17
 msgid ""
@@ -6576,8 +6577,9 @@ msgid "short sword"
 msgstr "ezpata motza"
 
 #: data/units/Orcish_Grunt.cfg:3
+#, fuzzy
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "Orko Arkularia"
 
 #: data/units/Orcish_Grunt.cfg:16
 msgid ""
@@ -6600,8 +6602,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:3
+#, fuzzy
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "Orko Arkularia"
 
 #: data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -6662,8 +6665,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Slayer.cfg:3
+#, fuzzy
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "Orko Arkularia"
 
 #: data/units/Orcish_Slayer.cfg:19
 msgid ""
@@ -6681,7 +6685,7 @@ msgstr ""
 #: data/units/Orcish_Slurbow.cfg:3
 #, fuzzy
 msgid "Orcish Slurbow"
-msgstr "Orko Guda Jauna"
+msgstr "Orko Arkularia"
 
 #: data/units/Orcish_Slurbow.cfg:18
 msgid ""
@@ -6693,8 +6697,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Sovereign.cfg:3
+#, fuzzy
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "Orko Arkularia"
 
 #: data/units/Orcish_Sovereign.cfg:19
 msgid ""
@@ -6729,7 +6734,7 @@ msgstr ""
 
 #: data/units/Outlaw.cfg:3
 msgid "Outlaw"
-msgstr ""
+msgstr "Iheslaria"
 
 #: data/units/Outlaw.cfg:18 data/units/Outlaw.cfg:91
 msgid ""
@@ -6744,11 +6749,11 @@ msgstr ""
 
 #: data/units/Outlaw.cfg:76
 msgid "female^Outlaw"
-msgstr ""
+msgstr "Iheslaria"
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
-msgstr ""
+msgstr "Iheslarien printzesa"
 
 #: data/units/Outlaw_Princess.cfg:22
 msgid ""
@@ -6760,7 +6765,7 @@ msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:3
 msgid "female^Outlaw Queen"
-msgstr ""
+msgstr "Iheslarien erregina"
 
 #: data/units/Outlaw_Queen.cfg:21
 msgid "skirmisher,leadership"
@@ -6802,7 +6807,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
-msgstr "Herritarra"
+msgstr "Baserritarra"
 
 #: data/units/Peasant.cfg:18
 msgid ""
@@ -6818,7 +6823,7 @@ msgstr ""
 
 #: data/units/Pikeman.cfg:3
 msgid "Pikeman"
-msgstr ""
+msgstr "Pikatzaile"
 
 #: data/units/Pikeman.cfg:22
 msgid ""
@@ -6855,7 +6860,7 @@ msgstr ""
 
 #: data/units/Poacher.cfg:3
 msgid "Poacher"
-msgstr ""
+msgstr "Isileko ehiztaria"
 
 #: data/units/Poacher.cfg:17
 msgid ""
@@ -6878,7 +6883,7 @@ msgstr ""
 
 #: data/units/Red_Mage.cfg:3
 msgid "Red Mage"
-msgstr "Magu Gorria"
+msgstr "Mago gorria"
 
 #: data/units/Red_Mage.cfg:24 data/units/Red_Mage.cfg:121
 msgid ""
@@ -6901,7 +6906,7 @@ msgstr ""
 
 #: data/units/Red_Mage.cfg:100
 msgid "female^Red Mage"
-msgstr "Magu Gorria"
+msgstr "Mago gorria"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
@@ -6918,7 +6923,7 @@ msgstr ""
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
-msgstr ""
+msgstr "Gizatxarra"
 
 #: data/units/Rogue.cfg:20 data/units/Rogue.cfg:82
 msgid ""
@@ -6935,12 +6940,13 @@ msgid ""
 msgstr ""
 
 #: data/units/Rogue.cfg:65
+#, fuzzy
 msgid "female^Rogue"
-msgstr ""
+msgstr "Hiltzailea"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
-msgstr ""
+msgstr "Zaindari erreala"
 
 #: data/units/Royal_Guard.cfg:22
 msgid ""
@@ -6964,7 +6970,7 @@ msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr ""
+msgstr "Saurio segadaria"
 
 #: data/units/Saurian_Ambusher.cfg:18
 msgid ""
@@ -6977,7 +6983,7 @@ msgstr ""
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr ""
+msgstr "Saurio setiatzailea"
 
 #: data/units/Saurian_Flanker.cfg:20
 msgid ""
@@ -6990,7 +6996,7 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
-msgstr ""
+msgstr "Saurio izotz aztia"
 
 #: data/units/Saurian_Icecaster.cfg:19
 msgid ""
@@ -7002,12 +7008,13 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
 #: data/units/Saurian_Tribalist.cfg:40
+#, fuzzy
 msgid "frost blast"
-msgstr ""
+msgstr "Haizealdia errendatzen..."
 
 #: data/units/Saurian_Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr ""
+msgstr "Saurio gatazkaria"
 
 #: data/units/Saurian_Skirmisher.cfg:18
 msgid ""
@@ -7019,7 +7026,7 @@ msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr ""
+msgstr "Saurio igarlea"
 
 #: data/units/Saurian_Soothsayer.cfg:20
 msgid ""
@@ -7030,7 +7037,7 @@ msgstr ""
 
 #: data/units/Saurian_Tribalist.cfg:4
 msgid "Saurian Tribalist"
-msgstr ""
+msgstr "Saurio tribala"
 
 #: data/units/Saurian_Tribalist.cfg:19
 msgid ""
@@ -7042,7 +7049,7 @@ msgstr ""
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
-msgstr ""
+msgstr "Saurio Gudaria"
 
 #: data/units/Saurian_Warrior.cfg:21
 msgid ""
@@ -7054,8 +7061,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Sea_Hag.cfg:6
+#, fuzzy
 msgid "female^Sea Hag"
-msgstr ""
+msgstr "Itzaletako Erregina"
 
 #: data/units/Sea_Hag.cfg:21
 msgid ""
@@ -7117,7 +7125,7 @@ msgstr ""
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
-msgstr ""
+msgstr "Talkako borrokalaria"
 
 #: data/units/Shock_Trooper.cfg:15
 msgid ""
@@ -7133,7 +7141,7 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
-msgstr "Zilarrezko Magoa"
+msgstr "Zilarrezko magoa"
 
 #: data/units/Silver_Mage.cfg:29 data/units/Silver_Mage.cfg:165
 msgid ""
@@ -7166,11 +7174,12 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:139
 msgid "female^Silver Mage"
-msgstr "Zilarrezko Magoa"
+msgstr "Zilarrezko magoa"
 
 #: data/units/Skeletal_Dragon.cfg:3
+#, fuzzy
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "Suzko Dragoia"
 
 #: data/units/Skeletal_Dragon.cfg:18
 msgid ""
@@ -7212,15 +7221,16 @@ msgstr ""
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
-msgstr ""
+msgstr "Grifo lotan"
 
 #: data/units/Sleeping_Gryphon.cfg:16
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
 msgstr ""
 
 #: data/units/Soul_Shooter.cfg:3
+#, fuzzy
 msgid "Soul Shooter"
-msgstr ""
+msgstr "Hezur Jaurtitzailea"
 
 #: data/units/Soul_Shooter.cfg:18
 msgid ""
@@ -7249,7 +7259,7 @@ msgstr ""
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
-msgstr ""
+msgstr "Lantzagizona"
 
 #: data/units/Spearman.cfg:19
 msgid ""
@@ -7297,8 +7307,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Tentacle.cfg:3
+#, fuzzy
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "Ur sakona"
 
 #: data/units/Tentacle.cfg:18
 msgid ""
@@ -7354,7 +7365,7 @@ msgstr ""
 
 #: data/units/Trapper.cfg:3
 msgid "Trapper"
-msgstr ""
+msgstr "Tranpa jartzailea"
 
 #: data/units/Trapper.cfg:18
 msgid ""
@@ -7368,7 +7379,7 @@ msgstr ""
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
-msgstr "Troll-a"
+msgstr "Troll"
 
 #: data/units/Troll.cfg:19
 msgid ""
@@ -7400,7 +7411,7 @@ msgstr ""
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "Troll harri jaurtitzailea"
 
 #: data/units/Troll_Rocklobber.cfg:21
 msgid ""
@@ -7418,7 +7429,7 @@ msgstr ""
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
-msgstr ""
+msgstr "Troll Gudaria"
 
 #: data/units/Troll_Warrior.cfg:21
 msgid ""
@@ -7437,7 +7448,7 @@ msgstr ""
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
-msgstr ""
+msgstr "Troll kumea"
 
 #: data/units/Troll_Whelp.cfg:20
 msgid ""
@@ -7452,8 +7463,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Vampire_Bat.cfg:3
+#, fuzzy
 msgid "Vampire Bat"
-msgstr ""
+msgstr "Saguzar Odoltsua"
 
 #: data/units/Vampire_Bat.cfg:16
 msgid ""
@@ -7463,8 +7475,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Vampire_Lady.cfg:3
+#, fuzzy
 msgid "female^Vampire Lady"
-msgstr ""
+msgstr "Elfo Andrea"
 
 #: data/units/Vampire_Lady.cfg:18
 msgid ""
@@ -7502,11 +7515,12 @@ msgstr ""
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
-msgstr ""
+msgstr "Harresiaren zaindaria"
 
 #: data/units/Wall_Guard.cfg:32
+#, fuzzy
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "sarekada, birsortu"
 
 #: data/units/Wall_Guard.cfg:34
 msgid ""
@@ -7540,7 +7554,7 @@ msgstr ""
 
 #: data/units/White_Mage.cfg:3
 msgid "White Mage"
-msgstr "Mago Zuria"
+msgstr "Mago zuria"
 
 #: data/units/White_Mage.cfg:30 data/units/White_Mage.cfg:105
 msgid ""
@@ -7563,7 +7577,7 @@ msgstr ""
 
 #: data/units/White_Mage.cfg:81
 msgid "female^White Mage"
-msgstr "Mago Zuria"
+msgstr "Mago zuria"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
@@ -7637,7 +7651,7 @@ msgstr ""
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
-msgstr ""
+msgstr "Ogro Gaztea"
 
 #: data/units/Young_Ogre.cfg:16
 msgid ""
@@ -7707,9 +7721,8 @@ msgid "+Internationalization Managers"
 msgstr "+Internazionalizazio Zuzendariak"
 
 #: src/about.cpp:132
-#, fuzzy
 msgid "+Afrikaans Translation"
-msgstr "+Daniera Itzulpena"
+msgstr "+Afrikaans Itzulpena"
 
 #: src/about.cpp:136
 msgid "+Basque Translation"
@@ -7772,9 +7785,8 @@ msgid "+Italian Translation"
 msgstr "+Italiera Itzulpena"
 
 #: src/about.cpp:234
-#, fuzzy
 msgid "+Japanese Translation"
-msgstr "+Txinera Itzulpena"
+msgstr "+Japoniera Itzulpena"
 
 #: src/about.cpp:239
 msgid "+Latin Translation"
@@ -7797,9 +7809,8 @@ msgid "+Russian Translation"
 msgstr "+Errusiera Itzulpena"
 
 #: src/about.cpp:271
-#, fuzzy
 msgid "+Serbian Translation"
-msgstr "+Aleman Itzulpena"
+msgstr "+Serbiera Itzulpena"
 
 #: src/about.cpp:274
 msgid "+Slovak Translation"
@@ -7818,9 +7829,8 @@ msgid "+Swedish Translation"
 msgstr "+Suediera Itzulpena"
 
 #: src/about.cpp:294
-#, fuzzy
 msgid "+Turkish Translation"
-msgstr "+Daniera Itzulpena"
+msgstr "+Turkiera Itzulpena"
 
 #: src/about.cpp:300
 msgid "+Contributors"
@@ -7870,32 +7880,37 @@ msgid "Doubled"
 msgstr "Bikoiztua"
 
 #: src/actions.cpp:470
+#, fuzzy
 msgid "attacker resistance vs"
-msgstr ""
+msgstr "Gizakia vs AA"
 
 #: src/actions.cpp:470
+#, fuzzy
 msgid "attacker vulnerability vs"
-msgstr ""
+msgstr "Gizakia vs AA"
 
 #: src/actions.cpp:484 src/actions.cpp:616
 msgid "total damage"
 msgstr "guztira kalteak"
 
 #: src/actions.cpp:596
+#, fuzzy
 msgid "defender resistance vs"
-msgstr ""
+msgstr "Gizakia vs AA"
 
 #: src/actions.cpp:596
+#, fuzzy
 msgid "defender vulnerability vs"
-msgstr ""
+msgstr "Gizakia vs AA"
 
 #: src/actions.cpp:599
 msgid " (+steadfast)"
 msgstr ""
 
 #: src/actions.cpp:661
+#, fuzzy
 msgid "(both should survive)"
-msgstr ""
+msgstr "Bistarazi bi panelak"
 
 #: src/actions.cpp:663
 msgid "% Pr[kills/killed by/both survive]"
@@ -7971,7 +7986,7 @@ msgstr "Ziur al zaude joku hau ezabatu nahi duzula?"
 
 #: src/dialogs.cpp:355
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:368
 msgid "#(Invalid)"
@@ -8011,19 +8026,19 @@ msgstr "Bertsioa:"
 
 #: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
-msgstr ""
+msgstr "%b %d %y"
 
 #: src/dialogs.cpp:424
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:427
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:430
 msgid "%b %d"
-msgstr ""
+msgstr "%b %d"
 
 #: src/dialogs.cpp:454
 msgid "No Saved Games"
@@ -8063,9 +8078,8 @@ msgid ""
 msgstr ""
 
 #: src/dialogs.cpp:550
-#, fuzzy
 msgid "Date"
-msgstr "Atea"
+msgstr "Data"
 
 #: src/dialogs.cpp:550 src/game.cpp:893 src/help.cpp:1117
 #: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2052 src/playturn.cpp:2232
@@ -8107,7 +8121,7 @@ msgstr "Mugimenduak:"
 
 #: src/display.cpp:465
 msgid "Screenshot"
-msgstr ""
+msgstr "Pantaila argazkia"
 
 #: src/display.cpp:1025
 msgid "healthy"
@@ -8131,9 +8145,9 @@ msgid "The Battle for Wesnoth"
 msgstr "Wesnoth-eko guda"
 
 #: src/game.cpp:629
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Kargatu nahi zenuen fitxategia ondatuta dago: '"
+msgstr ""
+"Abisua: Kargatu nahi zenuen fitxategia ondatuta dago: Kargatzen dena den.\n"
 
 #: src/game.cpp:651 src/multiplayer_connect.cpp:902
 msgid ""
@@ -8315,8 +8329,9 @@ msgid "Host a game without using a server"
 msgstr "Ostatu joku bat zerbitzaria erabili gabe"
 
 #: src/game.cpp:1129
+#, fuzzy
 msgid "Hotseat Game"
-msgstr ""
+msgstr "Jokua gorde"
 
 #: src/game.cpp:1130
 msgid "Play a multiplayer game sharing the same machine"
@@ -8361,7 +8376,7 @@ msgstr "Ezin izan da joku mapa kargatu: "
 
 #: src/game.cpp:1345
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "OKERRAREN XEHETASUNAK:"
 
 #: src/game.cpp:1354
 #, fuzzy
@@ -8389,9 +8404,8 @@ msgid "Defeat:"
 msgstr "Gainditu:"
 
 #: src/gamestatus.cpp:476
-#, fuzzy
 msgid "Could not write to file"
-msgstr "Ezin izan da ostalariari konektatu."
+msgstr "Ezin izan da fitxategian idatzi"
 
 #: src/help.cpp:1057
 msgid "Advances to: "
@@ -8403,7 +8417,7 @@ msgstr "Trebetasunak:"
 
 #: src/help.cpp:1097
 msgid "Alignment: "
-msgstr ""
+msgstr "Lerrokatzea:"
 
 #: src/help.cpp:1101
 msgid "Required XP: "
@@ -8490,8 +8504,9 @@ msgid "Forward >"
 msgstr "Aurrera >"
 
 #: src/help.cpp:2288
+#, fuzzy
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "erreferentzia urruneko fitxategiari"
 
 #: src/help.cpp:2663
 msgid "The Battle for Wesnoth Help"
@@ -8544,20 +8559,19 @@ msgstr "Altuera:"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Mendilerro kopurua:"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Mendilerroaren gehiengo tamainua:"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
 msgstr "Herrixkak:"
 
 #: src/mapgen_dialog.cpp:105
-#, fuzzy
 msgid "Landform:"
-msgstr "Ausazkoa"
+msgstr "Lurmota:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
@@ -8565,7 +8579,7 @@ msgstr "Gaztelu harteko bideak"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 mosaiko"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
@@ -8588,13 +8602,12 @@ msgid "Choose host to connect to: "
 msgstr "Aukeratu konektatu nahi duzun ostalaria:"
 
 #: src/multiplayer.cpp:123 src/multiplayer.cpp:160
-#, fuzzy
 msgid "Connecting to Server..."
-msgstr "Zerbitzarira konektatu"
+msgstr "Zerbitzarira konektatzen..."
 
 #: src/multiplayer.cpp:133
 msgid "Connecting to remote host..."
-msgstr ""
+msgstr "Ostalari urrunera konektatzen:"
 
 #: src/multiplayer.cpp:142
 msgid ""
@@ -8639,7 +8652,7 @@ msgstr "Ordenagailuko jokalaria"
 
 #: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Erreten hutsa)"
 
 #: src/multiplayer_connect.cpp:462
 msgid "No non-random sides in the current era"
@@ -8652,7 +8665,7 @@ msgstr ""
 #: src/multiplayer_connect.cpp:486 src/multiplayer_lobby.cpp:105
 #: src/multiplayer_wait.cpp:146
 msgid "Game Lobby"
-msgstr ""
+msgstr "Joku atondoa"
 
 #: src/multiplayer_connect.cpp:492 src/multiplayer_connect.cpp:501
 msgid "Team"
@@ -8716,6 +8729,8 @@ msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
+"Garaipena\n"
+"@Arerioen nagusia(k) gainditu"
 
 #: src/multiplayer_connect.cpp:989
 msgid "Waiting for players to join..."
@@ -8739,7 +8754,7 @@ msgstr "Jokatzeko mapa:"
 
 #: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:204
 msgid "Use map settings"
-msgstr ""
+msgstr "Erabili maparen ezarpenak"
 
 #: src/multiplayer_create.cpp:51
 msgid "Fog Of War"
@@ -8840,19 +8855,16 @@ msgid "Players: "
 msgstr "Jokalariak: "
 
 #: src/multiplayer_lobby.cpp:29
-#, fuzzy
 msgid "Map"
-msgstr "Erabiltzailearen mapa"
+msgstr "Mapa"
 
 #: src/multiplayer_lobby.cpp:30
-#, fuzzy
 msgid "Settings"
-msgstr "Ezarpenak..."
+msgstr "Ezarpenak"
 
 #: src/multiplayer_lobby.cpp:30
-#, fuzzy
 msgid "Status"
-msgstr "Estatistikak"
+msgstr "Egoera"
 
 #: src/multiplayer_lobby.cpp:107
 msgid "Observe Game"
@@ -8947,13 +8959,13 @@ msgid "unit^Gold"
 msgstr "Urrea"
 
 #: src/network.cpp:79
+#, fuzzy
 msgid "invalid network handle"
-msgstr ""
+msgstr "%s(e)k ezin ditu geruzak kudeatu"
 
 #: src/network.cpp:112
-#, fuzzy
 msgid "Client disconnected"
-msgstr "Urruneko ostalariak deskonektatu egin du."
+msgstr "Bezoroak deskonektatu egin du."
 
 #: src/network.cpp:430
 #, fuzzy
@@ -8973,9 +8985,8 @@ msgid "You have been defeated!"
 msgstr "Gainditua izan zara!"
 
 #: src/playcampaign.cpp:159
-#, fuzzy
 msgid " replay"
-msgstr "errepikatu"
+msgstr "errepikapena"
 
 #: src/playcampaign.cpp:167
 msgid "Do you want to save a replay of this scenario?"
@@ -8990,9 +9001,8 @@ msgid "The game could not be saved"
 msgstr "Ezin izan da jokua gorde"
 
 #: src/playcampaign.cpp:216
-#, fuzzy
 msgid "Downloading next level..."
-msgstr "Kanpaina jeisten..."
+msgstr "Hurrengo maila jeisten..."
 
 #: src/playcampaign.cpp:285
 msgid "Do you want to save your game?"
@@ -9004,7 +9014,7 @@ msgstr "Guda leku ezezaguna: '"
 
 #: src/playlevel.cpp:602 src/playlevel.cpp:871
 msgid "The file you have tried to load is corrupt"
-msgstr ""
+msgstr "Kargatu nahi zenuen fitxategia ondatuta dago"
 
 #: src/playlevel.cpp:755
 msgid "Game Over"
@@ -9019,8 +9029,9 @@ msgid "Remaining gold: "
 msgstr "Gelditzen den urrea:"
 
 #: src/playlevel.cpp:842
+#, fuzzy
 msgid "Early finish bonus: "
-msgstr ""
+msgstr "Txanda azkarregi amaitu da: "
 
 #: src/playlevel.cpp:844
 msgid "per turn"
@@ -9207,9 +9218,8 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Gutxienez $cost urre izan behar duzu unitateak deidu ahal izateko"
 
 #: src/playturn.cpp:2053
-#, fuzzy
 msgid "Level"
-msgstr "maila"
+msgstr "Maila"
 
 #: src/playturn.cpp:2080
 msgid "Dismiss Unit"
@@ -9296,8 +9306,9 @@ msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Ezin izan da '$search' katea duen etiketa edo unitaterik aurkitu."
 
 #: src/playturn.cpp:2528
+#, fuzzy
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Hautatu gaien karpetak"
 
 #: src/playturn.cpp:2534
 msgid "New theme will take effect on next new or loaded game."
@@ -9420,37 +9431,43 @@ msgid "Observers:"
 msgstr "Ikusleak:"
 
 #: src/serialization/parser.cpp:98
+#, fuzzy
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "Uste gabeko '%s' hasierako etiketa %d lerroan, %d karakterea"
 
 #: src/serialization/parser.cpp:124
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr ""
 
 #: src/serialization/parser.cpp:139
+#, fuzzy
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Ezin izan da etiketa kendu!"
 
 #: src/serialization/parser.cpp:149 src/serialization/parser.cpp:185
 #, fuzzy
 msgid "Invalid tag name"
-msgstr "Baliogabeko garaia aukeratuta"
+msgstr "%s: '%s' erabiltzaile-izen baliogabea\n"
 
 #: src/serialization/parser.cpp:152
+#, fuzzy
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Ezin izan da etiketa kendu!"
 
 #: src/serialization/parser.cpp:168
+#, fuzzy
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Jaramonik ez `%s' eskema-izenari; balio gabea da: %s "
 
 #: src/serialization/parser.cpp:171
+#, fuzzy
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Ezin izan da etiketa kendu!"
 
 #: src/serialization/parser.cpp:173
+#, fuzzy
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Ezin izan da etiketa kendu!"
 
 #: src/serialization/parser.cpp:179
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
@@ -9459,23 +9476,25 @@ msgstr ""
 #: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 #, fuzzy
 msgid "Empty variable name"
-msgstr "Baliogabeko garaia aukeratuta"
+msgstr "$name|portua,$name|portua"
 
 #: src/serialization/parser.cpp:210
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 
 #: src/serialization/parser.cpp:238 src/serialization/parser.cpp:262
+#, fuzzy
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Katea espero nuen, %s eskuratu dut"
 
 #: src/serialization/parser.cpp:285
+#, fuzzy
 msgid " included from "
-msgstr ""
+msgstr "Iraungi hemendik %"
 
 #: src/serialization/parser.cpp:306
 msgid "$error at $pos"
-msgstr ""
+msgstr "$error $pos-an"
 
 #: src/titlescreen.cpp:200
 msgid "TitleScreen button^Tutorial"
@@ -9553,16 +9572,15 @@ msgstr "-- Wesnoth-eko liburukotea"
 
 #: src/unit.cpp:1074 src/unit.cpp:1201
 msgid "; "
-msgstr ""
+msgstr ";"
 
 #: src/unit.cpp:1153
 msgid "XP to advance"
-msgstr ""
+msgstr "Aurreratzeko EP"
 
 #: src/unit.cpp:1192
-#, fuzzy
 msgid ": "
-msgstr "BP: "
+msgstr ": "
 
 #: src/unit_types.cpp:331
 msgid "strikes"
