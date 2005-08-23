@@ -10,16 +10,17 @@ CVS HEAD:
    * improve layout of some parts of help (#14075)
  * campaigns
    * Eastern Invasion: revisions to Weldyn Under Attack and Evacuation
+   * The Rise of Wesnoth: fixed glitch in The River Road (forum thread 7148)
  * graphics and sound
    * new unit portraits for Ghoul, Mermaid Initiate, Merman Fighter,
-     Merman Hunter,Naga Fighter, Nagini Fighter
-   * revised unit images and animations for Duelist, Elvish Shyde, Fencer,
-     Master at Arms
+       Merman Hunter,Naga Fighter, Nagini Fighter
+   * revised unit images and/or animations for Duelist, Elvish Shyde, Fencer,
+       Heavy Infantryman, Master at Arms, Shock Trooper
    * fixed missing storm trident image (#14111)
    * new observer icon
    * fixed wrong ice missile image used by Elvish High Lord (#14132)
    * fixed Lich using wrong image (#14139)
-   * removed tooltip picture (#14134): with #14084 present this cannot be fixed
+   * replaced tooltip picture (#14134), note still English and not translatable
    * fixed broken scepter of fire and scepter attack icons (#14028,#14231)
  * user interface
    * fixed fonts sometimes not being found, eg. on BeOS
@@ -36,6 +37,8 @@ CVS HEAD:
    * show wait cursor for long operations, if not using color cursors (#12670)
    * part-fix campaign text overflowing due to width being too narrow (#13961)
    * fixed tooltips disappearing when using dfool's theme (#14084)
+ * revised multiplayer maps: Bluewater Province, Charge, Hamlets,
+     Hornshark Island, Meteor Lake, Sablestone Delta
  * fixed AI units not getting rest-healing, causing replay errors
  * fixed configure options --with-icondir and --with-desktopdir (#14100)
  * changed Merman hoplite to bring it up to date with changes to steadfast
@@ -43,7 +46,7 @@ CVS HEAD:
  * made checksums work on AMD64
  * revised network code, try to use non-blocking I/O if available
  * new description= attribute of [attack], name="x" now implies
-   description=_"x" and icon="attacks/x.png" if not specified (#12788,#14113)
+     description=_"x" and icon="attacks/x.png" if not specified (#12788,#14113)
  * various bug fixes and code cleanups
 
 Version 0.9.5:
