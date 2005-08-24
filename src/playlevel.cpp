@@ -473,6 +473,12 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		//instead of starting a fresh one
 		const bool loading_game = lvl["playing_team"].empty() == false;
 
+		//pre-start events must be executed before any GUI operation,
+		//as those may cause the display to be refreshed.
+		if(!loading_game) {
+			game_events::fire("prestart");
+		}
+
 		gui.begin_game();
 		gui.adjust_colours(0,0,0);
 
@@ -493,9 +499,6 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 			first_player = 0;
 		}
 
-		if(!loading_game) {
-			game_events::fire("prestart");
-		}
 		for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
 			clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
 		}
