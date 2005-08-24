@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.1+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-08 13:32+0200\n"
-"PO-Revision-Date: 2005-08-17 02:47+0200\n"
+"PO-Revision-Date: 2005-08-24 17:41+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -365,7 +365,6 @@ msgid "Movement"
 msgstr "Movimiento"
 
 #: data/help.cfg:123
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -380,13 +379,13 @@ msgstr ""
 "la unidad que desea mover, y a continuación el hexágono donde desea que se "
 "mueva. Cuando está seleccionada una unidad, se iluminan todos los hexágonos "
 "a los que puede moverse, y se oscurecen aquellos a los que no. Al llevar el "
-"ratón a uno de los hexágonos oscuros, aparecerá el número de turnos que la "
-"unidad necesitará para llegar hasta allí, y si pincha en él hará que la "
-"unidad se mueva hacia allá por el camino más rápido durante el turno en "
+"ratón a uno de los hexágonos oscuros, aparecerá el valor de defensa que "
+"tendría la unidad en caso de encontrarse en él, así como el número de turnos "
+"que la unidad necesitará para llegar hasta allí, y si pincha en él hará que "
+"la unidad se mueva hacia allá por el camino más rápido durante el turno en "
 "curso y los siguientes."
 
 #: data/help.cfg:125
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -405,13 +404,14 @@ msgstr ""
 "Cada unidad tiene un determinado número de puntos de movimiento, que gasta "
 "cuando se mueve hacia otro hexágono. La cantidad depende del terreno que "
 "haya en esa casilla. Por ejemplo, la pradera casi siempre tiene un coste de "
-"1 punto de movimiento. Dependiendo del tipo de unidad, el coste será "
-"distinto: en bosques, por ejemplo, las unidades de elfos sólo gastan 1 punto "
-"de movimiento por casilla, la mayoría de las unidades de humanos y orcos "
-"gastan 2, y las tropas a caballo gastan 3. Puede conocer cuántos puntos le "
-"cuesta a una unidad entrar en un determinado tipo de terreno pinchando sobre "
-"ella con el botón derecho, seleccionando «Descripción de unidad», y después "
-"mirando en <italic>text='Modificadores por terreno'</italic>."
+"1 punto de movimiento. Dependiendo del tipo de unidad, el coste para entrar "
+"en cada hexágono será distinto: en bosques, por ejemplo, las unidades de "
+"elfos sólo gastan 1 punto de movimiento por casilla, la mayoría de las "
+"unidades de humanos y orcos gastan 2, y las tropas a caballo gastan 3. Puede "
+"conocer cuántos puntos le cuesta a una unidad entrar en un determinado tipo "
+"de terreno pinchando sobre ella el botón derecho del ratón, seleccionando "
+"«Descripción de unidad», y después mirando en <italic>text='Modificadores "
+"por terreno'</italic>."
 
 #: data/help.cfg:127
 msgid ""
@@ -7408,13 +7408,12 @@ msgid "Mudcrawler"
 msgstr "Reptador de barro"
 
 #: data/units/Mudcrawler.cfg:18
-#, fuzzy
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
-"Los reptadores de barro gigantes son construcciones máquinas de tierra y "
-"agua. Atacan con chorros de agua hirviente a sus víctimas."
+"Los reptadores de barro gigantes son construcciones mágicas de tierra y "
+"agua. Atacan vomitando pedazos de barro hacia sus oponentes."
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
@@ -7864,15 +7863,15 @@ msgid "Orcish Warlord"
 msgstr "Señor de la Guerra"
 
 #: data/units/Orcish_Warlord.cfg:17
-#, fuzzy
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with an iron hand."
 msgstr ""
-"Sólo los orcos con gran talento y fuerza pueden ser Señores de la Guerra. "
-"Diestros tanto en la espada como en el arco, estos guerreros bestiales "
-"lideran los grupos de guerra orcos."
+"Sólo los orcos con gran talento y fuerza sin rival pueden ser Señores de la "
+"Guerra. Maestros con la espada, e incluso con cierta habilidad con el arco, "
+"estos guerreros más parecidos a bestias lideran a los suyos con mano de "
+"hierro."
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
@@ -8434,16 +8433,16 @@ msgid "Skeleton"
 msgstr "Esqueleto"
 
 #: data/units/Skeleton.cfg:16
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
-"Un guerrero caído en la batalla y resucitado con artes oscuras. Como todos "
-"los no muertos, son débiles a ataques sagrados y de fuego, y resistentes a "
-"las armas cortantes."
+"Los esqueletos son guerreros caídos en la batalla y resucitados con artes "
+"oscuras. Sin apenas voluntad, y constantes en sus propósitos, no temen a la "
+"muerte o el dolor, y su mera presencia a menudo aterrorizará a cualquiera "
+"que ose desafiar a su señor."
 
 #: data/units/Skeleton.cfg:61 data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -8904,37 +8903,46 @@ msgid ""
 "renew the wraith. Wraiths have very unusual resistances to damage, and move "
 "quite slowly over open water."
 msgstr ""
+"Estas formas torturadas de lo que una vez fueron guerreros se cuentan entre "
+"las cosas más aterradoras que un nigromante puede crear, y a las que una "
+"espada atravesará, como si fuesen aire. Lo que inspira tal terror es la "
+"creencia de que estos seres son invencibles, aunque esto esté lejos de ser "
+"cierto.\n"
+"\n"
+"El motivo es que los propios encantamientos que permiten seguir «viva» a la "
+"criatura pueden curarla, gracias a aquellos que se enfrenten a ella.\n"
+"\n"
+"Notas: un golpe de su espada producirá un drenaje de vida de la víctima, "
+"para sanar al espectro. Los espectros tienen una resistencia especial al "
+"daño, y se mueven muy despacio sobre aguas abiertas."
 
 #: data/units/Yeti.cfg:3
 msgid "Yeti"
 msgstr "Yeti"
 
 #: data/units/Yeti.cfg:31
-#, fuzzy
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
-"Los yetis son unos gigantes humanoides que viven en las montañas. Son pocos "
-"los que han sobrevivido a un encuentro con uno, y son muchos los que dudan "
-"de su existencia."
+"Poco se sabe sobre los yetis, unas criaturas simiescas que se dice viven en "
+"lejanas montañas de nieves perpetuas. Algunos sostienen haber visto a uno, y "
+"son muchos los que dudan de su existencia."
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
 msgstr "Ogro joven"
 
 #: data/units/Young_Ogre.cfg:16
-#, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into the army to be "
 "trained. They cannot manage weapons skillfully, but that is of little "
 "concern given their strength."
 msgstr ""
-"Cuando aún son jóvenes, los ogros entran en el ejército para recibir "
-"entrenamiento. Dado que no manejan sus armas de una manera muy habilidosa, "
-"se les entrega un gran cuchillo, esperando que sean lo suficientemente "
-"listos como para cortarle la garganta a los enemigos y no a ellos mismos."
+"Cuando aún son jóvenes, los ogros a veces son capturados y alistados en el "
+"ejército para recibir entrenamiento. No manejan sus armas de una manera muy "
+"habilidosa, pero eso no es mucho problema, dada su fuerza."
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
@@ -9176,9 +9184,8 @@ msgid "defender vulnerability vs"
 msgstr "debilidad del defensor contra"
 
 #: src/actions.cpp:599
-#, fuzzy
 msgid " (+steadfast)"
-msgstr "firme"
+msgstr " (+firme)"
 
 #: src/actions.cpp:661
 msgid "(both should survive)"
@@ -9647,13 +9654,14 @@ msgid "Choose your preferred language:"
 msgstr "Elija su idioma preferido:"
 
 #: src/game.cpp:1340
-#, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
-msgstr "El mapa del juego no se ha podido cargar: "
+msgstr ""
+"La/s siguiente/s campaña/s adicionales contienen errores y no se ha/n podido "
+"cargar: "
 
 #: src/game.cpp:1345
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "DETALLES DEL ERROR:"
 
 #: src/game.cpp:1354
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -9680,9 +9688,8 @@ msgid "Defeat:"
 msgstr "Derrota:"
 
 #: src/gamestatus.cpp:476
-#, fuzzy
 msgid "Could not write to file"
-msgstr "No ha sido posible conectar al servidor."
+msgstr "No ha sido posible escribir en el fichero."
 
 #: src/help.cpp:1057
 msgid "Advances to: "
@@ -9786,16 +9793,15 @@ msgstr "Adelante >"
 
 #: src/help.cpp:2288
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "Referencia a apartado desconocido: "
 
 #: src/help.cpp:2663
 msgid "The Battle for Wesnoth Help"
 msgstr "Sección de ayuda de La Batalla por Wesnoth"
 
 #: src/help.cpp:2710
-#, fuzzy
 msgid "Parse error when parsing help text: "
-msgstr "Error durante el juego: "
+msgstr "Error durante el procesado de la ayuda: "
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -10035,9 +10041,8 @@ msgid "Map to play:"
 msgstr "Mapa para jugar:"
 
 #: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:204
-#, fuzzy
 msgid "Use map settings"
-msgstr "Preferencias de equipo:"
+msgstr "Usar ajustes del mapa"
 
 #: src/multiplayer_create.cpp:51
 msgid "Fog Of War"
@@ -10069,7 +10074,7 @@ msgstr "La cantidad de experiencia necesaria para poder subir de nivel"
 
 #: src/multiplayer_create.cpp:99
 msgid "Use scenario specific settings"
-msgstr ""
+msgstr "Usar ajustes específicos del escenario"
 
 #: src/multiplayer_create.cpp:102
 msgid "Enemy units cannot be seen unless they are in range of your units"
@@ -10142,9 +10147,8 @@ msgid "Map"
 msgstr "Mapa"
 
 #: src/multiplayer_lobby.cpp:30
-#, fuzzy
 msgid "Settings"
-msgstr "Ajustes..."
+msgstr "Ajustes"
 
 #: src/multiplayer_lobby.cpp:30
 msgid "Status"
@@ -10244,21 +10248,19 @@ msgstr "Oro"
 
 #: src/network.cpp:79
 msgid "invalid network handle"
-msgstr ""
+msgstr "manipulador de red inválido"
 
 #: src/network.cpp:112
-#, fuzzy
 msgid "Client disconnected"
-msgstr "Equipo remoto desconectado."
+msgstr "Cliente desconectado."
 
 #: src/network.cpp:430
-#, fuzzy
 msgid "Could not add socket to socket set"
-msgstr "No ha sido posible conectar al servidor."
+msgstr "No ha sido posible añadir un socket más."
 
 #: src/network.cpp:441
 msgid "Could not send initial handshake"
-msgstr ""
+msgstr "No se pudo enviar el saludo inicial."
 
 #: src/playcampaign.cpp:145
 msgid "Defeat"
@@ -10269,9 +10271,8 @@ msgid "You have been defeated!"
 msgstr "¡Has sido derrotado!"
 
 #: src/playcampaign.cpp:159
-#, fuzzy
 msgid " replay"
-msgstr "repetición"
+msgstr " repetición"
 
 #: src/playcampaign.cpp:167
 msgid "Do you want to save a replay of this scenario?"
@@ -10283,12 +10284,11 @@ msgstr "Nombre:"
 
 #: src/playcampaign.cpp:176 src/playcampaign.cpp:294 src/playturn.cpp:1645
 msgid "The game could not be saved"
-msgstr "La partida no se ha podido guardar"
+msgstr "La partida no se ha podido guardar."
 
 #: src/playcampaign.cpp:216
-#, fuzzy
 msgid "Downloading next level..."
-msgstr "Descargando campaña..."
+msgstr "Descargando próximo nivel..."
 
 #: src/playcampaign.cpp:285
 msgid "Do you want to save your game?"
@@ -11548,17 +11548,6 @@ msgstr "neutral"
 #~ "ejércitos goblins. Criados en las oscuras cavernas de los orcos, son "
 #~ "competentes incluso en las montañas, al contrario que las demás tropas "
 #~ "montadas."
-
-#~ msgid ""
-#~ "Wraiths are some of the most powerful ghosts in the undead ranks. They "
-#~ "can summon a spectral sword that drains the life out of their foes, "
-#~ "thereby strengthening themselves. They also have a terrible wail that "
-#~ "freezes the heart of the weak."
-#~ msgstr ""
-#~ "Los fantasmas más fuertes en las filas no muertas son los espectros. "
-#~ "Pueden convocar una espada espectral que drena la vida de sus enemigos, "
-#~ "que congelan los corazones de los débiles. Dicen que aquellos muertos por "
-#~ "el lamento  vuelven como espectros para servir al que los mató."
 
 #~ msgid "Vera.ttf"
 #~ msgstr "Vera.ttf"
