@@ -235,12 +235,12 @@ std::string interpolate_variables_into_string(const std::string &str, variable_s
 
 //prepend all special characters with a backslash
 //special characters are:
-//#@{}+-,\*
+//#@{}+-,\*=
 std::string &escape(std::string &str)
 {
 	std::string::size_type pos = 0;
 	do {
-		pos = str.find_first_of("#@{}+-,\\*", pos);
+		pos = str.find_first_of("#@{}+-,\\*=", pos);
 		if (pos == std::string::npos)
 			break;
 		str.insert(pos, 1, '\\');
