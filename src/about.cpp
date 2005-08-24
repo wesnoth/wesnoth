@@ -146,6 +146,7 @@ std::vector<std::string> get_text() {
 		"_" N_("+Catalan Translation"),
 		"-   Carles Company (brrr)",
 		"-   Dan Rosàs Garcia (focks)",
+		"-   Daniel López (Azazelo)",
 		"-   Jonatan Alamà (tin)",
 		"-   Jordà Polo (ettin)",
 		"-   Mark Recasens",
@@ -156,10 +157,14 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Czech Translation"),
 		"-   David Nečas (Yeti)",
+		"-   Lukáš Faltýnek",
+		"-   Martin Šín",
 		"-   Mintaka",
 		"-   Petr Kopač (Ferda)",
 		"-   Petr Kovár (Juans)",
+		"-   Rudolf Orság",
 		"-   Sofronius",
+		"-   Vít Komárek",
 		"-   Vít Krčál",
 
 		"_" N_("+Danish Translation"),
