@@ -7,11 +7,11 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth-editor 0.8.8\n"
+"Project-Id-Version: Wesnoth-editor 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:22+0200\n"
-"PO-Revision-Date: 2005-04-01 16:05+0200\n"
-"Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
+"PO-Revision-Date: 2005-08-25 20:53+0200\n"
+"Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,49 +27,47 @@ msgstr "Recensere"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
-msgstr ""
+msgstr "Hexagones scribere"
 
 #: src/editor/editor.cpp:162
-#, fuzzy
 msgid "Fill"
-msgstr "Archivum"
+msgstr "Implere"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Locus initialis lusoris statuere"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
-msgstr ""
+msgstr "Magnificare"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom out"
-msgstr ""
+msgstr "Parvificare"
 
 #: src/editor/editor.cpp:170
 msgid "Undo"
-msgstr ""
+msgstr "Infectum reddere"
 
 #: src/editor/editor.cpp:172
 msgid "Redo"
-msgstr ""
+msgstr "Rursus facere"
 
 #: src/editor/editor.cpp:174
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Ad magnitudinem solitam"
 
 #: src/editor/editor.cpp:176
 msgid "Toggle grid"
-msgstr ""
+msgstr "Rete ponere/tollere"
 
 #: src/editor/editor.cpp:178
-#, fuzzy
 msgid "Resize the map"
-msgstr "Magnitudinem Chartae Mutare"
+msgstr "Magnitudinem chartae mutare"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
-msgstr ""
+msgstr "Chartam repercutere"
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
@@ -80,9 +78,8 @@ msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Charta iam adest. Visne eam superscribere?"
 
 #: src/editor/editor.cpp:405
-#, fuzzy
 msgid "Player "
-msgstr "Lusor"
+msgstr "Lusor "
 
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
@@ -101,6 +98,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
+"Monitio: Litterae illicitae in nomine chartae inveniuntur. Necesse est "
+"salvare sub nomen aliud."
 
 #: src/editor/editor.cpp:483 src/editor/editor.cpp:562
 msgid "The file does not contain a valid map."
@@ -136,16 +135,15 @@ msgstr "Charta non servare potest: $msg"
 
 #: src/editor/editor.cpp:1142
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Mendum: Littera illicita in nomini pligae."
 
 #: src/editor/editor.cpp:1198
 msgid "Player"
 msgstr "Lusor"
 
 #: src/editor/editor_dialogs.cpp:47
-#, fuzzy
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Mutationes tuae ad chartam perdentur. Pergere?"
+msgstr "Mutationes tuae ad chartam perdentur. Visne pergere?"
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
 msgid "Create New Map"
@@ -194,9 +192,8 @@ msgid "Scroll Speed:"
 msgstr "Velocitas Gyri:"
 
 #: src/editor/editor_dialogs.cpp:282
-#, fuzzy
 msgid "Toggle Full Screen"
-msgstr "Scrinium Totum"
+msgstr "Scrinium Totum/In Fenestra"
 
 #: src/editor/editor_dialogs.cpp:289
 msgid "Show Grid"
@@ -216,7 +213,7 @@ msgstr "Magnitudinem Chartae Mutare"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
-msgstr ""
+msgstr "Bene"
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -232,7 +229,7 @@ msgstr "Volvi (hoc dimensiones chartae mutare potest)"
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Recensor Chartarum Proelii pro Occidiseptentrione"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -244,48 +241,47 @@ msgstr "Recessus"
 
 #: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
-msgstr ""
+msgstr "Generator Chartarum"
 
 #: src/mapgen_dialog.cpp:99
-#, fuzzy
 msgid "Players:"
-msgstr "Lusor"
+msgstr "Lusores:"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Numerus Collum:"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Magnitudo Maxima Collum:"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "Pagi:"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "Forma terrae:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Viae inter Castella"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "pro M hexagones"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "Maritima"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "Mediterranea"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "Insula"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
