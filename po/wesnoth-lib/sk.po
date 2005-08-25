@@ -8,13 +8,12 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:22+0200\n"
-"PO-Revision-Date: 2004-12-15 20:11+0100\n"
+"PO-Revision-Date: 2005-08-11 19:47+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -22,11 +21,11 @@ msgstr "Ďalšia jednotka"
 
 #: src/hotkeys.cpp:46
 msgid "Previous unit"
-msgstr ""
+msgstr "Predchádzajúca jednotka"
 
 #: src/hotkeys.cpp:47
 msgid "Hold Position"
-msgstr ""
+msgstr "Stoj na mieste"
 
 #: src/hotkeys.cpp:48
 msgid "End Unit Turn"
@@ -57,13 +56,12 @@ msgid "Default Zoom"
 msgstr "Zaostri štandardne"
 
 #: src/hotkeys.cpp:55 src/preferences.cpp:887
-#, fuzzy
 msgid "Toggle Full Screen"
-msgstr "Celá obrazovka"
+msgstr "Celá obrazovka (zapni/vypni)"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
-msgstr ""
+msgstr "Záber obrazovky"
 
 #: src/hotkeys.cpp:57
 msgid "Accelerated"
@@ -183,7 +181,7 @@ msgstr "Ulož ako"
 
 #: src/hotkeys.cpp:87
 msgid "Set Player's keep"
-msgstr ""
+msgstr "Nastav hráčovu pevnosť"
 
 #: src/hotkeys.cpp:88
 msgid "Flood Fill"
@@ -227,7 +225,7 @@ msgstr "Kresli terén"
 
 #: src/hotkeys.cpp:98
 msgid "Refresh Image Cache"
-msgstr ""
+msgstr "Obnov pamäť obrázkov"
 
 #: src/hotkeys.cpp:100
 msgid "Delay Shroud Updates"
@@ -337,16 +335,15 @@ msgstr "Nastav gamma"
 
 #: src/preferences.cpp:900
 msgid "Reverse Time Graphics"
-msgstr ""
+msgstr "Otoč zobrazenie času"
 
 #: src/preferences.cpp:901
-#, fuzzy
 msgid "Sound effects"
-msgstr "Žiarivé efekty"
+msgstr "Zvukové efekty"
 
 #: src/preferences.cpp:902
 msgid "Music"
-msgstr ""
+msgstr "Hudba"
 
 #: src/preferences.cpp:904
 msgid "Music Volume:"
@@ -366,7 +363,7 @@ msgstr "Rýchlosť rolovania:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "Zvukové efekty (zapni/vypni)"
 
 #: src/preferences.cpp:922
 msgid "Change the sound effects volume"
@@ -374,7 +371,7 @@ msgstr "Nastav hlasitosť zvukových efektov"
 
 #: src/preferences.cpp:925
 msgid "Music on/off"
-msgstr ""
+msgstr "Hudba (zapni/vypni)"
 
 #: src/preferences.cpp:929
 msgid "Change the music volume"
@@ -430,7 +427,7 @@ msgstr ""
 
 #: src/preferences.cpp:972
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "Vyber si, či sa slnko pohybuje zľava doprava alebo sprava doľava."
 
 #: src/preferences.cpp:975
 msgid "Use colored mouse cursors (may be slower)"
@@ -445,14 +442,12 @@ msgid "View and configure keyboard shortcuts"
 msgstr "Zobraz a nastav klávesové skratky"
 
 #: src/preferences.cpp:1158
-#, fuzzy
 msgid "yes"
-msgstr "Áno"
+msgstr "áno"
 
 #: src/preferences.cpp:1160
-#, fuzzy
 msgid "no"
-msgstr "Späť"
+msgstr "nie"
 
 #: src/preferences.cpp:1219
 msgid "Prefs section^General"
@@ -468,7 +463,7 @@ msgstr "Zvuk"
 
 #: src/preferences.cpp:1222
 msgid "Advanced section^Advanced"
-msgstr ""
+msgstr "Rozšírené"
 
 #: src/preferences.cpp:1278
 msgid "There are no alternative video modes available"
@@ -492,11 +487,11 @@ msgstr "Stlač klávesu, ktorú chceš nastaviť"
 
 #: src/preferences.cpp:1362
 msgid "Action"
-msgstr ""
+msgstr "Akcia"
 
 #: src/preferences.cpp:1362
 msgid "Binding"
-msgstr ""
+msgstr "Pripájanie"
 
 #: src/preferences.cpp:1374
 msgid "Change Hotkey"
@@ -516,7 +511,7 @@ msgstr "Chyba"
 
 #: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/show_dialog.cpp:422
 msgid "Yes"
@@ -537,17 +532,8 @@ msgstr "Zavri"
 
 #: src/show_dialog.cpp:839
 msgid "Receiving data..."
-msgstr ""
+msgstr "Prijímam údaje..."
 
 #: src/show_dialog.cpp:870
 msgid "KB"
 msgstr "KB"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Celá obrazovka"
-
-#~ msgid "Set Player Start Position"
-#~ msgstr "Nastav hráčovu štartovú pozíciu"
-
-#~ msgid "Ok"
-#~ msgstr "OK"
