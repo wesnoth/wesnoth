@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-08-16 10:11+0200\n"
+"PO-Revision-Date: 2005-08-25 13:16+0200\n"
 "Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -4204,8 +4204,8 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
-"Berserkki:\n"
-"Hyökätessä berserkkiyksiköt taistelevat, kunnes jompikumpi osapuoli kuolee."
+"Hurma:\n"
+"Hyökätessä hurmayksiköt taistelevat, kunnes jompikumpi osapuoli kuolee."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -5337,13 +5337,16 @@ msgstr ""
 
 #: data/units/Drake_Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr "Draakkiterämestari"
+msgstr "Draakkien Miekkamestari"
 
 #: data/units/Drake_Blademaster.cfg:20
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of this is the black and white warpaint they display in battle."
 msgstr ""
+"Ne draakit jotka saavuttavat huipun miekan käytön taidossa liittyvät "
+"erityiseen järjestöön. Tämän paljastaa heidän taistelussa käyttämänsä "
+"mustavalkoinen sotamaalaus."
 
 #: data/units/Drake_Blademaster.cfg:46 data/units/Drake_Burner.cfg:53
 #: data/units/Drake_Fighter.cfg:56 data/units/Drake_Fire.cfg:54
@@ -5356,7 +5359,7 @@ msgstr "tulihenkäys"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
-msgstr "Draakkipolttaja"
+msgstr "Polttodraakki"
 
 #: data/units/Drake_Burner.cfg:18
 msgid ""
@@ -5365,10 +5368,13 @@ msgid ""
 "This, coupled with their sheer size and clawed hands makes for a dangerous "
 "foe in combat."
 msgstr ""
+"Polttodraakit ovat todella perineet muinaisten esi-isiänsi kyvyt, etenkin "
+"kyvyn sylkeä tulta. He ovat tästä ylpeitä mutta harvinaisia. Myös heidän "
+"suuri kokonsa ja valtavat kyntensä auttavat heitä taistelussa."
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
-msgstr "Draakkitörmääjä"
+msgstr "Iskijädraakki"
 
 #: data/units/Drake_Clasher.cfg:20
 msgid ""
@@ -5387,10 +5393,24 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
+"Iskijät eivät osaa lentää saati sylkeä tulta ja useimmat olettavat että "
+"heidän siirtymisensä lähitaisteluun johtuu vammasta, yrityksestä saada "
+"hyötyä jostain mikä muuten olisi haitta. On mahdollista että heillä on "
+"jonkinlainen lievä heikkous näissä taidossa vaikka ne jotka tätä teoriaa "
+"tukevat eivät ota huomioon miten erityisen hyviä he ovat taistelemaan muita "
+"draakkeja vastaan.\n"
+"\n"
+"Todellisuudessa he ovat draakkien lainvartijoita ja vaikka nykyään heidän "
+"aseensa ovat lähinnä seremoniaa varten ne eivät ole yhtään vähemmän "
+"tehokkaita. Kohdatessaan heikommat rodut he huomasivat että heidän "
+"luonnollinen kokonsa ja voimansa olivat itsessään vahvoja aseita, mutta kun "
+"tähän lisätään heidän kastinsa varustus, nämä soturit eivät jaa muiden "
+"draakkien heikkouksia, kuten vahva haavoittuvaisuus keihätä ja nuolia "
+"vastaan."
 
 #: data/units/Drake_Enforcer.cfg:3
 msgid "Drake Enforcer"
-msgstr "Draakkipakottaja"
+msgstr "Käskijädraakki"
 
 #: data/units/Drake_Enforcer.cfg:19
 msgid ""
@@ -5398,6 +5418,9 @@ msgid ""
 "hours at the forge have provided them with a bristling array of weaponry, "
 "and have clad them head to toe in shining armor."
 msgstr ""
+"Suuret käskijädraakit ovat rotunsa raa'an voiman ruumillistuma. Käytettyään "
+"pitkiä aikoja ahjossa he ovat luoneet itselleen suuren asevarustuksen ja "
+"pukeutuneet päästä varpaisiin kiiltävään panssariin."
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -5426,6 +5449,9 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
+"Suurit tulidraakit ovat sisäisen tulensa herroja. Kiiltävässä panssarissaan "
+"he sylkevät tulta vihollistensa päälle todistaen kansansa voiman ja "
+"arvokkuuden."
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
@@ -5442,10 +5468,17 @@ msgid ""
 "it to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"Sanotaan että draakkien muinaisimmilla suvuilla, lohikäärmeiden suorilla "
+"perillisillä on suonissaan tulta, ei verta. Se että he osaavat sylkeä tulta "
+"vahvistaa uskoa tähän vaikka kukaan ei jostain syystä oli yrittänyt leikata "
+"yhtä auki saadakseen selville.\n"
+"\n"
+"Huomio: Tulisydämen johtamiskyky sallii viereisissä heksoissa olevien "
+"matalatasoisimpien yksiköiden tehdä lisää vahinkoa taistelussa."
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
-msgstr "Draakkisoihtu"
+msgstr "Lieskadraakki"
 
 #: data/units/Drake_Flare.cfg:22
 msgid ""
@@ -5457,10 +5490,16 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"Draakit ovat muinainen ja viisas rotu. Ne joita draakkien viholliset "
+"kutsuvat lieskoiksi pyrkivät tulemaan kansansa johtajiksi sekä sodassa että "
+"rauhassa.\n"
+"\n"
+"Huomio: Lieskan johtamiskyky sallii viereisissä heksoissa olevien "
+"matalatasoisimpien yksiköiden tehdä lisää vahinkoa taistelussa."
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
-msgstr "Draakkigladiaattori"
+msgstr "Gladiaattoridraakki"
 
 #: data/units/Drake_Gladiator.cfg:18
 msgid ""
@@ -5471,10 +5510,15 @@ msgid ""
 "maces which complement their already impressive array. Their intense focus "
 "on their weapons comes at the slight expense of their defensive abilities."
 msgstr ""
+"Gladiaattori kulkevat täysin eri polkua kuin viiltäjät. Harjoittelun sijaan "
+"he keskittyvät aseiden valmistukseen, ollen draakkiyhteiskunnan seppiä - "
+"joten he saavat parhaat aseet, terävimmät miekat ja keihäät ja nuijat jotka "
+"tukevat heidän valmiiksi vaikuttavaa varustustaan. Heidän erinomaisen "
+"aseistuksensa kääntöpuoli on lievästi huonompi puolustus."
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
-msgstr "Draakkiliitäjä"
+msgstr "Liitodraakki"
 
 #: data/units/Drake_Glider.cfg:20
 msgid ""
@@ -5498,7 +5542,7 @@ msgstr "lämäytys"
 
 #: data/units/Drake_Hurricane.cfg:3
 msgid "Hurricane Drake"
-msgstr "Hurrikaanidraakki"
+msgstr "Pyörremyrskydraakki"
 
 #: data/units/Drake_Hurricane.cfg:19
 msgid ""
@@ -5506,13 +5550,13 @@ msgid ""
 "those drakes which are gifted with flight. Soaring high in the air, they can "
 "see past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
-"Hurrikaanidraakit ovat ilmojen herroja, lentävien draakkien eliittiä. "
+"Pyörremyrskydraakit ovat ilmojen herroja, lentävien draakkien eliittiä. "
 "Lentäen korkealla ilmassa, he näkevät maaston yli ja ampuvat estoitta tulta "
 "viholliinsa."
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
-msgstr "Helvetindraakki"
+msgstr "Pätsidraakki"
 
 #: data/units/Drake_Inferno.cfg:19
 msgid ""
@@ -5522,6 +5566,10 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
+"Pätsidraakiit ovat tulen herroja ja haastavat esi-isänsä lohikäärmeet sen "
+"käyttökyvyssä. Tämän luonnollisen kyvyn takia he eivät vahingoitu tulesta. "
+"Loistava, liekenvärinen panssari jota he käyttävät on ylpeän ja vahvan "
+"kastin merkki, ideaalin johon heidän vähäisemmät sukulaisensa pyrkivät."
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
@@ -5540,7 +5588,7 @@ msgstr ""
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
-msgstr "Draakkiviiltäjä"
+msgstr "Viiltäjädraakki"
 
 #: data/units/Drake_Slasher.cfg:19
 msgid ""
@@ -5550,6 +5598,12 @@ msgid ""
 "boar. Their training has also enhanced their stamina and defensive skills, "
 "which is a major advantage over their close cousins the Gladiators."
 msgstr ""
+"Villtäjät ovat iskijöitä jotka ovat päättäneet erikoistua hilparin käyttöön "
+"miekan ja keihään sijasta. Heidän suuri kokonsa sallii heidän käyttää "
+"valtavia aseita, tarpeeksi suuria lävistääkseen hevosen kuten mies lävitäisi "
+"villisian. Heidän koulutuksensa on myös parantanut heidän kestoaan ja "
+"puolustustaitojaan, mikä on heidän suuri etunsa läheisiin sukulaisiinsa, "
+"gladiaattoreihin, verrattuna."
 
 #: data/units/Drake_Slasher.cfg:25 data/units/Drake_Slasher.cfg:43
 #: data/units/Drake_Warden.cfg:26 data/units/Drake_Warden.cfg:44
@@ -5566,7 +5620,7 @@ msgstr "ensi-isku"
 
 #: data/units/Drake_Warden.cfg:4
 msgid "Drake Warden"
-msgstr "Draakkivartija"
+msgstr "Vartijadraakki"
 
 #: data/units/Drake_Warden.cfg:20
 msgid ""
@@ -5575,20 +5629,24 @@ msgid ""
 "on this earth would dare stand against them. The Wardens' weapon of choice "
 "is the halberd, which they use to great effect."
 msgstr ""
+"Vartija on iskijäkastin huipulla. Heidät valitaan taidokkaimmista "
+"viiltäjistä. He ovat kasvattaneet mahtinsa tasolla jota vastaan vain harva "
+"soturi maan päällä uskaltaa vastustaa. Vartijan lempiase on hilpari, jota he "
+"käyttävät erittäin tehokkaasti."
 
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "Draakkisoturi"
 
 #: data/units/Drake_Warrior.cfg:19
-#, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike withering blows, and to withstand punishment in equal measure."
 msgstr ""
-"Draakkitaistelijat käyttävät käyriä sapeleitaan taidokkaasti ja osaavat "
-"sylkeä tulta. Parhaat draakkitaistelijat tulevat loputa draakkisotureiksi."
+"Draakkisoturit käyttävät miekkoja taidokkaasti ja sylkevät tulta kuten esi-"
+"isänsä. Heidän suuri voimansa sallii heidän lyödä tuhoisia lyöntejä ja "
+"kestää vastaavaa vahinkoa."
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
@@ -5654,11 +5712,11 @@ msgstr ""
 #: data/units/Duelist.cfg:67 data/units/Fencer.cfg:78
 #: data/units/Master_at_Arms.cfg:38
 msgid "rapier"
-msgstr "pistomiekka"
+msgstr "rapiiri"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
-msgstr "Kääpiöberserkkeri"
+msgstr "Hurmoskääpiö"
 
 #: data/units/Dwarvish_Berserker.cfg:17
 msgid ""
@@ -5667,21 +5725,22 @@ msgid ""
 "battle is entered, Dwarvish Berserkers attack ferociously, continuing to "
 "push the attack until either they or their enemy lies dead."
 msgstr ""
-"Kääpiöt ovat muinainen rotu voimakkaita taistelijoita. Heidän berserkkinsä "
-"unohtavat kaiken puolustuksensa massiivisen vahingon hyväksi. Kun berserkki "
-"päätyy taisteluun, hän taistelee kunnes hän kuolee tai voittaa vihollisensa."
+"Kääpiöt ovat muinainen rotu voimakkaita taistelijoita. Heidän "
+"hurmoskääpiönsä unohtavat kaiken puolustuksensa massiivisen vahingon "
+"hyväksi. Kun hurmoskääpiö päätyy taisteluun, hän taistelee kunnes hän kuolee "
+"tai voittaa vihollisensa."
 
 #: data/units/Dwarvish_Berserker.cfg:27 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
-msgstr "berserkki"
+msgstr "taiston hurma"
 
 #: data/units/Dwarvish_Berserker.cfg:30 data/units/Dwarvish_Ulfserker.cfg:29
 msgid "berserk"
-msgstr "berserkki"
+msgstr "hurma"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
-msgstr "Lohikäärmekaartilainen"
+msgstr "Lohkäärmekaartilainen"
 
 #: data/units/Dwarvish_Dragonguard.cfg:17
 msgid ""
@@ -5694,11 +5753,18 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
+"Ei ole selvää miksi kääpiöt kutsuvat ukkoskaartia tällä nimellä. Jotkut "
+"arvelevat että nimi tulee heidän aseistaan, erikoisista sauvoista jotka "
+"sylkevät kuoloa ja tulta. Toiset arvelevat että tälläinen ase olisi uhka "
+"jopa todelliselle lohikäärmelle jos sellainen olento nähtäisiin tunnetussa "
+"maailmassa. Oli miten oli, näistä aseista suurten kääpiölinnoistusten "
+"vartijat tunnetaan ja heitä pelätään; aseista jotka ovat kaataneet "
+"mahtavimmatkin soturit yhdellä iskulla."
 
 #: data/units/Dwarvish_Dragonguard.cfg:21
 #: data/units/Dwarvish_Dragonguard.cfg:39
 msgid "dragonstaff"
-msgstr "lohikäärmetikku"
+msgstr "lohikäärrmesauva"
 
 #: data/units/Dwarvish_Fighter.cfg:3
 msgid "Dwarvish Fighter"
@@ -5723,7 +5789,7 @@ msgstr "vasara"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr "Kääpiövartija"
+msgstr "Vartijakääpiö"
 
 #: data/units/Dwarvish_Guardsman.cfg:22
 msgid ""
@@ -5737,7 +5803,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
-msgstr "Kääpiölordi"
+msgstr "Kääpiöylimys"
 
 #: data/units/Dwarvish_Lord.cfg:25
 msgid ""
@@ -5746,6 +5812,10 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
+"Kuorittuina kiiltävän panssariin nämä kääpiöt näyttävät vuorenalaisilta "
+"kuninkailta. He käyttävät kirvestä ja vasaraa suurella taidolla ja osuvat "
+"kohteeseen heittokirveellä kymmenien askelien päästä. Vaikka he ovat hitaita "
+"jaloistaan, nämä kääpiöt ovat todistus kansansa voimasta."
 
 #: data/units/Dwarvish_Lord.cfg:61
 msgid "hatchet"
@@ -5753,7 +5823,7 @@ msgstr "piilukirves"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
-msgstr "Kääpiöriimuherra"
+msgstr "Riimuherra"
 
 #: data/units/Dwarvish_Runemaster.cfg:17
 msgid ""
@@ -5762,6 +5832,10 @@ msgid ""
 "presence somehow imbue it with power. Though rarely seen in combat, a master "
 "of these runes can put them to terrifying use."
 msgstr ""
+"Se vähä mitä kääpiöiden taikuudesta tiedetään ilmenee riimujen "
+"raapustamisessa esineen pinnalle jossa niiden läsnäolo jotenkin tuo "
+"esineeseen voimaa. Riimuherrojja nähdään harvoin taistelussa, mutta he "
+"osaavat pistää nämä riimut kauhistuttavaan käyttöön."
 
 #: data/units/Dwarvish_Runemaster.cfg:21
 msgid "runic hammer"
@@ -5773,7 +5847,7 @@ msgstr "Salama"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
-msgstr "Kääpiöjärkkymätön"
+msgstr "Järkkymätön kääpiö"
 
 #: data/units/Dwarvish_Sentinel.cfg:25
 msgid ""
@@ -5785,7 +5859,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr "Kääpiökaartilainen"
+msgstr "Kaartin kääpiö"
 
 #: data/units/Dwarvish_Stalwart.cfg:24
 msgid ""
@@ -5793,25 +5867,25 @@ msgid ""
 "armor from the ruins of their enemies. While slow, they are the feared for "
 "their resilience and strength."
 msgstr ""
-"Vuosia taisteltuaan eliittivartijat ovat kehittäneet uusia kilpiä ja vahvan "
+"Vuosia taisteltuaan kaartin kääpiöt ovat kehittäneet uusia kilpiä ja vahvan "
 "panssarin vihollisensa raunioista. He ovat hitaita, mutta pelättyjä kestonsa "
 "ja voimansa johdosta."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
-msgstr "Kääpiöteräskuori"
+msgstr "Rautapaita"
 
 #: data/units/Dwarvish_Steelclad.cfg:24
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
 msgstr ""
-"Kaikista kokeneimmat teräskuoritaistelijat käyttävät raskasta ketju- ja "
-"levypanssaria, josta he ovat ansaitusti kuuluisia."
+"Kaikista kokeneimmat rautapaidat käyttävät raskasta ketju- ja levypanssaria, "
+"josta he ovat ansaitusti kuuluisia."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
 msgid "Dwarvish Thunderer"
-msgstr "Kääpiöjyrisijä"
+msgstr "Ukkoskääpiö"
 
 #: data/units/Dwarvish_Thunderer.cfg:16
 msgid ""
@@ -5823,14 +5897,20 @@ msgid ""
 "make any of their own, realized they were lucky to no longer be fighting the "
 "dwarves, and vowed never to do so again."
 msgstr ""
+"Kun Wesnothin miehet ensi kerran kohtasivat kääpiöt, heille tuotti suurta "
+"ihmetystä ukkoskääpiöiden voima, sille nämä sylkivät tulta kaukaa erikoisten "
+"'sauvojensa' avulla. Kun Ka'lianin rauha tuli voimaan, Haldricin kanssa joka "
+"ei näitä aseita ymmärtänyt eikä niitä kyennyt luomaan, ymmärsi että he "
+"olivat onnekkaita kun eivät taistelleen enää kääpiöiden kanssa ja vannoivat "
+"etteivät tekisi niin enää."
 
 #: data/units/Dwarvish_Thunderer.cfg:63
 msgid "thunderstick"
-msgstr "ukkostikku"
+msgstr "ukkoskeppi"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
-msgstr "Ukkoskaartilainen"
+msgstr "Ukkosvartija"
 
 #: data/units/Dwarvish_Thunderguard.cfg:18
 msgid ""
@@ -5845,14 +5925,22 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
+"Ukkosvartijat ovat kuuluisia aseistaan, erikoisista puu- ja rautasauvoista "
+"jotka pitävät ukkosmaista ääntä vihassaan. Näiden aseiden toiminta on "
+"mysteeri, salaisuus jonka Knalgan kääpiöt vievät hautaansa. Se mitä "
+"tiedetään on että kääpiöt kaatavat omituista mustaa pölyä näiden aseiden "
+"suuhun, jonka jotkut väittävät ruokkivan sisällä olevaa petoa. \n"
+"\n"
+"Vaikka yhtä laukausta näistä 'ukkoskepeistä' saattaa joutua valmistelemaan "
+"monta minuuttia, tulokset ovat kääpiöiden mielestä hyvin sen arvoisia."
 
 #: data/units/Dwarvish_Thunderguard.cfg:48
 msgid "dragonstick"
-msgstr "lohikäärmetikku"
+msgstr "lohikäärmekeppi"
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
-msgstr "Kääpiöulserkki"
+msgstr "Kiihkokääpiö"
 
 #: data/units/Dwarvish_Ulfserker.cfg:16
 msgid ""
@@ -5860,9 +5948,9 @@ msgid ""
 "ferocious of these in battle: they persist until either their enemy is dead "
 "or they themselves perish, no matter how many wounds they receive."
 msgstr ""
-"Kääpiöt ovat muinainen rotu voimakkaita taistelijoita. Ulserkit ovat heistä "
-"hurjimpia taistelussa: kun he hyökkäävät, he taistelevat kuolemaan saakka; "
-"joko omaan tai vihollisensa."
+"Kääpiöt ovat muinainen rotu voimakkaita taistelijoita. Kiihkokääpiöt ovat "
+"heistä hurjimpia taistelussa: kun he hyökkäävät, he taistelevat kuolemaan "
+"saakka; joko omaan tai vihollisensa."
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
@@ -5906,7 +5994,7 @@ msgstr ""
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
-msgstr "Haltiajousimies"
+msgstr "Haltiajousiampuja"
 
 #: data/units/Elvish_Archer.cfg:20 data/units/Elvish_Archer.cfg:122
 msgid ""
@@ -5917,10 +6005,16 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
+"Haltioilla on aina ollut kova maine jousimiehinä, sillä he oppivat tämän "
+"taidon monista syistä helposti. Jopa hento ruumis voi olla tappava jousta "
+"käyttäessään ja sodassa monet ottavat tämän aseen. Vaikka heidän "
+"kokemattomuutensa taistelussa tekee heidät hieman haavoittuvaisiksi heidän "
+"luonnollinen ketteryytensä varmistaa että he voittavat kaikki ihmiskunnan "
+"varusmiehet."
 
 #: data/units/Elvish_Archer.cfg:105
 msgid "female^Elvish Archer"
-msgstr "Haltiajousimies"
+msgstr "Haltiajousiampuja"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
@@ -6144,13 +6238,13 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level"
 msgstr ""
-"Suurmarsalkan arvo on ihmiskunnan armeijoissa yksi korkeimmista. Sen "
-"saavuttaneet ovat läpäisseet monia tulikokeita ja todistaneet huomattavan "
-"taitonsa sekä taistelemisessa että johtamisessa.\n"
+"Sanotaan että draakkien muinaisimmilla suvuilla, lohikäärmeiden suorilla "
+"perillisillä on suonissaan tulta, ei verta. Se että he osaavat sylkeä tulta "
+"vahvistaa uskoa tähän vaikka kukaan ei jostain syystä oli yrittänyt leikata "
+"yhtä auki saadakseen selville.\n"
 "\n"
-"Erityisiä huomautuksia: Suurmarsalkan johtajuus taistelukentällä auttaa "
-"ystävällisiä yksiköitä heidän vierellään tekemään enemmän vahinkoa "
-"taistelussa, joskin tämä pätee vain alemmantasoisiin yksiköihin."
+"Huomio: Tulisydämen johtamiskyky sallii viereisissä heksoissa olevien "
+"matalatasoisimpien yksiköiden tehdä lisää vahinkoa taistelussa."
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -7983,7 +8077,7 @@ msgstr "heinähanko"
 
 #: data/units/Pikeman.cfg:3
 msgid "Pikeman"
-msgstr "Peitsimies"
+msgstr "Seiväsmies"
 
 #: data/units/Pikeman.cfg:22
 msgid ""
@@ -8000,7 +8094,7 @@ msgstr ""
 
 #: data/units/Pikeman.cfg:25
 msgid "pike"
-msgstr "peitsi"
+msgstr "seiväs"
 
 #: data/units/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
