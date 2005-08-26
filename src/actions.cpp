@@ -141,6 +141,7 @@ std::string recruit_unit(const gamemap& map, int side,
 		new_unit.set_movement(0);
 		new_unit.set_attacked();
 	}
+	new_unit.heal_all();
 
 	const bool show = disp != NULL && !disp->turbo() &&
 	                  !disp->fogged(recruit_location.x,recruit_location.y);
