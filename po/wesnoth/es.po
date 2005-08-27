@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-08-27 10:56+0200\n"
-"PO-Revision-Date: 2005-08-26 22:29+0200\n"
+"POT-Creation-Date: 2005-08-27 12:18+0200\n"
+"PO-Revision-Date: 2005-08-27 13:28+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -683,6 +683,11 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"Si se determina que un golpe ha alcanzado su objetivo, siempre hará al menos "
+"un punto de daño. Esto se aplica incluso si el defensor tiene un 100% de "
+"resistencia a ese tipo de daño."
 
 #: data/help.cfg:171
 msgid "Time of Day"
@@ -702,7 +707,6 @@ msgstr ""
 " Las unidades neutrales no se ven afectadas por la hora del día."
 
 #: data/help.cfg:178
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -712,12 +716,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"La hora del día afecta al daño de ciertas unidades como sigue:\n"
-"\n"
-"Las unidades legales ganan un +25% de daño cuando es de día, y un -25% "
-"cuando es de noche.\n"
-"Las unidades caóticas ganan un +25% de daño de noche, y un -25% de día.\n"
-"Las unidades neutrales no se ven afectadas por la hora del día."
+"La hora actual del día se puede ver bajo el minimapa del panel de estado. En "
+"el ciclo normal de día y noche, la mañana y la tarde cuentan como día, y la "
+"primera noche y la noche cerrada como noche:\n"
 
 #: data/help.cfg:178 data/schedules.cfg:5
 msgid "Dawn"
@@ -802,13 +803,25 @@ msgid ""
 "only a small number of units, for example the Necrophage, will actually heal "
 "with AMLA effects. Most units just gain the bonus to the Maximum HP."
 msgstr ""
+"\n"
+"\n"
+"Aunque muchas unidades tienen tres niveles, no todas son así. Algunas "
+"unidades muy particulares (como los <ref>dst=unit_Mage text=magos</ref> "
+"pueden tener cuatro. Una vez que la unidad ha alcanzado su máximo nivel, "
+"puede tener un Avance Sobre el Máximo Nivel (ASMN, AMLA en inglés) "
+"disponible.\n"
+"El ASMN modificará a la unidad cada vez que la unidad alcance el límite de "
+"experiencia, pero la unidad seguirá siendo del mismo nivel. El efecto típico "
+"del ASMN es que la unidad eleva sus pv máximos en 3 por cada 100 PX. Tan "
+"sólo un pequeño número de unidades, como por ejemplo el necrófago, se "
+"curarán debido al efecto del ASMN. La mayoría de las unidades simplemente "
+"ganan el bono a los pv máximos."
 
 #: data/help.cfg:201
 msgid "Healing"
 msgstr "Curación"
 
 #: data/help.cfg:202
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -816,9 +829,12 @@ msgid ""
 "not. Wesnoth offers several other ways for your units to heal, all of which "
 "take place at the beginning of your turn, before you take action."
 msgstr ""
-"Cuando haya combate, sus unidades recibirán daño inevitablemente. En Wesnoth "
-"hay varias opciones pare recuperarse del daño sufrido y curarse, todas ellas "
-"al principio de su turno, antes de empezar a realizar ninguna otra acción."
+"Cuando haya combate, sus unidades recibirán daño inevitablemente. Cuando una "
+"unidad <ref>dst=experience_and_advancement text='gana un nivel'</ref>, se "
+"curará completamente. Esto puede que suceda tan pronto como acabe con un "
+"enemigo, ya sea su turno o no. En Wesnoth hay varias opciones para "
+"recuperarse del daño sufrido y curarse, todas ellas al principio de su "
+"turno, antes de empezar a realizar ninguna otra acción."
 
 #: data/help.cfg:204
 msgid ""
@@ -859,9 +875,15 @@ msgid ""
 "and are fighting on the same side as the healing unit, and only up to 4HP "
 "per unit."
 msgstr ""
+"\n"
+"Unidades con sanación: las unidades con la habilidad de "
+"<ref>dst=ability_heals text=«sanar»</ref> harán que las unidades adyacentes "
+"amigas recuperen un máximo de 8 pv en total por turno, y prevendrán que el "
+"veneno cause daño. Sólo podrán ser afectadas las unidades que estén "
+"adyacentes y que luchen en el mismo bando que la unidad sanadora, y como "
+"máximo se sanarán 4 pv a cada unidad."
 
 #: data/help.cfg:208
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -870,14 +892,14 @@ msgid ""
 "the same side as the healing unit, and only up to 8HP per unit."
 msgstr ""
 "\n"
-"\n"
 "Unidades con curación: las unidades con la habilidad de "
-"<ref>dst=ability_cures text=«curar»</ref> harán que todas las unidades "
-"adyacentes amigas recuperen 8 pv cada turno, hasta un máximo de 18 pv en "
-"total, o eliminarán el veneno de una unidad afectada por él."
+"<ref>dst=ability_cures text=«curar»</ref> harán que las unidades adyacentes "
+"amigas recuperen un máximo de 18 pv en total por turno, y eliminarán el "
+"veneno. Sólo podrán ser afectadas las unidades que estén adyacentes y que "
+"luchen en el mismo bando que la unidad sanadora, y como máximo se sanarán 8 "
+"pv a cada unidad."
 
 #: data/help.cfg:210
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -891,8 +913,10 @@ msgstr ""
 "\n"
 "El descanso puede combinarse con otras formas de curación, pero los efectos "
 "de las aldeas, la regeneración, y la curación o sanación no se combinan "
-"entre ellos. Asimismo, las unidades se recuperan completamente entre un "
-"escenario y otro."
+"entre ellos. Una unidad sanadora o curadora será menos efectiva si tiene que "
+"distribuir sus cuidados entre muchas unidades heridas que si tiene que "
+"atender heridas individuales. Por último, las unidades se recuperan "
+"completamente entre un escenario y otro."
 
 #: data/help.cfg:215
 msgid "Income and Upkeep"
@@ -911,7 +935,6 @@ msgstr ""
 "a saber: los ingresos y el coste de mantenimiento."
 
 #: data/help.cfg:218
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -922,10 +945,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"El de ingresos es simple. Por cada aldea que controle, ingresará una pieza "
-"de oro por turno. Así, si tiene diez aldeas, ganará diez piezas de oro. A su "
-"vez, los costes de mantenimiento de su ejército se deducen de sus ingresos, "
-"como se explica a continuación."
+"El concepto de ingresos es simple. Tiene unos ingresos básicos de 2 piezas "
+"de oro por turno. Por cada aldea que controle, ingresará una pieza de oro "
+"por turno. Así, si tiene diez aldeas, ganará doce piezas de oro por turno. A "
+"su vez, los costes de mantenimiento de su ejército se deducen de sus "
+"ingresos, como se explica a continuación."
 
 #: data/help.cfg:220
 msgid ""
@@ -950,7 +974,6 @@ msgstr ""
 "mantenimiento."
 
 #: data/help.cfg:222
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -961,11 +984,10 @@ msgstr ""
 "\n"
 "\n"
 "Estos costes se deducen de sus ingresos, así que en el caso anterior de doce "
-"niveles en unidades y diez aldeas, sus ingresos por turno serían 8 piezas de "
-"oro."
+"niveles en unidades y diez aldeas, sus ingresos por turno serían 10 piezas "
+"de oro."
 
 #: data/help.cfg:223
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -999,16 +1021,14 @@ msgstr ""
 "el escenario del «Heredero al trono». ¡Diviértase, y buena suerte!"
 
 #: data/help.cfg:234
-#, fuzzy
 msgid "Contributors"
-msgstr "+Colaboradores"
+msgstr "Colaboradores"
 
 #: data/help.cfg:240
 msgid "License"
 msgstr "Licencia"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1016,9 +1036,9 @@ msgid ""
 "randomly assigned to a unit when it is recruited."
 msgstr ""
 "Muchas unidades tienen dos rasgos, con la excepción de los no muertos, que "
-"poseen el rasgo «no muerto». Los rasgos son propiedades de cada unidad que "
-"modifican ligeramente sus atributos. Normalmente se asignan aleatoriamente a "
-"cada unidad cuando se la recluta."
+"poseen el rasgo «no muerto», y los woses, wue no reciben rasgos. Los rasgos "
+"son propiedades de cada unidad que modifican ligeramente sus atributos. "
+"Normalmente se asignan aleatoriamente a cada unidad cuando se la recluta."
 
 #: data/help.cfg:249
 msgid ""
@@ -1029,6 +1049,12 @@ msgid ""
 "text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
 "<ref>dst=traits_strong text=Strong</ref>."
 msgstr ""
+"\n"
+"\n"
+"Los rasgos que hay disponibles para todas las criaturas no muertas son "
+"ref>dst=traits_intelligent text=«intelligent»</ref>, <ref>dst=traits_quick "
+"text=«rápido»</ref>, <ref>dst=traits_resilient text=«resistente»</ref>, y "
+"<ref>dst=traits_strong text=«fuerte»</ref>."
 
 #: data/help.cfg:251
 msgid ""
@@ -1038,18 +1064,23 @@ msgid ""
 "text=Loyal</ref>, <ref>dst=traits_undead text=Undead</ref>, and "
 "<ref>dst=traits_dextrous text=Dextrous</ref>."
 msgstr ""
+"\n"
+"\n"
+"Los otros rasgos que pueden asignarse a las unidades son "
+"<ref>dst=traits_loyal text=«leal»</ref>, <ref>dst=traits_undead text='«no "
+"muerto»'</ref>, y <ref>dst=traits_dextrous text=«diestro»</ref>."
 
 #: data/help.cfg:256
-#, fuzzy
 msgid "Intelligent"
-msgstr "inteligente"
+msgstr "Inteligente"
 
 #: data/help.cfg:257
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
+"Las unidades inteligentes requeren de un 20% menos de experiencia de lo "
+"normal para ganar un nivel."
 
 #: data/help.cfg:259
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1061,30 +1092,24 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Inteligente</header>\n"
-"\n"
-"Las unidades inteligentes necesitan un 20% menos de la cantidad normal de "
-"puntos de experiencia para subir de nivel.\n"
-"\n"
 "Las unidades inteligentes son muy útiles al principio de una campaña, dado "
 "que pueden subir de nivel más rápidamente. Más tarde, no son tan útiles, "
-"dado que las unidades no ganan nada por tener muchos puntos de experiencia "
-"después de alcanzar su nivel máximo. Si tiene muchas unidades en su máximo "
+"dado que el Avance Sobre el Nivel Máximo (ASNM) no es un cambio tan "
+"significativo como ganar un nivel. Si tiene muchas unidades en su máximo "
 "nivel, puede que prefiera reincorporar otras unidades con rasgos más "
 "adecuados."
 
 #: data/help.cfg:264
-#, fuzzy
 msgid "Quick"
-msgstr "rápido"
+msgstr "Rápido"
 
 #: data/help.cfg:265
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgstr ""
+"Las unidades rápidas tienen un punto de movimiento adicional, a costa de un "
+"10% menos de puntos de vida de lo normal."
 
 #: data/help.cfg:267
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1097,12 +1122,6 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Rápido</header>\n"
-"\n"
-"Las unidades rápidas tienen un punto de movimiento adicional, a costa de un "
-"10% menos de puntos de vida de lo normal.\n"
-"\n"
 "La rapidez es el rasgo más notable, particularmente en unidades lentas como "
 "trolls o infantería pesada. Las unidades con el rasgo «rápido» tienen a "
 "menudo movilidad adicional en terrenos difíciles, así que téngalo en cuenta "
@@ -1111,16 +1130,14 @@ msgstr ""
 "demasiado buenas para defender una posición."
 
 #: data/help.cfg:272
-#, fuzzy
 msgid "Resilient"
-msgstr "resistente"
+msgstr "Resistente"
 
 #: data/help.cfg:273
 msgid "Resilient units have 7 more HP than usual."
-msgstr ""
+msgstr "Las unidades resistentes tienen 7 pv más de lo normal."
 
 #: data/help.cfg:275
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1132,11 +1149,6 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Resistente</header>\n"
-"\n"
-"Las unidades resistentes tienen 7 pv más de lo normal.\n"
-"\n"
 "Las unidades resistentes pueden ser útiles en cualquier parte de una "
 "campaña, y es un rasgo útil para cualquier unidad. A menudo será más útil en "
 "unidades que combinen pocos puntos de vida, buenas capacidades defensivas, o "
@@ -1144,18 +1156,18 @@ msgstr ""
 "consolidar una posición ante sus enemigos."
 
 #: data/help.cfg:280
-#, fuzzy
 msgid "Strong"
-msgstr "fuerte"
+msgstr "Fuerte"
 
 #: data/help.cfg:281
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 2 more HP."
 msgstr ""
+"Las unidades fuertes hacen un punto más de daño en cada ataque de combate "
+"cuerpo a cuerpo, y tienen 2 pv más."
 
 #: data/help.cfg:283
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1166,22 +1178,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Fuerte</header>\n"
-"\n"
-"Las unidades fuertes hacen 1 punto más de daño en cada ataque de combate "
-"cuerpo a cuerpo, y tienen 2 pv más.\n"
-"\n"
-"Aunque es útil para cualquier unidad de ataque directo, este rasgo es más "
+"Aunque es útil para cualquier unidad de ataque cercano, este rasgo es más "
 "efectivo en unidades que tienen muchos ataques, como el luchador elfo. Las "
 "unidades fuertes pueden ser muy útiles en esos momentos en los que se "
 "necesita un poco más de daño adicional por ataque y convertir lo que de otra "
 "forma sería un ataque sin más en un golpe mortal."
 
 #: data/help.cfg:288
-#, fuzzy
 msgid "Loyal"
-msgstr "leal"
+msgstr "Leal"
 
 #: data/help.cfg:289
 msgid ""
@@ -1189,9 +1194,11 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
+"Las unidades leales no exigen que las mantengan. La mayoría de las unidades "
+"requieren un coste de mantenimiento al final de cada turno igual a su nivel. "
+"Las unidades leales no tienen este coste."
 
 #: data/help.cfg:291
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1203,13 +1210,6 @@ msgid ""
 "such units or to send them to a foolish death."
 msgstr ""
 "\n"
-"\n"
-"\n"
-"<header>text=Leal</header>\n"
-"\n"
-"Las unidades leales no exigen que las mantengan. La mayoría de las unidades "
-"requieren un coste de mantenimiento al final de cada turno igual a su nivel. "
-"Las unidades leales no tienen este coste.\n"
 "\n"
 "Durante las campañas, habrá unidades que opten por unirse a las fuerzas del "
 "jugador por propia voluntad. A estas unidades se las marca con el rasgo "
@@ -1226,10 +1226,9 @@ msgstr "No muertos"
 
 #: data/help.cfg:297
 msgid "Undead units are immune to poison."
-msgstr ""
+msgstr "Las unidades no muertas son inmunes al veneno."
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1240,28 +1239,23 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=No muerto</header>\n"
-"\n"
-"Las unidades no muertas son inmunes al veneno.\n"
-"\n"
 "Las unidades no muertas generalmente tienen como único rasgo «No muerto». "
 "Dado que las unidades no muertas están compuestas por los cuerpos sin vida "
-"de personas fallecidas, insuflados con energía sobrenatural para luchar de "
+"de personas fallecidas, e insuflados con energía sobrenatural para luchar de "
 "nuevo, el veneno no tiene efecto en ellos. Esto puede hacerlos muy valiosos "
 "al enfrentarse a enemigos que usen veneno en conjunción con sus ataques."
 
 #: data/help.cfg:304
-#, fuzzy
 msgid "Dextrous"
-msgstr "diestro"
+msgstr "Diestro"
 
 #: data/help.cfg:305
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
 msgstr ""
+"Las unidades con el rasgo «diestro» infligen un punto adicional de daño con "
+"cada flecha."
 
 #: data/help.cfg:307
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1272,15 +1266,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=Diestro</header>\n"
-"\n"
-"Las unidades diestras tienen un +1 en el daño de cada ataque hecho con "
-"arco.\n"
-"\n"
 "El rasgo «diestro» tan sólo lo poseen los elfos. Estas gentes son conocidas "
-"por su gracia natural, así como su gran pericia con el arco. Algunos, sin "
-"embargo, han sido bendecidos con un talento natural que excede la de sus "
+"por su gracia natural, así como por su gran pericia con el arco. Algunos, "
+"sin embargo, han sido bendecidos con un talento natural que excede la de sus "
 "hermanos. Estos elfos infligen un punto adicional de daño con cada flecha."
 
 #: data/help.cfg:312 data/terrain.cfg:144
@@ -1297,6 +1285,11 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"Las praderas representan llanuras, ya sean cultivadas, aradas, o salvajes. "
+"Al ser terrenos abiertos, es muy fácil moverse por ellas, pero también "
+"difícil defenderse. Normalmente, las unidades que mejor se comportan em las "
+"llanuras son tanto la caballería como las unidades muy ágiles, que pueden "
+"aprovecharse del espacio abierto."
 
 #: data/help.cfg:322 data/terrain.cfg:118 data/terrain.cfg:126
 msgid "Road"
@@ -1308,6 +1301,9 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"Los caminos son sendas de arena o grava, holladas por el paso de muchos "
+"viajeros. En lo que respecta al juego, los caminos son idénticos a la "
+"<ref>dst=terrain_grassland text=pradera</ref>."
 
 #: data/help.cfg:330 data/terrain.cfg:325
 msgid "Forest"
@@ -1329,6 +1325,22 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"Los bosques representan cualquier zona boscosa con suficiente maleza como "
+"para molestar el caminar normal. Aunque ralentizan a casi cualquiera, los "
+"bosques ofrecen una mejor protección a la mayoría de las unidades que el "
+"cielo abierto. La caballería, sin embargo, encuentra tantos problemas para "
+"moverse por ellos que pierden cualquier beneficio que pudieran ganar por "
+"ocultarse. Los elfos son una excepción a la regla general sobre los bosques. "
+"No sólo retienen todo su movimiento en los bosques, sino que ganan un "
+"considerable bono de defensa cuando se encuentran en ellos. Los enanos son "
+"otra excepción a esta regla; aunque son capaces de abrirse paso a través del "
+"bosque sin perder mucha velocidad, su inmenso desconocimiento del terreno "
+"les provoca que no reciban ningún bono de defensa.\n"
+"\n"
+"Muchas unidades tienen un 50% de defensa en bosques, pero la caballería está "
+"limitada a un 40%. Los elfos, por el contrario, disfrutan de un 60% o un 70% "
+"de defenda, incluso a lomos de sus monturas. Los enanos generalmente reciben "
+"sólo un 30% de defensa en los bosques."
 
 #: data/help.cfg:340 data/terrain.cfg:286
 msgid "Hills"
@@ -1346,6 +1358,17 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"Las colinas representan cualquier terreno abrupto, con suficientes "
+"hondonadas y crestas en la tierra como para ofrecer cobertura. Las colinas "
+"son difíciles de cruzar para la mayoría de tropas. Los enanos, trolls y "
+"orcos tienen la suficiente familiaridad con el terreno como para pasar por "
+"ellas sin verse afectados o retrasados. La caballería tiene suficiente "
+"problema con circular en este terreno como para poder ganar algún bono a la "
+"defensa por la posible cobertura.\n"
+"\n"
+"La mayoría de las unidades tienen un 50% de defensa en colinas, mientras que "
+"la caballería está limitada a un 40%. Los enanos disfrutan de un 60% de "
+"defensa en las colinas."
 
 #: data/help.cfg:350 data/terrain.cfg:310
 msgid "Mountains"
@@ -1363,6 +1386,17 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Las montañas son suficientemente empinadas como para que las unidades a "
+"menudo tengan que escalar sobre obstáculos para seguir avanzando. Por su "
+"propia naturaleza, ofrecen una defensa considerable a la mayoría de las "
+"tropas, pero también impiden tremendamente el paso a su través. La mayoría "
+"de la caballería simplemente no puede entrar en terreno montañoso; sin "
+"embargo, la caballería élfica es una excepción, así como los jinetes goblin. "
+"Tanto enanos como trolls son nativos de este tipo de terrenos, así que no "
+"encuentran mucho problema para ir por ellos.\n"
+"\n"
+"La mayoría de las unidades reciben un 60% de defensa en montañas, y los "
+"enanos disfrutan de un 70%."
 
 #: data/help.cfg:360 data/terrain.cfg:55
 msgid "Swamp"
@@ -1379,6 +1413,14 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
+"Los pantanos representan cualquier tipo de humedal. Ralentizan prácticamente "
+"a cualquiera, y hacen cualquier tipo de defensa muy difícil. Se exceptúan "
+"cualesquiera razas habituadas a vivir en el agua; éstas retienen toda su "
+"capacidad de movimiento y además tienen un bono de defensa. Aquellos que han "
+"hecho de los pantanos su hogar también pueden usarlo para protegerse.\n"
+"\n"
+"La mayoría de las unidades tan sólo tienen un 30% de defensa en pantanos. "
+"Los sirénidos, nagas y saurios suelen disfrutar de un 60%."
 
 #: data/help.cfg:370 data/terrain.cfg:34
 msgid "Shallow Water"
@@ -1464,9 +1506,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:430 data/terrain.cfg:109
-#, fuzzy
 msgid "Desert"
-msgstr "Colinas desérticas"
+msgstr "Desierto"
 
 #: data/help.cfg:433
 msgid ""
@@ -1544,6 +1585,9 @@ msgid ""
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
+"Los peligros inherentes al intento de caminar sobre lava son bastante "
+"obvios. Este terreno sólo pueden cruzarlo unidades que sean capaces de volar "
+"a una distancia considerable sobre él."
 
 #: data/help.cfg:481 data/terrain.cfg:462
 msgid "River Ford"
@@ -1580,7 +1624,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:497 data/terrain.cfg:349
-#, fuzzy
 msgid "Cave Wall"
 msgstr "Pared de cueva"
 
