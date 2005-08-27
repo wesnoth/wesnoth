@@ -164,6 +164,16 @@ void turn_info::turn_slice()
 {
 	events::pump();
 	events::raise_process_event();
+
+	if (gui_.video().modeChanged()) {
+		if (textbox_.box != NULL) {
+			const SDL_Rect& area = gui_.map_area();
+			const SDL_Rect& label_area = font::get_floating_label_rect(textbox_.label);
+			const int ypos = area.y+area.h-30 - (textbox_.check != NULL ? textbox_.check->height() + border_size : 0);
+			textbox_.box->set_location(area.x + label_area.w + border_size*2,ypos);
+		}
+	}
+
 	events::raise_draw_event();
 
 	const theme::menu* const m = gui_.menu_pressed();

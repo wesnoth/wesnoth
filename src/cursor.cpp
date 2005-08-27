@@ -42,11 +42,15 @@ SDL_Cursor* create_cursor(surface surf)
 	}
 
 	//the width must be a multiple of 8 (SDL requirement)
+	
+#ifdef __APPLE__
+	size_t cursor_width = 16;
+#else
 	size_t cursor_width = nsurf->w;
 	if((cursor_width%8) != 0) {
 		cursor_width += 8 - (cursor_width%8);
 	}
-
+#endif
 	std::vector<Uint8> data((cursor_width*nsurf->h)/8,0);
 	std::vector<Uint8> mask(data.size(),0);
 
@@ -57,17 +61,24 @@ SDL_Cursor* create_cursor(surface surf)
 	for(size_t y = 0; y != nsurf->h; ++y) {
 		for(size_t x = 0; x != nsurf->w; ++x) {
 			Uint8 r,g,b,a;
-			SDL_GetRGBA(pixels[y*nsurf->w + x],nsurf->format,&r,&g,&b,&a);
-
+			Uint8 trans = 0;
+			Uint8 black = 0;
+			
 			const size_t index = y*cursor_width + x;
+			
+			if (x < cursor_width) {
+				SDL_GetRGBA(pixels[y*nsurf->w + x],nsurf->format,&r,&g,&b,&a);
 
-			const size_t shift = 7 - (index%8);
+				const size_t shift = 7 - (index%8);
 
-			const Uint8 trans = (a < 128 ? 0 : 1) << shift;
-			const Uint8 black = (trans == 0 || (r+g+b)/3 > 128 ? 0 : 1) << shift;
+				trans = (a < 128 ? 0 : 1) << shift;
+				black = (trans == 0 || (r+g+b)/3 > 128 ? 0 : 1) << shift;
+				
+				data[index/8] |= black;
+				mask[index/8] |= trans;
+			}
 
-			data[index/8] |= black;
-			mask[index/8] |= trans;
+			
 		}
 	}
 
@@ -77,7 +88,11 @@ SDL_Cursor* create_cursor(surface surf)
 SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL };
 
 //this array must have members corresponding to cursor::CURSOR_TYPE enum members
+#ifdef __APPLE__
+const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait-16x16.png", "move.png", "attack.png", "select.png" };
+#else
 const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png" };
+#endif
 
 cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
 
