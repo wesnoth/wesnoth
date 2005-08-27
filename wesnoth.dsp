@@ -733,6 +733,10 @@ SOURCE=.\src\race.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\random.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\replay.hpp
 # End Source File
 # Begin Source File
