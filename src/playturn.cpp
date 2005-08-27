@@ -165,6 +165,8 @@ void turn_info::turn_slice()
 	events::pump();
 	events::raise_process_event();
 
+	const int border_size = 10;
+
 	if (gui_.video().modeChanged()) {
 		if (textbox_.box != NULL) {
 			const SDL_Rect& area = gui_.map_area();
