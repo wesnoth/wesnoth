@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-08-21 15:14+0300\n"
+"PO-Revision-Date: 2005-08-27 13:17+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -25,9 +25,8 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: data/amla.cfg:8
-#, fuzzy
 msgid "Max HP bonus +"
-msgstr "Максимальный бонус ЗД +{HP_ADVANCE}"
+msgstr "Максимальный бонус ЗД +"
 
 #: data/amla.cfg:21
 msgid "Full Heal"
@@ -450,9 +449,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Чтобы увидеть, куда может двигаться противник в течение следующего хода, "
-"нажмите Ctrl-v или Cmd-v. Ctrl-b или Cmd-b показывает куда мог двигаться "
-"противник, если Ваши соединения на карте не могут блокировать их прогресс."
+"Чтобы увидеть куда враг может дойти на его следующем ходу, нажмите Ctrl-v "
+"или Cmd-v. Ctrl-b или Cmd-b показывают куда вражеский юнит мог бы дойти, "
+"если бы Ваших юнитов не было на карте и они не блокировали его передвижение."
 
 #: data/help.cfg:134
 msgid "Combat"
@@ -470,6 +469,16 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
+"Бой в Битве за Веснот всегда происходит между соединениями на соседних "
+"квадратах. Кликните на вашем соединении, затем кликните на вражеском "
+"соединении, которого Вы хотите атаковать: Ваше соединение переместится по "
+"направлению к вражескому соединению, и когда они будут рядом друг с другом, "
+"начнётся бой. Атакующий и защищающийся обмениваются ударами, пока каждый не "
+"израсходует предусмотренное для него количество ударов. Атакующий выбирает "
+"одно из его вооружений для атаки, а защищающийся отвечает одной из своих "
+"атак того же типа. Существует два типа атак: ближняя, для которой обычно "
+"применяется такое оружие как мечи, топоры или клыки; и дистанционная, для "
+"которой обычно применяется такое оружие как луки, дротики и огненные шары. "
 
 #: data/help.cfg:137
 msgid ""
@@ -688,9 +697,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Текущее время суток можно наблюдать под миникартой в статусной панели. Для "
-"обычного цикла день/ночь, Утро и Полдень считаются днём, вторая половина дня "
-"считается ночью:\n"
+"Текущее время суток можно посмотреть под миникартой в статусном окне. Для "
+"обычного цикла день/ночь, утро и полдень считаются днем, полночь и ночь "
+"считаются ночью:\n"
 
 #: data/help.cfg:175 data/schedules.cfg:5
 msgid "Dawn"
@@ -772,6 +781,19 @@ msgid ""
 "only a small number of units, for example the Necrophage, will actually heal "
 "with AMLA effects. Most units just gain the bonus to the Maximum HP."
 msgstr ""
+"\n"
+"\n"
+"Большинство соединений имеют три уровня развития, но не все. Некоторые "
+"соединения (такие как <ref>dst=unit_Mage text=Маги</ref>) могут иметь четыре "
+"уровня. Достигнув своего максимального уровня, соединение может приобретать "
+"Улучшения Постмаксимального Уровня (УПМУ), доступные ему.\n"
+"УПМУ будет модифицировать соединение каждый раз, когда соединение набирает "
+"граничное число очков опыта, но соединение будет оставаться того же уровня. "
+"Типичное действие УПМУ на соединение заключается в повышении максимального "
+"количества очков жизни на 3 для каждой полученной сотни очков опыта. "
+"Запомните, что только небольшое количество соединений, например Трупоед, "
+"будет лечиться при воздействии УПМУ эффекта. Большинство соединений просто "
+"получает бонус к максимальному количеству очков жизни."
 
 #: data/help.cfg:198
 msgid "Healing"
@@ -831,6 +853,12 @@ msgid ""
 "and are fighting on the same side as the healing unit, and only up to 4HP "
 "per unit."
 msgstr ""
+"\n"
+"Лечащие соединения: соединения с умением <ref>dst=ability_heals "
+"text=Лечение</ref> могут вылечить до 8 очков повреждения за ход, а также "
+"предотвратить получение повреждения от Отравления. Вылечены будут только те "
+"соединения (и не более чем на 4 очка жизни для каждого), которые соседствуют "
+"с лечащим соединением и сражаются на той же стороне."
 
 #: data/help.cfg:205
 msgid ""
@@ -1153,6 +1181,16 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
+"\n"
+"\n"
+"Во время кампаний определенные соединения могут предпочесть присоединиться к "
+"силам игрока по своему собственному желанию. Такие соединения помечаются "
+"особенностью Преданный. Несмотря на то, что такие соединения могут требовать "
+"оплаты чтобы быть призванными вновь, они никогда не потребуют оплаты за "
+"содержание. Это может сделать их неоценимыми на протяжении длительной "
+"кампании, когда золота поступает мало. Эта особенность никогда не "
+"присваивается нанятым соединениям, так что неразумно распускать такие "
+"соединения, либо посылать их на глупую смерть."
 
 #: data/help.cfg:293 data/multiplayer.cfg:69 data/multiplayer.cfg:158
 #: data/multiplayer.cfg:260 data/translations/english.cfg:129
@@ -1237,9 +1275,9 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
-"Дороги - это разбитые пути грязи, благодаря многим путешественникам, "
-"ходившим по ним. Дороги идентичны <ref>dst=terrain_grassland text=Лугам</"
-"ref>."
+"Дороги являются утоптанными тропами, созданными многими путешественниками "
+"прошедшими по ним. В игровом контексте дороги считаются идентичными "
+"<ref>dst=terrain_grassland text=Лугу</ref>. "
 
 #: data/help.cfg:327 data/terrain.cfg:325
 msgid "Forest"
@@ -1261,6 +1299,20 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"Лесом считается любая покрытая деревьями местность с подлеском, достаточно "
+"густым, чтобы препятствовать передвижению. Хотя он и замедляют практически "
+"всех, лес предоставляет большинству соединений лучшую защиту, чем открытое "
+"пространство. Однако, для кавалерии лес доставляет столько неудобства при "
+"движении по нему, что любые преимущества скрытности теряются. Эльфы являются "
+"исключением из основного правила для леса. Они не только владеют "
+"способностью к максимальному передвижению в лесу, но и получают значительный "
+"защитный бонус. Гномы являются другим исключением из этого правила, хотя они "
+"и могут пробираться через лес без значительной потери скорости, их "
+"абсолютное незнание этой местности приводит к отсутствию защитных бонусов.\n"
+"\n"
+"Большинство соединений имеют 50% защиты в лесах, но кавалерия ограничена "
+"40%. Эльфы, включая всадников, наоборот, получают от 60 до 70% защиты. Гномы "
+"обычно получают только 30% защиты в лесах. "
 
 #: data/help.cfg:337 data/terrain.cfg:286
 msgid "Hills"
@@ -1278,6 +1330,15 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"Холмами считается любая значительно неровная местность, с достаточным "
+"количеством оврагов и возвышенностей на местности, которые могут обеспечить "
+"некоторое укрытие. Холмы затрудняют передвижение большинства войск. Гномы, "
+"тролли и орки достаточно знают этот тип местности, чтобы пересекать его не "
+"замедляясь. Кавалерии достаточно тяжело перемещаться по такой местности, так "
+"что весь защитный эффект теряется.\n"
+"\n"
+"Большинство соединений имеют около 50% защиты в холмах, а кавалерия "
+"ограничена 40%. Гномы получают 60% защиты в холмах."
 
 #: data/help.cfg:347 data/terrain.cfg:310
 msgid "Mountains"
@@ -1295,6 +1356,16 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Горы достаточно круты, так что соединениям часто приходиться карабкаться "
+"через препятствия во время движения по ним. Из-за этого, горы предоставляют "
+"значительный защитный бонус для большинства войск, но они также весьма "
+"затрудняют проход через них. Большинство типов кавалерии просто не могут "
+"войти на гористую местность;  тем не менее эльфийская кавалерия, как и "
+"гоблины наездники на волках, являются исключением. Для гномов и троллей эта "
+"местность является родной, и им очень удобно пробираться по ней.\n"
+"\n"
+"Большинство соединений получают до 60% защиты в горах, в то время как гномы "
+"получают 70%."
 
 #: data/help.cfg:357 data/terrain.cfg:55
 msgid "Swamp"
@@ -1311,6 +1382,14 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
+"Болотом считается любой тип подтопленных земель. Болото замедляет "
+"практически любого, и снижает его защитные умения. Исключением является "
+"любая раса анатомически приспособленная к плаванию; она получает как полное "
+"движение, так и защитный бонус. Те кто живут на затопленной местности также "
+"приспособлены использовать ее для укрытия.\n"
+"\n"
+"Большинство соединений получает 30% защиты в болоте. Водяные, Наги и Ящеры "
+"обычно получают 60%."
 
 #: data/help.cfg:367 data/terrain.cfg:34
 msgid "Shallow Water"
@@ -1328,6 +1407,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
+"Мелководье представляет собой любую водную поверхность глубиной по пояс "
+"человеку. Этого достаточно чтобы замедлить практически любого  и оставить "
+"его практически открытым для атаки. Гномы, которым вода доходит практически "
+"до шеи, испытывают максимальные неудобства. Исключением является любая раса "
+"анатомически приспособленная к плаванию, что дает ей значительный защитный "
+"бонус и полный запас движения.\n"
+"\n"
+"Большинство соединений имеют от 20 до 30% защиты на мелководье, в то время "
+"как и Нага и Водяные получают 60%."
 
 #: data/help.cfg:377 data/terrain.cfg:25
 msgid "Deep Water"
@@ -1341,6 +1429,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"Глубокая вода представляет из себя водную поверхность достаточно глубокую, "
+"чтобы покрыть человека с головой. Большинство соединений не могут заходить в "
+"глубокую воду: это владения соединений, которые либо могут летать, либо "
+"являются исключительно хорошими пловцами.\n"
+"\n"
+"Водяные и Наги получают 50% защиты в глубокой воде, и полный запас движения."
 
 #: data/help.cfg:387 data/terrain.cfg:257
 msgid "Snow"
@@ -1354,6 +1448,11 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in snow."
 msgstr ""
+"Снег представляет из себя любую сушу, замерзшую постоянно (как тундра) или "
+"на время (как покрытые снегом луга). Большинство соединений замедляются на "
+"снегу, кроме того, им неудобно защищаться на нем.\n"
+"\n"
+"Большинство соединений имеет от 20 до 40% защиты на снегу. "
 
 #: data/help.cfg:397 data/terrain.cfg:265
 msgid "Ice"
@@ -1365,6 +1464,10 @@ msgid ""
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
+"Лед представляет из себя любую замерзшую водную поверхность. По игровым "
+"правилам он идентичен <ref>dst=terrain_tundra text=Снегу</ref>. Заметьте, "
+"что плавающие соединения, несмотря на умение дышать под водой, не могут "
+"плавать подо льдом. "
 
 #: data/help.cfg:405 data/terrain.cfg:374 data/terrain.cfg:485
 msgid "Castle"
@@ -1381,6 +1484,14 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"Замки - это любой тип стационарных укреплений. Практически все соединения "
+"получают значительный бонус к своей защите, находясь в замке, кроме того, "
+"все соединения получают полный запас движения в замке. Размещение соединений "
+"в замке обуславливает их защитные свойства. Если соединения находятся не в "
+"каждом квадрате укрепления, враг просто может  беспрепятственно пробраться в "
+"замок, получив такой же защитный бонус, как и все находящиеся внутри.\n"
+"\n"
+"Большинство соединений имеет около 60% защиты в замке."
 
 #: data/help.cfg:417 data/terrain.cfg:100
 msgid "Sand"
@@ -1394,6 +1505,12 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
+"Вязкость песка делает его трудным для движения для большинства соединений, и "
+"оставляет их открытыми для атаки. В противоположность этому, широкая площадь "
+"опоры змееподобных тел ящерообразных рас делает для них легким передвижение "
+"по песку.\n"
+"\n"
+"Большинство соединений получают от 20 до 40% защиты на песке."
 
 #: data/help.cfg:427 data/terrain.cfg:109
 msgid "Desert"
@@ -1405,6 +1522,9 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
+"Пустыни имеют несколько другую природу, чем небольшие песчаные дюны или "
+"пляжи, тем не менее по игровым правилам, они идентичны. Смотрите "
+"<ref>dst=terrain_sand text=Песок</ref>."
 
 #: data/help.cfg:435 data/terrain.cfg:357
 msgid "Cave"
@@ -1421,6 +1541,15 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Пещеры представляют из себя любое подземелье достаточно высокое для "
+"перемещения по нему. Большинство соединений совсем не знакомы с таким типом "
+"местности, и поэтому там они замедляются и имеют пониженную защиту. Гномы и "
+"тролли, которые живут в пещерах, с легкостью передвигаются в них, в "
+"особенности гномы, которые благодаря своему небольшому росту, могут "
+"преодолевать многие препятствия неподвластные для других рас.\n"
+"\n"
+"Большинство соединений получают от 20 до 40% защиты в пещерах, в то время "
+"как гномы имеют 50%."
 
 #: data/help.cfg:445 data/terrain.cfg:151
 msgid "Savanna"
@@ -1432,6 +1561,9 @@ msgid ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"Саванны - это равнины покрытые высокой травой, которые можно встретить в "
+"местах с теплым климатом. По игровым правилам, они идентичны с "
+"<ref>dst=terrain_grassland text=Лугом</ref>."
 
 #: data/help.cfg:452 data/terrain.cfg:43 data/terrain.cfg:64
 #: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:179
@@ -1452,10 +1584,20 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"Деревни представляют из себя группу людских или принадлежащих другой расе "
+"жилищ. Практически все соединения, даже кавалерия, с легкостью перемещаются "
+"через деревни, и большинство соединений получает защитный бонус находясь в "
+"деревне. Деревни предоставляют соединениям все необходимое, чтобы они могли "
+"позаботиться о своих ранах, что позволяет любому соединению, находящемуся "
+"там, восстанавливать 8 очков здоровья каждый ход, либо избавиться от "
+"отравления.\n"
+"\n"
+"Большинство соединений имеют от 50 до 60% защиты в деревнях, в то время как "
+"кавалерия получает только 40%."
 
 #: data/help.cfg:464 data/terrain.cfg:423
 msgid "Canyon"
-msgstr "Каньон"
+msgstr "Ущелье"
 
 #: data/help.cfg:466
 msgid ""
@@ -1464,6 +1606,10 @@ msgid ""
 "is concerned, only units capable of flying over canyons can cross this "
 "terrain."
 msgstr ""
+"Ущелье - это разлом в земле, ведущий в неизвестные глубины. Ущелья известны "
+"своими гладкими отвесными стенами, преодоление которых, может отнять целые "
+"дни. По правилам считается, что только соединения, способные перелететь "
+"через ущелье, могут пересечь этот тип местности."
 
 #: data/help.cfg:471 data/terrain.cfg:472
 msgid "Lava"
@@ -1475,6 +1621,9 @@ msgid ""
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
+"Опасность заключающаяся в попытке пересечь лаву абсолютно очевидна. Эта "
+"местность может быть пересечена только соединениями, способными лететь "
+"достаточно высоко над ней."
 
 #: data/help.cfg:478 data/terrain.cfg:462
 msgid "River Ford"
@@ -1489,6 +1638,12 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Если река очень мелкая, ее пересечение является легким делом для сухопутных "
+"соединений. Кроме того, любое существо, хорошо приспособленное к плаванию, "
+"обладает полной подвижностью даже в таких местах реки. По правилам игры "
+"речной брод считается как лугом так и отмелью, в зависимости от того, какой "
+"из этих типов местности, предоставляет соединению, стоящему на нем, лучшие "
+"бонусы защиты и перемещения."
 
 #: data/help.cfg:485 data/terrain.cfg:75 data/terrain.cfg:83
 #: data/terrain.cfg:91
@@ -1509,6 +1664,16 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Тому кто умеет строить, умение строить мосты дает освобождение от "
+"непостоянной природы речных бродов, которые появляются и исчезают, со спадом "
+"и возвращением в берега речных вод. Мы даже не упоминаем о промокших ногах, "
+"что особенно неприятно в холодные месяцы года.\n"
+"\n"
+"Для того, кто путешествует сушей или морем, мост хорош со всех сторон - по "
+"игровым правилам он считается как лугом так и мелководьем, в зависимости от "
+"того какой тип местности предоставит лучшие бонусы  движения и защиты для "
+"соединения, занимающего квадрат моста. Отметьте, что плавающее и сухопутное "
+"соединение не может одновременно занимать квадрат моста."
 
 #: data/help.cfg:494 data/terrain.cfg:349
 msgid "Cave Wall"
@@ -1519,6 +1684,9 @@ msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"Стены пещер состоят из сплошного камня, известного своей способностью "
+"служить непреодолимым препятствием даже для самого решительного "
+"путешественника."
 
 #: data/items.cfg:264
 msgid ""
@@ -1773,7 +1941,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 msgid "2p - Blitz"
-msgstr "2p - Блиц"
+msgstr "2и - Блиц"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
@@ -1784,21 +1952,24 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
-msgstr "2p - Бросок"
+msgstr "2и - Бросок"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
-msgstr "2p - Логово Онис"
+msgstr "2и - Логово Ониса"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet. Recommended settings of 2G per village."
 msgstr ""
+"Опасность скрывается в каждом закоулке этого подземного поля битвы, дуэльной "
+"карты где встречаются сила и хитрость. Рекомендуемые установки - 2 золотых "
+"за 1 деревню."
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
 msgid "2p - Divide and Conquer"
-msgstr "2p - Разделяй и властвуй"
+msgstr "2и - Разделяй и властвуй"
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
 msgid ""
@@ -1810,37 +1981,46 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
-msgstr "2p - Деревушка"
+msgstr "2и - Деревушки"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Recommended settings of 2G per village."
 msgstr ""
+"Война превращает простые фермы и деревни мирного региона в причудливо "
+"разделенное на части поле боя. Рекомендуемые установки - 2 золотых за "
+"деревню."
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
-msgstr "2p - Остров рогатых акул"
+msgstr "2и - Остров рогатой акулы"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island. Recommended settings of 2G per village."
 msgstr ""
+"Игроки должны передвигаться по пересеченной местности этого маленького но "
+"топографически насыщенного острова. Рекомендуемые установки - 2 золотых за "
+"деревню."
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
-msgstr "2p - Метеоритное озеро"
+msgstr "2и - Метеоритное озеро"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended settings of 2G per village."
 msgstr ""
+"Давным давно, огромный метеорит упал с небес, оставив свою отметину на этой "
+"поросшей хвойными лесами земле. Рекомендуемые установки - 2 золотых за "
+"деревню."
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
-msgstr "2p - Соболиная дельта"
+msgstr "2и - Дельта каменного меча"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
 msgid ""
@@ -1852,17 +2032,20 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
-msgstr "2p - Пересекая серебряный пик"
+msgstr "2и - Седой перевал"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map. Recommended settings of 2G per village."
 msgstr ""
+"Игроки должны пересечь все типы земель в погоне за победой на этой "
+"многосторонней дуэльной карте. Рекомендуемые установки - 2 золотых за "
+"деревню."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
 msgid "2p - Sullas Ruins"
-msgstr "2p - Руины Суллас"
+msgstr "2p - Руины Сулласа"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
 msgid ""
@@ -1870,6 +2053,9 @@ msgid ""
 "and ice now remain in the shadow of this once mighty empire. Recommended "
 "settings of 2G per village."
 msgstr ""
+"Затопленные морями, покрытые отметинами зимы, только руины, вода и лед "
+"напоминают теперь о закате этой некогда могучей империи. Рекомендуемые "
+"установки - 2 золотых за деревню."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -1944,7 +2130,7 @@ msgstr "Ничья! Финальный счёт: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
 msgid "3p - 1v1v1Hex"
-msgstr "3p - 1v1v1Хекс"
+msgstr "3и - Квадрат 1на1на1"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
 msgid ""
@@ -1956,17 +2142,19 @@ msgstr ""
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
-msgstr "3p - Моритури"
+msgstr "3и - Моритурия"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map. Recommended settings of 2G per village."
 msgstr ""
+"Только одна фракция будет признана победительницей на этой карте  для трех "
+"игроков со сжатыми границами. Рекомендуемы установки - 2 золотых за деревню."
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
-msgstr "3p - Тройной блицкриг"
+msgstr "3и - Тройной Блиц"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
 msgid ""
@@ -1978,7 +2166,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:7
 msgid "4p - An Island"
-msgstr "4p - Остров"
+msgstr "4и - Остров"
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:10
 msgid ""
@@ -1994,7 +2182,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr "4p - Провинция синей воды"
+msgstr "4и - Провинция Голубой Воды "
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:4
 msgid ""
@@ -2003,10 +2191,14 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice. Recommended settings of 2 gold per village."
 msgstr ""
+"Говорят, что Провинция Голубой Воды разрушалась и отстраивалась вновь около "
+"двадцати раз. Теперь, когда армии вновь сошлись на горных потоках и укрытых "
+"снегом горах этой небольшой провинции, ее жителей практически не заметно. "
+"Рекомендуемые настройки 2 золота на деревню."
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
 msgid "4p - Castle Hopping Isle"
-msgstr "4p - Замок Хмельного острова"
+msgstr "4и - Замок Хмельного острова"
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
 msgid ""
@@ -2020,7 +2212,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
-msgstr "4p - Столкновение"
+msgstr "4и - Столкновение"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid ""
@@ -2032,17 +2224,17 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
 msgid "4p - King of the Hill"
-msgstr "4p - Царь горы"
+msgstr "4и - Царь горы"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid ""
 "Who will remain standing as King of the Hill? Best played as a free-for-all "
 "(with everyone fighting everyone else)."
-msgstr ""
+msgstr "Кто станет Королем Горы? Луче всего играть в режиме все против всех."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
-msgstr "4p - Лагуна"
+msgstr "4и - Лагуна"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
 msgid ""
@@ -2054,11 +2246,11 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
-msgstr "4p - Осаждаемые замки"
+msgstr "4и - Осаждаемые замки"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
 msgid "Take control of this huge river delta."
-msgstr "Получите контроль над этой большой дельтой реки."
+msgstr "Возьмите под контроль эту огромную речную дельту."
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
 msgid "4p - The Valley of Death"
@@ -2067,6 +2259,8 @@ msgstr "4p - Долина Смерти"
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:5
 msgid "Can you defeat all enemies and declare victory in this desolate valley?"
 msgstr ""
+"Сможете ли вы победить всех врагов и провозгласить победу в этой пустынной "
+"долине."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -2078,6 +2272,9 @@ msgid ""
 "caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
 "1G per village."
 msgstr ""
+"Незаселенный регион дикой, безграничной пустоши, чьи земли укрыты лесами, "
+"пещерами, реками и руинами древних крепостей. Рекомендованный установки 1 "
+"Золотой за деревню."
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
 msgid "5p - Forest of Fear"
@@ -2105,6 +2302,9 @@ msgid ""
 "where six boxed-in armies come to a head. Recommended settings of 2 gold per "
 "village."
 msgstr ""
+"Только настоящий тактик сможет выжить на этом смертельном и ограниченном в "
+"размерах поле боя, где сошлись лицом к лицу шесть запертых армий. "
+"Рекомендованные установки - 2 золотых за деревню."
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
 msgid "7p - Battle World"
@@ -2651,15 +2851,14 @@ msgid "How do I end my turn?"
 msgstr "Как мне закончить свой ход?"
 
 #: data/scenarios/tutorial/utils.cfg:73
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower-"
 "right hand corner."
 msgstr ""
-"Во-первых, можно нажать 'Alt-E'. Во-вторых, Вы можете нажать правую кнопку "
-"мыши и выбрать 'Закончить Ход'. В-третьих, нажмите кнопку 'Закончить Ход' в "
-"нижнем правом углу."
+"Во-первых, можно нажать 'Alt-Пробел'. Во-вторых, Вы можете нажать правую "
+"кнопку мыши и выбрать Закончить Ход или нажать кнопку Закончить Ход в нижнем "
+"правом углу."
 
 #: data/scenarios/tutorial/utils.cfg:74
 msgid "What happens when I end my turn?"
@@ -4010,6 +4209,9 @@ msgid ""
 "Steadfast:\n"
 "This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
+"Устойчивый:\n"
+"Сопротивляемость такого соединения удваивается, но не более чем до величины "
+"в 50%, когда соединение защищается."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -4166,11 +4368,11 @@ msgstr "Озеро $name"
 
 #: data/translations/english.cfg:137
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr "$name|прятать,$name|ветчина,$name|тонна"
+msgstr "$name|bury,$name|ham,$name|ton"
 
 #: data/translations/english.cfg:138
 msgid "$name|harbor,$name|port"
-msgstr "$name|гавань,$name|порт"
+msgstr "$name|harbor,$name|port"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
@@ -4212,6 +4414,12 @@ msgid ""
 "high chance of hitting an opponent. The touch of a lich drains the victim's "
 "life to renew the lich."
 msgstr ""
+"Таким образом - он является вестником давних времен. Любому, кто встретит "
+"Древнего Лича следует опасаться гораздо более худших вещей, чем смерть.\n"
+"\n"
+"На заметку: Дистанционные атаки лича являются магическими, и всегда имеют "
+"большой шанс поразить оппонента. Прикосновение лича выпивает жизнь из "
+"жертвы, восстанавливая лича."
 
 #: data/units/Ancient_Lich.cfg:44 data/units/Demilich.cfg:32
 #: data/units/Dread_Lich.cfg:21 data/units/Ghost.cfg:23 data/units/Lich.cfg:24
@@ -4306,6 +4514,19 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Существует забавная история о фермере, у которого был огромный дуб на "
+"лужайке, дерево которое стояло там, когда его отец впервые вспахал первую "
+"борозду на этой земле, и с которым у его семьи было связано много "
+"воспоминаний. Каково же было его удивление, когда однажды утром, "
+"проснувшись, он увидел, что кто то похитил это дерево, и лишь голый кусок "
+"земли остался на том месте, где оно когда то стояло. Бедный фермер никогда "
+"прежде такого не видел\n"
+"\n"
+"Такие происшествия - это все что известно о том как предположительно "
+"выглядят самые древние лешие. \n"
+"\n"
+"На заметку: Лешие регенерируют используя природные ресурсы вокруг них, у них "
+"нет необходимости заходить в деревни, чтобы получить пищу и помощь."
 
 #: data/units/Ancient_Wose.cfg:43 data/units/Elder_Wose.cfg:24
 #: data/units/Wose.cfg:24
@@ -4389,6 +4610,22 @@ msgid ""
 "Special Notes: the arch mage's fireballs are magical, and always have a high "
 "chance of hitting an opponent."
 msgstr ""
+"Титул Старшего Мага даруется только после многих лет учебы и достойных "
+"свершений. Старшие Маги часто задействованы в области обучения, или как "
+"советники того, кто кто достаточно умен, чтобы искать плодов их мудрости. "
+"Служение властительному патрону - взаимовыгодное сотрудничество для обоих "
+"сторон, так как все время, когда не требуется выполнить случайное задание "
+"или дать совет, маг получает для проведения своих исследований, никем не "
+"обеспокоенный. Некоторые другие маги избегают цивилизации, проводя свои дни "
+"как отшельники, часто для того, чтобы изучить нечто, что не терпит никаких "
+"раздражающих факторов.\n"
+"\n"
+"Хоть и не являясь тренированными ни для какого вида боя, в случае "
+"необходимости Старшие Маги могут высвободить всю мощь своего искусства, так "
+"что никому мало не покажется.\n"
+"\n"
+"На заметку: огненные шары старших магов имеют магическую природу, и всегда "
+"имеют высокие шансы поразить оппонента."
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:152
 #: data/units/Dark_Sorcerer.cfg:24 data/units/Deathmaster.cfg:32
@@ -4457,6 +4694,17 @@ msgid ""
 "creeping around behind that enemy. Their throwing knives are also poisoned, "
 "which will continually sap away an enemy's strength."
 msgstr ""
+"Целью опытнейших воров бывает иногда необходимость отнять у жертвы нечто "
+"гораздо более ценное чем ее собственность. Мастерами владея приемами боя на "
+"ножах и будучи невообразимо ловкими, эти зловещие фигуры могут быть наняты "
+"тем кому,необходимо тихо расправиться со своими жертвами, отравленным ножом "
+"брошенным из далека, либо кинжалом, всаженным в спину. Смертельно опасные "
+"ночью, эти убийцы испытывают некоторые трудности, сражаясь при свете дня.\n"
+"\n"
+"На заметку: пока соединение сражающееся на той же стороне, что и убийца "
+"отвлекает врага, убийца может ударить в спину, нанеся двойное повреждение, "
+"прокравшись врагу в тыл. Их метательные ножи кроме того и отравлены, что "
+"будет постоянно уменьшать силы врага. "
 
 #: data/units/Assassin.cfg:37 data/units/Assassin.cfg:119
 #: data/units/Dwarvish_Thunderer.cfg:38
@@ -4576,6 +4824,11 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Бандиты - это сборище людей с сомнительной биографией. Они являются костяком "
+"любой преступной группировки, и хотя у них может не быть воспитания или "
+"образованности, они великолепно справляются со своей любимой работой, "
+"избивая жертв до полной покорности. Как и все преступники, они не любят "
+"драться днём, предпочитая работать ночью."
 
 #: data/units/Bandit.cfg:34 data/units/Drake_Enforcer.cfg:43
 #: data/units/Drake_Gladiator.cfg:61 data/units/Great_Troll.cfg:24
@@ -4792,6 +5045,11 @@ msgid ""
 "woodsman, bowmen have reasonable prowess with both a bow and a short sword, "
 "and are very common on the battlefield."
 msgstr ""
+"Применение луков в стрельбе по чему-нибудь, кроме развлечений, стало началом "
+"их использования в войне, и лучники были неотъемлемой частью армии с "
+"незапамятных времён. Лучники обычно крестьянского или охотничьего "
+"происхождения одинаково хорошо обращаются с луком и коротким мечом и очень "
+"полезны на поле битвы."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
@@ -4911,6 +5169,8 @@ msgid ""
 "to turn the living to stone. Needless to say, this makes them extremely "
 "dangerous."
 msgstr ""
+"Известные как 'василиски', эти таинственные создания способны превратить "
+"живого в камень. Надо ли говорить, что это делает их очень опасными."
 
 #: data/units/Cockatrice.cfg:33
 msgid "gaze"
@@ -5093,23 +5353,28 @@ msgid ""
 "the skills they once had. Though frail, these monsters are much faster than "
 "the rest of their kind, both on foot and with their blades."
 msgstr ""
+"При жизни отвратительные существа, известные как 'Клинки Смерти', были "
+"мастерами битвы, смертельно опасными и ловкими бойцами. Их новые хозяева, "
+"учитывая это, пытаются заполучить преимущество, экипируя их для того, чтобы "
+"добиться сходства с навыками, полученными при их жизни. Хотя эти монстры "
+"хрупки, для ходячих трупов очень они быстры, как в передвижении, так и в "
+"обращении со своими клинками."
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
 msgstr "Хозяин Смерти"
 
 #: data/units/Deathmaster.cfg:17
-#, fuzzy
 msgid ""
 "His wanderings on a dark path have given him power normally not granted to "
 "mortals, but with a terrible cost: the undead that he gave his soul to are "
 "gradually claiming his mortal shell too, and with time, he will be a true "
 "undead and a terror to all that lives."
 msgstr ""
-"Продвижение Гвити по тёмному пути дало ему силу, недоступную простым "
-"смертным, но за ужасную цену: мертвец, отдавший свою душу, постепенно теряет "
-"и свою телесную оболочку. Со временем он станет настоящим мертвецом и будет "
-"устрашать всех живых."
+"Его по тёмному пути дало ему силу, недоступную простым смертным, но за "
+"ужасную цену: мертвец, отдавший свою душу, постепенно теряет и свою телесную "
+"оболочку. Со временем он станет настоящим мертвецом и будет устрашать всех "
+"живых."
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
@@ -5185,6 +5450,8 @@ msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of this is the black and white warpaint they display in battle."
 msgstr ""
+"Драконы, мастерски использующие мечи, присягали специальному полку. В битве "
+"их отличают чёрные и белые боевые цвета."
 
 #: data/units/Drake_Blademaster.cfg:46 data/units/Drake_Burner.cfg:53
 #: data/units/Drake_Fighter.cfg:56 data/units/Drake_Fire.cfg:54
@@ -5349,6 +5616,9 @@ msgid ""
 "those drakes which are gifted with flight. Soaring high in the air, they can "
 "see past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
+"Повелители воздушного царства, Ураганные Драконы являются элитой среди "
+"способных летать драконов. Паря высоко в небе, они способны разглядеть любое "
+"укрытие и безнаказанно поджечь своих врагов."
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -5458,6 +5728,11 @@ msgid ""
 "immortality will have to provide consolation for what he has lost in his "
 "quest to achieve them."
 msgstr ""
+"Давным-давно, Ха'атель принёс последнюю жертву ради изучения тёмного "
+"искусства, и вот он сам стал мертвецом. На вершине своего могущества он "
+"превратился в лича, став воплощением ужаса. Вне всяких сомнений, он встал на "
+"путь, в котором нет возврата, а его сила и бессмертие станет утешением того, "
+"что он потерял во время поисков."
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
@@ -5594,6 +5869,10 @@ msgid ""
 "presence somehow imbue it with power. Though rarely seen in combat, a master "
 "of these runes can put them to terrifying use."
 msgstr ""
+"Магия гномов, насколько это известно, чаще всего проявляется в рунах, "
+"изображенных на поверхности предмета, в которых есть явное присутствие чего-"
+"то, что вдохновляет этот предмет силой. Хотя редко это замечено было в "
+"битве, но владелец этих рун может использовать их с ужасной силой."
 
 #: data/units/Dwarvish_Runemaster.cfg:21
 msgid "runic hammer"
@@ -5655,6 +5934,11 @@ msgid ""
 "make any of their own, realized they were lucky to no longer be fighting the "
 "dwarves, and vowed never to do so again."
 msgstr ""
+"Когда люди Веснота встретили гномов, гномы произвели страшное впечатление "
+"мощью своих Громовержцев, способных убивать издали с помощью странных... "
+"'жезлов', носимых ими в бою. После установления мира Ка'лианом, люди "
+"Халдрика, не понимая этого оружия и не умея его создавать, поняли, что лучше "
+"не воевать с гномами, и поклялись никогда этого не делать."
 
 #: data/units/Dwarvish_Thunderer.cfg:63
 msgid "thunderstick"
@@ -5677,6 +5961,16 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
+"Гномы Стражи Грома знамениты своим таинственным оружием, странным образом "
+"выполненным из железа и дерева и делающим оглушительный звук при "
+"использовании. Механизм действия этого оружия неизвестен, держится гномами "
+"из Кналга в строжайшей тайне и, предположительно, воссоздаётся при выковке "
+"оружия. Всё, что известно, это то, что гномы засыпают странный чёрный "
+"порошок в жерло своего оружия. Кто-то утверждает, что это еда для животного, "
+"заключённого внутри оружия.\n"
+"\n"
+"Хотя подготовка одного выстрела из этих 'громовых тростей' занимает "
+"несколько минут, результаты, совершённые гномами, превосходят все ожидания."
 
 #: data/units/Dwarvish_Thunderguard.cfg:48
 msgid "dragonstick"
@@ -5873,6 +6167,10 @@ msgid ""
 "can grasp the basics of swordsmanship and archery in an uncannily short "
 "time, and put them to effective use on the battlefield."
 msgstr ""
+"Эльфы по природе не воинственны, но, если понадобится, природная грация и "
+"ловкость неплохо служит для умелых бойцов. Эльф легко обучается основам "
+"владения мечом и луком в невообразимо короткие сроки и становится "
+"эффективным бойцом на поле боя."
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
@@ -5963,7 +6261,6 @@ msgid "Elvish Marshal"
 msgstr "Эльф Маршал"
 
 #: data/units/Elvish_Marshal.cfg:25
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -5976,11 +6273,12 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level"
 msgstr ""
-"Как великие лидеры армий людей, Генералы ответственны за оборону больших или "
-"значимых территорий королевств. Их опыт и выправка достаточны для того чтобы "
-"строго выполнять приказы.\n"
+"Долгожительство и естественный интеллект эльфов, они не очень приспособлены "
+"к военным делам, у них вызывает отвращение. Эльфы помнят намного больше "
+"вещей чем человечество и обычно интуитивно умеют уже то, что другим доступно "
+"только после долгих тренировок.\n"
 "\n"
-"Специальное примечание: Под руководством Генералов, дружественные соединения "
+"Специальное примечание: Под руководством Маршала, дружественные соединения "
 "наносят больше урона в боях, но это действительно только для соединений "
 "низших чинов."
 
@@ -6049,6 +6347,11 @@ msgid ""
 "thick of the forest with nary a scratch. They are, perhaps, some of the only "
 "cavalry in existence that fares better in the woods than on open ground."
 msgstr ""
+"Всадники лесных эльфов обучены обращаться луком и мечом, но их настоящим "
+"навыком является езда на лошади. Как и все эльфы, они невообразимо быстры в "
+"лесу, они могут мчаться сквозь лесные заросли, не поцарапавшись. Возможно, "
+"это единственная из существующих кавалерий, которая передвигается в лесу "
+"быстрее, чем в открытом пространстве."
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
@@ -6330,6 +6633,17 @@ msgid ""
 "poison will continually take damage until they can be cured in town or by a "
 "healer."
 msgstr ""
+"Только посвященному в искусство некромантов известно, что нужно сделать, "
+"чтобы превратить человека в упыря, и этот секрет хранится в тайне. Как "
+"только негласный обряд завершится, в результате появляется тварь, ничего не "
+"помнящая о своей прежней человеческой жизни, неуклюжее создание, голое, как "
+"в день своего появления на свет и жадно поедающее мясо мёртвых.\n"
+"\n"
+"Именно по этой причине некроманты находятся вне закона и преследуются с "
+"максимальной ненавистью.\n"
+"\n"
+"Замечание: когти упыря заражены трупным ядом, и жертвы отравления будут "
+"терять здоровье до тех пор, пока не вылечатся лекарем или в деревне."
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
@@ -6365,6 +6679,8 @@ msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation."
 msgstr ""
+"Даже обычный скорпион опасен, чего уж говорить о скорпионах размером с "
+"человека."
 
 #: data/units/Giant_Scorpion.cfg:20
 msgid "sting"
@@ -6388,6 +6704,13 @@ msgid ""
 "Special Notes: the length of their weapon allows an impaler to strike first "
 "in melee, even in defense."
 msgstr ""
+"Гоблины используются орками в качестве пушечного мяса в битве с главными "
+"силами противника. Те, кто смог уцелеть, снова экипируются для продолжения "
+"битвы. Длинные копья помогают им компенсировать их низкий рост, а лучшие "
+"доспехи помогают им защищать их хрупкие тела.\n"
+"\n"
+"Замечание: в рукопашной битве длина оружия позволяет закалывателям наносить "
+"удар первыми, даже при обороне."
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -6444,6 +6767,14 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
+"Некоторые маленькие орки, рождённые очень слабыми и хрупкими, могут выжить. "
+"Они зовутся 'Гоблинами' и находятся в самом низу общества. В битве скудно "
+"оснащённые гоблины используются в качестве прикрытия, пока Военные Лорды "
+"подготавливают настоящий штурм.\n"
+"\n"
+"Кто-то предполагает, что существование гоблинов свидетельствует о начале "
+"вырождения рода орков, однако никто достаточно не знает их историю, чтобы "
+"выдвинуть окончательный ответ."
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -6465,6 +6796,10 @@ msgid ""
 "Special Notes: the Grand Knight's charging lance attack doubles both damage "
 "dealt and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Замечание: бросок Великого Рыцаря наносит двойной урон как нападающему, так "
+"и защитнику. Это не действует при защите Великого Рыцаря."
 
 #: data/units/Grand_Knight.cfg:42 data/units/Knight.cfg:40
 #: data/units/Lancer.cfg:25 data/units/Paladin.cfg:47
@@ -6508,6 +6843,19 @@ msgid ""
 "Special Notes: the great mage's fireballs are magical, and always have a "
 "high chance of hitting an opponent."
 msgstr ""
+"Любой удостоившийся титула Великого Мага очень скоро станет легендой своего "
+"времени, и городские глашатае весьма осмотрительны в произношении титула. "
+"Этот титул назначается после долгого рассмотрения советом величайших магов "
+"эпохи, и это решение будет принято только при большинстве поданных голосов. "
+"Несмотря на то, кто выдвинут на титул Великого Мага, он, вне сомнения, "
+"является мастером своего искусства и превосходит каждого во своём "
+"мастерстве.\n"
+"\n"
+"Хотя они не являются воинами, но применение их искусства в битве иногда "
+"действенно, когда солдаты остолбенели от страха.\n"
+"\n"
+"Замечание: огненные шары Великих Магов являются магией, и поэтому они имеют "
+"высокую вероятность попасть в противника."
 
 #: data/units/Great_Mage.cfg:101
 msgid "female^Great Mage"
@@ -6651,6 +6999,10 @@ msgid ""
 "Special Notes: the Horseman's only attack is a charge, which doubles both "
 "damage dealt and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Замечание: единственная атака Всадника - бросок - наносит двойной урон как "
+"нападающему, так и защитнику. Это не действует при защите Всадника."
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
@@ -6661,6 +7013,8 @@ msgid ""
 "Dabbling in the Death Magic, this young Ha'atel's lust for power has "
 "weakened him to the point where he is too weak to attack in regular combat."
 msgstr ""
+"При изучении Смертельной магии жажда власти молодого Ха'ателя сделала его "
+"бессильным против атак в обычной схватке."
 
 #: data/units/Iron_Mauler.cfg:3
 msgid "Iron Mauler"
@@ -6719,6 +7073,10 @@ msgid ""
 "Special Notes: the Knight's charging lance attack doubles both damage dealt "
 "and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Замечание: бросок Рыцаря наносит двойной урон как нападающему, так и "
+"защитнику. Это не действует при защите Рыцаря."
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
@@ -6733,6 +7091,13 @@ msgid ""
 "infantrymen who've made the mistake of breaking formation, and in piercing "
 "defensive lines. However, they have limited use in defense."
 msgstr ""
+"Уланы - одни из бравых и самых знаменитых всадников во всём Весноте. Они "
+"экипированы минимальной бронёй, поэтому они способны быстро передвигаться, "
+"быстрее, чем кто-либо другой. В дерзкой тактике они используют обоюдоострый "
+"меч, чтобы победить и прославится или быстро умереть. Уланы отлично подходят "
+"для охоты на пехотинцев, по неосторожности вышедшие из строя, и для "
+"пробивания оборонительных рубежей. Тем не менее, в защите их лучше не "
+"использовать."
 
 #: data/units/Lancer.cfg:22
 msgid ""
@@ -6741,6 +7106,10 @@ msgid ""
 "Special Notes: the Lancer's charging lance attack doubles both damage dealt "
 "and received. This does not affect his defensive retaliation."
 msgstr ""
+"\n"
+"\n"
+"Замечание: бросок Улана наносит двойной урон как нападающему, так и "
+"защитнику. Это не действует при защите Улана."
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
@@ -6762,6 +7131,18 @@ msgid ""
 "high chance of hitting an opponent. The touch of a lich drains the victim's "
 "life to renew the lich."
 msgstr ""
+"Лич - это наглядное воплощение главной задачи тёмной магии - поиск вечной "
+"жизни. После того, как принесена великая жертва при перерождении, ставший "
+"личем сможет обмануть смерть. Его разум сохраняется, душа следует вслед за "
+"ним, хотя тела может уже и не быть.\n"
+"\n"
+"Неизвестно, сохраняется ли жизнь посвящённого в познания некромантов или "
+"просто продляется. Но для каждого решения, подобного этому рождению, "
+"требуется значительная дань от того, кто уже достиг этого.\n"
+"\n"
+"Замечание: на дистанции лич атакует магией, которая имеет большой шанс "
+"поразить оппонента. Прикосновение лича высасывает жизненные силы из жертвы и "
+"передаёт их личу."
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
@@ -7323,7 +7704,7 @@ msgstr ""
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
-msgstr "Пожиратель Мёртвых"
+msgstr "Трупоед"
 
 #: data/units/Necrophage.cfg:20
 msgid ""
@@ -7360,7 +7741,6 @@ msgid "Noble Commander"
 msgstr "Благородный Командир"
 
 #: data/units/Noble_Commander.cfg:24
-#, fuzzy
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
 "combat. Possessing leadership skills, they give lower-level units in "
@@ -7756,6 +8136,12 @@ msgid ""
 "some to living creatures. Paladins are capable of some healing, though they "
 "can only delay the effects of poison, not cure them entirely."
 msgstr ""
+"\n"
+"\n"
+"Замечание: бросок Паладина наносит двойной урон как нападающему, так и "
+"защитнику. Это не действует при защите Паладина. Святая атака мечом наносит "
+"огромный урон нежити, так и другому живому существу. Паладины способны "
+"исцелять, хотя они лишь в состоянии задержать действие яда, не излечивая его."
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
@@ -7808,6 +8194,9 @@ msgid ""
 "of goods shouldn't be lonely, far away from any land, better to help them to "
 "avoid it being sunk from overloading..."
 msgstr ""
+"Пиратские Галеоны для транспортных кораблей - что волк среди овец. Суда, "
+"полные товаров, не должен плыть один далеко, лучше слегка помочь им "
+"уберечься от затопления тяжелым грузом..."
 
 #: data/units/Pirate_Galleon.cfg:17 data/units/Transport_Galleon.cfg:17
 #: data/units/Watch_Tower.cfg:18
@@ -7887,6 +8276,11 @@ msgid ""
 "their past. Such questions aside, a Revenant is a powerful tool in combat: a "
 "fearless warrior that feels no pain, and which will fight to the bitter end."
 msgstr ""
+"Получив мнимую жизнь ещё раз, Возрождённый, бывшый в своё время великим "
+"воином, теперь ничего не помнит из своего прошлого. Поднявший его колдун "
+"может только предполагать о его прошлом. Без сомнения, Возрождённый - "
+"полезный инструмент в битве: не чувствующий боли бесстрашный воин, "
+"сражающийся до победного конца."
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
@@ -8107,6 +8501,9 @@ msgid ""
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
+"Сержант является командующим чином в Королевской Армии. Хотя он учился в "
+"академии, ему нужен боевой опыт перед тем, как его лидерство стало значимым "
+"и изученным."
 
 #: data/units/Shadow.cfg:3
 msgid "Shadow"
@@ -8126,6 +8523,17 @@ msgid ""
 "slowly over open water. Shadows are able to hide at night, leaving no trace "
 "of their presence."
 msgstr ""
+"Когда свет появился в мире и придало форму неизвестному, страх отступил в "
+"темноту. С тех пор тени мира внушают ужас всему человечеству, хотя они не "
+"знают почему.\n"
+"\n"
+"На этот вопрос очень легко ответит некромант.\n"
+"\n"
+"Замечание: когда позади противника находится соединение той же стороны, что "
+"и тень, то тень может ударить в тыл противника, нанося двойной урон. Тени "
+"необычайно невосприимчивы к урону, но их движение сильно замедляется над "
+"отрытой водой. Тени могут скрыться в ночи, не оставляя следов своего "
+"присутствия."
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
@@ -8231,6 +8639,10 @@ msgid ""
 "to achieve the tasks laid before them, for death holds no fear for one who "
 "is already dead."
 msgstr ""
+"Скелеты-лучники немного отличаются от обычных скелетов, сопровождающих их, - "
+"они согрешили против природы и были подняты вновь из могилы биться ещё раз. "
+"Управляемые своим хозяином, эти солдаты выполнят любую задачу, стоящую перед "
+"ними, ведь смерть не страшна тем, кто уже умер."
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
@@ -8297,6 +8709,17 @@ msgid ""
 "renew the spectre. Spectres have very unusual resistances to damage, and "
 "move quite slowly over open water."
 msgstr ""
+"Когда-то прозванные 'невидимками', фантомы являются правой рукой своего "
+"мастера. Эти отвратительные создания, являющиеся настоящим террором для всех "
+"живых, бессонно бодрствуют над владениями их хозяина.\n"
+"\n"
+"Их создание не является чем-то выдающимся, настоящую опасность при встрече с "
+"ними представляет то, что они, скорее всего, являются предвестниками более "
+"опасных сил, следующих вслед за ними.\n"
+"\n"
+"Замечание: удар меча фантома высасывает жизненные силы из жертвы и передаёт "
+"их фантому. Фантомы необычайно невосприимчивы к урону, но их движение сильно "
+"замедляется над отрытой водой."
 
 #: data/units/Swordsman.cfg:3
 msgid "Swordsman"
@@ -8342,6 +8765,17 @@ msgid ""
 "an enemy, the thief may backstab, inflicting double damage, by creeping "
 "around behind that enemy."
 msgstr ""
+"Очень давно, что вряд ли кто вспомнит, члены различных воровских 'гильдий', "
+"зародившихся в больших городах, начали странную традицию обесцвечивать свои "
+"волосы известью до тех пор, пока они не приобретали тусклый тёмно-синий "
+"оттенок. Это было дерзко с их стороны, так как их род деятельности был вне "
+"закона. Воры владеют множеством навыков, необходимым для тихой ходьбы и "
+"хорошего владения ножами. Они придерживаются не очень почётной тактике в "
+"битвах, подыскивая любую возможность для 'честного боя'.\n"
+"\n"
+"Замечание: когда позади противника находится соединение той же стороны, то "
+"вор может, подкравшись сзади, нанести удар исподтишка, причиняя двойной урон "
+"противнику."
 
 #: data/units/Thief.cfg:106
 msgid "female^Thief"
@@ -8420,6 +8854,12 @@ msgid ""
 "Special Notes: Trolls possess the regeneration ability, which heals them as "
 "though they were always stationed in a village."
 msgstr ""
+"Некоторые тролли родились с невероятной силой и жизнеспособностью, "
+"характеризующими их расу. В обществе, где их признают, они становятся "
+"героями своего народа.\n"
+"\n"
+"Замечание: тролли могут регенерироваться, восстанавливаются так, как будто "
+"они всегда находятся в деревне."
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
@@ -8633,6 +9073,18 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Редко встречаемые, даже эльфами, лешие - создания, о которых мало что "
+"известно. Почти все знания о них получены от эльфов. От них известно, что "
+"лешие не являются потомками деревьев, хотя и очень похожи на них. Также "
+"известно, что лешие намного сильнее связаны с миром волшебства, чем сами "
+"эльфы, хотя несколько по-иному. Мотивы и действия этого народа неизвестны, "
+"хотя очевидно, что лешие являются защитниками природного мира.\n"
+"\n"
+"Лешие не агрессивны, но обладают огромной силой. Тем не менее, они почти её "
+"не используют, также они медлительны в движении.\n"
+"\n"
+"Замечание: лешие регенерируются, используя природные ресурсы вокруг себя, и "
+"им не нужно останавливаться в деревнях, чтобы отдохнуть и восстановиться."
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
@@ -10118,7 +10570,6 @@ msgid "Choose weapon:"
 msgstr "Выберите оружие:"
 
 #: src/playturn.cpp:1311
-#, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
@@ -10611,9 +11062,3 @@ msgstr "порядочный"
 #: src/unit_types.cpp:952
 msgid "neutral"
 msgstr "нейтральный"
-
-#~ msgid "healthy"
-#~ msgstr "здоровый"
-
-#~ msgid "invisible"
-#~ msgstr "невидимый"

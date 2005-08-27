@@ -1,3 +1,4 @@
+# translation of ru.po to Russian
 # Russian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -7,21 +8,23 @@
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Azamat Hackimov (Izek) - azazello1984@mail.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
+# Azamat H. Hackimov <azazello1984@mail.ru>, 2005.
 #
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:22+0200\n"
-"PO-Revision-Date: 2005-08-21 11:09+0300\n"
-"Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-08-18 12:09+0600\n"
+"Last-Translator: Azamat H. Hackimov <azazello1984@mail.ru>\n"
+"Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -93,15 +96,15 @@ msgstr "Загрузить игру"
 
 #: src/hotkeys.cpp:62
 msgid "Recruit"
-msgstr "Призвать новобранца"
+msgstr "Вербовать"
 
 #: src/hotkeys.cpp:63
 msgid "Repeat Recruit"
-msgstr "Повторить покупку"
+msgstr "Повторить вербовку"
 
 #: src/hotkeys.cpp:64
 msgid "Recall"
-msgstr "Воскресить"
+msgstr "Призвать"
 
 #: src/hotkeys.cpp:65
 msgid "End Turn"
@@ -113,7 +116,7 @@ msgstr "Показать сетку"
 
 #: src/hotkeys.cpp:67
 msgid "Status Table"
-msgstr "Текущее состояние"
+msgstr "Панель состояния"
 
 #: src/hotkeys.cpp:68
 msgid "Mute"
@@ -137,7 +140,7 @@ msgstr "Настройки"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
-msgstr "Задача сценария"
+msgstr "Задачи сценария"
 
 #: src/hotkeys.cpp:74
 msgid "Unit List"
@@ -169,7 +172,7 @@ msgstr "Установить местность"
 
 #: src/hotkeys.cpp:82
 msgid "Quit Editor"
-msgstr "Редактор выхода"
+msgstr "Выйти из редактора"
 
 #: src/hotkeys.cpp:83
 msgid "New Map"
@@ -189,7 +192,7 @@ msgstr "Сохранить как"
 
 #: src/hotkeys.cpp:87
 msgid "Set Player's keep"
-msgstr "Установить сохранение игрока"
+msgstr "Установить укрытие игрока"
 
 #: src/hotkeys.cpp:88
 msgid "Flood Fill"
@@ -237,11 +240,11 @@ msgstr "Обновить кэш картинок"
 
 #: src/hotkeys.cpp:100
 msgid "Delay Shroud Updates"
-msgstr "Задержать обновление тумана войны"
+msgstr "Задержать обновление пелены"
 
 #: src/hotkeys.cpp:101
 msgid "Update Shroud Now"
-msgstr "Обновить туман войны"
+msgstr "Обновить пелену"
 
 #: src/hotkeys.cpp:102
 msgid "Continue Move"
@@ -331,7 +334,7 @@ msgstr "Показывать эффекты"
 
 #: src/preferences.cpp:897
 msgid "Video Mode"
-msgstr "Видео режимы"
+msgstr "Видеорежимы"
 
 #: src/preferences.cpp:898
 msgid "Hotkeys"
@@ -343,7 +346,7 @@ msgstr "Настроить гамму"
 
 #: src/preferences.cpp:900
 msgid "Reverse Time Graphics"
-msgstr "Повернуть графику времени"
+msgstr "Обратить отображение времени"
 
 #: src/preferences.cpp:901
 msgid "Sound effects"
@@ -367,7 +370,7 @@ msgstr "Гамма:"
 
 #: src/preferences.cpp:905
 msgid "Scroll Speed:"
-msgstr "Скорость перемещения:"
+msgstr "Скорость прокрутки:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -387,7 +390,7 @@ msgstr "Изменить громкость музыки"
 
 #: src/preferences.cpp:935
 msgid "Change the speed of scrolling around the map"
-msgstr "Изменить скорость перемещения по карте"
+msgstr "Изменить скорость прокрутки карты"
 
 #: src/preferences.cpp:938 src/preferences.cpp:943
 msgid "Change the brightness of the display"
@@ -395,7 +398,7 @@ msgstr "Изменить яркость"
 
 #: src/preferences.cpp:946
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Выберите режим запуска игры, на весь экран или в окне"
+msgstr "Выберите режим игры, на весь экран или в окне"
 
 #: src/preferences.cpp:949
 msgid "Make units move and fight faster"
@@ -443,7 +446,7 @@ msgstr "Использовать улучшенные курсоры мышки 
 
 #: src/preferences.cpp:978
 msgid "Use graphical special effects (may be slower)"
-msgstr "Использовать графические спец. эффекты (может замедлить игру)"
+msgstr "Использовать графические эффекты (может замедлить игру)"
 
 #: src/preferences.cpp:980
 msgid "View and configure keyboard shortcuts"
@@ -471,7 +474,7 @@ msgstr "Звук"
 
 #: src/preferences.cpp:1222
 msgid "Advanced section^Advanced"
-msgstr "Дополнительно"
+msgstr "Другие"
 
 #: src/preferences.cpp:1278
 msgid "There are no alternative video modes available"
