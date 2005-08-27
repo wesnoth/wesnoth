@@ -165,15 +165,8 @@ void turn_info::turn_slice()
 	events::pump();
 	events::raise_process_event();
 
-	const int border_size = 10;
-
 	if (gui_.video().modeChanged()) {
-		if (textbox_.box != NULL) {
-			const SDL_Rect& area = gui_.map_area();
-			const SDL_Rect& label_area = font::get_floating_label_rect(textbox_.label);
-			const int ypos = area.y+area.h-30 - (textbox_.check != NULL ? textbox_.check->height() + border_size : 0);
-			textbox_.box->set_location(area.x + label_area.w + border_size*2,ypos);
-		}
+		update_textbox_location();
 	}
 
 	events::raise_draw_event();
@@ -2878,27 +2871,25 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;
 }
 
-void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& label, const std::string& check_label, bool checked)
+void turn_info::update_textbox_location()
 {
-	close_textbox();
-
-	textbox_.mode = mode;
-
-	if(check_label != "") {
-		textbox_.check.assign(new gui::button(gui_.video(),check_label,gui::button::TYPE_CHECK));
-		textbox_.check->set_check(checked);
-	}
+	if (textbox_.box == NULL)
+		return;
 
 	const SDL_Rect& area = gui_.map_area();
 
 	const int border_size = 10;
 
 	const int ypos = area.y+area.h-30 - (textbox_.check != NULL ? textbox_.check->height() + border_size : 0);
-	textbox_.label = font::add_floating_label(label,font::SIZE_NORMAL,font::YELLOW_COLOUR,area.x+border_size,ypos,0,0,-1,
-		area,font::LEFT_ALIGN);
-	if(textbox_.label == 0) {
+
+	if (textbox_.label != 0)
+		font::remove_floating_label(textbox_.label);
+
+	textbox_.label = font::add_floating_label(textbox_.label_string,font::SIZE_NORMAL,
+			font::YELLOW_COLOUR,area.x+border_size,ypos,0,0,-1, area,font::LEFT_ALIGN);
+
+	if (textbox_.label == 0)
 		return;
-	}
 
 	const SDL_Rect& label_area = font::get_floating_label_rect(textbox_.label);
 	const int textbox_width = area.w - label_area.w - border_size*3;
@@ -2908,14 +2899,37 @@ void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& l
 		return;
 	}
 
-	textbox_.box.assign(new gui::textbox(gui_.video(),textbox_width,"",true,256,0.8,0.6));
-	textbox_.box->set_volatile(true);
-	textbox_.box->set_location(area.x + label_area.w + border_size*2,ypos);
+	if(textbox_.box != NULL) {
+		textbox_.box->set_volatile(true);
+		const SDL_Rect rect = { 
+			area.x + label_area.w + border_size*2, ypos, 
+			textbox_width, textbox_.box->height() 
+		};
+		textbox_.box->set_location(rect);
+	}
 
 	if(textbox_.check != NULL) {
 		textbox_.check->set_volatile(true);
 		textbox_.check->set_location(textbox_.box->location().x,textbox_.box->location().y + textbox_.box->location().h + border_size);
 	}
+}
+
+void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& label, const std::string& check_label, bool checked)
+{
+	close_textbox();
+
+	textbox_.label_string = label;
+	textbox_.mode = mode;
+
+	if(check_label != "") {
+		textbox_.check.assign(new gui::button(gui_.video(),check_label,gui::button::TYPE_CHECK));
+		textbox_.check->set_check(checked);
+	}
+
+
+	textbox_.box.assign(new gui::textbox(gui_.video(),100,"",true,256,0.8,0.6));
+
+	update_textbox_location();
 }
 
 void turn_info::close_textbox()

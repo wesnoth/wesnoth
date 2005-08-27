@@ -69,6 +69,7 @@ public:
 		            TEXTBOX_COMMAND };
 		MODE mode;
 
+		std::string label_string;
 		int label;
 
 		floating_textbox() : box(NULL), check(NULL), mode(TEXTBOX_NONE), label(0)
@@ -248,6 +249,7 @@ private:
 
 	floating_textbox& textbox_;
 
+	void update_textbox_location();
 	void create_textbox(floating_textbox::MODE mode, const std::string& label, const std::string& check_label="", bool checked=false);
 	void close_textbox();
 	void enter_textbox();
