@@ -29,6 +29,7 @@ class replay;
 
 //this file defines various functions which implement different in-game
 //events and commands.
+bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const gamemap::location loc);
 
 //recruit_unit: function which recruits a unit into the game. A
 //copy of u will be created and inserted as the new recruited unit.
@@ -42,8 +43,8 @@ class replay;
 //If the unit cannot be recruited, then a human-readable message
 //describing why not will be returned. On success, the return string is empty
 std::string recruit_unit(const gamemap& map, int team, unit_map& units,
-						 unit& u, gamemap::location& recruit_location,
-                         display *disp=NULL, bool need_castle=true, bool full_movement=false);
+		unit& u, gamemap::location& recruit_location,
+		display *disp=NULL, bool need_castle=true, bool full_movement=false);
 
 //a structure which defines all the statistics for a potential
 //battle that could take place.

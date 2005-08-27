@@ -86,6 +86,23 @@ namespace victory_conditions
 	}
 }
 
+bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const gamemap::location loc) 
+{
+	if(!map.on_board(loc))
+		return false;
+
+	if(!map.is_castle(loc))
+		return false;
+
+	castle_cost_calculator calc(map);
+	const paths::route& rt = a_star_search(leader, loc, 100.0, &calc, map.x(), map.y());
+
+	if(rt.steps.empty())
+		return false;
+
+	return true;
+}
+
 std::string recruit_unit(const gamemap& map, int side,
        std::map<gamemap::location,unit>& units, unit& new_unit,
        gamemap::location& recruit_location, display* disp, bool need_castle, bool full_movement)
@@ -115,11 +132,10 @@ std::string recruit_unit(const gamemap& map, int side,
 		return _("You must have your leader on a keep to recruit or recall units.");
 	}
 
-	if(need_castle && map.on_board(recruit_location)) {
-		castle_cost_calculator calc(map);
-		const paths::route& rt = a_star_search(u->first, recruit_location, 100.0, &calc, map.x(), map.y());
-		if(rt.steps.empty() || units.find(recruit_location) != units.end() ||
-		   !map.is_castle(recruit_location)) {
+	if(need_castle) {
+		if (units.find(recruit_location) != units.end() ||
+			!can_recruit_on(map, u->first, recruit_location)) {
+
 			recruit_location = gamemap::location();
 		}
 	}

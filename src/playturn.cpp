@@ -1032,10 +1032,16 @@ bool turn_info::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	//Only display these if the mouse is over a castle or keep tile
 	case hotkey::HOTKEY_RECRUIT:
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
-	case hotkey::HOTKEY_RECALL:
+	case hotkey::HOTKEY_RECALL: {
 		// last_hex_ is set by turn_info::mouse_motion
 		// Enable recruit/recall on castle/keep tiles
-		return map_.is_castle(last_hex_);
+		const unit_map::const_iterator leader = team_leader(team_num_,units_);
+		if (leader != units_.end()) {
+			return can_recruit_on(map_, leader->first, last_hex_);
+		} else {
+			return false;
+		}
+	}
 	default:
 		return true;
 	}
