@@ -312,8 +312,9 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 			}
 
 			if(start_pos.valid()) {
+				new_unit.new_turn();
 				units.insert(std::pair<gamemap::location,unit>(
-								map.starting_position(new_unit.side()), new_unit));
+							map.starting_position(new_unit.side()), new_unit));
 			}
 		}
 
@@ -344,6 +345,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 					player->available_units.push_back(new_unit);
 				}
 			} else {
+				new_unit.new_turn();
 				units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
 				LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
 			}
