@@ -455,17 +455,19 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 			const int xp_for_advance = att->second.max_experience() - att->second.experience();
 
 			//the reward for advancing a unit is to get a 'negative' loss of that unit
-			if(xp >= xp_for_advance) {
-				avg_losses -= att->second.type().cost();
+			if(att->second.type().advances_to().empty() == false) {
+				if(xp >= xp_for_advance) {
+					avg_losses -= att->second.type().cost();
 
-				//ignore any damage done to this unit
-				atthp = hitpoints[i];
-			} else {
-				//the reward for getting a unit closer to advancement is to get
-				//the proportion of remaining experience needed, and multiply
-				//it by a quarter of the unit cost. This will cause the AI
-				//to heavily favor getting xp for close-to-advance units.
-				avg_losses -= (att->second.type().cost()*xp)/(xp_for_advance*4);
+					//ignore any damage done to this unit
+					atthp = hitpoints[i];
+				} else {
+					//the reward for getting a unit closer to advancement is to get
+					//the proportion of remaining experience needed, and multiply
+					//it by a quarter of the unit cost. This will cause the AI
+					//to heavily favor getting xp for close-to-advance units.
+					avg_losses -= (att->second.type().cost()*xp)/(xp_for_advance*4);
+				}
 			}
 
 			if(defhp <= 0) {
@@ -492,7 +494,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 
 		//penalty for allowing advancement is a 'negative' kill, and
 		//defender's hitpoints get restored to maximum
-		if(defend_it->second.experience() < defend_it->second.max_experience() &&
+		if(defend_it->second.type().advances_to().empty() == false &&
+		   defend_it->second.experience() < defend_it->second.max_experience() &&
 		   defend_it->second.experience() + defenderxp >=
 		   defend_it->second.max_experience()) {
 			chance_to_kill -= 1.0;
