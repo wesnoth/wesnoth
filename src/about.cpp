@@ -278,6 +278,7 @@ std::vector<std::string> get_text() {
 		"_" N_("+Russian Translation"),
 		"-   Alexandr Menovchicov",
 		"-   Azamat Hackimov",
+		"-   Ilya Kaznacheev",
 		"-   Roman Tuchin (Sankt)",
 
 		"_" N_("+Serbian Translation"),
