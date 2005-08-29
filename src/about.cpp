@@ -200,9 +200,9 @@ std::vector<std::string> get_text() {
 		"-   Guillaume Duwelz-Rebert",
 		"-   Guillaume Massart (Piou2fois)",
 		"-   Guillaume Melquiond (silene)",
+		"-   Jean Privat (Tout)",
 		"-   Jean-Luc Richard (Le Gnome)",
 		"-   Philippe Plantier (Ayin)",
-		"-   Tout",
 		"-   Yann Dirson",
 		"-   Zas",
 
@@ -224,7 +224,9 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Hungarian Translation"),
 		"-   adson",
+		"-   Beer (Eddi)",
 		"-   dentro",
+		"-   Gilluin",
 		"-   Kékkői László (BlackEvil)",
 		"-   Kertész Csaba",
 		"-   Khiraly",
