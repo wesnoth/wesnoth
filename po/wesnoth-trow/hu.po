@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:24+0200\n"
-"PO-Revision-Date: 2005-07-10 12:46+0200\n"
+"PO-Revision-Date: 2005-08-29 23:12+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: Hungarian <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/campaigns/The_Rise_of_Wesnoth.cfg:5
 msgid "The Rise of Wesnoth"
-msgstr "Wesnoth felemelkedése (részben angol)"
+msgstr "Wesnoth felemelkedése"
 
 #: data/campaigns/The_Rise_of_Wesnoth.cfg:9
 msgid "Fighter"
@@ -49,12 +49,12 @@ msgid ""
 "with Lich-Lord Jevyan awaits..."
 msgstr ""
 "Vezesd át Haldric herceget a Zöld-sziget elpusztulásán és az óceánon túl, "
-"hogy megalapítsa magát a Wesnoth-i Királyságot. Közeleg a szembeszállás "
+"hogy megalapítsa magát a Wesnoth-i Királyságot! Közeleg a szembeszállás "
 "Jevyan villi úrral..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:4
 msgid "Lizard Beach"
-msgstr ""
+msgstr "Gyík part"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:37
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:32
@@ -176,30 +176,32 @@ msgid ""
 "sunny beach. While normally this would be a pleasant occurrence, they soon "
 "find the Saurians hard at work."
 msgstr ""
+"A hosszú út egy napsütötte partra vitte Haldric herceget és társait. Bár ez "
+"kellemesnek is hangozhat, hamar összefutottak a lázasan serénykedő gyíkokkal."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:148
 msgid "Monsters! We're being invaded by monsters."
-msgstr "Szörnyek! Szörnyek rohannak le minket."
+msgstr "Szörnyek! Szörnyek rohannak minket le!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:153
 msgid "We must hold the beach until we can call our Naga friends."
-msgstr ""
+msgstr "Tartanunk kell a partot, amíg naga barátaink ide nem érnek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:158
 msgid "Us monsters? Hmph... prepare to meet our blades."
-msgstr ""
+msgstr "Mi szörnyek? Hmm... készüljetek, hamarosan kardélre hányunk titeket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:163
 msgid "(Sigh) I bet he doesn't even see the irony in that."
-msgstr ""
+msgstr "(Sóhaj) Szerintem ő még csak meg se érezte a benne lévő iróniát."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:171
 msgid "We were too slow... Every Naga in the Sea will be upon us!"
-msgstr "Túl lassúak voltunk... a tenger összes nagája minket fog támadni!"
+msgstr "Túl lassúak voltunk... a tenger összes nagája minket fog üldözni!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:198
 msgid "Ick! When you kill them they divide."
-msgstr ""
+msgstr "Ejj! Ha megölöd őket, ketté válnak."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:247
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1037
@@ -208,7 +210,7 @@ msgstr "Riaa"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:251
 msgid "We must protect the Saurians we need the metal!"
-msgstr ""
+msgstr "Meg kell védenünk a gyíkokat, szükségünk van a fémeikre!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:254
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1031
@@ -242,7 +244,7 @@ msgstr "Saxiala"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:274
 msgid "We've cleared the beach. Let's return to the elves."
-msgstr ""
+msgstr "Megtisztítottuk a partot, most térjünk vissza a tündékhez."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:4
 msgid "A Final Spring"
@@ -270,17 +272,19 @@ msgstr "Tan-Gulo"
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:216
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:217
 msgid "Southbay Guard"
-msgstr ""
+msgstr "Déli-öböl őre"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:229
 msgid "Ruby of Fire"
-msgstr ""
+msgstr "Tűzrubin"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:231
 msgid ""
 "The Ruby of Fire was imbued with magic in the distant West, and can be used "
 "to scorch enemies into submission."
 msgstr ""
+"A messzi nyugaton a Tűzrubin mágiával lett átitatva, és kiváló eszköz arra, "
+"hogy engedelmességre bírjuk vele ellenségeinket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:267
 msgid "Death of King Addroran IX"
@@ -291,35 +295,42 @@ msgid ""
 "Several months pass. Jessica has translated Lich-Lord Caror's Book. Prince "
 "Haldric is busy trying to understand the secrets of the Ruby of Fire."
 msgstr ""
+"Néhány hónap elteltével Jessica lefordította a villi úr, Caror könyvét. "
+"Haldric herceg pedig próbálta kifürkészni a Tűzrubin titkait."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:285
 msgid "I think I've figured something out. Look."
-msgstr ""
+msgstr "Úgy hiszem, találtam valamit. Nézd!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:297
 msgid ""
 "Ouch! Hot, hot, hot! Gee, somebody should really attach this thing to a "
 "scepter or something! I think I'll save it for closer ranged combat for now."
 msgstr ""
+"Jaj! Ez nagyon forró. Igazán elkellene már valami jogarféle, hogy ne szabad "
+"kézzel kelljen fogni ezt követ. Minden esetre megtartom, mert jó lesz még a "
+"későbbi harcok során."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:301
 msgid "Watch it! Well, at least you're improving."
-msgstr ""
+msgstr "Figyeld! Legalább fejlődsz valamelyest."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:305
 msgid ""
 "Humph. Fool of a boy's just gonna burn us all up. Humans, always playing at "
 "being Wizards."
 msgstr ""
+"Ehh. Egy bolond fiú fel akar égetni mindannyiunkat. Az emberek mindig "
+"varázslósdit játszanak."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:309
 msgid "Orcs Sighted! They've seized the frontier! To arms! To arms!"
-msgstr ""
+msgstr "Orkokat látunk! Átlépték a határt! Fegyverbe! Fegyverbe!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:314
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:692
 msgid "For the glory of Southbay!"
-msgstr ""
+msgstr "Déli-öböl dicsőségéért!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:319
 msgid ""
@@ -327,10 +338,14 @@ msgid ""
 "Orcs. The ships aren't ready yet. We must defeat this army of Orcs to buy us "
 "more time. Try not to kill us all with that ruby!"
 msgstr ""
+"Haldric herceg! Én Déli-öböl védelmére fogok figyelni, miközben neked le "
+"kell győznöd az orkokat. A hajók még nem állnak készen és meg kell "
+"semmisítenünk az ellenséges hadsereget, hogy időt nyerjünk. Vigyázz, nehogy "
+"azzal a rubinnal túl nagy bajt keverjél!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:323
 msgid "Very well. I'll do my best."
-msgstr ""
+msgstr "Legyen hát. Megpróbálok minden tőlem telhetőt megtenni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:335
 msgid "Lord Typhon"
@@ -338,7 +353,7 @@ msgstr "Typhon úr"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:340
 msgid "I come seeking the Crown Prince!"
-msgstr "A Koronás Herceget keresem!"
+msgstr "A Koronás herceget keresem!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:345
 msgid "Who is this fish man?"
@@ -351,6 +366,10 @@ msgid ""
 "exchange for steel trident points and fishhooks. It's difficult to be a "
 "blacksmith when you live underwater."
 msgstr ""
+"Nagy része van abban, hogy fiad eljutott a kelet messzi vidékeire. Typhon úr "
+"gyöngyöket adott nekünk és kíséretet biztosított számunkra, amikért cserébe "
+"acél szigonyokat és halkampókat kért. Nehéz kovácsnak lenni a víz alatt, "
+"ugyebár."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:354
 msgid "Indeed it is. But where is the Prince?"
@@ -359,10 +378,11 @@ msgstr "Így is van. De hol van a herceg?"
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:358
 msgid "The Crown Prince is dead. But we have need of your services again- -"
 msgstr ""
+"Az Koronás herceg meghalt, de nekünk újra szükségünk van a szolgálataidra- "
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:363
 msgid "Under the same terms?"
-msgstr ""
+msgstr "A feltételek ugyanazok maradtak?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:367
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:124
@@ -377,10 +397,12 @@ msgid ""
 "Good. We need the steel for our own war in the deep. I formally place the "
 "might of the Merfolk at your disposal!"
 msgstr ""
+"Jó. Nekünk acél kell, hogy megvívjuk saját csatáinkat a mélyben. Formálisan "
+"rendelkezésedre bocsátom a Merfolkok fölötti hatalmat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:385
 msgid "Make haste. We must secure the frontier or it's all over!"
-msgstr ""
+msgstr "Gyorsabban! Biztosítanunk kell a határokat vagy mindennek vége!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:401
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:284
@@ -389,13 +411,13 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:266
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:308
 msgid "Familiar"
-msgstr ""
+msgstr "Ismerős"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:409
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:282
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:58
 msgid "Lich-Lord Jevyan"
-msgstr ""
+msgstr "Jevyan villi úr"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:413
 msgid ""
@@ -403,15 +425,20 @@ msgid ""
 "lucky I may raise you from death for my own amusement. Oh, and what's this? "
 "I sense, I sense the Ruby of Fire."
 msgstr ""
+"Addroran király! A napod leáldozott. Készülj fel, mert porba fogunk tiporni. "
+"Ha szerencsés vagy, talán feltámasztalak mint élőholt, és szolgálhatsz "
+"engemet az idők végezetéig. Várjunk csak! Valamit érzek a levegőben! Ez a "
+"Tűzrubin!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:417
 msgid ""
 "You monster! You've betrayed our people- - to ally yourself with these Orcs?!"
 msgstr ""
+"Te szörnyeteg! Elárultad népünket az orkokkal való szövetségkötéseddel."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:420
 msgid "Fool Prince"
-msgstr ""
+msgstr "Bolond herceg"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:424
 msgid ""
@@ -419,6 +446,9 @@ msgid ""
 "be said for you. King Addroran, meet your son, you'll be joining him soon "
 "enough."
 msgstr ""
+"Bolond lány! Az én törekvéseimnek nincsenek határai. Túl fogok élni mindent. "
+"Csak ennyit mondhatok neked. Addroran király, te pedig találkozz fiaddal! "
+"Nemsokára te is követed őt."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:429
 msgid "NO!"
@@ -426,7 +456,7 @@ msgstr "NEM!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:433
 msgid "Fath-er! Join... us..."
-msgstr ""
+msgstr "Apám ... Csatalakozz ... hozzánk ..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:437
 msgid "His older brother was more attractive..."
@@ -436,34 +466,36 @@ msgstr "A bátyja daliásabb volt..."
 msgid ""
 "Their reserves are arriving and we haven't secured the frontier! We're dead!"
 msgstr ""
+"Megérkeztek a tartalékaik és még mindig nem foglaltuk el a határokat! "
+"Mindannyian halálra vagyunk ítélve!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:495
 msgid "Southbay"
-msgstr ""
+msgstr "Déli-öböl"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:514
 msgid "To Clearwater Port"
-msgstr ""
+msgstr "Kristályvíz kikötője felé"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:533
 msgid "To the Midlands & Oldwood"
-msgstr ""
+msgstr "Középfölde és az Öregerdő felé"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:552
 msgid "To the Northrun"
-msgstr ""
+msgstr "Northrun felé"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:571
 msgid "To the Midlands"
-msgstr ""
+msgstr "Középfölde felé"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:590
 msgid "New Southbay"
-msgstr ""
+msgstr "Új Déli-öböl"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:609
 msgid "They sealed it, there is no escape for you!"
-msgstr ""
+msgstr "Elzárták. Nincs menekvés számodra."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:623
 msgid "I am finished."
@@ -471,15 +503,18 @@ msgstr "Ez a végem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:627
 msgid "We needed him to hold Southbay. We're done for!"
-msgstr ""
+msgstr "Szükségünk lett volna rá, hogy megtartsuk Déli-öblöt. Végünk van!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:639
 msgid "We've defeated the Orcs. Let's rig the Ships and get out of here."
 msgstr ""
+"Legyőztük az orkokat. Árbócozzuk fel a hajókat és minnél hamarabb menjünk el "
+"innen."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:644
 msgid "My sons- - As we agreed. I will hold Southbay until my last breath."
 msgstr ""
+"Fiaim, ahogyan megegyeztünk. Tartani fogom Déli-öblöt az utolsó leheletemig."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:648
 msgid ""
@@ -487,6 +522,9 @@ msgid ""
 "good re-provisioning point, we should be able to embark for the great lands "
 "that are to the East."
 msgstr ""
+"A Merfolkok segítségével, és az én tudásommal, találhatunk egy szigetet, ami "
+"jó alap lesz az újrafegyverkezéshez. Így mihamarabb újra hajóra szállhatunk, "
+"hogy eljussunk a kelet nagy földjeihez."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:652
 msgid ""
@@ -494,22 +532,29 @@ msgid ""
 "named after, betrayed my people. To make matters worse he knows that you "
 "have that ruby."
 msgstr ""
+"Az a tény, hogy Jevyan villi úr, akiről fővárosunk a nevét akapta, elárulta "
+"a népemet, nem igazán nyerte el tetszésemet. A dolgokat csak súlyosbítja, "
+"hogy pontosan tudja, hogy nálad van az a rubinkő."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:656
 msgid ""
 "There's not much we can do about that now. I dub this fine ship the Eldaric, "
 "in honor of my father. About that island..."
 msgstr ""
+"Mostmár nem sok mindent tehetünk. Ezt a hajót, az Eldaric-ot, apám "
+"tiszteletére újítottam fel. A szigetről pedig...."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:660
 msgid "Great, more boats, and now an Ocean!"
-msgstr "Óriási, még több hajó, és még egy óceán is!"
+msgstr "Óriási, még több hajó, és most egy egész óceán!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:665
 msgid ""
 "After you make it to this new land, send some of the ships back, for there "
 "may still be survivors in Southbay."
 msgstr ""
+"Miután elértél arra az új földre, küldj vissza néhány hajót, hátha maradnak "
+"túlélők Déli-öbölben."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:678
 msgid "My Son!"
@@ -638,7 +683,7 @@ msgid ""
 "SW - The Midlands."
 msgstr ""
 "DK - Folyó-út.\n"
-"DNy - Középső földek."
+"DNy - Középfölde."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:263
 msgid "GO HOME! AIN'T NUTTIN TO SEE HEER!"
@@ -651,10 +696,10 @@ msgid ""
 "Orcs would go there. The Midlands were nice, but who knows what's going on "
 "there now."
 msgstr ""
-"Akkor, délkeletre vegyem az irányt, a Folyó-úton, vagy délnyugatra a középső "
-"földeken keresztül? A Folyó-út átvezet az Esteni lápon, így talán még az "
-"orkok se mennének oda. A középső földek gyönyörűek voltak régen, de ki tudja "
-"mi folyik most arrafelé."
+"Akkor, délkeletre vegyem az irányt, a Folyó-úton, vagy délnyugatra "
+"Középföldén keresztül? A Folyó-út átvezet az Esteni lápon, így talán még az "
+"orkok se mennének oda. Középfölde gyönyörű volt régen, de ki tudja mi folyik "
+"most arrafelé."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:275
 msgid "I think I'll take the River Road..."
@@ -663,8 +708,7 @@ msgstr "Azt hiszem a Folyó-utat választom..."
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:280
 msgid "Good. The Midlands are probably an Orc infested ruin by now."
 msgstr ""
-"Jó. A közpső földek minden bizonnyal romokban állnak már az orkok "
-"pusztításától."
+"Jó. Közpfölde minden bizonnyal romokban áll már az orkok pusztításától."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:285
 msgid ""
@@ -675,11 +719,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:295
 msgid "We'll go through the Midlands..."
-msgstr "A középső földeken fogunk keresztülmenni..."
+msgstr "Középföldén fogunk keresztülmenni..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:300
 msgid "I suspect that the Midlands might be in ruins by now."
-msgstr "Lehet, hogy a középső földek már romokban állnak mostanra."
+msgstr "Lehet, hogy Középfölde már romokban állnak mostanra."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:305
 msgid ""
@@ -762,19 +806,23 @@ msgstr "Eowarar"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:110
 msgid "Avoid engagement for as long as possible"
-msgstr ""
+msgstr "Minél tovább elkerülöd az összeütközést"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:121
 msgid ""
 "At last the distant shores of a great continent are spotted. The time for "
 "landfall has arrived."
 msgstr ""
+"Végül feltűntek a hatalmas földrész távoli partjai. Eljött az idő a "
+"partraszállásra."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:125
 msgid ""
 "Go home you vile dwarves! By treaty you are pledged to only the hills and "
 "mountains to the North of the Great River. This is not your land."
 msgstr ""
+"Menjetek innen, törpök! Az egyezség alapján csak a Nagy-folyótól északra "
+"fekvő dombok és hegyek közt élhettek. Ez nem a ti földetek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:129
 msgid ""
@@ -784,10 +832,15 @@ msgid ""
 "the Great River, and force us onto only the hills and mountains of the "
 "North? There are hills and mountains as good as any here in the South!"
 msgstr ""
+"Benépesítettük földjeinket, és barlangjaink a világ mélyéig elhatolnak. Már "
+"megküzdöttünk a sötétség szörnyeivel. Milyen jogon követelitek az összes "
+"erdőségeket, és az összes Nagy-folyótól délre lévő területet? Miért akartok "
+"az északi dombok és hegyek közé szorítani minket? Itt délen is ugyanolyan jó "
+"helyünk van!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:133
 msgid "By the right of treaty, ancient but still true- "
-msgstr ""
+msgstr "Csakis az egyezségünk jogán, ami bár ősi, de érvényes..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:137
 msgid ""
@@ -795,24 +848,30 @@ msgid ""
 "Our axes can get the wood for a fifth of the cost! I can charge half of what "
 "your people do, and still be rich, and I'm not the first to have the thought!"
 msgstr ""
+"Pff! Ti pihe-puha tündék: 'Nem vágjuk ki az erdőt, mi ápoljuk.' Mi, a "
+"baltáinkkal ötödannyiért tudjuk kivágni a fákat! Feleannyiért tudnánk vele "
+"kereskedni, mint a te néped, és még úgyis gazdagok lennénk, és ez nem nekem "
+"jutott először eszembe!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:141
 msgid "Wait, I see a ship. Many ships. We're being invaded!"
-msgstr ""
+msgstr "Várjatok csak, látok egy hajót. Sok-sok hajót. Lerohannak minket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:145
 msgid ""
 "Umm, we're being invaded? Okay, we'll sort out our differences later. Let's "
 "get them first."
 msgstr ""
+"Hmm, ide jönnek? Rendben, majd máskor elrendezzük a nézeteltéréseinket. "
+"Először őket intézzük el."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:206
 msgid "We come in Peace. May our peoples-"
-msgstr ""
+msgstr "Békével jöttünk. A népeink szeretnének..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:210
 msgid "Get them!"
-msgstr ""
+msgstr "Elkapni őket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:214
 msgid ""
@@ -820,18 +879,26 @@ msgid ""
 "diplomacy then. Haldric, we should avoid calling upon too many units, and "
 "avoid fighting them. There has to be a peaceful resolution to this."
 msgstr ""
+"Lásd be, hiába gyakoroltad napokig a beszéded. Ennyit a diplomáciáról. "
+"Haldric, el kéne kerülnünk, hogy nagyon sok egységgel csatába keveredjünk. "
+"Biztos találunk majd békés megoldást."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:218
 msgid ""
 "In the name of... This is the continent of my home. But I set out East. I "
 "must have traveled clear around the world."
 msgstr ""
+"Népem nevében! Ez az én otthonom földje. De keletre indultam. Bizonyára az "
+"egész Földet megkerültem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:222
 msgid ""
 "My people are too far South. I don't know what's going on here. I'll stick "
 "with you until the end. You've been a good friend. Just no more sea voyages."
 msgstr ""
+"Az én népem túl messze él innen dél felé. Fogalmam sincs mi történik itt. De "
+"ki fogok állni mellettetek a végiég. Jó bajtársaim voltatok. Csak ne kelljen "
+"újra tengerre szállnunk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:235
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:36
@@ -842,6 +909,7 @@ msgstr "Dionli úr"
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:240
 msgid "What? What's going on here? Dwarves? Humans? Ships? Glimir tell me."
 msgstr ""
+"Micsoda? Mi folyik itt? Törpök? Emberek? Hajók? Glimir, mondd meg nekem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:244
 msgid ""
@@ -850,12 +918,20 @@ msgid ""
 "like before, with that fellow from Southbay and his lone ship. It was always "
 "interesting when he stopped by."
 msgstr ""
+"A történetek igazak. Kell hogy legyenek törp telepek Barna-dombság "
+"területén. Ezt a csapatot a fák pusztítása közben kaptuk el az öböltől nem "
+"messze. Aztán megláttuk a sok hajót. A korábbiaktól eltérően, nem az az ifjú "
+"jött, egyedül, a saját hajójával. Mindig érdeklődve fogadtuk, amikor erre "
+"járt."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:248
 msgid ""
 "We thought we were being invaded. We, erm, put our differences aside with "
 "the dwarves, for the moment, and decided to deal with this first."
 msgstr ""
+"Azt hittük, lerohannak minket. Így, köhöm, félretettük viszályunkat a "
+"törpökkel. egy pillanat erejéig, és úgy döntöttünk ezzel foglalkozunk "
+"először."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:253
 msgid ""
@@ -863,10 +939,13 @@ msgid ""
 "spare you. For on this day the Council of Lords is meeting in a forest not "
 "far from here."
 msgstr ""
+"Aggasztó változások vannak. Emberek, ez pusztán szerencse kérdése volt, hogy "
+"itt találtatok engem, és megkímélhetlek titeket. Ma az Urak Tanácsa ülésezik "
+"az erdőben. nem is olyan messze innen."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:257
 msgid "I am Prince Haldric. We come in Peace. May our peoples-"
-msgstr ""
+msgstr "Haldric herceg vagyok. Békével jöttünk. Kérhetem a népeink nevében..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:261
 msgid "Haldric."
@@ -877,23 +956,30 @@ msgid ""
 "As for you dwarf, return to the Brown Hills. Then tell your people to "
 "prepare to return to the North."
 msgstr ""
+"Te törp, térj vissza a Barna-dombságba! És üzend meg, hogy készüljenek az "
+"északra való költözésre!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:270
 msgid ""
 "I'll return to the hills, but I can't promise that my people will go. Hmph!"
 msgstr ""
+"Visszatérek a dombok közé, de nem igérhetek semmit a népem nevében. Pff!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:275
 msgid ""
 "Haldric is it? You are their leader? You and your advisers are to come with "
 "me. It will be safe for your passengers to disembark here."
 msgstr ""
+"Haldric, ugye? Te vagy a vezetőtök? Te és a tanácsadóid kövessetek! Itt "
+"biztonságban partra szállíthatjátok az utasaitokat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:298
 msgid ""
 "(Whisper) Maybe it'd be best if you didn't mention our little friend "
 "following us..."
 msgstr ""
+"(Suttog) Talán nem kellett volna kis barátocskánkak azt mondani, hogy "
+"kövessen minket..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:305
 msgid ""
@@ -901,6 +987,8 @@ msgid ""
 "services in the future. The services of my people will remain at your "
 "disposal."
 msgstr ""
+"Vissza kell térnem a népemhez. Megtartottad a szavadat, így a jövőben is "
+"számíthatsz rám. Kérésedre a népem a szolgálatodba fog állni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:316
 msgid ""
@@ -908,6 +996,9 @@ msgid ""
 "remain with you. You have kept your word, you may avail of my services in "
 "the future."
 msgstr ""
+"Vissza kell térnem a népemhez. Az embereim, akik veled harcoltak továbbra is "
+"a szolgálatodra lesznek. Megtartottad a szavadat, így a jövőben is "
+"számíthatsz rám."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:326
 msgid ""
@@ -916,6 +1007,10 @@ msgid ""
 "survivors. If they return tell them to keep returning until no more "
 "survivors are found."
 msgstr ""
+"Legyen kellemes utad, barátom. (Suttogva) Jessica, indulj el a paranccsal, "
+"hogy a flotta harmada térjen vissza a Zöld-szigetre, és keressenek további "
+"túlélőket! Ha visszatérnek, küldd el őket újra meg újra, amíg csak találnak "
+"túlélőket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:330
 msgid ""
@@ -925,20 +1020,26 @@ msgid ""
 "made fleet. Make haste, return before it is time to meet with these, what "
 "are they? Ahh, Elves."
 msgstr ""
+"(Még mindig suttogava) Vegyél fel csontváz legénységet a hajókba, és add "
+"nekik a megmaradt tartalékainkat! Typhon urat értesítsd a dologról! De "
+"csakis a flotta harmadát küldd el! Nem juthat egy teljes, felszerelt flotta "
+"az orkok kezére. Siess, térj vissza, még mielőtt találkozunk ezekkel a... "
+"öö, tündékkel!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:334
 msgid ""
 "This is the second Eldaric I get to say goodbye to. At least this time it is "
 "easier than the first."
 msgstr ""
+"Másodszor kell elköszönnöm Eldaric-tól. De legalább most könnyebb volt."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_New_Land.cfg:378
 msgid "I bet this wasn't the welcome you were expecting."
-msgstr ""
+msgstr "Fogadok, hogy nem ilyen fogadtatásra számítottál."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:4
 msgid "A Spy in the Woods"
-msgstr ""
+msgstr "Kém az erdőben"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:44
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:65
@@ -957,7 +1058,7 @@ msgstr "El'Isomithir úr"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:88
 msgid "Jessica in Hiding"
-msgstr ""
+msgstr "Jessica elrejtőzve"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:99
 msgid ""
@@ -965,12 +1066,17 @@ msgid ""
 "reported that Orcs have made landfall. Orcs here, for the first time in "
 "centuries."
 msgstr ""
+"Szóval szörnyű átok üldözte őket el a régi hazájukból. A felderítőim azt "
+"jelentették, hogy az orkok partraszálltak. Orkok, itt, évszázadok óta "
+"először!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:104
 msgid ""
 "And he bears an artifact of some power. The Orcs would not be able to sense "
 "that. There is some greater power at work here."
 msgstr ""
+"És egy nagy erejű mágikus tárgyat visel. Az orkok nem szimatolnák ezt ki. "
+"Valami nagyobb erő dolgozik ellenünk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:109
 msgid ""
@@ -979,10 +1085,15 @@ msgid ""
 "out, then we should 'deal' with the survivors, and make compromise with the "
 "Dwarves."
 msgstr ""
+"Lehet, hogy rosszul döntöttünk. Ha az emberek elüldözik az orkokat, talán "
+"megbecsülhetnénk az ígéretünket. Ha még több veszély érkezik a nyomukban, "
+"rájuk kellene hagyni, hogy intézzék el maguk, és a túlélőkkel kellene csak "
+"tárgyalnunk, valamint megeggyezni a törpökkel."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:114
 msgid "But we spoke a Pact with this Haldric and these men of the West North-"
 msgstr ""
+"De hiszen megegyeztünk ezzel a Haldric-kal és az északnyugati emberekkel -"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:119
 msgid ""
@@ -991,14 +1102,18 @@ msgid ""
 "more trouble follows them here we should let them fight it out, then we "
 "should 'deal' with the survivors, and make compromise with the Dwarves.'"
 msgstr ""
+"Az erdő népe vagyunk, tudod, hogy minden kiejtett szó csak másodlagosan "
+"fontos számunkra. Aryad úr a következőket mondta: 'Ha még több veszély "
+"érkezik a nyomukban, rájuk kellene hagyni, hogy intézzék el maguk, és a "
+"túlélőkkel kellene csak tárgyalnunk, valamint megeggyezni a törpökkel.'"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:129
 msgid "(Sigh) Agreed."
-msgstr ""
+msgstr "(Sóhaj) Rendben."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:139
 msgid "(Whispering) Some friends. I must tell Haldric."
-msgstr ""
+msgstr "(Suttogva) Néhány jóbarát. El kell mondanom Haldric-nak!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:4
 msgid "A Summer of Storms"
@@ -1099,8 +1214,9 @@ msgid ""
 "distant West! Now even us Wesfolk must flee or be slaves."
 msgstr ""
 "Elhatározták, hogy a pokol összes rémületét a sziget felszínére hozzák. A "
-"kapu messze keleten, az orkok földjének szívére nyílt, réges-régen építették "
-"óriási kövekből. Most nekünk is menekülnünk kell, ha nem akarunk behódolni."
+"kapu messze nyugaton, az orkok földjének szívére nyílt, réges-régen "
+"építették óriási kövekből. Most nekünk is menekülnünk kell, ha nem akarunk "
+"behódolni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:169
 msgid "Orcs are just creatures of tall tales!"
@@ -1484,7 +1600,6 @@ msgstr ""
 "villit, amit közvetlenül Déli-öböl határán dermesztettetek kővé..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:1017
-#, fuzzy
 msgid ""
 "Yeah, Lich Point! Where we first used our magi in battle, and turned the "
 "tide of war against your people."
@@ -1551,7 +1666,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:4
 msgid "Cursed Isle"
-msgstr ""
+msgstr "Átok-sziget"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:55
 msgid "Isorfilad"
@@ -1563,27 +1678,27 @@ msgstr "Tinoldor"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:150
 msgid "She's... She's beautiful."
-msgstr ""
+msgstr "Ő... ő egyszerűen gyönyörű."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:153
 msgid "Midnight Queen"
-msgstr ""
+msgstr "Éjfélkirálynő"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:165
 msgid "You will be made to serve... Come admire me. Feel my love."
-msgstr ""
+msgstr "Szolgálni fogsz engem... Gyere és csodálj! Érezd a szerelmemet."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:169
 msgid "She is so..."
-msgstr ""
+msgstr "Ő annyira..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:173
 msgid "Haldric think with your brain!"
-msgstr ""
+msgstr "Haldric, ne veszítsd el a fejed!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:177
 msgid "Get her before she can cause too much trouble!"
-msgstr ""
+msgstr "Végezzünk vele, még mielőtt túl sok galibát okozna!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:198
 msgid "The temple is quite empty."
@@ -1594,12 +1709,16 @@ msgid ""
 "After a short trip by sea Haldric arrives on the Elves' cursed isle. A fog "
 "hangs in the air."
 msgstr ""
+"Egy rövid tengeri út vitte Haldric herceget a tündék elátkozott szigetére. A "
+"környékre nehéz köd nehezedett."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:322
 msgid ""
 "I said no more ships. Double crossing humans! Ahh, I've been with you this "
 "far. Who'd have thought, a nautical dwarf."
 msgstr ""
+"Azt mondtam soha többé hajókat. Elvetemült emberek! Jajj, már olyan régóta "
+"veletek tartok. Ki gondolta volna, az első mélytengeri törp."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:327
 msgid "I suspect we'll be facing more undead. Be careful."
@@ -1611,50 +1730,58 @@ msgid ""
 "These will be the long dead. Not like the undead that my people used, and "
 "they are elf-dead. Be careful indeed."
 msgstr ""
+"Ők már régóta halottak. Nem úgy mint azok az élőholtak, akikkel eddig "
+"találkoztunk, és ráadásul tünde halottak. Jó lesz vigyázni!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:338
 msgid "All Soldiers of Darkness will meet the same fate by my hand."
-msgstr ""
+msgstr "A sötétség minden harcosa ugyanarra a sorsra jut a kezem által!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:346
 msgid ""
 "Those elves are finally at rest. I hope that the curses they laid upon us "
 "hold no weight."
 msgstr ""
+"Végre nyugalomba helyeztük azokat a tündéket. Remélem a ránk szórt átkok nem "
+"bírnak túl nagy súllyal."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:351
 msgid "Haldric, you're too paranoid."
-msgstr ""
+msgstr "Haldric, neked üldözési mániád van."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:375
 msgid "A curse upon all of your kin that visit this isle."
-msgstr ""
+msgstr "Átok legyen minden sarjatokon, aki erre a szigetre tér."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:386
 msgid "I wish a blight upon you and yours. May you never see peace."
-msgstr ""
+msgstr "Métely falja a ti és hozzátartozóitok testét! Sose találjatok békét!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:397
 msgid "My soul will haunt this place until the end of time! A curse upon you!"
 msgstr ""
+"A lelkem az idők végezetéig kísérteni fogja ezt a helyet! Átok szálljon "
+"reátok!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:405
 msgid "Without their Queen the undead are simply fading away!"
-msgstr ""
+msgstr "A királynőjük nélkül az élőholtak nyomtalanul eltűnnek!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:424
 msgid "Back, back to the grave with you!"
-msgstr "Vissza, vissza a sírba veled!"
+msgstr "Vissza, vissza veled a sírba!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:438
 msgid "We still have to defeat that Vampire Queen!"
-msgstr ""
+msgstr "Még mindig le kell győznünk a Vámpírkirálynőt!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:456
 msgid ""
 "No! The ship that was supposed to pick us up sees that there's still "
 "fighting. It's not stopping. We're trapped."
 msgstr ""
+"Nem! A hajó, aminek fel kellett volna vennie minket nem mer kikötni a csata "
+"közben. Csapdába estünk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:4
 msgid "The Ka'lian"
@@ -1662,31 +1789,31 @@ msgstr "A Ka'lian"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:157
 msgid "I think I'll fight the Dragon!"
-msgstr ""
+msgstr "Úgy gondolom megküzdök a sárkánnyal!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:162
 msgid "Lord Logalmier, I shall defeat your Dragon."
-msgstr ""
+msgstr "Lord Logalmier, majd én legyőzöm a sárkányodat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:178
 msgid "Umm, you already beat the dragon Haldric."
-msgstr ""
+msgstr "Hümm, már verekedtél vele, Haldric."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:188
 msgid "Let's get those Saurians and Nagas on that beach!"
-msgstr ""
+msgstr "Induljunk a gyíkok és a nagák után, a part felé!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:193
 msgid "Those cold blooded monsters will feel my wrath!"
-msgstr ""
+msgstr "Haragom utoléri majd azokat a hidegvérű szörnyeket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:209
 msgid "Umm, you already cleared the Beach."
-msgstr ""
+msgstr "Hümm, már megtisztítottad a partot."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:219
 msgid "Let's clear out that Troll Hole!"
-msgstr ""
+msgstr "Tisztítsuk meg azt a troll lyukat!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:224
 msgid "So what exactly is a Troll?"
@@ -1694,23 +1821,23 @@ msgstr "Tehát miféle szerzet egy troll egészen pontosan?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:240
 msgid "Haldric, the Trolls, scales and fangs, you don't remember?"
-msgstr ""
+msgstr "Haldric, a trollok, sziklák és karmok, már nem emlékszel?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:250
 msgid "Let's put those Souls to rest on the Cursed Isle!"
-msgstr ""
+msgstr "Küldjük végső nyugalomra az Átok-sziget lelkeit!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:255
 msgid "Undead. Bah! We're pros at fighting them."
-msgstr ""
+msgstr "Élőholtak. Hehh! Gyakorlottak vagyunk az irtásukban."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:271
 msgid "How could you possibly forget that horror of an Island?"
-msgstr ""
+msgstr "Hogyan felejthetted el azt a horrort a szigeten?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:282
 msgid "In the name of Peace between our Peoples:"
-msgstr ""
+msgstr "A népeink közti barátság nevében!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:300
 msgid ""
@@ -1718,6 +1845,9 @@ msgid ""
 "the Dragon of the Green Swamp and its Saurian minions. If you can defeat "
 "him, you have truly earned you place in this land."
 msgstr ""
+"Attól tartok a rokonaim ügye túl könnyű lenne neked. Úgy határozok, először "
+"a Zöld-láp sárkányát és gyík követőit kellene legyőznöd. Ha le tudod győzni "
+"őt, akkor már igazi terültet szereztél magadnal ezen a földön."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:314
 msgid ""
@@ -1725,6 +1855,9 @@ msgid ""
 "trading metal with the Nagas of the sea. We should really put a stop to "
 "this. They are located on a beach near here."
 msgstr ""
+"Van egy csoport gyík, bizonyosan a sárkány szövetségesei, akik fémet "
+"szállítanqak a tenger nagáinak. Ennek véget kellene vetnünk. A közeli parton "
+"folyik az egész."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:328
 msgid ""
@@ -1732,6 +1865,9 @@ msgid ""
 "the thought of those dwarves stumbling on the Trolls vaguely amusing, this "
 "should make an adequate quest for you."
 msgstr ""
+"A Barna-dombságban van egy kis problémánk az egyik troll lyukkal. Bár "
+"mérhetetlenül szórakoztató elképzelni, ahogy azok a törpök lépten-nyomon "
+"trrollokba bukkannak, ez egy új küldetés lehet a számodra."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:342
 msgid ""
@@ -1739,51 +1875,62 @@ msgid ""
 "Their souls still haunt that place since no elf will go there. You should "
 "clear this isle, and put their souls to rest."
 msgstr ""
+"Réges-régen egy szigeten egy tündecsoport sötét átok fogságába esett. A "
+"lelkeik még mindig kísértenek, de tündék már régóta nem jártak arra. Meg "
+"kéne tisztítanod ezt a szigetet, és felszabadítani a lelkeket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:359
 msgid ""
 "Ahh, you have defeated the dragon man of the West-North, you are truly "
 "impressive for a human."
 msgstr ""
+"Áá, legyőzted a sárkányt, északnyugati ember, nagyon is meggyőző vagy "
+"embernek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:372
 msgid "So, you have defeated the Trolls. Welcome back Haldric."
-msgstr ""
+msgstr "Tehát sikerült legyőznöd a trollokat. Üdv ismét, Haldric!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:385
 msgid "Finally the souls of our poor kin may rest. Thank you."
-msgstr ""
+msgstr "Végre szegény rokonaink is békében nyugszanak. Köszönjük."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:398
 msgid "Our beaches are free again. I knew I could trust you Haldric."
-msgstr ""
+msgstr "A partjaink újra szabadok. Tudtam, hogy bízhatok benned, Haldric."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:408
 msgid ""
 "Haldric and his companions find themselves before the Ka'lian, or the "
 "Council of Elven Lords."
 msgstr ""
+"Haldric és útitársai a Ka'lian, vagyis a Tünde-urak Tanácsa előtt találták "
+"magukat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:421
 msgid "Dionli, why have you brough these humans before us?"
-msgstr ""
+msgstr "Dionli, miért hoztad elénk ezeket az embereket?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:426
 msgid ""
 "They are of the same people as the Prince of Southbay. They come as "
 "refugees. I can see a use for them."
 msgstr ""
+"Ugyanannak a népnek a gyermekei, mint a Déli-öböl hercege. Menekültekként "
+"érkeztek. Szerintem hasznunkra lehetnek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:431
 msgid ""
 "What use would that be? What need could we have for the shortliveds here?"
-msgstr ""
+msgstr "Mire gondolsz? Miért lenne szükségünk itt a rövidéletűekre?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:436
 msgid ""
 "The dwarves have come to the Brown Hills. While they live long, even they "
 "grow like weeds when in an empty field. There is trouble brewing."
 msgstr ""
+"A törpök beköltöztek a Barna-dombság területére. Míg ők hosszúéletűek, addig "
+"úgy sokasodnak, mint a gyom a parlagon. Baj közeleg."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:441
 msgid ""
@@ -1791,10 +1938,13 @@ msgid ""
 "of Southbay was good, he was a credit to his people, maybe these ones are "
 "made of the same stuff."
 msgstr ""
+"Jobb három közül a legerősebbnek lenni, mint kettőből a gyengébbnek. Déli-"
+"öböl hercege jóindulatú volt, népének jó hírét terjesztette, talán ezeket is "
+"ugyanabból a fából faragták."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:446
 msgid "But why then do they come as refugees? Speak human."
-msgstr ""
+msgstr "De miért érkeztek menekültekként? Beszélj, ember!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:450
 msgid ""
@@ -1802,11 +1952,16 @@ msgid ""
 "We come seeking a new home, since our island to the West and North is now "
 "forfeit."
 msgstr ""
+"A népünk békével jött. Háború tört ki a szülőföldünkön. Menekültekké "
+"váltunk. Új hazát keresünk itt, mivel az északnyugati szigetünk elveszett "
+"számunkra."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:455
 msgid ""
 "So you come to steal our land? We know your kind, humans of the West-North."
 msgstr ""
+"Tehát a földünket elvenni jöttetek? Ismerjük a kedvességeteket, északnyugati "
+"emberek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:459
 msgid ""
@@ -1814,28 +1969,32 @@ msgid ""
 "the elves are people of the forests, we only seek some of the space in "
 "between."
 msgstr ""
+"Csak békében szeretnénk tovább élni. A törpök a dombok lakói, a tündék az "
+"erdőket népesítik be, nekünk a kettő közti üres földek is megfelelnek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:464
 msgid ""
 "I suggest that we grant these humans the plains to the North and South of "
 "the great river."
 msgstr ""
+"Azt javaslom, hogy a Nagy-folyótól északra és délre elterülő síkságot "
+"bocsájtsuk ezeknek az embereknek a rendelkezésére."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:469
 msgid "They should be put to the test before such a grant is given."
-msgstr ""
+msgstr "Előbb próbára kéne őket tenni, mielőtt ilyen kegyben részesítjük őket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:474
 msgid "A quest for each of us then?"
-msgstr ""
+msgstr "Egy küldetés mindahányunktól?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:489
 msgid "Agreed. (Sigh)"
-msgstr ""
+msgstr "Elfogadom. (Sóhaj)"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:493
 msgid "Umm, agreed."
-msgstr ""
+msgstr "Hümm, elfogadom."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:498
 msgid ""
@@ -1844,29 +2003,37 @@ msgid ""
 "the hills south of the Great River, if not you will be forced to depart. So "
 "which quest do you wish to undertake first?"
 msgstr ""
+"Akkor tehát, emberek. Mi, tünde urak, egy-egy küldetést adunk nektek. Ha "
+"mindet teljesítitek, biztosítjuk nektek a területeinket elterülő síkságokat, "
+"és a Nagy-fólyótól délre elhelyezkedő dombságot, de amennyiben elbuktok, "
+"távoznotok kell. Tehát melyik küldetést választjátok elsőnek?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:519
 msgid ""
 "Very good, but this is just the start human. There is still much more for "
 "you to do."
 msgstr ""
+"Kitűnő, de ez még csak a kezdet, emberek. Még a neheze hátra van számotokra."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:548
 msgid "You are victorious again. You may yet earn your place in this land."
 msgstr ""
+"Újra győzedlemeskedtetek. Lehet, hogy sikerülni fog új hazát szereznetek "
+"ezen a földön."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:577
 msgid "Ahh, my young Prince, you're not as soft as I thought."
 msgstr ""
+"Ahh, ifjú hercegem, nem is vagy olyan puhány, mint ahogy először gondoltam."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:605
 msgid "You were successful Prince Haldric. I knew you could do it."
-msgstr ""
+msgstr "Sikeres voltál, Haldric herceg. Tudtam, hogy meg fogod tudni csinálni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:611
 msgid ""
 "Man of the West-North you have earned your place on this great continent."
-msgstr ""
+msgstr "Északnyugat embere, megszerezted a helyed ezen a csodás földrészen."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:617
 msgid "As per our agreement, you and your people-"
@@ -1874,7 +2041,7 @@ msgstr "Mint ahogyan megegyeztünk, te és az embereid-"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:623
 msgid "may stay."
-msgstr "maradhadtok."
+msgstr "maradhattok."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:629
 msgid ""
@@ -1882,12 +2049,18 @@ msgid ""
 "plains and hills to the South of the Great River. Be kind to the land. In a "
 "time of need we may call upon you, remember our generosity."
 msgstr ""
+"Ezennel rendelkezésetekre bocsátjuk a Nagy-folyótól északra elterülő "
+"síkságot, valamint a délre található lankákat. Becsüljétek meg a földet. "
+"Szükség idején számítani szeretnénk rátok, emlékezzetek nagylelkűségünkre."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:634
 msgid ""
 "Fair enough. I decree a 'Pact of Mutual Aid' between our peoples. But, "
 "aren't you setting us in conflict with the Dwarves?"
 msgstr ""
+"Ez mind igazságos. Határozatba foglalok egy 'Kölcsönös segítségnyújtási "
+"paktumot' a népeink közt. De, nem arra számítotok, hogy a törpök majd belénk "
+"ütköznek helyettetek?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:640
 msgid ""
@@ -1895,10 +2068,13 @@ msgid ""
 "They are your resources to guard now. In the future we would be willing to "
 "trade with you."
 msgstr ""
+"Nem. A törpök visszatértek északra. De az emberek is bányásznak, nem? "
+"Mostantól a ti erőforrásaitok, amikre vigyáznotok kell. A jövőben szeretnénk "
+"kereskedni veletek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:649
 msgid "Lt. Aethyr"
-msgstr ""
+msgstr "Aethyr hadnagy"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:654
 msgid "Who is this?"
@@ -1909,6 +2085,8 @@ msgid ""
 "It's Lieutenant Aethyr, of Clearwater Port. I was sure you perished in the "
 "fighting there?"
 msgstr ""
+"Aethyr hadnagy, Kristályvíz kikötőjéből. Azt hittem, hogy elestél a harc "
+"közben."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:665
 msgid ""
@@ -1916,22 +2094,29 @@ msgid ""
 "our last stand at the lighthouse, then one of your ships came. One of my men "
 "conked me on the head, then I woke up at sea."
 msgstr ""
+"Nem, uram. Én vezettem Kristályvíz kikötőjének utolsó túlélőit, a csata "
+"végén a világítótoronyba vettük be magunkat, amikor is megpillantottuk a te "
+"egyik hajódat. Az egyik emberem fejbe kólintott, és már a tengeren ébredtem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:671
 msgid ""
 "I come bearing news. Some 'old friends' have decided to make an appearance. "
 "You should go 'greet' them."
 msgstr ""
+"Hírekkel érkeztem. Néhány 'régi barát' úgy döntött meg fog jelenni. Eléjük "
+"kéne menned 'üdvözölni' őket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:676
 msgid ""
 "(Whispering) I fear our friend has said too much. You go on ahead, I'll "
 "catch up with you."
 msgstr ""
+"(Suttogva) Attól tartok,. hogy barátunk túl sokat mondott. Menj előre, mejd "
+"utolérlek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:4
 msgid "Epilogue"
-msgstr ""
+msgstr "Epilógus"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:175
 msgid ""
@@ -1939,6 +2124,9 @@ msgid ""
 "has been preceded by his wife and loving daughters. For his heroism in the "
 "face of adversity a place of glory is assured to him in the Halls of Light..."
 msgstr ""
+"Legyen békés az útja Aether hadnagynak a következő világ felé, ahol felesége "
+"és szerető lánya várják már. A csapások közt mutatott hősies magatartása "
+"örök dicsőséget szerzett neki a Fény csarnokában..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:179
 msgid ""
@@ -1947,6 +2135,10 @@ msgid ""
 "good people- My father- Eldaric, King Addroran. However, there is hope, and "
 "a new land spread before us!"
 msgstr ""
+"A hadnagy nemes áldozata híján nem vészelhettük volna át ezt a napot. Ma "
+"nagy győzelmet arattunk, de sokan elvesztek, jó emberek - Eldaric apám, "
+"Addroran király. Bárhogyan is, van remény, és egy új orrszág fekszik "
+"előttünk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:200
 msgid ""
@@ -1954,65 +2146,81 @@ msgid ""
 "Jessica and I share. I must have your word that what I say will never be "
 "uttered again."
 msgstr ""
+"De mindkét oldalon történtek sötét cselekedetek. Van egy titok, amiről csak "
+"én és Jessica tudunk. szavatok kell vegyem, hogy soha többé nem hozzátok "
+"szóba azt, amit most mondani fogok."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:204
 msgid "I have followed you this far, I will keep your secret. I pledge."
-msgstr ""
+msgstr "Ezidáig veled tartottam, meg fogom tartani a titkod. Fogadom."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:209
 msgid "Lord, I shall guard your secret until the time of my death."
-msgstr ""
+msgstr "Uram, halálomig őrizni fogom a titkodat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:214
 msgid "I will take it with me to my Grave."
-msgstr "Ezt a sírba is elviszem magammal."
+msgstr "A sírba is el fogom vinni magammal."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:219
 msgid ""
 "I agree, but misfortune may follow you depending on the nature of your "
 "misdeed."
 msgstr ""
+"Beleegyezek, de lehet, hogy szerencsétlenség fog utadon kísérni a rossz "
+"cselekedet miatt."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:223
 msgid ""
 "The Elves don't have the Ruby of Fire. We perpetrated a ruse on the Orcs. If "
 "they return they will come looking for the Elves."
 msgstr ""
+"A Tűzrubin nincs a tündék kezében. Cselt vetettünk az orkoknak. Ha "
+"visszatérnek, a tündéket fogják keresni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:227
 msgid ""
 "To be fair to you Haldric, the Elves were reconsidering their Pact with us."
 msgstr ""
+"Hogy őszinte legyek Haldric, a tündék felülvizsgálták a velünk kötött "
+"egyezséget."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:231
 msgid ""
 "Humph. I suspected as much-- from both the Elves and you. Humans and Elves "
 "always think they're so clever!"
 msgstr ""
+"Fúú. Túl sokat vártam, mind a tündéktől, mind tőletek. Az emberek és a tüdék "
+"mindig olyan okosnak hiszik magukat!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:236
 msgid "May the Lords of Light have Mercy on you. But, I am bound by my word."
-msgstr ""
+msgstr "Legyen kegyes veled a Fény ura! De engem köt az adott szavam."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:243
 msgid "Jessica, you hid the Ruby away in that vile Troll Hole? Didn't you?"
-msgstr ""
+msgstr "Jessica, abban a mocskos troll lyukba rejtetted el a rubint, igaz?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:247
 msgid "What? Why would you doubt me?"
-msgstr ""
+msgstr "Micsoda? Miért kételkedsz bennem?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:251
 msgid ""
 "The Orcs that didn't escape in the ships have regrouped. They are preparing "
 "to march on the Elves. We should come to the aid of our new friends."
 msgstr ""
+"Az orkok, akik nem mentek el a hajókon rendezték a soraikat. A tündék ellen "
+"készülnek. Az új barátaink segítségére kéne sietnünk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:255
 msgid ""
 "These Orcs are few, but the Elves aren't accustomed to war. Besides we will "
 "have to rely on Elven charity if we are to survive this first winter."
 msgstr ""
+"Az orkok kevesen vannak, de a tündék nem szoktak hozzá a háborús időkhöz. "
+"Emellett bíznunk kell a bőkeűségükre, ha át akarjuk vészelni ezt az első "
+"telet."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:259
 msgid ""
@@ -2021,10 +2229,13 @@ msgid ""
 "children of the good people of the West North, of the Green Isle, find "
 "prosperity in this new land."
 msgstr ""
+"Később városokat kéne alapítanunk a tündéktől kapott területeken. A "
+"fővárosunknak beljebb, a parttól távol kéne elhelyezkednie. Remélem, hogy a "
+"jó északkeleti, Zöld-szigeti népek jólétre találnak új országukban."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:279
 msgid "So what of the rest of you?"
-msgstr ""
+msgstr "És mi legyen a többiekkel?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:283
 msgid ""
@@ -2032,6 +2243,9 @@ msgid ""
 "time I was gone. I will try to convince them of the wisdom of using the "
 "underways to settle new lands."
 msgstr ""
+"Én vissza fogok menni a saját népemhez. Úgy tűnik sokasodtunk és "
+"megerősödtünk, amíg távol voltam. Meg fogom próbálni meggyőzni őket, hogy "
+"bölcsen tesszük, ha a föld alatt hozunk létre új telepeket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:287
 msgid ""
@@ -2039,6 +2253,9 @@ msgid ""
 "dwarves in other lands. It's a big world with lots of good mountains. Of "
 "that much I am sure."
 msgstr ""
+"Úgy gondolom, hogy sok hely felé ismerem az utat. Ki akarom deríteni, hogy "
+"más területeken is élnek-e törpök? Ez egy óriási világ, telis tele gyönyörű "
+"hegységekkel. Ebben biztos vagyok."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:292
 msgid ""
@@ -2046,6 +2263,9 @@ msgid ""
 "knowledge. I will go forth amongst the people and spread wisdom, and see "
 "about establishing a new order of Magi in this new land."
 msgstr ""
+"Az utóbbi hónapokban sok veszteség ért minket, de nem szabad minden tudásunk "
+"sutba dobni. Tovább fogom terjeszteni a bölcseleteket a nép körében, és "
+"talán egy új mágusrendet is alapítok az országban."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:297
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:302
@@ -2054,6 +2274,9 @@ msgid ""
 "knights for a new land. For a new King, if you will allow me to serve under "
 "your banner."
 msgstr ""
+"Én csak egy szerény szolgálója vagyok a koronának. Az új országban, az új "
+"királynak biztosan szüksége lesz egy lovagrendre a vezetésem alatt, már ha "
+"engedélyt kapok."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:306
 msgid "Excellent."
@@ -2063,14 +2286,16 @@ msgstr "Remek."
 msgid ""
 "I suppose I am King Haldric now. Hmm... but what to call this new kingdom?"
 msgstr ""
+"Gondolom mostantól Haldric király leszek. Hmm... de milyen nevet kapjon a "
+"királyság?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:316
 msgid "May I make a suggestion?"
-msgstr ""
+msgstr "Tehetek egy javaslatot?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:320
 msgid "Sure."
-msgstr ""
+msgstr "Természetesen."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:324
 msgid ""
@@ -2079,15 +2304,20 @@ msgid ""
 "would be 'Wes Noth'. So I suggest that the new kingdom be called 'Wesnoth', "
 "in honor of our old home."
 msgstr ""
+"A wesfolk szó a ti ősi nyelvetekből ered, azt jelenti, hogy 'a kelet "
+"emberei'. A tündék az északkelet népének hívnak minket. Az ősi nyelven ez "
+"'wes noth' lenne. Tehát azt javaslom, viselje a királyság a Wesnoth nevet, "
+"elhagyott otthonunk emlékére."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:328
 msgid ""
 "Hmm- 'Wesnoth' I like it. Yes, 'Wesnoth' would be fine. So I am the first "
 "King of Wesnoth!"
 msgstr ""
+"Hmm... Wesnoth... ez tetszik nekem. Igen, a Wesnoth iazán jó név lenne. "
+"Tehát én vagyok Wesnoth első királya!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:332
-#, fuzzy
 msgid "So, what is to become of me?"
 msgstr "És mi lesz velem?"
 
@@ -2097,10 +2327,13 @@ msgid ""
 "under one banner. I will need you by my side if there is any hope of "
 "building a true 'Kingdom of Wesnoth'. Come, we have much work to do."
 msgstr ""
+"Sok wesfolk van a megmaradt népem körében. Egységben kell maradnunk, egy "
+"zászló alatt egyesülve. Szükségem lesz a támogatásodra, ha valójában van "
+"remény 'Wesnoth királyságának' felépítésére. Gyere, sok munka vár még ránk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:340
 msgid "We!?"
-msgstr ""
+msgstr "Ránk!?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:344
 msgid ""
@@ -2109,12 +2342,17 @@ msgid ""
 "and his descendants would pay for that betrayal without knowing the whole "
 "truth."
 msgstr ""
+"Az eljövendő időkben a dalnokok 'Az egyezség felbontásáról' énekeltek, ami "
+"Haldric árulását a tündékkel szemben foglalta eposzba. Ennek az árulásnak a "
+"káráról sugdolóztak, anélkül, hogy ismerték volna a teljes igazságot."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:348
 msgid ""
 "But some of us have remembered the true story of our arrival on this great "
 "continent. The true story of the Rise of Wesnoth."
 msgstr ""
+"De néhanyunk még emlékszik az igaz történetre, amelyben erre a gyönyörű "
+"földrészre érkeztünk. Wesnoth felemelkedésének igaz történetére."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:4
 msgid "Fallen Lich Point"
@@ -2254,7 +2492,7 @@ msgstr "Ez úgy hangzik, mintha Haldric herceg feladata lenne, remélhetőleg."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:417
 msgid "The Lich-Lord is already free."
-msgstr "A villiúr már ki is szabadult."
+msgstr "A villi úr már ki is szabadult."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:439
 msgid "NW - Southbay."
@@ -2321,7 +2559,7 @@ msgstr "Csatornarendszer - Omlásveszély, Belépni Tilos!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:4
 msgid "Peoples in Decline"
-msgstr ""
+msgstr "Népek nélkülözésben"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:59
 msgid "Kegrid"
@@ -2338,80 +2576,96 @@ msgstr "Merkush"
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:184
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:162
 msgid "Death of Lord Typhon"
-msgstr "Typhon elesik"
+msgstr "Typhon úr elesik"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:210
 msgid ""
 "After some time at sea an island is spotted. The Eldaric docks at a crude "
 "port that appears to be deserted."
 msgstr ""
+"Egy idő után egy sziget tűnt fel a láthatáron. Az Eldaric kikötött egy "
+"elhanyagolt kikötőben, ami látszólag teljesen néptelen volt."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:214
 msgid "Land! Land! Bless the Lords of Light!"
-msgstr ""
+msgstr "Föld! Föld! Áldjátok a fények urait!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:218
 msgid ""
 "This is the Elder Prince's island all right. We had a heck of a time "
 "pacifying the Drakes who live here. Oh my, it looks like they've rearmed!"
 msgstr ""
+"Ez az idősebb herceg szigete valóban. Elég sok időbe telt mire békére bírtuk "
+"az itt élő perzsekényeket. Úgy tűnik, most újra felfegyverkeztek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:222
 msgid "We come in peace. We only seek to re-provision our ships."
-msgstr ""
+msgstr "Békében jöttünk. Csak hajóink raktárát szeretnénk újra feltölteni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:226
 msgid "<Whispering> I don't think diplomacy is going to work."
-msgstr ""
+msgstr "<Súgva> Nem hiszem, hogy a diplomácia itt járható út lenne."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:230
 msgid ""
 "Ssso humansss, you've come to trouble usss again. Prepare to die! For the "
 "glory of the Lords of Morogor!"
 msgstr ""
+"Ssszóval emberek, azért jöttetek, hogy újra bajt hozzzzatok fejünkre. "
+"Készüljetek a halálra! Morgor urainak dicsőségére!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:234
 msgid "<Whispering> Do I need to say, 'I told you so'?"
-msgstr ""
+msgstr "<Súgva> Én megmondtam előre ..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:249
 msgid "Bitey the Serpent"
-msgstr ""
+msgstr "Bitey a kigyó"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:253
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:216
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:244
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:272
 msgid "Look out, a Serpent has emerged from the deep."
-msgstr ""
+msgstr "Vigyázzatok! Egy kigyó emelkedett ki a mélységből."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:270
 msgid ""
 "Well, it looks like their warriors have given up the fight. We should be "
 "able to re-provision the ships now."
 msgstr ""
+"Úgy néz ki harcosaik feladták a küzdelmet. Mostmár nyugodtan dolgozhatunk "
+"hajóink ellátámányának biztosításán."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:274
 msgid ""
 "The nice thing is, they'll go back to guarding this island after we're gone "
 "for a while. It'll make a good way of preventing others from following us."
 msgstr ""
+"A jó oldala az egésznek, hogy ők továbbra is őrizni fogják a szigetet, "
+"azután is, hogy mi elhagytuk. Ez egy jó módja annak, hogy mások ne tudjanak "
+"követni minket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:278
 msgid ""
 "This island is slowly sinking. Hmm, I wonder what they'll do when it gets "
 "too small for them?"
 msgstr ""
+"A sziget lassan süllyed. Vajon mit fognak tenni, amikor már nem fognak "
+"elférni rajta?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:282
 msgid ""
 "Well, they seem rather intelligent. They're certainly belligerent and "
 "numerous. I'm sure they'll eventually evacuate. Just like us right now."
 msgstr ""
+"Elég értelmesnek tűnnek. Minden bizonnyal sokan vannak és mint láttuk eléggé "
+"talpra esett nép. Biztos vagyok benne hogy el fogják hagyni a szigetet, "
+"pontosan úgy, ahogy mi is tettük ezt nemrég."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:286
 msgid "I don't find that thought very comforting."
-msgstr ""
+msgstr "Nem igazán nyugtat meg ez a gondolat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:299
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:323
@@ -2419,20 +2673,20 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:483
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:313
 msgid "Neep! Neep!"
-msgstr ""
+msgstr "Níp! Níp!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:317
 msgid ""
 "The fleet is starving, we'll never pacify this Island before we all die!"
-msgstr ""
+msgstr "A flotta éhezik, soha nem fogjuk megbékíteni ezt a szigetet."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:4
 msgid "Return of the Fleet"
-msgstr ""
+msgstr "A flotta visszatérése"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:49
 msgid "General Heravan"
-msgstr ""
+msgstr "Heravan tábornok"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:84
 msgid "Tan-Halg"
@@ -2444,21 +2698,24 @@ msgstr "Tan-Rinak"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:209
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:203
-#, fuzzy
 msgid "Death of Lt. Aethyr"
-msgstr "Aethyr elesik"
+msgstr "Aethyr hadnagy elesik"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:223
 msgid ""
 "Haldric reaches the site where the fleet is due to return. Several ships "
 "have already docked. The Orcs are on the frontier."
 msgstr ""
+"Haldric elérte a partot, ahol a flottának ki kell kötnie. Néhány hajó már be "
+"is futott. Az orkok a határon állomásoznak."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:228
 msgid ""
 "Sir, some ships have landed... They look like they've been damaged by the "
 "voyage. Hmm, it seems that most of the ships are staying at sea."
 msgstr ""
+"Uram, néhány hajó legénysége már partra szállt... Úgy látszik megsérültek az "
+"utazás alatt. Hmmm, ahogy elnézem, a legtöbb hajó a tengeren maradt."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:232
 msgid ""
@@ -2466,32 +2723,37 @@ msgid ""
 "defeat these monsters before everybody starves at sea, or before Jevyan "
 "launches an attack with his fleet."
 msgstr ""
+"Minden bizonnyal kiszúrták az ork tüzek füstjét. Le kell győznünk ezeket a "
+"szörnyetegeket, mielőtt éhenhalnak a tengeren lévők, vagy Jevyan megindítja "
+"a támadást a flottájával."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:237
 msgid ""
 "Yes Sir! The rest of the refugees have fled South, to our initial landing "
 "site. If we fail here they'll get slaughtered."
 msgstr ""
+"Igenis, uram! A többi menekült délnek vonult, az kezdeti kikötőhelyünkre. Ha "
+"itt elbukunk, mindannyiukat elkapják."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:241
 msgid "Well, that settles it. Enough talking, time to fight!"
-msgstr ""
+msgstr "Hát, ez megoldhataná a dolgot. Elég a beszédből, ideje harcolni!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:246
 msgid "For the glory of the men of The Green Isle!"
-msgstr ""
+msgstr "Zöld-sziget embereinek dicsőségéért!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:250
 msgid "No, for the Glory of all of the people of the West North! Charge!"
-msgstr ""
+msgstr "Dehogy, egész északnyugat embereinek a dicsősgéért! Roham!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:254
 msgid "Bah! Human- we will stomp you under our heels!"
-msgstr ""
+msgstr "Hehh! Emberek, el fogunk titeket taposni!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:258
 msgid "...And raise your dead to serve forever!"
-msgstr ""
+msgstr "...És éleszd fel a halottaidat, hogy örökké szolgáljanak!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:286
 msgid ""
@@ -2499,6 +2761,9 @@ msgid ""
 "conceal the power of the Ruby of Fire. It makes little difference, your "
 "undead corpse will lay it at my feet."
 msgstr ""
+"Add fel fiam! Nem tudsz engem legyőzni- Hmm, mi ez? Te megtanultad elrejteni "
+"a Tűzrubin erejét. Egy kis fejtörést okoztál, de majd az élőholt tested "
+"fogja a lábaim elé hozni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:290
 msgid ""
@@ -2506,51 +2771,58 @@ msgid ""
 "war, but you're the real monster! You sacrificed your own people to preserve "
 "your immortal un-life."
 msgstr ""
+"Majd meglátjuk. Déli-öböl bolond hercege tévedett, amikor elindította ezt a "
+"háborút, de te vagy az igazi szörnyeteg! Feláldoztad a saját embereidet, "
+"hogy megalapozd élőholt létedet."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:294
 msgid "Enough of this. A curse of darkness upon you young prince."
-msgstr ""
+msgstr "Elég ebből. Sötét átok szálljon rád, ifjú herceg."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:354
 msgid "I see masts on the horizon. Jevyan's fleet is here! It's all over."
 msgstr ""
+"Árbocokat látok a a horizonton. Jevyan flottája megérkezett! Mindennek vége!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:371
 msgid "Please Disembark in an Orderly Fashion and Proceed South"
-msgstr ""
+msgstr "Szálljatok ki rendezett sorokban és induljatok dél felé!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:375
 msgid "Hmm, they left off the 'or the Orcs will eat you' part."
-msgstr ""
+msgstr "Hmm, abbahagyták a 'különben orkok martalékává lesztek' szöveget."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:409
 msgid ""
 "I'm back, things went well! Haldric, I sure hope you know what you're doing."
-msgstr ""
+msgstr "Visszatértem, minden jól ment! Haldric, remélem tudod mit csinálsz."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:413
 msgid ""
 "Umm, we'll talk about it later. I'm just a little busy at the moment. I'm "
 "glad you made it back in one piece."
 msgstr ""
+"Öö, erről majd később beszélünk. Egy kicsit el vagyok most foglalva. Örülök, "
+"hogy egyben visszaértél."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:417
 msgid "Yeah, it looks like you could use all of the help you can get."
-msgstr ""
+msgstr "Igen, úgy látom minden segítségre szükséged van."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:425
 msgid ""
 "We've defeated Jevyan's forces. The ships must disembark their passengers "
 "quickly-"
 msgstr ""
+"Legyőztük Jevyan seregét. A hajókból gyorsan ki kell szállni mindenkinek.-"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:429
 msgid "Haldric, what's going on? What's the plan?"
-msgstr ""
+msgstr "Haldric, mi folyik itt? Mi a terved?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:433
 msgid "Well, we're going to confront Jevyan and destroy him."
-msgstr ""
+msgstr "Hát megtámadjuk Jevyant és végzünk vele!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:437
 msgid ""
@@ -2558,29 +2830,32 @@ msgid ""
 "Lords will follow. It's because of that Ruby. If I were paranoid I'd say "
 "that our dear old 'tree-friend' might have known as much."
 msgstr ""
+"Könnyű azt mondani. Ha még le is győznénk, a többi villi úr követné őt. Ez a "
+"Tűzrubin miatt biztosra vehető. Ha őrült volnék azt mondanám, még a kedves, "
+"öreg fa-barátocskánk is rájönne erre."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:441
 msgid "We should discuss this in private. Here, come with me."
-msgstr ""
+msgstr "Ezt négyszemközt kell megbeszélnünk. Gyere velem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:454
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:456
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:460
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:461
 msgid "Cuttle Fish"
-msgstr ""
+msgstr "Kalmárhal"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:465
 msgid "Slurp, click, click, click!"
-msgstr ""
+msgstr "Gluggy, katt, katt, katt!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:469
 msgid "I don't know what that is, but it doesn't sound friendly."
-msgstr ""
+msgstr "Nem tudom mi lehet ez, de nem hangzik barátságosnak."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:480
 msgid "Flixta"
-msgstr ""
+msgstr "Flixta"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:481
 msgid "Bzz'Kza"
@@ -2588,7 +2863,7 @@ msgstr "Bzz'Kza"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:484
 msgid "Kersezz"
-msgstr ""
+msgstr "Kersezz"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:485
 msgid "Tarex"
@@ -2611,20 +2886,22 @@ msgid ""
 "You Again. You will sssuffer for your attack against my people! Shek'kahan, "
 "our Naga friendsss- You'll pay! We have new friends now."
 msgstr ""
+"Megint ti. Meg fogsssz lakolni, amiért megtámadtad a népem! Shek'kahan, naga "
+"bártocccskáink- megfizzzettek! Vannak új társssaink."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:522
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:458
 msgid "Oh, to join my family again! Do not mourn my passing."
-msgstr ""
+msgstr "Óó, újra a családommal leszek! Ne gyászoljatok engem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:542
 msgid ""
 "My people are like a rock slide, you can run, but we will crush you- Ahhck!"
-msgstr ""
+msgstr "A népem olyan, mint a földcsuszamlás. futhatsz, de elkapunk - Áákkr!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:563
 msgid "I- I die?"
-msgstr ""
+msgstr "Én- én meghalok?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:4
 msgid "Return to Oldwood"
@@ -2759,9 +3036,8 @@ msgstr ""
 "evickélnek. De maradt még egy kérdés."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:191
-#, fuzzy
 msgid "What?"
-msgstr "És az mi?"
+msgstr "És mi lenne az?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:195
 msgid "Can I trust you, and your information? I don't even know your name."
@@ -2926,45 +3202,51 @@ msgstr "Tan-Prodash"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:276
 msgid "Lt. Aethyr sacrifices himself to Lich-Lord Jevyan and"
-msgstr ""
+msgstr "Aethyr hadnagy feláldozta magát a villi-úr Jevyannak és"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:280
 msgid "Destroy Lich-Lord Jevyan and"
-msgstr ""
+msgstr "Pusztísd el a villi-úrat, Jevyant és"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:284
 msgid "Defeat all enemy leaders except for one"
-msgstr ""
+msgstr "Mérj vereséget egy híjjan az összes ellenséges vezérre "
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:296
 msgid "Death of Lt. Aethyr by somebody other than Jevyan"
-msgstr ""
+msgstr "Aethyr hadnagy halálát más okozza mint Jevyan"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:300
 msgid "Fail to leave one enemy leader behind"
-msgstr ""
+msgstr "Nem sikerül egy ellenséges vezért hátrahagyni"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:314
 msgid ""
 "Haldric rapidly approaches the site where Lich-Lord Jevyan has made "
 "landfall. The final confrontation looms before him."
 msgstr ""
+"Haldric gyorsan elérte a helyet ahol a villi-úr Jevyan partraszállt. A végső "
+"találkozás már közel van...."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:318
 msgid "You can not win. Give me the Ruby of Fire and I will go in peace."
-msgstr ""
+msgstr "Nem győzhetsz! Add nekem a tűz rubinját és békével távozok."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:322
 msgid ""
 "This ends here Jevyan. Even if I believed your words I couldn't give you the "
 "Ruby of Fire."
 msgstr ""
+"Itt most minden véget ér Jevyan! Még ha el is hinném szavaidat, nem adhatom "
+"oda a tűz rubinját."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:326
 msgid ""
 "Bah! Even if you have learned to conceal the power of the Ruby of Fire you "
 "will deliver it unto me in death!"
 msgstr ""
+"Ugyan! Ha meg is tanultad hogyan kell elrejteni a tűz rubinjának hatalmát, "
+"ide fogod hozni nekem halálod után."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:330
 msgid ""
@@ -2972,20 +3254,25 @@ msgid ""
 "give the Elves the Ruby of Fire. We just signed a treaty with the Elves "
 "ensuring our place here."
 msgstr ""
+"Jevyan te bolond. Honnét gondolod, hogy csak úgy átléphetünk ezeken a "
+"földeken?  Oda kellett adnunk a tűz rubinját az elfeknek és ezzel "
+"biztosítottük a szabad átkelésünket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:334
 msgid ""
 "No! I don't believe it. Only a fool would give away an artifact of such "
 "power."
 msgstr ""
+"Nem hiszek neked! Csak egy balga adna oda egy ilyen nagyhatalmú ereklyét "
+"másoknak. "
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:338
 msgid "A fool, or a desperate band of refugees!"
-msgstr ""
+msgstr "Egy balga, vagy pedig egy reményvesztett menekülőkből álló csapat!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:342
 msgid "No. It can't be!"
-msgstr ""
+msgstr "Ez nem lehet igaz!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:346
 msgid ""
@@ -2993,54 +3280,61 @@ msgid ""
 "me. I'm no wizard. All I got is my axe. He, he. It's all I need- Prepare to "
 "die Orcish scum!"
 msgstr ""
+"Bolond ember, nem szabadott volna ilyen játékszert adni az elfek kezébe! Bár "
+"nem sokat változtat a dolgokon. Nem vagyok varázsló. Mindenem amim van "
+"csupán ez a fejsze itt a kezemben és csak erre van szükségem. - Készülj a "
+"halálra orkfajzat!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:351
 msgid "Ha. Let all of the footsoldiers of darkness be cast down!"
-msgstr ""
+msgstr "A sötétség katonái legyenek megidézve általam!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:355
 msgid "It matters little, because here you fall!"
-msgstr ""
+msgstr "Nem sokat számít, mert itt és most el fogsz bukni!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:360
 msgid "For all of the good people of Clearwater Port!"
-msgstr ""
+msgstr "Kristályvíz őrposztjának minden emberéért!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:365
 msgid "For the honor of SouthBay!"
-msgstr ""
+msgstr "A déli őrposzt dicsőségéért!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:370
 msgid ""
 "We don't need some magic trinket to beat you! Prepare to meet your fate you "
 "decrepit sack of bones! For the honor of all of the people of the West North!"
 msgstr ""
+"Nincs szükségünk mágikus trükkökre hogy legyőzzünk téged. Készülj fel, hogy "
+"találkozz sorsoddal, te rokkant csontok halmaza! Az északnyugati népekért "
+"előre!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:374
 msgid "Charge!"
-msgstr ""
+msgstr "Roham!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:378
 msgid ""
 "I hate it when my prey gets chatty! Get them, it's a long boat ride back "
 "home!"
-msgstr ""
+msgstr "Utálom amikor az áldozatom beszédes lesz. Kapjátok el őket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:382
 msgid "We shall soon see if you have the Ruby of Fire!"
-msgstr ""
+msgstr "Nemsokára kiderül, hogy kinél is van a tűz rubinja!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:391
 msgid "<Whispering> Lieutenant, you remember the plan right?"
-msgstr ""
+msgstr "<Súgva> Hadnagy, emlékszel a tervre ugye?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:396
 msgid "<Whispering> Yes Sir. I am ready."
-msgstr ""
+msgstr "<Súgva> Igen uram. Készen állok."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:407
 msgid "He's raising our dead! Be careful!"
-msgstr ""
+msgstr "Saját halottainkat fordítja ellenünk! Légy óvatos!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:431
 msgid ""
@@ -3048,42 +3342,44 @@ msgid ""
 "going to stop me from destroying you. For my family! For the people of "
 "Clearwater Port!"
 msgstr ""
+"Érezd gyűlöletem Jevyan, érted jövök! Semmi sem fog megállítani abban hogy "
+"elpusztítsalak. A családomért és Kristályvíz népéért."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:435
 msgid "All life is finite, you will be made to serve along with the rest."
-msgstr ""
+msgstr "Minden élet véges, majd szolgálni fogsz engem örök pihenésed közben."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:446
 msgid "Come on, stay still, just for a second..."
-msgstr ""
+msgstr "Na, maradj veszteg, csak egy pillanatra..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:457
 msgid "For the Wesfolk!"
-msgstr ""
+msgstr "Wesfolkokért!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:471
 msgid "Be careful Lieutenant!"
-msgstr ""
+msgstr "Legyen óvatos hadnagy!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:528
 msgid "The battle is going against us!"
-msgstr ""
+msgstr "A csata ellenünk fordult."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:532
 msgid "Our forces are being routed! We should flee back to the Green Isle!"
-msgstr ""
+msgstr "Csapatainkat szétverik! Vissza kell vonulnunk a Zöld Szigetre!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:536
 msgid "It goes poorly for us!"
-msgstr ""
+msgstr "Rosszul állunk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:540
 msgid "Defeated, by humans?"
-msgstr ""
+msgstr "Legyőztek az emberek?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:544
 msgid "Fight on you cowardly Orcish scum!"
-msgstr ""
+msgstr "Orkfajzat harcolj ellenem!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:551
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:754
@@ -3094,21 +3390,28 @@ msgid ""
 "Da old bag of bones has been crushed, and our cause is lost. We know da "
 "Elfses have da Fire Ruby. Retreat!"
 msgstr ""
+"Az öreg csontzsákot legyőzték, és feladatunk értelmét vesztette. Tudjuk, "
+"hogy az elfeknél van a tűz rubinja. Visszavonulás!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:558
 msgid "Da Elfses have the Fire Ruby, we must flee. To da Ships!"
-msgstr ""
+msgstr "Az elfeké a tűz rubinja, el kell menekülnünk! A hajókhoz gyorsan!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:565
 msgid ""
 "We have many kinsmen on the Green Isle- we will return for the Ruby of Fire!"
 msgstr ""
+"Sok katonánk maradt még hátra a Zöld Szigeten- vissza fogunk térni a tűz "
+"rubinért!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:572
+#, fuzzy
 msgid ""
 "We must get back to the Green Isle. The Elfses have the Ruby of Fire and our "
 "assault has been stopped."
 msgstr ""
+"Vissza kell térnünk a Zöld Szigetre.  Az elfeknél van a tűz rubinja és "
+"támadásunkat megfékezték."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:594
 msgid ""
@@ -3116,82 +3419,98 @@ msgid ""
 "their kin that the Elves have the Ruby of Fire. So we wouldn't have to bear "
 "the brunt of the next invasion."
 msgstr ""
+"A tervünk megfordult. Néhány ork visszatért a Zöld Szigetre, hogy elmondják "
+"népüknek, az elfeknél van a tűz rubinja. Nem kell megerőltetnünk magunkat, "
+"hogy kitaláljuk, hol lesz a következő támadásuk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:598
 msgid "What have we done?"
-msgstr ""
+msgstr "Mit tettünk?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:674
 msgid "My love, my family, I'll be there soo-"
-msgstr ""
+msgstr "Szerelmem, családom, ott leszek ..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:679
 msgid ""
 "Lieutenant Aethyr! No! Umm, he was kind of critical for convincing Jevyan "
 "that the Elves have the Ruby of Fire."
 msgstr ""
+"Aethyr hadnagy! Nem lehet! Fontos láncszem volt, hogy elhitessük Jevyannal "
+"hogy az elfeknél van a tűz rubinja."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:700
 msgid ""
 "Jevyan- I spit upon thee. Your end awaits. My love, my family, I'll be there "
 "soo-"
 msgstr ""
+"Jevyan, csak leköpni tudlak. Közeleg már a véged! Szerelmem, családom, "
+"nemsokára ..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:705
 msgid ""
 "Fool. You are no match for my power. What! What's this? A treaty. That's elf "
 "script."
 msgstr ""
+"Bolond. Semmiség vagy hatalmam előtt. Mi ez? Egy szerződés. Elf nyelven "
+"írták."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:710
 msgid ""
 "No. Why? You fools, you gave the Ruby of Fire to the Elves. But that won't "
 "save you from me. I will destroy you, then I will deal with the Elves."
 msgstr ""
+"Nem. Miért? Ti bolndok, odaadtátok a tűz rubinját az elfeknek, de ez nem fog "
+"megmenteni titeket. Mindannyiotokat elpusztítom és az elfek se fogják "
+"elkerülni haragomat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:715
 msgid "We'll see about that. For the honor of Lieutenant Aethyr, forward!"
-msgstr ""
+msgstr "Majd meglátjuk. Aethyr hadnagy tiszteletére, előre!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:726
 msgid ""
 "I am fallen before my plans have reached fruition. A curse upon you Haldric, "
 "may you and your descendants know nothing but strife!"
 msgstr ""
+"Elestem mielőtt a terveim megértek volna.  Átkozott légy Haldric, te és "
+"utódaid ne ismerjenek mást csak a viszályt!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:738
 msgid ""
 "You deny me my honorable death? Our foes are not yet convinced that the "
 "Elves have the Ruby."
 msgstr ""
+"Elutasítod az én hősies halálomat? Ellenségeinket még nem győztük meg arról "
+"hogy az elfeknél van a rubin."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:788
 msgid "Da old bag 'o bones is gone, but you haven't beat us yet!"
-msgstr ""
+msgstr "Az öreg csontzsák eltávozott, de még nem győztél le minket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:792
 msgid "We took yer home now we'll take yer lives!"
-msgstr ""
+msgstr "Hazahoztuk őket és most elvesszük életüket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:796
 msgid "The Elfses have da Fire Ruby, and you have nothing!"
-msgstr ""
+msgstr "Az elfeknél van a tűz rubinja, nálatok semmi sincs!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:800
 msgid "We will suck the marrow from your bones human!"
-msgstr ""
+msgstr "K fogjuk szívni a velőt is csontjaitokből emberek!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:825
 msgid "Squidy"
-msgstr ""
+msgstr "Squidy"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:838
 msgid "Ack. One of those monsters is destroying the bridge."
-msgstr ""
+msgstr "Egy a szörnyek közül éppen a hidat rombolja."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:891
 msgid "Inky"
-msgstr ""
+msgstr "Inky"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:904
 msgid "The bridge!"
@@ -3199,11 +3518,11 @@ msgstr "A híd!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:957
 msgid "Beaky"
-msgstr ""
+msgstr "Beaky"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:970
 msgid "Our advance is thwarted, that monster has destroyed the bridge!"
-msgstr ""
+msgstr "Az haladásunkat meggátolták. A szörnyeteg lerombolta a hidat!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1015
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:43
@@ -3215,6 +3534,8 @@ msgid ""
 "It's the Haldric! Jevyan you never said you came to destroy this monster. We "
 "will help you."
 msgstr ""
+"Ez Haldric! Jevyan soha nem mondtad, hogy azért jöttél,  hogy elpusztítsd "
+"ezt a szörnyet! Segítünk neked!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1026
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:66
@@ -3223,47 +3544,49 @@ msgstr "Xamalia"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1051
 msgid "Come in from the deep my loyal soldiers!"
-msgstr ""
+msgstr "Jöjjetek elő a mélységből, hűséges katonáim!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1079
 msgid "Rise, rise from the ground!"
-msgstr ""
+msgstr "Emelkedjetek fel a porból!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1112
 msgid "Neep! SPLAT!"
-msgstr ""
+msgstr "Neep! SPLAT!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1116
 msgid "Ahh... That almost makes it all worth while!"
-msgstr ""
+msgstr "Ahh... Majdnem  megérte!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1120
 msgid "You'll pay for that!"
-msgstr ""
+msgstr "Ezért fizetni fogsz!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1127
 msgid "Strike down these fools."
-msgstr ""
+msgstr "Öldössétek le ezeket a bolondokat!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1198
 msgid "We did it! We won!"
-msgstr ""
+msgstr "Megcsináltuk! Győztünk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1202
 msgid ""
 "Jevyan is destroyed, but at a terrible price. Let's put Lieutenant Aether to "
 "rest and discuss what is to come in the following days."
 msgstr ""
+"Jevyan elpusztult, de felbecsülhetetlen áron. Temessük el Aether hadnagyot, "
+"majd vitassuk meg mitévők legyünk ezután."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:1210
 msgid ""
 "Our strength is waining, and our foes grow stronger by the hour. The battle "
 "is lost!"
-msgstr ""
+msgstr "Az erőnk fogytán, és ellenségeink egyre erősebbek. A csata elveszett!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:4
 msgid "Rough Landing"
-msgstr ""
+msgstr "A nehéz partraszállás"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:176
 msgid ""
@@ -3271,10 +3594,13 @@ msgid ""
 "and much of the fleet has been scattered. Lord Typhon suggests stopping at a "
 "group of small windswept islands to regroup."
 msgstr ""
+"Sok váratlan, és erős vihar után az Eldaric egy kisebb léket kapott és a "
+"flotta nagy része szétszórodott. Typhon úr egy megállást javasolt a közeli "
+"szigeteknél, hogy újraszervezhessék a köteléket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:181
 msgid "I don't think I can take much more of this. I'm feeling I'll!"
-msgstr ""
+msgstr "Úgy gondolom nem bírom tovább. De legbelül érzem, nem adhatom fel!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:187
 msgid ""
@@ -3282,62 +3608,67 @@ msgid ""
 "the only place to stop with soft sand beaches to make landfall... The Nagas "
 "like to scavenge metal from ships that they capture here."
 msgstr ""
+"Legyetek óvatosak, ezek a szigetek nem biztonságosak. Naga területen "
+"vagyunk, de csak ez az egy hely van a kikötésre. Leginkább a hajón található "
+"fémek vannak veszélyben, amik nagy értéket képviselnek errefelé."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:192
 msgid "Prey! Get them!"
-msgstr ""
+msgstr "Zsákmány! Kapjátok el őket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:197
 msgid "The fleet must regroup here. We have to defeat these monsters."
 msgstr ""
+"A flottának itt kell újracsoportosúlnia. Le kell győznünk ezeket a "
+"szörnyeket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:212
 msgid "Chompey the Serpent"
-msgstr ""
+msgstr "Chompey a kigyó"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:240
 msgid "Scaly the Serpent"
-msgstr ""
+msgstr "Scaly a kigyó"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:268
 msgid "Toothey the Serpent"
-msgstr ""
+msgstr "Toothey a kigyó"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:289
 msgid "We've defeated the Nagas. The fleet should be able to regroup here."
-msgstr ""
+msgstr "Legyőztük a nagákat. Mostmár biztosított a helyszín a találkozásra."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:294
 msgid ""
 "The next time we see land, it should be the great continent to the East."
 msgstr ""
+"A következő nagy föld, amit látni fogunk, az már a keleti kontinens lesz."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:299
 msgid ""
 "I'll be glad when this voyage is over. We're almost there. Almost there."
-msgstr ""
+msgstr "Örülök hogy végetért tengeri utazásunk. Már majdnem ott vagyunk..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:328
 msgid "I think we're being followed..."
-msgstr ""
+msgstr "Azt hiszem követnek minket..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:337
 msgid ""
 "We were too slow... The fleet will be scattered to the four corners of the "
 "world!"
 msgstr ""
+"Túl lassúak vagyunk... A flotta szét fog szóródni a világ négy sarka felé!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:5
 msgid "Sewer of Southbay"
-msgstr ""
+msgstr "Déli-öböl csatornarendszere"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:44
-#, fuzzy
 msgid "Daellyn the Red"
 msgstr "Vörös Daellyn"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:65
-#, fuzzy
 msgid "Tinry the Red"
 msgstr "Vörös Tinry"
 
@@ -3379,23 +3710,27 @@ msgstr "Skorpió"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:135
 msgid "Prince Haldric exits the sewer"
-msgstr ""
+msgstr "Haldric herceg elhagyja a csatornát"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:139
 msgid "Heroic: As above and defeat all enemy leaders"
-msgstr ""
+msgstr "Hősiesen: a fentin túl legyőzöd valamennyi ellenséges vezért"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:162
 msgid ""
 "In the last leg of their journey to Southbay, Haldric and his companions "
 "find themselves in the Sewers of Southbay."
 msgstr ""
+"Déli-öböl felé tartó útjuk utolsó állomásaként Haldric és társai a város "
+"csatornarendszerében találták magukat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:166
 msgid ""
 "Only a human could take such a lovely cave and fill it with refuse. Humans. "
 "Hey, is that a pair of boots?"
 msgstr ""
+"Csak egy ember tehet tönkre egy ilyen csodás kis barlangjáratot. Emberek. "
+"Héé, ez nem egy szakadt csizma?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:170
 msgid ""
@@ -3403,31 +3738,41 @@ msgid ""
 "is the sewer of Southbay. It is said that the city diverted an underground "
 "river for its own use, and let their own effluent run down the old river bed."
 msgstr ""
+"Óvatosan kell itt lent járnunk. Ez nem egy sima esőcsatorna elvezetése, ezek "
+"Déli-öböl csatornái. Állítólag a városiak kivezették a felszínre a föld "
+"alatti folyót, és a régi medret most a saját szennyük elvezetésére "
+"használják."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:174
 msgid "This is the far end of that river bed. Legend has it- -"
-msgstr ""
+msgstr "Ez a legvége ennek a medernek. A legenda szerint -"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:179
 msgid ""
 "That a King banished a pair of twin Magi and their devoted followers down "
 "here after the Wesfolk war!"
 msgstr ""
+"Egy király ide, a föld alá űzött számon egy mágus ikerpárt és hű követőiket, "
+"a wesfolkokkal vívott háborút követően."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:184
 msgid ""
 "Can you feel it brother? This one bears the Ruby of Fire. After all this "
 "time it has simply come to us!"
 msgstr ""
+"Te is érzed, testvérem? Nála van a Tűzrubin. Olyan hosszú idő után ő maga "
+"jött el hozzánk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:189
 msgid ""
 "The brothers Red will finally ascend to power. We must have it. Get them!"
 msgstr ""
+"A Vörös testvérek végre megszerezhetik a hatalmat. El kell vennünk. Fogjátok "
+"el őket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:197
 msgid "Nooo! The wizards are flooding the sewer we're doomed!"
-msgstr ""
+msgstr "Neeem! A varázslók elárasztják a csatornát, elvesztünk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:205
 msgid ""
@@ -3436,6 +3781,9 @@ msgid ""
 "ways of magic can sense it. Elilmaldur-Rithrandil, felt it, and so did Lich-"
 "Lord Caror, now these two."
 msgstr ""
+"Haldric, valami különös sejtelem kerülget. A Rubin, észrevetted, hogy minden "
+"varázslatokat jól ismerő lény megérzi? Elilmaldur-Rithrandil, majd Caror "
+"villi úr, és most ezek ketten, mind megérezték."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:210
 msgid ""
@@ -3443,10 +3791,13 @@ msgid ""
 "even with it in my pack. Let's figure out what it does, before we decide "
 "what to do with it."
 msgstr ""
+"Már megszereztük a villi könyvét, és szó szerint én is érzem az erejét, még "
+"ha csak a csaomgjaim közt van is. Találjuk ki hogyan használjatnánk, mielőtt "
+"döntenénk a sorsa felől."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:230
 msgid "Hmm. He seems to have had a map, and some gold!"
-msgstr ""
+msgstr "Hmm. Úgy látszik volt egy térkép nála, meg egy kevés arany!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:252
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:298
@@ -3455,39 +3806,43 @@ msgstr "Testvérem!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:279
 msgid "Hmm. He seems to have had a map."
-msgstr ""
+msgstr "Hmm. Úgy látszik volt nála egy térkép."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:320
 msgid ""
 "Argh, the stream bed is blocked! Only a pint of goo is getting through. "
 "We'll have to go around."
 msgstr ""
+"Jajj, a meder el van torlaszolva! Egy maréknyi iszap jutott csak rajta át. "
+"Meg kell kerülnünk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:337
 msgid "To Southbay"
-msgstr ""
+msgstr "Déli-öböl felé"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:384
 msgid ""
 "It's not very Heroic if Prince Haldric isn't the one to lead his band from "
 "the Sewers of Southbay."
 msgstr ""
+"Nem túl hősies, ha Haldric herceg csapatai mögé bújva próbál kijutni Déli-"
+"öböl csatornarendszeréből."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:401
 msgid "Danger Ahead!"
-msgstr ""
+msgstr "Vigyázz, előttünk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:406
 msgid "Ahead, so far it's been danger everywhere."
-msgstr ""
+msgstr "Előttünk?! Eddig mindenhol csak veszélyekkel találkoztunk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:417
 msgid "Finally on to Southbay!"
-msgstr ""
+msgstr "Végre Déli-öbölben!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:4
 msgid "Southbay in Winter"
-msgstr ""
+msgstr "Téli Déli-öböl"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:103
 msgid ""
@@ -3495,20 +3850,25 @@ msgid ""
 "the city. After some commotion, he is given an audience with the King of "
 "Southbay."
 msgstr ""
+"Haldric herceg a város kellős közepébe csöppent, kijutva a csatornából, "
+"ezzel nem kis meglepetést okozva. A zavartság elültével bebocsátást nyert "
+"Déli-öböl királyához."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:108
 msgid "So Prince, you bring refugees, but do you bring swords as well?"
-msgstr ""
+msgstr "Herceg úrfi, tehát menekültekkel érkeztél, de fegyverek nélkül?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:112
 msgid "I bear both, and all are loyal to the King of Southbay!"
-msgstr ""
+msgstr "Mindkettővel rendelkezem, és mind hűségesek Déli-öböl királyához!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:117
 msgid ""
 "I knew you as a boy, and your people have preceded you. Your father was an "
 "honorable man, and so are you. Aren't you the King now?"
 msgstr ""
+"Ismertelek kisfiúként, és néped már megelőzött téged. Apád becsületes ember "
+"volt, és nem kételkedem, hogy te is az vagy. Nem te vagy most a király?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:121
 msgid "A King with no land and no crown is no King my Lord."
@@ -3520,36 +3880,44 @@ msgid ""
 "done your father proud. Far better than my legacy, a dead adventurer and a "
 "missing fool! It is fitting that my line should end with my kingdom."
 msgstr ""
+"Igazad van. Nehéz időket élünk, hercegem. Apád büszke lenne rád. Nem úgy "
+"mint én a saját örökségemre, egy elhunyt kaladorra és egy eltűnt bolondra. "
+"Úgy tűnik én leszek a dinasztia utolsó uralkodója."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:130
 msgid "You should not say such things!"
-msgstr ""
+msgstr "Nem kellene ilyeneket beszélned!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:135
 msgid ""
 "Hmph! It matters little now. What's this? You bring a Wesfolk waif with you. "
 "Put her out with the others!"
 msgstr ""
+"Pff! Ez már nem sokat számít. Mi ez? Egy wesfolk lelencet is hoztál "
+"magaddal? Tegyétek ki a többiek közé!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:139
 msgid "You've put my people out in the snow! Prepare to meet your fate you- -"
-msgstr ""
+msgstr "Kizavartad a népem a hóesésbe! Készülj a végzetedre, te -"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:143
 msgid ""
 "She and her people have been of great service to me. Open the gates, let "
 "them in."
 msgstr ""
+"Ő és a népe nagy szolgálatomra voltak. Nyisd ki a kapukat, engedd őket be."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:148
 msgid ""
 "What? On your word alone boy? And what of the other Wesfolk that have "
 "drifted to our gate?"
 msgstr ""
+"Mi? A te egyedüli kívánságodra? És mi legyen a többi wesfolkkal, akik a "
+"kapuk elé gyűltek?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:152
 msgid "Let them all in! For the sake of humanity on this isle!"
-msgstr ""
+msgstr "Engedd be mindannyiukat! Az sziget emberiessége okán!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:156
 msgid ""
@@ -3558,30 +3926,38 @@ msgid ""
 "your eldest son that you will let all of the Wesfolk who may come into the "
 "city, and to allow them to participate in what must happen next."
 msgstr ""
+"És mert mást is ajánlok neked. A szigeten megmaradt összes népet meg tudom "
+"menteni. Fel fogok fedni mindent, ha legidősebb fiad lelkére esküszöl, hogy "
+"minden wesfolkot beengedsz, aki a városba érkezik, és részt vehetnek a ránk "
+"váró feladatokban, bármi is legyen az."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:161
 msgid "Hmm... Very well. I so swear. Speak."
-msgstr ""
+msgstr "Hmm... Rendben. Akkor esküszöm. Beszélj."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:165
 msgid ""
 "First, I CAN translate the book that will allow Haldric to use the Ruby of "
 "Fire. The artifact should help with what must come."
 msgstr ""
+"Először is, le tudom fordítani a könyvet, aminek a segítségével Haldric "
+"herceg használhatja a Tűzrubint. Ez a tárgy segíteni fog a következőkben."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:169
 msgid ""
 "Second, I know the way to the mysterious lands of the East. Addroran, I was "
 "your son's navigator and companion. Believe me, you must go East."
 msgstr ""
+"Másodszor, ismerem az utat a titokzatos kelet felé. Addroran, a fiad "
+"útitársa és vezetője voltam. Bízz bennem, keletre kell menned!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:173
 msgid "Compan- - What?"
-msgstr ""
+msgstr "Útitá - Micsoda?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:177
 msgid "She's just full of surprises."
-msgstr ""
+msgstr "Ez a hölgy tele van meglepetésekkel."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:181
 msgid ""
@@ -3589,13 +3965,20 @@ msgid ""
 "people actually came here on purpose. You'd all still be herding sheep and "
 "living in grass huts if it wasn't for my people."
 msgstr ""
+"Én voltam a vezető. Haldric, a te néped simán csak partra vetődött itt réges "
+"régen. Az én népem szándékosan érkezett. Még mindig juhokat terelgetnétek és "
+"vályogházakban élnétek, ha nem jött volna az én népem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:186
+#, fuzzy
 msgid ""
 "Some favor your people did for us. Why flee at all? And why East? We've "
 "already repelled an Orcish assault just before winter came. We should be "
 "working toward taking back the Isle."
 msgstr ""
+"Egy szívesség, amit a ti népetek értünk tett. De miért meneküljünk? És miért "
+"keletre? Éppen sikeresen visszavertünk egy ork offenzívát a tél beállta "
+"előtt. Azon kéne fáradoznunk, hogy visszaszerezzük a szigetet."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:190
 msgid ""
@@ -3604,6 +3987,11 @@ msgid ""
 "There is literally no room there. If you thought we were bad, you should see "
 "what else lives there. You'd be slaves, or you'd be dead."
 msgstr ""
+"Ez nem a legalkalmasabb idő a hősködésre. Keletre kell indulnod, mégpedig "
+"azért, mert népem keletről jött, ami már hemzseg az elképzelhetetlenül "
+"sokféle ember és szörny tömkelegétől. Gyakorlatilag itt már nics is szabad "
+"hely. Ha azt hitted mi gonoszak vagyunk, látnod kéne kik élnek még ott. "
+"Rabszolgákká vagy holtakká válntok itt."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:194
 msgid ""
@@ -3613,6 +4001,10 @@ msgid ""
 "their numbers are limitless, and you have no way to stop more Orcs from "
 "coming."
 msgstr ""
+"Tanulj a mi hibánkból. Ha ide jöttünk volna, még akkor amikor egyik nagy "
+"városunk kitartott, könnyedén megúszhattuk volna. De mi az utolsókig "
+"harcoltunk. Az orkoknál nincs bocsánat, számtalanul jönnek, és nem "
+"állíthatod meg őket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:199
 msgid ""
@@ -3621,10 +4013,14 @@ msgid ""
 "fall and the harvest was in. We can hunt the great schools of fish that live "
 "under the ice. You might even be able to depart in well provisioned ships!"
 msgstr ""
+"Hmm. Bölcsen beszélsz, tényleg itt vesznénk. Azért a tél végéig tartsunk ki "
+"itt. Amikor az orkok legutóbb jöttek, akkor már ősz volt és a aratást már "
+"befejeztük. Halászhatunk a jég alatt élő számtalan halcsapatból is. Talán "
+"még a kifutó hajóitokra is fog jutni az ellátmányból!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:203
 msgid "Don't you intend to come with us?"
-msgstr ""
+msgstr "Te nem jössz velünk?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:208
 msgid ""
@@ -3632,6 +4028,9 @@ msgid ""
 "For the sake of all who can be evacuated. That means that it should fall on "
 "Haldric and you to lead the evacuation."
 msgstr ""
+"Nem. Meneküljetek csak keletnek. Az én kötelességem, hogy addig tartsam ezt "
+"a várost, amíg csak bírom. Így aki csak tud elhagyhatja a várost. Ez azt "
+"jelenti, hogy Haldric-kal a ti feladatotok lesz a kimenekítés megszervezése."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:212
 msgid ""
@@ -3639,6 +4038,8 @@ msgid ""
 "will bear the flag of Southbay. A new throne and new lands await you in the "
 "East."
 msgstr ""
+"Királyom, keleten új királyság fog születni, és a távozó tömeg Déli-öböl "
+"zázslaját fogja hordozni. Új trón és új földek várnak rád keleten."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:217
 msgid ""
@@ -3647,17 +4048,24 @@ msgid ""
 "blood. Us old men are still of some value. We will make the Orcs pay dearly "
 "when they come to take this place!"
 msgstr ""
+"Az én vérvonalam kihalt a fiammal, és én már idős vagyok. A hajók először az "
+"asszonyokat, a gyermekeket és a fiatalokat vigyék el. Az új királyságnak "
+"friss vérből kell születnie. Nekünk, öregeknek más feladatunk van. Keményen "
+"meg fogjuk fizettetni az orkokkal ennek a helynek az árát!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:221
 msgid ""
 "Well, if there is no other way. May the bards forever sing of the valor of "
 "the Kings of Southbay! Jessica, about that book?"
 msgstr ""
+"Rendben, ha nincs más lehetőség. Énekeljék örökké a bárdok Déli-öböl "
+"királyainak vitézségét! Jessica, mi van a könyvvel?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:225
 msgid ""
 "I'll begin my translation. Oh, and you should seal up the sewer entrance."
 msgstr ""
+"Megkezdem a fordítást. Ó, neked meg le kéne zárnod a csatorna kijáratát."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Temple_of_the_Deep.cfg:4
 msgid "Temple in the Deep"
@@ -3711,11 +4119,10 @@ msgid ""
 "the world itself. In the distance Haldric hears a booming voice."
 msgstr ""
 "Haldric hereg és társai hajthatatlan kiváncsisággalszálltak le a templom "
-"alatt elterülő katakombarednszerbe, mélyen a kövekbe ásva, az egész világ "
+"alatt elterülő katakombarendszerbe, mélyen a kövekbe ásva, az egész világ "
 "gyökereinél. A távolból egyre emelkedő hang ütötte meg Haldric fülét."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Temple_of_the_Deep.cfg:162
-#, fuzzy
 msgid ""
 "Free! I'm free at last! I knew those puny magi couldn't seal me in here "
 "forever! Rise my soldiers of Darkness, the world will be ours once more!"
@@ -3806,7 +4213,7 @@ msgstr "Megidézi a halottainkat!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:4
 msgid "The Dragon"
-msgstr ""
+msgstr "A sárkány"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:49
 msgid "Irix"
@@ -3826,11 +4233,12 @@ msgstr "Satras"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:215
 msgid "Slay the Dragon"
-msgstr ""
+msgstr "Leölöd a sárkányt"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:219
 msgid "Heroic: Slay the Dragon and defeat all enemies"
 msgstr ""
+"Hősiesen: Leölöd a sárkányt és valamennyi ellenség felett győzedelmeskedsz"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:241
 msgid ""
@@ -3838,14 +4246,17 @@ msgid ""
 "of swamp. A small island with a mountain dominates the view. That can only "
 "be the home of the dragon."
 msgstr ""
+"A néhány napos utat követően Haldric egy óriási, üres láphoz ért. A "
+"környéket egy kis sziget, rajta egy heggyel uralja. Ez minden bizonnyal a "
+"sárkány otthona."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:246
 msgid "Flies, flies, everywhere! Ack!"
-msgstr ""
+msgstr "Legyek, mindenhol csak legyek! Ehh!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:251
 msgid "'Prince Haldric the Dragonbane' sounds rather nice."
-msgstr ""
+msgstr "'Haldric herceg, a sárkányölő', ez elég jól hangzik."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:256
 msgid "We'll see..."
@@ -3856,14 +4267,16 @@ msgid ""
 "I'm glad that's over. The elves certainly aren't taking it easy on us. It's "
 "a miracle any of us are alive at all."
 msgstr ""
+"Örülök, hogy végre vége van. A tündék tényleg biztosra mennek velünk "
+"kapcsolatban. Kész csoda, hogy mi még életben vagyunk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:270
 msgid "I'm still not calling you 'the Dragonbane'."
-msgstr ""
+msgstr "Még most se hívlak 'sárkányölőnek'."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:313
 msgid "Watch for the big Mudcrawlers they divide when you kill them."
-msgstr ""
+msgstr "Nézzétek az óriás sártiprókat, ketté válnak amikor levágjuk őket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:351
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:378
@@ -3872,7 +4285,7 @@ msgstr "Shek'kahan"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:359
 msgid "It is unwise to trifle with dragons boy!"
-msgstr ""
+msgstr "Nem bölcs dolog sárkányokkal leállni, fiacskám!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:363
 msgid "We shall see."
@@ -3880,20 +4293,20 @@ msgstr "Majd meglátjuk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:386
 msgid "Who dares disturb Shek'kahan the terrible?"
-msgstr ""
+msgstr "Ki merészeli a rettegett Shek'kahant megzavarni?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:390
 msgid "I do, you fiend!"
-msgstr ""
+msgstr "Én itt, te szörnyeteg!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:423
 msgid "We still have to slay the dragon!"
-msgstr ""
+msgstr "Még mindig nem végeztünk a sárkánnyal!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:435
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:499
 msgid "The Dragon's Cave has yielded some treasure!"
-msgstr ""
+msgstr "A sárkány barlangjában egy kis kincs is el volt rejtve!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:459
 msgid "No!"
@@ -3901,19 +4314,19 @@ msgstr "Nem!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:473
 msgid "We've slain the Dragon: "
-msgstr ""
+msgstr "Végeztünk a sárkánnyal: "
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:476
 msgid "Let's get out of here!"
-msgstr ""
+msgstr "Most fussunk innen!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:486
 msgid "Let's finish off the rest of these monsters!"
-msgstr ""
+msgstr "intézzük el a többi szörnyet is!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:517
 msgid "More Saurians are arriving. They've surrounded us! We're doomed."
-msgstr ""
+msgstr "Több gyík is érkezik. Bekerítettek minket! Elvesztünk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:4
 msgid "The Fall"
@@ -4097,7 +4510,7 @@ msgstr "Nem nézhetünk vissza! Délnek kell tartanunk."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:4
 msgid "The Midlands"
-msgstr ""
+msgstr "Középfölde"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:57
 msgid "Tan-Vrodis"
@@ -4116,6 +4529,8 @@ msgid ""
 "Prince Haldric leads his refugee band into the Midlands and smoke is in the "
 "air."
 msgstr ""
+"Haldric herceg elvezeti a menekültek csoportját középföldére, és füst száll "
+"a levegőbe."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:183
 msgid ""
@@ -4123,27 +4538,31 @@ msgid ""
 "civilized way to fight a war! Look there, there are still Orcs about.. . To "
 "arms!"
 msgstr ""
+"Úgy történt, ahogyan gondoltuk, az orkok kifosztották középföldét. Ez csepet "
+"sem civilizált módja egy háborús kérdés eldöntésének! Nézzétek, ott még "
+"mindig van belőlük... Fegyverbe!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:188
 msgid "Alright! Charge!"
-msgstr ""
+msgstr "Rendben! Roham!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:194
 msgid "Feel my wrath you Orcish scum!"
-msgstr ""
+msgstr "Megérezheted a dühöm, te senkiházi ork!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:199
 msgid "HUMANS... I see humans!"
-msgstr ""
+msgstr "EMBEREK... Embereket látok!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:204
 msgid ""
 "Ha, Hogar! You said we wouldn't see any action this far back from the front."
 msgstr ""
+"Hé, Hogar! Azt mondtad semmi mozgás nem lesz ennyivel a frontvonalak mögött."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:209
 msgid "Shut yer mouth! Let's just get 'em."
-msgstr ""
+msgstr "Tartsd meg magadnak! Egyszerűen kapjuk el őket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:227
 msgid "SE - The Oldwood. Enter at Your Own Risk!"
@@ -4151,7 +4570,7 @@ msgstr "DK - Az Öregerdő. Belépés csak saját felelősségre!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:246
 msgid "SW - Southbay."
-msgstr ""
+msgstr "DNy - Déli-öböl."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:265
 msgid "Grilg"
@@ -4159,13 +4578,13 @@ msgstr "Grilg"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:269
 msgid "What? More humans here? Get them!"
-msgstr ""
+msgstr "Micsoda? Itt még emberek? Elkapni őket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:272
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:273
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:275
 msgid "Rider"
-msgstr ""
+msgstr "Lovas"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:292
 msgid "Vrogar"
@@ -4173,7 +4592,7 @@ msgstr "Vrogar"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:296
 msgid "How'd they get behind us? I hate to miss such tasty meat."
-msgstr ""
+msgstr "Hogyan kerültek mögénk? Nem szeretem az ilyen ízletes húst kihagyni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:299
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:300
@@ -4182,18 +4601,17 @@ msgstr "Orgyilkos"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:302
 msgid "Crossbow"
-msgstr "Íjpuskás"
+msgstr "Nyílpuskás"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:318
 msgid "Better him than me! Reserves!"
-msgstr ""
+msgstr "Inkább őt, mint engem! A tartaléksereget!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:339
 msgid "Holgar was a fool! Reserves!"
-msgstr ""
+msgstr "Holgar bolnd volt!A tartaléksereget!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:362
-#, fuzzy
 msgid "Sir Ladoc"
 msgstr "Ladoc úr"
 
@@ -4203,28 +4621,37 @@ msgid ""
 "guard. The main body of their forces is on the road to Southbay. It is an "
 "army of nightmarish size."
 msgstr ""
+"Állj! Nem mehetsz tovább! Már belebotlottál a hátulmaradt ork egységekbe. A "
+"fő hadtestük a Déli-öböl felé vezető úton menetel. Az pedig egy rettenetesen "
+"nagy sereg."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:382
 msgid ""
 "I'm Haldric, my father was King Eldaric IV in the lands North-West of here. "
 "Soldier, aren't you on the wrong side of the lines?"
 msgstr ""
+"Haldric vagyok, apám IV. Eldaric király volt, aki innen északnyugatra "
+"uralkodott. Katona, nem lehet, hogy rossz oldalon harcolsz?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:388
 msgid ""
 "They overran my post. I got hit on the head pretty good, when I came to the "
 "Orcish army had already passed my position."
 msgstr ""
+"Leroanták a helyőrségemet. Kaptam egy rendeset a fejemre is. Már túl is "
+"haladtak rajtunk amikor eljöttem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:393
 msgid "Tell me, how fares Southbay?"
-msgstr ""
+msgstr "Mesélj, hogyan boldogulnak Déli-öbölben?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:399
 msgid ""
 "Southbay won't fall without one hell of a fight, sir. They'll stand to the "
 "last! I only wish I was there!"
 msgstr ""
+"Déli-öböl nem fog elesni egykönnyen, uram. Az utolsókig küzdeni fognak! "
+"Bárcsak én is velük lehetnék!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:405
 msgid ""
@@ -4232,28 +4659,33 @@ msgid ""
 "to risk it and go through the Oldwood forest, then make a break for "
 "Clearwater Port."
 msgstr ""
+"Hát, nem indulhatunk visszafelé, az utat meg elállják előttünk... azt hiszem "
+"meg kell kockáztatnunk, hogy átmenjünk az Öregerdőn, hogy aztán Kristályvíz "
+"kikötője felé mehessünk tovább."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:410
 msgid ""
 "Oh great, now a forest. I should have stayed at home and took my chances "
 "with the Orcs!"
 msgstr ""
+"Ó, óriási, egy erdő. Inkább maradtam volna otthon, és kipróbáltam volna a "
+"szerencsémet az orkokkal szemben!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:416
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:490
 msgid "Sir, if you don't mind, I'll go with you."
-msgstr ""
+msgstr "Uram, ha nem bánod, akkor veled tartanék."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:422
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:496
 msgid "On we go..."
-msgstr ""
+msgstr "Akkor induljunk..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:435
 msgid ""
 "We have run out of time... We'll be trapped in the midlands when winter "
 "comes!"
-msgstr ""
+msgstr "Kicsúsztunk az időből... A tél beálltával ittragadtunk középföldén!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:4
 msgid "The Oldwood"
@@ -4303,30 +4735,38 @@ msgid ""
 "overhead, blocking almost all of the light... The ominous noises of the deep "
 "woods echo all around."
 msgstr ""
+"Haldric és csapata nemsokára a titokzatos Öregerdő szívében találták "
+"magukat. Az út egyre keskenyebb lett, míg alig lett több egy egyszerű "
+"csapásnál. Az ágak olyan magasra szöktek, hogy alig szüremlett át rajtuk a "
+"napfény... A mély erdő sejtelmes hangjai visszhangoztak mindenfelől."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:227
 msgid ""
 "Will this evil forest ever end! There are mosquitoes as big as my fist in "
 "here, and these nasty old trees are giving me the creeps."
 msgstr ""
+"Mikor jutunk már ki ebből a gonosz erdőből?! Öklömnyi szúnyogok szálldosnak "
+"mindenfelé, és kiráz a hideg az itteni zordon fák közt."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:232
 msgid ""
 "This isn't so bad. Haldric's kind are such a suspicious lot when it comes to "
 "these sorts of things."
 msgstr ""
+"Ez nem is annyira rossz. Haldric fajtája túl gyanakvó az ilyen dolgokkal "
+"kapcsolatban."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:236
 msgid "Quiet. Listen, I think I hear something."
-msgstr ""
+msgstr "Csendet! Figyeljetek, hallok valamit."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:241
 msgid "All I hear are more tree-foes!"
-msgstr ""
+msgstr "Mindössze egyre több fa-ellenséget hallok!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:245
 msgid "That tree, it speaks! No- No- We are tree-friends, really!"
-msgstr ""
+msgstr "Az a fa megszólalt! Nem-nem, mi a fák barátai vagyunk, de tényleg!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:250
 msgid ""
@@ -4334,48 +4774,58 @@ msgid ""
 "must be less worse than these new monsters that have come to plague us. They "
 "cut the trees, and burn the trees for no reason at all!"
 msgstr ""
+"Emlékszem amikor a fajtátok megjelent a fejszéivel, ti fa-barátok. Mégis úgy "
+"gondolom, hogy barátságosabbak vagytok azoknál az új szörnyeknél, akik "
+"elárasztották a környéket. Vágják és égetik a fákat, minden ok nélkül!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:255
 msgid ""
 "You claim to be a tree-friend, so be a tree-friend now. For we are in dire "
 "need, or you may meet your fate with the rest of these monsters."
 msgstr ""
+"Azt állítjátok, hogy fa-barátok vagytok, most bizonyítsátok is be! "
+"Szükségünk van rátok, de választhatjátok magatoknak az ellenségeinkre váró "
+"csapásokat is."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:259
 msgid "We will help. (Quietly) Be careful with the trees."
-msgstr ""
+msgstr "Segítségetekre leszünk. (Halkan) Vigyázzatok a fákkal!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:263
 msgid "What! What are you looking at me for?"
-msgstr ""
+msgstr "Micsoda! Mit bámulsz rajtam?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:276
 msgid ""
 "The temple has already been looted, however the entrance to it's catacombs "
 "seem to be blocked by a wall of magical energy."
 msgstr ""
+"A templomot már kifosztották, de a katakomba bejáratát mintha egy mágikus "
+"fal zárná el."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:287
 msgid "Stupid stinking trees, we'll show you!"
-msgstr ""
+msgstr "Ostoba korhadt fák, majd megmutatjuk nektek!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:295
 msgid "Chop 'em down. It's cool in these woods, I think we need a fire!"
-msgstr ""
+msgstr "Kivágni őket! Hűvös van ebben az erdőben, kéne raknunk egy kis tüzet!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:306
 msgid ""
 "Without the help of these tree-folk we'll be trapped in these woods till we "
 "die! There will be nothing to hold the Orcs back!"
 msgstr ""
+"Ezeknek a fa-népeknek a segítségük nélkül örök életre ebben az erdőben "
+"ragadnánk! És akkor mi tarthatná vissza az orkokat?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:310
 msgid "Stupid tree-folk."
-msgstr ""
+msgstr "Aljas fa-népség!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:322
 msgid "We've defeated the Orcs"
-msgstr ""
+msgstr "Legyőztük az orkokat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:327
 msgid ""
@@ -4384,12 +4834,19 @@ msgid ""
 "these buildings of stone. Our roots may be slow, but they are strong, we "
 "will eventually claim all of the stones back for the earth."
 msgstr ""
+"Ezen a napon bebizonyítottátok, hogy valóban fa-barátok vagytok. Hosszú "
+"ideig, csak az éles szerszámaitokat ismertük. Ti építettétek azokat a "
+"hatalmas kőépítményeket is. Meglehet, hogy a gyökereink lassúak, de erőrek "
+"is ugyanakkor, és szépen lassan minden követ vissza fogunk szerezni a "
+"földnek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:331
 msgid ""
 "Well, I suspect you won't have to worry about my kind for much longer. The "
 "Orcs have come, and they are taking this Isle!"
 msgstr ""
+"Úgy gondolom, nem kell sokáig tartonotok a fajtámtól. Az orkok eljöttek, és "
+"most meghódítják az egész szigetet!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:336
 msgid ""
@@ -4397,10 +4854,13 @@ msgid ""
 "Orcs are gone as well. We were here before all others, and I suspect the we "
 "will be here in the end."
 msgstr ""
+"Hmm - az én fajtám már előttetek is itt volt, és még az orkok után is sokáig "
+"itt lesz. Itt voltunk már a leges legelejétől fogva, és úgy hiszem itt "
+"leszünk mindennek a végén is."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:340
 msgid "Can you help us fight the Orcs?"
-msgstr ""
+msgstr "Tudtok segíteni az orkok ellen?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:345
 msgid ""
@@ -4409,12 +4869,20 @@ msgid ""
 "people some time ago one of your kings trapped an evil Lich in the catacombs "
 "of the temple at the heart of the wood. We were there, we were watching."
 msgstr ""
+"Az én fajtám az erdőhöz van kötve, nem lennénk a segítségedre, ha át kellene "
+"lépnünk a határainkat. De talán még a segítségedre lehetünk egy dologban. "
+"Nem is olyan régen, a te néped háborújában, az egyik királyotok elfogott egy "
+"gonosz villit, és bezárta az erdő közepén tallható templom "
+"katakombarendszerébe."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:350
 msgid ""
 "After we drove your kind off we figured out how to break the spell that "
 "holds the Evil in the catacombs, and keeps others from entering them."
 msgstr ""
+"Miután kiüldöztük a fajtátokat, azon töprengtünk, hogy miként lehetne "
+"megtörni a varázst, ami a gonoszt a föld alatt tartja, míg másokat nem enged "
+"be."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:354
 msgid "This helps us how?"
@@ -4425,6 +4893,8 @@ msgid ""
 "The Lich was carrying a powerful artifact. We know, we can feel it. This "
 "artifact may aid you in your quest."
 msgstr ""
+"A villi egy pusztító erejű tárgyat hordoz. Tudjuk, érezzük. Ez a tárgy "
+"biztosan a segítségedre lenne a küldetésedben."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:364
 msgid ""
@@ -4432,14 +4902,17 @@ msgid ""
 "it with us from the East. We thought it was lost in the war with your "
 "people, when Lich-Lord Lenvan fell!"
 msgstr ""
+"Biztosan a Tűzrubinról beszél. Az volt a leghatalmasabb varázstárgyunk. "
+"Keletről hoztuk magunkkal. azt hittük elveszett a köztünk dúló háborúban, "
+"amikor is Lenvan villi úr elesett."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:368
 msgid "At this point we need all of the help we can get!"
-msgstr ""
+msgstr "Most minden segítségre szükségünk van!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:373
 msgid "Then I will open the catacombs for you..."
-msgstr ""
+msgstr "Akkor ki fogom nyitni nektek a katakombát..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:384
 msgid ""
@@ -4447,10 +4920,12 @@ msgid ""
 "with that Orcish scum, I can't bring myself to fight against one of the "
 "greatest leaders of my people."
 msgstr ""
+"Ifjú hercegem, bár a villi urak elárultak minket, amikor az ork csőcselékkel "
+"szövetkeztek, nem tehetem meg, hogy ellenük, népem vezetői ellen harcoljak."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:388
 msgid "Lady, why would you let those monsters lead your people?"
-msgstr ""
+msgstr "Úrnőm, miért engednéd, hogy azok a szörnyek vezessék a népedet?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:398
 msgid ""
@@ -4459,6 +4934,11 @@ msgid ""
 "our greatest leaders, he lead our escape in the West. Albeit, after being "
 "down in that hole for so long I don't imagine he's too happy."
 msgstr ""
+"Miután nyugaton elvesztettük a háborút, majd a menekültjeink veletek "
+"kerültek szembe, sőt az orkokkal és kellett valamit tennünk, nem kötöttünk "
+"rossz alkut. Lenvan villi úr egyike volt a legnagyobb vezéreinknek, ő "
+"vezetett minket nyugatra. habár, ennyi idő után, amit abban a lyukban "
+"töltött, nem lehet túl rózsás kedve."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:407
 msgid ""
@@ -4466,19 +4946,20 @@ msgid ""
 "scout the road ahead. We need to know if we can make it to Southbay. I'll "
 "return in a few days."
 msgstr ""
+"Ezt később is megvitathatjuk. Ettől még a segítségetekre lehetek. Fel fogom "
+"deríteni az előttünk húzódó utakat. Tudnunk kell, hogy eljuthatunk-e Déli-"
+"öbölbe. Pár nap múlva vissza fogok térni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:420
 msgid ""
 "We have run out of time... We'll be trapped in these woods until we die!"
-msgstr ""
+msgstr "Kifutottunk az időből... Itt fogunk meghallni, a fák közt!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:4
-#, fuzzy
 msgid "The Plan"
 msgstr "A terv"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:138
-#, fuzzy
 msgid "So what is your plan?"
 msgstr "Tehát mi a terved?"
 
@@ -4488,20 +4969,30 @@ msgid ""
 "secure our place in this new land. Then if the Orcs return, hopefully "
 "they'll go looking for our not so loyal Elven allies first."
 msgstr ""
+"Meg kell győznünk Jevyant, hogy a Tűzrubint a tündéknek adtuk, hogy "
+"biztonságban megalapíthassuk az országot. És amikor az orkok visszatérnek, "
+"remélhetőleg a nem túl hűséges tünde szövetségesek után fognak eredni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:146
 msgid ""
 "Haldric, that's devious. I kind of like this plan. But you spoke a pact with "
 "the Elves, you'll be expected to come to their aid."
 msgstr ""
+"Haldric, fondorlatos tervet eszeltél ki. Nekem eléggé tetszik. De egyezséget "
+"kötöttél a tündékkel, várni fogják a segítségedet."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:150
+#, fuzzy
 msgid ""
 "Yes, and we may come to their aid. We'll have to weigh our options when and "
 "if the time comes. If the Orcs return in great numbers the brunt of their "
 "assault must fall on somebody else. Who knows, maybe I won't even come to "
 "their aid at all-"
 msgstr ""
+"Igen, és akár meg is segíthetjük őket. Mérlegelnünk kell majd a "
+"lehetőségeket, ha eljön az idő. Ha az orkok nagy számban érkeznek, a "
+"rohamuknak máson kell lecsapnia. Ki tudja, talán cserben is hagyjuk majd "
+"őket -"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:154
 msgid ""
@@ -4509,17 +5000,21 @@ msgid ""
 "on your pact with the Elves. It's not like you can tell people what I "
 "overheard."
 msgstr ""
+"Sokan fognak téged gyávának hívni. Azt fogják mondani, hogy semmibe vetted a "
+"szövetségi megállapodást. Nem úgy, mint ahogyan most beszélnek rólad."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:158
 msgid ""
 "Recent events have taught me one thing: that survival trumps honor. Besides, "
 "they won't be screaming at me- I'll be dead."
 msgstr ""
+"Az utóbbi idők eseményei egy tanulsággal szolgáltak számomra: hogy a túlélés "
+"előrébb való a becsületnél. Máskülönben, nem hánynának semmit a szememre - "
+"mivel halott lennék."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:162
-#, fuzzy
 msgid "WHAT!"
-msgstr "MI!"
+msgstr "MICSODA!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:166
 msgid ""
@@ -4528,6 +5023,10 @@ msgid ""
 "point. Jessica, you're going to forge a very official looking treaty, in "
 "which we give the Elves the Ruby of Fire, in return for our place here."
 msgstr ""
+"Halott lennék. Úgy értem nem csak mondanunk kell, hogy túladtunk a "
+"Tűzrubinon, vagy elküldetni Jevyannak. Persze mondani is fogjuk, de ez nem "
+"elég. Jessica, készíts egy hivatalosnak látszó okiratot, amiben lemondunk a "
+"Tűzrubinról, hogy a tündék földet biztosítsanak nekünk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:170
 msgid ""
@@ -4536,40 +5035,50 @@ msgid ""
 "after word of the treaty is spread to the Orcs, but before he has a chance "
 "to read my undead mind..."
 msgstr ""
+"Szembe fogok nézni Jevyannal, és ha igaz a szóbeszéd, akkor a szétmarcangolt "
+"testemből fogja megszerezni az okiratot. Ezután, ti el fogjátok pusztítani "
+"Jevyant, amint a megállapodás híre elterjedt az orkok körében, de még "
+"mielőtt olvashatna az élőholt elmémben..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:174
 msgid ""
 "Haldric! I won't do it... I won't help. What is it with your kind, always "
 "rushing to a fool's death. Who'll lead these people?"
 msgstr ""
+"Haldric! Ezt nem fogom megtenni... Nem fogok segíteni. Mi baj van a te "
+"fajtáddal, mindig ostobán rohantok a halálba. Ki fogja ezeket az embereket "
+"vezetni?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:178
 msgid ""
 "You will. I wouldn't have made it this far without you. We really have to "
 "convince Jevyan-"
 msgstr ""
+"Temagad. Nem juthattam volna el idáig nélküled. Tényleg meg kell győznünk "
+"Jevyant -"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:182
 msgid "Haldric, this is ridiculous! I- -"
-msgstr ""
+msgstr "Haldric, ez nevetséges! Én -"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:215
 msgid ""
 "There is no way I'm letting you go through with this Sir! Over our dead "
 "bodies, right Jessica?"
 msgstr ""
+"Nem engedhetem, hogy ezt meglépd, uram! Csak a testünkön át, ugye Jessica?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:219
 msgid "Right!"
-msgstr ""
+msgstr "Igen!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:224
 msgid "I'll do it sir."
-msgstr ""
+msgstr "Majd én megteszem, uram."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:228
 msgid "No. I can't ask you to do this."
-msgstr ""
+msgstr "Nem. Nem kérhetlek meg erre."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:233
 msgid ""
@@ -4577,16 +5086,21 @@ msgid ""
 "Clearwater Port, and once again when your ships rescued me. I'll not be "
 "denied in this a third time!"
 msgstr ""
+"Már háromszor megtagadtad tőlem a hősi halált. Egyszer, amikor Kristályvíz "
+"kikötőjébe érkeztél, aztán amikor a hajóid kimentettek minket. Harmadszorra "
+"nem fogom engedni!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:237
 msgid "No, this is my sacrifice to make!"
-msgstr ""
+msgstr "Nem, ezt az áldozatot nekem kell meghozni!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:243
 msgid ""
 "Sir, my family has been slaughtered, and my home lost. All I long for is to "
 "join them. Give me this honorable death... Please sir! I beg of you!"
 msgstr ""
+"Uram, a családomat lemészárolták, az otthonomat elvesztettem. Vissza akarok "
+"már térni hozzájuk. Add meg nekem a hősi halált... Kérlek uram! Esedezem!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:248
 msgid ""
@@ -4594,6 +5108,10 @@ msgid ""
 "alone, with no honorable way of joining them. I want to look that monster "
 "Jevyan in the eye before I go! I won't be denied!"
 msgstr ""
+"Ha vége lesz ennek a vésznek, egyedül kell majd végigszenvednem a hosszú "
+"éveket, és nem lesz becsületes lehetőségem eltávozni. Szemtől szembe látni "
+"akarom azt a Jevyan nevű szörnyeteget, mielőtt elmegyek! Nem állíthat meg "
+"senki!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:252
 msgid ""
@@ -4601,6 +5119,10 @@ msgid ""
 "of Jevyan himself. We can't have an illiterate Orc or mindless Skeleton "
 "getting the treaty. We will honor your sacrifice."
 msgstr ""
+"Rendben van, ha semmi nem tud eltántorítani téged. El ne felejtsd, magának "
+"Jevyannak KELL végeznie veled. Nem engedhetjük, hogy egy analfabéta ork, "
+"vagy egy agyatlan csontváz szerezze meg az okiratot. Tisztelni fogjuk az "
+"áldozatodat."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:257
 msgid ""
@@ -4608,10 +5130,13 @@ msgid ""
 "to me. I want to rest in the ground, not be some mindless undead slave for "
 "all eternity!"
 msgstr ""
+"Tiszteljetek meg azzal, hogy végeztek Jevyannal! Esetleg mielőtt még "
+"természetellenes dolgokra vetemedne a testemmel. Szeretnék békében nyugodni, "
+"nem pedig agyatlan élőholtként bolyongani a végtelenségig!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:261
 msgid "We'll make sure. I promise."
-msgstr ""
+msgstr "Meg fogjuk tenni. Megígérem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:265
 msgid ""
@@ -4620,13 +5145,15 @@ msgid ""
 "Sheesh... What is your kind's infatuation with rushing to an 'honorable "
 "death'?"
 msgstr ""
+"Vigyáznunk kell, hogy az egyik ork vezér elmenekülhessen a Zöld-sziget felé, "
+"a Tűzrubin vélt helyének ismeretével. Szzz... Mire föl ez a bolond "
+"vágyakozás a 'hősi halál' után a ti fajtátokban?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:4
 msgid "The Swamp of Esten"
 msgstr "Az Esteni láp"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:56
-#, fuzzy
 msgid "Cleon"
 msgstr "Kleon"
 
@@ -4732,7 +5259,6 @@ msgid "A prayer for life immortal!"
 msgstr "Ima a halhatatlan életért!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:431
-#, fuzzy
 msgid "Sir Ruddry"
 msgstr "Ruddry úr"
 
@@ -4802,7 +5328,7 @@ msgstr "Kifutottunk az időből... Itt fogunk ragadni a lápban a tél beálltá
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:4
 msgid "The Vanguard"
-msgstr ""
+msgstr "Az előörs"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:49
 msgid "Tan-Erirt"
@@ -4813,7 +5339,6 @@ msgid "Tan-Gagar"
 msgstr "Tan-Gagar"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:117
-#, fuzzy
 msgid "Thruf"
 msgstr "Thruf"
 
@@ -4823,24 +5348,30 @@ msgid ""
 "Orcish threat. On the eve of battle Lady Jessica catches up with Haldric on "
 "a fog covered plain."
 msgstr ""
+"Haldric és társai sietve szelik át a síkságot, hogy szembeszálljanak az "
+"újjáéledő ork fenyegetéssel. A csata előestéjén Jessica úrnő és Haldric egy "
+"ködös mezőn találkoznak."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:221
 msgid "Haldric, the Elves, we can't trust them!"
-msgstr ""
+msgstr "Haldric, a tündék, már nem bízhatunk bennük!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:226
 msgid "I could have told you that."
-msgstr ""
+msgstr "Ezt elmondhattam volna."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:230
 msgid ""
 "Haldric, it's bad. The Elves are having second thoughts. They think we might "
 "be more trouble than we're worth. We have to defeat these Orcs decisively."
 msgstr ""
+"Haldric, ez szörnyű. A tündéknek hátsó szándékaik vannak. Azt gondolják több "
+"nehézséget jelentünk számukra, mint amennyi segítséget. Rendesen el kell "
+"bánnunk ezekkel az orkokkal!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:234
 msgid "Well, that sounds reasonable."
-msgstr ""
+msgstr "Igen, ez logikusnak hangzik."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:238
 msgid ""
@@ -4848,6 +5379,9 @@ msgid ""
 "follow us here the Elves seem content to let us fight it out. Then they said "
 "they would 'deal with the survivors'."
 msgstr ""
+"Ezt követően több orkra is számíthatunk, a Rubin miatt biztos vagyok ebben. "
+"Ha tényleg jönni fognak még, akkor a tündék örülhetnek, hogy szembeszállunk "
+"velük. Akkor pedig, állítólag, 'gondoskodni fognak a túlélőkről'."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:242
 msgid ""
@@ -4855,32 +5389,41 @@ msgid ""
 "prize as the Ruby of Fire just slip away. Especially when he sees that he "
 "has the advantage."
 msgstr ""
+"Itt van Jevyan... A bizalmasa, az a denevér. Nem fogja hagyni, hogy egy "
+"ilyen nagy hatalommal kecsegtető tárgy, mint a Tűzrubin, csak úgy kicsússzon "
+"a markából. Főleg, amikor látja, hogy túlerőben vannak."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:246
 msgid ""
 "I have a plan. Jessica, remember that Troll Hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
+"Van egy tervem. Jessica, emlékszel arra a Troll lyukra? Tessék, itt van a "
+"Tűzrubin, rejtsd el abba a lyukba!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:250
 msgid "Haldric! What! Why?"
-msgstr ""
+msgstr "Haldric! Mi! Minek?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:254
 msgid "Just do it."
-msgstr ""
+msgstr "Csak csináld."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:258
 msgid ""
 "Lt. Aethyr, did these Orcs come on our ships, did they capture the fleet we "
 "sent out?"
 msgstr ""
+"Aethyr hadnagy, ezek az orkok a mi hajóinkon érkeztek? Lehet, hogy elfogták "
+"a flottát, amit kiküldtünk?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:263
 msgid ""
 "No Sir! They must have seized all remaining boats on the Green Isle. Our "
 "fleet should be returning any day now."
 msgstr ""
+"Nem, uram! Minden bizonnyal az övék már az összes hajó, ami a Zöld-szigeten "
+"maradt. A mi flottánk bármelyik nap visszatérhet."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:267
 msgid ""
@@ -4888,24 +5431,30 @@ msgid ""
 "beachhead. If they capture our ships all is lost. We will be crushed under a "
 "tide of Orcs."
 msgstr ""
+"Menekült népek vagyunk, vissza kell szorítanunk az előörsüket, és "
+"biztosítani egy hídfőállást a partraszálláshoz. Ha elfogják a hajóinkat, "
+"elvesztünk. Az orkok elárasztanának minket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:280
 msgid "Lady Jessica soon departs. In the distance a voice booms:"
-msgstr ""
+msgstr "Jessica úrnő hamar útra kelt. A távolból egy hang morajlik fel."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:298
 msgid ""
 "Drop the gold where it is! We've paid our friends enough. There are humans "
 "about, I can smell 'em!"
 msgstr ""
+"Állj! Dobjátok el az aranyat! Rendesen megfizettük a barátainkat. Emberek "
+"vannak a közelben, érzem a szagukat!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:307
 msgid "We have run out of time... We'll never beat the Orcs to the beach."
 msgstr ""
+"Kifutottunk az időből... Sosem fogjuk kiszorítani az orkokat a partról."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:325
 msgid "I've found the Orcs' chest! It's filled with gold."
-msgstr ""
+msgstr "Megtaláltam az orkok ládáját! Tele van arannyal."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:353
 msgid "Rabbin"
@@ -4913,47 +5462,58 @@ msgstr "Rabbin"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:357
 msgid "You will be felled by my hand you useless fleshbags!"
-msgstr ""
+msgstr "Saját kezemmel foglak letaglózni titeket, hasznavehetetlen húscafatok!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:374
 msgid "General Kafka"
-msgstr ""
+msgstr "Kafka tábornok"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:378
 msgid ""
 "Never trust the living to do the job of the undead. Prepare to meet the "
 "inevitable!"
 msgstr ""
+"Sose szabad az élőholtak munkáját az élőkre bízni. Készülj fel az "
+"elkerülhetetlenre!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:384
 msgid ""
 "The only job of the dead is to remain dead. Prepare to be reunited with the "
 "ground."
 msgstr ""
+"A holtak egyetlen feladata halottnak is maradni. Készülj visszatérni a "
+"porba, ahonnan jöttél!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:407
 msgid "We must block the human advance!"
-msgstr ""
+msgstr "Meg kell állítanunk az emberek seregének felfejlődését!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:428
 msgid "Reserves! We can't let them get to their landing site."
 msgstr ""
+"Tartalékok! Nem engedhetjük, hogy megszerezzék a területet a "
+"partraszálláshoz."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:442
 msgid ""
 "We've defeated their vanguard. We have to meet the fleet before Jevyan "
 "destroys them, and captures the ships. I hope Jessica makes it back soon."
 msgstr ""
+"Legyőztük az előörsüket. Egyesülnünk kell a flottával, mielőtt Jevyan "
+"elpusztítaná őket, és megkaparintaná a hajóinkat. Remélem Jessica hamarosan "
+"visszatér."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:474
 msgid ""
 "Ahh, it's great to be home! I'm not much for the politics, but it's great to "
 "be home!"
 msgstr ""
+"Áá, jó újra otthon lenni! Nem szoktam foglalkozni a közügyekkel, de jó, hogy "
+"visszaköltözhetünk!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:4
 msgid "Troll Hole"
-msgstr ""
+msgstr "Troll lyuk"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:47
 msgid "Erart"
@@ -4988,16 +5548,21 @@ msgid ""
 "elven guide leads them to a gaping cave mouth, and they descend into the "
 "darkness."
 msgstr ""
+"Nem tellett sokba, és Haldric csapata elérte a Barna-dombságot. Egy tünde "
+"vezető megmutatta nekik a barlang tátongó száját, ők pedig leerekszedtek a "
+"sötétségbe."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:292
 msgid "So, does anybody know anything about trolls?"
-msgstr ""
+msgstr "Szóval, van itt valaki aki bármit is tud a trollokról?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:297
 msgid ""
 "I indeed do. They are green, and mean, and will try to crush you like a bug. "
 "They heal very quickly."
 msgstr ""
+"Én igenis tudok. Zöldek, aljasak és meg fognak próbálni eltaposni téged, "
+"mint egy férget. Emellett gyorsan gyógyulnak a sebeik."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:302
 msgid ""
@@ -5005,59 +5570,67 @@ msgid ""
 "safe to say that the elves wouldn't have sent us down here if they were at "
 "all friendly."
 msgstr ""
+"Hmm... Kell egyáltalán ennyit tudnunk róluk? Szerintem megállapíthatjuk, "
+"hogy a tündék nem küldtek volna minket ide, ha ezek teljesen barátságosak "
+"lennének."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:307
 msgid "Fair Enough. Well, let's get them!"
-msgstr ""
+msgstr "Igazatok van. Akkor, kapjukel őket!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:315
 msgid ""
 "We have failed... More of the Trolls' kin are arriving through the entrance."
 msgstr ""
+"Elbuktunk... A trollok fajtájából egyre többen érkeznek a bejáraton "
+"keresztül."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:355
 msgid ""
 "The trolls are beaten. No wonder why the elves are getting us to do their "
 "dirty linens."
 msgstr ""
+"A trollok kikaptak. Nem csodálom, hogy a tündék inkább velünk mosatják ki a "
+"szennyesüket."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-deaths.cfg:9
 msgid "I can't be finished yet... I still have so much more to do."
-msgstr ""
+msgstr "Nem végezhetem így... Oly sok teendőm van még e világon."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-deaths.cfg:23
 msgid "It is not yet my time! No!"
-msgstr ""
+msgstr "Még nem jött el az én időm! Nem!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-deaths.cfg:37
 msgid "No! I'll not go so easil--"
-msgstr ""
+msgstr "Nem! Nem adom fel ilyen könnye--"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-deaths.cfg:51
 msgid ""
 "Bah! I'm not dying today! (POOF! The Lady Outlaw vanishes in a puff of "
 "smoke.)"
 msgstr ""
+"Áá! Nem ma halok meg! (PUFF! A Törvényenkívüli úrnő eltűnik a füstben.)"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-deaths.cfg:66
 msgid "Fool of a boy. I never should have followed him."
-msgstr ""
+msgstr "Bolond ember, soha nem kellett volna követnem."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-deaths.cfg:78
 msgid "Hail the Kings, may their bloodlines continue beyond my time!"
-msgstr ""
+msgstr "Éljenek a királyok, az ő vérvonaluk folytassa majd, amit én elkezdtem!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-deaths.cfg:90
 msgid "For Land and Lord, I sacrifice all!"
-msgstr ""
+msgstr "A földért és az úrért mindent feladtam!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-deaths.cfg:102
 msgid "May the Lords of Light protect us all."
-msgstr ""
+msgstr "A fény urai vigyázzanak mindannyiunkra."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-deaths.cfg:113
 msgid "Without him the bottom's of our ships will be completely vulnerable..."
-msgstr ""
+msgstr "Nélküle minden hajónk alja könnyen sebezhetővé válik..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-intro.cfg:5
 msgid ""
@@ -5167,11 +5740,11 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-macros.cfg:111
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-macros.cfg:126
 msgid "A Former Friend"
-msgstr ""
+msgstr "Egy régi barát"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:12
 msgid "I still think I should be called 'Dragonbane'."
-msgstr ""
+msgstr "Még mindig úgy gondolom, hogy 'sárkányölőnek' kellene engem hívni."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:16
 msgid "Not in my lifetime."
@@ -5179,34 +5752,39 @@ msgstr "Nem, amíg csak élek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:32
 msgid "It could be worse. We could be back in that Troll Hole!"
-msgstr ""
+msgstr "Rosszabb is lehetne. Lehetnénk abban a troll lyukban is!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:37
 msgid "Hey, disparage the Trolls, NOT the Holes!"
-msgstr ""
+msgstr "Hé, a trollokat becsméreld, ne a lyukakat!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:53
 msgid ""
 "Well, at least we don't have to contend with the undead. No offense Jessica."
 msgstr ""
+"Rendben, legalább nem kell az élőholtakkal civódnunk. Semmi támadás, Jessica!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:57
 msgid "Don't worry about it."
-msgstr ""
+msgstr "Ne aggódj emiatt!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:73
 msgid "Too bad that this isn't going as well as the beach... I miss the beach."
 msgstr ""
+"Elég rossz, hogy itt nem haladunk olyan jól, mint a parton... Hiányzik nekem "
+"a tenger!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:89
 msgid ""
 "Haldric, just before we arrived here I got word that the your 'third of a "
 "fleet' has departed for our old home, the Green Isle."
 msgstr ""
+"Haldric, épp mielőtt ideérkeztünk volna üzenetet kaptam, hogy a te 'harmad "
+"flottád' visszaindult a régi otthnunk, a Zöld-sziget felé."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:93
 msgid "You were planning on sharing this with me when?"
-msgstr ""
+msgstr "Mikorra tervezted ezt megosztani velem?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:109
 msgid ""
@@ -5215,12 +5793,17 @@ msgid ""
 "with, and Southbay still stands. This is excellent news. As per your orders "
 "a third of the fleet has headed back out."
 msgstr ""
+"Haldric, hírvivők most arról értesítettek, hogy a flotta vissza is tért. "
+"Majdnem akkora flottával jöttek, mint amivel mi is eredetileg, és Déli-öböl "
+"még mindig áll. Ez csodás hír. A 'harmadflottás' terved igazán bevállt."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nlmsg.cfg:113
 msgid ""
 "That is excellent news indeed. Our numbers have doubled. Now on to the "
 "business at hand."
 msgstr ""
+"Ez tényleg nagyon jó hír. Már kétsze rannyian vagyunk. És most törődjünk a "
+"kéznél lévő üggyel!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nohome.cfg:5
 msgid ""
@@ -5229,6 +5812,11 @@ msgid ""
 "Southern pass. Haldric has left the lands of his home, and before him "
 "stretches the vast expanse of the southern kingdoms of his people."
 msgstr ""
+"Tehát így esett meg, hogy Haldric hercegnek el kellett hagyni az otthonát, "
+"hogy aztán soha ne térhessen vissza. Apja nemes áldozata lehetővé tette, "
+"hogy elmenekülhessen a déli hágón keresztül. Haldric elhagyta az ismerős "
+"földeket, és végeláthatatlan messzeségekben népének délen fekvő királyságai "
+"nyújtóznak előtte."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nohome.cfg:10
 msgid ""
@@ -5238,6 +5826,11 @@ msgid ""
 "of Southbay, the largest city on the Isle. Albeit, with this coming of the "
 "Orcs the midlands are probably a barren waste by now."
 msgstr ""
+"Délnyugatra fekszik középfölde. Itt gazdag királyságok voltak, dombok és "
+"erdők árnyékában. Ők voltak a környék éléskamrája, és jelentős forrásai "
+"voltak a fának és a drágaköveknek is. Ezek a kiráylságok látták el Déli-öböl "
+"városát, a sziget legnagyobb fellegvárát. Jóllehet azonban, hogy ezek a "
+"területek az orkok eljövetelét követően már csak pusztaságok."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-nohome.cfg:15
 msgid ""
@@ -5247,6 +5840,11 @@ msgid ""
 "The Lich-Lords befouled much of the land around the river during the course "
 "of a great battle. Now the swamp is home to an Wesfolk imitating cult."
 msgstr ""
+"A folyóparti út a sziget legnagyobb folyóját követi délkeleti irányban. Ez "
+"az út a második legnagyobb városba vezet, Kristályvíz kikötőjébe. Minden "
+"bizonnyal a sziget legnagyobb városa lehetett volna, ha nem jön a wesfolk "
+"háború. A villi urak vonulása bemocskolta a folyó környékét egy nagy csata "
+"folyamán. Most egy wesfolkokkal rokonszenvező nép él a lápos területen."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-noisle.cfg:5
 msgid ""
@@ -5256,6 +5854,12 @@ msgid ""
 "mysterious island that Lady Jessica has mentioned, and even more exotic "
 "lands even further to the East."
 msgstr ""
+"Néhány nappal későb Haldric herceg  útnak indult hajóján, az Eldaric-on, "
+"örökre maga mögött hagyva az otthonát és a szigetet. A szíve mélyén ő is "
+"érezte, hogy soha többé nem fogja újra látni az ő elhagyatott kis völgyét. "
+"Csak az óriási, viharos, nyílt tenger terült el előtte, és a titokzatos "
+"sziget, amelyről Jessica úrnő beszélt, és a még keletebbre található "
+"egzotikus területek."
 
 #: data/scenarios/The_Rise_of_Wesnoth/utils/trow-noisle.cfg:10
 msgid ""
@@ -5265,3 +5869,8 @@ msgid ""
 "the belligerent nature of it's reptilian inhabitants. There must be little "
 "left of that foothold by now."
 msgstr ""
+"Úgy tűnik, hogy a sziget, amely felé Haldric és a legénysége közeledtek egy "
+"vulkán volt valamikor, ami lassan egyre inkább a tengerbe merült. Déli-öböl "
+"idősebb Koronás hercege sikeresen létrehozott egy kicsi telepet, annak "
+"ellenére, hogy a szigeten zord körülmények közt nagy számú hüllő bennszülött "
+"élt. Nem sok túlélő maradhatott eddigre ezen a telepen."
