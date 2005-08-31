@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-08-30 19:51+0100\n"
+"PO-Revision-Date: 2005-08-31 18:26+0200\n"
 "Last-Translator: Nils Kneuper <crazy - ivanovic AT gmx DOT de>\n"
 "Language-Team: Turkish <farsakoglu@web.de>\n"
 "MIME-Version: 1.0\n"
@@ -20,9 +20,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/amla.cfg:8
-#, fuzzy
 msgid "Max HP bonus +"
-msgstr "En çok YP bonusu +{HP_ADVANCE}"
+msgstr "En çok YP bonusu +"
 
 #: data/amla.cfg:21
 msgid "Full Heal"
@@ -661,7 +660,6 @@ msgid "Time of Day"
 msgstr "Günün saati"
 
 #: data/help.cfg:172
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night\n"
@@ -669,12 +667,11 @@ msgid ""
 " Neutral units are unaffected by the time of day."
 msgstr ""
 "Günün saati belirli birimlere aşağıdaki şekilde etki eder:\n"
-"Adaletli birimler gündüz +%25 hasar, gece -%25 hasar alırlar.\n"
-"Kaotik birimler gündüz -%25, gece +%25 hasar alırlar.\n"
-"Tarafsız birimler günün saatinden etkilenmezler."
+"-Adaletli birimler gündüz +%25 hasar, gece -%25 hasar alırlar.\n"
+"-Kaotik birimler gündüz -%25, gece +%25 hasar alırlar.\n"
+"-Tarafsız birimler günün saatinden etkilenmezler."
 
 #: data/help.cfg:175
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -754,7 +751,6 @@ msgstr ""
 "Bazı durumlarda, üst seviyeye erişmek seçeneklidir. "
 
 #: data/help.cfg:193
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -775,10 +771,10 @@ msgstr ""
 "olabilir. Bir birim en üst seviyesine ulaşınca son seviye sonrası terfi "
 "(SSST) sahibi olabilir.\n"
 "SSST birimi tecrübe hedefine ulaşınca değiştirecektir ama birimin seviyesi "
-"aynı kalır. Birim için tipik SSST etkisi\n"
-"kazanılan her 100 TP için en fazla YP'yi 3 arttırmaktır. Yalnız az sayıda "
-"birimin, mesela leş yiyenin, SSST etkisi ile tedavi olacağını unutmayın. "
-"Çoğu birim ise sadece en fazla YP bonusunu kazanır."
+"aynı kalır. Birim için tipik SSST etkisi kazanılan her 100 TP için en fazla "
+"YP'yi 3 arttırmaktır. Yalnız az sayıda birimin, mesela leş yiyenin, SSST "
+"etkisi ile tedavi olacağını unutmayın. Çoğu birim ise sadece en fazla YP "
+"bonusunu kazanır."
 
 #: data/help.cfg:198
 msgid "Healing"
@@ -2791,13 +2787,12 @@ msgid "How do I end my turn?"
 msgstr "Elimi nasıl bitiririm?"
 
 #: data/scenarios/tutorial/utils.cfg:73
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower-"
 "right hand corner."
 msgstr ""
-"Sıranı bitirmenin bir yolu 'Alt-E'ye basmaktır. Alternatif olarak, bunu "
+"Sıranı bitirmenin bir yolu 'Alt-boşluk'a basmaktır. Alternatif olarak, bunu "
 "fareyi sağ tıklayarak ve eli bitir'i seçerek, veya ekranın sağ alt "
 "köşesindeki eli bitir düğmesini tıklayarak yapabilirsin."
 
@@ -4089,7 +4084,7 @@ msgid ""
 "to this unit."
 msgstr ""
 "Karabasan:\n"
-"Bu birim gece içinde görünmez olur.\n"
+"Bu birim gece içinde görünemez olur.\n"
 "\n"
 "Bu birimin saldırdığı sıradan hemen sonra veya bu birimin yanında bir düşman "
 "birimleri olması dışında, düşman birimleri bu birimi gece göremez ve ona "
@@ -4515,7 +4510,7 @@ msgstr "ezme"
 #: data/units/White_Mage.cfg:109 data/units/Wose.cfg:25 data/units/Yeti.cfg:35
 #: data/units/Youth.cfg:22
 msgid "impact"
-msgstr "vurma"
+msgstr "darbe"
 
 #: data/units/Arch_Mage.cfg:3
 msgid "Arch Mage"
@@ -5104,7 +5099,6 @@ msgid "Cockatrice"
 msgstr "Şahmeran"
 
 #: data/units/Cockatrice.cfg:17
-#, fuzzy
 msgid ""
 "Sometimes known as 'basilisks', these mystical creatures are said to be able "
 "to turn the living to stone. Needless to say, this makes them extremely "
@@ -5112,7 +5106,7 @@ msgid ""
 msgstr ""
 "Bazen 'basilikler' olarak bilinen bu mistik yaratıklar söylenene göre "
 "canlıları taşa çevirebilirlermiş. Bunun onları aşırı derecede tehlikeli "
-"yaptığı söylemeye gerek yok."
+"yaptığı tekrar belirtmeye gerek yok."
 
 #: data/units/Cockatrice.cfg:33
 msgid "gaze"
@@ -5229,7 +5223,6 @@ msgid "Dark Sorcerer"
 msgstr "Kara sihirbaz"
 
 #: data/units/Dark_Sorcerer.cfg:21
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it, to the common man. If immortality is truly what it grants, then "
@@ -5337,7 +5330,6 @@ msgid "Deathmaster"
 msgstr "Ölüm ustası"
 
 #: data/units/Deathmaster.cfg:17
-#, fuzzy
 msgid ""
 "His wanderings on a dark path have given him power normally not granted to "
 "mortals, but with a terrible cost: the undead that he gave his soul to are "
@@ -5937,8 +5929,8 @@ msgid ""
 msgstr ""
 "Parlak zırha bürünen bu cüceler dağların altından gelen krallara benzerler. "
 "Balta ve çekici usta maharetiyle kullanır ve fırlattıkları el baltası ile "
-"bir hedefi bir kaç adımda vurabilirler. Yürümeli yavaş olmakla birlikte bu "
-"cüceler türlerinin yiğitliğine birer kanıttırlar."
+"bir hedefi birkaç adımda vurabilirler. Yürümesi yavaş olsa da bu cüceler "
+"türlerinin yiğitliğine birer kanıttırlar."
 
 #: data/units/Dwarvish_Lord.cfg:61
 msgid "hatchet"
@@ -5992,7 +5984,7 @@ msgid ""
 msgstr ""
 "Cüce kayalar, savaşta yıllar geçirdikten sonra düşmanlarının kalıntılarından "
 "kendilerine yeni kalkanlar ve güçlü zırhlar yapmışlardır. Yavaş olmakla "
-"birlikte dayanıklılık ve güçleri sebebiyle korkulurlar."
+"birlikte dayanıklılık ve güçleri ile insana korku verirler."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -6186,7 +6178,7 @@ msgstr ""
 "\n"
 "Özel notlar: intikamcıların ormancılıkta kabiliyetleri onları düşman direk "
 "yanlarında olana kadar veya saldırmak yoluyla kendilerini açığa vurana kadar "
-"görünmez kılar."
+"görünemez kılar."
 
 #: data/units/Elvish_Avenger.cfg:119
 msgid "female^Elvish Avenger"
@@ -6427,7 +6419,6 @@ msgid "Elvish Marshal"
 msgstr "Elf mareşal"
 
 #: data/units/Elvish_Marshal.cfg:25
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6500,7 +6491,7 @@ msgstr ""
 "\n"
 "Özel notlar: elf orman savaşçılarının ormancılıkta kabiliyetleri onları "
 "düşman direk yanlarında olana kadar veya saldırmak yoluyla kendilerini açığa "
-"vurana kadar görünmez kılar."
+"vurana kadar görünemez kılar."
 
 #: data/units/Elvish_Ranger.cfg:117
 msgid "female^Elvish Ranger"
@@ -7465,10 +7456,9 @@ msgstr ""
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
-msgstr "Ceset"
+msgstr "Ölü büyücü"
 
 #: data/units/Lich.cfg:21
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -7484,18 +7474,18 @@ msgid ""
 "high chance of hitting an opponent. The touch of a lich drains the victim's "
 "life to renew the lich."
 msgstr ""
-"Bir Ceset kara büyünün ilk hedefinin fiziksel şeklidir: ölümsüzlüpe ulaşmayı "
-"aramanın. Tekrar doğumda büyük bir fedakarlık yapılsada, Ceset haline "
-"gelirken birisi ölümden kaçar ki bu gerçek terörü verir. Onun için akıl ve "
-"ruh aynı kalır ama beden çürür.\n"
+"Bir ölü büyücü kara büyünün ilk hedefinin fiziksel şeklidir: ölümsüzlüğe "
+"ulaşmayı aramanın. Tekrar doğumda büyük bir fedakarlık yapılsada, Ceset "
+"haline gelirken birisi ölümden kaçar ki bu gerçek terörü verir. Onun için "
+"akıl ve ruh aynı kalır ama beden çürür.\n"
 "\n"
 "Yaşamın sonsuz uzadığı yada sadece uzadığı, Nekromantiğin kendilerinden "
-"başkası hariç, kim se tarqafından bilinmiyor.  Ama sadece böyle bir şeyin "
+"başkası hariç kimse tarafından bilinmiyor. Ama sadece böyle bir şeyin "
 "düşünülmesi bile onların neyi başardığının boyutunu gösteriyor.\n"
 "\n"
-"Özel Notlar: Cesetin uzun menzilli saldırısı daima sihirsel saldırıdır, ve "
-"düşmanını vurmada yüksek şansa sahiptir. Cesetin dokunması rakipten cesetin "
-"yaşamını yenilemek için hayat çalar."
+"Özel Notlar: Cesetin uzun menzilli saldırısı sihirsel saldırıdır, ve her "
+"zaman düşmanını vurmada yüksek şansa sahiptir. Cesetin dokunması rakipten "
+"cesetin yaşamını yenilemek için hayat çalar."
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
@@ -7743,6 +7733,17 @@ msgid ""
 "power of Illumination, which increases the lighting level in the area "
 "adjacent to the mermaid."
 msgstr ""
+"Rahibe denizkızları mesleklerini insan akranlarını geride bırakan bir "
+"ateşlilikle yaparlar. Bunun kökleri anlattıkları bir efsaneye göre zamanında "
+"halklarının kabusu olan karanlık bir kabusta yatabilir. Hakkında çok az "
+"konuşulmasına karşın, bunu bir şekilde yok eden ve halklarını kurtaranın "
+"ışığın gücü olduğu ortadadır.\n"
+"\n"
+"Özel notlar: kahinin attığı ışık sihirlidir ve her zaman yüksek vurma "
+"şansına sahiptir. Işık yarı ölülere çok büyük ve bazı yaşayanlara da biraz "
+"hasar verir. Kahinler etraflarındaki birimleri tedavi edebilirler ve onları "
+"zehirin etkisinden kurtarabilirler. Ayrıca denizkızının etrafındaki alanda "
+"ışık derecesini arttıran aydınlatma güçleri de vardır."
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
@@ -7760,6 +7761,15 @@ msgid ""
 "Special Notes: The blasts of water conjured by mermaids are magical in "
 "nature, and always have a high chance of hitting their opponents."
 msgstr ""
+"Deniz kızları, tıpkı elfler gibi sihirde güçlü ve doğal bir yetenek "
+"sahibidirler, ancak bunlarınki hayli farklıdır. Bu beceride uzmanlaşanlar "
+"yüksek saygı görürler ve kabiliyetleri bir güçler cumbuşu içinde kullanılır, "
+"bunların çoğu insanlığın hayal bile edemeyeceği güçlerdir. Savaşta kendi "
+"ırklarına karşı açık kullanımı yasaktır - onları cehennemden gelen "
+"canavarlara karşı koruyan büyük oranda bu güçtür. \n"
+"\n"
+"Özel notlar: Denizkızları tarafından gönderilen su rüzgarı sihirlidir ve her "
+"zaman rakiplerine karşı yüksek isabet şansına sahiptir."
 
 #: data/units/Mermaid_Enchantress.cfg:40 data/units/Mermaid_Initiate.cfg:42
 #: data/units/Mermaid_Siren.cfg:69 data/units/Sea_Hag.cfg:31
@@ -7768,7 +7778,7 @@ msgstr "su spreyi"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr "Usta Denizkızı "
+msgstr "Usta Denizkızı"
 
 #: data/units/Mermaid_Initiate.cfg:22
 msgid ""
@@ -7811,6 +7821,18 @@ msgid ""
 "damage to the undead, and even does some to living creatures. Priestesses "
 "are capable of healing units around them, and curing them of poison."
 msgstr ""
+"Deniz insanları insanlığın çoğuyla aynı inanca sahiptir ama kültürel "
+"sebeplerle bununla uğraşma işi entellektüel yönü daha fazla olan deniz "
+"insanlarına devredilmiştir. Kendilerini dünyaya huzur ve barış getirmeye "
+"adayanlar ve insanlar da hiç olmayan türden hastalıklar ve kederle mücadele "
+"yollarını öğrenenler onlardır. Çalışkan ve inançlı oluşları onlara "
+"kendilerini dünya dışı yaratıklara karşı savunmalarını sağlayan belli manevi "
+"güçler de bahşetmiştir.\n"
+"\n"
+"Özel notlar: rahibenin attığı ışık sihirlidir ve her zaman yüksek vurma "
+"şansına sahiptir. Işık yarı ölülere çok büyük ve bazı yaşayanlara da biraz "
+"hasar verir. Rahibeler etraflarındaki birimleri tedavi edebilirler ve onları "
+"zehirin etkisinden kurtarabilirler."
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "Siren"
@@ -7831,6 +7853,18 @@ msgid ""
 "Special Notes: the attacks of a siren are magical in nature, and always have "
 "a high chance of hitting their opponents."
 msgstr ""
+"Denizkızlarının peri gibi doğaları genelde deniz perilerine yakınlıkları "
+"deniz perisi olarak yanlış algılanmalarına yol açan sirenlerde en güçlüdür. "
+"Ancak gerçekten uzak olmakla birlikte bu anlaşılabilir bir hatadır çünkü "
+"gerçek deniz perilerine denizkızları bile çok az rastlar. Sihirlerinin "
+"ortaya konuşu çok benzerdir, sirenin kendinden bir parçaymış gibi kaprisle "
+"kullandığı su.\n"
+"\n"
+"Bunun çok sayıda uygulanışı kara sakinlerine nadiren denk gelir, onlar da "
+"bunun karşısında hayretle saygı duyarlar.\n"
+"\n"
+"Özel notlar: sirenin attığı ışık sihirlidir ve her zaman yüksek isabet "
+"şansına sahiptir."
 
 #: data/units/Mermaid_Siren.cfg:27
 msgid "naia touch"
@@ -7910,6 +7944,10 @@ msgid ""
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
+"Su adamlarının zıpkınla balık tutmada kabiliyetleri çabucak özellikle suyun "
+"yabancısı olanlara karşı bir silaha dönmüştür. Gerektiği zaman bu işle "
+"uğraşan pek çok su adamı ordu madalyalarını gururla takmak için gönüllü "
+"olarak askere gider."
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
@@ -7922,6 +7960,10 @@ msgid ""
 "impact of one is considerably greater. In the water, the mobility of the "
 "mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
+"Cirit sanatında ustalaşan su adamları neredeyse bir okçu kadar işe yarar "
+"hale gelir - silahlarının sapı menzillerini düşürmekle birlikte vuruş "
+"halinde çok daha güçlüdür. Suda su adamlarının hareket kabiliyetleri "
+"özellikle yüzemeyen rakipler söy konusu olunca işe yarar."
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
@@ -8021,8 +8063,8 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
-"Çamurcalar topral ve suyun sihirsel oluşumlarıdır. Onlar düşmanlarına toprak "
-"parçası atarak saldırırlar."
+"Çamurlar toprak ve sudan sihirsel oluşumlardır. Düşmanlarına toprak parçası "
+"atarak saldırırlar."
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
@@ -8036,6 +8078,11 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Yılankavi nagalar suda anlamlı hareket kabiliyeti olan ender ırklardandır, "
+"bu onlara kara sakinlerine kapalı olan koca bir dünya verir. Yine de "
+"kendileri gerçek birer su yaratığı değillerdir ve suda soluyamamaları "
+"ödlerini kopartır. Küçük ve narin yapılı, ama çoğunlukla rakiplerinden çok "
+"daha çeviktirler."
 
 #: data/units/Naga-Fighter.cfg:39
 msgid "Nagini Fighter"
@@ -8053,6 +8100,11 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"Naga kılıç ustalarının en tecrübelileri çift kılıçlı stillerinde usta olan "
+"yardakçı sınıfına alınırlar. Taklit ettikleri yılanlar kadar hızlı saldırır, "
+"maharetle düşman saldırılarından kurtulurlar. Sadece açık arazide ciddi "
+"düşmanlar olmakla kalmazlar, aynı zamanda yüzebildikleri için çok iyi "
+"hareket kabiliyetleri de vardır."
 
 #: data/units/Naga-Myrmidon.cfg:44
 msgid "Nagini Myrmidon"
@@ -8175,7 +8227,6 @@ msgid "Noble Commander"
 msgstr "Asil Komutan"
 
 #: data/units/Noble_Commander.cfg:24
-#, fuzzy
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
 "combat. Possessing leadership skills, they give lower-level units in "
@@ -8716,6 +8767,12 @@ msgid ""
 "their past. Such questions aside, a Revenant is a powerful tool in combat: a "
 "fearless warrior that feels no pain, and which will fight to the bitter end."
 msgstr ""
+"Bir daha savaşmaları için verilen yanlış hayatlı yaratıklar, bilinen adları "
+"ile Ölü Askerler zamanlarının büyük savaşçılarıydı ama bu çok mazide kaldı. "
+"Hatta onları tekrar canlandıran büyücüler bile onların geçmişleri hakkında "
+"ancak tahminde bulunabilirler. Soruları geride bırakırsak, Ölü askerler "
+"savaşta çok kuvvetlidirler : acı hissetmeyen korkusuz bir savaşçıdırlar, ve "
+"sonuna kadar savaşırlar."
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
@@ -8741,7 +8798,7 @@ msgstr "Dolandırıcı"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
-msgstr "Kraliyet muhafızı"
+msgstr "Kraliyet Muhafızı"
 
 #: data/units/Royal_Guard.cfg:22
 msgid ""
@@ -8754,6 +8811,13 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
+"Kıraliyet Muhafızları Wesnoth' daki en iyi kılıç ustalarından seçilir. "
+"Herhangi bir üst soylunun altında koruyucu olarak hizmet ederler, ve birazda "
+"işverenlerinin ofis işlerini hallederler. Kraliyet muhafızlarının özel bir "
+"bölümü baş şehirde toplanmıştır, sarayı ve kral ailesini korurlar. Üsterine "
+"olan bağlılıklarından dolayı önem taşıyan göreylere paralı askerlerden "
+"ziyade onlar gönderilirler. Onların güvenirlilikleri ve yakın savaştaki "
+"ustalıkları en iyi faydalarıdır, bunlar içinde iyi bir üne sahiptirler."
 
 #: data/units/Saurian.cfg:20
 msgid ""
@@ -8762,6 +8826,11 @@ msgid ""
 "scouts as the can navigate through rough terrain and around opponents. The "
 "best Saurians go on to become Saurian Warriors."
 msgstr ""
+"Sürüngenler mızrağı kullanmakta ustalaşmıştır. Her ne kadar uyuşuk soğuk "
+"kanlı yapıda ve görecel olarak kırılgan olsalarda onlar öncü olarak çok "
+"değerlidir, çünkü zor arazilerde kolayca hareket ederler ve düşmanlarının "
+"çevresinden yol alabilirler. En iyi sürüngenler Sürüngen Cengaveri olmak "
+"için çalışır."
 
 #: data/units/Saurian_Ambusher.cfg:4
 msgid "Saurian Ambusher"
@@ -8775,6 +8844,12 @@ msgid ""
 "opponents. Saurian Ambushers possess the strength to take full advantage of "
 "this fact. The best Ambushers go on to become Saurian Flankers."
 msgstr ""
+"Sürüngen Pusucular mızrağı kullanmakta çok iyi ustalaşmışlardır. Her ne "
+"kadar uyuşuk soğuk kanlı yapıda, ve görecel olarak kırılgan olsalarda onlar "
+"öncü olarak çok değerlidir, çünkü zor arazilerde kolayca hareket ederler ve "
+"düşmanlarının çevresinden yol alabilirler. Sürüngen Pusucular bu gerçeği tam "
+"olarak çok iyi kullanma kabiliyetine sahiptir. En iyi Pusucular Sürüngen "
+"Kuşatmacı olabilirler."
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
@@ -8788,10 +8863,15 @@ msgid ""
 "opponents. Saurian Flankers possess the strength to take full advantage of "
 "this fact."
 msgstr ""
+"Sürüngen Kuşatmacı mızrağı kullanmakta çok iyi ustalaşmışlardır. Her ne "
+"kadar uyuşuk soğuk kanlı yapıda, ve görecel olarak kırılgan olsalarda onlar "
+"öncü olarak çok değerlidir, çünkü zor arazilerde kolayca hareket ederler ve "
+"düşmanlarının çevresinden yol alabilirler. Sürüngen Kuşatmacılar bu gerçeği "
+"tam olarak çok iyi kullanma kabiliyetine sahiptir."
 
 #: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
-msgstr "Sürüngen buzcu"
+msgstr "Sürüngen Buzcu"
 
 #: data/units/Saurian_Icecaster.cfg:19
 msgid ""
@@ -8800,6 +8880,10 @@ msgid ""
 "call forth the magic of the cold north, and the do retain their basic "
 "healing ability."
 msgstr ""
+"Sürüngen Buzcular iyileştirme ve tedavi etmeden uzak durarak karanlık "
+"sanatlarda çalışmaya yoğunlaşmışlardır. Kırılgan olsalarda, soğuk kuzeyin "
+"büyüsünü çağırabilirler, ve hala da temel iyileştirme kabiliyetlerini de "
+"kullanabilirler."
 
 #: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
 #: data/units/Saurian_Tribalist.cfg:40
@@ -8808,7 +8892,7 @@ msgstr "ayaz rüzgarı"
 
 #: data/units/Saurian_Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr "Sürüngen avcı"
+msgstr "Sürüngen Avcı"
 
 #: data/units/Saurian_Skirmisher.cfg:18
 msgid ""
@@ -8817,10 +8901,16 @@ msgid ""
 "valued as scouts as they can navigate through rough terrain and around "
 "opponents. The best Skirmishers go on to become Saurian Ambushers."
 msgstr ""
+"Sürüngen Avcılar mızrağı kullanmakta çok iyi ustalaşmışlardır. Her ne kadar "
+"uyuşuk soğuk kanlı yapıda, ve görecel olarak kırılgan olsalarda onlar öncü "
+"olarak çok değerlidir, çünkü zor arazilerde kolayca hareket ederler ve "
+"düşmanlarının çevresinden yol alabilirler. Sürüngen Pusucular bu gerçeği tam "
+"olarak çok iyi kullanma kabiliyetine sahiptir. En iyi Pusucular Sürüngen "
+"Pusucu olabilirler."
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr "Sürüngen kahin"
+msgstr "Sürüngen Kahin"
 
 #: data/units/Saurian_Soothsayer.cfg:20
 msgid ""
@@ -8828,10 +8918,13 @@ msgid ""
 "aid to their friends regardless of terrain or opposition. In addition to "
 "curing their allies they possess knowledge of cold magic."
 msgstr ""
+"Sürüngen Kahinler çok değerlidirler, çünkü onlar dostlarını araziye ve "
+"karşılamaya aldırmadan yardım götürebilirler. Dostlarını tedavi etmesine ek "
+"olarak onlar soğuk büyünün bilgisinede sahiptirler."
 
 #: data/units/Saurian_Tribalist.cfg:4
 msgid "Saurian Tribalist"
-msgstr "Sürüngen kabileci"
+msgstr "Sürüngen Kabileci"
 
 #: data/units/Saurian_Tribalist.cfg:19
 msgid ""
@@ -8840,10 +8933,14 @@ msgid ""
 "their allies regardless of terrain or opposition. In addition to healing "
 "they possess knowledge of cold magic."
 msgstr ""
+"Her ne kadar uyuşuk, soğuk kanlı yapıda, ve görecel olarak kırılgan "
+"olsalarda, Sürüngen Kabileciler çok değerlidirler, çünkü onlar dostlarını "
+"araziye ve karşılamaya aldırmadan yardım götürebilirler. Dostlarını "
+"iyileştirmelerine ek olarak onlar soğuk büyünün bilgisinede sahiptirler."
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
-msgstr "Sürüngen cengaver"
+msgstr "Sürüngen Cengaver"
 
 #: data/units/Saurian_Warrior.cfg:21
 msgid ""
@@ -8853,20 +8950,27 @@ msgid ""
 "opponents. Saurian Warriors possess the strength to take full advantage of "
 "this fact."
 msgstr ""
+"Sürüngen Cengaverler mızrağı kullanmakta çok iyi ustalaşmışlardır. Her ne "
+"kadar uyuşuk soğuk kanlı yapıda, ve görecel olarak kırılgan olsalarda onlar "
+"öncü olarak çok değerlidir, çünkü zor arazilerde kolayca hareket ederler ve "
+"düşmanlarının çevresinden yol alabilirler. Sürüngen Cengaverler bu gerçeği "
+"tam olarak çok iyi kullanma kabiliyetine sahiptir."
 
 #: data/units/Sea_Hag.cfg:6
 msgid "female^Sea Hag"
-msgstr ""
+msgstr "Deniz Kocakarısı"
 
 #: data/units/Sea_Hag.cfg:21
 msgid ""
 "Sea Hags are older and more experienced Nagas who have learned to control "
 "the water magic."
 msgstr ""
+"Deniz kocakarıları yaşlı ve tecrübeli Nagalardır, onlar su büyüsünü kontrol "
+"etmeyi öğrenmişlerdir."
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr "Deniz orku"
+msgstr "Deniz Orku"
 
 #: data/units/Sea_Orc.cfg:17
 msgid ""
@@ -8876,15 +8980,22 @@ msgid ""
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
+"Çogunlukla karada yaşamayı seven benzerlerinden aşağı görünselerde, Deniz "
+"Orkları sulak çevreye adaptosyonlarından dolayı onlar tüm goblinseller için "
+"büyük bir sıçramayı temsil ederler. Kıvrımlı kılıçlarıyla becerikli savaşçı "
+"olsalarda uzun menzilli silah kullanamamaları ve karadaki zayıf savunmaları "
+"onların stratejik zayıflıklarıdır."
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
-msgstr "Deniz yılanı"
+msgstr "Deniz Yılanı"
 
 #: data/units/Sea_Serpent.cfg:17
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
+"Deniz Yılanları gemileri kendileri alabora edebilecek kadar devasa "
+"yaratıklardır."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -8896,6 +9007,9 @@ msgid ""
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
+"Çavuş' un Kraliyet ordusunda mevkisi meurdur. Akaemik olarak "
+"yetiştirilmesine rağmen, liderliğinin ortaya çıkması ve kabul görmesi için "
+"savaş alaında biraz tecrübeye ihtiyaç duyacaktır."
 
 #: data/units/Shadow.cfg:3
 msgid "Shadow"
@@ -8915,10 +9029,21 @@ msgid ""
 "slowly over open water. Shadows are able to hide at night, leaving no trace "
 "of their presence."
 msgstr ""
+"Işık dünyaya geldiği zaman ve bilinmeyene bir şekil verdiğinde, korku "
+"gecenin karanlığına çekilmeye zorlanmıştı. O günden bu yana, dünyanın "
+"gölgeleri insanlığa karşı nedeni bilinmeyen bir dehşettir. \n"
+"\n"
+"Bu bir nekromantiğin çok kolay verebileceği bir sorudur. \n"
+"\n"
+"Özel notlar : Aynı dost gruptan olan bir birim düşmanın dikkatini "
+"dağıtırken, Gölge düşmana arkadan saldırarak iki kat hasar verebilir. "
+"Gölgelerin hasara karşı olağan dışı bir dayanıklığı vardır, ve suda oldukça "
+"yavaş hareket ederler. Gölgeler gecede gizlenebilirler ve varlıklarından iz "
+"bırakmazlar."
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
-msgstr "Vurucu tim"
+msgstr "Vurucu Tim"
 
 #: data/units/Shock_Trooper.cfg:15
 msgid ""
@@ -8931,10 +9056,18 @@ msgid ""
 "covers monsters, rather than men. The drawback of such heavy armor is, of "
 "course, the time it takes to move into and out of combat."
 msgstr ""
+"Vurucu Timler Ağır Piyadenin elitleridirler, ve onların kullanılış "
+"amaçlarının yarısı basit olarak düşmanı yıldırmadır. Onların mevkiine "
+"gelebilen adamlar sadece müthiş şekilde iyi gelişmiş, ve iğneli kara zırhı "
+"giydikleri zaman bakılmak için korkunç görünüşleri olanlardır. Vurucu "
+"Timlerin görünüşü ve tuttukları gürbüz sık sık düşmanın moralini bozmak için "
+"yeterlidir, ki onlar genellikle bu zırhın içindekinin bir insandan ziyade "
+"bir yaratık olduğunu düşünürler. Böyle büyük bir zırhın kötü tarafı "
+"elbetteki savaşa girmede ve çıkmada gereken zamanın miktarıdır."
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
-msgstr "Gümüş büyücü"
+msgstr "Gümüş Büyücü"
 
 #: data/units/Silver_Mage.cfg:29 data/units/Silver_Mage.cfg:165
 msgid ""
@@ -8964,14 +9097,35 @@ msgid ""
 "villages instantly, though the player must control both, and the destination "
 "village must be unoccupied."
 msgstr ""
+"Bir büyücünün çalışabileceği bir çok yol farkedilir bir şekilde farklı "
+"sonlara varır. Gümüş Büyücüler gerçeği birbirine bağlayan güçler üzerinde "
+"çalışmaya hayatlarını adamışlardır, hernasılsa başarmışlardır da, ve "
+"dünyanın gizemlerinin bir kimsenin hayal dahi edemeyeceğinden daha fazlasını "
+"açığa çıkarmışlardır. Sık sık bilge yada mistikerli arayanalr oalrak "
+"görülürler, Gümüş büyücülerin kendi benzerlerinin bile bilmediği bir ajanda "
+"ile hareket ederler. Kendilerini alana süren büyücüler birliğine yardımcı "
+"olsalarda, her nasılsa ilgisiz dururlar. \n"
+"\n"
+"Aslında büyücüler arasında kendi düzenleri vardır, bu düzen benzerlerinden "
+"bazı gizemleri saklar. Bunlardan birisi bir kimsenin yürümeyle seyahat "
+"edemeyeceği mesafeleri kolayca alabilmeleridir. Gümüş düzenin üyeleri bu "
+"seyahat şeklinin çalışma prensiplerini diğer büyücülerle tartışmayı şiddetle "
+"reddeder, ve diğerleri nadir olarak onları gizlice takip edenlerse de, onlar "
+"bu işi yapmayı terk ederler, bu konusa asla bir daha konuşmazlar. \n"
+"\n"
+"Özel Notlar : Gümüş Büyücünün menzilli saldırısı sihirseldir ve her zaman "
+"düşmanını vurmada yüksek orana sahiptir. Gümüş büyücüler sihirsel hasarların "
+"bütün türlerine karşı oldukça dirençlidir. Onlar iki kasaba arasında anında "
+"hareket edebilirler ama iki kasabada oyuncunun kontrolünde olmalı ve hedef "
+"kasaba boş olmalıdır."
 
 #: data/units/Silver_Mage.cfg:139
 msgid "female^Silver Mage"
-msgstr "Gümüş büyücü"
+msgstr "Gümüş Büyücü"
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
-msgstr "İskelet ejderha"
+msgstr "İskeletsel Ejderha"
 
 #: data/units/Skeletal_Dragon.cfg:18
 msgid ""
@@ -8981,6 +9135,12 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"Çok zaman önce yaşayan yaratıkların en güçlülerinden biri korkulan Ejderha "
+"sadece kemik ve kara kirişli hale geldi. O öldükten çok sonra "
+"Nekromantiklerin kara güçleri tarafından kaldırıldı ve şimdi onlara hizmet "
+"ediyor. İskeletsel Ejderha kemik yığınından başka bir şey gibi "
+"gözükmeyebilir, ama bu şekilde düşünen çok az insan fikrini değiştirebilecek "
+"kadar yaşayabilmiştir."
 
 #: data/units/Skeletal_Dragon.cfg:30
 msgid "jaw"
@@ -8997,10 +9157,14 @@ msgid ""
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
+"İskeletler savaşta öldürülmüş ve kara büyü ile geri getirilmiş olan "
+"cengaverlerdir. Neredeyse beyinsiz, amaçları için tereddütsüz, onlar ne "
+"acıdan ne de ölümden korkarlar, ve varlıklarının sebebi efendilerine meydan "
+"okuyanları korkutmaktır."
 
 #: data/units/Skeleton.cfg:61 data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
-msgstr "İskelet okçu"
+msgstr "İskelet Okçu"
 
 #: data/units/Skeleton_Archer.cfg:15
 msgid ""
@@ -9010,6 +9174,10 @@ msgid ""
 "to achieve the tasks laid before them, for death holds no fear for one who "
 "is already dead."
 msgstr ""
+"İskelet okçular beraber dolaştıkalrı İskeletlerden biraz farklıdır - bir "
+"cengaverin savaşmak için ölümden uyandırılması doğaya karşı bir günahtır. "
+"Efendilerinin elinde bu askerler önlerindeki görevi başarmak için her şeyi "
+"yaparlar, zaten ölümüş olanlar için ölmenin veebileceği bir korku yoktur."
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
@@ -9031,6 +9199,11 @@ msgid ""
 "nor caring what their purpose, or foes be. They are driven only by a malice "
 "borne of the anguish of their empty and incoherent existence."
 msgstr ""
+"En kuvvetli yarıölü okçuları kaçınılmaz olarak önceki hayatlarında okçu "
+"olanlardır. Onlar savaş alanında gezinirler, önceki kabiliyetlerinin "
+"kaybolmakta olan hafızasıyla yönlendirilerek, amaçlarını ne bilerek nede "
+"umursayarak nede var olan düşmanları. Onlar sadece varlıklarının boş ve "
+"manasızlığı ile doğmuşluğun ızdırabı ile hareket ederler."
 
 #: data/units/Soulless.cfg:5
 msgid "Soulless"
@@ -9041,6 +9214,8 @@ msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
 msgstr ""
+"Yürüyen cesetler yaşayanlarla savaşlarla tecrübelenerek daha kuvvetli hale "
+"gelmişlerdir."
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -9093,13 +9268,15 @@ msgstr ""
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
-msgstr "Derinden gelen dokunaç"
+msgstr "Derinden Delen Dokunaç"
 
 #: data/units/Tentacle.cfg:18
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves."
 msgstr ""
+"Derinden Delen Dokunaçlar dalgaların altında gizlenen bazı yaratıkalrın "
+"uzantılarıdır."
 
 #: data/units/Thief.cfg:3
 msgid "Thief"
@@ -9139,13 +9316,15 @@ msgstr ""
 
 #: data/units/Transport_Galleon.cfg:3
 msgid "Transport Galleon"
-msgstr "Yük kalyonu"
+msgstr "Yük Kalyonu"
 
 #: data/units/Transport_Galleon.cfg:14
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"Yük Kalyonları birlikler taşıyabilen iyi silahlı gemilerdir. Eğer kıyıya "
+"ulaşabilirlerse birlikleri saldırı amaçlı boşaltabilirler."
 
 #: data/units/Trapper.cfg:3
 msgid "Trapper"
@@ -10304,17 +10483,19 @@ msgstr "veya"
 
 #: src/help.cpp:1311
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
+msgstr "Bu arazi hareket ve savunma amaşları için $terrains gibi davranır."
 
 #: src/help.cpp:1313
 msgid "The terrain with the best modifier is chosen automatically."
-msgstr ""
+msgstr "En uygun ayarları olan arazi kendiliğinden seçilir."
 
 #: src/help.cpp:1317
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
+"Bu arazi iç kale gibi davaranır, bir diğer deyişle, liderin bu arazinin "
+"üzerindeyken asker alabilirsin."
 
 #: src/help.cpp:1319
 msgid ""
@@ -10935,10 +11116,9 @@ msgid "Choose weapon:"
 msgstr "Silah seç:"
 
 #: src/playturn.cpp:1311
-#, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
-msgstr "Daha ele başlamadın. Gerçekten eli bitirmek istiyor musun?"
+msgstr "Daha eline başlamadın. Gerçekten eli bitirmek istiyor musun?"
 
 #: src/playturn.cpp:1319 src/playturn.cpp:1324
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -11420,9 +11600,3 @@ msgstr "adaletli"
 #: src/unit_types.cpp:952
 msgid "neutral"
 msgstr "tarafsız"
-
-#~ msgid "healthy"
-#~ msgstr "sağlıklı"
-
-#~ msgid "invisible"
-#~ msgstr "görünmez"
