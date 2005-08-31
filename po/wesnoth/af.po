@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-08-27 02:07+0100\n"
+"PO-Revision-Date: 2005-08-31 12:44+0200\n"
 "Last-Translator: Nils Kneuper <crazy - ivanovic AT gmx DOT de>\n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
@@ -882,7 +882,7 @@ msgid ""
 msgstr ""
 "\n"
 "Genesende eenhede: Eenhede met die <ref>dst=ability_cures text=Geneeskrag</"
-"ref> vermoë sal almal tot en met 18 LP skade genees per beurt, en ook "
+"ref> vermoë sal almal tot en met 18LP skade genees per beurt, en ook "
 "Verfigtiging genees. Slegs dié eenhede wat langs of aan dieselfde kant veg "
 "as die genesende eenheid sal genees word en ook net tot op 'n maksimum van "
 "8LP per eenheid."
@@ -1217,7 +1217,7 @@ msgstr "Wandelende dooies"
 
 #: data/help.cfg:294
 msgid "Undead units are immune to poison."
-msgstr ""
+msgstr "Wandelende dooie eenhede is immuun teen gif."
 
 #: data/help.cfg:296
 msgid ""
@@ -1228,10 +1228,18 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"Wandelende dooie eenhede het gewoonlik 'Wandelende Dooie' as hul enigste "
+"kenmerk. Aangesien Wandelende Dooie eenhede die liggame van dooies is, wat "
+"opgestaan het om weer te veg, het gif geen uitwerking op hulle nie. Dit kan "
+"hulle onmisbaar maak wanneer daar met vyande afgereken moet word wat gif as "
+"deel van hulle aanvalstrategie gebruik."
 
 #: data/help.cfg:301
+#, fuzzy
 msgid "Dextrous"
-msgstr ""
+msgstr "Behendig"
 
 #: data/help.cfg:302
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
@@ -1249,7 +1257,7 @@ msgstr ""
 
 #: data/help.cfg:309 data/terrain.cfg:144
 msgid "Grassland"
-msgstr ""
+msgstr "Grasland"
 
 #: data/help.cfg:314
 msgid ""
@@ -1665,19 +1673,23 @@ msgstr ""
 
 #: data/help.cfg:494 data/terrain.cfg:349
 msgid "Cave Wall"
-msgstr ""
+msgstr "Grot Muur"
 
 #: data/help.cfg:496
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"Grot mure is van soliede rots, bekend daarvoor dat dit selfs die mees "
+"gedetermineerde reisiger kan belemmer."
 
 #: data/items.cfg:264
 msgid ""
 "You have come across a wishing well.\n"
 "What would you like to wish for?"
 msgstr ""
+"Jy het by 'n wensput uitgekom.\n"
+"Waarvoor wil jy graag wens?"
 
 #: data/items.cfg:268
 msgid "A swift victory"
@@ -1688,26 +1700,30 @@ msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr ""
+"Met hierdie goue muntstuk wens ek vir vinnige einde aan hierdie geveg en 'n "
+"veilige oorwinning."
 
 #: data/items.cfg:283
 msgid "Lots of gold"
-msgstr ""
+msgstr "Baie goud"
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr ""
+msgstr "Ek wens hierdie enkele goue muntstuk kom tienvoud terug na my toe."
 
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
-msgstr ""
+msgstr "Vrede in die hele Wesnoth."
 
 #: data/items.cfg:306
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr ""
+"Die enigste ding wat die moeite werd is om voor te wens is vrede in die hele "
+"land."
 
 #: data/items.cfg:313
 msgid "Don't make a wish."
-msgstr ""
+msgstr "Moenie wens nie."
 
 #: data/items.cfg:336
 msgid "Potion of Healing"
@@ -3501,7 +3517,7 @@ msgstr "Eindig Beurt"
 
 #: data/themes/default.cfg:167 src/playturn.cpp:2233 src/unit.cpp:1091
 msgid "HP"
-msgstr ""
+msgstr "LP"
 
 #: data/themes/default.cfg:176 src/multiplayer_lobby.cpp:202
 #: src/playturn.cpp:2054 src/playturn.cpp:2234
@@ -8746,7 +8762,7 @@ msgstr ""
 
 #: src/dialogs.cpp:729 src/help.cpp:1095
 msgid "HP: "
-msgstr ""
+msgstr "LP: "
 
 #: src/dialogs.cpp:733 src/dialogs.cpp:741
 msgid "XP: "
@@ -9660,11 +9676,11 @@ msgstr ""
 
 #: src/playlevel.cpp:758
 msgid "Game Over"
-msgstr ""
+msgstr "Spel verby"
 
 #: src/playlevel.cpp:759
 msgid "The game is over."
-msgstr ""
+msgstr "Die spel is verby."
 
 #: src/playlevel.cpp:842
 msgid "Remaining gold: "
@@ -9725,7 +9741,7 @@ msgstr "Dis nou jou beurt"
 
 #: src/playturn.cpp:561
 msgid "Attacker"
-msgstr ""
+msgstr "Aanvaller"
 
 #: src/playturn.cpp:563
 msgid "Defender"
@@ -9771,7 +9787,7 @@ msgstr ""
 
 #: src/playturn.cpp:1631 src/playturn.cpp:1645
 msgid "Error"
-msgstr ""
+msgstr "Fout"
 
 #: src/playturn.cpp:1631
 msgid ""
@@ -9919,15 +9935,17 @@ msgstr ""
 
 #: src/playturn.cpp:2355
 msgid "Damage Taken"
-msgstr ""
+msgstr "Skade Ontvang"
 
 #: src/playturn.cpp:2361
 msgid "Damage Inflicted (EV)"
 msgstr ""
 
+# EV == expected value, verwagte waarde?
 #: src/playturn.cpp:2368
+#, fuzzy
 msgid "Damage Taken (EV)"
-msgstr ""
+msgstr "Skade Ontvang (VW)"
 
 #: src/playturn.cpp:2374
 msgid "Statistics"
@@ -9943,7 +9961,7 @@ msgstr ""
 
 #: src/playturn.cpp:2432
 msgid "Chat Log"
-msgstr ""
+msgstr "Gesels Lys"
 
 #: src/playturn.cpp:2497
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9954,12 +9972,13 @@ msgid "Saved Theme Preference: "
 msgstr ""
 
 #: src/playturn.cpp:2534
+#, fuzzy
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Nuwe tema sal in nuwe of vorige speletjie in werking tree."
 
 #: src/playturn.cpp:2635
 msgid "Place Label"
-msgstr ""
+msgstr "Plaas Etiket"
 
 #: src/playturn.cpp:2636
 msgid "Label:"
@@ -9972,8 +9991,9 @@ msgid ""
 msgstr ""
 
 #: src/playturn.cpp:2821
+#, fuzzy
 msgid "Replace with AI"
-msgstr ""
+msgstr "Vervang met Rekenaar"
 
 #: src/playturn.cpp:2822
 msgid "Replace with local player"
@@ -10004,16 +10024,21 @@ msgid "invisible: "
 msgstr "onsigbaar: "
 
 #: src/reports.cpp:129
+#, fuzzy
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
 msgstr ""
+"Hierdie eenheid is traag. Dit beweeg teen die helfte van sy normale spoed en "
+"ontvang een minder aanval as normaal in geveg."
 
 #: src/reports.cpp:129
+#, fuzzy
 msgid "slowed: "
-msgstr ""
+msgstr "stadiger: "
 
 #: src/reports.cpp:134
+#, fuzzy
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -10022,6 +10047,12 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
+"Hierdie eenheid is vergiftig. Dit sal 8 LP verloor met elke beurt todat dit "
+"'n geneesmiddel kry teen die gif in 'n dorp of van 'n vriendelike eenheid "
+"met die geneesmiddel vermoë.\n"
+"\n"
+"Eenhede kan nie doodgaan van die gif alleen nie. Die gif sal dit nie onder "
+"1 LP verminder nie."
 
 #: src/reports.cpp:134
 #, fuzzy
@@ -10035,7 +10066,7 @@ msgstr "Hierdie eenheid is versteen. Dit mag nóg skuif nóg aanval."
 
 #: src/reports.cpp:141
 msgid "stone: "
-msgstr "klip:"
+msgstr "klip: "
 
 #: src/reports.cpp:250 src/unit_types.cpp:321
 #, fuzzy
@@ -10217,9 +10248,8 @@ msgid "; "
 msgstr "; "
 
 #: src/unit.cpp:1153
-#, fuzzy
 msgid "XP to advance"
-msgstr " EP om te bevorder"
+msgstr "EP om te bevorder"
 
 #: src/unit.cpp:1192
 msgid ": "
@@ -10243,7 +10273,3 @@ msgstr "wettige"
 #, fuzzy
 msgid "neutral"
 msgstr "neutrale"
-
-#, fuzzy
-#~ msgid "invisible"
-#~ msgstr "onsigbaar"
