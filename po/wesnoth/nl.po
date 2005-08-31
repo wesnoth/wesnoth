@@ -15,9 +15,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/amla.cfg:8
-#, fuzzy
 msgid "Max HP bonus +"
-msgstr "Max HP bonus +{HP_ADVANCE}"
+msgstr "Max HP bonus +"
 
 #: data/amla.cfg:21
 msgid "Full Heal"
@@ -49,7 +48,7 @@ msgstr "Karaktertrekken"
 
 #: data/help.cfg:29 src/playturn.cpp:1777
 msgid "Units"
-msgstr "Troepen"
+msgstr "Eenheden"
 
 #: data/help.cfg:35
 msgid "Abilities"
@@ -768,7 +767,6 @@ msgstr ""
 "mag je kiezen tot wat de eenheid promoveert."
 
 #: data/help.cfg:193
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1873,7 +1871,7 @@ msgstr "Knalga-Alliantie"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
 msgid "Drakes"
-msgstr "Drako's"
+msgstr "Draaklingen"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -2836,7 +2834,6 @@ msgid "How do I end my turn?"
 msgstr "Hoe beëindig ik m'n beurt?"
 
 #: data/scenarios/tutorial/utils.cfg:73
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower-"
@@ -3636,7 +3633,7 @@ msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
-"Rechtvaardige troepen zijn overdag sterker en chaotische troepen zijn 's "
+"Rechtvaardige eenheden zijn overdag sterker en chaotische troepen zijn 's "
 "nachts sterker. Neutrale eenheden worden niet door dag en nacht beïnvloed."
 
 #: data/tips.cfg:2
@@ -3644,7 +3641,8 @@ msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
-"In een veldtocht kun je veteranen gebruiken door ze opnieuw op te roepen."
+"In een veldtocht kun je veteranen uit eerdere scenario's inzetten door "
+"'oproepen' te kiezen in plaats van 'rekruteren'."
 
 #: data/tips.cfg:3
 msgid ""
@@ -3654,11 +3652,11 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
-"Er zijn zijn aanvalssoorten: puntig, scherp, stomp, vuur, koud, en heilig. "
+"Er zijn zes aanvalstypes: puntig, scherp, stomp, vuur, koud, en heilig. "
 "Verschillende eenheden hebben verschillende weerstanden en kwetsbaarheden "
-"voor verschillende types van aanval. Rechts-klik op een eenheid, selecteer "
-"'Troepenbeschrijving' en vervolgens 'Resistentie' om te zien wat de "
-"resistentie van de eenheid is tegen verschillende aanvallen."
+"voor verschillende aanvalstypes. Rechtsklik op een eenheid, selecteer "
+"'Troepenbeschrijving' en kijk onder 'Weerstanden' om te zien wat de "
+"weerstand van de eenheid is tegen verschillende aanvallen."
 
 #: data/tips.cfg:4
 msgid ""
@@ -3667,9 +3665,9 @@ msgid ""
 "in the currently selected terrain is displayed in the top-right corner of "
 "the screen."
 msgstr ""
-"Het terrein waarop je eenheden zich bevinden bepaald hoeveel kans de vijand "
+"Het terrein waarop je eenheden zich bevinden bepaalt hoeveel kans de vijand "
 "heeft om hen te raken. Het verdedigingspercentage van de eenheid die "
-"geselecteerd is wordt getoond rechts-bovenaan."
+"geselecteerd is, wordt rechts-bovenaan weergegeven."
 
 #: data/tips.cfg:5
 msgid ""
@@ -3678,9 +3676,9 @@ msgid ""
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cure' ability."
 msgstr ""
-"Vergiftigde eenheden verliezen 8HP per beurt, maar een eenheid zal niet "
-"sterven door vergif. Vergiftigde troepen kunnen een tegengif vinden bij "
-"eenheden die kunnen genezen of in een dorp."
+"Vergiftigde eenheden verliezen 8HP per beurt, maar ze kunnen niet doodgaan "
+"aan het gif: ze houden altijd 1HP over. Vergiftigde eenheden kunnen genezen "
+"worden in een dorp of door een eenheid met de vaardigheid 'geneest'."
 
 #: data/tips.cfg:6
 msgid ""
@@ -3688,9 +3686,9 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"Je kunt eenheden van een vorig scenario gebruiken door 'Oproepen' te "
-"selecteren in het spel menu. Door eenheden op te roepen kun je een sterk en "
-"ervaren leger opbouwen."
+"Je kunt eenheden van een vorig scenario inzetten door 'Oproepen' te "
+"selecteren in het spelmenu. Door eenheden steeds weer op te roepen kun je "
+"een sterk leger van ervaren troepen opbouwen."
 
 #: data/tips.cfg:7
 msgid ""
@@ -3701,8 +3699,8 @@ msgid ""
 msgstr ""
 "Alle eenheden hebben een beheersingszone in elk van de velden naast hen. "
 "Indien een eenheid in de beheersingszone van een vijand beweegt kan de "
-"eenheid niet verder bewegen die beurt. Warzaaiers kunnen de beheersingszones "
-"ontwijken."
+"eenheid die beurt niet verder bewegen. Eenheden van rang 0 hebben geen "
+"beheersingszone en warzaaiers kun er gewoon doorheen lopen."
 
 #: data/tips.cfg:8
 msgid ""
@@ -3712,15 +3710,15 @@ msgid ""
 "at least 60% chance to hit when attacking."
 msgstr ""
 "De kans om een eenheid te raken hangt normaal gezien af van het terrein "
-"waarop de vijandige eenheid zich bevind, maar magische aanvallen hebben "
-"altijd 70% kans om te raken, zowel be het verdedigen als bij het aanvallen; "
-"precisieschutters hebben altijd 60%.kans om te raken wanneer ze aanvallen."
+"waarop de vijandelijke eenheid zich bevindt, maar magische aanvallen hebben "
+"altijd 70% kans om te raken, zowel bij het verdedigen als bij het aanvallen; "
+"precisieschutters hebben altijd 60% kans om te raken wanneer ze aanvallen."
 
 #: data/tips.cfg:9
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
-"Troepen die in een dorp gestationeerd zijn helen 8HP aan het begin van hun "
+"Troepen die in een dorp gestationeerd zijn genezen 8HP aan het begin van hun "
 "beurt."
 
 #: data/tips.cfg:10
@@ -3728,8 +3726,8 @@ msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
 msgstr ""
-"Troepen die niet bewegen of aanvallen tijdens hun beurt rusten en "
-"recupereren 2HP aan het begin van hun volgende beurt."
+"Troepen die niet bewegen of aanvallen tijdens hun beurt genezen door de rust "
+"2HP aan het begin van hun volgende beurt."
 
 #: data/tips.cfg:11
 msgid ""
@@ -3737,8 +3735,8 @@ msgid ""
 "terrain, while most mounted units don't get any defensive advantage in "
 "villages and castles."
 msgstr ""
-"De meeste infanterietroepen verdedigen zich beter in een dorp of in een "
-"kasteel, maar bereden troepen ontvangen hier geen bonus door."
+"De meeste infanterietroepen kunnen zich beter verdedigen in een dorp of in "
+"een kasteel, maar bereden troepen hebben er geen voordeel."
 
 #: data/tips.cfg:12
 msgid ""
@@ -3746,9 +3744,9 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
-"Ruiters zijn in het algemeen resistent tegen wapens die snij of impact "
+"Ruiters hebben in het algemeen weerstand tegen wapens die scherpe of stompe "
 "schade aanrichten, maar ze zijn kwetsbaar voor puntige wapens zoals pijlen "
-"en speren. "
+"en speren."
 
 #: data/tips.cfg:13
 msgid ""
@@ -3756,15 +3754,15 @@ msgid ""
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr ""
-"De genadeslag toebrengen is de beste manier om ervaring te winnen. Eenheden "
-"die een vijand doden ontvange 8XP."
+"De genadeslag toebrengen is de beste manier om ervaringspunten te verdienen. "
+"Eenheden die een vijand doden ontvangen 8XP per rang van de gedode vijand."
 
 #: data/tips.cfg:14
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr ""
-"Elfen vechten zeer effectief in bossen. Dwergen zijn zeer effectief op "
+"Elfen vechten zeer sterk in bossen. Dwergen vechten en bewegen het best in "
 "heuvels en bergen."
 
 #: data/tips.cfg:15
@@ -3772,8 +3770,8 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
-"Geduld is dikwijls de sleutel. Het is verstandiger om te wachten dan om aan "
-"te vallen met weinig eenheden in slechte omstandigheden."
+"Geduld is een schone zaak. Het is verstandiger om te wachten dan in slechte "
+"omstandigheden met weinig eenheden aan te vallen."
 
 #: data/tips.cfg:16
 msgid ""
@@ -3781,8 +3779,8 @@ msgid ""
 "expendable units in some directions to delay enemy units."
 msgstr ""
 "Wanneer je uit verschillende richtingen wordt aangevallen kan het een goed "
-"idee zijn om enkele (ten dode opgeschreven) eenheden naar de vijand toe te "
-"sturen om deze te vertragen."
+"idee zijn om een paar niet onmisbare eenheden naar de vijand toe te sturen "
+"om deze te vertragen."
 
 #: data/tips.cfg:17
 msgid ""
@@ -3798,9 +3796,10 @@ msgid ""
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
-"In veel scenarios zul je een goudbonus krijgen wanneer je het scenario "
-"eerder afwerkt. Je krijgt altijd meer goud door vroeg te eindigen dan door "
-"alle dorpen op de map te controleren totdat de beurten om zijn."
+"In veel scenario's zul je een goudbonus krijgen wanneer je het scenario "
+"eerder voltooid, die afhangt van het aantal dorpen op de kaart. Je krijgt "
+"dan altijd meer goud dan wanneer je alle dorpen inneemt en wacht tot de "
+"laatste beurt."
 
 #: data/tips.cfg:19
 msgid ""
@@ -3810,25 +3809,25 @@ msgid ""
 "for you on their keep so you can recruit there."
 msgstr ""
 "Je leider kan rekruteren of oproepen van gelijk welke donjon in een kasteel, "
-"niet alleen maar vanop de donjon waarvan wordt gestart. Je kunt de donjon "
-"van een vijand veroveren en van daaruit rekruteren. Of je kunt rekruteren "
-"vanaf de donjon van een bondgenoot."
+"niet alleen maar op de donjon waarvan wordt gestart. Je kunt de donjon van "
+"een vijand veroveren en vandaaruit rekruteren. Of je kunt rekruteren vanaf "
+"de donjon van een bondgenoot."
 
 #: data/tips.cfg:20
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
-"Skeletten zijn uitermate resistent tegen puntige en snij aanvallen maar "
-"kwetsbaar voor stompe, vuur-, en heilige aanvallen."
+"Skeletten hebben een hoge weerstand tegen puntige en scherpe aanvallen, maar "
+"zijn kwetsbaar voor stompe, vuur-, en heilige aanvallen."
 
 #: data/tips.cfg:21
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
-"Aanvoerders zorgen ervoor dat de hen omringende eenheden van lagere rang "
-"beter vechten."
+"Eenheden met leiderschap doen omringende eenheden van een lagere rang "
+"sterker vechten."
 
 #: data/tips.cfg:22
 msgid ""
@@ -3837,32 +3836,33 @@ msgid ""
 "the village."
 msgstr ""
 "Vermijd in het algemeen om troepen naast een verlaten dorp te plaatsen: een "
-"vijand kan het dorp innemen en jou vandaaruit aanvallen."
+"vijand kan het dorp innemen en jou vandaaruit aanvallen, terwijl hij in het "
+"dorp geneest."
 
 #: data/tips.cfg:23
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
-"Door de cursor over een vaardigheid of een karaktertrek te houden krijg je "
-"een beschrijving van de vaardigheid of karaktertrek."
+"Door de muiscursor op een vaardigheid of een karaktertrek te plaatsen krijg "
+"je een beschrijving van de vaardigheid of karaktertrek."
 
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
-"Gebruik een lijn van troepen om je gewonde eenheden te beschermen terwijl ze "
-"recupereren."
+"Gebruik een linie van troepen om je gewonde eenheden te beschermen terwijl "
+"ze recupereren."
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
-msgstr "Lees de sneltoetslijst in het instellingen menu."
+msgstr "Bekijk de sneltoetslijst in het instellingenmenu."
 
 #: data/tips.cfg:26
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
-"Indien je een eenheid beweegt maar je valt er niet mee aan en bekomt ook "
+"Als je een eenheid verplaatst, maar je valt er niet mee aan en bekomt ook "
 "geen extra informatie, dan kun je je zet ongedaan maken door op 'u' te "
 "drukken."
 
@@ -3871,15 +3871,15 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
-"Je kunt zien hoever vijandige eenheden kunnen bewegen door je cursor over "
-"hen heen te bewegen."
+"Je kunt zien hoever vijandige eenheden kunnen bewegen door de muiscursor op "
+"hen te plaatsen."
 
 #: data/tips.cfg:28
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Gebruik helers of genezers om je aanvallen te ondersteunen - ze winnen "
+"Gebruik verplegers of genezers om je aanvallen te ondersteunen - ze winnen "
 "gevechten zonder te vechten!"
 
 #: data/tips.cfg:29
@@ -3888,27 +3888,27 @@ msgid ""
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
-"De 'vertraagt' aanval doet een vijand trager bewegen en zorgt ervoor dat de "
-"vijand een aanval minder heeft. Tegen eenheden met krachtige aanvallen is "
-"het zeer effectief."
+"De 'vertraagt'-aanval doet een vijand trager bewegen en ontneemt de vijand "
+"één aanval. Tegen eenheden met weinig aanvallen is het zeer effectief."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
-msgstr "Heilige aanvallen zijn zeer krachtig tegen ondoden."
+msgstr "Heilige aanvallen zijn zeer krachtig tegen levende doden."
 
 #: data/tips.cfg:31
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
-"Eenheden genezen wanneer ze promoveren. Dit kan een gevecht doen keren."
+"Eenheden genezen wanneer ze promoveren. Daar kun je handig gebruik van maken "
+"tijdens een slag."
 
 #: data/tips.cfg:32
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
-"Eenheden met stormloop gebruikt men het best tegen vijanden die met een "
+"Eenheden met stormloop gebruikt men het best tegen vijanden die met één "
 "aanval kunnen worden uitgeschakeld."
 
 #: data/traits.cfg:6 data/translations/english.cfg:61
@@ -5149,17 +5149,15 @@ msgstr "stormloop"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
-msgstr "Cockatrice"
+msgstr "Basilisk"
 
 #: data/units/Cockatrice.cfg:17
-#, fuzzy
 msgid ""
 "Sometimes known as 'basilisks', these mystical creatures are said to be able "
 "to turn the living to stone. Needless to say, this makes them extremely "
 "dangerous."
 msgstr ""
-"Soms ook wel Basilisken genoemd. Deze mystieke wezens zijn in staat levende "
-"schepselen in steen te veranderen."
+"Deze mystieke schepselen kunnen levende wezens in standbeelden veranderen."
 
 #: data/units/Cockatrice.cfg:33
 msgid "gaze"
@@ -5275,7 +5273,6 @@ msgid "Dark Sorcerer"
 msgstr "Zwarte Magiër"
 
 #: data/units/Dark_Sorcerer.cfg:21
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it, to the common man. If immortality is truly what it grants, then "
@@ -5367,14 +5364,13 @@ msgid "Deathmaster"
 msgstr "Doodsmeester"
 
 #: data/units/Deathmaster.cfg:17
-#, fuzzy
 msgid ""
 "His wanderings on a dark path have given him power normally not granted to "
 "mortals, but with a terrible cost: the undead that he gave his soul to are "
 "gradually claiming his mortal shell too, and with time, he will be a true "
 "undead and a terror to all that lives."
 msgstr ""
-"Gwiti's omzwervingen der duistere wegen liggen aan de basis van zijn "
+"Zijn omzwervingen der duistere wegen liggen aan de basis van zijn "
 "onmenselijke krachten, maar met een hoge tol: De levende doden, waaraan hij "
 "zijn ziel gaf, eisen langzaam ook zijn sterfelijk lichaam op. Mettertijd zal "
 "hij in een levende dode veranderen... die dag is hij niets meer dan een "
@@ -5522,10 +5518,10 @@ msgid ""
 "and have clad them head to toe in shining armor."
 msgstr ""
 "Hun stompe rudimentaire vleugels en het gemis van vuuradem doen misschien "
-"vermoeden deze Drako's gehandicapt zijn; maar niets is minder waar. Drako "
-"Gladiatoren beschermen hun kwetsbare huid met dikke koperen bepantsering en "
-"bewapenen zich met zoveel smaragdgerande wapens als nodig is om welke vijand "
-"dan ook af te slaan."
+"vermoeden dat deze draaklingen gehandicapt zijn; maar niets is minder waar. "
+"Drako Gladiatoren beschermen hun kwetsbare huid met dikke koperen "
+"bepantsering en bewapenen zich met zoveel smaragdgerande wapens als nodig is "
+"om welke vijand dan ook af te slaan."
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -5879,7 +5875,7 @@ msgstr "drakenstaf"
 
 #: data/units/Dwarvish_Fighter.cfg:3
 msgid "Dwarvish Fighter"
-msgstr "Bergstrijder"
+msgstr "Dwergstrijder"
 
 #: data/units/Dwarvish_Fighter.cfg:19
 msgid ""
@@ -6150,9 +6146,19 @@ msgid ""
 "enemy unless they are immediately adjacent, or have revealed themselves by "
 "attacking."
 msgstr ""
-"Elfenwrekers zijn uitermate vaardige en snelle strijders, bedreven in alle "
-"gevechtstechnieken. Wrekers zijn ongeëvenaarde strijders in het bos, waar ze "
-"hun vijanden in hinderlagen lokken, ongezien tot vlak voor de aanval."
+"De merkwaardige naam 'wreker' komt van de taktiek die deze meester-dolers "
+"meestal gebruiken. Ze laten de vijand door een expres zwakke verdediging "
+"breken en wanneer de vijandelijke, kwetsbare eenheden van achter hun "
+"frontlinies opkomen, verschijnen de wrekers vanuit het niets en vallen aan "
+"om zo de toevoerlijnen van de vijand af te snijden.\n"
+"\n"
+"Dit wordt soms uitgelegd als wraak op de dood van hun kameraden die in "
+"eerdere gevechten zijn omgekomen. Hoewel dat iets te simpel is gadacht, is "
+"het ook niet geheel onjuist.\n"
+"\n"
+"Bijzonderheden: doordat wrekers bijna één zijn met het bos, zijn ze in dat "
+"bos onzichtbaar voor vijanden, behalve wanneer die direct naast hen staan of "
+"wanneer de doler net heeft aangevallen."
 
 #: data/units/Elvish_Avenger.cfg:119
 msgid "female^Elvish Avenger"
@@ -6280,7 +6286,7 @@ msgid ""
 "time, and put them to effective use on the battlefield."
 msgstr ""
 "Elfen zijn van nature niet oorlogszuchtig, maar in tijden van nood komen hun "
-"souplesse en snelheid hen goed van pas, evenals hun vakmanschap. Een elf "
+"souplesse en snelheid, evenals hun vakmanschap, hen goed van pas. Een elf "
 "leert de beginselen van het zwaardvechten en boogschieten onwaarschijnlijk "
 "snel en zet die effectief in op het slagveld."
 
@@ -6296,8 +6302,8 @@ msgid ""
 msgstr ""
 "Een relatief kleine hoeveelheid ervaring maakt van een competente krijger "
 "een meester in het gevecht. Deze als helden vereerde elfen zijn zowel sterk "
-"met de boog als met het zwaard. Vaardigheden die nooit afnemen door een "
-"gebrek aan oefening."
+"met de boog als met het zwaard. Vaardigheden die ze nooit bij gebrek aan "
+"oefening verleren."
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
@@ -6364,10 +6370,17 @@ msgid ""
 "Special Notes: Their marksmanship gives these elves a high chance of hitting "
 "their enemy, but only on the attack."
 msgstr ""
-"Precisieschutters zijn experts in het boogschieten. Hun vaardigheid "
-"garandeert dat 60% van hun schoten raak is, zelfs wanneer de vijand zich "
-"schuil houdt in grillig terrein. Deze eigenschap moet voor hun mindere kunde "
-"in het gevecht op de korte afstand en hun lagere snelheid compenseren."
+"Het buitengewoon scherpe zicht van elfen is een belangrijke factor in hun "
+"vaardigheid met de boog. Een elf die in boogschieten is geoefend kan doelen "
+"raken die een mens niet eens zou zien, zelfs 's nachts. Ze schieten zo snel "
+"dat de vorige pijl nog nauwelijks de boog heeft verlaten als de volgende er "
+"al achteraan vliegt.\n"
+"\n"
+"Deze uitzonderlijke vaardigheid heeft een prijs: deze elfen blinken niet uit "
+"in het zwaardvechten.\n"
+"\n"
+"Bijzonderheden: langboogschutters zijn precisieschutters, wat inhoudt dat ze "
+"altijd een hoge raakkans hebben wanneer ze aanvallen."
 
 #: data/units/Elvish_Marksman.cfg:65 data/units/Elvish_Marksman.cfg:185
 #: data/units/Elvish_Sharpshooter.cfg:65
@@ -6390,7 +6403,6 @@ msgid "Elvish Marshal"
 msgstr "Elfenmaarschalk"
 
 #: data/units/Elvish_Marshal.cfg:25
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6409,7 +6421,8 @@ msgstr ""
 "scherper dan mensen en kunnen vaak op intuïtie doen waar anderen in getraind "
 "moeten worden. In het zeldzame geval dat een elf zich toelegt op "
 "oorlogvoeren, wordt hij een waarlijke meester in de krijgskunst.\n"
-"Bijzonderheden: Het leiderschap van een kapitein maakt dat omringende, "
+"\n"
+"Bijzonderheden: Het leiderschap van een maarschalk maakt dat omringende, "
 "bevriende eenheden van een lagere rang, meer schade toebrengen aan hun "
 "vijanden."
 
@@ -6449,9 +6462,16 @@ msgid ""
 "enemy unless they are immediately adjacent, or have revealed themselves by "
 "attacking."
 msgstr ""
-"Elfenrangers zijn uitermate vaardige en snelle strijders, bedreven in alle "
-"gevechtstechnieken. Rangers zijn ongeëvenaarde strijders in het bos, waar ze "
-"hun vijanden in hinderlagen lokken, ongezien tot vlak voor de aanval."
+"Een mens kan nog zo veel jaren doorbrengen in het bos, hij zal nooit het "
+"gevoel van zich kunnen afschudden dat hij een gast is in een hem niet geheel "
+"vriendelijk gezind gebied. Met elfen is dat precies andersom. Iedere elf die "
+"de kennis over de bossen bestudeert raakt er al snel geheel vertrouwd mee. "
+"Gecombineerd met een aanzienlijk talent voor boogschieten en zwaardvechten "
+"is deze elf een dodelijke vijand.\n"
+"\n"
+"Bijzonderheden: doordat dolers bijna één zijn met het bos, zijn ze in dat "
+"bos onzichtbaar voor vijanden, behalve wanneer die direct naast hen staan of "
+"wanneer de doler net heeft aangevallen."
 
 #: data/units/Elvish_Ranger.cfg:117
 msgid "female^Elvish Ranger"
@@ -6471,8 +6491,13 @@ msgid ""
 "This combination of incredible mobility, and potent combat strength is one "
 "of the greatest assets the elves possess in warfare."
 msgstr ""
-"Deze ruiters zijn even snel in het bos als op een open veld. Ze zijn in "
-"staat te paard met boog en pijl doel te treffen."
+"De betere ruiters onder de elven rijden door het bos met een snelheid die "
+"voor mensen dodelijk zou zijn. Hoewel dit zeker respect afdwingt voor de "
+"ruiter zelf, vraagt men zich ook af wat voor paarden ze gebruiken, want de "
+"prestaties van deze dieren zijn bijna bovennatuurlijk.\n"
+"\n"
+"De combinatie van hoge mobiliteit en goede krijgskunst is een van de "
+"grootste voordelen die elfen in de strijd hebben."
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
@@ -6541,10 +6566,13 @@ msgid ""
 "Special Notes: Their marksmanship gives these elves a high chance of hitting "
 "their enemy, but only on the attack."
 msgstr ""
-"De beste schutters van heel Wesnoth. Scherpschutters zijn experts in het "
-"boogschieten. Hun nauwkeurigheid garandeert dat 60% van hun schoten raak is, "
-"zelfs bij het hoge tempo waarin ze hun pijlen afvuren. Wanneer de vijand "
-"zich ingegraven heeft wordt de Scherpschutter ingezet."
+"Er is een verhaal van een elf die ooit een pijl tegenhield door hem met een "
+"van zijn eigen pijlen uit de lucht te schieten. Gezien de vaardigheid van "
+"deze elfen zou het verhaal wel eens waar kunnen zijn. De scherpschutters "
+"onder de elfen hebben het boogschieten volledig onder de knie.\n"
+"\n"
+"Bijzonderheden: scherpschutters zijn precisieschutters, wat inhoudt dat ze "
+"altijd een hoge raakkans hebben wanneer ze aanvallen."
 
 #: data/units/Elvish_Sharpshooter.cfg:123
 msgid "female^Elvish Sharpshooter"
@@ -6861,7 +6889,7 @@ msgstr "tang"
 
 #: data/units/Goblin_Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr "Goblin Spieser"
+msgstr "Kobold Spieser"
 
 #: data/units/Goblin_Impaler.cfg:20
 msgid ""
@@ -6873,10 +6901,13 @@ msgid ""
 "Special Notes: the length of their weapon allows an impaler to strike first "
 "in melee, even in defense."
 msgstr ""
-"Bij gebrek aan intelligentie, kracht en degelijke wapens moeten Goblins het "
-"hebben van hun grote aantallen. Degenen die op een of andere manier eerdere "
-"gevechten overleeft hebben bewapenen zich met een veel grotere speer, zodat "
-"in een gevecht de eerste klap altijd voor de Spieser is."
+"Kobolds worden door orks gebruikt als kanonnenvoer. Degenen die op een of "
+"andere manier toch in leven blijven, proberen dat zo te houden door zich van "
+"beter materiaal te voorzien. Een veel grotere speer compenseert hun korte "
+"armen en steviger pantsers beschermd hun fragiele lichamen.\n"
+"\n"
+"Bijzonderheden: De lengte van hun wapen maakt dat spiesers in een gevecht "
+"altijd de eerste klap uitdelen, ook als ze verdedigen."
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -6893,8 +6924,12 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
-"De goblin ridders zijn de elite van de goblin ruiters. Ze kunnen ontzettend "
-"snel hun vijanden aanvallen."
+"De kobold roofridders hebben weinig gemeen met de mensen die zich ridder "
+"noemen. De enige overeenkomst is dat ze de elite van de wolfruiters vormen, "
+"vermoedelijk tot die rang opgeklommen door successen in een of andere "
+"plundertocht.\n"
+"\n"
+"De wolven waar ze op rijden worden gefokt op snelheid en kracht."
 
 #: data/units/Goblin_Pillager.cfg:3
 msgid "Goblin Pillager"
@@ -6937,10 +6972,14 @@ msgid ""
 "failure of the orcish bloodline, though no one knows enough of their history "
 "to state anything conclusive."
 msgstr ""
-"Bij gebrek aan intelligentie, kracht en degelijke wapens moeten Goblins het "
-"hebben van hun grote aantallen. Hoewel het ze ontbreekt aan goede wapens en "
-"harnassen, zijn deze speermannen goed uitgerust voor een uitputtingsslag. De "
-"besten onder de Goblin Speermannen worden Spiesers."
+"In elk nest jonge orks zijn er altijd wel een paar kleiner en zwakker dan de "
+"rest. Deze misbaksels worden 'Kobolds' genoemd en worden door hun "
+"soortgenoten geminacht. In de strijd worden ze uitgerust met de meest magere "
+"uitrusting en worden ze gebruikt als schild voor de krijgsheren.\n"
+"\n"
+"Er wordt gespeculeerd dat het bestaan van deze schepsels het begin is van "
+"het verval van de orkse bloedlijn, hoewel niemand genoeg weet van hun "
+"geschiedenis om duidelijke conclusies te trekken."
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -7101,7 +7140,7 @@ msgid ""
 "these flying beasts."
 msgstr ""
 "Slechts enkele van de natuurlievende elfen kunnen een vriendschapsband "
-"vormen met de machtige grifoenen. Zij die deze vliegende beesten kunnen "
+"vormen met de machtige griffioenen. Zij die deze vliegende beesten kunnen "
 "berijden ontdekken de wereld van de hemel."
 
 #: data/units/Halbardier.cfg:3
@@ -7219,7 +7258,7 @@ msgstr ""
 
 #: data/units/Iron_Mauler.cfg:3
 msgid "Iron Mauler"
-msgstr "Ijzeren Maler"
+msgstr "IJzermaler"
 
 #: data/units/Iron_Mauler.cfg:18
 msgid ""
@@ -7331,7 +7370,6 @@ msgid "Lich"
 msgstr "Lich"
 
 #: data/units/Lich.cfg:21
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -7612,9 +7650,9 @@ msgid ""
 "nature, and always have a high chance of hitting their opponents."
 msgstr ""
 "Meerminnen hebben, net als elfen, een aangeboren talent voor magie, hoewel "
-"het in aard heel anders is. Degenen die dat talent onder de knie krijgen "
-"worden hoog aangeslagen en hun vaardigheid wordt gebruikt om dingen te "
-"vervaardigen waarvan mensen zelfs niet durven dromen.\n"
+"hun magie in aard heel anders is. Degenen die dat talent onder de knie "
+"krijgen worden hoog aangeslagen en hun vaardigheid wordt gebruikt om dingen "
+"te vervaardigen waarvan mensen zelfs niet durven dromen.\n"
 "\n"
 "Bijzonderheden: de waterstralen die tovenaressen oproepen zijn van een "
 "magische aard en hebben als zodanig altijd een hoge raakkans."
@@ -7749,8 +7787,13 @@ msgid ""
 "Special Notes: being caught in a net slows enemies down and reduces by one "
 "the strikes they can deliver in combat."
 msgstr ""
-"De meermannen, die handige schepsels van de zee zijn snel en krachtig in "
-"elke aquatische omgeving maar kunnen amper bewegen op het land."
+"Het is moeilijk te leren omgaan met de verzwaarde netten die meermannen als "
+"wapen gebruiken; degenen die het beheersen staan in hoog aanzien bij hun "
+"soortgenoten. Dit wapen maakt de meermannen een bedreiging voor alle "
+"vijanden die het water zelfs maar naderen.\n"
+"\n"
+"Bijzonderheden: wanneer een vijand in een net gevangen wordt, vertraagt dat "
+"zijn bewegingen en kost hem dat de volgende beurt één aanval."
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -7784,8 +7827,10 @@ msgid ""
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
-"De meermannen, die handige schepsels van de zee zijn snel en krachtig in "
-"elke aquatische omgeving maar kunnen amper bewegen op het land."
+"De technieken die meermannen gebruiken bij het speer-vissen, kunnen ook in "
+"de strijd gebruikt worden, zeker wanneer de vijand niet thuis hoort in het "
+"water. Wanneer dat nodig is, zullen vele meermannen met dat beroep zich "
+"vrijwillig als soldaat aanmelden."
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
@@ -7798,8 +7843,11 @@ msgid ""
 "impact of one is considerably greater. In the water, the mobility of the "
 "mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
-"De meermannen, die handige schepsels van de zee zijn snel en krachtig in "
-"elke aquatische omgeving maar kunnen amper bewegen op het land."
+"Die meermannen die de kunst van het speerwerpen beheersen worden bijna net "
+"zo sterk als boogschutters - hoewel het gewicht van hun wapen het bereik "
+"vermindert, is de impact veel groter. In het water hebben meermannen qua "
+"mobiliteit een groot voordeel ten op zichte van vijanden die niet kunnen "
+"zwemmen."
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
@@ -7819,8 +7867,14 @@ msgid ""
 "Special Notes: being caught in a net slows enemies down and reduces by one "
 "the strikes they can deliver in combat."
 msgstr ""
-"De meermannen, die handige schepsels van de zee zijn snel en krachtig in "
-"elke aquatische omgeving maar kunnen amper bewegen op het land."
+"Vissen, wat meermannen veel doen, komt er eenvoudig gezegd op neer dat "
+"scholen vissen in een net gejaagd worden. Die netten brengen op zich weinig "
+"schade toe, maar kunnen in de strijd wel gebruikt worden om de vijand te "
+"vertragen, wanneer die bijvoorbeeld probeert een rivier over te steken. In "
+"de strijd worden kleinere, verzwaarde netten gebruikt.\n"
+"\n"
+"Bijzonderheden: wanneer een vijand in een net gevangen wordt, vertraagt dat "
+"zijn bewegingen en kost hem dat de volgende beurt één aanval."
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -7835,8 +7889,10 @@ msgid ""
 "effective. They are also useful in melee, even deep under the surface, which "
 "is something that certainly cannot be said of arrows."
 msgstr ""
-"De meermannen, die handige schepsels van de zee zijn snel en krachtig in "
-"elke aquatische omgeving maar kunnen amper bewegen op het land."
+"Meermannen zijn geen boogschutters, maar hun speren dienen hetzelfde doel. "
+"Hoewel geworpen speren onder water weinig bruikbaar zijn, zijn ze aan de "
+"oppervlakte zeer gevaarlijk. Bovendien zijn ze onderwater als korte-afstands "
+"wapens veel effectiever dan pijlen."
 
 #: data/units/Merman_Triton.cfg:3
 msgid "Merman Triton"
@@ -7861,7 +7917,7 @@ msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
-"De Meerman Strijders vormen het hart van de Meermanlegers. Hun krachtige "
+"De Meerman Strijders vormen het hart van de meermanlegers. Hun krachtige "
 "drietand wordt menig vijand fataal."
 
 #: data/units/Mounted_Fighter.cfg:3
@@ -8006,7 +8062,6 @@ msgid "Necromancer"
 msgstr "Dodenbezweerder"
 
 #: data/units/Necromancer.cfg:18
-#, fuzzy
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. This "
@@ -8070,7 +8125,6 @@ msgid "Noble Commander"
 msgstr "Adelijke Aanvoerder"
 
 #: data/units/Noble_Commander.cfg:24
-#, fuzzy
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
 "combat. Possessing leadership skills, they give lower-level units in "
@@ -8078,11 +8132,11 @@ msgid ""
 "with the sword, although they also carry a bow to use when necessary. If the "
 "Commander is lost, so is the battle."
 msgstr ""
-"De titel Aanvoerder wordt gevoerd door hen die de strijdkrachten naar het "
-"slagveld leiden. Hun leiderschap doet de prestaties van eenheden van mindere "
-"rang verbeteren. Aanvoerders zijn het meest bedreven met het zwaard, "
-"alhoewel ook een boog hen niet ontbreekt. Het einde van de aanvoerder, is "
-"tevens het einde van de slag."
+"De titel Adelijke Aanvoerder wordt gevoerd door hen die de strijdkrachten "
+"naar het slagveld leiden. Hun leiderschap doet de prestaties van eenheden "
+"van mindere rang verbeteren. Aanvoerders zijn het meest bedreven met het "
+"zwaard, alhoewel ook een boog hen niet ontbreekt. Het einde van de "
+"aanvoerder, is tevens het einde van de slag."
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
@@ -8628,7 +8682,6 @@ msgid "Revenant"
 msgstr "Wedergekomene"
 
 #: data/units/Revenant.cfg:16
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -8668,7 +8721,7 @@ msgstr "Schurk"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
-msgstr "Koninklijke Garde"
+msgstr "Koninklijke Gardist"
 
 #: data/units/Royal_Guard.cfg:22
 msgid ""
@@ -9025,11 +9078,11 @@ msgstr ""
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
-msgstr "Slapende Grifoen"
+msgstr "Slapende Griffioen"
 
 #: data/units/Sleeping_Gryphon.cfg:16
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr "Sssst! De grifoen slaapt! Je maakt het beter niet wakker!"
+msgstr "Sssst! De griffioen slaapt! Maak hem maar niet wakker!"
 
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
@@ -9086,7 +9139,6 @@ msgid "Spectre"
 msgstr "Geest"
 
 #: data/units/Spectre.cfg:26
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -9486,10 +9538,15 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
-"Goblins zijn kleiner en zwakker dan de orks. Ze hebben wolven leren trainen "
-"om als rijdier te gebruiken. De Wolfruiters vormen de verkenners van het "
-"goblinleger. In tegenstelling tot de meeste bereden troepen hebben zij geen "
-"moeite met bergen."
+"Niemand weet zeker hoe het gebruik om wolven te temmen en te bereiden is "
+"ontstaan. Kobolds zijn kleiner en veel zwakker dan orks. Degenen die een "
+"rijdier kunnen vinden, verkrijgen een sterkere, veiligere positie in de "
+"strijd.\n"
+"\n"
+"Wolven kunnen het gewicht van een man in een harnas niet dragen, maar een "
+"kobold in leren pantsers zijn een veel lichtere last. Anders dan paarden, "
+"bewegen deze rijdieren makkelijk door de bergen, hoewel water en bos ook hen "
+"vertragen."
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -10982,7 +11039,7 @@ msgid ""
 "want to save the game?"
 msgstr ""
 "Een netwerkdisconnectie heeft plaatsgevonden en het spel kan niet doorgaan. "
-"Wil jet het spel opslaan?"
+"Wil je het spel opslaan?"
 
 #: src/playturn.cpp:87
 msgid "It is now your turn"
@@ -11006,14 +11063,13 @@ msgstr "vs"
 
 #: src/playturn.cpp:661
 msgid "Attack Enemy"
-msgstr "Val Vijand Aan"
+msgstr "Vijand Aanvallen"
 
 #: src/playturn.cpp:662
 msgid "Choose weapon:"
 msgstr "Kies wapen: "
 
 #: src/playturn.cpp:1311
-#, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
@@ -11022,7 +11078,7 @@ msgstr ""
 
 #: src/playturn.cpp:1319 src/playturn.cpp:1324
 msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beëindigen"
+msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beëindigen?"
 
 #: src/playturn.cpp:1339
 msgid "Auto-Save"
@@ -11031,11 +11087,12 @@ msgstr "Auto-Save"
 #: src/playturn.cpp:1341
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
-"Kon het spel niet automatisch opslaan. Gelieve het spel manueel op te slaan."
+"Kon het spel niet automatisch opslaan. Gelieve het spel handmatig op te "
+"slaan."
 
 #: src/playturn.cpp:1582
 msgid "Rename Unit"
-msgstr "Hernoem Eenheid"
+msgstr "Eenheid Hernoemen"
 
 #: src/playturn.cpp:1631 src/playturn.cpp:1645
 msgid "Error"
@@ -11075,7 +11132,7 @@ msgstr "Inkomen"
 
 #: src/playturn.cpp:1884
 msgid "You have no units available to recruit."
-msgstr "Je hebt geen eenheden beschikbaar om te rekruteren."
+msgstr "Er zijn geen eenheden beschikbaar om te rekruteren."
 
 #: src/playturn.cpp:1896
 msgid "Recruit"
@@ -11094,15 +11151,14 @@ msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
-"Mijnheer, deze eenheid is ervaren en is al gepromoveerd! Wil je $noun echt "
+"Heer, deze eenheid is ervaren en is al gepromoveerd! Wilt u $noun echt "
 "ontslaan?"
 
 #: src/playturn.cpp:1991
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
-msgstr ""
-"Mijnheer, deze eenheid is bijna gepromoveerd! Wil je $noun echt ontslaan?"
+msgstr "Heer, deze eenheid is bijna gepromoveerd! Wilt u $noun echt ontslaan?"
 
 #: src/playturn.cpp:1996
 msgid "her"
@@ -11122,7 +11178,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Er zijn geen troepen beschikbaar om op te roepen\n"
-"(Je moet veteranen uit vorige scenarios hebben)"
+"(Je moet overlevende veteranen uit vorige scenario's hebben)"
 
 #: src/playturn.cpp:2045
 msgid "You must have at least $cost gold pieces to recall a unit"
@@ -11134,7 +11190,7 @@ msgstr "Rang"
 
 #: src/playturn.cpp:2080
 msgid "Dismiss Unit"
-msgstr "Ontsla Eenheid"
+msgstr "Eenheid Ontslaan"
 
 #: src/playturn.cpp:2092
 msgid "Recall"
@@ -11178,7 +11234,7 @@ msgstr "Verliezen"
 
 #: src/playturn.cpp:2343 src/playturn.cpp:2397
 msgid "Kills"
-msgstr "Gedoodden"
+msgstr "Slachtoffers"
 
 #: src/playturn.cpp:2349
 msgid "Damage Inflicted"
@@ -11264,7 +11320,7 @@ msgstr "heeft het spel verlaten. Wat wil je doen?"
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Deze eenheid is onzichtbaar en kan niet worden gezien of aangevallen door "
-"vijandige eenheden."
+"vijandelijke eenheden."
 
 #: src/reports.cpp:124
 msgid "invisible: "
@@ -11275,8 +11331,8 @@ msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
 msgstr ""
-"Deze eenheid is vertraagd. Het beweegt aan halve snelheid en ontvangt een "
-"aanval minder dan normaal."
+"Deze eenheid is vertraagd. Hij beweegt op halve snelheid en heeft één aanval "
+"minder dan normaal."
 
 #: src/reports.cpp:129
 msgid "slowed: "
@@ -11291,8 +11347,8 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Deze eenheid is vergiftigd. Het zal 8HP verliezen per beurt totdat het een "
-"remedie kan vinden in een dorp of bij een bevriende eenheid met de 'geneest' "
+"Deze eenheid is vergiftigd. Hij elke beurt 8HP verliezen, totdat hij "
+"genezing vindt in een dorp of bij een bevriende eenheid met de 'geneest' "
 "vaardigheid."
 
 #: src/reports.cpp:134
@@ -11301,7 +11357,7 @@ msgstr "vergiftigd: "
 
 #: src/reports.cpp:141
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr "Deze eenheid is in steen veranderd. Het kan bewegen noch aanvallen."
+msgstr "Deze eenheid is in steen veranderd. Hij kan bewegen noch aanvallen."
 
 #: src/reports.cpp:141
 msgid "stone: "
@@ -11325,11 +11381,11 @@ msgstr "Chaotische eenheden: "
 
 #: src/reports.cpp:325
 msgid "Owned village"
-msgstr "Ingenomen Dorpen"
+msgstr "Eigen Dorp"
 
 #: src/reports.cpp:327
 msgid "Enemy village"
-msgstr "Vijandig Dorp"
+msgstr "Vijandelijk Dorp"
 
 #: src/reports.cpp:329
 msgid "Allied village"
@@ -11377,7 +11433,7 @@ msgstr "Vond ongeldige closing tag voor tag $tag (regel $line)"
 
 #: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 msgid "Empty variable name"
-msgstr "Lege variabel naam"
+msgstr "Lege variabelenaam"
 
 #: src/serialization/parser.cpp:210
 msgid "Unexpected characters after variable name (expected , or =)"
@@ -11433,26 +11489,25 @@ msgstr "Speel een oefenveldtocht om het spel te leren kennen"
 
 #: src/titlescreen.cpp:209
 msgid "Start a new single player campaign"
-msgstr "Start een nieuwe single-player veldtocht"
+msgstr "Begin een nieuwe single-player veldtocht"
 
 #: src/titlescreen.cpp:210
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
-msgstr ""
-"Speel multiplayer (hotseat, LAN, of Internet), of een scenario tegen AI"
+msgstr "Speel multiplayer (hotseat, LAN, internet of tegen de computer)."
 
 #: src/titlescreen.cpp:211
 msgid "Load a single player saved game"
-msgstr "Laad een single-player bewaard spel"
+msgstr "Een eerder opgeslagen single-player spel voortzetten"
 
 #: src/titlescreen.cpp:212
 msgid "Change the language"
-msgstr "Verander de taal"
+msgstr "De taal instellen"
 
 #: src/titlescreen.cpp:213
 msgid "Configure the game's settings"
-msgstr "Configureer de instellingen van het spel"
+msgstr "Verander de instellingen van het spel"
 
 #: src/titlescreen.cpp:214
 msgid "View the credits"
@@ -11460,7 +11515,7 @@ msgstr "Over de makers van Wesnoth"
 
 #: src/titlescreen.cpp:215
 msgid "Quit the game"
-msgstr "Spel verlaten"
+msgstr "Het spel verlaten"
 
 #: src/titlescreen.cpp:246
 msgid "More"
@@ -11484,7 +11539,7 @@ msgstr ": "
 
 #: src/unit_types.cpp:341
 msgid "strikes"
-msgstr "slagen"
+msgstr "aanvallen"
 
 #: src/unit_types.cpp:952
 msgid "chaotic"
@@ -11497,9 +11552,3 @@ msgstr "rechtvaardig"
 #: src/unit_types.cpp:952
 msgid "neutral"
 msgstr "neutraal"
-
-#~ msgid "healthy"
-#~ msgstr "gezond"
-
-#~ msgid "invisible"
-#~ msgstr "onzichtbaar"
