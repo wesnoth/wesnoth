@@ -2,20 +2,21 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:22+0200\n"
-"PO-Revision-Date: 2005-03-16 22:47+0000\n"
-"Last-Translator: Konstantinos Karasavvas <ceekk@macs.hw.ac.uk>\n"
-"Language-Team: Greek <ceekk@macs.hw.ac.uk>\n"
+"PO-Revision-Date: 2005-08-31 08:00+0300\n"
+"Last-Translator: santi <at@i.gr>\n"
+"Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: KBabel 0.9.6\n"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -23,11 +24,11 @@ msgstr "Επόμενη μονάδα"
 
 #: src/hotkeys.cpp:46
 msgid "Previous unit"
-msgstr ""
+msgstr "προηγούμενη μονάδα"
 
 #: src/hotkeys.cpp:47
 msgid "Hold Position"
-msgstr ""
+msgstr "διατήρησε τη θέση"
 
 #: src/hotkeys.cpp:48
 msgid "End Unit Turn"
@@ -58,13 +59,12 @@ msgid "Default Zoom"
 msgstr "Προεπιλεγμένο Ζουμ"
 
 #: src/hotkeys.cpp:55 src/preferences.cpp:887
-#, fuzzy
 msgid "Toggle Full Screen"
-msgstr "Πλήρης Οθόνη"
+msgstr "Λειτουργία πλήρους οθόνης"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
-msgstr ""
+msgstr "Αντιγραφή εικόνας οθόνης"
 
 #: src/hotkeys.cpp:57
 msgid "Accelerated"
@@ -160,11 +160,11 @@ msgstr "Καλυτερες Δυνατές Κινήσεις Εχθρού"
 
 #: src/hotkeys.cpp:81
 msgid "Set Terrain"
-msgstr ""
+msgstr "Όρισε τό έδαφος"
 
 #: src/hotkeys.cpp:82
 msgid "Quit Editor"
-msgstr ""
+msgstr "Φύγε από τόν κειμενογράφο"
 
 #: src/hotkeys.cpp:83
 msgid "New Map"
@@ -184,15 +184,15 @@ msgstr "Αποθήκευση Ως"
 
 #: src/hotkeys.cpp:87
 msgid "Set Player's keep"
-msgstr ""
+msgstr " Όρισε τό κάστρο του παίκτη"
 
 #: src/hotkeys.cpp:88
 msgid "Flood Fill"
-msgstr ""
+msgstr "γέμισμα πλημμύρας"
 
 #: src/hotkeys.cpp:89
 msgid "Fill Selection"
-msgstr ""
+msgstr "Επιλογή γεμίσματος"
 
 #: src/hotkeys.cpp:90
 msgid "Cut"
@@ -208,7 +208,7 @@ msgstr "Επικόλληση"
 
 #: src/hotkeys.cpp:93
 msgid "Revert from Disk"
-msgstr ""
+msgstr "Ξαναγύρισε από τόν δίσκο"
 
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
@@ -216,7 +216,7 @@ msgstr "Αλλαγή μεγέθους χάρτη"
 
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
-msgstr ""
+msgstr "Αναποδογύρισε τόν χάρτη"
 
 #: src/hotkeys.cpp:96
 msgid "Select All"
@@ -228,7 +228,7 @@ msgstr "Διαμόρφωση εδάφους"
 
 #: src/hotkeys.cpp:98
 msgid "Refresh Image Cache"
-msgstr ""
+msgstr "Ανανέωσε τό cache της εικόνας"
 
 #: src/hotkeys.cpp:100
 msgid "Delay Shroud Updates"
@@ -339,16 +339,15 @@ msgstr "Ρύθμιση Γάμμα"
 
 #: src/preferences.cpp:900
 msgid "Reverse Time Graphics"
-msgstr ""
+msgstr "Αντιστροφή γραφικών χρόνου"
 
 #: src/preferences.cpp:901
-#, fuzzy
 msgid "Sound effects"
-msgstr "Εμφάνιση Ειδικών Εφέ"
+msgstr "Εμφάνιση Ειδικών Εφέ Ηχου"
 
 #: src/preferences.cpp:902
 msgid "Music"
-msgstr ""
+msgstr "Μουσική"
 
 #: src/preferences.cpp:904
 msgid "Music Volume:"
@@ -368,7 +367,7 @@ msgstr "Ταχύτητα Κύλισης:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "Ενεργοποίηση/απενεργοποίηση αποτελεσμάτων ήχου(sound effects)"
 
 #: src/preferences.cpp:922
 msgid "Change the sound effects volume"
@@ -376,7 +375,7 @@ msgstr "Μετατροπή έντασης ηχητικών εφέ"
 
 #: src/preferences.cpp:925
 msgid "Music on/off"
-msgstr ""
+msgstr "Ενεργοποίηση/απενεργοποίηση μουσικής"
 
 #: src/preferences.cpp:929
 msgid "Change the music volume"
@@ -433,6 +432,7 @@ msgstr ""
 #: src/preferences.cpp:972
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
+"Επιλογή αν ο ήλιος κινείται από αριστερά στά δεξιά η δεξιά πρός τά αριστερά"
 
 #: src/preferences.cpp:975
 msgid "Use colored mouse cursors (may be slower)"
@@ -447,14 +447,12 @@ msgid "View and configure keyboard shortcuts"
 msgstr "Εμφάνιση και τροποποίηση συντομεύσεων πληκτρολογίου"
 
 #: src/preferences.cpp:1158
-#, fuzzy
 msgid "yes"
-msgstr "Ναι"
+msgstr "ναι"
 
 #: src/preferences.cpp:1160
-#, fuzzy
 msgid "no"
-msgstr "Αναίρεση"
+msgstr "όχι"
 
 #: src/preferences.cpp:1219
 msgid "Prefs section^General"
@@ -470,7 +468,7 @@ msgstr "Ήχου"
 
 #: src/preferences.cpp:1222
 msgid "Advanced section^Advanced"
-msgstr ""
+msgstr "Γιά προχωρημένους"
 
 #: src/preferences.cpp:1278
 msgid "There are no alternative video modes available"
@@ -494,11 +492,11 @@ msgstr "Πατήστε τη Συντόμευση Πληκτρολογίου πο
 
 #: src/preferences.cpp:1362
 msgid "Action"
-msgstr ""
+msgstr "Ενέργεια"
 
 #: src/preferences.cpp:1362
 msgid "Binding"
-msgstr ""
+msgstr "Συνδέσεις"
 
 #: src/preferences.cpp:1374
 msgid "Change Hotkey"
@@ -518,7 +516,7 @@ msgstr "Σφάλμα"
 
 #: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
-msgstr ""
+msgstr "Εντάξει"
 
 #: src/show_dialog.cpp:422
 msgid "Yes"
@@ -539,7 +537,7 @@ msgstr "Κλείσιμο"
 
 #: src/show_dialog.cpp:839
 msgid "Receiving data..."
-msgstr ""
+msgstr "Δέχομαι δεδομένα(κατεβαίνουν...)"
 
 #: src/show_dialog.cpp:870
 msgid "KB"
