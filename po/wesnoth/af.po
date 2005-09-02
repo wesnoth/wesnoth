@@ -9,15 +9,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-08-31 12:44+0200\n"
-"Last-Translator: Nils Kneuper <crazy - ivanovic AT gmx DOT de>\n"
+"PO-Revision-Date: 2005-09-02 23:15+0200\n"
+"Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/amla.cfg:8
-#, fuzzy
 msgid "Max HP bonus +"
 msgstr "Maksimum LP bonus +"
 
@@ -46,7 +45,6 @@ msgid "Gameplay"
 msgstr "Spel-omstandighede"
 
 #: data/help.cfg:21 src/playturn.cpp:2235
-#, fuzzy
 msgid "Traits"
 msgstr "Karaktertrekke"
 
@@ -59,9 +57,8 @@ msgid "Abilities"
 msgstr "Vaardighede"
 
 #: data/help.cfg:42
-#, fuzzy
 msgid "Weapon Specials"
-msgstr "Wapen Aanbiedinge"
+msgstr "Wapen Bonusse"
 
 #: data/help.cfg:48
 msgid "Terrains"
@@ -93,9 +90,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Stryd om Wesnoth is 'n beurtspel strategiese fantasiespel wat ietwat uniek "
-"is vir moderne strategiese speletjies. Terwyl ander speletjies strewe om "
-"ingewikkeld te wees, poog Stryd om Wesnoth om die reëls en speel van die "
+"Die Stryd om Wesnoth is 'n beurtspel strategiese fantasiespel wat ietwat "
+"uniek is vir moderne strategiese speletjies. Terwyl ander speletjies strewe "
+"om ingewikkeld te wees, poog Stryd om Wesnoth om die reëls en speel van die "
 "spel so eenvoudig moontlik te maak. Dit maak egter nie die speletjie "
 "eenvoudig nie - aangesien daar vanuit die eenvoudige reëls 'n warboel "
 "moontlikhede ontstaan wat die speletjie maklik maak om te leer maar 'n "
@@ -295,12 +292,10 @@ msgstr ""
 "Onderhoud'</ref> vir meer inligting."
 
 #: data/help.cfg:103
-#, fuzzy
 msgid "Orbs"
 msgstr "Orbe"
 
 #: data/help.cfg:104
-#, fuzzy
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -325,14 +320,12 @@ msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Die orb is blou as die eenheid 'n bondgenoot is wat jy nie beheer nie."
 
 #: data/help.cfg:109
-#, fuzzy
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Vyandige eenhede het geen orb bo hulle energiewyser nie."
 
 #: data/help.cfg:114
-#, fuzzy
 msgid "Hitpoints and Experience"
-msgstr "Lyfpunte en Ervaring"
+msgstr "Lewenspunte en Ervaring"
 
 #: data/help.cfg:115
 msgid ""
@@ -455,7 +448,6 @@ msgstr ""
 "nie op die kaart was om hulle bewegings te beperk nie."
 
 #: data/help.cfg:134
-#, fuzzy
 msgid "Combat"
 msgstr "Gevegte"
 
@@ -482,7 +474,6 @@ msgstr ""
 "afstandgevegte wat gewoonlik wapens soos boë, spiese en vuurballe insluit."
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -509,10 +500,10 @@ msgstr ""
 "Die aanvaller kry die eerste hou dan slaan die verdediger terug. Elke hou "
 "kan óf tref en 'n gegewe hoeveelheid skade aanrig, óf mis en geen skade "
 "aanrig nie. Houe wissel opeenvolgend totdat elke eenheid al sy houe "
-"opgebruik het. Die aantal houe wat 'n eenheid het wissel; 'n Elwe vegter met "
-"'n 5-4 aanval mag 4 keer slaan, elke suksesvolle hou dien 5 punte se skade "
-"toe, terwyl 'n Orcish Grunt met 'n 9-2 aanval slegs twee keer kan slaan "
-"(maar skade van 9 punte vir elke trefhou kan toedien)."
+"opgebruik het. Die aantal houe wat 'n eenheid het wissel; 'n Elfse Vegter "
+"met 'n 5-4 aanval mag 4 keer slaan, elke suksesvolle hou dien 5 punte se "
+"skade toe, terwyl 'n Orcish Grunt met 'n 9-2 aanval slegs twee keer kan "
+"slaan (maar skade van 9 punte vir elke trefhou kan toedien)."
 
 #: data/help.cfg:141
 msgid ""
@@ -591,9 +582,9 @@ msgstr ""
 "\n"
 "\n"
 "Elke aanval wanneer dit tref veroorsaak 'n basiese hoeveelheid skade "
-"afhangende van die soort aanval. 'n Elwe Vegter met 'n 5-4 aanval veroorsaak "
-"byvoorbeeld 5 basispunte skade. Dit word gewoonlik deur twee dinge verander: "
-"<ref>dst=damage_types_and_resistance text=Weerstand</ref> en "
+"afhangende van die soort aanval. 'n Elfse Vegter met 'n 5-4 aanval "
+"veroorsaak byvoorbeeld 5 basispunte skade. Dit word gewoonlik deur twee "
+"dinge verander: <ref>dst=damage_types_and_resistance text=Weerstand</ref> en "
 "<ref>dst=time_of_day text='Tyd in die Dag'</ref>. Om te sien hoe basiese "
 "skadepunte verander word deur die omstandighede, kies "
 "<italic>text='Skadeberekenings'</italic> in die aanvalkeusebalk."
@@ -680,7 +671,7 @@ msgstr ""
 
 #: data/help.cfg:168
 msgid "Time of Day"
-msgstr "Tyd in Dag"
+msgstr "Tyd van die Dag"
 
 #: data/help.cfg:172
 msgid ""
@@ -780,7 +771,6 @@ msgstr ""
 "bevordering."
 
 #: data/help.cfg:193
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -802,11 +792,10 @@ msgstr ""
 "Bevordering (NMVB) tot sy beskikking hê.\n"
 "Die NMVB sal die eenheid verander elke keer as die eenheid die "
 "ervaringsdoelwit bereik, maar die eenheid sal op dieselfde vlak bly. Die "
-"tipiese NMVB effek is om die eenheid \n"
-" se maksimum aantal LP's met 3 te verhoog vir elke 100 EP bygekry. Neem "
-"kennis dat slegs 'n klein aantal eenhede, byvoorbeeld die Necrophage, gesond "
-"word as gevolg van die NMVB effek. Die meeste eenhede kry slegs die bonus by "
-"die Maksimum LP."
+"tipiese NMVB effek is om die eenheid se maksimum aantal LP's met 3 te "
+"verhoog vir elke 100 EP bygekry. Neem kennis dat slegs 'n klein aantal "
+"eenhede, byvoorbeeld die Necrophage, gesond word as gevolg van die NMVB "
+"effek. Die meeste eenhede kry slegs die bonus by die Maksimum LP."
 
 #: data/help.cfg:198
 msgid "Healing"
@@ -888,7 +877,6 @@ msgstr ""
 "8LP per eenheid."
 
 #: data/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -903,7 +891,7 @@ msgstr ""
 "Rus kan met ander vorme van genesing gekombineer word maar dorpe, herlewing, "
 "genesing en herstel kan nie met mekaar gekombineer word nie. 'n Genesende- "
 "of herstel-eenheid wat se aandag verdeel is tussen baie gewondes sal minder "
-"doeltreffend wees met die genesing van indiwiduele wonde. Ten laaste sal "
+"doeltreffend wees met die genesing van individuele wonde. Ten laaste sal "
 "alle eenhede ten volle genees tussen scenarios."
 
 #: data/help.cfg:212
@@ -1009,7 +997,7 @@ msgstr ""
 
 #: data/help.cfg:231
 msgid "Contributors"
-msgstr "Bydraers"
+msgstr "Medewerkers"
 
 #: data/help.cfg:237
 msgid "License"
@@ -1029,7 +1017,6 @@ msgstr ""
 "toegeken wanneer dit gewerf word."
 
 #: data/help.cfg:246
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1089,7 +1076,6 @@ msgstr ""
 "herroep met meer gewensde karaktertrekke."
 
 #: data/help.cfg:261
-#, fuzzy
 msgid "Quick"
 msgstr "Vinnig"
 
@@ -1119,12 +1105,10 @@ msgstr ""
 "minder goed om bestrede posisies te behou."
 
 #: data/help.cfg:269
-#, fuzzy
 msgid "Resilient"
 msgstr "Volharding"
 
 #: data/help.cfg:270
-#, fuzzy
 msgid "Resilient units have 7 more HP than usual."
 msgstr "Volhardingseenhede het 7 meer LP as gewoonlik."
 
@@ -1147,7 +1131,6 @@ msgstr ""
 "strategiese posisies teen teenstanders."
 
 #: data/help.cfg:277
-#, fuzzy
 msgid "Strong"
 msgstr "Sterk"
 
@@ -1171,7 +1154,7 @@ msgstr ""
 "\n"
 "\n"
 "Terwyl dit nuttig is vir enige handvegter, is Sterk die doeltreffendste in "
-"eenhede wat 'n hoë getal houe soos die Elwe Vegter het. Sterk eenhede kan "
+"eenhede wat 'n hoë getal houe soos die Elfse Vegter het. Sterk eenhede kan "
 "baie nuttig wees wanneer 'n klein bietjie ekstra skade al is wat nodig is om "
 "'n hou wat skade veroorsaak in 'n noodlottige hou te verander."
 
@@ -1237,13 +1220,13 @@ msgstr ""
 "deel van hulle aanvalstrategie gebruik."
 
 #: data/help.cfg:301
-#, fuzzy
 msgid "Dextrous"
 msgstr "Behendig"
 
 #: data/help.cfg:302
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
 msgstr ""
+"Behendige Eenhede rig 1 punt meer skade aan vir elke trefhou met 'n boog."
 
 #: data/help.cfg:304
 msgid ""
@@ -1254,10 +1237,16 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
+"\n"
+"\n"
+"Behendigheid is 'n karaktertrek van die Elwe. Die Elwe is bekend vir hulle "
+"ongelooflike grasie, en hulle vaardigheid met 'n boog. Party het egter meer "
+"van die talente as sommige van hulle ras. Hierdie buitengewoone Elwe se pyle "
+"veroorsaak 'n addisionele punt se skade."
 
 #: data/help.cfg:309 data/terrain.cfg:144
 msgid "Grassland"
-msgstr "Grasland"
+msgstr "Graslande"
 
 #: data/help.cfg:314
 msgid ""
@@ -1269,6 +1258,12 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"Graslande verteenwoordig groot oop pleine, of dit aangeplant is, of gesny is "
+"vir weiveld, of sommer net wild. Aangesien dit oop is, is dit maklik om oor "
+"te beweeg, maar terselfde tyd is dit ook moeilik om jouself in 'n grasland "
+"te verdedig. Gewoonlik is die eenhede wat die beste vaar in 'n grasland die "
+"kavallarie, of eenhede wat vinnig kan beweeg. \n"
+"Meeste eenhede het 'n verdediging van 30 tot 40% op grasvelde."
 
 #: data/help.cfg:319 data/terrain.cfg:118 data/terrain.cfg:126
 msgid "Road"
@@ -1280,6 +1275,9 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"Paaie is uitgetrapte grond, gevorm soos reisigers dit deur die jare heen "
+"uitgetrap het. Sover dit die spel aanbetref, is paaie identies aan "
+"<ref>dst=terrain_grassland text=Grassland</ref>"
 
 #: data/help.cfg:327 data/terrain.cfg:325
 msgid "Forest"
@@ -1314,11 +1312,10 @@ msgstr ""
 "\n"
 ". Die meeste eenhede het 50% verdediging in woude, maar kavallarie word "
 "beperk tot 40%. Elwe aan die ander kant geniet 'n 60% tot 70% verdediging "
-"selfs vir die Elwe-ruiters. Dwerge ontvang gewoonlik slegs 'n 30% "
+"selfs vir die Elfse Ruiters. Dwerge ontvang gewoonlik slegs 'n 30% "
 "verdediging in woude."
 
 #: data/help.cfg:337 data/terrain.cfg:286
-#, fuzzy
 msgid "Hills"
 msgstr "Heuwels"
 
@@ -1424,7 +1421,6 @@ msgstr ""
 "terwyl beidie Naga en Mermen 60% geniet."
 
 #: data/help.cfg:377 data/terrain.cfg:25
-#, fuzzy
 msgid "Deep Water"
 msgstr "Diep Water"
 
@@ -1560,7 +1556,7 @@ msgstr ""
 
 #: data/help.cfg:445 data/terrain.cfg:151
 msgid "Savanna"
-msgstr "Grasvlakte"
+msgstr "Savanna"
 
 #: data/help.cfg:447
 msgid ""
@@ -1568,7 +1564,7 @@ msgid ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
-"Grasvlakte is vlaktes met lang gras, wat in warmer streke van die wêreld "
+"Savanna's is vlaktes met lang gras, wat in warmer streke van die wêreld "
 "gevind word. Vir speldoeleindes is hulle identies aan "
 "<ref>dst=terrain_grassland text=Grasveld</ref>."
 
@@ -1576,7 +1572,6 @@ msgstr ""
 #: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:179
 #: data/terrain.cfg:190 data/terrain.cfg:203 data/terrain.cfg:364
 #: src/reports.cpp:323
-#, fuzzy
 msgid "Village"
 msgstr "Dorp"
 
@@ -1670,6 +1665,16 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Vir die wat kan brue bou, is dit 'n groot voordeel want hulle is vrygestel "
+"van die wispelteurige geaardheid van waterweë wat se watervlak styg of sak. "
+"Om nie eers te praat van die luuksheid van droe voete gedurende die yskoue "
+"wintermaande nie. \n"
+"\n"
+"Vir die wat oor die land of see beweeg is 'n brug die beste van beide "
+"wêrelde. Vir spel-doeleindes word dit hanteer soos grasveld of vlak water, "
+"wat ook al die beste beweging en verdediging bonusse aan die eenheid wat die "
+"brug beset. Neem kennis dat 'n swem-eenheid en 'n land-eenheid nie die brug "
+"op dieselfde spasie en dieselfe tyd kan beset nie. "
 
 #: data/help.cfg:494 data/terrain.cfg:349
 msgid "Cave Wall"
@@ -1727,15 +1732,15 @@ msgstr "Moenie wens nie."
 
 #: data/items.cfg:336
 msgid "Potion of Healing"
-msgstr ""
+msgstr "Gesondmaak Doepa"
 
 #: data/items.cfg:339
 msgid "A feeling of well-being overwhelms the drinker."
-msgstr ""
+msgstr "'n Gevoel van welvaart oorweldig die drinker."
 
 #: data/items.cfg:340
 msgid "You are not worthy of healing."
-msgstr ""
+msgstr "Jy is nie waardig om gesond te maak nie."
 
 #: data/items.cfg:374
 msgid "Poison"
@@ -1746,7 +1751,6 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Gif is tans besig om deur die are van hierdie eenheid te bruis."
 
 #: data/items.cfg:412
-#, fuzzy
 msgid "Holy Water"
 msgstr "Heilige Water"
 
@@ -1789,7 +1793,7 @@ msgstr "Kan nie vermoëns stel nie, jammer."
 
 #: data/items.cfg:577
 msgid "Ring of Slowness"
-msgstr "Sluiper ring"
+msgstr "Ring van Traagheid"
 
 #: data/items.cfg:580
 msgid "The bearer of this ring is slowed."
@@ -1797,11 +1801,11 @@ msgstr "Die draer van hierdie ring word baie stadig."
 
 #: data/items.cfg:615
 msgid "Staff of Swiftness"
-msgstr "Spoedvraat se Kierie"
+msgstr "Spoedstaf"
 
 #: data/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
-msgstr "Hierdie kierie laat die draer baie vinnig beweeg."
+msgstr "Hierdie staf laat die draer baie vinnig beweeg."
 
 #: data/items.cfg:619
 msgid "Only magical beings can wield such an object."
@@ -1826,7 +1830,7 @@ msgstr "stormvurk"
 
 #: data/items.cfg:709
 msgid "Flaming Sword"
-msgstr "Vlammende Swaard"
+msgstr "Vlam Swaard"
 
 #: data/items.cfg:713
 msgid "Only the leader of an army can wield this sword!"
@@ -1834,12 +1838,11 @@ msgstr "Slegs die leier van 'n leër kan hierdie swaard gebruik."
 
 #: data/items.cfg:725
 msgid "flaming sword"
-msgstr "vlammende swaard"
+msgstr "vlam swaard"
 
 #: data/items.cfg:757
-#, fuzzy
 msgid "Scepter of Fire"
-msgstr "Die Vlammende Septer"
+msgstr "Die Vlam Septer"
 
 #: data/items.cfg:760
 msgid ""
@@ -1852,13 +1855,11 @@ msgstr ""
 "draer te skiet."
 
 #: data/items.cfg:761
-#, fuzzy
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
-"Dit is die Vlammende Septer. Net 'n ware troonopvolger sou waag om dit te "
-"vat!neem!"
+"Dit is die Vlam Septer. Net 'n ware troonopvolger sou waag om dit te neem!"
 
 #: data/items.cfg:814
 msgid "Zap~"
@@ -1870,13 +1871,12 @@ msgstr "Spelerkaart"
 
 #: data/multiplayer.cfg:20
 msgid "Default"
-msgstr "Standaard"
+msgstr "Normale"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/leader_list.cpp:99
-#, fuzzy
 msgid "Random"
-msgstr "Lukraak"
+msgstr "Willekeurige"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
@@ -1900,12 +1900,11 @@ msgstr "Drake"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
-msgstr "Klassiek"
+msgstr "Klassieke"
 
 #: data/multiplayer.cfg:119 data/translations/english.cfg:127
-#, fuzzy
 msgid "Humans"
-msgstr "Mense"
+msgstr "Mense-ras"
 
 #: data/multiplayer.cfg:132 data/translations/english.cfg:126
 msgid "Elves"
@@ -1947,7 +1946,6 @@ msgstr ""
 "Jy kan kom as jy wil, maar die leier stel net belang om met Baldras te praat."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
-#, fuzzy
 msgid "2p - Blitz"
 msgstr "2p - Blitsaanval"
 
@@ -1955,17 +1953,14 @@ msgstr "2p - Blitsaanval"
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
 msgstr ""
-"'n Dubbelkaart vir baie vinnige spel. 'n Verstelling van 2g per dorp word "
+"'n Tweegeveg kaart vir baie vinnige spel. 'n Instelling van 2g per dorp word "
 "aanbeveel."
 
-# *** Charge soos in koste of storm? ***
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
-#, fuzzy
 msgid "2p - Charge"
-msgstr "2p - Storm"
+msgstr "2p - Stormloop"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
-#, fuzzy
 msgid "2p - Den of Onis"
 msgstr "2p - Onis se Lêplek"
 
@@ -1974,8 +1969,8 @@ msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet. Recommended settings of 2G per village."
 msgstr ""
-"Gevaar skuil om elke hoek in hierdie ondergrondse slagveld, 'n dubbelkaart "
-"waar mag en skelmstreke ontmoet. 'n Verstelling van 2G per dorp word "
+"Gevaar skuil om elke hoek in hierdie ondergrondse slagveld, 'n tweegeveg "
+"kaart waar mag en skelmstreke ontmoet. 'n Verstelling van 2G per dorp word "
 "aanbeveel."
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
@@ -1987,8 +1982,8 @@ msgid ""
 "This small duel map divides the field of battle into three segments. "
 "Recommended settings of 2G per village."
 msgstr ""
-"Hierdie klein dubbelkaart verdeel die slagveld in drie dele. 'n Verstelling "
-"van 2G per dorp word aanbeveel."
+"Hierdie klein tweegeveg kaart verdeel die slagveld in drie dele. 'n "
+"Verstelling van 2G per dorp word aanbeveel."
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
@@ -2049,8 +2044,8 @@ msgid ""
 "multi-fronted duel map. Recommended settings of 2G per village."
 msgstr ""
 "Spelers moet alle soorte terrein hier oorsteek in hulle strewe na 'n "
-"oorwinning op hierdie dubbelkaart met sy vele fronte. Aanbevole verstelling "
-"is 2G per dorp."
+"oorwinning op hierdie tweegeveg kaart met sy vele fronte. Aanbevole "
+"verstelling is 2G per dorp."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
 msgid "2p - Sullas Ruins"
@@ -2067,7 +2062,6 @@ msgstr ""
 "verstellings is 2G per dorp."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
-#, fuzzy
 msgid "2p - Wesbowl"
 msgstr "2s - Wesbal"
 
@@ -2140,9 +2134,8 @@ msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Gelykop! Finale puntetelling: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
-#, fuzzy
 msgid "3p - 1v1v1Hex"
-msgstr "3p - 1v1v1Heks"
+msgstr "3p - 1v1v1Hex"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
 msgid ""
@@ -2166,18 +2159,17 @@ msgstr ""
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
-msgstr "3s - Driedubbele Blitsoorlog"
+msgstr "3s - Drie-voudige Blitsoorlog"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
 msgid ""
 "Three players come head to head on this water-cut battlefield. Recommended "
 "settings of 2G per village."
 msgstr ""
-"Drie spelers veg kop aan kop op hierdie met water deurspekte slagveld. "
+"Drie spelers veg kop aan kop op hierdie met water gekerfte slagveld. "
 "Aanbevole verstelling is 2G per dorp."
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:7
-#, fuzzy
 msgid "4p - An Island"
 msgstr "4s - 'n Eiland"
 
@@ -2236,7 +2228,6 @@ msgstr ""
 "Aanbevole verstelling is 2 goud per dorp."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
-#, fuzzy
 msgid "4p - King of the Hill"
 msgstr "4s - Koning op die Koppie"
 
@@ -2269,9 +2260,8 @@ msgid "Take control of this huge river delta."
 msgstr "Neem beheer oor hierdie reuse rivierdelta."
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
-#, fuzzy
 msgid "4p - The Valley of Death"
-msgstr "Die Vallei van die Dood"
+msgstr "4s - Die Vallei van die Dood"
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:5
 msgid "Can you defeat all enemies and declare victory in this desolate valley?"
@@ -2294,18 +2284,16 @@ msgstr ""
 "van 1G per dorp."
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
-#, fuzzy
 msgid "5p - Forest of Fear"
-msgstr "5s - Die Vreeslike Woud"
+msgstr "5s - Die Vrees Woud"
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "In hierdie gemengde landskap, stry vyf leërs om die oorhand te kry."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
-#, fuzzy
 msgid "6p - Hexcake"
-msgstr "6s - Heksekoek"
+msgstr "6s - Hexkoek"
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
@@ -2313,7 +2301,7 @@ msgstr "2 teen 2 of 3 teen 3 spanspel."
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:3
 msgid "6p - Smallolof"
-msgstr "6s - Kleinelof"
+msgstr "6s - Smallolof"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
 msgid ""
@@ -2321,9 +2309,9 @@ msgid ""
 "where six boxed-in armies come to a head. Recommended settings of 2 gold per "
 "village."
 msgstr ""
-"Slegs 'n meesterbrein sal op hierdie dodelike en beperkte slagveld oorleef, "
-"waar ses ingeperkte leërs teen mekaar te staan kom. Aanbevole verstelling is "
-"2 goud per dorp."
+"Slegs 'n meester-taktikus sal op hierdie dodelike en beperkte slagveld "
+"oorleef, waar ses ingeperkte leërs teen mekaar te staan kom. Aanbevole "
+"verstelling is 2 goud per dorp."
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
 msgid "7p - Battle World"
@@ -2338,7 +2326,6 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:17
-#, fuzzy
 msgid "Random map"
 msgstr "Willekeurige kaart"
 
@@ -2353,7 +2340,6 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
-#, fuzzy
 msgid "Random map (Desert)"
 msgstr "Willekeurige kaart (Woestyn)"
 
@@ -2399,7 +2385,6 @@ msgstr ""
 "goeie een afkom."
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
-#, fuzzy
 msgid "2p - Across The River"
 msgstr "2s - Oor Die Rivier"
 
@@ -2409,10 +2394,10 @@ msgid ""
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
 msgstr ""
-"Hierdei kaart is 'n gerieflike manier om twee stamme te toets, aangesien dit "
-"goed gebalanseerd is aan beide kante.\n"
-"Jy kan die KI teen KI gebruik om te sien hoe goed 'n stam teen 'n ander kan "
-"vaar."
+"Hierdie kaart is 'n gerieflike manier om twee faksies te toets, aangesien "
+"dit goed gebalanseerd is aan beide kante.\n"
+"Jy kan die KI teen KI gebruik om te sien hoe goed 'n faksie teen 'n ander "
+"kan vaar."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
 msgid "Basic Training"
@@ -2443,9 +2428,8 @@ msgid "Recruit a unit"
 msgstr "Werf 'n eenheid"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
-#, fuzzy
 msgid "Excellent! You have recruited an Elvish Fighter."
-msgstr "Uitstekend! Jy het 'n Elwe Vegter gewerf."
+msgstr "Uitstekend! Jy het 'n Elfse Vegter gewerf."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:88
 #: data/scenarios/tutorial/Basic_Training.cfg:112
@@ -2453,7 +2437,6 @@ msgstr "Uitstekend! Jy het 'n Elwe Vegter gewerf."
 #: data/scenarios/tutorial/Basic_Training.cfg:180
 #: data/scenarios/tutorial/Basic_Training.cfg:197
 #: data/scenarios/tutorial/Basic_Training.cfg:223
-#, fuzzy
 msgid "What do I do next?"
 msgstr "Wat moet ek volgende doen?"
 
@@ -2476,19 +2459,18 @@ msgid "You have successfully ended your turn."
 msgstr "Jy het jou beurt suksesvol beïndig."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:118
-#, fuzzy
 msgid ""
 "Your next task is to move your Elvish Fighter. To move a unit, first select "
 "it, then select his destination. In this case, his destination is the forest "
 "next to the Elvish Shaman, Merle."
 msgstr ""
-"Jou volgende taak is om jou Elwe Vegter te beweeg. Om 'n eenheid te beweeg, "
+"Jou volgende taak is om jou Elfse Vegter te beweeg. Om 'n eenheid te beweeg, "
 "kies dit eers, kies dan sy bestemming. In hierdie geval is sy bestemming die "
-"woud langs die Elwe Toordokter, Merle."
+"woud langs die Elfse Toordokter, Merle."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "Beweeg jou Elwe Vegter tot langs Merle"
+msgstr "Beweeg jou Elfse Vegter tot langs Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:147
 msgid ""
@@ -2496,7 +2478,7 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
-"Uitstekend! Jy het jou Elwe Vegter suksesvol beweeg. Aangesien hy egter "
+"Uitstekend! Jy het jou Elfse Vegter suksesvol beweeg. Aangesien hy egter "
 "langs 'n vyandige eenheid inbeweeg het, het hy al sy beweging vir hierdie "
 "beurt verloor; dit word die 'beheersone' genoem."
 
@@ -2534,7 +2516,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:203
 #: data/scenarios/tutorial/Basic_Training.cfg:206
-#, fuzzy
 msgid "Move your fighter onto a village."
 msgstr "Skuif jou vegter na 'n dorp."
 
@@ -2551,12 +2532,10 @@ msgstr ""
 "aanhoudend aan."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:232
-#, fuzzy
 msgid "Defeat Merle"
 msgstr "Verslaan Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:251
-#, fuzzy
 msgid ""
 "Oops! You moved your leader off of the keep. Remember, when your leader is "
 "not on a keep, you cannot recruit. Also remember that if your leader dies, "
@@ -2574,7 +2553,7 @@ msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
 msgstr ""
-"Ongelukkig het jy veloor omdat jou leier verslaan is. Hopelik het my lesse "
+"Ongelukkig het jy verloor omdat jou leier verslaan is. Hopelik het my lesse "
 "jou so 'n bietjie wysheid besorg."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:278
@@ -2623,7 +2602,6 @@ msgstr ""
 "baklei in 'n skyngeveg."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:4
-#, fuzzy
 msgid "Traits and Specialties"
 msgstr "Karaktertrekke en Besonderhede"
 
@@ -2647,10 +2625,9 @@ msgstr ""
 "verslaan. Wen hierdie scenario deur my te verslaan. Jou vegter van die "
 "vorige scenario kan jou in hierdie stryd help. Om hom terug te roep, kliek "
 "regs op 'n kasteelblok, kies Terugroep, kies jou vegter en dan 'OK'. Jy "
-"behoort ook Elwe Vegters en Elwe Boogskutters te werf."
+"behoort ook Elfse Vegters en Elfse Boogskutters te werf."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:69
-#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recalling\n"
@@ -2663,23 +2640,21 @@ msgid ""
 "Objects"
 msgstr ""
 "Vaardighede gedek:\n"
-"Terugroeping\n"
-"Karaktertrekke\n"
-"Goud\n"
-"Tyd in dag\n"
-"Terrein\n"
-"Weerstand\n"
-"Besonderhede\n"
-"Voorwerpe"
+" Terugroep\n"
+" Karaktertrekke\n"
+" Goud\n"
+" Tyd van die dag\n"
+" Terreine\n"
+" Weerstand\n"
+" Spesialiteite\n"
+" Voorwerpe"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:71
-#, fuzzy
 msgid "Defeat Delfador"
 msgstr "Verslaan Delfador"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 #: data/scenarios/tutorial/utils.cfg:51
-#, fuzzy
 msgid "Death of Konrad"
 msgstr "Konrad sterf"
 
@@ -2690,7 +2665,7 @@ msgstr "Beurte raak op"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
 msgid "You have successfully recalled your Elvish Fighter."
-msgstr "Jy het jou Elwe Vegter suksesvol terug geroep."
+msgstr "Jy het jou Elfse Vegter suksesvol terug roep."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:97
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
@@ -2727,7 +2702,7 @@ msgid ""
 "units of different alignments can inflict upon each other."
 msgstr ""
 "Die son is besig om oor Wesnoth te sak. Die tyd in die dag bepaal hoeveel "
-"skade eenhede van verskillende stamme mekaar kan aandoen."
+"skade eenhede van verskillende eenhede mekaar kan aandoen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
@@ -2743,7 +2718,6 @@ msgstr ""
 "sal ly as gevolg van daardie aanval."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
-#, fuzzy
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
@@ -2771,14 +2745,14 @@ msgid ""
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
-"Onthou om te probeer verhoed dat die vyand dorpie oorneem en om dorpe terug "
-"te neem wat hulle reeds oorgeneem het. Dit sal hulle goudvoorraad verminder "
-"en veroorsaak dat hulle nie kan werf nie."
+"Onthou om te probeer verhoed dat die vyand 'n dorpie oorneem en om dorpe "
+"terug te neem wat hulle reeds oorgeneem het. Dit sal hulle goudvoorraad "
+"verminder en veroorsaak dat hulle nie kan werf nie."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
 msgid "Next, you may want to begin a campaign, or play multiplayer."
 msgstr ""
-"Jy mag dalk volgende 'n veldtog wil loods of 'n multispeler spel wil speel."
+"Jy mag dalk volgende 'n veldtog wil loods of 'n veelspeler spel wil speel."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -2794,18 +2768,17 @@ msgid ""
 "Winning scenarios"
 msgstr ""
 "Vaardighede gedek:\n"
-"Werf van eenhede\n"
-"Beweeg van eenhede\n"
-"Aanval van vyandige eenhede\n"
-"Opdoen van ervaring\n"
-"Wen van Scenarios"
+" Werwing\n"
+" Beweging\n"
+" Aanval van vyandelike eenhede\n"
+" Ondervinding opdoen\n"
+" Wen-Scenario's"
 
 #: data/scenarios/tutorial/utils.cfg:45
 msgid "Current objective:"
 msgstr "Huidige doelwit:"
 
 #: data/scenarios/tutorial/utils.cfg:55
-#, fuzzy
 msgid "Death of Delfador"
 msgstr "Delfador sterf"
 
@@ -2883,15 +2856,14 @@ msgid "How do I end my turn?"
 msgstr "Hoe moet ek my beurt beëindig?"
 
 #: data/scenarios/tutorial/utils.cfg:73
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower-"
 "right hand corner."
 msgstr ""
-"Een manier om jou beurt te beeïndig is om 'Alt-E' te druk. Alternatiewelik "
-"kan jy regs kliek en Eindig Beurt kies of jy kan op die Eindig Beurt knop in "
-"die regterkantste hoek onder kliek."
+"Een manier om jou beurt te beeïndig is om 'Alt-Spasie' te druk. "
+"Alternatiewelik kan jy regs kliek en Eindig Beurt kies of jy kan op die "
+"Eindig Beurt knop in die regterkantste hoek onder kliek."
 
 #: data/scenarios/tutorial/utils.cfg:74
 msgid "What happens when I end my turn?"
@@ -2915,9 +2887,8 @@ msgstr ""
 "jy die spel."
 
 #: data/scenarios/tutorial/utils.cfg:78
-#, fuzzy
 msgid "How far can my Elvish Fighter move?"
-msgstr "Hoe ver kan my Elwe Vegter beweeg?"
+msgstr "Hoe ver kan my Elfse Vegter beweeg?"
 
 #: data/scenarios/tutorial/utils.cfg:78
 msgid ""
@@ -2932,10 +2903,10 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
-"Jou Elwe Vegter begin met 'n sekere aantal bewegingspunte vir elke beurt; "
-"dit word sy spoed genoem. Wanneer jou Elwe Vegter op 'n paadjie loop, kos "
+"Jou Elfse Vegter begin met 'n sekere aantal bewegingspunte vir elke beurt; "
+"dit word sy spoed genoem. Wanneer jou Elfse Vegter op 'n paadjie loop, kos "
 "elke blok waardeur hy beweeg hom bewegingspunte; dit sluit die bestemming "
-"in. Wanneer jy jou Elwe Vegter kies, word al die blokke waarheen hy nie kan "
+"in. Wanneer jy jou Elfse Vegter kies, word al die blokke waarheen hy nie kan "
 "beweeg nie verdof. As die bestemming te ver weg genoeg is dat hy meer as een "
 "beurt benodig om dit te bereik, sal 'n getal verskyn wat aandui hoeveel "
 "beurte dit hom sal neem. Deur op 'n ruimte te kliek wat ver wag is sal die "
@@ -2989,7 +2960,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Kan Merle terugveg?"
 
 #: data/scenarios/tutorial/utils.cfg:84
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -3014,12 +2984,11 @@ msgstr ""
 "beantwoord kan word. Die meeste eenhede se handaanvalle is kragtiger as "
 "hulle afstandaanvalle. Eenhede wat goed is met afstandaanvalle is nuttig om "
 "terug te slaan teen eenhede wat spesialiseer in hand tot hand gevegte. "
-"Sommige handgeveg eenhede sonder afstandaanvalle sal glad nie kan terugslaan "
-"nie. Afstandeenhede kan egter nie oor meer as een blok skiet nie; dit is een "
-"van die kenmerkende eienskappe van Wesnoth."
+"Sommige handgeveg eenhede sonder afstandaanvalle sal glad nie kan terug "
+"baklei nie. Afstandeenhede kan egter nie oor meer as een blok skiet nie; dit "
+"is een van die kenmerkende eienskappe van Wesnoth."
 
 #: data/scenarios/tutorial/utils.cfg:85
-#, fuzzy
 msgid ""
 "Every attack does a certain amount of damage per hit, and can be used a "
 "certain number of times per battle. These numbers, called the attack's "
@@ -3030,13 +2999,13 @@ msgid ""
 "damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
 "combat."
 msgstr ""
-"Elke aanval veroorsaak 'n seker hoeveelheid skade vir elke trefhou en kan 'n "
-"sekere aantal kere in 'n geveg gebruik word. Hierdie getalle word die aanval "
-"se skade en trefgetalle genoem en word in daardie volgorde vertoon onder die "
+"Elke aanval veroorsaak 'n sekere hoeveelheid skade per hou en kan 'n sekere "
+"aantal kere in 'n geveg gebruik word. Hierdie getalle word die aanval se "
+"skade en trefgetalle genoem en word in daardie volgorde vertoon onder die "
 "aanval se naam op die eenheid se statustabel en langs dit op die "
 "aanvalkeusebalk. Om vinnig die maksimum skade wat 'n aanval kan veroorsaak "
 "vas te stel, vermenigvuldig die skade met die aantal trefhoue. As my "
-"weerligaanval byvoorbeeld 14 skade aanrig en vier trefhoue het, kn dit "
+"weerligaanval byvoorbeeld 14 skade aanrig en vier trefhoue het, kan dit "
 "soveel as 56 skade in 'n enkele geveg toedien."
 
 #: data/scenarios/tutorial/utils.cfg:85
@@ -3058,7 +3027,6 @@ msgid "Will my fighter hit every time when he attacks?"
 msgstr "Sal my vegter elke keer tref as hy aanval?"
 
 #: data/scenarios/tutorial/utils.cfg:90
-#, fuzzy
 msgid "What's experience?"
 msgstr "Wat is ervaring?"
 
@@ -3078,7 +3046,6 @@ msgstr ""
 "gelykstaande aan 8 keer die vyand se vlak."
 
 #: data/scenarios/tutorial/utils.cfg:91
-#, fuzzy
 msgid "What happens when a unit advances?"
 msgstr "Wat gebeur wanneer 'n eenheid bevorder word?"
 
@@ -3114,10 +3081,18 @@ msgid ""
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
 msgstr ""
+"Wanneer 'n eenheid op 'n dorp geskuif word, verander die vlag van die dorp "
+"afhangende vir wie die eenheid veg. Hierdie aksie neem al die eenheid se "
+"beskikbare skuiwe weg. Dorpe wat oorwin word bring verskeie voordele. Die "
+"kant aan wie die dorp behoort kry 'n goue muntstuk vir elke beurt. Dit "
+"verlaag die onderhoudskoste van die eenhede. Die totaale aantal dorpe onder "
+"jou beheer word vertoon langs 'n prentjie van 'n huis op die "
+"informasiebalkie. Verdere voordele van dorpe is dat hulle eenhede gesondmaak "
+"met 8 LewensPunte per beurt."
 
 #: data/scenarios/tutorial/utils.cfg:96
 msgid "How do I heal when there aren't any villages nearby?"
-msgstr ""
+msgstr "How maak ek my eenhede gesond as daar geen dorpe naby is nie?"
 
 #: data/scenarios/tutorial/utils.cfg:96
 msgid ""
@@ -3128,10 +3103,18 @@ msgid ""
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you beat a "
 "scenario all of your units are fully healed."
 msgstr ""
+"Daar is maniere om 'n eenheid gesond te maak sonder dorpe. As 'n eenheid "
+"botstil staan en glad nie aanval nie herstel hy outomaties 2 LewensPunte "
+"omdat hy rus. As hy egter aangeval word - kan hy nie rus nie - en dus kan hy "
+"nie herstel nie. Daar is ook eenheded wat ander eenhede rondom hulle genees. "
+"Die Elfse Toordokter is 'n voorbeeld hiervan. Eenhede op blokke langs die "
+"Elfse Toordokter se gesondheid herstel met 4 punte per beurt. Ook - as jy 'n "
+"volslae oorwinning behaal in jou scenario, dan word alle eenhede ten volle "
+"genees."
 
 #: data/scenarios/tutorial/utils.cfg:100
 msgid "How do I know how to complete a scenario? Will you always tell me?"
-msgstr ""
+msgstr "Hoe weet ek om 'n scenario te voltooi ? Gaan jy my altyd sê?"
 
 #: data/scenarios/tutorial/utils.cfg:100
 msgid ""
@@ -3142,10 +3125,16 @@ msgid ""
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the scenario is over. Hopefully, it was a victory condition that was met."
 msgstr ""
+"Partykeer is dit nie duidelik hoe om 'n scenario te voltooi deur net na die "
+"dialoog te luister nie. In so 'n geval is dit beter om na die scenario se "
+"doelpunte te kyk, wat na die dialoog verskyn. Die Objektiewe kan ook gesien "
+"word deur te kliek op die ' Objektiewe' in die menu-balkie. Die objektiewe "
+"is scenario doelpunte wat bereik moet word met lyste van oorwinnings en "
+"mislukkings. Hopelik sal dit 'n oorwinning situasie wees."
 
 #: data/scenarios/tutorial/utils.cfg:101
 msgid "What happens when I win a scenario?"
-msgstr ""
+msgstr "Wat gebeur as ek 'n scenario wen ?"
 
 #: data/scenarios/tutorial/utils.cfg:101
 msgid ""
@@ -3155,6 +3144,11 @@ msgid ""
 "immediately after you win. However between scenarios, 20% of your gold is "
 "lost."
 msgstr ""
+"As jy 'n scenario wen sal al jou eenhede oorleef en hul sal ten volle genees "
+"word. Jy hoef nie die eenhede te betaal vir enige oorblywende beurte nie. "
+"Ook, as jy wen sal al die dorpe in die omgewing waar jy is, oorgee aan jou "
+"lëer. Die slegte nuus is, selfs al het jy gewen, sal jy nog steeds 20% van "
+"jou goud tussen scenario's verloor."
 
 #: data/scenarios/tutorial/utils.cfg:105
 msgid ""
@@ -3163,14 +3157,19 @@ msgid ""
 "recruited units, except that instead of a new unit appearing, a unit from a "
 "previous scenario will appear."
 msgstr ""
+"Eerstens, jy moet 20 goue stukke betaal vir enige eenheid wat jy herroep, "
+"maak nie saak watter soort eenheid dit is nie. Behalwe dit is herroepte "
+"eenhede basies dieselfde as eenhede wat jy gewerf het. Herroepte eenhede is "
+"ou eenhede wat jy in die vorige scenario's gebruik het en het dikwels baie "
+"ErvaringsPunte."
 
 #: data/scenarios/tutorial/utils.cfg:105
 msgid "What happens when I recall a unit?"
-msgstr ""
+msgstr "Wat gebeur as ek 'n eenheid herroep ?"
 
 #: data/scenarios/tutorial/utils.cfg:106
 msgid "How should I decide which units to recall?"
-msgstr ""
+msgstr "Hoe moet ek besluit watter eenhede om te herroep ?"
 
 #: data/scenarios/tutorial/utils.cfg:106
 msgid ""
@@ -3283,7 +3282,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:126
 msgid "How do I find out the properties of a specific terrain?"
-msgstr ""
+msgstr "Hoe vind ek uit wat die kenmerke van 'n spesifieke terrein is?"
 
 #: data/scenarios/tutorial/utils.cfg:126
 msgid ""
@@ -3295,6 +3294,14 @@ msgid ""
 "of the hex, then the selected unit's defense, then the number of move points "
 "it will cost the selected unit to move through that hex."
 msgstr ""
+"Om die kenmerke van 'n spesifieke terrein met betrekking tot 'n spesifieke "
+"eenheid vas te stel, kliek regs op die eenheid, kies Eenheidsbeskrywing, kyk "
+"dan na die Terreinveranderlikes. Om uit te vind watter terrein op 'n "
+"spesifiek blok is, beweeg jou wyser oor daardie blok en kyk na die "
+"regterboonste hoek van jou skerm. Daar word in volgorde die naam van die "
+"terrein en dan die blok koördinate vertoon, die eenheid se gekose "
+"verdediging en dan die aantal punte wat dit die gekose eenheid sal kos om "
+"deur daardie blok te beweeg."
 
 #: data/scenarios/tutorial/utils.cfg:130
 msgid ""
@@ -3306,10 +3313,17 @@ msgid ""
 "bonuses/penalties like time of day, so two -50% penalties would add up to -"
 "100%."
 msgstr ""
+"Elke eenheid het 'n sekere weerstand teen elke soort aanval. Hierdie "
+"weerstand is 'n persentasie wat afgetrek word van die teenstander se "
+"wapenskade van daardie soort. As 'n Elfse Verkenner byvoorbeeld deur 'n "
+"Elfse Boogskutter anageval word, rig die boogskutter 20% meer skade as "
+"gewoonlik aan, aangesien Elfse Verkenners -20% weerstand het teen "
+"steekskade. Hierdie bonus/strafpunt word bygetel by ander bonusse/strafpunte "
+"soos die tyd van die dag, dus sal twee -50% strafpunte optel tot -100%."
 
 #: data/scenarios/tutorial/utils.cfg:130
 msgid "How does resistance affect attack damage?"
-msgstr ""
+msgstr "Hoe beïnvloed weerstand aanvalskade?"
 
 #: data/scenarios/tutorial/utils.cfg:131
 msgid ""
@@ -3320,10 +3334,17 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then look at Resistances."
 msgstr ""
+"Daar is 6 soorte skade: lem, steek, impak, vuur, koue en heilige. Swaar "
+"gepantserde eenhede het 'n hoë weerstand teen fisiese soorte skade: lem, "
+"steek en impak, maar 'n lae weerstand teen towerskade: vuur en koue. Alle "
+"lewende eenhede het weerstand teen heilige skade terwyl die wandelende "
+"dooies baie swak daarteen bestand is. Om 'n spesifieke eenheid se weerstand "
+"vas te stel, kliek regs op die eenheid, kies Eenheidsbeskrywing en kyk dan "
+"na Weerstande."
 
 #: data/scenarios/tutorial/utils.cfg:131
 msgid "What are the different damage types?"
-msgstr ""
+msgstr "Wat is die verskillende soortes skade?"
 
 #: data/scenarios/tutorial/utils.cfg:135
 msgid ""
@@ -3331,10 +3352,13 @@ msgid ""
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
 msgstr ""
+"Elke spesialiteit doen iets verskillends; dit is die hele doelwit van 'n "
+"spesialiteit. Om 'n beskrywing van 'n eenheid se spesialiteit vas te stel, "
+"beweeg jou wyser oor die naam van die spesialiteit."
 
 #: data/scenarios/tutorial/utils.cfg:135
 msgid "What do specialties do?"
-msgstr ""
+msgstr "Wat doen spesialiteite?"
 
 #: data/scenarios/tutorial/utils.cfg:136
 msgid ""
@@ -3343,10 +3367,15 @@ msgid ""
 "abilities, and attack specials. Abilities apply to units while attack "
 "specials only apply to one of the unit's attacks."
 msgstr ""
+"Die spesialitieite van 'n eenheid word bepaal deur die eenheidstipe; "
+"byvoorbeeld alle generaals het die leierskap spesialiteit. Daar is twee "
+"soorte spesialiteite: vermoëns en aanvalspesialiteite. Vermoëns is van "
+"toepassing op eenhede terwyl aanval spesialiteite slegs van toepassing is op "
+"'n eenheid se aanvalle."
 
 #: data/scenarios/tutorial/utils.cfg:136
 msgid "Which units get specialties?"
-msgstr ""
+msgstr "Watter eenhede kry spesialiteite?"
 
 #: data/scenarios/tutorial/utils.cfg:137
 msgid ""
@@ -3356,14 +3385,20 @@ msgid ""
 "hitting enemies regardless of what terrain they are on. Units do more damage "
 "while next to a unit of higher level with leadership."
 msgstr ""
+"Daar bestaan 'n groot verskeidenheid spesialiteite en om hulle aan te leer "
+"is deel van die pret van Wesnoth speel. Die twee mees algemene spesialiteite "
+"word 'toorkrag' en 'leierskap' genoem. Tooraanvalle het 'n 70% kans om "
+"vyande te tref ongeag van die terrein waarop hulle hulself bevind. Eenhede "
+"doen meer skade terwyl hulle langs 'n ander eenheid staan met 'n hoër vlak "
+"van leierskap staan."
 
 #: data/scenarios/tutorial/utils.cfg:137
 msgid "What kinds of specialties can my units get?"
-msgstr ""
+msgstr "Watter soorte spasiliteite kan my eenhede kry?"
 
 #: data/scenarios/tutorial/utils.cfg:138
 msgid "How do I use specialties?"
-msgstr ""
+msgstr "Hoe gebruik ek spesialiteite?"
 
 #: data/scenarios/tutorial/utils.cfg:138
 msgid ""
@@ -3372,6 +3407,10 @@ msgid ""
 "you must move a unit with leadership next to another unit, then attack with "
 "the other unit."
 msgstr ""
+"Al wat jy moet doen om 'n spesialiteit te gebruik is om op 'n manier te "
+"beweeg of aan te val wat die spesialiteit aan die gang sit. As jy "
+"byvoorbeeld leierskap wil gebruik beweeg jy eenvoudig jou eenheid tot langs "
+"'n ander eenheid en val dan met die ander eenheid aan."
 
 #: data/scenarios/tutorial/utils.cfg:142
 msgid ""
@@ -3380,24 +3419,31 @@ msgid ""
 "who picks them up a new weapon. However there are usually not that many "
 "objects in a campaign."
 msgstr ""
+"Die voorwerpe wat jy teëkom word deur die scenario-ontwerper ingesit, dus "
+"wissel hulle van veldtog tot veldtog. In Troonopvolger gee die meeste "
+"voorwerpe wat eenhede optel hulle 'n nuwe wapen. Daar is egter gewoonlik nie "
+"so baie voorwerpe in 'n veldtog nie."
 
 #: data/scenarios/tutorial/utils.cfg:142
 msgid "What kind of objects am I likely to encounter?"
-msgstr ""
+msgstr "Watter soorte voorwerpe kan ek verwag om teë te kom?"
 
 #: data/scenarios/tutorial/utils.cfg:143
 msgid "How long do these objects last?"
-msgstr ""
+msgstr "Hoe lank hou die voorwerpe?"
 
 #: data/scenarios/tutorial/utils.cfg:143
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
+"Die meeste voorwerpe maak permanente veranderinge tot die eenheid wat hulle "
+"ontvang. Daar is egter 'n paar voorwerpe, soos heilige water, wat net hou "
+"tot en met die einde van 'n scenario."
 
 #: data/scenarios/tutorial/utils.cfg:147
 msgid "How do I play a campaign?"
-msgstr ""
+msgstr "Hoe speel ek 'n veldtog?"
 
 #: data/scenarios/tutorial/utils.cfg:147
 msgid ""
@@ -3405,10 +3451,13 @@ msgid ""
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
+"Om 'n veldtog te begin, begin Wesnoth, kies 'Veldtog', kies die veldtog om "
+"te speel, kies dan Maklik, Normaal of Moeilik. Troonopvolger word aanbeveel "
+"vir Wesnoth nuwelinge."
 
 #: data/scenarios/tutorial/utils.cfg:148
 msgid "How do I play multiplayer?"
-msgstr ""
+msgstr "Hoe speel ek 'n veelspeler spel?"
 
 #: data/scenarios/tutorial/utils.cfg:148
 msgid ""
@@ -3417,101 +3466,97 @@ msgid ""
 "server, where you can join a game by selecting it, then selecting 'Join "
 "Game'."
 msgstr ""
+"Om Wesnoth teen ander mense te speel, kies 'Veelspeler'. Kies dan 'Sluit aan "
+"by Amptelike Bediener'. Dit sal jou aan die amptelike Wesnoth bediener "
+"verbind, waar jy aan 'n spel kan deelneem deur dit te kies en dan 'Speel "
+"saam' te kies."
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
-msgstr ""
+msgstr "Ondergronds"
 
 #: data/terrain.cfg:11 src/multiplayer_create.cpp:52
 #: src/multiplayer_lobby.cpp:184
 msgid "Shroud"
-msgstr ""
+msgstr "Sluier"
 
 #: data/terrain.cfg:18 src/multiplayer_lobby.cpp:206
-#, fuzzy
 msgid "Fog"
 msgstr "Mis"
 
 #: data/terrain.cfg:134
 msgid "Dirt"
-msgstr ""
+msgstr "Grond"
 
 #: data/terrain.cfg:213 data/terrain.cfg:224
-#, fuzzy
 msgid "Desert Village"
 msgstr "Woestyndorp"
 
 #: data/terrain.cfg:235
 msgid "Tropical Forest Village"
-msgstr ""
+msgstr "Tropiese woud dorp"
 
 #: data/terrain.cfg:246
 msgid "Oasis"
 msgstr "Oase"
 
 #: data/terrain.cfg:275
-#, fuzzy
 msgid "Snow Village"
 msgstr "Sneeudorp"
 
 #: data/terrain.cfg:293
 msgid "Desert Hills"
-msgstr ""
+msgstr "Woestyn heuwels"
 
 #: data/terrain.cfg:301
 msgid "Snow Hills"
-msgstr ""
+msgstr "Sneeuheuwels"
 
 #: data/terrain.cfg:317
-#, fuzzy
 msgid "Desert Mountains"
 msgstr "Woestynberge"
 
 #: data/terrain.cfg:332
-#, fuzzy
 msgid "Tropical Forest"
 msgstr "Tropiese Woud"
 
 #: data/terrain.cfg:341
-#, fuzzy
 msgid "Snow Forest"
 msgstr "Sneeuwoud"
 
 #: data/terrain.cfg:383
 msgid "Encampment"
-msgstr ""
+msgstr "Kamp"
 
 #: data/terrain.cfg:393
-#, fuzzy
 msgid "Dwarven Castle"
-msgstr "Dwerge"
+msgstr "Dwerge Kasteel"
 
 #: data/terrain.cfg:403
 msgid "Keep"
-msgstr ""
+msgstr "Vesting"
 
 #: data/terrain.cfg:430
 msgid "Ruin"
-msgstr ""
+msgstr "Bouval"
 
 #: data/terrain.cfg:440
 msgid "Sunken Ruin"
-msgstr ""
+msgstr "Gesonke Bouval"
 
 #: data/terrain.cfg:451
 msgid "Swamp Ruin"
-msgstr ""
+msgstr "Moeras Bouval"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: data/themes/default.cfg:89
 msgid "Actions"
-msgstr ""
+msgstr "Aksies"
 
 #: data/themes/default.cfg:111
-#, fuzzy
 msgid "End Turn"
 msgstr "Eindig Beurt"
 
@@ -3538,7 +3583,7 @@ msgstr "eenhede"
 
 #: data/themes/default.cfg:213
 msgid "upkeep"
-msgstr ""
+msgstr "onderhoud"
 
 #: data/themes/default.cfg:222
 msgid "income"
@@ -3546,25 +3591,27 @@ msgstr "inkomste"
 
 #: data/themes/default.cfg:358
 msgid "statuspanel^level"
-msgstr ""
+msgstr "vlak"
 
 #: data/themes/default.cfg:389
 msgid "statuspanel^movement"
-msgstr ""
+msgstr "beweging"
 
 #: data/themes/default.cfg:513
 msgid "Act."
-msgstr ""
+msgstr "Episode."
 
 #: data/themes/default.cfg:546
 msgid "short end-turn^End"
-msgstr ""
+msgstr "Eindig"
 
 #: data/tips.cfg:1
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
+"Regverdige eenhede veg beter bedags, chaotiese eenhede veg beter snags en "
+"neutrale eenhede word nie ge-affekteer deur dag of nag nie."
 
 #: data/tips.cfg:2
 msgid ""
@@ -3799,14 +3846,13 @@ msgstr ""
 
 #: data/traits.cfg:81
 msgid "resilient"
-msgstr ""
+msgstr "volhard"
 
 #: data/translations/english.cfg:2
 msgid "Easy"
 msgstr "Maklik"
 
 #: data/translations/english.cfg:3
-#, fuzzy
 msgid "Medium"
 msgstr "Middelmatig"
 
@@ -3850,7 +3896,7 @@ msgstr ""
 #: data/units/Elvish_Avenger.cfg:136 data/units/Elvish_Ranger.cfg:20
 #: data/units/Elvish_Ranger.cfg:135
 msgid "ambush"
-msgstr ""
+msgstr "lokval"
 
 #: data/translations/english.cfg:31
 msgid ""
@@ -3871,7 +3917,7 @@ msgstr ""
 #: data/units/Saurian_Soothsayer.cfg:22 data/units/White_Mage.cfg:13
 #: data/units/White_Mage.cfg:88
 msgid "cures"
-msgstr ""
+msgstr "gesondmaak"
 
 #: data/translations/english.cfg:40
 msgid ""
@@ -3889,7 +3935,7 @@ msgstr ""
 #: data/units/Paladin.cfg:24 data/units/Saurian_Icecaster.cfg:21
 #: data/units/Saurian_Tribalist.cfg:21
 msgid "heals"
-msgstr ""
+msgstr "gesondmaak"
 
 #: data/translations/english.cfg:47
 msgid ""
@@ -3903,7 +3949,7 @@ msgstr ""
 
 #: data/translations/english.cfg:49
 msgid "illuminates"
-msgstr ""
+msgstr "verlig"
 
 #: data/translations/english.cfg:54
 msgid ""
@@ -3951,7 +3997,7 @@ msgstr ""
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:21
 #: data/units/Shadow.cfg:16
 msgid "nightstalk"
-msgstr ""
+msgstr "nagsluip"
 
 #: data/translations/english.cfg:71
 msgid ""
@@ -3965,7 +4011,7 @@ msgstr ""
 #: data/units/Troll_Hero.cfg:7 data/units/Troll_Rocklobber.cfg:7
 #: data/units/Troll_Warrior.cfg:7 data/units/Troll_Whelp.cfg:7
 msgid "regenerates"
-msgstr ""
+msgstr "regenereer"
 
 #: data/translations/english.cfg:76
 msgid ""
@@ -3982,7 +4028,7 @@ msgstr ""
 #: data/units/Saurian_Ambusher.cfg:20 data/units/Saurian_Flanker.cfg:22
 #: data/units/Saurian_Skirmisher.cfg:20 data/units/Saurian_Warrior.cfg:23
 msgid "skirmisher"
-msgstr ""
+msgstr "skermutselaar"
 
 #: data/translations/english.cfg:81
 msgid ""
@@ -3994,7 +4040,7 @@ msgstr ""
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
 #: data/units/Merman_Hoplite.cfg:26
 msgid "steadfast"
-msgstr ""
+msgstr "standvastig"
 
 #: data/translations/english.cfg:86
 msgid ""
@@ -4006,7 +4052,7 @@ msgstr ""
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:22
 #: data/units/Silver_Mage.cfg:158
 msgid "teleport"
-msgstr ""
+msgstr "teleporteer"
 
 #: data/translations/english.cfg:93
 msgid ""
@@ -4048,7 +4094,7 @@ msgid ""
 "This attack always has a 70% chance to hit."
 msgstr ""
 "Magies:\n"
-"Hierdie aanvaltipe kry altyd 'n 70% kans om te tref."
+" Hierdie aanval het 'n 70 % kans om 'n trefhou te wees."
 
 #: data/translations/english.cfg:111
 msgid ""
@@ -4092,56 +4138,57 @@ msgstr "$name se Brug,$name se Drif"
 
 #: data/translations/english.cfg:133
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr ""
+msgstr "$name's Highway,$name's Pass,Path of $name"
 
 #: data/translations/english.cfg:134
 msgid "$name River,River $name"
-msgstr "$name Rivier,$name|rivier"
+msgstr "$name Rivier,$name rivier"
 
 #: data/translations/english.cfg:135
 msgid "$name Forest,$name's Forest"
-msgstr ""
+msgstr "$name Forest,$name's Forest"
 
 #: data/translations/english.cfg:136
 msgid "$name Lake"
-msgstr "$name|meer"
+msgstr "$name Meer"
 
 #: data/translations/english.cfg:137
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr ""
+msgstr "$name|bury,$name|ham,$name|ton"
 
 #: data/translations/english.cfg:138
 msgid "$name|harbor,$name|port"
-msgstr ""
+msgstr "$name|harbor,$name|port"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr ""
+msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
+msgstr "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "$name|ham,$name|ton,$name|field"
 
 #: data/translations/english.cfg:142
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr ""
+msgstr "$name|ham,$name|ton,$name|wood,$name Forest"
 
 #: data/translations/english.cfg:143
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
+msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
 #: data/translations/english.cfg:144
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
+"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
-msgstr ""
+msgstr "Antieke Sielsuiger"
 
 #: data/units/Ancient_Lich.cfg:22
 msgid ""
@@ -4157,7 +4204,7 @@ msgstr ""
 #: data/units/Ancient_Lich.cfg:44 data/units/Demilich.cfg:32
 #: data/units/Dread_Lich.cfg:21 data/units/Ghost.cfg:23 data/units/Lich.cfg:24
 msgid "touch"
-msgstr ""
+msgstr "aanraak"
 
 #: data/units/Ancient_Lich.cfg:45 data/units/Ancient_Lich.cfg:58
 #: data/units/Cockatrice.cfg:34 data/units/Dark_Adept.cfg:40
@@ -4174,7 +4221,6 @@ msgstr ""
 #: data/units/Saurian_Icecaster.cfg:43 data/units/Saurian_Soothsayer.cfg:42
 #: data/units/Saurian_Tribalist.cfg:41 data/units/Spectre.cfg:70
 #: data/units/Wraith.cfg:46
-#, fuzzy
 msgid "cold"
 msgstr "koue"
 
@@ -4186,14 +4232,12 @@ msgstr "koue"
 #: data/units/Spectre.cfg:57 data/units/Vampire_Bat.cfg:24
 #: data/units/Vampire_Lady.cfg:27 data/units/Vampire_Lady.cfg:40
 #: data/units/Wraith.cfg:33
-#, fuzzy
 msgid "drain"
 msgstr "dreineer"
 
 #: data/units/Ancient_Lich.cfg:57 data/units/Deathmaster.cfg:53
 #: data/units/Demilich.cfg:45 data/units/Dread_Lich.cfg:34
 #: data/units/Initiate.cfg:20 data/units/Lich.cfg:37
-#, fuzzy
 msgid "magic"
 msgstr "toorkuns"
 
@@ -4223,18 +4267,17 @@ msgstr "toorkuns"
 #: data/units/Sea_Hag.cfg:35 data/units/Silver_Mage.cfg:103
 #: data/units/Silver_Mage.cfg:239 data/units/White_Mage.cfg:52
 #: data/units/White_Mage.cfg:127
-#, fuzzy
 msgid "magical"
 msgstr "magies"
 
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
-msgstr ""
+msgstr "Antieke Wose"
 
 #: data/units/Ancient_Wose.cfg:7 data/units/Elder_Wose.cfg:7
 #: data/units/Wose.cfg:7
 msgid "ambush,regenerates"
-msgstr ""
+msgstr "lokval,regenereer"
 
 #: data/units/Ancient_Wose.cfg:22
 msgid ""
@@ -4482,7 +4525,6 @@ msgstr "dolk"
 #: data/units/Vampire_Bat.cfg:20 data/units/Vampire_Lady.cfg:22
 #: data/units/Wolf_Rider.cfg:24 data/units/Wraith.cfg:29
 #: data/units/Young_Ogre.cfg:42
-#, fuzzy
 msgid "blade"
 msgstr "lem"
 
@@ -4491,7 +4533,7 @@ msgstr "lem"
 #: data/units/Rogue.cfg:90 data/units/Shadow.cfg:29 data/units/Thief.cfg:91
 #: data/units/Thief.cfg:194 src/actions.cpp:588
 msgid "backstab"
-msgstr ""
+msgstr "rugsteek"
 
 #: data/units/Assassin.cfg:68 data/units/Assassin.cfg:150
 #: data/units/Rogue.cfg:41 data/units/Rogue.cfg:103
@@ -4507,13 +4549,12 @@ msgid "poison"
 msgstr "gif"
 
 #: data/units/Assassin.cfg:98
-#, fuzzy
 msgid "female^Assassin"
 msgstr "Sluipmoordenaar"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
-msgstr ""
+msgstr "Bandiet"
 
 #: data/units/Bandit.cfg:18
 msgid ""
@@ -4534,9 +4575,8 @@ msgid "mace"
 msgstr ""
 
 #: data/units/Battle_Princess.cfg:3 data/units/Battle_Princess.cfg:55
-#, fuzzy
 msgid "female^Battle Princess"
-msgstr "Prinses"
+msgstr "Oorlogs Prinses"
 
 #: data/units/Battle_Princess.cfg:19 data/units/Battle_Princess.cfg:70
 msgid "leadership,skirmisher"
@@ -4588,17 +4628,17 @@ msgstr ""
 #: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:24
 #: data/units/Swordsman.cfg:24
 msgid "sword"
-msgstr ""
+msgstr "swaard"
 
 #: data/units/Battle_Princess.cfg:91 data/units/Commander.cfg:132
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:116
 #: data/units/Princess.cfg:77
 msgid "scepter of fire"
-msgstr ""
+msgstr "Vlamsepter"
 
 #: data/units/Blood_Bat.cfg:3
 msgid "Blood Bat"
-msgstr ""
+msgstr "Bloed Vlêrmuis"
 
 #: data/units/Blood_Bat.cfg:17
 msgid ""
@@ -4613,11 +4653,11 @@ msgstr ""
 #: data/units/Sea_Serpent.cfg:20 data/units/Vampire_Bat.cfg:19
 #: data/units/Wolf_Rider.cfg:23
 msgid "fangs"
-msgstr "tande"
+msgstr "slagtande"
 
 #: data/units/Bone_Shooter.cfg:3
 msgid "Bone Shooter"
-msgstr ""
+msgstr "Been Skieter"
 
 #: data/units/Bone_Shooter.cfg:15
 msgid ""
@@ -4631,7 +4671,7 @@ msgstr ""
 
 #: data/units/Bone_Shooter.cfg:36 data/units/Soul_Shooter.cfg:27
 msgid "stab"
-msgstr ""
+msgstr "steek"
 
 #: data/units/Bone_Shooter.cfg:50 data/units/Bowman.cfg:50
 #: data/units/Commander.cfg:57 data/units/Elvish_Archer.cfg:62
@@ -4713,10 +4753,9 @@ msgstr "boog"
 #: data/units/Vampire_Lady.cfg:36 data/units/Wall_Guard.cfg:38
 #: data/units/Watch_Tower.cfg:20
 msgid "pierce"
-msgstr ""
+msgstr "steek"
 
 #: data/units/Bowman.cfg:3
-#, fuzzy
 msgid "Bowman"
 msgstr "Boogskutter"
 
@@ -4731,7 +4770,7 @@ msgstr ""
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
-msgstr ""
+msgstr "Kavalier"
 
 #: data/units/Cavalier.cfg:26
 msgid ""
@@ -4749,11 +4788,11 @@ msgstr ""
 #: data/units/Orcish_Slurbow.cfg:40 data/units/Orcish_Slurbow.cfg:67
 #: data/units/Sergeant.cfg:41 data/units/Wall_Guard.cfg:37
 msgid "crossbow"
-msgstr ""
+msgstr "Kruisboog"
 
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
-msgstr ""
+msgstr "Ruitery"
 
 #: data/units/Cavalryman.cfg:28
 msgid ""
@@ -4779,7 +4818,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Cave_Spider.cfg:47
-#, fuzzy
 msgid "web"
 msgstr "spinnerak"
 
@@ -4793,7 +4831,7 @@ msgstr "verstadig"
 
 #: data/units/Chocobone.cfg:3
 msgid "Chocobone"
-msgstr ""
+msgstr "Chocobone"
 
 #: data/units/Chocobone.cfg:18
 msgid ""
@@ -4821,7 +4859,6 @@ msgstr ""
 #: data/units/Saurian_Skirmisher.cfg:40 data/units/Saurian_Warrior.cfg:25
 #: data/units/Saurian_Warrior.cfg:43 data/units/Spearman.cfg:61
 #: data/units/Spearman.cfg:112
-#, fuzzy
 msgid "spear"
 msgstr "spies"
 
@@ -4830,7 +4867,7 @@ msgstr "spies"
 #: data/units/Lancer.cfg:27 data/units/Paladin.cfg:49 src/actions.cpp:464
 #: src/actions.cpp:579
 msgid "charge"
-msgstr ""
+msgstr "bestorm"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -4845,16 +4882,16 @@ msgstr ""
 
 #: data/units/Cockatrice.cfg:33
 msgid "gaze"
-msgstr ""
+msgstr "staar"
 
 # besteen?
 #: data/units/Cockatrice.cfg:38 src/actions.cpp:881 src/actions.cpp:1048
 msgid "stone"
-msgstr ""
+msgstr "klip"
 
 #: data/units/Commander.cfg:3 data/units/Commander.cfg:90
 msgid "Commander"
-msgstr ""
+msgstr "Bevelvoerder"
 
 #: data/units/Commander.cfg:20 data/units/Commander.cfg:107
 msgid ""
@@ -4867,7 +4904,7 @@ msgstr ""
 
 #: data/units/Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
-msgstr ""
+msgstr "Inkvis"
 
 #: data/units/Cuttle_Fish.cfg:17
 msgid ""
@@ -4879,7 +4916,7 @@ msgstr ""
 
 #: data/units/Cuttle_Fish.cfg:33 data/units/Tentacle.cfg:21
 msgid "tentacle"
-msgstr ""
+msgstr "tentakel"
 
 #: data/units/Cuttle_Fish.cfg:69
 msgid "ink"
@@ -4887,7 +4924,7 @@ msgstr "ink"
 
 #: data/units/Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr ""
+msgstr "Ervare Swartsiel"
 
 #: data/units/Dark_Adept.cfg:24 data/units/Dark_Adept.cfg:86
 msgid ""
@@ -4909,15 +4946,15 @@ msgstr ""
 #: data/units/Dark_Adept.cfg:39 data/units/Dark_Adept.cfg:101
 #: data/units/Dark_Sorcerer.cfg:47 data/units/Necromancer.cfg:38
 msgid "chill wave"
-msgstr ""
+msgstr "Rillingsgolf"
 
 #: data/units/Dark_Adept.cfg:66
 msgid "female^Dark Adept"
-msgstr ""
+msgstr "Ervare Swartsiel"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
-msgstr ""
+msgstr "Duister Koningin"
 
 #: data/units/Dark_Queen.cfg:18
 msgid ""
@@ -4932,7 +4969,7 @@ msgstr "septer"
 
 #: data/units/Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Duistere Towenaar"
 
 #: data/units/Dark_Sorcerer.cfg:21
 msgid ""
@@ -4956,7 +4993,7 @@ msgstr ""
 
 #: data/units/Dark_Sorcerer.cfg:29 data/units/Soulless.cfg:44
 msgid "plague(Walking Corpse)"
-msgstr ""
+msgstr "Wandelende Plaagdooie"
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -4993,13 +5030,12 @@ msgstr ""
 
 #: data/units/Death_Knight.cfg:34 data/units/Dwarvish_Lord.cfg:28
 #: data/units/Dwarvish_Steelclad.cfg:27
-#, fuzzy
 msgid "battle axe"
 msgstr "strydbyl"
 
 #: data/units/Deathblade.cfg:3
 msgid "Deathblade"
-msgstr ""
+msgstr "Doodslem"
 
 #: data/units/Deathblade.cfg:17
 msgid ""
@@ -5012,7 +5048,7 @@ msgstr ""
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
-msgstr ""
+msgstr "Dodemeester"
 
 #: data/units/Deathmaster.cfg:17
 msgid ""
@@ -5064,11 +5100,11 @@ msgstr ""
 #: data/units/Shadow.cfg:24 data/units/Skeletal_Dragon.cfg:50
 #: data/units/Sleeping_Gryphon.cfg:19
 msgid "claws"
-msgstr ""
+msgstr "kloue"
 
 #: data/units/Dragoon.cfg:3
 msgid "Dragoon"
-msgstr ""
+msgstr "Dragon"
 
 #: data/units/Dragoon.cfg:25
 msgid ""
@@ -5081,7 +5117,7 @@ msgstr ""
 
 #: data/units/Drake_Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr ""
+msgstr "Drake Lem-meester"
 
 #: data/units/Drake_Blademaster.cfg:20
 msgid ""
@@ -5096,7 +5132,7 @@ msgstr ""
 #: data/units/Drake_Inferno.cfg:43 data/units/Drake_Sky.cfg:51
 #: data/units/Drake_Warrior.cfg:45 data/units/Fire_Dragon.cfg:59
 msgid "fire breath"
-msgstr ""
+msgstr "vuurasem"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
@@ -5297,7 +5333,7 @@ msgstr ""
 
 #: data/units/Drake_Warden.cfg:4
 msgid "Drake Warden"
-msgstr ""
+msgstr "Drake Bewaarder"
 
 #: data/units/Drake_Warden.cfg:20
 msgid ""
@@ -5309,7 +5345,7 @@ msgstr ""
 
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "Drake Vegter"
 
 #: data/units/Drake_Warrior.cfg:19
 msgid ""
@@ -5439,7 +5475,7 @@ msgstr "hamer"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Dwergse Wag"
 
 #: data/units/Dwarvish_Guardsman.cfg:22
 msgid ""
@@ -5450,7 +5486,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
-msgstr ""
+msgstr "Dwergse Heer"
 
 #: data/units/Dwarvish_Lord.cfg:25
 msgid ""
@@ -5466,7 +5502,7 @@ msgstr "handbyl"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "Dwergse Towenaar"
 
 #: data/units/Dwarvish_Runemaster.cfg:17
 msgid ""
@@ -5478,16 +5514,15 @@ msgstr ""
 
 #: data/units/Dwarvish_Runemaster.cfg:21
 msgid "runic hammer"
-msgstr ""
+msgstr "ruine hamer"
 
 #: data/units/Dwarvish_Runemaster.cfg:42
-#, fuzzy
 msgid "Lightning bolt"
 msgstr "Blitsstraal"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "Dwergse Wag"
 
 #: data/units/Dwarvish_Sentinel.cfg:25
 msgid ""
@@ -5533,7 +5568,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Thunderer.cfg:63
 msgid "thunderstick"
-msgstr ""
+msgstr "donderstok"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
@@ -5555,7 +5590,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Thunderguard.cfg:48
 msgid "dragonstick"
-msgstr ""
+msgstr "drakestok"
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
@@ -5570,7 +5605,7 @@ msgstr ""
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
-msgstr ""
+msgstr "Oud Towenaar"
 
 #: data/units/Elder_Mage.cfg:22
 msgid ""
@@ -5580,13 +5615,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Elder_Mage.cfg:40
-#, fuzzy
 msgid "lightning"
 msgstr "weerlig"
 
 #: data/units/Elder_Wose.cfg:3
 msgid "Elder Wose"
-msgstr ""
+msgstr "Oud Wose"
 
 #: data/units/Elder_Wose.cfg:21
 msgid ""
@@ -5607,7 +5641,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Archer.cfg:3
-#, fuzzy
 msgid "Elvish Archer"
 msgstr "Elfse Boogskutter"
 
@@ -5622,13 +5655,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Archer.cfg:105
-#, fuzzy
 msgid "female^Elvish Archer"
 msgstr "Elfse Boogskutter"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
-msgstr ""
+msgstr "Elfse Wreker"
 
 #: data/units/Elvish_Avenger.cfg:26 data/units/Elvish_Avenger.cfg:142
 msgid ""
@@ -5649,10 +5681,9 @@ msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:119
 msgid "female^Elvish Avenger"
-msgstr ""
+msgstr "Elfse Wreeker"
 
 #: data/units/Elvish_Captain.cfg:3
-#, fuzzy
 msgid "Elvish Captain"
 msgstr "Elfse Kaptein"
 
@@ -5671,7 +5702,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Champion.cfg:3
-#, fuzzy
 msgid "Elvish Champion"
 msgstr "Elfse Kampioen"
 
@@ -5687,7 +5717,7 @@ msgstr ""
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
-msgstr ""
+msgstr "Elfse Bostoorder"
 
 #: data/units/Elvish_Druid.cfg:24
 msgid ""
@@ -5705,16 +5735,15 @@ msgstr ""
 
 #: data/units/Elvish_Druid.cfg:45 data/units/Elvish_Shyde.cfg:54
 msgid "ensnare"
-msgstr ""
+msgstr "vasvang"
 
 #: data/units/Elvish_Druid.cfg:66 data/units/Elvish_Shyde.cfg:75
-#, fuzzy
 msgid "thorns"
 msgstr "dorings"
 
 #: data/units/Elvish_Enchantress.cfg:3
 msgid "female^Elvish Enchantress"
-msgstr ""
+msgstr "Elfse Verleier"
 
 #: data/units/Elvish_Enchantress.cfg:21
 msgid ""
@@ -5726,13 +5755,13 @@ msgstr ""
 #: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:46
 #: data/units/Elvish_Sorceress.cfg:65
 msgid "entangle"
-msgstr ""
+msgstr "verstrengel"
 
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:43
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:84
 msgid "faerie fire"
-msgstr ""
+msgstr "feë vuur"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -5748,7 +5777,7 @@ msgstr ""
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
-msgstr ""
+msgstr "Elfse Held"
 
 #: data/units/Elvish_Hero.cfg:19
 msgid ""
@@ -5759,7 +5788,7 @@ msgstr ""
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "Elfse Hoog Heer"
 
 #: data/units/Elvish_High_Lord.cfg:19
 msgid ""
@@ -5771,7 +5800,7 @@ msgstr ""
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
-msgstr ""
+msgstr "Elfse Dame"
 
 #: data/units/Elvish_Lady.cfg:19
 msgid ""
@@ -5783,11 +5812,11 @@ msgstr ""
 
 #: data/units/Elvish_Lady.cfg:21
 msgid "shove"
-msgstr ""
+msgstr "stoot"
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
-msgstr ""
+msgstr "Elfse Heer"
 
 #: data/units/Elvish_Lord.cfg:19
 msgid ""
@@ -5797,7 +5826,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:3
-#, fuzzy
 msgid "Elvish Marksman"
 msgstr "Elfse Skut"
 
@@ -5819,17 +5847,17 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:65
 #: data/units/Elvish_Sharpshooter.cfg:185
 msgid "longbow"
-msgstr ""
+msgstr "grootboog"
 
 #: data/units/Elvish_Marksman.cfg:67 data/units/Elvish_Marksman.cfg:187
 #: data/units/Elvish_Sharpshooter.cfg:67
 #: data/units/Elvish_Sharpshooter.cfg:187 data/units/Fire_Dragon.cfg:62
 msgid "marksman"
-msgstr ""
+msgstr "skutter"
 
 #: data/units/Elvish_Marksman.cfg:123
 msgid "female^Elvish Marksman"
-msgstr ""
+msgstr "Elfse Skut"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
@@ -5851,7 +5879,7 @@ msgstr ""
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
-msgstr ""
+msgstr "Elfse Ruiter"
 
 #: data/units/Elvish_Outrider.cfg:29
 msgid ""
@@ -5868,7 +5896,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
-msgstr ""
+msgstr "Elfse Bewaarder"
 
 #: data/units/Elvish_Ranger.cfg:23 data/units/Elvish_Ranger.cfg:138
 msgid ""
@@ -5885,11 +5913,11 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:117
 msgid "female^Elvish Ranger"
-msgstr ""
+msgstr "Elfse Bewaarder"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
-msgstr ""
+msgstr "Elfse Ruiter"
 
 #: data/units/Elvish_Rider.cfg:31
 msgid ""
@@ -5904,7 +5932,7 @@ msgstr ""
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
-msgstr ""
+msgstr "Elfse Verkenner"
 
 #: data/units/Elvish_Scout.cfg:30
 msgid ""
@@ -5917,7 +5945,7 @@ msgstr ""
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
-msgstr ""
+msgstr "Elfse Toordokter"
 
 #: data/units/Elvish_Shaman.cfg:24
 msgid ""
@@ -5937,7 +5965,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:3
-#, fuzzy
 msgid "Elvish Sharpshooter"
 msgstr "Elfse Skerpskutter"
 
@@ -5955,7 +5982,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:123
 msgid "female^Elvish Sharpshooter"
-msgstr ""
+msgstr "Elfse Skerpskutter"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
@@ -5975,11 +6002,11 @@ msgstr ""
 
 #: data/units/Elvish_Shyde.cfg:28 data/units/Elvish_Sylph.cfg:25
 msgid "faerie touch"
-msgstr ""
+msgstr "feë aanraking"
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "female^Elvish Sorceress"
-msgstr ""
+msgstr "Elfse Towenares"
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -6002,11 +6029,11 @@ msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:52
 msgid "gossamer"
-msgstr ""
+msgstr "gossamer"
 
 #: data/units/Fencer.cfg:3
 msgid "Fencer"
-msgstr ""
+msgstr "Skermer"
 
 #: data/units/Fencer.cfg:22
 msgid ""
@@ -6026,7 +6053,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
-#, fuzzy
 msgid "Fighter"
 msgstr "Vegter"
 
@@ -6039,7 +6065,7 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
-msgstr ""
+msgstr "Vuurdraak"
 
 #: data/units/Fire_Dragon.cfg:18
 msgid ""
@@ -6052,7 +6078,7 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:22
 msgid "bite"
-msgstr ""
+msgstr "byt"
 
 #: data/units/Fire_Dragon.cfg:40
 msgid "tail"
@@ -6060,7 +6086,7 @@ msgstr "stert"
 
 #: data/units/Fireball.cfg:4
 msgid "Fireball"
-msgstr ""
+msgstr "Vuurbal"
 
 #: data/units/Fireball.cfg:17
 msgid ""
@@ -6069,7 +6095,7 @@ msgstr ""
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
-msgstr ""
+msgstr "Skurk"
 
 #: data/units/Footpad.cfg:17 data/units/Footpad.cfg:83
 msgid ""
@@ -6084,14 +6110,14 @@ msgstr ""
 #: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:20
 #: data/units/Troll.cfg:23 data/units/Troll_Hero.cfg:23
 msgid "club"
-msgstr ""
+msgstr "knuppel"
 
 #: data/units/Footpad.cfg:38 data/units/Footpad.cfg:104
 #: data/units/Outlaw.cfg:39 data/units/Outlaw.cfg:113
 #: data/units/Outlaw_Princess.cfg:77 data/units/Outlaw_Queen.cfg:78
 #: data/units/Troll_Rocklobber.cfg:42
 msgid "sling"
-msgstr ""
+msgstr "slinger"
 
 #: data/units/Footpad.cfg:69
 msgid "female^Footpad"
@@ -6111,19 +6137,19 @@ msgstr ""
 
 #: data/units/Galleon.cfg:19
 msgid "dummy"
-msgstr ""
+msgstr "pop"
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
-msgstr ""
+msgstr "Hek"
 
 #: data/units/Gate.cfg:19
 msgid "The door will not open for any who are not allied with it."
-msgstr ""
+msgstr "Die deur sal nie oopgaan tensy jy deel van die bondgenootskap is nie."
 
 #: data/units/Gate.cfg:21
 msgid "bump"
-msgstr ""
+msgstr "stamp"
 
 #: data/units/General.cfg:3
 msgid "General"
@@ -6141,7 +6167,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Ghost.cfg:3
-#, fuzzy
 msgid "Ghost"
 msgstr "Spook"
 
@@ -6162,7 +6187,7 @@ msgstr ""
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
-msgstr ""
+msgstr "Gees"
 
 #: data/units/Ghoul.cfg:20
 msgid ""
@@ -6183,7 +6208,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Massiewe Modderkruiper"
 
 #: data/units/Giant_Mudcrawler.cfg:17
 msgid ""
@@ -6205,7 +6230,7 @@ msgstr ""
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
-msgstr ""
+msgstr "Reuse Skerpioen"
 
 #: data/units/Giant_Scorpion.cfg:17
 msgid ""
@@ -6215,15 +6240,15 @@ msgstr ""
 
 #: data/units/Giant_Scorpion.cfg:20
 msgid "sting"
-msgstr ""
+msgstr "angel"
 
 #: data/units/Giant_Scorpion.cfg:38
 msgid "pincers"
-msgstr ""
+msgstr "knypers"
 
 #: data/units/Goblin_Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr ""
+msgstr "Kabouter Spiesvegter"
 
 #: data/units/Goblin_Impaler.cfg:20
 msgid ""
@@ -6238,7 +6263,7 @@ msgstr ""
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
-msgstr ""
+msgstr "Kabouter Ridder"
 
 #: data/units/Goblin_Knight.cfg:20
 msgid ""
@@ -6254,7 +6279,7 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:3
 msgid "Goblin Pillager"
-msgstr ""
+msgstr "Kabouter Stroper"
 
 #: data/units/Goblin_Pillager.cfg:21
 msgid ""
@@ -6269,16 +6294,16 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:24
 msgid "torch"
-msgstr ""
+msgstr "fakkel"
 
 #: data/units/Goblin_Pillager.cfg:40 data/units/Merman_Entangler.cfg:30
 #: data/units/Merman_Netcaster.cfg:29
 msgid "net"
-msgstr ""
+msgstr "net"
 
 #: data/units/Goblin_Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr ""
+msgstr "Kabouter Spiesman"
 
 #: data/units/Goblin_Spearman.cfg:19
 msgid ""
@@ -6294,7 +6319,7 @@ msgstr ""
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
-msgstr ""
+msgstr "Groot Ridder"
 
 #: data/units/Grand_Knight.cfg:20
 msgid ""
@@ -6316,7 +6341,7 @@ msgstr ""
 #: data/units/Grand_Knight.cfg:42 data/units/Knight.cfg:40
 #: data/units/Lancer.cfg:25 data/units/Paladin.cfg:47
 msgid "lance"
-msgstr ""
+msgstr "lans"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
@@ -6335,9 +6360,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Great_Mage.cfg:3
-#, fuzzy
 msgid "Great Mage"
-msgstr "Groot Magiër"
+msgstr "Groot Towenaar"
 
 #: data/units/Great_Mage.cfg:25 data/units/Great_Mage.cfg:123
 msgid ""
@@ -6359,10 +6383,9 @@ msgstr ""
 
 #: data/units/Great_Mage.cfg:101
 msgid "female^Great Mage"
-msgstr ""
+msgstr "Groot Towenaar"
 
 #: data/units/Great_Troll.cfg:3
-#, fuzzy
 msgid "Great Troll"
 msgstr "Groot Trol"
 
@@ -6380,7 +6403,7 @@ msgstr ""
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
-msgstr ""
+msgstr "Grifon"
 
 #: data/units/Gryphon.cfg:17
 msgid ""
@@ -6391,7 +6414,7 @@ msgstr ""
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
-msgstr ""
+msgstr "Grifon Meester"
 
 #: data/units/Gryphon_Master.cfg:20
 msgid ""
@@ -6402,7 +6425,7 @@ msgstr ""
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
-msgstr ""
+msgstr "Grifon Ruiter"
 
 #: data/units/Gryphon_Rider.cfg:17
 msgid ""
@@ -6452,7 +6475,7 @@ msgstr ""
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
-msgstr ""
+msgstr "Perdemeester"
 
 #: data/units/Horse_Lord.cfg:18
 msgid ""
@@ -6464,11 +6487,11 @@ msgstr ""
 #: data/units/Horse_Lord.cfg:44 data/units/Mounted_Fighter.cfg:44
 #: data/units/Mounted_Warrior.cfg:44
 msgid "morning star"
-msgstr ""
+msgstr "oggendsepter"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
-msgstr ""
+msgstr "Ruiter"
 
 #: data/units/Horseman.cfg:19
 msgid ""
@@ -6491,7 +6514,7 @@ msgstr ""
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
-msgstr ""
+msgstr "Nuweling"
 
 #: data/units/Initiate.cfg:17
 msgid ""
@@ -6519,7 +6542,7 @@ msgstr ""
 
 #: data/units/Javelineer.cfg:3
 msgid "Javelineer"
-msgstr ""
+msgstr "Spiesgooier"
 
 #: data/units/Javelineer.cfg:20
 msgid ""
@@ -6537,7 +6560,7 @@ msgstr ""
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
-msgstr ""
+msgstr "Ridder"
 
 #: data/units/Knight.cfg:19
 msgid ""
@@ -6559,7 +6582,7 @@ msgstr ""
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
-msgstr ""
+msgstr "Lanser"
 
 #: data/units/Lancer.cfg:20
 msgid ""
@@ -6581,7 +6604,7 @@ msgstr ""
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
-msgstr ""
+msgstr "Sielsuiger"
 
 #: data/units/Lich.cfg:21
 msgid ""
@@ -6602,7 +6625,7 @@ msgstr ""
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
-msgstr ""
+msgstr "Lieutenant"
 
 #: data/units/Lieutenant.cfg:23
 msgid ""
@@ -6616,7 +6639,7 @@ msgstr ""
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
-msgstr ""
+msgstr "Grootboogman"
 
 #: data/units/Longbowman.cfg:19
 msgid ""
@@ -6629,7 +6652,7 @@ msgstr ""
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:79
 msgid "Lord"
-msgstr ""
+msgstr "Heer"
 
 #: data/units/Lord.cfg:20 data/units/Lord.cfg:96 data/units/Noble_Lord.cfg:25
 msgid ""
@@ -6640,9 +6663,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mage.cfg:3
-#, fuzzy
 msgid "Mage"
-msgstr "Magiër"
+msgstr "Towenaar"
 
 #: data/units/Mage.cfg:23 data/units/Mage.cfg:106
 msgid ""
@@ -6671,20 +6693,20 @@ msgstr ""
 #: data/units/Mage.cfg:47 data/units/Mage.cfg:130
 #: data/units/Silver_Mage.cfg:100 data/units/Silver_Mage.cfg:236
 msgid "missile"
-msgstr ""
+msgstr "missiel"
 
 #: data/units/Mage.cfg:86
 msgid "female^Mage"
-msgstr ""
+msgstr "Towenaar"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
-msgstr "Magiër van Lig"
+msgstr "Towenaar van Lig"
 
 #: data/units/Mage_of_Light.cfg:14 data/units/Mage_of_Light.cfg:91
 #: data/units/Mermaid_Diviner.cfg:11
 msgid "illuminates,cures"
-msgstr ""
+msgstr "belig,maak gesond"
 
 #: data/units/Mage_of_Light.cfg:32 data/units/Mage_of_Light.cfg:109
 msgid ""
@@ -6708,22 +6730,22 @@ msgstr ""
 #: data/units/Mermaid_Diviner.cfg:48 data/units/Mermaid_Priestess.cfg:43
 #: data/units/White_Mage.cfg:49 data/units/White_Mage.cfg:124
 msgid "lightbeam"
-msgstr "ligbundel"
+msgstr "ligstraal"
 
 #: data/units/Mage_of_Light.cfg:52 data/units/Mage_of_Light.cfg:129
 #: data/units/Mermaid_Diviner.cfg:49 data/units/Mermaid_Priestess.cfg:44
 #: data/units/Paladin.cfg:32 data/units/White_Mage.cfg:50
 #: data/units/White_Mage.cfg:125
 msgid "holy"
-msgstr "heilig"
+msgstr "heilige"
 
 #: data/units/Mage_of_Light.cfg:83
 msgid "female^Mage of Light"
-msgstr "Magiër van Lig"
+msgstr "Towenaar van Lig"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
-msgstr "Meister Boogskutter"
+msgstr "Meester Boogskutter"
 
 #: data/units/Master_Bowman.cfg:19
 msgid ""
@@ -6799,7 +6821,7 @@ msgstr ""
 #: data/units/Mermaid_Enchantress.cfg:40 data/units/Mermaid_Initiate.cfg:42
 #: data/units/Mermaid_Siren.cfg:69 data/units/Sea_Hag.cfg:31
 msgid "water spray"
-msgstr ""
+msgstr "water sproei"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
@@ -6861,11 +6883,11 @@ msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:27
 msgid "naia touch"
-msgstr ""
+msgstr "naia aanraking"
 
 #: data/units/Merman.cfg:6
 msgid "Merman"
-msgstr ""
+msgstr "Meerman"
 
 #: data/units/Merman.cfg:20 data/units/Merman_Fighter.cfg:20
 msgid ""
@@ -6878,11 +6900,11 @@ msgstr ""
 #: data/units/Merman_Triton.cfg:36 data/units/Merman_Warrior.cfg:23
 #: data/units/Naga.cfg:24 data/units/Sea_Hag.cfg:24 data/units/Triton.cfg:26
 msgid "trident"
-msgstr ""
+msgstr "seevurk"
 
 #: data/units/Merman_Entangler.cfg:3
 msgid "Merman Entangler"
-msgstr ""
+msgstr "Meerman Verstrengelaar"
 
 #: data/units/Merman_Entangler.cfg:19
 msgid ""
@@ -7459,7 +7481,7 @@ msgstr ""
 
 #: data/units/Paladin.cfg:3
 msgid "Paladin"
-msgstr ""
+msgstr "Geloofskryger"
 
 #: data/units/Paladin.cfg:25
 msgid ""
@@ -7483,7 +7505,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
-msgstr ""
+msgstr "Boer"
 
 #: data/units/Peasant.cfg:18
 msgid ""
@@ -7495,11 +7517,11 @@ msgstr ""
 
 #: data/units/Peasant.cfg:21 data/units/Peasant.cfg:34
 msgid "pitchfork"
-msgstr ""
+msgstr "hooivurk"
 
 #: data/units/Pikeman.cfg:3
 msgid "Pikeman"
-msgstr ""
+msgstr "Spiesman"
 
 #: data/units/Pikeman.cfg:22
 msgid ""
@@ -7516,7 +7538,7 @@ msgstr ""
 
 #: data/units/Pikeman.cfg:25
 msgid "pike"
-msgstr ""
+msgstr "Spies"
 
 #: data/units/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
@@ -7532,11 +7554,11 @@ msgstr ""
 #: data/units/Pirate_Galleon.cfg:17 data/units/Transport_Galleon.cfg:17
 #: data/units/Watch_Tower.cfg:18
 msgid "ballista"
-msgstr ""
+msgstr "ballista"
 
 #: data/units/Poacher.cfg:3
 msgid "Poacher"
-msgstr ""
+msgstr "Wilddief"
 
 #: data/units/Poacher.cfg:17
 msgid ""
@@ -7563,7 +7585,7 @@ msgstr "Prinses"
 
 #: data/units/Red_Mage.cfg:3
 msgid "Red Mage"
-msgstr "Rooi Magiër"
+msgstr "Rooi Towenaar"
 
 #: data/units/Red_Mage.cfg:24 data/units/Red_Mage.cfg:121
 msgid ""
@@ -7603,7 +7625,7 @@ msgstr ""
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
-msgstr ""
+msgstr "Uitvaagsel"
 
 #: data/units/Rogue.cfg:20 data/units/Rogue.cfg:82
 msgid ""
@@ -7625,7 +7647,7 @@ msgstr ""
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
-msgstr ""
+msgstr "Koninklike Wag"
 
 #: data/units/Royal_Guard.cfg:22
 msgid ""
@@ -7727,7 +7749,7 @@ msgstr ""
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
-msgstr ""
+msgstr "Saurianse Vegter"
 
 #: data/units/Saurian_Warrior.cfg:21
 msgid ""
@@ -7750,7 +7772,7 @@ msgstr ""
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr ""
+msgstr "See Ork"
 
 #: data/units/Sea_Orc.cfg:17
 msgid ""
@@ -7763,7 +7785,7 @@ msgstr ""
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
-msgstr ""
+msgstr "Seeslang"
 
 #: data/units/Sea_Serpent.cfg:17
 msgid ""
@@ -7772,7 +7794,7 @@ msgstr ""
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
-msgstr ""
+msgstr "Sersant"
 
 #: data/units/Sergeant.cfg:21
 msgid ""
@@ -7783,7 +7805,7 @@ msgstr ""
 
 #: data/units/Shadow.cfg:3
 msgid "Shadow"
-msgstr ""
+msgstr "Skaduwee"
 
 #: data/units/Shadow.cfg:21
 msgid ""
@@ -7818,7 +7840,7 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
-msgstr ""
+msgstr "Silwer Towenaar"
 
 #: data/units/Silver_Mage.cfg:29 data/units/Silver_Mage.cfg:165
 msgid ""
@@ -7855,7 +7877,7 @@ msgstr ""
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "Geraamte Draak"
 
 #: data/units/Skeletal_Dragon.cfg:18
 msgid ""
@@ -9727,13 +9749,15 @@ msgstr "Jy het die oorwinning behaal!"
 
 #: src/playlevel.cpp:868
 msgid "Scenario Report"
-msgstr ""
+msgstr "Scenarioverslag"
 
 #: src/playlevel.cpp:889
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"'n Netwerk-koppelprobleem het ontstaan en die spel kan nie voortgaan nie. "
+"Wil jy die spel stoor?"
 
 #: src/playturn.cpp:87
 msgid "It is now your turn"
@@ -9749,41 +9773,41 @@ msgstr "Verdediger"
 
 #: src/playturn.cpp:583 src/playturn.cpp:649
 msgid "Damage Calculations"
-msgstr ""
+msgstr "Skadeberekenings"
 
 #: src/playturn.cpp:628 src/reports.cpp:226
 msgid "vs"
 msgstr "teen"
 
 #: src/playturn.cpp:661
+#, fuzzy
 msgid "Attack Enemy"
-msgstr ""
+msgstr "Val vyand aan"
 
 #: src/playturn.cpp:662
-#, fuzzy
 msgid "Choose weapon:"
 msgstr "Kies wapen:"
 
 #: src/playturn.cpp:1311
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
-msgstr ""
+msgstr "Jy het nog nie jou beurt begin nie. Wil jy rerig jou beurt stop?"
 
 #: src/playturn.cpp:1319 src/playturn.cpp:1324
 msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr ""
+msgstr "Sommige eenhede het bewegings oor. Wil jy rerig jou beurt stop?"
 
 #: src/playturn.cpp:1339
 msgid "Auto-Save"
-msgstr "Auto-Stoor"
+msgstr "Auto-bêre"
 
 #: src/playturn.cpp:1341
 msgid "Could not auto save the game. Please save the game manually."
-msgstr ""
+msgstr "Kon nie die spel auto-bêre nie. Bêre die spel self, asseblief."
 
 #: src/playturn.cpp:1582
 msgid "Rename Unit"
-msgstr ""
+msgstr "Herbenoem eenheid"
 
 #: src/playturn.cpp:1631 src/playturn.cpp:1645
 msgid "Error"
@@ -9794,6 +9818,8 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Gestoorde name mag nie deeltekens of skuinsstrepe bevat nie. Kies asseblief "
+"'n ander naam."
 
 #: src/playturn.cpp:1642
 #, fuzzy
@@ -9815,7 +9841,7 @@ msgstr "Dorpe"
 
 #: src/playturn.cpp:1778
 msgid "Upkeep"
-msgstr ""
+msgstr "Onderhoud"
 
 #: src/playturn.cpp:1779
 msgid "Income"
@@ -9823,32 +9849,36 @@ msgstr "Inkomste"
 
 #: src/playturn.cpp:1884
 msgid "You have no units available to recruit."
-msgstr ""
+msgstr "Jy het geen eenhede om te werf nie."
 
 #: src/playturn.cpp:1896
+#, fuzzy
 msgid "Recruit"
-msgstr "Aanwerf"
+msgstr "Werf/ Rekruut"
 
 #: src/playturn.cpp:1897 src/playturn.cpp:2093
 msgid "Select unit:"
 msgstr "Kies eenheid:"
 
 #: src/playturn.cpp:1931
-#, fuzzy
 msgid "You don't have enough gold to recruit that unit"
-msgstr "Jy het nie genoeg goud om die eenheid aan te werf nie"
+msgstr "Jy het nie genoeg goud om die eenheid te werf nie"
 
 #: src/playturn.cpp:1989
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
+"Mapstieks, hierdie eenheid is ervare met gevorderde vlakke! Wil jy rerig "
+"$noun ontslaan?"
 
 #: src/playturn.cpp:1991
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
+"Mapstieks, hierdie eenheid is naby aan 'n volgende vlak! Wil jy rerig $noun "
+"ontslaan?"
 
 #: src/playturn.cpp:1996
 msgid "her"
@@ -9860,13 +9890,15 @@ msgstr "hom"
 
 #: src/playturn.cpp:2037
 msgid "You are separated from your soldiers and may not recall them"
-msgstr ""
+msgstr "Jy het afgedwaal van jou soldate en kan hulle nie terugroep nie"
 
 #: src/playturn.cpp:2039
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
+"Daar is geen troepe beskikbaar om terug te roep nie\n"
+" (jy moet veteraan-oorlewendes van 'n vorige scenario hê)"
 
 #: src/playturn.cpp:2045
 #, fuzzy
@@ -9900,11 +9932,11 @@ msgstr "Skuiwe"
 
 #: src/playturn.cpp:2237
 msgid "Location"
-msgstr ""
+msgstr "Ligging"
 
 #: src/playturn.cpp:2283
 msgid "Unit List"
-msgstr ""
+msgstr "Eenheidlys"
 
 #: src/playturn.cpp:2319 src/playturn.cpp:2381
 #, fuzzy
@@ -9919,7 +9951,7 @@ msgstr "Terugroepings"
 #: src/playturn.cpp:2331 src/playturn.cpp:2389
 #, fuzzy
 msgid "Advancements"
-msgstr "Bevorderings"
+msgstr "Bevorderings/ Vorderings"
 
 #: src/playturn.cpp:2337 src/playturn.cpp:2393
 msgid "Losses"
@@ -9927,58 +9959,56 @@ msgstr "Verliese"
 
 #: src/playturn.cpp:2343 src/playturn.cpp:2397
 msgid "Kills"
-msgstr ""
+msgstr "Doodskote"
 
 #: src/playturn.cpp:2349
 msgid "Damage Inflicted"
-msgstr ""
+msgstr "Skade berokken"
 
 #: src/playturn.cpp:2355
 msgid "Damage Taken"
-msgstr "Skade Ontvang"
+msgstr "Skade verduur"
 
 #: src/playturn.cpp:2361
 msgid "Damage Inflicted (EV)"
-msgstr ""
+msgstr "Skade berokken (EV)"
 
-# EV == expected value, verwagte waarde?
 #: src/playturn.cpp:2368
-#, fuzzy
 msgid "Damage Taken (EV)"
-msgstr "Skade Ontvang (VW)"
+msgstr "Skade Ontvang (EV)"
 
 #: src/playturn.cpp:2374
 msgid "Statistics"
-msgstr ""
+msgstr "Statistieke"
 
 #: src/playturn.cpp:2411
 msgid "Search"
-msgstr ""
+msgstr "Soek"
 
 #: src/playturn.cpp:2421
 msgid "prompt^Command:"
 msgstr ""
 
 #: src/playturn.cpp:2432
+#, fuzzy
 msgid "Chat Log"
 msgstr "Gesels Lys"
 
 #: src/playturn.cpp:2497
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
+msgstr "Kon nie die plakker of eenheid met die string '$search' kry nie."
 
 #: src/playturn.cpp:2528
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Bêre Temavoorkeure"
 
 #: src/playturn.cpp:2534
-#, fuzzy
 msgid "New theme will take effect on next new or loaded game."
-msgstr "Nuwe tema sal in nuwe of vorige speletjie in werking tree."
+msgstr "Nuwe tema sal met nuwe of gelaaide speletjie inskop."
 
 #: src/playturn.cpp:2635
 msgid "Place Label"
-msgstr "Plaas Etiket"
+msgstr "Plek-etiket"
 
 #: src/playturn.cpp:2636
 msgid "Label:"
@@ -9989,19 +10019,21 @@ msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
+"Die spel is nie in pas nie en sal stop. Wil jy 'n foutregister van jou spel "
+"bêre."
 
 #: src/playturn.cpp:2821
 #, fuzzy
 msgid "Replace with AI"
-msgstr "Vervang met Rekenaar"
+msgstr "Vervang met Rekenaarspeler"
 
 #: src/playturn.cpp:2822
 msgid "Replace with local player"
-msgstr "Vervang met lokale speler"
+msgstr "Vervang met plaaslike speler"
 
 #: src/playturn.cpp:2823
 msgid "Abort game"
-msgstr ""
+msgstr "Skop op"
 
 #: src/playturn.cpp:2826
 msgid "Replace with "
@@ -10051,18 +10083,16 @@ msgstr ""
 "'n geneesmiddel kry teen die gif in 'n dorp of van 'n vriendelike eenheid "
 "met die geneesmiddel vermoë.\n"
 "\n"
-"Eenhede kan nie doodgaan van die gif alleen nie. Die gif sal dit nie onder "
-"1 LP verminder nie."
+"Eenhede kan nie doodgaan van die gif alleen nie. Die gif sal dit nie onder 1 "
+"LP verminder nie."
 
 #: src/reports.cpp:134
-#, fuzzy
 msgid "poisoned: "
 msgstr "vergiftig: "
 
 #: src/reports.cpp:141
-#, fuzzy
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr "Hierdie eenheid is versteen. Dit mag nóg skuif nóg aanval."
+msgstr "Hierdie eenheid is versteen. Dit mag nie skuif of aanval nie."
 
 #: src/reports.cpp:141
 msgid "stone: "
@@ -10090,12 +10120,12 @@ msgstr "Chaotiese eenhede: "
 
 #: src/reports.cpp:325
 msgid "Owned village"
-msgstr ""
+msgstr "Besette dorpie"
 
 #: src/reports.cpp:327
 #, fuzzy
 msgid "Enemy village"
-msgstr "Vyand se dorp"
+msgstr "Vyand se dorpie"
 
 #: src/reports.cpp:329
 msgid "Allied village"
@@ -10228,7 +10258,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:214
 msgid "View the credits"
-msgstr ""
+msgstr "Lees die name van die Ontwikkelaars"
 
 #: src/titlescreen.cpp:215
 msgid "Quit the game"
@@ -10239,9 +10269,8 @@ msgid "More"
 msgstr "Meer"
 
 #: src/titlescreen.cpp:256
-#, fuzzy
 msgid "-- The Tome of Wesnoth"
-msgstr "-- Die Boek van Wesnoth"
+msgstr "-- Die Geskrifte van Wesnoth"
 
 #: src/unit.cpp:1074 src/unit.cpp:1201
 msgid "; "
@@ -10260,12 +10289,10 @@ msgid "strikes"
 msgstr ""
 
 #: src/unit_types.cpp:952
-#, fuzzy
 msgid "chaotic"
 msgstr "chaotiese"
 
 #: src/unit_types.cpp:952
-#, fuzzy
 msgid "lawful"
 msgstr "wettige"
 
