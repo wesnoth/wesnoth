@@ -30,49 +30,47 @@ msgstr "Uredi"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
-msgstr ""
+msgstr "Nariši plošče"
 
 #: src/editor/editor.cpp:162
-#, fuzzy
 msgid "Fill"
-msgstr "Datoteka"
+msgstr "Zapolni"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Nastavi igralčev začetni položaj"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
-msgstr ""
+msgstr "Povečaj"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom out"
-msgstr ""
+msgstr "Pomanjšaj"
 
 #: src/editor/editor.cpp:170
 msgid "Undo"
-msgstr ""
+msgstr "Razveljavi"
 
 #: src/editor/editor.cpp:172
 msgid "Redo"
-msgstr ""
+msgstr "Uveljavi"
 
 #: src/editor/editor.cpp:174
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Privzeta povečava"
 
 #: src/editor/editor.cpp:176
 msgid "Toggle grid"
-msgstr ""
+msgstr "Preklopi mrežo"
 
 #: src/editor/editor.cpp:178
-#, fuzzy
 msgid "Resize the map"
 msgstr "Spremeni velikost karte"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
-msgstr ""
+msgstr "Prevrni karto"
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
@@ -83,9 +81,8 @@ msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Ta karta že obstaja. Ali jo hočete prepisati?"
 
 #: src/editor/editor.cpp:405
-#, fuzzy
 msgid "Player "
-msgstr "Igralec"
+msgstr "Igralec "
 
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
@@ -104,6 +101,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
+"Opozorilo: nedovoljeni znaki v imenu karte. Shraniti jo morate pod drugim "
+"imenom."
 
 #: src/editor/editor.cpp:483 src/editor/editor.cpp:562
 msgid "The file does not contain a valid map."
@@ -139,7 +138,7 @@ msgstr "Karte nisem mogel shraniti: $msg"
 
 #: src/editor/editor.cpp:1142
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Napaka: nedovoljen znak v imenu datoteke."
 
 #: src/editor/editor.cpp:1198
 msgid "Player"
@@ -217,7 +216,7 @@ msgstr "Spremeni velikost karte"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
-msgstr ""
+msgstr "V redu"
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -233,7 +232,7 @@ msgstr "Obrni okoli (to lahko spremeni kartine dimenzije):"
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Urejevalnik kart za Battle for Wesnoth"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -245,48 +244,47 @@ msgstr "BG"
 
 #: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
-msgstr ""
+msgstr "Generator kart"
 
 #: src/mapgen_dialog.cpp:99
-#, fuzzy
 msgid "Players:"
-msgstr "Igralec"
+msgstr "Igralci:"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Število gričev:"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Največja velikost griča:"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "Vasi:"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "Oblika terena:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Ceste med gradovi"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 plošč"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "Obala"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "Celina"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "Otok"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
@@ -294,19 +292,4 @@ msgstr "Zbriši datoteko"
 
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
-msgstr "Izbris datoteke je bil neuspešen."
-
-#~ msgid "Draw"
-#~ msgstr "Nariši"
-
-#~ msgid "Flood"
-#~ msgstr "Zapolni"
-
-#~ msgid "Start P"
-#~ msgstr "Start"
-
-#~ msgid "Paste"
-#~ msgstr "Prilepi"
-
-#~ msgid "Ok"
-#~ msgstr "Vredu"
+msgstr "Izbris datoteke ni uspel."
