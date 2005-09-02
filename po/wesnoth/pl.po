@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-08-27 13:06+0100\n"
+"PO-Revision-Date: 2005-09-02 21:09+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,9 +15,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/amla.cfg:8
-#, fuzzy
 msgid "Max HP bonus +"
-msgstr "Maks. premia PŻ +{HP_ADVANCE}"
+msgstr "Maks. premia PŻ +"
 
 #: data/amla.cfg:21
 msgid "Full Heal"
@@ -768,7 +767,6 @@ msgstr ""
 "otrzymasz możliwość wyboru drogi awansu."
 
 #: data/help.cfg:193
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -786,15 +784,13 @@ msgstr ""
 "\n"
 "Choć większość jednostek ma trzy poziomy, to zdarzają się wyjątki. Niektóre "
 "(takie jak <ref>dst=unit_Mage text=magowie</ref>) mają cztery. Gdy jednostka "
-"osiągnie maksymalny poziom może uzyskać ona szansę Awansu Po Ostatnim "
-"Poziomie (APOP).\n"
+"osiągnie maksymalny poziom może uzyskać Awans Po Ostatnim Poziomie (APOP).\n"
 "APOP zmienia jednostkę za każdym razem, gdy osiąga ona wystarczający poziom "
 "doświadczenia, ale pozostanie ona na tym samym poziomie. Typowy efekt, jaki "
-"APOP wywiera na jednostkę to\n"
-"podniesienie maksymalnej liczby PŻ o 3 co każde 100 zdobytych PD. Zauważ, że "
-"niektóre jednostki, takie jak na przykład trupojad będą leczyły się z "
-"pominięciem efektu APOP, jednak większość otrzyma tylko premię do "
-"maksymalnych PŻ."
+"APOP wywiera na jednostkę to podniesienie maksymalnej liczby PŻ o 3 co każde "
+"100 zdobytych PD. Zauważ, że niektóre jednostki, takie jak na przykład "
+"trupojad, będą leczyły się z pominięciem efektu APOP, jednak większość "
+"otrzyma po prostu premię do maksymalnych PŻ."
 
 #: data/help.cfg:198
 msgid "Healing"
@@ -2851,15 +2847,14 @@ msgid "How do I end my turn?"
 msgstr "W jaki sposób mam zakończyć turę?"
 
 #: data/scenarios/tutorial/utils.cfg:73
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower-"
 "right hand corner."
 msgstr ""
-"Jednym ze sposobów na zakończenie tury jest naciśnięcie \"Alt-E\". Można też "
-"kliknąć prawym przyciskiem myszy i wybrać \"Zakończ turę\" albo kliknąć "
-"przycisk \"Zakończ turę\" w prawym-dolnym rogu."
+"Jednym ze sposobów na zakończenie tury jest naciśnięcie \"Alt-Spacja\". "
+"Można też kliknąć prawym przyciskiem myszy i wybrać \"Zakończ turę\" albo "
+"kliknąć przycisk \"Zakończ turę\" w prawym-dolnym rogu."
 
 #: data/scenarios/tutorial/utils.cfg:74
 msgid "What happens when I end my turn?"
@@ -5163,15 +5158,14 @@ msgid "Cockatrice"
 msgstr "Bazyliszek"
 
 #: data/units/Cockatrice.cfg:17
-#, fuzzy
 msgid ""
 "Sometimes known as 'basilisks', these mystical creatures are said to be able "
 "to turn the living to stone. Needless to say, this makes them extremely "
 "dangerous."
 msgstr ""
-"Mówi się, że te mistyczne stworzenia znane również pod nazwą \"bazyliszków\" "
-"potrafią zmieniać żywe istoty w kamień. Nie trzeba dodawać, że czyni je to "
-"niesłychanie niebezpiecznymi."
+"Mówi się, że te mistyczne stworzenia, znane również pod nazwą \"bazyliszków"
+"\", potrafią zmieniać żywe istoty w kamień. Nie trzeba dodawać, że czyni je "
+"to niesłychanie niebezpiecznymi."
 
 #: data/units/Cockatrice.cfg:33
 msgid "gaze"
@@ -5377,17 +5371,16 @@ msgid "Deathmaster"
 msgstr "Mistrz śmierci"
 
 #: data/units/Deathmaster.cfg:17
-#, fuzzy
 msgid ""
 "His wanderings on a dark path have given him power normally not granted to "
 "mortals, but with a terrible cost: the undead that he gave his soul to are "
 "gradually claiming his mortal shell too, and with time, he will be a true "
 "undead and a terror to all that lives."
 msgstr ""
-"Gwiti zbyt długo błądził po ciemnej ścieżce to, choć uzyskał niedostępną "
+"Zbyt długo błądził po ciemnej ścieżce i choć uzyskał niedostępną "
 "śmiertelnikom moc, zapłacił straszliwą cenę: nieumarli, którym zaprzedał "
 "duszę teraz po kawałku zabierają jego ciało. Z czasem sam stanie się jednym "
-"z nichi postrachem wszystkiego, co żywe."
+"z nichi, postrachem wszystkiego, co żywe."
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
@@ -5426,6 +5419,11 @@ msgid ""
 "victims of this poison will continually take damage until they can be cured "
 "in town or by a healer."
 msgstr ""
+"Wargowie różnią się od odmiany ogrodowej jedynie rozmiarem i kolorem. "
+"Zazwyczaj sę wyższe niż grzbiet konia i mają apetyt odpowiedni do swoich "
+"rozmiarów. Tylko szaleniec zadawałby się z nimi z własnej woli. Gobliny "
+"wielkim kosztem je oswoiły, jeżeli w ogóle da się w stosunku do nich użyć "
+"takiego słowa."
 
 #: data/units/Direwolf_Rider.cfg:38 data/units/Drake_Burner.cfg:34
 #: data/units/Drake_Fire.cfg:36 data/units/Drake_Inferno.cfg:25
@@ -6158,6 +6156,16 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"Elfy w przeciwieństwie do innych ras szybko poznają się na umiejętnościach "
+"walki swych doświadczonych współbratymców i poddają się ich przywództwu. "
+"Zupełnie inaczej sprawa ta ma się wśród ludzi, gdzie przywództwo często "
+"sprowadza się do dziwnej mieszanki przymusu i strachu. O sile elfów stanowi "
+"kombinacja woli zaakceptowania mądrości ich przywódców oraz umiejętność ich "
+"odpowiedniego wyboru.\n"
+"\n"
+"Uwagi specjalne: umiejętność dowodzenia kapitana powoduje, że przyjacielskie "
+"jednostki na sąsiednich polach zadają w walce większe obrażenia, ale dotyczy "
+"to tylko jednostek o niższym poziomie."
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -6363,7 +6371,6 @@ msgid "Elvish Marshal"
 msgstr "Elficki marszałek"
 
 #: data/units/Elvish_Marshal.cfg:25
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -7109,13 +7116,12 @@ msgid "Initiate"
 msgstr "Wtajemniczony"
 
 #: data/units/Initiate.cfg:17
-#, fuzzy
 msgid ""
 "Dabbling in the Death Magic, this young Ha'atel's lust for power has "
 "weakened him to the point where he is too weak to attack in regular combat."
 msgstr ""
-"Ten młody Ha'atel grzebiący w czarnej magii tak dalece oddał się swym "
-"obrzędom, że już niezdolny jest do zwykłej walki."
+"Ten eksperymentujący z magią śmierci młody Ha'atel tak dalece oddał się swym "
+"obrzędom, że jest zbyt słaby, by atakować w regularnej walce."
 
 #: data/units/Iron_Mauler.cfg:3
 msgid "Iron Mauler"
@@ -7807,7 +7813,6 @@ msgid "Noble Commander"
 msgstr "Szlachetny dowódca"
 
 #: data/units/Noble_Commander.cfg:24
-#, fuzzy
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
 "combat. Possessing leadership skills, they give lower-level units in "
@@ -7815,11 +7820,11 @@ msgid ""
 "with the sword, although they also carry a bow to use when necessary. If the "
 "Commander is lost, so is the battle."
 msgstr ""
-"Ranga dowódcy przyznawana jest tym, którzy prowadzą oddziały do walki. Mają "
-"oni zdolności przywódcze, co sprawia, że jednostki niższego poziomu "
-"znajdujące się na sąsiednich heksach walczą lepiej. Dowódcy najlepiej radzą "
-"sobie z mieczem, choć ostatecznie mogą też strzelać z łuku. Jeśli dowódca "
-"zginie, bitwa jest przegrana."
+"Ranga szlachetnego dowódcy przyznawana jest tym, którzy prowadzą grupy "
+"wojska do walki. Mają oni zdolności przywódcze, co sprawia, że jednostki "
+"niższego poziomu znajdujące się na sąsiednich heksach walczą lepiej. Dowódcy "
+"najlepiej radzą sobie z mieczem, choć ostatecznie mogą też strzelać z łuku. "
+"Jeśli dowódca zginie, bitwa jest przegrana."
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
@@ -8801,7 +8806,6 @@ msgid "Spectre"
 msgstr "Widmo"
 
 #: data/units/Spectre.cfg:26
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -8820,9 +8824,9 @@ msgstr ""
 "czuwają nad domeną swego mistrza.\n"
 "\n"
 "Ich stworzenie to nie lada wyczyn. Spotkanie widma jest o tyle groźne, że "
-"często zwiastuje nadejście jego śladem znacznie niebezpieczniejszych mocy.\n"
+"często zwiastuje nadejście znacznie niebezpieczniejszych mocy.\n"
 "\n"
-"Uwagi specjalne: uderzenie ich ostrza wysysa życia z ofiary, odnawiając siły "
+"Uwagi specjalne: uderzenie ich ostrza wysysa życie z ofiary, odnawiając siły "
 "widma. Ponadto mają one niezwykłą odporność na obrażenia i dość wolno "
 "poruszają się nad otwartą wodą."
 
@@ -10695,10 +10699,9 @@ msgid "Choose weapon:"
 msgstr "Wybierz broń:"
 
 #: src/playturn.cpp:1311
-#, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
-msgstr "Nie rozpocząłeś jeszcze tury. Czy chcesz ją zakończyć?"
+msgstr "Nie rozpocząłeś jeszcze tury. Czy naprawdę chcesz ją zakończyć?"
 
 #: src/playturn.cpp:1319 src/playturn.cpp:1324
 msgid "Some units have movement left. Do you really want to end your turn?"
