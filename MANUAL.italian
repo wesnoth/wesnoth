@@ -1,40 +1,71 @@
-/* $Id$ */
+﻿/* $Id$ */
 
 MANUALE DI "LA BATTAGLIA PER WESNOTH"
 
-Se è la prima volta che giochi a "La Battaglia per Wesnoth" dovresti provare a leggere prima la pagina
-di guida ai primi passi nel gioco (http://wesnoth.slack.it/?GettingStarted).
+Se è la prima volta che giochi a "La Battaglia per Wesnoth" dovresti provare a 
+leggere prima la pagina di guida ai primi passi nel gioco 
+(http://wesnoth.slack.it/?GettingStarted).
 
 
 CONTROLLI
 
-F1:     		  Aiuto su "The Battle for Wesnoth"
-Frecce: 		  Scorrere la mappa
-Tasto sinistro del mouse: Selezionare/muovere le unità
-Tasto destro del mouse:   Menu principale, annullare l'azione
-Tasto centrale del mouse: Centrare sul punto selezionato
-Escape: 		  Uscire dal gioco
-z:			  Zoom in
-x: 			  Zoom out
-c: 			  Ritorna allo Zoom di default
-u: 			  Annulla l'ultima mossa (solo le mosse non determinanti possono essere annullate)
-r: 			  Riesegui una mossa annullata
-m:              	  Invia un Messagio ad un altro giocatore (in multigiocatore)
-n: 			  Passa alla prossima unità che può ancora muoversi
-1-7:		          Mostra a che distanza l'unità selezionata può muoversi in 1-7 turni
-ctrl-v:         	  Mostra le mosse nemiche (dove il nemico si può spostare nel prossimo turno)
-spazio: 		  Finisce il turno dell'unità e passa alla prossima che può ancora muoversi
-l: 			  Passa al comandante
-ctrl-f: 		  Passa da modalità tutto schermo a finestra e viceversa
-ctrl-r: 		  Recluta unità
-ctrl-shift-r:   	  Ripeti l'ultimo reclutamento
-alt-r:          	  Richiama un unità
-ctrl-a: 		  Attiva/disattiviva modalità accelerata
-d: 			  Descrive l'unità corrente
-ctrl-d: 		  Visualizza i valori di difesa dell'unità attacks
-ctrl-s: 		  Salva la partita
-ctrl-l: 		  Carica la partita
+F1      		          Aiuto su "The Battle for Wesnoth"
+Frecce  		          Scorre la mappa
+Tasto sinistro del mouse  Seleziona/muove le unità
+Tasto destro del mouse    Menu principale, annulla l'azione
+Tasto centrale del mouse  Centra sul punto selezionato
+Escape  		          Esce dal gioco
+ctrl-r  		          Recluta unità
+ctrl-shift-r    	      Ripete l'ultimo reclutamento
+alt-r           	      Richiama un'unità
+z 			              Zoom in
+x  			              Zoom out
+c  			              Ritorna allo Zoom di default
+u  			              Annulla l'ultima mossa (possono essere annullate 
+                          solo alcune mosse)
+r  			              Ripete una mossa
+m               	      Invia un Messaggio ad un altro giocatore (solo in multiplayer)
+M                         Invia un Messaggio ai tuoi Alleati (solo in multiplayer)
+alt-m                     Invia un Messaggio a tutti i giocatori (solo in multiplayer)
+n    		              Passa alla prossima unità che può ancora muoversi
+N                         Passa alla prossima unità che può ancora muoversi, 
+                          ciclando al contrario
+Spazio                    Termina il turno dell'unità corrente e passa alla prossima 
+                          unità che può muoversi
+Alt-spazio                Termina il turno corrente
+Ctrl-spazio               Blocca l'unità corrente, se cicli le unità con movimenti 
+                          disponibili questa unità viene saltata
+ctrl-v          	      Mostra le mosse nemiche (dove il nemico si può spostare nel 
+                          prossimo turno)
+ctrl-b                    Mostra le mosse che il nemico potrebbe effettuare se non fossero 
+                          presenti le tue unità
+ctrl-f  		          Passa da modalità tutto schermo a finestra e viceversa
+ctrl-a  		          Attiva/disattiviva modalità accelerata
+ctrl-s                    Salva la partita
+ctrl-o                    Carica un gioco precedentemente salvato
 
+/                         Cerca
+t                         Continua il movimento di un'unità
+z                         Aumenta lo Zoom
+x                         Diminuisce lo Zoom
+c                         Applica lo Zoom di default
+ctrl-n                    Rinomina un'unità
+1-7                       Mostra fin dove può arrivare un'unità nel numero di turni selezionato
+l                         Passa all'unità Leader
+d                         Descrive l'unità corrente
+ctrl-d                    Mostra le percentuali difensive dell'unità corrente contro i vari 
+                          tipi di attacco
+ctrl-g                    Attiva/disattiva la griglia
+alt-k                     Attiva/disattiva shroud
+ctrl-k                    Aggiorna shroud
+alt-l                     Imposta un'etichetta ad un esagono
+alt-s                     Mostra la tabella con le statistiche
+ctrl-t                    Mostra la tabella dei terreni
+ctrl-m                    Attiva/disattiva il sonoro del gioco
+ctrl-j                    Mostra gli obiettivi dello scenario
+:                         Modalità di comando, guarda http://wesnoth.slack.it/?CommandMode
+
+Mac OS X, usa il tasto Cmd al posto di Ctrl, mentre Opt viene usato al porto di Alt.
 
 SFERE
 
@@ -47,21 +78,16 @@ Questa sfera può essere:
     * rossa se l'unità che controlli è stata mossa e ha terminato i punti movimento
     * blu se l'unità è una tua alleata ma non ne hai il controllo
     
-Le unità nemiche non hanno alcuna sfera sulla barra dell'energia. (Nelle versioni
-del gioco antecedenti alla 0.5.2 vi era una sfera nera sulla barra dell'unità
-nemica)
-
+Le unità nemiche non hanno alcuna sfera sulla barra dell'energia. 
 
 
 DESCRIZIONE
 
-The game takes place over a series of battles, or scenarios. Each
-scenario pits your troops against the troops of one or more adversaries.
-Each side begins with one leader in their keep.
+Il gioco si svolge in un susseguirsi di battaglie o scenari.
+Ciascuno scenario fa scendere in campo le tue truppe contro uno
+o più avversari.
+Ciascuno schieramento ha un leader nel suo castello.
 
-Il gioco si dipana in una serie di battaglie o scenari. Ogni scenario 
-fa confrontare le tue truppe contro quelle di uno o più avversari. Ogni 
-schieramento inizia con un comandante nel proprio mantenimento.
 
 ORO
 
@@ -69,27 +95,24 @@ A ogni schieramento viene inizialmente assegnata una certa quantità di
 oro e riceve due monete d'oro per turno più una unità d'oro per ogni villaggio 
 che la fazione controlla. 
 
-Ogni unità ha un costo di mantenimento, Il costo di mantenimento è generalmente
-uguale al livello dell'unità (eccetto la caratteristica "Leale"). le unità che non 
-sono richiamate o reclutate - per esempio quelle che si aggiungono volontariamente 
-al gruppo - non hanno un costo di mantenimento. il mantenimento viene pagato solo
-se il numero di unità della propria fazione è superiore al numero di villaggi 
-su cui si ha il controllo. Ciò che si paga per mantenere le truppe è generalmente
-la differenza tra il numero di villaggi e il costo di mantenimento.
+Ogni unità ha un costo di mantenimento, il costo di mantenimento è generalmente
+uguale al livello dell'unità a meno che non possieda la caratteristica "Leale" (vedi sotto).
+Le unità che non sono richiamate o reclutate - per esempio quelle che si 
+aggiungono volontariamente al gruppo - non hanno un costo di mantenimento. 
+Il mantenimento viene pagato solo se il numero di unità della propria fazione 
+è superiore al numero di villaggi su cui si ha il controllo. Ciò che si paga 
+per mantenere le truppe è generalmente la differenza tra il numero di 
+villaggi e il costo di mantenimento.
+
+Quindi la formula per calcolare le entrate per ogni turno è:
+    
+   2 + villaggi - massimmo (0,mantenimento - villaggi)
+   
+dove per mantenimento si intende la somma dei livelli di tutte
+le tue unità non Leali.
+
 
 RECLUTAMENTO E RICHIAMO
-
-Units may be recruited with gold, as long as the leader is on a keep,
-and there is at least one vacant castle hex in the castle the leader is
-in. Right-click and select Recruit to recruit new troops. After you
-complete a scenario, all surviving will be available to you next
-scenario. Right-click and select Recall to re-recruit units from
-previous scenarios. Recalling costs 20 pieces of gold. You can first
-highlight free castle tile and then proceed with recruit, this way you
-can choose the tile for recruited unit to appear. This works for
-recruiting and recalling.
-
-You are not able to move a unit on the turn you recruit or recall that unit.
 
 Le unità possono essere reclutate pagando un prezzo fino a che il comandante 
 è nel mantenimento ed è presente una casella libera nel castello sul quale si 
@@ -103,129 +126,152 @@ apparirà, questo funziona per il reclutamento e il richiamo.
 
 Una unità reclutata o richiamata non può essere mossa nel turno di reclutamento/richiamo
 
+
 SPECIALITA' DELLE UNITA'
 
 Le specialità delle unità sono descritte sotto "Descrizione unità" nel menu principale.
 
+
 CARATTERISTICHE
 
 Le unità hanno delle caratteristiche che riflettono il loro carattere, le caratteristiche
-vengono assegnate casualmente alle unità quando vengono create. ogni unità riceve due
+vengono assegnate casualmente alle unità quando esse vengono create. Molte unità ricevono due
 caratteristiche che possono essere le seguenti:
 
-  Legale:         non necessita il pagamento del costo di mantenimento
-  Forte:          causa un danno maggiore nei combattimenti corpo a corpo ma ha un numero 
-  		  minore di punti energia
-  Veloce:         ha un punto movimento in più ma un numero minore di punti energia
-  Resistente:     ha un numero maggiore di punti energia
-  Intelligente:   Necessita di una minore esperienza per avanzare di livello
-  Destro:	  
+  Forte:          infligge 1 danno extra per ogni colpo nel corpo a corpo, inoltre ha 2 PS più del normale
+  Veloce:         ha un punto movimento in più ma possiede il 10% in meno dei punti salute
+  Resistente:     ha 7 punti energia in più
+  Intelligente:   richiede il 20% in meno di esperienza per avanzare di livello (non si applica ai Troll)
+  
+Inoltre ci sono alcune caratteristiche che non vengono assegnate casualmente:
+  
+  Leale           non richiede costi di mantenimento
+  Agile           infligge 1 punto danno extra negli attacchi a distanza (solo per Elfi)
+  Non-Morto       immunità al veleno (Solo non-morti)
 
 Movimento
 
-When a unit is clicked on, all the places it can move to on the current
-turn become lit up, while everywhere it can't move is greyed. You can
-then click on the hex you want it to move to. Moving onto a village that
-is neutral or owned by an enemy will take ownership of it. If you select
-destination which beyond reach in the current turn, the unit will enter
-'goto-mode' and continue moving towards destination in subsequent turns.
-You can easily undo goto movements in the beginning of your turn; goto
-can be broken by selecting unit and choosing new destination.
+Quando un'unità viene cliccata, tutti i posti ad essa accessibili nel
+turno corrente vengono illuminati, le zone in cui non può arrivare nell'arco
+del turno corrente invece sono grigie. A questo punto puoi cliccare sull'esagono
+in cui vuoi muovere l'unità. Se raggiungi un villaggio neutrale o sotto il
+controllo di un nemico ne ottieni il controllo. Se selezioni una destinazione
+che è fuori portata per il turno corrente, l'unità entrerà in modalità "raggiungi"
+e continuerà nei turni successivi a muoversi verso la destinazione selezionata.
+Puoi annullare facilmente all'inizio del turno i movimenti "raggiungi"; puoi 
+inoltre annullare i movimenti "raggiungi" selezionando l'unità e scegliendo una
+nuova destinazione.
 
-You may not move through hexes adjacent to enemy units (their Zone of
-Control) without stopping.
+Non puoi muoverti attraverso gli esagoni adiacenti alle unità nemiche (le loro
+Zone di Controllo) senza fermarti. Ad ogni modo, le unità di livello 0 non hanno
+nessuna Zona di Controllo.
 
-Quando si clicca su un'unità si illuminano tutte le caselle che può raggiungere nel turno, 
-quelle dove non può diventano grigie. A questo punto si può cliccare su una casella dove 
-si vuole muovere. Muoversi in un villaggio neutrale o controllato da un nemico ne garantirà 
-il controllo. Se selezioni una destinazione non raggiungibile nel turno l'unità entrerà in 
-'modalità-raggiungi' a continuerà a muoversi verso la destinazione nei prossimi turni. 
-Si può uscire dalla 'modalità-raggiungi' a inizio turno selezionando annullando il movimento
-e selezionando una nuova destinazione per l'unità.
-
-Non è possibile muoversi attraverso gli esagoni adiacenti alle unità nemiche (le loro Zone 
-di Controllo) senza essere bloccati.
 
 Combattimento
 
-Se muovi vicino a unità nemica la puoi attaccare. Clicca sulla tua unità che è vicina 
-al nemico e successivamente sull'unità che vuoi attaccare. Ogni unità ha una o più armi 
-che può usare per attaccare. Certe armi, come le spade, sono armi da mischia, altre, come 
-gli archi, sono armi da lunga distanza.
+Se muovi una tua unità vicino ad una unità nemica la puoi attaccare. Clicca sulla 
+tua unità che è vicina al nemico e successivamente sull'unità che vuoi attaccare. 
+Ogni unità ha una o più armi che possono essere usate per attaccare. Certe armi, 
+come le spade, sono armi da mischia, altre, come gli archi, sono armi da lunga distanza.
 
 Se combatti con armi da mischia il nemico che attacchi dovrà rispondere con le proprie 
 armi da mischia. Se attacchi con armi da lunga distanza il nemico dovrà rispondere con 
-le sue armi a distanza, se ne ha.
+le proprie armi a distanza, se ne ha.
 
 Diversi tipi di attacco causano diverse quantità di danno ed un certo numero di colpi 
 può essere sferrato con ogni arma. Per esempio un guerriero elfico fa 5 punti di danno 
 con la sua spada ogni volta che colpisce e può colpire fino a quattro volte per ogni scontro. 
-In generale questo viene scritto come 5-4.
+In generale questo viene scritto come 5-4, 5 punti danno e 4 colpi.
 
 Ogni unità ha una possibilità di venire colpita in base al terreno in cui si trova. Le unità 
 nei castelli e nei villaggi hanno possibilità minore di essere colpite così come gli elfi che 
-si trovino in una foresta. per poter vedere il grado di difesa (possibilità di non essere colpiti)
+si trovino in una foresta. Per poter vedere il grado di difesa (possibilità di non essere colpiti)
 in un dato terreno bisogna cliccare sull'unità e spostare il mouse sul terreno interessato
-il grado di difesa apparirà come percentuale sull'angolo in alto a destra dello schermo.
+il grado di difesa apparirà come percentuale sull'angolo in alto a destra dello schermo e sull'esagono
+selezionato.
+
 
 Allineamento
 
-Ogni unità ha un allineamento: legale, neutrale o caotico. L'allineamento incide sui loro valori 
-a seconda del momento del giorno. La seguente tabella illustra i vari periodi:
+Ogni unità ha un allineamento: legale, neutrale o caotico. 
+L'allineamento incide sui loro valori a seconda del momento 
+del giorno.  Le unità neutrali non vengono influenzate dal 
+momento del giorno. Le unità Legali infliggono maggiori danni
+durante il giorno e meno durante la notte. Le unità Caotiche
+infliggono più danni durante la notte e meno durante il giorno.
 
+Le due fasi "giorno" e "notte" sono chiamate rispettivamente 
+Mattino e Pomeriggio per il giorno e Sera e Notte Fonda per la 
+notte, seguendo la posizione del sole e della luna.
 
- | turno | periodo    |
- ---------------------
- |  1    |   alba     |
- |  2    |   giorno   |
- |  3    |   giorno   |
- |  4    |   tramonto |
- |  5    |   notte    |
- |  6    |   notte    |
+La seguente tabella illustra gli effetti dei vari periodi della
+giornata mostrando il danno inflitto dalle unità legali e caotiche:
 
+ | turno |  periodo             |  legale |  caotico |
+ ------------------------------------------------------
+ |   1   |  alba                |    -    |    -     |
+ |   2   |  giorno (Mattino)    |   +25%  |   -25%   |
+ |   3   |  giorno (Pomeriggio) |   +25%  |   -25%   |
+ |   4   |  tramonto            |    -    |    -     |
+ |   5   |  notte (Sera)        |   -25%  |   +25%   |
+ |   6   |  notte (Notte Fonda) |   -25%  |   +25%   |
 
-Le unità di allineamento legale guadagno un 25% in più al danno di giorno, un 25% in meno di notte.
-Le unità di allineamento caotico guadagnano un 25% in più di notte e perdono un 25% di giorno. 
-Le unità neutrali non vengono influenzate dai vari periodi (le loro caratteristiche sono costanti).
+Per esempio: pensiamo ad un combattimento tra un'unità Legale ed
+una Caotica che hanno entrambi il danno base di 12 punti. All'alba
+entrambi infliggono 12 danni se il colpo va a segno. Durante il 
+Mattino o il Pomeriggio, l'unità Legale infliggerà (12 * 1.25) o
+15 punti, mentre l'unità caotica infliggerà (12 * 0,75) o 9 punti.
+Durante la Sera o a Notte Fonda l'unità Legale infliggerà 9 punti
+danno mentre l'unità Caotica ne infliggerà 15.
+
+Se un'unità Neutrale di equivalenti caratteristiche combattesse
+infliggerebbe sempre 12 punti di danno indipendentemente dal periodo
+della giornata.
+
 
 Guarigione
-Le unità ferite che si trovino nei villaggi recuperano 8 punti ferita ad ogni turno. 
-Le unità ferite che sono adiacenti a unità con l'abilità 'cura' o 'guarisci' saranno curate.
-Un unità che non viene mossa o non combatte per un turno si considera 'accampata' e recupera 
-due punti ferita. I punti ferita che si guadagnano dall'accamparsi si aggiunge agli eventuali
-punti ferita dovuti al guarire o al rigenerarsi.
 
-Un unità con l'abilità 'guarisci' può far recuperare sino a 8 punti ferita per turno.
-Un unità con l'abilità 'cura' può far recuperare sino adu un massimo di 18 punti ferita 
-per turno
- 
-Le unità vicine ad una o più unità con l'abilità guarisci recupererà sino ad un massimo 
-di 4 pnti ferita per turno; le unità vicine ad una o più unità con l'abilità 'cura' potrà
-recuperare sino ad un massimo di 8 punti ferita. Se sono presenti più unità da curare
-verrà curata/guarita quela con meno energia.
- 
-Un esempio di 'guarisci' con più unità adiacenti:
+Le unità ferite che si trovano nei villaggi recupereranno 8 PS per 
+turno. Le unità ferite che si trovano accanto alle unità con l'abilità
+'guarigione' o 'cura' verrà guarita. Un'unità che non si muove e non 
+combatte durante un turno è messa a 'riposo' e recupererà 2 PS. I PS
+recuperati tramite 'riposo' sono aggiunti ai PS recuperati tramite 
+guarigione o rigenerazione.
 
-  Due unità vicine al guaritore riceveranno 4 punti ferita ciascuna
-  Two units next to a 'healer' will receive 4 hitpoints each.
+Un'unità con l'abilità 'guarigione' può curare fino ad 8 PS per turno.
+Un'unità con l'abilità 'cura' può curare fino a 18 PS per turno.
 
-  Tre unità vicine al guaritore non riceveranno 4 punti ferita ciascuna
-  ma: due riceveranno 3 punti ferita e uno ne ricevera 2.
-  
-Un unità può essere guarita al massimo di 8 Punti ferita per turno con un extra di 2 punti
-se rimane accampata. Invece i troll, che hanno l'abilità 'rigenera' avranno solo 8 punti ferita,
-al posto di 16, se si accamperanno in un villaggio. Nessuna unità dentro un villaggio può essere rigenerata da guaritori vicini.
+Le unità vicine alla o alle unità con l'abilità 'guarigione' recupereranno
+un massimo di 4 PS per turno; le unità vicino alla o alle unità con l'abilità
+'cura' recupereranno un massimo di 8 PS per turno. Più alto è il numero
+delle abilità da curare più basso è il numero di PS che ciascuna recupererà.
 
-'Guarisci' previene gli effetti dannosi del veleno, mentre l'abilità 'cura' rimuove completamente
-il veleno. Quando il veleno viene curato o prevenuto le unità non guadagnano o perdono punti ferita in quel turno.
+Un esempio di 'guarigione' con più di una unità adiacente:
 
-Per avere maggiori informazioni vedere sul help interno al gioco.
+  Due unità vicine ad un 'guaritore' riceveranno 4 PS ciascuna.
+
+  Tre unità vicine ad un 'guaritore non riceveranno 4 PS ciascuna;
+  due delle unità riceveranno 3 PS mentre l'altra ricevera 2 PS.
+
+Un'unità può essere guarita per un massimo di 8 PS per turno, con un
+possibile extra di 2 PS derivato dal 'riposo'. I Troll, che possiedono
+l'abilità 'rigenerazione', recuperano solo 8 PS quando si trovano in 
+un villaggio, non 16 PS. Inoltre neppure le unità nei villaggi ricevono
+una guarigione extra.
+
+I 'Guaritori' prevengono i danni causati dal veleno mentre i 'curatori'
+rimuovono completamente il veleno. Quando un'unità viene curata dal 
+veleno o quanto i danni provenienti dal veleno vengono prevenuti, l'unità
+non guadagna nè perde punti salute durante il turno.
+
+Per avere maggiori informazioni controlla l'help interno al gioco.
+
 
 Esperienza
 
 Le unità sono ricompensate per il combattimento con l'esperienza. Dopo averne ottenuta abbastanza 
 possono avanzare di un livello diventando più potenti. La quantità di esperienza guadagnata dipende
-dal livello dell'unità nemica con cui si combatte e da come finisce la battaglia: se un'unità uccide
+dal livello dell'unità nemica con cui si combatte e dal risultato della battaglia: se un'unità uccide
 un nemico riceve 8 punti esperienza per livello del nemico (4 se il nemico è di livello 0), mentre 
 un'unità che sopravvive ad una battaglia senza uccidere l'avversario viene ricompensata con 1 punto
 esperienza per livello dell'avversario. Ossia:
@@ -240,32 +286,66 @@ esperienza per livello dell'avversario. Ossia:
 | 5             | 40                 | 5                      |
 | 6             | 48                 | 6                      |
 
+
 MULTIGIOCATORE
 
 Puoi ospitare una partita sul tuo client o connetterti ad un server del gioco wesnoth
 ed impostare la tua partita lì. Se ospiti una partita con il tuo client gli altri giocatori
-devono poter comunicare attraverso la tua porta 15000 (TCP).
+devono poter comunicare attraverso la tua porta 15000 (TCP). Se utilizzi un firewall e vuoi
+ospitare una partita devi impostare il firewall per consentire connessioni in ingresso sulla
+porta 15000 e devi inoltre impostarlo in modo che diriga tale traffico alla macchina che
+ospita il gioco. Non dovresti avere bisogno di cambiare le opzioni del firewall per unirti
+ad una partita ospitata in un server pubblico o su un pc di un altro giocatore.
 
 Server pubblici:
 
-  server.wesnoth.org        Per la versione stabile del gioco
-  devsrv.wesnoth.org        per la versione testing del gioco
-  devsrv.wesnoth.org:14999  per la versione CVS del gioco
+  server.wesnoth.org        Per la versione più recente del gioco
+  devsrv.wesnoth.org        per la versione CVS del gioco
+  
+Altri server sono elencati all'indirizzo http://wesnoth.slack.it/?MultiplayerServers
 
 
 Impostare una partita con più giocatori.
-  Passo 1: selezionare Multigiocatore nel menù principale e successivamente scegliere:
+  Passo 1: selezionare Multigiocatore nel menù principale e successivamente scegliere tra:
     a) collegati al server ufficiale e crea una partita
-    b) collegati ad un'altro server o ad una partita ospitata da un'altro giocatore
+    b) collegati ad un altro server o ad una partita ospitata da un altro giocatore
     c) seleziona di ospitare una partita sul tuo client
-    d) creare un partita in multigiocatore a turni sul tuo computer
-    e) combattere contro il computer
+    d) crea un partita in multigiocatore a turni sul tuo computer
+    e) gioca contro il computer
 
   Passo 2: seleziona la mappa e cambia le impostazioni di gioco (fog of war, shroud,
   oro per villagio)
 
   Passo 3: configura i giocatori (squadre/alleanze, oro iniziale, fazione)
-  e aspetta finquando tutti i giocatori non si siano impostati come 'giocatore in rete' per collegarsi
+  e aspetta fin quando tutti i giocatori non si siano impostati come 'giocatore in rete' per collegarsi
   alla partita, vedrai la scritta "giocatore in rete" sostituita dal nick impostato nel loro collegamento.
 
   Passo 4: premere [Sono Pronto].
+
+
+SERVER PER LE CAMPAGNE
+
+Puoi visionare le Campagne aggiuntive selezionando Campagna dal menù dei titoli,
+e, nel menù della campagna, selezionando Scarica Altre Campagne. In questo modo
+verrà tentata l'apertura di una connessione TCP alla porta 15002 del server 
+delle campagne (campaigns.wesnoth.org) perciò devi assicurarti che il tuo 
+firewall permetta tale collegamento. Le campagne sono create da utenti e non tutte
+potrebbero funzionare correttamente con la versione corrente del gioco -- controlla
+i forum se hai dei problemi.
+
+
+ALTRE RISORSE
+
+L'Aiuto all'interno del gioco è disponibile all'interno degli scenari;
+premi la combinazione rapida per l'Aiuto o seleziona Aiuto dal menù.
+L'homepage principale del progetto è http://www.wesnoth.org/ e da qui
+si trovano svariati collegamenti a pagine relative al gioco. Di queste,
+il nostro wiki all'indirizzo http://wiki.wesnoth.org/ contiene guide
+e suggerimenti per giocare al meglio, l'albero dell'avanzamento delle unità,
+informazioni su come costruire un proprio scenario o una propria campagna,
+informazioni su come contribuire come sviluppatore o traduttore, e molto
+altro. Puoi anche collegarti alla nostra IRC chat sul server irc.wesnoth.org
+nel canale #wesnoth o puoi iscrivirti ai nostri forum su http://forum.wesnoth.org
+dove puoi discutere del gioco con oltre 2000 utenti. I forum inoltre contengono
+un archivio di decine i migliaia di post con opzione di ricerca -- una fonte 
+di informazioni veramente ricca.
