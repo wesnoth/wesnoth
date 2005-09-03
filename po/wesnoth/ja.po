@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-08-07 22:50+0200\n"
+"PO-Revision-Date: 2005-09-04 08:33+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -22,14 +22,13 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
-msgstr ""
+msgstr "最大HPボーナス+"
 
 #: data/amla.cfg:21
 msgid "Full Heal"
-msgstr ""
+msgstr "完全回復"
 
 #: data/fonts.cfg:6
-#, fuzzy
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
@@ -70,9 +69,8 @@ msgid "Terrains"
 msgstr "地形"
 
 #: data/help.cfg:54 data/help.cfg:60 data/help.cfg:243
-#, fuzzy
 msgid "Overview"
-msgstr "上書きしますか？"
+msgstr "概要"
 
 #: data/help.cfg:55
 msgid ""
@@ -85,7 +83,6 @@ msgstr ""
 "らの能力は遭遇した時にこのトピックの下に一覧表示されます。"
 
 #: data/help.cfg:63
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -99,17 +96,16 @@ msgstr ""
 "\n"
 "Battle for Wesnothは、現代風ストラテジーゲームとは一風異なる、ターンベースの"
 "ファンタジーストラテジーゲームです。 他のゲームがルールとゲームプレイの複雑さ"
-"を目指しているのに対して、 Battle for Wesnothはルールとゲームプレイがシンプル"
-"であるように心懸けています。 しかし、このためにゲームがつまらなくなるというこ"
-"とではありません。 これらの単純なルールから、学ぶのは簡単でもマスターするのが"
-"困難な豊富な戦術が生じるのです。"
+"を目指しているのに対して、 Battle for Wesnothはルールとゲームプレイの両方がシ"
+"ンプルであるように心懸けています。 しかし、このためにゲームがつまらなくなると"
+"いうことではありません。 これらの単純なルールから、学ぶのは簡単でもマスターす"
+"るのが困難な豊富な戦術が生じるのです。"
 
 #: data/help.cfg:68
 msgid "Fundamentals of Gameplay"
 msgstr "遊び方の基礎"
 
 #: data/help.cfg:69
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -118,9 +114,10 @@ msgid ""
 "exceptions, please follow the links included."
 msgstr ""
 "このページでは、あなたが Battle for Wesnoth をプレイするために知っておく必要"
-"のある全ての概要を説明します。 これには、遊び方とゲームの裏にある基本的なメカ"
-"ニズムまで含んでいます。 これはただの概要であることを心にとどめておいて下さ"
-"い。 特殊な例外や状況については、そこから辿れるリンクに従って下さい。"
+"のある全てについての概要を示します。 これには、遊び方とゲームの背後にある基本"
+"的なメカニズムまで含みます。 ゲームをプレイするに従い、新しい局面を迎える度に"
+"新しい情報がこれらのページに追加されます。 特殊な例外や状況におけるより詳細な"
+"情報については、そこからのリンクを辿って下さい。"
 
 #: data/help.cfg:71
 msgid ""
@@ -137,28 +134,27 @@ msgstr ""
 "\n"
 "始めるにあたり、メインメニューの<italic>text=チュートリアル</italic>のボタン"
 "をクリックするとよいでしょう。 これは、あなたをWesnothの基本を教える対話的な"
-"チュートリアルに連れ出します。 これが終わったら、「王位を継ぐ者」キャンペーン"
-"を最初にプレイすることをお勧めします。 <italic>text=キャンペーン</italic>、そ"
-"して<italic>text=「王位を継ぐ者」</italic>をクリックして下さい。 Battle for "
+"チュートリアルに連れ出します。 これが終わったら、「王位継承者」キャンペーンを"
+"最初にプレイすることをお勧めします。 <italic>text=キャンペーン</italic>、そし"
+"て<italic>text=「王位継承者」</italic>をクリックして下さい。 Battle for "
 "Wesnothはとても難しいため、<italic>text=簡単</italic>なレベルから始めたいと思"
 "うかもしれません。"
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
 "will be shown explaining that item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"プレイ中にメニューバーの多くの項目上にマウスをのせると、各項目についての簡単"
-"な説明がポップアップされることを覚えておきましょう。 これは、あなたが新しい能"
-"力に始めて出会う時に特に便利です。"
+"プレイ中には、ステータスペインに表示される情報のような、ゲーム上の多くの項目"
+"の上にマウスをのせると、その項目についての簡単な説明が表示されることを覚えて"
+"おきましょう。 これは、あなたが新しい<ref>dst=abilities text=能力</ref>を初め"
+"て発見する時には特に便利です。"
 
 #: data/help.cfg:79
-#, fuzzy
 msgid "About the Game"
-msgstr "ゲームを終了します"
+msgstr "ゲームについて"
 
 #: data/help.cfg:80
 msgid ""
@@ -170,6 +166,12 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
+"ゲームは、シナリオと呼ばれる一連の戦闘の上で行われます。 各シナリオは、あなた"
+"の軍隊を一つまたはそれ以上の敵の軍隊と戦わせます。 コンピュータ相手や、交互に"
+"コンピュータ操作を入れかわる友達と一緒に(ホットプレイ)プレイすることができま"
+"す。 もしコンピュータがネットワークにつながっているなら、そのネットワークに接"
+"続された他の人達と対戦することも可能です。 インターネット接続があれば、イン"
+"ターネットを越えて他の人達と戦うことができます。"
 
 #: data/help.cfg:82
 msgid ""
@@ -181,6 +183,13 @@ msgid ""
 "need to reach a destination, to rescue someone, to solve a puzzle, or just "
 "to survive a certain number of turns."
 msgstr ""
+"\n"
+"\n"
+"各シナリオにはいくつかの目標があり、シナリオ開始時に示されます。これらの目標"
+"は、勝利するためには何をする必要があるか、敗北しないためにはどうするべきかを"
+"一覧で示します。 多くの場合、目標は全ての敵を倒すことですが、その他にも、ある"
+"地点に到達することであったり、誰かを助けたり、パズルを解いたり、あるいは何"
+"ターンかを生き残ることだけであったりもします。"
 
 #: data/help.cfg:84
 msgid ""
@@ -191,6 +200,11 @@ msgid ""
 "preserving your best troops so that they can be used again in later "
 "scenarios in the campaign."
 msgstr ""
+"\n"
+"\n"
+"キャンペーンは、物語を伝えながら、話の続きとなる複数のシナリオからなっていま"
+"す。 キャンペーンでは多くの場合、後のシナリオで再び仕えるように最高の軍隊達を"
+"生き残せるよう、より注意してプレイする必要があります。"
 
 #: data/help.cfg:89
 msgid "Recruiting and Recalling"
@@ -210,12 +224,12 @@ msgid ""
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 "戦闘の開始時点やその途中では何度か、自軍にユニットを雇う必要があるでしょう。"
-"雇うためにはリーダー(「王位を継ぐ者」ではKonrad)を城の主搭ヘクスに置く必要が"
-"あります。そして、メニューから「雇う」を選択するか、ヘクスを右クリックして"
-"「雇う」を選択することで雇うことができます。ここで、雇うのが可能なユニット一"
-"覧を含むメニューが表示されます。ユニットに下には必要なゴールドが表示されま"
-"す。ユニットをクリックすると、その特性値が左に表示されます。それから、「雇"
-"う」ボタンでそれを雇って下さい。"
+"雇うためにはリーダー(「王位継承者」ではKonrad)を城の主搭ヘクスに置く必要があ"
+"ります。そして、メニューから「雇う」を選択するか、ヘクスを右クリックして「雇"
+"う」を選択することで雇うことができます。ここで、雇うのが可能なユニット一覧を"
+"含むメニューが表示されます。ユニットに下には必要なゴールドが表示されます。ユ"
+"ニットをクリックすると、その特性値が左に表示されます。それから、「雇う」ボタ"
+"ンでそれを雇って下さい。"
 
 #: data/help.cfg:92
 msgid ""
@@ -246,7 +260,6 @@ msgstr ""
 "text=特性</ref>を持ちます。"
 
 #: data/help.cfg:96
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -256,12 +269,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"後のシナリオでは、前の戦闘の生存ユニットを召還することもできます。召還は20"
-"ゴールドが必要な点と前のシナリオの生存ユニット一覧を表示する点を除けば、完全"
-"に雇用と同じように機能します。"
+"後のシナリオでは、前の戦闘の生存者を召還することもできます。召還には通常20"
+"ゴールドかかり、前のシナリオからの全生存ユニットの一覧を示します。"
 
 #: data/help.cfg:98
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -271,44 +282,45 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"注意して欲しいのは、ユニットは雇用と召還にゴールドが必要なだけでなく、維持に"
-"も必要であるということです。詳細は<ref>dst=income_and_upkeep text=収入と維持"
-"</ref>を参照してください。"
+"ユニットは雇用と召還にゴールドが必要なだけでなく、維持にも金がかかります。よ"
+"り詳細な情報は、<ref>dst=income_and_upkeep text=収入と維持</ref>を参照してく"
+"ださい。"
 
 #: data/help.cfg:103
-#, fuzzy
 msgid "Orbs"
-msgstr "オーク族"
+msgstr "宝珠"
 
 #: data/help.cfg:104
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
+"各ユニットの隣に示される体力バーの上にあるのは宝珠です。 あなたが動かすユニッ"
+"トについて、宝珠は"
 
 #: data/help.cfg:105
 msgid "green if it hasn't moved this turn,"
-msgstr ""
+msgstr "このターンにまだ動いていないなら緑色、"
 
 #: data/help.cfg:106
 msgid "yellow if it has moved, but could still move further or attack, or"
-msgstr ""
+msgstr "移動したがまだ動いたり攻撃したりできるなら黄色,"
 
 #: data/help.cfg:107
 msgid "red if it has used all its movement this turn."
-msgstr ""
+msgstr "全ての行動が終わっているなら赤色、となります。"
 
 #: data/help.cfg:108
 msgid "The orb is blue if the unit is an ally you do not control."
-msgstr ""
+msgstr "あなたが動かしていない同盟のユニットなら、オーブは青色です。"
 
 #: data/help.cfg:109
 msgid "Enemy units have no orb on top of their energy bar."
-msgstr ""
+msgstr "敵ユニットには、体力バーの上に宝珠がありません。"
 
 #: data/help.cfg:114
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "ヒットポイントと経験"
 
 #: data/help.cfg:115
 msgid ""
@@ -317,6 +329,10 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
+"各ユニットは何ポイントかのヒットポイント(HP)をもっています。 ユニットのヒット"
+"ポイントが1より小さくなると、ユニットは死んでしまいます。 また各ユニットは何"
+"ポイントかの経験値(XP)も持っています。 新しく雇用されたユニットは経験なしから"
+"始まって、敵と戦うことで経験を得ます。"
 
 #: data/help.cfg:116
 msgid ""
@@ -324,6 +340,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
+"ヒットポイントと経験値は共にステータスペインに2つの数字(現在の値と、ユニット"
+"がもつ最大値)を使って表示されます。"
 
 #: data/help.cfg:117
 msgid ""
@@ -332,13 +350,16 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst=experience_and_advancement text=advance</ref>."
 msgstr ""
+"ヒットポイントは各ユニットの隣にある体力バーでも示され、緑や黄色や赤となりま"
+"す。 1ポイントでも経験値をもったユニットは、青色の経験バーが表示され、そのユ"
+"ニットが<ref>dst=experience_and_advancement text=昇進</ref>する頃には白に変わ"
+"ります。"
 
 #: data/help.cfg:122 src/help.cpp:1199
 msgid "Movement"
 msgstr "移動"
 
 #: data/help.cfg:123
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -352,12 +373,13 @@ msgstr ""
 "Battle for Wesnothでの移動は単純です。 単に動かしたいユニットをクリックして、"
 "向かわせたい場所のヘクスをクリックするだけです。 ユニットが選択されると、その"
 "ターンで移動可能な全てのヘクスがハイライトされ、その他全てのヘクスは薄暗くな"
-"ります。 暗いヘクスの上にマウスカーソルをあわせると、そこに到り着くのに何ター"
-"ン必要かが表示されて、クリックすると、そのユニットはそこに向かう最速の通り道"
-"で、今回および以降のターンに渡って移動します。"
+"ります。ハイライトされたヘクスの上にマウスを乗せると、そのヘクスに移動した時"
+"にそのユニットが持つことになる防御率が表示されます。\n"
+"暗いヘクスの上にマウスカーソルをあわせると、そこに到り着くのに何ターン必要か"
+"が表示されて、クリックすると、そのユニットはそこに向かう最速の通り道で、今回"
+"および以降のターンに渡って移動します。"
 
 #: data/help.cfg:125
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -408,6 +430,11 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"次のターンの間に敵がどこまで動けるかを見るには、Ctrl-v か Cmd-v を押して下さ"
+"い。 Ctrl-b か Cmd-b では、その敵が、進行をブロックするあなたのユニットがない"
+"としたら、どこまで動けるかを示します。"
 
 #: data/help.cfg:134
 msgid "Combat"
@@ -425,9 +452,15 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
+"Battle for Wesnoth における戦闘は、必ず、隣接するヘクスにいるユニットの間で行"
+"われます。自分のユニットをクリックして、攻撃したい敵ユニットをクリックする"
+"と、あなたのユニットは敵ユニットに向かって移動し、お互い同士になった時に戦闘"
+"が始まります。攻撃側と防御側は それぞれ割り当てられた攻撃回数を使って交互に攻"
+"撃します。攻撃側は使用する武器の一つを選んで、防御側は同じタイプの攻撃の一つ"
+"を使って反撃します。 攻撃には2つのタイプ、剣や斧や刀などを使う格闘と、弓や槍"
+"や火炎を使う投射があります。"
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -435,10 +468,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text=攻撃順と攻撃回数</header>"
+"<header>text=順序と攻撃回数</header>"
 
 #: data/help.cfg:139
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -452,11 +484,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"攻撃側が先制攻撃を行い、次に防御側が報復します。 これはどちらかのユニットが攻"
-"撃回数分を使い切るまで交互に行われます。 攻撃回数はユニットによって異なり、例"
-"えば、5-4の剣での攻撃をもつエルフ戦士は 5ダメージを与える攻撃を4回行います"
-"が、一方で 9-2をもつオーク歩兵は2回しか攻撃できません(ひとふり9ダメージです"
-"が)。"
+"攻撃側が先制攻撃を行い、次に防御側が反撃します。各攻撃は、命中してある量のダ"
+"メージを与えるか、外して全くダメージが与えられないかのどちらかとなります。こ"
+"れはどちらかのユニットが攻撃回数分を使い切るまで交互に行われます。 攻撃回数は"
+"ユニットによって異なり、例えば 5-4の剣での攻撃をもつエルフ戦士は 5ダメージを"
+"与える攻撃を4回行いますが、一方で 9-2をもつオーク歩兵は2回しか攻撃できません"
+"(ひとふり9ダメージですが)。"
 
 #: data/help.cfg:141
 msgid ""
@@ -469,7 +502,6 @@ msgstr ""
 "<header>text=命中率</header>"
 
 #: data/help.cfg:143
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -483,15 +515,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"2つの例外がありますが、あるユニットへの命中率はそのユニットが立っている地形の"
-"防御率にのみ基づきます。 これは、ユニットを右クリックし、「ユニットの解説」を"
-"選択して、<italic>text=地形修正</italic>を見ることでわかります。 例えば、ほと"
-"んどのエルフは森において70%の防御率があります。 つまり、彼らに命中させる確率"
-"は30%しかありません。 反対に、エルフが攻撃側に反撃するときの命中率は、攻撃ユ"
-"ニットのいる地形に依存します。"
+"各ユニットには立っている地形に基づいた命中される確率が決まります。これはス"
+"テータスペインに表示されますし、そのユニットを右クリックし、「ユニットの解"
+"説」を選択して、<italic>text=地形修正</italic>を見ることでもわかります。例え"
+"ば、エルフの多くは森において70%の防御率があり、彼らに命中させる確率は30%しか"
+"ありません。 反対に、エルフが攻撃側に反撃するときの命中率は、攻撃ユニットのい"
+"る地形に依存します。"
 
 #: data/help.cfg:145
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -503,9 +534,9 @@ msgid ""
 msgstr ""
 "\n"
 "このルールには2つの例外があります。 <ref>dst=weaponspecial_magical text=魔法"
-"攻撃 </ref>と <ref>dst=weaponspecial_marksman text=射撃</ref>です。 魔法攻撃"
-"は常に地形に関係なく命中率は70%になります。 そして、 射撃は攻撃時に限り、 地"
-"形に関わらす命中率は常に最低60%あります。"
+"攻撃</ref>と <ref>dst=weaponspecial_marksman text=射撃</ref>です。 魔法攻撃は"
+"地形に関係なく常に命中率は70%になり、射撃は攻撃時に限り、地形に関わらす常に最"
+"低60%の命中率になります。"
 
 #: data/help.cfg:147
 msgid ""
@@ -610,26 +641,27 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"もし攻撃が命中すれば、少なくとも1ポイントのダメージは必ず与えられます。これ"
+"は、例え防御側がそのダメージの種類に100%の耐性を持っていても、ということで"
+"す。"
 
 #: data/help.cfg:168
 msgid "Time of Day"
 msgstr "時間"
 
 #: data/help.cfg:172
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night\n"
 " Chaotic units get +25% damage at night, and -25% in daytime\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"\n"
-"\n"
-"時間は次のように、特定のユニットのダメージに影響します。\n"
-"\n"
-"秩序ユニットは昼間はダメージ+25%、夜間はダメージ-25%。\n"
-"混沌ユニットは夜間はダメージ+25%、昼間はダメージ-25%。\n"
-"中立ユニットは時間の影響を受けない。"
+"1日の時間は、次のように特定のユニットのダメージに影響します。\n"
+" 秩序ユニットは昼間はダメージ+25%、夜間はダメージ-25%。\n"
+" 混沌ユニットは夜間はダメージ+25%、昼間はダメージ-25%。\n"
+" 中立ユニットは時間の影響を受けない。"
 
 #: data/help.cfg:175
 msgid ""
@@ -639,6 +671,10 @@ msgid ""
 "pane. For the usual day/night cycle, Morning and Afternoon count as day, "
 "First and Second Watch count as night:\n"
 msgstr ""
+"\n"
+"\n"
+"現在時刻はステータスペインの小マップの下で観察できます。 通常の昼と夜のサイク"
+"ルに対して、午前と午後は昼間と数え、一刻と二刻は夜間と数えます。\n"
 
 #: data/help.cfg:175 data/schedules.cfg:5
 msgid "Dawn"
@@ -677,7 +713,7 @@ msgstr ""
 
 #: data/help.cfg:187
 msgid "Experience and Advancement"
-msgstr "経験とレベルアップ"
+msgstr "経験と昇進"
 
 #: data/help.cfg:188
 msgid ""
@@ -702,10 +738,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"ユニットはレベルアップに必要な経験値が決まっています (「知的」な特性を持つユ"
-"ニットなら通常より20%少なくてすみます)。 ユニットがこの値に達すると、 そのユ"
-"ニットは直ちに次のレベルに上がり、 HPが最大まで回復します。場合によっては、 "
-"クラスチェンジ先の選択を行います。"
+"ユニットは昇進に必要な経験値が決まっています (「知的」な特性を持つユニットな"
+"ら通常より20%少なくてすみます)。 ユニットがこの値に達すると、 そのユニットは"
+"直ちに次のレベルに上がり、 HPが最大まで回復します。場合によっては、 クラス"
+"チェンジ先の選択を行います。"
 
 #: data/help.cfg:193
 msgid ""
@@ -721,13 +757,23 @@ msgid ""
 "only a small number of units, for example the Necrophage, will actually heal "
 "with AMLA effects. Most units just gain the bonus to the Maximum HP."
 msgstr ""
+"\n"
+"\n"
+"ほとんどのユニットは3レベルまでありますが、全てではありません。いくつかの"
+"(<ref>dst=unit_Mage text=魔術師</ref>のような) ユニットは4レベルまでありま"
+"す。一度ユニットが最高レベルに達すると、最高位後昇進 After Maximum Level "
+"Advancement (AMLA)をもつようになります。\n"
+"ユニットが経験の目標値に到達する度に、AMLAはユニットを修正しますが、そのユ"
+"ニットは同じレベルに留まり続けます。典型的なAMLAの効果は、100XP得る毎にユニッ"
+"トの最大HPを3増加させることです。例えばネクロファージのような、ほんのわずかな"
+"ユニットはAMLA効果によって実際に回復します。 ほとんどのユニットは最大HPへの"
+"ボーナスを得るだけです。"
 
 #: data/help.cfg:198
 msgid "Healing"
 msgstr "回復"
 
 #: data/help.cfg:199
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -735,9 +781,11 @@ msgid ""
 "not. Wesnoth offers several other ways for your units to heal, all of which "
 "take place at the beginning of your turn, before you take action."
 msgstr ""
-"戦闘時にユニットがダメージを受けることは避けられません。 Wesnothではユニット"
-"を回復させるいくつかの方法があります。 これらは全て、ターン開始時に行動を起こ"
-"す前に行われます。"
+"戦闘において、ユニットがダメージを受けることは避けられないでしょう。ユニット"
+"は<ref>dst=experience_and_advancement text=昇進</ref>する時に、完全回復しま"
+"す。これは、あなたのターンであろうとなかろうと、敵との戦いが終了した時点で起"
+"こります。その他にもWesnothではあなたのユニットを回復させるいくつかの方法があ"
+"ります。 これらは全て、あなたのターン開始時に行動を起こす前に起こります。"
 
 #: data/help.cfg:201
 msgid ""
@@ -778,9 +826,13 @@ msgid ""
 "and are fighting on the same side as the healing unit, and only up to 4HP "
 "per unit."
 msgstr ""
+"\n"
+"治療ユニット: <ref>dst=ability_heals text=治療</ref>能力を持つユニットは、各"
+"ターンでダメージの最大8HPを回復させ、毒を受けたユニットにダメージが与えられる"
+"のを防ぎます。治療ユニットに隣接していて、同じ陣営で戦っているユニットのみが"
+"治療され、各ユニット辺り4HPの回復が最大です。"
 
 #: data/help.cfg:205
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -789,10 +841,10 @@ msgid ""
 "the same side as the healing unit, and only up to 8HP per unit."
 msgstr ""
 "\n"
-"\n"
-"治癒ユニット: <ref>dst=ability_cures text=治癒</ref>能力を持つユニットは、 隣"
-"接している全ての友好的なユニットを各ターンで HPを8回復(最大で18ポイントまで)"
-"させるか、 または毒状態のユニットを解毒します。"
+"治癒ユニット: <ref>dst=ability_cures text=治癒</ref>能力を持つユニットは、 治"
+"療薬と同様に全てあわせて最大で18HPのダメージを回復させ、毒を治癒します。治癒"
+"するユニットに隣接していて、同じ陣営で戦っているユニットのみが治療や治癒さ"
+"れ、各ユニット辺り8HPの回復が最大です。"
 
 #: data/help.cfg:207
 #, fuzzy
@@ -807,9 +859,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"休息は他の回復と組み合わせることができますが、村、再生、治療/治癒は互いに組み"
-"合わせることはできません。 またユニットは、シナリオ終了から次の開始の間で完全"
-"に回復します。"
+"休息は他の回復と組み合わせることができますが、村、再生、治療そして治癒は互い"
+"に組み合わせることはできません。傷を負ったたくさんの者達に分けようという治療"
+"や治癒ユニットは、個々の傷を回復させるには効果が薄いでしょう。最後に、シナリ"
+"オの間でユニットは完全に回復します。"
 
 #: data/help.cfg:212
 msgid "Income and Upkeep"
@@ -877,7 +930,6 @@ msgstr ""
 "は、差し引き合計の収入は毎ターン８ゴールドとなります。"
 
 #: data/help.cfg:220
-#, fuzzy
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -888,8 +940,8 @@ msgstr ""
 "\n"
 "維持費にはひとつだけ重要な例外があります。「忠義」特性を持つユニットには、維"
 "持費が全くかかりません。シナリオを開始するユニット(KonradやDelfadorなど)や、 "
-"シナリオの途中で加わるユニット(「王位を継ぐ者」のシナリオ２での騎兵など)は、"
-"通常この忠義特性を持っています。"
+"シナリオの途中で加わるユニット(「王位継承者」のシナリオ２での騎兵など)は、通"
+"常この忠義特性を持っています。"
 
 #: data/help.cfg:225
 msgid "Wrap Up"
@@ -905,30 +957,28 @@ msgid ""
 msgstr ""
 "これでWesnothの基礎は終わりです。 あなたは基本戦術を研究したり、 "
 "<ref>dst=traits text=特性</ref>と<ref>dst=abilities text=能力</ref>を 知りた"
-"いと思っているかもしれません。 しかし、この時点であなたは シナリオ「王位を継"
-"ぐ者」を遊ぶために 必要な知識をすべて得ました。 楽しんで下さい、そして幸運"
-"を！"
+"いと思っているかもしれません。 しかし、この時点であなたは シナリオ「王位継承"
+"者」を遊ぶために 必要な知識をすべて得ました。 楽しんで下さい、そして幸運を！"
 
 #: data/help.cfg:231
-#, fuzzy
 msgid "Contributors"
-msgstr "+貢献者"
+msgstr "貢献者"
 
 #: data/help.cfg:237
 msgid "License"
-msgstr ""
+msgstr "ライセンス"
 
 #: data/help.cfg:244
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
-"ほとんどのユニットは2つの特性を持っていますが、アンデッドは例外的に「アンデッ"
-"ド」の特性が割り当てられます。特性とは、少しばかりユニットの属性を変化させる"
-"修正です。それらは通常はユニットが雇われた時にランダムに割り振られます。"
+"ほとんどのユニットは2つの特性を持っていますが、アンデッドは「アンデッド」の特"
+"性のみが割り当てられ、ウーズはどのような特性も得ません。特性とは、少しばかり"
+"ユニットの属性を変化させる修正です。それらは通常はユニットが雇われた時にラン"
+"ダムに割り振られます。"
 
 #: data/help.cfg:246
 msgid ""
@@ -939,6 +989,12 @@ msgid ""
 "text=Quick</ref>, <ref>dst=traits_resilient text=Resilient</ref>, and "
 "<ref>dst=traits_strong text=Strong</ref>."
 msgstr ""
+"\n"
+"\n"
+"全てのアンデッドではないユニットに有効な能力は、<ref>dst=traits_intelligent "
+"text=知的</ref>、<ref>dst=traits_quick text=敏捷</ref>、"
+"<ref>dst=traits_resilient text=頑強</ref>、<ref>dst=traits_strong text=強力</"
+"ref>です。"
 
 #: data/help.cfg:248
 msgid ""
@@ -948,18 +1004,21 @@ msgid ""
 "text=Loyal</ref>, <ref>dst=traits_undead text=Undead</ref>, and "
 "<ref>dst=traits_dextrous text=Dextrous</ref>."
 msgstr ""
+"\n"
+"\n"
+"ユニットに割り当てられる他の能力には <ref>dst=traits_loyal text=忠義</ref>、"
+"<ref>dst=traits_undead text=アンデッド</ref>、<ref>dst=traits_dextrous text="
+"器用</ref>があります。"
 
 #: data/help.cfg:253
-#, fuzzy
 msgid "Intelligent"
 msgstr "知的"
 
 #: data/help.cfg:254
 msgid "Intelligent units require 20% less experience than usual to advance."
-msgstr ""
+msgstr "知的なユニットは通常よりもレベルアップに必要な経験が20%少なくすむ。"
 
 #: data/help.cfg:256
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -971,27 +1030,20 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=知的</header>\n"
-"\n"
-"知的なユニットは通常よりもレベルアップに必要な経験が20%少なくすむ。\n"
-"\n"
 "知的なユニットは次のレベルへと早く進むため、キャンペーンの開始時には大変便利"
-"です。 最大レベルに達した後はもはや経験値は使い途がないため、キャンペーンの後"
-"半では知的は全く有用でなくなります。 もし、多くの最大レベルユニットがいるな"
-"ら、より望ましい特性をもつユニットを召還したほうがよいかもしれません。"
+"です。 最高レベル昇進後はもはやレベルアップする重要性がないため、キャンペーン"
+"の後半では知的はそれほど有用ではなくなります。 もし多くの最高レベルユニットが"
+"いるなら、より望ましい特性をもつユニットを召還したほうがよいかもしれません。"
 
 #: data/help.cfg:261
-#, fuzzy
 msgid "Quick"
 msgstr "敏捷"
 
 #: data/help.cfg:262
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
-msgstr ""
+msgstr "敏捷なユニットは移動力が1つ多くなるが、HPが通常より10%少なくなる。"
 
 #: data/help.cfg:264
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1004,11 +1056,6 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=敏捷</header>\n"
-"\n"
-"敏捷なユニットは移動力が１つ上がり、HPが通常より10%下がる。\n"
-"\n"
 "敏捷は、特にトロールや重歩兵のような動きの遅いユニットで、最も注目に値する特"
 "性です。 「敏捷」特性をもつユニットはしばしば荒い地形において素晴らしく増加し"
 "た機動力があるため、あなたの軍隊を配備する時に考慮すべきです。 また敏捷なユ"
@@ -1016,16 +1063,14 @@ msgstr ""
 "を保持し続けることには向いていません。"
 
 #: data/help.cfg:269
-#, fuzzy
 msgid "Resilient"
 msgstr "頑強"
 
 #: data/help.cfg:270
 msgid "Resilient units have 7 more HP than usual."
-msgstr ""
+msgstr "頑強なユニットは通常よりHPが7多い。"
 
 #: data/help.cfg:272
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1037,19 +1082,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=回復</header>\n"
-"\n"
-"回復力のあるユニットは通常より7多いHPを持つ。\n"
-"\n"
-"回復力のあるユニットはキャンペーンの全ての段階において便利であり、全てのユ"
-"ニットにとって便利な特性です。少ないヒットポイントで、良い防御力や高い耐性の"
-"組み合わせをもつようなユニットには、回復力は特性としてはしばしば最も助けられ"
-"るものです。回復力に富んだユニットは、敵に対して戦略的な拠点を保持する上で、"
-"特に便利となります。"
+"頑強なユニットはキャンペーンの全ての段階において便利であり、全てのユニットに"
+"とって便利な特性です。少ないヒットポイントで良い防御力や高い耐性の組み合わせ"
+"をもつようなユニットには、回復力は特性としてしばしば非常に助けとなります。頑"
+"強なユニットは、敵に対して戦略的な拠点を保持する上で、特に便利となります。"
 
 #: data/help.cfg:277
-#, fuzzy
 msgid "Strong"
 msgstr "強力"
 
@@ -1058,9 +1096,10 @@ msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 2 more HP."
 msgstr ""
+"強力なユニットは、格闘時に1ポイント余分にダメージを与え、通常より2多いHPを持"
+"つ。"
 
 #: data/help.cfg:280
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1071,18 +1110,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=強力</header>\n"
-"\n"
-"格闘時に1ポイント余分にダメージを与え、通常より2多いHPを持つ。\n"
-"\n"
-"全ての接近戦ユニットに便利な一方で、強力は、エルフ戦士のような高い攻撃回数を"
+"全ての接近戦ユニットに便利な一方で、[強力]は,エルフ戦士のような高い攻撃回数を"
 "もつユニットにとって、最も効果があります。わずかな追加ダメージによって、傷つ"
 "けるだけの攻撃をとどめの一撃へと変えるような場合、強力なユニットは大変便利で"
 "す。"
 
 #: data/help.cfg:285
-#, fuzzy
 msgid "Loyal"
 msgstr "忠義"
 
@@ -1092,9 +1125,10 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
+"忠義ユニットには維持費がかからない。ほとんどのユニットは、各ターンの終了時"
+"に、そのレベルに等しい維持費がかかるが、忠義ユニットはこの費用がかからない。"
 
 #: data/help.cfg:288
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1107,15 +1141,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=忠義</header>\n"
-"\n"
-"忠義ユニットには維持費がかからない。ほとんどのユニットは、各ターンの終了時"
-"に、そのレベルに等しい維持費がかかるが、忠義ユニットはこの費用がかからな"
-"い。\n"
-"\n"
-"\n"
-"キャンペーンの間、ある種のユニットは彼等自身の意思でプレイヤーの力に加わるこ"
+"キャンペーンの間、ある種のユニットは自分自身の意思でプレイヤーの力に加わるこ"
 "とを選択する。これらのユニットは忠義特性をもつとされる。彼等は召還される際に"
 "は支払いが必要だが、維持費は全くかからない。これは長いキャンペーンの間に金の"
 "貯えが不足した時などには、貴重ものとなる。この特性は雇われたユニットには決し"
@@ -1129,10 +1155,9 @@ msgstr "アンデッド"
 
 #: data/help.cfg:294
 msgid "Undead units are immune to poison."
-msgstr ""
+msgstr "アンデッドユニットは毒に免疫がある。"
 
 #: data/help.cfg:296
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1143,27 +1168,20 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=アンデッド</header>\n"
-"\n"
-"アンデッドのユニットは毒に免疫がある。\n"
-"\n"
 "アンデッドのユニットは基本的に唯一の特性として「アンデッド」を持っています。"
-"アンデッドのユニットは再び戦うために蘇えった死んだ肉体であるため、毒は全く効"
-"きません。 このため、攻撃において毒を使う敵を相手にする場合に、貴重な存在とな"
-"ります。"
+"アンデッドのユニットは再び戦うために甦った死んだ肉体であるため、毒は全く効き"
+"ません。 このため、攻撃において毒を使う敵を相手にする場合に、貴重な存在となり"
+"ます。"
 
 #: data/help.cfg:301
-#, fuzzy
 msgid "Dextrous"
 msgstr "器用"
 
 #: data/help.cfg:302
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
-msgstr ""
+msgstr "器用なユニットは弓を用いた攻撃で命中する度に +1のダメージを与える。"
 
 #: data/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1174,12 +1192,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\n"
-"<header>text=器用</header>\n"
-"\n"
-"器用なユニットは弓を用いた攻撃に成功する度に +1のダメージを与える。\n"
-"\n"
-"器用はエルフにのみ備わっている特性です。 エルフの者達は不思議な優雅さをもち、"
+"器用はエルフにのみ備わっている能力です。 エルフの者達は不思議な優雅さをもち、"
 "弓を扱うことに非常に才能があることで知られています。 しかしながら、ある者は同"
 "胞を上回る天性の才能を与えられています。 これらのエルフは一矢毎に追加のダメー"
 "ジポイントを与えることができます。"
@@ -1198,6 +1211,12 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"平原とは、耕されたり、放牧用に苅られたり、あるいは自然のままの開かれた平地を"
+"表します。開かれた大地であるために、平原では移動するのがとても容易ですが、そ"
+"こにいるものを防御することが難しくもあります。典型的には、平原で最も良い働き"
+"をするユニットは、騎兵か、または広い土地で有利な超俊敏なユニットです。\n"
+"\n"
+"ほとんどのユニットは平原で 30から40%の防御を持ちます。"
 
 #: data/help.cfg:319 data/terrain.cfg:118 data/terrain.cfg:126
 msgid "Road"
@@ -1209,6 +1228,9 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"道路は、多くの旅行者がその上を通ることで形ができた、踏み固められた土の道で"
+"す。ゲームプレイに関する限り、道路は<ref>dst=terrain_grassland text=平原</"
+"ref>と同じになります。"
 
 #: data/help.cfg:327 data/terrain.cfg:325
 msgid "Forest"
@@ -1230,6 +1252,17 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"森は、通過するのを妨げるのに十分な、大地に根差す森林地の全てを表します。ほぼ"
+"全てのものの歩みを遅くしますが、多くのユニットに対して開かれた土地より良い防"
+"御を与えてくれます。 しかしながら騎兵にとっては、隠されることで得られるどのよ"
+"うな恩恵も打ち消されるほど、操るのをひどく困難にしてしまいます。エルフは森で"
+"の一般的な規則に対する例外です。森の中でも完全な移動ができるだけでなく、素晴"
+"らしい防御特典も得られるのです。ドワーフはこの規則へのもう一つの例外で、この"
+"地形に全く慣れていない彼等は防御特典を全く受けることができません。\n"
+"\n"
+"多くのユニットは森で50%の防御ですが、騎兵は40%に制限されます。一方でエルフは"
+"乗馬中であっても60から70%の防御を楽しみます。ドワーフは一般的に森では30%の防"
+"御しか得られません。"
 
 #: data/help.cfg:337 data/terrain.cfg:286
 msgid "Hills"
@@ -1247,10 +1280,17 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"丘は、地面の高低差が激しく遮蔽になるような、荒々しい土地を表します。丘はほと"
+"んどの軍隊にとって進行が困難です。ドワーフとトロールとオークはこの地形に慣れ"
+"ているため、遅くなることなく通り抜けることができます。騎兵は遮蔽の助けによる"
+"どのような防御も効果がなくなるほど、操縦に手こずります。\n"
+"\n"
+"ほとんどのユニットは丘で約50%の防御を持ちますが、騎兵は40%に抑えられます。ド"
+"ワーフは丘では60%の防御を楽しみます。"
 
 #: data/help.cfg:347 data/terrain.cfg:310
 msgid "Mountains"
-msgstr "山岳"
+msgstr "山"
 
 #: data/help.cfg:352
 msgid ""
@@ -1264,10 +1304,17 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"山は、しばしば移動のために障害物を登る必要のある険しい場所です。このため多く"
+"の軍隊に対して素晴らしい防御を提供しますが、通り抜けて行くことをひどく妨げま"
+"す。ほとんどの騎兵は山岳地形には入っていくことさえもできませんが、エルフの騎"
+"兵とゴブリンの狼乗りだけはこの例外です。ドワーフとトロールは山岳地形で生まれ"
+"ており、移動することは容易です。\n"
+"\n"
+"多くのユニットは山で60%の防御になりますが、ドワーフは70%を楽しみます。"
 
 #: data/help.cfg:357 data/terrain.cfg:55
 msgid "Swamp"
-msgstr "湿原"
+msgstr "沼地"
 
 #: data/help.cfg:362
 msgid ""
@@ -1280,6 +1327,13 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
+"沼地はあらゆる湿地帯を表します。沼地はほぼ全てのものの歩みを遅くし、自身を守"
+"る能力を抑制します。これに対する例外は水中移動の身体能力をもつ全ての種族で、"
+"完全な移動と防御特典を受けます。湿地帯で生きる者達はこの地形を防御に役立てる"
+"こともできます。\n"
+"\n"
+"多くのユニットは沼地で30%の防御となります。 マーマン、ナーガ、トカゲ族は全て"
+"一般的に60%を楽しみます。"
 
 #: data/help.cfg:367 data/terrain.cfg:34
 msgid "Shallow Water"
@@ -1297,10 +1351,18 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
+"浅瀬はだいたい人間の腰までの深さの水の状態を表します。これはほぼ全てのものの"
+"歩みを遅くし、攻撃の守りをなくしてしまいます。ドワーフは、ほぼ頭まで水が達し"
+"てしまうため、ここにいることは非常に困難となります。例外は泳ぐための身体能力"
+"を生まれながらに持っている種族で、極めて高い防御特典と完全な移動を得ることが"
+"できます。\n"
+"\n"
+"多くのユニットは浅瀬で20から30%の防御を持ち、ナーガとマーマンは共に60%を楽し"
+"みます。"
 
 #: data/help.cfg:377 data/terrain.cfg:25
 msgid "Deep Water"
-msgstr "深い水"
+msgstr "深水"
 
 #: data/help.cfg:382
 msgid ""
@@ -1310,6 +1372,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"深水は、人間の頭を越える深さの水の状態を表します。ほとんどのユニットは深水に"
+"は入れず、飛ぶことができるか、泳ぐのが極めて得意なものだけが、この領域に入れ"
+"ます。\n"
+"\n"
+"深水でマーマンとナーガは共に50%の防御と完全な移動を行います。"
 
 #: data/help.cfg:387 data/terrain.cfg:257
 msgid "Snow"
@@ -1323,10 +1390,15 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in snow."
 msgstr ""
+"雪原は、永久(ツンドラのような)か一時的(雪に覆われた平原のような)かのどちらか"
+"の、凍てついた平らな地域を表します。多くのユニットは雪で遅くなり、防御にも苦"
+"労します。\n"
+"\n"
+"ほとんどのユニットが雪原で20から40%の防御になります。"
 
 #: data/help.cfg:397 data/terrain.cfg:265
 msgid "Ice"
-msgstr "氷土"
+msgstr "氷"
 
 #: data/help.cfg:400
 msgid ""
@@ -1334,6 +1406,9 @@ msgid ""
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
+"氷は凍った水の状態を表します。ゲームプレイの目的では<ref>dst=terrain_tundra "
+"text=雪原</ref>と同じ扱いです。泳ぐことのできるユニットは例え水の中で息ができ"
+"るとしても、氷の下を泳ぐことはできないことに注意して下さい。"
 
 #: data/help.cfg:405 data/terrain.cfg:374 data/terrain.cfg:485
 msgid "Castle"
@@ -1350,6 +1425,13 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"城はあらゆる種類の永久的な要塞です。城に駐留することで、ほとんど全てのユニッ"
+"トは防御について素晴らしい特典を受け、城では完全に移動できます。城に駐留する"
+"ユニットは完全な防御能力を示します。それぞれの壁のヘクスにユニットがいなけれ"
+"ば、敵は簡単に城の中に忍び込むことがでい、中にいる全てのものと同様の防御特典"
+"を得ることになります。\n"
+"\n"
+"ほとんどのユニットは城で60%の防御になります。"
 
 #: data/help.cfg:417 data/terrain.cfg:100
 msgid "Sand"
@@ -1363,11 +1445,15 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
+"砂の不安定さのため、多くのユニットが通り抜けが困難で、攻撃に対して無防備に"
+"なってしまいます。一方で巨大な足や蛇型の身体のトガケ種族は砂での行動がずっと"
+"容易になります。\n"
+"\n"
+"多くのユニットは砂地において20から40%の防御をもちます。"
 
 #: data/help.cfg:427 data/terrain.cfg:109
-#, fuzzy
 msgid "Desert"
-msgstr "砂丘"
+msgstr "砂漠"
 
 #: data/help.cfg:430
 msgid ""
@@ -1375,6 +1461,8 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
+"砂漠は小さな砂の穴や砂浜とは少しばかり異なる性質ですが、ゲームプレイの目的で"
+"は同じ扱いです。<ref>dst=terrain_sand text=砂地</ref>を参照して下さい。"
 
 #: data/help.cfg:435 data/terrain.cfg:357
 msgid "Cave"
@@ -1391,6 +1479,13 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"洞窟の地形はユニットが通り抜けられるだけの十分な空間のある地下の空洞を表しま"
+"す。ほとんどのユニットはこの地形に慣れておらず、それゆえ歩みが遅く防御を妨げ"
+"ます。住まいを洞窟に作るドワーフとトロールは、共にこの地形では比較的容易に行"
+"動し、特にドワーフその小さな身体で他の種族では通れないような多くの障害物も乗"
+"り越えられます。\n"
+"\n"
+"多くのユニットは洞窟で20から40%の防御となり、ドワーフは50%です。"
 
 #: data/help.cfg:445 data/terrain.cfg:151
 msgid "Savanna"
@@ -1402,6 +1497,8 @@ msgid ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"サバンナは背の高い草で覆われた平地で、暖かい気候の世界で見られます。ゲームプ"
+"レイの目的では、<ref>dst=terrain_grassland text=草原</ref>と同じ扱いです。"
 
 #: data/help.cfg:452 data/terrain.cfg:43 data/terrain.cfg:64
 #: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:179
@@ -1422,6 +1519,13 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"村は建物と人間やその他の一群を表します。ほとんど全てのユニットは、例え騎兵で"
+"あっても、村を進行するのは容易で、多くのユニットは村に駐留中は防御特典を得ま"
+"す。\n"
+"村はユニットに資源をきれいにし傷を介抱することで、駐留している全てのユニット"
+"は各ターン8HPの治療と毒の治癒を行います。\n"
+"\n"
+"ほとんどのユニットは50から60%の防御を村でもちますが、騎兵は40%のみです。"
 
 #: data/help.cfg:464 data/terrain.cfg:423
 msgid "Canyon"
@@ -1481,7 +1585,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:494 data/terrain.cfg:349
-#, fuzzy
 msgid "Cave Wall"
 msgstr "洞窟の壁"
 
@@ -1818,11 +1921,10 @@ msgid "2p - Sablestone Delta"
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers. Recommended settings of 2G per village."
-msgstr "3プレイヤーが小さな近接地域で戦闘を行う。 １村あたり 2Gの設定を推奨。"
+msgstr ""
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
@@ -2023,11 +2125,10 @@ msgid "4p - Lagoon"
 msgstr "4P - ラグーン"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "settings of 1G per village."
-msgstr "特に早いプレー用の 対戦マップ。 １村あたり 2Gの設定を推奨。"
+msgstr ""
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
@@ -2077,14 +2178,11 @@ msgid "6p - Smallolof"
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head. Recommended settings of 2 gold per "
 "village."
 msgstr ""
-"この地下戦場では各コーナーに危険が潜む、力とごまかしが出会う戦闘マップ。 村当"
-"たり2Gの設定を推奨。"
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
 msgid "7p - Battle World"
@@ -2101,13 +2199,12 @@ msgid "Random map"
 msgstr "ランダムマップ"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:4
-#, fuzzy
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
-"主要な地形が砂のランダムマップ。 注意：ランダムマップはバランスが悪いことがよ"
-"くありますが、 時間をかけて良いものができるまで 作り直してもよいでしょう。"
+"ランダムに作成されたマップ。 注意：ランダムマップはバランスが悪いことがよくあ"
+"りますが、 時間をかけて良いものができるまで 作り直してもよいでしょう。"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
@@ -2614,15 +2711,14 @@ msgid "How do I end my turn?"
 msgstr "どうやって 自分のターンを終了するのか？"
 
 #: data/scenarios/tutorial/utils.cfg:73
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower-"
 "right hand corner."
 msgstr ""
-"ターンを終えるひとつの方法は 「Alt-E」を押すことである。 また、 右クリックで"
-"「ターンを終了」を選択するか、 右下の「ターン終了」ボタンをクリックすることも"
-"できる。"
+"ターンを終えるひとつの方法は 「Alt-スペース」を押すことである。 また、 右ク"
+"リックで「ターンを終了」を選択するか、 右下の「ターン終了」ボタンをクリックす"
+"ることもできる。"
 
 #: data/scenarios/tutorial/utils.cfg:74
 msgid "What happens when I end my turn?"
@@ -3193,8 +3289,8 @@ msgid ""
 "objects in a campaign."
 msgstr ""
 "お前が発見した物体はシナリオ製作者に置かれたもので、 キャンペーンによって異な"
-"る。 「王位を継ぐ者」ではほとんどのものは、 ユニットに新たな武器を与えるもの"
-"である。 しかし、 これらは普通、 キャンペーン中にそれほど多くは出現しない。"
+"る。 「王位継承者」ではほとんどのものは、 ユニットに新たな武器を与えるもので"
+"ある。 しかし、 これらは普通、 キャンペーン中にそれほど多くは出現しない。"
 
 #: data/scenarios/tutorial/utils.cfg:142
 msgid "What kind of objects am I likely to encounter?"
@@ -3225,7 +3321,7 @@ msgid ""
 msgstr ""
 "キャンペーンを始めるには、 Wesnothを実行して、 「キャンペーン」を選択し、 ど"
 "のキャンペーンを プレイするか選び、 そして 「容易」 「通常」 「困難」のどれか"
-"を 選択する。 「王位を継ぐ者」が Wesnothの初心者には お勧めである。"
+"を 選択する。 「王位継承者」が Wesnothの初心者には お勧めである。"
 
 #: data/scenarios/tutorial/utils.cfg:148
 msgid "How do I play multiplayer?"
@@ -3301,7 +3397,6 @@ msgid "Encampment"
 msgstr "野営地"
 
 #: data/terrain.cfg:393
-#, fuzzy
 msgid "Dwarven Castle"
 msgstr "ドワーフの城"
 
@@ -3964,15 +4059,14 @@ msgstr ""
 "ります。 これは同盟ユニットでは機能しません。"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
 "狂戦:\n"
-"この攻撃が戦いで使われた場合、 いずれかの 戦闘ユニットが 倒されるまで、 交戦"
-"をやめません。"
+"攻撃においても防御においてもこの攻撃が戦いで使われた場合、いずれかの戦闘ユ"
+"ニットが倒されるまで交戦をやめません。"
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -4503,9 +4597,8 @@ msgid "mace"
 msgstr "メイス"
 
 #: data/units/Battle_Princess.cfg:3 data/units/Battle_Princess.cfg:55
-#, fuzzy
 msgid "female^Battle Princess"
-msgstr "無法者の王女"
+msgstr "戦闘の王女"
 
 #: data/units/Battle_Princess.cfg:19 data/units/Battle_Princess.cfg:70
 msgid "leadership,skirmisher"
@@ -4905,9 +4998,8 @@ msgid "chill wave"
 msgstr "冷気の嵐"
 
 #: data/units/Dark_Adept.cfg:66
-#, fuzzy
 msgid "female^Dark Adept"
-msgstr "ダーククイーン"
+msgstr "暗黒尼僧"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
@@ -4952,9 +5044,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Dark_Sorcerer.cfg:29 data/units/Soulless.cfg:44
-#, fuzzy
 msgid "plague(Walking Corpse)"
-msgstr "歩く死体"
+msgstr "疫病(歩く死体)"
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -5311,9 +5402,8 @@ msgstr ""
 #: data/units/Drake_Slasher.cfg:25 data/units/Drake_Slasher.cfg:43
 #: data/units/Drake_Warden.cfg:26 data/units/Drake_Warden.cfg:44
 #: data/units/Halbardier.cfg:28 data/units/Halbardier.cfg:69
-#, fuzzy
 msgid "halberd"
-msgstr "ハルバーディア"
+msgstr "ハルバード"
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:47
 #: data/units/Goblin_Impaler.cfg:29 data/units/Halbardier.cfg:34
@@ -5323,9 +5413,8 @@ msgid "firststrike"
 msgstr "先制"
 
 #: data/units/Drake_Warden.cfg:4
-#, fuzzy
 msgid "Drake Warden"
-msgstr "ドレークフレア"
+msgstr "ドレークの長官"
 
 #: data/units/Drake_Warden.cfg:20
 msgid ""
@@ -5787,9 +5876,8 @@ msgstr "巻きつき"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_High_Lord.cfg:43
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:84
-#, fuzzy
 msgid "faerie fire"
-msgstr "妖精の接触"
+msgstr "妖精の炎"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -6963,7 +7051,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:27
-#, fuzzy
 msgid "naia touch"
 msgstr "水精の接触"
 
@@ -7391,7 +7478,7 @@ msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:38 data/units/Orcish_Slayer.cfg:44
 msgid "throwing knives"
-msgstr ""
+msgstr "投げナイフ"
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
@@ -7544,9 +7631,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Slurbow.cfg:3
-#, fuzzy
 msgid "Orcish Slurbow"
-msgstr "オークの殺戮者"
+msgstr ""
 
 #: data/units/Orcish_Slurbow.cfg:18
 msgid ""
@@ -7580,14 +7666,13 @@ msgid "Orcish Warlord"
 msgstr "オークの将軍"
 
 #: data/units/Orcish_Warlord.cfg:17
-#, fuzzy
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with an iron hand."
 msgstr ""
-"非常に狡猾で、卓越した力を持つオークだけが将軍になることができます。剣と弓の"
-"技能を持ち、オークの戦士の軍団を統率します。"
+"非常に狡猾で卓越した力を持つオークだけが将軍になることができます。剣の達人で"
+"弓の能力さえも持つ、この残忍な戦士が鉄の手をもつ彼等の同胞を統率します。"
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
@@ -7867,7 +7952,6 @@ msgid "Saurian Ambusher"
 msgstr "トカゲの熟練散兵"
 
 #: data/units/Saurian_Ambusher.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8129,16 +8213,15 @@ msgid "Skeleton"
 msgstr "スケルトン"
 
 #: data/units/Skeleton.cfg:16
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
-"スケルトンは、 戦場で斃れたものを 黒魔術で蘇えらせた戦士です。 全ての不死の者"
-"と同様に、 彼らは特に火炎と神聖な攻撃に脆弱ですが、 刃のついた武器には耐性が"
-"あります。"
+"スケルトンは、 戦場で斃れたものを 黒魔術で蘇えらせた戦士です。 心をほとんど失"
+"い、確固たる目的をもち、彼等は痛みも死でさえも恐れず、存在するだけで彼等の主"
+"人に立ち向かおうとする者達は逃げ出すこともあります。"
 
 #: data/units/Skeleton.cfg:61 data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -8580,29 +8663,28 @@ msgid "Yeti"
 msgstr "イェティ"
 
 #: data/units/Yeti.cfg:31
-#, fuzzy
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
-"イェティは人間型の生物で、山に住んでいます。 彼らと遭遇して 生き延びた者は ほ"
-"とんどいないため、 彼らの存在は、 多くの人に疑われています。"
+"イェティについてはほとんど知られていませんが、猿のような生き物で、人里離れ雪"
+"に覆われた山に住むんでいると言われています。見たという証言もわずかで、多くの"
+"人にその存在は疑われています。"
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
 msgstr "若者オーガ"
 
 #: data/units/Young_Ogre.cfg:16
-#, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into the army to be "
 "trained. They cannot manage weapons skillfully, but that is of little "
 "concern given their strength."
 msgstr ""
-"まだ若い内に、 オーガは軍隊に入れて 訓練させられます。 彼らはそれほど 武器の"
-"扱いに熟練していないので、 長剣が与えられます。 自身の喉ではなく、 敵に用いる"
-"くらいには 彼らが賢明であることを期待しながら。"
+"まだ若い内にオーガは時々捕えられ、軍隊に入れて訓練させられます。彼らはそれほ"
+"ど武器をそれほど上手に扱えませんが、彼等の怪力を考慮すると大したことではあり"
+"ません。"
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
@@ -8753,9 +8835,8 @@ msgid "+Russian Translation"
 msgstr "+ロシア語翻訳"
 
 #: src/about.cpp:283
-#, fuzzy
 msgid "+Serbian Translation"
-msgstr "+ドイツ語翻訳"
+msgstr "+セルビア語翻訳"
 
 #: src/about.cpp:286
 msgid "+Slovak Translation"
@@ -8845,9 +8926,8 @@ msgid "defender vulnerability vs"
 msgstr "防御側の以下の攻撃に対する受けやすさ："
 
 #: src/actions.cpp:599
-#, fuzzy
 msgid " (+steadfast)"
-msgstr "装甲"
+msgstr "(+装甲)"
 
 #: src/actions.cpp:659
 msgid "(both should survive)"
@@ -9302,13 +9382,12 @@ msgid "Choose your preferred language:"
 msgstr "お好みの言語を選んで下さい:"
 
 #: src/game.cpp:1339
-#, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
-msgstr "ゲームマップを読み込めませんでした: "
+msgstr "以下のアドオンキャンペーンでエラーが起きて、読み込めませんでした:"
 
 #: src/game.cpp:1344
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "エラー詳細:"
 
 #: src/game.cpp:1353
 msgid "Warning: Errors occurred while loading game configuration files: '"
@@ -9335,9 +9414,8 @@ msgid "Defeat:"
 msgstr "敗北条件:"
 
 #: src/gamestatus.cpp:476
-#, fuzzy
 msgid "Could not write to file"
-msgstr "ホストに接続できませんでした。"
+msgstr "ファイルに書き込みできませんでした。"
 
 #: src/help.cpp:1057
 msgid "Advances to: "
@@ -9441,16 +9519,15 @@ msgstr "進む >"
 
 #: src/help.cpp:2290
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "不明なトピックへの参照: "
 
 #: src/help.cpp:2665
 msgid "The Battle for Wesnoth Help"
 msgstr "The Battle for Wesnoth ヘルプ"
 
 #: src/help.cpp:2712
-#, fuzzy
 msgid "Parse error when parsing help text: "
-msgstr "ゲームプレイ中のエラー: "
+msgstr "ヘルプ文書をパース中にエラー: "
 
 #: src/intro.cpp:94
 msgid "Next"
@@ -9723,7 +9800,7 @@ msgstr "ユニットがレベルアップに必要な経験値の合計"
 
 #: src/multiplayer_create.cpp:99
 msgid "Use scenario specific settings"
-msgstr ""
+msgstr "シナリオ特有の設定を使用"
 
 #: src/multiplayer_create.cpp:102
 msgid "Enemy units cannot be seen unless they are in range of your units"
@@ -9794,9 +9871,8 @@ msgid "Map"
 msgstr "マップ"
 
 #: src/multiplayer_lobby.cpp:30
-#, fuzzy
 msgid "Settings"
-msgstr "設定..."
+msgstr "設定"
 
 #: src/multiplayer_lobby.cpp:30
 msgid "Status"
@@ -9896,21 +9972,19 @@ msgstr "ゴールド"
 
 #: src/network.cpp:91
 msgid "invalid network handle"
-msgstr ""
+msgstr "不正なネットワークハンドル"
 
 #: src/network.cpp:124
-#, fuzzy
 msgid "Client disconnected"
-msgstr "リモートホストと切断しました。"
+msgstr "リモートホストと切断しました"
 
 #: src/network.cpp:479
-#, fuzzy
 msgid "Could not add socket to socket set"
-msgstr "ホストに接続できませんでした。"
+msgstr "ホストに接続できませんでした"
 
 #: src/network.cpp:490
 msgid "Could not send initial handshake"
-msgstr ""
+msgstr "初期応答確認を送れませんでした"
 
 #: src/playcampaign.cpp:145
 msgid "Defeat"
@@ -9921,14 +9995,12 @@ msgid "You have been defeated!"
 msgstr "あなたは敗れました！"
 
 #: src/playcampaign.cpp:159
-#, fuzzy
 msgid " replay"
 msgstr "リプレイ"
 
 #: src/playcampaign.cpp:167
-#, fuzzy
 msgid "Do you want to save a replay of this scenario?"
-msgstr "このシナリオで学んだ技術を、 もう一度見直したいか？"
+msgstr "このシナリオのリプレイを保存しますか？"
 
 #: src/playcampaign.cpp:168 src/playcampaign.cpp:286 src/playturn.cpp:1628
 msgid "Name:"
@@ -9939,18 +10011,16 @@ msgid "The game could not be saved"
 msgstr "ゲームは保存できませんでした"
 
 #: src/playcampaign.cpp:216
-#, fuzzy
 msgid "Downloading next level..."
-msgstr "キャンペーンのダウンロード中..."
+msgstr "次のレベルをダウンロード中..."
 
 #: src/playcampaign.cpp:285
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "このゲームを本当に削除しますか？"
+msgstr "このゲームを保存しますか？"
 
 #: src/playcampaign.cpp:311
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "不明のシナリオ: '"
 
 #: src/playlevel.cpp:605 src/playlevel.cpp:874
 msgid "The file you have tried to load is corrupt"
@@ -10046,10 +10116,10 @@ msgid "Choose weapon:"
 msgstr "武器の選択:"
 
 #: src/playturn.cpp:1311
-#, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
-msgstr "このターンではまだ行動が行われていません。 本当に終了しますか？"
+msgstr ""
+"このターンではまだ行動を開始していません。 本当に自分のターンを終了しますか？"
 
 #: src/playturn.cpp:1319 src/playturn.cpp:1324
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -10406,9 +10476,8 @@ msgid "Unexpected closing tag"
 msgstr "予期せぬ閉じタグ"
 
 #: src/serialization/parser.cpp:179
-#, fuzzy
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
-msgstr "$tag ($line 行)に対する不正な閉じタグを発見"
+msgstr "($pos にて開かれた)タグ $tag に対するタグ $tag2 の不正な閉じタグを発見"
 
 #: src/serialization/parser.cpp:204 src/serialization/parser.cpp:216
 msgid "Empty variable name"
