@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:22+0200\n"
-"PO-Revision-Date: 2005-06-06 02:33+0900\n"
+"PO-Revision-Date: 2005-09-04 03:14+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -29,49 +29,47 @@ msgstr "編集"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
-msgstr ""
+msgstr "タイル描画"
 
 #: src/editor/editor.cpp:162
-#, fuzzy
 msgid "Fill"
-msgstr "ファイル"
+msgstr "塗りつぶし"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "プレイヤーの開始位置を設定"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
-msgstr ""
+msgstr "ズーム・イン"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom out"
-msgstr ""
+msgstr "ズーム・アウト"
 
 #: src/editor/editor.cpp:170
 msgid "Undo"
-msgstr ""
+msgstr "やり直す"
 
 #: src/editor/editor.cpp:172
 msgid "Redo"
-msgstr ""
+msgstr "元に戻す"
 
 #: src/editor/editor.cpp:174
 msgid "Zoom to default view"
-msgstr ""
+msgstr "初期視点にズーム"
 
 #: src/editor/editor.cpp:176
 msgid "Toggle grid"
-msgstr ""
+msgstr "グリッド切替"
 
 #: src/editor/editor.cpp:178
-#, fuzzy
 msgid "Resize the map"
 msgstr "マップサイズ変更"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
-msgstr ""
+msgstr "マップを反転する"
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
@@ -82,9 +80,8 @@ msgid "The map already exists. Do you want to overwrite it?"
 msgstr "マップはすでに存在します。 上書きしますか？"
 
 #: src/editor/editor.cpp:405
-#, fuzzy
 msgid "Player "
-msgstr "プレイヤー"
+msgstr "プレイヤー "
 
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
@@ -102,7 +99,7 @@ msgstr "読み込むマップを選択"
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
-msgstr ""
+msgstr "警告: マップ名に不正な文字が見つかりました。別な名前で保存して下さい。"
 
 #: src/editor/editor.cpp:483 src/editor/editor.cpp:562
 msgid "The file does not contain a valid map."
@@ -138,7 +135,7 @@ msgstr "マップを保存できませんでした： $msg"
 
 #: src/editor/editor.cpp:1142
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "エラー: ファイル名に不正な文字"
 
 #: src/editor/editor.cpp:1198
 msgid "Player"
@@ -228,11 +225,11 @@ msgstr "Y軸"
 
 #: src/editor/editor_dialogs.cpp:493
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr "回りを落とす（マップの全体サイズが変わるかもしれません）"
+msgstr "反転する方向（マップの全体サイズが変わるかもしれません）"
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Battle for Wesnoth マップエディタ"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -244,48 +241,47 @@ msgstr "BG"
 
 #: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
-msgstr ""
+msgstr "マップ生成"
 
 #: src/mapgen_dialog.cpp:99
-#, fuzzy
 msgid "Players:"
-msgstr "プレイヤー"
+msgstr "プレイヤ数:"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "丘の数:"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "丘の最大サイズ:"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "村:"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "地形:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "城間の道"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 タイル"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "沿岸"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "内陸"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "島"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
