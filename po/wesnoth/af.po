@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-09-03 09:45+0200\n"
+"PO-Revision-Date: 2005-09-03 21:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
@@ -4015,6 +4015,7 @@ msgid ""
 "the poison instead of healing."
 msgstr ""
 
+# herlewing?
 #: data/translations/english.cfg:73 data/units/Great_Troll.cfg:7
 #: data/units/Tentacle.cfg:7 data/units/Troll.cfg:7
 #: data/units/Troll_Hero.cfg:7 data/units/Troll_Rocklobber.cfg:7
@@ -4283,6 +4284,7 @@ msgstr "magies"
 msgid "Ancient Wose"
 msgstr "Antieke Wose"
 
+# lokval,herlewing?
 #: data/units/Ancient_Wose.cfg:7 data/units/Elder_Wose.cfg:7
 #: data/units/Wose.cfg:7
 msgid "ambush,regenerates"
@@ -8202,8 +8204,9 @@ msgid "Wall Guard"
 msgstr "Muurwag"
 
 #: data/units/Wall_Guard.cfg:32
+#, fuzzy
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "skermutselaar,herlewing"
 
 #: data/units/Wall_Guard.cfg:34
 msgid ""
@@ -8592,8 +8595,9 @@ msgid "Doubled"
 msgstr "Verdubbelde"
 
 #: src/actions.cpp:472
+#, fuzzy
 msgid "attacker resistance vs"
-msgstr ""
+msgstr "aanvaller weerstand teen"
 
 #: src/actions.cpp:472
 msgid "attacker vulnerability vs"
@@ -8616,8 +8620,9 @@ msgid " (+steadfast)"
 msgstr ""
 
 #: src/actions.cpp:659
+#, fuzzy
 msgid "(both should survive)"
-msgstr ""
+msgstr "(albei sal leef)"
 
 #: src/actions.cpp:661
 msgid "% Pr[kills/killed by/both survive]"
@@ -8656,8 +8661,9 @@ msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
 
 #: src/actions.cpp:1983
+#, fuzzy
 msgid "(press $hotkey to continue)"
-msgstr ""
+msgstr "(druk $hotkey om voort te gaan)"
 
 #: src/dialogs.cpp:100
 msgid "Advance Unit"
@@ -8693,19 +8699,21 @@ msgstr ""
 
 #: src/dialogs.cpp:355
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:368
 msgid "#(Invalid)"
 msgstr ""
 
 #: src/dialogs.cpp:373 src/game.cpp:759
+#, fuzzy
 msgid "Campaign"
-msgstr ""
+msgstr "Kampanj"
 
 #: src/dialogs.cpp:375 src/game.cpp:1136
+#, fuzzy
 msgid "Multiplayer"
-msgstr ""
+msgstr "Multispeler"
 
 #: src/dialogs.cpp:377
 msgid "Tutorial"
@@ -8733,19 +8741,19 @@ msgstr ""
 
 #: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
-msgstr ""
+msgstr "%b %d %y"
 
 #: src/dialogs.cpp:424
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:427
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:430
 msgid "%b %d"
-msgstr ""
+msgstr "%b %d"
 
 #: src/dialogs.cpp:454
 msgid "No Saved Games"
@@ -8801,8 +8809,9 @@ msgid "Choose the game to load"
 msgstr "Kies die spel om te laai"
 
 #: src/dialogs.cpp:616 src/dialogs.cpp:628
+#, fuzzy
 msgid "Profile"
-msgstr ""
+msgstr "Profiel"
 
 #: src/dialogs.cpp:708 src/help.cpp:1037
 msgid "level"
@@ -8857,15 +8866,16 @@ msgstr ""
 
 #: src/game.cpp:749
 msgid "Get More Campaigns..."
-msgstr ""
+msgstr "Kry Meer Kampanjes..."
 
 #: src/game.cpp:750
 msgid "Download more campaigns from a server on Internet."
 msgstr ""
 
 #: src/game.cpp:760
+#, fuzzy
 msgid "Choose the campaign you want to play:"
-msgstr ""
+msgstr "Kies die kampanj wat jy wil speel:"
 
 #: src/game.cpp:788
 msgid "Difficulty"
@@ -8940,12 +8950,14 @@ msgid "There are no campaigns available for download from this server."
 msgstr ""
 
 #: src/game.cpp:960
+#, fuzzy
 msgid "Choose the campaign to download."
-msgstr ""
+msgstr "Kies watter kampanje om af te laai."
 
 #: src/game.cpp:960
+#, fuzzy
 msgid "Get Campaign"
-msgstr ""
+msgstr "Kry Kampanje"
 
 #: src/game.cpp:980
 msgid "Downloading campaign..."
@@ -9026,8 +9038,9 @@ msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
 #: src/game.cpp:1131
+#, fuzzy
 msgid "Human vs AI"
-msgstr ""
+msgstr "Mens teen Rekenaar"
 
 #: src/game.cpp:1132
 msgid "Play a game against AI opponents"
@@ -9130,12 +9143,14 @@ msgid "Special"
 msgstr "Spesiaal"
 
 #: src/help.cpp:1163
+#, fuzzy
 msgid "Resistances"
-msgstr ""
+msgstr "Weerstande"
 
 #: src/help.cpp:1167
+#, fuzzy
 msgid "Attack Type"
-msgstr ""
+msgstr "Aanval Tipe"
 
 #: src/help.cpp:1168
 msgid "Resistance"
@@ -9178,8 +9193,9 @@ msgid ""
 msgstr ""
 
 #: src/help.cpp:1321
+#, fuzzy
 msgid "This terrain gives healing."
-msgstr ""
+msgstr "Hierdie terrein maak eenhede gesond."
 
 #: src/help.cpp:2177
 msgid "< Back"
@@ -9194,8 +9210,9 @@ msgid "Reference to unknown topic: "
 msgstr ""
 
 #: src/help.cpp:2665
+#, fuzzy
 msgid "The Battle for Wesnoth Help"
-msgstr ""
+msgstr "Die Slag om Wesnoth Help"
 
 #: src/help.cpp:2712
 msgid "Parse error when parsing help text: "
@@ -9258,12 +9275,13 @@ msgid "Landform:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:211
+#, fuzzy
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Paaie Tussen Kastele"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr "/1000 blokke\""
+msgstr "/1000 blokke"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
@@ -9331,8 +9349,9 @@ msgid "Anonymous local player"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:310
+#, fuzzy
 msgid "Computer player"
-msgstr ""
+msgstr "Rekenaar speler"
 
 #: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
@@ -9449,8 +9468,9 @@ msgid "Observers"
 msgstr "Waarnemers"
 
 #: src/multiplayer_create.cpp:56
+#, fuzzy
 msgid "Regenerate"
-msgstr ""
+msgstr "Herleef"
 
 #: src/multiplayer_create.cpp:57
 msgid "Settings..."
