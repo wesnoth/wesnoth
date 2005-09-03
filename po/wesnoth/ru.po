@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-09-01 17:05+0300\n"
+"PO-Revision-Date: 2005-09-03 13:00+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -2045,7 +2045,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
 msgid "2p - Sullas Ruins"
-msgstr "2p - Руины Сулласа"
+msgstr "2и - Руины Сулласа"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
 msgid ""
@@ -2059,7 +2059,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
-msgstr "2p - Кубок Веснота"
+msgstr "2и - Кубок Веснота"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
 msgid ""
@@ -2375,7 +2375,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
 msgid "2p - Across The River"
-msgstr "2p - Пересекая реку"
+msgstr "2и - Пересекая реку"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
 msgid ""
@@ -5272,7 +5272,7 @@ msgstr "волна холода"
 
 #: data/units/Dark_Adept.cfg:66
 msgid "female^Dark Adept"
-msgstr "Тёмная королева"
+msgstr "Тёмная Посвящённая"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
@@ -6672,7 +6672,7 @@ msgstr "прикосновение феи"
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "female^Elvish Sorceress"
-msgstr "Эльфийка Колдунья"
+msgstr "Эльфийка Волшебница"
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -6681,10 +6681,10 @@ msgid ""
 "entangling attack is notably more effective than before, and they can call "
 "upon bursts of chilling ethereal wind to smite those who oppose them."
 msgstr ""
-"Избегая обучения исцелению ран, он выбрал изучение более агрессивного "
-"использования магии. Эльфийки Колдуньи стали более умелыми в бою и действуют "
-"на большие расстояния. Их атака запутывать эффективна как никогда, холодный "
-"ветер почувствует любой, кто посмеет противостоять им."
+"Избегая обучения исцелению ран, она выбрала изучение более агрессивного "
+"использования магии. Эльфийки Волшебницы стали более умелыми в бою и "
+"действуют на большие расстояния. Их атака запутывать эффективна как никогда, "
+"холодный ветер почувствует любой, кто посмеет противостоять им."
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
@@ -7973,7 +7973,7 @@ msgstr ""
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr "Водяной Копьеносец"
+msgstr "Водяной Дротикометатель"
 
 #: data/units/Merman_Javelineer.cfg:18
 msgid ""
@@ -8556,7 +8556,7 @@ msgstr ""
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
-msgstr "Орк Наёмный Убийца"
+msgstr "Орк с Тяжёлым Арбалетом"
 
 #: data/units/Orcish_Slurbow.cfg:18
 msgid ""
@@ -10108,7 +10108,7 @@ msgstr "защитник уязвим против"
 
 #: src/actions.cpp:599
 msgid " (+steadfast)"
-msgstr "(+стойкий)"
+msgstr " (+стойкий)"
 
 #: src/actions.cpp:659
 msgid "(both should survive)"
@@ -10116,7 +10116,7 @@ msgstr "(оба должны выжить)"
 
 #: src/actions.cpp:661
 msgid "% Pr[kills/killed by/both survive]"
-msgstr "% Рейтинг[убийств/убит/оба выжили]"
+msgstr "% Рейтинг[убьёт/будет убитым/оба выживут]"
 
 #: src/actions.cpp:865 src/actions.cpp:1031
 msgid "poisoned"
@@ -10220,11 +10220,11 @@ msgstr "Начать сценарий"
 
 #: src/dialogs.cpp:392
 msgid "Difficulty: "
-msgstr "Уровень сложности:"
+msgstr "Уровень сложности: "
 
 #: src/dialogs.cpp:394
 msgid "Version: "
-msgstr "Версия:"
+msgstr "Версия: "
 
 #: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
@@ -10311,15 +10311,15 @@ msgstr "уровень"
 
 #: src/dialogs.cpp:729 src/help.cpp:1095
 msgid "HP: "
-msgstr "ЗД:"
+msgstr "ЗД: "
 
 #: src/dialogs.cpp:733 src/dialogs.cpp:741
 msgid "XP: "
-msgstr "ОП:"
+msgstr "ОП: "
 
 #: src/dialogs.cpp:746 src/help.cpp:1096
 msgid "Moves: "
-msgstr "Ходов:"
+msgstr "Ходов: "
 
 #: src/display.cpp:465
 msgid "Screenshot"
@@ -10434,11 +10434,11 @@ msgstr "Размер"
 
 #: src/game.cpp:945
 msgid "Publish campaign: "
-msgstr "Опубликовать кампанию:"
+msgstr "Опубликовать кампанию: "
 
 #: src/game.cpp:949
 msgid "Delete campaign: "
-msgstr "Удалить кампанию:"
+msgstr "Удалить кампанию: "
 
 #: src/game.cpp:953
 msgid "There are no campaigns available for download from this server."
@@ -10542,19 +10542,19 @@ msgstr "Игра против компьютера"
 
 #: src/game.cpp:1138 src/multiplayer.cpp:187
 msgid "Login: "
-msgstr "Логин:"
+msgstr "Логин: "
 
 #: src/game.cpp:1169 src/playcampaign.cpp:197
 msgid "The game could not be loaded: "
-msgstr "Игра не может быть загружена:"
+msgstr "Игра не может быть загружена: "
 
 #: src/game.cpp:1171 src/playcampaign.cpp:200
 msgid "Error while playing the game: "
-msgstr "Возникла ошибка во время игры:"
+msgstr "Возникла ошибка во время игры: "
 
 #: src/game.cpp:1183 src/playcampaign.cpp:203
 msgid "The game map could not be loaded: "
-msgstr "Игра не может быть загружена:"
+msgstr "Игровая карта не может быть загружена: "
 
 #: src/game.cpp:1209
 msgid "Language"
@@ -10602,19 +10602,19 @@ msgstr "Не могу записать в файл"
 
 #: src/help.cpp:1057
 msgid "Advances to: "
-msgstr "Улучшение:"
+msgstr "Улучшение: "
 
 #: src/help.cpp:1078
 msgid "Abilities: "
-msgstr "Способности:"
+msgstr "Способности: "
 
 #: src/help.cpp:1097
 msgid "Alignment: "
-msgstr "Тип:"
+msgstr "Тип: "
 
 #: src/help.cpp:1103
 msgid "Required XP: "
-msgstr "Необходимый ОП:"
+msgstr "Необходимый ОП: "
 
 #: src/help.cpp:1112 src/reports.cpp:251
 msgid "attacks"
@@ -10862,7 +10862,7 @@ msgstr "Не могу найти тип лидера для фракции $fact
 #: src/multiplayer_connect.cpp:486 src/multiplayer_lobby.cpp:105
 #: src/multiplayer_wait.cpp:146
 msgid "Game Lobby"
-msgstr "Холл игры:"
+msgstr "Холл игры"
 
 #: src/multiplayer_connect.cpp:492 src/multiplayer_connect.cpp:501
 msgid "Team"
@@ -11033,7 +11033,7 @@ msgstr "Вы должны указать имя."
 
 #: src/multiplayer_create.cpp:213
 msgid "Turns: "
-msgstr "Ходы:"
+msgstr "Ходы: "
 
 #: src/multiplayer_create.cpp:215
 msgid "Unlimited Turns"
@@ -11041,15 +11041,15 @@ msgstr "Неограниченные ходы"
 
 #: src/multiplayer_create.cpp:222
 msgid "Village Gold: "
-msgstr "Золота с деревень:"
+msgstr "Золота с деревень: "
 
 #: src/multiplayer_create.cpp:228
 msgid "Experience Modifier: "
-msgstr "Модификатор опыта:"
+msgstr "Модификатор опыта: "
 
 #: src/multiplayer_create.cpp:332
 msgid "Players: "
-msgstr "Игроки:"
+msgstr "Игроки: "
 
 #: src/multiplayer_lobby.cpp:29
 msgid "Map"
@@ -11125,11 +11125,11 @@ msgstr "Неверный цвет"
 
 #: src/multiplayer_wait.cpp:114
 msgid "Leader: "
-msgstr "Лидер:"
+msgstr "Лидер: "
 
 #: src/multiplayer_wait.cpp:116
 msgid "Recruits: "
-msgstr "Новобранцы:"
+msgstr "Новобранцы: "
 
 #: src/multiplayer_wait.cpp:149
 msgid "Waiting for game to start..."
@@ -11181,7 +11181,7 @@ msgstr "Вы проиграли!"
 
 #: src/playcampaign.cpp:159
 msgid " replay"
-msgstr "повтор"
+msgstr " повтор"
 
 #: src/playcampaign.cpp:167
 msgid "Do you want to save a replay of this scenario?"
@@ -11221,11 +11221,11 @@ msgstr "Игра окончена."
 
 #: src/playlevel.cpp:842
 msgid "Remaining gold: "
-msgstr "Остаток золота:"
+msgstr "Остаток золота: "
 
 #: src/playlevel.cpp:845
 msgid "Early finish bonus: "
-msgstr "Бонус за быстрый финиш:"
+msgstr "Бонус за быстрый финиш: "
 
 #: src/playlevel.cpp:847
 msgid "per turn"
@@ -11233,15 +11233,15 @@ msgstr "за ход"
 
 #: src/playlevel.cpp:848
 msgid "Turns finished early: "
-msgstr "Количество оставшихся шагов:"
+msgstr "Количество оставшихся шагов: "
 
 #: src/playlevel.cpp:850
 msgid "Bonus: "
-msgstr "Бонус:"
+msgstr "Бонус: "
 
 #: src/playlevel.cpp:852
 msgid "Gold: "
-msgstr "Золото:"
+msgstr "Золото: "
 
 #: src/playlevel.cpp:857
 #, no-c-format
@@ -11250,7 +11250,7 @@ msgstr "80% золота сохраняется в следующем сцена
 
 #: src/playlevel.cpp:858
 msgid "Retained Gold: "
-msgstr "Сохранённое золото:"
+msgstr "Сохранённое золото: "
 
 #: src/playlevel.cpp:863
 msgid "Victory"
@@ -11506,7 +11506,7 @@ msgstr "Не могу найти метку или соединение, сод�
 
 #: src/playturn.cpp:2528
 msgid "Saved Theme Preference: "
-msgstr "Сохранённая предпочтительная тема:"
+msgstr "Сохранённая предпочтительная тема: "
 
 #: src/playturn.cpp:2534
 msgid "New theme will take effect on next new or loaded game."
@@ -11542,7 +11542,7 @@ msgstr "Завершить игру"
 
 #: src/playturn.cpp:2826
 msgid "Replace with "
-msgstr "Заменить"
+msgstr "Заменить "
 
 #: src/playturn.cpp:2830
 msgid "has left the game. What do you want to do?"
@@ -11556,7 +11556,7 @@ msgstr ""
 
 #: src/reports.cpp:124
 msgid "invisible: "
-msgstr "невидимый:"
+msgstr "невидимый: "
 
 #: src/reports.cpp:129
 msgid ""
@@ -11569,7 +11569,7 @@ msgstr ""
 
 #: src/reports.cpp:129
 msgid "slowed: "
-msgstr "замедлен:"
+msgstr "замедлен: "
 
 #: src/reports.cpp:134
 msgid ""
@@ -11589,7 +11589,7 @@ msgstr ""
 
 #: src/reports.cpp:134
 msgid "poisoned: "
-msgstr "отравлен:"
+msgstr "отравлен: "
 
 #: src/reports.cpp:141
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -11599,7 +11599,7 @@ msgstr ""
 
 #: src/reports.cpp:141
 msgid "stone: "
-msgstr "камень:"
+msgstr "камень: "
 
 #: src/reports.cpp:250 src/unit_types.cpp:321
 msgid "damage"
@@ -11607,15 +11607,15 @@ msgstr "ущерб"
 
 #: src/reports.cpp:268
 msgid "Lawful units: "
-msgstr "Порядочные соединения:"
+msgstr "Порядочные соединения: "
 
 #: src/reports.cpp:270
 msgid "Neutral units: "
-msgstr "Нейтральные соединения:"
+msgstr "Нейтральные соединения: "
 
 #: src/reports.cpp:271
 msgid "Chaotic units: "
-msgstr "Хаотичные соединения:"
+msgstr "Хаотичные соединения: "
 
 #: src/reports.cpp:325
 msgid "Owned village"
@@ -11675,7 +11675,7 @@ msgstr "Пустое название переменной"
 
 #: src/serialization/parser.cpp:210
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr "Неожиданные символы после переменной имени (отсутствует , или =)"
+msgstr "Неожиданные символы после переменной имени (или отсутствует =)"
 
 #: src/serialization/parser.cpp:238 src/serialization/parser.cpp:262
 msgid "Unterminated quoted string"
@@ -11683,7 +11683,7 @@ msgstr "Незавершённая ссылаемая строка"
 
 #: src/serialization/parser.cpp:285
 msgid " included from "
-msgstr "подключена из"
+msgstr "подключена из "
 
 #: src/serialization/parser.cpp:306
 msgid "$error at $pos"
@@ -11767,7 +11767,7 @@ msgstr "-- Великая книга Веснота"
 
 #: src/unit.cpp:1074 src/unit.cpp:1201
 msgid "; "
-msgstr ";"
+msgstr "; "
 
 #: src/unit.cpp:1153
 msgid "XP to advance"
@@ -11775,7 +11775,7 @@ msgstr "ОП для улучшения"
 
 #: src/unit.cpp:1192
 msgid ": "
-msgstr ":"
+msgstr ": "
 
 #: src/unit_types.cpp:341
 msgid "strikes"
