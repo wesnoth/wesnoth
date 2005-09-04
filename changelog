@@ -4,20 +4,23 @@ CVS HEAD:
    * updated translations: Afrikaans, Basque, British English, Catalan, Czech,
      Dutch, French, Finnish, German, Greek, Hungarian, Italian, Latin, Polish,
      Russian, Slovak, Slovenian, Spanish, Turkish
-   * fix Ruby of Fire object description (#14311)
-   * fix untranslatable Rise of Wesnoth scenario name
+   * fixed Ruby of Fire object description (#14311)
+   * fixed untranslatable Rise of Wesnoth scenario name
+   * new man pages: Hungarian
  * user interface
    * text input box position now changes if resolution is changed (#12466)
    * hourglass cursor now works on Mac OS X (#14298)
-   * fix scrollbar problems in multiplayer lobby (#13089)
+   * fixed scrollbar problems in multiplayer lobby (#13089)
    * better checking if recruiting is possible (#13638, patch #4267)
    * various theme fixes
+   * fixed observer icon corruption (#14320)
  * graphics
-   * fix Flaming Sword missing attack image (#14346)
+   * fixed Flaming Sword missing attack image (#14346)
    * updated Goblin Impaler, Gryphon, Gryphon Master, Gryphon Rider
  * ambush and nightstalk now works on turn 1 for leaders (#13671)
  * AI now understands that AMLA units don't heal on advancing
  * AI in multiplayer can now recruit more widely in all eras (rest of #14096)
+ * fixed a network related freeze
 
 Version 0.9.6:
  * language and i18n:

@@ -1,0 +1,184 @@
+.\" Ez  egy szabad szoftver; terjeszthetõ illetve módosítható a
+.\" GNU Általános Közreadási Feltételek  dokumentumában leírtak szerint -- 2. vagy
+.\" késõbbi verzió --, melyet a Szabad Szoftver Alapítvány ad ki.
+.\" 
+.\" Ez a program abban a reményben kerül közreadásra, hogy hasznos lesz, de
+.\" minden egyéb  GARANCIA NÉLKÜL, az eladhatóságra vagy valamely célra való
+.\" alkalmazhatóságra való származtatott  garanciát is beleértve. További
+.\" részletekért lásd a GNU Általános Közreadási Feltételek dokumentumát.
+.\" 
+.\" A programmal együtt kellett, hogy érkezzen egy példány a GNU Általános Közreadási
+.\" Feltételek  dokumentumából is. Ha mégsem akkor ezt a Szabad Szoftver Alapítványnak
+.\" küldött levélben jelezni  kell. A szabad szoftver alapítvány címe: Free Software
+.\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+.\" 
+.\" 
+.TH "WESNOTH" "6" "2005. június" "wesnoth" "Harc Wesnoth-ért"
+.SH "NÉV"
+Harc Wesnoth\-ért \- körökre osztott stratégiai játék
+
+.SH "ÁTTEKINTÉS"
+.B wesnoth
+[\fIOPCIÓ\fR]
+[\fIADATELÉRÉS_ÚTVONALA\fR]
+
+.SH "LEÍRÁS"
+A Harc \fBWesnoth\fR\-ért
+egy körökre osztott stratégiai játék.
+
+Gyõzd le az összes ellenséges vezért egy jól megválasztott csapattal,
+figyelve közben az aranyra és a falu erõforrásokra! Minden egységnek 
+megvannak a maga erõsségei és gyengeségei; ahhoz, hogy nyerj úgy kell
+vezetned csapataidat, hogy kihozhassák magukból a legjobbat, miközben
+nem szabad ellenfeleidnek megadni az esélyt, hogy ugyanezt õk is 
+megtehessék. Ahogy az egységek tapasztalatot szereznek, új képességekre
+tesznek szert, és egyre erõsebbé válnak. Játszhatsz a saját nyelveden,
+sõt akár létrehozhatod a saját egységeidet, csatáidat vagy hadjárataidat.
+Mérettesd meg képességeidet az okos számítógépes ellenfél ellen, vagy csatlakozz
+a Wesnoth\-ot játszó on\-line játékosok nagy közösségéhez.
+.SH "OPCIÓK"
+.TP 
+.B \-\-bpp
+meghatározza az egy képpontra jutó bitek számát. Például: \-\-bpp 32
+
+.TP 
+.B \-\-compress \ <befájl> \ <kifájl>
+betömörít egy szöveges WML formátumú mentett állást (befájl) bináris WML formátumba (kifájl).
+
+.TP 
+.BR \-d , \ \-\-debug
+extra hibakeresési információkat jelenít meg és újabb beállításokat engedélyez
+a parancssori módban (lásd a Wikit a http://www.wesnoth.org/ címen a további
+információkért a parancssori módról).
+
+.TP 
+.B \-\-decompress \ <befájl> \ <kifájl>
+kitömörít egy bináris WML formátumú menetett állást (befájl) szöveges WML formátumba (kifájl).
+
+.TP 
+.BR \-f , \ \-\-fullscreen
+elindítja a játékot teljes képernyõs módban.
+
+.TP 
+.B \-\-fps
+a képernyõ sarkában megjeleníti az aktuális fps\-t (frames per second-ot, azaz a képernyõfrissítések 
+másodpercenkénti számát).
+
+.TP 
+.BR \-h , \ \-\-help
+megjeleníti a parancssori opciók rövid leírását és kilép.
+
+.TP 
+.BR \-\-log\-error="domain1,domain2,..." , \ \-\-log\-warning=... , \ \-\-log\-info=...
+beállítja a hibakeresési tartomány szintjét. Az "all" minden hibakeresési
+tartományra illeszkedik.
+.B \-\-log\-info
+megmutat minden üzenetet.
+.B \-\-log\-warning
+csak a figyelmeztetéseket (warning) és a hibákat (error).
+.B \-\-log\-error
+csak a hibákat (error).
+
+.TP 
+.B \-\-multiplayer
+elindítja a játékot többjátékos üzemmódban. A 
+.B \-\-multiplayer
+opcióval használható egyéb opciókat bõvebben lásd lent.
+
+.TP 
+.BR \-\-nocache
+letiltja a játék gyorsítótárát (cache).
+
+.TP 
+.BR \-\-nosound
+elindítja a játékot hangok és zene nélkül.
+
+.TP 
+.BR \-\-path
+kiírja a játék adatkönyvtárának nevét és kilép.
+
+.TP 
+.BR \-r , \ \-\-resolution
+beállítja a képernyõ felbontását. Például: \-r 800x600
+
+.TP 
+.BR \-t , \ \-\-test
+elindítja a játékot, és betölt egy kis teszt\-csatát.
+
+.TP 
+.BR \-v , \ \-\-version
+kiírja a játék verziószámát és kilép.
+
+.TP 
+.BR \-w , \ \-\-windowed
+elindítja a játékot ablakos módban.
+
+.SH "OPCIÓK --multiplayer MÓDBAN"
+A csapat\-specifikus többjátékos opciókat <szám>mal jelöljük. Ahol <number>
+helyére a csapat számát kell beírni. Ez általában 1 vagy 2, de függ a kiválasztott 
+pályán lévõ lehetséges játékosok számától.
+
+.TP 
+.BR \-\-era=value
+ezzel az opcióval kiválaszthatod, hogy melyik korszakban szeretnél játszani
+a "Default" korszak helyett. A korszakot egy azonosíthatóval adhatod meg.
+A korszakok a data/multiplayer.cfg fájlban vannak leírva.
+
+.TP 
+.B \-\-nogui
+elindítja a játékot grafikus felhasználói interfész (GUI) nélkül. A
+.B \-\-multiplayer
+opció elõtt kell beírnod, hogy a kívánt hatást elérd.
+
+.TP 
+.BR \-\-scenario=value
+kiválaszt egy többjátékos pályát. Az alapértelmezett pálya a "multiplayer_test".
+
+.TP 
+.BR \-\-algorithm<szám>=value
+kiválaszt egy nem szabványos MI algoritmust a csapat irányítására. Rendelkezésre
+álló értékek: "idle_ai" és "sample_ai".
+
+.TP 
+.BR \-\-controller<szám>=value
+kiválasztja, hogy ki irányítsa a csapatot, lehetséges értékei: "human" és "ai".
+
+.TP 
+.BR \-\-parm<szám>=name:value
+egyéb paramétereket állít be a csapat részére. A paraméter függ
+a
+.B \-\-controller 
+és
+.B \-\-algorithm
+mellett megadott opcióktól. Ez csak azok számára hasznos, akik saját
+MI\-t készítenek (ez még nincs teljesen dokumentálva).
+
+.TP 
+.BR \-\-side<szám>=value
+kiválaszt egy fajt az aktuális korszakból a csapat számára. A fajt
+egy azonosító alapján lehet kiválasztani. A fajok a data/mutliplayer.cfg
+fájlban vannak leírva.
+
+.SH "SZERZÕK"
+Írta: David White <davidnwhite@comcast.net>.
+.br 
+Szerkesztették: Nils Kneuper <crazy\-ivanovic@gmx.net> és ott <ott@gaon.net>.
+.br 
+Ennek a dokumentumnak az eredetijét Cyril Bouthors <cyril@bouthors.org> írta.
+Magyarra forította: Gilluin (gilluin@citromail.hu).
+.br 
+Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/
+
+.SH "COPYRIGHT"
+Copyright \(co 2003 David White <davidnwhite@comcast.net>
+.br 
+
+Ez  egy szabad szoftver; terjeszthetõ illetve módosítható a GNU Általános Közreadási
+Feltételek  dokumentumában leírtak szerint \-\- 2. vagy késõbbi verzió \-\-, melyet a
+Szabad Szoftver Alapítvány ad ki.
+
+Ez a program abban a reményben kerül közreadásra, hogy hasznos lesz, de
+minden egyéb  GARANCIA NÉLKÜL, az eladhatóságra vagy valamely célra való
+alkalmazhatóságra való származtatott  garanciát is beleértve.
+.SH "LÁSD MÉG"
+wesnoth_editor(6), wesnothd(6)
