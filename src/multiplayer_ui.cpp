@@ -352,7 +352,7 @@ void ui::hide_children(bool hide)
 
 void ui::layout_children(const SDL_Rect& rect)
 {
-	title_.set_location(xscale(11)+4, xscale(42) + 4);
+	title_.set_location(xscale(12) + 8, yscale(38) + 8);
 	users_menu_.set_width(xscale(159));
 	users_menu_.set_max_width(xscale(159));
 	users_menu_.set_location(xscale(856), yscale(42));
