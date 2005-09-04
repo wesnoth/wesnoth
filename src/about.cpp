@@ -208,7 +208,7 @@ std::vector<std::string> get_text() {
 		"-   Jérémy Rosen (Boucman)",
 		"-   Julien Moncel",
 		"-   Julien Tailleur",
-		"-   Nicolas Boudin (Blurk)",
+		"-   Nicolas Boudin (Blurgk)",
 		"-   Philippe Plantier (Ayin)",
 		"-   Yann Dirson",
 		"-   Zas",
