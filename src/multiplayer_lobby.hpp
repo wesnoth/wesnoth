@@ -14,6 +14,8 @@
 #ifndef MULTIPLAYER_LOBBY_HPP_INCLUDED
 #define MULTIPLAYER_LOBBY_HPP_INCLUDED
 
+#include <map>
+
 #include "config.hpp"
 #include "display.hpp"
 #include "multiplayer_ui.hpp"
@@ -62,6 +64,8 @@ private:
 	lobby_sorter sorter_;
 	gui::menu games_menu_;
 	int current_game_;
+
+	std::map<std::string,std::string> minimaps_;
 };
 
 }

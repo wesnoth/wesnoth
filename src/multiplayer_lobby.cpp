@@ -167,16 +167,21 @@ void lobby::gamelist_updated(bool silent)
 
 		if(map_data != "") {
 			try {
-				gamemap map(game_config(), map_data);
-				const surface mini(image::getMinimap(100,100,map,0));
+				std::string& image_id = minimaps_[map_data];
 
-				//generate a unique id to show the map as
-				std::stringstream id;
-				id << "addr " << mini.get();
-				std::string const &image_id = id.str();
-				image::register_image(image_id, mini);
+				if(image_id.empty()) {
+					gamemap map(game_config(), map_data);
+					const surface mini(image::getMinimap(100,100,map,0));
+
+					//generate a unique id to show the map as
+					std::stringstream id;
+					id << "addr " << mini.get();
+					image_id = id.str();
+					image::register_image(image_id, mini);
+				}
 
 				str << "&" << image_id << COLUMN_SEPARATOR;
+
 			} catch(gamemap::incorrect_format_exception& e) {
 				std::cerr << "illegal map: " << e.msg_ << "\n";
 			}
