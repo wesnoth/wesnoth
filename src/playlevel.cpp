@@ -241,7 +241,8 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 
 		LOG_NG << "initializing team...\n";
 
-		if ((**ui)["controller"] == preferences::client_type() && (**ui)["description"] == preferences::login()) {
+		const std::string& controller = (**ui)["controller"];
+		if (controller == preferences::client_type() && (**ui)["description"] == preferences::login()) {
 			first_human_team = ui - unit_cfg.begin();
 		} else if(first_human_team == -1 && ((**ui)["controller"] == "human" || (**ui)["persistent"] == "1")) {
 			first_human_team = ui - unit_cfg.begin();
@@ -345,7 +346,6 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 					player->available_units.push_back(new_unit);
 				}
 			} else {
-				new_unit.new_turn();
 				units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
 				LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
 			}
