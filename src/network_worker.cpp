@@ -166,7 +166,7 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 			}
 		}
 
-		const ssize_t res = SDLNet_TCP_Recv(sock, beg, end - beg);
+		const int res = SDLNet_TCP_Recv(sock, beg, end - beg);
 		if(res <= 0) {
 			if(SDLNet_CheckSockets(set, 15000) <= 0) {
 				ERR_NW << "SDLNet_CheckSockets: " << strerror(errno) << "\n";
