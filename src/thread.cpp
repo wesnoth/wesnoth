@@ -134,6 +134,7 @@ bool condition::notify_one()
 		ERR_G << "SDL_CondSignal: " << SDL_GetError() << "\n";
 		return false;
 	}
+
 	return true;
 }
 
@@ -148,6 +149,7 @@ bool condition::notify_all()
 
 bool async_operation::notify_finished()
 {
+	finishedVar_ = true;
 	return finished_.notify_one();
 }
 
@@ -168,7 +170,7 @@ async_operation::RESULT async_operation::execute(waiter& wait)
 		bool completed = false;
 		while(wait.process() == waiter::WAIT) {
 			const condition::WAIT_TIMEOUT_RESULT res = finished_.wait_timeout(get_mutex(),20);
-			if(res == condition::WAIT_OK) {
+			if(res == condition::WAIT_OK || finishedVar_) {
 				completed = true;
 				break;
 			} else if(res == condition::WAIT_ERROR) {
