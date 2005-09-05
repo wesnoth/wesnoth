@@ -641,7 +641,7 @@ CXXFLAGS=$OLD_CXXFLAGS
 
 AC_SUBST([SDL_CFLAGS])
 
-AC_CHECK_HEADERS([stdlib.h unistd.h])
+AC_CHECK_HEADERS([stdlib.h unistd.h poll.h sys/poll.h sys/select.h])
 
 
 #######################################################################
