@@ -152,8 +152,10 @@ turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
     key_(key), gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), browse_(mode != PLAY_TURN), allow_network_commands_(mode == BROWSE_NETWORKED),
     left_button_(false), right_button_(false), middle_button_(false),
-	minimap_scrolling_(false), enemy_paths_(false), last_nearest_(gamemap::location::NORTH), last_second_nearest_(gamemap::location::NORTH),
-    path_turns_(0), end_turn_(false), start_ncmd_(-1), textbox_(textbox), replay_sender_(replay_sender)
+	minimap_scrolling_(false), enemy_paths_(false), 
+	last_nearest_(gamemap::location::NORTH), 
+	last_second_nearest_(gamemap::location::NORTH),
+	path_turns_(0), end_turn_(false), start_ncmd_(-1), textbox_(textbox), replay_sender_(replay_sender)
 {
 	enemies_visible_ = enemies_visible();
 
@@ -310,7 +312,8 @@ void turn_info::mouse_motion(int x, int y)
 		if(minimap_scrolling_) return;
 	}
 
-	gamemap::location::DIRECTION nearest_hex, second_nearest_hex;
+	gamemap::location::DIRECTION nearest_hex = gamemap::location::NDIRECTIONS;
+	gamemap::location::DIRECTION second_nearest_hex = gamemap::location::NDIRECTIONS;
 	const team& current_team = teams_[team_num_-1];
 	const gamemap::location new_hex = gui_.hex_clicked_on(x,y,&nearest_hex,&second_nearest_hex);
 
