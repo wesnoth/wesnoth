@@ -229,6 +229,16 @@ bool show_intro_part(display &disp, const config& part,
 
 	bool skip = false, last_key = true;
 
+	const SDL_Rect total_size = font::draw_text(NULL, screen_area(), font::SIZE_PLUS, 
+			font::NORMAL_COLOUR, story, 0, 0);
+	if (texty + total_size.h > screen_area().h) {
+		texty = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 1 : 0; 
+
+		draw_solid_tinted_rectangle(textx, texty, total_size.w, total_size.h,
+				0, 0, 0, 128, video.getSurface());
+		update_rect(textx, texty, total_size.w, total_size.h);
+	}
+
 	int xpos = textx, ypos = texty;
 
 	//the maximum position that text can reach before wrapping
