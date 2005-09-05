@@ -155,6 +155,8 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 				if(retval > 0)
 					continue;
 			}
+#else
+			}
 #endif
 			return SOCKET_ERROR;
 		}
@@ -169,31 +171,16 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 
 SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 {
-	SDLNet_SocketSet set = SDLNet_AllocSocketSet(1);
-	if(!set) {
-		ERR_NW << "SDLNet_AllocSocketSet: " << SDLNet_GetError() << "\n";
-		SDLNet_FreeSocketSet(set);
-		return SOCKET_ERROR;
-	}
-	if(SDLNet_TCP_AddSocket(set, sock) < 0) {
-		ERR_NW << "SDLNet_TCP_AddSocket: " << SDLNet_GetError() << "\n";
-		SDLNet_FreeSocketSet(set);
-		return SOCKET_ERROR;
-	}
 	char num_buf[4];
 	int len = SDLNet_TCP_Recv(sock,num_buf,4);
 
 	if(len != 4) {
-		SDLNet_TCP_DelSocket(set, sock);
-		SDLNet_FreeSocketSet(set);
 		return SOCKET_ERROR;
 	}
 
 	len = SDLNet_Read32(num_buf);
 
 	if(len < 1 || len > 100000000) {
-		SDLNet_TCP_DelSocket(set, sock);
-		SDLNet_FreeSocketSet(set);
 		return SOCKET_ERROR;
 	}
 
@@ -206,34 +193,55 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 		transfer_stats[sock].second.fresh_current(len);
 	}
 
-	// wait for a maximum of 15 seconds for the socket to have activity
-	if(SDLNet_CheckSockets(set, 15000) <= 0) {
-		ERR_NW << "SDLNet_CheckSockets: " << strerror(errno) << "\n";
-		SDLNet_TCP_DelSocket(set, sock);
-		SDLNet_FreeSocketSet(set);
-		return SOCKET_ERROR;
-	}
 	while(beg != end) {
 		{
 			// if we are receiving the socket is in sockets_locked
 			// check if it is still locked
 			const threading::lock lock(*global_mutex);
 			if(sockets_locked[sock] != SOCKET_LOCKED) {
-				SDLNet_TCP_DelSocket(set, sock);
-				SDLNet_FreeSocketSet(set);
 				return SOCKET_ERROR;
 			}
 		}
 
 		const int res = SDLNet_TCP_Recv(sock, beg, end - beg);
 		if(res <= 0) {
-			if(SDLNet_CheckSockets(set, 15000) <= 0) {
-				ERR_NW << "SDLNet_CheckSockets: " << strerror(errno) << "\n";
-				SDLNet_TCP_DelSocket(set, sock);
-				SDLNet_FreeSocketSet(set);
-				return SOCKET_ERROR;
+#ifdef EAGAIN
+			if(errno == EAGAIN) {
+#elif defined(EWOULDBLOCK)
+			if(errno == EWOULDBLOCK) {
+#else
+			{
+#endif
+#ifdef USE_POLL
+				struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLIN };
+				int poll_res;
+				do {
+					poll_res = poll(&fd, 1, 15000);
+				} while(poll_res == -1 && errno == EINTR);
+
+				if(poll_res > 0)
+					continue;
 			}
-			continue;
+#elif defined(USE_SELECT)
+				fd_set readfds;
+				FD_ZERO(&readfds);
+				FD_SET(((_TCPsocket*)sock)->channel, &readfds);
+				int retval;
+				struct timeval tv;
+				tv.tv_sec = 15;
+				tv.tv_usec = 0;
+
+				do {
+					retval = select(((_TCPsocket*)sock)->channel + 1, &readfds, NULL, NULL, &tv);
+				} while(retval == -1 && errno == EINTR);
+
+				if(retval > 0)
+					continue;
+			}
+#else
+			}
+#endif
+			return SOCKET_ERROR;
 		}
 
 		beg += res;
@@ -242,8 +250,6 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 			transfer_stats[sock].second.transfer(static_cast<size_t>(res));
 		}
 	}
-	SDLNet_TCP_DelSocket(set, sock);
-	SDLNet_FreeSocketSet(set);
 	return SOCKET_READY;
 }
 
