@@ -190,6 +190,7 @@ void lobby::gamelist_updated(bool silent)
 		}
 
 		std::string name = (**game)["name"];
+		name.erase(std::remove_if(name.begin(),name.end(),font::is_format_char),name.end());
 
 		str << font::make_text_ellipsis(name, font::SIZE_NORMAL, xscale(300));
 
