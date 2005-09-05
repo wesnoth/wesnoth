@@ -82,7 +82,7 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		}
 		const int res = SDLNet_TCP_Send(sock, &buf[upto], static_cast<int>(size - upto));
 
-		if(res == -1) {
+		if(res <= 0) {
 #ifdef EAGAIN
 			if(errno == EAGAIN) {
 				SDL_Delay(100);
