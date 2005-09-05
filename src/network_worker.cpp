@@ -26,11 +26,51 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include "config.h"
+
+#if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
+#include <windows.h>
+#else
+#include <sys/types.h>
+#include <sys/socket.h>
+#ifdef __BEOS__
+#include <socket.h>
+#else
+#include <fcntl.h>
+#endif
+#define SOCKET int
+#endif
+
+#ifdef HAVE_POLL_H
+#define USE_POLL 1
+#include <poll.h>
+#endif
+
+#ifdef HAVE_SYS_POLL_H
+#define USE_POLL 1
+#include <sys/poll.h>
+#endif
+
+#ifdef USE_SELECT
+#ifdef HAVE_SYS_SELECT_H
+#include <sys/select.h>
+#else
+#include <sys/time.h>
+#include <sys/types.h>
+#include <unistd.h>
+#endif
+#endif
 
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
 namespace {
-
+struct _TCPsocket {
+	int ready;
+	SOCKET channel;
+	IPaddress remoteAddress;
+	IPaddress localAddress;
+	int sflag;
+};
 unsigned int buf_id = 0;
 
 struct buffer {
@@ -65,7 +105,6 @@ threading::condition* cond = NULL;
 std::vector<threading::thread*> threads;
 
 SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
-	int timeout = 15000;
 	size_t upto = 0;
 	size_t size = buf.size();
 	{
@@ -73,7 +112,7 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		transfer_stats[sock].first.fresh_current(size);
 	}
 
-	while(upto < size && timeout > 0) {
+	while(upto < size) {
 		{
 			// check if the socket is still locked
 			const threading::lock lock(*global_mutex);
@@ -85,20 +124,28 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		if(res <= 0) {
 #ifdef EAGAIN
 			if(errno == EAGAIN) {
-				SDL_Delay(100);
-				timeout -= 100;
-				continue;
-			}
 #elif defined(EWOULDBLOCK)
 			if(errno == EWOULDBLOCK) {
-				SDL_Delay(100);
-				timeout -= 100;
-				continue;
+#else
+			{
+#endif
+
+#ifdef USE_POLL
+				struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLOUT };
+				int poll_res;
+				do {
+					poll_res = poll(&fd, 1, 15000);
+				} while(poll_res == -1 && errno == EINTR);
+
+				if(poll_res > 0)
+					continue;
+			}
+/* TODO implement the select io wait */
+#else
 			}
 #endif
 			return SOCKET_ERROR;
 		}
-		timeout = 15000;
 		upto += static_cast<size_t>(res);
 		{
 			const threading::lock lock(*global_mutex);
