@@ -478,7 +478,7 @@ std::istream *istream_file(std::string const &fname)
 	// still useful with zipios, for things like cache and prefs
 	std::istream *s = new std::ifstream(fname.c_str(), std::ios_base::binary);
 	if (s->fail())
-		ERR_FS << "streaming " << fname << " failed.\n";
+		LOG_FS << "streaming " << fname << " failed.\n";
 	return s;
 }
 
