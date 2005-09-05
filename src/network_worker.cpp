@@ -18,6 +18,7 @@
 #include "network.hpp"
 #include "thread.hpp"
 #include "wassert.hpp"
+#include "wesconfig.h"
 
 #include <algorithm>
 #include <cerrno>
@@ -26,7 +27,6 @@
 #include <iostream>
 #include <map>
 #include <vector>
-#include "config.h"
 
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
 #include <windows.h>
@@ -44,14 +44,13 @@
 #ifdef HAVE_POLL_H
 #define USE_POLL 1
 #include <poll.h>
-#endif
-
-#ifdef HAVE_SYS_POLL_H
+#elif defined(HAVE_SYS_POLL_H)
 #define USE_POLL 1
 #include <sys/poll.h>
 #endif
 
-#ifdef USE_SELECT
+#ifndef USE_POLL
+#define USE_SELECT 1
 #ifdef HAVE_SYS_SELECT_H
 #include <sys/select.h>
 #else
@@ -140,8 +139,21 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 				if(poll_res > 0)
 					continue;
 			}
-/* TODO implement the select io wait */
-#else
+#elif defined(USE_SELECT)
+				fd_set writefds;
+				FD_ZERO(&writefds);
+				FD_SET(((_TCPsocket*)sock)->channel, &writefds);
+				int retval;
+				struct timeval tv;
+				tv.tv_sec = 15;
+				tv.tv_usec = 0;
+
+				do {
+					retval = select(((_TCPsocket*)sock)->channel + 1, NULL, &writefds, NULL, &tv);
+				} while(retval == -1 && errno == EINTR);
+
+				if(retval > 0)
+					continue;
 			}
 #endif
 			return SOCKET_ERROR;
