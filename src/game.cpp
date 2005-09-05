@@ -931,7 +931,16 @@ void game_controller::download_campaigns()
 			//add negative sizes to reverse the sort order
 			sizes.push_back(-atoi((**i)["size"].c_str()));
 
-			options.push_back(IMAGE_PREFIX + (**i)["icon"].str() + COLUMN_SEPARATOR +
+			const int max_icon_dim = 80;
+
+			//make sure the icon isn't too big
+			std::string icon = (**i)["icon"];
+			const surface icon_img = image::get_image(icon,image::UNSCALED);
+			if(icon_img.null() == false && icon_img->w > max_icon_dim && icon_img->h > max_icon_dim) {
+				icon = "";
+			}
+
+			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR +
 			                  title + COLUMN_SEPARATOR +
 			                  version + COLUMN_SEPARATOR +
 			                  author + COLUMN_SEPARATOR +
