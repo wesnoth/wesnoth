@@ -8,13 +8,12 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:22+0200\n"
-"PO-Revision-Date: 2005-03-05 00:29+0100\n"
+"PO-Revision-Date: 2005-09-05 11:26+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: data/themes/editor.cfg:429
 msgid "File"
@@ -26,49 +25,47 @@ msgstr "Edituj"
 
 #: src/editor/editor.cpp:160
 msgid "Draw tiles"
-msgstr ""
+msgstr "Kresli polia"
 
 #: src/editor/editor.cpp:162
-#, fuzzy
 msgid "Fill"
-msgstr "Súbor"
+msgstr "Vyplň"
 
 #: src/editor/editor.cpp:164
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Nastav hráčovu štartovú pozíciu"
 
 #: src/editor/editor.cpp:166
 msgid "Zoom in"
-msgstr ""
+msgstr "Priblíž pohľad"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom out"
-msgstr ""
+msgstr "Vzdiaľ pohľad"
 
 #: src/editor/editor.cpp:170
 msgid "Undo"
-msgstr ""
+msgstr "Znovu"
 
 #: src/editor/editor.cpp:172
 msgid "Redo"
-msgstr ""
+msgstr "Späť"
 
 #: src/editor/editor.cpp:174
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Štandardný pohľad"
 
 #: src/editor/editor.cpp:176
 msgid "Toggle grid"
-msgstr ""
+msgstr "Prepni mirežku"
 
 #: src/editor/editor.cpp:178
-#, fuzzy
 msgid "Resize the map"
 msgstr "Zmeň veľkosť mapy"
 
 #: src/editor/editor.cpp:180
 msgid "Flip map"
-msgstr ""
+msgstr "Preklop mapu"
 
 #: src/editor/editor.cpp:371
 msgid "Save the Map As"
@@ -79,9 +76,8 @@ msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Táto mapa už existuje. Chceš ju prepísať?"
 
 #: src/editor/editor.cpp:405
-#, fuzzy
 msgid "Player "
-msgstr "Hráč"
+msgstr "Hráč "
 
 #: src/editor/editor.cpp:408
 msgid "Which Player?"
@@ -99,7 +95,7 @@ msgstr "Vyber si mapu na nahranie"
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
-msgstr ""
+msgstr "Pozor: V názve mapy sú nepovolené znaky. Uložte mapu pod iným názvom."
 
 #: src/editor/editor.cpp:483 src/editor/editor.cpp:562
 msgid "The file does not contain a valid map."
@@ -135,14 +131,13 @@ msgstr "Neviem uložiť mapu: $msg"
 
 #: src/editor/editor.cpp:1142
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Chyba: Nepovolený znak v mene súboru."
 
 #: src/editor/editor.cpp:1198
 msgid "Player"
 msgstr "Hráč"
 
 #: src/editor/editor_dialogs.cpp:47
-#, fuzzy
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Tvoje úpravy mapy sa stratia. Mám pokračovať?"
 
@@ -193,7 +188,6 @@ msgid "Scroll Speed:"
 msgstr "Rýchlosť rolovania:"
 
 #: src/editor/editor_dialogs.cpp:282
-#, fuzzy
 msgid "Toggle Full Screen"
 msgstr "Celá obrazovka"
 
@@ -215,7 +209,7 @@ msgstr "Zmeň veľkosť mapy"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
@@ -231,7 +225,7 @@ msgstr "Prevráť (môžu sa zmeniť rozmery mapy):"
 
 #: src/editor/editor_main.cpp:235
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Editor máp hry Bitka o Wesnoth"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -243,48 +237,47 @@ msgstr "Terén"
 
 #: src/mapgen_dialog.cpp:94
 msgid "Map Generator"
-msgstr ""
+msgstr "Generátor máp"
 
 #: src/mapgen_dialog.cpp:99
-#, fuzzy
 msgid "Players:"
-msgstr "Hráč"
+msgstr "Hráči:"
 
 #: src/mapgen_dialog.cpp:102
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Počet kopcov:"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Max veľkosť kopca:"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "Dediny:"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "Tvar zeme:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Cesty medzi hradmi"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 polí"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "Pobrežie"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "Vnútrozemie"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "Ostrov"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
@@ -293,19 +286,3 @@ msgstr "Vymaž súbor"
 #: src/widgets/file_chooser.cpp:134
 msgid "Deletion of the file failed."
 msgstr "Nepodarilo sa vymazať súbor."
-
-#~ msgid "Draw"
-#~ msgstr "Kresli"
-
-#~ msgid "Flood"
-#~ msgstr "Vyplň"
-
-# Štartové miesto hráča (pevnosť)
-#~ msgid "Start P"
-#~ msgstr "Štart H"
-
-#~ msgid "Paste"
-#~ msgstr "Vlož"
-
-#~ msgid "Ok"
-#~ msgstr "OK"
