@@ -7,6 +7,7 @@ CVS HEAD:
    * fixed Ruby of Fire object description (#14311)
    * fixed untranslatable Rise of Wesnoth scenario name
    * new man pages: Hungarian
+   * changing languages now updates Tome of Wesnoth on Linux into new language
  * user interface
    * text input box position now changes if resolution is changed (#12466)
    * hourglass cursor now works on Mac OS X (#14298)
@@ -16,15 +17,20 @@ CVS HEAD:
    * fixed observer icon corruption (#14320)
    * user campaign translations are now available without a restart (#14388)
    * adjusted multiplayer lobby titles
+   * don't show images larger than 80x80 in campaign server list (#12007)
+   * fixed progress bar overflow (#14403)
+   * game names can no longer contain formatting characters (#14246)
+   * fix campaign story text overflowing due to narrow width (rest of #13961)
  * graphics
    * fixed Flaming Sword missing attack image (#14346)
    * updated Goblin Impaler, Gryphon, Gryphon Master, Gryphon Rider
  * ambush and nightstalk now works on turn 1 for leaders (#13671)
  * AI now understands that AMLA units don't heal on advancing
  * AI in multiplayer can now recruit more widely in all eras (rest of #14096)
- * fixed a network related freeze (#14359)
+ * fixed a network related freeze (#14359) and other networking changes
  * fixed connect to server hanging on Mac OS X
  * fixed memory leaks in multiplayer lobby (part of #13981)
+ * various bug fixes and code cleanups
 
 Version 0.9.6:
  * language and i18n:
@@ -115,7 +121,7 @@ Version 0.9.5:
    * rejoining game as observer, with same nick, no longer causes out of synch
      (#12824 and #12997, still subject to confirmation)
    * fixed chat messages from allies not being shown in multiplayer (#13657)
-   * added Use map settings option to preset scenario suggested values at setup
+   * added Use map settings option to preset scenario suggested values (#10669)
    * show game settings in the game list
    * fixed lobby corruption when trying to join a game that disallows observers
    * fixed create-game-then-cancel lobby corruption (#13522)
