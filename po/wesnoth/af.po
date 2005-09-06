@@ -3296,6 +3296,13 @@ msgid ""
 "a different sequence, such as underground where it is perpetually night. You "
 "can find out the current time of day by looking at the Status Table."
 msgstr ""
+"Die tyd van dag verander in 'n bepaalde volgorde: dagbreek- identies aan "
+"skemer, oggend- dag, middag- dag, skemer- skemerlig, eerste wag- nag, tweede "
+"wag - nag, en dan begin dit weer van voor. Dit word voorgestel deur die son "
+"en die maan wat elkeen in die ooste opkom en in die weste sak. Sommige "
+"senarios het egter 'n anderste volgorde, soos byvoorbeeld ondergronds waar "
+"dit voortdurend nag is. Jy kan die huidige tyd in die dag vasstel deur na "
+"die Statustabbel te kyk."
 
 #: data/scenarios/tutorial/utils.cfg:125
 msgid ""
@@ -3309,6 +3316,15 @@ msgid ""
 "For example; many elves have 70% defense in woods, and are therefore hit 30% "
 "of the time."
 msgstr ""
+"Twee terreine het kenmerke wat vooraf beskryf is; naamlik dorp en kasteel. "
+"Die eienskappe van die meeste ander terreinsoorte is egter meer subtiel en "
+"het te doen met die voordele of nadele wat veskillende eenhede ervaar "
+"wanneer hulle daarop beweeg. Die eerste eienskap van 'n terrein is die "
+"aantal bewegingspunte wat dit 'n eenheid neem om oor die blok te beweeg. Die "
+"tweede eienskap is die mate van verdediging wat die eenheid wat daarop staan "
+"ontvang. Dit is met ander woorde 'n persentasie wat die eenheid se kanse "
+"bepaal om op daardie terrein getref te word. Baie elwe het byvoorbeeld 70% "
+"verdediging in woude en word daarom ongeveer 30% van alle kere getref."
 
 #: data/scenarios/tutorial/utils.cfg:125
 msgid "What are the different properties that terrains have?"
@@ -3652,6 +3668,8 @@ msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
+"In 'n veldtog kan jy veteraan-eenhede van 'n vorige scenario gebruik deur "
+"die 'herroep' opsie te gebruik."
 
 #: data/tips.cfg:3
 msgid ""
@@ -3661,6 +3679,11 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
+"Die ses soorte aanvalle is: steek, lem, impak, vuur, koue en heilig. "
+"Verskillende eenhede het verskillende vatbaarhede teen verskillende soorte "
+"aanvalle. Regskliek op 'n eenheid en kies 'Eenheidsbeskrywing' en kliek dan "
+"op 'Weerstand' om te sien hoeveel weerstand 'n eenheid teen verskillende "
+"soorte aanvalle bied."
 
 #: data/tips.cfg:4
 msgid ""
@@ -3669,6 +3692,10 @@ msgid ""
 "in the currently selected terrain is displayed in the top-right corner of "
 "the screen."
 msgstr ""
+"Die terrein waarop jou eenhede hul bevind bepaal die kans wat jou "
+"teenstander het om hulle in 'n geveg te tref. Die verdedigingsaanslag vir "
+"die tans gekose eenheid op die gekose terrein, word in die boonste "
+"regterkantste hoek vertoon."
 
 #: data/tips.cfg:5
 msgid ""
@@ -3688,6 +3715,9 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
+"Jy kan eenhede vanuit 'n vorige scenario gebruik deur 'Herroep' op die "
+"keusebalk te kies. Deur dieselfde eenhede oor en oor te herroep, kan jy 'n "
+"kragtige en ervare leër opbou."
 
 #: data/tips.cfg:7
 msgid ""
@@ -3696,6 +3726,10 @@ msgid ""
 "turn. Level 0 units are too frail to control a zone; and skirmisher units "
 "are skilled enough to ignore these zones."
 msgstr ""
+"Eenhede het 'n beheersone in elkeen van die blokke langsaan hulle. As 'n "
+"eenheid in 'n vyand se beheersone inbeweeg mag hy nie verder beweeg tydens "
+"daardie beurt nie. Vlak 0 eenhede is te swak om 'n beheersone te hê; "
+"skermutselaars is so ervare dat hulle hierdie sones kan ignoreer."
 
 #: data/tips.cfg:8
 msgid ""
@@ -3704,6 +3738,11 @@ msgid ""
 "chance to hit both when attacking and defending, and marksman attacks have "
 "at least 60% chance to hit when attacking."
 msgstr ""
+"Die kanse om 'n eenheid te tref hang gewoonlik af van hoe goed daardie "
+"eenheid homself op die terrein waarop dit staan, kan verdedig. "
+"Toorkragaanvalle het egter altyd 'n 70% kans om te tref beide tydens 'n "
+"aanval en verdediging en skerpskut-aanvalle het ten minste 'n 60% kans om te "
+"tref wanneer aangeval word."
 
 #: data/tips.cfg:9
 msgid ""
@@ -3716,6 +3755,8 @@ msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
 msgstr ""
+"Eenhede wat nie beweeg of aanval gedeurende hul beurt nie, sal 2 lewenspunte "
+"herwin aan die begin van hulle volgende beurt."
 
 #: data/tips.cfg:11
 msgid ""
@@ -3723,6 +3764,9 @@ msgid ""
 "terrain, while most mounted units don't get any defensive advantage in "
 "villages and castles."
 msgstr ""
+"Die meeste voetsoldate verdedig beter in dorpe en kastele as in enige ander "
+"terrein, terwyl die meeste berede eenhede geen verdedigingsvoordeel in dorpe "
+"en kastele ontvang nie."
 
 #: data/tips.cfg:12
 msgid ""
@@ -3730,6 +3774,9 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
+"Berede eenhede bied normaalweg goeie weerstand teen aanvalle met lem- of "
+"impakwapens, maar hulle is vatbaar vir aanvalle met steekwapens, insluitend "
+"boë en spiese."
 
 #: data/tips.cfg:13
 msgid ""
@@ -3737,24 +3784,34 @@ msgid ""
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr ""
+"Die toediening van 'n doodsteek op 'n vyandige eenheid is die beste manier "
+"vir 'n eenheid om ervaring op te doen. Eenhede wat 'n vyand dood sal 8 "
+"ervaringspunte kry vir elke vlak van die eenheid wat hulle dood."
 
 #: data/tips.cfg:14
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr ""
+"Elwe eenhede beweeg en veg baie goed in woude. Dwerg-eenhede beweeg en veg "
+"baie goed op heuwels en berge."
 
 #: data/tips.cfg:15
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
+"Geduld is meestal die sleutel. Eerder as om in swak toestande en met min "
+"troepe aan te val, wag vir beter toestande en val dan aan."
 
 #: data/tips.cfg:16
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
+"As jy uit verskillende rigtings aangeval word, mag dit 'n goeie idee wees om "
+"misbare eenhede in sommige rigtings te stuur om die vyandige eenhede "
+"sodoende te vertraag."
 
 #: data/tips.cfg:17
 msgid ""
@@ -3770,6 +3827,10 @@ msgid ""
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
+"In die meeste veldtogte sal jy 'n goud bonus ontvang as jy vroeg klaarmaak, "
+"afhangende van die aantal dorpe op die kaart en die aantal beurte wat jy "
+"vroegtydig klaarmaak. Jy sal altyd meer goud op dié manier verdien as om "
+"dorpe te beset en te wag dat die beurte opraak."
 
 #: data/tips.cfg:19
 msgid ""
@@ -3778,18 +3839,27 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
+"Jou leier kan eenhede werf of herroep vanuit enige vesting in 'n kasteel en "
+"nie net die vesting waarop hulle begin het nie. Jy kan vestings oorneem by "
+"'n vyand en ook vandaar werwing doen. Sommige van jou bondgenote mag dalk "
+"ook toelaat om vir jou plek te maak op hulle vestings sodat jy vandaar af "
+"kan werwing doen."
 
 #: data/tips.cfg:20
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
+"Geraamtes bied hoë weerstand tot steek en lem-aanvalle maar is vatbaar vir "
+"impak-, vuur- en heilige aanvalle."
 
 #: data/tips.cfg:21
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
+"Eenhede met leierskapsvaardighede veroorsaak dat aangrensende laer vlak "
+"eenhede aan dieselfde kant beter veg."
 
 #: data/tips.cfg:22
 msgid ""
@@ -3797,16 +3867,23 @@ msgid ""
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
+"Dit is 'n goeie idee om nie langs 'n onbesette dorp verby te beweeg nie. Die "
+"vyandige eenheid mag dalk tot daarop beweeg en jou aanval en dan ook sommer "
+"terselftertyd die verbeterde verdediging en genesing geniet."
 
 #: data/tips.cfg:23
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
+"Deur die wyser op 'n vermoë of karaktertrek te plaas word 'n beskrywing van "
+"daardie vermoë of karaktertrek vertoon."
 
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
+"Gebruik linies van eenhede om gewonde eenhede van die vyand af te skerm om "
+"hulle tyd te gee om te herstel."
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
@@ -3817,18 +3894,24 @@ msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
+"As jy 'n eenheid skuif, maar nie aanval nie, of addisionele inligting "
+"ontdek, kan jy die skuif ongedaan maak deur 'u' te druk."
 
 #: data/tips.cfg:27
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
+"Jy kan vasstel hoe ver vyandige eenhede kan beweeg deur jou wyser oor hulle "
+"te beweeg."
 
 #: data/tips.cfg:28
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"Gebruik gesondmakers om jou aanvalle te ondersteun - hulle sal gevegte vir "
+"jou wen sonder die nodigheid dat hulle self nodig het om aan te val."
 
 #: data/tips.cfg:29
 msgid ""
@@ -3836,6 +3919,9 @@ msgid ""
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
+"Die 'stadige' aanvalsvermoë veroorsaak dat vyandige eenhede stadiger beweeg, "
+"maar gee hulle ook een minder aanval as wat hulle normaalweg sou gehad het. "
+"Dit is dus baie effektief teen eenhede wat net 'n paar kragtige aanvalle het."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3846,12 +3932,16 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
+"Eenhede word genees wanneer hulle tot 'n hoër vlak bevorder word. As dit "
+"wyslik gebruik word kan dit die verloop van 'n geveg laat swaai."
 
 #: data/tips.cfg:32
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
+"Stormende eenhede word op hulle beste gebruik teen eenhede wat hulle met 'n "
+"enkele hou kan dood."
 
 #: data/traits.cfg:6 data/translations/english.cfg:61
 msgid "loyal"
@@ -3908,12 +3998,19 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
+"Eenhede met 'n wettige ingesteldheid veg beter in die dag en swakker in die "
+"nag. \n"
+"\n"
+"Dag: +25% Skade\n"
+"Nag: -25% Skade"
 
 #: data/translations/english.cfg:10
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"Neutrale eenhede word nie deur die nag en dag beïnvloed nie en veg ewe goed "
+"onder beide toestande."
 
 #: data/translations/english.cfg:14
 msgid ""
@@ -3922,6 +4019,10 @@ msgid ""
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
+"Chaotiese eenhede veg beter snags en swakker bedags\n"
+"\n"
+"Dag: -25% Skade\n"
+"Nag: +25% Skade"
 
 #: data/translations/english.cfg:21
 msgid ""
@@ -3932,6 +4033,12 @@ msgid ""
 "any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
+"Lokval:\n"
+" Hierdie eenheid kan in woude wegkruip en ongemerk deur sy vyande bly.\n"
+"\n"
+"Vyandige eenhede kan nie hierdie eenheid sien of aanval wanneer dit in 'n "
+"woud is nie, behalwe vir die beurt wat volg net nadat die eenheid self 'n "
+"aanval doen of wanneer daar vyandige eenhede reg langs die eenheid is."
 
 #: data/translations/english.cfg:23 data/units/Elvish_Avenger.cfg:20
 #: data/units/Elvish_Avenger.cfg:136 data/units/Elvish_Ranger.cfg:20
@@ -3952,6 +4059,18 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Genesers:\n"
+"Hierdie eenheid kombineer kruie-medisyne met toorkrag om eenhede sodoende "
+"vinniger te genees as wat normaalweg op 'n slagveld moontlik is.\n"
+"\n"
+"Hierdie eenheid sal vir alle aangrensende goedgesinde, beseerde eenhede aan "
+"die begin van elke beurt sorg.\n"
+"'n eenheid wat deur 'n geneser versorg word mag tot soveel as 8 LP per beurt "
+"genees word.\n"
+"'n geneeser mag vir 'n totaal van 18 LP per beurt genees, vir al die eenhede "
+"wat dit versorg.\n"
+"'n geneeser kan 'n eenheid van gif genees, maar die eenheid sal geen "
+"addisionele gesondmaak kry totat dit totaal van die gif genees is nie."
 
 #: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:19
 #: data/units/Elvish_Shyde.cfg:21 data/units/Mermaid_Priestess.cfg:10
@@ -3971,6 +4090,15 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Gesond maak:\n"
+"Laat die eenheid toe om aangrensende, goedgesinde eenhede gesond te maak aan "
+"die begin van die beurt.\n"
+"\n"
+"'n Eenheid wat deur 'n gesondmaker versorg word, kan soveel as 4 LP per "
+"beurt gesondmaak.\n"
+"'n Vergiftigde eenheid kan nie deur 'n gesondmaker van sy vergiftiging "
+"genees word nie en moet die sorg van 'n dorp of 'n eenheid wat kan genees "
+"opsoek."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
 #: data/units/Paladin.cfg:24 data/units/Saurian_Icecaster.cfg:21
@@ -3987,6 +4115,12 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Verlig:\n"
+"Hierdie eenheid verlig die omliggende gebied, wat tot gevolg het dat eenhede "
+"met wettige ingesteldheid beter veg en chaotiese eenheid swakker veg.\n"
+"\n"
+"Enige eenhede langs hierdie eenheid sal veg asof dit skemer is, in die nag "
+"en soos in die dag wanneer dit skemer is."
 
 #: data/translations/english.cfg:49
 msgid "illuminates"
@@ -4003,6 +4137,14 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
+"Leierskap:\n"
+"Hierdie eenheid kan goedgesinde eenhede langs hom ly, wat veroorsaak dat "
+"hulle beter veg.\n"
+"\n"
+"Aangrensende goedgesinde eenhede van 'n laer vlak sal meer skade tydens 'n "
+"geveg aanrig. Wanneer 'n eenheid wat langs 'n eenheid met Leierskap is en 'n "
+"laer vlak het, en ook aan dieselfde kant veg, sal sy aanvalle 25% meer skade "
+"vermenigvuldig met die verskil in hulle vlakke aanrig."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:98 data/units/Death_Knight.cfg:17
@@ -4036,6 +4178,12 @@ msgid ""
 "immediately after this unit has attacked, or if there are enemy units next "
 "to this unit."
 msgstr ""
+"Nagbekruiper:\n"
+"Die eenheid word onsigbaar in die nag.\n"
+"\n"
+"Vyandige eenhede kan nie hierdie eenheid in die nag sien of aanval nie, "
+"behalwe vir die beurt wat volg direk na die eenheid self 'n aanval geloods "
+"het of as daar vyandige eenhede reg langs hierdie eenheide is."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:21
 #: data/units/Shadow.cfg:16
@@ -4048,6 +4196,9 @@ msgid ""
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Hernuwing:\n"
+"Hierdie eenheid kan homself met 8 LP per beurt genees. As dit vergiftig word "
+"sal dit die gif verwyder in plaas daarvan om te genees."
 
 # herlewing?
 #: data/translations/english.cfg:73 data/units/Great_Troll.cfg:7
@@ -4063,6 +4214,9 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
 "Zones of Control."
 msgstr ""
+"Skermutselaar:\n"
+"Hierdie eenheid is vaardig om by vinnig by vyande verby te sluip en ignoreer "
+"Vyandige beheersones."
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:18
 #: data/units/Assassin.cfg:113 data/units/Duelist.cfg:16
@@ -4079,6 +4233,9 @@ msgid ""
 "Steadfast:\n"
 "This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
+"Standvastig:\n"
+" Hierdie eenheid se weerstand word verdubbel tot 'n maksimum van 50% wanneer "
+"hulle verdedig."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -4092,6 +4249,9 @@ msgid ""
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
+"Teleporteer:\n"
+"Hierdie eenheid kan tussen twee goedgesinde dorpe verplaas word deur slegs "
+"een van sy bewegings te gebruik."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:22
 #: data/units/Silver_Mage.cfg:158
@@ -4104,6 +4264,9 @@ msgid ""
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target. (This doesn't work with allied units.)"
 msgstr ""
+"Rugsteek:\n"
+"Hierdie eenheid dien dubbele skade toe as 'n goedgesinde eenheid aan die "
+"ander kant van die teiken is. (Dit werk nie vir bongenote nie.)"
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -4111,6 +4274,9 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
+"Waansin:\n"
+"Hetsy dit aanvallend of verdedigend gebruik word, sal hierdie aanval "
+"voortduur totdat een van die vegters sneuwel."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -4118,6 +4284,9 @@ msgid ""
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
+"Storm:\n"
+" Hierdie aanval rig dubbele skade aan die teiken aan. Dit veroorsaak ook dat "
+"hierdie eenheid dubbele skade ly vanaf die teiken se teenaanval."
 
 #: data/translations/english.cfg:102
 msgid ""
@@ -4125,12 +4294,18 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals."
 msgstr ""
+"Dreineer:\n"
+" Hierdie eenheid dreineer lewende eenhede se gesondheid en genees homself "
+"met 'n hoeveelheid gelykstaande aan die helfte van die skade wat dit toedien."
 
 #: data/translations/english.cfg:105
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Eerste Trefhou:\n"
+" Hierdie eenheid sal altyd eerste slaan met hierdie aanval, selfs al "
+"verdedig hy."
 
 #: data/translations/english.cfg:108
 msgid ""
@@ -4145,6 +4320,9 @@ msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
+"Skerpskut:\n"
+"Wanneer aanvallend gebruik word het hierdie aanval altyd ten minste 'n 60% "
+"kans om te tref."
 
 #: data/translations/english.cfg:114
 msgid ""
@@ -4153,6 +4331,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
+"Plaag:\n"
+" Wanneer 'n eenheid sterf a.g.v. 'n plaagaanval, word die eenheid vervang "
+"met 'n identiese eenheid aan dieselfde kant as die eenheid met die "
+"plaagaanval. (Dit werk nie op wandelende dooies of eenhede in dorpe nie.)"
 
 #: data/translations/english.cfg:117
 msgid ""
@@ -4160,6 +4342,9 @@ msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
+"Gif:\n"
+" Hierdie aanval vergiftig die teiken. Vergiftigde eenhede verloor 8 LP met "
+"elke beurt totdat hulle genees word of na 1 LP verminder het."
 
 #: data/translations/english.cfg:120
 msgid ""
@@ -4168,6 +4353,10 @@ msgid ""
 "receive one less attack than normal in combat until the end of their "
 "controllers' turn."
 msgstr ""
+"Stadig:\n"
+" Hierdie aanval vertraag die teiken. Vertraagde eenhede beweeg slegs teen "
+"die helfte van hulle normale spoed en ontvang een minder aanval in 'n geveg "
+"tot aan die einde van hulle beheerder se beurt."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -4175,6 +4364,9 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
+"Klip:\n"
+"Hierdie eenheid verander die teiken in klip. Eenhede wat in klip verander "
+"het mag nie beweeg of aanval nie."
 
 #: data/translations/english.cfg:132
 msgid "$name's Bridge,$name's Crossing"
@@ -4244,6 +4436,13 @@ msgid ""
 "high chance of hitting an opponent. The touch of a lich drains the victim's "
 "life to renew the lich."
 msgstr ""
+"'n Wese uit hierdie orde is afkomstig uit 'n lank vergete tydperk. Enigeen "
+"wat 'n antieke Lich teëkom het baie belangriker dinge om hom oor te bekommer "
+"as die dood.\n"
+"\n"
+"Spesiale Notas:Die afstandsaanvalle van 'n lich het towerkrag en het altyd "
+"'n baie hoë kans om 'n teenstander te tref. Die aanraking van 'n lich "
+"dreineer die slagoffer se liggaam om die lig te laat hernuwe."
 
 #: data/units/Ancient_Lich.cfg:44 data/units/Demilich.cfg:32
 #: data/units/Dread_Lich.cfg:21 data/units/Ghost.cfg:23 data/units/Lich.cfg:24
@@ -4339,6 +4538,19 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Daar is 'n snaakse storie van 'n boer wat 'n groot eik op sy grasperk gehad "
+"het, 'n boom wat daar gestaan het toe die boer vir die eerste keer die grond "
+"daar omgedolwe het en waaronder sy gesin baie herinneringe gehad het. Dit "
+"was vir hom 'n skok toe hy een oggend ontdek dat die boom op een of ander "
+"manier weggeneem is, met net 'n kaal stukkie aarde waar dit eens gestaan "
+"het. Die arme boer was daarna nooit weer dieselfde nie.\n"
+"\n"
+"Sulke ontmoetings is al wat bekend is van die waarskynlik mees antieke "
+"hisse.\n"
+"\n"
+"Spesiale Notas: Hisse regenereer deur die hulpbronne rondom hulle te "
+"gebruik, wat beteken dat hulle nie in dorpe bymekaar hoef te kom om voedsel "
+"of hulp te kry nie."
 
 #: data/units/Ancient_Wose.cfg:43 data/units/Elder_Wose.cfg:24
 #: data/units/Wose.cfg:24
@@ -4422,6 +4634,22 @@ msgid ""
 "Special Notes: the arch mage's fireballs are magical, and always have a high "
 "chance of hitting an opponent."
 msgstr ""
+"Die titel van Opper-towenaar word slegs na 'n leeftyd se studie en "
+"prestasies daarmee saam toegeken. Hooftowenaars word dikwels in "
+"opvoedingsposisies aangewend of as raadgewers aan hulle wat wys genoeg is om "
+"na die vrugte van hul wysheid te soek. Baie neig om welvarende beskermhere "
+"te wees, 'n winsgewende bedryf vir beide partye aangesien dit buiten 'n "
+"woordjie van advies so af en toe, die towenaar die vryheid gee om sy "
+"navorsing ongesteurd te doen. Van hulle is baie sku vir die beskawing en "
+"spandeer hulle tyd as kluisenaars, dikwels om iets te bestudeer wat die "
+"meeste geneig sal wees om af te keur.\n"
+"\n"
+"Al word hulle nie opgelei vir enige soort geveg nie, kan 'n hooftowenaar "
+"indien nodig die volle mag van hulle toorkuns loslaat, iets wat nie ligtelik "
+"opgeneem moet word nie.\n"
+"\n"
+"Spesiale Nota:die hooftowenaar se vuurballe besit toorkrag en het altyd 'n "
+"baie goeie kans om 'n teenstander te tref."
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:152
 #: data/units/Dark_Sorcerer.cfg:24 data/units/Deathmaster.cfg:32
@@ -4490,6 +4718,19 @@ msgid ""
 "creeping around behind that enemy. Their throwing knives are also poisoned, "
 "which will continually sap away an enemy's strength."
 msgstr ""
+"Die grootste skelms word somtyds aangesê om meer te neem as net hulle "
+"slagoffers se besittings. Hierdie onheilspellende figure is meesters in "
+"mesgevegte en bedrieglik vlugvoetig en sal enige moontlike manier gebruik om "
+"stilweg van hulle slagoffers ontslae te raak, hetsy dit vergiftigde messe "
+"wat van ver gegooi word of 'n dolk wat in die rug gesteek word. Hierdie "
+"sluipmoordenaars is dodelik in die nag maar is ongemaklik daarmee om in die "
+"heldere sonlig te veg.\n"
+"\n"
+"Spesiale Notas:terwyl 'n eenheid met dieselfde lojaliteite as die "
+"sluipmoordenaar die vyand se aandag aftrek, kan die sluipmoordenaar hom in "
+"die rug steek en dubbele skade aanrig, deur agter daardie vyand in te sluip. "
+"Hulle gooimesse is ook met gif besmeer wat voortdurend die vyand se krag sal "
+"laat kwyn."
 
 #: data/units/Assassin.cfg:37 data/units/Assassin.cfg:119
 #: data/units/Dwarvish_Thunderer.cfg:38
@@ -4609,6 +4850,12 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Bandiete is 'n mengelmoes van manne waarvan die meeste maar 'n twyfelagtige "
+"agtergrond het. Hulle is die krag van enige georganieseerde groep kriminele "
+"en al is hulle ongekunsteld en nie baie intelligent nie, is hulle baie goed "
+"daarmee om hulle slagoffers te moker tot oorgawe. Soos enige soort skelm, is "
+"hulle nie daarmee gediend om in die helder daglig te veg nie, aangesien "
+"hulle daaraan gewoond is om snags te werk."
 
 #: data/units/Bandit.cfg:34 data/units/Drake_Enforcer.cfg:43
 #: data/units/Drake_Gladiator.cfg:61 data/units/Great_Troll.cfg:24
@@ -4634,6 +4881,10 @@ msgid ""
 "great combatant and leader. Now battle-hardened and strong of will, she can "
 "now aid those around her in the art of combat."
 msgstr ""
+"Die Prinses, 'n koninklike met geboorte, het die swaardkuns by die beste "
+"generaals aangeleer en gevegstaktieke by die grootste wysgere, wat haar "
+"beide 'n gedugte vegter en leier maak. Noudat sy 'n geharde vegter is met 'n "
+"ysere wil, kan sy diegene rondom haar help met die gevegskuns."
 
 #: data/units/Battle_Princess.cfg:36 data/units/Battle_Princess.cfg:75
 #: data/units/Bowman.cfg:33 data/units/Cavalier.cfg:41
@@ -4692,6 +4943,11 @@ msgid ""
 "began the battle. Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
+"Bloedsuier Vlermuise is vinnig en kan die bloed van enigeen wat hulle aanval "
+"uitsuig en hulself daarmee in die proses genees tot so 'n mate dat hulle "
+"selfs sterker kan word as wat hulle was toe die geveg begin het. Hulle woede "
+"is so kwaai dat die pelse van hierdie vlieënde dooie gediertes rooi gevlek "
+"is met die bloed van hulle slagoffers."
 
 #: data/units/Blood_Bat.cfg:33 data/units/Cave_Spider.cfg:33
 #: data/units/Direwolf_Rider.cfg:26 data/units/Goblin_Knight.cfg:23
@@ -4713,6 +4969,13 @@ msgid ""
 "Dubbed simply 'Bone-Shooters' by their unfortunate enemies, these "
 "abominations are a terror to all who live."
 msgstr ""
+"Van al die nekromant se skeppings, neem sekere wesens die valse lewe met "
+"meer ywer aan. Lewenskragtiges kry dikwels dan ook wapens om daarmee saam te "
+"gaan; boogskutters word veral dikwels met 'n afskuwelike arsenaal voorsien. "
+"Hulle pylkokers word volgemaak met pyle wat nie van hout gemaak is nie maar "
+"uit die bene van hul slagoffers. Hulle word eenvoudig die 'Gebeente "
+"Skieters' genoem deur hulle stomme vyande, hierdie verfoeilike wesens is 'n "
+"verskrikking vir al wat leef."
 
 #: data/units/Bone_Shooter.cfg:36 data/units/Soul_Shooter.cfg:27
 msgid "stab"
@@ -8031,6 +8294,8 @@ msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
 msgstr ""
+"Hierdie animasiese lopende lyke het sterk geword deur lang geveg ervaring "
+"teen die lewendes."
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -8256,6 +8521,8 @@ msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
 msgstr ""
+"Koud en pragtig, sy handhaaf haar ewige jeudige voorkoms om die bloed te "
+"drink van lewendiges"
 
 #: data/units/Vampire_Lady.cfg:21
 msgid "blood kiss"
