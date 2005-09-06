@@ -1,4 +1,4 @@
-# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
+# #-#-#-#-# wesnoth.cpp1.po (Battle for Wesnoth VERSION) #-#-#-#-#
 # Afrikaans translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-09-05 13:48+0200\n"
+"PO-Revision-Date: 2005-09-06 10:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
@@ -3187,6 +3187,12 @@ msgid ""
 "the Status Table, and the function of a specific trait can be found by "
 "putting your cursor over that trait."
 msgstr ""
+"Die funksie van karaktertrekke is om verskeidenheid in te bring deur die "
+"eenhede van dieselfde soort verskillend van mekaar te maak. Dit word gedoen "
+"deur willekeurig karaktertrekke aan eenhede toe te ken wanneer hulle gewerf "
+"word. Die karaktertrekke van 'n eenheid word op die Statustabel vertoon en "
+"die funksie van 'n spesifieke karaktertrek kan vasgestel word deur die wyser "
+"op daardie karaktertrek te plaas."
 
 #: data/scenarios/tutorial/utils.cfg:110
 msgid "What do traits do?"
@@ -3201,6 +3207,13 @@ msgid ""
 "traits when they are recruited. Also, some races and units may have traits "
 "that are unique to them."
 msgstr ""
+"Daar is vier onderskeibare karaktertrekke, waarvan die effek wissel van 'n "
+"verhoging in 'n eenheid se lewensfpunte of die hoeveelheid ervaringspunte te "
+"verlaag vir bevordering. Alle karaktertrekke is egter ontwerp om 'n eenheid "
+"se krag te vermeerder; daar bestaan geen 'negatiewe' karaktertrekke nie. Die "
+"meeste eenhede het 'n gelyke kans om enige twee verskillende karaktertrekke "
+"te kry wanneer hulle gewerf word. Sekere rasse en eenhede mag karaktertrekke "
+"hê wat uniek tot hulle soort is."
 
 #: data/scenarios/tutorial/utils.cfg:111
 msgid "What kind of traits can my units get?"
@@ -3221,6 +3234,15 @@ msgid ""
 "displayed on the status bar at the top after a picture of gold and then a "
 "red arrow."
 msgstr ""
+"Jy moet aan elke eenheid wat jy werf of terugroep goud betaal wanneer jy dit "
+"doen. Die koste verbonde aan die werf van 'n eenheid word onder die eenheid "
+"se naam vertoon. Die koste van die terugroep van 'n eenheid is altyd 20 "
+"goud. 'n Eenheid kos ook goud vir elke beurt wat dit onder jou beheer is. "
+"Hierdie koste word 'onderhoud' genoem en is gelykstaande aan die vlak van "
+"die eenheid. Eenhede wat jy egter nie werf of terugroep nie, soos onder "
+"andere jou leier kos geen goud nie. Die totale onderhoudskoste van jou "
+"eenhede word op die statusbalk bo-aan die skerm vertoon net na die prentjie "
+"van goud en word deur 'n rooi pyltjie gevolg."
 
 #: data/scenarios/tutorial/utils.cfg:116
 msgid "How do I get gold?"
@@ -3235,6 +3257,12 @@ msgid ""
 "you usually need more gold than that, you should flag villages, which give "
 "you 1 gold per turn."
 msgstr ""
+"Jy begin elke scenario met 'n persentasie goud uit die vorige scenario. As "
+"jy minder as 'n 100 goud oorgehad het sal jy in plaas daarvan met 'n 100 "
+"goud begin. Die hoeveelheid goud wat jy het word vertoon op die statusbalk "
+"na die prentjie van goud. Na die aanvang van 'n scenario ontvang jy 2 goud "
+"met elke beurt. Aangesien jy gewoonlik meer goud as dit benodig, moet jy "
+"dorpe beset wat jou 1 goud per beurt gee"
 
 #: data/scenarios/tutorial/utils.cfg:120
 msgid ""
@@ -3244,6 +3272,12 @@ msgid ""
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
+"Daar bestaan 3 ordes: Wettig, Neutraal en Chaoties. Daar is ook 3 tye van "
+"die dag: dag, skemer en nag. Gedurende die dag rig eenhede met die wettige "
+"orde (soos mense) 25% meer skade aan, terwyl Chaotiese eenhede soos die "
+"wandelende dooies 25% minder skade aanrig. In die nag is dit omgekeerd. "
+"Tydens skemer rig alle eenhede hulle normale hoeveelheid skade aan. Neutrale "
+"eenhede soos elwe word nie deur die dag en nag beïnvloed nie"
 
 #: data/scenarios/tutorial/utils.cfg:120
 msgid "What are the different alignments and times of day?"
@@ -8443,9 +8477,8 @@ msgid "+Miscellaneous"
 msgstr "+Algemeen"
 
 #: src/about.cpp:127
-#, fuzzy
 msgid "+Internationalization Managers"
-msgstr "+Internasionaliseering Bestuurders"
+msgstr "+Internasionalisering Bestuurders"
 
 #: src/about.cpp:134
 msgid "+Afrikaans Translation"
@@ -8484,9 +8517,8 @@ msgid "+English (GB) Translation"
 msgstr "+Engelse (Britse) Vertaling"
 
 #: src/about.cpp:187
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Estoniese Vertaling"
+msgstr "+Estniese Vertaling"
 
 #: src/about.cpp:190
 msgid "+Finnish Translation"
@@ -8505,7 +8537,6 @@ msgid "+Greek Translation"
 msgstr "+Griekse Vertaling"
 
 #: src/about.cpp:225
-#, fuzzy
 msgid "+Hungarian Translation"
 msgstr "+Hongaarse Vertaling"
 
@@ -8530,7 +8561,6 @@ msgid "+Polish Translation"
 msgstr "+Poolse Vertaling"
 
 #: src/about.cpp:269
-#, fuzzy
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugese (Brasiliaanse) Vertaling"
 
@@ -8567,9 +8597,8 @@ msgid "+Contributors"
 msgstr "+Medewerkers"
 
 #: src/about.cpp:316
-#, fuzzy
 msgid "+Bots"
-msgstr "+Robotiese Deelnemers"
+msgstr "+Internet Robot"
 
 #: src/about.cpp:352 src/help.cpp:2662
 msgid "Close"
@@ -8634,9 +8663,8 @@ msgid " (+steadfast)"
 msgstr " (+standvastig)"
 
 #: src/actions.cpp:659
-#, fuzzy
 msgid "(both should survive)"
-msgstr "(albei sal leef)"
+msgstr "(albei behoort te leef)"
 
 #: src/actions.cpp:661
 msgid "% Pr[kills/killed by/both survive]"
@@ -8719,7 +8747,6 @@ msgid "#(Invalid)"
 msgstr "#(Ongeldig)"
 
 #: src/dialogs.cpp:373 src/game.cpp:759
-#, fuzzy
 msgid "Campaign"
 msgstr "Veldtog"
 
@@ -8875,8 +8902,8 @@ msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
-"Hierdie lêer is van 'n ander weergawe van die spel.  Wil jy probeer om dit "
-"te laai?"
+"Hierdie lêer is van 'n ander weergawe van die spel. Wil jy probeer om dit te "
+"laai?"
 
 #: src/game.cpp:659 src/game.cpp:662 src/multiplayer_connect.cpp:890
 msgid "The file you have tried to load is corrupt: '"
@@ -9006,12 +9033,11 @@ msgid "Remote host disconnected."
 msgstr "Afgeleë bediener het ontkoppel."
 
 #: src/game.cpp:1016
-#, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
-"Daar was 'n probleem tydens die skep van die benodigde lêers vir hierdie "
-"veldtog."
+"Daar was 'n probleem tydens die skep van die benodigde lêers om hierdie "
+"veldtog te installeer."
 
 #: src/game.cpp:1028 src/game.cpp:1067 src/game.cpp:1092
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:218
@@ -9299,7 +9325,6 @@ msgid "Villages:"
 msgstr "Dorpies:"
 
 #: src/mapgen_dialog.cpp:105
-#, fuzzy
 msgid "Landform:"
 msgstr "Landvorm:"
 
@@ -10307,7 +10332,6 @@ msgid ": "
 msgstr ": "
 
 #: src/unit_types.cpp:341
-#, fuzzy
 msgid "strikes"
 msgstr "trefhoue"
 
