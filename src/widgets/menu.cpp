@@ -406,7 +406,7 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	set_dirty();
 }
 
-void menu::set_max_height(const int new_max_height) 
+void menu::set_max_height(const int new_max_height)
 {
 	max_height_ = new_max_height;
 	itemRects_.clear();
@@ -414,7 +414,7 @@ void menu::set_max_height(const int new_max_height)
 	update_size();
 }
 
-void menu::set_max_width(const int new_max_width) 
+void menu::set_max_width(const int new_max_width)
 {
 	max_width_ = new_max_width;
 }

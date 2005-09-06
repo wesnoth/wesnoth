@@ -44,7 +44,7 @@ void scrollarea::update_location(SDL_Rect const &rect)
 		scrollbar_.set_location(r);
 		r.x -= w;
 		r.w = w;
-	} 
+	}
 
 	if (!hidden())
 		scrollbar_.hide(!shown_scrollbar_);

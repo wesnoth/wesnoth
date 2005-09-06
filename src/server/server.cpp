@@ -128,7 +128,7 @@ private:
 	const config& cfg_;
 
 	std::set<std::string> accepted_versions_;
-	std::map<std::string,config> redirected_versions_; 
+	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 
 	bool is_ip_banned(const std::string& ip);
@@ -462,7 +462,7 @@ void server::process_login(const network::connection sock, const config& data, c
 				}
 			}
 		}
-		
+
 		return;
 	}
 
@@ -765,7 +765,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->level().values["mp_fog"] = data["mp_fog"];
 			g->level().values["mp_shroud"] = data["mp_shroud"];
 			g->level().values["experience_modifier"] = data["experience_modifier"];
-			
+
 			//update our config object which describes the
 			//open games, and notifies the game of where its description
 			//is located at
