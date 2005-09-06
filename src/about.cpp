@@ -302,7 +302,7 @@ std::vector<std::string> get_text() {
 		"-   Jaka Kranjc (lynx)",
 
 		"_" N_("+Spanish Translation"),
-		"-   David Martínez",
+		"-   David Martínez Moreno",
 		"-   Flamma",
 		"-   Franciso Muñoz (fmunoz)",
 		"-   Gabriel Rodríguez (Chewie)",
