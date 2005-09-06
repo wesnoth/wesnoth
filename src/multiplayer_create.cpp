@@ -94,10 +94,10 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	xp_modifier_slider_.set_value(preferences::xp_modifier());
 	xp_modifier_slider_.set_increment(10);
 	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
-	
+
 	use_map_settings_.set_check(preferences::use_map_settings());
 	use_map_settings_.set_help_string(_("Use scenario specific settings"));
-	
+
 	fog_game_.set_check(preferences::fog());
 	fog_game_.set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
 

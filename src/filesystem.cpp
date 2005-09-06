@@ -319,7 +319,7 @@ void make_directory(const std::string& path)
 
 //this deletes a directory with no hidden files and subdirectories
 //also deletes a single file
-bool delete_directory(const std::string& path) 
+bool delete_directory(const std::string& path)
 {
 	bool ret = true;
 	std::vector<std::string> files;

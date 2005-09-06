@@ -86,7 +86,7 @@ namespace victory_conditions
 	}
 }
 
-bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const gamemap::location loc) 
+bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const gamemap::location loc)
 {
 	if(!map.on_board(loc))
 		return false;

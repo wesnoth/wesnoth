@@ -946,7 +946,7 @@ void connect::load_game()
 	level_["mp_use_map_settings"] = params_.use_map_settings ? "yes" : "no";
 	level_["mp_fog"] = params_.fog_game ? "yes" : "no";
 	level_["mp_shroud"] = params_.shroud_game ? "yes" : "no";
-	
+
 	//this will force connecting clients to be using the same version number as us.
 	level_["version"] = game_config::version;
 

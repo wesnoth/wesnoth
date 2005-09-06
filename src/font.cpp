@@ -153,7 +153,7 @@ TTF_Font* open_font(const std::string& fname, int size)
 				}
 			}
 		}
-		
+
 	} else {
 		name = "fonts/" + fname;
 		if(!file_exists(name)) {

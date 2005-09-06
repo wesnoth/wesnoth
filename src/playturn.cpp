@@ -152,8 +152,8 @@ turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
     key_(key), gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), browse_(mode != PLAY_TURN), allow_network_commands_(mode == BROWSE_NETWORKED),
     left_button_(false), right_button_(false), middle_button_(false),
-	minimap_scrolling_(false), enemy_paths_(false), 
-	last_nearest_(gamemap::location::NORTH), 
+	minimap_scrolling_(false), enemy_paths_(false),
+	last_nearest_(gamemap::location::NORTH),
 	last_second_nearest_(gamemap::location::NORTH),
 	path_turns_(0), end_turn_(false), start_ncmd_(-1), textbox_(textbox), replay_sender_(replay_sender)
 {
@@ -1954,7 +1954,7 @@ void turn_info::do_recruit(const std::string& name)
 		if(msg.empty()) {
 			current_team.spend_gold(u_type->second.cost());
 			statistics::recruit_unit(new_unit);
-			
+
 			clear_undo_stack();
 			redo_stack_.clear();
 
@@ -2904,9 +2904,9 @@ void turn_info::update_textbox_location()
 
 	if(textbox_.box != NULL) {
 		textbox_.box->set_volatile(true);
-		const SDL_Rect rect = { 
-			area.x + label_area.w + border_size*2, ypos, 
-			textbox_width, textbox_.box->height() 
+		const SDL_Rect rect = {
+			area.x + label_area.w + border_size*2, ypos,
+			textbox_width, textbox_.box->height()
 		};
 		textbox_.box->set_location(rect);
 	}

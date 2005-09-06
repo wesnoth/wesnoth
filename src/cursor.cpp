@@ -42,7 +42,7 @@ SDL_Cursor* create_cursor(surface surf)
 	}
 
 	//the width must be a multiple of 8 (SDL requirement)
-	
+
 #ifdef __APPLE__
 	size_t cursor_width = 16;
 #else
@@ -63,9 +63,9 @@ SDL_Cursor* create_cursor(surface surf)
 			Uint8 r,g,b,a;
 			Uint8 trans = 0;
 			Uint8 black = 0;
-			
+
 			const size_t index = y*cursor_width + x;
-			
+
 			if (x < cursor_width) {
 				SDL_GetRGBA(pixels[y*nsurf->w + x],nsurf->format,&r,&g,&b,&a);
 
@@ -73,12 +73,12 @@ SDL_Cursor* create_cursor(surface surf)
 
 				trans = (a < 128 ? 0 : 1) << shift;
 				black = (trans == 0 || (r+g+b)/3 > 128 ? 0 : 1) << shift;
-				
+
 				data[index/8] |= black;
 				mask[index/8] |= trans;
 			}
 
-			
+
 		}
 	}
 

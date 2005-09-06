@@ -348,7 +348,7 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 			} catch(network::error& error) {
 				if(!error.message.empty()) {
 					if(error.message == _("No multiplayer sides available in this game") ||
-					   error.message == _("Era not available") || 
+					   error.message == _("Era not available") ||
 					   error.message == _("No multiplayer sides found")) {
 						gui::show_error_message(disp, error.message);
 						break;
@@ -363,7 +363,7 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 			} catch(network::error& error) {
 				if(!error.message.empty()) {
 					if(error.message == _("No multiplayer sides available in this game") ||
-					   error.message == _("Era not available") || 
+					   error.message == _("Era not available") ||
 					   error.message == _("No multiplayer sides found")) {
 						gui::show_error_message(disp, error.message);
 						break;

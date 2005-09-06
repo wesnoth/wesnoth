@@ -486,7 +486,7 @@ void close_socket(TCPsocket sock)
 			remove_buffers(sock);
 			break;
 		}
-			
+
 		if(lock_it->second != SOCKET_LOCKED) {
 			if(lock_it->second != SOCKET_INTERRUPT) {
 				sockets_locked.erase(lock_it);
