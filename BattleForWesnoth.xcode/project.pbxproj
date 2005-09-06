@@ -141,7 +141,6 @@
 				19C28FACFE9D520D11CA2CBB,
 				5FDF18FC05219F3300A78EA1,
 				5FDF18FE05219F5000A78EA1,
-				5FDF190005219F6700A78EA1,
 				5FDF190205219F8000A78EA1,
 				5FE3727705317BEB00A78EA1,
 			);
@@ -210,13 +209,13 @@
 			);
 			buildSettings = {
 				DEBUGGING_SYMBOLS = NO;
-				FRAMEWORK_SEARCH_PATHS = "\"$(LOCAL_LIBRARY_DIR)/Frameworks\" \"$(LOCAL_LIBRARY_DIR)\" \"$(HOME)/Library/Frameworks\"";
-				HEADER_SEARCH_PATHS = "\"MacOSX/Wesnoth Scenario Editor\" MacOSX/intl src \"$(HOME)/Library/Frameworks/SDL_net.framework/Versions/A/Headers\" \"$(HOME)/Library/Frameworks/SDL_ttf.framework/Versions/A/Headers\" \"$(HOME)/Library/Frameworks/SDL_mixer.framework/Versions/A/Headers\" \"$(HOME)/Library/Frameworks/SDL_image.framework/Versions/A/Headers\" \"$(HOME)/Library/Frameworks/SDL.framework/Versions/A/Headers\"";
+				FRAMEWORK_SEARCH_PATHS = "\"$(LOCAL_LIBRARY_DIR)/Frameworks\" \"$(LOCAL_LIBRARY_DIR)\" \"$(HOME)/Library/Frameworks\" /Users/plantier/Library/Frameworks";
+				HEADER_SEARCH_PATHS = "\"MacOSX/Wesnoth Scenario Editor\" MacOSX/intl src \"$(LOCAL_LIBRARY_DIR)/Frameworks/SDL_net.framework/Headers\" \"$(LOCAL_LIBRARY_DIR)/Frameworks/SDL_image.framework/Headers\" \"$(LOCAL_LIBRARY_DIR)/Frameworks/SDL_mixer.framework/Headers\" \"$(LOCAL_LIBRARY_DIR)/Frameworks/SDL.framework/Headers\" \"$(LOCAL_LIBRARY_DIR)/Frameworks/SDL_image.framework/Headers\" \"$(HOME)/Library/Frameworks/SDL_net.framework/Versions/A/Headers\" \"$(HOME)/Library/Frameworks/SDL_mixer.framework/Versions/A/Headers\" \"$(HOME)/Library/Frameworks/SDL_image.framework/Versions/A/Headers\" \"$(HOME)/Library/Frameworks/SDL.framework/Versions/A/Headers\" \"$(HOME)/Library/Frameworks/SDL.framework/Versions/A/Headers\" MacOSX/freetype-headers";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
 				OPTIMIZATION_CFLAGS = "-O2";
 				OTHER_CFLAGS = "-UTEST_CONFIG -DPREFERENCES_DIR=\\\\\\\"/Library/Preferences/Wesnoth\\\\\\\" -DLIBDIR=\\\\\\\"\\\\\\\" -DLOCALEDIR=\\\\\\\"messages\\\\\\\" -DLOCALE_ALIAS_PATH=\\\\\\\"messages\\\\\\\" -DSIZE_MAX=2147483647U -Duintmax_t=\"unsigned long\" -DembeddedEditor";
-				OTHER_LDFLAGS = "-framework SDL";
+				OTHER_LDFLAGS = "-framework SDL -lfreetype -L/sw/lib/freetype2/lib ";
 				PRODUCT_NAME = "Battle For Wesnoth";
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
@@ -443,6 +442,8 @@
 				5F36FAAE08069109008EA275,
 				5F36FB020806911F008EA275,
 				5F36FB130806913A008EA275,
+				4077B9DC08C0C7F80004B6BF,
+				4077B9E008C0C8690004B6BF,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +463,7 @@
 		29B9732BFDCFA39411CA2CEA = {
 			buildActionMask = 2147483647;
 			files = (
+				4077B9D808C0C6B70004B6BF,
 				5F7E1D6A0533198A00A78EA1,
 				5FEE861105F3622B00A78EA1,
 				5FEE861305F3622B00A78EA1,
@@ -626,6 +628,8 @@
 				5F36FAA4080690FD008EA275,
 				5F36FAAF08069109008EA275,
 				5F36FB120806913A008EA275,
+				4077B9DB08C0C7F80004B6BF,
+				4077B9DF08C0C8690004B6BF,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,7 +640,6 @@
 				1058C7A3FEA54F0111CA2CBB,
 				5FDF18FD05219F3300A78EA1,
 				5FDF18FF05219F5000A78EA1,
-				5FDF190105219F6700A78EA1,
 				5FDF190305219F8000A78EA1,
 				5FE3727805317BEB00A78EA1,
 				5FF5EBEA0605C6F700A78EA1,
@@ -649,6 +652,78 @@
 //292
 //293
 //294
+//400
+//401
+//402
+//403
+//404
+		4077B9D808C0C6B70004B6BF = {
+			fileRef = 5F36FA120806907E008EA275;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		4077B9D908C0C7F70004B6BF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = checksum.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		4077B9DA08C0C7F70004B6BF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			path = checksum.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		4077B9DB08C0C7F80004B6BF = {
+			fileRef = 4077B9D908C0C7F70004B6BF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		4077B9DC08C0C7F80004B6BF = {
+			fileRef = 4077B9DA08C0C7F70004B6BF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		4077B9DD08C0C8690004B6BF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			path = playcampaign.cpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		4077B9DE08C0C8690004B6BF = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.h;
+			path = playcampaign.hpp;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		4077B9DF08C0C8690004B6BF = {
+			fileRef = 4077B9DD08C0C8690004B6BF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		4077B9E008C0C8690004B6BF = {
+			fileRef = 4077B9DE08C0C8690004B6BF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+//400
+//401
+//402
+//403
+//404
 //4A0
 //4A1
 //4A2
@@ -3692,32 +3767,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		5F36FB0E0806913A008EA275 = {
-			children = (
-				5F36FB0F0806913A008EA275,
-				5F36FB100806913A008EA275,
-			);
-			isa = PBXGroup;
-			path = zip;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		5F36FB0F0806913A008EA275 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = text;
-			path = .cvsignore;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		5F36FB100806913A008EA275 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			path = zip.cpp;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		5F36FB110806913A008EA275 = {
 			fileRef = 5F36FB0B0806913A008EA275;
 			isa = PBXBuildFile;
@@ -3732,12 +3781,6 @@
 		};
 		5F36FB130806913A008EA275 = {
 			fileRef = 5F36FB0D0806913A008EA275;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		5F36FB140806913A008EA275 = {
-			fileRef = 5F36FB0F0806913A008EA275;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -4518,20 +4561,6 @@
 			settings = {
 			};
 		};
-		5FDF190005219F6700A78EA1 = {
-			isa = PBXFileReference;
-			lastKnownFileType = wrapper.framework;
-			name = SDL_ttf.framework;
-			path = /Library/Frameworks/SDL_ttf.framework;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		5FDF190105219F6700A78EA1 = {
-			fileRef = 5FDF190005219F6700A78EA1;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		5FDF190205219F8000A78EA1 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -4554,12 +4583,6 @@
 		};
 		5FDF190605219F8800A78EA1 = {
 			fileRef = 5FDF18FE05219F5000A78EA1;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		5FDF190705219F8800A78EA1 = {
-			fileRef = 5FDF190005219F6700A78EA1;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -4767,7 +4790,6 @@
 			files = (
 				5FEDFB6B0611AB2000A78EA1,
 				5FEDFB6C0611AB2000A78EA1,
-				5FEDFB6D0611AB2000A78EA1,
 				5FEDFB6E0611AB2000A78EA1,
 				5FEDFB6F0611AB2000A78EA1,
 			);
@@ -4782,12 +4804,6 @@
 		};
 		5FEDFB6C0611AB2000A78EA1 = {
 			fileRef = 5FDF18FE05219F5000A78EA1;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		5FEDFB6D0611AB2000A78EA1 = {
-			fileRef = 5FDF190005219F6700A78EA1;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -5549,7 +5565,6 @@
 				5FEDFBED0611AB2000A78EA1,
 				5FEDFBEE0611AB2000A78EA1,
 				5FEDFBEF0611AB2000A78EA1,
-				5FEDFBF00611AB2000A78EA1,
 				5FEDFBF10611AB2000A78EA1,
 				5FEDFBF20611AB2000A78EA1,
 				5FEDFBF30611AB2000A78EA1,
@@ -5571,12 +5586,6 @@
 		};
 		5FEDFBEF0611AB2000A78EA1 = {
 			fileRef = 5FDF18FE05219F5000A78EA1;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		5FEDFBF00611AB2000A78EA1 = {
-			fileRef = 5FDF190005219F6700A78EA1;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -5660,6 +5669,10 @@
 		};
 		5FEE850905F3622A00A78EA1 = {
 			children = (
+				4077B9D908C0C7F70004B6BF,
+				4077B9DD08C0C8690004B6BF,
+				4077B9DE08C0C8690004B6BF,
+				4077B9DA08C0C7F70004B6BF,
 				5FEE850B05F3622A00A78EA1,
 				5FEE850C05F3622A00A78EA1,
 				5FEE850D05F3622A00A78EA1,
@@ -5816,7 +5829,6 @@
 				5F57BA3106EC81C50047433D,
 				5F36FB010806911F008EA275,
 				5F36FB0A0806913A008EA275,
-				5F36FB0E0806913A008EA275,
 				5FEE857F05F3622B00A78EA1,
 			);
 			isa = PBXGroup;
@@ -7485,7 +7497,6 @@
 			files = (
 				5FDF190505219F8800A78EA1,
 				5FDF190605219F8800A78EA1,
-				5FDF190705219F8800A78EA1,
 				5FDF190805219F8800A78EA1,
 				5FE7AA13054D35D800A78EA1,
 				5F36F7770805493C008EA275,
@@ -7499,7 +7510,6 @@
 				5F36FA140806907E008EA275,
 				5F36FA2908069086008EA275,
 				5F36FB110806913A008EA275,
-				5F36FB140806913A008EA275,
 			);
 			isa = PBXCopyFilesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
