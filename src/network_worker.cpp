@@ -30,7 +30,7 @@
 
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
 #include <windows.h>
-#define USE_SELECT
+#define USE_SELECT 1
 #else
 #include <sys/types.h>
 #include <sys/socket.h>
