@@ -30,6 +30,7 @@
 
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
 #include <windows.h>
+#define USE_SELECT
 #else
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -39,8 +40,6 @@
 #include <fcntl.h>
 #endif
 #define SOCKET int
-#endif
-
 #ifdef HAVE_POLL_H
 #define USE_POLL 1
 #include <poll.h>
@@ -59,6 +58,8 @@
 #include <unistd.h>
 #endif
 #endif
+#endif
+
 
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
