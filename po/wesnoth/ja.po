@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-08-25 18:14+0200\n"
-"PO-Revision-Date: 2005-09-04 08:33+0900\n"
+"PO-Revision-Date: 2005-09-07 15:27+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -211,7 +211,6 @@ msgid "Recruiting and Recalling"
 msgstr "雇用と召還"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -223,13 +222,14 @@ msgid ""
 "units available for recruitment, along with their gold cost. Click on a unit "
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
-"戦闘の開始時点やその途中では何度か、自軍にユニットを雇う必要があるでしょう。"
-"雇うためにはリーダー(「王位継承者」ではKonrad)を城の主搭ヘクスに置く必要があ"
-"ります。そして、メニューから「雇う」を選択するか、ヘクスを右クリックして「雇"
-"う」を選択することで雇うことができます。ここで、雇うのが可能なユニット一覧を"
-"含むメニューが表示されます。ユニットに下には必要なゴールドが表示されます。ユ"
-"ニットをクリックすると、その特性値が左に表示されます。それから、「雇う」ボタ"
-"ンでそれを雇って下さい。"
+"各陣営は主塔に一人のリーダーがいる状態で開始します。戦闘の開始時点やその途中"
+"では何度か、自軍に<ref>dst=units text=ユニット</ref>を雇う必要があるでしょ"
+"う。雇うためにはリーダー(「王位継承者」ではKonrad)を<ref>dst=terrain_castle "
+"text=城</ref>の主搭の位置に置く必要があります。そこで、メニューから「雇う」を"
+"選択するか、ヘクスを右クリックして<italic>text=雇う</italic>を選択することで"
+"雇うことができます。ここで、雇うことが可能なユニットと必要金額の一覧を示す雇"
+"用メニューが表示されます。その特性値を見るにはユニットをクリックして、雇うに"
+"はそれから「雇う」ボタンを押して下さい。"
 
 #: data/help.cfg:92
 msgid ""
@@ -312,7 +312,7 @@ msgstr "全ての行動が終わっているなら赤色、となります。"
 
 #: data/help.cfg:108
 msgid "The orb is blue if the unit is an ally you do not control."
-msgstr "あなたが動かしていない同盟のユニットなら、オーブは青色です。"
+msgstr "あなたが動かしていない同盟のユニットなら、宝珠は青色です。"
 
 #: data/help.cfg:109
 msgid "Enemy units have no orb on top of their energy bar."
@@ -549,7 +549,6 @@ msgstr ""
 "<header>text=ダメージ</header>"
 
 #: data/help.cfg:149
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -563,14 +562,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"各攻撃の基本ダメージ量は攻撃型に依存します。 例えば、 5-4の剣を持つエルフ戦士"
-"の攻撃の基本ダメージ量は5です。 通常、この値は"
+"各攻撃が命中することによる基本のダメージ量は、攻撃型に依存します。例えば、5-4"
+"の剣を持つエルフ戦士は基本ダメージ5で攻撃します。通常、この値は2つの事柄、"
 "<ref>dst=damage_types_and_resistance text=抵抗値</ref>と "
-"<ref>dst=time_of_day text=時間</ref>によって修正されます。 これらは下の項目で"
-"説明しています。"
+"<ref>dst=time_of_day text=時刻</ref>によって修正されます。基本ダメージがこれ"
+"らの これらの状況によってどう修正されるかを見るには、攻撃選択メニューの"
+"<italic>text='ダメージ計算'</italic>を選択して下さい。"
 
 #: data/help.cfg:151
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -581,10 +580,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"いくつかのユニットは、戦闘時のダメージに影響を与える特殊能力を持ちます。 その"
-"ような特殊能力で最も一般的なものは <ref>dst=weaponspecial_charge text=突撃</"
-"ref>です。 この能力を使用したときは、 攻撃側と防御側の両方のダメージ量が２倍"
-"となります。"
+"いくつかのユニットは、戦闘時のダメージに影響を与える<ref>dst=abilities text="
+"特殊能力</ref>を持ちます。 そのような特殊能力で最も一般的なものは "
+"<ref>dst=weaponspecial_charge text=突撃</ref>です。 突撃をもつユニットが攻撃"
+"すると、攻撃側と防御側の両方のダメージ量が2倍となります。"
 
 #: data/help.cfg:156
 msgid "Damage Types and Resistance"
@@ -603,7 +602,6 @@ msgstr ""
 "ユニットごとにダメージ型によって、 異なる抵抗力を持ちます。"
 
 #: data/help.cfg:159
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -615,10 +613,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"抵抗力は非常に単純な役割をはたします。 もしユニットがある攻撃型で40%の抵抗力"
-"を持っているなら、 その攻撃を受けたときにはダメージを40%軽減します。 ユニット"
-"が弱点を持つこともあります。 もしユニットがある攻撃型で-100%の抵抗力を持って"
-"いるなら、 その攻撃を受けたときにはダメージが100%増加します。 "
+"抵抗力は非常に単純に働きます。 もしユニットがある攻撃型で40%の抵抗力を持って"
+"いるなら、 その攻撃を受けたときにはダメージを40%軽減します。 ユニットがある攻"
+"撃型に弱点を持つこともあります。 もしユニットがある攻撃型で-100%の抵抗力を"
+"持っているなら、その攻撃を受けたときにはダメージが100%増加します。"
 
 #: data/help.cfg:161
 msgid ""
@@ -649,7 +647,7 @@ msgstr ""
 
 #: data/help.cfg:168
 msgid "Time of Day"
-msgstr "時間"
+msgstr "時刻"
 
 #: data/help.cfg:172
 msgid ""
@@ -658,7 +656,7 @@ msgid ""
 " Chaotic units get +25% damage at night, and -25% in daytime\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"1日の時間は、次のように特定のユニットのダメージに影響します。\n"
+"時刻は、次のように特定のユニットのダメージに影響します。\n"
 " 秩序ユニットは昼間はダメージ+25%、夜間はダメージ-25%。\n"
 " 混沌ユニットは夜間はダメージ+25%、昼間はダメージ-25%。\n"
 " 中立ユニットは時間の影響を受けない。"
@@ -847,7 +845,6 @@ msgstr ""
 "れ、各ユニット辺り8HPの回復が最大です。"
 
 #: data/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -880,7 +877,6 @@ msgstr ""
 "これには収入と維持費という２つの側面があります。"
 
 #: data/help.cfg:215
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -891,9 +887,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"収入は単純です。 支配している各村について、毎ターン１ゴールドずつ得ることがで"
-"きます。 従って、村を10個持っているなら、普通は10ゴールド得ることになりま"
-"す。 この収入から、次に説明する維持費が引かれます。"
+"収入は単純です。ターン当たり 2Gの基本収入があります。支配している各村につい"
+"て、さらに毎ターン1ゴールドずつ得ることができます。従って、村を10個持っている"
+"なら、普通は毎ターン12ゴールド得ることになります。 この収入から、次に説明する"
+"維持費が引かれます。"
 
 #: data/help.cfg:217
 msgid ""
@@ -916,7 +913,6 @@ msgstr ""
 "ゴールド払うことになります。"
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -926,8 +922,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"この費用は収入から差し引かれます。 ユニットレベルの合計が12で10個の村の場合に"
-"は、差し引き合計の収入は毎ターン８ゴールドとなります。"
+"維持費は収入から差し引かれるため、ユニットレベルの合計が12で10個の村の場合に"
+"は、差し引き合計の収入は毎ターン10ゴールドとなります。"
 
 #: data/help.cfg:220
 msgid ""
@@ -1538,6 +1534,9 @@ msgid ""
 "is concerned, only units capable of flying over canyons can cross this "
 "terrain."
 msgstr ""
+"渓谷は未知の深さへ導く地面の割れ目です。通過するのに何日もかかる垂直に切り"
+"立った壁になっています。ゲームプレイに関して言えば、渓谷を飛び越えられる能力"
+"を持ったユニットのみがこの地形を通過できます。"
 
 #: data/help.cfg:471 data/terrain.cfg:472
 msgid "Lava"
@@ -1549,6 +1548,8 @@ msgid ""
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
+"溶岩の上を歩こうとすることによる危険は極めて明らかです。十分に距離を取ってそ"
+"の上を飛び抜けられる能力を持ったユニットのみが、この地形を越えられます。"
 
 #: data/help.cfg:478 data/terrain.cfg:462
 msgid "River Ford"
@@ -1563,6 +1564,11 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"河川が極めて浅いならば、それを通り越えようとすることは、歩行型ユニットであっ"
+"ても珍しいことではありません。さらには泳ぎに最も適した生き物であれば、河川の"
+"そのような場所であっても完全な移動を行うことができます。ゲームプレイに関する"
+"限り、川の浅瀬は草原か浅い水かで、そこにいるユニットにとって最も防御と移動力"
+"ボーナスの大きい方が選択されます。"
 
 #: data/help.cfg:485 data/terrain.cfg:75 data/terrain.cfg:83
 #: data/terrain.cfg:91
@@ -1583,6 +1589,14 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"これを築ける者について、橋を渡すという能力は、上り下りの流れをともなう不安定"
+"な自然の川の流れから解放してくれます。足が濡れずにすむ贅沢は言うまでもなく、1"
+"年のうちの凍える何ヶ月もの間にはとても笑えない苦労をなくしてくれるのです。\n"
+"\n"
+"地面や海を越えるものにとって、橋はどちらの世界でも最良のものであり、ゲームプ"
+"レイ目的では草原か浅瀬のように扱われ、橋ヘクスを占拠するユニットにとって最も"
+"防御と移動力ボーナスの大きい方が選択されます。泳ぐユニットと歩行型ユニットは"
+"同時に橋ヘクスを占拠することができないことに注意して下さい。"
 
 #: data/help.cfg:494 data/terrain.cfg:349
 msgid "Cave Wall"
@@ -1593,6 +1607,8 @@ msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"洞窟の壁は硬い石でできており、どんなに決心の固い旅行者をも妨げることで有名で"
+"す。"
 
 #: data/items.cfg:264
 msgid ""
@@ -1918,13 +1934,15 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
-msgstr ""
+msgstr "2P - セーブルストーンの三角州"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers. Recommended settings of 2G per village."
 msgstr ""
+"2つの軍隊が、この隔たれた隠された洞窟とぎざぎざの川の沿岸地形の上で衝突す"
+"る。 村当たり 2Gの設定を推奨。"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
@@ -2075,7 +2093,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr "4P - 碧海地方"
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:4
 msgid ""
@@ -2084,6 +2102,9 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice. Recommended settings of 2 gold per village."
 msgstr ""
+"碧海地方では二十何回も破壊と再建が繰り返されてきたと言われる。今、この小さな"
+"地方の岩がちな流れと雪の積もった山において再び軍隊が結集しているが、村人達は"
+"気づいていないようだ。村当たり 2Gの設定を推奨。"
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
 msgid "4p - Castle Hopping Isle"
@@ -2119,6 +2140,7 @@ msgid ""
 "Who will remain standing as King of the Hill? Best played as a free-for-all "
 "(with everyone fighting everyone else)."
 msgstr ""
+"誰が丘の王として君臨し続けるのであろう？ (全員が戦い合う)乱闘戦プレー向き。"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
@@ -2129,6 +2151,7 @@ msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "settings of 1G per village."
 msgstr ""
+"4勢力がこの水がちな居留地の支配を求めて争う。 村当たり 1Gの設定を推奨。"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
@@ -2136,7 +2159,7 @@ msgstr "4P - 城壁包囲"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
 msgid "Take control of this huge river delta."
-msgstr ""
+msgstr "この巨大な三角州を支配せよ。"
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
 msgid "4p - The Valley of Death"
@@ -2144,7 +2167,7 @@ msgstr "4P - 死の谷"
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:5
 msgid "Can you defeat all enemies and declare victory in this desolate valley?"
-msgstr ""
+msgstr "あなたは全ての敵を倒して、この荒れ果てた谷で勝利を宣言できるか？"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -2156,6 +2179,8 @@ msgid ""
 "caves, rivers, and the ruins of ancient fortresses. Recommended settings of "
 "1G per village."
 msgstr ""
+"自然のまま手つかずの荒野の巨大な地域、その地形に森林と洞窟と川と古代の要塞の"
+"廃墟が点在する。村当たり 1Gの設定を推奨。"
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
 msgid "5p - Forest of Fear"
@@ -2163,7 +2188,7 @@ msgstr "5P - 畏敬の森"
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr ""
+msgstr "この混じりあった地形の中、5つの軍隊が覇権を巡って戦う。"
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -2175,7 +2200,7 @@ msgstr "２対２、 あるいは、 ３対３のチーム戦。"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:3
 msgid "6p - Smallolof"
-msgstr ""
+msgstr "6P - Smallolof"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
 msgid ""
@@ -2183,6 +2208,8 @@ msgid ""
 "where six boxed-in armies come to a head. Recommended settings of 2 gold per "
 "village."
 msgstr ""
+"6つの箱詰めにされた軍隊が危機に直面するこの死の狭い戦地では、真の戦略家のみが"
+"生き残るであろう。村当たり 2Gの設定を推奨。"
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
 msgid "7p - Battle World"
@@ -2191,7 +2218,7 @@ msgstr "7P - バトルワールド"
 #: data/scenarios/multiplayer/7p_battleworld.cfg:9
 msgid ""
 "Up to 7 armies thrash about in this peaceful land. Prepare for a long battle."
-msgstr ""
+msgstr "最大7つの軍隊が、この平和な国で打ちのめしあう。長期戦に備えよ。"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:17
@@ -4026,6 +4053,8 @@ msgid ""
 "Steadfast:\n"
 "This unit's resistance is doubled, up to a maximum of 50%, when defending."
 msgstr ""
+"不動:\n"
+"防御時、このユニットの抵抗力は最大で50%まで倍になります。"
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -4222,6 +4251,10 @@ msgid ""
 "high chance of hitting an opponent. The touch of a lich drains the victim's "
 "life to renew the lich."
 msgstr ""
+"この種族の存在は長く過ぎ去った年月の伝令です。古代リッチに遭遇した者は誰でも"
+"死よりもずっと悪い事を心配します。\n"
+"\n"
+"特記事項: リッチの投射攻撃は魔法で、相手に命中する確率が常に高いです。"
 
 #: data/units/Ancient_Lich.cfg:44 data/units/Demilich.cfg:32
 #: data/units/Dread_Lich.cfg:21 data/units/Ghost.cfg:23 data/units/Lich.cfg:24
@@ -4316,6 +4349,18 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"自分の芝生に巨大なカシワをもっていた農夫の不思議な話があります。木は彼の父親"
+"がその土地で初めて土を耕した時にはすでに立っていて、その下で彼の家族にはたく"
+"さんの思い出がありました。そのようなわけで彼にとってショックだったのですが、"
+"ある日彼が起きると神隠しにあったようになくなっており、木が立っていた場所には"
+"大地にむき出しの断片以外には何も残っていませんでした。哀れな農夫はその後すっ"
+"かりおかしくなってしまいました。\n"
+"\n"
+"そのような遭遇は全て、おそらく最古のウーズとして知られているものだと言われま"
+"す。\n"
+"\n"
+"特記事項: ウーズは、食物や手助けをうけるために村に入り込む必要なく、彼等を取"
+"り巻く天然資源を使うことで回復します。"
 
 #: data/units/Ancient_Wose.cfg:43 data/units/Elder_Wose.cfg:24
 #: data/units/Wose.cfg:24
@@ -4605,7 +4650,6 @@ msgid "leadership,skirmisher"
 msgstr "リーダーシップ,散兵"
 
 #: data/units/Battle_Princess.cfg:21 data/units/Battle_Princess.cfg:72
-#, fuzzy
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -4689,7 +4733,6 @@ msgid "Bone Shooter"
 msgstr "ボーンシューター"
 
 #: data/units/Bone_Shooter.cfg:15
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -4698,10 +4741,11 @@ msgid ""
 "Dubbed simply 'Bone-Shooters' by their unfortunate enemies, these "
 "abominations are a terror to all who live."
 msgstr ""
-"創造主により有能であると認められた彼らは、真に汚らわしい武器を装備していま"
-"す。彼らの矢筒は木ではなく、犠牲者の骨によって造られた矢で一杯になっていま"
-"す。不幸な敵によって単純に「ボーンシューター」と名づけられた忌まわしき者たち"
-"は生ける者すべての恐怖となります。"
+"ネクロマンサーの創造物の中でも、ある者達は与えられた偽りの人生において、より"
+"強力な力を手にします。生きていた時の能力に見合う装備が与えられ、特に射手は"
+"まったく卑劣な兵器を装備させられます。彼等の矢筒は、木ではなく犠牲者の骨に"
+"よって造られた矢が詰められています。不幸な敵によって単純に「ボーンシュー"
+"ター」と名づけられた忌まわしき者たちは生ける者すべての恐怖となります。"
 
 #: data/units/Bone_Shooter.cfg:36 data/units/Soul_Shooter.cfg:27
 msgid "stab"
@@ -4922,6 +4966,9 @@ msgid ""
 "to turn the living to stone. Needless to say, this makes them extremely "
 "dangerous."
 msgstr ""
+"ある時は「バジリスク」として知られるこの神秘的な生き物は、生けし者を石に変え"
+"る能力があると言われます。言うまでもなく、このためにこの生物は極めて危険で"
+"す。"
 
 #: data/units/Cockatrice.cfg:33
 msgid "gaze"
@@ -5075,14 +5122,13 @@ msgid "Death Knight"
 msgstr "死の騎士"
 
 #: data/units/Death_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
 "the same weapons as they did before, they command the Undead in their quest "
 "for revenge."
 msgstr ""
-"かつてはもっとも強固な戦士であり司令官であった者たちで、憎悪と裏切りの感情に"
+"伝説で伝えられる最も強固な戦士と司令官であった者たちで、憎悪と裏切りの感情に"
 "よって呪われており、死の騎士としてこの世界に戻ってきました。彼らは生前と同じ"
 "武器を装備しており、復讐のために不死の軍隊を指揮します。"
 
@@ -5109,33 +5155,32 @@ msgid "Deathmaster"
 msgstr "死人使い"
 
 #: data/units/Deathmaster.cfg:17
-#, fuzzy
 msgid ""
 "His wanderings on a dark path have given him power normally not granted to "
 "mortals, but with a terrible cost: the undead that he gave his soul to are "
 "gradually claiming his mortal shell too, and with time, he will be a true "
 "undead and a terror to all that lives."
 msgstr ""
-"Gwitiの闇の小径でさまよう者によって、彼は力を与えられ、通常では死なないように"
-"なりました。しかし、その代償は恐るべきものです。彼が魂を与えた不死の者は次第"
-"に彼の精神に忍び込んでおり、時を経て、彼は完全な不死の者となり、生ける者全て"
-"から恐れられるようになるでしょう。"
+"彼は闇の小径でさまようことによって、力を与えられ、通常では死なないようになり"
+"ましたが、その代償は恐るべきものです。彼が魂を与えた不死の者は次第に彼の精神"
+"に忍び込んでおり、時を経て、彼は完全な不死の者となり、生ける者全てから恐れら"
+"れるようになるでしょう。"
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
 msgstr "デミリッチ"
 
 #: data/units/Demilich.cfg:17
-#, fuzzy
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
 "bodies, becoming undead themselves. With time, they may become fully undead, "
 "and feared by all alike."
 msgstr ""
-"禁断の魔術と黒魔術に何度も関わったことで、この魔術師は重い代償を払い始めてい"
-"ます。デミリッチは肉体を失なってきており、不死の者になりつつあります。時を経"
-"て、彼は完全な不死の者となり、生ける者全てから恐れられるようになるでしょう。"
+"禁断の魔術と黒魔術にあまりにも長く関わったことで、この魔術師は重い代償を払い"
+"始めています。デミリッチは肉体を失ない始めており、不死の者になりつつありま"
+"す。時を経て、彼等は完全に不死の体となり、生ける者全てから恐れられるようにな"
+"るでしょう。"
 
 #: data/units/Direwolf_Rider.cfg:3
 msgid "Direwolf Rider"
@@ -5194,6 +5239,8 @@ msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of this is the black and white warpaint they display in battle."
 msgstr ""
+"剣の扱いの達人であるドレークは特別な階級に就任します。この印が彼等が戦いにお"
+"いて示す黒と白の戦闘塗装です。"
 
 #: data/units/Drake_Blademaster.cfg:46 data/units/Drake_Burner.cfg:53
 #: data/units/Drake_Fighter.cfg:56 data/units/Drake_Fire.cfg:54
@@ -5248,6 +5295,9 @@ msgid ""
 "hours at the forge have provided them with a bristling array of weaponry, "
 "and have clad them head to toe in shining armor."
 msgstr ""
+"偉大なドレークの下士官は彼等の種のありのままの力を集約しています。鍛冶で何時"
+"間もかけて鍛えぬかれた武器を持ち、頭からつま先まで光り輝く鎧で覆われていま"
+"す。"
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
@@ -5277,10 +5327,12 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
+"偉大なる火炎ドレークは彼等の内なる炎の達人です。輝く鎧をまとい、彼等にはむか"
+"うもの全てに力と種の威厳さの証拠の炎柱を噴出させます。"
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
-msgstr "フレイムハート"
+msgstr "ドレークフレイムハート"
 
 #: data/units/Drake_Flameheart.cfg:23
 msgid ""
@@ -5293,6 +5345,14 @@ msgid ""
 "it to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"ドラゴン自身の直接の子孫であるドレークの最年長者達は、血液ではなく炎が流れる"
+"血管を持っていると言われます。ドラゴンのように炎を吐くことができるため、この"
+"考えを信じさせますが、なんらかの理由で、身体を切り開いて明らかにしようとした"
+"ものは誰もいません。\n"
+"\n"
+"特記事項: フレイムハートの統率力により、隣接する友好的なユニットは戦闘におい"
+"てより大きなダメージを与えることができますが、より下位レベルのユニットにのみ"
+"適用されます。"
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
@@ -5308,6 +5368,13 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"ドレークは古い種族で、彼等自身の生まれつきのリーダーの言うことを聞くほど賢く"
+"もあります。彼等の敵にフレアと呼ばれる者達は、戦時においても平時においてもそ"
+"のようなリーダーになることを志願するドレークです。\n"
+"\n"
+"特記事項: フレアの統率力により、隣接する友好的なユニットは戦闘においてより大"
+"きなダメージを与えることができますが、より下位レベルのユニットにのみ適用され"
+"ます。"
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
@@ -5376,15 +5443,14 @@ msgid "Sky Drake"
 msgstr "飛行ドレーク"
 
 #: data/units/Drake_Sky.cfg:20
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
 "down on prey, and are usually long gone before anyone can stop them."
 msgstr ""
-"飛行ドレークは真の大空の王であり、武器としてその推進力と火炎のブレスを使用し"
+"飛行ドレークは真の大空の王です。武器としてその推進力と火炎のブレスを使用し"
 "て、多くの者に死をもたらしました。彼らは軽快に急降下して敵を襲うことができ、"
-"反撃される前に遠くに離れることができます。"
+"誰にも止められないうちに遠くに離れることができます。"
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -5429,15 +5495,14 @@ msgid "Drake Warrior"
 msgstr "ドレークの熟練戦士"
 
 #: data/units/Drake_Warrior.cfg:19
-#, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike withering blows, and to withstand punishment in equal measure."
 msgstr ""
-"ドレークの戦士は得意なシミターを装備しており、祖先の能力である火炎のブレスを"
-"行うこともできます。経験の積んだ彼らのほとんどは次のドレークの熟練戦士となり"
-"ます。"
+"ドレークの熟練戦士は素晴らしい腕前の剣を装備しており、祖先の能力である火炎の"
+"ブレスを行うこともできます。彼等のすさまじい力により、縮み上がるような一撃を"
+"打ちこみ、同じだけの苦痛に耐えることができます。"
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
@@ -5465,7 +5530,7 @@ msgstr "斧"
 
 #: data/units/Dread_Lich.cfg:3
 msgid "Dread Lich"
-msgstr ""
+msgstr "ドレッド・リッチ"
 
 #: data/units/Dread_Lich.cfg:18
 msgid ""
@@ -5574,15 +5639,14 @@ msgid "Dwarvish Guardsman"
 msgstr "ドワーフの警護兵"
 
 #: data/units/Dwarvish_Guardsman.cfg:22
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
 "lot of damage, and hurling heavy spears for defense."
 msgstr ""
 "もっとも屈強なドワーフは警護兵として軍隊に参加することがあります。強力な攻撃"
-"なしで遅い彼らは軍隊の側面を守備し、多くのダメージを吸収し、敵を大槍を敵に投"
-"げつけます。"
+"なしで遅い彼らは軍隊の側面を守備し、多くのダメージに耐え、防御のため大槍を敵"
+"に投げつけます。"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -5703,22 +5767,20 @@ msgid "Dwarvish Ulfserker"
 msgstr "ドワーフの狂戦士"
 
 #: data/units/Dwarvish_Ulfserker.cfg:16
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
 "or they themselves perish, no matter how many wounds they receive."
 msgstr ""
-"ドワーフは古代の種族であり、強力な戦士です。ドワーフの狂戦士は彼らの中でもっ"
-"とも凶暴な者たちで、いくら傷を受けようが関係なく、彼らは敵か自分のどちらかが"
-"死ぬまで、攻撃の手を止めません。"
+"ドワーフは強力な戦士である古代種族です。狂戦士は戦闘において最も凶暴な者たち"
+"で、いくら傷を受けようが関係なく、彼らは敵か自分のどちらかが死ぬまで、攻撃の"
+"手を止めません。"
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
 msgstr "老魔術師"
 
 #: data/units/Elder_Mage.cfg:22
-#, fuzzy
 msgid ""
 "Once great, Elder Magi have seen their power a little diminished from "
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
@@ -5753,6 +5815,18 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"ウーズは、全て木のような形をしていますが、さまざまな姿をもち、年を取るに従い"
+"大きさも増すと言われてきました。この点でも同様に木に似ているウーズについての"
+"伝説では、生き物が下を通れるほどはるか高くそびえ立つと言います。これはなぜ彼"
+"等がめったに見られないかの大きな原因です。彼等がよくする居眠りをしながら立っ"
+"ているため、それほど成長したウーズは珍しい形の木以外には見えません。注意深い"
+"エルフでさえも、時にはだまされるほどです。\n"
+"\n"
+"ウーズは決して戦士ではありませんが、誰かがこの生き物の怒りを呼び起こすことが"
+"できれば、彼等のもつ力は明らかに暴力的になります。\n"
+"\n"
+"特記事項: ウーズは、食物や手助けをうけるために村に入り込む必要なく、彼等を取"
+"り巻く天然資源を使うことで回復します。"
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -5814,6 +5888,14 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"エルフは他の多くの種族と違って、戦いの経験のある同輩をすぐに認めて、従いま"
+"す。これは、統率力が弾圧と威嚇の不安定なまがい物である人間にとっては、極めて"
+"奇妙に見えます。そのリーダーの知恵を進んで受け入れ、実力あるリーダーを選ぶ傾"
+"向の組み合わせこそエルフの静かなる力の一つです。\n"
+"\n"
+"特記事項: 隊長の統率力により、隣接する友好的なユニットは戦闘においてより大き"
+"なダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
+"す。"
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -5980,7 +6062,6 @@ msgid "Elvish Marshal"
 msgstr "エルフの元帥"
 
 #: data/units/Elvish_Marshal.cfg:25
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -5993,10 +6074,16 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level"
 msgstr ""
-"大元帥の階級は人間軍隊においてもっとも尊重されているもののひとつです。その称"
-"号を受ける者は、炎を使用した多くの試練をくぐり抜け、個人技と戦術での両方にお"
-"いて、注目すべき勇気を証明しています。戦場での彼らの存在は、その傍で戦ってい"
-"る者たちの大きな助けとなるでしょう。"
+"エルフの長寿と生まれながらの知性によって、軍隊にありがちな邪悪な性向について"
+"は、彼等が一般的にそのようなものを嫌うために、全く逆のものに変えてしまいま"
+"す。エルフは人間よりもずっとはっきりと物事を憶えていて、他のものにどのような"
+"訓練を行えばよいかをしばしば直感で知ることができます。まさに、エルフが戦争に"
+"心を向けるというめったにない機会において生まれる戦略は、巨匠の作品となりま"
+"す。\n"
+"\n"
+"特記事項: 元帥の統率力により、隣接する友好的なユニットは戦闘においてより大き"
+"なダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
+"す。"
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -6293,7 +6380,6 @@ msgid "General"
 msgstr "将軍"
 
 #: data/units/General.cfg:28
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -6303,9 +6389,13 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
-"人間の軍隊の大いなる指導者として、将軍は人間の王国の広範囲または重要な土地の"
-"防衛に関して責任を持ちます。将軍はレベル１と２のユニットの攻撃を調整し、彼ら"
-"の戦闘効果を上昇させます。"
+"彼等の軍隊の指導者として、将軍は自分が中世を誓った王国の巨大または重要な地域"
+"の防衛に対する責任を持ちます。彼等はこの秩序を遂行するのに十分な訓練と経験を"
+"積んでいます。\n"
+"\n"
+"特記事項: 将軍の統率力により、隣接する友好的なユニットは戦闘においてより大き"
+"なダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
+"す。"
 
 #: data/units/Ghost.cfg:3
 msgid "Ghost"
@@ -6352,14 +6442,13 @@ msgid "Giant Mudcrawler"
 msgstr "巨大泥蟲"
 
 #: data/units/Giant_Mudcrawler.cfg:17
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by slapping them with their fists."
 msgstr ""
-"巨大泥蟲は泥蟲よりも大きく、魔法によって土と水から造られました。彼らは敵に熱"
-"湯を噴射と泥の拳で攻撃します。"
+"巨大泥蟲は泥蟲よりも大きく、魔法によって土と水から造られました。彼らは敵に泥"
+"のかたまりを噴射するか、あるいは拳で打ちつけることで攻撃します。"
 
 #: data/units/Giant_Mudcrawler.cfg:44 data/units/Skeleton_Archer.cfg:24
 #: data/units/Soulless.cfg:39 data/units/Troll_Rocklobber.cfg:24
@@ -6370,7 +6459,7 @@ msgstr "拳"
 
 #: data/units/Giant_Mudcrawler.cfg:66 data/units/Mudcrawler.cfg:43
 msgid "mud glob"
-msgstr ""
+msgstr "泥のしずく"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
@@ -6381,6 +6470,8 @@ msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation."
 msgstr ""
+"普通のサソリでも十分危険ですが、…人間の大きさのとなれば、説明はいらないでしょ"
+"う。"
 
 #: data/units/Giant_Scorpion.cfg:20
 msgid "sting"
@@ -6492,7 +6583,6 @@ msgid "Grand Marshal"
 msgstr "大元帥"
 
 #: data/units/Grand_Marshal.cfg:24
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -6503,10 +6593,13 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"大元帥の階級は人間軍隊においてもっとも尊重されているもののひとつです。その称"
-"号を受ける者は、炎を使用した多くの試練をくぐり抜け、個人技と戦術での両方にお"
-"いて、注目すべき勇気を証明しています。戦場での彼らの存在は、その傍で戦ってい"
-"る者たちの大きな助けとなるでしょう。"
+"大元帥の階級は人間軍隊においてもっとも尊重されているもののひとつであり、その"
+"称号を受ける者は、炎を使用した多くの試練をくぐり抜け、個人戦における戦術的才"
+"能と目ざましい勇気を証明しています。\n"
+"\n"
+"特記事項: 大元帥の統率力により、隣接する友好的なユニットは戦闘においてより大"
+"きなダメージを与えることができますが、より下位レベルのユニットにのみ適用され"
+"ます。"
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
@@ -6555,29 +6648,27 @@ msgid "Gryphon"
 msgstr "グリフォン"
 
 #: data/units/Gryphon.cfg:17
-#, fuzzy
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
-"この半獣半鳥の荘厳な生物は世界の空を支配しています。グリフォンは他の知的種族"
-"に用心深いため、適切な理由なしに彼らに干渉すべきではありません。"
+"この荘厳で力強い生物は空の支配者です。グリフォンは危険で他の知的種族に用心深"
+"いため、しかるべき理由なしに彼らに干渉すべきではありません。"
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
 msgstr "グリフォンマスター"
 
 #: data/units/Gryphon_Master.cfg:20
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty pairs may strike from anywhere."
 msgstr ""
-"グリフォンマスターはグリフォンで飛行した長い経験があり、グリフォンを彼らの身"
-"体の一部のように扱うことができます。これによって、このペアはどこへでも出撃し"
-"て、地上の生物の心を震わせます。"
+"グリフォンマスターはグリフォンで飛行した長い経験があり、これによりグリフォン"
+"を彼らの身体の一部のように扱うことができます。この特別な関係によって、このペ"
+"アはどこへでも出撃して、地上の生物の心をおののかせます。"
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
@@ -6786,13 +6877,24 @@ msgid ""
 "high chance of hitting an opponent. The touch of a lich drains the victim's "
 "life to renew the lich."
 msgstr ""
+"リッチは、黒魔術が最初に目指したものの肉体的に具現化した形、不道徳を成し遂げ"
+"る来訪者です。復活の犠牲は大事ですが、リッチになった者は真に恐怖を与えるもの"
+"である死をも逃れることとなります。維持しているものは心と、肉体は枯れ果ててい"
+"ますが、魂が続きます。\n"
+"\n"
+"知られてはいませんが、おそらく交霊術の内なる循環によって保たれており、生命が"
+"無限に引延ばされているか、単に延長されているかのどちらかです。しかしそのよう"
+"なことを考えることさえ、彼等が既に成し遂げた事の重要度に対する貢献を支持する"
+"ことになります。\n"
+"\n"
+"特記事項: リッチの投射攻撃は魔法で、相手に命中する確率が常に高いです。リッチ"
+"の接触は犠牲者の生命を奪い、リッチを回復させます。"
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
 msgstr "副官"
 
 #: data/units/Lieutenant.cfg:23
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
@@ -6802,7 +6904,11 @@ msgid ""
 "level."
 msgstr ""
 "剣とクロスボウによって訓練された副官は人間の兵士の小隊を率い、彼らの攻撃を調"
-"整し、周囲の低レベルの者の戦闘能力を上昇させます。"
+"整し、周囲の低レベルの者の戦闘能力を上昇させます。\n"
+"\n"
+"特記事項: 副官の統率力により、隣接する友好的なユニットは戦闘においてより大き"
+"なダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
+"す。"
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
@@ -7225,13 +7331,12 @@ msgid "Mudcrawler"
 msgstr "泥蟲"
 
 #: data/units/Mudcrawler.cfg:18
-#, fuzzy
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
-"泥蟲は魔法によって土と水から造られました。彼らは敵に熱湯を噴射することで攻撃"
-"します。"
+"泥蟲は魔法によって土と水から造られています。彼らは敵に泥のかたまりを噴射する"
+"ことで攻撃します。"
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
@@ -7379,7 +7484,6 @@ msgid "Noble Commander"
 msgstr "貴族の司令官"
 
 #: data/units/Noble_Commander.cfg:24
-#, fuzzy
 msgid ""
 "The rank of a noble Commander is held by those who lead battle groups into "
 "combat. Possessing leadership skills, they give lower-level units in "
@@ -7387,10 +7491,10 @@ msgid ""
 "with the sword, although they also carry a bow to use when necessary. If the "
 "Commander is lost, so is the battle."
 msgstr ""
-"司令官の地位にある者は戦闘で軍団を統率します。統率の技能を持っているため、彼"
-"らは周囲の低レベルのユニットの戦闘能力を向上させます。司令官は必要に応じて弓"
-"を使用しますが、剣でもっとも訓練されています。この司令官が死亡したら、戦闘も"
-"敗北です。"
+"帰属の司令官の地位にある者は戦闘で軍団を統率します。統率の技能を持っているた"
+"め、彼らは隣接ヘクスにいるより低いレベルのユニットの戦闘能力を向上させます。"
+"司令官は必要に応じて弓を使用しますが、剣でもっとも訓練されています。この司令"
+"官が死亡したら、戦闘も敗北です。"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
@@ -7430,15 +7534,15 @@ msgid "Ogre"
 msgstr "オーガ"
 
 #: data/units/Ogre.cfg:17
-#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"オーガは愚かな巨大な人間型の生物で、通用は荒野に独りで生活しています。素早さ"
-"や知恵で彼らに打ち勝つのは簡単ですが、その腕力は侮ることはできません。"
+"オーガは通常は単独で荒野に棲む生き物で、巨大で醜くはありますが、姿は著しく人"
+"間に似ています。素早さや知恵で彼らに打ち勝つのは簡単ですが、その腕力は侮るこ"
+"とはできません。"
 
 #: data/units/Ogre.cfg:20 data/units/Young_Ogre.cfg:41
 msgid "cleaver"
@@ -7517,7 +7621,6 @@ msgid "Orcish Leader"
 msgstr "オークのリーダー"
 
 #: data/units/Orcish_Leader.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Leaders are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -7526,16 +7629,15 @@ msgid ""
 "in battle: if the Leader is lost, so is the battle."
 msgstr ""
 "オークの支配者は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には彼ら"
-"の民を統率します。 彼らは必要に応じて弓も使用しますが、剣技に非常に長けてお"
-"り、全員が強力な戦士です。彼らの自然な統率の技能によって、戦闘時には彼らは非"
-"常に貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。"
+"の民を統率します。彼らは必要に応じて弓も使用しますが、剣技に非常に長けてお"
+"り、全員が強力な戦士です。生来の統率技能によって、彼らは戦闘時には非常に貴重"
+"な存在となります。この支配者が死亡したら、戦闘も敗北です。"
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
 msgstr "オークの支配者"
 
 #: data/units/Orcish_Ruler.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -7545,8 +7647,8 @@ msgid ""
 msgstr ""
 "オークの支配者は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には彼ら"
 "の民を統率します。 彼らは必要に応じて弓も使用しますが、剣技に非常に長けてお"
-"り、全員が強力な戦士です。彼らの自然な統率の技能によって、戦闘時には彼らは非"
-"常に貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。"
+"り、全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは非常に貴重"
+"な存在となります。この支配者が死亡したら、戦闘も敗北です。"
 
 #: data/units/Orcish_Shaman.cfg:3
 msgid "Orcish Shaman"
@@ -7648,7 +7750,6 @@ msgid "Orcish Sovereign"
 msgstr "オークの君主"
 
 #: data/units/Orcish_Sovereign.cfg:19
-#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -7658,8 +7759,8 @@ msgid ""
 msgstr ""
 "オークの君主は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には彼らの"
 "民を統率します。 彼らは必要に応じて弓も使用しますが、剣技に非常に長けており、"
-"全員が強力な戦士です。彼らの自然な統率の技能によって、戦闘時には彼らは非常に"
-"貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。"
+"全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは非常に貴重な存"
+"在となります。この支配者が死亡したら、戦闘も敗北です。"
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
@@ -8636,6 +8737,17 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"エルフであってもめったに見つけられないため、ウーズはほとんど知られていない生"
+"物種です。エルフはこの知識の多くの出所で、この生き物は形が似ているが木の子孫"
+"ではなく、エルフ達自身よりも、違なる流れですが、妖精世界に近く結びついている"
+"とわかっています。この種族の動機や働きは不明ですが、多くが、ウーズは自然界の"
+"管理者であるという考えを明らかだとしています。\n"
+"\n"
+"ウーズは全く戦いを好みませんが怪力を持っています。しかしながら、動き回ったり"
+"することになれておらず、素早くもできません。\n"
+"\n"
+"特記事項: ウーズは、食物や手助けをうけるために村に入り込む必要なく、彼等を取"
+"り巻く天然資源を使うことで回復します。"
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
@@ -9768,7 +9880,7 @@ msgstr "使用マップ:"
 
 #: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:204
 msgid "Use map settings"
-msgstr ""
+msgstr "マップ設定を使用"
 
 #: src/multiplayer_create.cpp:51
 msgid "Fog Of War"
