@@ -142,6 +142,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Bulgarian Translation"),
 		"-   Anton Tsigularov (Atilla)",
+		"-   Georgi Dimitrov (oblak)",
 
 		"_" N_("+Catalan Translation"),
 		"-   Carles Company (brrr)",
