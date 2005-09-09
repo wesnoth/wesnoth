@@ -85,6 +85,41 @@ void file_chooser::display_current_files() {
 	}
 	file_list_.set_items(to_show);
 	current_path_label_.set_text(current_dir_);
+
+	// If the text get out of bounds, make it shorter;
+	// Take the prefix of the dir (ie. /home/ or c:/) put three dot's behind it
+	// and shorten the rest of the dir:
+	// /home/.../rest_of_the_dir
+	// Note that this is a dirty hack and fundemental changes in the widget subdir
+	// needs to be made... 
+	if(font::line_width(current_path_label_.get_text(), menu_font_size) > 390) 
+	{
+		std::string tmp = current_path_label_.get_text();
+		static const int filler_width = font::line_width("...", menu_font_size);
+
+		// Find the first part of the dir
+		std::string dir_prefix = "";
+		std::string::size_type pos_first = 0;
+		if((pos_first = tmp.find_first_of("\\/", 1)) != std::string::npos)
+		{
+			dir_prefix = tmp.substr(0, pos_first) + "/...";
+			tmp = tmp.substr(pos_first);
+		}
+
+		static const int prefix_width = font::line_width(dir_prefix, menu_font_size);
+		
+		// Try to cut off text at the '/' or '\' tokens
+		while(font::line_width(tmp, menu_font_size) + filler_width + prefix_width > 390 && tmp.length() != 0)
+		{
+			std::string::size_type pos;
+			if((pos = tmp.find_first_of("\\/", 1)) != std::string::npos)
+				tmp = tmp.substr(pos, tmp.length());
+			else
+				tmp = tmp.substr(1, tmp.length());
+		}
+
+		current_path_label_.set_text(dir_prefix + tmp);
+	}
 }
 
 void file_chooser::display_chosen_file() {
