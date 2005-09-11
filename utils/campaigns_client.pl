@@ -1,3 +1,5 @@
+#!/usr/bin/perl
+
 use wml;
 use wml_net;
 use strict;
