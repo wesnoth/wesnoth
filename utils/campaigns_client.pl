@@ -132,7 +132,7 @@ sub unarchive_dir
 		while(@chars) {
 			my $char = shift @chars;
 			if(1 == ord $char) {
-				$char = shift @chars;
+				$char = chr(ord(shift @chars) - 1);
 			}
 
 			print FILE $char;
