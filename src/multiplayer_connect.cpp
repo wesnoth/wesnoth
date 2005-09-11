@@ -836,16 +836,39 @@ void connect::lists_init()
 
 	//Teams
 	config::child_iterator sd;
-	for(sd = sides.first; sd != sides.second; ++sd) {
-		const int side_num = sd - sides.first + 1;
-		t_string& team_name = (**sd)["team_name"];
-		if(team_name.empty()) {
-			team_name = lexical_cast<std::string>(side_num);
+	if(params_.use_map_settings) {
+		for(sd = sides.first; sd != sides.second; ++sd) {
+			const int side_num = sd - sides.first + 1;
+			t_string& team_name = (**sd)["team_name"];
+
+			if(team_name.empty())
+				team_name = lexical_cast<std::string>(side_num);
+
+			std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), team_names_.end(), team_name);
+			if(itor == team_names_.end()) {
+				team_names_.push_back(team_name);
+				player_teams_.push_back(team_prefix_ + team_name.str());
+			}
 		}
-		std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), team_names_.end(), team_name);
-		if(itor == team_names_.end()) {
-			team_names_.push_back(team_name);
-			player_teams_.push_back(team_prefix_ + team_name.str());
+	} else {
+		std::vector<std::string> team_names;
+		for(sd = sides.first; sd != sides.second; ++sd) {
+			const std::string side_num = lexical_cast<std::string>(sd - sides.first + 1);
+			t_string& team_name = (**sd)["team_name"];
+
+			if(team_name.empty())
+				team_name = side_num;
+
+			std::vector<std::string>::const_iterator itor = std::find(team_names.begin(), team_names.end(), team_name);
+			if(itor == team_names.end()) {
+				team_names.push_back(team_name);
+				team_name = side_num;
+			} else {
+				team_name = lexical_cast<std::string>(itor - team_names.begin() + 1);
+			}
+
+			team_names_.push_back(side_num);
+			player_teams_.push_back(team_prefix_ + side_num);
 		}
 	}
 
