@@ -17,6 +17,8 @@
 #include <istream>
 #include <string>
 
+#define FILE_SEPARATOR '\375'
+
 class config;
 
 struct token

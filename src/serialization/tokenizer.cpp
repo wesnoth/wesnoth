@@ -47,7 +47,7 @@ void tokenizer::skip_comment()
 	else if (comment_line.size() > 3 && comment_line[0] == "line") {
 		lineno_ = atoi(comment_line[1].c_str());
 		comment_line.erase(comment_line.begin(), comment_line.begin() + 2);
-		file_ = ' ' + utils::join(comment_line, ' ');
+		file_ = FILE_SEPARATOR + utils::join(comment_line, ' ');
 	}
 }
 
