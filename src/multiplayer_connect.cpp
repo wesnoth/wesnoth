@@ -862,7 +862,7 @@ void connect::lists_init()
 			std::vector<std::string>::const_iterator itor = std::find(team_names.begin(), team_names.end(), team_name);
 			if(itor == team_names.end()) {
 				team_names.push_back(team_name);
-				team_name = side_num;
+				team_name = lexical_cast<std::string>(team_names.size());
 			} else {
 				team_name = lexical_cast<std::string>(itor - team_names.begin() + 1);
 			}
