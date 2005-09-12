@@ -199,18 +199,18 @@ size_t move_unit(display* disp, const game_data& gamedata,
 //function which recalculates the fog
 void recalculate_fog(const gamemap& map, const gamestatus& status,
 		      const game_data& gamedata,
-		      const unit_map& units, std::vector<team>& teams, int team);
+		      unit_map& units, std::vector<team>& teams, int team);
 
 //function which will clear shroud away for the given 0-based team based on
 //current unit positions. Returns true if some shroud is actually cleared away.
 bool clear_shroud(display& disp, const gamestatus& status,
-		            const gamemap& map, const game_data& gamedata,
-                  const unit_map& units, std::vector<team>& teams, int team);
+		const gamemap& map, const game_data& gamedata,
+		unit_map& units, std::vector<team>& teams, int team);
 
 //function to apply pending shroud changes in the undo stack.
 //it needs tons of parameters because it calls clear_shroud(...) (see above)
 void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& status, const gamemap& map,
-	const game_data& gamedata, const unit_map& units, std::vector<team>& teams, int team);
+	const game_data& gamedata, unit_map& units, std::vector<team>& teams, int team);
 
 //will return true iff the unit at 'loc' has any possible moves it can do
 //(including attacking etc).

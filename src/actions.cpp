@@ -1651,12 +1651,12 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 //seen_units will return new units that have been seen by this unit
 //if known_units is NULL, seen_units can be NULL and will not be changed
 bool clear_shroud_unit(const gamemap& map,
-		                 const gamestatus& status,
-							  const game_data& gamedata,
-                       const unit_map& units, const gamemap::location& loc,
-                       std::vector<team>& teams, int team,
-					   const std::set<gamemap::location>* known_units,
-					   std::set<gamemap::location>* seen_units)
+		const gamestatus& status,
+		const game_data& gamedata,
+		const unit_map& units, const gamemap::location& loc,
+		std::vector<team>& teams, int team,
+		const std::set<gamemap::location>* known_units,
+		std::set<gamemap::location>* seen_units)
 {
 	std::vector<gamemap::location> cleared_locations;
 
@@ -1699,18 +1699,14 @@ bool clear_shroud_unit(const gamemap& map,
 }
 
 void recalculate_fog(const gamemap& map, const gamestatus& status,
-		const game_data& gamedata, const unit_map& units,
+		const game_data& gamedata, unit_map& units,
 		std::vector<team>& teams, int team) {
 
 	teams[team].refog();
 
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->second.side() == team+1) {
-
-			//we're not really going to mutate the unit, just temporarily
-			//set its moves to maximum, but then switch them back
-			unit& mutable_unit = const_cast<unit&>(i->second);
-			const unit_movement_resetter move_resetter(mutable_unit);
+			const unit_movement_resetter move_resetter(i->second);
 
 			clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
 		}
@@ -1718,22 +1714,18 @@ void recalculate_fog(const gamemap& map, const gamestatus& status,
 }
 
 bool clear_shroud(display& disp, const gamestatus& status,
-		            const gamemap& map, const game_data& gamedata,
-                  const unit_map& units, std::vector<team>& teams, int team)
+		const gamemap& map, const game_data& gamedata,
+                  unit_map& units, std::vector<team>& teams, int team)
 {
 	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
 		return false;
 
 	bool result = false;
 
-	unit_map::const_iterator i;
+	unit_map::iterator i;
 	for(i = units.begin(); i != units.end(); ++i) {
 		if(i->second.side() == team+1) {
-
-			//we're not really going to mutate the unit, just temporarily
-			//set its moves to maximum, but then switch them back
-			unit& mutable_unit = const_cast<unit&>(i->second);
-			const unit_movement_resetter move_resetter(mutable_unit);
+			const unit_movement_resetter move_resetter(i->second);
 
 			result |= clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
 		}
@@ -2055,11 +2047,12 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 }
 
 void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& status, const gamemap& map,
-	const game_data& gamedata, const unit_map& units, std::vector<team>& teams, int team)
+	const game_data& gamedata, unit_map& units, std::vector<team>& teams, int team)
 {
 	// No need to do this if the team isn't using fog or shroud.
 	if(!teams[team].uses_shroud() && !teams[team].uses_fog())
 		return;
+
 	/*
 		This function works thusly:
 		1. run through the list of undo_actions
@@ -2069,17 +2062,19 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 		5. call clear_shroud to update the fog of war for each unit.
 		6. fix up associated display stuff (done in a similar way to turn_info::undo())
 	*/
-	for(undo_list::const_iterator un = undos.begin(); un != undos.end(); ++un) {
+	for(undo_list::iterator un = undos.begin(); un != undos.end(); ++un) {
+		std::cout << "Turning an undo...\n";
 		if(un->is_recall()) continue;
 		//we're not really going to mutate the unit, just temporarily
 		//set its moves to maximum, but then switch them back
-		const unit_movement_resetter move_resetter(const_cast<unit&>(un->affected_unit));
+		const unit_movement_resetter move_resetter(un->affected_unit);
 
 		std::vector<gamemap::location>::const_iterator step;
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
 			//we have to swap out any unit that is already in the hex, so we can put our
 			//unit there, then we'll swap back at the end.
-			const temporary_unit_placer unit_placer(const_cast<unit_map&>(units),*step,un->affected_unit);
+			const temporary_unit_placer unit_placer(units,*step,un->affected_unit);
+
 			clear_shroud_unit(map,status,gamedata,units,*step,teams,team,NULL,NULL);
 		}
 	}
