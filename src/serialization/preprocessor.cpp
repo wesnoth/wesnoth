@@ -187,6 +187,7 @@ class preprocessor_data: preprocessor
 	void put(std::string const &);
 public:
 	preprocessor_data(preprocessor_streambuf &, std::istream *,
+	                  std::string const &history,  
 	                  std::string const &name, int line,
 	                  std::string const &dir, std::string const &domain);
 	virtual bool get_chunk();
@@ -198,7 +199,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 	if (is_directory(name))
 		get_files_in_dir(name, &files_, NULL, ENTIRE_FILE_PATH);
 	else
-		new preprocessor_data(t, istream_file(name), name, 1, directory_name(name), t.textdomain_);
+		new preprocessor_data(t, istream_file(name), "", name, 1, directory_name(name), t.textdomain_);
 	pos_ = files_.begin();
 	end_ = files_.end();
 }
@@ -217,12 +218,20 @@ bool preprocessor_file::get_chunk()
 }
 
 preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
+                                     std::string const &history,
                                      std::string const &name, int linenum,
                                      std::string const &directory, std::string const &domain)
 	: preprocessor(t), in_(i), directory_(directory), slowpath_(0), skipping_(0), linenum_(linenum)
 {
 	std::ostringstream s;
-	s << name;
+
+	s << history;
+	if (!name.empty()) {
+		std::string ename(name);
+		if (!history.empty())
+			s << ' ';
+		s << utils::escape(ename, " \\");
+	}
 	if (!t.location_.empty())
 		s << ' ' << t.linenum_ << ' ' << t.location_;
 	t.location_ = s.str();
@@ -454,7 +463,7 @@ bool preprocessor_data::get_chunk()
 				target_.defines_->insert(std::make_pair(
 					symbol, preproc_define(buffer, items, target_.textdomain_,
 					                       linenum + 1, target_.location_)));
-				LOG_CF << "defining macro " << symbol << '\n';
+				LOG_CF << "defining macro " << symbol << " (location " << target_.location_ << ")\n";
 			}
 		} else if (command == "ifdef") {
 			skip_spaces();
@@ -616,7 +625,7 @@ bool preprocessor_data::get_chunk()
 				std::string const &dir = directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
 					LOG_CF << "substituting macro " << symbol << '\n';
-					new preprocessor_data(target_, buffer, val.location,
+					new preprocessor_data(target_, buffer, val.location, "", 
 					                      val.linenum, dir, val.textdomain);
 				} else {
 					LOG_CF << "substituting (slow) macro " << symbol << '\n';
@@ -624,7 +633,7 @@ bool preprocessor_data::get_chunk()
 					preprocessor_streambuf *buf =
 						new preprocessor_streambuf(target_);
 					{	std::istream in(buf);
-						new preprocessor_data(*buf, buffer, val.location,
+						new preprocessor_data(*buf, buffer, val.location, "",
 						                      val.linenum, dir, val.textdomain);
 						res << in.rdbuf(); }
 					delete buf;

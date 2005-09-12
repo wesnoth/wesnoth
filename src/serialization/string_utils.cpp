@@ -233,20 +233,27 @@ std::string interpolate_variables_into_string(const std::string &str, variable_s
 	return res;
 }
 
-//prepend all special characters with a backslash
-//special characters are:
-//#@{}+-,\*=
-std::string &escape(std::string &str)
+//Prepends a configurable set of characters with a backslash
+std::string &escape(std::string &str, const std::string& special_chars)
 {
 	std::string::size_type pos = 0;
 	do {
-		pos = str.find_first_of("#@{}+-,\\*=", pos);
+		pos = str.find_first_of(special_chars, pos);
 		if (pos == std::string::npos)
 			break;
 		str.insert(pos, 1, '\\');
 		pos += 2;
 	} while (pos < str.size());
 	return str;
+}
+
+//prepend all special characters with a backslash
+//special characters are:
+//#@{}+-,\*=
+std::string& escape(std::string& str)
+{
+	static const std::string special_chars("#@{}+-,\\*=");
+	return escape(str, special_chars);
 }
 
 // remove all escape characters (backslash)

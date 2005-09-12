@@ -41,13 +41,20 @@ void tokenizer::skip_comment()
 	}
 
 	// Identifies and processes tokenizer directives
-	std::vector<std::string> comment_line = utils::split(comment, ' ');
-	if (comment_line.size() == 2 && comment_line[0] == "textdomain")
-		textdomain_ = comment_line[1];
-	else if (comment_line.size() > 3 && comment_line[0] == "line") {
-		lineno_ = atoi(comment_line[1].c_str());
-		comment_line.erase(comment_line.begin(), comment_line.begin() + 2);
-		file_ = FILE_SEPARATOR + utils::join(comment_line, ' ');
+	std::string::size_type pos = comment.find_first_of(" \t");
+	if (pos != std::string::npos) {
+		const std::string word = comment.substr(0, pos);
+
+		if (word == "textdomain" && pos < comment.size() - 1) {
+			textdomain_ = comment.substr(pos + 1);
+		} else if (word == "line" && pos < comment.size() - 1) {
+			std::string::size_type pos2 = comment.find_first_of(" \t", pos + 1);
+
+			if (pos2 != std::string::npos) {
+				lineno_ = lexical_cast<size_t>(comment.substr(pos + 1, pos2 - pos));
+				file_ = comment.substr(pos2 + 1);
+			}
+		}
 	}
 }
 
@@ -163,7 +170,7 @@ bool tokenizer::is_alnum(int c)
 std::string tokenizer::get_line()
 {
 	std::ostringstream s;
-	s << tokenstart_lineno_ << file_;
+	s << tokenstart_lineno_ << ' ' << file_;
 	return s.str();
 }
 

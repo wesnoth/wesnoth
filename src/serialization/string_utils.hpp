@@ -21,7 +21,7 @@
 
 #include "SDL_types.h"
 #include "tstring.hpp"
-
+#include "util.hpp"
 
 class variable_set
 {
@@ -54,6 +54,7 @@ std::vector< std::string > quoted_split(std::string const &val, char c= ',',
                                         int flags = REMOVE_EMPTY | STRIP_SPACES, char quote = '\\');
 std::pair< int, int > parse_range(std::string const &str);
 bool notspace(char c);
+std::string &escape(std::string &str, const std::string& special_chars);
 std::string &escape(std::string &str);
 std::string &unescape(std::string &str);
 std::string &strip(std::string &str);

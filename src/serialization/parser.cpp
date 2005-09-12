@@ -280,7 +280,8 @@ void parser::parse_variable()
 std::string parser::lineno_string(utils::string_map &i18n_symbols, std::string const &lineno,
 			          std::string const &error_string)
 {
-	std::vector< std::string > pos = utils::split(lineno, FILE_SEPARATOR);
+	ERR_CF << lineno << std::endl;
+	std::vector< std::string > pos = utils::quoted_split(lineno, ' ');
 	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
 	std::string included_from = _(" included from ");
 	std::string res;
