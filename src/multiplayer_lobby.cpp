@@ -113,13 +113,13 @@ void gamebrowser::draw_item(size_t index) const {
 
 	xpos += item_height_ + margin_;
 
-	const surface name_surf(font::get_rendered_text(font::make_text_ellipsis(game.name, font::SIZE_NORMAL, item_rect.w - xpos - margin_), font::SIZE_PLUS, game.vacant_slots > 0 ? font::GOOD_COLOUR : game.observers ? font::NORMAL_COLOUR : font::BAD_COLOUR));
+	const surface name_surf(font::get_rendered_text(font::make_text_ellipsis(game.name, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, game.vacant_slots > 0 ? font::GOOD_COLOUR : game.observers ? font::NORMAL_COLOUR : font::BAD_COLOUR));
 	video().blit_surface(xpos, ypos, name_surf);
 
 	ypos += v_padding_;
 
 	// draw map info
-	const surface map_info_surf(font::get_rendered_text(font::make_text_ellipsis(game.map_info, font::SIZE_NORMAL, item_rect.w - xpos - margin_), font::SIZE_PLUS, font::GOOD_COLOUR));
+	const surface map_info_surf(font::get_rendered_text(font::make_text_ellipsis(game.map_info, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, font::GOOD_COLOUR));
 	video().blit_surface(xpos, ypos, map_info_surf);
 
 
