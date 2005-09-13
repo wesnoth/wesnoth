@@ -331,8 +331,6 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	scroll(get_position());
 	if(selected_ >= games_.size())
 		selected_ = maximum<long>(static_cast<long>(games_.size()) - 1, 0);
-	if(selected_ >= 0)
-		adjust_position(selected_);
 	set_dirty();
 }
 
