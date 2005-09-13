@@ -105,14 +105,20 @@ threading::condition* cond = NULL;
 std::vector<threading::thread*> threads;
 
 SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
+#ifdef __BEOS__
+	int timeout = 15000;
+#endif
 	size_t upto = 0;
 	size_t size = buf.size();
 	{
 		const threading::lock lock(*global_mutex);
 		transfer_stats[sock].first.fresh_current(size);
 	}
-
+#ifdef __BEOS__
+	while(upto < size && timeout > 0) {
+#else
 	while(upto < size) {
+#endif
 		{
 			// check if the socket is still locked
 			const threading::lock lock(*global_mutex);
@@ -140,7 +146,7 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 				if(poll_res > 0)
 					continue;
 			}
-#elif defined(USE_SELECT)
+#elif defined(USE_SELECT) && !defined(__BEOS__)
 				fd_set writefds;
 				FD_ZERO(&writefds);
 				FD_SET(((_TCPsocket*)sock)->channel, &writefds);
@@ -157,10 +163,16 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 					continue;
 			}
 #else
+				SDL_Delay(10);
+				timeout -= 10;
+				continue;
 			}
 #endif
 			return SOCKET_ERROR;
 		}
+#ifdef __BEOS__
+		timeout = 15000;
+#endif
 		upto += static_cast<size_t>(res);
 		{
 			const threading::lock lock(*global_mutex);
